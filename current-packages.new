@@ -192,7 +192,7 @@
 #./gnome-office/eog/eog-0.5.ebuild
 ./gnome-office/gnome-db/gnome-db-0.2.1.ebuild
 ./gnome-office/gnome-pim/gnome-pim-1.2.0-r1.ebuild
-./gnome-office/gnumeric/gnumeric-0.61.ebuild
+./gnome-office/gnumeric/gnumeric-0.61-r1.ebuild
 ./kde-apps/cervisia/cervisia-0.7.1.ebuild
 ./kde-apps/kdeadmin/kdeadmin-2.0.1.ebuild
 ./kde-apps/kdegraphics/kdegraphics-2.0.1.ebuild
@@ -209,7 +209,7 @@
 ./kde-base/kdebase/kdebase-2.0.1.ebuild
 ./kde-base/kdelibs/kdelibs-2.0.1.ebuild
 ./kde-base/kdesupport/kdesupport-2.0.1.ebuild
-./media-gfx/autotrace/autotrace-0.26.ebuild
+#./media-gfx/autotrace/autotrace-0.26.ebuild
 ./media-gfx/aview/aview-1.2-r2.ebuild
 ./media-gfx/blender/blender-2.04.ebuild
 #./media-gfx/blender-static/blender-static-2.04.ebuild
