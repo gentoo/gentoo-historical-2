@@ -42,7 +42,6 @@ sys-apps/iptables
 sys-apps/isapnptools
 sys-apps/less
 sys-apps/lilo
-sys-apps/lsof
 sys-apps/man
 sys-apps/man-pages
 sys-apps/mkisofs
@@ -96,7 +95,7 @@ net-misc/dhcpcd
 net-misc/rsync
 net-misc/wget
 net-misc/netkit-telnetd
-#net-misc/openssh
+net-misc/openssh
 net-ftp/ftp
 #sys-kernel/linux
 

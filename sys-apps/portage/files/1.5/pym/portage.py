@@ -86,10 +86,10 @@ categories=("app-admin", "app-arch", "app-cdr", "app-crypt", "app-doc",
 "dev-perl", "dev-python", "dev-ruby", "dev-util", "gnome-apps", "gnome-base",
 "gnome-libs", "gnome-office","kde-apps", "kde-i18n", "kde-base", "kde-libs",
 "media-gfx", "media-libs", "media-sound", "media-video", "net-analyzer",
-"net-apache", "net-dialup", "net-fs", "net-ftp", "net-im", "net-irc",
-"net-libs", "net-mail", "net-misc", "net-news", "net-nds", "net-print",
-"net-www", "packages", "sys-apps", "sys-devel", "sys-kernel", "sys-libs",
-"x11-base", "x11-libs", "x11-terms", "x11-wm","virtual","dev-tcltk")
+"net-dialup", "net-fs", "net-ftp", "net-im", "net-irc", "net-libs", "net-mail",
+"net-misc", "net-news", "net-nds", "net-print", "net-www", "packages",
+"sys-apps", "sys-devel", "sys-kernel", "sys-libs", "x11-base", "x11-libs",
+"x11-terms", "x11-wm","virtual","dev-tcltk")
 
 #beautiful directed graph object
 
@@ -148,8 +148,6 @@ endversion={"pre":-2,"p":0,"alpha":-4,"beta":-3,"rc":-1}
 
 def env_update():
 	global root
-	if not os.path.exists(root+"etc/env.d"):
-		os.makedirs(root+"etc/env.d")
 	fns=os.listdir(root+"etc/env.d")
 	fns.sort()
 	pos=0
@@ -412,15 +410,12 @@ class config:
 			mydict[x]=self[x]
 		return mydict
 	
-def spawn(mystring,debug=0):
+def spawn(mystring):
 	global settings
 	mypid=os.fork()
 	if mypid==0:
 		mycommand="/bin/bash"
-		if debug:
-			myargs["bash","-x","-c",mystring]
-		else:
-			myargs=["bash","-c",mystring]
+		myargs=["bash","-c",mystring]
 		os.execve(mycommand,myargs,settings.environ())
 		return
 	retval=os.waitpid(mypid,0)[1]
@@ -431,7 +426,7 @@ def spawn(mystring,debug=0):
 		#interrupted by signal
 		return 16
 
-def doebuild(myebuild,mydo,checkdeps=1,debug=0):
+def doebuild(myebuild,mydo,checkdeps=1):
 	global settings
 	if not os.path.exists(myebuild):
 		print "!!!",myebuild,"not found."
@@ -440,7 +435,6 @@ def doebuild(myebuild,mydo,checkdeps=1,debug=0):
 		print "!!!",myebuild,"does not appear to be an ebuild file."
 		return 1
 	settings.reset()
-	settings["PORTAGE_DEBUG"]=str(debug)
 	settings["ROOT"]=root
 	settings["STARTDIR"]=os.getcwd()
 	settings["EBUILD"]=os.path.abspath(myebuild)

@@ -40,54 +40,35 @@
 			</td>
 			<td valign="bottom" height="168" width="70%" bgcolor="#000000">
 				<!--Netscape 4.7 table hack-->
-				<table class="menu" border="0" cellpadding="10" cellspacing="0" width="100%">
-				<tr>
-					<td valign="top">
-						<xsl:variable name="mylink"><xsl:value-of select="/guide/@link"/></xsl:variable>
-						main menu ::<br/>
-						&#160;<a class="oldlink" href="/index.html">About Gentoo Linux</a><br/>
-						&#160;<a class="oldlink" href="/index-download.html">Download/Install</a><br/> 
-						&#160;<a class="oldlink" href="http://cvs.gentoo.org/wiki">Dev Wiki</a><br/> 
-						&#160;<a class="oldlink" href="/index-changelog.html">CVS Changelog</a><br/> 
-						&#160;<a class="oldlink" href="/index-projects.html">Projects</a><br/> 
-						<br/>
-					</td>
-					<td valign="top">
-						toc ::<br/>	
-						<xsl:for-each select="chapter">
-						<xsl:variable name="chapid">doc_chap<xsl:number/></xsl:variable>
-						&#160;<a class="oldlink" href="#{$chapid}"><xsl:value-of select="title"/></a><br/>
-						</xsl:for-each>		
-					</td>
-					<td valign="top">
-						summary ::<br/>
-							<font color="#00ff00"><xsl:apply-templates select="abstract"/></font>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3">
-						<xsl:choose>
-						<xsl:when test="/guide/@type='project'">
-							projects
-						</xsl:when>
-						<xsl:otherwise>
-							docs 
-						</xsl:otherwise>
-						</xsl:choose>
-						::
-						<a class="highlight" href="{$mylink}">
-						<xsl:choose>
-						<xsl:when test="/guide/subtitle">
-							<xsl:value-of select="/guide/title"/>: <xsl:value-of select="/guide/subtitle"/>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:value-of select="/guide/title"/>
-						</xsl:otherwise>
-						</xsl:choose>
-						</a>
-					</td>
-				</tr>
-				</table>
+				<p class="menu">
+				<xsl:variable name="mylink"><xsl:value-of select="/guide/@link"/></xsl:variable>
+				main menu ::<br/>
+				&#160;&#160;<a class="oldlink" href="/index.html">About Gentoo Linux</a><br/>
+				&#160;&#160;<a class="oldlink" href="/index-download.html">Download/Install</a><br/> 
+				&#160;&#160;<a class="oldlink" href="http://cvs.gentoo.org/wiki">Dev Wiki</a><br/> 
+				&#160;&#160;<a class="oldlink" href="/index-changelog.html">CVS Changelog</a><br/> 
+				&#160;&#160;<a class="oldlink" href="/index-projects.html">Projects</a><br/> 
+				<br/>
+				<xsl:choose>
+				<xsl:when test="/guide/@type='project'">
+					projects
+				</xsl:when>
+				<xsl:otherwise>
+					docs
+				</xsl:otherwise>
+				</xsl:choose>
+				::<br/>
+				&#160;&#160;<a class="highlight" href="{$mylink}">
+				<xsl:choose>
+				<xsl:when test="subtitle">
+					<xsl:value-of select="title"/>: <xsl:value-of select="subtitle"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="title"/>
+				</xsl:otherwise>
+				</xsl:choose>
+				</a>
+				</p>
 			</td>
 		</tr>
 		<tr>
@@ -99,8 +80,38 @@
 <!--<table border="0" cellspacing="5" cellpadding="0" height="100%" width="100%">-->
 <table border="0" cellspacing="5" cellpadding="0" width="100%">
 <tr><td class="content" valign="top" align="left">
-			<br/>
-			<p class="dochead">
+		<table width="30%" class="infotab" align="right" cellpadding="0" cellspacing="0" border="0">
+		<tr>
+			<td class="infohead" align="center" bgcolor="#7a5ada">About this Document</td>
+		</tr>
+		<tr valign="top" bgcolor="#ddddff">
+			<td class="infotext">
+				<br/>
+				<xsl:if test="abstract">
+					<p class="infosub">Summary:</p>
+					<p class="infolist">
+					<xsl:apply-templates select="abstract"/>
+					</p>
+				<br/>
+				</xsl:if>
+				<p class="infosub">Document Authors:</p>
+				<p class="infolist">
+				<xsl:apply-templates select="author"/>
+				</p>
+				<br/>
+				<p class="infosub">Table of Contents:</p>
+				<ol>
+				<xsl:for-each select="chapter">
+				<xsl:variable name="chapid">doc_chap<xsl:number/></xsl:variable>
+				<li><a href="#{$chapid}"><xsl:value-of select="title"/></a></li>
+				</xsl:for-each>		
+				</ol>
+				<br/>
+				<p class="infosub">Doc Revision <xsl:value-of select="version"/>, <xsl:value-of select="date"/></p>
+                </td>
+		</tr>
+	</table>
+		<p class="dochead">
 			<xsl:choose>
 				<xsl:when test="/guide/subtitle">
 					<xsl:value-of select="/guide/title"/>: <xsl:value-of select="/guide/subtitle"/>
@@ -109,10 +120,6 @@
 					<xsl:value-of select="/guide/title"/>
 				</xsl:otherwise>
 			</xsl:choose>
-			</p>
-		<p>
-			<xsl:apply-templates select="author"/>
-
 		</p>
 <xsl:apply-templates select="chapter"/> 
 <br/>
@@ -203,8 +210,8 @@
 						<p class="infolist"><a href="http://download.sourceforge.net/pub/mirrors/metalab/Linux/distributions/gentoo/">SourceForge mirror</a></p>
 
 						<p class="infosub">User Documentation:</p>
-						<p class="infolist"><font color="#ff0000"><b>New!</b></font><a href="/doc/desktop.html">Gentoo Linux Desktop Guide</a></p>
 						<p class="infolist"><a href="/doc/faq.html">Gentoo Linux FAQ</a></p>
+						<p class="infolist"><a href="/doc/install.html">Gentoo Linux CD Installation Guide</a></p>
 						<p class="infolist"><a href="/doc/portage-user.html">Portage User Guide</a></p>
 						<p class="infolist"><a href="/doc/nvidia_tsg.html">nvidia Troubleshooting Guide</a></p>
 						
@@ -281,16 +288,16 @@
 
 <xsl:template match="chapter">
 	<xsl:variable name="chapid">doc_chap<xsl:number/></xsl:variable>
-	<xsl:choose>
-	<xsl:when test="title">
-		<p class="chaphead"><font class="chapnum"><a name="{$chapid}"><xsl:number/>.</a></font> <xsl:value-of select="title"/></p>
-	</xsl:when>
-	<xsl:otherwise>
-		<xsl:if test="/guide">
+	<xsl:if test="/guide">
+		<xsl:choose>
+		<xsl:when test="title">
+			<p class="chaphead"><font class="chapnum"><a name="{$chapid}"><xsl:number/>.</a></font> <xsl:value-of select="title"/></p>
+		</xsl:when>
+		<xsl:otherwise>
 			<p class="chaphead"><font class="chapnum"><a name="{$chapid}"><xsl:number/>.</a></font></p> 
-		</xsl:if>
-	</xsl:otherwise>
-	</xsl:choose>
+		</xsl:otherwise>
+		</xsl:choose>
+	</xsl:if>
 	<xsl:apply-templates select="section"/>
 </xsl:template>
 
@@ -374,10 +381,6 @@
 
 <xsl:template match="b">
 	<b><xsl:apply-templates /></b>
-</xsl:template>
-
-<xsl:template match="brite">
-	<font color="#ff0000"><b><xsl:apply-templates /></b></font>
 </xsl:template>
 
 <xsl:template match="body">

@@ -2,14 +2,6 @@
 	session_start();
 	mysql_connect( 'localhost', '##USER##', '##PASS##' );
 	mysql_select_db( '##DB##' );
-
-	// tags to allow for output
-	$allow_tags = "<a>,<br>,<b>,<u>";
-
-	if ( !isset($uid) ) {
-		$uid = 0;
-		session_register( 'uid' );
-	}
 ?>
 
 <?php function main_header ( $title = 'Unknown' ) {
@@ -51,7 +43,7 @@ global $uid, $dbusername; ?>
 <?php } # main header ?>
 
 <?php function main_footer () {
-global $uid, $dbusername, $show_privates, $list; ?>
+global $uid, $dbusername, $show_privates; ?>
 	</td>
 	<td width="175" valign="top">
 
@@ -93,12 +85,12 @@ global $uid, $dbusername, $show_privates, $list; ?>
 		<tr>
 			<td bgcolor="white">
 			<ul>
-				<li><a href="index.php?list=by_priority">List by priority</a>
-				<li><a href="index.php?list=by_date">List by date</a>
-				<li><a href="index.php?list=by_developer">List by developer</a>
+				<li><a href="index.php?list=by_priority&show_privates=<?=$show_privates;?>">List by priority</a>
+				<li><a href="index.php?list=by_date&show_privates=<?=$show_privates;?>">List by date</a>
+				<li><a href="index.php?list=by_developer&show_privates=<?=$show_privates;?>">List by developer</a>
 				<li><a href="completed.php">List completed</a>
 				<?php if ( $uid ) { ?>
-					<li><a href="single.php?action=new_todo">Create a new todo</a>
+					<li><a href="editsingle.php?action=new_todo">Create a new todo</a>
 				<?php } ?>
 			</ul>
 
@@ -132,11 +124,7 @@ global $uid, $dbusername, $show_privates, $list; ?>
 
 <?php function print_todo( $title, $tid, $owner, $date, $public, $priority, $longdesc ) {
 	// all args should be passed hot off the database
-	global $list, $uid, $allow_tags;
-
-	// strop unacceptable tags
-	$title = strip_tags( $title, $allow_tags );
-	$longdesc = strip_tags( $longdesc, $allow_tags );
+	global $list, $uid;
 
 	$date = date( "j M Y", $date );
 
@@ -164,6 +152,11 @@ global $uid, $dbusername, $show_privates, $list; ?>
 		$tabcolor = '#fa9779';
 	}
 
+	if ( $owner == $uid )
+		$detailpage = 'editsingle.php';
+	else
+		$detailpage = 'single.php';
+
 	$followups = mysql_query( "select fid from followups where tid=$tid" );
 	$followups = mysql_num_rows( $followups );
 	if ( $followups == 1 )
@@ -182,7 +175,7 @@ global $uid, $dbusername, $show_privates, $list; ?>
 	<tr>
 		<td bgcolor="white" colspan=2>
 			<p style="padding:0;margin:0;"><?=$longdesc;?></p>
-			<p align="right" style="padding:5px 0 0 0;margin:0;"><?php if ( $public ) print 'Posted'; else print 'Owned'; ?> by <a href="devtodo.php?devid=<?=$owner;?>"><b><?=$developer;?></b></a><br><?php if ($uid && $public == 1) { print "<a href=\"index.php?action=grab_todo&tid=$tid\">I'll do it</a> | "; } ?><a href="single.php?tid=<?=$tid;?>">details</a> (<?=$followups;?>)</p>
+			<p align="right" style="padding:5px 0 0 0;margin:0;"><?php if ( $public ) print 'Posted'; else print 'Owned'; ?> by <a href="devtodo.php?devid=<?=$owner;?>"><b><?=$developer;?></b></a><br><?php if ($uid && $public == 1) { print "<a href=\"index.php?action=grab_todo&tid=$tid&list=$list\">I'll do it</a> | "; } ?><a href="<?=$detailpage;?>?tid=<?=$tid;?>">details</a> (<?=$followups;?>)</p>
 		</td>
 	</tr>
 	</table>

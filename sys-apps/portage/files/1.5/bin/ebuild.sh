@@ -211,7 +211,7 @@ dyn_fetch() {
 			do
 				if [ ! -e ${DISTDIR}/${y} ] 
 				then
-			    		if [ "$y" = "${x##*/}" ]
+			    		if [ $y == ${x##*/} ]
 			    		then
 							echo ">>> Trying site ${x}..."
 							eval "${FETCHCOMMAND}"
@@ -637,30 +637,17 @@ then
 	export RDEPEND=${DEPEND}
 fi
 
+
 count=1
 while [ $count -le $# ]
 do
 	eval "myarg=\${${count}}"
 	case $myarg in
 	prerm|postrm|preinst|postinst|config)
-		if [ "$PORTAGE_DEBUG" = "0" ]
-		then
-		  pkg_${myarg}
-		else
-		  set -x
-		  pkg_${myarg}
-		  set +x
-		fi
+		pkg_${myarg}
 	    ;;
 	unpack|compile|help|batchdigest|touch|clean|fetch|digest|pkginfo|pkgloc|unmerge|merge|package|install|rpm)
-	    if [ "$PORTAGE_DEBUG" = "0" ]
-	    then
-	      dyn_${myarg}
-	    else
-	      set -x
-	      dyn_${myarg}
-	      set +x
-	    fi
+	    dyn_${myarg}
 	    ;;
 	depend)
 		echo $DEPEND
