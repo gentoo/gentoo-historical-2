@@ -21,14 +21,9 @@
 ##   End example
 ##
 
-# <tberman@gentoo.org> (24 July 2003)
-# Mask for the under development gtk-sharp split
-dev-dotnet/gtk-sharp-base
-dev-dotnet/glib-sharp
-
-# <robbat2@gentoo.org> (23 July 2003)
-# Need to fix patches
-=dev-db/mysql-4.0.14
+# <carpaski@gentoo.org> (22 Jul 2003)
+# Masking 2.0.48-r6 for heavy+quick testing.
+>=sys-apps/portage-2.0.48-r6
 
 # <caleb@gentoo.org> (20 July 2003)
 # Masked until announcement is made
@@ -59,7 +54,6 @@ net-p2p/gift-cvs
 net-p2p/giftui
 net-p2p/giftcurs
 net-p2p/giftoxic
-net-p2p/giftui-cvs
 
 # <coredumb@gentoo.org> (14 July 2003)
 # Finally a php5 beta :)

@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/bluefish/bluefish-0.10.ebuild,v 1.2 2003/07/25 15:21:02 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/bluefish/bluefish-0.10.ebuild,v 1.1 2003/07/21 10:37:45 raker Exp $
 
 IUSE="nls spell"
 
@@ -12,12 +12,11 @@ LICENSE="GPL-2"
 KEYWORDS="~x86 ~ppc ~sparc"
 SLOT="0"
 
-RDEPEND=">=x11-libs/gtk+-2
+DEPEND=">=x11-libs/gtk+-2
 	dev-libs/libpcre
-	spell? ( app-text/aspell )"
-
-DEPEND="${RDEPEND}
 	dev-util/pkgconfig
+	spell? ( app-text/aspell )"
+RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_compile() {

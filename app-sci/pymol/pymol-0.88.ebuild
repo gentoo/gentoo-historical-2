@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-sci/pymol/pymol-0.88.ebuild,v 1.2 2003/07/24 01:12:59 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-sci/pymol/pymol-0.88.ebuild,v 1.1 2003/06/20 04:53:29 george Exp $
 
 DESCRIPTION="A Python-extensible molecular graphics system."
 SRC_URI="mirror://sourceforge/pymol/${PN}-${PV/./_}-src.tgz"
@@ -8,7 +8,7 @@ HOMEPAGE="http://pymol.sf.net"
 
 LICENSE="PSF-2.2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="dev-lang/python
