@@ -1,9 +1,0 @@
-# ChangeLog for sys-apps/acct
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/acct/ChangeLog,v 1.2 2003/02/12 08:54:31 vapier Exp $
-
-*acct-6.3.5 (30 Oct 2002)
-
-  30 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> :
-  Initial import. Ebuild submitted by Andrwe Minter <gm@masarand.com> 
-  in 6385#.

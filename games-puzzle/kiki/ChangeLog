@@ -1,9 +1,0 @@
-# ChangeLog for games-puzzle/kiki
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/kiki/ChangeLog,v 1.2 2003/09/10 15:46:09 vapier Exp $
-
-*kiki-0.9.0 (05 Aug 2003)
-
-  05 Aug 2003; Michael Sterrett <msterret@gentoo.org> kiki-0.9.0.ebuild:
-  initial commit.  ebuild supplied by Brent Kelly and modified. (bug 25977)
-

@@ -1,9 +1,0 @@
-# ChangeLog for app-text/sgml2x
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/sgml2x/ChangeLog,v 1.4 2003/02/12 05:34:51 vapier Exp $
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*sgml2x-0.11-r1 (18 Jul 2002)
-
-  18 Jul 2002; Daniel Robbins <drobbins@gentoo.org>: Added missing ChangeLog

@@ -1,5 +1,0 @@
-#!/bin/bash
-dir=/opt/kurso
-export LD_LIBRARY_PATH="${dir}/lib:${LD_LIBRARY_PATH}"
-cd ${dir}
-exec ./bin/kurso3 "$@"

@@ -1,7 +1,0 @@
-MD5 56ccdfd24e7498254fd0aab35158f3c0 vyqchat-0.1.1.ebuild 822
-MD5 3e7463ec4a4b4b37bc974940c7e0cab2 vyqchat-0.2.3.ebuild 868
-MD5 054377b3a53b034f928a12b64c444d99 ChangeLog 609
-MD5 44c39c6ad372a8e5a5e7ee3311f703a7 metadata.xml 160
-MD5 26be75128cee034d9b8356e30f45e32e files/digest-vyqchat-0.1.1 65
-MD5 0287c53dce94dacfc511965ed235b5a7 files/digest-vyqchat-0.2.3 65
-MD5 2364595e42a9358d185885b6f050c8d2 files/vyqchat_packet_id.patch 348

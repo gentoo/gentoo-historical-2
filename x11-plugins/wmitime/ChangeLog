@@ -1,9 +1,0 @@
-# ChangeLog for x11-plugins/wmitime
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmitime/ChangeLog,v 1.2 2003/02/12 09:41:39 vapier Exp $
-
-*wmitime-0.3 (04 Oct 2002)
-
-  04 Oct 2002; Nick Hadaway <raker@gentoo.org> wmitime-0.3.ebuild,
-  files/digest-wmitime-0.3, files/makefile.diff :
-  Initial ebuild added to portage.

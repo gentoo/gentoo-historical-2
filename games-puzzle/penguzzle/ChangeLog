@@ -1,8 +1,0 @@
-# ChangeLog for games-puzzle/penguzzle
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/penguzzle/ChangeLog,v 1.2 2003/09/10 15:48:27 vapier Exp $
-
-*penguzzle-1.0 (08 Mar 2003)
-
-  08 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by Brian Dolbec <brian_dolbec@telus.net> #16390.

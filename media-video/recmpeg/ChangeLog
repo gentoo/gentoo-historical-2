@@ -1,9 +1,0 @@
-# ChangeLog for media-video/recmpeg
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/recmpeg/ChangeLog,v 1.4 2003/07/12 21:12:53 aliz Exp $
-
-*recmpeg-1.0.5 (20 Nov 2002)
-
-  20 Nov 2002; phoen][x <phoenix@gentoo.org> recmpeg-1.0.5.ebuild,
-  files/digest-recmpeg-1.0.5, ChangeLog :
-  Initial import.  Ebuild partially submitted by Rigo Ketelings <rigo@home.nl>.

@@ -1,9 +1,0 @@
-# ChangeLog for x11-plugins/wmDownload
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmDownload/ChangeLog,v 1.2 2003/02/12 09:38:12 vapier Exp $
-
-*wmDownload-0.1.2a (04 Oct 2002)
-
-  04 Oct 2002; Nick Hadaway <raker@gentoo.org> wmDownload-0.1.2a.ebuild,
-  files/digest-wmDownload-0.1.2a :
-  Inital add of ebuild to portage.  Closes bug #3342

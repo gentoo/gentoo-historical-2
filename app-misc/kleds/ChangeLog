@@ -1,9 +1,0 @@
-# ChangeLog for app-misc/kleds
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/kleds/ChangeLog,v 1.2 2003/02/12 05:02:19 vapier Exp $
-
-*kleds-0.7.1 (05 Jul 2002)
-
-  05 Jul 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
-
-  User submission by Johannes Findeisen (#4535)

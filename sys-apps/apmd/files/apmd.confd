@@ -1,3 +1,0 @@
-# Config file for /etc/init.d/apmd
-
-#APMD_OPTS="-P /etc/apm/apmd_proxy"

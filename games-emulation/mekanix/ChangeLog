@@ -1,8 +1,0 @@
-# ChangeLog for games-emulation/mekanix
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mekanix/ChangeLog,v 1.2 2003/09/10 15:59:58 vapier Exp $
-
-*mekanix-065 (20 Jul 2003)
-
-  20 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by David Holm <dholm@telia.com> #24817.

@@ -1,6 +1,0 @@
-MD5 7a786f792902253d66cd69ca19bdfb1f ChangeLog 1542
-MD5 c86e57e96f294baaaf1f846ba5674f80 xmovie-1.8-r3.ebuild 769
-MD5 cf124ef026f3d65903363fc207779ae2 xmovie-1.8-r4.ebuild 967
-MD5 acb8578092f8aa9eb217ccfa3bb24dd5 files/digest-xmovie-1.8-r3 63
-MD5 acb8578092f8aa9eb217ccfa3bb24dd5 files/digest-xmovie-1.8-r4 63
-MD5 512cf8d4e2a29820295f602c0289683e files/xmovie-gcc3-gentoo.patch 35110
