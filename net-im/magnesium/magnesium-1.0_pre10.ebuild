@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/magnesium/magnesium-1.0_pre10.ebuild,v 1.1 2003/09/14 21:25:38 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/magnesium/magnesium-1.0_pre10.ebuild,v 1.1 2003/10/08 13:51:57 lanius Exp $
 
 MY_P=${PN}-${PV/1.0_/}
 DESCRIPTION="Curphoo X (Magnesium) is a Yahoo chat client."
