@@ -1,12 +1,12 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/bluej/bluej-1.2.2.ebuild,v 1.4 2003/09/05 12:10:36 msterret Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bluej/bluej-1.3.0.ebuild,v 1.1 2003/10/10 22:48:46 lanius Exp $
 
 inherit java-pkg
 
-IUSE="doc"
+IUSE="doc gnome kde"
 
-MY_P="bluej-122"
+MY_P=`echo ${P}|sed -e 's/\.//g'`
 
 DESCRIPTION="BlueJ is an integrated Java environment specifically designed for introductory teaching."
 SRC_URI="ftp://ftp.bluej.org/pub/bluej/${MY_P}.jar
@@ -16,7 +16,7 @@ HOMEPAGE="http://www.bluej.org"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 DEPEND=">=virtual/jdk-1.4*"
 
@@ -49,5 +49,15 @@ src_install()
 
 	if [ "`use doc`" ]; then
 		dodoc tutorial.pdf manual.pdf
+	fi
+
+	if [ "`use gnome`" ]; then
+		insinto /usr/share/applications
+		doins ${FILESDIR}/bluej.desktop
+	fi
+
+	if [ "`use kde`" ]; then
+		insinto /usr/share/applnk/Development
+		doins ${FILESDIR}/bluej.desktop
 	fi
 }
