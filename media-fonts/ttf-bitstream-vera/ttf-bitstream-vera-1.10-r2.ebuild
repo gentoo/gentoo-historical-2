@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/ttf-bitstream-vera/ttf-bitstream-vera-1.10-r2.ebuild,v 1.1 2003/04/30 12:45:40 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/ttf-bitstream-vera/ttf-bitstream-vera-1.10-r2.ebuild,v 1.1 2003/06/02 13:57:50 seemant Exp $
 
 inherit gnome.org
 
