@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-base/xfce4-base-4.1.99.2.ebuild,v 1.4 2005/01/02 16:15:35 bcowan Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce4-base/xfce4-base-4.1.99.3.ebuild,v 1.1 2005/01/02 16:15:35 bcowan Exp $
 
 DESCRIPTION="Xfce 4 base ebuild"
 HOMEPAGE="http://www.xfce.org/"
@@ -20,7 +20,7 @@ RDEPEND="virtual/x11
 	=xfce-base/libxfcegui4-${PV}
 	=xfce-base/libxfce4mcs-${PV}
 	=xfce-base/xfce-mcs-manager-${PV}
-	=x11-themes/gtk-engines-xfce-2.2.3"
+	=x11-themes/gtk-engines-xfce-2.2.4"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
