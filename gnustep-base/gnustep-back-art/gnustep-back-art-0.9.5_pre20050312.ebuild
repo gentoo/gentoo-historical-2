@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-art/gnustep-back-art-0.9.5_pre20041203.ebuild,v 1.2 2005/01/07 00:27:40 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-art/gnustep-back-art-0.9.5_pre20050312.ebuild,v 1.1 2005/03/17 20:54:20 fafhrd Exp $
 
 ECVS_CVS_COMMAND="cvs -q"
 ECVS_SERVER="savannah.gnu.org:/cvsroot/gnustep"
@@ -37,6 +37,12 @@ RDEPEND="${DEPEND}
 ${DOC_RDEPEND}"
 
 egnustep_install_domain "System"
+
+src_unpack() {
+	cvs_src_unpack ${A}
+	EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/font-make-fix.patch-${PV}
+	cd ${S}
+}
 
 src_compile() {
 	egnustep_env
