@@ -1,9 +1,0 @@
-# ChangeLog for app-sci/phylip
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-sci/phylip/ChangeLog,v 1.2 2004/06/24 22:14:56 agriffis Exp $
-
-*phylip-3.5 (23 Apr 2003)
-
-  23 Apr 2003; Jon Portnoy <avenj@gentoo.org> phylip-3.5.ebuild :
-  Initial import. Ebuild submitted in bug #19856 by Stephen Diener
-  (sediener@unity.ncsu.edu).

@@ -1,7 +1,0 @@
-MD5 5b164fba8b40e54a957887d62322251e libggi-2.0.1.ebuild 1395
-MD5 0ddf375a8dd0c44c3885207fc6e2fe2d ChangeLog 1816
-MD5 fe99b8f14da38a66a4db81733cba96aa libggi-2.0.1-r1.ebuild 1640
-MD5 dccabae951c60ae1cffb9318b96e5e8b files/digest-libggi-2.0.1 65
-MD5 dccabae951c60ae1cffb9318b96e5e8b files/digest-libggi-2.0.1-r1 65
-MD5 0003d0005fedae0068066f6791125cba files/glibc-2.2.2-speed.diff 255
-MD5 ba5500ab4d04f2478eff5056de19fd4e files/libggi-2.0.1-ppc.patch 291

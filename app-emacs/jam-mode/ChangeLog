@@ -1,8 +1,0 @@
-# ChangeLog for app-emacs/jam-mode
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/jam-mode/ChangeLog,v 1.2 2004/06/24 22:16:01 agriffis Exp $
-
-*jam-mode-0.1 (10 Sep 2003)
-
-  10 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> :
-  Initial import.  Ebuild submitted by Jeremy Maitin-Shepard <jbms@attbi.com>.

@@ -1,8 +1,0 @@
-# ChangeLog for dev-libs/DFB++
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/DFB++/ChangeLog,v 1.2 2004/06/24 23:04:45 agriffis Exp $
-
-*DFB++-0.9.20 (12 Mar 2004)
-
-  12 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by Matthias Grimm #40600.

@@ -1,5 +1,0 @@
-USE="arm crypt ncurses readline ssl zlib"
-
-ARCH="arm"
-COMPILER="gcc3"
-ACCEPT_KEYWORDS="arm"

@@ -1,8 +1,0 @@
-# ChangeLog for app-emacs/sml-mode
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/sml-mode/ChangeLog,v 1.2 2004/06/24 22:24:11 agriffis Exp $
-
-*sml-mode-3.9.5 (27 Aug 2003)
-
-  27 Aug 2003; Matthew Kennedy <mkennedy@gentoo.org> :
-  Initial import.  Based on ebuild submitted by Ivan Raikov <raikov@cc.gatech.edu>.

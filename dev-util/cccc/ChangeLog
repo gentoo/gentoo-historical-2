@@ -1,9 +1,0 @@
-# ChangeLog for dev-util/cccc
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cccc/ChangeLog,v 1.4 2004/06/25 02:22:29 agriffis Exp $
-
-*cccc-3.0_pre63 (14 Feb 2003)
-    
-  14 Feb 2003 Luca Barbato <lu_zero@gentoo.org>
-  First commit
-

@@ -1,6 +1,0 @@
-MD5 cdfd2aa5da970724dead18a92aaba35c crypt-cbc-2.08.ebuild 612
-MD5 e3eb818cba8fa8d78ca6d50d8bb5715d crypt-cbc-2.11.ebuild 629
-MD5 1d61afc2e40ac2b8d9a96e92915a942b ChangeLog 810
-MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305
-MD5 fa3fc19345cd6ec2e7eded5284f9db02 files/digest-crypt-cbc-2.08 64
-MD5 f510ce2e66d97d831a409fe7a7846a1d files/digest-crypt-cbc-2.11 65

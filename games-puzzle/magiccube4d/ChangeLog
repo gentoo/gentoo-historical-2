@@ -1,8 +1,0 @@
-# ChangeLog for games-puzzle/magiccube4d
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/magiccube4d/ChangeLog,v 1.3 2004/06/24 23:07:31 agriffis Exp $
-
-*magiccube4d-2.2 (22 Jun 2003)
-
-  22 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by me #22533.

@@ -1,7 +1,0 @@
-MD5 8f7f4a0735df29fa0c05f8ed0a728cc6 gnugk-2.0.6.ebuild 2471
-MD5 cdf64da52c75e9595bb759b4ae39f09b ChangeLog 496
-MD5 44cf247f04cc83413fcb40ed59d0847a metadata.xml 248
-MD5 7c2af84d098f7e49f119f6eb3694b0e7 files/gnugk-2.0.6-gentoo.diff 972
-MD5 bde2e8379cf391b3ffffa57c618f5e40 files/digest-gnugk-2.0.6 60
-MD5 f3d8460682b40c3087b881f275c889e6 files/gnugk.confd 388
-MD5 03fe4eb0065a229db6e6943d22d225df files/gnugk.rc6 529

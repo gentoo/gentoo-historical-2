@@ -1,7 +1,0 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/conserver/files/conserver.confd,v 1.2 2004/02/13 19:06:42 vapier Exp $
-
-## Config file for /etc/init.d/conserver
-
-CONSERVER_OPTS="-d"

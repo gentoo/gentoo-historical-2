@@ -1,9 +1,0 @@
-# ChangeLog for net-misc/bcm570x
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/bcm570x/ChangeLog,v 1.2 2004/06/24 23:36:20 agriffis Exp $
-
-*bcm570x-7.1.22 (08 Apr 2004)
-
-  08 Apr 2004; <coxj@gentoo.org> bcm570x-7.1.22.ebuild:
-  Initial entry for the Broadcom NetXtreme 570x series
-

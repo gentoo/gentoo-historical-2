@@ -1,9 +1,0 @@
-# ChangeLog for media-libs/osalp
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/osalp/ChangeLog,v 1.3 2004/06/24 23:18:37 agriffis Exp $
-
-*osalp-0.7.3 (20 Aug 2002)
-
-  20 Aug 2002; osalp-0.7.3.ebuild :
-
-  Initial ebuild for osalp by Julien PONGE <julien@izforge.com>.

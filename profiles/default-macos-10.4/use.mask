@@ -1,1 +1,0 @@
-# USE flags that don't work on Mac OS X

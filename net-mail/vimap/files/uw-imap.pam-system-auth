@@ -1,6 +1,0 @@
-#%PAM-1.0
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vimap/files/uw-imap.pam-system-auth,v 1.2 2003/05/28 22:12:10 alron Exp $
-auth       required     pam_nologin.so
-auth       required     pam_stack.so service=system-auth
-account    required     pam_stack.so service=system-auth
-session    required     pam_stack.so service=system-auth

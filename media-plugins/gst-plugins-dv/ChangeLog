@@ -1,9 +1,0 @@
-# ChangeLog for media-plugins/gst-plugins-dv
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-dv/ChangeLog,v 1.2 2004/06/24 23:29:08 agriffis Exp $
-
-*gst-plugins-dv-0.6.4 (26 Oct 2003)
-
-  26 Oct 2003; foser <foser@gentoo.org> gst-plugins-dv-0.6.4.ebuild :
-  Initial commit, requested in #31272
-  Added to gnome herd
