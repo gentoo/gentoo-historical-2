@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gwnet/gwnet-0.1_pre20041203.ebuild,v 1.2 2005/01/10 16:28:01 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/easydiff/easydiff-0.3.1_pre20050312.ebuild,v 1.1 2005/03/17 21:00:52 fafhrd Exp $
 
 ECVS_CVS_COMMAND="cvs -q"
 ECVS_SERVER="savannah.gnu.org:/cvsroot/gnustep"
 ECVS_USER="anoncvs"
 ECVS_AUTH="ext"
-ECVS_MODULE="gnustep/usr-apps/gworkspace/${PN/gwn/GWN}"
+ECVS_MODULE="gnustep/dev-apps/${PN/easyd/EasyD}"
 ECVS_CO_OPTS="-P -D ${PV/*_pre}"
 ECVS_UP_OPTS="-dP -D ${PV/*_pre}"
 ECVS_TOP_DIR="${DISTDIR}/cvs-src/savannah.gnu.org-gnustep"
@@ -14,19 +14,17 @@ inherit gnustep cvs
 
 S=${WORKDIR}/${ECVS_MODULE}
 
-DESCRIPTION="A GNUstep network filesystem file browser."
-HOMEPAGE="http://www.gnustep.it/enrico/gworkspace/"
+DESCRIPTION="GNUstep app that lets you easily see the differences between two text files."
+HOMEPAGE="http://www.collaboration-world.com/easydiff/"
 
 KEYWORDS="~x86 ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="${IUSE}"
-# Yes, currently this app does not optional depend on smb, it requires it
-DEPEND="${GS_DEPEND}
-	gnustep-libs/smbkit"
+DEPEND="${GS_DEPEND}"
 RDEPEND="${GS_RDEPEND}
-	gnustep-libs/smbkit"
+	dev-util/cvs"
 
-egnustep_install_domain "System"
+egnustep_install_domain "Local"
 
