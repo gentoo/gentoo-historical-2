@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/i8kutils/i8kutils-1.17.ebuild,v 1.6 2003/06/21 21:19:40 drobbins Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/i8kutils/i8kutils-1.17.ebuild,v 1.1 2004/03/08 05:28:47 latexer Exp $
 
 S=${WORKDIR}/${P}/
 DESCRIPTION="Dell Inspiron and Latitude utilities"
