@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/timidity++/timidity++-2.13.0-r1.ebuild,v 1.9 2004/09/22 21:52:19 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/timidity++/timidity++-2.13.0-r1.ebuild,v 1.10 2004/09/23 21:18:09 eradicator Exp $
 
 inherit gnuconfig
 
@@ -61,7 +61,7 @@ src_compile() {
 	use oggvorbis && audios="${audios},vorbis"
 	use nas && { audios="${audios},nas"; myconf="${myconf} --with-nas-library=/usr/X11R6/lib/libaudio.so"; }
 	use arts && audios="${audios},arts"
-	(! use sparc) && use jack && audios="${audios},jack"
+	use jack && audios="${audios},jack"
 	(use x86 || use sparc) && use portaudio && audios="${audios},portaudio"
 
 	use alsa \
