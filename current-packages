@@ -199,7 +199,7 @@
 ./kde-base/kdesupport/kdesupport-2.0.ebuild
 ./kde-base/qt/qt-x11-2.2.1.ebuild
 ./media-gfx/autotrace/autotrace-0.24a.ebuild
-./media-gfx/aview/aview-1.2.ebuild
+./media-gfx/aview/aview-1.2-r2.ebuild
 ./media-gfx/blender/blender-2.04.ebuild
 #./media-gfx/blender/blender-static-2.04.ebuild
 ./media-gfx/gimp-print/gimp-print-4.0.1.ebuild
@@ -440,6 +440,7 @@
 ./x11-wm/enlightenment/enlightenment-0.16.4-r1.ebuild
 ./x11-wm/openmotif/openmotif-MLI-2.1.30.ebuild
 ./x11-wm/sawfish/sawfish-0.32.ebuild
+
 
 
 
