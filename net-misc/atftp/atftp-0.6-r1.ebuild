@@ -1,24 +1,22 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/atftp/atftp-0.6.ebuild,v 1.2 2003/02/13 14:02:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/atftp/atftp-0.6-r1.ebuild,v 1.1 2003/08/28 22:58:27 mholzer Exp $
 
 DESCRIPTION="Advanced TFTP implementation client/server"
 HOMEPAGE="ftp://ftp.mamalinux.com/pub/atftp/"
 LICENSE="GPL-2"
-DEPEND=""
+DEPEND="tcpd? ( sys-apps/tcp-wrappers )"
 SLOT="0"
 KEYWORDS="x86"
 SRC_URI="ftp://ftp.mamalinux.com/pub/atftp/${P}.tar.gz"
 S=${WORKDIR}/${P}
 
-src_unpack () {
-	unpack ${A}
-	cd ${S}
-
-}
-
 src_compile () {
-	econf || die "./configure failed"
+	myconf=""
+	use tcpd && myconf="${myconf} --enable-libwrap" \
+		|| myconf="${myconf} --disable-libwrap"
+
+	econf ${myconf} || die "./configure failed"
 
 	cp Makefile Makefile.orig
 	sed "s:CFLAGS = -g -Wall -D_REENTRANT -O2:CFLAGS = -g -Wall -D_REENTRANT ${CFLAGS}:" Makefile.orig >Makefile
@@ -29,3 +27,4 @@ src_compile () {
 src_install () {
 	einstall || die "Installation failed"
 }
+
