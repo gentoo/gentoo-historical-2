@@ -21,7 +21,7 @@ MD5 1c0b2aaf218be67efc82bcb455e713ec files/0.9.10/fluxbox-0.9.10-my-term-is-bett
 MD5 48b051c794986e9acb73631e0642e2d9 files/0.9.10/fluxbox-0.9.10-super-x-voodoo-two.patch 3203
 MD5 61d8fb7f72eb34b75cbf5c2e9b291fa3 files/0.9.10/fluxbox-0.9.10-misc-updates.patch 13915
 MD5 b5f651453c6bbf6089cf65ec5cd83722 files/0.9.10/fluxbox-0.9.10-make-pretty-eye-candy-work.patch 563
-MD5 62f4dad35c8868b0c158881095512cc6 files/0.9.10/fluxbox-0.9.10-fancy-gentoo-styledirs.patch 946
+MD5 05e049a3f92497ddb1cf615abfdc5f35 files/0.9.10/fluxbox-0.9.10-fancy-gentoo-styledirs.patch 946
 MD5 ee36523cd5cf3281d0261244260840c9 files/0.9.10/fluxbox-0.9.10-amd64-font-fix.patch 774
 MD5 9f6f105cbf9396f450e77dbf885b0a02 files/0.9.10/styles-menu-commonbox 127
 MD5 a39d5b26fb1695fd9264cca078ad0d58 files/0.9.10/fluxbox-0.9.10-super-x-voodoo.patch 7008
@@ -34,7 +34,7 @@ MD5 7295edfc76f1cca87164e419e2d3b637 files/0.9.10/fluxbox-0.9.10-menu-include-di
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.2.4 (GNU/Linux)
 
-iD8DBQFBSJ8mLLFUmVNQ7rkRAlPYAJ4/+XxIIOAlXUxE/tX2maz9LlmuNQCgt/34
-UXcT2wiEov/z9/a/rsT+fa8=
-=MACy
+iD8DBQFBSLQVLLFUmVNQ7rkRAlu3AJ9CGC0Q8cQqr0b72w4ret4Kxp9TYgCgyDh8
+8iuDwgWjVdC71cOuLQTXS4g=
+=qPFf
 -----END PGP SIGNATURE-----
