@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/libdvb/libdvb-0.2.1.ebuild,v 1.3 2003/03/21 15:45:05 lordvan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvb/libdvb-0.2.1.ebuild,v 1.1 2003/03/21 17:43:02 mholzer Exp $
 
 DESCRIPTION="mpegtools package for manipulation of various MPEG file formats"
 HOMEPAGE="http://www.metzlerbros.org/dvb/"
