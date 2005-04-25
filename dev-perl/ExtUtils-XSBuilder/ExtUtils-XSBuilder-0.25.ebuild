@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-XSBuilder/ExtUtils-XSBuilder-0.25.ebuild,v 1.3 2004/10/16 23:57:21 rac Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-XSBuilder/ExtUtils-XSBuilder-0.25.ebuild,v 1.4 2005/04/25 15:09:54 mcummings Exp $
 
 inherit perl-module
 
 DESCRIPTION="Modules to parse C header files and create XS glue code."
-SRC_URI="http://cpan.org/CPAN/authors/id/G/GR/GRICHTER/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/G/GR/GRICHTER/${P}.tar.gz"
 HOMEPAGE="http://cpan.org/CPAN/authors/id/G/GR/GRICHTER/${P}.readme"
 IUSE=""
 SLOT="0"
