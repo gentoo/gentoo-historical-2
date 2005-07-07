@@ -1,40 +1,32 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/rtorrent/rtorrent-0.2.3.ebuild,v 1.3 2005/06/15 21:38:15 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libtorrent/libtorrent-0.6.7.ebuild,v 1.1 2005/07/07 01:00:22 flameeyes Exp $
 
 inherit eutils
 
-DESCRIPTION="BitTorrent Client using libtorrent"
+DESCRIPTION="LibTorrent is a BitTorrent library written in C++ for *nix."
 HOMEPAGE="http://libtorrent.rakshasa.no/"
 SRC_URI="http://libtorrent.rakshasa.no/downloads/${P}.tar.gz"
-
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~amd64"
+
 IUSE="debug"
 
-DEPEND="~net-libs/libtorrent-0.6.3
-	>=dev-libs/libsigc++-2.0
-	>=net-misc/curl-7.12
-	sys-libs/ncurses"
+RDEPEND=">=dev-libs/libsigc++-2"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/${P}-fix.patch
-}
+DEPEND="${RDEPEND}
+	>=dev-util/pkgconfig-0.11"
 
 src_compile() {
 	econf \
 		$(use_enable debug) \
 		--disable-dependency-tracking \
 		|| die "econf failed"
-
 	emake || die "emake failed"
 }
 
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS README TODO
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }
