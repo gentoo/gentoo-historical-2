@@ -1,6 +1,39 @@
 # ChangeLog for x11-misc/xrmap
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrmap/ChangeLog,v 1.1 2004/03/06 02:31:44 pyrania Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrmap/ChangeLog,v 1.1.1.1 2005/11/30 09:40:21 chriswhite Exp $
+
+*xrmap-2.32 (01 Nov 2005)
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/xrmap-2.32-Makefile.kit.patch, xrmap-2.29.ebuild,
+  xrmap-2.30.ebuild, +xrmap-2.32.ebuild:
+  Fix dodoc, version bump.
+
+*xrmap-2.30 (15 Jun 2005)
+
+  15 Jun 2005; Jonathan Smith <smithj@gentoo.org> +xrmap-2.30.ebuild:
+  version bump for #71873
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> xrmap-2.29.ebuild:
+  mark ~ppc
+
+  04 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> xrmap-2.29.ebuild:
+  added ~amd64 to KEYWORDS. fixes #87862
+
+  27 Aug 2004; <pyrania@gentoo.org> +metadata.xml, xrmap-2.29.ebuild:
+  Fixing bug #56225. Thanks to James Leddy and Alexandre Veyrenc.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> xrmap-2.10.ebuild,
+  xrmap-2.29.ebuild:
+  Trimmed trailing whitespace.
+
+*xrmap-2.29 (03 Jul 2004)
+
+  03 Jul 2004; <pyrania@gentoo.org> +xrmap-2.29.ebuild:
+  Version bump. Closing bug #47525.
+
+  19 Jun 2004; <pyrania@gentoo.org> xrmap-2.10.ebuild:
+  Stable on x86.
 
 *xrmap-2.10 (06 Mar 2004)
 

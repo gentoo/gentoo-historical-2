@@ -1,6 +1,21 @@
-# ChangeLog for app-arch/kdar
+# ChangeLog for app-backup/kdar
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/kdar/ChangeLog,v 1.1 2005/07/04 07:06:11 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/kdar/ChangeLog,v 1.1.1.1 2005/11/30 09:42:43 chriswhite Exp $
+
+*kdar-2.0.7 (12 Oct 2005)
+
+  12 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> kdar-2.0.6.ebuild,
+  +kdar-2.0.7.ebuild:
+  Version bumped. Bug 108902.
+
+*kdar-2.0.6 (26 Aug 2005)
+
+  26 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> +kdar-2.0.6.ebuild:
+  Version bumped. Bug 102651.
+
+  04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> kdar-2.0.4.ebuild,
+  kdar-2.0.5.ebuild:
+  Moved app-arch/dar to app-backup/dar (Missed by epkgmove).
 
   04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
   +kdar-2.0.4.ebuild, +kdar-2.0.5.ebuild:

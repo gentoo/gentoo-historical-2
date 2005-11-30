@@ -1,28 +1,34 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmcal/libmcal-0.7-r2.ebuild,v 1.1 2004/05/20 06:22:16 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmcal/libmcal-0.7-r2.ebuild,v 1.1.1.1 2005/11/30 09:41:44 chriswhite Exp $
 
-DESCRIPTION="Modular Calendar Access Libary"
-HOMEPAGE="http://mcal.chek.com/"
+inherit eutils
+
 DRIVERS="mcaldrivers-0.9"
 SRC_URI_BASE="mirror://sourceforge/libmcal"
+DESCRIPTION="Modular Calendar Access Library"
+HOMEPAGE="http://mcal.chek.com/"
 SRC_URI="${SRC_URI_BASE}/${P}.tar.gz ${SRC_URI_BASE}/${DRIVERS}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~amd64 ~ia64 ~s390"
+KEYWORDS="x86 ~ppc ~sparc ~mips ~alpha arm ~hppa ~amd64 ~ia64 ~s390"
 IUSE="pam"
+
 DEPEND="pam? ( sys-libs/pam )"
+
 S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-fpic.patch
 	mv ${S}/../mcal-drivers/* ${S}/
 	einfo "Using /var/spool/calendar instead of /var/calendar"
 	for i in FAQ-MCAL HOW-TO-MCAL mstore/mstore.c mstore/README mstore/Changelog; do
 		sed -e 's|/var/calendar|/var/spool/calendar|g' -i ${i}
 	done
+	cd ${S}
+	epatch ${FILESDIR}/${P}-fpic.patch
 }
 
 src_compile() {
@@ -57,4 +63,3 @@ pkg_postinst() {
 	# enforce perms
 	chmod 1777 ${ROOT}/var/spool/calendar
 }
-

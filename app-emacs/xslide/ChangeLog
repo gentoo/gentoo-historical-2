@@ -1,6 +1,28 @@
 # ChangeLog for app-emacs/xslide
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/xslide/ChangeLog,v 1.1 2002/11/01 02:52:02 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/xslide/ChangeLog,v 1.1.1.1 2005/11/30 09:41:18 chriswhite Exp $
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> xslide-0.2.2.ebuild:
+  Mark 0.2.2 stable on alpha
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> xslide-0.2.2.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  02 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> files/50xslide-gentoo.el:
+  Do not set xsl-mode for .forward; bug #97601. Thanks to Matsui Tetsushi
+  <VED03370@nifty.ne.jp>.
+
+  03 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> xslide-0.2.2.ebuild,
+  xslide-0.2.ebuild:
+  Added app-arch/unzip to DEPEND; bug #69831.
+
+  14 Mar 2004; David Holm <dholm@gentoo.org> xslide-0.2.2.ebuild:
+  Added to ~ppc.
+
+*xslide-0.2.2 (10 Sep 2003)
+
+  10 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> xslide-0.2.2.ebuild:
+  minor version update. resolves bug 27641
 
 *xslide-0.2 (31 Oct 2002)
 

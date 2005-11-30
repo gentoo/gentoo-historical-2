@@ -1,5 +1,5 @@
---- log4c-1.0.11/doc/Makefile.in.orig	2004-08-11 22:24:32.497489472 +0930
-+++ log4c-1.0.11/doc/Makefile.in	2004-08-11 22:24:59.267419824 +0930
+--- doc/Makefile.in.orig	2003-09-13 06:31:33.000000000 +0930
++++ doc/Makefile.in	2004-08-12 16:53:59.487768752 +0930
 @@ -254,7 +254,7 @@
  		echo "$(INSTALL_DATA) $$i $(DESTDIR)$(docdir)"; \
  		$(INSTALL_DATA) $$i $(DESTDIR)$(docdir); \

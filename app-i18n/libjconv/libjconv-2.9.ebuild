@@ -1,11 +1,17 @@
-S=${WORKDIR}/${P}
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/libjconv/libjconv-2.9.ebuild,v 1.1.1.1 2005/11/30 09:40:17 chriswhite Exp $
+
 DESCRIPTION="A library for converting between kanji encodings"
-SRC_URI="http://ghost.math.sci.hokudai.ac.jp/misc/${PN}/${P}.tar.gz"
 HOMEPAGE="http://ghost.math.sci.hokudai.ac.jp/misc/${PN}"
-LICENSE="LGPL"
-KEYWORDS="~x86"
-SLOT=0
-DEPEND="virtual/glibc"
+SRC_URI="http://ghost.math.sci.hokudai.ac.jp/misc/${PN}/${P}.tar.gz"
+
+LICENSE="LGPL-2"
+IUSE=""
+KEYWORDS="x86"
+SLOT="0"
+
+DEPEND="virtual/libc"
 
 src_compile() {
 	emake || die

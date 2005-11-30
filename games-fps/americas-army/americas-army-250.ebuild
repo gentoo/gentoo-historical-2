@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/americas-army/americas-army-250.ebuild,v 1.1 2005/10/30 18:12:44 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/americas-army/americas-army-250.ebuild,v 1.1.1.1 2005/11/30 09:39:48 chriswhite Exp $
 
 inherit eutils games
 
@@ -16,19 +16,19 @@ SRC_URI="http://treefort.icculus.org/armyops/${MY_P}
 
 LICENSE="Army-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 RESTRICT="nostrip nomirror"
 
 IUSE="opengl dedicated"
 
-DEPEND="virtual/libc
+DEPEND="sys-libs/glibc
 	app-arch/unzip"
-RDEPEND="virtual/libc
+RDEPEND="sys-libs/glibc
 	opengl? ( virtual/opengl )
 	amd64? ( app-emulation/emul-linux-x86-xlibs
-		app-emulation/emul-linux-x86-compat
-		|| ( >=media-video/nvidia-glx-1.0.6629-r3
-			>=media-video/ati-drivers-8.8.25-r1 ) )
+		opengl? ( app-emulation/emul-linux-x86-compat
+			|| ( >=media-video/nvidia-glx-1.0.6629-r3
+				>=x11-drivers/ati-drivers-8.8.25-r1 ) ) )
 	dedicated? ( app-misc/screen )"
 
 S=${WORKDIR}
@@ -62,7 +62,7 @@ src_install() {
 	newicon ArmyOps.xpm armyops.xpm || die "doins failed"
 	exeinto ${dir}
 	doexe bin/armyops || die "doexe failed"
-	fperms ug+x ${dir}/System/bp/pbweb.x86
+	fperms ug+x ${dir}/System/pb/pbweb.x86
 
 	if use dedicated; then
 		newinitd ${S}/armyops-ded.rc armyops-ded

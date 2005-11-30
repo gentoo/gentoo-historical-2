@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/uf-view/uf-view-2.4.ebuild,v 1.1 2004/07/03 13:28:56 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/uf-view/uf-view-2.4.ebuild,v 1.1.1.1 2005/11/30 09:40:24 chriswhite Exp $
 
 inherit gnome2
 
@@ -10,13 +10,14 @@ SRC_URI="http://www.hadess.net/files/software/uf-view/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2.0
 	>=x11-libs/gtk+-2
 	>=gnome-base/libgnomeui-2
-	>=gnome-base/libglade-2"
+	>=gnome-base/libglade-2
+	>=gnome-base/gnome-desktop-2"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"

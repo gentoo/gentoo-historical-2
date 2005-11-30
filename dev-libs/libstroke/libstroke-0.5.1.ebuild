@@ -1,26 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libstroke/libstroke-0.5.1.ebuild,v 1.1 2003/06/25 20:31:57 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libstroke/libstroke-0.5.1.ebuild,v 1.1.1.1 2005/11/30 09:41:52 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="A Stroke and Guesture recognition Library"
-SRC_URI="http://www.etla.net/${PN}/${P}.tar.gz"
-HOMEPAGE="http://www.etla.net/libstroke"
+inherit eutils
 
-SLOT="0"
+DESCRIPTION="A Stroke and Gesture recognition Library"
+HOMEPAGE="http://www.etla.net/libstroke/"
+SRC_URI="http://www.etla.net/libstroke/${P}.tar.gz"
+
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~alpha ~ppc"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
+IUSE=""
 
-DEPEND=">=sys-libs/glibc-2.1.3
-	>=x11-libs/gtk+-1.2.10
-	>=x11-base/xfree-4.0.3"
+DEPEND="virtual/libc
+	=x11-libs/gtk+-1*
+	virtual/x11"
 
-src_compile() {
-	econf || die
-	emake || die
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${P}-m4_syntax.patch
 }
 
 src_install () {
 	make DESTDIR=${D} install || die
-	dodoc COPYING COPYRIGHT CREDITS ChangeLog README 
+	dodoc CREDITS ChangeLog README{,.libgstroke}
 }

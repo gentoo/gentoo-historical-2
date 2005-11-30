@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/linuxwacom/linuxwacom-0.6.9.ebuild,v 1.1 2005/08/09 00:48:36 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/linuxwacom/linuxwacom-0.6.9.ebuild,v 1.1.1.1 2005/11/30 09:40:43 chriswhite Exp $
 
 IUSE="dlloader gtk gtk2 tcltk sdk usb"
 
-inherit eutils toolchain-funcs
+inherit multilib eutils
 
 DESCRIPTION="Input driver for Wacom tablets and drawing devices"
 HOMEPAGE="http://linuxwacom.sourceforge.net/"
@@ -23,16 +23,13 @@ RDEPEND="virtual/x11
 	sys-libs/ncurses"
 
 DEPEND="${RDEPEND}
-	sdk? ( sys-devel/libtool 
-	       =sys-devel/automake-1.6*
-	       >=sys-devel/autoconf-2.57 )
 	dev-util/pkgconfig
 	usb? ( >=sys-kernel/linux-headers-2.6 )
 	>=sys-apps/sed-4"
 
 pkg_setup() {
 	if use sdk; then
-		if ! built_with_use xorg-x11 sdk
+		if ! built_with_use x11-base/xorg-x11 sdk
 		then
 			eerror "This package builds against the X.Org SDK, and therefore requires"
 			eerror "that you have emerged xorg-x11 with the sdk USE flag enabled."
@@ -51,17 +48,6 @@ src_unpack() {
 
 	if use sdk; then
 		cd ${S}
-
-		cp configure.in configure.in.orig
-
-		epatch ${FILESDIR}/${PN}-0.6.9-dlloader.patch
-		export WANT_AUTOMAKE=1.6
-		export WANT_AUTOCONF=2.5
-		libtoolize --force --copy || die
-		aclocal || die
-		automake -a -f -c || die
-		autoheader || die
-		autoconf || die
 
 		# Simple fixes to configure to check the actual location of the XFree86 SDK
 		# No need to check if just building userland tools

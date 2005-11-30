@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ffcall/ffcall-1.9.ebuild,v 1.1 2004/04/26 13:33:36 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ffcall/ffcall-1.9.ebuild,v 1.1.1.1 2005/11/30 09:41:57 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
 DESCRIPTION="foreign function call libraries"
 HOMEPAGE="http://www.gnu.org/directory/ffcall.html"
@@ -11,11 +11,12 @@ SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/libs/${P}.tar.gz"
 # "Ffcall is under GNU GPL. As a special exception, if used in GNUstep
 # or in derivate works of GNUstep, the included parts of ffcall are
 # under GNU LGPL." -ffcall author
-LICENSE="GPL-2 | LGPL-2"
+LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
 KEYWORDS="~x86 ~sparc ~hppa ~alpha ~ppc"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
 	# Because CHOST is set to (for example)

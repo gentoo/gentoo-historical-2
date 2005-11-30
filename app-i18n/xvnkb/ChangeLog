@@ -1,6 +1,24 @@
 # ChangeLog for app-i18n/xvnkb
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/xvnkb/ChangeLog,v 1.1 2004/04/29 17:06:34 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/xvnkb/ChangeLog,v 1.1.1.1 2005/11/30 09:40:09 chriswhite Exp $
+
+*xvnkb-0.2.8a-r1 (04 May 2005)
+
+  04 May 2005; <pclouds@gentoo.org> +files/0.2.8a-putenv.patch,
+  xvnkb-0.2.8a.ebuild, +xvnkb-0.2.8a-r1.ebuild:
+  Patch to prevent #91431
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> xvnkb-0.2.8a.ebuild:
+  Stable on ppc.
+
+  04 Sep 2004; <pclouds@gentoo.org> xvnkb-0.2.8a.ebuild:
+  Stable on x86
+
+  28 Jun 2004; <pclouds@gentoo.org> metadata.xml, xvnkb-0.2.8a.ebuild:
+  Add use flag spell, edit some info of mine in metadata.xml
+
+  29 Apr 2004; David Holm <dholm@gentoo.org> xvnkb-0.2.8a.ebuild:
+  Added to ~ppc.
 
 *xvnkb-0.2.8a (30 Apr 2004)
 

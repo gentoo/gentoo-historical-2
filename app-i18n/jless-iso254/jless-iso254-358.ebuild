@@ -1,50 +1,61 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/jless-iso254/jless-iso254-358.ebuild,v 1.1 2002/07/09 13:57:45 stubear Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/jless-iso254/jless-iso254-358.ebuild,v 1.1.1.1 2005/11/30 09:40:05 chriswhite Exp $
 
-KEYWORDS="x86"
-A=less-${PV}.tar.gz
-S=${WORKDIR}/less-${PV}
-DESCRIPTION="Japanese enabled pager -- less-iso254"
+inherit eutils
 
-SRC_URI="ftp://ftp.gnu.org/pub/gnu/less/less-${PV}.tar.gz
-	http://www.io.com/~kazushi/less/less-358-iso254.patch.gz"
-HOMEPAGE="http://www.io.com/~kazushi/less/"
-DEPEND="virtual/glibc
-	>=sys-libs/ncurses-5.2"
-RDEPEND="${DEPEND}"
-LICENSE="GPL"
+LESS_P="less-${PV}"
+
+DESCRIPTION="Jam less is an enhancement of less which supports multibyte character"
+HOMEPAGE="http://www.flash.net/~marknu/less/ http://www.io.com/~kazushi/less/"
+SRC_URI="mirror://gnu/less/${LESS_P}.tar.gz
+	http://www.io.com/~kazushi/less/${LESS_P}-iso254.patch.gz"
+
+LICENSE="BSD"
 SLOT="0"
+KEYWORDS="x86 ppc sparc alpha ppc64"
+IUSE=""
 
+DEPEND="virtual/libc
+	>=sys-libs/ncurses-5.2"
+
+S=${WORKDIR}/${LESS_P}
 
 src_unpack() {
-	unpack ${A}
+	unpack ${LESS_P}.tar.gz
 	cd ${S}
-	zcat ${DISTDIR}/less-${PV}-iso254.patch | \
-		patch -s -p1 || die "Patch failed"
+	epatch ${DISTDIR}/${LESS_P}-iso254.patch.gz
 }
 
 src_compile() {
-	cd ${S}
-
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
+	econf \
 		--without-cs-regex \
+		--with-regex=auto \
 		--enable-msb \
 		--enable-jisx0213 \
-		--with-regex=auto \
-		--with-editor=/usr/bin/nano || die "Configure failed"
+		--with-editor=${EDITOR} \
+		|| die
 
-	emake || die "Make failed"
+	emake || die
 }
 
 src_install() {
-	make prefix=${D}/usr					\
-	     binprefix=j					\
-	     manprefix=j install			||	\
-	     die "Install failed"
-	dodoc COPYING LICENSE NEWS README README.iso README.iso.jp
-	exeinto /usr/bin
-	newexe ${FILESDIR}/lesspipe.sh-r1 lesspipe.sh
+	einstall binprefix=j manprefix=j || die
+
+	newbin ${FILESDIR}/lesspipe.sh-r1 jlesspipe.sh
+	if [ ! -f ${ROOT}/usr/bin/lesspipe.sh ] ; then
+		dosym /usr/bin/jlesspipe.sh /usr/bin/lesspipe.sh
+	fi
+
+	insinto /etc/env.d
+	doins ${FILESDIR}/70jless
+
+	dodoc NEWS README*
+}
+
+pkg_postinst() {
+	# for backward compatibility
+	if [ ! -f ${ROOT}/usr/bin/lesspipe.sh ] ; then
+		ln -s /usr/bin/jlesspipe.sh ${ROOT}/usr/bin/lesspipe.sh
+	fi
 }

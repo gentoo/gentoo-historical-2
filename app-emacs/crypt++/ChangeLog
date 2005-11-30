@@ -1,6 +1,12 @@
 # ChangeLog for app-emacs/crypt++
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/crypt++/ChangeLog,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/crypt++/ChangeLog,v 1.1.1.1 2005/11/30 09:41:21 chriswhite Exp $
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> crypt++-2.91.ebuild:
+  Marked ~ppc.
+
+  10 May 2004; Jason Wever <weeve@gentoo.org> crypt++-2.91.ebuild:
+  Added ~sparc keyword to help resolve bug #50695.
 
 *crypt++-2.91 (31 Oct 2002)
 

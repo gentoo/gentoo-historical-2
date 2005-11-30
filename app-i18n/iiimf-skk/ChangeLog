@@ -1,6 +1,18 @@
 # ChangeLog for app-i18n/iiimf-skk
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/iiimf-skk/ChangeLog,v 1.1 2004/09/14 08:02:52 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/iiimf-skk/ChangeLog,v 1.1.1.1 2005/11/30 09:40:02 chriswhite Exp $
+
+*iiimf-skk-0.1.22.95-r1 (25 Sep 2005)
+
+  25 Sep 2005; MATSUU Takuto <matsuu@gentoo.org>
+  -iiimf-skk-0.1.22.95.ebuild, +iiimf-skk-0.1.22.95-r1.ebuild:
+  depricated gtk2 USE flag. Bug #106560.
+
+  10 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> iiimf-skk-0.1.22.95.ebuild:
+  Fixed compilation if canna is not installed (and USE="-canna"); bug #70578.
+
+  14 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> iiimf-skk-0.1.22.95.ebuild:
+  Added einfos to tell how to use the module.
 
 *iiimf-skk-0.1.22.95 (14 Sep 2004)
 

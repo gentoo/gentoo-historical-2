@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-zh_CN/man-pages-zh_CN-1.5.ebuild,v 1.1 2005/09/02 04:26:59 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-zh_CN/man-pages-zh_CN-1.5.ebuild,v 1.1.1.1 2005/11/30 09:40:14 chriswhite Exp $
 
 DESCRIPTION="A somewhat comprehensive collection of Chinese Linux man pages"
 HOMEPAGE="http://cmpp.linuxforum.net/"

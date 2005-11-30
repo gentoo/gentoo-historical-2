@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/jfbterm/jfbterm-0.4.6.ebuild,v 1.1 2004/05/30 06:16:48 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/jfbterm/jfbterm-0.4.6.ebuild,v 1.1.1.1 2005/11/30 09:40:04 chriswhite Exp $
 
 inherit flag-o-matic
 
@@ -10,14 +10,15 @@ SRC_URI="mirror://sourceforge.jp/${PN}/9710/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ppc sparc ppc64"
+IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-apps/sed-4
 	>=sys-devel/autoconf-2.58
 	sys-devel/automake
 	sys-libs/ncurses"
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
 
 src_compile() {
 	replace-flags -march=pentium3 -mcpu=pentium3
@@ -32,7 +33,7 @@ src_compile() {
 
 src_install() {
 	dodir /etc /usr/share/fonts/jfbterm
-	einstall || die
+	make DESTDIR=${D} install || die
 
 	dodir /usr/share/terminfo
 	tic terminfo.jfbterm -o${D}/usr/share/terminfo || die

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/periodic-calendar/periodic-calendar-1.3.ebuild,v 1.1 2005/06/18 17:15:17 lisa Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/periodic-calendar/periodic-calendar-1.3.ebuild,v 1.1.1.1 2005/11/30 09:40:37 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/linuxorg/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.1.0

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtar/libtar-1.2.11-r1.ebuild,v 1.1 2005/03/01 00:00:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtar/libtar-1.2.11-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:16 chriswhite Exp $
 
 inherit eutils
 

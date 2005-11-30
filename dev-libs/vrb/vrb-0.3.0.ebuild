@@ -1,30 +1,28 @@
-# Copyright 2002 Johannes Findeisen <you@hanez.org>
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/vrb/vrb-0.3.0.ebuild,v 1.1 2002/07/12 20:11:20 agenkin Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vrb/vrb-0.3.0.ebuild,v 1.1.1.1 2005/11/30 09:41:45 chriswhite Exp $
 
-DESCRIPTION="The VRB library is a virtual ring buffer"
+DESCRIPTION="library for a virtual ring buffer"
 HOMEPAGE="http://phil.ipal.org/freeware/vrb/"
-LICENSE="LGPL-2.1"
-
-DEPEND="virtual/glibc"
-
 SRC_URI="http://phil.ipal.org/freeware/vrb/${P}.tar.gz"
-S="${WORKDIR}/${P}"
+
+LICENSE="LGPL-2.1"
+SLOT="0"
+KEYWORDS="x86 sparc"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_compile() {
+	sed -i "s/copts=\"-pipe -O2\"/copts=\"${CFLAGS}\"/g" Configure
 
-	sed -e "s/copts=\"-pipe -O2\"/copts=\"${CFLAGS}\"/g" \
-                < Configure > Configure.hacked
-	cp Configure.hacked Configure
-		
 	./Configure 						\
 		--prefix=/usr || die "./Configure failed"
 
 	make || die "emake failed"
 }
 
-src_install () {
-
+src_install() {
 	insinto /usr/include/libvrb/
 	doins include/vrb.h
 
@@ -35,5 +33,5 @@ src_install () {
 
 	dobin bin/iobuffer
 
-	dodoc INSTALL LICENSE README
+	dodoc README
 }

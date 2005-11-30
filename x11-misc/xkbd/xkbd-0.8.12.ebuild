@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xkbd/xkbd-0.8.12.ebuild,v 1.1 2003/11/25 05:06:32 abhishek Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xkbd/xkbd-0.8.12.ebuild,v 1.1.1.1 2005/11/30 09:40:49 chriswhite Exp $
 
 DESCRIPTION="Xkbd - onscreen soft keyboard for X11"
 HOMEPAGE="http://handhelds.org/~mallum/xkbd/"
@@ -9,7 +9,7 @@ SRC_URI="http://handhelds.org/~mallum/xkbd/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 IUSE="doc debug"
 
@@ -21,26 +21,22 @@ DEPEND="sys-devel/libtool
 	sys-libs/zlib
 	doc? ( app-text/docbook-sgml-utils )"
 
-#RDEPEND=""
-
-S=${WORKDIR}/${P}
-
 src_compile() {
 	econf\
-	`use_enable debug`
+	`use_enable debug` || die "econf failed"
 
 	emake || die
 
-	if [ `use doc` ]; then
+	if use doc; then
 		docbook2html README
 	fi
 }
 
 src_install() {
 	einstall || die
-	dodoc AUTHORS COPYING NEWS README
+	dodoc AUTHORS NEWS README
 
-	if [ `use doc` ]; then
+	if use doc; then
 		insinto /usr/share/doc/${PF}/html
 		doins *.html
 	fi

@@ -1,13 +1,19 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xkbdata/xkbdata-0.99.0.ebuild,v 1.1 2005/08/08 05:09:33 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xkbdata/xkbdata-0.99.0.ebuild,v 1.1.1.1 2005/11/30 09:40:38 chriswhite Exp $
 
 # Must be before x-modular eclass is inherited
 #SNAPSHOT="yes"
 
-inherit x-modular
+inherit x-modular multilib
 
 DESCRIPTION="X.Org xkbdata data"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~arm ~mips ~ppc ~s390 ~sh ~sparc ~x86"
 RDEPEND="x11-apps/xkbcomp"
 DEPEND="${RDEPEND}"
+
+src_install() {
+	x-modular_src_install
+	keepdir /var/lib/xkb
+	dosym ../../../../var/lib/xkb /usr/$(get_libdir)/X11/xkb/compiled
+}

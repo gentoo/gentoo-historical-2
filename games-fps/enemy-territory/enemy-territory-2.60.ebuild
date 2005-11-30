@@ -1,23 +1,24 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory/enemy-territory-2.60.ebuild,v 1.1 2005/03/22 17:48:03 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory/enemy-territory-2.60.ebuild,v 1.1.1.1 2005/11/30 09:39:44 chriswhite Exp $
 
 inherit eutils games
 
-DESCRIPTION="Return to Castle Wolfenstein: Enemy Territory - standalone multi-player game based on Return to Castle Wolfenstein"
+DESCRIPTION="standalone multi-player game based on Return to Castle Wolfenstein"
 HOMEPAGE="http://www.idsoftware.com/"
-SRC_URI="mirror://3dgamers/pub/3dgamers4/games/wolfensteinet/et-linux-${PV}.x86.run
-	mirror://3dgamers/pub/3dgamers/games/wolfensteinet/et-linux-${PV}.x86.run"
+SRC_URI="mirror://3dgamers/wolfensteinet/et-linux-${PV}.x86.run
+	ftp://ftp.idsoftware.com/idstuff/et/linux/et-linux-${PV}.x86.run
+	dedicated? (
+		http://dev.gentoo.org/~wolf31o2/sources/dump/${PN}-all-0.1.tar.bz2
+		mirror://gentoo/${PN}-all-0.1.tar.bz2 )"
 
 LICENSE="RTCW-ETEULA"
 SLOT="0"
-# This game is actively maintained by a developer with both x86 and amd64 kit.
-# DO NOT TOUCH THIS EBUILD WITHOUT THE PERMISSION OF wolf31o2!!!
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 IUSE="dedicated opengl"
-RESTRICT="nomirror nostrip"
+RESTRICT="mirror nostrip"
 
-DEPEND="virtual/libc"
+DEPEND="sys-libs/glibc"
 RDEPEND="dedicated? ( app-misc/screen )
 	!dedicated? ( virtual/opengl )
 	opengl? ( virtual/opengl )
@@ -28,12 +29,15 @@ dir="${GAMES_PREFIX_OPT}/${PN}"
 Ddir="${D}/${dir}"
 
 pkg_setup() {
-	check_license || die "License check failed"
+	check_license RTCW-ETEULA
 	games_pkg_setup
 }
 
 src_unpack() {
-	unpack_makeself
+	unpack_makeself et-linux-${PV}.x86.run
+	if use dedicated; then
+		unpack ${PN}-all-0.1.tar.bz2 || die
+	fi
 }
 
 src_install() {
@@ -45,15 +49,15 @@ src_install() {
 
 	cp -r Docs pb etmain "${Ddir}" || die "cp failed"
 
-	games_make_wrapper et ./et.x86 ${dir}
+	games_make_wrapper et ./et.x86 "${dir}" "${dir}"
 
 	if use dedicated ; then
 		doexe bin/Linux/x86/etded.x86 || die "doexe failed"
 		games_make_wrapper et-ded ./etded.x86 ${dir}
-		newinitd ${FILESDIR}/et-ded.rc et-ded || die "newinitd failed"
+		newinitd ${S}/et-ded.rc et-ded || die "newinitd failed"
 		dosed "s:GAMES_USER_DED:${GAMES_USER_DED}:" /etc/init.d/et-ded
 		dosed "s:GENTOO_DIR:${GAMES_BINDIR}:" /etc/init.d/et-ded
-		newconfd ${FILESDIR}/et-ded.conf.d et-ded || die "newconfd failed"
+		newconfd ${S}/et-ded.conf.d et-ded || die "newconfd failed"
 	fi
 
 	# TODO: move this to /var/ perhaps ?
@@ -67,6 +71,11 @@ src_install() {
 
 pkg_postinst() {
 	games_pkg_postinst
+	echo
+	ewarn "There are two possible security bugs in this package, both causing a"
+	ewarn "denial of service.  One affects the game when running a server, the"
+	ewarn "other when running as a client.  For more information, see"
+	ewarn "bug #82149."
 	echo
 	einfo "To play the game run:"
 	einfo " et"

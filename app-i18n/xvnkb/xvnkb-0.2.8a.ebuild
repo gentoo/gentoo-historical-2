@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: xvnkb-0.2.8a.ebuild,v 1.1 2004/04/29 17:06:34 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/xvnkb/xvnkb-0.2.8a.ebuild,v 1.1.1.1 2005/11/30 09:40:09 chriswhite Exp $
 
 inherit eutils
 
-IUSE="truetype"
+IUSE="truetype spell"
 
 DESCRIPTION="Vietnamese input keyboard for X"
 SRC_URI="http://xvnkb.sourceforge.net/xvnkb/${P}.tar.bz2"
@@ -13,7 +13,7 @@ HOMEPAGE="http://xvnkb.sourceforge.net/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 DEPEND="virtual/x11
 	truetype? ( virtual/xft )"
 
@@ -21,17 +21,17 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${P}.patch
+	epatch ${FILESDIR}/${PV}-putenv.patch
 }
 
 
 src_compile() {
 	local myconf
 
-	if ! use truetype ; then
-		myconf="${myconf} --no-xft"
-	fi
+	use spell || myconf="${myconf} --no-spellcheck"
+	use truetype || myconf="${myconf} --no-xft"
 
-	econf --no-spellcheck --use-extstroke ${myconf} || die
+	econf --use-extstroke ${myconf} || die
 
 	emake || die
 }
@@ -55,8 +55,8 @@ pkg_postinst() {
 	einfo "$ export LANG=en_US.UTF-8"
 	einfo "(or any other UTF-8 locale) and"
 	einfo "$ export LD_PRELOAD=${DESTTREE}/lib/xvnkb.so"
-	einfo "before you"
-	einfo "$ startx"
+	einfo "before starting X Window"
 	einfo "More documents are in /usr/share/doc/${PF}"
-	einfo "Also note that this ebuild has spell checking disabled."
+	ewarn "Programs with suid/sgid will have LD_PRELOAD cleared"
+	ewarn "You have to unset suid/sgid to use with xvnkb"
 }

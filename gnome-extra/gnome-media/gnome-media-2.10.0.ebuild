@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-media/gnome-media-2.10.0.ebuild,v 1.1 2005/03/09 04:53:37 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-media/gnome-media-2.10.0.ebuild,v 1.1.1.1 2005/11/30 09:40:53 chriswhite Exp $
 
 inherit gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.prettypeople.org/~iain/gnome-media/"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha ~hppa ~ia64 ~mips"
+KEYWORDS="alpha amd64 hppa ~ia64 mips ppc ppc64 sparc x86"
 IUSE="oggvorbis mad ipv6"
 
 RDEPEND=">=dev-libs/glib-2
@@ -27,6 +27,7 @@ RDEPEND=">=dev-libs/glib-2
 	>=media-libs/gstreamer-0.8
 	>=media-libs/gst-plugins-0.8.2
 	>=gnome-extra/nautilus-cd-burner-2.9
+	>=media-plugins/gst-plugins-cdparanoia-0.8
 	oggvorbis? ( >=media-plugins/gst-plugins-vorbis-0.8.2
 		>=media-plugins/gst-plugins-ogg-0.8.2 )
 	mad? ( >=media-plugins/gst-plugins-mad-0.8.2 )"
@@ -41,3 +42,9 @@ DOCS="AUTHORS ChangeLog NEWS README TODO"
 G2CONF="${G2CONF} $(use_enable ipv6) --disable-esdtest"
 
 USE_DESTDIR="1"
+
+src_install() {
+
+	gnome2_src_install scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/
+
+}

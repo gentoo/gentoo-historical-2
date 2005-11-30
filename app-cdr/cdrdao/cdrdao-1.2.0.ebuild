@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.2.0.ebuild,v 1.1 2005/06/30 00:01:07 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.2.0.ebuild,v 1.1.1.1 2005/11/30 09:42:25 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -10,16 +10,17 @@ SRC_URI="mirror://sourceforge/cdrdao/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
 IUSE="gnome debug encode pccts"
 RESTRICT="nostrip"
 
 RDEPEND="encode? ( >=media-sound/lame-3.90 )
-	gnome? ( >dev-cpp/gtkmm-2.4*
-		=dev-cpp/libgnomemm-2.6*
-		=dev-cpp/libgnomecanvasmm-2.6*
-		=dev-cpp/gconfmm-2.6*
-		=dev-cpp/libgnomeuimm-2.6* )"
+	gnome? ( >=dev-cpp/gtkmm-2.4
+		>=dev-cpp/libgnomemm-2.6
+		>=dev-cpp/libgnomecanvasmm-2.6
+		>=dev-cpp/gconfmm-2.6
+		>=dev-cpp/libgnomeuimm-2.6
+		media-libs/libao )"
 DEPEND="pccts? ( >=dev-util/pccts-1.33.24-r1 )
 	virtual/cdrtools
 	${RDEPEND}"
@@ -28,8 +29,10 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
+	[[ $(gcc-major-version) -eq 4 ]] && epatch ${FILESDIR}/${P}-gcc4.patch
+
 	# Add gentoo to version
-	sed -i -e "s:^PACKAGE_STRING='cdrdao 1.1.9':PACKAGE_STRING='cdrdao 1.1.9 gentoo':" configure
+	sed -i -e "s:^PACKAGE_STRING='cdrdao ${PV}':PACKAGE_STRING='cdrdao ${PV} gentoo':" configure
 
 	# Display better SCSI messages (advise from Bug 43003)
 	cd scsilib/include

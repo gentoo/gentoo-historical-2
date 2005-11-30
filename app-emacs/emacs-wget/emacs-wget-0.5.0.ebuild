@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-wget/emacs-wget-0.5.0.ebuild,v 1.1 2004/10/19 14:29:17 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-wget/emacs-wget-0.5.0.ebuild,v 1.1.1.1 2005/11/30 09:41:14 chriswhite Exp $
 
 inherit elisp
 
@@ -14,7 +14,7 @@ RDEPEND=">=net-misc/wget-1.8.2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~alpha ~ppc ~ppc64 ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc-macos ~ppc64 ~x86"
 
 src_compile(){
 

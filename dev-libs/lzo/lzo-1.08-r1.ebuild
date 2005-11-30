@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/lzo/lzo-1.08-r1.ebuild,v 1.1 2003/09/12 03:46:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/lzo/lzo-1.08-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:49 chriswhite Exp $
+
+inherit eutils gnuconfig
 
 DESCRIPTION="An extremely fast compression and decompression library"
 HOMEPAGE="http://www.oberhumer.com/opensource/lzo/"
@@ -8,26 +10,31 @@ SRC_URI="http://www.oberhumer.com/opensource/lzo/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 s390 sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc
-	dev-lang/nasm"
+DEPEND="x86? ( dev-lang/nasm )"
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${PV}-gcc3.patch
+	sed -i -e s,-O2,,g ${S}/aclocal.m4
 	autoconf
 }
 
 src_compile() {
+	#Needed on mips and probablly others
+	gnuconfig_update
+
 	econf --enable-shared || die
 	emake || die
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS BUGS COPYING ChangeLog INSTALL NEWS README THANKS doc/LZO*
+	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS README THANKS doc/LZO*
 	docinto examples
 	dodoc examples/*.c examples/Makefile
 }

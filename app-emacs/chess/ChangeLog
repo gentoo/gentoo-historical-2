@@ -1,6 +1,22 @@
 # ChangeLog for app-emacs/chess
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/chess/ChangeLog,v 1.1 2002/11/01 02:52:00 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/chess/ChangeLog,v 1.1.1.1 2005/11/30 09:41:21 chriswhite Exp $
+
+*chess-2.0_beta5 (30 Jun 2005)
+
+  30 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org> chess-2.0_beta3.ebuild,
+  +chess-2.0_beta5.ebuild:
+  New upstream version; Keywording ~amd64.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  chess-2.0_beta3.ebuild:
+  Stable on ppc.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> chess-2.0_beta3.ebuild:
+  Added to ~ppc.
+
+  10 Sep 2003; Michael Sterrett <msterret@gentoo.org> chess-2.0_beta3.ebuild:
+  app-games/gnuchess -> games-board/gnuchess (games reorg)
 
 *chess-2.0_beta3 (31 Oct 2002)
 

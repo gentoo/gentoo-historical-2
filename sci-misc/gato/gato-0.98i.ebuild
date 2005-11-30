@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/gato/gato-0.98i.ebuild,v 1.1 2004/12/27 21:11:53 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/gato/gato-0.98i.ebuild,v 1.1.1.1 2005/11/30 09:44:33 chriswhite Exp $
 
 DESCRIPTION="Graph Animation Toolbox"
 HOMEPAGE="http://www.zpr.uni-koeln.de/~gato/"
@@ -8,7 +8,7 @@ SRC_URI="http://www.zpr.uni-koeln.de/~gato/Download/Gato-0.98I.tar"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND=""

@@ -1,6 +1,33 @@
 # ChangeLog for sys-power/ncpufreqd
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/ncpufreqd/ChangeLog,v 1.1 2005/05/07 14:34:23 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/ncpufreqd/ChangeLog,v 1.1.1.1 2005/11/30 09:42:39 chriswhite Exp $
+
+  30 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-1.8.ebuild:
+  Removed old 1.8.
+
+  30 Oct 2005; Luis Medinas <metalgod@gentoo.org> ncpufreqd-2.0.ebuild:
+  Marked Stable on amd64.
+
+  28 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> -ncpufreqd-1.9.ebuild,
+  ncpufreqd-2.0.ebuild:
+  Stable on x86. Removed old ebuild.
+
+*ncpufreqd-2.0 (01 Oct 2005)
+
+  01 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> metadata.xml,
+  +ncpufreqd-2.0.ebuild:
+  Version bump, changed maintainer.
+
+*ncpufreqd-1.9 (13 Jun 2005)
+
+  13 Jun 2005; <sekretarz@gentoo.org> -ncpufreqd-1.7.ebuild,
+  ncpufreqd-1.8.ebuild, +ncpufreqd-1.9.ebuild:
+  Version bump
+
+*ncpufreqd-1.8 (12 May 2005)
+
+  12 May 2005; Karol Wojtaszek <sekretarz@gentoo.org> +ncpufreqd-1.8.ebuild:
+  Version bump
 
 *ncpufreqd-1.7 (07 May 2005)
 

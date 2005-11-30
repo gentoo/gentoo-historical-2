@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrmap/xrmap-2.30.ebuild,v 1.1 2005/06/15 16:25:19 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrmap/xrmap-2.30.ebuild,v 1.1.1.1 2005/11/30 09:40:21 chriswhite Exp $
 
 DESCRIPTION="The Xrmap program is a X client for generating images of the Earth and manipulating the CIA World data bank"
 HOMEPAGE="http://frmas.free.fr/li_1.htm#_Xrmap_"
@@ -55,7 +55,7 @@ src_install() {
 	cp -r {i18n,Locations,factbook,anthems,flags,hymns,pixmaps} ${D}/usr/share/${PN}/ || die
 	cp Xrmaprc ${D}/etc/xrmap || die
 	cp ${WORKDIR}/CIA_WDB2.jpd ${D}/usr/share/${PN}/ || die
-	dodoc CHANGES COPYING README TODO WARNING tools/cbd2else/README.cbd tools/jpd2else/README.jpd tools/rez2else/README.rez || die
+	dodoc CHANGES README TODO WARNING tools/cbd2else/README.cbd tools/jpd2else/README.jpd tools/rez2else/README.rez || die
 
 	cd ${S}
 	newman xrmap.man xrmap.1 || die "newman failed"

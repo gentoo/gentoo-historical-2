@@ -1,10 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xplore/xplore-1.2a.ebuild,v 1.1 2003/11/20 23:21:13 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xplore/xplore-1.2a.ebuild,v 1.1.1.1 2005/11/30 09:40:41 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
-S=${WORKDIR}/${P}
 DESCRIPTION="motif file manager for X."
 SRC_URI="http://www.musikwissenschaft.uni-mainz.de/~ag/xplore/${P}.tar.bz2"
 HOMEPAGE="http://www.musikwissenschaft.uni-mainz.de/~ag/xplore/"
@@ -15,8 +16,12 @@ KEYWORDS="x86"
 
 # its webpage states the lesstif does not fully work with xplore
 DEPEND="virtual/x11
-	virtual/motif"
-#	>=x11-libs/openmotif-2.2"
+	x11-libs/openmotif"
+
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${P}-strerror.patch
+}
 
 src_compile() {
 	#Fix Xplore.tmpl so installation is to /usr instead of /usr/X11R6
@@ -34,5 +39,5 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die "Installation failed"
-	dodoc COPYING ChangeLog INSTALL README TODO
+	dodoc ChangeLog README TODO
 }

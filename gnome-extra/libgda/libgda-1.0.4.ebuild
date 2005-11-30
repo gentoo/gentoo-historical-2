@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-1.0.4.ebuild,v 1.1 2004/08/05 13:36:10 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-1.0.4.ebuild,v 1.1.1.1 2005/11/30 09:41:06 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -10,7 +10,7 @@ LICENSE="GPL-2 LGPL-2"
 
 IUSE="odbc postgres mysql ldap firebird freetds sqlite mdb oci8 doc"
 SLOT="1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64"
+KEYWORDS="alpha ~amd64 ia64 ppc ppc64 sparc x86"
 
 RDEPEND=">=dev-libs/glib-2.0
 	>=dev-libs/libxml2-2.0
@@ -22,10 +22,10 @@ RDEPEND=">=dev-libs/glib-2.0
 	postgres? ( >=dev-db/postgresql-7.2.1 )
 	odbc? ( >=dev-db/unixODBC-2.0.6 )
 	ldap? ( >=net-nds/openldap-2.0.25 )
-	!ppc? ( firebird? ( >=dev-db/firebird-1.0 ) )
+	x86? ( firebird? ( dev-db/firebird ) )
 	freetds? ( >=dev-db/freetds-0.5 )
-	sqlite? ( >=dev-db/sqlite-2.4.2 )
-	!alpha? ( mdb? ( >=app-office/mdbtools-0.5 ) )"
+	sqlite? ( =dev-db/sqlite-2* )
+	!ia64? ( mdb? ( >=app-office/mdbtools-0.5 ) )"
 
 DEPEND=">=dev-util/pkgconfig-0.8
 	>=dev-util/intltool-0.22
@@ -49,7 +49,8 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-1.0.3-gcc3.4.patch
 	# freetds patch (#48611)
 	epatch ${FILESDIR}/${PN}-1.0.4-freetds-0.6x.patch
-
+	# firebird function reorder (#71708)
+	epatch ${FILESDIR}/${PN}-1.0.4-firebird-provider.patch
 }
 
 src_compile() {

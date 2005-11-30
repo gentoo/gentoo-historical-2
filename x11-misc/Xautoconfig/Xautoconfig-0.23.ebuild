@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/Xautoconfig/Xautoconfig-0.23.ebuild,v 1.1 2005/02/21 12:28:24 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/Xautoconfig/Xautoconfig-0.23.ebuild,v 1.1.1.1 2005/11/30 09:40:36 chriswhite Exp $
 
 inherit eutils
 

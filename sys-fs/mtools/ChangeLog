@@ -1,6 +1,50 @@
 # ChangeLog for sys-fs/mtools
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtools/ChangeLog,v 1.1 2003/09/17 03:08:08 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtools/ChangeLog,v 1.1.1.1 2005/11/30 09:44:25 chriswhite Exp $
+
+*mtools-3.9.10 (17 Jul 2005)
+
+  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +mtools-3.9.10.ebuild:
+  Version bump.
+
+  13 Feb 2005; Heinrich Wendel <lanius@gentoo.org> -mtools-3.9.8-r1.ebuild,
+  mtools-3.9.9.ebuild:
+  mark amd64; remove old version
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> mtools-3.9.9.ebuild:
+  Stable on ppc64
+
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 Dec 2004; Markus Rothe <corsair@gentoo.org> mtools-3.9.9.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> mtools-3.9.9.ebuild:
+  Stable on sparc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mtools-3.9.9.ebuild:
+  Masked mtools-3.9.9.ebuild stable for ppc
+
+  16 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> mtools-3.9.9.ebuild:
+  Stable on alpha.
+
+  15 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> mtools-3.9.9.ebuild:
+  use emake; tidy; stablize for x86
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> mtools-3.9.8-r1.ebuild,
+  mtools-3.9.9.ebuild:
+  Add die following econf for bug 48950
+
+*mtools-3.9.9 (03 Jan 2004)
+
+  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> mtools-3.9.8-r1.ebuild,
+  mtools-3.9.9.ebuild:
+  Version bumped. Closes 37049
+
+  12 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> mtools-3.9.8-r1.ebuild:
+  Builds and runs on amd64. Closing #34087.
 
 *mtools-3.9.8-r1 (16 Sep 2003)
 

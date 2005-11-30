@@ -1,6 +1,59 @@
 # ChangeLog for x11-misc/devilspie
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/devilspie/ChangeLog,v 1.1 2003/10/19 07:07:42 mr_bones_ Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/devilspie/ChangeLog,v 1.1.1.1 2005/11/30 09:40:50 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> devilspie-0.10.ebuild:
+  Mark 0.10 stable on alpha
+
+  25 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> devilspie-0.10.ebuild:
+  Stable on sparc
+
+  24 Jun 2005; Joseph Jezak <josejx@gentoo.org> devilspie-0.10.ebuild:
+  Marked ppc stable.
+
+  23 Jun 2005; Olivier Crête <tester@gentoo.org> devilspie-0.10.ebuild:
+  Stable on amd64, since the older versions dont build with gnome 2.10
+
+  23 Jun 2005; Jonathan Smith <smithj@gentoo.org> devilspie-0.10.ebuild:
+  #96824: 0.10 stable early due to massive bugs in 0.7 and 0.4
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> -devilspie-0.3.1.ebuild,
+  devilspie-0.7.ebuild:
+  0.7 stable x86, cleanup
+
+  13 Jun 2005; <brix@gentoo.org> devilspie-0.10.ebuild:
+  Use dohtml for the html doc.
+
+*devilspie-0.10 (13 Jun 2005)
+
+  13 Jun 2005; <brix@gentoo.org> +files/devilspie-0.10-make-check.patch,
+  +devilspie-0.10.ebuild:
+  Version bump, fixing bug #79332 and bug #88047.
+
+  14 May 2005; Olivier Crête <tester@gentoo.org> devilspie-0.4.ebuild:
+  Stable on amd64 (this is late..)
+
+*devilspie-0.7 (28 Sep 2004)
+
+  28 Sep 2004; <pyrania@gentoo.org> +devilspie-0.7.ebuild:
+  Version bump.
+
+*devilspie-0.4 (03 Jul 2004)
+
+  03 Jul 2004; <pyrania@gentoo.org> +devilspie-0.4.ebuild:
+  Version bump. Closing bug #53458.
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> devilspie-0.3.1.ebuild:
+  Stable on sparc.
+
+  01 May 2004; Danny van Dyk <kugelfang@gentoo.org> devilspie-0.3.1.ebuild:
+  marked ~amd64.
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> devilspie-0.3.1.ebuild:
+  don't rdepend on pkgconfig; stable on x86
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
 
 *devilspie-0.3.1 (19 Oct 2003)
 

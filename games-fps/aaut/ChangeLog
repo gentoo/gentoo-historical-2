@@ -1,6 +1,9 @@
-# ChangeLog for app-games/aaut
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/aaut/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
+# ChangeLog for games-fps/aaut
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/aaut/ChangeLog,v 1.1.1.1 2005/11/30 09:39:43 chriswhite Exp $
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> aaut-1.ebuild:
+  virtual/glibc -> virtual/libc
 
 *aaut-1 (03 Aug 2003)
 

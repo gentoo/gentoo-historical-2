@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/bbdb/bbdb-2.35_pre20040323.ebuild,v 1.1 2004/04/25 16:56:26 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/bbdb/bbdb-2.35_pre20040323.ebuild,v 1.1.1.1 2005/11/30 09:41:14 chriswhite Exp $
 
-inherit elisp
+inherit elisp eutils
 
 IUSE="crypt"
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz
 	http://www.mit.edu/afs/athena/contrib/emacs-contrib/Fin/dates.el"
 LICENSE="GPL-2 as-is"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64 ppc sparc"
 
 DEPEND="virtual/emacs"
 RDEPEND="${DEPEND}
@@ -37,7 +37,7 @@ src_unpack() {
 		bbdb-sort-mailrc.txt > bbdb-sort-mailrc.el
 	cp ${DISTDIR}/{dates,point-at}.el .
 
-	if [ -z "`use crypt`" ] ; then
+	if ! use crypt ; then
 		rm ${S}/bits/bbdb-pgp.el
 		einfo "Excluding bits/bbdb-pgp.el because the \`crypt' USE flag was not"
 		einfo "specified."

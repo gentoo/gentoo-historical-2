@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dd-rescue/dd-rescue-1.11.ebuild,v 1.1 2005/08/12 03:44:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dd-rescue/dd-rescue-1.11.ebuild,v 1.1.1.1 2005/11/30 09:44:16 chriswhite Exp $
 
 MY_PN=${PN/-/_}
 MY_P=${MY_PN}-${PV}

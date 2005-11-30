@@ -1,6 +1,15 @@
 # ChangeLog for dev-libs/matrixssl
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/matrixssl/ChangeLog,v 1.1 2004/05/21 23:14:00 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/matrixssl/ChangeLog,v 1.1.1.1 2005/11/30 09:41:57 chriswhite Exp $
+
+*matrixssl-1.2.4 (18 Mar 2005)
+
+  18 Mar 2005; <solar@gentoo.org> +metadata.xml, +matrixssl-1.2.4.ebuild:
+  - ver bump to current. fixed faulty build process
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  matrixssl-1.0.2.ebuild:
+  virtual/glibc -> virtual/libc
 
 *matrixssl-1.0.2 (21 May 2004)
 

@@ -1,6 +1,67 @@
-# ChangeLog for sys-apps/mdadm
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mdadm/ChangeLog,v 1.1 2005/03/02 04:32:07 vapier Exp $
+# ChangeLog for sys-fs/mdadm
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mdadm/ChangeLog,v 1.1.1.1 2005/11/30 09:44:25 chriswhite Exp $
+
+  16 Oct 2005; Joshua Kinard <kumba@gentoo.org> mdadm-1.12.0.ebuild,
+  mdadm-2.1.ebuild:
+  Marked 1.12.0 stable, 2.1 unstable on mips.
+
+  24 Sep 2005; Markus Rothe <corsair@gentoo.org> mdadm-1.12.0.ebuild:
+  Stable on ppc64
+
+  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> mdadm-1.12.0.ebuild:
+  Stable on ppc.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> mdadm-1.12.0.ebuild:
+  Mark 1.12.0 stable on alpha
+
+  14 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> mdadm-1.12.0.ebuild:
+  Stable on sparc
+
+*mdadm-2.1 (13 Sep 2005)
+
+  13 Sep 2005; Mike Frysinger <vapier@gentoo.org> +mdadm-2.1.ebuild:
+  Version bump #105892 by Daniel Webert.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> mdadm-1.11.0.ebuild:
+  Stable on alpha.
+
+  17 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> mdadm-1.11.0.ebuild:
+  ppc stable
+
+  09 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> mdadm-1.11.0.ebuild:
+  Stable on sparc
+
+  09 Jul 2005; Markus Rothe <corsair@gentoo.org> mdadm-1.11.0.ebuild:
+  Stable on ppc64
+
+*mdadm-1.12.0 (07 Jul 2005)
+
+  07 Jul 2005; Mike Frysinger <vapier@gentoo.org> +mdadm-1.12.0.ebuild:
+  Version bump #98286 by Daniel Webert.
+
+  10 Jun 2005; Mike Frysinger <vapier@gentoo.org> files/raid-start.sh:
+  Tweak device node creation to handle subpaths #95593 by Milan Holzäpfel.
+
+  10 Jun 2005; Mike Frysinger <vapier@gentoo.org> +files/raid-stop.sh,
+  mdadm-1.9.0-r1.ebuild, mdadm-1.11.0.ebuild:
+  Add a raid-stop script by Milan Holzäpfel #95594.
+
+*mdadm-1.11.0 (11 Apr 2005)
+
+  11 Apr 2005; Mike Frysinger <vapier@gentoo.org> +mdadm-1.11.0.ebuild:
+  Version bump #88753 by Wolfram Schlich.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> mdadm-1.9.0-r1.ebuild:
+  Stable on ppc64
+
+*mdadm-1.9.0-r1 (21 Mar 2005)
+
+  21 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> mdadm-1.9.0-r1.ebuild:
+  Stable on sparc
 
   20 Feb 2005; Aron Griffis <agriffis@gentoo.org> mdadm-1.9.0.ebuild:
   add ~ia64
@@ -24,7 +85,7 @@
   05 Dec 2004; Mike Frysinger <vapier@gentoo.org> +files/mdadm.rc,
   +mdadm-1.8.1.ebuild:
   Version bump #71675 by Neil Bothwick. Make sure nroff isnt run #73389 by
-  Gustaf Bj�rklund. Add init.d script #57321 by Remy Blank.
+  Gustaf Björklund. Add init.d script #57321 by Remy Blank.
 
   25 Nov 2004; Guy Martin <gmsoft@gentoo.org> mdadm-1.7.0.ebuild:
   Stable on hppa.

@@ -1,6 +1,25 @@
 # ChangeLog for x11-misc/Xorgautoconfig
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/Xorgautoconfig/ChangeLog,v 1.1 2005/06/26 03:53:12 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/Xorgautoconfig/ChangeLog,v 1.1.1.1 2005/11/30 09:40:44 chriswhite Exp $
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> +files/pciutils.patch,
+  Xorgautoconfig-0.2.1.ebuild:
+  Added word/byte type fix for new pciutils.
+
+  02 Oct 2005; Joseph Jezak <josejx@gentoo.org> Xorgautoconfig-0.2.1.ebuild:
+  Marked ppc stable.
+
+  02 Aug 2005; Markus Rothe <corsair@gentoo.org> Xorgautoconfig-0.2.ebuild:
+  Stable on ppc64
+
+*Xorgautoconfig-0.2.1 (20 Jul 2005)
+
+  20 Jul 2005; Joseph Jezak <josejx@gentoo.org>
+  +Xorgautoconfig-0.2.1.ebuild:
+  Fix for PowerMac 4,2 nvidia cards, now defaults to framebuffer PCI Bus ID.
+
+  02 Jul 2005; Markus Rothe <corsair@gentoo.org> Xorgautoconfig-0.2.ebuild:
+  added ~ppc64
 
 *Xorgautoconfig-0.2 (26 Jun 2005)
 

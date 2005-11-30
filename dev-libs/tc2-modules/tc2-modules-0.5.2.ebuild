@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/tc2-modules/tc2-modules-0.5.2.ebuild,v 1.1.1.1 2005/11/30 09:41:50 chriswhite Exp $
 
 IUSE="static"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Modules for tc2."
 HOMEPAGE="http://tc2.sourceforge.net"
 SRC_URI="mirror://sourceforge/tc2/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="OpenSoftware"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~amd64 ~ia64"
+KEYWORDS="alpha amd64 ~hppa ia64 ~mips ~ppc ~sparc ~x86"
 
 DEPEND=">=dev-libs/tc2-0.5.6"
 

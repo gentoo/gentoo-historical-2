@@ -1,5 +1,7 @@
-# Stop LVM2
+# /lib/rcscripts/addons/lvm2-stop.sh
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/files/lvm2-stop.sh,v 1.1.1.1 2005/11/30 09:44:24 chriswhite Exp $
 
+# Stop LVM2
 if [ -x /sbin/vgchange ] && \
    [ -x /sbin/lvdisplay ] && \
    [ -x /sbin/vgdisplay ] && \
@@ -13,8 +15,8 @@ then
 	# functionality as described in this forum thread
 	#https://www.redhat.com/archives/linux-lvm/2001-May/msg00523.html
 
-	LOGICAL_VOLUMES=`lvdisplay |grep "LV Name"|awk '{print $3}'|sort|xargs echo`
-	VOLUME_GROUPS=`vgdisplay |grep "VG Name"|awk '{print $3}'|sort|xargs echo`
+	LOGICAL_VOLUMES=`lvdisplay |grep "LV Name"|sed -e 's/.*LV Name\s*\(.*\)/\1/'|sort`
+	VOLUME_GROUPS=`vgdisplay |grep "VG Name"|sed -e 's/.*VG Name\s*\(.*\)/\1/'|sort`
 	for x in ${LOGICAL_VOLUMES}
 	do
 		LV_IS_ACTIVE=`lvdisplay ${x}|grep "# open"|awk '{print $3}'`
@@ -28,7 +30,7 @@ then
 
 	for x in ${VOLUME_GROUPS}
 	do
-		VG_HAS_ACTIVE_LV=`vgdisplay ${x}|grep "Open LV"|awk '{print $3}'|xargs echo`
+		VG_HAS_ACTIVE_LV=`vgdisplay ${x}|grep "Open LV"|sed -e 's/.*Open LV\s*\(.*\)/\1/'`
 		if [ "${VG_HAS_ACTIVE_LV}" = 0 ]
 		then
 			ebegin "  Shutting Down volume group: ${x} "
@@ -39,12 +41,15 @@ then
 
 	for x in ${LOGICAL_VOLUMES}
 	do
-		LV_IS_ACTIVE=`lvdisplay ${x}|grep "# open"|awk '{print $3}'`
+		LV_IS_ACTIVE=`lvdisplay ${x}|grep "# open"|sed -e 's/.*# open\s*\(.*\)/\1/'`
 		if [ "${LV_IS_ACTIVE}" = 1 ]
 		then
 			
 			ROOT_DEVICE=`mount|grep " / "|awk '{print $1}'`
-			if [ ! ${ROOT_DEVICE} = ${x} ]
+			MOUNTED_DEVICE=${x}
+			[ -L ${ROOT_DEVICE} ] && ROOT_DEVICE="`/bin/readlink ${ROOT_DEVICE}`"
+			[ -L ${x} ] && MOUNTED_DEVICE="`/bin/readlink ${x}`"
+			if [ ! ${ROOT_DEVICE} = ${MOUNTED_DEVICE} ]
 			then
 				ewarn "  Unable to shutdown: ${x} "
 			fi

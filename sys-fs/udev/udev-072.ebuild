@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-072.ebuild,v 1.1 2005/11/06 21:47:07 gregkh Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-072.ebuild,v 1.1.1.1 2005/11/30 09:44:20 chriswhite Exp $
 
 inherit eutils flag-o-matic
 

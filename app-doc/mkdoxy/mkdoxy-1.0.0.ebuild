@@ -1,21 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/mkdoxy/mkdoxy-1.0.0.ebuild,v 1.1.1.1 2005/11/30 09:42:37 chriswhite Exp $
 
 DESCRIPTION="mkDoxy generates Doxygen-compatible HTML documentation for makefiles"
 HOMEPAGE="http://sourceforge.net/projects/mkdoxy/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64"
+SLOT="0"
+KEYWORDS="x86 ppc ~sparc alpha hppa amd64 ia64"
+IUSE=""
 
-RDEPEND="app-doc/doxygen
+DEPEND="app-doc/doxygen
 	>=dev-lang/perl-5"
-
-DEPEND="${RDEPEND}"
 
 src_install() {
 	dobin mkdoxy
-	dodoc AUTHORS COPYING ChangeLog INSTALL INSTALL.gentoo README \
-	TODO VERSION
+	dodoc AUTHORS ChangeLog INSTALL INSTALL.gentoo README TODO VERSION
 }

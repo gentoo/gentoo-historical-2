@@ -1,6 +1,21 @@
 # ChangeLog for dev-libs/libhoard
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhoard/ChangeLog,v 1.1 2002/06/10 02:06:51 rphillips Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhoard/ChangeLog,v 1.1.1.1 2005/11/30 09:41:29 chriswhite Exp $
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libhoard-2.1.0.ebuild, libhoard-2.1.2d.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> libhoard-2.1.0.ebuild,
+  libhoard-2.1.2d.ebuild:
+  fix SRC_URI; IUSE
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libhoard-2.1.2d (31 Jul 2003)
+
+  31 Jul 2003; Ryan Phillips <rphillips@gentoo.org> libhoard-2.1.2d.ebuild :
+  new version
 
 *libhoard-2.1.0 (09 June 2002)
 

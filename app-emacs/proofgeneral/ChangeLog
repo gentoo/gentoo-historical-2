@@ -1,6 +1,28 @@
 # ChangeLog for app-emacs/proofgeneral
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/proofgeneral/ChangeLog,v 1.1 2004/01/21 21:31:09 mattam Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/proofgeneral/ChangeLog,v 1.1.1.1 2005/11/30 09:41:10 chriswhite Exp $
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> proofgeneral-3.5.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  09 Oct 2004; Matthieu Sozeau <mattam@gentoo.org> -proofgeneral-3.4.ebuild,
+  proofgeneral-3.5.ebuild:
+  Move 3.5 to stable, remove old version.
+
+*proofgeneral-3.5 (20 Jun 2004)
+
+  20 Jun 2004; Matthieu Sozeau <mattam@gentoo.org> proofgeneral-3.5.ebuild:
+  New version, we now use their makefile (not always non-interactive) and
+  site file.
+
+  20 Jun 2004; Matthieu Sozeau <mattam@gentoo.org> proofgeneral-3.4.ebuild:
+  Move to stable.
+
+  15 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> proofgeneral-3.4.ebuild:
+  Fixed readonly variable assignment to PN and P. See bug #44712
+
+  22 Jan 2004; Matthieu Sozeau <mattam@gentoo.org> proofgeneral-3.4.ebuild:
+  Fix URI's, site has changed location.
 
 *proofgeneral-3.4 (21 Jan 2004)
 

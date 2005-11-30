@@ -1,3 +1,17 @@
-MD5 47dfa08ad9924b143ca5175f4a23d672 iiimecf-11.4.1467.ebuild 664
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 403dddd419abfc66289d77c0cacfb3d6 ChangeLog 1094
+MD5 b5fdfdb443a94c51bb339c56188361e9 metadata.xml 175
+MD5 16ffdad60ffbdb782d0da5b810380554 iiimecf-11.4_p1467.ebuild 669
+MD5 a2e96ac4d04b5a9751c74bb19c9d327f iiimecf-12.1_p2002.ebuild 737
 MD5 355b2f5cdf0a9c4263f3bc963a83f085 files/50iiimecf-gentoo.el 159
-MD5 5db19d1b3aa08ebd6259e5ef6a882b1d files/digest-iiimecf-11.4.1467 71
+MD5 de5dcfe76eb7086d4b90d73615622cd3 files/digest-iiimecf-11.4_p1467 74
+MD5 be37bb244b3081121d1781e5118f2443 files/digest-iiimecf-12.1_p2002 79
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCYQ9cVWNWqTUmv+0RAlo5AJ4g6hlNO3A6wAU2tlK3Ek9okSND0QCfeR/e
+CNBtbmgE/3GyimKPpA84kCU=
+=TDZr
+-----END PGP SIGNATURE-----

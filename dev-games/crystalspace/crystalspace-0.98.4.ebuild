@@ -1,16 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/crystalspace/crystalspace-0.98.4.ebuild,v 1.1 2004/12/25 08:00:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/crystalspace/crystalspace-0.98.4.ebuild,v 1.1.1.1 2005/11/30 09:44:37 chriswhite Exp $
+
+inherit eutils
 
 MY_P="cs${PV:2:2}_00${PV:5:1}"
 DESCRIPTION="portable 3D Game Development Kit written in C++"
-HOMEPAGE="http://crystal.sourceforge.net/"
-SRC_URI="mirror://sourceforge/crystalspace/${MY_P}.tar.bz2"
+HOMEPAGE="http://www.crystalspace3d.org"
+SRC_URI="mirror://sourceforge/crystal/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="ppc x86"
-IUSE="oggvorbis mikmod openal truetype 3ds mng"
+IUSE="3ds mikmod mng vorbis openal truetype"
 
 RDEPEND="sys-libs/zlib
 	>=media-libs/libpng-1.2.1
@@ -20,23 +22,30 @@ RDEPEND="sys-libs/zlib
 	3ds? ( media-libs/lib3ds )
 	truetype? ( >=media-libs/freetype-2.0 )
 	openal? ( media-libs/openal )
-	oggvorbis? (
+	vorbis? (
 		>=media-libs/libogg-1.0
 		>=media-libs/libvorbis-1.0 )
 	dev-games/ode
-	>=dev-lang/perl-5.6.1
-	!dev-games/crystalspace-cvs"
+	>=dev-lang/perl-5.6.1"
 DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.0.51
-	dev-util/jam
+	|| ( dev-util/jam dev-util/boost-jam )
 	x86? ( dev-lang/nasm )"
 
 S="${WORKDIR}/CS"
 
 CRYSTAL_PREFIX="/opt/crystal"
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-gl.patch" #75702
+	echo "CRYSTAL=\"${CRYSTAL_PREFIX}\"" > 90crystalspace
+}
+
 src_compile() {
-	./configure --prefix=${CRYSTAL_PREFIX} || die "configure failed"
+	CONFIGURE_OPTS="--with-libcal3d=/home/andrew/development/cal3d"
+	./configure --prefix=${CRYSTAL_PREFIX} ${CONFIGURE_OPTS} || die "configure failed"
 	jam all || die "compile failed"
 }
 
@@ -55,7 +64,5 @@ src_install() {
 	find "${D}"/${CRYSTAL_PREFIX} -type d -exec chmod a+rx '{}' \;
 	chmod a+rx "${D}"/${CRYSTAL_PREFIX}/bin/*
 
-	dodir /etc/env.d
-	echo "CRYSTAL=\"${CRYSTAL_PREFIX}\"" > 90crystalspace
-	doconfd 90crystalspace
+	doenvd 90crystalspace
 }

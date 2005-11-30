@@ -1,10 +1,30 @@
-# ChangeLog for app-games/lsdldoom
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/lsdldoom/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
+# ChangeLog for games-fps/lsdldoom
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/lsdldoom/ChangeLog,v 1.1.1.1 2005/11/30 09:39:51 chriswhite Exp $
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  lsdldoom-1.4.4.4.ebuild:
+  Making games last on inherit line.
+
+  15 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.4.4.4-gcc34.patch, +files/1.4.4.4-gentoo-paths.patch,
+  lsdldoom-1.4.4.4.ebuild:
+  Clean up ebuild: add games.eclass support, fix stupid paths, and fix gcc
+  errors #77846 by Pinky.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Mar 2004; Jason Wever <weeve@gentoo.org> lsdldoom-1.4.4.4.ebuild:
+  Marked back to ~sparc to fix broken dependencies. Please in the future learn
+  to use echangelog and repoman, or you will owe me a lifetime supply of pizza.
+
+  25 Sep 2003; Chuck Short <zul@gentoo.org> lsdldoom-1.4.4.4.ebuild:
+  Added sparc to keywords.
 
 *lsdldoom-1.4.4.4 (1 Feb 2002)
 
-  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> lsdldoom-1.4.4.4.ebuild :
+  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> lsdldoom-1.4.4.4.ebuild :
   Added LICENSE, KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

@@ -1,8 +1,82 @@
-# ChangeLog for games-fps/quake2-relnev
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-icculus/ChangeLog,v 1.1 2003/11/30 06:03:46 vapier Exp $
+# ChangeLog for games-fps/quake2-icculus
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-icculus/ChangeLog,v 1.1.1.1 2005/11/30 09:39:49 chriswhite Exp $
+
+  03 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/quake2-icculus-0.16.1-gentoo-paths.patch,
+  quake2-icculus-0.16.1.ebuild:
+  Made the ebuild respect USE=dedicated and also adjusted the path patch.
+  Closing bug #104613. Thanks to Paul Bredbury and Tuomas Suutari for finding
+  and fixing these.
+
+  01 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  quake2-icculus-0.16.1.ebuild:
+  Add support for USE=alsa #102791 by roma1390.
+
+  29 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  -files/0.16-Makefile-gentoo-opts.patch, -files/0.16-gentoo-path.patch,
+  +files/quake2-icculus-0.16.1-gentoo-paths.patch,
+  quake2-icculus-0.16.1.ebuild:
+  Clean up the way we pass custom settings to the build system.
+
+  29 May 2005; Mike Frysinger <vapier@gentoo.org>
+  quake2-icculus-0.16.1.ebuild:
+  Add support for just building a dedicated server #94187 by Jan Reitz.
+
+  30 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/quake2-icculus-0.16.1-amd64.patch, quake2-icculus-0.16.1.ebuild:
+  On amd64, select the glx video renderer by default until the software
+  renderers work #86552.
+
+*quake2-icculus-0.16.1 (10 Mar 2005)
+
+  10 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +quake2-icculus-0.16.1.ebuild:
+  Version bumpage.
+
+*quake2-icculus-0.16 (03 Jan 2005)
+
+  03 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/0.16-Makefile-gentoo-opts.patch, +files/0.16-gentoo-path.patch,
+  +files/0.16-rogue-nan.patch, +quake2-icculus-0.16.ebuild:
+  Version bump. Also update the gentoo path patch to fix game .so searching
+  #42389 and video .so searching #60752.
+
+*quake2-icculus-0.15-r2 (27 Nov 2004)
+
+  27 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/0.15-Makefile-amd64.patch, +files/0.15-amd64.patch,
+  files/0.15-gentoo-path.patch, -quake2-icculus-0.15-r1.ebuild,
+  +quake2-icculus-0.15-r2.ebuild:
+  Fixed up the path patch, added initial amd64 support, and closing bugs
+  #61801 and #40328.
+
+  23 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  quake2-icculus-0.15-r1.ebuild:
+  Updated DEPEND and IUSE and closing bug #63062.
+
+  01 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  quake2-icculus-0.15-r1.ebuild:
+  Fix typo (bug #55843); no backquotes
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  quake2-icculus-0.15-r1.ebuild:
+  fix use invocation, glibc -> libc
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  quake2-icculus-0.15-r1.ebuild:
+  use || in RDEPEND to say what we really mean; depend on sed >= 4; error check
+  sed
+
+*quake2-icculus-0.15-r1 (08 Jan 2004)
+
+  08 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Fix installed paths #35952.
 
 *quake2-relnev-0.15 (29 Jun 2003)
+
+  27 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add xatrix/rogue game support #33029.
 
   30 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
   renamed (whoops) and added support to build qmax & normal binary.

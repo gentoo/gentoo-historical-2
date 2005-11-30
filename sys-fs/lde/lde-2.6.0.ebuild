@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lde/lde-2.6.0.ebuild,v 1.1 2003/09/26 08:46:36 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lde/lde-2.6.0.ebuild,v 1.1.1.1 2005/11/30 09:44:23 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="ext2fs and minix disk editor for linux"
 HOMEPAGE="http://lde.sourceforge.net/"
@@ -9,6 +11,7 @@ SRC_URI="mirror://sourceforge/lde/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
+IUSE=""
 
 DEPEND="sys-libs/ncurses
 	dev-util/yacc"
@@ -17,7 +20,8 @@ S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
-	sed -i "s:-g -O2:${CFLAGS}:" ${S}/Makefile
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-gcc3.patch
 }
 
 src_compile() {

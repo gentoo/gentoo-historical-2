@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmimedir/libmimedir-0.3.ebuild,v 1.1 2003/09/02 22:20:55 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmimedir/libmimedir-0.3.ebuild,v 1.1.1.1 2005/11/30 09:41:47 chriswhite Exp $
+
+inherit multilib
 
 DESCRIPTION="Library for manipulating MIME directory profiles (RFC2425)"
 HOMEPAGE="http://sourceforge.net/projects/synce/"
@@ -8,7 +10,7 @@ SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~amd64"
 IUSE=""
 
 DEPEND="sys-devel/flex
@@ -17,12 +19,12 @@ DEPEND="sys-devel/flex
 MAKEOPTS="${MAKEOPTS} -j1"
 
 src_compile() {
-	econf
-	emake || die 
+	econf || die "econf failed"
+	emake || die
 }
 
 src_install() {
-	dodir /usr/lib
+	dodir /usr/$(get_libdir)
 	dodir /usr/include
 	einstall || die "install failed"
 	dodoc README

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.4.4_p3.ebuild,v 1.1 2005/07/04 01:48:56 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.4.4_p3.ebuild,v 1.1.1.1 2005/11/30 09:42:46 chriswhite Exp $
 
 inherit eutils
 
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	sys-devel/autoconf
 	sys-devel/automake"
 
-IUSE="pic debug gdbm berkdb samba xfs"
+IUSE="berkdb debug gdbm samba xfs"
 
 S=${WORKDIR}/${P/_/}
 MYFILESDIR=${WORKDIR}/files
@@ -174,7 +174,7 @@ src_compile() {
 	myconf="${myconf} --with-gnutar=/bin/tar"
 
 	econf ${myconf} || die "econf failed!"
-	emake || die "emake failed!"
+	emake -j1 || die "emake failed!"
 
 	# Compile the tapetype program too
 	# This is deprecated, use amtapetype instead!

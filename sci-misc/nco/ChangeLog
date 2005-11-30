@@ -1,6 +1,13 @@
-# ChangeLog for app-sci/nco
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/nco/ChangeLog,v 1.1 2004/12/27 21:20:23 ribosome Exp $
+# ChangeLog for sci-misc/nco
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/nco/ChangeLog,v 1.1.1.1 2005/11/30 09:44:32 chriswhite Exp $
+
+  26 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -nco-2.2.0.ebuild,
+  -nco-2.7.1.ebuild, nco-2.9.1.ebuild:
+  Added to x86. Removed obsolete versions.
+
+  06 May 2005; David Holm <dholm@gentoo.org> nco-2.9.1.ebuild:
+  Added to ~ppc.
 
 *nco-2.7.1 (27 Dec 2004)
 

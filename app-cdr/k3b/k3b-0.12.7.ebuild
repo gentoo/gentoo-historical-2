@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/k3b/k3b-0.12.7.ebuild,v 1.1 2005/11/02 18:16:13 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/k3b/k3b-0.12.7.ebuild,v 1.1.1.1 2005/11/30 09:42:21 chriswhite Exp $
 
 inherit kde eutils
 

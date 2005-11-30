@@ -1,6 +1,26 @@
 # ChangeLog for x11-misc/glsof
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/glsof/ChangeLog,v 1.1 2004/11/08 12:43:12 ticho Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/glsof/ChangeLog,v 1.1.1.1 2005/11/30 09:40:31 chriswhite Exp $
+
+  26 Jul 2005; David Holm <dholm@gentoo.org> glsof-0.9.17.ebuild:
+  Added to ~ppc.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> glsof-0.9.16.ebuild:
+  Dependency update: sys-apps/lsof -> sys-process/lsof.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> glsof-0.9.17.ebuild:
+  Dependency update: sys-apps/lsof -> sys-process/lsof.
+
+  14 Jan 2005; Andrej Kacian <ticho@gentoo.org> glsof-0.9.17.ebuild:
+  Stable on x86.
+
+*glsof-0.9.17 (13 Dec 2004)
+
+  13 Dec 2004; Andrej Kacian <ticho@gentoo.org> +glsof-0.9.17.ebuild:
+  Version bump. Use gnome2 eclass.
+
+  13 Dec 2004; Andrej Kacian <ticho@gentoo.org> glsof-0.9.16.ebuild:
+  Stable on x86.
 
 *glsof-0.9.16 (08 Nov 2004)
 

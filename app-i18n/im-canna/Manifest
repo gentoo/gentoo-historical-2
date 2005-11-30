@@ -1,3 +1,4 @@
-MD5 eaca0cac894df24be0346914dc492549 im-canna-0.3.2.1.ebuild 783
-MD5 d5dd2f19d430fa683ffc859846ef319f files/digest-im-canna-0.3.2 66
-MD5 e4952a957c28fa1dcb209cb98af009e9 files/digest-im-canna-0.3.2.1 68
+MD5 7c3bee562041e2a587765b7414703756 ChangeLog 719
+MD5 a513ba7c257199a1e87307a5b567cbf9 im-canna-0.3.2.2.ebuild 801
+MD5 e92a48548554c80cf90e18df17ff6a82 metadata.xml 156
+MD5 b8820ef4b69a88436e6524772b1125ef files/digest-im-canna-0.3.2.2 68

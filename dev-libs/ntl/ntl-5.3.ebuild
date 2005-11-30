@@ -1,8 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ntl/ntl-5.3.ebuild,v 1.1 2002/11/08 08:52:32 george Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ntl/ntl-5.3.ebuild,v 1.1.1.1 2005/11/30 09:41:51 chriswhite Exp $
 
 DESCRIPTION="high-performance, portable C++ ci-computational ibrar"
 HOMEPAGE="http://shoup.net/ntl/"
@@ -10,11 +8,10 @@ SRC_URI="http://www.shoup.net/ntl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~sparc64"
+KEYWORDS="ppc x86"
+IUSE=""
 
-DEPEND=">=gmp-4.1-r1"
-
-S="${WORKDIR}/${P}"
+DEPEND=">=dev-libs/gmp-4.1-r1"
 
 src_compile() {
 	cd src

@@ -3,9 +3,8 @@
 <pkgmetadata>
 <herd>dev-tools</herd>
 <maintainer>
-  <email>phosphan@gentoo.org</email>
-  <name>Patrick Kursawe</name>
-  <description>Primary Maintainer</description>
+    <email>nerdboy@gentoo.org</email>
+    <name>Steve Arnold</name>
 </maintainer>
-<longdescription>Doxygen is a tool for analyzing, documenting, and reverse-engineering source code.</longdescription>
+<longdescription>Doxygen is a tool for analyzing, documenting, and reverse-engineering source code of various languages using a variety of output formats (try it and see).</longdescription>
 </pkgmetadata>

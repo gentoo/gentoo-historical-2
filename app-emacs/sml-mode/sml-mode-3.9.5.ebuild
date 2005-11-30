@@ -1,20 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/sml-mode/sml-mode-3.9.5.ebuild,v 1.1 2003/08/28 02:13:14 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/sml-mode/sml-mode-3.9.5.ebuild,v 1.1.1.1 2005/11/30 09:41:10 chriswhite Exp $
 
 inherit elisp
 
 DESCRIPTION="Emacs major mode for editing Standard ML"
 HOMEPAGE="ftp://ftp.research.bell-labs.com/dist/smlnj/contrib/emacs/"
-SRC_URI="ftp://ftp.research.bell-labs.com/dist/smlnj/contrib/emacs/sml-mode-3.9.5.tar.gz"
+SRC_URI="ftp://ftp.research.bell-labs.com/dist/smlnj/contrib/emacs/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 ~ppc-macos x86"
 IUSE=""
-
-DEPEND="virtual/emacs"
-
-S=${WORKDIR}/${P}
 
 SITEFILE=50sml-mode-gentoo.el
 
@@ -32,12 +28,4 @@ src_install() {
 	elisp-site-file-install ${WORKDIR}/${SITEFILE}
 	doinfo *.info*
 	dodoc BUGS ChangeLog NEWS README TODO INSTALL
-}
-
-pkg_postinst() {
-	elisp-site-regen
-}
-
-pkg_postrm() {
-	elisp-site-regen
 }

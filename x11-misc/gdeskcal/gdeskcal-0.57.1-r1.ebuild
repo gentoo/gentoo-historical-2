@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gdeskcal/gdeskcal-0.57.1-r1.ebuild,v 1.1 2005/06/17 03:44:18 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gdeskcal/gdeskcal-0.57.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:40:34 chriswhite Exp $
 
 inherit eutils
 
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~ppc64 ~amd64"
+KEYWORDS="amd64 ppc ppc64 x86"
 
 IUSE="gnome"
 
@@ -50,10 +50,10 @@ src_install() {
 
 pkg_postinst() {
 	# some useful information about where to get skins
-	einfo ""
+	einfo
 	einfo "Skins for gDeskCal can be found at:"
 	einfo "  ${HOMEPAGE}"
-	einfo ""
+	einfo
 	einfo "To install a new skin simply drag it onto the gDeskCal skinbrowser"
-	einfo ""
+	einfo
 }

@@ -1,6 +1,20 @@
 # ChangeLog for x11-misc/bbrb
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbrb/ChangeLog,v 1.1 2002/04/30 05:22:42 seemant Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbrb/ChangeLog,v 1.1.1.1 2005/11/30 09:40:26 chriswhite Exp $
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bbrb-0.4.1.ebuild:
+  Removed S=, added IUSE=
+
+  04 Dec 2003; Brandon Hale <tseng@gentoo.org> bbrb-0.4.1.ebuild:
+  Fix bad DEPEND.
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  6 Jun 2002; Stacey has made sure this works with fluxbox and openbox as
+  well, so I have updated the pkg_postinst() function with instructions.
 
 *bbrb-0.4.1 (29 Apr 2002)
 

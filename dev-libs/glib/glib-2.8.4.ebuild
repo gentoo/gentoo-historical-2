@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.8.4.ebuild,v 1.1 2005/11/18 05:05:23 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.8.4.ebuild,v 1.1.1.1 2005/11/30 09:41:31 chriswhite Exp $
 
 inherit gnome.org libtool eutils flag-o-matic debug
 

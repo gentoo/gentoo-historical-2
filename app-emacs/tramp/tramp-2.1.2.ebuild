@@ -1,29 +1,25 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/tramp/tramp-2.1.2.ebuild,v 1.1 2004/10/03 14:28:21 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/tramp/tramp-2.1.2.ebuild,v 1.1.1.1 2005/11/30 09:41:22 chriswhite Exp $
 
 inherit elisp
 
-IUSE=""
-
-DESCRIPTION="TRAMP is a package for editing remote files similar to ange-ftp but with rlogin, telnet and/or ssh"
+DESCRIPTION="edit remote files like ange-ftp but with rlogin, telnet and/or ssh"
 HOMEPAGE="http://savannah.nongnu.org/projects/tramp/"
 SRC_URI="http://savannah.nongnu.org/download/tramp/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~amd64 ~ppc"	# rewritten version of tramp
+KEYWORDS="alpha ~amd64 ~ppc sparc ~x86"
+IUSE=""
 
-DEPEND="virtual/emacs"
-
+# this is needed; elisp.eclass redefines src_compile() from portage default
 src_compile() {
-
-	econf || die "econf failed"
-	emake || die "compile problem"
+	econf || die
+	emake || die
 }
 
 src_install() {
-
 	dodir /usr/share/info
 	dodir /usr/share/emacs/etc
 	dodir /usr/share/emacs/site-lisp/tramp

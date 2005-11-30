@@ -1,6 +1,68 @@
 # ChangeLog for x11-misc/habak
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/habak/ChangeLog,v 1.1 2004/01/08 20:26:17 taviso Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/habak/ChangeLog,v 1.1.1.1 2005/11/30 09:40:39 chriswhite Exp $
+
+  30 Oct 2005; Luis Medinas <metalgod@gentoo.org> habak-0.2.5.ebuild:
+  Added ~amd64 keyword. Bug #110444.
+
+*habak-0.2.5 (25 Sep 2005)
+
+  25 Sep 2005; Lukasz Strzygowski <lucass@gentoo.org> +habak-0.2.5.ebuild:
+  Version bump. Closing bug #107155.
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> habak-0.2.4.1.ebuild:
+  Mark 0.2.4.1 stable on alpha
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> habak-0.2.4.1.ebuild:
+  Stable on ppc.
+
+  21 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> habak-0.2.4.1.ebuild:
+  Stable on sparc
+
+  17 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> habak-0.2.4.1.ebuild:
+  Keyworded ~sparc
+
+  15 Jan 2005; Lukasz Strzygowski <lucass@gentoo.org> habak-0.2.4.1.ebuild,
+  habak-0.2.4.ebuild:
+  Marked stable on x86.
+
+*habak-0.2.4.1 (20 Sep 2004)
+
+  20 Sep 2004; Lukasz Strzygowski <lucass@gentoo.org> +metadata.xml,
+  +habak-0.2.4.1.ebuild:
+  Version bump. Minor changes in ebuild. Added metadata.xml.
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org> habak-0.2.1.ebuild:
+  Stable on sparc.
+
+*habak-0.2.4 (17 Sep 2004)
+
+  17 Sep 2004; Tavis Ormandy <taviso@gentoo.org> +habak-0.2.4.ebuild:
+  bump, #62870
+
+  06 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> habak-0.2.1.ebuild:
+  Marked ~amd64.
+
+  03 Jul 2004; Jason Wever <weeve@gentoo.org> habak-0.2.1.ebuild:
+  Added ~sparc keyword.
+
+  19 Jun 2004; <pyrania@gentoo.org> habak-0.2.1.ebuild, habak-0.2.3.ebuild:
+  Added IUSE, stable on x86.
+
+  13 May 2004; Tavis Ormandy <taviso@gentoo.org> files/README.en:
+  Many thanks to Jacek Masiulaniec for making some improvements to 
+  the README.en file.
+
+*habak-0.2.3 (13 Mar 2004)
+
+  13 Mar 2004; Tavis Ormandy <taviso@gentoo.org> habak-0.2.3.ebuild:
+  new upstream release, any Polish users reading this please check if the
+  README.en file neads to be updated! ;)
+
+*habak-0.2.1 (23 Jan 2004)
+
+  23 Jan 2004; Tavis Ormandy <taviso@gentoo.org> habak-0.2.1.ebuild:
+  stable
 
   08 Jan 2004; Tavis Ormandy <taviso@gentoo.org> :
   Initial import, based on ebuild contributed by 

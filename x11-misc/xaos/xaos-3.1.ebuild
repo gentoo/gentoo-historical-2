@@ -1,8 +1,10 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xaos/xaos-3.1.ebuild,v 1.1 2003/05/30 09:11:21 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xaos/xaos-3.1.ebuild,v 1.1.1.1 2005/11/30 09:40:20 chriswhite Exp $
 
-IUSE="X svga aalib ggi"
+inherit eutils
+
+IUSE="X svga aalib nls"
 
 MY_PN=XaoS
 MY_P=${MY_PN}-${PV}
@@ -14,7 +16,7 @@ SRC_URI="mirror://sourceforge/xaos/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc amd64 -sparc"
 
 DEPEND="X? ( virtual/x11 )
 	svga? ( >=media-libs/svgalib-1.4.3 )
@@ -25,12 +27,18 @@ DEPEND="X? ( virtual/x11 )
 #	ggi?   ( media-libs/libggi )
 
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/gcc3.4.patch
+}
+
 src_compile() {
 	local myconf
 	use X     || myconf="--with-x11-driver=no"
 #	use dga   || myconf="${myconf} --with-dga-driver=no"
 # ggi support removed due to upstream bug
-	#use ggi   || 
+	#use ggi   ||
 	myconf="${myconf} --with-ggi-driver=no"
 	use svga  || myconf="${myconf} --with-svga-driver=no"
 #	use aalib || myconf="${myconf} --with-aa-driver=no"
@@ -50,7 +58,7 @@ src_install() {
 		prefix=${D}/usr \
 		infodir=${D}/usr/share/info \
 		mandir=${D}/usr/share/man \
- 		LOCALEDIR=${D}/usr/share/locale \
+		LOCALEDIR=${D}/usr/share/locale \
 	install || die
 
 	use nls || rm -r ${D}/usr/share/locale

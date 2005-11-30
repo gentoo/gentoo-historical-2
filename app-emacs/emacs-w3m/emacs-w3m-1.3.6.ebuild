@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-w3m/emacs-w3m-1.3.6.ebuild,v 1.1 2003/07/24 14:45:11 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-w3m/emacs-w3m-1.3.6.ebuild,v 1.1.1.1 2005/11/30 09:41:09 chriswhite Exp $
 
 inherit elisp
 
@@ -12,14 +12,22 @@ SRC_URI="http://emacs-w3m.namazu.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc ~sparc"
+KEYWORDS="x86 alpha ppc sparc"
 
 DEPEND="virtual/emacs
-        || ( >=net-www/w3m-0.3.1 net-www/w3m-m17n )
-        >=app-emacs/apel-10.3
-        >=virtual/flim-1.14"
+	virtual/w3m"
 
-S=${WORKDIR}/${P}
+pkg_setup() {
+	# use async doesn't ensure you built w3m with async flag,
+	# but it's safe to abort if you have it.
+	ewarn
+	ewarn "emacs-w3m hangs if you build w3m with async support."
+	ewarn "Please turn off async USE flag if you set it."
+	ewarn
+	if use async ; then
+		die "async USE flag detected. aborting."
+	fi
+}
 
 src_compile() {
 	./configure --prefix=/usr \
@@ -47,6 +55,9 @@ src_install () {
 pkg_postinst() {
 	elisp-site-regen
 	einfo "Please see /usr/share/doc/${P}/README.gz."
+	einfo
+	einfo "If you want to use shimbun library, please emerge app-emacs/apel and app-emacs/flim."
+	einfo
 }
 
 pkg_postrm() {

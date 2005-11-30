@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm-user/lvm-user-1.0.7-r2.ebuild,v 1.1 2004/11/10 05:57:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm-user/lvm-user-1.0.7-r2.ebuild,v 1.1.1.1 2005/11/30 09:44:17 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -16,7 +16,8 @@ IUSE="static"
 RDEPEND="!sys-fs/lvm2"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4.0
-	virtual/linux-sources"
+	!>=sys-kernel/linux-headers-2.6
+	virtual/linux-sources" # Use lvm2 for 2.6; lvm-user is for 2.4; see #90897.
 
 S=${WORKDIR}/LVM/${PV}
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/nprquake-sdl/nprquake-sdl-1-r1.ebuild,v 1.1 2003/09/29 00:26:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/nprquake-sdl/nprquake-sdl-1-r1.ebuild,v 1.1.1.1 2005/11/30 09:39:47 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 DESCRIPTION="quake1 utilizing a hand drawn engine"
 HOMEPAGE="http://www.cs.wisc.edu/graphics/Gallery/NPRQuake/ http://www.tempestgames.com/ryan/"
@@ -11,6 +11,7 @@ SRC_URI="http://www.tempestgames.com/ryan/downloads/NPRQuake-SDL.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
 DEPEND="media-libs/libsdl"
 
@@ -18,15 +19,14 @@ S=${WORKDIR}/NPRQuake-SDL
 
 src_unpack() {
 	unpack ${A}
-	cp -rf ${S}{,.orig}
-	cd ${S}
-	epatch ${FILESDIR}/${PV}-gentoo.patch
+	cd "${S}"
+	epatch "${FILESDIR}"/${PV}-gentoo.patch
 }
 
 src_compile() {
 	make \
 		GENTOO_LIBDIR="${GAMES_LIBDIR}/${PN}" \
-		GENTOO_DATADIR="${GAMES_DATADIR}/quake-data" \
+		GENTOO_DATADIR="${GAMES_DATADIR}/quake1" \
 		OPTFLAGS="${CFLAGS}" \
 		release \
 		|| die
@@ -34,10 +34,11 @@ src_compile() {
 
 src_install() {
 	dodoc README CHANGELOG
-	newgamesbin NPRQuakeSrc/release*/bin/* nprquake-sdl
-	dodir ${GAMES_LIBDIR}/${PN}
-	cp -r build/* ${D}/${GAMES_LIBDIR}/${PN}/
-	cd ${D}/${GAMES_LIBDIR}/${PN}
+	newgamesbin NPRQuakeSrc/release*/bin/* nprquake-sdl \
+		|| die "newgamesbin failed"
+	dodir "${GAMES_LIBDIR}/${PN}"
+	cp -r build/* "${D}/${GAMES_LIBDIR}/${PN}/" || die "cp failed"
+	cd "${D}/${GAMES_LIBDIR}/${PN}"
 	mv dr_default.so default.so
 	ln -s sketch.so dr_default.so
 	prepgamesdirs

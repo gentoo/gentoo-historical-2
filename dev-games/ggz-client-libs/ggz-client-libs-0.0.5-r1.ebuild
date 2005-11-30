@@ -1,32 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/ggz-client-libs/ggz-client-libs-0.0.5-r1.ebuild,v 1.1 2003/07/13 03:13:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/ggz-client-libs/ggz-client-libs-0.0.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:40 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="The client libraries for GGZ Gaming Zone"
+HOMEPAGE="http://www.ggzgamingzone.org/"
 SRC_URI="mirror://sourceforge/ggz/${P}.tar.gz"
-HOMEPAGE="http://ggz.sourceforge.net/"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="x86 sparc "
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
 
-DEPEND=">=dev-libs/libggz-0.0.5
-		dev-libs/expat"
+DEPEND=">=dev-games/libggz-0.0.5
+	dev-libs/expat"
 
 src_unpack() {
-	unpack ${A} || die
-	cd ${S} || die
-	patch -p1 < ${FILESDIR}/ggz-client-libs-0.0.5-gcc32.diff || die
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/ggz-client-libs-0.0.5-gcc32.diff
 }
 
-src_compile() {
- 	econf || die "./configure failed"
-	emake || die
-}
-
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
-
-	dodoc AUTHORS COPYING ChangeLog HACKING NEWS Quick* README* TODO
+	dodoc AUTHORS ChangeLog HACKING NEWS Quick* README* TODO
 }

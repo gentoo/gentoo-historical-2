@@ -1,6 +1,27 @@
 # ChangeLog for x11-misc/evolvotron
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/evolvotron/ChangeLog,v 1.1 2003/11/03 06:00:26 mr_bones_ Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/evolvotron/ChangeLog,v 1.1.1.1 2005/11/30 09:40:24 chriswhite Exp $
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> evolvotron-0.3.1.ebuild:
+  Fix qt dep
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> +metadata.xml,
+  -evolvotron-0.2.2.ebuild, evolvotron-0.3.1.ebuild:
+  added metadata, 0.3.1 stable x86, cleanup
+
+  07 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  evolvotron-0.3.1.ebuild:
+  mark ~ppc
+
+*evolvotron-0.3.1 (03 Nov 2004)
+
+  03 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +evolvotron-0.3.1.ebuild:
+  version bump (bug #63369)
+
+  03 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  evolvotron-0.2.2.ebuild:
+  Turn on fullscreen support.
 
 *evolvotron-0.2.2 (02 Nov 2003)
 

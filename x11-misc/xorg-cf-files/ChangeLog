@@ -1,6 +1,29 @@
 # ChangeLog for x11-misc/xorg-cf-files
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xorg-cf-files/ChangeLog,v 1.1 2005/10/20 06:50:48 joshuabaergen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xorg-cf-files/ChangeLog,v 1.1.1.1 2005/11/30 09:40:50 chriswhite Exp $
+
+*xorg-cf-files-0.99.2 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xorg-cf-files-0.99.2.ebuild:
+  Bump for 7.0RC2.
+
+*xorg-cf-files-0.99.1-r1 (08 Nov 2005)
+
+  08 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -xorg-cf-files-0.99.1.ebuild, +xorg-cf-files-0.99.1-r1.ebuild:
+  Fix libdir so that empty *.def files install correctly on AMD64.
+
+  07 Nov 2005; Stephen P. Becker <geoman@gentoo.org>
+  xorg-cf-files-0.99.1.ebuild:
+  added ~mips keyword
+
+  02 Nov 2005; Ferris McCormick <fmccor@gentoo.org>
+  xorg-cf-files-0.99.1.ebuild:
+  Add ~sparc keyword (needed with X-modular for some packages).
+
+  01 Nov 2005; <dang@gentoo.org> xorg-cf-files-0.99.1.ebuild:
+  Marked ~amd64
 
 *xorg-cf-files-0.99.1 (20 Oct 2005)
 

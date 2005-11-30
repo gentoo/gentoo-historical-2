@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ibpp/ibpp-2.3.4.0.ebuild,v 1.1 2004/10/25 23:15:48 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ibpp/ibpp-2.3.4.0.ebuild,v 1.1.1.1 2005/11/30 09:41:58 chriswhite Exp $
 
 inherit eutils
 

@@ -12,7 +12,7 @@
 --- cyrus-sasl-1.5.27/saslauthd/saslauthd.8.in.mdk	Wed Oct 17 14:35:31 2001
 +++ cyrus-sasl-1.5.27/saslauthd/saslauthd.8.in	Wed Oct 17 14:35:40 2001
 @@ -1,29 +1,28 @@
- .\" $Id: cyrus-sasl-saslauthd.patch,v 1.1 2002/02/19 00:36:20 woodchip Exp $
+ .\" $Id: cyrus-sasl-saslauthd.patch,v 1.1.1.1 2005/11/30 09:42:10 chriswhite Exp $
  .\" Copyright 1997-2000 Messaging Direct Ltd. All rights reserved.
 -.Dt SASLAUTHD 8
 -.Os "CMU-SASL"

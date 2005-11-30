@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/dvd+rw-tools/dvd+rw-tools-5.21.4.10.8.ebuild,v 1.1 2004/10/21 20:04:04 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/dvd+rw-tools/dvd+rw-tools-5.21.4.10.8.ebuild,v 1.1.1.1 2005/11/30 09:42:21 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://fy.chalmers.se/~appro/linux/DVD+RW/tools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~hppa ~amd64 ~alpha ~ia64"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="virtual/libc
@@ -23,9 +23,10 @@ src_unpack() {
 }
 
 src_compile() {
-	sed -i -e "s:^CFLAGS=\$(WARN).*:CFLAGS=${CFLAGS}:" \
+	sed -i \
+		-e "s:^CFLAGS=\$(WARN).*:CFLAGS=${CFLAGS}:" \
 		-e "s:^CXXFLAGS=\$(WARN).*:CXXFLAGS=${CXXFLAGS} -fno-exceptions:" \
-	Makefile.m4 || die
+		Makefile.m4 || die
 	emake || die
 }
 

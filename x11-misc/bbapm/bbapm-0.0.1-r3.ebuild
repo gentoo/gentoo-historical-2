@@ -1,23 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbapm/bbapm-0.0.1-r3.ebuild,v 1.1 2002/12/12 17:47:30 mkeadle Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbapm/bbapm-0.0.1-r3.ebuild,v 1.1.1.1 2005/11/30 09:40:47 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
-S=${WORKDIR}/${P}
+IUSE=""
 DESCRIPTION="blackbox advanced power management tool"
 SRC_URI="http://bbtools.thelinuxcommunity.org/sources/${P}.tar.gz"
-HOMEPAGE="http://bbtools.thelinuxcommunity.org/contrib.phtml"
+HOMEPAGE="http://bbtools.sourceforge.net/download.php"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc"
+KEYWORDS="x86"
+
+replace-flags "-fomit-frame-pointer" ""
 
 DEPEND="virtual/blackbox
-	>=sys-apps/apmd-3.0.1"
+	>=sys-apps/apmd-3.0.1
+	>=sys-apps/sed-4"
 
 src_unpack() {
 
 	unpack ${A}; cd ${S}
+	 sed -i -e 's:friend:friend class:' LinkedList.hh
 	epatch ${FILESDIR}/${P}-gcc3.patch
 
 }
@@ -26,7 +30,7 @@ src_compile() {
 
 	./configure --prefix=/usr --host=${CHOST} || die
 	emake || die
-	
+
 }
 
 src_install () {

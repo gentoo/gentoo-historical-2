@@ -1,9 +1,46 @@
-# ChangeLog for app-admin/addpatches
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvthread/ChangeLog,v 1.1 2003/03/06 18:54:14 pvdabeel Exp $
+# ChangeLog for dev-libs/dvthread
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvthread/ChangeLog,v 1.1.1.1 2005/11/30 09:41:50 chriswhite Exp $
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  dvthread-0.4.7-r2.ebuild:
+  Stable on ppc.
+
+  22 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> dvthread-0.4.7-r2.ebuild:
+  Stable on x86.
+
+  09 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> dvthread-0.4.6a.ebuild:
+  DESTDIR deserves some respect; fixes access violation (bug 95364).
+
+*dvthread-0.4.7-r2 (20 May 2005)
+
+  20 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/dvthread-0.4.7-fix-underquoted-m4.diff, +metadata.xml,
+  +dvthread-0.4.7-r2.ebuild:
+  Revision bump; added patch to fix underquoted m4 defs. Also, only install
+  API html/man pages if USE=doc and even then at least install them in the
+  correct location. Added metadata.xml.
+
+*dvthread-0.4.7-r1 (13 May 2005)
+  13 May 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>:+dvthread-0.4.7-r1.ebuild:
+  revision bumped, small upstream change
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  dvthread-0.4.4.ebuild, dvthread-0.4.6a.ebuild, dvthread-0.4.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+*dvthread-0.4.7 (28 Oct 2003)
+
+*dvthread-0.4.7 (28 Oct 2003)
+
+*dvthread-0.4.6a (14 Jun 2003) 
+
+  14 Jun 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+
+  updated
 
 *dvthread-0.4.4 (06 Mar 2003)
 
-  06 Mar 2002; Pieter Van den Abeele<pvdabeel@gentoo.org> :
+  06 Mar 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
 
   Created an ebuild - also tested on ppc

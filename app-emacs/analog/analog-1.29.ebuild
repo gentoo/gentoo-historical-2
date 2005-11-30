@@ -1,8 +1,8 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/analog/analog-1.29.ebuild,v 1.1 2002/11/01 02:52:00 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/analog/analog-1.29.ebuild,v 1.1.1.1 2005/11/30 09:41:07 chriswhite Exp $
 
-inherit elisp 
+inherit elisp
 
 IUSE=""
 
@@ -11,11 +11,9 @@ HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki.pl?action=browse&id=MattHodges&o
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="virtual/emacs"
-
-S="${WORKDIR}/${P}"
 
 SITEFILE=50analog-gentoo.el
 

@@ -1,27 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/bglibs/bglibs-1.009.ebuild,v 1.1 2003/04/23 21:00:21 sethbc Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/bglibs/bglibs-1.009.ebuild,v 1.1.1.1 2005/11/30 09:41:51 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit toolchain-funcs
+
 DESCRIPTION="Bruce Guenters Libraries Collection"
 HOMEPAGE="http://untroubled.org/bglibs/"
 SRC_URI="http://untroubled.org/bglibs/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="x86 sparc"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
-        echo "${D}/usr/lib/bglibs" > conf-home
-        echo "gcc ${CFLAGS}" > conf-cc
-        MAKEOPTS="" emake || die
+	echo "${D}/usr/lib/bglibs" > conf-home
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
+	emake -j1 || die
 }
 
 src_install () {
-        dodir /usr/lib/bglibs
-        ./installer || die "install failed"
-        dodoc ANNOUNCEMENT COPYING NEWS README
+	dodir /usr/lib/bglibs
+	./installer || die "install failed"
+	dodoc ANNOUNCEMENT COPYING NEWS README
 }
-

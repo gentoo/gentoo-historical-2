@@ -1,6 +1,38 @@
 # ChangeLog for app-emacs/mldonkey
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mldonkey/ChangeLog,v 1.1 2003/11/02 20:50:02 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mldonkey/ChangeLog,v 1.1.1.1 2005/11/30 09:41:15 chriswhite Exp $
+
+  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> mldonkey-0.0.4b.ebuild:
+  added ~amd64 to KEYWORDS, fixes #87245
+
+*mldonkey-0.0.4b (06 Apr 2005)
+
+  06 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> +mldonkey-0.0.4b.ebuild:
+  Version bumped. This closes bug #87248.
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> mldonkey-0.0.4a.ebuild:
+  Added ewarn; bug #50510.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -mldonkey-0.0.2a.ebuild,
+  -mldonkey-0.0.3c.ebuild, mldonkey-0.0.4a.ebuild:
+  Marked as stable. Removed old ebuilds.
+
+*mldonkey-0.0.4a (07 Sep 2004)
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +mldonkey-0.0.4a.ebuild:
+  Version bumped; bug #62828.
+
+  07 May 2004; David Holm <dholm@gentoo.org> mldonkey-0.0.3c.ebuild:
+  Added to ~ppc.
+
+  23 Apr 2004; <mkennedy@gentoo.org> files/50mldonkey-gentoo.el:
+  Remove highline-mode hooks
+
+*mldonkey-0.0.3c (20 Apr 2004)
+
+  20 Apr 2004; <mkennedy@gentoo.org> files/50mldonkey-gentoo.el,
+  +mldonkey-0.0.3c.ebuild:
+  New upstream version
 
 *mldonkey-0.0.2a (02 Nov 2003)
 

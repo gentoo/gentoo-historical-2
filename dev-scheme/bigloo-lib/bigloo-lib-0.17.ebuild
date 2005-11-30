@@ -1,19 +1,19 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/bigloo-lib/bigloo-lib-0.17.ebuild,v 1.1 2004/02/11 22:49:41 jake Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/bigloo-lib/bigloo-lib-0.17.ebuild,v 1.1.1.1 2005/11/30 09:42:18 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Bigloo support libraries"
+HOMEPAGE="http://bigloo-lib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/bigloo-lib/${P}.tar.gz"
-HOMEPAGE="http://bigloo-lib.sf.net"
-SLOT="0"
+
 LICENSE="GPL-2"
-KEYWORDS="x86 ~sparc "
-IUSE="nls gtk postgres mysql gtk2 ipcs gd ldap X gdbm expat"
+SLOT="0"
+KEYWORDS="x86 ~sparc"
+IUSE="X gd gdbm gtk gtk2 ldap mysql nls postgres"
 
 DEPEND=">=dev-scheme/bigloo-2.4
 	X? ( virtual/x11 )
-	gd? ( >=media-libs/libgd-1.8.3 )
+	gd? ( >=media-libs/gd-1.8.3 )
 	gtk? ( =x11-libs/gtk+-1.2* )
 	nls? ( >=sys-devel/gettext-0.11.1 )
 	gtk2? ( =x11-libs/gtk+-2* )
@@ -24,7 +24,7 @@ DEPEND=">=dev-scheme/bigloo-2.4
 src_compile() {
 	local myconf
 	# readline support is flaky
-#	myconf="--with-commandline"	
+#	myconf="--with-commandline"
 	use gd && \
 		myconf="${myconf} --with-gd" \
 		|| myconf="${myconf} --without-gd"

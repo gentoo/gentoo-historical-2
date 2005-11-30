@@ -1,26 +1,27 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004/ut2004-3355-r1.ebuild,v 1.1 2005/06/16 21:36:27 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004/ut2004-3355-r1.ebuild,v 1.1.1.1 2005/11/30 09:39:48 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 MY_P="${PN}-lnxpatch${PV}.tar.bz2"
 DESCRIPTION="Unreal Tournament 2004 - Editor's Choice Edition"
 HOMEPAGE="http://www.unrealtournament2004.com/"
-SRC_URI="mirror://3dgamers/pub/3dgamers/games/unrealtourn2k4/${MY_P}
+SRC_URI="mirror://3dgamers/unrealtourn2k4/${MY_P}
 	http://speculum.twistedgamer.com/pub/0day.icculus.org/${PN}/${MY_P}
-	http://icculus.org/~icculus/tmp/${PN}-lnx-amd64-05282005.tar.bz2"
+	amd64? ( http://icculus.org/~icculus/tmp/${PN}-lnx-amd64-05282005.tar.bz2 )"
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="amd64 x86"
 RESTRICT="nostrip nomirror"
 IUSE="opengl dedicated"
 
 RDEPEND="games-fps/ut2004-data
 	games-fps/ut2004-bonuspack-ece
 	opengl? ( virtual/opengl )
-	dedicated? ( app-misc/screen )"
+	dedicated? ( app-misc/screen )
+	amd64? ( sys-libs/libstdc++-v3 )"
 
 S=${WORKDIR}/UT2004-Patch
 
@@ -28,14 +29,13 @@ dir=${GAMES_PREFIX_OPT}/${PN}
 Ddir=${D}/${dir}
 
 pkg_setup() {
-	check_license || die "License check failed"
-
+	check_license ut2003
 	games_pkg_setup
 }
 
 src_install() {
 	# moving patched binary into proper location
-	mv -f ${S}/ut2004-bin-linux-amd64 ${S}/System
+	use amd64 && mv -f ${WORKDIR}/ut2004-bin-linux-amd64 ${S}/System
 
 	# Installing patch files
 	for p in {Animations,Help,Speech,System,Textures,Web}
@@ -60,7 +60,7 @@ src_install() {
 	mkdir -p ${D}/root/.loki/installed
 	dosym ${dir}/.manifest/${PN}.xml ${ROOT}/root/.loki/installed/${PN}.xml
 
-	games_make_wrapper ut2004 ./ut2004 ${dir}
+	games_make_wrapper ut2004 ./ut2004 "${dir}" "${dir}"
 
 	prepgamesdirs
 	make_desktop_entry ut2004 "Unreal Tournament 2004" ut2004.xpm
@@ -75,7 +75,7 @@ pkg_postinst() {
 		einfo "A cdkey file is already present in ${dir}/System"
 	else
 		ewarn "You MUST run this before playing the game:"
-		ewarn "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
+		ewarn "emerge --config =${CATEGORY}/${PF}"
 		ewarn "That way you can [re]enter your cdkey."
 	fi
 	echo

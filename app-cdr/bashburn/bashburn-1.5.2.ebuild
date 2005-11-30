@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/bashburn/bashburn-1.5.2.ebuild,v 1.1 2004/11/18 21:40:56 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/bashburn/bashburn-1.5.2.ebuild,v 1.1.1.1 2005/11/30 09:42:24 chriswhite Exp $
 
 
 MY_P=${P//b/B}
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
+KEYWORDS="~x86 ~sparc amd64 ~ppc"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
@@ -23,7 +23,7 @@ DEPEND="virtual/libc
 	media-sound/vorbis-tools
 	media-sound/normalize
 	media-libs/flac
-	sys-apps/eject"
+	virtual/eject"
 
 RDEPEND="app-shells/bash"
 

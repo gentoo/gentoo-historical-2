@@ -1,6 +1,23 @@
-# ChangeLog for net-misc/rsnapshot
+# ChangeLog for app-backup/rsnapshot
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/rsnapshot/ChangeLog,v 1.1 2005/07/04 06:34:25 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/rsnapshot/ChangeLog,v 1.1.1.1 2005/11/30 09:42:43 chriswhite Exp $
+
+  08 Nov 2005; Brent Baude <ranger@gentoo.org> rsnapshot-1.2.1.ebuild:
+  Marking rsnapshot-1.2.1 ppc64 stable
+
+*rsnapshot-1.2.1-r1 (29 Sep 2005)
+*rsnapshot-1.1.7-r1 (29 Sep 2005)
+
+  29 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  +rsnapshot-1.1.7-r1.ebuild, +rsnapshot-1.2.1-r1.ebuild:
+  Also install examples, patch by Felipe Massia Pereira.
+
+  12 Sep 2005; Ferris McCormick <fmccor@gentoo.org> rsnapshot-1.2.1.ebuild:
+  Add ~sparc keyword.  Seems to work fine, and has been recommended as one
+  vehicle for backing up toucan directories.
+
+  04 Aug 2005; Brent Baude <ranger@gentoo.org> rsnapshot-1.2.1.ebuild:
+  Marked ~ppc64 for testing.
 
   04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
   +rsnapshot-1.1.7.ebuild, +rsnapshot-1.2.1.ebuild:

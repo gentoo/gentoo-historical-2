@@ -1,3 +1,4 @@
-MD5 7f1a69cdd31005cdd4bfcdfc1880f101 ChangeLog 394
-MD5 20518de17f7d96decf6ceb8e608b5cb8 ebook-libgnomeui-1.0.ebuild 355
+MD5 63ca508be0e6daea5d30e9899286f252 ChangeLog 663
+MD5 d2b68f1bba0f822426e021ee2daff9c1 ebook-libgnomeui-1.0.ebuild 463
 MD5 532b00ed7c12705b0f040c5dd566d0ad files/digest-ebook-libgnomeui-1.0 62
+MD5 5e7a34af75573d09b42ae4614a5aca22 files/ebook-libgnome-book.devhelp.patch 345

@@ -1,27 +1,37 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libole2/libole2-0.2.4.ebuild,v 1.1 2001/11/05 20:41:07 azarah Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libole2/libole2-0.2.4.ebuild,v 1.1.1.1 2005/11/30 09:42:07 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="libole2"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/unstable/sources/${PN}/${P}.tar.gz"
+inherit gnome.org
+
+DESCRIPTION="Library to manipulate OLE2 Structured Storage files"
 HOMEPAGE="http://www.gnome.org/"
 
-DEPEND=">=dev-libs/glib-1.2.10-r1"
+IUSE=""
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc ppc alpha"
 
+DEPEND="=dev-libs/glib-1.2*
+	dev-util/gtk-doc"
 
 src_compile() {
-
-	./configure --host=${CHOST} 					\
-		    --prefix=/usr || die
-
+	econf || die
 	emake || die
 }
 
 src_install() {
+	# prevent executing gtkdoc-fixxref - sandbox violations
+	cd ${S}/doc
+	mv Makefile Makefile.orig
+	sed 's/gtkdoc-fixxref.*/\\/' Makefile.orig > Makefile
 
+	cd ${S}
 	make DESTDIR=${D} install || die
-
 	dodoc AUTHORS COPYING ChangeLog NEWS README* TODO
+}
+
+pkg_postinst() {
+	einfo "Fixing libole2's documentation cross references"
+	gtkdoc-fixxref --module=libole2 --html-dir=/usr/share/libole2/html
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-threewave/quake3-threewave-1.7.ebuild,v 1.1 2004/11/23 22:06:44 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-threewave/quake3-threewave-1.7.ebuild,v 1.1.1.1 2005/11/30 09:39:50 chriswhite Exp $
 
 MOD_DESC="Threewave CTF"
 MOD_NAME=threewave

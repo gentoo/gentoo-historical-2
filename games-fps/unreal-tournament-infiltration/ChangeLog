@@ -1,6 +1,11 @@
-# ChangeLog for app-games/unreal-tournament-infiltration
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-infiltration/ChangeLog,v 1.1 2003/09/09 18:10:15 vapier Exp $
+# ChangeLog for games-fps/unreal-tournament-infiltration
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-infiltration/ChangeLog,v 1.1.1.1 2005/11/30 09:39:55 chriswhite Exp $
+
+*unreal-tournament-infiltration-290 (21 Feb 2004)
+
+  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #36429.
 
 *unreal-tournament-infiltration-286 (11 Jul 2003)
 

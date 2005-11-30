@@ -1,9 +1,9 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/quanta-docs/quanta-docs-20030405.ebuild,v 1.1 2003/11/30 14:44:46 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/quanta-docs/quanta-docs-20030405.ebuild,v 1.1.1.1 2005/11/30 09:42:33 chriswhite Exp $
 
-S=${WORKDIR}
 DESCRIPTION="Lots of docs for quanta"
+HOMEPAGE="http://quanta.sourceforge.net"
 SRC_URI="mirror://sourceforge/quanta/css.tar.bz2
 	mirror://sourceforge/quanta/html.tar.bz2
 	mirror://sourceforge/quanta/javascript.tar.bz2
@@ -11,11 +11,12 @@ SRC_URI="mirror://sourceforge/quanta/css.tar.bz2
 	mirror://sourceforge/quanta/php_manual_en_20030401.tar.bz2
 	mysql? ( mirror://sourceforge/quanta/quantadoc-mysql-20030405.tar.bz2 )"
 
-HOMEPAGE="http://quanta.sourceforge.net"
-
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc"
+SLOT="0"
+KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="mysql"
+
+S=${WORKDIR}
 
 src_install() {
 	dodir /usr/share/apps/quanta/doc

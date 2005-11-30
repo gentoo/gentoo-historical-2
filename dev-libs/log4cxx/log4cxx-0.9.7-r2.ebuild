@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4cxx/log4cxx-0.9.7-r2.ebuild,v 1.1 2005/03/16 11:12:41 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4cxx/log4cxx-0.9.7-r2.ebuild,v 1.1.1.1 2005/11/30 09:41:37 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.apache.org/dist/logging/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 x86"
 IUSE="doc unicode odbc smtp"
 
 DEPEND="virtual/libc

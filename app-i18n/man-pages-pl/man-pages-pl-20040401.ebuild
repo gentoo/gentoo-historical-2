@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-pl/man-pages-pl-20040401.ebuild,v 1.1 2005/09/02 04:29:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-pl/man-pages-pl-20040401.ebuild,v 1.1.1.1 2005/11/30 09:40:14 chriswhite Exp $
 
 DESCRIPTION="A collection of Polish translations of Linux manual pages."
 HOMEPAGE="http://ptm.linux.pl/"

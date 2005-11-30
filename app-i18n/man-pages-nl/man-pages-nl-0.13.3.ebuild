@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-nl/man-pages-nl-0.13.3.ebuild,v 1.1 2005/09/02 04:26:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-nl/man-pages-nl-0.13.3.ebuild,v 1.1.1.1 2005/11/30 09:40:05 chriswhite Exp $
 
 DESCRIPTION="A somewhat comprehensive collection of Dutch Linux man pages"
 HOMEPAGE="http://doc.nl.linux.org/MANPAGE/"

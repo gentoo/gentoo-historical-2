@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/device-mapper/device-mapper-1.01.04.ebuild,v 1.1 2005/08/19 23:10:55 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/device-mapper/device-mapper-1.01.04.ebuild,v 1.1.1.1 2005/11/30 09:44:28 chriswhite Exp $
 
 inherit eutils multilib
 

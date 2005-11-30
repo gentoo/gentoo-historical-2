@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/qcad/qcad-2.0.4.0-r1.ebuild,v 1.1 2004/12/27 21:24:47 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/qcad/qcad-2.0.4.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:34 chriswhite Exp $
 
 inherit kde-functions eutils
 
@@ -9,19 +9,19 @@ MY_P=${P}-1.src
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="A 2D CAD package based upon Qt."
 SRC_URI="http://www.ribbonsoft.com/archives/qcad/${MY_P}.tar.gz
-		doc? ( mirror://gentoo/qcad-manual-200404.tar.bz2 )"
-#		mirror://gentoo/qcaddoc-${MY_PV}.tar.bz2"
+		doc? ( mirror://gentoo/qcad-manual-200404.tar.bz2
+				http://dev.gentoo.org/~phosphan/qcad-manual-200404.tar.bz2 )"
 HOMEPAGE="http://www.ribbonsoft.com/qcad.html"
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="x86 ppc amd64"
 
 need-qt 3.3
 
 DEPEND="${DEPEND}
-		>=sys-apps/sed-4"
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
@@ -31,6 +31,10 @@ src_unpack() {
 	echo >> defs.pro "CONFIG += thread release"
 	echo >> defs.pro "QMAKE_CFLAGS_RELEASE += ${CFLAGS}"
 	echo >> defs.pro "QMAKE_CXXFLAGS_RELEASE += ${CXXFLAGS}"
+	for file in */Makefile scripts/build_qcad.sh; do
+		sed -i -e 's~qmake~${QTDIR}/bin/qmake~g' $file || \
+			die "unable to correct path to qmake in $file"
+	done
 	epatch ${FILESDIR}/${MY_P}-gentoo.patch
 	epatch ${FILESDIR}/manual.patch-r1
 	cd ${S}/scripts
@@ -74,12 +78,13 @@ src_install () {
 	chmod ugo+rx qcad
 	dobin qcad
 	dodir /usr/share/${P}
-	cp -a patterns examples fonts qm ${D}/usr/share/${P}
+	cp -pPR patterns examples fonts qm ${D}/usr/share/${P}
 	cd ..
 	dodoc README
 	if use doc; then
 		insinto /usr/share/doc/${PF}/
 		cd ${WORKDIR}
-		cp -a qcaddoc.adp cad ${D}usr/share/doc/${PF}
+		cp -pPR qcaddoc.adp cad ${D}usr/share/doc/${PF}
 	fi
+	make_desktop_entry ${PN} ${PN} ${PN} Office
 }

@@ -1,6 +1,41 @@
 # ChangeLog for x11-misc/sisctrl
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/sisctrl/ChangeLog,v 1.1 2003/11/23 17:59:23 port001 Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/sisctrl/ChangeLog,v 1.1.1.1 2005/11/30 09:40:25 chriswhite Exp $
+
+  15 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  sisctrl-0.0.20050618.ebuild:
+  Added ~amd64 keywords. Closes bug #106012.
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  -sisctrl-0.0.20050320.ebuild:
+  ebuild cleanup
+
+*sisctrl-0.0.20050618 (19 Jun 2005)
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  +sisctrl-0.0.20050618.ebuild:
+  version bump for #81705
+
+*sisctrl-0.0.20050320 (16 Jun 2005)
+
+  16 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  -sisctrl-0.0.20041129.ebuild, +sisctrl-0.0.20050320.ebuild:
+  version bump for #81705
+
+*sisctrl-0.0.20041129 (05 Dec 2004)
+
+  05 Dec 2004; <pyrania@gentoo.org> +sisctrl-0.0.20041129.ebuild:
+  Version bump.
+
+  13 Jun 2004; Donnie Berkholz <spyderous@gentoo.org>;
+  sisctrl-0.0.20031119.ebuild:
+  Change x11-base/xfree dependency to virtual/x11 (#52153).
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> sisctrl-0.0.20031119.ebuild:
+  Marked stable.
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> sisctrl-0.0.20031119.ebuild:
+  adding categorie. see 45110 for details
 
 *sisctrl-0.0.20031119 (23 Nov 2003)
 

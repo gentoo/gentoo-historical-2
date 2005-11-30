@@ -1,6 +1,16 @@
 # ChangeLog for games-fps/ut2004-fragops
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-fragops/ChangeLog,v 1.1 2004/11/25 00:17:40 wolf31o2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-fragops/ChangeLog,v 1.1.1.1 2005/11/30 09:39:45 chriswhite Exp $
+
+*ut2004-fragops-2.16 (25 Apr 2005)
+
+  25 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-fragops-2.1.ebuild, +ut2004-fragops-2.16.ebuild:
+  Version bumped to 2.16 and closing bug #83411.
+
+  29 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-fragops-2.1.ebuild:
+  Added IUSE.
 
 *ut2004-fragops-2.1 (24 Nov 2004)
 

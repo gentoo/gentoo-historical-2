@@ -1,23 +1,24 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openct/openct-0.5.0.ebuild,v 1.1 2004/02/22 07:16:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openct/openct-0.5.0.ebuild,v 1.1.1.1 2005/11/30 09:41:49 chriswhite Exp $
 
 inherit eutils
 
-DESCRIPTION="OpenCT is a library for accessing smart card terminals."
+DESCRIPTION="library for accessing smart card terminals"
 HOMEPAGE="http://opensc.org/"
 SRC_URI="http://opensc.org/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
 IUSE="usb"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	usb? (	>=dev-libs/libusb-0.1.7
 		>=sys-apps/hotplug-20030805-r1 )"
 DEPEND="${RDEPEND}
-	>=sys-apps/sed-4.0.7"
+	>=sys-apps/sed-4.0.7
+	sys-apps/shadow"
 
 pkg_setup() {
 	enewgroup openct

@@ -1,29 +1,37 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/x2x/x2x-1.27.ebuild,v 1.1 2002/06/14 20:49:55 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/x2x/x2x-1.27.ebuild,v 1.1.1.1 2005/11/30 09:40:35 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="An utility to connect the Mouse and KeyBoard to another X"
 HOMEPAGE="http://www.the-labs.com/X11/#x2x"
 LICENSE="as-is"
 DEPEND="virtual/x11"
-RDEPEND="virtual/x11"
-SRC_URI="http://ftp.digital.com/pub/Digital/SRC/x2x/${P}.tar.gz"
+SRC_URI="http://ftp.digital.com/pub/Digital/SRC/x2x/${P}.tar.gz
+	mirror://gentoo/x2x-1.27-license.patch.gz"
+SLOT="0"
+KEYWORDS="x86 sparc alpha amd64 ~mips"
+IUSE=""
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	gunzip < ${FILESDIR}/${P}.diff.gz | patch || die "patch failed"
+
+	# Patch to add LICENSE
+	epatch ${DISTDIR}/x2x-1.27-license.patch.gz
+
+	# Man-page is packaged as x2x.1 but needs to be x2x.man for building
+	mv x2x.1 x2x.man || die
 }
 
 src_compile() {
-	xmkmf
-	cp x2x.1 x2x.man
+	xmkmf || die
 	emake || die
 }
 
 src_install () {
 	make DESTDIR=${D} install || die
-	doman x2x.1
-	dodoc ${S}/LICENSE
+	newman x2x.man x2x.1 || die
+	dodoc LICENSE || die
 }

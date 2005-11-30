@@ -1,22 +1,32 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xerces-c/xerces-c-2.6.0-r1.ebuild,v 1.1 2005/07/08 03:35:46 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xerces-c/xerces-c-2.6.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:43 chriswhite Exp $
+
+inherit eutils multilib
 
 MY_PV=${PV//./_}
 MY_P=${PN}-src_${MY_PV}
 DESCRIPTION="Xerces-C++ is a validating XML parser written in a portable subset of C++."
 HOMEPAGE="http://xml.apache.org/xerces-c/index.html"
-SRC_URI="http://www.apache.org/dist/xml/xerces-c/${MY_P}.tar.gz"
+SRC_URI="http://archive.apache.org/dist/xml/xerces-c/Xerces-C_2_6_0/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE="doc"
 
 DEPEND="virtual/libc
 	doc? ( app-doc/doxygen )"
 
 S=${WORKDIR}/${MY_P}
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	# Fix multilib install
+	epatch ${FILESDIR}/${P}-multilib.patch
+}
 
 src_compile() {
 	export XERCESCROOT=${S}
@@ -28,11 +38,11 @@ src_compile() {
 src_install () {
 	export XERCESCROOT=${S}
 	cd ${S}/src/xercesc
-	make DESTDIR=${D} install || die
+	make DESTDIR=${D} MLIBDIR=$(get_libdir) install || die
 
 	if use doc; then
 		dodir /usr/share/doc/${P}
-		cp -a ${S}/samples ${D}/usr/share/doc/${P}
+		cp -pPR ${S}/samples ${D}/usr/share/doc/${P}
 		cd ${S}/doc; doxygen
 		dohtml -r html
 	fi

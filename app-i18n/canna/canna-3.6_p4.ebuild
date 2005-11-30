@@ -1,10 +1,10 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/canna/canna-3.6_p4.ebuild,v 1.1 2003/09/22 19:26:04 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/canna/canna-3.6_p4.ebuild,v 1.1.1.1 2005/11/30 09:40:09 chriswhite Exp $
 
 inherit cannadic eutils
 
-MY_P="Canna36${PV#*_}"
+MY_P="Canna${PV//[._]/}"
 
 DESCRIPTION="A client-server based Kana-Kanji conversion system"
 HOMEPAGE="http://canna.sourceforge.jp/"
@@ -12,12 +12,14 @@ SRC_URI="mirror://sourceforge.jp/canna/6059/${MY_P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 ppc sparc alpha"
+IUSE="doc"
 
-DEPEND="virtual/glibc
-	x11-base/xfree
-	>=sys-apps/sed-4"
-RDEPEND="virtual/glibc"
+DEPEND="virtual/libc
+	virtual/x11
+	>=sys-apps/sed-4
+	doc? ( app-text/ptex )"
+RDEPEND="virtual/libc"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -26,18 +28,44 @@ src_unpack() {
 	cd ${S}
 	find . -name '*.man' -o -name '*.jmn' | xargs sed -i.bak -e 's/1M/8/g'
 	epatch ${FILESDIR}/${P}-gentoo.diff
+	cd dic/phono
+	epatch ${FILESDIR}/${PN}-kpdef-gentoo.diff
 }
 
 src_compile() {
 	xmkmf || die
 	make Makefiles || die
+
+	# Remove VENDORNAME, see bug #48229
+	sed -i -e "/VENDORNAME/d" Makefile
+
 	# make includes
 	make canna || die
+
+	if use doc ; then
+		einfo "Compiling DVI, PS (and PDF) document"
+		cd doc/man/guide/tex
+		xmkmf || die
+		make JLATEXCMD=platex \
+			DVI2PSCMD="dvips -f" \
+			canna.dvi canna.ps || die
+		if has_version 'app-text/dvipdfmx' && \
+			( has_version 'app-text/acroread' \
+			|| has_version 'app-text/xpdf-japanese' ); then
+			make JLATEXCMD=platex \
+				DVI2PSCMD="dvips -f" \
+				canna.pdf || die
+		fi
+	fi
 }
 
 src_install() {
 	make DESTDIR=${D} install || die
 	make DESTDIR=${D} install.man || die
+
+	# install default.canna (removed from Canna36p4)
+	insinto /usr/share/canna
+	newins misc/initfiles/verbose.canna default.canna
 
 	dodir /usr/share/man/man8 /usr/share/man/ja/man8
 	for man in cannaserver cannakill ; do
@@ -47,7 +75,13 @@ src_install() {
 	done
 
 	dodoc CHANGES.jp ChangeLog INSTALL* README* WHATIS*
-	exeinto /etc/init.d ; newexe ${FILESDIR}/canna.initd.new canna || die
+
+	if use doc ; then
+		insinto /usr/share/doc/${PF}
+		doins doc/man/guide/tex/canna.{dvi,ps,pdf}
+	fi
+
+	exeinto /etc/init.d ; newexe ${FILESDIR}/canna.initd canna || die
 	insinto /etc/conf.d ; newins ${FILESDIR}/canna.confd canna || die
 	insinto /etc/       ; newins ${FILESDIR}/canna.hosts hosts.canna || die
 	keepdir /var/log/canna/ || die
@@ -64,16 +98,21 @@ src_install() {
 	fperms 775 /var/lib/canna/dic/{user,group}
 }
 
-pkg_prerm () {
-
+pkg_prerm() {
 	if [ -S /tmp/.iroha_unix/IROHA ] ; then
 		einfo
 		einfo "Stopping Canna for safe unmerge"
 		einfo
 		/etc/init.d/canna stop
 	fi
-	if [ -e /var/lib/canna/dic/canna/dics.dir ] ; then
-		# no need to keep dics.dir if canna is not installed
-		rm -f /var/lib/canna/dic/canna/dics.dir
+}
+
+pkg_postrm() {
+	if [ -f /usr/sbin/cannaserver ] ; then
+		update-cannadic-dir
+		einfo
+		einfo "Restarting Canna"
+		einfo
+		/etc/init.d/canna start
 	fi
 }

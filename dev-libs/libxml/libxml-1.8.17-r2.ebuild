@@ -1,27 +1,28 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxml/libxml-1.8.17-r2.ebuild,v 1.1 2002/03/25 17:55:45 azarah Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libxml/libxml-1.8.17-r2.ebuild,v 1.1.1.1 2005/11/30 09:41:27 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="XML version 1 parser for Gnome"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
-HOMEPAGE="http://www.gnome.org/"
+inherit flag-o-matic
 
-RDEPEND=">=sys-libs/ncurses-5.2"
+DESCRIPTION="Version 1 of the library to manipulate XML files"
+HOMEPAGE="http://www.xmlsoft.org/"
+SRC_URI="ftp://xmlsoft.org/old/${P}.tar.gz"
+
+LICENSE="GPL-2 LGPL-2"
+SLOT="1"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="doc"
+
+RDEPEND=">=sys-libs/ncurses-5.2
+	doc? ( >=dev-util/gtk-doc-1 )"
 
 DEPEND="${RDEPEND}
-        >=sys-libs/readline-4.1"
-
+	>=sys-libs/readline-4.1"
 
 src_compile() {
-	LDFLAGS="-lncurses" \
-	./configure --host=${CHOST} \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var/lib || die
-
-	make || die # Doesn't work with -j 4 (hallski)
+	append-ldflags -lncurses
+	econf || die
+	emake -j1 || die # Doesn't work with -j 4 (hallski)
 }
 
 src_install() {
@@ -34,8 +35,8 @@ src_install() {
 	# This link must be fixed
 	rm ${D}/usr/include/gnome-xml/libxml
 	dosym /usr/include/gnome-xml /usr/include/gnome-xml/libxml
-	
-	dodoc AUTHORS COPYING* ChangeLog NEWS README
+
+	dodoc AUTHORS ChangeLog NEWS README
 }
 
 pkg_preinst() {
@@ -44,4 +45,3 @@ pkg_preinst() {
 		rm -f ${ROOT}/usr/include/gnome-xml/libxml
 	fi
 }
-

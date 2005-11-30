@@ -1,6 +1,22 @@
 # ChangeLog for dev-libs/sucs
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/sucs/ChangeLog,v 1.1 2002/10/23 16:03:30 jrray Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/sucs/ChangeLog,v 1.1.1.1 2005/11/30 09:42:12 chriswhite Exp $
+
+  19 Sep 2005; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
+  Adding to cpp herd
+
+  17 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/sucs-1.0.0-gcc4.diff, sucs-1.0.0.ebuild:
+  Added patch so sucs will build with gcc-4.
+
+  06 May 2005; Aaron Walker <ka0ttic@gentoo.org> sucs-1.0.0.ebuild:
+  Stable on x86.
+
+*sucs-1.0.0 (11 Feb 2005)
+
+  11 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  sucs-0.7.0.ebuild, +sucs-1.0.0.ebuild:
+  Version bump.
 
 *sucs-0.7.0 (23 Oct 2002)
 

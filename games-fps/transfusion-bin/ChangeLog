@@ -1,6 +1,30 @@
-# ChangeLog for app-games/transfusion-bin
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/transfusion-bin/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
+# ChangeLog for games-fps/transfusion-bin
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/transfusion-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:39:52 chriswhite Exp $
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  transfusion-bin-1.01.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  15 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  transfusion-bin-1.01.ebuild:
+  fix typo on wrapper creation (bug #92736); tidy
+
+  15 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  transfusion-bin-1.01.ebuild:
+  Updated ebuild to use icon file and closing bug #85276.
+
+  25 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  transfusion-bin-1.01.ebuild:
+  fix HOMEPAGE (bug #83222)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  transfusion-bin-1.01.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  transfusion-bin-1.01.ebuild:
+  don't rdepend on sed
 
 *transfusion-bin-1.01 (13 Aug 2003)
 

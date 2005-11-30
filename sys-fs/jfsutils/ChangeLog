@@ -1,6 +1,125 @@
 # ChangeLog for sys-fs/jfsutils
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/jfsutils/ChangeLog,v 1.1 2003/09/15 17:46:25 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/jfsutils/ChangeLog,v 1.1.1.1 2005/11/30 09:44:27 chriswhite Exp $
+
+*jfsutils-1.1.10 (29 Oct 2005)
+
+  29 Oct 2005; Daniel Drake <dsd@gentoo.org>
+  -files/jfsutils-1.1.3-gentoo.diff, -jfsutils-1.1.4.ebuild,
+  +jfsutils-1.1.10.ebuild:
+  Version bump thanks to    Dave Kleikamp in bug 110474
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> jfsutils-1.1.8.ebuild:
+  stable on ia64
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> jfsutils-1.1.8.ebuild:
+  Stable on ppc.
+
+  13 Aug 2005; Luis Medinas <metalgod@gentoo.org> jfsutils-1.1.8.ebuild:
+  Stable on AMD64.
+
+  12 Aug 2005; Markus Rothe <corsair@gentoo.org> jfsutils-1.1.8.ebuild:
+  Stable on ppc64
+
+  11 Aug 2005; Daniel Drake <dsd@gentoo.org> -jfsutils-1.1.5.ebuild,
+  jfsutils-1.1.8.ebuild:
+  Stable on x86
+
+  29 Jun 2005; Joshua Kinard <kumba@gentoo.org> jfsutils-1.1.7.ebuild:
+  Marked stable on mips.
+
+  14 May 2005; Guy Martin <gmsoft@gentoo.org> jfsutils-1.1.7.ebuild:
+  Stable on hppa.
+
+  09 May 2005; Daniel Drake <dsd@gentoo.org> jfsutils-1.1.7.ebuild:
+  Stable on x86
+
+*jfsutils-1.1.8 (09 May 2005)
+
+  09 May 2005; Daniel Drake <dsd@gentoo.org> +jfsutils-1.1.8.ebuild:
+  Version bump thanks to Dave Kleikamp <shaggy@austin.ibm.com> in bug #91472
+
+  13 Apr 2005; Tom Gall <tgall@gentoo.org> jfsutils-1.1.7.ebuild:
+  stable on ppc64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> jfsutils-1.1.7.ebuild:
+  stable on ia64
+
+  18 Sep 2004; Joshua Kinard <kumba@gentoo.org> jfsutils-1.1.5.ebuild,
+  jfsutils-1.1.7.ebuild:
+  Marked 1.1.5 stable on mips, 1.1.7 ~mips.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  jfsutils-1.1.3.ebuild, jfsutils-1.1.5.ebuild, jfsutils-1.1.6.ebuild,
+  jfsutils-1.1.7.ebuild:
+  Masked jfsutils-1.1.7.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  jfsutils-1.1.3.ebuild, jfsutils-1.1.5.ebuild, jfsutils-1.1.6.ebuild:
+  Masked jfsutils-1.1.6.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  jfsutils-1.1.3.ebuild, jfsutils-1.1.5.ebuild:
+  Masked jfsutils-1.1.5.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  jfsutils-1.1.3.ebuild:
+  Masked jfsutils-1.1.3.ebuild stable for ppc
+
+*jfsutils-1.1.7 (26 Aug 2004)
+
+  26 Aug 2004; <plasmaroo@gentoo.org> +jfsutils-1.1.7.ebuild:
+  Version bump; bug #61774.
+
+*jfsutils-1.1.6 (10 Jul 2004)
+
+  10 Jul 2004; <plasmaroo@gentoo.org> +jfsutils-1.1.6.ebuild:
+  Version bump. Closes bug #50658.
+
+  07 Jul 2004; Travis Tilley <lv@gentoo.org> jfsutils-1.1.4.ebuild:
+  Stable on amd64.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> jfsutils-1.1.3.ebuild,
+  jfsutils-1.1.4.ebuild:
+  Add inherit eutils
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> jfsutils-1.1.3.ebuild:
+  Add die following econf for bug 48950
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> jfsutils-1.1.0-r2.ebuild,
+  jfsutils-1.1.1-r1.ebuild, jfsutils-1.1.1.ebuild, jfsutils-1.1.2.ebuild,
+  jfsutils-1.1.4.ebuild, jfsutils-1.1.5.ebuild:
+  Add die following econf for bug 48950
+
+  09 Apr 2004; Joshua Kinard <kumba@gentoo.org> jfsutils-1.1.4.ebuild:
+  Marked stable on mips.
+
+  14 Mar 2004; Tim Yamin <plasmaroo@gentoo.org> jfsutils-1.1.3.ebuild:
+  Marking 1.1.3 stable on X86 since it resolves replay issues on 2.6 kernels.
+  Bug #36211.
+
+*jfsutils-1.1.5 (08 Mar 2004)
+
+  08 Mar 2004; Brad Cowan <bcowan@gentoo.org> jfsutils-1.1.5.ebuild:
+  Version bump including buffer overflow fix.
+
+  20 Nov 2003; Sascha Schwabbauer <cybersystem@gentoo.org> jfsutils-1.1.4.ebuild:
+  Added ~ppc keyword.
+
+*jfsutils-1.1.4 (17 Nov 2003)
+
+  17 Nov 2003; Brian Jackson <iggy@gentoo.org> jfsutils-1.1.4.ebuild:
+  version bump
+
+  13 Nov 2003; Sascha Schwabbauer <cybersystem@gentoo.org> jfsutils-1.1.3.ebuild:
+  Marked ~ppc, because this version has ppc support
+
+  09 Oct 2003; Todd Sunderlin <todd@gentoo.org> jfsutils-1.1.3.ebuild:
+  Added ~sparc keyword.
+
+  21 Sep 2003; Martin Holzer <mholzer@gentoo.org> jfsutils-1.1.3.ebuild,
+  files/jfsutils-1.1.3-gentoo.diff:
+  Added patch to compile with gcc-2.9x. Closes #29204.
 
 *jfsutils-1.1.1-r1 (15 Sep 2003)
 
@@ -12,16 +131,15 @@
 *jfsutils-1.1.3 (08 Sep 2003)
 
   08 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> jfsutils-1.1.3.ebuild:
-  version bump
+  Version bump.
 
-* jfsutils-1.1.2 (26 Mar 2003)
+*jfsutils-1.1.2 (26 Mar 2003)
 
   28 Mar 2003; Guy Martin <gmsoft@gentoo.org> jfsutils-1.1.2.ebuild :
   Added ~hppa to KEYWORDS.
 
   26 Mar 2003; Brad Cowan <bcowan@gentoo.org> jfsutils-1.1.2.ebuild,
   files/digest-jfsutils-1.1.2:
-  
   Version bump, removed errno patch as it was fixed upstream.
 
 *jfsutils-1.1.1-r1 (10 Mar 2003)

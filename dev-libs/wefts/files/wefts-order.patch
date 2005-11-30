@@ -3,7 +3,7 @@ diff -ur libwefts-0.99c/Makefile.am libwefts-0.99c-order/Makefile.am
 +++ libwefts-0.99c-order/Makefile.am	2005-05-28 13:57:17.152117664 +0200
 @@ -4,7 +4,7 @@
  # Toplevel Makefile.am
- # $Id: wefts-order.patch,v 1.1 2005/05/28 12:34:30 flameeyes Exp $
+ # $Id: wefts-order.patch,v 1.1.1.1 2005/11/30 09:41:42 chriswhite Exp $
  
 -SUBDIRS = include ltlib testsuite tests src doc
 +SUBDIRS = include ltlib src testsuite tests doc

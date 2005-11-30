@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/h4x0r/h4x0r-0.11.ebuild,v 1.1 2002/11/03 06:43:38 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/h4x0r/h4x0r-0.11.ebuild,v 1.1.1.1 2005/11/30 09:41:19 chriswhite Exp $
 
 inherit elisp
 
@@ -11,11 +11,9 @@ HOMEPAGE="http://www.livingtorah.org/~csebold/emacs/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~amd64"
 
 DEPEND="virtual/emacs"
-
-S="${WORKDIR}/${P}"
 
 SITEFILE=50h4x0r-gentoo.el
 

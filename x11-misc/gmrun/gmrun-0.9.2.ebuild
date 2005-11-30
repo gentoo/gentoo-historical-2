@@ -1,15 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gmrun/gmrun-0.9.2.ebuild,v 1.1 2003/11/16 23:18:04 aether Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gmrun/gmrun-0.9.2.ebuild,v 1.1.1.1 2005/11/30 09:40:21 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE=""
 DESCRIPTION="A GTK-2 based launcher box with bash style auto completion!"
 SRC_URI="mirror://sourceforge/gmrun/${P}.tar.gz"
-HOMEPAGE="http://gmrun.sourceforge.net/"
+HOMEPAGE="http://sourceforge.net/projects/gmrun"
 
 SLOT="0"
 LICENSE="GPL-1"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64 ppc ~sparc"
 
 DEPEND=">=x11-libs/gtk+-2.2.0
 		dev-libs/popt"

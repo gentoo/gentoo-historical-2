@@ -1,6 +1,23 @@
 # ChangeLog for app-emacs/vhdl-mode
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/vhdl-mode/ChangeLog,v 1.1 2004/10/05 06:12:43 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/vhdl-mode/ChangeLog,v 1.1.1.1 2005/11/30 09:41:19 chriswhite Exp $
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> vhdl-mode-3.33.3.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  vhdl-mode-3.33.2.ebuild:
+  Stable on ppc.
+
+*vhdl-mode-3.33.3 (03 May 2005)
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> vhdl-mode-3.33.2.ebuild,
+  +vhdl-mode-3.33.3.ebuild:
+  Version bumped. Added speedbar patches. Thanks to Michael Hordijk
+  <hoffbrinkle@hotmail.com>; bug #81694.
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> vhdl-mode-3.33.2.ebuild:
+  Added to ~ppc.
 
 *vhdl-mode-3.33.2 (05 Oct 2004)
 

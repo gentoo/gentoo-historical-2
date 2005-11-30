@@ -1,11 +1,15 @@
 diff -ur raidtools-1.00.3/list.h raidtools-1.00.3.plasmaroo/list.h
 --- raidtools-1.00.3/list.h	2003-01-15 08:58:25.000000000 +0000
 +++ raidtools-1.00.3.plasmaroo/list.h	2004-07-18 12:25:15.000000000 +0100
-@@ -14,6 +14,7 @@
+@@ -14,6 +14,11 @@
   * using the generic single-entry routines.
   */
  
 +#define _LINUX_LIST_H
++struct hlist_node {
++        struct hlist_node *next, **pprev;
++};
++
  struct list_head {
  	struct list_head *next, *prev;
  };
@@ -32,3 +36,15 @@ diff -ur raidtools-1.00.3/lsraid.c raidtools-1.00.3.plasmaroo/lsraid.c
  /*
   * Defines
   */
+diff -ur raidtools-1.00.3/raid_io.h raidtools-1.00.3.plasmaroo/raid_io.h
+--- raidtools-1.00.3/raid_io.h.old	2005-04-07 15:25:24.937871896 -0600
++++ raidtools-1.00.3/raid_io.h	2005-04-07 15:25:35.315801456 -0600
+@@ -12,7 +12,7 @@
+ #include "common.h"
+ #include "raidlib.h"
+ 
+-void progress (unsigned long blocks, unsigned long current);
++void progress (unsigned long blocks, unsigned long _current_);
+ 
+ long long raidseek (unsigned int fd, unsigned long blk);
+ extern void print_sb (mdp_super_t *sb);

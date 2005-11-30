@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/skippy/skippy-0.5.0.ebuild,v 1.1.1.1 2005/11/30 09:40:50 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
@@ -10,13 +12,19 @@ SRC_URI="http://thegraveyard.org/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ppc x86"
 
 RDEPEND="virtual/x11
 	virtual/xft"
 
 DEPEND="${RDEPEND}
 	>=media-libs/imlib2-1.1.0"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-pointer-size.patch
+}
 
 src_compile() {
 	emake || die "emake failed"

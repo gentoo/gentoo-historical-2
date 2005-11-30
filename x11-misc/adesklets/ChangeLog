@@ -1,6 +1,80 @@
 # ChangeLog for x11-misc/adesklets
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/adesklets/ChangeLog,v 1.1 2005/03/08 16:49:39 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/adesklets/ChangeLog,v 1.1.1.1 2005/11/30 09:40:51 chriswhite Exp $
+
+  07 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.12.ebuild,
+  adesklets-0.4.10.ebuild:
+  Removed INSTALL from dodoc.
+
+*adesklets-0.4.12 (13 Sep 2005)
+
+  13 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> +adesklets-0.4.12.ebuild:
+  Version bump. Fixing bug #105713.
+  -adesklets-0.4.9.ebuild,-adesklets-0.4.11.ebuild:
+  Wiped out older unstable releases.
+
+*adesklets-0.4.11 (02 Sep 2005)
+
+  02 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> +adesklets-0.4.11.ebuild:
+  Version bump. Fixing bug #104510.
+
+  16 Jul 2005; Jonathan Smith <smithj@gentoo.org> adesklets-0.4.10.ebuild:
+  stable x86, amd64
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> adesklets-0.4.9.ebuild:
+  0.4.9 stable x86
+
+*adesklets-0.4.10 (13 Jun 2005)
+
+  13 Jun 2005; Markus Nigbur <pyrania@gentoo.org> +adesklets-0.4.10.ebuild:
+  Version bump. Fixing bug #95733.
+
+*adesklets-0.4.9 (06 Jun 2005)
+
+  06 Jun 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.9.ebuild:
+  Version bump, closes #94956.
+  adesklets-0.4.8.ebuild:
+  Removed older version.
+
+*adesklets-0.4.8 (18 Apr 2005)
+
+  18 Apr 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.8.ebuild:
+  Version bump, closes #89448.
+  adesklets-0.4.7.ebuild:
+  Removed older version.
+
+*adesklets-0.4.7 (04 Apr 2005)
+
+  04 Apr 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.7.ebuild:
+  Version bump, closes #87705.
+  adesklets-0.4.6.ebuild:
+  Removed older version.
+
+  29 Mar 2005; Joseph Jezak <josejx@gentoo.org> adesklets-0.4.6.ebuild:
+  Added ~ppc for bug #85259.
+
+  22 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.5.ebuild:
+  Removed older version, leaving only latest (all-arch masked) version, as
+  author requested in bug #85980,,,
+
+*adesklets-0.4.6 (21 Mar 2005)
+
+  21 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.6.ebuild:
+  Version bump.
+  adesklets-0.4.5.ebuild:
+  Stable for x86.
+  adesklets-0.4.4.ebuild:
+  Wiped out older version.
+
+*adesklets-0.4.5 (14 Mar 2005)
+
+  14 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.5.ebuild:
+  Version bump.
+  adesklets-0.4.4.ebuild:
+  Stable for x86.
+
+  09 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> adesklets-0.4.4.ebuild:
+  Added ~amd64 keyword, thanks to feedback received on bug #79927.
 
 *adesklets-0.4.4 (08 Mar 2005)
 

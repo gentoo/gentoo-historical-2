@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mew/mew-4.1.ebuild,v 1.1 2004/10/19 14:34:43 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mew/mew-4.1.ebuild,v 1.1.1.1 2005/11/30 09:41:21 chriswhite Exp $
 
 inherit elisp
 
@@ -12,9 +12,9 @@ SRC_URI="ftp://ftp.mew.org/pub/Mew/release/${P/_/}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~amd64 ~ppc-macos"
+KEYWORDS="x86 alpha amd64 ppc ~ppc-macos sparc"
 
-RDEPEND="ssl? ( =net-misc/stunnel-3* )"
+RDEPEND="ssl? ( net-misc/stunnel )"
 
 SITEFILE=50mew-gentoo.el
 
@@ -33,9 +33,16 @@ src_install() {
 
 	elisp-site-file-install ${FILESDIR}/3.x/${SITEFILE}
 
-	dodoc 00*
+	dodoc 00* mew.dot.*
+}
 
-	insinto /etc/skel
-	newins mew.dot.mew .mew.el
-	newins mew.dot.emacs .emacs.mew
+pkg_postinst() {
+	elisp-site-regen
+	einfo
+	einfo "Please refer to /usr/share/doc/${PF} for sample configuration files."
+	einfo
+}
+
+pkg_postrm() {
+	elisp-site-regen
 }

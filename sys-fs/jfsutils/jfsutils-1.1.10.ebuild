@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/jfsutils/jfsutils-1.1.10.ebuild,v 1.1 2005/10/29 20:37:06 dsd Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/jfsutils/jfsutils-1.1.10.ebuild,v 1.1.1.1 2005/11/30 09:44:27 chriswhite Exp $
 
 DESCRIPTION="IBM's Journaling Filesystem (JFS) Utilities"
 HOMEPAGE="http://jfs.sourceforge.net/"

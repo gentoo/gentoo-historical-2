@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/ccd2iso/ccd2iso-0.2.ebuild,v 1.1 2005/04/19 22:05:43 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/ccd2iso/ccd2iso-0.2.ebuild,v 1.1.1.1 2005/11/30 09:42:21 chriswhite Exp $
 
 DESCRIPTION="Converts CloneCD images (popular under Windows) to ISOs"
 HOMEPAGE="http://sourceforge.net/projects/ccd2iso/"

@@ -1,7 +1,7 @@
 
 ;;; emacs-w3m site-lisp configuration
 
-(setq load-path (cons "@SITELISP@" load-path))
+(add-to-list 'load-path "@SITELISP@")
 
 (autoload 'w3m "w3m" "Interface for w3m on Emacs." t)
 (autoload 'w3m-browse-url "w3m" "Interface for w3m on Emacs." t)

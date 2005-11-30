@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/newt-0.50.35-r4.ebuild,v 1.1 2004/12/15 07:30:28 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/newt/newt-0.50.35-r4.ebuild,v 1.1.1.1 2005/11/30 09:41:37 chriswhite Exp $
 
 inherit python toolchain-funcs
 
@@ -9,17 +9,17 @@ SRC_URI="http://koto.mynetix.de/gentoo/${P}.tar.gz"
 HOMEPAGE="http://www.redhat.com"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~hppa ~amd64 ~alpha"
-IUSE="uclibc"
+KEYWORDS="~x86 ~ppc ~sparc ~hppa ~amd64 ~alpha ppc64"
+IUSE=""
 DEPEND=">=sys-libs/slang-1.4
 	>=dev-libs/popt-1.6
 	dev-lang/python
-	uclibc? ( sys-libs/ncurses )"
+	elibc_uclibc? ( sys-libs/ncurses )"
 
 src_unpack() {
 	unpack ${A}
 	# bug 73850 
-	if use uclibc; then
+	if use elibc_uclibc; then
 		sed -i -e 's:-lslang:-lslang -lncurses:g' ${S}/Makefile.in
 	fi
 
@@ -35,14 +35,16 @@ src_unpack() {
 src_compile() {
 	python_version
 	econf || die
-	emake PYTHONVERS="python${PYVER}" RPM_OPT_FLAGS="${CFLAGS}" CC="$(tc-getCC)" || die "make failure"
+	# not parallel safe
+	emake -j1 PYTHONVERS="python${PYVER}" RPM_OPT_FLAGS="${CFLAGS}" CC="$(tc-getCC)" || die "make failure"
 }
 
 src_install () {
 	python_version
 	# the RPM_OPT_FLAGS="ERROR" is there to catch a build error
 	# if it fails, that means something in src_compile() didn't build properly
-	emake prefix="${D}/usr" PYTHONVERS="python${PYVER}" RPM_OPT_FLAGS="ERROR" install || die "make install failed"
+	# not parallel safe
+	emake -j1 prefix="${D}/usr" PYTHONVERS="python${PYVER}" RPM_OPT_FLAGS="ERROR" install || die "make install failed"
 	dodoc CHANGES COPYING peanuts.py popcorn.py tutorial.sgml
 	dosym libnewt.so.${PV} /usr/lib/libnewt.so.0.50
 }

@@ -1,6 +1,13 @@
 # ChangeLog for games-fps/ut2004-alienswarm
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-alienswarm/ChangeLog,v 1.1 2004/11/25 00:11:45 wolf31o2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-alienswarm/ChangeLog,v 1.1.1.1 2005/11/30 09:39:50 chriswhite Exp $
+
+  15 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org> :
+  Fixing digest and closing bug #83391.
+
+  29 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-alienswarm-1.2.ebuild:
+  Added IUSE.
 
 *ut2004-alienswarm-1.2 (24 Nov 2004)
 

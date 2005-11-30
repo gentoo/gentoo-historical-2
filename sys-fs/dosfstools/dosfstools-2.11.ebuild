@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dosfstools/dosfstools-2.11.ebuild,v 1.1 2005/06/18 04:18:37 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dosfstools/dosfstools-2.11.ebuild,v 1.1.1.1 2005/11/30 09:44:23 chriswhite Exp $
 
 DESCRIPTION="DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat"
 HOMEPAGE="ftp://ftp.uni-erlangen.de/pub/Linux/LOCAL/dosfstools/"

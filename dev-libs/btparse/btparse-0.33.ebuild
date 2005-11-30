@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/btparse/btparse-0.33.ebuild,v 1.1 2002/08/07 08:54:44 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/btparse/btparse-0.33.ebuild,v 1.1.1.1 2005/11/30 09:41:26 chriswhite Exp $
 
 DESCRIPTION="A C library to parse Bibtex files"
 HOMEPAGE="http://starship.python.net/~gward/btOOL/"
@@ -8,11 +8,10 @@ SRC_URI="http://starship.python.net/~gward/btOOL//${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 sparc"
+IUSE=""
 
-DEPEND="virtual/glibc"
-RDEPEND="${DEPEND}"
-S=${WORKDIR}/${P}
+DEPEND="virtual/libc"
 
 src_compile() {
 	#have to include ${D} into mandir here,
@@ -32,5 +31,5 @@ src_install () {
 
 	make prefix=${D}/usr install || die
 	dolib.so libbtparse.so
-	dodoc CHANGES README 
+	dodoc CHANGES README
 }

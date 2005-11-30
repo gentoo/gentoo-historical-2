@@ -1,10 +1,11 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author: Daniel Mettler <mettlerd@icu.unizh.ch> 
-# Maintainer: Matthew Kennedy <mkennedy@gentoo.org> 
-# /space/gentoo/cvsroot/gentoo-x86/skel.ebuild,v 1.3 2002/02/04 15:46:51 gbevin Exp
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/grun/grun-0.9.2.ebuild,v 1.1.1.1 2005/11/30 09:40:48 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
+IUSE="nls"
+
 DESCRIPTION="A GTK/X11 application launcher with nice features such as a history"
 
 # Unfortunately the original homepage is not available anymore. The
@@ -12,19 +13,25 @@ DESCRIPTION="A GTK/X11 application launcher with nice features such as a history
 # renamed to grun-0.9.2-gentoo.diff) have been taken from
 # http://packages.debian.org/unstable/x11/grun.html.
 
-SRC_URI="http://ftp.us.debian.org/debian/pool/main/g/grun/grun_0.9.2.orig.tar.gz"
+RESTRICT="nomirror"
+SRC_URI="mirror://debian/pool/main/g/grun/grun_0.9.2.orig.tar.gz"
 # Not valid anymore, see
 # http://packages.debian.org/unstable/x11/grun.html instead
-HOMEPAGE="http://www.geocities.com/ResearchTriangle/Facility/1468/sg/grun."
+HOMEPAGE="http://www.geocities.com/ResearchTriangle/Facility/1468/sg/grun.html"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 sparc ppc amd64"
 
 # The dependencies following the gentoo policy as suggested by gbevin
 DEPEND="=dev-libs/glib-1.2*
 	=x11-libs/gtk+-1.2*
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	sys-devel/gnuconfig
+	sys-devel/automake"
 
 src_unpack() {
 	unpack ${A}
-	patch -p0 <${FILESDIR}/${PF}-gentoo.diff || die
+	epatch ${FILESDIR}/${PF}-gentoo.diff.bz2
 }
 
 src_compile() {
@@ -35,53 +42,42 @@ src_compile() {
 	if [ -z ${TERM} ] ; then
 		TERM=xterm
 	fi
-	./configure --prefix=/usr \
-		--host=${CHOST} \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man \
+
+	ebegin "Running automake"
+		automake --add-missing &>/dev/null
+	eend $?
+
+	econf \
 		--enable-testfile \
 		--with-default-xterm=${TERM} \
 		--enable-associations \
-		${myconf} || die 
+		${myconf} || die
 	emake || die
 }
 
 src_install() {
-	make prefix=${D}/usr \
-		localedir=${D}/usr/share/locale \
-		mandir=${D}/usr/share/man \
-		install || die 
+	einstall || die
 
-	dodoc ABOUT-NLS AUTHORS BUGS COPYING ChangeLog INSTALL \
+	dodoc ABOUT-NLS AUTHORS BUGS ChangeLog \
 		LANGUAGES NEWS README TODO
 }
 
 pkg_postinst() {
-	# The following hints will be printed in white
-	MESSAGE_COLOR=37;
-	echo -e "\033[1;${MESSAGE_COLOR}m";
-	echo "####################################################################";
-	echo "#                                                                  #";
-	echo "# It is recommended to bind grun to a keychain. Fluxbox users can  #";
-	echo "# do this by appending e.g. the following line to ~/.fluxbox/keys: #";
-	echo "#                                                                  #";
-	echo "# Mod4 r :ExecCommand grun                                         #";
-	echo "#                                                                  #";
-	echo "# Then reconfigure Fluxbox (using the menu) and hit <WinKey>-<r>   #";
-	echo "#                                                                  #";
-	echo "# The default system-wide definition file for associating file     #";
-	echo "# extensions with applications is /usr/share/grun/gassoc, the      #";
-	echo "# default system-wide definition file for recognized console       #";
-	echo "# applications is /usr/share/grun/consfile. They can be overridden #";
-	echo "# on a per user basis by ~/.gassoc and ~/.consfile respectively.   #";
-	echo "#                                                                  #";
-	echo "# To change the default terminal application grun uses, adjust the #";
-	echo "# TERM environment variable accordingly and remerge grun, e.g.     #";
-	echo "#                                                                  #";
-	echo "# export TERM=Eterm && emerge grun                                 #";
-	echo "#                                                                  #";
-	echo "# Have fun!                                                        #";
-	echo "#                                                                  #";
-	echo "####################################################################";
-	echo -e "\033[0m";
+	einfo "It is recommended to bind grun to a keychain. Fluxbox users can"
+	einfo "do this by appending e.g. the following line to ~/.fluxbox/keys:"
+	einfo
+	einfo "Mod4 r :ExecCommand grun"
+	einfo
+	einfo "Then reconfigure Fluxbox (using the menu) and hit <WinKey>-<r>"
+	einfo
+	einfo "The default system-wide definition file for associating file"
+	einfo "extensions with applications is /usr/share/grun/gassoc, the"
+	einfo "default system-wide definition file for recognized console"
+	einfo "applications is /usr/share/grun/consfile. They can be overridden"
+	einfo "on a per user basis by ~/.gassoc and ~/.consfile respectively."
+	einfo
+	einfo "To change the default terminal application grun uses, adjust the"
+	einfo "TERM environment variable accordingly and remerge grun, e.g."
+	einfo
+	einfo "export TERM=Eterm && emerge grun"
 }

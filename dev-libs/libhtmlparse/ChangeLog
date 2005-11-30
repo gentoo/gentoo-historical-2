@@ -1,6 +1,23 @@
 # ChangeLog for dev-libs/libhtmlparse
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhtmlparse/ChangeLog,v 1.1 2003/01/02 03:11:15 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhtmlparse/ChangeLog,v 1.1.1.1 2005/11/30 09:42:05 chriswhite Exp $
+
+  06 May 2005; Aaron Walker <ka0ttic@gentoo.org> libhtmlparse-0.1.13.ebuild:
+  Stable on x86.
+
+*libhtmlparse-0.1.13 (11 Feb 2005)
+
+  11 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
+  libhtmlparse-0.1.12.ebuild, +libhtmlparse-0.1.13.ebuild:
+  Version bump.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libhtmlparse-0.1.12.ebuild:
+  virtual/glibc -> virtual/libc
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  libhtmlparse-0.1.12.ebuild:
+  Don't assign default to S; header fix
 
 *libhtmlparse-0.1.12 (01 Jan 2003)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/df/df-1.5.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/df/df-1.5.ebuild,v 1.1.1.1 2005/11/30 09:41:15 chriswhite Exp $
 
 inherit elisp
 
@@ -11,34 +11,6 @@ HOMEPAGE="http://groups.google.com/groups?selm=ye4ww2cbiry.fsf%40alpha4.bocal.cs
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-
-DEPEND="virtual/emacs"
-
-S="${WORKDIR}/${P}"
+KEYWORDS="~amd64 ~ppc x86"
 
 SITEFILE=50df-gentoo.el
-
-src_compile() {
-	emacs --batch -f batch-byte-compile --no-site-file --no-init-file *.el
-}
-
-src_install() {
-	elisp-install ${PN} *.el *.elc
-	elisp-site-file-install ${FILESDIR}/${SITEFILE}
-}
-
-pkg_postinst() {
-	elisp-site-regen
-	einfo "Please see ${SITELISP}/${PN}/df.el for the complete documentation."
-	einfo ""
-	einfo "Add something like:"
-	einfo ""
-	einfo "(df \"/home\")"
-	einfo ""
-	einfo "to your ~/.emacs"
-}
-
-pkg_postrm() {
-	elisp-site-regen
-}

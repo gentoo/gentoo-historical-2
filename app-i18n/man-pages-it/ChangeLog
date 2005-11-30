@@ -1,6 +1,6 @@
 # ChangeLog for app-i18n/man-pages-it
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-it/ChangeLog,v 1.1 2005/09/02 04:28:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-it/ChangeLog,v 1.1.1.1 2005/11/30 09:40:08 chriswhite Exp $
 
   15 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> :
   fix broken package.

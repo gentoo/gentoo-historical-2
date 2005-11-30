@@ -1,11 +1,280 @@
 # ChangeLog for app-cdr/cdrdao
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/ChangeLog,v 1.1 2002/02/01 21:53:00 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/ChangeLog,v 1.1.1.1 2005/11/30 09:42:25 chriswhite Exp $
+
+*cdrdao-1.2.0-r1 (24 Oct 2005)
+
+  24 Oct 2005; Luis Medinas <metalgod@gentoo.org> +cdrdao-1.2.0-r1.ebuild:
+  Added a couple of CFLAGS restrictions to fix bug #99998. Thanks to all
+  people involved on testing.
+
+  30 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org> cdrdao-1.2.0.ebuild:
+  Stable on hppa. bug #92494
+
+  24 Jul 2005; Lars Weiler <pylon@gentoo.org> cdrdao-1.2.0.ebuild:
+  Adding missing dependency to media-libs/libao as described in bug #100040.
+
+  23 Jul 2005; Lars Weiler <pylon@gentoo.org> cdrdao-1.2.0.ebuild:
+  Small fix for version information.
+
+  22 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> cdrdao-1.2.0.ebuild:
+  Stable on sparc wrt #92494
+
+  22 Jul 2005; Herbie Hopkins <herbs@gentoo.org> cdrdao-1.2.0.ebuild:
+  Stable on amd64 wrt bug #92494.
+
+  22 Jul 2005; Lars Weiler <pylon@gentoo.org> cdrdao-1.2.0.ebuild:
+  Corrected dependencies as mentioned in bug #98724.
+
+  22 Jul 2005; Markus Rothe <corsair@gentoo.org> cdrdao-1.2.0.ebuild:
+  Stable on ppc64 (bug #92494)
+
+  22 Jul 2005; Lars Weiler <pylon@gentoo.org> cdrdao-1.2.0.ebuild:
+  Stable on x86 and ppc; security bug #92494.
+
+  30 Jun 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/cdrdao-1.2.0-gcc4.patch, cdrdao-1.2.0.ebuild:
+  Fix building with gcc4.
+
+*cdrdao-1.2.0 (29 Jun 2005)
+
+  29 Jun 2005; Lars Weiler <pylon@gentoo.org> +cdrdao-1.2.0.ebuild:
+  Version bump.  Needed for security bug #92494.
+
+  10 Jun 2005; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.9-r2.ebuild:
+  Added local useflag pccts. Without it cdrdao will build with the internal
+  pccts stack. Thanks to Fabio Rossi in bug #90844 for this enhancement.
+
+  10 Jun 2005; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.9-r2.ebuild:
+  Delete the generation of the .desktop-file, as the application installs one
+  itself; bug #92380.
+
+  30 May 2005; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.9.ebuild,
+  cdrdao-1.1.9-r2.ebuild:
+  Removed gcc.eclass; deprecated and not used in this ebuild.
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> cdrdao-1.1.9-r2.ebuild:
+  Stable on ppc64
+
+*cdrdao-1.1.9-r2 (30 Mar 2005)
+
+  30 Mar 2005; Lars Weiler <pylon@gentoo.org> -files/cdrdao-1.1.5-c++.patch,
+  -files/cdrdao-1.1.5-gentoo.diff, -files/cdrdao-1.1.8-cast.patch,
+  metadata.xml, -cdrdao-1.1.8.ebuild, -cdrdao-1.1.8-r1.ebuild,
+  -cdrdao-1.1.9-r1.ebuild, +cdrdao-1.1.9-r2.ebuild:
+  Major cleanup -> bug #81812
+  Change emake into make, so that MAKEOPTS are not used -> bug #85176
+  Add package to the media-optical herd
+
+  13 Mar 2005; Markus Rothe <corsair@gentoo.org> metadata.xml:
+  Fix typo in metadata.xml: copiing -> copying
+
+*cdrdao-1.1.9-r1 (13 Mar 2005)
+
+  13 Mar 2005; Markus Rothe <corsair@gentoo.org>
+  +files/cdrdao-1.1.9-ppc64.patch, +cdrdao-1.1.9-r1.ebuild:
+  Revision bump, which includes ppc64 patch
+
+  20 Dec 2004; Dylan Carlson <absinthe@gentoo.org> cdrdao-1.1.9.ebuild:
+  Stable on amd64.
+
+  06 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> cdrdao-1.1.9.ebuild:
+  Stable on sparc
+
+  03 Dec 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.9.ebuild:
+  Removed the QA-install call from Bug #71560 and changed back to einstall.
+  See Bug #73193.
+
+  03 Dec 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.8-r1.ebuild,
+  cdrdao-1.1.9.ebuild:
+  Stable on x86 and ppc.  Furthermore some QA as requested in bug #71560.
+
+  03 Nov 2004; Daniel Goller <morfic@gentoo.org>
+  +files/cdrdao-Project.h-gcc3.4.patch, cdrdao-1.1.8-r1.ebuild,
+  cdrdao-1.1.9.ebuild:
+  Fixed 1.1.8-r1 and 1.1.9 for USE=gnome and gcc 3.4
+
+  31 Oct 2004; Lars Weiler <pylon@gentoo.org> -cdrdao-1.1.5-r1.ebuild,
+  -cdrdao-1.1.7-r2.ebuild, -cdrdao-1.1.7.ebuild, cdrdao-1.1.8-r1.ebuild,
+  cdrdao-1.1.9.ebuild:
+  Dependency changed from app-cdr/cdrtools to virtual/cdrtools, as suggested
+  in Bug #66519. cdrdao-1.1.8-r1 (tested) stable on x86, ppc and sparc.
+  Furthermore some cleanup.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cdrdao-1.1.7.ebuild:
+  Masked cdrdao-1.1.7.ebuild stable for ppc
+
+  14 Jul 2004; Travis Tilley <lv@gentoo.org> cdrdao-1.1.8-r1.ebuild,
+  cdrdao-1.1.8.ebuild, cdrdao-1.1.9.ebuild:
+  make cdrdao die if trying to compile with gcc 3.4 and USE=gnome, since xdao
+  does not yet compile. however, cdrdao compiles fine without problems now that
+  it's dependencies have been fixed for gcc 3.4
+
+  14 Jul 2004; Travis Tilley <lv@gentoo.org> +files/cdrdao-1.1.9-cast.patch:
+  add cast patch for cdrdao 1.1.9
+
+*cdrdao-1.1.9 (11 Jul 2004)
+
+  11 Jul 2004; Lars Weiler <pylon@gentoo.org> +cdrdao-1.1.9.ebuild:
+  Version bump, but currently package-masked, as the gnome dependencies for
+  gcdrmaster are not compiling with gcc-3.4.
+
+  11 Jul 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.8-r1.ebuild:
+  Change for Gnome dependencies.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> cdrdao-1.1.8-r1.ebuild,
+  cdrdao-1.1.8.ebuild:
+  sync IUSE (-oggvorbis), add sed-4 dep, trim trailing whitespace
+
+  12 Jun 2004; Travis Tilley <lv@gentoo.org> cdrdao-1.1.8-r1.ebuild,
+  cdrdao-1.1.8.ebuild:
+  stable on amd64
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> cdrdao-1.1.5-r1.ebuild:
+  Fix use invocation
+
+  13 May 2004; Travis Tilley <lv@gentoo.org> +files/cdrdao-1.1.8-cast.patch,
+  cdrdao-1.1.8-r1.ebuild:
+  added fix for amd64
+
+*cdrdao-1.1.8-r1 (17 Mar 2004)
+
+  27 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Add gcc-3.4 patch #48853 by LordKow.
+
+  12 Apr 2004; Guy Martin <gmsoft@gentoo.org> cdrdao-1.1.8.ebuild:
+  Marked stable on hppa.
+
+  17 Mar 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.8-r1.ebuild:
+  Added patches for debug-mode as recommended in Bug 43003
+
+  17 Mar 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.8.ebuild:
+  Added dependency on cdrtools (Bug 43910)
+
+  12 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> cdrdao-1.1.8.ebuild:
+  stable on sparc
+
+  11 Mar 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.8.ebuild:
+  Stable on ppc and x86
+
+  09 Mar 2004; <agriffis@gentoo.org> cdrdao-1.1.7-r3.ebuild:
+  stable on alpha and ia64
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> cdrdao-1.1.7-r3.ebuild:
+  All your stable keywords are belong to sparc!
+
+  23 Feb 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.8.ebuild:
+  Let cdrdao build with it's own libscg as there seem to be issues with one of
+  cdrtools. Furthermore we don't need the dependency to cdrtools.
+
+  20 Feb 2004; Guy Martin <gmsoft@gentoo.org> cdrdao-1.1.7-r3.ebuild:
+  Marked stable on hppa.
+
+  17 Feb 2004; Lars Weiler <pylon@gentoo.org> :
+  Corrected the md5sum
+
+*cdrdao-1.1.8 (16 Feb 2004)
+
+  16 Feb 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.8.ebuild,
+  files/gcdmaster.desktop:
+  Version bump.  Thanks to everybody in bug #41615
+
+  07 Feb 2004; Lars Weiler <pylon@gentoo.org> cdrdao-1.1.7-r3.ebuild,
+  metadata.xml:
+  stable on x86 and ppc.  Added metadata.
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> cdrdao-1.1.7-r2.ebuild,
+  cdrdao-1.1.7-r3.ebuild:
+  ia64 keywords changes
+
+  31 Dec 2003; Jason Wever <weeve@gentoo.org> cdrdao-1.1.7-r3.ebuild:
+  Missed some un-needed whitespace on last commit.
+
+  31 Dec 2003; Jason Wever <weeve@gentoo.org> cdrdao-1.1.7-r3.ebuild:
+  Added fix for bug #36420 so that the gentoo patch will succeed in all cases.
+
+*cdrdao-1.1.7-r3 (16 Dec 2003)
+
+  16 Dec 2003; Martin Schlemmer <azarah@gentoo.org> cdrdao-1.1.7-r3.ebuild,
+  files/cdrdao-1.1.7-gentoo-version.patch:
+  Add '-gentoo' to version, so that k3b, etc can detect that we have a special
+  version that includes scglib support.
+
+  29 Nov 2003; Brad House <brad_mssw@gentoo.org> cdrdao-1.1.7-r2.ebuild:
+  mark stable on amd64
+
+  27 Nov 2003; Daniel AHlberg <aliz@gentoo.org> cdrdao-1.1.7-r2.ebuild:
+  Depend on virtual/cdrtools instead of app-cdr/cdrtools.
+
+  21 Nov 2003; Martin Holzer <mholzer@gentoo.org> cdrdao-1.1.5-r1.ebuild,
+  cdrdao-1.1.7-r1.ebuild, cdrdao-1.1.7-r2.ebuild, cdrdao-1.1.7.ebuild:
+  Fixing Dep. Closes #34036.
+
+  19 Nov 2003; Martin Holzer <mholzer@gentoo.org> cdrdao-1.1.5-r1.ebuild,
+  cdrdao-1.1.7-r1.ebuild, cdrdao-1.1.7-r2.ebuild, cdrdao-1.1.7.ebuild:
+  Adding dev-perl/libvorbis-perl. closes #29326.
+
+*cdrdao-1.1.7-r2 (29 Jun 2003)
+
+  11 Jul 2003; Guy Martin <gmsoft@gentoo.org> cdrda-1.1.7-r2.ebuild :
+  Added hppa to KEYWORDS.
+
+  29 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> cdrda-1.1.7-r2.ebuild :
+  Build against libs from cdrtools. Closes #23384.
+
+  21 Jun 2003; Alastair Tse <liquidx@gentoo.org> cdrdao-1.1.5-r1.ebuild,
+  cdrdao-1.1.7-r1.ebuild, cdrdao-1.1.7.ebuild:
+  updated gnomemm deps
+
+*cdrdao-1.1.7-r1 (09 Mar 2003)
+
+  28 Mar 2003; Pieter van den Abeele <pvdabeel@gentoo.org> cdrdao-1.1.7-r1.ebuild:
+  Updated ~ppc to ppc
+
+  09 Mar 2003; Seemant Kulleen <seemant@gentoo.org> cdrdao-1.1.7-r1.ebuild:
+  added / thanks to Paul Giordano <giordano@covad.net> in bug #17168
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*cdrdao-1.1.7 (12 Oct 2002)
+
+  01 Nov 2002; Arcady Genkin <agenkin@gentoo.org> : cdrdao-1.1.7.ebuild
+  Install the XPM icons along with the PNG ones.
+	
+  30 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Added installation of contributed software mp32dao.pl.
+
+  12 Oct 2002; foser <foser@gentoo.org> cdrdao-1.1.7.ebuild :
+  New version, should fix gnome build (bug #5331)
 
 *cdrdao-1.1.5-r1 (1 Feb 2002)
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  25 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> cdrdao-1.1.5-r1.ebuild :
+  Added downloading of the latest drivers file. Also filter flag.
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> cdrdao-1.1.5-r1.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  15 Sep 2002; Maarten Thibaut <murphy@gentoo.org> cdrdao-1.1.5-r1.ebuild :
+  Added keywords for sparc and sparc64. Reorganized ChangeLog.
+   
+  26 Aug 2002; Spider <spider@gentoo.org> cdrdao-1.1.5-r1.ebuild :
+  comment out Gnome stuff because it doesn't build with that enabled :/
+
+  15 Aug 2002; Spider <spider@gentoo.org> cdrdao-1.1.5-r1.ebuild :
+  Change the gtkmm deps so they get the right versions
+
+  18 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  fixed KEYWORDS, it is ppc not PPC.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Added KEYWORDS.
+
+  06 Apr 2002; G.Bevin <gbevin@gentoo.org> files/cdrdao-1.1.5-c++.patch :
+  C++ related fixes for gcc 3.
   
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

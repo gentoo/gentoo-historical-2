@@ -1,15 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/duke3d/duke3d-20040817.ebuild,v 1.1 2004/08/18 04:08:57 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/duke3d/duke3d-20040817.ebuild,v 1.1.1.1 2005/11/30 09:39:46 chriswhite Exp $
 
 fromcvs=0
 ECVS_MODULE="duke3d"
 if [ ${fromcvs} -eq 1 ] ; then
-ECVS_PASS="anonymous"
-ECVS_SERVER="icculus.org:/cvs/cvsroot"
-inherit cvs
+	ECVS_PASS="anonymous"
+	ECVS_SERVER="icculus.org:/cvs/cvsroot"
+	inherit cvs eutils flag-o-matic games
+else
+	inherit eutils flag-o-matic games
 fi
-inherit eutils flag-o-matic games
 
 DESCRIPTION="port of the original DukeNukem 3D"
 HOMEPAGE="http://icculus.org/projects/duke3d/"
@@ -17,8 +18,8 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
-IUSE="perl opengl" # nophysfs"
+KEYWORDS="x86 ppc hppa"
+IUSE="hardened perl opengl" # nophysfs"
 
 RDEPEND="virtual/x11
 	media-libs/libsdl
@@ -28,8 +29,7 @@ RDEPEND="virtual/x11
 	perl? ( dev-lang/perl )
 	opengl? ( virtual/opengl )"
 DEPEND="${RDEPEND}
-	x86? ( dev-lang/nasm )
-	>=sys-apps/sed-4"
+	!hardened? ( x86? ( dev-lang/nasm ) )"
 
 S="${WORKDIR}/${ECVS_MODULE}"
 
@@ -46,7 +46,7 @@ src_unpack() {
 	fi
 
 	# configure buildengine
-	cd ${S}/source/buildengine
+	cd "${S}/source/buildengine"
 	sed -i \
 		-e "/^useperl := / s:=.*:= $(use_tf perl):" \
 		-e "/^useopengl := / s:=.*:= $(use_tf opengl):" \
@@ -55,19 +55,26 @@ src_unpack() {
 		-e 's:/usr/lib/perl5/i386-linux/CORE/libperl.a::' \
 		Makefile \
 		|| die "sed build Makefile failed"
+	epatch "${FILESDIR}/${PV}-endian.patch"
 
 	# configure duke3d
-	cd ${S}/source
+	cd "${S}/source"
 	epatch "${FILESDIR}/${PV}-credits.patch"
-	epatch "${FILESDIR}/${PV}-duke3d-makefile-opts.patch" # need to sync features with build engine
+	# need to sync features with build engine
+	epatch "${FILESDIR}/${PV}-duke3d-makefile-opts.patch"
+	epatch "${FILESDIR}/${PV}-gcc34.patch" # compile fixes for GCC 3.4
 	sed -i \
-		-e "/^useopengl := / s:=.*:= $(use_tf opengl):" \
-		-e "/^usephysfs := / s:=.*:= false:" \
+		-e "/^use_opengl := / s:=.*:= $(use_tf opengl):" \
+		-e "/^use_physfs := / s:=.*:= false:" \
 		Makefile \
 		|| die "sed duke3d Makefile failed"
-	if use x86 ; then
-		sed -i -e 's:^#USE_ASM:USE_ASM:' buildengine/Makefile
-		sed -i -e '/^#use_asm := /s:#::' Makefile
+	if ! use hardened && use x86 ; then
+		sed -i \
+			-e 's:^#USE_ASM:USE_ASM:' buildengine/Makefile \
+			|| die "sed failed"
+		sed -i \
+			-e '/^#use_asm := /s:#::' Makefile \
+			|| die "sed failed"
 	fi
 
 	# causes crazy redefine errors with gcc-3.[2-4].x
@@ -75,10 +82,8 @@ src_unpack() {
 }
 
 src_compile() {
-	cd source/buildengine
-	emake OPTFLAGS="${CFLAGS}" || die "buildengine failed"
-	cd ..
-	emake OPTIMIZE="${CFLAGS}" || die "duke3d failed"
+	emake -C source/buildengine OPTFLAGS="${CFLAGS}" || die "buildengine failed"
+	emake -C source OPTIMIZE="${CFLAGS}" || die "duke3d failed"
 }
 
 src_install() {

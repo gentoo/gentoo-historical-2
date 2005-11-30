@@ -1,24 +1,31 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdlabelgen/cdlabelgen-3.0.0.ebuild,v 1.1 2003/11/24 23:56:24 zul Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdlabelgen/cdlabelgen-3.0.0.ebuild,v 1.1.1.1 2005/11/30 09:42:22 chriswhite Exp $
 
 DESCRIPTION="CD cover, tray card and envelope generator"
-HOMEPAGE="http://www.aczone.com/tools/cdinsert"
-SRC_URI="http://www.aczone.com/pub/tools/${P}.tgz"
+HOMEPAGE="http://www.aczoom.com/tools/cdinsert"
+SRC_URI="http://www.aczoom.com/pub/tools/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc sparc amd64"
+IUSE=""
 
-RDEPEND=">=perl-5.6.1"
+RDEPEND=">=dev-lang/perl-5.6.1"
 DEPEND="app-arch/tar
 	app-arch/gzip"
 
 src_compile() {
-	patch -p1 -i ${FILESDIR}/makefile.patch-2.6.0
+	cp Makefile Makefile.bak
+	sed -e "s:BASE_DIR   = /usr/local:BASE_DIR   = ${D}/usr:g" \
+		-e "s:LIB_DIR   = \$(BASE_DIR)/lib/cdlabelgen:LIB_DIR   = \$(BASE_DIR)/share/cdlabelgen:g" \
+		-e "s:\$(INSTALL) cdlabelgen.1 \$(MAN_DIR)/man1::g" \
+			Makefile.bak > Makefile
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install problem"
+	emake  install || die "install problem"
 	dodoc README INSTALL.WEB *.spec cdinsert.pl
 	dohtml *.html
+
+	doman cdlabelgen.1
 }

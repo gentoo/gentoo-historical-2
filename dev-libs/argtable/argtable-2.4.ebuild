@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/argtable/argtable-2.4.ebuild,v 1.1 2005/02/01 14:49:43 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/argtable/argtable-2.4.ebuild,v 1.1.1.1 2005/11/30 09:41:47 chriswhite Exp $
 
 inherit eutils
 
@@ -8,9 +8,9 @@ DESCRIPTION="An ANSI C library for parsing GNU-style command-line options with m
 HOMEPAGE="http://argtable.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="ppc x86"
 IUSE="doc debug"
 
 RDEPEND="virtual/libc"

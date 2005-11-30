@@ -1,6 +1,114 @@
 # ChangeLog for sys-fs/ntfsprogs
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/ntfsprogs/ChangeLog,v 1.1 2003/09/15 18:17:31 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/ntfsprogs/ChangeLog,v 1.1.1.1 2005/11/30 09:44:16 chriswhite Exp $
+
+  19 Nov 2005; Joseph Jezak <josejx@gentoo.org> ntfsprogs-1.11.2.ebuild:
+  Marked ppc stable for bug #109637.
+
+  19 Nov 2005; Simon Stelling <blubb@gentoo.org> ntfsprogs-1.11.2.ebuild:
+  stable on amd64
+
+  18 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ntfsprogs-1.11.2.ebuild, ntfsprogs-1.12.1.ebuild:
+  Fixing x86 KEYWORDS.  I need to not do this stuff when I'm half asleep.
+
+  18 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ntfsprogs-1.12.1.ebuild:
+  Stable on x86 for bug #109637.
+
+*ntfsprogs-1.12.1 (17 Oct 2005)
+
+  17 Oct 2005; Mike Frysinger <vapier@gentoo.org> +ntfsprogs-1.12.1.ebuild:
+  Version bump as notified by Matthias Reinelt via e-mail.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  06 Sep 2005; Jason Wever <weeve@gentoo.org> ntfsprogs-1.11.2.ebuild:
+  Added ~sparc keyword.
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ntfsprogs-1.11.1-r1.ebuild:
+  Stable on ppc.
+
+*ntfsprogs-1.11.2 (16 Aug 2005)
+
+  16 Aug 2005; Mike Frysinger <vapier@gentoo.org> +ntfsprogs-1.11.2.ebuild:
+  Version bump.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ntfsprogs-1.9.4.ebuild:
+  Stable on ppc.
+
+*ntfsprogs-1.11.1-r1 (29 Jul 2005)
+
+  29 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/ntfsprogs-1.11.1-utf8.patch, +ntfsprogs-1.11.1-r1.ebuild:
+  Add patch from upstream to fix UTF8 support #100633 by Petteri Räty.
+
+*ntfsprogs-1.11.1 (22 Jul 2005)
+
+  22 Jul 2005; Mike Frysinger <vapier@gentoo.org> +ntfsprogs-1.11.1.ebuild:
+  Version bump #99770 by Petteri Räty.
+
+*ntfsprogs-1.9.4 (04 Nov 2004)
+
+  04 Nov 2004; Mike Frysinger <vapier@gentoo.org> +ntfsprogs-1.9.4.ebuild:
+  Version bump & clean up.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ntfsprogs-1.9.2.ebuild:
+  Masked ntfsprogs-1.9.2.ebuild stable for ppc
+
+*ntfsprogs-1.9.2 (17 Jul 2004)
+
+  17 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> ntfsprogs-1.9.1.ebuild,
+  ntfsprogs-1.9.2.ebuild:
+  version bump and stabilize 1.9.1 on x86 for usage with testdisk.
+
+  18 May 2004; Daniel Black <dragonheart@gentoo.org> ntfsprogs-1.8.5.ebuild,
+  ntfsprogs-1.9.0.ebuild, ntfsprogs-1.9.1.ebuild:
+  QA fix - added gnome to IUSE as per bug #51327. Thanks to Matt Taylor
+  <liverbugg@juno.com>
+
+*ntfsprogs-1.9.1 (01 May 2004)
+
+  01 May 2004; Martin Holzer <mholzer@gentoo.org> ntfsprogs-1.9.1.ebuild:
+  Version bumped. Closes 49560
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ntfsprogs-1.7.1.ebuild:
+  Add inherit eutils
+
+  25 Apr 2004; David Holm <dholm@gentoo.org> ntfsprogs-1.9.0.ebuild:
+  Added to ~ppc, required by some packages which are useful on ppc.
+
+*ntfsprogs-1.9.0 (02 Apr 2004)
+
+  02 Apr 2004; <plasmaroo@gentoo.org> +ntfsprogs-1.9.0.ebuild:
+  Version bump. Closes bug #44354. 1.8.5 is now marked stable on
+  X86.
+
+*ntfsprogs-1.8.5 (06 Mar 2004)
+
+  06 Mar 2004; <plasmaroo@gentoo.org> ntfsprogs-1.8.0.ebuild,
+  ntfsprogs-1.8.5.ebuild: Version bump; bug #43421. Old version
+  removed as it had leaks in the directory lookup and handling code.
+
+  01 Feb 2004; <plasmaroo@gentoo.org> ntfsprogs-1.8.0.ebuild,
+  files/ntfsprogs-1.8.0-2.6-headers.patch:
+  Added a patch to get ntfsprogs to compile on 2.6 headers; closes bug #39106.
+
+*ntfsprogs-1.8.0 (25 Nov 2003)
+
+  25 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> ntfsprogs-1.8.0.ebuild:
+  Version bump
+
+  29 Oct 2003; Seemant Kulleen <seemant@gentoo.org> ntfsprogs-1.7.1.ebuild:
+  DESCRIPTION fix, closing bug #31927 by Matt Keadle <mkeadle@mkeadle.org>
+
+  30 Sep 2003; Martin Holzer <mholzer@gentoo.org> ntfsprogs-1.7.1.ebuild,
+  files/ntfsprogs-1.7.1-gcc3.patch:
+  Added gcc3 patch .Closes #27519.
 
 *ntfsprogs-1.7.1 (15 Sep 2003)
 

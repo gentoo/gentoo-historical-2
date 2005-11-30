@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/loop-aes/loop-aes-3.1b.ebuild,v 1.1 2005/10/10 18:41:09 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/loop-aes/loop-aes-3.1b.ebuild,v 1.1.1.1 2005/11/30 09:44:24 chriswhite Exp $
 
 inherit linux-mod eutils
 

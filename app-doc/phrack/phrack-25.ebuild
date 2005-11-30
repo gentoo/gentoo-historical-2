@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/phrack/phrack-25.ebuild,v 1.1 2003/02/12 03:43:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/phrack/phrack-25.ebuild,v 1.1.1.1 2005/11/30 09:42:30 chriswhite Exp $
 
 MY_P=${PN}${PV}
 DESCRIPTION="...a Hacker magazine by the community, for the community...."
@@ -9,13 +9,14 @@ SRC_URI="http://www.phrack.org/archives/${MY_P}.tar.gz"
 
 LICENSE="phrack"
 SLOT="${PV}"
-KEYWORDS="x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sh sparc x86"
+IUSE=""
 
 S=${WORKDIR}/${MY_P}
 
 src_install() {
-	[ -d ${S} ] || cd ${WORKDIR}/*
+	[[ -d ${S} ]] || cd "${WORKDIR}"/*
 	insinto /usr/share/doc/${PN}
 	gzip *
-	doins *
+	doins * || die "doins failed"
 }

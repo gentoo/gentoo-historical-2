@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dietlibc/dietlibc-0.27.ebuild,v 1.1 2004/10/01 21:23:53 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dietlibc/dietlibc-0.27.ebuild,v 1.1.1.1 2005/11/30 09:41:25 chriswhite Exp $
 
-inherit eutils flag-o-matic fixheadtails gcc
+inherit eutils flag-o-matic fixheadtails toolchain-funcs
 
 DESCRIPTION="A minimal libc"
 HOMEPAGE="http://www.fefe.de/dietlibc/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://kernel/linux/libs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~hppa ~amd64 ~mips"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~hppa ~amd64 ~mips ppc64"
 IUSE="debug"
 
 DEPEND=">=sys-apps/sed-4"
@@ -32,19 +32,25 @@ src_unpack() {
 	# ${FILESDIR}/ssp.c is integrated with upstream as of dietlibc-0.26
 	# - robbat2 (Oct 01 2004)
 
+	# Ok so let's make dietlibc ssp aware (Aug 7 2004) -solar
+	# ${FILESDIR}/ssp.c does not appear to be integrated with
+	# upstream as of dietlibc-0.27 bug 73112 - solar (Dec 05 2004)
+	cp ${FILESDIR}/ssp.c ${S}/lib/ || die "Failed to copy ssp.c into lib for compile"
+
 	# start with sparc/sparc64/x86_64/i386 for now.
 	# apply to all arches for crazy cross-compiling - robbat2 (Oct 01 2004)
 	epatch ${FILESDIR}/dietlibc-0.26-ssp.patch
-	append-flags -D__dietlibc__
-	# end ssp block code
 
 	# Fix for 45716
 	replace-sparc64-flags
 
 	# be very careful to only effect the CFLAGS used for optimization
 	# and not any of the other CFLAGS. - robbat2 (Oct 01 2004)
+
+	# Shifted ssp exclusion logic into sed expression. - solar (Dec 05 2004)
 	sed -i \
-		-e "s:^CFLAGS+=-O -fomit-frame-pointer:CFLAGS += ${CFLAGS}:" \
+		-e "s:^CFLAGS+=-O -fomit-frame-pointer:CFLAGS += ${CFLAGS} -D__dietlibc__:" \
+		-e "s:^CFLAGS=-pipe -nostdinc:CFLAGS=-pipe -nostdinc -D__dietlibc__ -fno-stack-protector-all -fno-stack-protector:" \
 		-e "s:^prefix.*:prefix=/usr/diet:" \
 		Makefile \
 		|| die "sed Makefile failed"

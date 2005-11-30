@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.2.2-r1.ebuild,v 1.1 2004/08/26 15:03:17 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.2.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:13 chriswhite Exp $
 
 inherit elisp
 
@@ -12,13 +12,12 @@ SRC_URI="http://stat.ethz.ch/ESS/downloads/ess/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~sparc"
+KEYWORDS="alpha ~amd64 ppc sparc x86"
 
-DEPEND="virtual/emacs
-	app-text/texi2html
+DEPEND="app-text/texi2html
 	sys-apps/sed
 	virtual/tetex"
-RDEPEND="virtual/emacs"
+RDEPEND=""
 
 SITEFILE=50ess-gentoo.el
 
@@ -45,7 +44,7 @@ src_install() {
 		install || die
 	elisp-site-file-install ${FILESDIR}/${SITEFILE};
 	dodir /usr/share/emacs/etc/ess
-	cp -a etc/* ${D}/usr/share/emacs/etc/ess
+	cp -pPR etc/* ${D}/usr/share/emacs/etc/ess
 	dohtml ${S}/doc/html/*.html
 	dodoc ${S}/doc/{NEWS,README,TODO}
 	insinto /usr/share/doc/${P}

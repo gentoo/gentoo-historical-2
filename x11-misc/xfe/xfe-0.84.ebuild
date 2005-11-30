@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xfe/xfe-0.84.ebuild,v 1.1 2005/07/05 21:55:45 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xfe/xfe-0.84.ebuild,v 1.1.1.1 2005/11/30 09:40:32 chriswhite Exp $
 
 DESCRIPTION="MS-Explorer-like minimalist file manager for X"
 HOMEPAGE="http://roland65.free.fr/xfe/"

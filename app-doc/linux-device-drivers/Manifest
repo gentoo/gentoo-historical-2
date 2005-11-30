@@ -1,2 +1,5 @@
-MD5 8ee602d4d08fe2bee5a7e09246f57cf1 linux-device-drivers-2.ebuild 454
-MD5 639c15b3fe56558cdef7497cbf609603 files/digest-linux-device-drivers-2 62
+MD5 df9a6a351a8efa347c38d64cdc41c968 ChangeLog 838
+MD5 e6a00941ce739ca690319884e101766d linux-device-drivers-2.ebuild 791
+MD5 2b5e3b8922fb25e6c9f26d3f45d44952 linux-device-drivers-3.ebuild 926
+MD5 298d4407a68e507c31c215e03b9b5af3 files/digest-linux-device-drivers-2 132
+MD5 11d163f07169be6fe48ffe7ee80523ff files/digest-linux-device-drivers-3 127

@@ -1,6 +1,9 @@
-# ChangeLog for app-sci/oww
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/oww/ChangeLog,v 1.1 2004/12/27 21:06:40 ribosome Exp $
+# ChangeLog for sci-misc/oww
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/oww/ChangeLog,v 1.1.1.1 2005/11/30 09:44:35 chriswhite Exp $
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
 
 *oww-0.71.1 (27 Dec 2004)
 
@@ -15,5 +18,5 @@
 
   17 Dec 2003; Patrick Kursawe <phosphan@gentoo.org> metadata.xml,
   oww-0.71.1.ebuild:
-  Initial import based on bug #19974 by Roger Pau Monné <royger@bdftech.com>
+  Initial import based on bug #19974 by Roger Pau MonnÃ© <royger@bdftech.com>
 

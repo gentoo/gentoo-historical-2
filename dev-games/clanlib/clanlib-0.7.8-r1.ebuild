@@ -1,28 +1,26 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/clanlib/clanlib-0.7.8-r1.ebuild,v 1.1 2004/08/15 08:51:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/clanlib/clanlib-0.7.8-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:36 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
 DESCRIPTION="multi-platform game development library"
 HOMEPAGE="http://www.clanlib.org/"
-SRC_URI="http://www.clanlib.org/~sphair/download/ClanLib-${PV}-1.tar.bz2"
+SRC_URI="http://www.clanlib.org/download/files/ClanLib-${PV}-1.tar.bz2"
 
 LICENSE="LGPL-2"
 SLOT="0.7"
-KEYWORDS="x86 ppc sparc alpha amd64"
-IUSE="opengl X sdl oggvorbis doc mikmod clanVoice clanJavaScript ipv6"
+KEYWORDS="amd64 x86" #not big endian safe #82779
+IUSE="opengl X sdl vorbis doc mikmod clanVoice clanJavaScript ipv6"
 
-RDEPEND=">=media-libs/hermes-1.3.2
+DEPEND="virtual/libc
 	media-libs/libpng
 	media-libs/jpeg
 	opengl? ( virtual/opengl )
 	sdl? ( media-libs/libsdl )
 	X? ( virtual/x11 )
 	mikmod? ( >=media-libs/libmikmod-3.1.9 )
-	oggvorbis? ( media-libs/libvorbis )"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+	vorbis? ( media-libs/libvorbis )"
 
 S="${WORKDIR}/ClanLib-${PV}"
 
@@ -30,7 +28,8 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	find . -name .cvsignore -exec rm -f '{}' \;
-	epatch "${FILESDIR}/${PV}-port.patch"
+	epatch "${FILESDIR}"/${PV}-port.patch
+	epatch "${FILESDIR}"/${PV}-install-opengl-wrap.patch
 	if ! use doc ; then
 		sed -i \
 			-e '/^SUBDIRS/s:Documentation::' \
@@ -55,7 +54,7 @@ src_compile() {
 		$(use_enable clanJavaScript) \
 		$(use_enable opengl clanGL) \
 		$(use_enable sdl clanSDL) \
-		$(use_enable oggvorbis clanVorbis) \
+		$(use_enable vorbis clanVorbis) \
 		$(use_enable mikmod clanMikMod) \
 		$(use_enable ipv6 getaddr) \
 		|| die

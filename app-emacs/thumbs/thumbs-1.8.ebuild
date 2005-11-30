@@ -1,22 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/thumbs/thumbs-1.8.ebuild,v 1.1 2003/09/25 04:51:05 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/thumbs/thumbs-1.8.ebuild,v 1.1.1.1 2005/11/30 09:41:19 chriswhite Exp $
 
-inherit elisp
-
-IUSE=""
+inherit elisp eutils
 
 DESCRIPTION="Emacs thumbnail previewer for image files"
 HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki.pl?ThumbsMode"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~ppc sparc x86"
+IUSE=""
 
 DEPEND="virtual/emacs
 	media-gfx/imagemagick"
-
-S=${WORKDIR}/${P}
 
 SITEFILE=50thumbs-gentoo.el
 
@@ -33,4 +31,3 @@ src_install() {
 	elisp-install ${PN} *.el *.elc
 	elisp-site-file-install ${FILESDIR}/${SITEFILE}
 }
-

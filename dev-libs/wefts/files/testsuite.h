@@ -2,7 +2,7 @@
    testsuite.h
    Definition of test class.
 
-   $Id: testsuite.h,v 1.1 2005/05/28 12:34:30 flameeyes Exp $
+   $Id: testsuite.h,v 1.1.1.1 2005/11/30 09:41:42 chriswhite Exp $
 ---------------------------------------------
    Begin      : Fri, 12 Mar 2004 07:53:14 +0100
    Author     : Giancarlo Niccolai

@@ -1,35 +1,36 @@
-DESCRIPTION="ORNAMENTVM ROSACEVM INFERNVM PRATVLIS"
-HOMEPAGE="http://www.xiph.org/mgm/index.html"
-SRC_URI="http://www.xiph.org/mgm/${P}.tgz"
-S=${WORKDIR}/${PN}
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/mgm/mgm-1.1.ebuild,v 1.1.1.1 2005/11/30 09:40:49 chriswhite Exp $
 
-KEYWORDS="x86"
+inherit eutils
+
+DESCRIPTION="Moaning Goat Meter: load and status meter written in Perl"
+HOMEPAGE="http://www.linuxmafia.com/mgm/index.html"
+SRC_URI="http://www.linuxmafia.com/mgm/${P}.tgz"
+
+KEYWORDS="x86 sparc ~amd64 ppc"
 SLOT="0"
-LICENSE=""
+LICENSE="as-is"
+IUSE=""
 
-RDEPEND=">=sys-devel/perl-5.6.1
-		>=dev-perl/perl-tk-800.024"
-src_unpack()
-{
-  unpack ${P}.tgz
+RDEPEND=">=dev-lang/perl-5.6.1
+	>=dev-perl/perl-tk-800.024"
 
-  cd ${S}
-  patch < ${FILESDIR}/${P}-gentoo.patch
+S="${WORKDIR}/${PN}"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch "${FILESDIR}/${P}-gentoo.patch"
 }
 
-src_install()
-{
-  cd ${S}
-
-  dobin mgm
-  dohtml doc/*
-  insinto usr/share/mgm
-  doins lib/*
-  insinto usr/share/mgm/linux
-  doins modules/linux/*
-  insinto usr/share/mgm/share
-  doins modules/share/*
-
+src_install() {
+	dobin mgm || die "dobin failed"
+	insinto usr/share/mgm
+	doins lib/* || die "doins failed (lib)"
+	insinto usr/share/mgm/linux
+	doins modules/linux/* || die "doins failed (modules/linux)"
+	insinto usr/share/mgm/share
+	doins modules/share/* || die "doins failed (modules/share)"
+	dohtml doc/*
 }
-

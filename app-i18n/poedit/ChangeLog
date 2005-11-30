@@ -1,6 +1,101 @@
-# ChangeLog for dev-util/poedit
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/ChangeLog,v 1.1 2004/07/27 00:03:27 pythonhead Exp $
+# ChangeLog for app-i18n/poedit
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/ChangeLog,v 1.1.1.1 2005/11/30 09:40:11 chriswhite Exp $
+
+*poedit-1.3.4 (11 Oct 2005)
+*poedit-1.3.3 (11 Oct 2005)
+
+  11 Oct 2005; Rob Cakebread <pythonhead@gentoo.org> +poedit-1.3.3.ebuild,
+  +poedit-1.3.4.ebuild:
+  Version bump. Closes #97237 Thanks Peter Hjalmarsson <xake@telia.com> for
+  ebuild changes and poedit.desktop. Removed gtk2 flag per #106560
+
+  22 May 2005; Tobias Scherbaum <dertobi123@gentoo.org> poedit-1.3.2.ebuild:
+  Stable on ppc.
+
+  20 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> poedit-1.3.2.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> poedit-1.3.1.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Herbie Hopkins <herbs@gentoo.org> poedit-1.3.2.ebuild:
+  ~amd64 keyword added, closes #89982
+
+  20 May 2005; Rob Cakebread <pythonhead@gentoo.org> poedit-1.3.2.ebuild:
+  Marked stable x86
+
+*poedit-1.3.2 (29 Jan 2005)
+
+  29 Jan 2005; Rob Cakebread <pythonhead@gentoo.org> +poedit-1.3.2.ebuild:
+  Version bump.
+
+  18 Jan 2005; Rob Cakebread <pythonhead@gentoo.org> poedit-1.2.3.ebuild,
+  poedit-1.2.4.ebuild, poedit-1.2.5.ebuild, poedit-1.3.0.ebuild,
+  poedit-1.3.1.ebuild:
+  Fixed install dirs for Gnome and KDE. Bug #78580. Thanks Person Sebastien
+  <personseb@yahoo.fr>
+
+  13 Jan 2005; Rob Cakebread <pythonhead@gentoo.org> poedit-1.2.3.ebuild,
+  poedit-1.2.4.ebuild, poedit-1.2.5.ebuild, poedit-1.3.0.ebuild,
+  poedit-1.3.1.ebuild:
+  removed einstall bug# 72176
+
+  09 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> poedit-1.3.1.ebuild:
+  Stable on sparc
+
+  07 Dec 2004; Rob Cakebread <pythonhead@gentoo.org> poedit-1.2.3.ebuild,
+  poedit-1.2.4.ebuild, poedit-1.2.5.ebuild, poedit-1.3.0.ebuild,
+  poedit-1.3.1.ebuild:
+  Changed deps for wxgtk, marked stable x86
+
+  01 Dec 2004; Rob Cakebread <pythonhead@gentoo.org> :
+  Marked x86 stable.
+
+*poedit-1.3.1 (21 Oct 2004)
+
+  21 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +poedit-1.3.1.ebuild:
+  version bump
+
+*poedit-1.3.0 (14 Oct 2004)
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> poedit-1.3.0.ebuild:
+  Added to ~ppc.
+
+  06 Sep 2004; Rob Cakebread <pythonhead@gentoo.org> :
+  Version bump and add spell USE flag. Thanks Vaclav Slavik for the patch. Bug #63038
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  30 Aug 2004; Sven Wegener <swegener@gentoo.org> poedit-1.2.5.ebuild:
+  When moving patches from files/ to mirrors SRC_URI should be updated, as
+  should the epatch in src_unpack.
+
+  14 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> poedit-1.2.5.ebuild:
+  Changed epatch for compliance with bug# 60345
+
+  13 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> poedit-1.2.3.ebuild,
+  poedit-1.2.4.ebuild, poedit-1.2.5.ebuild:
+  Added dep on app-arch/zip bug# 59955
+
+*poedit-1.2.4 (07 Aug 2004)
+
+  07 Aug 2004; Rob Cakebread <pythonhead@gentoo.org>
+  -files/poedit-1.1.8-gentoo.diff,
+  -files/poedit-1.2.1-gentoo_make_paths.patch, -poedit-1.1.8.ebuild,
+  -files/poedit-1.2.5-db4-compilation.patch,
+  -poedit-1.2.1.ebuild, -poedit-1.2.2.ebuild, poedit-1.2.3.ebuild,
+  +poedit-1.2.4.ebuild, poedit-1.2.5.ebuild:
+  Removed poedit-1.2.5-db4-compilation.patch and put it on gentoo mirror,
+  removed obsolete versions, added 1.2.4, revised all to use new wxwidgets
+  eclass.
+
+*poedit-1.2.5 (26 Jul 2004)
+
+  26 Jul 2004; Rob Cakebread <pythonhead@gentoo.org>
+  +files/poedit-1.2.5-db4-compilation.patch, +poedit-1.2.5.ebuild:
+  Version bump. Thanks for the patch Vaclav Slavik. bug #42753
 
 *poedit-1.2.2 (26 Jul 2004)
 

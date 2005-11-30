@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/nrg2iso/nrg2iso-0.4-r1.ebuild,v 1.1 2004/12/25 15:56:54 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/nrg2iso/nrg2iso-0.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:23 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 
@@ -10,7 +10,7 @@ SRC_URI="http://gregory.kokanosky.free.fr/v4/linux/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
 DEPEND="virtual/libc"
@@ -21,4 +21,5 @@ src_compile() {
 
 src_install() {
 	dobin nrg2iso || die
+	dodoc CHANGELOG || die
 }

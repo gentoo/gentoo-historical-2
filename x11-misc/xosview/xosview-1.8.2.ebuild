@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xosview/xosview-1.8.2.ebuild,v 1.1 2004/09/04 01:09:11 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xosview/xosview-1.8.2.ebuild,v 1.1.1.1 2005/11/30 09:40:31 chriswhite Exp $
+
+inherit eutils gnuconfig
 
 DESCRIPTION="X11 operating system viewer"
 SRC_URI="mirror://sourceforge/xosview/${P}.tar.gz"
@@ -8,10 +10,16 @@ HOMEPAGE="http://xosview.sourceforge.net"
 
 SLOT="0"
 LICENSE="GPL-2 BSD"
-KEYWORDS="~x86 ~alpha ~ppc ~amd64 ~sparc"
+KEYWORDS="x86 alpha ppc amd64 sparc ppc64"
 
 DEPEND="virtual/x11"
 IUSE=""
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/xosview-emptyxpaths.patch"
+}
 
 src_compile() {
 	# 2.6 kernel compatibility has been fixed upstream...
@@ -21,6 +29,8 @@ src_compile() {
 	#	epatch ${FILESDIR}/xosview-1.8.1-kernel-2.5+.diff || die "patch failed"
 	#fi
 
+	use ppc64 && gnuconfig_update
+
 	econf || die "configuration failed"
 	emake || die "compilation failed"
 }
@@ -28,10 +38,10 @@ src_compile() {
 src_install() {
 	exeinto /usr/bin
 	doexe xosview
-	insinto /usr/lib/X11
+	insinto /etc/X11/app-defaults
 	cp Xdefaults XOsview
 	doins XOsview
 	into /usr
 	doman *.1
-	dodoc CHANGES COPYING README README.linux TODO
+	dodoc CHANGES README README.linux TODO
 }

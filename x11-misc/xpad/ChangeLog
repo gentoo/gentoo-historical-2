@@ -1,6 +1,176 @@
 # ChangeLog for x11-misc/xpad
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xpad/ChangeLog,v 1.1 2002/06/02 13:35:15 stroke Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xpad/ChangeLog,v 1.1.1.1 2005/11/30 09:40:40 chriswhite Exp $
+
+  20 Nov 2005; <dang@gentoo.org> xpad-2.10.ebuild:
+  Marked stable on amd64
+
+  20 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> xpad-2.10.ebuild:
+  Stable on x86 (bug 113003).
+
+  19 Nov 2005; Ferris McCormick <fmccor@gentoo.org> xpad-2.10.ebuild:
+  Stable on sparc at developer's request (Bug #113003).  Builds fine with
+  gtk+-2.8.7 and creates yellow sticky note pads.
+
+  19 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> xpad-2.10.ebuild:
+  stable on alpha
+
+*xpad-2.10 (05 Oct 2005)
+
+  05 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> +xpad-2.10.ebuild:
+  version bump
+
+*xpad-2.9-r1 (29 Sep 2005)
+
+  29 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/xpad-2.9-smallicons.patch, +files/xpad-2.9-toolbar-chsize.patch,
+  +xpad-2.9-r1.ebuild:
+  Add patches from Andrej Kacian (aka ticho@g.o)
+
+*xpad-2.9 (26 Aug 2005)
+
+  26 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> +xpad-2.9.ebuild:
+  version bump
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> xpad-2.8.ebuild:
+  Stable on ppc.
+
+  01 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> xpad-2.8.ebuild:
+  Stable on sparc
+
+  31 Jul 2005; Fernando J. Pereda <ferdy@gentoo.org> xpad-2.8.ebuild:
+  stable on x86 and alpha
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> xpad-2.6.ebuild:
+  Stable on ppc.
+
+*xpad-2.8 (11 Jun 2005)
+
+  11 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> +xpad-2.8.ebuild:
+  version bump, fixes 94897
+
+  30 May 2005; Fernando J. Pereda <ferdy@gentoo.org> xpad-2.6.ebuild:
+  alpha stable
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> xpad-2.6.ebuild:
+  Stable on sparc
+
+  15 May 2005; Fernando J. Pereda <ferdy@gentoo.org> xpad-2.6.ebuild:
+  keyworded ~alpha and x86 stable
+
+*xpad-2.6 (01 May 2005)
+
+  01 May 2005; Fernando J. Pereda <ferdy@gentoo.org> metadata.xml,
+  +xpad-2.6.ebuild:
+  Version bump, wrt #76853. Taking over maintainership
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> xpad-1.13.ebuild:
+  added ~amd64 to KEYWORDS. fixes #80899
+
+  13 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> xpad-1.11.ebuild,
+  xpad-1.13.ebuild, xpad-1.4.ebuild:
+  removed the G*DISABLE_DEPRECATED stuff to fix bug #47662; clean out old ebuilds
+
+  26 Jan 2004; <gustavoz@gentoo.org> xpad-1.13.ebuild:
+  stable on sparc
+
+  25 Jan 2004; Brandon Hale <tseng@gentoo.org> xpad-1.11.ebuild,
+  xpad-1.13.ebuild:
+  Remove IUSE="nls", as NLS works, but disabling it is broken in upstream.
+  I hope this is the last I see of this bug..
+
+*xpad-1.13 (25 Jan 2004)
+
+  25 Jan 2004; Brandon Hale <tseng@gentoo.org> xpad-1.11.ebuild,
+  xpad-1.13.ebuild:
+  1.13 stable on x86
+
+  24 Jan 2004; Brandon Hale <tseng@gentoo.org> xpad-1.10.1.ebuild,
+  xpad-1.11.ebuild, xpad-1.12.ebuild, xpad-1.13.ebuild, xpad-1.4.ebuild:
+  Clean out old versions, apply some cleanups from Michael Terry
+  <mterry@fastmail.fm> in bug 29852.
+
+  05 Jan 2004; Jason Wever <weeve@gentoo.org> xpad-1.10.1.ebuild,
+  xpad-1.11.ebuild, xpad-1.12.ebuild, xpad-1.13.ebuild, xpad-1.4.ebuild:
+  Marked 1.11 stable on sparc and adjusted the copyright dates in all.
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> xpad-1.13.ebuild:
+  Make stable on ppc
+
+*xpad-1.13 (15 Nov 2003)
+
+  15 Nov 2003; Lars Weiler <pylon@gentoo.org> xpad-1.11.ebuild,
+  xpad-1.13.ebuild:
+  Version bump and x86 stable mask of version 1.11.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*xpad-1.12 (06 Oct 2003)
+
+  06 Oct 2003; Daniel Ahlberg <aliz@gentoo.org> xpad-1.12.ebuild:
+  Version bump
+
+*xpad-1.11 (23 Sep 2003)
+
+  23 Sep 2003; Lars Weiler <pylon@gentoo.org> xpad-1.11.ebuild:
+  Version bump.
+
+  11 May 2003; Alastair Tse <liquidx@gentoo.org> xpad-1.10.1.ebuild,
+  xpad-1.4.ebuild, xpad-1.6.1.ebuild, xpad-1.6.1.ebuild, xpad-1.7.ebuild,
+  xpad-1.7.ebuild, xpad-1.9.1.ebuild:
+  fix gentoo header and cleanups
+
+*xpad-1.10.1 (07 Apr 2003)
+
+  07 Apr 2003; Jason Wever <weeve@gentoo.org> xpad-1.10.1.ebuild:
+  New version.
+
+*xpad-1.9.1 (09 Mar 2003)
+
+  09 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*xpad-1.7 (03 Dec 2002)
+
+  03 Dec 2002; L. Boshell <leonardop@gentoo.org> : New version. Thanks to
+  Michael Terry for letting us know about it on bug #11181.
+
+*xpad-1.6.1 (25 Oct 2002)
+
+  25 Oct 2002; foser <foser@gentoo.org> xpad-1.6.1.ebuild :
+
+  New minor bugfix version
+
+*xpad-1.6 (24 Oct 2002)
+
+  24 Oct 2002; foser <foser@gentoo.org> xpad-1.6.ebuild :
+
+  New version
+
+*xpad-1.5.1 (18 Oct 2002)
+
+  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> xpad-1.2.1.ebuild 
+  xpad-1.4.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> xpad-1.5.1.ebuild :
+  Version bump, found by Michael Terry <msterry@student.umass.edu> in #6900.
+
+* xpad-1.4 (12 August 2002)
+
+  12 August 2002; Sascha Schwabbauer <cybersystem@gentoo.org> xpad-1.4.ebuild :
+
+  Version bump. Ebuild contributed by Michael Terry <msterry@student.umass.edu>.
+
+xpad-1.2.1 (28 Jul 2002)
+
+  28 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> xpad-1.2.1.ebuild :
+
+  Version bump. Ebuild contributed by Michael Terry <msterry@student.umass.edu>.
 
 *xpad-1.1 (2 June 2002)
   2 June 2002; Michael Terry <msterry@student.umass.edu> ChangeLog :

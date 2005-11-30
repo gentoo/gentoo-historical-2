@@ -1,28 +1,26 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/users-guide/users-guide-1.2.ebuild,v 1.1 2000/08/15 15:27:15 achim Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/users-guide/users-guide-1.2.ebuild,v 1.1.1.1 2005/11/30 09:41:00 chriswhite Exp $
 
-P=users-guide-1.2
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
-CATEGORY="gnome-apps"
 DESCRIPTION="gnome-users-guide"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/users-guide/"${A}
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.gnome.org/"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
+LICENSE="GPL-2"
+DEPEND="gnome-base/gnome-core"
 
-src_compile() {                           
-  cd ${S}
-  ./configure --host=${CHOST} --prefix=/opt/gnome
-  make
+src_compile() {
+	./configure --host=${CHOST}					\
+		    --prefix=/usr
+	assert
+
+	emake || die
 }
 
-src_install() {                               
-  cd ${S}
-  make prefix=${D}/opt/gnome install
-  dodoc AUTHORS COPYING* ChangeLog NEWS
-  dodoc README* TODO
+src_install() {
+	make prefix=${D}/usr install || die
+
+	dodoc AUTHORS COPYING* ChangeLog NEWS README* TODO
 }
-
-
-

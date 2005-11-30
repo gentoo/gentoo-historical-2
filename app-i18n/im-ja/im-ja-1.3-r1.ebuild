@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/im-ja/im-ja-1.3-r1.ebuild,v 1.1 2005/02/23 03:47:55 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/im-ja/im-ja-1.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:40:04 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://im-ja.sourceforge.net/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
+KEYWORDS="x86 ppc sparc alpha amd64"
 IUSE="gnome canna freewnn skk anthy"
 # --enable-debug causes build failure with gtk+-2.4
 #IUSE="${IUSE} debug"
@@ -36,6 +36,14 @@ RDEPEND="virtual/libc
 
 DOCS="AUTHORS README ChangeLog TODO"
 
+get_gtk_confdir() {
+	if useq amd64 || ( [ "${CONF_LIBDIR}" == "lib32" ] && useq x86 ) ; then
+		echo "/etc/gtk-2.0/${CHOST}"
+	else
+		echo "/etc/gtk-2.0"
+	fi
+}
+
 src_compile() {
 	local myconf
 	# You cannot use `use_enable ...` here. im-ja's configure script
@@ -55,7 +63,7 @@ src_compile() {
 
 pkg_postinst() {
 	if [ -x /usr/bin/gtk-query-immodules-2.0 ] ; then
-		gtk-query-immodules-2.0 > ${ROOT}/etc/gtk-2.0/gtk.immodules
+		gtk-query-immodules-2.0 > ${ROOT}/$(get_gtk_confdir)/gtk.immodules
 	fi
 	gnome2_pkg_postinst
 	einfo
@@ -70,7 +78,7 @@ pkg_postinst() {
 
 pkg_postrm() {
 	if [ -x /usr/bin/gtk-query-immodules-2.0 ] ; then
-		gtk-query-immodules-2.0 > ${ROOT}/etc/gtk-2.0/gtk.immodules
+		gtk-query-immodules-2.0 > ${ROOT}/$(get_gtk_confdir)/gtk.immodules
 	fi
 	gnome2_pkg_postrm
 }

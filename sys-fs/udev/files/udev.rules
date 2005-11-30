@@ -1,5 +1,5 @@
 # /etc/udev/udev.rules:  device naming rules for udev
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/files/udev.rules,v 1.1 2003/12/26 23:32:44 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/files/udev.rules,v 1.1.1.1 2005/11/30 09:44:22 chriswhite Exp $
 #
 # There are a number of modifiers that are allowed to be used in the NAME or PROGRAM fields.
 # They provide the following subsitutions:

@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-4.5.ebuild,v 1.1 2004/07/13 05:22:01 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-4.5.ebuild,v 1.1.1.1 2005/11/30 09:42:00 chriswhite Exp $
 
-inherit libtool flag-o-matic eutils
+inherit libtool flag-o-matic eutils gnuconfig
 
 DESCRIPTION="Perl-compatible regular expression library"
 HOMEPAGE="http://www.pcre.org/"
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PV}.tar.bz
 
 LICENSE="as-is"
 SLOT="3"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390 ~mips"
+KEYWORDS="x86 ~ppc sparc alpha arm hppa amd64 ia64 ~ppc64 s390 mips ppc-macos sh"
 IUSE=""
 
 DEPEND="virtual/libc"
@@ -22,12 +22,14 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/pcre-4.4-uclibc-tuple.patch
 	epatch ${FILESDIR}/pcre-4.2-link.patch
-}
-
-src_compile() {
+	use ppc-macos && epatch ${FILESDIR}/pcre-4.2-macos.patch
 	# position-independent code must used for all shared objects.
 	append-flags -fPIC
 	elibtoolize
+	gnuconfig_update
+}
+
+src_compile() {
 	econf --enable-utf8 || die
 	make || die
 }

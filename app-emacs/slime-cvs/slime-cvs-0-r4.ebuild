@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/slime-cvs/slime-cvs-0-r4.ebuild,v 1.1 2005/04/06 07:24:17 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/slime-cvs/slime-cvs-0-r4.ebuild,v 1.1.1.1 2005/11/30 09:41:23 chriswhite Exp $
 
 ECVS_SERVER="common-lisp.net:/project/slime/cvsroot"
 if [ -z "${ECVS_BRANCH}" ]; then

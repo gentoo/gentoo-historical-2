@@ -1,6 +1,6 @@
 # ChangeLog for sys-fs/evfs
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/evfs/ChangeLog,v 1.1 2005/08/18 04:14:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/evfs/ChangeLog,v 1.1.1.1 2005/11/30 09:44:18 chriswhite Exp $
 
 *ecore-* (18 Aug 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/sync2cd/sync2cd-0.8.ebuild,v 1.1 2004/03/29 02:37:35 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/sync2cd/sync2cd-0.8.ebuild,v 1.1.1.1 2005/11/30 09:42:28 chriswhite Exp $
 
 inherit distutils
 
@@ -9,6 +9,6 @@ HOMEPAGE="http://www.calins.ch/software/sync2cd.html"
 SRC_URI="http://www.calins.ch/download/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc amd64"
 IUSE=""
 

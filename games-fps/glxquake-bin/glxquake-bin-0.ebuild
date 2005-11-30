@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/glxquake-bin/glxquake-bin-0.ebuild,v 1.1 2005/05/08 04:44:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/glxquake-bin/glxquake-bin-0.ebuild,v 1.1.1.1 2005/11/30 09:39:43 chriswhite Exp $
 
 inherit games
 
@@ -18,6 +18,7 @@ DEPEND="virtual/opengl"
 S=${WORKDIR}/glxquake
 
 src_install() {
-	dogamesbin glquake || die
+	dogamesbin glquake || die "dogamesbin failed"
 	dodoc README
+	prepgamesdirs
 }

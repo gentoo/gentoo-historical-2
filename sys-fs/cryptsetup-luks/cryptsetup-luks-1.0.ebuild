@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup-luks/cryptsetup-luks-1.0.ebuild,v 1.1.1.1 2005/11/30 09:44:29 chriswhite Exp $
 
 inherit linux-info eutils multilib flag-o-matic
 
@@ -69,5 +69,6 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "install failed"
 	insinto /lib/rcscripts/addons
+	newconfd ${FILESDIR}/cryptfs.confd cryptfs
 	doins "${FILESDIR}"/dm-crypt-{start,stop}.sh
 }

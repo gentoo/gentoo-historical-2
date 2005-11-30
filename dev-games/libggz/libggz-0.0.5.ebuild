@@ -1,24 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/libggz/libggz-0.0.5.ebuild,v 1.1 2003/07/13 03:13:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/libggz/libggz-0.0.5.ebuild,v 1.1.1.1 2005/11/30 09:44:37 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="The GGZ library, used by GGZ Gameing Zone"
-SRC_URI="mirror://sourceforge/ggz/${P}.tar.gz"
 HOMEPAGE="http://ggz.sourceforge.net/"
+SRC_URI="mirror://sourceforge/ggz/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="x86 sparc "
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
-src_compile() {
-	econf || die
-	emake || die
-}
-
-src_install () {
-	make DESTDIR=${D} install || die
-	dodoc AUTHORS COPYING ChangeLog NEWS Quick* README*
+src_install() {
+	make DESTDIR="${D}" install || die "make install failed"
+	dodoc AUTHORS ChangeLog NEWS Quick* README*
 }

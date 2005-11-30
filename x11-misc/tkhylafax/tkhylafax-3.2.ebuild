@@ -1,23 +1,25 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/tkhylafax/tkhylafax-3.2.ebuild,v 1.1 2003/09/24 02:54:16 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/tkhylafax/tkhylafax-3.2.ebuild,v 1.1.1.1 2005/11/30 09:40:49 chriswhite Exp $
 
 # This is a new ebuild for the tkHylafax client.  This code has barely been
 # touched in several years, but it works well enough, and is the only
 # *nix client I found that has certain features...
 
-IUSE="tcltk"
+inherit eutils
 
-S=${WORKDIR}/${P}
+IUSE=""
+
 DESCRIPTION="Tk-based client for HylaFAX(tm) with rolodex and batch faxing support."
 HOMEPAGE="http://www.hylafax.org"
 SRC_URI="ftp://ftp.hylafax.org/contrib/tkhylafax/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="freedist"
-KEYWORDS="x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm"
+KEYWORDS="x86 ~ppc"
 
-DEPEND="dev-lang/tk"
+DEPEND="dev-lang/tk
+	net-misc/hylafax"
 
 RDEPEND="${DEPEND}
 	app-text/gv"
@@ -25,7 +27,7 @@ RDEPEND="${DEPEND}
 src_unpack() {
 	unpack ${A}
 	cd ${WORKDIR}/${P}
-	patch -p0 < ${FILESDIR}/${PF}-gentoo.patch
+	epatch ${FILESDIR}/${PF}-gentoo.patch
 }
 
 src_compile() {
@@ -50,7 +52,7 @@ pkg_postinst() {
 
 	einfo "This package requires a HylaFAX(tm) server somewhere on your"
 	einfo "network (it can also be on the same machine) in order to be"
-	einfo "useful.  Read the tkhylafax man page for important tips on"
-	einfo "configuring the proper environment variables for the batch"
-	einfo "and rolodex data."
+	einfo "useful.  You also need the hylafax client command 'sendfax'"
+	einfo "Read the tkhylafax man page for important tips on configuring"
+	einfo "the proper environment variables for the batch and rolodex data."
 }

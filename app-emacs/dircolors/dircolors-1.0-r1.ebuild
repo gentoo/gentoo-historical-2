@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/dircolors/dircolors-1.0-r1.ebuild,v 1.1 2003/09/21 01:38:27 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/dircolors/dircolors-1.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:12 chriswhite Exp $
 
 inherit elisp
 
@@ -11,19 +11,6 @@ HOMEPAGE="ftp://ftp.cis.ohio-state.edu/pub/emacs-lisp/archive/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-
-DEPEND="virtual/emacs"
-
-S="${WORKDIR}/${P}"
+KEYWORDS="~amd64 ~ppc ppc64 x86"
 
 SITEFILE=50dircolors-gentoo.el
-
-src_compile() {
-	emacs --batch -f batch-byte-compile --no-site-file --no-init-file *.el || die
-}
-
-src_install() {
-	elisp-install ${PN} *.el *.elc
-	elisp-site-file-install ${FILESDIR}/${SITEFILE}
-}

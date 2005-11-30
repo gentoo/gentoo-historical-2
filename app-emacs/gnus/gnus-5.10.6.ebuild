@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnus/gnus-5.10.6.ebuild,v 1.1 2004/01/05 05:00:18 jbms Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnus/gnus-5.10.6.ebuild,v 1.1.1.1 2005/11/30 09:41:19 chriswhite Exp $
 
 inherit elisp
 
@@ -11,16 +11,14 @@ HOMEPAGE="http://www.gnus.org/"
 SRC_URI="http://quimby.gnus.org/gnus/dist/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc"
+KEYWORDS="alpha amd64 ppc sparc x86"
 
 DEPEND="virtual/emacs
 	emacs-w3? ( app-emacs/w3 )"
 
-S=${WORKDIR}/${P}
-
 src_compile() {
 	local myconf
-	if [ $(use emacs-w3) ]; then
+	if use emacs-w3 ; then
 		myconf="${myconf} --with-w3=/usr/share/emacs/site-lisp/w3"
 		myconf="${myconf} --with-url=/usr/share/emacs/site-lisp/w3"
 	else
@@ -28,15 +26,15 @@ src_compile() {
 	fi
 	econf \
 		--with-emacs \
-		--with-lispdir=/usr/share/emacs/site-lisp/gnus-cvs \
+		--with-lispdir=/usr/share/emacs/site-lisp/gnus \
 		--with-etcdir=/usr/share/emacs/etc \
-		${myconf}
+		${myconf} || die "econf failed"
 	emake || die
 }
 
 src_install() {
 	einstall \
-		lispdir=${D}/usr/share/emacs/site-lisp/gnus-cvs \
+		lispdir=${D}/usr/share/emacs/site-lisp/gnus \
 		etcdir=${D}/usr/share/emacs/etc \
 		|| die
 

@@ -1,16 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Tools Team <tools@gentoo.org>
-# Author: Karl Trygve Kalleberg <karltk@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nspr/nspr-4.1.2.ebuild,v 1.1 2002/02/10 21:21:28 karltk Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nspr/nspr-4.1.2.ebuild,v 1.1.1.1 2005/11/30 09:41:44 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Netscape Portabel Runtime"
+DESCRIPTION="Netscape Portable Runtime"
 SRC_URI="ftp://ftp.mozilla.org/pub/nspr/releases/v${PV}/src/${P}.tar.gz"
 HOMEPAGE="http://www.mozilla.org/projects/nspr/"
 
-DEPEND="virtual/glibc"
-#RDEPEND=""
+SLOT="0"
+LICENSE="MPL-1.1"
+KEYWORDS="x86 sparc"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -29,7 +30,7 @@ src_compile() {
 
 src_install () {
 	# Their build system is royally fucked, as usual
-	dolib ${S}/inst/bin/lib*.so 
+	dolib ${S}/inst/bin/lib*.so
 	dolib ${S}/inst/lib/lib*.a
 
 	insinto /usr/include/nspr

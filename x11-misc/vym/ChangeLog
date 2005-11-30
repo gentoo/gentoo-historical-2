@@ -1,10 +1,23 @@
 # ChangeLog for x11-misc/vym
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/vym/ChangeLog,v 1.1 2005/01/08 01:00:03 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/vym/ChangeLog,v 1.1.1.1 2005/11/30 09:40:22 chriswhite Exp $
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  28 Jul 2005; Caleb Tennis <caleb@gentoo.org> vym-1.5.0.ebuild:
+  Fix qt dep per bug #100235
+
+  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> vym-1.5.0.ebuild:
+  Fix qmake dir per bug #97535
+
+  08 Jan 2005; Stuart Herbert <stuart@gentoo.org> vym-1.5.0.ebuild:
+  Fixed bad HOMEPAGE. Thanks to Rob Cakebread <pythonhead@gentoo.org>. See bug
+  #77105
 
 *vym-1.5.0 (08 Jan 2005)
 
   08 Jan 2005; Stuart Herbert <stuart@gentoo.org> +metadata.xml,
   +vym-1.5.0.ebuild:
-  Initial import; thanks to Kai Schlüter <kai@chickenbrain.de>; see bug #74471
+  Initial import; thanks to Kai SchlÃ¼ter <kai@chickenbrain.de>; see bug #74471
 

@@ -1,20 +1,23 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Reviewed by Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games/gnome-games-1.4.0.3-r3.ebuild,v 1.1 2002/03/21 05:11:22 azarah Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games/gnome-games-1.4.0.3-r3.ebuild,v 1.1.1.1 2005/11/30 09:41:02 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="nls"
+
 DESCRIPTION="gnome-utils"
 SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.gnome.org/"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+LICENSE="GPL-2"
 
 RDEPEND=">=gnome-base/gnome-core-1.4.0.4-r1
-         >=dev-util/guile-1.5
-	 >=media-libs/gdk-pixbuf-0.11.0-r1"
+	=dev-util/guile-1.4*
+	>=media-libs/gdk-pixbuf-0.11.0-r1"
 
 DEPEND="${RDEPEND}
-        >=app-text/scrollkeeper-0.2
-        nls? ( sys-devel/gettext )"
+	>=app-text/scrollkeeper-0.2
+	nls? ( sys-devel/gettext )"
 
 src_unpack() {
 
@@ -29,7 +32,7 @@ src_unpack() {
 src_compile() {
 	local myconf
 
-	if [ -z "`use nls`" ] ; then
+	if ! use nls ; then
 		myconf="--disable-nls"
 	fi
 
@@ -52,6 +55,3 @@ src_install() {
 
 	dodoc AUTHORS COPYING* ChangeLog NEWS README*
 }
-
-
-

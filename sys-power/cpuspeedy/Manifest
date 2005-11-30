@@ -1,4 +1,14 @@
-MD5 24762acdfb09542558e9f47e6e8ef1e8 cpuspeedy-0.4.1.ebuild 928
-MD5 010a8de6344926567907df34d579295b ChangeLog 2593
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 aca4b845646f8e150d535742fbfeb1a0 cpuspeedy-0.4.1.ebuild 931
+MD5 d51a06d2f94d1f384cdff212a7ee9577 ChangeLog 2780
 MD5 9e2a054a1c88817613efae9564a60cf4 metadata.xml 530
 MD5 8ca6a625ab62f6e8be057d0fe2453953 files/digest-cpuspeedy-0.4.1 66
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.0 (GNU/Linux)
+
+iD8DBQFCOIXZI1lqEGTUzyQRAsqcAJ4gVo7B7G3AWrUwI/gH3pDJOExtVACfaisW
+FCxbiHyDA1b/duJ+o3iNpFk=
+=wboD
+-----END PGP SIGNATURE-----

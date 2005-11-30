@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ilisp/ilisp-5.12.0-r3.ebuild,v 1.1 2003/08/28 21:22:25 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ilisp/ilisp-5.12.0-r3.ebuild,v 1.1.1.1 2005/11/30 09:41:16 chriswhite Exp $
 
 inherit elisp
 
@@ -12,33 +12,34 @@ DEBCVS=cvs.2003.07.20
 
 DESCRIPTION="A comprehensive Emacs interface for an inferior Common Lisp, or other Lisp based languages."
 HOMEPAGE="http://sourceforge.net/projects/ilisp/"
-SRC_URI="http://ftp.debian.org/debian/pool/main/i/ilisp/${PN}_${PV}+${DEBCVS}.tar.gz"
+SRC_URI="mirror://debian/pool/main/i/ilisp/${P/-/_}+${DEBCVS}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 
-DEPEND="virtual/emacs
-	dev-lisp/common-lisp-controller
+DEPEND="dev-lisp/common-lisp-controller
 	sys-apps/texinfo
-	app-text/tetex
+	virtual/tetex
 	app-text/texi2html"
+
 
 S="${WORKDIR}/${P}+${DEBCVS}"
 
+CLPACKAGE=ilisp
+
 src_compile() {
 	make EMACS=emacs SHELL=/bin/sh || die
-	cd extra && for i in *.el ; do 
-		emacs --batch --no-site-file --eval "(byte-compile-file \"$i\")" *.el
-	done
-	make -C ${S}/docs
+	cd extra
+	elisp-comp *.el || die "elisp-comp failed"
+	cd -
+	make -C ${S}/docs || die "make docs failed"
 }
 
 src_install() {
-	insinto /usr/share/emacs/site-lisp/ilisp
-	doins *.el *.elc
-	insinto /usr/share/emacs/site-lisp/ilisp/extra
-	doins extra/*.el extra/*.elc
+	elisp-install ${PN} *.el *.elc
+	elisp-install ${PN}/extra extra/*.el extra/*.elc
 
 	insinto /etc/ilisp
 	doins debian/ilisp*.el
@@ -61,20 +62,24 @@ src_install() {
 	dohtml docs/*.html
 	dodoc docs/*.ps
 
- 	insinto /usr/share/emacs/site-lisp
-	doins ${FILESDIR}/50ilispclc-gentoo.el
- 	dodoc ACKNOWLEDGMENTS COPYING GETTING-ILISP HISTORY INSTALLATION README Welcome 
+	elisp-site-file-install ${FILESDIR}/50ilispclc-gentoo.el
+	dodoc ACKNOWLEDGMENTS GETTING-ILISP HISTORY INSTALLATION README Welcome
+
+	dosed "s,@HYPERSPEC@,${P}/HyperSpec,g" /usr/share/emacs/site-lisp/50ilispclc-gentoo.el
+}
+
+pkg_preinst() {
+	rm -rf /usr/lib/common-lisp/*/${CLPACKAGE} || true
 }
 
 pkg_postinst() {
 	elisp-site-regen
-	chown -R cl-builder.cl-builder /usr/lib/ilisp
+	chown -R cl-builder:cl-builder /usr/lib/ilisp
 	/usr/sbin/register-common-lisp-source ${PN}
 	clc-autobuild-library ilisp yes
-	
 }
 
 pkg_postrm() {
-	/usr/sbin/unregister-common-lisp-source ${PN}
+	rm -rf /usr/lib/common-lisp/*/${CLPACKAGE} || true
 	elisp-site-regen
 }

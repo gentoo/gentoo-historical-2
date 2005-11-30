@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpqxx/libpqxx-2.5.0.ebuild,v 1.1 2005/04/21 16:36:28 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpqxx/libpqxx-2.5.0.ebuild,v 1.1.1.1 2005/11/30 09:42:15 chriswhite Exp $
 
 IUSE=""
 DESCRIPTION="C++ client API for PostgreSQL. The standard front-end for writing C++ programs that use PostgreSQL. Supersedes older libpq++ interface."

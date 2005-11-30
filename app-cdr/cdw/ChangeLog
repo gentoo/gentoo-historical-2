@@ -1,6 +1,36 @@
 # ChangeLog for app-cdr/cdw
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdw/ChangeLog,v 1.1 2003/10/10 06:44:52 mr_bones_ Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdw/ChangeLog,v 1.1.1.1 2005/11/30 09:42:24 chriswhite Exp $
+
+  08 Jul 2005; David Holm <dholm@gentoo.org> cdw-0.2.3.ebuild:
+  Added to ~ppc.
+
+  26 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> cdw-0.2.3.ebuild:
+  add debian patch to address bug #80315
+
+  31 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> -cdw-0.2.0.ebuild,
+  -cdw-0.2.0_pre3.ebuild:
+  clean old ebuilds
+
+*cdw-0.2.3 (31 Jan 2005)
+
+  31 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> +cdw-0.2.3.ebuild:
+  version bump (bug #65024); also fixes bug #71561
+
+*cdw-0.2.0 (22 Jan 2004)
+
+  22 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> cdw-0.2.0.ebuild:
+  version bump (bug 38165)
+
+  03 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> cdw-0.2.0_pre3.ebuild:
+  fix configure
+
+*cdw-0.2.0_pre3 (02 Nov 2003)
+
+  02 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> cdw-0.2.0_pre3.ebuild:
+  Add pre version for testing with very nice ebuild from Octavio Ruiz (bug 32295)
+  Mark cdw-0.1.4 stable since there's been no bug reports there.
+  Add metadata.xml
 
 *cdw-0.1.4 (09 Oct 2003)
 

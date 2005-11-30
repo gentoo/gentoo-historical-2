@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/dxpc/dxpc-3.8.2.ebuild,v 1.1 2003/11/22 16:11:43 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/dxpc/dxpc-3.8.2.ebuild,v 1.1.1.1 2005/11/30 09:40:41 chriswhite Exp $
 
 IUSE=""
 
@@ -10,12 +10,10 @@ HOMEPAGE="http://www.vigor.nu/dxpc/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 
 DEPEND="virtual/x11
 	>=dev-libs/lzo-1.0.8"
-
-RDEPEND="${DEPEND}"
 
 src_compile() {
 	econf || die "Configure failed"
@@ -24,6 +22,6 @@ src_compile() {
 
 src_install () {
 	make prefix=${D}/usr man1dir=${D}/usr/share/man/man1 install || die "Install failed"
-	dodoc CHANGES README TODO INSTALL
+	dodoc CHANGES README TODO
 }
 

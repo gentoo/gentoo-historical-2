@@ -1,12 +1,13 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-demo/doom3-demo-1.1.1286.ebuild,v 1.1 2004/12/04 14:27:51 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/doom3-demo/doom3-demo-1.1.1286.ebuild,v 1.1.1.1 2005/11/30 09:39:42 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 DESCRIPTION="Doom III - 3rd installment of the classic id 3D first-person shooter"
 HOMEPAGE="http://www.doom3.com/"
-SRC_URI="ftp://ftp.idsoftware.com/idstuff/doom3/linux/doom3-linux-${PV}-demo.x86.run
+SRC_URI="mirror://3dgamers/doom3/doom3-linux-${PV}-demo.x86.run
+	ftp://ftp.idsoftware.com/idstuff/doom3/linux/doom3-linux-${PV}-demo.x86.run
 	ftp://dl.xs4all.nl/pub/mirror/idsoftware/idstuff/doom3/linux/doom3-linux-${PV}-demo.x86.run
 	mirror://gentoo/doom3.png"
 
@@ -18,8 +19,14 @@ RESTRICT="nostrip nomirror"
 
 DEPEND="app-arch/bzip2
 	app-arch/tar"
+
+# Do not remove the amd64 dep unless you are POSITIVE that it is not necessary.
+# See bug #88227 for more.
 RDEPEND="virtual/libc
 	opengl? ( virtual/opengl )
+	amd64? ( app-emulation/emul-linux-x86-xlibs
+		|| ( >=media-video/nvidia-glx-1.0.6629-r3
+			>=x11-drivers/ati-drivers-8.8.25-r1 ) )
 	dedicated? ( app-misc/screen )"
 
 S=${WORKDIR}
@@ -28,7 +35,7 @@ dir=${GAMES_PREFIX_OPT}/${PN}
 Ddir=${D}/${dir}
 
 pkg_setup() {
-	check_license
+	check_license DOOM3
 	games_pkg_setup
 }
 
@@ -54,10 +61,9 @@ src_install() {
 	insinto ${dir}/demo
 	doins demo/* || die "doins base"
 
-	games_make_wrapper doom3-demo ./doom.x86 ${dir}
+	games_make_wrapper doom3-demo ./doom.x86 "${dir}" "${dir}"
 
-	insinto /usr/share/pixmaps
-	newins ${DISTDIR}/doom3.png doom3-demo.png
+	newicon ${DISTDIR}/doom3.png doom3-demo.png
 
 	prepgamesdirs
 	make_desktop_entry doom3-demo "Doom III Demo" doom3-demo.png

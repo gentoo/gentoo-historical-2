@@ -1,6 +1,57 @@
 # ChangeLog for games-fps/legends
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/legends/ChangeLog,v 1.1 2003/09/26 15:52:31 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/legends/ChangeLog,v 1.1.1.1 2005/11/30 09:39:48 chriswhite Exp $
+
+  09 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -legends-0.4.1b.ebuild, legends-0.4.1c.ebuild:
+  Added icon for bug #85583 and cleaning up older ebuilds.
+
+  02 Jul 2005; Herbie Hopkins <herbs@gentoo.org> legends-0.4.1c.ebuild:
+  Marked ~amd64 wrt bug #97701.
+
+  02 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  legends-0.4.1c.ebuild:
+  fix src_uri for bug #97631
+
+*legends-0.4.1c (16 May 2005)
+
+  16 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +legends-0.4.1c.ebuild:
+  version bump
+
+  04 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> -legends-0.3.6.ebuild,
+  -legends-0.4.0.ebuild:
+  clean old
+
+  04 Dec 2004; Chris Gianelloni <wolf31o2@gentoo.org> legends-0.3.6.ebuild,
+  legends-0.4.0.ebuild, legends-0.4.1b.ebuild:
+  Changed HOMEPAGE and closing bug #73354.
+
+*legends-0.4.1b (01 Jul 2004)
+
+  01 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +legends-0.4.1b.ebuild:
+  Version bump (bug #46987)
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> legends-0.3.6.ebuild,
+  legends-0.4.0.ebuild:
+  Fix use invocation
+
+*legends-0.4.0 (10 Feb 2004)
+
+  10 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> legends-0.4.0.ebuild,
+  files/legends:
+  version bump; changes from Kristiaan Lenaerts and Donnie Berkholz via bugs
+  #40862 and #40838
+
+*legends-0.3.6 (13 Dec 2003)
+
+  13 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> legends-0.3.6.ebuild:
+  version bump (bug 35236)
+
+*legends-0.3.0 (21 Nov 2003)
+
+  21 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> legends-0.3.0.ebuild:
+  version bump; ebuild patch by Donnie Berkholz via bug 32504
 
 *legends-0.2.2b (26 Sep 2003)
 

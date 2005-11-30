@@ -1,6 +1,62 @@
 # ChangeLog for dev-libs/klibc
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/klibc/ChangeLog,v 1.1 2005/03/09 20:59:05 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/klibc/ChangeLog,v 1.1.1.1 2005/11/30 09:41:27 chriswhite Exp $
+
+*klibc-1.1.1 (10 Nov 2005)
+
+  10 Nov 2005; Martin Schlemmer <azarah@gentoo.org> +klibc-1.1.1.ebuild:
+  New release.
+
+  18 Sep 2005; Joshua Kinard <kumba@gentoo.org> +files/klibc-1.1-mips32.patch,
+  klibc-1.1.ebuild:
+  Added a patch to allow klibc to build properly on mips systems w/ 64bit
+  kernel/32bit userland, and marked 1.1 ~mips.
+
+*klibc-1.1 (02 Sep 2005)
+
+  02 Sep 2005; Martin Schlemmer <azarah@gentoo.org> +klibc-1.1.ebuild:
+  New version.
+
+*klibc-1.0.14-r1 (26 Aug 2005)
+
+  26 Aug 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/klibc-1.0.14-nostdlib.patch, +klibc-1.0.14-r1.ebuild:
+  Enable building on hardened systems, bug #103437.
+
+  29 Jun 2005; David Holm <dholm@gentoo.org> klibc-1.0.14.ebuild:
+  Added to ~ppc.
+
+*klibc-1.0.14 (28 Jun 2005)
+
+  28 Jun 2005; Martin Schlemmer <azarah@gentoo.org> +klibc-1.0.14.ebuild:
+  Update version.
+
+*klibc-1.0.8 (04 May 2005)
+
+  04 May 2005; Martin Schlemmer <azarah@gentoo.org> +klibc-1.0.8.ebuild:
+  Update version.  Add KV_OUT_DIR support, bug #88072.
+
+  13 Mar 2005; Martin Schlemmer <azarah@gentoo.org> klibc-1.0.3.ebuild:
+  Add /usr/lib/klibc to PRELINK_PATH_MASK.
+
+  11 Mar 2005; Martin Schlemmer <azarah@gentoo.org> klibc-1.0.3.ebuild:
+  Fixup gunzip/zcat hardlinks of gzip becoming copies. Add perl to DEPEND and
+  RDEPEND, as its needed during build, and afterwards for klcc wrapper. Add
+  pkg_postinst() override for linux-mod eclass, as we do not install modules.
+
+  10 Mar 2005; Martin Schlemmer <azarah@gentoo.org> files/klibc.m4:
+  Update m4 macro.
+
+*klibc-1.0.3 (10 Mar 2005)
+
+  10 Mar 2005; Martin Schlemmer <azarah@gentoo.org> +klibc-1.0.3.ebuild:
+  Update version.
+
+  10 Mar 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/klibc-1.0-makeklcc-empty-args.patch, klibc-1.0.ebuild:
+  Patch makeklcc.pl to not generate '' arrays if they are empty, else we get
+  the issue where '' is passed to ld, etc, and they fail with cannot find
+  file.
 
 *klibc-1.0 (09 Mar 2005)
 

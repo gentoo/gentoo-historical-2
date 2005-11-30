@@ -1,6 +1,18 @@
 # ChangeLog for x11-misc/obpager
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/obpager/ChangeLog,v 1.1 2004/11/06 14:59:52 pyrania Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/obpager/ChangeLog,v 1.1.1.1 2005/11/30 09:40:24 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> obpager-1.8.ebuild:
+  Mark 1.8 stable on alpha
+
+  24 Aug 2005; Jonathan Smith <smithj@gentoo.org> obpager-1.8.ebuild:
+  #100405: sedded #include <errno.h> into main.cc so it actually compiles
+
+  19 Jun 2005; Jonathan Smith <smithj@gentoo.org> obpager-1.8.ebuild:
+  stable x86
+
+  05 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> obpager-1.8.ebuild:
+  ~alpha keyword, bug 78657.
 
 *obpager-1.8 (06 Nov 2004)
 

@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/qimhangul/qimhangul-0.0.1.ebuild,v 1.1 2004/10/06 06:45:59 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/qimhangul/qimhangul-0.0.1.ebuild,v 1.1.1.1 2005/11/30 09:40:05 chriswhite Exp $
 
-inherit eutils
+inherit eutils qt3
 
-DESCRIPTION="Qt immodules input method framework plugin for UIM"
+DESCRIPTION="Korean input method plugin for Qt immodules"
 HOMEPAGE="http://kldp.net/projects/qimhangul/"
 SRC_URI="http://kldp.net/download.php/1529/${P}.tar.gz"
 
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=">=x11-libs/qt-3.3.3-r1"
+DEPEND="$(qt_min_version 3.3.3-r1)"
 
 pkg_setup() {
 	if [ ! -e /usr/qt/3/plugins/inputmethods/libqimsw-none.so ] ; then
@@ -28,7 +28,7 @@ src_unpack() {
 }
 
 src_compile() {
-	qmake -makefile || die "qmake failed"
+	${QTDIR}/bin/qmake -makefile || die "qmake failed"
 	emake -j1 || die "make failed."
 }
 

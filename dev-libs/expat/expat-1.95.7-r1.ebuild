@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/expat-1.95.7-r1.ebuild,v 1.1 2004/09/09 06:29:14 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/expat-1.95.7-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:16 chriswhite Exp $
 
-inherit gnuconfig
+inherit libtool
 
 DESCRIPTION="XML parsing libraries"
 HOMEPAGE="http://expat.sourceforge.net/"
@@ -10,19 +10,18 @@ SRC_URI="mirror://sourceforge/expat/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="makecheck"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
+IUSE="test"
 
-DEPEND="virtual/libc
-	makecheck? ( >=dev-libs/check-0.8 )"
+DEPEND="test? ( >=dev-libs/check-0.8 )"
+RDEPEND=""
 
 src_unpack() {
-	hasq "maketest" ${FEATURES} && ! use makecheck  && die "You must put makecheck into your USE if you have FEATURES=maketest"
+	hasq "test" ${FEATURES} && ! use test  && die "You must put test into your USE if you have FEATURES=test"
 
 	unpack ${A}
 	cd "${S}"
-	# Detect mips systems properly
-	gnuconfig_update
+	elibtoolize
 }
 
 src_install() {

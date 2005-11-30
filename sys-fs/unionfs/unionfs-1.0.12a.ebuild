@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/unionfs/unionfs-1.0.12a.ebuild,v 1.1 2005/05/18 10:53:22 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/unionfs/unionfs-1.0.12a.ebuild,v 1.1.1.1 2005/11/30 09:44:29 chriswhite Exp $
 
 inherit eutils linux-mod
 
@@ -26,7 +26,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	useq amd64 && epatch ${FILESDIR}/${P}-amd64.patch
+	useq amd64 && epatch ${FILESDIR}/unionfs-1.0.11-amd64.patch
 
 	if ! useq debug; then
 		echo "UNIONFS_DEBUG_CFLAG=" >> ${user_Makefile}

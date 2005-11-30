@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.4.4_p2-r2.ebuild,v 1.1 2005/07/04 01:48:56 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.4.4_p2-r2.ebuild,v 1.1.1.1 2005/11/30 09:42:45 chriswhite Exp $
 
 inherit eutils
 

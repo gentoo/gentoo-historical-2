@@ -1,22 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nspr/nspr-4.3.ebuild,v 1.1 2003/07/08 20:33:53 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nspr/nspr-4.3.ebuild,v 1.1.1.1 2005/11/30 09:41:44 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="Netscape Portable Runtime"
-SRC_URI="ftp://ftp.mozilla.org/pub/nspr/releases/v${PV}/src/${P}.tar.gz"
 HOMEPAGE="http://www.mozilla.org/projects/nspr/"
+SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${PV}/src/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="MPL-1.1"
-KEYWORDS="~x86 ~sparc"
+SLOT="0"
+KEYWORDS="x86 sparc ppc ~alpha ~amd64 hppa mips"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
 	mkdir ${S}/build
 	mkdir ${S}/inst
+	if [ "${ARCH}" = "amd64" ]
+	then
+		cd ${S}; epatch ${FILESDIR}/${PN}-4.3-amd64.patch
+	fi
 }
 src_compile() {
 	cd ${S}/build
@@ -28,7 +34,7 @@ src_compile() {
 	make || die
 }
 
-src_install () {
+src_install() {
 	# Their build system is royally fucked, as usual
 	cd ${S}/build
 	make install

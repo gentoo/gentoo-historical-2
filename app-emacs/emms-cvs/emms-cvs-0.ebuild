@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emms-cvs/emms-cvs-0.ebuild,v 1.1 2005/07/11 18:37:14 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emms-cvs/emms-cvs-0.ebuild,v 1.1.1.1 2005/11/30 09:41:21 chriswhite Exp $
 
 ECVS_AUTH="ext"
 export CVS_RSH="ssh"

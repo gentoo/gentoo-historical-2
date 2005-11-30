@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.2.3.ebuild,v 1.1 2004/11/01 10:45:00 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.2.3.ebuild,v 1.1.1.1 2005/11/30 09:41:12 chriswhite Exp $
 
 inherit elisp
 
@@ -36,8 +36,9 @@ src_install() {
 		LISPDIR=${D}/usr/share/emacs/site-lisp/ess \
 		install || die
 	elisp-site-file-install ${FILESDIR}/${SITEFILE};
+	elisp-install ${PN} lisp/*.el
 	dodir /usr/share/emacs/etc/ess
-	cp -a etc/* ${D}/usr/share/emacs/etc/ess
+	cp -pPR etc/* ${D}/usr/share/emacs/etc/ess
 	dohtml ${S}/doc/html/*.html
 	dodoc ${S}/doc/{NEWS,README,TODO}
 	insinto /usr/share/doc/${P}

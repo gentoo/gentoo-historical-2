@@ -1,6 +1,51 @@
 # ChangeLog for x11-misc/remind
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/remind/ChangeLog,v 1.1 2003/12/26 00:26:05 pyrania Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/remind/ChangeLog,v 1.1.1.1 2005/11/30 09:40:49 chriswhite Exp $
+
+  25 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/03.00.23/01-optional-filename.patch,
+  +files/03.00.23/03-broken-postscript.patch,
+  +files/03.00.23/03-tkremind-no-newlines.patch,
+  +files/03.00.23/04-rem-cmd.patch, -remind-03.00.23-r1.ebuild:
+  Fix bug 107993 - wrong patch directory.
+
+*remind-03.00.23-r2 (01 Oct 2005)
+
+  01 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  +files/3.00.23/01-optional-filename.patch,
+  +files/3.00.23/03-broken-postscript.patch,
+  +files/3.00.23/03-tkremind-no-newlines.patch,
+  +files/3.00.23/04-rem-cmd.patch, +remind-03.00.23-r2.ebuild:
+  Added some patches - see bug 107443.
+
+  25 Jul 2005; Jonathan Smith <smithj@gentoo.org> remind-03.00.22.ebuild,
+  remind-03.00.23-r1.ebuild:
+  #100210: added IUSE=X and optional dev-lang/tk dependency
+
+  12 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  remind-03.00.23-r1.ebuild:
+  Keywording for ~sparc
+
+*remind-03.00.23-r1 (01 Jul 2005)
+
+  01 Jul 2005; Jonathan Smith <smithj@gentoo.org>
+  +remind-03.00.23-r1.ebuild:
+  #97620: actually instlls all the necessary files and massive ebuild cleanup
+
+*remind-03.00.23 (15 Jun 2005)
+
+  15 Jun 2005; Jonathan Smith <smithj@gentoo.org> +remind-03.00.23.ebuild:
+  version bump for #89200
+
+  01 May 2005; Aron Griffis <agriffis@gentoo.org> remind-03.00.22.ebuild:
+  stable on amd64
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  remind-03.00.22.ebuild:
+  mark ~ppc
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> remind-03.00.22.ebuild:
+  Marked stable.
 
 *remind-03.00.22 (26 Dec 2003)
 

@@ -1,13 +1,40 @@
 # ChangeLog for x11-misc/xwrits
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xwrits/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xwrits/ChangeLog,v 1.1.1.1 2005/11/30 09:40:42 chriswhite Exp $
 
-*xwrits-2.18 (1 Feb 2002)
+  07 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org> xwrits-2.21.ebuild:
+  Keywording ~amd64.
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> xwrits-2.21.ebuild:
+  Stable on ppc.
+
+  17 May 2005; Markus Nigbur <pyrania@gentoo.org> xwrits-2.20.ebuild,
+  xwrits-2.21.ebuild:
+  Improved DESC, see bug #90705.
+
+  27 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  xwrits-2.21.ebuild:
+  mark ~ppc
+
+  14 Jun 2004; <pyrania@gentoo.org> xwrits-2.21.ebuild:
+  Added IUSE.
+
+*xwrits-2.20 (22 May 2004)
+
+  22 May 2004; Ian Leitch <port001@gentoo.org> xwrits-2.20.ebuild,
+  xwrits-2.21.ebuild:
+  Changed DEPEND to virtual/x11
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xwrits-2.21.ebuild:
+  Ebuild fixups.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*xwrits-2.21 (11 May 2002)
+
+  11 May 2002; Arcady Genkin <agenkin@thpoon.com> xwrits-2.21.ebuild :
   
-  Added initial ChangeLog which should be updated whenever the package is
-  updated in any way. This changelog is targetted to users. This means that the
-  comments should well explained and written in clean English. The details about
-  writing correct changelogs are explained in the skel.ChangeLog file which you
-  can find in the root directory of the portage repository.
+  Updated to the new version.

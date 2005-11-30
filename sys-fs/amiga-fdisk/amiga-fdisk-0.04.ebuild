@@ -1,10 +1,15 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/amiga-fdisk/amiga-fdisk-0.04.ebuild,v 1.1 2004/06/08 12:41:57 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/amiga-fdisk/amiga-fdisk-0.04.ebuild,v 1.1.1.1 2005/11/30 09:44:24 chriswhite Exp $
 
+inherit eutils
+
+DEB_VER=9
+DEB_PATCH=${PN}_${PV}-${DEB_VER}.diff
 DESCRIPTION="Amiga disklabel partitioning utility"
 HOMEPAGE="http://www.freiburg.linux.de/~stepan/projects/"
-SRC_URI="http://www.freiburg.linux.de/~stepan/bin/${P}.tar.gz"
+SRC_URI="http://www.freiburg.linux.de/~stepan/bin/${P}.tar.gz
+	mirror://debian/pool/main/a/${PN}/${DEB_PATCH}.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
@@ -12,16 +17,16 @@ KEYWORDS="ppc"
 IUSE=""
 
 DEPEND="sys-libs/readline
-	sys-libs/libtermcap-compat"
+	sys-libs/ncurses"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -i -e "s/-lreadline/-lreadline -ltermcap/" Makefile
-}
-
-src_compile() {
-	emake || die
+	epatch ${WORKDIR}/${DEB_PATCH}
+	sed -i \
+		-e 's:-lreadline:-lreadline -lncurses:' \
+		-e "s:-O2 -fomit-frame-pointer:${CFLAGS}:" \
+		Makefile || die "sed failed"
 }
 
 src_install() {

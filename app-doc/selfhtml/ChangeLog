@@ -1,8 +1,27 @@
 # ChangeLog for app-doc/selfhtml
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/selfhtml/ChangeLog,v 1.1 2004/03/08 16:54:45 pylon Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/selfhtml/ChangeLog,v 1.1.1.1 2005/11/30 09:42:33 chriswhite Exp $
+
+  23 Aug 2005; Lars Weiler <pylon@gentoo.org> -selfhtml-8.0-r1.ebuild:
+  Removing old versions.  Changing the cp as suggested in bug #103487.
+
+*selfhtml-8.1 (27 Mar 2005)
+
+  27 Mar 2005; Lars Weiler <pylon@gentoo.org> +selfhtml-8.1.ebuild:
+  Version bump.  Thanks to Henryk Plötz for the reminder.  See bug #86588
+
+  05 Nov 2004; Lars Weiler <pylon@gentoo.org> selfhtml-8.0-r1.ebuild:
+  Added app-arch/unzip to DEPEND, bug #69831.
+
+  27 Sep 2004; <blubb@gentoo.org> selfhtml-8.0-r1.ebuild:
+  added amd64
+
+  20 Jul 2004; Lars Weiler <pylon@gentoo.org> selfhtml-8.0-r1.ebuild:
+  The HOMEPAGE has changed.
+
+*selfhtml-8.0-r1 (08 Mar 2004)
 
   08 Mar 2004; Lars Weiler <pylon@gentoo.org> metadata.xml,
   selfhtml-8.0-r1.ebuild:
-  sELFHTML 8.0 with errata-pack 1 (therefore the initial ebuild is named -r1)
+  SELFHTML 8.0 with errata-pack 1 (therefore the initial ebuild is named -r1)
 

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.1.9-r2.ebuild,v 1.1 2005/03/30 00:48:59 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.1.9-r2.ebuild,v 1.1.1.1 2005/11/30 09:42:24 chriswhite Exp $
 
-inherit flag-o-matic eutils gcc
+inherit flag-o-matic eutils
 
 DESCRIPTION="Burn CDs in disk-at-once mode -- with optional GUI frontend"
 HOMEPAGE="http://cdrdao.sourceforge.net/"
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/cdrdao/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="gnome debug encode"
+KEYWORDS="~amd64 ~hppa ~ppc ppc64 ~sparc ~x86"
+IUSE="gnome debug encode pccts"
 RESTRICT="nostrip"
 
 RDEPEND="encode? ( >=media-sound/lame-3.90 )
@@ -20,12 +20,11 @@ RDEPEND="encode? ( >=media-sound/lame-3.90 )
 		=dev-cpp/libgnomecanvasmm-2.0*
 		=dev-cpp/gconfmm-2.0*
 		=dev-cpp/libgnomeuimm-2.0.0 )"
-DEPEND=">=dev-util/pccts-1.33.24-r1
+DEPEND="pccts? ( >=dev-util/pccts-1.33.24-r1 )
 	virtual/cdrtools
 	${RDEPEND}"
 
 src_unpack() {
-
 	unpack ${A}
 	cd ${S}
 
@@ -60,6 +59,8 @@ src_compile() {
 		$(use_enable debug) \
 		$(use_with gnome xdao) \
 		$(use_with encode lame) \
+		$(use_with pccts pcctsbin /usr/bin) \
+		$(use_with pccts pcctsinc /usr/include/pccts) \
 		--disable-dependency-tracking || die "configure failed"
 
 	make || die "could not compile"
@@ -69,13 +70,6 @@ src_install() {
 	einstall || die "could not install"
 
 	cd ${S}
-
-	# Desktop Icon
-	if use gnome; then
-		insinto /usr/share/icons/hicolor/48x48/apps
-		newins xdao/stock/gcdmaster.png gcdmaster.png
-		make_desktop_entry gcdmaster "Gnome CD Master" gcdmaster "AudioVideo;DiscBurning"
-	fi
 
 	# Documentation
 	dodoc AUTHORS CREDITS ChangeLog NEWS README*

@@ -1,6 +1,48 @@
 # ChangeLog for x11-misc/xsensors
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xsensors/ChangeLog,v 1.1 2003/07/12 17:44:42 avenj Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xsensors/ChangeLog,v 1.1.1.1 2005/11/30 09:40:47 chriswhite Exp $
+
+  02 Nov 2005; <augustus@gentoo.org> xsensors-0.47.ebuild:
+  Stabilize 0.47 on amd64 ppc x86.
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> ChangeLog:
+  Fixed ChangeLog.
+
+  24 Aug 2005; Jonathan Smith <smithj@gentoo.org> xsensors-0.46.ebuild,
+  xsensors-0.47.ebuild:
+  #101918: changed gtk-1 dependency to gtk2
+
+  21 Jun 2005; Jonathan Smith <smithj@gentoo.org> ChangeLog:
+  someone forgot to add an entry to the changelog saying that 0.47 was in the
+  tree... well, it is...
+
+  17 Jun 2005; David Holm <dholm@gentoo.org> xsensors-0.47.ebuild:
+  Added to ~ppc.
+
+*xsensors-0.47 (16 Jun 2005)
+
+  16 Jun 2005; <augustus@gentoo.org> xsensors-0.46.ebuild, Manifest:
+  New xsensors release.
+
+  27 Feb 2005; Henrik Brix Andersen <brix@gentoo.org> xsensors-0.46.ebuild:
+  Dependency update: sys-apps/lm-sensors -> sys-apps/lm_sensors.
+
+  27 Feb 2005; Henrik Brix Andersen <brix@gentoo.org> xsensors-0.20.ebuild:
+  Dependency update: sys-apps/lm-sensors -> sys-apps/lm_sensors.
+
+*xsensors-0.46 (20 Nov 2004)
+
+  20 Nov 2004; <augustus@gentoo.org> +xsensors-0.46.ebuild:
+  Latest version of XSensors checked in to portage.
+
+  15 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> xsensors-0.20.ebuild:
+  marked ~amd64
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xsensors-0.20.ebuild:
+  Marked stable.
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
 
 *xsensors-0.20 (12 Jul 2003)
 

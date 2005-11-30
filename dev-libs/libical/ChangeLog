@@ -1,6 +1,47 @@
 # ChangeLog for dev-libs/libical
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/ChangeLog,v 1.1 2004/03/06 02:11:21 pyrania Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libical/ChangeLog,v 1.1.1.1 2005/11/30 09:41:30 chriswhite Exp $
+
+  25 Sep 2005; Markus Rothe <corsair@gentoo.org> libical-0.24_rc4-r1.ebuild:
+  Added ~ppc64
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  libical-0.24_rc4-r1.ebuild:
+  Mark 0.24_rc4-r1 stable on alpha
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> libical-0.24_rc4-r1.ebuild:
+  stable on amd64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libical-0.24_rc4-r1.ebuild:
+  ~alpha keyword, bug 66691.
+
+  19 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> libical-0.24_rc4.ebuild:
+  Wipe out older revision...
+
+  17 Oct 2004; Jason Wever <weeve@gentoo.org> libical-0.24_rc4-r1.ebuild:
+  Added ~sparc keyword wrt bug #66691.
+
+*libical-0.24_rc4-r1 (16 Oct 2004)
+
+  16 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> libical-0.24_rc4-rc1.ebuild:
+  Correctly link libical.so against libpthread. Closes #66377.
+
+  13 Oct 2004; Danny van Dyk <kugelfang@gentoo.org> libical-0.24_rc4.ebuild:
+  Marked ~amd64.
+
+  23 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> libical-0.24_rc4.ebuild:
+  Add "|| die" clause to einstall. Add missing metadata.xml file.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libical-0.24_rc4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> libical-0.24_rc4.ebuild:
+  Stable on x86.
 
 *libical-0.24_rc4 (06 Mar 2004)
 

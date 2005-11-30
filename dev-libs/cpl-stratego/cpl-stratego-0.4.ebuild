@@ -1,31 +1,25 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Karl Trygve Kalleberg
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cpl-stratego/cpl-stratego-0.4.ebuild,v 1.1 2002/04/12 13:51:53 karltk Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cpl-stratego/cpl-stratego-0.4.ebuild,v 1.1.1.1 2005/11/30 09:42:15 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Choice library mostly used by Stratego"
-SRC_URI="http://www.stratego-language.org/ftp/${P}.tar.gz"
+SRC_URI="ftp://ftp.stratego-language.org/pub/stratego/stratego/${P}.tar.gz"
 HOMEPAGE="http://www.stratego-language.org"
 
-DEPEND="virtual/glibc"
-RDEPEND="$DEPEND"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc ppc alpha ia64"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_compile() {
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man || die "./configure failed"
+	econf || die "./configure failed"
 	emake || die
-	#make || die
 }
 
 src_install () {
 	make DESTDIR=${D} install || die
-	#make \
-	#	prefix=${D}/usr \
-	#	mandir=${D}/usr/share/man \
-	#	infodir=${D}/usr/share/info \
-	#	install || die
+
+	dodoc AUTHORS COPYING ChangeLog NEWS README*
 }

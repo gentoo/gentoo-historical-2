@@ -1,17 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-2.8.ebuild,v 1.1 2004/02/25 06:30:14 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-2.8.ebuild,v 1.1.1.1 2005/11/30 09:41:47 chriswhite Exp $
 
 S=${WORKDIR}/${PN}/source
 DESCRIPTION="IBM Internationalization Components for Unicode"
 SRC_URI="ftp://www-126.ibm.com/pub/icu/${PV}/${P}.tgz"
-HOMEPAGE="http://oss.software.ibm.com/icu/"
+HOMEPAGE="http://ibm.com/software/globalization/icu/"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64 alpha ppc s390 ia64 ppc64 sparc"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
 	econf --enable-layout || die

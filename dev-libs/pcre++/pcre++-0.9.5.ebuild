@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/pcre++/pcre++-0.9.5.ebuild,v 1.1 2004/09/05 23:25:44 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/pcre++/pcre++-0.9.5.ebuild,v 1.1.1.1 2005/11/30 09:41:34 chriswhite Exp $
 
 IUSE=""
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.daemon.de/PCRE"
 SRC_URI="ftp://ftp.daemon.de/scip/Apps/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~sparc"
+KEYWORDS="~amd64 ppc ~sparc x86"
 
 DEPEND="dev-libs/libpcre"
 

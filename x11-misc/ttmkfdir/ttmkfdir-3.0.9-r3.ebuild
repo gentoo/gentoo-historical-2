@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/ttmkfdir/ttmkfdir-3.0.9-r3.ebuild,v 1.1 2005/05/16 14:46:32 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/ttmkfdir/ttmkfdir-3.0.9-r3.ebuild,v 1.1.1.1 2005/11/30 09:40:48 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 

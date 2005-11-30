@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver/xscreensaver-4.22-r2.ebuild,v 1.1 2005/06/30 16:53:52 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver/xscreensaver-4.22-r2.ebuild,v 1.1.1.1 2005/11/30 09:40:29 chriswhite Exp $
 
 inherit eutils flag-o-matic pam
 
-IUSE="gtk jpeg kerberos krb4 motif new-login nls offensive opengl pam xinerama"
+IUSE="gnome gtk jpeg kde kerberos krb4 motif new-login nls offensive opengl pam xinerama"
 
 DESCRIPTION="A modular screen saver and locker for the X Window System"
 SRC_URI="http://www.jwz.org/xscreensaver/${P}.tar.gz"
 HOMEPAGE="http://www.jwz.org/xscreensaver/"
 
 LICENSE="BSD"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 ~sparc x86"
 SLOT="0"
 
 # NOTE: ignore app-games/fortune-mod as a dep. it is pluggable and won't
@@ -76,9 +76,9 @@ pkg_setup() {
 		ewarn
 		epause
 	fi
-	if [ use arm ] && [ use new-login ]; then
+	if use arm && use new-login; then
 		ewarn "gnome-base/gdm is required for USE=\"new-login\", and is not"
-		ewarn "available for the amd platform. please disable this use flag"
+		ewarn "available for the arm platform. please disable this use flag"
 		die "new-login USE is not supported on arm"
 	fi
 }
@@ -99,19 +99,15 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf=""
+	local myconf
 
 	if use gtk ; then
-		myconf="${myconf} --without-motif --with-gtk --with-xml"
+		myconf="${myconf} --without-motif --with-xml"
 	elif use motif; then
-		myconf="${myconf} --with-motif --without-gtk --without-pixbuf"
+		myconf="${myconf} --with-motif --without-pixbuf"
 	else
-		myconf="${myconf} --without-motif --without-gtk --without-pixbuf"
+		myconf="${myconf} --without-motif --without-pixbuf"
 	fi
-
-	use new-login \
-		&& myconf="${myconf} --with-login-manager" \
-		|| myconf="${myconf} --without-login-manager"
 
 	use kerberos && use krb4 \
 		&& myconf="${myconf} --with-kerberos" \
@@ -131,6 +127,8 @@ src_compile() {
 		--with-xshm-ext \
 		--with-xdbe-ext \
 		--enable-locking \
+		$(use_with gtk) \
+		$(use_with new-login login-manager) \
 		$(use_with xinerama xinerama-ext) \
 		$(use_with pam) \
 		$(use_with opengl gl) $(use_with opengl gle) \
@@ -171,8 +169,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "the gnome USE flag has been dropped"
-	einfo ""
 	if ! use new-login; then
 		einfo "You have chosen to not use the new-login USE flag."
 		einfo "This is a new USE flag which enables individuals to"

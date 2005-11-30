@@ -1,2 +1,4 @@
-MD5 a05cf0aa8a803f4eb758058a923c28ff uf-view-2.2.ebuild 529
-MD5 576bc386ddac1059d522da62583422cd files/digest-uf-view-2.2 63
+MD5 9ad32a5a128ec4d7d8209c1cd70c1954 ChangeLog 1294
+MD5 22eb9fe6bda7d3c1b7623207976743b8 files/digest-uf-view-2.4 63
+MD5 cdb11033a3fa6525334cecf938961c07 metadata.xml 166
+MD5 bdd8afa0dc313c20d129bd281499e88e uf-view-2.4.ebuild 703

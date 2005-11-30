@@ -1,6 +1,52 @@
 # ChangeLog for x11-misc/xrestop
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrestop/ChangeLog,v 1.1 2004/01/04 05:21:38 port001 Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrestop/ChangeLog,v 1.1.1.1 2005/11/30 09:40:20 chriswhite Exp $
+
+  10 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> xrestop-0.3.ebuild:
+  Stable on sparc wrt #111068
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> xrestop-0.2.ebuild,
+  xrestop-0.3.ebuild:
+  Fixed dodoc not to install COPYING and INSTALL.
+
+  13 Oct 2005; Sven Wegener <swegener@gentoo.org> xrestop-0.2.ebuild,
+  xrestop-0.3.ebuild:
+  virtual/x11 is needed at compile-time
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> xrestop-0.3.ebuild:
+  Mark 0.3 stable on alpha
+
+  05 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> xrestop-0.3.ebuild:
+  marked ~alpha, wrt bug #98527
+
+  19 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> xrestop-0.3.ebuild:
+  Stable amd64, added to ~sparc, einstall->DESTDIR.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> xrestop-0.3.ebuild:
+  Stable on ppc.
+
+  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> xrestop-0.3.ebuild:
+  fixed homepage for #93132 and marked 0.3 stable
+
+  05 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> xrestop-0.2.ebuild:
+  Marked amd64, closes bug 87938.
+
+*xrestop-0.3 (28 Sep 2004)
+
+  28 Sep 2004; <pyrania@gentoo.org> +xrestop-0.3.ebuild:
+  Version bump.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xrestop-0.2.ebuild:
+  Masked xrestop-0.2.ebuild stable for ppc
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xrestop-0.2.ebuild:
+  Marked stable on x86.
+
+  16 Mar 2004; <augustus@gentoo.org> xrestop-0.2.ebuild:
+  Marked ~amd64.
+
+  06 Jan 2004; Luca Barbato <lu_zero@gentoo.org> xrestop-0.2.ebuild:
+  Marked ~ppc
 
 *xrestop-0.2 (04 Jan 2004)
 

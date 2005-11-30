@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/jam-mode/jam-mode-0.1.ebuild,v 1.1 2003/09/10 06:19:31 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/jam-mode/jam-mode-0.1.ebuild,v 1.1.1.1 2005/11/30 09:41:14 chriswhite Exp $
 
 inherit elisp
 
@@ -9,15 +9,14 @@ HOMEPAGE="http://www.tenfoot.uklinux.net/emacs/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha ~amd64 ~ppc-macos x86"
 IUSE=""
-DEPEND="virtual/emacs"
-S=${WORKDIR}/${P}
+DEPEND=""
 
 SITEFILE=70jam-mode-gentoo.el
 
 src_compile() {
-	emacs --no-site-file --no-init-file -batch -f batch-byte-compile *.el
+	elisp-compile *.el
 }
 
 src_install() {

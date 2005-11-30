@@ -1,8 +1,70 @@
 # ChangeLog for dev-libs/fribidi
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/fribidi/ChangeLog,v 1.1 2003/04/01 20:32:54 danarmak Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/fribidi/ChangeLog,v 1.1.1.1 2005/11/30 09:42:07 chriswhite Exp $
+
+  09 Oct 2005; Fabian Groffen <grobian@gentoo.org>
+  +files/fribidi-0.10.5-darwin.patch, fribidi-0.10.4.ebuild,
+  fribidi-0.10.5.ebuild:
+  - Removing conditional patching for ppc-macos
+  - Fixing patch for 0.10.5
+  - Fixing libtool/compilation for 0.10.5 on OSX
+  - Removing ANNOUNCE from doc on 0.10.5 as dodoc complains it cannot find it
+
+*fribidi-0.10.5 (22 Sep 2005)
+
+  22 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> +fribidi-0.10.5.ebuild:
+  Version bumped. Bug 104349.
+
+  08 Jul 2005; Hardave Riar <hardave@gentoo.org> fribidi-0.10.4.ebuild:
+  Stable on mips.
+
+  24 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> fribidi-0.10.4.ebuild:
+  Stable ppc-macos
+
+  12 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> fribidi-0.10.4.ebuild:
+  Unstable ppc-macos
+
+  18 Aug 2004; Hardave Riar <hardave@gentoo.org> fribidi-0.10.4.ebuild:
+  Added ~mips keyword
+
+  16 Jul 2004; Tom Gall <tgall@gentoo.org> fribidi-0.10.4.ebuild:
+  stable on ppc64
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  fribidi-0.10.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  16 Feb 2004; Aron Griffis <agriffis@gentoo.org> fribidi-0.10.4.ebuild:
+  stable on alpha and ia64
+
+  07 Jan 2004; <gustavoz@gentoo.org> fribidi-0.10.4.ebuild:
+  marked stable on hppa
+
+  16 Nov 2003; Brad House <brad_mssw@gentoo.org> fribidi-0.10.4.ebuild:
+  mark stable on amd64
+
+  11 Oct 2003; Heinrich Wendel <lanius@gentoo.org> fribidi-0.10.4.ebuild:
+  bug #30272
+
+  21 Sep 2003; Todd Sunderlin <todd@gentoo.org> fribidi-0.10.4.ebuild:
+  marked stable on sparc
+
+  30 Aug 2003; Jason Wever <weeve@gentoo.org> fribidi-0.10.4.ebuild:
+  Added ~sparc to keywords.
 
 *fribidi-0.10.4 (01 Apr 2003)
+
+  05 Jul 2003; Masatomo Nakano <nakano@gentoo.org> fribidi-0.10.4.ebuild:
+  Marked as stable(x86,ppc)
+
+  04 Jun 2003; Luca Barbato <lu_zero@gentoo.org> fribidi-0.10.4.ebuild :
+  Added ~ppc keyword
+
+  08 Apr 2003; Dan Armak <danarmak@gentoo.org> fribidi-0.10.4.ebuild:
+  At the same time I added this ebuild to dev-libs, foser added a very similar
+  one to app-text. We've discovered this now and will keep his ebuild (which is
+  better) in dev-libs (which is a more logical location). So, this is his
+  ebuild.
 
   01 Apr 2003; danarmak <danarmak@gentoo.org> fribidi-0.10.4.ebuild:
   fribidi is a library implementing the Unicode Bidirectional Algorithm

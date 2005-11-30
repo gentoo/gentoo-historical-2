@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/apr-util/apr-util-0.9.6-r2.ebuild,v 1.1 2005/05/10 23:54:36 beu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/apr-util/apr-util-0.9.6-r2.ebuild,v 1.1.1.1 2005/11/30 09:41:59 chriswhite Exp $
 
 inherit eutils
 
@@ -10,8 +10,9 @@ SRC_URI="mirror://apache/apr/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
 IUSE="berkdb gdbm ldap"
+RESTRICT="test"
 
 DEPEND="dev-libs/expat
 	~dev-libs/apr-0.9.6
@@ -36,13 +37,17 @@ src_compile() {
 
 	if use berkdb; then
 		if has_version '=sys-libs/db-4.2*'; then
-			myconf="${myconf} --with-dbm=db42 --with-berkely-db=/usr"
+			myconf="${myconf} --with-dbm=db42
+			--with-berkeley-db=/usr/include/db4.2:/usr/$(get_libdir)"
 		elif has_version '=sys-libs/db-4*'; then
-			myconf="${myconf} --with-dbm=db4 --with-berkely-db=/usr"
+			myconf="${myconf} --with-dbm=db4
+			--with-berkeley-db=/usr/include/db4:/usr/$(get_libdir)"
 		elif has_version '=sys-libs/db-3*'; then
-			myconf="${myconf} --with-dbm=db3 --with-berkely-db=/usr"
+			myconf="${myconf} --with-dbm=db3
+			--with-berkeley-db=/usr/include/db3:/usr/$(get_libdir)"
 		elif has_version '=sys-libs/db-2'; then
-			myconf="${myconf} --with-dbm=db2 --with-berkely-db=/usr"
+			myconf="${myconf} --with-dbm=db2
+			--with-berkely-db=/usr/include/db2:/usr/$(get_libdir)"
 		fi
 	fi
 
@@ -65,5 +70,5 @@ src_install() {
 	dodoc CHANGES NOTICE
 
 	# Will install as portage user when using userpriv. Fixing
-	chown -R root:root ${D}/usr/include/apr-0/
+	chown -R root:0 ${D}/usr/include/apr-0/
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/glunarclock/glunarclock-0.32.4.ebuild,v 1.1 2005/05/01 12:06:32 dsd Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/glunarclock/glunarclock-0.32.4.ebuild,v 1.1.1.1 2005/11/30 09:40:25 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -11,14 +11,8 @@ SRC_URI="mirror://sourceforge/glunarclock/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PN}-i18n-gentoo.patch
-}
 
 RDEPEND=">=x11-libs/gtk+-2.1.0
 		>=gnome-base/libgnome-2.0.0
@@ -28,7 +22,9 @@ RDEPEND=">=x11-libs/gtk+-2.1.0
 		>=gnome-base/libgtop-2.0.0
 		>=x11-libs/libwnck-0.13
 		>=gnome-base/libglade-2.0.0
-		>=gnome-base/gnome-panel-2.0.0"
+		>=gnome-base/gnome-panel-2.0.0
+		>=gnome-base/gail-0.13
+		>=x11-libs/libxklavier-0.97"
 
 DEPEND="${RDEPEND}
 		>=dev-util/intltool-0.29
@@ -36,3 +32,9 @@ DEPEND="${RDEPEND}
 		dev-util/pkgconfig"
 
 DOCS="AUTHORS ChangeLog COPYING* INSTALL README"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-i18n-gentoo.patch
+}

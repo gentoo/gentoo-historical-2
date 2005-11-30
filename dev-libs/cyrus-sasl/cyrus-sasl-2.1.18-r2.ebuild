@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.18-r2.ebuild,v 1.1 2004/07/08 02:12:57 merlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.18-r2.ebuild,v 1.1.1.1 2005/11/30 09:42:08 chriswhite Exp $
 
 inherit eutils flag-o-matic gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="2"
-KEYWORDS="x86 ~ppc sparc ~mips alpha ~arm ~hppa amd64 ia64 ~s390 ~ppc64"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 ppc64"
 IUSE="gdbm ldap mysql postgres kerberos static ssl java pam pam-mysql"
 
 RDEPEND="virtual/libc
@@ -87,6 +87,11 @@ src_compile() {
 	myconf="${myconf} `use_with postgres pgsql` `use_enable postgres sql`"
 	myconf="${myconf} `use_enable java` `use_with java javahome ${JAVA_HOME}`"
 
+	# fix for bug #59634. langthang 20040810.
+	if ! use ssl; then
+		myconf="${myconf} --without-des"
+	fi
+
 	if use mysql || use postgres ; then
 		myconf="${myconf} --enable-sql"
 	else
@@ -102,8 +107,7 @@ src_compile() {
 	use alpha && append-flags -D_REENTRANT -pthread
 
 	# Detect mips systems properly.
-	use mips && gnuconfig_update
-	use ppc64 && gnuconfig_update
+	gnuconfig_update
 
 	econf \
 		--with-saslauthd=/var/lib/sasl2 \
@@ -153,7 +157,7 @@ src_install () {
 }
 
 pkg_postinst() {
-	if ! use pam-mysql && use pam && has_version 'sys-libs/pam_mysql'; then
+	if ! use pam-mysql && use pam && has_version 'sys-auth/pam_mysql'; then
 		echo
 		ewarn
 		ewarn "Starting with version 2.1.17 of cyrus-sasl, the cyrus-sasl team has switched"

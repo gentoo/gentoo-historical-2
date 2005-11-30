@@ -1,6 +1,30 @@
 # ChangeLog for dev-libs/redland-bindings
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland-bindings/ChangeLog,v 1.1 2004/08/16 04:55:10 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland-bindings/ChangeLog,v 1.1.1.1 2005/11/30 09:41:30 chriswhite Exp $
+
+*redland-bindings-1.0.2.1 (18 Oct 2005)
+
+  18 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +redland-bindings-1.0.2.1.ebuild:
+  Version bump.
+
+  12 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/redland-bindings-1.0.0.2-DESTDIR.patch,
+  +files/redland-bindings-1.0.0.2-configure.patch,
+  redland-bindings-1.0.0.2.ebuild:
+  Add support for mono by Ugo Riboni #101761.
+
+*redland-bindings-1.0.0.2 (08 Mar 2005)
+
+  08 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +redland-bindings-1.0.0.2.ebuild:
+  Version bump #84092 by Simon Cross.
+
+*redland-bindings-0.9.19.1 (10 Nov 2004)
+
+  10 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +redland-bindings-0.9.19.1.ebuild:
+  Version bump.
 
 *redland-bindings-0.9.18.1 (15 Aug 2004)
 

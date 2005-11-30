@@ -1,33 +1,37 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/libtabe/libtabe-0.2.5.ebuild,v 1.1 2002/10/23 14:19:27 stubear Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/libtabe/libtabe-0.2.5.ebuild,v 1.1.1.1 2005/11/30 09:40:08 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Libtabe provides bimsphone support for xcin-2.5+"
 HOMEPAGE="http://libtabe.sourceforge.net/"
 SRC_URI="ftp://xcin.linux.org.tw/pub/xcin/libtabe/devel/${P}.tar.gz"
+
 LICENSE="XCIN"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
+IUSE=""
+
 DEPEND="=sys-libs/db-3*"
-RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
 
-src_compile() {
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--with-db-lib=/usr/lib \
-		--with-db-bin=/usr/bin \
-		--enable-shared || die "./configure failed"
-	make || die
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${P}-db3.patch
 }
 
-src_install () {
-	make \
-		prefix=${D}/usr \
-		mandir=${D}/usr/share/man \
-		infodir=${D}/usr/share/info \
-		install || die
+src_compile() {
+	econf \
+		--with-db-inc=/usr/include/db3 \
+		--with-db-lib=/usr/lib \
+		--with-db-bin=/usr/bin \
+		--enable-shared || die "econf failed"
+	emake -j1 || die " make failed"
+}
+
+src_install() {
+	einstall || die "install failed"
 	dodoc doc/*
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/irrlicht/irrlicht-0.7.1.ebuild,v 1.1 2004/12/30 12:10:24 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/irrlicht/irrlicht-0.7.1.ebuild,v 1.1.1.1 2005/11/30 09:44:39 chriswhite Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/irrlicht/irrlicht-0.7.zip
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
 IUSE="doc"
 
 RDEPEND="media-libs/jpeg

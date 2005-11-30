@@ -1,6 +1,6 @@
 # Copyright 2005-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/dmraid-1.0.0_rc8-r1.ebuild,v 1.1 2005/07/28 02:24:07 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dmraid/dmraid-1.0.0_rc8-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:14 chriswhite Exp $
 
 inherit linux-info flag-o-matic
 

@@ -1,20 +1,23 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/kinput2/kinput2-3.1-r1.ebuild,v 1.1 2003/08/16 16:27:55 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/kinput2/kinput2-3.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:40:14 chriswhite Exp $
+
+inherit eutils
 
 MY_P="${PN}-v${PV}"
 DESCRIPTION="A Japanese input server which supports the XIM protocol"
-SRC_URI="ftp://ftp.sra.co.jp/pub/x11/${PN}/${MY_P}.tar.gz"
 HOMEPAGE="http://www.nec.co.jp/canna/"
+SRC_URI="ftp://ftp.sra.co.jp/pub/x11/${PN}/${MY_P}.tar.gz"
 
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc"
+SLOT="0"
+KEYWORDS="x86 ppc sparc amd64 ppc64"
 IUSE="canna freewnn"
 
-DEPEND="virtual/glibc
-	canna? >=app-i18n/canna-3.5_beta2-r1
-	freewnn? >=app-i18n/freewnn-1.1.1_alpha19 : >=app-i18n/canna-3.5_beta2-r1"
+DEPEND="virtual/libc
+	canna? ( >=app-i18n/canna-3.5_beta2-r1 )
+	!amd64? ( freewnn? ( >=app-i18n/freewnn-1.1.1_alpha19 ) )
+	!freewnn? ( >=app-i18n/canna-3.5_beta2-r1 )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -39,7 +42,6 @@ src_unpack() {
 	use canna || use freewnn \
 		|| mysed="${mysed} -e 's:/\* \(\#define UseCanna\) \*/:\\1:'"
 
-	echo ${mysed}
 	cp ${S}/Kinput2.conf ${T}
 	eval sed ${mysed} ${T}/Kinput2.conf > ${S}/Kinput2.conf || die
 }

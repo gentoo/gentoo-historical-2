@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/librep/librep-0.17-r1.ebuild,v 1.1 2005/06/23 01:17:33 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/librep/librep-0.17-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:41 chriswhite Exp $
 
 IUSE="readline"
 
-inherit libtool toolchain-funcs
+inherit eutils libtool toolchain-funcs multilib
 
 DESCRIPTION="Shared library implementing a Lisp dialect"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -12,7 +12,7 @@ HOMEPAGE="http://librep.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 
 RDEPEND=">=sys-libs/gdbm-1.8.0
 	readline? ( sys-libs/readline )"
@@ -21,14 +21,16 @@ DEPEND="${RDEPEND}
 	sys-apps/texinfo
 	>=sys-devel/automake-1.6.1-r5"
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/rep_file_fdopen.patch"
+}
+
 src_compile() {
 	elibtoolize
 
-	local myconf
-
-	use readline \
-		&& myconf='--with-readline' \
-		|| myconf='--without-readline'
+	local myconf="$(use_with readline)"
 	use ppc && myconf="${myconf} --with-stack-direction=1"
 	LC_ALL=""
 	LINGUAS=""
@@ -36,8 +38,9 @@ src_compile() {
 	export LC_ALL LINGUAS LANG
 
 	CC=$(tc-getCC) econf \
-		--libexecdir=/usr/lib \
+		--libexecdir=/usr/$(get_libdir) \
 		--without-gmp \
+		--without-ffi \
 		${myconf} || die "configure failure"
 
 	make host_type=${CHOST} || die "compile failure"
@@ -53,7 +56,7 @@ src_install() {
 	insinto /usr/include
 	doins src/rep_config.h
 
-	dodoc AUTHORS BUGS COPYING ChangeLog NEWS README THANKS TODO DOC TREE
+	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO DOC TREE
 	docinto doc
 	dodoc doc/*
 }

@@ -1,45 +1,44 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/tamago/tamago-4.0.6-r1.ebuild,v 1.1 2003/08/07 15:33:56 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/tamago/tamago-4.0.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:07 chriswhite Exp $
 
 inherit elisp eutils
 
-IUSE="canna"
+TAMAGO_CANNA="canna-20011204.diff"
 
 DESCRIPTION="Emacs Backend for Sj3 Ver.2, FreeWnn, Wnn6 and Canna"
-SRC_URI="ftp://ftp.m17n.org/pub/tamago/${P}.tar.gz
-         http://cgi18.plala.or.jp/nyy/canna/canna-20011204.diff.gz"
 HOMEPAGE="http://www.m17n.org/tamago/"
+SRC_URI="ftp://ftp.m17n.org/pub/tamago/${P}.tar.gz
+	http://cgi18.plala.or.jp/nyy/canna/${TAMAGO_CANNA}.gz
+	mirror://gentoo/${P}-canna-gentoo.patch.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+SLOT="0"
+KEYWORDS="alpha ~amd64 ppc ppc64 sparc x86"
+IUSE="canna"
 
 DEPEND="virtual/emacs
-	sys-apps/gzip
+	app-arch/gzip
 	>=sys-apps/sed-4"
 RDEPEND="virtual/emacs
 	canna? ( app-i18n/canna )"
 
-S="${WORKDIR}/${P}"
 SITEFILE=50tamago-gentoo.el
 
 src_unpack() {
+	unpack ${P}.tar.gz
+	unpack ${TAMAGO_CANNA}.gz
 
-	unpack ${A}
-
-	epatch ${FILESDIR}/${P}-canna-gentoo.patch
-	epatch canna-20011204.diff
+	epatch ${DISTDIR}/${P}-canna-gentoo.patch.gz
+	epatch ${TAMAGO_CANNA}
 }
 
 src_compile() {
-
 	./configure --prefix=/usr || die
 	emake || die
 }
 
 src_install() {
-
 	dodir ${SITELISP}/${PN}
 	emake prefix=${D}/usr \
 		infodir=${D}/usr/share/info \
@@ -48,25 +47,24 @@ src_install() {
 
 
 	cp ${FILESDIR}/${SITEFILE} ${SITEFILE}
-	if [ -n "`use canna`" ] ; then
+	if use canna ; then
 		cat >>${SITEFILE}<<-EOF
 		(set-language-info "Japanese" 'input-method "japanese-egg-canna")
 
 		EOF
 	fi
 
- 	elisp-site-file-install ${SITEFILE} || die
+	elisp-site-file-install ${SITEFILE} || die
 
-	dodoc README.ja.txt COPYING AUTHORS PROBLEMS TODO ChangeLog
+	dodoc README.ja.txt AUTHORS PROBLEMS TODO ChangeLog
 }
 
 pkg_postinst() {
-
 	elisp-site-regen
 
-	if ! grep -q inet /etc/conf.d/canna ; then
+	if ! grep -q inet ${ROOT}/etc/conf.d/canna && use canna ; then
 		sed -i -e '/CANNASERVER_OPTS/s/"\(.*\)"/"\1 -inet"/' \
-			/etc/conf.d/canna
+			${ROOT}/etc/conf.d/canna
 
 		einfo
 		einfo "Enabled inet domain socket for tamago."

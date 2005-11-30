@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/acpi/acpi-0.09.ebuild,v 1.1 2005/04/22 18:23:10 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpi/acpi-0.09.ebuild,v 1.1.1.1 2005/11/30 09:42:41 chriswhite Exp $
 
 DESCRIPTION="Attempts to replicate the functionality of the 'old' apm command on ACPI systems, including battery and thermal information."
 HOMEPAGE="http://grahame.angrygoats.net/acpi.shtml"

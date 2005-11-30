@@ -1,36 +1,42 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/skkserv/skkserv-9.6-r2.ebuild,v 1.1 2003/05/17 11:04:02 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/skkserv/skkserv-9.6-r2.ebuild,v 1.1.1.1 2005/11/30 09:40:12 chriswhite Exp $
 
-S="${WORKDIR}/skk-${PV}mu"
+inherit eutils
+
 MY_P="skk${PV}mu"
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~sparc ~alpha"
-DESCRIPTION="Dictionary server for the SKK Japanese-input software"
-SRC_URI="http://openlab.ring.gr.jp/skk/maintrunk/museum/${MY_P}.tar.gz"
-HOMEPAGE="http://openlab.ring.gr.jp/skk/"
-IUSE=""
-DEPEND="virtual/glibc
-        >=app-i18n/skk-jisyo-200210"
 
+DESCRIPTION="Dictionary server for the SKK Japanese-input software"
+HOMEPAGE="http://openlab.ring.gr.jp/skk/"
+SRC_URI="http://openlab.ring.gr.jp/skk/maintrunk/museum/${MY_P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha"
+IUSE=""
+
+DEPEND="virtual/libc
+	>=app-i18n/skk-jisyo-200210"
 PROVIDE="virtual/skkserv"
 
-src_compile() {
-	./configure \
-	       --host=${CHOST} \
-	       --prefix=/usr \
-		   --libexecdir=/usr/sbin || die "./configure failed"
-	cd skkserv
+S="${WORKDIR}/skk-${PV}mu"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}/skkserv
+	epatch ${FILESDIR}/${P}-segfault-gentoo.patch
+}
+
+src_compile() {
+	econf --libexecdir=/usr/sbin || die "econf failed"
+	cd skkserv
 	emake || die
 }
 
-src_install () {
-
+src_install() {
 	cd skkserv
-	dosbin skkserv
+	dosbin skkserv || die
 
-	# install rc script and its config file
-	exeinto /etc/init.d ; newexe ${FILESDIR}/${P}/skkserv.initd skkserv
+	# install rc script
+	exeinto /etc/init.d ; newexe ${FILESDIR}/skkserv.initd skkserv
 }

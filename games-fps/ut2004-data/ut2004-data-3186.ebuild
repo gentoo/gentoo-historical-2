@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-data/ut2004-data-3186.ebuild,v 1.1 2005/02/23 00:27:03 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-data/ut2004-data-3186.ebuild,v 1.1.1.1 2005/11/30 09:39:52 chriswhite Exp $
 
 inherit games games-ut2k4mod
 
@@ -10,7 +10,7 @@ SRC_URI=""
 
 LICENSE="ut2003"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 RESTRICT="nostrip nomirror"
 IUSE=""
 
@@ -18,10 +18,15 @@ DEPEND="games-util/uz2unpack"
 
 S=${WORKDIR}
 
+GAMES_LICENSE_CHECK="yes"
 dir=${GAMES_PREFIX_OPT}/ut2004
 Ddir=${D}/${dir}
 
 pkg_setup() {
+	ewarn "This is a huge package.  If you do not have at least 7GB of free"
+	ewarn "disk space in ${PORTAGE_TMPDIR} and also in ${GAMES_PREFIX_OPT} then"
+	ewarn "You should abort this installation now and free up some space."
+	games_pkg_setup
 	check_dvd
 
 	if [[ ${USE_DVD} -eq 1 ]]
@@ -46,9 +51,13 @@ pkg_setup() {
 				${DISK4}/Music/KR-UT2004-Menu.ogg \
 				${DISK5}/Speech/ons.xml ${DISK6}/DirectX9/BDA.cab
 		fi
+	else
+		cdrom_get_cds System/UT2004.ini \
+			Textures/2K4Fonts.utx.uz2 \
+			Textures/ONSDeadVehicles-TX.utx.uz2 \
+			Music/KR-UT2004-Menu.ogg \
+			Speech/ons.xml DirectX9/BDA.cab
 	fi
-
-	games_pkg_setup
 }
 
 src_unpack() {

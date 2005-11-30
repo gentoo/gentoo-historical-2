@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-068-r1.ebuild,v 1.1 2005/09/12 14:34:02 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/udev/udev-068-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:22 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="static selinux"
 
 DEPEND="sys-apps/hotplug-base"
@@ -29,6 +29,7 @@ export USE_KLIBC
 
 
 pkg_setup() {
+	# Why is check_KV needed here?!
 	[ "${USE_KLIBC}" = "true" ] && check_KV
 
 	return 0
@@ -49,8 +50,9 @@ src_unpack() {
 
 	# Make sure there is no sudden changes to udev.rules.gentoo
 	# (more for my own needs than anything else ...)
-	if [ "`md5sum < "${S}/etc/udev/gentoo/udev.rules"`" != \
-	     "cb5c7232b311b8ce5c46b11b7ea2253f  -" ]
+	MD5=`md5sum < "${S}/etc/udev/gentoo/udev.rules"`
+	MD5=${MD5/  -/}
+	if [ "${MD5}" != "cb5c7232b311b8ce5c46b11b7ea2253f" ]
 	then
 		echo
 		eerror "gentoo/udev.rules has been updated, please validate!"

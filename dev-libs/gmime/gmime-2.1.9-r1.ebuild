@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.9-r1.ebuild,v 1.1 2004/11/10 00:08:17 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.9-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:14 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://spruce.sourceforge.net/gmime/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="x86 amd64 ppc sparc ~alpha"
 
 RDEPEND=">=dev-libs/glib-2
 	doc? ( >=dev-util/gtk-doc-1.0 )"
@@ -33,9 +33,7 @@ src_compile() {
 	econf \
 	    `use_enable ipv6` \
 	    `use_enable doc gtk-doc` || die "configure failed"
-}
 
-pkg_preinst() {
 	# rename these two, so they don't conflict with app-arch/sharutils
 	# (bug #70392)	Ticho, 2004-11-10
 	mv ${D}/usr/bin/uuencode ${D}/usr/bin/gmime-uuencode

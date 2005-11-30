@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.4.4.ebuild,v 1.1 2005/09/16 00:31:39 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.4.4.ebuild,v 1.1.1.1 2005/11/30 09:42:37 chriswhite Exp $
 
 inherit eutils
 
@@ -10,34 +10,30 @@ SRC_URI="ftp://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos"
+KEYWORDS="~alpha ~amd64 arm hppa ia64 mips ppc ~ppc-macos ~ppc64 s390 sparc x86"
 IUSE="doc qt tetex"
 
 RDEPEND="media-gfx/graphviz
 	qt? ( =x11-libs/qt-3* )
-	doc? ( tetex? ( virtual/tetex )
-	virtual/ghostscript )"
+	tetex? ( virtual/tetex )
+	virtual/ghostscript"
 DEPEND=">=sys-apps/sed-4
 	${RDEPEND}"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	# use CFLAGS and CXXFLAGS
+	# use CFLAGS and CXXFLAGS (on linux and ppc-macos)
 	sed -i.orig -e "s:^\(TMAKE_CFLAGS_RELEASE\t*\)= .*$:\1= ${CFLAGS}:" \
 		-e "s:^\(TMAKE_CXXFLAGS_RELEASE\t*\)= .*$:\1= ${CXXFLAGS}:" \
-		tmake/lib/linux-g++/tmake.conf
-	epatch ${FILESDIR}/${P}-cp1251.patch
-	if use ppc-macos; then
-		epatch ${FILESDIR}/bsd-configure.patch
-		[[ "$MACOSX_DEPLOYMENT_TARGET" == "10.4" ]] && 	sed -i -e 's:-D__FreeBSD__:-D__FreeBSD__=5:' \
-			tmake/lib/macosx-c++/tmake.conf
-	fi
+		tmake/lib/{linux-g++,macosx-c++}/tmake.conf
+	epatch ${FILESDIR}/doxygen-1.4.3-cp1251.patch
+	epatch ${FILESDIR}/${P}-darwin.patch
 }
 
 src_compile() {
 	# set ./configure options (prefix, Qt based wizard, docdir)
-	local confopts="--prefix ${D}/usr"
+	local confopts="--prefix ${D}usr"
 	use qt && confopts="${confopts} --with-doxywizard"
 
 	# ./configure and compile
@@ -67,7 +63,8 @@ src_compile() {
 }
 
 src_install() {
-	make install || die '"make install" failed.'
+	make DESTDIR=${D} MAN1DIR=share/man/man1 \
+		install || die '"make install" failed.'
 
 	dodoc INSTALL LANGUAGE.HOWTO LICENSE README VERSION
 

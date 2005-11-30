@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-bonuspack-epic/ut2003-bonuspack-epic-1.ebuild,v 1.1 2004/02/27 21:59:22 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-bonuspack-epic/ut2003-bonuspack-epic-1.ebuild,v 1.1.1.1 2005/11/30 09:39:46 chriswhite Exp $
 
 inherit games
 
@@ -35,17 +35,19 @@ src_unpack() {
 }
 
 src_install() {
+	dodir ${dir}
 	insinto ${dir}/Help
 	newins ${S}/Help/BonusPackReadme.txt EpicBonusPack.README || die "README"
 
 	exeinto ${dir}
 	doexe ${FILESDIR}/epic-installer
+	dodir ${dir}/System
 
 	cp -r ${S}/{Maps,Sounds,StaticMeshes,Textures} ${Ddir} \
 		|| die "Copying Maps/Sounds/Textures"
-	cp ${S}/System/{*.{det,est,frt,int,itt,kot,tmt,u},User.ini} ${Ddir} \
+	cp ${S}/System/{*.{det,est,frt,int,itt,kot,tmt,u},User.ini} ${Ddir}/System \
 		|| die "Copying System files"
-	cp -v ${S}/System/Manifest.ini ${Ddir}/Manifest.ini.epic \
+	cp -v ${S}/System/Manifest.ini ${Ddir}/System/Manifest.ini.epic \
 		|| die "Copying Manifest"
 
 	prepgamesdirs
@@ -53,14 +55,14 @@ src_install() {
 
 pkg_postinst() {
 	einfo "You will need to run:"
-	einfo " ebuild /var/db/pkg/${CATEGORY}/${P}/${P}.ebuild config"
+	einfo "emerge --config =${CATEGORY}/${PF}"
 	einfo "to make the necessary changes to the system .ini files."
-	echo ""
+	echo
 	einfo "Each user whom has already played the game will need to run:"
 	einfo " ${dir}/epic-installer"
-	echo ""
+	echo
 	einfo "to update their configuration files in their home directory."
-	echo ""
+	echo
 
 	games_pkg_postinst
 }
@@ -68,7 +70,7 @@ pkg_postinst() {
 pkg_config() {
 	cd ${dir}/System
 	cp Manifest.ini Manifest.ini.pre-epic
-	cp ${dir}/Manifest.ini.epic Manifest.ini
+	cp ${dir}/System/Manifest.ini.epic Manifest.ini
 
 	cp Default.ini Default.ini.pre-epic
 	cat >> Default.ini <<EOT
@@ -114,6 +116,6 @@ q
 EOT
 
 	cp DefUser.ini DefUser.ini.pre-epic
-	sed 's/^F11=.*$/F11=MusicMenu/g'  < DefUser.ini > DefUser.ini~~
-	mv DefUser.ini~~ DefUser.ini
+	sed -i 's/^F11=.*$/F11=MusicMenu/g' DefUser.ini
+	chown games:games ${dir}/System/*.ini
 }

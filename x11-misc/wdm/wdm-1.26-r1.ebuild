@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/wdm/wdm-1.26-r1.ebuild,v 1.1 2005/06/13 23:11:25 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/wdm/wdm-1.26-r1.ebuild,v 1.1.1.1 2005/11/30 09:40:26 chriswhite Exp $
 
-inherit eutils
+inherit eutils pam
 
 IUSE="truetype pam png jpeg gif tiff"
 
@@ -11,16 +11,17 @@ HOMEPAGE="http://voins.program.ru/wdm/"
 SRC_URI="http://voins.program.ru/${PN}/${P}.tar.bz2"
 
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~alpha"
+KEYWORDS="alpha ~amd64 x86"
 LICENSE="GPL-2"
 
 RDEPEND=">=x11-wm/windowmaker-0.65.1
 	virtual/x11
 	truetype? ( virtual/xft )
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
+
 DEPEND="${RDEPEND}
 	sys-devel/gettext"
-	
+
 src_compile() {
 	econf \
 		--exec-prefix=/usr \

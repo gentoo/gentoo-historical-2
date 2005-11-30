@@ -1,4 +1,16 @@
-MD5 2c4feb15f4c2468dbb136a103e914eda files/digest-safestr-1.0.1 66
-MD5 6228ccba264aeda77210d632c1d61dfa files/1.0.1-makefile.patch 358
-MD5 8a501681353d62dc2ecd046d1739d76d safestr-1.0.1.ebuild 668
-MD5 c03c5c6c01457277b813163855260410 ChangeLog 339
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 a8fbd2b7f5578cca72ba9487ae289227 safestr-1.0.3.ebuild 682
+MD5 8401fd5284500d4f83dafb8b8f09b07b safestr-1.0.2.ebuild 682
+MD5 f29cc485b401e3bd5b6aca2950c9a5e5 ChangeLog 796
+MD5 c4c8c882d0ddbbc52c82a6807ca4b4f4 metadata.xml 679
+MD5 1dfd61420c52955a07312d271dff06de files/digest-safestr-1.0.2 66
+MD5 992fcde5833c772ae7e167005e31454b files/digest-safestr-1.0.3 66
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCe1zXEZCkKN40op4RAsN5AJ9hhEydXny9PE3qza5GjXJdOPgvXwCgr5y5
+KSKF4bUtCULtPNOhYdbXkaU=
+=m+wB
+-----END PGP SIGNATURE-----

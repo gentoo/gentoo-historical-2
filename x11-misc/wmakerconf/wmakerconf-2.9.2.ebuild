@@ -1,22 +1,20 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/wmakerconf/wmakerconf-2.9.2.ebuild,v 1.1 2004/10/30 00:35:59 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/wmakerconf/wmakerconf-2.9.2.ebuild,v 1.1.1.1 2005/11/30 09:40:34 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="X based config tool for the windowmaker X windowmanager."
 SRC_URI="http://www.starplot.org/wmakerconf/${P}.tar.gz"
-# Homepage appears not to be up anymore
 HOMEPAGE="http://www.starplot.org/wmakerconf/index.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~ppc"
+KEYWORDS="~amd64 ppc sparc x86"
 
 IUSE="nls gnome imlib perl"
 
 DEPEND="=x11-libs/gtk+-1.2*
-	!=x11-wm/windowmaker-0.9*
 	x11-wm/windowmaker
 	gnome? ( =gnome-base/gnome-libs-1.4* )
 	imlib? ( media-libs/imlib )"
@@ -37,12 +35,14 @@ src_compile() {
 }
 
 src_install() {
-	emake install DESTDIR=${D} || die "install failed"
+	emake DESTDIR=${D} \
+		GNOMEDIR=${D}/usr/share/gnome/apps/Settings \
+		gnulocaledir=${D}/usr/share/locale \
+		install || die "install failed"
 	#	prefix=${D}/usr \
-	#	GNOMEDIR=${D}/usr/share/gnome/apps/Settings \
 	#	install || die
 
-	dodoc README MANUAL AUTHORS TODO COPYING ChangeLog
+	dodoc README MANUAL AUTHORS TODO ChangeLog
 	#dohtml -r .
 }
 

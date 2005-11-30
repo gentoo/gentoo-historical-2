@@ -1,6 +1,27 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# ChangeLog for sys-fs/multipath-tools
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/multipath-tools/ChangeLog,v 1.1 2005/02/21 15:03:24 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/multipath-tools/ChangeLog,v 1.1.1.1 2005/11/30 09:44:15 chriswhite Exp $
+
+*multipath-tools-0.4.5 (02 Sep 2005)
+
+  02 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +multipath-tools-0.4.5.ebuild:
+  New version.
+
+  02 Mar 2005; Martin Schlemmer <azarah@gentoo.org>
+  multipath-tools-0.4.2.ebuild:
+  Fix device-mapper DEPEND after catagory move.
+
+  28 Feb 2005; Martin Schlemmer <azarah@gentoo.org>
+  multipath-tools-0.4.2.ebuild:
+  Update deps as we need >=device-mapper-1.00.19.
+
+  21 Feb 2005; Martin Schlemmer <azarah@gentoo.org>
+  multipath-tools-0.4.2.ebuild:
+  Add LICENSE.
+
+  21 Feb 2005; Martin Schlemmer <azarah@gentoo.org> files/rc-multipathd:
+  Change script to stop by pidfile.
 
 *multipath-tools-0.4.2 (21 Feb 2005)
 

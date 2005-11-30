@@ -1,50 +1,39 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuserv/gnuserv-3.12.5.ebuild,v 1.1 2002/11/11 10:49:33 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuserv/gnuserv-3.12.5.ebuild,v 1.1.1.1 2005/11/30 09:41:18 chriswhite Exp $
 
-inherit elisp
+inherit elisp eutils
 
-IUSE=""
-
-DESCRIPTION="Gnuserv allows you to attach to an already running Emacs."
+DESCRIPTION="attach to an already running Emacs"
 HOMEPAGE="http://meltin.net/hacks/emacs/"
 SRC_URI="http://meltin.net/hacks/emacs/src/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 amd64"
+IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	virtual/emacs"
-
-S="${WORKDIR}/${P}"
 
 SITEFILE=50gnuserv-gentoo.el
 
 src_compile() {
-	./configure --host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man || die "./configure failed"
+	# bug #83112
+	unset LDFLAGS
+
+	econf \
+		--x-includes=/usr/X11R6/include \
+		--x-libraries=/usr/X11R6/lib || die
 	emake || die
 }
 
 src_install() {
 	dodir /usr/share/man/man1
-	make prefix=${D}/usr \
-		man1dir=${D}/usr/share/man/man1 \
-		infodir=${D}/usr/share/info \
-		install || die
+	einstall man1dir=${D}/usr/share/man/man1 || die
 
 	elisp-install ${PN} *.el *.elc
 	elisp-site-file-install ${FILESDIR}/${SITEFILE}
 
-	dodoc ChangeLog COPYING INSTALL README README.orig
-}
-
-pkg_postinst() {
-	elisp-site-regen
-}
-
-pkg_postrm() {
-	elisp-site-regen
+	dodoc ChangeLog INSTALL README README.orig
 }

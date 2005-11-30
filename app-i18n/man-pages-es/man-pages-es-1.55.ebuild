@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-es/man-pages-es-1.55.ebuild,v 1.1 2005/09/02 04:29:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-es/man-pages-es-1.55.ebuild,v 1.1.1.1 2005/11/30 09:40:09 chriswhite Exp $
 
 manpagesextra=${PN}-extra-0.8a
 S2=${WORKDIR}/${manpagesextra}

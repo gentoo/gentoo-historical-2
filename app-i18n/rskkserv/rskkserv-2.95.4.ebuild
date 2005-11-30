@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/rskkserv/rskkserv-2.95.4.ebuild,v 1.1 2005/07/02 09:40:50 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/rskkserv/rskkserv-2.95.4.ebuild,v 1.1.1.1 2005/11/30 09:40:07 chriswhite Exp $
 
 inherit ruby eutils
 

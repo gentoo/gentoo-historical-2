@@ -1,6 +1,22 @@
 # ChangeLog for games-fps/ut2004-redorchestra
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-redorchestra/ChangeLog,v 1.1 2004/11/25 00:20:21 wolf31o2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-redorchestra/ChangeLog,v 1.1.1.1 2005/11/30 09:39:42 chriswhite Exp $
+
+*ut2004-redorchestra-3.3 (12 Jul 2005)
+
+  12 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-redorchestra-3.2.ebuild, +ut2004-redorchestra-3.3.ebuild:
+  Version bumped and closing bug #97658.
+
+*ut2004-redorchestra-3.2 (25 Apr 2005)
+
+  25 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-redorchestra-3.1.ebuild, +ut2004-redorchestra-3.2.ebuild:
+  Version bumped to 3.2 and closing bug #88480.
+
+  29 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-redorchestra-3.1.ebuild:
+  Added IUSE.
 
 *ut2004-redorchestra-3.1 (24 Nov 2004)
 

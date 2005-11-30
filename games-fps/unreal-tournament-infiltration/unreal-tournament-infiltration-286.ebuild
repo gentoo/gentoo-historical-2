@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-infiltration/unreal-tournament-infiltration-286.ebuild,v 1.1 2003/09/09 18:10:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-infiltration/unreal-tournament-infiltration-286.ebuild,v 1.1.1.1 2005/11/30 09:39:55 chriswhite Exp $
 
 inherit games
 
@@ -15,9 +15,10 @@ SRC_URI="ftp://inffilemirror.theonlinegaming.com/INF286/Full-Zipped/${INFFILE}
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
 DEPEND="app-arch/unzip
-	|| ( app-games/unreal-tournament app-games/unreal-tournament-goty )"
+	|| ( games-fps/unreal-tournament games-fps/unreal-tournament-goty )"
 
 S=${WORKDIR}
 

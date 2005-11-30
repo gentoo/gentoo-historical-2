@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-1.0.3.ebuild,v 1.1 2004/01/25 13:13:57 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-1.0.3.ebuild,v 1.1.1.1 2005/11/30 09:41:06 chriswhite Exp $
 
-inherit gnome2
+inherit gnome2 eutils
 
 DESCRIPTION="Gnome Database Access Library"
 HOMEPAGE="http://www.gnome-db.org/"
@@ -10,7 +10,7 @@ LICENSE="GPL-2 LGPL-2"
 
 IUSE="odbc postgres mysql ldap firebird freetds sqlite mdb oci8 doc"
 SLOT="1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="~x86 ppc ~sparc ~alpha ~ia64 amd64"
 
 RDEPEND=">=dev-libs/glib-2.0
 	>=dev-libs/libxml2-2.0
@@ -22,10 +22,10 @@ RDEPEND=">=dev-libs/glib-2.0
 	postgres? ( >=dev-db/postgresql-7.2.1 )
 	odbc? ( >=dev-db/unixODBC-2.0.6 )
 	ldap? ( >=net-nds/openldap-2.0.25 )
-	!ppc? ( firebird? ( >=dev-db/firebird-1.0 ) )
+	x86? ( firebird? ( dev-db/firebird ) )
 	freetds? ( >=dev-db/freetds-0.5 )
-	sqlite? ( >=dev-db/sqlite-2.4.2 )
-	!alpha? ( mdb? ( >=app-office/mdbtools-0.5 ) )"
+	sqlite? ( =dev-db/sqlite-2* )
+	!ia64? ( mdb? ( >=app-office/mdbtools-0.5 ) )"
 
 DEPEND=">=dev-util/pkgconfig-0.8
 	>=dev-util/intltool-0.22
@@ -42,6 +42,12 @@ MAKEOPTS="${MAKEOPTS} -j1"
 src_unpack() {
 	unpack ${A}
 	gnome2_omf_fix ${S}/doc/Makefile.in
+	cd ${S}
+	# Fix libgda's manual source. See bug #46337.
+	epatch ${FILESDIR}/${P}-gtkdoc_fixes.patch
+
+	# Fix gcc 3.4 compilation.  See bug #49234
+	epatch ${FILESDIR}/${P}-gcc3.4.patch
 }
 
 src_compile() {

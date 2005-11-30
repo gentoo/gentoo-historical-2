@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/rskkserv/files/rskkserv-2.95.initd,v 1.1 2004/11/17 04:08:30 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/rskkserv/files/rskkserv-2.95.initd,v 1.1.1.1 2005/11/30 09:40:07 chriswhite Exp $
 
 opts="${opts} reload"
 

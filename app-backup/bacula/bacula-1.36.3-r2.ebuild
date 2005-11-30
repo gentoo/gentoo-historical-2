@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/bacula-1.36.3-r2.ebuild,v 1.1 2005/10/06 21:10:25 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/bacula-1.36.3-r2.ebuild,v 1.1.1.1 2005/11/30 09:42:43 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/bacula/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 hppa ppc sparc x86"
 IUSE="readline ncurses tcpd gnome mysql sqlite X static postgres client-only"
 
 DEPEND=">=sys-libs/zlib-1.1.4
@@ -52,7 +52,8 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-cdrecord-configure.patch || die "Patch failed"
+	epatch ${FILESDIR}/${P}-cdrecord-configure.patch
+	epatch ${FILESDIR}/${P}-mtxtmpfile.patch
 	cp ${FILESDIR}/randpass-1.37.40 ${S}/autoconf/randpass
 
 	# This changes the default conf files to /etc/bacula files

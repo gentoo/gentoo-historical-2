@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/aaquake2/aaquake2-0.1.ebuild,v 1.1 2003/09/09 18:10:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/aaquake2/aaquake2-0.1.ebuild,v 1.1.1.1 2005/11/30 09:39:52 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 DESCRIPTION="text mode Quake II"
 HOMEPAGE="http://www.jfedor.org/aaquake2/"
@@ -14,24 +14,29 @@ SRC_URI="ftp://ftp.idsoftware.com/idstuff/source/q2source-3.21.zip
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
-DEPEND="media-libs/aalib"
+RDEPEND="media-libs/aalib"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
 S=${WORKDIR}/quake2-3.21/linux
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/${PV}-gentoo.patch
+	epatch "${FILESDIR}"/${PV}-gentoo.patch
 	cd quake2-3.21/linux
-	sed -i "s:GENTOO_DIR:${GAMES_LIBDIR}/${PN}:" sys_linux.c
-	sed -i "s:/etc/quake2.conf:${GAMES_SYSCONFDIR}/${PN}.conf:" sys_linux.c vid_so.c
+	sed -i \
+		-e "s:GENTOO_DIR:${GAMES_LIBDIR}/${PN}:" sys_linux.c
+	sed -i \
+		-e "s:/etc/quake2.conf:${GAMES_SYSCONFDIR}/${PN}.conf:" sys_linux.c vid_so.c
 }
 
 src_compile() {
 	mkdir -p releasei386-glibc/ref_soft
 	make \
 		GENTOO_CFLAGS="${CFLAGS}" \
-		GENTOO_DATADIR=${GAMES_DATADIR}/quake2-data/baseq2/ \
+		GENTOO_DATADIR="${GAMES_DATADIR}"/quake2/baseq2/ \
 		build_release || die
 }
 
@@ -39,15 +44,15 @@ src_install() {
 	cd release*
 
 	exeinto ${GAMES_LIBDIR}/${PN}
-	doexe gamei386.so ref_softaa.so
+	doexe gamei386.so ref_softaa.so || die
 	dosym ref_softaa.so ${GAMES_LIBDIR}/${PN}/ref_softx.so
 	dosym ref_softaa.so ${GAMES_LIBDIR}/${PN}/ref_soft.so
 	exeinto ${GAMES_LIBDIR}/${PN}/ctf
-	doexe ctf/gamei386.so
+	doexe ctf/gamei386.so || die
 
-	newgamesbin quake2 aaquake2
+	newgamesbin quake2 aaquake2 || die
 
-	dodir ${GAMES_DATADIR}/quake2-data
+	dodir ${GAMES_DATADIR}/quake2
 
 	insinto ${GAMES_SYSCONFDIR}
 	echo ${GAMES_LIBDIR}/${PN} > ${PN}.conf

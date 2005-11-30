@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/iiimgcf/iiimgcf-11.4_p1467.ebuild,v 1.1 2004/09/13 20:02:11 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/iiimgcf/iiimgcf-11.4_p1467.ebuild,v 1.1.1.1 2005/11/30 09:40:07 chriswhite Exp $
 
 inherit iiimf eutils
 

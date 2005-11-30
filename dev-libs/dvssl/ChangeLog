@@ -1,9 +1,50 @@
-# ChangeLog for app-admin/addpatches
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvssl/ChangeLog,v 1.1 2003/03/06 18:54:14 pvdabeel Exp $
+# ChangeLog for dev-libs/dvssl
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvssl/ChangeLog,v 1.1.1.1 2005/11/30 09:41:34 chriswhite Exp $
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> dvssl-0.5.4-r2.ebuild:
+  Stable on ppc.
+
+  22 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> dvssl-0.5.4-r2.ebuild:
+  Stable on x86.
+
+*dvssl-0.5.4-r2 (20 May 2005)
+
+  20 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/dvssl-0.5.4-fix-underquoted-m4.diff, +metadata.xml,
+  +dvssl-0.5.4-r2.ebuild:
+  Revision bump; added patch to fix underquoted m4 degs. Also, only install
+  API html/man pages if USE=doc and even then at least install them in the
+  correct location. Also added metadata.xml.
+
+*dvssl-0.5.4-r1 (13 May 2005) 
+  13 May 2005; Pieter Van den Abeele <pvdabeel@gentoo.org> dvssl-0.5.4-r1.ebuild,
+  revision bump
+
+*dvssl-0.5.4 (07 Apr 2005)
+  07 Apr 2005; Pieter Van den Abeele <pvdabeel@gentoo.org> dvssl-0.5.4.ebuild,
+  new version
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> dvssl-0.5.2.ebuild,
+  dvssl-0.5.3.ebuild, dvssl-0.5.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> dvssl-0.5.2.ebuild,
+  dvssl-0.5.3.ebuild, dvssl-0.5.4.ebuild:
+  don't assign to A; header fix
+
+*dvssl-0.5.4 (28 Oct 2003)
+
+*dvssl-0.5.4 (28 Oct 2003)
+
+*dvssl-0.5.3 (14 Jul 2003)
+
+  14 Jul 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+
+  new version
 
 *dvssl-0.5.2 (06 Mar 2003)
 
-  06 Mar 2002; Pieter Van den Abeele<pvdabeel@gentoo.org> :
+  06 Mar 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
 
   Created an ebuild - also tested on ppc

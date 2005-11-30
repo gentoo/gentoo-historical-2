@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.01.14.ebuild,v 1.1 2005/10/14 02:58:05 rocket Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm2/lvm2-2.01.14.ebuild,v 1.1.1.1 2005/11/30 09:44:24 chriswhite Exp $
 
 DESCRIPTION="User-land utilities for LVM2 (device-mapper) software."
 HOMEPAGE="http://sources.redhat.com/lvm2/"

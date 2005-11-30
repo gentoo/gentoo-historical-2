@@ -1,23 +1,32 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/fribidi/fribidi-0.10.4.ebuild,v 1.1 2003/04/01 20:32:54 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/fribidi/fribidi-0.10.4.ebuild,v 1.1.1.1 2005/11/30 09:42:07 chriswhite Exp $
 
-DESCRIPTION="library implementing the Unicode Bidirectional Algorithm"
-HOMEPAGE="http://fribidi.sourceforge.net"
+inherit eutils
+
+DESCRIPTION="A free implementation of the unicode bidirectional algorithm"
+HOMEPAGE="http://freedesktop.org/Software/FriBidi"
 SRC_URI="mirror://sourceforge/fribidi/${P}.tar.bz2"
-LICENSE="LGPL-2"
+
+LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 sparc x86"
 IUSE=""
-DEPEND=""
-S="${WORKDIR}/${P}"
+
+DEPEND="virtual/libc"
+
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${PN}-macos.patch
+}
 
 src_compile() {
-	econf
-	emake || die
-	make test || die
+	econf || die
+	emake || die "emake failed"
+	make test || die "make test failed"
 }
 
 src_install() {
 	einstall || die
+	dodoc AUTHORS NEWS README ChangeLog THANKS TODO ANNOUNCE
 }

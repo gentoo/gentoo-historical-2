@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigc++/libsigc++-2.0.16.ebuild,v 1.1 2005/08/17 18:01:46 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigc++/libsigc++-2.0.16.ebuild,v 1.1.1.1 2005/11/30 09:41:33 chriswhite Exp $
 
 inherit eutils gnome.org flag-o-matic
 

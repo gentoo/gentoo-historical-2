@@ -1,7 +1,61 @@
 # ChangeLog for dev-libs/skyutils
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/skyutils/ChangeLog,v 1.1 2002/11/02 07:24:24 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/skyutils/ChangeLog,v 1.1.1.1 2005/11/30 09:41:45 chriswhite Exp $
 
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> skyutils-2.7.ebuild:
+  Stable on ppc.
+
+*skyutils-2.8 (06 Oct 2005)
+
+  06 Oct 2005; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  -skyutils-2.5.ebuild, skyutils-2.6.ebuild, skyutils-2.7.ebuild,
+  +skyutils-2.8.ebuild:
+  Assign to mobile-phone herd. Remove obsolete version. Remove COPYING 
+  and INSTALL from docs. Mark version 2.7 stable on x86. Version bump.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> skyutils-2.6.ebuild:
+  Stable on ppc.
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> skyutils-2.6.ebuild:
+  stable on amd64
+
+*skyutils-2.7 (16 Dec 2004)
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> +skyutils-2.7.ebuild:
+  Version bump.
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> skyutils-2.6.ebuild:
+  keywords ~amd64 to close bug 73496.
+
+  23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed digest.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> skyutils-2.5.ebuild,
+  skyutils-2.6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> -skyutils-2.1.ebuild,
+  -skyutils-2.4.ebuild, skyutils-2.6.ebuild:
+  x86 keyword. Clean out old versions
+
+*skyutils-2.6 (18 Apr 2004)
+
+  18 Apr 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  skyutils-2.6.ebuild:
+  version bump to support smssend-3.3
+
+*skyutils-2.5 (09 Apr 2003)
+
+  09 Apr 2003; Luca Barbato <lu_zero@gentoo.org> : skytuils-2.5.ebuild
+  Thanks to Kfir Ozer <ufk2k@yahoo.com> for the update
+
+*skyutils-2.4 (06 Mar 2003)
+
+  06 Mar 2003; Luca Barbato <lu_zero@gentoo.org> : skytuils-2.4.ebuild
+  Thanks to Michele Balistreri <brain87@gmx.net> for the update
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *skyutils-2.1 (23 Aug 2002)
 
   23 Aug 2002; George Shapovalov <george@gentoo.org> skytuils-2.1.ebuild : 

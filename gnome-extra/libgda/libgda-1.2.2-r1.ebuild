@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-1.2.2-r1.ebuild,v 1.1 2005/10/26 18:32:37 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-1.2.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:06 chriswhite Exp $
 
-inherit eutils gnome2
+inherit autotools eutils gnome2
 
 DESCRIPTION="Gnome Database Access Library"
 HOMEPAGE="http://www.gnome-db.org/"
@@ -10,7 +10,7 @@ LICENSE="GPL-2 LGPL-2"
 
 IUSE="berkdb doc firebird freetds ldap mdb mysql oci8 odbc postgres sqlite xbase"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
 
 RDEPEND=">=dev-libs/glib-2
 	dev-libs/libxml2
@@ -36,6 +36,7 @@ DEPEND="${RDEPEND}
 	doc? ( >=dev-util/gtk-doc-1 )"
 
 DOCS="AUTHORS ChangeLog NEWS README"
+USE_DESTDIR="1"
 
 # problems with parallel builds
 MAKEOPTS="${MAKEOPTS} -j1"
@@ -63,8 +64,6 @@ src_unpack() {
 	unpack "${A}"
 	cd "${S}"
 
-	gnome2_omf_fix doc/Makefile.in
-
 	# Fix syslog format string attack (bug #110467).
 	epatch ${FILESDIR}/${PN}-1.2-syslog_format_fix.patch
 	# Fix freetds API problems
@@ -73,10 +72,9 @@ src_unpack() {
 	# Fix compilation of the mdb provider
 	epatch ${FILESDIR}/${PN}-1.2.1-mdb_fix.patch
 
-	export WANT_AUTOMAKE=1.9
-	sed -n -e '/GTK_DOC_CHECK/,/dnl IT_PROG_INTLTOOL/p' aclocal.m4 > gtkdoc.m4
-	aclocal -I . || die "aclocal failed"
-	libtoolize --copy --force
-	autoconf || die "autoconf failed"
-	automake || die "automake failed"
+	sed -n -e '/GTK_DOC_CHECK/,/dnl IT_PROG_INTLTOOL/p' \
+		aclocal.m4 > gtkdoc.m4
+	AT_M4DIR="." eautoreconf
+
+	gnome2_omf_fix doc/Makefile.in
 }

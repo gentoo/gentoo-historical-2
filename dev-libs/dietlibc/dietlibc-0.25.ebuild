@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dietlibc/dietlibc-0.25.ebuild,v 1.1 2004/05/29 22:06:44 lv Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dietlibc/dietlibc-0.25.ebuild,v 1.1.1.1 2005/11/30 09:41:25 chriswhite Exp $
 
-inherit eutils flag-o-matic fixheadtails gcc
+inherit eutils flag-o-matic fixheadtails toolchain-funcs
 
 DESCRIPTION="A minimal libc"
 HOMEPAGE="http://www.fefe.de/dietlibc/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://kernel/linux/libs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha arm ~hppa ~amd64"
+KEYWORDS="x86 ppc sparc alpha arm hppa amd64"
 IUSE=""
 
 DEPEND=">=sys-apps/sed-4"
@@ -20,7 +20,9 @@ src_unpack() {
 	cd ${S}
 
 	epatch "${FILESDIR}/0.24-dirent-prototype.patch"
-	[ $(gcc-major-version) -eq 3 ] && epatch "${FILESDIR}/gcc-33.patch"
+	[ $(gcc-major-version) -eq 3 ] \
+		&& epatch ${FILESDIR}/gcc-33.patch \
+		&& epatch ${FILESDIR}/${PV}-gcc34.patch
 
 	# depending on glibc to provide guard symbols, does not work with -nostdlib building
 	filter-flags -fstack-protector -fstack-protector-all

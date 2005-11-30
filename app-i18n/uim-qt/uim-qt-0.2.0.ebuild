@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim-qt/uim-qt-0.2.0.ebuild,v 1.1 2004/10/19 14:46:09 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim-qt/uim-qt-0.2.0.ebuild,v 1.1.1.1 2005/11/30 09:40:12 chriswhite Exp $
 
-inherit eutils
+inherit eutils qt3
 
 DESCRIPTION="Qt immodules input method framework plugin for UIM"
 HOMEPAGE="http://freedesktop.org/Software/UimQt"
@@ -10,11 +10,19 @@ SRC_URI="http://freedesktop.org/~kzk/${PN}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 DEPEND=">=app-i18n/uim-0.4.4
-	>=x11-libs/qt-3.3.3-r1"
+	!>=app-i18n/uim-0.4.6-r2
+	$(qt_min_version 3.3.3-r1)"
+
+pkg_setup() {
+	einfo
+	einfo "UimQt is now part of uim distribution since uim-0.4.6. Please consider"
+	einfo "switching to >=uim-0.4.6 (set immqt or immqt-bc in your USE)."
+	einfo
+}
 
 src_compile() {
 	addwrite /usr/qt/3/etc/settings

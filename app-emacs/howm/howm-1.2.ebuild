@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/howm/howm-1.2.ebuild,v 1.1 2004/08/26 12:08:59 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/howm/howm-1.2.ebuild,v 1.1.1.1 2005/11/30 09:41:07 chriswhite Exp $
 
 inherit elisp
 
@@ -10,12 +10,12 @@ SRC_URI="http://howm.sourceforge.jp/a/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
 IUSE=""
 
 DEPEND="virtual/emacs"
 
-SITEFILE="50howm-gentoo.el"
+SITEFILE="55howm-gentoo.el"
 
 src_compile() {
 	econf --with-docdir=/usr/share/doc/${P} || die

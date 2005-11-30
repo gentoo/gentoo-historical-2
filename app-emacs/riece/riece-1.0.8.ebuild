@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/riece/riece-1.0.8.ebuild,v 1.1 2005/03/28 09:29:41 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/riece/riece-1.0.8.ebuild,v 1.1.1.1 2005/11/30 09:41:08 chriswhite Exp $
 
 inherit elisp
 

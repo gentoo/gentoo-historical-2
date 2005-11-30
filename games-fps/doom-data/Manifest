@@ -1,3 +1,4 @@
-MD5 05f6638b5e088f7907c7b8bdfd7b1cc1 doom-data-1.ebuild 463
-MD5 166590bc2f21d0db3c1d8c37cf0f0842 doom3_wad_132.zip?rev=1.1 338767
-MD5 1dc295be4491635b1546c955518b491d files/digest-doom-data-1 118
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 586657c5746006ff72f83d53da2ed8bd doom-data-1.ebuild 715
+MD5 da1ef7c5fb0f856f301557a6d608278a ChangeLog 733
+MD5 0920d5e9930b81ddde508b24d23595ff files/digest-doom-data-1 59

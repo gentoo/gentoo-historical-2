@@ -1,8 +1,33 @@
 # ChangeLog for dev-libs/dvxml
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvxml/ChangeLog,v 1.1 2003/10/28 22:21:47 pvdabeel Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvxml/ChangeLog,v 1.1.1.1 2005/11/30 09:41:29 chriswhite Exp $
 
-*dvxml-0.1.4 (28 oct 2003) dvxml-0.1.4.ebuild:
+*dvxml-0.1.4-r2 (20 May 2005)
+
+  20 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/dvxml-0.1.4-fix-underquoted-m4.diff, -dvxml-0.1.4-r1.ebuild,
+  +dvxml-0.1.4-r2.ebuild:
+  Revision bump; added patch to fix underquoted m4 defs.
+
+  13 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/dvxml-0.1.4-gentoo.diff, dvxml-0.1.4-r1.ebuild:
+  Remove DESTDIR patch as we sed out doc/ from SUBDIRS anyways.
+
+*dvxml-0.1.4-r1 (07 May 2005)
+
+  07 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/dvxml-0.1.4-gentoo.diff, +metadata.xml, +dvxml-0.1.4-r1.ebuild:
+  Revision bump; only install html docs if USE=doc and even then at least
+  install them in the correct place. Added patch to respect DESTDIR and remove
+  doc from SUBDIRS. Added metadata.xml.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> dvxml-0.1.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> dvxml-0.1.4.ebuild:
+  don't assign to A; header fix
+
+*dvxml-0.1.4 (28 oct 2003)
  
 <pvdabeel@gentoo.org> Pieter Van den Abeele - created dvxml ebuild
 

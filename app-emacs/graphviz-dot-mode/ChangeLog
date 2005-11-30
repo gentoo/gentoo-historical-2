@@ -1,6 +1,10 @@
 # ChangeLog for app-emacs/graphviz-dot-mode
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/graphviz-dot-mode/ChangeLog,v 1.1 2003/09/21 02:23:21 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/graphviz-dot-mode/ChangeLog,v 1.1.1.1 2005/11/30 09:41:15 chriswhite Exp $
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org>
+  graphviz-dot-mode-0.2.ebuild:
+  Marked ~ppc.
 
 *graphviz-dot-mode-0.2 (20 Sep 2003)
 

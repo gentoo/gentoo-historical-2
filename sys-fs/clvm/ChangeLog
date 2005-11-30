@@ -1,6 +1,35 @@
 # ChangeLog for sys-fs/clvm
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/clvm/ChangeLog,v 1.1 2005/03/25 02:32:08 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/clvm/ChangeLog,v 1.1.1.1 2005/11/30 09:44:19 chriswhite Exp $
+
+  17 Nov 2005; Christian Zoffoli <xmerlin@gentoo.org> clvm-2.01.09.ebuild:
+  Fixed dependency. Closed bug #110814.
+
+  12 Sep 2005; Christian Zoffoli <xmerlin@gentoo.org> clvm-2.01.09.ebuild:
+  fixed cman dep.
+
+  14 Jul 2005; Christian Zoffoli <xmerlin@gentoo.org> clvm-2.01.09.ebuild:
+  removed static stuff. Closed bug #98530.
+
+  06 Jul 2005; Christian Zoffoli <xmerlin@gentoo.org> clvm-2.01.09.ebuild:
+  temporary removed gulm dependency.
+
+*clvm-2.01.09 (01 Jul 2005)
+
+  01 Jul 2005; Christian Zoffoli <xmerlin@gentoo.org> -clvm-2.00.33.ebuild,
+  +clvm-2.01.09.ebuild:
+  clvm-2.01.09 added to portage, removed old ebuild
+
+  26 Mar 2005; Christian Zoffoli <xmerlin@gentoo.org> clvm-2.00.33.ebuild:
+  fixed url
+
+  25 Mar 2005; Sven Wegener <swegener@gentoo.org> clvm-2.00.33.ebuild:
+  Fixed invalid atoms in *DEPEND. Use MY_P. Install initscript in correct
+  location.
+
+  25 Mar 2005; Christian Zoffoli <xmerlin@gentoo.org> :
+  improved init script (added dm-mod loading, merged lvm2-start/stop routines),
+  removed old lvm2-start/stop scripts
 
 *clvm-2.00.33 (25 Mar 2005)
 

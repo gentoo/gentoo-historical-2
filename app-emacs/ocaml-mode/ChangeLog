@@ -1,6 +1,20 @@
 # ChangeLog for app-emacs/ocaml-mode
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ocaml-mode/ChangeLog,v 1.1 2004/04/11 12:16:30 mattam Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ocaml-mode/ChangeLog,v 1.1.1.1 2005/11/30 09:41:18 chriswhite Exp $
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> ocaml-mode-3.07.ebuild:
+  stable on amd64
+
+*ocaml-mode-3.08.1 (10 Sep 2004)
+
+  10 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> ocaml-mode-3.07.ebuild,
+  +ocaml-mode-3.08.1.ebuild:
+  Add latest version, move former one to stable.
+
+  03 Sep 2004; Tom Martin <slarti@gentoo.org> ocaml-mode-3.07.ebuild:
+  Marked ~amd64, resolves #58421. Thanks to Gabriel Ebner <ge@gabrielebner.at>
+  for reporting.
+
 
 *ocaml-mode-3.07 (11 Apr 2004)
 

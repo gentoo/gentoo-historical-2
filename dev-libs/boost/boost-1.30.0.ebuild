@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.30.0.ebuild,v 1.1 2003/05/17 05:50:03 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.30.0.ebuild,v 1.1.1.1 2005/11/30 09:42:04 chriswhite Exp $
 
 MY_V="${PV//\./_}"
 
@@ -10,14 +10,14 @@ HOMEPAGE="http://www.boost.org"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${MY_V}.tar.bz2"
 
 LICENSE="freedist"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ~ppc"
 SLOT="1"
 IUSE="icc"
 
 # This would be a good place for someone to figure out how to get
 # boost to build nicely with icc, as it's documented to be doable.
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 RDEPEND=">=dev-util/yacc-1.9.1-r1
 	>=dev-lang/python-2.2.1
 	icc? ( >=dev-lang/icc-7.1 )"
@@ -28,7 +28,7 @@ src_compile() {
 	local PYTHON_VERSION=$(/usr/bin/python -V 2>&1 | /usr/bin/cut -d . -f 2,3)
 	local BOOST_TOOLSET
 
-	if [ "`use icc`" ] ; then
+	if use icc ; then
 		BOOST_TOOLSET="intel-linux"
 	else
 		BOOST_TOOLSET="gcc"
@@ -39,7 +39,7 @@ src_compile() {
 	./build.sh ${BOOST_TOOLSET} || die "Failed to build bjam"
 	cd ${S}
 
-	if [ "`use icc`" ] ; then
+	if use icc ; then
 		./tools/build/jam_src/bin.linux${ARCH}/bjam -j2 \
 		-sBOOST_ROOT=${S} \
 		-sPYTHON_ROOT=/usr \

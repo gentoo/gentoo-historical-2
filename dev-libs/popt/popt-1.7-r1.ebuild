@@ -1,29 +1,36 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/popt/popt-1.7-r1.ebuild,v 1.1 2003/03/20 13:32:44 vladimir Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/popt/popt-1.7-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:03 chriswhite Exp $
 
-inherit libtool
+inherit libtool eutils flag-o-matic
 
 DESCRIPTION="Parse Options - Command line parser"
-SRC_URI="ftp://ftp.rpm.org/pub/rpm/dist/rpm-4.1.x/${P}.tar.gz"
 HOMEPAGE="http://www.rpm.org/"
+SRC_URI="ftp://ftp.rpm.org/pub/rpm/dist/rpm-4.1.x/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc alpha ~hppa arm"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 ppc-macos s390 sh sparc x86"
 IUSE="nls"
 
+RDEPEND=""
 DEPEND="nls? ( sys-devel/gettext )"
 
-src_compile() {
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
 	elibtoolize
-	local myconf="--with-gnu-ld"
-	use nls || myconf="${myconf} --disable-nls"
-	econf ${myconf}
-	make || die
+	epatch "${FILESDIR}"/${P}-missing-tests.patch
+	use nls || touch ../rpm.c
+}
+
+src_compile() {
+	use ppc-macos && append-ldflags -undefined dynamic_lookup
+	econf $(use_enable nls) || die
+	emake || die "emake failed"
 }
 
 src_install() {
-	einstall
-	dodoc ABOUT-NLS CHANGES README
+	make install DESTDIR="${D}" || die
+	dodoc CHANGES README
 }

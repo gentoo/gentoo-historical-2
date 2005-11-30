@@ -1,4 +1,4 @@
 
-;;; fake swank-loader.lisp file
+;; This file is NOT part of SLIME
 
-(require :swank)
+(asdf:oos 'asdf:load-op :swank)

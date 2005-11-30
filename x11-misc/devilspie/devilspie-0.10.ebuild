@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/devilspie/devilspie-0.10.ebuild,v 1.1 2005/06/13 13:49:55 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/devilspie/devilspie-0.10.ebuild,v 1.1.1.1 2005/11/30 09:40:50 chriswhite Exp $
 
 inherit eutils
 
@@ -10,9 +10,7 @@ SRC_URI="http://www.burtonini.com/computing/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~amd64"
-
-IUSE=""
+KEYWORDS="alpha amd64 ppc sparc x86"
 
 IUSE=""
 DEPEND=">=dev-util/pkgconfig-0.12.0
@@ -40,12 +38,14 @@ src_install() {
 	emake DESTDIR=${D} install || die "emake install failed"
 
 	dodoc AUTHORS ChangeLog README NEWS TODO \
-		devilspie-reference.html sample-config.xml devilspie.dtd
+		sample-config.xml devilspie.dtd
+
+	dohtml devilspie-reference.html
 }
 
 pkg_postinst() {
 	einfo
-	einfo "A sample config file has been installed in /usr/share/doc/${P}"
+	einfo "A sample config file has been installed in /usr/share/doc/${PF}"
 	einfo "as sample-config.xml.gz.  Also installed there is the DTD for"
 	einfo "the config file.  It is called devilspie.dtd.gz"
 	ewarn

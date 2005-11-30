@@ -1,17 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/w3/w3-4.0_pre47.ebuild,v 1.1 2002/11/01 02:52:02 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/w3/w3-4.0_pre47.ebuild,v 1.1.1.1 2005/11/30 09:41:13 chriswhite Exp $
 
-inherit elisp 
+inherit elisp
 
-IUSE=""
-
-DESCRIPTION="Emacs/W3 is a full-featured web browser written entirely in Emacs LISP"
+DESCRIPTION="full-featured web browser written entirely in Emacs LISP"
 HOMEPAGE="http://www.cs.indiana.edu/elisp/w3/docs.html"
 SRC_URI="ftp://ftp.ibiblio.org/pub/packages/editors/xemacs/emacs-w3/${P/_pre/pre.}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
 DEPEND="virtual/emacs"
 

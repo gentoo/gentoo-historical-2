@@ -1,6 +1,11 @@
-# ChangeLog for sys-apps/cpudyn
+# ChangeLog for sys-power/cpudyn
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/cpudyn/ChangeLog,v 1.1 2005/03/14 22:37:27 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/cpudyn/ChangeLog,v 1.1.1.1 2005/11/30 09:42:41 chriswhite Exp $
+
+*cpudyn-1.0.1 (13 Jul 2005)
+
+  13 Jul 2005; Jonathan Smith <smithj@gentoo.org> +cpudyn-1.0.1.ebuild:
+  #88533: version bump
 
 *cpudyn-1.0 (14 Mar 2005)
 *cpudyn-0.99.0 (14 Mar 2005)

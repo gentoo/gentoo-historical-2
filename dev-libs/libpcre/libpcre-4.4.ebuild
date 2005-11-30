@@ -1,34 +1,41 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-4.4.ebuild,v 1.1 2003/11/19 18:22:46 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpcre/libpcre-4.4.ebuild,v 1.1.1.1 2005/11/30 09:42:00 chriswhite Exp $
 
-inherit libtool
+inherit libtool flag-o-matic eutils
+
+DESCRIPTION="Perl-compatible regular expression library"
+HOMEPAGE="http://www.pcre.org/"
+SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PV}.tar.bz2"
+
+LICENSE="as-is"
+SLOT="3"
+KEYWORDS="x86 ~ppc sparc alpha arm hppa amd64 ~ia64 ppc64 s390 mips"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 S=${WORKDIR}/pcre-${PV}
-DESCRIPTION="Perl-compatible regular expression library"
-SRC_URI="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-${PV}.tar.bz2"
-HOMEPAGE="http://www.pcre.org/"
 
-SLOT="3"
-LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64"
-
-DEPEND="virtual/glibc"
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/pcre-4.4-uclibc-tuple.patch
+	epatch ${FILESDIR}/pcre-4.2-link.patch
+}
 
 src_compile() {
-	if [ "${ARCH}" = "amd64" ]
-	then
-		append-flags -fPIC
-	fi
+	# position-independent code must used for all shared objects.
+	append-flags -fPIC
 	elibtoolize
 	econf --enable-utf8 || die
 	make || die
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
 
-	dodoc AUTHORS COPYING INSTALL LICENCE NON-UNIX-USE
+	dodoc AUTHORS INSTALL NON-UNIX-USE
 	dodoc doc/*.txt
 	dodoc doc/Tech.Notes
 	dohtml -r doc

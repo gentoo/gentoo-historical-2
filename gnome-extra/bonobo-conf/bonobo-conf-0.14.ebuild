@@ -1,16 +1,20 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Mikael Hallendal <hallski@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/bonobo-conf/bonobo-conf-0.14.ebuild,v 1.1 2001/11/08 12:08:47 hallski Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/bonobo-conf/bonobo-conf-0.14.ebuild,v 1.1.1.1 2005/11/30 09:40:55 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="nls"
+
 DESCRIPTION="Bonobo Configuration System"
 SRC_URI="ftp://ftp.gnome.org/pub/GNOME/unstable/sources/${PN}/${P}.tar.gz
 	 ftp://ftp.ximian.com/pub/source/evolution/${P}.tar.gz"
 HOMEPAGE="http://www.gnome.org/"
 
-RDEPEND=">=dev-libs/glib-1.2.0
-	 >=x11-libs/gtk+-1.2.10-r4
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc"
+
+RDEPEND="=dev-libs/glib-1.2*
+	 =x11-libs/gtk+-1.2*
 	 >=gnome-base/bonobo-1.0.15
 	 >=gnome-base/oaf-0.6.6-r1"
 
@@ -21,7 +25,7 @@ DEPEND="${RDEPEND}
 src_compile() {
 	local myconf
 
-	if [ -z "`use nls`" ] ; then
+	if ! use nls ; then
 		myconf="--disable-nls"
 	fi
 

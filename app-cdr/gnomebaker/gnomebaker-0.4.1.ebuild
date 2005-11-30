@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/gnomebaker/gnomebaker-0.4.1.ebuild,v 1.1 2005/08/17 14:24:35 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/gnomebaker/gnomebaker-0.4.1.ebuild,v 1.1.1.1 2005/11/30 09:42:26 chriswhite Exp $
 
 inherit gnome2
 

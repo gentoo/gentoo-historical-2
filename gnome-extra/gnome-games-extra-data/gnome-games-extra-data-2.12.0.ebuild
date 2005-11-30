@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games-extra-data/gnome-games-extra-data-2.12.0.ebuild,v 1.1 2005/09/17 23:50:32 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-games-extra-data/gnome-games-extra-data-2.12.0.ebuild,v 1.1.1.1 2005/11/30 09:41:02 chriswhite Exp $
 
 inherit gnome2
 

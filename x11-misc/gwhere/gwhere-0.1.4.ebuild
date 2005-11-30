@@ -1,12 +1,12 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gwhere/gwhere-0.1.4.ebuild,v 1.1 2004/07/03 14:06:41 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gwhere/gwhere-0.1.4.ebuild,v 1.1.1.1 2005/11/30 09:40:25 chriswhite Exp $
 
 DESCRIPTION="Removable media cataloger made with GTK+"
 HOMEPAGE="http://www.gwhere.org/"
 SRC_URI="http://www.gwhere.org/download/source/${P}.tar.gz"
 
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha ppc ~sparc x86"
 LICENSE="GPL-2"
 SLOT="0"
 

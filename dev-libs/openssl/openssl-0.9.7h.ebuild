@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/openssl-0.9.7h.ebuild,v 1.1 2005/10/12 05:20:02 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openssl/openssl-0.9.7h.ebuild,v 1.1.1.1 2005/11/30 09:41:54 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 

@@ -1,6 +1,97 @@
 # ChangeLog for dev-libs/bglibs
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/bglibs/ChangeLog,v 1.1 2002/06/26 21:45:28 bangert Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/bglibs/ChangeLog,v 1.1.1.1 2005/11/30 09:41:51 chriswhite Exp $
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> bglibs-1.019-r1.ebuild:
+  Mark 1.019-r1 stable on alpha
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  bglibs-1.019-r1.ebuild:
+  Stable on ppc.
+
+  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  bglibs-1.019-r1.ebuild:
+  Stable on sparc
+
+  30 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> bglibs-1.019-r1.ebuild:
+  Move to stable x86.
+
+*bglibs-1.019-r1 (05 Jun 2005)
+
+  05 Jun 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +bglibs-1.019-r1.ebuild:
+  Bug #90674, move include files out of /usr/lib/bglibs/include and use
+  symlinks to make life sane instead.
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> bglibs-1.001.ebuild,
+  bglibs-1.009.ebuild, bglibs-1.009-r1.ebuild, bglibs-1.011.ebuild,
+  bglibs-1.017.ebuild, bglibs-1.019.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> bglibs-1.017.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*bglibs-1.019 (23 Nov 2004)
+
+  23 Nov 2004; Robin H. Johnson <robbat2@gentoo.org> +bglibs-1.019.ebuild:
+  Bug #72203, version bump.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> bglibs-1.017.ebuild:
+  Stable on amd64.
+
+  10 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> bglibs-1.017.ebuild:
+  Stable on alpha.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> bglibs-1.017.ebuild:
+  Stable on sparc.
+
+  26 Sep 2004; Robin H. Johnson <robbat2@gentoo.org> bglibs-1.017.ebuild:
+  Stable on x86.
+
+*bglibs-1.017 (21 Aug 2004)
+
+  21 Aug 2004; Robin H. Johnson <robbat2@gentoo.org> +bglibs-1.017.ebuild:
+  Bug #61215, version bump.
+
+  19 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  add metadata.xml
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> bglibs-1.001.ebuild,
+  bglibs-1.009-r1.ebuild, bglibs-1.009.ebuild, bglibs-1.011.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 May 2004; Bryan Østergaard <kloeri@gentoo.org> bglibs-1.011.ebuild:
+  Stable on alpha.
+
+  07 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> bglibs-1.001.ebuild,
+  bglibs-1.009-r1.ebuild, bglibs-1.009.ebuild, bglibs-1.011.ebuild:
+  fix keywords and copyright headers
+
+*bglibs-1.011 (25 Dec 2003)
+
+  25 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> bglibs-1.011.ebuild:
+  version bump per bug #35034
+
+  04 Nov 2003; Robin H. Johnson <robbat2@gentoo.org> bglibs-1.009-r1.ebuild:
+  fix compile bug in tests on new gcc3.3.2
+
+*bglibs-1.009-r1 (22 Sep 2003)
+
+  22 Sep 2003; Robin H. Johnson <robbat2@gentoo.org> bglibs-1.009-r1.ebuild:
+  fix head coreutils issue, install more docs, improve build process
+
+*bglibs-1.009 (23 Apr 2003)
+
+  23 Apr 2003; Seth Chandler <sethbc@gentoo.org>; bglibs-1.009.ebuild:
+  version bumpthanks to Thilo Bangert <bangert@gentoo.org>
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  10 Aug 2002; Nicholas Jones <carpaski@gentoo.org> :
+	Forced MAKEOPTS="" to prevent parallel makes.
 
 *bglibs-1.001 (26 Jun 2002)
 

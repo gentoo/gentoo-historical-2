@@ -1,18 +1,19 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# John Stalker <stalker@math.princeton.edu>
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/accessx/accessx-0951.ebuild,v 1.1 2004/07/03 15:48:08 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/accessx/accessx-0951.ebuild,v 1.1.1.1 2005/11/30 09:40:18 chriswhite Exp $
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="Interface to the XKEYBOARD extension in X11"
 SRC_URI="http://cmos-eng.rehab.uiuc.edu/accessx/software/${PN}${PV}.tar.gz"
 HOMEPAGE="http://cmos-eng.rehab.uiuc.edu/accessx/"
 
-DEPEND="virtual/x11"
+DEPEND="virtual/x11
+		dev-lang/tk"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="x86 sparc ppc"
+IUSE=""
 
 src_compile() {
 	make || die
@@ -21,5 +22,5 @@ src_compile() {
 src_install () {
 	into /usr
 	dobin accessx ax || die
-	dodoc README INSTALL CHANGES
+	dodoc README CHANGES
 }

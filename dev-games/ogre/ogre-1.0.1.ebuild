@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/ogre/ogre-1.0.1.ebuild,v 1.1 2005/05/03 22:19:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/ogre/ogre-1.0.1.ebuild,v 1.1.1.1 2005/11/30 09:44:37 chriswhite Exp $
 
 inherit eutils libtool
 
@@ -10,16 +10,17 @@ SRC_URI="mirror://sourceforge/ogre/${PN}-linux_osx-v${PV//./-}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86"
 IUSE="cegui cg devil double-precision doc gtk opengl openexr sdl threads"
 
 RDEPEND=">=dev-libs/zziplib-0.13.36
 	=media-libs/freetype-2*
+	threads? ( dev-libs/boost )
 	cegui? ( >=dev-games/cegui-0.2.0 )
 	devil? ( >=media-libs/devil-1.5 )
 	openexr? ( >=media-libs/openexr-1.2 )
 	sdl? ( >=media-libs/libsdl-1.2.6 )
-	!sdl? ( !opengl (
+	!sdl? ( !opengl? (
 		=dev-cpp/gtkglextmm-1.0*
 		=dev-cpp/libglademm-2.2*
 	) )
@@ -39,6 +40,7 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-autotools.patch
+	sed -i 's:libtoolize:libtoolize --copy:' bootstrap
 	./bootstrap || die "bootstrap failed"
 }
 

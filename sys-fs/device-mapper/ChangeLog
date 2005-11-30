@@ -1,6 +1,88 @@
-# ChangeLog for sys-libs/device-mapper
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/device-mapper/ChangeLog,v 1.1 2005/03/01 22:45:26 vapier Exp $
+# ChangeLog for sys-fs/device-mapper
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/device-mapper/ChangeLog,v 1.1.1.1 2005/11/30 09:44:28 chriswhite Exp $
+
+*device-mapper-1.01.05 (05 Nov 2005)
+
+  05 Nov 2005; Mike Frysinger <vapier@gentoo.org>
+  +device-mapper-1.01.05.ebuild:
+  Version bump #111446 by Zac Slade.
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  device-mapper-1.01.03.ebuild:
+  Mark 1.01.03 stable on alpha
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  device-mapper-1.01.03.ebuild:
+  Stable on ppc.
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  device-mapper-1.01.03.ebuild:
+  Stable on ppc64
+
+  22 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  device-mapper-1.01.03.ebuild:
+  Stable on sparc
+
+*device-mapper-1.01.04 (19 Aug 2005)
+
+  19 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +device-mapper-1.01.04.ebuild:
+  Version bump #103064 by Christopher Culver.
+
+  08 Aug 2005; Aaron Walker <ka0ttic@gentoo.org>
+  device-mapper-1.01.03.ebuild:
+  Added ~mips for bug 89529.
+
+*device-mapper-1.01.03 (24 Jul 2005)
+
+  24 Jul 2005; Martin Schlemmer <azarah@gentoo.org>
+  +device-mapper-1.01.03.ebuild:
+  Update version.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  device-mapper-1.01.00.ebuild:
+  Stable on ppc.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  device-mapper-1.01.00.ebuild:
+  Stable on ppc64
+
+  23 May 2005; Jason Wever <weeve@gentoo.org> device-mapper-1.01.00.ebuild:
+  Stable on SPARC.
+
+*device-mapper-1.01.01 (21 May 2005)
+
+  21 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +device-mapper-1.01.01.ebuild:
+  Version bump #93409 by Carsten Frewert.
+
+  14 May 2005; Guy Martin <gmsoft@gentoo.org> device-mapper-1.01.00.ebuild:
+  Stable on hppa.
+
+  12 May 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  device-mapper-1.01.00.ebuild:
+  Stable on amd64.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org>
+  device-mapper-1.01.00.ebuild:
+  stable on ia64
+
+  06 May 2005; Martin Schlemmer <azarah@gentoo.org>
+  device-mapper-1.01.00.ebuild:
+  Stable on x86.
+
+*device-mapper-1.01.00 (01 Mar 2005)
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +device-mapper-1.01.00.ebuild:
+  Version bumpage #80276 by Martin Jackson.
+
+*device-mapper-1.00.21 (01 Mar 2005)
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +device-mapper-1.00.21.ebuild:
+  Version bumpage #80276 by Martin Jackson.
 
   23 Feb 2005; Martin Schlemmer <azarah@gentoo.org> files/dm-start.sh:
   Fix error printing.  Remove sourcing of functions.sh.

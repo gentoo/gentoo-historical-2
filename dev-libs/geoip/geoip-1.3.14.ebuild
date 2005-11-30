@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/geoip/geoip-1.3.14.ebuild,v 1.1 2005/11/13 20:51:24 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/geoip/geoip-1.3.14.ebuild,v 1.1.1.1 2005/11/30 09:41:29 chriswhite Exp $
 
 inherit flag-o-matic
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xfractint/xfractint-20.3.01.ebuild,v 1.1 2004/04/25 14:12:05 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xfractint/xfractint-20.3.01.ebuild,v 1.1.1.1 2005/11/30 09:40:42 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
 MY_P=xfractint-20.03p01
 
@@ -11,16 +11,14 @@ DESCRIPTION="The best fractal generator for X."
 HOMEPAGE="http://www.fractint.org"
 SRC_URI="http://dev.gentoo.org/~spock/portage/distfiles/${MY_P}.tar.bz2"
 
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 sparc ~ppc ~amd64"
 SLOT="0"
 LICENSE="freedist"
 IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-libs/ncurses-5.1
 	virtual/x11"
-
-RDEPEND=$DEPEND
 
 src_unpack() {
 	unpack ${A}
@@ -30,9 +28,10 @@ src_unpack() {
 src_compile() {
 	cd ${S}
 	cp Makefile Makefile.orig
+	replace-flags "-funroll-all-loops" "-funroll-loops"
 	sed -e "s:CFLAGS = :CFLAGS = $CFLAGS :" Makefile.orig >Makefile
 
-	MAKEOPTS='-j1' emake
+	emake -j1
 }
 
 src_install() {

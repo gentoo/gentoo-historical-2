@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/root-portal/root-portal-0.5.2.ebuild,v 1.1 2005/05/30 17:24:37 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/root-portal/root-portal-0.5.2.ebuild,v 1.1.1.1 2005/11/30 09:40:32 chriswhite Exp $
 
 inherit gnome2 debug
 
@@ -10,11 +10,9 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
 IUSE=""
 DOC="PACKAGING README NEWS ChangeLog BUGS AUTHORS README.help TODO"
-
-USE_DESTDIR="1"
 
 RDEPEND="virtual/x11
 	>=x11-libs/gtk+-2
@@ -26,3 +24,8 @@ RDEPEND="virtual/x11
 DEPEND="${RDEPEND}
 	app-text/scrollkeeper
 	dev-util/pkgconfig"
+
+src_install() {
+	# stupid sandboxing
+	einstall || die "einstall failed"
+}

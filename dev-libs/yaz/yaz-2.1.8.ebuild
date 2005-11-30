@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/yaz/yaz-2.1.8.ebuild,v 1.1 2005/07/03 18:26:33 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/yaz/yaz-2.1.8.ebuild,v 1.1.1.1 2005/11/30 09:41:59 chriswhite Exp $
 
 inherit eutils
 

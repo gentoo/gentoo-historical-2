@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/fbpanel/fbpanel-4.3.ebuild,v 1.1 2005/06/01 17:14:00 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/fbpanel/fbpanel-4.3.ebuild,v 1.1.1.1 2005/11/30 09:40:44 chriswhite Exp $
+
+inherit toolchain-funcs
 
 DESCRIPTION="fbpanel is a light-weight X11 desktop panel"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
@@ -8,17 +10,23 @@ HOMEPAGE="http://fbpanel.sourceforge.net/"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="alpha ~amd64 ppc x86"
 IUSE=""
 
 DEPEND=">=x11-libs/gtk+-2
 	>=sys-apps/sed-4"
 RDEPEND=">=x11-libs/gtk+-2"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	sed -i -e '/^CFLAGS/d;/^CC/d' Makefile.common
+}
+
 src_compile() {
 	# econf not happy here
 	./configure --prefix=/usr || die "Configure failed."
-	emake || die "Make failed."
+	emake CHATTY=1 CC=$(tc-getCC) || die "Make failed."
 }
 
 src_install () {

@@ -1,6 +1,27 @@
 # ChangeLog for sys-fs/lufis
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lufis/ChangeLog,v 1.1 2004/11/14 15:17:07 genstef Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lufis/ChangeLog,v 1.1.1.1 2005/11/30 09:44:27 chriswhite Exp $
+
+  20 Feb 2005; Stefan Schweizer <genstef@gentoo.org> lufis-0.3.ebuild:
+  ~amd64 thanks to lares and cricalix in #gentoo-amd64
+
+  21 Feb 2005; Joseph Jezak <josejx@gentoo.org> lufis-0.3.ebuild:
+  Marked ppc stable.
+
+*lufis-0.3 (05 Feb 2005)
+
+  05 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/lufis-allow-uid-and-gid-addon.patch, +lufis-0.3.ebuild:
+  Version bump, added a patch from bug 75825 by me.
+
+  23 Jan 2005; <avatar@gentoo.org> :
+  Added to ~ppc.
+
+  15 Jan 2005; Stefan Schweizer <genstef@gentoo.org> lufis-0.2.ebuild:
+  Stable x86
+
+  14 Dec 2004; Stefan Schweizer <genstef@gentoo.org> lufis-0.2.ebuild:
+  Changing to allow latest lufs installed parallel.
 
 *lufis-0.2 (14 Nov 2004)
 

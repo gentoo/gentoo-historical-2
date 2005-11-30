@@ -1,0 +1,4 @@
+MD5 17ae50d624ce3495165629aa1c12e9dd ChangeLog 2550
+MD5 80397a9b5d8c3313bcbdbe99342f779a popt-1.7-r1.ebuild 912
+MD5 0933441e77d0a43c85e3d1471bbc2633 files/digest-popt-1.7-r1 60
+MD5 65e91b3cbc5d3c136d141bae0629fc6a files/popt-1.7-missing-tests.patch 552

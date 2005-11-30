@@ -1,26 +1,19 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Holger Brueckner <darks@fet.org>
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/afsdoc/afsdoc-3.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:37 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="The AFS 3 distributed file system  targets the issues  critical to
-distributed computing environments. AFS performs exceptionally well,
-both within small, local work groups of machines and across wide-area
-configurations in support of large, collaborative efforts. AFS provides
-an architecture geared towards system management, along with the tools
-to perform important management tasks. For a user, AFS is a familiar yet
-extensive UNIX environment for accessing files easily and quickly."
-
+DESCRIPTION="AFS 3 distributed file system"
 SRC_URI="http://www.openafs.org/dl/openafs/1.0.3/afs-3.6-doc.tar.gz"
 HOMEPAGE="http://www.openafs.org/"
 
-src_unpack() {
- echo
-}
+SLOT="0"
+LICENSE="IPL-1"
+IUSE=""
+KEYWORDS="x86 ppc sparc amd64"
 
-src_install () {
-  dodir /usr/share/doc/${PF} 
-  tar -zxf ${DISTDIR}/${A} -C ${D}/usr/share/doc/${PF}   
-  prepalldocs
-}
+DEPEND=""
 
+src_install() {
+	dodir /usr/share/doc
+	mv ${WORKDIR}/afs-3.6-doc ${D}/usr/share/doc
+}

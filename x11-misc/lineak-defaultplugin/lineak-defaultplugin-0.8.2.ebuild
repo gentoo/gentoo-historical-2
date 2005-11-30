@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-defaultplugin/lineak-defaultplugin-0.8.2.ebuild,v 1.1 2004/11/29 20:07:15 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-defaultplugin/lineak-defaultplugin-0.8.2.ebuild,v 1.1.1.1 2005/11/30 09:40:51 chriswhite Exp $
 
 MY_PV=${PV/_/}
 MY_P=${PN/-/_}-${MY_PV}

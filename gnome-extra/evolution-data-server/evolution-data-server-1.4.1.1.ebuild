@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-1.4.1.1.ebuild,v 1.1 2005/11/05 05:14:14 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-1.4.1.1.ebuild,v 1.1.1.1 2005/11/30 09:41:03 chriswhite Exp $
 
 inherit eutils gnome2
 

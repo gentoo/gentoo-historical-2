@@ -1,9 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/ebookmerge/ebookmerge-0.6.ebuild,v 1.1 2005/07/04 21:54:16 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/ebookmerge/ebookmerge-0.6.ebuild,v 1.1.1.1 2005/11/30 09:42:29 chriswhite Exp $
 
 DESCRIPTION="Script to manage eBooks in Gentoo."
-HOMEPAGE="http://www.josealberto.org/"
+HOMEPAGE="http://www.josealberto.org/blog/?p=35"
 
 SRC_URI="mirror://gentoo/${P}.bz2"
 
@@ -16,13 +16,18 @@ KEYWORDS="~x86 ~ppc"
 DEPEND="app-shells/bash"
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${P}
+S=${WORKDIR}
 
 src_install() {
-	dobin ebookmerge.sh
+	newbin ${P} ebookmerge.sh
 }
 
 pkg_postinst() {
+	echo
 	einfo "Need help? just run: "
 	einfo "ebookmerge.sh -h"
+	echo
+	einfo "The first you must run is: "
+	einfo "ebookmerge.sh -r"
+	echo
 }

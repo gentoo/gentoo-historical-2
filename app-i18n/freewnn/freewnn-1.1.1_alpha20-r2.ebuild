@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/freewnn/freewnn-1.1.1_alpha20-r2.ebuild,v 1.1 2004/07/22 15:35:41 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/freewnn/freewnn-1.1.1_alpha20-r2.ebuild,v 1.1.1.1 2005/11/30 09:39:58 chriswhite Exp $
 
-inherit eutils gnuconfig
+inherit eutils
 
 MY_P="FreeWnn-${PV/_alpha/-a0}"
 
@@ -30,16 +30,14 @@ src_unpack() {
 }
 
 src_compile() {
-	gnuconfig_update
-	get_number_of_jobs
-
 	econf \
 		--disable-cWnn \
 		--disable-kWnn \
 		--without-termcap \
-		`use_with X x` \
-		`use_with ipv6` || die "./configure failed"
-	emake || die
+		$(use_with X x) \
+		$(use_with ipv6) \
+		|| die "./configure failed"
+	emake -j1 || die
 }
 
 src_install() {

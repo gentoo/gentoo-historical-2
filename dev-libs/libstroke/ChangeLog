@@ -1,8 +1,50 @@
 # ChangeLog for dev-libs/libstroke
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libstroke/ChangeLog,v 1.1 2002/02/01 21:53:11 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libstroke/ChangeLog,v 1.1.1.1 2005/11/30 09:41:52 chriswhite Exp $
 
+  14 Nov 2005; <plasmaroo@gentoo.org> libstroke-0.5.1.ebuild,
+  +files/libstroke-0.5.1-m4_syntax.patch:
+  Add m4 fixes by James Rowe, bug #109329.
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> libstroke-0.4.ebuild,
+  libstroke-0.5.1.ebuild:
+  Typo in DESCRIPTION: Guesture -> Gesture. Bug 59717.
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> libstroke-0.5.1.ebuild:
+  stable on ppc64, bug #57040
+
+  30 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; libstroke-0.4.ebuild,
+  libstroke-0.5.1.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+  24 Mar 2004; Jason Wever <weeve@gentoo.org> libstroke-0.5.1.ebuild:
+  Stable on sparc.
+
+  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> libstroke-0.5.1.ebuild :
+  AMD64 keywords.
+
+  15 Oct 2003; Tavis Ormandy <taviso@gentoo.org> libstroke-0.5.1.ebuild:
+  fvwm appears to be the only application in portage depending
+  on libstroke, and works perfectly with 0.5.1. marking stable on 
+  alpha and x86.
+
+*libstroke-0.5.1 (25 Jun 2003)
+
+  25 Jun 2003; Martin Holzer <mholzer@gentoo.org> libstroke-0.5.1.ebuild:
+  Version bumped. Closes #23477.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *libstroke-0.4 (1 Feb 2002)
+
+  03 Apr 2003; Graham Forest <vladimir@gentoo.org> libstroke-0.4.ebuild:
+  set ~ppc in keywords
+
+  09 Mar 2003; Aron Griffis <agriffis@gentoo.org> libstroke-0.4.ebuild:
+  Mark stable on alpha
+
+  13 Feb 2003; Aron Griffis <agriffis@gentoo.org> libstroke-0.4.ebuild :
+  Add ~alpha to KEYWORDS
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

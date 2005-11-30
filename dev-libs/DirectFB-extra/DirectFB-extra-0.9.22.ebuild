@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/DirectFB-extra/DirectFB-extra-0.9.22.ebuild,v 1.1 2005/03/02 01:25:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/DirectFB-extra/DirectFB-extra-0.9.22.ebuild,v 1.1.1.1 2005/11/30 09:41:29 chriswhite Exp $
 
 inherit eutils
 
@@ -10,16 +10,18 @@ SRC_URI="http://directfb.org/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc -sparc ~x86"
+KEYWORDS="amd64 ppc -sparc x86"
 IUSE="mmx imlib quicktime mpeg flash xine"
 
-DEPEND=">=dev-libs/DirectFB-${PV}*
+RDEPEND=">=dev-libs/DirectFB-${PV}
 	imlib? ( media-libs/imlib2 )
 	quicktime? ( virtual/quicktime )
 	mpeg? ( media-libs/libmpeg3 )
 	flash? ( media-libs/libflash )
 	xine? ( media-libs/xine-lib )"
 #	avi? ( media-video/avifile )
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
 src_unpack() {
 	unpack ${A}
@@ -27,6 +29,7 @@ src_unpack() {
 	sed -i \
 		-e 's:libmpeg3\.h:libmpeg3/libmpeg3.h:g' \
 		configure interfaces/IDirectFBVideoProvider/idirectfbvideoprovider_libmpeg3.c
+	epatch ${FILESDIR}/${P}-endian.patch
 }
 
 src_compile() {

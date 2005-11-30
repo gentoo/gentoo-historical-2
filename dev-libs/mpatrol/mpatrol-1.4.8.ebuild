@@ -1,17 +1,20 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mpatrol/mpatrol-1.4.8.ebuild,v 1.1 2002/06/04 23:30:51 karltk Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/mpatrol/mpatrol-1.4.8.ebuild,v 1.1.1.1 2005/11/30 09:41:38 chriswhite Exp $
+
+IUSE="X"
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="A link library for controlling and tracing dynamic memory allocation. Attempts to diagnose run-time errors that are caused by misuse of dynamically allocated memory. Simple integration via a single header."
 SRC_URI="http://www.cbmamiga.demon.co.uk/mpatrol/files/${PN}_${PV}.tar.gz"
-HOMEPAGE="http://www.cbmamiga.demon.co.uk/mpatrol/index.html"
-LICENSE="GPL"
+HOMEPAGE="http://www.cbmamiga.demon.co.uk/mpatrol/"
+
 SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc"
+
 # To use X, mpatrol requires Motif
-DEPEND="virtual/glibc
-	x? ( openmotif )"
-RDEPEND="$DEPEND"
+DEPEND="X? ( x11-libs/openmotif )"
 
 src_compile() {
 	cd $S/build/unix
@@ -19,7 +22,7 @@ src_compile() {
 	sed 's:^OFLAGS.= -O3:OFLAGS = ${OPT_FLAGS}:' < Makefile.orig > Makefile
 	rm Makefile.orig
 
-	if [ "`use X`" ]; then
+	if use X; then
 		mv Makefile Makefile.orig
 		sed 's:^GUISUP.= false:GUISUP = true:' < Makefile.orig > Makefile
 		rm Makefile.orig

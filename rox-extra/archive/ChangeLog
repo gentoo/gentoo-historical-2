@@ -1,6 +1,17 @@
 # ChangeLog for rox-extra/archive
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/rox-extra/archive/ChangeLog,v 1.1 2004/12/01 16:12:04 sergey Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/rox-extra/archive/ChangeLog,v 1.1.1.1 2005/11/30 09:40:52 chriswhite Exp $
+
+*archive-2.0 (07 Oct 2005)
+
+  07 Oct 2005; Sergey Kuleshov <svyatogor@gentoo.org> +archive-2.0.ebuild:
+  New verion (2.0) added. Bug #104790
+
+  14 Aug 2005; Danny van Dyk <kugelfang@gentoo.org> archive-1.9.4.ebuild:
+  Marked ~amd64.
+
+  06 Mar 2005; Joseph Jezak <josejx@gentoo.org> archive-1.9.4.ebuild:
+  Marked ~ppc for bug #83706.
 
 *archive-1.9.4 (01 Dec 2004)
 

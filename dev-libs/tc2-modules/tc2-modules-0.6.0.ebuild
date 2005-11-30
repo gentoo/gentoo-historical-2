@@ -1,10 +1,9 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/tc2-modules/tc2-modules-0.6.0.ebuild,v 1.1.1.1 2005/11/30 09:41:50 chriswhite Exp $
 
 IUSE="static"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Modules for dev-libs/tc2."
 HOMEPAGE="http://tc2.sourceforge.net"
 SRC_URI="mirror://sourceforge/tc2/${P}.tar.gz"

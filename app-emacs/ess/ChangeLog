@@ -1,6 +1,54 @@
 # ChangeLog for app-emacs/ess
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ChangeLog,v 1.1 2004/03/14 09:06:06 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ChangeLog,v 1.1.1.1 2005/11/30 09:41:12 chriswhite Exp $
+
+  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org> ess-5.1.24.ebuild,
+  ess-5.2.2-r1.ebuild, ess-5.2.3.ebuild, ess-5.2.8.ebuild:
+  Changed cp -a to cp -pPR for non-GNU userlands; bug #103487.
+
+*ess-5.2.8 (30 Jun 2005)
+
+  30 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org> ess-5.2.3.ebuild,
+  +ess-5.2.8.ebuild:
+  New upstream version; Keywording ~amd64; Install Emacs Lisp source.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> ess-5.2.2-r1.ebuild:
+  Stable on ppc.
+
+  03 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> ess-5.2.2-r1.ebuild:
+  Stable on sparc
+
+*ess-5.2.3 (01 Nov 2004)
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> ess-5.2.2-r1.ebuild,
+  +ess-5.2.3.ebuild:
+  Version bumped. Marked 5.2.2-r1 stable on x86 and alpha.
+
+  31 Oct 2004; Jason Wever <weeve@gentoo.org> ess-5.1.24.ebuild:
+  Stable on sparc.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> ess-5.2.2-r1.ebuild:
+  Added to ~ppc.
+
+  01 Sep 2004; Tom Martin <slarti@gentoo.org> ess-5.2.2-r1.ebuild:
+  Marked ~amd64, resolving bug 61508. Thanks to Ivo Welch <ivo.welch@yale.edu>
+  for reporting.
+
+*ess-5.2.2-r1 (26 Aug 2004)
+
+  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +ess-5.2.2-r1.ebuild,
+  -ess-5.2.2.ebuild:
+  Fixed missing ../../etc/ess directory.
+
+*ess-5.2.2 (26 Aug 2004)
+
+  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> ess-5.1.24.ebuild,
+  +ess-5.2.2.ebuild:
+  Version bumped. SRC_URI and HOMEPAGE have bee changed. Marked
+  previous version stable on x86 and added to ~alpha.
+
+  10 May 2004; Jason Wever <weeve@gentoo.org> ess-5.1.24.ebuild:
+  Added ~sparc keyword to help resolve bug #50695.
 
 *ess-5.1.24 (14 Mar 2004)
 

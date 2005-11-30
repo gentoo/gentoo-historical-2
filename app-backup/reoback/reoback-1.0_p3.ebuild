@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/reoback/reoback-1.0_p3.ebuild,v 1.1 2005/09/02 12:32:47 lostlogic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/reoback/reoback-1.0_p3.ebuild,v 1.1.1.1 2005/11/30 09:42:42 chriswhite Exp $
 
 DESCRIPTION="Reoback Backup Solution"
 HOMEPAGE="http://reoback.sourceforge.net/"
@@ -29,9 +29,10 @@ src_unpack() {
 src_install() {
 	dosbin reoback.pl || die "dosbin"
 	insinto /etc/reoback
-	doins run_reoback.sh conf/* || die "doins conf"
-	fperms 750 /usr/sbin/reoback.pl /etc/reoback/run_reoback.sh
-
+	doins conf/* || die "doins conf"
+	fperms 750 /usr/sbin/reoback.pl
+	insinto /etc/cron.daily
+	doins run_reoback.sh
 	cd docs
 	dodoc BUGS CHANGES INSTALL MANUALS README TODO
 }

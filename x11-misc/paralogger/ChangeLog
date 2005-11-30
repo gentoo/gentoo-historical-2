@@ -1,6 +1,23 @@
 # ChangeLog for x11-misc/paralogger
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/paralogger/ChangeLog,v 1.1 2003/12/26 00:56:16 pyrania Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/paralogger/ChangeLog,v 1.1.1.1 2005/11/30 09:40:28 chriswhite Exp $
+
+  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
+  paralogger-1.0.3.ebuild:
+  Fixed dodoc not to install COPYING and/or INSTALL.
+
+  29 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  paralogger-1.0.3.ebuild:
+  mark ~ppc
+
+  05 Dec 2004; Markus Nigbur <pyrania@gentoo.org> paralogger-1.0.3.ebuild:
+  HOMEPAGE updated.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> paralogger-1.0.3.ebuild:
+  Add die following econf for bug 48950
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> paralogger-1.0.3.ebuild:
+  Marked stable.
 
 *paralogger-1.0.3 (26 Dec 2003)
 

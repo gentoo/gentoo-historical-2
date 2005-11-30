@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cryptlib/cryptlib-3.2.1.ebuild,v 1.1 2005/08/20 08:09:58 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cryptlib/cryptlib-3.2.1.ebuild,v 1.1.1.1 2005/11/30 09:42:14 chriswhite Exp $
 
 inherit versionator multilib
 

@@ -1,9 +1,39 @@
-# ChangeLog for app-admin/addpatches
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/ChangeLog,v 1.1 2003/03/08 20:56:57 pvdabeel Exp $
+# ChangeLog for dev-libs/xmlrpc-c
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/ChangeLog,v 1.1.1.1 2005/11/30 09:41:57 chriswhite Exp $
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> xmlrpc-c-0.9.9-r1.ebuild:
+  Mark 0.9.9-r1 stable on alpha
+
+  26 Jul 2005; Jared Hudson <jhhudso@gentoo.org> xmlrpc-c-1.2.ebuild:
+  Modified latest ebuild to force make -j1 since greater than -j1 fails to
+  compile
+
+  22 May 2005; Jared Hudson <jhhudso@gentoo.org> : Version bump.
+	
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  xmlrpc-c-0.9.9-r1.ebuild:
+  ~alpha keyword, bug 89340.
+
+  17 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  xmlrpc-c-0.9.9-r1.ebuild:
+  Fixed sandbox access violation, bug #82178
+
+  23 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/xmlrpc-c-gcc-3.4.patch, xmlrpc-c-0.9.9-r1.ebuild:
+  Fixed gcc-3.4 compile issues. Bug #64330
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmlrpc-c-0.9.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+*xmlrpc-c-0.9.9-r1; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+
+  16 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Fixes 47830
 
 *xmlrpc-c-0.9.9 (07 Mar 2003)
 
-  07 Mar 2002; Pieter Van den Abeele<pvdabeel@gentoo.org> :
+  07 Mar 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
 
   Created an ebuild - also tested on ppc

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.2.1-r1.ebuild,v 1.1 2005/08/20 09:05:53 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.2.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:17 chriswhite Exp $
 
 inherit eutils
 
@@ -20,6 +20,11 @@ RDEPEND="nls? ( sys-devel/gettext )
 src_unpack() {
 	unpack ${A}
 	epunt_cxx
+	epatch ${FILESDIR}/${P}-GNU-stack-fix.patch
+
+	# Fix info file to make subsequent index entry work
+	cd ${S}/doc
+	epatch ${FILESDIR}/${P}-info-entry-fix.patch
 }
 
 src_compile() {

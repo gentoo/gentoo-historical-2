@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mell/mell-1.0.0.ebuild,v 1.1 2003/12/05 09:27:33 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mell/mell-1.0.0.ebuild,v 1.1.1.1 2005/11/30 09:41:10 chriswhite Exp $
 
 inherit elisp
 
@@ -11,9 +11,8 @@ HOMEPAGE="http://taiyaki.org/elisp/mell/"
 SRC_URI="http://taiyaki.org/elisp/mell/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 alpha ~amd64 ppc ~ppc64"
 SLOT="0"
-S="${WORKDIR}/${P}"
 
 DEPEND="virtual/emacs"
 
@@ -30,6 +29,7 @@ src_install() {
 
 	einstall || die
 	elisp-site-file-install ${FILESDIR}/50mell-gentoo.el
+	dosed ${SITELISP}/init-mell.el || die "dosed failed"
 
 	dodoc [A-Z][A-Z]* ChangeLog
 

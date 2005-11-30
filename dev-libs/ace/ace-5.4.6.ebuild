@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ace/ace-5.4.6.ebuild,v 1.1 2005/07/30 01:52:58 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ace/ace-5.4.6.ebuild,v 1.1.1.1 2005/11/30 09:41:58 chriswhite Exp $
 
 inherit eutils
 

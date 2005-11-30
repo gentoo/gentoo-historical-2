@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/ps2-packer/ps2-packer-0.4.4.ebuild,v 1.1 2005/04/18 06:53:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/ps2-packer/ps2-packer-0.4.4.ebuild,v 1.1.1.1 2005/11/30 09:44:39 chriswhite Exp $
 
 DESCRIPTION="another ELF packer for the PS2"
 HOMEPAGE="http://ps2dev.org/kb.x?T=1061"

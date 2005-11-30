@@ -1,8 +1,7 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $ Header: $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/fluxbg/fluxbg-0.7.ebuild,v 1.1.1.1 2005/11/30 09:40:38 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="fluxbg is a tool for comfortable background changing."
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://fluxbg.sourceforge.net/"
@@ -10,12 +9,12 @@ HOMEPAGE="http://fluxbg.sourceforge.net/"
 IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
 
 DEPEND="virtual/x11
 	x11-misc/commonbox-utils
 	>=sys-devel/autoconf-2.52
-	>=dev-cpp/gtkmm-2.2.3"
+	=dev-cpp/gtkmm-2.2*"
 
 src_install () {
 	make install \

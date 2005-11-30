@@ -1,6 +1,6 @@
 # ChangeLog for sys-fs/gnomevfs-mount
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/gnomevfs-mount/ChangeLog,v 1.1 2005/03/10 15:24:07 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/gnomevfs-mount/ChangeLog,v 1.1.1.1 2005/11/30 09:44:27 chriswhite Exp $
 
 *gnomevfs-mount-0.2.0 (10 Mar 2005)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/iconbox/iconbox-0.2.ebuild,v 1.1 2005/06/15 00:03:16 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/iconbox/iconbox-0.2.ebuild,v 1.1.1.1 2005/11/30 09:40:31 chriswhite Exp $
 
 MY_P="${P/-/_}"
 
@@ -10,11 +10,12 @@ SRC_URI="http://elrodeo.de/velopment/${PN}/files/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="virtual/x11
-	=x11-libs/gtk+-2*"
+	=x11-libs/gtk+-2*
+	dev-perl/gtk2-perl"
 
 src_compile() {
 	true # no compilation is necessary

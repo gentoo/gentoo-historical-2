@@ -1,55 +1,55 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/rss-glx/rss-glx-0.7.6.ebuild,v 1.1 2003/09/06 18:08:13 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/rss-glx/rss-glx-0.7.6.ebuild,v 1.1.1.1 2005/11/30 09:40:50 chriswhite Exp $
 
-inherit flag-o-matic
-filter-flags -fPIC
-use kde && inherit kde
+inherit flag-o-matic eutils
 
 MY_P=${PN}_${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Really Slick Screensavers using OpenGL for XScreenSaver"
 HOMEPAGE="http://rss-glx.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rss-glx/${MY_P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
-IUSE="kde sse 3dnow"
+KEYWORDS="x86 ppc amd64 ~sparc"
+IUSE="kde sse 3dnow openal"
 
 DEPEND="virtual/x11
 	virtual/opengl
-	>=sys-apps/sed-4
-	media-gfx/imagemagick
-	kde? ( kde-base/kdeartwork ) : ( x11-misc/xscreensaver )"
+	>=media-gfx/imagemagick-5.5.7
+	kde? ( || ( kde-base/kdeartwork-meta kde-base/kdeartwork ) )
+	!kde? ( x11-misc/xscreensaver )
+	openal? ( media-libs/openal )"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-kdedesktop.patch
+	EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/${PN}-0.7.4-kdedesktop.patch
 }
 
 src_compile() {
+	filter-flags -fPIC
+
 	local myconf
 
 	myconf="${myconf} --bindir=/usr/lib/xscreensaver" \
 	myconf="${myconf} --with-configdir=/usr/share/control-center/screensavers/" \
 
-	if [ -n "`use kde`" ]; then
+	if use kde; then
 		find . -name '*.desktop' -exec \
 			sed -i \
-				-e 's:Exec=kxsrun \(.*\):Exec=kxsrun /usr/lib/xscreensaver/\1:g' \
-				-e 's:Exec=kxsconfig \(.*\):Exec=kxsconfig /usr/lib/xscreensaver/\1:g' \
+				-e 's:Exec=kxsrun \(.*\):Exec=kxsrun \1:g' \
+				-e 's:Exec=kxsconfig \(.*\):Exec=kxsconfig \1:g' \
 				'{}' \
 			\; \
 			|| die "couldnt sed desktop files"
-		[ -n "${KDEDIR}" ] \
-			&& myconf="${myconf} --with-kdessconfigdir=${KDEDIR}/share/applnk/System/ScreenSavers"
+		myconf="${myconf} --with-kdessconfigdir=/usr/share/applnk/System/ScreenSavers"
 	fi
 
 	econf \
 		`use_enable sse` \
 		`use_enable 3dnow` \
+		`use_enable openal sound` \
 		${myconf} || die
 	emake || die
 }
@@ -63,30 +63,30 @@ src_install() {
 }
 
 pkg_postinst() {
-	if [ -f ${ROOT}/usr/X11R6/lib/X11/app-defaults/XScreenSaver ]; then
-		[ -n "`grep 'euphoria --root' /usr/X11R6/lib/X11/app-defaults/XScreenSaver`" ] && return 0
-		einfo "Adding Really Slick Screensavers to XScreenSaver"
+	local XSCREENSAVER_CONF="${ROOT}/usr/X11R6/lib/X11/app-defaults/XScreenSaver"
 
-		sed -i '/*programs:/a\
-    GL:       \"Cyclone\"  cyclone --root     \\n\\\
-    GL:      \"Euphoria\"  euphoria --root    \\n\\\
-    GL:    \"Fieldlines\"  fieldlines --root  \\n\\\
-    GL:        \"Flocks\"  flocks --root      \\n\\\
-    GL:          \"Flux\"  flux --root        \\n\\\
-    GL:        \"Helios\"  helios --root      \\n\\\
-    GL:       \"Lattice\"  lattice --root     \\n\\\
-    GL:        \"Plasma\"  plasma --root      \\n\\\
-    GL:     \"Skyrocket\"  skyrocket --root   \\n\\\
-    GL:    \"Solarwinds\"  solarwinds --root  \\n\\\
-    GL:     \"Colorfire\"  colorfire --root   \\n\\\
-    GL:   \"Hufos Smoke\"  hufo_smoke --root  \\n\\\
-    GL:  \"Hufos Tunnel\"  hufo_tunnel --root \\n\\\
-    GL:    \"Sundancer2\"  sundancer2 --root  \\n\\\
-    GL:          \"BioF\"  biof --root        \\n\\\
-    GL:    \"MatrixView\"  matrixview --root  \\n\\\
-    GL:   \"Spirographx\"  spirographx --root \\n\\\
-    GL:   \"BusySpheres\"  busyspheres --root \\n\\' \
-	${ROOT}/usr/X11R6/lib/X11/app-defaults/XScreenSaver
+	if [ -f ${XSCREENSAVER_CONF} -a -z "`grep 'Euphoria' ${XSCREENSAVER_CONF}`" ]; then
+		einfo "Adding Really Slick Screensavers to XScreenSaver"
+		sed -e '/*programs:/a\
+	GL:       \"Cyclone\"  cyclone --root     \\n\\\
+	GL:      \"Euphoria\"  euphoria --root    \\n\\\
+	GL:    \"Fieldlines\"  fieldlines --root  \\n\\\
+	GL:        \"Flocks\"  flocks --root      \\n\\\
+	GL:          \"Flux\"  flux --root        \\n\\\
+	GL:        \"Helios\"  helios --root      \\n\\\
+	GL:       \"Lattice\"  lattice --root     \\n\\\
+	GL:        \"Plasma\"  plasma --root      \\n\\\
+	GL:     \"Skyrocket\"  skyrocket --root   \\n\\\
+	GL:    \"Solarwinds\"  solarwinds --root  \\n\\\
+	GL:     \"Colorfire\"  colorfire --root   \\n\\\
+	GL:   \"Hufos Smoke\"  hufo_smoke --root  \\n\\\
+	GL:  \"Hufos Tunnel\"  hufo_tunnel --root \\n\\\
+	GL:    \"Sundancer2\"  sundancer2 --root  \\n\\\
+	GL:          \"BioF\"  biof --root        \\n\\\
+	GL:    \"MatrixView\"  matrixview --root  \\n\\\
+	GL:   \"Spirographx\"  spirographx --root \\n\\\
+	GL:   \"BusySpheres\"  busyspheres --root \\n\\' \
+		-i ${XSCREENSAVER_CONF}
 
 	else
 		einfo "Unable to add these to XScreenSaver configuration"
@@ -96,8 +96,10 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	has_version rss-glx && return 0
-	if [ -f ${ROOT}/usr/X11R6/lib/X11/app-defaults/XScreenSaver ]; then
+	local XSCREENSAVER_CONF="${ROOT}/usr/X11R6/lib/X11/app-defaults/XScreenSaver"
+
+	has_version x11-misc/rss-glx && return 0
+	if [ -f ${XSCREENSAVER_CONF} ]; then
 		einfo "Removing Really Slick Screensavers from XScreenSaver configuration."
 		sed \
 			-e '/\"Cyclone\"  cyclone/d' \
@@ -117,7 +119,7 @@ pkg_postrm() {
 			-e '/\"BioF\"  biof/d' \
 			-e '/\"MatrixView\"  matrixview/d' \
 			-e '/\"Spirographx\"  spirographx/d' \
-			-e '/\"BusySpheres\"  busyspheres/d' -i \
-			${ROOT}/usr/X11R6/lib/X11/app-defaults/XScreenSaver
+			-e '/\"BusySpheres\"  busyspheres/d' \
+			-i ${XSCREENSAVER_CONF}
 	fi
 }

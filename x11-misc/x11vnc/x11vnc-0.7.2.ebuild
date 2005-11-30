@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/x11vnc/x11vnc-0.7.2.ebuild,v 1.1 2005/07/13 21:21:03 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/x11vnc/x11vnc-0.7.2.ebuild,v 1.1.1.1 2005/11/30 09:40:26 chriswhite Exp $
 
 DESCRIPTION="A VNC server for real X displays"
 HOMEPAGE="http://www.karlrunge.com/x11vnc/"

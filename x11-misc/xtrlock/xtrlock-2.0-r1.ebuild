@@ -1,16 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xtrlock/xtrlock-2.0-r1.ebuild,v 1.1 2003/11/18 16:01:16 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xtrlock/xtrlock-2.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:40:37 chriswhite Exp $
+
+inherit eutils flag-o-matic
 
 MY_P=${P/-/_}-6
-S=${WORKDIR}/${P}
 DESCRIPTION="A simplistic screen locking program for X"
 SRC_URI="mirror://debian/dists/potato/main/source/x11/${MY_P}.tar.gz"
 HOMEPAGE="ftp://ftp.debian.org/debian/dists/stable/main/source/x11/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86 ppc ~amd64"
+IUSE=""
 
 DEPEND="virtual/x11"
 
@@ -18,6 +20,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${P}-overflow.patch
+	epatch ${FILESDIR}/${P}-gcc34.patch
 }
 
 src_compile() {

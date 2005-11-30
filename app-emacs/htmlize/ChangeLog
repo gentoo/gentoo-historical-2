@@ -1,8 +1,30 @@
 # ChangeLog for app-emacs/htmlize
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/htmlize/ChangeLog,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/htmlize/ChangeLog,v 1.1.1.1 2005/11/30 09:41:14 chriswhite Exp $
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> htmlize-1.16.ebuild:
+  Marked ~ppc.
+
+  20 Aug 2005; Fabian Groffen <grobian@gentoo.org> htmlize-1.16.ebuild:
+  Marking ~ppc-macos (bug #103170)
+
+  29 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org> -htmlize-0.67.ebuild,
+  htmlize-1.16.ebuild:
+  Keywording ~amd64; Clean up ebuild; Removed old ebuilds.
+
+  22 Jun 2005; Jason Wever <weeve@gentoo.org> htmlize-1.16.ebuild:
+  Added ~sparc keyword.
+
+*htmlize-1.16 (23 Oct 2003)
+
+  23 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> htmlize-1.16.ebuild:
+  new upstream
 
 *htmlize-0.67 (31 Oct 2002)
+
+  24 Mar 2003; Matthew Kennedy <mkennedy@gentoo.org> htmlize-0.67.ebuild,
+  files/50htmlize-gentoo.el:
+  fix to -gentoo.el
 
   31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
   htmlize-0.67.ebuild, files/50htmlize-gentoo.el, 

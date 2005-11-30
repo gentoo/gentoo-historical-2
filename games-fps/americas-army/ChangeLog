@@ -1,6 +1,176 @@
-# ChangeLog for app-games/americas-army
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/americas-army/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
+# ChangeLog for games-fps/americas-army
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/americas-army/ChangeLog,v 1.1.1.1 2005/11/30 09:39:48 chriswhite Exp $
+
+  20 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -americas-army-230.ebuild, americas-army-250.ebuild:
+  Fixed amd64 dependencies for bug #113046 and marking stable on x86 and amd64.
+
+  12 Nov 2005; Luca Barbato <lu_zero@gentoo.org> americas-army-230.ebuild:
+  Dependency update: media-video/ati-drivers -> x11-drivers/ati-drivers.
+
+  12 Nov 2005; Luca Barbato <lu_zero@gentoo.org> americas-army-250.ebuild:
+  Dependency update: media-video/ati-drivers -> x11-drivers/ati-drivers.
+
+  01 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-250.ebuild:
+  bp->pb
+
+*americas-army-250 (30 Oct 2005)
+
+  30 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +americas-army-250.ebuild:
+  Version bumped and closing bug #93255.
+
+  23 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-230.ebuild:
+  Added app-emulation/emul-linux-x86-compat to amd64 RDEPEND and closing bug
+  #109037.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-230.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  03 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  americas-army-230.ebuild:
+  Removed reference to emul-linux-x86-nvidia.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-230.ebuild:
+  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
+
+  09 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-230.ebuild:
+  Cleaning up icon stuff to use doicon/newicon.
+
+  11 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-230.ebuild:
+  Fixed my SNAFU and closing bug #92294.
+
+  02 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/armyops-ded.conf, -files/armyops-ded.conf.d,
+  -files/armyops-ded.init, -files/armyops-ded.rc, americas-army-230.ebuild:
+  Moved dedicated server scripts to DISTDIR.
+
+  07 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -americas-army-221.ebuild, -americas-army-221-r1.ebuild,
+  americas-army-230.ebuild:
+  Removing older versions and marking 230 stable.
+
+*americas-army-230 (24 Feb 2005)
+
+  24 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +americas-army-230.ebuild:
+  Version bumped and closing bug #82516.
+
+*americas-army-221-r1 (12 Feb 2005)
+
+  12 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/armyops-ded.conf, +files/armyops-ded.init,
+  +americas-army-221-r1.ebuild:
+  Updated init scripts to use screen for dedicated server and closing bug #79833.
+
+  08 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-221.ebuild:
+  Changed 3dgamers mirrors to use mirror://3dgamers instead.
+
+  27 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-221.ebuild:
+  Added ati-drivers for satisfying amd64 opengl needs and fixing whitespaces.
+
+  26 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  americas-army-221.ebuild:
+  nvidia-glx satisfies opengl on amd64.
+
+*americas-army-221 (14 Dec 2004)
+
+  14 Dec 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -americas-army-210.ebuild, +americas-army-221.ebuild:
+  Updated to latest version and closing bug #72234.
+
+  14 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> -files/armyops,
+  +files/armyops-ded.conf.d, +files/armyops-ded.rc,
+  -americas-army-200a-r1.ebuild, americas-army-210.ebuild:
+  Removed old versions and added dedicated server init scripts by Bjorn
+  Michaelsen <bmichaelsen@gmx.de>. Closing bug #58581.
+
+  25 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  americas-army-210.ebuild:
+  error check install
+
+  19 Jul 2004; <augustus@gentoo.org> americas-army-210.ebuild:
+  Added amd64 keyword and added RDEPEND on emul-linux-x86-xlibs for amd64. Bug
+  #57584.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  americas-army-200a-r1.ebuild, americas-army-210.ebuild:
+  virtual/glibc -> virtual/libc
+
+  01 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-210.ebuild:
+  Fixed up the mirrors... enjoy.
+
+*americas-army-210 (01 Jun 2004)
+
+  01 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +americas-army-210.ebuild:
+  Adding America's Army 2.1.0 to portage... Hooah!
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200a-r1.ebuild:
+  Changing first SRC_URI and closing bug #48299.
+
+  03 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> :
+  Fixing digest and closing bug #46645.
+
+  02 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200a-r1.ebuild:
+  Fixing Ddir problem.  Closing bug #46578.
+
+*americas-army-200a-r1 (01 Apr 2004)
+
+  01 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200a-r1.ebuild, americas-army-200a.ebuild:
+  Bumping version.
+
+  01 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200a.ebuild:
+  Updated with patches to fix recent DoS in Unreal engine based games. See bug
+  #44351 for more information.
+
+  13 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200a.ebuild:
+  Added opengl USE to allow for dedicated server only installs. Removed esound
+  from DEPEND. Closing bug #44605.
+
+  27 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200a.ebuild:
+  Revising .desktop entry.
+
+  10 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200a.ebuild:
+  Fixing directory location on mirrors.
+
+  08 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-200.ebuild, americas-army-200a.ebuild:
+  Removing 2.0.0 version and updating 2.0.0a to fix broken mirrors. Closing bug
+  #40598.
+
+*americas-army-200a (09 Jan 2004)
+
+  09 Jan 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-190.ebuild, americas-army-200a.ebuild:
+  Updated to 2.0.0a.  Closing Bug #36674.
+
+*americas-army-200 (28 Nov 2003)
+
+  28 Nov 2003; Chris Gianelloni <wolf31o2@gentoo.org>
+  americas-army-170.ebuild, americas-army-200.ebuild:
+  Added AA 2.0 as new stable version and removed 1.7 ebuild
+
+  01 Nov 2003; Martin Holzer <mholzer@gentoo.org> americas-army-170.ebuild,
+  americas-army-190.ebuild:
+  adding RESTRICT="nomirror". Closes #32465.
 
   27 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org>
   americas-army-170.ebuild, americas-army-190.ebuild:

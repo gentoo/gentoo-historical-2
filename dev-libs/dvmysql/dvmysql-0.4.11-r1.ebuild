@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvmysql/dvmysql-0.4.11-r1.ebuild,v 1.1 2005/05/20 12:47:03 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvmysql/dvmysql-0.4.11-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:31 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvmysql/download/${P}.tar.
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
 IUSE="doc"
 
 DEPEND="dev-db/mysql

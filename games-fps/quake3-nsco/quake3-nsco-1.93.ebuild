@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-nsco/quake3-nsco-1.93.ebuild,v 1.1 2005/01/23 23:02:43 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-nsco/quake3-nsco-1.93.ebuild,v 1.1.1.1 2005/11/30 09:39:51 chriswhite Exp $
 
 MOD_DESC="Navy Seals : Covert Operations"
 MOD_NAME=seals

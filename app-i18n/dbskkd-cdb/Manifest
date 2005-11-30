@@ -1,4 +1,15 @@
-MD5 5c954efb59c66580b4b782dfb25337cf dbskkd-cdb-1.01.ebuild 843
-MD5 2b4dfb4c3deaae0d25e26291cfe77a19 ChangeLog 358
-MD5 c50800da7ba411b73c590e753480c42e files/digest-dbskkd-cdb-1.01 66
-MD5 afdae900c503e85cb9977269c4c3630c files/dbskkd-cdb.xinetd 218
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 07e6fec164310da3ae2c7252aa9b6501 ChangeLog 1239
+MD5 afb07d03e90d378186a1a023c3948297 dbskkd-cdb-1.01-r1.ebuild 1558
+MD5 e92a48548554c80cf90e18df17ff6a82 metadata.xml 156
+MD5 c50800da7ba411b73c590e753480c42e files/digest-dbskkd-cdb-1.01-r1 66
+MD5 2a496540820260f65f10e029f35e367f files/dbskkd-cdb.xinetd 326
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCiJaPI1lqEGTUzyQRAq20AKCkfHwTL45Ok7GBWEk5JhgvP6Fa1wCfYCXu
+bQlcGbGPUmEVLXv5UFw1G9Y=
+=nNKP
+-----END PGP SIGNATURE-----

@@ -1,6 +1,104 @@
-# ChangeLog for app-games/clanlib
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/clanlib/ChangeLog,v 1.1 2003/07/13 03:13:40 vapier Exp $
+# ChangeLog for dev-games/clanlib
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-games/clanlib/ChangeLog,v 1.1.1.1 2005/11/30 09:44:36 chriswhite Exp $
+
+*clanlib-0.6.5-r3 (01 Mar 2005)
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org> +clanlib-0.6.5-r3.ebuild:
+  Touchup config script to not suck.
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/clanlib-0.6.5-freetype.patch, clanlib-0.6.5-r2.ebuild:
+  Add patch by Jim Ramsay to fix building with freetype #76533.
+
+  01 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/clanlib-0.6.5-DirectFB-update.patch, clanlib-0.6.5-r2.ebuild:
+  Fix building with newer DirectFB #77034 by Andreas Bulling.
+
+  02 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/0.7.8-install-opengl-wrap.patch, clanlib-0.7.8-r1.ebuild:
+  Take patch from upstream and install the opengl_wrap.h header file #76371 by
+  Greg Yasko.
+
+  23 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  clanlib-0.7.8-r1.ebuild:
+  update SRC_URI; media-libs/hermes isn't needed for 0.7
+
+*clanlib-0.7.8-r1 (15 Aug 2004)
+
+  15 Aug 2004; Mike Frysinger <vapier@gentoo.org> +clanlib-0.7.8-r1.ebuild:
+  Install clanlib-0.6.x into a SLOT-ed dir but move 0.7.x back into normal
+  behavior #52509 / #44258.
+
+*clanlib-0.6.5-r2 (15 Aug 2004)
+
+  15 Aug 2004; Mike Frysinger <vapier@gentoo.org> +clanlib-0.6.5-r2.ebuild:
+  Install clanlib-0.6.x into a SLOT-ed dir but move 0.7.x back into normal
+  behavior #52509 / #44258.
+
+  15 Aug 2004; Mike Frysinger <vapier@gentoo.org> files/0.6.5-gcc3.patch:
+  Update gcc-3.x patch from ROCKLinux #51997 by Felix Riemann.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> clanlib-0.7.7.ebuild:
+  add sed-4 dep
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> clanlib-0.7.7.ebuild:
+  Fix use invocation
+
+*clanlib-0.7.8 (10 May 2004)
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> clanlib-0.7.8.ebuild:
+  version bump (bug #50686)
+
+  29 Apr 2004; Aron Griffis <agriffis@gentoo.org> clanlib-0.6.5-r1.ebuild,
+  clanlib-0.7.7.ebuild:
+  Add ~alpha
+
+*clanlib-0.7.7 (17 Jan 2004)
+
+  17 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + patch #38464.
+
+*clanlib-0.7.6 (11 Nov 2003)
+
+  09 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  clanlib-0.6.5-r1.ebuild:
+  call replace-flags in src_compile; more error checking/messages
+
+  15 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add small patch to fix #33453.
+
+  11 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*clanlib-0.7.5 (25 Oct 2003)
+
+  25 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*clanlib-0.7.4 (06 Oct 2003)
+
+  20 Oct 2003; Ian Leitch <port001@gentoo.org> clanlib-0.6.5-r1.ebuild,
+  clanlib-0.7.2-r1.ebuild, clanlib-0.7.4.ebuild:
+  Install the INSTALL.linux document. #31594
+
+  06 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to fix #30488.
+
+*clanlib-0.7.3 (07 Sep 2003)
+
+  07 Sep 2003; Karl Trygve Kalleberg <karltk@gentoo.org>
+  clanlib-0.7.3.ebuild: 
+  New upstream version. Reworked clanlib-config slightly. More specific 
+  SLOTing, as upstream is very unstable.
+
+*clanlib-0.7.2-r1 (16 Jul 2003)
+
+  02 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added gcc3 patch #27349.
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  SLOT-ed version #22594.
 
 *clanlib-0.7.2 (27 Jun 2003)
 
@@ -16,6 +114,14 @@
   29 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
   Version bump.
 
+*clanlib-0.6.5-r1 (16 Jul 2003)
+
+  02 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added gcc3 patch #27349.
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  SLOT-ed version #22594.
+
 *clanlib-0.6.5 (17 Apr 2003)
 
   29 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
@@ -28,6 +134,11 @@
 
   02 Okt 2002; Bart Verwilst <verwilst@gentoo.org> :
   New version
+
+*clanlib-0.5.4-r4 (16 Jul 2003)
+
+  16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  SLOT-ed version #22594.
 
 *clanlib-0.5.4-r3 (14 Apr 2002)
 

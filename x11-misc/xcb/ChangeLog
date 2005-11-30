@@ -1,6 +1,28 @@
 # ChangeLog for x11-misc/xcb
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xcb/ChangeLog,v 1.1 2003/06/20 18:59:03 agriffis Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xcb/ChangeLog,v 1.1.1.1 2005/11/30 09:40:24 chriswhite Exp $
+
+  08 Nov 2005; <dang@gentoo.org> xcb-2.4.ebuild:
+  Marked ~amd64
+
+  26 Jul 2005; David Holm <dholm@gentoo.org> xcb-2.4.ebuild:
+  Added to ~ppc.
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> xcb-2.4.ebuild:
+  fixed motif dep
+
+  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  21 Jun 2003; Aron Griffis <agriffis@gentoo.org> xcb-2.4.ebuild:
+  Remove bogus sed (and also the sed dependency)
+
+  20 Jun 2003; <msterret@gentoo.org> xcb-2.4.ebuild:
+  DEPEND on sed >= 4
+  Marked stable on x86 and alpha (per agriffis)
+
+  20 Jun 2003; Aron Griffis <agriffis@gentoo.org> xcb-2.4.ebuild:
+  Add virtual/motif dependency
 
 *xcb-2.4 (20 Jun 2003)
 

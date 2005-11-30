@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.1.9.ebuild,v 1.1 2004/07/11 19:57:44 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.1.9.ebuild,v 1.1.1.1 2005/11/30 09:42:25 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/cdrdao/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+KEYWORDS="amd64 hppa ppc sparc x86"
 IUSE="gnome debug"
 RESTRICT="nostrip"
 
@@ -19,16 +19,18 @@ RDEPEND=">=media-sound/lame-3.90
 		=dev-cpp/libgnomemm-2.0*
 		=dev-cpp/libgnomecanvasmm-2.0*
 		=dev-cpp/gconfmm-2.0*
-		=dev-cpp/libgnomeuimm-2.0.0 
-		<sys-devel/gcc-3.4 )"
+		=dev-cpp/libgnomeuimm-2.0.0 )"
 DEPEND=">=dev-util/pccts-1.33.24-r1
-	>=app-cdr/cdrtools-2.01_alpha20
+	virtual/cdrtools
 	${RDEPEND}"
 
 src_unpack() {
-	unpack ${A}
 
+	unpack ${A}
 	cd ${S}
+
+	#apply patch to allow xdao to be compiled with gcc3.4
+	epatch ${FILESDIR}/cdrdao-Project.h-gcc3.4.patch
 
 	# Add gentoo to version
 	sed -i -e "s:^PACKAGE_STRING='cdrdao 1.1.9':PACKAGE_STRING='cdrdao 1.1.9 gentoo':" configure
@@ -61,7 +63,7 @@ src_compile() {
 }
 
 src_install() {
-	einstall
+	einstall || die "could not install"
 
 	cd ${S}
 

@@ -1,17 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbrun/bbrun-1.4.ebuild,v 1.1 2003/02/22 00:28:04 mkeadle Exp $ 
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbrun/bbrun-1.4.ebuild,v 1.1.1.1 2005/11/30 09:40:22 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="blackbox program execution dialog box"
-SRC_URI="http://www.dwave.net/~jking/bbrun/${P}.tar.gz"
-HOMEPAGE="http://www.dwave.net/~jking/bbrun/"
+SRC_URI="http://www.darkops.net/${PN}/${P}.tar.gz"
+HOMEPAGE="http://www.darkops.net/bbrun/"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
 
-DEPEND="virtual/blackbox
-	=x11-libs/gtk+-1.2*"
+DEPEND="=x11-libs/gtk+-1.2*"
 
 src_unpack() {
 	unpack ${A}
@@ -21,15 +21,11 @@ src_unpack() {
 }
 
 src_compile() {
-
 	cd ${S}/bbrun
-	emake || die
-
+	emake || die "emake failed"
 }
 
 src_install () {
-
-	dobin bbrun/bbrun
+	dobin bbrun/bbrun || die "failed to install bbrun"
 	dodoc README COPYING
-
 }

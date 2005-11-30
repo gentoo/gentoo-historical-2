@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/xalan-c-1.7.0.ebuild,v 1.1 2004/02/21 09:18:51 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/xalan-c-1.7.0.ebuild,v 1.1.1.1 2005/11/30 09:42:13 chriswhite Exp $
+
+inherit toolchain-funcs
 
 MY_PV=${PV//./_}
 DESCRIPTION="XSLT processor for transforming XML into HTML, text, or other XML types"
@@ -11,7 +13,7 @@ SRC_URI="ftp://apache.mirrors.pair.com/xml/xalan-c/Xalan-C_${MY_PV}-src.tar.gz
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="doc"
 
 DEPEND=">=dev-libs/xerces-c-2.4.0"
@@ -21,7 +23,7 @@ S=${WORKDIR}/xml-xalan/c
 src_compile() {
 	export XALANCROOT=${S}
 	export XERCESCROOT="/usr/include/xercesc"
-	./runConfigure -p linux -c gcc -x c++
+	./runConfigure -p linux -c "$(tc-getCC)" -x "$(tc-getCXX)" -P /usr || die
 	emake -j1 || die
 }
 

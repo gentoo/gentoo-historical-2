@@ -1,6 +1,15 @@
 # ChangeLog for app-emacs/thinks
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/thinks/ChangeLog,v 1.1 2003/11/12 06:38:54 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/thinks/ChangeLog,v 1.1.1.1 2005/11/30 09:41:13 chriswhite Exp $
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> thinks-1.8.ebuild:
+  Mark 1.8 stable on alpha
+
+  28 Aug 2005; Olivier Crête <tester@gentoo.org> thinks-1.8.ebuild:
+  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> thinks-1.8.ebuild:
+  Stable on x86. Added to ~alpha and ~ppc-macos.
 
 *thinks-1.8 (12 Nov 2003)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-da/man-pages-da-0.1.1.ebuild,v 1.1 2005/09/02 04:26:01 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/man-pages-da/man-pages-da-0.1.1.ebuild,v 1.1.1.1 2005/11/30 09:39:59 chriswhite Exp $
 
 DESCRIPTION="A somewhat comprehensive collection of Danish Linux man pages"
 HOMEPAGE="http://www.sslug.dk/locale/man-sider/"

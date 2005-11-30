@@ -1,25 +1,25 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/cramfs/cramfs-1.1.ebuild,v 1.1 2003/09/15 17:46:24 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cramfs/cramfs-1.1.ebuild,v 1.1.1.1 2005/11/30 09:44:29 chriswhite Exp $
 
 DESCRIPTION="Linux filesystem designed to be simple, small, and to compress things well"
-HOMEPAGE="http://sf.net/projects/cramfs/"
-LICENSE="GPL-2"
-DEPEND="sys-libs/zlib
-	virtual/glibc"
-KEYWORDS="~x86 amd64 ~ppc ~sparc"
-
-SLOT="0"
+HOMEPAGE="http://sourceforge.net/projects/cramfs/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-S=${WORKDIR}/${P}
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
+IUSE=""
+
+DEPEND="sys-libs/zlib
+	virtual/libc"
 
 src_compile() {
 	emake || die
 }
 
-src_install () {
+src_install() {
 	into /
-	dosbin mkcramfs cramfsck
+	dosbin mkcramfs cramfsck || die
 	dodoc README NOTES
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.8.3.ebuild,v 1.1 2005/10/20 05:26:59 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/glib/glib-2.8.3.ebuild,v 1.1.1.1 2005/11/30 09:41:30 chriswhite Exp $
 
 inherit gnome.org libtool eutils flag-o-matic debug
 
@@ -30,6 +30,7 @@ src_unpack() {
 		replace-flags -O[2-3] -O1
 		epatch ${FILESDIR}/glib-2.6.3-testglib-ssp.patch
 	fi
+	epatch ${FILESDIR}/${P}-macos.patch
 }
 
 src_compile() {
@@ -40,11 +41,6 @@ src_compile() {
 	use debug && myconf="${myconf} --enable-debug=yes"
 
 	epunt_cxx
-
-	if use ppc-macos; then
-		glibtoolize
-		append-ldflags "-L/usr/lib -lpthread"
-	fi
 
 	econf $myconf || die "./configure failed"
 	emake || die "Compilation failed"

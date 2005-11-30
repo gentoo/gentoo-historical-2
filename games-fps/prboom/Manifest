@@ -1,5 +1,17 @@
-MD5 c043e11c6f548be9de5791b9f2624657 ChangeLog 651
-MD5 c5d085638eba69a9751971c727dbd787 prboom-2.2.3.ebuild 1145
-MD5 c5d65c7c0192bf7be43c89cbe080a626 files/digest-prboom-2.2.3 122
-MD5 6baf3ffdd34dfe4b85618dd603616a80 files/2.2.3-nvidia-test.c 90
-MD5 26c3203b01da274d7823401db192c07c files/2.2.3-nvidia.patch 944
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 766cac70c82072ddf06fe2c42f8083b0 ChangeLog 1595
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 662098dfc14ece34364f58bd3d21cb8c prboom-2.2.4-r1.ebuild 1717
+MD5 e3d9b24d0bbddd7177cdc13ec010c225 files/2.2.4-gcc34.patch 629
+MD5 6baf3ffdd34dfe4b85618dd603616a80 files/2.2.4-nvidia-test.c 90
+MD5 d8fff22fba51330be33cc8905f81d425 files/2.2.4-nvidia.patch 1761
+MD5 1f849cf0b94a12ff9f846fc538f27b83 files/digest-prboom-2.2.4-r1 65
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1-ecc0.1.6 (GNU/Linux)
+
+iD8DBQFCm20xKRy60XGEcJIRAo6PAJ9or2fNBs250r4BxVTOmUQdReNbDACgrhtk
+dLxuGbCnFq5yNV8d+Emyu54=
+=vBTO
+-----END PGP SIGNATURE-----

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/comedi/comedi-0.7.68.ebuild,v 1.1 2004/12/27 21:40:39 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/comedi/comedi-0.7.68.ebuild,v 1.1.1.1 2005/11/30 09:44:32 chriswhite Exp $
 
 inherit kernel-mod eutils
 

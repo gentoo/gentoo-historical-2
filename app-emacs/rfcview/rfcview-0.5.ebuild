@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/rfcview/rfcview-0.5.ebuild,v 1.1 2003/10/31 22:34:09 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/rfcview/rfcview-0.5.ebuild,v 1.1.1.1 2005/11/30 09:41:15 chriswhite Exp $
 
 inherit elisp
 
@@ -9,9 +9,7 @@ HOMEPAGE="http://www.neilvandyke.org/rfcview/"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha ~amd64 ~ppc-macos x86"
 IUSE=""
-DEPEND="virtual/emacs"
-S=${WORKDIR}/${P}
 
 SITEFILE=50rfcview-gentoo.el

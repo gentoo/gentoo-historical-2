@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boehm-gc/boehm-gc-6.5.ebuild,v 1.1 2005/06/20 14:09:07 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boehm-gc/boehm-gc-6.5.ebuild,v 1.1.1.1 2005/11/30 09:42:05 chriswhite Exp $
+
+inherit eutils
 
 MY_P=gc${PV/_/}
 S=${WORKDIR}/${MY_P}
@@ -11,7 +13,7 @@ SRC_URI="http://www.hpl.hp.com/personal/Hans_Boehm/gc/gc_source/${MY_P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~hppa ia64 ppc ~ppc-macos ppc64 sparc x86"
 IUSE="nocxx threads"
 
 RDEPEND="virtual/libc"
@@ -23,6 +25,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	sed -i -e '/^SUBDIRS/s/doc//' Makefile.in || die
+	epatch ${FILESDIR}/${P}-gentoo.patch
 }
 
 src_compile() {

@@ -1,6 +1,24 @@
 # ChangeLog for games-fps/enemy-territory-etpro
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory-etpro/ChangeLog,v 1.1 2004/12/10 01:54:39 wolf31o2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory-etpro/ChangeLog,v 1.1.1.1 2005/11/30 09:39:46 chriswhite Exp $
+
+*enemy-territory-etpro-3.2.1 (09 Sep 2005)
+
+  09 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +enemy-territory-etpro-3.2.1.ebuild:
+  Version bumped to 3.2.1 and closing bug #103413.
+
+*enemy-territory-etpro-3.2.0 (26 May 2005)
+
+  26 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +enemy-territory-etpro-3.2.0.ebuild:
+  Version bumped to 3.2.0 and closing bug #94041.
+
+*enemy-territory-etpro-3.0.1 (15 Jan 2005)
+
+  15 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +enemy-territory-etpro-3.0.1.ebuild:
+  Version bump #78102.
 
 *enemy-territory-etpro-3.1.0 (09 Dec 2004)
 

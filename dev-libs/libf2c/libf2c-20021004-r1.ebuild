@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libf2c/libf2c-20021004-r1.ebuild,v 1.1 2004/06/30 22:14:11 kugelfang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libf2c/libf2c-20021004-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:36 chriswhite Exp $
 
-inherit gcc eutils
+inherit toolchain-funcs eutils
 
 DESCRIPTION="Library that converts FORTRAN to C source."
 HOMEPAGE="ftp://ftp.netlib.org/f2c/index.html"
@@ -10,9 +10,11 @@ SRC_URI="ftp://ftp.netlib.org/f2c/${PN}.zip"
 
 LICENSE="libf2c"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc
+	app-arch/unzip"
 
 S=${WORKDIR}/${PN}
 
@@ -25,7 +27,7 @@ src_unpack() {
 src_compile() {
 	emake -f makefile.u all \
 		CFLAGS="${CFLAGS}" \
-		CC="$(gcc-getCC)" \
+		CC="$(tc-getCC)" \
 		|| die
 }
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/safestr/safestr-1.0.2.ebuild,v 1.1 2003/12/11 17:33:22 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/safestr/safestr-1.0.2.ebuild,v 1.1.1.1 2005/11/30 09:41:51 chriswhite Exp $
 
 DESCRIPTION="provide a standards compatible yet secure string implementation"
 HOMEPAGE="http://www.zork.org/safestr/"
@@ -9,18 +9,20 @@ SRC_URI="http://www.zork.org/software/${P}.tar.gz"
 LICENSE="ZORK"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
-DEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	dev-libs/xxl"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	rm -rf xxl-1.0.0
+	rm -rf xxl-*
 }
 
 src_install() {
-	emake install DESTDIR=${D} || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc README doc/safestr.pdf
 	dohtml doc/safestr.html
 }

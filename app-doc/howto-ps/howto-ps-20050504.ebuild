@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/howto-ps/howto-ps-20050504.ebuild,v 1.1 2005/05/05 03:34:11 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/howto-ps/howto-ps-20050504.ebuild,v 1.1.1.1 2005/11/30 09:42:36 chriswhite Exp $
 
 # Grab and rename this file:
 # http://www.ibiblio.org/pub/Linux/docs/HOWTO/other-formats/ps/Linux-ps-HOWTOs.tar.bz2

@@ -1,6 +1,33 @@
 # ChangeLog for dev-libs/tvision
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/tvision/ChangeLog,v 1.1 2003/04/24 14:39:58 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/tvision/ChangeLog,v 1.1.1.1 2005/11/30 09:41:25 chriswhite Exp $
+
+  03 Sep 2005; Daniel Black <dragonheart@gentoo.org> -tvision-2.0.2.ebuild,
+  tvision-2.0.3.ebuild:
+  compile fix with -fpermissive as per bug #97000 thanks to Ksero. remove
+  2.0.2 version
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> tvision-2.0.1.ebuild:
+  Stable on ppc.
+
+  11 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> tvision-2.0.3.ebuild:
+  added ~amd64 to KEYWORDS.
+
+  14 Dec 2004; Daniel Black <dragonheart@gentoo.org> tvision-2.0.3.ebuild:
+  added symlink /usr/include/tvision -> rhtvision.
+
+*tvision-2.0.3 (14 Dec 2004)
+
+  14 Dec 2004; Daniel Black <dragonheart@gentoo.org> +tvision-2.0.3.ebuild:
+  version bump
+
+*tvision-2.0.2 (24 Jul 2004)
+
+  24 Jul 2004; Mike Frysinger <vapier@gentoo.org> +tvision-2.0.2.ebuild:
+  Version bump #57812 by Mike ConradMike Conrad.
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> tvision-2.0.1.ebuild:
+  Added to ~ppc.
 
 *tvision-2.0.1 (24 Apr 2003)
 

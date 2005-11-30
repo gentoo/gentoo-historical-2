@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuplot-mode/gnuplot-mode-0.6.0.ebuild,v 1.1 2004/03/13 21:45:55 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuplot-mode/gnuplot-mode-0.6.0.ebuild,v 1.1.1.1 2005/11/30 09:41:18 chriswhite Exp $
 
 inherit elisp
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://feff.phys.washington.edu/~ravel/gnuplot/"
 SRC_URI="http://feff.phys.washington.edu/~ravel/gnuplot/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc x86"
 
 DEPEND="virtual/emacs
 	media-gfx/gnuplot"
@@ -31,8 +31,6 @@ src_install() {
 	PATH=./:$PATH make install lispdir=$D/usr/share/emacs/site-lisp/${PN} || die
 	elisp-site-file-install ${FILESDIR}/${SITEFILE} || die
 
-	mv gnuplot.info gnuplot-mode.info
-	doinfo gnuplot-mode.info
 	dodoc ChangeLog README
 }
 

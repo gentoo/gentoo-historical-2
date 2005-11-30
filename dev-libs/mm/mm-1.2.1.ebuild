@@ -1,17 +1,19 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mm/mm-1.2.1.ebuild,v 1.1 2002/07/31 08:34:09 aliz Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/mm/mm-1.2.1.ebuild,v 1.1.1.1 2005/11/30 09:41:51 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit libtool
+
 DESCRIPTION="Shared Memory Abstraction Library"
 HOMEPAGE="http://www.ossp.org/pkg/lib/mm/"
 SRC_URI="ftp://ftp.ossp.org/pkg/lib/mm/${P}.tar.gz"
-DEPEND="virtual/glibc"
-LICENSE="as-is"
-SLOT="1"
-KEYWORDS="x86"
 
-inherit libtool
+DEPEND="virtual/libc"
+
+LICENSE="as-is"
+SLOT="1.2"
+KEYWORDS="x86 ppc sparc alpha hppa amd64"
+IUSE=""
 
 src_unpack() {
 	unpack ${A}

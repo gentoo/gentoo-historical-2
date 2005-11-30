@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/libffi-3.4.1-r1.ebuild,v 1.1 2004/09/22 21:48:48 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/libffi-3.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:41:48 chriswhite Exp $
 
 inherit eutils flag-o-matic libtool gnuconfig
 
@@ -26,6 +26,9 @@ do_filter_flags() {
 	# xgcc isnt patched with the gcc symbol visibility patch
 	filter-flags -fvisibility-inlines-hidden
 	filter-flags -fvisibility=hidden
+
+	# strict-aliasing is known to break obj-c stuff in gcc-3.4*
+	filter-flags -fstrict-aliasing
 
 	# ...sure, why not?
 	strip-unsupported-flags
@@ -54,8 +57,8 @@ HOMEPAGE="http://gcc.gnu.org/"
 
 LICENSE="libffi"
 
-KEYWORDS="-* ~x86"
-IUSE="nls"
+KEYWORDS="-* ~x86 ~ppc ~ppc64"
+IUSE="nls nptl uclibc"
 
 SLOT="0"
 ## 3.2.3 -> 3.3.x install .so.5, so lets slot to 5
@@ -71,7 +74,7 @@ DEPEND="virtual/libc
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	>=sys-devel/bison-1.875
 	>=sys-devel/gcc-config-1.3.1
-	>=sys-devel/gcc-3.4.1*
+	>=sys-devel/gcc-3.4.1
 	!build? ( >=sys-libs/ncurses-5.2-r2
 	          nls? ( sys-devel/gettext ) )"
 
@@ -113,6 +116,7 @@ src_compile() {
 	fi
 
 	use amd64 && myconf="${myconf} --disable-multilib"
+	use ppc64 && myconf="${myconf} --disable-multilib"
 
 	do_filter_flags
 	einfo "CFLAGS=\"${CFLAGS}\""
@@ -146,9 +150,6 @@ src_compile() {
 		${myconf} || die
 
 	touch ${S}/gcc/c-gperf.h
-
-	# Setup -j in MAKEOPTS
-	get_number_of_jobs
 
 	einfo "Compiling libffi..."
 	S="${WORKDIR}/build" \

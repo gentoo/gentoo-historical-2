@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xwit/xwit-3.4.ebuild,v 1.1 2003/12/13 19:15:34 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xwit/xwit-3.4.ebuild,v 1.1.1.1 2005/11/30 09:40:31 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
@@ -10,11 +12,13 @@ SRC_URI="http://www.x.org/contrib/utilities/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc x86"
 
 DEPEND="virtual/x11"
 
 src_compile() {
+	epatch ${FILESDIR}/malloc.patch
+
 	xmkmf || die "xmkmf failed"
 	emake || die "Make failed"
 }

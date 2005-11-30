@@ -1,6 +1,58 @@
 # ChangeLog for app-emacs/python-mode
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/python-mode/ChangeLog,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/python-mode/ChangeLog,v 1.1.1.1 2005/11/30 09:41:09 chriswhite Exp $
+
+  14 May 2005; Olivier Crête <tester@gentoo.org>
+  python-mode-4.63-r1.ebuild:
+  Stable on amd64
+
+*python-mode-4.70 (03 May 2005)
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> +python-mode-4.70.ebuild:
+  Version bumped. This closes bug #88704.
+
+  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> +files/setup.py,
+  python-mode-4.63-r1.ebuild:
+  Do not hardcode python path. Thanks to dan <reddan@warpmail.net>; bug #88770.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  python-mode-4.63-r1.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> python-mode-4.6.ebuild:
+  stable on amd64
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  python-mode-4.63-r1.ebuild:
+  Added to ~ppc.
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> python-mode-4.63-r1.ebuild,
+  -python-mode-4.63.ebuild:
+  Stable on x86.
+
+  08 Dec 2004; Simon Stelling <blubb@gentoo.org> python-mode-4.63-r1.ebuild:
+  added ~amd64
+
+*python-mode-4.63-r1 (03 Dec 2004)
+
+  03 Dec 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/55python-mode-gentoo.el, +python-mode-4.63-r1.ebuild:
+  Fixed pycomplete.py. Thanks to Nick Savchenko <rust@voliacable.com>;
+  bug #72712.
+
+*python-mode-4.63 (11 Nov 2004)
+
+  11 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +python-mode-4.63.ebuild:
+  Version bumped. Dropped ppc and ~amd64 keywords; bug #51435.
+
+  11 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> python-mode-4.6.ebuild:
+  Added amd64 keyword, closing #60694.
+
+  04 Apr 2004; Lars Weiler <pylon@gentoo.org> python-mode-4.6.ebuild:
+  stable on ppc
+
+  15 Feb 2004; David Holm <dholm@gentoo.org> python-mode-4.6.ebuild:
+  Added to ~ppc.
 
 *python-mode-4.6 (31 Oct 2002)
 

@@ -1,6 +1,23 @@
 # ChangeLog for app-cdr/mdf2iso
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/mdf2iso/ChangeLog,v 1.1 2004/12/03 04:46:27 pylon Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/mdf2iso/ChangeLog,v 1.1.1.1 2005/11/30 09:42:28 chriswhite Exp $
+
+*mdf2iso-0.3.0 (21 Jul 2005)
+
+  21 Jul 2005; Lars Weiler <pylon@gentoo.org> +mdf2iso-0.3.0.ebuild:
+  Version bump; bug #97019.
+
+  30 May 2005; Lars Weiler <pylon@gentoo.org> mdf2iso-0.2.1.ebuild:
+  Changed to toolchain-funcs; bug #92745.
+
+  12 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> mdf2iso-0.2.1.ebuild:
+  added ~amd64 to KEYWORDS, fixes #88655
+
+*mdf2iso-0.2.1 (08 Jan 2005)
+
+  08 Jan 2005; Lars Weiler <pylon@gentoo.org> -mdf2iso-0.1.ebuild,
+  +mdf2iso-0.2.1.ebuild:
+  Version bump; bug #74035.
 
 *mdf2iso-0.1 (03 Dec 2004)
 

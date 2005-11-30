@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-fragops/ut2004-fragops-2.16.ebuild,v 1.1 2005/04/25 19:31:42 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-fragops/ut2004-fragops-2.16.ebuild,v 1.1.1.1 2005/11/30 09:39:45 chriswhite Exp $
 
 MOD_DESC="Frag Ops is a realisim mod"
 MOD_NAME="Frag Ops"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-0.13.1.ebuild,v 1.1 2005/11/03 17:33:38 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-0.13.1.ebuild,v 1.1.1.1 2005/11/30 09:40:27 chriswhite Exp $
 
 inherit python
 

@@ -1,18 +1,22 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/medusa/medusa-0.5.1-r3.ebuild,v 1.1 2002/03/10 09:17:11 blocke Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/medusa/medusa-0.5.1-r3.ebuild,v 1.1.1.1 2005/11/30 09:40:59 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="nls"
+
 DESCRIPTION="Medusa search system for GNOME"
 SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc"
+SLOT="0"
+
 
 DEPEND=">=gnome-base/gnome-vfs-1.0.2-r1
 		nls? ( >=dev-util/intltool-0.11 sys-devel/gettext )
 		dev-libs/libxml
 		gnome-base/gnome-libs"
-
+RDEPEND=$DEPEND
 src_compile() {
 
 	local myconf
@@ -47,4 +51,3 @@ src_install() {
 
 	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS TODO
 }
-

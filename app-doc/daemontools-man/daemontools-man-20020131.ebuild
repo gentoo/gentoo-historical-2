@@ -1,17 +1,22 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# Author: Thilo Bangert <bangert@gentoo.org>
-# /space/gentoo/cvsroot/gentoo-x86/skel.ebuild,v 1.3 2002/02/04 15:46:51 gbevin Exp
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/daemontools-man/daemontools-man-20020131.ebuild,v 1.1.1.1 2005/11/30 09:42:37 chriswhite Exp $
+
+DESCRIPTION="Man pages for daemontools"
+HOMEPAGE="http://smarden.org/pape/djb/manpages/"
+SRC_URI="http://smarden.org/pape/djb/manpages/daemontools-0.76-man-20020131.tar.gz"
+
+LICENSE="public-domain"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE=""
+
+DEPEND="app-arch/tar app-arch/gzip"
+RDEPEND="sys-apps/man"
 
 S=${WORKDIR}/${PN}
 
-DESCRIPTION="Man pages for daemontools"
-SRC_URI="http://smarden.org/pape/djb/manpages/daemontools-0.76-man-20020131.tar.gz"
-HOMEPAGE="http://smarden.org/pape/djb/manpages/"
-
-src_install () {
-
+src_install() {
 	dodoc README
 	doman *.8
-
 }

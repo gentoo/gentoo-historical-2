@@ -1,10 +1,16 @@
-MD5 ec68e3d44eb9aae88be02e90c9feaad2 libIDL-0.8.0.ebuild 911
-MD5 b6dc05be923151b771152ce3731daaec libIDL-0.8.2.ebuild 536
-MD5 a02b65aba1d322e40729f00dba8ab30d libIDL-0.7.4-r2.ebuild 896
-MD5 2485e1e9fa610a246b4b0f23e4ec0f14 libIDL-0.8.1.ebuild 871
-MD5 485aaad76e5000083189ca35160f1f3f ChangeLog 900
-MD5 336de78624679373d6c6b18f1c8b8d17 files/digest-libIDL-0.8.0 65
-MD5 2b3fc8710ed0b0ace58ec8a022752374 files/digest-libIDL-0.8.1 65
-MD5 78432dfc8adcb813fec558ffd9181e52 files/digest-libIDL-0.8.2 65
-MD5 bf8fa9a4ae616ee8150f18ca83ae6df1 files/digest-libIDL-0.7.4-r2 65
-MD5 2b3fc8710ed0b0ace58ec8a022752374 files/digest-libIDL-0.8.1-r1 65
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 bb86607f09592c7fdf445a1b85c8e9f6 ChangeLog 4973
+MD5 741d2dd899af78fd80a653e7d2ce8fed files/digest-libIDL-0.8.5 65
+MD5 f3c99c88c626147713ecfbfe65ffa28e files/digest-libIDL-0.8.6 65
+MD5 310e8c9b63068dd54c1f1ea15d06a806 libIDL-0.8.5.ebuild 604
+MD5 100cf286c60effe2d1339c9fb8e0546a libIDL-0.8.6.ebuild 685
+MD5 03ad2e6c4ab41244af1015a8bbb0b39f metadata.xml 158
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDRJ6CgIKl8Uu19MoRAsQ2AJwJ7bJjUfa43s+STSkc6YD8gwuEiQCdHiuP
+QZ/zgvl8E+QYkrjKLrrSZSs=
+=Nj+0
+-----END PGP SIGNATURE-----

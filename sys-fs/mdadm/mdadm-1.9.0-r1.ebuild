@@ -1,22 +1,21 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mdadm/mdadm-1.9.0-r1.ebuild,v 1.1 2005/03/02 04:32:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mdadm/mdadm-1.9.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:25 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="A useful tool for running RAID systems - it can be used as a replacement for the raidtools"
 HOMEPAGE="http://cgi.cse.unsw.edu.au/~neilb/mdadm"
-SRC_URI="mirror://kernel/utils/raid/mdadm/${P}.tgz
+SRC_URI="mirror://kernel/linux/utils/raid/mdadm/${P}.tgz
 	http://neilb.web.cse.unsw.edu.au/source/mdadm/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="static"
 
-RDEPEND="virtual/libc"
+RDEPEND=""
 DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
 	>=sys-apps/portage-2.0.51"
 
 src_unpack() {
@@ -37,7 +36,7 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 	exeinto /$(get_libdir)/rcscripts/addons
-	doexe "${FILESDIR}"/raid-start.sh || die "addon failed"
+	doexe "${FILESDIR}"/raid-{start,stop}.sh || die "addon failed"
 	dodoc INSTALL TODO "ANNOUNCE-${PV}"
 
 	insinto /etc

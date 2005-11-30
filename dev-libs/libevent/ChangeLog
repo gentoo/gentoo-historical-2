@@ -1,6 +1,164 @@
 # ChangeLog for dev-libs/libevent
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevent/ChangeLog,v 1.1 2002/12/20 09:07:38 jrray Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libevent/ChangeLog,v 1.1.1.1 2005/11/30 09:41:30 chriswhite Exp $
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> libevent-1.1a.ebuild:
+  Mark 1.1a stable on alpha
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> libevent-1.1a.ebuild:
+  stable on ia64
+
+  15 Aug 2005; Markus Rothe <corsair@gentoo.org> libevent-1.1a.ebuild:
+  Stable on ppc64 (bug #102245)
+
+  14 Aug 2005; Konstantin Arkhipov <voxus@gentoo.org> libevent-1.1a.ebuild:
+  Stable on amd64.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> libevent-1.1a.ebuild:
+  Stable on ppc.
+
+  13 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> libevent-1.1a.ebuild:
+  Stable on x86,sparc.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> libevent-1.0e.ebuild:
+  Stable on alpha.
+
+*libevent-1.1a (22 Jun 2005)
+
+  22 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> -libevent-1.1.ebuild,
+  +libevent-1.1a.ebuild:
+  Version bump for bug 96700; Don't waste time building tests/examples. Also
+  added a src_test so that the tests are actually run.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> libevent-1.0e.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> libevent-1.0e.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> libevent-1.0e.ebuild:
+  Stable on x86.
+
+  09 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> libevent-1.1.ebuild:
+  Add some ewarns mentioning the need to run revdep-rebuild.  Closes bug 94419.
+
+*libevent-1.1 (28 May 2005)
+
+  28 May 2005; Aaron Walker <ka0ttic@gentoo.org> +libevent-1.1.ebuild:
+  Version bump for bug 94230.
+
+  11 May 2005; Aaron Walker <ka0ttic@gentoo.org> libevent-1.0e.ebuild:
+  Fix keywords.
+
+*libevent-1.0e (10 May 2005)
+
+  10 May 2005; Aaron Walker <ka0ttic@gentoo.org> +libevent-1.0e.ebuild:
+  Version bump for bug 91163.
+
+  07 May 2005; Aron Griffis <agriffis@gentoo.org> libevent-1.0c.ebuild:
+  stable on ia64
+
+  07 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> libevent-1.0c.ebuild:
+  Stable on sparc
+
+  06 May 2005; Aaron Walker <ka0ttic@gentoo.org> libevent-1.0c.ebuild:
+  Stable on x86.
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> libevent-1.0c.ebuild:
+  Stable on ppc.
+
+*libevent-1.0c (04 Apr 2005)
+
+  04 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +libevent-1.0c.ebuild:
+  Version bump.
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> libevent-1.0b.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> libevent-1.0b.ebuild:
+  stable on ia64
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> libevent-1.0b.ebuild:
+  Stable on alpha.
+
+  07 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> libevent-1.0b.ebuild:
+  Stable on sparc
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> libevent-1.0b.ebuild:
+  Marked stable on x86.
+
+  04 Feb 2005; Aron Griffis <agriffis@gentoo.org> libevent-1.0b.ebuild:
+  add ~alpha and ~ia64
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> libevent-0.9.ebuild:
+  Stable on alpha.
+
+*libevent-1.0b (21 Jan 2005)
+
+  21 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  libevent-0.9.ebuild, +libevent-1.0b.ebuild:
+  Version bump; marked 0.9 stable on x86.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*libevent-0.9 (19 Sep 2004)
+
+  19 Sep 2004; Daniel Black <dragonheart@gentoo.org> -libevent-0.6.ebuild,
+  -libevent-0.7a.ebuild, -libevent-0.8.ebuild, +libevent-0.9.ebuild:
+  version bump and old version cleanout
+
+*libevent-0.8a (16 Jul 2004)
+
+  07 Oct 2004; Lina Pezzella <j4rg0n@gentoo.org> libevent-0.8a.ebuild:
+  Keyworded ppc-macos. Bug #57858
+
+  16 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> libevent-0.8a.ebuild:
+  Version bump, ebuild contributed by Justin Guyett <justin@soze.net>.
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> libevent-0.7c.ebuild:
+  QA - IUSE
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> libevent-0.7a.ebuild:
+  QA - redundant S=
+
+*libevent-0.8 (24 May 2004)
+
+  24 May 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +libevent-0.8.ebuild:
+  version bump as per bug #48143. Thanks to Heikki Orsila
+  <heikki.orsila@iki.fi>. Note this fails the test-weof tests during the compile
+  however I reran these in a sandbox shell and they worked ok.
+
+  23 May 2004; Bryan Østergaard <kloeri@gentoo.org> libevent-0.7c.ebuild:
+  Stable on alpha.
+
+  29 Apr 2004; Jon Portnoy <avenj@gentoo.org> libevent-0.7c.ebuild :
+  Stable on AMD64.
+
+  02 Apr 2004; Brian Jackson <iggy@gentoo.org> libevent-0.7a.ebuild:
+  0.7a to x86
+
+  02 Apr 2004; Brian Jackson <iggy@gentoo.org> libevent-0.7c.ebuild:
+  0.7c to x86
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> libevent-0.7c.ebuild:
+  add ~alpha and ~ia64
+
+*libevent-0.7c (17 Nov 2003)
+
+  17 Nov 2003; Brian Jackson <iggy@gentoo.org> libevent-0.7c.ebuild:
+  version bump, thanks to cokelley@alumni.princeton.edu for the heads up, closes
+  bug 33707
+
+*libevent-0.7a (14 Sep 2003)
+
+  14 Sep 2003; <iggy@gentoo.org> libevent-0.7a.ebuild:
+  version bump thanks to hillster
+
+  07 Jan 2003; Kain <kain@kain.org> : This gets a ~ for ppc.  Builds for me!
+
+  07 Jan 2003; J Robert Ray <jrray@gentoo.org> : Unmasked for x86.
 
 *libevent-0.6 (20 Dec 2002)
 

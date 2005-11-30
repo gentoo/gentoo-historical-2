@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/cstools/cstools-3.42.ebuild,v 1.1 2004/11/17 21:48:47 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/cstools/cstools-3.42.ebuild,v 1.1.1.1 2005/11/30 09:39:59 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,8 +10,8 @@ SRC_URI="http://www.fi.muni.cz/~adelton/perl/${MY_P}.tar.gz"
 HOMEPAGE="http://www.fi.muni.cz/~adelton/perl/#cstools"
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86"
-IUSE="mime"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
 
 DEPEND="dev-perl/MIME-tools"
 

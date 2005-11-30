@@ -1,6 +1,26 @@
 # ChangeLog for app-cdr/serpentine
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/serpentine/ChangeLog,v 1.1 2005/09/16 17:50:50 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/serpentine/ChangeLog,v 1.1.1.1 2005/11/30 09:42:23 chriswhite Exp $
+
+  07 Nov 2005; Luis Medinas <metalgod@gentoo.org> serpentine-0.6.4.ebuild:
+  Add another missing dependency. See bug #111678.
+
+*serpentine-0.6.4 (31 Oct 2005)
+
+  31 Oct 2005; Luis Medinas <metalgod@gentoo.org> +serpentine-0.6.4.ebuild:
+  Version Bump.
+
+  01 Oct 2005; Luis Medinas <metalgod@gentoo.org> -serpentine-0.6.2.ebuild,
+  serpentine-0.6.3.ebuild:
+  Removed older version. Fixed dependencies.
+
+  19 Sep 2005; Luis Medinas <metalgod@gentoo.org> serpentine-0.6.3.ebuild:
+  Fixed dependency. Bug #106415.
+
+*serpentine-0.6.3 (17 Sep 2005)
+
+  17 Sep 2005; Luis Medinas <metalgod@gentoo.org> +serpentine-0.6.3.ebuild:
+  Version Bump
 
 *serpentine-0.6.2 (16 Sep 2005)
 

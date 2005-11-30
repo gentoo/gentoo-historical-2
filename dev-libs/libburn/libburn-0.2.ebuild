@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libburn/libburn-0.2.ebuild,v 1.1 2005/09/02 20:54:17 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libburn/libburn-0.2.ebuild,v 1.1.1.1 2005/11/30 09:42:02 chriswhite Exp $
 
 DESCRIPTION="Libburn is an open-source library for reading, mastering and
 writing optical discs."

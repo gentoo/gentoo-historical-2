@@ -1,6 +1,64 @@
 # ChangeLog for dev-libs/liboil
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/liboil/ChangeLog,v 1.1 2004/11/16 20:28:27 rizzo Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/liboil/ChangeLog,v 1.1.1.1 2005/11/30 09:42:12 chriswhite Exp $
+
+*liboil-0.3.6 (18 Nov 2005)
+
+  18 Nov 2005; <zaheer@gentoo.org> +liboil-0.3.6.ebuild:
+  version bump
+
+*liboil-0.3.3 (11 Oct 2005)
+
+  11 Oct 2005; <zaheer@gentoo.org> +liboil-0.3.3.ebuild:
+  version bump
+
+  06 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> liboil-0.3.2.ebuild:
+  marked ~alpha wrt bug #105807
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> liboil-0.3.2.ebuild:
+  Mark 0.3.2 ~ia64 #105807
+
+  18 Sep 2005; Markus Rothe <corsair@gentoo.org> liboil-0.3.2.ebuild:
+  Added ~ppc64 (bug #105807)
+
+  24 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org> liboil-0.2.0.ebuild,
+  liboil-0.2.2.ebuild, liboil-0.3.1.ebuild, liboil-0.3.2.ebuild:
+  slot liboil
+
+*liboil-0.3.2 (08 Jun 2005)
+
+  08 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org> metadata.xml,
+  +liboil-0.3.2.ebuild:
+  version bump
+
+*liboil-0.3.1 (18 Mar 2005)
+
+  18 Mar 2005; Don Seiler <rizzo@gentoo.org> +liboil-0.3.1.ebuild:
+  Version bump, closes bug #85776
+
+  27 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/liboil-0.2.2-clobber-list.patch, liboil-0.2.2.ebuild:
+  Another fix for ppc
+
+*liboil-0.2.2 (23 Nov 2004)
+
+  23 Nov 2004; Don Seiler <rizzo@gentoo.org> +liboil-0.2.2.ebuild:
+  Version bump, should work with gcc 3.4.x now
+
+*liboil-0.2.1 (20 Nov 2004)
+
+  20 Nov 2004; Luca Barbato <lu_zero@gentoo.org> +liboil-0.2.1.ebuild:
+  New version, ppc issues are eventually fixed
+
+  20 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> liboil-0.2.0.ebuild:
+  Keyworded ~amd64, bug #71270
+
+  17 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> liboil-0.2.0.ebuild:
+  Keyworded ~sparc wrt #71270
+
+  17 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/liboil-0.2.0-altivec.patch, liboil-0.2.0.ebuild:
+  Fixed for ppc
 
 *liboil-0.2.0 (16 Nov 2004)
 

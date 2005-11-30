@@ -1,24 +1,19 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbweather/bbweather-0.5.ebuild,v 1.1 2002/07/07 08:55:03 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbweather/bbweather-0.5.ebuild,v 1.1.1.1 2005/11/30 09:40:19 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE=""
 DESCRIPTION="blackbox weather monitor"
+HOMEPAGE="http://www.netmeister.org/apps/bbweather/"
 SRC_URI="http://www.netmeister.org/apps/${P}.tar.bz2"
-HOMEPAGE="http://www.netmeister.org/apps/bbweather/index.html"
 
 SLOT="0"
-LICENSE="GPL"
-KEYWORDS="*"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc alpha hppa"
 
 DEPEND="virtual/blackbox
-        >=net-misc/wget-1.7
-        >=sys-devel/perl-5.6.1"
-
-src_compile() {
-	econf || die
-	emake || die
-}
+	>=net-misc/wget-1.7
+	>=dev-lang/perl-5.6.1"
 
 src_install () {
 
@@ -26,4 +21,9 @@ src_install () {
 	rm -rf ${D}/usr/share/doc
 	dodoc README COPYING AUTHORS INSTALL ChangeLog NEWS TODO data/README.bbweather
 	dohtml -r doc
+
+	# since multiple bbtools packages provide this file, install
+	# it in /usr/share/doc/${PF}
+	mv ${D}/usr/share/bbtools/bbtoolsrc.in \
+		${D}/usr/share/doc/${PF}/bbtoolsrc.example
 }

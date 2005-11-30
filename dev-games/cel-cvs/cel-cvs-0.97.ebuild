@@ -1,45 +1,43 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/cel-cvs/cel-cvs-0.97.ebuild,v 1.1 2003/07/13 03:13:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/cel-cvs/cel-cvs-0.97.ebuild,v 1.1.1.1 2005/11/30 09:44:37 chriswhite Exp $
 
-inherit games cvs
 ECVS_SERVER="cvs.cel.sourceforge.net:/cvsroot/cel"
 ECVS_MODULE="cel"
 ECVS_TOP_DIR="${DISTDIR}/cvs-src/${PN}"
-S=${WORKDIR}/${ECVS_MODULE}
+inherit cvs
 
-HOMEPAGE="http://cel.sourceforge.net/"
-SRC_URI="mirror://gentoo/distfiles/${P}.tar.gz"
 DESCRIPTION="A game entity layer based on Crystal Space"
+HOMEPAGE="http://cel.sourceforge.net/"
+SRC_URI=""
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="ppc x86"
+IUSE="python"
 
-DEPEND="dev-libs/crystalspace
-	>=sys-apps/sed-4
+RDEPEND="dev-games/crystalspace
 	dev-util/jam
-	!dev-libs/cel-cvs"
+	!dev-games/cel-cvs
+	python? ( virtual/python )"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
 
-CEL_PREFIX=${GAMES_PREFIX_OPT}/crystal
+S=${WORKDIR}/${ECVS_MODULE}
 
 src_compile() {
-	./autogen.sh || die
-	PATH="${CEL_PREFIX}/bin:${PATH}" ./configure --prefix=${CEL_PREFIX} || die
+	local prefix=$(cs-config --prefix)
+	./autogen.sh || die "autogen failed"
+	PATH="${prefix}/bin:${PATH}" \
+	./configure \
+		--prefix="${prefix}" \
+		--with-cs-prefix="${prefix}" \
+		$(use_with python) \
+		|| die "configure failed"
 	jam || die
 }
 
 src_install() {
-	sed -i -e "s:/usr/local/cel:${CEL_PREFIX}:g" cel.cex
-
-	insinto ${CEL_PREFIX}
-	doins `find include -iname '*.h'`
-
-	into ${CEL_PREFIX}
-	dolib.so *.so
-
-	dogamesbin cel.cex
-	mv celtst ${D}/${CEL_PREFIX}/
-
-	prepgamesdirs
+	local prefix=$(cs-config --prefix)
+	jam -sprefix="${D}"${prefix} install || die
 }

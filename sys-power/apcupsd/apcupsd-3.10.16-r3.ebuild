@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/apcupsd/apcupsd-3.10.16-r3.ebuild,v 1.1 2005/03/14 23:27:27 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/apcupsd/apcupsd-3.10.16-r3.ebuild,v 1.1.1.1 2005/11/30 09:42:40 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/apcupsd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc"
+KEYWORDS="x86 ~amd64 ~ppc ~sparc"
 IUSE="doc snmp usb apache2 gd"
 
 DEPEND=">=sys-apps/baselayout-1.8.4
@@ -62,6 +62,7 @@ src_compile() {
 
 src_install () {
 	make DESTDIR=${D} install || die "installed failed"
+	rm -f "${D}"/etc/init.d/halt
 
 	if use gd
 	then

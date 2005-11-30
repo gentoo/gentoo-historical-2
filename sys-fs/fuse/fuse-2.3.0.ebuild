@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/fuse-2.3.0.ebuild,v 1.1 2005/06/03 15:40:48 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/fuse/fuse-2.3.0.ebuild,v 1.1.1.1 2005/11/30 09:44:24 chriswhite Exp $
 
 inherit linux-mod eutils
 
@@ -9,7 +9,7 @@ DESCRIPTION="An interface for filesystems implemented in userspace."
 HOMEPAGE="http://fuse.sourceforge.net"
 SRC_URI="mirror://sourceforge/fuse/${MY_P}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 S=${WORKDIR}/${MY_P}
 
@@ -18,7 +18,7 @@ MODULE_NAMES="fuse(fs:${S}/kernel)"
 BUILD_PARAMS="majver=${KV_MAJOR}.${KV_MINOR}
 			  fusemoduledir=${ROOT}/lib/modules/${KV_FULL}/fs"
 BUILD_TARGETS="all"
-ECONF_PARAMS="--with-kernel=${KV_DIR}"
+ECONF_PARAMS="--with-kernel=${KV_OUT_DIR}"
 FUSE_FS_ERROR="We have detected FUSE already built into the kernel.
 We will continue, but we wont build the module this time."
 
@@ -42,8 +42,8 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 
-	dodoc AUTHORS BUGS ChangeLog Filesystems README README-2.4 \
-		README-2.6 README.NFS NEWS doc/how-fuse-works
+	dodoc AUTHORS ChangeLog Filesystems README README-2.4 \
+		README.NFS NEWS doc/how-fuse-works
 	docinto example
 	dodoc example/*
 

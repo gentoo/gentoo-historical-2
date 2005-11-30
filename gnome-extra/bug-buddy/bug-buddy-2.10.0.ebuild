@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/bug-buddy/bug-buddy-2.10.0.ebuild,v 1.1 2005/03/09 03:58:30 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/bug-buddy/bug-buddy-2.10.0.ebuild,v 1.1.1.1 2005/11/30 09:41:05 chriswhite Exp $
 
-inherit gnome2
+inherit gnome2 eutils
 
 DESCRIPTION="Bug Report helper for Gnome"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="Ximian-logos GPL-2"
 SLOT="2"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND=">=gnome-base/libglade-2
@@ -24,6 +24,7 @@ RDEPEND=">=gnome-base/libglade-2
 	>=gnome-base/libgnomecanvas-2
 	>=gnome-base/libgnomeui-2.5.92
 	>=gnome-base/gnome-menus-2.9.1
+	>=app-text/gnome-doc-utils-0.1.3
 	>=sys-devel/gdb-5.1
 	>=sys-devel/gettext-0.10.40"
 
@@ -39,4 +40,5 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	gnome2_omf_fix gnome-doc-utils.make docs/Makefile.in
+	epatch ${FILESDIR}/${P}-fbsd.patch
 }

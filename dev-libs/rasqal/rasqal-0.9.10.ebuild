@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/rasqal/rasqal-0.9.10.ebuild,v 1.1 2005/10/18 01:38:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/rasqal/rasqal-0.9.10.ebuild,v 1.1.1.1 2005/11/30 09:41:38 chriswhite Exp $
 
 DESCRIPTION="library that handles Resource Description Framework (RDF)"
 HOMEPAGE="http://librdf.org/rasqal/"

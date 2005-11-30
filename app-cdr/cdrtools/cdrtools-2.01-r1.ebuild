@@ -1,20 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/cdrtools-2.01-r1.ebuild,v 1.1 2005/01/08 13:51:38 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/cdrtools-2.01-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:27 chriswhite Exp $
 
-inherit eutils gcc gnuconfig versionator
-
-MY_CRYPT_VERS="$(get_version_component_range 1-2 )-encrypt-beta3"
+inherit eutils toolchain-funcs gnuconfig
 
 DESCRIPTION="A set of tools for CD recording, including cdrecord"
-HOMEPAGE="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/cdrecord.html"
-SRC_URI="ftp://ftp.berlios.de/pub/cdrecord/${P}.tar.bz2
-	crypt? ( http://burbon04.gmxhome.de/linux/files/${PN}-${MY_CRYPT_VERS}.diff.gz )"
+HOMEPAGE="http://cdrecord.berlios.de/old/private/cdrecord.html"
+SRC_URI="ftp://ftp.berlios.de/pub/cdrecord/${P}.tar.bz2"
 
 LICENSE="GPL-2 freedist"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos"
-IUSE="crypt"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86 ~ppc-macos"
+IUSE=""
 
 DEPEND="virtual/libc
 	!app-cdr/dvdrtools"
@@ -27,11 +24,7 @@ src_unpack() {
 	cd ${S}
 
 	# CAN-2004-0806 - Bug 63187
-	epatch ${FILESDIR}/${PN}-2.01-scsi-remote.patch || die "Can't apply SCSI-remote patch"
-
-	# Add support for On-The-Fly AES encryption
-	# http://burbon04.gmxhome.de/linux/CDREncryption.html
-	use crypt && epatch ${DISTDIR}/${PN}-${MY_CRYPT_VERS}.diff.gz || die "Can't apply encryption patch"
+	epatch ${FILESDIR}/${PN}-2.01-scsi-remote.patch
 
 	cd ${S}/DEFAULTS
 	use ppc-macos && MYARCH="mac-os10" || MYARCH="linux"
@@ -51,7 +44,7 @@ src_unpack() {
 src_compile() {
 	gnuconfig_update
 
-	emake CC="$(gcc-getCC) -D__attribute_const__=const" COPTX="${CFLAGS}" CPPOPTX="${CPPFLAGS}" LDOPTX="${LDFLAGS}" || die
+	emake CC="$(tc-getCC) -D__attribute_const__=const" COPTX="${CFLAGS}" CPPOPTX="${CPPFLAGS}" LDOPTX="${LDFLAGS}" || die
 }
 
 src_install() {
@@ -97,13 +90,13 @@ src_install() {
 pkg_postinst() {
 	einfo "Note the special license on cdrecord/cdrecord.c starting from line 4648."
 	if use ppc-macos ; then
-		einfo ""
-		einfo "Darwin/OS X use the following device names: "
-		einfo ""
-		einfo "CD burners: (probably) ./cdrecord dev=IOCompactDiscServices "
-		einfo ""
-		einfo "DVD burners: (probably) ./cdrecord dev=IODVDServices "
-		einfo ""
+		einfo
+		einfo "Darwin/OS X use the following device names:"
+		einfo
+		einfo "CD burners: (probably) ./cdrecord dev=IOCompactDiscServices"
+		einfo
+		einfo "DVD burners: (probably) ./cdrecord dev=IODVDServices"
+		einfo
 	else
 	echo
 	einfo "The command line option 'dev=ATAPI:' should be used for IDE CD writers."

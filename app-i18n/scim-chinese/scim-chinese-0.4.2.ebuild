@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-chinese/scim-chinese-0.4.2.ebuild,v 1.1 2004/08/23 10:32:54 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-chinese/scim-chinese-0.4.2.ebuild,v 1.1.1.1 2005/11/30 09:40:05 chriswhite Exp $
 
 inherit gnome2
 
 DESCRIPTION="Smart Common Input Method (SCIM) Smart Pinyin Input Method"
-HOMEPAGE="http://freedesktop.org/~suzhe/"
-SRC_URI="http://freedesktop.org/~suzhe/${PN}/${P}.tar.gz"
+HOMEPAGE="http://www.scim-im.org/"
+SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
 
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc"
+KEYWORDS="x86 alpha ppc amd64 ppc64 ~sparc"
 
 DEPEND="virtual/x11
 	|| ( >=app-i18n/scim-0.9.8 >=app-i18n/scim-cvs-0.9.8 )"

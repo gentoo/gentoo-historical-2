@@ -1,16 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/zthread/zthread-2.3.1.ebuild,v 1.1.1.1 2005/11/30 09:41:43 chriswhite Exp $
+
+inherit flag-o-matic
 
 DESCRIPTION="a platform-independent object-oriented threading architecture"
 HOMEPAGE="http://www.cs.buffalo.edu/~crahen/projects/zthread/"
 SRC_URI="mirror://sourceforge/zthread/ZThread-${PV}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~mips ~hppa"
+KEYWORDS="x86 sparc ppc alpha ~mips ~hppa amd64"
+IUSE="debug"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 S=${WORKDIR}/ZThread-${PV}
 
@@ -19,6 +22,8 @@ src_compile() {
 	use debug \
 		&& myconf="--enable-debug=yes" \
 		|| myconf="--enable-debug=no"
+
+	append-flags -fpermissive
 
 	econf ${myconf} || die "./configure failed"
 	emake || die

@@ -1,5 +1,5 @@
 # /lib/rcscripts/addons/lvm-user-start.sh
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm-user/files/lvm-user-start.sh,v 1.1 2005/02/23 03:47:44 rocket Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/lvm-user/files/lvm-user-start.sh,v 1.1.1.1 2005/11/30 09:44:18 chriswhite Exp $
 
 # LVM support for /usr, /home, /opt ....
 # This should be done *before* checking local

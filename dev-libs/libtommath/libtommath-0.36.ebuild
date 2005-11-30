@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtommath/libtommath-0.36.ebuild,v 1.1 2005/08/10 02:14:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtommath/libtommath-0.36.ebuild,v 1.1.1.1 2005/11/30 09:41:42 chriswhite Exp $
 
 DESCRIPTION="highly optimized and portable routines for integer based number theoretic applications"
 HOMEPAGE="http://math.libtomcrypt.org/"
@@ -8,8 +8,12 @@ SRC_URI="http://math.libtomcrypt.org/files/ltm-${PV}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc-macos ~x86"
 IUSE=""
+
+src_compile() {
+	emake IGNORE_SPEED=1 || die
+}
 
 src_install() {
 	make install DESTDIR="${D}" || die

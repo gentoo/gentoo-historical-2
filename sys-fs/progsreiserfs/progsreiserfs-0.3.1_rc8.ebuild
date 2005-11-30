@@ -1,23 +1,31 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/progsreiserfs/progsreiserfs-0.3.1_rc8.ebuild,v 1.1 2005/01/10 02:10:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/progsreiserfs/progsreiserfs-0.3.1_rc8.ebuild,v 1.1.1.1 2005/11/30 09:44:18 chriswhite Exp $
 
 inherit libtool flag-o-matic
 
-MY_P=${PN}-${PV/_/-}
-DESCRIPTION="library for accessing and manipulating reiserfs partitions"
+MY_P="${PN}-${PV/_/-}"
+DESCRIPTION="Library for accessing and manipulating reiserfs partitions"
 HOMEPAGE="http://reiserfs.linux.kiev.ua/"
 SRC_URI="http://reiserfs.linux.kiev.ua/snapshots/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc hppa amd64 alpha ia64 mips ppc64"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="nls debug"
 
 RDEPEND=""
-DEPEND="nls? ( sys-devel/gettext )"
+DEPEND="sys-fs/e2fsprogs
+		nls? ( sys-devel/gettext )"
 
 S="${WORKDIR}/${MY_P}"
+
+progsreiserfs_warning() {
+	ewarn "progsreiserfs has been proven dangerous in the past, generating bad"
+	ewarn "partitions and destroying data on resize/cpfs operations."
+	ewarn "Because of this, we do NOT provide their binaries, but only their"
+	ewarn "libraries instead, as these are needed for other applications."
+}
 
 src_compile() {
 	elibtoolize
@@ -28,14 +36,23 @@ src_compile() {
 		$(use_enable debug) \
 		|| die "Configure failed"
 	emake || die "Make failed"
+	progsreiserfs_warning
 }
 
 src_install() {
 	make install DESTDIR="${D}" || die "Install failed"
 	# Make sure users only use the official namesys binaries
-	rm -r "${D}"/usr/{sbin,share}
+	rm -r "${D}"/usr/{sbin,share/man} || die "cant punt the cruft"
 
 	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO
 	docinto demos
 	dodoc demos/*.c
+	progsreiserfs_warning
+}
+
+pkg_postinst() {
+	progsreiserfs_warning
+}
+pkg_preinst() {
+	progsreiserfs_warning
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dazuko/dazuko-2.1.0.ebuild,v 1.1 2005/09/09 20:42:37 wschlich Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dazuko/dazuko-2.1.0.ebuild,v 1.1.1.1 2005/11/30 09:44:14 chriswhite Exp $
 
 inherit linux-mod eutils
 

@@ -1,6 +1,51 @@
 # ChangeLog for dev-libs/botan
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/ChangeLog,v 1.1 2004/11/08 23:05:19 dragonheart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/ChangeLog,v 1.1.1.1 2005/11/30 09:41:34 chriswhite Exp $
+
+*botan-1.4.9 (08 Nov 2005)
+
+  08 Nov 2005; Daniel Black <dragonheart@gentoo.org> +botan-1.4.9.ebuild:
+  version bump
+
+*botan-1.4.8 (18 Oct 2005)
+
+  18 Oct 2005; Daniel Black <dragonheart@gentoo.org> +botan-1.4.8.ebuild:
+  version bump
+
+*botan-1.4.7 (28 Sep 2005)
+
+  28 Sep 2005; Daniel Black <dragonheart@gentoo.org> +botan-1.4.7.ebuild:
+  version bump
+
+  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> botan-1.4.4.ebuild:
+  removed die from epatch || die.
+
+*botan-1.4.6 (25 Jun 2005)
+
+  25 Jun 2005; Daniel Black <dragonheart@gentoo.org> -botan-1.4.3.ebuild,
+  botan-1.4.4.ebuild, +botan-1.4.6.ebuild:
+  version bump thanks to meatoo. old version removed
+
+  01 Jun 2005; Mike Frysinger <vapier@gentoo.org> botan-1.4.3.ebuild,
+  botan-1.4.4.ebuild:
+  Change USE=bzlib to USE=bzip2.
+
+  09 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> botan-1.4.4.ebuild:
+  Stable on sparc wrt #71760, fixed the whole sparc mess too
+
+  08 Dec 2004; Daniel Black <dragonheart@gentoo.org> botan-1.4.4.ebuild,
+  +files/botan-1.4.4-gcc34.patch:
+  Added patch to fix local problem with gcc recognision. Fixed test src_test
+  routine. Added support for module tm_hard in sparc64, mips64 and i586+. ppc
+  tested too
+
+*botan-1.4.4 (04 Dec 2004)
+
+  04 Dec 2004; Daniel Black <dragonheart@gentoo.org> botan-1.4.3.ebuild,
+  +botan-1.4.4.ebuild:
+  Version bump. Added --dumb-gcc to configure.pl as per bug #71760
+  (botan-1.4.3). Thanks to Jack Lloyd <lloyd@randombit.net> and Stefan
+  Schweizer <genstef@gentoo.org>
 
 *botan-1.4.3 (09 Nov 2004)
 

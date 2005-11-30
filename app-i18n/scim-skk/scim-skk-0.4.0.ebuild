@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-skk/scim-skk-0.4.0.ebuild,v 1.1 2005/10/30 04:06:07 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-skk/scim-skk-0.4.0.ebuild,v 1.1.1.1 2005/11/30 09:40:08 chriswhite Exp $
 
 DESCRIPTION="Japanese input method SKK IMEngine for SCIM"
 HOMEPAGE="http://scim-imengine.sourceforge.jp/index.cgi?cmd=view;name=SCIMSKK"

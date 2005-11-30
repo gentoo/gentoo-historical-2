@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/gnomebaker/gnomebaker-0.4.ebuild,v 1.1 2005/08/05 13:28:46 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/gnomebaker/gnomebaker-0.4.ebuild,v 1.1.1.1 2005/11/30 09:42:26 chriswhite Exp $
 
-inherit eutils gnome2 flag-o-matic
+inherit gnome2
 
 DESCRIPTION="GnomeBaker is a GTK2/Gnome cd burning application."
 HOMEPAGE="http://gnomebaker.sf.net"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/gnomebaker/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="dvdr nls mp3 flac vorbis"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc ~x86"
 
 DEPEND=">=gnome-base/libglade-2.0
 	media-libs/libvorbis
@@ -21,7 +21,7 @@ DEPEND=">=gnome-base/libglade-2.0
 RDEPEND="${DEPEND}
 	dvdr? ( app-cdr/dvd+rw-tools )
 	mp3? ( >=media-plugins/gst-plugins-mad-0.8 )
-	vorbis? (>=media-plugins/gst-plugins-vorbis-0.8 )
+	vorbis? ( >=media-plugins/gst-plugins-vorbis-0.8 )
 	flac? ( >=media-plugins/gst-plugins-flac-0.8 )
 	virtual/cdrtools"
 

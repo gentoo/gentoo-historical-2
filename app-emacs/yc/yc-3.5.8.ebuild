@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/yc/yc-3.5.8.ebuild,v 1.1 2003/06/02 17:51:43 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/yc/yc-3.5.8.ebuild,v 1.1.1.1 2005/11/30 09:41:15 chriswhite Exp $
 
 inherit elisp
 
@@ -12,37 +12,38 @@ HOMEPAGE="http://www.ceres.dti.ne.jp/~knak/yc.html"
 SRC_URI="http://www.ceres.dti.ne.jp/~knak/${MY_P}.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 DEPEND="virtual/emacs
-        >=app-i18n/canna-3.6"
+	>=app-i18n/canna-3.6"
 
-S="${WORKDIR}/${P}"
 SITEFILE="50yc-gentoo.el"
+S="${WORKDIR}"
 
 src_unpack() {
-	mkdir -p ${S}
-	gzip -dc ${DISTDIR}/${MY_P}.gz > ${S}/yc.el
+	unpack ${A}
+	mv ${MY_P} yc.el || die
 }
 
 src_compile() {
-	emacs -batch -eval '(byte-compile-file "yc.el")'
+	elisp-compile yc.el || die
 }
 
 src_install() {
-	elisp-install ${PN} *.el *.elc
-	elisp-site-file-install ${FILESDIR}/${SITEFILE}
-
-	dodoc ${FILESDIR}/sample*
+	elisp-install ${PN} *.el *.elc || die
+	elisp-site-file-install ${FILESDIR}/${SITEFILE} || die
+	dodoc ${FILESDIR}/sample.dot.emacs ${FILESDIR}/sample.hosts.canna || die
 }
 
 pkg_postinst() {
+	elisp-site-regen
 	einfo "Please modify as following in /etc/conf.d/canna."
-	einfo "\n\t CANNASERVER_OPTS=\"-inet\"\n"
+	einfo
+	einfo "\t CANNASERVER_OPTS=\"-inet\""
+	einfo
 	einfo "And create /etc/hosts.canna."
 	einfo "(sample is /usr/share/doc/${P}/sample.hosts.canna.gz)"
 	einfo "And see /usr/share/doc/${P}/sample.dot.emacs.gz."
-	elisp-site-regen
 }
 
 pkg_postrm() {

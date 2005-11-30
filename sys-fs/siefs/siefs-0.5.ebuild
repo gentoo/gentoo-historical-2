@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/siefs/siefs-0.5.ebuild,v 1.1 2005/04/13 18:42:33 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/siefs/siefs-0.5.ebuild,v 1.1.1.1 2005/11/30 09:44:32 chriswhite Exp $
 
 DESCRIPTION="Siemens FS"
 HOMEPAGE="http://chaos.allsiemens.com/siefs"

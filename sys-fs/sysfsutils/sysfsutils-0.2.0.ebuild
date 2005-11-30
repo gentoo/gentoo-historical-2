@@ -1,19 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/sysfsutils/sysfsutils-0.2.0.ebuild,v 1.1 2003/10/11 20:21:43 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/sysfsutils/sysfsutils-0.2.0.ebuild,v 1.1.1.1 2005/11/30 09:44:19 chriswhite Exp $
 
-IUSE=
-
-S="${WORKDIR}/${PN}-${PV//./_}"
 DESCRIPTION="System Utilities Based on Sysfs"
-SRC_URI="mirror://sourceforge/linux-diag/${PN}-${PV//./_}.tar.gz"
 HOMEPAGE="http://linux-diag.sourceforge.net/Sysfsutils.html"
+SRC_URI="mirror://sourceforge/linux-diag/${PN}-${PV//./_}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~x86"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
+
+S="${WORKDIR}/${PN}-${PV//./_}"
 
 src_compile() {
 	econf || die "./configure failed"
@@ -25,7 +25,7 @@ src_compile() {
 }
 
 src_install() {
-	einstall
+	einstall || die
 
 	# We do not distribute this
 	rm -f ${D}/usr/bin/dlist_test
@@ -35,4 +35,3 @@ src_install() {
 	#        then rather add them manually ?
 	dodoc cmd/GPL lib/LGPL docs/libsysfs.txt
 }
-

@@ -1,6 +1,12 @@
 # ChangeLog for app-emacs/cdrw
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/cdrw/ChangeLog,v 1.1 2002/11/01 02:52:00 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/cdrw/ChangeLog,v 1.1.1.1 2005/11/30 09:41:21 chriswhite Exp $
+
+  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> cdrw-1.2.ebuild:
+  Marked ~ppc.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> cdrw-1.2.ebuild:
+  Keywording ~amd64.
 
 *cdrw-1.2 (31 Oct 2002)
 

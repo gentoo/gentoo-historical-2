@@ -1,21 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvcgi/dvcgi-0.5.8.ebuild,v 1.1 2003/07/14 18:55:12 pvdabeel Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvcgi/dvcgi-0.5.8.ebuild,v 1.1.1.1 2005/11/30 09:42:12 chriswhite Exp $
 
-A=dvcgi-${PV}.tar.gz
-S=${WORKDIR}/dvcgi-${PV}
 DESCRIPTION="dvcgi provides a C++ interface for C++ cgi programs"
-SRC_URI="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvcgi/download/${A}"
 HOMEPAGE="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvcgi/html/"
-KEYWORDS="x86 ppc"
-LICENSE="GPL-2"
+SRC_URI="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvcgi/download/${P}.tar.gz"
+
 SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc"
 
 IUSE=""
-DEPEND="virtual/glibc
+
+DEPEND="virtual/libc
 	dev-libs/dvutil
 	dev-libs/dvnet"
-RDEPEND=${DEPEND}
 
 src_install() {
 	make prefix=${D}/usr install

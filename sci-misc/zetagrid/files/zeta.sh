@@ -1,6 +1,6 @@
 # Copyright 1999-2003 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/zetagrid/files/zeta.sh,v 1.1 2004/12/27 21:10:25 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/zetagrid/files/zeta.sh,v 1.1.1.1 2005/11/30 09:44:33 chriswhite Exp $
 
 # ======================================================================
 #  zeta.sh        Start script for the ZetaGrid client

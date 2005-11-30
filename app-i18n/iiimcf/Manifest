@@ -1,2 +1,16 @@
-MD5 bcd2c025956fdeef51e25a0be4fec4ae iiimcf-11.4.1467.ebuild 709
-MD5 5db19d1b3aa08ebd6259e5ef6a882b1d files/digest-iiimcf-11.4.1467 71
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 064467dd8fff7f5645761b79ecc79596 ChangeLog 1014
+MD5 9ea4f3ea5f346478f5ca4d28e5b9f622 iiimcf-12.1_p2002.ebuild 732
+MD5 e92a48548554c80cf90e18df17ff6a82 metadata.xml 156
+MD5 3f0fefa84642f2748c42ca15d03d7aa0 iiimcf-11.4_p1467.ebuild 664
+MD5 de5dcfe76eb7086d4b90d73615622cd3 files/digest-iiimcf-11.4_p1467 74
+MD5 be37bb244b3081121d1781e5118f2443 files/digest-iiimcf-12.1_p2002 79
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCYQ+vVWNWqTUmv+0RAh2jAKCAwv2TEo19k2jEoe24U2/OlHP5SwCfWkkD
+cet9uzybsOaWkRkKcIwAudo=
+=npce
+-----END PGP SIGNATURE-----

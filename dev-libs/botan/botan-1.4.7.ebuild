@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/botan-1.4.7.ebuild,v 1.1 2005/09/28 07:26:50 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/botan/botan-1.4.7.ebuild,v 1.1.1.1 2005/11/30 09:41:34 chriswhite Exp $
 
 # Comments/fixes to lloyd@randombit.net (author)
 

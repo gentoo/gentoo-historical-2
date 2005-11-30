@@ -1,7 +1,15 @@
 # ChangeLog for dev-libs/libtrain
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtrain/ChangeLog,v 1.1 2002/06/10 01:49:34 rphillips Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libtrain/ChangeLog,v 1.1.1.1 2005/11/30 09:41:25 chriswhite Exp $
 
+  21 Jul 2005; David Holm <dholm@gentoo.org> libtrain-0.9b.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> libtrain-0.9b.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *libtrain-0.9b (09 June 2002)
 
   09 June 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :

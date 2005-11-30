@@ -1,8 +1,36 @@
 # ChangeLog for dev-libs/libedit
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libedit/ChangeLog,v 1.1 2003/12/22 20:28:47 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libedit/ChangeLog,v 1.1.1.1 2005/11/30 09:42:02 chriswhite Exp $
 
-*libedit-20031222 (22 Dec 2003)
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> libedit-20050531.ebuild:
+  Mark 20050531 stable on alpha
+
+*libedit-20050930 (01 Oct 2005)
+
+  01 Oct 2005; Mike Frysinger <vapier@gentoo.org> +libedit-20050930.ebuild:
+  Update cvs snapshot.
+
+*libedit-20050531 (01 Jun 2005)
+
+  01 Jun 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/libedit-20050531-debian-to-gentoo.patch, +libedit-20050531.ebuild:
+  Update CVS snapshot.
+
+*libedit-20050118 (18 Jan 2005)
+
+  18 Jan 2005; Mike Frysinger <vapier@gentoo.org> -libedit-20040907.ebuild,
+  +libedit-20050118.ebuild:
+  Version bump to install header file #78496 by Vlado.
+
+  07 Nov 2004; Markus Rothe <corsair@gentoo.org> libedit-20040907.ebuild:
+  Stable on ppc64; bug #60442
+
+*libedit-20040907 (07 Nov 2004)
+
+  07 Nov 2004; Markus Rothe <corsair@gentoo.org> libedit-20040907.ebuild:
+  Marked ~ppc64
+
+*libedit-YYYYMMDD (22 Dec 2003)
 
   22 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by me!
+  Initial import.  Ebuild submitted by me! [it's cvs snapshot stuff]

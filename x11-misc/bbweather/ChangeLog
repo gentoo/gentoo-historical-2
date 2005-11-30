@@ -1,6 +1,75 @@
 # ChangeLog for x11-misc/bbweather
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbweather/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbweather/ChangeLog,v 1.1.1.1 2005/11/30 09:40:19 chriswhite Exp $
+
+  27 Mar 2005; Guy Martin <gmsoft@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on hppa.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on alpha.
+
+  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on ppc.
+
+  24 Feb 2005; Jason Wever <weeve@gentoo.org> bbweather-0.6.2.ebuild:
+  Stable on sparc.
+
+  19 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> bbweather-0.6.2.ebuild:
+  Marked stable on x86.
+
+  18 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> bbweather-0.5.ebuild,
+  bbweather-0.6.2.ebuild, bbweather-0.6.ebuild:
+  Install example bbtoolsrc file in /usr/share/doc/${PF} since a lot of bb*
+  tools provide it; fixes file collision on /usr/share/bbtools/bbtoolsrc.in.
+
+*bbweather-0.6.2 (18 Jan 2005)
+
+  18 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +bbweather-0.6.2.ebuild:
+  Version bump.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> bbweather-0.6.ebuild:
+  Stable on alpha.
+
+  13 May 2004; Ferris McCormick <fmccor@gentoo.org> bbweather-0.6.ebuild:
+  Marked stable for sparc.
+
+  06 May 2004; Brandon Hale <tseng@gentoo.org> bbweather-0.6.ebuild:
+  Stable on x86
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bbweather-0.5.ebuild,
+  bbweather-0.6.ebuild:
+  Removed S=, added IUSE=
+
+  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> bbweather-0.6.ebuild:
+  Marking stable on hppa
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*bbweather-0.6 (19 Jun 2003)
+
+  19 Jun 2003; mkeadle <mkeadle@gentoo.org> bbweather-0.3-r2.ebuild,
+  bbweather-0.3-r2.ebuild, bbweather-0.6.ebuild:
+  bump to latest upstream stable. remove old versions.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*bbweather-0.5 (07 Jul 2002)
+
+  07 Jul 2002; Seemant Kulleen <seemant@gentoo.org> bbweather-0.5.ebuild
+  files/digest-bbweather-0.5 :
+
+  Version bump.
+
+*bbweather-0.3-r2 (15 Mar 2002)
+
+  15 Mar 2002; S.Kulleen <seemant@gentoo.org> bbweather-0.3-r2.ebuild :
+
+  Updated DEPENDS to reflect virtual/blackbox.
 
 *bbweather-0.3-r1 (1 Feb 2002)
 

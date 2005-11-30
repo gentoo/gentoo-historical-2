@@ -1,15 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbatt/xbatt-1.2.1.ebuild,v 1.1 2003/11/18 16:13:08 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbatt/xbatt-1.2.1.ebuild,v 1.1.1.1 2005/11/30 09:40:47 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Notebook battery indicataor for X"
-SRC_URI="http://www.clave.gr.jp/~eto/xbatt/${P}.tar.gz"
+DESCRIPTION="Notebook battery indicator for X"
 HOMEPAGE="http://www.clave.gr.jp/~eto/xbatt/"
+SRC_URI="http://www.clave.gr.jp/~eto/xbatt/${P}.tar.gz"
 
+LICENSE="|| ( as-is BSD )"
 SLOT="0"
-LICENSE="as-is | BSD"
 KEYWORDS="x86 ppc"
+IUSE=""
 
 DEPEND="virtual/x11"
 
@@ -18,7 +18,7 @@ src_compile() {
 	make xbatt || die
 }
 
-src_install () {
-	make DESTDIR=${D} install || die
+src_install() {
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc README* COPYRIGHT
 }

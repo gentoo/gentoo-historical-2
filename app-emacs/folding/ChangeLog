@@ -1,6 +1,18 @@
 # ChangeLog for app-emacs/folding
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/folding/ChangeLog,v 1.1 2003/10/06 07:17:41 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/folding/ChangeLog,v 1.1.1.1 2005/11/30 09:41:14 chriswhite Exp $
+
+  12 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org> folding-2.97.ebuild:
+  Homepage correction; Resolves Bug #108445.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> folding-2.97.ebuild:
+  Mark 2.97 stable on alpha
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> folding-2.97.ebuild:
+  Keywording ~amd64.
+
+  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> folding-2.97.ebuild:
+  Stable on x86. Added to ~alpha and ~ppc-macos.
 
 *folding-2.97 (05 Oct 2003)
 

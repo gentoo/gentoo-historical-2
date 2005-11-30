@@ -1,9 +1,28 @@
 # ChangeLog for x11-misc/fluxter
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/fluxter/ChangeLog,v 1.1.1.1 2005/11/30 09:40:21 chriswhite Exp $
+
+  24 May 2005; Simon Stelling <blubb@gentoo.org> fluxter-0.1.0.ebuild:
+  added ~amd64 keyword
+
+  16 Oct 2004; Guy Martin <gmsoft@gentoo.org> fluxter-0.1.0.ebuild:
+  Stable on hppa.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fluxter-0.1.0.ebuild:
+  Added IUSE=
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  12 Jun 2003; <msterret@gentoo.org> fluxter-0.1.0.ebuild:
+  fix Header
 
 *fluxter-0.1.0 (10 Dec 2002)
   
+  11 Dec 2002; Matt Keadle <mkeadle@gentoo.org> fluxter-0.1.0.ebuild
+
+  Moving to stable x86
+
   10 Dec 2002; Matt Keadle <mkeadle@gentoo.org> fluxter-0.1.0.ebuild
   files/digest-fluxter-0.1.0 :
 

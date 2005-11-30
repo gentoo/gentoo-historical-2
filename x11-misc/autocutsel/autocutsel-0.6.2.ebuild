@@ -1,29 +1,20 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/autocutsel/autocutsel-0.6.2.ebuild,v 1.1.1.1 2005/11/30 09:40:27 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Synchronise the two copy/paste buffers mainly used by X applications."
+DESCRIPTION="Synchronise the two copy/paste buffers mainly used by X applications"
 HOMEPAGE="http://www.lepton.fr/tools/autocutsel/"
+SRC_URI="http://www.lepton.fr/tools/autocutsel/${P}.tar.gz"
+IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 sparc ppc"
 
-DEPEND="virtual/glibc virtual/x11"
-RDEPEND=${DEPEND}
+DEPEND="virtual/libc
+	virtual/x11"
 
-SRC_URI="http://www.lepton.fr/tools/autocutsel/${P}.tar.gz"
-
-src_compile() {
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man || die "./configure failed"
-	emake || die
-}
-
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
 
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }

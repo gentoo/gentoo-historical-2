@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.20.ebuild,v 1.1 2004/10/26 22:34:12 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.20.ebuild,v 1.1.1.1 2005/11/30 09:42:08 chriswhite Exp $
 
 inherit eutils gnuconfig flag-o-matic java-pkg
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 sh ppc64"
 IUSE="berkdb gdbm ldap mysql postgres kerberos static ssl java pam authdaemond"
 
 RDEPEND="virtual/libc
@@ -22,7 +22,12 @@ RDEPEND="virtual/libc
 	pam? ( >=sys-libs/pam-0.75 )
 	ssl? ( >=dev-libs/openssl-0.9.6d )
 	kerberos? ( virtual/krb5 )
-	authdaemond? ( >=net-mail/courier-imap-3.0.7 )
+	authdaemond? (
+		|| (
+			>=net-mail/courier-imap-3.0.7
+			>=mail-mta/courier-0.46
+		)
+	)
 	java? ( virtual/jdk )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
@@ -73,17 +78,20 @@ src_unpack() {
 
 	# DB4 detection and versioned symbols.
 	# Fixed upstream.
-	# epatch "${FILESDIR}/cyrus-sasl-2.1.18-db4.patch" || die "patch failed"
+	# epatch "${FILESDIR}/cyrus-sasl-2.1.18-db4.patch"
 
 	# Add configdir support.
-	epatch "${FILESDIR}/${P}-configdir.patch" || die "patch failed"
+	epatch "${FILESDIR}/${P}-configdir.patch"
 
 	# Fix include path for newer PostgreSQL versions.
-	epatch "${FILESDIR}/cyrus-sasl-2.1.17-pgsql-include.patch" || die "patch failed"
+	epatch "${FILESDIR}/cyrus-sasl-2.1.17-pgsql-include.patch"
 
 	# Add setuid/setgid check for SASL_PATH
 	# Fixed upstream.
-	# epatch "${FILESDIR}/${P}-sasl-path-fix.patch" || die "patch failed"
+	# epatch "${FILESDIR}/${P}-sasl-path-fix.patch"
+
+	# Fix for gcc-4.0
+	epatch "${FILESDIR}/${P}-gcc4.patch"
 
 	# Recreate configure.
 	export WANT_AUTOCONF="2.5"
@@ -131,9 +139,6 @@ src_compile() {
 		myconf="${myconf} --with-dblib=none"
 	fi
 
-	# Compaq-sdk checks for -D_REENTRANT and -pthread takes care the cpp stuff.
-	use alpha && append-flags -D_REENTRANT -pthread
-
 	# Detect mips systems properly.
 	gnuconfig_update
 
@@ -147,7 +152,7 @@ src_compile() {
 
 	# Parallel build doesn't work.
 	# Parallel build doesn't like distcc?
-	if has distcc $FEATURES; then
+	if has distcc $FEATURES || has ccache $FEATURES; then
 		einfo "You have \"distcc\" enabled"
 		einfo "build with MAKEOPTS=-j1"
 		emake -j1 || die "compile problem"
@@ -212,10 +217,13 @@ src_install () {
 	fi
 
 	exeinto /etc/init.d
-	newexe "${FILESDIR}/pwcheck.rc6" pwcheck
-	newexe "${FILESDIR}/saslauthd2.rc6" saslauthd
+	newexe "${FILESDIR}/pwcheck.rc6" pwcheck || \
+		die "failed to \"newexe\" pwdcheck to /etc/init.d"
+	newexe "${FILESDIR}/saslauthd2.rc6" saslauthd || \
+		die "failed to \"newexe\" saslauthd to /etc/init.d"
 	insinto /etc/conf.d
-	newins "${FILESDIR}/saslauthd-${PV}.conf" saslauthd
+	newins "${FILESDIR}/saslauthd-${PV}.conf" saslauthd || \
+		die "failed to install /etc/conf/saslauthd."
 	exeinto ${ROOT}/usr/sbin
 	newexe "${S}/saslauthd/testsaslauthd" testsaslauthd || \
 		die "failed to install testsaslauthd."

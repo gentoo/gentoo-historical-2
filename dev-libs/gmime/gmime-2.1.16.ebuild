@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.16.ebuild,v 1.1 2005/08/20 21:37:12 dsd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.16.ebuild,v 1.1.1.1 2005/11/30 09:42:14 chriswhite Exp $
 
 inherit gnome2 eutils mono
 
@@ -14,13 +14,12 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND=">=dev-libs/glib-2
-	doc? ( >=dev-util/gtk-doc-1.0 )"
+	doc? ( >=dev-util/gtk-doc-1.0 )
+	mono? ( dev-lang/mono
+			>=dev-dotnet/gtk-sharp-1.9.5 )"
 
 DEPEND="dev-util/pkgconfig
 	doc? ( app-text/docbook-sgml-utils )
-	mono? ( dev-lang/mono
-			=dev-dotnet/gtk-sharp-1.0*
-			>=dev-dotnet/gtk-sharp-1.0.6 )
 	${RDEPEND}"
 
 src_unpack() {
@@ -42,9 +41,9 @@ src_unpack() {
 src_compile() {
 	econf \
 	    `use_enable ipv6` \
-	    `use_enable mono` \
+		`use_enable mono` \
 	    `use_enable doc gtk-doc` || die "configure failed"
-	MAKEOPTS="-j1" MONO_PATH=${S} emake || die
+	MONO_PATH=${S} emake -j1 || die
 }
 
 src_install() {

@@ -1,19 +1,25 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvutil/dvutil-0.13.13.ebuild,v 1.1 2004/05/31 02:36:39 pvdabeel Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvutil/dvutil-0.13.13.ebuild,v 1.1.1.1 2005/11/30 09:42:15 chriswhite Exp $
 
-S=${WORKDIR}/dvutil-${PV}
+inherit eutils
+
 DESCRIPTION="dvutil provides some general C++ utility classes for files, directories, dates, property lists, reference counted pointers, number conversion etc. "
-SRC_URI="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvutil/download/dvutil-${PV}.tar.gz"
 HOMEPAGE="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvutil/html/"
-KEYWORDS="x86 ppc amd64 sparc ia64 ppc64"
+SRC_URI="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvutil/download/dvutil-${PV}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-
+KEYWORDS="x86 ppc sparc"
 IUSE=""
-DEPEND="virtual/glibc"
-RDEPEND=${DEPEND}
+
+DEPEND="virtual/libc"
+
+S="${WORKDIR}/dvutil-${PV}"
 
 src_install() {
-	make DESTDIR=${D} install
+	local PATCHS="${FILESDIR}/0.13.13-gentoo-doc_distdir.patch"
+
+	epatch ${PATCHS} || die "error applying patch(s) [${PATCHS}]"
+	make DESTDIR=${D} install || die "error in make install"
 }

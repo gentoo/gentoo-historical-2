@@ -1,16 +1,19 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrootconsole/xrootconsole-0.4-r1.ebuild,v 1.1 2004/03/06 10:12:08 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrootconsole/xrootconsole-0.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:40:36 chriswhite Exp $
 
-DESCRIPTION="An utillity that displays its input in a text box on your root window"
+inherit eutils
+
+DESCRIPTION="A utility that displays its input in a text box on your root window"
 HOMEPAGE="http://de-fac.to/bob/xrootconsole/"
 SRC_URI="http://de-fac.to/bob/xrootconsole/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc "
+KEYWORDS="x86 sparc ppc ~amd64"
+IUSE=""
 
-DEPEND="x11-base/xfree"
+DEPEND="virtual/x11"
 
 src_compile() {
 	epatch ${FILESDIR}/${P}.parse-color.patch

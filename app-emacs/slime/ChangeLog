@@ -1,6 +1,141 @@
 # ChangeLog for app-emacs/slime
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/slime/ChangeLog,v 1.1 2004/05/11 05:23:51 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/slime/ChangeLog,v 1.1.1.1 2005/11/30 09:41:12 chriswhite Exp $
+
+  14 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -files/1.2.1.20050610/70slime-gentoo.el, -files/1.2.1.20050610/swank.asd,
+  -files/1.2.1/70slime-gentoo.el, -files/1.2.1.20050610/README.Gentoo,
+  -files/1.2.1.20050610/swank-loader.lisp,
+  -files/1.2.1.20050630/70slime-gentoo.el,
+  -files/1.2.1.20050630/README.Gentoo, -files/1.2.1.20050630/swank.asd,
+  -files/1.2.1.20050630/swank-loader.lisp,
+  files/1.2.1.20050804/70slime-gentoo.el, -files/1.2.1/README.Gentoo,
+  -files/1.2.1/swank.asd, -files/1.2.1/swank-loader.lisp,
+  -slime-1.2.1.ebuild, -slime-1.2.1-r1.ebuild, -slime-1.2.1.20050610.ebuild,
+  -slime-1.2.1.20050630.ebuild:
+  Use version independent symbolic link to HyperSpec documentation; Remove old
+  ebuilds.
+
+*slime-1.2.1.20050804 (04 Aug 2005)
+
+  04 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -files/1.0.20050106/swank.asd, -files/1.0.20050106/swank-loader.lisp,
+  -files/1.0.20050207/70slime-gentoo.el, -files/1.0.20050207/README.Gentoo,
+  -files/1.0.20050207/swank.asd, -files/1.0.20050207/swank-loader.lisp,
+  -files/1.0.20050106/70slime-gentoo.el,
+  -files/1.0.20050303/70slime-gentoo.el,
+  -files/1.0.20050106/swank-loader-init.lisp,
+  -files/1.0.20050303/README.Gentoo, -files/1.0.20050303/swank.asd,
+  -files/1.0.20050303/swank-loader.lisp,
+  +files/1.2.1.20050804/70slime-gentoo.el,
+  +files/1.2.1.20050804/README.Gentoo, +files/1.2.1.20050804/swank.asd,
+  +files/1.2.1.20050804/swank-loader.lisp, -files/70slime-gentoo.el,
+  -files/README.Gentoo, -files/swank.asd, -files/swank-loader.lisp,
+  -slime-1.0.ebuild, -slime-1.0.20041010.ebuild, -slime-1.0.20050106.ebuild,
+  -slime-1.0.20050207.ebuild, -slime-1.0.20050303.ebuild,
+  slime-1.2.1.ebuild, slime-1.2.1-r1.ebuild, slime-1.2.1.20050610.ebuild,
+  slime-1.2.1.20050630.ebuild, +slime-1.2.1.20050804.ebuild:
+  New upstream version; Resolves Bug #100729.
+
+*slime-1.2.1.20050630 (30 Jun 2005)
+
+  30 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/1.2.1.20050630/70slime-gentoo.el, +files/1.2.1.20050630/swank.asd,
+  +files/1.2.1.20050630/README.Gentoo,
+  +files/1.2.1.20050630/swank-loader.lisp, slime-1.2.1.20050610.ebuild,
+  +slime-1.2.1.20050630.ebuild:
+  Update 1.2.1 with patches to 2005-06-30 CVS.
+
+*slime-1.2.1.20050610 (10 Jun 2005)
+
+  10 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/1.2.1.20050610/70slime-gentoo.el,
+  +files/1.2.1.20050610/README.Gentoo, +files/1.2.1.20050610/swank.asd,
+  +files/1.2.1.20050610/swank-loader.lisp, files/1.2.1/swank.asd,
+  +slime-1.2.1.20050610.ebuild:
+  Add Armed Bear support; Add OpenMCL support; Update 1.2.1 with patches to
+  2005-06-10 CVS.
+
+*slime-1.2.1-r1 (26 May 2005)
+
+  26 May 2005; Matthew Kennedy <mkennedy@gentoo.org> +slime-1.2.1-r1.ebuild:
+  Fixed failure to build documentation.
+
+  23 May 2005; <mkennedy@gentoo.org> slime-1.2.1.ebuild:
+  Keywording ~sparc
+
+*slime-1.2.1 (11 May 2005)
+
+  11 May 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/1.2.1/README.Gentoo, +files/1.2.1/70slime-gentoo.el,
+  +files/1.2.1/swank.asd, +files/1.2.1/swank-loader.lisp,
+  +slime-1.2.1.ebuild:
+  New upstream version.
+
+  18 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  slime-1.0.20050303.ebuild:
+  Keywording stable x86
+
+  18 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  slime-1.0.20050303.ebuild:
+  Keywording for ~amd64
+
+*slime-1.0.20050303 (03 Mar 2005)
+
+  03 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/1.0.20050303/70slime-gentoo.el, +files/1.0.20050303/README.Gentoo,
+  +files/1.0.20050303/swank-loader.lisp, +files/1.0.20050303/swank.asd,
+  +slime-1.0.20050303.ebuild:
+  CVS snapshot refresh; This includes the changes necessary to support the
+  recent changes introduced in SBCL 0.8.20; It should be backward compatible.
+
+  21 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  slime-1.0.20050207.ebuild:
+  For some odd reason, process substitution seems to hang.
+
+*slime-1.0.20050207 (07 Feb 2005)
+
+  07 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> metadata.xml,
+  +files/1.0.20050207/70slime-gentoo.el, +files/1.0.20050207/README.Gentoo,
+  +files/1.0.20050207/swank-loader.lisp, +files/1.0.20050207/swank.asd,
+  -slime-0.13.ebuild, +slime-1.0.20050207.ebuild, -slime-1.0_alpha.ebuild,
+  -slime-1.0_beta.ebuild:
+  New upstream version; New system definition file; Use #'ASDF:OOS rather than
+  #'REQUIRE to support =dev-lisp/common-lisp-controller-4*; Expanded 
+  metadata.xml
+
+*slime-1.0.20050106 (06 Jan 2005)
+
+  06 Jan 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/1.0.20050106/70slime-gentoo.el,
+  +files/1.0.20050106/swank-loader.lisp, +files/1.0.20050106/swank.asd,
+  slime-1.0.20041010.ebuild, +slime-1.0.20050106.ebuild:
+  New upstream version (patch from SLIME 1.0 to 2005-01-06); Moved Gentoo
+  files to ${FILESDIR}/${PV}; Mark 1.0.20041010 as stable for x86
+
+*slime-1.0.20041010 (10 Oct 2004)
+
+  10 Oct 2004; <mkennedy@gentoo.org> +slime-1.0.20041010.ebuild,
+  +slime-1.0.ebuild:
+  Include patch from 1.0 to 20041010 CVS to overcome SBCL compilation issues.
+
+*slime-1.0_beta (06 Aug 2004)
+
+  06 Aug 2004; <mkennedy@gentoo.org> +slime-1.0_beta.ebuild:
+  New upstream version
+
+*slime-1.0_alpha (25 Jul 2004)
+
+  25 Jul 2004; <mkennedy@gentoo.org> +files/README.Gentoo, slime-0.13.ebuild,
+  +slime-1.0_alpha.ebuild:
+  New upstream version; Ebuild refined to make use of elisp and common-lisp
+  eclasses
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> slime-0.13.ebuild:
+  sync IUSE (missing)
+
+  12 May 2004; David Holm <dholm@gentoo.org> slime-0.13.ebuild:
+  Added to ~ppc.
 
 *slime-0.13 (11 May 2004)
 

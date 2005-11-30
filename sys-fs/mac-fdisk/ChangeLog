@@ -1,6 +1,50 @@
-# ChangeLog for sys-apps/mac-fdisk
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Id: ChangeLog,v 1.1 2004/06/08 12:39:29 vapier Exp $
+# ChangeLog for sys-fs/mac-fdisk
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mac-fdisk/ChangeLog,v 1.1.1.1 2005/11/30 09:44:25 chriswhite Exp $
+
+  11 Sep 2005; Olivier Crête <tester@gentoo.org> mac-fdisk-0.1-r4.ebuild:
+  Marked ~x86 per bug #103144
+
+  28 Aug 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  mac-fdisk-0.1-r2.ebuild, mac-fdisk-0.1-r3.ebuild, mac-fdisk-0.1-r4.ebuild,
+  -mac-fdisk-0.1.ebuild:
+  clean up src_unpack and src_install per bug #103633
+  removed  mac-fdisk-0.1 since -r2 is also stable
+
+*mac-fdisk-0.1-r4 (05 Feb 2005)
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  +files/largerthan2gb.patch, +mac-fdisk-0.1-r4.ebuild:
+  New revision with support for files larger than 2 GB, see bug 80095. Added
+  again to ~ppc.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> mac-fdisk-0.1-r3.ebuild:
+  Stable on ppc64
+
+*mac-fdisk-0.1-r3 (03 Nov 2004)
+
+  03 Nov 2004; Markus Rothe <corsair@gentoo.org>
+  +files/mac-fdisk-0.1-r3-ppc64.patch, +mac-fdisk-0.1-r3.ebuild:
+  Version bump to latest Debian Patchset (v11). Marked ~ppc64; untested on ppc.
+  Bug #61493
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mac-fdisk-0.1-r2.ebuild:
+  Masked mac-fdisk-0.1-r2.ebuild stable for ppc
+
+  30 Aug 2004; Tom Gall <tgall@gentoo.org> mac-fdisk-0.1-r2.ebuild:
+  marking stable. (Which I SWEAR I've done once before)
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> mac-fdisk-0.1-r2.ebuild,
+  mac-fdisk-0.1.ebuild:
+  Typo in DESCRIPTION: partitinoing -> partitioning. Bug 59717.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mac-fdisk-0.1-r2.ebuild, mac-fdisk-0.1.ebuild:
+  virtual/glibc -> virtual/libc
 
 *mac-fdisk-0.1-r2 (01 Jun 2004)
 

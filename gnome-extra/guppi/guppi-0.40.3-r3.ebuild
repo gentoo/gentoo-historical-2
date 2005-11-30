@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/guppi/guppi-0.40.3-r3.ebuild,v 1.1 2005/11/20 01:22:33 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/guppi/guppi-0.40.3-r3.ebuild,v 1.1.1.1 2005/11/30 09:41:02 chriswhite Exp $
 
 inherit toolchain-funcs eutils
 

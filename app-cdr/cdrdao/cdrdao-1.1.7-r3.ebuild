@@ -1,17 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.1.7-r3.ebuild,v 1.1 2003/12/16 22:03:01 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrdao/cdrdao-1.1.7-r3.ebuild,v 1.1.1.1 2005/11/30 09:42:25 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
 DESCRIPTION="Burn CDs in disk-at-once mode -- with optional GUI frontend"
 HOMEPAGE="http://cdrdao.sourceforge.net/"
 SRC_URI="mirror://sourceforge/cdrdao/${P}.src.tar.gz"
-RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64"
+KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64"
 IUSE="gnome oggvorbis perl"
 
 RDEPEND="gnome? ( >=gnome-base/gnome-libs-1.4.1.2-r1
@@ -20,19 +19,19 @@ RDEPEND="gnome? ( >=gnome-base/gnome-libs-1.4.1.2-r1
 	dev-perl/MP3-Info
 	dev-perl/Audio-Wav
 	dev-perl/Audio-Tools
-	virtual/cdrtools
-	>=sys-apps/sed-4"
-DEPEND=">=dev-util/pccts-1.33.24-r1
+	>=app-cdr/cdrtools-2.01_alpha20"
+DEPEND=">=sys-apps/sed-4
+	>=dev-util/pccts-1.33.24-r1
 	${RDEPEND}"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-
+	epatch ${FILESDIR}/1.1.8-gcc34.patch
 	epatch ${FILESDIR}/${P}-r2-mp32dao-gentoo.diff
 
-	if [ ! "`use oggvorbis`" ]; then
+	if ! use oggvorbis ; then
 		cd ${S}/contrib/mp32dao
 		sed -i '22s/^/#/' MediaHandler.pm
 	fi
@@ -47,6 +46,10 @@ src_unpack() {
 		done
 	fi
 
+	# Make sure we're in ${S} or the below patch for k3 bwill fail.
+	# Fixes bug #36420.
+	cd ${S}
+
 	# Add '-gentoo' to version, so that k3b, etc can detect that we have
 	# a special version that includes scglib support.
 	epatch ${FILESDIR}/${P}-gentoo-version.patch
@@ -55,7 +58,7 @@ src_unpack() {
 src_compile() {
 	local mygnome=
 
-	if [ "`use gnome`" ] ; then
+	if use gnome ; then
 		mygnome=" --with-gnome"
 		append-flags "$( /usr/bin/gtkmm-config --cflags ) -fno-exceptions"
 	fi
@@ -95,10 +98,10 @@ src_install() {
 
 	# documentation
 	docinto ""
-	dodoc COPYING CREDITS INSTALL README* Release*
+	dodoc CREDITS INSTALL README* Release*
 
 	# and now the optional GNOME frontend
-	if [ "`use gnome`" ] ; then
+	if use gnome ; then
 		# binary
 		into /usr
 		dobin xdao/gcdmaster

@@ -1,6 +1,38 @@
-# ChangeLog for app-games/soldieroffortune
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/soldieroffortune/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
+# ChangeLog for games-fps/soldieroffortune
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/soldieroffortune/ChangeLog,v 1.1.1.1 2005/11/30 09:39:45 chriswhite Exp $
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  06 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Updated to use lokigames mirrors.
+
+  04 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> -files/sof,
+  soldieroffortune-1.06a.ebuild:
+  Removing sof script and changing to use games_make_wrapper. Added loki_patch
+  dependency. General code cleanup.
+
+  07 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Changed hardcoded /opt/soldieroffortune to dir variable and closing bug #84361.
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> soldieroffortune-1.06a.ebuild:
+  Typo in DESCRIPTION: mercinary -> mercenary. Bug 59717.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  virtual/glibc -> virtual/libc
+
+  12 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Removing redundant inherit eutils and adding IUSE.
+
+  27 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  soldieroffortune-1.06a.ebuild:
+  Updating to new cdrom interface and cleaning up ebuild.
 
 *soldieroffortune-1.06a (27 Jul 2003)
 

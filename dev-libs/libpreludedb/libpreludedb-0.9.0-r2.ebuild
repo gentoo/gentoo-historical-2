@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpreludedb/libpreludedb-0.9.0-r2.ebuild,v 1.1 2005/10/02 23:52:23 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libpreludedb/libpreludedb-0.9.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:41:35 chriswhite Exp $
 
 inherit flag-o-matic
 

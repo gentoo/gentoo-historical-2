@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/files/acpid-1.0.4-init.d,v 1.1 2005/07/02 18:27:49 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/files/acpid-1.0.4-init.d,v 1.1.1.1 2005/11/30 09:42:39 chriswhite Exp $
 
 opts="${opts} reload"
 

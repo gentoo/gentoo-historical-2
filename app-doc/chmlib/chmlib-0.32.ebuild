@@ -1,30 +1,34 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/chmlib/chmlib-0.32.ebuild,v 1.1 2004/05/31 09:48:29 sergey Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/chmlib/chmlib-0.32.ebuild,v 1.1.1.1 2005/11/30 09:42:32 chriswhite Exp $
 
 DESCRIPTION="Library for MS CHM (compressed html) file format plus extracting and http server utils"
 HOMEPAGE="http://66.93.236.84/~jedwin/projects/chmlib/"
 SRC_URI="http://66.93.236.84/~jedwin/projects/chmlib/${PF}.tgz"
+DEPEND=">=sys-apps/sed-4"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86 ppc ~amd64"
+IUSE=""
+
 S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	sed -i -r "s,(\\\$\\{INSTALLPREFIX\\}),\${DESTDIR}\\1,g;s,@LIBTOOL@,libtool,g" Makefile.in
-	econf
+	econf || die "econf failed"
 #	sed -i "s:gcc-3.2:gcc:" Makefile
 #	sed -i "s:/usr/local/:/${D}/usr/:" Makefile
-#	if [ "${ARCH}" = "ppc" ]; then
-#		# In this case it is safe to take this rather
-#		# stupid action =)
-#		sed -i "s:__i386__:__powerpc__:" chm_lib.c
-#	fi
-#	if [ "${ARCH}" = "amd64" ]; then
-#		sed -i "s:__i386__:__x86_64__:" chm_lib.c
-#	fi
+	if [ "${ARCH}" = "ppc" ]; then
+		# In this case it is safe to take this rather
+		# stupid action =)
+		sed -i "s:__i386__:__powerpc__:" src/chm_lib.c
+	fi
+	if [ "${ARCH}" == "amd64" ]; then
+		sed -i "s:__i386__:__x86_64__:" src/chm_lib.c
+	fi
 }
 
 src_compile() {
@@ -52,5 +56,5 @@ src_install() {
 	insinto /usr/share/doc/${PF}/examples/
 	doins src/test_chmLib.c src/enum_chmLib.c src/chm_http.c
 
-	dodoc AUTHORS COPYING NEWS README
+	dodoc AUTHORS NEWS README
 }

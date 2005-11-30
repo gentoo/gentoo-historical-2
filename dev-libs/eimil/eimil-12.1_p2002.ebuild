@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/eimil/eimil-12.1_p2002.ebuild,v 1.1 2005/03/30 17:06:09 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/eimil/eimil-12.1_p2002.ebuild,v 1.1.1.1 2005/11/30 09:41:26 chriswhite Exp $
 
 inherit iiimf
 
 DESCRIPTION="A generic library for EIMIL services for IIIMF"
 SRC_URI="http://www.openi18n.org/download/im-sdk/src/${IMSDK_P}.tar.bz2"
 
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc"
 IUSE=""
 
 DEPEND="sys-devel/automake

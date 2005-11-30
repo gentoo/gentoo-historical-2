@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-system-monitor/gnome-system-monitor-2.12.1.ebuild,v 1.1 2005/10/09 06:54:58 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-system-monitor/gnome-system-monitor-2.12.1.ebuild,v 1.1.1.1 2005/11/30 09:40:57 chriswhite Exp $
 
 inherit gnome2
 

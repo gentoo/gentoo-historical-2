@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland/redland-1.0.2.ebuild,v 1.1 2005/10/18 01:54:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/redland/redland-1.0.2.ebuild,v 1.1.1.1 2005/11/30 09:42:02 chriswhite Exp $
 
 DESCRIPTION="High-level interface for the Resource Description Framework"
 HOMEPAGE="http://librdf.org/"

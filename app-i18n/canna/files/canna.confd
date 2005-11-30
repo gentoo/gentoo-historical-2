@@ -1,3 +1,7 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/canna/files/canna.confd,v 1.1.1.1 2005/11/30 09:40:10 chriswhite Exp $
+
 # Config file for /etc/init.d/canna
 
 # Specify user to run as

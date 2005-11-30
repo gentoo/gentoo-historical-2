@@ -1,6 +1,41 @@
 # ChangeLog for x11-misc/bbconf
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbconf/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbconf/ChangeLog,v 1.1.1.1 2005/11/30 09:40:45 chriswhite Exp $
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> bbconf-1.10.ebuild:
+  Fix qt dep
+
+  27 May 2004; Jason Wever <weeve@gentoo.org> bbconf-1.10.ebuild:
+  Stable on sparc.
+
+  06 May 2004; Brandon Hale <tseng@gentoo.org> bbconf-1.10.ebuild:
+  Stable on x86
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bbconf-1.10.ebuild,
+  bbconf-1.2-r1.ebuild, bbconf-1.6.ebuild:
+  Removed S=, added IUSE=.
+
+  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+*bbconf-1.10 (13 May 2003)
+
+  13 May 2003; Hanno Boeck <hanno@gentoo.org> bbconf-1.10.ebuild :
+  New version submitted by Matt Jacobs.
+
+  01 Mar 2003; Hanno Boeck <hanno@gentoo.org> :
+  Fixed download location.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*bbconf-1.6 (04 Jul 2002)
+
+  04 Jul 2002; Grant Goodyear <g2boojum@gentoo.org> ChangeLog  :
+
+  new version; thanks to Matt Behrens
+*bbconf-1.2-r1 (10 Apr 2002)
+  10 Apr 2002; Spider <spider@gentoo.org> bbconf-1.2-r1.ebuild:
+  Fix qt related configure flag.
 
 *bbconf-1.2 (1 Feb 2002)
 

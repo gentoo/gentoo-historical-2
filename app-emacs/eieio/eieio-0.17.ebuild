@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/eieio/eieio-0.17.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/eieio/eieio-0.17.ebuild,v 1.1.1.1 2005/11/30 09:41:11 chriswhite Exp $
 
 inherit elisp
 
@@ -11,12 +11,11 @@ HOMEPAGE="http://cedet.sourceforge.net/eieio.shtml"
 SRC_URI="mirror://sourceforge/cedet/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND="virtual/emacs
-	app-emacs/speedbar"
-
-S="${WORKDIR}/${P}"
+	app-emacs/speedbar
+	!app-emacs/cedet"
 
 SITEFILE=60eieio-gentoo.el
 

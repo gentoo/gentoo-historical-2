@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/gwyddion/gwyddion-1.13.ebuild,v 1.1 2005/10/14 16:31:33 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/gwyddion/gwyddion-1.13.ebuild,v 1.1.1.1 2005/11/30 09:44:32 chriswhite Exp $
 
 DESCRIPTION="A software framework for SPM data analysis"
 HOMEPAGE="http://gwyddion.net/"

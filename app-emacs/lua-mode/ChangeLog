@@ -1,6 +1,29 @@
 # ChangeLog for app-emacs/lua-mode
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/lua-mode/ChangeLog,v 1.1 2003/10/06 06:53:49 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/lua-mode/ChangeLog,v 1.1.1.1 2005/11/30 09:41:18 chriswhite Exp $
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  lua-mode-1.26-r1.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> lua-mode-1.26-r1.ebuild:
+  stable on amd64
+
+  13 Dec 2004; Joseph Jezak <josejx@gentoo.org> lua-mode-1.26-r1.ebuild:
+  Marked ~ppc for bug #74120.
+
+  01 Oct 2004; Tom Martin <slarti@gentoo.org> lua-mode-1.26-r1.ebuild:
+  Marked ~amd64, resolves bug 65075. Thanks to Bardur Arantsson
+  <gentoo@scientician.net> for reporting.
+
+  01 Jan 2004; Jeremy Maitin-Shepard <jbms@gentoo.org> :
+  Fixed checksums, fixed copyright header.
+
+*lua-mode-1.26-r1 (28 Dec 2003)
+
+  28 Dec 2003; Jeremy Maitin-Shepard <jbms@gentoo.org>
+  lua-mode-1.26-r1.ebuild:
+  New revision: fixed src_compile().
 
 *lua-mode-1.26 (05 Oct 2003)
 

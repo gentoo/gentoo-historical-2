@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/extract-xiso/extract-xiso-2.4_beta2-r1.ebuild,v 1.1 2005/05/25 23:13:53 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/extract-xiso/extract-xiso-2.4_beta2-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:27 chriswhite Exp $
 
 inherit eutils
 

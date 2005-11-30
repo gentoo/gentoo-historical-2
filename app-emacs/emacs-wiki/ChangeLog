@@ -1,6 +1,39 @@
 # ChangeLog for app-emacs/emacs-wiki
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-wiki/ChangeLog,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/emacs-wiki/ChangeLog,v 1.1.1.1 2005/11/30 09:41:17 chriswhite Exp $
+
+  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> emacs-wiki-2.69.ebuild:
+  Marked ~ppc.
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -emacs-wiki-2.14.ebuild, -emacs-wiki-2.40.ebuild,
+  -emacs-wiki-2.67.1.ebuild, -emacs-wiki-2.68.ebuild,
+  emacs-wiki-2.69.ebuild:
+  Keywording ~amd64.
+
+  22 Jun 2005; Jason Wever <weeve@gentoo.org> emacs-wiki-2.69.ebuild:
+  Added ~sparc keyword.
+
+*emacs-wiki-2.69 (22 Apr 2005)
+
+  22 Apr 2005; Ming Zhao <ming@gentoo.org> +emacs-wiki-2.69.ebuild:
+  minor version bump
+
+*emacs-wiki-2.68 (12 Apr 2005)
+
+  12 Apr 2005; Ming Zhao <ming@gentoo.org> emacs-wiki-2.68.ebuild :
+  version bumped. SRC_URI was changed to the maintainers homepage.
+
+*emacs-wiki-2.67.1 (01 Feb 2005)
+
+  01 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org> metadata.xml,
+  +emacs-wiki-2.67.1.ebuild:
+  New upstream version; Expanded metadata.xml
+
+*emacs-wiki-2.40 (10 Sep 2003)
+
+  10 Sep 2003; Matthew Kennedy <mkennedy@gentoo.org> :
+  minor version bump
 
 *emacs-wiki-2.14 (31 Oct 2002)
 

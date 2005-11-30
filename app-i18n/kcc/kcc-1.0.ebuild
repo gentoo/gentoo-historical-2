@@ -1,36 +1,40 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# 
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/kcc/kcc-1.0.ebuild,v 1.1.1.1 2005/11/30 09:40:14 chriswhite Exp $
 
-KEYWORDS="~x86"
-S="${WORKDIR}/${PN}"
+inherit toolchain-funcs eutils
+
 DESCRIPTION="A Kanji code converter"
+HOMEPAGE="" # There doesn't seem to be a home page for this package!
 SRC_URI="ftp://ftp.jp.freebsd.org/pub/FreeBSD/ports/distfiles/${PN}.tar.gz"
-HOMEPAGE=""  	#There doesn't seem to be a home page for this package!
-LICENSE="GPL2"
 
-DEPEND="virtual/glibc"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86"
+IUSE=""
 
-SLOT=0
+DEPEND="virtual/libc"
+
+S="${WORKDIR}/${PN}"
 
 src_unpack() {
-
-	# unpack the archive
 	unpack ${A}
 
 	cd ${S}
-	patch -p0 < ${FILESDIR}/${P}/gentoo.diff || die
+	if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "3" ]
+	then
+		epatch ${FILESDIR}/${PN}-gcc3-gentoo.diff
+	fi
 }
 
 src_compile() {
-	make
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die
 }
 
-src_install () {
+src_install() {
+	dobin kcc || die
 
-	# install libs, executables, dictionaries
-	make DESTDIR=${D} install     || die "installation failed"
-
-	# install docs
 	dodoc README
+	insinto /usr/share/man/ja/man1
+	newins kcc.jman kcc.1 || die
 }

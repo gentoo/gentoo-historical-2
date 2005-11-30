@@ -1,6 +1,51 @@
-# ChangeLog for sys-apps/cloop
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/cloop/ChangeLog,v 1.1 2004/11/23 22:36:14 genstef Exp $
+# ChangeLog for sys-fs/cloop
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cloop/ChangeLog,v 1.1.1.1 2005/11/30 09:44:13 chriswhite Exp $
+
+*cloop-2.02.1 (15 Aug 2005)
+
+  15 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/cloop-2.02.1-netinet-gentoo.patch, +cloop-2.02.1.ebuild:
+  Verson bump
+
+  17 May 2005; Daniel Drake <dsd@gentoo.org>
+  +files/cloop-2.01.5-netinet-gentoo.patch, cloop-2.01.5-r1.ebuild:
+  Fix compilation with Linux 2.4 headers thanks to Christophe Garault
+  <gentoo@garault.org> in bug #90646
+
+  27 Apr 2005; Stefan Schweizer <genstef@gentoo.org>
+  -files/kernel-2.6.8-fs_h-fix.patch, -files/cloop.fix.patch,
+  -files/cloop.zlib-amd64.patch, -files/kernel26_amd64.patch, metadata.xml,
+  -cloop-0.68.ebuild, -cloop-1.0.ebuild, -cloop-1.02.ebuild,
+  -cloop-2.00.ebuild, -cloop-2.01.5.ebuild, cloop-2.01.5-r1.ebuild:
+  Move to kernel herd, remove old ebuilds and mark latest ebuild stable thanks
+  to Daniel Webert <rockoo@gmail.com> in bug 90408
+
+*cloop-2.01.5-r1 (12 Jan 2005)
+
+  12 Jan 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/cloop.fix-7z-syntax-for-gcc-3.4.patch,
+  +files/cloop.fix-Makefile-for-kernel-2.6-and-amd64.patch,
+  +files/cloop.fix-create_compressed_fs-segfault-on-amd64.patch,
+  +files/cloop.fix-incompatible-kernel-2.6.7-and-later.patch,
+  +cloop-2.01.5-r1.ebuild:
+  New revision, patches rename, conversion to linux-mod, correct linux-headers
+  2.4 check
+
+  11 Dec 2004; Daniel Drake <dsd@gentoo.org> cloop-2.01.5.ebuild:
+  Fix 2.4 compilation
+
+  24 Nov 2004; Stefan Schweizer <genstef@gentoo.org>
+  +files/cloop.zlib-amd64.patch, cloop-2.01.5.ebuild:
+  Adding zlib-amd64 patch from bug 57912 to avoid segfault on amd64
+
+*cloop-2.01.5 (23 Nov 2004)
+
+  23 Nov 2004; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  +files/cloop.fix.patch, +files/kernel-2.6.8-fs_h-fix.patch,
+  +files/kernel26_amd64.patch, +cloop-2.01.5.ebuild:
+  Version bump. Adding patches thanks to Billy Holmes <billy@gonoph.net> in
+  bug 57912
 
 *cloop-1.0 (23 Nov 2004)
 

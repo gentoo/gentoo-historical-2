@@ -1,15 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmcal/libmcal-0.7.ebuild,v 1.1 2003/05/09 20:17:22 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmcal/libmcal-0.7.ebuild,v 1.1.1.1 2005/11/30 09:41:44 chriswhite Exp $
 
-DESCRIPTION="Modular Calendar Access Libary"
+DESCRIPTION="Modular Calendar Access Library"
 HOMEPAGE="http://mcal.chek.com/"
 SRC_URI="mirror://sourceforge/libmcal/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-# Have only tested on x86, but I suppose it should work on all platforms
-KEYWORDS="x86 ~ppc ~sparc ~alpha ~hppa ~mips"
+KEYWORDS="x86 ppc sparc ~alpha ~hppa ~mips ppc64"
 
 IUSE=""
 DEPEND=""
@@ -17,7 +16,7 @@ RDEPEND=""
 S=${WORKDIR}/${PN}
 
 src_compile() {
-	econf
+	econf || die "econf failed"
 	emake || die
 }
 

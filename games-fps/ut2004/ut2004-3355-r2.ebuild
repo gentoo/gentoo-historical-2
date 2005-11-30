@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004/ut2004-3355-r2.ebuild,v 1.1 2005/08/03 16:03:59 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004/ut2004-3355-r2.ebuild,v 1.1.1.1 2005/11/30 09:39:47 chriswhite Exp $
 
 inherit eutils games
 
 MY_P="${PN}-lnxpatch${PV}.tar.bz2"
 DESCRIPTION="Unreal Tournament 2004 - Editor's Choice Edition"
 HOMEPAGE="http://www.unrealtournament2004.com/"
-SRC_URI="mirror://3dgamers/pub/3dgamers/games/unrealtourn2k4/${MY_P}
+SRC_URI="mirror://3dgamers/unrealtourn2k4/${MY_P}
 	http://speculum.twistedgamer.com/pub/0day.icculus.org/${PN}/${MY_P}
 	experimental? ( http://icculus.org/~icculus/tmp/${PN}-lnx-${PV}-with-rendertargets.tar.bz2 )"
 
@@ -28,7 +28,7 @@ dir=${GAMES_PREFIX_OPT}/${PN}
 Ddir=${D}/${dir}
 
 pkg_setup() {
-	check_license || die "License check failed"
+	check_license ut2003
 	if use experimental
 	then
 		ewarn "You are enabling support for an experimental patch from icculus."
@@ -69,22 +69,22 @@ src_install() {
 	dosym ${dir}/.manifest/${PN}.xml ${ROOT}/root/.loki/installed/${PN}.xml
 
 	# Here we edit the Default.ini to enable support for the experimentla patch
-	if use experimental
-	then
-		ed ${Ddir}/System/Default.ini >/dev/null 2>&1 <<EOT
-$
-?OpenGLDrv.OpenGLRenderDevice?
-a
-UseRenderTargets=True
-.
-w
-q
-EOT
-		sed -i -e 's/bPlayerShadows=False/bPlayerShadows=True/' \
-			-e 's/bBlobShadow=True/bBlobShadow=False/' \
-			-e 's/bVehicleShadows=False/bVehicleShadows=True/' \
-			${Ddir}/System/DefUser.ini
-	fi
+#	if use experimental
+#	then
+#		ed ${Ddir}/System/Default.ini >/dev/null 2>&1 <<EOT
+#$
+#?OpenGLDrv.OpenGLRenderDevice?
+#a
+#UseRenderTargets=True
+#.
+#w
+#q
+#EOT
+#		sed -i -e 's/bPlayerShadows=False/bPlayerShadows=True/' \
+#			-e 's/bBlobShadow=True/bBlobShadow=False/' \
+#			-e 's/bVehicleShadows=False/bVehicleShadows=True/' \
+#			${Ddir}/System/DefUser.ini
+#	fi
 
 	games_make_wrapper ut2004 ./ut2004 ${dir}
 
@@ -101,7 +101,7 @@ pkg_postinst() {
 		einfo "A cdkey file is already present in ${dir}/System"
 	else
 		ewarn "You MUST run this before playing the game:"
-		ewarn "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
+		ewarn "emerge --config =${CATEGORY}/{PF}"
 		ewarn "That way you can [re]enter your cdkey."
 	fi
 	echo

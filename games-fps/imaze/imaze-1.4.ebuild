@@ -1,35 +1,33 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/imaze/imaze-1.4.ebuild,v 1.1 2004/03/21 08:54:26 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/imaze/imaze-1.4.ebuild,v 1.1.1.1 2005/11/30 09:39:47 chriswhite Exp $
 
 inherit games
 
-S="${WORKDIR}/${P}/source"
 DESCRIPTION="Multi player, real time, 3D, labyrinth, run & shoot game"
 HOMEPAGE="http://home.tu-clausthal.de/student/iMaze/"
 SRC_URI="http://home.tu-clausthal.de/student/iMaze/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86"
-IUSE="X Xaw3d joystick"
+KEYWORDS="x86 ppc ~amd64"
+IUSE="Xaw3d joystick"
 
-RDEPEND="virtual/x11
-	virtual/glibc
+DEPEND="virtual/x11
 	|| (
 		Xaw3d? ( x11-libs/Xaw3d )
 		x11-libs/xview
 	)"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+
+S=${WORKDIR}/${P}/source
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 	sed -i \
 		-e s:'DEFINES=-DDEFAULT_SOUND_DIR=\\"`pwd`/../sounds\\"':\
 'DEFINES=-DDEFAULT_SERVER=\\"localhost\\" -DDEFAULT_SOUND_DIR=\\"${GAMES_DATADIR}/${PN}/sounds\\"': Makefile.in \
-		|| die "src_unpack failed"
+		|| die "sed failed"
 }
 
 src_compile() {

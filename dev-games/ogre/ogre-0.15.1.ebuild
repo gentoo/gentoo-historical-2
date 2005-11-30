@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/ogre/ogre-0.15.1.ebuild,v 1.1 2004/12/10 11:39:36 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/ogre/ogre-0.15.1.ebuild,v 1.1.1.1 2005/11/30 09:44:37 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/ogre/${PN}-linux_osx-v${PV//./-}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
 IUSE="doc gtk"
 
 RDEPEND="virtual/opengl

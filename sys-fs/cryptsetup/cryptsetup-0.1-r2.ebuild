@@ -1,23 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup/cryptsetup-0.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:44:30 chriswhite Exp $
 
 inherit linux-info multilib eutils
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="http://www.saout.de/misc/dm-crypt/"
-SRC_URI="http://www.saout.de/misc/dm-crypt/${PN}-${PV}.tar.bz2"
+SRC_URI="http://www.saout.de/misc/dm-crypt/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~s390 ~sparc ~x86"
 IUSE=""
 
-DEPEND=">=sys-fs/device-mapper-1.00.07-r1
-	>=dev-libs/libgcrypt-1.1.42
+RDEPEND=">=sys-fs/device-mapper-1.00.07-r1
 	!sys-fs/cryptsetup-luks"
-
-S=${WORKDIR}/${PN}-${PV}
+DEPEND="dev-libs/popt
+	>=dev-libs/libgcrypt-1.1.42
+	dev-libs/libgpg-error"
 
 dm-crypt_check() {
 	ebegin "Checking for dm-crypt support"

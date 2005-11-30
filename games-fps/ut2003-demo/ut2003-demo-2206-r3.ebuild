@@ -1,72 +1,79 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-demo/ut2003-demo-2206-r3.ebuild,v 1.1 2004/04/02 03:47:28 wolf31o2 Exp $.
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-demo/ut2003-demo-2206-r3.ebuild,v 1.1.1.1 2005/11/30 09:39:44 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="Unreal Tournament 2003 Demo"
 HOMEPAGE="http://www.ut2003.com/"
 SRC_URI="http://unreal.epicgames.com/linux/ut2003/ut2003demo-lnx-${PV}.sh.bin
-	http://download.factoryunreal.com/mirror/UT2003CrashFix.zip"
+	http://download.factoryunreal.com/mirror/UT2003CrashFix.zip
+	http://dev.gentoo.org/~wolf31o2/sources/${PN}/${PN}-misc.tar.bz2"
 
 LICENSE="ut2003-demo"
 SLOT="0"
-KEYWORDS="-* x86"
+KEYWORDS="-* ~amd64 x86"
+IUSE=""
 RESTRICT="nostrip"
 
 DEPEND="virtual/opengl
 	app-arch/unzip"
-IUSE=""
 
-S=${WORKDIR}
+S="${WORKDIR}"
+dir="${GAMES_PREFIX_OPT}/${PN}"
+Ddir="${D}/${dir}"
 
 pkg_setup() {
-	check_license
+	check_license ut2003-demo
 	games_pkg_setup
 }
 
 src_unpack() {
 	unpack_makeself ${DISTDIR}/ut2003demo-lnx-${PV}.sh.bin \
 		|| die "unpacking demo"
-	unzip unzip ${DISTDIR}/UT2003CrashFix.zip \
+	unzip "${DISTDIR}/UT2003CrashFix.zip" \
 		|| die "unpacking crash-fix"
 	tar -zxf setupstuff.tar.gz || die
 }
 
 src_install() {
+	local f
+
 	einfo "This will take a while ... go get a pizza or something"
 
-	local dir=${GAMES_PREFIX_OPT}/${PN}
-	dodir ${dir}
+	dodir "${dir}"
 
-	tar -jxvf ut2003lnx_demo.tar.bz2 -C ${D}/${dir} || die
-	tar -jxvf ${FILESDIR}/misc.tar.bz2 -C ${D}/${dir} || die
+	tar -jxvf ut2003lnx_demo.tar.bz2 -C "${Ddir}" || die
+	tar -jxvf "${DISTDIR}/${PN}-misc.tar.bz2" -C "${Ddir}" || die
 
 	# fix the benchmark configurations to use SDL rather than the Windows driver
-	cd ${D}/${dir}/Benchmark/Stuff
 	for f in MaxDetail.ini MinDetail.ini ; do
-		dosed 's/RenderDevice=D3DDrv.D3DRenderDevice/\;RenderDevice=D3DDrv.D3DRenderDevice/' ${dir}/Benchmark/Stuff/${f}
-		dosed 's/ViewportManager=WinDrv.WindowsClient/\;ViewportManager=WinDrv.WindowsClient/' ${dir}/Benchmark/Stuff/${f}
-		dosed 's/\;RenderDevice=OpenGLDrv.OpenGLRenderDevice/RenderDevice=OpenGLDrv.OpenGLRenderDevice/' ${dir}/Benchmark/Stuff/${f}
-		dosed 's/\;ViewportManager=SDLDrv.SDLClient/ViewportManager=SDLDrv.SDLClient/' ${dir}/Benchmark/Stuff/${f}
+		sed -i \
+			-e 's/RenderDevice=D3DDrv.D3DRenderDevice/\;RenderDevice=D3DDrv.D3DRenderDevice/' \
+			-e 's/ViewportManager=WinDrv.WindowsClient/\;ViewportManager=WinDrv.WindowsClient/' \
+			-e 's/\;RenderDevice=OpenGLDrv.OpenGLRenderDevice/RenderDevice=OpenGLDrv.OpenGLRenderDevice/' \
+			-e 's/\;ViewportManager=SDLDrv.SDLClient/ViewportManager=SDLDrv.SDLClient/' \
+			"${Ddir}/Benchmark/Stuff/${f}" \
+			|| die "sed ${dir}/Benchmark/Stuff/${f} failed"
 	done
 
 	# have the benchmarks run the nifty wrapper script rather than ../System/ut2003-bin directly
-	cd ${D}/opt/ut2003-demo/Benchmark
-	for f in ${D}/${dir}/Benchmark/*-*.sh ; do
-		dosed 's:\.\./System/ut2003-bin:../ut2003_demo:' ${f}
+	for f in "${Ddir}/Benchmark/"*-*.sh ; do
+		sed -i \
+			-e 's:\.\./System/ut2003-bin:../ut2003_demo:' "${f}" \
+			|| die "sed ${f} failed"
 	done
 
 	# Wrapper and benchmark-scripts
-	insinto ${GAMES_BINDIR}
-	dogamesbin ${FILESDIR}/ut2003-demo
-	exeinto ${dir}/Benchmark
-	doexe ${FILESDIR}/{benchmark,results.sh}
+	dogamesbin "${FILESDIR}/ut2003-demo" || die "dogamesbin failed"
+	exeinto "${dir}/Benchmark"
+	doexe "${FILESDIR}/"{benchmark,results.sh} || die "doexe failed"
 
 	# Here we apply DrSiN's crash patch
-	cp ${S}/CrashFix/System/crashfix.u ${Ddir}/System
+	cp "${S}/CrashFix/System/crashfix.u" "${Ddir}/System" \
+		|| die "CrashFix failed"
 
-ed ${Ddir}/System/Default.ini >/dev/null 2>&1 <<EOT
+ed "${Ddir}/System/Default.ini" >/dev/null 2>&1 <<EOT
 $
 ?Engine.GameInfo?
 a
@@ -76,17 +83,15 @@ w
 q
 EOT
 
-	# create menu entry (closes bug #27594)
-	insinto /usr/share/applications
-	newins ${S}/opt/ut2003-demo/Unreal.xpm UT2003-demo.xpm
-	make_desktop_entry ut2003-demo "Unreal Tournament 2003 (Demo)" UT2003-demo.xpm
+	newicon Unreal.xpm ut2003-demo.xpm
+	make_desktop_entry ut2003-demo "Unreal Tournament 2003 (Demo)" ${PN}.xpm
 
 	prepgamesdirs
 }
 
 pkg_postinst() {
-	einfo "To play the game run:"
-	einfo " ut2003"
+	einfo "To play the demo run:"
+	einfo " ut2003-demo"
 	echo
 	einfo "You can run benchmarks by typing 'ut2003-demo --bench' (MinDetail seems"
 	einfo "to not be working for some unknown reason :/)"
@@ -96,7 +101,7 @@ pkg_postinst() {
 	echo
 	ewarn "If you are not installing for the first time and you plan on running"
 	ewarn "a server, you will probably need to edit your"
-	ewarn "~/.ut2003/System/UT2003.ini file and add a line that says"
+	ewarn "~/.ut2003demo/System/UT2003.ini file and add a line that says"
 	ewarn "AccessControlClass=crashfix.iaccesscontrolini to your"
 	ewarn "[Engine.GameInfo] section to close a security issue."
 

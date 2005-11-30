@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.4.3-r1.ebuild,v 1.1 2005/06/11 02:18:05 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/doxygen/doxygen-1.4.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:42:36 chriswhite Exp $
 
 inherit eutils
 
@@ -10,13 +10,13 @@ SRC_URI="ftp://ftp.stack.nl/pub/users/dimitri/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 sparc x86 ~ppc-macos"
 IUSE="doc qt tetex"
 
 RDEPEND="media-gfx/graphviz
-	qt? ( x11-libs/qt )
-	doc? ( tetex? ( virtual/tetex )
-	virtual/ghostscript )"
+	qt? ( =x11-libs/qt-3* )
+	tetex? ( virtual/tetex )
+	virtual/ghostscript"
 DEPEND=">=sys-apps/sed-4
 	${RDEPEND}"
 
@@ -29,17 +29,21 @@ src_unpack() {
 		tmake/lib/linux-g++/tmake.conf
 	epatch ${FILESDIR}/${P}-cp1251.patch
 	epatch ${FILESDIR}/${P}-nls.patch
-	use ppc-macos && epatch ${FILESDIR}/bsd-configure.patch
+	if use userland_Darwin; then
+		epatch ${FILESDIR}/bsd-configure.patch
+		[[ "$MACOSX_DEPLOYMENT_TARGET" == "10.4" ]] && 	sed -i -e 's:-D__FreeBSD__:-D__FreeBSD__=5:' \
+			tmake/lib/macosx-c++/tmake.conf
+	fi
 }
 
 src_compile() {
 	# set ./configure options (prefix, Qt based wizard, docdir)
-	local confopts="--prefix ${D}/usr"
+	local confopts="--prefix ${D}usr"
 	use qt && confopts="${confopts} --with-doxywizard"
 
 	# ./configure and compile
 	./configure ${confopts} || die '"./configure" failed.'
-	make DESTDIR="${D}" all || die '"make all" failed.'
+	emake all || die 'emake failed'
 
 	# generate html and pdf (if tetex in use) documents.
 	# errors here are not considered fatal, hence the ewarn message
@@ -64,7 +68,8 @@ src_compile() {
 }
 
 src_install() {
-	make install || die '"make install" failed.'
+	make DESTDIR=${D} MAN1DIR=share/man/man1 \
+		install || die '"make install" failed.'
 
 	dodoc INSTALL LANGUAGE.HOWTO LICENSE README VERSION
 
@@ -80,11 +85,11 @@ src_install() {
 
 pkg_postinst() {
 
-	ewarn ""
+	ewarn
 	einfo "The USE flags qt, doc, and tetex will enable doxywizard, or"
 	einfo "the html and pdf documentation, respectively.  For examples"
 	einfo "and other goodies, see the source tarball.  For some example"
 	einfo "output, run doxygen on the doxygen source using the Doxyfile"
 	einfo "provided in the top-level source dir."
-	ewarn ""
+	ewarn
 }

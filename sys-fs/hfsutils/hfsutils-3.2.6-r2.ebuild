@@ -1,21 +1,21 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/hfsutils/hfsutils-3.2.6-r2.ebuild,v 1.1 2003/09/15 17:46:25 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/hfsutils/hfsutils-3.2.6-r2.ebuild,v 1.1.1.1 2005/11/30 09:44:28 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="HFS FS Access utils"
-SRC_URI="ftp://ftp.mars.org/pub/hfs/${P}.tar.gz"
 HOMEPAGE="http://www.mars.org/home/rob/proj/hfs/"
+SRC_URI="ftp://ftp.mars.org/pub/hfs/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="ppc ~x86"
 IUSE="tcltk"
 
-KEYWORDS="ppc ~x86"
-SLOT="0"
-LICENSE="GPL-2"
-
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	tcltk? ( dev-lang/tcl dev-lang/tk )"
 RDEPEND=""
-
-MAKEOPTS='PREFIX=/usr MANDIR=/usr/share/man'
 
 src_unpack() {
 	unpack ${A}
@@ -28,7 +28,7 @@ src_compile() {
 	use tcltk && myconf="--with-tcl --with-tk"
 
 	econf ${myconf} || die
-	emake || die
+	emake PREFIX=/usr MANDIR=/usr/share/man || die
 }
 
 src_install() {

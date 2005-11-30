@@ -1,6 +1,10 @@
 # ChangeLog for app-emacs/mu-cite
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mu-cite/ChangeLog,v 1.1 2004/10/22 10:51:23 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mu-cite/ChangeLog,v 1.1.1.1 2005/11/30 09:41:16 chriswhite Exp $
+
+  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  mu-cite-8.1_p20020225.ebuild:
+  Keywording ~amd64.
 
 *mu-cite-8.1_p20020225 (22 Oct 2004)
 

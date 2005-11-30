@@ -1,6 +1,18 @@
-# ChangeLog for app-misc/xbatt
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbatt/ChangeLog,v 1.1 2003/11/18 16:13:08 port001 Exp $
+# ChangeLog for x11-misc/xbatt
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbatt/ChangeLog,v 1.1.1.1 2005/11/30 09:40:47 chriswhite Exp $
+
+  01 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> xbatt-1.2.1.ebuild:
+  fix LICENSE; tidy
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> xbatt-1.2.1.ebuild:
+  Typo in DESCRIPTION: indicataor -> indicator. Bug 59717.
+
+  14 Jun 2004; <pyrania@gentoo.org> xbatt-1.2.1.ebuild:
+  Added IUSE.
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xbatt-1.2.1.ebuild:
+  Ebuild fixups.
 
 *xbatt-1.2.1 (18 Nov 2003)
 

@@ -1,19 +1,22 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/php-docs/php-docs-200403.ebuild,v 1.1 2004/03/28 20:56:49 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/php-docs/php-docs-200403.ebuild,v 1.1.1.1 2005/11/30 09:42:32 chriswhite Exp $
 
 # if you update this ebuild, you *must* also update the php-2.eclass to
 # depend on the new manual
 
-S=${WORKDIR}
 DESCRIPTION="HTML documentation for PHP"
-SRC_URI="mirror://gentoo/php_manual_en-${PV}.tar.gz"
 HOMEPAGE="http://www.php.net/download-docs.php"
-DEPEND=""
-SLOT="0"
+SRC_URI="mirror://gentoo/php_manual_en-${PV}.tar.gz"
+
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha"
+SLOT="0"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 ppc64"
 IUSE=""
+
+DEPEND=""
+
+S=${WORKDIR}
 
 src_install() {
 	dohtml *

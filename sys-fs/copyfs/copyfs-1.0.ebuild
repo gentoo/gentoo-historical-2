@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/copyfs/copyfs-1.0.ebuild,v 1.1 2004/12/16 22:21:34 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/copyfs/copyfs-1.0.ebuild,v 1.1.1.1 2005/11/30 09:44:15 chriswhite Exp $
 
 inherit eutils
 DESCRIPTION="fuse-based filesystem for maintaining configuration files"
@@ -8,14 +8,12 @@ HOMEPAGE="http://invaders.mars-attacks.org/~boklm/copyfs/"
 SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-x86"
+KEYWORDS="~x86"
 IUSE=""
 #RESTRICT="nostrip"
 DEPEND=">=sys-fs/fuse-2.0
 	sys-apps/attr"
 #RDEPEND=""
-
-S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}
@@ -30,11 +28,6 @@ src_unpack() {
 	#
 	# patch by stuart@gentoo.org
 	epatch ${FILESDIR}/${P}-unlink.patch
-}
-
-src_compile() {
-	econf || die "econf failed"
-	emake || die "emake failed"
 }
 
 src_install() {

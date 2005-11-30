@@ -1,6 +1,57 @@
 # ChangeLog for sys-fs/cryptsetup-luks
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup-luks/ChangeLog,v 1.1 2005/06/01 23:10:17 strerror Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/cryptsetup-luks/ChangeLog,v 1.1.1.1 2005/11/30 09:44:29 chriswhite Exp $
+
+  10 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  cryptsetup-luks-1.0.1.ebuild:
+  Stable on sparc wrt #109039
+
+  18 Oct 2005; Brent Baude <ranger@gentoo.org> cryptsetup-luks-1.0.1.ebuild:
+  Marking cryptsetup-luks-1.0.1 ~ppc64 as dep to pmount
+
+  17 Oct 2005; Petteri Räty <betelgeuse@gentoo.org>
+  cryptsetup-luks-1.0.1.ebuild:
+  Marked stable on x86. Bug #109039.
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org>
+  cryptsetup-luks-1.0.1.ebuild:
+  Marked ppc stable for bug #109039.
+
+  13 Oct 2005; Luis Medinas <metalgod@gentoo.org>
+  cryptsetup-luks-1.0.1.ebuild:
+  Marked Stable on amd64. Bug #109039.
+
+  20 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  cryptsetup-luks-1.0.1.ebuild:
+  Keyworded ~sparc
+
+  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org>
+  cryptsetup-luks-1.0.1.ebuild:
+  Marked ~amd64.
+
+  08 Aug 2005; Aaron Walker <ka0ttic@gentoo.org>
+  cryptsetup-luks-1.0.1.ebuild:
+  Added ~mips.
+
+*cryptsetup-luks-1.0.1 (11 Jul 2005)
+
+  11 Jul 2005; Benjamin Smee <strerror@gentoo.org>
+  +cryptsetup-luks-1.0.1.ebuild:
+  Version bump.
+
+  16 Jun 2005; David Holm <dholm@gentoo.org> cryptsetup-luks-1.0-r1.ebuild:
+  Added to ~ppc.
+
+*cryptsetup-luks-1.0-r1 (15 Jun 2005)
+
+  15 Jun 2005; Benjamin Smee <strerror@gentoo.org> files/cryptfs.confd,
+  files/dm-crypt-start.sh, +cryptsetup-luks-1.0-r1.ebuild:
+  Added einfo. Hacked type=luks support into dm-crypt.start. Expanded cryptfs
+  configuration examples.
+
+  02 Jun 2005; Benjamin Smee <strerror@gentoo.org> +files/cryptfs.confd,
+  cryptsetup-luks-1.0.ebuild:
+  Changed to include cryptfs
 
 *cryptsetup-luks-1.0 (02 Jun 2005)
 

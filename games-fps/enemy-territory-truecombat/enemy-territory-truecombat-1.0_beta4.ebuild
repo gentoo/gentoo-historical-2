@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory-truecombat/enemy-territory-truecombat-1.0_beta4.ebuild,v 1.1 2005/06/23 19:39:58 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/enemy-territory-truecombat/enemy-territory-truecombat-1.0_beta4.ebuild,v 1.1.1.1 2005/11/30 09:39:42 chriswhite Exp $
 
 MOD_DESC="True Combat"
 MOD_NAME=tcetest

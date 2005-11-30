@@ -1,7 +1,7 @@
 #!/bin/sh
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/files/acpid-1.0.4-default.sh,v 1.1 2005/03/15 19:15:53 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/files/acpid-1.0.4-default.sh,v 1.1.1.1 2005/11/30 09:42:39 chriswhite Exp $
 
 # Default acpi script that takes an entry for all actions
 

@@ -1,19 +1,22 @@
-# Copyright 2002 Gentoo Technologies, Inc.
-# Author: Stacy Keast <slik@telusplanet.net>
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbrb/bbrb-0.4.1.ebuild,v 1.1 2002/04/30 05:22:42 seemant Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/bbrb/bbrb-0.4.1.ebuild,v 1.1.1.1 2005/11/30 09:40:26 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="blackbox background manager."
-SRC_URI="http://prdownloads.sourceforge.net/${PN}/${P}.tar.gz"
+IUSE=""
+DESCRIPTION="Background manager for blackbox/fluxbox/openbox"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://bbrb.sourceforge.net"
 
-DEPEND="x11-libs/gtk+
+DEPEND="=x11-libs/gtk+-1.2*
 	media-libs/imlib"
 
 RDEPEND="media-gfx/xv
 	x11-terms/eterm
 	virtual/blackbox"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc ppc"
 
 src_install () {
 	einstall || die
@@ -21,10 +24,8 @@ src_install () {
 
 pkg_postinst() {
 
-	if [ -f /usr/bin/fluxbox ]
-	then
-		einfo
-		einfo "Warning: This will NOT work for fluxbox"
-		einfo
-	fi
+	( [ -f /usr/bin/fluxbox ] || [ -f /usr/bin/openbox ] ) && ( \
+		einfo "Please see http://bbrb.sf.net to make this work with"
+		einfo "fluxbox/openbox"
+	)
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/canfep/canfep-1.0.ebuild,v 1.1 2004/05/01 10:58:36 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/canfep/canfep-1.0.ebuild,v 1.1.1.1 2005/11/30 09:40:09 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.geocities.co.jp/SiliconValley-Bay/7584/canfep/${P}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 -alpha ~sparc ~ppc"
+KEYWORDS="x86 -alpha ~sparc ppc"
 
 DEPEND="app-i18n/canna
 	sys-libs/ncurses"
@@ -23,7 +23,7 @@ src_unpack() {
 
 	unpack ${P}.tar.gz
 	cd ${S}
-	epatch ${DISTDIR}/canfep_utf8.diff
+	use unicode && epatch ${DISTDIR}/canfep_utf8.diff
 }
 
 src_compile() {

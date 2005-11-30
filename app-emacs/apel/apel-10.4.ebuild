@@ -1,8 +1,8 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/apel/apel-10.4.ebuild,v 1.1 2002/11/01 02:52:00 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/apel/apel-10.4.ebuild,v 1.1.1.1 2005/11/30 09:41:17 chriswhite Exp $
 
-inherit elisp 
+inherit elisp
 
 IUSE=""
 
@@ -14,9 +14,6 @@ SLOT="0"
 KEYWORDS="x86"
 
 DEPEND="virtual/emacs"
-
-
-S="${WORKDIR}/${P}"
 
 src_unpack() {
 	unpack ${A}
@@ -35,9 +32,9 @@ src_install() {
 		LISPDIR=${D}/${SITELISP} \
 		VERSION_SPECIFIC_LISPDIR=${D}/${SITELISP} install || die
 
- 	elisp-site-file-install ${FILESDIR}/50apel-gentoo.el
+	elisp-site-file-install ${FILESDIR}/50apel-gentoo.el
 
- 	dodoc ChangeLog README*
+	dodoc ChangeLog README*
 }
 
 pkg_postinst() {

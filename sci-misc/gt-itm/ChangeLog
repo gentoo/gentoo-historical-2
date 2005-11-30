@@ -1,6 +1,9 @@
-# ChangeLog for app-sci/gt-itm
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/gt-itm/ChangeLog,v 1.1 2004/12/27 21:03:43 ribosome Exp $
+# ChangeLog for sci-misc/gt-itm
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/gt-itm/ChangeLog,v 1.1.1.1 2005/11/30 09:44:32 chriswhite Exp $
+
+  24 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> gt-itm-19961004.ebuild:
+  No longer using cp -a (bug #103487)
 
 *gt-itm-19961004 (27 Dec 2004)
 
