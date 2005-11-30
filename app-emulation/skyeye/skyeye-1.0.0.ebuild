@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/skyeye/skyeye-1.0.0.ebuild,v 1.1 2005/09/27 02:02:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/skyeye/skyeye-1.0.0.ebuild,v 1.1.1.1 2005/11/30 10:08:53 chriswhite Exp $
 
 DESCRIPTION="an ARM embedded hardware simulator"
 HOMEPAGE="http://www.skyeye.org/"

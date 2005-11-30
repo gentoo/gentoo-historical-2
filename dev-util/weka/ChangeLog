@@ -1,6 +1,41 @@
 # ChangeLog for dev-util/weka
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/weka/ChangeLog,v 1.1 2004/05/16 19:11:57 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/weka/ChangeLog,v 1.1.1.1 2005/11/30 10:05:28 chriswhite Exp $
+
+  07 May 2005; David Holm <dholm@gentoo.org> weka-3.4.3_p20041113.ebuild:
+  Added to ~ppc.
+
+  04 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> weka-3.4.1-r1.ebuild,
+  weka-3.4.1.ebuild, weka-3.4.3_p20041113.ebuild:
+  added missing jikes dependency. fixes #84053
+
+  22 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  weka-3.4.3_p20041113.ebuild:
+  stable on amd64 an x86.
+
+*weka-3.4.3_p20041113 (19 Dec 2004)
+
+  19 Dec 2004; <karltk@gentoo.org> +files/weka-build_xml.patch,
+  +weka-3.4.3_p20041113.ebuild:
+  New upstream version. Ebuild submitted by the ever so industriuos Jan
+  Brinkmann <lucky@the-luckyduck.de>. Fixes #50414.
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> weka-3.4.1-r1.ebuild,
+  weka-3.4.1.ebuild:
+  depend on app-arch/unzip
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> weka-3.4.1-r1.ebuild,
+  weka-3.4.1.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+*weka-3.4.1-r1 (07 Oct 2004)
+
+  07 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +weka-3.4.1-r1.ebuild:
+  now builds from source, bug 63303
+
+  30 Aug 2004; Chris Aniszczyk <zx@gentoo.org> weka-3.4.1.ebuild:
+  Marking x86
 
 *weka-3.4.1 (16 May 2004)
 

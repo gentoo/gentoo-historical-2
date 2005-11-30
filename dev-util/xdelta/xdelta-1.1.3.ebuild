@@ -1,25 +1,28 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Terry Chan <tchan@enteract.com>
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xdelta/xdelta-1.1.3.ebuild,v 1.1 2002/01/10 22:22:43 hallski Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xdelta/xdelta-1.1.3.ebuild,v 1.1.1.1 2005/11/30 10:05:26 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="Computes changes between binary or text files and creates deltas"
-SRC_URI="http://prdownloads.sourceforge.net/xdelta/${P}.tar.gz"
 HOMEPAGE="http://xdelta.sourceforge.net"
-DEPEND="virtual/glibc
-        >=dev-libs/glib-1.2.10
-        >=sys-libs/zlib-1.1.3"
+SRC_URI="mirror://sourceforge/xdelta/${P}.tar.gz"
 
-src_compile() {
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--mandir=/usr/share/man || die "./configure failed"
-	emake || die
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 ~ia64 ppc ppc64 sparc x86"
+IUSE=""
+
+DEPEND="=dev-libs/glib-1.2*
+	>=sys-libs/zlib-1.1.4"
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-m4.patch
 }
 
-src_install () {
-	make DESTDIR=${D} install || die
-        dodoc AUTHORS ChangeLog COPYING NEWS README
+src_install() {
+	make DESTDIR="${D}" install || die
+	dodoc AUTHORS ChangeLog NEWS README
 }

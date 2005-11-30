@@ -1,26 +1,26 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pal/pal-0.3.3.ebuild,v 1.1 2004/03/16 07:57:04 wschlich Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pal/pal-0.3.3.ebuild,v 1.1.1.1 2005/11/30 10:06:07 chriswhite Exp $
 
-IUSE=""
 DESCRIPTION="pal command-line calendar program"
-SRC_URI="mirror://sourceforge/palcal/${P}.tgz"
 HOMEPAGE="http://palcal.sourceforge.net/"
+SRC_URI="mirror://sourceforge/palcal/${P}.tgz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
-
-S="${WORKDIR}/${P}/src"
+SLOT="0"
+KEYWORDS="x86 ppc ~amd64"
+IUSE=""
 
 DEPEND=">=dev-libs/glib-2.0
 	sys-devel/gettext
-	virtual/glibc
+	virtual/libc
 	sys-libs/readline"
 
+S="${WORKDIR}/${P}/src"
+
 src_unpack() {
-	unpack "${A}"
-	cd "${S}"
+	unpack ${A}
+	cd ${S}
 	sed -i -e "s;^\(OPT[[:space:]]\+=\) -O2 -Wall;\1 ${CFLAGS};" Makefile.defs
 }
 
@@ -31,4 +31,3 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install-no-rm || die "make install failed"
 }
-

@@ -1,6 +1,35 @@
-# ChangeLog for net-www/cvsweb
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cvsweb/ChangeLog,v 1.1 2004/08/15 17:26:18 stuart Exp $
+# ChangeLog for dev-util/cvsweb
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cvsweb/ChangeLog,v 1.1.1.1 2005/11/30 10:05:03 chriswhite Exp $
+
+*cvsweb-3.0.6 (01 Oct 2005)
+
+  01 Oct 2005; Renat Lumpau <rl03@gentoo.org> +cvsweb-3.0.6.ebuild:
+  Version bump
+
+  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/reconfig:
+  Housekeeping
+
+  16 Apr 2005; Elfyn McBratney <beu@gentoo.org> cvsweb-1.93-r1.ebuild,
+  cvsweb-1.112.ebuild:
+  Fix HOMEPAGE and SRC_URI, thanks to Alex Polvi (bug #77557).
+
+*cvsweb-3.0.5 (16 Apr 2005)
+
+  16 Apr 2005; Elfyn McBratney <beu@gentoo.org> +cvsweb-3.0.5.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*cvsweb-3.0.1 (25 Aug 2004)
+
+  25 Aug 2004; Renat Lumpau <rl03@gentoo.org> cvsweb-3.0.1.ebuild:
+  Explicitly +x the cgi.
+
+  18 Aug 2004; Renat Lumpau <rl03@gentoo.org> :
+  Version bump (bug #43546). Thanks to Rodney Amato <rodnet@iinet.net.au>
+  for his initial ebuild.
 
 *cvsweb-1.112 (15 Aug 2004)
 

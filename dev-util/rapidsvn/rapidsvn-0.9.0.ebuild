@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rapidsvn/rapidsvn-0.9.0.ebuild,v 1.1 2005/11/08 07:11:11 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rapidsvn/rapidsvn-0.9.0.ebuild,v 1.1.1.1 2005/11/30 10:05:21 chriswhite Exp $
 
 inherit eutils libtool
 

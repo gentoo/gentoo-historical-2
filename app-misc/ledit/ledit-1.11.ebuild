@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ledit/ledit-1.11.ebuild,v 1.1 2004/02/08 22:27:40 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ledit/ledit-1.11.ebuild,v 1.1.1.1 2005/11/30 10:06:03 chriswhite Exp $
 
 IUSE=""
 
@@ -9,11 +9,11 @@ SRC_URI="ftp://ftp.inria.fr/INRIA/Projects/cristal/Daniel.de_Rauglaudre/Tools/${
 HOMEPAGE="http://cristal.inria.fr/~ddr/"
 
 DEPEND=">=dev-lang/ocaml-3.06"
-RDEPEND="${DEPEND}"
+RDEPEND=""
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc ~amd64"
 
 src_compile()
 {

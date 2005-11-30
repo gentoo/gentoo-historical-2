@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-periodic-table/cl-periodic-table-1.0.ebuild,v 1.1 2005/02/10 22:22:15 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-periodic-table/cl-periodic-table-1.0.ebuild,v 1.1.1.1 2005/11/30 10:08:19 chriswhite Exp $
 
 inherit common-lisp eutils
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://common-lisp.net/project/chemboy/
 SRC_URI="mirror://gentoo/periodic-table-${PV}.tar.gz"
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE=""
 
 DEPEND="dev-lisp/common-lisp-controller

@@ -1,8 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Bart Lauwers <blauwers@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mouseremote/files/mouseremote.start,v 1.1 2002/05/09 11:30:02 blauwers Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mouseremote/files/mouseremote.start,v 1.1.1.1 2005/11/30 10:06:10 chriswhite Exp $
 
 depend() {
 	use modules logger

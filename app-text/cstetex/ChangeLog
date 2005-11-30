@@ -1,6 +1,35 @@
 # ChangeLog for app-text/cstetex
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/cstetex/ChangeLog,v 1.1 2003/11/12 19:51:41 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/cstetex/ChangeLog,v 1.1.1.1 2005/11/30 10:06:49 chriswhite Exp $
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> cstetex-2.0.2-r1.ebuild:
+  stable on amd64
+
+  05 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> -cstetex-2.0.2.ebuild,
+  cstetex-2.0.2-r1.ebuild:
+  Changed to use tetex-2.eclass.
+
+  20 Jan 2005; Olivier Crête <tester@gentoo.org> cstetex-2.0.2-r1.ebuild:
+  Stable on x86 wrt security bug #75801
+
+*cstetex-2.0.2-r1 (20 Jan 2005)
+
+  20 Jan 2005; MATSUU Takuto <matsuu@gentoo.org> +files/xdvizilla.patch,
+  +files/xpdf-3.00pl2-CAN-2004-1125.patch,
+  +files/xpdf-3.00pl3-CAN-2005-0064.patch,
+  +files/xpdf-CESA-2004-007-xpdf2-newer.diff, +files/xpdf-goo-sizet.patch,
+  +files/xpdf2-underflow.patch, +cstetex-2.0.2-r1.ebuild:
+  Security bump; Bug #75801
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Corrected metadata.xml to match DTD.
+
+  22 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> cstetex-2.0.2.ebuild:
+  Marked ~amd64.
+
+  02 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> cstetex-2.0.2.ebuild,
+  metadata.xml:
+  Marked stable on x86
 
 *cstetex-2.0.2 (13 Nov 2003)
 

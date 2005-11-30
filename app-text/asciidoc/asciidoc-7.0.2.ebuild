@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-7.0.2.ebuild,v 1.1 2005/11/18 05:17:23 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/asciidoc/asciidoc-7.0.2.ebuild,v 1.1.1.1 2005/11/30 10:06:50 chriswhite Exp $
 
 DESCRIPTION="A text document format for writing short documents, articles, books and UNIX man pages"
 HOMEPAGE="http://www.methods.co.nz/asciidoc/"

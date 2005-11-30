@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/orbit-2.12.2.ebuild,v 1.1 2005/04/17 13:34:04 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/orbit-2.12.2.ebuild,v 1.1.1.1 2005/11/30 10:09:00 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -14,13 +14,12 @@ SRC_URI="mirror://gnome/sources/ORBit2/${PVP[0]}.${PVP[1]}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="doc ssl"
 
 RDEPEND=">=dev-libs/glib-2
 	>=dev-libs/popt-1.5
 	>=dev-libs/libIDL-0.8.2
-	dev-util/indent
 	ssl? ( >=dev-libs/openssl-0.9.6 )"
 
 # FIXME linc is now integrated, but a block isn't necessary

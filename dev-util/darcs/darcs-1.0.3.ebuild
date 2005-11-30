@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/darcs/darcs-1.0.3.ebuild,v 1.1 2005/07/26 21:23:05 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/darcs/darcs-1.0.3.ebuild,v 1.1.1.1 2005/11/30 10:05:08 chriswhite Exp $
 
 DESCRIPTION="David's Advanced Revision Control System is yet another replacement for CVS"
 HOMEPAGE="http://abridgegame.org/darcs"
@@ -8,8 +8,7 @@ SRC_URI="http://abridgegame.org/darcs/${P/_rc/rc}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-# re-add ~amd64 once ghc-bin-6.2.2 exists
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc"
 # disabled wxwindows use flag for now, as I got build errors
 

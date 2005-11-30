@@ -1,28 +1,26 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gob/gob-1.0.12.ebuild,v 1.1 2002/03/27 05:45:40 blocke Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gob/gob-1.0.12.ebuild,v 1.1.1.1 2005/11/30 10:05:18 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="GOB is a preprocessor for making GTK+ objects with inline C code"
+DESCRIPTION="preprocessor for making GTK+ objects with inline C code"
 SRC_URI="http://ftp.5z.com/pub/gob/${P}.tar.gz"
 HOMEPAGE="http://www.5z.com/jirka/gob.html"
 
-RDEPEND=">=dev-libs/glib-1.2.10"
+SLOT="1"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc alpha hppa amd64"
+IUSE=""
 
+RDEPEND="=dev-libs/glib-1.2*"
 DEPEND="${RDEPEND}
 	sys-devel/flex"
 
 src_compile() {
-	./configure --host=${CHOST}					\
-		    --prefix=/usr					\
-		    --mandir=/usr/share/man 
-	assert
-
+	econf || die
 	make || die
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
-
-	dodoc AUTHORS COPYING ChangeLog NEWS README TODO
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/spim/spim-7.1.ebuild,v 1.1 2005/07/24 22:03:32 compnerd Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/spim/spim-7.1.ebuild,v 1.1.1.1 2005/11/30 10:08:50 chriswhite Exp $
 
 inherit eutils
 
@@ -10,12 +10,13 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 -amd64 ~ppc ~ppc-macos"
+KEYWORDS="-amd64 ~ppc ~ppc-macos ~x86"
 IUSE="X"
 
 RDEPEND="X? ( virtual/x11 )"
 DEPEND="${RDEPEND}
-		>=sys-apps/sed-4"
+		>=sys-apps/sed-4
+		x11-base/xorg-x11"
 
 RESTRICT="maketest"
 

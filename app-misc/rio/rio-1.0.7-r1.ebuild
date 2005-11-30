@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/rio/rio-1.0.7-r1.ebuild,v 1.1 2005/08/20 03:07:11 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/rio/rio-1.0.7-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:13 chriswhite Exp $
 
 inherit eutils
 

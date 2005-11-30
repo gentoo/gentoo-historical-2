@@ -1,6 +1,35 @@
 # ChangeLog for dev-util/jconfig
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/jconfig/ChangeLog,v 1.1 2004/02/21 21:55:58 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/jconfig/ChangeLog,v 1.1.1.1 2005/11/30 10:05:02 chriswhite Exp $
+
+  15 Oct 2005; Thomas Matthijs <axxo@gentoo.org> jconfig-2.8-r1.ebuild:
+  move dev-java/jmx dev-java/sun-jmx
+
+*jconfig-2.8-r1 (30 Oct 2004)
+
+  30 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +jconfig-2.8-r1.ebuild:
+  no longer uses packed jars #63308
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jconfig-2.5.ebuild,
+  jconfig-2.7.ebuild, jconfig-2.8.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+*jconfig-2.8 (01 Sep 2004)
+
+  01 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +jconfig-2.8.ebuild:
+  version bump
+
+*jconfig-2.7 (27 Aug 2004)
+
+  27 Aug 2004; Thomas Matthijs <axxo@gentoo.org> jconfig-2.5.ebuild,
+  +jconfig-2.7.ebuild:
+  version bump
+
+  15 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> :
+  fix broken package.
+
+*jconfig-2.5 (23 Feb 2004)
 
   23 Feb 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml:
   Initial Import. Thanks to Luca Santarelli <hrk@users.sourceforge.net> for the

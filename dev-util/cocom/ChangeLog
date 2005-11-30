@@ -1,6 +1,13 @@
 # ChangeLog for dev-util/cocom
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cocom/ChangeLog,v 1.1 2004/11/29 10:46:08 dholm Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cocom/ChangeLog,v 1.1.1.1 2005/11/30 10:04:52 chriswhite Exp $
+
+  05 Nov 2005; Fabian Groffen <grobian@gentoo.org>
+  +files/cocom-0.995-gcc4.patch, cocom-0.995.ebuild:
+  Added GCC4 patch and marked ~ppc-macos (bug #111617)
+
+  24 Feb 2005; Luca Barbato <lu_zero@gentoo.org> cocom-0.995.ebuild:
+  Marked ~x86
 
 *cocom-0.995 (29 Nov 2004)
 

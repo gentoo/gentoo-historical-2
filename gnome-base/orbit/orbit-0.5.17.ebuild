@@ -1,10 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/orbit-0.5.17.ebuild,v 1.1 2004/08/21 14:59:55 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/orbit-0.5.17.ebuild,v 1.1.1.1 2005/11/30 10:09:00 chriswhite Exp $
 
-inherit gnome.org libtool gnuconfig
-
-IUSE="nls"
+inherit gnome.org libtool gnuconfig eutils multilib
 
 MY_P="ORBit-${PV}"
 PVP=(${PV//[-\._]/ })
@@ -14,58 +12,58 @@ DESCRIPTION="A high-performance, lightweight CORBA ORB aiming for CORBA 2.2 comp
 HOMEPAGE="http://www.labs.redhat.com/orbit/"
 SRC_URI="mirror://gnome/sources/ORBit/${PVP[0]}.${PVP[1]}/${MY_P}.tar.bz2"
 
-DEPEND="virtual/libc
-	nls? ( sys-devel/gettext )
+LICENSE="GPL-2"
+SLOT="1"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE=""
+
+DEPEND="sys-devel/gettext
 	>=sys-apps/tcp-wrappers-7.6
 	=dev-libs/glib-1.2*"
+RDEPEND="=dev-libs/glib-1.2*"
 
-RDEPEND="virtual/libc
-	=dev-libs/glib-1.2*"
-
-SLOT="1"
-LICENSE="GPL-2"
-KEYWORDS="x86 sparc alpha mips hppa amd64 ppc ia64 ppc64"
-
-src_compile() {
-	if ! use nls ; then
-		myconf="--disable-nls"
-	fi
-
-	# Detect mips systems properly
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-m4.patch
 	gnuconfig_update
-
 	# Libtoolize to fix "relink bug" in older libtool's distributed
 	# with packages.
 	elibtoolize
+}
 
-	./configure --host=${CHOST} \
+src_compile() {
+	./configure \
+		--host=${CHOST} \
 		--prefix=/usr \
+		--libdir=/usr/$(get_libdir) \
 		--infodir=/usr/share/info \
 		--sysconfdir=/etc \
 		--localstatedir=/var/lib \
-		${myconf} || die
+		|| die
 
 	make || die # Doesn't work with -j 4 (hallski)
 }
 
 src_install() {
 	make prefix=${D}/usr \
+		libdir=${D}/usr/$(get_libdir) \
 		sysconfdir=${D}/etc \
 		infodir=${D}/usr/share/info \
 		localstatedir=${D}/var/lib \
 		install || die
 
-	dodoc AUTHORS COPYING* ChangeLog README NEWS TODO
+	dodoc AUTHORS ChangeLog README NEWS TODO
 	dodoc docs/*.txt docs/IDEA1
 
 	docinto idl
 	cd libIDL
-	dodoc AUTHORS BUGS COPYING NEWS README*
+	dodoc AUTHORS BUGS NEWS README*
 
 	docinto popt
 	cd ../popt
-	dodoc CHANGES COPYING README
+	dodoc CHANGES README
 
-	cd ${D}/usr/lib
-	patch -p0 < ${FILESDIR}/libIDLConf.sh-gentoo.diff
+	sed -i -e 's:-I/usr/include":-I/usr/include/libIDL-1.0":' \
+		${D}/usr/$(get_libdir)/libIDLConf.sh || die
 }

@@ -1,6 +1,116 @@
 # ChangeLog for app-text/sgml-common
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-text/sgml-common/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/sgml-common/ChangeLog,v 1.1.1.1 2005/11/30 10:07:06 chriswhite Exp $
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  18 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  cleaned up src_unpack (bug #63838); cleaned up src_install
+
+  10 Sep 2004; Hasan Khalil <gongloo@gentoo.org> sgml-common=0.6.3-r4.ebuild:
+  stable on macos
+
+  28 Jun 2004; Tom Gall <tgall@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  stable on ppc64 bug #54792
+
+  13 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  Stable on alpha.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> sgml-common-0.6.3-r4.ebuild :
+  Stable on AMD64.
+
+  28 Apr 2004; Guy Martin <gmsoft@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  Marked stable on hppa.
+
+  27 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  Stable on sparc
+
+  26 Apr 2004; Mike Gardiner <obz@gentoo.org> sgml-common-0.6.3-r3.ebuild,
+  sgml-common-0.6.3-r4.ebuild:
+  This has been ~x86 for way too long, for no reason. Marked -r4 x86 now. Fixed
+  S= in -r3 for fun
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  adding s390 keywords
+
+  21 Mar 2004; Joshua Kinard <kumba@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  Marked Stable on mips.
+
+  04 Mar 2004; Joshua Kinard <kumba@gentoo.org> sgml-common-0.6.3-r4.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  sgml-common-0.6.3-r4.ebuild:
+  set ppc in keywords
+
+  13 Sep 2003; Mike Gardiner <obz@gentoo.org> sgml-common-0.6.3-r1.ebuild,
+  sgml-common-0.6.3.ebuild:
+  Removed older versions
+
+  13 Sep 2003; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  sgml-common-0.6.3-r3.ebuild, sgml-common-0.6.3-r4.ebuild:
+  Added automake to depends, see bug #23080
+
+  10 Feb 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to keywords.
+
+*sgml-common-0.6.3-r4 (05 Feb 2003)
+
+  05 Feb 2003; Matthew Turk <satai@gentoo.org> :
+  Revision bump.  Now the install-catalog program puts quotations around the
+  catalog files, thus fixing sgmltools-lite.  Masking in package.mask and
+  ~arch.  Also included a script to convert the catalogs into the proper
+  format, with quotation marks.  In response to bug 12792.
+
+*sgml-common-0.6.3-r3 (30 Dec 2002)
+
+  30 Dec 2002; Matthew Turk <satai@gentoo.org> :
+  Changed the echo's around a bit, other misc bits.  Warrants a revision bump
+  just to make sure it gets caught with all the other SGML changes.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sgml-common-0.6.3-r2 (12 Sep 2002)
+  12 Sep 2002; satai <satai@gentoo.org> sgml-common-0.6.3-r2.ebuild :
+  Added more robust file checking.
+
+*sgml-common-0.6.3-r2 (12 Jul 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgml-common-0.6.3.ebuild :
+  Added LICENSE, SLOT.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgml-common-0.6.3-r2.ebuild :
+  Added LICENSE, SLOT.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
+
+  12 Jul 2002; Seemant Kulleen <seemant@gentoo.org> :
+
+  bumped revision so as to force a remerge.
+
+*sgml-common-0.6.3-r1 (30 Jun 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> sgml-common-0.6.3-r1.ebuild :
+  Added LICENSE, SLOT.
+  30 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Fix pkg_postrm() and pkg_prerm() to actually work.
+
+*sgml-common-0.6.3 (08 May 2002)
+  08 May 2002; Spider <spider@gentoo.org> sgml-common-0.6.3.ebuild:
+  the old version was removed from the server, responding to bug on irc.
+  
+*sgml-common-0.6.1-r1 (31 Mar 2002)
+
+  31 Mar 2002; Seemant Kulleen <seemant@gentoo.org> sgml-common-0.6.1-r1.ebuild:
+
+  Cleaned up ebuild.
 
 *sgml-common-0.6.1 (1 Feb 2002)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/jing/jing-20030619-r1.ebuild,v 1.1 2004/11/14 14:56:27 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/jing/jing-20030619-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:25 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -9,23 +9,23 @@ HOMEPAGE="http://thaiopensource.com/relaxng/jing.html"
 SRC_URI="http://www.thaiopensource.com/download/jing-${PV}.zip"
 LICENSE="BSD Apache-1.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64 ~ppc"
 IUSE="jikes doc"
-DEPEND=">=virtual/jdk-1.3
-	dev-java/saxon-bin
-	=dev-java/xerces-1.3.1
-	dev-java/iso-relax"
 RDEPEND=">=virtual/jre-1.3
-	dev-java/saxon-bin
-	=dev-java/xerces-1.3.1
+	=dev-java/saxon-bin-8*
+	=dev-java/xerces-1.3*
 	dev-java/iso-relax"
+DEPEND=">=virtual/jdk-1.3
+	${RDEPEND}
+	jikes? ( >=dev-java/jikes-1.21 )
+	app-arch/unzip"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
 	mkdir src/
-	unzip -d src/ src.zip
+	unzip -qq -d src/ src.zip || die "failed to unzip"
 	cd src/
 	epatch ${FILESDIR}/build-patch.diff
 
@@ -43,7 +43,7 @@ src_unpack() {
 src_compile() {
 	antflags="jar"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
-	ant ${antflags}
+	ant ${antflags} || die "failed to build"
 }
 
 src_install() {

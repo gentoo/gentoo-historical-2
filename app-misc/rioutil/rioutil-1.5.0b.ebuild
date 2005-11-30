@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/rioutil/rioutil-1.5.0b.ebuild,v 1.1 2005/04/22 09:03:10 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/rioutil/rioutil-1.5.0b.ebuild,v 1.1.1.1 2005/11/30 10:05:44 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/rioutil/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="sys-libs/zlib

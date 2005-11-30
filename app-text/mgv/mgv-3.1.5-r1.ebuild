@@ -1,7 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# /home/cvsroot/gentoo-x86/skel.build,v 1.2 2001/02/15 18:17:31 achim Exp
-# $Header: /var/cvsroot/gentoo-x86/app-text/mgv/mgv-3.1.5-r1.ebuild,v 1.1 2004/02/11 11:19:51 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/mgv/mgv-3.1.5-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:28 chriswhite Exp $
 
 inherit eutils
 
@@ -11,12 +10,13 @@ DESCRIPTION="Motif PostScript viewer loosely based on Ghostview"
 SRC_URI="http://www.trends.net/~mu/srcs/${P}.tar.gz"
 HOMEPAGE="http://www.trends.net/~mu/mgv.html"
 
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~x86 ~sparc ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="virtual/ghostscript
-	x11-libs/openmotif"
+DEPEND="x11-libs/openmotif"
+RDEPEND="${DEPEND}
+	virtual/ghostscript"
 
 src_unpack() {
 	unpack ${A}
@@ -33,10 +33,9 @@ src_install() {
 	dodoc AUTHORS COPYING ChangeLog NEWS README
 	dohtml doc/*.sgml
 
-	# move config file to /etc
-	dodir /etc/
-	mv ${D}/usr/share/mgv/${PV}/MGv ${D}/etc/mgv.conf
-	dosym /etc/mgv.conf /usr/share/mgv/${PV}/MGv
+	# move config file to /etc/X11/app-defaults
+	dodir /etc/X11/app-defaults
+	mv ${D}/usr/share/mgv/${PV}/MGv ${D}/etc/X11/app-defaults
 }
 
 pkg_postinst() {

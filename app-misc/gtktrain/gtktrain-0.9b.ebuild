@@ -1,38 +1,30 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gtktrain/gtktrain-0.9b.ebuild,v 1.1 2002/06/10 02:01:53 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gtktrain/gtktrain-0.9b.ebuild,v 1.1.1.1 2005/11/30 10:05:44 chriswhite Exp $
 
 DESCRIPTION="GUI app for calculating fastest train routes"
 SRC_URI="http://www.on.rim.or.jp/~katamuki/software/train/${P}.tar.gz"
 HOMEPAGE="http://www.on.rim.or.jp/~katamuki/software/train/"
+
+SLOT="0"
 LICENSE="GPL-2"
+KEYWORDS="~ppc x86"
+IUSE="nls"
+
 DEPEND=">=dev-libs/libtrain-0.9b
 	>=gnome-base/gnome-libs-1.4.1.2-r1"
 
 src_compile() {
-	if [ -z "`use nls`" ] ; then
-		NLS_OPTION="--disable-nls"
-	fi
-
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man \
-		${NLS_OPTION} || die "./configure failed"
-
+	use nls || NLS_OPTION="--disable-nls"
+	econf ${NLS_OPTION} || die "econf failed"
 	emake || die
 }
 
-src_install () {
-	make \
-		prefix=${D}/usr \
-		mandir=${D}/usr/share/man \
-		infodir=${D}/usr/share/info \
-		install || die
+src_install() {
+	einstall
 }
 
-pkg_postinst () {
-	einfo "Japanese train routes are located: "
+pkg_postinst() {
+	einfo "Japanese train routes are located:"
 	einfo "    http://www.oohito.com/data/train/index.htm"
 }

@@ -1,13 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/vimspell/vimspell-1.70.ebuild,v 1.1 2003/11/30 02:41:29 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimspell/vimspell-1.70.ebuild,v 1.1.1.1 2005/11/30 10:07:40 chriswhite Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: on-the-fly spell checking with aspell"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=465"
-LICENSE="GPL-1 | GPL-2"
-KEYWORDS="~x86 ~sparc"
+LICENSE="|| ( GPL-1 GPL-2 )"
+KEYWORDS="x86 sparc alpha ia64 ~ppc ~amd64"
+IUSE=""
 
 # In theory, this plugin supports either aspell or ispell. However,
 # virtual/spell has been removed by seemant in favour of just using
@@ -17,7 +18,8 @@ KEYWORDS="~x86 ~sparc"
 #   to aspell instead of ispell
 # 20:06 <@seemant> for the simple reason that ispell blows dogs
 # So we'll just force people to use aspell...
-RDEPEND="$RDEPEND app-text/aspell"
+# svncommand block is for a map conflict, bug #91965
+RDEPEND="$RDEPEND app-text/aspell !app-vim/svncommand"
 
 function src_unpack() {
 	unpack ${A}
@@ -54,4 +56,3 @@ function src_unpack() {
 	sed -e "/^function! s:SpellInstallDocumentation/a\    return 0" \
 		-i vimspell.vim || die "install fix failed"
 }
-

@@ -1,16 +1,17 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/fenris/fenris-0.07m-r2.ebuild,v 1.1 2004/02/05 01:30:37 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/fenris/fenris-0.07m-r2.ebuild,v 1.1.1.1 2005/11/30 10:04:51 chriswhite Exp $
 
-S=${WORKDIR}/${PN}
+inherit eutils
+
 DESCRIPTION="Fenris is a tracer, GUI debugger, analyzer, partial decompiler and much more"
 HOMEPAGE="http://razor.bindview.com/tools/fenris/"
 # dev-snapshot: http://lcamtuf.coredump.cx/fenris/fenris.tgz (2004/01/08)
 SRC_URI="mirror://gentoo/${P}-r1.tgz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="x86"
 IUSE=""
 
 DEPEND=">=sys-apps/portage-2.0.47-r10
@@ -18,10 +19,11 @@ DEPEND=">=sys-apps/portage-2.0.47-r10
 	app-misc/screen
 	sys-libs/ncurses
 	dev-libs/openssl
-	sys-kernel/linux-headers
+	virtual/os-headers
 	sys-devel/gdb"
-
 RDEPEND="sys-apps/gawk"
+
+S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
@@ -33,7 +35,8 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-dress.c.patch # update for latest binutils
 	epatch ${FILESDIR}/${P}-speedup.patch # to speed up makefile
 	epatch ${FILESDIR}/${P}-fnprints.patch # move fnprints to /etc/fenris
-	
+	epatch ${FILESDIR}/${P}-nls.patch # allow build to run on non-ascii locales
+
 	cd ${S}/doc/man
 	sed -i 's:/etc/fnprints.dat:/etc/fenris/fnprints.dat:' -i *
 }
@@ -70,7 +73,7 @@ src_install() {
 	into /usr
 	dobin fenris fprints getfprints ragnarok fenris-bug \
 		ragsplit dress aegir nc-aegir spliter.pl
-		
+
 }
 
 pkg_postinst() {

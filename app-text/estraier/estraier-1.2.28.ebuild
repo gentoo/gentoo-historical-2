@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/estraier/estraier-1.2.28.ebuild,v 1.1 2005/05/05 14:41:08 hattya Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/estraier/estraier-1.2.28.ebuild,v 1.1.1.1 2005/11/30 10:07:12 chriswhite Exp $
 
 IUSE="chasen debug kakasi mecab zlib"
 

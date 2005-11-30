@@ -1,35 +1,37 @@
-# Copyright 2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-midi/xmms-midi-0.03.ebuild,v 1.1 2002/10/31 14:39:32 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-midi/xmms-midi-0.03.ebuild,v 1.1.1.1 2005/11/30 10:07:17 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE=""
+
+inherit gnuconfig eutils
+
 DESCRIPTION="Timidity++ Dependent MIDI Plugun for XMMS"
 HOMEPAGE="http://ban.joh.cam.ac.uk/~cr212/xmms-midi/"
 SRC_URI="http://ban.joh.cam.ac.uk/~cr212/xmms-midi/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="amd64 ppc sparc x86"
 
 DEPEND="media-sound/xmms
-        media-sound/timidity++"
+	media-sound/timidity++"
 
 src_compile() {
+	gnuconfig_update
 	econf \
-		--prefix=/usr/lib
+		--prefix=/usr/$(get_libdir) || die "econf failed"
 		--with-xmms-prefix=/usr/include/xmms
 	emake || die
 }
 
 src_install() {
-	make DESTDIR=${D} libdir=/usr/lib/xmms/Input install || die
-	dodoc AUTHORS COPYING NEWS README
+	make DESTDIR=${D} libdir=`xmms-config --input-plugin-dir` install || die
+	dodoc AUTHORS NEWS README
 }
 
 pkg_postinst() {
-	if [ ! -f /etc/timidity.cfg ]
-	then
-		einfo "*** WARNING: XMMS will play all MIDI files silently until a"
-		einfo "working timidity.cfg has been placed in /etc!"
-	fi
+	einfo "*** WARNING: XMMS will play all MIDI files silently until a"
+	einfo "working timidity.cfg has been placed in /etc!  If you don't"
+	einfo "know how to do that, then just try emerging timidity-eawpatches"
 }

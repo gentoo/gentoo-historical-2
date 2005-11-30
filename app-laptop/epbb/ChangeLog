@@ -1,6 +1,6 @@
-# ChangeLog for sys-apps/epbb
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/epbb/ChangeLog,v 1.1 2004/10/18 13:23:48 brix Exp $
+# ChangeLog for app-laptop/epbb
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/epbb/ChangeLog,v 1.1.1.1 2005/11/30 10:05:39 chriswhite Exp $
 
 *epbb-0.0.5.20040201 (18 Oct 2004)
 

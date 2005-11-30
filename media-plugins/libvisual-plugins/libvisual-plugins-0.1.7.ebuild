@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/libvisual-plugins/libvisual-plugins-0.1.7.ebuild,v 1.1 2004/10/21 04:49:14 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/libvisual-plugins/libvisual-plugins-0.1.7.ebuild,v 1.1.1.1 2005/11/30 10:07:37 chriswhite Exp $
 
 IUSE=""
 
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~sparc ~x86 ~ppc"
 
 RDEPEND="virtual/opengl
 	media-libs/glut
-	media-libs/libvisual"
+	>=media-libs/libvisual-0.1.7"
 
 DEPEND="${RDEPEND}
 	sys-apps/sed

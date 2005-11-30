@@ -1,28 +1,29 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/aranym/aranym-0.8.6_beta.ebuild,v 1.1 2004/02/11 10:17:21 dholm Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/aranym/aranym-0.8.6_beta.ebuild,v 1.1.1.1 2005/11/30 10:08:58 chriswhite Exp $
 
 inherit flag-o-matic
 
 AFROS="afros-20040206.zip"
 S="${WORKDIR}/${PN}-0.8.6beta"
-DESCRIPTION="ARAnyM is a virtual machine software for running the Atari ST/TT/Falcon operating systems (TOS, FreeMiNT, MagiC and others) and TOS/GEM applications."
+DESCRIPTION="Atari Running on Any Machine, is a virtual machine software for running Atari ST/TT/Falcon operating systems and TOS/GEM applications"
+HOMEPAGE="http://aranym.sourceforge.net/"
 SRC_URI="mirror://sourceforge/aranym/${PN}-0.8.6beta.tar.gz
 	mirror://sourceforge/aranym/${AFROS}"
-HOMEPAGE="http://aranym.sourceforge.net/"
+
 LICENSE="GPL-2"
-
-KEYWORDS="~ppc"
 SLOT="0"
+KEYWORDS="~ppc ~x86"
+IUSE="opengl"
 
-IUSE="sdl"
-DEPEND="media-libs/libsdl
+RDEPEND="media-libs/libsdl
 	games-emulation/emutos
-	app-arch/unzip
-	opengl? virtual/opengl"
+	opengl? ( virtual/opengl )"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
 src_unpack() {
-	unpack "${PN}-0.8.6beta.tar.gz"
+	unpack ${PN}-0.8.6beta.tar.gz
 }
 
 src_compile() {
@@ -40,7 +41,7 @@ src_compile() {
 	emake || die "failed during compilation"
 }
 
-src_install () {
+src_install() {
 	cd ${S}/src/Unix
 	emake DESTDIR=${D} install || die "installation failed"
 
@@ -54,4 +55,3 @@ src_install () {
 pkg_postinst() {
 	einfo "To run ARAnyM with AFROS type: aranym -c /usr/share/aranym/afros/config"
 }
-

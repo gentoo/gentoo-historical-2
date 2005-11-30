@@ -1,6 +1,126 @@
 # ChangeLog for app-vim/align
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/align/ChangeLog,v 1.1 2003/08/04 16:55:44 agriffis Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/align/ChangeLog,v 1.1.1.1 2005/11/30 10:07:43 chriswhite Exp $
+
+  19 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> align-32.ebuild:
+  Stable on amd64.
+
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> align-32.ebuild:
+  Stable on ppc.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> align-32.ebuild:
+  Mark 32 stable on alpha
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org> align-32.ebuild:
+  Mark 32 stable on ia64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> align-32.ebuild:
+  x86 sparc mips stable
+
+*align-32 (05 Aug 2005)
+
+  05 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org> +align-32.ebuild:
+  Version bump, bug #101452
+
+*align-31 (06 May 2005)
+
+  06 May 2005; Ciaran McCreesh <ciaranm@gentoo.org> +align-31.ebuild:
+  Version bump
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> align-30-r1.ebuild:
+  Stable on ppc.
+
+  22 Feb 2005; Aron Griffis <agriffis@gentoo.org> align-30-r1.ebuild:
+  stable on alpha and ia64
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> align-30-r1.ebuild:
+  amd64 stable.
+
+  18 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> align-30-r1.ebuild,
+  -align-30.ebuild:
+  x86 sparc mips stable, remove unnecessary versions
+
+*align-30-r1 (29 Jan 2005)
+
+  29 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> +align-30-r1.ebuild:
+  Become vim7 friendly, bug #79982
+
+*align-30 (21 Jan 2005)
+
+  21 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> +align-30.ebuild:
+  New version, bug #78700
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> -align-23.ebuild,
+  -align-26.ebuild, -align-27.ebuild:
+  Tidy up old versions
+
+  26 Oct 2004; Tom Martin <slarti@gentoo.org> align-28.ebuild:
+  Marked ~amd64.
+
+  19 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org> align-28.ebuild:
+  Stable on alpha.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> align-28.ebuild:
+  Stable on x86, sparc, mips
+
+  06 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> align-27.ebuild:
+  Stable on alpha.
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> align-28.ebuild:
+  Help text, bug #62559
+
+*align-28 (20 Aug 2004)
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> +align-28.ebuild:
+  Version bump
+
+  20 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> align-27.ebuild:
+  x86 stable in line with other archs
+
+  20 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> align-27.ebuild:
+  Stable on sparc, mips
+
+*align-27 (22 May 2004)
+
+  22 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> +align-27.ebuild:
+  Version bump
+
+  17 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> -align-21.ebuild:
+  Remove old versions
+
+  04 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> align-26.ebuild:
+  Stable on sparc, mips
+
+*align-26 (05 Mar 2004)
+
+  05 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> align-26.ebuild:
+  Version bump
+
+  06 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> align-23.ebuild:
+  Added ~mips to KEYWORDS
+
+  05 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> align-23.ebuild:
+  Added ~ppc to keywords
+
+  15 Nov 2003; Aron Griffis <agriffis@gentoo.org> align-23.ebuild:
+  Mark stable on all arches
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> align-21.ebuild:
+  Stable on ia64
+
+*align-23 (27 Oct 2003)
+
+  27 Oct 2003; Aron Griffis <agriffis@gentoo.org> align-23.ebuild:
+  Version bump for bug 31396
+
+  03 Sep 2003; Jason Wever <weeve@gentoo.org> align-21.ebuild:
+  Added ~sparc to keywords to fix bug #27740.
+
+  18 Aug 2003; Aron Griffis <agriffis@gentoo.org> align-21.ebuild:
+  Mark stable on alpha and x86
 
 *align-21 (04 Aug 2003)
 

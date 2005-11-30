@@ -1,33 +1,42 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/sablotron/sablotron-0.97.ebuild,v 1.1 2003/03/08 23:01:39 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/sablotron/sablotron-0.97.ebuild,v 1.1.1.1 2005/11/30 10:06:34 chriswhite Exp $
 
-S=${WORKDIR}/Sablot-${PV}
+inherit libtool flag-o-matic
+
+S="${WORKDIR}/Sablot-${PV}"
 DESCRIPTION="An XSLT Parser in C++"
-SRC_URI="http://download-2.gingerall.cz/download/sablot/Sablot-${PV}.tar.gz"
-HOMEPAGE="http://www.gingerall.com/charlie-bin/get/webGA/act/sablotron.act"
+SRC_URI="http://download-1.gingerall.cz/download/sablot/Sablot-${PV}.tar.gz"
+HOMEPAGE="http://www.gingerall.com/charlie/ga/xml/p_sab.xml"
+LICENSE="MPL-1.1"
 
 SLOT="0"
-LICENSE="MPL-1.1"
-KEYWORDS="~x86 ~sparc ~ppc"
+IUSE="perl"
+KEYWORDS="x86 sparc ppc hppa alpha amd64 ~mips"
 
-DEPEND=">=dev-libs/expat-1.95.1
-	dev-perl/XML-Parser"
+RDEPEND=">=dev-libs/expat-1.95.6-r1"
+DEPEND="${RDEPEND}
+	perl? ( dev-perl/XML-Parser )"
 
 src_compile() {
-	local myconf
+	local myconf=
+
+	# Please do not remove, else we get references to PORTAGE_TMPDIR
+	# in /usr/lib/libsablot.la ...
+	elibtoolize
+
 	use perl && myconf="--enable-perlconnect"
 
 	# rphillips
 	# fixes bug #3876
-	export LDFLAGS="-lstdc++"
+	append-ldflags -lstdc++
 
-	econf ${myconf}
+	econf ${myconf} || die "econf failed"
 	make || die
 }
 
 src_install() {
-	einstall
+	einstall || die
 	dodoc README* RELEASE
 	dodoc src/TODO
 }

@@ -1,6 +1,30 @@
 # ChangeLog for app-misc/vifm
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/vifm/ChangeLog,v 1.1 2003/05/21 15:14:54 latexer Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/vifm/ChangeLog,v 1.1.1.1 2005/11/30 10:06:10 chriswhite Exp $
+
+  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> vifm-0.2a.ebuild:
+  Stable on x86. Bug 111167.
+
+  12 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> vifm-0.2a.ebuild:
+  mark ~ppc
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> vifm-0.2a.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> vifm-0.2a.ebuild:
+  stable on amd64
+
+  29 Oct 2004; Tom Martin <slarti@gentoo.org> vifm-0.2a.ebuild:
+  Marked ~amd64, see bug 69274.
+
+  15 Apr 2004; Michael McCabe <randy@gentoo.org> vifm-0.2a.ebuild:
+  adding s390 to keywords
+
+*vifm-0.2a (15 Jan 2004)
+
+  15 Jan 2004; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  vifm-0.2.ebuild, vifm-0.2a.ebuild:
+  New version, added metadata.xml, and fixed the einfo in the end of vifm-0.2
 
 *vifm-0.2 (21 May 2003)
 

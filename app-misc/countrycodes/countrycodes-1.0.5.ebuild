@@ -1,27 +1,32 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/countrycodes/countrycodes-1.0.5.ebuild,v 1.1 2004/02/29 22:10:15 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/countrycodes/countrycodes-1.0.5.ebuild,v 1.1.1.1 2005/11/30 10:06:02 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="An ISO 3166 country code finder."
+DESCRIPTION="An ISO 3166 country code finder"
 HOMEPAGE="http://www.grigna.com/diego/linux/countrycodes/"
-KEYWORDS="~x86"
 SRC_URI="http://www.grigna.com/diego/linux/${PN}/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86"
 IUSE=""
 
-DEPEND="virtual/glibc
-sys-apps/sed"
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
+	sys-apps/sed"
 
 src_compile() {
-	make -C src $MAKEOPTS CCOPTS="$CFLAGS" || die
+	emake -C src CCOPTS="${CFLAGS}" || die "emake failed"
 }
 
-src_install () {
-	dodir /usr/bin
-	dodir /usr/man/man1
-	make -C src prefix=${D}/usr install || die
+src_install() {
+	dodir /usr/bin /usr/share/man/man1
+	make \
+		-C src \
+		prefix="${D}/usr" \
+		mandir="${D}/usr/share/man/man1" install || die "make install failed"
 	dosym iso3166 /usr/bin/countrycodes
-	dodoc doc/Changelog doc/README doc/COPYING doc/INSTALL
+	dosym iso3166.1 /usr/share/man/man1/countrycodes
+	dodoc doc/{Changelog,README}
+	prepman
 }

@@ -1,33 +1,31 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdcat/cdcat-0.3.ebuild,v 1.1 2003/04/06 17:40:20 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cdcat/cdcat-0.3.ebuild,v 1.1.1.1 2005/11/30 10:05:58 chriswhite Exp $
 
-DESCRIPTION="CD Catalog is a simple yet effective CD indexing program"
-SRC_URI="http://www.littledragon.f2s.com/unix/cdcat/${P}.tar.gz"
-HOMEPAGE="http://www.littledragon.f2s.com/unix/"
+DESCRIPTION="simple yet effective CD indexing program"
+SRC_URI="http://littledragon.home.ro/unix/${P}.tar.gz"
+HOMEPAGE="http://littledragon.home.ro/unix/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+IUSE=""
+KEYWORDS="x86 ppc amd64"
 
 DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-apps/grep-2.4.2
 	>=sys-apps/findutils-4.1
-	>=app-cdr/cdrtools-1.11"
+	>=app-cdr/cdrtools-1.11
+	!app-backup/cdbkup"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 
 	# workaround install.sh ignoring --man_prefix
-	t="install.sh"
-	cp $t $t.orig || die "Patch failed for $t"
-	sed 's:^MAN_PREFIX:#:' $t.orig > $t
+	sed -i 's:^MAN_PREFIX:#:' install.sh
 
 	# fix path to cd index files to be FHS-compliant
-	t="src/cdcat.pl"
-	cp $t $t.orig || die "Patch failed for $t"
-	sed 's:/mnt/ext/cd:/var/lib/cdcat:' $t.orig > $t
+	sed -i 's:/mnt/ext/cd:/var/lib/cdcat:' src/cdcat.pl
 }
 
 src_install() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/scons/scons-0.96.90.ebuild,v 1.1 2005/07/10 10:26:57 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/scons/scons-0.96.90.ebuild,v 1.1.1.1 2005/11/30 10:05:02 chriswhite Exp $
 
 inherit python distutils
 

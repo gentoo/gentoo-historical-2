@@ -1,66 +1,72 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/plex86/plex86-20021117.ebuild,v 1.1 2003/01/04 13:19:21 lordvan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/plex86/plex86-20021117.ebuild,v 1.1.1.1 2005/11/30 10:08:47 chriswhite Exp $
 
 DESCRIPTION="Plex86 is THE opensource free-software alternative for VMWare, VirtualPC, and other IA-32 on IA-32 \"Virtual PC products.\""
-HOMEPAGE="http://savannah.gnu.org/projects/plex86/"
-LICENSE="LGPL-2.1"
+HOMEPAGE="http://savannah.gnu.org/projects/plex86/ http://sourceforge.net/projects/plex86/"
 SRC_URI="http://savannah.nongnu.org/download/plex86/${P}.tar.bz2"
+
+LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="X sdl"
+
 RDEPEND=">=sys-libs/ncurses-5.2-r7
-         X? ( >=x11-base/xfree-4.2.0 ) 
-         sdl? ( >=media-libs/libsdl-1.2.4 )"
-DEPEND="${RDEPEND}"
-DEPEND=""
-S="${WORKDIR}/${P}"
+	X? ( virtual/x11 )
+	sdl? ( >=media-libs/libsdl-1.2.4 )"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
+
+src_unpack() {
+	unpack ${A}; cd ${S}
+
+	# fix malign warnings
+	sed -e 's:malign:falign:g' \
+		-i kernel/{.,dt,iodev,emulation}/Makefile.in || die
+
+	# fix typo (bug submitted)
+	sed -i \
+		-e s/'inclide'/'include'/ user/plugins/bochs/iodev/eth_fbsd.cc \
+			|| die "sed eth_fbsd.cc failed"
+}
 
 src_compile() {
-    MY_CONF="--with-Linux --enable-cdrom --enable-split-hd --enable-pci --enable-vbe --enable-sb16=linux --enable-instrumentation" 
-    # --enable-ne2000 not working at the moment
+	MY_CONF="--with-Linux --enable-cdrom --enable-split-hd --enable-pci --enable-vbe --enable-sb16=linux --enable-instrumentation"
+	# --enable-ne2000 not working at the moment
 
-    MY_GUI="curses"
-    use X && MY_GUI="x"
-    use sdl && MY_GUI="sdl"
-    
-    use X && MY_CONF="${MY_CONF} --with-x --with-linux-source=/usr/src/linux"
-    MY_CONF="${MY_CONF} --with-gui=${MY_GUI}"
+	MY_GUI="curses"
+	use X && MY_GUI="x"
+	use sdl && MY_GUI="sdl"
+	use sdl && export SDL_CFLAGS="`sdl-config --cflags`"
 
-    # fix typo (bug submitted)
-    mv user/plugins/bochs/iodev/eth_fbsd.cc user/plugins/bochs/iodev/eth_fbsd.cc_orig
-    sed s/'inclide'/'include'/ user/plugins/bochs/iodev/eth_fbsd.cc_orig > user/plugins/bochs/iodev/eth_fbsd.cc
+	use X && MY_CONF="${MY_CONF} --with-x --with-linux-source=/usr/src/linux"
+	MY_CONF="${MY_CONF} --with-gui=${MY_GUI}"
 
-    ./configure \
-	--host=${CHOST} \
-	--prefix=/usr \
-	--infodir=/usr/share/info \
-	--mandir=/usr/share/man ${MY_CONF} || die "./configure failed"
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man ${MY_CONF} || die "./configure failed"
 
-    make || die
+	emake || die "emake failed"
 }
 
 src_install() {
-    #make DESTDIR=${D} install || die
-    # for now just this:
-    dodir /opt/${P}
-    cp -r * ${D}/opt/${P}
+	#make DESTDIR=${D} install || die
+	# for now just this:
+	dodir /opt/${P}
+	cp -r * ${D}/opt/${P} || die "cp failed"
 }
 
 pkg_postinst() {
-    echo
-    einfo ",-----------------------------------------------------------------."
-    einfo "| IMPORTANT NOTICE                                                |"
-    einfo "|-----------------------------------------------------------------|"
-    einfo "| This code is EXTREMELY EXPERIMENTAL, and may well result in a   |"
-    einfo "| SYSTEM CRASH, and who knows what other ill effects.  RUN THIS   |"
-    einfo "| SOFTWARE AT YOUR OWN RISK.  As a precaution, do not attempt to  |"
-    einfo "| run this software on a system with important data on it, and    |"
-    einfo "| make liberal use of the sync command!  Expect to have to use    |"
-    einfo "| the power button.                                               |"
-    einfo "\`-----------------------------------------------------------------'"
-    echo
-    einfo "Contact me (lordvan@lordvan.com) if you encounter any problems."
-    echo
-
+	echo
+	ewarn "This code is EXTREMELY EXPERIMENTAL, and may well result in a"
+	ewarn "SYSTEM CRASH, and who knows what other ill effects.  RUN THIS"
+	ewarn "SOFTWARE AT YOUR OWN RISK.  As a precaution, do not attempt to"
+	ewarn "run this software on a system with important data on it, and"
+	ewarn "make liberal use of the sync command!  Expect to have to use"
+	ewarn "the power button."
+	echo
+	einfo "Contact me (lordvan@lordvan.com) if you encounter any problems."
+	echo
 }

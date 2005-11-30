@@ -1,13 +1,14 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/minibufexpl/minibufexpl-6.3.1-r1.ebuild,v 1.1 2004/09/05 01:46:16 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/minibufexpl/minibufexpl-6.3.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:42 chriswhite Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: easily switch between buffers"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=159"
+
 LICENSE="as-is"
-KEYWORDS="~sparc ~x86 ~alpha ~ia64 ~mips ~ppc ~amd64"
+KEYWORDS="alpha amd64 ia64 mips ~ppc sparc x86"
 IUSE=""
 
 VIM_PLUGIN_HELPFILES="minibufexpl.txt"

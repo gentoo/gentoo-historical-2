@@ -1,32 +1,42 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:
+# $Header: /var/cvsroot/gentoo-x86/app-text/kbedic/kbedic-4.0.ebuild,v 1.1.1.1 2005/11/30 10:06:38 chriswhite Exp $
 
-IUSE="kde"
-inherit kde
+inherit kde eutils
 
-S=${WORKDIR}/${P}
 DESCRIPTION="English <-> Bulgarian Dictionary"
-SRC_URI="mirror://sourceforge/kbedic/$P.tar.gz"
 HOMEPAGE="http://kbedic.sourceforge.net"
-KEYWORDS="x86"
+SRC_URI="mirror://sourceforge/kbedic/$P.tar.gz"
+
 SLOT="0"
 LICENSE="GPL-2"
+KEYWORDS="x86 ~amd64 ppc"
+IUSE="kde"
 
-use kde && need-kde 3 || need-qt 3
+DEPEND="=x11-libs/qt-3*
+	kde? ( >=kde-base/kdelibs-3 )"
+
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/ppc-gfxopt.patch
+}
 
 src_compile() {
+	set-qtdir 3
+	set-kdedir 3
 
-	use kde && myconf="$myconf --with-kde" || myconf="$myconf --prefix=/usr"
+	myconf="--prefix=/usr"
+	use kde && myconf="$myconf --with-kde"
 	use kde && kde_src_compile myconf
-
 	kde_src_compile configure make
-
 }
 
 src_install() {
-
 	kde_src_install
-	use kde && install -m 644 -D ${FILESDIR}/kbedic.desktop ${D}/usr/share/applnk/Utilities/kbedic.desktop
-
+	if use kde; then
+		insinto /usr/share/applnk/Utilities/kbedic.desktop
+		doins ${FILESDIR}/kbedic.desktop
+	fi
 }

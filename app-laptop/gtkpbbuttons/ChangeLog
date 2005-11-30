@@ -1,6 +1,53 @@
-# ChangeLog for sys-apps/gtkpbbuttons
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/gtkpbbuttons/ChangeLog,v 1.1 2004/03/16 04:37:41 warpzero Exp $
+# ChangeLog for app-laptop/gtkpbbuttons
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/gtkpbbuttons/ChangeLog,v 1.1.1.1 2005/11/30 10:05:38 chriswhite Exp $
+
+  18 Sep 2005; Joseph Jezak <josejx@gentoo.org> -files/ipc-fix.patch,
+  -gtkpbbuttons-0.6.3.ebuild, -gtkpbbuttons-0.6.4.ebuild,
+  -gtkpbbuttons-0.6.5.ebuild, -gtkpbbuttons-0.6.7.ebuild,
+  gtkpbbuttons-0.6.8.ebuild:
+  Marked ppc stable and removed old versions.
+
+*gtkpbbuttons-0.6.8 (19 Jul 2005)
+
+  19 Jul 2005; Joseph Jezak <josejx@gentoo.org> +gtkpbbuttons-0.6.8.ebuild:
+  Added new version.
+
+*gtkpbbuttons-0.6.7 (26 May 2005)
+
+  26 May 2005; Joseph Jezak <josejx@gentoo.org> -gtkpbbuttons-0.4.6b.ebuild,
+  -gtkpbbuttons-0.5.2.ebuild, +gtkpbbuttons-0.6.7.ebuild:
+  Added latest version and removed old ebuilds
+
+*gtkpbbuttons-0.6.5 (01 Apr 2005)
+
+  01 Apr 2005; Joseph Jezak <josejx@gentoo.org> +files/ipc-fix.patch,
+  +gtkpbbuttons-0.6.5.ebuild:
+  Added gtkpbbuttons 0.6.5.
+
+*gtkpbbuttons-0.6.4 (15 Sep 2004)
+
+  15 Sep 2004; Luca Barbato <lu_zero@gentoo.org> gtkpbbuttons-0.6.3.ebuild,
+  +gtkpbbuttons-0.6.4.ebuild:
+  New version
+
+*gtkpbbuttons-0.6.4 (15 Sep 2004)
+
+  15 Sep 2004; Luca Barbato <lu_zero@gentoo.org> gtkpbbuttons-0.6.3.ebuild,
+  +gtkpbbuttons-0.6.4.ebuild:
+  New Version
+
+  06 Jul 2004; Luca Barbato <lu_zero@gentoo.org> gtkpbbuttons-0.6.3.ebuild:
+  Marked ppc
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  gtkpbbuttons-0.6.1.ebuild, gtkpbbuttons-0.6.2.ebuild:
+  clean older ebuilds
+
+*gtkpbbuttons-0.6.3 (03 Jun 2004)
+
+  03 Jun 2004; Daniel Ostrow <dostrow@gentoo.org> gtkpbbuttons-0.6.3.ebuild:
+  Version bump & fix a bunch of copyright headers
 
 *gtkpbbuttons-0.6.2 (07 Mar 2004)
 

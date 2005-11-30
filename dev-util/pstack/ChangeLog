@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/pstack
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/pstack/ChangeLog,v 1.1 2003/06/21 17:23:22 liquidx Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pstack/ChangeLog,v 1.1.1.1 2005/11/30 10:05:14 chriswhite Exp $
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pstack-1.1.ebuild:
+  virtual/glibc -> virtual/libc
 
 *pstack-1.1 (21 Jun 2003)
 

@@ -1,26 +1,25 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/sgmltools-lite/sgmltools-lite-3.0.3-r7.ebuild,v 1.1 2003/11/23 04:59:32 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/sgmltools-lite/sgmltools-lite-3.0.3-r7.ebuild,v 1.1.1.1 2005/11/30 10:07:08 chriswhite Exp $
 
 inherit sgml-catalog
 
-DESCRIPTION="Python interface to SGML software specificially in a
-DocBook/OpenJade environment.  Provides sgml2{html,txt,rtf,dvi,ps}"
+DESCRIPTION="Python interface to SGML software in a DocBook/OpenJade env"
 HOMEPAGE="http://sgmltools-lite.sourceforge.net/"
 SRC_URI="mirror://sourceforge/sgmltools-lite/${P}.tar.gz
-		 mirror://sourceforge/sgmltools-lite/nw-eps-icons-0.0.1.tar.gz"
-LICENSE="GPL-2"
+	mirror://sourceforge/sgmltools-lite/nw-eps-icons-0.0.1.tar.gz"
 
+LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="alpha arm amd64 hppa ia64 ~mips ppc ~ppc64 sparc x86"
 IUSE="tetex"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 
 DEPEND="virtual/python
 	app-text/sgml-common
-	=app-text/docbook-sgml-dtd-3.1-r1
+	~app-text/docbook-sgml-dtd-3.1
 	app-text/docbook-dsssl-stylesheets
 	app-text/openjade
-	net-www/lynx
+	www-client/lynx
 	tetex? ( app-text/jadetex )"
 
 src_compile() {

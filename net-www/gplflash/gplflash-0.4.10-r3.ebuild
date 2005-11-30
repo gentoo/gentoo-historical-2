@@ -1,29 +1,29 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/gplflash/gplflash-0.4.10-r3.ebuild,v 1.1 2003/10/03 23:30:51 hillster Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/gplflash/gplflash-0.4.10-r3.ebuild,v 1.1.1.1 2005/11/30 10:07:47 chriswhite Exp $
 
-inherit nsplugins
+inherit nsplugins eutils
 
-S=${WORKDIR}/flash-0.4.10
-DESCRIPTION="GPL Shockwave Flash Player/Plugin"
+DESCRIPTION="GPL Shockwave Flash Player/Plugin, Supports Older Ver <=4 Only"
+HOMEPAGE="http://www.swift-tools.net/Flash/"
 SRC_URI="http://www.swift-tools.net/Flash/flash-0.4.10.tgz"
-HOMEPAGE="http://www.swift-tools.net/Flash"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc"
+SLOT="0"
+KEYWORDS="x86 ppc sparc amd64"
+IUSE=""
 
 DEPEND="media-libs/libflash"
+RDEPEND="!net-www/netscape-flash"
+
+S=${WORKDIR}/flash-${PV}
 
 src_unpack() {
-	cd ${WORKDIR}
-	unpack flash-0.4.10.tgz
+	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-gcc3-gentoo.diff || die
-
-	if [ "${ARCH}" = "ppc" ]; then
-		epatch ${FILESDIR}/${P}-ppc.diff || die
-	fi
+	epatch ${FILESDIR}/${P}-gcc3-gentoo.diff
+	use amd64 && epatch ${FILESDIR}/${P}-fPIC.patch
+	use ppc && epatch ${FILESDIR}/${P}-ppc.diff
 }
 
 src_compile() {
@@ -37,4 +37,14 @@ src_install() {
 	inst_plugin /opt/netscape/plugins/npflash.so
 	cd ${S}
 	dodoc README COPYING
+}
+
+pkg_postinst() {
+	einfo
+	einfo "Only Supports older version 4 and below flash"
+	einfo "animations on version 5 and above (most websites)"
+	einfo "you will experiance freezes. if in doubt unmerge"
+	einfo "net-www/gplflash and merge net-www/netscape-flash"
+	einfo "for version 5 and above"
+	einfo
 }

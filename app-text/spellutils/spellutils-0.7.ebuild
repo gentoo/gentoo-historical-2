@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/spellutils/spellutils-0.7.ebuild,v 1.1 2003/03/10 12:51:38 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/spellutils/spellutils-0.7.ebuild,v 1.1.1.1 2005/11/30 10:06:34 chriswhite Exp $
 
 IUSE="nls"
 
@@ -10,9 +10,9 @@ SRC_URI="http://home.worldonline.dk/byrial/spellutils/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm"
+KEYWORDS="x86 ppc ~sparc alpha ~mips ~hppa amd64"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
 	econf `use_enable nls` || die

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gocr/gocr-0.40.ebuild,v 1.1 2005/04/23 15:29:16 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gocr/gocr-0.40.ebuild,v 1.1.1.1 2005/11/30 10:06:48 chriswhite Exp $
 
 DESCRIPTION="An OCR (Optical Character Recognition) reader"
 HOMEPAGE="http://jocr.sourceforge.net"

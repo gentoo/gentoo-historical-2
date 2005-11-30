@@ -1,6 +1,6 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------
-# $Id: pwrctl-local,v 1.1 2004/03/16 04:50:41 warpzero Exp $
+# $Id: pwrctl-local,v 1.1.1.1 2005/11/30 10:05:40 chriswhite Exp $
 #
 # This script is invoked by pwrctl to configure the system for a
 # given power level. The desired level is indicated by the first
@@ -30,6 +30,9 @@
 #
 # -----------------------------------------------------------------------------
 # $Log: pwrctl-local,v $
+# Revision 1.1.1.1  2005/11/30 10:05:40  chriswhite
+# *** empty log message ***
+#
 # Revision 1.1  2004/03/16 04:50:41  warpzero
 # app-laptop moves for ppc
 #

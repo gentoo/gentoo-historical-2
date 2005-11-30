@@ -1,27 +1,27 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/srm/srm-1.2.7.ebuild,v 1.1 2004/01/19 10:03:31 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/srm/srm-1.2.7.ebuild,v 1.1.1.1 2005/11/30 10:05:47 chriswhite Exp $
 
 DESCRIPTION="A command-line compatible rm which destroys file contents before unlinking."
-HOMEPAGE="http://sourceforge.net/projects/srm"
+HOMEPAGE="http://sourceforge.net/projects/srm/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-KEYWORDS="~x86"
 LICENSE="X11"
 SLOT="0"
+KEYWORDS="x86 amd64"
 IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
+RDEPEND="virtual/libc
+	!app-misc/secure-delete"
 
-src_install () {
+src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
-	dodoc README Changes        || die "dodoc failed"
+	dodoc README Changes
 }
 
 pkg_postinst() {
-	echo
 	ewarn "Please notice that srm will not work as expected with any"
 	ewarn "journaled file system (e.g. reiserfs, ext3)."
 	ewarn "Please read /usr/share/doc/${P}/README.gz"
-	echo
 }

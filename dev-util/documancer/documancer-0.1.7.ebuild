@@ -1,22 +1,22 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/documancer/documancer-0.1.7.ebuild,v 1.1 2003/03/16 13:54:32 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/documancer/documancer-0.1.7.ebuild,v 1.1.1.1 2005/11/30 10:05:19 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Programmer's documentation reader with very fast fulltext searching"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://documancer.sourceforge.net"
 KEYWORDS="~x86"
+IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
 
-DEPEND=">=net-www/mozilla-1.0
+DEPEND=">=www-client/mozilla-1.0
 	>=x11-libs/gtk+-2.0
 	>=dev-lang/python-2.1
-	>=net-www/swish-e-2.2.2
+	>=www-apps/swish-e-2.2.2
 	dev-lang/perl
 	net-misc/wget"
-	
+
 pkg_setup () {
 	if [ ! -f ${ROOT}/usr/lib/mozilla/components/libwidget_gtk2.so ]
 	then

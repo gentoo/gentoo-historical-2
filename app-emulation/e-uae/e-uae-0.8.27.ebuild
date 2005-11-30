@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/e-uae/e-uae-0.8.27.ebuild,v 1.1 2005/01/12 08:48:06 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/e-uae/e-uae-0.8.27.ebuild,v 1.1.1.1 2005/11/30 10:08:40 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.rcdrummond.net/uae/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE="X gtk sdl ncurses svga"
 
 DEPEND="virtual/libc
@@ -49,10 +49,8 @@ src_compile() {
 }
 
 src_install() {
-	cp docs/unix/README docs/README.unix
-	dodoc docs/COMPATIBILITY docs/CREDITS docs/FAQ docs/NEWS \
-		docs/README docs/README.PROGRAMMERS docs/README.unix \
-		docs/translated/*
+	dodoc docs/*
+	dodoc README COPYING ChangeLog CHANGES
 
 	emake install DESTDIR=${D}
 

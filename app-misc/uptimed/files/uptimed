@@ -1,12 +1,19 @@
 #!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/uptimed/files/uptimed,v 1.1.1.1 2005/11/30 10:05:57 chriswhite Exp $
+
 # Copyright 2002 Sean Russell
-# Distributed under the terms of the GNU General Public License, v2 or later
 
 start() {
+	ebegin "Starting uptimed"
 	uptimed -b
 	start-stop-daemon --quiet --start --pidfile /var/run/uptimed --exec /usr/sbin/uptimed
+	eend $?
 }
 
 stop() {
+	ebegin "Stopping uptimed"
 	start-stop-daemon --quiet --stop --pidfile /var/run/uptimed
+	eend $?
 }

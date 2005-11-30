@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mozplugger/mozplugger-1.7.1.ebuild,v 1.1 2005/01/23 11:18:56 centic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mozplugger/mozplugger-1.7.1.ebuild,v 1.1.1.1 2005/11/30 10:07:51 chriswhite Exp $
 
 inherit nsplugins
 
@@ -8,7 +8,7 @@ DESCRIPTION="Streaming media plugin for Mozilla, based on netscape-plugger"
 SRC_URI="http://downloads.mozdev.org/mozplugger/${P}.tar.gz"
 HOMEPAGE="http://mozplugger.mozdev.org/"
 
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha"
 LICENSE="GPL-2"
 
 SLOT="0"
@@ -18,12 +18,11 @@ DEPEND="virtual/libc"
 RDEPEND="${DEPEND}
 	!virtual/plugger
 	|| (
-		net-www/mozilla
-		net-www/mozilla-bin
-		net-www/mozilla-firefox
-		net-www/mozilla-firefox-bin
+		www-client/mozilla
+		www-client/mozilla-bin
+		www-client/mozilla-firefox
+		www-client/mozilla-firefox-bin
 	)"
-PROVIDE="virtual/plugger"
 
 src_compile()
 {

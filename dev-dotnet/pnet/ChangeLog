@@ -1,6 +1,127 @@
-# ChangeLog for dev-lang/pnet
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnet/ChangeLog,v 1.1 2003/07/25 01:02:02 scandium Exp $
+# ChangeLog for dev-dotnet/pnet
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnet/ChangeLog,v 1.1.1.1 2005/11/30 10:06:19 chriswhite Exp $
+
+  05 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> pnet-0.6.10.ebuild,
+  pnet-0.6.12.ebuild, pnet-0.7.0.ebuild:
+  With respect to the keywording policy, this shouldn't be keyworded for alpha
+
+  29 Jun 2005; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  pnet-0.6.10.ebuild, pnet-0.6.12.ebuild, pnet-0.7.0.ebuild:
+  We seem to have yet another unfortunate incident of
+  keyword-happy developer. There have been numerous
+  instances of untested unapproved packages being
+  keyworded, this was discussed time and again, the
+  issue is mentioned in developer documentation,
+  added to developer quiz, and voila, we have it again..
+  
+  This time multiple packages in dev-dotnet/ category
+  were marked as mips, ~mips, sparc, ~sparc, as well as
+  working on other arches. It was confirmed that dotnet
+  doesn't even build on most of these, yet they were
+  keyworded. Oh well... There seems to be no way to teach
+  some people.
+  
+  Removing mips and sparc keywords
+
+*pnet-0.7.0 (21 Jun 2005)
+
+  21 Jun 2005; Michael Tindal <urilith@gentoo.org> metadata.xml,
+  +pnet-0.7.0.ebuild:
+  Version bump.
+
+  19 May 2005; Guy Martin <gmsoft@gentoo.org> pnet-0.6.12.ebuild:
+  Stable on hppa.
+
+  10 Mar 2005; Peter Johanson <latexer@gentoo.org> pnet-0.6.10.ebuild,
+  pnet-0.6.12.ebuild:
+  mono moved from dev-dotnet -> dev-lang
+
+  06 Feb 2005; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.12.ebuild:
+  fix use of DESTDIR (bug #80941)
+
+*pnet-0.6.12 (16 Jan 2005)
+
+  16 Jan 2005; Rainer Groesslinger <scandium@gentoo.org>
+  +pnet-0.6.12.ebuild:
+  new version
+
+  26 Nov 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.10.ebuild:
+  stable on all architectures
+
+*pnet-0.6.10 (30 Oct 2004)
+
+  30 Oct 2004; Rainer Groesslinger <scandium@gentoo.org> +pnet-0.6.10.ebuild:
+  new version
+
+  16 Aug 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.8.ebuild:
+  stable on x86, ppc and sparc
+
+*pnet-0.6.8 (08 Aug 2004)
+
+  08 Aug 2004; Rainer Groesslinger <scandium@gentoo.org> +pnet-0.6.8.ebuild:
+  new version
+
+  15 Jun 2004; Jason Wever <weeve@gentoo.org> pnet-0.6.6.ebuild:
+  Stable on sparc.
+
+  30 May 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.6.ebuild,
+  files/verify_branch.c.patch:
+  Patch to fix compilation on 64bit architectures
+
+*pnet-0.6.6 (29 May 2004)
+
+  29 May 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.6.ebuild:
+  new version
+
+  23 Mar 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.4.ebuild:
+  stable on x86, ppc and sparc
+
+*pnet-0.6.4 (13 Mar 2004)
+
+  13 Mar 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.4.ebuild:
+  new version (thanks to all the arch people!)
+
+  25 Jan 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.2.ebuild,
+  files/pt_defs.h.diff:
+  Added a small patch to fix compilation on system which have nptl built into
+  glibc (bug #37219)
+
+*pnet-0.6.2 (03 Jan 2004)
+
+  03 Jan 2004; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.2.ebuild:
+  new version
+
+  19 Oct 2003; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.0.ebuild:
+  stable on all archs
+
+  15 Oct 2003; Jason Wever <weeve@gentoo.org> pnet-0.6.0.ebuild:
+  Added ~sparc keyword.
+
+*pnet-0.6.0 (15 Oct 2003)
+
+  15 Oct 2003; Rainer Groesslinger <scandium@gentoo.org> pnet-0.6.0.ebuild:
+  new version
+
+*pnet-0.5.12 (06 Sep 2003)
+
+  06 Sep 2003; Rainer Groesslinger <scandium@gentoo.org> pnet-0.5.12.ebuild:
+  new version
+
+*pnet-0.5.12 (06 Sep 2003)
+
+  06 Sep 2003; Rainer Groesslinger <scandium@gentoo.org> pnet-0.5.12.ebuild:
+  new version
+
+  26 Aug 2003; Rainer Groesslinger <scandium@gentoo.org> pnet-0.5.10.ebuild,
+  pnet-0.5.8.ebuild:
+  Add a block for dev-dotnet/mono because both are using
+  /usr/bin/ilasm for converting IL assembly source files into an IL binary
+
+*pnet-0.5.10 (26 Jul 2003)
+
+  26 Jul 2003; Rainer Groesslinger <scandium@gentoo.org> pnet-0.5.10.ebuild:
+  new version
 
 *pnet-0.5.8 (25 Jul 2003)
 

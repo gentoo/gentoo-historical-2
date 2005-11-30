@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/bmp-infopipe/bmp-infopipe-1.3.ebuild,v 1.1 2004/11/13 19:07:36 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/bmp-infopipe/bmp-infopipe-1.3.ebuild,v 1.1.1.1 2005/11/30 10:07:28 chriswhite Exp $
 
 inherit eutils
 IUSE=""
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.beastwithin.org/users/wwwwolf/code/xmms/infopipe.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="alpha ~amd64 ~ppc ppc64 x86"
 
 DEPEND="media-sound/beep-media-player"
 
@@ -32,5 +32,5 @@ src_unpack() {
 src_install () {
 	exeinto `beep-config --general-plugin-dir`
 	doexe ${S}/src/.libs/libinfopipe.so
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
+	dodoc AUTHORS ChangeLog NEWS README
 }

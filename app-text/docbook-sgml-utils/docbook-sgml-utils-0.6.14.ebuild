@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-sgml-utils/docbook-sgml-utils-0.6.14.ebuild,v 1.1 2004/09/03 18:50:21 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-sgml-utils/docbook-sgml-utils-0.6.14.ebuild,v 1.1.1.1 2005/11/30 10:06:39 chriswhite Exp $
 
 inherit eutils
 
@@ -14,34 +14,36 @@ SRC_URI="ftp://sources.redhat.com/pub/docbook-tools/new-trials/SOURCES/${MY_P}.t
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~mips ~ppc64"
+KEYWORDS="alpha ~amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
 IUSE="tetex"
 
 DEPEND=">=dev-lang/perl-5
 	app-text/docbook-dsssl-stylesheets
 	app-text/openjade
 	dev-perl/SGMLSpm
-	=app-text/docbook-xml-simple-dtd-4.1.2.4
-	=app-text/docbook-xml-simple-dtd-1.0
+	~app-text/docbook-xml-simple-dtd-4.1.2.4
+	~app-text/docbook-xml-simple-dtd-1.0
 	app-text/docbook-xml-dtd
-	=app-text/docbook-sgml-dtd-3.0-r1
-	=app-text/docbook-sgml-dtd-3.1-r1
-	=app-text/docbook-sgml-dtd-4.0-r1
-	=app-text/docbook-sgml-dtd-4.1-r1
+	~app-text/docbook-sgml-dtd-3.0
+	~app-text/docbook-sgml-dtd-3.1
+	~app-text/docbook-sgml-dtd-4.0
+	~app-text/docbook-sgml-dtd-4.1
 	tetex? ( app-text/jadetex )
+	userland_GNU? ( sys-apps/which )
 	virtual/textbrowser"
 
 # including both xml-simple-dtd 4.1.2.4 and 1.0, to ease
 # transition to simple-dtd 1.0, <obz@gentoo.org>
 
-src_compile() {
-	epatch ${FILESDIR}/${P}-backend.patch
-	econf || die
-	make || die
+src_unpack() {
+	unpack ${A}
+	cd ${S} || die
+	sed -i -e "s:links:elinks:g" backends/txt || die
 }
 
 src_install() {
-	einstall htmldir=${D}/usr/share/doc/${PF}/html || die
+	#einstall htmldir=${D}/usr/share/doc/${PF}/html || die
+	make DESTDIR=${D} htmldir=/usr/share/doc/${PF}/html install || die
 	if ! use tetex ; then
 		for i in dvi pdf ps ; do
 			rm ${D}/usr/bin/docbook2$i

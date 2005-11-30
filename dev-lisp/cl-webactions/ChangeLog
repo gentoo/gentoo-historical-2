@@ -1,6 +1,31 @@
 # ChangeLog for dev-lisp/cl-webactions
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-webactions/ChangeLog,v 1.1 2004/10/15 03:52:11 mkennedy Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-webactions/ChangeLog,v 1.1.1.1 2005/11/30 10:08:27 chriswhite Exp $
+
+*cl-webactions-1.2.42.20050805 (14 Aug 2005)
+
+  14 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-webactions-1.2.42.20050805.ebuild:
+  New upstream version.
+
+  24 May 2005; <mkennedy@gentoo.org> cl-webactions-1.2.42.20050220.ebuild:
+  Keywording ~sparc
+
+  15 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  cl-webactions-1.2.42.20050220.ebuild:
+  Keywording stable x86
+
+*cl-webactions-1.2.42.20050220 (24 Feb 2005)
+
+  24 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-webactions-1.2.42.20050220.ebuild:
+  New upstream version
+
+*cl-webactions-1.2.35.20040924-r1 (03 Feb 2005)
+
+  03 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +cl-webactions-1.2.35.20040924-r1.ebuild:
+  Sync with the other Portable Allegro Serve ports.
 
 *cl-webactions-1.2.35.20040924 (14 Oct 2004)
 

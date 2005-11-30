@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/bibletime/bibletime-1.5.2.ebuild,v 1.1 2005/10/17 15:30:03 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/bibletime/bibletime-1.5.2.ebuild,v 1.1.1.1 2005/11/30 10:06:56 chriswhite Exp $
 
 inherit kde eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/bibletime/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND=">=app-text/sword-1.5.8"
@@ -23,7 +23,7 @@ for X in ${LANGS}; do
 	SRC_URI="${SRC_URI} linguas_${X}? ( mirror://sourceforge/bibletime/${LANGS_PKG}.tar.bz2 )"
 done
 
-need-kde 3
+need-kde 3.4
 
 pkg_setup() {
 	if ! built_with_use app-text/sword curl; then
@@ -51,7 +51,7 @@ src_unpack() {
 	done
 
 	if [ -d "${WORKDIR}/${LANGS_PKG}" ]; then
-		cd ${WORKDIR}/${LANGS_PKG}/
+		cd "${WORKDIR}/${LANGS_PKG}"
 		sed -i -e "s,^POFILES.*,POFILES = ${MAKE_LANGS}," po/Makefile.am
 		sed -i -e "s,^SUBDIRS.*,SUBDIRS = ${MAKE_LANGS_DOC}," docs/Makefile.am
 		make -f admin/Makefile.common || die

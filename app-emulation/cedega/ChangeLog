@@ -1,6 +1,81 @@
 # ChangeLog for app-emulation/cedega
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/cedega/ChangeLog,v 1.1 2004/06/23 14:58:04 coronalvr Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/cedega/ChangeLog,v 1.1.1.1 2005/11/30 10:08:47 chriswhite Exp $
+
+*cedega-5.0.1 (13 Nov 2005)
+
+  13 Nov 2005; Mike Frysinger <vapier@gentoo.org> +cedega-5.0.1.ebuild:
+  Version bump #112454 by John Myers.
+
+*cedega-5.0 (09 Nov 2005)
+
+  09 Nov 2005; Mike Frysinger <vapier@gentoo.org> +cedega-5.0.ebuild:
+  Version bump #111855 by Redeeman.
+
+*cedega-4.4.3 (13 Oct 2005)
+
+  13 Oct 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.4.3.ebuild:
+  Version bump #109055 by Sam Walliser.
+
+*cedega-4.4.2 (12 Oct 2005)
+
+  12 Oct 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.4.2.ebuild:
+  Version bump #109055 by Jose Marino.
+
+*cedega-4.4.1 (12 Aug 2005)
+
+  12 Aug 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.4.1.ebuild:
+  Version bump #102184 by Jose Marino.
+
+*cedega-4.4 (14 Jul 2005)
+
+  14 Jul 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.4.ebuild:
+  Version bump #98877 by Jose Marino.
+
+*cedega-4.3.2 (10 May 2005)
+
+  10 May 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.3.2.ebuild:
+  Version bump #92140 by Oldrich Jedlicka.
+
+*cedega-4.3.1 (15 Apr 2005)
+
+  15 Apr 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.3.1.ebuild:
+  Version bump #88917 by Aaron Grubb.
+
+*cedega-4.3 (08 Mar 2005)
+
+  08 Mar 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.3.ebuild:
+  Version bump #84557 by Aaron Grubb.
+
+*cedega-4.2.1 (11 Jan 2005)
+
+  11 Jan 2005; Mike Frysinger <vapier@gentoo.org> +cedega-4.2.1.ebuild:
+  Version bump #77543 by James Stockton.
+
+*cedega-4.2-r1 (18 Dec 2004)
+
+  18 Dec 2004; Mike Frysinger <vapier@gentoo.org> +cedega-4.2-r1.ebuild:
+  Version bump #74893 by Erdroh Moshan.
+
+*cedega-4.2 (07 Dec 2004)
+
+  07 Dec 2004; Mike Frysinger <vapier@gentoo.org> +cedega-4.2.ebuild:
+  Version bump #73637 by Alex Handy.
+
+*cedega-4.1.1 (10 Nov 2004)
+
+  10 Nov 2004; Mike Frysinger <vapier@gentoo.org> +cedega-4.1.1.ebuild:
+  Version bump #70605 by Jim Tupper.
+
+*cedega-4.1 (24 Oct 2004)
+
+  24 Oct 2004; Mike Frysinger <vapier@gentoo.org> +cedega-4.1.ebuild:
+  Version bump #68163 by Brent Kelly.
+
+*cedega-4.0.1 (14 Aug 2004)
+
+  14 Aug 2004; Mike Frysinger <vapier@gentoo.org> +cedega-4.0.1.ebuild:
+  Version bump #59989 by John5788.
 
 *cedega-4.0 (23 Jun 2004)
 

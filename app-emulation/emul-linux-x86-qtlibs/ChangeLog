@@ -1,6 +1,54 @@
 # ChangeLog for app-emulation/emul-linux-x86-qtlibs
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-qtlibs/ChangeLog,v 1.1 2004/04/13 17:45:26 kugelfang Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-qtlibs/ChangeLog,v 1.1.1.1 2005/11/30 10:08:49 chriswhite Exp $
+
+  06 Sep 2005; Herbie Hopkins <herbs@gentoo.org> metadata.xml,
+  -emul-linux-x86-qtlibs-1.1.ebuild, -emul-linux-x86-qtlibs-2.1.ebuild:
+  Reomove old versions.
+
+  22 May 2005; Simon Stelling <blubb@gentoo.org>
+  emul-linux-x86-qtlibs-2.1.1.ebuild:
+  stable on amd64
+
+*emul-linux-x86-qtlibs-2.1.1 (22 Apr 2005)
+
+  22 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  +emul-linux-x86-qtlibs-2.1.1.ebuild:
+  Rebuild qt3 to fix bug #89971
+
+  21 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  +files/45emul-linux-x86-qtlibs, -emul-linux-x86-qtlibs-2.0.ebuild,
+  emul-linux-x86-qtlibs-2.1.ebuild, emul-linux-x86-qtlibs-1.1.ebuild:
+  Switch to use doenvd. Mark 1.1 stable.
+
+*emul-linux-x86-qtlibs-2.1 (18 Apr 2005)
+
+  18 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  +emul-linux-x86-qtlibs-2.1.ebuild:
+  Version 2.1. Removed unnecessary .a files. Fixed SRC_URI.
+
+*emul-linux-x86-qtlibs-2.0 (15 Apr 2005)
+
+  15 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  +emul-linux-x86-qtlibs-2.0.ebuild:
+  new version provided by Herbie Hopkins
+
+  09 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  -emul-linux-x86-qtlibs-1.0.ebuild:
+  Removed old ebuild.
+
+  19 Jul 2004; Travis Tilley <lv@gentoo.org> emul-linux-x86-qtlibs-1.1.ebuild:
+  changed dep to fix bug 57608
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org>
+  emul-linux-x86-qtlibs-1.1.ebuild:
+  change virtual/glibc to virtual/libc
+
+*emul-linux-x86-qtlibs-1.1 (01 Jul 2004)
+
+  01 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> metadata.xml,
+  +emul-linux-x86-qtlibs-1.1.ebuild:
+  Version Bump to fix BUG #53767. Added libjpeg to the tarball.
 
 *emul-linux-x86-qtlibs-1.0 (13 Apr 2004)
 

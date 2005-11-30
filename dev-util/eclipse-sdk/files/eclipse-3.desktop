@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Eclipse 3
+Name=Eclipse @PV@
 Comment=A Java Development Environment
-Icon=/usr/lib/eclipse/icon.xpm
+Icon=/usr/lib/eclipse-3/icon.xpm
 Exec=/usr/bin/eclipse-3
 Terminal=false
 Type=Application

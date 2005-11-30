@@ -1,30 +1,35 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Andreas Voegele <voegelas@users.sourceforge.net>
-# Maintainer: Mikael Hallendal <hallski@gentoo.org>
-# /home/cvsroot/gentoo-x86/skel.build,v 1.9 2001/10/21 16:17:12 agriffis Exp
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostview/ghostview-1.5.ebuild,v 1.1.1.1 2005/11/30 10:06:27 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="A PostScript viewer for X11"
-SRC_URI="ftp://ftp.gnu.org/gnu/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/ghostview/"
+SRC_URI="ftp://ftp.gnu.org/gnu/${PN}/${P}.tar.gz"
 
-DEPEND="virtual/glibc
-        virtual/x11"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
 
+DEPEND="virtual/libc
+	virtual/x11"
 RDEPEND="${DEPEND}
-	>=app-text/ghostscript-6.50-r2"
+	virtual/ghostscript"
+PROVIDE="virtual/pdfviewer
+	virtual/psviewer"
 
-src_unpack() { 
+src_unpack() {
 	unpack ${A}
 	# This patch contains all the Debian patches and enables anti-aliasing.
-	patch -p0 < ${FILESDIR}/${PF}-gentoo.diff
+	epatch ${FILESDIR}/${PF}-gentoo.diff
 }
 
 src_compile() {
+	PATH=/usr/X11R6/bin:${PATH} # root doesn't get this by default
 	xmkmf -a || die
-	cp Makefile Makefile.old
-	sed -e "s,all:: ghostview.\$(MANSUFFIX).html,all:: ,g" Makefile.old > Makefile
+	sed -i -e "s,all:: ghostview.\$(MANSUFFIX).html,all:: ,g" Makefile
 	emake || die
 }
 

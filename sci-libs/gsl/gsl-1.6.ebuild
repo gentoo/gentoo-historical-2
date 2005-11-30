@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gsl/gsl-1.6.ebuild,v 1.1 2005/01/16 14:58:45 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gsl/gsl-1.6.ebuild,v 1.1.1.1 2005/11/30 10:09:26 chriswhite Exp $
 
 inherit flag-o-matic
 

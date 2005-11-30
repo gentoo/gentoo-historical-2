@@ -1,15 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/catdoc/catdoc-0.93.3.ebuild,v 1.1 2003/12/30 14:52:01 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/catdoc/catdoc-0.93.3.ebuild,v 1.1.1.1 2005/11/30 10:07:01 chriswhite Exp $
 
 DESCRIPTION="A convertor for Microsoft Word, Excel and RTF Files to text"
-HOMEPAGE="http://www.45.free.net/~vitus/ice/${PN}/"
+HOMEPAGE="http://www.45.free.net/~vitus/ice/catdoc/"
 SRC_URI="ftp://ftp.45.free.net/pub/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 IUSE="tcltk"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="tcltk? ( >=dev-lang/tk-8.1 )"
 

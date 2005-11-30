@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cfitsio/cfitsio-2.490.ebuild,v 1.1 2004/12/28 20:03:08 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cfitsio/cfitsio-2.490.ebuild,v 1.1.1.1 2005/11/30 10:09:20 chriswhite Exp $
 
 IUSE=""
 

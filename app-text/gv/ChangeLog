@@ -1,8 +1,120 @@
 # ChangeLog for app-text/gv
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-text/gv/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/gv/ChangeLog,v 1.1.1.1 2005/11/30 10:06:37 chriswhite Exp $
+
+*gv-3.6.1-r1 (03 Nov 2005)
+
+  03 Nov 2005; Luis Medinas <metalgod@gentoo.org>
+  +files/gv-3.6.1-scrollbar.patch, gv-3.5.8-r4.ebuild, gv-3.6.1.ebuild,
+  +gv-3.6.1-r1.ebuild:
+  Added a patch to fix scrollbar bug and added a better description thanks to
+  Ulrich Mueller <ulm@kph.uni-mainz.de> closes bug #111024 and #111114.
+
+*gv-3.6.1 (07 Jun 2005)
+
+  07 Jun 2005; Heinrich Wendel <lanius@gentoo.org> +files/gv-3.6.1-a0.patch,
+  +files/gv-3.6.1-landscape.patch, +files/gv-3.6.1-setenv.patch,
+  +gv-3.6.1.ebuild:
+  version bump
+
+  16 Apr 2005; <nigoro@gentoo.org> gv-3.5.8-r4.ebuild:
+  added ~ppc64
+
+  03 Apr 2005; Lina Pezzella <j4rg0n@gentoo.org>
+  +files/gv-3.5.8-setenv.diff, gv-3.5.8-r4.ebuild:
+  Testing ppc-macos. Bug #86072. Thanks to Benjamin Braatz for reporting
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  25 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> gv-3.5.8-r4.ebuild:
+  Provide virtual/pdfviewer and virtual/psviewer; bug #50423.
+
+  16 Oct 2004; Hardave Riar <hardave@gentoo.org> gv-3.5.8-r4.ebuild:
+  Added ~mips keyword.
+
+  12 Aug 2004; Heinrich Wendel <lanius@gentoo.org> gv-3.5.8-r2.ebuild,
+  gv-3.5.8-r3.ebuild:
+  remove vulnerable versions
+
+  08 Aug 2004; Luca Barbato <lu_zero@gentoo.org> gv-3.5.8-r4.ebuild:
+  Marked ppc
+
+  06 Aug 2004; Bryan Østergaard,,, <kloeri@gentoo.org> gv-3.5.8-r4.ebuild:
+  Stable on alpha, bug #59385.
+
+  05 Aug 2004; Tom Martin <slarti@gentoo.org> gv-3.5.8-r4.ebuild:
+  Stable on amd64 for bug 59385.
+
+  04 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gv-3.5.8-r4.ebuild:
+  Stable on sparc wrt #59385
+
+  04 Aug 2004; Heinrich Wendel <lanius@gentoo.org> gv-3.5.8-r4.ebuild:
+  mark stable because of security issues, bug #59385
+
+*gv-3.5.8-r4 (04 Aug 2004)
+
+  04 Aug 2004; Heinrich Wendel <lanius@gentoo.org> gv-3.5.8-r4.ebuild,
+  files/gv-3.5.8-debian.diff.gz:
+  add debian patch, fixes bug #41848
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> gv-3.5.8-r3.ebuild:
+  Stable on alpha.
+
+  25 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> gv-3.5.8-r3.ebuild:
+  Marked stable on amd64.
+
+  11 May 2004; Ferris McCormick <fmccor@gentoo.org> gv-3.5.8-r3.ebuild:
+  Marked stable on sparc.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> gv-3.5.8-r3.ebuild:
+  Add inherit eutils
+
+  07 May 2004; Heinrich Wendel <lanius@gentoo.org> gv-3.5.8-r2.ebuild,
+  gv-3.5.8-r3.ebuild:
+  add IUSE=""; mark x86
+
+*gv-3.5.8-r3 (08 Apr 2004)
+
+  08 Apr 2004; Heinrich Wendel <lanius@gentoo.org> gv-3.5.8-r2.ebuild,
+  gv-3.5.8-r3.ebuild, metadata.xml, files/gv-3.5.8-antialias.patch:
+  enable antialiasing by default, bug #45208
+
+  09 Feb 2004; Dylan Carlson <absinthe@gentoo.org> gv-3.5.8-r2.ebuild:
+  marked stable amd64.
+
+  07 Jan 2004; Jon Portnoy <avenj@gentoo.org> gv-3.5.8-r2.ebuild :
+  AMD64 keywords.
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> gv-3.5.8-r2.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+*gv-3.5.8-r2 (03 Oct 2002)
+
+  11 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add gcc3 patch #24154.
+
+  03 Aug 2003; Jason Wever <weeve@gentoo.org> gv-3.5.8-r2.ebuild:
+  Added sparc to keywords to fix big #25043.
+
+  10 Mar 2003; Aron Griffis <agriffis@gentoo.org> gv-3.5.8-r2.ebuild:
+  Mark stable on alpha
+
+  03 Oct 2002; Daneil Ahlberg <aliz@gentoo.org> gv-3.5.8-r2.ebuild :
+  Security update.
 
 *gv-3.5.8-r1 (1 Feb 2002)
+
+  08 Aug 2002; Seemant Kulleen <semant@gentoo.org> gv-3.5.8-r1.ebuild :
+
+  Made more FHS Compliant.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> gv-3.5.8-r1.ebuild :
+  Added LICENSE, SLOT.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

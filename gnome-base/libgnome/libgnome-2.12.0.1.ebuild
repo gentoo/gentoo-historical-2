@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnome/libgnome-2.12.0.1.ebuild,v 1.1 2005/09/09 01:04:55 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnome/libgnome-2.12.0.1.ebuild,v 1.1.1.1 2005/11/30 10:09:04 chriswhite Exp $
 
 inherit eutils gnome2
 

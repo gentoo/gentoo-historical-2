@@ -1,13 +1,13 @@
-# Copyright 2003 Arcady Genkin <agenkin@gentoo.org>.
-# Distributed under the terms of the GNU General Public License v2.
-# $Header: /var/cvsroot/gentoo-x86/net-im/tkabber/tkabber-0.9.5b.ebuild,v 1.1 2003/07/08 17:45:23 agenkin Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/tkabber/tkabber-0.9.5b.ebuild,v 1.1.1.1 2005/11/30 10:09:34 chriswhite Exp $
 
 DESCRIPTION="Featurefull Jabber client for tcl/tk."
-HOMEPAGE="http://tkabber.jabber.ru/en/"
+HOMEPAGE="http://tkabber.jabber.ru/"
 IUSE="crypt ssl"
 
-DEPEND=">=dev-lang/tcl-8.3*
-	>=dev-lang/tk-8.3*
+DEPEND=">=dev-lang/tcl-8.3
+	>=dev-lang/tk-8.3
 	dev-tcltk/tclxml-expat
 	crypt? ( >=dev-tcltk/tclgpgme-1.0 )
 	>=dev-tcltk/tcllib-1.3
@@ -17,27 +17,22 @@ DEPEND=">=dev-lang/tcl-8.3*
 	>=dev-tcltk/tkTheme-1.0"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~alpha"
 
 SLOT="0"
 
-MY_P="$(echo ${P}|sed 's/b$/beta/')"
+MY_P=${P/%b/beta}
 SRC_URI="http://www.jabberstudio.org/files/tkabber/${MY_P}.tar.gz"
 S=${WORKDIR}/${MY_P}
 
 src_compile() {
-
-	# Nothing to compile.
-	true
-
+	# dont run make, because the Makefile is broken with all=install
+	echo -n
 }
 
 src_install() {
-
 	make DESTDIR=${D} PREFIX=/usr install || die
-	
+
 	dodoc AUTHORS COPYING ChangeLog INSTALL README
 	dohtml README.html
-
 }
-

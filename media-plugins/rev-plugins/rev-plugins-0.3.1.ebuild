@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/rev-plugins/rev-plugins-0.3.1.ebuild,v 1.1 2005/10/10 19:04:22 fvdpol Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/rev-plugins/rev-plugins-0.3.1.ebuild,v 1.1.1.1 2005/11/30 10:07:37 chriswhite Exp $
 #
 MY_P=${P/rev/REV}
 

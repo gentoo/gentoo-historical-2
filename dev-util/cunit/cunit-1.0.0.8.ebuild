@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cunit/cunit-1.0.0.8.ebuild,v 1.1 2003/05/15 14:45:11 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cunit/cunit-1.0.0.8.ebuild,v 1.1.1.1 2005/11/30 10:05:30 chriswhite Exp $
 
 S=${WORKDIR}/CUnit-1.0-8
 DESCRIPTION="CUnit - C Unit Test Framework"
@@ -8,11 +8,12 @@ DESCRIPTION="CUnit - C Unit Test Framework"
 SRC_URI="mirror://sourceforge/cunit/CUnit-1.0-8.tar.gz"
 HOMEPAGE="http://cunit.sourceforge.net"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 SLOT="0"
 LICENSE="LGPL-2"
 KEYWORDS="x86 sparc"
+IUSE=""
 
 src_compile() {
 	./configure --prefix=/usr || die "configure failed"

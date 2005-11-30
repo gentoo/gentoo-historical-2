@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gv/gv-3.6.1.ebuild,v 1.1 2005/06/07 09:58:37 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gv/gv-3.6.1.ebuild,v 1.1.1.1 2005/11/30 10:06:37 chriswhite Exp $
 
 inherit eutils
 
-DESCRIPTION="standard ghostscript frontend used by programs like LyX"
+DESCRIPTION="gv is used to view PostScript and PDF documents using Ghostscript"
 HOMEPAGE="http://www.gnu.org/software/gv/"
 SRC_URI="ftp://ftp.gnu.org/gnu/gv/${P}.tar.gz
 	mirror://debian/pool/main/g/gv/gv_3.6.1-10.diff.gz"

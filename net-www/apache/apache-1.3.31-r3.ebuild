@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.31-r3.ebuild,v 1.1 2004/08/17 08:34:17 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.31-r3.ebuild,v 1.1.1.1 2005/11/30 10:08:01 chriswhite Exp $
 
 inherit eutils fixheadtails
 
-IUSE="pam"
+IUSE="pam selinux"
 
 mod_ssl_ver=2.8.19
 PATCH_LEVEL="${PV}-r2"
@@ -19,13 +19,16 @@ SRC_URI="http://www.apache.org/dist/httpd/apache_${PV}.tar.gz
 # The mod_ssl archive is only for providing the EAPI patch in here.
 # You should install the net-www/mod_ssl package for the actual DSO.
 
-DEPEND="dev-lang/perl <=sys-libs/db-4.1
+DEPEND="dev-lang/perl
+	<=sys-libs/db-4.1
 	>=dev-libs/mm-1.1.3
 	>=sys-libs/gdbm-1.8
 	>=dev-libs/expat-1.95.2
-	>=sys-apps/sed-4
-	=sys-libs/db-1.85-r1
-	selinux? (sec-policy/selinux-apache)"
+	=sys-libs/db-1*
+	selinux? ( sec-policy/selinux-apache )
+	!dev-libs/apr
+	!dev-libs/apr-util"
+
 LICENSE="Apache-2.0"
 SLOT="1"
 
@@ -43,11 +46,12 @@ src_unpack() {
 	epatch ${FILESDIR}/patches/${PATCH_LEVEL}/00_apache_proxy_security_fix.patch
 
 	if use pam ; then
-		epatch ${FILESDIR}/patches/${PVR}/00_gentoo_suexec_pam.patch
+		epatch ${FILESDIR}/patches/${PATCH_LEVEL}/00_gentoo_suexec_pam.patch
 	fi
 
 	#Obsolete 'head -1' and 'tail -1' calls.
-	ht_fix_file src/Configure src/helpers/getuid.sh
+	ht_fix_file src/Configure src/helpers/getuid.sh \
+		src/helpers/fmn.sh src/helpers/buildinfo.sh
 
 	# setup eapi...
 	myssl=${WORKDIR}/mod_ssl-${mod_ssl_ver}-${PV}

@@ -1,6 +1,19 @@
 # ChangeLog for dev-lisp/cl-ssl
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-ssl/ChangeLog,v 1.1 2003/10/27 03:02:57 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-ssl/ChangeLog,v 1.1.1.1 2005/11/30 10:08:31 chriswhite Exp $
+
+  17 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -cl-ssl-0.2.2003.09.10.ebuild, cl-ssl-0.2.2004.01.04.ebuild:
+  Removed old ebuilds; Keywording.
+
+  24 Mar 2004; Martin Holzer <mholzer@gentoo.org>
+  cl-ssl-0.2.2003.09.10.ebuild, cl-ssl-0.2.2004.01.04.ebuild:
+  fixing depend. closes 45110.
+
+*cl-ssl-0.2.2004.01.04 (12 Feb 2004)
+
+  12 Feb 2004; <mkennedy@gentoo.org> cl-ssl-0.2.2004.01.04.ebuild:
+  Cleanup for eclass changes.
 
 *cl-ssl-0.2.2003.09.10 (26 Oct 2003)
 

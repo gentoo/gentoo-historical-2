@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-xmmsmplayer/xmms-xmmsmplayer-0.5.ebuild,v 1.1 2004/06/08 03:30:11 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-xmmsmplayer/xmms-xmmsmplayer-0.5.ebuild,v 1.1.1.1 2005/11/30 10:07:35 chriswhite Exp $
 
 IUSE=""
 
@@ -16,14 +16,14 @@ RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc ~amd64 ~sparc"
 
 DEPEND="media-sound/xmms
 	media-video/mplayer"
 
 src_install() {
 	make DESTDIR="${D}" libdir=`xmms-config --input-plugin-dir` install || die
-	dodoc AUTHORS COPYING README
+	dodoc AUTHORS README
 }
 
 pkg_postinst() {

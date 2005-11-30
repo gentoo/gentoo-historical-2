@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/gcl/gcl-2.6.7.ebuild,v 1.1 2005/08/14 00:27:53 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/gcl/gcl-2.6.7.ebuild,v 1.1.1.1 2005/11/30 10:08:21 chriswhite Exp $
 
 inherit elisp-common flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnu.org/gnu/gcl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc amd64"
+KEYWORDS="x86 ~ppc amd64 sparc"
 IUSE="emacs readline debug X tcltk custreloc dlopen gprof doc ansi"
 
 DEPEND=">=app-text/texi2html-1.64
@@ -21,8 +21,6 @@ DEPEND=">=app-text/texi2html-1.64
 	doc? ( virtual/tetex )
 	tcltk? ( dev-lang/tk )"
 
-SANDBOX_DISABLED="1"
-
 src_unpack() {
 	unpack ${A}
 	sed -e "s/gcl-doc/${PF}/g" ${S}/info/makefile > ${T}/makefile
@@ -30,6 +28,7 @@ src_unpack() {
 }
 
 src_compile() {
+	export SANDBOX_ON=0
 	local myconfig=""
 
 	# Hardened gcc may automatically use PIE building, which does not
@@ -121,6 +120,7 @@ ${myconfig}"
 }
 
 src_install() {
+	export SANDBOX_ON=0
 	make DESTDIR=${D} install || die
 
 	rm -rf ${D}/usr/lib/${P}/info
@@ -148,7 +148,7 @@ src_install() {
 
 	dodoc readme* RELEASE* ChangeLog* doc/*
 
-	find ${D}/usr/lib/gcl-2.6.5/ -type f \( -perm 640 -o -perm 750 \) -exec chmod 0644 '{}' \;
+	find ${D}/usr/lib/gcl-${PV}/ -type f \( -perm 640 -o -perm 750 \) -exec chmod 0644 '{}' \;
 }
 
 pkg_postinst() {

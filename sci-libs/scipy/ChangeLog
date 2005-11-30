@@ -1,6 +1,6 @@
 # ChangeLog for sci-libs/scipy
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/ChangeLog,v 1.1 2005/08/22 16:31:29 pbienst Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/scipy/ChangeLog,v 1.1.1.1 2005/11/30 10:09:25 chriswhite Exp $
 
 *scipy-0.3.2 (22 Aug 2005)
 

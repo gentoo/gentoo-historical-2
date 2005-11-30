@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/orbit-2.12.4.ebuild,v 1.1 2005/09/11 14:08:36 cretin Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/orbit-2.12.4.ebuild,v 1.1.1.1 2005/11/30 10:09:00 chriswhite Exp $
 
 inherit gnome2
 

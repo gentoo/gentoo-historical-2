@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gnomesword/gnomesword-2.1.1.ebuild,v 1.1 2004/08/18 17:22:44 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gnomesword/gnomesword-2.1.1.ebuild,v 1.1.1.1 2005/11/30 10:06:54 chriswhite Exp $
 
-inherit libtool gnome2
+inherit libtool gnome2 eutils
 
 DESCRIPTION="Gnome Bible study software"
 HOMEPAGE="http://gnomesword.sf.net/"
@@ -11,22 +11,29 @@ RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~amd64"
 IUSE="spell"
 
-RDEPEND=">=gnome-extra/libgtkhtml-3.0
-	>=gnome-extra/gal-1.99.11
-	>=gnome-base/gnome-print-0.35
-	>=media-libs/gdk-pixbuf-0.18
+RDEPEND="=gnome-extra/libgtkhtml-3.0*
 	>=app-text/sword-1.5.8_pre1
 	>=x11-libs/gtk+-2
-	spell? ( app-text/gnome-spell )
-	>=gnome-base/libgnomeui-1.112.1
-	>=gnome-base/libglade-1.99.9"
+	>=gnome-base/libgnomeui-2
+	=gnome-extra/gal-1.99*
+	dev-libs/libxml2
+	virtual/libc
+	spell? ( app-text/gnome-spell
+	>=gnome-base/libbonoboui-2 )"
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12
-	>=dev-util/intltool-0.22"
+	>=dev-util/intltool-0.29
+	>=app-text/scrollkeeper-0.3.14"
 
 G2CONF="${G2CONF} --enable-sword_cvs $(use_enable spell pspell)"
 DOCS="COPYING NEWS ChangeLog README TODO"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/gnomesword-2.1.1-gcc-3.4.patch
+}

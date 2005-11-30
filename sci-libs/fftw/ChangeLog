@@ -1,6 +1,84 @@
-# ChangeLog for dev-libs/fftw
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/ChangeLog,v 1.1 2004/12/29 01:12:04 ribosome Exp $
+# ChangeLog for sci-libs/fftw
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/ChangeLog,v 1.1.1.1 2005/11/30 10:09:26 chriswhite Exp $
+
+  12 Nov 2005; Luca Barbato <lu_zero@gentoo.org>
+  +files/fftw-3.0.1-altivec.patch, fftw-3.0.1-r2.ebuild:
+  Altivec support for gcc-fsf fixed
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> fftw-3.0.1-r2.ebuild:
+  stable on ia64
+
+  24 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> fftw-3.0.1-r2.ebuild:
+  No longer using cp -a (bug #103487)
+
+  11 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> fftw-3.0.1-r2.ebuild:
+  stable on alpha, wrt bug #101771
+
+  10 Aug 2005; Markus Rothe <corsair@gentoo.org> fftw-3.0.1-r2.ebuild:
+  Stable on ppc64 (bug #101771)
+
+  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> fftw-3.0.1-r2.ebuild:
+  Marked Stable on AMD64.
+
+  10 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org> fftw-3.0.1-r2.ebuild:
+  Stable on hppa. bug #101771
+
+  10 Aug 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  fftw-3.0.1-r2.ebuild:
+  ppc stable, bug #101771
+
+  10 Aug 2005; Ferris McCormick <fmccor@gentoo.org> fftw-3.0.1-r2.ebuild:
+  Stable for sparc, Security bug #101771.
+
+*fftw-3.0.1-r2 (10 Aug 2005)
+
+  10 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> +files/3-tmpfile.patch,
+  +fftw-3.0.1-r2.ebuild:
+  Fixing insecure temp file generation of fftw-wisdom-to-conf, see bug #101771
+
+  17 Jul 2005; Hardave Riar <hardave@gentoo.org> fftw-3.0.1-r1.ebuild:
+  Keyworded ~mips
+
+  01 Jul 2005; Ferris McCormick <fmccor@gentoo.org> fftw-3.0.1-r1.ebuild:
+  Stable for sparc.  No sparc errors outstanding and runs its 'bench'
+  performance test program in both single and double mode without any
+  issues.
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org> fftw-2.1.5-r1.ebuild:
+  Stable on ppc64
+
+  15 May 2005; Danny van Dyk <kugelfang@gentoo.org> fftw-3.0.1-r1.ebuild:
+  Inherits toolchain-funcs now instead of deprecated gcc eclass.
+
+  27 Apr 2005; Markus Rothe <corsair@gentoo.org> fftw-2.1.5-r1.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #89969
+
+  21 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> fftw-3.0.1-r1.ebuild:
+  Add sse2 USE flag, closes bug 83036.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> fftw-3.0.1-r1.ebuild:
+  stable on ia64
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> fftw-3.0.1.ebuild:
+  Stable on ppc.
+
+  05 Mar 2005; Markus Rothe <corsair@gentoo.org> fftw-3.0.1-r1.ebuild:
+  Stable on ppc64
+
+  03 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  fftw-2.1.5-r1.ebuild:
+  Multilib fixes.
+
+  13 Jan 2005; Donnie Berkholz <spyderous@gentoo.org>; fftw-2.1.5-r1.ebuild:
+  Change insinto "${D}usr/include" to insinto /usr/include, thanks to Seemant
+  Kulleen <seemant@gentoo.org>.
+
+  03 Jan 2005; Markus Rothe <corsair@gentoo.org> fftw-3.0.1-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
 
 *fftw-3.0.1 (28 Dec 2004)
 
@@ -24,7 +102,7 @@
   09 Jul 2004; Michael Hanselmann <hansmi@gentoo.org> fftw-3.0.1-r1.ebuild:
   Fixed a compilation-error with Altivec and gcc 3.4.1
 
-  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> fftw-3.0.1.ebuild:
+  03 Jul 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> fftw-3.0.1.ebuild:
   Stable on alpha.
 
   01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> fftw-3.0.1-r1.ebuild,

@@ -1,31 +1,32 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-arts/xmms-arts-0.7.1-r2.ebuild,v 1.1 2004/10/20 01:48:40 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-arts/xmms-arts-0.7.1-r2.ebuild,v 1.1.1.1 2005/11/30 10:07:15 chriswhite Exp $
 
-IUSE=""
-
-inherit xmms-plugin
+inherit eutils
 
 MY_P=arts_output-${PV}
-XMMS_S=${XMMS_WORKDIR}/${MY_P}
-BMP_S=${BMP_WORKDIR}/${MY_P}
+S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="This output plugin allows xmms to work with arts, KDE's sound system"
 HOMEPAGE="http://www.xmms.org/plugins.php"
 SRC_URI="http://havardk.xmms.org/plugins/arts_output/${MY_P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE=""
 
-DEPEND="kde-base/arts"
+DEPEND=">=media-sound/xmms-1.2.7
+	kde-base/arts"
 
-DOCS="AUTHORS ChangeLog NEWS README"
-
-NOBMP=1
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-eintr.patch
+}
 
 src_install() {
-	myins_xmms="libdir=`xmms-config --output-plugin-dir`"
+	make DESTDIR=${D} libdir=`xmms-config --output-plugin-dir` install || die
 
-	xmms-plugin_src_install
+	dodoc AUTHORS ChangeLog NEWS README
 }

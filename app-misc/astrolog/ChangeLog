@@ -1,6 +1,25 @@
 # ChangeLog for app-misc/astrolog
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: 
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/astrolog/ChangeLog,v 1.1.1.1 2005/11/30 10:05:50 chriswhite Exp $
+
+  07 Nov 2005; George Shapovalov <george@gentoo.org> astrolog-5.40.ebuild:
+  fixed missing DEPEND on (optional) X (#109227)
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> astrolog-5.40.ebuild:
+  stable on amd64
+
+  08 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org> astrolog-5.40.ebuild:
+  Added to ~amd64, bug #73723
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  astrolog-5.40.ebuild:
+  Masked astrolog-5.40.ebuild stable for ppc
+
+  19 Sept 2004; Tom Gall <tgall@gentoo.org> astrolog-5.40.ebuild:
+  stable on ppc64 bug #63655
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed CVS Header.
 
 *astrolog-5.40 (30 Jul 2003)
 

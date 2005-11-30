@@ -1,9 +1,10 @@
 #!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tpconfig/files/tpconfig,v 1.1.1.1 2005/11/30 10:06:00 chriswhite Exp $
 
 depend() {
-        before xdm
+	before xdm
 }
 
 start() {

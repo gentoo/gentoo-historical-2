@@ -1,6 +1,84 @@
-# ChangeLog for sys-apps/syslinux
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Id: ChangeLog,v 1.1 2003/12/09 08:28:31 seemant Exp $
+# ChangeLog for sys-boot/syslinux
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/syslinux/ChangeLog,v 1.1.1.1 2005/11/30 10:04:47 chriswhite Exp $
+
+  10 Oct 2005; Luis Medinas <metalgod@gentoo.org> syslinux-3.09.ebuild:
+  Marked stable on amd64. Closes bug #108508.
+
+  09 Oct 2005; Mark Loeser <halcy0n@gentoo.org> syslinux-3.09.ebuild:
+  Stable on x86
+
+*syslinux-3.11 (08 Oct 2005)
+
+  08 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/syslinux-3.11-nopie.patch, +files/syslinux-3.11-nossp.patch,
+  +syslinux-3.11.ebuild:
+  Version bump #108505 by Michael Cramer.
+
+*syslinux-3.09 (25 Jun 2005)
+
+  25 Jun 2005; <solar@gentoo.org> +files/syslinux-3.09-nopie.patch,
+  syslinux-3.08.ebuild, +syslinux-3.09.ebuild:
+  - worked around BREG compile errors while building. version bumped to current
+  also
+
+*syslinux-3.08 (16 Jun 2005)
+
+  16 Jun 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/syslinux-3.08-nossp.patch, +syslinux-3.08.ebuild:
+  Version bump #96260 by Jesse Adelman.
+
+  25 Jan 2005; <solar@gentoo.org> +files/syslinux-3.07-nossp.patch,
+  syslinux-3.07.ebuild:
+  - syslinux compilation fails bug #78482
+
+*syslinux-3.07 (15 Jan 2005)
+
+  15 Jan 2005; Mike Frysinger <vapier@gentoo.org> +syslinux-3.07.ebuild:
+  Version bump #78098 by Ziga Boehm.
+
+*syslinux-3.05 (09 Jan 2005)
+
+  09 Jan 2005; Mike Frysinger <vapier@gentoo.org> +syslinux-3.05.ebuild:
+  Version bump.
+
+*syslinux-2.13 (09 Jan 2005)
+
+  09 Jan 2005; Mike Frysinger <vapier@gentoo.org> +syslinux-2.13.ebuild:
+  Version bump.
+
+*syslinux-1.76 (09 Jan 2005)
+
+  09 Jan 2005; Mike Frysinger <vapier@gentoo.org> -syslinux-1.75.ebuild,
+  +syslinux-1.76.ebuild:
+  Old school version bump.
+
+  01 Jan 2005; Mike Doty <kingtaco@gentoo.org> syslinux-2.11.ebuild:
+  ~amd64 keyword added
+
+*syslinux-2.11 (04 Dec 2004)
+
+  04 Dec 2004; Brian Jackson <iggy@gentoo.org> +syslinux-2.11.ebuild:
+  version bump; we now build differently, more inline with what hpa suggests
+
+  11 May 2004; <solar@gentoo.org> syslinux-2.06.ebuild, syslinux-2.09.ebuild:
+  add ssp check before patching in nossp patches. This prevents breakage if your
+  gcc knows nothing about -fstack-protector
+
+*syslinux-2.09 (28 Apr 2004)
+
+  28 Apr 2004; <solar@gentoo.org> syslinux-2.06.ebuild, syslinux-2.09.ebuild,
+  files/syslinux-2.06-nossp.patch, files/syslinux-2.09-nossp.patch:
+  Marked syslinux-2.06 stable. Added version syslinux-2.09 ~x86. Added patches
+  which force -fno-stack-protector to be used for both
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> syslinux-2.05.ebuild,
+  syslinux-2.06.ebuild:
+  Add inherit eutils
+
+  31 Dec 2003; <paul@gentoo.org> metadata.xml, syslinux-2.06.ebuild:
+  nasm is not available on amd64, and even if it worked (unresearched) it could
+  create all kinds of funny sideeffects
 
 *syslinux-2.06 (08 Dec 2003)
 

@@ -1,26 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author: Daniel Robbins <drobbins@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-text/t1utils/t1utils-1.25.ebuild,v 1.1 2002/03/13 09:04:33 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/t1utils/t1utils-1.25.ebuild,v 1.1.1.1 2005/11/30 10:07:02 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Type 1 Font utilities"
-SRC_URI="http://www.lcdf.org/~eddietwo/type/${P}.tar.gz"
-HOMEPAGE="http://www.lcdf.org/~eddietwo/"
+SRC_URI="http://www.lcdf.org/type/${P}.tar.gz"
+HOMEPAGE="http://www.lcdf.org/type/#t1utils"
+KEYWORDS="x86 sparc"
+IUSE=""
+SLOT="0"
+LICENSE="BSD"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
 
-    ./configure --prefix=/usr --mandir=/usr/share/man --host=${CHOST} || die
-    emake || die
+	./configure --prefix=/usr --mandir=/usr/share/man --host=${CHOST} || die
+	emake || die
 
 }
 
 src_install () {
 
-    make DESTDIR=${D} install || die
-    dodoc NEWS README
+	make DESTDIR=${D} install || die
+	dodoc NEWS README
 
 }
-

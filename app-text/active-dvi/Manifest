@@ -1,2 +1,6 @@
-MD5 97e8f346ee0b4377e1b3e234911f0432 active-dvi-1.4.0.ebuild 2050
+MD5 0f2dbb70af9a340dbac78b4335da1bf6 active-dvi-1.6.0.ebuild 2686
+MD5 51ed1f25540daca21c6bfe1e88a23c45 active-dvi-1.4.0.ebuild 2467
+MD5 627fba2cc6a7d2e94966d9829535a42c ChangeLog 1493
+MD5 c472f5fd1646eb8bca71d8df5cb2bdcc metadata.xml 164
 MD5 93c4ba321a1dbd54e7f85e41348902b7 files/digest-active-dvi-1.4.0 63
+MD5 19e79f54c9bde96f2b0fef9583555362 files/digest-active-dvi-1.6.0 61

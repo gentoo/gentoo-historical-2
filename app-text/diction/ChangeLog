@@ -1,6 +1,25 @@
 # ChangeLog for app-text/diction
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/diction/ChangeLog,v 1.1 2003/02/18 12:18:17 lu_zero Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/diction/ChangeLog,v 1.1.1.1 2005/11/30 10:06:37 chriswhite Exp $
+
+  19 Oct 2005; Fabian Groffen <grobian@gentoo.org> diction-1.07.ebuild:
+  Marked ~ppc-macos (bug #108597)
+
+*diction-1.07 (21 Jan 2005)
+
+  21 Jan 2005; Luca Barbato <lu_zero@gentoo.org> +diction-1.07.ebuild:
+  New version
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> diction-1.02.ebuild:
+  Added ~sparc, ~mips
+
+  12 Jun 2003; <msterret@gentoo.org> diction-1.02.ebuild:
+  add Header
+
+*diction-1.02 (28 Feb 2003)
+
+  28 Feb 2003; Luca Barbato <lu_zero@gentoo.org> diction-1.02-r1.ebuild :
+  Path location fixed.
 
 *diction-1.02 (18 Feb 2003)
 

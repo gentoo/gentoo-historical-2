@@ -1,6 +1,22 @@
 # ChangeLog for dev-lisp/cl-paip
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-paip/ChangeLog,v 1.1 2004/03/03 19:00:56 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-paip/ChangeLog,v 1.1.1.1 2005/11/30 10:08:23 chriswhite Exp $
+
+  24 May 2005; <mkennedy@gentoo.org> cl-paip-1.0.2.ebuild:
+  Keywording ~sparc
+
+  16 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org> cl-paip-1.0.2.ebuild:
+  Keywording
+
+  11 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org> cl-paip-1.0.2.ebuild:
+  Keywording for ~amd64
+
+  05 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/1.0.2-package-lock-gentoo.patch, cl-paip-1.0.2.ebuild:
+  Include fix for package locks (CMUCL, SBCL); Tagging stable keywords for x86
+
+  09 Sep 2004; <mkennedy@gentoo.org> cl-paip-1.0.2.ebuild:
+  Corrected spelling mistake in description.
 
 *cl-paip-1.0.2 (03 Mar 2004)
 

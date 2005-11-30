@@ -1,28 +1,31 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mtoolsfm/mtoolsfm-1.9.3.ebuild,v 1.1 2003/07/15 14:45:24 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mtoolsfm/mtoolsfm-1.9.3.ebuild,v 1.1.1.1 2005/11/30 10:05:45 chriswhite Exp $
 
-DESCRIPTION="MToolsFM - easy floppy-access under linux / UNIX "
-HOMEPAGE="http://www.core-coutainville.org/MToolsFM/"
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86"
+inherit eutils
+
 MY_P="MToolsFM-1.9-3"
+S="${WORKDIR}/${MY_P}"
+DESCRIPTION="easy floppy-access under linux / UNIX"
+HOMEPAGE="http://www.core-coutainville.org/MToolsFM/"
 SRC_URI="http://www.core-coutainville.org/MToolsFM/archive/SOURCES/${MY_P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~ppc x86"
 IUSE=""
 
-S="${WORKDIR}/${MY_P}"
-
-DEPEND="=gtk+-1.2*
-	mtools"
+DEPEND="=x11-libs/gtk+-1.2*
+	sys-fs/mtools"
 
 src_unpack() {
 	unpack ${A} || die
 	cd ${S} || die
 	epatch ${FILESDIR}/mtoolsfm.c.diff
+	epatch ${FILESDIR}/ascii.patch
 }
 
 src_install() {
 	einstall install_prefix=${D}
-	dodoc AUTHORS COPYING ChangeLog NEWS README THANKS
+	dodoc AUTHORS ChangeLog NEWS README THANKS
 }

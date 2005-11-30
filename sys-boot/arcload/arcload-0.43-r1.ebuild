@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/arcload/arcload-0.43-r1.ebuild,v 1.1 2005/10/14 17:32:26 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/arcload/arcload-0.43-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:46 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 

@@ -1,6 +1,65 @@
 # ChangeLog for dev-util/rhide
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rhide/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rhide/ChangeLog,v 1.1.1.1 2005/11/30 10:05:34 chriswhite Exp $
+
+*rhide-1.5.20050823 (29 Aug 2005)
+
+  29 Aug 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/rhide-1.5.20050823-amd64-support.patch, +rhide-1.5.20050823.ebuild:
+  Update snapshot and do a few needed cleanups.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> rhide-1.5-r1.ebuild,
+  rhide-1.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+  03 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>; rhide-1.5-r1.ebuild,
+  rhide-1.5.ebuild:
+  Change XFree86 references to X11.
+
+  31 Jan 2004; Marius Mauch <genone@gentoo.org> rhide-1.5-r1.ebuild:
+  added a patch for gcc-3.3 compatibility, thanks to Jochen Eisinger
+
+  20 Sep 2003; Marius Mauch <genone@gentoo.org> rhide-1.5-r1.ebuild:
+  added a fix for gettext-0.12, thanks to Brandy (bug 28741). Also replacesd
+  the perl calls with sed, leaving the dependency for perl atm as I'm not sure
+  if it is needed for other things as well.
+
+*rhide-1.5-r1 (03 Apr 2003)
+
+  09 May 2003; Martin Holzer <mholzer@gentoo.org> rhide-1.5-r1.ebuild:
+  Fixed setedit source.
+
+  03 Apr 2003; Martin Schlemmer <azarah@gentoo.org> rhide-1.5-r1 :
+  Update setedit sources to the official released ones.
+
+*rhide-1.5 (22 Mar 2003)
+
+  09 May 2003; Martin Holzer <mholzer@gentoo.org> rhide-1.5.ebuild:
+  Fixed setedit source.
+
+  22 Mar 2003; Martin Schlemmer <azarah@gentoo.org> rhide-1.5 :
+  New version with new hacks.  I really wish these guys would try to get
+  a more sane build system.  Got the beast to work with rhtvision-2.0.1
+  and setedit-0.5.0 ... although setedit's docs currently do not build
+  with texinfo-4.5.  No train smach, as we still have info pages.
+
+*rhide-1.5_pre-r1 (22 Sep 2002)
+
+  22 Sep 2002; Martin Schlemmer <azarah@gentoo.org> rhide-1.5_pre-r1 :
+
+  Update snapshot.  Patch to work with gdb-5.2.1.  Patch tvision to compile
+  with gcc-3.1 and later.
+
+  21 Aug 2002; Martin Schlemmer <azarah@gentoo.org> rhide-1.5_pre :
+
+  Install the tvision terminfo files.
+
+*rhide-1.5_pre (21 Aug 2002)
+
+  20 Aug 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  New version of rhide!!  This one should actually merge again :P  Lots
+  of cleanups to my original ebuild.
 
 *rhide-1.4.9-r1 (1 Feb 2002)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.12.10.ebuild,v 1.1 2004/11/18 16:41:59 scandium Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.12.10.ebuild,v 1.1.1.1 2005/11/30 10:04:59 chriswhite Exp $
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
 HOMEPAGE="http://www.cvshome.org/"
@@ -60,4 +60,8 @@ src_install() {
 		insinto /etc/pam.d
 		newins ${FILESDIR}/cvs.pam cvs
 	fi
+}
+
+src_test() {
+	einfo "FEATURES=\"maketest\" has been disabled for dev-util/cvs"
 }

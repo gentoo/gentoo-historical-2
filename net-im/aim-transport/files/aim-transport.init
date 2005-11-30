@@ -7,7 +7,7 @@ depend() {
 
 start() {
 	ebegin "Starting AIM Jabber Transport"
-	jabberd -B -c /etc/jabber/aimtrans.xml -H /var/spool/jabber >/dev/null 2>&1
+	/usr/sbin/jabberd -B -c /etc/jabber/aimtrans.xml -H /var/spool/jabber >/dev/null 2>&1
 	eend $?
 }
 
@@ -15,7 +15,7 @@ stop() {
 	ebegin "Stoping AIM Jabber Transport"
 	kill `cat /var/log/jabber/aim.pid`
 	sleep 2
-	if ( -f /var/log/jabber/aim.pid ); then
+	if [ -f /var/log/jabber/aim.pid ]; then
 		kill -9 `cat /var/log/jabber/aim.pid`
 		rm -f /var/log/jabber/aim.pid
 	fi

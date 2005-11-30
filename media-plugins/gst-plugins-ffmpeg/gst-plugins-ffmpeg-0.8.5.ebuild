@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/gst-plugins-ffmpeg-0.8.5.ebuild,v 1.1 2005/06/11 09:41:09 zaheerm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/gst-plugins-ffmpeg-0.8.5.ebuild,v 1.1.1.1 2005/11/30 10:07:29 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -16,13 +16,21 @@ HOMEPAGE="http://gstreamer.freedesktop.org/modules/gst-ffmpeg.html"
 SRC_URI="http://gstreamer.freedesktop.org/src/${MY_PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~hppa"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
 
-DEPEND=">=media-libs/gstreamer-0.8.4
+DEPEND=">=media-libs/gstreamer-0.8.10
 	dev-util/pkgconfig"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	# bug 103529
+	epatch ${FILESDIR}/${P}-gmake.patch
+	./autogen.sh
+}
 
 src_compile() {
 

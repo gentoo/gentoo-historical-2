@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.0.2.ebuild,v 1.1 2004/04/27 16:18:42 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.0.2.ebuild,v 1.1.1.1 2005/11/30 10:09:41 chriswhite Exp $
 
-inherit gnome2
+inherit gnome2 eutils
 
 DESCRIPTION="Gnome NetMeeting client"
 HOMEPAGE="http://www.gnomemeeting.org"
@@ -11,8 +11,8 @@ SRC_URI="http://www.gnomemeeting.org/includes/clicks_counter.php?http://www.gnom
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
-IUSE="sdl ssl ipv6"
+KEYWORDS="~x86 ppc ~sparc"
+IUSE="ipv6 sdl ssl"
 
 RDEPEND=">=dev-libs/pwlib-1.6.6
 	>=net-libs/openh323-1.13.5
@@ -23,13 +23,12 @@ RDEPEND=">=dev-libs/pwlib-1.6.6
 	>=gnome-base/libbonobo-2.0
 	>=gnome-base/libgnomeui-2.0
 	>=gnome-base/libgnome-2.0
-	>=net-libs/linc-0.5.0
 	>=x11-libs/gtk+-2.0.0
 	>=dev-libs/glib-2.0.0
 	>=gnome-base/gconf-2.0
 	>=dev-libs/libxml2-2.6.1
 	>=media-sound/esound-0.2.28
-	>=gnome-base/ORBit2-2.5.0"
+	>=gnome-base/orbit-2.5.0"
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0
@@ -57,7 +56,7 @@ src_compile() {
 	myconf="${myconf} --with-openh323-includes=/usr/include/openh323"
 	myconf="${myconf} --with-openh323-libs=/usr/lib"
 
-	if [ -n "`use ssl`" ]; then
+	if use ssl; then
 		myconf="${myconf} --with-openssl-libs=/usr/lib"
 		myconf="${myconf} --with-openssl-includes=/usr/include/openssl"
 	fi
@@ -75,6 +74,16 @@ src_compile() {
 		--host=${CHOST} \
 		${myconf} || die "configure failed"
 	emake || die
+}
+
+pkg_postinst() {
+
+	gnome2_pkg_postinst
+	# we need to fix the GConf permissions, see bug #59764
+	# <obz@gentoo.org>
+	einfo "Fixing GConf permissions for gnomemeeting"
+	gnomemeeting-config-tool --fix-permissions
+
 }
 
 DOCS="AUTHORS ChangeLog COPYING README INSTALL NEWS FAQ TODO"

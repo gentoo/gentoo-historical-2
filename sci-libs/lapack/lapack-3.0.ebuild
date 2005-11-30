@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack/lapack-3.0.ebuild,v 1.1 2004/12/29 16:20:20 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack/lapack-3.0.ebuild,v 1.1.1.1 2005/11/30 10:09:27 chriswhite Exp $
 
 DESCRIPTION="Linear Algebra PACKage for scientists, engineers, and mathematicians. This contains the libraries for creating programs that use LAPACK."
 HOMEPAGE="http://www.netlib.org/lapack/"
@@ -12,16 +12,16 @@ IUSE=""
 KEYWORDS="x86 amd64 ~ppc"
 
 DEPEND="virtual/libc
-	app-sci/blas"
+	sci-libs/blas"
 
 S=${WORKDIR}/LAPACK
 
 src_compile() {
 	cp ${FILESDIR}/Makefile SRC/Makefile
 	cd SRC
-	FC="g77" FFLAGS="${CFLAGS}" make static
+	FC="g77" FFLAGS="${CFLAGS}" make static || die "make failed"
 }
 
 src_install() {
-	dolib.a SRC/liblapack.a
+	dolib.a SRC/liblapack.a || die "dolib failed"
 }

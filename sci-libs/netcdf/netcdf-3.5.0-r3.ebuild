@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/netcdf-3.5.0-r3.ebuild,v 1.1 2004/12/28 18:29:26 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/netcdf-3.5.0-r3.ebuild,v 1.1.1.1 2005/11/30 10:09:21 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="Scientific library and interface for array oriented data access"
-SRC_URI="ftp://ftp.unidata.ucar.edu/pub/netcdf/${P}.tar.Z"
+SRC_URI="ftp://ftp.unidata.ucar.edu/pub/netcdf/old/${P}.tar.Z"
 HOMEPAGE="http://www.unidata.ucar.edu/packages/netcdf/"
 
 LICENSE="UCAR-Unidata"

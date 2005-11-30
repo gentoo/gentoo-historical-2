@@ -1,6 +1,52 @@
 # ChangeLog for app-vim/calendar
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/calendar/ChangeLog,v 1.1 2003/08/12 01:47:36 agriffis Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/calendar/ChangeLog,v 1.1.1.1 2005/11/30 10:07:40 chriswhite Exp $
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> calendar-1.4.ebuild:
+  Stable on ppc.
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> calendar-1.4.ebuild:
+  amd64 stable.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> calendar-1.4.ebuild:
+  Stable on alpha.
+
+  10 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> calendar-1.4.ebuild:
+  x86, sparc stable, added ~mips
+
+  27 Nov 2004; Ciaran McCreesh <ciaranm@gentoo.org> calendar-1.4.ebuild:
+  Conflicts with cvscommand, bug #62677
+
+*calendar-1.4 (23 Nov 2004)
+
+  23 Nov 2004; Ciaran McCreesh <ciaranm@gentoo.org> +calendar-1.4.ebuild:
+  Version bump, bug #72059
+
+  26 Oct 2004; Tom Martin <slarti@gentoo.org> calendar-1.3u.ebuild:
+  Marked ~amd64.
+
+  03 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> calendar-1.3u.ebuild:
+  Help text, bug #62559
+
+  15 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> calendar-1.3u.ebuild:
+  Stable on sparc
+
+  05 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> calendar-1.3u.ebuild:
+  Added ~ppc to keywords
+
+  03 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> calendar-1.3u.ebuild:
+  Keyworded ~sparc
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> calendar-1.3u.ebuild:
+  Stable on ia64
+
+  18 Aug 2003; Aron Griffis <agriffis@gentoo.org> calendar-1.3u.ebuild:
+  Mark stable on alpha and x86
+
+  11 Aug 2003; Aron Griffis <agriffis@gentoo.org> :
+  Update from author: "Sorry, I was very busy. I'm glad to your invitation.
+  Please include it. Thanks."  I assume this means that the choice of the
+  vim license is sufficient.
 
 *calendar-1.3u (11 Aug 2003)
 

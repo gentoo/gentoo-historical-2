@@ -1,18 +1,30 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/htmlinc/htmlinc-1.0_beta1.ebuild,v 1.1 2002/06/23 23:34:28 carpaski Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/htmlinc/htmlinc-1.0_beta1.ebuild,v 1.1.1.1 2005/11/30 10:06:58 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="HTML Include System by Ulli Meybohm"
 HOMEPAGE="http://www.meybohm.de/"
-LICENSE="GPL"
-DEPEND=""
-SRC_URI="http://meybohm.de/files/htmlinc.tar.gz"
+SRC_URI="http://meybohm.de/files/${PN}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~ppc sparc x86"
+IUSE=""
+
+DEPEND="virtual/libc"
 S=${WORKDIR}/htmlinc
+
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/htmlinc-gcc3-gentoo.patch
+}
 
 src_compile() {
 	emake CFLAGS="${CXXFLAGS} -Wall" || die
 }
 
-src_install () {
+src_install() {
 	dobin htmlinc
 }

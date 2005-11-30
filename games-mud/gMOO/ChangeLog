@@ -1,13 +1,37 @@
-# ChangeLog for app-games/gMOO
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/gMOO/ChangeLog,v 1.1 2003/09/10 19:03:11 vapier Exp $
+# ChangeLog for games-mud/gMOO
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/gMOO/ChangeLog,v 1.1.1.1 2005/11/30 10:06:14 chriswhite Exp $
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  Removed INSTALL file.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  Marked ppc stable.
+
+  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  keywords ~amd64
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  Added ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  kludge tcl support; virtual/x11; use emake/econf/use_enable; use bz2 source
+
+  24 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  header fix; tidy
 
 *gMOO-0.4.8-r1 (1 Feb 2002)
 
-  30 Jul 2002: Jose Alberto Suárez López <bass@gentoo.org> gMOO-0.4.8-r1.ebuild:
+  30 Jul 2002: Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> gMOO-0.4.8-r1.ebuild:
   Fix problems with nls.
 
-  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> gMOO-0.4.8.ebuild :
+  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> gMOO-0.4.8.ebuild :
   Added LICENSE, KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

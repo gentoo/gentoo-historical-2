@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.2.6-r4.ebuild,v 1.1 2005/10/08 21:43:02 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gdal/gdal-1.2.6-r4.ebuild,v 1.1.1.1 2005/11/30 10:09:23 chriswhite Exp $
 
 inherit eutils libtool gnuconfig distutils
 
-IUSE="jpeg png geos gif grass jasper netcdf hdf python postgres mysql \
-	odbc sqlite ogdi fits gml doc debug"
+IUSE="jpeg png geos gif jasper netcdf hdf python postgres mysql sqlite \
+	odbc ogdi fits gml doc debug"
 
 DESCRIPTION="GDAL is a translator library for raster geospatial data formats (includes OGR support)"
 HOMEPAGE="http://www.remotesensing.org/gdal/index.html"
@@ -38,7 +38,6 @@ DEPEND=">=sys-libs/zlib-1.1.4
 	jasper? ( media-libs/jasper )
 	odbc?   ( dev-db/unixODBC )
 	geos?   ( sci-libs/geos )
-	grass? ( ~sci-geosciences/grass-6.0.0 )
 	sqlite? ( dev-db/sqlite )
 	doc? ( app-doc/doxygen )"
 
@@ -73,7 +72,7 @@ src_compile() {
 
 	# It can't find this
 	if useq ogdi ; then
-	    use_conf="--with-ogdi=/usr/lib ${use_conf}"
+	    use_conf="--with-ogdi=/usr/$(get_libdir) ${use_conf}"
 	fi
 
 	if useq gif ; then
@@ -86,14 +85,8 @@ src_compile() {
 	    export CFG=debug
 	fi
 
-	# Enable newer Grass support only
-	if useq grass ; then
-	    use_conf="--with-grass=/usr/grass60 ${use_conf}"
-	    use_conf="--with-libgrass=no ${use_conf}"
-	fi
-
 	if useq python ; then
-	    use_conf="--with-pymoddir=/usr/${get_libdir}/python${PYVER}/site-packages \
+	    use_conf="--with-pymoddir=/usr/$(get_libdir)/python${PYVER}/site-packages \
 	    ${use_conf}"
 	else
 	    use_conf="--with-python=no ${use_conf}"
@@ -124,7 +117,8 @@ pkg_postinst() {
 	einfo "GDAL is most useful with full graphics support enabled via various"
 	einfo "USE flags: png, jpeg, gif, jasper, etc. Also python, fits, ogdi,"
 	einfo "geos, and support for either netcdf or HDF4 is available, as well as"
-	einfo "grass, and mysql, sqlite, or postgres (grass support requires grass 6)."
+	einfo "grass, and mysql, sqlite, or postgres (grass support requires newer"
+	einfo "gdal and gdal-grass)."
 	ewarn
 	einfo "Note: tiff and geotiff are now hard depends, so no USE flags."
 	einfo "Also, this package will check for netcdf before hdf, so if you"

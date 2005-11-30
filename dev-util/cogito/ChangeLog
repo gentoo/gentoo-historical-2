@@ -1,6 +1,99 @@
 # ChangeLog for dev-util/cogito
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cogito/ChangeLog,v 1.1 2005/04/26 20:19:11 r3pek Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cogito/ChangeLog,v 1.1.1.1 2005/11/30 10:05:23 chriswhite Exp $
+
+*cogito-0.16_rc1 (12 Nov 2005)
+
+  12 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +cogito-0.16_rc1.ebuild:
+  version bump
+
+*cogito-0.15.1 (15 Oct 2005)
+
+  15 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/cogito-0.12.1-doc.patch, -files/cogito-0.15-doc.patch,
+  -cogito-0.12.1.ebuild, -cogito-0.13.ebuild, -cogito-0.14.1.ebuild,
+  -cogito-0.15.ebuild, +cogito-0.15.1.ebuild:
+  version bump. clean old ebuilds
+
+*cogito-0.15 (05 Oct 2005)
+
+  05 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/cogito-0.15-doc.patch, metadata.xml, +cogito-0.15.ebuild:
+  Added myself to metadata. Version bump, also installs HTML documentation if
+  USE=doc
+
+  28 Sep 2005; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  cogito-0.14.1.ebuild:
+  mark ~mips
+
+*cogito-0.14.1 (13 Sep 2005)
+
+  13 Sep 2005; Carlos Silva <r3pek@gentoo.org> +cogito-0.14.1.ebuild:
+  Version bump
+
+  26 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> cogito-0.13.ebuild:
+  marked ~alpha wrt bug #101907
+
+  09 Aug 2005; Michał Januszewski <spock@gentoo.org> cogito-0.13.ebuild:
+  Added a dependency on git-0.99.3. Removed stuff that was no longer used for
+  anything due to the fact that cogito doesn't have a bundled version of git
+  (sha1 hashing).
+
+  09 Aug 2005; Carlos Silva <r3pek@gentoo.org> cogito-0.13.ebuild:
+  Fixed make documentation
+
+  08 Aug 2005; Carlos Silva <r3pek@gentoo.org> cogito-0.13.ebuild:
+  Forgot to remove the epatch thingy :S
+
+*cogito-0.13 (08 Aug 2005)
+
+  08 Aug 2005; Carlos Silva <r3pek@gentoo.org> +cogito-0.13.ebuild:
+  version bump
+
+  28 Jul 2005; Carlos Silva <r3pek@gentoo.org>
+  +files/cogito-0.12.1-doc.patch, cogito-0.12.1.ebuild:
+  closing bug #100550 thx to Chris White :D
+
+  15 Jul 2005; Carlos Silva <r3pek@gentoo.org> -files/Makefile.patch,
+  -files/git-rev-list.patch, -cogito-0.10.ebuild, -cogito-0.11.1.ebuild,
+  -cogito-0.11.3.ebuild, cogito-0.12.1.ebuild:
+  Closing bug #98032. thx Carsten Lohrke
+
+*cogito-0.12.1 (13 Jul 2005)
+
+  13 Jul 2005; MichaÅ Januszewski <spock@gentoo.org> +cogito-0.12.1.ebuild:
+  Version bump.
+
+  01 Jul 2005; Carlos Silva <r3pek@gentoo.org> +files/git-rev-list.patch,
+  cogito-0.11.3.ebuild:
+  Applying patch from bug #97451 thx to Max Loparyev
+
+  13 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> cogito-0.11.1.ebuild,
+  cogito-0.11.3.ebuild:
+  marked ~alpha. wrt but #95107
+
+*cogito-0.11.3 (10 Jun 2005)
+
+  10 Jun 2005; Carlos Silva <r3pek@gentoo.org> +cogito-0.11.3.ebuild:
+  Version Bump
+
+*cogito-0.11.1 (04 Jun 2005)
+
+  04 Jun 2005; Carlos Silva <r3pek@gentoo.org> +cogito-0.11.1.ebuild:
+  Version bump. Closing bug #94876 thx to Brandon Philips
+
+  17 May 2005; Carlos Silva <r3pek@gentoo.org> cogito-0.10.ebuild:
+  Removing git-pasky references
+
+*cogito-0.10 (09 May 2005)
+
+  09 May 2005; Carlos Silva <r3pek@gentoo.org> -files/Makefile.patch,
+  +cogito-0.10.ebuild, -cogito-0.8.ebuild:
+  Version bump to 0.10 thx to Brandon Philips in bug #91973
+
+  03 May 2005; David Holm <dholm@gentoo.org> cogito-0.8.ebuild:
+  Added to ~ppc.
 
 *cogito-0.8 (26 Apr 2005)
 

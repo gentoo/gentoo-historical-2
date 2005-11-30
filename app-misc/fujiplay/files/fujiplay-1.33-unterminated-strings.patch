@@ -34,7 +34,7 @@
 -";
 -
 -const char *Copyright = "\
--Fujiplay, $Id: fujiplay.c,v 1.33 1999/02/22 14:13:01 bousch Exp $
+-Fujiplay, $Id: fujiplay-1.33-unterminated-strings.patch,v 1.1 2005/01/08 13:57:42 griffon26 Exp $
 -Written by Thierry Bousch <bousch@topo.math.u-psud.fr>
 -Public domain. Absolutely no warranty.
 -";
@@ -67,7 +67,7 @@
 +"  DSCxxxxx.JPG	Files to delete or to upload into the camera\n";
 +
 +const char *Copyright =
-+"Fujiplay, $Id: fujiplay.c,v 1.33 1999/02/22 14:13:01 bousch Exp $\n"
++"Fujiplay, $Id: fujiplay-1.33-unterminated-strings.patch,v 1.1 2005/01/08 13:57:42 griffon26 Exp $\n"
 +"Written by Thierry Bousch <bousch@topo.math.u-psud.fr>\n"
 +"Public domain. Absolutely no warranty.\n";
  

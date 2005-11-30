@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cweb/cweb-3.64.ebuild,v 1.1 2002/12/30 02:12:13 satai Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cweb/cweb-3.64.ebuild,v 1.1.1.1 2005/11/30 10:05:32 chriswhite Exp $
 
 S=${WORKDIR}
 DESCRIPTION="Knuth's and Levy's C/C++ documenting system"
@@ -9,31 +9,32 @@ HOMEPAGE="http://www-cs-faculty.stanford.edu/~knuth/cweb.html"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="x86 sparc "
+KEYWORDS="~amd64 ~ppc sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
-    #emake won't work, because cweave needs ctangle to compile
-    make all CFLAGS="${CFLAGS}" LINKFLAGS="-s" || die
+	#emake won't work, because cweave needs ctangle to compile
+	make all CFLAGS="${CFLAGS}" LINKFLAGS="-s" || die
 }
 
 src_install () {
-    dobin ctangle cweave
-    doman cweb.1
-    dodoc README cwebman.tex
-    dodir /usr/share/texmf/tex/generic
-    insinto /usr/share/texmf/tex/generic
-    doins cwebmac.tex
-    dodir /usr/lib/cweb
-    insinto /usr/lib/cweb
-    doins c++lib.w
-    dodir /usr/share/emacs/site-lisp/
-    insinto /usr/share/emacs/site-lisp/
-    doins cweb.el
+	dobin ctangle cweave
+	doman cweb.1
+	dodoc README cwebman.tex
+	dodir /usr/share/texmf/tex/generic
+	insinto /usr/share/texmf/tex/generic
+	doins cwebmac.tex
+	dodir /usr/lib/cweb
+	insinto /usr/lib/cweb
+	doins c++lib.w
+	dodir /usr/share/emacs/site-lisp/
+	insinto /usr/share/emacs/site-lisp/
+	doins cweb.el
 }
 
 # Going to use this, just to make sure.  May convert to a latex-package later.
 pkg_postinst() {
-    texconfig rehash
+	texconfig rehash
 }

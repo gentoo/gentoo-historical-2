@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.11.20.ebuild,v 1.1 2005/04/19 23:20:12 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.11.20.ebuild,v 1.1.1.1 2005/11/30 10:05:00 chriswhite Exp $
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
 HOMEPAGE="http://www.cvshome.org/"
@@ -11,11 +11,10 @@ SRC_URI="http://ccvs.cvshome.org/files/documents/19/861/${P}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 IUSE="doc emacs"
 
-DEPEND="virtual/libc
-	>=sys-libs/zlib-1.1.4"
+DEPEND=">=sys-libs/zlib-1.1.4"
 
 src_compile() {
 	econf --with-tmpdir=/tmp || die

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-modlisp/cl-modlisp-0.6.ebuild,v 1.1 2004/10/18 15:25:02 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-modlisp/cl-modlisp-0.6.ebuild,v 1.1.1.1 2005/11/30 10:08:16 chriswhite Exp $
 
 inherit common-lisp
 
@@ -9,11 +9,9 @@ HOMEPAGE="http://cl-modlisp.b9.com/"
 SRC_URI="http://files.b9.com/cl-modlisp/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE=""
-DEPEND="dev-lisp/common-lisp-controller
-	virtual/commonlisp
-	dev-lisp/cl-kmrcl"
+DEPEND="dev-lisp/cl-kmrcl"
 RDEPEND="${DEPEND}
 	www-apache/mod_lisp"
 

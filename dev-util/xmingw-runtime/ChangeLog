@@ -1,8 +1,37 @@
 # ChangeLog for dev-util/xmingw-runtime
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-runtime/ChangeLog,v 1.1 2003/10/02 10:23:31 cretin Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-runtime/ChangeLog,v 1.1.1.1 2005/11/30 10:05:12 chriswhite Exp $
 
-* xmingw-runtime-3.1 (01 Oct 2003)
+*xmingw-runtime-3.7 (27 May 2005)
+
+  27 May 2005; Stefan Jones <cretin@gentoo.org>:
+  New version bump
+
+  09 Feb 2005; Simon Stelling <blubb@gentoo.org> xmingw-runtime-3.5.ebuild:
+  added ~amd64
+
+*xmingw-runtime-3.5 (14 Oct 2004)
+
+  14 Oct 2004; Stefan Jones <cretin@gentoo.org> xmingw-runtime-3.5.ebuild,
+  xmingw-runtime-3.5-inc.patch :
+  New version
+
+*xmingw-runtime-3.3 (09 Sep 2004)
+
+  09 Sep 2004; Stefan Jones <cretin@gentoo.org> xmingw-runtime-3.3.ebuild,
+  xmingw-runtime-3.3-inc.patch :
+  New version
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  xmingw-runtime-3.1.ebuild, xmingw-runtime-3.2.ebuild:
+  don't assign to P; error messages; tidy
+
+*xmingw-runtime-3.2 (28 Oct 2003)
+
+  28 Oct 2003; Stefan Jones <cretin@gentoo.org> :
+  New version
+  
+*xmingw-runtime-3.1 (01 Oct 2003)
 
   01 Oct 2003; Stefan Jones <cretin@gentoo.org> :
   Initial ebuild

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/szip/szip-1.1-r1.ebuild,v 1.1 2004/12/29 00:12:04 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/szip/szip-1.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:19 chriswhite Exp $
 
 inherit eutils
 

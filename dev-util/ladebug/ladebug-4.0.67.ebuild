@@ -1,11 +1,9 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ladebug/ladebug-4.0.67.ebuild,v 1.1 2003/04/15 03:15:38 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ladebug/ladebug-4.0.67.ebuild,v 1.1.1.1 2005/11/30 10:05:21 chriswhite Exp $
 #
 # Submitted By Tavis Ormandy <taviso@gentoo.org>
 #
-
-IUSE="emacs"
 
 inherit elisp
 
@@ -13,25 +11,28 @@ DESCRIPTION="Linux port of the Famous Tru64 Debugger"
 HOMEPAGE="http://www.support.compaq.com/alpha-tools"
 #HOMEPAGE="ftp://ftp.compaq.com/pub/products/linuxdevtools/latest/downloads.html"
 #SRC_URI="ftp://ftp.compaq.com/pub/products/linuxdevtools/latest/ladebug-4.0.67-21.alpha.rpm"
+SRC_URI=""
 LICENSE="PLDSPv2"
 SLOT="0"
 # NOTE: ALPHA Only!
-KEYWORDS="-* ~alpha"
-DEPEND="virtual/glibc
+KEYWORDS="-* alpha"
+DEPEND="virtual/libc
 		app-arch/rpm2targz
-		dev-libs/libots
-		dev-libs/libcpml
 		emacs? ( virtual/emacs )"
-S=${WORKDIR}/${P}
+RDEPEND="dev-libs/libots
+		 dev-libs/libcpml"
+
+IUSE="emacs"
+
 RELEASE="4.0.67-21"
-SITEFILE="50ladebug.el"
+#SITEFILE="50ladebug.el"
 
 src_unpack() {
 	# convert rpm into tar archive
 	local ladebug_rpm="ladebug-${RELEASE}.alpha.rpm"
 	if [ ! -f ${DISTDIR}/${ladebug_rpm} ]; then
 		eerror ""
-		eerror "Please download ${ladebug_rpm} from" 
+		eerror "Please download ${ladebug_rpm} from"
 		eerror "${HOMEPAGE}, and place it in"
 		eerror "${DISTDIR}"
 		eerror ""
@@ -46,7 +47,7 @@ src_unpack() {
 			&& find usr -type d -print0 | xargs -0 chmod a+rx
 		eend ${?}
 		assert "Failed to extract ${ladebug_rpm%.rpm}.tar.gz"
-		
+
 		eend ${?}
 	fi
 }
@@ -60,13 +61,13 @@ src_compile() {
 		einfo "Preparing emacs Ladebug integration (USE=\"emacs\"?)..."
 		rm -rf ${WORKDIR}/usr/lib/emacs
 	fi
-	
+
 	# man pages are in the wrong place
 	einfo "Reorganising man structure..."
 	rm -rf ${WORKDIR}/usr/man
 	mkdir -p ${WORKDIR}/usr/share/man/man1
 	mv ${WORKDIR}/usr/lib/compaq/ladebug-V67/ladebug.1.gz ${WORKDIR}/usr/share/man/man1
-	
+
 	einfo "Reorganising Documentation structure..."
 	mv ${WORKDIR}/usr/doc ${WORKDIR}/usr/share/
 	cp -r ${WORKDIR}/usr/share/locale/en_US ${WORKDIR}/usr/share/locale/C
@@ -75,13 +76,12 @@ src_compile() {
 src_install() {
 	# move files over
 	mv ${WORKDIR}/usr ${D} || die "Ladebug Installation Failed"
-	
+
 	# prep manpages
 	prepman ${D}/usr/share/man/man1/ladebug.1.gz
 	prepalldocs
 	if use emacs >/dev/null ; then
 		elisp-install ${PN} ladebug.el
-		#FIXME: how does this work?
 		#elisp-site-file-install ${FILESDIR}/${SITEFILE}
 		cp ${FILESDIR}/${SITEFILE} ${D}/usr/share/emacs/site-lisp/
 	fi

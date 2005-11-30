@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_xslt/mod_xslt-1.0.5a-r1.ebuild,v 1.1 2005/01/10 23:08:18 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_xslt/mod_xslt-1.0.5a-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:14 chriswhite Exp $
 
 inherit eutils apache-module
 

@@ -1,18 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/mercurial/mercurial-0.7.ebuild,v 1.1 2005/09/17 03:08:06 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mercurial/mercurial-0.7.ebuild,v 1.1.1.1 2005/11/30 10:05:36 chriswhite Exp $
 
 inherit distutils
 
 MY_PV=${PV//_p/.}
 
-DESCRIPTION="fast, lightweight source control management system"
+DESCRIPTION="scalable distributed SCM"
 HOMEPAGE="http://www.selenic.com/mercurial/"
 SRC_URI="http://www.selenic.com/mercurial/release/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~x86"
+KEYWORDS="alpha amd64 ia64 ppc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/python-2.3
@@ -40,7 +40,8 @@ src_compile() {
 src_install() {
 	distutils_src_install
 
-	dodoc PKG-INFO README *.txt
-	cp -r hgeditor contrib ${D}/usr/share/doc/${PF}/
+	dodoc CONTRIBUTORS PKG-INFO README *.txt
+	cp hgweb*.cgi ${D}/usr/share/doc/${PF}/
+	cp -r contrib ${D}/usr/share/doc/${PF}/
 	doman doc/*.?
 }

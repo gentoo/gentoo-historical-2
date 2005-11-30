@@ -1,6 +1,333 @@
 # ChangeLog for gnome-base/librsvg
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/librsvg/ChangeLog,v 1.1.1.1 2005/11/30 10:09:06 chriswhite Exp $
+
+*librsvg-2.12.7 (20 Oct 2005)
+
+  20 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +librsvg-2.12.7.ebuild:
+  New version. Added simple checks to avoid colliding files when 'nsplugin' is
+  enabled.
+
+  11 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
+  librsvg-2.12.6.ebuild:
+  remove support for arm and mips, filed bugs
+
+*librsvg-2.12.6 (08 Oct 2005)
+
+  08 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +files/librsvg-2.12.6-plugin_checks.patch, -librsvg-2.12.3.ebuild,
+  +librsvg-2.12.6.ebuild:
+  New version. Use gecko-sdk to build the browser plugin, and replace the
+  'mozilla' USE flag with 'nsplugin'.
+
+*librsvg-2.12.3 (30 Sep 2005)
+
+  30 Sep 2005; <dang@gentoo.org> -librsvg-2.12.2.ebuild,
+  +librsvg-2.12.3.ebuild:
+  New version
+
+*librsvg-2.12.2 (30 Sep 2005)
+
+  30 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -librsvg-2.12.0.ebuild, +librsvg-2.12.2.ebuild:
+  New version.
+
+  20 Sep 2005; Leonardo Boshell <leonardop@gentoo.org> librsvg-2.9.5.ebuild,
+  librsvg-2.12.0.ebuild:
+  Set GTK2_CONFDIR correctly in pkg_postrm() (bug #106504).
+
+*librsvg-2.12.0 (17 Sep 2005)
+
+  17 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -librsvg-2.11.1.ebuild, +librsvg-2.12.0.ebuild:
+  New version. Updated dependencies. Added 'mozilla' USE flag.
+
+*librsvg-2.11.1 (12 Sep 2005)
+
+  12 Sep 2005; <dang@gentoo.org> +librsvg-2.11.1.ebuild:
+  Bump to version for gnome 2.12.0
+
+  16 Aug 2005; Simon Stelling <blubb@gentoo.org> librsvg-2.9.5.ebuild:
+  moving has_multilib_profile out of global scope
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org> librsvg-2.9.5.ebuild:
+  stable on mips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> librsvg-2.9.5.ebuild:
+  Stable on alpha.
+
+  26 Jun 2005; Guy Martin <gmsoft@gentoo.org> librsvg-2.9.5.ebuild:
+  Stable on hppa.
+
+  13 Jun 2005; Markus Rothe <corsair@gentoo.org> librsvg-2.9.5.ebuild:
+  Stable on ppc64
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> librsvg-2.9.5.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  librsvg-2.9.5.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> librsvg-2.9.5.ebuild:
+  Stable on sparc
+
+  18 Apr 2005; Herbie Hopkins <herbs@gentoo.org> librsvg-2.8.1-r1.ebuild,
+  librsvg-2.9.5.ebuild:
+  Fix bug #67989, use the correct GTK2_CONF_DIR on multilib systems.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> librsvg-2.8.1-r1.ebuild:
+  stable on amd64
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org>
+  librsvg-2.8.1-r1.ebuild:
+  stable on mips
+
+*librsvg-2.9.5 (20 Mar 2005)
+
+  20 Mar 2005; Joe McCann <joem@gentoo.org> +librsvg-2.9.5.ebuild:
+  gnome-2.10 release
+
+  20 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  librsvg-2.8.1-r1.ebuild:
+  Stable on alpha.
+
+  09 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> librsvg-2.8.1-r1.ebuild:
+  Stable on sparc
+
+  09 Mar 2005; Mike Gardiner <obz@gentoo.org> librsvg-2.8.1-r1.ebuild:
+  Keyworded x86 ppc
+
+*librsvg-2.8.1-r1 (20 Jan 2005)
+
+  20 Jan 2005; Mike Gardiner <obz@gentoo.org> +librsvg-2.8.1-r1.ebuild:
+  New revision with fix for gtk-doc installation, see bug #77419, and 
+  thanks to Stephane Loeuillet.
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> librsvg-2.8.1.ebuild:
+  Stable on amd64.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Dec 2004; Guy Martin <gmsoft@gentoo.org> librsvg-2.8.1.ebuild:
+  Stable on hppa.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> librsvg-2.8.1.ebuild:
+  Stable on alpha.
+
+  11 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> librsvg-2.8.1.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Luca Barbato <lu_zero@gentoo.org> librsvg-2.8.1.ebuild:
+  Marked ppc
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org> librsvg-2.6.5.ebuild:
+  stable on mips
+
+*librsvg-2.8.1 (15 Sep 2004)
+
+  15 Sep 2004; foser <foser@gentoo.org> librsvg-2.8.1.ebuild :
+  Gnome 2.8 release
+  update croco dep (fix in older versions)
+  add gnome USE for gnome-vfs
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> librsvg-2.6.5.ebuild:
+  Stable on alpha.
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> librsvg-2.6.5.ebuild:
+  Stable on sparc
+
+  05 Aug 2004; Guy Martin <gmsoft@gentoo.org> librsvg-2.6.5.ebuild:
+  Stable on hppa.
+
+  31 Jul 2004; <spider@gentoo.org> librsvg-2.6.5.ebuild:
+  stable on x86 for gnome 2.6.2
+
+  13 Jul 2004; Tom Gall <tgall@gentoo.org> librsvg-2.6.5.ebuild:
+  added ~ppc64 bug #54807
+
+  11 Jul 2004; <spider@gentoo.org> librsvg-1.0.3.ebuild:
+  IUSE to shut repoman up
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> librsvg-2.6.4.ebuild:
+  Stable on alpha.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> librsvg-1.0.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  04 Jun 2004; Stephen P. Becker <geoman@gentoo.org> librsvg-2.6.4.ebuild:
+  Stable on mips.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  librsvg-2.6.4.ebuild:
+  Masked librsvg-2.6.4.ebuild stable for ppc
+
+  26 May 2004; Guy Martin <gmsoft@gentoo.org> librsvg-2.6.4.ebuild:
+  Marked stable on hppa.
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> librsvg-2.4.0-r1.ebuild:
+  Stable on mips.
+
+*librsvg-2.6.5 (04 May 2004)
+
+  04 May 2004; foser <foser@gentoo.org> librsvg-2.6.5.ebuild :
+  New release
+
+  25 Apr 2004; foser <foser@gentoo.org> librsvg-2.6.4.ebuild :
+  Remove the package made gdk pixbuf loader config, we do this ourselves (#47766)
+
+  08 Apr 2004; L. Boshell <leonardop@gentoo.org> librsvg-2.6.4.ebuild,
+  files/ librsvg-2.6.4-gcc2_fix.patch:
+  Added patch so it can compile using gcc-2. Replace the --enable-croco
+  flag with --with-croco.
+  
+*librsvg-2.6.4 (01 Apr 2004)
+
+  01 Apr 2004; foser <foser@gentoo.org> librsvg-2.6.4.ebuild :
+  New release, gnome 2.6 final
+
+*librsvg-2.6.3 (21 Mar 2004)
+
+  21 Mar 2004; foser <foser@gentoo.org> librsvg-2.6.3.ebuild :
+  New release
+
+*librsvg-2.6.2 (19 Mar 2004)
+
+  10 Mar 2004; foser <foser@gentoo.org> librsvg-2.6.2.ebuild :
+  Gnome 2.6 release
+  Added libcroco support
+  Fixed license
+
+  15 Mar 2004; Bret Curtis <psi29a@gentoo.org> librsvg-2.4.0-r1.ebuild:
+  Added ~mips to KEYWORDS
+
+*librsvg-2.4.0-r1 (08 Feb 2004)
+
+  08 Feb 2004; <spider@gentoo.org> librsvg-2.4.0-r1.ebuild:
+  add a --without-croco, we're pending inclusion of libcroco.
+
+  13 Dec 2003; foser <foser@gentoo.org> librsvg-2.4.0.ebuild :
+  Fix homepage and description
+
+  04 Dec 2003; foser <foser@gentoo.org> librsvg-2.4.0.ebuild :
+  disable building of gimp plugin, it breaks with recent dev versions (#34896)
+
+  08 Nov 2003; Todd Sunderlin <todd@gentoo.org> librsvg-2.4.0.ebuild:
+  added sparc keyword
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> librsvg-2.4.0.ebuild:
+  set ppc in keywords
+
+  17 Oct 2003; Aron Griffis <agriffis@gentoo.org> librsvg-2.4.0.ebuild:
+  Stable on alpha
+
+  05 Oct 2003; Mike Gardiner <obz@gentoo.org> librsvg-2.4.0.ebuild:
+  Marked stable on x86
+
+*librsvg-2.4.0 (07 Sep 2003)
+
+  16 Nov 2003; Guy Martin <gmsoft@gentoo.org> librsvg-2.4.0.ebuild :
+  Marked stable on hppa.
+
+  07 Sep 2003; foser <foser@gentoo.org> librsvg-2.4.0.ebuild :
+  New version, add zlib use flag for compressed svg support
+
+*librsvg-2.3.1 (07 Sep 2003)
+
+  07 Sep 2003; foser <foser@gentoo.org> librsvg-2.3.1.ebuild :
+  Gnome 2.4 rc1
+
+  23 Aug 2003; foser <foser@gentoo.org> librsvg-2.2.5.ebuild :
+  Add gdk-pixbuf loader config stuff 
+
+  15 Jul 2003; Todd Sunderlin <todd@gentoo.org> librsvg-2.2.5.ebuild:
+  Marked stable for sparc
+
+  30 Jun 2003; Bartosch Pixa <darkspecter@gentoo.org> librsvg-2.2.5.ebuild:
+  set ppc in keywords
+
+*librsvg-2.2.5 (21 Mar 2003)
+
+  04 Jul 2003; Guy Martin <gmsoft@gentoo.org> librsvg-2.2.5.ebuild :
+  Added hppa to KEYWORDS.
+
+  21 Mar 2003; foser <foser@gentoo.org> librsvg-2.2.5.ebuild :
+  New version
+
+*librsvg-2.2.4 (10 Mar 2003)
+
+  17 Mar 2003; Jason Wever <weeve@gentoo.org> librsvg-2.2.4.ebuild:
+  Added ~sparc to keywords.
+
+  10 Mar 2003; foser <foser@gentoo.org> librsvg-2.2.4.ebuild :
+  New version 
+
+*librsvg-2.2.3 (12 Feb 2003)
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> librsvg-2.2.3.ebuild :
+  Mark stable on alpha
+
+  12 Feb 2003; foser <foser@gentoo.org> librsvg-2.2.3.ebuild :
+  New version
+
+  10 Feb 2003; Aron Griffis <agriffis@gentoo.org> librsvg-2.2.2.1.ebuild :
+  Add ~alpha to KEYWORDS
+
+  07 Feb 2003; Aron Griffis <agriffis@gentoo.org> librsvg-2.2.2.1.ebuild :
+  Add dependency on >=libgsf-1.6.0 since it doesn't build with 1.3.0
+
+*librsvg-2.2.2.1 (4 Feb 2003)
+
+  01 Mar 2003; Jason Wever <weeve@gentoo.org> librsvg-2.2.2.1.ebuild:
+  Added ~sparc to keywords.
+
+  04 Feb 2003; foser <foser@gentoo.org> librsvg-2.2.2.1.ebuild :
+  Added doc to IUSE, fixed deps, fixed license
+  
+  04 Feb 2003; Spider <spider@gentoo.org> librsvg-2.2.2.1.ebuild :
+  Added latest+greatest
+  fix for S=WORKDIR..  Remember to revert that in next version
+
+*librsvg-2.2.1 (30 Jan 2003)
+
+  30 Jan 2003; foser <foser@gentoo.org> librsvg-2.2.1.ebuild :
+  GNOME 2.2 rc2 commit
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*librsvg-2.1.1 (27 Oct 2002)
+
+  03 Dec 2002; Jon Nall <nall@gentoo.org> librsvg-2.1.1.ebuild :
+  keyworded ~ppc
+
+  27 Oct 2002; foser <foser@gentoo.org> librsvg-2.1.1.ebuild :
+  Gnome 2.1 commit
+
+*librsvg-2.0.1 (25 Jul 2002)
+  26 Jul 2002; Spider <spider@gentoo.org> librsvg-2.0.1.ebuild :
+  seems it depends on libart >=2.3.10
+  thanks to tiigel for pointing it out
+
+  25 Jul 2002; Spider <spider@gentoo.org> librsvg-2.0.1.ebuild :
+  versionbumped, changed deps, mirror:/ and eclassed
+
+  thanks to Andreas Kotowicz <koto@mynetix.de>  and Manny <christian-neumair@web.de>
+      
+*librsvg-2.0.0-r1 (19 Jun 2002)
+  19 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> librsvg-2.0.0-r1.ebuild:
+  Added missing GTK+2 depencie. (librsvg was failing to build if no GTK+2 
+  emerged). 
+
+*librsvg-2.0.0 (19 Jun 2002)
+  19 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> librsvg-2.0.0.ebuild:
+  Yay! version 2.0.0   
+
+*librsvg-1.1.6-r2 (22 May 2002)
+ 22 May 2002; Spider <spider@gentoo.org>  librsvg-1.1.6-r2.ebuild:
+  the gnome2 branch
+
 
 *librsvg-1.0.3 (1 Feb 2002)
 

@@ -1,26 +1,25 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-statistics/cl-statistics-1.0.0.2-r1.ebuild,v 1.1 2004/02/12 09:13:20 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-statistics/cl-statistics-1.0.0.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:19 chriswhite Exp $
 
-inherit common-lisp
+inherit common-lisp eutils
 
 DEB_PV=1
 
 DESCRIPTION="Common Lisp Statistics Package"
-HOMEPAGE="http://www.biolisp.org
-	http://packages.debian.org/unstable/devel/cl-statistics.html"
+HOMEPAGE="http://www.biolisp.org http://packages.debian.org/unstable/devel/cl-statistics.html"
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/cl-statistics/${PN}_${PV}.orig.tar.gz
 	http://ftp.debian.org/debian/pool/main/c/cl-statistics/${PN}_${PV}-${DEB_PV}.diff.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE=""
+
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp"
 
 CLPACKAGE=cl-statistics
-
-S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}

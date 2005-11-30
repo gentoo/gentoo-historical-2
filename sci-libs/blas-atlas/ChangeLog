@@ -1,6 +1,34 @@
-# ChangeLog for app-sci/blas-atlas
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-atlas/ChangeLog,v 1.1 2004/12/29 18:19:36 ribosome Exp $
+# ChangeLog for sci-libs/blas-atlas
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-atlas/ChangeLog,v 1.1.1.1 2005/11/30 10:09:17 chriswhite Exp $
+
+  10 Sep 2005; Peter Bienstman <pbienst@gentoo.org> blas-atlas-3.6.0.ebuild,
+  blas-atlas-3.7.10.ebuild:
+  Add missing header files (fixes #51323).
+
+  10 Sep 2005; Peter Bienstman <pbienst@gentoo.org> +files/unbuffered.patch,
+  blas-atlas-3.6.0.ebuild, blas-atlas-3.7.10.ebuild:
+  Fix #102088.
+
+  13 Jun 2005; Danny van Dyk <kugelfang@gentoo.org>
+  blas-atlas-3.7.10.ebuild:
+  Changed dependency to app-admin/eselect.
+
+*blas-atlas-3.7.10 (14 May 2005)
+
+  14 May 2005; Danny van Dyk <kugelfang@gentoo.org>
+  +blas-atlas-3.7.10.ebuild:
+  Version bump to 3.7.10, but still in package.mask. First version to rely on
+  eclectic instead of blas-config.
+
+  30 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> files/c-threaded-ATLAS:
+  Fixed BUG #83849 (typo).
+
+  02 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> files/c-threaded-ATLAS:
+  Fixed a typo.
+
+  02 Mar 2005; Peter Bienstman <pbienst@gentoo.org> blas-atlas-3.6.0.ebuild:
+  Improve error message (fix bug 83494, thanks to Daniel Herzog).
 
 *blas-atlas-3.6.0 (29 Dec 2004)
 

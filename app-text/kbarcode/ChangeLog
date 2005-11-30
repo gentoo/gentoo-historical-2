@@ -1,9 +1,145 @@
 # ChangeLog for app-text/kbarcode
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/kbarcode/ChangeLog,v 1.1 2003/04/30 17:39:20 caleb Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/kbarcode/ChangeLog,v 1.1.1.1 2005/11/30 10:06:53 chriswhite Exp $
+
+*kbarcode-1.9.7 (10 Nov 2005)
+
+  10 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> +kbarcode-1.9.7.ebuild:
+  New version (#111756).
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> kbarcode-1.8.1.ebuild:
+  Marked ppc stable for bug #99215.
+
+*kbarcode-1.9.6 (29 May 2005)
+
+  29 May 2005; Carsten Lohrke <carlo@gentoo.org> +kbarcode-1.9.6.ebuild:
+  version bump
+
+*kbarcode-1.9.5 (01 May 2005)
+
+  01 May 2005; Carsten Lohrke <carlo@gentoo.org> +kbarcode-1.9.5.ebuild:
+  version bump
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> kbarcode-1.8.1.ebuild:
+  stable on amd64
+
+*kbarcode-1.9.3 (03 Dec 2004)
+
+  03 Dec 2004; Carsten Lohrke <carlo@gentoo.org> -kbarcode-1.9.1.ebuild,
+  +kbarcode-1.9.3.ebuild:
+  newest development version
+
+  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org> kbarcode-1.8.0.ebuild,
+  kbarcode-1.8.1.ebuild:
+  stable on x86
+
+*kbarcode-1.9.1 (29 Oct 2004)
+*kbarcode-1.8.1 (29 Oct 2004)
+
+  29 Oct 2004; Carsten Lohrke <carlo@gentoo.org> +kbarcode-1.8.1.ebuild,
+  +kbarcode-1.9.1.ebuild:
+  version bump
+
+  03 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> kbarcode-1.8.0.ebuild:
+  Marked ~amd64.
+
+*kbarcode-1.8.0 (23 Aug 2004)
+
+  23 Aug 2004; Carsten Lohrke <carlo@gentoo.org>
+  -files/kbarcode-1.7.2-default-parameter.patch, -kbarcode-1.7.2.ebuild,
+  -kbarcode-1.7.4.ebuild, +kbarcode-1.8.0.ebuild:
+  version bump
+
+  03 Jul 2004; Carsten Lohrke <carlo@gentoo.org> kbarcode-1.6.2.ebuild,
+  kbarcode-1.7.2.ebuild, kbarcode-1.7.4.ebuild:
+  QA: need-kde after R/DEPEND
+
+  13 Jun 2004; David Holm <dholm@gentoo.org> kbarcode-1.7.4.ebuild:
+  Added to ~ppc.
+
+*kbarcode-1.7.4 (12 Jun 2004)
+
+  12 Jun 2004; Carsten Lohrke <carlo@gentoo.org> kbarcode-1.6.0.ebuild,
+  kbarcode-1.6.1.ebuild, kbarcode-1.7.0.ebuild, kbarcode-1.7.4.ebuild:
+  version bump, clean up
+
+  07 Mar 2004; Dominik Stadler <centic@gentoo.org> kbarcode-1.7.2.ebuild:
+  Revert previous change, we can use DEPEND in RDEPEND if we need to add stuff.
+
+  07 Mar 2004; Dominik Stadler <centic@gentoo.org> kbarcode-1.7.2.ebuild,
+  files/kbarcode-1.7.2-default-parameter.patch:
+  Added a patch to compile Version 1.7.2. Closes bug #39208. Also corrected
+  ebuild to not redefine DEPEND in RDEPEND and to make use of the use-flag
+  'imagemagick'.
+
+*kbarcode-1.6.2 (10 Feb 2004)
+
+  10 Feb 2004; Caleb Tennis <caleb@gentoo.org> kbarcode-1.6.2.ebuild:
+  Bug fix version
+
+*kbarcode-1.7.2 (21 Jan 2004)
+
+  21 Jan 2004; Caleb Tennis <caleb@gentoo.org> kbarcode-1.7.2.ebuild:
+  New version, closes bug #38923
+
+*kbarcode-1.7.0 (19 Jan 2004)
+
+  19 Jan 2004; Caleb Tennis <caleb@gentoo.org> kbarcode-1.6.1.ebuild,
+  kbarcode-1.7.0.ebuild:
+  Re-add need-kde as it sets prefix dirs
+
+*kbarcode-1.6.1 (06 Jan 2004)
+
+  06 Jan 2004; Caleb Tennis <caleb@gentoo.org> kbarcode-1.2.0.ebuild,
+  kbarcode-1.2.1.ebuild, kbarcode-1.5.4.ebuild, kbarcode-1.5.5.ebuild,
+  kbarcode-1.6.0.ebuild, kbarcode-1.6.1.ebuild, kbarcode-1.7.0.ebuild:
+  Remove old versions, new version(s) available
+
+  31 Dec 2003; Sven Blumenstein <bazik@gentoo.org> kbarcode-1.2.0.ebuild,
+  kbarcode-1.2.1.ebuild:
+  Fixed typo. "mysql ? (" > "mysql? (". Please use repoman!
+
+*kbarcode-1.6.0 (26 Dec 2003)
+
+  26 Dec 2003; Caleb Tennis <caleb@gentoo.org> kbarcode-1.6.0.ebuild,
+  kbarcode-1.6.0_rc2.ebuild:
+  Latest version, minor ebuild fixes
+
+*kbarcode-1.6.0_rc2 (17 Dec 2003)
+
+  17 Dec 2003; Caleb Tennis <caleb@gentoo.org> kbarcode-1.6.0_rc2.ebuild:
+  Version bump
+
+*kbarcode-1.5.5 (21 Nov 2003)
+
+  21 Nov 2003; Caleb Tennis <caleb@gentoo.org> kbarcode-1.5.4.ebuild,
+  kbarcode-1.5.5.ebuild:
+  Marking as x86 stable
+
+  13 Nov 2003; Caleb Tennis <caleb@gentoo.org> kbarcode-1.5.0.ebuild,
+  kbarcode-1.5.4.ebuild:
+  Version bump
+
+*kbarcode-1.5.4 (31 Oct 2003)
+
+  31 Oct 2003; Caleb Tennis <caleb@gentoo.org> kbarcode-1.5.4.ebuild:
+  Version bump, add kfile plugin thanks to Carlo (bug #32342).
+
+*kbarcode-1.5.0 (09 Sep 2003)
+
+  09 Sep 2003; Caleb Tennis <caleb@gentoo.org> : kbarcode-1.5.0.ebuild
+  New version
+
+*kbarcode-1.2.1 (13 May 2003)
+
+  30 Apr 2003; Caleb Tennis <caleb@gentoo.org> : kbarcode-1.2.1.ebuild
+  Version bump.
 
 *kbarcode-1.2.0 (30 Apr 2003)
 
-  30 Apr 2003; Caleb Tennis <caleb@gentoo.org> :
-  Initial import.  Ebuild submitted by Miguel Revilla Rodríguez 
+  30 Apr 2003; Caleb Tennis <caleb@gentoo.org> : kbarcode-1.2.0.ebuild
+  Initial import.  Ebuild submitted by Miguel Revilla RodrÃ­guez 
   <yo@miguelrevilla.com> with minor use flag modification by Caleb.

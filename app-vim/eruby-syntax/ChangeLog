@@ -1,6 +1,27 @@
 # ChangeLog for app-vim/eruby-syntax
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/eruby-syntax/ChangeLog,v 1.1 2005/06/11 23:51:18 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/eruby-syntax/ChangeLog,v 1.1.1.1 2005/11/30 10:07:40 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  Mark 2.0-r1 stable on alpha
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  Mark 2.0-r1 stable on ia64
+
+  28 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  eruby-syntax-2.0-r1.ebuild:
+  Added ~mips, stable on sparc
+
+*eruby-syntax-2.0-r1 (10 Aug 2005)
+
+  10 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +eruby-syntax-2.0-r1.ebuild:
+  Don't use hi link, bug #101799
+
+  12 Jun 2005; David Holm <dholm@gentoo.org> eruby-syntax-2.0.ebuild:
+  Added to ~ppc.
 
 *eruby-syntax-2.0 (11 Jun 2005)
 

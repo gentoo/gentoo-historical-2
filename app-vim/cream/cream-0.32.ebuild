@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/cream/cream-0.32.ebuild,v 1.1 2004/12/31 03:06:38 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/cream/cream-0.32.ebuild,v 1.1.1.1 2005/11/30 10:07:46 chriswhite Exp $
 
 inherit vim-plugin eutils
 
@@ -21,7 +21,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~mips ~amd64"
+KEYWORDS="x86 sparc ppc mips amd64 alpha ia64"
 
 DEPEND=""
 RDEPEND=">=app-editors/gvim-6.2
@@ -97,12 +97,12 @@ src_install() {
 pkg_setup() {
 	einfo "Cream comes with several dictionaries for spell checking. In"
 	einfo "all cases, at least a small English dictionary will be installed."
-	einfo " "
+	einfo
 	einfo "To specify which optional dictionaries are installed, set the"
 	einfo "LINGUAS variable in /etc/make.conf. For example, to install full"
 	einfo "English and French dictionaries, use:"
 	einfo "    LINGUAS=\"en fr\""
-	einfo " "
+	einfo
 	einfo "Available dictionaries are:"
 	for dict in "English en" "French fr" "German de" "Spanish es" ; do
 		# portage bug: shouldn't get a QA notice for linguas stuff...
@@ -110,7 +110,7 @@ pkg_setup() {
 			use linguas_${dict#* } &>/dev/null && \
 			echo '(Will be installed)' ) || echo '(Will not be installed)' )"
 	done
-	einfo " "
+	einfo
 	# give the user time to cancel if necessary
 	epause
 }

@@ -1,35 +1,37 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jail/jail-1.9-r1.ebuild,v 1.1 2003/01/28 10:14:19 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jail/jail-1.9-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:59 chriswhite Exp $
+
+inherit eutils
 
 S="${WORKDIR}/${PN}_1-9_stable"
 DESCRIPTION="Jail Chroot Project is a tool that builds a chrooted environment and automagically configures and builds all the required files, directories and libraries"
-SRC_URI="http://www.gsyc.inf.uc3m.es/~assman/downloads/jail/${PN}_${PV}.tar.gz"
-HOMEPAGE="http://www.gsyc.inf.uc3m.es/~assman/jail/"
+HOMEPAGE="http://www.jmcresearch.com/projects/jail/"
+SRC_URI="mirror://sourceforge/jail/${PN}_${PV}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 -ppc -sparc "
-DEPEND="virtual/glibc"
-RDEPEND="sys-devel/perl
-	dev-util/strace"
+KEYWORDS="x86 amd64"
+IUSE=""
 
-inherit eutils
+DEPEND="virtual/libc"
+RDEPEND="dev-lang/perl
+	dev-util/strace"
 
 src_unpack() {
 	unpack ${PN}_${PV}.tar.gz
 	cd ${S}
 	epatch ${FILESDIR}/${PN}-gentoo.diff
+	epatch ${FILESDIR}/wrongshell.patch
 }
 
 src_compile() {
 	# configuration files should be installed in /etc not /usr/etc
-	cp install.sh install.sh.orig
-	sed "s:\$4/etc:\${D}/etc:g" < install.sh.orig > install.sh
+	sed -i "s:\$4/etc:\${D}/etc:g" install.sh
 
 	# the destination directory should be /usr not /usr/local
 	cd ${S}/src
-	cp Makefile Makefile.orig
-	sed "s:usr/local:${D}/usr:g" < Makefile.orig > Makefile
+	sed -i "s:usr/local:${D}/usr:g" Makefile
 
 	emake || die "make failed"
 }
@@ -59,16 +61,12 @@ src_install() {
 	for f in ${FILES}; do
 		# documentation says funtion 'dosed' is supposed to do this, but didn't know how to make it work :'(
 		# dosed ${file} || die "error in dosed"
-		cp ${f} ${f}.orig
-		sed "s:/${D}/usr:/usr:g" < ${f}.orig > ${f}
-		rm ${f}.orig
+		sed -i "s:/${D}/usr:/usr:g" ${f}
 	done
 
 	cd ${D}/usr/lib
-	cp libjail.pm libjail.pm.orig
-	sed "s:/usr/etc:/etc:" < libjail.pm.orig > libjail.pm
-	rm libjail.pm.orig
+	sed -i "s:/usr/etc:/etc:" libjail.pm
 
-	cd ${S}/doc 
+	cd ${S}/doc
 	dodoc CHANGELOG INSTALL README SECURITY VERSION
 }

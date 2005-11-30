@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-oggre/xmms-oggre-0.3.ebuild,v 1.1 2005/01/25 22:28:08 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-oggre/xmms-oggre-0.3.ebuild,v 1.1.1.1 2005/11/30 10:07:38 chriswhite Exp $
 
 MY_P=${P/xmms-/}
 DESCRIPTION="Outputs the sound into OGG files"

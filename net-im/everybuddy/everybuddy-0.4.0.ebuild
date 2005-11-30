@@ -1,22 +1,23 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License v2 
-# Maintainer Bart Verwilst <verwilst@gentoo.org>, Author Ben Lutgens <blutgens@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/net-im/everybuddy/everybuddy-0.4.0.ebuild,v 1.1 2002/05/13 18:24:41 verwilst Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/everybuddy/everybuddy-0.4.0.ebuild,v 1.1.1.1 2005/11/30 10:09:34 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="arts esd gnome"
+
 DESCRIPTION="Universal Instant Messaging Client"
 SRC_URI="http://www.everybuddy.com/files/${P}.tar.gz"
 HOMEPAGE="http://www.everybuddy.com/"
-SLOT="0"
-DEPEND="virtual/glibc 
-	virtual/x11
-	>=x11-libs/gtk+-1.2.10-r4
+DEPEND="=x11-libs/gtk+-1.2*
 	arts? ( >=kde-base/arts-1.0.0 )
 	gnome? ( >=gnome-base/gnome-libs-1.4.1.4 )
 	esd? ( >=media-sound/esound-0.2.24 )"
 
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc"
+
 src_compile() {
-    local myconf
+	local myconf
 	use arts	\
 		&& myconf="--enable-arts"	\
 		|| myconf="--disable-arts"
@@ -29,23 +30,21 @@ src_compile() {
 		&& myconf="${myconf} --with-gnome"	\
 		|| myconf="${myconf} --without-gnome"
 
-	echo ${myconf} 
+	echo ${myconf}
 
-    ./configure 	\
+	./configure 	\
 		--prefix=/usr 	\
 		--mandir=/usr/share/man 	\
 		--host=${CHOST} 	\
 		${myconf} || die
-    make || die
+	make || die
 
 }
 
 src_install () {
-
-    make 	\
+	make 	\
 		DESTDIR=${D}	\
 		install || die
 
-    dodoc AUTHORS NEWS README TODO COPYING ChangeLog
-
+	dodoc AUTHORS NEWS README TODO COPYING ChangeLog
 }

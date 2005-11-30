@@ -1,17 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/silo/silo-1.3.2-r1.ebuild,v 1.1 2003/12/29 04:22:36 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/silo/silo-1.3.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:48 chriswhite Exp $
 
 inherit mount-boot
 
-S=${WORKDIR}/${P}
 DESCRIPTION="SPARC/UltraSPARC Improved Loader, a boot loader for sparc"
-SRC_URI="http://www.sparc-boot.org/pub/silo/${P}.tar.gz"
+SRC_URI="http://www.sparc-boot.org/pub/silo/old/${P}.tar.gz"
 HOMEPAGE="http://www.sparc-boot.org"
 
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="-* ~sparc"
+IUSE=""
 
 PROVIDE="virtual/bootloader"
 
@@ -29,4 +29,11 @@ src_install() {
 	# Fix maketilo manpage
 	rm ${D}/usr/share/man/man1/maketilo.1
 	dosym /usr/share/man/man1/tilo.1 /usr/share/man/man1/maketilo.1
+}
+
+pkg_postinst() {
+	ewarn "NOTE: If this is an upgrade to an existing SILO install,"
+	ewarn "      you will need to re-run silo as the /boot/second.b"
+	ewarn "      file has changed, else the system will fail to load"
+	ewarn "      SILO at the next boot."
 }

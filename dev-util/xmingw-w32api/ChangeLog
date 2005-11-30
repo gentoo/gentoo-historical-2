@@ -1,8 +1,40 @@
 # ChangeLog for dev-util/xmingw-w32api
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-w32api/ChangeLog,v 1.1 2003/10/02 10:22:06 cretin Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-w32api/ChangeLog,v 1.1.1.1 2005/11/30 10:05:02 chriswhite Exp $
 
-* xmingw-w32api-2.4 (01 Oct 2003)
+*xmingw-w32api-3.2 (27 May 2005)
+
+  27 MAy 2005; Stefan Jones <cretin@gentoo.org>:
+  New version
+
+  09 Feb 2005; Simon Stelling <blubb@gentoo.org> xmingw-w32api-3.1.ebuild:
+  added ~amd64
+
+  17 Nov 2004; Stefan Jones <cretin@gentoo.org> +xmingw-w32api-3.1-ntddk.patch:
+  Patch for bug #70949
+
+  25 Oct 2004; Stefan Jones <cretin@gentoo.org>
+  +xmingw-w32api-3.1-include.patch :
+  Slight bug in the supplied makefile causing bootstrap to fail.
+
+*xmingw-w32api-3.1 (14 Oct 2004)
+
+  14 Oct 2004; Stefan Jones <cretin@gentoo.org> :
+  New Version
+
+*xmingw-w32api-2.5 (17 Mar 2004)
+
+  07 Apr 2004; Stefan Jones <cretin@gentoo.org> :
+  Added patch to ocidl.h to fix bug #46886
+
+  17 Mar 2004; Stefan Jones <cretin@gentoo.org> :
+  New version, could be more complete W32 API?
+  
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  xmingw-w32api-2.4.ebuild:
+  don't assign to P; use emake; error messages; tidy
+
+*xmingw-w32api-2.4 (01 Oct 2003)
 
   01 Oct 2003; Stefan Jones <cretin@gentoo.org> :
   Initial ebuild

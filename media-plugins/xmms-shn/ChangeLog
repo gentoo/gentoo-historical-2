@@ -1,6 +1,42 @@
 # ChangeLog for media-plugins/xmms-shn
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-shn/ChangeLog,v 1.1 2002/08/30 08:35:31 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-shn/ChangeLog,v 1.1.1.1 2005/11/30 10:07:34 chriswhite Exp $
+
+  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> xmms-shn-2.4.0.ebuild:
+  Mark 2.4.0 stable on alpha
+
+  05 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> -xmms-shn-2.2.4.ebuild,
+  -xmms-shn-2.2.8.ebuild, xmms-shn-2.4.0.ebuild:
+  Updated HOMEPAGE, fixes #95074. Did some cleanup.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-shn-2.4.0.ebuild:
+  multilib fixes.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-shn-2.4.0.ebuild:
+  Stable x86 amd64.
+
+*xmms-shn-2.4.0 (07 Jul 2004)
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-shn-2.2.4.ebuild, xmms-shn-2.2.8.ebuild, xmms-shn-2.4.0.ebuild:
+  version bump.  -sparc.
+
+  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-shn-2.2.8.ebuild:
+  Added to ~amd64.
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-shn-2.2.4.ebuild, xmms-shn-2.2.8.ebuild:
+  Bumping to stable x86.  Added explicit IUSE and removed explicit S.
+
+*xmms-shn-2.2.8 (15 Sep 2003)
+
+  15 Sep 2003; Seemant Kulleen <seemant@gentoo.org> metadata.xml,
+  xmms-shn-2.2.4.ebuild, xmms-shn-2.2.8.ebuild:
+  version bump, thanks to: Rossen Apostolov <rossen@protein.osaka-u.ac.jp> in
+  bug #27389
 
 *xmms-shn-2.2.4 (1 Feb 2002)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/fujaba/fujaba-4.2.0.ebuild,v 1.1 2005/01/26 20:13:45 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/fujaba/fujaba-4.2.0.ebuild,v 1.1.1.1 2005/11/30 10:04:54 chriswhite Exp $
 
 MY_PV="${PV//./_}"
 MY_PNB="Fujaba_${PV:0:1}"
@@ -12,12 +12,25 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~x86 ~ppc ~amd64"
 IUSE=""
-RDEPEND=">=virtual/jdk-1.4.1"
-DEPEND="app-arch/unzip"
+RDEPEND=">=virtual/jre-1.4
+	dev-java/junit
+	dev-java/log4j
+	~dev-java/jdom-1.0_beta10
+	=dev-java/xerces-1.3*"
+DEPEND=">=virtual/jdk-1.4
+	${RDEPEND}"
+
 S=${WORKDIR}
 
 src_unpack () {
-	unzip ${DISTDIR}/${A} >/dev/null || die "failed to unpack"
+	jar xf ${DISTDIR}/${A}
+
+	cd 'C_/Dokumente und Einstellungen/Lothar/Eigene Dateien/Deployment/Fujaba 4.2.0/' || die "failed to enter die"
+
+	rm -f Deploymentdata/libs/junit.jar
+	rm -f Deploymentdata/libs/log4j*.jar
+	rm -f Deploymentdata/libs/jdom*.jar
+	rm -f Deploymentdata/libs/xerces.jar
 }
 
 src_compile() { :; }
@@ -25,12 +38,14 @@ src_compile() { :; }
 src_install() {
 	dodir /opt/${PN}
 	cd 'C_/Dokumente und Einstellungen/Lothar/Eigene Dateien/Deployment/Fujaba 4.2.0/' || die "failed to enter die"
-	cp -a . ${D}/opt/${PN} || die "failed too copy"
+
+	cp -pPR . ${D}/opt/${PN} || die "failed to copy"
 	chmod -R 755 ${D}/opt/${PN}/
 
 	echo "#!/bin/sh" > ${PN}
 	echo "cd /opt/${PN}/Deploymentdata" >> ${PN}
-	echo '${JAVA_HOME}'/bin/java -jar ${PN}.jar '$*' >> ${PN}
+	echo "'${JAVA_HOME}'/bin/java -classpath .:\$(java-config -p xerces-1.3,log4j,junit,jdom-1.0_beta10):fujaba.jar:libs/libCoObRA.jar:libs/libXMLReflect.jar:libs/RuntimeTools.jar:libs/upb.jar de.uni_paderborn.fujaba.app.FujabaApp \$*" >> ${PN}
+
 	into /opt
 	dobin ${PN}
 }

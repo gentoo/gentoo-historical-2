@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/usb-robot/usb-robot-0.2.0.ebuild,v 1.1 2004/03/06 10:53:07 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/usb-robot/usb-robot-0.2.0.ebuild,v 1.1.1.1 2005/11/30 10:05:37 chriswhite Exp $
 
-IUSE="usb perl readline"
+IUSE="perl readline"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="USB Reverse engineering tools"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://usb-robot.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="dev-libs/libusb"
 

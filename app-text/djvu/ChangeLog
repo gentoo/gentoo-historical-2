@@ -1,8 +1,81 @@
 # ChangeLog for app-text/djvu
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/djvu/ChangeLog,v 1.1 2002/08/01 22:27:33 aliz Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/djvu/ChangeLog,v 1.1.1.1 2005/11/30 10:06:33 chriswhite Exp $
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  21 Jul 2005; Caleb Tennis <caleb@gentoo.org> djvu-3.5.12.ebuild,
+  djvu-3.5.14.ebuild, djvu-3.5.14-r1.ebuild:
+  Change Qt deps per bug #98180
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> djvu-3.5.14.ebuild:
+  stable on amd64
+
+  15 Apr 2005; <usata@gentoo.org> djvu-3.5.14-r1.ebuild:
+  removed pic USE flag
+
+*djvu-3.5.14-r1 (09 Apr 2005)
+
+  09 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> +files/gentoo-acdesktop.m4,
+  +djvu-3.5.14-r1.ebuild:
+  Added several USE flags requested on bug #83311. Thanks to Diego Pettenò
+  <dgp85@users.sourceforge.net> for the patch.
+
+  16 Oct 2004; Jason Wever <weeve@gentoo.org> djvu-3.5.14.ebuild:
+  Stable on sparc.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> djvu-3.5.14.ebuild:
+  Stable on x86 and ppc.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> djvu-3.5.14.ebuild:
+  Added to ~ppc.
+
+*djvu-3.5.14 (24 Aug 2004)
+
+  24 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +djvu-3.5.14.ebuild,
+  -djvu-3.5.7.ebuild, -djvu-3.5.9-r1.ebuild, -djvu-3.5.9.ebuild:
+  Version bumped. This closes bug #60882. Cleaned up old ebuilds.
+
+  02 May 2004; Danny van Dyk <kugelfang@gentoo.org> djvu-3.5.12.ebuild:
+  Marked ~amd64.
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> djvu-3.5.12.ebuild,
+  djvu-3.5.7.ebuild, djvu-3.5.9-r1.ebuild, djvu-3.5.9.ebuild:
+  adding categorie. see 45110 for details
+
+  13 Mar 2004; Jason Wever <weeve@gentoo.org> djvu-3.5.12.ebuild:
+  Stable on sparc.
+
+  21 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> djvu-3.5.12.ebuild:
+  Marked stable on x86, see bug #41659 and #38430
+
+  15 Sep 2003; Mike Gardiner <obz@gentoo.org> djvu-3.5.12.ebuild:
+  Added qt use options, see bug #28621
+
+*djvu-3.5.12 (13 Sep 2003)
+
+  13 Sep 2003; Mike Gardiner <obz@gentoo.org> djvu-3.5.12.ebuild, metadata.xml:
+  New version, add replace-flags for pentium4 compile problems, use xml for xml
+  support and fixed up DEPENDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*djvu-3.5.9-r1 (21 Nov 2002)
+
+  21 Nov 2002; phoen][x <phoenix@gentoo.org> djvu-3.5.9-r1.ebuild,
+  files/digest-djvu-3.5.9-r1.ebuild :
+  Switched to the new nsplugins layout.
+
+*djvu-3.5.9 (25 Oct 2002)
+
+  25 Oct 2002; Matthew Turk <satai@gentoo.org> djvu-3.5.9.ebuild :
+  Closing bug 8295; version bump to 3.5.9. 
 
 *djvu-3.5.7 (02 Aug 2002)
 
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> djvu-3.5.7.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
   02 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> djvu-3.5.7.ebuild: 
-  Initial import. Ebuild submitted by Christian V. J. Br�ssow <cvjb@epost.de>.  
+  Initial import. Ebuild submitted by Christian V. J. Brüssow <cvjb@epost.de>.  

@@ -1,6 +1,120 @@
 # ChangeLog for dev-util/cmake
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.1 2003/12/08 18:26:04 lisa Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cmake/ChangeLog,v 1.1.1.1 2005/11/30 10:05:25 chriswhite Exp $
+
+*cmake-2.2.2 (08 Nov 2005)
+
+  08 Nov 2005; Lisa Seelye <lisa@gentoo.org>
+  +files/cmake-2.2.2-rpath-fix.patch, +cmake-2.2.2.ebuild:
+  version bump to solve bug #111881
+
+  29 Oct 2005; Daniel Goller <morfic@gentoo.org> cmake-2.2.1.ebuild:
+  Stable on amd64
+
+  02 Oct 2005; Daniel Black <dragonheart@gentoo.org> -cmake-2.0.5.ebuild,
+  -cmake-2.0.6.ebuild:
+  remove rpath vulnerable versions: bug 105721
+
+  02 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> cmake-2.0.6-r1.ebuild:
+  Stable on ia64, bug 105721.
+
+  29 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> cmake-2.0.6-r1.ebuild:
+  stable on alpha wrt bug #105721
+
+  26 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org> cmake-2.2.1.ebuild:
+  fixing parallel build problem (emake -j1).
+
+*cmake-2.2.1 (26 Sep 2005)
+*cmake-2.2.0-r1 (26 Sep 2005)
+*cmake-2.0.6-r1 (26 Sep 2005)
+
+  26 Sep 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/cmake-2.0.6-rpath-fix.patch, +files/cmake-2.2.0-rpath-fix.patch,
+  +files/cmake-2.2.1-rpath-fix.patch, +cmake-2.0.6-r1.ebuild,
+  -cmake-2.2.0.ebuild, +cmake-2.2.0-r1.ebuild, +cmake-2.2.1.ebuild:
+  insecure runpaths as per security bug #105721 resulted in 2.2.0-r1 and
+  2.0.6-r1. Thanks Ashu Tiwary. version bump to 2.2.1 as per bug #106781 by
+  David Somers
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> cmake-2.0.6.ebuild:
+  Stable on ppc.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> cmake-2.0.6.ebuild:
+  stable on ia64
+
+*cmake-2.2.0 (20 Aug 2005)
+
+  20 Aug 2005; Daniel Black <dragonheart@gentoo.org> -cmake-2.0.3.ebuild,
+  cmake-2.0.6.ebuild, +cmake-2.2.0.ebuild:
+  version bump (bug #99045). thanks david somers. x86 stable on 2.0.6. old
+  version removal
+
+  05 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> cmake-2.0.6.ebuild:
+  Added ~mips.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> cmake-2.0.5.ebuild:
+  Stable on alpha.
+
+  12 May 2005; Aron Griffis <agriffis@gentoo.org> cmake-2.0.6.ebuild:
+  add ~ia64
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> cmake-2.0.5.ebuild:
+  Stable on ppc.
+
+*cmake-2.0.6 (21 Apr 2005)
+
+  21 Apr 2005; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  +cmake-2.0.6.ebuild:
+  Version bump as per bug #89394. Thanks to david somers
+  <dsomers@treSPAM_FREEvezel.com>
+
+  23 Mar 2005; Daniel Black <dragonheart@gentoo.org> -cmake-2.0.2.ebuild,
+  cmake-2.0.5.ebuild:
+  x86 stable as per bug #86292. Old version removal. Thanks to david somers
+  <dsomers@trevezel.com>
+
+  18 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> cmake-2.0.3.ebuild:
+  Stable on alpha.
+
+*cmake-2.0.5 (01 Jan 2005)
+
+  01 Jan 2005; Daniel Black <dragonheart@gentoo.org> -cmake-1.8.2.ebuild,
+  -cmake-1.8.3.ebuild, cmake-2.0.2.ebuild, cmake-2.0.3.ebuild,
+  +cmake-2.0.5.ebuild:
+  version bump as per bug #76291.x86 keywords to 2.0.2 and 2.0.3. Remove
+  old version 1.8.3.  Thanks to david somers <dsomers@trevezel.com> for 
+  the notification. 
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> cmake-2.0.3.ebuild:
+  Added to ~amd64, bug #72299
+
+*cmake-2.0.3 (10 Aug 2004)
+
+  10 Aug 2004; Mike Frysinger <vapier@gentoo.org> +cmake-2.0.3.ebuild:
+  Version bump.
+
+*cmake-2.0.2 (02 Jul 2004)
+
+  02 Jul 2004; Lisa Seelye <lisa@gentoo.org> +cmake-2.0.2.ebuild:
+  version bump for bug #55558
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> cmake-1.8.3.ebuild:
+  Stable on alpha.
+
+*cmake-1.8.3 (24 Feb 2004)
+
+  24 Feb 2004; Lisa Seelye <lisa@gentoo.org> cmake-1.8.1.ebuild,
+  cmake-1.8.2.ebuild, cmake-1.8.3.ebuild:
+  Remove old 1.8.1, bump 1.8.2 to stable on x86, add 1.8.3 to the tree to close
+  bug #42613
+
+*cmake-1.8.2 (09 Jan 2004)
+
+  09 Jan 2004; Lisa Seelye <lisa@gentoo.org> cmake-1.8.2.ebuild:
+  Version bump, closes bug #36619.
 
 *cmake-1.8.1 (08 Dec 2003)
 

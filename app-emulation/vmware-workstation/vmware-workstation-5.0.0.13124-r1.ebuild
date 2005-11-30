@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-workstation/vmware-workstation-5.0.0.13124-r1.ebuild,v 1.1 2005/06/20 21:38:34 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-workstation/vmware-workstation-5.0.0.13124-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:55 chriswhite Exp $
 
 # Unlike many other binary packages the user doesn't need to agree to a licence
 # to download VMWare. The agreeing to a licence is part of the configure step
@@ -9,7 +9,7 @@
 inherit eutils
 
 S=${WORKDIR}/vmware-distrib
-ANY_ANY="vmware-any-any-update92"
+ANY_ANY="vmware-any-any-update93"
 NP="VMware-workstation-5.0.0-13124"
 DESCRIPTION="Emulate a complete PC on your PC without the usual performance overhead of most emulators"
 HOMEPAGE="http://www.vmware.com/products/desktop/ws_features.html"
@@ -30,7 +30,7 @@ SRC_URI="http://vmware-svca.www.conxion.com/software/wkst/${NP}.tar.gz
 LICENSE="vmware"
 IUSE=""
 SLOT="0"
-KEYWORDS="-* ~x86 ~amd64"
+KEYWORDS="-* x86 amd64"
 RESTRICT="nostrip"
 
 DEPEND="${RDEPEND} virtual/os-headers"
@@ -54,7 +54,7 @@ src_unpack() {
 	mv -f ${ANY_ANY}/*.tar ${S}/lib/modules/source/
 	cd ${S}/${ANY_ANY}
 	chmod 755 ../lib/bin/vmware ../bin/vmnet-bridge ../lib/bin/vmware-vmx ../lib/bin-debug/vmware-vmx
-	# vmware any92 still doesn't patch the vmware binary
+	# vmware any93 still doesn't patch the vmware binary
 	#./update vmware ../lib/bin/vmware || die
 	#./update bridge ../bin/vmnet-bridge || die
 	#./update vmx ../lib/bin/vmware-vmx || die
@@ -63,7 +63,7 @@ src_unpack() {
 
 src_install() {
 	dodir ${dir}/bin
-	cp -a bin/* ${Ddir}/bin
+	cp -pPR bin/* ${Ddir}/bin
 
 	dodir ${dir}/lib
 	cp -dr lib/* ${Ddir}/lib
@@ -92,7 +92,7 @@ src_install() {
 	doenvd ${FILESDIR}/90vmware || die "doenvd"
 
 	dodir /etc/vmware/
-	cp -a etc/* ${D}/etc/vmware/
+	cp -pPR etc/* ${D}/etc/vmware/
 
 	dodir /etc/vmware/init.d
 	dodir /etc/vmware/init.d/rc0.d
@@ -102,7 +102,7 @@ src_install() {
 	dodir /etc/vmware/init.d/rc4.d
 	dodir /etc/vmware/init.d/rc5.d
 	dodir /etc/vmware/init.d/rc6.d
-	cp -a installer/services.sh ${D}/etc/vmware/init.d/vmware || die
+	cp -pPR installer/services.sh ${D}/etc/vmware/init.d/vmware || die
 
 	# This is to fix a problem where if someone merges vmware and then
 	# before configuring vmware they upgrade or re-merge the vmware
@@ -121,7 +121,7 @@ src_install() {
 	dosym ${dir}/bin/vmware /usr/bin/vmware
 
 	# this removes the user/group warnings
-	chown -R root:root ${D}
+	chown -R root:0 ${D}
 
 	# Questions:
 	einfo "Adding answers to /etc/vmware/locations"

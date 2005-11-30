@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-asdf/cl-asdf-1.86-r1.ebuild,v 1.1 2005/02/10 09:18:29 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-asdf/cl-asdf-1.86-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:30 chriswhite Exp $
 
 DEB_PV=1
 
@@ -13,7 +13,7 @@ SRC_URI="http://ftp.debian.org/debian/pool/main/c/cl-asdf/${PN}_${PV}.orig.tar.g
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~mips ppc ~ppc-macos"
+KEYWORDS="amd64 ~mips ppc ~ppc-macos s390 sparc x86"
 IUSE=""
 
 DEPEND=""
@@ -27,6 +27,6 @@ src_install() {
 	insinto /usr/share/common-lisp/source/asdf
 	doins asdf.lisp wild-modules.lisp asdf-install.lisp
 	dodoc LICENSE README
-	insinto /usr/share/doc/${P}/examples
+	insinto /usr/share/doc/${PF}/examples
 	doins test/*
 }

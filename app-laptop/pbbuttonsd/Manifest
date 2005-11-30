@@ -1,16 +1,19 @@
-MD5 18cc8be009eb478b2e9ba0ae4a47b920 pbbuttonsd-0.4.10a.ebuild 1098
-MD5 825949f2a0c96f88f873dd3b065ba120 ChangeLog 4237
-MD5 9a09f8d531c582e78977dbfd96edc1f2 metadata.xml 164
-MD5 26307dcbb45dee77a19abdf118251c70 pbbuttonsd-0.5.2-r1.ebuild 1416
-MD5 51172d528f194e1a5122954a8c2bb0aa pbbuttonsd-0.5.9.ebuild 1549
-MD5 401f33be04468f38c28460c64aaf2c92 pbbuttonsd-0.5.8.ebuild 1550
-MD5 92847ffddc4a889aa1721136b7767087 pbbuttonsd-0.5.9-r1.ebuild 1643
-MD5 888adb1c866daaa6c22e23d07c2367b0 files/digest-pbbuttonsd-0.5.9-r1 68
-MD5 56622898666491660d75995555e987fa files/pbbuttons-0.5.2-replace_pmud.patch 715
-MD5 888adb1c866daaa6c22e23d07c2367b0 files/digest-pbbuttonsd-0.5.9 68
-MD5 68d74820f8f82d459c92e4d79eb21e65 files/digest-pbbuttonsd-0.5.8 68
-MD5 7caad5c674bdcca49ab7f2b2dc28a5d7 files/pbbuttonsd.rc6 448
-MD5 459c829a59fb5afde8ec96244abbcd68 files/digest-pbbuttonsd-0.5.2-r1 68
-MD5 831fe80c3eeb273f204b8a41f7ac2810 files/pbbuttonsd-compat.patch 1070
-MD5 41eb0b6f43d411c7cd1572ea07b471b2 files/pbbuttonsd.rc5 507
-MD5 c6901eb0354ffab93115cf7eb49935c8 files/digest-pbbuttonsd-0.4.10a 70
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 fdf615c878b48955a2b6352c567ed182 ChangeLog 9753
+MD5 72caa2adac6c8260c57c0ae15cc259f3 files/digest-pbbuttonsd-0.6.6 68
+MD5 0d5e37ab33c0a4177affbe953a76f8f3 files/digest-pbbuttonsd-0.7.1 68
+MD5 d0c2afca8a18bbfdc406106d85d30193 files/digest-pbbuttonsd-0.7.2 68
+MD5 bfeca35f0f0f5c946cec186998f304e2 files/pbbuttonsd.rc6 472
+MD5 52f9d8e98c8931645c57a3de1c36727d metadata.xml 156
+MD5 7b9b4d9f5e7b4fde48b4597c4ba8cf06 pbbuttonsd-0.6.6.ebuild 1140
+MD5 56188b69fdef709ca5c120ff8d103765 pbbuttonsd-0.7.1.ebuild 1759
+MD5 4cf6ded3c54e0a9a199448945316d9a1 pbbuttonsd-0.7.2.ebuild 1909
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDf40vcsIHjyDViGQRAr7JAJ0WmF0nWS5Fo6wge+GLlNEZaMgU1wCZAQ+H
+BSqpGc2AO0bga+aaZDC4/b4=
+=VByt
+-----END PGP SIGNATURE-----

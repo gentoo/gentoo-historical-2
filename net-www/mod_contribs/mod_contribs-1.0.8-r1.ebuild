@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_contribs/mod_contribs-1.0.8-r1.ebuild,v 1.1 2002/05/04 23:23:01 woodchip Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_contribs/mod_contribs-1.0.8-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:47 chriswhite Exp $
 
 # The mod_layout and mod_random that come in the archive are really old,
 # so I've replaced them with more current versions.
@@ -9,21 +9,23 @@ mod_random_ver=1.4
 
 DESCRIPTION="Collection of third-party contributed modules for Apache"
 HOMEPAGE="http://www.apache.org/dist/httpd/contrib/modules/1.3/"
-
 S=${WORKDIR}/apache-contrib-${PV}
-SRC_URI="http://www.apache.org/dist/httpd/contrib/modules/1.3/apache-contrib-${PV}.tar.gz
-	http://software.tangent.org/download/mod_layout-${mod_layout_ver}.tar.gz
-	http://software.tangent.org/download/mod_random-${mod_random_ver}.tar.gz"
+SRC_URI="http://archive.apache.org/dist/httpd/contrib/modules/1.3/apache-contrib-${PV}.tar.gz"
 
-DEPEND="virtual/glibc >=net-www/apache-1.3.24"
+KEYWORDS="x86 sparc"
 LICENSE="Apache-1.1"
 SLOT="0"
 
-MY_MODS="mod_allowdev mod_auth_system mod_disallow_id mod_lock mod_random
+DEPEND="virtual/libc
+	=net-www/apache-1*"
+RDEPEND=""
+IUSE=""
+
+MY_MODS="mod_allowdev mod_auth_system mod_disallow_id mod_lock
 	mod_auth_cookie mod_bandwidth mod_eaccess mod_macro mod_roaming
 	mod_auth_cookie_file mod_cache mod_fastcgi mod_peephole mod_session
 	mod_auth_external mod_cgisock mod_ip_forwarding mod_put mod_ticket
-	mod_auth_inst mod_cvs mod_layout mod_qs2ssi mod_urlcount"
+	mod_auth_inst mod_cvs mod_qs2ssi mod_urlcount"
 
 src_unpack() {
 	unpack ${A} ; cd ${S}
@@ -73,7 +75,7 @@ src_install() {
 		ls $i/*.html >/dev/null 2>&1
 		if [ $? -eq 0 ]
 		then
-			mkdir -p ${D}/usr/share/doc/${PF}/${i}/html
+			dodir /usr/share/doc/${PF}/${i}/html
 			cp $i/*.html ${D}/usr/share/doc/${PF}/${i}/html
 		fi
 	done
@@ -81,7 +83,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "Execute \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
+	einfo "Execute \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
 	einfo "to have your apache.conf auto-updated for use with these modules."
 	einfo "You should then edit your /etc/conf.d/apache file to suit."
 	einfo

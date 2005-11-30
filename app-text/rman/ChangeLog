@@ -1,7 +1,54 @@
 # ChangeLog for app-text/rman
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/rman/ChangeLog,v 1.1 2002/07/18 22:57:53 drobbins Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/rman/ChangeLog,v 1.1.1.1 2005/11/30 10:06:48 chriswhite Exp $
+
+  19 Nov 2005; Luis Medinas <metalgod@gentoo.org> rman-3.2.ebuild:
+  Added ~amd64 keyword. Closes bug #112763.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  28 Jul 2005; Lina Pezzella <j4rg0n@gentoo.org> rman-3.1.ebuild:
+  Stable ppc-macos. No other changes
+
+*rman-3.2 (12 Jul 2005)
+
+  12 Jul 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/rman-3.2-gentoo.diff, +rman-3.2.ebuild:
+  Bump to a version that's only two years old. This appears unmaintained and I
+  intend to leave it that way for now, so please kick me if I'm wrong.
+
+  27 Jun 2005; Lina Pezzella <j4rg0n@gentoo.org> rman-3.1.ebuild:
+  Marked ~ppc-macos on behalf of Fabian Groffen (fabian.groffen@cwi.nl)
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> rman-3.0.9.ebuild,
+  rman-3.1.ebuild:
+  Don't assign default to S; header fix
+
+  07 Dec 2003; Heinrich Wendel <lanius@gentoo.org> rman-3.1.ebuild:
+  stable
+
+*rman-3.1 (25 Sep 2003)
+
+  25 Sep 2003; Martin Holzer <mholzer@gentoo.org> rman-3.1.ebuild,
+  files/rman-3.1-gentoo.diff:
+  Version bumped. Submitted by José Romildo Malaquias <romildo@uber.com.br> in
+  #23225.
+
+  17 Jul 2003; Lars Weiler <pylon@gentoo.org> rman-3.0.9.ebuild:
+  Set ppc into KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*rman-3.0.9 (23 Nov 2002)
+
+  23 Nov 2002; Sascha Schwabbauer <cybersystem@gentoo.org> rman-3.0.9.ebuild :
+
+  Added ~ppc to keywords.
 
 *rman-3.0.9 (18 Jul 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> rman-3.0.9.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
 
   18 Jul 2002; Daniel Robbins <drobbins@gentoo.org>: Added missing ChangeLog

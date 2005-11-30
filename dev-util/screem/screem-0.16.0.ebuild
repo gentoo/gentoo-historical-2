@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/screem/screem-0.16.0.ebuild,v 1.1 2005/11/11 14:30:12 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/screem/screem-0.16.0.ebuild,v 1.1.1.1 2005/11/30 10:05:01 chriswhite Exp $
 
 inherit gnome2
 

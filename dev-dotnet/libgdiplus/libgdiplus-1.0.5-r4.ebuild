@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/libgdiplus/libgdiplus-1.0.5-r4.ebuild,v 1.1 2005/06/03 22:00:37 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/libgdiplus/libgdiplus-1.0.5-r4.ebuild,v 1.1.1.1 2005/11/30 10:06:18 chriswhite Exp $
 
 inherit libtool eutils
 

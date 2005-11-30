@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ptex/ptex-3.1.5.ebuild,v 1.1 2005/01/21 11:40:29 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ptex/ptex-3.1.5.ebuild,v 1.1.1.1 2005/11/30 10:06:32 chriswhite Exp $
 
 PTEX_TEXMF_PV=2.3
 TETEX_PV=2.0.2
 
-inherit tetex eutils
+inherit tetex-2
 
 DESCRIPTION="The ASCII publishing TeX distribution"
 HOMEPAGE="http://www.ascii.co.jp/pb/ptex/"
@@ -24,7 +24,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~amd64 ~ppc ~sparc ~ppc64 ~ppc-macos"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ppc-macos sparc x86"
 IUSE="X"
 
 DEPEND="X? ( >=media-libs/freetype-2
@@ -32,7 +32,7 @@ DEPEND="X? ( >=media-libs/freetype-2
 	!app-text/xdvik"
 
 src_unpack() {
-	tetex_src_unpack
+	tetex-2_src_unpack
 
 	einfo "Unpacking pTeX sources..."
 	cd ${S}/texmf
@@ -98,14 +98,14 @@ src_compile() {
 }
 
 src_install() {
-	tetex_src_install
+	tetex-2_src_install
 
 	einfo "Installing pTeX..."
 	cd ${S}/texk/web2c/${PN}-src-${PV} || die
 	einstall bindir=${D}/usr/bin texmf=${D}/usr/share/texmf || die
 
 	insinto /usr/share/texmf/dvips/config
-	newins ${FILESDIR}/psfonts-novflib-ja.map psfonts-ja.map
+	doins ${FILESDIR}/psfonts-ja.map || die
 	cat >>${D}/usr/share/texmf/web2c/updmap.cfg<<-EOF
 
 	# Japanese fonts

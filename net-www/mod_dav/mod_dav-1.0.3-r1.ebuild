@@ -1,16 +1,18 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_dav/mod_dav-1.0.3-r1.ebuild,v 1.1 2002/05/04 23:23:01 woodchip Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_dav/mod_dav-1.0.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:49 chriswhite Exp $
 
 MY_V=${PV}-1.3.6
 
 DESCRIPTION="Apache module for Distributed Authoring and Versioning"
 HOMEPAGE="http://www.webdav.org/mod_dav/"
+KEYWORDS="x86 sparc ppc"
 
 S=${WORKDIR}/${PN}-${MY_V}
 SRC_URI="http://www.webdav.org/mod_dav/${PN}-${MY_V}.tar.gz"
 
-DEPEND="virtual/glibc >=net-www/apache-1.3.24"
+IUSE=""
+DEPEND="virtual/libc =net-www/apache-1*"
 LICENSE="as-is"
 SLOT="0"
 
@@ -41,7 +43,7 @@ pkg_postinst() {
 	install -m0750 -o apache -g apache -d ${ROOT}/var/lock/mod_dav
 
 	einfo
-	einfo "Execute \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
+	einfo "Execute \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
 	einfo "to have your apache.conf auto-updated for use with this module."
 	einfo "You should then edit your /etc/conf.d/apache file to suit."
 	einfo

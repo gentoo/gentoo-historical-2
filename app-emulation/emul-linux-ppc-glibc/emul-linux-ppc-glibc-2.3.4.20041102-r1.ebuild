@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-ppc-glibc/emul-linux-ppc-glibc-2.3.4.20041102-r1.ebuild,v 1.1 2005/07/15 18:15:32 nigoro Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-ppc-glibc/emul-linux-ppc-glibc-2.3.4.20041102-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:52 chriswhite Exp $
 
 IUSE="nptl nptlonly"
 

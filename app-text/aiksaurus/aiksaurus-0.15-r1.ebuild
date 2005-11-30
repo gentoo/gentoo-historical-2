@@ -1,13 +1,18 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# /space/gentoo/cvsroot/gentoo-x86/app-text/aiksaurus/aiksaurus-0.15.ebuild,v 1.1 2002/05/31 17:54:03 danarmak Exp
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/aiksaurus/aiksaurus-0.15-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:35 chriswhite Exp $
+
+inherit flag-o-matic eutils multilib
 
 S=${WORKDIR}/Aiksaurus-${PV}
 DESCRIPTION="A thesaurus lib, tool and database"
-SRC_URI="http://www.aiksaurus.com/dist/TAR/Aiksaurus-${PV}.tar.gz"
 HOMEPAGE="http://www.aiksaurus.com/"
-SLOT="0"
+SRC_URI="http://www.aiksaurus.com/dist/TAR/Aiksaurus-${PV}.tar.gz"
+
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha amd64"
+IUSE=""
 
 DEPEND="sys-devel/gcc"
 RDEPEND=""
@@ -15,17 +20,15 @@ RDEPEND=""
 src_unpack() {
 	unpack ${A}
 	cd ${S}/src
-	patch <${FILESDIR}/${P}-gentoo.patch || die
+	epatch ${FILESDIR}/${P}-gentoo.patch
 }
-				
+
 src_compile() {
-    cd ${S}
-    ./configure --prefix=/usr || die
-    emake || die
+	filter-flags -fno-exceptions
+	./configure --prefix=/usr --libdir=/usr/$(get_libdir) || die
+	emake || die
 }
 
 src_install() {
-
-    make DESTDIR=${D} install || die
-
+	make DESTDIR=${D} LIBDIR=${D}/usr/$(get_libdir) install || die
 }

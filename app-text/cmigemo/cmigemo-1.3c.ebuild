@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/cmigemo/cmigemo-1.3c.ebuild,v 1.1 2004/09/07 08:30:25 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/cmigemo/cmigemo-1.3c.ebuild,v 1.1.1.1 2005/11/30 10:06:57 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.kaoriya.net/dist/var/${P}.tar.bz2"
 
 LICENSE="cmigemo"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc"
+KEYWORDS="x86 alpha ppc"	# development branch
 IUSE="emacs"
 
 DEPEND="virtual/libc
@@ -51,7 +51,7 @@ src_install() {
 
 pkg_postinst() {
 	if use emacs ; then
-		einfo ""
+		einfo
 		einfo "Please add to your ~/.emacs"
 		einfo "    (setq migemo-command \"cmigemo\")"
 		einfo "    (setq migemo-options '(\"-q\" \"--emacs\" \"-i\" \"\\\\a\"))"
@@ -59,6 +59,6 @@ pkg_postinst() {
 		einfo "    (setq migemo-user-dictionary nil)"
 		einfo "    (setq migemo-regex-dictionary nil)"
 		einfo "to use cmigemo instead of migemo under emacs."
-		einfo ""
+		einfo
 	fi
 }

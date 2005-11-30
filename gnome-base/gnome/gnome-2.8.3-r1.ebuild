@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.8.3-r1.ebuild,v 1.1 2005/03/07 07:44:52 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.8.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:13 chriswhite Exp $
 
 DESCRIPTION="Meta package for the GNOME desktop"
 HOMEPAGE="http://www.gnome.org/"
@@ -9,7 +9,7 @@ LICENSE="as-is"
 SLOT="2.0"
 # when unmasking for an arch
 # double check none of the deps are still masked !
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~mips ~hppa ~alpha"
+KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc sparc x86"
 IUSE="accessibility cdr dvdr hal"
 
 S=${WORKDIR}
@@ -21,8 +21,7 @@ RDEPEND="!gnome-base/gnome-core
 	>=x11-libs/gtk+-2.4.14
 	>=x11-libs/pango-1.6
 
-	hppa? ( >=dev-libs/libxml2-2.6.9 )
-	!hppa? ( >=dev-libs/libxml2-2.6.17 )
+	>=dev-libs/libxml2-2.6.17
 	>=dev-libs/libxslt-1.1.12
 
 	>=x11-libs/libxklavier-1.04-r1
@@ -56,7 +55,7 @@ RDEPEND="!gnome-base/gnome-core
 	>=gnome-extra/gnome-media-2.8
 
 	>=media-gfx/eog-2.8.2
-	!hppa? ( !mips? ( >=net-www/epiphany-1.4.8 ) )
+	!mips? ( >=www-client/epiphany-1.4.8 )
 	>=app-arch/file-roller-2.8.4
 	>=gnome-extra/gcalctool-4.4.22
 	>=gnome-extra/gconf-editor-2.8.2
@@ -102,7 +101,7 @@ RDEPEND="!gnome-base/gnome-core
 	cdr? ( >=gnome-extra/nautilus-cd-burner-2.8.7 )
 	dvdr? ( >=gnome-extra/nautilus-cd-burner-2.8.7 )
 
-	hal? ( >=gnome-base/gnome-volume-manager-1.0.3 )
+	!mips? ( hal? ( >=gnome-base/gnome-volume-manager-1.0.3 ) )
 
 	>=gnome-extra/evolution-data-server-1.0.4
 	>=mail-client/evolution-2.0.4
@@ -118,7 +117,7 @@ RDEPEND="!gnome-base/gnome-core
 		>=gnome-extra/libgail-gnome-1.1
 		>=gnome-base/gail-1.8.2
 		>=gnome-extra/at-spi-1.6.2
-		>=app-accessibility/dasher-3.2.13
+		!ia64? ( >=app-accessibility/dasher-3.2.13 )
 		>=app-accessibility/gnome-mag-0.11.14
 		>=app-accessibility/gnome-speech-0.3.6
 		>=app-accessibility/gok-0.11.17

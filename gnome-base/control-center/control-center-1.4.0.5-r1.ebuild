@@ -1,28 +1,33 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/control-center/control-center-1.4.0.5-r1.ebuild,v 1.1 2002/06/05 16:18:02 spider Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/control-center/control-center-1.4.0.5-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:05 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit gnome.org eutils multilib
+
 DESCRIPTION="The GNOME control-center"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.bz2"
 HOMEPAGE="http://www.gnome.org/"
 
+LICENSE="GPL-2"
 SLOT="1"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="nls"
 
-RDEPEND="
-	( >=gnome-base/gnome-vfs-1.0.4
-	  <gnome-base/gnome-vfs-1.9.0 )
+RDEPEND="<gnome-base/gnome-vfs-1.9.0
 	>=media-libs/gdk-pixbuf-0.11.0-r1"
-
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext ) 
-        >=dev-util/intltool-0.11"
+	nls? ( sys-devel/gettext )
+	>=dev-util/intltool-0.11"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-cflags.patch
+}
 
 src_compile() {
 	local myconf
 
-	if [ -z "`use nls`" ]
+	if ! use nls
 	then
 		myconf="--disable-nls"
 	fi
@@ -30,12 +35,13 @@ src_compile() {
 	# Fix build agains gdk-pixbuf-0.12 and later
 	#	CFLAGS="${CFLAGS} `gdk-pixbuf-config --cflags`"
 	# Not needed anymore? uncomment if this bugs.
-	
+
 	./configure --host=${CHOST} \
 		    --prefix=/usr \
 		    --mandir=/usr/share/man \
 		    --sysconfdir=/etc \
 		    --localstatedir=/var/lib \
+			--libdir=/usr/$(get_libdir) \
 		    ${myconf} || die
 
 	emake || die
@@ -46,8 +52,7 @@ src_install() {
 		mandir=${D}/usr/share/man \
 		sysconfdir=${D}/etc \
 		localstatedir=${D}/var/lib	\
+		libdir=${D}/usr/$(get_libdir) \
 		install || die
-	dodoc AUTHORS COPYING* ChangeLog README NEWS
+	dodoc AUTHORS ChangeLog README NEWS
 }
-
-

@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/figlet/figlet-221-r1.ebuild,v 1.1 2003/12/12 22:24:54 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/figlet/figlet-221-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:01 chriswhite Exp $
 
-inherit eutils
+inherit eutils bash-completion
 
 MY_P=${P/-/}
 S=${WORKDIR}/${MY_P}
@@ -15,23 +15,23 @@ SRC_URI="ftp://ftp.figlet.org/pub/figlet/program/unix/${MY_P}.tar.gz
 	mirror://gentoo/contributed-${P}.tar.gz
 	mirror://gentoo/ms-dos-${P}.tar.gz"
 
-KEYWORDS="x86 ppc sparc alpha mips hppa arm"
 LICENSE="Artistic"
 SLOT="0"
+KEYWORDS="alpha amd64 hppa mips ppc sparc x86"
 IUSE=""
 
-DEPEND="virtual/glibc
-	>=sys-apps/portage-2.0.47-r10
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	cp ${WORKDIR}/contributed/*.flf fonts/
-	cp ${WORKDIR}/contributed/bdffonts/*.flf fonts/
 	cp ${WORKDIR}/contributed/C64-fonts/*.flf fonts/
+	cp ${WORKDIR}/contributed/bdffonts/*.flf fonts/
 	cp ${WORKDIR}/ms-dos/*.flf fonts/
+	cp ${WORKDIR}/contributed/*.flf fonts/
 
 	epatch ${FILESDIR}/${P}-gentoo.diff
 	sed -i \
@@ -40,7 +40,7 @@ src_unpack() {
 }
 
 src_compile() {
-	make clean   || die "make clean failed"
+	make clean || die "make clean failed"
 	emake figlet || die "emake failed"
 }
 
@@ -54,4 +54,5 @@ src_install() {
 		install || die "make install failed"
 
 	dodoc README figfont.txt || die "dodoc failed"
+	dobashcompletion ${FILESDIR}/figlet.bashcomp
 }

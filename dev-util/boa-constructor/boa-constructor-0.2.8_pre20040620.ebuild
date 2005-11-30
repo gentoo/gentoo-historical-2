@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/boa-constructor/boa-constructor-0.2.8_pre20040620.ebuild,v 1.1 2004/06/21 01:01:54 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/boa-constructor/boa-constructor-0.2.8_pre20040620.ebuild,v 1.1.1.1 2005/11/30 10:05:21 chriswhite Exp $
 
 S=${WORKDIR}/boa
 DESCRIPTION="Python GUI RAD development tool."
@@ -10,9 +10,10 @@ SRC_URI="mirror://gentoo/${PF}.tar.bz2"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~sparc ~ppc"
+IUSE=""
 
 RDEPEND=">=dev-lang/python-2.1
-	>=dev-python/wxPython-2.4.2.4
+	=dev-python/wxpython-2.4*
 	dev-libs/expat"
 
 DEPEND="${RDEPEND}

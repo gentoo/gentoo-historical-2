@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/macosd/macosd-0.1.9.ebuild,v 1.1 2004/10/22 02:57:21 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/macosd/macosd-0.1.9.ebuild,v 1.1.1.1 2005/11/30 10:05:41 chriswhite Exp $
 
 inherit eutils
 
@@ -12,10 +12,16 @@ SLOT="0"
 KEYWORDS="~ppc"
 IUSE=""
 DEPEND="virtual/x11
-	>=app-laptop/pbbuttonsd-0.5.2-r1
-	>=x11-libs/evas-1.0.0.20040529_pre13
+	>=app-laptop/pbbuttonsd-0.6.8
+	>=x11-libs/evas-0.9.9
 	>=x11-libs/xosd-2.2.5"
 RDEPEND="$DEPEND"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-evas-pbbuttonsd.patch
+}
 
 src_compile() {
 	# can't use econf -- this packages uses ROCK Linux style configure

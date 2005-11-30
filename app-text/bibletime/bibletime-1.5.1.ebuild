@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/bibletime/bibletime-1.5.1.ebuild,v 1.1 2005/10/11 12:42:06 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/bibletime/bibletime-1.5.1.ebuild,v 1.1.1.1 2005/11/30 10:06:56 chriswhite Exp $
 
 inherit kde eutils
 

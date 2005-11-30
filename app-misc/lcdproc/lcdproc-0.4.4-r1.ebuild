@@ -1,15 +1,17 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lcdproc/lcdproc-0.4.4-r1.ebuild,v 1.1 2004/04/09 13:32:03 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lcdproc/lcdproc-0.4.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:02 chriswhite Exp $
 
-SRC_URI="mirror://sourceforge/lcdproc/${P}.tar.bz2"
+inherit eutils
+
 DESCRIPTION="Client/Server suite to drive all kinds of LCD (-like) devices"
 HOMEPAGE="http://lcdproc.org/"
+SRC_URI="mirror://sourceforge/lcdproc/${P}.tar.bz2"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
-IUSE="doc ncurses svga"
+SLOT="0"
+KEYWORDS="x86 amd64"
+IUSE="doc ncurses samba svga"
 
 DEPEND=">=sys-apps/baselayout-1.6.4
 	>=sys-apps/sed-4
@@ -61,7 +63,7 @@ src_compile() {
 	econf ${myconf} || die
 	emake || die
 
-	if [ `use doc` ]; then
+	if use doc; then
 		cd ${S}/docs/lcdproc-user
 		docbook2html lcdproc-user.docbook
 	fi
@@ -73,9 +75,9 @@ src_install() {
 
 	doman docs/lcdproc.1 docs/LCDd.8
 
-	dodoc README ChangeLog COPYING INSTALL
+	dodoc README ChangeLog INSTALL
 
-	if [ `use doc` ]; then
+	if use doc; then
 		insinto /usr/share/doc/${PF}/lcdproc-user
 		doins docs/lcdproc-user/*.html
 	fi

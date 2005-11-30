@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/gambas/gambas-1.0.4.ebuild,v 1.1 2005/03/12 21:45:02 genone Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/gambas/gambas-1.0.4.ebuild,v 1.1.1.1 2005/11/30 10:05:13 chriswhite Exp $
 
-inherit eutils
+inherit eutils qt3
 
 DESCRIPTION="a RAD tool for BASIC"
 HOMEPAGE="http://gambas.sourceforge.net"
@@ -10,11 +10,11 @@ SRC_URI="http://gambas.sourceforge.net/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="postgres mysql sdl doc curl debug sqlite xml xsl zlib kde"
 
 DEPEND=">=sys-devel/automake-1.7.5
-	>=x11-libs/qt-3.2
+	$(qt_min_version 3.2)
 	kde? ( >=kde-base/kdelibs-3.2 )
 	sdl? ( media-libs/libsdl media-libs/sdl-mixer sys-libs/gpm )
 	mysql? ( dev-db/mysql )
@@ -47,7 +47,7 @@ src_compile() {
 	myconf="${myconf} `use_enable sdl`"
 	myconf="${myconf} `use_enable curl`"
 	myconf="${myconf} `use_enable zlib`"
-	myconf="${myconf} `use_enable xml2 libxml`"
+	myconf="${myconf} `use_enable xml libxml`"
 	myconf="${myconf} `use_enable xsl xslt`"
 	myconf="${myconf} `use_enable zlib bzlib2`"
 	myconf="${myconf} `use_enable kde`"

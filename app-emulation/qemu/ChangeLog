@@ -1,6 +1,146 @@
 # ChangeLog for app-emulation/qemu
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.1 2004/01/03 16:54:38 zul Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/ChangeLog,v 1.1.1.1 2005/11/30 10:08:41 chriswhite Exp $
+
+*qemu-0.7.2 (11 Sep 2005)
+
+  11 Sep 2005; Luca Barbato <lu_zero@gentoo.org> +qemu-0.7.2.ebuild:
+  New release
+
+*qemu-0.7.1 (25 Jul 2005)
+
+  25 Jul 2005; Luca Barbato <lu_zero@gentoo.org> +qemu-0.7.1.ebuild:
+  New version
+
+*qemu-0.7.0-r1 (18 Jun 2005)
+
+  18 Jun 2005; Luca Barbato <lu_zero@gentoo.org> +qemu-0.7.0-r1.ebuild:
+  Meta ebuild added
+
+  25 May 2005; Luca Barbato <lu_zero@gentoo.org>
+  +files/qemu-0.7.0-errno.patch, qemu-0.7.0.ebuild:
+  Fix for the errno issues in helper2.c
+
+  18 May 2005; Luca Barbato <lu_zero@gentoo.org> qemu-0.7.0.ebuild:
+  Add a notice about the qemu group, thanks to Leung Ki Chi 
+  <leun0003@ntu.edu.sg> for pointing the issue out
+
+  12 May 2005; Luca Barbato <lu_zero@gentoo.org> qemu-0.7.0.ebuild:
+  Hardened updates from Kevin F. Quinn <co@kevquinn.com>
+
+  07 May 2005; Luca Barbato <lu_zero@gentoo.org> qemu-0.7.0.ebuild:
+  Some fixes here and there, thanks to Sok Ann Yap <sokann@gmail.com>
+
+  29 Apr 2005; Luca Barbato <lu_zero@gentoo.org> qemu-0.7.0.ebuild:
+  Retouches and corrections, thanks to genstef as usual
+
+  29 Apr 2005; Luca Barbato <lu_zero@gentoo.org> qemu-0.7.0.ebuild:
+  Added udev support and qemu group creation
+
+*qemu-0.7.0 (28 Apr 2005)
+
+  28 Apr 2005; Luca Barbato <lu_zero@gentoo.org> +files/kqemu-sysfs.patch,
+  +qemu-0.7.0.ebuild:
+  New version
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> qemu-0.6.1-r1.ebuild:
+  added ~amd64
+
+  28 Nov 2004; Luca Barbato <lu_zero@gentoo.org> qemu-0.6.1-r1.ebuild:
+  Missing dep added, thanks to Frank Groeneveld <frankgroeneveld@msn.com>
+
+  28 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  files/qemu-0.6.1-20041126.patch:
+  Minor fix, the patch had an Header reference that cvs replaced
+
+*qemu-0.6.1-r1 (28 Nov 2004)
+
+  28 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/qemu-0.6.1-20041126.patch, +qemu-0.6.1-r1.ebuild:
+  updated qemu to the 20041126 cvs snapshot, this should fix bug #72561
+
+  26 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  -files/qemu-0.5.4-jocelyn-mayer-ppc.patch, -qemu-0.5.1.ebuild,
+  -qemu-0.5.2.ebuild, -qemu-0.5.3.ebuild, -qemu-0.5.4.ebuild,
+  -qemu-0.5.5-r1.ebuild, -qemu-0.5.5.ebuild:
+  Cleanup
+
+  17 Nov 2004; Luca Barbato <lu_zero@gentoo.org> qemu-0.6.1.ebuild:
+  Removed qemu-fast since that feature won't build on most systems
+
+  16 Nov 2004; Luca Barbato <lu_zero@gentoo.org> qemu-0.6.1.ebuild:
+  Stray useflag removed
+
+*qemu-0.6.1 (15 Nov 2004)
+
+  15 Nov 2004; Luca Barbato <lu_zero@gentoo.org> +qemu-0.6.1.ebuild:
+  New version, filtering qemu-fast on nptl
+
+  02 Nov 2004; Luca Barbato <lu_zero@gentoo.org> qemu-0.6.0.ebuild:
+  Minor fix
+
+  01 Nov 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/qemu-0.6.0-configure.patch, qemu-0.6.0.ebuild:
+  Minor fixes, some taken from Andrew Kirilenko <icedank@gmx.net> from bug #69384
+
+  28 Oct 2004; Luca Barbato <lu_zero@gentoo.org> qemu-0.6.0.ebuild:
+  Marked ppc, added some ewarn in the postinst as requested in bug #69206
+
+  25 Sep 2004; Hanno Boeck <hanno@gentoo.org> +files/qemu_gcc34.patch.gz,
+  qemu-0.6.0.ebuild:
+  Fix for gcc 3.4.
+
+  20 Aug 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/qemu-0.6.0-sigaction.patch, qemu-0.6.0.ebuild:
+  Remove ancient glibc workaround
+
+*qemu-0.6.0 (13 Jul 2004)
+
+  13 Jul 2004; Luca Barbato <lu_zero@gentoo.org> +files/qemu-0.6.0-typo.patch,
+  +qemu-0.6.0.ebuild:
+  New version
+
+*qemu-0.5.5-r1 (02 Jul 2004)
+
+  02 Jul 2004; Luca Barbato <lu_zero@gentoo.org> +qemu-0.5.5-r1.ebuild:
+  Minor change
+
+  04 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> qemu-0.5.1.ebuild,
+  qemu-0.5.2.ebuild, qemu-0.5.3.ebuild, qemu-0.5.4.ebuild, qemu-0.5.5.ebuild:
+  pkg_postinstall -> pkg_postinst
+
+  17 May 2004; Luca Barbato <lu_zero@gentoo.org> qemu-0.5.5.ebuild:
+  Put the qemu-fast target modal
+
+*qemu-0.5.5 (09 May 2004)
+
+  09 May 2004; Luca Barbato <lu_zero@gentoo.org> +qemu-0.5.5.ebuild:
+  New version
+
+*qemu-0.5.4 (28 Apr 2004)
+
+  28 Apr 2004; Luca Barbato <lu_zero@gentoo.org>
+  +files/qemu-0.5.4-jocelyn-mayer-ppc.patch, +qemu-0.5.4.ebuild:
+  New version
+
+  27 Apr 2004; Luca Barbato <lu_zero@gentoo.org> qemu-0.5.3.ebuild:
+  Removed the softmmu target
+
+*qemu-0.5.3 (24 Apr 2004)
+
+  24 Apr 2004; Luca Barbato <lu_zero@gentoo.org> :
+  New version
+
+  15 Mar 2004; Chuck Short <zul@gentoo.org> qemu-0.5.2.ebuild:
+  Marked stable for x86.
+
+*qemu-0.5.2 (28 Jan 2004)
+
+  28 Jan 2004; Chuck Short<zulk@gentoo.org> qemu-0.5.1.ebuild, qemu-0.5.2.ebuild:
+  Ebuild clean ups and new version.
+
+  28 Jan 2004; Chuck Short <zul@gentoo.org> qemu-0.5.1.ebuild:
+  Marked stable for x86.
 
 *qemu-0.5.1 (03 Jan 2004)
 

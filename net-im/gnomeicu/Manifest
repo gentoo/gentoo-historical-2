@@ -1,6 +1,14 @@
-MD5 565f987fe2afd8f7a305998cc4172341 ChangeLog 4135
-MD5 bd3f7b2ef67615cf5befcd4b20f5869d gnomeicu-0.98.111-r1.ebuild 1177
-MD5 f5befaa99cbf607f888f95c9c15559f2 gnomeicu-0.99-r1.ebuild 1078
-MD5 8eb07033b5df670698aa800e66b5b803 files/digest-gnomeicu-0.98.111-r1 71
-MD5 b5fad07742b07e52b0f4397618cc7421 files/userserver.patch 11923
-MD5 705333559eedf05e858bc1e0232cca5f files/digest-gnomeicu-0.99-r1 67
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 3ecb493687daedd4fe36b577f20ce5a7 metadata.xml 381
+MD5 518b07d02d522020c12dae3979f2bf1d gnomeicu-0.99.5.ebuild 1020
+MD5 2bb40c9613cf3dabbb00e95a48f6c1fb ChangeLog 5149
+MD5 29e4934b581a25386aa23afd8f7d65dc files/digest-gnomeicu-0.99.5 69
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDHIAhmOfEJZHYOKcRAvviAKCBZAy+UlDiTx5Y2kIfJ0zEP+zQpgCfZWp6
+UmYXDhhwFubt68+7/M3WOs8=
+=fNDe
+-----END PGP SIGNATURE-----

@@ -1,6 +1,25 @@
-# ChangeLog for media-plugins/crystality-plugin
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-crystality/ChangeLog,v 1.1 2004/04/09 05:41:12 eradicator Exp $
+# ChangeLog for media-plugins/xmms-crystality
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-crystality/ChangeLog,v 1.1.1.1 2005/11/30 10:07:27 chriswhite Exp $
+
+  06 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-crystality-0.92.ebuild:
+  -sparc ~amd64
+
+  12 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-crystality-0.92.ebuild:
+  Stable x86.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-crystality-0.92.ebuild:
+  Added IUSE.
+
+  09 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-crystality-0.92.ebuild:
+  HOMEPAGE fix.  Bug #47341.
+
+  09 Apr 2004; David Holm <dholm@gentoo.org> xmms-crystality-0.92.ebuild:
+  Added to ~ppc.
 
 *xmms-crystality-0.92 (08 Apr 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/vimpython/vimpython-1.7.ebuild,v 1.1 2003/12/06 03:17:28 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimpython/vimpython-1.7.ebuild,v 1.1.1.1 2005/11/30 10:07:38 chriswhite Exp $
 
 inherit vim-plugin
 
@@ -8,9 +8,12 @@ DESCRIPTION="vim plugin: improvements for editing python scripts"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=30"
 
 LICENSE="vim"
-KEYWORDS="~sparc ~x86 ~ppc amd64"
+KEYWORDS="sparc ~x86 ~ppc amd64 alpha ia64"
+IUSE=""
 
 DEPEND="${DEPEND} >=sys-apps/sed-4"
+
+VIM_PLUGIN_HELPURI="http://www.vim.org/scripts/script.php?script_id=30"
 
 function src_unpack() {
 	unpack ${A}
@@ -20,4 +23,3 @@ function src_unpack() {
 		-e '/" function! s:JumpToAndUnfoldWithExceptions/,/^$/s/" \?//' \
 		${S}/plugin/python.vim || die "Sed magic failed"
 }
-

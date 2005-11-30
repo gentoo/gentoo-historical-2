@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/buddy/buddy-2.2.ebuild,v 1.1 2004/12/28 19:56:35 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/buddy/buddy-2.2.ebuild,v 1.1.1.1 2005/11/30 10:09:24 chriswhite Exp $
 
 DESCRIPTION="BuDDY - A Binary Decision Diagram Package"
 HOMEPAGE="http://www.itu.dk/research/buddy/"

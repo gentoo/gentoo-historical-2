@@ -1,6 +1,98 @@
 # ChangeLog for net-www/awstats
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/awstats/ChangeLog,v 1.1 2004/05/21 16:10:44 zul Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-www/awstats/ChangeLog,v 1.1.1.1 2005/11/30 10:07:54 chriswhite Exp $
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> awstats-6.5.ebuild:
+  Mark 6.5 stable on alpha
+
+  14 Sep 2005; <dang@gentoo.org> awstats-6.5.ebuild:
+  Marked stable on amd64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> awstats-6.5.ebuild:
+  Stable on ppc and added to ~hppa.
+
+*awstats-6.5 (12 Aug 2005)
+
+  12 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> +awstats-6.5.ebuild:
+  Version bump for security bug #102145.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> awstats-6.4.ebuild:
+  Stable on ppc.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> awstats-6.4.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> awstats-6.3-r2.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  11 May 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.3-r2.ebuild,
+  awstats-6.4.ebuild:
+  Fix bash param expansion that broke on versions with a revision; bug 91529
+
+  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.4.ebuild:
+  Marked stable on x86.
+
+*awstats-6.4 (21 Mar 2005)
+
+  21 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> files/postinst-en.txt,
+  awstats-6.3-r2.ebuild, +awstats-6.4.ebuild:
+  Version bump; cleaned up sed and apachever stuff for bug 83978. Added
+  enhanced postinst-en.txt written by Jakub Moc in bug 81978.
+
+  23 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.3-r2.ebuild:
+  Upstream strikes again. Fix digest for bug 83085.
+
+*awstats-6.3-r2 (13 Feb 2005)
+
+  13 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/awstats-6.3-CAN-2005-0016.diff,
+  +files/awstats-6.3-CAN-2005-0363.diff, -awstats-6.3-r1.ebuild,
+  +awstats-6.3-r2.ebuild:
+  Revision bump (again). More security fixes.
+
+  12 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> files/postinst-en.txt,
+  awstats-6.3-r1.ebuild:
+  Fix postinst-en.txt for bug 81802.
+
+*awstats-6.3-r1 (12 Feb 2005)
+
+  12 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/awstats-6.3-CAN-2005-0016.diff, +awstats-6.3-r1.ebuild,
+  -awstats-6.3.ebuild:
+  Revision bump for sec bug 81775.
+
+  05 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> -files/awstats-6.1-r1.diff,
+  -awstats-6.1.ebuild, awstats-6.3.ebuild:
+  Tidy old vulnerable version.
+
+  25 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> awstats-6.3.ebuild:
+  Stable on ppc.
+
+  24 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> awstats-6.3.ebuild:
+  Fix SRC_URI for bug 79400.
+
+*awstats-6.3 (24 Jan 2005)
+
+  24 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +files/awstats-6.3-gentoo.diff, +files/postinst-en.txt,
+  +awstats-6.3.ebuild:
+  Version bump for sec bug 77963. Also fixes bugs 63200, 63198, 63197, and 70996.
+
+  04 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> awstats-6.1.ebuild:
+  Masked awstats-6.1.ebuild stable for ppc
+
+  27 Aug 2004; Seemant Kulleen <seemant@gentoo.org> awstats-6.1.ebuild:
+  Typo in pkg_postinst. propert->proper. Thanks to: Kurt McKee
+  <kurtmckee@northwestern.edu> in bug #61993
+
+  27 Jul 2004; Chuck Short <zul@gentoo.org> awstats-6.1.ebuild:
+  Marked stable for x86.
+
+  27 May 2004; Stuart Herbert <stuart@gentoo.org> awstats-6.1.ebuild:
+  Fix for bug #51850
+
+  27 May 2004; <zul@gentoo.org> awstats-6.1.ebuild:
+  Removed arm keyword.
 
 *awstats-6.1 (22 May 2004)
 

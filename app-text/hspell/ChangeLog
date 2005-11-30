@@ -1,6 +1,49 @@
 # ChangeLog for app-text/hspell
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/hspell/ChangeLog,v 1.1 2003/04/26 18:20:22 coredumb Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/hspell/ChangeLog,v 1.1.1.1 2005/11/30 10:06:29 chriswhite Exp $
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> hspell-0.7.ebuild:
+  Mark 0.7 stable on alpha
+
+  26 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> hspell-0.7.ebuild:
+  Stable on ppc.
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> hspell-0.7.ebuild:
+  Added to ~ppc.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> hspell-0.6.ebuild:
+  Stable on sparc
+
+  20 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> hspell-0.7.ebuild:
+  Added ~alpha to keywords.
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> hspell-0.4.ebuild,
+  hspell-0.5.ebuild, hspell-0.6.ebuild, hspell-0.7.ebuild:
+  adding categorie. see 45110 for details
+
+  14 Mar 2004; Jason Wever <weeve@gentoo.org> hspell-0.6.ebuild:
+  Added ~sparc keyword.
+
+*hspell-0.7 (23 Dec 2003)
+
+  23 Dec 2003; Alex Veber <coronalvr@gentoo.org> hspell-0.7.ebuild:
+  Version Bump.
+
+  15 Aug 2003; Alex Veber <coronalvr@gentoo.org> hspell-0.6.ebuild:
+  move to stable
+
+*hspell-0.6 (05 Aug 2003)
+
+  05 Aug 2003; Alex Veber <coronalvr@gentoo.org> hspell-0.6.ebuild:
+  version bump
+
+*hspell-0.5 (8 May 2003)
+
+  8 May 2003; Tal Peer <coredumb@gentoo.org> hspell-0.5.ebuild:
+  Bumped version.
 
 *hspell-0.4 (26 Apr 2003)
 

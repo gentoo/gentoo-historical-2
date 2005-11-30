@@ -1,17 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/sourcenav/sourcenav-5.1.4.ebuild,v 1.1 2003/07/12 18:13:52 rac Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/sourcenav/sourcenav-5.1.4.ebuild,v 1.1.1.1 2005/11/30 10:05:31 chriswhite Exp $
 
 S=${WORKDIR}/build
 
 DESCRIPTION="Source-Navigator is a source code analysis tool"
-SRC_URI="mirror://sourceforge/sourcenav/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/sourcenav/${P}.tar.gz
+mirror://gentoo/${P}-gentoo.diff.gz"
 HOMEPAGE="http://sourcenav.sourceforge.net"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~x86 ~sparc  ~ppc"
-IUSE="X"
+KEYWORDS="x86 ~sparc ppc"
+IUSE=""
 DEPEND=">=sys-libs/glibc-2.2.4"
 SN="/opt/sourcenav"
 
@@ -20,7 +21,7 @@ src_unpack() {
 	mkdir ${WORKDIR}/build
 	cd ${WORKDIR}/${P}
 
-	patch -p0 < ${FILESDIR}/${PF}-gentoo.diff
+	zcat ${DISTDIR}/${PF}-gentoo.diff.gz | patch -p0 || die
 }
 
 src_compile() {
@@ -40,5 +41,5 @@ src_install() {
 
 	chmod -Rf 755 ${D}/${SN}/share/doc/${P}/demos
 	dodir /etc/env.d
-	echo "PATH=${SN}/bin" > ${D}/etc/env.d/10snavigator	
+	echo "PATH=${SN}/bin" > ${D}/etc/env.d/10snavigator
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-20050524.ebuild,v 1.1 2005/05/26 00:51:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/wine-20050524.ebuild,v 1.1.1.1 2005/11/30 10:08:45 chriswhite Exp $
 
 inherit eutils flag-o-matic multilib
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/Wine-${PV}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="X alsa arts cups debug nas opengl gif glut jack jpeg oss ncurses doc lcms"
+IUSE="X alsa arts cups debug nas opengl gif glut jack jpeg oss ncurses lcms" #doc
 RESTRICT="test" #72375
 
 RDEPEND=">=media-libs/freetype-2.0.0
@@ -35,19 +35,23 @@ RDEPEND=">=media-libs/freetype-2.0.0
 	)"
 DEPEND="${RDEPEND}
 	sys-devel/bison
-	doc? ( app-text/docbook-sgml-utils app-text/jadetex )
 	sys-devel/flex"
+#	doc? ( app-text/docbook-sgml-utils app-text/jadetex )
 
 pkg_setup() {
 	if use amd64 ; then
-		if ! has_m32; then
+		if ! has_m32 ; then
 			eerror "Your compiler seems to be unable to compile 32bit code."
 			eerror "Make sure you compile gcc with:"
 			echo
 			eerror "    USE=multilib FEATURES=-sandbox"
 			die "Cannot produce 32bit code"
-		else
+		fi
+		if has_multilib_profile ; then
 			export ABI=x86
+		else
+			append-flags -m32
+			append-ldflags -m32
 		fi
 	fi
 }
@@ -56,9 +60,14 @@ src_unpack() {
 	unpack Wine-${PV}.tar.gz
 	cd "${S}"
 
+	epatch "${FILESDIR}"/wine-20050524-alsa-headers.patch
 	epatch "${FILESDIR}"/winearts-kdecvs-fix.patch
+	epatch "${FILESDIR}"/wine-hangfix-bug2660.patch #98156
 	sed -i '/^UPDATE_DESKTOP_DATABASE/s:=.*:=true:' tools/Makefile.in
-	epatch "${FILESDIR}"/20041019-no-stack.patch #66002
+	epatch "${FILESDIR}"/wine-20041019-no-stack.patch #66002
+	epatch "${FILESDIR}"/wine-20050725-gcc-32bit.patch
+	epatch "${FILESDIR}"/wine-20050930-dont-warn-lib-path.patch #107971
+	epatch "${FILESDIR}"/wine-cvs-winelauncher-temp.patch #101773
 }
 
 config_cache() {
@@ -86,10 +95,10 @@ src_compile() {
 	strip-flags
 	use lcms && append-flags -I"${ROOT}"/usr/include/lcms
 
-	if ! built_with_use app-text/docbook-sgml-utils tetex ; then
-		export DB2PDF=true
-		export DB2PS=true
-	fi
+#	if ! built_with_use app-text/docbook-sgml-utils tetex ; then
+#		export DB2PDF=true
+#		export DB2PS=true
+#	fi
 
 	#	$(use_enable amd64 win64)
 	# USE=debug is broken in this release
@@ -105,9 +114,10 @@ src_compile() {
 
 	emake -j1 depend || die "depend"
 	emake all || die "all"
-	if use doc ; then
-		emake -j1 -C documentation doc || die "docs"
-	fi
+#	if use doc ; then
+#		VARTEXFONTS=${T} \
+#		emake -j1 -C documentation doc || die "docs"
+#	fi
 }
 
 src_install() {
@@ -121,7 +131,7 @@ src_install() {
 		libdir="${D}"/usr/$(get_libdir) \
 		dlldir="${D}"/usr/$(get_libdir)/wine \
 		install || die
-	use doc && dodoc documentation/*.pdf
+#	use doc && dodoc documentation/*.pdf
 
 	insinto /usr/share/wine
 	doins documentation/samples/config || die "doins config"

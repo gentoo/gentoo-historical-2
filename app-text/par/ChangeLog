@@ -1,6 +1,21 @@
 # ChangeLog for app-text/par
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/par/ChangeLog,v 1.1 2004/02/21 16:09:43 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/par/ChangeLog,v 1.1.1.1 2005/11/30 10:06:33 chriswhite Exp $
+
+  29 Oct 2005; Fabian Groffen <grobian@gentoo.org> par-1.52.ebuild:
+  Marked ~ppc-macos (bug #109427)
+
+  11 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> par-1.52.ebuild:
+  Added amd64 keyword, closing #63600.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> par-1.52.ebuild:
+  virtual/glibc -> virtual/libc
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> par-1.52.ebuild:
+  Added ~sparc, ~mips
+
+  02 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> metadata.xml:
+  removed bogus stuff from metadata.xml
 
 *par-1.52 (22 Feb 2004)
 

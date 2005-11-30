@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_kerb/mod_auth_kerb-4.11.ebuild,v 1.1 2002/11/28 20:30:59 woodchip Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_kerb/mod_auth_kerb-4.11.ebuild,v 1.1.1.1 2005/11/30 10:08:11 chriswhite Exp $
 
 inherit eutils
 
@@ -9,9 +9,10 @@ HOMEPAGE="http://modauthkerb.sourceforge.net/"
 
 S=${WORKDIR}/src
 SRC_URI="mirror://sourceforge/modauthkerb/${P}.tar.gz"
-DEPEND="app-crypt/krb5 =net-www/apache-2*"
+DEPEND="app-crypt/mit-krb5 =net-www/apache-2*"
+RDEPEND=""
 LICENSE="Apache-1.1"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 SLOT="0"
 

@@ -1,6 +1,10 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-jess/xmms-jess-2.9.1.ebuild,v 1.1 2002/08/30 08:35:31 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-jess/xmms-jess-2.9.1.ebuild,v 1.1.1.1 2005/11/30 10:07:37 chriswhite Exp $
+
+IUSE=""
+
+inherit eutils
 
 MY_P="JESS-${PV}"
 S=${WORKDIR}/${MY_P}
@@ -10,24 +14,21 @@ HOMEPAGE="http://arquier.free.fr/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc amd64 sparc"
 
-DEPEND="virtual/x11
-	media-sound/xmms
+DEPEND="media-sound/xmms
 	>=media-libs/libsdl-1.1.5"
 
-src_compile() {
-
-	econf || die
-	emake || die
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-gcc34.patch
 }
 
-
 src_install () {
+	dodir `xmms-config --visualization-plugin-dir`
 
-	dodir /usr/lib/xmms/Visualization
+	make DESTDIR="${D}" install || die
 
-	make DESTDIR=${D} install || die
-	
-	dodoc AUTHORS COPYING ChangeLog INSTALL README NEWS
+	dodoc AUTHORS ChangeLog README NEWS
 }

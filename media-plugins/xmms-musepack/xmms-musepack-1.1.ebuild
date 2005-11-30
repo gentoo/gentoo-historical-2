@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-musepack/xmms-musepack-1.1.ebuild,v 1.1 2004/11/29 19:52:10 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-musepack/xmms-musepack-1.1.ebuild,v 1.1.1.1 2005/11/30 10:07:13 chriswhite Exp $
 
 IUSE=""
 
@@ -10,10 +10,10 @@ SRC_URI="http://www.saunalahti.fi/grimmel/musepack.net/linux/plugins/${P}.tar.bz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~ppc -sparc x86"
 
 DEPEND="media-sound/xmms
-	media-libs/libmusepack"
+	=media-libs/libmusepack-1.0*"
 
 src_install() {
 	make DESTDIR="${D}" install || die

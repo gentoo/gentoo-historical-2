@@ -1,6 +1,42 @@
 # ChangeLog for app-text/convmv
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/convmv/ChangeLog,v 1.1 2003/10/09 05:24:34 robbat2 Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/convmv/ChangeLog,v 1.1.1.1 2005/11/30 10:06:48 chriswhite Exp $
+
+  11 Oct 2005; Fabian Groffen <grobian@gentoo.org> convmv-1.08.ebuild:
+  Marked ~ppc-macos (bug #108594)
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> convmv-1.08.ebuild:
+  Mark 1.08 stable on alpha
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> convmv-1.08.ebuild:
+  Stable on ppc.
+
+  31 Aug 2005; Tom Martin <slarti@gentoo.org> convmv-1.08.ebuild:
+  Stable on amd64, ia64, sparc.
+
+  30 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> convmv-1.08.ebuild:
+  Stable on x86.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> convmv-1.05.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> convmv-1.05.ebuild:
+  stable on amd64
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> convmv-1.05.ebuild:
+  stable on ia64
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Nov 2004; Robin H. Johnson <robbat2@gentoo.org> :
+  Bug #66451, new version. old version stable on x86.
+
+  12 May 2004; Bryan Østergaard <kloeri@gentoo.org> convmv-1.05.ebuild:
+  Stable on alpha.
+
+  21 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> convmv-1.05.ebuild:
+  header fix; arm needs deps first; tidy
 
 *convmv-1.05 (08 Oct 2003)
 

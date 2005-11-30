@@ -1,15 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_encoding/mod_encoding-20021209.ebuild,v 1.1 2003/06/22 18:59:46 woodchip Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_encoding/mod_encoding-20021209.ebuild,v 1.1.1.1 2005/11/30 10:07:50 chriswhite Exp $
 
 DESCRIPTION="Apache module for non-ascii filename interoperability"
 HOMEPAGE="http://webdav.todo.gr.jp/"
 
-S=${WORKDIR}/${P}
 SRC_URI="http://webdav.todo.gr.jp/download/${P}.tar.gz"
 
+IUSE=""
 DEPEND="=net-www/apache-1*"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 LICENSE="Apache-1.1"
 SLOT="0"
 
@@ -36,7 +36,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "Execute \"ebuild /var/db/pkg/net-www/${PN}/${PF}.ebuild config\""
+	einfo "Execute \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
 	einfo "to have your apache.conf auto-updated for use with this module."
 	einfo
 }

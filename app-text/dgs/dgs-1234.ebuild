@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dgs/dgs-1234.ebuild,v 1.1 2005/09/15 04:38:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dgs/dgs-1234.ebuild,v 1.1.1.1 2005/11/30 10:07:11 chriswhite Exp $
 
 DESCRIPTION="fake ebuild to force removal of broken path_dps.m4"
 HOMEPAGE="http://ronaldmcnightrider.ytmnd.com/"

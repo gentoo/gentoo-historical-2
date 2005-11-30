@@ -1,4 +1,5 @@
+MD5 47569dd1868d3c07666e9ea841f5b6ed ChangeLog 550
+MD5 27df3c85b41dda356855993c7f867913 cl-log4cl-20050421.ebuild 1084
 MD5 9b65b0341efc8f4b29498aad23315229 metadata.xml 164
-MD5 9f04314062de905581fb8c3aa6a7bea3 cl-log4cl-20050421.ebuild 1070
-MD5 2df735ce4c34aa76425fe4d842c2cb92 files/digest-cl-log4cl-20050421 66
 MD5 c9f5fbbe88bcdedd4657ca934db9f58c files/20050421-defconstant-gentoo.patch 1810
+MD5 2df735ce4c34aa76425fe4d842c2cb92 files/digest-cl-log4cl-20050421 66

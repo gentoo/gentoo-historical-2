@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.0.0.ebuild,v 1.1 2005/07/03 23:43:14 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.0.0.ebuild,v 1.1.1.1 2005/11/30 10:05:36 chriswhite Exp $
 
 inherit python gnome2 eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://meld.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~sparc ~ppc ~amd64"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="doc"
 
 DEPEND=">=dev-lang/python-2.2
@@ -25,22 +25,12 @@ DEPEND=">=dev-lang/python-2.2
 
 pkg_setup() {
 
-	if ! built_with_use pygtk gnome ; then
+	if ! built_with_use dev-python/pygtk gnome ; then
 		einfo ""
 		einfo "Meld requires pygtk be built with the gnome use flag set."
 		einfo "Please re-emerge pygtk with the gnome use flag set."
 		einfo ""
 		die "You need to re-emerge pygtk with gnome use flag."
-	fi
-	# same check for gnome-python-extras with gtkhtml
-	if ! built_with_use gnome-python-extras gtkhtml ; then
-		einfo ""
-		einfo "Meld requires gnome-python-extras be built "
-		einfo "with gtkhtml use flag set to enable line "
-		einfo "numbering and source highlighting. "
-		einfo ""
-		einfo "You need to re-emerge gnome-python-extras "
-		einfo "with gtkhtml use flag."
 	fi
 }
 

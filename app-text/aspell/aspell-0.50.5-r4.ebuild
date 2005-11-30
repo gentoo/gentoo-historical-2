@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/aspell-0.50.5-r4.ebuild,v 1.1 2004/08/18 19:18:39 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/aspell/aspell-0.50.5-r4.ebuild,v 1.1.1.1 2005/11/30 10:06:31 chriswhite Exp $
 
 inherit libtool eutils flag-o-matic
 
@@ -10,19 +10,11 @@ SRC_URI="mirror://gnu/aspell/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ppc64"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc ppc64 s390 sparc x86 ppc-macos"
 IUSE="gpm"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	gpm? ( sys-libs/gpm )"
-
-pkg_setup() {
-	if [ ${ARCH} = "ppc" ] ; then
-		CXXFLAGS="-O2 -fsigned-char"
-		CFLAGS=${CXXFLAGS}
-	fi
-	use gpm && append-ldflags -lgpm
-}
 
 src_unpack() {
 	unpack ${A}
@@ -32,6 +24,10 @@ src_unpack() {
 }
 
 src_compile() {
+	if [ "${ARCH}" == "ppc" ] || [ "${ARCH}" == "ppc-macos" ]; then
+		append-flags -O2 -fsigned-char
+	fi
+	use gpm && append-ldflags -lgpm
 	filter-flags -fno-rtti
 	elibtoolize --reverse-deps
 
@@ -72,9 +68,5 @@ pkg_postinst() {
 	ewarn ""
 	ewarn "Please re-emerge ALL your aspell-LANG dictionaries"
 	ewarn ""
-	for TICKER in 1 2 3 4 5; do
-		# Double beep here.
-		echo -ne "\a" ; sleep 0.1 &>/dev/null ; sleep 0,1 &>/dev/null
-		echo -ne "\a" ; sleep 1
-	done
+	ebeep 5
 }

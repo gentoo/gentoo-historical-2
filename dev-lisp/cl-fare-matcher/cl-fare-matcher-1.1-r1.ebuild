@@ -1,17 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-fare-matcher/cl-fare-matcher-1.1-r1.ebuild,v 1.1 2004/02/12 09:13:13 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-fare-matcher/cl-fare-matcher-1.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:16 chriswhite Exp $
 
-inherit common-lisp
+inherit common-lisp eutils
 
 DESCRIPTION="A library of macros and functions by Fare Rideau."
-HOMEPAGE="http://mapcar.org/~mrd/utilities/matcher.html
-	http://www.cliki.net/fare-matcher
-	http://www.cliki.net/fare-matcher-docs"
+HOMEPAGE="http://mapcar.org/~mrd/utilities/matcher.html http://www.cliki.net/fare-matcher http://www.cliki.net/fare-matcher-docs"
 SRC_URI="http://mapcar.org/~mrd/utilities/fare-matcher-ext-${PV}.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
+IUSE=""
+
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp"
 

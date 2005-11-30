@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/detachtty/detachtty-9.ebuild,v 1.1 2004/10/25 12:52:50 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/detachtty/detachtty-9.ebuild,v 1.1.1.1 2005/11/30 10:06:13 chriswhite Exp $
+
+inherit toolchain-funcs
 
 MY_P="${P/-/_}"
 
@@ -10,13 +12,13 @@ SRC_URI="mirror://debian/pool/main/d/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc ~amd64 ~sparc"
 IUSE=""
 
 DEPEND="virtual/libc"
 
 src_compile() {
-	emake CC="${CC:-gcc}" CFLAGS="${CFLAGS}" || die
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die
 }
 
 src_install() {

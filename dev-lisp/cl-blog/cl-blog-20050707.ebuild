@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-blog/cl-blog-20050707.ebuild,v 1.1 2005/07/07 16:45:34 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-blog/cl-blog-20050707.ebuild,v 1.1.1.1 2005/11/30 10:08:26 chriswhite Exp $
 
 inherit common-lisp eutils
 

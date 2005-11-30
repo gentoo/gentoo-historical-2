@@ -1,6 +1,132 @@
 # ChangeLog for media-plugins/gst-plugins-theora
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-theora/ChangeLog,v 1.1 2004/10/22 11:35:32 foser Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-theora/ChangeLog,v 1.1.1.1 2005/11/30 10:07:21 chriswhite Exp $
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  Mark 0.8.10 stable on alpha
+
+*gst-plugins-theora-0.8.11 (05 Sep 2005)
+
+  05 Sep 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-theora-0.8.11.ebuild:
+  version bump
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  Stable on ppc.
+
+  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  Stable on amd64.
+
+  29 Aug 2005; Guy Martin <gmsoft@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  Stable on hppa.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  stable on ia64
+
+  26 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  Stable on sparc
+
+  25 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gst-plugins-theora-0.8.10.ebuild:
+  Stable on x86.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  Stable on alpha.
+
+*gst-plugins-theora-0.8.10 (02 Jul 2005)
+
+  02 Jul 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-theora-0.8.10.ebuild:
+  version bump
+
+  26 Jun 2005; Guy Martin <gmsoft@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild, gst-plugins-theora-0.8.9.ebuild:
+  Stable on hppa.
+
+  23 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-plugins-theora-0.8.9.ebuild, gst-plugins-0.8.8.ebuild:
+  now depend properly on libtheora
+
+  14 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild, gst-plugins-theora-0.8.9.ebuild:
+  hard dep on alpha3 coz alpha4 causes segfaults and alpha2 doesnt build
+
+  13 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gst-plugins-theora-0.8.9.ebuild:
+  Add ~alpha keyword.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  Stable on ppc64
+
+*gst-plugins-theora-0.8.9 (08 Jun 2005)
+
+  08 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-theora-0.8.9.ebuild:
+  version bump
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  stable on ia64
+
+  06 May 2005; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  03 May 2005; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  add ~ia64
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  Stable on ppc.
+
+  27 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  stable on amd64
+
+  25 Apr 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  stabilise on x86
+
+  18 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gst-plugins-theora-0.8.8.ebuild:
+  Added to ~sparc.
+
+  13 Mar 2005; Mike Gardiner <obz@gentoo.org>
+  gst-plugins-theora-0.8.7.ebuild:
+  Keyworded ppc
+
+  11 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
+  gst-plugins-theora-0.8.7.ebuild:
+  stable on amd64
+
+*gst-plugins-theora-0.8.8 (08 Mar 2005)
+
+  02 Mar 2005; Alex Howells <astinus@gentoo.org>
+  gst-plugins-theora-0.8.7.ebuild:
+  Keyword ~amd64, in response to bug 80734
+
+*gst-plugins-theora-0.8.7 (05 Jan 2005)
+
+  27 Nov 2004; Joseph Jezak <josejx@gentoo.org>
+  gst-plugins-theora-0.8.5.ebuild:
+  Marked ~ppc for bug #72559.
 
 *gst-plugins-theora-0.8.5.ebuild (22 Oct 2004)
 

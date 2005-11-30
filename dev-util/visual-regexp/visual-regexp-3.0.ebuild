@@ -1,14 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/visual-regexp/visual-regexp-3.0.ebuild,v 1.1 2004/05/02 17:50:36 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/visual-regexp/visual-regexp-3.0.ebuild,v 1.1.1.1 2005/11/30 10:05:36 chriswhite Exp $
+
+inherit eutils
+
+DESCRIPTION="software that allows you to type the regexp, and visualize it on a sample of your choice"
+HOMEPAGE="http://laurent.riesterer.free.fr/regexp/"
+SRC_URI="http://laurent.riesterer.free.fr/regexp/visual_regexp-${PV}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
-DESCRIPTION="software that allows yoy ty type the regexp, and visualize it on a sample of your choice"
-SRC_URI="http://laurent.riesterer.free.fr/regexp/visual_regexp-${PV}.tar.gz"
-HOMEPAGE="http://laurent.riesterer.free.fr/regexp/"
 SLOT="0"
-
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE=""
 
 DEPEND=">=dev-lang/tcl-8.3

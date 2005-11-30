@@ -1,9 +1,811 @@
 # ChangeLog for gnome-base/gnome
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/ChangeLog,v 1.1.1.1 2005/11/30 10:09:14 chriswhite Exp $
+
+  19 Nov 2005; Joseph Jezak <josejx@gentoo.org> gnome-2.12.0.ebuild:
+  Added ~ppc for bug #108804.
+
+  21 Oct 2005; Leonardo Boshell <leonardop@gentoo.org> gnome-2.8.2.ebuild,
+  gnome-2.8.3-r1.ebuild:
+  Added mips restrictions around gnome-volume-manager.
+
+*gnome-2.12.1 (21 Oct 2005)
+
+  21 Oct 2005; Leonardo Boshell <leonardop@gentoo.org> +gnome-2.12.1.ebuild:
+  New version.
+
+  17 Oct 2005; Aron Griffis <agriffis@gentoo.org> gnome-2.10.2.ebuild:
+  Mark 2.10.2 stable on ia64
+
+  13 Oct 2005; John N. Laliberte <allanonjl@gentoo.org> gnome-2.12.0.ebuild:
+  change pkg_postinst to reflect the upgrade guide, and rec gamin over fam.
+  Thanks to fox2mike for noticing.
+
+  11 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.12.0.ebuild:
+  Back to ~sparc wrt #108803
+
+  11 Oct 2005; John N. Laliberte <allanonjl@gentoo.org> gnome-2.12.0.ebuild:
+  remove support for hppa, ia64, ppc, sparc. filed bugs
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> gnome-2.10.2.ebuild,
+  gnome-2.12.0.ebuild:
+  Mark 2.12.0 2.10.2 ~ia64
+
+  14 Sep 2005; John N. Laliberte <allanonjl@gentoo.org> gnome-2.12.0.ebuild:
+  add information about adding yourself to plugdev in postinst
+
+*gnome-2.12.0 (14 Sep 2005)
+
+  14 Sep 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -gnome-2.12_rc1.ebuild, +gnome-2.12.0.ebuild:
+  change libwnck position fixes #105008, remove evolution-exchange from meta,
+  2.12.0 Final Release
+
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> gnome-2.10.2.ebuild:
+  Stable on ppc.
+
+*gnome-2.12_rc1 (04 Sep 2005)
+
+  04 Sep 2005; John N. Laliberte <allanonjl@dev.gentoo.org>
+  +gnome-2.12_rc1.ebuild:
+  GNOME 2.12 Release Candidate 1
+
+  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org> gnome-2.10.2.ebuild:
+  Stable on amd64.
+
+  29 Aug 2005; Guy Martin <gmsoft@gentoo.org> gnome-2.10.2.ebuild:
+  Stable on hppa.
+
+  26 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.10.2.ebuild:
+  Stable on sparc
+
+  26 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> gnome-2.10.2.ebuild:
+  Stable on x86.
+
+*gnome-2.11.91_pre1 (22 Aug 2005)
+
+  22 Aug 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +gnome-2.11.91_pre1.ebuild:
+  uncomment some packs as deps since they are now available in the tree.
+
+  02 Aug 2005; Simon Stelling <blubb@gentoo.org> gnome-2.10.1.ebuild:
+  stable on amd64
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> gnome-2.10.1.ebuild:
+  ppc stable
+
+  27 Jul 2005; Guy Martin <gmsoft@gentoo.org> gnome-2.10.1.ebuild,
+  gnome-2.10.2.ebuild:
+  Stable on hppa.
+
+  27 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.10.1.ebuild:
+  Stable on sparc
+
+*gnome-2.10.2 (26 Jul 2005)
+
+  26 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> gnome-2.10.2.ebuild:
+  GNOME 2.10.2 release.
+
+  26 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> gnome-2.10.1.ebuild:
+  Stable on x86.
+
+*gnome-2.10.1 (08 Jul 2005)
+
+  08 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> gnome-2.10.1.ebuild:
+  Final 2.10.1 ebuild, updated all dependencies to upstream versions for
+  GNOME 2.10.1.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> gnome-2.10-r1.ebuild:
+  Stable on alpha.
+
+  26 Jun 2005; Guy Martin <gmsoft@gentoo.org> gnome-2.10-r1.ebuild:
+  Stable on hppa.
+
+  13 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> gnome-2.10-r1.ebuild:
+  Add ~alpha keyword.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> gnome-2.10-r1.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-2.10-r1.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.10-r1.ebuild:
+  Stable on sparc
+
+*gnome-2.10-r1 (09 Jun 2005)
+
+  09 Jun 2005; Marinus Schraal <foser@gentoo.org> gnome-2.10-r1.ebuild :
+  Final 2.10 stable meta, include rev bumps for panel & eds bugs
+
+  06 Jun 2005; Guy Martin <gmsoft@gentoo.org> gnome-2.10.ebuild,
+  gnome-2.10.1_pre0.ebuild:
+  Removing useless hppa specific stuff once again from new ebuilds.
+
+  05 Jun 2005; Marinus Schraal <foser@gentoo.org> gnome-2.10.0.ebuild :
+  A few more dep fixes
+  
+  18 May 2005; Jason Wever <weeve@gentoo.org> gnome-2.8.3-r1.ebuild:
+  Stable on SPARC.
+
+  17 May 2005; Guy Martin <gmsoft@gentoo.org> gnome-2.8.3-r1.ebuild:
+  Stable on hppa.
+
+  11 May 2005; Guy Martin <gmsoft@gentoo.org> gnome-2.8.3-r1.ebuild:
+  Stable on hppa.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> gnome-2.10.ebuild:
+  add ~ia64
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> gnome-2.8.3-r1.ebuild:
+  stable on ia64
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> gnome-2.8.3-r1.ebuild:
+  Stable on amd64.
+
+  06 May 2005; Markus Rothe <corsair@gentoo.org> gnome-2.10.ebuild,
+  gnome-2.10.1_pre0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*gnome-2.10.1_pre0 (03 May 2005)
+
+  03 May 2005; Joe McCann <joem@gentoo.org> +gnome-2.10.1_pre0.ebuild:
+  Add 2.10.1 pre meta
+
+*gnome-2.10 (01 May 2005)
+
+  01 May 2005; Joe McCann <joem@gentoo.org> +gnome-2.10.ebuild:
+  move 2.10 from p.mask to ~arch
+
+  30 Apr 2005; Mike Gardiner <obz@gentoo.org> gnome-2.8.3-r1.ebuild:
+  Marked x86/ppc
+
+  27 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> gnome-2.8.2.ebuild:
+  Stable on ia64.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> gnome-2.8.2.ebuild:
+  stable on amd64
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> gnome-2.8.2.ebuild:
+  stable on mips
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> gnome-2.6.ebuild,
+  gnome-2.6.2-r1.ebuild, gnome-2.8.0-r1.ebuild, gnome-2.8.1-r1.ebuild,
+  gnome-2.8.2.ebuild, gnome-2.8.3_pre0.ebuild, gnome-2.8.3.ebuild,
+  gnome-2.8.3-r1.ebuild, gnome-2.10_pre0.ebuild:
+  change dep from net-www/epiphany to www-client/epiphany
+
+  21 Mar 2005; Guy Martin <gmsoft@gentoo.org> gnome-2.8.2.ebuild:
+  Stable on hppa.
+
+  20 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> gnome-2.8.2.ebuild:
+  Stable on alpha.
+
+  19 Mar 2005; Mike Doty <kingtaco@gentoo.org> gnome-2.10_pre0.ebuild:
+  ~amd64, bug 85028
+
+*gnome-2.10_pre0 (11 Mar 2005)
+
+  11 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.10_pre0.ebuild:
+  To ~sparc wrt #84701
+
+  09 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.8.2.ebuild:
+  Stable on sparc
+
+  09 Mar 2005; Mike Gardiner <obz@gentoo.org> gnome-2.8.2.ebuild:
+  Keyworded x86 ppc
+
+*gnome-2.8.3-r1 (07 Mar 2005)
+
+  07 Mar 2005; Leonardo Boshell <leonardop@gentoo.org> gnome-2.8.3-r1.ebuild:
+  Added gnome-speech and dasher to the accessibility section.
+
+*gnome-2.8.3 (02 Mar 2005)
+
+  02 Mar 2005; Mike Gardiner <obz@gentoo.org> +gnome-2.8.3.ebuild,
+  gnome-2.8.3_pre0.ebuild:
+  New version, 2.8.3. This release consists almost entirely of bugfixes, and
+  new translations
+
+*gnome-2.8.2 (20 Jan 2005)
+
+  20 Jan 2005; Mike Gardiner <obz@gentoo.org> +gnome-2.8.2.ebuild:
+  New meta version - 2.8.2 in ~arch
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> gnome-2.8.1-r1.ebuild:
+  Stable on amd64.
+
+  27 Dec 2004; Guy Martin <gmsoft@gentoo.org> gnome-2.8.1-r1.ebuild:
+  Stable on hppa.
+
+  27 Dec 2004; Joe McCann <joem@gentoo.org> gnome-2.6.1_p1.ebuild,
+  gnome-2.6.3_pre0.ebuild:
+  Remove deps on masked esound and add !mips for epiphany. Fixes bug 75794
+
+  24 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> gnome-2.8.1-r1.ebuild:
+  Stable on alpha.
+
+  22 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.8.1-r1.ebuild:
+  Stable on sparc
+
+  19 Dec 2004; Mike Gardiner <obz@gentoo.org> gnome-2.8.1-r1.ebuild:
+  Keyworded x86 and ppc - everyone say hello GNOME 2.8.1
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> gnome-2.8.0-r1.ebuild:
+  Stable on alpha.
+
+  11 Dec 2004; Mike Gardiner <obz@gentoo.org> gnome-2.8.1-r1.ebuild,
+  -gnome-2.8.1.ebuild:
+  Moved back to libglade-2.4, as 2.4.1 is buggy/incompatible, see bug #73868
+
+*gnome-2.8.1-r1 (08 Dec 2004)
+
+  08 Dec 2004; Mike Gardiner <obz@gentoo.org> +gnome-2.8.1-r1.ebuild,
+  gnome-2.8.1.ebuild:
+  New version in ~arch, see bug #72798 for the movement from package.mask
+
+  30 Nov 2004; Joe McCann <joem@gentoo.org> gnome-2.8.0-r1.ebuild,
+  gnome-2.8.1.ebuild:
+  Removing gnome-nettool for good so gnome doesn't bring in additional network
+  util deps. See bug #64792
+
+*gnome-2.8.1 (29 Nov 2004)
+
+  29 Nov 2004; Mike Gardiner <obz@gentoo.org> gnome-2.4.2.ebuild,
+  +gnome-2.8.1.ebuild:
+  Added in the meta-tracker for GNOME 2.8.1
+
+  16 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> gnome-2.8.0-r1.ebuild:
+  ~alpha keyword.
+
+  12 Nov 2004; Mike Gardiner <obz@gentoo.org> gnome-2.8.0-r1.ebuild:
+  Keyworded ppc for GNOME 2.8, it's definitely warming up.
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.8.0-r1.ebuild:
+  Sparc stable, let's warm the place
+
+*gnome-2.8.0-r1 (21 Oct 2004)
+
+  21 Oct 2004; Aron Griffis <agriffis@gentoo.org> gnome-2.8.0-r1.ebuild:
+  add ~ia64
+
+*gnome-2.8.0 (09 Oct 2004)
+
+  09 Oct 2004; foser <foser@gentoo.org> gnome-2.8.0.ebuild :
+  Minor update to pre1 to move to ~arch (#64135)
+  Remove alpha from KEYWORDS for now
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org> gnome-2.6.2-r1.ebuild:
+  stable on mips
+
+  23 Sep 2004; foser <foser@gentoo.org> gnome-2.8.0_pre1.ebuild :
+  Add hal USE flag for g-v-m
+
+*gnome-2.8.0_pre1 (18 Sep 2004)
+
+  18 Sep 2004; foser <foser@gentoo.org> gnome-2.8.0_pre1.ebuild :
+  First gnome meta for gnome 2.8, still lacks some minor components & updates (#64135)
+
+  24 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> gnome-2.6.2-r1.ebuild:
+  Stable on alpha.
+
+*gnome-2.6.3_pre0 (22 Aug 2004)
+
+  22 Aug 2004; Mike Gardiner <obz@gentoo.org> gnome-2.6.3_pre0.ebuild:
+  Updated all dependencies to latest versions, getting ready for 2.6.3 release
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.6.2-r1.ebuild:
+  Stable on sparc... weee
+
+  05 Aug 2004; Guy Martin <gmsoft@gentoo.org> gnome-2.6.2-r1.ebuild:
+  Stable on hppa.
+
+  31 Jul 2004; <spider@gentoo.org> gnome-2.6.2-r1.ebuild:
+  stable on x86
+
+*gnome-2.6.2-r1 (23 Jul 2004)
+
+  23 Jul 2004; <spider@gentoo.org> +gnome-2.6.2-r1.ebuild:
+  Revbumped to catch gnome-utils 2.6.2-r1 that fixes a build issue against 2.6
+  headers
+
+*gnome-2.6.2-r1 23 Jul 2004
+
+  23 Jul 2004; Spider <spider@gentoo.org> 
+  # INSERT ENTRY HERE
+
+  12 Jul 2004; <spider@gentoo.org> gnome-2.6.2.ebuild:
+  glib updated
+
+*gnome-2.6.2 (11 Jul 2004)
+
+  11 Jul 2004; <spider@gentoo.org> gnome-1.4-r3.ebuild, +gnome-2.6.2.ebuild:
+  Gnome 2.6.2 release, a lot of dependency changes and hacking. this will need
+  cleanup once a few other arches are sorted out. see comments inside build
+
+  11 Jul 2004; <spider@gentoo.org> gnome-1.4-r3.ebuild:
+  added IUSE flag to shut repoman up
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> gnome-2.6.ebuild:
+  Stable on alpha.
+
+  01 Jul 2004; Aron Griffis <agriffis@gentoo.org> gnome-2.6.1_p1.ebuild,
+  gnome-2.6.1_rc1.ebuild:
+  add ~alpha
+
+  01 Jul 2004; Aron Griffis <agriffis@gentoo.org> gnome-2.6.ebuild:
+  add ~alpha
+
+  04 Jun 2004; Stephen P. Becker <geoman@gentoo.org> gnome-2.6.1_p1.ebuild,
+  gnome-2.6.1_rc1.ebuild, gnome-2.6.ebuild:
+  2.6 stable on mips, 2.6.1 testing
+
+  03 Jun 2004; Stephen P. Becker <geoman@gentoo.org> gnome-2.4.2.ebuild,
+  gnome-2.6.ebuild:
+  Do not build epiphany on mips because mozilla is broken.
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> gnome-2.6.ebuild:
+  Masked gnome-2.6.ebuild stable for ppc
+
+  26 May 2004; Guy Martin <gmsoft@gentoo.org> gnome-2.6.1_p1.ebuild,
+  gnome-2.6.ebuild:
+  Removed epiphany from DEPEND for hppa. Added hppa and ~hppa to KEYWORDS.
+
+*gnome-2.6.1_p1 (21 May 2004)
+
+  21 May 2004; foser <foser@gentoo.org> gnome-2.6.1_p1.ebuild :
+  New update tracker
+
+*gnome-2.6.1_rc1 (21 May 2004)
+
+  21 May 2004; foser <foser@gentoo.org> gnome-2.6.1_rc1.ebuild :
+  New meta for 2.6.1 release
+
+  15 May 2004; Stephen P. Becker <geoman@gentoo.org> gnome-2.4.2.ebuild:
+  Stable on mips.
+
+*gnome-2.6_p1 (20 Apr 2004)
+
+  20 Apr 2004; foser <foser@gentoo.org> gnome-2.6_p1.ebuild :
+  update tracker for the gnome team
+  2.6.* : fix typo in postinst note : fam -> famd (#48340)
+
+  17 Apr 2004; Travis Tilley <lv@gentoo.org> gnome-2.4.2.ebuild:
+  stable on amd64
+
+*gnome-2.6 (05 Apr 2004)
+
+  05 Apr 2004; foser <foser@gentoo.org> gnome-2.6.ebuild :
+  Add changelog entry for 2.6 release
+
+*gnome-2.6_rc5 (01 Apr 2004)
+
+  01 Apr 2004; foser <foser@gentoo.org> gnome-2.5_rc5.ebuild :
+  New rc, this is really gnome 2.6 final
+
+*gnome-2.6_rc4 (30 Mar 2004)
+
+  30 Mar 2004; Travis Tilley <lv@gentoo.org> gnome-2.6_rc4.ebuild:
+  added ~amd64 keyword
+
+*gnome-2.6_rc3 (23 Mar 2004)
+
+  23 Mar 2004; L. Boshell <leonardop@gentoo.org> gnome-2.6_rc3.ebuild:
+  Including accessibility packages.
+
+*gnome-2.6_rc2 (22 Mar 2004)
+
+  22 Mar 2004; foser <foser@gentoo.org> gnome-2.6_rc2.ebuild :
+  Updated meta to boost testing, now contains most of gstreamer
+
+*gnome-2.6_rc1 (21 Mar 2004)
+
+  21 Mar 2004; foser <foser@gentoo.org> gnome-2.6_rc1.ebuild :
+  Initial gnome 2.6 meta ebuild
+  Misses gstreamer & accessibility
+
+  09 Mar 2004; <agriffis@gentoo.org> gnome-2.4.2.ebuild:
+  stable on alpha and ia64
+
+*gnome-2.4.2_p1 (14 Feb 2004)
+
+  14 Feb 2004; Alastair Tse <liquidx@gentoo.org> gnome-2.4.2_p1.ebuild:
+  revision bump
+
+  10 Feb 2004; Gustavo Zacarias <gustavoz@gentoo.org> gnome-2.4.2.ebuild:
+  stable on hppa and sparc
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> gnome-2.4.2.ebuild:
+  set ppc in keywords
+
+  07 Feb 2004; foser <foser@gentoo.org> gnome-2.4.2-r1.ebuild :
+  Fix gnome-vfs dep to 2.4.2-r1 to fix a mistake
+
+  06 Feb 2004; <spider@gentoo.org> gnome-2.4.2.ebuild:
+  move intltool, pkg-config, gtk-doc to DEPEND instead of RDEPEND. kills off the
+  last RDEPEND=intltool in my install
+
+  06 Feb 2004; <spider@gentoo.org> gnome-2.4.2.ebuild:
+  updated scrollkeeper to 0.3.14, intltool to 0.30
+  remove outdated warning about KEYWORDS
+
+*gnome-2.4.2 (05 Feb 2004)
+
+  05 Feb 2004; foser <foser@gentoo.org> gnome-2.4.2.ebuild :
+  New release
+
+  29 Jan 2004; Aron Griffis <agriffis@gentoo.org> gnome-2.4.1.ebuild:
+  stable on alpha and ia64
+
+  18 Jan 2004; <gustavoz@gentoo.org> gnome-2.4.1.ebuild:
+  Bumped to stable on hppa and sparc, workaround for lack of mozilla on hppa,
+  enjoy.
+
+  14 Jan 2004; Mike Gardiner <obz@gentoo.org> gnome-2.4.1.ebuild:
+  Marked the meta stable for GNOME 2.4.1
+
+*gnome-2.4.1_p1 (23 Dec 2003)
+
+  23 Dec 2003; foser <foser@gentoo.org> gnome-2.4.1_p1.ebuild :
+  Tracker meta ebuild to keep up with new stable packages
+  This is not meant to ever go stable on any arch
+
+*gnome-2.4.1 (14 Dec 2003)
+
+  14 Dec 2003; foser <foser@gentoo.org> gnome-2.2.4.ebuild :
+  minor dep fixes
+
+  14 Dec 2003; Mike Gardiner <obz@gentoo.org> gnome-2.2.2-r1.ebuild,
+  gnome-2.4.1.ebuild, gnome-2.4.ebuild:
+  2.2.2-r1, removed hppa keyword, dependency xscreensaver isnt marked on that
+  arch. 2.4, removed ia64 keyword, dependency nautilus-cd-burner isnt marked on
+  that arch. And on the brighter side, new version 2.4.1 now in portage
+
+  13 Dec 2003; Guy Martin <gmsoft@gentoo.org> gnome-2.4.ebuild:
+  Marked stable on hppa.
+
+  07 Dec 2003; <spider@gentoo.org> gnome-2.4.ebuild:
+  Added a note about fam for better nautilus behaviour
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> gnome-2.4.ebuild:
+  Stable on ia64
+
+  08 Nov 2003; Todd Sunderlin <todd@gentoo.org> gnome-2.4.ebuild:
+  added sparc keyword
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org> gnome-2.4.ebuild:
+  set ppc in keywords
+
+  20 Oct 2003; Aron Griffis <agriffis@gentoo.org> gnome-2.4.ebuild:
+  Stable on alpha
+
+  17 Oct 2003; Brad House <brad_mssw@gentoo.org> gnome-2.4_rc1.ebuild:
+  take out ~amd64 flag for now
+
+  06 Oct 2003; Mike Gardiner <obz@gentoo.org> gnome-2.4.ebuild:
+  Marked stable on x86
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org> gnome-2.2.2-r1.ebuild:
+  set ppc in keywords
+
+*gnome-2.4 (12 Sep 2003)
+
+  12 Sep 2003; foser <foser@gentoo.org> gnome-2.4.ebuild :
+  Final listing of deps for 2.4, first release
+  Without accesibility support
+  
+*gnome-2.4_rc1 (07 Sep 2003)
+
+  07 Sep 2003; foser <foser@gentoo.org> gnome-2.4_rc1.ebuild :
+  Gnome 2.4 rc1
+
+*gnome-2.2.2-r1 (25 Aug 2003)
+
+  25 Aug 2003; foser <foser@gentoo.org> gnome-2.2.2-r1.ebuild :
+  Add libgtop dep to the meta pack
+
+  25 Aug 2003; Mike Gardiner <obz@gentoo.org> gnome-2.2.2-r1.ebuild:
+  Marked stable on x86
+
+  12 Aug 2003; Jason Wever <weeve@gentoo.org> gnome-2.2.1.ebuild:
+  Changed ~sparc keyword to sparc.
+
+*gnome-2.2.2 (12 Jul 2003)
+
+  12 Jul 2003; foser <foser@gentoo.org> gnome-2.2.2.ebuild :
+  New version, added intltool dep to be on the safe side with bug #15194
+
+  30 Jun 2003; Bartosch Pixa <darkspecter@gentoo.org> gnome-2.2.1.ebuild:
+  set ppc in keywords
+
+*gnome-2.2.1 (16 Mar 2003)
+
+  02 Jul 2003; Guy Martin <gmsoft@gentoo.org> gnome-2.2.1.ebuild :
+  Added hppa to KEYWORDS and a RDEPEND fix for hppa.
+
+  24 Mar 2003; foser <foser@gentoo.org> gnome-2.2.1.ebuild :
+  upped gnome-panel dep to the correct version (#18087)
+
+  16 Mar 2003; foser <foser@gentoo.org> gnome-2.2.1.ebuild :
+  New release
+  Added accessibility deps
+  Removed eel dep, it is perfectly covered by nautilus
+
+*gnome-2.2-r2 (17 Feb 2003)
+
+  01 Mar 2003; Jason Wever <weeve@gentoo.org> gnome-2.2-r2.ebuild:
+  Addes ~sparc to keywords.
+
+  22 Feb 2003; Aron Griffis <agriffis@gentoo.org> gnome-2.2-r2.ebuild :
+  Mark stable on Alpha
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> gnome-2.2-r2.ebuild :
+  Don't RDEPEND some packages on alpha where they're broken
+
+  17 Feb 2003; foser <foser@gentoo.org> gnome-2.2-r2.ebuild :
+  fixed gnome-panel dep to 2.2.0.1-r1 to propagete #15685 fix
+
+*gnome-2.2-r1 (10 Feb 2003)
+
+  10 Feb 2003; foser <foser@gentoo.org> gnome-2.2-r1.ebuild :
+  Set gnome-vfs to 2.2.1 to fix theme-manager issues
+
+  06 Feb 2003; Aron Griffis <agriffis@gentoo.org> gnome-2.2.ebuild :
+  Add ~alpha to KEYWORDS
+
+*gnome-2.2 (06 Feb 2003)
+
+  06 Feb 2003; foser <foser@gentoo.org> gnome-2.2.ebuild :
+  Some more cleanups, added ggv and gstreamer deps to the list
+
+*gnome-2.2_rc2-r98 (05 Feb 2003)
+  
+  05 Feb 2003; Spider <spider@gentoo.org> gnome-2.2_rc2-r98.ebuild :
+  sharpened up all deps,  fixed the gnome-system-monitor (duplicate and wrong 
+  version) and added gnome-mime-data
+   this is 2.2.0 pre-release internal gentoo
+  
+*gnome-2.2_rc2 (30 Jan 2003)
+
+  02 Feb 2003; foser <foser@gentoo.org> gnome-2.2_rc2.ebuild :
+  Added acme dep
+
+  01 Feb 2003; foser <foser@gentoo.org> gnome-2.2_rc2.ebuild :
+  Added gnome-system-monitor dep
+
+  31 Jan 2003; foser <foser@gentoo.org> gnome-2.2_rc2.ebuild :
+  Added nautilus-media dep and fixed ORBit2
+
+  30 Jan 2003; foser <foser@gentoo.org> gnome-2.2_rc2.ebuild :
+  GNOME 2.2 RC2
+
+  09 Dec 2002; foser <foser@gentoo.org> gnome-1.4-r3.ebuild :
+  Fixed sawfish dep (bug #11832)
+
+* Autoupdate keywords (12-6-02)
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gnome-2.0.3-r1 (06 Dec 2002)
+
+  03 Jan 2002; foser <foser@gentoo.org> gnome-2.0.3-r1.ebuild :
+  Fixed gtk/pango/atk/glib to depend on stable versions (fixes problems alpha arch)
+
+  06 Dec 2002; foser <foser@gentoo.org> gnome-2.0.3-r1.ebuild :
+  2.0.3 with Xft2 stuff
+
+*gnome-2.0.3 (28 Nov 2002)
+  
+  28 Nov 2002; Spider <spider@gentoo.org> gnome-2.0.3.ebuild :
+  Gnome 2.0.3 master build, all deps updated.
+  
+*gnome-2.1.2 (12 Nov 2002)
+
+  03 Dec 2002; Jon Nall <nall@gentoo.org> gnome-2.1.2.ebuild :
+  keyworded ~ppc
+
+  12 Nov 2002; foser <foser@gentoo.org> gnome-2.1.2.ebuild :
+  GNOME 2.1.2 release "Life Preserver"
+
+*gnome-2.1.1 (27 Oct 2002)
+
+  27 Oct 2002; foser <foser@gentoo.org> gnome-2.1.1.ebuild :
+  Gnome 2.1 commit
+
+*gnome-2.0.2-r2 (17 Oct 2002)
+
+  17 Oct 2002; foser <foser@gentoo.org> gnome-2.0.2-r2.ebuild :
+  pango, gnome-session, gnome-panel and gnome-desktop updated
+
+*gnome-2.0.2-r1 (20 Sep 2002)
+  20 sep 2002; Spider <spider@gentoo.org> gnome-2.0.2-r1.ebuild :
+  updated gnome-vfs needs propagation
+  
+*gnome-2.0.2 (15 Sep 2002)
+  15 Sep 2002; Spider <spider@gentoo.org> gnome-2.0.2.ebuild :
+  back in style
+
+*gnome-2.0.2_rc1-r1 (14 Sep 2002)
+  14 Sep 2002; Spider <spider@gentoo.org>
+    some new packages
+   
+*gnome-2.0.2_rc1 (13 Sep 2002)
+  13 Sep 2002; Spider <spider@gentoo.org> 
+  after an absence, 2.0.2_rc1 is done
+
+
+*gnome-2.0.2_pre1 ( 06 Sep 2002) 
+  06 Sep 2002; Spider <spider@gentoo.org> 
+  all versions changed.. wheee
+  ready for 2.0.2 soon
+ 
+*gnome-2.0.1 (18 Aug 2002)
+  18 Aug 2002; Spider <spider@gentoo.org> gnome-2.0.1.ebuild :
+  finally a new sharp release from us. not announced before due to testing
+
+*gnome-2.0.1_rc1 (10 Aug 2002)
+  10 Aug 2002; Spider <spider@gentoo.org> gnome-2.0.1_rc1.ebuild :
+  New gnome rc, all packages updated on deps.
+  
+gnome-2.0.0-r2 (24 Jul 2002)
+  * 24 Jul 2002; Spider <spider@gentoo.org> 
+  updated with SLOT KEYWORDS and LICENSE
+
+gnome-1.4-r3 (24 Jul 2002)
+  24 Jul 2002; Spider <spider@gentoo.org>
+  updated with SLOT KEYWORDS and LICENSE
+    
+gnome-2.0.0 (24 Jul 2002)
+  24 Jul 2002; Spider <spider@gentoo.org>
+  updated with SLOT KEYWORDS and LICENSE
+      
+*gnome-2.0.0-r1 (16 Jul 2002)
+
+  16 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> gnome-2.0.0-r1.ebuild :
+  Few packages in the list have been updated. Debugging is still there.
+
+*gnome-2.0.0 (27 Jun 2002)
+  27 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0.ebuild :
+  A final release. quite big list this time, we'll keep it so for another two weks and then do a -r1 without debugging.
+  
+  29 Jun 2002; Spider <spider@gentoo.org>
+  Updating and adding gnome2-user-docs
+
+
+*gnome-2.0.0_rc2 (22 Jun 2002)
+  22 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_rc2.ebuild :
+  the light is finally turning towards a darker period, summer solstice has passed and so did the Gnome 2 release date, and no Final release yet, but, from the celebrations a new greeting springs out to you all..... "Glad Midsommar" and a second Release Candidate!
+
+
+  
+*gnome-2.0.0_rc1-r2 (20 Jun 2002)
+  20 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_rc1-r2.ebuild :
+  Major updates to the ebuild, now with far less packages defined, we are close to release and this is my first proposal for a rc for the gentoo package list. 
+  please test this and see if all components get installed properly, they should however be so.
+
+
+  
+*gnome-2.0.0_rc1-r1 (17 Jun 2002)
+  17 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_rc1-r1.ebuild :
+  new gnome utils, panel and desktop, updated gnome-vfs with a patch that fixes a nautilus bug, new glib, gtk+ and pango versions.
+
+  
+gnome-2.0.0_rc1 (14 Jun 2002)
+  14 Jun 2002 ;Spider <spider@gentoo.org> gnome-2.0.0_rc1.ebuild
+  I have removed the previous rc1 and added a r22 because -rc wasn't final.
+  the new rc1 has a anti-dependency on gnome-core and includes gnome-games
+
+
+*gnome-2.0.0_rc1 (12 Jun 2002)
+  12 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_rc1.ebuild :
+  Finally the first releaser candidate is out
+  
+*gnome-2.0.0_beta5-r21 (11 jun 2002)
+  11 Jun 2002 ;Spider <spider@gentoo.org> gnome-2.0.0_beta5-r21.ebuild :
+  tracked down an elusive install bug
+  
+*gnome-2.0.0_beta5-r20 (11 jun 2002)
+  11 Jun 2002 ;Spider <spider@gentoo.org> gnome-2.0.0_beta5-r20.ebuild :
+  whopps, even more packages updated.
+  nautilus eel gail libzvt libgnome libgnomecanvas libgnomeui at-spi gnome-utils gnome-applets libgtop gnome-system-monitor and moooore
+  
+*gnome-2.0.0_beta5-r19 (10 Jun 2002)
+  10 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_beta5-r19.ebuild :
+  gnome-panel, gnome-desktop, gnome-session
+    
+
+*gnome-2.0.0_beta5-r18 (08 Jun 2002)
+  8 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_beta5-r18.ebuild :
+  gdm 2.4.0.0
+  
+*gnome-2.0.0_beta5-r17 (07 Jun 2002)
+  7 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> gnome-2.0.0_beta5-r17.ebuild :
+  libgnomecanvas-2.0.0 libgnomeui-2.0.0
+
+
+*gnome-2.0.0_beta5-r16 (07 Jun 2002) 
+  7 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_beta5-r16.ebuild :
+  added libwnck, libglade-2.0.0 and the new libgnome-2.0.0 :)
+
+  
+*gnome-2.0.0_beta5-r15 (06 Jun 2002)
+  6 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_beta5-r15.ebuild :
+  lets see how many new packages we can do in a day? x2
+    
+*gnome-2.0.0_beta5-r14 (06 Jun 2002)
+  6 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0_beta5-r14.ebuild :
+  lets see how many new packages we can do in a day?
+
+
+*gnome-2.0.0-beta5-r13 (5 Jun 2002)
+  5 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> gnome-2.0.0-beta5-r13.ebuild:
+  new versions ( too many to list ).
+
+*gnome-2.0.0-beta5-r12 (1 Jun 2002)
+  1 Jun 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r12.ebuild :
+  libonobo libonoboui bonobo-activation and scrollkeeper updates
+
+*gnome-2.0.0-beta5-r11 (31 May 2002)
+  31 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r11.ebuild :
+  new gedit version
+
+*gnome-2.0.0-beta5-r10 (30 May 2002)
+  30 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r10.ebuild ChangeLog : 
+  Updating ChangeLog (last revision ;)
+  new yelp version. soon I'll be able to update theese things in my sleep
+
+*gnome-2.0.0-beta5-r9 (30 May 2002)
+
+  30 May 2002; Bruce A. Locke <blocke@shivan.org> gnome-2.0.0-beta5-r9.ebuild:
+  
+  Bump libzvt version to fix color issues
+    
+*gnome-2.0.0-beta5-r8 (29 May 2002)
+  29 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r8.ebuild:
+  Some recent updates to add gdm, fix gdm and update gdm the last few
+  releases. seems I forgot to save my changelog, sorry.  
+
+*gnome-2.0.0-beta5-r5 (28 May 2002)
+  28 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r6.ebuild:
+  gnome games
+  fix for libglade that bumped version propagates into gnome-terminal
+  
+*gnome-2.0.0-beta5-r5 (28 May 2002)
+  28 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r5.ebuild:
+  lots of new versions :
+  gtk+ pango atk glib libgnome* libbonobo nautilus eel gnome-session
+gnome-panel gnome-applets gnome-utils libgtkhtml yelp gedit 
+
+
+*gnome-2.0.0-beta5-r4 (27 May 2002)
+  27 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r4.ebuild:
+  gnome-vfs, sawfish, rep-gtk and librep are upgraded
+  reflected the ebuild for the gnome-vfs only, since sawfish still
+  doesn't build. *sigh*
+  removing old versions
+
+*gnome-2.0.0_beta5-r3 (25 May 2002)
+  25 May 2002; Karl Trygve Kalleberg <karltk@gentoo.org> gnome-2.0.0_beta5-r3.ebuild files/digest-gnome-2.0.0_beta5-r3:
+  The glib ebuild was fixed.
+  Removed gnome-2.0.0_beta5-r2.ebuild files/digest-gnome-2.0.0_beta5-r2
+
+*gnome-2.0.0-beta5-r2 (23 May 2002)
+  23 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r2.ebuild:
+  Metacity was upgraded
+
+*gnome-2.0.0-beta5-r1 (23 May 2002)
+  22 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5-r1.ebuild:
+  Seems a lot of new programs were released yesterday
+
+*gnome-2.0.0-beta5 (22 May 2002)
+  22 May 2002; Spider <spider@gentoo.org> gnome-2.0.0-beta5.ebuild:
+  the Gnome2 desktop dependency build
+ 
 
 *gnome-1.4-r3 (1 Feb 2002)
-
+  29 Aug 2002; Spider <spider@gentoo.org> gnome-1.4-r3.ebuild :
+  update dependencies to require old versions of gnome things.
+  
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   
   Added initial ChangeLog which should be updated whenever the package is

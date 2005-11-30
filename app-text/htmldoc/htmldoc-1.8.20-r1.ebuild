@@ -1,14 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/htmldoc/htmldoc-1.8.20-r1.ebuild,v 1.1 2003/07/08 21:04:57 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/htmldoc/htmldoc-1.8.20-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:38 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Convert HTML pages into a PDF document"
-SRC_URI="ftp://ftp.easysw.com/pub/htmldoc/1.8.20/${P}-1-source.tar.bz2"
 HOMEPAGE="http://www.easysw.com/htmldoc/"
+SRC_URI="ftp://ftp.easysw.com/pub/htmldoc/1.8.20/${P}-1-source.tar.bz2"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="x86 sparc ppc"
+IUSE=""
 
 DEPEND="virtual/x11"
 RDEPEND=">=dev-libs/openssl-0.9.6e
@@ -17,12 +20,10 @@ RDEPEND=">=dev-libs/openssl-0.9.6e
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	patch -p1 < ${FILESDIR}/fonts.diff || die "patch failed"
+	epatch ${FILESDIR}/fonts.diff
 	## fix path for online-help:
-	cp -a configure configure.org
-	cat configure.org |\
-		sed -e "s@^#define DOCUMENTATION \"\$prefix/share/doc/htmldoc\"@#define DOCUMENTATION \"\$prefix/share/doc/${PF}/html\"@" \
-		> configure
+	sed -i -e "s@^#define DOCUMENTATION \"\$prefix/share/doc/htmldoc\"@#define DOCUMENTATION \"\$prefix/share/doc/${PF}/html\"@" \
+		configure
 }
 
 src_compile() {
@@ -30,8 +31,8 @@ src_compile() {
 		--with-x \
 		--with-gui \
 		--with-openssl-libs=/usr/lib \
-		--with-openssl-includes=/usr/include/openssl
-	
+		--with-openssl-includes=/usr/include/openssl || die "econf failed"
+
 	# Add missing -lfltk_images to LIBS
 	mv Makedefs Makedefs.orig
 	sed -e 's/-lfltk /-lfltk -lfltk_images /g' \
@@ -41,10 +42,10 @@ src_compile() {
 }
 
 src_install() {
-	einstall
+	einstall || die
 
 	# Minor cleanups
 	mv ${D}/usr/share/doc/htmldoc ${D}/usr/share/doc/${PF}
-	dodir /usr/share/doc/${P}/html
-	mv ${D}/usr/share/doc/${P}/*.html ${D}/usr/share/doc/${PF}/html
+	dodir /usr/share/doc/${PF}/html
+	mv ${D}/usr/share/doc/${PF}/*.html ${D}/usr/share/doc/${PF}/html
 }

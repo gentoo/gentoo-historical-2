@@ -1,5 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/aegis/aegis-4.11.ebuild,v 1.1.1.1 2005/11/30 10:04:54 chriswhite Exp $
 
 IUSE="tcltk"
 
@@ -46,7 +47,7 @@ src_install () {
 	# OK so ${D}/var/lib/aegis gets UID=3, but for some
 	# reason so do the files under /usr/share, even though
 	# they are read-only.
-	chown -R root.root ${D}/usr/share
+	chown -R root:root ${D}/usr/share
 	dodoc lib/en/*
 
 	# Link to share dir so user has a chance of noticing it.

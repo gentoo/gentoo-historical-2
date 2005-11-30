@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/linux-logo/linux-logo-4.10.ebuild,v 1.1 2005/04/01 20:02:36 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/linux-logo/linux-logo-4.10.ebuild,v 1.1.1.1 2005/11/30 10:06:03 chriswhite Exp $
 
 inherit eutils
 
@@ -12,11 +12,10 @@ SRC_URI="http://www.deater.net/weave/vmwprod/linux_logo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~mips ~hppa ~amd64 ~ppc"
+KEYWORDS="amd64 hppa ~mips ppc sparc x86"
 IUSE="nls"
 
-DEPEND="virtual/libc
-	>=sys-apps/sed-4"
+DEPEND=""
 RDEPEND="nls? ( sys-devel/gettext )"
 
 src_unpack() {
@@ -26,6 +25,7 @@ src_unpack() {
 	cp ${FILESDIR}/gentoo.logo ${S}/logos/.
 
 	epatch ${FILESDIR}/${PN}-4.07-gentoo-logo.patch
+	sed -i -e 's:.*Trying to open .*::' linux_logo.c
 
 	if ! use nls ; then
 		sed -i 's:cd po && $(MAKE)::' Makefile

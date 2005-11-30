@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ciabot-svn/files/config.py,v 1.1 2005/04/11 01:18:00 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ciabot-svn/files/config.py,v 1.1.1.1 2005/11/30 10:05:02 chriswhite Exp $
 
 # This file contains contents stripped out from upstream ciabot_svn.py
 # script in order to allow convient end-user config file management.

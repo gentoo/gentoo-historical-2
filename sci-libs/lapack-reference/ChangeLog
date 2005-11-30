@@ -1,6 +1,23 @@
-# ChangeLog for app-sci/lapack-reference
-# Copyright 2004-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/ChangeLog,v 1.1 2004/12/29 18:28:46 ribosome Exp $
+# ChangeLog for sci-libs/lapack-reference
+# Copyright 2004-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/ChangeLog,v 1.1.1.1 2005/11/30 10:09:21 chriswhite Exp $
+
+*lapack-reference-3.0-r2 (16 Nov 2005)
+
+  16 Nov 2005; Markus Dittrich <markusle@gentoo.org>
+  +lapack-reference-3.0-r2.ebuild:
+  Use libtool for linking shared libraries when compiling with ifc. 
+  This closes bug #112410
+
+*lapack-reference-3.0-r1 (13 Nov 2005)
+
+  13 Nov 2005; Olivier Fisette <ribosome@gentoo.org>
+  +lapack-reference-3.0-r1.ebuild:
+  Migrated to fortran.eclass (bug #65950).
+
+  22 Apr 2005; Danny van Dyk <kugelfang@gentoo.org>
+  lapack-reference-3.0.ebuild:
+  Marked stable on amd64.
 
 *lapack-reference-3.0 (29 Dec 2004)
 

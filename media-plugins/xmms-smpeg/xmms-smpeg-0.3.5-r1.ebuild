@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-smpeg/xmms-smpeg-0.3.5-r1.ebuild,v 1.1 2004/04/22 08:27:34 eradicator Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-smpeg/xmms-smpeg-0.3.5-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:33 chriswhite Exp $
 
 IUSE="sdl"
+
+inherit eutils gnuconfig
 
 MY_PN="smpeg-xmms"
 MY_P="${MY_PN}-${PV}"
@@ -20,13 +20,14 @@ DEPEND=">=media-sound/xmms-1.2.4
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc ~amd64 ppc64"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
 	epatch ${FILESDIR}/${P}-gcc.patch
+	gnuconfig_update
 }
 
 src_compile() {
@@ -36,5 +37,5 @@ src_compile() {
 
 src_install () {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS COPYING README TODO ChangeLog
+	dodoc AUTHORS README TODO ChangeLog
 }

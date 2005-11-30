@@ -1,6 +1,59 @@
 # ChangeLog for app-misc/alexandria
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/alexandria/ChangeLog,v 1.1 2004/11/08 21:54:38 citizen428 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/alexandria/ChangeLog,v 1.1.1.1 2005/11/30 10:05:50 chriswhite Exp $
+
+*alexandria-0.6.1 (01 Nov 2005)
+
+  01 Nov 2005; Caleb Tennis <caleb@gentoo.org> +alexandria-0.6.1.ebuild:
+  Version bump
+
+  24 Sep 2005; Simon Stelling <blubb@gentoo.org> alexandria-0.6.0.ebuild:
+  added ~amd64 keyword
+
+*alexandria-0.6.0 (25 Aug 2005)
+
+  25 Aug 2005; Michael Kohl <citizen428@gentoo.org>
+  +alexandria-0.6.0.ebuild:
+  Version bump. Removed ~amd64 keyword because of new dependency
+  (dev-ruby/ruby-zoom) that has no amd64 keyword.
+
+  25 Aug 2005; Michael Kohl <citizen428@gentoo.org>
+  -alexandria-0.4.0.ebuild, -alexandria-0.5.0.ebuild:
+  Cleanded out old versions.
+
+  24 Jul 2005; Michael Kohl <citizen428@gentoo.org> alexandria-0.5.1.ebuild:
+  Marked stable on x86.
+
+  08 Apr 2005; Michael Kohl <citizen428@gentoo.org> alexandria-0.5.1.ebuild:
+  Added desktop file.
+
+*alexandria-0.5.1 (29 Mar 2005)
+
+  29 Mar 2005; Michael Kohl <citizen428@gentoo.org>
+  +alexandria-0.5.1.ebuild:
+  Version bump
+
+  26 Mar 2005; <blubb@gentoo.org> alexandria-0.5.0.ebuild:
+  added ~amd64
+
+  24 Mar 2005; Michael Kohl <citizen428@gentoo.org> alexandria-0.4.0.ebuild,
+  alexandria-0.5.0.ebuild:
+  Added a fix for bug #76726
+
+  16 Mar 2005; Sven Wegener <swegener@gentoo.org> alexandria-0.5.0.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*alexandria-0.5.0 (15 Mar 2005)
+
+  15 Mar 2005; Michael Kohl <citizen428@gentoo.org>
+  +alexandria-0.5.0.ebuild:
+  Version bump.
+
+  04 Jan 2005; Michael Kohl <citizen428@gentoo.org> alexandria-0.4.0.ebuild:
+  Marked stable on x86.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> alexandria-0.4.0.ebuild:
+  Fixed invalid atoms in *DEPEND.
 
 *alexandria-0.4.0 (08 Nov 2004)
 

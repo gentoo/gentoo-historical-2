@@ -1,6 +1,14 @@
 # ChangeLog for app-text/linuxdoc-tools
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/linuxdoc-tools/ChangeLog,v 1.1 2005/08/13 10:27:01 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/linuxdoc-tools/ChangeLog,v 1.1.1.1 2005/11/30 10:07:04 chriswhite Exp $
+
+  18 Nov 2005; Leonardo Boshell <leonardop@gentoo.org>
+  linuxdoc-tools-0.9.21.ebuild:
+  Restrict app-text/tetex dependency to avoid access violations (bug #105905).
+
+  30 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  linuxdoc-tools-0.9.21.ebuild:
+  Use a mirror:// URI in SRC_URI.
 
 *linuxdoc-tools-0.9.21 (12 Aug 2005)
 

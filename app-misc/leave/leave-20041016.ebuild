@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/leave/leave-20041016.ebuild,v 1.1 2004/10/17 04:12:03 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/leave/leave-20041016.ebuild,v 1.1.1.1 2005/11/30 10:06:08 chriswhite Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Command-line tool from FreeBSD that reminds you when its time to leave"
 HOMEPAGE="http://www.freebsd.org/cgi/cvsweb.cgi/src/usr.bin/leave/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="ppc x86"
 IUSE=""
 
 DEPEND="virtual/libc"
@@ -23,12 +23,12 @@ src_unpack() {
 
 src_compile() {
 	emake \
-		CC="${CC:-gcc}" \
+		CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" || die "emake failed"
 }
 
 src_install() {
-	dobin leave
-	doman leave.1
-	dodoc ${FILESDIR}/README
+	dobin leave || die "dobin failed"
+	doman leave.1 || die "doman failed"
+	dodoc ${FILESDIR}/README || die "dodoc failed"
 }

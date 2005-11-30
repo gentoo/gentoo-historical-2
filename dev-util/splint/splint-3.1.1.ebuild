@@ -1,16 +1,22 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/splint/splint-3.1.1.ebuild,v 1.1 2003/09/05 22:06:38 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/splint/splint-3.1.1.ebuild,v 1.1.1.1 2005/11/30 10:04:51 chriswhite Exp $
 
 DESCRIPTION="Check C programs for vulnerabilities and programming mistakes"
 HOMEPAGE="http://lclint.cs.virginia.edu/"
 SRC_URI="http://www.splint.org/downloads/${P}.src.tgz"
-SLOT="0"
+
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="x86 ppc ~amd64 ~ppc-macos"
 IUSE=""
+
 DEPEND="sys-devel/gcc"
-MAKEOPTS="-j1"
+
+src_compile() {
+	econf || die
+	emake -j1 || die "emake failed"
+}
 
 src_install() {
 	make DESTDIR=${D} install || die

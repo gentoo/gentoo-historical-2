@@ -1,15 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tkpasman/tkpasman-2.2a.ebuild,v 1.1 2003/07/19 13:25:10 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tkpasman/tkpasman-2.2a.ebuild,v 1.1.1.1 2005/11/30 10:05:50 chriswhite Exp $
+
+inherit eutils
 
 MY_P="TkPasMan-${PV}"
-
-SRC_URI="http://www.xs4all.nl/~wbsoft/linux/projects/${MY_P}.tar.gz"
-LICENSE="GPL-2"
-KEYWORDS="~x86"
 S=${WORKDIR}/${MY_P}
+
 DESCRIPTION="A useful and reliable personal password manager, written in Tcl/Tk"
+HOMEPAGE="http://www.xs4all.nl/~wbsoft/linux/tkpasman.html"
+SRC_URI="http://www.xs4all.nl/~wbsoft/linux/projects/${MY_P}.tar.gz"
+
+LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ppc x86"
 IUSE="ssl"
 
 DEPEND=">=dev-lang/tcl-8.3
@@ -21,17 +25,18 @@ RDEPEND="ssl? ( dev-libs/openssl )
 	>=dev-lang/tcl-8.3"
 
 src_unpack() {
-	unpack ${A} ; cd ${S}	
+	unpack ${A} && cd "${S}"
+
+	epatch ${FILESDIR}/${P}-gentoo.patch
 
 	use ssl || sed -i "s:^USE_OPENSSL=true:USE_OPENSSL=false:g" config
 }
 
 src_compile() {
-	make || die
+	make || die "compile failed"
 }
 
 src_install() {
-	dobin tkpasman
-	dodoc README ChangeLog TODO WARNING INSTALL COPYING
+	dobin tkpasman || die
+	dodoc README ChangeLog TODO WARNING INSTALL
 }
-

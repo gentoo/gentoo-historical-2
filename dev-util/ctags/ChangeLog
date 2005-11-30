@@ -1,6 +1,142 @@
 # ChangeLog for dev-util/ctags
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ctags/ChangeLog,v 1.1 2002/02/01 21:53:28 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ctags/ChangeLog,v 1.1.1.1 2005/11/30 10:05:29 chriswhite Exp $
+
+*ctags-5.5.4-r3 (13 Nov 2005)
+
+  13 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/ctags-5.5.4-haskell.patch, +files/ctags-5.5.4-objc.patch,
+  +files/ctags-5.5.4-vim-c.patch, +ctags-5.5.4-r3.ebuild:
+  Added objc, haskell and vim-c patches.
+
+  22 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> ctags-5.5.4-r1.ebuild:
+  Stable on sh.
+
+*ctags-5.5.4-r2 (02 Jun 2005)
+
+  02 Jun 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/ctags-5.5.4-ruby-classes.patch, +ctags-5.5.4-r2.ebuild:
+  Add patch to make Ruby class names in the form Foo::Bar work
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> ctags-5.5.4-r1.ebuild:
+  Stable on ppc64
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> ctags-5.5.4-r1.ebuild:
+  Stable on ppc.
+
+  03 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> ctags-5.2.3.ebuild,
+  ctags-5.5-r1.ebuild, ctags-5.5.4-r1.ebuild, ctags-5.5.4.ebuild,
+  ctags-5.5.ebuild:
+  Update description, bug #80629
+
+  22 Jan 2005; <gongloo@gentoo.org> ctags-5.5.4-r1.ebuild:
+  Stable on ppc-macos.
+
+  16 Jan 2005; Guy Martin <gmsoft@gentoo.org> ctags-5.5.4-r1.ebuild:
+  Stable on hppa.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  30 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> ctags-5.5.4-r1.ebuild:
+  Stable on alpha.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> ctags-5.5.4-r1.ebuild:
+  x86, sparc, mips stable
+
+  10 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> ctags-5.5.4.ebuild:
+  Stable on alpha.
+
+  09 Oct 2004; Guy Martin <gmsoft@gentoo.org> ctags-5.5.4.ebuild:
+  Marked stable on hppa.
+
+*ctags-5.5.4-r1 (02 Oct 2004)
+
+  02 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/ctags-5.5.4-ebuilds.patch, +ctags-5.5.4-r1.ebuild:
+  Ebuilds are bash files too. Bug #66052
+
+  28 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> ctags-5.5.4.ebuild:
+  x86, sparc, mips stable
+
+  25 Jul 2004; Lina Pezzella <j4rg0n@gentoo.org>
+  Fixed Manifest.
+
+  24 Jul 2004; Hasan Khalil <gongloo@gentoo.org> ctags-5.5.4.ebuild:
+  Stable on macos as per Bug 57927.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ctags-5.2.3.ebuild,
+  ctags-5.5-r1.ebuild, ctags-5.5.4.ebuild, ctags-5.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+  02 Jun 2004; Travis Tilley <lv@gentoo.org> ctags-5.5.4.ebuild:
+  stable on amd64
+
+*ctags-5.5.4 (12 Apr 2004)
+
+  12 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> ctags-5.5.4.ebuild:
+  Version bump
+
+  12 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> metadata.xml:
+  Added metadata with the vim herd as maintainers
+
+  09 Apr 2004; Brian Jackson <iggy@gentoo.org> :
+  added s390 keyword
+
+  07 Apr 2004; Brian Jackson <iggy@gentoo.org> ctags-5.5-r1.ebuild:
+  added s390 keyword
+
+  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> ctags-5.5.ebuild:
+  don't set DEPEND="${RDEPEND}" (actually do the fix)
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> ctags-5.2.3.ebuild,
+  ctags-5.5-r1.ebuild, ctags-5.5.ebuild:
+  don't set DEPEND=RDEPEND (bug #45343); tidy
+
+  14 Mar 2004; Tom Gall <tgall@gentoo.org> ctags-5.5-r1.ebuild:
+  mark ppc64 stable
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> ctags-5.2.3.ebuild,
+  ctags-5.5-r1.ebuild, ctags-5.5.ebuild:
+  Don't assign default to S; header fix
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> ctags-5.5-r1.ebuild:
+  Stable on ia64
+
+  11 Nov 2003; Aron Griffis <agriffis@gentoo.org> ctags-5.5-r1.ebuild:
+  Add ~ia64
+
+  11 Oct 2003; Alexander Gabert <pappy@gentoo.org> ctags-5.5-r1.ebuild:
+  test and compiled on hppa, adding flags to recover from vim DEPEND problems on
+  hppa
+
+  03 Oct 2003; Christian Birchinger <joker@gentoo.org> ctags-5.5-r1.ebuild:
+  Added sparc stable keyword
+
+*ctags-5.5-r1 (26 May 2003)
+
+  29 Sep 2003; Jan Seidel <tuxus@gentoo.org> ctags-5.5-r1.ebuild:
+  Mark stable on mips.
+
+  26 May 2003; Aron Griffis <agriffis@gentoo.org> ctags-5.5-r1.ebuild:
+  Fix bug 20405 by adding --enable-tmpdir=/tmp.  Mark stable on alpha and x86.
+
+*ctags-5.5 (11 Apr 2003)
+
+  11 Apr 2003; Matthew Kennedy <mkennedy@gentoo.org> ctags-5.5.ebuild:
+  version bump, add missing docs, ebuild cleanup, masked as unstable
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ctags-5.2.3 (19 May 2002)
+
+  19 Sep 2002; Olivier Reisch <doctomoe@gentoo.org> ctags-5.2.3.ebuild:
+  Added ppc keyword
+
+  19 May 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  ctags-5.2.3.ebuild, files/digest-ctags-5.2.4 :
+
+  Version bump. Modernized ebuild for lintool. Resolved bug #2570.
 
 *ctags-5.0.1 (1 Feb 2002)
 

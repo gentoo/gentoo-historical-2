@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/aim-transport/aim-transport-20040131-r1.ebuild,v 1.1 2004/04/08 02:06:34 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/aim-transport/aim-transport-20040131-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:29 chriswhite Exp $
+
+inherit eutils
 
 MY_PN="${PN}-stable"
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -14,11 +16,11 @@ LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="~x86"
+KEYWORDS="x86 ~sparc ~ppc hppa"
 
 IUSE=""
 
-DEPEND=">=net-im/jabberd-1.4.3-r3"
+DEPEND="=net-im/jabberd-1.4*"
 
 src_unpack() {
 	unpack ${A}
@@ -50,8 +52,8 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "Please read /usr/share/doc/${P}/README.Gentoo.gz"
-	einfo "And please notice that now msn-transport comes with a init.d script"
+	einfo "Please read /usr/share/doc/${PF}/README.Gentoo.gz"
+	einfo "And please notice that now aim-transport comes with a init.d script"
 	einfo "dont forget to add it to your runlevel."
 	einfo
 }

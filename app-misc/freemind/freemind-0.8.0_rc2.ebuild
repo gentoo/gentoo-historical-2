@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/freemind-0.8.0_rc2.ebuild,v 1.1 2005/04/21 01:47:58 zx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/freemind/freemind-0.8.0_rc2.ebuild,v 1.1.1.1 2005/11/30 10:06:04 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -13,9 +13,10 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE="doc jikes"
-DEPEND="dev-java/ant
-	>=virtual/jdk-1.4*
-	jikes? ( dev-java/jikes )"
+DEPEND=">=virtual/jdk-1.4
+	dev-java/ant-core
+	jikes? ( dev-java/jikes )
+	app-arch/unzip"
 RDEPEND=">=virtual/jre-1.4"
 RESTRICT="nomirror"
 
@@ -36,7 +37,7 @@ src_install() {
 
 	echo "#!/bin/sh" > ${PN}.sh
 	echo "cd /opt/${PN}" >> ${PN}.sh
-	echo "'${JAVA_HOME}'/bin/java -jar lib/${PN}.jar" >> ${PN}.sh
+	echo "java -jar lib/${PN}.jar" >> ${PN}.sh
 
 	cp -R ${S}/doc ${D}/opt/${PN}
 	use doc && java-pkg_dohtml -r doc/

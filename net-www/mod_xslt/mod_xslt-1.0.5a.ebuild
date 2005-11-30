@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_xslt/mod_xslt-1.0.5a.ebuild,v 1.1 2002/11/29 10:25:20 woodchip Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_xslt/mod_xslt-1.0.5a.ebuild,v 1.1.1.1 2005/11/30 10:08:14 chriswhite Exp $
 
 inherit eutils
 
@@ -9,15 +9,19 @@ HOMEPAGE="http://www.mod-xslt.com/"
 
 S=${WORKDIR}/mod-xslt-${PV}
 SRC_URI="http://www.dunkel.org/mod-xslt/downloads/mod-xslt-${PV}.tar.gz"
-DEPEND="sys-devel/perl dev-libs/libxslt dev-libs/libxml2 =net-www/apache-2*"
+DEPEND="dev-lang/perl dev-libs/libxslt dev-libs/libxml2
+	=net-www/apache-2* dev-util/pkgconfig"
 LICENSE="Apache-1.1"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE=""
 SLOT="0"
 
 src_unpack() {
 	unpack ${A} || die; cd ${S} || die
 	epatch ${FILESDIR}/mod_xslt-1.0.5a-register.patch
+	epatch ${FILESDIR}/mod-xslt-1.0.5a-debug.patch
+	epatch ${FILESDIR}/mod-xslt-1.0.5a-content.patch
+	epatch ${FILESDIR}/mod_xslt-1.05a.patch
 	#oh brother
 	cp configure.ac configure.ac.orig
 	sed -e 's|libxml/|libxml2/libxml/|' configure.ac.orig > configure.ac

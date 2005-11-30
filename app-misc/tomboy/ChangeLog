@@ -1,9 +1,69 @@
 # ChangeLog for app-misc/tomboy
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tomboy/ChangeLog,v 1.1 2004/10/28 23:44:39 latexer Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tomboy/ChangeLog,v 1.1.1.1 2005/11/30 10:05:47 chriswhite Exp $
+
+  21 Sep 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.3-mono-1.1.9-compat.diff, tomboy-0.3.3.ebuild:
+  Add mono-1.1.9 compat.
+
+*tomboy-0.3.3 (10 Aug 2005)
+
+  10 Aug 2005; Peter Johanson <latexer@gentoo.org> -tomboy-0.3.1.ebuild,
+  -tomboy-0.3.2.ebuild, tomboy-0.3.2-r1.ebuild, +tomboy-0.3.3.ebuild:
+  Bump, and remove a few older versions.
+
+*tomboy-0.3.2-r1 (17 Jun 2005)
+
+  17 Jun 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.2-mono-1.1.8-compat.diff, +tomboy-0.3.2-r1.ebuild:
+  Revision bump with fixes for stricter mono-1.1.8's mcs.
+
+  19 May 2005; Tom Martin <slarti@gentoo.org> tomboy-0.3.2.ebuild:
+  Marked ~amd64, resolves bug 93228.
+
+  06 May 2005; Peter Johanson <latexer@gentoo.org>
+  files/tomboy-0.3.2-1.1.x-compat.diff:
+  Fix to patch to work on mono-1.0.x
+
+*tomboy-0.3.2 (05 May 2005)
+
+  05 May 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.2-1.1.x-compat.diff,
+  +files/tomboy-0.3.2-mono-1.1.7-compat.diff, tomboy-0.3.1.ebuild,
+  +tomboy-0.3.2.ebuild:
+  Bump, and include some fixes for compilation with stricter mono-1.1.7
+
+  14 Mar 2005; Peter Johanson <latexer@gentoo.org> tomboy-0.2.2-r1.ebuild,
+  -tomboy-0.2.2.ebuild, tomboy-0.3.1.ebuild:
+  Mark 0.2.2-r1 stable on x86, fix deps to make sure we get 1.0.x SLOT of
+  gtk-sharp, and remove on older version.
+
+  10 Mar 2005; Peter Johanson <latexer@gentoo.org> tomboy-0.2.2-r1.ebuild,
+  tomboy-0.2.2.ebuild, tomboy-0.3.1.ebuild:
+  mono moved from dev-dotnet -> dev-lang
+
+  20 Feb 2005; David Holm <dholm@gentoo.org> tomboy-0.3.1.ebuild:
+  Added to ~ppc.
+
+  18 Feb 2005; Peter Johanson <latexer@gentoo.org>
+  files/tomboy-0.3.1-mono-1.1.4-compat.diff:
+  Fix the 1.1.4-compat patch to work on mono-1.0.x.
+
+*tomboy-0.3.1 (17 Feb 2005)
+
+  17 Feb 2005; Peter Johanson <latexer@gentoo.org>
+  +files/tomboy-0.3.1-mono-1.1.4-compat.diff, +tomboy-0.3.1.ebuild:
+  Bump. Includes a few new deps, to handle gnome-panel support, as well as a
+  hacky patch for mono-1.1.4 compat. See bug #79890
+
+*tomboy-0.2.2-r1 (01 Dec 2004)
+
+  01 Dec 2004; Peter Johanson <latexer@gentoo.org> +tomboy-0.2.2-r1.ebuild:
+  Revision bump with new split up gtk-sharp deps.
 
 *tomboy-0.2.2 (28 Oct 2004)
 
-  28 Oct 2004; <peter@gentoo.org> +metadata.xml, +tomboy-0.2.2.ebuild:
+  28 Oct 2004; Peter Johanson <latexer@gentoo.org> +metadata.xml,
+  +tomboy-0.2.2.ebuild:
   Initial commit. Ebuild simultaneously by yours truly. See bug #64554
 

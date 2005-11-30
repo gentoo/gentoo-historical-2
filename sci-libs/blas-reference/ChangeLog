@@ -1,6 +1,24 @@
-# ChangeLog for app-sci/blas-reference
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/ChangeLog,v 1.1 2004/12/29 18:21:54 ribosome Exp $
+# ChangeLog for sci-libs/blas-reference
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/ChangeLog,v 1.1.1.1 2005/11/30 10:09:20 chriswhite Exp $
+
+  13 Nov 2005; Markus Dittrich <markusle@gentoo.org>
+  blas-reference-19940131-r2.ebuild:
+  use libtool to link shared library when compiling with ifc, this closes bug #112390
+
+*blas-reference-19940131-r2 (13 Nov 2005)
+
+  13 Nov 2005; Olivier Fisette <ribosome@gentoo.org>
+  +blas-reference-19940131-r2.ebuild:
+  Migrated to fortran.eclass (bug #65950).
+
+  22 Apr 2005; Danny van Dyk <kugelfang@gentoo.org>
+  blas-reference-19940131.ebuild:
+  Marked stable on amd64.
+
+  02 Feb 2005; Danny van Dyk <kugelfang@gentoo.org>
+  blas-reference-19940131-r1.ebuild:
+  GNU Fortran 77 profile name changed to g77 in fortran.eclass
 
 *blas-reference-19940131 (29 Dec 2004)
 

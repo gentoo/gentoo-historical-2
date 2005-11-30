@@ -1,4 +1,14 @@
-MD5 16f3439824305ffde19e70bb80360535 kaffeine-mozilla-plugin-0.2.ebuild 731
-MD5 a498cb63b4fc0cfde7f8474fa3fe2277 ChangeLog 194
-MD5 8a3ecc0a99d1bd7af3f1eafa2e5addfc metadata.xml 181
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 25fd6855fb4b5488fe45982487a8df81 ChangeLog 1299
+MD5 6f8a571205a54bcb6c2ce0fa21b52954 kaffeine-mozilla-plugin-0.2.ebuild 769
+MD5 f252d0d8aaea067fe6be5e09527ab18e metadata.xml 175
 MD5 0b74a792ba8a8759ff195ab011cf3b7d files/digest-kaffeine-mozilla-plugin-0.2 73
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDGjHKj5H05b2HAEkRAtguAJ9VKc5l0qbKu126L1s2d/DJJAEEqACeNVMc
+CzehJfFnIsg0y5BbhuDj2FY=
+=yB9C
+-----END PGP SIGNATURE-----

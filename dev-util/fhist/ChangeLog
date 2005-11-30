@@ -1,6 +1,42 @@
 # ChangeLog for dev-util/fhist
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-util/fhist/ChangeLog,v 1.1 2002/04/13 21:10:35 karltk Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/fhist/ChangeLog,v 1.1.1.1 2005/11/30 10:05:27 chriswhite Exp $
+
+  07 May 2005; David Holm <dholm@gentoo.org> fhist-1.14.ebuild:
+  Added to ~ppc.
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> fhist-1.14.ebuild:
+  Stable on sparc
+
+  12 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> fhist-1.14.ebuild,
+  -fhist-1.8.ebuild:
+  Marked stable on x86; tidy old ebuild.
+
+*fhist-1.14 (04 Dec 2004)
+
+  04 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> +fhist-1.14.ebuild:
+  Version bump; cleaned up ebuild and added src_test() to run test suite.
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> fhist-1.10.ebuild,
+  fhist-1.8.ebuild:
+  Added ~mips. QA: Added IUSE.
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> fhist-1.10.ebuild,
+  fhist-1.8.ebuild:
+  Don't assign default to S; header fix
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> fhist-1.10.ebuild:
+  KEYWORDS+=sparc
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*fhist-1.10 (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
 
 *fhist-1.8 (13 Apr 2002)
 

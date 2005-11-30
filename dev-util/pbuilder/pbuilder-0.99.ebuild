@@ -1,12 +1,12 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/pbuilder/pbuilder-0.99.ebuild,v 1.1 2004/01/23 18:27:20 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pbuilder/pbuilder-0.99.ebuild,v 1.1.1.1 2005/11/30 10:05:35 chriswhite Exp $
 
 DESCRIPTION="personal package builder for Debian packages"
 HOMEPAGE="http://packages.qa.debian.org/p/pbuilder.html"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 sparc"
 SRC_URI="mirror://debian/pool/main/p/pbuilder/pbuilder_${PV}.tar.gz"
 
 S=${WORKDIR}/${PN}
@@ -26,7 +26,9 @@ src_install() {
 	make DESTDIR=${D} install
 	dodoc AUTHORS COPYING ChangeLog README THANKS
 
-	if [ ! `use uml` ]; then
+	if use uml && use x86; then
+		doman pdebuild-user-mode-linux.1 pbuilder-user-mode-linux.1
+	else
 		cd ${D}
 		rm -f etc/pbuilder/pbuilder-uml.conf
 		rm -f usr/share/pbuilder/pbuilder-uml.conf

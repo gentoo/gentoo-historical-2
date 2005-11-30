@@ -1,9 +1,98 @@
 # ChangeLog for app-text/xdvik
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/ChangeLog,v 1.1 2003/07/26 16:31:11 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/ChangeLog,v 1.1.1.1 2005/11/30 10:06:33 chriswhite Exp $
+
+  20 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> -xdvik-22.84.3-r1.ebuild,
+  -xdvik-22.84.3.ebuild:
+  Removed old ebuilds.
+
+*xdvik-22.84.5 (19 Nov 2004)
+
+  19 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +xdvik-22.84.5.ebuild:
+  Version bumped and added neXt USE flag. Thanks to Dmitry S. Kulyabov
+  <dharma@mx.pfu.edu.ru>; bug #71249.
+
+  25 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r2.ebuild:
+  Updated kochi-substitute's font path.
+
+  24 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r2.ebuild,
+  xdvik-22.84.3-r1.ebuild, xdvik-22.84.3.ebuild:
+  Added to ppc-macos. (22.40y-r2 doesn't compile on recent 10.3.5)
+
+*xdvik-22.84.3-r1 (23 Oct 2004)
+
+  23 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +xdvik-22.84.3-r1.ebuild:
+  Added xdvik corresponding to tetex-2.96.
+
+  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -files/xdvik-22.40y-j1.17-vfontcap-gentoo.diff, -xdvik-22.40y-r1.ebuild,
+  xdvik-22.40y-r2.ebuild:
+  Added all arches from tetex-2.0.2-r3.
+
+*xdvik-22.84.3 (16 Oct 2004)
+
+  16 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r2.ebuild,
+  +xdvik-22.84.3.ebuild:
+  Version bumped.
+
+*xdvik-22.84.3 (16 Oct 2004)
+
+  16 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r2.ebuild,
+  +xdvik-22.84.3.ebuild:
+  Version bumped.
+
+  25 Sep 2004; Jason Wever <weeve@gentoo.org> xdvik-22.40y-r2.ebuild:
+  Stable on sparc.
+
+  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r2.ebuild:
+  Stable on x86 and alpha.
+
+  30 Jul 2004; Tom Gall <tgall@gentoo.org> xdvik-22.40y-r2.ebuild:
+  stable on ppc64 
+
+  12 Jul 2004; Tom Gall <tgall@gentoo.org> xdvik-22.40y-r2.ebuild:
+  added ~ppc64 bug #55965
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> xdvik-22.40y-r1.ebuild,
+  xdvik-22.40y-r2.ebuild:
+  Fix use invocation
+
+  08 May 2004; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r1.ebuild:
+  Stable on ppc
+
+*xdvik-22.40y-r2 (05 May 2004)
+
+  05 May 2004; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r2.ebuild,
+  xdvik-22.40y.ebuild:
+  Version bumped.
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> xdvik-22.40y-r1.ebuild :
+  AMD64 keywords.
+
+*xdvik-22.40y-r1 (18 Aug 2003)
+
+  14 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r1.ebuild:
+  Fixed --with-vflib option
+
+  28 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
+  xdvik-22.40y-r1.ebuild:
+  Marked stable on sparc. Added text-markup herd
+
+  09 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r1.ebuild,
+  xdvik-22.40y.ebuild:
+  Changed to DEPEND only on ptex (app-text/tetex contains xdvi binary)
+
+  18 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y-r1.ebuild,
+  files/xdvik-22.40y-j1.17-vfontcap-gentoo.diff:
+  Defaults to use Xft2 rather than VFlib2
 
 *xdvik-22.40y (27 Jul 2003)
 
+  18 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y.ebuild:
+  Marked stable on x86 and alpha
+
   27 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> xdvik-22.40y.ebuild:
   Initial import, closing bug #23130
+  Great thanks to Timmy Douglas <timmy+gentoo@cc.gatech.edu> for
+  persistent tests on the ebuild
 

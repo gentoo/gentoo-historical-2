@@ -1,6 +1,18 @@
 # ChangeLog for net-www/bugport
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/bugport/ChangeLog,v 1.1 2004/07/22 13:21:00 jmglov Exp $
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-www/bugport/ChangeLog,v 1.1.1.1 2005/11/30 10:08:11 chriswhite Exp $
+
+*bugport-1.146 (26 Nov 2004)
+
+  26 Nov 2004; <pyrania@gentoo.org> metadata.xml, -bugport-1.125.ebuild,
+  +bugport-1.146.ebuild:
+  Version bump. Removed old version with security flaws.
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+  23 Jul 2004; David Holm <dholm@gentoo.org> bugport-1.125.ebuild:
+  Added to ~ppc.
 
 *bugport-1.125 (22 Jul 2004)
 

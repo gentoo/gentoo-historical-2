@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ymessenger/ymessenger-1.0.4.1-r1.ebuild,v 1.1 2003/12/30 12:52:51 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ymessenger/ymessenger-1.0.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:33 chriswhite Exp $
 
 inherit kde-functions rpm
 
@@ -54,7 +54,7 @@ src_install () {
 
 	if use kde
 	then
-		insinto ${KDEDIR}/share/applnk/Internet
+		insinto /usr/share/applnk/Internet
 		doins ymessenger.kdelnk
 
 		insinto /opt/ymessenger/bin

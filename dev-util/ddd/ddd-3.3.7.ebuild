@@ -1,20 +1,22 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ddd/ddd-3.3.7.ebuild,v 1.1 2003/10/02 08:07:56 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ddd/ddd-3.3.7.ebuild,v 1.1.1.1 2005/11/30 10:04:53 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="graphical front-end for command-line debuggers"
 HOMEPAGE="http://www.gnu.org/software/ddd"
-SRC_URI="ftp://ftp.easynet.be/gnu/ddd/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/ddd/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1 FDL-1.1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 ppc sparc alpha amd64 ia64"
+IUSE=""
 
 DEPEND="virtual/x11
+	>=sys-devel/gcc-3
 	>=sys-devel/gdb-4.16
-	virtual/motif"
+	x11-libs/openmotif"
 
 src_unpack() {
 	unpack ${A}

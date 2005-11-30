@@ -1,14 +1,19 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-text/pyrpub/pyrpub-2.1.1.ebuild,v 1.1 2002/10/03 22:06:25 chouser Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pyrpub/pyrpub-2.1.1.ebuild,v 1.1.1.1 2005/11/30 10:07:03 chriswhite Exp $
 
-P="pyrite-publisher-${PV}"
-S=${WORKDIR}/${P}
+NP="pyrite-publisher-${PV}"
+S=${WORKDIR}/${NP}
 DESCRIPTION="content conversion tool for Palm"
-SRC_URI="http://www.pyrite.org/dist/${P}.tar.gz"
+SRC_URI="http://www.pyrite.org/dist/${NP}.tar.gz"
 HOMEPAGE="http://www.pyrite.org/publisher/"
+
+SLOT="0"
 LICENSE="GPL-2"
-DEPEND="python"
+KEYWORDS="x86"
+IUSE=""
+
+DEPEND="dev-lang/python"
 
 src_compile() {
 	python setup.py build || die "build failed"
@@ -16,5 +21,7 @@ src_compile() {
 
 src_install () {
 	python setup.py install --root="${D}" || die "install failed"
-	dodoc ChangeLog NEWS README* doc/*
+	dodoc ChangeLog NEWS README* doc/*.pdb
+	doman doc/*.1
+	dohtml -r doc/pyrite-publisher
 }

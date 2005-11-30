@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/webcpp/webcpp-0.8.2.ebuild,v 1.1 2004/08/15 17:37:20 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/webcpp/webcpp-0.8.2.ebuild,v 1.1.1.1 2005/11/30 10:05:22 chriswhite Exp $
 
-inherit gcc
+inherit toolchain-funcs
 
 IUSE=""
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/webcpp/${P}-src.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~sparc alpha ~mips ~hppa"
+KEYWORDS="x86 ppc ~sparc alpha ~mips ~hppa"
 
 RDEPEND="sys-devel/gcc
 	virtual/libc"
@@ -22,11 +22,6 @@ pkg_setup() {
 	[ `gcc-major-version` -eq 2 ] \
 		&& die "WebCPP only works with gcc-3.x" \
 		|| return 0
-}
-
-src_compile() {
-	econf --with-gnu-ld || die
-	emake || die
 }
 
 src_install() {

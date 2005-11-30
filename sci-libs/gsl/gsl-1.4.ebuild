@@ -1,12 +1,12 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/gsl/gsl-1.4.ebuild,v 1.1 2004/12/28 20:27:30 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/gsl/gsl-1.4.ebuild,v 1.1.1.1 2005/11/30 10:09:26 chriswhite Exp $
 
 inherit flag-o-matic
 
 DESCRIPTION="The GNU Scientific Library"
-HOMEPAGE="http://sources.redhat.com/gsl/"
-SRC_URI="http://mirrors.rcn.net/pub/sourceware/gsl/${P}.tar.gz"
+HOMEPAGE="http://www.gnu.org/software/gsl/"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

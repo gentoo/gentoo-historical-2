@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/mythgame/mythgame-0.18.1.ebuild,v 1.1 2005/05/20 09:06:23 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/mythgame/mythgame-0.18.1.ebuild,v 1.1.1.1 2005/11/30 10:07:17 chriswhite Exp $
 
 inherit mythtv-plugins
 
@@ -10,13 +10,13 @@ SRC_URI="http://www.mythtv.org/mc/mythplugins-${PV}.tar.bz2"
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ppc ~x86"
 
 DEPEND=" sys-libs/zlib
 	~media-tv/mythtv-${PV}"
 
 src_install () {
-	myth_src_install || die "install failed"
+	mythtv-plugins_src_install || die "install failed"
 
 	dodoc gamelist.xml
 }

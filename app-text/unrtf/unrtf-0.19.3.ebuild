@@ -1,16 +1,15 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/unrtf/unrtf-0.19.3.ebuild,v 1.1 2004/02/22 13:09:25 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/unrtf/unrtf-0.19.3.ebuild,v 1.1.1.1 2005/11/30 10:06:54 chriswhite Exp $
 
 DESCRIPTION="Converts RTF files to various formats"
 HOMEPAGE="http://www.gnu.org/software/unrtf/unrtf.html"
-SRC_URI="http://www.gnu.org/software/unrtf/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64 ppc s390"
 IUSE=""
 DEPEND=""
-S=${WORKDIR}/${P}
 
 src_compile() {
 	make clean

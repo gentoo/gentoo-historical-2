@@ -1,12 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.33-r4.ebuild,v 1.1 2005/05/03 16:00:53 beu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.33-r4.ebuild,v 1.1.1.1 2005/11/30 10:08:02 chriswhite Exp $
 
 inherit eutils fixheadtails
 
 # latest gentoo apache files
 GENTOO_PATCHNAME="gentoo-apache-${PVR}"
-GENTOO_PATCHSTAMP="20050503"
+GENTOO_PATCHSTAMP="20050605"
+GENTOO_DEVSPACE="vericgar"
 GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
 
 # The mod_ssl archive is only for providing the EAPI patch in here.
@@ -19,12 +20,12 @@ HOMEPAGE="http://httpd.apache.org"
 SRC_URI="mirror://apache/httpd/apache_${PV}.tar.gz
 		ssl? ( ftp://ftp.modssl.org/source/mod_ssl-${mod_ssl_ver}-${PV}.tar.gz )
 		lingerd? ( http://images.iagora.com/media/software/lingerd/lingerd-${lingerd_ver}.tar.gz )
-		mirror://gentoo/${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
+		http://dev.gentoo.org/~${GENTOO_DEVSPACE}/dist/apache/${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="1"
 KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips ~ppc64"
-IUSE="doc ssl pam lingerd no-suexec static-modules apache2"
+IUSE="doc ssl pam lingerd no-suexec static-modules apache2 selinux"
 
 DEPEND="dev-lang/perl
 		>=sys-libs/db-1.85-r1
@@ -136,7 +137,7 @@ src_compile() {
 src_install() {
 	# setup apache user and group
 	enewgroup apache 81
-	enewuser apache 81 /bin/false /var/www apache
+	enewuser apache 81 -1 /var/www apache
 
 	# general install
 	make install-quiet root=${D} || die
@@ -249,7 +250,7 @@ pkg_postinst() {
 		einfo "if it exists. You must remove the old configuration first"
 		einfo
 		einfo "For more information, see"
-		einfo "  http://dev.gentoo.org/~vericgar/doc/apache-package-refresh.html"
+		einfo "  http://www.gentoo.org/doc/en/apache-upgrading.xml"
 		einfo
 	fi
 

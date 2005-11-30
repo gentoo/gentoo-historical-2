@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/grutatxt/grutatxt-2.0.5.ebuild,v 1.1 2003/11/17 08:06:55 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/grutatxt/grutatxt-2.0.5.ebuild,v 1.1.1.1 2005/11/30 10:06:40 chriswhite Exp $
 
 inherit perl-module
 
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 
 IUSE=""
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ppc64 x86"
 
 # set the script path to /usr/bin, rather than /usr/local/bin
 myconf="INSTALLSCRIPT=/usr/bin"

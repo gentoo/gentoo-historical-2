@@ -1,6 +1,6 @@
-# Copyright 2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-find/xmms-find-0.4.7.ebuild,v 1.1 2003/02/12 12:08:19 seemant Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-find/xmms-find-0.4.7.ebuild,v 1.1.1.1 2005/11/30 10:07:25 chriswhite Exp $
 
 IUSE=""
 
@@ -10,9 +10,9 @@ DESCRIPTION="An xmms plugin to allow searching, enqueuing and playing of files"
 HOMEPAGE="http://xmmsfind.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xmmsfind/${MY_P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="x86 ppc"
 
 DEPEND="media-sound/xmms"
 

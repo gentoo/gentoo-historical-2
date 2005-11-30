@@ -1,26 +1,25 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gtranslator/gtranslator-0.43.ebuild,v 1.1 2002/08/01 05:35:01 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gtranslator/gtranslator-0.43.ebuild,v 1.1.1.1 2005/11/30 10:06:40 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="nls"
+
 DESCRIPTION="A gettext po file editor for GNOME"
 SRC_URI="http://www.gtranslator.org/download/releases/${PV}/${P}.tar.gz"
 HOMEPAGE="http://www.gtranslator.org/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 sparc"
 
 DEPEND=">=gnome-base/gnome-libs-1.2
-	( >=gnome-base/gconf-1.0
-	<gnome-base/gconf-1.1 )
-	>=gnome-extra/gal-0.11.99
+	=gnome-base/gconf-1.0*
+	<gnome-extra/gal-1.99
 	>=app-text/scrollkeeper-0.1.4
 	=dev-libs/glib-1.2*
 	=x11-libs/gtk+-1.2*
 	>=gnome-base/oaf-0.6.8
-	>=gnome-base/ORBit-0.5.14
-	( >=gnome-base/gnome-vfs-1.0.5
-	<gnome-base/gnome-vfs-2.0.0 )
+	=gnome-base/orbit-0*
+	=gnome-base/gnome-vfs-1.0*
 	>=dev-libs/libxml-1.8.17"
 
 RDEPEND="nls? ( sys-devel/gettext )"
@@ -29,12 +28,12 @@ src_compile() {
 	local myopts
 
 	use nls || myopts="--disable-nls"
-	
+
 	./configure \
 		--host=${CHOST} \
+		--disable-debug \
 		--prefix=/usr \
 		${myopts} || die "./configure failed"
-	
 	emake || die
 }
 
@@ -50,7 +49,7 @@ src_install() {
 	make DESTDIR=${D} install || die
 
 	dodoc ABOUT-NLS AUTHORS Changelog COPYING HACKING INSTALL NEWS README \
-		THANKS TODO DEPENDS 
+		THANKS TODO DEPENDS
 }
 
 pkg_postinst() {

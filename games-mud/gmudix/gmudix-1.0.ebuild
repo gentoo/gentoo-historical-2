@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/gmudix/gmudix-1.0.ebuild,v 1.1 2004/04/22 00:42:33 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/gmudix/gmudix-1.0.ebuild,v 1.1.1.1 2005/11/30 10:06:15 chriswhite Exp $
 
 inherit games
 
@@ -10,10 +10,10 @@ SRC_URI="http://dw.nl.eu.org/gmudix/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-libs/zlib
 	>=dev-libs/atk-1.0
 	>=dev-libs/glib-2.0
@@ -22,6 +22,6 @@ DEPEND="virtual/glibc
 
 src_install() {
 	dogamesbin src/gmudix
-	dodoc AUTHORS ChangeLog INSTALL README TODO doc/*txt
+	dodoc AUTHORS ChangeLog README TODO doc/*txt
 	prepgamesdirs
 }

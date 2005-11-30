@@ -1,6 +1,6 @@
-# Copyright 2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-cdt/eclipse-cdt-2.0-r2.ebuild,v 1.1 2004/08/21 21:33:50 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-cdt/eclipse-cdt-2.0-r2.ebuild,v 1.1.1.1 2005/11/30 10:05:03 chriswhite Exp $
 
 inherit eclipse-ext
 
@@ -11,8 +11,7 @@ LICENSE="CPL-1.0"
 SLOT="2"
 KEYWORDS="-* ~x86"
 IUSE=""
-DEPEND=">=dev-util/eclipse-sdk-3.0.0"
-S=${WORKDIR}/${P}
+DEPEND="=dev-util/eclipse-sdk-3.0.0*"
 
 # karltk: A lot more work to do:
 # - add back other arches
@@ -20,13 +19,13 @@ S=${WORKDIR}/${P}
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-        mkdir -p ${S}/results/eclipse-copy
-        (
-                cd ${S}/results/eclipse-copy
-                lndir -silent /usr/lib/eclipse-3
-                # getProtectionDomain().getCodeSource() my buttocks...
-                rm startup.jar ; cp /usr/lib/eclipse-3/startup.jar .
-        )
+	mkdir -p ${S}/results/eclipse-copy
+	(
+		cd ${S}/results/eclipse-copy
+		lndir -silent /usr/lib/eclipse-3
+		# getProtectionDomain().getCodeSource() my buttocks...
+		rm startup.jar ; cp /usr/lib/eclipse-3/startup.jar .
+	)
 	mkdir -p ${S}/results/final-result
 	touch ${S}/results/final-result/compilelog.txt
 
@@ -47,7 +46,7 @@ src_compile() {
 	addwrite /proc/cpuinfo
 	einfo "Building native code"
 	(
-		cd results/plugins/org.eclipse.cdt.core.linux/library || die 
+		cd results/plugins/org.eclipse.cdt.core.linux/library || die
 		make ARCH=x86 all || die "Failed to compile platform-specific code"
 	)
 	einfo "Building Java code"
@@ -62,11 +61,11 @@ src_compile() {
 }
 
 src_install() {
-        eclipse-ext_require-slot 3
+	eclipse-ext_require-slot 3
 
-        eclipse-ext_create-ext-layout source
+	eclipse-ext_create-ext-layout source
 
-        eclipse-ext_install-features results/final-result/eclipse/features/*
-        eclipse-ext_install-plugins results/final-result/eclipse/plugins/*
+	eclipse-ext_install-features results/final-result/eclipse/features/*
+	eclipse-ext_install-plugins results/final-result/eclipse/plugins/*
 }
 

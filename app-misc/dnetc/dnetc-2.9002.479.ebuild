@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9002.479.ebuild,v 1.1 2003/11/26 10:40:18 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9002.479.ebuild,v 1.1.1.1 2005/11/30 10:06:00 chriswhite Exp $
 
 MAJ_PV=${PV:0:6}
 MIN_PV=${PV:7:9}
@@ -10,11 +10,11 @@ HOMEPAGE="http://www.distributed.net"
 SRC_URI="hppa? ( http://http.distributed.net/pub/dcti/v${MAJ_PV}/dnetc${MIN_PV}-linux-hppa32.tar.gz )"
 LICENSE="distributed.net"
 SLOT="0"
-KEYWORDS="~hppa"
+KEYWORDS="~hppa -mips"
 IUSE=""
 DEPEND=""
-RDEPEND="net-misc/host"
-if [ `use hppa` ]; then
+RDEPEND="net-dns/bind-tools"
+if use hppa; then
 	S="${WORKDIR}/dnetc${MIN_PV}-linux-hppa"
 fi
 
@@ -41,7 +41,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Either configure your email adress in /etc/conf.d/dnetc"
+	einfo "Either configure your email address in /etc/conf.d/dnetc"
 	einfo "or create the configuration file /opt/distributed.net/dnetc.ini"
 }
 

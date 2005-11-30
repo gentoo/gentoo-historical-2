@@ -1,34 +1,27 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ccache/ccache-2.3.ebuild,v 1.1 2003/09/29 19:41:18 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ccache/ccache-2.3.ebuild,v 1.1.1.1 2005/11/30 10:05:30 chriswhite Exp $
 
-DESCRIPTION="ccache is a fast compiler cache. It is used as a front end to your
-compiler to safely cache compilation output. When the same code is compiled
-again the cached output is used giving a significant speedup."
-SRC_URI="http://ccache.samba.org/ftp/ccache/${P}.tar.gz"
+DESCRIPTION="fast compiler cache"
 HOMEPAGE="http://ccache.samba.org/"
+SRC_URI="http://ccache.samba.org/ftp/ccache/${P}.tar.gz"
 
-IUSE=""
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm ~amd64"
-DEPEND="virtual/glibc \
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86 ppc-macos"
+IUSE=""
+
+DEPEND="virtual/libc
 	>=sys-apps/portage-2.0.46-r11"
 
 # Note: this version is designed to be auto-detected and used if
 # you happen to have Portage 2.0.X+ installed.
 
-src_compile() {
-	econf || die
-	emake || die
-}
-
-src_install () {
-	exeinto /usr/bin
-	doexe ccache
+src_install() {
+	dobin ccache || die
 	doman ccache.1
-	dodoc COPYING README
-	dohtml web/*.html 
+	dodoc README
+	dohtml web/*.html
 
 	diropts -m0755
 	dodir /usr/lib/ccache/bin
@@ -38,18 +31,23 @@ src_install () {
 	doexe ${FILESDIR}/ccache-config
 
 	diropts -m0700
-	dodir /root/.ccache
-	keepdir /root/.ccache
+	if use ppc-macos; then
+		dodir /var/root/.ccache
+		keepdir /var/root/.ccache
+	else
+		dodir /root/.ccache
+		keepdir /root/.ccache
+	fi
 }
 
 pkg_preinst() {
 	# Portage doesn't handle replacing a non-empty dir with a file!
-	[ -e /usr/bin/ccache ] && rm -rf /usr/bin/ccache
-	[ -e /usr/bin/ccache.backup ] && rm -rf /usr/bin/ccache.backup
+	[[ -e ${ROOT}/usr/bin/ccache ]] && rm -r "${ROOT}"/usr/bin/ccache
+	[[ -e ${ROOT}/usr/bin/ccache.backup ]] && rm -r "${ROOT}"/usr/bin/ccache.backup
 }
 
 pkg_postinst() {
-	if [ "${ROOT}" = "/" ]; then
+	if [[ ${ROOT} = "/" ]] ; then
 		einfo "Scanning for compiler front-ends..."
 		/usr/bin/ccache-config --install-links
 		/usr/bin/ccache-config --install-links ${CHOST}

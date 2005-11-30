@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gconf-sharp/gconf-sharp-2.5.92.ebuild,v 1.1 2005/10/16 06:53:37 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gconf-sharp/gconf-sharp-2.5.92.ebuild,v 1.1.1.1 2005/11/30 10:06:22 chriswhite Exp $
 
 inherit gtk-sharp-component
 

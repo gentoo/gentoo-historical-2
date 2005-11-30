@@ -1,15 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-prevalence/cl-prevalence-20040709.ebuild,v 1.1 2004/07/11 05:06:50 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-prevalence/cl-prevalence-20040709.ebuild,v 1.1.1.1 2005/11/30 10:08:32 chriswhite Exp $
 
-inherit common-lisp
+inherit common-lisp eutils
 
 DESCRIPTION="CL-PREVALENCE is an implementation of Object Prevalence for Common Lisp."
 HOMEPAGE="http://www.common-lisp.net/project/cl-prevalence/"
-SRC_URI="mirrors://gentoo/cl-prevalence-20040709.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
+IUSE=""
 DEPEND="dev-lisp/cl-s-xml"
 
 S=${WORKDIR}/${PN}

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/files/ejabberd-0.7.5.confd,v 1.1 2005/04/08 20:02:35 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/files/ejabberd-0.7.5.confd,v 1.1.1.1 2005/11/30 10:09:34 chriswhite Exp $
 
 # Name of your ejabberd node. Used by ejabberdctl to determine which
 # node to communicate with. Default is "ejabberd@`hostname -s`".

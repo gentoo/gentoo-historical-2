@@ -1,6 +1,61 @@
 # ChangeLog for dev-util/treecc
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/treecc/ChangeLog,v 1.1 2003/02/24 19:38:19 foser Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/treecc/ChangeLog,v 1.1.1.1 2005/11/30 10:05:08 chriswhite Exp $
+
+*treecc-0.3.6 (21 Jun 2005)
+
+  21 Jun 2005; Michael Tindal <urilith@gentoo.org> metadata.xml,
+  +treecc-0.3.6.ebuild:
+  Version bump.
+
+  24 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> treecc-0.3.4.ebuild:
+  Stable ppc-macos
+
+  23 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> treecc-0.3.4.ebuild:
+  Unstable ppc-macos. Bug #67040
+
+*treecc-0.3.4 (30 Oct 2004)
+
+  30 Oct 2004; Rainer Groesslinger <scandium@gentoo.org> +treecc-0.3.4.ebuild:
+  new version, only doc fixes
+
+  10 Aug 2004; Rainer Groesslinger <scandium@gentoo.org> treecc-0.3.2.ebuild:
+  stable on all architectures
+  (no changes that affect code generation in this release)
+
+*treecc-0.3.2 (08 Aug 2004)
+
+  08 Aug 2004; Rainer Groesslinger <scandium@gentoo.org> +treecc-0.3.2.ebuild:
+  new version
+
+  22 Mar 2004; Rainer Groesslinger <scandium@gentoo.org> treecc-0.3.0.ebuild:
+  marked stable on most architectures
+
+*treecc-0.3.0 (13 Mar 2004)
+
+  13 Mar 2004; Rainer Groesslinger <scandium@gentoo.org> treecc-0.3.0.ebuild:
+  new version (thanks to all the arch people!)
+
+*treecc-0.2.8 (03 Jan 2004)
+
+  03 Jan 2004; Rainer Groesslinger <scandium@gentoo.org> treecc-0.2.8.ebuild:
+  new version
+
+  07 Nov 2003; Rainer Groesslinger <scandium@gentoo.org> treecc-0.2.6.ebuild:
+  Added ~mips and ~alpha keywords, changed HOMEPAGE
+
+  15 Oct 2003; Jason Wever <weeve@gentoo.org> treecc-0.2.6.ebuild:
+  Added ~sparc keyword.
+
+*treecc-0.2.6 (17 Jul 2003)
+
+  17 Jul 2003; Rainer Groesslinger <scandium@gentoo.org> treecc-0.2.6.ebuild:
+  new version
+
+*treecc-0.2.4 (19 Apr 2003)
+
+  19 Apr 2003; cybersystem <cybersystem@gentoo.org> Manifest, treecc-0.2.4.ebuild:
+  Version bump to version 0.2.4, please see bug #18632
 
 *treecc-0.2.2 (24 Feb 2003)
 

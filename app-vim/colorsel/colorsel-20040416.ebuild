@@ -1,13 +1,14 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/colorsel/colorsel-20040416.ebuild,v 1.1 2004/04/16 22:41:35 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/colorsel/colorsel-20040416.ebuild,v 1.1.1.1 2005/11/30 10:07:45 chriswhite Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: RGB / HSV color selector"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=927"
 LICENSE="public-domain"
-KEYWORDS="~sparc ~x86 ~mips"
+KEYWORDS="sparc x86 mips ppc amd64 alpha ia64"
+IUSE=""
 RDEPEND=">=app-editors/gvim-6.2"
 
 function src_unpack() {
@@ -22,3 +23,7 @@ function src_unpack() {
 		${S}/plugin/${PN}.vim \
 		|| die "d'oh! sed magic didn't work, call an ambulance"
 }
+
+VIM_PLUGIN_HELPTEXT=\
+"This plugin provides a color selector for vim. Use :ColorSel to start
+the selector. This command is only available when vim is run in GUI mode."

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/regexxer/regexxer-0.8.ebuild,v 1.1 2005/06/14 18:35:29 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/regexxer/regexxer-0.8.ebuild,v 1.1.1.1 2005/11/30 10:05:27 chriswhite Exp $
 
 DESCRIPTION="An interactive tool for performing search and replace operations"
 HOMEPAGE="http://regexxer.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 IUSE="gnome"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND=">=dev-cpp/libglademm-2.4.0
 	>=dev-libs/libsigc++-2.0
@@ -32,7 +32,7 @@ src_compile() {
 src_install() {
 	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
 	einstall || die "install failed"
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
+	dodoc AUTHORS ChangeLog NEWS README
 }
 
 pkg_postinst() {

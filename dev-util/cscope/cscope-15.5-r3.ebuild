@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cscope/cscope-15.5-r3.ebuild,v 1.1 2004/12/11 00:54:46 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cscope/cscope-15.5-r3.ebuild,v 1.1.1.1 2005/11/30 10:05:16 chriswhite Exp $
 
 inherit gnuconfig elisp-common eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/cscope/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 ppc64"
 IUSE="emacs"
 
 RDEPEND=">=sys-libs/ncurses-5.2"
@@ -24,9 +24,12 @@ SITEFILE=50xcscope-gentoo.el
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	# Gentoo Bug #71595, http://www.rexotec.com/advisory/RX171104.html
-	epatch ${FILESDIR}/${PV}-noclobber-tempfile-rexotec.patch
+
+	#rphillips - tempfile security patch
 	epatch ${FILESDIR}/${PN}-${PV}-tempfile.patch
+
+	# make it happy with ansi c (from azarah)
+	epatch ${FILESDIR}/${PN}-${PV}-gcc295.patch
 }
 
 src_compile() {

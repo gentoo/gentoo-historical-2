@@ -1,8 +1,37 @@
 # ChangeLog for app-text/docbook-sgml
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-sgml/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-sgml/ChangeLog,v 1.1.1.1 2005/11/30 10:06:37 chriswhite Exp $
 
+  19 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> docbook-sgml-1.0.ebuild:
+  Fixed missing dependencies; bug #60821.
+
+  29 Jul 2004; Tom Gall <tgall@gentoo.org> docbook-sgml-1.0.ebuild:
+  stable on ppc64, bug #55676
+
+  15 Jul 2004; Tom Gall <tgall@gentoo.org> docbook-sgml-1.0.ebuild:
+  added ~ppc64, bug #55676
+
+  14 Apr 2004; Stephen P. Becker <geoman@gentoo.org> docbook-sgml-1.0.ebuild:
+  Marked stable on mips.
+
+  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org> docbook-sgml-1.0.ebuild:
+  Added ~mips keyword.
+
+  07 Jan 2004; <agriffis@gentoo.org> docbook-sgml-1.0.ebuild:
+  stable on ia64
+
+  23 Jan 2003; Aron Griffis <agriffis@gentoo.org> docbook-sgml-1.0.ebuild :
+  Add alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *docbook-sgml-1.0 (1 Feb 2002)
+
+  04 Jul 2003; Guy Martin <gmsoft@gentoo.org> docbook-sgml-1.0.ebuild :
+  Added hppa to KEYWORDS.
+
+  01 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

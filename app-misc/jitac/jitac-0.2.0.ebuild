@@ -1,13 +1,13 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jitac/jitac-0.2.0.ebuild,v 1.1 2004/02/14 20:36:25 zx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jitac/jitac-0.2.0.ebuild,v 1.1.1.1 2005/11/30 10:06:13 chriswhite Exp $
 
 DESCRIPTION="An image to ASCII converter written in Java"
 HOMEPAGE="http://www.roqe.org/jitac/"
 SRC_URI="http://www.roqe.org/jitac/${P}.jar"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 IUSE=""
 RDEPEND="virtual/jre"
 

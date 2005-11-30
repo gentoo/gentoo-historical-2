@@ -4,5 +4,23 @@
 	<longdescription lang="en">
 		The gnome-base category contains core GNOME packages.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie gnome-base enthält die GNOME Basispakete.
+	</longdescription>
+	<longdescription lang="es">
+		La catagoría gnome-base contiene los paquetes principales de GNOME.
+	</longdescription>
+	<longdescription lang="ja">
+		gnome-baseカテゴリーにはGNOMEのコア・パッケージが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De gnome-base categorie bevat de basisonderdelen van de GNOME desktopomgeving.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm gnome-base chứa các gói GNOME cốt lõi.
+	</longdescription>
+	<longdescription lang="it">
+		La catagoria gnome-base contiene i pacchetti base di GNOME.
+	</longdescription>
 </catmetadata>
 

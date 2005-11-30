@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/xsp-1.1.10.ebuild,v 1.1 2005/11/20 05:12:25 ramereth Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/xsp-1.1.10.ebuild,v 1.1.1.1 2005/11/30 10:06:16 chriswhite Exp $
 
 inherit mono autotools eutils
 

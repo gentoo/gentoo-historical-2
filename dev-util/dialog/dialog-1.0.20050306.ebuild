@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dialog/dialog-1.0.20050306.ebuild,v 1.1 2005/07/05 09:36:19 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dialog/dialog-1.0.20050306.ebuild,v 1.1.1.1 2005/11/30 10:04:49 chriswhite Exp $
 
 MY_PV="${PV/1.0./1.0-}"
 S=${WORKDIR}/${PN}-${MY_PV}

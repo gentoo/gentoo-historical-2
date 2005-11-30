@@ -1,13 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/locateopen/locateopen-0.8.0.ebuild,v 1.1 2004/01/16 22:09:29 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/locateopen/locateopen-0.8.0.ebuild,v 1.1.1.1 2005/11/30 10:07:40 chriswhite Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: open a file without supplying a path"
-HOMEPAGE="http://vim.sourceforge.net/scripts/script.php?script_id=858"
+HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=858"
 LICENSE="vim"
-KEYWORDS="~sparc ~x86"
+KEYWORDS="sparc x86 alpha ia64 mips ~ppc ~amd64"
+IUSE=""
 
 RDEPEND="${RDEPEND} sys-apps/slocate"
 
+VIM_PLUGIN_HELPTEXT=\
+"This plugin provides commands which hook vim into slocate:
+\    :LocateEdit filename
+\    :LocateSplit filename
+\    :LocateSource filename
+To configure:
+\    :let g:locateopen_ignorecase = 1    \" enable ignore case mode
+\    :let g:locateopen_smartcase = 0     \" disable smart case mode
+\    :let g:locateopen_alwaysprompt = 1  \" show menu for one match"

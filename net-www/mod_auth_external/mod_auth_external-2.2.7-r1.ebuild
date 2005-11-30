@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_external/mod_auth_external-2.2.7-r1.ebuild,v 1.1 2005/01/22 04:27:45 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_external/mod_auth_external-2.2.7-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:55 chriswhite Exp $
 
 inherit eutils apache-module
 

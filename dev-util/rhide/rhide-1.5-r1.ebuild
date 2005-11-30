@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rhide/rhide-1.5-r1.ebuild,v 1.1 2003/04/03 19:07:18 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rhide/rhide-1.5-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:34 chriswhite Exp $
 
-IUSE="X"
+inherit eutils
 
 #SNAPSHOT="20020825"
 TVISIONVER="2.0.1"
@@ -11,7 +11,8 @@ SETEDIT_S="setedit"
 # RHIDE is _very_ picky about the GDB used, so dont put GDB in DEPEND
 GDBVER="5.3"
 
-DESCRIPTION="RHIDE is a console IDE for various languages."
+DESCRIPTION="console IDE for various languages"
+HOMEPAGE="http://www.rhide.com/"
 if [ -z "${SNAPSHOT}" ]
 then
 	S="${WORKDIR}/${P}"
@@ -25,16 +26,16 @@ SRC_URI="${SRC_URI}
 	mirror://sourceforge/tvision/rhtvision-${TVISIONVER}.src.tar.gz
 	mirror://sourceforge/setedit/setedit-${SETEDITVER}.tar.gz
 	mirror://gnu/gdb/gdb-${GDBVER}.tar.bz2"
-HOMEPAGE="http://www.rhide.com/"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="x86"
+IUSE="X aalib"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=app-text/recode-3.6
 	>=dev-libs/libpcre-2.0.6
-	>=sys-apps/bzip2-1.0.1
+	>=app-arch/bzip2-1.0.1
 	>=sys-apps/texinfo-4.1
 	>=sys-devel/gettext-0.11.0
 	>=dev-lang/perl-5.6
@@ -42,35 +43,34 @@ DEPEND="virtual/glibc
 	>=sys-libs/gpm-1.20.0
 	>=sys-libs/ncurses-5.2
 	aalib? ( media-libs/aalib )
-	X? ( virtual/x11 )"
-
+	X? ( virtual/x11 )
+	>=sys-apps/sed-4.0.7"
 
 src_unpack() {
-	
 	unpack ${A}
+	cd ${WORKDIR}
+
+	# gcc-3.3 fixes, contributed by <jochen.eisinger@gmx.de>
+	epatch ${FILESDIR}/${P}-gcc-3.3.patch
 
 	cd ${S}
 
 	# Get it to work with rhtvision-2.0
 	epatch ${FILESDIR}/${P}-rhtvision2.patch
 
-	cd ${WORKDIR}/${SETEDIT_S}
-	# Fix an include problem with official setedit-0.5.0
-	epatch ${FILESDIR}/setedit-${SETEDITVER}-fix-includes.patch
-	
 	# Update snapshot version
 	if [ -n "${SNAPSHOT}" ]
 	then
-		perl -pi -e "s|1998-11-29|${SNAPSHOT}|" ${S}/idemain.cc
+		sed -i -e "s|1998-11-29|${SNAPSHOT}|" ${S}/idemain.cc
 	else
-		perl -pi -e "s|1998-11-29|`date +%F`|" ${S}/idemain.cc
+		sed -i -e "s|1998-11-29|`date +%F`|" ${S}/idemain.cc
 	fi
 
 	cd ${S}
 	# Fix invalid "-O2" in CFLAGS and CXXFLAGS
 	for x in configure $(find . -name '*.mak') $(find . -name 'makefile.src')
 	do
-		[ -f "${x}" ] && perl -pi -e 's:-O2::g' ${x}
+		[ -f "${x}" ] && sed -i -e 's:-O2::g' ${x}
 	done
 
 	# Update setedit macro's
@@ -80,44 +80,49 @@ src_unpack() {
 	done
 
 	# Hack to uncomment a needed variable
-	perl -pi -e 's|//cmcUpdateCodePage|cmcUpdateCodePage|' \
+	sed -i -e 's|//cmcUpdateCodePage|cmcUpdateCodePage|' \
 		${WORKDIR}/${SETEDIT_S}/include/ced_coma.h
+
+	# fix codepage bug
+	has_version ">=sys-devel/gettext-0.12" && sed -i -e \
+		's:--add-location $(po_list_l):--add-location --from-code=iso-8859-1 $(po_list_l):' \
+		"${WORKDIR}/setedit/internac/gnumake.in"
 }
 
 src_compile() {
-	
+
 	# Most of these use a _very_ weird build systems,
 	# so please no comments ;/
-	
+
 # ************* TVision *************
 
 	if [ ! -f "${WORKDIR}/.tvision" ]
 	then
 		cd ${WORKDIR}/tvision || die "TVision source dir do not exist!"
-	
+
 		DUMMYFLAGS=""
-	
+
 		./configure --prefix=/usr \
 			--fhs \
 			--cflags='${DUMMYFLAGS}' \
 			--cxxflags='${DUMMYFLAGS}' || die
-	
+
 		# Only build the static libs
-		perl -pi -e 's/all: static-lib dynamic-lib/all: static-lib/' Makefile
-	
+		sed -i -e 's/all: static-lib dynamic-lib/all: static-lib/' Makefile
+
 		# -j breaks build
 		make || die
 
 		touch ${WORKDIR}/.tvision
 	fi
 
-	
+
 # ************* SetEdit *************
-	
+
 	if [ ! -f "${WORKDIR}/.setedit" ]
 	then
 		cd ${WORKDIR}/${SETEDIT_S} || die "SetEdit source dir do not exist!"
-	
+
 		./configure --prefix=/usr \
 			--fhs \
 			--libset \
@@ -125,9 +130,9 @@ src_compile() {
 			`use_with aalib aa` || die
 
 		# Latest texinfo breaks docs, so disable for now ...
-		perl -pi -e 's/needed: internac doc-basic/needed: internac/' \
+		sed -i -e 's/needed: internac doc-basic/needed: internac/' \
 			Makefile
-	
+
 		# -j breaks build
 		make || die
 
@@ -137,10 +142,10 @@ src_compile() {
 
 		touch ${WORKDIR}/.setedit
 	fi
-	
-	
+
+
 # ************* RHIDE ***************
-	
+
 	cd ${S}
 
 	addpredict "/usr/share/rhide"
@@ -153,41 +158,41 @@ src_compile() {
 	export GDB_SRC="${WORKDIR}/gdb-${GDBVER}"
 
 	#
-	# *** DETECT XFREE86 with tvision-2.0 ***
+	# *** DETECT X11 with tvision-2.0 ***
 	#
-	# None of these packages have any way to specify XFree86 support,
-	# thus we check if tvision compiled with xfree support or not.
+	# None of these packages have any way to specify X11 support,
+	# thus we check if tvision compiled with X11 support or not.
 	#
-	# If it did compile with xfree support, we need to get rhide to link
+	# If it did compile with X11 support, we need to get rhide to link
 	# against libX11 ...
 	#
-	local have_xfree="$(gawk '/HAVE_X11/ { if (/yes/) print "Yes" }' \
+	local have_x11="$(gawk '/HAVE_X11/ { if (/yes/) print "Yes" }' \
 	                    ${WORKDIR}/tvision/configure.cache)"
 
 	if [ ! -f "${WORKDIR}/.rhide-configured" ]
 	then
 		econf || die
-		
-		if [ "${have_xfree}" = "Yes" ]
+
+		if [ "${have_x11}" = "Yes" ]
 		then
-			einfo "Compiling with XFree86 support..."
-			perl -pi -e 's|LDFLAGS= |LDFLAGS= -L/usr/X11R6/lib -lXmu|' \
+			einfo "Compiling with X11 support..."
+			sed -i -e 's|LDFLAGS= |LDFLAGS= -L/usr/X11R6/lib -lXmu|' \
 				${S}/config.env
 
 			touch ${WORKDIR}/.tvision-with-X11
 		else
-			einfo "Compiling without XFree86 support..."
+			einfo "Compiling without X11 support..."
 		fi
 
 		touch "${WORKDIR}/.rhide-configured"
 	fi
-		
+
 	# -j breaks build
 	make prefix=/usr \
 		install_docdir=share/doc/${PF} \
 		install_infodir=share/info \
 		LDFLAGS="${LDFLAGS} ${myLDFLAGS}" || die
-	
+
 	# Update and Fix DIR entry in .info files
 	cd ${S}/share/setedit/
 	if [ -f "${WORKDIR}/${SETEDIT_S}/doc/editor.inf" ]
@@ -208,12 +213,12 @@ src_install() {
 	# Dont error out on sandbox violations.  I should really
 	# try to track this down, but its a bit tougher than usually.
 	addpredict "/:/usr/share/rhide:/libide:/libtvuti:/librhuti"
-	
+
 	make prefix=${D}/usr \
 		install_docdir=share/doc/${PF} \
 		install_infodir=share/info \
 		install || die
-	
+
 	# Install default CFG file and fix the paths
 	cd ${D}/usr/share/rhide
 	sed -e 's:/usr/local/share:/usr/share:g' \
@@ -282,4 +287,3 @@ pkg_postinst() {
 		echo
 	fi
 }
-

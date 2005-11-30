@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnomeui/libgnomeui-2.10.0.ebuild,v 1.1 2005/03/09 03:27:54 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnomeui/libgnomeui-2.10.0.ebuild,v 1.1.1.1 2005/11/30 10:09:05 chriswhite Exp $
 
-inherit gnome2
+inherit gnome2 eutils
 
 DESCRIPTION="User Interface routines for Gnome"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64 ~ia64 ~mips ~ppc64 ~arm"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="doc jpeg"
 
 RDEPEND=">=x11-libs/gtk+-2.4.1
@@ -34,5 +34,14 @@ DEPEND="${RDEPEND}
 PDEPEND="x11-themes/gnome-themes
 	x11-themes/gnome-icon-theme"
 
+src_unpack() {
+
+	unpack ${A}
+	cd ${S}
+	# cleanliness is ... (#68698)
+	epatch ${FILESDIR}/${PN}-2.8.0-ditch_ancient_pics.patch
+
+	automake || die
+}
 DOCS="AUTHORS ChangeLog NEWS README"
 USE_DESTDIR="1"

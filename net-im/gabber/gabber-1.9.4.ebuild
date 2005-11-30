@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gabber/gabber-1.9.4.ebuild,v 1.1 2004/06/21 17:42:48 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gabber/gabber-1.9.4.ebuild,v 1.1.1.1 2005/11/30 10:09:34 chriswhite Exp $
 
 inherit gnome2
 
@@ -17,15 +17,13 @@ KEYWORDS="~x86 ~sparc"
 IUSE="spell ssl"
 
 DEPEND="sys-devel/gettext
-	=dev-cpp/gtkmm-2.2.11
-	=dev-cpp/gconfmm-2.0.2
+	>=dev-cpp/gtkmm-2.2.11
+	>=dev-cpp/gconfmm-2.0.2
 	>=dev-cpp/libglademm-2.0
 	>=net-im/jabberoo-1.9.0
 	dev-util/pkgconfig
 	ssl? ( dev-libs/openssl )
 	spell? ( app-text/gtkspell )"
-
-RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
@@ -37,7 +35,7 @@ use spell && MYCONF=${MYCONF} || MYCONF="${MYCONF} --disable-gtkspell"
 
 # The configure works bad with this see bug 45758
 #G2CONF="${G2CONF} $(use_enable ssl)"
-#G2CONF="${G2CONF} $(use_enable spell gtkspell)" 
+#G2CONF="${G2CONF} $(use_enable spell gtkspell)"
 G2CONF="${G2CONF} ${MYCONF}"
 
 DOCS="AUTHORS ChangeLog COPYING HACKING HACKING.ideas NEWS README TODO"

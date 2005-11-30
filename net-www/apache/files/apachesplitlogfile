@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-#
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/files/apachesplitlogfile,v 1.1.1.1 2005/11/30 10:08:02 chriswhite Exp $
+
 ## ====================================================================
 ## The Apache Software License, Version 1.1
 ##
@@ -80,6 +81,8 @@
 # will be appended to any existing log files.
 #
 
+use POSIX qw(strftime);
+
 while (<STDIN>) {
     #
     # Get the first token from the log record; it's the
@@ -99,14 +102,16 @@ while (<STDIN>) {
     s/VLOG=(.*)[\/]*$//;
     $logs=$1;
     if($logs eq "") {$logs="/var/log/apache";}
-    $date=`date +%Y-%m`;
-    chop $date;
-    $filename="$logs/VLOG-$date-${vhost}.log";
+    #$date=`date +%Y-%m`;
+    #chop $date;
+    #$filename="$logs/VLOG-$date-${vhost}.log";
+    $date=strftime("%Y-%m", localtime());
+    $filename="${logs}/VLOG-${date}-${vhost}.log";
     if (-l $filename) { 
 	die "File $filename is a symlink, writing too dangerous, dying!\n";
     }
     open LOGFILE, ">>$filename"
-            or die ("Can't open $logs/$filename");
+            or die ("Can't open $filename");
     #
     # Strip off the first token (which may be null in the
     # case of the default server), and write the edited

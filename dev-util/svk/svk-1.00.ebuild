@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/svk/svk-1.00.ebuild,v 1.1 2005/05/15 06:39:25 pclouds Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/svk/svk-1.00.ebuild,v 1.1.1.1 2005/11/30 10:05:01 chriswhite Exp $
 
 inherit eutils perl-module
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://svk.elixus.org/"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 SRC_TEST="do"
 IUSE="crypt"
 S=${WORKDIR}/${MP}
@@ -22,7 +22,7 @@ DEPEND="${DEPEND}
 	>=dev-perl/PerlIO-via-dynamic-0.11
 	>=dev-perl/PerlIO-via-symlink-0.02
 	>=dev-perl/Data-Hierarchy-0.21
-	>=dev-perl/File-Temp-0.14
+	>=perl-core/File-Temp-0.14
 	dev-perl/Algorithm-Annotate
 	dev-perl/Algorithm-Diff
 	>=dev-perl/yaml-0.38
@@ -53,7 +53,7 @@ src_unpack () {
 			einfo 'Try USE="-crypt" emerge -v svk if this happens.'
 			ebeep 3
 	else
-			epatch ${FILESDIR}/svk-0.29-nognupgtest.patch
+			epatch ${FILESDIR}/svk-${PV}-nognupgtest.patch
 			rm ${S}/t/72sign.t
 
 	fi

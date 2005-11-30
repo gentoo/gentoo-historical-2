@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/subversion/subversion-1.2.3.ebuild,v 1.1 2005/08/27 20:21:20 pauldv Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/subversion/subversion-1.2.3.ebuild,v 1.1.1.1 2005/11/30 10:05:05 chriswhite Exp $
 
 inherit elisp-common libtool python eutils bash-completion flag-o-matic perl-module
 
@@ -10,17 +10,17 @@ SRC_URI="http://subversion.tigris.org/tarballs/${P/_rc/-rc}.tar.bz2"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm ~hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="apache2 berkdb python emacs perl java nls nowebdav zlib"
 RESTRICT="test"
 
 # Presently subversion doesn't build with swig-1.3.22, bug 65424
-RDEPEND="apache2? ( >=net-www/apache-2.0.48 !>=net-www/apache-2.0.54-r10 )
+RDEPEND="apache2? ( >=net-www/apache-2.0.48 !>=net-www/apache-2.0.54-r30 )
 	!apache2? ( !>=net-www/apache-2 )
 	!dev-libs/apr
 	python? ( =dev-lang/swig-1.3.21 >=dev-lang/python-2.0 )
 	perl? ( =dev-lang/swig-1.3.21 >=dev-lang/perl-5.8 )
-	!nowebdav? ( >=net-misc/neon-0.24.7 )
+	!nowebdav? ( ~net-misc/neon-0.24.7 )
 	berkdb? ( =sys-libs/db-4* )
 	zlib? ( sys-libs/zlib )
 	java? ( virtual/jdk )
@@ -125,7 +125,7 @@ src_compile() {
 	# So not specifying it at all when not building apache modules and only
 	# specify it for internal parts otherwise.
 	if use apache2; then
-		( emake LT_LDFLAGS="-L${D}/usr/lib" external-all && emake LT_LDFLAGS="-L${D}/usr/lib" local-all ) || die "make of subversion failed"
+		( emake LT_LDFLAGS="-L${D}/usr/$(get_libdir)" external-all && emake LT_LDFLAGS="-L${D}/usr/$(get_libdir)" local-all ) || die "make of subversion failed"
 	else
 		( emake external-all && emake local-all ) || die "make of subversion failed"
 	fi
@@ -168,15 +168,15 @@ src_install () {
 	use apache2 && mkdir -p ${D}/etc/apache2/conf
 
 	python_version
-	PYTHON_DIR=/usr/lib/python${PYVER}
+	PYTHON_DIR=/usr/$(get_libdir)/python${PYVER}
 
 	make DESTDIR=${D} install || die "Installation of subversion failed"
-	if [[ -e ${D}/usr/lib/apache2 ]]; then
+	if [[ -e ${D}/usr/$(get_libdir)/apache2 ]]; then
 		if has_version '>=net-www/apache-2.0.48-r2'; then
-			mv ${D}/usr/lib/apache2/modules ${D}/usr/lib/apache2-extramodules
-			rmdir ${D}/usr/lib/apache2
+			mv ${D}/usr/$(get_libdir)/apache2/modules ${D}/usr/$(get_libdir)/apache2-extramodules
+			rmdir ${D}/usr/$(get_libdir)/apache2
 		else
-			mv ${D}/usr/lib/apache2 ${D}/usr/lib/apache2-extramodules
+			mv ${D}/usr/$(get_libdir)/apache2 ${D}/usr/$(get_libdir)/apache2-extramodules
 		fi
 	fi
 
@@ -187,13 +187,13 @@ src_install () {
 
 	dobin svn-config
 	if use python; then
-		make install-swig-py DESTDIR=${D} DISTUTIL_PARAM=--prefix=${D}  LD_LIBRARY_PATH="-L${D}/usr/lib" || die "Installation of subversion python bindings failed"
+		make install-swig-py DESTDIR=${D} DISTUTIL_PARAM=--prefix=${D}  LD_LIBRARY_PATH="-L${D}/usr/$(get_libdir)" || die "Installation of subversion python bindings failed"
 
 		# move python bindings
 		mkdir -p ${D}${PYTHON_DIR}/site-packages
-		mv ${D}/usr/lib/svn-python/svn ${D}${PYTHON_DIR}/site-packages
-		mv ${D}/usr/lib/svn-python/libsvn ${D}${PYTHON_DIR}/site-packages
-		rmdir ${D}/usr/lib/svn-python
+		mv ${D}/usr/$(get_libdir)/svn-python/svn ${D}${PYTHON_DIR}/site-packages
+		mv ${D}/usr/$(get_libdir)/svn-python/libsvn ${D}${PYTHON_DIR}/site-packages
+		rmdir ${D}/usr/$(get_libdir)/svn-python
 	fi
 	if use perl; then
 		make DESTDIR=${D} install-swig-pl || die "Perl library building failed"
@@ -249,8 +249,9 @@ EOF
 	dodoc CHANGES
 	dodoc tools/xslt/svnindex.css tools/xslt/svnindex.xsl
 	find contrib tools -name \*.in -print0 | xargs -0 rm -f
-	cp -r --parents tools/{client-side,examples,hook-scripts} ${D}/usr/share/doc/${PF}/
-	cp -r --parents contrib/hook-scripts ${D}/usr/share/doc/${PF}/
+	mkdir -p ${D}/usr/share/doc/${PF}/
+	cp -r tools/{client-side,examples,hook-scripts} ${D}/usr/share/doc/${PF}/
+	cp -r contrib/hook-scripts ${D}/usr/share/doc/${PF}/
 
 	docinto notes
 	for f in notes/*

@@ -1,6 +1,28 @@
 # ChangeLog for dev-util/motor
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/motor/ChangeLog,v 1.1 2003/04/10 20:25:44 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/motor/ChangeLog,v 1.1.1.1 2005/11/30 10:04:54 chriswhite Exp $
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> motor-3.3.0.ebuild:
+  Stable on ppc.
+
+*motor-3.4.0 (20 Apr 2005)
+
+  20 Apr 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/motor-3.3.0-gcc34.patch, motor-3.3.0.ebuild, +motor-3.4.0.ebuild:
+  version bump
+
+*motor-3.3.0 (24 Jul 2004)
+
+  24 Jul 2004; Alastair Tse <liquidx@gentoo.org> +motor-3.3.0.ebuild:
+  version bump. changing back to official release rather than debian releases
+
+*motor-3.2.4.1 (28 Mar 2004)
+
+  28 Mar 2004; <liquidx@gentoo.org> motor-3.2.4.1.ebuild:
+  version bump to fix segv (#45616)
+
+  22 Feb 2004; David Holm <dholm@gentoo.org> motor-3.2.4.ebuild:
+  Added to ~ppc.
 
 *motor-3.2.4 (10 Apr 2003)
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/primegen/primegen-0.97.ebuild,v 1.1 2004/12/28 19:19:55 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/primegen/primegen-0.97.ebuild,v 1.1.1.1 2005/11/30 10:09:18 chriswhite Exp $
 
-inherit gcc
+inherit toolchain-funcs
 
 DESCRIPTION="A small, fast library to generate primes in order"
 HOMEPAGE="http://cr.yp.to/primegen.html"
@@ -16,9 +16,9 @@ IUSE=""
 DEPEND="virtual/libc"
 
 src_compile() {
-	echo $(gcc-getCC) ${CFLAGS} > conf-cc
+	echo $(tc-getCC) ${CFLAGS} > conf-cc
 	echo /usr > conf-home
-	echo $(gcc-getCC) ${CFLAGS} > conf-ld
+	echo $(tc-getCC) ${CFLAGS} > conf-ld
 	emake || die
 }
 

@@ -1,8 +1,42 @@
 # ChangeLog for app-text/ttf2pt1
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-text/ttf2pt1/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ttf2pt1/ChangeLog,v 1.1.1.1 2005/11/30 10:07:04 chriswhite Exp $
 
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  Stable on ppc.
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ttf2pt1-3.3.3.ebuild,
+  ttf2pt1-3.4.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  12 Jun 2003; <msterret@gentoo.org> ttf2pt1-3.4.0.ebuild:
+  fix Header
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ttf2pt1-3.4.0 (1 Feb 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> ttf2pt1-3.4.0.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> ttf2pt1-3.4.0.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  16 Jun 2002; Michael Nazaroff <naz@gentoo.org> ttf2pt1-3.4.0:
+
+  Updated to the newest version with the Makefile patch as well.
+  This was sent in by Matt Kennedy. Thankyou much :o).
+  
 *ttf2pt1-3.3.3 (1 Feb 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> ttf2pt1-3.3.3.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> ttf2pt1-3.3.3.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

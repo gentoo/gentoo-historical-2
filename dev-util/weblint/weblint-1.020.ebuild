@@ -1,22 +1,23 @@
-# Copyright 2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/weblint/weblint-1.020.ebuild,v 1.1 2002/10/31 21:55:53 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/weblint/weblint-1.020.ebuild,v 1.1.1.1 2005/11/30 10:05:23 chriswhite Exp $
 
-DESCRIPTION="Weblint is a syntax and minimal style checker for HTML by Neil Bowers"
+DESCRIPTION="syntax and minimal style checker for HTML by Neil Bowers"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 HOMEPAGE="http://www.w3.org/Tools/weblint.html"
+
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~sparc64 ~alpha"
+KEYWORDS="alpha ~amd64 ppc ~sparc x86"
 IUSE=""
+
 DEPEND=""
-RDEPEND="sys-devel/perl"
+RDEPEND="dev-lang/perl"
 
-src_install () {
-
+src_install() {
 	dobin weblint
 	doman weblint.1
 
-	insinto etc
+	insinto /etc
 	doins weblintrc
 }

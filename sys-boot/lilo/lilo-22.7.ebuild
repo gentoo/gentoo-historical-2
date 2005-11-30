@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/lilo/lilo-22.7.ebuild,v 1.1 2005/05/02 00:58:27 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/lilo/lilo-22.7.ebuild,v 1.1.1.1 2005/11/30 10:04:43 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -19,7 +19,7 @@ SRC_URI="http://home.san.rr.com/johninsd/pub/linux/lilo/${MY_P}.tar.gz
 
 SLOT="0"
 LICENSE="BSD GPL-2"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86 ~amd64"
 
 RDEPEND="devmap? ( >=sys-fs/device-mapper-1.00.08 )"
 DEPEND="${RDEPEND}

@@ -1,6 +1,54 @@
 # ChangeLog for app-emulation/emul-linux-x86-soundlibs
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-soundlibs/ChangeLog,v 1.1 2004/09/11 12:15:39 kugelfang Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-soundlibs/ChangeLog,v 1.1.1.1 2005/11/30 10:08:58 chriswhite Exp $
+
+  11 Oct 2005; <dang@gentoo.org> emul-linux-x86-soundlibs-2.2.ebuild:
+  Marked stable on amd64
+
+*emul-linux-x86-soundlibs-2.2 (06 Sep 2005)
+
+  06 Sep 2005; Herbie Hopkins <herbs@gentoo.org> -files/aoss32,
+  +emul-linux-x86-soundlibs-2.2.ebuild:
+  New release, updating library version and hopefully fixing bugs 104939 and
+  77031.
+
+  06 Sep 2005; Herbie Hopkins <herbs@gentoo.org> metadata.xml,
+  -emul-linux-x86-soundlibs-1.0-r1.ebuild,
+  -emul-linux-x86-soundlibs-1.1.ebuild:
+  Remove old versions.
+
+  22 May 2005; Simon Stelling <blubb@gentoo.org>
+  emul-linux-x86-soundlibs-2.1.ebuild:
+  stable on amd64
+
+*emul-linux-x86-soundlibs-2.1 (18 Apr 2005)
+
+  18 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  +emul-linux-x86-soundlibs-2.1.ebuild:
+  Removed unnecessary .a files. Fixed SRC_URI.
+
+*emul-linux-x86-soundlibs-2.0 (15 Apr 2005)
+
+  15 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  +emul-linux-x86-soundlibs-2.0.ebuild:
+  new version provided by Herbie Hopkins
+
+*emul-linux-x86-soundlibs-1.1 (21 Mar 2005)
+
+  21 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +emul-linux-x86-soundlibs-1.1.ebuild:
+  Added libaudio and libaudiofile.
+
+  03 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  emul-linux-x86-soundlibs-1.0-r1.ebuild,
+  -emul-linux-x86-soundlibs-1.0.ebuild:
+  Fixed DEPEND.  Mark -r1 stable.  Closes bug #80562.
+
+*emul-linux-x86-soundlibs-1.0-r1 (08 Dec 2004)
+
+  08 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +emul-linux-x86-soundlibs-1.0-r1.ebuild:
+  Added aoss32 script.
 
 *emul-linux-x86-soundlibs-1.0 (11 Sep 2004)
 

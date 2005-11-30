@@ -1,17 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/winex-transgaming/winex-transgaming-2.2.1.ebuild,v 1.1 2003/02/18 16:15:56 phoenix Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/winex-transgaming/winex-transgaming-2.2.1.ebuild,v 1.1.1.1 2005/11/30 10:08:41 chriswhite Exp $
 
-IUSE="cups opengl"
-
-P="winex-${PV}"
-SRC_URI="${P}.tgz"
 DESCRIPTION="WineX is a distribution of Wine with enhanced DirectX for gaming"
 HOMEPAGE="http://www.transgaming.com/"
+SRC_URI="winex-${PV}.tgz"
 
-SLOT="0"
-KEYWORDS="~x86"
-LICENSE="Transgaming"
+LICENSE="Aladdin"
+SLOT="2.2.1"
+KEYWORDS="x86"
+IUSE="cups opengl"
+RESTRICT="fetch"
 
 RDEPEND="virtual/x11
 	opengl? ( virtual/opengl )
@@ -20,31 +19,17 @@ RDEPEND="virtual/x11
 	>=media-libs/freetype-2.0.0
 	!app-emulation/winex"
 
-src_unpack () {
-
-	if [ ! -e "${DISTDIR}/${P}.tgz" ] ; then
-		eerror ""
-		eerror "Please download the appropriate WineX archive (${P}.tgz)"
-		eerror "from: ${HOMEPAGE} (requires a Transgaming subscription)."
-		eerror ""
-		eerror "The archive should be placed into ${DISTDIR}."
-		die "package archive (${P}.tgz) not found"
-	fi
-
-	mkdir ${S}
-	tar -C ${S} -xzf ${DISTDIR}/${P}.tgz
-
+pkg_nofetch() {
+	einfo "Please download the appropriate WineX archive (winex-${PV}.tgz)"
+	einfo "from: ${HOMEPAGE} (requires a Transgaming subscription)."
+	einfo "The archive should be placed into ${DISTDIR}."
 }
 
-src_install () {
-
-	mv ${S}/usr ${D}
-
+src_install() {
+	mv "${WORKDIR}/usr" "${D}"
 }
 
 pkg_postinst() {
-
-	einfo ""
 	einfo "Run /usr/bin/winex to start winex as any non-root user."
 	einfo "This is a wrapper-script which will take care of creating"
 	einfo "an initial environment and do everything else."
@@ -64,6 +49,4 @@ pkg_postinst() {
 	einfo "Note: Binaries will still need excecutable permissions to run."
 	einfo "Note: If binfmt_misc is compiled as a module, make sure you"
 	einfo "have it loaded on startup by adding it to /etc/modules.autoload."
-	einfo ""
-
 }

@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/antiword/antiword-0.36.1.ebuild,v 1.1 2004/12/26 18:00:42 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/antiword/antiword-0.36.1.ebuild,v 1.1.1.1 2005/11/30 10:07:09 chriswhite Exp $
+
+inherit eutils
 
 IUSE="kde"
 DESCRIPTION="free MS Word reader"
@@ -9,14 +11,13 @@ HOMEPAGE="http://www.winfield.demon.nl"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 amd64 ppc sparc alpha ~hppa ppc64"
+KEYWORDS="alpha amd64 ~hppa ppc ~ppc-macos ppc64 sparc x86"
 
 DEPEND="virtual/ghostscript"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-
+	epatch ${FILESDIR}/${P}-ppc-macos.diff
 }
 
 src_compile() {

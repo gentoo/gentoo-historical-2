@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.0.1.ebuild,v 1.1 2004/12/29 01:12:04 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.0.1.ebuild,v 1.1.1.1 2005/11/30 10:09:26 chriswhite Exp $
 
 IUSE="3dnow sse mpi"
 
@@ -14,7 +14,7 @@ SLOT="3.0"
 LICENSE="GPL-2"
 DEPEND="virtual/libc"
 
-KEYWORDS="x86 ~ppc sparc alpha ~ia64 amd64"
+KEYWORDS="x86 ppc sparc alpha ~ia64 amd64"
 
 #-fpmath=xx is reported to cause trouble on pentium4 m series
 #(for 3.0.x: this sort of thing should be handled by the --enable-sse

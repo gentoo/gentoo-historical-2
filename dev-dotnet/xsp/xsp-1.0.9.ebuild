@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/xsp-1.0.9.ebuild,v 1.1 2005/05/17 18:40:44 ramereth Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/xsp-1.0.9.ebuild,v 1.1.1.1 2005/11/30 10:06:16 chriswhite Exp $
 
 inherit mono eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.go-mono.com/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ~ppc ~amd64"
 
 IUSE=""
 
@@ -20,7 +20,7 @@ pkg_preinst() {
 	enewgroup aspnet
 
 	# Give aspnet home dir of /tmp since it must create ~/.wapi
-	enewuser aspnet -1 /bin/false /tmp aspnet
+	enewuser aspnet -1 -1 /tmp aspnet
 }
 
 src_unpack() {
@@ -45,9 +45,9 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die
 	exeinto /etc/init.d ; newexe ${FILESDIR}/xsp.initd xsp
-	newexe ${FILESDIR}/mod-mono-server.initd
+	newexe ${FILESDIR}/mod-mono-server.initd mod-mono-server
 	insinto /etc/conf.d ; newins ${FILESDIR}/xsp.confd xsp
-	newins ${FILESDIR}/mod-mono-server.confd
+	newins ${FILESDIR}/mod-mono-server.confd mod-mono-server
 
 	keepdir /var/run/aspnet
 

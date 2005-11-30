@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>Package has no herd</herd>
+<herd>no-herd</herd>
 <maintainer>
-	<description>Maintained by Tom Gall -- tgall@gentoo.org</description>
+	<email>tgall@gentoo.org</email>
+	<name>Tom Gall</name>
+	<description>primary maintainer</description>
 </maintainer>
 </pkgmetadata>

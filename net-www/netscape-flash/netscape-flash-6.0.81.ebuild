@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/netscape-flash/netscape-flash-6.0.81.ebuild,v 1.1 2004/03/16 09:41:13 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/netscape-flash/netscape-flash-6.0.81.ebuild,v 1.1.1.1 2005/11/30 10:07:46 chriswhite Exp $
 
 inherit nsplugins
 
@@ -12,22 +12,28 @@ IUSE="gtk"
 S=${WORKDIR}/install_flash_player_6_linux
 DESCRIPTION="Macromedia Shockwave Flash Player"
 SRC_URI="mirror://macromedia/${P}.tar.gz
-	gtk? mirror://macromedia/gflashplayer-${OLD_V}.tar.gz"
+	gtk? ( mirror://macromedia/gflashplayer-${OLD_V}.tar.gz )"
 HOMEPAGE="http://www.macromedia.com/"
 
 SLOT="0"
-KEYWORDS="~x86 ~amd64 -ppc -sparc"
+KEYWORDS="x86 amd64 -ppc -sparc"
 LICENSE="Macromedia"
 
-RDEPEND="!net-www/gplflash"
-
-DEPEND="amd64? ( app-emulation/emul-linux-x86-baselibs
+DEPEND="!net-www/gplflash
+	amd64? ( app-emulation/emul-linux-x86-baselibs
 		app-emulation/emul-linux-x86-xlibs )
 	!amd64? ( gtk? ( >=sys-libs/lib-compat-1.1
 		=x11-libs/gtk+-1.2* )
 		)"
 
-RESTRICT=nostrip
+RESTRICT="nostrip"
+
+pkg_setup() {
+	# This is a binary x86 package => ABI=x86
+	# Please keep this in future versions
+	# Danny van Dyk <kugelfang@gentoo.org> 2005/03/26
+	has_multilib_profile && ABI="x86"
+}
 
 src_install() {
 	exeinto /opt/netscape/plugins

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rhide/rhide-1.5.20050823.ebuild,v 1.1 2005/08/29 02:46:40 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rhide/rhide-1.5.20050823.ebuild,v 1.1.1.1 2005/11/30 10:05:35 chriswhite Exp $
 
 inherit eutils multilib toolchain-funcs
 

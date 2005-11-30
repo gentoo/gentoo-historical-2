@@ -1,6 +1,41 @@
 # ChangeLog for dev-lisp/cl-aima
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-aima/ChangeLog,v 1.1 2003/10/14 03:10:30 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-aima/ChangeLog,v 1.1.1.1 2005/11/30 10:08:26 chriswhite Exp $
+
+  24 May 2005; <mkennedy@gentoo.org> cl-aima-1.0.4.ebuild:
+  Keywording ~sparc
+
+  18 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org> cl-aima-1.0.4.ebuild:
+  Keywording for ~amd64
+
+*cl-aima-1.0.4 (05 Feb 2005)
+
+  05 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/1.0.4-defsystem-and-package-lock-gentoo.patch.gz,
+  -cl-aima-1.0.2-r1.ebuild, +cl-aima-1.0.4.ebuild:
+  Removed old ebuilds; New upstream version; Include an ASDF system definition
+  file; Fix for package locks (CMUCL)
+
+  23 Mar 2004; <mkennedy@gentoo.org> cl-aima-1.0.2-r1.ebuild:
+  Marking stable for x86
+
+  05 Mar 2004; <mkennedy@gentoo.org> cl-aima-1.0.2.ebuild:
+  Remove obsolete ebuilds.
+
+  04 Mar 2004; <mkennedy@gentoo.org> cl-aima-1.0.2-r1.ebuild:
+  Missing SLOT="0" added.
+
+  03 Mar 2004; <mkennedy@gentoo.org> cl-aima-1.0.2-r1.ebuild,
+  cl-aima-1.0.2.ebuild:
+  License fix.
+
+*cl-aima-1.0.2-r1 (12 Feb 2004)
+
+  12 Feb 2004; <mkennedy@gentoo.org> cl-aima-1.0.2-r1.ebuild:
+  Cleanup for eclass changes.
+
+  15 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-aima-1.0.2.ebuild:
+  add postrm, preinst
 
 *cl-aima-1.0.2 (13 Oct 2003)
 

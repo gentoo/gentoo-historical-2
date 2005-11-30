@@ -1,8 +1,231 @@
 # ChangeLog for net-www/mplayerplug-in
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mplayerplug-in/ChangeLog,v 1.1 2003/02/16 16:53:51 azarah Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-www/mplayerplug-in/ChangeLog,v 1.1.1.1 2005/11/30 10:07:51 chriswhite Exp $
+
+  19 Nov 2005; Joseph Jezak <josejx@gentoo.org> mplayerplug-in-3.11.ebuild:
+  Removed errant * from mplayerplug-in-3.11.
+
+*mplayerplug-in-3.15 (19 Nov 2005)
+
+  19 Nov 2005; Joseph Jezak <josejx@gentoo.org> +mplayerplug-in-3.15.ebuild:
+  Version bump, allow building against X instead of gtk2. (Fixes bug #111190
+  and bug #111646)
+
+  04 Nov 2005; Joseph Jezak <josejx@gentoo.org> mplayerplug-in-3.11.ebuild:
+  Marked ppc.
+
+  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> mplayerplug-in-3.11.ebuild:
+  Fixed some issues with the ebuild, thanks kanaka.
+
+  29 Sep 2005; Seemant Kulleen <seemant@gentoo.org>
+  mplayerplug-in-3.11.ebuild:
+  added a missing \ without which --with-gecko-sdk was taken to be a command,
+  instead of a configure flag
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  mplayerplug-in-2.85.ebuild:
+  Mark 2.85 stable on alpha
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  mplayerplug-in-2.85.ebuild:
+  stable on ia64
+
+  02 Aug 2005; Simon Stelling <blubb@gentoo.org> mplayerplug-in-2.80.ebuild:
+  stable on amd64
+
+  11 Jul 2005; Joseph Jezak <josejx@gentoo.org> -mplayerplug-in-2.66.ebuild,
+  mplayerplug-in-2.80.ebuild, mplayerplug-in-2.85.ebuild:
+  Removed obsolete ebuild and updated to reflect the new location of gecko-sdk.
+
+  03 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mplayerplug-in-2.80.ebuild, mplayerplug-in-2.85.ebuild:
+  Removed from hppa. bug 89750
+
+*mplayerplug-in-2.85 (20 Jun 2005)
+
+  20 Jun 2005; Joseph Jezak <josejx@gentoo.org> +mplayerplug-in-2.85.ebuild:
+  Added new version.
+
+  12 Jun 2005; Joseph Jezak <josejx@gentoo.org> -mplayerplug-in-2.60.ebuild:
+  Removed old ebuild.
+
+  31 May 2005; Aron Griffis <agriffis@gentoo.org>
+  mplayerplug-in-2.80.ebuild:
+  add ~alpha
+
+  22 May 2005; <anarchy@gentoo.org> mplayerplug-in-2.80.ebuild:
+  marked 2.80 stable x86, needed to resolve bug 93272
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org>
+  mplayerplug-in-2.80.ebuild:
+  add ~ia64
+
+  21 Apr 2005; Jason Wever <weeve@gentoo.org> mplayerplug-in-2.80.ebuild:
+  Added ~sparc keyword wrt bugs ##89750 and #89671.
+
+  16 Apr 2005; Stephen P. Becker <geoman@gentoo.org>
+  mplayerplug-in-2.60.ebuild, mplayerplug-in-2.66.ebuild:
+  removed ~mips keywords because this can not possibly work on mips...we do
+  not have a working mozilla or firefox
+
+  14 Apr 2005; Joseph Jezak <josejx@gentoo.org> -mplayerplug-in-0.91.ebuild,
+  -mplayerplug-in-0.95.ebuild, -mplayerplug-in-1.0_pre2.ebuild,
+  -mplayerplug-in-1.0.ebuild, -mplayerplug-in-1.2.ebuild,
+  -mplayerplug-in-2.11.ebuild, -mplayerplug-in-2.70.ebuild, 
+  mplayerplug-in-2.80.ebuild:
+  Removed obsolete ebuilds, added fix for bug #83162 to 2.80.
+
+  05 Mar 2005; Joseph Jezak <josejx@gentoo.org> mplayerplug-in-2.80.ebuild:
+  Marked ppc stable.
+
+*mplayerplug-in-2.80 (19 Feb 2005)
+
+  19 Feb 2005; Joseph Jezak <josejx@gentoo.org> +mplayerplug-in-2.80.ebuild:
+  New version of mplayerplug-in, this should fix some crash bugs.
+
+  20 Dec 2004; Chris White <chriswhite@gentoo.org> mplayerplug-in-2.66.ebuild:
+  Updating x86 stable for mplayerplug-in.  This fixes bug #67694.
+
+  03 Dec 2004; Chris White <chriswhite@gentoo.org> mplayerplug-in-2.70.ebuild:
+  Marked 2.70 ~x86.
+
+  06 Nov 2004; Chris White <chriswhite@gentoo.org> mplayerplug-in-0.91.ebuild,
+  mplayerplug-in-0.95.ebuild, mplayerplug-in-1.0.ebuild,
+  mplayerplug-in-1.0_pre2.ebuild, mplayerplug-in-1.2.ebuild,
+  mplayerplug-in-2.11.ebuild, mplayerplug-in-2.60.ebuild,
+  mplayerplug-in-2.66.ebuild, mplayerplug-in-2.70.ebuild:
+  Fixed some CC issues in all the ebuilds.  Converted to tc-getCC function.
+
+*mplayerplug-in-2.70 (27 Oct 2004)
+
+  27 Oct 2004; Joseph Jezak <josejx@gentoo.org> +mplayerplug-in-2.70.ebuild:
+  Added gecko-sdk requirement, should build cross platform now. Also, various
+  QA issues fixed. See bug #50822.
+
+  18 Jul 2004; Jeremy Maitin-Shepard <jbms@gentoo.org>
+  mplayerplug-in-2.66.ebuild:
+  Added support for GTK1, so that the plugin works with mozilla browsers built
+  against GTK1
+
+*mplayerplug-in-2.66 (20 Jun 2004)
+
+  20 Jun 2004; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-2.66.ebuild:
+  VErsion bumped.
+
+*mplayerplug-in-0.91 (20 May 2004)
+
+  20 May 2004; Joel Martin <kanaka@gentoo.org> mplayerplug-in-0.91.ebuild:
+  Yeah, so it would be good not to remove the only stable version 0.91
+
+  20 May 2004; Joel Martin <kanaka@gentoo.org> mplayerplug-in-0.91.ebuild,
+  mplayerplug-in-1.1.ebuild, mplayerplug-in-2.40.ebuild,
+  mplayerplug-in-2.45.ebuild, mplayerplug-in-2.50.ebuild:
+  Removed versions 0.91, 1.1, 2.40, 2.45 and 2.50 to prune down the number of
+  ebuilds
+
+*mplayerplug-in-2.60 (21 Apr 2004)
+
+  21 Apr 2004; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-2.60.ebuild:
+  Version bumped.
+
+*mplayerplug-in-2.50 (13 Apr 2004)
+
+  13 Apr 2004; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-2.50.ebuild:
+  Version bumped. Closes 46635
+
+  03 Mar 2004; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-2.40.ebuild,
+  mplayerplug-in-2.45.ebuild:
+  gecko-sdk only used on x86 now
+
+  03 Mar 2004; Luca Barbato <lu_zero@gentoo.org> mplayerplug-in-2.40.ebuild,
+  mplayerplug-in-2.45.ebuild:
+  Marked ~x86 only since it won't work on other arches
+
+*mplayerplug-in-2.45 (03 Mar 2004)
+
+  03 Mar 2004; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-2.45.ebuild:
+  Version bumped.
+
+*mplayerplug-in-2.40 (28 Feb 2004)
+
+  28 Feb 2004; Brad Laue <brad@gentoo.org> mplayerplug-in-2.40.ebuild:
+  Version bump. Closes #43053
+
+*mplayerplug-in-2.11 (28 Feb 2004)
+
+  28 Feb 2004; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-2.11.ebuild:
+  Version bumped. Closes 42124
+
+*mplayerplug-in-1.2 (21 Jan 2004)
+
+  21 Jan 2004; Seemant Kulleen <seemant@gentoo.org> mplayerplug-in-1.2.ebuild:
+  version bump
+
+*mplayerplug-in-1.1 (17 Jan 2004)
+
+  17 Jan 2004; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-1.1.ebuild:
+  Version bumped.
+
+*mplayerplug-in-1.0 (02 Dec 2003)
+
+  02 Dec 2003; Seemant Kulleen <seemant@gentoo.org>
+  mplayerplug-in-0.80.ebuild, mplayerplug-in-1.0.ebuild:
+  version bump
+
+*mplayerplug-in-1.0_pre2 (26 Oct 2003)
+
+  26 Oct 2003; Martin Holzer <mholzer@gentoo.org>
+  mplayerplug-in-1.0_pre2.ebuild:
+  Version bumped. C Closes #32043.
+
+  26 Oct 2003; Martin Holzer <mholzer@gentoo.org> mplayerplug-in-0.80.ebuild,
+  mplayerplug-in-0.91.ebuild, mplayerplug-in-0.95.ebuild:
+  digest update, adding RESTRICT="nomirror"
+
+*mplayerplug-in-0.95 (03 Oct 2003)
+
+  03 Oct 2003; Seemant Kulleen <seemant@gentoo.org>
+  mplayerplug-in-0.71.ebuild, mplayerplug-in-0.91.ebuild,
+  mplayerplug-in-0.95.ebuild:
+  Version bump and bump 0.91 to stable on x86
+
+*mplayerplug-in-0.91 (13 Sep 2003)
+
+  13 Sep 2003; David Holm <david@realityrift.com> <avatar@gentoo.org>
+  mplayerplug-in-0.91.ebuild:
+  Version bump, contains bugfixes for playing quicktime etc.  Bugzilla
+  wasn't checked when doing this, but yuntaku@sunny-net.ne.jp had submitted
+  this ebuild in bug #28336
+
+  29 Jun 2003; Brad Laue <brad@gentoo.org> mplayerplug-in-0.80.ebuild:
+  Mark 0.80 stable on x86
+
+*mplayerplug-in-0.80 (09 Jun 2003)
+
+  09 Jun 2003; Seemant Kulleen <seemant@gentoo.org>
+  mplayerplug-in-0.80.ebuild:
+  version bump thanks to Theofilos Intzoglou <oscar10@yifan.net> in bug #22121
+
+  04 Jun 2003; Seemant Kulleen <seemant@gentoo.org>
+  mplayerplug-in-0.40.ebuild, mplayerplug-in-0.60.ebuild,
+  mplayerplug-in-0.71.ebuild:
+  moved to stable
+
+*mplayerplug-in-0.71 (19 Apr 2003)
+
+  19 Apr 2003; Seemant Kulleen <seemant@gentoo.org> Manifest,
+  mplayerplug-in-0.71.ebuild:
+  bumped version, just to take some load off of Azarah
+
+*mplayerplug-in-0.60 (16 Mar 2003)
+
+  16 Mar 2003; Martin Schlemmer <azarah@gentoo.org> mplayerplug-in-0.60.ebuild :
+  Update version, closing bug #16854.
 
 *mplayerplug-in-0.40 (16 Feb 2003)
+
+  19 Feb 2003; Martin Schlemmer <azarah@gentoo.org> mplayerplug-in-0.40.ebuild :
+  Set CC to "gcc" if not set, closing bug #15817.
 
   16 Feb 2003; Martin Schlemmer <azarah@gentoo.org> mplayerplug-in-0.40.ebuild :
   Initial ebuild, thanks to Bret Towe <btowe@gbis.com> and

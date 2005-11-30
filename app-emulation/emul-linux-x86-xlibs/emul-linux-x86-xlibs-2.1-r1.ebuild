@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-xlibs/emul-linux-x86-xlibs-2.1-r1.ebuild,v 1.1 2005/08/26 19:21:44 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-xlibs/emul-linux-x86-xlibs-2.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:49 chriswhite Exp $
 
 inherit multilib
 

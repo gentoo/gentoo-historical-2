@@ -1,14 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gtypist/gtypist-2.7.ebuild,v 1.1 2003/11/04 21:51:27 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gtypist/gtypist-2.7.ebuild,v 1.1.1.1 2005/11/30 10:05:50 chriswhite Exp $
 
 DESCRIPTION="universal typing tutor"
-SRC_URI="mirror://gnu/gtypist/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/gtypist/gtypist.html"
+SRC_URI="mirror://gnu/gtypist/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="x86 amd64 ppc"
 IUSE="nls"
 
 DEPEND=">=sys-libs/ncurses-5.2"
@@ -23,5 +23,5 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS README TODO THANKS
+	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO THANKS
 }

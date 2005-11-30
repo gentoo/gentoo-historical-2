@@ -1,6 +1,183 @@
 # ChangeLog for media-plugins/alsa-jack
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/alsa-jack/ChangeLog,v 1.1 2004/03/15 00:16:07 eradicator Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/alsa-jack/ChangeLog,v 1.1.1.1 2005/11/30 10:07:24 chriswhite Exp $
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  alsa-jack-1.0.10_rc1.ebuild:
+  Stable on ppc64; bug #111968
+
+  15 Nov 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.10_rc1.ebuild:
+  Added to ~sparc.
+
+  14 Nov 2005; Luca Barbato <lu_zero@gentoo.org>
+  alsa-jack-1.0.10_rc1.ebuild:
+  Marked ppc to match linux 2.6.14
+
+  13 Nov 2005; Petteri Räty <betelgeuse@gentoo.org>
+  alsa-jack-1.0.10_rc1.ebuild:
+  Marked stable on x86 for bug #111968.
+
+  14 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  alsa-jack-1.0.10_rc1.ebuild:
+  Change dependency to accept later versions of alsa-lib, as there's no rc2
+  jack plugin yet.
+
+*alsa-jack-1.0.10_rc1 (25 Aug 2005)
+
+  25 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +alsa-jack-1.0.10_rc1.ebuild:
+  Added ebuild for alsa 1.0.10_rc1.
+
+  21 Jul 2005; Joseph Jezak <josejx@gentoo.org> alsa-jack-1.0.9.ebuild:
+  Marked ppc stable.
+
+  20 Jul 2005; Markus Rothe <corsair@gentoo.org> alsa-jack-1.0.9.ebuild:
+  Stable on ppc64
+
+  17 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.9.ebuild:
+  Stable amd64, x86.
+
+  07 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-jack-1.0.9_rc3.ebuild, alsa-jack-1.0.9.ebuild:
+  Removing old version.  -sparc 1.0.9
+
+  27 May 2005; Jan Brinkmann <luckyduck@gentoo.org> alsa-jack-1.0.9.ebuild:
+  install the README
+
+*alsa-jack-1.0.9 (27 May 2005)
+
+  27 May 2005; Jan Brinkmann <luckyduck@gentoo.org> +alsa-jack-1.0.9.ebuild:
+  New upstream version released, see #94196.
+
+*alsa-jack-1.0.9_rc3 (05 May 2005)
+
+  05 May 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-jack-1.0.9_rc2.ebuild, +alsa-jack-1.0.9_rc3.ebuild:
+  Version bump.
+
+*alsa-jack-1.0.9_rc2 (31 Mar 2005)
+
+  31 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +alsa-jack-1.0.9_rc2.ebuild:
+  Version bump.
+
+  29 Mar 2005; Markus Rothe <corsair@gentoo.org> alsa-jack-1.0.8.ebuild:
+  Stable on ppc64
+
+  20 Mar 2005; Lars Weiler <pylon@gentoo.org> alsa-jack-1.0.8.ebuild:
+  Stable on ppc.
+
+  16 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-jack-1.0.5.ebuild, -alsa-jack-1.0.6.ebuild,
+  -alsa-jack-1.0.8_rc1.ebuild:
+  Removing old versions.
+
+  09 Mar 2005; Mike Gardiner <obz@gentoo.org> alsa-jack-1.0.7.ebuild:
+  Keyworded ppc
+
+  08 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.8.ebuild:
+  Stable amd64, sparc, x86.
+
+  25 Jan 2005; Markus Rothe <corsair@gentoo.org> alsa-jack-1.0.7.ebuild:
+  Stable on ppc64
+
+*alsa-jack-1.0.8 (22 Jan 2005)
+
+  22 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +alsa-jack-1.0.8.ebuild:
+  Version bump.
+
+*alsa-jack-1.0.8_rc1 (01 Jan 2005)
+
+  01 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +alsa-jack-1.0.8_rc1.ebuild:
+  Version bump.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.7.ebuild:
+  Stable amd64, x86.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> alsa-jack-1.0.6.ebuild:
+  Stable on ppc64
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.7.ebuild:
+  Stable sparc. This is package.mask'd in the normal sparc profiles. Use the
+  default-linux/sparc/sparc64/2004.3/alsa profile if you want to use alsa on
+  sparc.
+
+*alsa-jack-1.0.7 (12 Nov 2004)
+
+  12 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.6.ebuild, +alsa-jack-1.0.7.ebuild:
+  Version bump.
+
+  07 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.6.ebuild:
+  Stable amd64, x86.
+
+  05 Nov 2004; Markus Rothe <corsair@gentoo.org> alsa-jack-1.0.5.ebuild,
+  alsa-jack-1.0.6.ebuild:
+  Fixed KEYWORDS for ppc64
+
+  27 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.6.ebuild:
+  Back into ~arch until we can solve bug #65347.
+
+  23 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.6.ebuild:
+  Stable amd64, x86.
+
+*alsa-jack-1.0.6 (23 Aug 2004)
+
+  23 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +alsa-jack-1.0.6.ebuild:
+  Version bump.
+
+  04 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -alsa-jack-1.0.3b.ebuild, -alsa-jack-1.0.4.ebuild:
+  Removing old versions.
+
+  24 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.5.ebuild:
+  Stable amd64 x86.
+
+  13 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.3b.ebuild, alsa-jack-1.0.4.ebuild, alsa-jack-1.0.5.ebuild:
+  Getting rid of virtual/jack.
+
+*alsa-jack-1.0.5 (30 May 2004)
+
+  30 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.5.ebuild:
+  Version Bump.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.3b.ebuild, alsa-jack-1.0.4.ebuild:
+  Added IUSE.
+
+  18 Apr 2004; Travis Tilley <lv@gentoo.org> alsa-jack-1.0.3b.ebuild:
+  marked stable on amd64
+
+*alsa-jack-1.0.4 (04 Apr 2004)
+
+  04 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.3b.ebuild, alsa-jack-1.0.4.ebuild:
+  1.0.3 stable on x86.  Version bump.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.3b.ebuild:
+  Fixed alsa-lib dep to be ~ instead of >=
+
+  15 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  alsa-jack-1.0.3b.ebuild:
+  DEPEND now virtual/jack
+
+  15 Mar 2004; David Holm <dholm@gentoo.org> alsa-jack-1.0.3b.ebuild:
+  Added to ~ppc.
 
 *alsa-jack-1.0.3b (14 Mar 2004)
 

@@ -1,38 +1,30 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-text/sgml2x/sgml2x-0.11-r1.ebuild,v 1.1 2000/08/07 15:31:45 achim Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/sgml2x/sgml2x-0.11-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:11 chriswhite Exp $
 
-P=sgml2x-0.11
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
-CATEGORY="app-text"
 DESCRIPTION="Frontend for jade and jadetex"
-SRC_URI="ftp://sgml2x.sourceforge.net/pub/sgml2x/"${A}
+SRC_URI="ftp://sgml2x.sourceforge.net/pub/sgml2x/${P}.tar.gz"
 HOMEPAGE="http://sgml2x.sourceforge.net/"
 
-src_unpack() {
-  unpack ${A}
-  cd ${S}
-  cp Makefile Makefile.orig
-  sed -e "s:perl Makefile.PL:perl Makefile.PL $PERLINSTALL:" Makefile.orig > Makefile
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc"
+IUSE=""
+
+DEPEND=">=dev-lang/perl-5"
+
+src_compile() {
+	make || die
 }
 
-src_compile() {                           
-  cd ${S}
-  make
+src_install() {
+	dodir /usr/bin
+	dodir /etc
+	make PREFIX=${D}/usr prefix=${D}/usr sysconfdir=${D}/etc install
+	echo <<END > ${D}/sgml2x.conf
+# Path to dsssl-stylesheets
+stylepath=/usr/share/sgml/docbook/dsssl-stylesheets-1.64
+END
+	dodoc README
+	dohtml -r doc
 }
-
-src_install() {                               
-  cd ${S}
-  dodir /usr/bin
-  dodir /etc
-  make prefix=${D}/usr sysconfdir=${D}/etc install
-  dodoc README
-  docinto html
-  dodoc sgml2x.html doc/*.html doc/*.gif
-}
-
-
-
-

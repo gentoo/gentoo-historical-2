@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/ibm-acpi/ibm-acpi-0.11-r1.ebuild,v 1.1 2005/04/26 17:32:46 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/ibm-acpi/ibm-acpi-0.11-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:40 chriswhite Exp $
 
-inherit linux-mod
+inherit eutils linux-mod
 
 DESCRIPTION="IBM ThinkPad ACPI extras"
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 -ppc"
+KEYWORDS="x86 -ppc"
 
 IUSE="doc"
 
@@ -29,11 +29,22 @@ pkg_setup() {
 		die "${P} does not support kernel 2.4.x"
 	fi
 
+	if kernel_is ge 2 6 14; then
+		ewarn
+		ewarn "Linux kernel 2.6.14 and above contains a more recent version of this"
+		ewarn "module. Please consider using the in-kernel module when using"
+		ewarn "linux-2.6.14 or above."
+		ewarn
+	fi
+
 	linux-mod_pkg_setup
 }
 
 src_unpack() {
 	unpack ${A}
+
+	cd ${S}
+	epatch ${FILESDIR}/${P}-device_add.patch
 
 	convert_to_m ${S}/Makefile
 }
@@ -55,7 +66,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo ""
-	einfo "You may wish to install sys-apps/acpid to handle the ACPI events generated"
+	einfo "You may wish to install sys-power/acpid to handle the ACPI events generated"
 	einfo "by ${PN}."
 
 	if useq doc; then

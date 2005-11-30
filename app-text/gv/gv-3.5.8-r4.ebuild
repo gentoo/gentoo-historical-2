@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gv/gv-3.5.8-r4.ebuild,v 1.1 2004/08/04 16:03:55 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gv/gv-3.5.8-r4.ebuild,v 1.1.1.1 2005/11/30 10:06:37 chriswhite Exp $
 
 inherit eutils
 
-DESCRIPTION="standard ghostscript frontend used by programs like LyX"
+DESCRIPTION="gv is used to view PostScript and PDF documents using Ghostscript"
 HOMEPAGE="http://wwwthep.physik.uni-mainz.de/~plass/gv/"
 SRC_URI="ftp://ftpthep.physik.uni-mainz.de/pub/gv/unix/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~amd64"
+KEYWORDS="x86 ppc alpha sparc amd64 ~mips ~ppc-macos ~ppc64"
 IUSE=""
 
 # There's probably more, but ghostscript also depends on it,
@@ -18,6 +18,8 @@ IUSE=""
 DEPEND="virtual/x11
 	x11-libs/Xaw3d
 	virtual/ghostscript"
+PROVIDE="virtual/pdfviewer
+	virtual/psviewer"
 
 src_unpack() {
 	unpack ${A}
@@ -26,6 +28,9 @@ src_unpack() {
 }
 
 src_compile() {
+
+	use ppc-macos && epatch ${FILESDIR}/${P}-setenv.diff
+
 	cp config.Unix 1
 	sed -e 's:usr/local:usr:' 1 > config.Unix
 	sed -i -e "s:SCRATCH_DIR = ~/:SCRATCH_DIR = /tmp/:g" config.Unix

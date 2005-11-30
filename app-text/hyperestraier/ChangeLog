@@ -1,6 +1,55 @@
 # ChangeLog for app-text/hyperestraier
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/hyperestraier/ChangeLog,v 1.1 2005/06/26 12:17:10 hattya Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/hyperestraier/ChangeLog,v 1.1.1.1 2005/11/30 10:06:44 chriswhite Exp $
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  -hyperestraier-0.5.4.ebuild, -hyperestraier-0.9.1.ebuild:
+  remove old ebuilds.
+
+*hyperestraier-1.0.4 (13 Nov 2005)
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  +hyperestraier-1.0.4.ebuild:
+  new upstream release.
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  hyperestraier-1.0.0.ebuild:
+  stable on x86.
+
+*hyperestraier-1.0.0 (24 Oct 2005)
+
+  24 Oct 2005; Akinori Hattori <hattya@gentoo.org>
+  +hyperestraier-1.0.0.ebuild:
+  new upstream release.
+
+  06 Oct 2005; Akinori Hattori <hattya@gentoo.org>
+  -hyperestraier-0.5.1.ebuild, hyperestraier-0.5.4.ebuild:
+  stable on x86.
+
+*hyperestraier-0.9.1 (06 Oct 2005)
+
+  06 Oct 2005; Akinori Hattori <hattya@gentoo.org>
+  +hyperestraier-0.9.1.ebuild:
+  new upstream release.
+
+  24 Aug 2005; Akinori Hattori <hattya@gentoo.org>
+  hyperestraier-0.5.1.ebuild:
+  stable on x86.
+
+*hyperestraier-0.5.4 (24 Aug 2005)
+
+  24 Aug 2005; Akinori Hattori <hattya@gentoo.org>
+  -hyperestraier-0.3.13.ebuild, +hyperestraier-0.5.4.ebuild:
+  new upstream release.
+
+*hyperestraier-0.5.1 (24 Jul 2005)
+
+  24 Jul 2005; Akinori Hattori <hattya@gentoo.org>
+  +hyperestraier-0.5.1.ebuild:
+  new upstream release.
+
+  27 Jun 2005; David Holm <dholm@gentoo.org> hyperestraier-0.3.13.ebuild:
+  Added to ~ppc.
 
 *hyperestraier-0.3.13 (26 Jun 2005)
 

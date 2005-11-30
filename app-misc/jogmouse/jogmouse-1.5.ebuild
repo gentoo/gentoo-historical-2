@@ -1,24 +1,23 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Jerry A! <jerry@thehutt.org>
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jogmouse/jogmouse-1.5.ebuild,v 1.1 2001/12/10 17:39:49 jerrya Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jogmouse/jogmouse-1.5.ebuild,v 1.1.1.1 2005/11/30 10:06:02 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Utility to use VAIO JogDial as a scrollwheel under X."
 SRC_URI="http://nerv-un.net/~dragorn/jogmouse/${P}.tar.gz"
-
 HOMEPAGE="http://nerv-un.net/~dragorn/jogmouse/"
 
-DEPEND="virtual/glibc
-	virtual/x11"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 -ppc -sparc"
+IUSE=""
 
+DEPEND="virtual/x11"
 
 src_compile() {
 	emake || die
 }
 
-src_install () {
+src_install() {
 	dobin jogmouse
-
 	dodoc README
 }

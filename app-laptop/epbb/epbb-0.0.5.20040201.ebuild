@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/epbb/epbb-0.0.5.20040201.ebuild,v 1.1 2004/10/18 13:23:48 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/epbb/epbb-0.0.5.20040201.ebuild,v 1.1.1.1 2005/11/30 10:05:39 chriswhite Exp $
 
 inherit enlightenment
 
@@ -8,7 +8,7 @@ DESCRIPTION="a pbbuttonsd client using the EFL"
 
 KEYWORDS="~ppc"
 
-DEPEND=">=x11-libs/evas-1.0.0_pre13
+DEPEND=">=x11-libs/evas-0.9.9
 	>=media-libs/edje-0.5.0
-	>=x11-libs/ecore-1.0.0_pre7
+	>=x11-libs/ecore-0.9.9
 	>=app-laptop/pbbuttonsd-0.5.2"

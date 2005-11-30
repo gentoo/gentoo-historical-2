@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/screen/screen-4.0.2-r4.ebuild,v 1.1 2005/06/07 13:00:04 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/screen/screen-4.0.2-r4.ebuild,v 1.1.1.1 2005/11/30 10:05:45 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs pam
 
@@ -10,11 +10,15 @@ SRC_URI="mirror://gnu/screen/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="debug nethack pam"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
+IUSE="debug nethack pam selinux"
 
 RDEPEND=">=sys-libs/ncurses-5.2
-	pam? ( virtual/pam )"
+	pam? ( virtual/pam )
+	selinux? (
+		sec-policy/selinux-screen
+		>=sec-policy/selinux-base-policy-20050821
+	)"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.58"
 
@@ -43,6 +47,9 @@ src_unpack() {
 
 	# Patch for time function on 64bit systems
 	epatch "${FILESDIR}"/${PV}-64bit-time.patch
+
+	# Patch that makes %u work for windowlist -b formats
+	epatch "${FILESDIR}"/${PV}-windowlist-multiuser-fix.patch
 
 	# Fix manpage.
 	sed -i \
@@ -120,7 +127,7 @@ pkg_postinst() {
 	einfo
 	einfo "screen is not installed as setuid root, which effectively disables multi-user"
 	einfo "mode. To enable it, run:"
-	einfo ""
+	einfo
 	einfo "\tchmod u+s /usr/bin/screen"
 	einfo "\tchmod go-w /var/run/screen"
 }

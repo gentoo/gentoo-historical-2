@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/transgaming-fontinstaller/transgaming-fontinstaller-1.0.ebuild,v 1.1 2004/02/22 10:17:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/transgaming-fontinstaller/transgaming-fontinstaller-1.0.ebuild,v 1.1.1.1 2005/11/30 10:08:46 chriswhite Exp $
 
 DESCRIPTION="font installer for WineX"
 HOMEPAGE="http://www.transgaming.com/"
@@ -8,10 +8,11 @@ SRC_URI="${P}.tgz"
 
 LICENSE="Aladdin"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 x86"
+IUSE=""
 RESTRICT="fetch"
 
-DEPEND="app-emulation/winex-transgaming"
+DEPEND="|| ( app-emulation/cedega app-emulation/winex-transgaming )"
 
 pkg_nofetch() {
 	einfo "Please download the appropriate WineX archive (${A})"

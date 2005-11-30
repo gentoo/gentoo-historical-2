@@ -1,8 +1,35 @@
 # ChangeLog for dev-util/shc
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-util/shc/ChangeLog,v 1.1 2003/01/06 05:26:09 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/shc/ChangeLog,v 1.1.1.1 2005/11/30 10:05:07 chriswhite Exp $
 
-*shc-3.4.ebuild (05 Jan 2003)
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> shc-3.6.ebuild:
+  Stable on ppc.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> shc-3.4.ebuild,
+  shc-3.6.ebuild, shc-3.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  04 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> shc-3.7.ebuild:
+  Stable on alpha.
+
+*shc-3.7 (29 Dec 2003)
+
+  29 Dec 2003; Martin Holzer <mholzer@gentoo.org> shc-3.7.ebuild:
+  Version bumped. Closes 28377
+
+*shc-3.6 (16 May 2003)
+
+  16 May 2003;George Shapovalov <george@gentoo.org> shc-3.6.ebuild :
+  new version (#19969)
+  Thanks to Thomas Eckert <eckert.thomas@gmx.net> for notification
+
+*shc-3.4 (05 Jan 2003)
+
+  08 Jan 2003; Jack Morgan <jmorgan@gentoo.org> shc-3.4.ebuild :
+  Removed sparc64 keyword
 
   05 Jan 2003; George Shapovalov <george@gentoo.org> ChangeLog, shc-3.4.ebuild, files/digest-shc-3.4 :
   initial release (#12633)

@@ -1,14 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/glastree/glastree-0.58.ebuild,v 1.1 2002/12/08 21:44:47 sethbc Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/glastree/glastree-0.58.ebuild,v 1.1.1.1 2005/11/30 10:06:02 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="glastree is a poor mans snapshot utility using hardlinks written in perl"
 HOMEPAGE="http://www.igmus.org/code/"
 SRC_URI="http://www.igmus.org/files/${P}.tar.gz"
-DEPEND="sys-devel/perl dev-perl/Date-Calc"
+DEPEND="dev-lang/perl dev-perl/Date-Calc"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 LICENSE="public-domain"
 
 src_install() {

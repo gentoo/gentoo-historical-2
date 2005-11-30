@@ -1,6 +1,564 @@
 # ChangeLog for app-emulation/wine
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/ChangeLog,v 1.1 2002/02/01 21:53:01 gbevin Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/wine/ChangeLog,v 1.1.1.1 2005/11/30 10:08:44 chriswhite Exp $
+
+*wine-0.9.1 (10 Nov 2005)
+
+  10 Nov 2005; Mike Frysinger <vapier@gentoo.org> +wine-0.9.1.ebuild:
+  Version bump.
+
+*wine-0.9 (25 Oct 2005)
+
+  25 Oct 2005; Mike Frysinger <vapier@gentoo.org> +wine-0.9.ebuild:
+  Version bump.
+
+  03 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-20050930-dont-warn-lib-path.patch,
+  +files/wine-20050930-no-x.patch, wine-20050930.ebuild:
+  Fix building with USE=-X #107870 by ChazeFroy and dont display library
+  warning since it is irrelevant for Gentoo users #107971 by Holly Bostick.
+
+  02 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  files/wine-20041019-alsa-headers.patch:
+  Add patch to fix building with ALSA #107822.
+
+*wine-20050930 (01 Oct 2005)
+
+  01 Oct 2005; Mike Frysinger <vapier@gentoo.org> +wine-20050930.ebuild:
+  Version bump #107746 by rvalles@es.gnu.org.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*wine-20050830 (02 Sep 2005)
+
+  02 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-20050830-gcc-32bit.patch, +files/wine-20050830-no-ldap.patch,
+  +wine-20050830.ebuild:
+  Version bump #104492 by Martin Nowack.
+
+*wine-20050725-r1 (24 Aug 2005)
+*wine-20050111-r2 (24 Aug 2005)
+
+  24 Aug 2005; Mike Frysinger <vapier@gentoo.org> -wine-20050111-r1.ebuild,
+  +wine-20050111-r2.ebuild, -wine-20050725.ebuild, +wine-20050725-r1.ebuild:
+  Version bump to resolve insecure tempfile usage #101773.
+
+  23 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-cvs-winelauncher-temp.patch, wine-20041019-r3.ebuild,
+  wine-20050111-r1.ebuild, wine-20050211.ebuild, wine-20050310-r1.ebuild,
+  wine-20050419.ebuild, wine-20050524.ebuild, wine-20050628.ebuild,
+  wine-20050725.ebuild:
+  Add patch from upstream to address insecure tempfile usage #101773.
+
+  03 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-20050725-gcc-32bit.patch, wine-20050524.ebuild,
+  wine-20050628.ebuild, wine-20050725.ebuild:
+  Make sure winegcc passes -m32/-m64 along to the linker #100180.
+
+*wine-20050725 (26 Jul 2005)
+
+  26 Jul 2005; Mike Frysinger <vapier@gentoo.org> +wine-20050725.ebuild:
+  Version bump #100277 by ChazeFroy.
+
+  10 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-hangfix-bug2660.patch, wine-20050524.ebuild:
+  Add patch from upstream cvs to fix some hangs #98156 by Scott Jones.
+
+*wine-20050628 (10 Jul 2005)
+
+  10 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +wine-20050628.ebuild:
+  Version bump #97367 by t35t0r.
+
+  29 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-20050524-alsa-headers.patch, wine-20041019-r3.ebuild,
+  wine-20050111-r1.ebuild, wine-20050211.ebuild, wine-20050310-r1.ebuild,
+  wine-20050419.ebuild, wine-20050524.ebuild:
+  Re-order ALSA includes so they dont conflict with wine headers #94272 by
+  Ernst de Haan.
+
+*wine-20050524 (26 May 2005)
+
+  26 May 2005; Mike Frysinger <vapier@gentoo.org> +wine-20050524.ebuild:
+  Version bump #93851 by Rich.
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> wine-20050419.ebuild:
+  Bumped amd64 DEPEND, no 32bit libglut in previous xlibs.
+
+  21 Apr 2005; Herbie Hopkins <herbs@gentoo.org> wine-20050419.ebuild:
+  Set CC in this version too.
+
+*wine-20050419 (20 Apr 2005)
+
+  20 Apr 2005; Mike Frysinger <vapier@gentoo.org> +wine-20050419.ebuild:
+  Version bump #89795 by Patrizio Bassi.
+
+  19 Apr 2005; Herbie Hopkins <herbs@gentoo.org> wine-20050310-r1.ebuild:
+  Set CC=$(tc-getCC) to fix compilation on amd64, bug #88725.
+
+*wine-20050310-r1 (17 Apr 2005)
+
+  17 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-20050310-upstream-colortable.patch, -wine-20050310.ebuild,
+  +wine-20050310-r1.ebuild:
+  Add fix from upstream for X11 driver #88715 by Alan Jones.
+
+*wine-20050111-r1 (18 Mar 2005)
+
+  18 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-20050111-upstream-registry-fix.patch.bz2,
+  -wine-20050111.ebuild, +wine-20050111-r1.ebuild:
+  Add an upstream patch to fix a security issue with information leakage #85387.
+
+*wine-20050310 (13 Mar 2005)
+
+  13 Mar 2005; Mike Frysinger <vapier@gentoo.org> +wine-20050310.ebuild:
+  Version bump #84792.
+
+  19 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/20050211-docs.patch, wine-20050111.ebuild, wine-20050211.ebuild:
+  Add patch to fix sgml error and pdf/ps misdetection #73458.
+
+*wine-20050211 (12 Feb 2005)
+
+  12 Feb 2005; Mike Frysinger <vapier@gentoo.org> +wine-20050211.ebuild:
+  Version bump #81688 by Rich.
+
+*wine-20050111 (12 Jan 2005)
+
+  12 Jan 2005; Mike Frysinger <vapier@gentoo.org> +wine-20050111.ebuild:
+  Version bump #77655 by Dennis Schridde.
+
+*wine-20041201 (02 Dec 2004)
+
+  02 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  files/20041019-no-stack.patch, wine-20041019-r3.ebuild,
+  +wine-20041201.ebuild:
+  Version bump #73080 by David Guembel. Fix the no-stack-protector patch
+  #72449 by Malte S. Stretz. Disable maketest (it requires X to be running)
+  #72375 by Sascha Silbe.
+
+  09 Nov 2004; Mike Frysinger <vapier@gentoo.org> wine-20041019-r3.ebuild:
+  USE=lcms support #70520.
+
+*wine-20041019-r3 (01 Nov 2004)
+
+  01 Nov 2004; Mike Frysinger <vapier@gentoo.org> +wine-20041019-r3.ebuild:
+  More clean ups and fixed with a ton of input from Vincent Béron.
+
+*wine-20041019-r2 (30 Oct 2004)
+
+  30 Oct 2004; Mike Frysinger <vapier@gentoo.org> -wine-20041019-r1.ebuild,
+  +wine-20041019-r2.ebuild:
+  Version bump to fix #69554 / #69543 / others and enhancements by Vincent Béron.
+
+  27 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/20041019-no-stack.patch, wine-20041019-r1.ebuild,
+  wine-20041019.ebuild:
+  Filter stack-protector flags on the preloader binary #66002 by vyp08.
+
+*wine-20041019-r1 (27 Oct 2004)
+
+  27 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/20041019-load-wrappers.patch, +wine-20041019-r1.ebuild:
+  Version bump to move wine into the normal prefix of things (/usr). The winex
+  ebuilds have long been punted from portage and the prebuilt solutions from
+  transgaming come in nicely bundled formats so there wont be any collisions.
+  Indirectly, we solve #33174 and #43550. Also, update our config files
+  #59134, make sure the default registry is created properly #58976, and clean
+  up our wrappers #63376.
+
+*wine-20041019 (27 Oct 2004)
+
+  27 Oct 2004; Mike Frysinger <vapier@gentoo.org> +wine-20041019.ebuild:
+  Version bump #68525 and others.  Make sure USE flags are obeyed #35482.
+
+  03 Aug 2004; Martin Holzer <mholzer@gentoo.org> wine-20040121.ebuild,
+  wine-20040213.ebuild, wine-20040309.ebuild, wine-20040408-r1.ebuild,
+  wine-20040408.ebuild, wine-20040505.ebuild, wine-20040615-r1.ebuild,
+  wine-20040615.ebuild, wine-20040716.ebuild:
+  unsetting ldflags. closes 58836
+
+*wine-20040716 (19 Jul 2004)
+
+  19 Jul 2004; Martin Holzer <mholzer@gentoo.org> +wine-20040716.ebuild:
+  Version bumped.
+
+*wine-20040615-r1 (13 Jul 2004)
+
+  13 Jul 2004; Martin Holzer <mholzer@gentoo.org> +files/scrollbars.diff,
+  +wine-20040615-r1.ebuild:
+  adding patch. closes 56701 and 56736
+
+  08 Jul 2004; Martin Holzer <mholzer@gentoo.org> wine-20040121.ebuild,
+  wine-20040213.ebuild, wine-20040309.ebuild, wine-20040408-r1.ebuild,
+  wine-20040408.ebuild, wine-20040505.ebuild, wine-20040615.ebuild:
+  changing license to lgpl-2.1 closes 55433
+
+*wine-20040615 (08 Jul 2004)
+
+  08 Jul 2004; Martin Holzer <mholzer@gentoo.org> +wine-20040615.ebuild:
+  Version bumped. Closes 54085
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> wine-20040121.ebuild,
+  wine-20040213.ebuild, wine-20040309.ebuild, wine-20040408-r1.ebuild,
+  wine-20040408.ebuild, wine-20040505.ebuild:
+  sync IUSE (+X), add sed-4 dep
+
+*wine-20040505 (29 Jun 2004)
+
+  29 Jun 2004; Martin Holzer <mholzer@gentoo.org> +wine-20040505.ebuild:
+  Version bumped. Closes 50495
+
+*wine-20040408-r1 (28 Jun 2004)
+
+  28 Jun 2004; Martin Holzer <mholzer@gentoo.org> wine-20040408-r1.ebuild:
+  updating wrapper script. many thx to eGore <egore@gmx.de> . closes 47496
+
+*wine-20040408 (10 Apr 2004)
+
+  10 Apr 2004; Martin Holzer <mholzer@gentoo.org> wine-20040408.ebuild:
+  Version bumped.
+
+*wine-20040309 (10 Mar 2004)
+
+  10 Mar 2004; Martin Holzer <mholzer@gentoo.org> wine-20040309.ebuild:
+  Version bumped.
+
+  10 Mar 2004; Martin Holzer <mholzer@gentoo.org> wine-20040121.ebuild:
+  x86 stable
+
+*wine-20040213 (16 Feb 2004)
+
+  16 Feb 2004; Martin Holzer <mholzer@gentoo.org> wine-20040213.ebuild:
+  Version bumped.
+
+  22 Jan 2004; Martin Holzer <mholzer@gentoo.org> wine-20031212.ebuild:
+  x86 stable
+
+*wine-20040121 (22 Jan 2004)
+
+  22 Jan 2004; Martin Holzer <mholzer@gentoo.org> wine-20040121.ebuild:
+  Version bumped. Closes 39025
+
+*wine-20031212 (15 Dec 2003)
+
+  15 Dec 2003; Alex Veber <coronalvr@gentoo.org> wine-20031212.ebuild:
+  Version Bump
+
+  15 Dec 2003; Alex Veber <coronalvr@gentoo.org> wine-20031118-r1.ebuild:
+  Bump to stable.
+
+  10 Dec 2003; Martin Holzer <mholzer@gentoo.org> wine-20031118-r1.ebuild,
+  wine-20031016.ebuild, files/wine-alsa.patch:
+  unstable for unstable. fixing alsa. closes #25904
+
+*wine-20031118-r1 (01 Dec 2003)
+
+  01 Dec 2003; Alex Veber <coronalvr@gentoo.org> wine-20031118-r1.ebuild,
+  files/winearts-kdecvs-fix.patch:
+  revision bump, this fixes #32991, #32226, #31144 
+  and the long and annoying #31557 yay! :)
+
+*wine-20031118 (19 Nov 2003)
+
+  19 Nov 2003; Martin Holzer <mholzer@gentoo.org> wine-20031118.ebuild:
+  Version bumped.
+  
+  08 Nov 2003; Alex Veber <coronalvr@gentoo.org> wine-20031016.ebuild:
+  move to stable.
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> :
+  digest update. Closes #31434
+
+*wine-20031016 (19 Oct 2003)
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> wine-20031016.ebuild:
+  Version bumped. Closes #31377.
+
+  13 Oct 2003; Alex Veber <coronalvr@gentoo.org> wine-20030911.ebuild:
+  move to stable.
+
+  01 Oct 2003; Sergey Kuleshov <svyatogor@gentoo.org> :
+  Changed the config file to reflect the changes wine team made in its syntax.
+  Now all paths should be specified relative to current dir, in our case this is
+  ~/.wine
+
+*wine-20030911 (13 Sep 2003)
+
+  13 Sep 2003; Alex Veber <coronalvr@gentoo.org> wine-20030618-r1.ebuild,
+  wine-20030911.ebuild, files/kpp-fix.patch:
+  a new version plus a cleanup of old ebuilds
+
+  27 Aug 2003; Alex Veber <coronalvr@gentoo.org> wine-20030813.ebuild:
+  move to stable
+
+*wine-20030813 (15 Aug 2003)
+
+  15 Aug 2003; Alex Veber <coronalvr@gentoo.org> wine-20030709.ebuild,
+  wine-20030813.ebuild:
+  new version + moved wine-20030709 to x86
+
+  12 Jul 2003; Alex Veber <coronalvr@gentoo.org> wine-20030709.ebuild:
+  removed the kpp patch, the real fix is to use a native dll
+
+  12 Jul 2003; Sergey Kuleshov <svyatogor@gentoo.org> wine-20030618-r1.ebuild:
+  Bumping wine-20030618-r1 to stable.
+
+*wine-20030709 (12 Jul 2003)
+
+  12 Jul 2003; Martin Holzer <mholzer@gentoo.org> wine-20030709.ebuild:
+  Version bumped.
+
+*wine-20030618-r1 (04 Jul 2003)
+
+  04 Jul 2003; Alex Veber <coronalvr@gentoo.org> wine-20030618-r1.ebuild,
+  files/kpp-fix.patch:
+  added a patch to fix a bug with kazaa kpp 2.1, thanks to cretin
+  (cretin@gentoo.org)
+
+  28 Jun 2003; Alex Veber <coronalvr@gentoo.org> wine-20030508.ebuild,
+  wine-20030618.ebuild:
+  unset C[XX]FLAGS
+
+*wine-20030618 (26 Jun 2003)
+
+  26 Jun 2003; Alex Veber <coronalvr@gentoo.org> wine-20030618.ebuild:
+  version bump.
+
+  11 Jun 2003; Stanislav Brabec <utx@gentoo.org>:
+  Version 20030411-r1 included back to portage tree (bug #22587).
+
+*wine-20030508 (11 May 2003)
+
+  20 May 2003; Stanislav Brabec <utx@gentoo.org> wine-20030508.ebuild:
+  Non-blocking solution of bug #20857.
+
+  13 May 2003; Martin Holzer <mholzer@gentoo.org> wine-20030508.ebuild:
+  Added Blocking DEPEND. Closes #20857
+
+  11 May 2003; Martin Holzer <mholzer@gentoo.org> wine-20030508.ebuild:
+  Version bumped.
+
+*wine-20030411-r1 (16 Apr 2003)
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest,
+  wine-20030411-r1.ebuild, wine-20030411.ebuild, wine-20030411.ebuild:
+  Installing wine.conf.5 as manpage. Closes #16322.
+
+*wine-20020411 (11 Apr 2003)
+
+  15 Apr 2002; Stefan Jones <cretin@gentoo.org> wine-20020411.ebuild :
+  use strip-flags and remove unset CFLAGS CXXFLAGS
+
+  12 Apr 2002; Tilman Klar <phoenix@gentoo.org> wine-20020411.ebuild :
+  Tagged this version stable ("x86"). Added support for USE="nptl".
+
+  11 Apr 2002; Tilman Klar <phoenix@gentoo.org> wine-20020411.ebuild,
+  files/digest-wine-20020411, files/wine-20020411-* :
+  Added new version of wine (cvs snapshot). This version works with the
+  new binutils-2.13.90.0.20.
+
+*wine-* (11 Apr 2003)
+
+  11 Apr 2002; Tilman Klar <phoenix@gentoo.org> wine-2002*,
+  files/digest-wine-2002*, files/wine-2002* :
+  Removed all wine versions prior to Jan 2003 from the tree.
+
+  11 Apr 2002; Tilman Klar <phoenix@gentoo.org> wine-20030115.ebuild,
+  wine-20030219.ebuild, wine-20030318.ebuild,  wine-20030408.ebuild :
+  Updated DEPEND. There were major problems with the new version of
+  binutils, that's why i made wine depend on <=binutils-2.13.90.0.18-r1.
+  For further information check bug #19106.
+
+*wine-20030318 (10 Apr 2003)
+
+  10 Apr 2003; Tilman Klar <phoenix@gentoo.org> wine-20030318.ebuild,
+  files/digest-wine-20030318 :
+  Version bump. This should fix the glibc-2.3.2 problems.
+
+*wine-20030318 (06 Apr 2003)
+
+  06 Apr 2003; Tilman Klar <phoenix@gentoo.org> wine-20030318.ebuild,
+  files/digest-wine-20030318 :
+  Version bump.
+
+*wine-* (01 Apr 2003)
+
+  01 Apr 2003; phoen][x <phoenix@gentoo.org> *.ebuild :
+  Replaced 'export C{XX}FLAGS=""' with 'unset CFLAGS CXXFLAGS'.
+  Read bug #17986 for additional information about this.
+
+*wine-20030219 (27 Feb 2003)
+
+  27 Feb 2003; Stefan Jones <cretin@gentoo.org> wine-20030219.ebuild:
+  New version. Added tcltk use flag.
+
+*wine-20030115 (19 Jan 2003)
+
+  05 Feb 2003; phoen][x <phoenix@gentoo.org> wine-20030115.ebuild:
+  Modified X dependencies. You can build wine without X now (for commandline
+  applications) - this closes bug #14651.
+
+  19 Jan 2003; Luca Barbato <lu_zero@gentoo.org> : wine-20030115.ebuild
+  Version bump.
+
+*wine-20021125 (28 Nov 2002)
+
+  05 Feb 2003; phoen][x <phoenix@gentoo.org> wine-20021125.ebuild:
+  Modified X dependencies. You can build wine without X now (for commandline
+  applications) - this closes bug #14651. Put this version into the stable profile.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  28 Nov 2002; phoen][x <phoenix@gentoo.org> wine-20021125.ebuild, ChangeLog,
+  files/wine-20021125-fake_windows.tar.bz2, files/wine-20021125-misc.tar.bz2 :
+  Version bump. This closes bug 11296 - thanks to Martin Holzer
+  <mholzer@gentoo.org>.
+
+*wine-20021031 (04 Nov 2002)
+
+  08 Nov 2002; phoen][x <phoenix@gentoo.org> wine-20021031.ebuild :
+  Put this ebuild into the stable profile.
+
+  04 Oct 2002; phoen][x <phoenix@gentoo.org> wine-20021031.ebuild, ChangeLog,
+  files/wine-20021031-fake_windows.tar.bz2, files/wine-20021031-misc.tar.bz2 :
+
+  Bumped to new version. Added Kazaa Lite compatibility to ~/.wine/config.
+  This closes bug #7568.
+
+*wine-20021007 (12 Oct 2002)
+
+  08 Nov 2002; phoen][x <phoenix@gentoo.org> wine-20021007.ebuild :
+ 
+  Put this ebuild into the stable profile.
+
+  15 Oct 2002; phoen][x <phoenix@gentoo.org> wine-20021007.ebuild, ChangeLog,
+  files/wine-20021007-fake_windows.tar.bz2, files/wine-20021007-misc.tar.bz2 :
+
+  Major rewrite:
+  - config, regedit-wine and wine are now in a tarball called ${P}-misc.tar.bz2
+  - the fake_windows tarball ( ${P}-fake_windows.tar.bz2 ) goes to ${FILESDIR} now
+  - regedit-wine uses the new bin/regedit instead of bin/regapi ( see bug #9001 )
+  - the default config is useful now ( running stuff outta the box should work )
+  - the wine wrapper ( /usr/bin/wine ) uses /usr/bin/regedit for the initial 
+    import of winedefault.reg
+  - using do{ins,bin} over mv/cp
+  - fixed permissions in /usr/lib/wine/.data
+  - added lots of comments
+
+  12 Oct 2002; phoen][x <phoenix@gentoo.org> wine-20021007.ebuild, ChangeLog :
+
+  Bumped to new version.
+
+*wine-20020904-r1 (13 Sep 2002)
+
+  13 Sep 2002; phoen][x <phoenix@gentoo.org> wine-20020904-r1.ebuild, ChangeLog :
+
+  Added manpage installation. This installs the manpage of wine as ${PN}.
+  Tidied up the ChangeLog.
+
+*wine-20020904 (09 Sep 2002)
+
+  09 Sep 2002; phoen][x <phoenix@gentoo.org> wine-20020904.ebuild :
+
+  Bumped to new version. 
+
+*wine-20020804 (05 Sep 2002)
+
+  05 Sep 2002; phoen][x <phoenix@gentoo.org> wine-20020804.ebuild :
+
+  Bumped to new version. 
+  Thanks to José Fonseca <j_r_fonseca@yahoo.co.uk> for the contribution.
+  This closes bug 7312.
+
+*wine-20020710-r2 (31 Aug 2002)
+
+  31 Aug 2002; phoen][x <phoenix@gentoo.org> wine-20020710-r2.ebuild :
+
+  New revision. This moves wine to its new location in /usr/lib/wine
+  in order to make it fhs compliant. Wine is started with "/usr/bin/wine",
+  which is a wrapper script. "/usr/bin/regedit-wine" imports registry
+  files into the wine registry.
+
+*wine-20020710-r1 (18 Jun 2002)
+
+  02 Aug 2002; Nick Hadaway <raker@gentoo.org> :
+
+  Updated ebuild to install /etc/wine/config.  Closes bug #5821.
+
+  27 Jul 2002; Nick Hadaway <raker@gentoo.org> wine-20020710-r1.ebuild :
+
+  Updated ebuild so it installs /usr/wine/bin/regapi.  Closes bug #5611.
+
+  18 Jun 2002; Michael Cohen <mjc@gentoo.org> wine-20020710.ebuild :
+
+  Added ALSA and arts dependencies (Bug #5206 and friends)
+
+*wine-20020710 (17 Jun 2002)
+
+  17 Jun 2002; Michael Cohen <mjc@gentoo.org> wine-20020710.ebuild :
+
+  Version bump
+
+*wine-20020605-r2 (15 Jun 2002)
+
+  15 Jun 2002; Spider <spider@gentoo.org> wine-20020605-r2.ebuild :
+
+  the /etc/wine stuff wasn't installed so I fixed that 
+  (seems the source had moved into documentation/samples)
+
+*wine-20020605-r1 (14 Jun 2002)
+
+  14 Jun 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
+
+  Split off the documentation because manpage generation takes such a long
+  time. The docs now live in app-doc/wine-doc.
+
+*wine-20020605 (07 Jun 2002)
+
+  07 Jun 2002; Dan Armak <danarmak@gentoo.org>: new upstream release
+
+*wine-20020509 (11 May 2002)
+
+  11 May 2002; Bart Verwilst <verwilst@gentoo.org>: new upstream release, 
+  new reworked ebuilds
+
+*wine-20020411 (14 Apr 2002)
+
+  14 Apr 2002; Dan Armak <danarmak@gentoo.org>: new upstream release
+
+*wine-20020310-r1 (29 Mar 2002)
+
+  29 Mar 2002; Dan Armak <danarmak@gentoo.org>: fix bug #1373: disable custom optimizations,
+  or the resulting wine won't work properly and will make the hardworking folks at #winehq
+  really really angry
+
+*wine-20020310 (27 Mar 2002)
+
+  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> wine-20020310.ebuild :
+
+  man page/LFH fix submitted by Matthew Kennedy.
+
+  22 Mar 2002; Dan Armak <danarmak@gentoo.org> Add missing /etc/wine/winedefault.reg file.
+
+*wine-20020310 (12 Mar 2002)
+
+  12 Mar 2002; Dan Armak <danarmak@gentoo.org> Changelog:
+  
+  This is the latest upstream snapshot. Upstream changelog: identical to previous
+  snapshot except for the license change to LGPL.
+
+*wine-20020228 (5 Mar 2002)
+
+  5 Mar 2002; Dan Armak <danarmak@gentoo.org> Changelog:
+  
+  This is the latest snapshot. I've rewritten the ebuild, fixing all known issues,
+  including the compilation failures.
+  
+  Among the fixes are: install into /usr not /opt/wine, compile and install the manpages,
+  handle the onfig file correctly (there'll be a winesetuptk ebuild sometime soon), and more.
 
 *wine-20011004-r1 (1 Feb 2002)
 

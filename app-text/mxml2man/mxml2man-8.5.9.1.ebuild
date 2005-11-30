@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/mxml2man/mxml2man-8.5.9.1.ebuild,v 1.1 2005/09/23 22:43:58 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/mxml2man/mxml2man-8.5.9.1.ebuild,v 1.1.1.1 2005/11/30 10:06:53 chriswhite Exp $
 
 DESCRIPTION="Apple's xml2man in an Autotool fashion"
 HOMEPAGE="http://dev.gentoo.org/~flameeyes/projects.xhtml#mxml2man"

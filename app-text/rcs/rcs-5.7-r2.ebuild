@@ -1,33 +1,37 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-text/rcs/rcs-5.7-r2.ebuild,v 1.1 2002/06/17 16:49:10 naz Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/rcs/rcs-5.7-r2.ebuild,v 1.1.1.1 2005/11/30 10:06:37 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="Revision Control System"
-SRC_URI="ftp://ftp.gnu.org/gnu/rcs/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/rcs/"
+SRC_URI="ftp://ftp.gnu.org/gnu/rcs/${P}.tar.gz"
 
-DEPEND="virtual/glibc"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc alpha hppa ia64 amd64"
+IUSE=""
 
+DEPEND="virtual/libc"
 RDEPEND="sys-apps/diffutils"
-	
+
+src_unpack() {
+	unpack ${A}; cd ${S}
+	epatch ${FILESDIR}/conf.diff
+}
 
 src_compile() {
-
+	# econf BREAKS this!
 	./configure \
 		--prefix=/usr \
 		--host=${CHOST} \
 		--with-diffutils || die
 
-	cp ${FILESDIR}/conf.sh src/conf.sh
-
 	emake || die
-
 }
 
-src_install () {
-
+src_install() {
 	make \
 		prefix=${D}/usr \
 		man1dir=${D}/usr/share/man/man1 \
@@ -35,5 +39,5 @@ src_install () {
 		man5dir=${D}/usr/share/man/man5 \
 		install || die
 
-	dodoc ChangeLog COPYING CREDITS NEWS README REFS
+	dodoc ChangeLog CREDITS NEWS README REFS
 }

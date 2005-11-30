@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.0.1-r1.ebuild,v 1.1 2004/12/29 01:12:04 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.0.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:26 chriswhite Exp $
 
-inherit flag-o-matic eutils gcc
+inherit flag-o-matic eutils toolchain-funcs
 
 DESCRIPTION="C subroutine library for computing the Discrete Fourier Transform (DFT)"
 HOMEPAGE="http://www.fftw.org/"
@@ -10,8 +10,8 @@ SRC_URI="http://www.fftw.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="3.0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 amd64 ~ppc-macos hppa"
-IUSE="3dnow altivec mpi sse"
+KEYWORDS="~alpha amd64 hppa ia64 ~mips ~ppc ~ppc-macos ppc64 sparc ~x86"
+IUSE="3dnow altivec mpi sse sse2"
 
 DEPEND="virtual/libc"
 
@@ -50,9 +50,11 @@ src_compile() {
 	#mpi is not a valid flag yet. In this revision it is used merely to block --enable-mpi option
 	#it might be needed if it is decided that lam is an optional dependence
 
-	if use sse; then
+	if use sse2; then
 		myconfsingle="$myconfsingle --enable-sse"
 		myconfdouble="$myconfdouble --enable-sse2"
+	elif use sse; then
+		myconfsingle="$myconfsingle --enable-sse"
 	elif use 3dnow; then
 		myconfsingle="$myconfsingle --enable-k7"
 	fi
@@ -92,8 +94,7 @@ src_install () {
 	# Install documentation.
 	cd "${S}-single"
 
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README TODO
-	dodoc COPYRIGHT CONVENTIONS
+	dodoc AUTHORS ChangeLog NEWS README TODO COPYRIGHT CONVENTIONS
 
 	cd doc/html
 	dohtml -r .

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.1.2.ebuild,v 1.1 2005/11/11 16:56:51 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/meld/meld-1.1.2.ebuild,v 1.1.1.1 2005/11/30 10:05:36 chriswhite Exp $
 
 inherit python gnome2 eutils
 

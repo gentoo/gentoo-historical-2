@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pv/pv-0.9.0.ebuild,v 1.1 2005/06/18 05:07:20 avenj Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pv/pv-0.9.0.ebuild,v 1.1.1.1 2005/11/30 10:06:00 chriswhite Exp $
 
 DESCRIPTION="Pipe Viewer: a tool for monitoring the progress of data through a pipe"
 HOMEPAGE="http://www.ivarch.com/programs/pv.shtml"

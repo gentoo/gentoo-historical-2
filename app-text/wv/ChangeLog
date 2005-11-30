@@ -1,8 +1,97 @@
 # ChangeLog for app-text/wv
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# /space/gentoo/cvsroot/gentoo-x86/dev-lang/swig/ChangeLog,v 1.1 2002/02/01 21:53:11 gbevin Exp
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/wv/ChangeLog,v 1.1.1.1 2005/11/30 10:07:03 chriswhite Exp $
+
+*wv-1.2.0 (31 Oct 2005)
+
+  31 Oct 2005; Leonardo Boshell <leonardop@gentoo.org> +wv-1.2.0.ebuild:
+  New version (bug #110986).
+
+*wv-1.0.3-r1 (06 Oct 2005)
+
+  06 Oct 2005; Daniel Drake <dsd@gentoo.org>
+  +files/wv-1.0.3-libole2-readonly.patch, +wv-1.0.3-r1.ebuild:
+  Add patch from Fredrik Hedberg to stop files being opened for read/write.
+
+  26 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/wv-1.0.3-gcc4.patch, wv-1.0.3.ebuild:
+  Fix building with gcc4 (namespace collide with libxml2).
+
+*wv-1.0.3 (01 Dec 2004)
+
+  01 Dec 2004; foser <foser@gentoo.org> wv-1.0.3.ebuild :
+  Welcome to december, full of lights and emptyness
+  New wv, fixed deps a bit
+
+  09 Aug 2004; Tom Gall <tgall@gentoo.org> wv-1.0.0-r1.ebuild:
+  stable on ppc64, bug #57192
+
+  08 Aug 2004; foser <foser@gentoo.org> wv-1.0.0-r1.ebuild :
+  Fix HOMEPAGE as suggested in #58117 by Aniruddha Shankar <karim@sarai.net>
+
+*wv-1.0.0-r1 (12 Jul 2004)
+
+  12 Jul 2004; foser <foser@gentoo.org> wv-1.0.0-r1.ebuild , wv-1.0.0-fix_overflow.patch, metadata.xml:
+  Add security fix (#56595)
+  Make wmf support USE switchable
+  Added to gnome herd for now with me as maintainer
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> wv-1.0.0.ebuild:
+  stable on alpha and ia64
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> wv-1.0.0.ebuild:
+  set ppc in keywords
+
+  07 Jan 2004; <gustavoz@gentoo.org> wv-1.0.0.ebuild:
+  marked stable on hppa
+
+  09 Nov 2003; Jason Wever <weeve@gentoo.org> wv-1.0.0.ebuild:
+  Marked stable for sparc.
+
+*wv-1.0.0 (13 Sep 2003)
+
+  13 Sep 2003; foser <foser@gentoo.org> wv-1.0.0.ebuild :
+  New version, added xml2 USE flag and minor cleanups
+
+  30 Aug 2003; Jason Wever <weeve@gentoo.org> wv-0.7.6.ebuild:
+  Added ~sparc to keywords.
+
+  04 Jul 2003; Luca Barbato <lu_zero@gentoo.org> wv-0.7.6.ebuild :
+  Added ~ppc keyword
+
+*wv-0.7.6 (18 Jun 2003)
+
+  18 Jun 2003; foser <foser@gentoo.org> wv-0.7.6.ebuild :
+  New version
+
+*wv-0.7.5 (31 Mar 2003)
+
+  31 Mar 2003; foser <foser@gentoo.org> wv-0.7.5.ebuild :
+  New version, fixed deps
+
+*wv-0.7.4-r1 (25 Jan 2003)
+
+  26 Jan 2003; Brad Cowan <bcowan@gentoo.org> wv-0.7.4-r1.ebuild,
+  files/digest-wv-0.7.4-r1:
+  
+  Added header file and fixed symlink.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*wv-0.7.4 (27 Nov 2002)
+
+  27 Nov 2002; Brad Cowan <bcowan@gentoo.org> wv-0.7.4.ebuild,
+  files/digest-wv-0.7.4:
+  
+  Version bump.
 
 *wv-0.7.1 (8 Feb 2002)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> wv-0.7.1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
   
   19 Apr 2002; G.Shapovalov <georges@its.caltech.edu> all_files :
 

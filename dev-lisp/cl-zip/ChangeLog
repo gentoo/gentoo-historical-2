@@ -1,6 +1,6 @@
 # ChangeLog for dev-lisp/cl-zip
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-zip/ChangeLog,v 1.1 2005/07/10 04:35:51 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-zip/ChangeLog,v 1.1.1.1 2005/11/30 10:08:18 chriswhite Exp $
 
 *cl-zip-20050405 (10 Jul 2005)
 

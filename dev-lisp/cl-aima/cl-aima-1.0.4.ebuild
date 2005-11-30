@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-aima/cl-aima-1.0.4.ebuild,v 1.1 2005/02/06 00:41:31 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-aima/cl-aima-1.0.4.ebuild,v 1.1.1.1 2005/11/30 10:08:26 chriswhite Exp $
 
 inherit common-lisp eutils
 
@@ -12,7 +12,7 @@ SRC_URI="http://ftp.debian.org/debian/pool/main/c/cl-aima/cl-aima_${PV}.orig.tar
 	http://ftp.debian.org/debian/pool/main/c/cl-aima/cl-aima_${PV}-${DEB_PV}.diff.gz"
 LICENSE="Norvig"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~sparc x86"
 IUSE=""
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp"

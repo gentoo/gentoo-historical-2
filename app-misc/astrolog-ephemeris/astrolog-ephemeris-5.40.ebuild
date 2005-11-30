@@ -1,21 +1,24 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/astrolog-ephemeris/astrolog-ephemeris-5.40.ebuild,v 1.1 2003/12/11 22:25:49 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/astrolog-ephemeris/astrolog-ephemeris-5.40.ebuild,v 1.1.1.1 2005/11/30 10:05:50 chriswhite Exp $
 
 DESCRIPTION="ephemeris files for optional extended accuracy of astrolog's calculations"
 HOMEPAGE="http://www.astrolog.org/astrolog.htm"
 SRC_URI="http://www.astrolog.org/ftp/ephem/ephemall.zip"
+
 LICENSE="astrolog"
 SLOT="0"
-
 # works fine on x86 - runs probably on other architectures, too
-KEYWORDS="~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
+IUSE=""
 
-S="${WORKDIR}"
+DEPEND="app-arch/unzip"
+
+S=${WORKDIR}
 
 DEPEND="app-misc/astrolog"
 
 src_install() {
 	dodir /usr/share/astrolog
-	cp * ${D}/usr/share/astrolog
+	cp * "${D}"/usr/share/astrolog || die "cp failed"
 }

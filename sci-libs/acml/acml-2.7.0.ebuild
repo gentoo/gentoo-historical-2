@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-2.7.0.ebuild,v 1.1 2005/08/31 21:33:40 kugelfang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/acml/acml-2.7.0.ebuild,v 1.1.1.1 2005/11/30 10:09:17 chriswhite Exp $
 
 inherit eutils
 
@@ -15,10 +15,10 @@ SRC_URI="amd64? ( acml-${MY_PV}-gnu-64bit.tgz )
 RESTRICT="fetch nostrip"
 IUSE="sse sse2"
 LICENSE="ACML"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 RDEPEND="virtual/libc
-	app-admin/eselect"
+	>=app-admin/eselect-1.0_rc2"
 PROVIDE="virtual/blas
 	virtual/lapack"
 
@@ -67,7 +67,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "To use ACML's BLAS features, you have to issue (as root):"
-	einfo "\n\t/usr/bin/eclectic blas set ACML"
+	einfo "\n\t/usr/bin/eselect blas set ACML"
 	einfo "To use ACML's LAPACK features, you have to issue (as root):"
-	einfo "\n\t/usr/bin/eclectic lapack set ACML"
+	einfo "\n\t/usr/bin/eselect lapack set ACML"
 }

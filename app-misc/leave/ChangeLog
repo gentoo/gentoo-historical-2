@@ -1,6 +1,19 @@
 # ChangeLog for app-misc/leave
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/leave/ChangeLog,v 1.1 2004/10/17 04:12:03 ka0ttic Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/leave/ChangeLog,v 1.1.1.1 2005/11/30 10:06:08 chriswhite Exp $
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> leave-20041016.ebuild:
+  Stable on ppc.
+
+  10 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  leave-20041016.ebuild:
+  mark ~ppc
+
+  19 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> leave-20041016.ebuild:
+  Marked stable on x86.
+
+  26 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> leave-20041016.ebuild:
+  Use tc-getCC() - bug #68987
 
 *leave-20041016 (17 Oct 2004)
 

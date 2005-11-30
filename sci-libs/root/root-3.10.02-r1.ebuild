@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/root/root-3.10.02-r1.ebuild,v 1.1 2004/12/28 23:01:57 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/root/root-3.10.02-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:20 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -23,7 +23,7 @@ DEPEND="virtual/x11
 	!amd64? ( afs? ( net-fs/openafs ) )
 	kerberos? ( app-crypt/mit-krb5 )
 	ldap? ( net-nds/openldap )
-	qt? ( x11-libs/qt )"
+	qt? ( =x11-libs/qt-3* )"
 
 src_compile() {
 

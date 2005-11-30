@@ -1,20 +1,20 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/eel/eel-2.10.1.ebuild,v 1.1 2005/04/19 02:25:51 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/eel/eel-2.10.1.ebuild,v 1.1.1.1 2005/11/30 10:09:15 chriswhite Exp $
 
-inherit gnome2
+inherit virtualx gnome2
 
 DESCRIPTION="The Eazel Extentions Library"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libart_lgpl-2.3.8
 	>=gnome-base/gconf-1.2
-	>=x11-libs/gtk+-2.3
+	>=x11-libs/gtk+-2.6
 	>=dev-libs/glib-2
 	>=gnome-base/libgnome-2
 	>=gnome-base/libgnomeui-2.7.92
@@ -32,3 +32,12 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog HACKING THANKS README NEWS TODO MAINTAINERS"
 USE_DESTDIR="1"
+
+src_test() {
+	if hasq userpriv ${FEATURES} ;
+	then
+		Xmake check || die
+	else
+		einfo "Not running tests without userpriv"
+	fi
+}

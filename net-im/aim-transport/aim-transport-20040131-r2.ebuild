@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/aim-transport/aim-transport-20040131-r2.ebuild,v 1.1 2004/07/09 17:50:01 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/aim-transport/aim-transport-20040131-r2.ebuild,v 1.1.1.1 2005/11/30 10:09:29 chriswhite Exp $
 
 inherit eutils
 
@@ -16,7 +16,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="~x86 ~sparc ~ppc hppa"
+KEYWORDS="~alpha ~amd64 hppa ~ppc sparc x86"
 
 IUSE=""
 
@@ -31,9 +31,10 @@ src_compile() {
 	einfo
 	einfo "Please ignore any errors/warnings"
 	einfo
+	export WANT_AUTOCONF=2.5
+	aclocal
 	automake
 	libtoolize --force
-	aclocal
 	autoconf
 	./configure --with-jabberd=/usr/include/jabberd || die "./configure failed"
 	emake || die
@@ -53,7 +54,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "Please read /usr/share/doc/${PN}-${PVR}/README.Gentoo.gz"
+	einfo "Please read /usr/share/doc/${PF}/README.Gentoo.gz"
 	einfo "And please notice that now aim-transport comes with a init.d script"
 	einfo "dont forget to add it to your runlevel."
 	einfo

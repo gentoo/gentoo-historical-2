@@ -1,11 +1,26 @@
 # ChangeLog for app-misc/kanatest
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/kanatest/ChangeLog,v 1.1 2004/02/02 16:55:00 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/kanatest/ChangeLog,v 1.1.1.1 2005/11/30 10:05:58 chriswhite Exp $
+
+  13 Oct 2005; Sven Wegener <swegener@gentoo.org> kanatest-0.3.6.ebuild:
+  Added missing pkgconfig dependency.
+
+  21 Jul 2005; David Holm <dholm@gentoo.org> kanatest-0.3.6.ebuild:
+  Added to ~ppc.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> kanatest-0.3.6.ebuild:
+  Stable on ppc64
+
+  04 Dec 2004; Markus Rothe <corsair@gentoo.org> kanatest-0.3.6.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #72914
+
+  01 Apr 2004; Akinori Hattori <hattya@gentoo.org> kanatest-0.3.6.ebuild:
+  marked stable on x86.
 
 *kanatest-0.3.6 (03 Feb 2004)
 
   03 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> kanatest-0.3.6.ebuild,
   metadata.xml:
-  Initial import. Thanks to Jereon Hoek <jereon.hoek@datacenter-friesland.nl>
+  Initial import. Thanks to Jeroen Hoek <jeroen.hoek@datacenter-friesland.nl>
   for submitting the ebuild in bug #39973
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/acpitool/acpitool-0.2.7.ebuild,v 1.1 2005/07/31 10:04:37 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/acpitool/acpitool-0.2.7.ebuild,v 1.1.1.1 2005/11/30 10:05:38 chriswhite Exp $
 
 inherit libtool eutils
 

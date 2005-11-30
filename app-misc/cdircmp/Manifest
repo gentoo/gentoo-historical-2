@@ -1,4 +1,14 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 a9b1dfdda987717cf79cfb7d0eedb151 ChangeLog 853
 MD5 e2197bbca51952701bf182a7c4740f74 metadata.xml 218
-MD5 6e94e3bc540b18ad29a99c8656a0be51 cdircmp-0.3.ebuild.diff 602
-MD5 99c8fb12106a744498ef3204884b5468 cdircmp-0.3.ebuild 684
+MD5 fae979814e66b942daa06abfaf057e32 cdircmp-0.3.ebuild 595
 MD5 48eaa60675e36b005c73c507a6ddcb6b files/digest-cdircmp-0.3 62
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCQEJfugEuf3OQ0akRAq9DAJ9vYRE2A/J+Fdp1IOAVBOVJ/Uyn4QCeINwZ
+lSO/zXkTCoe5K7jjDmBRM44=
+=Mz2c
+-----END PGP SIGNATURE-----

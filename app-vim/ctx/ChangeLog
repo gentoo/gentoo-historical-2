@@ -1,6 +1,24 @@
 # ChangeLog for app-vim/ctx
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/ctx/ChangeLog,v 1.1 2003/08/05 16:23:18 agriffis Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/ctx/ChangeLog,v 1.1.1.1 2005/11/30 10:07:45 chriswhite Exp $
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ctx-1.17.ebuild:
+  Stable on ppc.
+
+  21 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> ctx-1.17.ebuild:
+  Can't install ctx and enhancedcommentify at the same time, bug #74897
+
+  27 Nov 2004; Ciaran McCreesh <ciaranm@gentoo.org> ctx-1.17.ebuild:
+  Added help text, bug #63319
+
+  16 Mar 2004; David Holm <dholm@gentoo.org> ctx-1.17.ebuild:
+  Added to ~ppc.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> ctx-1.17.ebuild:
+  Stable on ia64
+
+  18 Aug 2003; Aron Griffis <agriffis@gentoo.org> ctx-1.17.ebuild:
+  Mark stable on alpha and x86
 
 *ctx-1.17 (05 Aug 2003)
 

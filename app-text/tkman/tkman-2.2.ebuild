@@ -1,13 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tkman/tkman-2.2.ebuild,v 1.1 2003/12/07 12:39:17 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tkman/tkman-2.2.ebuild,v 1.1.1.1 2005/11/30 10:06:24 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="TkMan man and info page browser"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://tkman.sourceforge.net/"
-KEYWORDS="~x86 ~ppc ~sparc "
-SLOT="0"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
 LICENSE="Artistic"
+SLOT="0"
+KEYWORDS="~x86 ~ppc ~sparc"
 IUSE=""
 
 DEPEND=">=app-text/rman-3.1
@@ -17,16 +20,15 @@ DEPEND=">=app-text/rman-3.1
 src_unpack() {
 	unpack ${A}
 	cd ${WORKDIR}
-	patch -p0 <${FILESDIR}/${PF}-gentoo.diff || die
+	epatch ${FILESDIR}/${PF}-gentoo.diff
 }
 
 src_compile() {
 	emake || die
 }
 
-src_install () {
-	mkdir -p ${D}/usr/bin
-
+src_install() {
+	dodir /usr/bin
 	make DESTDIR=${D} install || die
 
 	dodoc ANNOUNCE-tkman.txt CHANGES README-tkman manual.html

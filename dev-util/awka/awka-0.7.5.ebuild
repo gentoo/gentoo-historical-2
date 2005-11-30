@@ -1,17 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/awka/awka-0.7.5.ebuild,v 1.1 2003/08/24 11:19:35 azarah Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/awka/awka-0.7.5.ebuild,v 1.1.1.1 2005/11/30 10:05:22 chriswhite Exp $
 
-DESCRIPTION="An AWK-to-C tranlator."
+DESCRIPTION="An AWK-to-C translator."
 SRC_URI="http://${PN}.sourceforge.net/${P}.tar.gz"
 HOMEPAGE="http://awka.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~sparc ~alpha"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 IUSE=""
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
 

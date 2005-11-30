@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gpdf/gpdf-2.10.0.ebuild,v 1.1 2005/03/09 05:47:16 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gpdf/gpdf-2.10.0.ebuild,v 1.1.1.1 2005/11/30 10:06:29 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ~ia64 mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND=">=x11-libs/gtk+-2.5.4
@@ -38,9 +38,18 @@ src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-	# fix sec vuln (#69662)
+	# Fix sec vuln (#69662)
 	epatch ${FILESDIR}/${PN}-xpdf_goo_sizet.patch
-	# disable the tests, see bug #73882
+	# Fix building on amd64 with gcc4
+	epatch ${FILESDIR}/${P}-amd64-gcc4.patch
+	# Disable the tests, see bug #73882
 	sed -i -e "s:test-files::" Makefile.in
+}
+
+src_install() {
+
+	# fix #92920 FIXME
+	gnome2_src_install scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/
+
 }
 

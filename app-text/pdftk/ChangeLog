@@ -1,6 +1,57 @@
 # ChangeLog for app-text/pdftk
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdftk/ChangeLog,v 1.1 2004/03/14 18:49:33 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pdftk/ChangeLog,v 1.1.1.1 2005/11/30 10:06:30 chriswhite Exp $
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pdftk-1.12.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> pdftk-1.12.ebuild:
+  stable on amd64
+
+  28 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> pdftk-1.12.ebuild:
+  Added to ~ppc.
+
+  10 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> pdftk-1.12.ebuild:
+  added ~amd64 to KEYWORDS. fixes #76754.
+
+  09 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> -pdftk-1.10.ebuild,
+  -pdftk-1.11.ebuild, pdftk-1.12.ebuild:
+  Stable on x86.
+
+*pdftk-1.12 (13 Nov 2004)
+
+  13 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +pdftk-1.12.ebuild:
+  Version bumped.
+
+*pdftk-1.11 (07 Nov 2004)
+
+  07 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +pdftk-1.11.ebuild:
+  Version bumped.
+
+*pdftk-1.10 (30 Oct 2004)
+
+  30 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +pdftk-1.10.ebuild:
+  Version bumped.
+
+  03 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> pdftk-1.00.ebuild:
+  Stable on x86.
+
+*pdftk-1.00 (17 Aug 2004)
+
+  17 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -pdftk-0.93.ebuild,
+  pdftk-0.94.1.ebuild, +pdftk-1.00.ebuild:
+  Version bumped. Marked 0.94.1 stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pdftk-0.93.ebuild,
+  pdftk-0.94.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*pdftk-0.94.1 (06 Jun 2004)
+
+  06 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> pdftk-0.93.ebuild,
+  +pdftk-0.94.1.ebuild:
+  Version bumped. Corrected pkg_setup() message, thanks to antoine
+  marmingnon <antoine.marmingnon@wanadoo.fr>. Closing bug #52898
 
 *pdftk-0.93 (15 Mar 2004)
 

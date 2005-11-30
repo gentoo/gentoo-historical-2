@@ -1,6 +1,27 @@
 # ChangeLog for x11-proto/videoproto
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/videoproto/ChangeLog,v 1.1 2005/08/08 03:33:39 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/videoproto/ChangeLog,v 1.1.1.1 2005/11/30 10:05:42 chriswhite Exp $
+
+*videoproto-2.2.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +videoproto-2.2.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> videoproto-2.2.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> videoproto-2.2.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> videoproto-2.2.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> videoproto-2.2.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
 
 *videoproto-2.2 (08 Aug 2005)
 

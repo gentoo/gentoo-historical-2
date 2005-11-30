@@ -1,23 +1,31 @@
-# Copyright 2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/efxmms/efxmms-0.0.3.ebuild,v 1.1 2002/10/29 13:29:23 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/efxmms/efxmms-0.0.3.ebuild,v 1.1.1.1 2005/11/30 10:07:31 chriswhite Exp $
+
+IUSE=""
+
+inherit gnuconfig
 
 MY_P=${PN/efx/EFX}-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Provides the possibility to send the audio through a queue of multiple effect plugins instead of one effect that XMMS originally handles"
-SRC_URI="mirror://sourceforge/efxmms/${MY_P}.tar.bz2"
 HOMEPAGE="http://sourceforge.net/projects/efxmms"
+SRC_URI="mirror://sourceforge/efxmms/${MY_P}.tar.bz2"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="amd64 ppc sparc x86"
 
 DEPEND="media-sound/xmms"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	gnuconfig_update
+}
 
 src_install() {
-
 	einstall \
-		libdir=${D}/usr/lib/xmms/Effect || die
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README  README.EFX TODO
+		libdir=${D}`xmms-config --effect-plugin-dir` || die
+	dodoc AUTHORS ChangeLog NEWS README README.EFX TODO
 }

@@ -1,6 +1,122 @@
-# ChangeLog for dev-libs/pnetlib
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnetlib/ChangeLog,v 1.1 2003/07/25 01:02:39 scandium Exp $
+# ChangeLog for dev-dotnet/pnetlib
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnetlib/ChangeLog,v 1.1.1.1 2005/11/30 10:06:21 chriswhite Exp $
+
+  05 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> pnetlib-0.6.10.ebuild,
+  pnetlib-0.6.12.ebuild, pnetlib-0.7.0.ebuild:
+  With respect to the keywording policy, this shouldn't be keyworded for alpha
+
+  29 Jun 2005; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
+  pnetlib-0.6.10.ebuild, pnetlib-0.6.12.ebuild, pnetlib-0.7.0.ebuild:
+  We seem to have yet another unfortunate incident of
+  keyword-happy developer. There have been numerous
+  instances of untested unapproved packages being
+  keyworded, this was discussed time and again, the
+  issue is mentioned in developer documentation,
+  added to developer quiz, and voila, we have it again..
+  
+  This time multiple packages in dev-dotnet/ category
+  were marked as mips, ~mips, sparc, ~sparc, as well as
+  working on other arches. It was confirmed that dotnet
+  doesn't even build on most of these, yet they were
+  keyworded. Oh well... There seems to be no way to teach
+  some people.
+  
+  Removing mips and sparc keywords
+
+*pnetlib-0.7.0 (21 Jun 2005)
+
+  21 Jun 2005; Michael Tindal <urilith@gentoo.org>
+  +files/0.7.0-resgen.patch, metadata.xml, +pnetlib-0.7.0.ebuild:
+  Version bump.
+
+  13 May 2005; Peter Johanson <latexer@gentoo.org> pnetlib-0.6.12.ebuild:
+  Remove extraneous elibtoolize call, and use libtoolize + aclocal instead.
+  See bug #92426.
+
+  06 Feb 2005; Rainer Groesslinger <scandium@gentoo.org>
+  pnetlib-0.6.12.ebuild:
+  fix use of DESTDIR (bug #80941)
+
+*pnetlib-0.6.12 (16 Jan 2005)
+
+  16 Jan 2005; Rainer Groesslinger <scandium@gentoo.org>
+  +files/0.6.12-resgen.patch, +files/configure-freetype.patch,
+  +pnetlib-0.6.12.ebuild:
+  new version
+
+  26 Nov 2004; Rainer Groesslinger <scandium@gentoo.org>
+  pnetlib-0.6.10.ebuild:
+  stable on all architectures
+
+*pnetlib-0.6.10 (30 Oct 2004)
+
+  30 Oct 2004; Rainer Groesslinger <scandium@gentoo.org>
+  +pnetlib-0.6.10.ebuild:
+  new version
+
+  16 Aug 2004; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.8.ebuild:
+  stable on x86, ppc and sparc
+
+*pnetlib-0.6.8 (08 Aug 2004)
+
+  08 Aug 2004; Rainer Groesslinger <scandium@gentoo.org>
+  +pnetlib-0.6.8.ebuild:
+  new version
+
+  15 Jun 2004; Jason Wever <weeve@gentoo.org> pnetlib-0.6.6.ebuild:
+  Stable on sparc.
+
+*pnetlib-0.6.6 (29 May 2004)
+
+  29 May 2004; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.6.ebuild:
+  new version
+
+  23 Mar 2004; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.4.ebuild:
+  stable on x86, ppc and sparc
+
+*pnetlib-0.6.4 (13 Mar 2004)
+
+  13 Mar 2004; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.4.ebuild:
+  new version (thanks to all the arch people!)
+
+*pnetlib-0.6.2 (03 Jan 2004)
+
+  03 Jan 2004; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.2.ebuild:
+  new version
+
+*pnetlib-0.6.0.1 (25 Oct 2003)
+
+  25 Oct 2003; Rainer Groesslinger <scandium@gentoo.org>
+  pnetlib-0.6.0.1.ebuild:
+  new tarball which includes the resources fix
+
+  19 Oct 2003; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.0.ebuild:
+  stable on all archs
+
+  17 Oct 2003; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.0.ebuild,
+  files/pnetlib-0.6.0.resources.patch:
+  Added a fix to make foreign language support work properly
+
+  15 Oct 2003; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.0.ebuild:
+  added ~sparc to keywords
+
+*pnetlib-0.6.0 (15 Oct 2003)
+
+  15 Oct 2003; Rainer Groesslinger <scandium@gentoo.org> pnetlib-0.6.0.ebuild:
+  new version
+
+*pnetlib-0.5.12 (06 Sep 2003)
+
+  06 Sep 2003; Rainer Groesslinger <scandium@gentoo.org>
+  pnetlib-0.5.12.ebuild:
+  new version
+
+*pnetlib-0.5.10 (26 Jul 2003)
+
+  26 Jul 2003; Rainer Groesslinger <scandium@gentoo.org>
+  pnetlib-0.5.10.ebuild:
+  new version
 
 *pnetlib-0.5.8 (25 Jul 2003)
 

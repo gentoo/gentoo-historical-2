@@ -1,6 +1,22 @@
 # ChangeLog for app-misc/nut
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/nut/ChangeLog,v 1.1 2004/10/30 03:53:10 agriffis Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/nut/ChangeLog,v 1.1.1.1 2005/11/30 10:06:01 chriswhite Exp $
+
+*nut-11.0 (04 Oct 2005)
+
+  04 Oct 2005; Aron Griffis <agriffis@gentoo.org> -nut-10.7.ebuild,
+  nut-10.15.ebuild, +nut-11.0.ebuild:
+  Bump to 11.0 (from 10.15), adding ~alpha and ~amd64 in the process.
+  Mark 10.15 stable on x86.  Remove 10.7
+
+  10 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> nut-10.15.ebuild:
+  mark ~ppc
+
+*nut-10.15 (18 Feb 2005)
+
+  18 Feb 2005; Aron Griffis <agriffis@gentoo.org> +nut-10.15.ebuild,
+  nut-10.7.ebuild:
+  Stabilize 10.7 and update to 10.15 #82397
 
 *nut-10.7 (29 Oct 2004)
 

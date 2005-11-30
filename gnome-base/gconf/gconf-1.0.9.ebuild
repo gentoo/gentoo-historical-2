@@ -1,15 +1,12 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gconf/gconf-1.0.9.ebuild,v 1.1 2004/02/04 15:34:05 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gconf/gconf-1.0.9.ebuild,v 1.1.1.1 2005/11/30 10:09:00 chriswhite Exp $
 
-inherit libtool gnome.org
-
-IUSE="nls"
+inherit libtool gnome.org eutils gnuconfig
 
 MY_PN=GConf
 MY_P=${MY_PN}-${PV}
-PVP=($(echo " $PV " | sed 's:[-\._]: :g'))
-S=${WORKDIR}/GConf-${PV}
+PVP=(${PV//[-\._]/ })
 
 S=${WORKDIR}/${MY_P}
 
@@ -17,9 +14,10 @@ DESCRIPTION="Gnome Configuration System and Daemon"
 HOMEPAGE="http://www.gnome.org/"
 SRC_URI="mirror://gnome/sources/${MY_PN}/${PVP[0]}.${PVP[1]}/${MY_P}.tar.bz2"
 
-SLOT="1"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64"
+SLOT="1"
+KEYWORDS="~alpha amd64 arm hppa ia64 mips ppc ppc64 ~sparc x86"
+IUSE="nls"
 
 DEPEND="dev-util/indent
 	=dev-libs/glib-1.2*
@@ -27,32 +25,28 @@ DEPEND="dev-util/indent
 	dev-libs/libxml
 	dev-libs/popt
 	gnome-base/oaf
-	gnome-base/ORBit"
-
+	=gnome-base/orbit-0*"
 RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )"
 
-MAKEOPTS="${MAKEOPTS} -j1"
-
-src_unpack () {
+src_unpack() {
 	unpack ${A}
 	EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/gconfd-2-fix.patch
 	epatch ${FILESDIR}/${P}-locallock_mdk.patch
+
+	mkdir ${S}/intl
+	touch ${S}/intl/libgettext.h
+
+	elibtoolize
+	gnuconfig_update
 }
 
 src_compile() {
-	elibtoolize
-
-	use nls	\
-		&& mkdir intl			\
-		&& touch intl/libgettext.h
-		
-	econf $(use_enable nls)
-	emake || die "make failed"
+	econf $(use_enable nls) || die "econf failed"
+	emake -j1 || die "make failed"
 }
 
 src_install() {
-
 	make DESTDIR=${D} install || die "install failed"
 
 	# gconf 1.0.8 seems to gets the perms wrong on this dir.
@@ -60,8 +54,7 @@ src_install() {
 	# keep this mandatory dir
 	keepdir /etc/gconf/gconf.xml.mandatory/.keep${SLOT}
 	# this fix closes bug #803
-	dodoc AUTHORS COPYING ChangeLog NEWS README* TODO
-
+	dodoc AUTHORS ChangeLog NEWS README* TODO
 }
 
 pkg_postinst() {

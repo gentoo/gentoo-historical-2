@@ -1,6 +1,21 @@
-# ChangeLog for sys-apps/i8kutils
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/i8kutils/ChangeLog,v 1.1 2004/03/08 05:28:47 latexer Exp $
+# ChangeLog for app-laptop/i8kutils
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/i8kutils/ChangeLog,v 1.1.1.1 2005/11/30 10:05:40 chriswhite Exp $
+
+  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  i8kutils-1.17-r1.ebuild, i8kutils-1.17.ebuild, i8kutils-1.25.ebuild:
+  added -* since Dell only makes x86 and amd64 hardware
+
+  31 Mar 2005; <blubb@gentoo.org> i8kutils-1.25.ebuild:
+  stable on amd64
+
+  08 Dec 2004; Olivier Crete <tester@gentoo.org> i8kutils-1.25.ebuild:
+  Mark stable on x86 since 1.17 doesnt build on 2.6.. Fixes bug 58093
+
+*i8kutils-1.25 (04 Aug 2004)
+
+  04 Aug 2004; Karol Wojtaszek <sekretarz@gentoo.org> +i8kutils-1.25.ebuild:
+  Version bump, fixing SRC_URI
 
 *i8kutils-1.17 (08 Mar 2004)
 

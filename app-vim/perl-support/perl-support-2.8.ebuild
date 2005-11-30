@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/perl-support/perl-support-2.8.ebuild,v 1.1 2005/11/16 12:42:04 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/perl-support/perl-support-2.8.ebuild,v 1.1.1.1 2005/11/30 10:07:43 chriswhite Exp $
 
 inherit vim-plugin
 

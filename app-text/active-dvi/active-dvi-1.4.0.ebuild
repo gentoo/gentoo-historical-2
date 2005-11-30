@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/active-dvi-1.4.0.ebuild,v 1.1 2003/11/06 15:43:35 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/active-dvi-1.4.0.ebuild,v 1.1.1.1 2005/11/30 10:06:39 chriswhite Exp $
+
+inherit eutils
 
 MY_PN=${PN/ctive-/}
 MY_P=${MY_PN}-${PV}
@@ -8,17 +10,19 @@ S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="A DVI previewer and a presenter for slides written in LaTeX"
 SRC_URI="ftp://ftp.inria.fr/INRIA/Projects/cristal/${MY_PN}/${MY_P}.tar.gz"
-HOMEPAGE="http://pauillac.inria.fr/${MY_PN}/"
+HOMEPAGE="http://pauillac.inria.fr/advi/"
 LICENSE="LGPL-2.1"
 
 IUSE="cjk tcltk"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 DEPEND=">=dev-lang/ocaml-3.04
 	>=dev-ml/camlimages-2.11
 	virtual/tetex
-	>=app-text/ghostscript-6.52"
+	virtual/ghostscript"
+RDEPEND="${DEPEND}
+	cjk? ( media-fonts/kochi-substitute )"
 
 DOCS="README TODO"
 
@@ -26,7 +30,7 @@ pkg_setup() {
 
 	# warn those who have USE="tcltk" but no ocaml tcltk support
 	# because we cant force ocaml to be build with tcltk.
-	if [ `use tcltk` ]; then
+	if use tcltk; then
 		if [ ! -d /usr/lib/ocaml/labltk ]; then
 
 			echo ""
@@ -40,7 +44,7 @@ pkg_setup() {
 			echo ""
 			# give the user some time to read this, but leave the
 			# choice up to them
-			sleep 8
+			epause 8
 
 		fi
 	fi
@@ -54,11 +58,18 @@ src_unpack() {
 	# the sandbox if we try and run it during emerge
 	sed -i -e "s/texhash//" ${S}/Makefile
 
+	if use cjk ; then
+		local fp=/usr/X11R6/lib/X11/fonts/truetype
+		sed -i -e "s%msmincho.ttc%${fp}/kochi-mincho-subst.ttf%g" \
+			-e "s%msgothic.ttc%${fp}/kochi-gothic-subst.ttf%g" \
+			${S}/conf/jpfonts.conf
+	fi
+
 }
 
 src_compile() {
 
-	econf || die
+	econf --with-camlimages=/usr/lib/ocaml/site-packages/camlimages || die
 	emake || die
 
 }
@@ -84,7 +95,7 @@ src_install() {
 
 pkg_postinst() {
 
-	if [ `use cjk` ]; then
+	if use cjk; then
 
 		echo ""
 		einfo "If you wish to use Japanese True Type fonts with"

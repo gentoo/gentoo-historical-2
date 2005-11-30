@@ -1,4 +1,3 @@
-PATH=/usr/winex/bin
-ROOTPATH=/usr/winex/bin
-LDPATH=/usr/winex/lib
-MANPATH=/usr/winex/man
+PATH=/usr/lib/winex/bin
+ROOTPATH=/usr/lib/winex/bin
+LDPATH=/usr/lib/winex/lib

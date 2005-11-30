@@ -1,6 +1,9 @@
 # ChangeLog for dev-util/sgb
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/sgb/ChangeLog,v 1.1 2004/01/11 08:19:20 robbat2 Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/sgb/ChangeLog,v 1.1.1.1 2005/11/30 10:05:12 chriswhite Exp $
+
+  07 May 2005; David Holm <dholm@gentoo.org> sgb-20030623.ebuild:
+  Added to ~ppc.
 
 *sgb-20030623 (11 Jan 2004)
 

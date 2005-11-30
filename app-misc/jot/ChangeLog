@@ -1,6 +1,29 @@
 # ChangeLog for app-misc/jot
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jot/ChangeLog,v 1.1 2003/04/22 21:11:33 avenj Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jot/ChangeLog,v 1.1.1.1 2005/11/30 10:06:12 chriswhite Exp $
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> jot-9.0.ebuild:
+  Stable on ppc.
+
+  09 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> jot-9.0.ebuild:
+  mark ~ppc
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> jot-9.0.ebuild:
+  stable on amd64
+
+  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Add metadata (shell-tools)
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> jot-9.0.ebuild:
+  Marked ~amd64.
+
+  07 Oct 2003; Joel Hill <hillster@gentoo.org> jot-9.0.ebuild:
+  marking stable.
+
+*jot-9.0 (21 Jun 2003)
+
+  21 Jun 2003; Alastair Tse <liquidx@gentoo.org> jot-9.0.ebuild:
+  converted to use rpm.eclass and other cleanups
 
 *jot-0.9 (22 Apr 2003)
 

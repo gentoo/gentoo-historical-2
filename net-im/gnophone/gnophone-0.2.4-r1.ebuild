@@ -1,26 +1,27 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnophone/gnophone-0.2.4-r1.ebuild,v 1.1 2004/02/17 17:37:54 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnophone/gnophone-0.2.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:33 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="internet telephone"
 HOMEPAGE="http://www.gnophone.com/"
 SRC_URI="ftp://ftp.gnophone.com/pub/gnophone/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
-IUSE=""
+IUSE="esd mozilla"
 DEPEND="media-sound/gsm
 	net-libs/iax
 	media-sound/sox
-	mozilla? ( net-www/mozilla )
+	mozilla? ( www-client/mozilla )
 	esd? ( media-sound/esound )
 	x11-libs/gtk+
 	media-libs/gdk-pixbuf
 	dev-libs/glib
-	x11-base/xfree
 	media-libs/imlib
-	virtual/glibc"
+	virtual/libc"
 
 
 D_PREFIX=/usr

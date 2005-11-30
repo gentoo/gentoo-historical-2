@@ -1,6 +1,73 @@
 # ChangeLog for dev-dotnet/gnomevfs-sharp
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gnomevfs-sharp/ChangeLog,v 1.1 2005/04/02 01:21:20 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gnomevfs-sharp/ChangeLog,v 1.1.1.1 2005/11/30 10:06:23 chriswhite Exp $
+
+*gnomevfs-sharp-2.6.0 (08 Nov 2005)
+*gnomevfs-sharp-2.4.0 (08 Nov 2005)
+
+  08 Nov 2005; Peter Johanson <latexer@gentoo.org>
+  -gnomevfs-sharp-2.3.91.ebuild, +gnomevfs-sharp-2.4.0.ebuild,
+  -gnomevfs-sharp-2.5.91.ebuild, +gnomevfs-sharp-2.6.0.ebuild:
+  Final releases of new *-sharp-2.4 and 2.6 stuff, and remove one older
+  pre-release of both.
+
+  16 Oct 2005; Peter Johanson <latexer@gentoo.org>
+  -gnomevfs-sharp-2.3.90.ebuild, -gnomevfs-sharp-2.5.90.ebuild:
+  Remove a few older versions.
+
+*gnomevfs-sharp-2.5.92 (16 Oct 2005)
+*gnomevfs-sharp-2.3.92 (16 Oct 2005)
+
+  16 Oct 2005; Peter Johanson <latexer@gentoo.org>
+  +gnomevfs-sharp-2.3.92.ebuild, +gnomevfs-sharp-2.5.92.ebuild:
+  Bump.
+
+*gnomevfs-sharp-2.5.91 (16 Sep 2005)
+*gnomevfs-sharp-2.3.91 (16 Sep 2005)
+
+  16 Sep 2005; Peter Johanson <latexer@gentoo.org>
+  +gnomevfs-sharp-2.3.91.ebuild, +gnomevfs-sharp-2.5.91.ebuild:
+  Bump.
+
+*gnomevfs-sharp-2.5.90 (17 Aug 2005)
+*gnomevfs-sharp-2.3.90 (17 Aug 2005)
+
+  17 Aug 2005; Peter Johanson <latexer@gentoo.org>
+  -gnomevfs-sharp-1.9.3.1.ebuild, -gnomevfs-sharp-1.9.5.ebuild,
+  +gnomevfs-sharp-2.3.90.ebuild, -gnomevfs-sharp-2.5.5.ebuild,
+  +gnomevfs-sharp-2.5.90.ebuild:
+  Bump to new beta releases, and clean out lots of older stuff.
+
+  21 May 2005; Tom Martin <slarti@gentoo.org> gnomevfs-sharp-2.5.5.ebuild:
+  Marked ~amd64.
+
+  20 May 2005; Peter Johanson <latexer@gentoo.org>
+  -gnomevfs-sharp-1.9.2.ebuild, -gnomevfs-sharp-1.9.3.ebuild:
+  Remove some older versions.
+
+*gnomevfs-sharp-1.9.5 (20 May 2005)
+
+  20 May 2005; Peter Johanson <latexer@gentoo.org>
+  +gnomevfs-sharp-1.9.5.ebuild:
+  Bump.
+
+*gnomevfs-sharp-2.5.5 (18 May 2005)
+
+  18 May 2005; Peter Johanson <latexer@gentoo.org>
+  +gnomevfs-sharp-2.5.5.ebuild:
+  Bump.
+
+*gnomevfs-sharp-1.9.3.1 (13 May 2005)
+
+  13 May 2005; Peter Johanson <latexer@gentoo.org>
+  +gnomevfs-sharp-1.9.3.1.ebuild:
+  Bump.
+
+*gnomevfs-sharp-1.9.3 (05 May 2005)
+
+  05 May 2005; Peter Johanson <latexer@gentoo.org>
+  +gnomevfs-sharp-1.9.3.ebuild:
+  Bump.
 
 *gnomevfs-sharp-1.9.2 (02 Apr 2005)
 

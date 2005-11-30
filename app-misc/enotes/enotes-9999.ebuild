@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/enotes/enotes-9999.ebuild,v 1.1 2005/09/07 01:23:02 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/enotes/enotes-9999.ebuild,v 1.1.1.1 2005/11/30 10:06:01 chriswhite Exp $
 
 ECVS_MODULE="misc/enotes"
 inherit enlightenment

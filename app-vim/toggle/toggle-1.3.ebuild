@@ -1,10 +1,15 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/toggle/toggle-1.3.ebuild,v 1.1 2004/02/07 18:52:11 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/toggle/toggle-1.3.ebuild,v 1.1.1.1 2005/11/30 10:07:40 chriswhite Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: quickly toggle boolean-type keywords"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=895"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~mips"
+KEYWORDS="x86 sparc mips ppc alpha ia64"
+IUSE=""
+
+VIM_PLUGIN_HELPTEXT=\
+"This plugin will toggle true/false, on/off, yes/no and so on when <C-T>
+is pressed."

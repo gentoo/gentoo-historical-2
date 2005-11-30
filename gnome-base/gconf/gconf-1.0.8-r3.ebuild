@@ -1,30 +1,34 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Seemant Kulleen <seemant@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gconf/gconf-1.0.8-r3.ebuild,v 1.1 2002/04/24 08:04:24 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gconf/gconf-1.0.8-r3.ebuild,v 1.1.1.1 2005/11/30 10:08:59 chriswhite Exp $
 
 S=${WORKDIR}/GConf-${PV}
 DESCRIPTION="Gconf"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/GConf/GConf-${PV}.tar.gz"
 HOMEPAGE="http://www.gnome.org/"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/GConf/1.0/GConf-${PV}.tar.gz"
 
-RDEPEND=">=sys-libs/db-3.2.3h 
-	nls? ( sys-devel/gettext )"
+LICENSE="LGPL-2.1"
+SLOT="1"
+KEYWORDS="x86 ppc sparc"
+IUSE="nls"
 
-DEPEND="${RDEPEND} 
+RDEPEND="nls? ( sys-devel/gettext )"
+
+DEPEND="${RDEPEND}
 	>=dev-util/guile-1.4
 	dev-util/indent
-	dev-libs/glib
+	=dev-libs/glib-1.2*
+	=x11-libs/gtk+-1.2*
 	dev-libs/libxml
 	dev-libs/popt
 	gnome-base/oaf
-	gnome-base/ORBit"
+	=gnome-base/orbit-0*"
 
 src_compile() {
 	local myconf
-	
+
 	libtoolize --copy --force
-	
+
 	use nls	\
 		|| myconf="--disable-nls"	\
 		&& mkdir intl			\

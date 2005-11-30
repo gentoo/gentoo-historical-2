@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-3.1.2.ebuild,v 1.1 2004/12/09 03:08:12 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-3.1.2.ebuild,v 1.1.1.1 2005/11/30 10:05:26 chriswhite Exp $
 
 inherit python kde eutils
 
@@ -12,7 +12,7 @@ DESCRIPTION="KDevelop is an easy to use C/C++ IDE for Unix. It supports KDE/Qt, 
 SRC_URI="mirror://kde/stable/3.3.2/src/${MY_P}.tar.bz2"
 HOMEPAGE="http://www.kdevelop.org"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="x86 sparc ppc amd64"
 SLOT=3
 
 DEPEND="dev-lang/perl
@@ -53,12 +53,12 @@ einfo
 einfo "kde-base/kdebase:			(RECOMMENDED) embed konsole kpart in kdevelop ide"
 einfo "kde-base/kdesdk:				(RECOMMENDED) use kompare widget for showing the output of diff, cvs support"
 einfo "dev-util/kdbg:				(RECOMMENDED) kde frontend to gdb"
-einfo "dev-util/valgind:			(RECOMMENDED) integrates valgrind (memory debugger) commands"
+einfo "dev-util/valgrind:			(RECOMMENDED) integrates valgrind (memory debugger) commands"
 einfo "dev-util/cvs dev-util/subversion:	provide frontend for cvs version control system"
 einfo ">=dev-util/ctags-5:			faster and more powerful code browsing logic"
 einfo "app-doc/doxygen:				generate KDE-style documentation for your project"
 einfo "app-misc/glimpse:			index and search your project's documentation"
-einfo "net-www/htdig:				ditto. yet another supported indexing/searching backend"
+einfo "www-misc/htdig:				ditto. yet another supported indexing/searching backend"
 einfo "app-arch/rpm:				supports creating RPMs of your project"
 einfo "app-emulation/visualboyadvance		create and run projects for this gameboy"
 einfo

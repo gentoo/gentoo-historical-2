@@ -1,20 +1,29 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/winesetuptk/winesetuptk-0.7.ebuild,v 1.1 2003/11/08 08:43:16 coronalvr Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/winesetuptk/winesetuptk-0.7.ebuild,v 1.1.1.1 2005/11/30 10:08:58 chriswhite Exp $
+
+inherit eutils
 
 MY_P1=tcltk-${P}
 MY_P=${P/-/}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="Setup tool for WiNE adapted from Codeweavers by Debian"
+HOMEPAGE="http://www.winehq.org/"
 SRC_URI="mirror://sourceforge/wine/winesetuptk-0.7.tar.gz"
-HOMEPAGE="http://www.winehq.org"
 
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="amd64 x86"
+IUSE=""
 
 DEPEND="virtual/x11"
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-perms.patch
+}
 
 src_compile() {
 	cd ${S}/${MY_P1}
@@ -37,7 +46,7 @@ src_compile() {
 	make || die "make failed"
 }
 
-src_install () {
+src_install() {
 	cd ${S}/${P}
 	make \
 		PREFIX_LAUNCHER=${D}/usr/bin \

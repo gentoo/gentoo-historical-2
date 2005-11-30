@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_loopback/mod_loopback-2.01-r1.ebuild,v 1.1 2005/01/09 10:25:57 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_loopback/mod_loopback-2.01-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:52 chriswhite Exp $
 
 inherit eutils apache-module
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.snert.com/Software/mod_loopback/index.shtml"
 SRC_URI="http://www.snert.com/Software/download/${PN}201.tgz"
 
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~ppc64"
+KEYWORDS="ppc ppc64 x86"
 IUSE=""
 SLOT="2"
 

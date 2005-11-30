@@ -1,18 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-text/rpl/rpl-1.4.0.ebuild,v 1.1 2002/08/03 17:23:01 aliz Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/rpl/rpl-1.4.0.ebuild,v 1.1.1.1 2005/11/30 10:06:36 chriswhite Exp $
 
 DESCRIPTION="rpl is a UN*X text replacement utility. It will replace strings with new strings in multiple text files. It can work recursively"
 HOMEPAGE="http://www.laffeycomputer.com/rpl.html"
 SRC_URI="http://downloads.laffeycomputer.com/current_builds/${P}.tar.gz"
-S=${WORKDIR}/${P}
 
-LICENSE="GPL"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~mips ppc ~ppc-macos sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc"
-RDEPEND="${DEPEND}"
+DEPEND="virtual/libc"
 
 src_install () {
 	dobin src/rpl

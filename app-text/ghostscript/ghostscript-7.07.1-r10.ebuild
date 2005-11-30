@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript/ghostscript-7.07.1-r10.ebuild,v 1.1 2005/09/01 17:20:27 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript/ghostscript-7.07.1-r10.ebuild,v 1.1.1.1 2005/11/30 10:06:41 chriswhite Exp $
 
 inherit flag-o-matic eutils toolchain-funcs libtool
 
@@ -12,14 +12,17 @@ SRC_URI="mirror://sourceforge/espgs/espgs-${PV}-source.tar.bz2
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~ppc-macos ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ppc-macos ~s390 ~sparc ~x86"
 IUSE="X cups cjk emacs gtk"
 
 DEP="virtual/libc
 	>=media-libs/jpeg-6b
 	>=media-libs/libpng-1.2.1
 	>=sys-libs/zlib-1.1.4
-	X? ( virtual/x11 )
+	X? ( || ( (
+			x11-libs/libX11
+			x11-libs/libXt )
+		virtual/x11 ) )
 	gtk? ( >=x11-libs/gtk+-2.0 )
 	cups? ( net-print/cups )
 	!virtual/ghostscript"
@@ -28,9 +31,19 @@ RDEPEND="${DEP}
 	cjk? ( media-fonts/arphicfonts
 		media-fonts/kochi-substitute
 		media-fonts/baekmuk-fonts )
+	X? ( || ( (
+			x11-libs/libXt
+			x11-libs/libSM
+			x11-libs/libICE
+			x11-libs/libXau
+			x11-libs/libXdmcp )
+		virtual/x11 ) )
 	media-fonts/gnu-gs-fonts-std"
 
 DEPEND="${DEP}
+	X? ( || ( (
+			x11-proto/xproto )
+		virtual/x11 ) )
 	gtk? ( dev-util/pkgconfig )"
 
 #	media-libs/fontconfig"
@@ -67,10 +80,10 @@ src_unpack() {
 
 	# add fontconfig support (this patch is broken)
 	# epatch ${FILESDIR}/gs7.07.1-fontconfig-rh.patch.2.bz2
-	
+
 	#100808
 	epatch ${FILESDIR}/${P}-64bit-cmyk.patch
-	
+
 	# man page patch from absinthe@pobox.com (Dylan Carlson) bug #14150
 	epatch ${FILESDIR}/ghostscript-7.05.6.man.patch
 

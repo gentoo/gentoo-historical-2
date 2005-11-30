@@ -1,8 +1,54 @@
 # ChangeLog for media-plugins/xmms-spc
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-spc/ChangeLog,v 1.1 2002/10/31 14:47:27 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-spc/ChangeLog,v 1.1.1.1 2005/11/30 10:07:23 chriswhite Exp $
+
+  30 Oct 2005; Luis Medinas <metalgod@gentoo.org> xmms-spc-0.2.1-r1.ebuild:
+  Fix package by adding eautoreconf before elibtoolize. Fixes bug #97046.
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  xmms-spc-0.2.1-r1.ebuild:
+  Don't install COPYING file.
+
+  03 May 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/xmms-spc-0.2.1-amd64.patch, xmms-spc-0.2.1-r1.ebuild:
+  Added amd64 patch and added to ~amd64.  Closes bug #66595.
+
+  11 Mar 2005; David Holm <dholm@gentoo.org> xmms-spc-0.2.1-r1.ebuild:
+  Masked on ppc, sound corrupted
+
+  31 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/xmms-spc-0.2.1.patch:
+  Removing old version.  Marking -amd64 for bug #66595.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-spc-0.2.1-r1.ebuild:
+  multilib fixes.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-spc-0.2.1-r1.ebuild:
+  Stable amd64 x86.
+
+*xmms-spc-0.2.1-r1 (07 Jul 2004)
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-spc-0.2.1-r1.ebuild, files/xmms-spc-0.2.1-r1.patch:
+  -sparc.  auto* update so it builds shared library properly.
+
+  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-spc-0.2.1.ebuild:
+  gnuconfig update for ~amd64 addition.
+
+  17 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xmms-spc-0.2.1.ebuild:
+  epatch.  IUSE.
 
 *xmms-spc-0.2.1 (31 Oct 2002)
+
+  14 Mar 2003; jje <jje@gentoo.org> xmms-spc-0.2.1.ebuild,
+  files/xmms-spc-0.2.1.patch:
+  Updated to patch makefiles. Unable to test as i don't have any of the media.
+  
+  Submitted by: Adam Duck
 
   31 Oct 2002; Seemant Kulleen <seemant@gentoo.org> xmms-spc-0.2.1.ebuild
   ChangeLog files/digest-xmms-spc-0.2.1 :

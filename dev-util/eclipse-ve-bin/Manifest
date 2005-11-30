@@ -1,4 +1,14 @@
-MD5 e7451e91362cb63f45250eed5b95f435 eclipse-ve-bin-1.0_rc1.ebuild 806
-MD5 4c4c9a63b7b79bba43faaecd95bf4c2b ChangeLog 304
-MD5 0637a933ecb6e8cedfc4ddfcf3491728 metadata.xml 310
-MD5 6b94fee9902ad1f933156392a4a686c7 files/digest-eclipse-ve-bin-1.0_rc1 66
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 45b97d3ef66ce51ede6a75545b6375d1 ChangeLog 1116
+MD5 5d570fc39697cf3e8a12d5e55fda9036 metadata.xml 524
+MD5 6cccb34befd282a83d4b269a7d92c607 eclipse-ve-bin-1.0.2.ebuild 940
+MD5 588279a6a5ffd08b44eda74f99e75b89 files/digest-eclipse-ve-bin-1.0.2 66
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.0 (GNU/Linux)
+
+iD8DBQFCXrXv06ebR+OMO78RAs9PAJ9RFC9EdqA5c7ZddakCPXzBoqLc7wCfbxSb
+5RETIGLiP+WblONZ2zZXNFk=
+=pNTu
+-----END PGP SIGNATURE-----

@@ -1,2 +1,21 @@
-MD5 556b4c6bb6812bbdededca4b84898d2b xmms-imms-0.9.ebuild 701
-MD5 a8e4609e61ef28f2de2730e8bc335e88 files/digest-xmms-imms-0.9 60
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 aa9bd491ba838cd2fe85f543da2cce76 ChangeLog 5285
+MD5 5df9e65314a9dae9eedbc8b26184ef14 xmms-imms-2.0.3.ebuild 1329
+MD5 4a6da9485c3db1f29a0f758ca558b38f xmms-imms-2.1.1.ebuild 1374
+MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
+MD5 f8356d9dffef5efc10dc3fad043fab95 xmms-imms-2.0.2.ebuild 1334
+MD5 49ca58eddd51ca3315cbb1c12a4ceff6 files/2.0.2-xorg.patch 383
+MD5 b635e4c80bb35a3474138dc317541714 files/2.1.1-xorg.patch 442
+MD5 5c71298a389ce9bcee576b62ef169c59 files/digest-xmms-imms-2.0.3 62
+MD5 3d1f3a0eb7144d8230e55f5968e0cd96 files/digest-xmms-imms-2.0.2 62
+MD5 b0477768a83c635b2cc2cc6a48bcc17c files/digest-xmms-imms-2.1.1 62
+MD5 e5403b0fc1232e7de884fe7af6d709e0 files/2.0.3-xorg.patch 271
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDIYB4j5H05b2HAEkRAqNDAJsFkLIS8mX6kmnBdPV+FO8wqjPxOgCfQeiT
+wghREPjiUrJmmQZvcW8RlZI=
+=XnDH
+-----END PGP SIGNATURE-----

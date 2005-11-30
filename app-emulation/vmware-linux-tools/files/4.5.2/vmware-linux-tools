@@ -3,7 +3,7 @@
 # Copyright (C) 1998-2002 VMware, Inc.  All Rights Reserved.
 # Updated by stuart@gentoo.org to support Gentoo Linux
 #
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-linux-tools/files/4.5.2/vmware-linux-tools,v 1.1 2005/02/18 00:38:09 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-linux-tools/files/4.5.2/vmware-linux-tools,v 1.1.1.1 2005/11/30 10:08:52 chriswhite Exp $
 #
 # This script manages the services needed to run VMware software
 

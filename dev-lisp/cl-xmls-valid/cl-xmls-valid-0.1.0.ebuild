@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-xmls-valid/cl-xmls-valid-0.1.0.ebuild,v 1.1 2005/02/10 19:10:24 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-xmls-valid/cl-xmls-valid-0.1.0.ebuild,v 1.1.1.1 2005/11/30 10:08:22 chriswhite Exp $
 
 inherit common-lisp
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.bobturf.org/software/xmls-valid/
 SRC_URI="http://www.bobturf.org/software/xmls-valid/xmls-valid-${PV}.tar.gz"
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE=""
 DEPEND="dev-lisp/cl-kmrcl"
 

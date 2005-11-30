@@ -1,41 +1,41 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/gMOO/gMOO-0.4.8-r1.ebuild,v 1.1 2003/09/10 19:03:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/gMOO/gMOO-0.4.8-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:14 chriswhite Exp $
 
-IUSE="nls tcltk"
-
-S=${WORKDIR}/${P}
 DESCRIPTION="GTK+ Based MOO client"
-SRC_URI="http://www.nowmoo.demon.nl/packages/${P}.tar.gz"
 HOMEPAGE="http://www.nowmoo.demon.nl/"
-KEYWORDS="x86"
+SRC_URI="http://www.nowmoo.demon.nl/packages/${P}.tar.bz2"
+
+KEYWORDS="x86 ppc ~amd64"
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="nls tcltk"
 
-DEPEND="virtual/glibc
-	>=x11-base/xfree-4.1.0
+RDEPEND="virtual/libc
+	virtual/x11
 	=x11-libs/gtk+-1.2*
 	tcltk? ( dev-lang/tcl )"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	use nls && patch -l -p0 <${FILESDIR}/gMOO.patch
+	sed -i \
+		-e "s/-ltcl8.0/-ltcl/" configure \
+			|| die "sed configure failed"
 }
 
 src_compile() {
-	local myconf=""
-
-	use tcltk || myconf="${myconf} --disable-tcl"
-
-	use nls	|| myconf="${myconf} --disable-nls"
-
-	./configure --prefix=/usr --mandir=/usr/share/man --host=${CHOST} ${myconf} || die
-
-	make || die
+	econf \
+		$(use_enable nls) \
+		$(use_enable tcltk tcl) \
+			|| die "configure failed"
+	emake || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
-	dodoc README INSTALL COPYING VERSION NEWS TODO ChangeLog ABOUT-NLS
+	make DESTDIR="${D}" install || die "make install failed"
+	dodoc README VERSION NEWS TODO ChangeLog || die "dodoc failed"
 }

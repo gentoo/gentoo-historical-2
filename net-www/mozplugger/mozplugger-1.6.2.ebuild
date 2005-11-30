@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mozplugger/mozplugger-1.6.2.ebuild,v 1.1 2004/11/14 19:59:22 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mozplugger/mozplugger-1.6.2.ebuild,v 1.1.1.1 2005/11/30 10:07:51 chriswhite Exp $
 
 inherit nsplugins
 
@@ -18,12 +18,11 @@ DEPEND="virtual/libc"
 RDEPEND="${DEPEND}
 	!virtual/plugger
 	|| (
-		net-www/mozilla
-		net-www/mozilla-bin
-		net-www/mozilla-firefox
-		net-www/mozilla-firefox-bin
+		www-client/mozilla
+		www-client/mozilla-bin
+		www-client/mozilla-firefox
+		www-client/mozilla-firefox-bin
 	)"
-PROVIDE="virtual/plugger"
 
 src_compile()
 {

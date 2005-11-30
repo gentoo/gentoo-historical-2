@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-user/qemu-user-0.7.0-r1.ebuild,v 1.1 2005/06/18 11:59:55 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu-user/qemu-user-0.7.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:49 chriswhite Exp $
 
 inherit eutils flag-o-matic
 

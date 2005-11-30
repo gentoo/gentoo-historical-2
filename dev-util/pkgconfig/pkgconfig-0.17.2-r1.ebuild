@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/pkgconfig/pkgconfig-0.17.2-r1.ebuild,v 1.1 2005/05/15 00:46:09 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pkgconfig/pkgconfig-0.17.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:09 chriswhite Exp $
 
 inherit flag-o-matic gnome.org
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://pkgconfig.freedesktop.org/wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~ppc-macos ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc-macos ppc64 s390 sh sparc x86"
 IUSE="hardened"
 
 DEPEND=""

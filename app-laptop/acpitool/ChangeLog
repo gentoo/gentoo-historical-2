@@ -1,6 +1,30 @@
 # ChangeLog for app-laptop/acpitool
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/acpitool/ChangeLog,v 1.1 2004/09/27 19:33:21 sekretarz Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/acpitool/ChangeLog,v 1.1.1.1 2005/11/30 10:05:38 chriswhite Exp $
+
+*acpitool-0.2.7 (31 Jul 2005)
+
+  31 Jul 2005; <sekretarz@gentoo.org> +files/acpitool-0.2.7-gentoo.patch,
+  +acpitool-0.2.7.ebuild:
+  Version bump, bug #99633
+
+  07 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/acpitool-0.2.6-gentoo.patch, acpitool-0.2.6.ebuild:
+  amd64 keyworded. Sets CFLAGS rather than AM_CFLAGS, so user CFLAGS are
+  ignored, bug #90723
+
+*acpitool-0.2.6 (08 Dec 2004)
+
+  08 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +acpitool-0.2.6.ebuild:
+  Version bump, bug #73614. Now using make install instead of einstall, bug
+  #72178
+
+  18 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> :
+  Added proper digest
+
+  18 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> acpitool-0.2.5.ebuild:
+  Fixed fetching problems, bug #69623
 
 *acpitool-0.2.5 (27 Sep 2004)
 

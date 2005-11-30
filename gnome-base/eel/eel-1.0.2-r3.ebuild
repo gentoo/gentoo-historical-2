@@ -1,24 +1,25 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/eel/eel-1.0.2-r3.ebuild,v 1.1 2002/06/04 09:16:28 blocke Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/eel/eel-1.0.2-r3.ebuild,v 1.1.1.1 2005/11/30 10:09:16 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="EEL libraries for GNOME"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.gnome.org/"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
+
+LICENSE="LGPL-2.1"
+SLOT="1"
+KEYWORDS="x86 ppc sparc arm"
+IUSE="nls"
 
 RDEPEND=">=media-libs/freetype-2.0.1
-         =gnome-base/gnome-vfs-1.0*
-         >=media-libs/gdk-pixbuf-0.11.0-r1
-		 >=gnome-base/librsvg-1.0.1-r1"
+	=gnome-base/gnome-vfs-1.0*
+	>=media-libs/gdk-pixbuf-0.11.0-r1
+	=gnome-base/librsvg-1.0*"
 
 DEPEND="${RDEPEND}
-        nls? ( >=dev-util/intltool-0.11 )"
+	nls? ( >=dev-util/intltool-0.11 )"
 
-SLOT="1"
-
-src_compile() { 
+src_compile() {
 
 	local myconf
 
@@ -33,7 +34,7 @@ src_compile() {
 	make || die # Doesn't work with -j 4 (hallski)
 }
 
-src_install() {                           
+src_install() {
 
 	make prefix=${D}/usr sysconfdir=${D}/etc \
 		localstatedir=${D}/var/lib install || die

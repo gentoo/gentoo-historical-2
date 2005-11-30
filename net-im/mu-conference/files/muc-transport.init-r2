@@ -7,7 +7,7 @@ depend() {
 
 start() {
 	ebegin "Starting MUC Jabber Transport"
-	if [ -f ${PIDFILE} ] then
+	if [ -f ${PIDFILE} ]; then
 		if [ -z $(ps ax | grep `cat ${PIDFILE}` | grep -v grep ) ]
 		then
 			rm -f ${PIDFILE}

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/grabcartoons/grabcartoons-1.11.ebuild,v 1.1 2005/08/20 05:04:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/grabcartoons/grabcartoons-1.11.ebuild,v 1.1.1.1 2005/11/30 10:06:08 chriswhite Exp $
 
 DESCRIPTION="comic-summarizing utility"
 HOMEPAGE="http://grabcartoons.sourceforge.net/"

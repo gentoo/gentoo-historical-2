@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/i8086emu/i8086emu-0.9.2.ebuild,v 1.1 2005/07/21 13:24:17 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/i8086emu/i8086emu-0.9.2.ebuild,v 1.1.1.1 2005/11/30 10:08:46 chriswhite Exp $
 
 DESCRIPTION="Emulator for the Intel 8086 microprocessor"
 HOMEPAGE="http://i8086emu.sourceforge.net/"

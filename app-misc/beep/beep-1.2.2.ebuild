@@ -1,32 +1,26 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beep/beep-1.2.2.ebuild,v 1.1 2002/07/09 22:57:25 blizzy Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beep/beep-1.2.2.ebuild,v 1.1.1.1 2005/11/30 10:06:04 chriswhite Exp $
 
-S="${WORKDIR}/${P}"
-
-DESCRIPTION="Beep, the advanced PC speaker beeper"
-HOMEPAGE="http://www.johnath.com/beep"
+DESCRIPTION="the advanced PC speaker beeper"
+HOMEPAGE="http://www.johnath.com/beep/"
 SRC_URI="http://www.johnath.com/beep/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc alpha amd64 ppc64 sparc"
+IUSE=""
 
-DEPEND=""
-RDEPEND=""
+DEPEND="virtual/libc"
 
 src_compile() {
-	emake || die "compile problem"
+	emake FLAGS="${CFLAGS}" || die "compile problem"
 }
 
-src_install () {
-	dodir /usr/bin
-	dodir /usr/share/man/man1
-
-	exeinto /usr/bin
-	doexe beep
-
-	insinto /usr/share/man/man1
-	doins beep.1.gz
-
-	dodoc CHANGELOG COPYING CREDITS README
+src_install() {
+	dobin beep
+	# do we really have to set this suid by default? -solar
+	fperms 4711 /usr/bin/beep
+	doman beep.1.gz
+	dodoc CHANGELOG CREDITS README
 }

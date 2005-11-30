@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-linux-tools/vmware-linux-tools-4.5.2.ebuild,v 1.1 2005/02/18 00:38:09 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-linux-tools/vmware-linux-tools-4.5.2.ebuild,v 1.1.1.1 2005/11/30 10:08:51 chriswhite Exp $
 
 inherit eutils
 
@@ -65,7 +65,7 @@ src_install() {
 	# if we have X, install the default config
 	if useq X ; then
 		insinto /etc/X11
-		doins ${FILESDIR}/${PV}xorg.conf
+		doins ${FILESDIR}/${PV}/xorg.conf
 	fi
 
 	# and we're done

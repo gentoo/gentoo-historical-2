@@ -1,17 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-meta/cl-meta-0.1.2-r1.ebuild,v 1.1 2004/02/12 09:13:14 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-meta/cl-meta-0.1.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:35 chriswhite Exp $
 
 inherit common-lisp
 
-DESCRIPTION="A Commoon Lisp implementation of META, a technique for building efficient recursive descent parsers."
+DESCRIPTION="A Common Lisp implementation of META, a technique for building efficient recursive descent parsers."
 HOMEPAGE="http://cclan.sourceforge.net/
 	http://www.cliki.net/Meta
 	http://packages.debian.org/unstable/devel/cl-meta"
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/cl-meta/${PN}_${PV}.orig.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
+IUSE=""
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp"
 

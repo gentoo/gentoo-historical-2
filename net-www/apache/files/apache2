@@ -1,12 +1,13 @@
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/files/apache2,v 1.1 2004/04/02 23:26:53 zul Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/files/apache2,v 1.1.1.1 2005/11/30 10:08:03 chriswhite Exp $
 #
 # Apache2 logrotate snipet for Gentoo Linux
 # Contributes by Chuck Short
 #
 /var/log/apache2/*log {
   missingok
-  notifyempty
+  notifempty
   sharedscripts
+  postrotate
   /etc/init.d/apache2 reload > /dev/null 2>&1 || true
   endscript
 }

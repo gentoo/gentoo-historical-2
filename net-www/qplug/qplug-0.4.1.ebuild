@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/qplug/qplug-0.4.1.ebuild,v 1.1 2003/08/03 20:57:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/qplug/qplug-0.4.1.ebuild,v 1.1.1.1 2005/11/30 10:07:50 chriswhite Exp $
 
 inherit nsplugins
 
@@ -11,6 +11,7 @@ SRC_URI="http://www.linuxquake.com/qplug/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
 DEPEND="virtual/x11"
 

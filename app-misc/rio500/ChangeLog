@@ -1,6 +1,29 @@
 # ChangeLog for app-misc/rio500
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-misc/rio500/ChangeLog,v 1.1 2002/02/01 21:53:08 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/rio500/ChangeLog,v 1.1.1.1 2005/11/30 10:06:13 chriswhite Exp $
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> rio500-0.7-r1.ebuild,
+  rio500-0.7-r2.ebuild:
+  Don't assign default to S; header fix
+
+*rio500-0.7-r2 (24 Apr 2003)
+
+  24 Apr 2003; Paul de Vrieze <pauldv@gentoo.org> rio500-0.7-r2.ebuild:
+  Removed /usr/include/getopt.h from the installed files as it is part of glibc.
+  This bug was signalled by Aurélien Gouny <aurelien@gouny.org> on gentoo-user
+
+*rio500-0.7-r1 (12 Apr 2002)
+
+  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> rio500-0.7-r1.ebuild :
+  Updated to mirror://sourceforge in SRC_URI.
+
+  11 Apr 2002; Spider <spider@gentoo.org> rio500-0.7-r1.ebuild
+  Update all glib dependencies to use glib-1.2*  in preparation of
+unmasking the glib-2.0.1 packages
+
 
 *rio500-0.7-r1 (1 Feb 2002)
 

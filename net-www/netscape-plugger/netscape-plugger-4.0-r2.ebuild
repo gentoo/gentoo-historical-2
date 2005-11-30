@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/netscape-plugger/netscape-plugger-4.0-r2.ebuild,v 1.1 2002/11/21 19:32:01 phoenix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/netscape-plugger/netscape-plugger-4.0-r2.ebuild,v 1.1.1.1 2005/11/30 10:07:47 chriswhite Exp $
 
 inherit nsplugins
 
@@ -10,12 +10,12 @@ DESCRIPTION="Plugger 4.0 streaming media plugin"
 SRC_URI="http://fredrik.hubbe.net/plugger/"${MYP}.tar.gz
 HOMEPAGE="http://fredrik.hubbe.net/plugger.html"
 SLOT="0"
-KEYWORDS="~x86 -ppc ~sparc ~sparc64"
+KEYWORDS="x86 -ppc -sparc"
 LICENSE="GPL-2"
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 IUSE=""
 
-src_install() {                               
+src_install() {
 	cd ${S}
 	dodir /opt/netscape/plugins /etc
 	insinto /opt/netscape/plugins
@@ -29,6 +29,6 @@ src_install() {
 	dosym plugger-4.0 /usr/bin/plugger
 
 	inst_plugin /opt/netscape/plugins/plugger.so
- 	
+
 	dodoc README
 }

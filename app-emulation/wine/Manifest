@@ -1,24 +1,52 @@
-MD5 f188a29dc8f5b422b74734dd03969fc1 ChangeLog 8202
-MD5 8781d7f67ee5c6a118bad2e8443c076f wine-20030408.ebuild 3399
-MD5 cbbcc1a538a4a948b26af284c94f8787 wine-20030411-r1.ebuild 3312
-MD5 63c15dfd24c1a34d256f36fbecb793a4 wine-20030115.ebuild 3275
-MD5 c592de70cc926a7a7a80e193d3f747c2 wine-20030219.ebuild 3293
-MD5 5982fdca0175efb1fe1ee5c9ca688c12 wine-20030318.ebuild 3399
-MD5 9d51d4908824aa93775da841850f2fc4 files/digest-wine-20030408 66
-MD5 af8da46a0e51578ff1e18e399141d628 files/wine-20030408-fake_windows.tar.bz2 500
-MD5 8052677213b772973d85623012d68e86 files/wine-20030408-misc.tar.bz2 4591
-MD5 35f7baa3fbf5eefb40c586f03bec4436 files/digest-wine-20030115 66
-MD5 98d09815d42cec2e036481b25542abd5 files/digest-wine-20030219 66
-MD5 bb9d5f77ffee8e72cf714aebc874157a files/wine-20030408-xopenfont.patch 1069
-MD5 af8da46a0e51578ff1e18e399141d628 files/wine-20030411-fake_windows.tar.bz2 500
-MD5 8052677213b772973d85623012d68e86 files/wine-20030411-misc.tar.bz2 4591
-MD5 bb9d5f77ffee8e72cf714aebc874157a files/wine-20030411-xopenfont.patch 1069
-MD5 dcd68f96e0066c424ec1ceb8411c7549 files/digest-wine-20030411-r1 67
-MD5 af8da46a0e51578ff1e18e399141d628 files/wine-20030115-fake_windows.tar.bz2 500
-MD5 8052677213b772973d85623012d68e86 files/wine-20030115-misc.tar.bz2 4591
-MD5 af8da46a0e51578ff1e18e399141d628 files/wine-20030219-fake_windows.tar.bz2 500
-MD5 8052677213b772973d85623012d68e86 files/wine-20030219-misc.tar.bz2 4591
-MD5 8eb0e93c3b143af5431e791cd8ac5774 files/digest-wine-20030318 66
-MD5 af8da46a0e51578ff1e18e399141d628 files/wine-20030318-fake_windows.tar.bz2 500
-MD5 8052677213b772973d85623012d68e86 files/wine-20030318-misc.tar.bz2 4591
-MD5 bb9d5f77ffee8e72cf714aebc874157a files/wine-20030318-xopenfont.patch 1069
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 2579f634dba8ddbd07a5731167479827 ChangeLog 19854
+MD5 fb8724a36ec3bef0ad3a3c36376b786a files/digest-wine-0.9 63
+MD5 d46df5add2535f22ad43db8247d7a45b files/digest-wine-0.9.1 65
+MD5 23ff2a3980929ae4a6f02161bd875b55 files/digest-wine-20041019-r3 67
+MD5 8028af5342611d0521183f95342f787a files/digest-wine-20050111-r2 67
+MD5 fe364ce26a93f838a04f30b274df034c files/digest-wine-20050211 67
+MD5 03f968d969bdc86d7afd384b026aa7cf files/digest-wine-20050310-r1 67
+MD5 9d19cae37895df966e850d3054ef2513 files/digest-wine-20050419 67
+MD5 f9ded3113cb95a488a47c43fcd71467b files/digest-wine-20050524 67
+MD5 73a9223d839cbaa35c2497dd40a17015 files/digest-wine-20050628 67
+MD5 f2d7d30c9e5811da2b6f4cb79c80f5cd files/digest-wine-20050725-r1 67
+MD5 c8ec4d9cf45eb34d587a17129ab09fb9 files/digest-wine-20050830 67
+MD5 cf49af131a341a471a493cd0d5693fd2 files/digest-wine-20050930 67
+MD5 d41d8cd98f00b204e9800998ecf8427e files/digest-wine-9999 0
+MD5 138d22e6669e8997cdf4dc6292db748d files/wine-20041019-alsa-headers.patch 448
+MD5 bcce3a9782f7fdfae1035b456e394ce2 files/wine-20041019-no-stack.patch 180
+MD5 32c5bd022b8547d02b07517dd7a9bc02 files/wine-20050111-upstream-registry-fix.patch.bz2 13584
+MD5 3e8110a5c409098abadc38cee8f440f7 files/wine-20050211-docs.patch 642
+MD5 45243901331840c35f12426a17b31bd2 files/wine-20050310-upstream-colortable.patch 1546
+MD5 7a55fde5c2def5d2925fab4955433c2c files/wine-20050524-alsa-headers.patch 669
+MD5 911ab19b2f76abd8034c35fc86104ee0 files/wine-20050725-gcc-32bit.patch 374
+MD5 700a585af86289d0c4ac87f11dfcd2e3 files/wine-20050830-gcc-32bit.patch 378
+MD5 8eeac00eaf290def7bac0e2c3b479ea6 files/wine-20050830-no-ldap.patch 3994
+MD5 d2a0eccb86ce76caa334965b6bdd9251 files/wine-20050930-dont-warn-lib-path.patch 691
+MD5 c3bac6bd0a3c6a35aaaae8c7888c30f3 files/wine-20050930-no-x.patch 601
+MD5 e1f0b4cbd720c0f77c445d370c0c3b46 files/wine-cvs-winelauncher-temp.patch 1007
+MD5 46ecb0d10e6a2ad66abeb0a2d6dd0a3d files/wine-hangfix-bug2660.patch 476
+MD5 1668a758aa2007cb99a773b3c5c844c9 files/winearts-kdecvs-fix.patch 325
+MD5 6525c48ba09d08599432ea6c299e52f4 metadata.xml 354
+MD5 1f6c08c0e931824e39b81f4e7de7ca1f wine-0.9.1.ebuild 3788
+MD5 f14f3d6f8c763e8ce5eb6f3dfd4406b9 wine-0.9.ebuild 3786
+MD5 453b83f95eea62a9bdb68627e5fc9e43 wine-20041019-r3.ebuild 3145
+MD5 f072fd71780a287c524c0fb0eae1a13e wine-20050111-r2.ebuild 3287
+MD5 30b24339ea3a0bb110c7d225488ec984 wine-20050211.ebuild 3798
+MD5 13b7469ea0519f90bf5f10c4c55b8f62 wine-20050310-r1.ebuild 3897
+MD5 c0d8f2d1dfb68b36f3224b1c2ef76bee wine-20050419.ebuild 3838
+MD5 28e5ed8a318bbebb2cd62c66f5d3d64d wine-20050524.ebuild 3901
+MD5 ed97cc2654ee134dbf6a5bc116d754e3 wine-20050628.ebuild 3902
+MD5 9a41fead49d0b0dc56c7514149b7ec50 wine-20050725-r1.ebuild 3950
+MD5 b73ae6c5fefdd0c51498e89fcc6acef8 wine-20050830.ebuild 3936
+MD5 5232d42638aee222cccec305a9cc2b3a wine-20050930.ebuild 3905
+MD5 ca7a9bdea4000762a84cf360bb4164fb wine-9999.ebuild 3844
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDcrTPgIKl8Uu19MoRAu2WAJ9zyKQYT5U/OMpwhqo9FHBnw1GhVgCeKHJu
+DjahZO/0a4mjxfs+SDFZIlw=
+=Owk2
+-----END PGP SIGNATURE-----

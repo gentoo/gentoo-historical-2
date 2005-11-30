@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/eric/eric-3.6.1.ebuild,v 1.1 2005/01/29 19:26:51 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/eric/eric-3.6.1.ebuild,v 1.1.1.1 2005/11/30 10:05:19 chriswhite Exp $
 
 inherit python eutils
 

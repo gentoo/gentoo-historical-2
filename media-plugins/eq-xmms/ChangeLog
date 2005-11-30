@@ -1,6 +1,57 @@
 # ChangeLog for media-plugins/eq-xmms
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/eq-xmms/ChangeLog,v 1.1 2004/02/17 12:14:33 eradicator Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/eq-xmms/ChangeLog,v 1.1.1.1 2005/11/30 10:07:23 chriswhite Exp $
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> eq-xmms-0.6-r1.ebuild,
+  eq-xmms-0.6-r2.ebuild, eq-xmms-0.6-r3.ebuild:
+  Don't install COPYING and INSTALL files. Use autotools eclass to re-create
+  the autotools files. Minor style fixes.
+
+*eq-xmms-0.6-r3 (03 Jul 2005)
+
+  03 Jul 2005; Konstantin Arkhipov <voxus@gentoo.org> +eq-xmms-0.6-r3.ebuild,
+  +files/eq-xmms-0.6-sse_filters.patch.bz2,
+  +files/eq-xmms-0.6-sse_round_trickfilters.patch:
+  Extracted sse-filters patch from current cvs. A bit of verbosity added.
+
+*eq-xmms-0.6-r2 (22 Mar 2005)
+
+  22 Mar 2005; Konstantin Arkhipov <voxus@gentoo.org> -eq-xmms-0.6.ebuild,
+  +eq-xmms-0.6-r2.ebuild, +files/eq-xmms-0.6-mono_fix.patch:
+  Added fix for playing mono streams. For details - see:
+  http://sf.net/tracker/?func=detail&aid=999884&group_id=61119&atid=496208
+  Old 0.6 ebuild dropped.
+
+  13 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> eq-xmms-0.6-r1.ebuild,
+  eq-xmms-0.6.ebuild:
+  added elibtoolize call, fixes #85064
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  eq-xmms-0.6-r1.ebuild:
+  Stable amd64, sparc, x86.
+
+*eq-xmms-0.6-r1 (14 Jul 2004)
+
+  14 Jul 2004; Konstantin Arkhipov <voxus@gentoo.org>:
+  +files/eq-xmms-0.6-shade_fix.patch,
+  +eq-xmms-0.6-r1.ebuild:
+  Dummy workaround for shade bug from upstream CVS.
+
+  29 Jun 2004; David Holm <dholm@gentoo.org> eq-xmms-0.6.ebuild:
+  Added to ~ppc.
+
+*eq-xmms-0.6 (28 Jun 2004)
+
+  28 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/eq-xmms-0.6-nonx86.patch, -eq-xmms-0.5.ebuild, +eq-xmms-0.6.ebuild:
+  Version bump. Tested on amd64, x86, and sparc. Removing old version which
+  causes segfaults on newer xmms versions. Closes bug #54969.
+
+  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> eq-xmms-0.5.ebuild:
+  Added to ~amd64.
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> eq-xmms-0.5.ebuild:
+  Cleaned up to make aliz's script happy.  Stable x86.
 
 *eq-xmms-0.5 (17 Feb 2004)
 

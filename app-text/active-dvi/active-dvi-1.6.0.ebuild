@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/active-dvi-1.6.0.ebuild,v 1.1 2005/02/08 12:48:53 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/active-dvi-1.6.0.ebuild,v 1.1.1.1 2005/11/30 10:06:39 chriswhite Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ LICENSE="LGPL-2.1"
 
 IUSE="cjk tcltk"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND=">=dev-lang/ocaml-3.04
 	>=dev-ml/camlimages-2.20
@@ -54,15 +54,20 @@ pkg_setup() {
 src_unpack() {
 
 	unpack ${A}
+	cd ${S}
 	# need to remove texhash, it'll cause problems with
 	# the sandbox if we try and run it during emerge
-	sed -i -e "s/texhash//" ${S}/Makefile
+	sed -i -e "s/texhash//" Makefile
+
+	if has_version ">=dev-lang/ocaml-3.08.4"; then
+		sed -i -e "s/resize_window/resize_subwindow/" grY11.c
+	fi
 
 	if use cjk ; then
 		local fp=/usr/X11R6/lib/X11/fonts/truetype
 		sed -i -e "s%msmincho.ttc%${fp}/kochi-mincho-subst.ttf%g" \
 			-e "s%msgothic.ttc%${fp}/kochi-gothic-subst.ttf%g" \
-			${S}/conf/jpfonts.conf
+			conf/jpfonts.conf
 	fi
 
 }
@@ -77,7 +82,8 @@ src_compile() {
 
 src_install() {
 
-	TEXMFADVI=/usr/share/texmf/advi
+	TEXMFADVI="/usr/share/texmf/tex/latex/advi"
+
 	dodir /usr/bin $TEXMFADVI
 	make MANDIR=${D}/usr/share/man/man1 \
 		ADVI_LOC=${D}/${TEXMFADVI} \
@@ -102,7 +108,7 @@ pkg_postinst() {
 
 		echo ""
 		einfo "If you wish to use Japanese True Type fonts with"
-		einfo "active-dvi, please edit /usr/share/texmf/advi/jpfonts.conf"
+		einfo "active-dvi, please edit /usr/share/texmf/tex/latex/advi/jpfonts.conf"
 		echo ""
 
 	fi

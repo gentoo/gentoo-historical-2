@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/nautilus/nautilus-2.10.0.ebuild,v 1.1 2005/03/09 04:33:13 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/nautilus/nautilus-2.10.0.ebuild,v 1.1.1.1 2005/11/30 10:09:10 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -9,9 +9,10 @@ HOMEPAGE="http://www.gnome.org/projects/nautilus/"
 
 LICENSE="GPL-2 LGPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="oggvorbis gstreamer mad flac"
 #IUSE="oggvorbis gstreamer cups mad flac"
+RESTRICT=test
 
 RDEPEND=">=dev-libs/glib-2.6
 	>=x11-libs/pango-1.2
@@ -28,17 +29,16 @@ RDEPEND=">=dev-libs/glib-2.6
 	>=gnome-base/libbonobo-2.2
 	>=gnome-base/librsvg-2.0.1
 	>=gnome-base/orbit-2.4
-	>=x11-libs/startup-notification-0.5
+	>=x11-libs/startup-notification-0.8
 	>=media-libs/libexif-0.5.12
 	dev-libs/popt
 	virtual/fam
-	sys-apps/eject
-	cups? ( net-print/libgnomecups
-		net-print/gnome-cups-manager )
+	virtual/eject
 	!gstreamer? ( oggvorbis? ( media-sound/vorbis-tools ) )
 	gstreamer? (
 		>=media-libs/gstreamer-0.8
 		>=media-libs/gst-plugins-0.8
+		>=media-plugins/gst-plugins-gnomevfs-0.8
 		mad? ( >=media-plugins/gst-plugins-mad-0.8 )
 		oggvorbis? (
 			>=media-plugins/gst-plugins-ogg-0.8
@@ -83,16 +83,8 @@ src_unpack() {
 #		fi
 #	fi
 
-
-	#applied in 2.9.91
-	# patch to support libexif versions 0.5 and 0.6
-	#epatch ${FILESDIR}/${PN}-2.9.90-libexif.patch
-
 	# stop nautilus linking to cdda/paranoia
 	sed -i -e "/^CORE_LIBS/s/\$CDDA_LIBS//" configure.in
-
-	# and we always need to regenerate now, because we
-	# always apply the libexif patch <obz@gentoo.org>
 
 	if use gstreamer; then
 	WANT_AUTOCONF=2.5 autoheader || die
@@ -101,14 +93,4 @@ src_unpack() {
 	fi
 }
 
-pkg_postinst() {
-
-	gnome2_pkg_postinst
-
-	einfo "Nautilus moved to a new spatial browsing model."
-	einfo "If you are unhappy with this behaviour you can revert to the"
-	einfo "old browerslike behaviour by issueing the following command :"
-	einfo "gconftool-2  -s /apps/nautilus/preferences/always_use_browser -t bool TRUE"
-
-}
 USE_DESTDIR="1"

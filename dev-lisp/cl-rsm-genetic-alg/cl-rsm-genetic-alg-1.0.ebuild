@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rsm-genetic-alg/cl-rsm-genetic-alg-1.0.ebuild,v 1.1 2003/10/18 10:13:19 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rsm-genetic-alg/cl-rsm-genetic-alg-1.0.ebuild,v 1.1.1.1 2005/11/30 10:08:32 chriswhite Exp $
 
 inherit common-lisp
 
@@ -15,8 +15,6 @@ DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp dev-lisp/cl-rsm-cache"
 
 CLPACKAGE=rsm-genetic-alg
-
-S=${WORKDIR}/${P}
 
 src_install() {
 	common-lisp-install *.lisp *.asd

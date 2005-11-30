@@ -1,20 +1,26 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/jam/jam-2.5.ebuild,v 1.1 2003/06/16 15:43:36 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/jam/jam-2.5.ebuild,v 1.1.1.1 2005/11/30 10:05:15 chriswhite Exp $
 
 DESCRIPTION="Just Another Make - advanced make replacement"
-SRC_URI="ftp://ftp.perforce.com/pub/jam/${P}.tar"
 HOMEPAGE="http://www.perforce.com/jam/jam.html"
+SRC_URI="ftp://ftp.perforce.com/pub/jam/${P}.tar"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="amd64 ppc ~ppc-macos x86"
+IUSE=""
 
-DEPEND="dev-util/yacc"
+DEPEND="sys-devel/bison
+	!dev-util/boost-jam"
 
 src_compile() {
 	# The bootstrap makefile assumes ${S} is in the path
-	env PATH="${PATH}:${S}" make CFLAGS="${CFLAGS}" || die
+	env PATH="${PATH}:${S}" \
+	emake -j1 \
+		YACC="bison -y" \
+		CFLAGS="${CFLAGS}" \
+		|| die
 }
 
 src_install() {

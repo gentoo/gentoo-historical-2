@@ -1,35 +1,32 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lhinv/lhinv-1.1-r2.ebuild,v 1.1 2002/08/30 14:38:28 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lhinv/lhinv-1.1-r2.ebuild,v 1.1.1.1 2005/11/30 10:06:12 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Linux Hardware Inventory"
-SRC_URI="http://download.sourceforge.net/lhinv/${P}.tar.gz"
-HOMEPAGE="http://lhinv.sourceforge.net"
+HOMEPAGE="http://lhinv.sourceforge.net/"
+SRC_URI="mirror://sourceforge/lhinv/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
-RDEPEND="sys-devel/perl"
+RDEPEND="dev-lang/perl"
 
-src_compile() {													 
+src_compile() {
 	cd ${S}/cgi
-	cp w3hinv w3hinv.orig
-	sed -e "s:^my \$HINV =.*:my \$HINV =\"/usr/bin/lhinv\";:" \
-		w3hinv.orig > w3hinv
+	sed -i -e "s:^my \$HINV =.*:my \$HINV =\"/usr/bin/lhinv\";:" \
+		w3hinv
 	cd ..
 	make local || die
 }
 
-src_install() {															 
-	cd ${S}
-	into /usr
-	dobin lhinv
+src_install() {
+	dobin lhinv || die
 	doman lhinv.1
-	dodoc AUTHORS BUGS CHANGELOG COPYING README TODO
+	dodoc AUTHORS BUGS CHANGELOG README TODO
 	newdoc cgi/README README.cgi
 	insinto /home/httpd/cgi-bin
-	insopts -m 755 
+	insopts -m 755
 	doins cgi/w3hinv
 }

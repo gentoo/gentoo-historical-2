@@ -1,34 +1,39 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-dscope/xmms-dscope-1.2.ebuild,v 1.1 2002/08/30 08:35:31 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-dscope/xmms-dscope-1.2.ebuild,v 1.1.1.1 2005/11/30 10:07:35 chriswhite Exp $
+
+inherit eutils
+
+IUSE=""
 
 MY_P=${PN/xmms-/}-${PV}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="Dual Scope visualization plugin for xmms"
+DESCRIPTION="Dual Scope visualization plugin for XMMS"
+HOMEPAGE="http://www.shell.linux.se/bm/index.php?page=xmmsplugin"
 SRC_URI="http://hem.passagen.se/joakime/${MY_P}.tar.gz"
-HOMEPAGE="http://hem.passagen.se/joakime/linuxapp.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
 
-DEPEND="media-sound/xmms"
+DEPEND=">=sys-apps/portage-2.0.47-r10
+	media-sound/xmms"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S} || die
 	# patch in DESTDIR support
-	patch -p0 < ${FILESDIR}/${MY_P}-destdir.patch || die
+	epatch ${FILESDIR}/${MY_P}-destdir.patch
 }
 
-src_compile() {     
+src_compile() {
 	# There is no configure script, but the
 	# Makefile does things (mostly) correctly.
- 	make clean || die
+	make clean || die
 	emake OPT="$CFLAGS" || die
 }
 
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc README COPYING Changes
+	dodoc README Changes
 }

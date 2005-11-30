@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/chesstask/chesstask-2.0.ebuild,v 1.1 2004/06/27 19:20:37 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/chesstask/chesstask-2.0.ebuild,v 1.1.1.1 2005/11/30 10:05:51 chriswhite Exp $
 
 IUSE=""
 
@@ -11,14 +11,15 @@ SRC_URI="mirror://sourceforge/chesstask/ChessTask${PV/./_}src.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ppc ~x86"
 
-DEPEND=">=x11-libs/qt-3
+DEPEND="=x11-libs/qt-3*
+	app-arch/unzip
 	virtual/tetex"
 
 src_compile() {
 	sed -i -e "/ENGLISH/s/^#//" ChessTask.pro || die
-	qmake -o Makefile ChessTask.pro || die
+	${QTDIR}/bin/qmake -o Makefile ChessTask.pro || die
 	emake || die "compile failed"
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_encoding/mod_encoding-20021209-r1.ebuild,v 1.1 2005/02/25 18:12:05 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_encoding/mod_encoding-20021209-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:50 chriswhite Exp $
 
 inherit apache-module
 

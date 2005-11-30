@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mplayerplug-in/mplayerplug-in-3.11.ebuild,v 1.1 2005/09/29 07:07:30 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mplayerplug-in/mplayerplug-in-3.11.ebuild,v 1.1.1.1 2005/11/30 10:07:51 chriswhite Exp $
 
-inherit nsplugins toolchain-funcs multilib
+inherit nsplugins multilib
 
 DESCRIPTION="mplayer plug-in for Gecko based browsers"
 HOMEPAGE="http://mplayerplug-in.sourceforge.net/"
@@ -10,31 +10,29 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 -hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 -hppa ~ia64 ppc ~sparc ~x86"
 IUSE="gecko-sdk"
 
 DEPEND=">=media-video/mplayer-0.92
 		gecko-sdk? ( net-libs/gecko-sdk )
-		!gecko-sdk? || ( >=www-client/mozilla-1.6 www-client/mozilla-firefox)
+		!gecko-sdk? ( || ( >=www-client/mozilla-1.6 www-client/mozilla-firefox ) )
 		>=x11-libs/gtk+-2.2.0
-		dev-libs/atk*
+		dev-libs/atk
 		>=dev-libs/glib-2.2.0
 		>=x11-libs/pango-1.2.1"
 
 S=${WORKDIR}/${PN}
 
-PLUGINS="gmp rm qt wmp"
-
 src_compile() {
 	local myconf
 
-	if ! use gecko-sdk; then
+	if use gecko-sdk; then
 		einfo Configuring to build using gecko-sdk
 		myconf="${myconf} --with-gecko-sdk=/usr/$(get_libdir)/gecko-sdk"
 	fi
 
 	### Force gtk2 since mozilla only uses gtk2 now
-	econf --enable-gtk2
+	econf --enable-gtk2 \
 		${myconf} || die "econf failed"
 
 	emake || die "emake failed"
@@ -48,6 +46,8 @@ src_install() {
 	insinto /opt/netscape/plugins
 	doins mplayerplug-in.xpt || die "xpt failed"
 	inst_plugin /opt/netscape/plugins/mplayerplug-in.xpt
+
+	PLUGINS="gmp rm qt wmp"
 
 	for plugin in ${PLUGINS}; do
 		### Install the plugin

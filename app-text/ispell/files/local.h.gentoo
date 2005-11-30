@@ -1,5 +1,5 @@
 /*
- * $Id: local.h.gentoo,v 1.1 2002/03/15 05:37:36 tod Exp $
+ * $Id: local.h.gentoo,v 1.1.1.1 2005/11/30 10:06:25 chriswhite Exp $
  */
 
 /*
@@ -55,6 +55,9 @@
 
 /*
  * $Log: local.h.gentoo,v $
+ * Revision 1.1.1.1  2005/11/30 10:06:25  chriswhite
+ * *** empty log message ***
+ *
  * Revision 1.1  2002/03/15 05:37:36  tod
  *
  * New version.  Hopefully this helps resolve the last of the *spell issues.  Gnome-spell or bust :) Thanks to seemant for his help with the *spells.

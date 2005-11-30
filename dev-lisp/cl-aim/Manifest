@@ -1,3 +1,5 @@
-MD5 e3d427b0ff7291b1a847a50199c0d750 cl-aim-1.1.ebuild 822
-MD5 9b65b0341efc8f4b29498aad23315229 metadata.xml 164
+MD5 c5749c1b3c89af8e24a5e351aa37bcc0 ChangeLog 712
+MD5 284836865ddf8c5a3437c8dc40d4aa81 cl-aim-1.1.ebuild 830
+MD5 741cfcfbba1ee698e3c05b957dbf09c7 metadata.xml 427
+MD5 4c5c491805150312b86a5ab005d7ec71 files/1.1-trivial-sockets-gentoo.patch 2961
 MD5 b3c73da3b07ef5e1e1101296e31f9005 files/digest-cl-aim-1.1 60

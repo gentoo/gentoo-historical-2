@@ -1,6 +1,25 @@
 # ChangeLog for app-text/cwtext
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/cwtext/ChangeLog,v 1.1 2004/02/21 17:48:01 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/cwtext/ChangeLog,v 1.1.1.1 2005/11/30 10:06:53 chriswhite Exp $
+
+  15 Oct 2005; Fabian Groffen <grobian@gentoo.org> cwtext-0.94.ebuild:
+  Marked ~ppc-macos (bug #108595)
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> cwtext-0.94.ebuild:
+  Stable on ppc.
+
+  21 May 2005; Simon Stelling <blubb@gentoo.org> cwtext-0.94.ebuild:
+  added ~amd64 keyword
+
+  16 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  cwtext-0.94.ebuild:
+  add ~ppc
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> cwtext-0.94.ebuild:
+  Added ~sparc, ~mips
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> cwtext-0.94.ebuild:
+  Stable on x86
 
 *cwtext-0.94 (22 Feb 2004)
 

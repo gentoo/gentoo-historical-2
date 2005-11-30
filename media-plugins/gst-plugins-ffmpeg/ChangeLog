@@ -1,6 +1,152 @@
 # ChangeLog for media-plugins/gst-plugins-ffmpeg
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/ChangeLog,v 1.1 2004/03/28 19:24:46 foser Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/ChangeLog,v 1.1.1.1 2005/11/30 10:07:29 chriswhite Exp $
+
+  05 Sep 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +files/gst-plugins-ffmpeg-0.8.5-gmake.patch,
+  gst-plugins-ffmpeg-0.8.5.ebuild, gst-plugins-ffmpeg-0.8.6.ebuild:
+  add patch so make is replaced by autotool specified make, fixes bug
+
+*gst-plugins-ffmpeg-0.8.6 (28 Aug 2005)
+
+  28 Aug 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-ffmpeg-0.8.6.ebuild:
+  version bump
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4-r1.ebuild:
+  stable on ia64
+
+  13 Jul 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-plugins-ffmpeg-0.8.5.ebuild:
+  fix gstreamer dep, due to use of new symbol
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4.ebuild:
+  Stable on alpha.
+
+  26 Jun 2005; Guy Martin <gmsoft@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4.ebuild, gst-plugins-ffmpeg-0.8.4-r1.ebuild,
+  gst-plugins-ffmpeg-0.8.5.ebuild:
+  Stable on hppa.
+
+  13 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gst-plugins-ffmpeg-0.8.5.ebuild:
+  Add ~alpha keyword.
+
+*gst-plugins-ffmpeg-0.8.5 (11 Jun 2005)
+
+  11 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-plugins-ffmpeg-0.8.5.ebuild:
+  version bump
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4-r1.ebuild:
+  Stable on ppc64
+
+  16 May 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4-r1.ebuild:
+  filter -fweb, fixes #91789
+
+  14 May 2005; Hanno Boeck <hanno@gentoo.org>
+  +files/gst-ffmpeg-gcc4.patch.gz, gst-plugins-ffmpeg-0.8.4-r1.ebuild:
+  Fix for gcc4 (from ffmpeg ebuild and cvs).
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4.ebuild:
+  stable on ia64
+
+  06 May 2005; Markus Rothe <corsair@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  02 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4.ebuild:
+  Stable on sparc
+
+*gst-plugins-ffmpeg-0.8.4-r1 (29 Apr 2005)
+
+  29 Apr 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +files/gst-plugins-ffmpeg-0.8.4-eoshangfix.patch,
+  +gst-plugins-ffmpeg-0.8.4-r1.ebuild:
+  add patch to stop some files taking up 100% cpu - fixes bug #86042
+
+  27 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4.ebuild:
+  stable on amd64
+
+  25 Apr 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  -gst-plugins-ffmpeg-0.8.0.ebuild, -gst-plugins-ffmpeg-0.8.2.ebuild:
+  Removing gst-plugins-ffmpeg 0.8.0 and 0.8.2
+
+  25 Apr 2005; Mike Gardiner <obz@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4.ebuild:
+  Keyworded ppc
+
+  25 Apr 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-plugins-ffmpeg-0.8.4.ebuild:
+  stabilise on x86
+
+*gst-plugins-ffmpeg-0.8.4 (11 Mar 2005)
+
+  11 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
+  +gst-plugins-ffmpeg-0.8.4.ebuild:
+  version bump
+
+  30 Jan 2005; lanius@gentoo.org :
+  stable on amd64
+
+  05 Jan 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.3.ebuild :
+  Also strip -msse3 from CFLAGS (#64262 comment #35)
+
+*gst-plugins-ffmpeg-0.8.3 (29 Dec 2004)
+
+  29 Dec 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.3.ebuild :
+  New release
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org>
+  gst-plugins-ffmpeg-0.8.2.ebuild:
+  Stable on amd64.
+
+  12 Dec 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.2-r1.ebuild :
+  Use the CFLAG restrictions from the mplayer ebuild (#64262)
+
+*gst-plugins-ffmpeg-0.8.2-r1 (29 Nov 2004)
+
+  29 Nov 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.2-r1.ebuild :
+  Add patch to fix aspect ratio issues with some movies
+  http://bugzilla.gnome.org/show_bug.cgi?id=159755
+  Filter more flags to fix bugs like #64262
+
+  30 Oct 2004; Travis Tilley <lv@gentoo.org> gst-plugins-ffmpeg-0.8.1.ebuild:
+  stable on amd64
+
+*gst-plugins-ffmpeg-0.8.2 (11 Oct 2004)
+
+  11 Oct 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.2.ebuild :
+  New release
+  Filter some problematic CFLAGS (#56075)
+  Remove global sed
+
+  20 Aug 2004; Travis Tilley <lv@gentoo.org> gst-plugins-ffmpeg-0.8.1.ebuild:
+  added ~amd64 keyword
+
+  04 Aug 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.1.ebuild :
+  Add homepage (#57908)
+
+*gst-plugins-ffmpeg-0.8.1 (20 Jul 2004)
+
+  20 Jul 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.1.ebuild :
+  New release
+
+  30 Apr 2004; foser <foser@gentoo.org> gst-plugins-ffmpeg-0.8.0.ebuild :
+  Do not use the gst-plugins eclass, the eclass structure messes up the deps (#49228)
+
+  14 Apr 2004; Jason Wever <weeve@gentoo.org> gst-plugins-ffmpeg-0.8.0.ebuild:
+  Added ~sparc keyword.
+
+  29 Mar 2004; David Holm <dholm@gentoo.org> gst-plugins-ffmpeg-0.8.0.ebuild:
+  Added to ~ppc.
 
 *gst-plugins-ffmpeg-0.8.0 (28 Mar 2004)
 

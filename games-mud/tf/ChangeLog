@@ -1,6 +1,51 @@
-# ChangeLog for app-games/tf
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/tf/ChangeLog,v 1.1 2003/09/10 19:03:12 vapier Exp $
+# ChangeLog for games-mud/tf
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/tf/ChangeLog,v 1.1.1.1 2005/11/30 10:06:15 chriswhite Exp $
+
+  17 May 2005; Michael Sterrett <mr_bones_@gentoo.org> -tf-50_beta3.ebuild,
+  -tf-50_beta6.ebuild, tf-50_beta7.ebuild:
+  fix the location of the loadable modules
+
+*tf-50_beta7 (17 May 2005)
+
+  17 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +tf-50_beta7.ebuild:
+  version bump (bug #90285)
+
+  05 Oct 2004; Jason Wever <weeve@gentoo.org> tf-50_beta6.ebuild:
+  Added ~sparc keyword.
+
+  22 Sep 2004; <blubb@gentoo.org> tf-50_beta6.ebuild:
+  added ~amd64
+
+  05 Sep 2004; David Holm <dholm@gentoo.org> tf-50_beta6.ebuild:
+  Added to ~ppc.
+
+*tf-50_beta6 (31 Aug 2004)
+
+  31 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +tf-50_beta6.ebuild:
+  version bump (bug #62424)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tf-50_beta3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  13 May 2004; Michael Sterrett <mr_bones_@gentoo.org> tf-40-r2.ebuild:
+  IUSE fix; removed unneeded dodir calls
+
+  21 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> tf-40-r2.ebuild:
+  added keyword for sparc (bug #48626)
+
+  23 Mar 2004; <augustus@gentoo.org> tf-40-r2.ebuild:
+  Added ~amd64 keyword.
+
+*tf-50_beta3 (11 Feb 2004)
+
+  11 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> tf-50_beta3.ebuild:
+  version bump (bug #40973); some doc patches from Mikael Warlander.
+
+*tf-50_alpha11 (24 Sep 2003)
+
+  24 Sep 2003; Michael Sterrett <msterret@gentoo.org> tf-50_alpha11.ebuild:
+  version bump unstable for bug 23274
 
 *tf-40-r2 (09 Nov 2002)
 

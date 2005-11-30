@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ccmalloc/ccmalloc-0.4.0.ebuild,v 1.1 2004/11/10 08:42:06 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ccmalloc/ccmalloc-0.4.0.ebuild,v 1.1.1.1 2005/11/30 10:04:52 chriswhite Exp $
 
 inherit eutils
 

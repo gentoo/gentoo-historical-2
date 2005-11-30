@@ -1,40 +1,60 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-text/jadetex/jadetex-3.12.ebuild,v 1.1 2002/04/19 09:21:23 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/jadetex/jadetex-3.12.ebuild,v 1.1.1.1 2005/11/30 10:07:09 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="TeX macros used by Jade TeX output."
-SRC_URI="http://prdownloads.sourceforge.net/jadetex/${P}.tar.gz"
+inherit latex-package
+
+DESCRIPTION="TeX macros used by Jade TeX output"
 HOMEPAGE="http://jadetex.sourceforge.net/"
+SRC_URI="mirror://sourceforge/jadetex/${P}.tar.gz"
 
-DEPEND=">=app-text/openjade-1.3.1
-	>=app-text/tetex-1.0.7"
+LICENSE="freedist"
+SLOT="0"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc ppc64 s390 sparc x86"
+IUSE=""
 
+# virtual/tetex comes from latex-package
+DEPEND=">=app-text/openjade-1.3.1"
 
-src_compile() {
-
-    emake || die
-
+has_tetex_3() {
+	if has_version '>=app-text/tetex-2.96' || has_version '>=app-text/ptex-3.1.4.20041026' ; then
+		true
+	else
+		false
+	fi
 }
 
-src_install () {
+src_compile() {
+	addwrite /usr/share/texmf/ls-R
+	addwrite /usr/share/texmf/fonts
+	addwrite /var/cache/fonts
 
-    make \
+	if has_tetex_3 ; then
+		sed -i -e "s:tex -ini:latex -ini:" Makefile || die "sed failed"
+	fi
+
+	emake || die
+}
+
+src_install() {
+	addwrite /usr/share/texmf/ls-R
+	addwrite /usr/share/texmf/fonts
+	addwrite /var/cache/fonts
+	make \
 		DESTDIR=${D} \
 		install || die
 
-    dodoc ChangeLog*
-    doman *.1
-	
+	dodoc ChangeLog*
+	doman *.1
+
 	dodir /usr/bin
-    dosym /usr/bin/virtex /usr/bin/jadetex
-    dosym /usr/bin/pdfvirtex /usr/bin/pdfjadetex
-	
-	dohtml -r doc
+	if has_tetex_3 ; then
+		dosym /usr/bin/latex /usr/bin/jadetex
+		dosym /usr/bin/pdftex /usr/bin/pdfjadetex
+	else
+		dosym /usr/bin/virtex /usr/bin/jadetex
+		dosym /usr/bin/pdfvirtex /usr/bin/pdfjadetex
+	fi
 
-}
-
-pkg_postinst () {
-    mktexlsr
+	dohtml -r doc/*
 }

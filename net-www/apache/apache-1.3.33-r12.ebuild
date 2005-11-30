@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.33-r12.ebuild,v 1.1 2005/09/18 05:01:04 vericgar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.33-r12.ebuild,v 1.1.1.1 2005/11/30 10:08:01 chriswhite Exp $
 
 inherit eutils fixheadtails multilib
 
 # latest gentoo apache files
 GENTOO_PATCHNAME="gentoo-apache-${PVR}"
-GENTOO_PATCHSTAMP="20050917"
+GENTOO_PATCHSTAMP="20051023"
 GENTOO_DEVSPACE="vericgar"
 GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
 
@@ -24,7 +24,7 @@ SRC_URI="mirror://apache/httpd/apache_${PV}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="doc ssl pam lingerd no-suexec static-modules apache2 selinux"
 
 DEPEND="dev-lang/perl
@@ -132,8 +132,7 @@ src_compile() {
 	if useq ssl; then
 		cd src/support
 		rm -f ab ab.o
-		make ab CFLAGS="${CFLAGS} -DUSE_SSL -lcrypto -lssl
-		-I/usr/include/openssl -L/usr/$(get_libdir)" || die
+		make ab CFLAGS="${CFLAGS} -DUSE_SSL -lcrypto -lssl -I/usr/include/openssl -L/usr/$(get_libdir)" || die
 		mv ab ab-ssl
 		rm -f ab.o
 		make ab || die

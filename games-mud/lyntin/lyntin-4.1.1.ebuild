@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/lyntin/lyntin-4.1.1.ebuild,v 1.1 2005/01/23 07:56:32 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/lyntin/lyntin-4.1.1.ebuild,v 1.1.1.1 2005/11/30 10:06:15 chriswhite Exp $
 
 inherit games distutils
 
@@ -10,12 +10,12 @@ SRC_URI="mirror://sourceforge/lyntin/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="tcltk"
 
 DEPEND=">=dev-lang/python-2.2.3"
 
-DOCS="COMMANDS INSTALL PKG-INFO HACKING README"
+DOCS="COMMANDS PKG-INFO HACKING README"
 
 pkg_setup() {
 	if ! built_with_use dev-lang/python tcltk ; then
@@ -24,6 +24,7 @@ pkg_setup() {
 		echo
 		die "missing tkinter support with installed python"
 	fi
+	games_pkg_setup
 }
 
 src_install() {
@@ -34,6 +35,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	games_pkg_postinst
 	if use tcltk ; then
 		einfo "To start lyntin in GUI mode, create a config file"
 		einfo "with this in it:"
@@ -42,7 +44,7 @@ pkg_postinst() {
 		einfo "ui:    tk"
 		echo
 		einfo "Then start lyntin like this:"
-		einfo " "
+		einfo
 		einfo "runlyntin -c /path/to/config_file\n"
 	fi
 }

@@ -1,20 +1,21 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/basiliskII/basiliskII-1.0.0_pre20020115.ebuild,v 1.1 2004/03/21 14:22:40 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/basiliskII/basiliskII-1.0.0_pre20020115.ebuild,v 1.1.1.1 2005/11/30 10:08:39 chriswhite Exp $
 
-IUSE="X gtk xv esd dga"
-
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
 ### This package requires a Mac II/Classic ROM, A Mac OS Image
 ### Mac OS 7.5.3r2 is available freely from the Apple Homepage
 ### System ROMS can be retreived from a 'real' Mac, See info/man pages
 
-DESCRIPTION="BasiliskII-0.9.0 Macintosh Emulator (Stable Release)"
+DESCRIPTION="Basilisk II Macintosh Emulator"
 HOMEPAGE="http://www.uni-mainz.de/~bauec002/B2Main.html"
-LICENSE="GPL-2 | LGPL-2.1"
-KEYWORDS="~x86 ~ppc"
+SRC_URI="http://iphcip1.physik.uni-mainz.de/~cbauer/BasiliskII_src_15012002.tar.gz"
+
+LICENSE="|| ( GPL-2 LGPL-2.1 )"
 SLOT="0"
+KEYWORDS="x86 ppc"
+IUSE="X gtk xv esd dga"
 
 ### We'll set $S Manually, it's version dependant, and nested strangely.
 S=${WORKDIR}/BasiliskII-1.0/src/Unix
@@ -23,14 +24,16 @@ S=${WORKDIR}/BasiliskII-1.0/src/Unix
 ### gtk and esd support are compile time options, we'll check the usual
 ### use variables here and set ./configure options accordingly
 
-DEPEND="gtk? ( x11-libs/gtk+ )
-	esd? ( media-sound/esound )"
+DEPEND="esd? ( media-sound/esound )
+	gtk? ( =x11-libs/gtk+-1.2* )"
 
 
-SRC_URI="http://iphcip1.physik.uni-mainz.de/~cbauer/BasiliskII_src_15012002.tar.gz"
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/basiliskII-gcc34.patch || die
+}
 
 src_compile() {
-
 	#fpu_x86 doesnt compile properly if -O3 or greater :(
 	replace-flags -O[3-9] -O2
 
@@ -59,10 +62,10 @@ src_compile() {
 	sed -e 's:-o $(OBJ_DIR)/gencpu:-lstdc++ -o $(OBJ_DIR)/gencpu:' \
 		Makefile.old > Makefile
 
-	emake || die "BasiliskII Make Failed"
+	emake -j1 || die "BasiliskII Make Failed"
 }
 
-src_install () {
+src_install() {
 	make \
 		prefix=${D}/usr \
 		mandir=${D}/usr/share/man \
@@ -78,5 +81,4 @@ src_install () {
 ### provides (effectivly) an ethernet bridge between basliskII and the kernel
 
 #	make modules
-
 }

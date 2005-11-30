@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.0-r2.ebuild,v 1.1 2005/11/16 03:54:35 markusle Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.0-r2.ebuild,v 1.1.1.1 2005/11/30 10:09:22 chriswhite Exp $
 
 inherit eutils fortran
 

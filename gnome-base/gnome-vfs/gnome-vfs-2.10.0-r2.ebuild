@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-vfs/gnome-vfs-2.10.0-r2.ebuild,v 1.1 2005/06/04 11:47:32 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-vfs/gnome-vfs-2.10.0-r2.ebuild,v 1.1.1.1 2005/11/30 10:09:16 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnome.org/"
 LICENSE="GPL-2 LGPL-2"
 
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64 ~mips ~ia64 ~ppc64 ~arm"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="doc ssl gnutls samba ipv6 hal howl"
 
 RDEPEND=">=dev-libs/glib-2.6
@@ -29,10 +29,9 @@ RDEPEND=">=dev-libs/glib-2.6
 		!gnome-extra/gnome-vfs-sftp )
 	gnutls? ( !ssl? ( net-libs/gnutls
 			!gnome-extra/gnome-vfs-sftp ) )
-	samba? ( >=net-fs/samba-3
-		!gnome-extra/gnome-vfs-extras )
-	hal? ( >=sys-apps/hal-0.4
-		>=sys-apps/dbus-0.22 )
+	samba? ( >=net-fs/samba-3 )
+	hal? ( =sys-apps/hal-0.4*
+		=sys-apps/dbus-0.23* )
 	howl? ( >=net-misc/howl-0.9.6-r1 )"
 
 # ssl/gnutls USE deps : if both are enabled choose openssl

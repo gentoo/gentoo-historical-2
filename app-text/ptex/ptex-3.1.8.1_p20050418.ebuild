@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ptex/ptex-3.1.8.1_p20050418.ebuild,v 1.1 2005/04/19 07:51:40 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ptex/ptex-3.1.8.1_p20050418.ebuild,v 1.1.1.1 2005/11/30 10:06:32 chriswhite Exp $
 
 TETEX_PV=3.0
 

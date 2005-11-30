@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/boost-jam/boost-jam-3.1.9-r1.ebuild,v 1.1 2004/06/14 18:04:19 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/boost-jam/boost-jam-3.1.9-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:15 chriswhite Exp $
 
 IUSE=""
 
@@ -24,6 +24,7 @@ src_unpack() {
 
 	cd ${S}
 	epatch ${FILESDIR}/${P}-dir.patch
+	epatch ${FILESDIR}/${P}-amd64.patch
 }
 
 src_compile() {
@@ -35,5 +36,6 @@ src_install() {
 	dohtml Jam.html
 
 	cd ${S}/bin.linux${ARCH}
-	dobin bjam jam mkjambase yyacc
+	dobin bjam jam mkjambase yyacc || die "Unable to install binaries."
+	/* add check or ebuild will happilly succeed on unsupported archs and install only docs */
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/rhyme/rhyme-0.9.ebuild,v 1.1 2003/09/04 17:14:58 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/rhyme/rhyme-0.9.ebuild,v 1.1.1.1 2005/11/30 10:06:54 chriswhite Exp $
 
 inherit ccc
 
@@ -10,17 +10,12 @@ SRC_URI="mirror://sourceforge/rhyme/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 alpha"
+IUSE=""
 
-IUSE="ncurses"
-
-RDEPEND="ncurses? ( >=sys-libs/ncurses-5.3 )
-		!ncurses? ( >=sys-libs/libtermcap-compat-1.2.3 )
-		>=sys-libs/readline-4.3
-		>=sys-libs/gdbm-1.8.0"
-DEPEND="${RDEPEND}"
-
-S=${WORKDIR}/${P}
+DEPEND=">=sys-libs/ncurses-5.3
+	>=sys-libs/readline-4.3
+	>=sys-libs/gdbm-1.8.0"
 
 src_compile() {
 	# gcc is hardcoded, switch to user specified compiler
@@ -29,10 +24,8 @@ src_compile() {
 	# CFLAGS are hardcoded, replace with user specified flags
 	sed -i "s#\(^FLAGS =\).*#\1 ${CFLAGS}#g" ${S}/Makefile
 
-	# termcap is used by default, switch to ncurses if requested.
-	if use ncurses; then
-		sed -i 's/-ltermcap/-lncurses/g' ${S}/Makefile
-	fi
+	# termcap is used by default, switch to ncurses
+	sed -i 's/-ltermcap/-lncurses/g' ${S}/Makefile
 
 	# works fine with parallel build
 	emake || die
@@ -44,10 +37,7 @@ src_install() {
 
 	einstall BINPATH=${D}/usr/bin \
 			MANPATH=${D}/usr/share/man/man1 \
-			RHYMEPATH=${D}/usr/share/rhyme || die
-
-	dodoc INSTALL COPYING
+			RHYMEPATH=${D}/usr/share/rhyme
 
 	prepallman
 }
-

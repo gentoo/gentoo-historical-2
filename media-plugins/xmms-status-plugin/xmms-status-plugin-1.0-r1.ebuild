@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-status-plugin/xmms-status-plugin-1.0-r1.ebuild,v 1.1 2005/11/17 19:00:41 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-status-plugin/xmms-status-plugin-1.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:07:20 chriswhite Exp $
 
 inherit autotools
 

@@ -1,6 +1,52 @@
 # ChangeLog for app-vim/xsl-syntax
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/xsl-syntax/ChangeLog,v 1.1 2005/02/12 20:58:03 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/xsl-syntax/ChangeLog,v 1.1.1.1 2005/11/30 10:07:39 chriswhite Exp $
+
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xsl-syntax-0.3.11-r1.ebuild:
+  Stable on ppc.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  xsl-syntax-0.3.11-r1.ebuild:
+  Mark 0.3.11-r1 stable on alpha
+
+  09 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  xsl-syntax-0.3.11-r1.ebuild:
+  Marked Stable on AMD64.
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  xsl-syntax-0.3.11-r1.ebuild:
+  Mark 0.3.11-r1 stable on ia64
+
+  07 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  xsl-syntax-0.3.11-r1.ebuild:
+  Stable on ppc64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  xsl-syntax-0.3.11-r1.ebuild:
+  x86 sparc mips stable
+
+*xsl-syntax-0.3.11-r1 (08 Aug 2005)
+
+  08 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +xsl-syntax-0.3.11-r1.ebuild:
+  Use hi def link rather than hi link. Bug #101787, bug #101804.
+
+  29 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> xsl-syntax-0.3.11.ebuild:
+  Added ~mips.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  xsl-syntax-0.3.11.ebuild:
+  Stable on ppc.
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> xsl-syntax-0.3.11.ebuild:
+  Stable on ppc64
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> xsl-syntax-0.3.11.ebuild:
+  amd64 stable.
+
+  13 Feb 2005; Markus Rothe <corsair@gentoo.org> xsl-syntax-0.3.11.ebuild:
+  Added ~ppc64 to KEYWORDS
 
 *xsl-syntax-0.3.11 (12 Feb 2005)
 

@@ -1,10 +1,49 @@
 # ChangeLog for app-text/ots
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ots/ChangeLog,v 1.1 2003/07/09 08:16:53 seemant Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ots/ChangeLog,v 1.1.1.1 2005/11/30 10:06:36 chriswhite Exp $
+
+  12 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> ots-0.4.2.ebuild:
+  Stable on hppa, ppc.
+
+  11 Oct 2005; Marcelo Goes <vanquirius@gentoo.org> ots-0.4.2.ebuild:
+  0.4.2 x86 stable.
+
+  29 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/ots-0.4.2-gcc4.diff, ots-0.4.1.ebuild, ots-0.4.2.ebuild:
+  Do not dodoc INSTALL, add gcc4 patch.
+
+*ots-0.4.2 (03 Sep 2005)
+
+  03 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  ots-0.4.1.ebuild, +ots-0.4.2.ebuild:
+  Removing doc USE flag and forcing --disable-gtk-doc, since this is clearly
+  broken. This fixes bug 97448, thanks to Matthew C. Tedder
+  <teddemc@yahoo.com>. Bumping version for bug 94893. Thanks to stephan
+  <stephan-01@gmx.de>, Amit Kotlovski <krallkrall@gmail.com> and others. Also,
+  I am making myself maintainer of this package.
+
+  12 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> ots-0.4.1.ebuild:
+  fix typo in HOMEPAGE (bug #95715); tidy
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ots-0.4.1.ebuild:
+  Stable on ppc.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> ots-0.4.1.ebuild :
+  Stable on AMD64 and x86.
+
+  08 Mar 2004; <augustus@gentoo.org> ots-0.4.1.ebuild:
+  Added ~amd64 keyword.
+
+*ots-0.4.1 (19 Aug 2003)
+
+  19 Aug 2003; foser <foser@gentoo.org> ots-0.4.1.ebuild :
+  New version, updated deps, as requested in #26823
 
 *ots-0.2.0 (09 Jul 2003)
 
   09 Jul 2003; Seemant Kulleen <seemant@gentoo.org> ots-0.2.0.ebuild:
   Open source text summariser -- package author: Nadav Rotem
-  <nadav256@hotmail.com> requested this to be added in IRC, to me.
+  <nadav256@hotmail.com> requested this to be added in IRC, to me.  I didn't
+  see bug #24079 by MG <markgilbert@hotpop.com> where he had submitted the
+  ebuild for this. Apologies to him nd foser.
 

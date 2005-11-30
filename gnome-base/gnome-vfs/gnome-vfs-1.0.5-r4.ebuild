@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-vfs/gnome-vfs-1.0.5-r4.ebuild,v 1.1 2005/04/11 08:27:58 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-vfs/gnome-vfs-1.0.5-r4.ebuild,v 1.1.1.1 2005/11/30 10:09:17 chriswhite Exp $
 
-inherit eutils libtool gcc
+inherit eutils libtool toolchain-funcs
 
 DESCRIPTION="GNOME Virtual File System"
 HOMEPAGE="http://www.gnome.org/"
@@ -10,13 +10,15 @@ SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/${PN}/1.0/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips ~ppc64 ~arm"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="doc ssl nls"
 
 RDEPEND="=gnome-base/gconf-1.0*
 	>=gnome-base/gnome-libs-1.4.1.2
 	>=gnome-base/gnome-mime-data-1.0.1
 	>=app-arch/bzip2-1.0.2
+	>=dev-libs/libxml-1.8.17-r2
+	>=gnome-base/oaf-0.6.10
 	ssl? ( dev-libs/openssl )"
 
 
@@ -44,7 +46,8 @@ src_unpack() {
 	epatch ${FILESDIR}/1.0/${P}-fix-segfault.patch
 
 	#apply both patches to compile with gcc-3.4 closing bug #53075
-	if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "4" ]
+	if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "4" ] \
+		|| [ "`gcc-major-version`" -ge "4" ]
 	then
 		epatch ${FILESDIR}/1.0/${P}-gcc3.4.patch
 	fi

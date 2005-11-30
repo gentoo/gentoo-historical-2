@@ -1,6 +1,18 @@
 # ChangeLog for sci-libs/vtk
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/ChangeLog,v 1.1 2005/05/10 15:35:52 pkdawson Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/ChangeLog,v 1.1.1.1 2005/11/30 10:09:19 chriswhite Exp $
+
+  08 Oct 2005; Thomas Matthijs <axxo@gentoo.org> vtk-4.2.6.ebuild:
+  use java-pkg_dojar not dojar
+
+  24 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> vtk-4.2.6.ebuild:
+  No longer using cp -a (bug #103487)
+
+  20 Aug 2005; Olivier Fisette <ribosome@gentoo.org> vtk-4.2.6.ebuild:
+  Removed unused "data" USE flag (fixes bug #100418).
+
+  03 Jun 2005; Patrick Dawson <pkdawson@gentoo.org> vtk-4.2.6.ebuild:
+  Typo fix.
 
 *vtk-4.2.6 (10 May 2005)
 

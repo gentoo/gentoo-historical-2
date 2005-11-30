@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dictd/dictd-1.9.14.ebuild,v 1.1 2004/09/21 23:48:17 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dictd/dictd-1.9.14.ebuild,v 1.1.1.1 2005/11/30 10:06:34 chriswhite Exp $
 
 inherit gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/dict/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~amd64 ~ia64 ~ppc64"
+KEYWORDS="alpha ~amd64 ~hppa ia64 ~mips ppc ppc64 ~sparc ~x86"
 IUSE=""
 
 DEPEND="virtual/libc"
@@ -38,13 +38,13 @@ src_install() {
 	# conf files.
 	dodir /etc/dict
 	insinto /etc/dict
-	doins ${FILESDIR}/${PVR}/dict.conf
-	doins ${FILESDIR}/${PVR}/dictd.conf
-	doins ${FILESDIR}/${PVR}/site.info
+	doins ${FILESDIR}/1.9.11-r1/dict.conf
+	doins ${FILESDIR}/1.9.11-r1/dictd.conf
+	doins ${FILESDIR}/1.9.11-r1/site.info
 
 	# startups for dictd
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/${PVR}/dictd dictd
+	newexe ${FILESDIR}/1.9.11-r1/dictd dictd
 	insinto /etc/conf.d
-	newins ${FILESDIR}/${PVR}/dictd.confd dictd
+	newins ${FILESDIR}/1.9.11-r1/dictd.confd dictd
 }

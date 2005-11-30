@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen/xen-3.0.0_pre20051027.ebuild,v 1.1 2005/10/27 16:40:23 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen/xen-3.0.0_pre20051027.ebuild,v 1.1.1.1 2005/11/30 10:08:43 chriswhite Exp $
 
 inherit mount-boot
 

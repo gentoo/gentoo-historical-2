@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pinfo/pinfo-0.6.7.ebuild,v 1.1 2003/03/09 20:40:41 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/pinfo/pinfo-0.6.7.ebuild,v 1.1.1.1 2005/11/30 10:06:49 chriswhite Exp $
 
 MY_P=${PN}-${PV/_/}
 S=${WORKDIR}/${MY_P}
@@ -10,7 +10,7 @@ HOMEPAGE="http://zeus.polsl.gliwice.pl/~pborys/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc "
+KEYWORDS="x86 ~ppc sparc"
 IUSE="nls readline"
 
 DEPEND="sys-libs/ncurses
@@ -28,7 +28,7 @@ src_compile() {
 		&& myconf="${myconf} --enable-nls" \
 		|| myconf="${myconf} --disable-nls"
 
-	econf ${myconf}
+	econf ${myconf} || die "econf failed"
 	emake || die
 }
 

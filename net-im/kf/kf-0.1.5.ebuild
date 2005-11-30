@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/kf/kf-0.1.5.ebuild,v 1.1 2004/07/11 15:47:17 lucass Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/kf/kf-0.1.5.ebuild,v 1.1.1.1 2005/11/30 10:09:40 chriswhite Exp $
 
 inherit eutils
 

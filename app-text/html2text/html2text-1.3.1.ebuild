@@ -1,17 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/html2text/html2text-1.3.1.ebuild,v 1.1 2003/09/12 08:57:19 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/html2text/html2text-1.3.1.ebuild,v 1.1.1.1 2005/11/30 10:07:00 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="A HTML to text converter"
-SRC_URI="http://userpage.fu-berlin.de/~mbayer/tools/${P}.tar.gz"
 HOMEPAGE="http://userpage.fu-berlin.de/~mbayer/tools/html2text.html"
+SRC_URI="http://userpage.fu-berlin.de/~mbayer/tools/historic/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="x86 sparc amd64"
 IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
+
+src_unpack() {
+	unpack ${A}
+	# apply a patch for g++ 3.3, provided by the html2text
+	# people (see homepage) <obz@gentoo.org>
+	if has_version ">=sys-devel/gcc-3.3*"; then
+		epatch ${FILESDIR}/${PN}-gcc3.3.patch
+	fi
+}
 
 src_compile() {
 	./configure || die

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gtk-sharp/gtk-sharp-1.0.10.ebuild,v 1.1 2005/05/24 17:39:50 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gtk-sharp/gtk-sharp-1.0.10.ebuild,v 1.1.1.1 2005/11/30 10:06:20 chriswhite Exp $
 
 inherit eutils mono
 
@@ -12,6 +12,7 @@ HOMEPAGE="http://gtk-sharp.sourceforge.net/"
 LICENSE="LGPL-2.1"
 SLOT="1"
 IUSE=""
+RESTRICT="test"
 
 RDEPEND=">=sys-apps/sed-4.0
 	>=dev-lang/mono-1.0
@@ -23,7 +24,7 @@ RDEPEND=">=sys-apps/sed-4.0
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 
 src_unpack() {
 	unpack ${A}
@@ -31,6 +32,10 @@ src_unpack() {
 
 	epatch ${WORKDIR}/${P}-configurable.diff
 	sed -i -e 's:\<PKG_PATH\>:GTK_SHARP_PKG_PATH:g' configure.in
+
+	# Use correct libdir in pkgconfig file
+	sed -i -e 's:^libdir.*:libdir=@libdir@:' \
+		${S}/gtk-sharp.pc.in || die
 
 	aclocal || die
 	# See bug #73563, comment #9

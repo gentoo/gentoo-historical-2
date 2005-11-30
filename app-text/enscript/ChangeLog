@@ -1,6 +1,102 @@
 # ChangeLog for app-text/enscript
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-text/enscript/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/enscript/ChangeLog,v 1.1.1.1 2005/11/30 10:06:28 chriswhite Exp $
+
+*enscript-1.6.4 (31 May 2005)
+
+  31 May 2005; Heinrich Wendel <lanius@gentoo.org>
+  +files/enscript-1.6.3-language.patch, +metadata.xml,
+  +enscript-1.6.4.ebuild:
+  version bump, fix bug #62794
+
+  06 Feb 2005; <solar@gentoo.org> -enscript-1.6.3-r1.ebuild,
+  -enscript-1.6.3.ebuild:
+  - flushing old ebuilds
+
+  01 Feb 2005; <solar@gentoo.org> enscript-1.6.3-r3.ebuild:
+  - marking x86 stable for bug #77408
+
+  30 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  enscript-1.6.3-r3.ebuild:
+  Stable on alpha, bug 77408.
+
+  28 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  enscript-1.6.3-r3.ebuild:
+  Stable on ppc.
+
+  28 Jan 2005; Danny van Dyk <kugelfang@gentoo.org>
+  enscript-1.6.3-r3.ebuild:
+  Marked stable on amd64 wrt Security BUG #77408
+
+  27 Jan 2005; Jason Wever <weeve@gentoo.org> enscript-1.6.3-r3.ebuild:
+  Stable on sparc wrt security bug #77408.
+
+  27 Jan 2005; Markus Rothe <corsair@gentoo.org> enscript-1.6.3-r3.ebuild:
+  Stable on ppc64; bug #77408
+
+*enscript-1.6.3-r3 (27 Jan 2005)
+
+  27 Jan 2005; <solar@gentoo.org> files/enscript-1.6.3-security.patch,
+  -enscript-1.6.3-r2.ebuild, +enscript-1.6.3-r3.ebuild:
+  - update security patch for bug 77408
+
+*enscript-1.6.3-r2 (21 Jan 2005)
+
+  21 Jan 2005; <solar@gentoo.org> +files/enscript-1.6.3-security.patch,
+  +enscript-1.6.3-r2.ebuild:
+  - security bump for bug #77408 fixes CAN-2004-1184, CAN-2004-1185,
+  CAN-2004-1186
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  04 Oct 2004; Tom Gall <tgall@gentoo.org> enscript-1.6.3-r1.ebuild:
+  stable on ppc64, bug #64274
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> enscript-1.6.3-r1.ebuild,
+  enscript-1.6.3.ebuild:
+  Typo in DESCRIPTION: postsript -> postscript. Bug 59717.
+
+  05 Aug 2004; Aron Griffis <agriffis@gentoo.org> enscript-1.6.3-r1.ebuild:
+  stable on alpha
+
+  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> enscript-1.6.3-r1.ebuild:
+  Added ~mips
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> enscript-1.6.3-r1.ebuild:
+  Keyworded ~alpha, requested in bug #51550.
+
+  13 Mar 2003; Olivier Reisch <doctomoe@gentoo.org> enscript-1.6.3-r1.ebuild :
+  Marked ppc stable
+ 
+*enscript-1.6.3-r1 (2 Aug 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> enscript-1.6.3.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> enscript-1.6.3-r1.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  17 Jun 2002; Seemant Kulleen <seemant@gentoo.org>
+
+  Fixed typo in homepage, thanks to: uipx@gmx.net (Andreas Simon) in bug
+  #3811
+
+*enscript-1.6.3 (12 Mar 2002)
+
+ 12 Mar 2002; Seemant Kulleen <seemant@gentoo.org> :
+ 
+ Added USE dependent nls compilation (submitted by Matthew Kennedy).
+
+*enscript-1.6.3 (4 Feb 2002)
+  
+ 4 Feb 2002; F.A Meyndert <m0rpheus@gentoo.org> enscript-1.6.3.ebuild :
+
+ Added new enscript version too fix temporary file symlink bug that may
+ let local users gain elevated privileges.
+
 
 *enscript-1.6.1-r1 (1 Feb 2002)
 

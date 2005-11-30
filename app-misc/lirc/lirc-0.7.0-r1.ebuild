@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.7.0-r1.ebuild,v 1.1 2004/12/03 15:32:47 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.7.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:53 chriswhite Exp $
 
-inherit eutils linux-mod
+inherit eutils linux-mod flag-o-matic
 
 DESCRIPTION="LIRC is a package that allows you to decode and send infra-red \
 	signals of many (but not all) commonly used remote controls."
@@ -19,16 +19,25 @@ HOMEPAGE="http://www.lirc.org"
 # --with-driver=X
 
 # where X is one of:
-# none, any, animax, avermedia, avermedia98,
-# bestbuy, bestbuy2, caraca, chronos, comX,
-# cph03x, cph06x, creative, fly98, flyvideo,
-# hauppauge,hauppauge_dvb, ipaq, irdeo,
+# none, any, act200l, animax, atilibusb,
+# atiusb, audio, avermedia, avermedia_vdomate,
+# avermedia98, bestbuy, bestbuy2, breakoutbox,
+# bte, caraca, chronos, comX,
+# creative_infracd, dsp, cph03x, cph06x,
+# creative, devinput, exaudio, flyvideo,
+# gvbctv5pci, hauppauge, hauppauge_dvb,
+# hercules_smarttv_stereo, igorplugusb, irdeo,
 # irdeo_remote, irman, irreal, it87, knc_one,
-# logitech, lptX, mediafocusI, packard_bell,
-# parallel, pctv, pixelview_bt878,
-# pixelview_pak, pixelview_pro, provideo,
-# realmagic, remotemaster, serial, silitek,
-# sir, slinke, streamzap tekram, winfast_tv2000
+# kworld, leadtek_0007, leadtek_0010,
+# livedrive_midi, livedrive_seq, logitech,
+# lptX, mceusb, mediafocusI, mp3anywhere,
+# packard_bell, parallel, pcmak, pcmak_usb,
+# pctv, pixelview_bt878, pixelview_pak,
+# pixelview_pro, provideo, realmagic,
+# remotemaster, sa1100, sasem, serial,
+# silitek, sir, slinke, tekram, tekram_bt829,
+# tira, tvbox, udp, uirt2, uirt2_raw"
+# winfast_tv2000 is now leadtek_0010
 
 # This could be usefull too
 
@@ -41,21 +50,35 @@ HOMEPAGE="http://www.lirc.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="debug doc streamzap"
-KEYWORDS="~x86 ~ppc ~alpha ~ia64 ~amd64 ~ppc64"
+IUSE="debug doc streamzap X"
+KEYWORDS="x86 ppc alpha ia64 amd64 ppc64"
 
-DEPEND="virtual/linux-sources"
+RDEPEND="virtual/libc
+	X? ( virtual/x11 )"
+
+DEPEND="virtual/linux-sources
+	sys-devel/autoconf
+	${RDEPEND}"
 
 SRC_URI="mirror://sourceforge/lirc/${P}.tar.bz2"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	use streamzap && epatch ${FILESDIR}/lirc-0.7.0-streamzap.patch.bz2
-	if [ "${PROFILE_ARCH}" == "xbox" ]; then
-		epatch ${FILESDIR}/lirc-0.7.0-xbox.patch.bz2
+	if use streamzap; then
+		if kernel_is 2 6; then
+			ewarn "Streamzap is not Kernel 2.6 ready and will not be compiled"
+		else
+			epatch ${FILESDIR}/lirc-0.7.0-streamzap.patch.bz2
+		fi
 	fi
+	epatch ${FILESDIR}/lirc-0.7.0-xbox.patch.bz2
+
+	filter-flags -Wl,-O1
 	sed	-i -e "s:-O2 -g:${CFLAGS}:" configure configure.in
+
+	# fix bz878 compilation, bug #87505
+	sed -i -e "s:lircd.conf.pixelview_bt878:lircd.conf.playtv_bt878" configure configure.in
 }
 
 src_compile() {
@@ -66,12 +89,12 @@ src_compile() {
 		--with-port=0x3f8 --with-irq=4"
 
 	# remove parallel driver on SMP systems
-	if [ ! -z "`uname -v | grep SMP`" ]
-	then
+	if linux_chkconfig_present SMP ; then
 		sed -i -e "s:lirc_parallel::" drivers/Makefile
 	fi
 
 	# Patch bad configure for /usr/src/linux
+	libtoolize --copy --force || die "libtoolize failed"
 	sed -si "s|/usr/src/kernel\-source\-\`uname \-r\` /usr/src/linux\-\`uname \-r\` ||" \
 		acinclude.m4 aclocal.m4 configure || die "/usr/src/linux sed failed"
 
@@ -80,12 +103,15 @@ src_compile() {
 		die "/lib/modules sed failed"
 
 	unset ARCH
+	export WANT_AUTOCONF=2.5
+
 	econf \
 		--disable-manage-devices \
 		--localstatedir=/var \
 		--with-syslog=LOG_DAEMON \
 		--enable-sandboxed \
 		`use_enable debug` \
+		`use_with X` \
 		${LIRC_OPTS} || die "./configure failed"
 
 	convert_to_m ${S}/Makefile
@@ -108,6 +134,10 @@ src_install() {
 		insinto /usr/share/doc/${PF}/images
 		doins doc/images/*
 	fi
+}
+
+pkg_preinst() {
+	cp ${ROOT}/etc/lircd.conf ${IMAGE}/etc
 }
 
 pkg_postinst() {

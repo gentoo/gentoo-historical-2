@@ -1,6 +1,18 @@
 # ChangeLog for app-text/vlna
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/vlna/ChangeLog,v 1.1 2004/02/26 19:38:39 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/vlna/ChangeLog,v 1.1.1.1 2005/11/30 10:06:40 chriswhite Exp $
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> vlna-1.2.ebuild:
+  stable on amd64
+
+  06 Jan 2005; Karol Wojtaszek <sekretarz@gentoo.org> vlna-1.2.ebuild:
+  Added to ~amd64, bug #75342
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> vlna-1.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  05 May 2004; Mamoru KOMACHI <usata@gentoo.org> vlna-1.2.ebuild:
+  Stable on x86
 
 *vlna-1.2 (27 Feb 2004)
 

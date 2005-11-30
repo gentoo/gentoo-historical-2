@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/diasce/diasce-1.4.ebuild,v 1.1 2003/10/01 20:20:05 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/diasce/diasce-1.4.ebuild,v 1.1.1.1 2005/11/30 10:05:24 chriswhite Exp $
+
+inherit eutils
 
 MY_P=${PN}2-${PV}
 S=${WORKDIR}/${MY_P}
@@ -10,7 +12,8 @@ SRC_URI="http://diasce.es.gnome.org/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
+IUSE="nls"
 
 RDEPEND=">=dev-libs/libxml2-2.4
 	>=x11-libs/gtk+-2
@@ -25,7 +28,14 @@ RDEPEND=">=dev-libs/libxml2-2.4
 	>=gnome-base/libgnomecanvas-2"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
+	net-libs/linc
 	nls? ( sys-devel/gettext )"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	has_version '>=orbit/orbit-2.8.0' && epatch ${FILESDIR}/${P}-linc.patch.tar.bz2
+}
 
 src_compile() {
 	local myconf=""
@@ -36,5 +46,5 @@ src_compile() {
 
 src_install() {
 	einstall || die
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
+	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gentoo/gentoo-0.11.55.ebuild,v 1.1 2005/06/22 17:08:56 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gentoo/gentoo-0.11.55.ebuild,v 1.1.1.1 2005/11/30 10:05:52 chriswhite Exp $
 
 DESCRIPTION="A modern GTK+ based filemanager for any WM"
 HOMEPAGE="http://www.obsession.se/gentoo/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="nls gnome fam"
 
 DEPEND="=x11-libs/gtk+-1.2*"
@@ -35,7 +35,7 @@ src_install() {
 		doins ${FILESDIR}/gentoo.desktop
 	fi
 
-	dodoc AUTHORS BUGS CONFIG-CHANGES CREDITS ChangeLog INSTALL \
+	dodoc AUTHORS BUGS CONFIG-CHANGES CREDITS ChangeLog \
 		NEWS ONEWS README* TODO
 	dodoc docs/FAQ docs/menus.txt
 

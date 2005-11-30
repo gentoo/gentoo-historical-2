@@ -1,6 +1,137 @@
-# ChangeLog for app-games/tintin
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/tintin/ChangeLog,v 1.1 2003/09/10 19:03:12 vapier Exp $
+# ChangeLog for games-mud/tintin
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/tintin/ChangeLog,v 1.1.1.1 2005/11/30 10:06:14 chriswhite Exp $
+
+  01 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -tintin-1.93.7.ebuild, -tintin-1.94.9.ebuild, -tintin-1.95.2.ebuild,
+  -tintin-1.95.3.ebuild, -tintin-1.95.5.ebuild:
+  clean old files
+
+*tintin-1.95.6 (13 Oct 2005)
+
+  13 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.95.6.ebuild:
+  version bump
+
+*tintin-1.95.5 (30 Aug 2005)
+
+  30 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.95.5.ebuild:
+  version bump
+
+*tintin-1.95.3 (03 Aug 2005)
+
+  03 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.95.3.ebuild:
+  version bump
+
+*tintin-1.95.2 (24 Jul 2005)
+
+  24 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.95.2.ebuild:
+  version bump
+
+  20 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  files/digest-tintin-1.95.1, Manifest:
+  digest fix (upstream changed archive) (bug #96626)
+
+*tintin-1.95.1 (17 Jun 2005)
+
+  17 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.95.1.ebuild:
+  version bump
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> tintin-1.93.7.ebuild,
+  tintin-1.94.9.ebuild, tintin-1.95.0.ebuild:
+  Removed INSTALL file.
+
+*tintin-1.95.0 (01 Jun 2005)
+
+  01 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.95.0.ebuild:
+  version bump
+
+*tintin-1.94.9 (25 May 2005)
+
+  25 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.94.9.ebuild:
+  version bump
+
+*tintin-1.94.8 (16 May 2005)
+
+  16 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.94.8.ebuild:
+  version bump
+
+*tintin-1.94.7 (13 May 2005)
+
+  13 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -tintin-1.94.6.ebuild, +tintin-1.94.7.ebuild:
+  version bump; clean older buggy version
+
+*tintin-1.94.6 (08 May 2005)
+
+  08 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +tintin-1.94.6.ebuild:
+  version bump
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> tintin-1.93.7.ebuild:
+  stable on amd64
+
+  25 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> tintin-1.93.7.ebuild:
+  Stable on sparc
+
+  23 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> -tintin-1.93.3.ebuild:
+  clean older version
+
+*tintin-1.93.7 (23 Jan 2005)
+
+  23 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> +tintin-1.93.7.ebuild:
+  version bump; add back dropped sparc keyword
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> tintin-1.93.3.ebuild:
+  Added to ~ppc.
+
+*tintin-1.93.3 (19 Sep 2004)
+
+  19 Sep 2004; Jared Hudson <jhhudso@gentoo.org> : Version bump.
+	
+*tintin-1.93.2-r1 (08 Sep 2004)
+
+  08 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> -tintin-1.86.ebuild,
+  -tintin-1.93.1.ebuild, +tintin-1.93.2-r1.ebuild, -tintin-1.93.2.ebuild,
+  -tintin-1.93.ebuild:
+  clean older ebuilds; redigest since the tarball changed upstream
+
+  07 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> tintin-1.93.2.ebuild:
+  clean up in src_unpack for bug #63006
+
+*tintin-1.93.2 (30 Aug 2004)
+
+  30 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +tintin-1.93.2.ebuild:
+  version bump (bug #62118)
+
+*tintin-1.93.1 (27 Aug 2004)
+
+  27 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +tintin-1.93.1.ebuild:
+  version bump
+
+*tintin-1.93 (25 Jul 2004)
+
+  25 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +tintin-1.93.ebuild:
+  version bump (bug #58109)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tintin-1.86.ebuild:
+  virtual/glibc -> virtual/libc
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> tintin-1.86.ebuild:
+  Marking stable on amd64 (no bugs in 685 days).
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> tintin-1.86.ebuild:
+  use games eclass
+
+  12 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org> tintin-1.86.ebuild:
+  Adding ~amd64 and closing bug #44402.
 
   06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
  

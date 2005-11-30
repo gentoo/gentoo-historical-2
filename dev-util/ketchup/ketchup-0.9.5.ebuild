@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ketchup/ketchup-0.9.5.ebuild,v 1.1 2005/11/02 01:42:08 morfic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ketchup/ketchup-0.9.5.ebuild,v 1.1.1.1 2005/11/30 10:05:20 chriswhite Exp $
 
 
 DESCRIPTION="Ketchup is a tool for updating or switching between versions of the Linux kernel source."

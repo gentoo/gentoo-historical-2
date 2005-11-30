@@ -1,13 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/zoomwin/zoomwin-16.ebuild,v 1.1 2003/12/23 16:43:44 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/zoomwin/zoomwin-16.ebuild,v 1.1.1.1 2005/11/30 10:07:44 chriswhite Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: brief-style window zooming"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=508"
 LICENSE="vim"
-KEYWORDS="~alpha ~sparc ~x86 ~ppc"
+KEYWORDS="alpha sparc x86 ~ppc ia64 ~mips"
+IUSE=""
 
 function src_unpack() {
 	unpack ${A}

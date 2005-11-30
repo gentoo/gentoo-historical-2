@@ -1,17 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdf2html/pdf2html-1.4.ebuild,v 1.1 2004/02/21 15:25:51 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/pdf2html/pdf2html-1.4.ebuild,v 1.1.1.1 2005/11/30 10:06:28 chriswhite Exp $
 
-SLOT="0"
+inherit eutils
 
 DESCRIPTION="Converts pdf files to html files"
 SRC_URI="ftp://atrey.karlin.mff.cuni.cz/pub/local/clock/pdf2html/${P}.tgz"
 HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~clock/twibright/pdf2html/"
-
-KEYWORDS="~x86 -alpha"
 LICENSE="GPL-2"
+
+KEYWORDS="alpha ~amd64 ~ppc ~ppc-macos ~sparc x86"
+IUSE=""
+SLOT="0"
+
 DEPEND=">=media-libs/libpng-1.2.5
-	>=app-text/ghostscript-7.05.5
+	virtual/ghostscript
 	>=sys-libs/zlib-1.1.4
 	>=media-gfx/imagemagick-5.4.9"
 

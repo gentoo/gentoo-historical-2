@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/gdm-2.8.0.1-r1.ebuild,v 1.1 2005/08/08 10:37:17 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/gdm-2.8.0.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:03 chriswhite Exp $
 
 inherit eutils pam versionator gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://yippi.hypermall.com/gdm/index.shtml"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips ~ppc64"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ipv6 pam selinux static tcpd xinerama"
 
 # Name of the tarball with gentoo specific files
@@ -42,14 +42,13 @@ DOCS="AUTHORS ChangeLog NEWS README* TODO"
 
 
 pkg_setup() {
-	G2CONF="--sysconfdir=/etc/X11 --localstatedir=/var         \
-		--with-pam-prefix=/etc --with-xdmcp $(use_enable ipv6) \
-		$(use_with tcpd tcp-wrappers) $(use_with xinerama)     \
-		$(use_with selinux) $(use_enable static)"
+	G2CONF="--sysconfdir=/etc/X11 --localstatedir=/var \
+		--with-xdmcp $(use_enable ipv6) $(use_with tcpd tcp-wrappers) \
+		$(use_with xinerama) $(use_with selinux) $(use_enable static) \
+		$(use_with pam pam-prefix /etc)"
 
 	if use pam; then
-		G2CONF="${G2CONF} --with-pam-prefix=/etc \
-			--enable-authentication-scheme=pam"
+		G2CONF="${G2CONF} --enable-authentication-scheme=pam"
 	else
 		G2CONF="${G2CONF} --enable-console-helper=no \
 			--enable-authentication-scheme=shadow"

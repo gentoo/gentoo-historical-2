@@ -1,25 +1,21 @@
 #!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lcdproc/files/lcdproc,v 1.1.1.1 2005/11/30 10:06:02 chriswhite Exp $
 
-port="ttyS0"
-# which port is the LCD connected
-driver="MtxOrb"
-clients="C M T X"
-# "C" (CPU usage),"G" (CPU Graph like Xload),"M" (Memory Usage),"X" (X-Load),
-# "T" (Date, time, Uptime, OS version),"D" (Disk Stats),"B" (Battery Stats),"A" (About)
-# for more Clients see "LCDproc Homepage"
-
+depend(){
+	need LCDd 
+}
 start() {
-	ebegin "Starting LCDProc"
-	 ln -s /dev/$port /dev/lcd	
-	 /usr/local/bin/LCDd -d $driver -b on -i off
-	 /usr/local/bin/lcdproc $clients & 
-	eend
+	source /etc/lcdproc.conf
+	ebegin "Starting lcdproc"
+	start-stop-daemon --start --background \
+		--exec /usr/bin/lcdproc -- ${SCREENS}
+	eend $?
 }
 
 stop() {
-	ebegin "Stopping LCDProc"
-	 killall lcdproc 
-	 killall LCDd  
-	 rm -f /dev/lcd
-	eend
+	ebegin "Stopping lcdproc"
+	start-stop-daemon --stop --exec /usr/bin/lcdproc
+	eend $?
 }

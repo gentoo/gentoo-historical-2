@@ -1,6 +1,90 @@
 # ChangeLog for dev-util/rapidsvn
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rapidsvn/ChangeLog,v 1.1 2003/08/20 04:58:09 iggy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rapidsvn/ChangeLog,v 1.1.1.1 2005/11/30 10:05:21 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> rapidsvn-0.8.0.ebuild:
+  Stable on ppc.
+
+*rapidsvn-0.9.0 (08 Nov 2005)
+
+  08 Nov 2005; Steve Arnold <nerdboy@gentoo.org> rapidsvn-0.8.0.ebuild,
+  +rapidsvn-0.9.0.ebuild:
+  version bump to address bug #111354; stable bump for x86
+
+  10 Oct 2005; Steve Arnold <nerdboy@gentoo.org> rapidsvn-0.6.0-r1.ebuild,
+  rapidsvn-0.7.0.ebuild, rapidsvn-0.7.1.ebuild, rapidsvn-0.8.0.ebuild:
+  restricted wxGTK dep to address bug #106763 (not compatible with API over
+  version 2.4)
+
+  16 Sep 2005; Steve Arnold <nerdboy@gentoo.org> rapidsvn-0.6.0-r1.ebuild,
+  rapidsvn-0.7.0.ebuild, rapidsvn-0.7.1.ebuild, rapidsvn-0.8.0.ebuild:
+  Added fix for bug #103676 (made neon a hard dep, since with subversion
+  it depends on webdav support).  Also stblized older (non-bugged) versions.
+
+*rapidsvn-0.8.0 (31 May 2005)
+
+  31 May 2005; Steve Arnold <nerdboy@gentoo.org> rapidsvn-0.7.0.ebuild,
+  rapidsvn-0.7.1.ebuild, +rapidsvn-0.8.0.ebuild:
+  All newer versions fixed (really fixes bug 62724) and version bump (bug 90895)
+  time to start stablizin'!
+
+*rapidsvn-0.6.0-r1 (31 May 2005)
+
+  31 May 2005; Steve Arnold <nerdboy@gentoo.org>
+  +files/svncpp_0.6.1_link.patch, metadata.xml, -rapidsvn-0.6.0.ebuild,
+  +rapidsvn-0.6.0-r1.ebuild:
+  sStable x86 was broken and this fixes it (closes bug 55569)
+  dev-tools herd is also adopting this package (but feel free to keep
+  working on stuff or assign bugs to me)
+
+*rapidsvn-0.7.1 (17 Mar 2005)
+
+  17 Mar 2005; David Holm <dholm@gentoo.org> rapidsvn-0.7.0.ebuild,
+  +rapidsvn-0.7.1.ebuild:
+  Version bumped
+  Added icon and desktop entry
+
+*rapidsvn-0.7.0 (04 Dec 2004)
+
+  04 Dec 2004; Daniel Black <dragonheart@gentoo.org> -rapidsvn-0.5.0.ebuild,
+  +rapidsvn-0.7.0.ebuild:
+  Version bump as per bug #73191. Thanks to Richard Cantzler <cantzler@uiuc.edu>
+
+  02 Jun 2004; David Holm <dholm@gentoo.org> +metadata.xml,
+  rapidsvn-0.6.0.ebuild:
+  Version bump, added metadata.xml.
+
+  17 May 2004; Jason Wever <weeve@gentoo.org> rapidsvn-0.5.0.ebuild:
+  Added ~sparc keyword.
+
+  27 Apr 2004; Paul de Vrieze <pauldv@gentoo.org> -rapidsvn-0.3.0.ebuild:
+  Remove old version as the needed subversion build has been removed
+
+  29 Mar 2004; David Holm <dholm@gentoo.org> rapidsvn-0.5.0.ebuild:
+  RapidSVN 0.5.0 works with subversion 1.0*.
+
+  01 Mar 2004; David Holm <dholm@gentoo.org> rapidsvn-0.5.0.ebuild:
+  Added to ~ppc.
+
+  18 Feb 2004; Brian Jackson <iggy@gentoo.org> rapidsvn-0.5.0.ebuild:
+  changed dep to be svn-0.37*
+
+*rapidsvn-0.5.0 (08 Feb 2004)
+
+  08 Feb 2004; Brian Jackson <iggy@gentoo.org> rapidsvn-0.5.0.ebuild:
+  version bump, thanks to jaalexATjasonalexander.us
+
+  17 Oct 2003; <iggy@gentoo.org> rapidsvn-0.2.0.ebuild:
+  remove old versions that depend on ancient versions of subversion
+
+  16 Oct 2003; <iggy@gentoo.org> rapidsvn-0.2.0.ebuild, rapidsvn-0.3.0.ebuild:
+  should depend on =dev-util/subversion-0.28.0, thanks to Martin Ehmsen for the
+  heads up, fixes bug 31181
+
+*rapidsvn-0.3.0 (01 Sep 2003)
+
+  01 Sep 2003; <iggy@gentoo.org> rapidsvn-0.3.0.ebuild:
+  version bump, needs the latest versoin of subversion
 
 *rapidsvn-0.2.0 (19 Aug 2003)
 

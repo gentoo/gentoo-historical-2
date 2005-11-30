@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/crm114/crm114-20041110.ebuild,v 1.1 2004/11/20 11:37:15 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/crm114/crm114-20041110.ebuild,v 1.1.1.1 2005/11/30 10:06:35 chriswhite Exp $
 
 inherit eutils
 
@@ -8,13 +8,13 @@ IUSE="nls static normalizemime mew mimencode"
 
 MY_P="${P}.BlameFidelisMore.src"
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="A powerful text processing tools, mainly used for spam filtering"
+DESCRIPTION="A powerful text processing tool, mainly used for spam filtering"
 HOMEPAGE="http://crm114.sourceforge.net/"
 SRC_URI="http://crm114.sourceforge.net/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86 ~ppc amd64"
 
 TREVERS="0.7.0"
 

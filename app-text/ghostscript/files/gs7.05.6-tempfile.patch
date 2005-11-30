@@ -42,7 +42,7 @@
 +++ espgs-7.05.6/lib/ps2epsi	2004-10-08 23:03:25.320082856 -0400
 @@ -1,7 +1,8 @@
  #!/bin/sh
- # $Id: gs7.05.6-tempfile.patch,v 1.1 2004/10/18 18:11:06 lanius Exp $
+ # $Id: gs7.05.6-tempfile.patch,v 1.1.1.1 2005/11/30 10:06:43 chriswhite Exp $
  
 -tmpfile=/tmp/ps2epsi$$
 +tmpfile=`mktemp -t ps2epsiXXXXXX` || exit 1

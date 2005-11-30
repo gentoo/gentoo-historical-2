@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/indent/indent-2.2.9-r2.ebuild,v 1.1 2005/01/04 03:21:26 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/indent/indent-2.2.9-r2.ebuild,v 1.1.1.1 2005/11/30 10:05:08 chriswhite Exp $
 
 inherit eutils
 
@@ -19,6 +19,10 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/${PV}-deb-gentoo.patch
+	epatch "${FILESDIR}"/${PV}-malloc.patch
+
+	# Update timestamp so it isn't regenerated #76610
+	touch -r man/Makefile.am man/texinfo2man.c
 }
 
 src_compile() {

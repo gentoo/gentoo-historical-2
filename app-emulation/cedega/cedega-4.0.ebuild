@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/cedega/cedega-4.0.ebuild,v 1.1 2004/06/23 14:58:04 coronalvr Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/cedega/cedega-4.0.ebuild,v 1.1.1.1 2005/11/30 10:08:47 chriswhite Exp $
 
 MY_P="cedega_${PV}-1.i386"
 DESCRIPTION="Cedega replaces WineX, a distribution of Wine with enhanced DirectX for gaming"
@@ -9,7 +9,7 @@ SRC_URI="${MY_P}.tgz"
 
 LICENSE="Aladdin"
 SLOT="3"
-KEYWORDS="x86"
+KEYWORDS="-* amd64 x86"
 IUSE="cups opengl"
 RESTRICT="fetch"
 
@@ -17,9 +17,7 @@ RDEPEND="virtual/x11
 	opengl? ( virtual/opengl )
 	>=sys-libs/ncurses-5.2
 	cups? ( net-print/cups )
-	>=media-libs/freetype-2.0.0
-	!app-emulation/winex
-	!app-emulation/winex-transgaming"
+	>=media-libs/freetype-2.0.0"
 
 pkg_nofetch() {
 	einfo "Please download the appropriate Cedega archive (${MY_P}.tgz)"
@@ -28,12 +26,12 @@ pkg_nofetch() {
 	einfo "Then put the file in ${DISTDIR}"
 }
 
-src_install () {
+src_install() {
 	mv ${WORKDIR}/usr ${D}
 }
 
 pkg_postinst() {
-	einfo "Run /usr/bin/cedega to start winex as any non-root user."
+	einfo "Run /usr/bin/cedega to start cedega as any non-root user."
 	einfo "This is a wrapper-script which will take care of creating"
 	einfo "an initial environment and do everything else."
 	einfo ""

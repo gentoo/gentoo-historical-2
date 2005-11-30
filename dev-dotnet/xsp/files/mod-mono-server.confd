@@ -1,5 +1,5 @@
 # Config file for /etc/init.d/mod-mono-server
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/files/mod-mono-server.confd,v 1.1 2005/02/17 05:30:33 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/xsp/files/mod-mono-server.confd,v 1.1.1.1 2005/11/30 10:06:17 chriswhite Exp $
 
 # Configuration directives for mod-mono-server.exe. For more information on
 # these variables, see the man page for xsp(1).

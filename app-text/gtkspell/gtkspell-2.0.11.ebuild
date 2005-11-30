@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gtkspell/gtkspell-2.0.11.ebuild,v 1.1 2005/07/31 17:44:55 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gtkspell/gtkspell-2.0.11.ebuild,v 1.1.1.1 2005/11/30 10:06:52 chriswhite Exp $
 
 inherit libtool eutils
 
@@ -10,11 +10,11 @@ SRC_URI="http://${PN}.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86 ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 sparc x86"
 IUSE="doc"
 
 RDEPEND=">=x11-libs/gtk+-2
-	>=app-text/enchant-1"
+	>=app-text/enchant-1.1.6"
 
 DEPEND="${RDEPEND}
 	sys-devel/autoconf

@@ -1,26 +1,22 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lxsplit/lxsplit-0.1.1.ebuild,v 1.1 2002/08/21 10:46:20 cybersystem Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lxsplit/lxsplit-0.1.1.ebuild,v 1.1.1.1 2005/11/30 10:06:01 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Command-line file splitter/joiner for Linux."
-SRC_URI="http://www.freebyte.com/download/lxsplit.tar.gz"
+DESCRIPTION="Command-line file splitter/joiner for Linux"
 HOMEPAGE="http://remenic.2y.net/lxsplit/"
+SRC_URI="http://www.freebyte.com/download/lxsplit.tar.gz"
 
-KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="x86 ppc amd64"
+IUSE=""
 
 src_compile() {
-	sed "s/^\(CFLAGS[[:space:]]=[[:space:]]\)\(.*\)$/\1${CFLAGS}/" Makefile > Makefile.new
-	mv --force Makefile.new Makefile
+	sed -i "s/^\(CFLAGS[[:space:]]=[[:space:]]\)\(.*\)$/\1${CFLAGS}/" Makefile
 	emake || die
 }
 
-src_install () {
-	
-	dobin lxsplit	
-
-	# Install documentation.
+src_install() {
+	dobin lxsplit || die
 	dodoc ChangeLog README
 }

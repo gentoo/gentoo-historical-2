@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.4.1.ebuild,v 1.1 2005/08/30 03:42:21 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/poppler/poppler-0.4.1.ebuild,v 1.1.1.1 2005/11/30 10:07:11 chriswhite Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ IUSE="gtk qt"
 
 # cairo is in packages.mask
 
-DEPEND=">=media-libs/freetype-2.0.5
+RDEPEND=">=media-libs/freetype-2.0.5
 	>=media-libs/t1lib-1.3
 	media-libs/fontconfig
 	virtual/ghostscript
@@ -23,18 +23,17 @@ DEPEND=">=media-libs/freetype-2.0.5
 	gtk? ( =x11-libs/gtk+-2* )
 	qt? ( =x11-libs/qt-3* )"
 
+DEPEND="${RDEPEND}
+	>=sys-devel/automake-1.9.6"
+
 src_unpack(){
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${P}-cairo-ft.patch
-	autoconf || die "autoconf failed"
-	automake || die "automake failed"
-	libtoolize --force || die "libtoolize failed"
+	WANT_AUTOMAKE=1.9 eautoreconf
 }
 
 src_compile() {
-	use qt || myconf="--disable-poppler-qt"
-
 	econf $(use_enable qt poppler-qt) || die
 	emake || die
 }

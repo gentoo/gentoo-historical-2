@@ -1,6 +1,83 @@
 # ChangeLog for app-misc/jbidwatcher
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jbidwatcher/ChangeLog,v 1.1 2004/02/22 00:45:06 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jbidwatcher/ChangeLog,v 1.1.1.1 2005/11/30 10:05:49 chriswhite Exp $
+
+*jbidwatcher-0.9.8 (10 Sep 2005)
+
+  10 Sep 2005; Thomas Matthijs <axxo@gentoo.org>
+  +files/jbidwatcher-0.9.8-build_xml.patch,
+  +files/jbidwatcher-0.9.8-javadoc.patch, +jbidwatcher-0.9.8.ebuild:
+  version bump #101937
+
+*jbidwatcher-0.9.7.1 (20 Jul 2005)
+
+  20 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  +jbidwatcher-0.9.7.1.ebuild:
+  vb
+
+*jbidwatcher-0.9.7 (03 Jul 2005)
+
+  03 Jul 2005; Thomas Matthijs <axxo@gentoo.org> +jbidwatcher-0.9.7.ebuild:
+  version bump
+
+  17 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -jbidwatcher-0.9.5.ebuild, -jbidwatcher-0.9.6.ebuild,
+  jbidwatcher-0.9.7_pre2.ebuild:
+  0.9.7_pre2 stable on amd64, ppc and x86 -> older versions are useless. see
+  HOMEPAGE for reference
+
+*jbidwatcher-0.9.7_pre2 (26 Apr 2005)
+
+  26 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> jbidwatcher-0.9.6.ebuild,
+  +jbidwatcher-0.9.7_pre2.ebuild:
+  new upstream version, fixes #90424
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  jbidwatcher-0.9.5.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> jbidwatcher-0.9.5.ebuild:
+  stable on amd64
+
+*jbidwatcher-0.9.6 (04 Apr 2005)
+
+  04 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +jbidwatcher-0.9.6.ebuild:
+  new upstream version, fixes #87879
+
+  31 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  -jbidwatcher-0.9.3.1.ebuild:
+  old
+
+  31 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jbidwatcher-0.9.5.ebuild:
+  keyword x86
+
+*jbidwatcher-0.9.5 (06 Oct 2004)
+
+  06 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +jbidwatcher-0.9.5.ebuild:
+  version bump
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> jbidwatcher-0.9.3.1.ebuild:
+  Added to ~ppc.
+
+  30 Aug 2004; Chris Aniszczyk <zx@gentoo.org> jbidwatcher-0.9.3.1.ebuild:
+  Cosmetic
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> -jbidwatcher-0.9.3_pre1.ebuild,
+  -jbidwatcher-0.9.3_pre2.ebuild:
+  Clean up
+
+*jbidwatcher-0.9.3.1 (23 Aug 2004)
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> +jbidwatcher-0.9.3.1.ebuild:
+  Version bump. Closes #59475
+
+  10 Jul 2004; Tom Martin <slarti@gentoo.org> jbidwatcher-0.9.3_pre2.ebuild:
+  Marked ~amd64.
+
+*jbidwatcher-0.9.3_pre2 (30 Feb 2004)
+
+  30 Apr 2004; Chris Aniszczyk <zx@gentoo.org> :
+  Version bump. Closes #48121
 
 *jbidwatcher-0.9.3_pre1 (24 Feb 2004)
 

@@ -2,7 +2,7 @@ diff -Naur mod_log_sql-1.97/mod_log_sql.c mod_log_sql-1.97-gentoo/mod_log_sql.c
 --- mod_log_sql-1.97/mod_log_sql.c	2004-04-09 01:09:40.000000000 +0000
 +++ mod_log_sql-1.97-gentoo/mod_log_sql.c	2004-05-07 12:09:21.543679240 +0000
 @@ -1,5 +1,13 @@
- /* $Id: mod_log_sql-1.97-gentoo.patch,v 1.1 2004/05/06 20:06:15 zul Exp $ */
+ /* $Id: mod_log_sql-1.97-gentoo.patch,v 1.1.1.1 2005/11/30 10:07:55 chriswhite Exp $ */
  
 +#if defined(WITH_APACHE20)
 +#	include "apache20.h"

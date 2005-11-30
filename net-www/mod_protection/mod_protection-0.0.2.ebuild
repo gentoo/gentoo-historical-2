@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_protection/mod_protection-0.0.2.ebuild,v 1.1 2002/11/28 20:43:41 woodchip Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_protection/mod_protection-0.0.2.ebuild,v 1.1.1.1 2005/11/30 10:07:47 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ S=${WORKDIR}/${NEWP}
 SRC_URI="mirror://gentoo/${NEWP}.tar.bz2"
 DEPEND="=net-www/apache-2*"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 SLOT="0"
 

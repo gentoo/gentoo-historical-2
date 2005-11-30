@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/ikvm/ikvm-0.14.0.1-r1.ebuild,v 1.1 2005/05/18 18:02:08 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/ikvm/ikvm-0.14.0.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:17 chriswhite Exp $
 
-inherit mono
+inherit mono multilib
 
 CLASSPATH_P="classpath-0.15"
 
@@ -14,11 +14,12 @@ LICENSE="as-is"
 
 SLOT="0"
 S=${WORKDIR}/${PN}
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/mono-1.1"
 DEPEND="${RDEPEND}
+		!dev-dotnet/ikvm-bin
 		>=dev-java/jikes-1.21
 		>=dev-dotnet/nant-0.85_rc2"
 
@@ -41,6 +42,6 @@ src_install() {
 	sed -e "s:@VERSION@:${PV}:" ${FILESDIR}/ikvm.pc.in \
 		> ${D}/usr/lib/pkgconfig/ikvm.pc
 
-	insinto /usr/lib/${PN}
+	insinto /usr/$(get_libdir)/${PN}
 	doins ${S}/bin/*
 }

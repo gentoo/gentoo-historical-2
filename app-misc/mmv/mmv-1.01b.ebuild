@@ -1,43 +1,42 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mmv/mmv-1.01b.ebuild,v 1.1 2003/01/05 11:12:57 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mmv/mmv-1.01b.ebuild,v 1.1.1.1 2005/11/30 10:05:48 chriswhite Exp $
 
-# orig.tar.gz and debian-diff contains an underscore in the name
-# whereas the other files (including the unpacked sources)
-# contain a minus sign !!
-
-inherit eutils
-
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Move/copy/append/link multiple files according to a set of wildcard patterns."
-HOMEPAGE=" http://packages.debian.org/unstable/utils/mmv.html"
+HOMEPAGE="http://packages.debian.org/unstable/utils/mmv.html"
 
 PATCH_DEB_VER="12"
-_P="${PN}_${PV}"
 
-SRC_URI="http://ftp.debian.org/debian/pool/main/m/mmv/${_P}.orig.tar.gz
-	http://ftp.debian.org/debian/pool/main/m/mmv/${_P}-${PATCH_DEB_VER}.diff.gz"
+SRC_URI="mirror://debian/pool/main/m/mmv/${P/-/_}.orig.tar.gz
+	mirror://debian/pool/main/m/mmv/${P/-/_}-${PATCH_DEB_VER}.diff.gz"
 
 LICENSE="freedist"
 SLOT="0"
+KEYWORDS="amd64 ppc x86"
+IUSE=""
 
-KEYWORDS="x86"
-
-S=${WORKDIR}/${P}.orig
+S="${WORKDIR}/${P}.orig"
 
 src_unpack() {
-	unpack ${_P}.orig.tar.gz
-	epatch ${DISTDIR}/${_P}-${PATCH_DEB_VER}.diff.gz
+	unpack ${P/-/_}.orig.tar.gz
+	epatch ${DISTDIR}/${P/-/_}-${PATCH_DEB_VER}.diff.gz
+
+	#apply both patches to compile with gcc-3.4 closing bug #62711
+	if [[ $(gcc-major-version) -eq 3 && $(gcc-minor-version) -ge 4 ]] || \
+		[[ $(gcc-major-version) -gt 3 ]]
+	then
+		epatch ${FILESDIR}/${PN}-gcc34.patch
+	fi
 }
 
 src_compile() {
 	mmv_CFLAGS=" -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
-	
-	emake CC="gcc " CFLAGS="${mmv_CFLAGS} ${CFLAGS} " LDFLAGS=" -s " || die
+	emake CC="$(tc-getCC)" CFLAGS="${mmv_CFLAGS} ${CFLAGS} " LDFLAGS=" -s " || die
 }
 
 src_install() {
-
 	dobin mmv
 	dosym /usr/bin/mmv /usr/bin/mcp
 	dosym /usr/bin/mmv /usr/bin/mln

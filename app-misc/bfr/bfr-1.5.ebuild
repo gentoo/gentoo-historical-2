@@ -1,24 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/bfr/bfr-1.5.ebuild,v 1.1 2003/09/15 02:22:09 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/bfr/bfr-1.5.ebuild,v 1.1.1.1 2005/11/30 10:05:51 chriswhite Exp $
 
-DESCRIPTION="Buffer (bfr) is a general-purpose command-line pipe buffer. It buffers data from stdin and sends it to stdout, adjusting to best fit the pace stdout can handle."
-HOMEPAGE="http://www.glines.org:8000/software/buffer.html"
-SRC_URI="http://www.glines.org:8000/bin/pk/${P}.tar.bz2"
+DESCRIPTION="Buffer (bfr) is a general-purpose command-line pipe buffer"
+HOMEPAGE="http://www.glines.org/software/buffer.html"
+SRC_URI="http://www.glines.org/bin/pk/${P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
+
 DEPEND=""
 
-S=${WORKDIR}/${P}
-
-src_compile() {
-	econf || die
-	emake || die
-}
-
 src_install() {
-	einstall || die
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
+	make DESTDIR=${D} install || die "install failed"
+	dodoc AUTHORS INSTALL ChangeLog NEWS README TODO
 }

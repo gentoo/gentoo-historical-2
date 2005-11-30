@@ -1,29 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-text/ispell/ispell-3.2.06-r5.ebuild,v 1.1 2002/07/17 11:43:45 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/ispell/ispell-3.2.06-r5.ebuild,v 1.1.1.1 2005/11/30 10:06:25 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Ispell is a fast screen-oriented spelling checker"
+inherit eutils
+
+DESCRIPTION="fast screen-oriented spelling checker"
 SRC_URI="http://fmg-www.cs.ucla.edu/geoff/tars/${P}.tar.gz
 	mirror://gentoo/${P}-gentoo.diff.bz2"
 HOMEPAGE="http://fmg-www.cs.ucla.edu/geoff/ispell.html"
+
+SLOT="0"
+LICENSE="as-is"
+KEYWORDS="x86 sparc ~ppc alpha mips hppa"
+IUSE=""
 
 DEPEND="sys-devel/bison
 	sys-apps/miscfiles
 	>=sys-libs/ncurses-5.2"
 
-
-SLOT="0"
-LICENSE="as-is"
-KEYWORDS="x86"
-
 src_unpack() {
-	
-	unpack ${P}.tar.gz
-
+	unpack ${A}
 	cd ${S}
-	bzcat ${DISTDIR}/${P}-gentoo.diff.bz2 | patch || die
-
+	epatch ${WORKDIR}/${P}-gentoo.diff
 }
 
 src_compile() {
@@ -37,12 +35,11 @@ src_compile() {
 		-e "s:^\(MAN1DIR='\)\(.*\):\1${D}\2:" \
 		-e "s:^\(MAN4DIR='\)\(.*\):\1${D}\2:" \
 		< config.sh > config.sh.install
-	
+
 	make || die
 }
 
 src_install() {
-	
 	cp -p  config.sh.install config.sh
 
 	#Need to create the directories to install into
@@ -53,10 +50,10 @@ src_install() {
 
 	make \
 		install || die "Installation Failed"
-	
+
 	rmdir ${D}/usr/share/man/man5
 	rmdir ${D}/usr/share/info
-	
+
 	dodoc Contributors README WISHES
 
 	dosed ${D}/usr/share/man/man1/ispell.1

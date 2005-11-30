@@ -1,17 +1,16 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_layout/mod_layout-4.0.1a.ebuild,v 1.1 2002/11/28 20:40:27 woodchip Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_layout/mod_layout-4.0.1a.ebuild,v 1.1.1.1 2005/11/30 10:07:50 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="An Apache2 DSO module for adding custom headers and/or footers"
 HOMEPAGE="http://software.tangent.org/"
 
-S=${WORKDIR}/${P}
 SRC_URI="http://software.tangent.org/download/${P}.tar.gz"
 DEPEND="=net-www/apache-2*"
 LICENSE="Apache-1.1"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE=""
 SLOT="0"
 

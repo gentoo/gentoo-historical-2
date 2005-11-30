@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-4.2.6.ebuild,v 1.1 2005/05/10 15:35:52 pkdawson Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/vtk/vtk-4.2.6.ebuild,v 1.1.1.1 2005/11/30 10:09:19 chriswhite Exp $
 
 # TODO: need to fix Examples/CMakeLists.txt to build other examples
 
-inherit distutils eutils flag-o-matic toolchain-funcs versionator
+inherit distutils eutils flag-o-matic toolchain-funcs versionator java-pkg
 
 MY_PV="$(get_version_component_range 1-2)"
 
@@ -59,7 +59,7 @@ src_compile() {
 	CMAKE_VARIABLES="${CMAKE_VARIABLES} -DVTK_USE_SYSTEM_EXPAT:BOOL=ON"
 	CMAKE_VARIABLES="${CMAKE_VARIABLES} -DBUILD_TESTING:BOOL=OFF"
 	CMAKE_VARIABLES="${CMAKE_VARIABLES} -DVTK_USE_HYBRID:BOOL=ON"
-	use examples && CMAKE_VARIABLES="${CMAKE_VARIABLES}-DVTK_DATA_ROOT:PATH=/usr/share/${PN}/data -DBUILD_EXAMPLES:BOOL=ON"
+	use examples && CMAKE_VARIABLES="${CMAKE_VARIABLES} -DVTK_DATA_ROOT:PATH=/usr/share/${PN}/data -DBUILD_EXAMPLES:BOOL=ON"
 	if use java; then
 		CMAKE_VARIABLES="${CMAKE_VARIABLES} -DVTK_WRAP_JAVA:BOOL=ON"
 		CMAKE_VARIABLES="${CMAKE_VARIABLES} -DJAVA_AWT_LIBRARY:PATH=`java-config -O`/jre/lib/i386/libjawt.so"
@@ -104,7 +104,7 @@ src_install() {
 	fi
 
 	# install jar
-	use java && dojar ${S}/bin/vtk.jar
+	use java && java-pkg_dojar ${S}/bin/vtk.jar
 
 	# install documentation
 	use doc && dohtml -r ${WORKDIR}/html/
@@ -112,7 +112,7 @@ src_install() {
 	# install examples
 	if use examples; then
 		dodir /usr/share/${PN}
-		cp -a ${S}/Examples ${D}/usr/share/${PN}/examples
+		cp -pPR ${S}/Examples ${D}/usr/share/${PN}/examples
 
 		# fix example's permissions
 		find ${D}/usr/share/${PN}/examples -type d -exec chmod 0755 {} \;
@@ -121,7 +121,7 @@ src_install() {
 		# VTKData uses a hyphen instead of a dot
 		MY_PV_HYPHEN=`echo ${MY_PV} | sed -e "s/\./-/"`
 		dodir /usr/share/${PN}
-		cp -a ${WORKDIR}/VTKData-release-${MY_PV_HYPHEN} ${D}/usr/share/${PN}/data
+		cp -pPR ${WORKDIR}/VTKData-release-${MY_PV_HYPHEN} ${D}/usr/share/${PN}/data
 
 		# fix data's permissions
 		find ${D}/usr/share/${PN}/data -type d -exec chmod 0755 {} \;
@@ -130,7 +130,7 @@ src_install() {
 
 	# environment
 	echo "LDPATH=${LDPATH}" > ${T}/40${PN}
-	use data && echo "VTK_DATA_ROOT=/usr/share/${PN}/data" >> ${T}/40${PN}
+	echo "VTK_DATA_ROOT=/usr/share/${PN}/data" >> ${T}/40${PN}
 	if use java; then
 		echo "CLASSPATH=/usr/share/${PN}/${PN}.jar" >> ${T}/40${PN}
 		echo "LD_LIBRARY_PATH=/usr/lib/${PN}" >> ${T}/40${PN}

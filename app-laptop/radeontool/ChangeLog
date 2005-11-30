@@ -1,6 +1,53 @@
-# ChangeLog for sys-apps/radeontool
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/radeontool/ChangeLog,v 1.1 2004/03/08 05:40:31 latexer Exp $
+# ChangeLog for app-laptop/radeontool
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/radeontool/ChangeLog,v 1.1.1.1 2005/11/30 10:05:37 chriswhite Exp $
+
+*radeontool-1.5-r3 (10 Nov 2005)
+
+  10 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  +radeontool-1.5-r3.ebuild:
+  Changing the install location into sbin since the application needs root to
+  run.  Resovles bug #111067
+
+  15 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  radeontool-1.5-r2.ebuild:
+  Stable on x86.
+
+*radeontool-1.5-r2 (26 Aug 2005)
+
+  26 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/radeontool-1.5-vga-ati.patch, +radeontool-1.5-r2.ebuild:
+  Fix bug #100391, thanks to Patrik Kullman.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> radeontool-1.5-r1.ebuild:
+  stable on amd64
+
+  12 Mar 2005; Henrik Brix Andersen <brix@gentoo.org> -radeontool-1.0.ebuild,
+  -radeontool-1.2.ebuild, -radeontool-1.5.ebuild:
+  Pruned old versions.
+
+  02 Mar 2005; Henrik Brix Andersen <brix@gentoo.org>
+  radeontool-1.5-r1.ebuild:
+  Stable on x86.
+
+*radeontool-1.5-r1 (20 Jan 2005)
+
+  20 Jan 2005; Henrik Brix Andersen <brix@gentoo.org> metadata.xml,
+  +radeontool-1.5-r1.ebuild:
+  Fixed mmap() return value check. Thanks to Vincenzo Romano in bug #76181.
+
+  28 Oct 2004; Simon Stelling <blubb@gentoo.org> radeontool-1.5.ebuild:
+  added ~amd64
+
+  09 Oct 2004; Henrik Brix Andersen <brix@gentoo.org> metadata.xml,
+  radeontool-1.5.ebuild:
+  Stable on x86, assigning ownership to the mobile herd
+
+*radeontool-1.5 (05 Sep 2004)
+
+  05 Sep 2004; Henrik Brix Andersen,,, <brix@gentoo.org>
+  +radeontool-1.5.ebuild:
+  Version bump. Fixes bug #44111.
 
 *radeontool-1.2 (08 Mar 2004)
 

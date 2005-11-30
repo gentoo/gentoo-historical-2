@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.0-r12.ebuild,v 1.1 2004/11/17 13:48:26 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.0-r12.ebuild,v 1.1.1.1 2005/11/30 10:05:55 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -11,14 +11,15 @@ SRC_URI="http://www.ibiblio.org/pub/Linux/utils/file/managers/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="gpm nls samba ncurses X slang unicode"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
+IUSE="X gpm ncurses nls pam samba slang unicode"
 
 PROVIDE="virtual/editor"
 
 DEPEND=">=sys-fs/e2fsprogs-1.19
 	ncurses? ( >=sys-libs/ncurses-5.2-r5 )
 	=dev-libs/glib-2*
+	dev-util/pkgconfig
 	pam? ( >=sys-libs/pam-0.72 )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
 	slang? ( >=sys-libs/slang-1.4.9-r1 )
@@ -101,6 +102,9 @@ src_install() {
 	doins ${FILESDIR}/ebuild.syntax
 	cd ${D}/usr/share/mc/syntax
 	epatch ${FILESDIR}/${P}-ebuild-syntax.patch
+
+	# http://bugs.gentoo.org/show_bug.cgi?id=71275
+	rm -f ${D}/usr/share/locale/locale.alias
 }
 
 pkg_postinst() {

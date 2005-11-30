@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gcal/gcal-3.01-r2.ebuild,v 1.1 2004/10/22 23:52:45 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gcal/gcal-3.01-r2.ebuild,v 1.1.1.1 2005/11/30 10:06:07 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnu.org/pub/gnu/gcal/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
+KEYWORDS="x86 ppc sparc alpha amd64 ~ppc-macos"
 IUSE="ncurses nls"
 
 DEPEND="nls? ( sys-devel/gettext )"
@@ -22,12 +22,14 @@ src_unpack() {
 }
 
 src_compile() {
-	econf `use_enable nls` `use_enable ncurses` || die
+	econf $(use_enable nls) $(use_enable ncurses) || die
 	emake || die
 }
 
 src_install() {
 	einstall || die
+	rm -f ${D}/usr/share/locale/locale.alias
+
 	dodoc ABOUT-NLS ATTENTION BUGS DISCLAIM HISTORY \
 		INSTALL LIMITATIONS MANIFEST NEWS README SYMBOLS THANKS TODO
 

@@ -1,8 +1,41 @@
 # ChangeLog for app-text/mgv
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-text/mgv/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/mgv/ChangeLog,v 1.1.1.1 2005/11/30 10:06:28 chriswhite Exp $
 
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> mgv-3.1.5.ebuild:
+  Marked ~ppc at the request of bug #99216.
+
+  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  mgv-3.1.5-r1.ebuild:
+  mark ~ppc
+
+  12 Feb 2004; Heinrich Wendel <lanius@gentoo.org> mgv-3.1.5-r1.ebuild:
+  fix location of config file
+
+*mgv-3.1.5-r1 (11 Feb 2004)
+
+  11 Feb 2004; Heinrich Wendel <lanius@gentoo.org> mgv-3.1.5-r1.ebuild:
+  fixed DEPEND
+
+  11 Feb 2004; Heinrich Wendel <lanius@gentoo.org> mg-3.1.5-r1.ebuild:
+  moved config file to /etc
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> mgv-3.1.5.ebuild:
+  fixed motif dep
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> mgv-3.1.5.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *mgv-3.1.5 (1 Feb 2002)
+
+  29 Mar 2003; Alastair Tse <liquidx@gentoo.org> mgv-3.1.5.ebuild:
+  replacing openmotif with virtual/motif.
+  fix compile errors that no one came across because no one uses this :)
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> mgv-3.1.5.ebuild :
+  Added LICENSE, KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

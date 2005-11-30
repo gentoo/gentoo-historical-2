@@ -1,22 +1,29 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/barcode/barcode-0.98.ebuild,v 1.1 2002/11/23 17:14:51 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/barcode/barcode-0.98.ebuild,v 1.1.1.1 2005/11/30 10:06:54 chriswhite Exp $
 
-DESCRIPTION="GNU/Barcode - A barcode generator"
-SRC_URI="mirror://gnu/barcode/${P}.tar.gz"
+inherit eutils
+
+DESCRIPTION="barcode generator"
 HOMEPAGE="http://www.gnu.org/software/barcode/"
+SRC_URI="mirror://gnu/barcode/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+SLOT="0"
+KEYWORDS="amd64 ppc ~ppc-macos ppc64 x86"
+IUSE=""
 
-src_compile() {
-	econf
-	make || die
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-info.patch
+	sed -i \
+		-e 's:/info:/share/info:' \
+		-e 's:/man/:/share/man/:' \
+		Makefile.in || die "sed failed"
 }
 
 src_install() {
-	einstall
-	prepinfo
+	emake install prefix=${D}/usr LIBDIR="\$(prefix)/$(get_libdir)" || die
 	dodoc ChangeLog README TODO doc/barcode.{pdf,ps}
 }

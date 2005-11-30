@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/hercules/hercules-3.02.ebuild,v 1.1 2005/02/24 01:59:37 malc Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/hercules/hercules-3.02.ebuild,v 1.1.1.1 2005/11/30 10:08:51 chriswhite Exp $
 
 inherit flag-o-matic
 

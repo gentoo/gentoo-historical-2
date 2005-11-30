@@ -1,23 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/regionset/regionset-0.1.ebuild,v 1.1 2004/01/26 01:15:28 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/regionset/regionset-0.1.ebuild,v 1.1.1.1 2005/11/30 10:05:51 chriswhite Exp $
 
 DESCRIPTION="Sets the region on DVD drives"
 HOMEPAGE="http://linvdr.org/projects/regionset/"
 SRC_URI="http://linvdr.org/download/regionset/${P}.tar.gz"
 
-IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc amd64"
+IUSE=""
 
 src_compile() {
 	emake all || die
 }
 
 src_install() {
-	dosbin regionset
-	dodoc ChangeLog README COPYING
+	dosbin regionset || die
+	dodoc ChangeLog README
 }
 
 pkg_postinst() {
@@ -30,4 +30,3 @@ pkg_postinst() {
 	ewarn "When you use regionset, you MUST have a cd or dvd in the drive"
 	ewarn "otherwise nasty things will happen to your drive's firmware."
 }
-

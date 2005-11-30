@@ -1,6 +1,43 @@
-# ChangeLog for app-games/kmuddy
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/kmuddy/ChangeLog,v 1.1 2003/09/10 19:03:12 vapier Exp $
+# ChangeLog for games-mud/kmuddy
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/kmuddy/ChangeLog,v 1.1.1.1 2005/11/30 10:06:14 chriswhite Exp $
+
+*kmuddy-0.7.1 (05 Apr 2005)
+
+  05 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org> +kmuddy-0.7.1.ebuild:
+  version bump
+
+  12 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> -kmuddy-0.6.1.ebuild,
+  kmuddy-0.7.ebuild:
+  fix deps for bug #84988; tidy old version
+
+  22 Dec 2004; Joseph Jezak <josejx@gentoo.org> kmuddy-0.7.ebuild:
+  Marked ~ppc.
+
+  19 Dec 2004; Jason Huebel <jhuebel@gentoo.org> kmuddy-0.7.ebuild:
+  ~amd64, bug #67875
+
+*kmuddy-0.7 (30 Nov 2004)
+
+  30 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +kmuddy-0.7.ebuild:
+  version bump
+
+  08 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.6.1-gcc34.patch, kmuddy-0.6.1.ebuild:
+  add patch for gcc34 (bug #61313)
+
+*kmuddy-0.6.1 (09 Feb 2004)
+
+  09 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> kmuddy-0.6.1.ebuild:
+  version bump
+
+  19 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> kmuddy-0.6.ebuild:
+  mark stable for x86
+
+*kmuddy-0.6 (08 Dec 2003)
+
+  08 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> kmuddy-0.6.ebuild:
+  version bump
 
   31 Aug 2003; Michael Sterrett <msterret@gentoo.org> kmuddy-0.5.ebuild:
   inherit kde-base -> inherit kde

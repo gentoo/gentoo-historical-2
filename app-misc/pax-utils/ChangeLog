@@ -1,9 +1,135 @@
 # ChangeLog for app-misc/pax-utils
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pax-utils/ChangeLog,v 1.1 2003/10/24 10:15:17 solar Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pax-utils/ChangeLog,v 1.1.1.1 2005/11/30 10:06:04 chriswhite Exp $
 
-*pax-utils-0.0.1 (24 Oct 2003)
+*pax-utils-0.1.4 (30 Oct 2005)
 
-  24 Oct 2003; <solar@gentoo.org> metadata.xml, pax-utils-0.0.1.ebuild:
-  import of pax-utils into portage
+  30 Oct 2005; <solar@gentoo.org> +pax-utils-0.1.4.ebuild:
+  - version bump. This release adds 3 scanelf options. -S, -b, -g
+
+  28 Oct 2005; <solar@gentoo.org> pax-utils-0.1.3.ebuild:
+  - #103173 pax-utils installs docs into /usr/share/doc
+
+*pax-utils-0.1.3 (25 Jul 2005)
+
+  25 Jul 2005; Mike Frysinger <vapier@gentoo.org> +pax-utils-0.1.3.ebuild:
+  Fix building with gcc-2, dont bomb with alignment errors on some arches, and
+  add support for SONAME scanning in scanelf.
+
+*pax-utils-0.1.2 (03 Jul 2005)
+
+  03 Jul 2005; <solar@gentoo.org> +pax-utils-0.1.2.ebuild:
+  - update textrel handling code to scan only the text segment. New -e -v -p
+  flags for pspax. minor changes overall
+
+  16 Jun 2005; <solar@gentoo.org> pax-utils-0.1.1.ebuild:
+  - arm/m68k/ppc64/s390/sh stable
+
+  16 Jun 2005; <solar@gentoo.org> -pax-utils-0.0.4.ebuild,
+  -pax-utils-0.0.7.ebuild, -pax-utils-0.1.0.ebuild, pax-utils-0.1.1.ebuild:
+  - stable on alpha/hppa/ia64/sparc
+
+*pax-utils-0.1.1 (16 Jun 2005)
+
+  16 Jun 2005; <solar@gentoo.org> pax-utils-0.1.1.ebuild:
+  - stable on x86/ppc/mips/amd64
+
+  10 Jun 2005; <solar@gentoo.org> :
+  - Bugfixes: only report the source of textrels when the executable actually
+  contains DT_TEXTREL. Only enable -Wdeclaration-after-statement -Wextra if the
+  compiler supports it
+
+*pax-utils-0.1.0 (08 Jun 2005)
+
+  08 Jun 2005; <solar@gentoo.org> -pax-utils-0.0.8.ebuild,
+  -pax-utils-0.0.9.ebuild, +pax-utils-0.1.0.ebuild:
+  * scanelf options: -N matches a given lib. -T will print the cause of 
+  the ELF text relocation (-T based on code from Kevin Quinn.. 10x thanks) 
+  -F format modifiers were added for printing the base file name and base 
+  file name with search paths removed, this is ideal for scripting with 
+  use of automated q/a systems so we don't have to re-parse a the string 
+  to get desired output. All format modifiers now accept # in place of % 
+  but # is quiet where % is verbose. Also new to the format handling is 
+  the %x modifier now prints PT_PAX_FLAGS and falls back to EI_PAX if no 
+  PaX flags were found in the program header.
+  
+  * The suite should work on OSX. 
+  * Minor touch ups to Makefile/pspax/dumpelf.
+  * Lots of typecasting fixes for improved portability.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  pax-utils-0.0.7.ebuild:
+  Stable on ppc.
+
+  31 May 2005; Christian Birchinger <joker@gentoo.org>
+  pax-utils-0.0.7.ebuild:
+  Added sparc stable keyword
+
+*pax-utils-0.0.9 (28 May 2005)
+
+  28 May 2005; Mike Frysinger <vapier@gentoo.org> +pax-utils-0.0.9.ebuild:
+  Add support for FreeBSD and fix cross-endian bugs.
+
+  21 May 2005; <solar@gentoo.org> :
+  Makefile: include/depend fix. dumpelf: display improvements, 32/64bit phdr
+  fix, man page updates. scanelf: Two new options. The ability to display run
+  time bindings -b/--bind and -f/--from read input stream from a filename/stdin
+  for scanelf. The -F format handling pretty much got a total rewrite for the
+  better. We used taviso@gentoo fuzz regression tool to help track down bugs
+  with malformed executables. Now the overall result is greatly improved error
+  handling for improper elf files. paxelf: Improvements in the mmap error
+  handling. README: updates to reflect changes man/*.1: updates to reflect
+  changes
+
+  15 May 2005; <solar@gentoo.org> metadata.xml:
+  - update metadata.xml
+
+*pax-utils-0.0.2 (15 May 2005)
+
+  15 May 2005; <solar@gentoo.org> -pax-utils-0.0.1.ebuild,
+  -pax-utils-0.0.2.ebuild, pax-utils-0.0.4.ebuild, -pax-utils-0.0.5.ebuild,
+  -pax-utils-0.0.6.ebuild, pax-utils-0.0.7.ebuild:
+  - stable x86 - make all ebuild use toolchain-funcs vs gcc eclass - cleaned non
+  stabilized versions below 0.0.7
+
+*pax-utils-0.0.7 (30 Apr 2005)
+
+  30 Apr 2005; <solar@gentoo.org> +pax-utils-0.0.7.ebuild:
+  - uclibc updates and -F format handling
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> pax-utils-0.0.4.ebuild:
+  stable on amd64
+
+*pax-utils-0.0.6 (14 Apr 2005)
+
+  14 Apr 2005; <solar@gentoo.org> +pax-utils-0.0.6.ebuild:
+  - version bump. lots of new treats
+
+  12 Apr 2005; Daniel Ostrow <dostrow@gentoo.org> pax-utils-0.0.4.ebuild,
+  pax-utils-0.0.5.ebuild:
+  ~ppc64 for ppc64 hardened
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  pax-utils-0.0.4.ebuild:
+  Stable on ppc.
+
+*pax-utils-0.0.5 (01 Apr 2005)
+
+  01 Apr 2005; <solar@gentoo.org> +pax-utils-0.0.5.ebuild:
+  - major source code cleanup. combine scanexec/scanrexec/pttool into unified
+  scanelf tool. manpage updates. fixed memleak in readelf function. new options
+  to detect TEXTREL's, display RPATH info, make display of pax flags markings
+  optional. A new recursive option was added to scan subdirs. All sorts of good
+  stuff that makes grandma happy. Many thanks to vapier.
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> pax-utils-0.0.4.ebuild:
+  stable on ia64
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> pax-utils-0.0.4.ebuild:
+  Stable on sparc
+
+*pax-utils-0.0.4 (11 Nov 2004)
+
+  11 Nov 2004; <solar@gentoo.org> +metadata.xml, pax-utils-0.0.4.ebuild:
+  marking pax-utils stable on x86/mips
 

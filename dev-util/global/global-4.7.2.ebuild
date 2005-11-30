@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/global/global-4.7.2.ebuild,v 1.1 2004/07/02 21:17:32 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/global/global-4.7.2.ebuild,v 1.1.1.1 2005/11/30 10:04:53 chriswhite Exp $
 
 IUSE="ssl postgres"
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnu.org/gnu/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~mips"
+KEYWORDS="~x86 ~amd64 ~sparc ~mips ~ppc"
 
 DEPEND=">=sys-libs/glibc-2.2
 	postgres? ( >=dev-db/postgresql-7.1 )

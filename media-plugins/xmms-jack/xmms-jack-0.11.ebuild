@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-jack/xmms-jack-0.11.ebuild,v 1.1 2004/12/04 21:29:26 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-jack/xmms-jack-0.11.ebuild,v 1.1.1.1 2005/11/30 10:07:15 chriswhite Exp $
 
 IUSE=""
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 ~sparc ~x86"
 
 RDEPEND="media-sound/xmms
 	>=media-libs/bio2jack-0.4
@@ -28,9 +28,12 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${PN}-0.11-sysbio2jack.patch
+	#quick endianess fix
+	sed -i -e "s:FMT_S16_LE:FMT_S16_NE:g" jack.c
 	export WANT_AUTOMAKE=1.8
 	export WANT_AUTOCONF=2.5
 	aclocal
+	libtoolize --copy --force
 	autoheader
 	automake -a -c -f
 	autoconf

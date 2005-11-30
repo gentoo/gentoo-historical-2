@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/omnibook-20050217-r1.ebuild,v 1.1 2005/06/12 16:28:33 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/omnibook-20050217-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:41 chriswhite Exp $
 
 inherit linux-mod eutils
 

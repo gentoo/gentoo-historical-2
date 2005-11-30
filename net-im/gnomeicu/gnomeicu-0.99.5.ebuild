@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnomeicu/gnomeicu-0.99.5.ebuild,v 1.1 2004/03/28 21:24:31 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnomeicu/gnomeicu-0.99.5.ebuild,v 1.1.1.1 2005/11/30 10:09:39 chriswhite Exp $
 
 inherit gnome2
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Gnome ICQ Client"
 SRC_URI="mirror://sourceforge/gnomeicu/${P}.tar.bz2"
 HOMEPAGE="http://gnomeicu.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64"
+KEYWORDS="x86 sparc ppc alpha amd64"
 
 DEPEND=">=x11-libs/gtk+-2.2.0
 	>=dev-libs/libxml2-2.4.23
@@ -39,5 +38,3 @@ src_configure() {
 }
 
 DOCS="AUTHORS COPYING CREDITS ChangeLog README ABOUT-NLS"
-
-

@@ -1,32 +1,34 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Bart Lauwers <blauwers@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mouseremote/mouseremote-0.90.ebuild,v 1.1 2002/05/09 11:30:02 blauwers Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mouseremote/mouseremote-0.90.ebuild,v 1.1.1.1 2005/11/30 10:06:10 chriswhite Exp $
 
+inherit eutils
+
+S="${WORKDIR}/MouseRemote"
 DESCRIPTION="X10 MouseRemote"
 HOMEPAGE="http://www4.pair.com/gribnif/ha/"
-LICENSE="GPL-2"
-
 SRC_URI="http://www4.pair.com/gribnif/ha/MouseRemote.tar.gz"
 
-DEPEND=""
-RDEPEND="dev-perl/Time-HiRes"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~ppc x86"
+IUSE=""
 
-S=${WORKDIR}/MouseRemote
+DEPEND="perl-core/Time-HiRes"
 
 src_compile() {
-	patch -p1 < ${FILESDIR}/${PN}-gentoo.diff || die
+	epatch ${FILESDIR}/${PN}-gentoo.diff
 	cd MultiMouse && emake \
 		PREFIX=/usr \
 		LOCKDIR=/var/lock \
 	    JMANDIR=/usr/share/man/ja_JP.ujis || die
 }
 
-src_install () {
+src_install() {
 	dobin MultiMouse/multimouse
 	dosbin MultiMouse/multimoused
 
-    dodoc README MultiMouse/README.jis MultiMouse/README.newstuff
+	dodoc README MultiMouse/README.jis MultiMouse/README.newstuff
 	newdoc MultiMouse/README README.MultiMouse
 	newdoc client/MouseRemote.conf MouseRemote.conf.dist
 	newdoc client/MouseRemote.pl MouseRemote.pl.dist
@@ -44,10 +46,10 @@ pkg_postinst() {
 
 	einfo "To use the mouse function in X, add the following to your XF86Config"
 	einfo "Section \"InputDevice\""
-    einfo "	Identifier  \"MouseREM\""
-    einfo "	Driver      \"mouse\""
-    einfo "	Option      \"Protocol\"      \"MouseSystems\""
-    einfo "	Option      \"Device\"        \"/dev/mumse\""
+	einfo "	Identifier  \"MouseREM\""
+	einfo "	Driver      \"mouse\""
+	einfo "	Option      \"Protocol\"      \"MouseSystems\""
+	einfo "	Option      \"Device\"        \"/dev/mumse\""
 	einfo "EndSection"
 	einfo
 	einfo "Don't forget to add the new device to the section \"ServerLayout\""

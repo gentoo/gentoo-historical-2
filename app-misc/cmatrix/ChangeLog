@@ -1,6 +1,31 @@
 # ChangeLog for app-misc/cmatrix
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cmatrix/ChangeLog,v 1.1 2002/07/10 01:26:01 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cmatrix/ChangeLog,v 1.1.1.1 2005/11/30 10:05:50 chriswhite Exp $
+
+  24 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> cmatrix-1.2a.ebuild:
+  stable on alpha
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> cmatrix-1.2a.ebuild:
+  Stable on ppc.
+
+  08 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  cmatrix-1.2a.ebuild:
+  mark ~ppc
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> cmatrix-1.2a.ebuild:
+  stable on amd64
+
+  20 Mar 2005; Tavis Ormandy <taviso@gentoo.org> cmatrix-1.2a.ebuild:
+  ~alpha keyword
+
+  21 Jan 2005; Simon Stelling <blubb@gentoo.org> cmatrix-1.2a.ebuild:
+  corrected homepage url
+
+  29 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> cmatrix-1.2a.ebuild:
+  keyworded sparc, thanks to txromeo
+
+  02 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> cmatrix-1.2a.ebuild:
+  Add amd64 keyword.
 
 *cmatrix-1.2a (09 Jul 2002)
 

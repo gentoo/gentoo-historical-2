@@ -1,6 +1,9 @@
 # ChangeLog for app-misc/multimon
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-misc/multimon/ChangeLog,v 1.1 2002/02/01 21:53:08 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/multimon/ChangeLog,v 1.1.1.1 2005/11/30 10:06:06 chriswhite Exp $
+
+  21 Jul 2005; David Holm <dholm@gentoo.org> multimon-1.0.ebuild:
+  Added to ~ppc.
 
 *multimon-1.0 (1 Feb 2002)
 

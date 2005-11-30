@@ -1,15 +1,15 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-albert/cl-albert-0.4.10.ebuild,v 1.1 2004/05/08 23:26:22 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-albert/cl-albert-0.4.10.ebuild,v 1.1.1.1 2005/11/30 10:08:26 chriswhite Exp $
 
-inherit common-lisp
+inherit common-lisp eutils
 
 DESCRIPTION="Albert is a documentation-generator for Common Lisp, comparable to Javadoc and Doxygen. Currently it generates DocBook documentation. It reads an ASDF system definition and documents the system."
 HOMEPAGE="http://albert.sourceforge.net/"
 SRC_URI="mirror://sourceforge/albert/${P/cl-/}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~sparc ~x86 ~ppc"
 IUSE=""
 DEPEND="dev-lisp/common-lisp-controller
 	app-text/docbook-dsssl-stylesheets
@@ -18,6 +18,11 @@ DEPEND="dev-lisp/common-lisp-controller
 CLPACKAGE=albert
 
 S=${WORKDIR}/${P/cl-/}
+
+src_unpack() {
+	unpack ${A}
+	find ${S} -type f -print0 | xargs -0 sed -i 's,simple-base-string,simple-string,i' || die
+}
 
 src_compile() {
 	make -C expat all || die

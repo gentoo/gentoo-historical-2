@@ -1,6 +1,308 @@
 # ChangeLog for app-misc/gentoo
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gentoo/ChangeLog,v 1.1 2002/02/01 21:53:08 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gentoo/ChangeLog,v 1.1.1.1 2005/11/30 10:05:52 chriswhite Exp $
+
+  19 Nov 2005; Rene Nussbaumer <killerfox@gentoo.org> gentoo-0.11.55.ebuild:
+  Stable on hppa.
+
+  12 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> -gentoo-0.11.54.ebuild:
+  Removed old ebuild.
+
+  02 Nov 2005; Brent Baude <ranger@gentoo.org> gentoo-0.11.55.ebuild:
+  Marking gentoo-0.11.55 ppc64 for bug 111002
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> -gentoo-0.11.51.ebuild,
+  gentoo-0.11.54.ebuild, gentoo-0.11.55.ebuild:
+  Fixed dodoc not to install INSTALL. Removed old 0.11.51.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> gentoo-0.11.55.ebuild:
+  Mark 0.11.55 stable on alpha
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> gentoo-0.11.55.ebuild:
+  Stable on ppc.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> gentoo-0.11.55.ebuild:
+  stable on ia64
+
+  22 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> gentoo-0.11.55.ebuild:
+  Stable on sparc
+
+  22 Aug 2005; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.55.ebuild:
+  stable bump
+
+  03 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> gentoo-0.11.54.ebuild:
+  stable on alpha
+
+  03 Jul 2005; Michael Hanselmann <hansmi@gentoo.org> gentoo-0.11.54.ebuild:
+  Stable on ppc.
+
+  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> gentoo-0.11.54.ebuild:
+  Stable on sparc
+
+*gentoo-0.11.55 (22 Jun 2005)
+
+  22 Jun 2005; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.54.ebuild,
+  +gentoo-0.11.55.ebuild:
+  Version bump to newest in ~arches, and stabled 54 for x86 and amd64. New
+  release notification thanks to Bret Towe (magnade on irc)
+
+  16 May 2005; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.54.ebuild:
+  Changed to depend on virtual/fam (gamin or fam) per bug #92480 by Ben Skeggs
+  <darktama@iinet.net.au>
+
+  07 Apr 2005; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.54.ebuild:
+  nls is sort of fixed -- the install goes through with nls in use, but I
+  personally have not seen any po files actually get installed, so I believe
+  it to be broken. Anyway, please test and let me know. Also, the man page is
+  now installed in /usr/share/man rather than /usr/X11R6/man as before.
+
+  06 Apr 2005; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.54.ebuild:
+  wtf, I left out all the new fam stuff entirely.  Sorry about. Thanks Magnade
+
+*gentoo-0.11.54 (06 Apr 2005)
+
+  06 Apr 2005; Seemant Kulleen <seemant@gentoo.org> +gentoo-0.11.54.ebuild:
+  version bump thanks to: Sevein <correo@sevein.com> in bug #79363 and Magnade
+  for bumping me about it
+
+  06 Apr 2005; Seemant Kulleen <seemant@gentoo.org> -gentoo-0.11.45.ebuild,
+  -gentoo-0.11.46.ebuild, -gentoo-0.11.48.ebuild:
+  clean out crufty versions
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> gentoo-0.11.51.ebuild:
+  stable on ia64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gentoo-0.11.46.ebuild, gentoo-0.11.48.ebuild, gentoo-0.11.51.ebuild:
+  Masked gentoo-0.11.51.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gentoo-0.11.46.ebuild, gentoo-0.11.48.ebuild:
+  Masked gentoo-0.11.48.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gentoo-0.11.46.ebuild:
+  Masked gentoo-0.11.46.ebuild stable for ppc
+
+  12 Jul 2004; Tom Gall <tgall@gentoo.org> gentoo-0.11.51.ebuild:
+  mark ~ppc64, bug #56702
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> gentoo-0.11.51.ebuild:
+  Stable on alpha.
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> gentoo-0.11.51.ebuild:
+  Marked stable on amd64.
+
+  15 Jun 2004; Jason Wever <weeve@gentoo.org> gentoo-0.11.51.ebuild:
+  Stable on sparc.
+
+  14 Jun 2004; <pyrania@gentoo.org> gentoo-0.11.51.ebuild:
+  Marked x86.
+
+  22 May 2004; Jason Wever <weeve@gentoo.org> gentoo-0.11.48.ebuild:
+  Stable on sparc.
+
+*gentoo-0.11.51 (09 May 2004)
+
+  09 May 2004; Seemant Kulleen <seemant@gentoo.org> -gentoo-0.11.50.ebuild,
+  +gentoo-0.11.51.ebuild:
+  Version bump which should fix the nls install problem -- seems like Emil
+  caught it before we could report it to him anyway. Thanks to: Federico Fenara
+  <fenox@libero.it> for reporting bug #50088, and to: Stefan Sperling
+  <stsp@binarchy.net> for fixing.
+
+*gentoo-0.11.50 (04 May 2004)
+
+  04 May 2004; Seemant Kulleen <seemant@gentoo.org> -gentoo-0.11.35.ebuild,
+  +gentoo-0.11.50.ebuild:
+  version bump -- see my last version bump for the thanks
+
+  27 Apr 2004; Brandon Hale <tseng@gentoo.org> gentoo-0.11.48.ebuild:
+  Stable on x86.
+
+*gentoo-0.11.48 (16 Apr 2004)
+
+  16 Apr 2004; Brandon Hale <tseng@gentoo.org> -gentoo-0.11.47.ebuild,
+  +gentoo-0.11.48.ebuild:
+  Version bump, thanks to Jesus Garcia Crespo <correo@sevein.com>
+
+  14 Apr 2004; <kloeri@gentoo.org> gentoo-0.11.45.ebuild,
+  gentoo-0.11.46.ebuild:
+  Stable on alpha.
+
+  13 Apr 2004; Jason Wever <weeve@gentoo.org> gentoo-0.11.46.ebuild:
+  Marked stable on sparc wrt bug #47711.
+
+  13 Apr 2004; Travis Tilley <lv@gentoo.org> gentoo-0.11.45.ebuild,
+  gentoo-0.11.46.ebuild:
+  marked stable on amd64
+
+*gentoo-0.11.47 (13 Apr 2004)
+
+  13 Apr 2004; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.47.ebuild:
+  version bump, thanks to: Jesus Garcia Crespo <correo@sevein.com> via email,
+  and Daniel Webert <daniel_webert@web.de> in bug #47711
+
+  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> gentoo-0.11.35.ebuild,
+  gentoo-0.11.45.ebuild, gentoo-0.11.46.ebuild:
+  Marked stable on x86.
+
+*gentoo-0.11.46 (01 Mar 2004)
+
+  01 Mar 2004; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.43.ebuild,
+  gentoo-0.11.45.ebuild, gentoo-0.11.46.ebuild:
+  Version bump, as requested by Jesús García Crespo (aka Sevein)
+  <correo@sevein.com> in bug #43311
+
+  23 Feb 2004; Sven Blumenstein <bazik@gentoo.org> gentoo-0.11.45.ebuild:
+  Stable on sparc.
+
+  21 Feb 2004; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.45.ebuild:
+  stabilise on x86
+
+  20 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> gentoo-0.11.35.ebuild,
+  gentoo-0.11.43.ebuild, gentoo-0.11.45.ebuild:
+  header fix; mips and arm need deps first
+
+  13 Dec 2003; Lars Weiler <pylon@gentoo.org> gentoo-0.11.45.ebuild:
+  Masked stable on ppc.
+
+*gentoo-0.11.45 (02 Dec 2003)
+
+  02 Dec 2003; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.35.ebuild,
+  gentoo-0.11.45.ebuild:
+  version bump and .35 stable on sparc
+
+*gentoo-0.11.43 (19 Nov 2003)
+
+  19 Nov 2003; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.43.ebuild:
+  version bump
+
+*gentoo-0.11.40 (09 Nov 2003)
+
+  09 Nov 2003; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.39.ebuild,
+  gentoo-0.11.40.ebuild:
+  version bump -- removed the faulty .38 and .39 versions
+
+*gentoo-0.11.39 (30 Oct 2003)
+
+  30 Oct 2003; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.39.ebuild:
+  version bump
+
+*gentoo-0.11.38 (28 Oct 2003)
+
+  28 Oct 2003; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.38.ebuild:
+  Version bump
+
+*gentoo-0.11.35 (03 Oct 2003)
+
+  03 Oct 2003; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.35.ebuild:
+  version bump
+
+  15 May 2003; Jason Wever <weeve@gentoo.org> gentoo-0.11.34.ebuild:
+  Added ~sparc to keywords.
+
+*gentoo-0.11.34 (21 Dec 2002)
+
+  16 Jan 2003; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.34.ebuild :
+
+  The config files are supposed to be installed in /etc/gentoo, but were
+  being thrown into /etc instead.  Thanks to: alain@rexorient.com (Alain
+  Penders) for finding and fixing in bug #13724.
+
+  23 Dec 2002; Brandon Low <lostlogic@gentoo.org> gentoo-0.11.34.ebuild :
+  Marked stable, and ebuild fixes, it werks now :)
+
+  21 Dec 2002; Brandon Low <lostlogic@gentoo.org> gentoo-0.11.34.ebuild
+  files/digest-gentoo-0.11.34, ChangeLog :
+
+  Marked unstable because it breaks here.
+
+  21 Dec 2002; Matthew Kennedy <mkennedy@gentoo.org> gentoo-0.11.34.ebuild
+  files/digest-gentoo-0.11.34, ChangeLog :
+
+  Version bump.
+
+*gentoo-0.11.31 (05 Aug 2002)
+
+  05 Aug 2002; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.31.ebuild
+  files/digest-gentoo-0.11.31 :
+
+  Version bump.
+
+*gentoo-0.11.30 (21 Jul 2002)
+
+  21 Jul 2002; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.30.ebuild
+  files/digest-gentoo-0.11.30 :
+
+  Version bump.
+
+*gentoo-0.11.28 (17 Jul 2002)
+
+  17 Jul 2002; Gabriele Giorgetti <stroke@gentoo.org> gentoo-0.11.28.ebuild
+  files/digest-gentoo-0.11.28 :
+
+  New version. Added SLOT and KEYWORDS 
+
+*gentoo-0.11.27-r1 (03 Jul 2002)
+
+  03 Jul 2002; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.27-r1.ebuild
+  files/digest-gentoo-0.11.27-r1 :
+
+  Added USE dependent nls support. thanks to: Martin Uddén
+  <nanook@lysator.liu.se>
+
+*gentoo-0.11.27 (22 Jun 2002)
+
+  22 Jun 2002; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.27.ebuild
+  files/digest-gentoo-0.11.27 :
+
+  Version bump.
+
+*gentoo-0.11.26 (12 Jun 2002)
+
+  12 Jun 2002; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.26.ebuild
+  files/digest-gentoo-0.11.26 :
+
+  Version bump.
+
+*gentoo-0.11.25 (3 June 2002)
+
+  3 June 2002; Gabriele Giorgetti <stroke@gentoo.org> gentoo-0.11.25.ebuild
+
+  New version.
+
+*gentoo-0.11.24 (30 Apr 2002)
+
+  30 Apr 2002; Seemant Kulleen <seemant@gentoo.org> gentoo-0.11.24.ebuild
+  files/digest-gentoo-0.11.24 :
+
+  Version bump.
+
+*gentoo-0.11.23 (17 Apr 2002)
+
+  17 Apr 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  gentoo-0.11.23.ebuild, files/digest-gentoo-0.11.23, files/gentoo.desktop
+
+  Corrected ebuild to actually install some documentation (FAQ, HTML,
+  etc). Incidental version upgrade to latest. Added GNOME .desktop
+  file if GNOME is in use.
+
+*gentoo-0.11.22 (21 Mar 2002)
+
+  Version upgrade.  Upstream fixes render some of the tweaks from the previous
+  ebuild unnecessary.  Thanks to Matthew Kennedy for the update.
+
+*gentoo-0.11.18 (2 Feb 2002)
+
+  2 Feb 2002; Leo Lipelis <aeoo@gentoo.org> ChangeLog :
+
+  New ebuild for new release of Gentoo File Manager.  Everything should work
+  now.  System-wide config files are in /etc/gentoo/ directory.  User config
+  files are in ~/.gentoorc file.
 
 *gentoo-0.11.16-r1 (1 Feb 2002)
 

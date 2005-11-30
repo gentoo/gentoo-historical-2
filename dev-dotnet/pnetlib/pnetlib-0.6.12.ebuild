@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnetlib/pnetlib-0.6.12.ebuild,v 1.1 2005/01/16 09:49:25 scandium Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnetlib/pnetlib-0.6.12.ebuild,v 1.1.1.1 2005/11/30 10:06:21 chriswhite Exp $
 
-inherit eutils libtool
+inherit eutils
 
 DESCRIPTION="Portable.NET C# library"
 HOMEPAGE="http://www.dotgnu.org/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/dotgnu/pnet/${P}.tar.gz"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~ppc64 ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64"
+KEYWORDS="amd64 arm ~hppa ia64 ppc ppc64 x86"
 IUSE="truetype X"
 
 DEPEND="=dev-dotnet/pnet-${PV}*
@@ -24,7 +24,7 @@ src_unpack() {
 	# bug 39369
 	epatch ${FILESDIR}/${PV}-resgen.patch
 
-	# syntax error; patch not needed anymore for the next release
+	# syntax error; already fixed upstream
 	epatch ${FILESDIR}/configure-freetype.patch
 }
 
@@ -32,15 +32,16 @@ src_compile() {
 	local lib_profile="default1.1"
 	einfo "Using profile: ${lib_profile}"
 
+	libtoolize --force --copy || die
+	aclocal || die
 	WANT_AUTOCONF=2.5 ./auto_gen.sh
-	elibtoolize
 	econf --with-profile=${lib_profile} \
 		`use_enable truetype xft` || die
 	emake || die
 }
 
 src_install() {
-	einstall || die
+	make DESTDIR="${D}" install || die
 
 	dodoc AUTHORS ChangeLog HACKING INSTALL NEWS README
 	dodoc doc/*.txt

@@ -1,6 +1,9 @@
 # ChangeLog for games-mud/trebuchet
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/trebuchet/ChangeLog,v 1.1 2004/03/20 06:56:49 mr_bones_ Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/trebuchet/ChangeLog,v 1.1.1.1 2005/11/30 10:06:15 chriswhite Exp $
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> trebuchet-1.052.ebuild:
+  Added ~ppc.
 
 *trebuchet-1.052 (19 Mar 2004)
 

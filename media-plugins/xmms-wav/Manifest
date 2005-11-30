@@ -1,6 +1,16 @@
-MD5 5a8290e44006ccff0dff3094555d6366 metadata.xml 257
-MD5 4c8442f6275a5611512fe711de251c00 xmms-wav-1.2.10.ebuild 306
-MD5 c7e83c1a7cc3a2041222d516942a9d7e xmms-wav-1.2.10-r1.ebuild 347
-MD5 770118642bcefa3bd08406cab044035d ChangeLog 339
-MD5 af2d409c36e9f3caee63715699f1ce44 files/digest-xmms-wav-1.2.10 142
-MD5 ee4c50bc643c29df08e03dffa42613b8 files/digest-xmms-wav-1.2.10-r1 227
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 8417b7e3d0f62f35166ce05eddb8c00f ChangeLog 855
+MD5 f930420b092ea660e8da0c4b24e0f6a4 files/digest-xmms-wav-1.2.10 142
+MD5 29189a07ebf2ac1578898c2234dc1bce files/digest-xmms-wav-1.2.10-r1 227
+MD5 14d44eca27c187b5c079729fb018db9f metadata.xml 250
+MD5 4e3fc8a3e457243d32866c395c3b3020 xmms-wav-1.2.10-r1.ebuild 432
+MD5 036965e65ff69357e89531fd2d653b66 xmms-wav-1.2.10.ebuild 417
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDVX2NwUpWvClEHQoRApYVAJ4jiCtZKlynrxrte6a5yiz6jR1lbwCdHJHY
+uefMwdfWTYSWQECMwUrYNRk=
+=Cvco
+-----END PGP SIGNATURE-----

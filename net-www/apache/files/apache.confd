@@ -1,3 +1,7 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/files/apache.confd,v 1.1.1.1 2005/11/30 10:08:03 chriswhite Exp $
+
 # Config file for /etc/init.d/apache
 
 # Here's an example from /etc/apache/conf/apache.conf using mod_ssl:
@@ -13,6 +17,7 @@
 #
 # <IfDefine FOO> ... </IfDefine>
 #
+
 # can be easily turned on/off by editing APACHE_OPTS below to
 # include or to not include "-D FOO".
 #

@@ -1,4 +1,5 @@
 #!/bin/sh
+## $Header: /var/cvsroot/gentoo-x86/net-www/mod_ssl/files/gentestcrt.sh,v 1.1.1.1 2005/11/30 10:07:53 chriswhite Exp $
 ##
 ##  gentestcrt -- Create self-signed test certificate
 ##  (C) 2001 Jean-Michel Dault <jmdault@mandrakesoft.com> and Mandrakesoft

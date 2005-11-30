@@ -1,6 +1,500 @@
 # ChangeLog for gnome-base/gdm
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/ChangeLog,v 1.1.1.1 2005/11/30 10:09:03 chriswhite Exp $
+
+  04 Nov 2005; <dang@gentoo.org> gdm-2.8.0.5.ebuild:
+  Modular X deps
+
+  01 Nov 2005; <dang@gentoo.org> gdm-2.8.0.5.ebuild:
+  Fix gdm.conf paths for new locations. bug #110495
+
+  16 Oct 2005; John N. Laliberte <allanonjl@gentoo.org> gdm-2.8.0.5.ebuild:
+  add enewgroup/enewuser into pkgsetup for #104767 ( for 2.8.0.5 )
+
+  14 Oct 2005; <dang@gentoo.org> gdm-2.8.0.5.ebuild:
+  Force -j1.  Bug #33432
+
+  10 Oct 2005; Hardave Riar <hardave@gentoo.org> gdm-2.8.0.3.ebuild:
+  Stable on mips.
+
+  09 Oct 2005; Luis Medinas <metalgod@gentoo.org> gdm-2.8.0.3.ebuild:
+  Marked Stable on amd64.
+
+*gdm-2.8.0.5 (04 Oct 2005)
+
+  04 Oct 2005; Leonardo Boshell <leonardop@gentoo.org> +gdm-2.8.0.5.ebuild:
+  New version.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> gdm-2.8.0.3.ebuild:
+  Mark 2.8.0.3 stable on alpha
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> gdm-2.8.0.3.ebuild:
+  Stable on ppc.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> gdm-2.8.0.3.ebuild:
+  Mark 2.8.0.3 stable on ia64
+
+  30 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.8.0.3.ebuild:
+  Stable on sparc
+
+  29 Sep 2005; John N. Laliberte <allanonjl@gentoo.org> gdm-2.8.0.3.ebuild:
+  stable on x86
+
+*gdm-2.8.0.4 (11 Sep 2005)
+
+  11 Sep 2005; <dang@gentoo.org> +gdm-2.8.0.4.ebuild:
+  Revbump to final version for gnome 2.12.0
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  Mark 2.8.0.1-r1 stable on alpha
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  Stable on ppc.
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  Stable on ppc64
+
+  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  Stable on amd64.
+
+  29 Aug 2005; Guy Martin <gmsoft@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  Stable on hppa.
+
+  26 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  Stable on sparc
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  stable on ia64
+
+*gdm-2.8.0.3 (25 Aug 2005)
+
+  25 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> +gdm-2.8.0.3.ebuild:
+  New version. Updated HOMEPAGE.
+
+  25 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gdm-2.8.0.1-r1.ebuild:
+  Stable on x86.
+
+  22 Aug 2005; Aron Griffis <agriffis@gentoo.org> gdm-2.6.0.9-r3.ebuild:
+  stable on ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> gdm-2.6.0.9-r3.ebuild:
+  Stable on hppa and ppc.
+
+*gdm-2.8.0.2 (14 Aug 2005)
+
+  14 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> gdm-2.8.0.2.ebuild:
+  New version. Set USE_DESTDIR; it allows us to simplify things a little in
+  src_install() and avoid more sandbox problems with this release.
+
+  08 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  Fix sandbox violation if 'pam' is not in USE (bug #101934).
+
+  09 Aug 2005; Markus Rothe <corsair@gentoo.org> gdm-2.6.0.9-r3.ebuild:
+  Stable on ppc64
+
+  08 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.6.0.9-r3.ebuild:
+  Stable on sparc
+
+*gdm-2.8.0.1-r1 (08 Aug 2005)
+
+  08 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> gdm-2.8.0.1-r1.ebuild:
+  New revision. Rename old pam.d file from gdmconfig to gdmsetup. Move
+  G2CONF declaration to pkg_setup() so src_compile() doesn't get
+  overwritten. Modify gdm.conf to list available users in gdmsetup by
+  default (bug #101645).
+
+  08 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> gdm-2.6.0.9-r3.ebuild:
+  Stable on x86.
+
+*gdm-2.8.0.1 (24 Jul 2005)
+
+  24 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> gdm-2.8.0.1.ebuild:
+  New release. Added 'static' USE flag. Updated HOMEPAGE. Now gentoo
+  specific files are distributed in an extra tarball. Adjusted references to
+  some binaries installed by GDM, as they are installed in different
+  locations. For more information, see the NEWS file.
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org> gdm-2.6.0.9-r2.ebuild:
+  stable onmips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> gdm-2.6.0.9-r2.ebuild:
+  Stable on alpha.
+
+  25 Jun 2005; Guy Martin <gmsoft@gentoo.org> gdm-2.6.0.9-r2.ebuild:
+  Stable on hppa.
+
+  13 Jun 2005; Markus Rothe <corsair@gentoo.org> gdm-2.6.0.9-r2.ebuild:
+  Stable on ppc64
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> gdm-2.6.0.9-r2.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  gdm-2.6.0.9-r2.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.6.0.9-r2.ebuild:
+  Stable on sparc
+
+*gdm-2.6.0.9-r1 (04 Jun 2005)
+
+  04 Jun 2005; Marinus Schraal <foser@gentoo.org> gdm-2.6.0.9-r1.ebuild :
+  Use pam eclass stuff, fixes provided by flameeyes (#93183)
+
+  11 May 2005; Guy Martin <gmsoft@gentoo.org> gdm-2.6.0.7.ebuild:
+  Stable on hppa.
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> gdm-2.6.0.7.ebuild:
+  Stable on amd64.
+
+  29 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.6.0.7.ebuild:
+  Stable on sparc
+
+  28 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> gdm-2.6.0.7.ebuild:
+  Stable on alpha + ia64.
+
+*gdm-2.6.0.9 (26 Apr 2005)
+
+  26 Apr 2005; foser <foser@gentoo.org> gdm-2.6.0.9.ebuild :
+  New release
+  Make pam optional (#48067)
+
+  25 Apr 2005; Mike Gardiner <obz@gentoo.org> gdm-2.6.0.7.ebuild:
+  Don't use gentoo theme by default (#83818)
+  Keyworded ppc x86
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> gdm-2.6.0.6.ebuild:
+  stable on mips
+
+*gdm-2.6.0.7 (01 Mar 2005)
+
+  01 Mar 2005; Mike Gardiner <obz@gentoo.org> +gdm-2.6.0.7.ebuild:
+  New version
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> gdm-2.2.5.4-r5.ebuild,
+  gdm-2.4.1.7-r1.ebuild, gdm-2.4.4.7-r1.ebuild, gdm-2.6.0.3.ebuild,
+  gdm-2.6.0.4-r1.ebuild, gdm-2.6.0.6.ebuild:
+  Fixing all ebuilds MY_V definition.
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> gdm-2.6.0.6.ebuild:
+  Stable on amd64.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> gdm-2.6.0.6.ebuild:
+  Stable on alpha.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> gdm-2.6.0.6.ebuild:
+  Stable on hppa.
+
+  22 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.6.0.6.ebuild:
+  Stable on sparc
+
+  19 Dec 2004; Mike Gardiner <obz@gentoo.org> gdm-2.6.0.6.ebuild:
+  Keyworded x86 and ppc for GNOME 2.8.1
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> gdm-2.6.0.4-r1.ebuild:
+  Stable on alpha.
+
+*gdm-2.6.0.6 (25 Nov 2004)
+
+  25 Nov 2004; Mike Gardiner <obz@gentoo.org> +gdm-2.6.0.6.ebuild:
+  New version
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.6.0.4-r1.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Mike Gardiner <obz@gentoo.org> gdm-2.6.0.4-r1.ebuild:
+  Keyworded ppc for GNOME 2.8
+
+*gdm-2.6.0.4-r1 (24 Aug 2004)
+
+  24 Aug 2004; foser <foser@gentoo.org> gdm-2.6.0.4-r1.ebuild :
+  Fix dodir -> keepdir (#61472) & rev bump to make propagate
+  Update themes pack to -r2 (#59918)
+  now putting the two themes together & slimming it up
+
+*gdm-2.6.0.4 (22 Aug 2004)
+
+  22 Aug 2004; Mike Gardiner <obz@gentoo.org> +gdm-2.6.0.4.ebuild:
+  New version, 2.6.0.4
+
+  20 Aug 2004; Tom Gall <tgall@gentoo.org> gdm-2.6.0.3.ebuild:
+  stable on ppc64, bug #58191
+
+  18 Aug 2004; foser <foser@gentoo.org> gdm-{2.2*,2.4.1*}.ebuild :
+  Use keepdir instead of touch .keep (#39811)
+
+*gdm-2.6.0.3 (08 Aug 2004)
+
+  08 Aug 2004; foser <foser@gentoo.org> gdm-2.6.0.3.ebuild :
+  New release (#51374)
+  Add pango-1.4.1 to fix language selection issues (#53868)
+  Fix gdm restart logic to actually work
+  Fix location of logfiles (#53526 - patch by langthang@gentoo.org)
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.4.4.7-r1.ebuild:
+  Stable on sparc
+
+  03 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> gdm-2.4.4.7-r1.ebuild:
+  Sparc fixup for language selector b0rkage, can be pulled off when we get pango
+  1.4.1 in
+
+  13 Jul 2004; Tom Gall <tgall@gentoo.org> gdm-2.4.4.7-r1.ebuild:
+  added ~ppc64, bug #54807
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> gdm-2.4.4.7-r1.ebuild:
+  Stable on alpha.
+
+  03 Jun 2004; Stephen P. Becker <geoman@gentoo.org> gdm-2.4.4.7-r1.ebuild:
+  Stable on mips.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  Fix use invocation
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gdm-2.4.4.7-r1.ebuild:
+  Masked gdm-2.4.4.7-r1.ebuild stable for ppc
+
+  25 May 2004; Guy Martin <gmsoft@gentoo.org> gdm-2.4.4.7-r1.ebuild:
+  Marked stable on hppa.
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  Stable on mips.
+
+  28 Apr 2004; foser <foser@gentoo.org> gdm-2.4.1.7-r1.ebuild :
+  Added patch to build withg gtk-2.4, provided by gmsoft in #49185
+
+  17 Apr 2004; Travis Tilley <lv@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  stable on amd64
+
+  03 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>; gdm-2.2.5.4-r5.ebuild,
+  gdm-2.4.1.6.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+*gdm-2.4.4.7-r1 (02 Apr 2004)
+
+  02 Apr 2004; foser <foser@gentoo.org> gdm-2.4.4.7-r1.ebuild :
+  Add custom desktop session (#44537)
+  Re-enable installation of the old gentoo theme
+
+  16 Mar 2004; Stephen P. Becker <geoman@gentoo.org> gdm-2.4.4.7.ebuild:
+  Added ~mips keyword.
+
+  22 Feb 2004; Chris PeBenito <pebenito@gentoo.org> gdm-2.4.4.7.ebuild:
+  Fix SELinux to use_with in G2CONF.
+
+*gdm-2.4.4.7 (17 Feb 2004)
+
+  17 Feb 2004; foser <foser@gentoo.org> gdm-2.4.4.7.ebuild :
+  Finally put this update in
+  Fixed some small issues after cleaning 2.4.4 triggered by the diff in #40711
+  Added selinux stuff as requested & proposed by pebenito in #41022
+  Added a new default gentoo theme : gentoo-cow
+  Added intltool dep for XML-Parser
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  set ppc in keywords
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  set ppc in keywords
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  stable on alpha and ia64
+
+  18 Jan 2004; <gustavoz@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  stable on hppa and sparc
+
+  14 Jan 2004; Mike Gardiner <obz@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  Stable on x86 as part of GNOME-2.4.1
+
+  06 Dec 2003; foser <foser@gentoo.org> gdm-2.*.ebuild :
+  Fix occurances chown usr.grp to usr:grp (#35127)
+
+*gdm-2.4.4.5 (23 Nov 2003)
+
+  23 Nov 2003; foser <foser@gentoo.org> gdm-2.4.4.5.ebuild, files/2.4.4/* :
+  Cleaned up ebuild
+  Moved tcp-wrappers to DEP
+  Temporary removed gentoo theme
+  Now use our own Xsession file to source .bash_profile, needed for keychain
+  Added libart_lgpl dep
+
+*gdm-2.4.1.7-r1 (17 Nov 2003)
+
+  17 Nov 2003; <spider@gentoo.org> gdm-2.4.1.7-r1.ebuild:
+  Added runtime dependency on virtual/x11, 
+  moved tcp-wrappers from hard dep to use tcpd? ()
+  added xinerama USE flag
+  added X USE flag for xdmcp. 
+  Removed static dependency on xfree (new freedesktop.org x11 works too)
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> gdm-2.4.1.6.ebuild:
+  Stable on ia64
+
+*gdm-2.4.1.7 (01 Nov 2003)
+
+  01 Nov 2003; <solar@gentoo.org> gdm-2.4.1.7.ebuild:
+  security update, please test and mark stable for each arch
+
+  26 Aug 2003; Heinrich Wendel <lanius@gentoo.org> gdm-2.4.1.6.ebuild:
+  marked stable on all arch, cause of security issues: #27127
+
+  11 Aug 2003; Mike Gardiner <obz@gentoo.org> gdm-2.4.1.4.ebuild:
+  Bumped gdm-2.4.1.4 to stable on x86
+
+  11 Aug 2003; Mike Gardiner <obz@gentoo.org> gdm-2.4.1.6.ebuild:
+  Fixed KEYWORDS on hppa and amd64
+
+*gdm-2.4.1.6 (11 Aug 2003)
+
+  11 Aug 2003; Mike Gardiner <obz@gentoo.org> gdm-2.4.1.6.ebuild:
+  New version, removed obsolete omf-install section, and fixed postinst comment
+
+  15 Jul 2003; Todd Sunderlin <todd@gentoo.org> gdm-2.4.1.3.ebuild:
+  Marked stable for sparc
+
+  09 Jul 2003; Alastair Tse <liquidx@gentoo.org> gdm-2.4.0.12-r2.ebuild,
+  gdm-2.4.1.3.ebuild, gdm-2.4.1.4.ebuild:
+  added pkgconfig deps
+
+  30 Jun 2003; Bartosch Pixa <darkspecter@gentoo.org> gdm-2.4.1.3.ebuild:
+  set ppc in keywords
+
+*gdm-2.4.1.4 (13 May 2003)
+
+  04 Jul 2003; Guy Martin <gmsoft@gentoo.org> gdm-2.4.1.4.ebuild :
+  Added hppa to KEYWORDS.
+
+  13 May 2003; foser <foser@gentoo.org> gdm-2.4.1.4.ebuild :
+  New version, gnome2 eclass gdm a little
+
+*gdm-2.4.1.3 (04 Feb 2003)
+
+  03 Apr 2003; foser <foser@gentoo.org> digest-gdm-2.4.{0.12-r2,1.3} :
+  Updated accessibility for gentoo theme (#13066)
+
+  17 Mar 2003; Martin Holzer <mholzer@gentoo.org> gdm-2.4.1.3.ebuild:
+  removed ABOUT-NLS from dodoc since it doesn't exist
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> gdm-2.4.1.3.ebuild :
+  Mark stable on Alpha
+  
+  04 Feb 2003; Spider <spider@gentoo.org> gdm-2.4.1.3.ebuild :
+  New version
+  
+*gdm-2.4.1.1 (24 Jan 2003)
+
+  24 Jan 2003; foser <foser@gentoo.org> gdm-2.4.1.1.ebuild :
+  New version, minor dep fixes
+
+*gdm-2.4.0.12-r2 (25 Dec 2002)
+
+  03 Jan 2003; foser <foser@gentoo.org> gdm-2.4.0.12-r2.ebuild :
+  Fixed gentoo theme src_uri
+
+  25 Martin Schlemmer <azarah@gentoo.org> gdm-2.4.0.12-r2.ebuild :
+  Change /etc/X11/gdm/PreSession/Default's shell to '/bin/bash --login' to
+  set the users environment properly.  This will mostly only work for bash
+  and sh users :(
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gdm-2.4.0.12-r1 (01 Dec 2002) 
+
+  01 Dec 2002; foser <foser@gentoo.org> gdm-2.4.0.12-r1.ebuild :
+  Added Gentoo theme and close open tcp port
+
+*gdm-2.4.0.12 (28 Nov 2002)
+  28 Nov 2002; Spider <spider@gentoo.org> : gdm-2.4.0.12.ebuild :
+  add the latest version, get the SRC_URI fixed
+
+*gdm-2.4.0.11-r1 (07 Nov 2002)
+  11 Nov 2002; L. Boshell <leonardop@gentoo.org> : Actually apply the
+  patch, since there was an extra `dry-run' flag.
+  
+  07 Nov 2002; Martin Schlemmer <azarah@gentoo.org> gdm-2.4.0.11-r1.ebuild :
+  Fix /etc/X11/startDM.sh to source /etc/profile to fix bug #10190.  
+
+*gdm-2.4.0.11 (06 Sep 2002)
+  06 Sep 2002; Spider <spider@gentoo.org> gdm-2.4.0.11.ebuild :
+  new version
+
+*gdm-2.4.0.7 (09 Aug 2002)
+  31 Aug 2002; Spider <spider@gentoo.org> gdm-2.4.0.7.ebuild :
+  added ORBit2 dependency.
+  
+  13 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> gdm-2.4.0.7.ebuild :
+  Added ppc keyword
+
+  09 Aug 2002; Spider <spider@gentoo.org> gdm-2.4.0.7.ebuild :
+  version bump
+
+*gdm-2.4.0.6 (08 Aug 2002)
+  08 Aug 2002; Gabriele Giorgetti <stroke@gentoo.org> gdm-2.4.0.6.ebuild :
+  Version bump, and dependencies update.
+
+*gdm-2.4.0.5 (05 Aug 2002)
+  05 Aug 2002; Gabriele Giorgetti <stroke@gentoo.org> gdm-2.4.0.5.ebuild :
+  New version, and dependencies update.
+
+*gdm-2.4.0.4 (27 Jul 2002)
+  27 Jul 2002; Martin Schlemmer <azarah@gentoo.org> gdm-2.4.0.4.ebuild :
+  New version.  Move /usr/bin/gdm-binary to /usr/bin/gdm, else the
+  /etc/init.d/xdm script have problems stopping gdm; this should resolve
+  bug #5598.
+
+*gdm-2.4.0.2 (17 Jul 2002)
+  17 Jul 2002; Gabriele Giorgetti  <stroke@gentoo.org> gdm-2.4.0.2.ebuild :
+  New version.  
+
+*gdm-2.4.0.1 (9 Jul 2002)
+  9 Jul 2002; Spider <spider@gentoo.org> gdm-2.4.0.1.ebuild :
+  fix all packages to be repoman friendly
+  update to latest version
+  
+*gdm-2.4.0.0 (8 Jun 2002)
+  8 Jun 2002; Spider <spider@gentoo.org> gdm-2.4.0.0.ebuild :
+  New stable version!
+  
+*gdm-2.3.90.6 (5 June 2002)
+  5 June 2002; Gabriele Giorgetti <stroke@gentoo.org> gdm-2.3.90.6.ebuild :
+  New version.
+    This time we install the cute greeter as default
+
+
+*gdm-2.3.90.4 (29 May 2002)
+  29 May 2002; Spider <spider@gentoo.org> gdm-2.3.90.4.ebuild :
+  AAGh.. I had missed a part in the cut command so pam -still- wasnt
+  installed..
+  d'oh!
+  new version fixes this.. promise :)
+
+
+*gdm-2.3.90.3-r1 (29 May 2002)
+  29 May 2002; Spider <spider@gentoo.org> gdm-2.3.90.3-r1.ebuild :
+  exact clone, but recall to put in the pam stuff this time :)
+
+
+*gdm-2.3.90.3 (28 May 2002)
+  28 May  2002; Spider <spider@gentoo.org> gdm-2.3.90.3.ebuild :
+  new gnome2 version this is built with debugging
+
+*gdm-2.2.5.4-r5 (4 Apr 2002)
+
+  4 Apr 2002; Seemant Kulleen <seemant@gentoo.org> files/2.2.5/etc/gdm
+  files/2.2.5/etc/gdmconfig :
+
+  Updated the PAM config with RedHat's which uses the more secure pam stack.
+
+*gdm-2.2.5.4-r5 (5 Mar 2002)
+
+  5 Mar 2002; Arcady Genkin <agenkin@thpoon.com> gdm-2.2.5.4-r5.ebuild :
+  
+  Added --disable-nls if nsl is not in USE (patch submitted by
+  seemant@rocketmail.com (Seemant Kulleen)).
 
 *gdm-2.2.5.4-r4 (1 Feb 2002)
 

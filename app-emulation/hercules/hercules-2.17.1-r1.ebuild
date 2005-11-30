@@ -1,18 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/hercules/hercules-2.17.1-r1.ebuild,v 1.1 2003/03/23 17:45:22 alain Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/hercules/hercules-2.17.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:51 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator"
-SRC_URI="http://www.conmicro.cx/hercules/${P}.tar.gz"
 HOMEPAGE="http://www.conmicro.cx/hercules/"
+SRC_URI="http://www.conmicro.cx/hercules/${P}.tar.gz"
+
 LICENSE="QPL-1.0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc"
 SLOT="0"
+KEYWORDS="x86 ppc alpha ~sparc"
 IUSE=""
 
-DEPEND="virtual/glibc
-	sys-apps/bzip2"
+DEPEND="virtual/libc
+	app-arch/bzip2"
 
 src_compile() {
 	local mycflags
@@ -32,7 +32,7 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install
-	dodoc INSTALL 
+	dodoc INSTALL
 	dohtml -r html/
 	insinto /usr/share/hercules
 	doins hercules.cnf

@@ -1,6 +1,111 @@
 # ChangeLog for app-text/estraier
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/estraier/ChangeLog,v 1.1 2004/07/25 07:49:31 hattya Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/estraier/ChangeLog,v 1.1.1.1 2005/11/30 10:07:12 chriswhite Exp $
+
+  23 Sep 2005; Homer Parker <hparker@gentoo.org> ChangeLog:
+  Marked ~amd64.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  estraier-1.2.26.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  estraier-1.2.26.ebuild:
+  Stable on sparc
+
+  05 May 2005; Akinori Hattori <hattya@gentoo.org> estraier-1.2.26.ebuild:
+  stable on x86.
+
+*estraier-1.2.28 (05 May 2005)
+
+  05 May 2005; Akinori Hattori <hattya@gentoo.org> -estraier-1.2.24.ebuild,
+  +estraier-1.2.28.ebuild:
+  new upstream release.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> estraier-1.2.25.ebuild:
+  stable on amd64
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  estraier-1.2.25.ebuild:
+  Stable on ppc.
+
+  18 Feb 2005; Akinori Hattori <hattya@gentoo.org> estraier-1.2.25.ebuild:
+  stable on x86.
+
+*estraier-1.2.26 (18 Feb 2005)
+
+  18 Feb 2005; Akinori Hattori <hattya@gentoo.org> +estraier-1.2.26.ebuild:
+  new upstream release.
+
+*estraier-1.2.25 (03 Jan 2005)
+
+  03 Jan 2005; MATSUU Takuto <matsuu@gentoo.org> -estraier-1.2.16.ebuild,
+  -estraier-1.2.18.ebuild, -estraier-1.2.20.ebuild, -estraier-1.2.21.ebuild,
+  -estraier-1.2.23.ebuild, +estraier-1.2.25.ebuild:
+  Version bumped.
+  Removed old versions.
+
+  05 Dec 2004; Jason Wever <weeve@gentoo.org> estraier-1.2.24.ebuild:
+  Added ~sparc keyword.
+
+  14 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> estraier-1.2.24.ebuild:
+  Stable on ppc.
+
+  17 Oct 2004; Akinori Hattori <hattya@gentoo.org> estraier-1.2.24.ebuild:
+  stable on x86.
+
+  02 Oct 2004; Akinori Hattori <hattya@gentoo.org> estraier-1.2.23.ebuild:
+  stable on x86.
+
+  22 Sep 2004; Akinori Hattori <hattya@gentoo.org> estraier-1.2.21.ebuild:
+  stable on x86.
+
+  19 Sep 2004; Akinori Hattori <hattya@gentoo.org> estraier-1.2.20.ebuild:
+  stable on x86.
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> estraier-1.2.16.ebuild,
+  estraier-1.2.18.ebuild:
+  stable on x86.
+
+*estraier-1.2.24 (07 Sep 2004)
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> +estraier-1.2.24.ebuild:
+  new upstream release.
+
+  28 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> estraier-1.2.23.ebuild:
+  Added to ~ppc.
+
+*estraier-1.2.23 (28 Aug 2004)
+
+  28 Aug 2004; Akinori Hattori <hattya@gentoo.org> +estraier-1.2.23.ebuild:
+  new upstream release.
+
+*estraier-1.2.21 (23 Aug 2004)
+
+  23 Aug 2004; Akinori Hattori <hattya@gentoo.org> +estraier-1.2.21.ebuild:
+  new upstream release.
+
+*estraier-1.2.20 (19 Aug 2004)
+
+  19 Aug 2004; Akinori Hattori <hattya@gentoo.org> +estraier-1.2.20.ebuild:
+  new upstream release.
+
+  10 Aug 2004; Akinori Hattori <hattya@gentoo.org> estraier-1.2.16.ebuild,
+  estraier-1.2.18.ebuild:
+  fixed typo: kakashi -> kakasi.
+  synch IUSE (+zlib)
+
+  07 Aug 2004; Tom Martin <slarti@gentoo.org> estraier-1.2.16.ebuild,
+  estraier-1.2.18.ebuild:
+  Typo in DESCRIPTION: serach -> search. Bug 59717.
+
+*estraier-1.2.18 (06 Aug 2004)
+
+  06 Aug 2004; Akinori Hattori <hattya@gentoo.org> +estraier-1.2.18.ebuild:
+  new upstream release.
+
+  31 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> estraier-1.2.16.ebuild:
+  Added to ~amd64.
 
 *estraier-1.2.16 (25 Jul 2004)
 

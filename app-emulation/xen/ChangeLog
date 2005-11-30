@@ -1,6 +1,64 @@
 # ChangeLog for app-emulation/xen
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen/ChangeLog,v 1.1 2005/09/07 18:18:59 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xen/ChangeLog,v 1.1.1.1 2005/11/30 10:08:43 chriswhite Exp $
+
+  03 Nov 2005; <chrb@gentoo.org> -xen-3.0.0_pre20051010.ebuild,
+  -xen-3.0.0_pre20051010-r1.ebuild:
+  remove old cvs snapshots
+
+*xen-3.0.0_pre20051027 (27 Oct 2005)
+
+  27 Oct 2005; <chrb@gentoo.org> files/xendomains-init,
+  +xen-3.0.0_pre20051027.ebuild:
+  version bump
+
+*xen-3.0.0_pre20051010-r1 (26 Oct 2005)
+
+  26 Oct 2005; Chris Bainbridge <chrb@gentoo.org>
+  +xen-3.0.0_pre20051010-r1.ebuild:
+  added depend on sys-devel/dev86
+
+*xen-3.0.0_pre20051010 (10 Oct 2005)
+
+  10 Oct 2005; Chris Bainbridge <chrb@gentoo.org>
+  -xen-3.0.0_pre20051007.ebuild, +xen-3.0.0_pre20051010.ebuild:
+  bump
+
+  10 Oct 2005; Chris Bainbridge <chrb@gentoo.org>
+  xen-3.0.0_pre20051007.ebuild:
+  add disabling cflags einfo
+
+  10 Oct 2005; Chris Bainbridge <chrb@gentoo.org>
+  xen-3.0.0_pre20051007.ebuild:
+  re-add hardened flags.
+
+*xen-3.0.0_pre20051007 (08 Oct 2005)
+
+  08 Oct 2005; Chris Bainbridge <chrb@gentoo.org> files/xend-init,
+  files/xendomains-conf, files/xendomains-init,
+  -xen-3.0.0_pre20050929.ebuild, +xen-3.0.0_pre20051007.ebuild:
+  -m Version bump xen-3, now uses udev rules. Add support for screen consoles
+  in xendomains. No longer use broken --halt to bring down domains.
+
+*xen-3.0.0_pre20050929 (29 Sep 2005)
+
+  29 Sep 2005; Chris Bainbridge <chrb@gentoo.org>
+  -xen-3.0.0_pre20050919.ebuild, +xen-3.0.0_pre20050929.ebuild:
+  cvs bump
+
+  22 Sep 2005; Chris Bainbridge <chrb@gentoo.org> xen-2.0.7.ebuild,
+  -xen-3.0.0_pre20050906.ebuild:
+  Add hardened flags #106731 and remove old snapshot
+
+  20 Sep 2005; Chris Bainbridge <chrb@gentoo.org> files/xend-init,
+  files/xendomains-init:
+  Change init scripts to absolute paths.
+
+*xen-3.0.0_pre20050919 (19 Sep 2005)
+
+  19 Sep 2005; Chris Bainbridge <chrb@gentoo.org>
+  +xen-3.0.0_pre20050919.ebuild:
+  Version bump
 
 *xen-3.0.0_pre20050906 (07 Sep 2005)
 *xen-2.0.7 (07 Sep 2005)

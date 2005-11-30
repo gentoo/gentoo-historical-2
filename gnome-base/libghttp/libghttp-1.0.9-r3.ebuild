@@ -1,35 +1,29 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libghttp/libghttp-1.0.9-r3.ebuild,v 1.1 2003/01/25 00:54:00 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libghttp/libghttp-1.0.9-r3.ebuild,v 1.1.1.1 2005/11/30 10:09:00 chriswhite Exp $
 
 GNOME_TARBALL_SUFFIX="gz"
 inherit libtool gnome.org
 
-S=${WORKDIR}/${P}
 DESCRIPTION="GNOME http client library"
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ppc ~sparc ~alpha hppa amd64"
+IUSE=""
 
 HOMEPAGE="http://www.gnome.org/"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
 	elibtoolize
-	./configure --host=${CHOST} 					\
-		    --prefix=/usr					\
-		    --sysconfdir=/etc					\
-	  	    --localstatedir=/var/lib || die
 
+	econf || die
 	emake || die
 }
 
-src_install() {                               
-	make prefix=${D}/usr						\
-	     sysconfdir=${D}/etc					\
-	     localstatedir=${D}/var/lib					\
-	     install || die
+src_install() {
+	einstall || die
 
 	# headers needed for Intermezzo (bug 11501)
 	insinto /usr/include/ghttp-1.0/

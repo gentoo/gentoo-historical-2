@@ -1,6 +1,23 @@
 # ChangeLog for app-emulation/emul-linux-x86-compat
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-compat/ChangeLog,v 1.1 2004/08/16 22:53:13 lv Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-compat/ChangeLog,v 1.1.1.1 2005/11/30 10:08:39 chriswhite Exp $
+
+  19 Oct 2005; Herbie Hopkins <herbs@gentoo.org> metadata.xml:
+  Remove lv as maintainer since he's retiring, bug 45408.
+
+*emul-linux-x86-compat-1.0-r1 (14 Oct 2005)
+
+  14 Oct 2005; Simon Stelling <blubb@gentoo.org>
+  +files/75emul-linux-x86-compat, +emul-linux-x86-compat-1.0-r1.ebuild:
+  since it does only depend on emul-linux-x86-glibc which does nothing on
+  2005.0 or later, install the env.d-file ourself
+
+  26 May 2005; Herbie Hopkins <herbs@gentoo.org>
+  emul-linux-x86-compat-1.0.ebuild:
+  Remove libsmpeg as it collides with emul-sdl.
+
+  28 Aug 2004; Travis Tilley <lv@gentoo.org> emul-linux-x86-compat-1.0.ebuild:
+  stable on amd64
 
 *emul-linux-x86-compat-1.0 (16 Aug 2004)
 

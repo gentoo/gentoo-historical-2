@@ -1,11 +1,13 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/configure-thinkpad/configure-thinkpad-0.1-r3.ebuild,v 1.1.1.1 2005/11/30 10:05:40 chriswhite Exp $
 
 inherit gnome2
 DESCRIPTION="Thinkpad gnome configuration utility for tpctl"
 SRC_URI="mirror://sourceforge/tpctl/${P}.tar.gz"
 HOMEPAGE="http://tpctl.sourceforge.net/configure-thinkpad.html"
-KEYWORDS="~x86 -amd64 -ppc -mips -sparc"
+KEYWORDS="-* ~x86"
+IUSE=""
 
 RDEPEND=">=app-laptop/tpctl-4.8
 	>=x11-libs/gtk+-2.2

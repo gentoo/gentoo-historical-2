@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/align/align-31.ebuild,v 1.1 2005/05/06 21:12:48 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/align/align-31.ebuild,v 1.1.1.1 2005/11/30 10:07:43 chriswhite Exp $
 
 inherit vim-plugin
 

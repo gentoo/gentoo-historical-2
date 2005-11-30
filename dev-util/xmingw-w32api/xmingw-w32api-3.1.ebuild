@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-w32api/xmingw-w32api-3.1.ebuild,v 1.1 2004/10/14 16:57:31 cretin Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-w32api/xmingw-w32api-3.1.ebuild,v 1.1.1.1 2005/11/30 10:05:02 chriswhite Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/mingw/${RUNTIME}-src.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 amd64"
 IUSE=""
 
 DEPEND="dev-util/xmingw-binutils
@@ -26,6 +26,8 @@ src_unpack() {
 	unpack ${MY_P}-src.tar.gz
 	ln -s ${MY_P} w32api
 	ln -s ${RUNTIME} mingw
+	epatch ${FILESDIR}/xmingw-w32api-3.1-include.patch
+	epatch ${FILESDIR}/xmingw-w32api-3.1-ntddk.patch
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-0.7.5.ebuild,v 1.1 2005/04/08 20:02:35 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ejabberd/ejabberd-0.7.5.ebuild,v 1.1.1.1 2005/11/30 10:09:33 chriswhite Exp $
 
 inherit eutils
 
@@ -37,7 +37,7 @@ src_compile() {
 
 src_install() {
 	enewgroup jabber
-	enewuser ejabberd -1 /bin/false /var/run/ejabberd jabber
+	enewuser ejabberd -1 -1 /var/run/ejabberd jabber
 
 	make DESTDIR=${D} install || die "install failed"
 
@@ -50,14 +50,15 @@ src_install() {
 	# Database
 	dodir /var/spool/ejabberd
 	fowners ejabberd:jabber /var/spool/ejabberd
+	fperms 700 /var/spool/ejabberd
 
 	# Home
 	dodir /var/run/ejabberd
-	fowners ejabber:jabber /var/run/ejabberd
+	fowners ejabberd:jabber /var/run/ejabberd
 
 	# Logs
 	dodir /var/log/ejabberd
-	fowners ejabber:jabber /var/log/ejabberd
+	fowners ejabberd:jabber /var/log/ejabberd
 
 	cd ..
 	dodoc doc/*.tex
@@ -69,6 +70,10 @@ src_install() {
 
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/ejabberd-0.7.5.initd ejabberd
+	if use ssl ; then
+		exeinto /etc/ejabberd
+		doexe ${FILESDIR}/self-cert.sh
+	fi
 
 	insinto /etc/conf.d
 	newins ${FILESDIR}/ejabberd-0.7.5.confd ejabberd
@@ -86,5 +91,10 @@ pkg_postinst() {
 		einfo "A sample configuration file has been installed in /etc/ejabberd/ejabberd.cfg.example."
 		einfo "Please copy it to /etc/ejabberd/ejabberd.cfg and edit it according to your needs."
 		einfo "For configuration instructions, please see /usr/share/doc/${P}/html/guide.html"
+	fi
+	if use ssl ; then
+		einfo "A script to generate a ssl key has been installed in"
+		einfo "/etc/ejabberd/self-cert.sh . Use it and change the config file to"
+		einfo "point to the full path"
 	fi
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/monotone-0.18.ebuild,v 1.1 2005/04/21 09:35:43 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/monotone-0.18.ebuild,v 1.1.1.1 2005/11/30 10:05:00 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,13 +10,12 @@ SRC_URI="http://www.venge.net/monotone/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="${PV}"
-KEYWORDS="x86 amd64 ~ppc"
-#KEYWORDS ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64"
+KEYWORDS="x86 amd64 ppc"
 
 IUSE="nls doc"
 
-RDEPEND=">=dev-libs/boost-1.31.0
-	dev-libs/popt"
+RDEPEND=">=dev-libs/boost-1.32.0"
+
 DEPEND="${RDEPEND}
 	>=sys-devel/gcc-3.2
 	sys-devel/gettext"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.0-r13.ebuild,v 1.1 2005/02/12 12:24:13 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.0-r13.ebuild,v 1.1.1.1 2005/11/30 10:05:55 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -11,21 +11,23 @@ SRC_URI="http://www.ibiblio.org/pub/Linux/utils/file/managers/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="gpm nls samba ncurses X slang unicode"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
+IUSE="X gpm ncurses nls pam samba slang unicode"
 
 PROVIDE="virtual/editor"
 
-DEPEND=">=sys-fs/e2fsprogs-1.19
+RDEPEND=">=sys-fs/e2fsprogs-1.19
 	ncurses? ( >=sys-libs/ncurses-5.2-r5 )
 	=dev-libs/glib-2*
-	dev-util/pkgconfig
 	pam? ( >=sys-libs/pam-0.72 )
 	gpm? ( >=sys-libs/gpm-1.19.3 )
 	slang? ( >=sys-libs/slang-1.4.9-r1 )
 	samba? ( >=net-fs/samba-3.0.0 )
 	unicode? ( >=sys-libs/slang-1.4.9-r1 )
 	X? ( virtual/x11 )"
+
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -41,6 +43,8 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-ftp.patch
 	epatch ${FILESDIR}/${P}-largefile.patch
 	epatch ${FILESDIR}/${P}-key.c.patch
+	# Fix building with gcc4.
+	epatch ${FILESDIR}/${P}-gcc4.patch
 
 	if use unicode && use slang; then
 		epatch ${FILESDIR}/${P}-utf8.patch.bz2

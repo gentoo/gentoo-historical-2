@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pastemecli/pastemecli-0.8.ebuild,v 1.1 2004/11/30 04:45:12 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pastemecli/pastemecli-0.8.ebuild,v 1.1.1.1 2005/11/30 10:06:09 chriswhite Exp $
 
 DESCRIPTION="Pasteme.COM Command-Line-Client"
 HOMEPAGE="http://www.topfx.com"
@@ -8,7 +8,7 @@ SRC_URI="http://www.topfx.com/dist/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~alpha"
 IUSE=""
 
 src_install() {

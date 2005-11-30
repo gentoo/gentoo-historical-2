@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/monotone-0.23-r1.ebuild,v 1.1 2005/10/17 19:36:25 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/monotone-0.23-r1.ebuild,v 1.1.1.1 2005/11/30 10:05:00 chriswhite Exp $
 
 inherit elisp-common flag-o-matic
 

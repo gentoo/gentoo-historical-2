@@ -1,16 +1,10 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.11.17.ebuild,v 1.1 2004/06/09 17:56:52 scandium Exp $
-
-inherit eutils flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.11.17.ebuild,v 1.1.1.1 2005/11/30 10:04:59 chriswhite Exp $
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
 HOMEPAGE="http://www.cvshome.org/"
 
-# scandium@gentoo.org (9th June 2004)
-# Recently, upstream changed the directory structure for the files.
-# The directory numbers in the middle differ for every release/file, so
-# unfortunatly they have to be corrected with every new release.
 SRC_URI="http://ccvs.cvshome.org/files/documents/19/191/${P}.tar.bz2
 	doc? ( http://ccvs.cvshome.org/files/documents/19/199/cederqvist-${PV}.html.tar.bz2
 		http://ccvs.cvshome.org/files/documents/19/197/cederqvist-${PV}.pdf
@@ -18,17 +12,14 @@ SRC_URI="http://ccvs.cvshome.org/files/documents/19/191/${P}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390"
 
 IUSE="doc emacs"
 
-DEPEND="virtual/glibc
-	>=sys-libs/ncurses-5.1
+DEPEND="virtual/libc
 	>=sys-libs/zlib-1.1.4"
 
 src_compile() {
-	use alpha && append-flags -fPIC
-
 	econf --with-tmpdir=/tmp || die
 	emake || die "emake failed"
 }
@@ -41,6 +32,7 @@ src_install() {
 
 	dodoc BUGS ChangeLog* DEVEL* FAQ HACKING \
 		MINOR* NEWS PROJECTS README* TESTS TODO
+
 	if use emacs; then
 		insinto /usr/share/emacs/site-lisp
 		doins cvs-format.el || die "doins failed"
@@ -54,4 +46,8 @@ src_install() {
 		cd ${D}/usr/share/doc/${PF}/html/
 		ln -s cvs.html index.html
 	fi
+}
+
+src_test() {
+	einfo "FEATURES=\"maketest\" has been disabled for dev-util/cvs"
 }

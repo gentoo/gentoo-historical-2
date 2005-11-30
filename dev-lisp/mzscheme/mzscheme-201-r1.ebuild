@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/mzscheme/mzscheme-201-r1.ebuild,v 1.1 2003/07/19 06:38:08 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/mzscheme/mzscheme-201-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:21 chriswhite Exp $
 
 IUSE=""
 
@@ -12,7 +12,7 @@ DEPEND=">=sys-devel/gcc-2.95.3-r7"
 #RDEPEND=""
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 src_compile() {
 	cd ${S}/src

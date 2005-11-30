@@ -1,13 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: jim nutt <jim@nuttz.org>
-# $Header: /var/cvsroot/gentoo-x86/app-text/rman/rman-3.0.9.ebuild,v 1.1 2002/02/03 02:23:43 blocke Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/rman/rman-3.0.9.ebuild,v 1.1.1.1 2005/11/30 10:06:48 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="PolyGlotMan man page translator AKA RosettaMan"
-A=rman.tar.gz
-SRC_URI="http://polyglotman.sourceforge.net/${A}"
+SRC_URI="http://polyglotman.sourceforge.net/${PN}.tar.gz"
 HOMEPAGE="http://polyglotman.sourceforge.net/"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
+SLOT="0"
+LICENSE="Artistic"
 
 DEPEND=""
 

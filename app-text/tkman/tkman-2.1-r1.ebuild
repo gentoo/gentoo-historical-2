@@ -1,14 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tkman/tkman-2.1-r1.ebuild,v 1.1 2003/04/23 17:15:56 utx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tkman/tkman-2.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:24 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="TkMan man and info page browser"
-SRC_URI="http://tkman.sourceforge.net/${PN}.tar.gz"
 HOMEPAGE="http://tkman.sourceforge.net/"
-KEYWORDS="x86 ~ppc sparc "
-SLOT="0"
+SRC_URI="http://tkman.sourceforge.net/${PN}.tar.gz"
+
 LICENSE="Artistic"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
 
 DEPEND=">=app-text/rman-3.0.9
 	>=dev-lang/tcl-8.3.3
@@ -17,14 +20,19 @@ DEPEND=">=app-text/rman-3.0.9
 src_unpack() {
 	unpack ${A}
 	cd ${WORKDIR}
-	patch -p0 <${FILESDIR}/${PF}-gentoo.diff || die
+	epatch ${FILESDIR}/${PF}-gentoo.diff
+
+	# A workaround until app-text/rman-3.1 is stable
+	has_version '>=sys-apps/groff-1.18' \
+		has_version '<app-text/rman-3.1' \
+		&& sed -i -e "s:groff -te -Tlatin1:groff -P -c -te -Tlatin1:" ${S}/Makefile
 }
 
 src_compile() {
 	emake || die
 }
 
-src_install () {
-	dobin ${PN}
+src_install() {
+	dobin ${PN} || die
 	dobin re${PN}
 }

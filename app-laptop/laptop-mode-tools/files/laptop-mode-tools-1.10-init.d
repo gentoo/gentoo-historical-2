@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/laptop-mode-tools/files/laptop-mode-tools-1.10-init.d,v 1.1 2005/08/17 13:59:41 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/laptop-mode-tools/files/laptop-mode-tools-1.10-init.d,v 1.1.1.1 2005/11/30 10:05:38 chriswhite Exp $
 
 checkconfig() {
     if [ ! -f /proc/sys/vm/laptop_mode ]; then

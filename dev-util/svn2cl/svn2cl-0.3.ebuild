@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/svn2cl/svn2cl-0.3.ebuild,v 1.1 2005/10/03 12:49:55 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/svn2cl/svn2cl-0.3.ebuild,v 1.1.1.1 2005/11/30 10:05:22 chriswhite Exp $
 
 inherit eutils
 

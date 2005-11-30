@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/libctl/libctl-2.2.ebuild,v 1.1 2004/12/28 21:18:08 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/libctl/libctl-2.2.ebuild,v 1.1.1.1 2005/11/30 10:09:24 chriswhite Exp $
 
 
 DESCRIPTION="Guile-based library implementing flexible control files for scientific simulations"

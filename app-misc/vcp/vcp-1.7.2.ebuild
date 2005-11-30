@@ -1,28 +1,28 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/vcp/vcp-1.7.2.ebuild,v 1.1 2004/05/07 05:18:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/vcp/vcp-1.7.2.ebuild,v 1.1.1.1 2005/11/30 10:06:11 chriswhite Exp $
 
-inherit flag-o-matic gcc
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="copy files/directories in a curses interface"
-HOMEPAGE="http://members.optusnet.com.au/~dbbryan/vcp/"
-SRC_URI="http://members.optusnet.com.au/~dbbryan/vcp/${P}.tar.gz"
+HOMEPAGE="http://members.iinet.net.au/~lynx/vcp/"
+SRC_URI="http://members.iinet.net.au/~lynx/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64"
+KEYWORDS="x86 amd64 ppc"
 IUSE=""
 
 DEPEND="sys-libs/ncurses"
 
 src_compile() {
 	filter-lfs-flags
-	emake CC="$(gcc-getCC)" || die "emake failed"
+	emake CC="$(tc-getCC)" || die "emake failed"
 }
 
 src_install() {
-	dobin vcp || die
-	doman vcp.1
+	dobin vcp || die "dobin failed"
+	doman vcp.1 || die "doman failed"
 	insinto /etc
-	newins vcp.conf.sample vcp.conf
+	newins vcp.conf.sample vcp.conf || die "newins failed"
 }

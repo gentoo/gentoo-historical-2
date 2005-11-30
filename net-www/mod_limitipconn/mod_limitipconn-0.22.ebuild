@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_limitipconn/mod_limitipconn-0.22.ebuild,v 1.1 2004/04/04 03:29:20 zul Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_limitipconn/mod_limitipconn-0.22.ebuild,v 1.1.1.1 2005/11/30 10:07:48 chriswhite Exp $
 
 DESCRIPTION="Allows administrators to limit the number of simultaneous downloads permitted"
 SRC_URI="http://dominia.org/djao/limit/${P}.tar.gz"
 HOMEPAGE="http://dominia.org/djao/limitipconn.html"
 
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 SLOT="0"
 LICENSE="as-is"
 IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	=net-www/apache-2*"
 RDEPEND=""
 

@@ -7,7 +7,7 @@
 ;;;; Programmer:    Kevin M. Rosenberg
 ;;;; Date Started:  Sep 2002
 ;;;;
-;;;; $Id: rt.asd,v 1.1 2003/06/10 04:53:04 mkennedy Exp $
+;;;; $Id: rt.asd,v 1.1.1.1 2005/11/30 10:08:29 chriswhite Exp $
 ;;;;
 ;;;; This file, part of cl-rt, is Copyright (c) 2002 by Kevin M. Rosenberg
 ;;;;

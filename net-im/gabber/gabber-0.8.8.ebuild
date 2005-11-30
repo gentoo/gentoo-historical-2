@@ -1,35 +1,38 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gabber/gabber-0.8.8.ebuild,v 1.1 2003/06/02 10:57:58 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gabber/gabber-0.8.8.ebuild,v 1.1.1.1 2005/11/30 10:09:34 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
-S=${WORKDIR}/${P}
 DESCRIPTION="The GNOME Jabber Client"
 SRC_URI="mirror://sourceforge/gabber/${P}.tar.gz"
 HOMEPAGE="http://gabber.sourceforge.net"
 
-IUSE="ssl crypt xmms"
+IUSE="ssl crypt xmms nls ipv6"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha ~amd64 ppc sparc x86"
 
 RDEPEND=">=gnome-base/gnome-libs-1.4.1.7
-	<gnome-base/libglade-2.0.0 
-	>=gnome-extra/gal-0.19
-	>=gnome-extra/gnomemm-1.2.2
-	<x11-libs/gtkmm-1.3.0
+	<gnome-base/libglade-2.0.0
+	<gnome-extra/gal-1.99
+	>=dev-cpp/gnomemm-1.2.2
+	<dev-cpp/gtkmm-1.3.0
 	ssl? ( >=dev-libs/openssl-0.9.6 )
 	crypt? ( >=app-crypt/gnupg-1.0.5 )
-	xmms? ( >=media-sound/xmms-1.2.7* )"
+	xmms? ( >=media-sound/xmms-1.2.7 )"
 
-DEPEND="${RDEPEND} 
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4
 	nls? ( sys-devel/gettext )"
 
 src_unpack() {
 	unpack ${A}
+
 	cd ${S}/omf-install
 	sed -i -e "s/-scrollkeeper-update.*//" Makefile.in
+
+	cd ${S}; epatch ${FILESDIR}/${P}-gcc.patch
 }
 
 src_compile() {
@@ -37,18 +40,19 @@ src_compile() {
 
 	CFLAGS="${CFLAGS} -I/usr/include"
 
-	local myconf
+	local myconf=
 
 	use ssl \
 		&& myconf="${myconf} --with-ssl-dir=/usr" \
 		|| myconf="${myconf} --disable-ssl"
 
-	# ipv6 not enabled because it doesn't work for this release - liquidx
+	# For some reason use_enable was always enabling.  rizzo.
+	use ipv6 && myconf="${myconf} --enable-ipv6"
 
 	econf ${myconf} \
 		`use_enable xmms` \
 		`use_enable nls` || die "configure failed"
-		
+
 	emake || die "make failed"
 }
 

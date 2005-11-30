@@ -1,9 +1,480 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/catalyst/ChangeLog,v 1.1 2004/02/17 21:41:28 zhen Exp $
+# ChangeLog for dev-util/catalyst
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/catalyst/ChangeLog,v 1.1.1.1 2005/11/30 10:05:24 chriswhite Exp $
+
+*catalyst-2.0_pre20051118 (18 Nov 2005)
+
+  18 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/catalyst-2.0_pre20051115-slot.patch,
+  +files/catalyst-2.0_pre20051118-slot.patch,
+  -catalyst-2.0_pre20051115.ebuild, +catalyst-2.0_pre20051118.ebuild:
+  Updated to latest pre-version, to resolve all remaining open bugs with
+  catalyst. This also fixes the nasty problems with x86/amd64 CD building.
+
+*catalyst-2.0_pre20051115 (15 Nov 2005)
+
+  15 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/catalyst-2.0_pre20051111-slot.patch,
+  +files/catalyst-2.0_pre20051115-slot.patch,
+  -catalyst-2.0_pre20051111.ebuild, +catalyst-2.0_pre20051115.ebuild:
+  Version bumped to 2.0_pre20051115 to fix a nasty livecd-stage2 bug when not
+  using seedcache and also enabled proper livecd/readme support.
+
+*catalyst-2.0_pre20051111 (11 Nov 2005)
+
+  11 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/catalyst-2.0_pre20051111-slot.patch,
+  +catalyst-2.0_pre20051111.ebuild:
+  Added catalyst 2.0_pre20051111. This is the first catalyst 2.0 pre-release
+  version available to the public, so please test it thoroughly.
+
+*catalyst-1.1.10.10 (29 Jul 2005)
+
+  29 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.9.ebuild, +catalyst-1.1.10.10.ebuild:
+  Version bump to fix critical PPC bug.
+
+*catalyst-1.1.10.9 (28 Jul 2005)
+
+  28 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.8.ebuild, +catalyst-1.1.10.9.ebuild:
+  Version bumped to include newer Getting_Online.txt and also to fix some
+  issues with building Pegasos kernels.
+
+*catalyst-1.1.10.8 (27 Jul 2005)
+
+  27 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.7.ebuild, +catalyst-1.1.10.8.ebuild:
+  Version bumped to add a Getting_Online.txt document for minimal installation
+  CD images.
+
+*catalyst-1.1.10.7 (26 Jul 2005)
+
+  26 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.6.ebuild, +catalyst-1.1.10.7.ebuild:
+  Version bumped to remove locales from official media to produce smaller
+  release media.
+
+*catalyst-1.1.10.6 (21 Jul 2005)
+
+  21 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.5.ebuild, +catalyst-1.1.10.6.ebuild:
+  Version bumped to build smaller stage1 and stage2 tarballs and also to
+  resolve a ccache error in livecd-stage2.
+
+*catalyst-1.1.10.5 (18 Jul 2005)
+
+  18 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.4.ebuild, +catalyst-1.1.10.5.ebuild:
+  Version bump to fix minor livecd issues and to fix ia64 livecd-stage2.
+
+*catalyst-1.1.10.4 (12 Jul 2005)
+
+  12 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.3.ebuild, +catalyst-1.1.10.4.ebuild:
+  Version bumped to fix critical bug in new postconf code.
+
+*catalyst-1.1.10.3 (12 Jul 2005)
+
+  12 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.2.ebuild, +catalyst-1.1.10.3.ebuild:
+  Version bumped to fix alsasound init script issue, remove postconf, and
+  update isolinux cdtar to 3.09 for x86/amd64.
+
+*catalyst-1.1.10.2 (12 Jul 2005)
+
+  12 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.1.ebuild, +catalyst-1.1.10.2.ebuild:
+  Version bumped to fix building on ia64.
+
+  08 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  catalyst-1.1.10.1.ebuild:
+  Fixing RDEPEND for mips.
+
+  08 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/digest-catalyst-1.1.10.1:
+  Fixing digest.
+
+  08 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  catalyst-1.1.10.1.ebuild:
+  Fixing being all masked.
+
+*catalyst-1.1.10.1 (08 Jul 2005)
+
+  08 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10.ebuild, +catalyst-1.1.10.1.ebuild:
+  Version bumped to 1.1.10.1 to fix a bug with auto-starting X on generic
+  LiveCD and GameCD builds.
+
+  08 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/digest-catalyst-1.1.10:
+  Re-rolled catalyst tarball and fixing digest.
+
+*catalyst-1.1.10 (08 Jul 2005)
+
+  08 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.9.ebuild, -catalyst-1.1.10_pre18.ebuild,
+  +catalyst-1.1.10.ebuild:
+  Version bumped to catalyst 1.1.10 and removing all previous versions. This
+  is the last catalyst 1.x release other than bugfix releases. I'd like to
+  thank everyone for the success of catalyst and hope you all enjoy catalyst
+  2.0 when it is released.
+
+*catalyst-1.1.10_pre18 (06 Jul 2005)
+
+  06 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre17.ebuild, +catalyst-1.1.10_pre18.ebuild:
+  Version bump and fixing a very nasty bug in _pre17 where stage1 would always
+  fail.
+
+*catalyst-1.1.10_pre17 (05 Jul 2005)
+
+  05 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre16.ebuild, +catalyst-1.1.10_pre17.ebuild:
+  Version bump.  Added initial IA64 support.  Closing bug #97867.
+
+*catalyst-1.1.10_pre16 (01 Jul 2005)
+
+  01 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre15.ebuild, +catalyst-1.1.10_pre16.ebuild:
+  Version bump to remove livecd/bootargs bug.
+
+*catalyst-1.1.10_pre15 (01 Jul 2005)
+
+  01 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre14.ebuild, +catalyst-1.1.10_pre15.ebuild:
+  Version bump.
+
+*catalyst-1.1.10_pre14 (29 Jun 2005)
+
+  29 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre13.ebuild, +catalyst-1.1.10_pre14.ebuild:
+  Version bump to add livecd/bootargs support.
+
+*catalyst-1.1.10_pre13 (28 Jun 2005)
+
+  28 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre12.ebuild, +catalyst-1.1.10_pre13.ebuild:
+  Version bump.
+
+*catalyst-1.1.10_pre12 (24 Jun 2005)
+
+  24 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre11.ebuild, +catalyst-1.1.10_pre12.ebuild:
+  Version bump.
+
+*catalyst-1.1.10_pre11 (22 Jun 2005)
+
+  22 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre10.ebuild, +catalyst-1.1.10_pre11.ebuild:
+  Version bump.
+
+*catalyst-1.1.10_pre10 (21 Jun 2005)
+
+  21 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre9.ebuild, +catalyst-1.1.10_pre10.ebuild:
+  Version bumped to fix boot issue on alpha, hppa, and sparc.
+
+*catalyst-1.1.10_pre9 (20 Jun 2005)
+
+  20 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre8.ebuild, +catalyst-1.1.10_pre9.ebuild:
+  Version bumped to catalyst 1.1.10_pre9 to fix boot issue with PPC.
+
+  16 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  catalyst-1.1.10_pre8.ebuild:
+  Removed isogen lines since we've dropped it from the package in CVS.
+
+*catalyst-1.1.10_pre8 (15 Jun 2005)
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre7.ebuild, +catalyst-1.1.10_pre8.ebuild:
+  Version bumped to new catalyst version and fixing tar/star issues reported
+  on gentoo-catalyst.
+
+*catalyst-1.1.10_pre7 (14 Jun 2005)
+
+  14 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre6.ebuild, +catalyst-1.1.10_pre7.ebuild:
+  Version bumped to 1.1.10_pre7.
+
+*catalyst-1.1.10_pre6 (14 Jun 2005)
+
+  14 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre5.ebuild, +catalyst-1.1.10_pre6.ebuild:
+  Updated to catalyst 1.1.10_pre6 and closing bug #95819.
+
+*catalyst-1.1.10_pre5 (10 Jun 2005)
+
+  10 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre4.ebuild, +catalyst-1.1.10_pre5.ebuild:
+  Version bumped to new 1.1.10_pre5 for testing.
+
+*catalyst-1.1.10_pre4 (09 Jun 2005)
+
+  09 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre3.ebuild, +catalyst-1.1.10_pre4.ebuild:
+  Updated to catalyst 1.1.10_pre4
+
+*catalyst-1.1.10_pre3 (03 Jun 2005)
+
+  03 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre2.ebuild, +catalyst-1.1.10_pre3.ebuild:
+  Version bumped to _pre3.
+
+*catalyst-1.1.10_pre2 (02 Jun 2005)
+
+  02 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.10_pre1.ebuild, +catalyst-1.1.10_pre2.ebuild:
+  Version bumped to _pre2.
+
+  01 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> catalyst-1.1.9.ebuild:
+  Added mips check on squashfs-tools.
+
+*catalyst-1.1.10_pre1 (01 Jun 2005)
+
+  01 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.1.ebuild, -catalyst-1.1.8.ebuild, catalyst-1.1.9.ebuild,
+  +catalyst-1.1.10_pre1.ebuild:
+  Cleaning up older versions, adding first testing version, and moving
+  catalyst 1.1.9 to stable.
+
+  29 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> catalyst-1.1.8.ebuild:
+  Stable on alpha. commit
+
+*catalyst-1.1.9 (15 Apr 2005)
+
+  15 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +catalyst-1.1.9.ebuild:
+  Version bumped to catalyst 1.1.9 and closing bug #77342, #84156, #72522,
+  #88426, and #88943.
+
+  01 Apr 2005; Lars Weiler <pylon@gentoo.org> catalyst-1.1.8.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> catalyst-1.1.8.ebuild:
+  Stable on amd64, sparc and x86
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> catalyst-1.1.8.ebuild:
+  stable on ia64
+
+*catalyst-1.1.8 (24 Mar 2005)
+
+  24 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.7.ebuild, +catalyst-1.1.8.ebuild:
+  Version bumped to 1.1.8 to resolve problems with livecd-stage1 and also to
+  do a few cleanups. Check the package's ChangeLog in /usr/share/doc for a
+  complete listing of changes.
+
+*catalyst-1.1.7 (09 Mar 2005)
+
+  09 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.6.ebuild, +catalyst-1.1.7.ebuild:
+  Version bumped to 1.1.7 and cleaning up older ebuilds.
+
+*catalyst-1.1.6 (03 Mar 2005)
+
+  03 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.5.ebuild, +catalyst-1.1.6.ebuild:
+  Version bumped to 1.1.6 and removing 1.1.5 ebuild.
+
+  24 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org> catalyst-1.1.1.ebuild,
+  catalyst-1.1.5.ebuild:
+  Removed extranneous genkernel dependency.
+
+  24 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml:
+  Updated metadata.
+
+  12 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org> catalyst-1.1.1.ebuild,
+  catalyst-1.1.5.ebuild:
+  Changed RDEPEND from app-cdr/cdrtools to virtual/cdrtools.
+
+*catalyst-1.1.5 (29 Jan 2005)
+
+  29 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.4.ebuild, +catalyst-1.1.5.ebuild:
+  Updated to latest version to fix gconfd-2/acpi bugs.
+
+  29 Jan 2005; Markus Rothe <corsair@gentoo.org> catalyst-1.1.4.ebuild:
+  Stable on ppc64
+
+  29 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org> :
+  Updated version info.
+
+*catalyst-1.1.4 (29 Jan 2005)
+
+  29 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.1.0.ebuild, -catalyst-1.1.2.ebuild, -catalyst-1.1.3.ebuild,
+  +catalyst-1.1.4.ebuild:
+  Version bumped to latest version.
+
+*catalyst-1.1.3 (26 Jan 2005)
+
+  26 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +catalyst-1.1.3.ebuild:
+  Updated to latest version. This should be used for the 2005.0 release, as it
+  includes some stage1 fixes, along with a fix for using package.use properly.
+
+  15 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org> catalyst-1.1.2.ebuild:
+  Fixed S so files are actually installed now and added some error checking.
+
+*catalyst-1.1.2 (14 Jan 2005)
+
+  14 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -catalyst-1.0.8.1-r1.ebuild, -catalyst-1.0.8.1.ebuild,
+  -catalyst-1.0.9.ebuild, +catalyst-1.1.2.ebuild:
+  ...and God looked down upon Catalyst 1.1.2, and He saw that it was good.
+  This closes bugs #73556, #76530, #70663, #70518, #76146, #70425, #68307,
+  #77480, #76542, #66592, and #75336.
+
+  07 Jan 2005; Markus Rothe <corsair@gentoo.org> catalyst-1.1.1.ebuild:
+  Stable on ppc64
+
+  06 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> catalyst-1.1.1.ebuild:
+  Stable on alpha.
+
+  07 Dec 2004; Chris Gianelloni <wolf31o2@gentoo.org> catalyst-1.1.1.ebuild:
+  Marking stable on x86 and amd64.
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> catalyst-1.1.1.ebuild:
+  Stable on sparc
+
+*catalyst-1.1.1 (28 Oct 2004)
+
+  28 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org> catalyst-1.1.0.ebuild,
+  +catalyst-1.1.1.ebuild:
+  Fixing 1.1.0 ebuild trying to install files from livecd/kconfig, which no
+  longer exists and adding new catalyst version 1.1.1, which is a minor bugfix
+  release.
+
+*catalyst-1.1.0 (22 Oct 2004)
+
+  22 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +catalyst-1.1.0.ebuild:
+  Catalyst 1.1.0! See ChangeLog from package for massive changes since 1.0.9
+  was released.
+
+*catalyst-1.0.9 (26 Sep 2004)
+
+  26 Sep 2004; John Davis <zhen@gentoo.org> catalyst-1.0.9.ebuild:
+  bumping 1.0.9 to stable on x86
+
+  03 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> catalyst-1.0.8.1.ebuild:
+  Stable on sparc, we lack a stable, we want a stable
+
+  16 Aug 2004; John Davis <zhen@gentoo.org> catalyst-1.0.8.1.ebuild:
+  marking unstable for s390 since the dep on genkernel cannot be met
+
+  16 Aug 2004; John Davis <zhen@gentoo.org> catalyst-1.0.8.1.ebuild:
+  marking unstable for arm since the dep of >=genkernel-3.0.2b cannot be met
+
+  13 Aug 2004; John Davis <zhen@gentoo.org> catalyst-1.0.8.1.ebuild:
+  catalyst-1.9.0 initial commit
+
+*catalyst-1.0.8.1-r1 (29 Jul 2004)
+
+  29 Jul 2004; Mike Frysinger <vapier@gentoo.org> +catalyst-1.0.8.1-r1.ebuild:
+  Add a patch to support stacked profiles.
+
+  18 Jul 2004; Tom Gall <tgall@gentoo.org> catalyst-1.0.8.1.ebuild:
+  stable on ppc64, bug #57487
+
+  16 Jul 2004; Guy Martin <gmsoft@gentoo.org> catalyst-1.0.8.1.ebuild:
+  Marked stable on hppa.
+
+  02 Jul 2004; John Davis <zhen@gentoo.org> catalyst-1.0.8.1.ebuild:
+  bumping to stable
+
+  19 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> catalyst-1.0.8.1.ebuild:
+  Keyworded ~sparc, looking good
+
+*catalyst-1.0.8.1 (13 Jun 2004)
+
+  13 Jun 2004; John Davis <zhen@gentoo.org> catalyst-1.0.8.1.ebuild:
+  adding version 1.0.8.1. Please read the ChangeLog
+
+  04 Jun 2004; Daniel Black <dragonheart@gentoo.org> catalyst-1.0.7.ebuild,
+  catalyst-1.0.8.ebuild:
+  sys-apps/squashfs-tools dependancy moved to sys-fs/squashfs-tools
+
+  27 May 2004; Travis Tilley <lv@gentoo.org> catalyst-1.0.8.ebuild:
+  added ~amd64 keyword
+
+  22 May 2004; John Davis <zhen@gentoo.org> catalyst-1.0.7.ebuild,
+  catalyst-1.0.8.ebuild:
+  replacing the keywords that I clobbered
+
+*catalyst-1.0.8 (22 May 2004)
+
+  22 May 2004; John Davis <zhen@gentoo.org> catalyst-1.0.4.ebuild,
+  catalyst-1.0.5.1.ebuild, catalyst-1.0.5.ebuild, catalyst-1.0.6.ebuild,
+  catalyst-1.0.8.ebuild, metadata.xml:
+  cleanup and addition of 1.0.8, version bump
+
+  12 May 2004; Michael McCabe <randy@gentoo.org> catalyst-1.0.7.ebuild:
+  Added s390 keywords
+
+  27 Apr 2004; John Davis <zhen@gentoo.org> catalyst-1.0.7.ebuild:
+  bumping to stable
+
+*catalyst-1.0.7 (26 Apr 2004)
+
+  26 Apr 2004; John Davis <zhen@gentoo.org> catalyst-1.0.7.ebuild:
+  adding in 1.0.7
+
+*catalyst-1.0.6 (12 Apr 2004)
+
+  12 Apr 2004; John Davis <zhen@gentoo.org> catalyst-1.0.6.ebuild:
+  here we go - 1.0.6, many bash backend changes
+
+*catalyst-1.0.5.1 (08 Apr 2004)
+
+  08 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> catalyst-1.0.5.1.ebuild:
+  Stable on sparc
+
+  04 Apr 2004; John Davis <zhen@gentoo.org> :
+  release of 1.0.5.1, fixes /dev issue in stages, as well as a modules.conf fix
+
+*catalyst-1.0.5 (01 Apr 2004)
+
+  01 Apr 2004; John Davis <zhen@gentoo.org> catalyst-1.0.2.ebuild,
+  catalyst-1.0.3.ebuild, catalyst-1.0.5.ebuild, metadata.xml:
+  cleaning up old files
+
+  01 Apr 2004; John Davis <zhen@gentoo.org> :
+  1.0.5 released
+
+*catalyst-1.0.4 (05 Mar 2004)
+
+  05 Mar 2004; John Davis <zhen@gentoo.org> catalyst-1.0.4.ebuild:
+  version bump - bug where catalyst.conf was in the wrong location
+
+*catalyst-1.0.3 (04 Mar 2004)
+
+  04 Mar 2004; John Davis <zhen@gentoo.org> catalyst-1.0.1-r1.ebuild,
+  catalyst-1.0.1.ebuild, catalyst-1.0.3.ebuild, catalyst-1.0.ebuild:
+  version bump, fix bug #43607
+
+*catalyst-1.0.2 (27 Feb 2004)
+
+  01 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Clean up install steps to be more Gentoo like.
+
+  27 Feb 2004; John Davis <zhen@gentoo.org> catalyst-1.0.2.ebuild:
+  commit 1.0.2 to stable, grp bugfix, added a doc use flag to enable examples
+  installation
+
+*catalyst-1.0.1-r1 (19 Feb 2004)
+
+  19 Feb 2004; John Davis <zhen@gentoo.org> catalyst-1.0.1-r1.ebuild:
+  fix for bug #42173
+
+*catalyst-1.0.1 (18 Feb 2004)
+
+  18 Feb 2004; John Davis <zhen@gentoo.org> catalyst-1.0.1.ebuild:
+  version bump to fix bug #42044
 
 *catalyst-1.0 (17 Feb 2004)
 
   17 Feb 2004; John Davis <zhen@gentoo.org> catalyst-1.0.ebuild:
   initial import
-

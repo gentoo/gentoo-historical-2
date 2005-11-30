@@ -1,6 +1,128 @@
 # ChangeLog for gnome-base/orbit
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/ChangeLog,v 1.1 2004/08/21 14:47:37 obz Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/orbit/ChangeLog,v 1.1.1.1 2005/11/30 10:09:00 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> orbit-2.12.3.ebuild:
+  Mark 2.12.3 stable on alpha
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> orbit-2.12.3.ebuild:
+  Stable on ppc.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> orbit-2.12.3.ebuild:
+  Mark 2.12.3 stable on ia64
+
+  30 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> orbit-2.12.3.ebuild:
+  Stable on sparc
+
+  29 Sep 2005; John N. Laliberte <allanonjl@gentoo.org> orbit-2.12.3.ebuild:
+  stable on x86
+
+*orbit-2.12.4 (11 Sep 2005)
+
+  11 Sep 2005; Stefan Jones <cretin@gentoo.org> +orbit-2.12.4.ebuild:
+  Added orbit-2.12.4 for gnome-vfs-2.12.0
+
+*orbit-2.12.3 (16 Aug 2005)
+
+  16 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> +orbit-2.12.3.ebuild:
+  New version. Added 'static' USE flag.
+
+  31 Jul 2005; John N. Laliberte <allanonjl@gentoo.org> orbit-2.12.0.ebuild:
+  Add back indent for 2.12.0 only, this version still needs it.
+
+  30 Jul 2005; John N. Laliberte <allanonjl@gentoo.org> orbit-2.12.0.ebuild,
+  orbit-2.12.1.ebuild, orbit-2.12.2.ebuild:
+  remove indent from deps since its no longer needed ( in 2.12 ).  fixes #100796
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org> orbit-2.12.1.ebuild,
+  orbit-2.12.2.ebuild:
+  stable on mips
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> orbit-2.12.2.ebuild:
+  Stable on alpha.
+
+  13 Jun 2005; Markus Rothe <corsair@gentoo.org> orbit-2.12.2.ebuild:
+  Stable on ppc64
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> orbit-2.12.2.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org> orbit-2.12.2.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> orbit-2.12.2.ebuild:
+  Stable on sparc
+
+  04 Jun 2005; Leonardo Boshell <joem@gentoo.org> orbit-2.12.2.ebuild:
+  Stable on x86.
+
+  11 May 2005; Guy Martin <gmsoft@gentoo.org> orbit-2.12.1.ebuild:
+  Stable on hppa.
+
+  10 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> orbit-2.12.1.ebuild:
+  Stable on sparc
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> orbit-2.12.1.ebuild:
+  Stable on amd64.
+
+  28 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> orbit-2.12.1.ebuild:
+  Stable on alpha + ia64.
+
+*orbit-2.12.1 (25 Apr 2005)
+
+  25 Apr 2005; Mike Gardiner <obz@gentoo.org> orbit-2.12.1.ebuild:
+  Keyworded ppc x86
+
+  19 Apr 2005; Herbie Hopkins <herbs@gentoo.org> orbit-0.5.17.ebuild:
+  Fixed multilib-strict issue, bug #88549
+
+*orbit-2.12.2 (17 Apr 2005)
+
+  17 Apr 2005; Joe McCann <joem@gentoo.org> +orbit-2.12.2.ebuild:
+  bugfix release
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> orbit-2.12.0.ebuild:
+  stable on mips
+
+  17 Feb 2005; Joe McCann <joem@gentoo.org> :
+  gnome-2.8.3 bugfix release
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> orbit-2.12.0.ebuild:
+  Stable on amd64.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> orbit-2.12.0.ebuild:
+  Stable on hppa.
+
+  11 Dec 2004; Joe McCann <joem@gentoo.org> orbit-2.12.0.ebuild:
+  Bumping libIDL dep, see bug #73521
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> orbit-2.12.0.ebuild:
+  Stable on alpha.
+
+  11 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> orbit-2.12.0.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Mike Gardiner <obz@gentoo.org> orbit-2.12.0.ebuild:
+  Keyworded ppc for GNOME 2.8
+
+*orbit-0.5.17 (05 Nov 2004)
+
+  05 Nov 2004; Mike Gardiner <obz@gentoo.org> orbit-0.5.17.ebuild:
+  nls is not optional, and cannot be disabled in orbit-0.5.17, made the
+  dependency on gettext permanent and fixed. see bug #69473
+
+*orbit-2.10.3 (01 Oct 2004)
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org> orbit-2.10.3.ebuild:
+  stable on mips
+
+*orbit-2.12.0 (14 Sep 2004)
+
+  14 Sep 2004; foser <foser@gentoo.org> orbit-2.12.0.ebuild :
+  Gnome 2.8 release
+
+  24 Aug 2004; foser <foser@gentoo.org> files/libIDLConf.sh-gentoo.diff files/orbit2-alignment_fix.patch :
+  Re-add missing orbit{1,2} patches, remove redundant libc deps
 
 *orbit-2.10.4 (21 Aug 2004)
 

@@ -1,8 +1,19 @@
 # ChangeLog for app-text/remem
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-text/remem/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/remem/ChangeLog,v 1.1.1.1 2005/11/30 10:06:54 chriswhite Exp $
 
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> remem-2.11.ebuild:
+  Don't assign default to S; header fix
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *remem-2.11 (1 Feb 2002)
+
+  29 Mar 2003; Seemant Kulleen <seemant@gentoo.org> remem-2.11.ebuild:
+  HOMEPAGE fix by Frantz Dhin <tragedy_rm@hotmail.com> in bug #18299
+
+  2 Aug 2002; phoen][x <phoenix@gentoo.org> remem-2.11.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

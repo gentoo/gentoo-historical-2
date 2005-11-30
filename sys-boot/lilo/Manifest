@@ -1,23 +1,19 @@
-MD5 0f816d3f9616aa35bcaf3a164dc7596a lilo-22.5.7.2.ebuild 3981
-MD5 ce11862ff79a5e8c516ac9e4ec6cb0ef lilo-22.5.6-r3.ebuild 3722
-MD5 f3f0ffa32cd680466f67e41d37561b36 lilo-22.3.3-r1.ebuild 1998
-MD5 f6a3e348f4f07112145ffb1ef2c977a5 lilo-22.5.8-r1.ebuild 4192
-MD5 17d51bd1048874cfc6b693cf69d65113 lilo-22.5.1.ebuild 4573
-MD5 62c3935ec2e171f4b0e24dc45702c487 lilo-22.5.6-r2.ebuild 3436
-MD5 41063ae0aa3a80bb1a1ca2fd07b9487f lilo-22.5.8.ebuild 4041
-MD5 f8a0ee70d79cdbe758b30d623eb4ee8b lilo-22.3.4.ebuild 2004
-MD5 369a0c5df1179046152a0b7108498329 ChangeLog 6525
-MD5 e6543624c262cae90cc830cde90ad3ae metadata.xml 165
-MD5 ae8d44679d6ad635167141df89108f4a lilo-22.1-r3.ebuild 1581
-MD5 ca44cc6ec0aecfe30c49c455f74aacec files/lilo-22.5.6-glibc233.patch 640
-MD5 00de3473e03e180faad32ed00335cc7b files/digest-lilo-22.1-r3 61
-MD5 93ff7a7535e7c8ff1327db52a3118bef files/digest-lilo-22.3.4 133
-MD5 8e75fea24b47485fd4185b9962745117 files/digest-lilo-22.5.1 63
-MD5 15b1ea46b95a7517e5207c63b2252fe6 files/digest-lilo-22.5.8 63
-MD5 0a868ea4abd215e2181c6c756173b618 files/digest-lilo-22.3.3-r1 133
-MD5 23a4be524696dfdaefa80c1bdac39fc7 files/digest-lilo-22.5.6-r2 63
-MD5 23a4be524696dfdaefa80c1bdac39fc7 files/digest-lilo-22.5.6-r3 63
-MD5 15b1ea46b95a7517e5207c63b2252fe6 files/digest-lilo-22.5.8-r1 63
-MD5 89d3f49772308bc3fb195f51c9ff1035 files/digest-lilo-22.5.7.2 65
-MD5 90ff63638cb8b46b9e6f3c5231bd464e files/lilo.conf 1719
-MD5 a7ac9497dc60c65e1622c310c3512800 files/lilo-22.5.6-animated-menu.patch 29938
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 eeee4743c4e463eeed3a7a4c15380e0d metadata.xml 254
+MD5 f3230446ce35f4e726434afdc0374b73 ChangeLog 4097
+MD5 f6c5315c7dbb666528d9a2ffbc81e708 lilo-22.7.ebuild 5116
+MD5 2419c22323e1cfdbbc1ca149cb05e74d files/lilo-22.7-create-install-dirs.patch 970
+MD5 de6a5065fca97cf5df35c8bc9bebfafc files/lilo-22.7-correct-usage-info.patch 557
+MD5 78f9720430dac90363e7b5120a262a3a files/lilo-22.7-novga.patch 936
+MD5 c3e5c4bfabecddb7a57c3cdce9e21c3a files/lilo-22.7-devmapper_gentoo.patch 12072
+MD5 5f2172291cc1252b30f5a60981a51ac4 files/lilo.conf 1722
+MD5 3caa133b51ca935f818fd53102b0b62a files/digest-lilo-22.7 126
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1-ecc0.1.6 (GNU/Linux)
+
+iD8DBQFCwvvgp5vW4rUFj5oRAsAYAJ9deQNcMjoqCrOfrIwerpJ0/aigFACgrI8o
+1N/o0LomOr+WJgU+DPl9kRQ=
+=wMvF
+-----END PGP SIGNATURE-----

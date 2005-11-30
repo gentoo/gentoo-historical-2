@@ -1,21 +1,21 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/linux-logo/linux-logo-4.09.ebuild,v 1.1 2004/04/24 19:29:58 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/linux-logo/linux-logo-4.09.ebuild,v 1.1.1.1 2005/11/30 10:06:03 chriswhite Exp $
 
 inherit eutils
 
 MY_P=${PN/-/_}-${PV}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="Displays an ansi or an ascii logo and some system information."
+DESCRIPTION="A utility that displays an ANSI/ASCII logo and some system information"
 HOMEPAGE="http://www.deater.net/weave/vmwprod/linux_logo/"
 SRC_URI="http://www.deater.net/weave/vmwprod/linux_logo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 sparc ~mips hppa amd64 ppc"
 IUSE="nls"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-apps/sed-4"
 RDEPEND="nls? ( sys-devel/gettext )"
 
@@ -27,7 +27,7 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${PN}-4.07-gentoo-logo.patch
 
-	if [ -z "`use nls`" ]
+	if ! use nls
 	then
 		sed -i 's:cd po && $(MAKE)::' Makefile
 	fi
@@ -38,11 +38,10 @@ src_compile() {
 }
 
 src_install() {
-	dobin linux_logo
+	dobin linux_logo || die
 	doman linux_logo.1.gz
 
-	dodoc BUGS CHANGES COPYING README README.CUSTOM_LOGOS TODO USAGE
-	dodoc LINUX_LOGO.FAQ
+	dodoc BUGS CHANGES README README.CUSTOM_LOGOS TODO USAGE LINUX_LOGO.FAQ
 
 	if use nls
 	then
@@ -69,5 +68,5 @@ pkg_postinst() {
 	einfo "   rc-update add linux-logo default"
 	einfo "which uses the settings found in"
 	einfo "   /etc/conf.d/linux-logo"
-	echo 
+	echo
 }

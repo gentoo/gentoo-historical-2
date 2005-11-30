@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cmucl/cmucl-19a-r1.ebuild,v 1.1 2005/02/10 09:18:30 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cmucl/cmucl-19a-r1.ebuild,v 1.1.1.1 2005/11/30 10:08:38 chriswhite Exp $
 
 inherit common-lisp-common-2 eutils
 
@@ -16,13 +16,14 @@ SRC_URI="http://ftp.debian.org/debian/pool/main/c/cmucl/cmucl_${MY_PV}.orig.tar.
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="doc lesstif nosource"
 
-DEPEND="dev-lisp/common-lisp-controller
+DEPEND="=dev-lisp/common-lisp-controller-4*
 	doc? ( virtual/tetex )
 	lesstif? ( x11-libs/lesstif )
-	!lesstif? ( x11-libs/openmotif )"
+	!lesstif? ( x11-libs/openmotif )
+	sys-devel/bc"
 
 PROVIDE="virtual/commonlisp"
 

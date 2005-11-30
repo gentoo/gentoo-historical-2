@@ -1,6 +1,36 @@
 # ChangeLog for app-text/pspresent
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pspresent/ChangeLog,v 1.1 2003/09/18 17:53:02 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pspresent/ChangeLog,v 1.1.1.1 2005/11/30 10:06:56 chriswhite Exp $
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> pspresent-1.2.ebuild:
+  Marked ppc stable for bug #99217.
+
+  28 Jun 2005; Simon Stelling <blubb@gentoo.org> pspresent-1.2.ebuild:
+  added ~amd64 keyword
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  pspresent-1.2.ebuild:
+  mark ~ppc
+
+  22 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> pspresent-1.2.ebuild:
+  Stable on x86.
+
+*pspresent-1.2 (20 Jan 2005)
+
+  20 Jan 2005; Mamoru KOMACHI <usata@gentoo.org> +pspresent-1.2.ebuild:
+  Version bumped. This closes bug #76751.
+
+  25 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> pspresent-1.1.ebuild:
+  Provide virtual/psviewer; bug #50423. Stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> pspresent-1.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> pspresent-1.1.ebuild:
+  Fix use invocation
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> pspresent-1.1.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
 
 *pspresent-1.1 (19 Sep 2003)
 

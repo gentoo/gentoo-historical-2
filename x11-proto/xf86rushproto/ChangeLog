@@ -1,6 +1,28 @@
 # ChangeLog for x11-proto/xf86rushproto
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/xf86rushproto/ChangeLog,v 1.1 2005/08/08 03:37:02 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/xf86rushproto/ChangeLog,v 1.1.1.1 2005/11/30 10:05:43 chriswhite Exp $
+
+*xf86rushproto-1.1.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +xf86rushproto-1.1.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> xf86rushproto-1.1.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> xf86rushproto-1.1.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> xf86rushproto-1.1.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  xf86rushproto-1.1.ebuild:
+  Add ~sparc keyword (modular X testing on sparc).
 
 *xf86rushproto-1.1 (08 Aug 2005)
 

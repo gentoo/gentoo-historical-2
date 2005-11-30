@@ -1,21 +1,27 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-bouquet/cl-bouquet-0.1.ebuild,v 1.1 2004/05/19 15:51:49 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-bouquet/cl-bouquet-0.1.ebuild,v 1.1.1.1 2005/11/30 10:08:23 chriswhite Exp $
 
-inherit common-lisp
+inherit common-lisp eutils
 
 DESCRIPTION="BOUQUET is a graph generator for ANSI Common Lisp which produces Tulip graph description files."
 HOMEPAGE="http://sourceforge.net/projects/bouquet/"
 SRC_URI="mirror://sourceforge/bouquet/bouquet-${PV}.tar.gz"
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
+IUSE=""
 DEPEND="virtual/commonlisp
 	dev-lisp/common-lisp-controller"
 
 CLPACKAGE=bouquet
 
 S=${WORKDIR}/bouquet
+
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${PV}-package-lock-gentoo.patch
+}
 
 src_install() {
 	common-lisp-install *.lisp *.asd

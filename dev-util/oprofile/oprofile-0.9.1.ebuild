@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/oprofile/oprofile-0.9.1.ebuild,v 1.1 2005/08/21 20:14:33 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/oprofile/oprofile-0.9.1.ebuild,v 1.1.1.1 2005/11/30 10:05:09 chriswhite Exp $
 
 inherit eutils qt3
 

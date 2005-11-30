@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-htmlgen/cl-htmlgen-1.2.42.20050805.ebuild,v 1.1 2005/08/14 22:28:07 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-htmlgen/cl-htmlgen-1.2.42.20050805.ebuild,v 1.1.1.1 2005/11/30 10:08:28 chriswhite Exp $
 
 inherit common-lisp
 

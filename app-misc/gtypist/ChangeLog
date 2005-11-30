@@ -1,8 +1,38 @@
 # ChangeLog for app-misc/gtypist
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gtypist/ChangeLog,v 1.1 2002/04/08 03:52:02 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gtypist/ChangeLog,v 1.1.1.1 2005/11/30 10:05:50 chriswhite Exp $
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gtypist-2.7.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gtypist-2.7.ebuild:
+  stable on amd64
+
+  07 Dec 2004; Joseph Jezak <josejx@gentoo.org> gtypist-2.7.ebuild:
+  Marked ~ppc for bug #73188.
+
+  06 Aug 2004; Tom Martin <slarti@gentoo.org> gtypist-2.7.ebuild:
+  Marked ~amd64; resolves bug 59637. Thanks to Jan Van Uytven <wyvern@crm3.com>
+  for reporting.
+
+  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> gtypist-2.7.ebuild,
+  +metadata.xml:
+  x86 stable
+
+*gtypist-2.7 (05 Nov 2003)
+
+  05 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> gtypist-2.7.ebuild:
+  Version bumped
+
+*gtypist-2.6.2 (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
 
 *gtypist-2.5 (7 Apr 2002)
+
+  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> gtypist-2.5.ebuild :
+  Added IUSE.
 
   7 Apr 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
   gtypist-2.5.ebuild, files/digest-gtypist-2.5 :

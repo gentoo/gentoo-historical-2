@@ -1,6 +1,35 @@
 # ChangeLog for app-vim/vimbuddy
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/vimbuddy/ChangeLog,v 1.1 2005/01/22 20:07:01 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimbuddy/ChangeLog,v 1.1.1.1 2005/11/30 10:07:41 chriswhite Exp $
+
+  12 Sep 2005; Guy Martin <gmsoft@gentoo.org> vimbuddy-0.9.1-r1.ebuild:
+  Stable on hppa.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> vimbuddy-0.9.1-r1.ebuild:
+  Mark 0.9.1-r1 stable on alpha
+
+  07 Sep 2005; Aron Griffis <agriffis@gentoo.org> vimbuddy-0.9.1-r1.ebuild:
+  Mark 0.9.1-r1 stable on ia64
+
+  07 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  vimbuddy-0.9.1-r1.ebuild:
+  x86 sparc mips stable
+
+*vimbuddy-0.9.1-r1 (04 Aug 2005)
+
+  04 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  +files/vimbuddy-0.9.1-colon-problems.patch, +vimbuddy-0.9.1-r1.ebuild:
+  Fix variable names for vim7, bug #97350.
+
+  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  vimbuddy-0.9.1.ebuild:
+  mark ~ppc
+
+  18 Feb 2005; Tom Martin <slarti@gentoo.org> vimbuddy-0.9.1.ebuild:
+  Marked ~amd64.
+
+  18 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org> vimbuddy-0.9.1.ebuild:
+  x86 sparc mips hppa stable
 
 *vimbuddy-0.9.1 (22 Jan 2005)
 

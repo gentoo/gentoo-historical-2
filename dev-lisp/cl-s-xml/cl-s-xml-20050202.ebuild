@@ -1,17 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-s-xml/cl-s-xml-20050202.ebuild,v 1.1 2005/02/03 04:07:29 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-s-xml/cl-s-xml-20050202.ebuild,v 1.1.1.1 2005/11/30 10:08:25 chriswhite Exp $
 
 inherit common-lisp
 
 DESCRIPTION="S-XML is a simple XML parser implemented in Common Lisp."
 HOMEPAGE="http://www.common-lisp.net/project/s-xml/"
-SRC_URI="mirrors://gentoo/s-xml-20040709.tar.gz"
+SRC_URI="mirror://gentoo/s-xml-20040709.tar.gz"
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE=""
-DEPEND="dev-lisp/common-lisp-controller"
+DEPEND="virtual/commonlisp
+	dev-lisp/common-lisp-controller"
 
 S=${WORKDIR}/${PN#cl-}
 

@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/perforce/perforce-2002.2-r1.ebuild,v 1.1 2003/10/02 08:54:49 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/perforce/perforce-2002.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:52 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Commercial version control system"
 HOMEPAGE="http://www.perforce.com/"
@@ -8,18 +10,20 @@ URI_BASE="ftp://ftp.perforce.com/perforce/r02.2/"
 BIN_BASE="$URI_BASE/bin.linux24x86"
 DOC_BASE="$URI_BASE/doc"
 SRC_URI="$BIN_BASE/p4d $BIN_BASE/p4 $BIN_BASE/p4web $BIN_BASE/p4ftpd $BIN_BASE/p4p $DOC_BASE/man/p4.1 $DOC_BASE/man/p4d.1"
+
 LICENSE="perforce.pdf"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
-DEPEND="virtual/glibc"
-#RDEPEND=""
-S=${WORKDIR}
 RESTRICT="nomirror nostrip"
-MY_FILES=$FILESDIR/perforce-2002.2/
 
-src_unpack ()
-{
+DEPEND="virtual/libc"
+
+S=${WORKDIR}
+
+MY_FILES=${FILESDIR}/perforce-2002.2/
+
+src_unpack() {
 	# we have to copy all of the files from $DISTDIR, otherwise we get
 	# sandbox violations when trying to install
 
@@ -28,8 +32,7 @@ src_unpack ()
 	done
 }
 
-src_install()
-{
+src_install() {
 	enewuser perforce
 	enewgroup perforce
 
@@ -39,18 +42,18 @@ src_install()
 	dosbin p4p
 	dosbin p4ftpd
 
-	fowners perforce.perforce /usr/sbin/p4d
-	fowners perforce.perforce /usr/sbin/p4p
-	fowners perforce.perforce /usr/sbin/p4ftpd
-	fowners perforce.perforce /usr/sbin/p4web
+	fowners perforce:perforce /usr/sbin/p4d
+	fowners perforce:perforce /usr/sbin/p4p
+	fowners perforce:perforce /usr/sbin/p4ftpd
+	fowners perforce:perforce /usr/sbin/p4web
 
 	touch ${D}/var/log/perforce
-	fowners perforce.perforce /var/log/perforce
+	fowners perforce:perforce /var/log/perforce
 
 	doman p4.1 p4d.1
 
 	keepdir /var/lib/perforce
-	fowners perforce.perforce /var/lib/perforce
+	fowners perforce:perforce /var/lib/perforce
 
 	exeinto /etc/init.d
 	doexe ${MY_FILES}/init.d/perforce

@@ -1,6 +1,27 @@
 # ChangeLog for app-misc/beagle
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/ChangeLog,v 1.1 2005/10/24 14:02:17 dsd Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/ChangeLog,v 1.1.1.1 2005/11/30 10:06:12 chriswhite Exp $
+
+*beagle-0.1.2 (14 Nov 2005)
+
+  14 Nov 2005; Daniel Drake <dsd@gentoo.org> +beagle-0.1.2.ebuild:
+  Version bump; this version does not support .doc file indexing due to bug
+  #111228
+
+  06 Nov 2005; Simon Stelling <blubb@gentoo.org> beagle-0.1.1.ebuild:
+  remove ~amd64 keyword again as it requires gmime to be built with USE=mono,
+  but mono is masked on amd64; bug 111702
+
+  06 Nov 2005; Simon Stelling <blubb@gentoo.org> beagle-0.1.1.ebuild:
+  added ~amd64 keyword
+
+  03 Nov 2005; Daniel Drake <dsd@gentoo.org> beagle-0.1.1.ebuild:
+  We aren't compatible with wv-1.2.0 yet, so depend on 1.0.3-r1 for now (will
+  be properly fixed in next beagle release).
+
+  25 Oct 2005; Daniel Drake <dsd@gentoo.org> beagle-0.1.1.ebuild:
+  Stop using gnome2 eclass. Use emake -j1 to prevent compilation errors -
+  solves the USE=webservices problem.
 
 *beagle-0.1.1 (24 Oct 2005)
 

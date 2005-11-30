@@ -1,25 +1,37 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/mzscheme/mzscheme-205.ebuild,v 1.1 2003/10/14 20:23:37 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/mzscheme/mzscheme-205.ebuild,v 1.1.1.1 2005/11/30 10:08:21 chriswhite Exp $
 
-IUSE=""
+inherit flag-o-matic
 
 S=${WORKDIR}/plt
 DESCRIPTION="MzScheme scheme compiler"
 HOMEPAGE="http://www.plt-scheme.org/software/mzscheme/"
 SRC_URI="http://www.cs.utah.edu/plt/download/${PV}/${PN}/${P}.src.unix.tar.gz"
 DEPEND=">=sys-devel/gcc-2.95.3-r7"
-#RDEPEND=""
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~sparc"
+IUSE=""
 
 src_compile() {
+	# http://bugs.gentoo.org/show_bug.cgi?id=47037 -march=athlon-xp
+	# causes build failure
+	if is-flag '-march=athlon-xp'; then
+		replace-flags '-march=athlon-xp' '-mcpu=athlon-xp'
+	fi
+	# http://bugs.gentoo.org/show_bug.cgi?id=48491 -march=pentium4
+	# causes build failure
+	if is-flag '-march=pentium4'; then
+		replace-flags '-march=pentium4' '-mcpu=pentium4'
+	fi
+
+	# mzscheme is sensitive to a lot of compiler flags
+	unset CFLAGS
+
 	cd ${S}/src
-
 	econf || die "./configure failed"
-
-	make || die
+	emake -j1 || die
 }
 
 src_install () {

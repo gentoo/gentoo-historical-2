@@ -1,6 +1,106 @@
 # ChangeLog for dev-util/monotone
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/ChangeLog,v 1.1 2004/12/30 04:35:47 dragonheart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/ChangeLog,v 1.1.1.1 2005/11/30 10:05:00 chriswhite Exp $
+
+  18 Nov 2005; Leonardo Boshell <leonardop@gentoo.org> monotone-0.18.ebuild,
+  monotone-0.19.ebuild:
+  Updated boost dependency version to >=1.32.0 (bug #90457).
+
+*monotone-0.23-r1 (17 Oct 2005)
+
+  17 Oct 2005; Daniel Black <dragonheart@gentoo.org> -monotone-0.23.ebuild,
+  +monotone-0.23-r1.ebuild:
+  added -fno-omit-frame-pointer as per bug #109507 thanks to Glenn L. McGrath
+
+*monotone-0.23 (30 Sep 2005)
+
+  30 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +monotone-0.23.ebuild:
+  New version.
+
+*monotone-0.22 (09 Aug 2005)
+
+  22 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> monotone-0.22.ebuild:
+  New version.
+
+*monotone-0.21-r1 (08 Aug 2005)
+
+  08 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  monotone-0.21-r1.ebuild, files/30monotone-gentoo.el:
+  New revision. Added 'emacs' USE flag to optionally install elisp files
+  from 'contrib' (bug #101742).
+
+*monotone-0.21 (19 Jul 2005)
+
+  19 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> monotone-0.21.ebuild:
+  New release.
+
+*monotone-0.20 (06 Jul 2005)
+
+  06 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> monotone-0.20.ebuild:
+  New release.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> monotone-0.19.ebuild:
+  Stable on ppc.
+
+  15 Jun 2005; Leonardo Boshell <leonardop@gentoo.org> monotone-0.19.ebuild:
+  Stable on x86.
+
+*monotone-0.19 (15 May 2005)
+
+  15 May 2005; Leonardo Boshell <leonardop@gentoo.org> monotone-0.19.ebuild,
+  metadata.xml:
+  New release. Reset SLOT to 0. Reworded the post-installation instructions.
+  Added support for the 'ipv6' USE flag, and re-enabled 'doc'. Don't inherit
+  from eutils. Style changes. Added myself as maintainer in metadata.xml.
+  Resolves bug #91490.
+
+  01 May 2005; Daniel Black <dragonheart@gentoo.org> monotone-0.18.ebuild:
+  remove popt dependancy as per bug #90967 by James Rowe
+  <jnrowe@ukfsSPAMLESSn.org>
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> monotone-0.18.ebuild:
+  Stable on ppc.
+
+*monotone-0.18 (21 Apr 2005)
+
+  21 Apr 2005; Daniel Black <dragonheart@gentoo.org> +monotone-0.18.ebuild:
+  Version bump as per bug #85998. Thanks Wojciech Milkowski <wmilkowski@gazeta.pl>
+
+  19 Apr 2005; Daniel Black <dragonheart@gentoo.org> monotone-0.16.ebuild,
+  monotone-0.17.ebuild:
+  changed gcc dependancy down to 3.2 as suggested by Michal Gornisiewicz
+  <michal@tartarus.uNOSPAMwa.edu.au> via email
+
+  12 Apr 2005; David Holm <dholm@gentoo.org> monotone-0.17.ebuild:
+  Added to ~ppc.
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> monotone-0.17.ebuild:
+  stable on amd64
+
+  25 Mar 2005; Daniel Black <dragonheart@gentoo.org> monotone-0.17.ebuild:
+  Selftest now fixed
+
+*monotone-0.17 (24 Mar 2005)
+
+  24 Mar 2005; Daniel Black <dragonheart@gentoo.org> +monotone-0.17.ebuild:
+  Version bump as per bug #85998. Ebuild thanks to Wojciech Milkowski
+  <wmilkowski@gazeta.pl>
+
+  04 Jan 2005; Daniel Black <dragonheart@gentoo.org> monotone-0.16.ebuild:
+  enabled self test with a warning about test #62 cause it failed for Wojciech
+  Milkowski <wmilkowski@gazeta.pl> (bug #76332).
+
+  02 Jan 2005; Daniel Black <dragonheart@gentoo.org> monotone-0.16.ebuild:
+  Added strip-flags at the suggestion of Wojciech Milkowski
+  <wmilkowski@gazeta.pl>. bug #76332
+
+*monotone-0.16 (02 Jan 2005)
+
+  02 Jan 2005; Daniel Black <dragonheart@gentoo.org> -monotone-0.15.ebuild,
+  +monotone-0.16.ebuild:
+  Remove broken 0.15 version. Added version 0.16 as per bug report #76332.
+  Thanks to ajax <ajax@nwnk.net> and Wojciech Milkowski <wmilkowski@gazeta.pl>.
 
 *monotone-0.15 (30 Dec 2004)
 

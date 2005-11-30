@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/ecls/ecls-0.9f_p1.ebuild,v 1.1 2005/05/30 04:13:19 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/ecls/ecls-0.9f_p1.ebuild,v 1.1.1.1 2005/11/30 10:08:30 chriswhite Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/ecls/ecl-${PV:0:4}-patch-${PV:6}.tgz"
 HOMEPAGE="http://ecls.sourceforge.net/"
 SLOT="0"
 LICENSE="BSD LGPL-2"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="x86 ~ppc ~amd64 ~sparc"
 
 DEPEND="X? ( virtual/x11 )
 	=dev-libs/gmp-4*
@@ -23,6 +23,8 @@ DEPEND="X? ( virtual/x11 )
 #	dev-libs/boehm-gc
 
 IUSE="X"
+
+PROVIDE="virtual/commonlisp"
 
 S=${WORKDIR}/ecl-${PV:0:4}
 
@@ -54,4 +56,7 @@ src_install () {
 		docdir=${D}/usr/share/doc/${PF} install || true
 	dohtml doc/*.html
 	dodoc ANNOUNCEMENT Copyright LGPL
+
+	insinto /usr/share/doc/${PF}/
+	doins ${FILESDIR}/{clc-lite.lisp,README.Gentoo}
 }

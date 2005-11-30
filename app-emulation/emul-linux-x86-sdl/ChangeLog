@@ -1,8 +1,58 @@
 # ChangeLog for app-emulation/emul-linux-x86-sdl
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-sdl/ChangeLog,v 1.1 2004/07/15 01:35:48 lv Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-sdl/ChangeLog,v 1.1.1.1 2005/11/30 10:08:39 chriswhite Exp $
+
+  19 Oct 2005; Herbie Hopkins <herbs@gentoo.org>
+  emul-linux-x86-sdl-2.2.ebuild:
+  Stable on amd64.
+
+*emul-linux-x86-sdl-2.2 (07 Sep 2005)
+
+  07 Sep 2005; Herbie Hopkins <herbs@gentoo.org>
+  +emul-linux-x86-sdl-2.2.ebuild:
+  New release bumping libsdl to 1.2.8.
+
+  06 Sep 2005; Herbie Hopkins <herbs@gentoo.org> metadata.xml,
+  -emul-linux-x86-sdl-1.0.ebuild, -emul-linux-x86-sdl-1.2.8-r1.ebuild:
+  Remove old versions.
+
+  22 May 2005; Simon Stelling <blubb@gentoo.org>
+  emul-linux-x86-sdl-2.1.ebuild:
+  stable on amd64
+
+  21 Apr 2005; Herbie Hopkins <herbs@gentoo.org> +metadata.xml,
+  -emul-linux-x86-sdl-2.0.ebuild:
+  Add metadata.
+
+*emul-linux-x86-sdl-2.1 (18 Apr 2005)
+
+  18 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  +emul-linux-x86-sdl-2.1.ebuild:
+  Add libopenal, bug #73543. Removed .a files. Fixed SRC_URI.
+
+*emul-linux-x86-sdl-2.0 (15 Apr 2005)
+
+  15 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  +emul-linux-x86-sdl-2.0.ebuild:
+  new version provided by Herbie Hopkins
+
+  21 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  emul-linux-x86-sdl-1.2.8-r1.ebuild:
+  Added dep on soundlibs.
+
+*emul-linux-x86-sdl-1.2.8-r1 (21 Mar 2005)
+
+  21 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +emul-linux-x86-sdl-1.2.8-r1.ebuild:
+  Version bump and change to gcc-3.4 for the compiler.
+
+  11 Aug 2004; Travis Tilley <lv@gentoo.org> emul-linux-x86-sdl-1.0.ebuild:
+  stable on amd64
 
 *emul-linux-x86-sdl-1.0 (14 Jul 2004)
+
+  25 Jul 2004; Lina Pezzella <j4rg0n@gentoo.org>
+  Fixed Manifest.
 
   14 Jul 2004; Travis Tilley <lv@gentoo.org> +emul-linux-x86-sdl-1.0.ebuild:
   initial import of 32bit SDL 1.2.7, mostly for x86 games and fun stuff like

@@ -1,15 +1,21 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/foldutil/foldutil-1.6.ebuild,v 1.1 2004/07/15 18:10:53 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/foldutil/foldutil-1.6.ebuild,v 1.1.1.1 2005/11/30 10:07:45 chriswhite Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: fold creation utility"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=158"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~mips"
+KEYWORDS="x86 sparc mips ~ppc"
 IUSE=""
 
 RDEPEND="
 	|| ( >=app-editors/vim-6.3 >=app-editors/gvim-6.3 )
 	>=app-vim/multvals-3.6.1"
+
+VIM_PLUGIN_HELPTEXT=\
+"This plugin provides a number of commands for working with folds:
+\    :FoldNonMatching [pattern] [context]
+\    :FoldShowLines   {lines} [context]
+\    :FoldEndFolding"

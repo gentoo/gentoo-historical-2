@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/fhist/fhist-1.14.ebuild,v 1.1 2004/12/05 03:21:27 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/fhist/fhist-1.14.ebuild,v 1.1.1.1 2005/11/30 10:05:27 chriswhite Exp $
 
 DESCRIPTION="File history and comparison tools"
 HOMEPAGE="http://www.canb.auug.org.au/~millerp/fhist.html"
@@ -8,7 +8,7 @@ SRC_URI="http://www.canb.auug.org.au/~millerp/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~mips"
+KEYWORDS="x86 sparc ~mips ~ppc"
 IUSE=""
 
 DEPEND="sys-devel/gettext

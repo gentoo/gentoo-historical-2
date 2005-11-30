@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/ytin/ytin-1.83.5.ebuild,v 1.1 2003/09/10 19:03:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/ytin/ytin-1.83.5.ebuild,v 1.1.1.1 2005/11/30 10:06:16 chriswhite Exp $
 
 inherit games
 
@@ -11,18 +11,25 @@ SRC_URI="mirror://sourceforge/ytin/${PN}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
-DEPEND="sys-libs/ncurses
+RDEPEND="virtual/libc
+	sys-libs/ncurses"
+DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -i 's:extern int errno;::' utils.cpp
+	sed -i \
+		-e 's:extern int errno;::' utils.cpp \
+			|| die "sed utils.cpp failed"
 	echo '#include <errno.h>' >> tintin.h
-	sed -i '/^LIBS = /s:=:= -lstdc++ :' Makefile.in
+	sed -i \
+		-e '/^LIBS = /s:=:= -lstdc++ :' Makefile.in \
+			|| die "sed Makefile.in failed"
 }
 
 src_compile() {
@@ -31,7 +38,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin tt++ || die
+	dogamesbin tt++ || die
 	dodoc ChangeLog README.1st docs/*.txt
 	prepgamesdirs
 }

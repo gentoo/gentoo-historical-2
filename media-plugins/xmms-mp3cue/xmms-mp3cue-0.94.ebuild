@@ -1,21 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-mp3cue/xmms-mp3cue-0.94.ebuild,v 1.1 2004/02/12 11:47:42 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-mp3cue/xmms-mp3cue-0.94.ebuild,v 1.1.1.1 2005/11/30 10:07:31 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="cue file support for XMMS"
 HOMEPAGE="http://brianvictor.tripod.com/mp3cue.htm"
 SRC_URI="http://brianvictor.tripod.com/XMMS-mp3cue-${PV}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 IUSE="debug"
 
 S=${WORKDIR}/XMMS-mp3cue-${PV}
 
-DEPEND=">=media-sound/xmms-1.2.7-r20
-	sys-apps/sed"
+RDEPEND="media-sound/xmms"
 
-RDEPEND=">=media-sound/xmms-1.2.7-r20"
+DEPEND="${RDEPEND}
+	sys-apps/sed"
 
 DOCS="Changelog INSTALL README TODO"
 

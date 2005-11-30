@@ -1,22 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-text/gnome-spell/gnome-spell-0.5.ebuild,v 1.1 2002/09/27 14:51:20 azarah Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/gnome-spell/gnome-spell-0.5.ebuild,v 1.1.1.1 2005/11/30 10:07:06 chriswhite Exp $
+
+IUSE="nls"
 
 inherit gnome.org libtool
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Gnome spellchecking component."
 HOMEPAGE="http://www.gnome.org/"
 
-KEYWORDS="x86 sparc sparc64"
+KEYWORDS="x86 sparc ppc hppa"
 SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND=">=gnome-base/gnome-libs-1.4.1.7
+	=gnome-base/control-center-1.4*
 	>=gnome-base/bonobo-1.0.19-r1
 	<gnome-base/libglade-2.0.0
-	>=gnome-extra/gal-0.19
-	>=app-text/aspell-0.50
+	<gnome-extra/gal-1.99
+	virtual/aspell-dict
 	nls? ( sys-devel/gettext )"
 
 src_compile() {
@@ -47,4 +49,3 @@ src_install() {
 
 	dodoc AUTHORS COPYING ChangeLog NEWS README
 }
-

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/pmud/pmud-0.10.1-r3.ebuild,v 1.1 2004/03/16 04:50:41 warpzero Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/pmud/pmud-0.10.1-r3.ebuild,v 1.1.1.1 2005/11/30 10:05:40 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="-* ~ppc"
 IUSE="X"
 
-DEPEND="sys-kernel/linux-headers
+DEPEND="virtual/os-headers
 	X? ( virtual/x11 )"
 RDEPEND="sys-apps/util-linux"
 

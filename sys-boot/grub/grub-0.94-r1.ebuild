@@ -1,69 +1,69 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.94-r1.ebuild,v 1.1 2004/02/26 07:38:10 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.94-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:44 chriswhite Exp $
 
-inherit mount-boot eutils flag-o-matic gcc
+inherit mount-boot eutils flag-o-matic toolchain-funcs
 
+PATCHVER=0.1
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="http://www.gnu.org/software/grub/"
 SRC_URI="ftp://alpha.gnu.org/gnu/grub/${P}.tar.gz
-	http://dev.gentoo.org/~spock/portage/distfiles/${P}-splash.patch.bz2"
+	http://dev.gentoo.org/~seemant/distfiles/${P}-gentoo-${PATCHVER}.tar.bz2
+	http://dev.gentoo.org/~seemant/distfiles/splash.xpm.gz
+	mirror://gentoo/splash.xpm.gz
+	mirror://gentoo/${P}-gentoo-${PATCHVER}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86 amd64"
 IUSE="static"
 
-DEPEND=">=sys-libs/ncurses-5.2-r5
+RDEPEND=">=sys-libs/ncurses-5.2-r5"
+DEPEND="${RDEPEND}
+	>=sys-devel/automake-1.7
 	>=sys-devel/autoconf-2.5"
 PROVIDE="virtual/bootloader"
 
+PATCHDIR="${WORKDIR}/gentoo"
+
+pkg_setup() {
+	if use amd64; then
+		has_m32 || die "your compiler seems to be unable to compile 32bit code. if you are on amd64, make sure you compile gcc with USE=multilib FEATURES=-sandbox"
+
+		ABI_ALLOW="x86"
+		ABI="x86"
+	fi
+}
+
 src_unpack() {
-	unpack ${A} || die
-	cd ${S} || die
+	unpack ${A}; cd ${S}
 
-	epatch ${WORKDIR}/${P}-splash.patch
+	EPATCH_SUFFIX="patch"
 
-	# grub-0.93.20030118-gentoo.diff; <woodchip@gentoo.org> (18 Jan 2003)
-	# -fixes from grub CVS pulled on 20030118
-	# -vga16 patches; mined from Debian's grub-0.93+cvs20030102-1.diff
-	# -special-raid-devices.patch
-	# -addsyncs.patch
-	# -splashimagehelp.patch
-	# -configfile.patch
-	# -installcopyonly.patch
-
-	# This patchset is from SuSE -- hopefully fixes the acl symlink issue
-	# And should add some boot prettification
-#	epatch ${WORKDIR}/${PF}-gentoo.diff
-#	epatch ${FILESDIR}/${P}-test.patch
+	epatch ${PATCHDIR}
 }
 
 src_compile() {
+	unset BLOCK_SIZE #73499
+
 	### i686-specific code in the boot loader is a bad idea; disabling to ensure
 	### at least some compatibility if the hard drive is moved to an older or
 	### incompatible system.
 	unset CFLAGS
 
-	filter-flags -fstack-protector
-
+	filter-ldflags -pie
 	append-flags -DNDEBUG
 	[ `gcc-major-version` -eq 3 ] && append-flags -minline-all-stringops
 	use static && append-ldflags -static
 
-	# http://www.gentoo.org/proj/en/hardened/etdyn-ssp.xml
-	if has_version 'sys-devel/hardened-gcc' && [ "$(gcc-getCC)" == "gcc" ] ; then
-		# the configure script has problems with -nostdlib
-		CC="${CC} -yet_exec -yno_propolice"
-	fi
-
 	autoconf || die
 	aclocal || die
-	automake || die
+	WANT_AUTOMAKE=1.7 automake || die
 
 	# build the net-bootable grub first
 	CFLAGS="" \
 	econf \
+		--libdir=/lib \
 		--datadir=/usr/lib/grub \
 		--exec-prefix=/ \
 		--disable-auto-linux-mem-opt \
@@ -83,6 +83,7 @@ src_compile() {
 	# now build the regular grub
 	CFLAGS="${CFLAGS}" \
 	econf \
+			--libdir=/lib \
 			--datadir=/usr/lib/grub \
 			--exec-prefix=/ \
 			--disable-auto-linux-mem-opt || die
@@ -91,15 +92,18 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-	exeinto /usr/lib/grub
+	exeinto /usr/lib/grub/${CHOST}
 	doexe nbgrub pxegrub stage2/stage2 stage2/stage2.netboot
 
 	insinto /boot/grub
-	doins ${FILESDIR}/splash.xpm.gz
+	doins ${DISTDIR}/splash.xpm.gz
 	newins docs/menu.lst grub.conf.sample
 
 	dodoc AUTHORS BUGS COPYING ChangeLog NEWS README THANKS TODO
 	newdoc docs/menu.lst grub.conf.sample
+
+	docinto gentoo
+	dodoc ${PATCHDIR}/README*
 }
 
 pkg_postinst() {

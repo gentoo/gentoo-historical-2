@@ -114,7 +114,7 @@
 --- cxx/ncvalues.cpp	2002-07-31 03:13:56.000000000 +0930
 ***************
 *** 7,15 ****
-   *   $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/files/gcc3-gentoo.patch,v 1.1 2004/12/28 18:29:26 ribosome Exp $
+   *   $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/files/gcc3-gentoo.patch,v 1.1.1.1 2005/11/30 10:09:21 chriswhite Exp $
    *********************************************************************/
   
 ! #include <iostream.h>		// for debugging
@@ -124,7 +124,7 @@
   {}
   
 --- 7,17 ----
-   *   $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/files/gcc3-gentoo.patch,v 1.1 2004/12/28 18:29:26 ribosome Exp $
+   *   $Header: /var/cvsroot/gentoo-x86/sci-libs/netcdf/files/gcc3-gentoo.patch,v 1.1.1.1 2005/11/30 10:09:21 chriswhite Exp $
    *********************************************************************/
   
 ! #include <iostream>		// for debugging

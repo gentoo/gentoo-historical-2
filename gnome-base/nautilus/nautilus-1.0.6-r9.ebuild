@@ -1,26 +1,27 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# Updated by Sebastian Werner <sebastian@werner-productions.de>
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/nautilus/nautilus-1.0.6-r9.ebuild,v 1.1 2002/05/26 15:05:10 azarah Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/nautilus/nautilus-1.0.6-r9.ebuild,v 1.1.1.1 2005/11/30 10:09:10 chriswhite Exp $
 
-
-S=${WORKDIR}/${P}
 DESCRIPTION="nautilus"
+HOMEPAGE="http://www.gnome.org/projects/nautilus/"
 SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 
-HOMEPAGE="http://www.gnome.org/"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE="nls mozilla"
 
-RDEPEND="mozilla? ( >=net-www/mozilla-1.0_rc3 )
-	>=app-admin/fam-oss-2.6.4
+# =gnome-base/gnome-core-1.4*
+RDEPEND="mozilla? ( >=www-client/mozilla-1.0_rc3 )
+	virtual/fam
 	>=media-sound/cdparanoia-3.9.8
 	>=gnome-base/bonobo-1.0.9-r1
-	>=gnome-base/gnome-core-1.4.0.4-r1
 	>=gnome-base/libghttp-1.0.9-r1
-	>=gnome-base/gnome-vfs-1.0.3
-	>=gnome-base/librsvg-1.0.1
-	>=gnome-base/eel-1.0.2
-	>=gnome-extra/medusa-0.5.1-r1"
+	=gnome-base/gnome-vfs-1.0*
+	=gnome-base/librsvg-1*
+	=gnome-base/eel-1.0*
+	>=gnome-extra/medusa-0.5.1-r1
+	=gnome-base/gnome-panel-1.4*"
 
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
@@ -57,7 +58,13 @@ src_unpack() {
 	# 26 May 2002
 
 	patch -p1 < ${FILESDIR}/${P}-mozilla-1.0_rc3.diff || die
-	
+
+	# Here's another patch to fix it for gcc3.1. This is one I
+	# made, and it probably needs to sail upstream
+	# (mkennedy@gentoo.org)
+
+	patch -p1 < ${FILESDIR}/${P}-mozilla-embed-1.0_rc3.diff || die
+
 
 	# Add missing files
 	mkdir -p ${S}/intl
@@ -73,17 +80,17 @@ src_unpack() {
 	autoconf &>${S}/foo
 }
 
-src_compile() {                           
+src_compile() {
 	local myconf
-	
-	if [ -z "`use nls`" ]
+
+	if ! use nls
 	then
 		myconf="${myconf} --disable-nls"
 		mkdir intl
 		touch intl/libgettext.h
 	fi
 
-	if [ "`use mozilla`" ]
+	if use mozilla
 	then
 		MOZILLA=${MOZILLA_FIVE_HOME}
 		myconf="${myconf} --with-mozilla-lib-place=$MOZILLA \
@@ -124,4 +131,3 @@ src_install() {
 	# Fix permissions in order to resolve the mozilla-view issue
 	chmod -R g+r,o+r ${D}/*
 }
-

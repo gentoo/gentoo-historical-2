@@ -2,7 +2,7 @@
 +++ Makefile.new	2004-01-09 18:09:17.639733992 +0000
 @@ -1,9 +1,9 @@
  
- #  $Id: yahoo-makefile.patch,v 1.1 2004/01/12 01:14:39 rizzo Exp $
+ #  $Id: yahoo-makefile.patch,v 1.1.1.1 2005/11/30 10:09:29 chriswhite Exp $
  
 -include ../platform-settings
 +include /usr/lib/jabberd/platform-settings

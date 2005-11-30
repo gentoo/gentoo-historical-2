@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.0-r14.ebuild,v 1.1 2005/06/10 10:34:04 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mc/mc-4.6.0-r14.ebuild,v 1.1.1.1 2005/11/30 10:05:55 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -9,13 +9,13 @@ U7Z="u7z-${U7Z_PV}beta.tar.bz2"
 DESCRIPTION="GNU Midnight Commander cli-based file manager"
 HOMEPAGE="http://www.ibiblio.org/mc/"
 SRC_URI="http://www.ibiblio.org/pub/Linux/utils/file/managers/${PN}/${P}.tar.gz
-	mirrors://gentoo/${P}-sambalib-3.0.10.patch.bz2
+	mirror://gentoo/${P}-sambalib-3.0.10.patch.bz2
 	7zip? ( http://sgh.nightmail.ru/files/u7z/${U7Z} )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
-IUSE="gpm nls samba ncurses X slang unicode 7zip"
+IUSE="7zip X gpm ncurses nls pam samba slang unicode"
 
 PROVIDE="virtual/editor"
 
@@ -26,7 +26,6 @@ RDEPEND=">=sys-fs/e2fsprogs-1.19
 	gpm? ( >=sys-libs/gpm-1.19.3 )
 	slang? ( >=sys-libs/slang-1.4.9-r1 )
 	samba? ( >=net-fs/samba-3.0.0 )
-	unicode? ( >=sys-libs/slang-1.4.9-r1 )
 	X? ( virtual/x11 )
 	x86? ( 7zip? ( >=app-arch/p7zip-4.16 ) )
 	ppc? ( 7zip? ( >=app-arch/p7zip-4.16 ) )
@@ -58,7 +57,7 @@ src_unpack() {
 	# Fix building with gcc4.
 	epatch ${FILESDIR}/${P}-gcc4.patch
 
-	if use unicode && use slang; then
+	if use slang && use unicode; then
 		epatch ${FILESDIR}/${P}-utf8.patch.bz2
 	fi
 }

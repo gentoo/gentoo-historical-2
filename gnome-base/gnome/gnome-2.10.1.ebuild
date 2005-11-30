@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.10.1.ebuild,v 1.1 2005/07/08 10:56:19 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.10.1.ebuild,v 1.1.1.1 2005/11/30 10:09:13 chriswhite Exp $
 
 DESCRIPTION="Meta package for the GNOME desktop"
 HOMEPAGE="http://www.gnome.org/"
@@ -9,8 +9,7 @@ LICENSE="as-is"
 SLOT="2.0"
 # when unmasking for an arch
 # double check none of the deps are still masked !
-# Before marking stable, check out bug #95548
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~ppc64"
+KEYWORDS="amd64 hppa ppc ~ppc64 sparc x86"
 IUSE="accessibility cdr dvdr hal"
 
 S=${WORKDIR}

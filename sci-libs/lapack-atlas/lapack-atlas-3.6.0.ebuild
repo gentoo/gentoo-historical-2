@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-atlas/lapack-atlas-3.6.0.ebuild,v 1.1 2004/12/29 18:26:45 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-atlas/lapack-atlas-3.6.0.ebuild,v 1.1.1.1 2005/11/30 10:09:19 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -16,13 +16,13 @@ SRC_URI="${SRC_URI1} ${SRC_URI2}
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 amd64 ~ppc ppc64 ~sparc"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE="ifc doc"
 
 DEPEND="virtual/libc
 	>=sys-devel/libtool-1.5
-	=app-sci/blas-atlas-3.6.0
-	app-sci/lapack-config
+	=sci-libs/blas-atlas-3.6.0
+	sci-libs/lapack-config
 	ifc? ( dev-lang/ifc )"
 
 RDEPEND="virtual/libc
@@ -63,7 +63,7 @@ pkg_setup() {
 	#  reference set) to be built with ifc.
 	if [ -z `which g77` ]; then
 		eerror "g77 not found on the system!"
-		eerror "Please add f77 to your USE flags and reemerge gcc!"
+		eerror "Please add fortran to your USE flags and reemerge gcc!"
 		die
 	fi
 }
@@ -73,6 +73,7 @@ src_unpack() {
 	unpack ${A}
 
 	cd ${WORKDIR}
+	epatch ${FILESDIR}/unbuffered.patch
 	epatch ${DISTDIR}/atlas3.6.0-shared-libs.patch.bz2
 	epatch ${DISTDIR}/lapack-20020531-20021004.patch.bz2
 	epatch ${DISTDIR}/lapack-gentoo.patch
@@ -177,7 +178,7 @@ src_install () {
 
 	insinto /usr/include/atlas
 	cd ${S}/include
-	doins clapack.h
+	doins clapack.h atlas_misc.h atlas_enum.h
 
 	cd ${S}
 	dodoc README

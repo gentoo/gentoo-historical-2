@@ -1,15 +1,15 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/pharmacy/pharmacy-0.3-r2.ebuild,v 1.1 2002/10/15 13:36:19 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pharmacy/pharmacy-0.3-r2.ebuild,v 1.1.1.1 2005/11/30 10:04:50 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Gnome Front-End to CVS"
 SRC_URI="mirror://sourceforge/pharmacy/${P}.tar.gz"
 HOMEPAGE="http://pharmacy.sourceforge.net"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc sparc64"
+KEYWORDS="ppc sparc x86"
+IUSE=""
 
 DEPEND=">=gnome-base/gnome-libs-1.4.1.2-r1"
 
@@ -25,6 +25,6 @@ src_install () {
 	dodoc AUTHORS COPYING ChangeLog NEWS README TODO
 
 	insinto /usr/share/doc/pharmacy/index
-	doins docs/index/* 
+	doins docs/index/*
 	insinto /usr/share/doc/pharmacy docs/index.sgml
 }

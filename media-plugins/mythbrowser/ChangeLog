@@ -1,6 +1,70 @@
 # ChangeLog for media-plugins/mythbrowser
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/mythbrowser/ChangeLog,v 1.1 2004/02/06 16:40:04 max Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/mythbrowser/ChangeLog,v 1.1.1.1 2005/11/30 10:07:22 chriswhite Exp $
+
+  08 Sep 2005; Herbie Hopkins <herbs@gentoo.org> mythbrowser-0.18.1.ebuild:
+  s/lib/$(get_libdir)
+
+  27 Jul 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mythbrowser-0.18.1.ebuild:
+  Stable on PowerPC
+
+  29 Jun 2005; Doug Goldstein <cardoe@gentoo.org> -mythbrowser-0.17.ebuild:
+  removed old version
+
+  06 Jun 2005; Doug Goldstein <cardoe@gentoo.org> -mythbrowser-0.16.ebuild,
+  mythbrowser-0.17.ebuild, -mythbrowser-0.18.ebuild:
+  fixed deps for removed mythfrontend
+
+  31 May 2005; David Holm <dholm@gentoo.org> mythbrowser-0.18.1.ebuild:
+  Added to ~ppc.
+
+*mythbrowser-0.18.1 (20 May 2005)
+
+  20 May 2005; Doug Goldstein <cardoe@gentoo.org>
+  +mythbrowser-0.18.1.ebuild:
+  rev bump; new eclass; clean up
+
+*mythbrowser-0.18 (18 Apr 2005)
+
+  18 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +mythbrowser-0.18.ebuild:
+  Version bump.
+
+  26 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> mythbrowser-0.16.ebuild:
+  Use kde eclasses, to make sure KDEDIR is defined.
+
+*mythbrowser-0.17 (11 Feb 2005)
+
+  11 Feb 2005; Doug Goldstein <cardoe@gentoo.org> +mythbrowser-0.17.ebuild:
+  revision bump
+  inherit kde-functions to properly set $KDEDIR
+
+  22 Jan 2005; Doug Goldstein <cardoe@gentoo.org> -mythbrowser-0.14.ebuild,
+  -mythbrowser-0.15.ebuild:
+  purge old ebuilds
+
+  04 Dec 2004; Brian Jackson <iggy@gentoo.org> mythbrowser-0.16.ebuild:
+  I can't find any of the other media-tv guys, and it's been fairly bug free,
+  so marking as x86
+
+  21 Sep 2004; Doug Goldstein <cardoe@gentoo.org> mythbrowser-0.15.ebuild:
+  stable x86
+
+*mythbrowser-0.16 (10 Sep 2004)
+
+  10 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythbrowser-0.16.ebuild:
+  Version bump. I've re-done some of the ebuild layout and added a myth eclass
+  to save some code.
+
+*mythbrowser-0.15 (01 Jun 2004)
+
+  01 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> mythbrowser-0.15.ebuild:
+  Version bump.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mythbrowser-0.14.ebuild:
+  Added IUSE.
 
 *mythbrowser-0.14 (06 Feb 2004)
 

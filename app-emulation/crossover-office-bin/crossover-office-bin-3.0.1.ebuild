@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-office-bin/crossover-office-bin-3.0.1.ebuild,v 1.1 2004/10/31 02:39:02 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-office-bin/crossover-office-bin-3.0.1.ebuild,v 1.1.1.1 2005/11/30 10:08:49 chriswhite Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ IUSE=""
 RESTRICT="fetch nostrip"
 
 RDEPEND="virtual/x11
-	virtual/libc"
+	sys-libs/glibc"
 
 S=${WORKDIR}
 

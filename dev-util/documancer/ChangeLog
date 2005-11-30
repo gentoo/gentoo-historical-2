@@ -1,8 +1,22 @@
-# ChangeLog for app-doc/documancer
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/documancer/ChangeLog,v 1.1 2003/03/16 13:54:32 bass Exp $
+# ChangeLog for dev-util/documancer
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/documancer/ChangeLog,v 1.1.1.1 2005/11/30 10:05:19 chriswhite Exp $
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> documancer-0.1.7.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  documancer-0.1.7.ebuild:
+  net-www/swish-e -> www-apps/swish-e
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  documancer-0.1.7.ebuild:
+  Don't assign default to S; header fix
 
 *documancer-0.1.7 (16 Mar 2003)
-  16 Mar 2003; J.Alberto Su·rez LÛpez <bass@gentoo.org> swish-e-2.2.2.ebuild:
+  16 Mar 2003; J.Alberto Su√°rez L√≥pez <bass@gentoo.org> swish-e-2.2.2.ebuild:
   initial ebuild by Lars Trieloff <lars@trieloff.net>
 

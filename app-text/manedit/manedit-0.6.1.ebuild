@@ -1,18 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/manedit/manedit-0.6.1.ebuild,v 1.1 2005/06/22 03:45:09 fuzzyray Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/manedit/manedit-0.6.1.ebuild,v 1.1.1.1 2005/11/30 10:07:04 chriswhite Exp $
 
 DESCRIPTION="Man page editor using XML tags"
-SRC_URI="ftp://wolfpack.twu.net/users/wolfpack/${P}.tar.bz2"
 HOMEPAGE="http://wolfpack.twu.net/ManEdit/"
+SRC_URI="ftp://wolfpack.twu.net/users/wolfpack/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
-DEPEND="virtual/libc
-	virtual/x11
+DEPEND="virtual/x11
 	=x11-libs/gtk+-1*
 	sys-libs/zlib
 	app-arch/bzip2"
@@ -20,7 +19,8 @@ DEPEND="virtual/libc
 src_compile() {
 	# It autodetects x86 processors and adds the -march option itself
 	# but we don't actually want that.
-	env CFLAGS="${CFLAGS}" ./configure Linux \
+	env CFLAGS="${CFLAGS}" \
+	./configure Linux \
 		--prefix=/usr \
 		--mandir=/usr/share/man \
 		--datadir=/usr/share \

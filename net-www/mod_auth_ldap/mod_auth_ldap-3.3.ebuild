@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_ldap/mod_auth_ldap-3.3.ebuild,v 1.1 2005/02/17 14:14:52 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_ldap/mod_auth_ldap-3.3.ebuild,v 1.1.1.1 2005/11/30 10:08:11 chriswhite Exp $
 
 inherit eutils apache-module
 
@@ -8,10 +8,10 @@ DESCRIPTION="Apache module for LDAP authorization"
 HOMEPAGE="http://www.muquit.com/muquit/software/mod_auth_ldap/mod_auth_ldap.html"
 SRC_URI="http://www.muquit.com/muquit/software/${PN}/${PN}${PV}.tar.gz"
 
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="ppc ~sparc x86"
 LICENSE="as-is"
 SLOT="0"
-IUSE="disk-cache mem-cache berkdb gdbm"
+IUSE="apache2 berkdb disk-cache gdbm mem-cache"
 
 DEPEND=">=net-nds/openldap-2.0.25"
 RDEPEND=""
@@ -33,9 +33,10 @@ src_compile() {
 
 	if ! use disk-cache; then
 		if use berkdb || use gdbm; then
-			die "berkdb/gdbm needs disk-cache enabled"
+			ewarn "Enabling disk-cache for berkdb/gdbm support"
+		else
+			myconf="${myconf} --without-disk-cache"
 		fi
-		myconf="${myconf} --without-disk-cache"
 	fi
 
 	if use apache2; then

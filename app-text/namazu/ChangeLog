@@ -1,6 +1,42 @@
 # ChangeLog for app-text/namazu
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/namazu/ChangeLog,v 1.1 2003/06/20 16:46:41 yakina Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/namazu/ChangeLog,v 1.1.1.1 2005/11/30 10:06:33 chriswhite Exp $
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> namazu-2.0.14.ebuild:
+  Marked ~amd64.
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> namazu-2.0.14.ebuild:
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+  28 Feb 2005; <dams@gentoo.org> namazu-2.0.14.ebuild:
+  added ~ppc (bug #83185)
+
+*namazu-2.0.14 (16 Dec 2004)
+
+  16 Dec 2004; Masatomo Nakano <nakano@gentoo.org> -namazu-2.0.12.ebuild,
+  -namazu-2.0.13.ebuild, +namazu-2.0.14.ebuild:
+  Fixed Cross-Site Scripting Vulnerability. (#74612)
+
+  07 Dec 2004; Akinori Hattori <hattya@gentoo.org> namazu-2.0.13.ebuild:
+  fixes bug #73330
+
+  04 Nov 2004; Tom Gall <tgall@gentoo.org> namazu-2.0.13.ebuild:
+  added ~ppc64, #69729
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> namazu-2.0.13.ebuild:
+  stable on x86.
+
+  06 Aug 2004; Akinori Hattori <hattya@gentoo.org> namazu-2.0.13.ebuild:
+  fixes bug #58452.
+
+*namazu-2.0.13 (25 Jul 2004)
+
+  25 Jul 2004; Akinori Hattori <hattya@gentoo.org> +metadata.xml,
+  +namazu-2.0.13.ebuild:
+  version bump. fixes bug #53993.
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> namazu-2.0.12.ebuild:
+  Don't assign default to S; header fix
 
 *namazu-2.0.12 (21 Jun 2003)
 

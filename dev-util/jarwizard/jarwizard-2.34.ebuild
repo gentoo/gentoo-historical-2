@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/jarwizard/jarwizard-2.34.ebuild,v 1.1 2004/04/11 21:43:07 zx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/jarwizard/jarwizard-2.34.ebuild,v 1.1.1.1 2005/11/30 10:04:59 chriswhite Exp $
 
 inherit java-pkg
 
@@ -12,16 +12,17 @@ LICENSE="GPL-2"
 KEYWORDS="x86 ~sparc ~alpha ~ppc"
 IUSE="jikes"
 DEPEND=">=virtual/jdk-1.3
+		app-arch/unzip
 		jikes? ( >=dev-java/jikes-1.16 )"
 RDEPEND=">=virtual/jre-1.3"
 
 S="${WORKDIR}/${PN}"
 
 src_compile() {
-	if [ -n "`use jikes`" ] ; then
+	if use jikes ; then
 		jikes -O -source 1.3 *.java
 	else
-		javac -g:none -source 1.3 *.java
+		javac -g:none -target 1.3 -source 1.3 *.java
 	fi
 }
 
@@ -32,7 +33,6 @@ src_install() {
 	java-pkg_dojar ${PN}.jar
 
 	echo "#!/bin/sh" > ${PN}
-	echo "cd /usr/share/${PN}" >> ${PN}
-	echo "java -cp lib/${PN}.jar JarWizard" >> ${PN}
+	echo "java -cp \$(java-config -p ${PN}) JarWizard" >> ${PN}
 	dobin ${PN}
 }

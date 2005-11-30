@@ -1,35 +1,36 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/nomad-tool/nomad-tool-1.3-r1.ebuild,v 1.1 2003/12/13 07:30:38 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/nomad-tool/nomad-tool-1.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:06:05 chriswhite Exp $
 
-GUI_V=0.5.5
+GUI_V=1.0
 
 DESCRIPTION="Controls the Nomad II MG and IIc portable MP3 players"
-HOMEPAGE="http://www.swiss.ai.mit.edu/~cph/nomad.php"
+HOMEPAGE="http://www.swiss.ai.mit.edu/~cph/nomad.ssp"
 SRC_URI="http://www.swiss.ai.mit.edu/~cph/nomad/${P}.tar.gz
-	http://www.its.caltech.edu/~georges/gentoo/proj/nomad-gui/nomad-gui-${GUI_V}.py.bz2"
+	http://dev.gentoo.org/~george/nomad-gui/nomad-gui-${GUI_V}.py.bz2"
 
-SLOT="0"
-KEYWORDS="~x86"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86"
 IUSE="tcltk"
 
-DEPEND=""
+DEPEND="=dev-libs/glib-1*"
+RDEPEND="tcltk? ( dev-lang/python
+				dev-lang/tcl )"
 
+S=${WORKDIR}
 
 src_compile() {
-	cd ${WORKDIR}
 	make PREFIX="/usr" || die "compile failed"
 }
 
 src_install() {
-	cd ${WORKDIR}
 	dobin nomad-tool
 	dolib nomad-open
 	chmod 4755 ${D}/usr/lib/nomad-open
 
 	doman nomad-tool.1
-	dodoc ChangeLog COPYING README
+	dodoc ChangeLog README
 
 	#optional gui interface, needs python with tkinter
 	use tcltk && (

@@ -1,6 +1,34 @@
 # ChangeLog for dev-lisp/cl-split-sequence
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-split-sequence/ChangeLog,v 1.1 2003/06/10 04:53:04 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-split-sequence/ChangeLog,v 1.1.1.1 2005/11/30 10:08:30 chriswhite Exp $
+
+  24 May 2005; <mkennedy@gentoo.org> cl-split-sequence-20011114.1-r1.ebuild:
+  Keywording ~sparc
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  cl-split-sequence-20011114.1-r1.ebuild:
+  Stable on ppc.
+
+  18 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  cl-split-sequence-20011114.1-r1.ebuild:
+  Keywording for ~amd64
+
+  02 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  cl-split-sequence-20011114.1-r1.ebuild,
+  -cl-split-sequence-20011114.1.ebuild:
+  Tagging stable keywords for x86
+
+  23 Jun 2004; <mkennedy@gentoo.org> cl-split-sequence-20011114.1-r1.ebuild:
+  Adding ~ppc.
+
+*cl-split-sequence-20011114.1-r1 (12 Feb 2004)
+
+  12 Feb 2004; <mkennedy@gentoo.org> cl-split-sequence-20011114.1-r1.ebuild:
+  Cleanup for eclass changes.
+
+  17 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org>
+  cl-split-sequence-20011114.1.ebuild, metadata.xml:
+  debian, postrm, preinst
 
 *cl-split-sequence-20011114.1 (07 Jul 2003)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/gdm-2.8.0.5.ebuild,v 1.1 2005/10/04 09:06:33 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gdm/gdm-2.8.0.5.ebuild,v 1.1.1.1 2005/11/30 10:09:03 chriswhite Exp $
 
 inherit eutils pam gnome2
 
@@ -31,9 +31,16 @@ RDEPEND="pam? ( virtual/pam )
 	>=gnome-base/librsvg-1.1.1
 	>=dev-libs/libxml2-2.4.12
 	>=media-libs/libart_lgpl-2.3.11
-	virtual/x11
 	selinux? ( sys-libs/libselinux )
-	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )"
+	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+	|| ( (
+	x11-libs/libICE
+	x11-libs/libSM
+	x11-libs/libXau
+	x11-libs/libXdmcp
+	x11-libs/libdmx
+	)
+	virtual/x11 )"
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.9
@@ -42,7 +49,7 @@ DEPEND="${RDEPEND}
 
 DOCS="AUTHORS ChangeLog NEWS README TODO"
 USE_DESTDIR="1"
-
+MAKEOPTS="${MAKEOPTS} -j1"
 
 pkg_setup() {
 	G2CONF="--sysconfdir=/etc/X11 \
@@ -61,6 +68,9 @@ pkg_setup() {
 		G2CONF="${G2CONF} --enable-console-helper=no \
 			--enable-authentication-scheme=shadow"
 	fi
+
+	enewgroup gdm
+	enewuser gdm -1 -1 /var/lib/gdm gdm
 }
 
 src_unpack() {
@@ -111,6 +121,8 @@ src_install() {
 	# list available users
 	dosed "s:^#MinimalUID=.*:MinimalUID=1000:" /etc/X11/gdm/gdm.conf
 	dosed "s:^#IncludeAll=.*:IncludeAll=true:" /etc/X11/gdm/gdm.conf
+	# Fix old X11R6 paths
+	dosed "s:/usr/X11R6/bin:/usr/bin:" /etc/X11/gdm/gdm.conf
 
 	# Move Gentoo theme in
 	mv ${WORKDIR}/gentoo-*  ${D}/usr/share/gdm/themes

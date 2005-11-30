@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/awstats/awstats-6.4.ebuild,v 1.1 2005/03/21 13:36:21 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/awstats/awstats-6.4.ebuild,v 1.1.1.1 2005/11/30 10:07:54 chriswhite Exp $
 
 inherit eutils webapp versionator
 
@@ -9,12 +9,12 @@ HOMEPAGE="http://awstats.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~ppc ~mips ~sparc ~x86 ~amd64"
+KEYWORDS="~alpha ~amd64 ~mips ppc ~sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/perl-5.6.1
 	>=media-libs/libpng-1.2
-	dev-perl/Time-Local
+	perl-core/Time-Local
 	net-www/apache"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
@@ -37,8 +37,9 @@ src_unpack() {
 	    fi
 	done
 
+	# find apache major version
 	local apachever=$(best_version net-www/apache)
-	apachever="$(get_major_version ${apachever##*-})"
+	apachever="$(get_major_version ${apachever#*/*-})"
 	[[ ${apachever} == "1" ]] && apachever=""
 
 	# set default values for directories

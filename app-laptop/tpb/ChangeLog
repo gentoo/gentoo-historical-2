@@ -1,6 +1,43 @@
-# ChangeLog for sys-apps/tpb
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/tpb/ChangeLog,v 1.1 2004/03/08 05:08:54 latexer Exp $
+# ChangeLog for app-laptop/tpb
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/tpb/ChangeLog,v 1.1.1.1 2005/11/30 10:05:38 chriswhite Exp $
+
+*tpb-0.6.4 (23 Oct 2005)
+
+  23 Oct 2005; Henrik Brix Andersen <brix@gentoo.org> +tpb-0.6.4.ebuild:
+  Version bump, bug #108159.
+
+  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> tpb-0.6.3.ebuild:
+  marked -ppc since there are no powerpc thinkpads
+
+  26 Mar 2005; <brix@gentoo.org> -tpb-0.4.2.ebuild, -tpb-0.5.1.ebuild,
+  -tpb-0.6.0.ebuild, -tpb-0.6.1.ebuild, -tpb-0.6.2.ebuild:
+  Pruned old versions.
+
+  17 Oct 2004; Henrik Brix Andersen <brix@gentoo.org> tpb-0.6.3.ebuild:
+  Stable on x86
+
+*tpb-0.6.3 (19 Sep 2004)
+
+  19 Sep 2004; Henrik Brix Andersen <brix@gentoo.org> +tpb-0.6.3.ebuild:
+  Version bump. Added X and xosd to IUSE and updated DEPEND and econf call
+  accordingly. Fixes bug #62809
+
+*tpb-0.6.2 (11 Jun 2004)
+
+  11 Jun 2004; Peter Johanson,,, <peter@gentoo.org> tpb-0.6.2.ebuild:
+  Bump.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> tpb-0.4.2.ebuild,
+  tpb-0.5.1.ebuild, tpb-0.6.0.ebuild:
+  Add die following econf for bug 48950
+
+*tpb-0.6.1 (30 Mar 2004)
+
+  30 Mar 2004; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  tpb-0.6.1.ebuild:
+  Bump. Changed herd to mobile. Thanks to Thomas Eckert <eckert.thomas@gmx.net>
+  for the bump info.
 
 *tpb-0.5.1 (08 Mar 2004)
 

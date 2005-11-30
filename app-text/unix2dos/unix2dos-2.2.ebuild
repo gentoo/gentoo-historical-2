@@ -1,32 +1,35 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/unix2dos/unix2dos-2.2.ebuild,v 1.1 2002/12/01 06:03:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/unix2dos/unix2dos-2.2.ebuild,v 1.1.1.1 2005/11/30 10:06:48 chriswhite Exp $
 
-DESCRIPTION="unix2dos - UNIX to DOS text file format converter"
-HOMEPAGE=""
+inherit eutils toolchain-funcs
+
+DESCRIPTION="UNIX to DOS text file format converter"
+HOMEPAGE="I HAVE NO HOME :("
 SRC_URI="mirror://gentoo/${P}.src.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ppc64 ppc-macos"
+IUSE=""
 
 DEPEND=""
-RDEPEND="!app-text/hd2u"
+RDEPEND=""
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_unpack() {
 	unpack ${A}
-	patch -p1 < ${FILESDIR}/${PN}-mkstemp.patch || die
-	patch -p1 < ${FILESDIR}/${P}-segfault.patch || die
-	patch -p1 < ${FILESDIR}/${P}-manpage.patch || die
+	epatch ${FILESDIR}/${PN}-mkstemp.patch
+	epatch ${FILESDIR}/${P}-segfault.patch
+	epatch ${FILESDIR}/${P}-manpage.patch
 }
 
 src_compile() {
-	gcc ${CFLAGS} -o unix2dos unix2dos.c || die
+	$(tc-getCC) ${CFLAGS} -o unix2dos unix2dos.c || die
 }
 
 src_install() {
-	dobin unix2dos
+	dobin unix2dos || die
 	doman unix2dos.1
 }
