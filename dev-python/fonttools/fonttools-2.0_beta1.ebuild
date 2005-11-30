@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fonttools/fonttools-2.0_beta1.ebuild,v 1.1 2004/07/10 08:55:14 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fonttools/fonttools-2.0_beta1.ebuild,v 1.1.1.1 2005/11/30 10:10:10 chriswhite Exp $
 
 inherit distutils
 
 MY_P=${P/_beta/b}
-DESCRIPTION="Multi-producer-multi-consumer signal dispatching mechanism for Python"
+DESCRIPTION="Library for manipulating TrueType, OpenType, AFM and Type1 fonts."
 HOMEPAGE="http://fonttools.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~amd64"
 IUSE=""
 
 DEPEND="virtual/python
@@ -21,3 +21,10 @@ DEPEND="virtual/python
 S="${WORKDIR}/${PN}"
 
 DOCS="README.txt Doc/*.txt"
+
+src_install() {
+	distutils_src_install
+
+	insinto /usr/share/doc/${PF}/${DOCDESTTREE}
+	doins Doc/*.html
+}

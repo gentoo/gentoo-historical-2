@@ -1,41 +1,36 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/gmyclient/gmyclient-0.3.ebuild,v 1.1 2002/11/05 14:19:42 nall Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/gmyclient/gmyclient-0.3.ebuild,v 1.1.1.1 2005/11/30 10:11:42 chriswhite Exp $
 
-IUSE="nls"
+inherit eutils
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Gnome based mysql client"
 SRC_URI="http://${PN}.sourceforge.net/download/${P}.tar.gz"
-HOMEPAGE="http://gmyclient.sourceforge.net"
+HOMEPAGE="http://gmyclient.sourceforge.net/"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc"
+KEYWORDS="ppc ~sparc x86"
+IUSE="nls"
 
-DEPEND="( >=gnome-base/gnome-libs-1.2*
-		dev-db/mysql )"
+DEPEND=">=gnome-base/gnome-libs-1.2
+		>=dev-db/mysql-3
+		=gnome-base/libglade-0*
+		media-libs/giflib"
 
-RDEPEND="( >=gnome-base/gnome-libs-1.2* )"
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-fix.patch || die "patch failed"
+}
 
 src_compile() {
-	local myconf
-
-	if [ -z "`use nls`" ] ; then
-		myconf="--disable-nls"
-	fi
-
-	econf $myconf || die
-
+	econf $(use_enable nls) || die "econf failed"
 	emake || die
 }
 
 src_install() {
-	make prefix=${D}/usr \
-	sysconfdir=${D}/etc \
-	localstatedir=${D}/var/lib \
-	install || die
-
-	dodoc AUTHORS COPYING ChangeLog NEWS README TODO
+	make DESTDIR=${D} install || die "installed failed"
+	dodoc AUTHORS README
+	mv ${D}/usr/share/gmyclient/doc ${D}/usr/share/doc/${PF}/html
 }
-
-

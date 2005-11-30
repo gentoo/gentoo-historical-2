@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nikto/nikto-1.34.ebuild,v 1.1 2004/10/29 11:53:57 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nikto/nikto-1.34.ebuild,v 1.1.1.1 2005/11/30 10:12:33 chriswhite Exp $
 
 DESCRIPTION="Web Server vulnerability scanner."
 HOMEPAGE="http://www.cirt.net/code/nikto.shtml"

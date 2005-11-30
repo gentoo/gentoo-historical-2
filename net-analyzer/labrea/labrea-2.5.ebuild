@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/labrea/labrea-2.5.ebuild,v 1.1 2004/07/04 22:20:03 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/labrea/labrea-2.5.ebuild,v 1.1.1.1 2005/11/30 10:12:17 chriswhite Exp $
 
 DESCRIPTION="'Sticky' Honeypot and IDS"
 HOMEPAGE="http://labrea.sourceforge.net/"
@@ -9,9 +9,9 @@ RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 IUSE=""
-DEPEND="net-libs/libpcap
+DEPEND="virtual/libpcap
 	>=dev-libs/libdnet-1.7"
 
 MY_P="${P}-stable-1"

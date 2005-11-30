@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header : $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mtop/mtop-0.6.6.ebuild,v 1.1.1.1 2005/11/30 10:11:35 chriswhite Exp $
 
 inherit perl-module
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://mtop.sourceforge.net"
 SRC_URI="mirror://sourceforge/mtop/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE=""
 DEPEND="dev-perl/Curses
 		dev-perl/DBI

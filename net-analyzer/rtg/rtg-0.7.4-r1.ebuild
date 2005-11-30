@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rtg/rtg-0.7.4-r1.ebuild,v 1.1 2004/05/30 00:05:17 anti Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rtg/rtg-0.7.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:41 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/rtg/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64 ~ppc"
 IUSE=""
 
 DEPEND=">=dev-db/mysql-3.23.52-r1
@@ -43,9 +43,9 @@ src_install() {
 
 pkg_postinst() {
 	einfo "RTG has been installed."
-	einfo ""
+	einfo
 	einfo "The default configuration file location is now /etc/rtg"
-	einfo ""
+	einfo
 	einfo "Sample reports have been installed into /usr/share/rtg"
-	einfo ""
+	einfo
 }

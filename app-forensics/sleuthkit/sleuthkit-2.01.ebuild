@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/sleuthkit/sleuthkit-2.01.ebuild,v 1.1 2005/04/24 06:20:27 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/sleuthkit/sleuthkit-2.01.ebuild,v 1.1.1.1 2005/11/30 10:09:53 chriswhite Exp $
 
 inherit toolchain-funcs eutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/sleuthkit/${P}.tar.gz"
 
 LICENSE="GPL-2 IBM"
 SLOT="0"
-KEYWORDS="~amd64 arm hppa ppc s390 sparc x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~s390 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl
@@ -29,6 +29,9 @@ src_unpack() {
 	sed -i '63,69d' src/timeline/config-perl || die "sed config-perl failed"
 	sed -i 's:`cd ../..; pwd`:/usr:' src/sorter/install \
 		|| die "sed install failed"
+	if use amd64; then
+		epatch ${FILESDIR}/${P}-include_fix.patch
+	fi
 }
 
 src_compile() {

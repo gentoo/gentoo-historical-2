@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kcontrol/kcontrol-3.4.2.ebuild,v 1.1 2005/07/28 21:16:12 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kcontrol/kcontrol-3.4.2.ebuild,v 1.1.1.1 2005/11/30 10:13:28 chriswhite Exp $
 
 KMNAME=kdebase
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="The KDE Control Center"
-KEYWORDS=" ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ssl arts ieee1394 logitech-mouse opengl"
 
 # configure.in.in-kdm-settings.diff: add configure tests from kdm necessary to configure kcontrol
@@ -16,16 +16,18 @@ IUSE="ssl arts ieee1394 logitech-mouse opengl"
 PATCHES="$FILESDIR/configure.in.in-kdm-settings.diff
 	$FILESDIR/kdebase-3.4.1-configure.patch"
 
-DEPEND="ssl? ( dev-libs/openssl )
+DEPEND=">=media-libs/freetype-2
+	media-libs/fontconfig
+	ssl? ( dev-libs/openssl )
 	arts? ( $(deprange $PV $MAXKDEVER kde-base/arts) )
 	opengl? ( virtual/opengl )
 	ieee1394? ( sys-libs/libraw1394 )
 	logitech-mouse? ( >=dev-libs/libusb-0.1.10a )"
 
 RDEPEND="${DEPEND}
-$(deprange 3.4.1-r1 $MAXKDEVER kde-base/kcminit)
+$(deprange 3.4.1 $MAXKDEVER kde-base/kcminit)
 $(deprange $PV $MAXKDEVER kde-base/kdebase-data)
-$(deprange 3.4.1-r1 $MAXKDEVER kde-base/kdesu)
+$(deprange 3.4.1 $MAXKDEVER kde-base/kdesu)
 $(deprange $PV $MAXKDEVER kde-base/khelpcenter)
 $(deprange $PV $MAXKDEVER kde-base/khotkeys)"
 

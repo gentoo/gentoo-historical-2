@@ -1,35 +1,32 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmDownload/wmDownload-0.1.2a.ebuild,v 1.1 2002/10/03 17:53:09 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmDownload/wmDownload-0.1.2a.ebuild,v 1.1.1.1 2005/11/30 10:10:56 chriswhite Exp $
 
 S=${WORKDIR}/wmDownload
 
-DESCRIPTION="dockapp that displays how much data you've recieved on each eth and ppp device."
+IUSE=""
+DESCRIPTION="dockapp that displays how much data you've received on each eth and ppp device."
 SRC_URI="mirror://sourceforge/wmdownload/${P}.tar.gz"
 HOMEPAGE="http://wmdownload.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORKS="x86"
+KEYWORDS="x86 amd64 ppc ~sparc"
 
-DEPEND="virtual/glibc x11-base/xfree x11-libs/docklib"
-RDEPEND="${DEPEND}"
+DEPEND="virtual/libc virtual/x11 x11-libs/docklib
+	>=sys-apps/sed-4"
+
+src_unpack() {
+	unpack ${A} ; cd ${S}
+	sed -i -e "s:-O2:$CFLAGS:" Makefile
+}
 
 src_compile() {
-
-	cd ${S}
-
-	cp Makefile Makefile.orig
-	sed -e "s:-O2:$CFLAGS:" Makefile.orig > Makefile
-
-	emake || die 
-
+	emake || die
 }
 
 src_install () {
-
 	strip wmDownload
 	dodir /usr/bin/
-        dobin wmDownload
-
+	dobin wmDownload
 }

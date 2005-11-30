@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin/files/spamd.init,v 1.1 2004/06/04 04:26:45 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin/files/spamd.init,v 1.1.1.1 2005/11/30 10:12:01 chriswhite Exp $
 
 # NB: Config is in /etc/conf.d/spamd.conf
 
@@ -10,18 +10,16 @@ depend() {
 	before mta
 }
 
-pidfile=/var/run/spamd.pid
-
 start() {
 	ebegin "Starting spamd"
 	start-stop-daemon --start --quiet \
-		--exec /usr/bin/spamd -- -d -r ${pidfile} \
+		--exec /usr/bin/spamd -- -d -r ${PIDFILE} \
 			${SPAMD_OPTS}
 	eend $? "Failed to start spamd"
 }
 
 stop() {
 	ebegin "Stopping spamd"
-	start-stop-daemon --stop --quiet --pidfile ${pidfile}
+	start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
 	eend $? "Failed to stop spamd"
 }

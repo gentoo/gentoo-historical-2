@@ -1,10 +1,99 @@
 # ChangeLog for net-zope/zodb
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zodb/ChangeLog,v 1.1 2003/10/30 13:23:17 lanius Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zodb/ChangeLog,v 1.1.1.1 2005/11/30 10:11:08 chriswhite Exp $
+
+*zodb-3.5.1 (01 Oct 2005)
+
+  01 Oct 2005; Chris Bainbridge <chrb@gentoo.org> +zodb-3.5.1.ebuild:
+  Version bump. This corresponds to the ZODB that will ship in Zope 3.1.0
+  final. ZODB 3.5.1 contains (just) a few bugfixes relative to 3.5.0,
+  involving Zope 3's zeoctl and mkzeoinst scripts, and the ZopeUndo.Prefix
+  class.
+
+*zodb-3.5.0 (10 Sep 2005)
+
+  10 Sep 2005; Chris Bainbridge <chrb@gentoo.org> +zodb-3.5.0.ebuild:
+  Version bump to 3.5.0, which corresponds to the ZODB in Zope 3.1. ZODB 3.5
+  cannot be used with Zope 2.7 or earlier. Removed some cruft from the ebuild,
+  corrected SLOTS.
+
+*zodb-3.4.1 (10 Aug 2005)
+
+  10 Aug 2005; Chris Bainbridge <chrb@gentoo.org> +zodb-3.4.1.ebuild:
+  Zodb version bump - this is the version that will ship with Zope 2.8.1. It
+  includes bugfixes for memory leaks and ZEO client cache tracing. It does not
+  support Zope 2.6 or 2.7.
+
+*zodb-3.2.9 (08 Jul 2005)
+
+  08 Jul 2005; Radoslaw Stachowiak <radek@gentoo.org> -zodb-3.2.6.ebuild,
+  +zodb-3.2.9.ebuild:
+  version bump
+
+  11 Jun 2005; David Holm <dholm@gentoo.org> zodb-3.4.0.ebuild:
+  Added to ~ppc.
+
+*zodb-3.4.0 (10 Jun 2005)
+
+  10 Jun 2005; Radoslaw Stachowiak <radek@gentoo.org> +zodb-3.4.0.ebuild:
+  version bump
+
+  06 Jun 2005; Radoslaw Stachowiak <radek@gentoo.org> -zodb-3.2.5.ebuild,
+  zodb-3.2.8.ebuild, zodb-3.3.1.ebuild:
+  removed old 3.2.5 ebuild
+  stable on x86 for 3.2.8 and 3.3.1
+
+*zodb-3.2.8 (08 May 2005)
+
+  08 May 2005; Radoslaw Stachowiak <radek@gentoo.org> +zodb-3.2.8.ebuild,
+  -zodb-3.3.ebuild:
+  version bump, and removed 3.3.0
+
+  15 Apr 2005; Radoslaw Stachowiak <radek@gentoo.org> zodb-3.2.6.ebuild:
+  stable on x86 for zodb-3.2.6 (10 days earlier but its by purpose)
+
+*zodb-3.3.1 (15 Apr 2005)
+
+  15 Apr 2005; Radoslaw Stachowiak <radek@gentoo.org>
+  +files/zodb-3.3.1_umaskbug.patch, +zodb-3.3.1.ebuild:
+  3.3slot version bump
+
+  10 Apr 2005; Simon Stelling <blubb@gentoo.org> zodb-3.2.6.ebuild:
+  added ~amd64
+
+  08 Apr 2005; Seemant Kulleen <seemant@gentoo.org> zodb-3.3.ebuild:
+  marked testing on amd64
+
+  04 Apr 2005; Radoslaw Stachowiak <radek@gentoo.org> :
+  Fixed patch to nooffset version, closing bug #85798
+
+*zodb-3.2.6 (26 Mar 2005)
+
+  26 Mar 2005; Radoslaw Stachowiak <radek@gentoo.org> +zodb-3.2.6.ebuild:
+  version bump
+
+  26 Mar 2005; Radoslaw Stachowiak <radek@gentoo.org>
+  +files/zodb-3.3_umaskbug.patch, zodb-3.3.ebuild:
+  Fixed bug 85798, using information from Henk Spaaij <zaai@spaaij.net>.
+
+  19 Feb 2005; Radoslaw Stachowiak <radek@gentoo.org> zodb-3.2.5.ebuild,
+  -zodb-3.2.ebuild:
+  marked 3.2.5 stable on x86
+  removed unnecesary old 3.2.ebuild
+
+*zodb-3.2.5 (14 Jan 2005)
+
+  14 Jan 2005; Radoslaw Stachowiak <radek@gentoo.org> +zodb-3.2.5.ebuild:
+  new release (compatible with zope-2.7.4). added slot 3.2.
+
+*zodb-3.3 (14 Oct 2004)
+
+  14 Oct 2004; Radoslaw Stachowiak <radek@gentoo.org> +zodb-3.3.ebuild:
+  New release of ZODB.
 
 *zodb-3.2 (30 Oct 2003)
 
   30 Oct 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml,
   zodb-3.2.ebuild:
-  initial release, thx to Axxackall <axxackall@yahoo.com> #32033
+  initial release, thx to Thomas Eckert <eckert.thomas@gmx.net> #31968
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/pgaccess/pgaccess-0.99.0.20040219.ebuild,v 1.1 2004/09/23 19:32:44 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgaccess/pgaccess-0.99.0.20040219.ebuild,v 1.1.1.1 2005/11/30 10:11:40 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/pgaccess/${MY_P}.tgz"
 LICENSE="POSTGRESQL"
 
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

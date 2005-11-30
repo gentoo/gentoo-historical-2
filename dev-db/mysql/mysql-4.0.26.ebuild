@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-4.0.26.ebuild,v 1.1 2005/09/08 14:57:22 vivo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-4.0.26.ebuild,v 1.1.1.1 2005/11/30 10:11:33 chriswhite Exp $
 
 inherit eutils gnuconfig flag-o-matic versionator
 
@@ -15,7 +15,7 @@ S="${WORKDIR}/${PN}"
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 HOMEPAGE="http://www.mysql.com/"
 SRC_URI="mirror://mysql/Downloads/MySQL-${SVER}/${NEWP}.tar.gz
-	mirror://gentoo/mysql-extras-20050908.tar.bz2"
+	mirror://gentoo/mysql-extras-20050920.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,29 +28,18 @@ DEPEND="readline? ( >=sys-libs/readline-4.1 )
 		tcpd? ( >=sys-apps/tcp-wrappers-7.6-r6 )
 		ssl? ( >=dev-libs/openssl-0.9.6d )
 		perl? ( dev-lang/perl )
+		userland_GNU? ( sys-process/procps )
 		>=sys-libs/zlib-1.2.3
 		>=sys-apps/texinfo-4.7-r1
-		sys-process/procps
 		>=sys-apps/sed-4"
 RDEPEND="${DEPEND}
 		selinux? ( sec-policy/selinux-mysql )"
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( dev-perl/DBD-mysql )"
 
-mysql_get_datadir() {
-	DATADIR=""
-	if [ -f '/etc/mysql/my.cnf' ] ; then
-		#DATADIR=`grep ^datadir /etc/mysql/my.cnf | sed -e 's/.*= //'`
-		#DATADIR=`/usr/sbin/mysqld  --help |grep '^datadir' | awk '{print $2}'`
-		#DATADIR=`my_print_defaults mysqld | grep -- '^--datadir' | tail -n1 | sed -e 's|^--datadir=||'`
-		DATADIR=`my_print_defaults mysqld 2>/dev/null | sed -ne '/datadir/s|^--datadir=||p' | tail -n1`
-	fi
-	if [ -z "${DATADIR}" ]; then
-		DATADIR="/var/lib/mysql/"
-		einfo "Using default DATADIR"
-	fi
-	einfo "MySQL DATADIR is ${DATADIR}"
-	export DATADIR
+mysql_upgrade_error() {
+	ewarn "Sorry, plain up/downgrade between different version of MySQL is (still)"
+	ewarn "un-supported."
 }
 
 mysql_upgrade_warning() {
@@ -64,9 +53,66 @@ mysql_upgrade_warning() {
 	epause 5
 }
 
+mysql_get_datadir() {
+	DATADIR=""
+	if [ -f '/etc/mysql/my.cnf' ] ; then
+		#DATADIR=`/usr/sbin/mysqld  --help |grep '^datadir' | awk '{print $2}'`
+		#DATADIR=`my_print_defaults mysqld | grep -- '^--datadir' | tail -n1 | sed -e 's|^--datadir=||'`
+		DATADIR=`my_print_defaults mysqld 2>/dev/null | sed -ne '/datadir/s|^--datadir=||p' | tail -n1`
+		if [ -z "${DATADIR}" ]; then
+			DATADIR=`grep ^datadir /etc/mysql/my.cnf | sed -e 's/.*= //'`
+			einfo "Using default DATADIR"
+		fi
+	fi
+	if [ -z "${DATADIR}" ]; then
+		DATADIR="/var/lib/mysql/"
+		einfo "Using default DATADIR"
+	fi
+	einfo "MySQL DATADIR is ${DATADIR}"
+
+	if [ -z "${PREVIOUS_DATADIR}" ] ; then
+		if [ -a "${DATADIR}" ] ; then
+			ewarn "Previous datadir found, it's YOUR job to change"
+			ewarn "ownership and have care of it"
+			PREVIOUS_DATADIR="yes"
+			export PREVIOUS_DATADIR
+		else
+			PREVIOUS_DATADIR="no"
+			export PREVIOUS_DATADIR
+		fi
+	fi
+
+	export DATADIR
+}
+
 pkg_setup() {
+
+	if [[ -z $MYSQL_STRAIGHT_UPGRADE ]] ; then
+		mysql_get_datadir
+		local curversion="dev-db/${PN}-${PV%.*}"
+		local oldversion="$(best_version dev-db/mysql)"
+		oldversion=${oldversion%.*}
+
+		# permit upgrade from old version if it's safe
+		useq minimal && oldversion=""
+		built_with_use dev-db/mysql minimal && oldversion=""
+		[[ -d "${DATADIR}/mysql" ]] || oldversion=""
+
+		if [[ -n "${oldversion}" ]] && [[ "${oldversion}" != "${curversion}" ]]
+		then
+			mysql_upgrade_error
+			eerror "MySQL-${oldversion} found, up/downgrade to \"${curversion}\" is unsupported"
+			eerror "export MYSQL_STRAIGHT_UPGRADE=1 to force"
+			die
+		fi
+	fi
+
 	mysql_upgrade_warning
-	mysql_get_datadir
+
+	enewgroup mysql 60 || die "problem adding group mysql"
+	enewuser mysql 60 -1 /dev/null mysql \
+	|| die "problem adding user mysql"
+
 }
 
 src_unpack() {
@@ -222,23 +268,32 @@ src_compile() {
 	emake || die "compile problem"
 }
 
+src_test() {
+	cd ${S}
+	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
+	make check || die "make check failed"
+	if ! useq minimal; then
+		local retstatus
+		einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
+		addpredict /this-dir-does-not-exist/t9.MYI
+		make test
+		retstatus=$?
+
+		# to be sure ;)
+		pkill -9 -f ${S}/ndb/src/kernel/ndbd 2>/dev/null
+		pkill -9 -f ${S}/ndb/src/mgmsrv/ndb_mgmd 2>/dev/null
+		pkill -9 -f ${S}/ndb/src/mgmclient/ndb_mgm 2>/dev/null
+		pkill -9 -f ${S}/sql/mysqld 2>/dev/null
+		[[ $retstatus == 0 ]] || die "make test failed"
+
+	else
+		einfo "Skipping server tests due to minimal build."
+	fi
+}
+
 src_install() {
+	mysql_get_datadir
 	make install DESTDIR="${D}" benchdir_root="/usr/share/mysql" || die
-
-	enewgroup mysql 60 || die "problem adding group mysql"
-	enewuser mysql 60 -1 /dev/null mysql \
-	|| die "problem adding user mysql"
-
-	diropts "-m0750"
-	dodir "${DATADIR}" /var/log/mysql
-
-	diropts "-m0755"
-	dodir /var/run/mysqld
-
-	keepdir "${DATADIR}" /var/run/mysqld /var/log/mysql
-	chown -R mysql:mysql ${D}/${DATADIR} \
-		${D}/var/run/mysqld \
-		${D}/var/log/mysql
 
 	# move client libs, install a couple of missing headers
 	local lib=$(get_libdir)
@@ -291,6 +346,28 @@ src_install() {
 		newexe "${FILESDIR}/mysql-4.0.24-r2.rc6" mysql
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}/logrotate.mysql" mysql
+
+		#empty dirs...
+		diropts "-m0750"
+		if [[ "${PREVIOUS_DATADIR}" != "yes" ]] ; then
+	        dodir "${DATADIR}"
+	        keepdir "${DATADIR}"
+	        chown -R mysql:mysql "${D}/${DATADIR}"
+		fi
+
+		#diropts "-m0755"
+		#dodir "/var/log/mysql"
+		#touch ${D}/var/log/mysql/mysql.{log,err}
+		#chmod 0660 ${D}/var/log/mysql/mysql.{log,err}
+		#keepdir "/var/log/mysql"
+		#chown -R mysql:mysql "${D}/var/log/mysql"
+
+		diropts "-m0755"
+		dodir "/var/run/mysqld"
+
+		keepdir "/var/run/mysqld"
+		chown -R mysql:mysql \
+	        "${D}/var/run/mysqld"
 	fi
 
 	# docs
@@ -305,27 +382,38 @@ src_install() {
 
 }
 
-src_test() {
-	cd ${S}
-	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
-	make check || die "make check failed"
+pkg_preinst() {
+	enewgroup mysql 60 || die "problem adding group mysql"
+	enewuser mysql 60 -1 /dev/null mysql \
+	|| die "problem adding user mysql"
+}
+
+pkg_postinst() {
+	mysql_get_datadir
+
+	# mind at FEATURES=collision-protect before to remove this
+	#empty dirs...
+	[ -d "${ROOT}/var/log/mysql" ] \
+		|| install -d -m0755 -o mysql -g mysql ${ROOT}/var/log/mysql
+
+	#secure the logfiles... does this bother anybody?
+	touch ${ROOT}/var/log/mysql/mysql.{log,err}
+	chown mysql:mysql ${ROOT}/var/log/mysql/mysql*
+	chmod 0660 ${ROOT}/var/log/mysql/mysql*
+	# secure some directories
+	chmod 0750 ${ROOT}/var/log/mysql
+
 	if ! useq minimal; then
-		local retstatus
-		einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-		addpredict /this-dir-does-not-exist/t9.MYI
-		make test
-		retstatus=$?
-
-		# to be sure ;)
-		pkill -9 -f ${S}/ndb/src/kernel/ndbd 2>/dev/null
-		pkill -9 -f ${S}/ndb/src/mgmsrv/ndb_mgmd 2>/dev/null
-		pkill -9 -f ${S}/ndb/src/mgmclient/ndb_mgm 2>/dev/null
-		pkill -9 -f ${S}/sql/mysqld 2>/dev/null
-		[[ $retstatus == 0 ]] || die "make test failed"
-
-	else
-		einfo "Skipping server tests due to minimal build."
+		# your friendly public service announcement...
+		einfo
+		einfo "You might want to run:"
+		einfo "\"emerge --config =${PF}\""
+		einfo "if this is a new install."
+		einfo
 	fi
+
+	mysql_upgrade_warning
+	einfo "InnoDB is not optional as of MySQL-4.0.24, at the request of upstream."
 }
 
 pkg_config() {
@@ -343,7 +431,7 @@ pkg_config() {
 	local pwd2="b"
 	local maxtry=5
 
-	if [[ -d "${DATADIR}/mysql" ]] ; then
+	if [[ -d "${ROOT}/${DATADIR}/mysql" ]] ; then
 		ewarn "You have already a MySQL database in place."
 		ewarn "Please rename it or delete it if you wish to replace it."
 		die "MySQL database already exists!"
@@ -353,20 +441,20 @@ pkg_config() {
 	einfo "permissions on it..."
 
 	einfo "Insert a password for the mysql 'root' user"
-	ewarn "the password will be visible on the screen"
+	ewarn "bug: avoid [\"'\\_%] characters in the password"
 
-	echo -n "    >" && read -r pwd1
-	einfo "Repeat the password"
-	echo -n "    >" && read -r pwd2
+	read -rsp "    >" pwd1 ; echo
+	einfo "Check the password"
+	read -rsp "    >" pwd2 ; echo
 
-	if ((  "x$pwd1" != "x$pwd2" )) ; then
+	if [[  "x$pwd1" != "x$pwd2" ]] ; then
 		die "Passwords are not the same"
 	fi
 
 	${ROOT}/usr/bin/mysql_install_db || die "MySQL databases not installed"
 
 	# MySQL 5.0 don't ned this
-	chown -R mysql:mysql ${DATADIR}
+	chown -R mysql:mysql ${ROOT}/${DATADIR}
 	chmod 0750 ${ROOT}/${DATADIR}
 
 	# now we can set the password
@@ -374,7 +462,7 @@ pkg_config() {
 	local mysqld="${ROOT}/usr/sbin/mysqld \
 		--skip-grant-tables \
 		--basedir=${ROOT}/usr \
-		--datadir=${ROOT}/var/lib/mysql \
+		--datadir=${ROOT}/${DATADIR} \
 		--skip-innodb \
 		--skip-bdb \
 		--max_allowed_packet=8M \
@@ -404,32 +492,4 @@ pkg_config() {
 	[[ $retstatus == 0 ]] || die "Failed to communicate with MySQL server"
 
 	einfo "done"
-}
-
-pkg_postinst() {
-	mysql_get_datadir
-
-	if ! useq minimal; then
-		#empty dirs...
-		[ -d "${ROOT}/${DATADIR}" ] || install -d -m0750 -o mysql -g mysql ${ROOT}/var/lib/mysql
-		[ -d "${ROOT}/var/run/mysqld" ] || install -d -m0755 -o mysql -g mysql ${ROOT}/var/run/mysqld
-		[ -d "${ROOT}/var/log/mysql" ] || install -d -m0755 -o mysql -g mysql ${ROOT}/var/log/mysql
-
-		# secure the logfiles... does this bother anybody?
-		touch ${ROOT}/var/log/mysql/mysql.{log,err}
-		chown mysql:mysql ${ROOT}/var/log/mysql/mysql*
-		chmod 0660 ${ROOT}/var/log/mysql/mysql*
-		# secure some directories
-		chmod 0750 ${ROOT}/var/log/mysql ${ROOT}/${DATADIR}
-
-		# your friendly public service announcement...
-		einfo
-		einfo "You might want to run:"
-		einfo "\"ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config\""
-		einfo "if this is a new install."
-		einfo
-	fi
-
-	mysql_upgrade_warning
-	einfo "InnoDB is not optional as of MySQL-4.0.24, at the request of upstream."
 }

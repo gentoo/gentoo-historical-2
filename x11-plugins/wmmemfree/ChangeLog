@@ -1,6 +1,38 @@
 # ChangeLog for x11-plugins/wmmemfree
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmemfree/ChangeLog,v 1.1 2004/07/03 23:02:36 s4t4n Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmemfree/ChangeLog,v 1.1.1.1 2005/11/30 10:10:54 chriswhite Exp $
+
+  11 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmmemfree-0.7-r1.ebuild:
+  Removed INSTALL and COPYING from dodoc.
+
+  24 Nov 2004; Jason Wever <weeve@gentoo.org> wmmemfree-0.7-r1.ebuild:
+  Added ~sparc keyword.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmmemfree-0.7-r1.ebuild:
+  Stable for x86.
+  wmmemfree-0.7.ebuild:
+  Remove old ebuild.
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmmemfree-0.7-r1.ebuild:
+  stable on ppc64, bug #62256
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmmemfree-0.7-r1.ebuild, wmmemfree-0.7.ebuild:
+  Masked wmmemfree-0.7.ebuild stable for ppc
+
+*wmmemfree-0.7-r1 (02 Sep 2004)
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmmemfree-0.7-r1.ebuild:
+  Masked wmmemfree-0.7-r1.ebuild stable for ppc
+
+*wmmemfree-0.7-1 (28 Aug 2004)
+
+  28 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmmemfree-0.7-1.ebuild:
+  New revision with 2.6 kernel support...
+
+  04 Jul 2004; David Holm <dholm@gentoo.org> wmmemfree-0.7.ebuild:
+  Added to ~ppc.
 
 *wmmemfree-0.7 (04 Jul 2004)
 

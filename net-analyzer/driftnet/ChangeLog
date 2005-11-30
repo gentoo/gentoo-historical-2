@@ -1,7 +1,47 @@
 # ChangeLog for net-analyzer/driftnet
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/driftnet/ChangeLog,v 1.1 2002/07/19 04:23:43 spider Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/driftnet/ChangeLog,v 1.1.1.1 2005/11/30 10:12:10 chriswhite Exp $
 
-*driftnet-0.16 (19 Jul 2002)
+  03 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> driftnet-0.1.6.ebuild:
+  Adding x11 dependency because of makedepend. Fixes bug 94904. Thanks to
+  Henti Smith <henti@geekware.co.za>.
+
+  18 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/driftnet-0.1.6-nogtk.patch,
+  +files/driftnet-0.1.6-tmpnam-is-bad.diff, driftnet-0.1.6.ebuild:
+  Use giflib rather than libungif for bug 85720. Also removed unnecessary
+  nogtk patch since it can easily be done with a sed. Added a patch to fix a
+  few warnings, most importantly the use of tmpnam().
+
+  06 Mar 2005; Joseph Jezak <josejx@gentoo.org> driftnet-0.1.6.ebuild:
+  Marked ppc stable for bug #84140.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> driftnet-0.1.6.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> driftnet-0.1.6.ebuild:
+  Added to ~ppc.
+
+  31 Jul 2004; <malc@gentoo.org> driftnet-0.1.6.ebuild:
+  ~amd64 - closes bug #57959
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml:
+  Added metadata
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> driftnet-0.1.6.ebuild:
+  Fix use invocation
+
+  23 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> driftnet-0.1.6.ebuild:
+  bug #42676 - change to virtual/mpg123
+
+  26 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> driftnet-0.1.6.ebuild:
+  use epatch; more error checking/messages; tidy
+
+  05 Dec 2003; Chuck Short <zul@gentoo.org> driftnet-0.1.6.ebuild:
+  Chown fixes.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*driftnet-0.1.6 (19 Jul 2002)
   19 Jul 2002; Spider <spider@gentoo.org> driftnet-0.16.ebuild :
   New package  

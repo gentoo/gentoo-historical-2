@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyprotocols/pyprotocols-0.9.2.ebuild,v 1.1 2004/07/16 21:25:50 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyprotocols/pyprotocols-0.9.2.ebuild,v 1.1.1.1 2005/11/30 10:10:07 chriswhite Exp $
 
 inherit distutils
 
@@ -14,7 +14,7 @@ LICENSE="ZPL"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="sys-devel/gcc
 		>=dev-lang/python-2.2"

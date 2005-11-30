@@ -1,8 +1,7 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-docs/python-docs-2.2.3.ebuild,v 1.1 2003/07/13 01:38:01 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-docs/python-docs-2.2.3.ebuild,v 1.1.1.1 2005/11/30 10:10:13 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="HTML documentation for Python"
 SRC_URI="http://www.python.org/ftp/python/doc/${PV}/html-${PV}.tar.bz2"
 HOMEPAGE="http://www.python.org/doc/2.2/"
@@ -10,12 +9,13 @@ DEPEND=""
 RDEPEND=""
 SLOT="2.2"
 LICENSE="PSF-2.2"
-KEYWORDS="x86 ppc sparc alpha"
+KEYWORDS="x86 ppc sparc alpha hppa ia64 amd64 mips s390 ppc64"
+IUSE=""
 
 src_unpack() {
 	mkdir ${S}
-	cd ${S} 
-	unpack ${A} 
+	cd ${S}
+	unpack ${A}
 }
 
 

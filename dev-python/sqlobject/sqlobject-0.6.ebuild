@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlobject/sqlobject-0.6.ebuild,v 1.1 2004/10/08 03:53:54 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sqlobject/sqlobject-0.6.ebuild,v 1.1.1.1 2005/11/30 10:10:29 chriswhite Exp $
 
 inherit distutils
 
@@ -11,19 +11,22 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="postgres mysql sqlite firebird"
+IUSE="postgres mysql sqlite firebird doc"
 RDEPEND=">=dev-lang/python-2.2
 		postgres? ( >=dev-python/psycopg-1.1.11 )
 		mysql? ( >=dev-python/mysql-python-0.9.2-r1 )
-		sqlite? ( >=dev-python/pysqlite-0.5.0 )
+		sqlite? ( <dev-python/pysqlite-2.0 )
 		firebird? ( >=dev-python/kinterbasdb-3.0.2 )"
 
 S=${WORKDIR}/${MY_P}
 
+
 src_install() {
 	distutils_src_install
-	dodoc docs/*.txt
-	dohtml docs/*.css docs/*.html
-	docinto examples
-	dodoc examples/*
+	if use doc; then
+		dodoc docs/*.txt
+		dohtml docs/*.css docs/*.html
+		docinto examples
+		dodoc examples/*
+	fi
 }

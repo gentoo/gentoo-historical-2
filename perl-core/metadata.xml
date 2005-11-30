@@ -6,12 +6,16 @@
 		Perl programming language.
 	</longdescription>
 	<longdescription lang="de">
-		Die Kategorie perl-core enthÃ¤lt Bibliotheken und Werkzeuge fÃ¼r die 
+		Die Kategorie perl-core enthält Bibliotheken und Werkzeuge für die 
 		Programmiersprache Perl.
 	</longdescription>
 	<longdescription lang="es">
 		La categoría perl-core contiene librerías y utilidades referentes
 		al lenguaje de programación Perl.
+	</longdescription>
+	<longdescription lang="ja">
+		perl-coreカテゴリーにはPerl プログラミング言語に関連にするライブラリと
+		ユーティリティが含まれて>います。
 	</longdescription>
 	<longdescription lang="nl">
 		De perl-core categorie bevat bibliotheken en hulpmiddelen voor het gebruik
@@ -20,6 +24,10 @@
 	<longdescription lang="vi">
 		Nhóm perl-core chứa các thư viện và tiện ích liên quan
 		đến ngôn ngữ lập trình Perl.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria perl-core contiene librerie ed utilità per il linguaggio di
+		programmazione Perl.
 	</longdescription>
 </catmetadata>
 

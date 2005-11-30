@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pystatgrab/pystatgrab-0.3.ebuild,v 1.1 2005/04/19 14:37:27 dams Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pystatgrab/pystatgrab-0.3.ebuild,v 1.1.1.1 2005/11/30 10:10:27 chriswhite Exp $
 
 inherit distutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.mirrorservice.org/sites/ftp.i-scream.org/pub/i-scream/pystat
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~amd64 ppc x86"
 
 DEPEND="virtual/python
 	>=sys-libs/libstatgrab-0.9"

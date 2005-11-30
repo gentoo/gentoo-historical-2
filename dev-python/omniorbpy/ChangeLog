@@ -1,17 +1,56 @@
-# ChangeLog for dev-python/omniORBpy
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/omniorbpy/ChangeLog,v 1.1 2004/07/17 00:40:43 kloeri Exp $
+# ChangeLog for dev-python/omniorbpy
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/omniorbpy/ChangeLog,v 1.1.1.1 2005/11/30 10:10:11 chriswhite Exp $
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> omniorbpy-2.5.ebuild:
+  Stable on ppc.
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> omniorbpy-2.5.ebuild:
+  stable on amd64
+
+*omniorbpy-2.6 (20 Apr 2005)
+
+  20 Apr 2005; Alastair Tse <liquidx@gentoo.org> omniorbpy-2.3.ebuild,
+  omniorbpy-2.5.ebuild, +omniorbpy-2.6.ebuild:
+  version bump. also fix ssl useflag typo (#82820). fixed hardcoding of python
+  version in 2.3 (#89794)
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Nov 2004; Alastair Tse <liquidx@gentoo.org> omniorbpy-2.5.ebuild:
+  changed install paths for CORBA.py and PortableServer.py will not collide
+  with pyorbit. Most (if not all) programs specifiy which CORBA implementation
+  to use anyway.
+
+*omniorbpy-2.5 (16 Nov 2004)
+
+  16 Nov 2004; Alastair Tse <liquidx@gentoo.org>
+  +files/omniorbpy-2.4-newstyleobj.patch, -omniorbpy-2.0.ebuild,
+  -omniorbpy-2.2.ebuild, omniorbpy-2.3.ebuild, +omniorbpy-2.5.ebuild:
+  add newstyle python class support patch. version bump
+
+*omniorbpy-2.4 (04 Oct 2004)
+
+  04 Oct 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> +omniorbpy-2.4.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> omniorbpy-2.3.ebuild:
+  Added to ~ppc.
 
 *omniorbpy-2.2 (17 Jul 2004)
 
-  17 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
+  17 Jul 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> +metadata.xml,
   +omniorbpy-2.0.ebuild, +omniorbpy-2.2.ebuild, +omniorbpy-2.3.ebuild:
   Rename to omniorbpy.
 
   10 May 2004; Travis Tilley <lv@gentoo.org> omniORBpy-2.3.ebuild:
   added ~amd64 keyword
 
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> omniORBpy-2.0.ebuild,
+  04 May 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> omniORBpy-2.0.ebuild,
   omniORBpy-2.2.ebuild, omniORBpy-2.3.ebuild:
   Remove default S.
 
@@ -21,7 +60,7 @@
 
 *omniORBpy-2.3 (15 Dec 2003)
 
-  15 Dec 2003; Bryan Østergaard,,, <kloeri@gentoo.org> omniORBpy-2.3.ebuild:
+  15 Dec 2003; Bryan Ã˜stergaard,,, <kloeri@gentoo.org> omniORBpy-2.3.ebuild:
   Version bump.
 
 *omniORBpy-2.2 (03 Oct 2003)

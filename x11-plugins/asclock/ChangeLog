@@ -1,7 +1,21 @@
-# ChangeLog for x11-misc/asclock
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asclock/ChangeLog,v 1.1 2002/11/03 16:17:54 seemant Exp $
+# ChangeLog for x11-plugins/asclock
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asclock/ChangeLog,v 1.1.1.1 2005/11/30 10:10:40 chriswhite Exp $
 
+  17 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Added metadata.xml (afterstep herd).
+
+  06 Sep 2004; Hardave Riar <hardave@gentoo.org> asclock-2.0.12.ebuild:
+  Stable on mips
+
+  08 Jul 2004; Hardave Riar <hardave@gentoo.org> asclock-2.0.12.ebuild:
+  Added ~mips KEYWORD
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> asclock-2.0.12.ebuild:
+  glibc -> libc
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *asclock-2.0.12 (14 Apr 2002)
 
   14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> asclock-2.0.12-r1.ebuild :

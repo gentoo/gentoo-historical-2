@@ -1,20 +1,19 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/barnyard/barnyard-0.1.0.ebuild,v 1.1 2003/08/10 01:23:54 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/barnyard/barnyard-0.1.0.ebuild,v 1.1.1.1 2005/11/30 10:12:42 chriswhite Exp $
 
 IUSE="mysql"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Fast output system for Snort"
 SRC_URI="http://www.snort.org/dl/barnyard/barnyard-${PV}.tar.gz"
 HOMEPAGE="http://www.snort.org"
 
 SLOT="0"
 LICENSE="QPL"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 -sparc"
 
-DEPEND="virtual/glibc
-	net-libs/libpcap
+DEPEND="virtual/libc
+	virtual/libpcap
 	mysql? ( >=dev-db/mysql-3.23.26 )"
 
 RDEPEND="${DEPEND}
@@ -22,18 +21,14 @@ RDEPEND="${DEPEND}
 
 src_compile() {
 	local myconf
+	myconf="${myconf} $(use_enable mysql)"
 
-	use mysql && myconf="${myconf} --enable-mysql" \
-		|| myconf="${myconf} --disable-mysql"
+	if use mysql; then
+		sed -i '/AC_CHECK_LIB(mysqlclient, mysql_connect, FOUND=yes, FOUND=no)/s/mysql_connect/mysql_real_connect/' \
+		configure.in
+	fi
 
-#	./configure \
-#		--prefix=/usr \
-#		--sysconfdir=/etc/snort \    	
-#		--localstatedir=/var \
-#		--mandir=/usr/share/man \
-#		--host=${CHOST} ${myconf} || die "bad ./configure"
-
-	econf --sysconfdir=/etc/snort ${myconf} || die "bad ./configure"
+	econf --sysconfdir=/etc/snort ${myconf} || die "econf failed"
 	emake || die "compile problem"
 }
 

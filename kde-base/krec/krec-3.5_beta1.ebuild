@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/krec/krec-3.5_beta1.ebuild,v 1.1 2005/09/22 20:15:35 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/krec/krec-3.5_beta1.ebuild,v 1.1.1.1 2005/11/30 10:13:33 chriswhite Exp $
 
 KMNAME=kdemultimedia
 MAXKDEVER=$PV
@@ -8,21 +8,18 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE sound recorder"
-KEYWORDS="~amd64"
-IUSE="vorbis encode"
+KEYWORDS="~amd64 ~x86"
+IUSE="encode mp3 vorbis"
 OLDDEPEND="
 	~kde-base/kdemultimedia-arts-$PV
-	vorbis? ( media-libs/libvorbis )
-	encode? ( media-sound/lame )"
-DEPEND="$(deprange $PV $MAXKDEVER kde-base/kdemultimedia-arts)
-	vorbis? ( media-libs/libvorbis )
-	encode? ( media-sound/lame )"
+	encode? ( mp3? ( media-sound/lame )
+	          vorbis? ( media-libs/libvorbis ) )"
 
-KMCOPYLIB="libartsgui_kde arts/gui/kde/
-	libartscontrolsupport arts/tools/"
-KMEXTRACTONLY="
-	arts/
-	kioslave/audiocd/configure.in.in"
+DEPEND="$(deprange $PV $MAXKDEVER kde-base/kdemultimedia-arts)
+	encode? ( mp3? ( media-sound/lame )
+	          vorbis? ( media-libs/libvorbis ) )"
+
+KMCOMPILEONLY="arts"
 
 pkg_setup() {
 	if ! useq arts; then
@@ -32,7 +29,11 @@ pkg_setup() {
 }
 
 src_compile() {
-	use vorbis && myconf="$myconf --with-vorbis=/usr" || myconf="$myconf --without-vorbis"
-	use encode && myconf="$myconf --with-lame=/usr" || myconf="$myconf --without-lame"
+	if use encode; then
+		myconf="$(use_with mp3 lame) $(use_with vorbis)"
+	else
+		myconf="--without-lame --without-vorbis"
+	fi
+
 	kde-meta_src_compile
 }

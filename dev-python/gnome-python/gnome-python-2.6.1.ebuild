@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gnome-python/gnome-python-2.6.1.ebuild,v 1.1 2004/11/24 15:48:29 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gnome-python/gnome-python-2.6.1.ebuild,v 1.1.1.1 2005/11/30 10:10:15 chriswhite Exp $
 
 inherit gnome2 python eutils
 
 DESCRIPTION="GNOME 2 bindings for Python"
-HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
+HOMEPAGE="http://www.pygtk.org/"
 
-IUSE="gtkhtml"
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~amd64"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+IUSE="gtkhtml"
 
 RDEPEND=">=dev-lang/python-2.2
 	>=dev-python/pygtk-2.4
@@ -30,11 +30,12 @@ RDEPEND=">=dev-lang/python-2.2
 	>=gnome-base/libgnomeprint-2.2
 	>=gnome-base/libgnomeprintui-2.2
 	gtkhtml? ( =gnome-extra/libgtkhtml-2* )"
-
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0"
 
-DOCS="AUTHORS COPYING ChangeLog INSTALL NEWS README"
+# Skip test, to avoid gnome-python-2.0 block (fixes bug 72594)
+RESTRICT="test"
+DOCS="AUTHORS ChangeLog INSTALL NEWS README"
 
 src_unpack() {
 	unpack ${A}
@@ -63,4 +64,3 @@ pkg_postrm() {
 	python_version
 	python_mod_cleanup
 }
-

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipkungfu/ipkungfu-0.5.0.ebuild,v 1.1 2003/08/31 20:32:52 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipkungfu/ipkungfu-0.5.0.ebuild,v 1.1.1.1 2005/11/30 10:11:17 chriswhite Exp $
 
 inherit eutils
 
@@ -10,16 +10,16 @@ SRC_URI="http://www.linuxkungfu.org/ipkungfu/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc" 
+KEYWORDS="~x86 ~sparc"
 IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	net-firewall/iptables"
 
 
 src_unpack() {
 	unpack ${A}
-	
+
 	# man page comes bzip2'd, so bunzip2 it.
 	cd ${WORKDIR}/${P}/files
 	bunzip2 ipkungfu.8.bz2
@@ -27,7 +27,7 @@ src_unpack() {
 
 src_install() {
 
-	# Package comes with a hard coded shell script, so here we 
+	# Package comes with a hard coded shell script, so here we
 	# replicate what they did, but so it's compatible with portage.
 
 	# Install shell script executable
@@ -35,7 +35,7 @@ src_install() {
 
 	# Install Gentoo init script
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/ipkungfu.init ipkungfu	
+	newexe ${FILESDIR}/ipkungfu.init ipkungfu
 
 	# Install config files into /etc
 	dodir /etc/ipkungfu

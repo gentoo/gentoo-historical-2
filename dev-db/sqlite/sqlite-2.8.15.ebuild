@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-2.8.15.ebuild,v 1.1 2004/08/06 00:59:14 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-2.8.15.ebuild,v 1.1.1.1 2005/11/30 10:11:34 chriswhite Exp $
+
+inherit eutils
 
 IUSE="nls"
 
@@ -12,7 +14,17 @@ DEPEND="virtual/libc
 	dev-lang/tcl"
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~ppc64 ~amd64"
+KEYWORDS="x86 ppc sparc alpha arm mips hppa ~ppc64 amd64 ppc-macos"
+
+src_unpack() {
+
+	unpack ${A}
+
+	cd ${S}
+
+	use hppa && epatch ${FILESDIR}/${P}-alignement-fix.patch
+
+}
 
 src_compile() {
 	local myconf

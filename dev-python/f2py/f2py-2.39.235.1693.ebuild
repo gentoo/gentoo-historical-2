@@ -1,25 +1,22 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/f2py/f2py-2.39.235.1693.ebuild,v 1.1 2004/05/02 00:30:01 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/f2py/f2py-2.39.235.1693.ebuild,v 1.1.1.1 2005/11/30 10:10:30 chriswhite Exp $
 
 inherit distutils
 
 PN0="F2PY"
 PV0="2.39.235_1693"
+
+S=${WORKDIR}/${PN0}-${PV0}
 DESCRIPTION="Fortran to Python interface generator"
 HOMEPAGE="http://cens.ioc.ee/projects/f2py2e/"
 SRC_URI="http://cens.ioc.ee/projects/f2py2e/2.x/${PN0}-${PV0}.tar.gz"
-
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-
+KEYWORDS="x86 ~ppc"
 IUSE=""
-
 DEPEND="dev-lang/python
-		dev-python/numeric"
-
-S=${WORKDIR}/${PN0}-${PV0}
+	dev-python/numeric"
 
 src_install() {
 	distutils_src_install
@@ -28,3 +25,4 @@ src_install() {
 	insinto /usr/share/doc/${P}/usersguide
 	doins ${S}/docs/usersguide/*
 }
+

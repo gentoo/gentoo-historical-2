@@ -1,6 +1,54 @@
 # ChangeLog for dev-python/soya
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/soya/ChangeLog,v 1.1 2003/05/10 18:46:25 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/soya/ChangeLog,v 1.1.1.1 2005/11/30 10:10:07 chriswhite Exp $
+
+*soya-0.10.1 (29 Sep 2005)
+*soya-0.10 (29 Sep 2005)
+
+  29 Sep 2005; Bryan Østergaard <kloeri@gentoo.org> +soya-0.10.ebuild,
+  +soya-0.10.1.ebuild:
+  New versions, ebuilds by Arc Riley <arc@xiph.org>.
+
+  12 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> -soya-0.5.ebuild,
+  -soya-0.6.1.ebuild, -soya-0.8.1.ebuild, -soya-0.8.2.ebuild,
+  soya-0.9.2.ebuild:
+  Remove old versions and bump stable.
+
+*soya-0.9.2 (10 Feb 2005)
+
+  10 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> soya-0.9.1.ebuild,
+  +soya-0.9.2.ebuild:
+  Version bump + stable bump.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*soya-0.9.1 (30 Dec 2004)
+
+  30 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> +soya-0.9.1.ebuild:
+  Version bump, cleaned up a bit from ebuild by Ali Sabil
+  <hybrid@tuxfamily.org> in bug 75967.
+
+*soya-0.8.2 (02 Nov 2004)
+
+  02 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> +soya-0.8.2.ebuild:
+  Version bump.
+
+*soya-0.8.1 (16 Oct 2004)
+
+  16 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> +soya-0.8.1.ebuild:
+  Version bump, bug 66329.
+
+  01 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> soya-0.3.1.ebuild,
+  soya-0.5.ebuild, soya-0.6.1.ebuild:
+  Mark 0.6.1 stable on x86, change homepage + src_uri, remove old version.
+
+*soya-0.6.1 (21 Dec 2003)
+
+  21 Dec 2003; Bryan Østergaard,,, <kloeri@gentoo.org> soya-0.6.1.ebuild:
+  Version bump
+
+*soya-0.5 (05 Dec 2003)
 
 *soya-0.3.1 (10 May 2003)
 

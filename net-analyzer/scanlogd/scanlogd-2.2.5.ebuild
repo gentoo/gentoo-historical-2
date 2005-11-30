@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanlogd/scanlogd-2.2.5.ebuild,v 1.1 2005/03/22 23:11:48 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanlogd/scanlogd-2.2.5.ebuild,v 1.1.1.1 2005/11/30 10:12:07 chriswhite Exp $
 
 inherit eutils
 
@@ -11,13 +11,13 @@ HOMEPAGE="http://www.openwall.com/scanlogd/"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 DEPEND="virtual/libc"
 
 pkg_setup() {
 	enewgroup scanlogd
-	enewuser scanlogd -1 /bin/false /dev/null scanlogd
+	enewuser scanlogd -1 -1 /dev/null scanlogd
 }
 
 src_compile() {

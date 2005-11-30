@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zodiac/zodiac-0.4.9-r1.ebuild,v 1.1 2003/08/21 05:05:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zodiac/zodiac-0.4.9-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:19 chriswhite Exp $
 
 inherit eutils
 
@@ -10,14 +10,15 @@ SRC_URI="http://www.packetfactory.net/projects/zodiac/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 DEPEND="sys-libs/ncurses
-	>=net-libs/libnet-1.0.2a-r3
 	<net-libs/libnet-1.1
-	net-libs/libpcap"
+	>=net-libs/libnet-1.0.2a-r3
+	virtual/libpcap"
 
 S=${WORKDIR}/${PN}
+IUSE=""
 
 src_unpack() {
 	unpack ${A}

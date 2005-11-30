@@ -1,18 +1,20 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fping/fping-2.4_beta2.ebuild,v 1.1 2002/06/28 11:54:12 bangert Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fping/fping-2.4_beta2.ebuild,v 1.1.1.1 2005/11/30 10:12:34 chriswhite Exp $
 
 S=${WORKDIR}/fping-2.4b2_to-ipv6
 DESCRIPTION="A utility to ping multiple hosts at once"
 SRC_URI="http://www.fping.com/download/fping-2.4b2_to-ipv6.tar.gz"
 HOMEPAGE="http://www.fping.com/"
+
 SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc ppc-macos"
+IUSE=""
 
 src_compile() {
 
-	./configure --prefix=/usr \
-		--host=${CHOST} || die
-		
+	econf || die
 	make || die
 }
 
@@ -22,4 +24,3 @@ src_install () {
 	doman fping.8
 	dodoc COPYING ChangeLog README
 }
-

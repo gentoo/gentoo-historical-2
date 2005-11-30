@@ -1,6 +1,24 @@
 # ChangeLog for x11-plugins/desklet-hypertail
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-hypertail/ChangeLog,v 1.1 2005/04/23 05:26:33 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-hypertail/ChangeLog,v 1.1.1.1 2005/11/30 10:10:41 chriswhite Exp $
+
+  31 Jul 2005; Joe Sapp <nixphoeni@gentoo.org>
+  desklet-hypertail-2.01-r1.ebuild:
+  Stable on x86
+
+  09 May 2005; David Holm <dholm@gentoo.org>
+  desklet-hypertail-2.01-r1.ebuild:
+  Added to ~ppc.
+
+  28 Apr 2005; Joe Sapp <nixphoeni@gentoo.org>
+  -desklet-hypertail-2.01.ebuild:
+  Removing since RDEPEND didn't have the necessary entry
+
+*desklet-hypertail-2.01-r1 (28 Apr 2005)
+
+  28 Apr 2005; Joe Sapp <nixphoeni@gentoo.org>
+  +desklet-hypertail-2.01-r1.ebuild:
+  Added desklet-regexp to RDEPEND
 
 *desklet-hypertail-2.01 (23 Apr 2005)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.60.ebuild,v 1.1 2004/05/21 17:31:13 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.60.ebuild,v 1.1.1.1 2005/11/30 10:10:06 chriswhite Exp $
 
 inherit eutils
 
@@ -8,20 +8,20 @@ MY_P=${P}-gpl-1.3
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="QScintilla is a port to Qt of Neil Hodgson's Scintilla C++ editor class."
-SRC_URI="http://www.river-bank.demon.co.uk/download/QScintilla/${MY_P}.tar.gz"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 HOMEPAGE="http://www.riverbankcomputing.co.uk/qscintilla/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64"
+KEYWORDS="x86 ppc sparc alpha ~ia64 amd64"
 IUSE="doc"
 
-DEPEND="virtual/glibc
-	x11-libs/qt"
+DEPEND="virtual/libc
+	=x11-libs/qt-3*"
 
 src_compile() {
 	cd ${S}/qt
-	qmake -o Makefile qscintilla.pro
+	${QTDIR}/bin/qmake -o Makefile qscintilla.pro
 	sed -i -e "s/CFLAGS   = -pipe -w -O2/CFLAGS   = ${CFLAGS} -w/" Makefile
 	sed -i -e "s/CXXFLAGS = -pipe -w -O2/CXXFLAGS = ${CXXFLAGS} -w/" Makefile
 	epatch ${FILESDIR}/${P}-sandbox.patch

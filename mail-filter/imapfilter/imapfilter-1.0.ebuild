@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/imapfilter/imapfilter-1.0.ebuild,v 1.1 2004/06/14 19:36:50 rizzo Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/imapfilter/imapfilter-1.0.ebuild,v 1.1.1.1 2005/11/30 10:12:05 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="An IMAP mail filtering utility"
 HOMEPAGE="http://imapfilter.hellug.gr"
@@ -8,9 +10,10 @@ SRC_URI="http://imapfilter.hellug.gr/source/${P}.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
+IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	dev-libs/openssl
 	dev-lang/lua"
 
@@ -29,4 +32,3 @@ src_install() {
 
 	dodoc LICENSE NEWS README sample.config.lua sample.extend.lua
 }
-

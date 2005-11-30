@@ -1,9 +1,105 @@
-# ChangeLog for net-misc/firestarter
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# Author: José Alberto Suárez López <bass@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/firestarter/ChangeLog,v 1.1 2003/02/09 16:50:36 mholzer Exp $
- 
+# ChangeLog for net-firewall/firestarter
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/firestarter/ChangeLog,v 1.1.1.1 2005/11/30 10:11:18 chriswhite Exp $
+
+  03 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/firestarter-0.9.2-kernel_2.6_fix.patch,
+  -firestarter-0.9.2-r1.ebuild, -firestarter-0.9.3.ebuild:
+  remove old version 0.9 files and ebuilds
+
+  01 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  firestarter-1.0.3.ebuild:
+  Stable for sparc, closing Bug 99688, at request of Mr_Bones_.
+
+  01 Aug 2005; Joseph Jezak <josejx@gentoo.org> firestarter-1.0.3.ebuild:
+  Marked ppc stable for bug #99688.
+
+  22 Jul 2005; Herbie Hopkins <herbs@gentoo.org> firestarter-1.0.3.ebuild:
+  Stable on amd64 wrt bug #99688.
+
+  22 Jul 2005; Markus Rothe <corsair@gentoo.org> firestarter-1.0.3.ebuild:
+  Stable on ppc64 (bug #99688)
+
+  12 Jun 2005; Bryan Ã˜stergaard <kloeri@gentoo.org>
+  firestarter-0.9.3.ebuild, firestarter-1.0.3.ebuild:
+  Stable on alpha.
+
+  10 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  firestarter-1.0.3.ebuild:
+  stable for x86
+
+  21 May 2005; Bryan Ã˜stergaard <kloeri@gentoo.org>
+  firestarter-0.9.3.ebuild:
+  Stable on alpha.
+
+*firestarter-1.0.3 (10 May 2005)
+
+  10 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/firestarter-1.0.3, firestarter-0.9.3.ebuild,
+  +firestarter-1.0.3.ebuild:
+  version bump to 1.0.3 (currently masked until testing is done); stablize
+  0.9.3 for x86.
+  init script from Ryan Stinnett, ebuild additions from Russell Chait
+  (bug #76450)
+
+  03 May 2005; Aron Griffis <agriffis@gentoo.org> firestarter-0.9.3.ebuild:
+  stable on amd64
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  firestarter-0.9.2-r1.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  28 Sep 2004; Simon Stelling <blubb@gentoo.org> firestarter-0.9.3.ebuild:
+  added ~amd64
+
+  29 Aug 2004; Tom Gall <tgall@gentoo.org> firestarter-0.9.3.ebuild:
+  added ~ppc64 bug #60780
+
+  05 Jun 2004; Bryan Ã˜stergaard <kloeri@gentoo.org>
+  firestarter-0.9.2-r1.ebuild:
+  Stable on alpha.
+
+  04 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  firestarter-0.8.3.ebuild, firestarter-0.9.2.ebuild,
+  files/firestarter-0.9.1-gcc2_fixes.patch:
+  clean out old ebuilds and files
+
+*firestarter-0.9.3 (04 Jun 2004)
+
+  04 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  firestarter-0.9.3.ebuild:
+  version bump (bug #52468)
+
+*firestarter-0.9.2-r1 (06 Dec 2003)
+
+  06 Dec 2003; foser <foser@gentoo.org> firestarter-0.9.2-r1.ebuild :
+  Added patch to fix kernel 2.6 detection, patch taken from 
+  reported by James Lademann <jwlademann@myrealbox.com> in #32903
+
+  09 Jul 2003; Alastair Tse <liquidx@gentoo.org> firestarter-0.9.1.ebuild,
+  firestarter-0.9.2.ebuild:
+  added pkgconfig deps
+
+*firestarter-0.9.2 (12 Jun 2003)
+
+  12 Jun 2003; <msterret@gentoo.org> firestarter-0.9.2.ebuild:
+  version bump
+
 *firestarter-0.9.1 (31 Jan 2003)
+
+  11 Mar 2003; Martin Holzer <mholzer@gentoo.org> firestarter-0.8.2.ebuild,
+  firestarter-0.8.3.ebuild, firestarter-0.9.0.ebuild,
+  firestarter-0.9.1.ebuild:
+  changed sys-apps/iptables to net-firewall/iptables
+
+  04 Mar 2003; Aron Griffis <agriffis@gentoo.org> firestarter-0.9.1.ebuild:
+  Mark stable on alpha
+
+  15 Feb 2003; foser <foser@gentoo.org> firestarter-0.9.1.ebuild :
+  Added gcc2 fixes patch kindly provided by <michael.sterrett@coat.com> (#15461)
 
   09 Feb 2003; Martin Holzer <mholzer@gentoo.org> :
   Moved from net-misc to net-firewall

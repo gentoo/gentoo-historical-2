@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyro/pyro-3.3-r1.ebuild,v 1.1 2004/07/07 02:34:39 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyro/pyro-3.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:09 chriswhite Exp $
 
 inherit distutils eutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pyro/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc ~amd64"
 IUSE=""
 
 DEPEND="virtual/python"

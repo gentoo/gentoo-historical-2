@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.3.2-r10.ebuild,v 1.1 2005/07/18 16:25:54 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.3.2-r10.ebuild,v 1.1.1.1 2005/11/30 10:12:52 chriswhite Exp $
 
 inherit kde eutils flag-o-matic
 set-kdedir 3.3
@@ -17,13 +17,13 @@ SRC_URI="mirror://kde/stable/${PV}/src/${P}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="3.3"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="alsa arts cups doc ipv6 kerberos ldap spell ssl tiff"
 
 # kde.eclass has kdelibs in DEPEND, and we can't have that in here.
 # so we recreate the entire DEPEND from scratch.
 RDEPEND="arts? ( ~kde-base/arts-1.3.2 )
-	>=x11-libs/qt-3.3.3
+	$(qt_min_version 3.3.3)
 	app-arch/bzip2
 	>=dev-libs/libxslt-1.1.4
 	>=dev-libs/libxml2-2.6.6
@@ -83,9 +83,6 @@ src_unpack() {
 
 	# see bug #98735.
 	epatch ${FILESDIR}/post-3.3.2-kdelibs-kate.diff
-
-
-	
 }
 
 src_compile() {

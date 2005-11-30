@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pysqlite/pysqlite-1.0.1.ebuild,v 1.1 2005/04/24 10:47:30 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysqlite/pysqlite-1.0.1.ebuild,v 1.1.1.1 2005/11/30 10:10:12 chriswhite Exp $
 
 inherit distutils
 
@@ -9,11 +9,11 @@ DESCRIPTION="Python wrapper for the local database Sqlite"
 SRC_URI="mirror://sourceforge/pysqlite/pysqlite-${PV}.tar.gz"
 HOMEPAGE="http://pysqlite.sourceforge.net/"
 
-KEYWORDS="~x86 ~sparc ~amd64"
+KEYWORDS="amd64 sparc x86"
 LICENSE="pysqlite"
 SLOT="0"
 
-DEPEND="virtual/python
+DEPEND=">=dev-lang/python-2.2
 	=dev-db/sqlite-2*"
 
 src_unpack() {

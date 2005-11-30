@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/pgaccess/pgaccess-0.98.8.ebuild,v 1.1 2003/03/18 05:23:54 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgaccess/pgaccess-0.98.8.ebuild,v 1.1.1.1 2005/11/30 10:11:40 chriswhite Exp $
 
 DESCRIPTION="a database frontend for postgresql"
 HOMEPAGE="http://www.pgaccess.org/"
@@ -8,7 +8,7 @@ SRC_URI="http://www.pgaccess.org/download/${P}.tar.gz"
 LICENSE="POSTGRESQL"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64 ~ppc"
 IUSE=""
 
 # Build-time dependencies
@@ -16,14 +16,18 @@ DEPEND=">=dev-lang/tcl-8.3.4
 	>=dev-lang/tk-8.3.4
 	>=dev-db/postgresql-7.3"
 
-S=${WORKDIR}/${P}
 
 src_compile() {
 	cd ${S}
 	patch -p1 < ${FILESDIR}/${P}.patch || die
-	emake prefix=${D} || die
 }
 
 src_install() {
-	einstall || die
+	make prefix=${D} install || die
+}
+
+pkg_postinst() {
+	einfo "When running the program, if you encount the error "
+	einfo "\"Error: Shared library file: '/usr/lib/libpgtcl.so' does not exist.\","
+	einfo "you need to emerge postgresql with USE='tcltk' again"
 }

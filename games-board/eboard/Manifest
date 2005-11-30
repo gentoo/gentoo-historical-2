@@ -1,4 +1,14 @@
-MD5 3c36db72c37ae94198738d7f8abf6eb3 files/digest-eboard-0.8.0 134
-MD5 6953acbec0a7bbd9597ced29af533fd1 files/0.8.0-fake-nls.patch 191
-MD5 6474ae5b7ed1438aabaf4421b3e10fe6 eboard-0.8.0.ebuild 1220
-MD5 a7100e9b147a141fb35693df7cc48a62 ChangeLog 1662
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 a8f1ffc950e6ce94583fb88ddd1b92cb eboard-0.9.5.ebuild 1835
+MD5 7c4dd5de233fdbfc6ea51d256114c286 ChangeLog 2682
+MD5 f37e8356d4b5cb9585c1bdae8dcd889c files/digest-eboard-0.9.5 201
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1-ecc0.1.6 (GNU/Linux)
+
+iD8DBQFDAf4nKRy60XGEcJIRAgfJAJsG1PpKJgKbXmas9sB+U0NrgKqNygCgpgXK
++mSd3Bw2CXcBA5vXCLRL4Xw=
+=0xYw
+-----END PGP SIGNATURE-----

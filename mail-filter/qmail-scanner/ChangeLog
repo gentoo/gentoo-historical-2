@@ -1,6 +1,130 @@
-# ChangeLog for net-mail/qmail-scanner
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/qmail-scanner/ChangeLog,v 1.1 2004/07/17 08:48:36 st_lim Exp $
+# ChangeLog for mail-filter/qmail-scanner
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/qmail-scanner/ChangeLog,v 1.1.1.1 2005/11/30 10:11:52 chriswhite Exp $
+
+  23 Aug 2005; Andrej Kacian <ticho@gentoo.org>
+  qmail-scanner-1.23-r2.ebuild, qmail-scanner-1.23-r3.ebuild,
+  qmail-scanner-1.24.ebuild, qmail-scanner-1.25.ebuild,
+  qmail-scanner-1.25-r1.ebuild:
+  Use -1 for shell argument to enewuser. Bug #103421.
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org>
+  qmail-scanner-1.25-r1.ebuild:
+  stable on amd64
+
+  05 Jun 2005; Jory A. Pratt <anarchy@gentoo.org>
+  qmail-scanner-1.25-r1.ebuild:
+  added addpredict /opt/bdc/plugins.htm
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org>
+  qmail-scanner-1.23-r2.ebuild, qmail-scanner-1.23-r3.ebuild,
+  qmail-scanner-1.24.ebuild, qmail-scanner-1.25.ebuild,
+  qmail-scanner-1.25-r1.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  qmail-scanner-1.25-r1.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  qmail-scanner-1.25.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  qmail-scanner-1.24.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  qmail-scanner-1.23-r3.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  qmail-scanner-1.23-r2.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  qmail-scanner-1.16-r2.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  qmail-scanner-1.16-r2.ebuild, qmail-scanner-1.23-r2.ebuild,
+  qmail-scanner-1.23-r3.ebuild, qmail-scanner-1.24.ebuild,
+  qmail-scanner-1.25-r1.ebuild, qmail-scanner-1.25.ebuild:
+  dev-perl/DB_File => perl-core/DB_File
+
+  23 May 2005; <anarchy@gentoo.org> qmail-scanner-1.25-r1.ebuild:
+  restricting userpriv usersandbox bug #93447
+
+*qmail-scanner-1.25-r1 (10 Apr 2005)
+
+  10 Apr 2005; Lim Swee Tat <st_lim@gentoo.org>
+  +qmail-scanner-1.25-r1.ebuild:
+  Version bump for the qmail scanner spam assassin patch
+
+  05 Apr 2005; Lim Swee Tat <st_lim@gentoo.org> qmail-scanner-1.25.ebuild:
+  Fixed bug #85365
+
+  22 Mar 2005; <blubb@gentoo.org> qmail-scanner-1.25.ebuild:
+  added ~amd64
+
+*qmail-scanner-1.25 (18 Feb 2005)
+
+  18 Feb 2005; Lim Swee Tat <st_lim@gentoo.org> +qmail-scanner-1.25.ebuild:
+  Version bumpped
+
+*qmail-scanner-1.24 (21 Nov 2004)
+
+  21 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> +qmail-scanner-1.24.ebuild:
+  Version bump. There are some interesting new options in the new st patch,
+  but not used here.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> qmail-scanner-1.23-r3.ebuild:
+  Stable on sparc.
+
+  09 Sep 2004; Robin Johnson,,604-339-5621,604-298-8414 <robbat2@gentoo.org>
+  qmail-scanner-1.23-r3.ebuild:
+  Stabilize -r3 as perl without suidperl is now stable on x86.
+
+*qmail-scanner-1.23-r3 (31 Aug 2004)
+
+  31 Aug 2004; Lim Swee Tat <st_lim@gentoo.org> +qmail-scanner-1.23-r3.ebuild:
+  Using latest q-s code of 20040819.
+
+*qmail-scanner-1.23-r2 (18 Aug 2004)
+
+  18 Aug 2004; Lim Swee Tat <st_lim@gentoo.org> +qmail-scanner-1.23-r2.ebuild:
+  Version bumped the q-s patch. Using new system for using that patch.
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org>
+  qmail-scanner-1.22-r1.ebuild, qmail-scanner-1.23-r1.ebuild:
+  Fix USE-flag usage in DEPEND. Should be spamassassin? instead of plain
+  spamassassin
+
+*qmail-scanner-1.23-r1 (16 Aug 2004)
+
+  16 Aug 2004; Lim Swee Tat <st_lim@gentoo.org> +qmail-scanner-1.23-r1.ebuild:
+  Added the qmail-scanner spamassassin patch
+
+*qmail-scanner-1.23 (14 Aug 2004)
+
+  14 Aug 2004; Robin H. Johnson <robbat2@gentoo.org> +qmail-scanner-1.23:
+  Add new version, add more virii. Bug 60201. Spamassassin support NOT yet
+  available.
+
+  09 Aug 2004; Robin H. Johnson <robbat2@gentoo.org>
+  qmail-scanner-1.22-r1.ebuild:
+  Ignore setuid test, IMPORTANT to work under perl-5.8.4-r1.
+
+  29 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> qmail-scanner-1.16-r2.ebuild,
+  qmail-scanner-1.22-r1.ebuild:
+  Fixed bug #57599, by installing the contrib files via dodoc.
+
+*qmail-scanner-1.22-r1 (17 Jul 2004)
+
+  17 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> +qmail-scanner-1.22-r1.ebuild:
+  - Transfered over to the mail-filter category - Added qmail-scanner-1.22 -
+  Using the qmail-scanner-st patch that allows for more options at qmail-scanner
+  - TODO: Add dspam to qmail-scanner
 
   17 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> +metadata.xml,
   +files/qmail-scanner-queue.pl.patch, +files/qmailscanner.cronjob,

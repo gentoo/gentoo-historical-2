@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/traffic-vis/files/traffic-vis.conf.d,v 1.1 2003/10/30 00:17:12 lisa Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/traffic-vis/files/traffic-vis.conf.d,v 1.1.1.1 2005/11/30 10:12:09 chriswhite Exp $
 
 # Config file for /etc/init.d/traffic-vis
 

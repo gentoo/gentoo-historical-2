@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3_pre20030530-r3.ebuild,v 1.1 2003/06/04 19:39:20 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3_pre20030530-r3.ebuild,v 1.1.1.1 2005/11/30 10:10:25 chriswhite Exp $
 
 DESCRIPTION="Set of python tools for processing plaintext docs into HTML, XML, etc."
 HOMEPAGE="http://docutils.sourceforge.net/"
@@ -8,12 +8,12 @@ SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="public-domain PYTHON BSD"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~ppc"
 IUSE=""
 
 inherit distutils
 
-DEPEND=">=dev-lang/python-2.1"
+DEPEND="<dev-lang/python-2.4"
 S=${WORKDIR}/${PN}
 
 src_compile() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-basic/oracle-instantclient-basic-10.1.0.4.ebuild,v 1.1 2005/06/21 19:39:07 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-basic/oracle-instantclient-basic-10.1.0.4.ebuild,v 1.1.1.1 2005/11/30 10:11:25 chriswhite Exp $
 
 inherit eutils
 
@@ -18,6 +18,9 @@ KEYWORDS="~x86"
 RESTRICT="fetch"
 IUSE=""
 
+DEPEND="app-arch/unzip"
+# RDEPEND does not needs unzip
+
 pkg_nofetch() {
 	eerror "Please go to:"
 	eerror "  ${HOMEPAGE}"
@@ -29,8 +32,8 @@ pkg_nofetch() {
 }
 
 src_unpack() {
-	unzip ${DISTDIR}/${MY_P}.zip
-	unzip ${DISTDIR}/${MY_PSDK}.zip
+	unzip ${DISTDIR}/${MY_P}.zip || die "unsuccesful unzip ${MY_P}.zip"
+	unzip ${DISTDIR}/${MY_PSDK}.zip || die "unsuccesful unzip ${MY_PSDK}.zip"
 }
 
 src_install() {
@@ -71,8 +74,8 @@ pkg_postinst() {
 	einfo "supplemental JDBC functionality with Oracle) and the"
 	einfo "oracle-instantclient-sqlplus (for running the SQL*Plus application)"
 	einfo "packages as well."
-	einfo ""
+	einfo
 	einfo "Examples are located in /usr/share/doc/${PF}/"
-	einfo ""
+	einfo
 	ewarn "ORACLE_HOME (and others) are set in /etc/env.d/50oracle-instantclient-basic"
 }

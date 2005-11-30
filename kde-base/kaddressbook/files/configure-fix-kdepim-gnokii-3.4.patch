@@ -3,7 +3,7 @@ Index: kaddressbook/xxport/configure.in.in
 --- kaddressbook/xxport/configure.in.in	(revision 433932)
 +++ kaddressbook/xxport/configure.in.in	(working copy)
 @@ -1,6 +1,2 @@
- # $Id: configure-fix-kdepim-gnokii-3.4.patch,v 1.1 2005/07/28 21:16:10 danarmak Exp $
+ # $Id: configure-fix-kdepim-gnokii-3.4.patch,v 1.1.1.1 2005/11/30 10:14:13 chriswhite Exp $
 -
 -KDE_CHECK_BLUETOOTH
 -KDE_CHECK_GNOKII

@@ -1,10 +1,141 @@
-# ChangeLog for dev-python/wxPython
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wxpython/ChangeLog,v 1.1 2004/07/03 11:46:54 kloeri Exp $
+# ChangeLog for dev-python/wxpython
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wxpython/ChangeLog,v 1.1.1.1 2005/11/30 10:10:23 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wxpython-2.6.1.0.ebuild:
+  Stable on ppc.
+
+  17 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  wxpython-2.6.1.0.ebuild:
+  Stable on sparc
+
+  17 Oct 2005; Aron Griffis <agriffis@gentoo.org> wxpython-2.6.1.0.ebuild:
+  Mark 2.6.1.0 stable on alpha
+
+  15 Oct 2005; Rob Cakebread <pythonhead@gentoo.org>
+  wxpython-2.6.1.0.ebuild:
+  Stable x86. Fixed wxGTK dep
+
+*wxpython-2.4.2.4-r3 (11 Oct 2005)
+
+  11 Oct 2005; Rob Cakebread <pythonhead@gentoo.org>
+  +wxpython-2.4.2.4-r3.ebuild:
+  Fixes bug #108643
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  wxpython-2.4.2.4-r2.ebuild:
+  Mark 2.4.2.4-r2 stable on alpha
+
+  07 Sep 2005; Simon Stelling <blubb@gentoo.org> wxpython-2.4.2.4.ebuild,
+  wxpython-2.4.2.4-r2.ebuild, wxpython-2.6.0.0-r1.ebuild,
+  wxpython-2.6.1.0.ebuild:
+  make multilib-strict aware; bug 103535
+
+*wxpython-2.6.1.0 (12 Jul 2005)
+
+  12 Jul 2005; Rob Cakebread <pythonhead@gentoo.org>
+  +files/scripts-multiver-2.6.1.0.diff, +wxpython-2.6.1.0.ebuild:
+  Version bump.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wxpython-2.4.2.4-r2.ebuild:
+  Stable on ppc.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> wxpython-2.4.2.4-r2.ebuild:
+  Stable on ppc64
+
+  22 May 2005; Jason Wever <weeve@gentoo.org> wxpython-2.4.2.4-r2.ebuild:
+  Stable on SPARC.
+
+  22 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  wxpython-2.4.2.4-r2.ebuild:
+  Stable on hppa
+
+  18 May 2005; Rob Cakebread <pythonhead@gentoo.org>
+  wxpython-2.4.2.4-r2.ebuild:
+  Marked stable x86
+
+*wxpython-2.6.0.0-r1 (11 May 2005)
+
+  11 May 2005; Rob Cakebread <pythonhead@gentoo.org>
+  -wxpython-2.6.0.0.ebuild, +wxpython-2.6.0.0-r1.ebuild:
+  Changed to non-monolithic build. bug# 91574, removed monolithic ebuild
+
+*wxpython-2.6.0.0 (02 May 2005)
+*wxpython-2.4.2.4-r2 (02 May 2005)
+
+  02 May 2005; Rob Cakebread <pythonhead@gentoo.org>
+  +files/scripts-multiver-2.6.0.0.diff, files/wxpy-config.py,
+  +wxpython-2.4.2.4-r2.ebuild, -wxpython-2.5.3.1.ebuild,
+  +wxpython-2.6.0.0.ebuild:
+  Version bump. Now using SLOTs.
+
+  25 Jan 2005; Rob Cakebread <pythonhead@gentoo.org>
+  wxpython-2.4.2.4.ebuild:
+  Moved to SLOT 2.4
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Dec 2004; Rob Cakebread <pythonhead@gentoo.org>
+  wxpython-2.5.3.1.ebuild:
+  Put headers in a better place. Closes #74019
+
+  13 Nov 2004; Rob Cakebread <pythonhead@gentoo.org>
+  wxpython-2.5.3.1.ebuild:
+  Fixed site_pkgs location
+
+  13 Nov 2004; Rob Cakebread <pythonhead@gentoo.org>
+  wxpython-2.4.2.4.ebuild:
+  Pegged deps on wxGTK at 2.4*
+
+  13 Nov 2004; Rob Cakebread <pythonhead@gentoo.org>
+  wxpython-2.4.2.4-r1.ebuild, wxpython-2.5.3.1.ebuild:
+  wxpy-config.py wasn't being copied. bug# 71043
+
+*wxpython-2.4.2.4-r1 (12 Nov 2004)
+
+  12 Nov 2004; Rob Cakebread <pythonhead@gentoo.org> +files/wxpy-config.py,
+  +files/wxversion.py, +wxpython-2.4.2.4-r1.ebuild,
+  +wxpython-2.5.3.1.ebuild:
+  Version bump, retrofitted with SLOTs, bug# 47810
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  18 Aug 2004; Tom Gall <tgall@gentoo.org> wxpython-2.4.2.4.ebuild:
+  stable on ppc64, bug #58420
+
+  06 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> -wxpython-2.4.0.7.ebuild,
+  -wxpython-2.4.1.2.ebuild, wxpython-2.4.2.4.ebuild:
+  Removed obsolete versions, changed 2.4.2.4 to use new wxwidgets eclass
+
+  02 Aug 2004; Rob Cakebread <pythonhead@gentoo.org>
+  +files/controsl2.py.patch:
+  Added missing controls2.py.patch
+
+  02 Aug 2004; Ferris McCormick <fmccor@gentoo.org> wxpython-2.4.2.4.ebuild:
+  Stable for sparc.  This version runs fine, and the previous stable
+  version (2.4.1.2) no longer builds because its patch file is missing.
+  This version runs both +gtk2, -gtk2.  Also, it (and wxGTK) build with
+  gcc-3.3.3, hardened gcc-3.3.4-r1 as of the date of this entry, and run.
+
+  20 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> wxpython-2.4.0.7.ebuild,
+  wxpython-2.4.1.2.ebuild, wxpython-2.4.2.4.ebuild:
+  dev-python/PyOpenGL is now dev-python/pyopengl - adjust dependencies
+  accordingly.
+
+  05 Jul 2004; Rob Cakebread <pythonhead@gentoo.org> wxpython-2.4.2.4.ebuild:
+  Clarified USE='gtk2' messages. Bug# 56153
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> wxpython-2.4.0.7.ebuild,
+  wxpython-2.4.1.2.ebuild, wxpython-2.4.2.4.ebuild:
+  Fix error messages.
 
 *wxpython-2.4.2.4 (03 Jul 2004)
 
-  03 Jul 2004; Bryan �stergaard <kloeri@gentoo.org> +wxpython-2.4.0.7.ebuild,
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> +wxpython-2.4.0.7.ebuild,
   +wxpython-2.4.1.2.ebuild, +wxpython-2.4.2.4.ebuild:
   Follow naming policy, rename wxPython to wxpython.
 
@@ -114,7 +245,7 @@
   back to to 2.3.3 series of wxGTK.
 
   06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
+
 *wxPython-2.3.3.1-r2 (30 Oct 2002)
 
   30 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
@@ -154,12 +285,12 @@
 
   22 Aug 2002; Nick Hadaway <raker@gentoo.org> wxPython-2.3.2.1-r1.ebuild,
   files/noglcanvas.diff, files/nogizmos.diff :
-  Ebuild disables glcancas and gizmos extensions as they currently are 
+  Ebuild disables glcancas and gizmos extensions as they currently are
   not building correctly.
 
   2 Jul 2002; Jon Nelson <jnelson@gentoo.org> wxPython-2.3.2.1-r1:
   Make lintool happy
-  expressly don't build GLCANVAS  
+  expressly don't build GLCANVAS
 
 *wxPython-2.3.2.1 (11 Apr 2002)
 
@@ -170,7 +301,7 @@
 *wxPython-2.3.2.1 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
+
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

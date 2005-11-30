@@ -1,2 +1,6 @@
-MD5 458cfd6fb751c7adb39def25b7da5b5b cutter-1.02.ebuild 596
+MD5 8fe15f0a39dc00d651336994216aa6f6 ChangeLog 798
+MD5 fc86c34b2ef84893c43cadb5424f1478 cutter-1.02.ebuild 607
+MD5 faf06edddf89e01071a000b1a0631474 metadata.xml 251
+MD5 a9f6ed7adb9638391bbd24c712b379cb cutter-1.03.ebuild 617
 MD5 318db347b1b5864bee64f652f0ac780f files/digest-cutter-1.02 59
+MD5 a47385a6deea9d04bb8771b8cf6461dd files/digest-cutter-1.03 59

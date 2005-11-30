@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/libspf2/libspf2-1.0.4.ebuild,v 1.1 2004/07/25 15:53:26 pfeifer Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/libspf2/libspf2-1.0.4.ebuild,v 1.1.1.1 2005/11/30 10:11:51 chriswhite Exp $
 
 DESCRIPTION="libspf2 implements the Sender Policy Framework, a part of the SPF/SRS protocol pair."
 HOMEPAGE="http://www.libspf2.org/"

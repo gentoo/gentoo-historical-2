@@ -1,6 +1,50 @@
 # ChangeLog for mail-filter/bsfilter
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/bsfilter/ChangeLog,v 1.1 2004/07/24 09:31:05 nakano Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/bsfilter/ChangeLog,v 1.1.1.1 2005/11/30 10:11:51 chriswhite Exp $
+
+*bsfilter-1.0.9 (27 Jul 2005)
+
+  27 Jul 2005; Masatomo Nakano <nakano@gentoo.org> -bsfilter-1.0.6.ebuild,
+  +bsfilter-1.0.9.ebuild:
+  Version bump.
+
+  06 Jul 2005; Masatomo Nakano <nakano@gentoo.org> bsfilter-1.0.7.ebuild:
+  Marked stable on x86.
+
+*bsfilter-1.0.7 (14 May 2005)
+
+  14 May 2005; Masatomo Nakano <nakano@gentoo.org> -bsfilter-1.0.5.ebuild,
+  +bsfilter-1.0.7.ebuild:
+  Version bump.
+
+  25 Jan 2005; Masatomo Nakano <nakano@gentoo.org> bsfilter-1.0.6.ebuild:
+  Makred stable on x86.
+
+*bsfilter-1.0.6 (12 Jan 2005)
+
+  12 Jan 2005; Masatomo Nakano <nakano@gentoo.org> +bsfilter-1.0.6.ebuild:
+  Version bump.
+
+  12 Nov 2004; Masatomo Nakano <nakano@gentoo.org> -bsfilter-1.0.3.ebuild,
+  -bsfilter-1.0.4.ebuild, bsfilter-1.0.5.ebuild:
+  Marked stable on x86.
+
+*bsfilter-1.0.5 (08 Nov 2004)
+
+  08 Nov 2004; Masatomo Nakano <nakano@gentoo.org> +bsfilter-1.0.5.ebuild:
+  Version bump.
+
+  27 Sep 2004; Andrej Kacian <ticho@gentoo.org> bsfilter-1.0.3.ebuild,
+  bsfilter-1.0.4.ebuild:
+  Stable on x86.
+
+*bsfilter-1.0.4 (27 Aug 2004)
+
+  27 Aug 2004; Masatomo Nakano <nakano@gentoo.org> +bsfilter-1.0.4.ebuild:
+  Version bump.
+
+  03 Aug 2004; David Holm <dholm@gentoo.org> bsfilter-1.0.3.ebuild:
+  Added to ~ppc.
 
 *bsfilter-1.0.3 (24 Jul 2004)
 

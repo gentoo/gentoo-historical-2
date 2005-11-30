@@ -1,8 +1,29 @@
 # ChangeLog for dev-python/pylibpcap
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pylibpcap/ChangeLog,v 1.1 2003/03/09 17:32:43 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylibpcap/ChangeLog,v 1.1.1.1 2005/11/30 10:10:28 chriswhite Exp $
+
+*pylibpcap-0.5.1 (19 Nov 2005)
+
+  19 Nov 2005; Alastair Tse <liquidx@gentoo.org> +files/0.4-swig.patch,
+  pylibpcap-0.4.ebuild, +pylibpcap-0.5.1.ebuild:
+  added patch so 0.4 compiles with newer swig (#112464). version bump
+
+  03 Apr 2005; Simon Stelling <blubb@gentoo.org> pylibpcap-0.4.ebuild:
+  added ~amd64
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> pylibpcap-0.4.ebuild:
+  Transition dependancy from net-libs/libpcap to virtual/libpcap
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pylibpcap-0.4.ebuild:
+  Add missing IUSE.
 
 *pylibpcap-0.4 (09 Mar 2003)
+
+  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> pylibpcap-0.4.ebuild:
+  bump to stable
 
   09 Mar 2003; Alastair Tse <liquidx@gentoo.org> pylibpcap-0.4.ebuild:
   initial ebuild

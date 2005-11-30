@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-3.5.0_beta2.ebuild,v 1.1 2005/10/14 18:41:53 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-3.5.0_beta2.ebuild,v 1.1.1.1 2005/11/30 10:13:23 chriswhite Exp $
 
 KMNAME=kdebase
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE login manager, similar to xdm and gdm"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="pam"
 
 KMEXTRA="kdmlib/"
@@ -24,11 +24,17 @@ DEPEND="$DEPEND
 	# so until we separate the kcontrol modules into separate ebuilds :-),
 	# there's a dep here
 
+# Avoid using imake (kde bug 114466).
+PATCHES="${FILESDIR}/kdebase-3.5.0_beta2-noimake.patch"
 
 src_compile() {
-	use pam \
-		&& myconf="$myconf --with-pam=yes" \
-		|| myconf="$myconf --with-pam=no --with-shadow"
+	local myconf="--with-x-binaries-dir=/usr/bin"
+
+	if use pam; then
+		myconf="${myconf} --with-pam=yes"
+	else
+		myconf="${myconf} --with-pam=no --with-shadow"
+	fi
 
 	kde-meta_src_compile myconf configure
 	kde_remove_flag kdm/kfrontend -fomit-frame-pointer

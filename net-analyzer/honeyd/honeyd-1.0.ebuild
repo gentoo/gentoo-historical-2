@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/honeyd/honeyd-1.0.ebuild,v 1.1 2005/01/21 22:13:24 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/honeyd/honeyd-1.0.ebuild,v 1.1.1.1 2005/11/30 10:12:12 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Honeyd is a small daemon that creates virtual hosts on a network"
 HOMEPAGE="http://www.citi.umich.edu/u/provos/honeyd/"
@@ -9,17 +11,18 @@ SRC_URI="http://www.citi.umich.edu/u/provos/honeyd/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="x86 ~sparc ~ppc"
 IUSE="doc"
 
 DEPEND=">=dev-libs/libdnet-1.7
 	>=dev-libs/libevent-1.0
-	>=net-libs/libpcap-0.7.1"
+	virtual/libpcap"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	sed -i "s:^CFLAGS = -O2:CFLAGS = ${CFLAGS}:g" Makefile.in || die "sed failed"
+	epatch ${FILESDIR}/${P}-gcc4.diff
 }
 
 src_compile() {
@@ -29,7 +32,7 @@ src_compile() {
 
 src_install() {
 	dodoc README TODO
-	dosbin honeyd
+	dosbin honeyd || die "dosbin failed"
 
 	einstall || die "make install failed"
 
@@ -39,8 +42,8 @@ src_install() {
 	insinto /etc
 	newins config.sample honeyd.conf || die "failed to install honeyd.conf"
 
-	newinitd ${FILESDIR}/${PN}.initd ${PN}
-	newconfd ${FILESDIR}/${PN}.confd ${PN}
+	newinitd ${FILESDIR}/${PN}.initd ${PN} || die
+	newconfd ${FILESDIR}/${PN}.confd ${PN} || die
 
 	# This adds all the services and example configurations collected
 	# by Lance Spitzer
@@ -57,6 +60,6 @@ src_install() {
 	# Install all the example scripts
 	cp -R scripts ${D}/usr/share/honeyd/
 	find ${D}/usr/share/honeyd/scripts \
-		-type f -name "*.sh" -o -name "*.pl" | xargs chmod +x
+		-type f -name '*.sh' -o -name '*.pl' -exec chmod +x {} \;
 }
 

@@ -1,9 +1,18 @@
-MD5 1e9979d4b31c1b1f739d50dace7a4097 ChangeLog 5322
-MD5 a292cc4da12ab047112cb1d1c924974d twisted-1.0.1-r1.ebuild 1045
-MD5 d06471a8cd5ee9b2b656271b78666209 twisted-1.0.2.ebuild 1043
-MD5 964cfc6aed5e04485cd18e27d9632f0e twisted-1.0.3.ebuild 1027
-MD5 d5cee98a24ee3f1eb23c651a07fc4878 twisted-1.0.3-r1.ebuild 1237
-MD5 bb7d3ef16b63fe638cc8becd30eede88 files/digest-twisted-1.0.3-r1 67
-MD5 962cfda0434627ad4e3e6780175833a7 files/digest-twisted-1.0.1-r1 67
-MD5 a10d97e929ad363df80f670b7579f2a6 files/digest-twisted-1.0.2 67
-MD5 bb7d3ef16b63fe638cc8becd30eede88 files/digest-twisted-1.0.3 67
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 b334a51322c3da107d175c71db5c5b68 twisted-1.2.0.ebuild 996
+MD5 742e8cfdb91ef5a2685eb8734f209c41 twisted-1.3.0.ebuild 1061
+MD5 7d5efe87283a25e3cf2f87d1a0e0c8b5 twisted-2.0.0.ebuild 899
+MD5 004f2084935a67c95bcf27419aad9b4f ChangeLog 10137
+MD5 19df39ef54fc4a8677998f19bb6046ac metadata.xml 218
+MD5 9e8836d4aec3a1a4f688add9c6c64877 files/digest-twisted-1.2.0 74
+MD5 387f6df81a68c591e6f30fe8878d964b files/digest-twisted-1.3.0 74
+MD5 48ff6eb1136ce5dd8f785e589a7723d5 files/digest-twisted-2.0.0 67
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDbSeGViELBEf1JB0RArjgAJ99VcOyH+zsN4xIeN3txCu3ZBynJgCdEvnW
+JMcLeJTy7RsywlKG/Eg8+LA=
+=Iz+r
+-----END PGP SIGNATURE-----

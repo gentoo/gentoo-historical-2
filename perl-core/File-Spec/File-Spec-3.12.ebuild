@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/File-Spec/File-Spec-3.12.ebuild,v 1.1 2005/11/11 02:06:46 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/perl-core/File-Spec/File-Spec-3.12.ebuild,v 1.1.1.1 2005/11/30 10:11:12 chriswhite Exp $
 
 MY_P="PathTools-${PV}"
 S=${WORKDIR}/${MY_P}

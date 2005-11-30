@@ -1,6 +1,23 @@
 # ChangeLog for dev-python/pychart
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pychart/ChangeLog,v 1.1 2003/09/17 08:30:42 liquidx Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pychart/ChangeLog,v 1.1.1.1 2005/11/30 10:10:03 chriswhite Exp $
+
+*pychart-1.36 (07 Dec 2004)
+
+  07 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> +pychart-1.36.ebuild:
+  Version bump.
+
+  17 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> pychart-1.33.ebuild:
+  Marked 1.33 stable x86 and version bump, bug# 60664
+
+  30 Jun 2004; David Holm <dholm@gentoo.org> pychart-1.33.ebuild:
+  Added to ~ppc.
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> pychart-1.33.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+  19 Sep 2003; Michael Sterrett <msterret@gentoo.org> pychart-1.33.ebuild:
+  sed -i requires sed >= 4; repoman: whitespace cleanup
 
 *pychart-1.33 (17 Sep 2003)
 

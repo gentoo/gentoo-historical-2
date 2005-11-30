@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-ldap/python-ldap-2.0.10.ebuild,v 1.1 2005/09/30 23:50:19 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-ldap/python-ldap-2.0.10.ebuild,v 1.1.1.1 2005/11/30 10:10:17 chriswhite Exp $
 
 inherit distutils
 

@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/fifteenapplet/fifteenapplet-3.4.1.ebuild,v 1.1 2005/05/25 21:23:00 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/fifteenapplet/fifteenapplet-3.4.1.ebuild,v 1.1.1.1 2005/11/30 10:14:09 chriswhite Exp $
 
 KMNAME=kdetoys
-MAXKDEVER=$PV
+MAXKDEVER=3.4.2
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta
 
 DESCRIPTION="kicker plugin for the 15-game"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
 DEPEND=""

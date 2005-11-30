@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/nwn-1.66-r1.ebuild,v 1.1 2005/09/21 00:39:05 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/nwn-1.66-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:57 chriswhite Exp $
 
 inherit eutils games
 
@@ -52,6 +52,8 @@ RDEPEND="games-rpg/nwn-data
 	amd64? ( app-emulation/emul-linux-x86-baselibs )"
 
 S="${WORKDIR}/nwn"
+
+GAMES_LICENSE_CHECK="yes"
 dir="${GAMES_PREFIX_OPT}/${PN}"
 Ddir="${D}/${dir}"
 
@@ -68,6 +70,12 @@ die_from_busted_nwn-data() {
 }
 
 pkg_setup() {
+	games_pkg_setup
+	declare -a LANGarray=($LINGUAS)
+	if [ "${#LANGarray[*]}" == "0" ]
+	then
+		einfo "Setting default language to English."
+	fi
 	if use sou
 	then
 		built_with_use games-rpg/nwn-data sou || die_from_busted_nwn-data sou
@@ -96,7 +104,6 @@ pkg_setup() {
 		built_with_use games-rpg/nwn-data linguas_de || \
 			die_from_busted_nwn-data linguas_de
 	fi
-	games_pkg_setup
 }
 
 src_unpack() {
@@ -117,9 +124,10 @@ src_install() {
 		-e "s:GENTOO_USER:${GAMES_USER}:" \
 		-e "s:GENTOO_GROUP:${GAMES_GROUP}:" \
 		-e "s:GENTOO_DIR:${GAMES_PREFIX_OPT}:" \
-		${FILESDIR}/${P}-fixinstall > ${S}/fixinstall
+		${FILESDIR}/fixinstall > ${S}/fixinstall
+	fperms ug+x ${dir}/fixinstall
 	mv ${S}/* ${Ddir}
-	games_make_wrapper nwn ./nwn ${dir}
+	games_make_wrapper nwn ./nwn "${dir}" "${dir}"
 	make_desktop_entry nwn "Neverwinter Nights"
 	prepgamesdirs
 }

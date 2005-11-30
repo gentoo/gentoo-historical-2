@@ -1,8 +1,78 @@
 # ChangeLog for net-analyzer/dsniff
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dsniff/ChangeLog,v 1.1 2002/11/14 08:39:16 jhhudso Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dsniff/ChangeLog,v 1.1.1.1 2005/11/30 10:12:26 chriswhite Exp $
+
+*dsniff-2.3-r7 (15 Oct 2005)
+
+  15 Oct 2005; <mkay@gentoo.org> +dsniff-2.3-r7.ebuild:
+  Fixing local ip inversion (see bug #108144)
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> dsniff-2.3-r4.ebuild:
+  Mark 2.3-r4 stable on alpha
+
+*dsniff-2.3-r6 (09 Sep 2005)
+
+  09 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> +dsniff-2.3-r6.ebuild:
+  Made ebuild DEPEND on ~sys-libs/db-3.2.9 instead of building its own copy.
+
+*dsniff-2.3-r5 (27 Jun 2005)
+
+  27 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> +dsniff-2.3-r5.ebuild:
+  Adding append-ldflags -lresolv to allow amd64 compilation, ~amd64 keyword.
+  Fixes bug 94184, thanks to Steven Tasker <bool@hush.com>.
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> dsniff-2.3-r4.ebuild:
+  Stable on ppc.
+
+*dsniff-2.3-r4 (29 Mar 2005)
+
+  29 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> -dsniff-2.3-r3.ebuild,
+  +dsniff-2.3-r4.ebuild:
+  Doing a revision bump to push bug fix.
+
+  29 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> dsniff-2.3-r3.ebuild:
+  Fix bug 87166. Thanks to Brandyn A. White <e133tc1pher@gmail.com> for
+  reporting and solving the problem.
+
+*dsniff-2.3-r3 (07 Mar 2005)
+
+  07 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> -dsniff-2.3-r2.ebuild,
+  +dsniff-2.3-r3.ebuild:
+  Revision bump; install /etc files correctly for bug 84284. Keeping stable on
+  x86.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> dsniff-2.3-r2.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> dsniff-2.3-r2.ebuild:
+  change virtual/glibc to virtual/libc, add missing IUSE
+
+  03 May 2004; David Holm <dholm@gentoo.org> dsniff-2.3-r2.ebuild:
+  Added to ~ppc.
+
+*dsniff-2.3-r2 (02 May 2004)
+
+  02 May 2004; Mike Frysinger <vapier@gentoo.org> :
+  Make sure a few files make it to /etc/dsniff instead of /usr.
+
+*dsniff-2.3-r1 (21 Aug 2003)
+
+  08 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Cleanup patch so that dsniff will use a newer version of nids #43370 by Magnus Maatta.
+
+  26 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add patch to fix linking order #27267.
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Patch to compile against SLOT-ed libnet-1.0.x #17772.
 
 *dsniff-2.3 (14 Nov 2002)
+
+  23 Jul 2003; Tavis Ormandy <taviso@gentoo.org> dsniff-2.3.ebuild:
+  ~alpha
+
+  02 Feb 2003; Daniel Ahlberg <aliz@gentoo.org> dsniff-2.3.ebuild :
+  Closes #14689.
 
   14 Nov 2002; Jared Hudson <jhhudso@gentoo.org> : Initial import. Ebuild
   submitted by foser <foser@gentoo.org>. Bug #6906

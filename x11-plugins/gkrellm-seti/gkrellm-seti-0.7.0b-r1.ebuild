@@ -1,7 +1,10 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-seti/gkrellm-seti-0.7.0b-r1.ebuild,v 1.1 2003/07/16 16:50:19 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-seti/gkrellm-seti-0.7.0b-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:39 chriswhite Exp $
 
+inherit eutils
+
+IUSE=""
 S=${WORKDIR}/${P//gkrellm-}
 DESCRIPTION="a Seti@Home Monitor Plugin for Gkrellm"
 SRC_URI="http://xavier.serpaggi.free.fr/seti/${P//gkrellm-}.tar.bz2 http://xavier.serpaggi.free.fr/seti/GKrellM_seti_plugin_GTK+2.tgz"
@@ -11,12 +14,17 @@ DEPEND="=app-admin/gkrellm-2.1*"
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="alpha sparc x86"
 
-src_compile() {
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/gentoo-gkrellm-seti-path.patch || die "failed to apply patch"
 	mv ${WORKDIR}/Makefile ${S}
 	mv ${WORKDIR}/seti.c ${S}
 	mv ${WORKDIR}/seti.h ${S}
+}
+
+src_compile() {
 	make || die
 }
 

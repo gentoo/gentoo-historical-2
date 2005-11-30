@@ -1,6 +1,39 @@
-# ChangeLog for app-admin/autopsy
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/autopsy/ChangeLog,v 1.1 2004/09/12 07:18:57 dragonheart Exp $
+# ChangeLog for app-forensics/autopsy
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/autopsy/ChangeLog,v 1.1.1.1 2005/11/30 10:09:55 chriswhite Exp $
+
+*autopsy-2.05 (22 Apr 2005)
+
+  22 Apr 2005; Daniel Black <dragonheart@gentoo.org> autopsy-2.03.ebuild,
+  +autopsy-2.05.ebuild:
+  Version bump as per bug #89978. Thanks to Byrne <gentoo-bugzilla@nscs.uk.com>
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> autopsy-2.03.ebuild:
+  stable on amd64
+
+  25 Dec 2004; Jason Wever <weeve@gentoo.org> autopsy-2.03.ebuild:
+  Stable on sparc.
+
+  14 Dec 2004; Daniel Black <dragonheart@gentoo.org> -autopsy-2.00.ebuild,
+  autopsy-2.03.ebuild:
+  ppc and x86 stable. Old version removed:
+
+  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> autopsy-2.03.ebuild:
+  Added to ~amd64, bug #71926
+
+  18 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org> autopsy-2.01.ebuild:
+  Stable on sparc.
+
+  12 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> files/autopsy.pl:
+  Added $FILE_EXE to configuration (fixes bug #63806)
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  autopsy-2.00.ebuild, autopsy-2.01.ebuild, autopsy-2.03.ebuild:
+  metadata.xml update. app-admin/sleuthkit dependancy changed to
+  app-forensics/sleuthkit
 
 *autopsy-2.03 (12 Sep 2004)
 

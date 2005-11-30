@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xfd/xfd-0.99.0.ebuild,v 1.1 2005/08/08 06:28:11 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xfd/xfd-0.99.0.ebuild,v 1.1.1.1 2005/11/30 10:14:33 chriswhite Exp $
 
 # Must be before x-modular eclass is inherited
 #SNAPSHOT="yes"
@@ -8,8 +8,8 @@
 inherit x-modular
 
 DESCRIPTION="X.Org xfd application"
-KEYWORDS="~x86"
-# xprint support isn't optional, despite what configure says.
+KEYWORDS="~arm ~mips ~s390 ~sparc ~x86"
+# As of 20050927, we should be able to make xprint optional
 #IUSE="xprint"
 RDEPEND="=media-libs/freetype-2*
 	media-libs/fontconfig

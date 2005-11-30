@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dsniff/dsniff-2.3-r5.ebuild,v 1.1 2005/06/27 19:20:26 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dsniff/dsniff-2.3-r5.ebuild,v 1.1.1.1 2005/11/30 10:12:26 chriswhite Exp $
 
 inherit eutils flag-o-matic
 

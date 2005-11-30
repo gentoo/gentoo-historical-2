@@ -1,2 +1,4 @@
-MD5 79160daa853b316044ffe3e29f7c7345 allin1-0.4.5.ebuild 635
-MD5 5bb804feecc3bc0c1d9c960d64229a41 files/digest-allin1-0.4.5 63
+MD5 9d82327fb1ab037426ce13a64d89a169 allin1-0.5.0.ebuild 687
+MD5 bcbea075a9d340d53722ede26a0759af ChangeLog 1504
+MD5 51e4144050265a6597eea69affc33666 metadata.xml 486
+MD5 0c2ec115af68196bad7c677c33d1d13e files/digest-allin1-0.5.0 63

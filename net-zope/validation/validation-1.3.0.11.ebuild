@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/validation/validation-1.3.0.11.ebuild,v 1.1 2004/12/04 20:09:54 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/validation/validation-1.3.0.11.ebuild,v 1.1.1.1 2005/11/30 10:11:07 chriswhite Exp $
 
 inherit zproduct
 
@@ -10,7 +10,7 @@ DESCRIPTION="Data validation package, originally designed for Archetypes."
 WEBPAGE="http://www.sourceforge.net/projects/${MASTER_PN}"
 SRC_URI="mirror://sourceforge/${MASTER_PN}/${PN}-1.3.0-11.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE=""
 SLOT="1.3"
 

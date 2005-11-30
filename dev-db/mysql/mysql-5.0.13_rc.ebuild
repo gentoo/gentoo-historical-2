@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-5.0.13_rc.ebuild,v 1.1 2005/09/29 16:17:02 vivo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-5.0.13_rc.ebuild,v 1.1.1.1 2005/11/30 10:11:30 chriswhite Exp $
 
 inherit eutils flag-o-matic versionator
 
@@ -21,7 +21,8 @@ SRC_URI="mirror://mysql/Downloads/MySQL-${SVER}/${NEWP}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~sparc ~ia64 ~ppc ~ppc64"
+#KEYWORDS="~x86 ~amd64 ~sparc ~ia64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="big-tables berkdb debug doc minimal perl readline selinux ssl static"
 RESTRICT="primaryuri"
 
@@ -50,7 +51,7 @@ mysql_upgrade_error() {
 	ewarn "Some gentoo documentation on how to do it:"
 	ewarn "http://www.gentoo.org/doc/en/mysql-upgrading.xml"
 	ewarn "Also on the MySQL website:"
-	ewarn "http://dev.mysql.com/doc/mysql/en/upgrading-from-4-0.html"
+	ewarn "http://dev.mysql.com/doc/refman/5.0/en/upgrading-from-4-1.html"
 	ewarn ""
 	ewarn "You can also choose to preview some new MySQL 4.1 behaviour"
 	ewarn "adding a section \"[mysqld-4.0]\" followed by the word \"new\""
@@ -61,8 +62,9 @@ mysql_upgrade_warning() {
 	ewarn "If you're upgrading from MySQL-3.x to 4.0, or 4.0.x to 4.1.x, you"
 	ewarn "must recompile the other packages on your system that link with"
 	ewarn "libmysqlclient after the upgrade completes.  To obtain such a list"
-	ewarn "of packages for your system, you may use 'revdep-rebuild' from"
-	ewarn "app-portage/gentoolkit."
+	ewarn "of packages for your system, you may use:"
+	ewarn "revdep-rebuild --soname=libmysqlclient.so.14"
+	ewarn "from app-portage/gentoolkit."
 	ewarn ""
 	ewarn "the value of \"innodb_log_file_size\" into /etc/mysql/my.cnf file "
 	ewarn "has changed size from \"8M\" to \"5M\"."
@@ -150,7 +152,7 @@ src_unpack() {
 
 	mv "${WORKDIR}/${NEWP}" "${S}"
 	cd "${S}"
-	rm -rf "${S}/zlib"
+	rm -rf "${S}/zlib/"*.[ch]
 	sed -i -e "s/zlib\/Makefile dnl/dnl zlib\/Makefile/" "${S}/configure.in"
 
 	local MY_PATCH_SOURCE="${WORKDIR}/mysql-extras"
@@ -447,17 +449,19 @@ src_install() {
 	        chown -R mysql:mysql "${D}/${DATADIR}"
 		fi
 
-		dodir "/var/log/mysql"
-		touch ${D}/var/log/mysql/mysql.{log,err}
-		chmod 0660 ${D}/var/log/mysql/mysql.{log,err}
+		#diropts "-m0755"
+		#dodir "/var/log/mysql"
+		#touch ${D}/var/log/mysql/mysql.{log,err}
+		#chmod 0660 ${D}/var/log/mysql/mysql.{log,err}
+		#keepdir "/var/log/mysql"
+		#chown -R mysql:mysql "${D}/var/log/mysql"
 
 		diropts "-m0755"
 		dodir "/var/run/mysqld"
 
-		keepdir "/var/run/mysqld" "${D}/var/log/mysql"
+		keepdir "/var/run/mysqld"
 		chown -R mysql:mysql \
-	        "${D}/var/run/mysqld" \
-	        "${D}/var/log/mysql"
+	        "${D}/var/run/mysqld"
 	fi
 
 	# docs
@@ -480,17 +484,25 @@ pkg_preinst() {
 pkg_postinst() {
 	mysql_get_datadir
 
+	# mind at FEATURES=collision-protect before to remove this
+	#empty dirs...
+	[ -d "${ROOT}/var/log/mysql" ] \
+		|| install -d -m0755 -o mysql -g mysql ${ROOT}/var/log/mysql
+
+	#secure the logfiles... does this bother anybody?
+	touch ${ROOT}/var/log/mysql/mysql.{log,err}
+	chown mysql:mysql ${ROOT}/var/log/mysql/mysql*
+	chmod 0660 ${ROOT}/var/log/mysql/mysql*
+	# secure some directories
+	chmod 0750 ${ROOT}/var/log/mysql
+
 	if ! useq minimal; then
 		# your friendly public service announcement...
 		einfo
 		einfo "You might want to run:"
-		einfo "\"ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config\""
+		einfo "\"emerge --config =${PF}\""
 		einfo "if this is a new install."
 		einfo
-		if [[ "${PREVIOUS_DATADIR}" == "yes" ]] ; then
-			ewarn "Previous datadir found, it's YOUR job to change"
-			ewarn "ownership and have care of it"
-		fi
 	fi
 
 	mysql_upgrade_warning
@@ -512,7 +524,7 @@ pkg_config() {
 	local pwd2="b"
 	local maxtry=5
 
-	if [[ -d "${DATADIR}/mysql" ]] ; then
+	if [[ -d "${ROOT}/${DATADIR}/mysql" ]] ; then
 		ewarn "You have already a MySQL database in place."
 		ewarn "Please rename it or delete it if you wish to replace it."
 		die "MySQL database already exists!"
@@ -535,7 +547,7 @@ pkg_config() {
 	${ROOT}/usr/bin/mysql_install_db || die "MySQL databases not installed"
 
 	# MySQL 5.0 don't need this
-	chown -R mysql:mysql ${DATADIR}
+	chown -R mysql:mysql ${ROOT}/${DATADIR}
 	chmod 0750 ${ROOT}/${DATADIR}
 
 	local options=""
@@ -560,7 +572,7 @@ pkg_config() {
 		${options} \
 		--skip-grant-tables \
 		--basedir=${ROOT}/usr \
-		--datadir=${ROOT}/var/lib/mysql \
+		--datadir=${ROOT}/${DATADIR} \
 		--skip-innodb \
 		--skip-bdb \
 		--max_allowed_packet=8M \

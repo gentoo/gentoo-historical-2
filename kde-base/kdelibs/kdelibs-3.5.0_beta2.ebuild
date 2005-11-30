@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.5.0_beta2.ebuild,v 1.1 2005/10/14 18:41:52 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.5.0_beta2.ebuild,v 1.1.1.1 2005/11/30 10:12:53 chriswhite Exp $
 
 inherit kde flag-o-matic eutils multilib
 set-kdedir 3.5
@@ -11,7 +11,7 @@ S=${WORKDIR}/${PN}-${MY_PV}
 DESCRIPTION="KDE libraries needed by all kde programs"
 HOMEPAGE="http://www.kde.org/"
 #SRC_URI="mirror://kde/stable/${PV}/src/${P}.tar.bz2"
-SRC_URI="mirror://kde/unstable/${PV/_/-}/src/${PN}-${MY_PV}.tar.bz2"
+SRC_URI="mirror://kde/unstable/${PV/.0_/-}/src/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="3.5"
@@ -53,14 +53,8 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	kde_src_unpack
 
-	# Configure check for ACLs.
-	epatch "${FILESDIR}/${P}-configure-acl.patch"
-
-	# Fix for pumount that was passed the wrong device name
-	epatch "${FILESDIR}/kioslave-pumount-devname.patch"
-
-	# For the configure check.
-	make -f admin/Makefile.common || die
+	# Fix big endian problem with kwallet
+	epatch "${FILESDIR}/${P}-kwallet-stdint.patch"
 }
 
 src_compile() {

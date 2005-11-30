@@ -1,7 +1,367 @@
 # ChangeLog for net-analyzer/rrdtool
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/ChangeLog,v 1.1 2002/02/01 21:53:32 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/ChangeLog,v 1.1.1.1 2005/11/30 10:12:41 chriswhite Exp $
 
+  10 Nov 2005; Brent Baude <ranger@gentoo.org> rrdtool-1.2.11-r2.ebuild:
+  Marking rrdtool-1.2.11-r2 ~ppc64 for bug 111849
+
+*rrdtool-1.2.11-r2 (22 Sep 2005)
+
+  22 Sep 2005; Lance Albertson <ramereth@gentoo.org>
+  +rrdtool-1.2.11-r2.ebuild:
+  * removed unneeded RDEPEND on media-libs/gd for 1.2.x (See bug #106682 for
+  details)
+
+*rrdtool-1.2.11-r1 (06 Sep 2005)
+
+  06 Sep 2005; Benjamin Smee <strerror@gentoo.org>
+  +rrdtool-1.2.11-r1.ebuild:
+  Made changes as per bug 104956 for multilib
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> rrdtool-1.2.6-r1.ebuild:
+  stable on ia64 #93063
+
+  23 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> rrdtool-1.2.6-r1.ebuild,
+  rrdtool-1.2.11.ebuild:
+  Added ~mips.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  rrdtool-1.2.6-r1.ebuild:
+  Stable on ppc.
+
+  06 Aug 2005; Marcelo Goes <vanquirius@gentoo.org> rrdtool-1.2.11.ebuild:
+  Fix RDEPEND for bug 101513. Thanks to Natanael Copa <mlists@tanael.org>.
+
+*rrdtool-1.2.11 (26 Jul 2005)
+
+  26 Jul 2005; Benjamin Smee <strerror@gentoo.org> +rrdtool-1.2.11.ebuild:
+  Version bump.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  rrdtool-1.2.6-r1.ebuild:
+  Stable on alpha.
+
+  25 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> rrdtool-1.2.6.ebuild,
+  rrdtool-1.2.6-r1.ebuild:
+  Fix tcl issues. Thanks to Kugelfang on irc.
+
+  25 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  rrdtool-1.2.6-r1.ebuild:
+  Stable on hppa.
+
+  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  rrdtool-1.2.6-r1.ebuild:
+  Stable on sparc
+
+*rrdtool-1.2.10 (19 Jun 2005)
+
+  19 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> +rrdtool-1.2.10.ebuild:
+  Version bump for bug 96369. Thanks to Frederic Mangeant
+  <frederic.mangeant@gmail.com>.
+
+  18 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> rrdtool-1.2.6-r1.ebuild,
+  -rrdtool-1.2.8.ebuild:
+  Marking 1.2.6-r1 stable to push doc USE flag fix. Also, taking 1.2.8 out for
+  bug 94411.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> rrdtool-1.2.6.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> rrdtool-1.2.6.ebuild:
+  Stable on alpha.
+
+  12 Jun 2005; Jason Wever <weeve@gentoo.org> rrdtool-1.2.6.ebuild:
+  Stable on SPARC.
+
+*rrdtool-1.2.6-r1 (10 Jun 2005)
+
+  10 Jun 2005; Benjamin Smee <strerror@gentoo.org> +rrdtool-1.2.6-r1.ebuild:
+  Fixed inappropriate doc placemente as per bug 95665.
+
+  05 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> rrdtool-1.2.6.ebuild:
+  Stable on hppa.
+
+  04 Jun 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -rrdtool-1.0.45-r2.ebuild, -rrdtool-1.0.47.ebuild, rrdtool-1.2.6.ebuild:
+  Marked 1.2.6 x86 stable and removing old versions. Fixes bug 94962. Thanks
+  to Daniel Webert <rockoo@gmail.com>.
+
+*rrdtool-1.2.9 (30 May 2005)
+
+  30 May 2005; Benjamin Smee <strerror@gentoo.org> +rrdtool-1.2.9.ebuild:
+  Version bump for bug 94465
+
+  26 May 2005; Rene Nussbaumer <killerfox@gentoo.org> rrdtool-1.0.49.ebuild:
+  Stable on hppa
+
+  18 May 2005; Marcelo Goes <vanquirius@gentoo.org> rrdtool-1.2.6.ebuild,
+  rrdtool-1.2.8.ebuild:
+  Changing sed line to fix problem with tcl bindings. Fixes bug 93062. Thanks to
+  Brandon Hale <tseng@gentoo.org>.
+
+*rrdtool-1.2.8 (18 May 2005)
+
+  18 May 2005; Aaron Walker <ka0ttic@gentoo.org> +rrdtool-1.2.8.ebuild:
+  Version bump for bug 92866; added python and doc USE flags.
+
+  14 May 2005; Marcelo Goes <vanquirius@gentoo.org> -rrdtool-1.2.0.ebuild,
+  -rrdtool-1.2.1.ebuild, -rrdtool-1.2.2.ebuild:
+  Removing older 1.2.x releases. There were different issues with them, so it is
+  better to get them out of the way.
+
+*rrdtool-1.2.6 (10 May 2005)
+
+  10 May 2005; Marcelo Goes <vanquirius@gentoo.org> +rrdtool-1.2.6.ebuild:
+  Version bump for bug 91978. Thanks to Frederic Mangeant
+  <frederic.mangeant@gmail.com>.
+
+*rrdtool-1.2.2 (09 May 2005)
+
+  09 May 2005; Martin Holzer <mholzer@gentoo.org> +rrdtool-1.2.2.ebuild:
+  Version bumped.
+
+  07 May 2005; Aaron Walker <ka0ttic@gentoo.org> rrdtool-1.2.0.ebuild,
+  rrdtool-1.2.1.ebuild:
+  Add --disable-perl if USE=-perl; closes bug 91638.
+
+*rrdtool-1.2.1 (03 May 2005)
+
+  03 May 2005; Marcelo Goes <vanquirius@gentoo.org> rrdtool-1.2.0.ebuild,
+  +rrdtool-1.2.1.ebuild:
+  Version bump, fix compilation problem with 1.2.0. Fixes bug 91287. Thanks to
+  Andy Blyler <ajb@blyler.cc>, Marco Morales <soulse@gmail.com> and Frederic
+  Mangeant <frederic.mangeant@gmail.com>.
+
+*rrdtool-1.2.0 (27 Apr 2005)
+*rrdtool-1.0.50 (27 Apr 2005)
+
+  27 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +rrdtool-1.0.50.ebuild,
+  +rrdtool-1.2.0.ebuild:
+  Dual version bumps for bugs 90491 and 88698.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> rrdtool-1.0.49.ebuild:
+  stable on ia64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> rrdtool-1.0.49.ebuild:
+  Stable on amd64.
+
+  01 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> rrdtool-1.0.49.ebuild:
+  Stable on alpha.
+
+  27 Oct 2004; Jason Wever <weeve@gentoo.org> rrdtool-1.0.49.ebuild:
+  Stable on sparc.
+
+  25 Oct 2004; Jason Wever <weeve@gentoo.org> :
+  Stable on sparc.
+
+  24 Oct 2004; Eldad Zack <eldad@gentoo.org> -rrdtool-1.0.40-r1.ebuild,
+  rrdtool-1.0.47.ebuild, rrdtool-1.0.48.ebuild, rrdtool-1.0.49.ebuild:
+  Got rid of -fPIC patch in favor of sed (1.0.47-1.0.49). x86 marked stable
+  (1.0.48, 1.0.49)
+
+  27 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> rrdtool-1.0.47.ebuild:
+  Marked stable on amd64.
+
+  14 Sep 2004; Guy Martin <gmsoft@gentoo.org> rrdtool-1.0.47.ebuild:
+  Stable on hppa.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> rrdtool-1.0.47.ebuild:
+  Stable on alpha.
+
+  20 Aug 2004; Jason Wever <weeve@gentoo.org> rrdtool-1.0.47.ebuild:
+  Stable on sparc.
+
+*rrdtool-1.0.49 (09 Aug 2004)
+
+  09 Aug 2004; Jon Hood <squinky86@gentoo.org>
+  -files/rrdtool-1.0.46-fPIC.patch, -files/rrdtool-1.0.46-tcl.patch,
+  +files/rrdtool-1.0.49-fPIC.patch, -rrdtool-1.0.45.ebuild,
+  -rrdtool-1.0.46.ebuild, +rrdtool-1.0.49.ebuild:
+  Version bump, closes #59851, thanks Haroon Rafique
+  <corporate_gadfly@hotmail.com>; ebuild cleanups.
+
+*rrdtool-1.0.48 (05 Aug 2004)
+
+  05 Aug 2004; Jon Hood <squinky86@gentoo.org>
+  +files/rrdtool-1.0.48-fPIC.patch, -rrdtool-1.0.42-r1.ebuild,
+  -rrdtool-1.0.45-r1.ebuild, +rrdtool-1.0.48.ebuild:
+  Version bump, closes #59543, ebuild cleanups, thanks solar@g.o!
+
+  22 Jul 2004; Eldad Zack <eldad@gentoo.org> rrdtool-1.0.47.ebuild:
+  Tidy up. Fixed issue with 64-bit archs, when perl is in USE. Fixed duplicate
+  installation on /usr/lib/perl. Closes #57651.
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> rrdtool-1.0.46.ebuild,
+  rrdtool-1.0.47.ebuild:
+  marked x86 stable
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> rrdtool-1.0.40-r1.ebuild,
+  rrdtool-1.0.42-r1.ebuild, rrdtool-1.0.45-r1.ebuild,
+  rrdtool-1.0.45-r2.ebuild, rrdtool-1.0.45.ebuild, rrdtool-1.0.46.ebuild,
+  rrdtool-1.0.47.ebuild:
+  Fix use invocation
+
+  08 May 2004; Danny van Dyk <kugelfang@gentoo.org> :
+  Marked ~amd64.
+
+*rrdtool-1.0.47 (07 Apr 2004)
+
+  07 Apr 2004; Martin Holzer <mholzer@gentoo.org> rrdtool-1.0.47.ebuild,
+  files/rrdtool-1.0.47-fPIC.patch:
+  Version bumped.
+
+  18 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> rrdtool-1.0.46.ebuild,
+  files/rrdtool-1.0.46-fPIC.patch:
+  Must compile private lib with -fPIC on amd64.
+
+*rrdtool-1.0.46 (09 Mar 2004)
+
+  09 Mar 2004; Michael Boman <mboman@gentoo.org> rrdtool-1.0.46.ebuild,
+  files/rrdtool-1.0.46-tcl.patch:
+  New upstream version. Closes bug 43997.
+
+  17 Feb 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  rrdtool-1.0.45-r2.ebuild:
+  stable on hppa
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> rrdtool-1.0.45-r2.ebuild:
+  stable on alpha and ia64
+
+  29 Jan 2004; <gustavoz@gentoo.org> rrdtool-1.0.45-r2.ebuild:
+  marked stable on sparc
+
+*rrdtool-1.0.45-r2 (31 Dec 2003)
+
+  31 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  rrdtool-1.0.45-r2.ebuild:
+  Corrections for the inclusion and operation of the perl portion. There were
+  sandbox violations for the perl man pages becasue of makemaker versions. The
+  new version will cleanly install all parts in all the right places. Bug was
+  reported on IRC by Geert Hauwaerts <geert@irssi.org>
+
+*rrdtool-1.0.45-r1 (22 Dec 2003)
+
+  22 Dec 2003; <rac@gentoo.org> rrdtool-1.0.45-r1.ebuild:
+  Make perl stuff install into vendordir, address bug 30617
+
+  24 Nov 2003; Aron Griffis <agriffis@gentoo.org> rrdtool-1.0.45.ebuild:
+  Add ~alpha
+
+  20 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> rrdtool-1.0.45.ebuild :
+  Make it build on amd64.
+
+  01 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> rrdtool-1.0.42-r2.ebuild, rrdtool-1.0.40-r1.ebuild,
+						rrdtool-1.0.45.ebuild :
+  If neither perl or tcltk are enabled pkg_setup will fail becuse the last use check returns 1.
+
+*rrdtool-1.0.45 (30 Jul 2003)
+
+  30 Jul 2003; Martin Holzer <mholzer@gentoo.org> rrdtool-1.0.45.ebuild:
+  Version bumped.
+
+  22 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> rrdtool-0.41.ebuild,
+  rrdtool-0.41-r1.ebuild, rrdtool-0.42.ebuild, rrdtool-0.42-r1.ebuild :
+  Changed flags alteration.
+
+*rrdtool-1.0.41-r1 (01 Jun 2003)
+
+  01 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  rrdtool-1.0.40-r1.ebuild, rrdtool-1.0.41-r1.ebuild,
+  rrdtool-1.0.42-r1.ebuild:
+  Version bump because eclasses changed
+
+  30 May 2003; Seemant Kulleen <seemant@gentoo.org> rrdtool-1.0.42.ebuild:
+  change perl-post to perl-module for inheritance
+
+*rrdtool-1.0.42-r1 (02 Jun 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*rrdtool-1.0.42 (16 Apr 2003)
+
+  24 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest,
+  rrdtool-1.0.40.ebuild, rrdtool-1.0.41.ebuild, rrdtool-1.0.42.ebuild:
+  Updated Homepage. Marked as stable
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest,
+  rrdtool-1.0.42.ebuild:
+  Version bumped.
+
+*rrdtool-1.0.41 (13 Mar 2003)
+
+  04 Apr 2003; Dylan Carlson <absinthe@gentoo.org> rrdtool-1.0.41.ebuild:
+  Added "-ffast-math" to filter-flags.
+
+  03 Apr 2003; Dylan Carlson <absinthe@gentoo.org> rrdtool-1.0.35-r3.ebuild,
+  rrdtool-1.0.35-r3.ebuild, rrdtool-1.0.39.ebuild, rrdtool-1.0.39.ebuild,
+  rrdtool-1.0.41.ebuild:
+  Filtering out -mfpmath=sse to close bug # 18705 (thanks to Zoltan Patay). x86
+  moved to stable.
+
+  13 Mar 2003; Dylan Carlson <absinthe@gentoo.org> rrdtool-1.0.41.ebuild
+  files/digest-rrdtool-1.0.41 ChangeLog :
+
+  Version bump.
+
+*rrdtool-1.0.40-r1 (02 Jun 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*rrdtool-1.0.40 (18 Jan 2003)
+
+  18 Jan 2003; Martin Holzer <mholzer@gentoo.org> rrdtool-1.0.40.ebuild
+  files/digest-rrdtool-1.0.40 ChangeLog : 
+  Version bumped. Closes #10703.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*rrdtool-1.0.39 (05 Aug 2002)
+
+  16 Sep 2002; <mcummings@gentoo.org> : add  PREFIX=${D}/usr to perl line.
+  
+  05 Aug 2002; Seemant Kulleen <seemant@gentoo.org> rrdtool-1.0.39.ebuild
+  files/digest-rrdtool-1.0.39 :
+
+  Version bump.  Thanks to: tlund@springboardhosting.com (Tyler Lund) in bug
+  #5795.
+
+*rrdtool-1.0.35-r3 (10 Jun 2002)
+
+  16 Sep 2002; <mcummings@gentoo.org> : add  PREFIX=${D}/usr to perl line.
+
+  10 Jun 2002; Seemant Kulleen <seemant@gentoo.org> rrdtool-1.0.35-r3.ebuild
+  files/digest-rrdtool-1.0.35-r3 :
+
+  Made fixes so it installs the binaries into /usr/bin and there are also
+  some perl specific things that need to be done (perl was made an optional
+  dep) which are done through the perl-module eclass now.
+
+*rrdtool-1.0.35-r2 (2 Jun 2002)
+	2 Jun 2002; Ben Lutgens <lamer@gentoo.org> rrdtool-1.0.35-r1
+	
+	Changed the install location from /opt/rrdtool to /usr/share/rrdtool
+	and installed the manpages in /usr/share/man/man1
+
+*rrdtool-1.0.35-r1 (15 Apr 2002)
+
+  15 Apr 2002; Seemant Kulleen <seemant@gentoo.org> rrdtool-1.0.35-r1.ebuild
+  files/digest-rrdtool-1.0.35-r1 :
+
+  Replaced the tcl USE flag with tcltk instead, since the latter encapsulates
+  the former, and this is the only ebuild that uses the former.
+
+*rrdtool-1.0.35 (21 Mar 2002)
+
+  21 Feb 2002; Ferry Meyndert <m0rpheus@gentoo.org> rrdtool-1.0.35.ebuild : 
+
+  Added new version of rddtool 1.0.35 and removed the old once that had
+  the zlib bug
+  
 *rrdtool-1.0.33 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

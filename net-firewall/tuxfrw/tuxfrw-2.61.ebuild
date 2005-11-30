@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/tuxfrw/tuxfrw-2.61.ebuild,v 1.1 2005/10/04 14:56:36 angusyoung Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/tuxfrw/tuxfrw-2.61.ebuild,v 1.1.1.1 2005/11/30 10:11:20 chriswhite Exp $
 
 inherit eutils linux-info
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://tuxfrw.sf.net/"
 SRC_URI="mirror://sourceforge/tuxfrw/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 DEPEND="net-firewall/iptables"
 

@@ -1,6 +1,6 @@
-# ChangeLog for dev-perl/CGI
+# ChangeLog for perl-core/CGI
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/CGI/ChangeLog,v 1.1 2005/05/24 14:16:54 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/perl-core/CGI/ChangeLog,v 1.1.1.1 2005/11/30 10:11:13 chriswhite Exp $
 
 *CGI-3.05 (24 May 2005)
 
@@ -53,7 +53,7 @@
   19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> CGI-3.05.ebuild:
   Stable on amd64.
 
-  06 Oct 2004; Bryan Ãstergaard <kloeri@gentoo.org> CGI-3.05.ebuild:
+  06 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> CGI-3.05.ebuild:
   Stable on alpha.
 
   27 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> CGI-3.05.ebuild:

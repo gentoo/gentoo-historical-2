@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/arts/arts-3.4.2.ebuild,v 1.1 2005/07/28 12:51:26 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/arts/arts-3.4.2.ebuild,v 1.1.1.1 2005/11/30 10:14:01 chriswhite Exp $
 
 inherit kde flag-o-matic eutils
 set-kdedir 3.4
@@ -22,7 +22,7 @@ RDEPEND="$(qt_min_version 3.3)
 	alsa? ( media-libs/alsa-lib )
 	vorbis? ( media-libs/libvorbis media-libs/libogg )
 	esd? ( media-sound/esound )
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( >=media-sound/jack-audio-connection-kit-0.90 )
 	mp3? ( media-libs/libmad )
 	nas? ( media-libs/nas )
 	media-libs/audiofile"
@@ -37,6 +37,9 @@ src_unpack() {
 	if (is-flag -fstack-protector || is-flag -fstack-protector-all || use hardened); then
 		epatch ${FILESDIR}/arts-1.4-mcopidl.patch
 	fi
+
+	# Fix amd64 cpu overload & crash bug, kde bug 88474. Applied for 3.5.
+	epatch "$FILESDIR/arts-3.4.1-cpu-overload.patch"
 
 	# Configure patch. Applied for 3.5.
 	epatch "${FILESDIR}/arts-3.4.1-configure.patch"

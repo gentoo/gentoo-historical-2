@@ -1,26 +1,22 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmusic/wmusic-1.4.11.ebuild,v 1.1 2003/08/14 20:55:38 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmusic/wmusic-1.4.11.ebuild,v 1.1.1.1 2005/11/30 10:10:40 chriswhite Exp $
 
 DESCRIPTION="dockapp for xmms"
 HOMEPAGE="http://home.jtan.com/~john/wmusic/"
 SRC_URI="http://home.jtan.com/~john/wmusic/downloads/${P}-src.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64 ~ppc"
 IUSE=""
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	virtual/x11
-	>media-sound/xmms-1.2.4"
-
-S=${WORKDIR}/${P}
+	>media-sound/xmms-1.2.4
+	>=sys-apps/sed-4"
 
 src_unpack() {
-	unpack ${P}-src.tar.gz
-	cd ${S}/src
-	mv Makefile.in Makefile.in.orig
-	sed -e "s:-O2:${CFLAGS}:" Makefile.in.orig > Makefile.in
-	cd ${S}
+	unpack ${A} ; cd ${S}/src
+	sed -i -e "s:-O2:${CFLAGS}:" Makefile.in
 }
 
 src_compile() {

@@ -1,6 +1,163 @@
 # ChangeLog for kde-base/kopete
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/ChangeLog,v 1.1 2005/01/15 02:24:36 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kopete/ChangeLog,v 1.1.1.1 2005/11/30 10:14:05 chriswhite Exp $
+
+  25 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> kopete-3.4.3.ebuild:
+  Stable on amd64, bug 112842.
+
+  24 Nov 2005; Markus Rothe <corsair@gentoo.org> kopete-3.4.3.ebuild:
+  Stable on ppc64
+
+  24 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> kopete-3.4.3.ebuild:
+  Stable on sparc wrt #112842
+
+*kopete-3.5.0 (22 Nov 2005)
+
+  33 Nov 2005; Dan Armak <danarmak@gentoo.org> +kopete-3.5.0.ebuild:
+  Ebuilds for KDE 3.5.0 final. It is not yet released, and is package.masked.
+
+  17 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> kopete-3.5.0_rc1.ebuild:
+  Correct dependency on meanwhile (#112808).
+
+  15 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/kopete-3.5.0_rc1-fix.patch, kopete-3.5.0_rc1.ebuild:
+  Patch added to fix compilation issue, closes bug 112354.
+
+*kopete-3.5.0_rc1 (12 Nov 2005)
+
+  12 Nov 2005; Dan Armak <danarmak@gentoo.org> +kopete-3.5.0_rc1.ebuild:
+  Ebuild for new version 3.5.0_rc1.
+
+  22 Oct 2005; Mark Loeser <halcy0n@gentoo.org> kopete-3.5_beta1.ebuild:
+  Adding ~x86 to keywords
+
+  18 Oct 2005; Douglas Russell <puggy@gentoo.org> kopete-3.5.0_beta2.ebuild:
+  Keyword ~ppc and ~x86
+
+*kopete-3.5.0_beta2 (14 Oct 2005)
+
+  14 Oct 2005; Dan Armak <danarmak@gentoo.org> +kopete-3.5.0_beta2.ebuild:
+  New version.
+
+  13 Oct 2005; Gregorio Guidi <greg_g@gentoo.org> kopete-3.4.1.ebuild,
+  kopete-3.4.1-r1.ebuild, kopete-3.4.2.ebuild, kopete-3.4.3.ebuild,
+  kopete-3.5_beta1.ebuild:
+  Add HOMEPAGE (#109054).
+
+*kopete-3.4.3 (13 Oct 2005)
+
+  13 Oct 2005; Dan Armak <danarmak@gentoo.org> +kopete-3.4.3.ebuild:
+  New version.
+
+  24 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -kopete-3.5_alpha1.ebuild:
+  Removed 3.5_alpha1.
+
+*kopete-3.5_beta1 (22 Sep 2005)
+
+  22 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +kopete-3.5_beta1.ebuild:
+  Bump to 3.5 beta1.
+
+  19 Sep 2005; Gregorio Guidi <greg_g@gentoo.org> kopete-3.5_alpha1.ebuild:
+  Add support for the Sametime protocol.
+
+*kopete-3.5_alpha1 (07 Sep 2005)
+
+  07 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +kopete-3.5_alpha1.ebuild:
+  Added 3.5_alpha1 split ebuild.
+
+  08 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> kopete-3.4.2.ebuild:
+  ~alpha keyword.
+
+*kopete-3.4.2 (28 Jul 2005)
+
+  28 Jul 2005; Dan Armak <danarmak@gentoo.org>
+  +files/configure-fix-kdenetwork-gadu.patch,
+  +files/configure-fix-kdenetwork-xmms.patch, +kopete-3.4.2.ebuild:
+  Version bump to 3.4.2.
+
+  23 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  kopete-3.4.1-r1.ebuild:
+  Stable on sparc wrt #99754
+
+  22 Jul 2005; Danny van Dyk <kugelfang@gentoo.org> kopete-3.4.1-r1.ebuild:
+  Marked stable on amd64.
+
+  22 Jul 2005; Joseph Jezak <josejx@gentoo.org> kopete-3.4.1-r1.ebuild:
+  Marked ppc stable for bug #99754.
+
+  21 Jul 2005; Markus Rothe <corsair@gentoo.org> kopete-3.4.1-r1.ebuild:
+  Stable on ppc64 (bug #99754)
+
+*kopete-3.4.1-r1 (21 Jul 2005)
+
+  21 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> +kopete-3.4.1-r1.ebuild:
+  Fix vulnerabilities in libgadu (#99754).
+
+  08 Jul 2005; Jason Wever <weeve@gentoo.org> kopete-3.4.1.ebuild:
+  Stable on SPARC.
+
+  01 Jul 2005; Lars Weiler <pylon@gentoo.org> kopete-3.4.1.ebuild:
+  Stable on ppc; Bug #97544.
+
+  01 Jul 2005; Markus Rothe <corsair@gentoo.org> kopete-3.4.1.ebuild:
+  Stable on ppc64 (bug #97544)
+
+  30 Jun 2005; Dan Armak <danarmak@gentoo.org>
+  +files/disable-meanwhile.diff, kopete-3.4.1.ebuild:
+  Force meanwhile support to off. It was unpredictable, was missing a dep, and
+  broke compilation with meanwhile >=0.4. Bug 96778.
+
+*kopete-3.4.1 (25 May 2005)
+
+  25 May 2005; Dan Armak <danarmak@gentoo.org> +kopete-3.4.1.ebuild:
+  Ebuilds for KDE 3.4.1. These are package.masked until 3.4.1 is actually
+  released. You can't get the tarballs yet.
+
+*kopete-3.4.0-r2 (11 May 2005)
+
+  11 May 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdenetwork-3.4.0-kopete-tabbed-windows.patch,
+  +kopete-3.4.0-r2.ebuild:
+  Add patch to fix crash in chatwindow (#91423).
+
+  27 Apr 2005; Markus Rothe <corsair@gentoo.org> kopete-3.4.0-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*kopete-3.4.0-r1 (03 Apr 2005)
+
+  03 Apr 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdenetwork-3.4.0-kopete-logout.patch,
+  +files/kdenetwork-3.4.0-kopete-spaces.patch, +kopete-3.4.0-r1.ebuild:
+  Add patches for bug #86446 (crash on logout) and for bug #87485 (handling of
+  names with spaces).
+
+  26 Mar 2005; Jason Wever <weeve@gentoo.org> kopete-3.4.0.ebuild:
+  Added ~sparc keyword.
+
+  18 Mar 2005; Daniel Goller <morfic@gentoo.org> kopete-3.4.0.ebuild:
+  Added to ~ppc
+
+  13 Mar 2005; Dan Armak <danarmak@gentoo.org> kopete-3.4.0.ebuild:
+  KDE 3.4.0 ebuilds. Note that the tarballs won't be officially released for a
+  few more days.
+
+*kopete-3.4.0_rc1 (07 Mar 2005)
+
+  07 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kopete-3.4.0_rc1.ebuild:
+  Marked ~amd64, keywording KDE split ebuilds, bug 80944.
+
+  27 Feb 2005; Dan Armak <danarmak@gentoo.org> :
+  Ebuild for 3.4.0 RC1.
+
+*kopete-3.4.0_beta2 (05 Feb 2005)
+
+  05 Feb 2005; Dan Armak <danarmak@gentoo.org> +kopete-3.4.0_beta2.ebuild:
+  Ebuild for 3.4.0_beta2. Note that beta2 has NOT been released as of this
+  date. This ebuild is for inside testing by the KDE team, and is of course
+  package.masked.
 
 *kopete-3.4.0_beta1 (15 Jan 2005)
 

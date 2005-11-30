@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/arts/arts-1.3.2.ebuild,v 1.1 2004/12/09 01:27:33 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/arts/arts-1.3.2.ebuild,v 1.1.1.1 2005/11/30 10:14:02 chriswhite Exp $
 
 inherit kde flag-o-matic eutils
 set-kdedir 3.3
@@ -11,8 +11,8 @@ SRC_URI="mirror://kde/stable/${PV/1.3.2/3.3.2}/src/${PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="3.3"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~alpha"
-IUSE="alsa oggvorbis esd artswrappersuid jack mad"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+IUSE="alsa oggvorbis esd artswrappersuid jack mad hardened"
 
 DEPEND="alsa? ( media-libs/alsa-lib virtual/alsa )
 	oggvorbis? ( media-libs/libvorbis media-libs/libogg )
@@ -21,26 +21,23 @@ DEPEND="alsa? ( media-libs/alsa-lib virtual/alsa )
 	mad? ( media-libs/libmad media-libs/libid3tag )
 	media-libs/audiofile
 	>=dev-libs/glib-2
-	>=x11-libs/qt-3.3
+	$(qt_min_version 3.3)
 	>=sys-apps/portage-2.0.49-r8"
-
-# patch to configure.in.in that makes the vorbis, libmad deps optional
-# has no version number in its filename because it's the same for all
-# arts versions - the patched file hasn't changed in a year's time
-# PATCHES="$FILESDIR/optional-deps.diff"
 
 src_unpack() {
 	kde_src_unpack
 	epatch ${FILESDIR}/1.3.0-jack-configure.in.in.patch
 	epatch ${FILESDIR}/${P}-alsa-bigendian.patch
+
+	if (is-flag -fstack-protector || is-flag -fstack-protector-all || use hardened); then
+		epatch ${FILESDIR}/arts-1.3.2-mcopidl.patch
+	fi
+
 	kde_sandbox_patch ${S}/soundserver
 	# for the configure.in.in patch, for some reason it's not automatically picked up
 	# rm -f $S/configure
 
 	cd ${S} && make -f admin/Makefile.common
-	# use amd64 && epatch ${FILESDIR}/arts-${PV}-buffer.patch
-	# this patch fixes the high cpu usage of mp3 and vorbis
-	# epatch ${FILESDIR}/arts-vorbis-fix.dif
 }
 
 src_compile() {

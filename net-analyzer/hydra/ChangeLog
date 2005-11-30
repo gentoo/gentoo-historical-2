@@ -1,6 +1,68 @@
 # ChangeLog for net-analyzer/hydra
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hydra/ChangeLog,v 1.1 2004/02/14 04:47:39 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hydra/ChangeLog,v 1.1.1.1 2005/11/30 10:12:46 chriswhite Exp $
+
+  11 Aug 2005; Carlos Silva <r3pek@gentoo.org> hydra-4.7.ebuild:
+  marked ~amd64. closes bug #102030
+
+*hydra-4.7 (14 Jun 2005)
+
+  14 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +hydra-4.7.ebuild:
+  Version bump for bug 95955; updated libssh dep to 0.11 as this new release
+  requires it.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> hydra-4.4.ebuild:
+  Stable on ppc.
+
+  05 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> hydra-4.3.ebuild,
+  hydra-4.4.ebuild, hydra-4.6.ebuild:
+  Won't build with libssh-0.11 so depend on 0.1 until we get this fixed.
+
+*hydra-4.6 (22 Feb 2005)
+
+  22 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +hydra-4.6.ebuild:
+  Version bump for bug 82879.
+
+  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> hydra-4.4.ebuild:
+  Marked stable on x86.
+
+*hydra-4.4 (18 Dec 2004)
+
+  18 Dec 2004; Eldad Zack <eldad@gentoo.org> +hydra-4.4.ebuild:
+  Version bump.
+
+*hydra-4.3 (25 Sep 2004)
+
+  25 Sep 2004; Mike Frysinger <vapier@gentoo.org> +hydra-4.3.ebuild:
+  Version bump #64451 by Daniel Webert.
+
+*hydra-4.2 (17 Aug 2004)
+
+  17 Aug 2004; Jon Hood <squinky86@gentoo.org> +files/make_xhydra.sh,
+  +hydra-4.2.ebuild:
+  Version bump, closes #60646.
+
+  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml:
+  Added metadata
+
+  23 Jun 2004; David Holm <dholm@gentoo.org> hydra-4.1.ebuild:
+  Added to ~ppc.
+
+*hydra-4.1 (21 Jun 2004)
+
+  21 Jun 2004; Mike Frysinger <vapier@gentoo.org> -hydra-3.0.ebuild,
+  -hydra-3.1.ebuild, +hydra-4.1.ebuild:
+  Version bump #53319 by Daniel Webert.
+
+*hydra-4.0 (17 May 2004)
+
+  17 May 2004; Mike Frysinger <vapier@gentoo.org> +hydra-4.0.ebuild:
+  Version bump #49769 by Daniel Webert.
+
+*hydra-3.1 (12 Mar 2004)
+
+  12 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #43751 by Daniel Fullmer.
 
 *hydra-3.0 (13 Feb 2004)
 

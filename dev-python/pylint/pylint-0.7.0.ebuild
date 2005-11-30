@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/pylint-0.7.0.ebuild,v 1.1 2005/05/27 17:42:46 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pylint/pylint-0.7.0.ebuild,v 1.1.1.1 2005/11/30 10:10:18 chriswhite Exp $
 
 inherit distutils
 

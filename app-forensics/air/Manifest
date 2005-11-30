@@ -1,15 +1,16 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-MD5 a4e2290293bdeaa9714ea06ab7a2b444 air-1.2.3_beta3.ebuild 1389
-MD5 6d796b061ed1c1337ef157a5f74dab35 metadata.xml 403
-MD5 d3ed3be1d0241acc52a64c4e3c21561a ChangeLog 1037
-MD5 5e2c9543b3ba5b7ad85af0c87c767029 files/digest-air-1.2.3_beta3 66
-MD5 ef2381a8147873ad21c5d638d5cde8d1 files/air-1.2.3_beta3-installfix.patch 5335
+MD5 4bee7213c707b630b410de19b7b72989 air-1.2.8.ebuild 1568
+MD5 20ee07270b7eadc3659cd96a982e460f metadata.xml 230
+MD5 84fe51d74e490ad721c4fdefc627cd01 ChangeLog 3102
+MD5 ef52314f83a8979fd3a5bc56416ceaa6 air-1.2.7.ebuild 1587
+MD5 77a44840c820d25ce30ccbf5915a4542 files/digest-air-1.2.8 60
+MD5 e57a11971a8230ba7ec6c7efa082fd93 files/digest-air-1.2.7 60
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (GNU/Linux)
+Version: GnuPG v1.4.2-ecc0.1.6 (GNU/Linux)
 
-iD8DBQFA+hSnmdTrptrqvGERAmnvAJ9ZGDoYwt8OsakfosFLbJ6huKSVJgCglOC7
-ZzPaEMclsz87/xTSe8NGb1c=
-=W025
+iD8DBQFDOw5rmdTrptrqvGERAsQrAJ9k6AyCZp+ISNcjfwM5MG7igAYOcwCfWZLn
+wsJH5SuH8DY3hkeyQUu0Krk=
+=uZ7z
 -----END PGP SIGNATURE-----

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/plone/plone-2.0.ebuild,v 1.1 2004/03/27 00:09:24 batlogg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/plone/plone-2.0.ebuild,v 1.1.1.1 2005/11/30 10:11:03 chriswhite Exp $
 
 SLOT="2.0"
 
@@ -11,6 +11,7 @@ HOMEPAGE="http://plone.org"
 SRC_URI="mirror://sourceforge/plone/PloneBase-2.0-final.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
+IUSE=""
 RDEPEND=">=net-zope/cmf-1.4.2
 	>=net-zope/btreefolder2-1.0
 	>=net-zope/cmfactionicons-0.9

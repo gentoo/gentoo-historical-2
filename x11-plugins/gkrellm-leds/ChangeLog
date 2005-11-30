@@ -1,8 +1,47 @@
 # ChangeLog for x11-plugins/gkrellm-leds
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-leds/ChangeLog,v 1.1 2002/08/30 09:06:56 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-leds/ChangeLog,v 1.1.1.1 2005/11/30 10:10:44 chriswhite Exp $
 
-*gkleds-0.6.1 (22 May 2002)
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Stable on amd64.
+
+  28 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79781
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  14 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gkrellm-leds-0.8.1.ebuild:
+  Stable on alpha.
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Added ~alpha keyword.
+
+  29 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Stable on sparc
+
+*gkrellm-leds-0.8.1 (17 Jan 2004)
+
+  17 Jan 2004; Martin Holzer <mholzer@gentoo.org> gkrellm-leds-0.8.1.ebuild:
+  Version bumped. Closes 38341
+
+  15 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellm-leds-0.8.0.ebuild:
+  stable on alpha
+
+*gkrellm-leds-0.8.0 (14 Dec 2002)
+
+  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
+  gkrellm-leds-0.8.0.ebuild files/digest-gkrellm-leds-0.8.0 :
+
+  Version for GKrellM2
+
+*gkrellm-leds-0.6.1 (22 May 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
 
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
 

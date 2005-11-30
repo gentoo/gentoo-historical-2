@@ -1,6 +1,16 @@
 # ChangeLog for x11-plugins/wmtop
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmtop/ChangeLog,v 1.1 2002/10/04 18:42:58 raker Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmtop/ChangeLog,v 1.1.1.1 2005/11/30 10:10:48 chriswhite Exp $
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmtop-0.84.ebuild:
+  glibc -> libc, add sed-4 dep
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> wmtop-0.84.ebuild:
+  Make stable on ppc
+  Thanks to Florian Daniel for the testing
+
+  24 Sep 2003; Jason Wever <weeve@gentoo.org> wmtop-0.84.ebuild:
+  Added ~sparc keyword.
 
 *wmtop-0.84 (04 Oct 2002)
 

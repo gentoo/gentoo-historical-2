@@ -1,6 +1,14 @@
-# ChangeLog for app-admin/fwanalog
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwanalog/ChangeLog,v 1.1 2004/06/06 10:49:32 dragonheart Exp $
+# ChangeLog for net-firewall/fwanalog
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwanalog/ChangeLog,v 1.1.1.1 2005/11/30 10:11:17 chriswhite Exp $
+
+  16 Jun 2004; Jason Wever <weeve@gentoo.org> fwanalog-0.6.4.ebuild:
+  Stable on sparc.
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org>
+  -.#fwanalog-0.6.4.ebuild.1.3, fwanalog-0.6.4.ebuild,
+  metadata.xml:
+  x86 stable. cleanup from bad move
 
   06 Jun 2004; Daniel Black <dragonheart@gentoo.org>
   +.#fwanalog-0.6.4.ebuild.1.3, +fwanalog-0.4-r2.ebuild,

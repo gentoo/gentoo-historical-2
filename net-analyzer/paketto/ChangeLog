@@ -1,6 +1,32 @@
 # ChangeLog for net-analyzer/paketto
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/paketto/ChangeLog,v 1.1 2002/11/23 20:18:35 vapier Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/paketto/ChangeLog,v 1.1.1.1 2005/11/30 10:12:31 chriswhite Exp $
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> paketto-1.10-r1.ebuild:
+  Added to ~ppc.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> paketto-1.10-r1.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  21 Mar 2004; Michael Boman <mboman@gentoo.org> paketto-1.10-r1.ebuild:
+  QA: IUSE variable was missing.
+
+*paketto-1.10-r1 (20 Mar 2003)
+
+  27 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Add patch to use system libnet instead of built in one #43012.
+
+  18 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add gcc3 patch #28894 and protect local libnet from system version #28982.
+
+  20 Mar 2003; Aron Griffis <agriffis@gentoo.org> paketto-1.0.ebuild,
+  paketto-1.10-r1.ebuild, paketto-1.10.ebuild:
+  Remove pic USE-flag and bump rev
+
+*paketto-1.10 (27 Jan 2003)
+
+  27 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #13587.
 
 *paketto-1.0 (23 Nov 2002)
 

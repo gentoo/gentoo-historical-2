@@ -1,6 +1,27 @@
 # ChangeLog for x11-plugins/wmfsm
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfsm/ChangeLog,v 1.1 2002/10/03 16:14:24 raker Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfsm/ChangeLog,v 1.1.1.1 2005/11/30 10:10:46 chriswhite Exp $
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmfsm-0.34-r1.ebuild:
+  Stable on amd64.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmfsm-0.34-r1.ebuild:
+  Stable for x86.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmfsm-0.34-r1.ebuild:
+  Masked wmfsm-0.34-r1.ebuild stable for ppc
+
+*wmfsm-0.34-r1 (17 Jul 2004)
+
+  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmfsm-0.34-r1.ebuild:
+  Revision bump, this one sports updated HOMEPAGE and SRC_URI, install
+  some documentation, patch to hide 'system' file systems. Closes #50148.
+  wmfsm-0.34.ebuild:
+  update HOMEPAGE and SRC_URI.
+
+  24 Sep 2003; Jason Wever <weeve@gentoo.org> wmfsm-0.34.ebuild:
+  Added ~sparc keyword.
 
 *wmfsm-0.34 (04 Oct 2002)
 

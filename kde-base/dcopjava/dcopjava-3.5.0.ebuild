@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/dcopjava/dcopjava-3.5.0.ebuild,v 1.1 2005/11/22 22:13:56 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/dcopjava/dcopjava-3.5.0.ebuild,v 1.1.1.1 2005/11/30 10:13:45 chriswhite Exp $
 
 # NOTE TODO install a jar file rather than a tree of class files, and use java-pkg.eclass,
 # in keeping with policy

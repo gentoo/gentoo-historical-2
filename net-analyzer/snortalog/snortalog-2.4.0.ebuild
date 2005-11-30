@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snortalog/snortalog-2.4.0.ebuild,v 1.1 2005/04/14 12:51:04 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snortalog/snortalog-2.4.0.ebuild,v 1.1.1.1 2005/11/30 10:12:22 chriswhite Exp $
 
 inherit eutils
 
 MY_P="${PN}_v${PV}"
 
 DESCRIPTION="a powerful perl script that summarizes snort logs"
-SRC_URI="http://jeremy.chartier.free.fr/${PN}/${MY_P}.tgz"
-HOMEPAGE="http://jeremy.chartier.free.fr/snortalog/
+SRC_URI="http://jeremy.chartier.free.fr/${PN}/${MY_P}.tgz
 	tcltk? ( mirror://gentoo/${P}-fix-gui.diff.gz )"
+HOMEPAGE="http://jeremy.chartier.free.fr/snortalog/"
 
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ~ppc ~amd64"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="tcltk"
@@ -19,8 +19,8 @@ IUSE="tcltk"
 S="${WORKDIR}/${MY_P%.?}"
 
 RDEPEND="dev-lang/perl
-	dev-perl/Getopt-Long
-	dev-perl/DB_File
+	perl-core/Getopt-Long
+	perl-core/DB_File
 	dev-perl/HTML-HTMLDoc
 	tcltk? ( dev-perl/perl-tk
 			 dev-perl/GDGraph )"
@@ -40,6 +40,7 @@ src_unpack() {
 	sed -i -e "s:\(modules/\):/usr/lib/snortalog/${PV}/\1:g" \
 		-e 's:\($domains_file = "\)conf/\(domains\)\(".*\):\1/etc/snortalog/\2\3:' \
 		-e 's:\($rules_file = "\)conf/\(rules\)\(".*\):\1/etc/snortalog/\2\3:' \
+		-e 's:\($picts_dir ="\)picts\(".*\):\1/etc/snortalog/picts\2:' \
 		-e 's:\($hw_file = "\)conf/\(hw\)\(".*\):\1/etc/snortalog/\2\3:' \
 		-e 's:\($lang_file ="\)conf/\(lang\)\(".*\):\1/etc/snortalog/\2\3:' \
 		-e 's:Can access:Cannot access:' \
@@ -51,6 +52,9 @@ src_install () {
 
 	insinto /etc/${PN}
 	doins conf/{domains,hw,lang,rules}
+
+	insinto /etc/${PN}/picts
+	doins picts/*
 
 	insinto /usr/lib/${PN}/${PV}/modules
 	doins -r modules/*

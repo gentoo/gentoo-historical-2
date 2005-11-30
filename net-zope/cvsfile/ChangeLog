@@ -1,6 +1,12 @@
 # ChangeLog for net-zope/cvsfile
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/cvsfile/ChangeLog,v 1.1 2004/04/18 21:53:07 batlogg Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-zope/cvsfile/ChangeLog,v 1.1.1.1 2005/11/30 10:11:05 chriswhite Exp $
+
+  17 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> cvsfile-0.9.0.ebuild:
+  Bug #69831: Ensure unzip is in DEPEND.
+
+  04 Sep 2004; Thomas Matthijs <axxo@gentoo.org> cvsfile-0.9.0.ebuild:
+  fix depend syntax 58347
 
 *cvsfile-0.9.0 (18 Apr 2004)
 

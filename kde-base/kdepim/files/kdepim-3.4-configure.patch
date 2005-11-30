@@ -44,7 +44,7 @@ diff -Nur kdepim-3.4.2.orig/kaddressbook/xxport/configure.in.in kdepim-3.4.2/kad
 --- kdepim-3.4.2.orig/kaddressbook/xxport/configure.in.in	2005-05-23 14:12:19.000000000 +0200
 +++ kdepim-3.4.2/kaddressbook/xxport/configure.in.in	2005-07-26 14:11:23.000000000 +0200
 @@ -1,6 +1,2 @@
- # $Id: kdepim-3.4-configure.patch,v 1.1 2005/07/28 12:58:14 greg_g Exp $
+ # $Id: kdepim-3.4-configure.patch,v 1.1.1.1 2005/11/30 10:14:22 chriswhite Exp $
 -
 -KDE_CHECK_BLUETOOTH
 -KDE_CHECK_GNOKII
@@ -100,7 +100,7 @@ diff -Nur kdepim-3.4.2.orig/kmobile/devices/gnokii/configure.in.in kdepim-3.4.2/
 --- kdepim-3.4.2.orig/kmobile/devices/gnokii/configure.in.in	2005-05-23 14:11:26.000000000 +0200
 +++ kdepim-3.4.2/kmobile/devices/gnokii/configure.in.in	2005-07-26 14:11:23.000000000 +0200
 @@ -1,7 +1,2 @@
- # $Id: kdepim-3.4-configure.patch,v 1.1 2005/07/28 12:58:14 greg_g Exp $
+ # $Id: kdepim-3.4-configure.patch,v 1.1.1.1 2005/11/30 10:14:22 chriswhite Exp $
 -
 -# check for libgnokii (Nokia mobile phone library)
 -KDE_CHECK_GNOKII

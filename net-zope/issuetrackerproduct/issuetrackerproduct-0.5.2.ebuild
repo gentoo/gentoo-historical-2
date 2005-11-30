@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/issuetrackerproduct/issuetrackerproduct-0.5.2.ebuild,v 1.1 2004/10/23 22:53:54 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/issuetrackerproduct/issuetrackerproduct-0.5.2.ebuild,v 1.1.1.1 2005/11/30 10:11:06 chriswhite Exp $
 
 inherit zproduct
 

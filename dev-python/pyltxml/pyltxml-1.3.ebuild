@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyltxml/pyltxml-1.3.ebuild,v 1.1 2003/10/30 01:40:37 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyltxml/pyltxml-1.3.ebuild,v 1.1.1.1 2005/11/30 10:10:13 chriswhite Exp $
 
 inherit distutils
 
@@ -10,8 +10,10 @@ HOMEPAGE="http://www.ltg.ed.ac.uk/software/xml/"
 SRC_URI=ftp://ftp.cogsci.ed.ac.uk/pub/LTXML/PyLTXML-${PV}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
+DEPEND=">=dev-lang/python-2.2.2
+	>=dev-libs/ltxml-1.2.5"
 DOCS="00README"
 
 src_unpack() {

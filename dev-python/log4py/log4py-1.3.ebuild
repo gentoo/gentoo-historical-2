@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/log4py/log4py-1.3.ebuild,v 1.1 2004/03/10 00:40:00 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/log4py/log4py-1.3.ebuild,v 1.1.1.1 2005/11/30 10:10:33 chriswhite Exp $
 
 inherit distutils
 
@@ -10,7 +10,8 @@ SRC_URI="http://www.its4you.at/downloads/files/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
 
 DEPEND="virtual/python"
 RDEPEND=""

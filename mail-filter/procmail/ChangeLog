@@ -1,6 +1,78 @@
-# ChangeLog for net-mail/procmail
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/procmail/ChangeLog,v 1.1 2004/06/03 07:23:54 seemant Exp $
+# ChangeLog for mail-filter/procmail
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/procmail/ChangeLog,v 1.1.1.1 2005/11/30 10:12:05 chriswhite Exp $
+
+  15 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  procmail-3.22-r7.ebuild:
+  stable on alpha
+
+  06 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  procmail-3.22-r7.ebuild:
+  Stable on hppa.
+
+  03 Oct 2005; Daniel Black <dragonheart@gentoo.org> Manifest:
+  digest fix - bug #107938
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> ChangeLog:
+  Stable on ppc.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> procmail-3.22-r7.ebuild:
+  Mark 3.22-r7 stable on ia64
+
+  28 Sep 2005; Luis Medinas <metalgod@gentoo.org> procmail-3.22-r7.ebuild:
+  Marked stable on amd64
+
+  24 Sep 2005; Markus Rothe <corsair@gentoo.org> procmail-3.22-r7.ebuild:
+  Stable on ppc64
+
+  22 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  procmail-3.22-r7.ebuild:
+  Stable on sparc
+
+  21 Sep 2005; Andrej Kacian <ticho@gentoo.org> procmail-3.22-r7.ebuild:
+  Stable on x86.
+
+*procmail-3.22-r7 (17 Aug 2005)
+
+  17 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/procmail-comsat-segfault.diff, +procmail-3.22-r7.ebuild:
+  fix for bug #102340
+
+  13 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  procmail-3.22-r6.ebuild:
+  use append-flags instead of assigning directly
+
+  09 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> procmail-3.22-r6.ebuild:
+  Stable on mips.
+
+  23 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/procmail-lazy-bindings.diff, procmail-3.22-r6.ebuild:
+  Don't use lazy bindings neither on procmail nor in lockfile
+
+  27 Jan 2005; Andrej Kacian <ticho@gentoo.org> procmail-3.22-r6.ebuild:
+  Added selinux support. Bug #79751.
+
+  07 Dec 2004; Scott W Taylor <swtaylor@gentoo.org> procmail-3.22-r6.ebuild:
+  remove mail-mta/courier block
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> procmail-3.22-r6.ebuild:
+  Use epatch instead of patch in src_compile()
+
+  19 Sep 2004; Scott W Taylor <swtaylor@gentoo.org> procmail-3.22-r6.ebuild:
+  procmail is part of courier. don't install it separately
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  procmail-3.22-r6.ebuild:
+  virtual/glibc -> virtual/libc
+
+  30 Jun 2004; Tom Gall <tgall@gentoo.org> procmail-3.22-r6.ebuild:
+  stable on ppc64, bug #55663
+
+  29 Jun 2004; Cory Visi <merlin@gentoo.org> procmail-3.22-r6.ebuild:
+  Missing mbox in IUSE and fix ebuild typo (Bug 47895 and Bug 44783)
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> procmail-3.22-r6.ebuild:
+  Fix use invocation
 
 *procmail-3.22-r6 (03 Jun 2004)
 

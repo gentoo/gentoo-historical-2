@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/unsermake/unsermake-0.4.20050710.ebuild,v 1.1 2005/07/11 23:07:11 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/unsermake/unsermake-0.4.20050710.ebuild,v 1.1.1.1 2005/11/30 10:13:43 chriswhite Exp $
 
 inherit python
 
@@ -27,9 +27,9 @@ src_install()
 	python_version
 	UNSERMAKEDIR=/usr/lib/python${PYVER}/site-packages/unsermake/
 	dodir ${UNSERMAKEDIR}
-	cp -a ${S}/*.py ${D}/${UNSERMAKEDIR}
-	cp -a ${S}/*.um ${D}/${UNSERMAKEDIR}
-	cp -a ${S}/unsermake ${D}/${UNSERMAKEDIR}
+	cp -pPR ${S}/*.py ${D}/${UNSERMAKEDIR}
+	cp -pPR ${S}/*.um ${D}/${UNSERMAKEDIR}
+	cp -pPR ${S}/unsermake ${D}/${UNSERMAKEDIR}
 	dodir /usr/bin
 	dosym ${UNSERMAKEDIR}/unsermake /usr/bin/unsermake
 }

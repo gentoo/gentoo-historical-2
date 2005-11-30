@@ -1,15 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/ldapuserfolder/ldapuserfolder-2.4.ebuild,v 1.1 2004/09/11 21:42:11 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/ldapuserfolder/ldapuserfolder-2.4.ebuild,v 1.1.1.1 2005/11/30 10:11:03 chriswhite Exp $
 
 inherit zproduct
-PV_NEW=$(echo ${PV/_/} |sed -e "s:\.:_:g")
+PV_NEW=${PV/./_}
 
 DESCRIPTION="LDAP User Authentication for Zope."
 HOMEPAGE="http://www.dataflake.org/software/ldapuserfolder/"
 SRC_URI="${HOMEPAGE}/${PN}_${PV}/LDAPUserFolder-${PV_NEW}.tgz"
 LICENSE="ZPL"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~ppc ~sparc x86"
 RDEPEND=">=dev-python/python-ldap-2.0.0_pre05
 	$RDEPEND"
 

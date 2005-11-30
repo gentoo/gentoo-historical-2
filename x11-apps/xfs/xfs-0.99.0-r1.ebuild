@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xfs/xfs-0.99.0-r1.ebuild,v 1.1 2005/08/16 03:08:47 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xfs/xfs-0.99.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:14:32 chriswhite Exp $
 
 # Must be before x-modular eclass is inherited
 SNAPSHOT="yes"
@@ -8,7 +8,7 @@ SNAPSHOT="yes"
 inherit x-modular
 
 DESCRIPTION="X.Org xfs application"
-KEYWORDS="~sparc ~x86"
+KEYWORDS="~arm ~mips ~s390 ~sparc ~x86"
 IUSE="ipv6"
 RDEPEND="x11-libs/libFS
 	x11-libs/libXfont"
@@ -19,7 +19,7 @@ CONFIGURE_OPTIONS="$(use_enable ipv6)"
 
 pkg_setup() {
 	enewgroup xfs 33
-	enewuser xfs 33 /bin/false /etc/X11/fs xfs
+	enewuser xfs 33 -1 /etc/X11/fs xfs
 }
 
 src_unpack() {

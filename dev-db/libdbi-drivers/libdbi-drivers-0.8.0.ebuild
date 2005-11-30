@@ -1,19 +1,19 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/libdbi-drivers/libdbi-drivers-0.8.0.ebuild,v 1.1 2005/09/03 18:55:27 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/libdbi-drivers/libdbi-drivers-0.8.0.ebuild,v 1.1.1.1 2005/11/30 10:11:41 chriswhite Exp $
 
 DESCRIPTION="The libdbi-drivers project maintains drivers for libdbi."
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-HOMEPAGE="http://${PN}.sourceforge.net/"
+HOMEPAGE="http://libdbi-drivers.sourceforge.net/"
 LICENSE="LGPL-2.1"
-DEPEND="dev-db/libdbi
+DEPEND=">=dev-db/libdbi-0.8.0
 		mysql? ( dev-db/mysql )
 		postgres? ( dev-db/postgresql )
-		sqlite? ( dev-db/sqlite >=dev-db/sqlite-3 )
+		sqlite? ( <dev-db/sqlite-3 >=dev-db/sqlite-3 )
 		firebird? ( dev-db/firebird )"
 
 IUSE="mysql postgres sqlite oci8"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 SLOT=0
 
 src_compile() {

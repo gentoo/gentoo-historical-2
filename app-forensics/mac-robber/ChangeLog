@@ -1,6 +1,13 @@
 # ChangeLog for app-forensics/mac-robber
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/mac-robber/ChangeLog,v 1.1 2005/01/26 02:44:04 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/mac-robber/ChangeLog,v 1.1.1.1 2005/11/30 10:09:53 chriswhite Exp $
+
+  11 Aug 2005; Luis Medinas <metalgod@gentoo.org> mac-robber-1.00.ebuild:
+  Added ~amd64 keywords.
+
+  08 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  mac-robber-1.00.ebuild:
+  mark ~ppc
 
   26 Jan 2005; Daniel Black <dragonheart@gentoo.org> 
   +mac-robber-1.00.ebuild, +metadata.xml:

@@ -1,6 +1,300 @@
 # ChangeLog for kde-base/kdewebdev
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdewebdev/ChangeLog,v 1.1 2004/05/27 01:57:17 caleb Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdewebdev/ChangeLog,v 1.1.1.1 2005/11/30 10:13:21 chriswhite Exp $
+
+  25 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> kdewebdev-3.4.3.ebuild:
+  Stable on amd64, bug 112842.
+
+*kdewebdev-3.5.0 (22 Nov 2005)
+
+  33 Nov 2005; Dan Armak <danarmak@gentoo.org> +kdewebdev-3.5.0.ebuild:
+  Ebuilds for KDE 3.5.0 final. It is not yet released, and is package.masked.
+
+  21 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  kdewebdev-3.4.3.ebuild:
+  Stable on sparc wrt #112842
+
+*kdewebdev-3.5.0_rc1 (16 Nov 2005)
+
+  16 Nov 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +kdewebdev-3.5.0_rc1.ebuild:
+  New version.
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> kdewebdev-3.4.1.ebuild:
+  Mark 3.4.1 stable on alpha
+
+*kdewebdev-3.5.0_beta2 (15 Oct 2005)
+
+  15 Oct 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +kdewebdev-3.5.0_beta2.ebuild:
+  New version.
+
+*kdewebdev-3.4.3 (13 Oct 2005)
+
+  13 Oct 2005; Dan Armak <danarmak@gentoo.org> +kdewebdev-3.4.3.ebuild:
+  New version.
+
+*kdewebdev-3.4.3 (12 Oct 2005)
+
+  12 Oct 2005; Gregorio Guidi <greg_g@gentoo.org> +kdewebdev-3.4.3.ebuild:
+  New version.
+
+  06 Oct 2005; Hardave Riar <hardave@gentoo.org> kdewebdev-3.4.2.ebuild:
+  Keyworded ~mips.
+
+*kdewebdev-3.5_beta1 (21 Sep 2005)
+
+  21 Sep 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +kdewebdev-3.5_beta1.ebuild:
+  New version.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> kdewebdev-3.4.1.ebuild:
+  stable on ia64
+
+*kdewebdev-3.5_alpha1 (24 Aug 2005)
+
+  24 Aug 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +kdewebdev-3.5_alpha1.ebuild:
+  KDE 3.5 prerelease.
+
+  30 Jul 2005; Dan Armak <danarmak@gentoo.org> kdewebdev-3.4.2.ebuild:
+  Removed ~mips keyword, because kdelibs-3.4.2 doesn't have it. The mips team
+  should readd it soon, I'm not sure why it's gone from kdelibs. This is
+  preparatory to unmasking.
+
+  28 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> kdewebdev-3.4.1.ebuild,
+  kdewebdev-3.4.2.ebuild:
+  Add workaround for bug #98345.
+
+*kdewebdev-3.4.2 (28 Jul 2005)
+
+  28 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> +kdewebdev-3.4.2.ebuild:
+  New version.
+
+  27 Jul 2005; Guy Martin <gmsoft@gentoo.org> kdewebdev-3.4.1.ebuild:
+  Stable on hppa.
+
+  14 Jul 2005; Hardave Riar <hardave@gentoo.org> kdewebdev-3.4.1.ebuild:
+  Keyworded ~mips
+
+  08 Jul 2005; Jason Wever <weeve@gentoo.org> kdewebdev-3.4.1.ebuild:
+  Stable on SPARC.
+
+  04 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> kdewebdev-3.4.1.ebuild:
+  Add ~alpha keyword.
+
+  02 Jul 2005; Hardave Riar <hardave@gentoo.org> kdewebdev-3.3.2-r2.ebuild:
+  Stable on mips
+
+  01 Jul 2005; Joseph Jezak <josejx@gentoo.org> kdewebdev-3.4.1.ebuild:
+  Marked ppc stable for bug #97544.
+
+*kdewebdev-3.4.1 (27 May 2005)
+
+  27 May 2005; Gregorio Guidi <greg_g@gentoo.org> +kdewebdev-3.4.1.ebuild:
+  New version.
+
+  05 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kdewebdev-3.3.2-r2.ebuild:
+  Stable on hppa.
+
+  05 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdewebdev-3.3.2-r2.ebuild:
+  Stable on alpha + ia64, bug 89092.
+
+  04 May 2005; Markus Rothe <corsair@gentoo.org> kdewebdev-3.3.2-r2.ebuild:
+  Stable on ppc64; bug #89092
+
+  03 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kdewebdev-3.3.2-r2.ebuild:
+  Stable on ppc.
+
+  03 May 2005; Jason Wever <weeve@gentoo.org> kdewebdev-3.3.2-r2.ebuild:
+  Stable on SPARC wrt security bug #89092.
+
+  03 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  kdewebdev-3.3.2-r2.ebuild:
+  stable on amd64 wrt #89092
+
+*kdewebdev-3.4.0-r2 (02 May 2005)
+*kdewebdev-3.3.2-r2 (02 May 2005)
+
+  02 May 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/quanta-3.4.0-vpl.patch, -files/post-3.4-kdewebdev.diff,
+  +files/post-3.4-kdewebdev-2.diff, +kdewebdev-3.3.2-r2.ebuild,
+  -kdewebdev-3.4.0.ebuild, -kdewebdev-3.4.0-r1.ebuild,
+  +kdewebdev-3.4.0-r2.ebuild:
+  new Kommander patch, fixing a bug in the previous one; fix for Quanta vpl
+  editor
+
+  20 Apr 2005; Lars Weiler <pylon@gentoo.org> kdewebdev-3.3.2-r1.ebuild:
+  Stable on ppc; bug #89092.
+
+  20 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kdewebdev-3.3.2-r1.ebuild:
+  Stable on alpha + ia64, bug 89092.
+
+  20 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  kdewebdev-3.3.2-r1.ebuild:
+  Stable on amd64, bug 89092.
+
+  20 Apr 2005; Jason Wever <weeve@gentoo.org> kdewebdev-3.3.2-r1.ebuild:
+  Stable on SPARC wrt security bug #89092.
+
+  20 Apr 2005; Markus Rothe <corsair@gentoo.org> kdewebdev-3.3.2-r1.ebuild:
+  Stable on ppc64; bug #89092
+
+*kdewebdev-3.4.0-r1 (20 Apr 2005)
+*kdewebdev-3.3.2-r1 (20 Apr 2005)
+
+  20 Apr 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/post-3.4-kdewebdev.diff, +kdewebdev-3.3.2-r1.ebuild,
+  +kdewebdev-3.4.0-r1.ebuild:
+  Kommander untrusted code execution, #89092
+
+  18 Mar 2005; Daniel Goller <morfic@gentoo.org> kdewebdev-3.4.0.ebuild:
+  Added to ~ppc
+
+*kdewebdev-3.4.0 (14 Mar 2005)
+
+  14 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> +kdewebdev-3.4.0.ebuild:
+  Ebuild for KDE 3.4 final.
+
+  14 Mar 2005; Hardave Riar <hardave@gentoo.org> kdewebdev-3.3.2.ebuild:
+  Marked ~mips.
+
+  28 Feb 2005; Jason Wever <weeve@gentoo.org> kdewebdev-3.4.0_rc1.ebuild:
+  Added ~sparc keyword.
+
+*kdewebdev-3.4.0_rc1 (27 Feb 2005)
+
+  27 Feb 2005; Gregorio Guidi <greg_g@gentoo.org> +kdewebdev-3.4.0_rc1.ebuild:
+  New version.
+
+*kdewebdev-3.4.0_beta2 (09 Feb 2005)
+
+  09 Feb 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +kdewebdev-3.4.0_beta2.ebuild:
+  Version bump.
+
+  02 Feb 2005; Heinrich Wendel <lanius@gentoo.org>
+  kdewebdev-3.4.0_beta1.ebuild:
+  mark ~amd64
+
+  23 Jan 2005; Markus Rothe <corsair@gentoo.org> kdewebdev-3.3.2.ebuild:
+  Stable on ppc64; bug #78619
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> kdewebdev-3.4.0_beta1.ebuild:
+  Added blocking dep on media-gfx/kimagemapeditor, an older version of an app
+  now included here.
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> kdewebdev-3.4.0_beta1.ebuild:
+  Added blocking dep on app-text/kfilereplace, an older version of an app now
+  included here.
+
+*kdewebdev-3.4.0_beta1 (13 Jan 2005)
+
+  13 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> +kdewebdev-3.4.0_beta1.ebuild:
+  Introducing kde-3.4.0_beta1. Add blocker on app-editors/quanta.
+
+  04 Jan 2005; Guy Martin <gmsoft@gentoo.org> kdewebdev-3.3.2.ebuild:
+  Stable on hppa.
+
+  29 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> kdewebdev-3.3.2.ebuild:
+  Stable on alpha, bug 72750.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> kdewebdev-3.3.2.ebuild:
+  Stable on amd64.
+
+  27 Dec 2004; Caleb Tennis <caleb@gentoo.org> kdewebdev-3.3.2.ebuild:
+  x86 stable
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> kdewebdev-3.3.1.ebuild:
+  Stable on ppc64
+
+*kdewebdev-3.3.2 (08 Dec 2004)
+
+  08 Dec 2004; Caleb Tennis <caleb@gentoo.org> +kdewebdev-3.3.2.ebuild:
+  Version bump
+
+  06 Dec 2004; Jason Huebel <jhuebel@gentoo.org> kdewebdev-3.3.1.ebuild:
+  stable on amd64
+
+  17 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> kdewebdev-3.3.1.ebuild:
+  Stable on alpha.
+
+  08 Nov 2004; Lars Weiler <pylon@gentoo.org> kdewebdev-3.3.1.ebuild:
+  Stable on ppc.
+
+  06 Nov 2004; Markus Rothe <corsair@gentoo.org> kdewebdev-3.3.1.ebuild:
+  Marked ~ppc64
+
+  05 Nov 2004; Caleb Tennis <caleb@gentoo.org> kdewebdev-3.3.1.ebuild:
+  x86 stable
+
+  04 Nov 2004; Jason Wever <weeve@gentoo.org> kdewebdev-3.3.1.ebuild:
+  Stable on sparc wrt security bug #69936.
+
+  03 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> kdewebdev-3.3.1.ebuild:
+  ~alpha keyword.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> kdewebdev-3.3.0-r1.ebuild:
+  stable on amd64.
+
+*kdewebdev-3.3.1 (13 Oct 2004)
+
+  13 Oct 2004; Caleb Tennis <caleb@gentoo.org> +kdewebdev-3.3.1.ebuild:
+  Version bump
+
+  04 Oct 2004; Guy Martin <gmsoft@gentoo.org> kdewebdev-3.3.0-r1.ebuild:
+  Stable on hppa.
+
+  19 Sep 2004; Malcolm Lashley <malc@gentoo.org> kdewebdev-3.3.0.ebuild:
+  Stable on amd64
+
+  14 Sep 2004; Jason Wever <weeve@gentoo.org> kdewebdev-3.3.0-r1.ebuild:
+  Stable on sparc.
+
+  09 Sep 2004; Caleb Tennis <caleb@gentoo.org> :
+  Marking 3.3.0 x86 stable
+
+  01 Sep 2004; Tom Gall <tgall@gentoo.org> kdewebdev-3.3.0-r1.ebuild:
+  stable on ppc64, bug #62167
+
+  30 Aug 2004; Carsten Lohrke <carlo@gentoo.org> kdewebdev-3.3.0-r1.ebuild:
+  block media-gfx/kimagemapeditor
+
+*kdewebdev-3.3.0-r1 (30 Aug 2004)
+
+  30 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdewebdev-3.3.0-r1.ebuild,
+  files/3.3.0-kafka-configure.in.in.patch:
+  Add a patch to include VPL in Quanta
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  kdewebdev-3.3.0.ebuild:
+  Masked kdewebdev-3.3.0.ebuild stable for ppc
+
+*kdewebdev-3.3.0 (19 Aug 2004)
+
+  19 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdewebdev-3.3.0.ebuild,
+  kdewebdev-3.3.0_beta2.ebuild:
+  3.3.0 final
+
+*kdewebdev-3.3.0_rc2 (10 Aug 2004)
+
+  10 Aug 2004; Caleb Tennis <caleb@gentoo.org> kdewebdev-3.3.0_beta1.ebuild,
+  kdewebdev-3.3.0_rc2.ebuild:
+  remove _beta1, add _rc2
+
+*kdewebdev-3.3.0_beta2 (23 Jul 2004)
+
+  23 Jul 2004; Caleb Tennis <caleb@gentoo.org> +kdewebdev-3.3.0_beta2.ebuild:
+  New beta
+
+*kdewebdev-3.3.0_beta1 (08 Jul 2004)
+
+  08 Jul 2004; Caleb Tennis <caleb@gentoo.org> -kdewebdev-3.3.0_alpha1.ebuild:
+  Add beta, remove alpha
 
 *kdewebdev-3.3.0_alpha1 (26 May 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/lft/lft-2.5.ebuild,v 1.1 2005/09/03 07:35:02 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/lft/lft-2.5.ebuild,v 1.1.1.1 2005/11/30 10:12:05 chriswhite Exp $
 
 inherit flag-o-matic eutils
 

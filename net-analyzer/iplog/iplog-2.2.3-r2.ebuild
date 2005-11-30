@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iplog/iplog-2.2.3-r2.ebuild,v 1.1 2003/10/27 05:50:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iplog/iplog-2.2.3-r2.ebuild,v 1.1.1.1 2005/11/30 10:12:43 chriswhite Exp $
 
 inherit eutils
 
@@ -8,11 +8,12 @@ DESCRIPTION="iplog is a TCP/IP traffic logger"
 HOMEPAGE="http://ojnk.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ojnk/${P}.tar.gz"
 
-LICENSE="GPL-2 | FDL-1.1"
+LICENSE="|| ( GPL-2 FDL-1.1 )"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="alpha ppc sparc x86"
+IUSE=""
 
-DEPEND="net-libs/libpcap"
+DEPEND="virtual/libpcap"
 
 src_unpack() {
 	unpack ${A}
@@ -31,8 +32,7 @@ src_install() {
 		mandir=${D}/usr/share/man \
 		install || die
 	dodoc AUTHORS COPYING.* NEWS README TODO example-iplog.conf
-	into /
-	insinto /etc/init.d
-	newins ${FILESDIR}/iplog.rc6 iplog
-	chmod +x ${D}/etc/init.d/iplog
+
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/iplog.rc6 iplog
 }

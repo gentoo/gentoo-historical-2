@@ -1,28 +1,27 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.2.0.ebuild,v 1.1 2004/03/11 19:56:25 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.2.0.ebuild,v 1.1.1.1 2005/11/30 10:10:05 chriswhite Exp $
 
-inherit gnome.org python
+inherit gnome.org python flag-o-matic
 
 DESCRIPTION="GTK+2 bindings for Python"
-HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
+HOMEPAGE="http://www.pygtk.org/"
 SRC_URI="ftp://ftp.gnome.org/pub/gnome/sources/pygtk/2.2/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
+KEYWORDS="x86 ~ppc sparc alpha hppa amd64 ppc64 arm"
 IUSE="gnome opengl"
 
 RDEPEND=">=dev-lang/python-2.2
 	>=x11-libs/pango-1
-	>=x11-libs/gtk+-2
+	>=x11-libs/gtk+-2.2
 	>=dev-libs/atk-1
 	>=dev-libs/glib-2
 	gnome? ( >=gnome-base/libglade-2 )
 	opengl? ( virtual/opengl
-		dev-python/PyOpenGL
+		dev-python/pyopengl
 		>=x11-libs/gtkglarea-1.99 )"
-
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.9"
 
@@ -34,13 +33,15 @@ src_unpack() {
 }
 
 src_compile() {
+	use hppa && append-flags -ffunction-sections
 	econf --enable-thread || die
-	emake || die
+	# possible problems with parallel builds (#45776)
+	emake -j1 || die
 }
 
 src_install() {
 	einstall || die
-	dodoc AUTHORS COPYING ChangeLog INSTALL MAPPING NEWS README THREADS TODO
+	dodoc AUTHORS ChangeLog INSTALL MAPPING NEWS README THREADS TODO
 
 	python_version
 	mv ${D}/usr/lib/python${PYVER}/site-packages/pygtk.py \

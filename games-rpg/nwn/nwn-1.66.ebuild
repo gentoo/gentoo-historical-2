@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/nwn-1.66.ebuild,v 1.1 2005/09/13 15:33:45 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/nwn-1.66.ebuild,v 1.1.1.1 2005/11/30 10:10:57 chriswhite Exp $
 
 inherit eutils games
 
@@ -13,20 +13,20 @@ DESCRIPTION="Neverwinter Nights"
 HOMEPAGE="http://nwn.bioware.com/downloads/linuxclient.html"
 SRC_URI="http://nwdownloads.bioware.com/neverwinternights/linux/129/nwclient129.tar.gz
 	linguas_fr? ( ${PATCH_URL_BASE}French${PACKAGE_NAME} ${DIALOG_URL_BASE}/french/NWNFrench${PV}dialog.zip ftp://jeuxlinux.com/bioware/Neverwinter_Nights/nwfrench129.tar.gz )
-	linguas_de? ( ${PATCH_URL_BASE}German${PACKAGE_NAME} ${DIALOG_URL_BASE}/german/NWNGerman${PV}dialog.zip http://xfer06.fileplanet.com/%5E389272944/082003/nwgerman129.tar.gz )
 	linguas_it? ( ${PATCH_URL_BASE}Italian${PACKAGE_NAME} ${DIALOG_URL_BASE}/italian/NWNItalian${PV}dialog.zip http://nwdownloads.bioware.com/neverwinternights/linux/129/nwitalian129.tar.gz )
 	linguas_es? ( ${PATCH_URL_BASE}Spanish${PACKAGE_NAME} ${DIALOG_URL_BASE}/spanish/NWNSpanish${PV}dialog.zip http://nwdownloads.bioware.com/neverwinternights/linux/129/nwspanish129.tar.gz )
+	linguas_de? ( ${PATCH_URL_BASE}German${PACKAGE_NAME} ${DIALOG_URL_BASE}/german/NWNGerman${PV}dialog.zip http://xfer06.fileplanet.com/%5E389272944/082003/nwgerman129.tar.gz )
 	!linguas_de? ( !linguas_fr? ( !linguas_es? ( !linguas_it? (
 		${PATCH_URL_BASE}English${PACKAGE_NAME} ${DIALOG_URL_BASE}/english/NWNEnglish${PV}dialog.zip
 	) ) ) )
 	nowin? ( http://bsd.mikulas.com/nwresources129.tar.gz
-		http://163.22.12.40/FreeBSD/distfiles/nwresources129.tar.gz
-		ftp://jeuxlinux.com/bioware/Neverwinter_Nights/nwresources129.tar.gz )"
+	http://163.22.12.40/FreeBSD/distfiles/nwresources129.tar.gz
+	ftp://jeuxlinux.com/bioware/Neverwinter_Nights/nwresources129.tar.gz )"
 
 LICENSE="NWN-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="nowin" # nocd"
+KEYWORDS="amd64 x86"
+IUSE="nowin"
 RESTRICT="nostrip nomirror"
 
 RDEPEND="virtual/x11
@@ -71,12 +71,10 @@ src_install() {
 		-e "s:GENTOO_USER:${GAMES_USER}:" \
 		-e "s:GENTOO_GROUP:${GAMES_GROUP}:" \
 		-e "s:GENTOO_DIR:${GAMES_PREFIX_OPT}:" \
-		${FILESDIR}/${P}-fixinstall > ${WORKDIR}/nwn/fixinstall
+		${FILESDIR}/fixinstall > ${WORKDIR}/nwn/fixinstall
 	mv ${S} ${D}/${GAMES_PREFIX_OPT}
 	doicon ${FILESDIR}/nwn.png
-	#dogamesbin ${FILESDIR}/nwn
-	#dosed "s:GENTOO_DIR:${GAMES_PREFIX_OPT}:" ${GAMES_BINDIR}/nwn
-	games_make_wrapper nwn ./nwn ${dir}
+	games_make_wrapper nwn ./nwn "${dir}" "${dir}"
 	make_desktop_entry nwn "Neverwinter Nights" nwn.png
 	prepgamesdirs
 }

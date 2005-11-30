@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpop/wmpop-0.53.ebuild,v 1.1 2003/12/16 22:00:35 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpop/wmpop-0.53.ebuild,v 1.1.1.1 2005/11/30 10:10:47 chriswhite Exp $
 
 IUSE=""
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://wmpop.sautret.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~sparc"
 
 DEPEND="virtual/x11
 	=x11-libs/gtk+-1.2*
@@ -25,5 +25,5 @@ src_compile() {
 
 src_install() {
 	einstall || die "Install failed"
-	dodoc AUTHORS COPYING README ChangeLog NEWS INSTALL TODO THANKS ABOUT-NLS
+	dodoc AUTHORS README ChangeLog NEWS TODO THANKS ABOUT-NLS
 }

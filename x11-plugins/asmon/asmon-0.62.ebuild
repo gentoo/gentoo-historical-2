@@ -1,16 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmon/asmon-0.62.ebuild,v 1.1 2003/05/12 22:46:35 wwoods Exp $
-# Short one-line description of this package.
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmon/asmon-0.62.ebuild,v 1.1.1.1 2005/11/30 10:10:40 chriswhite Exp $
+
+inherit eutils
+
 DESCRIPTION="WindowMaker/AfterStep system monitor dockapp"
 HOMEPAGE="http://rio.vg/asmon/"
 SRC_URI="http://www.tigr.net/afterstep/download/asmon/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha"
+IUSE=""
+KEYWORDS="x86 alpha ~sparc ppc"
 DEPEND="virtual/x11"
 src_unpack() {
-	unpack ${P}.tar.gz
+	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/asmon-cflags.diff
 	epatch ${FILESDIR}/asmon-alpha.diff

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netdiscover/netdiscover-0.3_beta5.ebuild,v 1.1 2005/09/01 12:39:12 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netdiscover/netdiscover-0.3_beta5.ebuild,v 1.1.1.1 2005/11/30 10:12:09 chriswhite Exp $
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"

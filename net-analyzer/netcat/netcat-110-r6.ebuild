@@ -1,22 +1,22 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netcat/netcat-110-r6.ebuild,v 1.1 2004/05/05 21:49:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netcat/netcat-110-r6.ebuild,v 1.1.1.1 2005/11/30 10:12:13 chriswhite Exp $
 
-inherit eutils gcc flag-o-matic
+inherit eutils toolchain-funcs flag-o-matic
 
 MY_P=nc${PV}
-DESCRIPTION="A network piping program"
-HOMEPAGE="http://www.atstake.com/research/tools/network_utilities/"
+DESCRIPTION="the network swiss army knife"
+HOMEPAGE="http://www.securityfocus.com/tools/137"
 SRC_URI="http://www.atstake.com/research/tools/network_utilities/${MY_P}.tgz
 	ftp://sith.mimuw.edu.pl/pub/users/baggins/IPv6/nc-v6-20000918.patch.gz
 	mirror://gentoo/${PF}-gentoo-deb-patches.tbz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~hppa ~amd64"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc sparc x86"
 IUSE="ipv6 static crypt GAPING_SECURITY_HOLE"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	crypt? ( dev-libs/libmix )"
 
 src_unpack() {
@@ -37,7 +37,7 @@ src_compile() {
 	use static && export STATIC="-static"
 	use crypt && XFLAGS="${XFLAGS} -DAESCRYPT" && XLIBS="${XLIBS} -lmix"
 	use GAPING_SECURITY_HOLE && XFLAGS="${XFLAGS} -DGAPING_SECURITY_HOLE"
-	CC="$(gcc-getCC) ${CFLAGS}" make -e nc || die
+	CC="$(tc-getCC) ${CFLAGS}" make -e nc || die
 }
 
 src_install() {

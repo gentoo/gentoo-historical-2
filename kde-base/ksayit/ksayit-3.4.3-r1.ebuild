@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/ksayit/ksayit-3.4.3-r1.ebuild,v 1.1 2005/11/27 22:33:19 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/ksayit/ksayit-3.4.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:51 chriswhite Exp $
 KMNAME=kdeaccessibility
 MAXKDEVER=$PV
 KM_DEPRANGE="$PV $MAXKDEVER"

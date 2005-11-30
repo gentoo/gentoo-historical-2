@@ -1,6 +1,60 @@
-# ChangeLog for net-mail/tmda
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/tmda/ChangeLog,v 1.1 2004/06/03 07:34:23 seemant Exp $
+# ChangeLog for mail-filter/tmda
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/tmda/ChangeLog,v 1.1.1.1 2005/11/30 10:12:00 chriswhite Exp $
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> tmda-1.0.3-r3.ebuild:
+  Stable on ppc.
+
+  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> -tmda-1.0.3-r1.ebuild,
+  -tmda-1.0.3-r2.ebuild, tmda-1.0.3-r3.ebuild, -tmda-1.0.3.ebuild:
+  Stable on x86. Removed previous 1.0.3 revisions.
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> tmda-1.0.3-r3.ebuild:
+  added ~amd64
+
+*tmda-1.0.3-r3 (14 Oct 2004)
+
+  14 Oct 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/tmda-1.0-non-interactive-tty.patch, +tmda-1.0.3-r3.ebuild:
+  Revision bump, apply patch to prevent opening /dev/tty when running in batch
+  mode. See bug #67150, reported by Jesse D. Guardiani <jesse@wingnet.net>.
+
+*tmda-1.0.3-r2 (29 Sep 2004)
+
+  29 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  files/tmda-1.0-multipart-handling.patch, +tmda-1.0.3-r2.ebuild:
+  Revision bump. Fix multipart-handling patch indentation, so it applies
+  cleanly. Thanks to Jesse D. Guardiani <jesse@wingnet.net> for fixing this.
+  Closes 65753.
+
+  25 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/tmda-1.0-multipart-handling.patch,
+  -files/tmda-1.0.3-multipart-handling.patch, tmda-1.0.3-r1.ebuild,
+  tmda-1.0.3.ebuild, tmda-1.0.ebuild, +tmda-1.0-r1.ebuild:
+  Apply multipart-handling patch to 1.0 as well (1.0-r1). Do not install
+  contrib/getuserinfo-vpopmail.sh, as it doesn't exist. Renamed
+  multipart-handling patch filename and modified it, so it doesn't change
+  files in live system (nasty one, sorry).
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> tmda-0.92.ebuild,
+  tmda-1.0.3-r1.ebuild, tmda-1.0.3.ebuild, tmda-1.0.ebuild:
+  Fixed SRC_URI
+
+*tmda-1.0.3-r1 (22 Sep 2004)
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> +tmda-1.0.3-r1.ebuild:
+  Apply patch to fix multipart message handling. Closes #60367, reported by Chet
+  McNeill <chet@somedec.com>, who also submitted a patch.
+
+*tmda-1.0.3 (03 Sep 2004)
+
+  03 Sep 2004; Andrej Kacian <ticho@gentoo.org> +tmda-1.0.3.ebuild:
+  Version bump to 1.0.3. Closes #45547, reported by Blu3
+  <david+gentoo.org@blue-labs.org>. Added die message in src_compile(). Removed
+  maintainer agenkin (retired) from metadata.xml
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> tmda-1.0.ebuild:
+  Added to ~ppc.
 
 *tmda-1.0 (03 Jun 2004)
 

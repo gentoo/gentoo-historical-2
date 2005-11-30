@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/files/postgresql.init-7.3.11,v 1.1 2005/10/08 23:06:24 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/files/postgresql.init-7.3.11,v 1.1.1.1 2005/11/30 10:11:47 chriswhite Exp $
 
 opts="${opts} reload"
 

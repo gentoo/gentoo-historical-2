@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/akode/akode-3.4.1-r1.ebuild,v 1.1 2005/06/10 14:55:25 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/akode/akode-3.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:13:46 chriswhite Exp $
 
 KMNAME=kdemultimedia
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta
 
 DESCRIPTION="aRts plugins for various formats"
-KEYWORDS="~x86 ~amd64 ~ppc64 ~ppc ~sparc"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE="alsa arts flac jack mp3 speex vorbis"
 DEPEND="arts? ( $(deprange $PV $MAXKDEVER kde-base/arts) )
 	flac? ( media-libs/flac )

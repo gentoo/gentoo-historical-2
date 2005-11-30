@@ -1,6 +1,39 @@
-# ChangeLog for x11-misc/ascpu
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/ascpu/ChangeLog,v 1.1 2002/11/03 16:17:54 seemant Exp $
+# ChangeLog for x11-plugins/ascpu
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/ascpu/ChangeLog,v 1.1.1.1 2005/11/30 10:10:51 chriswhite Exp $
+
+  13 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Added metadata.xml (afterstep herd).
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> ascpu-1.10.ebuild:
+  Stable on ppc64
+
+  21 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> ascpu-1.10.ebuild:
+  added ~amd64 to KEYWORDS. fixes #78878
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> ascpu-1.10.ebuild:
+  added ~ppc64 to KEYWORDS; bug #74660
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> ascpu-1.10.ebuild:
+  Masked ascpu-1.10.ebuild stable for ppc
+
+  08 Jul 2004; Hardave Riar <hardave@gentoo.org> ascpu-1.10.ebuild:
+  Added ~mips KEYWORD
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> ascpu-1.9.ebuild:
+  Stable on sparc.
+
+*ascpu-1.10 (13 Jun 2004)
+
+  13 Jun 2004; <pyrania@gentoo.org> +files/ascpu-1.10-gentoo.patch,
+  +ascpu-1.10.ebuild:
+  Version bump. Closing bug #51878.
+
+  17 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> ascpu-1.9.ebuild:
+  Added ~sparc (#44975)
+
+  15 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> ascpu-1.9.ebuild:
+  inherit eutils for epatch.
 
 *ascpu-1.9 (17 Aug 2002)
 

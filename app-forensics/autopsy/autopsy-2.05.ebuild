@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/autopsy/autopsy-2.05.ebuild,v 1.1 2005/04/24 06:08:58 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/autopsy/autopsy-2.05.ebuild,v 1.1.1.1 2005/11/30 10:09:55 chriswhite Exp $
 
 inherit eutils
 

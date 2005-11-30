@@ -1,8 +1,252 @@
 # ChangeLog for net-analyzer/cacti
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.1 2002/10/23 14:48:37 vapier Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/ChangeLog,v 1.1.1.1 2005/11/30 10:12:27 chriswhite Exp $
+
+  18 Nov 2005; Lance Albertson <ramereth@gentoo.org> -cacti-0.8.6f.ebuild,
+  cacti-0.8.6f-r1.ebuild, cacti-0.8.6g.ebuild,
+  cacti-0.8.6g_p20051023.ebuild:
+  * Removed old ebuild
+  * Added >=dev-db/mysql-5 blocker (bug #112010)
+  * Adjusted httpd dep (now have a choice between apache1, apache2, or
+    lighttpd (only on 0.8.6g_p20051023)) bug #107512
+
+  24 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> cacti-0.8.6g.ebuild:
+  Stable on sparc
+
+*cacti-0.8.6g_p20051023 (23 Oct 2005)
+
+  23 Oct 2005; Lance Albertson <ramereth@gentoo.org> cacti-0.8.6g.ebuild,
+  +cacti-0.8.6g_p20051023.ebuild:
+  * Stable on x86
+  * Added new patched version for fixes
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> cacti-0.8.6f-r1.ebuild:
+  Mark 0.8.6f-r1 stable on alpha
+
+*cacti-0.8.6g (10 Sep 2005)
+
+  10 Sep 2005; Lance Albertson <ramereth@gentoo.org> -cacti-0.8.6e.ebuild,
+  +cacti-0.8.6g.ebuild:
+  * New version release bump
+  * Remove old version
+
+*cacti-0.8.6f-r2 (09 Sep 2005)
+
+  09 Sep 2005; Lance Albertson <ramereth@gentoo.org>
+  +cacti-0.8.6f-r2.ebuild:
+  * Fixed php DEPEND to use virtuals per bug #102827
+
+  03 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  cacti-0.8.6f-r1.ebuild:
+  Stable on sparc
+
+*cacti-0.8.6f-r1 (03 Aug 2005)
+
+  03 Aug 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +cacti-0.8.6f-r1.ebuild:
+  Revision bump with upstream patches.
+
+  03 Jul 2005; Lance Albertson <ramereth@gentoo.org> cacti-0.8.6f.ebuild:
+  * stable on x86 (bug #97475)
+
+  02 Jul 2005; Jason Wever <weeve@gentoo.org> cacti-0.8.6f.ebuild:
+  Stable on SPARC wrt bug #97475.
+
+*cacti-0.8.6f (02 Jul 2005)
+
+  02 Jul 2005; Lance Albertson <ramereth@gentoo.org> -cacti-0.8.6b.ebuild,
+  -cacti-0.8.6c.ebuild, -cacti-0.8.6d.ebuild, +cacti-0.8.6f.ebuild:
+  * Added 0.8.6f for a security bump (bug #97475)
+  * Cleaned out old ebuilds
+
+  30 Jun 2005; Lance Albertson <ramereth@gentoo.org>
+  files/digest-cacti-0.8.6e, Manifest:
+  fixed digest and uploaded correct tarball for 0.8.6e
+
+  21 Jun 2005; Lance Albertson <ramereth@gentoo.org> metadata.xml,
+  cacti-0.8.6e.ebuild:
+  Security Bump per bug #96243
+  (SQL injection / global php var security issues)
+  * x86 & sparc marked stable
+  * alpha, amd64, ppc marked testing
+  * Updated metadata
+
+  17 Jun 2005; Lance Albertson <ramereth@gentoo.org>
+  files/digest-cacti-0.8.6e, Manifest:
+  Updated digest for new tarball from author
+
+*cacti-0.8.6e (15 Jun 2005)
+
+  15 Jun 2005; <solar@gentoo.org> +cacti-0.8.6e.ebuild:
+  - added cacti-0.8.6e masked by request.
+
+  02 May 2005; Eldad Zack <eldad@gentoo.org> files/postinstall-en.txt,
+  cacti-0.8.6b.ebuild, cacti-0.8.6c.ebuild, cacti-0.8.6d.ebuild:
+  Fixed to use the webapp_configfile function for include/config.php. Updated
+  postinstall accordingly. Closes bug #90908. Thanks to Andy Blyler
+  <ajb@blyler.cc>.
+
+*cacti-0.8.6d (29 Apr 2005)
+
+  29 Apr 2005; Martin Holzer <mholzer@gentoo.org> +cacti-0.8.6d.ebuild:
+  Version bumped.
+
+  15 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> files/postinstall-en.txt:
+  More updates to postinst-en.txt for bug 83673. Thanks to Jakub Moc for
+  helping me get the upgrade instructions up-to-date (and correct).
+
+  09 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> files/postinstall-en.txt,
+  cacti-0.8.6b.ebuild, cacti-0.8.6c.ebuild:
+  Update postinst-en.txt for bug 83673; updated both ebuilds to use
+  built_with_use instead of the homegrown check_with_use() function. Also
+  fixed the dodir ${D}... tidbit which caused obvious unwanted side effects.
+
+  04 Mar 2005; Jason Wever <weeve@gentoo.org> cacti-0.8.6c.ebuild:
+  Stable on sparc.
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> cacti-0.8.6c.ebuild:
+  Marked stable on x86.
+
+*cacti-0.8.6c (02 Jan 2005)
+
+  02 Jan 2005; Martin Holzer <mholzer@gentoo.org> files/postinstall-en.txt,
+  +cacti-0.8.6c.ebuild:
+  Version bumped.
+
+  07 Nov 2004; Jason Wever <weeve@gentoo.org> cacti-0.8.6b.ebuild:
+  Stable on sparc.
+
+  06 Nov 2004; Eldad Zack <eldad@gentoo.org> -cacti-0.8.5a-r1.ebuild,
+  cacti-0.8.6b.ebuild:
+  x86 stable
+
+  25 Oct 2004; Jason Wever <weeve@gentoo.org> cacti-0.8.5a-r2.ebuild:
+  Stable on sparc.
+
+  24 Oct 2004; Eldad Zack <eldad@gentoo.org> cacti-0.8.5a-r2.ebuild:
+  Marked x86 stable
+
+  14 Oct 2004; Eldad Zack <eldad@gentoo.org> +files/postinstall-en.txt,
+  cacti-0.8.6b.ebuild:
+  Better postinst instructions: using webapp.eclass postinst support
+
+*cacti-0.8.6b (14 Oct 2004)
+
+  14 Oct 2004; Eldad Zack <eldad@gentoo.org> +cacti-0.8.6b.ebuild:
+  Version bump. Updated deps (cron, php). Check useflags of php/mod_php. Got rid
+  of version detection, and corrrected a few postinst instructions.
+
+*cacti-0.8.5a-r2 (23 Aug 2004)
+
+  23 Aug 2004; Eldad Zack <eldad@gentoo.org> +cacti-0.8.5a-r2.ebuild:
+  Migrated ebuild from webapp-apache.eclass to use the webapp.eclass.
+  Closes bug #52596.
+
+  17 Aug 2004; Eldad Zack <eldad@gentoo.org> cacti-0.8.5a-r1.ebuild:
+  Moved include/config.php to include/config-sample.php, so we won't overwrite
+  old config.
+
+*cacti-0.8.5a-r1 (17 Aug 2004)
+
+  17 Aug 2004; Eldad Zack <eldad@gentoo.org>
+  +files/cacti-0.8.5a-sql-injection.patch, +cacti-0.8.5a-r1.ebuild:
+  Security patch (SQL Injection): bumping to -r1 with x86 stable.
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> cacti-0.8.5a.ebuild:
+  Typo in DESCRIPTION: frondend -> frontend. Bug 59717.
+
+  07 Jul 2004; Jason Wever <weeve@gentoo.org> cacti-0.8.5a.ebuild:
+  Stable on sparc.
+
+  05 Jul 2004; Eldad Zack <eldad@gentoo.org> cacti-0.8.5a.ebuild:
+  Added additional install instructions (crontab). Closes #53709. Thanks to
+  Lorinc Czegledi <lorinc.czegledi@mail.cpst.hu>. Also fixed previous version
+  detection.
+
+  08 May 2004; Danny van Dyk <kugelfang@gentoo.org> cacti-0.8.5a.ebuild:
+  Marked ~amd64.
+
+  19 Apr 2004; Martin Holzer <mholzer@gentoo.org> cacti-0.8.5a.ebuild:
+  x86 stable.
+
+*cacti-0.8.5a (10 Apr 2004)
+
+  10 Apr 2004; Martin Holzer <mholzer@gentoo.org> cacti-0.8.5a.ebuild:
+  Version bumped.
+
+*cacti-0.8.5 (29 Feb 2004)
+
+  29 Feb 2004; Martin Holzer <mholzer@gentoo.org> cacti-0.8.5.ebuild:
+  Version bumped. Closes 43137.
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> cacti-0.8.3a.ebuild,
+  cacti-0.8.4.ebuild:
+  Fix for bug #32636
+
+  05 Dec 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.8.4.ebuild:
+  x86 stable.
+
+  05 Dec 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.6.8a.ebuild,
+  cacti-0.8.3a.ebuild, cacti-0.8.4.ebuild:
+  changing chown. closes #35127.
+
+*cacti-0.8.4 (17 Nov 2003)
+
+  17 Nov 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.8.3a.ebuild,
+  cacti-0.8.4.ebuild:
+  Version bumped.
+
+  17 Nov 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.8.3a.ebuild:
+  adding webapps-apache.eclass
+
+  23 Sep 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.6.8a.ebuild,
+  cacti-0.8.3.ebuild, cacti-0.8.3a.ebuild:
+  Changed mysql depend to useflag. Closes #29429.
+
+*cacti-0.8.3a (01 Sep 2003)
+
+  01 Sep 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.8.3a.ebuild:
+  Version bumpe.d
+
+*cacti-0.8.3 (31 Aug 2003)
+
+  31 Aug 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.8.3.ebuild:
+  Version bumped.
+
+*cacti-0.8.2a (30 Jul 2003)
+
+  30 Jul 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.8.2a.ebuild:
+  Version bumped.
+
+*cacti-0.8.1-r1 (30 Jul 2003)
+
+  30 Jul 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.8.1-r1.ebuild:
+  Source is no more installed. Closes #23393.
+
+*cacti-0.8.1 (12 Jun 2003)
+
+  12 Jun 2003; Troy Dack <tad@gentoo.org> cacti-0.8.1.ebuild:
+  Version Bump. Now works with net-snmp (default for virtual/snmp) and ucd-snmp.
+  Updated postinst einfo message.
+
+  13 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Permissions fix, variable fix, dos format fix (#20686)
 
 *cacti-0.6.8a (23 Oct 2002)
+
+  13 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Permissions fix, variable fix, dos format fix (#20686)
+
+  13 May 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.6.8a.ebuild:
+  Added net-analyzer/rrdtool to RDEPEND. Closes #20953
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  05 Apr 2003; Martin Holzer <mholzer@gentoo.org> cacti-0.6.8a.ebuild:
+  Digest fix, marked as stable
+
+  14 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Replaced hardcoding of /home/httpd/htdocs with a grep of /etc/apache/conf/apache.conf
 
   23 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
   Initial import. Ebuild submitted by me.

@@ -1,6 +1,31 @@
-# ChangeLog for dev-perl/DB_File
+# ChangeLog for perl-core/DB_File
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/DB_File/ChangeLog,v 1.1 2005/05/24 14:37:15 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/perl-core/DB_File/ChangeLog,v 1.1.1.1 2005/11/30 10:11:14 chriswhite Exp $
+
+*DB_File-1.814 (13 Nov 2005)
+
+  13 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +DB_File-1.814.ebuild:
+  Version bump upstream
+
+*DB_File-1.813 (11 Nov 2005)
+
+  11 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +DB_File-1.813.ebuild:
+  Version bump upstream
+
+*DB_File-1.811-r1 (30 Jun 2005)
+
+  30 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  +files/DB_File-MakeMaker.patch, +DB_File-1.811-r1.ebuild,
+  DB_File-1.811.ebuild:
+  Bumped for patch. The default Makefile.PL was overriding any calls for
+  INSTALLDIRS and placing the module in the core perl dirs instead of vendor.
+  The patch changes perl to vendor in the Makefile.PL (another kludge) to
+  correct this. Will eventually fix bugs 97476, 97497
+
+  26 May 2005; Herbie Hopkins <herbs@gentoo.org> DB_File-1.811.ebuild:
+  Multilib fix.
 
 *DB_File-1.811 (24 May 2005)
 
@@ -16,7 +41,7 @@
   02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> DB_File-1.811.ebuild:
   stable on mips
 
-  25 Mar 2005; Bryan Ãstergaard <kloeri@gentoo.org> DB_File-1.811.ebuild:
+  25 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> DB_File-1.811.ebuild:
   Stable on alpha, bug 85185.
 
   17 Mar 2005; Joseph Jezak <josejx@gentoo.org> DB_File-1.811.ebuild:

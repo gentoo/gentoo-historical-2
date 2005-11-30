@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmblob/wmblob-1.0.1.ebuild,v 1.1 2004/07/17 22:50:42 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmblob/wmblob-1.0.1.ebuild,v 1.1.1.1 2005/11/30 10:10:43 chriswhite Exp $
 
 inherit eutils
 
@@ -17,13 +17,14 @@ DEPEND="virtual/x11
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~sparc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	# We patch the ./configure script to make it honour Gentoo CFLAGS
-	epatch ${FILESDIR}/gentoo-cflags.patch
+	# We patch the ./configure script to make it honour Gentoo CFLAGS and the
+	# X11 location
+	epatch ${FILESDIR}/${PN}-configure-fixes.patch
 }
 
 src_compile() {

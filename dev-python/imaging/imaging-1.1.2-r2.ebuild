@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/imaging-1.1.2-r2.ebuild,v 1.1 2004/07/19 21:50:44 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/imaging-1.1.2-r2.ebuild,v 1.1.1.1 2005/11/30 10:10:02 chriswhite Exp $
 
 MY_P=${P/imaging/Imaging}
 S=${WORKDIR}/${MY_P}
 
-IUSE="tcltk"
+IUSE="X tcltk"
 
 DESCRIPTION="Python Imaging Library (PIL)."
 SRC_URI="http://www.pythonware.net/storage/${MY_P}.tar.gz"
@@ -14,7 +14,9 @@ HOMEPAGE="http://www.pythonware.com/downloads/#pil"
 DEPEND=">=dev-lang/python-2.0
 	>=media-libs/jpeg-6a
 	>=sys-libs/zlib-0.95
-	tcltk? ( dev-lang/tk )"
+	>=media-libs/freetype-2.1.5
+	tcltk? ( dev-lang/tk )
+	X? ( media-gfx/xv )"
 
 SLOT="0"
 KEYWORDS="x86 sparc alpha ppc"

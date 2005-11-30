@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ftester/ftester-0.9.ebuild,v 1.1 2003/09/30 21:28:14 zul Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ftester/ftester-0.9.ebuild,v 1.1.1.1 2005/11/30 10:12:09 chriswhite Exp $
 
 DESCRIPTION="Ftester - Firewall and Intrusion Detection System testing tool"
 HOMEPAGE="http://ftester.sourceforge.net
@@ -9,7 +9,8 @@ SRC_URI="http://ftester.sourceforge.net/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc x86"
+IUSE=""
 
 DEPEND="dev-perl/Net-RawIP
 	dev-perl/NetPacket

@@ -1,16 +1,19 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/metakit/metakit-2.4.7.37.ebuild,v 1.1 2002/08/05 03:28:41 woodchip Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/metakit/metakit-2.4.7.37.ebuild,v 1.1.1.1 2005/11/30 10:11:36 chriswhite Exp $
 
 S=${WORKDIR}/${PN}-${PV%.*}
 DESCRIPTION="Embedded database library"
 HOMEPAGE="http://www.equi4.com/metakit/"
 SRC_URI="http://www.equi4.com/pub/mk/${PN}-${PV%.*}-${PV##*.}.tar.gz"
-DEPEND="python? ( >=dev-lang/python-2.2.1 ) tcltk? ( >=dev-lang/tcl-8.3.3-r2 )"
-RDEPEND="${DEPEND}"
-KEYWORDS="x86"
-LICENSE="MetaKit"
+
+LICENSE="MIT"
 SLOT="0"
+KEYWORDS="x86 ppc hppa"
+IUSE="python tcltk"
+
+DEPEND="python? ( >=dev-lang/python-2.2.1 )
+	tcltk? ( >=dev-lang/tcl-8.3.3-r2 )"
 
 src_unpack() {
 	unpack ${A} ; cd ${S}
@@ -38,15 +41,11 @@ src_install () {
 	local pydir
 	pydir=`python-config | cut -d" " -f1 | sed -e 's/-l//g'`/site-packages
 
-	make \
-		prefix=${D}/usr \
-		mandir=${D}/usr/share/man \
-		infodir=${D}/usr/share/info \
-		install || die
+	einstall
 
-	if [ -n "`use python`" ]
+	if use python
 	then
-		mkdir -p ${D}/usr/lib/${pydir}
+		dodir /usr/lib/${pydir}
 		# Because libmk4py.so export Mk4pyinit, that Python will look for ...
 		# shouldn't do a mv instead of a cp ? Who needs libmk4py.so ?
 		cp ${D}/usr/lib/libmk4py.so ${D}/usr/lib/${pydir}/Mk4py.so

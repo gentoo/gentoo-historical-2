@@ -1,21 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nstats/nstats-0.4.ebuild,v 1.1 2002/07/09 09:13:03 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nstats/nstats-0.4.ebuild,v 1.1.1.1 2005/11/30 10:12:12 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="Displays statistics about ethernet traffic including protocol breakdown"
 SRC_URI="http://trash.net/~reeler/nstats/files/${P}.tar.gz"
-HOMEPAGE="http://reeler.org/nstats/"
+HOMEPAGE="http://trash.net/~reeler/nstats/"
 
 SLOT="0"
-LICENSE="GPL"
-KEYWORDS="x86"
+LICENSE="Artistic"
+KEYWORDS="~amd64 ~ppc sparc x86"
+IUSE=""
 
-DEPEND=">=net-libs/libpcap-0.7.1"
+DEPEND="virtual/libpcap"
 
-src_compile() {
-	econf || die "./configure failed"
-	make || die "make failed"
+src_unpack(){
+	unpack ${A}
+	#rename bmon to bmon.nstats to avoid conflict with net-analyzer/bmon
+	epatch ${FILESDIR}/${P}-makefile.patch
 }
 
 src_install () {

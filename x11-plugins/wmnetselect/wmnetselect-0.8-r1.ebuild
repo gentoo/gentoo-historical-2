@@ -1,15 +1,15 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmnetselect/wmnetselect-0.8-r1.ebuild,v 1.1 2002/08/30 07:44:13 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmnetselect/wmnetselect-0.8-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:37 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="WindowMaker browser launcher doclette"
+IUSE=""
+DESCRIPTION="WindowMaker browser launcher docklet"
 HOMEPAGE="http://freshmeat.net/projects/wmnetselect/"
 SRC_URI="ftp://ftp11.freebsd.org/pub/FreeBSD/ports/distfiles/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc sparc64"
+KEYWORDS="x86 sparc amd64 ppc"
 
 DEPEND="virtual/x11"
 
@@ -19,6 +19,6 @@ src_compile() {
 }
 
 src_install () {
-	dobin   wmnetselect
-	dodoc   COPYING README ChangeLog TODO README.html
+	dobin wmnetselect
+	dodoc README ChangeLog TODO README.html
 }

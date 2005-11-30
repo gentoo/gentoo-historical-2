@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/reportlab/reportlab-1.19.ebuild,v 1.1 2004/10/16 09:27:44 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/reportlab/reportlab-1.19.ebuild,v 1.1.1.1 2005/11/30 10:10:20 chriswhite Exp $
 
 #goofy tarball versioning
 vmaj=${PV%%.*}

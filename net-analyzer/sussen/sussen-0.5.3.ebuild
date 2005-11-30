@@ -1,16 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sussen/sussen-0.5.3.ebuild,v 1.1 2003/08/20 12:42:51 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sussen/sussen-0.5.3.ebuild,v 1.1.1.1 2005/11/30 10:12:12 chriswhite Exp $
 
 inherit gnome2 debug
 
-DESCRIPTION="Sussen is a GNOME 2.2 client for the Nessus Security Scanner"
+DESCRIPTION="Sussen is a GNOME client for the Nessus Security Scanner"
 HOMEPAGE="http://sussen.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~sparc"
 IUSE="nls"
 
 RDEPEND=">=gnome-extra/libgnomedb-0.90.0
@@ -33,12 +33,12 @@ pkg_postinst( ) {
 
 	gnome2_pkg_postinst
 
-	echo ""
-	einfo "Please ensure the nessus server has ssl support disabled " 
+	echo
+	einfo "Please ensure the nessus server has ssl support disabled"
 	einfo "before using sussen, as ssl support is currently non-functional"
 	einfo "in sussen. More information is available by issuing:"
-	einfo ""
+	einfo
 	einfo "less /usr/share/doc/${PV}/README.gz"
-	echo ""
+	echo
 
 }

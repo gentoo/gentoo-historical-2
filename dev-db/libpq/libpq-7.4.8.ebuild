@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/libpq/libpq-7.4.8.ebuild,v 1.1 2005/05/16 03:49:32 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/libpq/libpq-7.4.8.ebuild,v 1.1.1.1 2005/11/30 10:11:36 chriswhite Exp $
 
 inherit eutils gnuconfig flag-o-matic toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://postgresql/source/v${PV}/postgresql-base-${PV}.tar.bz2"
 
 LICENSE="POSTGRESQL"
 SLOT="3"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+KEYWORDS="~alpha ~amd64 arm hppa ia64 ~mips ~ppc ~ppc64 s390 ~sparc x86"
 IUSE="ssl nls pam readline zlib kerberos"
 #pg-hier"
 
@@ -31,6 +31,14 @@ RDEPEND="virtual/libc
 	kerberos? ( virtual/krb5 )"
 
 MAKEOPTS="${MAKEOPTS} -j1"
+
+pkg_preinst() {
+	# removing wrong symlink which is created by previous ebuild.
+	if [ -L /usr/include/libpq ]; then
+		rm /usr/include/libpq
+	fi
+}
+
 src_unpack() {
 	unpack ${A}
 	epatch ${FILESDIR}/${P}-gentoo.patch
@@ -62,7 +70,6 @@ src_compile() {
 		--with-docdir=/usr/share/doc/${PF} \
 		--libdir=/usr/$(get_libdir) \
 		--enable-depend \
-		--with-gnu-ld \
 		$myconf || die
 
 	cd ${S}/src/interfaces/libpq
@@ -89,7 +96,7 @@ src_install() {
 	dodir /usr/include/libpq
 	for f in ${D}/usr/include/postgresql/libpq-${SLOT}/libpq/*.h
 	do
-		dosym ../postgresql/libpq-${SLOT}/$(basename $f) /usr/include/libpq/
+		dosym ../postgresql/libpq-${SLOT}/libpq/$(basename $f) /usr/include/libpq/
 	done
 
 	cd ${D}/usr/include/postgresql/libpq-${SLOT}

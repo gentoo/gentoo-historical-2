@@ -1,9 +1,27 @@
 # ChangeLog for x11-plugins/gkrellkam
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellkam/ChangeLog,v 1.1 2002/08/30 01:49:27 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellkam/ChangeLog,v 1.1.1.1 2005/11/30 10:10:37 chriswhite Exp $
 
-*gkrellkam-0.3.4 (2 Apr 2002)
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellkam-2.0.0.ebuild:
+  multilib fixes
+
+  25 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> gkrellkam-2.0.0.ebuild:
+  Marked stable on amd64.
+
+  09 Jul 2004; Tom Martin <slarti@gentoo.org> gkrellkam-2.0.0.ebuild:
+  Marked ~amd64.
+
+  15 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellkam-2.0.0.ebuild:
+  stable on alpha
+
+*gkrellkam-2.0.0 (08 Oct 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
  
+*gkrellkam-0.3.4 (2 Apr 2002)
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> gkrellkam-0.3.4.ebuild
   files/digest-gkrellkam-0.3.4 ChangeLog * :
 

@@ -1,23 +1,20 @@
-# Copyright 2002 Arcady Genkin <agenkin@thpoon.com>
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycrypto/pycrypto-1.9_alpha6.ebuild,v 1.1 2003/05/16 09:01:21 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycrypto/pycrypto-1.9_alpha6.ebuild,v 1.1.1.1 2005/11/30 10:10:29 chriswhite Exp $
 
 inherit distutils
-IUSE=""
 
 DESCRIPTION="Python cryptography toolkit."
 HOMEPAGE="http://www.amk.ca/python/code/crypto.html"
-## NOTE: I'm getting 403's with this link, but it works if the
-##        referrer is his homepage. Grr! Mirroring on Gentoo
-# SRC_URI="http://www.amk.ca/files/python/${P/_alpha/a}.tar.gz"
-SRC_URI="mirror://gentoo/${P/_alpha/a}.tar.gz"
+SRC_URI="http://www.amk.ca/files/python/crypto/${P/_alpha/a}.tar.gz"
 LICENSE="freedist"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	dev-lang/python"
 
 SLOT="0"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 alpha ~sparc amd64 ppc"
 S="${WORKDIR}/${P/_alpha/a}"
+IUSE=""
 
 mydoc="ACKS ChangeLog LICENSE MANIFEST PKG-INFO README TODO"

@@ -7,7 +7,7 @@
 # Author:      Robin Dunn
 #
 # Created:     24-Sept-2004
-# RCS-ID:      $Id: wxversion.py,v 1.1 2004/11/13 04:08:20 pythonhead Exp $
+# RCS-ID:      $Id: wxversion.py,v 1.1.1.1 2005/11/30 10:10:24 chriswhite Exp $
 # Copyright:   (c) 2004 by Total Control Software
 # Licence:     wxWindows license
 #----------------------------------------------------------------------

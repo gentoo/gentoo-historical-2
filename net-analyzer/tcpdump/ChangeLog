@@ -1,7 +1,210 @@
 # ChangeLog for net-analyzer/tcpdump
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpdump/ChangeLog,v 1.1 2002/02/01 21:53:32 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpdump/ChangeLog,v 1.1.1.1 2005/11/30 10:12:30 chriswhite Exp $
 
+  09 Oct 2005; <mkay@gentoo.org> tcpdump-3.9.3.ebuild:
+  Forcing at least -O optymalization. This close bug #108391
+
+*tcpdump-3.9.3 (20 Sep 2005)
+
+  20 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> +tcpdump-3.9.3.ebuild:
+  Version bump.
+
+  20 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -tcpdump-3.8.3-r1.ebuild, tcpdump-3.8.3-r4.ebuild:
+  inherit eutils.
+
+  02 Jul 2005; Hardave Riar <hardave@gentoo.org> tcpdump-3.8.3-r4.ebuild:
+  Stable on mips, bug #95349
+
+*tcpdump-3.8.3-r4 (30 Jun 2005)
+
+  30 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> -tcpdump-3.8.3-r2.ebuild,
+  -tcpdump-3.8.3-r3.ebuild, +tcpdump-3.8.3-r4.ebuild:
+  Revision bump; previous ebuilds do not enable SSL with USE=ssl, bug 97471.
+  Tidy old ebuilds.
+
+  11 Jun 2005; Yuta SATOH <nigoro@gentoo.org> tcpdump-3.8.3-r3.ebuild:
+  Stable on ppc64, bug #95349
+
+  10 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  tcpdump-3.8.3-r3.ebuild:
+  Stable on hppa.
+
+  10 Jun 2005; Aron Griffis <agriffis@gentoo.org> tcpdump-3.8.3-r3.ebuild:
+  stable on alpha ia64 #95349
+
+  10 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  tcpdump-3.8.3-r3.ebuild:
+  Stable on ppc.
+
+  10 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> tcpdump-3.8.3-r3.ebuild:
+  Stable on amd64 wrt #95349.
+
+  10 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  tcpdump-3.8.3-r3.ebuild:
+  Stable on sparc wrt #95349
+
+*tcpdump-3.8.3-r3 (09 Jun 2005)
+
+  09 Jun 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/tcpdump-3.8.3-bgp-infinite-loop2.patch, +tcpdump-3.8.3-r3.ebuild:
+  Adding patch for security bug 95349.
+
+  15 May 2005; Marcelo Goes <vanquirius@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  Use toolchain-funcs.eclass instead of gcc.eclass. See bug 92745.
+
+  14 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  files/tcpdump-3.8.3-gcc4.patch, tcpdump-3.8.3-r2.ebuild:
+  Update gcc4 patch with the proper AC_TRY_LINK fix. Thanks to halcy0n for the
+  help.
+
+  14 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/tcpdump-3.8.3-gcc4.patch, tcpdump-3.8.3-r2.ebuild:
+  Added patch to make gcc-4 a happy camper; also updated to use
+  toolchain-funcs.eclass rather than gcc.eclass.
+
+  07 May 2005; Bryan Ăstergaard <kloeri@gentoo.org>
+  tcpdump-3.8.3-r2.ebuild:
+  Stable on alpha + ia64, bug 90541.
+
+  07 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org>
+  tcpdump-3.8.3-r2.ebuild:
+  Stable on ppc64 wrt #90541
+
+  07 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  tcpdump-3.8.3-r2.ebuild:
+  Stable on hppa.
+
+  07 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  tcpdump-3.8.3-r2.ebuild:
+  Stable on sparc wrt #90541
+
+  06 May 2005; Andrej Kacian <ticho@gentoo.org> tcpdump-3.8.3-r2.ebuild:
+  Stable on amd64, bug #90541.
+
+  06 May 2005; Daniel Black <dragonheart@gentoo.org>
+  tcpdump-3.8.3-r2.ebuild:
+  ppc stable as per bug #90541
+
+*tcpdump-3.8.3-r2 (06 May 2005)
+
+  06 May 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/tcpdump-3.8.3-gentoo.patch, +tcpdump-3.8.3-r2.ebuild:
+  Adding security patch derived from debian to solve bug #90541
+
+  31 Jan 2005; Daniel Black <dragonheart@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  virtual/libpcap transition
+
+  30 Oct 2004; Eldad Zack <eldad@gentoo.org>
+  -files/tcpdump-3.6.2-afsprinting.patch, -files/tcpdump-3.7.2-sctp.patch,
+  -tcpdump-3.6.2-r1.ebuild, -tcpdump-3.7.1.ebuild, -tcpdump-3.7.2.ebuild,
+  -tcpdump-3.8.1.ebuild, -tcpdump-3.8.3.ebuild:
+  Cleanup
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  stable on ppc64, bug #56913
+
+  14 Jul 2004; Travis Tilley <lv@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  fix gcc 3.4 fix so that it works with gcc 3.4.1 too
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> tcpdump-3.7.2.ebuild:
+  Add inherit eutils
+
+  04 Apr 2004; Aron Griffis <agriffis@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  Mark stable on alpha and ia64 for bug 46258
+
+  04 Apr 2004; Jon Portnoy <avenj@gentoo.org> tcpdump-3.8.3-r1.ebuild :
+  Stable on AMD64
+
+  03 Apr 2004; Jason Wever <weeve@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  Stable on sparc wrt bug #46258.
+
+  03 Apr 2004; <solar@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  stable on x86. Bug #37184,#46258
+
+  03 Apr 2004; Lars Weiler <pylon@gentoo.org> tcpdump-3.8.3-r1.ebuild:
+  stable on ppc as requested in bug #46258
+
+*tcpdump-3.8.3-r1 (31 Mar 2004)
+
+  31 Mar 2004; <solar@gentoo.org> metadata.xml, tcpdump-3.8.3-r1.ebuild:
+  updated DEPEND's
+
+  30 Mar 2004; Jason Wever <weeve@gentoo.org> tcpdump-3.8.3.ebuild:
+  Stable on sparc.
+
+*tcpdump-3.8.3 (30 Mar 2004)
+
+  30 Mar 2004; <solar@gentoo.org> tcpdump-3.6.2-r1.ebuild,
+  tcpdump-3.7.1.ebuild, tcpdump-3.7.2.ebuild, tcpdump-3.8.3.ebuild:
+  ISAKMP payload handling denial-of-service vulnerabilities. Bugzilla Bug 46258
+
+  30 Mar 2004; Aron Griffis <agriffis@gentoo.org> tcpdump-3.8.1.ebuild:
+  Stable on alpha and ia64 for bug 38206
+
+  15 Jan 2004; <gustavoz@gentoo.org> tcpdump-3.8.1.ebuild:
+  marked hppa and sparc, fixes #38206
+
+  05 Jan 2004; Daniel Ahlberg <aliz@gentoo.org> tcpdump-3.8.1.ebuild:
+  Change optimization levels. Patch by Gustavo Zacarias <gustavoz@gentoo.org> in
+  #37184.
+
+*tcpdump-3.8.1 (03 Jan 2004)
+
+  03 Jan 2004; Daniel Ahlberg <aliz@gentoo.org> tcpdump-3.8.1.ebuild:
+  Version bump. Closing #37091
+
+  04 Nov 2003; Will Woods <wwoods@gentoo.org> tcpdump-3.7.2.ebuild:
+  Added files/tcpdump-3.7.2-sctp.patch, fixing bug #25544
+
+*tcpdump-3.7.2 (03 Mar 2003)
+
+  27 Apr 2003; Zach Welch <zwelch@gentoo.org> tcpdump-3.7.2.ebuild:
+  add arm keyword
+
+  25 Apr 2003; Guy Martin <gmsoft@gentoo.org> tcpdump-3.7.2.ebuild :
+  Added hppa to KEYWORDS.
+
+  03 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*tcpdump-3.7.1 (9 May 2002)
+
+  15 Feb 2003; Nicholas Wourms <dragon@gentoo.org> tcpdump-3.6.2-r1.ebuild tcpdump-3.7.1.ebuild :
+  Added mips keyword to ebuilds.
+
+  10 Feb 2003; Peter Johanson <latexer@gentoo.org> tcpdump-3.7.1.ebuild :
+  Added ~alpha to KEYWORDS in tcpdump-3.7.1.ebuild.
+
+  17 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> tcpdump-3.7.1.ebuild :
+  Moved binary from /usr/bin to /usr/sbin as suggested in #6518.
+
+  21 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  18 Jul 2002; Kyle Manna <nitro@gentoo.org tcpdump-3.7.1.ebuild
+  tcpdump-3.6.2-r1.ebuild :
+  Added KEYWORDS, SLOT, and LICENSE.
+
+  9 May 2002; Spider <spider@gentoo.org> tcpdump-3.7.1.ebuild :
+  New version again :)  Not sure if this is BETA, devel, tested, working etc.
+  But it has the security patch already applied ;)
+
+*tcpdump-3.6.2-r1 (9 May 2002)
+
+  17 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> tcpdump-3.6.2-r1.ebuild :
+  Moved binary from /usr/bin to /usr/sbin as suggested in #6518.
+
+  9 May 2002; Spider <spider@gentoo.org> tcpdump-3.6.2-r1.ebuild :
+  Yet another security fix. from connectiva this time
+ 
+*tcpdump-3.6.2 (9 May 2002)
+  9 May 2002; Spider <spider@gentoo.org> tcpdump-3.6.2.ebuild :
+  Updated version on tcpdump.org, fixes security vulnerability.
+  
 *tcpdump-3.6.1 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

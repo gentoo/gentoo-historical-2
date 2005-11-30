@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ns/ns-2.28.ebuild,v 1.1 2005/02/22 02:11:18 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ns/ns-2.28.ebuild,v 1.1.1.1 2005/11/30 10:12:44 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.isi.edu/nsnam/dist/${PN}-src-${PV}.tar.gz"
 
 LICENSE="BSD as-is"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~ppc ~sparc ~x86 ~amd64"
 IUSE="doc debug"
 
 RDEPEND=">=dev-lang/tcl-8.4.4

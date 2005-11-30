@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix-agent/zabbix-agent-1.1_alpha7.ebuild,v 1.1 2005/04/26 21:46:18 iggy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix-agent/zabbix-agent-1.1_alpha7.ebuild,v 1.1.1.1 2005/11/30 10:12:25 chriswhite Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/zabbix/${MY_P}-${MY_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~x86 ~sparc ~amd64"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 IUSE=""
 
@@ -31,7 +31,7 @@ S=${WORKDIR}/${MY_P}-${MY_PV}
 
 pkg_setup() {
 	enewgroup zabbix
-	enewuser zabbix -1 /bin/false /dev/null zabbix
+	enewuser zabbix -1 -1 /dev/null zabbix
 }
 
 

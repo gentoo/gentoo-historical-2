@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/gnugo/gnugo-3.6.ebuild,v 1.1 2004/12/01 20:30:06 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/gnugo/gnugo-3.6.ebuild,v 1.1.1.1 2005/11/30 10:09:59 chriswhite Exp $
 
 inherit games
 
@@ -10,11 +10,10 @@ SRC_URI="ftp://sporadic.stanford.edu/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc alpha amd64"
+KEYWORDS="alpha amd64 ppc x86"
 IUSE=""
 
-DEPEND="virtual/libc
-	>=sys-libs/ncurses-5.2-r3"
+DEPEND=">=sys-libs/ncurses-5.2-r3"
 
 src_compile() {
 	egamesconf --enable-cache-size=32 || die
@@ -23,6 +22,6 @@ src_compile() {
 
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog INSTALL NEWS README THANKS TODO
+	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
 	prepgamesdirs
 }

@@ -1,6 +1,30 @@
 # ChangeLog for dev-php5/pecl-crack
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php5/pecl-crack/ChangeLog,v 1.1 2005/09/04 16:22:03 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php5/pecl-crack/ChangeLog,v 1.1.1.1 2005/11/30 10:14:40 chriswhite Exp $
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> pecl-crack-0.2.ebuild,
+  pecl-crack-0.3.ebuild:
+  Added ~ppc64 keyword; bug #102649
+
+  24 Sep 2005; Jason Wever <weeve@gentoo.org> pecl-crack-0.3.ebuild:
+  Added ~sparc keyword back into pecl-crack because it got dropped. :(
+
+  15 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  pecl-crack-0.2.ebuild:
+  dekeyword for amd64 until php5 is keyworded as well
+
+*pecl-crack-0.3 (10 Sep 2005)
+
+  10 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +pecl-crack-0.3.ebuild:
+  Version bump, DEPEND on cracklib no longer needed.
+
+  10 Sep 2005; Jason Wever <weeve@gentoo.org> pecl-crack-0.2.ebuild:
+  Added ~sparc keyword.
+
+  07 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  pecl-crack-0.2.ebuild:
+  Marked ~amd64 per bug 99551.
 
   18 Aug 2005; <stuart@gentoo.org> ChangeLog:
   Initial version; replaces older dev-php/* packages

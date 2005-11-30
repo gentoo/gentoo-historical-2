@@ -1,6 +1,15 @@
 # ChangeLog for dev-php5/phpdbg
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php5/phpdbg/ChangeLog,v 1.1 2005/09/04 16:53:21 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php5/phpdbg/ChangeLog,v 1.1.1.1 2005/11/30 10:14:40 chriswhite Exp $
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> phpdbg-2.11.32.ebuild:
+  Added ~ppc64 keyword; bug #102649
+
+  12 Nov 2005; Konstantin Arkhipov <voxus@gentoo.org> phpdbg-2.11.32.ebuild:
+  Added ~amd64 keyword.
+
+  10 Sep 2005; Jason Wever <weeve@gentoo.org> phpdbg-2.11.32.ebuild:
+  Added ~sparc keyword.
 
   18 Aug 2005; <stuart@gentoo.org> ChangeLog:
   Initial version; replaces older dev-php/* packages

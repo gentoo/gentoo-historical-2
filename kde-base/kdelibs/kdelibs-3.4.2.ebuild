@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.4.2.ebuild,v 1.1 2005/07/28 12:52:34 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.4.2.ebuild,v 1.1.1.1 2005/11/30 10:12:51 chriswhite Exp $
 
 inherit kde flag-o-matic eutils multilib
 set-kdedir 3.4

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.4.ebuild,v 1.1 2004/11/30 23:35:29 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.4.ebuild,v 1.1.1.1 2005/11/30 10:10:31 chriswhite Exp $
 
 inherit python distutils
 
@@ -12,11 +12,10 @@ SRC_URI="mirror://sourceforge/pyxml/${MY_P}.tar.gz"
 
 LICENSE="PYTHON"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc-macos ~ppc64 sparc x86"
 IUSE=""
 
-DEPEND="virtual/python
-	>=dev-libs/expat-1.95.6"
+DEPEND=">=dev-libs/expat-1.95.6"
 
 S=${WORKDIR}/${MY_P}
 

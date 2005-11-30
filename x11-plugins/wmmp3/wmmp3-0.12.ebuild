@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmp3/wmmp3-0.12.ebuild,v 1.1 2004/07/17 14:51:16 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmp3/wmmp3-0.12.ebuild,v 1.1.1.1 2005/11/30 10:10:43 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
@@ -10,10 +12,19 @@ SRC_URI="http://www.dotfiles.com/software/wmmp3/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ppc ~sparc x86"
 
 DEPEND="virtual/x11
-	>=media-sound/mpg123-0.59s-r3"
+	>=media-sound/mpg123-0.59s-r2"
+
+src_unpack()
+{
+	unpack ${A}
+	cd ${S}
+
+	# Fix #103531
+	epatch ${FILESDIR}/${P}-x_includes_n_libraries.patch
+}
 
 src_compile()
 {
@@ -25,7 +36,7 @@ src_compile()
 src_install()
 {
 	einstall || die "Installation failed"
-	dodoc AUTHORS COPYING ChangeLog sample.wmmp3 README TODO
+	dodoc AUTHORS ChangeLog sample.wmmp3 README TODO
 }
 
 pkg_postinst()

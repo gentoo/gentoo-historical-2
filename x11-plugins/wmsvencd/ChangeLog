@@ -1,8 +1,15 @@
 # ChangeLog for x11-plugins/wmsvencd
 # Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsvencd/ChangeLog,v 1.1 2004/07/17 13:54:27 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsvencd/ChangeLog,v 1.1.1.1 2005/11/30 10:10:37 chriswhite Exp $
+
+  06 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmsvencd-0.5.0.ebuild:
+  Stable for x86...
+
+  18 Jul 2004; David Holm <dholm@gentoo.org> :
+  Added to ~ppc.
 
 *wmsvencd-0.5.0 (17 Jul 2004)
 
   17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmsvencd-0.5.0.ebuild:
   Initial import. Thanks to Przemyslaw Maciag. Closes #53583.
+  Remove the S definition...

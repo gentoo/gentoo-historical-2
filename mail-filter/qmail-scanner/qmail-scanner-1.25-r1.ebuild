@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/qmail-scanner/qmail-scanner-1.25-r1.ebuild,v 1.1 2005/04/10 15:17:41 st_lim Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/qmail-scanner/qmail-scanner-1.25-r1.ebuild,v 1.1.1.1 2005/11/30 10:11:52 chriswhite Exp $
 
-inherit fixheadtails gcc eutils
+inherit fixheadtails toolchain-funcs eutils
 
 Q_S_DATE=20050406
 DESCRIPTION="E-Mail virus scanner for qmail."
@@ -14,12 +14,13 @@ IUSE="spamassassin"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc ~amd64"
+KEYWORDS="amd64 ~ppc sparc x86"
+RESTRICT="userpriv usersandbox"
 
 DEPEND=">=dev-lang/perl-5.6.1-r1
-	>=dev-perl/Time-HiRes-01.20-r2
+	>=perl-core/Time-HiRes-01.20-r2
 	>=net-mail/tnef-1.1.1
-	>=dev-perl/DB_File-1.803-r2
+	>=perl-core/DB_File-1.803-r2
 	>=net-mail/ripmime-1.3.0.4
 	|| (
 	>=mail-mta/qmail-1.03-r8
@@ -32,7 +33,7 @@ DEPEND=">=dev-lang/perl-5.6.1-r1
 
 pkg_setup() {
 	enewgroup qscand 210
-	enewuser qscand 210 /bin/false /var/spool/qmailscan qscand
+	enewuser qscand 210 -1 /var/spool/qmailscan qscand
 }
 
 pkg_preinst() {
@@ -60,6 +61,7 @@ src_compile () {
 	local myconf
 
 	addpredict /var/log/kav/kavscan.log
+	addpredict /opt/bdc/plugins.htm
 
 	use spamassassin && myconf="--virus-to-delete yes --sa-quarantine 2.1 --sa-delete 4.2 --sa-reject no --sa-subject SPAM: --sa-delta 0.5 --sa-alt yes"
 
@@ -74,7 +76,7 @@ src_compile () {
 
 	# build for qmail-scanner-queue wrapper, so we don't need suidperl
 	cd contrib
-	`gcc-getCC` ${CFLAGS} -o qmail-scanner-queue qmail-scanner-queue.c || die
+	`tc-getCC` ${CFLAGS} -o qmail-scanner-queue qmail-scanner-queue.c || die
 }
 
 src_install () {

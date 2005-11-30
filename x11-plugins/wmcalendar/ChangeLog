@@ -1,6 +1,26 @@
 # ChangeLog for x11-plugins/wmcalendar
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcalendar/ChangeLog,v 1.1 2004/03/06 02:20:55 pyrania Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcalendar/ChangeLog,v 1.1.1.1 2005/11/30 10:10:51 chriswhite Exp $
+
+  07 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmcalendar-0.5.0.ebuild:
+  Removed INSTALL and COPYING from dodoc.
+
+  13 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> wmcalendar-0.5.0.ebuild:
+  Added some magic sed to remove unneeded SYSTEM variable from Makefile,
+  fixing bug #105730.
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmcalendar-0.5.0.ebuild:
+  Added ~sparc keyword.
+
+  23 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> metadata.xml:
+  Added missing metadata.xml file...
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> wmcalendar-0.5.0.ebuild:
+  Stable on x86.
+
+  20 Mar 2004; Markus Nigbur <pyrania@gentoo.org>
+  files/wmcalendar-0.5.0.makefile.patch:
+  Added Makefile patch. Closing bug #28951.
 
 *wmcalendar-0.5.0 (06 Mar 2004)
 

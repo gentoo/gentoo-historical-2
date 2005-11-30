@@ -1,6 +1,357 @@
-# ChangeLog for dev-perl/Mail-SpamAssassin
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin/ChangeLog,v 1.1 2004/06/04 04:26:45 seemant Exp $
+# ChangeLog for mail-filter/spamassassin
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin/ChangeLog,v 1.1.1.1 2005/11/30 10:12:01 chriswhite Exp $
+
+  17 Nov 2005; Homer Parker <hparker@gentoo.org> spamassassin-3.1.0.ebuild:
+  Stable on amd64 fixing bug 112063
+
+  14 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  spamassassin-3.1.0.ebuild:
+  Stable on hppa, ppc.
+
+  14 Nov 2005; Markus Rothe <corsair@gentoo.org> spamassassin-3.1.0.ebuild:
+  Stable on ppc64; bug #112063
+
+  13 Nov 2005; Mark Loeser <halcy0n@gentoo.org> spamassassin-3.1.0.ebuild:
+  Stable on x86; bug #112063
+
+  13 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  spamassassin-3.1.0.ebuild:
+  stable on alpha wrt bug #112063
+
+  13 Nov 2005; Jason Wever <weeve@gentoo.org> spamassassin-3.1.0.ebuild:
+  Stable on SPARC wrt bug #112063.
+
+  12 Nov 2005; Brent Baude <ranger@gentoo.org> spamassassin-3.1.0-r1.ebuild:
+  Marking spamassassin-3.1.0-r1 ~ppc64 for bug# 112220
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.1.0.ebuild, spamassassin-3.1.0-r1.ebuild:
+  SA 3.1.0 needs the lateste archive-tar
+
+  12 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  spamassassin-3.1.0-r1.ebuild:
+  marked ~alpha as per bug #112220
+
+*spamassassin-3.1.0-r1 (11 Nov 2005)
+
+  11 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +spamassassin-3.1.0-r1.ebuild:
+  3.1.0-r1 adds additional use flags and support, which are not supported by
+  all architectures atm. Bug 112220 has been created to track this.
+
+*spamassassin-3.1.0 (11 Nov 2005)
+
+  11 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +spamassassin-3.1.0.ebuild:
+  Upstream bump, ebuild worked heavily by Brian G. Peterson in bug 106028.
+  Should also close bug (request for said bump). Additional use flag information that Brian added needed to be removed for the time being - not all arch's are up to date on the relevant dependancies. Will open a bug against arch's for 3.1.0-r1.ebuild.
+
+  16 Aug 2005; Michael Cummings <mcummings@gentoo.org> files/3.0.0-spamd.conf,
+  +files/secrets.cf, -spamassassin-2.64-r1.ebuild,
+  -spamassassin-3.0.2-r1.ebuild, -spamassassin-3.0.3.ebuild,
+  spamassassin-3.0.4.ebuild:
+  Cleaning up; bug 91430 resolved, added secrets.cf and a note to the local.cf
+  file
+
+  28 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  files/3.0.0-spamd.init, spamassassin-3.0.4.ebuild:
+  Bug 96704
+
+  28 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  files/3.0.0-spamd.init, spamassassin-3.0.4.ebuild:
+  Bug 85205
+
+  28 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.4.ebuild:
+  Bug 96669
+
+  18 Jun 2005; Thomas Matthijs <axxo@gentoo.org> spamassassin-3.0.4.ebuild:
+  stable on x86
+
+  17 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  spamassassin-3.0.4.ebuild:
+  Stable on hppa. bug #94722
+
+  17 Jun 2005; Markus Rothe <corsair@gentoo.org> spamassassin-3.0.4.ebuild:
+  Stable on ppc64; bug #94722
+
+  16 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  spamassassin-3.0.4.ebuild:
+  Stable on alpha + ia64.
+
+  10 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  files/3.0.0-spamd.init:
+  init addition for pidfile location
+
+  09 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.2-r1.ebuild:
+  3.0.2-r1 tested on mips, keywording
+
+  09 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  -spamassassin-2.63-r1.ebuild, -spamassassin-2.63.ebuild,
+  -spamassassin-2.64.ebuild, -spamassassin-3.0.0-r1.ebuild,
+  -spamassassin-3.0.0.ebuild, -spamassassin-3.0.1.ebuild,
+  -spamassassin-3.0.2.ebuild:
+  Cleaning. Next task: get mips bumped
+
+  08 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  spamassassin-3.0.4.ebuild:
+  Stable on sparc wrt #94722
+
+  08 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  spamassassin-3.0.4.ebuild:
+  Stable on ppc.
+
+  08 Jun 2005; Simon Stelling <blubb@gentoo.org> spamassassin-3.0.4.ebuild:
+  marking stable on amd64 wrt bug 94722
+
+*spamassassin-3.0.4 (08 Jun 2005)
+
+  08 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  +spamassassin-3.0.4.ebuild:
+  Version bump, bug forthcoming
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64.ebuild:
+  dev-perl/ExtUtils-MakeMaker => perl-core/ExtUtils-MakeMaker migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64-r1.ebuild:
+  dev-perl/ExtUtils-MakeMaker => perl-core/ExtUtils-MakeMaker migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63.ebuild:
+  dev-perl/ExtUtils-MakeMaker => perl-core/ExtUtils-MakeMaker migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63-r1.ebuild:
+  dev-perl/ExtUtils-MakeMaker => perl-core/ExtUtils-MakeMaker migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64-r1.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63-r1.ebuild:
+  dev-perl/Time-Local => perl-core/Time-Local migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.3.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.3.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.3.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.2.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.2-r1.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.1.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64.ebuild:
+  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64-r1.ebuild:
+  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63.ebuild:
+  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63-r1.ebuild:
+  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.64-r1.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63-r1.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-2.63-r1.ebuild, spamassassin-2.63.ebuild,
+  spamassassin-2.64-r1.ebuild, spamassassin-2.64.ebuild,
+  spamassassin-3.0.0-r1.ebuild, spamassassin-3.0.0.ebuild,
+  spamassassin-3.0.1.ebuild, spamassassin-3.0.2-r1.ebuild,
+  spamassassin-3.0.2.ebuild, spamassassin-3.0.3.ebuild:
+  dev-perl/DB_File => perl-core/DB_File
+
+  10 May 2005; Sven Wegener <swegener@gentoo.org> files/3.0.0-spamd.conf,
+  files/3.0.0-spamd.init, files/spamd.conf, files/spamd.init,
+  spamassassin-3.0.3.ebuild:
+  Moved the declaration of the pid file location from init.d script to conf.d
+  file. Overriding the value might be needed if we run spamd as non-root. Some
+  general ebuild cleanup.
+
+*spamassassin-3.0.3 (04 May 2005)
+
+  04 May 2005; Michael Cummings <mcummings@gentoo.org>
+  +spamassassin-3.0.3.ebuild:
+  New version released
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org>
+  spamassassin-2.64-r1.ebuild:
+  stable on mips
+
+*spamassassin-3.0.2-r1 (30 Jan 2005)
+
+  30 Jan 2005; Michael Cummings <mcummings@gentoo.org> files/3.0.0-spamd.conf,
+  files/spamd.conf, spamassassin-2.63-r1.ebuild, spamassassin-2.63.ebuild,
+  +spamassassin-2.64-r1.ebuild, spamassassin-2.64.ebuild,
+  spamassassin-3.0.0-r1.ebuild, spamassassin-3.0.0.ebuild,
+  +spamassassin-3.0.2-r1.ebuild:
+  Version bump to reflect bug 76168.
+
+  24 Jan 2005; Michael Cummings <mcummings@gentoo.org> files/3.0.0-spamd.conf:
+  Bug 76168 - removing -i from default config file so that SA is only listening
+  on localhost rather than all available interfaces.
+
+  27 Dec 2004; Guy Martin <gmsoft@gentoo.org> spamassassin-3.0.2.ebuild:
+  Stable on hppa.
+
+  27 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  spamassassin-3.0.2.ebuild:
+  Stable on alpha, bug 64133.
+
+  26 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  spamassassin-3.0.2.ebuild:
+  Stable sparc.
+
+  26 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  spamassassin-3.0.2.ebuild:
+  Stable x86.
+
+  23 Dec 2004; Simon Stelling <blubb@gentoo.org> spamassassin-3.0.2.ebuild:
+  stable on amd64; bug #64133
+
+  23 Dec 2004; <SeJo@gentoo.org> spamassassin-3.0.2.ebuild:
+  stable on ppc glsa: 64133
+
+  20 Dec 2004; Markus Rothe <corsair@gentoo.org> spamassassin-3.0.2.ebuild:
+  Stable on ppc64
+
+*spamassassin-3.0.2 (20 Dec 2004)
+
+  20 Dec 2004; Michael Cummings <mcummings@gentoo.org>
+  +spamassassin-3.0.2.ebuild:
+  New version; closes bug 74731
+  Updates:
+  SA-bug 4005: Yahoo groups messages flagged as forged
+  SA-bug 4030: incapable Net::DNS module usage should be a warning
+  SA-bug 2462: detect legitimate SMTP AUTH submission, to avoid false positives on Dynablock-style rules
+  SA-bug 4019: Needed to add in RPAD call wherever token was used in a select
+  SA-bug 3961: Docu fix for two contradicting explanations of the -x switch
+  SA-bug 4014: change spamcop_submission_address to correct name, spamcop_to_address
+  SA-bug 3990: two small regexp errors in RegistrarBoundaries
+  SA-bug 3967: fix performance issues with USERPASS and RATWARE_STORM_URI
+  SA-bug 3953: Provide better debug output for sa-learn --restore
+  SA-bug 3816: deal with 'rewrite_header Subject' markup when no Subject header previously existed
+  SA-bug 3950: Exim 'sender_fullhost' var was not recognized by Received header parser
+  SA-bug 3942: EvalTests::_check_recipients() would sometimes parse out the wrong addresses/overwrite entries on the array/etc
+  SA-bug 3941: spamcop now only wants max 2 day old mail
+  SA-bug 3930: uridnsbl plugin didn't respect the uridnsbl_max_domains value
+
+*spamassassin-3.0.1 (20 Dec 2004)
+
+  20 Dec 2004; Michael Cummings <mcummings@gentoo.org>
+  files/3.0.0-spamd.conf, files/spamd.conf, spamassassin-3.0.0-r1.ebuild,
+  spamassassin-3.0.0.ebuild, spamassassin-3.0.1.ebuild:
+  Added note regarding potential for DoS against spamd when used against an
+  untrusted network. Should resolve bug 64133 for now.
+
+  26 Oct 2004; Michael Cummings <mcummings@gentoo.org> :
+  Bug 68841. - excessive memory-usage fixes - bug fixed which stopped DCC, Pyzor
+  working with amavisd - deprecate RCVD_IN_RFC_IPWHOIS - user_prefs were staying
+  active between different spamd users, fixed - user_prefs blacklist entries
+  were not working in spamd, fixed - excessive time and memory consumption when
+  ok_languages is used, fixed - sa-learn -u switch to specify the username for
+  virtual environments - avoid bug in Sys::Hostname::Long that renames the
+  hostname when "make test" is run - whitelist the top 125 queried SURBL domains
+  common in nonspam
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> files/3.0.0-spamd.init:
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+  26 Sep 2004; Tom Gall <tgall@gentoo.org> spamassassin-2.64.ebuild:
+  stable on ppc64, bug #59483
+
+*spamassassin-3.0.0-r1 (24 Sep 2004)
+
+  24 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  +spamassassin-3.0.0-r1.ebuild, spamassassin-3.0.0.ebuild:
+  Mistake on my part with importing the DATADIR that was used in the pre-release
+  ebuild. Corrected in both 3 and 3-r1 just to be safe. Addresses bug 65102.
+
+  22 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  spamassassin-3.0.0.ebuild:
+  <= not >= for razor less than 2.4. axxo - good catch
+
+*spamassassin-3.0.0 (22 Sep 2004)
+
+  22 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  +files/3.0.0-spamd.conf, +files/3.0.0-spamd.init,
+  +spamassassin-3.0.0.ebuild:
+  New version of spamassassin. Read the UPDATES and CHANGES if upgrading!!This
+  should close out bug 58057.
+
+  06 Aug 2004; Aron Griffis <agriffis@gentoo.org> spamassassin-2.64.ebuild:
+  stable on alpha and ia64 #59483
+
+  05 Aug 2004; Tom Martin <slarti@gentoo.org> spamassassin-2.64.ebuild:
+  Marked stable on amd64 for bug 59483.
+
+*spamassassin-2.64 (05 Aug 2004)
+
+  05 Aug 2004; <squash@gentoo.org> spamassassin-2.64.ebuild:
+  sparc-ified
+
+  21 Jul 2004; Tom Gall <tgall@gentoo.org> spamassassin-2.63-r1.ebuild:
+  stable on ppc64, bug #57585
+
+*spamassassin-2.63-r1 (04 Jul 2004)
+
+  04 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
+  spamassassin-2.63-r1.ebuild:
+  add in functionality from bug #49448, qmail-spamc.
+
+  08 Jun 2004; Robert Coie <rac@gentoo.org> spamassassin-2.63.ebuild:
+  Add Time-Local and Getopt-Long to the stuff that perl can fill
+
+  06 Jun 2004; Robert Coie <rac@gentoo.org> spamassassin-2.63.ebuild:
+  Modify the File-Spec and MakeMaker deps to be fulfillable by >=perl-5.8.2-r1
+  itself
 
 *spamassassin-2.63 (03 Jun 2004)
 

@@ -1,6 +1,42 @@
 # ChangeLog for kde-base/superkaramba
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/superkaramba/ChangeLog,v 1.1 2005/09/07 13:42:48 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/superkaramba/ChangeLog,v 1.1.1.1 2005/11/30 10:12:49 chriswhite Exp $
+
+  23 Nov 2005; Dan Armak <danarmak@gentoo.org> superkaramba-3.5.0.ebuild:
+  Removed patch applied upstream.
+
+*superkaramba-3.5.0 (22 Nov 2005)
+
+  33 Nov 2005; Dan Armak <danarmak@gentoo.org> +superkaramba-3.5.0.ebuild:
+  Ebuilds for KDE 3.5.0 final. It is not yet released, and is package.masked.
+
+  16 Nov 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kdeutils-3.5_rc1-unicode.patch, superkaramba-3.5.0_rc1.ebuild:
+  Fix compilation with USE=unicode (#112606).
+
+*superkaramba-3.5.0_rc1 (12 Nov 2005)
+
+  12 Nov 2005; Dan Armak <danarmak@gentoo.org> +superkaramba-3.5.0_rc1.ebuild:
+  Ebuild for new version 3.5.0_rc1.
+
+  22 Oct 2005; Mark Loeser <halcy0n@gentoo.org>
+  superkaramba-3.5_beta1.ebuild, superkaramba-3.5.0_beta2.ebuild:
+  Adding ~x86 to keywords
+
+*superkaramba-3.5.0_beta2 (14 Oct 2005)
+
+  14 Oct 2005; Dan Armak <danarmak@gentoo.org> +superkaramba-3.5.0_beta2.ebuild:
+  New version.
+
+  24 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -superkaramba-3.5_alpha1.ebuild:
+  Removed 3.5_alpha1.
+
+*superkaramba-3.5_beta1 (22 Sep 2005)
+
+  22 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +superkaramba-3.5_beta1.ebuild:
+  Bump to 3.5 beta1.
 
 *superkaramba-3.5_alpha1 (07 Sep 2005)
 

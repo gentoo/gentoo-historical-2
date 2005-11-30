@@ -1,6 +1,22 @@
 # ChangeLog for x11-plugins/gai-album
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gai-album/ChangeLog,v 1.1 2004/05/09 20:20:16 lordvan Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gai-album/ChangeLog,v 1.1.1.1 2005/11/30 10:10:56 chriswhite Exp $
+
+*gai-album-0.7 (08 Oct 2004)
+
+  08 Oct 2004; root <root@gentoo.org> gai-album-0.6.ebuild,
+  gai-album-0.7.ebuild:
+  version bump, fixes Bug #59278 (thanks to Daniel Webert
+  <rockoo@rockoo.homelinux.org>)
+  
+  fix sandbox violation bug
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gai-album-0.6.ebuild:
+  Masked gai-album-0.6.ebuild stable for ppc
+
+  10 May 2004; David Holm <dholm@gentoo.org> gai-album-0.6.ebuild:
+  Added to ~ppc.
 
 *gai-album-0.6 (09 May 2004)
 

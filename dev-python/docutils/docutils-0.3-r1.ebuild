@@ -1,8 +1,8 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3-r1.ebuild,v 1.1 2003/07/07 23:39:10 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:25 chriswhite Exp $
 
-inherit distutils
+inherit distutils eutils
 
 DESCRIPTION="Set of python tools for processing plaintext docs into HTML, XML, etc."
 HOMEPAGE="http://docutils.sourceforge.net/"
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/docutils/${P}.tar.gz"
 
 LICENSE="public-domain PYTHON BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE=""
 
-DEPEND=">=dev-lang/python-2.1"
+DEPEND="<dev-lang/python-2.4"
 
 # GLEP version
 GLEP_SRC=${FILESDIR}/glep-${PVR}
@@ -56,7 +56,7 @@ src_install() {
 	do
 		install_txt_doc $doc
 	done
-	
+
 	# installing Gentoo GLEP tools. Uses versioned GLEP distribution
 	distutils_python_version
 	newbin ${GLEP_SRC}/glep.py docutils-glep.py
@@ -67,4 +67,3 @@ src_install() {
 	insinto /usr/lib/python${PYVER}/site-packages/docutils/writers
 	newins ${GLEP_SRC}/glep_htmlwrite.py glep_html.py
 }
-

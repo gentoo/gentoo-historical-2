@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pmw/pmw-1.2.ebuild,v 1.1 2003/10/12 11:26:31 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pmw/pmw-1.2.ebuild,v 1.1.1.1 2005/11/30 10:10:11 chriswhite Exp $
 
 inherit distutils python
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://pmw.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pmw/Pmw.${PV}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 LICENSE="MIT"
 IUSE=""
 
@@ -23,7 +23,7 @@ pkg_setup() {
 		eerror "to recompile Python with:"
 		eerror "USE=\"tcltk\" emerge python"
 		die "Tkinter support missing"
-	fi		
+	fi
 }
 
 src_compile() {
@@ -32,7 +32,7 @@ src_compile() {
 
 src_install() {
 	python_version
-	
+
 	local pmwdir="/usr/lib/python${PYVER}/site-packages/Pmw"
 
 	local dir

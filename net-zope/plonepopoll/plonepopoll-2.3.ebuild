@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/plonepopoll/plonepopoll-2.3.ebuild,v 1.1 2005/04/19 17:30:49 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/plonepopoll/plonepopoll-2.3.ebuild,v 1.1.1.1 2005/11/30 10:11:06 chriswhite Exp $
 
 inherit zproduct
 
@@ -15,7 +15,6 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=""
 DEPEND=">=net-zope/plone-2.0"
 
 ZPROD_LIST="${MY_PN}"

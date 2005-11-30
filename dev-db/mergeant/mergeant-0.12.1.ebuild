@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mergeant/mergeant-0.12.1.ebuild,v 1.1 2003/06/16 09:43:23 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mergeant/mergeant-0.12.1.ebuild,v 1.1.1.1 2005/11/30 10:11:49 chriswhite Exp $
 
 IUSE=""
 
@@ -10,7 +10,7 @@ DESCRIPTION="Database admin tool using libgnomedb and libgda"
 HOMEPAGE="http://www.gnome-db.org/"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 RDEPEND=">=gnome-extra/libgnomedb-0.12.0
 	>=gnome-extra/libgda-0.12.0
@@ -35,6 +35,6 @@ src_unpack() {
 }
 
 src_install() {
-    # redefined libdir so plugins don't get installed in /usr/lib
+	# redefined libdir so plugins don't get installed in /usr/lib
 	gnome2_src_install "libdir=${D}/usr/share/mergeant/plugins" "dtddir=${D}/usr/share/mergeant/dtd/" "Mergeant_Lang_helpdir=${D}/usr/share/doc/mergeant/C" "scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/" "Pixmapdir=${D}/usr/share/pixmaps/mergeant"
 }

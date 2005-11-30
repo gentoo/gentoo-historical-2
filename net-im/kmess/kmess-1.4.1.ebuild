@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/kmess/kmess-1.4.1.ebuild,v 1.1 2005/09/29 16:23:44 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/kmess/kmess-1.4.1.ebuild,v 1.1.1.1 2005/11/30 10:09:52 chriswhite Exp $
 
 inherit kde eutils
 

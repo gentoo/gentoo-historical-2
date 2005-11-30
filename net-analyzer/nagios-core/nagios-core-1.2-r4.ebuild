@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-core/nagios-core-1.2-r4.ebuild,v 1.1 2005/01/25 10:04:18 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-core/nagios-core-1.2-r4.ebuild,v 1.1.1.1 2005/11/30 10:12:18 chriswhite Exp $
 
-inherit eutils depend.apache toolchain-funcs
+inherit eutils apache-module toolchain-funcs
 
 MY_P=${P/-core}
 DESCRIPTION="Nagios Core - Check daemon, CGIs, docs"
@@ -12,19 +12,16 @@ RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="x86 sparc ~ppc ~amd64"
 IUSE="noweb mysql postgres perl debug apache2"
 
-# place inside !noweb beside the other apache depend
-#		apache2? ( ${APACHE2_DEPEND} )
 DEPEND="virtual/mailx
 	!noweb? (
 		>=media-libs/jpeg-6b-r3
 		>=media-libs/libpng-1.2.5-r4
 		>=media-libs/gd-1.8.3-r5
-		!apache2? ( ${APACHE1_DEPEND} )
+		${NEED_APACHE_DEPEND}
 	)
-
 	perl? ( >=dev-lang/perl-5.6.1-r7 )
 	mysql? ( >=dev-db/mysql-3.23.56 )
 	postgres? ( !mysql? ( >=dev-db/postgresql-7.3.2 ) )"
@@ -42,6 +39,15 @@ pkg_setup() {
 			die "pkg_setup failed"
 		fi
 	fi
+
+	enewgroup nagios
+
+	if use noweb; then
+		enewuser nagios -1 /bin/bash /dev/null nagios
+	else
+		enewuser nagios -1 /bin/bash /dev/null apache
+		usermod -G apache nagios
+	fi
 }
 
 src_unpack() {
@@ -51,6 +57,11 @@ src_unpack() {
 	epatch ${FILESDIR}/submit_check_result_via_nsca.patch
 
 	epatch ${FILESDIR}/Makefile-distclean.diff.bz2
+
+	# libpq-fe.h isnt in psgql/ 
+	cd xdata/
+	sed -i -e "s:pgsql/::" *.c
+
 	cp ${FILESDIR}/nagios.cfg-sample.gz ./
 	gunzip nagios.cfg-sample.gz
 }
@@ -64,9 +75,9 @@ src_compile() {
 
 		has_version ">=sys-apps/portage-2.0.50" && (
 			einfo "You can add -"
-			echo ""
+			echo
 			einfo "net-analyzer/nagios-core [use flags]"
-			echo ""
+			echo
 			einfo "to /etc/portage/package.use to permanently set this package's USE flags"
 			einfo "More info on package.use is available on:"
 			einfo "     man 5 portage"
@@ -74,7 +85,7 @@ src_compile() {
 	elif use postgres ; then
 		myconf="${myconf} --with-pgsql-xdata"
 
-		if [ -r /usr/include/postgresql/pgsql/libpq-fe.h ] ; then
+		if [ -r /usr/include/postgresql/libpq-fe.h ] ; then
 			myconf="${myconf} --with-pgsql-inc=/usr/include/postgresql"
 		fi
 	fi
@@ -186,23 +197,18 @@ pkg_preinst() {
 	keepdir /usr/nagios/share/ssi
 	keepdir /var/nagios/rw
 
-	enewgroup nagios
-
 	if use noweb; then
-		enewuser nagios -1 /bin/bash /dev/null nagios
 		chown nagios:nagios ${D}/var/nagios/rw || die "Failed Chown of ${D}/var/nagios/rw"
 	else
-		enewuser nagios -1 /bin/bash /dev/null apache
-		usermod -G apache nagios
 		chown nagios:apache ${D}/var/nagios/rw || die "Failed Chown of ${D}/var/nagios/rw"
 	fi
 
-	chmod ug+s ${D}/var/nagios/rw || die "Failed Chmod of ${D}/var/nagios/rw"
+	chmod 2750 ${D}/var/nagios/rw || die "Failed Chmod of ${D}/var/nagios/rw"
 }
 
 pkg_postinst() {
 	einfo
-	einfo "The example config files are located at /usr/share/doc/${P}/sample-configs/."
+	einfo "The example config files are located at /usr/share/doc/${PF}/sample-configs/."
 	einfo
 	einfo "Also, if you want nagios to start at boot time"
 	einfo "remember to execute:"
@@ -219,7 +225,6 @@ pkg_postinst() {
 			einfo " Edit /etc/conf.d/apache2 and add \"-D NAGIOS\""
 		else
 			einfo " Edit /etc/conf.d/apache and add \"-D NAGIOS\""
-			einfo " Edit ${APACHE1_CONFDIR}/apache.conf and add \"Include modules.d/nagios.conf\""
 		fi
 
 		einfo

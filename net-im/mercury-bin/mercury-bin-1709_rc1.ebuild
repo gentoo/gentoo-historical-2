@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/mercury-bin/mercury-bin-1709_rc1.ebuild,v 1.1 2005/03/17 18:41:20 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/mercury-bin/mercury-bin-1709_rc1.ebuild,v 1.1.1.1 2005/11/30 10:09:47 chriswhite Exp $
 
 inherit eutils java-pkg
 

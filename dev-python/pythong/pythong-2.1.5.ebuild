@@ -1,20 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythong/pythong-2.1.5.ebuild,v 1.1 2004/01/24 21:38:51 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythong/pythong-2.1.5.ebuild,v 1.1.1.1 2005/11/30 10:10:17 chriswhite Exp $
 
 inherit python distutils
 
 MY_PN="pythonG"
 MY_PV=${PV/_/-}
-MY_PV=$(echo $MY_PV | sed -e 's:\.:_:g')
+MY_PV=${MY_PV//\./_}
 
-DESCRIPTION="Nice and powerful spanish development enviroment for Python"
+DESCRIPTION="Nice and powerful spanish development environment for Python"
 SRC_URI="http://www3.uji.es/~dllorens/downloads/pythong/linux/${MY_PN}-${MY_PV}.tgz
 	doc? ( http://marmota.act.uji.es/MTP/pdf/python.pdf )"
 HOMEPAGE="http://www3.uji.es/~dllorens/PythonG/principal.html"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 SLOT="0"
 IUSE="doc"
 
@@ -42,8 +42,8 @@ src_install() {
 	python_version
 
 	sed -e  "s#^fullpath = .*#fullpath = '/usr/lib/python${PYVER}/site-packages/'#" \
-		-i pythong.py 
-	
+		-i pythong.py
+
 	insinto /usr/lib/python${PYVER}/site-packages/
 	doins modulepythong.py
 	dodir /usr/lib/python${PYVER}/site-packages/libpythong/
@@ -56,7 +56,7 @@ src_install() {
 	cp -r ${S}/{LICENCIA,MANUAL,demos} ${D}/usr/share/doc/${PF}
 	rm -f ${D}/usr/share/doc/${PF}/demos/modulepythong.py
 
-	if [ -n "`use doc`" ]; then
+	if use doc; then
 		insinto /usr/share/doc/${PF}
 		doins ${DISTDIR}/python.pdf
 	fi

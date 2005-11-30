@@ -1,6 +1,12 @@
-# ChangeLog for x11-misc/wmpager
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpager/ChangeLog,v 1.1 2003/12/26 18:03:05 port001 Exp $
+# ChangeLog for x11-plugins/wmpager
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpager/ChangeLog,v 1.1.1.1 2005/11/30 10:10:53 chriswhite Exp $
+
+  23 Sep 2005; Daniel Goller <morfic@gentoo.org> wmpager-1.2-r1.ebuild:
+  Adding ~amd64
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmpager-1.2-r1.ebuild:
+  glibc -> libc
 
 *wmpager-1.2-r1 (26 Dec 2003)
 

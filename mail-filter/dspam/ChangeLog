@@ -1,6 +1,360 @@
 # ChangeLog for mail-filter/dspam
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/dspam/ChangeLog,v 1.1 2004/06/26 16:45:28 st_lim Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dspam/ChangeLog,v 1.1.1.1 2005/11/30 10:11:56 chriswhite Exp $
+
+  20 Nov 2005; Stefan Briesenick <sbriesen@gentoo.org> dspam-3.6.0.ebuild,
+  dspam-3.6.1.ebuild:
+  added missing 'sqlite3' use-flag.
+
+  16 Nov 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.6.1.ebuild:
+  Patched for bug #112627
+
+*dspam-3.6.1 (09 Nov 2005)
+
+  09 Nov 2005; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.6.1.ebuild:
+  Version bump
+
+  06 Nov 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.6.0.ebuild:
+  Fixed bug #81596.  Late. :(
+
+  05 Nov 2005; Lim Swee Tat <st_lim@gentoo.org> ChangeLog:
+  Added sqlite3 as a use flag, and removed older stuff
+
+  05 Nov 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.6.0.ebuild:
+  Enabling sqlite3 again
+
+  05 Nov 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.6.0.ebuild:
+  Added use flag for clamav
+
+*dspam-3.6.0 (17 Oct 2005)
+
+  17 Oct 2005; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.6.0.ebuild:
+  Version bump
+
+*dspam-3.6_rc3 (15 Oct 2005)
+
+  15 Oct 2005; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.6_rc3.ebuild:
+  Version bump long overdue.  :)
+
+*dspam-3.6_rc1 (23 Sep 2005)
+
+  23 Sep 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4.9.ebuild,
+  +dspam-3.6_rc1.ebuild:
+  Version bump to 3.6_rc1
+
+  15 Sep 2005; <dang@gentoo.org> dspam-3.4.9.ebuild:
+  Marked ~amd64
+
+  29 Aug 2005; Tom Martin <slarti@gentoo.org> dspam-3.4.9.ebuild:
+  Added in a conditional dependency with (another) local logrotate USE flag.
+  Resolves bug #97447.
+
+*dspam-3.4.9 (08 Aug 2005)
+
+  08 Aug 2005; Lim Swee Tat <st_lim@gentoo.org> -dspam-3.4.0.ebuild,
+  -dspam-3.4.0-r1.ebuild, -dspam-3.4.1.ebuild, -dspam-3.4.2.ebuild,
+  -dspam-3.4.5.ebuild, -dspam-3.4.6.ebuild, +dspam-3.4.9.ebuild:
+  Version bump.
+
+  17 Jun 2005; Lim Swee Tat <st_lim@gentoo.org> ChangeLog:
+  Version bump long overdue.
+
+  11 May 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4.1.ebuild:
+  Removed the daemon use flag
+
+*dspam-3.4.6 (10 May 2005)
+
+  10 May 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4.0-r1.ebuild,
+  dspam-3.4.1.ebuild, dspam-3.4.2.ebuild, dspam-3.4.5.ebuild,
+  +dspam-3.4.6.ebuild:
+  Fixed 88246 and 89740
+
+*dspam-3.4.6 (10 May 2005)
+
+  10 May 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4.0-r1.ebuild,
+  dspam-3.4.1.ebuild, dspam-3.4.2.ebuild, dspam-3.4.5.ebuild,
+  +dspam-3.4.6.ebuild:
+  Version bump
+
+*dspam-3.4.5 (27 Apr 2005)
+
+  27 Apr 2005; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.4.5.ebuild:
+  Version bump
+
+*dspam-3.4.2 (05 Apr 2005)
+
+  05 Apr 2005; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.4.2.ebuild:
+  Version bump
+
+  05 Apr 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4.1.ebuild:
+  Fixed bug #87358 and #85939
+
+  28 Mar 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4.1.ebuild:
+  Fixed bug #86099
+
+*dspam-3.4.1 (23 Mar 2005)
+
+  23 Mar 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4.0-r1.ebuild,
+  +dspam-3.4.1.ebuild:
+  Added 3.4.1, fixed virtual users.sql
+
+*dspam-3.4.0-r1 (20 Mar 2005)
+
+  20 Mar 2005; Lim Swee Tat <st_lim@gentoo.org> files/dspam.cron,
+  +files/dspam.rc, +dspam-3.4.0-r1.ebuild:
+  Fix bug #85939 and #81596
+
+*dspam-3.4_rc3 (11 Mar 2005)
+
+  11 Mar 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4_rc2.ebuild,
+  +dspam-3.4_rc3.ebuild:
+  Fixed 3 birds, uh bugs with one stone - Bugs #84539, #81345, #78727
+
+  09 Mar 2005; Lim Swee Tat <st_lim@gentoo.org> -dspam-3.2.4.ebuild,
+  -dspam-3.2.6.ebuild, -dspam-3.3.11.ebuild, -dspam-3.3.8.ebuild,
+  -dspam-3.4_beta1.ebuild, -dspam-3.4_beta2.ebuild, -dspam-3.4_beta3.ebuild,
+  -dspam-3.4_rc1.ebuild:
+  Removed the older files/Housekeeping
+
+  09 Mar 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4_rc1.ebuild,
+  dspam-3.4_rc2.ebuild:
+  Fixed bug #83779.  Documents were overwritting.  Thanx to mike@nerone.org
+
+*dspam-3.4_rc1 (04 Mar 2005)
+
+  04 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> dspam-3.2.4.ebuild,
+  dspam-3.2.6.ebuild, dspam-3.2.7.ebuild, dspam-3.3.11.ebuild,
+  dspam-3.3.8.ebuild, dspam-3.4_beta1.ebuild, dspam-3.4_beta2.ebuild,
+  dspam-3.4_beta3.ebuild, dspam-3.4_rc1.ebuild, dspam-3.4_rc2.ebuild:
+  Move sys-apps/cronbase -> sys-process/cronbase
+
+*dspam-3.4_rc2 (01 Mar 2005)
+
+  01 Mar 2005; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.4_rc2.ebuild:
+  Version bump.  Need to include an init.d daemon for the --enable-daemon option.
+
+*dspam-3.4_beta3 (17 Feb 2005)
+
+  17 Feb 2005; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.4_beta3.ebuild:
+  Version bump
+
+*dspam-3.4_beta2 (08 Feb 2005)
+
+  08 Feb 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.4_beta1.ebuild,
+  +dspam-3.4_beta2.ebuild:
+  Version bump
+
+*dspam-3.4_beta1 (21 Jan 2005)
+
+  21 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.4.ebuild,
+  dspam-3.2.6.ebuild, dspam-3.3.11.ebuild, dspam-3.3.8.ebuild,
+  dspam-3.4_beta1.ebuild:
+  Trying to fix bug #78768
+  Changing dspam to a userid of 26, one after 25.
+
+  20 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> :
+  Added courier as a dependency for maildrop
+
+*dspam-3.2.6 (20 Jan 2005)
+
+  20 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.4.ebuild,
+  +dspam-3.2.6.ebuild:
+  Version bump
+
+  17 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> :
+  Removing 3.3.11, bad packaging upstream
+  Version bump to beta1
+
+*dspam-3.3.11 (14 Jan 2005)
+
+  14 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> dspam-3.3.11.ebuild:
+  Removed the --enable-daemon line
+
+  12 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> :
+  Version bump to 3.3.11. May need to support bnr and libdclassify and
+  nodalcore engine. Removed many unneeded files from files directory.
+
+*dspam-3.2.3 (05 Jan 2005)
+
+  05 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> -dspam-3.0.0.ebuild,
+  -dspam-3.1.2.ebuild, -dspam-3.2.0.ebuild, -dspam-3.2.1.ebuild,
+  -dspam-3.2.2.ebuild, -dspam-3.2.3.ebuild:
+  Version bump URL Fixed Removed older versions of dspam because the latest
+  version 3.2.4 is finally stable.
+
+  04 Jan 2005; Lim Swee Tat <st_lim@gentoo.org> :
+  There was a bug fix in dspam for 3.2.4.  Upgrade!! Upgrade!!
+
+*dspam-3.3.8 (31 Dec 2004)
+
+  31 Dec 2004; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.3.8.ebuild:
+  Version bumped at last.
+
+  03 Dec 2004; Lim Swee Tat <st_lim@gentoo.org> :
+  Version bump
+
+  28 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.2.ebuild:
+  Fixed bug #71802.
+  Removed --enable-homedir
+  Using sqlite-2.7.7
+  Changing the newdoc to dodoc.
+  newins for sqlite specific files is done with the correct set of insopts
+
+*dspam-3.2.2 (18 Nov 2004)
+
+  18 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.2.2.ebuild:
+  Version bump
+
+  12 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.0.ebuild,
+  dspam-3.2.1.ebuild:
+  Oops on bug #70388.  Reapplying on 3.2.0
+
+  11 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.0.ebuild,
+  dspam-3.2.1.ebuild:
+  Fixed bug #70388, #70647, #70755. Also rearranged some of the wording.
+
+  11 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.0.ebuild,
+  dspam-3.2.1.ebuild:
+  Fixed bug #70755
+
+  11 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.0.ebuild,
+  dspam-3.2.1.ebuild:
+  Removed the mysql41 use flag
+
+  09 Nov 2004; Aron Griffis <agriffis@gentoo.org> dspam-3.2.1.ebuild:
+  Add ~alpha and ~ia64
+
+  09 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.1.ebuild:
+  Fixed the problem in Bug #70388
+
+*dspam-3.2.1 (05 Nov 2004)
+
+  05 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.0.ebuild,
+  dspam-3.2.1.ebuild:
+  Fixing bug #68526, removed preferences-extension from sqlite
+
+  02 Nov 2004; Lim Swee Tat <st_lim@gentoo.org> -dspam-3.1.0.ebuild,
+  -dspam-3.1.1.ebuild, -dspam-3.2_rc3.ebuild:
+  Version Bump to 3.2.1.
+
+  28 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.1.1.ebuild,
+  dspam-3.1.2.ebuild, dspam-3.2.0.ebuild, dspam-3.2_beta1.ebuild,
+  dspam-3.2_rc3.ebuild:
+  Removed the text about the corpus. May want to follow spamassassin's
+  ruledujour for dspam corpus.
+
+  27 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.0.ebuild:
+  Fixed bug #68526. Noted that preference-extensions only work when using
+  mysql and not when using db4.
+
+*dspam-3.2.0 (27 Oct 2004)
+
+  27 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2.0.ebuild:
+  Removed the agent, and removed some lines for db4
+
+*dspam-3.2_rc3 (24 Oct 2004)
+
+  24 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.0.0.ebuild,
+  dspam-3.1.0.ebuild, dspam-3.1.1.ebuild, dspam-3.1.2.ebuild,
+  dspam-3.2_beta1.ebuild, dspam-3.2_rc3.ebuild:
+  Fixed user permissions on the data directory, and provided correct instructions for train.pl
+
+  17 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.0.0.ebuild,
+  dspam-3.1.0.ebuild, dspam-3.1.1.ebuild, dspam-3.1.2.ebuild,
+  dspam-3.2_beta1.ebuild, -dspam-3.2_rc2.ebuild:
+  Setting up rc3 as preview release 1
+  Updated to solve bug #65629
+  not using courier anymore. Using maildrop
+  Fixed issues with the 3.2 releases that use dspam.conf
+  Pls test rc3.!!!
+  Removing rc2 since that failed miserably. :(
+
+  09 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2_rc2.ebuild:
+  Changed the UntrustedMailerArgs
+
+  09 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.2_rc2.ebuild:
+  Changed the UntrustedMailerArgs
+
+*dspam-3.2_rc2 (09 Oct 2004)
+
+  09 Oct 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.0.0.ebuild,
+  dspam-3.1.0.ebuild, dspam-3.1.1.ebuild, dspam-3.1.2.ebuild,
+  dspam-3.2_beta1.ebuild, +dspam-3.2_rc2.ebuild:
+  Version bump to 3.2 rc2
+  exim fixed for everything
+
+  28 Sep 2004; Andrej Kacian <ticho@gentoo.org> metadata.xml:
+  Fixed herd name in metadata.xml.
+
+*dspam-3.2_beta1 (25 Sep 2004)
+
+  25 Sep 2004; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.2_beta1.ebuild:
+  Version bumped, but not using the latest features yet.
+
+*dspam-3.1.2 (07 Sep 2004)
+
+  07 Sep 2004; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.1.2.ebuild:
+  Version bump to 3.1.2 but without sqlite support
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> dspam-3.1.0.ebuild,
+  dspam-3.1.1.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  26 Aug 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.1.1.ebuild:
+  Solved bug #61564 with the help of steveb <tp22a@softhome.net>.
+  Now able to offer a choice of speed optimized or space optimized mysql data.
+
+  23 Aug 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.1.1.ebuild:
+  Fixed bug #61200
+
+*dspam-3.1.1 (22 Aug 2004)
+
+  22 Aug 2004; Lim Swee Tat <st_lim@gentoo.org> +files/dspam.cron,
+  files/logrotate.dspam, +dspam-3.1.1.ebuild:
+  We waited some time before fixing bug #57838.  My fault.
+  Thanx to steveb <tp22a@softhome.net> for his kind suppport and help.
+  3.1.1 built without chi-square and robinson due to compilation errors.
+
+  31 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.1.0.ebuild:
+  Version bump
+
+*dspam-3.1.0_beta11-r1 31 Jul 2004
+
+  31 Jul 2004;  <> 
+  # INSERT ENTRY HERE
+
+*dspam-3.1.0_beta20 (29 Jul 2004)
+
+  29 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> +dspam-3.1.0_beta20.ebuild:
+  Fixed bug #57838.
+  Added dspam-3.1.0.beta.2 as beta20.
+  Added support for postgres, but lacking the postgres database/user creation
+  script.
+
+  21 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.0.0.ebuild,
+  dspam-3.1.0_beta11.ebuild:
+  Changed SLOT to "0"
+
+*dspam-3.1.0_beta11 (21 Jul 2004)
+
+  21 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.0.0.ebuild,
+  dspam-3.1.0_beta11.ebuild:
+  Fixed problem with myconf not taking the delivery-agent options seriously
+
+  21 Jul 2004; Lim Swee Tat <st_lim@gentoo.org> dspam-3.0.0.ebuild:
+  Added information to use the user dspam
+  Added exim,maildrop and cyrus specific delivery agent options
+
+  30 Jun 2004; Lim Swee Tat <st_lim@gentoo.org> files/crontab.db4,
+  files/crontab.mysql:
+  Made a mistake on the cron job. Should not have timing values in
+  /etc/cron.daily
+
+  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> dspam-3.0.0.ebuild:
+  QA - fix use invocation
+
+  27 Jun 2004; David Holm <dholm@gentoo.org> dspam-3.0.0.ebuild:
+  Added to ~ppc.
 
 *dspam-3.0.0 (27 Jun 2004)
 

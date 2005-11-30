@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeedu-meta/kdeedu-meta-3.5.0_beta2.ebuild,v 1.1 2005/10/14 18:41:51 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeedu-meta/kdeedu-meta-3.5.0_beta2.ebuild,v 1.1.1.1 2005/11/30 10:14:08 chriswhite Exp $
 MAXKDEVER=$PV
 
 inherit kde-functions
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.kde.org/"
 
 LICENSE="GPL-2"
 SLOT="3.5"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -32,6 +32,5 @@ $(deprange $PV $MAXKDEVER kde-base/kmplot)
 $(deprange $PV $MAXKDEVER kde-base/kstars)
 $(deprange $PV $MAXKDEVER kde-base/ktouch)
 $(deprange $PV $MAXKDEVER kde-base/klettres)
-$(deprange 3.5_beta1 $MAXKDEVER kde-base/kmathtool)
 $(deprange $PV $MAXKDEVER kde-base/kwordquiz)
 "

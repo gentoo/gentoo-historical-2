@@ -1,20 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwifi/wmwifi-0.3.ebuild,v 1.1 2004/02/01 02:10:37 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwifi/wmwifi-0.3.ebuild,v 1.1.1.1 2005/11/30 10:10:41 chriswhite Exp $
 
 IUSE=""
-
-S="${WORKDIR}/${P}"
 HOMEPAGE="http://wmwifi.digitalssg.net"
 DESCRIPTION="wireless network interface monitor dockapp"
 SRC_URI="http://digitalssg.net/debian/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="ppc x86 ~amd64"
 
 DEPEND="virtual/x11"
-RDEPEND="${DEPEND}"
 
 src_compile() {
 	myconf=""

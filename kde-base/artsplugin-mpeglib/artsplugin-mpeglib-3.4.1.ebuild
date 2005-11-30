@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/artsplugin-mpeglib/artsplugin-mpeglib-3.4.1.ebuild,v 1.1 2005/05/25 21:22:59 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/artsplugin-mpeglib/artsplugin-mpeglib-3.4.1.ebuild,v 1.1.1.1 2005/11/30 10:13:33 chriswhite Exp $
 
 KMNAME=kdemultimedia
 KMMODULE=mpeglib_artsplug
-MAXKDEVER=$PV
+MAXKDEVER=3.4.2
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="mpeglib plugin for arts"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
-DEPEND="$(deprange $PV $MAXKDEVER kde-base/mpeglib)"
+DEPEND="$(deprange $PV 3.4.2 kde-base/mpeglib)"
 OLDDEPEND="~kde-base/mpeglib-$PV"
 KMCOPYLIB="libmpeg mpeglib/lib/"
 KMEXTRACTONLY="mpeglib/"

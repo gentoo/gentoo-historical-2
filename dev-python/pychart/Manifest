@@ -1,2 +1,14 @@
-MD5 aa9ad3807ff653664bae3da283950666 pychart-1.33.ebuild 757
-MD5 f4ec51043dad23f9cf8cf038be6df822 files/digest-pychart-1.33 64
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 63639eb2aebae570a6b7635baf6765c2 ChangeLog 1014
+MD5 71c4638c9c88af75b58e5f5cb54fe008 metadata.xml 159
+MD5 1fc0815f4544a6c236ef3fca5fbfec60 pychart-1.37.ebuild 814
+MD5 83aa0eb64f507550e1768ead86b82fea files/digest-pychart-1.37 64
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCbipsTM53OX+9xmMRAv+6AJ92AdToJzCJLP72x4eCKotPO97beQCgx0G5
++QWfwuPuhoFWl7VXWWRGixM=
+=SfKo
+-----END PGP SIGNATURE-----

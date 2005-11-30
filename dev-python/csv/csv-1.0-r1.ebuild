@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/csv/csv-1.0-r1.ebuild,v 1.1 2004/02/14 15:44:27 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/csv/csv-1.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:17 chriswhite Exp $
 
-inherit distutils
+inherit distutils eutils
 
 DESCRIPTION="CSV Module for Python"
 HOMEPAGE="http://www.object-craft.com.au/projects/csv/"
@@ -10,7 +10,7 @@ SRC_URI="http://www.object-craft.com.au/projects/csv/download/${P}.tar.gz"
 
 LICENSE="PYTHON"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc ~sparc"
+KEYWORDS="alpha ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE=""
 
 pkg_setup() {
@@ -21,6 +21,6 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	# patch thanks to David Grant <david.grant@telus.net> (#40429)
-	cd ${S}; epatch ${FILESDIR}/${P}-rename.patch
+	cd ${S}
+	epatch ${FILESDIR}/${P}-rename.patch
 }
-	

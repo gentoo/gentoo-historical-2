@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ipsec-tools-0.5.ebuild,v 1.1 2005/03/09 03:35:00 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ipsec-tools-0.5.ebuild,v 1.1.1.1 2005/11/30 10:11:19 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
 MY_P=${P/_/-}
 
@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="ipv6 selinux"
 S=${WORKDIR}/${MY_P}
 DEPEND="virtual/libc
-	|| ( >=sys-kernel/linux-headers-2.6 sys-kernel/linux26-headers )
+	>=sys-kernel/linux-headers-2.6
 	>=dev-libs/openssl-0.9.6"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-ipsec-tools )"
@@ -28,6 +28,10 @@ src_unpack() {
 }
 
 src_compile() {
+	# Filter the c3 flag for now. Probably a GCC problem, but we'll
+	# avoid it here for now. See bug #61025
+	filter-flags -march=c3
+
 	econf	\
 		--enable-hybrid \
 		--enable-dpd \

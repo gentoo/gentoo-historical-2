@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/midas-nms/midas-nms-2.2f.ebuild,v 1.1 2004/10/20 14:17:46 bass Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/midas-nms/midas-nms-2.2f.ebuild,v 1.1.1.1 2005/11/30 10:12:20 chriswhite Exp $
 
 inherit webapp
 
@@ -10,11 +10,10 @@ SRC_URI="mirror://sourceforge/midas-nms/MIDAS-${PV}.tar.gz"
 HOMEPAGE="http://midas-nms.sf.net"
 LICENSE="MIT"
 
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 
 DEPEND="dev-db/mysql
-	net-libs/libpcap
-	net-www/webapp-config
+	virtual/libpcap
 	media-libs/gd"
 RDEPEND="net-www/apache
 	dev-php/mod_php"
@@ -31,7 +30,23 @@ src_compile() {
 src_install () {
 	webapp_src_preinst
 
-	make DESTDIR=${D} install || die
+#	make DESTDIR=${D} install || die
+
+	dodir /usr/etc
+	dodir /usr/bin
+
+	cp MIDASa/MIDASa.cf.dist ${D}/usr/etc
+	cp MIDASb/MIDASb.cf.dist ${D}/usr/etc
+	cp MIDASc/MIDASc.cf.dist ${D}/usr/etc
+	cp MIDASd/MIDASd.cf.dist ${D}/usr/etc
+	cp MIDASs/MIDASs.cf.dist ${D}/usr/etc
+	cp MIDASn/MIDASn.cf.dist ${D}/usr/etc
+	cp MIDASa/MIDASa ${D}/usr/bin
+	cp MIDASb/MIDASb ${D}/usr/bin
+	cp MIDASc/MIDASc ${D}/usr/bin
+	cp MIDASd/MIDASd ${D}/usr/bin
+	cp MIDASs/MIDASs ${D}/usr/bin
+	cp MIDASn/MIDASn ${D}/usr/bin
 
 	dodir /usr/share/midas-nms
 	dodir /usr/share/midas-nms/sql
@@ -47,6 +62,10 @@ src_install () {
 	dodoc COPYING
 	dodoc docs/CHANGELOG
 	dodoc docs/INSTALL.txt
+
+	# Init files
+	newconfd ${FILESDIR}/midas-nms.conf midas-nms
+	newinitd ${FILESDIR}/midas-nms.init midas-nms
 }
 
 pkg_postinst() {
@@ -61,5 +80,7 @@ pkg_postinst() {
 	einfo
 	einfo "The conf files are located in /usr/etc/MIDAS*.cf.dist"
 	einfo "Please read INSTALL.txt for more info."
+	einfo
+	einfo "To use the sniffer and IDS you need install snort too."
 	einfo
 }

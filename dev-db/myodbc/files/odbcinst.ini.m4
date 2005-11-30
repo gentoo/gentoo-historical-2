@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/dev-db/myodbc/files/odbcinst.ini.m4,v 1.1 2003/10/27 01:59:20 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/myodbc/files/odbcinst.ini.m4,v 1.1.1.1 2005/11/30 10:11:39 chriswhite Exp $
 # vim:ts=4 noexpandtab ft=dosini:
 #
 [__PN__]

@@ -1,13 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/karamba-kroller/karamba-kroller-0.94.ebuild,v 1.1 2003/10/12 18:48:03 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/karamba-kroller/karamba-kroller-0.94.ebuild,v 1.1.1.1 2005/11/30 10:10:41 chriswhite Exp $
 
+IUSE=""
 DESCRIPTION="Rolling menu plugin for Karamba"
 HOMEPAGE="http://www.kde-look.org/content/show.php?content=5931"
 SRC_URI="http://www.kde-look.org/content/files/5931-kroller-v${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~amd64"
 
 RDEPEND=">=x11-misc/superkaramba-0.32"
 

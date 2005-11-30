@@ -1,4 +1,18 @@
-MD5 6211b46f79a2bbaea936f30e64a83713 files/0.3.3-configure.in.patch 528
-MD5 55d668981b78a8cde872051ff3a056c9 files/digest-adonthell-0.3.3-r1 68
-MD5 7aea7973778e5d622206c31e1e381f17 ChangeLog 860
-MD5 1ad2f047368991c9256be901c6c90860 adonthell-0.3.3-r1.ebuild 1040
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 47b1922be8c7e82000af8d01e57b0814 adonthell-0.3.4a.ebuild 1412
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 73d4b7e27d435af64ffcc6b24b1d43f7 adonthell-0.3.3-r1.ebuild 1217
+MD5 4ac8b7dfa3b21c4089f6ae23918fd572 ChangeLog 1697
+MD5 e944f3812b6938f625c3a2bba14b3b35 files/digest-adonthell-0.3.3-r1 72
+MD5 f8819f0b8b8a019c2ab89d7c707665eb files/0.3.4a-configure.in.patch 2957
+MD5 f8819f0b8b8a019c2ab89d7c707665eb files/0.3.3-configure.in.patch 2957
+MD5 9b2f86f7d5729fd1944524672760f256 files/digest-adonthell-0.3.4a 72
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFC1bevgIKl8Uu19MoRArOaAJ48eGawKJNYUYd9mK6PeZWJRrS9YACfcGuF
+gd3UZh3hXLdJXFCQLpKj30E=
+=DgE/
+-----END PGP SIGNATURE-----

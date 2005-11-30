@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # Simple Python extension module doc generator.
-# @(#) $Id: genextdoc.py,v 1.1 2004/05/25 11:13:23 carlo Exp $
+# @(#) $Id: genextdoc.py,v 1.1.1.1 2005/11/30 10:10:28 chriswhite Exp $
 # Written by Yeti <yeti@physics.muni.cz>
 # This program is in the public domain.
 import re, sys, types, inspect

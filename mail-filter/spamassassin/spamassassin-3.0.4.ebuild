@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin/spamassassin-3.0.4.ebuild,v 1.1 2005/06/08 12:18:17 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin/spamassassin-3.0.4.ebuild,v 1.1.1.1 2005/11/30 10:12:01 chriswhite Exp $
 
 inherit perl-module
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://apache/spamassassin/source/${MY_P}.tar.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~ia64 ~amd64 ~ppc64"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 mips"
 IUSE="berkdb qmail ssl doc"
 
 # To consider (not all may be in tree at this time - mcummings):
@@ -82,23 +82,24 @@ src_compile() {
 	# Some more files to be installed (README* and Changes are already
 	# included per default)
 	mydoc="NOTICE
-		TRADEMARK
-		LICENSE
-		CREDITS
-		INSTALL
-		UPGRADE
-		BUGS
-		USAGE
-		README.spamd
-		README.sql
-		README.ldap
-		procmailrc.example
-		sample-nonspam.txt
-		sample-spam.txt
-		STATISTICS.set0
-		STATISTICS.set1
-		STATISTICS.set2
-		STATISTICS.set3"
+	TRADEMARK
+	LICENSE
+	CREDITS
+	INSTALL
+	UPGRADE
+	BUGS
+	USAGE
+	README.spamd
+	README.sql
+	README.ldap
+	procmailrc.example
+	sample-nonspam.txt
+	sample-spam.txt
+	STATISTICS.set0
+	STATISTICS.set1
+	STATISTICS.set2
+	STATISTICS.set3"
+
 
 	use qmail && mydoc="${mydoc} README.qmail"
 
@@ -163,9 +164,18 @@ src_install () {
 	newconfd "${FILESDIR}"/3.0.0-spamd.conf spamd
 
 	if use doc; then
+		dodoc ${mydoc}
 		dodoc spamd/PROTOCOL
 		dohtml doc/*.html
 	fi
+
+	cp ${FILESDIR}/secrets.cf ${D}/etc/mail/spamassassin/secrets.cf
+	fperms 0400 ${D}/etc/mail/spamassassin/secrets.cf
+	echo " ">> ${D}/etc/mail/spamassassin/local.cf
+	echo "# Sensitive data, such as database connection info, should">> ${D}/etc/mail/spamassassin/local.cf
+	echo "# be stored in /etc/mail/spamassassin/secrets.cf with">> ${D}/etc/mail/spamassassin/local.cf
+	echo "# appropriate permissions">> ${D}/etc/mail/spamassassin/local.cf
+
 }
 
 pkg_postinst() {
@@ -187,18 +197,22 @@ pkg_postinst() {
 		fi
 	fi
 
-	einfo
-	einfo "Please read the file"
-	einfo "  /usr/share/doc/${PF}/INSTALL.gz"
-	einfo "to find out which optional modules you need to install to enable"
-	einfo "additional features which depend on them."
-	einfo
-	einfo "If upgraded from 2.x, please read the file"
-	einfo "  /usr/share/doc/${PF}/UPGRADE.gz"
-	einfo
+	if use doc; then
+		einfo
+		einfo "Please read the file"
+		einfo "  /usr/share/doc/${PF}/INSTALL.gz"
+		einfo "to find out which optional modules you need to install to enable"
+		einfo "additional features which depend on them."
+		einfo
+		einfo "If upgraded from 2.x, please read the file"
+		einfo "  /usr/share/doc/${PF}/UPGRADE.gz"
+		einfo
+	fi
 	ewarn
 	ewarn "spamd is not designed to listen to an untrusted network"
 	ewarn "and is vulnerable to DoS attacks (and eternal doom) if"
 	ewarn "configured to do so"
 	ewarn
+	ewarn "If you plan on using the -u flag to spamd, please read the notes"
+	ewarn "in /etc/conf.d/spamd regarding the location of the pid file."
 }

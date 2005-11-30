@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/visual/visual-3.2.1.ebuild,v 1.1 2005/06/01 02:04:13 tercel Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/visual/visual-3.2.1.ebuild,v 1.1.1.1 2005/11/30 10:10:11 chriswhite Exp $
 
 inherit distutils
 
@@ -10,30 +10,35 @@ HOMEPAGE="http://www.vpython.org/"
 
 IUSE="doc examples numeric numarray"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 LICENSE="visual"
 
 DEPEND=">=dev-lang/python-2.3
 		virtual/opengl
 		=x11-libs/gtk+-1.2*
-		>=x11-libs/gtkglarea-1.2
+		=x11-libs/gtkglarea-1.2*
 		dev-util/pkgconfig
 		>=dev-libs/boost-1.31
 		numeric? ( dev-python/numeric )
 		numarray? ( >=dev-python/numarray-1.0 )
-		!numeric? ( !numarray? (dev-python/numeric) )"
-
-RESTRICT="nomirror"
+		!numeric? ( !numarray? ( dev-python/numeric ) )"
 
 src_compile() {
+	local myconf="--without-numarray --without-numeric"
+
 	echo
 	if useq numeric; then
 		einfo "Building with Numeric support"
-	elif useq numarray; then
+		myconf=${myconf/--without-numeric}
+	fi
+	if useq numarray; then
 		einfo "Building with Numarray support"
-	else
+		myconf=${myconf/--without-numarray}
+	fi
+	if ! useq numeric && ! useq numarray; then
 		einfo "Support for Numeric or Numarray was not specified."
 		einfo "Building with Numeric support"
+		myconf=${myconf/--without-numeric}
 	fi
 	echo
 
@@ -42,6 +47,7 @@ src_compile() {
 	--with-example-dir=/usr/share/doc/${PF}/examples \
 	$(use_enable doc docs ) \
 	$(use_enable examples ) \
+	${myconf} \
 	|| die "configure failed"
 
 	emake || die "emake failed"

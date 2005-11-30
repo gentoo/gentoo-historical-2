@@ -1,6 +1,15 @@
 # ChangeLog for x11-plugins/desklet-regexp
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-regexp/ChangeLog,v 1.1 2005/04/23 05:14:02 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-regexp/ChangeLog,v 1.1.1.1 2005/11/30 10:10:46 chriswhite Exp $
+
+  21 Sep 2005; Homer Parker <hparker@gentoo.org> desklet-regexp-1.0.ebuild:
+  Marked ~amd64.
+
+  31 Jul 2005; Joe Sapp <nixphoeni@gentoo.org> desklet-regexp-1.0.ebuild:
+  Stable on x86
+
+  09 May 2005; David Holm <dholm@gentoo.org> desklet-regexp-1.0.ebuild:
+  Added to ~ppc.
 
 *desklet-regexp-1.0 (23 Apr 2005)
 

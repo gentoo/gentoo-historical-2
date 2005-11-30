@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-discreetclock/desklet-discreetclock-0.3.ebuild,v 1.1 2005/07/31 01:17:08 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-discreetclock/desklet-discreetclock-0.3.ebuild,v 1.1.1.1 2005/11/30 10:10:49 chriswhite Exp $
 
 inherit gdesklets
 
@@ -16,6 +16,6 @@ LICENSE="freedist"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND=">=gnome-extra/gdesklets-core-0.34.3"

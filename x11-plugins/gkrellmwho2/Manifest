@@ -1,7 +1,14 @@
-MD5 4408587a00b305cb8b0cf1b9e248e269 ChangeLog 1549
-MD5 8efa7787f7cba13580225f1e0bb70ba9 gkrellmwho2-0.2.8.ebuild 748
-MD5 503a4f552ef762dc99302f2cd842717c files/digest-gkrellmitime-0.4 67
-MD5 efa4b3b7158eaf277dad14da3b096826 files/digest-gkrellmitime-0.5.1 69
-MD5 4d00717aa575f50036b0129992917506 files/digest-gkrellmitime-1.0 67
-MD5 52f46f069e47ebb97fe755fcb2061acf files/digest-gkrellmitime-1.0.1 69
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 52e535264fa2f7203aab09784e720bb3 gkrellmwho2-0.2.8.ebuild 828
+MD5 af27f42b1f310cf464a3ba2c45deb6db ChangeLog 689
+MD5 de35d8f600d3d75d8075a8d848787013 metadata.xml 223
 MD5 f53ce7fd6f861503148d7178b101abec files/digest-gkrellmwho2-0.2.8 73
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCeriTI1lqEGTUzyQRAuYBAKDJ8/0pN4vGat7tsCTmw84DS8EO7wCglgH9
+H01f7FOHXouPSgc2SUjqMxY=
+=Uur8
+-----END PGP SIGNATURE-----

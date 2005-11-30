@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/gld/gld-1.6.ebuild,v 1.1 2005/10/08 08:36:12 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/gld/gld-1.6.ebuild,v 1.1.1.1 2005/11/30 10:11:58 chriswhite Exp $
 
 DESCRIPTION="A standalone anti-spam greylisting algorithm on top of Postfix"
 HOMEPAGE="http://www.gasmi.net/gld.html"

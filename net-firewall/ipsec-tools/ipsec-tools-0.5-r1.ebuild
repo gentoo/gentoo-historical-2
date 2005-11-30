@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ipsec-tools-0.5-r1.ebuild,v 1.1 2005/03/14 19:08:05 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipsec-tools/ipsec-tools-0.5-r1.ebuild,v 1.1.1.1 2005/11/30 10:11:19 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,12 +10,12 @@ DESCRIPTION="IPsec-Tools is a port of KAME's IPsec utilities to the Linux-2.6 IP
 HOMEPAGE="http://ipsec-tools.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="BSD"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 ~amd64 ~ppc"
 SLOT="0"
 IUSE="ipv6 selinux"
 S=${WORKDIR}/${MY_P}
 DEPEND="virtual/libc
-	|| ( >=sys-kernel/linux-headers-2.6 sys-kernel/linux26-headers )
+	>=sys-kernel/linux-headers-2.6
 	>=dev-libs/openssl-0.9.6"
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-ipsec-tools )"

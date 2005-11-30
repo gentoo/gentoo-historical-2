@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/sprout/sprout-0.6.1.ebuild,v 1.1 2005/03/28 15:50:35 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/sprout/sprout-0.6.1.ebuild,v 1.1.1.1 2005/11/30 10:11:05 chriswhite Exp $
 
 inherit zproduct
 

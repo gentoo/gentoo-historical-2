@@ -1,8 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sniffit/sniffit-0.3.7-r1.ebuild,v 1.1 2003/07/28 15:43:51 azarah Exp $
-
-IUSE=
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sniffit/sniffit-0.3.7-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:39 chriswhite Exp $
 
 inherit eutils
 
@@ -13,16 +11,17 @@ SRC_URI="http://reptile.rug.ac.be/~coder/sniffit/files/${MY_P}.tar.gz
 	 http://www.clan-tva.com/m0rpheus/sniffit_0.3.7.beta-10.diff"
 HOMEPAGE="http://reptile.rug.ac.be/~coder/sniffit/sniffit.html"
 
-DEPEND=">=net-libs/libpcap-0.6.2
+DEPEND="virtual/libpcap
 	>=sys-libs/ncurses-5.2"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 ppc sparc "
+KEYWORDS="x86 ppc sparc ~amd64"
+IUSE=""
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
-	
+
 	cd ${S}
 	epatch ${DISTDIR}/sniffit_0.3.7.beta-10.diff
 
@@ -39,7 +38,7 @@ src_compile() {
 
 src_install () {
 	dobin sniffit
-	
+
 	doman sniffit.5 sniffit.8
 	dodoc README* PLUGIN-HOWTO BETA* HISTORY LICENSE changelog
 }

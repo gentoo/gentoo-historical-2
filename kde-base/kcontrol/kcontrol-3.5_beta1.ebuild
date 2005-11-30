@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kcontrol/kcontrol-3.5_beta1.ebuild,v 1.1 2005/09/22 18:05:56 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kcontrol/kcontrol-3.5_beta1.ebuild,v 1.1.1.1 2005/11/30 10:13:28 chriswhite Exp $
 
 KMNAME=kdebase
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="The KDE Control Center"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="ssl arts ieee1394 logitech-mouse opengl"
 
 DEPEND=">=media-libs/freetype-2
@@ -28,18 +28,13 @@ $(deprange $PV $MAXKDEVER kde-base/khotkeys)
 $(deprange $PV $MAXKDEVER kde-base/libkonq)
 $(deprange $PV $MAXKDEVER kde-base/kicker)"
 
-# kdm/configure.in.in is needed for KDE_CONFDIR, can be removed for beta1
-# kioslave/thumbnail/configure.in.in is needed for HAVE_LIBART, can be removed
-# for beta1
 KMEXTRACTONLY="kwin/kwinbindings.cpp
 	    kicker/kicker/core/kickerbindings.cpp
 		kicker/taskbar/taskbarbindings.cpp
 	    kdesktop/kdesktopbindings.cpp
 	    klipper/klipperbindings.cpp
 	    kxkb/kxkbbindings.cpp
-		kdm/configure.in.in
-		kicker/taskmanager
-	    kioslave/thumbnail/configure.in.in"
+		kicker/taskmanager"
 
 KMEXTRA="doc/kinfocenter"
 KMCOMPILEONLY="kicker/libkicker

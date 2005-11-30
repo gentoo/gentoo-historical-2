@@ -1,40 +1,39 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Bruce A. Locke <blocke@shivan.org>
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nbaudit/nbaudit-1.0.ebuild,v 1.1.1.1 2005/11/30 10:12:14 chriswhite Exp $
 
-# Its officially called nat10 but the name conflicts with other projects
+inherit eutils
+
+# It is officially called nat10 but the name conflicts with other projects
 # so I'm following the *BSDs suggestion of calling it nbaudit
 
-A=nat10.tgz
-P=nat10
-S=${WORKDIR}/${P}
+MY_P=nat10
+S=${WORKDIR}/${MY_P}
 DESCRIPTION="NetBIOS file sharing services scanner (nat10)"
-SRC_URI="http://www.tux.org/pub/security/secnet/tools/nat10/${A}"
-HOMEPAGE="http://www.tux.org/pub/security/secnet/tools/nat10"
+SRC_URI="http://www.tux.org/pub/security/secnet/tools/nat10/${MY_P}.tgz"
+HOMEPAGE="http://www.tux.org/pub/security/secnet/tools/nat10/"
 
-DEPEND=""
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~ppc sparc x86"
+IUSE=""
+
+DEPEND=">=sys-apps/sed-4"
+RDEPEND="virtual/libc"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-gentoo.diff
+}
 
 src_compile() {
-
-   cd ${S}
-
-   mv Makefile Makefile.old
-   sed -e "s/# FLAGSM = -DLINUX -DSHADOW_PWD/FLAGSM = -DLINUX -DSHADOW_PWD -DNO_ASMSIGNALH/" -e "s/# LIBSM = -lshadow/LIBSM = -lshadow/" Makefile.old > Makefile
-
-   # sed seems to hang if I do all three at once... oh well
-   mv Makefile Makefile.old
-   sed -e "s/CFLAGS = /CFLAGS = ${CFLAGS} /" Makefile.old > Makefile
-
-   try make all
-
+	# NOTE: DO NOT SET CFLAGS OR THE PROGRAM WILL SEGFAULT
+	make all || die "make failed"
 }
 
 src_install () {
-    cd ${S}
-
-    into /usr
-
-    dobin nat
-    doman nat.1
-    dodoc README COPYING
+	newbin nat nbaudit
+	newman nat.1 nbaudit.1
+	dodoc README COPYING
 }

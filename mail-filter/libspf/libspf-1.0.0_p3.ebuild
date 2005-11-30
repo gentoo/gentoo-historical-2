@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/libspf/libspf-1.0.0_p3.ebuild,v 1.1 2005/05/10 01:19:32 pfeifer Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/libspf/libspf-1.0.0_p3.ebuild,v 1.1.1.1 2005/11/30 10:11:59 chriswhite Exp $
 
 RESTRICT="nomirror"
 DESCRIPTION="libspf - An ANSI C Implementation of Sender Policy Framework."

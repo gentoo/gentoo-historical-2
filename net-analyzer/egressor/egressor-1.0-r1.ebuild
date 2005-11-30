@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/egressor/egressor-1.0-r1.ebuild,v 1.1 2003/08/21 04:28:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/egressor/egressor-1.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:13 chriswhite Exp $
 
 inherit eutils
 
@@ -10,11 +10,12 @@ SRC_URI="http://www.packetfactory.net/projects/${PN}/${PN}_release${PV}.tar.gz"
 
 LICENSE="egressor"
 SLOT="0"
-KEYWORDS="~x86"
+IUSE=""
+KEYWORDS="x86 ppc"
 
-DEPEND=">=net-libs/libnet-1.0.2a-r3
-	<net-libs/libnet-1.1"
-RDEPEND="net-libs/libpcap
+DEPEND="<net-libs/libnet-1.1
+	>=net-libs/libnet-1.0.2a-r3"
+RDEPEND="virtual/libpcap
 	dev-perl/Net-RawIP
 	dev-lang/perl"
 

@@ -1,16 +1,25 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-fchksum/python-fchksum-1.6.1-r1.ebuild,v 1.1 2002/08/02 02:05:54 jnelson Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-fchksum/python-fchksum-1.6.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:08 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="fchksum is a Python module to find the checksum of files."
-SRC_URI="http://www.azstarnet.com/~donut/programs/fchksum/${P}.tar.gz"
-HOMEPAGE="http://www.azstarnet.com/~donut/programs/fchksum.html"
+# DON'T inherit distutils because it will cause a circular dependency with python
+#inherit distutils
 
-DEPEND="sys-libs/zlib"
-RDEPEND="${DEPEND}"
-KEYWORDS="x86 ppc"
+DESCRIPTION="Python module to find the checksum of files"
+SRC_URI="http://www.dakotacom.net/~donut/programs/fchksum/${P}.tar.gz"
+HOMEPAGE="http://www.dakotacom.net/~donut/programs/fchksum.html"
+
+KEYWORDS="amd64 x86 ppc sparc alpha hppa mips ia64"
 LICENSE="GPL-2"
 SLOT="0"
+IUSE=""
 
-inherit distutils
+DEPEND="sys-libs/zlib"
+
+src_compile() {
+	python setup.py build || die
+}
+
+src_install() {
+	python setup.py install --root=${D} || die
+}

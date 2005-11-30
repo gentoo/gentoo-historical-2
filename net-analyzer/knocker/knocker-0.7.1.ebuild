@@ -1,17 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/knocker/knocker-0.7.1.ebuild,v 1.1 2002/07/04 14:38:15 stroke Exp $
-
-S=${WORKDIR}/${P}
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/knocker/knocker-0.7.1.ebuild,v 1.1.1.1 2005/11/30 10:12:40 chriswhite Exp $
 
 DESCRIPTION="Knocker is an easy to use security port scanner written in C"
-SRC_URI="http://telia.dl.sourceforge.net/sourceforge/knocker/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/knocker/${P}.tar.gz"
 HOMEPAGE="http://knocker.sourceforge.net"
-LICENSE="GPL-2"
-SLOT="0"
 
-DEPEND="virtual/glibc"
-RDEPEND="${DEPEND}"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc ppc"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_compile() {
 	./configure \

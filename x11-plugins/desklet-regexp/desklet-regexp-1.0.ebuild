@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-regexp/desklet-regexp-1.0.ebuild,v 1.1 2005/04/23 05:14:02 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-regexp/desklet-regexp-1.0.ebuild,v 1.1.1.1 2005/11/30 10:10:46 chriswhite Exp $
 
 inherit gdesklets
 
@@ -14,7 +14,7 @@ SRC_URI="http://gdesklets.gnomedesktop.org/files/${DESKLET_NAME}.tar.gz"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc x86"
 LICENSE="GPL-2"
 
 RDEPEND=">=gnome-extra/gdesklets-core-0.34.3"

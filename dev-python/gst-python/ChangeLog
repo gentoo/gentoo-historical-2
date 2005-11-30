@@ -1,6 +1,21 @@
 # ChangeLog for dev-python/gst-python
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gst-python/ChangeLog,v 1.1 2005/03/16 00:07:32 zaheerm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gst-python/ChangeLog,v 1.1.1.1 2005/11/30 10:10:32 chriswhite Exp $
+
+  06 Sep 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  gst-python-0.8.1.ebuild, gst-python-0.8.2.ebuild:
+  dont use cp -a, fixes bug
+
+*gst-python-0.8.2 (21 Jun 2005)
+
+  21 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +gst-python-0.8.2.ebuild:
+  version bump
+
+*gst-python-0.8.1 (16 Mar 2005)
+
+  16 Mar 2005; <zaheerm@gentoo.org> gst-python-0.8.1.ebuild:
+  Cosmetic changes
 
   16 Mar 2005; <zaheerm@gentoo.org> :
   Initial Commit

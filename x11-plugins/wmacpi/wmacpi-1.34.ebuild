@@ -1,26 +1,34 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmacpi/wmacpi-1.34.ebuild,v 1.1 2003/02/23 21:39:37 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmacpi/wmacpi-1.34.ebuild,v 1.1.1.1 2005/11/30 10:10:49 chriswhite Exp $
 
+inherit eutils
+
+IUSE="acpi apm"
 DESCRIPTION="WMaker DockApp: ACPI status monitor for laptops"
-SRC_URI="http://www.ne.jp/asahi/linux/timecop/software/${P}.tar.gz"
 HOMEPAGE="http://www.ne.jp/asahi/linux/timecop/"
+SRC_URI="http://www.ne.jp/asahi/linux/timecop/software/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc"
+SLOT="0"
+KEYWORDS="x86 -sparc amd64 ppc"
 
 DEPEND="virtual/x11"
 
-src_compile() {
-	use apm && use acpi && eerror "APM and ACPI is in USE ... defaulting to ACPI"
-	use apm || use acpi || eerror "Neither APM or ACPI is in USE ... defaulting to ACPI"
-	if [ `use acpi` ] ; then
-		export CFLAGS="${CFLAGS} -DACPI"
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	use apm && use acpi && eerror "APM and ACPI are in USE ... defaulting to ACPI"
+	use apm || use acpi || eerror "Neither APM or ACPI are in USE ... defaulting to ACPI"
+	if use acpi || ! use apm ; then
+		epatch ${FILESDIR}/${PV}-acpi.patch
 	else
-		export CFLAGS="${CFLAGS} -DAPM"
+		epatch ${FILESDIR}/${PV}-apm.patch
 	fi
-	emake CFLAGS="${CFLAGS}" || die
+}
+
+src_compile() {
+	emake OPT="${CFLAGS}" || die
 }
 
 src_install() {

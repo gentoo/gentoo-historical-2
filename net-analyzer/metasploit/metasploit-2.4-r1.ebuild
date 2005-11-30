@@ -1,17 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/metasploit/metasploit-2.4-r1.ebuild,v 1.1 2005/06/04 23:09:49 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/metasploit/metasploit-2.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:34 chriswhite Exp $
 
 MY_P="${P/metasploit/framework}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="The Metasploit Framework is an advanced open-source platform for developing, testing, and using vulnerability exploit code."
 HOMEPAGE="http://www.metasploit.org/"
-SRC_URI="http://metasploit.com/tools/${MY_P}-snapshot.tar.gz"
-# Note: the suffix snapshot might not exist in the next release
+SRC_URI="http://metasploit.com/tools/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 Artistic"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl
@@ -24,12 +23,12 @@ src_install() {
 	dodir /usr/bin/
 
 	# should be as simple as copying everything into the target...
-	cp -a ${S} ${D}usr/lib/metasploit || die
+	cp -pPR ${S} ${D}usr/lib/metasploit || die
 
 	# and creating symlinks in the /usr/bin dir
 	cd ${D}/usr/bin
 	ln -s ../lib/metasploit/msf* ./ || die
-	chown -R root:root ${D}
+	chown -R root:0 ${D}
 
 	newinitd ${FILESDIR}/msfweb.initd msfweb || die "newinitd failed"
 	newconfd ${FILESDIR}/msfweb.confd msfweb || die "newconfd failed"

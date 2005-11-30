@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/flow-tools/flow-tools-0.66.ebuild,v 1.1 2003/05/18 20:02:51 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/flow-tools/flow-tools-0.66.ebuild,v 1.1.1.1 2005/11/30 10:12:37 chriswhite Exp $
+
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Flow-tools is a package for collecting and processing NetFlow data"
 HOMEPAGE="http://www.splintered.net/sw/flow-tools/"
@@ -8,13 +10,19 @@ SRC_URI="ftp://ftp.eng.oar.net/pub/flow-tools/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 IUSE=""
 
-DEPEND="virtual/glibc sys-apps/tcp-wrappers sys-libs/zlib"
+DEPEND="virtual/libc
+	sys-apps/tcp-wrappers
+	sys-libs/zlib"
 
-S=${WORKDIR}/${P}
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-0.67-gcc34.diff
+}
 
 src_compile() {
 	aclocal
@@ -22,11 +30,11 @@ src_compile() {
 	econf \
 		--without-mysql \
 		--localstatedir=/etc/flow-tools \
-		CC="$CC" CFLAGS="$CFLAGS" || die
-	emake CC="$CC" CFLAGS="$CFLAGS" || die
+		CC="$(tc-getCC)" CFLAGS="$CFLAGS" || die
+	emake CC="$(tc-getCC)" CFLAGS="$CFLAGS" || die
 }
 
 src_install() {
-	einstall localstatedir=$D/etc/flow-tools CC="$CC" CFLAGS="$CFLAGS"
+	einstall localstatedir=$D/etc/flow-tools CC="$(tc-getCC)" CFLAGS="$CFLAGS"
 	dodoc AUTHORS COPYING NEWS ChangeLog README INSTALL SECURITY TODO
 }

@@ -1,16 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyvorbis/pyvorbis-1.3.ebuild,v 1.1 2003/08/05 13:01:08 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyvorbis/pyvorbis-1.3.ebuild,v 1.1.1.1 2005/11/30 10:10:23 chriswhite Exp $
 
 inherit distutils
 
 DESCRIPTION="Python bindings for the ogg.vorbis library"
 HOMEPAGE="http://www.andrewchatham.com/pyogg/"
-SRC_URI="http://www.andrewchatham.com/pyogg/download/${P}.tar.gz"
+#SRC_URI="http://www.andrewchatham.com/pyogg/download/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 sparc x86"
+IUSE=""
 
 DEPEND="dev-lang/python
 	>=media-libs/libogg-1.0

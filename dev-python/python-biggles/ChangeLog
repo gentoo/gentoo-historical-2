@@ -1,6 +1,18 @@
 # ChangeLog for dev-python/python-biggles
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-biggles/ChangeLog,v 1.1 2003/04/20 02:32:19 blauwers Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-biggles/ChangeLog,v 1.1.1.1 2005/11/30 10:10:22 chriswhite Exp $
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*python-biggles-1.6.4 (05 Apr 2004)
+
+  05 Apr 2004; Bryan Østergaard <kloeri@gentoo.org>
+  python-biggles-1.6.4.ebuild:
+  Version bump, don't compress examples.
+
+  02 Sep 2003; Alastair Tse <liquidx@gentoo.org> python-biggles-1.6.3.ebuild:
+  moved dev-python/Numeric to dev-python/numeric
 
 *python-biggles-1.6.3 (20 Apr 2003)
 

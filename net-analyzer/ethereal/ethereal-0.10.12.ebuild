@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ethereal/ethereal-0.10.12.ebuild,v 1.1 2005/07/27 03:58:49 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ethereal/ethereal-0.10.12.ebuild,v 1.1.1.1 2005/11/30 10:12:06 chriswhite Exp $
 
 inherit libtool flag-o-matic eutils
 
@@ -11,18 +11,14 @@ SRC_URI="http://www.ethereal.com/distribution/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc ~alpha ~amd64 ~ia64 ~ppc64"
-IUSE="adns gtk ipv6 snmp ssl gtk2 kerberos"
-
-# if --disable-gtk2 is not passed to configure it will try to build with glib-2.0.
-# --disable-ethereal do not have an influence.
-
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+IUSE="adns gtk ipv6 snmp ssl kerberos"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
 	snmp? ( >=net-analyzer/net-snmp-5.1.1 )
 	>=dev-util/pkgconfig-0.15.0
-	gtk? (  gtk2? ( >=dev-libs/glib-2.0.4 =x11-libs/gtk+-2* )
-		!gtk2? ( =x11-libs/gtk+-1.2* )
+	gtk? ( >=dev-libs/glib-2.0.4
+		=x11-libs/gtk+-2*
 		x11-libs/pango
 		dev-libs/atk )
 	!gtk? ( =dev-libs/glib-1.2* )
@@ -38,6 +34,12 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	sys-apps/sed"
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-fix-encrypted-conflict.diff"
+}
+
 src_compile() {
 
 	replace-flags -O? -O
@@ -48,10 +50,10 @@ src_compile() {
 	local myconf
 
 	if use gtk; then
-		myconf="${myconf} $(use_enable gtk2)"
+		einfo "Building with gtk support"
 	else
-		myconf="${myconf} --disable-gtk2"
-
+		einfo "Building without gtk support"
+		myconf="${myconf} --disable-ethereal"
 		# the asn1 plugin needs gtk
 		sed -i -e '/plugins.asn1/d' Makefile.in || die "sed failed"
 		sed -i -e '/^SUBDIRS/s/asn1//' plugins/Makefile.in || die "sed failed"
@@ -63,6 +65,7 @@ src_compile() {
 		$(use_with adns) \
 		$(use_with kerberos krb5) \
 		$(use_with snmp net-snmp) \
+		$(use_enable gtk gtk2) \
 		--without-ucd-snmp \
 		--enable-dftest \
 		--enable-randpkt \
@@ -82,16 +85,16 @@ src_compile() {
 
 src_install() {
 	dodir /usr/lib/ethereal/plugins/${PV}
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
 
 	dodoc AUTHORS ChangeLog INSTALL.* NEWS README*
 
 	insinto /usr/share/icons/hicolor/16x16/apps
-	newins ${S}/image/hi16-app-ethereal.png ethereal.png
+	newins "${S}"/image/hi16-app-ethereal.png ethereal.png
 	insinto /usr/share/icons/hicolor/32x32/apps
-	newins ${S}/image/hi32-app-ethereal.png ethereal.png
+	newins "${S}"/image/hi32-app-ethereal.png ethereal.png
 	insinto /usr/share/icons/hicolor/48x48/apps
-	newins ${S}/image/hi48-app-ethereal.png ethereal.png
+	newins "${S}"/image/hi48-app-ethereal.png ethereal.png
 	make_desktop_entry ethereal "Ethereal" ethereal
 }
 
@@ -104,6 +107,6 @@ pkg_postinst() {
 	ewarn "use a hardened operating system;"
 	ewarn "do not listen to addition interfaces;"
 	ewarn "if possible, run behind a firewall;"
-	ewarn "take a capture with tcpdump and analyze the contents offline running ethereal as a the least priviledged user; and"
-	ewarn "subscribe to ethereal's announce list to be notified of newly discovered vulnerabilities."
+	ewarn "take a capture with tcpdump and analyze the contents offline running ethereal as a the least privileged user;"
+	ewarn "and subscribe to ethereal's announce list to be notified of newly discovered vulnerabilities."
 }

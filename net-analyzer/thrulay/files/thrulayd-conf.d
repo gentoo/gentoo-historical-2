@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/thrulay/files/thrulayd-conf.d,v 1.1 2005/06/04 19:28:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/thrulay/files/thrulayd-conf.d,v 1.1.1.1 2005/11/30 10:12:15 chriswhite Exp $
 
 # The default window size is 4194304 bytes
 #THRULAYD_WINDOW="4194304"

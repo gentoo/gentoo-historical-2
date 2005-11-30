@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmon/asmon-0.64.ebuild,v 1.1 2004/06/13 04:13:11 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmon/asmon-0.64.ebuild,v 1.1.1.1 2005/11/30 10:10:40 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.tigr.net/afterstep/download/asmon/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="x86 ~sparc ppc alpha"
 DEPEND="virtual/x11"
 
 src_unpack() {

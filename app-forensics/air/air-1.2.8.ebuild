@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/air/air-1.2.8.ebuild,v 1.1 2005/09/28 21:42:54 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/air/air-1.2.8.ebuild,v 1.1.1.1 2005/11/30 10:09:52 chriswhite Exp $
 
 DESCRIPTION="A GUI front-end to dd/dcfldd"
 HOMEPAGE="http://air-imager.sourceforge.net/"

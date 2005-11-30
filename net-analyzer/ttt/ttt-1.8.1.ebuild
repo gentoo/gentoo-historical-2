@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ttt/ttt-1.8.1.ebuild,v 1.1 2005/04/12 11:50:18 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ttt/ttt-1.8.1.ebuild,v 1.1.1.1 2005/11/30 10:12:20 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.csl.sony.co.jp/person/kjc/kjc/software.html"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86"
+KEYWORDS="~ppc x86"
 IUSE="ipv6"
 
 DEPEND="virtual/libc

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/p3scan/p3scan-2.3.0.ebuild,v 1.1 2005/11/16 01:29:49 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/p3scan/p3scan-2.3.0.ebuild,v 1.1.1.1 2005/11/30 10:11:54 chriswhite Exp $
 
 inherit eutils
 

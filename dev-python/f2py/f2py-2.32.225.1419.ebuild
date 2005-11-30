@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/f2py/f2py-2.32.225.1419.ebuild,v 1.1 2003/04/05 03:26:37 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/f2py/f2py-2.32.225.1419.ebuild,v 1.1.1.1 2005/11/30 10:10:30 chriswhite Exp $
+
+inherit distutils
 
 PN0="F2PY"
 PV0="2.32.225-1419"
@@ -10,14 +12,14 @@ SRC_URI="http://cens.ioc.ee/projects/f2py2e/2.x/${PN0}-${PV0}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 IUSE=""
 
-DEPEND="dev-lang/python"
-S=${WORKDIR}/${PN0}-${PV0}
+DEPEND="dev-lang/python
+		dev-python/numeric"
 
-inherit distutils
+S=${WORKDIR}/${PN0}-${PV0}
 
 src_install() {
 	distutils_src_install

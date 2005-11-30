@@ -1,6 +1,12 @@
-# ChangeLog for x11-misc/wmfire
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfire/ChangeLog,v 1.1 2002/10/24 19:19:06 raker Exp $
+# ChangeLog for x11-plugins/wmfire
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfire/ChangeLog,v 1.1.1.1 2005/11/30 10:10:52 chriswhite Exp $
+
+  10 Nov 2004; Michele Noberasco <s4t4n@gentoo.org> wmfire-0.0.3.9_pre4.ebuild:
+  Removed COPYING and INSTALL from dodoc.
+
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmfire-0.0.3.9_pre4.ebuild:
+  Added ~sparc keyword.
 
 *wmfire-0.0.3.9_pre4 (4-Aug-2002)
 

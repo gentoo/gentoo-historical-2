@@ -1,24 +1,23 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-hddtemp/gkrellm-hddtemp-0.1.ebuild,v 1.1 2002/08/30 01:49:27 seemant Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-hddtemp/gkrellm-hddtemp-0.1.ebuild,v 1.1.1.1 2005/11/30 10:10:51 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="a GKrellM plugin for hddtemp (which reads the temperature of SMART IDE hard drives)"
+DESCRIPTION="a GKrellM plugin for hddtemp (which reads the temperature of SMART capable hard drives)"
 SRC_URI="http://coredump.free.fr/linux/${P}.tar.gz"
-HOMEPAGE="http://coredump.free.fr/linux/harddrive.html"
-
+HOMEPAGE="http://coredump.free.fr/linux/hddtemp.php"
+IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc sparc64"
+KEYWORDS="x86 sparc ppc"
 
-DEPEND=">=app-admin/gkrellm-1.2.1"
+DEPEND="=app-admin/gkrellm-1.2*
+	>=sys-apps/sed-4"
 RDEPEND=">=app-admin/hddtemp-0.2"
 
 src_unpack() {
 	unpack ${A} ; cd ${S}
 	# patch Makefile
-	mv Makefile Makefile.orig
-	sed -e "s:^CFLAGS.*:CFLAGS=${CFLAGS} -fPIC:" Makefile.orig > Makefile
+	sed -i "s:^CFLAGS.*:CFLAGS=${CFLAGS} -fPIC:" Makefile
 }
 
 src_compile() {
@@ -27,24 +26,14 @@ src_compile() {
 
 src_install() {
 	dodoc README COPYING
-	
+
 	insinto /usr/lib/gkrellm/plugins
 	doins gkrellm-hddtemp.so
 }
 
 pkg_postinst() {
+	einfo "hddtemp has to be suid root to allow regular users to run this plugin."
+	einfo "To make it suid root, run"
 	einfo
-	einfo "#######################################################"
-	einfo "#                                                     #"
-	einfo "#   Please note that hddtemp has to be set suid       #"
-	einfo "#   in order to allow regular user to run this        #"
-	einfo "#   plugin.                                           #"
-	einfo "#                                                     #"
-	einfo "#   Please execute (as root):                         #"
-	einfo "#   chmod u+s /usr/bin/hddtemp                        #"
-	einfo "#   to set the suid bit                               #"
-	einfo "#   (this is not done automatically for               #"
-	einfo "#   security reasons)                                 #"
-	einfo "#                                                     #"
-	einfo "#######################################################"
+	einfo "\tchmod u+s /usr/bin/hddtemp"
 }

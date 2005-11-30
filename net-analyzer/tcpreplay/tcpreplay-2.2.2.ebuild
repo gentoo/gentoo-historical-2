@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpreplay/tcpreplay-2.2.2.ebuild,v 1.1 2004/06/23 00:09:03 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpreplay/tcpreplay-2.2.2.ebuild,v 1.1.1.1 2005/11/30 10:12:08 chriswhite Exp $
 
 DESCRIPTION="replay saved tcpdump or snoop files at arbitrary speeds"
 HOMEPAGE="http://tcpreplay.sourceforge.net/"
@@ -9,11 +9,11 @@ RESTRICT="nomirror"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~amd64"
 IUSE="debug"
 
 DEPEND=">=net-libs/libnet-1.1.1
-	net-libs/libpcap
+	virtual/libpcap
 	net-analyzer/tcpdump"
 
 src_compile() {

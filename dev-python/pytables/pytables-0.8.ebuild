@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pytables/pytables-0.8.ebuild,v 1.1 2004/03/09 23:05:07 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pytables/pytables-0.8.ebuild,v 1.1.1.1 2005/11/30 10:10:10 chriswhite Exp $
 
 inherit distutils
 
@@ -10,9 +10,10 @@ HOMEPAGE="http://pytables.sourceforge.net/"
 
 DEPEND=">=dev-lang/python-2.2
 	>=sys-devel/gcc-3.2
-	dev-libs/hdf5
+	sci-libs/hdf5
 	dev-python/numarray"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 LICENSE="as-is"
+IUSE=""

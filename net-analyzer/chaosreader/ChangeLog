@@ -1,6 +1,29 @@
 # ChangeLog for net-analyzer/chaosreader
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/chaosreader/ChangeLog,v 1.1 2004/02/01 18:03:17 spock Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/chaosreader/ChangeLog,v 1.1.1.1 2005/11/30 10:12:16 chriswhite Exp $
+
+  12 Aug 2005; Olivier Crête <tester@gentoo.org> chaosreader-0.94.ebuild:
+  Marked ~amd64, closes bug #102108, thanks to Mike Cvet for testing
+
+  17 Jun 2004; Michal Januszewski <spock@gentoo.org> chaosreader-0.93.ebuild,
+  chaosreader-0.94.ebuild:
+  Stable on x86.
+
+*chaosreader-0.94 (08 May 2004)
+
+  08 May 2004; Michal Januszewski <spock@gentoo.org> +chaosreader-0.94.ebuild:
+  Version bump.
+
+  18 Apr 2004; David Holm <dholm@gentoo.org> chaosreader-0.93.ebuild:
+  Added to ~ppc.
+
+*chaosreader-0.93 (17 Apr 2004)
+
+  17 Apr 2004; Michal Januszewski <spock@gentoo.org> +chaosreader-0.93.ebuild:
+  Version bump.
+
+  27 Mar 2004; Michal Januszewski <spock@gentoo.org> chaosreader-0.92.ebuild:
+  Bump to stable (x86).
 
 *chaosreader-0.92 (01 Feb 2004)
 

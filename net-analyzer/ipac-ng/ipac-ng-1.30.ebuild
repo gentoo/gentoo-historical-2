@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ipac-ng/ipac-ng-1.30.ebuild,v 1.1 2004/07/25 15:00:52 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ipac-ng/ipac-ng-1.30.ebuild,v 1.1.1.1 2005/11/30 10:12:46 chriswhite Exp $
 
 DESCRIPTION="ip accounting suite for 2.4 and 2.6 series kernels with text and PNG image output like mrtg"
 HOMEPAGE="http://sourceforge.net/projects/ipac-ng/"
@@ -8,14 +8,14 @@ SRC_URI="mirror://sourceforge/ipac-ng/${P/_p/pl}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="gd sqlite"
 
 DEPEND="sys-devel/bison
 	sys-devel/flex
 	dev-lang/perl
 	gd? ( dev-perl/GD )
-	sqlite? ( dev-db/sqlite )
+	sqlite? ( =dev-db/sqlite-2* )
 	!sqlite? ( sys-libs/gdbm )
 	sys-devel/flex
 	virtual/libc"
@@ -23,7 +23,7 @@ RDEPEND="net-firewall/iptables
 	virtual/cron
 	dev-lang/perl
 	gd? ( dev-perl/GD )
-	sqlite? ( dev-db/sqlite )
+	sqlite? ( =dev-db/sqlite-2* )
 	!sqlite? ( sys-libs/gdbm )
 	virtual/libc"
 
@@ -60,17 +60,17 @@ src_install() {
 	exeinto /etc/cron.hourly
 	newexe ${FILESDIR}/ipac-ng.cron.${PVR} ipac-ng
 
-	dodoc  COPYING README* TODO UPDATE* CHANGES
+	dodoc README TODO doc/* CHANGELOG
 }
 
 pkg_postinst() {
-	ewarn ""
+	ewarn
 	ewarn "                         W A R N I N G !"
 	ewarn "do not use \"/etc/init.d/iptables save\" when ipac-ng is running!"
 	ewarn "this WILL save ipac rules and can cause problems!"
 	ewarn "ipac-ng should be started AFTER iptables and shut down BEFORE iptables"
 	ewarn "use /etc/init.d/iptables save only when ipac rules are removed!"
-	ewarn ""
+	ewarn
 	einfo "the accounting database is at /var/lib/ipac"
 	einfo "use /usr/sbin/ipacsum to get your ip acounting data"
 	einfo "use /usr/sbin/fetchipac to update the accounting at any time"

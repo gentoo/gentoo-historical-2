@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/flow-tools/flow-tools-0.68-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:36 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.eng.oar.net/pub/flow-tools/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="mysql postgres debug ssl"
 
 RDEPEND="sys-apps/tcp-wrappers
@@ -32,7 +32,7 @@ pkg_setup() {
 	fi
 
 	enewgroup flows
-	enewuser flows -1 /bin/false /var/lib/flows flows
+	enewuser flows -1 -1 /var/lib/flows flows
 }
 
 src_unpack() {

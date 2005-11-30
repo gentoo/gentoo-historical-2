@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pmacct/pmacct-0.9.4.ebuild,v 1.1 2005/11/08 13:49:55 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pmacct/pmacct-0.9.4.ebuild,v 1.1.1.1 2005/11/30 10:12:42 chriswhite Exp $
 
 MY_P="${P%_*}"
 S="${WORKDIR}/${MY_P}"

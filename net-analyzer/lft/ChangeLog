@@ -1,6 +1,46 @@
 # ChangeLog for net-analyzer/lft
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/lft/ChangeLog,v 1.1 2003/10/13 16:08:54 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/lft/ChangeLog,v 1.1.1.1 2005/11/30 10:12:05 chriswhite Exp $
+
+*lft-2.5 (03 Sep 2005)
+
+  03 Sep 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/lft-2.5-installpath.patch, +lft-2.5.ebuild:
+  version bump
+
+  02 Aug 2005; Marcelo Goes <vanquirius@gentoo.org> lft-2.31.ebuild:
+  amd64 stable. Closes bug 100959. Thanks to Andrew D Kirch
+  <trelane@trelane.net>.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> lft-2.31.ebuild:
+  Added to ~ppc.
+
+  27 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> -lft-2.2.ebuild,
+  lft-2.31.ebuild:
+  Remove old version, avoid suid related security issues.
+
+  07 May 2005; Marcelo Goes <vanquirius@gentoo.org> lft-2.31.ebuild:
+  Marked x86 stable.
+
+*lft-2.31 (02 Apr 2005)
+
+  02 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> +lft-2.31.ebuild:
+  Version bump. Changed LICENSE to VOSTROM, using mirror://gentoo for SRC_URI.
+
+  21 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> lft-2.2.ebuild:
+  Updated homepage.
+
+  06 Feb 2005; Kito <kito@gentoo.org> lft-2.2.ebuild:
+  keyword ~ppc-macos closes bug 68499
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> lft-2.2.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79783
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> lft-2.2.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml, lft-2.2.ebuild:
+  Added missing IUSE, marked x86 stable
 
 *lft-2.2 (13 Oct 2003)
 

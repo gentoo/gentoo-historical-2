@@ -1,25 +1,28 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hping/hping-2.0.0_rc3.ebuild,v 1.1 2004/05/14 19:18:59 avenj Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hping/hping-2.0.0_rc3.ebuild,v 1.1.1.1 2005/11/30 10:12:43 chriswhite Exp $
 
 inherit eutils
 
 MY_P="${PN}${PV//_/-}"
-S="${WORKDIR}/${MY_P//\.[0-9]}"
-DESCRIPTION="A ping-like TCP/IP packet assembler/analyzer."
-SRC_URI="http://www.hping.org/${MY_P}.tar.gz"
+DESCRIPTION="A ping-like TCP/IP packet assembler/analyzer"
 HOMEPAGE="http://www.hping.org"
+SRC_URI="http://www.hping.org/${MY_P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~hppa ~ia64 ~amd64 ~alpha"
+SLOT="0"
+KEYWORDS="x86 sparc hppa ~ia64 amd64 alpha ppc"
+IUSE="debug"
 
-DEPEND="net-libs/libpcap"
+DEPEND="virtual/libpcap"
+
+S="${WORKDIR}/${MY_P//\.[0-9]}"
 
 src_compile() {
 	./configure || die
+	epatch ${FILESDIR}/bytesex.h.patch
 
-	if [ `use debug` ]
+	if use debug
 	then
 		make CCOPT="${CFLAGS}" || die
 	else
@@ -33,5 +36,5 @@ src_install () {
 	dosym /usr/sbin/hping2 /usr/sbin/hping
 
 	doman docs/hping2.8
-	dodoc INSTALL KNOWN-BUGS NEWS README TODO AUTHORS BUGS CHANGES COPYING
+	dodoc INSTALL KNOWN-BUGS NEWS README TODO AUTHORS BUGS CHANGES COPYING docs/AS-BACKDOOR docs/HPING2-IS-OPEN docs/MORE-FUN-WITH-IPID docs/*.txt
 }

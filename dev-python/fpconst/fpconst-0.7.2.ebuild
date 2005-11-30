@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/fpconst/fpconst-0.7.2.ebuild,v 1.1 2005/06/04 15:37:12 fserb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/fpconst/fpconst-0.7.2.ebuild,v 1.1.1.1 2005/11/30 10:10:06 chriswhite Exp $
 
 inherit distutils
 

@@ -1,30 +1,25 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/quanta/quanta-3.4.1.ebuild,v 1.1 2005/05/25 21:23:14 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/quanta/quanta-3.4.1.ebuild,v 1.1.1.1 2005/11/30 10:13:06 chriswhite Exp $
 KMNAME=kdewebdev
 MAXKDEVER=$PV
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE: Quanta Plus Web Development Environment"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE="doc tidy"
-DEPEND="doc? ( app-doc/quanta-docs )
-	dev-libs/libxml2"
+DEPEND="dev-libs/libxml2"
 RDEPEND="$DEPEND
 $(deprange $PV $MAXKDEVER kde-base/kfilereplace)
 $(deprange $PV $MAXKDEVER kde-base/kimagemapeditor)
 $(deprange $PV $MAXKDEVER kde-base/klinkstatus)
 $(deprange $PV $MAXKDEVER kde-base/kommander)
 $(deprange $PV $MAXKDEVER kde-base/kxsldbg)
-tidy? ( app-text/htmltidy )"
+tidy? ( app-text/htmltidy )
+doc? ( app-doc/quanta-docs )"
 
 KMCOMPILEONLY=lib
-
-src_unpack () {
-	kde-meta_src_unpack
-	epatch ${FILESDIR}/${P}-vpl.patch
-}
 
 # TODO: check why this wasn't needed back in the monolithic ebuild
 src_compile () {

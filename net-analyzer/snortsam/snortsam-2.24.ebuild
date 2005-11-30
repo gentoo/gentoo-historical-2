@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snortsam/snortsam-2.24.ebuild,v 1.1 2004/06/30 23:58:02 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snortsam/snortsam-2.24.ebuild,v 1.1.1.1 2005/11/30 10:12:42 chriswhite Exp $
 
 DESCRIPTION="Snort plugin that allows automated blocking of IP addresses on several firewalls"
 HOMEPAGE="http://www.snortsam.net/"
@@ -8,7 +8,7 @@ SRC_URI="http://www.snortsam.net/files/snortsam-v2_multi-threaded/${PN}-src-${PV
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~amd64"
+KEYWORDS="x86 ~sparc ~amd64 ppc"
 IUSE=""
 
 S=${WORKDIR}/${PN}
@@ -26,7 +26,7 @@ src_install() {
 pkg_postinst() {
 	einfo "To use snortsam with snort, you'll have to compile snort with"
 	einfo "the snortsam patch - remerge snort with the snortsam useflag."
-	einfo ""
+	einfo
 	einfo "Read the INSTALL file to configure snort for snortsam, and"
 	einfo "configure snortsam for your particular firewall."
 }

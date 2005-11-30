@@ -1,6 +1,9 @@
-# ChangeLog for dev-perl/Safe
+# ChangeLog for perl-core/Safe
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/Safe/ChangeLog,v 1.1 2005/05/25 14:32:45 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/perl-core/Safe/ChangeLog,v 1.1.1.1 2005/11/30 10:11:11 chriswhite Exp $
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Safe-2.11.ebuild:
+  add ia64
 
 *Safe-2.11 (25 May 2005)
 

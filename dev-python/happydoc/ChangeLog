@@ -1,11 +1,53 @@
 # ChangeLog for dev-python/happydoc
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/happydoc/ChangeLog,v 1.1 2002/05/15 02:53:21 jnelson Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/happydoc/ChangeLog,v 1.1.1.1 2005/11/30 10:10:10 chriswhite Exp $
 
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> happydoc-2.1.ebuild:
+  Mark 2.1 stable on ia64
+
+  13 Sep 2005; <dang@gentoo.org> happydoc-2.1.ebuild:
+  Marked ~amd64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> happydoc-2.1.ebuild:
+  add ~ia64
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> happydoc-2.1.ebuild:
+  Stable on ppc.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> happydoc-2.1.ebuild:
+  Added to ~ppc.
+
+  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> happydoc-2.1.ebuild:
+  Stable on alpha.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> happydoc-2.0.1.ebuild,
+  happydoc-2.1.ebuild:
+  Add missing IUSE.
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> happydoc-2.1.ebuild:
+  Stable on sparc.
+
+*happydoc-2.1 (04 Apr 2003)
+
+  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> happydoc-2.1.ebuild:
+  version bump and cleanup
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 # Author Gontran Zepeda <gontran@gontran.net>
 
 *happydoc-2.0.1 (14 May 2002)
 
+  26 Apr 2003; Alastair Tse <liquidx@gentoo.org> happydoc-2.0.1.ebuild:
+  fix syntax error in happydoc
+
+  26 Jul 2002; George Shapovalov <george@gentoo.org> happydoc-2.0.1.ebuild :
+  
+  added KEYWORDS,SLOT,LICENSE,
+  
   14 May 2002; Jon Nelson <jnelson@gentoo.org> ChangeLog happydoc-2.0.1.ebuild :
   
   Thanks to Gontran Zepeda <gontran at gontran.net> for the original ebuild

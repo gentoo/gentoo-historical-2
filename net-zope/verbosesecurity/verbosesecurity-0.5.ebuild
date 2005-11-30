@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/verbosesecurity/verbosesecurity-0.5.ebuild,v 1.1 2003/10/11 21:12:18 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/verbosesecurity/verbosesecurity-0.5.ebuild,v 1.1.1.1 2005/11/30 10:11:09 chriswhite Exp $
 
-inherit zproduct
+inherit zproduct eutils
 
 DESCRIPTION="Zope Product which explains the reason for denied security access"
 HOMEPAGE="http://hathaway.freezope.org/Software/VerboseSecurity"
@@ -20,7 +20,6 @@ pkg_preinst() {
 	ewarn "This product does a 'monkey patch' to Zope."
 	ewarn "One of the results being that zope will execute a little slower."
 	echo
-	echo -ne "\a" ; sleep 1 ; echo -ne "\a" ; sleep 1 ; echo -ne "\a" ; sleep 1
-	echo -ne "\a" ; sleep 1 ; echo -ne "\a" ; sleep 1 ; echo -ne "\a" ; sleep 1
-	sleep 8
+	ebeep 5
+	epause 8
 }

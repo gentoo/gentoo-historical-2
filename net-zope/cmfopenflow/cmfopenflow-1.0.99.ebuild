@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/cmfopenflow/cmfopenflow-1.0.99.ebuild,v 1.1 2004/01/28 15:11:07 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/cmfopenflow/cmfopenflow-1.0.99.ebuild,v 1.1.1.1 2005/11/30 10:11:07 chriswhite Exp $
 
 inherit zproduct
 

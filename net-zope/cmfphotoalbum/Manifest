@@ -1,3 +1,4 @@
-MD5 53b3b71f4a2a3223c160870ebe1a66fe cmfphotoalbum-0.2.ebuild 705
-MD5 9f4f13f257207c06afed17520df8c58c cmfphotoalbum-0.2.ebuild~ 704
-MD5 f47ffd13763455987655cbe2d7a120c7 files/digest-cmfphotoalbum-0.2 68
+MD5 3219cbfb38969b8558a319b7d3f4d555 cmfphotoalbum-0.5.0.ebuild 816
+MD5 1c88fb7ea8e54fadcd0b0345b9963880 ChangeLog 2109
+MD5 7890d88c5c6d189fbe6b187a3ebb6532 metadata.xml 161
+MD5 63b48f152da9b37f6d0acfc04c02a956 files/digest-cmfphotoalbum-0.5.0 70

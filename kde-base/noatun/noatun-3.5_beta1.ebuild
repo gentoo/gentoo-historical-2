@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/noatun/noatun-3.5_beta1.ebuild,v 1.1 2005/09/22 21:30:59 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/noatun/noatun-3.5_beta1.ebuild,v 1.1.1.1 2005/11/30 10:13:13 chriswhite Exp $
 
 KMNAME=kdemultimedia
 MAXKDEVER=$PV
@@ -8,19 +8,11 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE media player"
-KEYWORDS="~amd64"
-IUSE="xine audiofile"
-RDEPEND="${DEPEND}
-$(deprange $PV $MAXKDEVER kde-base/kdemultimedia-arts)
-$(deprange $PV $MAXKDEVER kde-base/artsplugin-mpeglib)
-$(deprange $PV $MAXKDEVER kde-base/artsplugin-mpg123)
-	xine? ( $(deprange $PV $MAXKDEVER kde-base/artsplugin-xine) )
-	audiofile? ( $(deprange $PV $MAXKDEVER kde-base/artsplugin-audiofile) )"
-KMCOPYLIB="
-	libartsgui_kde arts/gui/kde/
-	libartsgui arts/gui/common/
-	libartsmodules arts/modules/"
-KMEXTRACTONLY="arts/"
+KEYWORDS="~amd64 ~x86"
+IUSE=""
+RDEPEND="$(deprange $PV $MAXKDEVER kde-base/kdemultimedia-arts)"
+
+KMCOMPILEONLY="arts"
 
 pkg_setup() {
 	if ! useq arts; then

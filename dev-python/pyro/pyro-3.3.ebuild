@@ -1,29 +1,34 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyro/pyro-3.3.ebuild,v 1.1 2004/02/16 00:13:18 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyro/pyro-3.3.ebuild,v 1.1.1.1 2005/11/30 10:10:09 chriswhite Exp $
 
-inherit distutils
-
-DESCRIPTION="Pyro is an advanced and powerful Distributed Object Technology system written entirely in Python"
+inherit distutils eutils
 
 MY_P="Pyro-${PV}"
-S=${WORKDIR}/${MY_P}
-HOMEPAGE="http://pyro.sourceforge.net"
-LICENSE="MIT"
+DESCRIPTION="advanced and powerful Distributed Object Technology system written entirely in Python"
+HOMEPAGE="http://pyro.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pyro/${MY_P}.tar.gz"
 
-KEYWORDS="~x86"
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="x86"
 IUSE=""
 
-src_unpack () {
+DEPEND="virtual/python"
+
+S=${WORKDIR}/${MY_P}
+
+src_unpack() {
 	unpack ${A}
 	epatch ${FILESDIR}/${P}-unattend.patch
 }
 
-src_install () {
+src_install() {
 	distutils_src_install
 
 	dodir /usr/share/doc/${PF}/examples
-	cp -r ${S}/examples $D/usr/share/doc/${PF}
+	cp -r ${S}/examples ${D}/usr/share/doc/${PF}
 	dohtml -r docs/*
+
+	mv /usr/bin/esd /usr/bin/pyroesd
 }

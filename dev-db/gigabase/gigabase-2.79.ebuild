@@ -1,13 +1,13 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/gigabase/gigabase-2.79.ebuild,v 1.1 2003/02/18 12:52:30 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/gigabase/gigabase-2.79.ebuild,v 1.1.1.1 2005/11/30 10:11:42 chriswhite Exp $
 
 DESCRIPTION="OO-DBMS with interfaces for C/C++/Java/PHP/Perl"
 HOMEPAGE="http://www.garret.ru/~knizhnik/gigabase.html"
 SRC_URI="http://www.garret.ru/~knizhnik/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 DEPEND=""
 
@@ -15,12 +15,12 @@ S=${WORKDIR}/gigabase
 
 src_compile() {
 	mf="${S}/Makefile"
-	
-	econf
+
+	econf || die "econf failed"
 
 	sed -r -e 's/subsql([^\.]|$)/subsql-gdb\1/' ${mf} > ${mf}.tmp
 	mv ${mf}.tmp ${mf}
-	
+
 	emake || die
 }
 
@@ -30,7 +30,7 @@ src_install() {
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
 		install || die
-	
+
 	dodoc CHANGES
 	dohtml GigaBASE.htm
 	dohtml -r docs/html/*

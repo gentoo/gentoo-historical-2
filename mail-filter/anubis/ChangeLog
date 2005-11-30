@@ -1,6 +1,27 @@
-# ChangeLog for net-mail/anubis
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/anubis/ChangeLog,v 1.1 2004/06/03 07:00:48 seemant Exp $
+# ChangeLog for mail-filter/anubis
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/anubis/ChangeLog,v 1.1.1.1 2005/11/30 10:11:54 chriswhite Exp $
+
+  27 Nov 2004; Andrej Kacian <ticho@gentoo.org> -anubis-3.6.2-r1.ebuild,
+  -anubis-3.6.2.ebuild, anubis-3.9.95.ebuild:
+  3.9.95 stable on x86 as per bug #72618. Removed older versions.
+
+  16 Sep 2004; Daniel Black <dragonheart@gentoo.org> anubis-3.6.2-r1.ebuild,
+  anubis-3.6.2.ebuild:
+  Fixed gpgme dependancy in accordance with bug #63501
+
+  08 Sep 2004; Andrej Kacian <ticho@gentoo.org> anubis-3.9.95.ebuild:
+  Fixed socks support. Removed dependency on dante, as it is not needed - anubis
+  has its own socks4/5 implementation.
+
+*anubis-3.9.95 (08 Sep 2004)
+
+  08 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/3.9.95-authmode.c.patch, +files/3.9.95-transmode.c.patch,
+  +anubis-3.9.95.ebuild:
+  Version bump. Closes #59850, reported by Daniel Black
+  <dragonheart@gentoo.org>, who also provided two patches applied to source by
+  the ebuild.
 
 *anubis-3.6.2 (03 Jun 2004)
 

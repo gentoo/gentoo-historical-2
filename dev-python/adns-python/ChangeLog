@@ -1,8 +1,32 @@
 # ChangeLog for dev-python/adns-python
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/adns-python/ChangeLog,v 1.1 2003/03/03 23:41:50 foser Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/adns-python/ChangeLog,v 1.1.1.1 2005/11/30 10:10:03 chriswhite Exp $
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> adns-python-1.0.0.ebuild:
+  stable on amd64
+
+*adns-python-1.1.0 (12 Feb 2005)
+
+  12 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  +adns-python-1.1.0.ebuild:
+  Version bump.
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> adns-python-1.0.0.ebuild:
+  Adding amd64 keyword. Closing #43595.
+
+  14 Feb 2004; Alastair Tse <liquidx@gentoo.org> adns-python-1.0.0.ebuild:
+  changed depend to >=net-libs/adns-1.0
+
+  01 Nov 2003; Jason Wever <weeve@gentoo.org> adns-python-1.0.0.ebuild:
+  Added ~sparc keyword.
 
 *adns-python-1.0.0 (03 Mar 2003)
 
+  25 Apr 2003; Lars Weiler <pylon@gentoo.org> adns-python-1.0.0.ebuild:
+  Set ~ppc in KEYWORDS
+
+  25 Mar 2003; Alastair Tse <liquidx@gentoo.org> adns-python-1.0.0.ebuild:
+  Using distutils eclass and bumping to stable.
+  
   03 Mar 2003; foser <foser@gentoo.org> adns-python-1.0.0.ebuild, ChangeLog :
   Initial commit

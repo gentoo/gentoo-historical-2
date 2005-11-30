@@ -1,15 +1,33 @@
-MD5 230a7e59d9d1846828ca84532f281b8c kdeartwork-3.0.5b.ebuild 786
-MD5 935a830c59a85491fdeba4b43fbccf34 kdeartwork-3.1.ebuild 553
-MD5 d6687083e11588e24d45481465d6569b kdeartwork-3.0.4.ebuild 775
-MD5 dbdc851f9febc193e1bc496df88fdcd2 kdeartwork-3.0.5a.ebuild 784
-MD5 0df288991b8ca4cb4d0575ba732ca4af kdeartwork-2.2.2.ebuild 396
-MD5 5b15f06c8cba012b87b1c1de86105f56 kdeartwork-3.1.1.ebuild 556
-MD5 8d003836b6c38cc1c770a848bcf21aa6 ChangeLog 4425
-MD5 c1d6b596c0614da94a656a6eab560f66 files/digest-kdeartwork-3.0.5a 72
-MD5 48e8d7fd608bfc6ac151f6ac3cc05a27 files/digest-kdeartwork-3.0.5b 297
-MD5 5c1ca939fc1dbb4714ca55f8c707ebf1 files/kdeartwork-screensaver.patch 634
-MD5 e09643b7d8304e13d5a69d62946ec733 files/digest-kdeartwork-2.2.2 70
-MD5 f6e92fde8ace49b0d447aaf6ddf8f978 files/digest-kdeartwork-3.0.4 71
-MD5 e748fe1957c4ee16a31c8d47847e2f12 files/digest-kdeartwork-3.1.1 71
-MD5 c8aa641bca5096a0158636729b7acc9b files/digest-kdeartwork-3.1 69
-MD5 1579545755bc63505fd6c670f9e70bdc files/xsaver-conflicting-typedefs.diff 510
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 4316ed07c9269fd535d95af504f69581 ChangeLog 17540
+MD5 976327b55d73654f03a7c4545f59d516 files/digest-kdeartwork-3.3.2 71
+MD5 48916b43a9686c5c004bb311c8acc1c6 files/digest-kdeartwork-3.4.1 71
+MD5 b63dbb6cdbc61bdd0f73baace77284a1 files/digest-kdeartwork-3.4.2 71
+MD5 48256bc40d421d92b903308f172a596e files/digest-kdeartwork-3.4.3 71
+MD5 5d798bbc72f84bd47d8347da83a552a2 files/digest-kdeartwork-3.5.0 71
+MD5 0b4aa84d68a5789a9d4d8411dbc156e2 files/digest-kdeartwork-3.5.0_beta2 72
+MD5 548c9852f0538dfa7f7cc65b2c19ee24 files/digest-kdeartwork-3.5.0_rc1 75
+MD5 7f1e0c6f226befe1c3b684e3bdf5b4a8 files/digest-kdeartwork-3.5_beta1 72
+MD5 a78e3dcfd0504ff7a053ec4c918c845f files/kdeartwork-3.3.2-gl-kdesavers.patch 711
+MD5 a51b6bfc735f8cec40cd4481a289309d files/kdeartwork-3.4-configure.patch 7591
+MD5 fe55c64ff5050b92d175b2114c2d1667 files/kdeartwork-3.4.1-configure.patch 815
+MD5 45fe881cc7f39f2d70b8b4ccc61cf707 files/kdeartwork-3.4.3-configure.patch 5729
+MD5 789091c90eea0d565e886b92589f1119 files/kdeartwork-3.4.3-kfiresaver.patch 765
+MD5 00e5d82dd484b4ad1bd36338cc5b9ad3 kdeartwork-3.3.2.ebuild 833
+MD5 e35b31c29a9467d7afd6564eeae51dd0 kdeartwork-3.4.1.ebuild 773
+MD5 5c8f4293876c1b162c00e153f2131dca kdeartwork-3.4.2.ebuild 1110
+MD5 66675568aa7a1aa78c9713da2e66d1b2 kdeartwork-3.4.3.ebuild 934
+MD5 d1f5e9480adb0a8c9bfaf56c466aca28 kdeartwork-3.5.0.ebuild 630
+MD5 3755e95cce9c784bf40deeb032810117 kdeartwork-3.5.0_beta2.ebuild 634
+MD5 fd93140e2d1d33392d18933b523199d2 kdeartwork-3.5.0_rc1.ebuild 632
+MD5 9c5ffe183fd6f2c6e87419f0956c782c kdeartwork-3.5_beta1.ebuild 632
+MD5 acc03a4b12bb0433a57e95bd253b9501 metadata.xml 156
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDhk2PntT9W3vfTuoRAvbWAKCenuDXQDTs7YDa7LHp/f2BZowbFwCaAnFR
+JZecpfrZmDIO/tXZHCsg+r0=
+=9bh8
+-----END PGP SIGNATURE-----

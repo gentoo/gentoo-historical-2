@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.8.0.ebuild,v 1.1 2005/06/11 11:56:33 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.8.0.ebuild,v 1.1.1.1 2005/11/30 10:11:09 chriswhite Exp $
 
 inherit eutils
 
@@ -24,7 +24,7 @@ S="${WORKDIR}/Zope-${PV}-final"
 ZUID=zope
 ZGID=zope
 ZS_DIR=${ROOT%/}/usr/lib
-ZSERVDIR=${ZS_DIR}/${PN}-${PV}
+ZSERVDIR=${ZS_DIR}/${P}
 
 # Narrow the scope of ownership/permissions.
 # Security plan:
@@ -92,7 +92,7 @@ pkg_postinst() {
 	# create the zope user and group for backward compatibility
 	enewgroup ${ZGID} 261
 	usermod -g ${ZGID} ${ZUID} 2>&1 >/dev/null || \
-	enewuser ${ZUID} 261 /bin/false /var/lib/zope  ${ZGID}
+	enewuser ${ZUID} 261 -1 /var/lib/zope  ${ZGID}
 
 	einfo "Be warned that you need at least one zope instance to run zope."
 	einfo "Please emerge zope-config for futher instance management."

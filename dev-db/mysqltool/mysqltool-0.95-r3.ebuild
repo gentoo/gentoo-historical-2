@@ -1,23 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysqltool/mysqltool-0.95-r3.ebuild,v 1.1 2004/04/23 15:17:05 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysqltool/mysqltool-0.95-r3.ebuild,v 1.1.1.1 2005/11/30 10:11:34 chriswhite Exp $
 
 inherit perl-module
 
 S=${WORKDIR}/MysqlTool-${PV}
 DESCRIPTION="Web interface for managing one or more mysql server installations"
-SRC_URI="http://www.dajoba.com/projects/mysqltool/MysqlTool-${PV}.tar.gz"
-HOMEPAGE="http://www.dajoba.com/projects/mysqltool/"
+SRC_URI="http://www.brouhaha.com/~eric/software/mysqltool/download/MysqlTool-${PV}.tar.gz"
+HOMEPAGE="http://www.brouhaha.com/~eric/software/mysqltool/"
 IUSE="apache2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~sparc ~ppc ~alpha"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	dev-lang/perl
 	>=dev-db/mysql-3.23.38
-	dev-perl/CGI
+	perl-core/CGI
 	dev-perl/Apache-DBI
 	dev-perl/DBI
 	dev-perl/DBD-mysql
@@ -40,7 +40,7 @@ src_install() {
 	dodoc COPYING Changes MANIFEST README Upgrade
 
 	local __apache_server_root__
-	if [ "`use apache2`" ]; then
+	if use apache2; then
 		__apache_server_root__="/etc/apache2"
 	else
 		__apache_server_root__="/etc/apache"
@@ -49,7 +49,7 @@ src_install() {
 	local __apache_document_root__
 	__apache_document_root__=`grep "^DocumentRoot" ${__apache_conf_dir__}/*.conf -h | cut -d' ' -f2`
 	local __apache_modules_conf_dir__
-	if [ "`use apache2`" ]; then
+	if use apache2; then
 		__apache_modules_conf_dir__="${__apache_conf_dir__}/modules.d"
 		else
 		__apache_modules_conf_dir__="${__apache_conf_dir__}/addon-modules"
@@ -57,7 +57,7 @@ src_install() {
 
 	# the cgi and images..
 	dodir ${__apache_document_root__}/mysqltool
-	cp -a htdocs/* ${D}/${__apache_document_root__}/mysqltool
+	cp -pPR htdocs/* ${D}/${__apache_document_root__}/mysqltool
 	rm ${D}/${__apache_document_root__}/mysqltool/mysqltool.conf
 
 	# the config file..
@@ -82,7 +82,7 @@ src_install() {
 pkg_postinst() {
 	einfo "To have Apache support MySQLTool, please do the following:"
 	local f
-	if [ "`use apache2`" ] ; then
+	if use apache2 ; then
 		f='2'
 	else
 		f=''

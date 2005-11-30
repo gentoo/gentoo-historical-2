@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/midas-nms/files/midas-nms.init,v 1.1 2004/10/20 15:17:45 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/midas-nms/files/midas-nms.init,v 1.1.1.1 2005/11/30 10:12:21 chriswhite Exp $
 
 depend() {
     if [ "$MIDASs" ] ; then

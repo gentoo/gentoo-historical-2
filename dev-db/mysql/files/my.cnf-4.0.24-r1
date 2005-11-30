@@ -1,5 +1,5 @@
 # /etc/mysql/my.cnf: The global mysql configuration file.
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/files/my.cnf-4.0.24-r1,v 1.1 2005/03/13 05:54:00 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/files/my.cnf-4.0.24-r1,v 1.1.1.1 2005/11/30 10:11:33 chriswhite Exp $
 #
 # This file can be simultaneously placed in three places:
 # 1. /etc/mysql/my.cnf to set global options.

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.4.3.ebuild,v 1.1 2005/10/12 13:20:16 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.4.3.ebuild,v 1.1.1.1 2005/11/30 10:12:53 chriswhite Exp $
 
 inherit kde flag-o-matic eutils multilib
 set-kdedir 3.4
@@ -11,7 +11,7 @@ SRC_URI="mirror://kde/stable/${PV}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="3.4"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ~ppc ppc64 sparc ~x86"
 IUSE="alsa arts cups doc jpeg2k kerberos openexr spell ssl tiff zeroconf"
 
 # kde.eclass has kdelibs in DEPEND, and we can't have that in here.
@@ -55,6 +55,9 @@ src_unpack() {
 
 	# Configure patch. Applied for 3.5.
 	epatch "${FILESDIR}/kdelibs-3.4.1-configure.patch"
+
+	# Missing <inttypes.h> include causes compilation to bork
+	epatch "${FILESDIR}/kdelibs-3.4.3-inttypes.patch"
 
 	# for the configure patch
 	make -f admin/Makefile.common || die

@@ -1,8 +1,103 @@
 # ChangeLog for net-analyzer/arping
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arping/ChangeLog,v 1.1 2002/06/28 11:54:12 bangert Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arping/ChangeLog,v 1.1.1.1 2005/11/30 10:12:33 chriswhite Exp $
 
-*arping-1.04 (28 Jun 2002)
+  05 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> -arping-2.04.ebuild:
+  Removing old ebuild.
+
+  09 May 2005; Lars Weiler <pylon@gentoo.org> arping-2.05.ebuild:
+  Stable on ppc.
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> arping-2.05.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -arping-2.01.ebuild,
+  arping-2.05.ebuild:
+  Stable on x86.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> arping-2.04.ebuild:
+  Stable on ppc.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> arping-2.04.ebuild:
+  stable on amd64
+
+  14 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> arping-2.04.ebuild:
+  Stable on sparc
+
+*arping-2.05 (12 Feb 2005)
+
+  12 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> arping-2.04.ebuild,
+  +arping-2.05.ebuild:
+  Version bump for bug 81809. 2.04 stable on x86.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> arping-1.06-r1.ebuild,
+  arping-2.01.ebuild, arping-2.04.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*arping-2.04 (09 Jan 2005)
+
+  09 Jan 2005; Daniel Black <dragonheart@gentoo.org> +arping-2.04.ebuild:
+  version bump as per bug #74894 thanks to Vanquirius <marcelogoes@gmail.com>
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> arping-2.01.ebuild:
+  marked x86 stable.
+
+  08 Jul 2004; Eldad Zack <eldad@gentoo.org> arping-1.06-r1.ebuild:
+  Added missing IUSE.
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> arping-2.01.ebuild:
+  Stable on sparc.
+
+  14 Nov 2003; Brad House <brad_mssw@gentoo.org> arping-2.01.ebuild:
+  mark stable amd64
+
+*arping-2.01 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  libnet-1.1.x version of arping.  SLOT to 2 and make binary 'arping2' #27023.
+  This way we dont kill iputils arping.
+
+*arping-1.06-r1 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Patch to compile against SLOT-ed libnet-1.0.x #17772.
+  Also set SLOT to 1 and make binary 'arping1' #27023.
+  This way we dont kill iputils arping.
+
+*arping-1.06 (07 Mar 2003)
+
+  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> arping-1.06.ebuild
+  files/digest-arping-1.06 ChangeLog :
+  Version bumped
+
+*arping-1.05 (09 Jan 2003)
+
+  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> arping-1.05.ebuild :
+  Fixed Depend to libnet-1.0.*. Closes #17017.
+
+  04 Feb 2003; Jon Nall <nall@gentoo.org> arping-1.05.ebuild :
+  added ~ppc
+
+  09 Jan 2003; Martin Holzer <mholzer@gentoo.org> arping-1.05.ebuild
+  files/digest-arping-1.05 ChangeLog :
+  Version bumped. Closes #13551
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*arping-1.04 (18 Jun 2002)
+
+  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> arping-1.04.ebuild :
+  Fixed Depend to libnet-1.0.*. Closes #17017.
+  
+  09 Sep 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  arping-1.04.ebuild, ChangeLog :
+
+  Arping depends on libnet-1.0.2a-r1, not libnet-1.1.x. Lintoo
+  cleanup.
+
+  18 Jul 2002; Kyle Manna <nitro@gentoo.org> :
+
+  Added KEYWORDS.
 
   28 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
   moved to net-analyzer - added SLOT=0 - updated HOMEPAGE and SRC_URI

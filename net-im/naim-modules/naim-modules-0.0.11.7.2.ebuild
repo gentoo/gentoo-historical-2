@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/naim-modules/naim-modules-0.0.11.7.2.ebuild,v 1.1 2005/01/25 19:12:00 rizzo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/naim-modules/naim-modules-0.0.11.7.2.ebuild,v 1.1.1.1 2005/11/30 10:09:47 chriswhite Exp $
 
 MY_PV="${PV}-2004-07-20-0047"
 DESCRIPTION="a bunch of modules for the naim im client"

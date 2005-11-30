@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcptrace/tcptrace-6.6.1.ebuild,v 1.1 2004/06/19 04:28:15 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcptrace/tcptrace-6.6.1.ebuild,v 1.1.1.1 2005/11/30 10:12:40 chriswhite Exp $
+
+inherit gnuconfig
 
 IUSE=""
 
@@ -11,13 +13,14 @@ SRC_URI="http://www.tcptrace.org/download/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ~ppc ~amd64 ppc64"
 
-DEPEND="net-libs/libpcap"
+DEPEND="virtual/libpcap"
 
-src_compile() {
-	econf || die
-	emake || die
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	gnuconfig_update
 }
 
 src_install() {

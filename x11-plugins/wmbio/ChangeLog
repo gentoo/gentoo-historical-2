@@ -1,7 +1,35 @@
 # ChangeLog for x11-plugins/wmbio
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbio/ChangeLog,v 1.1 2003/11/02 03:04:52 pyrania Exp $
+# Copyright 2001-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbio/ChangeLog,v 1.1.1.1 2005/11/30 10:10:43 chriswhite Exp $
 
+  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmbio-1.02.ebuild:
+  Added ~sparc keyword.
+
+  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmbio-1.02.ebuild:
+  Stable for x86.
+  wmbio-1.01.ebuild:
+  Remove older ebuild...
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmbio-1.02.ebuild:
+  stable on ppc64, bug #62249
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmbio-1.02.ebuild:
+  Masked wmbio-1.02.ebuild stable for ppc
+
+*wmbio-1.02 (23 Aug 2004)
+
+  23 Aug 2004; Michele Noberasc <s4t4n@gentoo.org> wmbio-1.02.ebuild:
+  Version Bump. General ebuild cleanup. Closes #61309
+  wmbio-1.01.ebuild:
+  Fox HOMEPAGE and SRC_URI...
+
+  25 Jan 2004; Markus Nigbur <pyrania@gentoo.org> wmbio-1.01.ebuild:
+  Marked stable on x86.
+
+  04 Jan 2004; Markus Nigbur <pyrania@gentoo.org> wmbio-1.01.ebuild:
+  ebuild fixes
+
+*wmbio-1.01 (02 Nov 2003)
 *wmbio-1.0 (02 Nov 2003)
 
   02 Nov 2003; Markus Nigbur <pyrania@gentoo.org> wmbio-1.0.ebuild,

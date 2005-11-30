@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/editobj/editobj-0.5.3.ebuild,v 1.1 2003/12/21 16:26:13 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/editobj/editobj-0.5.3.ebuild,v 1.1.1.1 2005/11/30 10:10:13 chriswhite Exp $
 
 inherit distutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://oomadness.tuxfamily.org/downloads/${MY_P}.tar.gz
 	http://www.nectroom.homelinux.net/pkg/${MY_P}.tar.gz
 	http://nectroom.homelinux.net/pkg/${MY_P}.tar.gz"
 HOMEPAGE="http://oomadness.tuxfamily.org/en/editobj/"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 SLOT="0"
 LICENSE="GPL-2"
 DEPEND="virtual/x11

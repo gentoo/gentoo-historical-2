@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmem/asmem-1.10.ebuild,v 1.1 2004/05/11 18:40:20 joker Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmem/asmem-1.10.ebuild,v 1.1.1.1 2005/11/30 10:10:49 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.tigr.net/afterstep/download/asmem/${P}.tar.gz"
 HOMEPAGE="http://www.tigr.net"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~sparc ppc"
+KEYWORDS="x86 ~sparc ppc ppc64"
 
 DEPEND="virtual/x11"
 

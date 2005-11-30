@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snort/snort-2.4.1-r1.ebuild,v 1.1 2005/10/08 13:55:12 strerror Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snort/snort-2.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:24 chriswhite Exp $
 
 inherit eutils flag-o-matic autotools
 

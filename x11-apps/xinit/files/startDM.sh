@@ -2,7 +2,7 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
 # Author: Martin Schlemmer <azarah@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinit/files/startDM.sh,v 1.1 2005/08/14 00:12:39 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinit/files/startDM.sh,v 1.1.1.1 2005/11/30 10:14:38 chriswhite Exp $
 
 source /etc/init.d/functions.sh
 

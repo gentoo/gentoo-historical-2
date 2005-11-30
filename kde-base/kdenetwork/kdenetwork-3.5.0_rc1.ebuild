@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdenetwork/kdenetwork-3.5.0_rc1.ebuild,v 1.1 2005/11/16 10:35:50 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdenetwork/kdenetwork-3.5.0_rc1.ebuild,v 1.1.1.1 2005/11/30 10:13:33 chriswhite Exp $
 
 inherit kde-dist eutils
 
@@ -14,7 +14,7 @@ DEPEND="~kde-base/kdebase-${PV}
 	dev-libs/libxml2
 	net-dns/libidn
 	>=dev-libs/glib-2
-	sametime? ( >=net-libs/meanwhile-0.4.2 )
+	sametime? ( =net-libs/meanwhile-0.4* )
 	slp? ( net-libs/openslp )
 	wifi? ( net-wireless/wireless-tools )
 	xmms? ( media-sound/xmms )"

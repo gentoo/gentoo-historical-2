@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfishtime/wmfishtime-1.24.ebuild,v 1.1 2005/03/29 12:50:22 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfishtime/wmfishtime-1.24.ebuild,v 1.1.1.1 2005/11/30 10:10:42 chriswhite Exp $
 
 # to make this work in KDE, run it with the -b option :)
 IUSE=""
@@ -10,7 +10,7 @@ SRC_URI="http://www.ne.jp/asahi/linux/timecop/software/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~amd64 ~ppc ~ppc64"
+KEYWORDS="~amd64 ppc ppc64 sparc x86"
 
 DEPEND="=x11-libs/gtk+-1.2*
 	>=sys-apps/sed-4"
@@ -28,5 +28,5 @@ src_install () {
 	into /usr
 	dobin wmfishtime
 	doman wmfishtime.1
-	dodoc ALL_I_GET_IS_A_GRAY_BOX CODING INSTALL README AUTHORS COPYING
+	dodoc ALL_I_GET_IS_A_GRAY_BOX CODING README AUTHORS
 }

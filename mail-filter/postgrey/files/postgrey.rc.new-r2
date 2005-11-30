@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/files/postgrey.rc.new-r2,v 1.1 2005/11/03 22:38:03 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/files/postgrey.rc.new-r2,v 1.1.1.1 2005/11/30 10:12:03 chriswhite Exp $
 
 conf="/etc/conf.d/postgrey"
 

@@ -1,6 +1,240 @@
-# ChangeLog for net-mail/maildrop
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/ChangeLog,v 1.1 2004/06/03 07:17:31 seemant Exp $
+# ChangeLog for mail-filter/maildrop
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/ChangeLog,v 1.1.1.1 2005/11/30 10:12:02 chriswhite Exp $
+
+  20 Nov 2005; Joseph Jezak <josejx@gentoo.org> maildrop-2.0.1.ebuild:
+  Marked ppc stable for bug #112687.
+
+  19 Nov 2005; Mark Loeser <halcy0n@gentoo.org> maildrop-2.0.1.ebuild:
+  Stable on x86; bug #112687
+
+  16 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> maildrop-2.0.1.ebuild:
+  Stable on alpha
+
+  19 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.1-r2.ebuild, maildrop-2.0.1.ebuild:
+  replace-flags -Os -O2 since it causes segfaults. Discovered by Diego
+  'Flameeyes' Pettenò
+
+  16 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.1-r2.ebuild, maildrop-2.0.1.ebuild:
+  fix for bug #109460. Thanks to Marek Szuba <cyberman@if.pw.edu.pl>
+
+*maildrop-2.0.1 (12 Oct 2005)
+
+  12 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/maildrop-2.0.0-fix-maildir_la.patch, -maildrop-2.0.0.ebuild,
+  +maildrop-2.0.1.ebuild:
+  version bump. remove old version
+
+  12 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> maildrop-2.0.0.ebuild:
+  use bindnow-flags
+
+*maildrop-2.0.0 (20 Sep 2005)
+
+  20 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/maildrop-2.0.0-fix-maildir_la.patch,
+  -maildrop-1.8.1.20050828.ebuild, +maildrop-2.0.0.ebuild:
+  version bump. removing development version. add alias to trusted users wrt
+  bug #105230
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  15 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.1-r2.ebuild, maildrop-1.8.1.20050828.ebuild:
+  Fix DEPEND atoms
+
+*maildrop-1.8.1-r2 (10 Sep 2005)
+
+  10 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/maildrop-1.8.1-disable-fam.patch, -maildrop-1.8.1-r1.ebuild,
+  +maildrop-1.8.1-r2.ebuild, maildrop-1.8.1.20050828.ebuild:
+  fix 1.8.1 and development versions adding fam use flag. Remove -r1 in favour
+  of -r2
+
+  05 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.1-r1.ebuild:
+  Found a possible bug, returning back to ~testing
+
+  05 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.1.20050828.ebuild:
+  add missing deps on development version
+
+*maildrop-1.8.1.20050828 (05 Sep 2005)
+
+  05 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.1-r1.ebuild, +maildrop-1.8.1.20050828.ebuild:
+  add maildrop development version (p.masked)
+
+  30 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.1-r1.ebuild:
+  stable on alpha and x86
+
+  06 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> -maildrop-1.8.1.ebuild,
+  maildrop-1.8.1-r1.ebuild:
+  Block mail-mta/courier (as per bug #99253). Also remove
+  maildrop-1.8.1.ebuild, not usable
+
+*maildrop-1.8.1-r1 (29 Jul 2005)
+
+  29 Jul 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +maildrop-1.8.1-r1.ebuild:
+  fix use usage and fix bug #100055
+
+  13 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  maildrop-1.8.0-r3.ebuild:
+  Marked stable on amd64.
+
+  30 Jun 2005; Aron Griffis <agriffis@gentoo.org> maildrop-1.8.0-r3.ebuild:
+  Fix use invocation
+
+*maildrop-1.8.1 (23 Jun 2005)
+
+  23 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> metadata.xml,
+  +maildrop-1.8.1.ebuild:
+  version bump. taking over maintainership
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  maildrop-1.8.0-r3.ebuild:
+  Stable on ppc.
+
+  29 May 2005; <solar@gentoo.org> maildrop-1.8.0-r3.ebuild:
+  - update maildrop to use libc expanded variable elibc_uclibc vs uclibc so
+  USE=-* works
+
+  23 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  maildrop-1.8.0-r3.ebuild:
+  Don't use lazy bindings on maildrop
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> maildrop-1.8.0-r3.ebuild:
+  stable on ia64
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> maildrop-1.7.0-r3.ebuild,
+  maildrop-1.7.0.20040907-r1.ebuild, maildrop-1.8.0-r3.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  05 May 2005; Jeffrey Forman <jforman@gentoo.org> maildrop-1.8.0-r3.ebuild:
+  stable on sparc, bug 91465
+
+  05 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  maildrop-1.8.0-r3.ebuild:
+  Stable on alpha, bug 91465.
+
+  04 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -maildrop-1.4.0-r1.ebuild, -maildrop-1.5.2.ebuild, -maildrop-1.5.3.ebuild,
+  -maildrop-1.5.3-r1.ebuild, -maildrop-1.7.0.ebuild,
+  -maildrop-1.7.0-r2.ebuild, -maildrop-1.7.0.20040907.ebuild,
+  -maildrop-1.8.0.ebuild, -maildrop-1.8.0-r1.ebuild,
+  -maildrop-1.8.0-r2.ebuild, maildrop-1.8.0-r3.ebuild:
+  cutting off old ebuilds and add a security-related ewarn
+
+*maildrop-1.7.0-r3 (04 May 2005)
+
+  04 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +maildrop-1.7.0-r3.ebuild:
+  fix security bug (#91465), reported by: eromang <eromang@zataz.net>
+
+*maildrop-1.8.0-r3 (10 Mar 2005)
+
+  10 Mar 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +maildrop-1.8.0-r3.ebuild:
+  ebuild cleanup wrt #84684. Thanks to Diego Pettenò
+  <dgp85@users.sourceforge.net>
+
+*maildrop-1.8.0-r2 (16 Feb 2005)
+
+  16 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +maildrop-1.8.0-r2.ebuild:
+  Make maildrop setuid root as it is safe from maildrop man page. wrt #81391
+
+*maildrop-1.8.0-r1 (13 Feb 2005)
+
+  13 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/maildrop-1.8.0-db4.patch, +maildrop-1.8.0-r1.ebuild:
+  Make maildrop use courier-authlib and clean the ebuild. Re-Closes #81391.
+  Thanks to Scott Taylor <swtaylor@gentoo.org> for the initial ebuild.
+
+*maildrop-1.8.0 (09 Feb 2005)
+
+  09 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org> +maildrop-1.8.0.ebuild:
+  Version bump, closes #81391. Reported by: valli <gentoo@valli.org>
+
+  30 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  maildrop-1.7.0.20040907-r1.ebuild:
+  Stable on alpha.
+
+*maildrop-1.7.0.20040907-r1 (28 Dec 2004)
+
+  28 Dec 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/maildrop-1.7.0-0x0B-fix.patch, +maildrop-1.7.0.20040907-r1.ebuild:
+  Apply patch to fix segfault when maildropmysql.cf can not be read. Bug
+  #75846, reported by Ivo Bitter <gentoo@joeniks.nl>. Keeping stable
+  keywords.
+
+  21 Dec 2004; Ferris McCormick <fmccor@gentoo.org>
+  maildrop-1.7.0.20040907.ebuild:
+  Stable for sparc (using MySQL database for lookup, bogofilter as xfilter).
+
+  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> maildrop-1.7.0-r2.ebuild,
+  maildrop-1.7.0.20040907.ebuild, maildrop-1.7.0.ebuild:
+  Stable on x86.
+
+  11 Nov 2004; Aron Griffis <agriffis@gentoo.org> maildrop-1.7.0-r2.ebuild:
+  add ~ia64
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  maildrop-1.7.0.20040907.ebuild:
+  Fixed SRC_URI to download tarball from courier-mta.org instead of
+  sourceforge.net, where it has been removed. Reported by Thomas Kirchner
+  <gentoo@halffull.org>, closes #64961.
+
+  20 Sep 2004; Andrej Kacian <ticho@gentoo.org> -maildrop-1.7.0-r1.ebuild:
+  Removed, because maildrop-1.7.0.20040907.ebuild supersedes it.
+
+*maildrop-1.7.0.20040907 (20 Sep 2004)
+
+  20 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  +maildrop-1.7.0.20040907.ebuild:
+  Version bump. Upstream fixed issue in #59608 here.
+
+  20 Sep 2004; Andrej Kacian <ticho@gentoo.org> maildrop-1.7.0-r1.ebuild,
+  maildrop-1.7.0-r2.ebuild, maildrop-1.7.0.ebuild:
+  Updated homepage Closes #64577, reported by Daniel Webert
+  <rockoo@rockoo.homelinux.org>.
+
+*maildrop-1.7.0-r2 (28 Aug 2004)
+
+  28 Aug 2004; Tom Martin <slarti@gentoo.org> +maildrop-1.7.0-r2.ebuild:
+  Revision bump. Added dspam and apache to the list of trusted users to
+  resolve problems with the dspam CGI script. See bug 61670. Thanks to Mark
+  Wagner <mark+gentoo@lanfear.net> for the fix.
+
+*maildrop-1.7.0-r1 (20 Aug 2004)
+
+  20 Aug 2004; Tuan Van <langthang@gentoo.org>
+  +files/maildrop-1.7.0-db4-bdbobj_configure.in.patch,
+  +files/maildrop-1.7.0-db4-configure.in.patch, +maildrop-1.7.0-r1.ebuild:
+  Revision bump. Attemp to fix bug #59608.
+  Add patches to support db-4.x. Remove flag-o-matic.
+
+  06 Aug 2004; Tom Knight <tomk@gentoo.org> maildrop-1.5.3-r1.ebuild,
+  maildrop-1.7.0.ebuild:
+  Fixed use invocation, removed redundant RDEPEND.
+
+  05 Aug 2004; Tom Martin <slarti@gentoo.org> -files/maildrop-1.7.0-db3.patch,
+  maildrop-1.7.0.ebuild:
+  Tidy; removed epatch as it seems to be unnecessary.
+
+*maildrop-1.7.0 (05 Aug 2004)
+
+  05 Aug 2004; Tom Martin <slarti@gentoo.org> +files/maildrop-1.7.0-db3.patch,
+  +maildrop-1.7.0.ebuild:
+  Version bump, thanks to all contributors in bug 34316.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> maildrop-1.5.2.ebuild,
+  maildrop-1.5.3-r1.ebuild, maildrop-1.5.3.ebuild:
+  Fix use invocation
 
 *maildrop-1.5.3 (03 Jun 2004)
 

@@ -1,8 +1,35 @@
 # ChangeLog for net-analyzer/calamaris
-# Copyright 2001-2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/calamaris/ChangeLog,v 1.1 2002/08/07 08:31:09 cybersystem Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/calamaris/ChangeLog,v 1.1.1.1 2005/11/30 10:12:07 chriswhite Exp $
 
-* calamaris-2.51 (07 August 2002)
+  05 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> -calamaris-2.57.ebuild:
+  Remove old ebuild.
+
+  02 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -calamaris-2.51.ebuild:
+  Removing old version, no need to have three stable packages in my opinion.
+
+*calamaris-2.59 (06 Nov 2004)
+
+  06 Nov 2004; Eldad Zack <eldad@gentoo.org> calamaris-2.59.ebuild:
+  x86 stable
+
+  15 Jul 2004; Eldad Zack <eldad@gentoo.org> :
+  Version bump, Closes #57064
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  calamaris-2.51.ebuild, calamaris-2.57.ebuild:
+  Added metadata
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> calamaris-2.51.ebuild,
+  calamaris-2.57.ebuild:
+  Tidy up, added missing IUSE
+
+*calamaris-2.57 (09 Mar 2003)
+
+  09 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*calamaris-2.51 (07 August 2002)
       
   07 August 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, calamaris-2.51.ebuild, files/digest-calamaris-2.51 :
 

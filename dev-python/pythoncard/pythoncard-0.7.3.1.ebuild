@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythoncard/pythoncard-0.7.3.1.ebuild,v 1.1 2004/04/15 23:30:09 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythoncard/pythoncard-0.7.3.1.ebuild,v 1.1.1.1 2005/11/30 10:10:10 chriswhite Exp $
 
 inherit distutils
 
@@ -8,12 +8,12 @@ DESCRIPTION="Cross-platform GUI construction kit for python"
 HOMEPAGE="http://pythoncard.sourceforge.net/index.html"
 SRC_URI="mirror://sourceforge/pythoncard/PythonCardPrototype-${PV}.tar.gz"
 
-LICENSE="PYTHON"
+LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 ~sparc ~ppc"
 IUSE=""
 
-DEPEND=">=dev-python/wxPython-2.4.2.4"
+DEPEND="=dev-python/wxpython-2.4.2.4*"
 
 S=${WORKDIR}/PythonCardPrototype-${PV}
 

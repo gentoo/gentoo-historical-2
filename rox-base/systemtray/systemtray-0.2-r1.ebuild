@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/rox-base/systemtray/systemtray-0.2-r1.ebuild,v 1.1 2005/10/03 18:57:50 svyatogor Exp $
+# $Header: /var/cvsroot/gentoo-x86/rox-base/systemtray/systemtray-0.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:14:30 chriswhite Exp $
 
 MY_PN="SystemTray"
 DESCRIPTION="SystemTray is a notification area applet for ROX-Filer"

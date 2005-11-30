@@ -1,8 +1,59 @@
 # ChangeLog for x11-plugins/gkrellm-hddtemp
-# Copyright 2002 Imran Rafique; Distributed under the GPL V2 or later
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-hddtemp/ChangeLog,v 1.1 2002/08/30 01:49:27 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-hddtemp/ChangeLog,v 1.1.1.1 2005/11/30 10:10:51 chriswhite Exp $
 
-*gkrellm-hddtemp-0.2 (10 Jun 2002)
+  19 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  Wrong the first time. Marked stable on amd64 after all.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  multilib fixes
+
+  06 Sep 2004; Sven Wegener <swegener@gentoo.org> gkrellm-hddtemp-0.1.ebuild,
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  Updated HOMEPAGE. Thanks to Tor Klingberg <tor.klingberg@gmx.net> in bug
+  #62940.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellm-hddtemp-0.1.ebuild, gkrellm-hddtemp-0.2_beta.ebuild:
+  Masked gkrellm-hddtemp-0.2_beta.ebuild stable for ppc
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellm-hddtemp-0.1.ebuild:
+  Masked gkrellm-hddtemp-0.1.ebuild stable for ppc
+
+  09 Jul 2004; Tom Martin <slarti@gentoo.org> gkrellm-hddtemp-0.2_beta.ebuild:
+  Marked ~amd64.
+
+  12 May 2004; Daniel Ahlberg <aliz@gentoo.org> gkrellm-hddtemp-0.1.ebuild:
+  Removed S=, added IUSE=.
+
+  29 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  Stable on sparc
+
+  31 Jan 2004; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  correcting einfo. closes 37234
+
+  10 Nov 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  fixed undef symbols. Closes #21686.
+
+  07 Oct 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  changed depend to gkrellm fixed version. Closes #27060.
+
+*gkrellm-hddtemp-0.2_beta (17 May 2003)
+
+  17 May 2003; Martin Holzer <mholzer@gentoo.org>
+  gkrellm-hddtemp-0.2_beta.ebuild:
+  Version bumped. Ebuild submitted by moonlite@linux.nu in #20370.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*gkrellm-hddtemp-0.1 (10 Jun 2002)
 
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
 

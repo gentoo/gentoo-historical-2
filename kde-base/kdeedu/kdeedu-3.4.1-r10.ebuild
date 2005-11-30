@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeedu/kdeedu-3.4.1-r10.ebuild,v 1.1 2005/06/30 15:03:43 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeedu/kdeedu-3.4.1-r10.ebuild,v 1.1.1.1 2005/11/30 10:14:26 chriswhite Exp $
 
 inherit kde-dist
 
 DESCRIPTION="KDE educational apps"
 
-KEYWORDS="~x86 ~amd64 ~sparc ~ppc ~ia64"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="kig-scripting"
 
 DEPEND="kig-scripting? ( >=dev-libs/boost-1.32 )"

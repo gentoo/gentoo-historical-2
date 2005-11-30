@@ -1,4 +1,14 @@
-MD5 2a32d6e6a684f1b7b753008f654c1f3f files/bass 49
-MD5 ff351fdd9fae00bfd828fc41c3fd99b3 files/digest-bass-0 58
-MD5 68f35e8a4930fdcc6440a362508fa1dd bass-0.ebuild 719
-MD5 1be89c269342b23a014d335f8b7a8100 ChangeLog 372
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 9526818a799e18c50c46b5815605faf9 ChangeLog 934
+MD5 32ab2a5448abfafc6296b07e98f2064b bass-1.2.ebuild 802
+MD5 3a55fe0961583fa19706d4c9d116f141 files/digest-bass-1.2 62
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDaEVOgIKl8Uu19MoRAu+/AJ93Hv/JnxZ5VPDAK8o5u/J2wgSJngCfXiAL
+6LfSPvRC7KRmlt2Kv5gykho=
+=kgmc
+-----END PGP SIGNATURE-----

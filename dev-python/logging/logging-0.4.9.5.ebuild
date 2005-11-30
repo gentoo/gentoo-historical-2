@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/logging/logging-0.4.9.5.ebuild,v 1.1 2005/04/14 20:16:29 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/logging/logging-0.4.9.5.ebuild,v 1.1.1.1 2005/11/30 10:10:29 chriswhite Exp $
 
 inherit distutils
 

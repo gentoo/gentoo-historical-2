@@ -1,5 +1,16 @@
-MD5 676f5da21f4fe67707ee4d4b34d35c77 silc-client-0.9.12.1.ebuild 1750
-MD5 bccd496b5f226b555131ff60de1fdc21 silc-client-0.9.11.ebuild 1350
-MD5 465b8d8769437bfab19784997a77f963 ChangeLog 1472
-MD5 fb190d39f5c608735fb3650027e4499f files/digest-silc-client-0.9.11 72
-MD5 c0de3b6dda921ad76210c11a653f40ee files/digest-silc-client-0.9.12.1 74
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 2706e0989e687c2511ab4450d1867c0f silc-client-1.0.1-r1.ebuild 1614
+MD5 f0acfdeccca1c389b178c078cadec6b0 silc-client-1.0.2.ebuild 1614
+MD5 574134143301a4c9fcb5e75df829c1aa ChangeLog 4142
+MD5 44c39c6ad372a8e5a5e7ee3311f703a7 metadata.xml 160
+MD5 0e20ae96be7ad95ac6ce7f84345a569c files/digest-silc-client-1.0.1-r1 71
+MD5 2981293a75cd40e2c78b1dc73655aae2 files/digest-silc-client-1.0.2 71
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCfP9/I1lqEGTUzyQRArIVAJ9MNWuLUkwWbJbt9BYQ/fSpCTss2gCgqHa+
+13YlJvUa2TPGFhnYPX2UHko=
+=xwKF
+-----END PGP SIGNATURE-----

@@ -1,11 +1,82 @@
-# ChangeLog for dev-python/ReportLab
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/reportlab/ChangeLog,v 1.1 2003/07/04 12:16:11 liquidx Exp $
+# ChangeLog for dev-python/reportlab
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/reportlab/ChangeLog,v 1.1.1.1 2005/11/30 10:10:20 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> reportlab-1.20.ebuild:
+  Stable on ppc.
+
+  14 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> reportlab-1.20.ebuild:
+  Stable on sparc
+
+  11 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> reportlab-1.20.ebuild:
+  Stable on x86, fixes python-2.4 issues, bug 108649.
+
+  01 Oct 2005; Fernando Serboncini <fserb@gentoo.org> reportlab-1.20.ebuild:
+  Removed tar hack on src_install(). Closes #101936.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> reportlab-1.20.ebuild:
+  Mark 1.20 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> reportlab-1.20.ebuild:
+  add ~ia64
+
+  05 Jun 2005; Markus Rothe <corsair@gentoo.org> reportlab-1.20.ebuild:
+  Stable on ppc64; dependency for bug #92995
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> reportlab-1.20.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> reportlab-1.18.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> reportlab-1.18.ebuild:
+  stable on amd64
+
+*reportlab-1.20 (14 Apr 2005)
+
+  14 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> +reportlab-1.20.ebuild:
+  Version bump.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*reportlab-1.19 (16 Oct 2004)
+
+  16 Oct 2004; Christian Andreetta <satya@gentoo.org> +reportlab-1.19.ebuild:
+  Version bump
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> reportlab-1.14.ebuild,
+  reportlab-1.17-r1.ebuild, reportlab-1.18.ebuild:
+  dev-python/Imaging renamed to dev-python/imaging.
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> reportlab-1.18.ebuild:
+  Stable on alpha.
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> reportlab-1.14.ebuild,
+  reportlab-1.17-r1.ebuild:
+  Add missing IUSE.
+
+  18 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> reportlab-1.18.ebuild:
+  Adding amd64 keyword, closing #48058.
+
+  14 Mar 2004; Jason Wever <weeve@gentoo.org> reportlab-1.18.ebuild:
+  Marked stable on sparc.
+
+*reportlab-1.18 (14 Dec 2003)
+
+  14 Dec 2003; Alastair Tse <liquidx@gentoo.org> reportlab-1.18.ebuild:
+  version bump
+
+  02 Mar 2004: Peter Bienstman <pbienst@gentoo.org> reportlab-1.18.ebuild:
+  marked stable on x86
 
 *reportlab-1.17-r1 (04 Jul 2003)
 
   04 Jul 2003; Alastair Tse <liquidx@gentoo.org> reportlab-1.17-r1.ebuild:
   moved from ReportLab to reportlab and fixed paths problem with installation
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> reportlab-1.17-r1.ebuild:
+  Stable on sparc.
 
 *ReportLab-1.17 (02 Mar 2003)
 
@@ -18,7 +89,7 @@
 
   06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
  
- *ReportLab-1.14 (29 Jun 2002)
+*reportlab-1.14 (29 Jun 2002)
 
  26 Jul 2002; George Shapovalov <george@gentoo.org> ReportLab-1.11.ebuild, ReportLab-1.14.ebuild :
  added KEYWORDS,SLOT,LICENSE

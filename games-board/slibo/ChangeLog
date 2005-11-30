@@ -1,9 +1,21 @@
-# ChangeLog for app-games/slibo
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/slibo/ChangeLog,v 1.1 2003/09/12 00:52:57 vapier Exp $
+# ChangeLog for games-board/slibo
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/slibo/ChangeLog,v 1.1.1.1 2005/11/30 10:09:59 chriswhite Exp $
+
+  29 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.4.4-gcc34.patch, slibo-0.4.4.ebuild:
+  gcc-34 patch from upstream (bug #69492)
+
+  05 Aug 2004; Anders Rune Jensen <arj@gentoo.org> slibo-0.4.4.ebuild:
+  Depend on version 2 of sqlite.
+
+  03 Jul 2004; Carsten Lohrke <carlo@gentoo.org> slibo-0.4.4.ebuild:
+  QA: need-kde after R/DEPEND
+
+  01 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> slibo-0.4.4.ebuild:
+  expand DEPEND instead of overriding it.
 
 *slibo-0.4.4 (06 Sep 2003)
 
   06 Sep 2003; Michael Sterrett <msterret@gentoo.org> slibo-0.4.4.ebuild:
   initial commit
-

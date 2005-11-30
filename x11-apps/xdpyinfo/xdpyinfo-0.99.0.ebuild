@@ -1,14 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xdpyinfo/xdpyinfo-0.99.0.ebuild,v 1.1 2005/08/08 06:28:11 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xdpyinfo/xdpyinfo-0.99.0.ebuild,v 1.1.1.1 2005/11/30 10:14:38 chriswhite Exp $
 
 # Must be before x-modular eclass is inherited
-#SNAPSHOT="yes"
+SNAPSHOT="yes"
 
 inherit x-modular
 
+PATCHES="${FILESDIR}/xineramaproto.patch"
+
 DESCRIPTION="X.Org xdpyinfo application"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~arm ~mips ~s390 ~sparc ~x86"
 RDEPEND="x11-libs/libXext
 	x11-libs/libX11
 	x11-libs/libXtst
@@ -28,6 +30,6 @@ DEPEND="${RDEPEND}
 	x11-proto/xf86miscproto
 	x11-proto/inputproto
 	x11-proto/renderproto
-	x11-proto/panoramixproto
+	x11-proto/xineramaproto
 	x11-proto/dmxproto
 	x11-proto/printproto"

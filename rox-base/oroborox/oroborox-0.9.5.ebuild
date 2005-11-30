@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/rox-base/oroborox/oroborox-0.9.5.ebuild,v 1.1 2004/12/01 15:27:02 sergey Exp $
+# $Header: /var/cvsroot/gentoo-x86/rox-base/oroborox/oroborox-0.9.5.ebuild,v 1.1.1.1 2005/11/30 10:14:30 chriswhite Exp $
 
 DESCRIPTION="OroboROX is a small window manager for the ROX Desktop."
 

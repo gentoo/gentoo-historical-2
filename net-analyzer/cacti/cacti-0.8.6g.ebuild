@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/cacti-0.8.6g.ebuild,v 1.1 2005/09/10 19:56:27 ramereth Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/cacti-0.8.6g.ebuild,v 1.1.1.1 2005/11/30 10:12:27 chriswhite Exp $
 
 inherit eutils webapp
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.cacti.net/downloads/${P}.tar.gz"
 #done
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc sparc x86"
 IUSE="snmp"
 
 DEPEND=""
@@ -24,6 +24,7 @@ DEPEND=""
 RDEPEND="net-www/apache
 	snmp? ( net-analyzer/net-snmp )
 	net-analyzer/rrdtool
+	!>=dev-db/mysql-5
 	dev-db/mysql
 	virtual/cron
 	virtual/php

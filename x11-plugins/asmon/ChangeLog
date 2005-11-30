@@ -1,6 +1,40 @@
 # ChangeLog for x11-plugins/asmon
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmon/ChangeLog,v 1.1 2003/05/12 22:46:35 wwoods Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asmon/ChangeLog,v 1.1.1.1 2005/11/30 10:10:40 chriswhite Exp $
+
+*asmon-0.65 (20 Jun 2005)
+
+  20 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +asmon-0.65.ebuild:
+  Version bump.
+
+  13 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
+  Added metadata.xml (afterstep herd).
+
+  14 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> asmon-0.64.ebuild:
+  Stable on alpha.
+
+  09 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> asmon-0.64.ebuild:
+  ~alpha keyword.
+
+  06 Nov 2004; <pyrania@gentoo.org> asmon-0.64.ebuild:
+  Marked stable on x86.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> asmon-0.64.ebuild:
+  Masked asmon-0.64.ebuild stable for ppc
+
+*asmon-0.64 (13 Jun 2004)
+
+  13 Jun 2004; <pyrania@gentoo.org> +asmon-0.64.ebuild:
+  Version bump. Closing bug #51879.
+
+  17 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> asmon-0.62.ebuild:
+  Added ~sparc (#44975)
+
+  15 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> asmon-0.62.ebuild:
+  inherit eutils for epatch.
+
+  13 May 2003; Will Woods <wwoods@gentoo.org> asmon-0.62.ebuild:
+  Minor ebuild cleanups (thanks liquidx)
 
 *asmon-0.62 (12 May 2003)
 

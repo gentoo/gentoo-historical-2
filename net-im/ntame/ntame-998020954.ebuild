@@ -1,27 +1,31 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ntame/ntame-998020954.ebuild,v 1.1 2002/06/21 19:31:50 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ntame/ntame-998020954.ebuild,v 1.1.1.1 2005/11/30 10:09:45 chriswhite Exp $
 
 S=${WORKDIR}/ntaim
-DESCRITION="Ncurses based AOL Instant Messenger"
+DESCRIPTION="Ncurses based AOL Instant Messenger"
 HOMEPAGE="http://tame.sourceforge.net/"
 SRC_URI="mirror://sourceforge/tame/ntaim.${PV}.tar.gz"
 DEPEND=">=sys-libs/ncurses-5.2"
+
 SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86"
+IUSE=""
 
 src_compile () {
-    
+
 	./configure --prefix=/usr --host=${CHOST} || die
-    emake || die
+	emake || die
 
 }
 
 src_install () {
-    
+
 	dodir /usr/bin
-    make DESTDIR=${D} install || die
-	
-	dodoc AUTHORS BUGS INSTALL NEWS README
+	make DESTDIR=${D} install || die
+
+	dodoc AUTHORS BUGS NEWS README TODO
 }
 
 pkg_postinst () {

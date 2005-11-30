@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/omniorbpy/omniorbpy-2.4.ebuild,v 1.1 2004/10/04 21:50:29 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/omniorbpy/omniorbpy-2.4.ebuild,v 1.1.1.1 2005/11/30 10:10:11 chriswhite Exp $
 
 MY_P=${P/omniorb/omniORB}
 S=${WORKDIR}/${MY_P}

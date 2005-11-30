@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/amavisd-new/amavisd-new-2.2.1-r2.ebuild,v 1.1 2005/05/04 18:44:42 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/amavisd-new/amavisd-new-2.2.1-r2.ebuild,v 1.1.1.1 2005/11/30 10:12:03 chriswhite Exp $
 
 inherit eutils
 
@@ -32,14 +32,14 @@ RDEPEND="${DEPEND}
 	dev-perl/Compress-Zlib
 	dev-perl/Convert-TNEF
 	>=dev-perl/Convert-UUlib-1.051
-	dev-perl/MIME-Base64
+	perl-core/MIME-Base64
 	>=dev-perl/MIME-tools-5.415
 	>=dev-perl/MailTools-1.58
 	dev-perl/net-server
 	>=dev-perl/libnet-1.16
-	dev-perl/Digest-MD5
+	perl-core/Digest-MD5
 	dev-perl/IO-stringy
-	>=dev-perl/Time-HiRes-1.49
+	>=perl-core/Time-HiRes-1.49
 	dev-perl/Unix-Syslog
 	>=sys-libs/db-3.1
 	dev-perl/BerkeleyDB
@@ -86,13 +86,15 @@ src_compile() {
 
 src_install() {
 	enewgroup amavis
-	enewuser amavis -1 /bin/false ${AMAVIS_ROOT} amavis
+	enewuser amavis -1 -1 ${AMAVIS_ROOT} amavis
 
 	dosbin amavisd amavisd-agent amavisd-nanny
 
+	# install config file with proper permissons/owners
 	insinto /etc
-	insopts -m0600
+	insopts -m0640
 	newins amavisd.conf-sample amavisd.conf
+	fowners root:amavis /etc/amavisd.conf
 	dosed "s:^#\\?\\\$MYHOME[^;]*;:\$MYHOME = '$AMAVIS_ROOT';:" \
 		/etc/amavisd.conf
 	if [ "$(domainname)" = "(none)" ] ; then
@@ -165,6 +167,10 @@ pkg_postinst() {
 		einfo "will be performed without it. Since you do not have SpamAssassin installed,"
 		einfo "all spam checks have been disabled. To enable them, install SpamAssassin"
 		einfo "and comment out the line containing: "
-		einfo "@bypass_virus_checks_maps = (1); in /etc/amavisd.conf."
+		einfo "@bypass_spam_checks_maps = (1); in /etc/amavisd.conf."
 	fi
+	echo
+	ewarn "Adjusting permissions for /etc/amavisd.new (0 for world, owner root:amavis)"
+	chmod o-rwx /etc/amavisd.conf
+	chown root:amavis /etc/amavisd.conf
 }

@@ -1,8 +1,34 @@
 # ChangeLog for net-analyzer/tcpflow
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpflow/ChangeLog,v 1.1 2002/10/29 17:51:26 blizzy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpflow/ChangeLog,v 1.1.1.1 2005/11/30 10:12:30 chriswhite Exp $
+
+  04 Oct 2005; Sven Wegener <swegener@gentoo.org> tcpflow-0.20.ebuild,
+  tcpflow-0.21.ebuild:
+  libpcap is needed for DEPEND and RDEPEND
+
+  11 Aug 2005; Carlos Silva <r3pek@gentoo.org> tcpflow-0.21.ebuild:
+  marked ~amd64. closes bug #102043
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> tcpflow-0.21.ebuild:
+  Marked stable on x86.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> tcpflow-0.20.ebuild,
+  tcpflow-0.21.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*tcpflow-0.21 (26 Jan 2005)
+
+  26 Jan 2005; Daniel Black <dragonheart@gentoo.org> +tcpflow-0.21.ebuild:
+  version bump
+
+  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  tcpflow-0.20.ebuild:
+  Tidy
 
 *tcpflow-0.20 (29 Oct 2002)
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> tcpflow-0.20.ebuild :
+  set ~ppc in keywords
 
   29 Oct 2002; Maik Schreiber <blizzy@gentoo.org> : Initial import. ebuild
   submitted by Maurizio Disimino <maurizio@iridium.aetheric.org>

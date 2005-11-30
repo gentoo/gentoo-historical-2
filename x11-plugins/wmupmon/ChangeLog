@@ -1,6 +1,36 @@
 # ChangeLog for x11-plugins/wmupmon
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmupmon/ChangeLog,v 1.1 2003/06/06 22:52:39 robh Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmupmon/ChangeLog,v 1.1.1.1 2005/11/30 10:10:37 chriswhite Exp $
+
+  11 Nov 2005; Michele Noebrasco <s4t4n@gentoo.org> wmupmon-0.1.2.ebuild:
+  Removed INSTALL and COPYING from dodoc.
+
+  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmupmon-0.1.2.ebuild:
+  stable on ppc64, bug #62259
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wmupmon-0.1.2.ebuild:
+  Masked wmupmon-0.1.2.ebuild stable for ppc
+
+  02 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmupmon-0.1.2.ebuild:
+  Ebuild clean up, stable on x86.
+  wmupmon-0.1.1a.ebuild:
+  Wipe out older version.
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> wmupmon-0.1.2.ebuild:
+  Stable on amd64, remvoving S=.
+
+*wmupmon-0.1.2 (13 Mar 2004)
+
+  13 Mar 2004; Markus Nigbur <pyrania@gentoo.org> wmupmon-0.1.1a.ebuild,
+  wmupmon-0.1.2.ebuild:
+  Version bump. Closing bug #44484.
+
+  24 Sep 2003; Jason Wever <weeve@gentoo.org> wmupmon-0.1.1a.ebuild:
+  Added ~sparc keyword.
+
+  12 Jun 2003; Seemant Kulleen <seemant@gentoo.org> wmupmon-0.1.1a.ebuild:
+  xpm is provided by xfree
 
 *wmupmon-0.1.1a (06 Jun 2003)
 

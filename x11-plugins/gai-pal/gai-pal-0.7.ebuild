@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gai-pal/gai-pal-0.7.ebuild,v 1.1 2005/05/23 09:28:37 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gai-pal/gai-pal-0.7.ebuild,v 1.1.1.1 2005/11/30 10:10:54 chriswhite Exp $
 
 DESCRIPTION="A friend that always has something wise or funny to say ;-)"
 HOMEPAGE="http://gai.sf.net"

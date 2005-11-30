@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/kpogre/kpogre-1.2.7.ebuild,v 1.1 2004/12/09 15:06:48 motaboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/kpogre/kpogre-1.2.7.ebuild,v 1.1.1.1 2005/11/30 10:11:41 chriswhite Exp $
 
 inherit kde eutils
 
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/kpogre/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
-IUSE=""
+KEYWORDS="x86 ~ppc"
+IUSE="arts"
 
 DEPEND="dev-db/postgresql
 	>=dev-libs/libpqxx-2.2.1"

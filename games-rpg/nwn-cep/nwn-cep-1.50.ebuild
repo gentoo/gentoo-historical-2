@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn-cep/nwn-cep-1.50.ebuild,v 1.1 2005/01/20 06:48:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn-cep/nwn-cep-1.50.ebuild,v 1.1.1.1 2005/11/30 10:11:00 chriswhite Exp $
 
 inherit games
 

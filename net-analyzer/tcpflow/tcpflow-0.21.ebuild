@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpflow/tcpflow-0.21.ebuild,v 1.1 2005/01/26 00:44:09 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tcpflow/tcpflow-0.21.ebuild,v 1.1.1.1 2005/11/30 10:12:30 chriswhite Exp $
 
 inherit toolchain-funcs
 
@@ -9,11 +9,12 @@ HOMEPAGE="http://www.circlemud.org/~jelson/software/tcpflow/"
 SRC_URI="http://www.circlemud.org/pub/jelson/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc x86"
 SLOT="0"
 IUSE=""
 
-RDEPEND="net-libs/libpcap"
+DEPEND="virtual/libpcap"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 	econf || die
@@ -24,4 +25,3 @@ src_install() {
 	make DESTDIR=${D} install
 	dodoc AUTHORS ChangeLog NEWS README
 }
-

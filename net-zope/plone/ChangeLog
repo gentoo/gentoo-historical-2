@@ -1,8 +1,121 @@
-# ChangeLog for net-www/plone
-# Copyright 2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/plone/ChangeLog,v 1.1 2003/03/03 23:07:06 kutsuya Exp $
+# ChangeLog for net-zope/plone
+# Copyright 2003-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-zope/plone/ChangeLog,v 1.1.1.1 2005/11/30 10:11:03 chriswhite Exp $
+
+  14 Nov 2005; Seemant Kulleen <seemant@gentoo.org> plone-2.0.4.ebuild:
+  keywording for amd64 testing
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> plone-2.0.4.ebuild,
+  plone-2.0.5.ebuild, plone-2.0.5-r1.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  25 Apr 2005; Radoslaw Stachowiak <radek@gentoo.org> plone-2.0.5-r1.ebuild:
+  fixed formulator dependency after reply from infrae.com
+
+*plone-2.0.5-r1 (15 Apr 2005)
+
+  15 Apr 2005; Radoslaw Stachowiak <radek@gentoo.org>
+  +plone-2.0.5-r1.ebuild:
+  fixes bug #88149
+  It should still be checked with AT1.3.2 and GRUF3.*
+
+  02 Apr 2005; Simon Stelling <blubb@gentoo.org> plone-2.0.5.ebuild:
+  added ~amd64
+
+  19 Mar 2005; Jason Wever <weeve@gentoo.org> plone-2.0.5.ebuild:
+  Added ~sparc keyword wrt bug #84791.
+
+  05 Dec 2004; Radoslaw Stachowiak <radek@gentoo.org> +plone-2.0.5.ebuild:
+  New version released, almost no changes in ebuild except
+  for strict python2.3.4 dependency.
+
+  20 Oct 2004; Radoslaw Stachowiak <radek@gentoo.org> plone-2.0.4.ebuild:
+  Added zope-config dependency to fix bug #68180.
+
+  18 Oct 2004; Radoslaw Stachowiak <radek@gentoo.org> -plone-2.0.3.ebuild:
+  cleaning unneeded ebuilds.
+
+  24 Sep 2004; Jodok Batlogg <batlogg@gentoo.org>; plone-2.0.4.ebuild:
+  marked as stable on x86 and ppc.
+
+*plone-2.0.4 (12 Sep 2004)
+
+  12 Sep 2004; Heinrich Wendel <lanius@gentoo.org> +plone-2.0.4.ebuild:
+  version bump
+
+*plone-2.0.3 (27 Jul 2004)
+
+  27 Jul 2004; Jodok Batlogg <batlogg@gentoo.org>; -plone-1.0.3.ebuild,
+  -plone-2.0.0_rc3.ebuild, +plone-2.0.3.ebuild:
+  version bump, removed old ebuild, added IUSE
+
+*plone-1.0.6 (25 Jul 2004)
+
+  25 Jul 2004; Jodok Batlogg <batlogg@gentoo.org>; plone-1.0.3.ebuild,
+  plone-1.0.5.ebuild, +plone-1.0.6.ebuild, plone-2.0.0_rc3.ebuild,
+  plone-2.0.ebuild:
+  added IUSE
+
+*plone-1.0.6 (25 Jul 2004)
+
+  25 Jul 2004; Jodok Batlogg <batlogg@gentoo.org>; +plone-1.0.6.ebuild:
+  version bump
+
+*plone-2.0 (27 Mar 2004)
+
+  27 Mar 2004; Jodok Batlogg <batlogg@gentoo.org>; plone-2.0.ebuild:
+  version bump
+
+  16 Mar 2004; David Holm <dholm@gentoo.org> plone-1.0.5.ebuild:
+  Added to ~ppc.
+
+  13 Mar 2004; David Holm <dholm@gentoo.org> plone-2.0.0_rc3.ebuild:
+  Added to ~ppc.
+
+*plone-2.0.0_rc3 (27 Jan 2004)
+
+  27 Jan 2004; Heinrich Wendel <lanius@gentoo.org> plone-1.0.1-r1.ebuild,
+  plone-1.0.2.ebuild, plone-1.0.4.ebuild, plone-1.0.5.ebuild,
+  plone-2.0.0_rc3.ebuild:
+  remove old versions; mark 1.0.5 stable on x86, fix keywords
+
+*plone-2.0.0_rc3 (27 Jan 2004)
+
+  27 Jan 2004; Heinrich Wendel <lanius@gentoo.org> plone-2.0.0_rc3.ebuild:
+  version bump
+
+  10 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> plone-1.0.1-r1.ebuild,
+  plone-1.0.2.ebuild, plone-1.0.3.ebuild, plone-1.0.4.ebuild,
+  plone-1.0.5.ebuild:
+  remove obsolete message
+
+  10 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> plone-1.0.2.ebuild,
+  plone-1.0.3.ebuild, plone-1.0.4.ebuild, plone-1.0.5.ebuild:
+  fix net-zope/cmf dependancies
+
+*plone-1.0.5 (10 Oct 2003)
+
+  10 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> plone-1.0.4.ebuild,
+  plone-1.0.5.ebuild:
+  version bump
+
+*plone-1.0.3 (21 Jun 2003)
+
+  21 Jun 2003; Jason Shoemaker <kutsuya@gentoo.org> plone-1.0.3.ebuild:
+  Version bump.
+
+*plone-1.0.2 (21 Jun 2003)
+
+  21 Jun 2003; Jason Shoemaker <kutsuya@gentoo.org> plone-1.0.2.ebuild:
+  Version bump. Masked all archs to unstable.
+
+  21 Jun 2003; Jason Shoemaker <kutsuya@gentoo.org> plone-1.0.1-r1.ebuild:
+  ~ppc -> ppc. Give a warning about not using this with >cmf-1.3.1.
 
 *plone-1.0.1-r1 (18 Feb 2003)
+
+  04 Apr 2003; Jason Shoemaker <kutsuya@gentoo.org> plone-1.0.1-r1.ebuild:
+  ~x86 -> x86 and added ~ppc
 
   03 Mar 2003; Jason Shoemaker <kutsuya@gentoo.org> : Moving from net-www to 
   net-zope. Removed localizer and translationservice as dependencies.

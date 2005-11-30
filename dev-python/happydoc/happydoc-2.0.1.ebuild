@@ -1,18 +1,20 @@
-# HappyDoc is a tool for extracting documentation from Python source code.
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-python/happydoc/happydoc-2.0.1.ebuild,v 1.1 2002/05/15 02:53:21 jnelson Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/happydoc/happydoc-2.0.1.ebuild,v 1.1.1.1 2005/11/30 10:10:10 chriswhite Exp $
 
-# HappyDoc version numbering is not very compatible with portage -- kludgeing
-S=${WORKDIR}/HappyDoc-r2_0_1/
-
-DESCRIPTION="HappyDoc is a tool for extracting documentation from Python sourcecode."
-SRC_URI="http://unc.dl.sourceforge.net/sourceforge/happydoc/HappyDoc_r2_0_1.tar.gz"
+MY_PN="HappyDoc"
+MY_PV=${PV//./_}
+S=${WORKDIR}/${MY_PN}-r${MY_PV}
+DESCRIPTION="tool for extracting documentation from Python sourcecode"
+SRC_URI="mirror://sourceforge/happydoc/${MY_PN}_r${MY_PV}.tar.gz"
 HOMEPAGE="http://happydoc.sourceforge.net/"
 
-DEPEND="virtual/python"
 SLOT="0"
-LICENSE=""
+LICENSE="as-is"
+KEYWORDS="x86 sparc alpha"
+IUSE=""
+
+DEPEND="virtual/python"
 
 src_compile() {
 	python setup.py build || die
@@ -20,5 +22,6 @@ src_compile() {
 
 src_install() {
 	python setup.py install --root=${D} --prefix=/usr || die
-	dodoc CHANGES.txt README.txt test_happydoc.py
+	dodoc INSTALL.txt LICENSE.txt CHANGES.txt README.txt test_happydoc.py
+	dohtml -r srcdocs/*
 }

@@ -1,6 +1,56 @@
 # ChangeLog for net-analyzer/cheops-ng
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cheops-ng/ChangeLog,v 1.1 2005/03/31 21:52:56 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cheops-ng/ChangeLog,v 1.1.1.1 2005/11/30 10:12:34 chriswhite Exp $
+
+*cheops-ng-0.2.3 (05 Nov 2005)
+
+  05 Nov 2005; Marcelo Goes <vanquirius@gentoo.org> cheops-ng-0.2.2.ebuild,
+  +cheops-ng-0.2.3.ebuild:
+  0.2.2 x86 stable and 0.2.3 version bump.
+
+  15 Oct 2005; Joseph Jezak <josejx@gentoo.org> cheops-ng-0.2.0.ebuild,
+  cheops-ng-0.2.2.ebuild:
+  Marked ~ppc for bug #109108.
+
+  17 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> cheops-ng-0.2.0.ebuild,
+  cheops-ng-0.2.2.ebuild:
+  Do not install COPYING.
+
+*cheops-ng-0.2.2 (02 Sep 2005)
+
+  02 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> +cheops-ng-0.2.2.ebuild:
+  Version bump. Should fix bug 95554. Thanks to george <george@drtm.ro> for
+  reporting.
+
+  26 May 2005; Marcelo Goes <vanquirius@gentoo.org> -files/adns-gcc34.patch,
+  -files/cheops-ng-0.1.13-printf.diff, -cheops-ng-0.1.13-r1.ebuild:
+  Remove old stuff.
+
+  14 May 2005; Marcelo Goes <vanquirius@gentoo.org> cheops-ng-0.2.0.ebuild:
+  Marked x86 stable.
+
+  07 May 2005; Marcelo Goes <vanquirius@gentoo.org>
+  cheops-ng-0.1.13-r1.ebuild:
+  Marked x86 stable.
+
+*cheops-ng-0.2.0 (15 Apr 2005)
+
+  15 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> -cheops-ng-0.1.13.ebuild,
+  +cheops-ng-0.2.0.ebuild:
+  Version bump, fixes bug 88816. Thanks to Michael Zanetta <grimmlin@pentoo.ch>.
+  Keeping things tidy, too.
+
+*cheops-ng-0.1.13-r1 (02 Apr 2005)
+
+  02 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/cheops-ng-0.1.13-printf.diff, +cheops-ng-0.1.13-r1.ebuild:
+  Nicer fix to allow gcc-3.4 to work without discarding debug messages. Thanks
+  to dragonheart for pointing out this issue and how to solve it.
+
+  31 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
+  cheops-ng-0.1.13.ebuild:
+  Adding metadata.xml.
+  Adding debug USE flag. Thanks again to Michael Zanetta <grimmlin@pentoo.ch>.
 
 *cheops-ng-0.1.13 (31 Mar 2005)
 

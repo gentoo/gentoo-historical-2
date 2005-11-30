@@ -1,14 +1,14 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nam/nam-1.10.ebuild,v 1.1 2004/01/22 08:40:16 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nam/nam-1.10.ebuild,v 1.1.1.1 2005/11/30 10:12:10 chriswhite Exp $
 
 DESCRIPTION="Network Simulator GUI for NS"
 HOMEPAGE="http://www.isi.edu/nsnam/${PN}/"
 SRC_URI="http://www.isi.edu/nsnam/dist/${PN}-src-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE=""
+KEYWORDS="~x86 ~sparc"
+IUSE="debug"
 need_tclver="8.4.4"
 valid_tclver="${need_tclver}"
 mytclver=""
@@ -21,7 +21,7 @@ DEPEND="virtual/x11
 RDEPEND=">=net-analyzer/ns-2.27
 		 ${DEPEND}"
 
-S=${WORKDIR}/${P}
+
 
 findtclver() {
 	# input should always be in INCREASING order

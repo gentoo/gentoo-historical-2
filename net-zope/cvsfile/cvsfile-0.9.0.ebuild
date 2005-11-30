@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/cvsfile/cvsfile-0.9.0.ebuild,v 1.1 2004/04/18 21:53:07 batlogg Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/cvsfile/cvsfile-0.9.0.ebuild,v 1.1.1.1 2005/11/30 10:11:05 chriswhite Exp $
 
 inherit zproduct
 
@@ -12,7 +12,8 @@ HOMEPAGE="http://zope.org/Members/arielpartners/CVSFile"
 SRC_URI="${HOMEPAGE}/${PV}/CVSFile-${NEW_PV}.zip"
 LICENSE="ZPL"
 KEYWORDS="~x86 ~ppc"
-RDEPEND=">=net-zope/externalfile
+RDEPEND="net-zope/externalfile
 	${RDEPEND}"
+DEPEND="${DEPEND} app-arch/unzip"
 
 ZPROD_LIST="CVSFile"

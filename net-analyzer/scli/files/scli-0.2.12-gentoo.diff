@@ -45,7 +45,7 @@ diff -urN scli-0.2.12.orig/snmp/g_session.c scli-0.2.12/snmp/g_session.c
 --- scli-0.2.12.orig/snmp/g_session.c	2005-01-28 01:19:14.000000000 -0500
 +++ scli-0.2.12/snmp/g_session.c	2005-01-28 02:43:13.875004752 -0500
 @@ -21,13 +21,12 @@
-  * $Id: scli-0.2.12-gentoo.diff,v 1.1 2005/01/28 11:49:51 ka0ttic Exp $
+  * $Id: scli-0.2.12-gentoo.diff,v 1.1.1.1 2005/11/30 10:12:29 chriswhite Exp $
   */
  
 -#include "g_snmp.h"

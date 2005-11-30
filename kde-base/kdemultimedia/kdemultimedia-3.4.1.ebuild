@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdemultimedia/kdemultimedia-3.4.1.ebuild,v 1.1 2005/05/27 08:45:42 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdemultimedia/kdemultimedia-3.4.1.ebuild,v 1.1.1.1 2005/11/30 10:14:03 chriswhite Exp $
 
 inherit kde-dist eutils
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-radio/gkrellm-radio-2.0.4.ebuild,v 1.1 2004/06/22 15:38:21 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-radio/gkrellm-radio-2.0.4.ebuild,v 1.1.1.1 2005/11/30 10:10:43 chriswhite Exp $
 
 IUSE="lirc"
 
@@ -15,7 +15,7 @@ DEPEND="=app-admin/gkrellm-2*
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="~x86 ppc ~sparc"
 
 src_compile() {
 	use lirc && myconf="${myconf} WITH_LIRC=1"

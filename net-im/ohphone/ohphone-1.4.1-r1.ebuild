@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ohphone/ohphone-1.4.1-r1.ebuild,v 1.1 2003/09/06 17:25:24 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ohphone/ohphone-1.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:51 chriswhite Exp $
 
 DESCRIPTION="Command line H.323 client"
 HOMEPAGE="http://www.openh323.org/"
@@ -8,19 +8,19 @@ SRC_URI="http://www.openh323.org/bin/${PN}_${PV}.tar.gz"
 
 LICENSE="MPL-1.0"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="X"
+KEYWORDS="~x86 ~ppc"
+IUSE="X svga"
 
 DEPEND=">=net-libs/openh323-1.12.2
 	>=dev-libs/pwlib-1.5.2
 	X? ( virtual/x11 )
-	svga? ( media-libs/svga )"
+	svga? ( media-libs/svgalib )"
 
 S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
-	
+
 	use svga \
 		|| sed -e "s:-lvga::" -e "s:-DHAS_VGALIB::" -i ${S}/Makefile \
 		|| die "failed to turn off SVGAlib support"
@@ -28,7 +28,7 @@ src_unpack() {
 
 src_compile() {
 	local myopts
-	
+
 	use X \
 		&& myopts="${myopts} XINCDIR=/usr/X11R6/include XLIBDIR=/usr/X11R6/lib" \
 		|| myopts="${myopts} XINCDIR=/dev/null XLIBDIR=/dev/null"
@@ -46,9 +46,13 @@ src_compile() {
 src_install() {
 	cd ${WORKDIR}/${PN}
 	doman ohphone.1
-	
+
 	# fill in for other archs
-	if [ ${ARCH} = "x86" ]; then
+	if use x86; then
 		dobin obj_linux_x86_r/ohphone
+	elif use ppc; then
+		dobin obj_linux_ppc_r/ohphone
+	else
+		die "no binary available for your arch"
 	fi
 }

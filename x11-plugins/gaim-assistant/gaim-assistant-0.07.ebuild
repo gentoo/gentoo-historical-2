@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-assistant/gaim-assistant-0.07.ebuild,v 1.1 2004/12/08 16:28:31 rizzo Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-assistant/gaim-assistant-0.07.ebuild,v 1.1.1.1 2005/11/30 10:10:48 chriswhite Exp $
 
 DESCRIPTION="Gaim Assistant is a plugin to Gaim that will allow you to forward messages to a different screen name should you become away."
 HOMEPAGE="http://gaim-assistant.sourceforge.net/"
@@ -14,16 +12,8 @@ KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=">=net-im/gaim-1.0.0"
-#RDEPEND=""
-
-#S=${WORKDIR}/${P}
-
-src_compile() {
-	econf || die
-	emake || die "emake failed"
-}
 
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
 	dodoc README TODO
 }

@@ -1,18 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/libkpimexchange/libkpimexchange-3.4.1.ebuild,v 1.1 2005/05/25 21:23:13 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/libkpimexchange/libkpimexchange-3.4.1.ebuild,v 1.1.1.1 2005/11/30 10:13:26 chriswhite Exp $
 
 KMNAME=kdepim
-MAXKDEVER=$PV
+MAXKDEVER=3.4.2
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE PIM exchange library"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
 OLDDEPEND="~kde-base/libkcal-$PV"
 DEPEND="
-$(deprange $PV $MAXKDEVER kde-base/libkcal)"
+$(deprange $PV 3.4.2 kde-base/libkcal)"
 
 KMCOPYLIB="libkcal libkcal"
 # libkcal is installed because a lot of headers are needed, but it don't have to be compiled

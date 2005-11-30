@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gai-pager/gai-pager-0.2-r1.ebuild,v 1.1 2004/05/09 19:09:27 lordvan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gai-pager/gai-pager-0.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:36 chriswhite Exp $
 
 MY_PV="${PV}"
 MY_P="${PN}-${MY_PV}"
@@ -9,7 +9,7 @@ HOMEPAGE="http://gai.sourceforge.net/"
 SRC_URI="mirror://sourceforge/gai/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 DEPEND=">=x11-libs/gai-0.5.0_pre6"
 
@@ -26,7 +26,9 @@ src_compile() {
 src_install() {
 	# small hack so the gnome picture gets installed in place
 	mv ${S}/Makefile ${S}/Makefile.orig
-	sed s%"GNOMEDIR = /usr"%"GNOMEDIR = ${D}/usr"% ${S}/Makefile.orig > ${S}/Makefile
+	sed s%"GNOMEDIR = /usr"%"GNOMEDIR = ${D}/usr"% ${S}/Makefile.orig | \
+	sed s%"PREFIX = /usr"%"PREFIX = ${D}/usr"% > ${S}/Makefile
+	dodir /usr
 	einstall || die
 	dodoc BUGS COPYING CHANGES INSTALL README README.gai TODO
 }

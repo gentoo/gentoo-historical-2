@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-8.0.1-r3.ebuild,v 1.1 2005/05/07 08:35:01 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-8.0.1-r3.ebuild,v 1.1.1.1 2005/11/30 10:11:45 chriswhite Exp $
 
 inherit eutils gnuconfig flag-o-matic multilib toolchain-funcs
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://postgresql/source/v${PV}/${PN}-base-${MY_PV}.tar.bz2
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="ssl nls python tcltk perl libg++ pam readline xml2 zlib doc selinux kerberos pg-intdatetime pg-hier"
 
 S=${WORKDIR}/${MY_P}
@@ -104,7 +104,6 @@ src_compile() {
 		--with-docdir=/usr/share/doc/${PF} \
 		--libdir=/usr/$(get_libdir) \
 		--enable-depend \
-		--with-gnu-ld \
 		$myconf || die
 
 	make LD="$(tc-getLD) $(get_abi_LDFLAGS)" || die
@@ -174,7 +173,7 @@ pkg_postinst() {
 	if [ ! -f ${PG_DIR}/data/PG_VERSION ] ; then
 		einfo ""
 		einfo "Execute the following command"
-		einfo "ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config"
+		einfo "emerge --config =${PF}"
 		einfo "to setup the initial database environment."
 		einfo ""
 	fi

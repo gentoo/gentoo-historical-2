@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/aimsniff/aimsniff-0.9-r1.ebuild,v 1.1 2004/06/27 16:48:40 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/aimsniff/aimsniff-0.9-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:10 chriswhite Exp $
 
-inherit webapp
+inherit webapp eutils
 
-IUSE="samba mysql apache2"
+IUSE="samba mysql apache2 http"
 
 MY_P="${P}d"
 WAS_VER="0.1.2b"
@@ -12,12 +12,12 @@ WAS_VER="0.1.2b"
 DESCRIPTION="Utility for monitoring and archiving AOL Instant Messenger messages across a network"
 HOMEPAGE="http://www.aimsniff.com/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
-	apache2? ( mirror://sourceforge/${PN}/was-${WAS_VER}.tar.gz )"
+	http? ( mirror://sourceforge/${PN}/was-${WAS_VER}.tar.gz )"
 
 RESTRICT="nomirror"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 x86 ~ppc"
 
 S=${WORKDIR}/${MY_P}
 
@@ -32,17 +32,21 @@ DEPEND=">=dev-lang/perl-5.8.4
 	dev-perl/DBI
 	dev-perl/Unix-Syslog
 	mysql? ( dev-db/mysql dev-perl/DBD-mysql )
-	samba? ( net-fs/samba )"
+	samba? ( net-fs/samba )
+	http? ( apache2? ( =net-www/apache-2* ) !apache2? ( =net-www/apache-1* ) )"
 
 pkg_setup() {
-	if [ `use apache2` ]
+	if use http
 	then
 		webapp_pkg_setup
 	fi
+
+	built_with_use dev-lang/perl gdbm || \
+		die "${PN} requires that dev-lang/perl be built with USE=gdbm."
 }
 
 src_install() {
-	if [ `use apache2` ]
+	if use http
 	then
 		webapp_src_preinst
 	fi
@@ -54,7 +58,7 @@ src_install() {
 	doins table.struct
 	dodoc README ChangeLog
 
-	if [ `use apache2` ]
+	if use http
 	then
 		cp ../was-${WAS_VER}/docs/README README.WAS
 		dodoc README.WAS
@@ -78,21 +82,21 @@ src_install() {
 
 pkg_postinst() {
 
-	if [ `use mysql` ]
+	if use mysql
 	then
 		echo
 		einfo "To create and enable the mysql database, please run: "
-		einfo "ebuild /var/db/pkg/net-analyzer/${P}/${P}.ebuild config"
+		einfo "emerge --config =${PF}"
 
-		if [ `use apache2` ]
+		if use http
 		then
 			echo "To create and enable the mysql database, please run:
-			ebuild /var/db/pkg/net-analyzer/${P}/${P}.ebuild config" > apache-postinst
+			emerge --config =${PF}" > apache-postinst
 			webapp_postinst_txt en apache-postinst
 		fi
 	fi
 
-	if [ `use apache2` ]
+	if use http
 	then
 		echo
 		einfo "Go to http://${HOSTNAME}/was/admin.php to configure WAS."

@@ -1,18 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# Ebuild by AutoBot (autobot@midsouth.rr.com)
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmapmload/wmapmload-0.3.0.ebuild,v 1.1.1.1 2005/11/30 10:10:57 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-
+IUSE=""
 DESCRIPTION="dockapp that monitors your apm battery status."
 SRC_URI="http://tnemeth.free.fr/projets/programmes/${P}.tar.gz"
 HOMEPAGE="http://tnemeth.free.fr/projets/dockapps.html"
 
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 amd64"
 LICENSE="GPL-2"
 
-DEPEND="x11-base/xfree"
+DEPEND="virtual/x11"
 
 src_compile() {
 

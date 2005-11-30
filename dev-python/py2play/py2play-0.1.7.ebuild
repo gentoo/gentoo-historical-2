@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/py2play/py2play-0.1.7.ebuild,v 1.1 2004/10/16 14:01:45 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/py2play/py2play-0.1.7.ebuild,v 1.1.1.1 2005/11/30 10:10:07 chriswhite Exp $
 
 inherit distutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://download.gna.org/slune/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/python-2.2.2"

@@ -1,12 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/iptables/iptables-1.3.2.ebuild,v 1.1 2005/07/12 02:38:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/iptables/iptables-1.3.2.ebuild,v 1.1.1.1 2005/11/30 10:11:16 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs linux-info
 
-L7_PN="netfilter-layer7"
-L7_PV="1.2"
-L7_P="${L7_PN}-v${L7_PV}"
+L7_PV="1.4"
+L7_P="netfilter-layer7-v${L7_PV}"
 L7_PATCH="iptables-layer7-${L7_PV}.patch"
 IMQ_PATCH="iptables-1.3.0-imq1.diff"
 
@@ -20,7 +19,7 @@ SRC_URI="http://www.iptables.org/files/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-*" #~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="ipv6 static extensions"
 
 DEPEND="virtual/os-headers
@@ -55,18 +54,16 @@ src_unpack() {
 	# this provide's grsec's stealth match
 	EPATCH_OPTS="-p0" \
 	epatch "${FILESDIR}"/1.3.1-files/grsecurity-1.2.8-iptables.patch-1.3.1.bz2
-
 	sed -i \
 		-e "s/PF_EXT_SLIB:=/PF_EXT_SLIB:=stealth /g" \
-		extensions/Makefile \
-		|| die "failed to enable stealth extension"
+		extensions/Makefile || die "failed to enable stealth extension"
 
 	EPATCH_OPTS="-p1" \
 	epatch "${FILESDIR}"/1.3.1-files/${PN}-1.3.1-compilefix.patch
 
 	if use extensions ; then
-		EPATCH_OPTS="-p1" epatch ${DISTDIR}/${IMQ_PATCH}
-		EPATCH_OPTS="-p1" epatch ${WORKDIR}/${L7_P}/${L7_PATCH}
+		EPATCH_OPTS="-p1" epatch "${DISTDIR}"/${IMQ_PATCH}
+		EPATCH_OPTS="-p1" epatch "${WORKDIR}"/${L7_P}/${L7_PATCH}
 		chmod +x extensions/{.IMQ-test*,.childlevel-test*,.layer7-test*}
 	fi
 }
@@ -147,12 +144,16 @@ pkg_postinst() {
 	einfo "iptables."
 	einfo
 	ewarn "!!! ipforwarding is now not a part of the iptables initscripts."
-	einfo "Until a more permanent solution is implemented adding the following"
-	einfo "to /etc/conf.d/local.start will enable ipforwarding at bootup:"
-	einfo "  echo \"1\" > /proc/sys/net/ipv4/conf/all/forwarding"
+	einfo
+	einfo "To enable ipforwarding at bootup:"
+	einfo "/etc/sysctl.conf and set net.ipv4.ip_forward = 1"
 	if use ipv6 ; then
 		einfo "and/or"
-		einfo "  echo \"1\" > /proc/sys/net/ipv6/conf/all/forwarding"
+		einfo "  net.ipv6.ip_forward = 1"
 		einfo "for ipv6."
 	fi
+	echo
+	ewarn "When upgrading from iptables-1.2.x, you may be unable to remove"
+	ewarn "rules added with iptables-1.2.x.  This is a known issue, please see:"
+	ewarn "http://bugs.gentoo.org/show_bug.cgi?id=92535"
 }

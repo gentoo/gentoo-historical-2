@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmss/gkrellmss-2.6.ebuild,v 1.1 2005/01/02 02:13:45 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmss/gkrellmss-2.6.ebuild,v 1.1.1.1 2005/11/30 10:10:40 chriswhite Exp $
 
 inherit eutils
 
-IUSE="nls"
+IUSE="alsa esd nls"
 
 DESCRIPTION="A plugin for GKrellM2 that has a VU meter and a sound chart"
 HOMEPAGE="http://gkrellm.net/gkrellmss/gkrellmss.html"
@@ -29,7 +29,7 @@ src_compile() {
 }
 
 src_install () {
-	exeinto /usr/lib/gkrellm2/plugins
+	exeinto /usr/$(get_libdir)/gkrellm2/plugins
 	doexe src/gkrellmss.so
 	dodoc README Changelog Themes
 }

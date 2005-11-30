@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/tux_aqfh/tux_aqfh-1.0.14.ebuild,v 1.1 2004/07/16 03:45:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/tux_aqfh/tux_aqfh-1.0.14.ebuild,v 1.1.1.1 2005/11/30 10:10:59 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="A puzzle game starring Tux, the linux penguin"
 HOMEPAGE="http://tuxaqfh.sourceforge.net/"
@@ -10,20 +10,18 @@ SRC_URI="http://tuxaqfh.sourceforge.net/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~amd64"
+KEYWORDS="~alpha ~amd64 ~ppc x86"
 IUSE=""
 
-RDEPEND=">=media-libs/plib-1.8.0
+DEPEND=">=media-libs/plib-1.8.0
 	virtual/x11
 	virtual/opengl"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PV}-fix-paths.patch
-	autoreconf || die "couldnt autoreconf"
+	cd "${S}"
+	epatch "${FILESDIR}"/${PV}-fix-paths.patch
+	aclocal && autoconf && automake -a -c || die "autotools failed"
 }
 
 src_install() {

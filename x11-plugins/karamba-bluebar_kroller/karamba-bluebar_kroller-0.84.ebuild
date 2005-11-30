@@ -1,13 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/karamba-bluebar_kroller/karamba-bluebar_kroller-0.84.ebuild,v 1.1 2003/05/04 09:37:05 prez Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/karamba-bluebar_kroller/karamba-bluebar_kroller-0.84.ebuild,v 1.1.1.1 2005/11/30 10:10:35 chriswhite Exp $
 
+IUSE=""
 DESCRIPTION="Kroller and Bluebar plugins together for Karamba"
-HOMEPAGE="http://www.kdelook.org/content/show.php?content=5972"
-SRC_URI="http://www.kdelook.org/content/files/5972-bluebar%20kroller.tar.gz"
+HOMEPAGE="http://www.kde-look.org/content/show.php?content=5972"
+# SRC_URI="http://www.kde-look.org/content/files/5972-bluebar%20mixed%20kroller.tar.gz"
+SRC_URI="http://dev.gentoo.org/~eldad/distfiles/5972-bluebar_mixed_kroller.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 RDEPEND=">=x11-misc/superkaramba-0.21
 	media-plugins/xmms-find

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ifstat/ifstat-1.1.ebuild,v 1.1 2004/06/23 02:41:06 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ifstat/ifstat-1.1.ebuild,v 1.1.1.1 2005/11/30 10:12:40 chriswhite Exp $
 
 IUSE="snmp"
 
@@ -10,9 +10,9 @@ HOMEPAGE="http://gael.roualland.free.fr/ifstat/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~sparc"
+KEYWORDS="sparc x86 amd64 ppc64 hppa ppc"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	snmp? ( >=net-analyzer/net-snmp-5.0 )"
 
 src_compile() {

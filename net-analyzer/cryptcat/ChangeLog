@@ -1,6 +1,30 @@
 # ChangeLog for net-analyzer/cryptcat
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cryptcat/ChangeLog,v 1.1 2004/02/14 04:59:31 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cryptcat/ChangeLog,v 1.1.1.1 2005/11/30 10:12:21 chriswhite Exp $
+
+  09 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  cryptcat-20031202.ebuild:
+  ChangeLog is actually Changelog. Fixed so that it gets installed properly.
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> cryptcat-20031202.ebuild:
+  Added to ~ppc.
+
+  19 Nov 2004; Jason Wever <weeve@gentoo.org> cryptcat-20031202.ebuild:
+  Stable on sparc.
+
+  13 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> cryptcat-20031202.ebuild:
+  Marked ~amd64.
+
+  11 Jul 2004; Eldad Zack <eldad@gentoo.org> metadata.xml,
+  cryptcat-20031202.ebuild:
+  Updated SRC_URI to use debian mirrors, marked x86 stable.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> cryptcat-20031202.ebuild
+  +metadata.xml:
+  change virtual/glibc to virtual/libc, add IUSE, add metadata
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> cryptcat-20031202.ebuild:
+  Added ~sparc keyword.
 
 *cryptcat-20031202 (13 Feb 2004)
 

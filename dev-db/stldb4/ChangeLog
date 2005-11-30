@@ -1,6 +1,17 @@
 # ChangeLog for dev-db/stldb4
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/stldb4/ChangeLog,v 1.1 2004/04/13 04:27:39 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/stldb4/ChangeLog,v 1.1.1.1 2005/11/30 10:11:24 chriswhite Exp $
+
+  21 Sep 2005; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
+  Adding to cpp herd
+
+*stldb4-0.3.13 (06 Feb 2005)
+
+  06 Feb 2005; Mike Frysinger <vapier@gentoo.org> +stldb4-0.3.13.ebuild:
+  Version bump.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> stldb4-0.3.7.ebuild:
+  sync IUSE (missing)
 
 *stldb4-0.3.7 (13 Apr 2004)
 

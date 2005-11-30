@@ -1,22 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/sip/sip-3.8-r1.ebuild,v 1.1 2004/02/25 23:28:38 kloeri Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/dev-python/sip/sip-3.8-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:09 chriswhite Exp $
 
 inherit eutils distutils
 
 MY_P="${PN}-x11-gpl-${PV}"
 DESCRIPTION="SIP is a tool for generating bindings for C++ classes so that they can be used by Python."
-#SRC_URI="http://www.river-bank.demon.co.uk/download/sip/${MY_P}.tar.gz"
 SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 HOMEPAGE="http://www.riverbankcomputing.co.uk/sip/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 ppc sparc alpha"
+IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	x11-libs/qt
 	>=dev-lang/python-2.2.1"
 
@@ -38,11 +36,13 @@ src_compile(){
 		-b ${D}/usr/bin \
 		-d ${D}/usr/lib/python${PYVER}/site-packages \
 		-e ${D}/usr/include/python${PYVER}
+
+	emake || die
 }
 
 src_install() {
 	distutils_python_version
-	dodir /usr/include/python${PYVER}a
+	dodir /usr/include/python${PYVER}
 	emake || die
 	einstall || die
 	dodoc NEWS README THANKS

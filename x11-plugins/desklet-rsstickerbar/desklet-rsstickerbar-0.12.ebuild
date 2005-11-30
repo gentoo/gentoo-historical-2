@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-rsstickerbar/desklet-rsstickerbar-0.12.ebuild,v 1.1 2005/05/27 11:48:06 nixphoeni Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-rsstickerbar/desklet-rsstickerbar-0.12.ebuild,v 1.1.1.1 2005/11/30 10:10:50 chriswhite Exp $
 
 inherit gdesklets
 

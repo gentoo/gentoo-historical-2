@@ -1,23 +1,22 @@
-# Copyright 2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmss/gkrellmss-2.3.ebuild,v 1.1 2003/02/12 10:44:27 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellmss/gkrellmss-2.3.ebuild,v 1.1.1.1 2005/11/30 10:10:40 chriswhite Exp $
 
 inherit eutils
 
 IUSE="nls"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A plugin for GKrellM2 that has a VU meter and a sound chart"
 HOMEPAGE="http://gkrellm.net/gkrellmss/gkrellmss.html"
-SRC_URI="http://gkrellm.net/gkrellmss/${P}.tar.gz"
+SRC_URI="http://web.wt.net/~billw/gkrellmss/${P}.tar.gz"
 
 DEPEND="=app-admin/gkrellm-2*
-	dev-libs/fftw
+	=sci-libs/fftw-2*
 	media-sound/esound"
 
 SLOT="0"
-LICENSE="GPL"
-KEYWORDS="~x86 ~ppc ~sparc"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc ~sparc ~alpha"
 
 src_unpack() {
 	unpack ${P}.tar.gz

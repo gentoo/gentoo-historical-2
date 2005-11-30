@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/squishdot/squishdot-1.5.0-r1.ebuild,v 1.1 2005/05/08 03:03:35 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/squishdot/squishdot-1.5.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:11:08 chriswhite Exp $
 
 inherit zproduct
 NEW_PV="${PV//./-}"

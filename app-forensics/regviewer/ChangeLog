@@ -1,6 +1,12 @@
 # ChangeLog for app-forensics/regviewer
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/regviewer/ChangeLog,v 1.1 2004/12/12 11:25:46 dragonheart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/regviewer/ChangeLog,v 1.1.1.1 2005/11/30 10:09:52 chriswhite Exp $
+
+  07 Jul 2005; David Holm <dholm@gentoo.org> regviewer-0.1.ebuild:
+  Added to ~ppc.
+
+  21 Apr 2005; Daniel Black <dragonheart@gentoo.org> regviewer-0.1.ebuild:
+  Missing dependancy on gnome-base/libgnomeui
 
 *regviewer-0.1 (12 Dec 2004)
 

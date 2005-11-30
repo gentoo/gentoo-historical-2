@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonutils/pythonutils-0.2.0.ebuild,v 1.1 2005/09/03 18:27:42 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonutils/pythonutils-0.2.0.ebuild,v 1.1.1.1 2005/11/30 10:10:29 chriswhite Exp $
 
 inherit eutils distutils
 DESCRIPTION="Voidspace python modules"

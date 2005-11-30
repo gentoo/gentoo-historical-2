@@ -1,12 +1,13 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix-server/files/1.1_alpha7/init.d/zabbix-server,v 1.1.1.1 2005/11/30 10:12:11 chriswhite Exp $
 
 #opts="${opts} reload"
 
 depend() {
-		need net mysql
+	need net
+	use mysql postgresql
 }
 
 start() {

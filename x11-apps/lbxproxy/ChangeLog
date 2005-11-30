@@ -1,6 +1,34 @@
 # ChangeLog for x11-apps/lbxproxy
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/lbxproxy/ChangeLog,v 1.1 2005/08/08 06:28:09 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/lbxproxy/ChangeLog,v 1.1.1.1 2005/11/30 10:14:38 chriswhite Exp $
+
+*lbxproxy-0.99.2 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +lbxproxy-0.99.2.ebuild:
+  Bump for 7.0RC2.
+
+*lbxproxy-0.99.1-r1 (27 Oct 2005)
+
+  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +lbxproxy-0.99.1-r1.ebuild:
+  Rev-bump for new USE flag.
+
+  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  lbxproxy-0.99.1.ebuild:
+  Add ipv6 USE flag.
+
+*lbxproxy-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +lbxproxy-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> lbxproxy-0.99.0.ebuild:
+  Add ~sparc keyword (Modular X testing).
 
 *lbxproxy-0.99.0 (08 Aug 2005)
 

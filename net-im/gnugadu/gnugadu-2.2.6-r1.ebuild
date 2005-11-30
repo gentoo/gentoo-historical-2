@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnugadu/gnugadu-2.2.6-r1.ebuild,v 1.1 2005/07/21 18:30:05 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnugadu/gnugadu-2.2.6-r1.ebuild,v 1.1.1.1 2005/11/30 10:09:47 chriswhite Exp $
 
-IUSE="debug tlen esd oss xosd arts jabber perl spell"
+IUSE="debug tlen esd oss xosd arts jabber perl spell gnutls"
 
 inherit eutils
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://gadu.gnu.pl/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 
 DEPEND=">=net-libs/libgadu-20050719
 	>=x11-libs/gtk+-2.4.0
@@ -27,7 +27,8 @@ DEPEND=">=net-libs/libgadu-20050719
 	arts? ( >=kde-base/arts-0.9.5 )
 	esd? ( media-sound/esound )
 	tlen? ( net-libs/libtlen )
-	spell? ( app-text/gtkspell )"
+	spell? ( app-text/gtkspell )
+	gnutls? ( net-libs/gnutls )"
 
 src_unpack() {
 	unpack ${A}
@@ -53,7 +54,8 @@ src_compile() {
 		`use_with perl` \
 		`use_with tlen` \
 		`use_with jabber` \
-		`use_with spell gtkspell` || die
+		`use_with spell gtkspell` \
+		`use_with gnutls` || die
 	emake || die
 }
 

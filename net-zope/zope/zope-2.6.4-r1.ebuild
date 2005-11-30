@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.6.4-r1.ebuild,v 1.1 2004/03/14 12:32:15 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/zope-2.6.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:11:09 chriswhite Exp $
 
 inherit eutils
 
@@ -10,8 +10,8 @@ SRC_URI="http://www.zope.org/Products/Zope/${PV}/Zope-${PV}-src.tgz"
 LICENSE="ZPL"
 SLOT="${PV}"
 
-KEYWORDS="~x86 ~sparc"
-IUSE="utf8"
+KEYWORDS="x86 sparc ppc ~alpha"
+IUSE="unicode"
 
 # This is for developers that wish to test Zope with virtual/python.
 # If this is a problem, let me know right away. --kutsuya@gentoo.org
@@ -34,14 +34,14 @@ RDEPEND="${RDEPEND}
 !net-zope/verbosesecurity"
 
 DEPEND="${RDEPEND}
-virtual/glibc
+virtual/libc
 >=sys-apps/sed-4.0.5
 >=app-admin/zope-config-0.3"
 
 S="${WORKDIR}/Zope-${PV}-src"
 
 ZUID=zope
-ZGID=$(echo ${P} |sed -e "s:\.:_:g")
+ZGID=${P//./_}
 ZS_DIR=${ROOT}/usr/share/zope/
 ZI_DIR=${ROOT}/var/lib/zope/
 ZSERVDIR=${ZS_DIR}/${PF}/
@@ -57,6 +57,10 @@ RCNAME=zope.initd
 # * Other's should not have any access to ${ZSERVDIR},
 #   because they can work through the Zope web interface.
 #   This should protect our code/data better.
+#
+# UPDATE: ${ZSERVDIR} is a lib directory and should be world readable
+# like e.g /usr/lib/python we do not store any user data there,
+# currently removed all custom permission stuff, for ${ZSERVDIR}
 
 # Parameters:
 #  $1 = instance directory
@@ -65,14 +69,18 @@ RCNAME=zope.initd
 setup_security() {
 	chown -R ${ZUID}:${2} ${1}
 	chmod -R g+u ${1}
-	chmod -R o-rwx ${1}
+	# 20040926 <radek@gentoo.org> changed, due to errors in ebuild and policy
+	chmod -R go+rX ${1}
 }
 
 install_help() {
-	einfo "Need to setup an inituser (admin) before executing zope:"
-		einfo "\tzope-config --zpasswd"
-		einfo "To execute default Zope instance:"
-		einfo "\t/etc/init.d/${ZGID} start"
+	einfo "Be warned that you need at least one zope instance to run zope."
+	einfo "Please emerge zope-config for futher instance management."
+}
+
+pkg_preinst() {
+	enewgroup ${ZGID}
+	enewuser ${ZUID} 261 /bin/bash ${ZS_DIR} ${ZGID}
 }
 
 pkg_setup() {
@@ -85,14 +93,12 @@ pkg_setup() {
 					fi
 					ewarn "Zope Corp. only recommends using python-2.1.3 "
 					ewarn "with this version of zope. Emerge at your own risk."
-					sleep 12
+					epause 12
 	fi
-	enewgroup ${ZGID}
-	enewuser ${ZUID} 261 /bin/bash ${ZS_DIR} ${ZGID}
 }
 
 src_compile() {
-	$python wo_pcgi.py || die "Failed to compile."
+	${python} wo_pcgi.py || die "Failed to compile."
 }
 
 src_install() {
@@ -111,9 +117,9 @@ src_install() {
 	# If this is a problem, let me know right away. --batlogg@solution2u.net
 	# I wondering if we need a USE flag for this and wheter we can set the
 	# sys.encoding automtically
-	# so i defined a use flag utf-8
+	# so i defined a use flag
 
-	if use utf8; then
+	if use unicode; then
 		einfo "Patching structured text"
 		einfo "make sure you have set the system pythong encoding to utf-8"
 		einfo "create the file sitecusomize.py inside your site-packages"
@@ -162,8 +168,8 @@ src_install() {
 
 pkg_postinst() {
 	# Here we add our default zope instance.
-	/usr/sbin/zope-config --zserv=${ZSERVDIR} --zinst=${ZINSTDIR} \
-		--zgid=${ZGID}
+	# UPDATE 20040925: disabled due to zope-config, errors
+	#/usr/sbin/zope-config --zserv=${ZSERVDIR} --zinst=${ZINSTDIR} --zgid=${ZGID}
 	install_help
 }
 
@@ -173,7 +179,7 @@ pkg_postrm() {
 	# Delete .default if this ebuild is the default. zprod-manager will
 	# have to handle a missing default;
 	local VERSION_DEF="$(zope-config --zidef-get)"
-	if [ "${ZGID}" = "$VERSION_DEF" ] ; then
+	if [ "${ZGID}" = "${VERSION_DEF}" ] ; then
 		rm -f ${ZI_DIR}/.default
 	fi
 }

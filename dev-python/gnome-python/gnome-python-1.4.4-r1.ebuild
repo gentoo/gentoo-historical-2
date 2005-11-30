@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gnome-python/gnome-python-1.4.4-r1.ebuild,v 1.1 2004/01/24 17:02:42 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gnome-python/gnome-python-1.4.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:14 chriswhite Exp $
 
 inherit gnome.org python
 
 DESCRIPTION="GNOME1 Python Bindings"
-HOMEPAGE="http://www.daa.com.au/~james/gnome/"
+HOMEPAGE="http://www.pygtk.org/"
 
-IUSE=""
-SLOT="1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 LICENSE="GPL-2"
+SLOT="1"
+KEYWORDS="~alpha ia64 ppc ~sparc x86"
+IUSE=""
 
 DEPEND="virtual/python
 	=x11-libs/gtk+-1.2*
@@ -29,15 +29,14 @@ src_unpack() {
 
 src_compile() {
 	CFLAGS="${CFLAGS} `gnome-config capplet --cflags`" \
-		econf
+		econf || die "econf failed"
 
 	cd ${S}/pygnome
 	emake || die
 }
 
 src_install() {
-	dodoc AUTHORS COPYING* ChangeLog NEWS MAPPING
-	dodoc README*
+	dodoc AUTHORS ChangeLog NEWS MAPPING README*
 	cd ${S}/pygnome
 	make prefix=${D}/usr datadir=${D}/usr/share install || die " install failed"
 }

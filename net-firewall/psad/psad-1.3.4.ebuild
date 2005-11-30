@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/psad/psad-1.3.4.ebuild,v 1.1 2004/12/01 08:15:12 battousai Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/psad/psad-1.3.4.ebuild,v 1.1.1.1 2005/11/30 10:11:18 chriswhite Exp $
 
 inherit eutils perl-module
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.cipherdyne.org/psad"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc ~alpha ~sparc"
+KEYWORDS="x86 amd64 ppc alpha ~sparc"
 
 DEPEND="${DEPEND}
 	dev-lang/perl"
@@ -20,7 +20,7 @@ DEPEND="${DEPEND}
 RDEPEND="virtual/logger
 	dev-perl/Unix-Syslog
 	dev-perl/Date-Calc
-	mail-client/mailx
+	virtual/mailx
 	net-firewall/iptables"
 
 src_compile() {
@@ -78,11 +78,7 @@ src_install() {
 
 	cd ${S}
 
-	# Ditch the _CHANGEME_ for hostname, substituting in our real hostname
-	myhostname="$(< /etc/hostname)"
-	[ -e /etc/dnsdomainname ] && mydomain=".$(< /etc/dnsdomainname)"
-	cp psad.conf psad.conf.orig
-	sed -i "s:HOSTNAME\(.\+\)\_CHANGEME\_;:HOSTNAME\1${myhostname}${mydomain};:" psad.conf || die "Sed failed."
+	fix_psad_conf
 
 	insinto /etc/psad
 	doins *.conf
@@ -117,7 +113,23 @@ pkg_postinst() {
 	einfo "HOME_NET settings at the least."
 	echo
 	einfo "If you are using a logger other than sysklogd, please be sure to change the"
-	einfo "syslogCmd setting in /etc/psad/psad.conf. An example for syslog-ng users"
+	einfo "syslogdCmd setting in /etc/psad/psad.conf. An example for syslog-ng users"
 	einfo "would be:"
-	einfo "		syslogCmd = /usr/sbin/syslog-ng;"
+	einfo "		syslogdCmd	/usr/sbin/syslog-ng;"
+}
+
+fix_psad_conf() {
+	cp psad.conf psad.conf.orig
+
+	# Ditch the _CHANGEME_ for hostname, substituting in our real hostname
+	[ -e /etc/hostname ] && myhostname="$(< /etc/hostname)"
+	[ "${myhostname}" == "" ] && myhostname="$HOSTNAME"
+	mydomain=".$(grep ^domain /etc/resolv.conf | cut -d" " -f2)"
+	sed -i "s:HOSTNAME\(.\+\)\_CHANGEME\_;:HOSTNAME\1${myhostname}${mydomain};:" psad.conf || die "fix_psad_conf failed"
+
+	# Fix up paths
+	sed -i "s:/sbin/syslogd:/usr/sbin/syslogd:g" psad.conf || die "fix_psad_conf failed"
+	sed -i "s:/sbin/syslog-ng:/usr/sbin/syslog-ng:g" psad.conf || die "fix_psad_conf failed"
+	sed -i "s:/bin/uname:/usr/bin/uname:g" psad.conf || die "fix_psad_conf failed"
+	sed -i "s:/bin/mknod:/usr/bin/mknod:g" psad.conf || die "fix_psad_conf failed"
 }

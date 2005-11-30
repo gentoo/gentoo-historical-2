@@ -1,14 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/dcopc/dcopc-3.5.0_beta2.ebuild,v 1.1 2005/10/19 18:38:41 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/dcopc/dcopc-3.5.0_beta2.ebuild,v 1.1.1.1 2005/11/30 10:13:47 chriswhite Exp $
 
 KMNAME=kdebindings
-MAXKDEVER=$PV
+MAXKDEVER=3.5.0_rc1
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta
 
 DESCRIPTION="C bindings for DCOP"
-KEYWORDS="~amd64" # broken according to upstream - 3.4a1 README=
+KEYWORDS="~amd64 ~x86" # broken according to upstream - 3.4a1 README=
 DEPEND="=dev-libs/glib-1.2*
 	=x11-libs/gtk+-1.2*"
 

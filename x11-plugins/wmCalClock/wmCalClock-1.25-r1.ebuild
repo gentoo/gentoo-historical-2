@@ -1,8 +1,9 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmCalClock/wmCalClock-1.25-r1.ebuild,v 1.1 2002/11/03 15:54:24 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmCalClock/wmCalClock-1.25-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:55 chriswhite Exp $
 
-S=${WORKDIR}/${P}/Src
+IUSE=""
+
 DESCRIPTION="WMaker DockApp: A Calendar clock with antialiased text."
 SRC_URI="http://nis-www.lanl.gov/~mgh/WindowMaker/${P}.tar.gz"
 HOMEPAGE="http://nis-www.lanl.gov/~mgh/WindowMaker/DockApps.shtml"
@@ -11,16 +12,30 @@ DEPEND="virtual/x11"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc sparc64"
+KEYWORDS="x86 sparc alpha amd64 ~mips ppc ppc64"
 
-src_compile() {
-	emake || die
+S=${WORKDIR}/${P}/Src
+
+src_unpack()
+{
+	unpack ${A}
+	cd ${S}
+
+	# remove unneeded SYSTEM variable from Makefile, fixing bug #105730
+	cd ${S}
+	sed -i -e "s:\$(SYSTEM)::" Makefile
 }
 
-src_install () {
+src_compile()
+{
+	emake CFLAGS="${CFLAGS}" || die "Compilation failed"
+}
+
+src_install()
+{
 	dobin ${PN}
 	doman ${PN}.1
 
 	cd ..
-	dodoc BUGS CHANGES COPYING HINTS INSTALL README TODO
+	dodoc BUGS CHANGES HINTS README TODO
 }

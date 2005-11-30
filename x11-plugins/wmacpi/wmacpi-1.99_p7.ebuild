@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmacpi/wmacpi-1.99_p7.ebuild,v 1.1 2004/08/20 03:01:35 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmacpi/wmacpi-1.99_p7.ebuild,v 1.1.1.1 2005/11/30 10:10:49 chriswhite Exp $
 
 IUSE=""
 DESCRIPTION="WMaker DockApp: ACPI status monitor for laptops"
@@ -12,7 +12,7 @@ SRC_URI="http://himi.org/wmacpi-ng/download/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~amd64 ~ppc"
+KEYWORDS="x86 -sparc amd64 -ppc"
 
 DEPEND="virtual/x11
 	>=x11-libs/libdockapp-0.4.0-r1"

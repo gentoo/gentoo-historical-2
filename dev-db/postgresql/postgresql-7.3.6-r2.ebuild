@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.3.6-r2.ebuild,v 1.1 2004/07/18 08:42:36 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.3.6-r2.ebuild,v 1.1.1.1 2005/11/30 10:11:43 chriswhite Exp $
 
-inherit flag-o-matic
+inherit gnuconfig flag-o-matic java-pkg
 
 DESCRIPTION="sophisticated Object-Relational DBMS"
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://postgresql/source/v${PV}/${PN}-base-${PV}.tar.bz2
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~hppa ~ia64 ~mips"
+KEYWORDS="x86 ~ppc ~sparc ~alpha ~amd64 ~hppa ~ia64 ~mips"
 IUSE="doc java libg++ nls pam perl python readline ssl tcltk zlib"
 
 DEPEND="virtual/libc
@@ -24,7 +24,7 @@ DEPEND="virtual/libc
 	tcltk? ( >=dev-lang/tcl-8 >=dev-lang/tk-8.3.3-r1 )
 	perl? ( >=dev-lang/perl-5.6.1-r2 )
 	python? ( >=dev-lang/python-2.2 dev-python/egenix-mx-base )
-	java? ( >=virtual/jdk-1.3* >=dev-java/ant-1.3
+	java? ( >=virtual/jdk-1.3 >=dev-java/ant-1.3
 		dev-java/java-config )
 	ssl? ( >=dev-libs/openssl-0.9.6-r1 )
 	nls? ( sys-devel/gettext )"
@@ -35,7 +35,7 @@ RDEPEND="virtual/libc
 	tcltk? ( >=dev-lang/tcl-8 )
 	perl? ( >=dev-lang/perl-5.6.1-r2 )
 	python? ( >=dev-lang/python-2.2 )
-	java? ( >=virtual/jdk-1.3* )
+	java? ( >=virtual/jdk-1.3 )
 	ssl? ( >=dev-libs/openssl-0.9.6-r1 )"
 
 PG_DIR="/var/lib/postgresql"
@@ -50,14 +50,14 @@ pkg_setup() {
 			eerror "pg_restore to import them when you have upgraded completely."
 			eerror "You must remove your entire database directory to continue."
 			eerror "(database directory = ${PG_DIR})."
-			die
+			exit 1
 		fi
 	fi
 }
 
 check_java_config() {
 	JDKHOME="`java-config --jdk-home`"
-	if [[ -z ${JDKHOME} || ! -d ${JDKHOME} ]]; then
+	if [[ -z "${JDKHOME}" || ! -d "${JDKHOME}" ]]; then
 		NOJDKERROR="You need to use java-config to set your JVM to a JDK!"
 		eerror "${NOJDKERROR}"
 		die "${NOJDKERROR}"
@@ -93,13 +93,16 @@ src_compile() {
 	# Gerk - Nov 26, 2002
 	use ppc && CFLAGS="-pipe -fsigned-char"
 
+	# Detect mips systems properly
+	gnuconfig_update
+
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man \
 		--host=${CHOST} \
-		--docdir=/usr/share/doc/${P} \
+		--docdir=/usr/share/doc/${PF} \
 		--libdir=/usr/lib \
+		--includedir=/usr/include/postgresql/pgsql \
 		--enable-depend \
-		--with-gnu-ld \
 		--with-maxbackends=1024 \
 		$myconf || die
 
@@ -109,10 +112,7 @@ src_compile() {
 }
 
 src_install() {
-	addwrite "/usr/share/man/man3/Pg.3pm"
-
-	if use perl
-	then
+	if use perl; then
 		mv ${S}/src/pl/plperl/Makefile ${S}/src/pl/plperl/Makefile_orig
 		sed -e "s:(INST_DYNAMIC) /usr/lib:(INST_DYNAMIC) ${D}/usr/lib:" \
 			${S}/src/pl/plperl/Makefile_orig > ${S}/src/pl/plperl/Makefile
@@ -121,8 +121,8 @@ src_install() {
 			${S}/src/pl/plperl/GNUmakefile_orig > ${S}/src/pl/plperl/GNUmakefile
 	fi
 
-	make DESTDIR=${D} LIBDIR=${D}/usr/lib install || die
-	make DESTDIR=${D} install-all-headers || die
+	make DESTDIR=${D} includedir_server=/usr/include/postgresql/server includedir_internal=/usr/include/postgresql/internal LIBDIR=${D}/usr/lib install || die
+	make DESTDIR=${D} includedir_server=/usr/include/postgresql/server includedir_internal=/usr/include/postgresql/internal install-all-headers || die
 	cd ${S}/contrib
 	make DESTDIR=${D} LIBDIR=${D}/usr/lib install || die
 	cd ${S}
@@ -130,12 +130,17 @@ src_install() {
 	dodoc contrib/adddepend/*
 
 	if use java; then
-		dojar ${D}/usr/share/postgresql/java/postgresql.jar
+		# we need to remove jar file after dojar; otherwise two same jar
+		# file are installed.
+		java-pkg_dojar ${D}/usr/share/postgresql/java/postgresql.jar
 		rm ${D}/usr/share/postgresql/java/postgresql.jar
 	fi
 
-	dodir /usr/include/postgresql/pgsql
-	cp ${D}/usr/include/*.h ${D}/usr/include/postgresql/pgsql
+	# backward compatibility
+	for i in ${D}/usr/include/postgresql/pgsql/*
+	do
+		ln -s ${i} ${D}/usr/include/
+	done
 
 	cd ${S}/doc
 	dodoc FAQ* README.* TODO bug.template
@@ -163,7 +168,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Execute the following command"
-	einfo "ebuild  /var/db/pkg/dev-db/${PF}/${PF}.ebuild config"
+	einfo "emerge --config =${PF}"
 	einfo "to setup the initial database environment."
 	einfo ""
 	einfo "Make sure the postgres user in /etc/passwd has an account setup with /bin/bash as the shell"
@@ -183,7 +188,7 @@ pkg_config() {
 			eerror "Postgres ${PV} cannot upgrade your existing databases."
 			eerror "You must remove your entire database directory to continue."
 			eerror "(database directory = ${PG_DIR})."
-			die
+			exit 1
 		else
 			einfon "A postgres data directory already exists from version "; cat ${PG_DIR}/data/PG_VERSION
 			einfo "Read the documentation to check how to upgrade to version ${PV}."

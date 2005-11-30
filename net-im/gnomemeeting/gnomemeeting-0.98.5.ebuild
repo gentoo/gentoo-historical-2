@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-0.98.5.ebuild,v 1.1 2003/09/16 15:02:27 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-0.98.5.ebuild,v 1.1.1.1 2005/11/30 10:09:42 chriswhite Exp $
 
-inherit gnome2
+inherit gnome2 eutils
 
 DESCRIPTION="Gnome NetMeeting client"
 HOMEPAGE="http://www.gnomemeeting.org"
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.gnomemeeting.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc -sparc"
+KEYWORDS="x86 ppc ~sparc"
 IUSE="sdl ssl ipv6"
 
 DEPEND=">=dev-libs/pwlib-1.5.0
@@ -27,9 +27,9 @@ DEPEND=">=dev-libs/pwlib-1.5.0
 	>=x11-libs/gtk+-2.0.0
 	>=dev-libs/glib-2.0.0
 	>=gnome-base/gconf-2.0
-	>=dev-libs/libxml2-2.5.11
+	>=dev-libs/libxml2-2.6.1
 	>=media-sound/esound-0.2.28
-	>=gnome-base/ORBit2-2.5.0"
+	>=gnome-base/orbit-2.5.0"
 
 RDEPEND="${DEPEND}
 	>=dev-util/pkgconfig-0.12.0
@@ -37,6 +37,11 @@ RDEPEND="${DEPEND}
 	dev-lang/perl"
 
 MAKEOPTS="${MAKEOPTS} -j1"
+
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${P}-libxml_2.6.patch
+}
 
 src_compile() {
 
@@ -47,7 +52,7 @@ src_compile() {
 	myconf="${myconf} --with-openh323-includes=/usr/include/openh323"
 	myconf="${myconf} --with-openh323-libs=/usr/lib"
 
-	if [ -n "`use ssl`" ]; then
+	if use ssl; then
 		myconf="${myconf} --with-openssl-libs=/usr/lib"
 		myconf="${myconf} --with-openssl-includes=/usr/include/openssl"
 	fi

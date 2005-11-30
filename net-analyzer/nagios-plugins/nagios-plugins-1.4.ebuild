@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-1.4.ebuild,v 1.1 2005/02/15 12:03:12 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-1.4.ebuild,v 1.1.1.1 2005/11/30 10:12:20 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/nagiosplug/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc sparc x86"
 IUSE="ssl samba mysql postgres ldap snmp nagios-dns nagios-ntp nagios-ping nagios-ssh nagios-game ups ipv6"
 
 # radius - awaiting keywods
@@ -50,29 +50,35 @@ src_compile() {
 	#fi
 
 	./configure \
-		`use_with mysql` \
-		`use_with postgress` \
-		`use with ssl openssl` \
-		`use with ipv6` \
+		$(use_with mysql) \
+		$(use_with postgres) \
+		$(use_with ssl openssl) \
+		$(use_with ipv6) \
 		--host=${CHOST} \
 		--prefix=/usr/nagios \
 		--with-nagios-user=nagios \
 		--sysconfdir=/etc/nagios \
 		--infodir=/usr/share/info \
 		--mandir=/usr/share/man || die "./configure failed"
-	make || die
+
+	#fix problem with additional -
+	sed -i -e 's:/bin/ps -axwo:/bin/ps axwo:g' config.h || die "sed failed"
+
+	make || die "make failed"
 }
 
 src_install() {
 	mv ${S}/contrib/check_compaq_insight.pl ${S}/contrib/check_compaq_insight.pl.msg
 	chmod +x ${S}/contrib/*.pl
 
-	sed -i -e '1s;#!.*;#!/usr/bin/perl -w;' ${S}/contrib/*.pl
-	sed -i -e '30s/use lib utils.pm;/use utils;/' ${S}/contrib/check_file_age.pl
+	sed -i -e '1s;#!.*;#!/usr/bin/perl -w;' ${S}/contrib/*.pl || die "sed failed"
+	sed -i -e '30s/use lib utils.pm;/use utils;/' \
+		${S}/plugins-scripts/check_file_age.pl || die "sed failed"
 
-	dodoc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS BUGS CHANGES CODING COPYING
-	Changelog FAQ INSTALL LEGAL NEWS README REQUIREMENTS SUPPORT
-	make DESTDIR=${D} install || die
+	dodoc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS BUGS CHANGES CODING COPYING \
+		Changelog FAQ INSTALL LEGAL NEWS README REQUIREMENTS SUPPORT
+
+	make DESTDIR="${D}" install || die "make install failed"
 
 	if use mysql || use postgres; then
 		dodir /usr/nagios/libexec
@@ -84,13 +90,15 @@ src_install() {
 	mv ${S}/contrib ${D}/usr/nagios/libexec/contrib
 
 	chown -R nagios:nagios ${D}/usr/nagios/libexec || die "Failed Chown of ${D}/usr/nagios/libexec"
+
+	chmod -R o-rwx ${D}/usr/nagios/libexec "Failed Chmod of ${D}/usr/nagios/libexec"
 }
 
 pkg_postinst() {
 	einfo "This ebuild has a number of USE flags which determines what nagios isable to monitor."
 	einfo "Depending on what you want to monitor with nagios, some or all of these USE"
 	einfo "flags need to be set for nagios to function correctly."
-	echo ""
+	echo
 	einfo "contrib plugins are installed into /usr/nagios/libexec/contrib"
 }
 

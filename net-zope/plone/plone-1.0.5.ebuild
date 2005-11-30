@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/plone/plone-1.0.5.ebuild,v 1.1 2003/10/10 21:19:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/plone/plone-1.0.5.ebuild,v 1.1.1.1 2005/11/30 10:11:03 chriswhite Exp $
 
 inherit zproduct
 S="${WORKDIR}/CMFPlone-${PV}"
@@ -9,8 +9,9 @@ DESCRIPTION="A Zope Content Management System, based on Zope CMF."
 HOMEPAGE="http://plone.org"
 SRC_URI="mirror://sourceforge/plone/CMFPlone${PV}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
-RDEPEND="=net-zope/cmf-1.3.1*
+KEYWORDS="x86 ~ppc"
+IUSE=""
+RDEPEND="=net-zope/cmf-1.3*
 	>=net-zope/formulator-1.2.0
 	${RDEPEND}"
 
@@ -29,5 +30,4 @@ pkg_postinst()
 {
 	zproduct_pkg_postinst
 	einfo "---> NOTE: i18n folder location: ${ZP_DIR}/${PF}"
-	ewarn "Using >net-zope/cmf-1.3.1 will break this product."
 }

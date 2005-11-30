@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.5.1.ebuild,v 1.1 2005/03/06 23:21:49 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.5.1.ebuild,v 1.1.1.1 2005/11/30 10:10:06 chriswhite Exp $
 
 inherit eutils
 
@@ -18,12 +18,12 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64 ~ppc64"
+KEYWORDS="~alpha ~amd64 ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="doc"
 
 DEPEND="virtual/libc
 	sys-apps/sed
-	x11-libs/qt"
+	=x11-libs/qt-3*"
 
 LIBDIR="/usr/$(get_libdir)"
 
@@ -32,7 +32,7 @@ src_unpack() {
 	sed -i -e "s:DESTDIR = \$(QTDIR)/lib:DESTDIR = \${destdir}:" qscintilla.pro
 	echo -e "\nQMAKE_CFLAGS_RELEASE=${CFLAGS} -w\nQMAKE_CXXFLAGS_RELEASE=${CXXFLAGS} -w\nQMAKE_LFLAGS_RELEASE=${LDFLAGS}" >> qscintilla.pro
 
-	qmake -o Makefile qscintilla.pro
+	${QTDIR}/bin/qmake -o Makefile qscintilla.pro
 	epatch ${FILESDIR}/${PN}-1.5-sandbox.patch
 }
 

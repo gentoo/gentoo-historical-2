@@ -1,35 +1,47 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsat/nsat-1.5.ebuild,v 1.1 2003/01/07 16:05:34 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsat/nsat-1.5.ebuild,v 1.1.1.1 2005/11/30 10:12:06 chriswhite Exp $
 
-IUSE="pcap X"
+inherit eutils
+
+DESCRIPTION="Network Security Analysis Tool, an application-level network security scanner"
+HOMEPAGE="http://nsat.sourceforge.net/"
+SRC_URI="mirror://sourceforge/nsat/${P}.tgz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~ppc ~sparc x86"
+IUSE="X"
+
+RDEPEND="X? ( virtual/x11 dev-lang/tk )
+	virtual/libpcap"
+
+DEPEND="$RDEPEND >=sys-devel/autoconf-2.58"
 
 S=${WORKDIR}/${PN}
-DESCRIPTION="Network Security Analysis Tool, an application-level network security scanner"
-SRC_URI="mirror://sourceforge/nsat/${P}.tgz"
-HOMEPAGE="http://nsat.sourceforge.net/"
-
-DEPEND="pcap? ( >=net-libs/libpcap-0.7.1-r1 )
-	X? ( virtual/x11 )"
-RDEPEND=${DEPEND}
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	mv nsat.conf nsat.conf.orig
-	sed "s:^#CGIFile /usr/local/share/nsat/nsat.cgi$:#CGIFile /usr/share/nsat/nsat.cgi:" \
-		nsat.conf.orig > nsat.conf
+
+	epatch ${FILESDIR}/${P}-configure.patch
+
+	sed -i "s:^#CGIFile /usr/local/share/nsat/nsat.cgi$:#CGIFile /usr/share/nsat/nsat.cgi:g" \
+		nsat.conf
+	sed -i "s:/usr/local:/usr:g" Makefile.in
+	sed -i "s:/usr/local:/usr:g" tools/xnsat
+	sed -i -e "s:/usr/local/share/nsat/nsat.conf:/etc/nsat/nsat.conf:g" \
+		-e "s:/usr/local/share/nsat/nsat.cgi:/usr/share/nsat/nsat.cgi:g" \
+		src/lang.h
 }
 
 src_compile() {
-	econf || die
+	WANT_AUTOCONF=2.5
+	autoconf
 
-	# Parallel make doesn't work.
-	make || die "compile problem"
+	econf $( use_with X x ) || die
+
+	make|| die "compile problem"
 }
 
 src_install () {

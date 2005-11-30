@@ -1,6 +1,6 @@
 DSPAM for Gentoo qmail
-Author - $Author: st_lim $
-Version - $Id: README.qmail,v 1.1 2004/06/26 16:45:28 st_lim Exp $
+Author - $Author: chriswhite $
+Version - $Id: README.qmail,v 1.1.1.1 2005/11/30 10:11:58 chriswhite Exp $
 
 These are some steps I took to use dspam with qmail.  If you have a better
 method of using qmail with DSPAM, do send a message to me at

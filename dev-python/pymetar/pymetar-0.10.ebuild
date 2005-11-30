@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pymetar/pymetar-0.10.ebuild,v 1.1 2004/08/09 17:48:11 lucass Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pymetar/pymetar-0.10.ebuild,v 1.1.1.1 2005/11/30 10:10:17 chriswhite Exp $
 
 inherit distutils
 

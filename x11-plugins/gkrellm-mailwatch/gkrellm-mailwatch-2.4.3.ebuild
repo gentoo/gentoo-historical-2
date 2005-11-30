@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-mailwatch/gkrellm-mailwatch-2.4.3.ebuild,v 1.1 2004/06/22 14:16:08 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-mailwatch/gkrellm-mailwatch-2.4.3.ebuild,v 1.1.1.1 2005/11/30 10:10:42 chriswhite Exp $
+
+inherit multilib
 
 IUSE=""
 S=${WORKDIR}/${PN}
@@ -12,14 +14,14 @@ DEPEND="=app-admin/gkrellm-2*"
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha amd64 ppc ~sparc ~x86"
 
 src_compile() {
 	emake || die
 }
 
 src_install () {
-	exeinto /usr/lib/gkrellm2/plugins
+	exeinto /usr/$(get_libdir)/gkrellm2/plugins
 	doexe mailwatch.so
 	dodoc README Changelog
 }

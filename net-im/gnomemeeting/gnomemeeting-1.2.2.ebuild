@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.2.2.ebuild,v 1.1 2005/09/12 20:11:10 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.2.2.ebuild,v 1.1.1.1 2005/11/30 10:09:42 chriswhite Exp $
 
 inherit gnome2 eutils flag-o-matic
 
@@ -39,6 +39,9 @@ DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0
 	>=dev-util/intltool-0.20
 	dev-lang/perl
+	dev-perl/XML-Parser
+	>=sys-devel/automake-1.7
+	sys-devel/autoconf
 	gnome? ( app-text/scrollkeeper )"
 
 src_unpack() {
@@ -50,6 +53,8 @@ src_unpack() {
 
 	# Relax dbus version check and fix installation of service file
 	epatch ${FILESDIR}/${PN}-1.2.2-dbus.diff
+	WANT_AUTOMAKE=1.7 automake || die
+	autoconf || die
 }
 
 src_compile() {

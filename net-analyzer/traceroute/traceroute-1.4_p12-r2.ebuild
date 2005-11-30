@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/traceroute/traceroute-1.4_p12-r2.ebuild,v 1.1 2003/11/29 23:29:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/traceroute/traceroute-1.4_p12-r2.ebuild,v 1.1.1.1 2005/11/30 10:12:31 chriswhite Exp $
 
-inherit eutils gnuconfig
+inherit eutils gnuconfig flag-o-matic
 
 MY_P=${PN}-1.4a12
 S=${WORKDIR}/${MY_P}
@@ -12,9 +12,10 @@ SRC_URI="ftp://ee.lbl.gov/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips amd64"
+KEYWORDS="x86 ppc sparc mips alpha arm amd64 ppc64 ia64 hppa"
+IUSE=""
 
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
 DEPEND="${RDEPEND}
 	sys-devel/autoconf
 	>=sys-apps/sed-4"
@@ -29,8 +30,10 @@ src_unpack() {
 src_compile() {
 	# fixes bug #21122
 	# -taviso
-	use alpha && gnuconfig_update
-	use amd64 && gnuconfig_update
+	gnuconfig_update
+
+	# use non-lazy bindings for this suid app
+	append-ldflags -Wl,-z,now
 
 	# assume linux by default #26699
 	# -taviso
@@ -38,13 +41,14 @@ src_compile() {
 	autoreconf
 
 	econf || die
-	emake || die
+	emake LIBS="${LDFLAGS}" || die
 }
 
-src_install () {
+src_install() {
 	dodir /usr/sbin
 	make DESTDIR=${D} install || die
-	fperms 0755 /usr/sbin/traceroute
+	fowners root:wheel /usr/sbin/traceroute
+	fperms 4710 /usr/sbin/traceroute
 
 	doman traceroute.8
 	dodoc CHANGES INSTALL

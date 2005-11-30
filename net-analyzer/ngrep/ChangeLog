@@ -1,8 +1,105 @@
 # ChangeLog for net-analyzer/ngrep
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ngrep/ChangeLog,v 1.1 2002/02/01 21:53:32 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ngrep/ChangeLog,v 1.1.1.1 2005/11/30 10:12:17 chriswhite Exp $
 
+*ngrep-1.44 (05 Jul 2005)
+
+  05 Jul 2005; Daniel Black <dragonheart@gentoo.org> +ngrep-1.44.ebuild:
+  version bump
+
+*ngrep-1.43 (26 Feb 2005)
+
+  26 Feb 2005; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  -files/ngrep-1.41-fix-HAVE_DUMB_UDPHDR-test.patch,
+  -files/ngrep-1.41-libpcap-include.patch, -ngrep-1.40.ebuild,
+  -ngrep-1.41.ebuild, +ngrep-1.43.ebuild:
+  Version bump as per bug #67671 thanks to author Jordan Ritter and reporter
+  gentoo@ma3s.de. Old version cleanout
+
+  20 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> ngrep-1.42.ebuild:
+  Fix docs that are installed; Thanks to vanquirius in bug 82719.
+
+  31 Jan 2005; Daniel Black <dragonheart@gentoo.org> ngrep-1.40.ebuild,
+  ngrep-1.41.ebuild, ngrep-1.42.ebuild:
+  virtual/libpcap transition
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Oct 2004; Eldad Zack <eldad@gentoo.org> -files/ngrep-1.38-r2-gentoo.diff,
+  ngrep-1.42.ebuild:
+  Tidy.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> ngrep-1.42.ebuild:
+  Stable on amd64.
+
+  26 Aug 2004; Tom Gall <tgall@gentoo.org> ngrep-1.42.ebuild:
+  stable on ppc64, bug #58532
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> ngrep-1.42.ebuild:
+  Stable on alpha.
+
+  19 Aug 2004; Jason Wever <weeve@gentoo.org> ngrep-1.42.ebuild:
+  Stable on sparc.
+
+  16 Aug 2004; Eldad Zack <eldad@gentoo.org> ngrep-1.42.ebuild:
+  x86 stable
+
+  26 Jul 2004; Lina Pezzella <j4rg0n@gentoo.org> ngrep-1.42.ebuild:
+  Stable macos.
+
+  09 Jul 2004; Eldad Zack <eldad@gentoo.org> ngrep-1.41.ebuild:
+  Tidy up.
+
+*ngrep-1.42 (05 Jul 2004)
+
+  05 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  +files/ngrep-1.42-libpcap-include.patch, +ngrep-1.42.ebuild:
+  Version bump. Patch to autoconf contributed by lo0ol@eyou.com. Closes #52000.
+  added metadata.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ngrep-1.41.ebuild:
+  Stable amd64.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> ngrep-1.40.ebuild,
+  ngrep-1.41.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> ngrep-1.41.ebuild:
+  Add inherit eutils
+
+  06 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> ngrep-1.41.ebuild,
+  files/ngrep-1.41-fix-HAVE_DUMB_UDPHDR-test.patch,
+  files/ngrep-1.41-libpcap-include.patch:
+  Fix compilation aginst the new libpcap include files.
+
+*ngrep-1.41 (01 Feb 2004)
+
+  01 Feb 2004; Martin Schlemmer <azarah@gentoo.org> ngrep-1.41.ebuild:
+  Mark stable, bug #32535.
+
+  24 Nov 2003; Martin Holzer <mholzer@gentoo.org> ngrep-1.40.ebuild,
+  ngrep-1.41.ebuild:
+  adding RESTRICT="nomirror"
+
+  03 Nov 2003; Martin Schlemmer <azarah@gentoo.org> ngrep-1.41.ebuild,
+  files/ngrep-1.41-fix-HAVE_DUMB_UDPHDR-test.patch:
+  Fix test for HAVE_DUMB_UDPHDR to be in proper C format, closing bug #32535.
+
+*ngrep-1.41 (10 Aug 2003)
+
+  10 Aug 2003; Jon Portnoy <avenj@gentoo.org> ngrep-1.41.ebuild :
+  Version bump.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *ngrep-1.40 (1 Feb 2002)
+
+  10 Feb 2003; Peter Johanson <latexer@gentoo.org> ngrep-1.40.ebuild :
+  Added ~alpha to KEYWORDS
+
+  30 Nov 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> ngrep-1.40:
+  Added ppc keyword
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

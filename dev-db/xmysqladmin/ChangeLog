@@ -1,8 +1,29 @@
 # ChangeLog for dev-db/xmysqladmin
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-db/xmysqladmin/ChangeLog,v 1.1 2002/02/01 21:53:11 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/xmysqladmin/ChangeLog,v 1.1.1.1 2005/11/30 10:11:38 chriswhite Exp $
+
+  10 Jul 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  xmysqladmin-1.0.ebuild:
+  Added ~amd64 keyword.
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> xmysqladmin-1.0.ebuild:
+  sync IUSE (missing), trim trailing whitespace
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> xmysqladmin-1.0.ebuild:
+  Don't assign default to S; header fix
+
+  16 Jul 2003; Christian Birchinger <joker@gentoo.org> xmysqladmin-1.0.ebuild:
+  Added sparc stable keyword
 
 *xmysqladmin-1.0 (1 Feb 2002)
+
+  27 Nov 2002; Martin Holzer <mholzer@gentoo.org> xmysqladmin-1.0.ebuild :
+
+  Added mysql dependency. Fixes #5165.
+
+  12 Sep 2002; Ryan Phillips <rphillips@gentoo.org> xmysqladmin-1.0.ebuild :
+
+  Fixed sed statement.  Fixes #7797.  Submitted by David Morel
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

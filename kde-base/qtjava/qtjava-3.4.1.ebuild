@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/qtjava/qtjava-3.4.1.ebuild,v 1.1 2005/05/25 21:23:14 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/qtjava/qtjava-3.4.1.ebuild,v 1.1.1.1 2005/11/30 10:13:47 chriswhite Exp $
 
 KMNAME=kdebindings
 KM_MAKEFILESREV=1
-MAXKDEVER=$PV
+MAXKDEVER=3.4.2
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta
 
 DESCRIPTION="Java bindings for QT"
 HOMEPAGE="http://developer.kde.org/language-bindings/java/qtjava.html"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE=""
 DEPEND="virtual/jdk"
 PATCHES="$FILESDIR/no-gtk-glib-check.diff"

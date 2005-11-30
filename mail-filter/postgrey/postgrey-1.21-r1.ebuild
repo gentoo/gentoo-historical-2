@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/postgrey-1.21-r1.ebuild,v 1.1 2005/09/04 13:03:12 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/postgrey-1.21-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:02 chriswhite Exp $
 
 inherit eutils
 
@@ -20,7 +20,7 @@ RDEPEND=">=dev-lang/perl-5.6.0
 	>=sys-libs/db-4.1
 	>=mail-mta/postfix-2.1.0"
 
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 x86"
 
 pkg_setup() {
 	enewgroup ${PN}
@@ -47,7 +47,7 @@ src_install () {
 	doins postgrey_whitelist_clients postgrey_whitelist_recipients
 
 	# documentation
-	dodoc Changes COPYING README
+	dodoc Changes README
 
 	# init.d + conf.d files
 	newinitd ${FILESDIR}/${PN}.rc.new ${PN}

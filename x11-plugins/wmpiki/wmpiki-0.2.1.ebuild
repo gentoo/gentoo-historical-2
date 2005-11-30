@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpiki/wmpiki-0.2.1.ebuild,v 1.1 2004/07/08 13:02:17 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmpiki/wmpiki-0.2.1.ebuild,v 1.1.1.1 2005/11/30 10:10:41 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI="http://clay.ll.pl/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~sparc"
 
 DEPEND="virtual/x11"
 

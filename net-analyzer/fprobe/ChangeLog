@@ -1,6 +1,38 @@
 # ChangeLog for net-analyzer/fprobe
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fprobe/ChangeLog,v 1.1 2004/08/04 21:24:16 squinky86 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fprobe/ChangeLog,v 1.1.1.1 2005/11/30 10:12:29 chriswhite Exp $
+
+  29 Aug 2005; <dang@gentoo.org> fprobe-1.1.ebuild:
+  Marked ~amd64
+
+*fprobe-1.1 (03 Feb 2005)
+
+  03 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> -fprobe-1.0.6.ebuild,
+  +fprobe-1.1.ebuild:
+  Version bump for sec bug 80269; keeping keywords. removed vulnerable version.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> fprobe-1.0.6.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*fprobe-1.0.6 (27 Sep 2004)
+
+  27 Sep 2004; Jon Hood <squinky86@gentoo.org> -fprobe-1.0.4.ebuild,
+  -fprobe-1.0.5.ebuild, +fprobe-1.0.6.ebuild:
+  Version bump, #65544, thanks lewk.
+
+  15 Sep 2004; Jon Hood <squinky86@gentoo.org> fprobe-1.0.5.ebuild:
+  Stable on x86.
+
+  04 Sep 2004; Jon Hood <squinky86@gentoo.org> fprobe-1.0.4.ebuild:
+  Stable on x86.
+
+  29 Aug 2004; David Holm <dholm@gentoo.org> fprobe-1.0.5.ebuild:
+  Added to ~ppc.
+
+*fprobe-1.0.5 (16 Aug 2004)
+
+  16 Aug 2004; Jon Hood <squinky86@gentoo.org> +fprobe-1.0.5.ebuild:
+  Version bump.
 
 *fprobe-1.0.4 (04 Aug 2004)
 

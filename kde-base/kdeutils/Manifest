@@ -1,14 +1,33 @@
-MD5 cda56391aea661fc0b8463734440a517 kdeutils-3.0.5b.ebuild 326
-MD5 6e0cd4c2c425fbf54e616da66523953b kdeutils-3.1.ebuild 371
-MD5 bb14ef05b7474da665a5513965a9e588 kdeutils-3.0.4.ebuild 315
-MD5 d50a78219e4ab6057ca3576370854a7c kdeutils-3.0.5a.ebuild 324
-MD5 0691898a870b0f00ce2e9fe3fd65bb71 kdeutils-2.2.2-r1.ebuild 522
-MD5 1353cd39da189359c2749a8e731450ed ChangeLog 3546
-MD5 bda81060ba609cfe65b9a61b508afbb9 kdeutils-3.1.1.ebuild 373
-MD5 91b4ffe4f39481359ec0f0dbd0b044dc files/digest-kdeutils-3.0.4 68
-MD5 f3aa73cde1897347bab9a94d797283ce files/digest-kdeutils-3.1.1 68
-MD5 833411a8feba0e3dca65b52e228b0cf8 files/digest-kdeutils-2.2.2-r1 136
-MD5 c75518e983f185a25a4348750ae1ca2f files/digest-kdeutils-3.0.5a 69
-MD5 c94af5761c9b62565499475ce2371863 files/digest-kdeutils-3.0.5b 69
-MD5 e02290749430420019b24b468f03dace files/kdeutils-2.2.2-gentoo.diff 857
-MD5 3d02df27e30b43ef656629bcdcea0c25 files/digest-kdeutils-3.1 66
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 ef10faf8a75483b606e5df6fba16e6cd ChangeLog 16221
+MD5 95a30bd883c334e2f6c5f417ac53c9c9 files/digest-kdeutils-3.3.2 68
+MD5 4534ccb147438685553826778c267aac files/digest-kdeutils-3.4.1 68
+MD5 5ec470abb58c9e1fe99f0410cb14dffd files/digest-kdeutils-3.4.2 68
+MD5 7693585dde083d1c2cc205db10692163 files/digest-kdeutils-3.4.3 68
+MD5 7693585dde083d1c2cc205db10692163 files/digest-kdeutils-3.4.3-r1 68
+MD5 84550abe96e8ef6f8f931c2e13b53a6e files/digest-kdeutils-3.5.0 68
+MD5 fca6164743bb92c10536a5d235d30a34 files/digest-kdeutils-3.5.0_beta2 69
+MD5 a1d922897e6bb939ad0ca099030009cc files/digest-kdeutils-3.5.0_rc1 72
+MD5 ba38338e687742fb5a9e7458de260898 files/digest-kdeutils-3.5_beta1 69
+MD5 e733c7ad1c42938d7b945ea0f6f563ab files/kdeutils-3.4-configure.patch 2539
+MD5 0ebe4d00a1fd5845db2172027d12f531 files/kdeutils-3.4.3-klaptopdaemon.patch 1895
+MD5 4d4886bdfe9b726be039bfa25d3ced38 files/kdeutils-3.5_rc1-unicode.patch 1236
+MD5 41ded646b6eaf390c425e03bb9d21df1 kdeutils-3.3.2.ebuild 395
+MD5 9981cd5b2ebaac3d28a6158e5f4b05c0 kdeutils-3.4.1.ebuild 556
+MD5 326614fcd8c1c2f949a93435d1ae2965 kdeutils-3.4.2.ebuild 869
+MD5 667d1b659f6e3ff7ffce9aefa5ce794b kdeutils-3.4.3-r1.ebuild 982
+MD5 195b86327e8bd5a018eba7ff40e80bda kdeutils-3.4.3.ebuild 875
+MD5 5d3b66abe017b84f259c0a9e1d00a306 kdeutils-3.5.0.ebuild 923
+MD5 93a37675dcf8f312f34d3b4d892bee0d kdeutils-3.5.0_beta2.ebuild 920
+MD5 e2fff0786e9586bb1026e79b598b99b2 kdeutils-3.5.0_rc1.ebuild 998
+MD5 d66758faf6f5acb722211615afe4c566 kdeutils-3.5_beta1.ebuild 780
+MD5 acc03a4b12bb0433a57e95bd253b9501 metadata.xml 156
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDhv6UntT9W3vfTuoRAvyCAJ0S0eD/yuwTUReTKSOS4ZCT/Tkt7gCgqX+z
+QlcBimQUT/2QbpBlPeEeYy8=
+=scPH
+-----END PGP SIGNATURE-----

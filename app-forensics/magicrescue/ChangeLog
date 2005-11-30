@@ -1,6 +1,22 @@
 # ChangeLog for app-forensics/magicrescue
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/magicrescue/ChangeLog,v 1.1 2005/01/26 03:00:07 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/magicrescue/ChangeLog,v 1.1.1.1 2005/11/30 10:09:53 chriswhite Exp $
+
+  16 Sep 2005; Daniel Black <dragonheart@gentoo.org>
+  -magicrescue-1.1.4.ebuild, +magicrescue-1.1.4-r1.ebuild:
+  fixed install paths as per bug #91937. Thanks Wormo for the patch
+
+*magicrescue-1.1.4-r1 (17 Sep 2005)
+
+  17 Sep 2005; Daniel Black <dragonheart@gentoo.org>  magicrescue-1.1.4-r1.ebuild files/digest-magicrescue-1.1.4-r1
+  # INSERT ENTRY HERE
+
+  07 Aug 2005; Simon Stelling <blubb@gentoo.org> magicrescue-1.1.4.ebuild:
+  added ~amd64 keyword
+
+  08 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  magicrescue-1.1.4.ebuild:
+  mark ~ppc
 
   26 Jan 2005; Daniel Black <dragonheart@gentoo.org> 
   +magicrescue-1.1.4.ebuild, +metadata.xml:

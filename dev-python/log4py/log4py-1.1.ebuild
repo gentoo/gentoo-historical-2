@@ -1,21 +1,21 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-python/log4py/log4py-1.1.ebuild,v 1.1 2002/11/03 21:17:49 roughneck Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/log4py/log4py-1.1.ebuild,v 1.1.1.1 2005/11/30 10:10:33 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit distutils
+
 DESCRIPTION="A python logging module similar to log4j"
-SRC_URI="http://www.its4you.at/downloads/files/${P}.tar.gz"
 HOMEPAGE="http://www.its4you.at/english/log4py.html"
+#SRC_URI="http://www.its4you.at/downloads/files/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/log4py/${P}.tar.gz"
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
 
 DEPEND="virtual/python"
 RDEPEND=""
-IUSE=""
-
-SLOT="0"
-KEYWORDS="x86 ppc sparc sparc64"
-LICENSE="MIT"
-
-inherit distutils
 
 src_install() {
 	mydoc="doc/*.* database/* log4py-test.py"
@@ -25,4 +25,3 @@ src_install() {
 	insinto /etc
 	doins log4py.conf
 }
-

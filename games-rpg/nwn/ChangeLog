@@ -1,14 +1,125 @@
-# ChangeLog for app-games/nwn
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/ChangeLog,v 1.1 2003/09/10 06:26:50 vapier Exp $
+# ChangeLog for games-rpg/nwn
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn/ChangeLog,v 1.1.1.1 2005/11/30 10:10:57 chriswhite Exp $
+
+  02 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild:
+  Added license checking and initial language support information.
+
+  01 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild:
+  fperm is supposed to be fperms.
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.65-r1.ebuild,
+  nwn-1.66.ebuild, nwn-1.66-r1.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  16 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66-r1.ebuild:
+  Fix fixinstall not being executable.
+
+  30 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> files/fixinstall:
+  Made cosmetic fix to fixinstall script.
+
+  22 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/nwn-1.65-fixinstall, +files/fixinstall, nwn-1.65-r1.ebuild,
+  nwn-1.66.ebuild, nwn-1.66-r1.ebuild:
+  Fixed fixinstall script.
+
+*nwn-1.66-r1 (21 Sep 2005)
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
+  nwn-1.66.ebuild, +nwn-1.66-r1.ebuild:
+  Initial commit of new split ebuild for nwn (1.66-r1). It is currently
+  masked, but I'm hoping that this becomes the default for nwn quite shortly.
+  Closing bug #106484.
+
+  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.65-r1.ebuild,
+  nwn-1.66.ebuild:
+  needs app-arch/unzip
+
+  15 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.66.ebuild:
+  Fixing digest and disabling German support for the time being.
+
+*nwn-1.66 (13 Sep 2005)
+
+  13 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> +nwn-1.66.ebuild:
+  Version bump to 1.66 and added a couple more mirrors for
+  nwresources129.tar.gz. Closing bug #96640.
+
+*nwn-1.65-r1 (02 Jan 2005)
+
+  02 Jan 2005; Mike Frysinger <vapier@gentoo.org> +nwn-1.65-r1.ebuild,
+  -nwn-1.65.ebuild:
+  Fix array usage with $A so it actually works #76428 by Francois Guimond.
+
+  30 Dec 2004; Mike Frysinger <vapier@gentoo.org> nwn-1.65.ebuild:
+  Add localization support #61260 by dju.
+
+*nwn-1.65 (30 Dec 2004)
+
+  30 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  -files/nwn-1.30-fixinstall, -files/nwn-1.32-fixinstall,
+  -files/nwn-1.61-fixinstall, -files/nwn-1.62-fixinstall,
+  +files/nwn-1.65-fixinstall, -nwn-1.62.ebuild, +nwn-1.65.ebuild:
+  Version bump #74871 by Francois Guimond et al.
+
+  28 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.62.ebuild:
+  fix DESCRIPTION (bug #62066)
+
+  05 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.62.ebuild:
+  Changed license to NWN-EULA and closing bug #52507.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> nwn-1.62.ebuild:
+  Fix use invocation
+
+  24 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.62.ebuild:
+  Fixed typo and closing bug #50809.
+
+  18 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.62.ebuild:
+  Added RDEPEND for app-emulation/emul-linux-x86-baselibs on amd64.
+
+  17 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> +files/nwn.png,
+  nwn-1.62.ebuild:
+  Added .desktop entry and closing bug #50809.
+
+  17 May 2004; Danny van Dyk <kugelfang@gentoo.org> nwn-1.62.ebuild:
+  Marked ~amd64.
+
+  11 May 2004; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.30.ebuild,
+  nwn-1.32.ebuild, nwn-1.61-r1.ebuild:
+  clean older ebuilds
+
+  19 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.62.ebuild:
+  opengl isn't optional.
+
+*nwn-1.62 (28 Feb 2004)
+
+  28 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #43033 by Luca Santarelli.
+
+*nwn-1.61-r1 (14 Jan 2004)
+
+  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  I neglected to include the fix install script in the version bump #38351.
+
+*nwn-1.61 (03 Jan 2004)
+
+  03 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #36007.
+
+*nwn-1.32 (13 Oct 2003)
+
+  13 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #29316 and add helpful output #29505 and fix SRC_URI #31073.
+
+*nwn-1.30 (26 Jun 2003)
+
+  01 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> nwn-1.30.ebuild:
+  chown user.group -> chown user:group
 
   06 Sep 2003; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.30.ebuild:
   Added RESTRICT=fetch.  Closes bug #27548.
 
   29 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> nwn-1.30.ebuild:
   Added RESTRICT=fetch.  Closing bug #27548.
-
-*nwn-1.30 (26 Jun 2003)
 
   14 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
   Add updated ebuild from Daniel Mannarino <thesnark@operamail.com> #25162.

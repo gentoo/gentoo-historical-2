@@ -1,6 +1,74 @@
 # ChangeLog for dev-python/cheetah
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cheetah/ChangeLog,v 1.1 2004/01/18 12:18:55 liquidx Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cheetah/ChangeLog,v 1.1.1.1 2005/11/30 10:10:30 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> cheetah-0.9.17.ebuild:
+  Mark 0.9.17 stable on ia64
+
+*cheetah-0.9.18 (28 Aug 2005)
+
+  28 Aug 2005; Rob Cakebread <pythonhead@gentoo.org> +cheetah-0.9.18.ebuild:
+  Version bump.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> cheetah-0.9.17.ebuild:
+  add ~ia64
+
+  11 Aug 2005; Luis Medinas <metalgod@gentoo.org> cheetah-0.9.17.ebuild:
+  Added ~amd64 keywords. Closes bug #102045.
+
+  16 Jun 2005; Rob Cakebread <pythonhead@gentoo.org> cheetah-0.9.17.ebuild:
+  Examples were removed upstream, cleaned up doc installation
+
+*cheetah-0.9.17 (15 Jun 2005)
+
+  15 Jun 2005; Rob Cakebread <pythonhead@gentoo.org>
+  -cheetah-0.9.17_rc1.ebuild, +cheetah-0.9.17.ebuild:
+  Version bump. This is simply a version rename - no code changed according to
+  upstream. Thanks Tavis.
+
+*cheetah-0.9.17_rc1 (17 May 2005)
+
+  17 May 2005; Rob Cakebread <pythonhead@gentoo.org> -cheetah-0.9.15.ebuild,
+  -cheetah-0.9.16_alpha2.ebuild, -cheetah-0.9.16.ebuild,
+  +cheetah-0.9.17_rc1.ebuild:
+  Security bump. Removed vulnerable versions. bug#  92926
+
+*cheetah-0.9.16 (05 May 2005)
+
+  05 May 2005; Alastair Tse <liquidx@gentoo.org> +cheetah-0.9.16.ebuild:
+  version bump
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> cheetah-0.9.15.ebuild:
+  Stable on ppc.
+
+  19 Feb 2005; <gongloo@gentoo.org> cheetah-0.9.15.ebuild,
+  cheetah-0.9.16_alpha2.ebuild:
+  Stable on ppc-macos.
+
+*cheetah-0.9.16_alpha2 (12 Feb 2005)
+
+  12 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  +cheetah-0.9.16_alpha2.ebuild:
+  Version bump.
+
+  19 Jan 2005; <gongloo@gentoo.org> cheetah-0.9.15.ebuild:
+  Keyworded ~ppc-macos.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> cheetah-0.9.15.ebuild:
+  Stable on alpha.
+
+  18 Apr 2004; David Holm <dholm@gentoo.org> cheetah-0.9.15.ebuild:
+  Added to ~ppc.
+
+  22 Mar 2004; <kloeri@gentoo.org> cheetah-0.9.14.ebuild,
+  cheetah-0.9.15.ebuild:
+  QA, bug #45343.
+
+  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> cheetah-0.9.15.ebuild:
+  Stable on sparc.
 
   18 Jan 2004; Alastair Tse <liquidx@gentoo.org> cheetah-0.9.14.ebuild,
   cheetah-0.9.15.ebuild, metadata.xml:
@@ -9,7 +77,7 @@
   12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
   Added missing changelog entry.
 
-*Cheetah-0.9.15 (04 Apr 2003)
+*cheetah-0.9.15 (04 Apr 2003)
 
   22 May 2003; Arcady Genkin <agenkin@gentoo.org> :
   Marking stable on ~x86.
@@ -17,13 +85,13 @@
   04 Apr 2003; Alastair Tse <liquidx@gentoo.org> Cheetah-0.9.15.ebuild:
   version bump
 
-*Cheetah-0.9.15 (28 Jan 2003)
+*cheetah-0.9.15 (28 Jan 2003)
 
   28 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
   Updated to version 0.9.15a3.
   Sanified the ChangeLog.
  
-*Cheetah-0.9.14 (13 Aug 2002)
+*cheetah-0.9.14 (13 Aug 2002)
 
   13 Aug 2002; Joachim Blaabjerg <styx@gentoo.org> Cheetah-0.9.14.ebuild :
   Version bump.

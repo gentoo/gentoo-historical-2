@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd/jabberd-1.4.3-r5.ebuild,v 1.1 2005/05/21 18:35:51 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd/jabberd-1.4.3-r5.ebuild,v 1.1.1.1 2005/11/30 10:09:42 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="http://jabberd.jabberstudio.org/1.4/dist/jabberd-${PV}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~hppa ~sparc ~amd64 ~alpha"
+KEYWORDS="~alpha ~amd64 hppa ~ppc sparc x86"
 IUSE="ssl ldap ipv6 msn oscar yahoo icq"
 
 DEPEND="!net-im/jabber-server
@@ -111,7 +111,7 @@ src_install() {
 	local test_user=`grep ^jabber: /etc/passwd | cut -d: -f1`
 	if [ -z $test_user ]
 	then
-		enewuser jabber -1 /bin/false /var/spool/jabber jabber
+		enewuser jabber -1 -1 /var/spool/jabber jabber
 	fi
 
 	dodoc README UPGRADE ${FILESDIR}/README.Gentoo

@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrelltop/gkrelltop-2.2.4.ebuild,v 1.1 2004/06/22 14:06:36 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrelltop/gkrelltop-2.2.4.ebuild,v 1.1.1.1 2005/11/30 10:10:51 chriswhite Exp $
+
+inherit multilib
 
 DESCRIPTION="a GKrellM2 plugin which displays the top three processes"
 SRC_URI="http://psychology.rutgers.edu/~zaimi/html/${PN}/${PN}.${PV}.tgz"
@@ -8,11 +10,11 @@ HOMEPAGE="http://psychology.rutgers.edu/~zaimi/software.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~alpha ~ppc"
+KEYWORDS="alpha amd64 ppc sparc x86"
 
 IUSE=""
 
-DEPEND="=app-admin/gkrellm-2*"
+DEPEND=">=app-admin/gkrellm-2"
 
 src_compile() {
 	# Unfortunately, the supplied Makefile won't work properly on
@@ -27,6 +29,6 @@ src_compile() {
 
 src_install() {
 	dodoc README
-	insinto /usr/lib/gkrellm2/plugins
+	insinto /usr/$(get_libdir)/gkrellm2/plugins
 	doins gkrelltop2.so
 }

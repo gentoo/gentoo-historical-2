@@ -1,8 +1,14 @@
-MD5 95f4222fd519da209da60eebb868f127 ChangeLog 665
-MD5 2fa46e559efbe4ab335c11fbc2fa432e trafd-3.0.1.ebuild 1355
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 645a545c12a457cf67f558d1b0879c56 ChangeLog 1097
+MD5 8b6fd3efb633936d445ec960e7c0f3a3 trafd-3.0.1.ebuild 1293
+MD5 a76a71fdeb3c4668250f466c21a19183 metadata.xml 220
 MD5 1572089bdb3922ea1a0ff41ba2abdc5d files/digest-trafd-3.0.1 199
-MD5 30c99eb98b1c4a63681facea93ac8a38 files/digest-trafd-3.0.2.1 135
-MD5 4b6f61f2b3fd985efc935d1ec1f52ce2 tmp/trafd-3.0.1-gentoo.tar.bz2 2618
-MD5 7ba19d123d7872563287b69027b6f91f tmp/trafd-3.0.1-gentoo/trafd-3.0.1-gentoo.diff 7006
-MD5 23f0f2567787e35f0e6da761cbb04a84 tmp/trafd-3.0.1-gentoo/trafd.conf 38
-MD5 55ad374200b16f7c824ef6802bf252cf tmp/trafd-3.0.1-gentoo/trafd.init 486
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.0 (GNU/Linux)
+
+iD8DBQFB+xtbmdTrptrqvGERAr0rAJ47qVkMFJf42Tb0kWCwEuE3XjnsPACfcWmg
+JyZTUCXY5Iqq6GMiqFuMTN4=
+=eUbY
+-----END PGP SIGNATURE-----

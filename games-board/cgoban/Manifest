@@ -1,3 +1,4 @@
-MD5 d5957915301c2703744cdb6dd01b5d31 ChangeLog 914
-MD5 bd082b967ecbb6b1e096dd2cf02eb53b cgoban-1.9.12.ebuild 603
-MD5 af9d552579fbe9905bc5c46360d4f953 files/digest-cgoban-1.9.12 65
+MD5 df0209206ce6301f77992f21a9cb79b2 ChangeLog 1531
+MD5 a6753d5e4345e4ff3a1f41a6d4440e73 cgoban-1.9.14.ebuild 727
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 3dc18755aaa342e190dfba70d1736c6f files/digest-cgoban-1.9.14 65

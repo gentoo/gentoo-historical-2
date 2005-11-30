@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/razor-2.72.ebuild,v 1.1 2005/06/17 08:36:27 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/razor-2.72.ebuild,v 1.1.1.1 2005/11/30 10:11:53 chriswhite Exp $
 
 inherit perl-module
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://razor.sourceforge.net/"
 SRC_URI="mirror://sourceforge/razor/razor-agents-${PV}.tar.gz"
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
+KEYWORDS="alpha amd64 ppc ~ppc64 sparc x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"
@@ -34,7 +34,7 @@ pkg_postinst() {
 	einfo "mechanism. Registration is done with razor-admin -register. It has to be"
 	einfo "manually invoked in either of the following ways:"
 	einfo ""
-	einfo "To register user foo with 's1kret' as password: "
+	einfo "To register user foo with 's1kr3t' as password: "
 	einfo ""
 	einfo "razor-admin -register -user=foo -pass=s1kr3t"
 	einfo ""

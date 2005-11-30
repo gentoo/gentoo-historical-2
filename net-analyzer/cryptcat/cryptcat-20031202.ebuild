@@ -1,22 +1,22 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cryptcat/cryptcat-20031202.ebuild,v 1.1 2004/02/14 04:59:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cryptcat/cryptcat-20031202.ebuild,v 1.1.1.1 2005/11/30 10:12:21 chriswhite Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DEB_PVER=2
 MY_P=${PN}_${PV}
-DESCRIPTION="TCP/IP swiss army knife extended with twofish encryption"
+DESCRIPTION="netcat clone extended with twofish encryption"
 HOMEPAGE="http://farm9.org/Cryptcat/"
 SRC_URI="http://farm9.org/Cryptcat/${MY_P}.tar.gz
-	http://ftp.debian.org/debian/pool/main/c/cryptcat/${MY_P}-${DEB_PVER}.diff.gz"
+	mirror://debian/pool/main/c/cryptcat/${MY_P}-${DEB_PVER}.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc
-	>=sys-apps/sed-4"
+DEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
@@ -33,11 +33,11 @@ src_unpack() {
 src_compile() {
 	export XFLAGS="-DLINUX"
 	export XLIBS="-lstdc++"
-	CC="gcc ${CFLAGS}" make -e cryptcat || die
+	CC="$(tc-getCC) ${CFLAGS}" make -e cryptcat || die
 }
 
 src_install() {
 	dobin cryptcat || die
-	dodoc ChangeLog README README.cryptcat
+	dodoc Changelog README README.cryptcat
 	doman ${P}/debian/cryptcat.1
 }

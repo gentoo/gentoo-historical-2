@@ -1,8 +1,395 @@
-# ChangeLog for sys-apps/iptables
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/iptables/ChangeLog,v 1.1 2003/03/11 21:50:24 mholzer Exp $
+# ChangeLog for net-firewall/iptables
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/iptables/ChangeLog,v 1.1.1.1 2005/11/30 10:11:16 chriswhite Exp $
+
+  19 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> iptables-1.3.4.ebuild:
+  Stable on amd64.
+
+  18 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> iptables-1.3.4.ebuild:
+  Stable on hppa, ppc.
+
+  14 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> iptables-1.3.4.ebuild:
+  Stable on sparc
+
+  13 Nov 2005; Mark Loeser <halcy0n@gentoo.org> iptables-1.3.4.ebuild:
+  Stable on x86; bug #112351
+
+*iptables-1.3.4 (05 Nov 2005)
+
+  05 Nov 2005; Mike Frysinger <vapier@gentoo.org> +iptables-1.3.4.ebuild:
+  Version bump to fix #110758 by Brian Kroth.
+
+  15 Oct 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/1.2.7a-files/01_all_grsecurity.patch.bz2,
+  -files/1.2.7a-files/02_all_imq.patch.bz2,
+  -files/1.2.7a-files/03_all_mac_fix.patch.bz2,
+  -files/1.2.7a-files/04_all_no_optimize_fix.patch.bz2,
+  -files/1.2.9-files/01_all_grsecurity.patch.bz2,
+  -files/1.2.9-files/02_all_imq.patch.bz2,
+  -files/1.2.9-files/03_hppa_gentoo.patch.bz2,
+  -files/1.2.9-files/04_all_install_ipv6_apps.patch.bz2,
+  -files/1.2.9-files/05_all_install_all_dev_files.patch.bz2,
+  -files/1.2.9-files/06_all_l7.patch.bz2,
+  -files/1.2.9-files/sparc64_limit_fix.patch.bz2, -files/ip6tables.confd,
+  -files/iptables-1.2.7a-hppa.diff, -files/sparc64_limit_fix.patch.bz2,
+  -files/ip6tables.init, -files/iptables-1.2.9-hppa.patch.bz2,
+  -files/iptables.confd, -files/iptables.init, -iptables-1.2.7a-r3.ebuild,
+  -iptables-1.2.9.ebuild, -iptables-1.2.9-r1.ebuild,
+  -iptables-1.2.9-r4.ebuild, -iptables-1.3.1-r4.ebuild,
+  -iptables-1.3.3.ebuild:
+  cleanout of old version and patches
+
+*iptables-1.3.3-r2 (25 Sep 2005)
+
+  25 Sep 2005; Daniel Black <dragonheart@gentoo.org>  iptables-1.3.3-r2.ebuild:
+  updated to use l7-filter-2.0-beta
+
+*iptables-1.3.3-r1 (17 Sep 2005)
+
+  17 Sep 2005; Daniel Black <dragonheart@gentoo.org>
+  +iptables-1.3.3-r1.ebuild:
+  updated to use l7-filter-1.5 - bug #106009
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> iptables-1.3.2.ebuild:
+  Mark 1.3.2 stable on alpha
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> iptables-1.3.2.ebuild:
+  Stable on ppc64
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> iptables-1.3.2.ebuild:
+  Stable on ppc.
+
+  18 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> iptables-1.3.2.ebuild:
+  Stable on sparc
+
+*iptables-1.3.3 (16 Aug 2005)
+
+  16 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> +iptables-1.3.3.ebuild:
+  Bug #102682, version bump.
+
+  08 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> iptables-1.3.1-r4.ebuild,
+  iptables-1.3.2.ebuild:
+  Re-added ~mips for bug 91285.
+
+*iptables-1.3.2 (12 Jul 2005)
+
+  12 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/ip6tables-1.3.2.confd, +files/iptables-1.3.2.confd,
+  +files/iptables-1.3.2.init, +iptables-1.3.2.ebuild:
+  Version bump #98641 by Lars (Polynomial-C).  Unified the iptables/ip6tables
+  init.d scripts.  Added a new 'panic' option to init.d #72033 by Colin 
+  Kingsley.  Warn about issues upgrading from 1.2.x to 1.3.x #92535 by Volkov 
+  Peter.
+
+*iptables-1.3.1-r4 (05 May 2005)
+
+  05 May 2005; Mike Frysinger <vapier@gentoo.org>
+  files/iptables-1.2.9-r1.init, files/iptables.init, metadata.xml,
+  -iptables-1.3.1-r3.ebuild, +iptables-1.3.1-r4.ebuild:
+  Make sure /var/lib/iptables/rules-saves is only read/writable by root #91468
+  by eromang.
+
+  03 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
+  iptables-1.3.1-r3.ebuild:
+  mark ~ppc wrt #91285
+
+  03 May 2005; Herbie Hopkins <herbs@gentoo.org> iptables-1.3.1-r3.ebuild:
+  Multilib fixes.
+
+  03 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org>
+  iptables-1.3.1-r3.ebuild:
+  Keyworded ~ppc64 wrt #91285
+
+  03 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  iptables-1.3.1-r3.ebuild:
+  (re-)added ~amd64 to KEYWORDS wrt #91285
+
+  03 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  iptables-1.3.1-r3.ebuild:
+  Keyworded ~sparc wrt #91285
+
+*iptables-1.3.1-r3 (03 May 2005)
+
+  03 May 2005; Robin H. Johnson <robbat2@gentoo.org> :
+  iptables-1.3.1-r2.ebuild, +iptables-1.3.1-r3.ebuild
+  Clean up 1.3.1 ebuilds, and forcable mark as KEYWORDS=~x86 ONLY, as I want
+  arches to test it first.
+
+*iptables-1.3.1-r2 (21 Apr 2005)
+
+  21 Apr 2005; Daniel Black <dragonheart@gentoo.org> -iptables-1.3.1.ebuild,
+  -iptables-1.3.1-r1.ebuild, +iptables-1.3.1-r2.ebuild:
+  As per bug #89500 removed old iptables-1.3* due to memory leak in the l7
+  filter section. Revision bump includes l7 filter 1.2.
+
+  28 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  iptables-1.2.11-r3.ebuild, iptables-1.3.1-r1.ebuild:
+  Use proper toolchain compiler.
+
+  28 Mar 2005; Daniel Black <dragonheart@gentoo.org> iptables-1.3.1-r1.ebuild,
+  iptables-1.3.1.ebuild:
+  added conditional unpack on l7-filter thanks to Marcelo GÃ³es (vanquirius)
+
+*iptables-1.3.1-r1 (23 Mar 2005)
+
+  23 Mar 2005; Daniel Black <dragonheart@gentoo.org>
+  +iptables-1.3.1-r1.ebuild:
+  revision bump to support l7-filter-1.1. Doco fixes included
+
+*iptables-1.3.1 (09 Mar 2005)
+
+  09 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/1.3.1-files/grsecurity-1.2.8-iptables.patch-1.3.1.bz2,
+  +files/1.3.1-files/install_all_dev_files.patch-1.3.1.bz2,
+  +files/1.3.1-files/install_ipv6_apps.patch.bz2,
+  +files/1.3.1-files/iptables-1.3.1-compilefix.patch,
+  +iptables-1.3.1.ebuild:
+  Bug #80556, initial work, lots of changes here. This is hardmasked for
+  testing still. It didn't compile against my mm-sources kernel, but does
+  compile against a stock kernel.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  09 Nov 2004; Aron Griffis <agriffis@gentoo.org> iptables-1.2.11-r3.ebuild:
+  stable on ia64
+
+  08 Nov 2004; Markus Rothe <corsair@gentoo.org> iptables-1.2.11-r3.ebuild:
+  Stable on ppc64; bug #70240
+
+  08 Nov 2004; Simon Stelling <blubb@gentoo.org> iptables-1.2.11-r3.ebuild:
+  stable for security reasons (bug #70240)
+
+  08 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  iptables-1.2.11-r3.ebuild:
+  Stable on alpha, bug 70240.
+
+  08 Nov 2004; <SeJo@gentoo.org> iptables-1.2.11-r3.ebuild:
+  stable on ppc gsla: 70240
+
+  07 Nov 2004; Olivier Crete <tester@gentoo.org> iptables-1.2.11-r3.ebuild:
+  Stable on x86 per security bug #70240
+
+  07 Nov 2004; Jason Wever <weeve@gentoo.org> iptables-1.2.11-r3.ebuild:
+  Stable on sparc wrt security bug #70240.
+
+  07 Nov 2004; Joshua Kinard <kumba@gentoo.org> iptables-1.2.11-r3.ebuild:
+  Marked stable on mips.
+
+  07 Nov 2004; Joshua Kinard <kumba@gentoo.org> iptables-1.2.11-r2.ebuild:
+  Marked stable on mips.
+
+*iptables-1.2.11-r3 (06 Nov 2004)
+
+  06 Nov 2004; <solar@gentoo.org> +files/1.2.11-files/CAN-2004-0986.patch,
+  +iptables-1.2.11-r3.ebuild:
+  security bump. Exception handling error. bug 70240
+
+  10 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.11-r2.ebuild,
+  files/1.2.11-files/round-robin.patch:
+  Added round-robin patch, closing #60979.
+
+  05 Sep 2004; Guy Martin <gmsoft@gentoo.org>
+  -files/1.2.11-files/hppa.patch.bz2, iptables-1.2.11-r2.ebuild:
+  Stable on hppa. Removed no more needed hppa patch.
+
+  29 Aug 2004; Tom Gall <tgall@gentoo.org> iptables-1.2.11-r2.ebuild:
+  stable on ppc64, bug #60780
+
+  22 Aug 2004; Seemant Kulleen <seemant@gentoo.org> iptables-1.2.11-r2.ebuild,
+  iptables-1.2.9-r1.ebuild, iptables-1.2.9-r4.ebuild, iptables-1.2.9.ebuild:
+  fix spelling error. Thanks to: Kurt McKee <kurtmckee@northwestern.edu> in bug
+  #61325
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> iptables-1.2.11-r2.ebuild:
+  Stable on alpha.
+
+  20 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  iptables-1.2.11-r2.ebuild:
+  Stable on sparc
+
+  18 Aug 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.11-r2.ebuild,
+  files/ip6tables-1.2.9-r1.confd, files/ip6tables-1.2.9-r1.init,
+  files/iptables-1.2.9-r1.confd, files/iptables-1.2.9-r1.init:
+  Enable saving state when stopping service, closing #60680.
+  Unmasking on x86 and amd64.
+
+  10 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> files/ip6tables.init:
+  Fix typo in init file, closing #56537.
+
+  05 Jul 2004; Michal Januszewski <spock@gentoo.org>
+  iptables-1.2.11-r2.ebuild:
+  Fixed problems with iptables installing into /usr/local/sbin/.
+
+  04 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.11-r2.ebuild:
+  + Fix installation path, initscript and config script. Closing #55978.
+  + Fix dependencies. Closing #55605
+
+  04 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9-r4.ebuild:
+  + Fix dependencies. Closing #55605
+
+  03 Jul 2004; Seemant Kulleen <seemant@gentoo.org> iptables-1.2.11-r2.ebuild:
+  sed statement fix, thanks to x1bncwn in #gentoo
+
+*iptables-1.2.9-r4 (03 Jul 2004)
+*iptables-1.2.11-r2 (03 Jul 2004)
+
+  03 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.11-r1.ebuild,
+  iptables-1.2.9-r3.ebuild:
+  For some reason iptables may decide to compile in the src_install section
+  too, make sure it compiles against the correct KERNEL_DIR. Closing #55489.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  iptables-1.2.11-r1.ebuild, iptables-1.2.7a-r3.ebuild,
+  iptables-1.2.9-r1.ebuild, iptables-1.2.9-r3.ebuild, iptables-1.2.9.ebuild:
+  || die's to make install to avoid problems like we see in bug #55489.
+
+  02 Jul 2004; Lars Weiler <pylon@gentoo.org> iptables-1.2.9-r3.ebuild:
+  Stable on ppc as iptables-1.2.7a-r3 does not compile any more.
+
+  28 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.11.ebuild,
+  iptables-1.2.9-r3.ebuild:
+  Revision bump these so they propagate correctly.
+
+*iptables-1.2.11-r1 (28 Jun 2004)
+
+  28 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.11.ebuild:
+  Version bump and updated IMQ and l7 patches. Closing #54067 and #55308.
+
+*iptables-1.2.9-r3 (28 Jun 2004)
+
+  28 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9-r3.ebuild:
+  New revision with a new local use flag that toggles the applying of
+  3rd party patches and building against linux sources. Without the new
+  use flag no 3rd party extensions patches will be applied and iptables
+  will be built against linux-headers.
+
+  Be aware that iptables doesn't always build against the newest kernels
+  and manual patching may be required.
+
+  Closing #54440
+
+  28 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.7a-r3.ebuild,
+  iptables-1.2.9-r1.ebuild, iptables-1.2.9.ebuild:
+  Step back to an earlier date to clean up the mess, 
+  change "Gentoo Technologies Inc" to "Gentoo Foundation".
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> iptables-1.2.7a-r3.ebuild,
+  iptables-1.2.9-r1.ebuild, iptables-1.2.9.ebuild:
+  Fix use invocation and replace unnecessary subshell with if..then..fi
+
+  07 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9-r1.ebuild:
+  + Only run check_KV if /usr/src/liunx is a symlink or a directory, possible 
+    fix for #46817.
+  + Handle extensionpatches that was added for 1.2.9-r1. Closing #51418.
+
+  10 May 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9-r1.ebuild:
+  CFLAGS must have -O flag, closing #44204
+
+*iptables-1.2.9-r1 (25 Apr 2004)
+
+  25 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9-r1.ebuild:
+  + Depend on virtual/linux-sources.
+  + Add static build support.
+  + Install all headers, patch contributed by Thomas Jacob <jacob@internet24.de>.
+  + l7-filter support, closing #39761.
+  + Made initscript run before net, closing #27087.
+  + Removed ipforwarding from initscripts as it doesn't belong here and added einfo about it.
+  + Removed some old ebuilds.
+
+  21 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.7a-r3.ebuild,
+  iptables-1.2.7a-r4.ebuild, iptables-1.2.8.ebuild:
+  Added IUSE=
+
+  09 Mar 2004; <agriffis@gentoo.org> iptables-1.2.9.ebuild:
+  stable on alpha and ia64
+
+  09 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9.ebuild:
+  + Added einfo about kernel 2.4.21, closing #25919.
+  + Install ip6tables-save and ip6tables-restore, closing #39833.
+  + Really enable IPv6, closing #41624.
+
+  28 Jan 2004; <gustavoz@gentoo.org> iptables-1.2.9.ebuild:
+  stable on hppa and sparc
+
+  23 Jan 2004; Daniel Ahlberg <aliz@gentoo.org> files/iptables.init, files/ip6tables.init, iptables-1.2.9.ebuild:
+  Add reload support to initscript. Closing #21801.
+  Added note about saving your rules if upgrading. Closing #35135.
+  Unmasked, closing #34910.
+
+  21 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9.ebuild :
+  Replae -O0 with -O2, same as the the lack of -O flag problem. Closing #33899.
+
+*iptables-1.2.9 (04 Nov 2003)
+
+  04 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.9.ebuild :
+  Version bump.
+
+*iptables-1.2.8-r2 (15 Oct 2003)
+
+  15 Oct 2003; John Mylchreest <johnm@gentoo.org>; iptables-1.2.8-r2.ebuild:
+  fixes bug #22223
+
+  21 Sep 2003; Matthew Rickard <frogger@gentoo.org> iptables-1.2.8-r1.ebuild:
+  "-fstack-protector" breaks "iptables -p icmp".  We will
+  filter this flag until this is fixed properly.
+
+  19 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> files/ip6tables.init:
+  Closing #29087.
+
+  06 May 2003; Christian Birchinger <joker@gentoo.org>
+  iptables-1.2.8-r1.ebuild:
+  Added stable sparc keyword
+
+  05 May 2003; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.8-r1.ebuild :
+  Unmasked on x86.
+
+*iptables-1.2.8-r1 (04 May 2003)
+
+  02 Jul 2003; Guy Martin <gmsoft@gentoo.org>  files/1.2.8-files/03_hppa_gentoo.patch.bz2,
+  iptables-1.2.8-r1.ebuild :
+  Bzipped 03_hppa_gentoo.patch.bz2 which was not. Marked stable for hppa.
+
+  04 May 2003; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.8-r1.ebuild, files/iptables.init 
+							files/iptables.confd, files/ip6tables.init
+							files/ip6tables.confd :
+  Fixed ipv6 support. Closes #17155.
+
+  04 May 2003; Daniel Ahlberg <aliz@gentoo.org> files/1.2.8-files/03_hppa_gentoo.patch.bz2 :
+  doh! uncompressed patch.
+
+  04 May 2003; Daniel Ahlberg <aliz@gentoo.org> files/iptables.init :
+  Removed auto saving of rules when stopping iptables. Closing #15333 
+  and #13673.
+
+  02 May 2003; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.8.ebuild :
+  Force -O2 if no -O flag is set. Remove 03_all_no_optimize_fix.patch.bz2.
+
+  19 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Removed 03_all_mac_fix.patch.bz2 becuse it was fixed in 1.2.8.
+
+*iptables-1.2.8 (19 Apr 2003)
+
+  19 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> iptables-1.2.8.ebuild :
+  Version bump.
+
+*iptables-1.2.7a-r4 (10 Apr 2003)
+
+  19 apr 2003; Preston A. Elder <prez@gentoo.org> iptables-1.2.7a-r4.ebuild :
+  Enabled -r4 for x86
+
+  10 apr 2003; Preston A. Elder <prez@gentoo.org> iptables-1.2.7a-r4.ebuild :
+  Added compilation of development tools
 
 *iptables-1.2.7a-r3 (11 Mar 2003)
+
+  15 Mar 2003; Jason Wever <weeve@gentoo.org>
+  files/sparc64_limit_fix.patch.bz2:
+  Added sparc64_limit_fix.patch.bz2 back into the files directory as it got lost
+  in the moving of iptables from sys-apps to net-firewall.
+
+  15 Mar 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to KEYWORDS
 
   11 Mar 2003; Martin Holzer <mholzer@gentoo.org> iptables-1.2.7a-r3.ebuild,
   files/grsecurity-1.2.7a-iptables.patch, files/iptables-1.2.6a-imq.diff-3,

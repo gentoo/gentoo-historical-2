@@ -1,30 +1,36 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bing/bing-1.1.3.ebuild,v 1.1 2003/09/06 23:33:49 zul Exp $
-
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bing/bing-1.1.3.ebuild,v 1.1.1.1 2005/11/30 10:12:22 chriswhite Exp $
 
 DESCRIPTION="A point-to-point bandwidth measurement tool."
-SRC_URI="http://distro.ibiblio.org/pub/Linux/distributions/debian/pool/main/b/bing/${PN}_1.1.3.orig.tar.gz"
-HOMEPAGE="http://www.cnam.fr/reseau/bing.html"
+SRC_URI="mirror://debian/pool/main/b/bing/${PN}_${PV}.orig.tar.gz"
+HOMEPAGE="http://fgouget.free.fr/bing/index-en.shtml"
+RESTRICT="nomirror"
 
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 ~sparc ia64 ~amd64 ppc"
 SLOT="0"
 LICENSE="as-is"
 IUSE=""
 
-DEPEND="virtual/glibc"
-RDEPEND=""
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
 
-S="${WORKDIR}/${P}"
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	sed -i \
+		-e "s:#COPTIM = -g: COPTIM = ${CFLAGS}:" Makefile || \
+			die "sed Makefile failed"
+}
 
 src_compile() {
-	cp Makefile Makefile.orig
-	sed -e "s:#COPTIM = -g: COPTIM = ${CLFAGS}:" Makefile.orig > Makefile
-	emake || die 
+	emake || die "emake failed"
 }
 
 src_install() {
 	dobin bing
 	doman unix/bing.8
-	dodoc ChangeLog Readme.1st Readme
+	dodoc ChangeLog Readme.{1st,txt}
 }

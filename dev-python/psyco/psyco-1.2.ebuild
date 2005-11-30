@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/psyco/psyco-1.2.ebuild,v 1.1 2004/03/28 16:09:06 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/psyco/psyco-1.2.ebuild,v 1.1.1.1 2005/11/30 10:10:19 chriswhite Exp $
 
 inherit distutils
 
@@ -11,10 +11,12 @@ SRC_URI="mirror://sourceforge/psyco/${P}-src.tar.gz"
 IUSE=""
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~x86"
+KEYWORDS="x86"
+DEPEND="<dev-lang/python-2.4"
 
 src_install() {
 	distutils_src_install
 	insinto /usr/share/doc/${PF}/examples
 	doins ${S}/test/*
 }
+

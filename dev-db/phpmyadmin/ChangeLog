@@ -1,23 +1,612 @@
 # ChangeLog for dev-db/phpmyadmin
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-db/phpmyadmin/ChangeLog,v 1.1 2002/04/27 16:58:10 woodchip Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/phpmyadmin/ChangeLog,v 1.1.1.1 2005/11/30 10:11:22 chriswhite Exp $
 
-*phpmyadmin-2.2.5 (27 Apr 2002)
+  20 Nov 2005; Simon Stelling <blubb@gentoo.org> phpmyadmin-2.6.4_p4.ebuild:
+  stable on amd64 wrt bug 112690
 
-  27 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  19 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.4_p4.ebuild:
+  Stable on ppc.
 
-  Re-added this package back without the CAPS in the name.
+  19 Nov 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  phpmyadmin-2.6.4_p4.ebuild:
+  Stable on alpha wrt security bug #112690
+
+  19 Nov 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  phpmyadmin-2.6.4_p4.ebuild:
+  Stable on hppa.
+
+  19 Nov 2005; Mark Loeser <halcy0n@gentoo.org> phpmyadmin-2.6.4_p4.ebuild:
+  Stable on x86; bug #112690
+
+  18 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpmyadmin-2.6.4_p4.ebuild:
+  Stable on sparc wrt security #112690
+
+*phpmyadmin-2.6.4_p4 (17 Nov 2005)
+
+  17 Nov 2005; Martin Holzer <mholzer@gentoo.org>
+  +phpmyadmin-2.6.4_p4.ebuild:
+  Security bump. See #112690
+
+  10 Nov 2005; Renat Lumpau <rl03@gentoo.org> +files/reconfig-2.7,
+  phpmyadmin-2.7.0_beta1.ebuild:
+  Fix reconfig hook wrt bug #112021.
+
+  09 Nov 2005; Renat Lumpau <rl03@gentoo.org> phpmyadmin-2.7.0_beta1.ebuild:
+  new version should be unstable on x86
+
+*phpmyadmin-2.7.0_beta1 (09 Nov 2005)
+
+  09 Nov 2005; Renat Lumpau <rl03@gentoo.org>
+  +files/config.default.php-2.7.0.patch, -files/phpmyadmin-config.patch,
+  phpmyadmin-2.6.4_p3.ebuild, +phpmyadmin-2.7.0_beta1.ebuild:
+  Version bump
+
+  24 Oct 2005; Renat Lumpau <rl03@gentoo.org> -phpmyadmin-2.6.4.ebuild,
+  -phpmyadmin-2.6.4_p1.ebuild, -phpmyadmin-2.6.4_p2.ebuild:
+  Removing old versions
+
+  24 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.4_p3.ebuild:
+  Stable on hppa, ppc.
+
+  24 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpmyadmin-2.6.4_p3.ebuild:
+  Stable on sparc wrt #110146
+
+  24 Oct 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  phpmyadmin-2.6.4_p3.ebuild:
+  Stable on alpha wrt security bug #110146
+
+  23 Oct 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  phpmyadmin-2.6.4_p3.ebuild:
+  Stable on amd64, bug 110146.
+
+  23 Oct 2005; Mark Loeser <halcy0n@gentoo.org> phpmyadmin-2.6.4_p3.ebuild:
+  Stable on x86; bug #110146
+
+*phpmyadmin-2.6.4_p3 (23 Oct 2005)
+
+  23 Oct 2005; Renat Lumpau <rl03@gentoo.org> +phpmyadmin-2.6.4_p3.ebuild:
+  Version bump wrt security bug #110146.
+
+  16 Oct 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  phpmyadmin-2.6.4_p2.ebuild:
+  Stable on amd64, bug 108939.
+
+  14 Oct 2005; Mark Loeser <halcy0n@gentoo.org> phpmyadmin-2.6.4_p2.ebuild:
+  Stable on x86; bug #108939
+
+  13 Oct 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  phpmyadmin-2.6.4_p2.ebuild:
+  Stable on alpha wrt security bug #108939
+
+  13 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpmyadmin-2.6.4_p2.ebuild:
+  Stable on sparc wrt #108939
+
+  13 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.4_p2.ebuild:
+  Stable on hppa, ppc.
+
+*phpmyadmin-2.6.4_p2 (12 Oct 2005)
+
+  12 Oct 2005; Martin Holzer <mholzer@gentoo.org>
+  +phpmyadmin-2.6.4_p2.ebuild:
+  Revision bump for security bug 108939
+
+  15 Sep 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Added note to postinstall instructions wrt bug #104495.
+
+*phpmyadmin-2.6.4_p1 (15 Sep 2005)
+
+  15 Sep 2005; Renat Lumpau <rl03@gentoo.org> +phpmyadmin-2.6.4_p1.ebuild:
+  Version bump
+
+  13 Sep 2005; Renat Lumpau <rl03@gentoo.org> -phpmyadmin-2.6.4_rc1.ebuild:
+  Removed old version
+
+*phpmyadmin-2.6.4 (11 Sep 2005)
+
+  11 Sep 2005; Renat Lumpau <rl03@gentoo.org> +phpmyadmin-2.6.4.ebuild:
+  Version bump wrt security bug #105598.
+
+  02 Sep 2005; Renat Lumpau <rl03@gentoo.org> files/reconfig:
+  Fix reconfig script wrt bug #104495.
+
+  30 Aug 2005; Renat Lumpau <rl03@gentoo.org> -phpmyadmin-2.6.2-r2.ebuild,
+  -phpmyadmin-2.6.3_p1.ebuild:
+  Removing old vulnerable versions
+
+  30 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  phpmyadmin-2.6.4_rc1.ebuild:
+  Stable on alpha due to security bug #104124
+
+  29 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  phpmyadmin-2.6.4_rc1.ebuild:
+  Stable on amd64, bug 104124.
+
+  29 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.4_rc1.ebuild:
+  Stable on hppa and ppc.
+
+  29 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpmyadmin-2.6.4_rc1.ebuild:
+  Stable on sparc wrt #104124
+
+  29 Aug 2005; Renat Lumpau <rl03@gentoo.org> phpmyadmin-2.6.4_rc1.ebuild:
+  x86 stable wrt security bug #104124
+
+*phpmyadmin-2.6.4_rc1 (28 Aug 2005)
+
+  28 Aug 2005; Renat Lumpau <rl03@gentoo.org> -phpmyadmin-2.6.2_rc1.ebuild,
+  +phpmyadmin-2.6.4_rc1.ebuild:
+  Version bump, removed old version
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Housekeeping
+
+  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  files/reconfig, phpmyadmin-2.6.3_p1.ebuild:
+  Housekeeping
+
+*phpmyadmin-2.6.3_p1 (06 Jul 2005)
+
+  06 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +files/reconfig, +phpmyadmin-2.6.3_p1.ebuild:
+  Version bump (#94059). Update-related clean-up (#83614, #67859).
+
+*phpmyadmin-2.6.2-r2 (03 May 2005)
+
+  03 May 2005; Aaron Walker <ka0ttic@gentoo.org> -phpmyadmin-2.6.2.ebuild,
+  -phpmyadmin-2.6.2-r1.ebuild, +phpmyadmin-2.6.2-r2.ebuild:
+  Revision bump; fix perms on config.inc.php. Tidy old ebuilds.
+
+  27 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  phpmyadmin-2.6.2-r1.ebuild:
+  Stable on alpha, bug 88831.
+
+  25 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  phpmyadmin-2.6.2-r1.ebuild:
+  stable on amd64 wrt #88831
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.2-r1.ebuild:
+  Stable on hppa.
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpmyadmin-2.6.2-r1.ebuild:
+  Stable on sparc wrt #88831
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.2-r1.ebuild:
+  Stable on ppc.
+
+  25 Apr 2005; Elfyn McBratney <beu@gentoo.org> phpmyadmin-2.6.2-r1.ebuild:
+  Stable on x86, bug #88831.
+
+*phpmyadmin-2.6.2-r1 (25 Apr 2005)
+
+  25 Apr 2005; Elfyn McBratney <beu@gentoo.org>
+  -phpmyadmin-2.6.1_p2-r1.ebuild, phpmyadmin-2.6.2.ebuild,
+  +phpmyadmin-2.6.2-r1.ebuild:
+  Drop old version and version bump (make sure the 'mysql create' script is not
+  world readable - it contains the initial pma@localhost password), bug #88831.
+
+*phpmyadmin-2.6.2 (19 Apr 2005)
+
+  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> files/postinstall-en.txt,
+  +phpmyadmin-2.6.2.ebuild:
+  Version bump, bug #89658.
+
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  phpmyadmin-2.6.2_rc1.ebuild:
+  stable on amd64 wrt bug #87952
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpmyadmin-2.6.2_rc1.ebuild:
+  Stable on sparc wrt #87952
+
+  08 Apr 2005; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.6.2_rc1.ebuild:
+  Stable on hppa.
+
+  08 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  phpmyadmin-2.6.2_rc1.ebuild:
+  Stable on alpha, bug 87952.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.2_rc1.ebuild:
+  Stable on ppc.
+
+*phpmyadmin-2.6.2_rc1 (08 Apr 2005)
+
+  08 Apr 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/phpmyadmin-mysql-setup.sql.in, metadata.xml,
+  -phpmyadmin-2.6.1_rc1.ebuild, -phpmyadmin-2.6.1.ebuild,
+  -phpmyadmin-2.6.1_p2.ebuild, +phpmyadmin-2.6.2_rc1.ebuild:
+  Revision bump for security bug 87952; tidy all the old versions from
+  previous vulnerabilities. Also updated metadata.xml since twp no longer
+  maintains this package.
+
+  29 Mar 2005; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.6.1_p2-r1.ebuild:
+  Stable on hppa.
+
+  07 Mar 2005; Stuart Herbert <stuart@gentoo.org>
+  phpmyadmin-2.6.1_p2-r1.ebuild:
+  Removed depend on apache; depend on mod_php/php-cgi rather than just mod_php
+
+  03 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  phpmyadmin-2.6.1_p2-r1.ebuild:
+  Stable on alpha, bug 83792.
+
+  02 Mar 2005; Jason Wever <weeve@gentoo.org> phpmyadmin-2.6.1_p2-r1.ebuild:
+  Stable on sparc wrt security bug #83792.
+
+  02 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> :
+  stable on amd64 wrt to bug #83792
+
+  02 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.1_p2-r1.ebuild:
+  Stable on ppc.
+
+  02 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  files/2.6.1_p2-no-wildcard-privs-for-you.patch,
+  phpmyadmin-2.6.1_p2-r1.ebuild:
+  Fix patch; added sed in src_unpack to automatically update the
+  postinst-en.txt that gets installed.
+
+*phpmyadmin-2.6.1_p2-r1 (02 Mar 2005)
+
+  02 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/2.6.1_p2-no-wildcard-privs-for-you.patch,
+  +phpmyadmin-2.6.1_p2-r1.ebuild:
+  Revision bump for security bug 83792.
+
+  01 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  phpmyadmin-2.6.1_p2.ebuild:
+  Stable on alpha.
+
+  28 Feb 2005; Simon Stelling <blubb@gentoo.org> phpmyadmin-2.6.1_p2.ebuild:
+  stable on amd64 wrt bug 83190
+
+  28 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpmyadmin-2.6.1_p2.ebuild:
+  Stable on ppc.
+
+  28 Feb 2005; Olivier Crête <tester@gentoo.org> phpmyadmin-2.6.1_p2.ebuild:
+  Stable on x86 wrt security bug #83190
+
+  27 Feb 2005; Jason Wever <weeve@gentoo.org> phpmyadmin-2.6.1_p2.ebuild:
+  Stable on sparc wrt security bug #83190.
+
+*phpmyadmin-2.6.1_p2 (27 Feb 2005)
+
+  27 Feb 2005; Martin Holzer <mholzer@gentoo.org>
+  +phpmyadmin-2.6.1_p2.ebuild:
+  Security update. See 83190
+
+*phpmyadmin-2.6.1 (26 Jan 2005)
+
+  26 Jan 2005; Tom Payne <twp@gentoo.org> +phpmyadmin-2.6.1.ebuild:
+  Version bump. Bug # 79305.
+
+  11 Jan 2005; Tom Payne <twp@gentoo.org> -phpmyadmin-2.6.0_p2.ebuild,
+  -phpmyadmin-2.6.0_p3.ebuild, phpmyadmin-2.6.1_rc1.ebuild:
+  Change dependency from mod_php to virtual/php. Bug # 76623. Removed old
+  versions.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Simon Stelling <blubb@gentoo.org>
+  phpmyadmin-2.6.1_rc1.ebuild:
+  stable on amd64; bug #74303
+
+  15 Dec 2004; <SeJo@gentoo.org> phpmyadmin-2.6.1_rc1.ebuild:
+  stable on ppc gsla: 74303
+
+  14 Dec 2004; Jason Wever <weeve@gentoo.org> phpmyadmin-2.6.1_rc1.ebuild:
+  Stable on sparc wrt security bug #74303.
+
+  14 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  phpmyadmin-2.6.1_rc1.ebuild:
+  Stable on alpha, bug 74303.
+
+  14 Dec 2004; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.6.1_rc1.ebuild:
+  Stable on hppa.
+
+*phpmyadmin-2.6.1_rc1 (14 Dec 2004)
+
+  14 Dec 2004; Tom Payne <twp@gentoo.org> +phpmyadmin-2.6.1_rc1.ebuild:
+  Version bump (security fix). Stable on x86. Bug # 74303.
+
+  06 Nov 2004; Joseph Jezak <josejx@gentoo.org> phpmyadmin-2.6.0_p3.ebuild:
+  Marked ppc stable for bug #71819
+
+  24 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  phpmyadmin-2.6.0_p3.ebuild:
+  Stable on alpha, bug 71819.
+
+  23 Nov 2004; Simon Stelling <blubb@gentoo.org> phpmyadmin-2.6.0_p3.ebuild:
+  stable on amd64; bug #71819
+
+  23 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpmyadmin-2.6.0_p3.ebuild:
+  Stable on sparc wrt #71819
+
+  23 Nov 2004; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.6.0_p3.ebuild:
+  Stable on hppa.
+
+*phpmyadmin-2.6.0_p3 (22 Nov 2004)
+
+  22 Nov 2004; Tom Payne <twp@gentoo.org> +phpmyadmin-2.6.0_p3.ebuild:
+  Version bump. Bug # 71819.
+
+  03 Nov 2004; Bret Curtis <psi29a@gentoo.org> phpmyadmin-2.5.7.ebuild,
+  phpmyadmin-2.6.0_p2.ebuild:
+  added to ~mips for testing
+
+  16 Oct 2004; Danny van Dyk <kugelfang@gentoo.org>
+  phpmyadmin-2.6.0_p2.ebuild:
+  Marked stable on amd64.
+
+  15 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  phpmyadmin-2.6.0_p2.ebuild:
+  Stable on alpha, bug 67409.
+
+  14 Oct 2004; Jason Wever <weeve@gentoo.org> phpmyadmin-2.6.0_p2.ebuild:
+  Stable on sparc wrt security bug #67409.
+
+  14 Oct 2004; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.6.0_p2.ebuild:
+  Stable on hppa.
+
+  14 Oct 2004; Tom Payne <twp@gentoo.org> phpmyadmin-2.6.0_p2.ebuild:
+  Stable on x86.
+
+  14 Oct 2004; <SeJo@gentoo.org> phpmyadmin-2.6.0_p2.ebuild:
+  stable on ppc gsla: 67409
+
+*phpmyadmin-2.6.0_p2 (14 Oct 2004)
+
+  14 Oct 2004; Tom Payne <twp@gentoo.org> -phpmyadmin-2.6.0.ebuild,
+  +phpmyadmin-2.6.0_p2.ebuild:
+  Version bump (security fix). Bug # 67409.
+
+*phpmyadmin-2.6.0 (28 Sep 2004)
+
+  28 Sep 2004; Tom Payne <twp@gentoo.org> +phpmyadmin-2.6.0.ebuild:
+  Version bump. Bug # 65582.
+
+  23 Jul 2004; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.5.7_p1.ebuild:
+  Marked stable on hppa.
+
+  23 Jul 2004; <kloeri@gentoo.org> phpmyadmin-2.5.7_p1.ebuild:
+  Stable on alpha, see bug 57890.
+
+  22 Jul 2004; <twp@gentoo.org> phpmyadmin-2.5.6-r1.ebuild,
+  phpmyadmin-2.5.6.ebuild, phpmyadmin-2.5.7.ebuild,
+  phpmyadmin-2.5.7_p1.ebuild:
+  Updated homepage and dependencies.
+
+  21 Jul 2004; Jason Wever <weeve@gentoo.org> phpmyadmin-2.5.7_p1.ebuild:
+  Stable on sparc wrt security bug #57890.
+
+  21 Jul 2004; <twp@gentoo.org> phpmyadmin-2.5.7_p1.ebuild:
+  Stable on x86. Bug # 57890. Fixed dependencies. Bug # 57365.
+
+*phpmyadmin-2.5.7_p1 (04 Jul 2004)
+
+  04 Jul 2004; <twp@gentoo.org> +phpmyadmin-2.5.7_p1.ebuild:
+  Version bump (security fix). Bug # 56048.
+
+  27 Jun 2004; <twp@gentoo.org> files/mysql-setup.sql.in-2.5.6,
+  phpmyadmin-2.5.7.ebuild:
+  Bug # 53220.
+
+*phpmyadmin-2.5.7 (27 Jun 2004)
+
+  27 Jun 2004; <twp@gentoo.org> +phpmyadmin-2.5.7.ebuild:
+  Version bump. Bug # 53422.
+
+  08 May 2004; <twp@gentoo.org> phpmyadmin-2.5.6-r1.ebuild:
+  Mark ~all-ARCHs, block earlier versions to force uninstall pre-emerge.
+
+*phpmyadmin-2.5.6-r1 (08 May 2004)
+
+  08 May 2004; <twp@gentoo.org> +files/postinstall-en.txt,
+  +phpmyadmin-2.5.6-r1.ebuild:
+  Use webapp.eclass, merged from webapp-config example.
+
+  01 May 2004; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.6.ebuild:
+  stable on all arches. Closes 48379
+
+  01 May 2004; Bryan Østergaard <kloeri@gentoo.org> phpmyadmin-2.5.6.ebuild:
+  Stable on alpha.
+
+  25 Apr 2004; <twp@gentoo.org> phpmyadmin-2.5.6.ebuild:
+  Added IUSE="apache2".
+
+  16 Apr 2004; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.5.6.ebuild:
+  Marked stable on hppa.
+
+  13 Apr 2004; Jason Wever <weeve@gentoo.org> phpmyadmin-2.5.6.ebuild:
+  Stable on sparc.
+
+  12 Apr 2004; <twp@gentoo.org> phpmyadmin-2.5.6.ebuild,
+  phpmyadmin-2.5.6_rc1.ebuild:
+  Added IUSE. 2.5.6 stable on x86.
+
+  23 Mar 2004; Joshua Kinard <kumba@gentoo.org> phpmyadmin-2.5.6.ebuild,
+  phpmyadmin-2.5.6_rc1.ebuild:
+  Don't ever recall testing this package on mips, thus it causes a bunch of dep
+  issues with repoman. Removing mips keywords until this gets tested.
+
+*phpmyadmin-2.5.6 (01 Mar 2004)
+
+  01 Mar 2004; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.6.ebuild,
+  files/config.inc.php-2.5.6.patch, files/mysql-setup.sql.in-2.5.6:
+  Version bumped.
+
+  09 Feb 2004; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.6_rc1.ebuild:
+  Marked stable on all arches. Security Fix.
+
+*phpmyadmin-2.5.6_rc1 (04 Feb 2004)
+
+  04 Feb 2004; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.6_rc1.ebuild,
+  files/config.inc.php-2.5.6_rc1.patch, files/mysql-setup.sql.in-2.5.6_rc1:
+  Version bumped.
+
+  02 Feb 2004; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.5_p1.ebuild:
+  Marked stable on all ARCHes.
+
+*phpmyadmin-2.5.5_p1 (07 Jan 2004)
+
+  07 Jan 2004; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.5_p1.ebuild,
+  files/config.inc.php-2.5.5_p1.patch, files/mysql-setup.sql.in-2.5.5_p1:
+  Version bumped. Closes 37424
+
+*phpmyadmin-2.5.5 (29 Dec 2003)
+
+  29 Dec 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.5.ebuild :
+  Version bump.
+
+  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> phpmyadmin-2.5.4.ebuild:
+  Fix for bug '32636'
+
+  22 Oct 2003; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.0.ebuild,
+  phpmyadmin-2.5.3-r1.ebuild, files/config.inc.php-2.5.2.patch:
+  adding RESTRICT="nomirror"
+
+*phpmyadmin-2.5.4 (20 Oct 2003)
+
+  20 Oct 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.4.ebuild :
+  Version bump. Bug # 31537. Update MySQL dependency.
+
+  29 Sep 2003; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.5.3-r1.ebuild:
+  Marked x86 stable.
+
+*phpmyadmin-2.5.3 (11 Sep 2003)
+
+  17 Sep 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.3-r1.ebuild :
+  Change ownership on config files. Bug # 28868. Thanks dju.
+
+  11 Sep 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.3.ebuild :
+  Version bump. Use webapp-apache.eclass. Bugs # 27741 & 28129. Thanks Ian Leitch.
+
+*phpmyadmin-2.5.2_p1 (09 Aug 2003)
+
+  09 Aug 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.2_p1.ebuild :
+  Version bump. Bug # 26158.
+
+*phpmyadmin-2.5.2 (24 Jul 2003)
+
+  04 Aug 2003; Guy Martin <gmsoft@gentoo.org> phpmyadmin-2.5.2.ebuild :
+  Marked stable on hppa.
+
+  24 Jul 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.2.ebuild :
+  Version bump. Bug # 25145.
+
+*phpmyadmin-2.5.1 (03 Jun 2003)
+
+  03 Jun 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.1.ebuild :
+  Version bump, marked unstable. Bug # 22108.
+
+*phpmyadmin-2.5.0 (12 May 2003)
+
+  15 May 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.0.ebuild :
+  Marked stable on all ARCHes.
+
+  12 May 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.5.0.ebuild :
+  Version bump. Ebuild tidy. Improved src_install. Bug # 20874.
+
+*phpmyadmin-2.4.0 (08 Apr 2003)
+
+  10 May 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.4.0.ebuild :
+  Always install to /home/httpd/htdocs. Bug # 20642.
+
+  09 May 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.4.0.ebuild :
+  Allow user to override document root with DOCUMENT_ROOT env var. Bug # 20642.
+
+  09 Apr 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.4.0.ebuild :
+  Dynamically determine DocumentRoot. No bump to ebuild revision number since
+  existing users won't see a change.
+
+  08 Apr 2003; Tom Payne <twp@gentoo.org> phpmyadmin-2.4.0.ebuild files/phpmyadmin-config.patch files/phpmyadmin-mysql-setup.sql.in :
+  Version bump.  Improved config file handling (doesn't overwrite on upgrade,
+  now stores config file in /etc/phpmyadmin so it is config-protected).  Added
+  pkg_config to setup MySQL. Bug # 16521.
+
+*phpmyadmin-2.3.3 (11 Dec 2002)
+
+  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> phpmyadmin-2.3.3.ebuild:
+  Add ~alpha to KEYWORDS
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> phpmyadmin-2.3.2-r1.ebuild phpmyadmin-2.3.3.ebuild :
+  set ppc in keywords
+
+  31 Jan 2003; Martin Holzer <mholzer@gentoo.org> phpmyadmin-2.3.3.ebuild :
+  Change SRC_URI to use mirror://sourceforge.
+
+  31 Jan 2003; Ryan Phillips <rphillips@gentoo.org>:
+  restore old config file if it exists. fixes #12585
+
+  10 Jan 2003; Christian Birchinger <joker@gentoo.org> :
+  Added "sparc" keyword. It has been running productive on sparc for weeks.
+
+  11 Dec 2002; Ryan Phillips <rphillips@gentoo.org> phpmyadmin-2.3.3.ebuild :
+  New version. Includes Quequero's tweaks to the ebuild. Fixes #11990
+
+*phpmyadmin-2.3.2-r1 (05 Dec 2002)
+
+  05 Dec 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog phpmyadmin-2.3.2-r1.ebuild:
+  Added Arthur Ward's ebuild fixes to include the fpdf components.
+
+*phpmyadmin-2.3.3-rc1 (22 Nov 2002)
+
+  22 Nov 2002; Martin Holzer <mholzer@gentoo.org> ChangeLog phpmyadmin-2.3.3_rc1.ebuild
+  files/digest-phpmyadmin-2.3.3_rc1 :
+  New version.
+
+*phpmyadmin-2.3.2 (28 Aug 2002)
+
+  14 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Replaced hardcoding of /home/httpd/htdocs with a grep of /etc/apache/conf/apache.conf
+
+  28 Aug 2002; Maik Schreiber <blizzy@gentoo.org> :
+  New version.
+
+*phpmyadmin-2.3.0 (18 Aug 2002)
+
+  14 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Replaced hardcoding of /home/httpd/htdocs with a grep of /etc/apache/conf/apache.conf
+
+  18 Aug 2002; Ryan Phillips <rphillips@gentoo.org> :
+  New version
+
+*phpmyadmin-2.2.6 (27 Apr 2002)
+
+  14 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Replaced hardcoding of /home/httpd/htdocs with a grep of /etc/apache/conf/apache.conf
+
+  16 Jul 2002; Ryan Phillips <rphillips@gentoo.org> :
+  Repoman fixes
 
 *phpmyadmin-2.2.5 (10 Apr 2002)
 
-  10 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  14 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
+  Replaced hardcoding of /home/httpd/htdocs with a grep of /etc/apache/conf/apache.conf
 
+  27 Apr 2002; Donny Davies <woodchip@gentoo.org> :
+  Re-added this package back without the CAPS in the name.
+
+  10 Apr 2002; Donny Davies <woodchip@gentoo.org> :
   Updated to latest release and fixed to match the new apache layout.
 
-*phpmyadmin-2.2.0 (1 Feb 2002)
+*phpmyadmin-2.2.0 (01 Feb 2002)
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
+  01 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

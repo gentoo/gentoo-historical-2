@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/genericuserfolder/genericuserfolder-1.2.4.ebuild,v 1.1 2003/10/09 18:38:40 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/genericuserfolder/genericuserfolder-1.2.4.ebuild,v 1.1.1.1 2005/11/30 10:11:05 chriswhite Exp $
 
 inherit zproduct
 
@@ -9,7 +9,7 @@ MY_PV="${PV//./-}"
 MY_P="${MY_PN}-${MY_PV}"
 DESCRIPTION="The GenericUserFolder is a roll-your-own user folder"
 HOMEPAGE="http://www.zope.org/Members/Zen/${MY_PN}"
-SRC_URI="${HOMEPAGE}/${PV}/${MY_P}.tgz"
+SRC_URI="${HOMEPAGE}/${MY_PV}/${MY_P}.tgz"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 
@@ -21,7 +21,7 @@ src_install() {
 	zproduct_src_install
 	# fix permissions on files
 	DIR=${D}/usr/share/zproduct/${PF}
-	find ${DIR} -exec chown zope.root \{} \;
+	find ${DIR} -exec chown zope:root \{} \;
 	find ${DIR} -exec chmod 644 \{} \;
 	find ${DIR} -type d -exec chmod +x \{} \;
 }

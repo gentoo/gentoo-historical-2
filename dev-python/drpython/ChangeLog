@@ -1,6 +1,40 @@
 # ChangeLog for dev-python/drpython
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/drpython/ChangeLog,v 1.1 2004/11/14 12:05:41 lucass Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/drpython/ChangeLog,v 1.1.1.1 2005/11/30 10:10:28 chriswhite Exp $
+
+  19 Nov 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Added japanese metadata.xml translation thanks to Yoshino-san.
+
+  09 Aug 2005; Luis Medinas <metalgod@gentoo.org> drpython-3.10.13.ebuild:
+  Added ~amd64 keywords. Closes bug #98439 .
+
+  12 Jul 2005; David Holm <dholm@gentoo.org> drpython-3.10.13.ebuild:
+  Added to ~ppc.
+
+  20 May 2005; Rob Cakebread <pythonhead@gentoo.org>
+  drpython-3.10.13.ebuild:
+  setup.py only seems to work with python-2.4. Manually copy some files. bug#
+  91290
+
+*drpython-3.10.13 (04 May 2005)
+
+  04 May 2005; Rob Cakebread <pythonhead@gentoo.org>
+  +files/drpython.py-3.10.13.patch, +drpython-3.10.13.ebuild:
+  Version bump.
+
+*drpython-3.10.12 (02 May 2005)
+
+  02 May 2005; Rob Cakebread <pythonhead@gentoo.org>
+  -files/drpython.py-3.6.10.patch, -files/drpython.py-3.10.6.patch,
+  +files/drpython.py-3.10.12.patch, -drpython-3.6.10.ebuild,
+  -drpython-3.10.6.ebuild, +drpython-3.10.12.ebuild:
+  Version bump. Removed old masked versions.
+
+*drpython-3.10.6 (19 Feb 2005)
+
+  19 Feb 2005; Radoslaw Stachowiak <radek@gentoo.org>
+  +files/drpython.py-3.10.6.patch, +drpython-3.10.6.ebuild:
+  Newest version.
 
 *drpython-3.6.10 (14 Nov 2004)
 

@@ -1,9 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.4.1-r1.ebuild,v 1.1 2005/06/07 12:59:02 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdelibs/kdelibs-3.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:12:53 chriswhite Exp $
 
 inherit kde flag-o-matic eutils multilib
-set-qtdir 3
 set-kdedir 3.4
 
 DESCRIPTION="KDE libraries needed by all kde programs"
@@ -12,20 +11,20 @@ SRC_URI="mirror://kde/stable/${PV}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="3.4"
-KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="alsa arts cups doc jpeg2k kerberos openexr spell ssl tiff zeroconf"
 
 # kde.eclass has kdelibs in DEPEND, and we can't have that in here.
 # so we recreate the entire DEPEND from scratch.
 RDEPEND="arts? ( ~kde-base/arts-${PV} )
-	>=x11-libs/qt-3.3.3
+	$(qt_min_version 3.3.3)
 	app-arch/bzip2
 	>=dev-libs/libxslt-1.1.4
 	>=dev-libs/libxml2-2.6.6
 	>=dev-libs/libpcre-4.2
 	media-libs/libart_lgpl
 	net-dns/libidn
-	sys-apps/utempter
+	virtual/utempter
 	ssl? ( >=dev-libs/openssl-0.9.7d )
 	alsa? ( media-libs/alsa-lib )
 	cups? ( >=net-print/cups-1.1.19 )
@@ -47,7 +46,10 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_unpack() {
-	kde_src_unpack
+	unpack ${P}.tar.bz2
+	# This is an ugly hack: it makes base_src_unpack do nothing, but still lets us enjoy
+	# the other things kde_src_unpack does.
+	kde_src_unpack nounpack
 
 	epatch "${FILESDIR}/${P}-configure.patch"
 

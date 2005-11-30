@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/p0f/files/p0f.initd,v 1.1 2005/03/11 10:46:08 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/p0f/files/p0f.initd,v 1.1.1.1 2005/11/30 10:12:32 chriswhite Exp $
 
 start() {
 	ebegin "Starting p0f"

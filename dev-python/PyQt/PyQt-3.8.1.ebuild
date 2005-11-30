@@ -1,31 +1,32 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt/PyQt-3.8.1.ebuild,v 1.1 2003/10/03 14:10:31 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt/PyQt-3.8.1.ebuild,v 1.1.1.1 2005/11/30 10:10:20 chriswhite Exp $
 
-inherit eutils distutils
-
-IUSE=""
+inherit distutils eutils
 
 S="${WORKDIR}/PyQt-x11-gpl-${PV}"
 
 DESCRIPTION="set of Python bindings for the QT 3.x Toolkit"
-SRC_URI="http://www.river-bank.demon.co.uk/download/PyQt/PyQt-x11-gpl-${PV}.tar.gz"
 HOMEPAGE="http://www.riverbankcomputing.co.uk/pyqt/"
-SLOT="0"
+SRC_URI="mirror://gentoo/PyQt-x11-gpl-${PV}.tar.gz"
+
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
-RESTRICT="nomirror"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha"
+IUSE=""
 
 PV_MAJOR=${PV/.*/}
 PV_MINOR=${PV#${PV_MAJOR}.}
 PV_MINOR=${PV_MINOR/.*}
 
-DEPEND="virtual/glibc
-	sys-devel/libtool
+RDEPEND="virtual/libc
 	x11-libs/qt
 	dev-lang/python
 	=dev-python/sip-${PV_MAJOR}.${PV_MINOR}*
 	>=dev-python/qscintilla-1.53"
+
+DEPEND="${RDEPEND}
+	sys-devel/libtool"
 
 src_unpack() {
 	unpack PyQt-x11-gpl-${PV}.tar.gz
@@ -34,8 +35,13 @@ src_unpack() {
 }
 
 src_compile() {
-
 	distutils_python_version
+
+	# fix qt-3.3 compile problem
+	if has_version '=x11-libs/qt-3.3*' ; then
+		epatch "${FILESDIR}/${P}-qt-3.3.patch"
+	fi
+
 	# standard qt sandbox problem workaround
 	[ -d "$QTDIR/etc/settings" ] && addwrite "$QTDIR/etc/settings"
 	dodir /usr/lib/python${PYVER}/site-packages
@@ -45,14 +51,15 @@ src_compile() {
 		-e /usr/include/python${PYVER} \
 		-b ${D}/usr/bin \
 		-l qt-mt -c
-	make || die
 }
 
 src_install() {
+	make || die
+	distutils_python_version
+	dodir /usr/lib/python${PYVER}/site-packages
 	make DESTDIR=${D} install || die
 	dodoc README.Linux NEWS LICENSE README ChangeLog THANKS
 	dodir /usr/share/doc/${P}/
-	mv ${D}/usr/share/doc/* ${D}/usr/share/doc/${P}/
 	# I found out this location from the redhat rpm
 	insinto /usr/share/sip/qt
 	doins ${S}/sip/*

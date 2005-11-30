@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/jit/jit-1.1.6-r3.ebuild,v 1.1 2004/04/07 16:52:34 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/jit/jit-1.1.6-r3.ebuild,v 1.1.1.1 2005/11/30 10:09:46 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
-DESCRIPTION="ICQ transport for WPjabber/Jabberd"
+DESCRIPTION="ICQ transport for wpjabber / jabberd"
 HOMEPAGE="http://jit.jabberstudio.org/"
 SRC_URI="http://www.jabberstudio.org/files/jit/${P}.tar.gz"
 
@@ -13,15 +13,20 @@ SLOT="0"
 
 IUSE=""
 
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~alpha ~amd64 hppa ~ppc sparc x86"
 
 DEPEND=""
-RDEPEND=">=net-im/jabberd-1.4.3"
+RDEPEND=">=net-im/jabberd-1.4.3-r3"
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+
+	epatch ${FILESDIR}/jit-patch-00
+	use sparc && epatch ${FILESDIR}/jit-sparc.patch
+}
 
 src_compile() {
-	epatch ${FILESDIR}/jit-patch-00
-	[ `use sparc` ] && epatch ${FILESDIR}/jit-sparc.patch
 	./configure
 	emake || die
 	cp ${S}/jabberd/jabberd ${S}/jabberd/jit-wpjabber
@@ -44,9 +49,8 @@ src_install() {
 }
 
 pkg_postinst() {
-
 	einfo
-	einfo "Please read /usr/share/doc/${P}/README.Gentoo.gz"
+	einfo "Please read /usr/share/doc/${PF}/README.Gentoo.gz"
 	einfo "And please notice that now jit-transport comes with a init.d script"
 	einfo "dont forget to add it to your runlevel."
 	einfo

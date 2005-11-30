@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/net-im/gg-transport/files/jggtrans,v 1.1 2005/08/24 23:22:33 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gg-transport/files/jggtrans,v 1.1.1.1 2005/11/30 10:09:44 chriswhite Exp $
 
 depend() {
 	need net jabber-server

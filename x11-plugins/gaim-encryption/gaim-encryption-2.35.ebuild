@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-encryption/gaim-encryption-2.35.ebuild,v 1.1 2005/02/27 23:25:33 rizzo Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-encryption/gaim-encryption-2.35.ebuild,v 1.1.1.1 2005/11/30 10:10:39 chriswhite Exp $
 
-inherit flag-o-matic eutils debug
+inherit flag-o-matic debug
 
 DESCRIPTION="GAIM Encryption PlugIn"
 HOMEPAGE="http://gaim-encryption.sourceforge.net/"
@@ -20,18 +20,16 @@ src_compile() {
 	strip-flags
 	replace-flags -O? -O2
 
-	local myconf
-	myconf="${myconf} --with-nspr-includes=/usr/include/nspr"
-	myconf="${myconf} --with-nss-includes=/usr/include/nss"
-	myconf="${myconf} --with-nspr-libs=/usr/lib/nspr"
-	myconf="${myconf} --with-nss-libs=/usr/lib/nss"
-
-	econf ${myconf} || die "Configuration failed"
-
-	emake || MAKEOPTS="${MAKEOPTS} -j1" emake || die "Make failed"
+	econf \
+		--with-nspr-includes=/usr/include/nspr \
+		--with-nss-includes=/usr/include/nss \
+		--with-nspr-libs=/usr/lib/nspr \
+		--with-nss-libs=/usr/lib/nss\
+		|| die "Configuration failed"
+	emake -j1 || die "Make failed"
 }
 
 src_install() {
-	make install DESTDIR=${D} || die "Install failed"
+	make install DESTDIR="${D}" || die "Install failed"
 	dodoc CHANGELOG INSTALL NOTES README TODO VERSION WISHLIST
 }

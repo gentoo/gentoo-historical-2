@@ -1,12 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/dspam/dspam-3.2.7.ebuild,v 1.1 2005/02/20 12:50:24 st_lim Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dspam/dspam-3.2.7.ebuild,v 1.1.1.1 2005/11/30 10:11:56 chriswhite Exp $
 
 inherit eutils
 
-S=${WORKDIR}/${PN}-${PV}
 DESCRIPTION="A statistical-algorithmic hybrid anti-spam filter"
-SRC_URI="http://dspam.nuclearelephant.com/sources/${PN}-${PV}.tar.gz"
+SRC_URI="http://dspam.nuclearelephant.com/sources/${P}.tar.gz"
 HOMEPAGE="http://dspam.nuclearelephant.com/"
 LICENSE="GPL-2"
 
@@ -14,12 +13,12 @@ IUSE="cyrus debug exim mysql maildrop neural oci8 postgres procmail sqlite large
 DEPEND="exim? ( >=mail-mta/exim-4.34 )
 		mysql? ( >=dev-db/mysql-3.23 ) || ( >=sys-libs/db-4.0 )
 		sqlite? ( <dev-db/sqlite-3 )
-		maildrop? (( >=mail-filter/maildrop-1.5.3 ) || ( >=mail-mta/courier-0.46))
+		maildrop? ( ( >=mail-filter/maildrop-1.5.3 ) || ( >=mail-mta/courier-0.46 ) )
 		postgres? ( >=dev-db/postgresql-7.4.3 )
 		procmail? ( >=mail-filter/procmail-3.22 )
 		x86? ( cyrus? ( >=net-mail/cyrus-imapd-2.1.15 ) )
 		"
-RDEPEND="sys-apps/cronbase
+RDEPEND="sys-process/cronbase
 		app-admin/logrotate"
 KEYWORDS="~x86 ~ppc ~alpha"
 SLOT="0"

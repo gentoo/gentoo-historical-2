@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zopex3/zopex3-3.0.0.ebuild,v 1.1 2004/11/08 09:31:28 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zopex3/zopex3-3.0.0.ebuild,v 1.1.1.1 2005/11/30 10:11:05 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ LICENSE="ZPL"
 SLOT="${PV}"
 IUSE=""
 
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ~ppc ~amd64"
 
 RDEPEND="=dev-lang/python-2.3*"
 python='python2.3'
@@ -34,7 +34,7 @@ src_unpack() {
 }
 
 src_compile() {
-	./configure --prefix=${D}${ZSERVDIR} || die "Failed to configure."
+	./configure --prefix=${D}${ZSERVDIR} --with-python=/usr/bin/python2.3 || die "Failed to configure."
 	emake || die "Failed to compile."
 }
 
@@ -63,8 +63,9 @@ src_install() {
 
 pkg_postinst() {
 
-	einfo "This release ($PN) can create default instance. Please use command shown below:"
-	einfo "  ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
+	einfo
+	einfo "This release ($PN) can create default instance using command: ebuild  --config =${PV}"
+	einfo
 }
 
 pkg_prerm() {

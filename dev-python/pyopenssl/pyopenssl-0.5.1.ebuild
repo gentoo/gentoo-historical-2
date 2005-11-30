@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenssl/pyopenssl-0.5.1.ebuild,v 1.1 2004/07/16 23:29:31 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenssl/pyopenssl-0.5.1.ebuild,v 1.1.1.1 2005/11/30 10:10:33 chriswhite Exp $
 
 inherit distutils
 

@@ -1,9 +1,42 @@
 # ChangeLog for dev-python/soappy
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/soappy/ChangeLog,v 1.1 2004/01/03 03:08:03 kloeri Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/soappy/ChangeLog,v 1.1.1.1 2005/11/30 10:10:29 chriswhite Exp $
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> soappy-0.11.3.ebuild:
+  stable on amd64
+
+  12 Feb 2005; Fernando Serboncini <fserb@gentoo.org> soappy-0.11.6.ebuild:
+  Raised dependency to fpconst-0.7.1. Closes #81752.
+
+  09 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> soappy-0.11.6.ebuild:
+  Unstable ppc-macos
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  06 Dec 2004; Jason Wever <weeve@gentoo.org> soappy-0.11.6.ebuild:
+  Added ~sparc keyword.
+
+*soappy-0.11.6 (05 Dec 2004)
+
+  05 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> soappy-0.11.3.ebuild,
+  +soappy-0.11.6.ebuild:
+  Version bump.
+
+  10 Oct 2004; Simon Stelling <blubb@gentoo.org> soappy-0.11.3.ebuild:
+  added ~amd64
+
+  18 Apr 2004; David Holm <dholm@gentoo.org> soappy-0.11.3.ebuild:
+  Added to ~ppc.
+
+*soappy-0.11.3 (10 Apr 2004)
+
+  10 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> soappy-0.11.1.ebuild,
+  soappy-0.11.3.ebuild:
+  Mark 0.11.1 stable on x86, add 0.11.3 to portage.
 
 *soappy-0.11.1 (03 Jan 2004)
 
-  03 Jan 2004; Bryan �stergaard,,, <kloeri@gentoo.org> soappy-0.11.1.ebuild:
+  03 Jan 2004; Bryan Østergaard,,, <kloeri@gentoo.org> soappy-0.11.1.ebuild:
   Initial import
 

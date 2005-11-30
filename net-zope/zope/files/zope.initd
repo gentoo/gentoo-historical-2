@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/files/zope.initd,v 1.1 2005/01/14 21:16:20 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zope/files/zope.initd,v 1.1.1.1 2005/11/30 10:11:10 chriswhite Exp $
 
 opts="start stop reload kill quit status help"
 

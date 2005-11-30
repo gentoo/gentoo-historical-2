@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/popfile/popfile-0.21.1.ebuild,v 1.1 2004/06/03 07:22:04 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/popfile/popfile-0.21.1.ebuild,v 1.1.1.1 2005/11/30 10:12:00 chriswhite Exp $
 
 IUSE=""
 
@@ -11,14 +11,15 @@ SRC_URI="mirror://sourceforge/popfile/${P}.zip"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND=">=dev-lang/perl-5.8
-	dev-perl/Digest-MD5
+	perl-core/Digest-MD5
 	dev-perl/Text-Kakasi
-	dev-perl/MIME-Base64
+	perl-core/MIME-Base64
 	dev-perl/HTML-Tagset
-	dev-perl/DBD-SQLite"
+	dev-perl/DBD-SQLite
+	app-arch/unzip"
 
 src_compile() {
 	# do nothing

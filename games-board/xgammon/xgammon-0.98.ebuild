@@ -1,17 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/xgammon/xgammon-0.98.ebuild,v 1.1 2003/09/10 17:46:27 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/xgammon/xgammon-0.98.ebuild,v 1.1.1.1 2005/11/30 10:10:00 chriswhite Exp $
 
 inherit eutils
 
-S=${WORKDIR}/${P}a
+S="${WORKDIR}/${P}a"
 DESCRIPTION="very nice backgammon game for X"
-SRC_URI="http://fawn.unibw-hamburg.de/steuer/xgammon/Downloads/${P}a.tar.gz"
 HOMEPAGE="http://fawn.unibw-hamburg.de/steuer/xgammon/xgammon.html"
+SRC_URI="http://fawn.unibw-hamburg.de/steuer/xgammon/Downloads/${P}a.tar.gz"
 
-KEYWORDS="x86 ppc"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="x86 ppc sparc ~amd64"
+IUSE=""
 
 DEPEND="virtual/x11"
 
@@ -19,15 +20,16 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	epatch ${FILESDIR}/xgammon-0.98-broken.patch
-	epatch ${FILESDIR}/xgammon-0.98-config.patch
+	epatch "${FILESDIR}/${P}-broken.patch"
+	epatch "${FILESDIR}/${P}-config.patch"
+	epatch "${FILESDIR}/gcc33.patch"
 }
 
 src_compile() {
 	xmkmf || die "xmkmf died"
-	env PATH="${PATH}:." emake || die
+	env PATH="${PATH}:." emake || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die "make install failed"
 }

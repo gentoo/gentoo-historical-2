@@ -1,21 +1,27 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ttcp/ttcp-1.12.ebuild,v 1.1 2003/12/31 05:39:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ttcp/ttcp-1.12.ebuild,v 1.1.1.1 2005/11/30 10:12:13 chriswhite Exp $
 
-inherit gcc
+inherit toolchain-funcs eutils
 
+IUSE=""
 DESCRIPTION="Tool to test TCP and UDP throughput"
 HOMEPAGE="http://ftp.arl.mil/~mike/ttcp.html"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~amd64 ~ppc ppc-macos mips ~sparc"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
+
+src_unpack() {
+	unpack ${A} ; cd ${S}
+	use amd64 && epatch ${FILESDIR}/ttcp-1.12-amd64.patch
+}
 
 src_compile() {
-	$(gcc-getCC) ${CFLAGS} -o ttcp sgi-ttcp.c || die "compile failed"
+	$(tc-getCC) ${CFLAGS} -o ttcp sgi-ttcp.c || die "compile failed"
 }
 
 src_install() {

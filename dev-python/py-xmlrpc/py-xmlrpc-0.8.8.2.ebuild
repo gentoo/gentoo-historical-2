@@ -1,25 +1,25 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Julien Herfurth <jherfurth@arafox.com>
-# $Header: /var/cvsroot/gentoo-x86/dev-python/py-xmlrpc/py-xmlrpc-0.8.8.2.ebuild,v 1.1 2002/05/24 06:20:58 rphillips Exp $
-S=${WORKDIR}/${P}
-DESCRIPTION="Fast xml-rpc implementation for Python"
-SRC_URI="http://unc.dl.sourceforge.net/sourceforge/py-xmlrpc/${P}.tar.gz"
-HOMEPAGE="http://sourceforge.net/projects/py-xmlrpc/"
-DEPEND="virtual/python"
-RDEPEND="$DEPEND"
-LICENSE="LGPL"
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/py-xmlrpc/py-xmlrpc-0.8.8.2.ebuild,v 1.1.1.1 2005/11/30 10:10:28 chriswhite Exp $
 
-src_compile() {
-	python setup.py build || die
-}
+inherit distutils
+
+IUSE=""
+DESCRIPTION="Fast xml-rpc implementation for Python"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="http://sourceforge.net/projects/py-xmlrpc/"
+
+DEPEND="virtual/python"
+LICENSE="LGPL-2.1"
+SLOT="0"
+KEYWORDS="x86 sparc alpha"
 
 src_install () {
-	python setup.py install --prefix=${D}/usr || die
-	dodoc CHANGELOG COPYING INSTALL README
-	docinto examples
-	dodoc examples/*
-	docinto examples/crj
-	dodoc examples/crj/*
+	mydoc="CHANGELOG COPYING INSTALL README"
+	distutils_src_install
+	insinto /usr/share/doc/${PF}/examples
+	doins examples/*
+	insinto /usr/share/doc/${PF}/examples/crj
+	doins examples/crj/*
 }
 

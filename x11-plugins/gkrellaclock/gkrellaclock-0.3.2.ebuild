@@ -1,17 +1,18 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellaclock/gkrellaclock-0.3.2.ebuild,v 1.1 2002/10/16 22:30:29 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellaclock/gkrellaclock-0.3.2.ebuild,v 1.1.1.1 2005/11/30 10:10:46 chriswhite Exp $
 
+IUSE=""
 S=${WORKDIR}/${P/a/A}
 DESCRIPTION="Nice analog clock for GKrellM2"
 SRC_URI="http://www.geocities.com/m_muthukumar/${P}.tar.gz"
 HOMEPAGE="http://www.geocities.com/m_muthukumar/gkrellaclock.html"
 
-DEPEND=">=app-admin/gkrellm-2*"	
+DEPEND=">=app-admin/gkrellm-2"
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~sparc64"
+KEYWORDS="x86 sparc alpha ppc"
 
 src_compile() {
 	export CFLAGS="${CFLAGS/-O?/}"

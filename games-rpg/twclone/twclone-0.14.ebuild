@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/twclone/twclone-0.14.ebuild,v 1.1 2004/03/26 11:58:07 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/twclone/twclone-0.14.ebuild,v 1.1.1.1 2005/11/30 10:11:00 chriswhite Exp $
 
 inherit games
 
@@ -10,7 +10,7 @@ DESCRIPTION="Clone of BBS Door game Trade Wars 2002"
 HOMEPAGE="http://twclone.sourceforge.net/"
 SRC_URI="mirror://sourceforge/twclone/${MY_P}.tar.gz"
 
-KEYWORDS="x86"
+KEYWORDS="x86 ~ppc ~amd64"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

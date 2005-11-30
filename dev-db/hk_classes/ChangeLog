@@ -1,9 +1,172 @@
 # ChangeLog for dev-db/hk_classes
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/hk_classes/ChangeLog,v 1.1 2003/04/23 13:36:11 pauldv Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/hk_classes/ChangeLog,v 1.1.1.1 2005/11/30 10:11:24 chriswhite Exp $
+
+  20 Nov 2005; Mark Loeser <halcy0n@gentoo.org> hk_classes-0.7.4a.ebuild:
+  Stable on x86; bug #112832
+
+  19 Nov 2005; Jason Wever <weeve@gentoo.org> hk_classes-0.7.4a.ebuild:
+  Stable on SPARC wrt bug #112832.
+
+  15 Oct 2005; Carsten Lohrke <carlo@gentoo.org>
+  -files/hk_classes-0.7.4-amd64.patch, +files/hk_classes-amd64.patch:
+  restore accidentally deleted wrong patch
+
+*hk_classes-0.7.4a (12 Oct 2005)
+
+  12 Oct 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/hk_classes-0.7.4a-amd64.patch, -files/hk_classes-amd64.patch,
+  -hk_classes-0.7.4.ebuild, +hk_classes-0.7.4a.ebuild:
+  version bump
+
+*hk_classes-0.7.4 (27 Jun 2005)
+
+  27 Jun 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/hk_classes-0.7.4-amd64.patch, +hk_classes-0.7.4.ebuild:
+  version bump
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> hk_classes-0.7.2.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  hk_classes-0.7.1.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> hk_classes-0.7.1.ebuild:
+  stable on amd64
+
+*hk_classes-0.7.3 (22 Mar 2005)
+
+  22 Mar 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/hk_classes-0.7.3-amd64.patch, hk_classes-0.7.2-r1.ebuild,
+  +hk_classes-0.7.3.ebuild:
+  version bump and Python 2.4 compatibility thanks to Rob Cakebread, #85721
+
+  24 Feb 2005; Jason Wever <weeve@gentoo.org> hk_classes-0.7.2-r1.ebuild:
+  Added ~sparc keyword.
+
+*hk_classes-0.7.2-r1 (09 Dec 2004)
+
+  09 Dec 2004; Simone Gotti <motaboy@gentoo.org>
+  +hk_classes-0.7.2-r1.ebuild:
+  Use the patch I sent to the author to selectively choose the db plugins to
+  compile depending on the useflag status instead of compiling the plugin also
+  if the flag is disabled but the DB is installed.
+
+*hk_classes-0.7.2 (06 Dec 2004)
+
+  06 Dec 2004; Caleb Tennis <caleb@gentoo.org> +hk_classes-0.7.2.ebuild,
+  -hk_classes-0.7.2_alpha3.ebuild:
+  version bump, remove old version
+
+  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org> hk_classes-0.7.1.ebuild:
+  stable on x86
+
+  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/hk_classes-amd64.patch, hk_classes-0.7.1.ebuild,
+  hk_classes-0.7.2_alpha3.ebuild:
+  Added to ~amd64, bug #70459
+
+*hk_classes-0.7.2_alpha3 (08 Nov 2004)
+
+  08 Nov 2004; Carsten Lohrke <carlo@gentoo.org>
+  +hk_classes-0.7.2_alpha3.ebuild:
+  version bump
+
+*hk_classes-0.7.1 (19 Sep 2004)
+
+  19 Sep 2004; Caleb Tennis <caleb@gentoo.org> +hk_classes-0.7.1.ebuild:
+  Version bump
+
+  12 Aug 2004; Carsten Lohrke <carlo@gentoo.org> hk_classes-0.7.ebuild:
+  stable on x86
+
+  05 Aug 2004; Anders Rune Jensen <arj@gentoo.org> hk_classes-0.7.ebuild:
+  Depend on version 2 of sqlite.
+
+*hk_classes-0.7 (13 Jul 2004)
+
+  13 Jul 2004; Carsten Lohrke <carlo@gentoo.org>
+  -hk_classes-0.6.3_alpha3.ebuild, +hk_classes-0.7.ebuild,
+  -hk_classes-0.7_alpha1.ebuild, -hk_classes-0.7_alpha3.ebuild:
+  ebuild clean up, fixed digest, version bump
+
+*hk_classes-0.7_alpha3 (04 Jul 2004)
+
+  04 Jul 2004; Carsten Lohrke <carlo@gentoo.org>
+  +hk_classes-0.7_alpha3.ebuild:
+  version bump
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> hk_classes-0.6.2a.ebuild:
+  Fix use invocation
+
+*hk_classes-0.7_alpha1 (17 May 2004)
+
+  17 May 2004; Caleb Tennis <caleb@gentoo.org> -hk_classes-0.6.1.ebuild,
+  -hk_classes-0.6.3_alpha1.ebuild, +hk_classes-0.7_alpha1.ebuild:
+  Version bump, remove old versions
+  From bug #46758
+
+  16 May 2004; Dominik Stadler <centic@gentoo.org> hk_classes-0.6.2a.ebuild:
+  Remove unnecessary definition of S
+
+  25 Mar 2004; Martin Holzer <mholzer@gentoo.org> hk_classes-0.6.1.ebuild,
+  hk_classes-0.6.2a.ebuild, hk_classes-0.6.3_alpha1.ebuild,
+  hk_classes-0.6.3_alpha3.ebuild:
+  fixing src_uri. closes 45630
+
+  18 Mar 2004; David Holm <dholm@gentoo.org> hk_classes-0.6.3_alpha3.ebuild:
+  Added to ~ppc.
+
+*hk_classes-0.6.3_alpha3 (15 Mar 2004)
+
+  15 Mar 2004; Caleb Tennis <caleb@gentoo.org> hk_classes-0.6.3_alpha3.ebuild:
+  Version bump
+
+*hk_classes-0.6.3_alpha1 (27 Dec 2003)
+
+  27 Dec 2003; Caleb Tennis <caleb@gentoo.org> hk_classes-0.6.3_alpha1.ebuild:
+  New alpha version
+
+*hk_classes-0.6.2a (06 Dec 2003)
+
+  06 Dec 2003; Caleb Tennis <caleb@gentoo.org> hk_classes-0.6.1_alpha3.ebuild,
+  hk_classes-0.6.2a.ebuild, hk_classes-0.6.ebuild:
+  New version - by Peter Ruskin.  Bug #35161
+
+*hk_classes-0.6.1 (20 Oct 2003)
+
+  20 Oct 2003; Caleb Tennis <caleb@gentoo.org> hk_classes-0.6.1.ebuild:
+  Final version - provided by Peter Ruskin (bug 31523)
+
+*hk_classes-0.6.1_alpha3 (02 Oct 2003)
+
+  02 Oct 2003; Caleb Tennis <caleb@gentoo.org> hk_classes-0.6.1_alpha3.ebuild:
+  New version
+
+  20 Jul 2003; Caleb Tennis <caleb@gentoo.org> hk_classes.0.6.ebuild:
+  Added a few lines by Peter Ruskin to include documentation in ebuild. 
+  Closes bug #24335.
+
+  17 Jun 2003; Caleb Tennis <caleb@gentoo.org> hk_classes.0.6.ebuild:
+  Fixed a problem with the DEPEND string.  Closes bug #22472.
+  Also removed older ebuilds (0.5.6 and 0.6_pre3).
+
+*hk_classes-0.6 (28 May 2003)
+
+  28 May 2003; Caleb Tennis <caleb@gentoo.org> hk_classes.0.6.ebuild:
+  Version bump, slightly modified ebuild thanks to Peter Ruskin (bug #20980)
+
+*hk_classes-0.6_pre3 (24 Apr 2003)
+
+  24 Apr 2003; Paul de Vrieze <pauldv@gentoo.org> Manifest,
+  hk_classes-0.6_pre3.ebuild:
+  New version of hk_classes for a new knoda that works around some bugs in kde.
+  It also corrects a python inclusion problem in the original pre3 (this is
+  pre3a) Courtessy of: Peter Ruskin <aoyu93@dsl.pipex.com>
 
 *hk_classes-0.5.6 (23 Apr 2003)
 
-  23 Apr 2003; Paul de Vrieze pauldv@gentoo.org hk_classes-0.5.6.ebuild:
+  23 Apr 2003; Paul de Vrieze <pauldv@gentoo.org> hk_classes-0.5.6.ebuild:
   Initial import, courtessy of Peter Ruskin <aoyu93@dsl.pipex.com>
 

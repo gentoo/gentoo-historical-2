@@ -1,14 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/vegastrike/vegastrike-0.3.1.ebuild,v 1.1 2003/09/10 06:26:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/vegastrike/vegastrike-0.3.1.ebuild,v 1.1.1.1 2005/11/30 10:10:59 chriswhite Exp $
 
-inherit games eutils flag-o-matic
+inherit eutils flag-o-matic games
 
 DATA_VER=0.3-1
 DESCRIPTION="3d OpenGL Action RPG space sim"
 HOMEPAGE="http://vegastrike.sourceforge.net/"
 SRC_URI="mirror://sourceforge/vegastrike/${P}-gcc3.2.src.rpm
 	mirror://sourceforge/vegastrike/${PN}-data-${DATA_VER}.noarch.rpm"
+RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -34,6 +35,9 @@ src_unpack() {
 
 	rpm2targz ${DISTDIR}/${PN}-data-${DATA_VER}.noarch.rpm || die "data rpm2targz failed"
 	tar -zxf ${PN}-data-${DATA_VER}.noarch.tar.gz || die "src tar failed"
+	cd ${WORKDIR}
+	#Fixes gcc3 issue
+	epatch ${FILESDIR}/${P}-gcc3.patch || die
 
 	cd ${S}
 	autoconf || die

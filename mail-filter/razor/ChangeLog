@@ -1,6 +1,175 @@
-# ChangeLog for net-mail/razor
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/ChangeLog,v 1.1 2004/06/03 07:28:42 seemant Exp $
+# ChangeLog for mail-filter/razor
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/ChangeLog,v 1.1.1.1 2005/11/30 10:11:53 chriswhite Exp $
+
+  12 Nov 2005; Brent Baude <ranger@gentoo.org> razor-2.72.ebuild:
+  Marking razor-2.72 ~ppc64 for bug# 112220
+
+  20 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> razor-2.77.ebuild:
+  Stable on amd64.
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> razor-2.77.ebuild:
+  Mark 2.77 stable on alpha
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> razor-2.77.ebuild:
+  Stable on ppc.
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> razor-2.77.ebuild:
+  Stable on sparc
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> razor-2.77.ebuild:
+  stable on ia64
+
+  24 Aug 2005; Andrej Kacian <ticho@gentoo.org> razor-2.75.ebuild,
+  razor-2.77.ebuild:
+  Stable on x86.
+
+*razor-2.77 (16 Aug 2005)
+
+  16 Aug 2005; Andrej Kacian <ticho@gentoo.org> +razor-2.77.ebuild:
+  Version bump. Closes bug #101070.
+
+  10 Jul 2005; Tom Martin <slarti@gentoo.org> razor-2.75.ebuild:
+  Marked ~ia64.
+
+*razor-2.75 (07 Jul 2005)
+
+  07 Jul 2005; Andrej Kacian <ticho@gentoo.org> -files/razor-taint.patch,
+  -files/razor_uninstall.patch, -razor-2.36-r1.ebuild,
+  -razor-2.40-r1.ebuild, -razor-2.61.ebuild, -razor-2.66.ebuild,
+  +razor-2.75.ebuild:
+  Version bump. Removed older ebuilds and two unused patches.
+
+  03 Jul 2005; Herbie Hopkins <herbs@gentoo.org> razor-2.74.ebuild:
+  Stable on amd64 wrt bug #96776.
+
+  30 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> razor-2.74.ebuild:
+  Stable on alpha, bug 96776.
+
+  30 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> razor-2.74.ebuild:
+  Stable on ppc.
+
+  30 Jun 2005; Andrej Kacian <ticho@gentoo.org> razor-2.74.ebuild:
+  Fixed a sandbox violation. Fix suggested by Kerin Millar <kerframil at
+  gmail.com>, bug #96776.
+
+  30 Jun 2005; Andrej Kacian <ticho@gentoo.org> metadata.xml:
+  Added upstream contact to metadata.xml. Agreed upon by Andrej Kacian <ticho
+  at gentoo org> and Jordan Ritter <jpr5 at darkridge com> on Thu Jun 30
+  03:27:57 CEST 2005.
+
+  29 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> razor-2.74.ebuild:
+  Stable on sparc wrt #96776
+
+  29 Jun 2005; Andrej Kacian <ticho@gentoo.org> razor-2.74.ebuild:
+  Stable on x86, security bug #96776.
+
+*razor-2.74 (29 Jun 2005)
+
+  29 Jun 2005; Andrej Kacian <ticho@gentoo.org> +razor-2.74.ebuild:
+  Version bump, security bug #96776.
+
+  21 Jun 2005; Andrej Kacian <ticho@gentoo.org> razor-2.36-r1.ebuild,
+  razor-2.40-r1.ebuild, razor-2.61.ebuild, razor-2.66.ebuild,
+  razor-2.67.ebuild, razor-2.71.ebuild, razor-2.72.ebuild:
+  Fixed a typo in post-install instructions. Bug #96695, by MAL <mal at
+  komcept.com>.
+
+  18 Jun 2005; Andrej Kacian <ticho@gentoo.org> razor-2.72.ebuild:
+  Stable on x86, bug #95492.
+
+  18 Jun 2005; Simon Stelling <blubb@gentoo.org> razor-2.72.ebuild:
+  stable on amd64 wrt bug 95492
+
+  17 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> razor-2.72.ebuild:
+  Stable on alpha, wrt bug #95492
+
+  17 Jun 2005; Luca Barbato <lu_zero@gentoo.org> razor-2.72.ebuild:
+  Marked ppc
+
+  17 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> razor-2.72.ebuild:
+  Stable on sparc wrt #95492
+
+*razor-2.72 (17 Jun 2005)
+
+  17 Jun 2005; Tom Martin <slarti@gentoo.org> +razor-2.72.ebuild:
+  Version bump, for security bug 95492.
+
+*razor-2.71 (16 Jun 2005)
+
+  16 Jun 2005; Tom Martin <slarti@gentoo.org> +razor-2.71.ebuild:
+  Version bump with numerous cosmetic fixes.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.67.ebuild:
+  dev-perl/net-ping => perl-core/net-ping migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.66.ebuild:
+  dev-perl/net-ping => perl-core/net-ping migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.61.ebuild:
+  dev-perl/net-ping => perl-core/net-ping migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.40-r1.ebuild:
+  dev-perl/net-ping => perl-core/net-ping migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.36-r1.ebuild:
+  dev-perl/net-ping => perl-core/net-ping migration
+
+*razor-2.67 (25 May 2005)
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.67.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.66.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.61.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.40-r1.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> razor-2.36-r1.ebuild:
+  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
+
+  17 Dec 2004; Aaron Kulbe <superlag@gentoo.org> :
+  Version bump -> 2.67, fix missing changelog entry.
+
+*razor-2.66 (03 Dec 2004)
+
+  03 Dec 2004; Tom Martin <slarti@gentoo.org> +razor-2.66.ebuild:
+  Version bump, resolves bug 73203.
+
+  27 Oct 2004; Tom Martin <slarti@gentoo.org> razor-2.61.ebuild:
+  Stable on amd64 for bug #67910.
+
+  19 Oct 2004; Jason Wever <weeve@gentoo.org> razor-2.61.ebuild:
+  Stable on sparc wrt bug #67910.
+
+  19 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> razor-2.61.ebuild:
+  Stable on ppc.
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> razor-2.40-r1.ebuild,
+  razor-2.61.ebuild:
+  Stable on alpha, bug 67910.
+
+  19 Oct 2004; Andrej Kacian <ticho@gentoo.org> razor-2.40-r1.ebuild,
+  razor-2.61.ebuild:
+  Marked 2.40-r1 and 2.61 stable on x86.
+
+  23 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> razor-2.40-r1.ebuild:
+  Stable amd64.
+
+  09 Jul 2004; Tuan Van <langthang@gentoo.org> :
+  Remove old ebuilds razor-{2.12,2.14,2.20,2.36,2.40}. added IUSE.
+
+  09 Jul 2004; Michael Hanselmann <hansmi@gentoo.org> razor-2.36-r1.ebuild:
+  Stable on ppc.
+
+*razor-2.61 (08 Jul 2004)
+
+  08 Jul 2004; Tuan Van<langthang@gentoo.org> +razor-2.61.ebuild:
+  version bump, close bug #56422.
 
 *razor-2.40-r1 (03 Jun 2004)
 

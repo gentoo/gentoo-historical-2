@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/xfreecell/xfreecell-1.0.5b.ebuild,v 1.1 2004/02/25 10:24:30 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/xfreecell/xfreecell-1.0.5b.ebuild,v 1.1.1.1 2005/11/30 10:09:59 chriswhite Exp $
 
 inherit eutils games
 
@@ -11,8 +11,8 @@ SRC_URI="http://www2.giganet.net/~nakayama/${P}.tgz
 	http://www2.giganet.net/~nakayama/MSNumbers.gz"
 
 LICENSE="as-is"
-KEYWORDS="x86"
 SLOT="0"
+KEYWORDS="x86 ppc64 ~ppc ~amd64"
 IUSE=""
 
 DEPEND="virtual/x11"
@@ -27,7 +27,7 @@ src_install() {
 	dogamesbin xfreecell || die "dogamesbin failed"
 	insinto "${GAMES_DATADIR}/${PN}"
 	doins "${WORKDIR}/MSNumbers" || die "doins failed"
-	dodoc CHANGES README mshuffle.txt || die "dodoc failed"
-	doman xfreecell.6 || die "doman failed"
+	dodoc CHANGES README mshuffle.txt
+	doman xfreecell.6
 	prepgamesdirs
 }

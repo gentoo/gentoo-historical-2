@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.6.2.ebuild,v 1.1 2005/07/19 09:55:20 lucass Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.6.2.ebuild,v 1.1.1.1 2005/11/30 10:10:04 chriswhite Exp $
 
 inherit gnome.org python flag-o-matic
 

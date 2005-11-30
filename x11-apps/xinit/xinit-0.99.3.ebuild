@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinit/xinit-0.99.3.ebuild,v 1.1 2005/11/11 19:38:36 joshuabaergen Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xinit/xinit-0.99.3.ebuild,v 1.1.1.1 2005/11/30 10:14:37 chriswhite Exp $
 
 # Must be before x-modular eclass is inherited
 # This is enabled due to modified Makefile.am from the patches

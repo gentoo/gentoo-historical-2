@@ -15,7 +15,7 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-# $Id: FlowScan.pm,v 1.1 2005/06/22 14:56:17 strerror Exp $
+# $Id: FlowScan.pm,v 1.1.1.1 2005/11/30 10:12:08 chriswhite Exp $
 # Dave Plonka <plonka@doit.wisc.edu>
 
 use strict;
@@ -29,7 +29,7 @@ require Exporter;
 @FlowScan::ISA=qw(Exporter);
 @FlowScan::EXPORT_OK=qw(ip2name);
 # convert the RCS revision to a reasonable Exporter VERSION:
-'$Revision: 1.1 $' =~ m/(\d+)\.(\d+)/ && (( $FlowScan::VERSION ) = sprintf("%d.%03d", $1, $2));
+'$Revision: 1.1.1.1 $' =~ m/(\d+)\.(\d+)/ && (( $FlowScan::VERSION ) = sprintf("%d.%03d", $1, $2));
 
 =head1 NAME
 
@@ -190,7 +190,7 @@ the Free Software Foundation; either version 2 of the License, or
 
 =head1 VERSION
 
-The version number is the module file RCS revision number (B<$Revision: 1.1 $>)
+The version number is the module file RCS revision number (B<$Revision: 1.1.1.1 $>)
 with the minor number printed right justified with leading zeroes to 3
 decimal places.  For instance, RCS revision 1.1 would yield a package version
 number of 1.001.

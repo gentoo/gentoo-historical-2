@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/adonthell/adonthell-0.3.4a.ebuild,v 1.1 2005/06/09 04:35:05 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/adonthell/adonthell-0.3.4a.ebuild,v 1.1.1.1 2005/11/30 10:11:00 chriswhite Exp $
 
 inherit eutils games
 
@@ -30,14 +30,20 @@ S=${WORKDIR}/${PN}-${PV/a/}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/${PV}-configure.in.patch"
-	aclocal && automake -a && autoconf || die "autotools failed"
+	epatch "${FILESDIR}"/${PV}-configure.in.patch
+	rm -f ac{local,include}.m4
+	aclocal && \
+	libtoolize -c -f && \
+	autoconf && \
+	automake -a -c || die "autotools failed"
 }
 
 src_compile() {
+	# the fugly --with-vorbis is to work around #98689
 	egamesconf \
 		--disable-dependency-tracking \
 		--disable-py-debug \
+		--with-vorbis="${T}" \
 		$(use_enable nls) \
 		$(use_enable doc) \
 		|| die
@@ -48,6 +54,6 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 	keepdir "${GAMES_DATADIR}/${PN}/games"
-	dodoc AUTHORS ChangeLog FULLSCREEN.howto INSTALL NEWBIE NEWS README
+	dodoc AUTHORS ChangeLog FULLSCREEN.howto NEWBIE NEWS README
 	prepgamesdirs
 }

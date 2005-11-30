@@ -1,31 +1,67 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/files/postgrey.rc,v 1.1 2005/04/29 00:28:44 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/postgrey/files/postgrey.rc,v 1.1.1.1 2005/11/30 10:12:03 chriswhite Exp $
+
+conf="/etc/conf.d/postgrey"
 
 depend() {
 	need net
-	before mta
-	use mta
+	before postfix
+	provide postfix_greylist
+}
+
+conf_error() {
+	eerror "You need to setup ${conf} first"
+	return 1
 }
 
 checkconfig() {
-if [ -z "${POSTGREY_PORT}" ] || [ -z "${POSTGREY_HOST}" ] || [ -z "${POSTGREY_PID}" ]
+if [ -z "${POSTGREY_TYPE}" ]
 	then
-		einfo "The following entries are missing in /etc/conf.d/postgrey:"
-		[ -z "${POSTGREY_HOST}" ] && einfo "  - POSTGREY_HOST"
-		[ -z "${POSTGREY_PORT}" ] && einfo "  - POSTGREY_PORT"
+		einfo "You need to choose the server type you want"
+		einfo "by setting the POSTGREY_TYPE variable in ${conf}."
+	else
+	if [ "x${POSTGREY_TYPE}" = "xinet" ]
+		then
+			if [ -z "${POSTGREY_PORT}" ] || [ -z "${POSTGREY_HOST}" ]
+				then
+					einfo "The following entries are missing in ${conf}:"
+					[ -z "${POSTGREY_HOST}" ] && einfo "  - POSTGREY_HOST"
+					[ -z "${POSTGREY_PORT}" ] && einfo "  - POSTGREY_PORT"
+					conf_error
+			fi
+			POSTGREY_ADDR="${POSTGREY_TYPE}=${POSTGREY_HOST}:${POSTGREY_PORT}"
+		else
+			if [ -z "${POSTGREY_SOCKET}" ]
+			then
+				einfo "The following entries are missing in ${conf}:"
+				[ -z "${POSTGREY_SOCKET}" ] && einfo "  - POSTGREY_SOCKET"
+				conf_error
+			fi
+			POSTGREY_ADDR="${POSTGREY_TYPE}=${POSTGREY_SOCKET}"
+	fi
+fi
+
+	if [ -z "${POSTGREY_PID}" ]
+		then
+		einfo "The following entries are missing in ${conf}:"
 		[ -z "${POSTGREY_PID}" ] && einfo "  - POSTGREY_PID"
-		eerror "You need to setup variables in /etc/conf.d/postgrey first"
-		return 1
+		conf_error
 	fi
 }
+
 start() {
 	checkconfig || return 1
 	ebegin "Starting Postgrey"
+	
+	# HACK -- start a subshell and corrects perms on the socket...
+	( if [ "x${POSTGREY_TYPE}" = "xunix" ]; then
+	sleep 2 && chmod a+rw,a-x ${POSTGREY_SOCKET}; fi ) &
+
 	start-stop-daemon --start --quiet --background \
 		--exec /usr/sbin/postgrey -- \
-		--inet=${POSTGREY_HOST}:${POSTGREY_PORT} \
+		--${POSTGREY_ADDR} \
 		--daemonize \
 		--pidfile=${POSTGREY_PID} \
 		${POSTGREY_OPTS}

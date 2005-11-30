@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-apps/xlsatoms/xlsatoms-0.99.0.ebuild,v 1.1 2005/08/08 06:28:12 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-apps/xlsatoms/xlsatoms-0.99.0.ebuild,v 1.1.1.1 2005/11/30 10:14:34 chriswhite Exp $
 
 # Must be before x-modular eclass is inherited
 #SNAPSHOT="yes"
@@ -8,7 +8,7 @@
 inherit x-modular
 
 DESCRIPTION="X.Org xlsatoms application"
-KEYWORDS="~x86"
+KEYWORDS="~arm ~mips ~s390 ~sparc ~x86"
 RDEPEND="x11-libs/libX11
 	x11-libs/libXmu"
 DEPEND="${RDEPEND}"

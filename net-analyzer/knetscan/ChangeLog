@@ -1,8 +1,41 @@
 # ChangeLog for net-analyzer/knetscan
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/knetscan/ChangeLog,v 1.1 2002/10/24 18:11:32 hannes Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/knetscan/ChangeLog,v 1.1.1.1 2005/11/30 10:12:07 chriswhite Exp $
+
+  04 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/knetscan-1.0-desktop.diff, knetscan-1.0.ebuild:
+  Patching up so that knetscan shows in the Internet menu and not in lost and
+  found. Fixes bug 104835. Thanks to <pinihadad@optonline.net>.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> knetscan-1.0.ebuild:
+  Stable on ppc.
+
+  31 Dec 2004; Jason Wever <weeve@gentoo.org> knetscan-1.0.ebuild:
+  Added ~sparc keyword.
+
+  31 Jul 2004; <malc@gentoo.org> :
+  ~amd64 - closes bug #57958
+
+  27 Jul 2004; <malc@gentoo.org> knetscan-1.0.ebuild:
+  Add ~amd64, closes bug #57711
+
+  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
+  knetscan-1.0.ebuild:
+  Tidy
+
+  06 Jul 2004; Carsten Lohrke <carlo@gentoo.org> knetscan-1.0.ebuild:
+  QA: newdepend -> R/DEPEND, need-kde
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> knetscan-1.0.ebuild:
+  inherit kde instead of deprecated kde-base
+
+  02 Nov 2002; Hannes Mehnert <hannes@gentoo.org> knetscan-1.0.ebuild:
+  marked stable for x86
 
 *knetscan-1.0 (24 Oct 2002)
+
+  15 Feb 2003; Mark Guertin <gerk@gentoo.org> knetscan-1.0.ebuild :
+  set ~ppc in keywords
 
   24 Oct 2002; Hannes Mehnert <hannes@gentoo.org> knetscan-1.0.ebuild,
   ChangeLog: Initial ebuild. Thanks to jnagel@fim-ag.de (Juergen Nagel)

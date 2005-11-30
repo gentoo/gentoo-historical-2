@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-8.0.1-r4.ebuild,v 1.1 2005/05/08 20:39:27 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-8.0.1-r4.ebuild,v 1.1.1.1 2005/11/30 10:11:46 chriswhite Exp $
 
 inherit eutils gnuconfig flag-o-matic multilib toolchain-funcs
 
@@ -16,12 +16,12 @@ SRC_URI="mirror://postgresql/source/v${PV}/${PN}-base-${MY_PV}.tar.bz2
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+KEYWORDS="~alpha ~amd64 arm hppa ~ia64 ~mips ~ppc ppc64 s390 sparc x86"
 IUSE="ssl nls python tcltk perl libg++ pam readline xml2 zlib doc selinux kerberos pg-intdatetime pg-hier"
 
 S=${WORKDIR}/${MY_P}
 DEPEND="virtual/libc
-	=dev-db/libpq-3.2
+	=dev-db/libpq-8.0.1*
 	sys-devel/autoconf
 	>=sys-libs/ncurses-5.2
 	>=sys-devel/bison-1.875
@@ -35,8 +35,7 @@ DEPEND="virtual/libc
 	nls? ( sys-devel/gettext )
 	kerberos? ( virtual/krb5 )"
 RDEPEND="virtual/libc
-	=dev-db/libpq-3.2
-	app-admin/sudo
+	=dev-db/libpq-8.0.1*
 	zlib? ( >=sys-libs/zlib-1.1.3 )
 	tcltk? ( >=dev-lang/tcl-8 )
 	perl? ( >=dev-lang/perl-5.6.1-r2 )
@@ -106,7 +105,6 @@ src_compile() {
 		--with-docdir=/usr/share/doc/${PF} \
 		--libdir=/usr/$(get_libdir) \
 		--enable-depend \
-		--with-gnu-ld \
 		$myconf || die
 
 	make LD="$(tc-getLD) $(get_abi_LDFLAGS)" || die
@@ -142,9 +140,6 @@ src_install() {
 
 	exeinto /usr/bin
 
-	dodir /usr/include/postgresql/pgsql
-	cp ${D}/usr/include/*.h ${D}/usr/include/postgresql/pgsql
-
 	cd ${S}/doc
 	dodoc FAQ* README.* TODO bug.template
 	if use doc; then
@@ -168,6 +163,8 @@ src_install() {
 	insinto /etc/conf.d/
 	newins ${FILESDIR}/postgresql.conf-${PV} postgresql || die
 	newins ${FILESDIR}/pg_autovacuum.conf-${PV} pg_autovacuum || die
+
+	rm ${D}/usr/include/postgres_ext.h
 }
 
 pkg_postinst() {
@@ -176,7 +173,7 @@ pkg_postinst() {
 	if [ ! -f ${PG_DIR}/data/PG_VERSION ] ; then
 		einfo ""
 		einfo "Execute the following command"
-		einfo "ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config"
+		einfo "emerge --config =${PF}"
 		einfo "to setup the initial database environment."
 		einfo ""
 	fi
@@ -212,7 +209,7 @@ pkg_config() {
 			eerror "Temporary setting this value to ${SEMMNI_MIN} while creating the initial database."
 			echo ${SEM} ${SEMMNI_MIN} > /proc/sys/kernel/sem
 		fi
-		sudo -u postgres /usr/bin/initdb --pgdata ${PG_DIR}/data
+		su postgres -c "/usr/bin/initdb --pgdata ${PG_DIR}/data"
 
 		if [ ! `sysctl -n kernel.sem | cut -f4` -eq ${SEMMNI} ] ; then
 			echo ${SEM} ${SEMMNI} > /proc/sys/kernel/sem

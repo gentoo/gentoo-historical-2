@@ -1,21 +1,21 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenal/pyopenal-0.1.3.ebuild,v 1.1 2003/12/21 16:31:23 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenal/pyopenal-0.1.3.ebuild,v 1.1.1.1 2005/11/30 10:10:16 chriswhite Exp $
 
-inherit distutils
+inherit distutils eutils
 
-IUSE=""
 MY_P=${P/pyopenal/PyOpenAL}
 
 DESCRIPTION="OpenAL library port for Python"
+HOMEPAGE="http://oomadness.tuxfamily.org/en/pyopenal/"
 SRC_URI="http://oomadness.tuxfamily.org/downloads/${MY_P}.tar.gz
 	http://www.nectroom.homelinux.net/pkg/${MY_P}.tar.gz
 	http://nectroom.homelinux.net/pkg/${MY_P}.tar.gz"
-HOMEPAGE="http://oomadness.tuxfamily.org/en/pyopenal/"
 
-KEYWORDS="~x86"
-SLOT="0"
 LICENSE="LGPL-2.1"
+SLOT="0"
+KEYWORDS="x86 ~ppc"
+IUSE=""
 
 DEPEND=">=dev-lang/python-2.2.2
 	media-libs/openal
@@ -24,3 +24,7 @@ DEPEND=">=dev-lang/python-2.2.2
 
 S=${WORKDIR}/${MY_P}
 
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/pyopenal-1.3.patch
+}

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/silvadocument/silvadocument-1.1.5.ebuild,v 1.1 2005/05/08 19:23:33 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/silvadocument/silvadocument-1.1.5.ebuild,v 1.1.1.1 2005/11/30 10:11:04 chriswhite Exp $
 
 inherit zproduct
 

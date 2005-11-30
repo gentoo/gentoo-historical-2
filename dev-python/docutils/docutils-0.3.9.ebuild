@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3.9.ebuild,v 1.1 2005/09/03 17:16:19 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3.9.ebuild,v 1.1.1.1 2005/11/30 10:10:25 chriswhite Exp $
 
 inherit distutils eutils elisp-common
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/docutils/${P}.tar.gz
 
 LICENSE="public-domain PYTHON BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc-macos ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
 IUSE="glep emacs"
 DEPEND=">=dev-lang/python-2.3
 	emacs? ( virtual/emacs )"
@@ -49,7 +49,7 @@ install_txt_doc() {
 
 src_test() {
 	cd ${S}/test
-	./alltests.py || die "alltests.py failed"
+	PYTHONPATH="${S}" ./alltests.py || die "alltests.py failed"
 }
 
 src_install() {

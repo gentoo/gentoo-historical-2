@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-rssgrab/desklet-rssgrab-0.6.2.ebuild,v 1.1 2004/07/18 04:16:25 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-rssgrab/desklet-rssgrab-0.6.2.ebuild,v 1.1.1.1 2005/11/30 10:10:55 chriswhite Exp $
 
 DESKLET_NAME="rssgrab"
 
@@ -15,7 +15,7 @@ LICENSE="as-is"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86"
+KEYWORDS="~x86 ppc ~amd64"
 
 DEPEND=">=gnome-extra/gdesklets-core-0.26"
 
@@ -40,7 +40,7 @@ src_install() {
 	dodoc ${DOCS}
 
 	# the desklets unpack preserves permissions of the archive
-	chown -R root:root ${D}${SYS_PATH}/Sensors/${DESKLET_NAME}
+	chown -R root:0 ${D}${SYS_PATH}/Sensors/${DESKLET_NAME}
 
 }
 

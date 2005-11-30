@@ -1,6 +1,17 @@
 # ChangeLog for x11-plugins/gaimosd
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaimosd/ChangeLog,v 1.1 2004/09/20 15:52:10 rizzo Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaimosd/ChangeLog,v 1.1.1.1 2005/11/30 10:10:46 chriswhite Exp $
+
+  18 Feb 2005; Don Seiler <rizzo@gentoo.org> gaimosd-1.0.0.ebuild:
+  Patch to remove some extraneous printf() lines. Closes bug #82118, thanks
+  Manuel Sabban.
+
+  13 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gaimosd-1.0.0.ebuild:
+  Added to ~amd64.
+
+  08 Dec 2004; Michael Hanselmann <hansmi@gentoo.org> gaimosd-1.0.0.ebuild:
+  Added to ~ppc.
 
 *gaimosd-1.0.0 (20 Sep 2004)
 

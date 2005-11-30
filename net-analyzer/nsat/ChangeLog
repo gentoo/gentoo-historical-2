@@ -1,6 +1,28 @@
 # ChangeLog for net-analyzer/nsat
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsat/ChangeLog,v 1.1 2002/12/17 20:00:22 aliz Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nsat/ChangeLog,v 1.1.1.1 2005/11/30 10:12:06 chriswhite Exp $
+
+  19 Jul 2005; David Holm <dholm@gentoo.org> nsat-1.5.ebuild:
+  Added to ~ppc.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> nsat-1.5.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml:
+  Added metadata
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> nsat-1.5.ebuild:
+  Add inherit eutils
+
+  28 Oct 2003; Daniel Ahlberg <aliz@gentoo.org> nsat-1.5.ebuild :
+  DEPEND fixes, sed fixes and sparc keyword from #31244.
+  Remove 1.43 ebuild so that 1.5 is latest.
+  Fix CFLAGS.
+
+*nsat-1.5 (07 Jan 2003)
+
+  07 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> nsat-1.5.ebuild :
+  Version bump. Found by Kemal Akman <ka@leogic.com> in #13327.
 
 *nsat-1.43 (17 Dec 2002)
 

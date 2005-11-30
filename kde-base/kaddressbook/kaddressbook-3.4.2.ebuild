@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kaddressbook/kaddressbook-3.4.2.ebuild,v 1.1 2005/07/28 21:16:10 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kaddressbook/kaddressbook-3.4.2.ebuild,v 1.1.1.1 2005/11/30 10:14:13 chriswhite Exp $
 
 KMNAME=kdepim
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="The KDE Address Book"
-KEYWORDS=" ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gnokii"
 DEPEND="$(deprange $PV $MAXKDEVER kde-base/libkdepim)
 $(deprange $PV $MAXKDEVER kde-base/libkcal)

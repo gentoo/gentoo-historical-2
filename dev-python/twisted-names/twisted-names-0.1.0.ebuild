@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-names/twisted-names-0.1.0.ebuild,v 1.1 2005/04/08 15:14:15 lordvan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-names/twisted-names-0.1.0.ebuild,v 1.1.1.1 2005/11/30 10:10:29 chriswhite Exp $
 
 inherit distutils
 
@@ -8,13 +8,13 @@ inherit distutils
 MY_PV="${PV/_alpha/a}"
 MY_PN="TwistedNames"
 MY_P="${MY_PN}-${MY_PV}"
-DESCRIPTION="An NNTP protocol implementation with client and server(?)"
+DESCRIPTION="An DNS protocol implementation with client and server."
 HOMEPAGE="http://twistedmatrix.com/projects/names/"
 SRC_URI="http://tmrc.mit.edu/mirror/twisted/Names/0.1/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc ~alpha ~sparc"
+KEYWORDS="~x86 ~sparc"
 IUSE="doc"
 
 DEPEND=">=dev-python/twisted-2.0.0"

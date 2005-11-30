@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/matplotlib/matplotlib-0.82.ebuild,v 1.1 2005/07/02 15:51:39 fserb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/matplotlib/matplotlib-0.82.ebuild,v 1.1.1.1 2005/11/30 10:10:12 chriswhite Exp $
 
 inherit distutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 IUSE="doc gtk"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-LICENSE="as-is"
+LICENSE="PYTHON"
 
 DEPEND="virtual/python
 		|| (

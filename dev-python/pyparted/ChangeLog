@@ -1,6 +1,62 @@
 # ChangeLog for dev-python/pyparted
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyparted/ChangeLog,v 1.1 2004/04/23 05:44:32 npmccallum Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyparted/ChangeLog,v 1.1.1.1 2005/11/30 10:10:27 chriswhite Exp $
+
+  12 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  pyparted-1.6.9-r1.ebuild:
+  Stable on hppa, ppc.
+
+  10 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  pyparted-1.6.9-r1.ebuild:
+  Stable on sparc
+
+  08 Oct 2005; Bryan Østergaard <kloeri@gentoo.org>
+  pyparted-1.6.9-r1.ebuild:
+  Stabling due to python-2.4 stabling.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pyparted-1.6.9.ebuild:
+  Stable on ppc.
+
+  05 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> pyparted-1.6.9.ebuild,
+  pyparted-1.6.9-r1.ebuild:
+  Fedora mess... locked to specific python versions
+
+*pyparted-1.6.9-r1 (04 Apr 2005)
+
+  04 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  +pyparted-1.6.9-r1.ebuild:
+  New upstream vesion, fixes python 2.4 build issues
+
+  04 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> pyparted-1.6.9.ebuild:
+  Keyworded ~sparc and ~hppa
+
+  21 Jan 2005; Marcus D. Hanwell <cryos@gentoo.org> pyparted-1.6.9.ebuild:
+  Added append-flags -fPIC as this is needed for compilation on amd64. Applied
+  globally as this package only produces one shared object.
+
+  04 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org> pyparted-1.6.9.ebuild:
+  Marking stable on x86 and amd64 in preparation for 2005.0's release.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  30 Dec 2004; Chris Gianelloni <wolf31o2@gentoo.org> pyparted-1.6.6.ebuild:
+  Marking stable on x86 and amd64.
+
+*pyparted-1.6.9 (16 Dec 2004)
+
+  16 Dec 2004; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
+  +pyparted-1.6.9.ebuild:
+  Changing ownership to livecd herd, bumping to version 1.6.9, and closing bug
+  #67312.
+
+  08 May 2004; Bryan Østergaard <kloeri@gentoo.org> pyparted-1.6.6.ebuild:
+  Remove default S and RDEPEND.
+
+*pyparted-1.6.6 (05 May 2004)
+
+  05 May 2004; Daniel Black <dragonheart@gentoo.org> pyparted-1.6.6.ebuild:
+  QA Fix - inherit before DESCRIPTION
 
   23 Apr 2004; Nathaniel McCallum <npmccallum@gentoo.org> :
   new ebuild

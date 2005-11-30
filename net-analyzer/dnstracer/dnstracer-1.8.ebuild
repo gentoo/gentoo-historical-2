@@ -1,25 +1,30 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dnstracer/dnstracer-1.8.ebuild,v 1.1 2004/07/08 23:36:10 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/dnstracer/dnstracer-1.8.ebuild,v 1.1.1.1 2005/11/30 10:12:35 chriswhite Exp $
+
+inherit flag-o-matic
 
 DESCRIPTION="Determines where a given nameserver gets its information from"
-SRC_URI="http://www.mavetju.org/download/${P}.tar.gz"
 HOMEPAGE="http://www.mavetju.org/unix/general.php"
+SRC_URI="http://www.mavetju.org/download/${P}.tar.gz"
 
-IUSE="ipv6"
-KEYWORDS="~x86 ~ppc ~sparc ~s390"
 LICENSE="as-is"
 SLOT="0"
-DEPEND="virtual/libc"
-RDEPEND=""
+KEYWORDS="amd64 arm hppa ia64 ~ppc ppc64 ppc-macos s390 sparc x86"
+IUSE="ipv6"
 
-src_compile () {
-	econf `use_enable ipv6` || die
+DEPEND=""
+
+src_compile() {
+	if use ppc-macos; then
+		append-flags "-DBIND_8_COMPAT=1"
+	fi
+
+	econf $(use_enable ipv6) || die
 	emake || die
 }
 
-src_install () {
-	make DESTDIR=${D} install || die
+src_install() {
+	make DESTDIR="${D}" install || die
 	dodoc README CHANGES
 }
-

@@ -1,6 +1,52 @@
 # ChangeLog for dev-db/qt-unixODBC
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/qt-unixODBC/ChangeLog,v 1.1 2004/10/23 21:19:15 danarmak Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/qt-unixODBC/ChangeLog,v 1.1.1.1 2005/11/30 10:11:24 chriswhite Exp $
+
+  29 Sep 2005; Hardave Riar <hardave@gentoo.org>
+  qt-unixODBC-3.3.4-r1.ebuild:
+  Stable on mips, dep of bug #105695.
+
+  22 Sep 2005; Mark Loeser <halcy0n@gentoo.org> qt-unixODBC-3.3.4-r1.ebuild:
+  Stable on x86; bug #105695.
+
+  20 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  qt-unixODBC-3.3.4-r1.ebuild:
+  Stable on amd64, bug 105695.
+
+  20 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  qt-unixODBC-3.3.4-r1.ebuild:
+  Stable on hppa, ppc.
+
+  20 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  qt-unixODBC-3.3.4-r1.ebuild:
+  Stable on sparc wrt #105695
+
+*qt-unixODBC-3.3.4-r1 (20 Sep 2005)
+
+  20 Sep 2005; Caleb Tennis <caleb@gentoo.org> +files/qt-no-rpath.patch,
+  +qt-unixODBC-3.3.4-r1.ebuild, qt-unixODBC-3.3.5.ebuild:
+  Rev bump to add qt-no-rpatch.patch from qt ebuild to make the portage
+  RUNPATH error checker happy
+
+*qt-unixODBC-3.3.5 (17 Sep 2005)
+
+  17 Sep 2005; Caleb Tennis <caleb@gentoo.org> +qt-unixODBC-3.3.5.ebuild:
+  Version bump
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> qt-unixODBC-3.3.4.ebuild:
+  Mark 3.3.4 stable on ia64
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> qt-unixODBC-3.3.4.ebuild:
+  Mark 3.3.4 stable on alpha
+
+  09 Sep 2005; Tom Gall <tgall@gentoo.org> qt-unixODBC-3.3.4.ebuild:
+  stable on ppc64 bug #14178
+
+*qt-unixODBC-3.3.4 (01 Jul 2005)
+
+  01 Jul 2005; Dan Armak <danarmak@gentoo.org> -qt-unixODBC-3.3.3.ebuild,
+  +qt-unixODBC-3.3.4.ebuild:
+  Added 3.3.4 version. Unmasking. Cf bug 14178.
 
 *qt-ODBC-3.3.3 (23 Oct 2004)
 

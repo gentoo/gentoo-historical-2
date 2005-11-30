@@ -1,6 +1,101 @@
 # ChangeLog for net-analyzer/etherape
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/etherape/ChangeLog,v 1.1 2002/02/01 21:53:31 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/etherape/ChangeLog,v 1.1.1.1 2005/11/30 10:12:38 chriswhite Exp $
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> etherape-0.9.3.ebuild:
+  Stable on ppc.
+
+  30 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> etherape-0.9.3.ebuild:
+  Stable on sparc
+
+  29 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> etherape-0.9.0.ebuild,
+  etherape-0.9.3.ebuild:
+  Do not dodoc COPYING/INSTALL, misc fixes, 0.9.3 x86 stable.
+
+*etherape-0.9.3 (19 Aug 2005)
+
+  19 Aug 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/etherape-0.9.3-res_mkquery.patch, -etherape-0.9.1.ebuild,
+  +etherape-0.9.3.ebuild:
+  Version bump. Ported res_mkquery.patch to 0.9.3. Compiles and runs with gcc4
+  without patching.
+
+  16 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/etherape-0.9.1-gcc4.diff, etherape-0.9.1.ebuild:
+  Added patch so etherape will build w/gcc-4.
+
+  10 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> etherape-0.9.1.ebuild:
+  Stable on sparc
+
+  09 May 2005; Lars Weiler <pylon@gentoo.org> etherape-0.9.1.ebuild:
+  Stable on ppc.
+
+  07 May 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -files/etherape-0.8.2-gcc3-gentoo.patch, -etherape-0.8.2-r1.ebuild,
+  etherape-0.9.1.ebuild:
+  Removing old ebuild, marking 0.9.1 x86 stable.
+
+  24 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> etherape-0.9.0.ebuild:
+  Use make install instead of emake install.
+
+  10 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/etherape-0.9.1-fix-mkinstalldirs.diff, etherape-0.9.1.ebuild:
+  Added patch to fix mkinstalldirs path for bug 83310.
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> etherape-0.9.1.ebuild:
+  Revert keywords pending actual solution to 79385.
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> etherape-0.9.1.ebuild:
+  Marked stable on x86.
+
+  07 Feb 2005; Eldad Zack <eldad@gentoo.org> etherape-0.9.1.ebuild:
+  Reapplied res_mkquery patch. Closes #79385.
+
+  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> etherape-0.8.2-r1.ebuild,
+  etherape-0.9.0.ebuild, etherape-0.9.1.ebuild:
+  changed net-libs/libpcap depend to virtual/libcap
+
+*etherape-0.9.1 (08 Jan 2005)
+
+  08 Jan 2005; Daniel Black <dragonheart@gentoo.org> etherape-0.9.0.ebuild,
+  +etherape-0.9.1.ebuild:
+  0.9.0 - einstall changed to make DESTDIR=${D} install - fixes bug #71777.
+  Version bump to0.9.1 - no longer needs patches. Thanks to Hein
+  <heinuae@yahoo.com>
+
+  11 Jul 2004; Eldad Zack <eldad@gentoo.org> etherape-0.8.2-r1.ebuild:
+  Updated to use epatch.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> etherape-0.9.0.ebuild:
+  Add inherit eutils
+
+  06 Feb 2004; Daniel Ahlberg <aliz@gentoo.org>
+  files/etherape-0.9.0-libpcap-include.patch:
+  Fix backward compatiblity, remove check for net/bpf.h
+
+  06 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> etherape-0.9.0.ebuild:
+  Fix libpcap include and other things, amd64 keyword. Closing #37443.
+
+  05 Jan 2004; Jason Wever <weeve@gentoo.org> etherape-0.9.0.ebuild:
+  Marked stable on sparc.
+
+*etherape-0.9.0 (11 May 2003)
+
+  11 May 2003; Alastair Tse <liquidx@gentoo.org> etherape-0.9.0.ebuild:
+  version bump to gtk2 ver
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  04 Nov 2002; Hannes Mehnert <hannes@gentoo.org> etherape-0.8.2-r1.ebuild:
+  fixed dependency for libglade (closes bug #6931)
+
+*etherape-0.8.2-r1 (14 Jul 2002)
+
+  14 Jul 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
+  etherape-0.8.2-r1.ebuild, files/etherape-0.8.2-gcc3-gentoo.patch,
+  files/digest-etherape-0.8.2-r1 :
+
+  Fix for gcc3.1.
 
 *etherape-0.8.2 (1 Feb 2002)
 

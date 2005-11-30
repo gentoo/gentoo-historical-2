@@ -1,6 +1,25 @@
 # ChangeLog for x11-plugins/wmmsg
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmsg/ChangeLog,v 1.1 2003/04/15 17:11:19 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmsg/ChangeLog,v 1.1.1.1 2005/11/30 10:10:49 chriswhite Exp $
+
+  11 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmmsg-1.0.ebuild:
+  removed INSTALL and COPYING from dodoc.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> wmmsg-1.0.ebuild:
+  Stable on ppc.
+
+  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> wmmsg-1.0.ebuild:
+  mark ~ppc
+
+  24 Nov 2004; Jason Wever <weeve@gentoo.org> wmmsg-1.0.ebuild:
+  Added ~sparc keyword.
+
+  23 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmmsg-1.0.ebuild:
+  Updated dodoc so that it does not try to install non-existent files.
+  Stable for x86.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> wmmsg-1.0.ebuild:
+  Add die following econf for bug 48950
 
 *wmmsg-1.0 (15 Apr 2003)
 

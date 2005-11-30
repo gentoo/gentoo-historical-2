@@ -1,7 +1,49 @@
 # ChangeLog for x11-plugins/gkrellaclock
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellaclock/ChangeLog,v 1.1 2002/10/16 22:30:29 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellaclock/ChangeLog,v 1.1.1.1 2005/11/30 10:10:46 chriswhite Exp $
 
+  06 May 2005; Sven Wegener <swegener@gentoo.org> gkrellaclock-0.3.2.ebuild,
+  gkrellaclock-0.3.2.1.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
+  gkrellaclock-0.3.2.1.ebuild:
+  Stable on amd64.
+
+  14 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gkrellaclock-0.3.2.1.ebuild:
+  Stable on alpha.
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gkrellaclock-0.3.2.1.ebuild:
+  Stable on sparc
+
+  06 Nov 2004; <pyrania@gentoo.org> gkrellaclock-0.3.2.1.ebuild:
+  Marked stable on x86.
+
+  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gkrellaclock-0.3.2.1.ebuild:
+  Masked gkrellaclock-0.3.2.1.ebuild stable for ppc
+
+  09 Jul 2004; Tom Martin <slarti@gentoo.org> gkrellaclock-0.3.2.1.ebuild:
+  Marked ~amd64.
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> gkrellaclock-0.3.2.ebuild:
+  Stable on sparc.
+
+*gkrellaclock-0.3.2.1 (13 Jun 2004)
+
+  13 Jun 2004; <pyrania@gentoo.org> +gkrellaclock-0.3.2.1.ebuild:
+  Version bumo. Closing bug #52741.
+
+  15 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellaclock-0.3.2.ebuild:
+  stable on alpha
+
+  07 Oct 2003; Martin Holzer <mholzer@gentoo.org> gkrellaclock-0.2.1.ebuild:
+  Changed depend to gkrellm fixed version. Closes #27060.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *gkrellaclock-0.3.2 (16 Oct 2002)
 
   16 Oct 2002; Seemant Kulleen <seemant@gentoo.org>

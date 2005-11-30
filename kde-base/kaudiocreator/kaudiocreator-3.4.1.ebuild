@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kaudiocreator/kaudiocreator-3.4.1.ebuild,v 1.1 2005/05/25 21:23:01 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kaudiocreator/kaudiocreator-3.4.1.ebuild,v 1.1.1.1 2005/11/30 10:14:01 chriswhite Exp $
 
 KMNAME=kdemultimedia
 MAXKDEVER=$PV
@@ -8,16 +8,17 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE CD ripper and audio encoder frontend"
-KEYWORDS="~x86 ~amd64"
-IUSE="encode flac oggvorbis"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
+IUSE="encode flac mp3 vorbis"
 DEPEND="$(deprange $PV $MAXKDEVER kde-base/libkcddb)
 	media-sound/cdparanoia"
 
 # External encoders used - no optional compile-time support
 RDEPEND="$DEPEND
-oggvorbis? ( media-sound/vorbis-tools )
-flac? ( media-libs/flac )
-encode? ( media-sound/lame )"
+	$(deprange $PV $MAXKDEVER kde-base/kdemultimedia-kioslaves)
+	encode? ( vorbis? ( media-sound/vorbis-tools )
+	          flac? ( media-libs/flac )
+	          mp3? ( media-sound/lame ) )"
 
 KMCOPYLIB="libkcddb libkcddb"
 KMEXTRACTONLY="libkcddb"

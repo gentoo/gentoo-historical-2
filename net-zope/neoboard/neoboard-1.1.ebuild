@@ -1,7 +1,6 @@
- 
-# Copyright 2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/neoboard/neoboard-1.1.ebuild,v 1.1 2003/04/07 04:00:22 kutsuya Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/neoboard/neoboard-1.1.ebuild,v 1.1.1.1 2005/11/30 10:11:02 chriswhite Exp $
 
 inherit zproduct
 P_NEW="NeoBoard-${PV}"
@@ -10,7 +9,7 @@ DESCRIPTION="Threaded message boards w/articles, attachments, & i18n."
 HOMEPAGE="http://www.zoper.net/"
 SRC_URI="${HOMEPAGE}/Downloads/${P_NEW}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ~ppc"
 RDEPEND="net-zope/neoportallibrary
 	${RDEPEND}"
 
@@ -26,5 +25,5 @@ pkg_postinst()
 {
 	zproduct_pkg_postinst
 	ewarn "There are three different ways to add this product to your"
-    ewarn "Zope/CMF/Plone site. Please consult the documentation."
+	ewarn "Zope/CMF/Plone site. Please consult the documentation."
 }

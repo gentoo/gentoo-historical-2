@@ -1,6 +1,18 @@
 # ChangeLog for x11-plugins/wmseti
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmseti/ChangeLog,v 1.1 2004/03/13 22:52:24 pyrania Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmseti/ChangeLog,v 1.1.1.1 2005/11/30 10:10:43 chriswhite Exp $
+
+  10 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> wmseti-1.0.3.ebuild:
+  Removed INSTALL from dodoc.
+
+  10 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> wmseti-1.0.3.ebuild:
+  added ~amd64 KEYWORD, fixes #83856
+
+  24 Nov 2004; Jason Wever <weeve@gentoo.org> wmseti-1.0.3.ebuild:
+  Added ~sparc keyword.
+
+  27 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmseti-1.0.3.ebuild:
+  Fix ebuild header; bump to stable for x86.
 
 *wmseti-1.0.3 (13 Mar 2004)
 

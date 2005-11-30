@@ -1,24 +1,26 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.3-r1.ebuild,v 1.1 2004/06/17 21:39:22 lucass Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:31 chriswhite Exp $
 
 inherit python distutils
 
 MY_P=${P/pyxml/PyXML}
 
-DESCRIPTION="A collection of libraries to process XML with Python."
-SRC_URI="mirror://sourceforge/pyxml/${MY_P}.tar.gz"
+DESCRIPTION="A collection of libraries to process XML with Python"
 HOMEPAGE="http://pyxml.sourceforge.net/"
+SRC_URI="mirror://sourceforge/pyxml/${MY_P}.tar.gz"
 
-DEPEND="virtual/python
+LICENSE="PYTHON"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE=""
+
+DEPEND="<dev-lang/python-2.4
 	>=dev-libs/expat-1.95.6"
 
-IUSE=""
-SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ppc64 ~ia64 ~mips"
-LICENSE="PYTHON"
-DOCS="ANNOUNCE CREDITS PKG-INFO LICENCE TODO doc/*.txt"
 S=${WORKDIR}/${MY_P}
+
+DOCS="ANNOUNCE CREDITS PKG-INFO TODO doc/*.txt"
 
 src_compile() {
 	local myconf

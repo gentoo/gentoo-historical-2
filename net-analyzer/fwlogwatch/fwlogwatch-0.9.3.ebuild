@@ -1,19 +1,30 @@
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fwlogwatch/fwlogwatch-0.9.3.ebuild,v 1.1 2003/06/23 22:39:17 brad Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/fwlogwatch/fwlogwatch-0.9.3.ebuild,v 1.1.1.1 2005/11/30 10:12:30 chriswhite Exp $
 
 DESCRIPTION="A packet filter and firewall log analyzer"
 HOMEPAGE="http://cert.uni-stuttgart.de/projects/fwlogwatch/"
 SRC_URI="http://www.kyb.uni-stuttgart.de/boris/sw/${P}.tar.gz"
+
+KEYWORDS="x86 ~sparc"
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
 IUSE=""
-DEPEND=""
+
+DEPEND=">=sys-apps/sed-4"
 RDEPEND=""
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	sed -i \
+		-e "s/^CFLAGS = /CFLAGS = ${CFLAGS} /g" Makefile || \
+			die "sed Makefile failed"
+}
+
 src_compile() {
-	sed -e "s/^CFLAGS = /CFLAGS = ${CFLAGS} /g" Makefile > ${T}/Makefile.fwlogwatch
-	mv -f ${T}/Makefile.fwlogwatch Makefile
-	emake || die 
+	emake || die "emake failed"
 }
 
 src_install() {
@@ -27,7 +38,7 @@ src_install() {
 	doins contrib/fwlogwatch.php
 	doins contrib
 	insinto /etc
-	doins fwlogwatch.config fwlogwatch.template 
+	doins fwlogwatch.config fwlogwatch.template
 	dodoc AUTHORS ChangeLog CREDITS COPYING README
 	doman fwlogwatch.8
 }

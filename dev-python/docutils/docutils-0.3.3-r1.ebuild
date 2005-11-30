@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3.3-r1.ebuild,v 1.1 2004/07/20 18:23:59 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:10:24 chriswhite Exp $
 
 inherit distutils eutils
 
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/docutils/${P}-alpha.tar.gz"
 
 LICENSE="public-domain PYTHON BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha"
+KEYWORDS="x86 ppc ~alpha amd64 ~sparc"
 IUSE=""
 
-DEPEND=">=dev-lang/python-2.1"
+DEPEND="<dev-lang/python-2.4"
 
 # GLEP version
 GLEP_SRC=${FILESDIR}/glep-${PV}

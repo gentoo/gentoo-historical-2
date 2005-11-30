@@ -1,2 +1,4 @@
-MD5 626fe66d8d7e3e819192544a2d3c6561 gaim-snpp-0.1.0_beta.ebuild 778
-MD5 3faaf76cd7e55c40e3c6a8ebee4afdce files/digest-gaim-snpp-0.1.0_beta 72
+MD5 5202df9bd857f7fffdc188c30e5bed1f gaim-snpp-0.8.0.ebuild 633
+MD5 9b491355156c64a34d2294df5354eaed metadata.xml 354
+MD5 afe7031d9a8c53e75ad19f724f9e7d13 ChangeLog 2461
+MD5 6197af66a1a89a1cf327056548e2dcff files/digest-gaim-snpp-0.8.0 67

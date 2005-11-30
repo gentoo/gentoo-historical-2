@@ -1,19 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/freetds/freetds-0.62.1.ebuild,v 1.1 2004/02/10 19:21:49 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/freetds/freetds-0.62.1.ebuild,v 1.1.1.1 2005/11/30 10:11:40 chriswhite Exp $
+
 DESCRIPTION="Tabular Datastream Library"
 SRC_URI="http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/${P}.tar.gz"
 HOMEPAGE="http://www.freetds.org/"
 IUSE="odbc"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~mips ~arm ~hppa ~alpha amd64 ia64"
-DEPEND="virtual/glibc"
+KEYWORDS="~x86 ~sparc ~ppc ~mips ~hppa ~alpha amd64 ia64"
+DEPEND="virtual/libc"
 
 src_compile() {
 	local myconf
 	use odbc && myconf="--with-unixodbc=/usr"
-	econf --with-tdsver=7.0 ${myconf}
+	econf --with-tdsver=7.0 ${myconf} || die "econf failed"
 	emake || die
 }
 

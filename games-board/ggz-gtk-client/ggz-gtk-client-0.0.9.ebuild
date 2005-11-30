@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/ggz-gtk-client/ggz-gtk-client-0.0.9.ebuild,v 1.1 2004/12/26 23:03:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/ggz-gtk-client/ggz-gtk-client-0.0.9.ebuild,v 1.1.1.1 2005/11/30 10:09:56 chriswhite Exp $
 
 inherit eutils
 
@@ -11,11 +11,10 @@ SRC_URI="http://ftp.ggzgamingzone.org/pub/ggz/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~ppc ~x86"
-IUSE="gtk2 nls"
+IUSE="nls"
 
 DEPEND=">=dev-games/ggz-client-libs-${PV}
-	gtk2? ( =x11-libs/gtk+-2* )
-	!gtk2? ( =x11-libs/gtk+-1* )"
+	=x11-libs/gtk+-2* "
 
 src_unpack() {
 	unpack ${A}
@@ -26,7 +25,6 @@ src_unpack() {
 
 src_compile() {
 	local myconf="--enable-gtk=gtk2"
-	use gtk2 || myconf="--enable-gtk"
 
 	econf \
 		--disable-debug \
@@ -38,5 +36,5 @@ src_compile() {
 
 src_install() {
 	make DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog INSTALL NEWS QuickStart.GGZ README* TODO
+	dodoc AUTHORS ChangeLog NEWS QuickStart.GGZ README* TODO
 }
