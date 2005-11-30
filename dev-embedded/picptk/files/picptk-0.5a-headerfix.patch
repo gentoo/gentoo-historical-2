@@ -103,7 +103,7 @@ diff -urbB picptk-0.5a.old/PicCore.C picptk-0.5a/PicCore.C
 +++ picptk-0.5a/PicCore.C	2003-10-20 02:42:14.000000000 -0700
 @@ -19,6 +19,7 @@
   *
-  * $Id: picptk-0.5a-headerfix.patch,v 1.1 2003/10/20 09:51:31 robbat2 Exp $
+  * $Id: picptk-0.5a-headerfix.patch,v 1.1.1.1 2005/11/30 09:53:25 chriswhite Exp $
   */
 +using namespace std;
  #include <PicCore.h>

@@ -1,6 +1,14 @@
-# ChangeLog for www-proxy/middleman
+# ChangeLog for net-proxy/middleman
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/middleman/ChangeLog,v 1.1 2005/04/22 19:15:11 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/middleman/ChangeLog,v 1.1.1.1 2005/11/30 09:51:47 chriswhite Exp $
+
+  30 Jul 2005; Alin Nastac <mrness@gentoo.org> -middleman-2.0.1.ebuild:
+  Remove obsolete version.
+
+  15 Jul 2005; Sven Wegener <swegener@gentoo.org> middleman-2.0.1.ebuild,
+  middleman-2.0.1-r2.ebuild:
+  QA: Do not loop over IUSE for configuring. IUSE includes flags from eclasses
+  and that might result in unpredictable behaviour.
 
   22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
   Rename category & herd www-proxy to net-proxy

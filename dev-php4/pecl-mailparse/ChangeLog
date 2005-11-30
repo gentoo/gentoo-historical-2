@@ -1,6 +1,17 @@
 # ChangeLog for dev-php4/pecl-mailparse
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/pecl-mailparse/ChangeLog,v 1.1 2005/09/04 15:35:56 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/pecl-mailparse/ChangeLog,v 1.1.1.1 2005/11/30 09:51:27 chriswhite Exp $
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org>
+  pecl-mailparse-2.1.1.ebuild:
+  Added ~ppc64 keyword; bug #102649
+
+  15 Oct 2005; Jason Wever <weeve@gentoo.org> pecl-mailparse-2.1.1.ebuild:
+  Added ~sparc keyword.
+
+  06 Sep 2005; Stuart Herbert <stuart@gentoo.org>
+  +files/cvs-mailparse.c-fix.diff:
+  Replaced corrupted patchfile
 
   18 Aug 2005; <stuart@gentoo.org> ChangeLog:
   Initial version; replaces older dev-php/* packages

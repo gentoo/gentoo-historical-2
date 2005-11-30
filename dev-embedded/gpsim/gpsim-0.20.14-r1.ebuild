@@ -1,16 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpsim/gpsim-0.20.14-r1.ebuild,v 1.1 2003/10/21 03:22:21 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpsim/gpsim-0.20.14-r1.ebuild,v 1.1.1.1 2005/11/30 09:53:27 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A simulator for the Microchip PIC microcontrollers"
 HOMEPAGE="http://www.dattalo.com/gnupic/gpsim.html"
-SRC_URI="http://www.dattalo.com/gnupic/${P}.tar.gz"
+SRC_URI="http://www.dattalo.com/gnupic/${P}.tar.gz
+	mirror://gentoo/gpsim-0.20.14-gcc33.patch
+	mirror://gentoo/gpsim-0.20.14-gcc3.2.patch"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
+IUSE=""
 
 DEPEND="x11-libs/gtk+extra"
 RDEPEND=""
@@ -18,18 +21,16 @@ RDEPEND=""
 src_unpack() {
 	unpack ${P}.tar.gz
 	cd ${S}
-	epatch ${FILESDIR}/${P}-gcc3.2.patch
-	epatch ${FILESDIR}/${P}-gcc33.patch
-}
-
-src_compile(){
-	econf || die
-	emake || die
+	epatch ${DISTDIR}/${P}-gcc3.2.patch
+	epatch ${DISTDIR}/${P}-gcc33.patch
+	if [ `gcc-major-version` -eq 2 ]; then
+		epatch ${FILESDIR}/${P}-gcc2_fix.patch
+	fi
 }
 
 src_install() {
 	einstall || die
-	dodoc ANNOUNCE AUTHORS COPYING ChangeLog HISTORY INSTALL NEWS PROCESSORS
+	dodoc ANNOUNCE AUTHORS ChangeLog HISTORY INSTALL NEWS PROCESSORS
 	dodoc README README.EXAMPLES README.MODULES TODO
 	dodoc doc/*.lyx
 	cp -ra ${S}/examples ${D}/usr/share/doc/${PF}

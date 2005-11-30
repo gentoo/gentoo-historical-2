@@ -1,6 +1,9 @@
-# ChangeLog for net-www/skipstone
+# ChangeLog for www-client/skipstone
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/skipstone/ChangeLog,v 1.1 2005/03/15 21:42:52 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/skipstone/ChangeLog,v 1.1.1.1 2005/11/30 09:52:12 chriswhite Exp $
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> skipstone-0.9.2.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
 
 *skipstone-0.9.2 (15 Mar 2005)
 

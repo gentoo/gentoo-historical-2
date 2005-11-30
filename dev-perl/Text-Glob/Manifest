@@ -1,2 +1,4 @@
-MD5 b0b51dfcc8fc6a67e7ea40fdec028080 Text-Glob-0.05.ebuild 492
-MD5 2ab9034de47c8532fdedcc8efe1eaab3 files/digest-Text-Glob-0.05 64
+MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305
+MD5 ee67560d3e4b100abb7a17b08fff8f89 ChangeLog 1382
+MD5 0e0704d37a5a837fadbfaba11f145610 Text-Glob-0.06.ebuild 592
+MD5 a93bb5650c8bd60c6a9efbe7bb6b55ba files/digest-Text-Glob-0.06 64

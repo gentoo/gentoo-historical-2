@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/dnsmasq-2.17.ebuild,v 1.1 2004/11/16 18:11:37 avenj Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/dnsmasq-2.17.ebuild,v 1.1.1.1 2005/11/30 09:50:14 chriswhite Exp $
 
 #inherit eutils
 
@@ -15,8 +15,8 @@ SLOT="0"
 KEYWORDS="~x86 ~ppc ~sparc ~mips ~arm ~amd64 ~ia64 ~s390"
 IUSE=""
 
-DEPEND="virtual/libc
-	>=sys-apps/sed-4"
+RDEPEND="virtual/libc"
+DEPEND=">=sys-apps/sed-4 ${RDEPEND}"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 

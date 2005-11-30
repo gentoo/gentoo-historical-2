@@ -1,6 +1,24 @@
 # ChangeLog for dev-perl/PerlIO-eol
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PerlIO-eol/ChangeLog,v 1.1 2004/11/27 06:05:18 pclouds Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PerlIO-eol/ChangeLog,v 1.1.1.1 2005/11/30 09:52:30 chriswhite Exp $
+
+  30 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PerlIO-eol-0.13.ebuild:
+  Stable on sparc
+
+  07 May 2005; David Holm <dholm@gentoo.org> PerlIO-eol-0.13.ebuild:
+  Added to ~ppc.
+
+  07 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PerlIO-eol-0.13.ebuild:
+  To ~sparc
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  PerlIO-eol-0.13.ebuild:
+  cleaning for mirror syntax
+
+  05 Feb 2005; Dylan Carlson <absinthe@gentoo.org> PerlIO-eol-0.13.ebuild:
+  Keywords ~amd64.
 
 *PerlIO-eol-0.13 (27 Nov 2004)
 

@@ -1,6 +1,15 @@
-# ChangeLog for www-clients/planet
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/planet/ChangeLog,v 1.1 2004/08/08 18:36:03 stuart Exp $
+# ChangeLog for www-client/planet
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/planet/ChangeLog,v 1.1.1.1 2005/11/30 09:52:11 chriswhite Exp $
+
+  27 Apr 2005; <ndimiduk@gentoo.org> planet-20040808.ebuild:
+  Added ~ppc-macos
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> planet-20040808.ebuild:
+  Added to ~ppc.
 
 *planet-20040808 (08 Aug 2004)
 

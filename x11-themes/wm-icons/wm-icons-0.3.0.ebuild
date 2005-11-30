@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/wm-icons/wm-icons-0.3.0.ebuild,v 1.1 2003/09/01 20:49:05 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/wm-icons/wm-icons-0.3.0.ebuild,v 1.1.1.1 2005/11/30 09:51:41 chriswhite Exp $
 
-inherit gnuconfig 
+inherit gnuconfig
 
 DESCRIPTION="A Large Assortment of Beutiful Themed Icons, Created with FVWM in mind"
 
@@ -11,37 +11,36 @@ SRC_URI="mirror://sourceforge/wm-icons/wm-icons-${PV}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 alpha ppc"
 
 IUSE=""
 DEPEND=">=sys-apps/gawk-3
-	>=dev-lang/perl-5.8.0"
+	>=dev-lang/perl-5.8.0
+	>=sys-apps/sed-4"
 RDEPEND="${DEPEND}"
-
-S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}
 	sed -i 's#$(bindir)/wm-icons-config#true#g' ${S}/Makefile.in
-	use alpha && gnuconfig_update
+	gnuconfig_update
 }
 
 src_compile() {
-	econf --enable-all-sets --enable-icondir=/usr/share/icons/wm-icons
+	econf --enable-all-sets --enable-icondir=/usr/share/icons/wm-icons || die "econf failed"
 	emake
 }
 
 src_install() {
 	# strange makefile...
 	einstall icondir=${D}/usr/share/icons/wm-icons DESTDIR=${D}
-	
+
 	dodir /usr/bin
 	mv ${D}/${D}/usr/bin/wm-icons-config ${D}/usr/bin/wm-icons-config
 	rm -rf ${D}/${D}/usr/bin
-	
+
 	einfo "Setting default aliases..."
 	${D}/usr/bin/wm-icons-config --user-dir="${D}/usr/share/icons/wm-icons" --defaults
-	
+
 	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README
 }
 

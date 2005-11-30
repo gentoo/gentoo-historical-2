@@ -1,6 +1,30 @@
-# ChangeLog for app-sci/iverilog
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/iverilog/ChangeLog,v 1.1 2004/12/27 19:51:43 ribosome Exp $
+# ChangeLog for sci-electronics/iverilog
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/iverilog/ChangeLog,v 1.1.1.1 2005/11/30 09:51:05 chriswhite Exp $
+
+*iverilog-0.8.1-r1 (17 Oct 2005)
+
+  17 Oct 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +iverilog-0.8.1-r1.ebuild:
+  Fix sandbox and multilib issues, closes bug 83944.
+
+  08 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> iverilog-0.8.1.ebuild:
+  Stable on ppc.
+
+*iverilog-0.8.1 (18 Feb 2005)
+
+  18 Feb 2005; <plasmaroo@gentoo.org> +iverilog-0.8.1.ebuild:
+  Version bump; bug #82144.
+
+  12 Jan 2005; <plasmaroo@gentoo.org> iverilog-0.8.ebuild:
+  Marking 0.8 stable on x86 as the stable 0.7 snapshot is problematic;
+  bug #77577.
+
+*iverilog-0.8 (02 Jan 2005)
+
+  02 Jan 2005; <plasmaroo@gentoo.org> +iverilog-0.8.ebuild,
+  -iverilog-20031009.ebuild, -iverilog-20040606.ebuild:
+  Version bump. Removing obsolete CVS snapshot versions.
 
 *iverilog-20031009 (27 Dec 2004)
 

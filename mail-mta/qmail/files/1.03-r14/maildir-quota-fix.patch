@@ -7,7 +7,7 @@ diff -ur qmail-1.03.orig/overmaildirquota.c qmail-1.03/overmaildirquota.c
  
 -static const char rcsid[]="$Id: overquota.c,v 1.0 2002/06/09 16:21:05 mr
 -sam Exp $";
-+static const char rcsid[]="$Id: maildir-quota-fix.patch,v 1.1 2004/05/30 10:50:13 robbat2 Exp $";
++static const char rcsid[]="$Id: maildir-quota-fix.patch,v 1.1.1.1 2005/11/30 09:50:55 chriswhite Exp $";
  
  
  int user_over_maildirquota( const char *dir, const char *q)

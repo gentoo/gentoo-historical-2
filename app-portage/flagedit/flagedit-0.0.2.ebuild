@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/flagedit/flagedit-0.0.2.ebuild,v 1.1 2005/10/14 12:10:03 dams Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/flagedit/flagedit-0.0.2.ebuild,v 1.1.1.1 2005/11/30 09:51:52 chriswhite Exp $
 
 DESCRIPTION="CLI use flags and keyword editor, for system wide or /etc/portage files"
 HOMEPAGE="http://damz.net/flagedit/"
@@ -8,7 +8,7 @@ SRC_URI="http://damz.net/flagedit/download/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="dev-lang/perl
 >=dev-util/libconf-0.40.00"

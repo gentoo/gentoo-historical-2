@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/azureus-bin/azureus-bin-2.3.0.4.ebuild,v 1.1 2005/06/27 22:21:08 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/azureus-bin/azureus-bin-2.3.0.4.ebuild,v 1.1.1.1 2005/11/30 09:51:22 chriswhite Exp $
 
 inherit eutils java-pkg
 
@@ -22,7 +22,7 @@ LICENSE="GPL-2 BSD"
 SLOT="0"
 
 # Still in progress... trying to get most external classes in through DEPENDs rather than 
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="amd64 ppc x86"
 IUSE="kde gtk"
 
 DEPEND="virtual/libc
@@ -31,6 +31,7 @@ DEPEND="virtual/libc
 
 RDEPEND="${DEPEND}
 	kde? ( dev-java/systray4j )
+	net-libs/linc
 	=x11-libs/gtk+-2*
 	>=virtual/jre-1.4"
 
@@ -125,5 +126,9 @@ pkg_postinst() {
 	ewarn "If you are upgrading, and the menu in azurues has entries like"
 	ewarn "\"!MainWindow.menu.transfers!\" then you have a stray MessageBundle.properties file,"
 	ewarn "and you may safely delete ~/.Azureus/MessagesBundle.properties"
+	echo
+	einfo "It's recommended to use sun-java in version 1.5 or later."
+	einfo "If you'll notice any problems running azureus and you've"
+	einfo "got older java, try to upgrade it"
 	echo
 }

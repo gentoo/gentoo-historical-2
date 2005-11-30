@@ -1,6 +1,27 @@
 # ChangeLog for dev-perl/X500-DN
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/X500-DN/ChangeLog,v 1.1 2004/06/06 13:24:01 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/X500-DN/ChangeLog,v 1.1.1.1 2005/11/30 09:52:53 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> X500-DN-0.28.ebuild:
+  Mark 0.28 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> X500-DN-0.28.ebuild:
+  add ~ia64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> X500-DN-0.28.ebuild:
+  Stable on ppc.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> X500-DN-0.28.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> X500-DN-0.28.ebuild:
+  Stable on alpha.
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org> X500-DN-0.28.ebuild:
+  Bumping for x86 and sparc
+
+  30 Mar 2005; Michael Cummings <mcummings@gentoo.org> X500-DN-0.28.ebuild:
+  Another dep missing in the Makefile. Bug 87216
 
 *X500-DN-0.28 (06 Jun 2004)
 

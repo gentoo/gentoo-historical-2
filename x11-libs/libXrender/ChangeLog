@@ -1,6 +1,33 @@
 # ChangeLog for x11-libs/libXrender
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXrender/ChangeLog,v 1.1 2005/08/08 04:40:56 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXrender/ChangeLog,v 1.1.1.1 2005/11/30 09:54:13 chriswhite Exp $
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXrender-0.9.0.ebuild:
+  Fix proto depends to reflect compile-time requirements.
+
+  25 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXrender-0.9.0.ebuild:
+  Reset proto dependency.
+
+  24 Oct 2005; D.m.D. Ljungmark <spider@gentoo.org> libXrender-0.9.0.ebuild:
+  since Xrender.h includes render.h, make it a runtime depend on the 
+  renderproto
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> libXrender-0.9.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXrender-0.9.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXrender-0.9.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXrender-0.9.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *libXrender-0.9.0 (08 Aug 2005)
 

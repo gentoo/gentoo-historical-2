@@ -1,6 +1,55 @@
-# ChangeLog for net-mail/xmail
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/xmail/ChangeLog,v 1.1 2004/05/30 09:51:55 robbat2 Exp $
+# ChangeLog for mail-mta/xmail
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/xmail/ChangeLog,v 1.1.1.1 2005/11/30 09:50:38 chriswhite Exp $
+
+  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> xmail-1.16-r1.ebuild,
+  xmail-1.20.ebuild, xmail-1.21.ebuild:
+  Use -1 for shell argument to enewuser. Bug #103421.
+
+  11 Jul 2005; Andrej Kacian <ticho@gentoo.org> xmail-1.21.ebuild:
+  Stable on x86. Closes bug #97405, reported by Brian Dilks <bdilks at
+  speakeasy.net>.
+
+  29 Jun 2005; Tuấn Văn <langthang@gentoo.org> xmail-1.21.ebuild:
+  Fix issues in bug #96632. Thanks to Jakub Moc <jakub@gentoo.org> for 
+  the patch.
+
+  06 Jun 2005; Andrej Kacian <ticho@gentoo.org> -xmail-1.16.ebuild:
+  Removed 1.16.
+
+  06 Jun 2005; Andrej Kacian <ticho@gentoo.org> files/xmail.initd:
+  Fixed sed command in the initscript. Bug #91141, by <quinox_san_ at
+  hotmail.com>.
+
+*xmail-1.21 (27 Jan 2005)
+
+  27 Jan 2005; Aaron Kulbe <superlag@gentoo.org> +xmail-1.21.ebuild:
+  Version bump to 1.21.
+
+  06 Dec 2004; Andrej Kacian <ticho@gentoo.org> xmail-1.16-r1.ebuild,
+  xmail-1.20.ebuild:
+  Stable on x86.
+
+  23 Oct 2004; Jason Wever <weeve@gentoo.org> xmail-1.20.ebuild:
+  Added ~sparc keyword.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> xmail-1.16-r1.ebuild,
+  xmail-1.16.ebuild, xmail-1.20.ebuild:
+  virtual/glibc -> virtual/libc
+
+*xmail-1.20 (28 Jun 2004)
+
+  28 Jun 2004; Cory Visi <merlin@gentoo.org> xmail-1.20.ebuild:
+  version bump from 1.16-r1 to 1.20
+
+*xmail-1.16-r1 (28 Jun 2004)
+
+  28 Jun 2004; Cory Visi <merlin@gentoo.org> xmail-1.16-r1.ebuild:
+  Fixes for Bug 25530, some contributions from Sergey Ivanov
+  <seriv@parkheights.dyndns.org>
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> xmail-1.16.ebuild:
+  Added to ~ppc.
 
 *xmail-1.16 (30 May 2004)
 

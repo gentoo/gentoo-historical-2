@@ -1,41 +1,34 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/balloonchase/balloonchase-0.9.6.ebuild,v 1.1 2003/11/07 23:47:27 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/balloonchase/balloonchase-0.9.6.ebuild,v 1.1.1.1 2005/11/30 09:52:06 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="Fly a hot air balloon and try to blow the other player out of the screen"
 HOMEPAGE="http://koti.mbnet.fi/makegho/c/bchase/"
 SRC_URI="http://koti.mbnet.fi/makegho/c/bchase/${P}.tar.bz2"
 
-KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
-RDEPEND="media-libs/libsdl"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+DEPEND="media-libs/libsdl"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
+	epatch "${FILESDIR}/${PV}-gentoo.patch"
 
 	sed -i \
-		-e '/opendir/ i\	if (getenv("HOME")) { chdir(getenv("HOME")); }
-			' \
-		-e 's:balloonchase.dat:.balloonchaserc:ig' \
-		-e "s:\"images/:\"${GAMES_DATADIR}/${PN}/images/:" src/main.c || \
-			die 'sed main.c failed'
-	sed -i \
-		-e "/^CFLAGS/ s:=.*:= ${CFLAGS}:" Makefile || \
-			die 'sed Makefile failed'
+		-e "s:GENTOODIR:${GAMES_DATADIR}/${PN}:" src/main.c \
+		|| die 'sed failed'
 }
 
 src_install() {
-	dogamesbin balloonchase                     || die "dogamesbin failed"
+	dogamesbin balloonchase || die "dogamesbin failed"
 	dodir "${GAMES_DATADIR}/${PN}"
 	cp -r images "${D}/${GAMES_DATADIR}/${PN}/" || die "cp failed"
-	dodoc README                                || die "dodoc failed"
+	dodoc README
 	prepgamesdirs
 }

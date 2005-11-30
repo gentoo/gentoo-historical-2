@@ -1,6 +1,24 @@
-# ChangeLog for app-games/njam
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/njam/ChangeLog,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# ChangeLog for games-arcade/njam
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/njam/ChangeLog,v 1.1.1.1 2005/11/30 09:51:58 chriswhite Exp $
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> njam-0.96.ebuild:
+  Making games last on inherit line.
+
+*njam-1.21 (11 Sep 2004)
+
+  11 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +files/1.21-conf.patch,
+  +njam-1.21.ebuild:
+  version bump - ebuild and patch supplied by Aaron Walker via bug #48477
+
+  07 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> njam-1.00.ebuild:
+  add eutils for epatch
+
+*njam-1.00 (07 Nov 2003)
+
+  07 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> njam-1.00.ebuild,
+  files/njam-1.00-conf.patch:
+  version bump for bug 32790
 
 *njam-0.96 (29 Jul 2003)
 

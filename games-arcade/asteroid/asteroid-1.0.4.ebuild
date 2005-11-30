@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/asteroid/asteroid-1.0.4.ebuild,v 1.1 2005/10/25 02:12:55 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/asteroid/asteroid-1.0.4.ebuild,v 1.1.1.1 2005/11/30 09:52:00 chriswhite Exp $
 
 inherit games
 

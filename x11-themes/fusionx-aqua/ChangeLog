@@ -1,6 +1,34 @@
 # ChangeLog for x11-themes/fusionx-aqua
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fusionx-aqua/ChangeLog,v 1.1 2003/06/19 11:38:10 tad Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fusionx-aqua/ChangeLog,v 1.1.1.1 2005/11/30 09:51:34 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> fusionx-aqua-1.1.ebuild:
+  Mark 1.1 stable on alpha
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> fusionx-aqua-1.1.ebuild:
+  Mark 1.1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> fusionx-aqua-1.1.ebuild:
+  add ~ia64
+
+  21 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> fusionx-aqua-1.1.ebuild:
+  Correct KDE dependency (#83058).
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> fusionx-aqua-1.1.ebuild:
+  Changed dep on a kde-base monolithic package to accept the equivalent split
+  or -meta package. KDE 3.4 has 'split' packages as well as monolithic, and
+  either alternative may provide the same files. This dep may have to be
+  narrowed down in the future to the precise split packages required.
+
+  03 Jul 2004; Carsten Lohrke <carlo@gentoo.org> fusionx-aqua-1.1.ebuild:
+  QA: need-kde after R/DEPEND
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fusionx-aqua-1.1.ebuild:
+  Added IUSE.
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fusionx-aqua-1.1.ebuild:
+  inherit kde instead of deprecated kde-base
 
 *fusionx-aqua-1.1 (19 Jun 2003)
 

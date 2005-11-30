@@ -1,2 +1,4 @@
-MD5 c1e0a7e00cc9bf9dc2843594a8524746 ExtUtils-XSBuilder-0.25.ebuild 505
-MD5 66377d76e42e1d8ceb9c69a42cc22d98 files/digest-ExtUtils-XSBuilder-0.25 74
+MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305
+MD5 f8be3fe82a857f8fb7cb9f2d42a00e63 ChangeLog 1383
+MD5 67dd5151d33fc183e500104bef94754c ExtUtils-XSBuilder-0.27.ebuild 629
+MD5 cde4dfc7fe87e1f3db1a679fadc5eb92 files/digest-ExtUtils-XSBuilder-0.27 74

@@ -1,24 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Audio-CD-disc-cover/Audio-CD-disc-cover-0.05.ebuild,v 1.1 2003/05/07 21:56:59 rac Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Audio-CD-disc-cover/Audio-CD-disc-cover-0.05.ebuild,v 1.1.1.1 2005/11/30 09:52:38 chriswhite Exp $
 
 inherit perl-module
 
-MY_P=Audio-CD-0.05
+MY_P=Audio-CD-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Perl Module needed for app-cdr/disc-cover"
-HOMEPAGE="http://home.wanadoo.nl/jano/disc-cover.html"
-SRC_URI="http://home.wanadoo.nl/jano/files/${MY_P}.tar.gz"
-
+HOMEPAGE="http://homepages.inf.ed.ac.uk/jvanheme/disc-cover.html"
+SRC_URI="http://homepages.inf.ed.ac.uk/jvanheme/files/${MY_P}.tar.gz"
+IUSE=""
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc alpha"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 
 DEPEND="${DEPEND}
-	>=dev-perl/MIME-Base64-2.12
+	>=perl-core/MIME-Base64-2.12
 	>=dev-perl/URI-1.10
 	>=dev-perl/HTML-Parser-3.15
-	>=dev-perl/Digest-MD5-2.12
+	>=perl-core/Digest-MD5-2.12
 	>=dev-perl/libnet-1.0703-r1
 	>=dev-perl/libwww-perl-5.50
-	>=media-libs/libcdaudio-0.99.6"  
+	>=media-libs/libcdaudio-0.99.6"

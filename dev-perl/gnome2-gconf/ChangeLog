@@ -1,6 +1,29 @@
 # ChangeLog for dev-perl/gnome2-gconf
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-gconf/ChangeLog,v 1.1 2004/08/08 16:23:47 mcummings Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-gconf/ChangeLog,v 1.1.1.1 2005/11/30 09:52:54 chriswhite Exp $
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> gnome2-gconf-1.000.ebuild:
+  Mark 1.000 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> gnome2-gconf-1.000.ebuild:
+  Mark 1.000 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> gnome2-gconf-1.000.ebuild:
+  add ~ia64
+
+  09 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome2-gconf-1.000.ebuild:
+  Stable on sparc
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> gnome2-gconf-1.000.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  gnome2-gconf-1.000.ebuild:
+  Cleaning for mirror syntax
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Gentoo Technologies, Inc. -> Gentoo Foundation
 
 *gnome2-gconf-1.000 (08 Aug 2004)
 
@@ -8,4 +31,6 @@
   +gnome2-gconf-1.000.ebuild:
   Module for gluing together apps built with gnome2-* perl modules. Requested in
   bug 58796.
+
+
 

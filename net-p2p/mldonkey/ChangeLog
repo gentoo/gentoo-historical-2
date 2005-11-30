@@ -1,12 +1,489 @@
 # ChangeLog for net-p2p/mldonkey
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# Author: José Alberto Suárez López <bass@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/ChangeLog,v 1.1 2002/06/26 11:09:16 bangert Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/ChangeLog,v 1.1.1.1 2005/11/30 09:51:18 chriswhite Exp $
+
+*mldonkey-2.6.7 (29 Oct 2005)
+
+  29 Oct 2005; Marcin Kryczek <mkay@gentoo.org> +mldonkey-2.6.7.ebuild:
+  Version bump
+
+  20 Oct 2005; <mkay@gentoo.org> files/mldonkey.confd, files/mldonkey.initd:
+  Updated start script (and configuration in conf.d). This fixes bug #109469
+  and bug #109604
+
+  15 Oct 2005; <mkay@gentoo.org> mldonkey-2.6.0.ebuild,
+  mldonkey-2.6.0-r1.ebuild:
+  2.6.0 version needs ocaml-3.08.3. it won't build with 3.08.4. Fixing deps
+
+*mldonkey-2.6.5 (14 Oct 2005)
+
+  14 Oct 2005; <mkay@gentoo.org> +mldonkey-2.6.5.ebuild:
+  Version bump. Thanks Benjamin Schleinzer
+
+  06 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mldonkey-2.6.4-r2.ebuild:
+  Stable on ppc.
+
+  02 Oct 2005; <mkay@gentoo.org> mldonkey-2.6.4-r1.ebuild,
+  mldonkey-2.6.4-r2.ebuild:
+  Stable on x86
+
+*mldonkey-2.6.4-r2 (20 Sep 2005)
+*mldonkey-2.6.0-r1 (20 Sep 2005)
+
+  20 Sep 2005; <mkay@gentoo.org> -files/2.5.28-config.patch,
+  -mldonkey-2.5.16-r10.ebuild, -mldonkey-2.5.27-r1.ebuild,
+  -mldonkey-2.5.28-r4.ebuild, +mldonkey-2.6.0-r1.ebuild,
+  -mldonkey-2.6.2.ebuild, -mldonkey-2.6.3.ebuild, -mldonkey-2.6.4.ebuild,
+  +mldonkey-2.6.4-r2.ebuild:
+  New revision bump without gtk2 flag. Also removing few older versions
+
+  19 Sep 2005; <mkay@gentoo.org> mldonkey-2.6.2.ebuild,
+  mldonkey-2.6.3.ebuild, mldonkey-2.6.4.ebuild, mldonkey-2.6.4-r1.ebuild:
+  Updated einfo about xpi handler (thanks Qiangning Hong for reporting bug
+  #106136)
+
+  19 Sep 2005; <mkay@gentoo.org> mldonkey-2.6.4-r1.ebuild:
+  Added checking if gd was built with truetype. Thanks Frittella Laurento for
+  bug #106396
+
+  18 Sep 2005; <mkay@gentoo.org> files/mldonkey.initd:
+  Fixed init script. Thanks M. Giritli <giritli@sonne.uni-freiburg.de> for bug
+  #103433
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*mldonkey-2.6.4-r1 (14 Sep 2005)
+
+  14 Sep 2005; <mkay@gentoo.org> +mldonkey-2.6.4-r1.ebuild:
+  Clean a mess in USE flags  - closing bug #103239 (thanks everyone, who takes 
+  part in discussion). Also droping 'oldgtk' flag and support for old gui, 
+  since it's not maintaned anymore.
+
+*mldonkey-2.6.4 (06 Sep 2005)
+
+  06 Sep 2005; Martin Holzer <mholzer@gentoo.org> +mldonkey-2.6.4.ebuild:
+  Version bumped.
+
+  27 Aug 2005; <sekretarz@gentoo.org> mldonkey-2.6.2.ebuild,
+  mldonkey-2.6.3.ebuild:
+  Fixed path to xpi file, bug #103891
+
+  26 Aug 2005; <sekretarz@gentoo.org> mldonkey-2.6.2.ebuild,
+  mldonkey-2.6.3.ebuild:
+  Added patch to change ed2k_hash name to mld_hash, bug #103693
+
+*mldonkey-2.6.3 (26 Aug 2005)
+
+  26 Aug 2005; Martin Holzer <mholzer@gentoo.org> +mldonkey-2.6.3.ebuild:
+  Version bumped.
+
+  21 Aug 2005; <sekretarz@gentoo.org> metadata.xml:
+  Removed squinky86 from metadata.xml on jakub request, bug #103131
+
+  21 Aug 2005; <sekretarz@gentoo.org> mldonkey-2.6.2.ebuild:
+  Added missing parentheses in DEPEND and RDEPEND. Fixed some typos. Bug
+  #103237 and #103131
+
+*mldonkey-2.6.2 (21 Aug 2005)
+
+  21 Aug 2005; <sekretarz@gentoo.org> +files/mldonkey-gui.desktop,
+  +mldonkey-2.6.2.ebuild:
+  Version bump, added mozilla use flag and installing ed2k handler for
+  mozilla/firefox, installing of desktop file. Thanks Przemyslaw Maciag
+  <p_maciag@wp.pl> in bug #102097
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mldonkey-2.5.16-r9.ebuild:
+  Stable on ppc.
+
+  25 Jul 2005; <sekretarz@gentoo.org>
+  +files/mldonkey-2.6.0-gtk2-gentoo.patch, mldonkey-2.6.0.ebuild:
+  Fixed compile problems with enabled ekg2, thanks Marcin Kryczek
+  <aye@gentoo.pl> in bug #100120
+
+  24 Jul 2005; <sekretarz@gentoo.org> mldonkey-2.6.0.ebuild:
+  Turned off batch configure option, cought by Phil
+
+*mldonkey-2.6.0 (23 Jul 2005)
+
+  23 Jul 2005; <sekretarz@gentoo.org> +mldonkey-2.6.0.ebuild:
+  Version bump, bug #84100
+
+  06 May 2005; Bryan Ã˜stergaard <kloeri@gentoo.org>
+  mldonkey-2.5.16-r10.ebuild:
+  Fix typo, bug 89322.
+
+  24 Mar 2005; Karol Wojtaszek <sekretarz@gentoo.org> +files/mldonkey.png,
+  mldonkey-2.5.16-r10.ebuild:
+  Add desktop entry when gtk use flag is enabled, bug #83300
+
+*mldonkey-2.5.16-r10 (27 Feb 2005)
+
+  27 Feb 2005; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.16-r10.ebuild:
+  Version bump, #80553. Thanks Holger <holger@wizards.de> and Costas
+  <cca@freemail.gr>.
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> mldonkey-2.5.16-r9.ebuild:
+  added ~amd64 to KEYWORDS of 2.5.16-r9. fixes #76523
+
+  29 Nov 2004; Jon Hood <squinky86@gentoo.org> files/mldonkey.initd,
+  -mldonkey-2.5.16-r7.ebuild, -mldonkey-2.5.16-r8.ebuild,
+  mldonkey-2.5.16-r9.ebuild, -mldonkey-2.5.28-r3.ebuild,
+  -mldonkey-2.5.28.ebuild:
+  2.5.16-r9 stable on x86 due to older versions getting banned, thanks
+  Lorenz Bauer <scahoo@bluebottle.com>, #70659; new init script from
+  Martin Bays <gentoo_bugz@zugzwang.port5.com>, #65245, cleanup old ebuilds.
+
+*mldonkey-2.5.16-r9 (23 Nov 2004)
+
+  23 Nov 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.16-r9.ebuild:
+  Version bump irt #70659; thanks Lorenz Bauer <scahoo@bluebottle.com> and
+  Vanquirius <marcelogoes@gmail.com>.
+
+*mldonkey-2.5.28-r4 (24 Oct 2004)
+
+  24 Oct 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.28-r4.ebuild:
+  Version bump.
+
+*mldonkey-2.5.28-r3 (18 Oct 2004)
+
+  18 Oct 2004; Jon Hood <squinky86@gentoo.org> -mldonkey-2.5.28-r1.ebuild,
+  -mldonkey-2.5.28-r2.ebuild, +mldonkey-2.5.28-r3.ebuild:
+  Version bump, remove old versions. Thanks spiralvoice, #66920.
+
+*mldonkey-2.5.28-r2 (05 Oct 2004)
+
+  05 Oct 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.28-r2.ebuild:
+  Version bump, new patch_pack.
+
+*mldonkey-2.5.28-r1 (30 Aug 2004)
+
+  30 Aug 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.28-r1.ebuild:
+  Version bump; add experimental patch_pack for testing (masked).
+
+  24 Aug 2004; Jon Hood <squinky86@gentoo.org> +files/2.5.28-config.patch,
+  mldonkey-2.5.28.ebuild:
+  Add configure patch to not install lablgtk if it is not available, #61425.
+
+  22 Aug 2004; Travis Tilley <lv@gentoo.org> mldonkey-2.5.28.ebuild:
+  added ~amd64 keyword
+
+*mldonkey-2.5.28 (19 Aug 2004)
+
+  19 Aug 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.28.ebuild:
+  Version bump, closes #60867.
+
+*mldonkey-2.5.27-r1 (17 Aug 2004)
+
+  17 Aug 2004; Jon Hood <squinky86@gentoo.org> -mldonkey-2.5.21-r1.ebuild,
+  +mldonkey-2.5.27-r1.ebuild, -mldonkey-2.5.27.ebuild:
+  Version bump, closes #60714.
+
+  16 Aug 2004; Guy Martin <gmsoft@gentoo.org> mldonkey-2.5.16-r8.ebuild:
+  Marked stable on hppa (#60390).
+
+  14 Aug 2004; Jon Hood <squinky86@gentoo.org> mldonkey-2.5.27.ebuild:
+  Fix DEPEND on ocaml and gtk2 use invocation; thanks xake and gustavoz, #58891.
+
+*mldonkey-2.5.27 (13 Aug 2004)
+
+  13 Aug 2004; Jon Hood <squinky86@gentoo.org> -mldonkey-2.5.22-r1.ebuild,
+  +mldonkey-2.5.27.ebuild:
+  Version bump, closes #58891. Thanks Benjamin Schleinzer <thor@4players.de> and
+  spiralvoice <spiralvoice@hotmail.com>. Remove non-working ebuild.
+
+*mldonkey-2.5.16-r8 (08 Aug 2004)
+
+  08 Aug 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.16-r8.ebuild:
+  Version bump. Closes #57956.
+
+  05 Aug 2004; Jon Hood <squinky86@gentoo.org> -mldonkey-2.5.16-r5.ebuild,
+  -mldonkey-2.5.16-r6.ebuild, mldonkey-2.5.16-r7.ebuild:
+  Stable on x86.
+
+  04 Aug 2004; Jon Hood <squinky86@gentoo.org> files/mldonkey.initd:
+  Fix init script thanks to Antonio <netbix@tiscali.it> in #58331 and
+  Tiv <tivadar.szemethy@vanderbilt.edu> in #59435.
+
+*mldonkey-2.5.22-r1 (03 Aug 2004)
+
+  03 Aug 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.22-r1.ebuild:
+  Version bump, masking until issues in #58891 are resolved. Thanks to Benjamin
+  Schleinzer <thor@4players.de> and spiralvoice <spiralvoice@hotmail.com>.
+
+  30 Jul 2004; Jon Hood <squinky86@gentoo.org> files/mldonkey
+  -mldonkey-2.5.16-r4.ebuild, mldonkey-2.5.16-r6.ebuild,
+  files/mldonkey.initd, -files/97mldonkey,
+  -files/mldonkey-2.5.16-16g.patch, -files/mldonkey-2.5.16-oldbt.patch:
+  fix init script irt #58857
+  Stable on x86; remove old version.
+  Remove unused patches and files
+
+  27 Jul 2004; Guillaume Destuynder <kang@gentoo.org>
+  mldonkey-2.5.16-r(4,5,6,7).ebuild,
+  mldonkey-2.5.21-r(1,2).ebuild:
+  Fixed #58526, incorrect enewuser usage
+
+  19 Jul 2004; Jon Hood <squinky86@gentoo.org> mldonkey-2.5.16-r5.ebuild:
+  stable on x86
+
+  15 Jul 2004; Jon Hood <squinky86@gentoo.org> files/mldonkey:
+  fix mldonkey init script for more options; thanks to Matthias Bernges
+  <matthiasbernges@gmx.de> for the updates
+
+*mldonkey-2.5.16-r7 (06 Jul 2004)
+
+  06 Jul 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.16-r7.ebuild:
+  version bump irt #55555, change all ocaml dependencies to >=3.07
+
+  04 Jul 2004; Jon Hood <squinky86@gentoo.org> mldonkey-2.5.21-r2.ebuild:
+  fix RDEPEND on lablgtk, closes #56081
+
+  28 Jun 2004; Jon Hood <squinky86@gentoo.org> mldonkey-2.5.16-r6.ebuild,
+  mldonkey-2.5.21-r2.ebuild:
+  ebuild cleanups thanks to spiralvoice in #54530
+
+*mldonkey-2.5.16-r6 (28 Jun 2004)
+
+  28 Jun 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.16-r6.ebuild:
+  version bump
+
+  20 Jun 2004; Jon Hood <squinky86@gentoo.org> -mldonkey-2.5.16-r3.ebuild,
+  mldonkey-2.5.16-r4.ebuild:
+  stable on x86
+
+*mldonkey-2.5.16-r5 (18 Jun 2004)
+
+*mldonkey-2.5.21-r2 (18 Jun 2004)
+
+  18 Jun 2004; Jon Hood <squinky86@gentoo.org> +mldonkey-2.5.16-r5.ebuild,
+  -mldonkey-2.5.18.ebuild, -mldonkey-2.5.19.ebuild, -mldonkey-2.5.20.ebuild,
+  +mldonkey-2.5.21-r2.ebuild, -mldonkey-2.5.21.ebuild,
+  -files/mldonkey-2.5.18-configure.patch,
+  -files/mldonkey-2.5.19-configure.patch,
+  -files/mldonkey-2.5.20-configure.patch:
+  version bumps; thanks to teedog <teedog@myrealbox.com> in #54260 and #52032;
+  ebuild cleanups (2.5.16 is stable branch, 2.5.21 is testing branch)
+
+*mldonkey-2.5.16-r4 (21 May 2004)
+
+  15 Jun 2004; Jon Hood <squinky86@gentoo.org> :
+  version bump of prefered branch of mldonkey, thanks to teedog
+  <teedog@myrealbox.com>, #53363
+
+*mldonkey-2.5.21-r1 (21 May 2004)
+
+  21 May 2004; Jon Hood <squinky86@gentoo.org> -mldonkey-2.5.11.ebuild,
+  -mldonkey-2.5.12.ebuild, -mldonkey-2.5.16-r1.ebuild,
+  -mldonkey-2.5.16-r2.ebuild, mldonkey-2.5.16-r3.ebuild,
+  -mldonkey-2.5.16.ebuild, +mldonkey-2.5.21-r1.ebuild, mldonkey-2.5.21.ebuild,
+  -mldonkey-2.5.4.ebuild:
+  cleanup ebuilds; version bump; apply changes from #51496
+
+  11 May 2004; Guy Martin <gmsoft@gentoo.org> :
+  Marked stable on hppa.
+
+*mldonkey-2.5.21 (05 May 2004)
+
+  05 May 2004; Jon Hood <squinky86@gentoo.org>
+  +files/mldonkey-2.5.21-configure.patch, +mldonkey-2.5.21.ebuild:
+  Wow, three version bumps in a day! Recloses #49847.
+
+*mldonkey-2.5.20 (05 May 2004)
+
+  05 May 2004; Jon Hood <squinky86@gentoo.org>
+  +files/mldonkey-2.5.20-configure.patch, +mldonkey-2.5.20.ebuild:
+  version bump, closes #49847
+
+*mldonkey-2.5.19 (05 May 2004)
+
+  05 May 2004; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.19.ebuild,
+  files/mldonkey-2.5.19-configure.patch:
+  Version bumped.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> mldonkey-2.5.11.ebuild,
+  mldonkey-2.5.12.ebuild, mldonkey-2.5.16-r1.ebuild,
+  mldonkey-2.5.16-r2.ebuild, mldonkey-2.5.16.ebuild, mldonkey-2.5.4.ebuild:
+  Add die following econf for bug 48950
+
+*mldonkey-2.5.18 (17 Apr 2004)
+
+  17 Apr 2004; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.18.ebuild,
+  files/mldonkey-2.5.18-configure.patch:
+  Version bumped.
+
+  17 Apr 2004; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.16-r2.ebuild,
+  mldonkey-2.5.16-r3.ebuild:
+  adding make depend. closes 47329
+
+*mldonkey-2.5.16-r3 (13 Apr 2004)
+
+  13 Apr 2004; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.16-r2.ebuild,
+  mldonkey-2.5.16-r3.ebuild:
+  updating patch. big fix for 47329.
+
+*mldonkey-2.5.16-r2 (07 Apr 2004)
+*mldonkey-2.5.16-r1 (07 Apr 2004)
+
+  07 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mldonkey-2.5.16-r1.ebuild, mldonkey-2.5.16-r2.ebuild,
+  files/mldonkey-2.5.16-16g.patch, files/mldonkey-2.5.16-configure.patch,
+  files/mldonkey-2.5.16-oldbt.patch:
+  -r1 has the old, pre 16 bittorrent code. -r2 has threading enabled as two
+  solution options to bug #45471 and #46409.
+
+  17 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> files/mldonkey,
+  files/mldonkey.initd:
+  updated init script for small fix.  See bug #44563
+
+  12 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  mldonkey-2.5.11.ebuild, mldonkey-2.5.12.ebuild, mldonkey-2.5.16.ebuild:
+  Fixed lablgtk DEPEND to accept any 1.x version but not the 2.x versions... bug
+  #44227.
+
+*mldonkey-2.5.16 (10 Mar 2004)
+
+  10 Mar 2004; Hanno Boeck <hanno@gentoo.org> mldonkey-2.5.16.ebuild:
+  Version bump.
+
+  24 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  mldonkey-2.5.11.ebuild, mldonkey-2.5.12.ebuild:
+  Fixed installed documentation (Bug #41764).
+  Fixed init.d script (Bug #41347).
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> mldonkey-2.5.12.ebuild:
+  add ~alpha and ~ia64
+
+*mldonkey-2.5.12 (16 Feb 2004)
+
+  16 Feb 2004; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.12.ebuild:
+  Version bumped.
+
+*mldonkey-2.5.11 (11 Feb 2004)
+
+  11 Feb 2004; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.11.ebuild:
+  Version bumped.
+
+  22 Jan 2004; Matthieu Sozeau <mattam@gentoo.org> mldonkey-2.5.3-r1.ebuild,
+  mldonkey-2.5.3-r2.ebuild, mldonkey-2.5.4.ebuild:
+  Changed lablgtk dependancies to =lablgtk-1.2.5 before lablgtk-2 inclusion.
+
+  18 Dec 2003; Heinrich Wendel <lanius@gentoo.org> mldonkey-2.5.4.ebuild:
+  Moved enewuser to src_install, so the home directory is created.
+  It was in pkg_setup but the image dir will be cleaned before src_install.
+
+  30 Nov 2003; Jeremy Maitin-Shepard <jbms@gentoo.org>
+  mldonkey-2.5.3-r1.ebuild, mldonkey-2.5.3-r2.ebuild, mldonkey-2.5.4.ebuild:
+  Changed `either' to 'also' in the post-install message.
+  Bug reported by Adam <adam@tpetaccia.com>.
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> mldonkey-2.5.4.ebuild:
+  inherit eutils to fix enewuser, thx to iggy for pointing that out
+
+  18 Oct 2003; Heinrich Wendel <lanius@gentoo.org> mldonkey-2.5.4.ebuild:
+  fixed compiling with ocaml 3.07
+
+*mldonkey-2.5.4 (17 Oct 2003)
+
+  17 Oct 2003; Heinrich Wendel <lanius@gentoo.org> mldonkey-2.5-r1.ebuild,
+  mldonkey-2.5.4.ebuild, files/mldonkey:
+  version bump / --enable-batch mode / additionaly docs / bug #30983 / bug #31228
+
+  07 Oct 2003; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.3-r1.ebuild,
+  mldonkey-2.5.3-r2.ebuild:
+  fixing ocml version. closes #29996
+
+*mldonkey-2.5.3-r2 (24 Sep 2003)
+
+  24 Sep 2003; Markus Nigbur <pyrania@gentoo.org> mldonkey-2.5.3-r2.ebuild,
+  files/mldonkey.initd:
+  Bugfixes in the initscript (bug #29374)
+
+  10 Sep 2003; Caleb Tennis <caleb@gentoo.org> mldonkey-2.5.3-r1.ebuild:
+  Rethink the config files - bug #27005
+
+  17 Aug 2003; Martin Holzer <mholzer@gentoo.org> mldonkey-2.5.3-r1.ebuild:
+  Marked x86 stable.
+
+*mldonkey-2.5.3-r1 (06 Aug 2003)
+
+  06 Aug 2003; Caleb Tennis <caleb@gentoo.org> mldonkey-2.5.3-r1.ebuild:
+  Added extra functionality, like a new p2p user and some added features.
+  Thanks to Julian Hoch, this closes bug #25695.
+
+*mldonkey-2.5.3 (17 Jun 2003)
+
+  17 Jun 2003; Caleb Tennis <caleb@gentoo.org> mldonkey-2.5.3.ebuild:
+  Version bump to 2.5-3.  E-Build submitted by Gregorio Guidi (bug #22605).
+
+*mldonkey-2.5-r1 (02 Jun 2003)
+
+  02 Jun 2003; Caleb Tennis <caleb@gentoo.org> mldonkey-2.5-r1.ebuild, mldonkey:
+  New revision based on the fact the old ebuild (2.5) didn't work 100% properly.
+  Thanks to Gregorio Guidi for the submission - closes bug #20884.
+
+*mldonkey-2.5 (28 May 2003)
+
+  28 May 2003; Caleb Tennis <caleb@gentoo.org> mldonkey-2.5.ebuild:
+  version bump, thanks to Sridhar Dhanapalan (bug #21764)
+
+*mldonkey-2.04_rc1 (23 Mar 2003)
+
+  23 Mar 2003; Hannes Mehnert <hannes@gentoo.org> mldonkey-2.04_rc1.ebuild:
+  version bump, thanks to Vesa Kaihlavirta <vpkaihla@cc.jyu.fi> (bug #17365)
+
+*mldonkwy-2.02-r2 (26 Jan 2003)
+
+  26 Jan 2003; Hannes Mehnert <hannes@gentoo.org> mldonkey-2.02-r2.ebuild:
+  new pango-patches, thanks to spam@matzsoft.de (Mathias Menzel-Nielsen)
+  (bug #14370)
+
+  14 Jan 2003; Hannes Mehnert <hannes@gentoo.org> mldonkey-2.01-r1.ebuild:
+  fixed SRC_URI
+
+*mldonkey-2.02-r1 (03 Jan 2003)
+
+  28 Jan 2003; Jon Nall <nall@gentoo.org> mldonkey-2.02-r1.ebuild :
+  added ~ppc
+
+  03 Jan 2003; Hannes Mehnert <hannes@gentoo.org> mldonkey-2.02-r1.ebuild:
+  added pango patch if USE=mldonkeypango is set.
+
+*mldonkey-2.02 (24 Dec 2002)
+
+  24 Dec 2002; J.Alberto Suarez L. <bass@gentoo.org> mldonkey-2.02.ebuild:
+  New version.
+  Some changes in the ebuil: removed pango patch, 'N' variable introduced for src.
+  Merry XMas =D
+
+*mldonkey-2.01-r1 (15 Dec 2002)
+
+  16 Dec 2002; Seemant Kulleen <seemant@gentoo.org> mldonkey-2.01.ebuild
+  mldonkey-2.01-r1.ebuild :
+
+  Moved 2.01 to stable, and changed the configure settings slightly.  Should
+  go into /var not /usr/var for the state stuff and use econf instead
+
+  12 Dec 2002; Hannes Mehnert <hannes@mehnert.org> mldonkey-2.01-r1.ebuild:
+  included patch from http://concept.free.free.fr/mldonkey/
+
+*mldonkey-2.01 (12 Dec 2002)
+
+  12 Dec 2002; Hannes Mehnert <hannes@mehnert.org> mldonkey-2.01.ebuild:
+  version bump
+
+*mldonkey-2.00-r1 (09 Dec 2002)
+
+  09 Dec 2002; Hannes Mehnert <hannes@mehnert.org> mldonkey-2.00-r1.ebuild:
+  this ebuild is now from source. Thanks to gentoo-bug@loitsch.org (Christian
+  Loitsch) for submission (bug #9677)
 
   26 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
   
   move to net-p2p
 
-  16 jun 2002; J. Alberto Suárez L. <bass@gentoo.org> mldonkey-1.16.ebuild : 
+  16 jun 2002; J. Alberto SuÃ¡rez L. <bass@gentoo.org> mldonkey-1.16.ebuild : 
   
   First relase

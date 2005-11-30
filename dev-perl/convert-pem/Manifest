@@ -1,2 +1,6 @@
-MD5 fa7a7e2fd771e3a3ed2c83c633c4727d convert-pem-0.06.ebuild 580
+MD5 770bd8f671b959b928ba43cb745c8b60 ChangeLog 1922
+MD5 68d424a5df2f090b0c146d32dfbf3bae convert-pem-0.06.ebuild 698
+MD5 f396098f558ec041a2a84f8e7a9acb14 convert-pem-0.07.ebuild 765
 MD5 0999457f6730d99c056ac9bd6633c78b files/digest-convert-pem-0.06 66
+MD5 7897277c2840523cf7728bd6c6b4bf43 files/digest-convert-pem-0.07 67
+MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305

@@ -1,3 +1,4 @@
-MD5 f99ac1b27e7966a862ad9aac4cd6439f ChangeLog 287
-MD5 010c3b672068562d20cd978028c294b9 lush-0.1.0.ebuild 636
-MD5 30eef944f34eac32e48b3815a3a3285e files/digest-lush-0.1.0 67
+MD5 acc03a4b12bb0433a57e95bd253b9501 metadata.xml 156
+MD5 b730233cabf80516c6f62831ada9af5b lush-0.1.0-r1.ebuild 712
+MD5 1e06fb57706f4e744df3297ff9b65b43 ChangeLog 1161
+MD5 30eef944f34eac32e48b3815a3a3285e files/digest-lush-0.1.0-r1 67

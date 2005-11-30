@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/abeni/abeni-0.0.19.ebuild,v 1.1 2004/10/09 06:00:11 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/abeni/abeni-0.0.19.ebuild,v 1.1.1.1 2005/11/30 09:51:52 chriswhite Exp $
 
 inherit distutils
 

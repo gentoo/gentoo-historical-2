@@ -1,26 +1,33 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/dctc/dctc-0.85.9.ebuild,v 1.1 2004/01/31 23:14:44 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/dctc/dctc-0.85.9.ebuild,v 1.1.1.1 2005/11/30 09:51:15 chriswhite Exp $
+
+inherit eutils
+
+IUSE=""
 
 DESCRIPTION="Direct Connect Text Client, almost famous file share program"
-HOMEPAGE="http://ac2i.homelinux.com/dctc/"
-SRC_URI="http://ac2i.homelinux.com/dctc/${P}.tar.gz"
+HOMEPAGE="http://brainz.servebeer.com/dctc/"
+SRC_URI="http://brainz.servebeer.com/dctc/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc ~amd64 ~sparc"
 
 DEPEND="=dev-libs/glib-2*
-	>=sys-libs/db-3"
+	>=sys-libs/db-3
+	dev-libs/libxml2"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	# fix for #26708 (db4 support)
-	local dbfunc="`nm /usr/lib/libdb.so | grep \ db_env_create | awk '{print $3}'`"
+	local dbfunc="`grep '^#define.*db_env_create' /usr/include/db.h | awk '{print $NF}'`"
 	if [ "${dbfunc}" != "db_env_create" ] ; then
 		sed -i "s:db_env_create:${dbfunc}:g" configure
 	fi
+
+	epatch ${FILESDIR}/dctc-0.85.6-passive.patch
 }
 
 src_install() {

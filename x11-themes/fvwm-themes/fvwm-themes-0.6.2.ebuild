@@ -1,14 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes/fvwm-themes-0.6.2.ebuild,v 1.1 2003/05/26 20:22:03 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes/fvwm-themes-0.6.2.ebuild,v 1.1.1.1 2005/11/30 09:51:30 chriswhite Exp $
 
 IUSE="gnome"
+
+inherit eutils
 
 DESCRIPTION="A configuration framework for the fvwm window manager"
 HOMEPAGE="http://fvwm-themes.sourceforge.net/"
 SRC_URI="mirror://sourceforge/fvwm-themes/${P}.tar.bz2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 ~alpha ~amd64 ppc"
 SLOT="0"
 
 DEPEND="x11-wm/fvwm
@@ -43,6 +45,6 @@ pkg_postinst() {
 
 	fvwm-themes-config --site --reset
 	fvwm-themes-menuapp --site --build-menus --remove-popup
-	
+
 	use gnome && fvwm-themes-images --ft-install --gnome
 }

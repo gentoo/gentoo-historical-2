@@ -1,6 +1,6 @@
 # Exim filter
 ## Version: 0.13
-#	$Id: system_filter.exim,v 1.1 2004/05/30 02:35:58 robbat2 Exp $
+#	$Id: system_filter.exim,v 1.1.1.1 2005/11/30 09:50:46 chriswhite Exp $
 
 ## If you haven't worked with exim filters before, read
 ## the install notes at the end of this file.

@@ -1,13 +1,13 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/files/postfix.rc6,v 1.1 2004/05/30 09:38:31 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/files/postfix.rc6,v 1.1.1.1 2005/11/30 09:51:00 chriswhite Exp $
 
 opts="${opts} reload"
 
 depend() {
 	need net
-	use logger dns ypbind
+	use logger dns ypbind amavisd mysql postgresql antivirus
 	provide mta
 }
 

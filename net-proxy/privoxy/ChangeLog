@@ -1,6 +1,14 @@
-# ChangeLog for www-proxy/privoxy
+# ChangeLog for net-proxy/privoxy
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/privoxy/ChangeLog,v 1.1 2005/04/22 19:15:11 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/privoxy/ChangeLog,v 1.1.1.1 2005/11/30 09:51:49 chriswhite Exp $
+
+  04 Jun 2005; Alin Nastac <mrness@gentoo.org> -files/privoxy.rc6,
+  -privoxy-3.0.2.ebuild, -privoxy-3.0.3.ebuild:
+  Remove obsolete versions.
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  privoxy-3.0.3-r3.ebuild:
+  Stable on alpha.
 
   22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
   Rename category & herd www-proxy to net-proxy

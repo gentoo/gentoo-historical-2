@@ -1,8 +1,29 @@
 # ChangeLog for games-emulation/mupen64-alsasnd
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64-alsasnd/ChangeLog,v 1.1 2003/12/27 09:37:27 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64-alsasnd/ChangeLog,v 1.1.1.1 2005/11/30 09:50:23 chriswhite Exp $
+
+  20 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  mupen64-alsasnd-0.4.ebuild:
+  remove gtk2 use flag
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> mupen64-alsasnd-0.4.ebuild:
+  Fix qt dep
+
+  19 Apr 2005; Daniel Goller <morfic@gentoo.org> mupen64-alsasnd-0.4.ebuild:
+  moved file to mirrors
+
+  17 Apr 2005; Daniel Goller <morfic@gentoo.org> mupen64-alsasnd-0.4.ebuild:
+  fix dependency logic/defaults
+
+  17 Apr 2005; Daniel Goller <morfic@gentoo.org> mupen64-alsasnd-0.4.ebuild:
+  add missing IUSE
+
+  17 Apr 2005; Daniel Goller <morfic@gentoo.org> +files/0.4-gtk.patch,
+  mupen64-alsasnd-0.4.ebuild:
+  added gtk compile fix with gcc3.4, thanks to Bret Towe 
+  closes bug #84235 
 
 *mupen64-alsasnd-0.4 (27 Dec 2003)
 
   27 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by Marcelo Góes <blueboard@terra.com.br> #32749.
+  Initial import.  Ebuild submitted by Marcelo GÃ³es <blueboard@terra.com.br> #32749.

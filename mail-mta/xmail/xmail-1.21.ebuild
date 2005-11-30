@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/xmail/xmail-1.21.ebuild,v 1.1 2005/01/27 17:25:35 superlag Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/xmail/xmail-1.21.ebuild,v 1.1.1.1 2005/11/30 09:50:38 chriswhite Exp $
 
-inherit eutils
+inherit eutils linux-info
 
 DESCRIPTION="The world's fastest email server"
 HOMEPAGE="http://www.xmailserver.org/"
@@ -10,16 +10,38 @@ SRC_URI="http://www.xmailserver.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ~ppc ~sparc"
 IUSE=""
 
 DEPEND="virtual/libc
 	>=sys-apps/sed-4"
+RDEPEND="net-firewall/iptables"
 PROVIDE="virtual/mta"
 
 pkg_setup() {
+
+	linux-info_pkg_setup
+
+	if ! (linux_chkconfig_present NETFILTER); then
+		eerror "${P} requires netfilter/iptables support enabled in kernel!"
+		eerror
+		eerror "Recompile your kernel with CONFIG_NETFILTER and CONFIG_IP_NF_TARGET_REDIRECT"
+		eerror "support enabled and reboot. Then try to emerge ${P} again."
+		die "Kernel without CONFIG_NETFILTER detected!"
+	fi
+
+	if ! (linux_chkconfig_present IP_NF_TARGET_REDIRECT); then
+		eerror "${P} requires CONFIG_IP_NF_TARGET_REDIRECT support to be enabled in kernel!"
+		eerror "Recompile your kernel with netfilter REDIRECT target support enabled."
+		eerror
+		eerror "Reboot will be required if compiled directly into kernel."
+		eerror "If reboot is not desired you should choose a module instead and run"
+		eerror "make modules && make modules_install"
+		die "Kernel without CONFIG_IP_NF_TARGET_REDIRECT detected!"
+	fi
+
 	enewgroup xmail
-	enewuser xmail -1 /bin/false /dev/null xmail
+	enewuser xmail -1 -1 /dev/null xmail
 }
 
 src_compile() {

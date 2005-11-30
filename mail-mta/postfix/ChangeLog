@@ -1,6 +1,373 @@
-# ChangeLog for net-mail/postfix
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.1 2004/05/30 09:38:31 robbat2 Exp $
+# ChangeLog for mail-mta/postfix
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/postfix/ChangeLog,v 1.1.1.1 2005/11/30 09:51:00 chriswhite Exp $
+
+  14 Nov 2005; Seemant Kulleen <seemant@gentoo.org> postfix-2.2.5.ebuild:
+  Stable on amd64 wrt bug #112203
+
+  13 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> postfix-2.2.5.ebuild:
+  Stable on hppa, ppc. See bug #112203.
+
+  12 Nov 2005; Jason Wever <weeve@gentoo.org> postfix-2.2.5.ebuild:
+  Stable on SPARC wrt bug #112203.
+
+  11 Nov 2005; Brent Baude <ranger@gentoo.org> postfix-2.2.5.ebuild:
+  Marking ppc64 per bug 112203
+
+  11 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> postfix-2.2.5.ebuild:
+  stable on alpha, wrt bug #112203
+
+  11 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> postfix-2.2.5.ebuild:
+  Marking stable wrt bug #112203.
+
+*postfix-2.2.5-r1 (11 Oct 2005)
+
+  11 Oct 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.5-r1.ebuild:
+  mailwrapper/mailer-config ebuild.
+
+*postfix-2.2.5 (11 Oct 2005)
+
+  11 Oct 2005; Tuấn Văn <langthang@gentoo.org> +files/postfix.rc6.2.2.5,
+  +postfix-2.2.5.ebuild:
+  bump to postfix-2.2.5 without mailer eclass.
+  remove -ldl as it is not necessary, resolve bug #106446.
+  change "need net" to "use net", resolve bug #96850.
+
+  11 Oct 2005; Tuấn Văn <langthang@gentoo.org> -files/postfix.rc6.2.2.3,
+  -postfix-2.2.1.ebuild, -postfix-2.2.1-r1.ebuild, -postfix-2.2.2.ebuild,
+  -postfix-2.2.2-r1.ebuild, -postfix-2.2.2-r2.ebuild, -postfix-2.2.3.ebuild,
+  -postfix-2.2.3-r1.ebuild:
+  tidy up.
+
+  04 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> postfix-2.1.5-r2.ebuild:
+  Stable on sh.
+
+  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> postfix-2.2.1.ebuild,
+  postfix-2.2.1-r1.ebuild, postfix-2.2.2.ebuild, postfix-2.2.2-r1.ebuild,
+  postfix-2.2.2-r2.ebuild, postfix-2.2.3.ebuild, postfix-2.2.3-r1.ebuild,
+  postfix-2.2.4.ebuild:
+  Use -1 for shell argument to enewuser. Bug #103421.
+
+  05 Jul 2005; Andrej Kacian <ticho@gentoo.org> postfix-2.2.3-r1.ebuild,
+  postfix-2.2.4.ebuild:
+  Update 2.2.4 with latest mailer-config stuff (rmail binary). Bug #97589.
+
+  04 Jul 2005; Andrej Kacian <ticho@gentoo.org> files/mailer.conf,
+  postfix-2.2.3-r1.ebuild:
+  Handle rmail binary.
+
+  04 Jul 2005; Andrej Kacian <ticho@gentoo.org> postfix-2.2.3-r1.ebuild:
+  Added compatibility with mailer-config-0.2 - manpages. Bug #97589.
+
+*postfix-2.2.4 (29 Jun 2005)
+
+  29 Jun 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.4.ebuild:
+  Vesion bump with some cleanup.
+  We're no longer run postconf to change the default alias_maps, 
+  alias_database, local_destination_concurrency_limit, 
+  default_destination_concurrency_limit to resolve issues in bug #96016.
+  Don't install default certificate if they exist.
+
+  18 Jun 2005; Andrej Kacian <ticho@gentoo.org> +files/postfix.rc6.2.2.3,
+  postfix-2.2.3.ebuild, postfix-2.2.3-r1.ebuild:
+  Make the initscript 'use postfix_graylist', which is a facility provided by
+  graylisting engines in portage. Closes bug #55705, by Duncan Hill
+  <gentoo-bugs at nacnud.force9.co.uk>.
+
+*postfix-2.2.3-r1 (20 May 2005)
+
+  20 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +postfix-2.2.3-r1.ebuild:
+  make it compatible with g/fbsd, fixes #93177. Thanks to flameeyes
+
+*postfix-2.2.3 (12 May 2005)
+
+  12 May 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.3.ebuild:
+  version bump.
+
+  04 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  postfix-2.2.2-r2.ebuild:
+  append provide from mailer.eclass
+
+*postfix-2.2.2-r2 (04 May 2005)
+
+  04 May 2005; Fernando J. Pereda <ferdy@gentoo.org> files/mailer.conf,
+  +postfix-2.2.2-r2.ebuild:
+  postfix-2.2.2-r2 is mailer.eclass aware and pmasked
+
+  27 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  postfix-2.1.5-r2.ebuild:
+  fix logic to know if postfix is running, wrt #53324
+
+  25 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  postfix-2.2.2-r1.ebuild:
+  Updated the 'postfix running' check
+
+*postfix-2.2.2-r1 (05 Apr 2005)
+
+  05 Apr 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.2-r1.ebuild:
+  sync VDA patch.
+
+*postfix-2.2.2 (04 Apr 2005)
+
+  04 Apr 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.2.ebuild:
+  Postfix 2.2 patch 02.
+
+  22 Mar 2005; Markus Rothe <corsair@gentoo.org> postfix-2.1.5-r2.ebuild:
+  Stable on ppc64
+
+*postfix-2.2.1-r1 (22 Mar 2005)
+
+  22 Mar 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.1-r1.ebuild:
+  Tidy up, bug #53324.
+
+*postfix-2.2.1 (15 Mar 2005)
+
+  15 Mar 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.1.ebuild:
+  Postfix 2.2 patch 01.
+  VDA is available with this ebuild.
+
+*postfix-2.2.0 (09 Mar 2005)
+
+  09 Mar 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.0.ebuild:
+  New postfix-2.2.0 release. This release includes IPV6 and TLS in the
+  official release. "vda" has been removed as it isn't available for
+  experimetal Postfix release. "vda" will be added as soon as it's available.
+  Please review these document for more infomation:
+  ftp://ftp.porcupine.org/mirrors/postfix-release/official/postfix-2.2.0.RELEA
+  SE_NOTES http://www.postfix.org/TLS_README.html
+  http://www.postfix.org/IPV6_README.html
+
+*postfix-2.2.0_rc2 (04 Mar 2005)
+
+  04 Mar 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.0_rc2.ebuild:
+  New official Release Candidate.
+
+*postfix-2.2.0_rc1 (28 Feb 2005)
+
+  28 Feb 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.2.0_rc1.ebuild:
+  Postfix 2.2.0 official Release Candidate.
+
+*postfix-2.2_beta20050218 (19 Feb 2005)
+
+  19 Feb 2005; Tuấn Văn <langthang@gentoo.org>
+  +postfix-2.2_beta20050218.ebuild:
+  new experimental snapshot.
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> postfix-2.1.5-r2.ebuild:
+  Stable on hppa.
+
+  14 Feb 2005; <plasmaroo@gentoo.org> postfix-2.1.5-r2.ebuild:
+  Mark 2.1.5-r2 ~ia64.
+
+  10 Feb 2005; Simon Stelling <blubb@gentoo.org> postfix-2.1.5-r2.ebuild:
+  stable on amd64 wrt bug 81024
+
+  07 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  postfix-2.1.5-r2.ebuild:
+  Stable on alpha.
+
+*postfix-2.2_beta20050206 (07 Feb 2005)
+
+  07 Feb 2005; Tuấn Văn <langthang@gentoo.org>
+  -postfix-2.2_beta20050119.ebuild, +postfix-2.2_beta20050206.ebuild:
+  New Postfix 2.2 experimental release snapshot. Remove old snapshot.
+
+  07 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  postfix-2.1.5-r2.ebuild:
+  Stable on ppc.
+
+  07 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> postfix-2.1.5-r2.ebuild:
+  Stable on sparc wrt #81024
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> postfix-2.1.5-r2.ebuild:
+  Marked stable on mips.
+
+  03 Feb 2005; Tuấn Văn <langthang@gentoo.org> postfix-2.1.5-r2.ebuild:
+  x86 stable.
+
+*postfix-2.2_beta20050203 (03 Feb 2005)
+
+  03 Feb 2005; Tuấn Văn <langthang@gentoo.org>
+  +postfix-2.2_beta20050203.ebuild:
+  new developmental snapshot.
+
+*postfix-2.1.5-r2 (28 Jan 2005)
+
+  28 Jan 2005; Tuấn Văn <langthang@gentoo.org> +postfix-2.1.5-r2.ebuild:
+  New IPV6 patches.
+
+  27 Jan 2005; Andrej Kacian <ticho@gentoo.org> files/postfix.rc6:
+  Add "use antivirus" to initscript. Bug #76285.
+
+*postfix-2.2_beta20050119 (21 Jan 2005)
+
+  21 Jan 2005; Tuấn Văn <langthang@gentoo.org> files/postfix.rc6,
+  -postfix-2.2_beta20041230.ebuild, +postfix-2.2_beta20050119.ebuild:
+  add postgresql to postfix.rc6 use statement. Bug #70554.
+  add check for postfix, postdrop user/group. Bug #77565.
+  add workaround bug #76512.
+
+*postfix-2.2_beta20041230 (05 Jan 2005)
+
+  05 Jan 2005; Tuấn Văn <langthang@gentoo.org> -postfix-2.0.19.ebuild,
+  -postfix-2.1.3.ebuild, -postfix-2.2.20041221.ebuild,
+  +postfix-2.2_beta20041230.ebuild:
+  new dev snapshot.
+  clean out old ebuilds.
+
+  05 Jan 2005; petre rodan <kaiowas@gentoo.org> postfix-2.1.5-r1.ebuild,
+  postfix-2.2.20041221.ebuild:
+  added RDEPEND for selinux systems
+
+  02 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  postfix-2.1.5-r1.ebuild:
+  Stable on alpha.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*postfix-2.2.20041221 (22 Dec 2004)
+
+  22 Dec 2004; Tuan Van <langthang@gentoo.org> +postfix-2.2.20041221.ebuild:
+  2.2 development release with TLS support.
+  add "nis" USE flag to support uclibc env. Bug #61509.
+  fix the hardcoded ALIAS_DB_MAP. Bug #75361.
+  Thanks to Christian Zoffoli <czoffoli@xmerlin.org>.
+
+  24 Nov 2004; Hardave Riar <hardave@gentoo.org> postfix-2.1.5-r1.ebuild:
+  Stable on mips, bug #56088.
+
+  17 Nov 2004; Markus Rothe <corsair@gentoo.org> postfix-2.1.5-r1.ebuild:
+  stable on ppc64
+
+  01 Nov 2004; Tuan Van <langthang@gentoo.org> -files/main.cf,
+  -files/master.cf, -files/smtpd.conf:
+  remove cruft in FILESDIR.
+
+  01 Nov 2004; Tuan Van <langthang@gentoo.org>
+  -postfix-1.1.11.20020917-r1.ebuild, -postfix-1.1.11.20020917.ebuild,
+  -postfix-2.0.11.ebuild, -postfix-2.0.16-r1.ebuild, -postfix-2.0.18.ebuild,
+  -postfix-2.0.19-r1.ebuild, -postfix-2.0.19-r2.ebuild,
+  -postfix-2.0.19-r3.ebuild, -postfix-2.0.19-r4.ebuild,
+  -postfix-2.0.20.ebuild, -postfix-2.1.1.ebuild, -postfix-2.1.4.ebuild,
+  postfix-2.1.5-r1.ebuild:
+  stable on s390 on behalf of vapier.
+  remove old ebuilds.
+
+  26 Oct 2004; Luca Barbato <lu_zero@gentoo.org> postfix-2.1.5-r1.ebuild:
+  Marked ppc
+
+  26 Oct 2004; Tuan Van <langthang@gentoo.org> postfix-2.1.5-r1.ebuild:
+  replace ${CC} with $(tc-getCC), resolve bug #69003.
+
+  26 Oct 2004; Tom Martin <slarti@gentoo.org> postfix-2.1.5-r1.ebuild:
+  Stable on amd64.
+
+  25 Oct 2004; Jason Wever <weeve@gentoo.org> postfix-2.1.5-r1.ebuild:
+  Stable on sparc.
+
+  18 Oct 2004; Tuan Van <langthang@gentoo.org> postfix-2.1.5-r1.ebuild:
+  stable on x86.
+
+  16 Oct 2004; Guy Martin <gmsoft@gentoo.org> postfix-2.1.5-r1.ebuild:
+  Stable on hppa.
+
+  28 Sep 2004; Tuan Van <langthang@gentoo.org> :
+  Resolve bug #65695.
+
+*postfix-2.1.5-r1 (22 Sep 2004)
+
+  22 Sep 2004; Tuan Van <langthang@gentoo.org> +postfix-2.1.5-r1.ebuild:
+  Version bump to please QA. Bug #62674.
+
+*postfix-2.1.5 (21 Sep 2004)
+
+  21 Sep 2004; Tuan Van <langthang@gentoo.org> +postfix-2.1.5.ebuild:
+  Version bump.
+
+  11 Sep 2004; Tom Martin <slarti@gentoo.org> postfix-2.1.3.ebuild:
+  Stable on amd64.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> postfix-2.0.20.ebuild,
+  postfix-2.1.3.ebuild, postfix-2.1.4.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  30 Aug 2004; Tom Gall <tgall@gentoo.org> postfix-2.1.3.ebuild:
+  stable on ppc64, bug #61746
+
+*postfix-2.1.4 (23 Aug 2004)
+
+  23 Aug 2004; Tuan Van <langthang@gentoo.org> +postfix-2.1.4.ebuild:
+  Version bump. Close bug #56574.
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> postfix-2.1.3.ebuild:
+  Stable on alpha.
+
+  20 Aug 2004; Jason Wever <weeve@gentoo.org> postfix-2.1.3.ebuild:
+  Stable on sparc.
+
+  17 Aug 2004; <tuxus@gentoo.org> postfix-2.1.3.ebuild:
+  Added ~mips to KEYWORDS.
+
+  15 Aug 2004; Tuan Van <langthang@gentoo.org> postfix-2.1.3.ebuild:
+  stable on x86.
+
+  16 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> postfix-2.0.19-r4.ebuild:
+  Stable on alpha, requested in bug #56088.
+
+*postfix-2.0.20 (04 Jul 2004)
+
+  04 Jul 2004; <langthang@gentoo.org> +postfix-2.0.20.ebuild:
+  Version bump and added warnings to workaround bug #45764.
+
+*postfix-2.1.3 (02 Jul 2004)
+
+  02 Jul 2004; <langthang@gentoo.org> metadata.xml, +postfix-2.1.3.ebuild:
+  Version bump, fix bug #53324, workaround bug #45764, add myself to 
+  metadata.xml
+
+  30 Jun 2004; Cory Visi <merlin@gentoo.org> files/postfix-2.0.9-get-FQDN.patch:
+  Update files/postfix-2.0.9-get-FQDN.patch for better logging, Bug 51504,
+  thanks to Ryan Earl <heretic@clanhk.org> for research and patch. Affects all
+  versions <=2.1.1
+
+*postfix-2.0.19-r4 (30 Jun 2004)
+
+  30 Jun 2004; Cory Visi <merlin@gentoo.org> postfix-2.0.19-r4.ebuild:
+  Add queue_minfree setting to default main.cf to fix Bug 51743 - thanks to
+  drobbins for finding this
+
+  16 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> postfix-2.0.11.ebuild:
+  take out unused is_postfix_installed() function
+
+  11 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  postfix-2.0.11.ebuild:
+  Fixed init script to have proper name.
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  postfix-1.1.11.20020917-r1.ebuild, postfix-1.1.11.20020917.ebuild,
+  postfix-2.0.11.ebuild, postfix-2.0.16-r1.ebuild, postfix-2.0.18.ebuild,
+  postfix-2.0.19.ebuild:
+  Fix use invocation
+
+*postfix-2.1.1 (05 Jun 2004)
+
+  05 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> :
+  Adding the new postfix to the tree (bug # 48796).  Thanks to
+  Davin Boling, Matt Girard, Lang Thang, Mogens Meier Christensen,
+  theboywho, Andrew Glen-Young, and Ajay Sharma.
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> postfix-2.0.19-r2.ebuild:
+  Stable on alpha.
+
+*postfix-2.0.19-r3 (30 May 2004)
+
+  30 May 2004; Grant Goodyear <g2boojum@gentoo.org> files/mailer.conf,
+  postfix-2.0.19-r2.ebuild, +postfix-2.0.19-r3.ebuild:
+  Changes to make mailwrapper an optional dep.
+  Also, I removed "maildir" as a use flag, as it's our default
+  format.
 
   12 May 2004; Michael McCabe <randy@gentoo.org> postfix-2.0.19-r2.ebuild:
   Added s390 keywords

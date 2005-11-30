@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/balsa/balsa-3.4.ebuild,v 1.1 2004/12/27 18:53:15 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/balsa/balsa-3.4.ebuild,v 1.1.1.1 2005/11/30 09:51:02 chriswhite Exp $
 
 inherit eutils
 
@@ -20,21 +20,21 @@ SRC_URI="ftp://ftp.cs.man.ac.uk/pub/amulet/balsa/${My_PV}/${Name}-${My_PV}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="virtual/libc
 	sys-devel/binutils
 	dev-libs/gmp
 	dev-lang/perl
 	x11-libs/gtk+
-	app-sci/iverilog
-	app-sci/gplcver"
+	sci-electronics/iverilog
+	sci-electronics/gplcver"
 
 RDEPEND="${DEPEND}
 	dev-util/guile
 	media-gfx/graphviz
-	app-sci/gtkwave
-	app-sci/espresso-ab"
+	sci-electronics/gtkwave
+	sci-electronics/espresso-ab"
 
 S=${WORKDIR}/${Name}-${My_PV}
 

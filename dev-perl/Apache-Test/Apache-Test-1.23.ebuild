@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-Test/Apache-Test-1.23.ebuild,v 1.1 2005/05/09 18:13:37 beu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-Test/Apache-Test-1.23.ebuild,v 1.1.1.1 2005/11/30 09:52:37 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://cpan.org/modules/by-module/Apache/${P}.readme"
 IUSE=""
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~ia64 ~ppc64"
+KEYWORDS="alpha amd64 ia64 ~mips ppc ppc64 sparc x86"
 SRC_TEST="skip"
 DEPEND="net-www/apache"
 

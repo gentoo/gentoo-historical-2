@@ -1,2 +1,14 @@
-MD5 6c65754376ba05308f89e15fee77b43a PostScript-Simple-0.05.ebuild 443
-MD5 0200dc4fc3c56cbb5bd9dfa76c4c67ba files/digest-PostScript-Simple-0.05 73
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 61f435abb682987f0a3bdbba366f2a18 ChangeLog 837
+MD5 641a2ec8aadab390a69eeae89fc8796f PostScript-Simple-0.06.ebuild 554
+MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305
+MD5 4804fa680c2a888daee83e9121216934 files/digest-PostScript-Simple-0.06 73
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCciSztG5z4I8BtQoRAmNRAJ9xM4ovJAtgkI837hPb9u3L+nXX3QCfSFIb
+VNKJIUf4pDMmgdYzuyEZ3u8=
+=rfOm
+-----END PGP SIGNATURE-----

@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/pdnsd-1.2.2.ebuild,v 1.1 2005/04/20 21:16:37 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/pdnsd-1.2.2.ebuild,v 1.1.1.1 2005/11/30 09:50:16 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="Proxy DNS server with permanent caching"
-HOMEPAGE="http://www.phys.uu.nl/%7Erombouts/pdnsd.html http://home.t-online.de/home/Moestl"
+HOMEPAGE="http://www.phys.uu.nl/%7Erombouts/pdnsd.html http://www.phys.uu.nl/~rombouts/pdnsd.html"
 SRC_URI="http://www.phys.uu.nl/%7Erombouts/pdnsd/releases/${P}-par.tar.gz"
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 arm ppc s390 ~sparc x86"
 IUSE="ipv6 debug isdn nptl"
 
 DEPEND="virtual/libc
@@ -24,7 +24,7 @@ RDEPEND="virtual/libc"
 
 pkg_setup() {
 	enewgroup pdnsd
-	enewuser pdnsd -1 /bin/false /var/lib/pdnsd pdnsd
+	enewuser pdnsd -1 -1 /var/lib/pdnsd pdnsd
 }
 
 src_compile() {
@@ -54,7 +54,7 @@ src_compile() {
 pkg_preinst() {
 	# Duplicated so that binary packages work
 	enewgroup pdnsd
-	enewuser pdnsd -1 /bin/false /var/lib/pdnsd pdnsd
+	enewuser pdnsd -1 -1 /var/lib/pdnsd pdnsd
 }
 
 
@@ -94,7 +94,7 @@ src_install() {
 	[ -f ${ROOT}/var/cache/pdnsd/pdnsd.cache ] && \
 		rm  ${D}/var/cache/pdnsd/pdnsd.cache
 
-	dodoc AUTHORS COPYING* ChangeLog* NEWS README THANKS TODO README.par
+	dodoc AUTHORS ChangeLog* NEWS README THANKS TODO README.par
 	docinto contrib ; dodoc contrib/{README,dhcp2pdnsd,pdnsd_dhcp.pl}
 	docinto html ; dohtml doc/html/*
 	docinto txt ; dodoc doc/txt/*

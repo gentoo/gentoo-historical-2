@@ -1,6 +1,18 @@
 # ChangeLog for dev-perl/Tk-JPEG-Lite
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tk-JPEG-Lite/ChangeLog,v 1.1 2005/01/22 21:04:31 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tk-JPEG-Lite/ChangeLog,v 1.1.1.1 2005/11/30 09:53:17 chriswhite Exp $
+
+  30 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Stable on sparc
+
+  09 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Keyworded ~sparc
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Tk-JPEG-Lite-2.01403.ebuild:
+  Cleaning for mirror syntax
 
 *Tk-JPEG-Lite-2.01403 (22 Jan 2005)
 

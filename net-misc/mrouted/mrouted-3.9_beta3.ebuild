@@ -1,19 +1,24 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mrouted/mrouted-3.9_beta3.ebuild,v 1.1.1.1 2005/11/30 09:54:31 chriswhite Exp $
+
+inherit eutils
 
 MY_P=${P/_}+IOS12
 DEB_PVER=3
 DESCRIPTION="IP multicast routing daemon"
 HOMEPAGE="http://freshmeat.net/projects/mrouted/?topic_id=87%2C150"
 SRC_URI="ftp://ftp.research.att.com/dist/fenner/mrouted/${MY_P}.tar.gz
-	http://ftp.debian.org/debian/pool/non-free/m/mrouted/mrouted_${PV/_/-}-${DEB_PVER}.diff.gz"
+	http://debian/pool/non-free/m/mrouted/mrouted_${PV/_/-}-${DEB_PVER}.diff.gz"
 
 LICENSE="Stanford"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc"
+IUSE=""
 
-DEPEND="virtual/os-headers"
+DEPEND="virtual/os-headers
+	dev-util/yacc"
+RDEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
@@ -29,12 +34,9 @@ src_compile() {
 }
 
 src_install() {
-	dobin mrouted
+	dobin mrouted || die
 	doman mrouted.8
 
-	insinto /etc/conf.d
-	newins ${S}/mrouted.conf
-
-	exeinto /etc/init.d
-	doexe ${FILESDIR}/mrouted
+	insinto /etc ; doins mrouted.conf
+	exeinto /etc/init.d ; newexe ${FILESDIR}/mrouted.rc mrouted
 }

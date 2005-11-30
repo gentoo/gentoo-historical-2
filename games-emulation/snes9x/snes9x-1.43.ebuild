@@ -1,8 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/snes9x-1.43.ebuild,v 1.1 2005/01/03 06:48:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/snes9x-1.43.ebuild,v 1.1.1.1 2005/11/30 09:50:25 chriswhite Exp $
 
-inherit eutils games
+# 3dfx support (glide) is disabled because it requires
+# glide-v2 while we only provide glide-v3 in portage
+# http://bugs.gentoo.org/show_bug.cgi?id=93097
+
+inherit eutils games flag-o-matic
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="http://www.snes9x.com/"
@@ -11,44 +15,56 @@ SRC_URI="http://www.lysator.liu.se/snes9x/${PV}/snes9x-${PV}-src.tar.gz"
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="3dfx opengl X joystick zlib"
+IUSE="opengl X joystick zlib dga debug"
 
 RDEPEND="zlib? ( sys-libs/zlib )
 	virtual/x11
 	media-libs/libpng
-	opengl? ( virtual/opengl )
-	3dfx? ( media-libs/glide-v3 )"
+	amd64? ( emul-linux-x86-xlibs )
+	opengl? ( virtual/opengl virtual/glu )"
 DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
 	x86? ( dev-lang/nasm )"
 
-S="${WORKDIR}/${P}-src"
+S=${WORKDIR}/${P}-src
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"/snes9x
 	epatch "${FILESDIR}"/nojoy.patch
 	sed -i 's:png_jmpbuf:png_write_info:g' configure
-	sed -i 's:@OPTIMIZE@:@CFLAGS@:' Makefile.in
+
+	rm offsets # stupid prebuilt file
+	sed -i -e 's:-lXext -lX11::' Makefile.in
+	sed -i -e '/X_LDFLAGS=/d' configure
+	cp Makefile.in{,.orig}
+	epatch "${FILESDIR}"/${P}-build.patch
 }
 
 src_compile() {
+	if use amd64 ; then
+		export ABI=x86
+		append-flags -m32
+		append-ldflags -m32
+	fi
+
 	local vidconf=
 	local target=
 	local vid=
 
 	mkdir mybins
-	for vid in 3dfx opengl X ; do
-		use ${vid} || continue
+	for vid in opengl X fallback ; do
+		if [[ ${vid} != "fallback" ]] ; then
+			use ${vid} || continue
+		fi
 		cd "${S}"/snes9x
 		case ${vid} in
-			3dfx)
-				vidconf="--with-glide --without-opengl --without-x"
-				target=gsnes9x;;
+#			3dfx)
+#				vidconf="--with-glide --without-opengl --without-x"
+#				target=gsnes9x;;
 			opengl)
 				vidconf="--with-opengl --without-glide --without-x"
 				target=osnes9x;;
-			X)
+			fallback|X)
 				vidconf="--with-x --without-glide --without-opengl"
 				target=snes9x;;
 		esac
@@ -60,6 +76,7 @@ src_compile() {
 			$(use_with debug debugger) \
 			$(use_with zlib) \
 			--with-screenshot \
+			$(use_with dga extensions) \
 			|| die
 		# Makefile doesnt quite support parallel builds
 		emake -j1 offsets || die "making offsets"

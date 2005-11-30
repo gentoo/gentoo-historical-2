@@ -1,13 +1,13 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.7-r1.ebuild,v 1.1 2004/09/23 14:20:02 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.7-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:11 chriswhite Exp $
 
 inherit eutils libtool
 
 DESCRIPTION="A OpenFT, Gnutella and FastTrack p2p network daemon"
 HOMEPAGE="http://gift.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-IUSE="imagemagick oggvorbis"
+IUSE="imagemagick vorbis"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -15,7 +15,7 @@ KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64 ~ia64"
 
 RDEPEND=">=sys-libs/zlib-1.1.4
 	imagemagick? ( >=media-gfx/imagemagick-5.5.7.15 )
-	oggvorbis? ( >=media-libs/libvorbis-1 )"
+	vorbis? ( >=media-libs/libvorbis-1 )"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
@@ -37,17 +37,12 @@ src_unpack() {
 
 src_compile() {
 	econf `use_enable imagemagick` \
-		`use_enable oggvorbis libvorbis` || die
+		`use_enable vorbis libvorbis` || die
 	emake || die
 }
 
 src_install() {
-	einstall \
-		giftconfdir=${D}/etc/giFT \
-		plugindir=${D}/usr/lib/giFT \
-		giftdatadir=${D}/usr/share/giFT \
-		giftperldir=${D}/usr/bin \
-		libgiftincdir=${D}/usr/include/libgift || die "Install failed"
+	make DESTDIR=${D} install || die "Install failed"
 
 	# init scripts for users who want a central server
 	insinto /etc/conf.d; newins ${FILESDIR}/gift.confd gift

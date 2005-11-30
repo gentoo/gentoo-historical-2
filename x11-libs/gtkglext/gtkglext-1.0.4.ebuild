@@ -1,17 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/gtkglext-1.0.4.ebuild,v 1.1 2003/09/21 13:28:46 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/gtkglext-1.0.4.ebuild,v 1.1.1.1 2005/11/30 09:54:22 chriswhite Exp $
 
 inherit gnome2
 
 IUSE="doc"
 
-DESCRIPTION="GL extentions for Gtk+ 2.0"
+DESCRIPTION="GL extensions for Gtk+ 2.0"
 HOMEPAGE="http://gtkglext.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 ~sparc alpha"
 
 RDEPEND=">=dev-libs/glib-2
 	>=x11-libs/gtk+-2

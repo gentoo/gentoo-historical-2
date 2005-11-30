@@ -1,16 +1,17 @@
 #!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/files/pdnsd.rc6,v 1.1 2002/06/29 00:55:03 bangert Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/files/pdnsd.rc6,v 1.1.1.1 2005/11/30 09:50:16 chriswhite Exp $
 
 depend() {
 	need net
+	provide dns
 }
 
 checkconfig() {
 	if [ ! -e /etc/pdnsd/pdnsd.conf ] ; then
-		eerror "You need an /etc/pdnsd/pdnsd.conf file first"
-		eerror "There is a  sample  in  /usr/share/doc/pdnsd"
+		eerror "You need an /etc/pdnsd/pdnsd.conf file first."
+		eerror "There is a sample in /etc/pdnsd/pdnsd.conf.sample"
 		return 1
 	fi
 }
@@ -19,7 +20,7 @@ start() {
 	checkconfig || return 1
 	ebegin "Starting pdnsd"
 	start-stop-daemon --start --quiet --exec /usr/sbin/pdnsd \
-		-- -d -p /var/run/pdnsd.pid
+		-- -s -t -d -p /var/run/pdnsd.pid ${PDNSDCONFIG}
 	eend $?
 }
 

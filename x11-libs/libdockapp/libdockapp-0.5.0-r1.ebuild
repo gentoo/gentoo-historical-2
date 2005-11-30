@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libdockapp/libdockapp-0.5.0-r1.ebuild,v 1.1 2004/09/15 21:20:35 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libdockapp/libdockapp-0.5.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:10 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://solfertje.student.utwente.nl/~dalroi/libdockapp/"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~amd64 ppc ppc64"
+KEYWORDS="x86 sparc amd64 ppc ppc64"
 DEPEND="virtual/x11"
 S=${WORKDIR}/${PN/lib/}
 FONTDIR="/usr/share/fonts/${PN}-fonts"
@@ -52,7 +52,8 @@ pkg_postinst()
 {
 	einfo
 	einfo "You need to add following line into 'Section \"Files\"' in"
-	einfo "XF86Config and reboot X Window System, to use these fonts."
+	einfo "/etc/X11/xorg.conf (or /etc/X11/XF86Config if you are still using XFree86)"
+	einfo "and reboot X Window System, to use these fonts."
 	einfo
 	einfo "\t FontPath \"${FONTDIR}\""
 	einfo
@@ -66,7 +67,8 @@ pkg_postrm()
 {
 	einfo
 	einfo "You need to remove following line from 'Section \"Files\"' in"
-	einfo "XF86Config, to unmerge this package completely."
+	einfo "/etc/X11/xorg.conf (or /etc/X11/XF86Config if you are still using XFree86)"
+	einfo "to unmerge this package completely."
 	einfo
 	einfo "\t FontPath \"${FONTDIR}\""
 	einfo

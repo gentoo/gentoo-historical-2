@@ -1,11 +1,17 @@
 # ChangeLog for games-arcade/stardork
 # Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/stardork/ChangeLog,v 1.1 2004/12/03 00:14:39 citizen428 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/stardork/ChangeLog,v 1.1.1.1 2005/11/30 09:52:07 chriswhite Exp $
+
+  21 Dec 2004; Yuta SATOH <nigoro@gentoo.org> stardork-0.6.ebuild:
+  added ~ppc64
+
+  19 Dec 2004; Joseph Jezak <josejx@gentoo.org> stardork-0.6.ebuild:
+  Marked ~ppc.
 
 *stardork-0.6 (03 Dec 2004)
 
   03 Dec 2004; Michael Kohl <citizen428@gentoo.org> +metadata.xml,
   +stardork-0.6.ebuild:
-  Initial commit; Ebuild submitted by Adrian Fruehwirt
-  <fruehwia@spengergasse.at> in bug #44999
+  Initial commit; Ebuild submitted by Adrian Fruehwirth
+  <fruehwia@spengergasse.at> in bug #72936
 

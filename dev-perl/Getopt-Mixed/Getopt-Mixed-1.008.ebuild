@@ -1,20 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header $
-
-IUSE=""
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Getopt-Mixed/Getopt-Mixed-1.008.ebuild,v 1.1.1.1 2005/11/30 09:53:23 chriswhite Exp $
 
 inherit perl-module
 
-S="${WORKDIR}/${P}"
-CATEGORY="dev-perl"
-
 DESCRIPTION="Getopt::Mixed is used for parsing mixed options"
-SRC_URI="http://www.cpan.org/modules/by-module/Getopt/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Getopt/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/C/CJ/CJM/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ppc ~sparc ~sparc64 ~alpha"
-
-DEPEND="${DEPEND}"
+SLOT="0"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc sparc x86"
+IUSE=""

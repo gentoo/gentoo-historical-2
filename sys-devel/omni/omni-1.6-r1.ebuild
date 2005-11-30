@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/omni/omni-1.6-r1.ebuild,v 1.1 2005/08/11 23:40:39 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/omni/omni-1.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:53:34 chriswhite Exp $
 
 IUSE="java doc"
 

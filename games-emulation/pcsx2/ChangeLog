@@ -1,6 +1,29 @@
-# ChangeLog for app-emulation/pcsx2
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/pcsx2/ChangeLog,v 1.1 2003/09/09 16:26:50 vapier Exp $
+# ChangeLog for games-emulation/pcsx2
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/pcsx2/ChangeLog,v 1.1.1.1 2005/11/30 09:50:28 chriswhite Exp $
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> pcsx2-0.8.1.ebuild:
+  Making games last on inherit line.
+
+  07 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/pcsx2-0.8.1-amd64.patch, pcsx2-0.8.1.ebuild:
+  Add support for amd64 #65374.
+
+*pcsx2-0.8.1 (04 Aug 2005)
+
+  04 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> files/pcsx2,
+  pcsx2-0.6.ebuild, +pcsx2-0.8.1.ebuild:
+  Don't hardcode the games paths in the wrapper script; version bump
+
+*pcsx2-0.6 (05 Jun 2004)
+
+  05 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> pcsx2-0.6.ebuild:
+  version bump (bug #51806)
+
+*pcsx2-0.5 (12 Dec 2003)
+
+  12 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage.
 
 *pcsx2-0.41 (14 Aug 2003)
 

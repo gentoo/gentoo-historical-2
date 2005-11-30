@@ -1,21 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-mysql/DBD-mysql-2.9003.ebuild,v 1.1 2003/12/24 21:57:10 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-mysql/DBD-mysql-2.9003.ebuild,v 1.1.1.1 2005/11/30 09:52:44 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="The Perl DBD:mysql Module"
-SRC_URI="http://cpan.pair.com/authors/id/R/RU/RUDY/${P}.tar.gz"
 HOMEPAGE="http://cpan.pair.com/modules/by-module/DBD/"
+SRC_URI="http://cpan.pair.com/authors/id/R/RU/RUDY/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~ia64 ~x86 ~amd64 ~ppc ~sparc ~alpha hppa ~arm"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 sh ppc64"
+IUSE=""
 
-DEPEND="${DEPEND}
-	dev-perl/DBI
+DEPEND="dev-perl/DBI
 	dev-db/mysql"
 
 mydoc="ToDo"
-

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/gettext-0.14.2.ebuild,v 1.1 2005/03/13 06:07:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gettext/gettext-0.14.2.ebuild,v 1.1.1.1 2005/11/30 09:53:58 chriswhite Exp $
 
-inherit eutils toolchain-funcs mono libtool
+inherit flag-o-matic eutils toolchain-funcs mono libtool elisp-common
 
 DESCRIPTION="GNU locale utilities"
 HOMEPAGE="http://www.gnu.org/software/gettext/gettext.html"
@@ -25,8 +25,11 @@ src_unpack() {
 	# java sucks
 	epatch "${FILESDIR}"/${PN}-0.14.1-without_java.patch
 	epatch "${FILESDIR}"/${PN}-0.14.2-no-java-tests.patch
+	# Fix race, bug #85054
+	epatch "${FILESDIR}"/${PN}-0.14.2-fix-race.patch
 
 	# bundled libtool seems to be broken so skip certain rpath tests
+	# http://lists.gnu.org/archive/html/bug-libtool/2005-03/msg00070.html
 	sed -i \
 		-e '2iexit 77' \
 		autoconf-lib-link/tests/rpath-3*[ef] || die "sed tests"
@@ -40,7 +43,8 @@ src_unpack() {
 		|| die "sed docdir"
 
 	if use ppc-macos ; then
-		elibtoolize
+		glibtoolize
+		append-flags -bind_at_load
 	else
 		elibtoolize --reverse-deps
 	fi
@@ -82,12 +86,12 @@ src_install() {
 	if use ppc-macos; then
 		rm -f ${D}/usr/lib/charset.alias
 		if [ -e "${ROOT}"/usr/$(get_libdir)/libintl.2.dylib ] ; then
-			cp -a ${ROOT}/usr/$(get_libdir)/libintl.2.dylib ${D}/usr/$(get_libdir)/
+			cp -pPR ${ROOT}/usr/$(get_libdir)/libintl.2.dylib ${D}/usr/$(get_libdir)/
 			touch ${D}/usr/$(get_libdir)/libintl.2.dylib
 		fi
 	else
 		if [ -e "${ROOT}"/usr/$(get_libdir)/libintl.so.2 ] ; then
-			cp -a ${ROOT}/usr/$(get_libdir)/libintl.so.2* ${D}/usr/$(get_libdir)/
+			cp -pPR ${ROOT}/usr/$(get_libdir)/libintl.so.2* ${D}/usr/$(get_libdir)/
 			touch ${D}/usr/$(get_libdir)/libintl.so.2*
 		fi
 	fi
@@ -99,14 +103,23 @@ src_install() {
 	fi
 
 	# Remove emacs site-lisp stuff if 'emacs' is not in USE
-	use emacs || rm -rf ${D}/usr/share/emacs
+	if use emacs ; then
+		elisp-site-file-install ${FILESDIR}/50po-mode-gentoo.el
+	else
+		rm -rf ${D}/usr/share/emacs
+	fi
 
 	dodoc AUTHORS BUGS ChangeLog DISCLAIM NEWS README* THANKS TODO
 }
 
 pkg_postinst() {
+	use emacs && elisp-site-regen
 	ewarn "Any package that linked against the previous version"
 	ewarn "of gettext will have to be rebuilt."
 	ewarn "Please 'emerge gentoolkit' and run:"
 	ewarn "revdep-rebuild --soname libintl.so.2"
+}
+
+pkg_postrm() {
+	use emacs && elisp-site-regen
 }

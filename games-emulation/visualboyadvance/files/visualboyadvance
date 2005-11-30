@@ -1,17 +1,19 @@
 #!/bin/bash
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/visualboyadvance/files/visualboyadvance,v 1.1.1.1 2005/11/30 09:50:18 chriswhite Exp $
 
 PN=VisualBoyAdvance
 if ! [ -d ~/.${PN}/save ]; then
 	mkdir -p ~/.${PN}/save
 	cd ~/.${PN}
 	ln -s `which ${PN}` .
-	cp /usr/games/share/${PN}/${PN}.cfg .
-	mv ${PN}.cfg ${PN}.cfg.old
-	sed -e "s:#saveDir.*:saveDir ${HOME}/.${PN}/save:" \
+	cp /usr/share/games/${PN}/${PN}.cfg .
+	sed -i \
+	    -e "s:#saveDir.*:saveDir ${HOME}/.${PN}/save:" \
 	    -e "s:#captureDir.*:captureDir ${HOME}/.${PN}:" \
 	    -e "s:#batteryDir.*:batteryDir ${HOME}/.${PN}/save:" \
-	    ${PN}.cfg.old > ${PN}.cfg
-	rm -f ${PN}.cfg.old
+	    ${PN}.cfg
 fi
 
 cd ~/.${PN}

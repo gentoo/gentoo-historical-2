@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/kvdr/kvdr-0.63.ebuild,v 1.1 2005/08/21 20:47:59 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/kvdr/kvdr-0.63.ebuild,v 1.1.1.1 2005/11/30 09:50:32 chriswhite Exp $
 
 inherit kde
 

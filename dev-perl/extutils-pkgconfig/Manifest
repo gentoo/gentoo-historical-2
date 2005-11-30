@@ -1,2 +1,4 @@
-MD5 39df30fec8195a9e13a83f382c10e82e extutils-pkgconfig-1.02.ebuild 468
-MD5 134f43b6ad21f65524d605a8a6b307c7 files/digest-extutils-pkgconfig-1.02 73
+MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305
+MD5 188e1dd90d9d11baf1bc8ab0eea5eb5c ChangeLog 2672
+MD5 ba446d646cdd6a6fe92b6e9987ad5713 extutils-pkgconfig-1.07.ebuild 599
+MD5 4e1daf1288c0a8286f35bafb57aae939 files/digest-extutils-pkgconfig-1.07 73

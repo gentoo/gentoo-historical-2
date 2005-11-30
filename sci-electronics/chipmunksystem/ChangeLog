@@ -1,6 +1,22 @@
-# ChangeLog for app-sci/chipmunksystem
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/chipmunksystem/ChangeLog,v 1.1 2004/12/27 18:55:12 ribosome Exp $
+# ChangeLog for sci-electronics/chipmunksystem
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/chipmunksystem/ChangeLog,v 1.1.1.1 2005/11/30 09:51:04 chriswhite Exp $
+
+*chipmunksystem-20031105-r3 (19 Sep 2005)
+
+  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org>
+  -chipmunksystem-20031105-r2.ebuild, +chipmunksystem-20031105-r3.ebuild:
+  Corrected build-time inherited paths to resolve issues with circuit plotting
+  (fixes bug #89449). Thanks to Markus Dittrich <markusle@gmail.com> for the
+  patch.
+
+  24 Aug 2005; Patrick Kursawe <phosphan@gentoo.org>
+  chipmunksystem-20031105-r2.ebuild:
+  Replacing cp -a by cp -pPR
+
+  19 Feb 2005; Mike Doty <kingtaco@gentoo.org>
+  chipmunksystem-20031105-r2.ebuild:
+  added ~amd64 keyword
 
 *chipmunksystem-20031105-r2 (27 Dec 2004)
 

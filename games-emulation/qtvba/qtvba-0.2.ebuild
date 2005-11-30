@@ -1,32 +1,32 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/qtvba/qtvba-0.2.ebuild,v 1.1 2004/05/01 21:04:40 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/qtvba/qtvba-0.2.ebuild,v 1.1.1.1 2005/11/30 09:50:25 chriswhite Exp $
 
-inherit eutils
-inherit kde-functions
-need-qt 3
+inherit eutils kde-functions
 
 DESCRIPTION="VisualBoyAdvance Frontend"
-SRC_URI="http://www.apex.net.au/~twalker/qtvba/${P}.tar.gz"
 HOMEPAGE="http://www.apex.net.au/~twalker/qtvba/"
+SRC_URI="http://www.apex.net.au/~twalker/qtvba/${P}.tar.gz"
+
 LICENSE="GPL-2"
-DEPEND="x11-libs/qt"
-RDEPEND=">=games-emulation/visualboyadvance-1.5.1"
-IUSE=""
 SLOT="0"
-KEYWORDS="~ppc"
+KEYWORDS="ppc x86"
+IUSE=""
+
+RDEPEND=">=games-emulation/visualboyadvance-1.5.1"
+need-qt 3
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PV}-Makefilefix.patch
+	cd "${S}"
+	epatch "${FILESDIR}/${PV}-Makefilefix.patch"
 }
 
 src_compile() {
-	emake || die
+	emake || die "emake failed"
 }
 
 src_install () {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc README
 }

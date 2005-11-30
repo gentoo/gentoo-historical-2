@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/getdelta/getdelta-0.7.0.ebuild,v 1.1 2005/05/09 22:25:59 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/getdelta/getdelta-0.7.0.ebuild,v 1.1.1.1 2005/11/30 09:51:55 chriswhite Exp $
 
 DESCRIPTION="dynamic deltup client"
 HOMEPAGE="http://linux01.gwdg.de/~nlissne/"
@@ -8,7 +8,7 @@ SRC_URI="http://linux01.gwdg.de/~nlissne/${P}.tar.bz2"
 SLOT="0"
 IUSE=""
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~alpha ~amd64 ~sparc ~x86"
 
 RDEPEND="app-portage/deltup
 	dev-util/bdelta"

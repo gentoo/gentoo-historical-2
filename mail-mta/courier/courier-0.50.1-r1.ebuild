@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/courier-0.50.1-r1.ebuild,v 1.1 2005/07/29 15:56:06 iggy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/courier-0.50.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:40 chriswhite Exp $
 
 inherit eutils gnuconfig flag-o-matic
 

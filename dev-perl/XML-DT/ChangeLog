@@ -1,6 +1,130 @@
 # ChangeLog for dev-perl/XML-DT
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-DT/ChangeLog,v 1.1 2002/02/01 21:53:28 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-DT/ChangeLog,v 1.1.1.1 2005/11/30 09:53:01 chriswhite Exp $
+
+  08 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> XML-DT-0.40.ebuild:
+  Stable on ppc.
+
+  08 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> XML-DT-0.40.ebuild:
+  Stable on ppc.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> XML-DT-0.32.ebuild:
+  add ~ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> XML-DT-0.40.ebuild:
+  Added to ~ppc.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> XML-DT-0.40.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> XML-DT-0.37.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> XML-DT-0.32.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> XML-DT-0.30.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> XML-DT-0.24.1.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+*XML-DT-0.40 (22 May 2005)
+
+  22 May 2005; Michael Cummings <mcummings@gentoo.org> XML-DT-0.37.ebuild,
+  +XML-DT-0.40.ebuild:
+  Bump version, unmasking for x86 and sparc
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> XML-DT-0.32.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> XML-DT-0.32.ebuild,
+  XML-DT-0.37.ebuild:
+  0.32 stable & 0.37 testing on amd64
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  XML-DT-0.20-r1.ebuild, XML-DT-0.20.ebuild, XML-DT-0.24.1.ebuild,
+  XML-DT-0.30.ebuild:
+  bug 76590
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Michael Cummings <mcummings@gentoo.org> XML-DT-0.37.ebuild:
+  Fixing bad homepage typo. bug 73969
+
+*XML-DT-0.37 (04 Dec 2004)
+
+  04 Dec 2004; Michael Cummings <mcummings@gentoo.org> +XML-DT-0.37.ebuild:
+  New version on CPAN
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> XML-DT-0.32.ebuild:
+  Stable on alpha.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> XML-DT-0.32.ebuild:
+  KEYWORDS ~amd64.
+
+  10 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> XML-DT-0.32.ebuild:
+  Add ~alpha keyword.
+
+  03 Oct 2004; Michael Cummings <mcummings@gentoo.org> XML-DT-0.32.ebuild:
+  Marking stable on sparc
+
+  01 Oct 2004; <mcummings@gentoo.org> XML-DT-0.32.ebuild:
+  Tested new version with re-keyworded deps and all appears to be in working
+  order. Adding ~sparc to keywords.
+
+*XML-DT-0.32 (22 Sep 2004)
+
+  22 Sep 2004; Michael Cummings <mcummings@gentoo.org> +XML-DT-0.32.ebuild:
+  New version for playing. Please note: KEYWORDS was modified because not all
+  arch's could support the deps at this time. This does not mean they won't
+  support it, but they couldn't at the time of commit.
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> XML-DT-0.24.1.ebuild:
+  Stable on alpha.
+
+*XML-DT-0.30 (11 Jun 2004)
+
+  11 Jun 2004; Michael Cummings <mcummings@gentoo.org> XML-DT-0.30.ebuild:
+  new version on cpan
+
+  22 Jun 2003; <rac@gentoo.org> XML-DT-0.24.ebuild:
+  re -x86 -amd64 to fix keywords
+
+*XML-DT-0.24.1 (23 Jun 2003)
+
+  23 Jun 2003; Michael Cummings <mcummings@gentoo.org> XML-DT-0.24.1.ebuild,
+  XML-DT-0.24.ebuild, XML-DT-0.24.ebuild:
+  Removed 0.24. Author has released .24.1 per problems with makemaker in .24
+
+*XML-DT-0.24 (16 Jun 2003)
+
+  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> XML-DT-0.24.ebuild:
+  This is a CPAN update of XML::DT to keep the users happy. However, there is a
+  bug in the Makefile.PL it ships with, am contacting the author. Until it is
+  fixed, it is -arch'd.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*XML-DT-0.20-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*XML-DT-0.20 (6 May 2002)
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> XML-DT-0.20.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> XML-DT-0.20.ebuild
+  files/digest-XML-DT-0.20 :
+
+  version bump; eclassed.
 
 *XML-DT-0.19 (1 Feb 2002)
 

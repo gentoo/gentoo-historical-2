@@ -1,6 +1,83 @@
-# ChangeLog for net-www/epiphany-extensions
+# ChangeLog for www-client/epiphany-extensions
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany-extensions/ChangeLog,v 1.1 2005/03/18 18:18:21 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany-extensions/ChangeLog,v 1.1.1.1 2005/11/30 09:52:17 chriswhite Exp $
+
+  02 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  epiphany-extensions-1.6.4-r1.ebuild:
+  Stable on sparc
+
+  01 Nov 2005; John N. Laliberte <allanonjl@gentoo.org>
+  epiphany-extensions-1.6.4-r1.ebuild:
+  stable on x86
+
+  15 Oct 2005; Joseph Jezak <josejx@gentoo.org>
+  epiphany-extensions-1.8.1.ebuild:
+  Marked ~ppc for bug #108785.
+
+  11 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
+  epiphany-extensions-1.8.1.ebuild:
+  remove ppc keyword due to pending test on epiphany.
+
+*epiphany-extensions-1.8.1 (06 Oct 2005)
+
+  06 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -epiphany-extensions-1.8.0.ebuild, +epiphany-extensions-1.8.1.ebuild:
+  New version.
+
+  13 Sep 2005; <dang@gentoo.org> epiphany-extensions-1.8.0.ebuild:
+  Add favicon to the python extensions. Bug #105830
+
+*epiphany-extensions-1.8.0 (12 Sep 2005)
+
+  12 Sep 2005; <allanon@gentoo.org>
+  -files/epiphany-extensions-1.7.4-fix_includes.patch,
+  +files/epiphany-extensions-1.8.0-fix-includes.patch,
+  -epiphany-extensions-1.7.4-r1.ebuild, +epiphany-extensions-1.8.0.ebuild:
+  update glib/gtk deps, add auto-scroller extension, add another part to the
+  includes patch for the auto-scroller extension. 2.12 release vbump.
+
+*epiphany-extensions-1.7.4-r1 (22 Aug 2005)
+
+  22 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -epiphany-extensions-1.7.4.ebuild, +epiphany-extensions-1.7.4-r1.ebuild:
+  Re-added previous keywords. Added 'pcre', 'dbus' and 'python' USE flags to
+  control compilation of special extensions. Removed the adblock extension
+  (bug #100618).
+
+*epiphany-extensions-1.7.4 (19 Aug 2005)
+*epiphany-extensions-1.6.4-r1 (19 Aug 2005)
+
+  19 Aug 2005; Joe McCann <joem@gentoo.org>
+  +files/epiphany-extensions-1.7.4-fix_includes.patch,
+  +epiphany-extensions-1.6.4-r1.ebuild, +epiphany-extensions-1.7.4.ebuild:
+  new version, remove adblock extension from previous build
+
+  07 Jul 2005; David Holm <dholm@gentoo.org>
+  epiphany-extensions-1.6.4.ebuild:
+  Added to ~ppc.
+
+*epiphany-extensions-1.6.4 (05 Jul 2005)
+
+  05 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  epiphany-extensions-1.6.4.ebuild:
+  New release. Added support for the 'static' and 'firefox' USE flags. Added
+  new extensions. Resolves bug #88649.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  epiphany-extensions-1.6.0.ebuild:
+  Stable on sparc
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  epiphany-extensions-1.6.0.ebuild:
+  To ~sparc
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
+  epiphany-extensions-1.4.5.ebuild, epiphany-extensions-1.6.0.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
+  epiphany-extensions-1.4.5.ebuild, epiphany-extensions-1.6.0.ebuild:
+  change dep from net-www/epiphany to www-client/epiphany
 
 *epiphany-extensions-1.6.0 (18 Mar 2005)
 *epiphany-extensions-1.4.5 (18 Mar 2005)

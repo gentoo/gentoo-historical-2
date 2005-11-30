@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mozilla-thunderbird/mozilla-thunderbird-1.5_rc1.ebuild,v 1.1 2005/11/15 02:26:33 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mozilla-thunderbird/mozilla-thunderbird-1.5_rc1.ebuild,v 1.1.1.1 2005/11/30 09:49:53 chriswhite Exp $
 
 unset ALLOWED_FLAGS  # stupid extra-functions.sh ... bug 49179
 inherit flag-o-matic toolchain-funcs eutils mozconfig-2 mozilla-launcher makeedit multilib versionator
@@ -28,7 +28,7 @@ S=${WORKDIR}/mozilla
 # become pure shell variables.
 export BUILD_OFFICIAL=1
 export MOZILLA_OFFICIAL=1
-export MOZ_THUNDERBIRD=1
+export MOZ_CO_PROJECT=mail
 
 src_unpack() {
 	declare x
@@ -63,6 +63,9 @@ src_unpack() {
 	epatch ${FILESDIR}/thunderbird-nopangoxft.patch
 	#cairo-canvas patch
 	epatch ${FILESDIR}/thunderbird-cairo-canvas.patch
+
+	# rpath fix
+	epatch ${FILESDIR}/thunderbird-rpath-1.patch
 
 	# Fix a compilation issue using the 32-bit userland with 64-bit kernel on
 	# PowerPC, because with that configuration, it detects a ppc64 system.

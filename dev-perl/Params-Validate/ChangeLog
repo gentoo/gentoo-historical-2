@@ -1,8 +1,112 @@
 # ChangeLog for dev-perl/Params-Validate
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Params-Validate/ChangeLog,v 1.1 2002/10/24 14:56:55 mcummings Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Params-Validate/ChangeLog,v 1.1.1.1 2005/11/30 09:53:14 chriswhite Exp $
 
-*Params-Validate-0.24-1 (14 OCT 2002)
+*Params-Validate-0.78 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> +Params-Validate-0.78.ebuild:
+  Version bump
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Params-Validate-0.76.ebuild:
+  Mark 0.76 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  Params-Validate-0.76.ebuild:
+  Mark 0.76 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Params-Validate-0.76.ebuild:
+  add ~ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Params-Validate-0.76.ebuild:
+  Stable on ppc.
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Params-Validate-0.76.ebuild:
+  Stable on sparc
+
+  12 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  Params-Validate-0.76.ebuild:
+  Marking stable x86
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org>
+  Params-Validate-0.76.ebuild:
+  Stable on ppc64
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Params-Validate-0.72.ebuild:
+  Stable on ppc.
+
+  14 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  Params-Validate-0.24-r2.ebuild, Params-Validate-0.59.ebuild,
+  Params-Validate-0.72.ebuild, Params-Validate-0.74.ebuild,
+  Params-Validate-0.76.ebuild:
+  Removed dep for Attribute-Handlers as the core perl install has provided
+  0.78_01 for the last three stable releases
+
+  12 Mar 2005; Markus Rothe <corsair@gentoo.org> Params-Validate-0.76.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Params-Validate-0.76 (05 Dec 2004)
+
+  05 Dec 2004; Michael Cummings <mcummings@gentoo.org>
+  +Params-Validate-0.76.ebuild:
+  New version on CPAN
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Params-Validate-0.74.ebuild:
+  Stable on alpha.
+
+  10 Apr 2004; Eric Sammer <esammer@gentoo.org> Params-Validate-0.74.ebuild:
+  Fixed message about missing CREDITS and UPGRADE mentioned in comment #3
+  in bug #46573. These are no longer included in the package.
+
+*Params-Validate-0.74 (10 Apr 2004)
+
+  10 Apr 2004; Eric Sammer <esammer@gentoo.org>
+  Params-Validate-0.24-r1.ebuild, Params-Validate-0.24-r2.ebuild,
+  Params-Validate-0.24.ebuild, Params-Validate-0.74.ebuild:
+  Bumped to 0.74 - closes bug #46573. Fixed copyright headers.
+
+*Params-Validate-0.72 (16 Feb 2004)
+
+  16 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  Params-Validate-0.72.ebuild:
+  New version on CPAN; 14 passes on rt, no fails; builds with src_tests enabled
+  without a hitch.
+
+  19 Jan 2004; <gustavoz@gentoo.org> Params-Validate-0.59.ebuild:
+  stable on sparc
+
+*Params-Validate-0.59 (16 Jun 2003)
+
+  16 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Params-Validate-0.59.ebuild:
+  CPAN version bump; needs testing
+
+  13 Feb 2003; Mark Guertin <gerk@gentoo.org> Params-Validate-0.24-r1.ebuild Params-Validate-0.24-r2.ebuild Params-Validate-0.24.ebuild :
+  set ppc in keywords
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Params-Validate-0.24-r2 (26 Nov 2002)
+
+  26 Nov 2002; Michael Cummings <mcummings@gentoo.org> 
+  Params-Validate-0.24-r2.ebuild:
+
+  Added a new module that was a missing dep, Attribute-Handlers
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+
+*Params-Validate-0.24 (24 Oct 2002)
+*Params-Validate-0.24-r1 (14 OCT 2002)
 
   14 OCT 2002; <mcummings@gentoo.org>Params-Validate-0.24-1.ebuild ChangeLog : 
   Initial import. Ebuild submitted by John Cappiello john@apt202.net.

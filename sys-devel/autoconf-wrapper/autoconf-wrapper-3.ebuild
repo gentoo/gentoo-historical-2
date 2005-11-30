@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-wrapper/autoconf-wrapper-3.ebuild,v 1.1 2005/06/28 21:17:42 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-wrapper/autoconf-wrapper-3.ebuild,v 1.1.1.1 2005/11/30 09:53:51 chriswhite Exp $
 
 DESCRIPTION="wrapper for autoconf to manage multiple autoconf versions"
 HOMEPAGE="http://www.gentoo.org/"

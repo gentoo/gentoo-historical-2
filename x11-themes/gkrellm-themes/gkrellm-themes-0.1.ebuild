@@ -1,8 +1,7 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gkrellm-themes/gkrellm-themes-0.1.ebuild,v 1.1 2004/05/08 02:01:41 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gkrellm-themes/gkrellm-themes-0.1.ebuild,v 1.1.1.1 2005/11/30 09:51:35 chriswhite Exp $
 
-RESTRICT="nostrip"
 DESCRIPTION="A pack of ~200 themes for GKrellM"
 HOMEPAGE="http://www.muhri.net/gkrellm"
 THEME_URI="http://www.muhri.net/gkrellm"
@@ -125,7 +124,6 @@ SRC_URI="${THEME_URI}/3051.tar.gz
 	${THEME_URI}/aliens.tgz
 	${THEME_URI}/amber2.tar.gz
 	${THEME_URI}/antarctic.gkrellm.tar.gz
-	${THEME_URI}/aqua.tar.gz
 	${THEME_URI}/arctic-2.gkrellm.tar.gz
 	${THEME_URI}/arctic-3.gkrellm.tar.gz
 	${THEME_URI}/arctic-Bordered-2.tar.gz
@@ -204,24 +202,20 @@ SRC_URI="${THEME_URI}/3051.tar.gz
 	${THEME_URI}/x17.tar.gz
 	${THEME_URI}/yummiyogurt.tar.gz"
 
-SLOT="0"
 LICENSE="freedist"
-KEYWORDS="~x86"
-
+SLOT="0"
+KEYWORDS="amd64 ~mips ppc ppc64 ~sparc x86"
 IUSE=""
+RESTRICT="nostrip"
 
 DEPEND=""
 RDEPEND=">=app-admin/gkrellm-2.1"
 
-src_unpack(){
-	local bn
+src_unpack() {
 	mkdir ${S}
 	cd ${S}
-
 	for theme in ${SRC_URI} ; do
-		bn=`basename $theme`
-
-		unpack ${bn}
+		unpack $(basename $theme)
 	done
 }
 
@@ -230,7 +224,6 @@ src_compile() {
 }
 
 src_install() {
-
 	dodir /usr/share/gkrellm2/themes/
 	keepdir /usr/share/gkrellm2/themes/
 	cd ${S}
@@ -240,4 +233,3 @@ src_install() {
 	chmod -R u-s+rwx *
 	cp -dpR * ${D}/usr/share/gkrellm2/themes/
 }
-

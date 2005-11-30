@@ -1,15 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Error/Error-0.15-r2.ebuild,v 1.1 2002/10/30 07:20:36 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Error/Error-0.15-r2.ebuild,v 1.1.1.1 2005/11/30 09:53:22 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
-CATEGORY="dev-perl"
-DESCRIPTION="A Error Perl Module"
-SRC_URI="http://www.cpan.org/modules/by-module/Error/${P}.tar.gz"
+DESCRIPTION="Error/exception handling in an OO-ish way"
+SRC_URI="mirror://cpan/authors/id/U/UA/UARUN/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Error/${P}.readme"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+KEYWORDS="alpha amd64 ia64 ~mips ppc ppc64 s390 sparc x86"
+IUSE=""

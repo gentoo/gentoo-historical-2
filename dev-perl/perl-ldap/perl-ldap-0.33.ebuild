@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/perl-ldap/perl-ldap-0.33.ebuild,v 1.1 2005/04/29 19:37:18 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/perl-ldap/perl-ldap-0.33.ebuild,v 1.1.1.1 2005/11/30 09:52:34 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,12 +10,12 @@ SRC_URI="mirror://cpan/authors/id/G/GB/GBARR/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~ia64 ~s390 ~hppa ~amd64"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="sasl xml ssl"
 
 DEPEND="dev-perl/Convert-ASN1
 	dev-perl/URI
-	sasl? ( dev-perl/Digest-MD5 dev-perl/Authen-SASL )
+	sasl? ( perl-core/Digest-MD5 dev-perl/Authen-SASL )
 	xml? ( dev-perl/XML-Parser )
 	ssl? ( >=dev-perl/IO-Socket-SSL-0.81 )"
 

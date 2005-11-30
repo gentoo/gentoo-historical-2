@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/IP-Country/IP-Country-2.18.ebuild,v 1.1 2004/10/28 15:50:20 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IP-Country/IP-Country-2.18.ebuild,v 1.1.1.1 2005/11/30 09:52:58 chriswhite Exp $
 
 inherit perl-module
 

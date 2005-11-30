@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.8-r1.ebuild,v 1.1 2005/02/18 14:10:06 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.8-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:42 chriswhite Exp $
 
 inherit eutils flag-o-matic
 IUSE="cjk ssl nls slang crypt imap mbox nntp sasl vanilla"
@@ -19,8 +19,8 @@ SRC_URI="ftp://ftp.mutt.org/mutt/devel/mutt-${PV}i.tar.gz
 		mirror://gentoo/${edit_threads_patch}
 		http://mutt.kiev.ua/download/${P}/${compressed_patch}
 		http://www.woolridge.ca/mutt/patches/${mbox_hook_patch}
-		nntp? ( 
-			mirror://gentoo/${nntp_patch} 
+		nntp? (
+			mirror://gentoo/${nntp_patch}
 			mirror://gentoo/mutt-1.5.7-mixmaster+nntp.patch
 		)
 		http://wwwcip.informatik.uni-erlangen.de/~sithglan/mutt/${header_cache_patch}
@@ -40,7 +40,16 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~ia64 ~amd64 ~mips ~ppc64 ~ppc-macos"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc-macos ppc64 sparc x86"
+
+pkg_setup() {
+	if ! use imap; then
+		echo
+		einfo "NOTE: The USE variable 'imap' is not in your USE flags."
+		einfo "For imap support in mutt, you will need to restart the build with USE=imap"
+		echo
+	fi
+}
 
 src_unpack() {
 	unpack ${P}i.tar.gz && cd ${S} || die "unpack failed"
@@ -76,6 +85,7 @@ src_compile() {
 		$(use_enable crypt smime) \
 		$(use_enable cjk default-japanese) \
 		$(use_with sasl sasl2) \
+		--enable-compressed \
 		--with-mixmaster \
 		--sysconfdir=/etc/mutt \
 		--with-docdir=/usr/share/doc/mutt-${PVR} \
@@ -137,4 +147,11 @@ src_install() {
 	fi
 
 	dodoc BEWARE COPYRIGHT ChangeLog NEWS OPS* PATCHES README* TODO VERSION
+}
+
+pkg_postinst() {
+	echo
+	einfo "For information about using mutt, please refer to:"
+	einfo "  http://www.gentoo.org/doc/en/guide-to-mutt.xml"
+	echo
 }

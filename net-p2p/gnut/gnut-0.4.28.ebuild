@@ -1,15 +1,18 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Karl Trygve Kalleberg <karltk@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnut/gnut-0.4.28.ebuild,v 1.1 2002/06/25 10:26:11 bangert Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnut/gnut-0.4.28.ebuild,v 1.1.1.1 2005/11/30 09:51:14 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE=""
+
 DESCRIPTION="Text-mode gnutella client"
-SRC_URI="http://www.gnutelliums.com/linux_unix/gnut/tars/gnut-0.4.28.tar.gz"
-HOMEPAGE="http://http://www.gnutelliums.com/linux_unix/gnut/"
+SRC_URI="http://alge.anart.no/ftp/pub/gnutella/${P}.tar.gz"
+HOMEPAGE="http://www.gnutelliums.com/linux_unix/gnut/"
 
-DEPEND="virtual/glibc"
-RDEPEND="$DEPEND"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc"
+
+DEPEND="virtual/libc"
 
 src_compile() {
 	cat /dev/null | ./configure \

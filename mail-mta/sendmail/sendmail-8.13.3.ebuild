@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.3.ebuild,v 1.1 2005/02/12 14:37:37 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.3.ebuild,v 1.1.1.1 2005/11/30 09:50:49 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
 
 LICENSE="Sendmail"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~hppa ~alpha ~ia64 ~s390 ~amd64 ~ppc64"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 s390 sparc x86"
 IUSE="ssl ldap sasl tcpd mbox milter mailwrapper ipv6"
 
 DEPEND="net-mail/mailbase
@@ -129,7 +129,7 @@ src_install () {
 
 	newdoc cf/README README.cf
 	newdoc cf/cf/README README.install-cf
-	cp -a cf/* ${D}/usr/share/sendmail-cf
+	cp -pPR cf/* ${D}/usr/share/sendmail-cf
 	insinto /etc/mail
 	if use mbox
 	then
@@ -137,29 +137,30 @@ src_install () {
 	else
 		newins ${FILESDIR}/sendmail-procmail.mc sendmail.mc
 	fi
-	m4 ${D}/etc/mail/sendmail.mc > ${D}/etc/mail/sendmail.cf
+	m4 ${D}/usr/share/sendmail-cf/m4/cf.m4 ${D}/etc/mail/sendmail.mc \
+		> ${D}/etc/mail/sendmail.cf
 	echo "# local-host-names - include all aliases for your machine here" \
 		> ${D}/etc/mail/local-host-names
-	cat << EOF > ${D}/etc/mail/trusted-users
-# trusted-users - users that can send mail as others without a warning
-# apache, mailman, majordomo, uucp are good candidates
-EOF
-	cat << EOF > ${D}/etc/mail/access
-# Check the /usr/share/doc/sendmail/README.cf file for a description
-# of the format of this file. (search for access_db in that file)
-# The /usr/share/doc/sendmail/README.cf is part of the sendmail-doc
-# package.
-#
+	cat <<- EOF > ${D}/etc/mail/trusted-users
+		# trusted-users - users that can send mail as others without a warning
+		# apache, mailman, majordomo, uucp are good candidates
+	EOF
+	cat <<- EOF > ${D}/etc/mail/access
+		# Check the /usr/share/doc/sendmail/README.cf file for a description
+		# of the format of this file. (search for access_db in that file)
+		# The /usr/share/doc/sendmail/README.cf is part of the sendmail-doc
+		# package.
+		#
 
-EOF
-cat << EOF > ${D}/etc/conf.d/sendmail
-# Config file for /etc/init.d/sendmail
-# add start-up options here
-SENDMAIL_OPTS="-bd -q30m -L sm-mta" # default daemon mode
-CLIENTMQUEUE_OPTS="-Ac -q30m -L sm-cm" # clientmqueue
-KILL_OPTS="" # add -9/-15/your favorite evil SIG level here
+	EOF
+	cat <<- EOF > ${D}/etc/conf.d/sendmail
+		# Config file for /etc/init.d/sendmail
+		# add start-up options here
+		SENDMAIL_OPTS="-bd -q30m -L sm-mta" # default daemon mode
+		CLIENTMQUEUE_OPTS="-Ac -q30m -L sm-cm" # clientmqueue
+		KILL_OPTS="" # add -9/-15/your favorite evil SIG level here
 
-EOF
+	EOF
 	exeinto /etc/init.d
 	doexe ${FILESDIR}/sendmail
 	keepdir /usr/adm/sm.bin

@@ -1,20 +1,36 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-flat/gtk-engines-flat-2.0-r1.ebuild,v 1.1 2003/06/19 09:44:44 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-flat/gtk-engines-flat-2.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:34 chriswhite Exp $
 
-inherit gtk-engines2
+inherit gnuconfig
 
-MY_PN=${PN/gtk-engines-flat/gtk-flat-theme}
+MY_PN="gtk-flat-theme"
+MY_P=${MY_PN}-${PV}
+DESCRIPTION="GTK+2 Flat Theme Engine"
+SRC_URI="http://download.freshmeat.net/themes/gtk2flat/gtk2flat-default.tar.gz"
+HOMEPAGE="http://themes.freshmeat.net/projects/gtk2flat/"
 
-IUSE=""
-DESCRIPTION="GTK+1 and GTK+2 Flat Theme Engine"
-SRC_URI="mirror://gnome/teams/art.gnome.org/themes/gtk/Flat-1.2.x.tar.gz
-	http://download.freshmeat.net/themes/gtk2flat/gtk2flat-default.tar.gz"
-HOMEPAGE="http://art.gnome.org/show_theme.php?themeID=56&category=gtk
-	http://themes.freshmeat.net/projects/gtk2flat/"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 ppc sparc alpha hppa amd64"
 LICENSE="GPL-2"
 SLOT="2"
+IUSE=""
 
-GTK1_S=${WORKDIR}/${MY_PN}-0.1
-GTK2_S=${WORKDIR}/${MY_PN}-2.0
+RDEPEND=">=x11-libs/gtk+-2"
+
+DEPEND="${REPEND}
+	dev-util/pkgconfig"
+
+S=${WORKDIR}/${MY_P}
+
+src_unpack() {
+	unpack ${A}
+	if [[ ${ARCH} == "amd64" ]]; then
+		gnuconfig_update ${WORKDIR}
+	fi
+}
+
+src_install() {
+	make DESTDIR="${D}" install || die "Installation failed"
+
+	dodoc AUTHORS README
+}

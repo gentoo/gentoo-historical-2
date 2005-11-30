@@ -1,6 +1,32 @@
-# ChangeLog for app-sci/gnucap
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gnucap/ChangeLog,v 1.1 2004/12/27 19:37:57 ribosome Exp $
+# ChangeLog for sci-electronics/gnucap
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gnucap/ChangeLog,v 1.1.1.1 2005/11/30 09:51:05 chriswhite Exp $
+
+*gnucap-20050808 (04 Nov 2005)
+
+  04 Nov 2005; <plasmaroo@gentoo.org> +gnucap-20050808.ebuild:
+  Version bump; bug #111101.
+
+  04 Nov 2005; <plasmaroo@gentoo.org> gnucap-0.34.ebuild,
+  gnucap-20050220.ebuild:
+  Fix #111048.
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> gnucap-0.34.ebuild:
+  Stable on ppc.
+
+  08 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> gnucap-20050220.ebuild:
+  Added dropped ~amd64 and ~ppc KEYWORDS.
+
+*gnucap-20050220 (25 Mar 2005)
+
+  25 Mar 2005; <plasmaroo@gentoo.org> +gnucap-20050220.ebuild:
+  Version bump.
+
+  05 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> gnucap-0.34.ebuild:
+  Marked stable on x86 and amd64.
+
+  04 Jan 2005; Marcus Hanwell <cryos@gentoo.org> gnucap-0.34.ebuild:
+  Marked ~amd64.
 
 *gnucap-0.34 (27 Dec 2004)
 

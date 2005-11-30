@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnunet/gnunet-0.7.0.ebuild,v 1.1 2005/09/06 21:05:03 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnunet/gnunet-0.7.0.ebuild,v 1.1.1.1 2005/11/30 09:51:08 chriswhite Exp $
 
 inherit eutils libtool
 
@@ -19,8 +19,8 @@ DEPEND=">=dev-libs/libgcrypt-1.2.0
 	>=media-libs/libextractor-0.5.4
 	>=dev-libs/gmp-4.0.0
 	sys-libs/zlib
+	>=x11-libs/gtk+-2.6.10
 	ncurses? ( sys-libs/ncurses )
-	gtk? ( >=x11-libs/gtk+-2.6.10 )
 	mysql? ( >=dev-db/mysql-4.0.24 )
 	sqlite? ( >=dev-db/sqlite-3.0.8 )
 	guile? ( >=dev-util/guile-1.6.0 )
@@ -44,12 +44,12 @@ src_compile() {
 		fi
 	fi
 
+	use mysql || myconf="${myconf} --without-mysql"
+
 	econf \
-		$(use_with mysql) \
 		$(use_with sqlite) \
 		$(use_enable nls) \
 		$(use_enable ncurses) \
-		$(use_enable gtk) \
 		$(use_enable guile) \
 		${myconf} || die "econf failed"
 

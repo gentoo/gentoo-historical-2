@@ -1,7 +1,22 @@
 # ChangeLog for x11-libs/buffy
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/buffy/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/buffy/ChangeLog,v 1.1.1.1 2005/11/30 09:54:10 chriswhite Exp $
 
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> buffy-0.2-r1.ebuild:
+  Stable on ppc.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  buffy-0.2-r1.ebuild:
+  Masked buffy-0.2-r1.ebuild testing for ppc
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> buffy-0.2.ebuild:
+  clean older ebuild
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> buffy-0.2-r1.ebuild:
+  Removed S=, added IUSE=
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *buffy-0.2-r1 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

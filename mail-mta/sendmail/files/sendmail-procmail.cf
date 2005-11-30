@@ -27,31 +27,31 @@
 ######################################################################
 ######################################################################
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
 
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-
-
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
+
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
+
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
+
+
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
 # level 10 config file format
 V10/Berkeley
@@ -1244,7 +1244,7 @@ Sauthinfo
 ###   Local and Program Mailer specification   ###
 ##################################################
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
 #
 #  Envelope sender rewriting
@@ -1296,7 +1296,7 @@ Mprog,		P=/usr/sbin/smrsh, F=lsDFMoqeu9, S=EnvFromL/HdrFromL, R=EnvToL/HdrToL, D
 ###   SMTP Mailer specification   ###
 #####################################
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
 #
 #  common sender and masquerading recipient rewriting
@@ -1389,7 +1389,7 @@ Mrelay,		P=[IPC], F=mDFMuXa8, S=EnvFromSMTP/HdrFromSMTP, R=MasqSMTP, E=\r\n, L=2
 ###   PROCMAIL Mailer specification   ###
 ##################*****##################
 
-#####  $Id: sendmail-procmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail-procmail.cf,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $  #####
 
 Mprocmail,	P=/usr/bin/procmail, F=DFMSPhnu9, S=EnvFromSMTP/HdrFromSMTP, R=EnvToSMTP/HdrFromSMTP,
 		T=DNS/RFC822/X-Unix,

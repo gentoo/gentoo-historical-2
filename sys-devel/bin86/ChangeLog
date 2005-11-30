@@ -1,6 +1,60 @@
 # ChangeLog for sys-devel/bin86
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bin86/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bin86/ChangeLog,v 1.1.1.1 2005/11/30 09:53:39 chriswhite Exp $
+
+  09 May 2005; Olivier Crête <tester@gentoo.org>
+  +files/bin86-0.16.17-amd64-build.patch, bin86-0.16.17.ebuild:
+  Added patch to make it build on amd64
+
+*bin86-0.16.17 (30 Jan 2005)
+
+  30 Jan 2005; Mike Frysinger <vapier@gentoo.org> +bin86-0.16.17.ebuild:
+  Version bump.
+
+*bin86-0.16.16 (29 Nov 2004)
+
+  29 Nov 2004; Mike Frysinger <vapier@gentoo.org> +bin86-0.16.16.ebuild:
+  Version bump.
+
+  02 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> bin86-0.15.5.ebuild,
+  bin86-0.16.0.ebuild, bin86-0.16.11-r1.ebuild, bin86-0.16.13.ebuild:
+  virtual/glibc -> virtual/libc
+
+  07 Jan 2004; <gustavoz@gentoo.org> bin86-0.15.5.ebuild, bin86-0.16.0.ebuild,
+  bin86-0.16.11-r1.ebuild, bin86-0.16.13.ebuild:
+  -sparc all of them, this doesn't work on sparc!
+
+*bin86-0.16.13 (04 Oct 2003)
+
+  04 Oct 2003; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.13.ebuild:
+  Update version.
+
+*bin86-0.16.11-r1 (17 Aug 2003)
+
+  17 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> bin86-0.16.11-r1.ebuild:
+  Update ebuild to actually build with the users CFLAGS
+
+  16 Mar 2003; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.0.ebuild :
+  Mark stable for x86.
+
+*bin86-0.16.11 (16 Mar 2003)
+
+  16 Mar 2003; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.11.ebuild :
+  Update version.
+
+*bin86-0.16.10 (30 Dec 2002)
+
+  30 Dec 2002; Martin Schlemmer <azarah@gentoo.org> bin86-0.16.10.ebuild :
+  Update version.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> :
+  Changed sparc ~sparc keywords
+ 
+*bin86-0.16.0 (16 Nov 2002)
+
+  16 Nov 2002; Brandon Low <lostlogic@gentoo.org> bin86-0.16.0.ebuild :
+  Ok here is 0.16.0, the make system of this package smells bad, but I
+  kicked it into shape.  Hope you all enjoy the new version.
 
 *bin86-0.15.5 (1 Feb 2002)
 

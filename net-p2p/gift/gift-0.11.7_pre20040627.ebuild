@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.7_pre20040627.ebuild,v 1.1 2004/06/27 21:04:40 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.7_pre20040627.ebuild,v 1.1.1.1 2005/11/30 09:51:11 chriswhite Exp $
 
 inherit eutils libtool
 
@@ -11,7 +11,8 @@ IUSE=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+# this is ONLY to fix bug #45549 which is amd64-specific
+KEYWORDS="-* amd64"
 
 RDEPEND=">=sys-libs/zlib-1.1.4"
 
@@ -31,6 +32,11 @@ src_unpack() {
 	./autogen.sh || die
 }
 
+pkg_preinst() {
+	# Add a new user
+	enewuser ${GIFTUSER} -1 /bin/bash /home/p2p users
+}
+
 src_install() {
 	einstall \
 		giftconfdir=${D}/etc/giFT \
@@ -42,9 +48,6 @@ src_install() {
 	# init scripts for users who want a central server
 	insinto /etc/conf.d; newins ${FILESDIR}/gift.confd gift
 	exeinto /etc/init.d; newexe ${FILESDIR}/gift.initd gift
-
-	# add user
-	enewuser ${GIFTUSER} -1 /bin/bash /home/p2p users
 
 	touch ${D}/usr/share/giFT/giftd.log
 	chown ${GIFTUSER}:root ${D}/usr/share/giFT/giftd.log

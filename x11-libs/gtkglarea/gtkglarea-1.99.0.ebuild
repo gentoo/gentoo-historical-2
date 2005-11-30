@@ -1,20 +1,43 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglarea/gtkglarea-1.99.0.ebuild,v 1.1 2002/06/20 20:46:39 azarah Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglarea/gtkglarea-1.99.0.ebuild,v 1.1.1.1 2005/11/30 09:54:10 chriswhite Exp $
 
-inherit gnome2
-S=${WORKDIR}/${P}
+inherit gnome2 gnuconfig multilib
+
 DESCRIPTION="GL extensions for gtk+"
-SRC_URI="ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/gtkglarea/${P}.tar.bz2"
 HOMEPAGE="http://www.gnome.org/"
-SLOT="2"
-LICENSE="GPL-2 LGPL-2.1"
 
-DEPEND="virtual/glibc
+LICENSE="GPL-2 LGPL-2.1"
+SLOT="2"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE=""
+
+DOCS="AUTHORS ChangeLog INSTALL NEWS README* docs/*.txt"
+
+RDEPEND="virtual/libc
 	>=x11-libs/gtk+-2.0.3
 	virtual/glu
 	virtual/opengl"
-RDEPEND=${DEPEND}
 
-DOCS="AUTHORS ChangeLog COPYING INSTALL NEWS README* docs/*.txt"
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	if [ $(get_libdir) != "lib" ] ; then
+		libtoolize --copy --force || die "libtoolize failed"
+		aclocal || die "aclocal failed"
+		autoconf || die "autoconf failed"
+	fi
+}
+
+src_compile() {
+	gnuconfig_update
+	econf || die
+	emake || die
+}
+
+src_install() {
+	gnome2_src_install libdir=${D}/usr/$(get_libdir)
+}

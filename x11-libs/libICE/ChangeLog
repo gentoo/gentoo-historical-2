@@ -1,6 +1,34 @@
 # ChangeLog for x11-libs/libICE
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libICE/ChangeLog,v 1.1 2005/08/08 04:21:49 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libICE/ChangeLog,v 1.1.1.1 2005/11/30 09:54:26 chriswhite Exp $
+
+*libICE-0.99.1 (11 Nov 2005)
+
+  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libICE-0.99.1.ebuild:
+  Bump for 7.0RC2.
+
+  30 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libICE-0.99.0.ebuild:
+  Move xproto dep to reflect compile-time requirements.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> libICE-0.99.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libICE-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libICE-0.99.0.ebuild:
+  Marked ~amd64
+
+  12 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; libICE-0.99.0.ebuild:
+  Add ipv6 USE, thanks to gim <gentoo@gim.name> for pointing this out.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libICE-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *libICE-0.99.0 (08 Aug 2005)
 

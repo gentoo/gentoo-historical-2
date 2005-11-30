@@ -1,7 +1,22 @@
 # ChangeLog for www-client/rabbitticker
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/rabbitticker/ChangeLog,v 1.1 2004/10/05 10:48:08 jstubbs Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/rabbitticker/ChangeLog,v 1.1.1.1 2005/11/30 09:52:20 chriswhite Exp $
 
-  05 Oct 2004; <jason@gentoo.org> :
-  Initial Ebuild
+  28 Jul 2005; Caleb Tennis <caleb@gentoo.org>
+  rabbitticker-1.0_beta4.ebuild:
+  Fix qt dep per bug #100235
+
+*rabbitticker-1.0_beta4 (17 Oct 2004)
+
+  11 May 2005; Jason Stubbs <jstubbs@gentoo.org> rabbitticker-1.0_beta4.ebuild:
+  Bumping to stable.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> rabbitticker-1.0_beta4.ebuild:
+  Added to ~ppc.
+
+  06 Oct 2004; <jstubbs@gentoo.org> rabbitticker-1.0_beta4.ebuild:
+  Fixed some stylistic issues.
+
+  05 Oct 2004; <jstubbs@gentoo.org> rabbitticker-1.0_beta4.ebuild:
+  Initial ebuild.
 

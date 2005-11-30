@@ -1,12 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/lopster/lopster-1.2.0.ebuild,v 1.1 2003/03/09 12:01:24 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/lopster/lopster-1.2.0.ebuild,v 1.1.1.1 2005/11/30 09:51:09 chriswhite Exp $
 
-IUSE="gtk nls"
+IUSE="nls"
 
 inherit eutils
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A Napster Client using GTK"
 HOMEPAGE="http://lopster.sourceforge.net"
 SRC_URI="http://lopster.sourceforge.net/download/${P}.tar.gz
@@ -14,7 +13,7 @@ SRC_URI="http://lopster.sourceforge.net/download/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~sparc ~alpha ~hppa amd64"
 
 DEPEND="=x11-libs/gtk+-1.2*"
 RDEPEND="nls? ( sys-devel/gettext )"
@@ -33,7 +32,7 @@ src_compile() {
 	econf \
 		--with-pthread \
 		--with-zlib \
-		${myconf}
+		${myconf} || die "econf failed"
 
 	emake || die
 }

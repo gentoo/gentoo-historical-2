@@ -1,12 +1,12 @@
 #!/sbin/runscript
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2         
-# $Header: /var/cvsroot/gentoo-x86/net-misc/howl/files/nifd.init.d,v 1.1 2003/12/27 16:25:28 lisa Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/howl/files/nifd.init.d,v 1.1.1.1 2005/11/30 09:54:36 chriswhite Exp $
 
 start() {
 	ebegin "Starting nifd"
 	start-stop-daemon --start --quiet --pidfile /var/run/nifd.pid \
-		--startas /usr/bin/nifd ${NIFD_OPTS}
+		--startas /usr/bin/nifd -- ${NIFD_OPTS}
 	eend $? "Failed to start nifd"
 }
 

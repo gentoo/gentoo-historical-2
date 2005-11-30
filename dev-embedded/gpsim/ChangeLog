@@ -1,10 +1,61 @@
-# ChangeLog for dev-util/gpsim
-# Copyright 2003 Alex Holden <alex@alexholden.net>; Distributed under the GPL
-# $Header:
+# ChangeLog for dev-embedded/gpsim
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpsim/ChangeLog,v 1.1.1.1 2005/11/30 09:53:27 chriswhite Exp $
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> gpsim-0.21.2.ebuild:
+  Stable on ppc.
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> gpsim-0.20.14-r1.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gpsim-0.21.2.ebuild:
+  stable on amd64
+
+  04 Jan 2005; Mike Doty <kingtaco@gentoo.org> gpsim-0.21.2.ebuild:
+  ~amd64 keyword added
+
+  03 Jan 2005; Daniel Black <dragonheart@gentoo.org> gpsim-0.21.2.ebuild:
+  updated gnuconfig to solve bug #74997. This will hopefully make this amd64
+  (and others) compatible. Thanks to Aris Adamantiadis <aris@0xbadc0de.be> for
+  the bug report
+
+  24 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Added missing digest entries.
+
+  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> gpsim-0.21.2.ebuild:
+  x86 stable keyword
+
+  19 Jul 2004; Daniel Black <dragonheart@gentoo.org>
+  -files/gpsim-0.20.14-gcc3.2.patch, -files/gpsim-0.20.14-gcc33.patch,
+  gpsim-0.20.14-r1.ebuild, -gpsim-0.20.14.ebuild:
+  Remove old version. Move oversized patches for mirror://gentoo/
+
+  18 Jul 2004; David Holm <dholm@gentoo.org> gpsim-0.21.2.ebuild:
+  Added to ~ppc.
+
+*gpsim-0.21.2 (18 Jul 2004)
+
+  18 Jul 2004; Daniel Black <dragonheart@gentoo.org> +gpsim-0.21.2.ebuild:
+  version bump thanks to Laurence Withers <lwithers@users.sf.net> in bug #42889
+
+  24 Mar 2004; Daniel Black <dragonheart@gentoo.org> gpsim-0.20.14-r1.ebuild,
+  gpsim-0.20.14.ebuild:
+  gpsim-0.20.14-r1 marked stable. Added missing IUSE statements
+
+  28 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> gpsim-0.20.14-r1.ebuild,
+  files/gpsim-0.20.14-gcc2_fix.patch:
+  add fix to compile with gcc2.95
+
+*gpsim-0.20.14-r1 (20 Oct 2003)
+
+  20 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> gpsim-0.20.14-r1.ebuild,
+  files/gpsim-0.20.14-gcc33.patch:
+  add gcc3.3 fix, install more docs
 
 *gpsim-0.20.14 (08 Feb 2003)
 
-  08 Feb 2003; Alex Holden <alex@alexholden.net> gpsim-0.20.14.ebuild files/digest-gpsim-0.20.14 :
+  08 Feb 2003; Alex Holden <alex@alexholden.net> gpsim-0.20.14.ebuild
+  files/digest-gpsim-0.20.14 :
   
   gpsim is a full-featured software simulator for Microchip PIC
   microcontrollers distributed under the GNU General Public License.

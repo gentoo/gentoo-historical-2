@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Curses/Curses-1.08.ebuild,v 1.1 2005/03/06 12:07:14 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Curses/Curses-1.08.ebuild,v 1.1.1.1 2005/11/30 09:52:51 chriswhite Exp $
 
 inherit perl-module eutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://cpan/authors/id/G/GI/GIRAFFED/${MY_P}.tgz"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~s390"
+KEYWORDS="alpha amd64 ppc ppc64 s390 sparc x86"
 IUSE=""
 
 SRC_TEST="do"
@@ -27,6 +27,7 @@ myconf="${myconf} GEN PANELS MENUS"
 #Add gaurd as necessary...
 src_unpack() {
 	unpack ${A}
+	cd ${S}
 	epatch ${FILESDIR}/Curses-1.08-p5.8-fixes.diff
 	cd ${S}
 	einfo "Copying hints/c-linux.ncurses.h to c-config.h"

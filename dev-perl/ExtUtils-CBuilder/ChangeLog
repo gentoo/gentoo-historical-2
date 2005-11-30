@@ -1,6 +1,80 @@
 # ChangeLog for dev-perl/ExtUtils-CBuilder
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-CBuilder/ChangeLog,v 1.1 2004/06/05 19:07:05 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-CBuilder/ChangeLog,v 1.1.1.1 2005/11/30 09:53:19 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-CBuilder-0.12.ebuild:
+  Mark 0.12 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-CBuilder-0.12.ebuild:
+  Mark 0.12 stable on alpha
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  ExtUtils-CBuilder-0.12.ebuild:
+  Stable on ppc64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-CBuilder-0.12.ebuild:
+  add ~ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ExtUtils-CBuilder-0.12.ebuild:
+  Stable on hppa and ppc.
+
+  15 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  -ExtUtils-CBuilder-0.03.ebuild, ExtUtils-CBuilder-0.12.ebuild:
+  Marking stable x86 and sparc
+
+*ExtUtils-CBuilder-0.12 (17 Jul 2005)
+
+  17 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +ExtUtils-CBuilder-0.12.ebuild:
+  Version bump upstream
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  ExtUtils-CBuilder-0.05.ebuild:
+  stable on amd64
+
+  16 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-CBuilder-0.03.ebuild:
+  module-build dep
+
+  15 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-CBuilder-0.05.ebuild:
+  Missing dep
+
+  12 Mar 2005; Markus Rothe <corsair@gentoo.org>
+  ExtUtils-CBuilder-0.05.ebuild:
+  Stable on ppc64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  22 Dec 2004; Yuta SATOH <nigoro@gentoo.org> ExtUtils-CBuilder-0.05.ebuild:
+  added ~ppc64
+
+  21 Nov 2004; Hardave Riar <hardave@gentoo.org>
+  ExtUtils-CBuilder-0.05.ebuild:
+  Stable on mips, dep for bug #68570
+
+  20 Nov 2004; Daniel Black <dragonheart@gentoo.org>
+  ExtUtils-CBuilder-0.05.ebuild:
+  ppc stable to support bug #68570
+
+  24 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  ExtUtils-CBuilder-0.05.ebuild:
+  Stable on alpha.
+
+  22 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-CBuilder-0.05.ebuild:
+  marking stable on x86 and sparc
+
+*ExtUtils-CBuilder-0.05 (21 Oct 2004)
+
+  21 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +ExtUtils-CBuilder-0.05.ebuild:
+  new version on cpan
 
 *ExtUtils-CBuilder-0.03 (05 Jun 2004)
 

@@ -1,6 +1,236 @@
-# ChangeLog for net-mail/exim
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.1 2004/05/30 02:35:57 robbat2 Exp $
+# ChangeLog for mail-mta/exim
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/ChangeLog,v 1.1.1.1 2005/11/30 09:50:44 chriswhite Exp $
+
+  28 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> exim-4.54.ebuild:
+  Stable on sparc wrt #103894
+
+  27 Oct 2005; Simon Stelling <blubb@gentoo.org> exim-4.54.ebuild:
+  marked stable on amd64 wrt bug 103894
+
+  24 Oct 2005; Marcin Kryczek <mkay@gentoo.org> exim-4.54.ebuild:
+  stable on x86
+
+  24 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> exim-4.54.ebuild:
+  Stable on hppa, ppc.
+
+  24 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> exim-4.54.ebuild:
+  stable on alpha wrt bug #103894
+
+  21 Oct 2005; Simon Stelling <blubb@gentoo.org> exim-4.54.ebuild:
+  added ~amd64 keyword
+
+  20 Oct 2005; Colin Morey <peitolm@gentoo.org> :
+  Fix for bug #54909
+
+  16 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org> exim-4.54.ebuild:
+  marked ~alpha as per bug #103894
+
+  16 Oct 2005; Jason Wever <weeve@gentoo.org> exim-4.54.ebuild:
+  Added ~sparc keyword as it keeps getting dropped from this package :(
+
+  15 Oct 2005; Tom Gall <tgall@gentoo.org> exim-4.54.ebuild:
+  added ~ppc64 bug#109362
+
+  13 Oct 2005; Rene Nussbaumer <killerfox@gentoo.org> exim-4.54.ebuild:
+  Unstable on hppa. See bug #103894.
+
+  10 Oct 2005; Colin Morey <peitolm@gentoo.org> exim-4.54.ebuild:
+  fix to Local/Makefile sed
+
+  09 Oct 2005; Colin Morey <peitolm@gentoo.org> exim-4.54.ebuild:
+  missing DEPEND fix bug #108605
+
+  02 Oct 2005; Jason Wever <weeve@gentoo.org> exim-4.52.ebuild:
+  Added ~sparc keyword.
+
+*exim-4.54 (08 Oct 2005)
+
+  08 Oct 2005; Colin Morey <peitolm@gentoo.org> +exim-4.54.ebuild:
+  New exim revision, and fix for bug #77996 (EXIM GNUTLS support addition)
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> exim-4.50-r1.ebuild:
+  Stable on ppc.
+
+  09 Aug 2005; David Holm <dholm@gentoo.org> exim-4.52.ebuild:
+  Readded to ~ppc. Please don't remove it without filing a proper bug report.
+
+  07 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> exim-4.50-r1.ebuild:
+  stable on alpha
+
+  30 Jul 2005; Colin Morey <peitolm@gentoo.org> exim-4.52.ebuild:
+  Version bump, with a requirement on an updated version of libspf2( see bug
+  115200) that fixes bug 58282.
+
+  15 Jul 2005; David Holm <dholm@gentoo.org> exim-4.50-r2.ebuild:
+  Added to ~ppc.
+
+*exim-4.50-r999 (11 Jul 2005)
+
+  11 Jul 2005; Andrej Kacian <ticho@gentoo.org> files/mailer.conf,
+  +exim-4.50-r999.ebuild:
+  Committed a mailer-config aware ebuild, to be masked until all other MTAs
+  are ready to be unmasked all at once. Bug #97657.
+
+  05 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org> exim-4.50-r1.ebuild:
+  Stable on hppa.
+
+  02 Jul 2005; Bryan ÄÂĂÂÄÂĂÂÄÂĂÂÄÂĂÂstergaard <kloeri@gentoo.org> exim-4.50-r1.ebuild:
+  Add ~alpha keyword.
+
+  26 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> exim-4.50-r1.ebuild:
+  Readded to ~ppc. Please don't drop keywords!
+
+  20 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> exim-4.50-r1.ebuild:
+  Added to ~hppa.
+
+  12 Jun 2005; Colin Morey <peitolm@gentoo.org> exim-4.50-r1.ebuild:
+  Bumping to stable, I've had no bugs posted re this version.
+
+  10 May 2005; Jay Pfeifer <pfeifer@gentoo.org> exim-4.50-r1.ebuild:
+  Bring forward ~amd64 from 4.43 stuff.
+  Been running 4.50-r1 on 4 different amd64 systems for about 6 weeks now.
+
+*exim-4.50-r1 (08 Mar 2005)
+
+  08 Mar 2005; Colin Morey <peitolm@gentoo.org> -exim-4.33-r1.ebuild,
+  -exim-4.34-r1.ebuild, -exim-4.34.ebuild, -exim-4.40.ebuild,
+  -exim-4.41.ebuild, -exim-4.42.ebuild, -exim-4.43-r1.ebuild,
+  -exim-4.43.ebuild, +exim-4.50-r1.ebuild:
+  Bug fixes for exiscan incorporation into mainstream (patch was out of
+  order).
+  
+  Clean up of old, insecure versions, every arch should be represented by at
+  least one ebuild.
+
+  03 Mar 2005; Colin Morey <peitolm@gentoo.org> :
+  New Version and bug fix for #79743
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org> exim-4.43-r2.ebuild:
+  stable on ia64 #76893
+
+  27 Jan 2005; Andrej Kacian <ticho@gentoo.org> files/exim.rc6:
+  Added "use antivirus" to initscript depend().
+
+  12 Jan 2005; Colin Morey <peitolm@gentoo.org> exim-4.43-r2.ebuild:
+  Bumping to stable.
+
+  10 Jan 2005; Tom Martin <slarti@gentoo.org> exim-4.43-r2.ebuild:
+  Stable on amd64 for security bug 76893.
+
+*exim-4.43-r2 (10 Jan 2005)
+
+  10 Jan 2005; Guy Martin <gmsoft@gentoo.org> exim-4.43-r2.ebuild:
+  Stable on hppa (#76893).
+
+  08 Jan 2005; Colin Morey <peitolm@gentoo.org> files/exim.rc6,
+  exim-4.43.ebuild:
+  Added "syslog" USE flag, enables the ability to define syslog as the default
+  log path, rather than /var/log/exim/exim_%s.log
+
+  08 Jan 2005; Colin Morey <peitolm@gentoo.org> files/exim.rc6,
+  exim-4.43.ebuild:
+  Added optional explict perl dependancy see bug #46778
+
+  08 Jan 2005; Colin Morey <peitolm@gentoo.org> files/exim.rc6,
+  exim-4.43.ebuild:
+  Added Security path (host_aton) for bug 76893 Added dlopen patch for sa-exim
+  bug #47106 Removed wildlsearch USE flag, and added nis USE flag, and passwd
+  lookups, bug #51257. Updated exim.rc6 to stop exim using the pidfile, rather
+  than exec.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*exim-4.43-r1 (28 Dec 2004)
+
+  28 Dec 2004; Andrej Kacian <ticho@gentoo.org> +exim-4.43-r1.ebuild:
+  Fixed zcat location in Local/Makefile. Patch by Martin Hierling
+  <mad@cc.fh-lippe.de>, bug #63896.
+
+  04 Dec 2004; Tom Martin <slarti@gentoo.org> exim-4.42.ebuild:
+  Stable on amd64.
+
+  11 Nov 2004; Aron Griffis <agriffis@gentoo.org> exim-4.43.ebuild:
+  add ~ia64
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> exim-4.42.ebuild,
+  exim-4.43.ebuild:
+  KEYWORDS ~amd64 to close bug 61163.
+
+  10 Oct 2004; Bryan ÄÂĂÂÄÂĂÂÄÂĂÂÄÂĂÂstergaard <kloeri@gentoo.org> exim-4.42.ebuild:
+  Stable on alpha.
+
+  08 Oct 2004; Guy Martin <gmsoft@gentoo.org> exim-4.42.ebuild:
+  Marked stable on hppa.
+
+*exim-4.43 (07 Oct 2004)
+
+  07 Oct 2004; Colin Morey <peitolm@gentoo.org> exim-4.42.ebuild,
+  +exim-4.43.ebuild:
+  New Version Bump and Bump of 4.42 to stable.
+
+  04 Oct 2004; Bryan ÄÂĂÂÄÂĂÂÄÂĂÂÄÂĂÂstergaard <kloeri@gentoo.org> exim-4.42.ebuild:
+  Keyword ~alpha.
+
+  05 Sep 2004; Guy Martin <gmsoft@gentoo.org> exim-4.41.ebuild,
+  exim-4.42.ebuild:
+  Exim 4.41 stable on hppa and 4.42 ~hppa.
+
+  31 Aug 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed digest.
+
+*exim-4.42 (30 Aug 2004)
+
+  30 Aug 2004; Colin Morey <peitolm@gentoo.org> -exim-4.10.ebuild,
+  -exim-4.12.ebuild, -exim-4.14.ebuild, -exim-4.20-r1.ebuild,
+  -exim-4.20-r2.ebuild, -exim-4.20.ebuild, -exim-4.21.ebuild,
+  -exim-4.22.ebuild, -exim-4.24-r1.ebuild, -exim-4.24-r2.ebuild,
+  -exim-4.24-r3.ebuild, -exim-4.24.ebuild, -exim-4.30-r1.ebuild,
+  -exim-4.30.ebuild, -exim-4.31.ebuild, -exim-4.32-r1.ebuild,
+  -exim-4.32.ebuild, -exim-4.33.ebuild, exim-4.41.ebuild, +exim-4.42.ebuild:
+  Pruned out old, vulnerable versions (bug #50217).
+
+*exim-4.42 (30 Aug 2004)
+
+  30 Aug 2004; Colin Morey <peitolm@gentoo.org> exim-4.41.ebuild,
+  +exim-4.42.ebuild:
+  Version bump to 4.42 and stablization of exim-4.41.ebuild
+
+*exim-4.41 (22 Jul 2004)
+
+  22 Jul 2004; Colin Morey <peitolm@gentoo.org> +exim-4.41.ebuild:
+  Revision Bump.
+
+*exim-4.40 (18 Jul 2004)
+
+  18 Jul 2004; Colin Morey <peitolm@gentoo.org> +exim-4.40.ebuild:
+  New Exim 4.40 ebuild, fixes bugs 57186 (exim builds eximon.bin but doesn't use
+  it), 57206 ( No build time dependancy on X if USE="X"), 28665 (mail/nailx
+  /usr/bin/mail clash).
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> exim-4.10.ebuild:
+  virtual/glibc -> virtual/libc
+
+  11 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> exim-4.34-r1.ebuild:
+  Marking stable on all arch's to fix the raft of 
+  inconsistent-mailwrapper bugs.
+
+*exim-4.34-r1 (30 May 2004)
+
+  30 May 2004; Grant Goodyear <g2boojum@gentoo.org> files/mailer.conf,
+  exim-4.24-r3.ebuild, exim-4.30-r1.ebuild, exim-4.30.ebuild,
+  exim-4.31.ebuild, exim-4.32-r1.ebuild, exim-4.32.ebuild,
+  exim-4.33-r1.ebuild, exim-4.33.ebuild, +exim-4.34-r1.ebuild,
+  exim-4.34.ebuild:
+  New revision w/ "mailwrapper" as an optional dep.
+  
+  Removed mailwrapper as a dep from a number of packages where the
+  package was not, in fact, actually using mailwrapper.  (In fact,
+  the package was clobbering /usr/sbin/sendmail w/ a symlink.)
+  
+  In the masked ebuild I also removed the "maildir" use flag, instead
+  keying on ! mbox.  We're going to remove maildir as a USE flag soon.
 
 *exim-4.24-r2 (29 May 2004)
 
@@ -27,7 +257,7 @@
   11 May 2004; Guy Martin <gmsoft@gentoo.org> exim-4.34.ebuild:
   Marked stable on hppa.
 
-  11 May 2004; Bryan �stergaard <kloeri@gentoo.org> exim-4.34.ebuild:
+  11 May 2004; Bryan ÄÂĂÂÄÂĂÂÄÂĂÂÄÂĂÂstergaard <kloeri@gentoo.org> exim-4.34.ebuild:
   Stable on alpha, bug #50217.
 
   11 May 2004; Jon Portnoy <avenj@gentoo.org> exim-4.34.ebuild :

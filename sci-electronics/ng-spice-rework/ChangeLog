@@ -1,6 +1,30 @@
-# ChangeLog for app-sci/ng-spice-rework
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/ng-spice-rework/ChangeLog,v 1.1 2004/12/27 20:05:13 ribosome Exp $
+# ChangeLog for sci-electronics/ng-spice-rework
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/ng-spice-rework/ChangeLog,v 1.1.1.1 2005/11/30 09:51:06 chriswhite Exp $
+
+  06 Nov 2005; <plasmaroo@gentoo.org> ng-spice-rework-17.ebuild:
+  Disable tests for ng-spice-rework-17 since the provided suite fails (bug
+  #108405).
+
+*ng-spice-rework-17 (01 Oct 2005)
+
+  01 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
+  +ng-spice-rework-17.ebuild:
+  New version (fixes bug #90616).
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ng-spice-rework-15.ebuild:
+  Stable on ppc.
+
+  25 Mar 2005; <plasmaroo@gentoo.org> -ng-spice-rework-14.ebuild:
+  Remove redundant ng-spice-rework-14.
+
+  15 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> ng-spice-rework-15.ebuild:
+  added ~amd64 to KEYWORDS. fixes bug #77716.
+
+  29 Dec 2004; <plasmaroo@gentoo.org> ng-spice-rework-15.ebuild,
+  +files/ng-spice-rework-15.gcc-3.4.patch:
+  Fixing GCC 3.4 compile issues; bug #75901.
 
 *ng-spice-rework-15 (27 Dec 2004)
 

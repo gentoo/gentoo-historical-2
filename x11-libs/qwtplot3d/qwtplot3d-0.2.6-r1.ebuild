@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qwtplot3d/qwtplot3d-0.2.6-r1.ebuild,v 1.1 2005/10/21 16:47:59 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qwtplot3d/qwtplot3d-0.2.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:26 chriswhite Exp $
 
 inherit multilib
 

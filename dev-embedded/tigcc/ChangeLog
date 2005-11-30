@@ -1,11 +1,49 @@
 # ChangeLog for dev-embedded/tigcc
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/tigcc/ChangeLog,v 1.1 2004/09/25 00:57:10 dragonheart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/tigcc/ChangeLog,v 1.1.1.1 2005/11/30 09:53:26 chriswhite Exp $
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> tigcc-0.95-r2.ebuild:
+  Stable on ppc.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> tigcc-0.95-r2.ebuild:
+  stable on amd64
+
+*tigcc-0.96_beta2 (28 Feb 2005)
+
+  28 Feb 2005; Daniel Black <dragonheart@gentoo.org> +tigcc-0.96_beta2.ebuild:
+  Version bump as per bug #82335. Many thanks to Robert Führicht
+  <the_master_of_disaster@gmx.at>
+
+  17 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> tigcc-0.95-r2.ebuild,
+  tigcc-0.95_p3.ebuild:
+  Bug #69831: Ensure unzip is in DEPEND.
+
+*tigcc-0.95_p3 (04 Dec 2004)
+
+  04 Dec 2004; Daniel Black <dragonheart@gentoo.org> tigcc-0.95-r2.ebuild,
+  -tigcc-0.95_beta19-r1.ebuild, +tigcc-0.95_p3.ebuild:
+  version bump as per bug #73169. Thanks Robert Führicht
+  <the_master_of_disaster@gmx.at> for the notification.
+
+*tigcc-0.95-r2 (01 Nov 2004)
+
+  01 Nov 2004; Daniel Black <dragonheart@gentoo.org> +tigcc-0.95-r2.ebuild:
+  version bump
+
+  18 Oct 2004; David Holm <dholm@gentoo.org> tigcc-0.95_beta19-r1.ebuild:
+  Added to ~ppc.
+
+  29 Sep 2004; Simon Stelling <blubb@gentoo.org>
+  tigcc-0.95_beta19-r1.ebuild:
+  added ~amd64
 
 *tigcc-0.95_beta19-r1 (25 Sep 2004)
 
   25 Sep 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
   +tigcc-0.95_beta19-r1.ebuild, +files/a68k-fix.patch:
-  Initial import as per bug #51162. Ebuild by Robert F�hricht
+  Initial import as per bug #51162. Ebuild by Robert Führicht
   <the_master_of_disaster@gmx.at>
 

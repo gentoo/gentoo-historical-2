@@ -1,25 +1,31 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/xevil/xevil-2.02_p2.ebuild,v 1.1 2003/09/10 19:29:22 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xevil/xevil-2.02_p2.ebuild,v 1.1.1.1 2005/11/30 09:52:00 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
+DEB_PATCH=2
 MY_PV=${PV/_p/r}
 DESCRIPTION="3rd person, side-view, fast-action, kill-them-before-they-kill-you game"
 HOMEPAGE="http://www.xevil.com/"
-SRC_URI="http://www.xevil.com/download/stable/xevilsrc${MY_PV}.zip"
+SRC_URI="http://www.xevil.com/download/stable/xevilsrc${MY_PV}.zip
+	mirror://debian/pool/main/x/xevil/xevil_${MY_PV}-${DEB_PATCH}.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
+IUSE=""
 
-DEPEND="virtual/x11"
+RDEPEND="virtual/x11"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
 S=${WORKDIR}
 
 src_unpack() {
 	unpack ${A}
-	edos2unix readme.txt
+	edos2unix readme.txt x11/*.{cpp,h} cmn/*.{cpp,h} makefile config.mk
+	epatch ${WORKDIR}/xevil_${MY_PV}-${DEB_PATCH}.diff
 	sed -i \
 		-e 's:-static::' \
 		-e "s:CFLAGS=\":CFLAGS=\"${CFLAGS} :g" \
@@ -28,7 +34,7 @@ src_unpack() {
 }
 
 src_compile() {
-	make || die #emake dies horribly
+	emake || die #emake dies horribly
 }
 
 src_install() {

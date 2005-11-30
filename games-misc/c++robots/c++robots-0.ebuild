@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/c++robots/c++robots-0.ebuild,v 1.1 2003/09/10 18:14:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/c++robots/c++robots-0.ebuild,v 1.1.1.1 2005/11/30 09:50:03 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="ongoing 'King of the Hill' (KotH) tournament"
 HOMEPAGE="http://www.gamerz.net/c++robots/"
@@ -13,20 +13,24 @@ SLOT="0"
 KEYWORDS="x86 ppc"
 IUSE="static"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 S="${WORKDIR}/${PN}"
 
-src_compile() {
-	patch -p0 < ${FILESDIR}/proper-coding.patch
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch "${FILESDIR}/proper-coding.patch"
+}
 
+src_compile() {
 	local myldflags="${LDFLAGS}"
 	use static && myldflags="${myldflags} -static"
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${myldflags}" || die
+	emake CFLAGS="${CFLAGS}" LDFLAGS="${myldflags}" || die "emake failed"
 }
 
 src_install() {
-	dogamesbin combat cylon target tracker
+	dogamesbin combat cylon target tracker || die "dogamesbin failed"
 	dodoc README
 	prepgamesdirs
 }

@@ -1,19 +1,19 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Per Wigren <wigren@home.se>
-# /space/gentoo/cvsroot/gentoo-x86/dev-perl/XML-Simple/XML-Simple-1.05.ebuild,v 1.1 2001/08/21 15:39:29 hallski Exp
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Curses/Curses-1.06.ebuild,v 1.1.1.1 2005/11/30 09:52:51 chriswhite Exp $
+
+inherit perl-module
 
 DESCRIPTION="Curses interface modules for Perl"
-HOMEPAGE="http://cpan.valueclick.com/authors/id/W/WP/WPS/${P}.readme"
+HOMEPAGE="http://search.cpan.org/~wps/${P}/"
+SRC_URI="mirror://cpan/authors/id/W/WP/WPS/${P}.tar.gz"
 
+SLOT="0"
 LICENSE="Artistic"
+KEYWORDS="x86 amd64 ppc sparc alpha"
+IUSE=""
 
-SRC_URI="http://cpan.valueclick.com/authors/id/W/WP/WPS/${P}.tar.gz"
-
-DEPEND=">=sys-devel/perl-5
+DEPEND="${DEPEND}
 	>=sys-libs/ncurses-5"
-
-. /usr/portage/eclass/inherit.eclass || die
-inherit perl-module
 
 mymake="/usr"

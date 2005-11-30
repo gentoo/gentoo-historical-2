@@ -1,23 +1,21 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: 
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/cons/cons-2.2.0.ebuild,v 1.1.1.1 2005/11/30 09:53:54 chriswhite Exp $
 
-MY_P=${PN}-2.2.0
-S=${WORKDIR}/${MY_P}
 DESCRIPTION="Extensible perl-based build utility"
-SRC_URI="http://www.dsmit.com/cons/stable/${MY_P}.tgz"
+SRC_URI="http://www.dsmit.com/cons/stable/${P}.tgz"
 HOMEPAGE="http://www.dsmit.com/cons/"
 
-DEPEND="sys-devel/perl
-	dev-perl/Digest-MD5"
-
 SLOT="2.2"
-LICENSE="GPL"
-KEYWORDS="x86 ~ppc ~sparc ~sparc64 ~alpha"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc ~sparc alpha"
+IUSE=""
 
-src_install () {
-	exeinto /usr/bin
-	doexe cons
+DEPEND="dev-lang/perl
+	perl-core/Digest-MD5"
+
+src_install() {
+	dobin cons
 	dodoc CHANGES COPYING COPYRIGHT INSTALL MANIFEST README RELEASE TODO
 	dohtml *.html
 	doman cons.1.gz

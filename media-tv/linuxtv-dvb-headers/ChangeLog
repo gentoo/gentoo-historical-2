@@ -1,6 +1,21 @@
 # ChangeLog for media-tv/linuxtv-dvb-headers
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/linuxtv-dvb-headers/ChangeLog,v 1.1 2005/06/22 13:31:44 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/linuxtv-dvb-headers/ChangeLog,v 1.1.1.1 2005/11/30 09:50:31 chriswhite Exp $
+
+  15 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  changed it to be a virtual package with RDEPEND only
+
+  14 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  corrected typo in url-mirror-syntax
+
+  08 Jul 2005; Matthias Schwarzott <zzam@gentoo.org>
+  linuxtv-dvb-headers-3.1.ebuild:
+  Added ~amd64
+
+  23 Jun 2005; David Holm <dholm@gentoo.org> linuxtv-dvb-headers-3.1.ebuild:
+  Added to ~ppc.
 
 *linuxtv-dvb-headers-3.1 (22 Jun 2005)
 

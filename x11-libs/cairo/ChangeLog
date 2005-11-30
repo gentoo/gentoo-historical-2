@@ -1,6 +1,206 @@
-# ChangeLog for media-libs/cairo
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/ChangeLog,v 1.1 2004/03/17 23:37:07 twp Exp $
+# ChangeLog for x11-libs/cairo
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/ChangeLog,v 1.1.1.1 2005/11/30 09:54:16 chriswhite Exp $
+
+  26 Oct 2005; Fabian Groffen <grobian@gentoo.org> cairo-1.0.2.ebuild:
+  Marked ~ppc-macos (bug #109963)
+
+*cairo-1.0.2 (05 Oct 2005)
+
+  05 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -files/cairo-1.0.0-display_endianness.patch,
+  -files/cairo-1.0.0-omit_frame_pointer_fix.patch,
+  -files/cairo-1.0.0-tests.patch, +files/cairo-1.0.2-pkg_macro.patch,
+  -cairo-1.0.0-r2.ebuild, +cairo-1.0.2.ebuild:
+  New version. Dropping unnecesary patches, and added a new patch to fix a
+  small but important bug in configure.in.
+
+  05 Sep 2005; Markus Rothe <corsair@gentoo.org> cairo-0.3.0-r2.ebuild:
+  Stable on ppc64
+
+*cairo-1.0.0-r2 (02 Sep 2005)
+
+  02 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +files/cairo-1.0.0-display_endianness.patch,
+  +files/cairo-1.0.0-tests.patch, -cairo-1.0.0-r1.ebuild,
+  +cairo-1.0.0-r2.ebuild:
+  Added a couple of patches from upstream's CVS repository to fix some tests
+  on amd64 and fix a problem with remote displays that don't match the local
+  endianness.
+
+*cairo-1.0.0-r1 (31 Aug 2005)
+
+  31 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +files/cairo-1.0.0-omit_frame_pointer_fix.patch, -cairo-1.0.0.ebuild,
+  +cairo-1.0.0-r1.ebuild:
+  Added patch from upstream CVS repository that fixes a segmentation fault
+  when -fomit-frame-pointer is in CFLAGS (bug #104265).
+
+*cairo-1.0.0 (25 Aug 2005)
+
+  25 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -files/cairo-0.9.2-vendor_string.patch, -files/xrender.pc,
+  -cairo-0.9.2-r1.ebuild, +cairo-1.0.0.ebuild:
+  New version.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> cairo-0.3.0-r2.ebuild:
+  stable on ia64
+
+*cairo-0.9.2-r1 (18 Aug 2005)
+
+  18 Aug 2005; Doug Goldstein <cardoe@gentoo.org> -cairo-0.9.2.ebuild,
+  +cairo-0.9.2-r1.ebuild:
+  Added glitz support back to the Cairo 0.9.x branch
+
+*cairo-0.9.2 (15 Aug 2005)
+
+  15 Aug 2005; Leonardo Boshell <leonardop@gentoo.org> cairo-0.9.2.ebuild,
+  files/cairo-0.9.2-vendor_string.patch, metadata.xml:
+  New version. Updated dependencies. Install a few files with 'dodoc'. Added
+  'doc' and 'static' USE flags. Added patch to properly enable a work-around
+  in cairo's code for a rendering problem (see bug #100917).
+
+*cairo-0.6.0 (31 Jul 2005)
+
+  31 Jul 2005; Marinus Schraal <foser@gentoo.org> cairo-0.6.0.ebuild :
+  New release, add block instead of patch (see #85285 for details)
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> cairo-0.3.0.ebuild:
+  stable on ia64
+
+  05 May 2005; Peter Johanson <latexer@gentoo.org> cairo-0.1.18.ebuild,
+  cairo-0.1.18-r1.ebuild, cairo-0.1.23.ebuild, cairo-0.1.23-r1.ebuild,
+  cairo-0.2.0.ebuild, cairo-0.2.0-r1.ebuild, cairo-0.3.0.ebuild,
+  cairo-0.3.0-r1.ebuild, cairo-0.3.0-r2.ebuild, cairo-0.4.0.ebuild:
+  Remove references to xfree (makes dependancies easier)
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> cairo-0.1.18.ebuild,
+  cairo-0.1.18-r1.ebuild, cairo-0.1.23.ebuild, cairo-0.1.23-r1.ebuild,
+  cairo-0.2.0.ebuild, cairo-0.2.0-r1.ebuild, cairo-0.3.0.ebuild,
+  cairo-0.3.0-r1.ebuild, cairo-0.3.0-r2.ebuild, cairo-0.4.0.ebuild:
+  Fixed [<>]=cat/pkg-ver* dependencies.
+
+*cairo-0.4.0 (11 Apr 2005)
+
+  11 Apr 2005; Peter Johanson <latexer@gentoo.org> +cairo-0.4.0.ebuild:
+  Bump. See bug #85285.
+
+*cairo-0.3.0-r2 (11 Apr 2005)
+
+  11 Apr 2005; Peter Johanson <latexer@gentoo.org>
+  +files/cairo-0.3.0-header-fix.diff, +cairo-0.3.0-r2.ebuild:
+  Revision bump to fix the cairo-xlib.h header. See bug #87420
+
+  07 Mar 2005; Markus Rothe <corsair@gentoo.org> cairo-0.3.0.ebuild:
+  Stable on ppc64
+
+*cairo-0.3.0-r1 (23 Feb 2005)
+
+  23 Feb 2005; Peter Johanson <latexer@gentoo.org> +cairo-0.2.0-r1.ebuild,
+  +cairo-0.3.0-r1.ebuild:
+  Add revision bumps of two most recent releases, that includes optional xlib
+  backend support via the X USE flag. See bug #75346.
+
+  23 Feb 2005; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  cairo-0.3.0.ebuild:
+  Change dep to new 0.3.0 CVS snapshot now in portage, and add myself as a
+  maintainer.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> cairo-0.2.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> cairo-0.3.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  26 Jan 2005; Tom Payne <twp@gentoo.org> cairo-0.3.0.ebuild:
+  Updated glitz dependency. Bug # 79575.
+
+*cairo-0.3.0 (25 Jan 2005)
+
+  25 Jan 2005; Tom Payne <twp@gentoo.org> +cairo-0.3.0.ebuild:
+  Version bump. Bug # 79516.
+
+  01 Jan 2005; Tom Payne <twp@gentoo.org> cairo-0.2.0.ebuild:
+  Updated libpixman dependency. Bug # 75185.
+
+  21 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> cairo-0.1.23-r1.ebuild:
+  Stable on alpha.
+
+  20 Dec 2004; Dylan Carlson <absinthe@gentoo.org> cairo-0.1.23-r1.ebuild:
+  Stable on amd64.
+
+  19 Dec 2004; Tom Payne <twp@gentoo.org> cairo-0.2.0.ebuild:
+  Updated glitz dependency. Bug # 73454. Thanks Nahum Shalman.
+
+  15 Dec 2004; David Holm <dholm@gentoo.org> cairo-0.2.0.ebuild:
+  Added to ~ppc.
+
+  09 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> cairo-0.1.23-r1.ebuild:
+  Stable on sparc
+
+  08 Dec 2004; Jason Wever <weeve@gentoo.org> cairo-0.2.0.ebuild:
+  Added ~sparc keyword.
+
+  06 Dec 2004; Tom Payne <twp@gentoo.org> cairo-0.1.23-r1.ebuild,
+  cairo-0.1.23.ebuild, cairo-0.2.0.ebuild:
+  0.1.23 stable on x86. 0.2.0 fix LICENSE. Bug # 73489.
+
+  06 Dec 2004; Joseph Jezak <josejx@gentoo.org> cairo-0.1.23-r1.ebuild:
+  Marked ppc stable for bug #71653.
+
+*cairo-0.2.0 (05 Dec 2004)
+
+  05 Dec 2004; Tom Payne <twp@gentoo.org> +cairo-0.2.0.ebuild:
+  Version bump. Bug # 70678.
+
+*cairo-0.1.18 (10 Sep 2004)
+
+  10 Sep 2004; Tom Payne <twp@gentoo.org> +cairo-0.1.18.ebuild,
+  +cairo-0.1.23.ebuild:
+  Restoring ebuilds required to workaround xfree bug.
+
+  10 Sep 2004; Tom Payne <twp@gentoo.org> cairo-0.1.18-r1.ebuild,
+  -cairo-0.1.18.ebuild, cairo-0.1.23-r1.ebuild, -cairo-0.1.23.ebuild:
+  Respect user's PKG_CONFIG_PATH. Bug # 62814. Stable on x86.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cairo-0.1.18-r1.ebuild, cairo-0.1.18.ebuild:
+  Masked cairo-0.1.18.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cairo-0.1.18-r1.ebuild:
+  Masked cairo-0.1.18-r1.ebuild stable for ppc
+
+  30 Jun 2004; <twp@gentoo.org> cairo-0.1.18-r1.ebuild, cairo-0.1.18.ebuild,
+  cairo-0.1.23-r1.ebuild, cairo-0.1.23.ebuild:
+  Fix dependencies. Bug # 55689.
+
+*cairo-0.1.18-r1 (27 Jun 2004)
+*cairo-0.1.23-r1 (27 Jun 2004)
+
+  27 Jun 2004; <twp@gentoo.org> +cairo-0.1.18-r1.ebuild, cairo-0.1.18.ebuild,
+  +cairo-0.1.23-r1.ebuild, cairo-0.1.23.ebuild:
+  Try to fix bug # 55099 (xrender.pc) using DEPEND magic
+
+  20 Jun 2004; <twp@gentoo.org> cairo-0.1.18.ebuild, cairo-0.1.23.ebuild:
+  Don't install xrender.pc. Bug # 49024.
+
+  04 Jun 2004; Jason Wever <weeve@gentoo.org> cairo-0.1.23.ebuild:
+  Added ~sparc keyword.
+
+  12 May 2004; Travis Tilley <lv@gentoo.org> cairo-0.1.23.ebuild:
+  fixed dep on libpixman
+
+*cairo-0.1.23 (11 May 2004)
+
+  11 May 2004; Travis Tilley <lv@gentoo.org> +cairo-0.1.23.ebuild:
+  version bump and add ~amd64 to keywords
+
+  09 May 2004; <twp@gentoo.org> cairo-0.1.18.ebuild:
+  Stable on x86.
+
+  18 Mar 2004; David Holm <dholm@gentoo.org> cairo-0.1.18.ebuild:
+  Added to ~ppc.
 
   18 Mar 2004; Tom Payne <twp@gentoo.org> cairo-0.1.18.ebuild :
   Install xrender.pc.

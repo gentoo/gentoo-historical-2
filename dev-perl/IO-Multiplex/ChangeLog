@@ -1,6 +1,43 @@
 # ChangeLog for dev-perl/IO-Multiplex
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Multiplex/ChangeLog,v 1.1 2005/04/29 00:18:54 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Multiplex/ChangeLog,v 1.1.1.1 2005/11/30 09:53:06 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> ChangeLog:
+  Mark 1.08 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> IO-Multiplex-1.08.ebuild:
+  Mark 1.08 stable on alpha
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  IO-Multiplex-1.08.ebuild:
+  Stable on ppc.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> IO-Multiplex-1.08.ebuild:
+  add ~ia64
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  IO-Multiplex-1.08.ebuild:
+  Added to ~ppc.
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> IO-Multiplex-1.08.ebuild:
+  Stable on ppc64
+
+  18 Jun 2005; Markus Rothe <corsair@gentoo.org> IO-Multiplex-1.08.ebuild:
+  added ~ppc64
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  IO-Multiplex-1.08.ebuild:
+  Stable on sparc
+
+  13 Jun 2005; Andrej Kacian <ticho@gentoo.org> IO-Multiplex-1.08.ebuild:
+  Stable on x86 and amd64, as dependencies for mail-filter/postgrey.
+
+  11 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  IO-Multiplex-1.08.ebuild:
+  keyworded ~alpha wrt #90856
+
+  29 Apr 2005; Andrej Kacian <ticho@gentoo.org> IO-Multiplex-1.08.ebuild:
+  Added ~amd64 keyword.
 
 *IO-Multiplex-1.08 (29 Apr 2005)
 

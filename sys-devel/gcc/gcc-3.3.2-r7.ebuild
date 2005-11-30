@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.3.2-r7.ebuild,v 1.1 2004/02/08 15:29:35 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.3.2-r7.ebuild,v 1.1.1.1 2005/11/30 09:53:45 chriswhite Exp $
 
-IUSE="static nls bootstrap java build X multilib"
+IUSE="static nls bootstrap java build X multilib gcj emul-linux-x86"
 
-inherit eutils flag-o-matic libtool
+inherit eutils flag-o-matic libtool versionator
 
 # Compile problems with these (bug #6641 among others)...
 #filter-flags "-fno-exceptions -fomit-frame-pointer -fforce-addr"
@@ -38,15 +38,17 @@ strip-flags
 [ ! -n "${CCHOST}" ] && export CCHOST="${CHOST}"
 
 LOC="/usr"
-MY_PV="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
-MY_PV_FULL="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
+#GCC_BRANCH_VER="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
+#GCC_RELEASE_VER="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
+GCC_BRANCH_VER="$(get_version_component_range 1-2)"
+GCC_RELEASE_VER="$(get_version_component_range 1-3)"
 
-LIBPATH="${LOC}/lib/gcc-lib/${CCHOST}/${MY_PV_FULL}"
-BINPATH="${LOC}/${CCHOST}/gcc-bin/${MY_PV}"
-DATAPATH="${LOC}/share/gcc-data/${CCHOST}/${MY_PV}"
+LIBPATH="${LOC}/lib/gcc-lib/${CCHOST}/${GCC_RELEASE_VER}"
+BINPATH="${LOC}/${CCHOST}/gcc-bin/${GCC_BRANCH_VER}"
+DATAPATH="${LOC}/share/gcc-data/${CCHOST}/${GCC_BRANCH_VER}"
 # Dont install in /usr/include/g++-v3/, but in gcc internal directory.
 # We will handle /usr/include/g++-v3/ with gcc-config ...
-STDCXX_INCDIR="${LIBPATH}/include/g++-v${MY_PV/\.*/}"
+STDCXX_INCDIR="${LIBPATH}/include/g++-v${GCC_BRANCH_VER/\.*/}"
 
 # ProPolice version
 PP_VER="3_3"
@@ -61,15 +63,15 @@ PATCH_VER="1.0"
 SNAPSHOT=
 
 # Branch update support ...
-MAIN_BRANCH="${PV}"  # Tarball, etc used ...
+GCC_RELEASE_VER="${PV}"  # Tarball, etc used ...
 
 #BRANCH_UPDATE="20021208"
 BRANCH_UPDATE="20040119"
 
 if [ -z "${SNAPSHOT}" ]
 then
-	S="${WORKDIR}/${PN}-${MAIN_BRANCH}"
-	SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${P}/${PN}-${MAIN_BRANCH}.tar.bz2"
+	S="${WORKDIR}/${PN}-${GCC_RELEASE_VER}"
+	SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${P}/${PN}-${GCC_RELEASE_VER}.tar.bz2"
 
 	if [ -n "${PATCH_VER}" ]
 	then
@@ -80,7 +82,7 @@ then
 	if [ -n "${BRANCH_UPDATE}" ]
 	then
 		SRC_URI="${SRC_URI}
-		         mirror://gentoo/${PN}-${MAIN_BRANCH}-branch-update-${BRANCH_UPDATE}.patch.bz2"
+		         mirror://gentoo/${PN}-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2"
 	fi
 else
 	S="${WORKDIR}/gcc-${SNAPSHOT//-}"
@@ -89,6 +91,7 @@ fi
 if [ -n "${PP_VER}" ]
 then
 	SRC_URI="${SRC_URI}
+		mirror://gentoo/protector-${PP_FVER}.tar.gz
 		http://www.research.ibm.com/trl/projects/security/ssp/gcc${PP_VER}/protector-${PP_FVER}.tar.gz"
 fi
 SRC_URI="${SRC_URI}
@@ -99,22 +102,13 @@ HOMEPAGE="http://www.gnu.org/software/gcc/gcc.html"
 
 LICENSE="GPL-2 LGPL-2.1"
 
-KEYWORDS="~x86 ~mips ~sparc ~amd64 -hppa ~alpha ~ia64 ~ppc64"
+KEYWORDS="x86 mips ~sparc ~amd64 -hppa alpha ia64 ppc64"
 
 # Ok, this is a hairy one again, but lets assume that we
 # are not cross compiling, than we want SLOT to only contain
 # $PV, as people upgrading to new gcc layout will not have
 # their old gcc unmerged ...
-if [ "${CHOST}" == "${CCHOST}" ]
-then
-# GCC-3.3 is supposed to be binary compatible with 3.2..
-#	SLOT="${MY_PV}"
-	SLOT="3.2"
-else
-# GCC-3.3 is supposed to be binary compatible with 3.2..
-#	SLOT="${CCHOST}-${MY_PV}"
-	SLOT="${CCHOST}-3.2"
-fi
+SLOT="3.3"
 
 # We need the later binutils for support of the new cleanup attribute.
 # 'make check' fails for about 10 tests (if I remember correctly) less
@@ -123,23 +117,23 @@ fi
 # we scan for Guard@@libgcc and then apply the function moving patch.
 # If using NPTL, we currently cannot however depend on glibc-2.3.2-r3,
 # else bootstap will break.
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	!nptl? ( >=sys-libs/glibc-2.3.2-r3 )
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	>=sys-devel/bison-1.875
-	>=sys-devel/gcc-config-1.3.1
+	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.1 )
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-baselibs-1.0 ) )
 	!build? ( >=sys-libs/ncurses-5.2-r2
 	          nls? ( sys-devel/gettext ) )"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	!nptl? ( >=sys-libs/glibc-2.3.2-r3 )
-	>=sys-devel/gcc-config-1.3.1
+	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.1 )
 	>=sys-libs/zlib-1.1.4
 	>=sys-apps/texinfo-4.2-r4
 	!build? ( >=sys-libs/ncurses-5.2-r2 )"
 
-PDEPEND="sys-devel/gcc-config"
+PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )"
 
 
 chk_gcc_version() {
@@ -148,7 +142,7 @@ chk_gcc_version() {
 	local OLD_GCC_CHOST="$(gcc -v 2>&1 | egrep '^Reading specs' |\
 	                       sed -e 's:^.*/gcc-lib/\([^/]*\)/[0-9]\+.*$:\1:')"
 
-	if [ "${OLD_GCC_VERSION}" != "${MY_PV_FULL}" ]
+	if [ "${OLD_GCC_VERSION}" != "${GCC_RELEASE_VER}" ]
 	then
 		echo "${OLD_GCC_VERSION}" > "${WORKDIR}/.oldgccversion"
 	fi
@@ -181,7 +175,7 @@ glibc_have_ssp() {
 			my_libc="${ROOT}/lib64/libc.so.?"
 			;;
 	esac
-	
+
 	# Check for the glibc to have the __guard symbols
 	if  [ "$(readelf -s "${my_libc}" 2>/dev/null | \
 	         grep GLOBAL | grep OBJECT | grep '__guard')" ] && \
@@ -258,7 +252,7 @@ src_unpack() {
 
 	if [ -z "${SNAPSHOT}" ]
 	then
-		unpack ${PN}-${MAIN_BRANCH}.tar.bz2
+		unpack ${PN}-${GCC_RELEASE_VER}.tar.bz2
 
 		if [ -n "${PATCH_VER}" ]
 		then
@@ -282,7 +276,7 @@ src_unpack() {
 	# Branch update ...
 	if [ -n "${BRANCH_UPDATE}" ]
 	then
-		epatch ${DISTDIR}/${PN}-${MAIN_BRANCH}-branch-update-${BRANCH_UPDATE}.patch.bz2
+		epatch ${DISTDIR}/${PN}-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
 	fi
 
 	# Do bulk patches included in ${P}-patches-${PATCH_VER}.tar.bz2
@@ -292,7 +286,7 @@ src_unpack() {
 #		mv -f ${WORKDIR}/patch/{40,41}* ${WORKDIR}/patch/exclude/
 		mv -f ${WORKDIR}/patch/41* ${WORKDIR}/patch/exclude/
 
-		if [ -n "`use multilib`" -a "${ARCH}" = "amd64" ]
+		if use multilib && [ "${ARCH}" = "amd64" ]
 		then
 			mv -f ${WORKDIR}/patch/06* ${WORKDIR}/patch/exclude/
 			bzip2 -c ${FILESDIR}/gcc331_use_multilib.amd64.patch > \
@@ -347,20 +341,20 @@ src_compile() {
 	local myconf=
 	local gcc_lang=
 
-	if [ -z "`use build`" ]
+	if ! use build
 	then
 		myconf="${myconf} --enable-shared"
 		gcc_lang="c,c++,f77,objc"
 	else
 		gcc_lang="c"
 	fi
-	if [ -z "`use nls`" -o "`use build`" ]
+	if ! use nls || use build
 	then
 		myconf="${myconf} --disable-nls"
 	else
 		myconf="${myconf} --enable-nls --without-included-gettext"
 	fi
-	if [ -n "`use java`" -a -z "`use build`" ]
+	if use java && use gcj && ! use build
 	then
 		gcc_lang="${gcc_lang},java"
 	fi
@@ -370,15 +364,14 @@ src_compile() {
 	# X11 support is still very experimental but enabling it is
 	# quite innocuous...  [No, gcc is *not* linked to X11...]
 	# <dragon@gentoo.org> (15 May 2003)
-	if [ -n "`use java`" -a -n "`use X`" -a -z "`use build`" -a \
-	     -f /usr/X11R6/include/X11/Xlib.h ]
+	if use java && use gcj && use X && ! use build && [ -f /usr/X11R6/include/X11/Xlib.h ]
 	then
 		myconf="${myconf} --x-includes=/usr/X11R6/include --x-libraries=/usr/X11R6/lib"
 		myconf="${myconf} --enable-interpreter --enable-java-awt=xlib --with-x"
 	fi
 
 	# Multilib not yet supported
-	if [ -n "`use multilib`" -a "${ARCH}" = "amd64" ]
+	if use multilib && [ "${ARCH}" = "amd64" ]
 	then
 		einfo "WARNING: Multilib support enabled. This is still experimental."
 		myconf="${myconf} --enable-multilib"
@@ -393,12 +386,15 @@ src_compile() {
 	# Fix linking problem with c++ apps which where linkedi
 	# agains a 3.2.2 libgcc
 	[ "${ARCH}" = "hppa" ] && myconf="${myconf} --enable-sjlj-exceptions"
+	myconf="${myconf} --disable-libunwind-exceptions"
 
 	# In general gcc does not like optimization, and add -O2 where
-	# it is safe.  This is especially true for gcc-3.3 ...
-	export CFLAGS="${CFLAGS/-O?/-O2}"
-	export CXXFLAGS="${CXXFLAGS/-O?/-O2}"
-	export GCJFLAGS="${CFLAGS/-O?/-O2}"
+	export CFLAGS="$(echo "${CFLAGS}" | sed -e 's|-O[0-9s]\?|-O2|g')"
+	einfo "CFLAGS=\"${CFLAGS}\""
+	export CXXFLAGS="$(echo "${CXXFLAGS}" | sed -e 's|-O[0-9s]\?|-O2|g')"
+	einfo "CXXFLAGS=\"${CXXFLAGS}\""
+	export GCJFLAGS="$(echo "${GCJFLAGS}" | sed -e 's|-O[0-9s]\?|-O2|g')"
+	einfo "GCJFLAGS=\"${GCJFLAGS}\""
 
 	# Build in a separate build tree
 	mkdir -p ${WORKDIR}/build
@@ -436,13 +432,10 @@ src_compile() {
 		find ${S} -name '*.[17]' -exec touch {} \; || :
 	fi
 
-	# Setup -j in MAKEOPTS
-	get_number_of_jobs
-
 	einfo "Building GCC..."
 	# Only build it static if we are just building the C frontend, else
 	# a lot of things break because there are not libstdc++.so ....
-	if [ -n "`use static`" -a "${gcc_lang}" = "c" ]
+	if use static && [ "${gcc_lang}" = "c" ]
 	then
 		# Fix for our libtool-portage.patch
 		S="${WORKDIR}/build" \
@@ -502,22 +495,22 @@ src_install() {
 
 	dodir /lib /usr/bin
 	dodir /etc/env.d/gcc
-	echo "PATH=\"${BINPATH}\"" > ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
-	echo "ROOTPATH=\"${BINPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
-	if [ -n "`use multilib`" -a "${ARCH}" = "amd64" ]
+	echo "PATH=\"${BINPATH}\"" > ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "ROOTPATH=\"${BINPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	if use multilib && [ "${ARCH}" = "amd64" ]
 	then
 		# amd64 is a bit unique because of multilib.  Add some other paths
 		echo "LDPATH=\"${LIBPATH}:${LIBPATH}/32:${LIBPATH}/../lib64:${LIBPATH}/../lib32\"" >> \
-			${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+			${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
 	else
-		echo "LDPATH=\"${LIBPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+		echo "LDPATH=\"${LIBPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
 	fi
-	echo "MANPATH=\"${DATAPATH}/man\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
-	echo "INFOPATH=\"${DATAPATH}/info\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
-	echo "STDCXX_INCDIR=\"${STDCXX_INCDIR##*/}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "MANPATH=\"${DATAPATH}/man\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "INFOPATH=\"${DATAPATH}/info\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "STDCXX_INCDIR=\"${STDCXX_INCDIR##*/}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
 	# Also set CC and CXX
-	echo "CC=\"gcc\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
-	echo "CXX=\"g++\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "CC=\"gcc\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "CXX=\"g++\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
 	# Make sure we do not check glibc for SSP again, as we did already
 	if glibc_have_ssp || \
 	   [ -f "${ROOT}/etc/env.d/99glibc_ssp" ]
@@ -527,7 +520,7 @@ src_install() {
 
 	# Make sure we dont have stuff lying around that
 	# can nuke multiple versions of gcc
-	if [ -z "`use build`" ]
+	if ! use build
 	then
 		cd ${D}${LIBPATH}
 
@@ -575,7 +568,7 @@ src_install() {
 
 		# Rename jar because it could clash with Kaffe's jar if this gcc is
 		# primary compiler (aka don't have the -<version> extension)
-		cd ${D}${LOC}/${CCHOST}/gcc-bin/${MY_PV}
+		cd ${D}${LOC}/${CCHOST}/gcc-bin/${GCC_BRANCH_VER}
 		[ -f jar ] && mv -f jar gcj-jar
 
 		# Move <cxxabi.h> to compiler-specific directories
@@ -604,7 +597,7 @@ src_install() {
 	fi
 
 	cd ${S}
-	if [ -z "`use build`" ]
+	if ! use build
 	then
 		cd ${S}
 		docinto /${CCHOST}
@@ -639,7 +632,7 @@ src_install() {
 		cp -f docs/html/17_intro/[A-Z]* \
 			${D}/usr/share/doc/${PF}/${DOCDESTTREE}/17_intro/
 
-		if [ -n "`use java`" ]
+		if use java && use gcj
 		then
 			cd ${S}/fastjar
 			docinto ${CCHOST}/fastjar
@@ -663,7 +656,7 @@ src_install() {
 	exeinto /sbin
 	doexe ${FILESDIR}/fix_libtool_files.sh
 
-	if [ -n "`use multilib`" -a "${ARCH}" = "amd64" ]
+	if use multilib && [ "${ARCH}" = "amd64" ]
 	then
 		# If using multilib, GCC has a bug, where it doesn't know where to find
 		# -lgcc_s when linking while compiling with g++ .  ${LIBPATH} is in
@@ -683,7 +676,7 @@ pkg_preinst() {
 
 	# Make again sure that the linker "should" be able to locate
 	# libstdc++.so ...
-	if [ -n "`use multilib`" -a "${ARCH}" = "amd64" ]
+	if use multilib && [ "${ARCH}" = "amd64" ]
 	then
 		# Can't always find libgcc_s.so.1, make it find it
 		export LD_LIBRARY_PATH="${LIBPATH}:${LIBPATH}/../lib64:${LIBPATH}/../lib32:${LD_LIBRARY_PATH}"
@@ -695,16 +688,16 @@ pkg_preinst() {
 
 pkg_postinst() {
 
-	if [ -n "`use multilib`" -a "${ARCH}" = "amd64" ]
+	if use multilib && [ "${ARCH}" = "amd64" ]
 	then
 		# Can't always find libgcc_s.so.1, make it find it
 		export LD_LIBRARY_PATH="${LIBPATH}:${LIBPATH}/../lib64:${LIBPATH}/../lib32:${LD_LIBRARY_PATH}"
 	else
 		export LD_LIBRARY_PATH="${LIBPATH}:${LD_LIBRARY_PATH}"
 	fi
-	if [ "${ROOT}" = "/" -a "${COMPILER}" = "gcc3" -a "${CHOST}" = "${CCHOST}" ]
+	if [ "${ROOT}" = "/" -a "${CHOST}" = "${CCHOST}" ]
 	then
-		gcc-config --use-portage-chost ${CCHOST}-${MY_PV_FULL}
+		gcc-config --use-portage-chost ${CCHOST}-${GCC_RELEASE_VER}
 	fi
 
 	# Update libtool linker scripts to reference new gcc version ...
@@ -719,7 +712,7 @@ pkg_postinst() {
 		then
 			OLD_GCC_VERSION="$(cat "${WORKDIR}/.oldgccversion")"
 		else
-			OLD_GCC_VERSION="${MY_PV_FULL}"
+			OLD_GCC_VERSION="${GCC_RELEASE_VER}"
 		fi
 
 		if [ -f "${WORKDIR}/.oldgccchost" ] && \

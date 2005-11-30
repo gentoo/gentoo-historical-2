@@ -1,6 +1,34 @@
 # ChangeLog for dev-embedded/gpsim-lcd
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpsim-lcd/ChangeLog,v 1.1 2003/10/21 05:45:15 robbat2 Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpsim-lcd/ChangeLog,v 1.1.1.1 2005/11/30 09:53:26 chriswhite Exp $
+
+  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> gpsim-lcd-0.2.1.ebuild:
+  Fix cp and chroot calls for FreeBSD compatiblity.
+
+  25 Mar 2005; <blubb@gentoo.org> gpsim-lcd-0.2.1.ebuild:
+  added ~amd64
+
+  05 Jan 2005; Daniel Black <dragonheart@gentoo.org> gpsim-lcd-0.2.1.ebuild:
+  Replaced gnuconfig method with an autoconf to generate config.guess files that
+  will hopefully be amd64 friendly.
+
+*gpsim-lcd-0.2.1 (03 Jan 2005)
+
+  03 Jan 2005; Daniel Black <dragonheart@gentoo.org> gpsim-lcd-0.1.1.ebuild,
+  +gpsim-lcd-0.2.1.ebuild:
+  updated gnuconfig to solve bug #74998. This will hopefully make this amd64
+  (and others) compatible. Thanks to Aris Adamantiadis <aris@0xbadc0de.be> for
+  the bug report
+
+  24 Mar 2004; Daniel Black <dragonheart@gentoo.org> gpsim-lcd-0.1.1.ebuild:
+  Added IUSE to ebuild
+
+  05 Mar 2004; Daniel Black <dragonheart@gentoo.org> gpsim-lcd-0.1.1.ebuild:
+  unmasking x86
+
+  28 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> gpsim-lcd-0.1.1.ebuild,
+  files/gpsim-lcd-0.1.1-display_fix.patch:
+  add functionality fix to avoid nasty refresh bug. QA Fix
 
 *gpsim-lcd-0.1.1 (20 Oct 2003)
 

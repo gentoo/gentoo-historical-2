@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/nmh/nmh-1.0.4-r3.ebuild,v 1.1 2004/07/27 15:11:00 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/nmh/nmh-1.0.4-r3.ebuild,v 1.1.1.1 2005/11/30 09:49:58 chriswhite Exp $
 
 inherit eutils
 DESCRIPTION="New MH mail reader"
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.mhost.com/nmh/"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="x86 sparc ~ppc"
 IUSE=""
 
 DEPEND="virtual/libc
@@ -17,9 +17,12 @@ DEPEND="virtual/libc
 	>=sys-libs/ncurses-5.2"
 
 src_compile() {
+
 	[ -z "${EDITOR}" ] && export EDITOR="prompter"
 	[ -z "${PAGER}" ] && export PAGER="/usr/bin/more"
 
+	# vitest access violation patch
+	epatch ${FILESDIR}/${P}-configure-vitest.patch || die "patch failed."
 	# bug #57886
 	epatch ${FILESDIR}/${P}-m_getfld.patch || die "patch failed."
 

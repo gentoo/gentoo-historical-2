@@ -1,19 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/convert-ascii-armour/convert-ascii-armour-1.4.ebuild,v 1.1 2003/06/24 00:37:36 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/convert-ascii-armour/convert-ascii-armour-1.4.ebuild,v 1.1.1.1 2005/11/30 09:53:17 chriswhite Exp $
 
 inherit perl-module
 
 MY_P=Convert-ASCII-Armour-${PV}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="Perl interface to the MD2 Algorithm"
-SRC_URI="http://search.cpan.org/CPAN/authors/id/V/VI/VIPUL/${MY_P}.tar.gz"
+DESCRIPTION="Convert binary octets into ASCII armoured messages."
 HOMEPAGE="http://search.cpan.org/CPAN/authors/id/V/VI/VIPUL/${MY_P}.readme"
+SRC_URI="mirror://cpan/authors/id/V/VI/VIPUL/${MY_P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ~alpha ~ppc ~sparc"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ~ppc ~ppc64 sparc x86"
+IUSE=""
 
 DEPEND="dev-perl/Compress-Zlib
-		dev-perl/Digest-MD5
-		dev-perl/MIME-Base64"
+	perl-core/Digest-MD5
+	perl-core/MIME-Base64"

@@ -1,29 +1,33 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author: Tools Team <tools@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk-perl-glade/gtk-perl-glade-0.7004-r2.ebuild,v 1.1 2002/05/06 23:42:43 seemant Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk-perl-glade/gtk-perl-glade-0.7004-r2.ebuild,v 1.1.1.1 2005/11/30 09:53:12 chriswhite Exp $
 
-. /usr/portage/eclass/inherit.eclass || die
 inherit perl-module
 
-S=${WORKDIR}/Gtk-Perl-${PV}
+MY_P=Gtk-Perl-${PV}
+S=${WORKDIR}/${MY_P}
 DESCRIPTION="Perl bindings for GTK"
-SRC_URI="ftp://ftp.rz.ruhr-uni-bochum.de/pub/CPAN/authors/id/L/LU/LUPUS/Gtk-Perl-${PV}.tar.gz"
-HOEMPAGE="http://www.perl.org/"
+SRC_URI="ftp://ftp.rz.ruhr-uni-bochum.de/pub/CPAN/authors/id/L/LU/LUPUS/${MY_P}.tar.gz"
+HOMEPAGE="http://www.perl.org/"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 amd64 ppc sparc alpha"
+IUSE=""
 
 DEPEND="${DEPEND}
 	>=dev-perl/gtk-perl-${PV}
 	dev-util/glade"
 
-src_compile() {            
+src_compile() {
 	perl Makefile.PL
 	emake || die
-	cd Glade               
-	perl Makefile.PL 
+	cd Glade
+	perl Makefile.PL
 	emake || die
 }
 
-src_install() {                               
+src_install() {
 	cd Glade
 	make PREFIX=${D}/usr INSTALLMAN3DIR=${D}/usr/share/man/man3 install || die
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-ldap/qmail-ldap-1.03-r2.ebuild,v 1.1 2004/05/30 10:52:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-ldap/qmail-ldap-1.03-r2.ebuild,v 1.1.1.1 2005/11/30 09:50:56 chriswhite Exp $
 
 IUSE="ssl"
 
@@ -19,7 +19,7 @@ SRC_URI="mirror://qmail/qmail-1.03.tar.gz
 	http://www.nrg4u.com/qmail/qmail-ldap-1.03-20040101.patch.gz
 	mirror://gentoo/${P}-r2-tls.patch.bz2"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	net-nds/openldap
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88
@@ -28,11 +28,11 @@ DEPEND="virtual/glibc
 	ssl? ( >=dev-libs/openssl-0.9.6e )"
 
 RDEPEND="!virtual/mta
-	virtual/glibc
+	virtual/libc
 	sys-apps/groff
 	>=net-nds/openldap-2.0.25-r2
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-apps/daemontools-0.76-r1
+	>=sys-process/daemontools-0.76-r1
 	>=net-mail/checkpassword-0.90
 	>=net-mail/dot-forward-0.71"
 
@@ -73,7 +73,7 @@ src_unpack() {
 	# If you really want, uncomment it yourself, as mail really should be in GMT
 	#epatch ${DISTDIR}/qmail-date-localtime.patch.txt
 
-	if [ `use ssl` ]; then
+	if use ssl; then
 		epatch ${DISTDIR}/${P}-r2-tls.patch.bz2 || die "tls+auth patch failed"
 	fi
 
@@ -301,7 +301,7 @@ pkg_postinst() {
 	fi
 
 	echo -e "\e[32;01m Please do not forget to run, the following syntax :\033[0m"
-	echo -e "\e[32;01m ebuild /var/db/pkg/${CATEGORY}/${PN}-${PV}-${PR}/${PN}-${PV}-${PR}.ebuild config \033[0m"
+	echo -e "\e[32;01m emerge --config =${PF} \033[0m"
 	echo -e "\e[32;01m This will setup qmail to run out-of-the-box on your system. \033[0m"
 	echo -e ""
 	echo -e "\e[32;01m To start qmail at boot you have to enable the /etc/init.d/svscan rc file \033[0m"
@@ -313,9 +313,9 @@ pkg_postinst() {
 	echo -e "\e[32;01m NOTE: Please check your /var/qmail/control/ldap* files to match your local \033[0m"
 	echo -e "\e[32;01m ldap settings and add the qmail.schema along with \"allow bind_v2\" to your \033[0m"
 	echo -e "\e[32;01m slapd.conf. For sample ldifs, please check \033[0m"
-	echo -e "\e[32;01m /usr/share/doc/${PN}-${PV}-${PR}/samples.ldif.gz \033[0m"
+	echo -e "\e[32;01m /usr/share/doc/${PF}/samples.ldif.gz \033[0m"
 
-	if  [ `use ssl` ]; then
+	if  use ssl; then
 		echo "Creating a self-signed ssl-cert:"
 		/usr/bin/openssl req -new -x509 -nodes -out /var/qmail/control/servercert.pem -days 366 -keyout /var/qmail/control/servercert.pem
 		chmod 640 /var/qmail/control/servercert.pem

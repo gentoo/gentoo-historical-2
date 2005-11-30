@@ -1,40 +1,28 @@
-# ChangeLog for sys-apps/deltup
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/deltup/ChangeLog,v 1.1 2003/08/15 13:25:55 lanius Exp $
+# ChangeLog for app-portage/deltup
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/deltup/ChangeLog,v 1.1.1.1 2005/11/30 09:51:55 chriswhite Exp $
 
-*deltup-0.4.0 (15 Aug 2003)
+  13 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org> deltup-0.4.2-r1.ebuild:
+  Keyworded ~alpha wrt #93379 deltup-0.4.2-r1.ebuild
 
-  15 Aug 2003; Heinrich Wendel <lanius@gentoo.org> deltup-0.3.4.ebuild,
-  deltup-0.3.5.ebuild, deltup-0.3.6.1.ebuild, deltup-0.3.7.ebuild,
-  deltup-0.4.0.ebuild:
-  moved from sys-apps to app-portage
+  10 May 2005; Stefan Schweizer <genstef@gentoo.org> deltup-0.4.2-r1.ebuild:
+  ~amd64 thanks to dang and cparrott in #gentoo-amd64-dev
 
-*deltup-0.4.0 (24 Jul 2003)
+  09 May 2005; Stefan Schweizer <genstef@gentoo.org> -deltup-0.4.2.ebuild,
+  deltup-0.4.2-r1.ebuild:
+  Change DEPEND to allow usage with bdelta, thanks to blackpenguin
 
-  24 Jul 2003; Martin Holzer <mholzer@gentoo.org> deltup-0.4.0.ebuild:
-  Version bumped.
+*deltup-0.4.2-r1 (28 Apr 2005)
 
-*deltup-0.3.7 (27 Jun 2003)
+  28 Apr 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/bzip2-1.0.2-makefile-CFLAGS.patch, +deltup-0.4.2-r1.ebuild:
+  Fiy bzip2 1.0.2 <-> 1.0.3 problem by adding a static 1.0.2, bug 89475
 
-  27 Jun 2003; Donnie Berkholz <spyderous@gentoo.org> deltup-0.3.7.ebuild:
-  Bump.
+*deltup-0.4.2 (05 Mar 2005)
 
-*deltup-0.3.6.1 (17 Jun 2003)
-
-  17 Jun 2003; Seemant Kulleen <seemant@gentoo.org> deltup-0.3.6.1.ebuild:
-  version bump -- now, an unofficial mirror exists to house dtu's. so make your
-  make.conf have this:
-  FETCHCOMMAND="efetch ${URI} ${DISTDIR} ftp://sunsite.dk/projects/deltup/patchfiles"
-
-*deltup-0.3.5 (13 Jun 2003)
-
-  13 Jun 2003; Seemant Kulleen <seemant@gentoo.org> deltup-0.3.5.ebuild:
-  version bump, thanks to john
-
-*deltup-0.3.4 (08 Jun 2003)
-
-  08 Jun 2003; Seemant Kulleen <seemant@gentoo.org> deltup-0.3.4.ebuild:
-  new package for a patch system for distfiles. Essentially an implementation of
-  deltas for upgrading. Package was written (and ebuild submitted) by: John
-  Joseph Whitney <jjw@linuxmail.org> in bug #18354
+  05 Mar 2005; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
+  +deltup-0.4.2.ebuild:
+  New ebuild thanks to Alexander Jenisch <nt-@gmx.de> in bug 66790, thanks to
+  Nicolai Lissner <nlissne@linux01.gwdg.de> for getdelta and ebuild mirroring
+  and to Torsten Veller <torsten@veller.net> for previous ebuild enhancements
 

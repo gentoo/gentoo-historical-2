@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PodParser/PodParser-1.28.ebuild,v 1.1 2004/06/06 13:43:26 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PodParser/PodParser-1.28.ebuild,v 1.1.1.1 2005/11/30 09:52:59 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Print Usage messages based on your own pod"
-SRC_URI="http://www.cpan.org/modules/by-authors/id/M/MA/MAREKR/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-authors/id/M/MA/MAREKR/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/M/MA/MAREKR/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~amd64 ~alpha ~ppc ~sparc ~hppa ~mips ~ia64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE=""
 
 SRC_TEST="do"

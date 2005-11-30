@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rsync/rsync-2.6.6-r1.ebuild,v 1.1 2005/10/16 23:58:36 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rsync/rsync-2.6.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:28 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 

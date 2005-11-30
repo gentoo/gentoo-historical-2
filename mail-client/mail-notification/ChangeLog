@@ -1,6 +1,110 @@
-# ChangeLog for mail-client/mailnotify
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mail-notification/ChangeLog,v 1.1 2004/09/04 23:25:35 slarti Exp $
+# ChangeLog for mail-client/mail-notification
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mail-notification/ChangeLog,v 1.1.1.1 2005/11/30 09:49:44 chriswhite Exp $
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mail-notification-1.1.ebuild:
+  Stable on sparc
+
+  01 Jul 2005; Tom Martin <slarti@gentoo.org>
+  ChangeLog, mail-notification-1.1.ebuild:
+  Removed gmail stuff. It just doesn't seem to be working.
+
+  28 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mail-notification-1.0.ebuild:
+  Stable on sparc
+
+  27 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mail-notification-1.0.ebuild, mail-notification-1.1.ebuild:
+  Keyworded ~sparc
+
+*mail-notification-1.1 (23 Apr 2005)
+
+  23 Apr 2005; Tom Martin <slarti@gentoo.org> +mail-notification-1.1.ebuild:
+  Version bump, resolves bug 84489. Support for gmail timestamps has been
+  added, via a new local USE flag.
+
+  26 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mail-notification-1.0.ebuild:
+  Stable on ppc.
+
+  12 Jan 2005; Tom Martin <slarti@gentoo.org>
+  mail-notification-0.8.1.ebuild, mail-notification-1.0.ebuild:
+  Add dev-perl/XML-Parser to all ebuilds' DEPEND. Thanks to
+  <marcelogoes@gmail.com> for reporting in bug 77677.
+
+  03 Jan 2005; Andrej Kacian <ticho@gentoo.org>
+  mail-notification-1.0.ebuild:
+  Stable on x86.
+
+  03 Jan 2005; Tom Martin <slarti@gentoo.org> mail-notification-1.0.ebuild:
+  Stable on amd64.
+
+  26 Nov 2004; Lars Weiler <pylon@gentoo.org>
+  mail-notification-0.8.1.ebuild:
+  Stable on ppc.
+
+*mail-notification-1.0 (26 Nov 2004)
+
+  26 Nov 2004; Tom Martin <slarti@gentoo.org>
+  -files/mail-notification-0.6.1-64bit-fix.patch,
+  -mail-notification-0.6.1.ebuild, -mail-notification-0.6.2.ebuild,
+  -mail-notification-0.7.0.ebuild, -mail-notification-0.8.0.ebuild,
+  mail-notification-0.8.1.ebuild, +mail-notification-1.0.ebuild:
+  Version bump to 1.0, resolves bug 72517. Purged old versions and 0.8.1
+  stabilised on amd64.
+
+  24 Nov 2004; Andrej Kacian <ticho@gentoo.org>
+  mail-notification-0.8.1.ebuild:
+  Stable on x86.
+
+*mail-notification-0.8.1 (05 Nov 2004)
+
+  05 Nov 2004; Tom Martin <slarti@gentoo.org>
+  +mail-notification-0.8.1.ebuild:
+  Version bump for bug 70061. Thanks to Alex F <acid.punk@gmx.net> for
+  providing an updated ebuild including Gmail support.
+
+*mail-notification-0.8.0 (01 Nov 2004)
+
+  01 Nov 2004; Tom Martin <slarti@gentoo.org>
+  +mail-notification-0.8.0.ebuild:
+  Version bump, for bug 69673.
+
+  15 Oct 2004; David Holm <dholm@gentoo.org> mail-notification-0.7.0.ebuild:
+  Added to ~ppc.
+
+  07 Oct 2004; Simon Stelling <blubb@gentoo.org>
+  mail-notification-0.7.0.ebuild:
+  added ~amd64
+
+*mail-notification-0.7.0 (07 Oct 2004)
+
+  07 Oct 2004; Andrej Kacian <ticho@gentoo.org>
+  +mail-notification-0.7.0.ebuild:
+  Version bump. Added MIME support useflag and appropriate depend on
+  dev-libs/gmime. Removed ~amd64 until gmime gets it too.
+
+  09 Sep 2004; Tom Martin <slarti@gentoo.org> mail-notification-0.6.1.ebuild,
+  mail-notification-0.6.2.ebuild:
+  Marked ~amd64, bug 58543. Patch no longer needed for 0.6.2.
+
+*mail-notification-0.6.2 (09 Sep 2004)
+
+  09 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  mail-notification-0.6.1.ebuild, +mail-notification-0.6.2.ebuild:
+  Version bump. Closes #58543, ebuild submitted by alex f <acid.punk@gmx.net>.
+  Disabled gmail support for now in all versions. Added imap and ipv6 USE flags
+  to all versions. Added URL to gnome bug from 0.6.2 ebuild to 0.6.1.
+
+  06 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  mail-notification-0.6.1.ebuild:
+  Removed mention of Gmail from DESCRIPTION for now.
+
+*mail-notification-0.6.1 (05 Sep 2004)
+
+  05 Sep 2004; Tom Martin <slarti@gentoo.org> mail-notification-0.6.1.ebuild:
+  Removed gmail USE flag - it violates the Gmail Terms of Use, Section 5.
 
 *mailnotify-0.6.1 (05 Sep 2004)
 

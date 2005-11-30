@@ -1,15 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: 
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Archive-Rar/Archive-Rar-1.9.ebuild,v 1.1.1.1 2005/11/30 09:52:46 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Archive::Rar - Interface with the rar command"
-SRC_URI="http://www.cpan.org/modules/by-module/Archive/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Acrhive/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/J/JM/JMBO/${P}.tar.gz"
 
-
-SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="x86 ~ppc ~sparc ~sparc64 ~alpha"
+SLOT="0"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+IUSE=""

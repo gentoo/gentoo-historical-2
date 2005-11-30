@@ -1,6 +1,20 @@
 # ChangeLog for games-emulation/dboxfe
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/dboxfe/ChangeLog,v 1.1 2004/09/12 04:43:12 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/dboxfe/ChangeLog,v 1.1.1.1 2005/11/30 09:50:24 chriswhite Exp $
+
+  10 Apr 2005; Simon Stelling <blubb@gentoo.org> dboxfe-0.0.5.ebuild:
+  added ~amd64
+
+*dboxfe-0.0.5 (17 Mar 2005)
+
+  17 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> +dboxfe-0.0.5.ebuild:
+  version bump (bug #85428)
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> dboxfe-0.0.3.ebuild:
+  Added to ~ppc.
+
+  30 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> dboxfe-0.0.3.ebuild:
+  HOMEPAGE changed
 
 *dboxfe-0.0.3 (11 Sep 2004)
 

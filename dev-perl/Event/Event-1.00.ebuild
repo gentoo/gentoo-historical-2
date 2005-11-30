@@ -1,19 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Event/Event-1.00.ebuild,v 1.1 2004/06/05 18:52:51 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Event/Event-1.00.ebuild,v 1.1.1.1 2005/11/30 09:52:52 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
-CATEGORY="dev-perl"
 DESCRIPTION="fast, generic event loop"
-SRC_URI="http://www.cpan.org/modules/by-module/Event/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/J/JP/JPRIT/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Event/${P}.readme"
 
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha amd64 ppc sparc x86"
+IUSE=""
 SRC_TEST="do"
-DEPEND="dev-perl/Test"
+DEPEND="perl-core/Test"
 
 mydoc="ANNOUNCE INSTALL TODO Tutorial.pdf"

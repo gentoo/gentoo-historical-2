@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.1.1-r2.ebuild,v 1.1 2004/06/08 01:45:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.1.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:53:45 chriswhite Exp $
 
 # NOTE TO MAINTAINER:  Info pages get nuked for multiple version installs.
 #                      Ill fix it later if i get a chance.
@@ -36,10 +36,10 @@ SLOT="${MY_PV}"
 KEYWORDS="x86 sparc -ppc"
 IUSE="static nls bootstrap java build"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	!build? ( >=sys-libs/ncurses-5.2-r2
 	          nls? ( sys-devel/gettext ) )"
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	>=sys-libs/zlib-1.1.4
 	>=sys-apps/texinfo-4.2-r4
 	!build? ( >=sys-libs/ncurses-5.2-r2 )"
@@ -195,6 +195,8 @@ src_install() {
 	dodir /lib
 	dodir /etc/env.d
 	echo "LDPATH=${FULLPATH}" > ${D}/etc/env.d/05gcc${GCC_SUFFIX}
+	echo "CC=\"gcc\"" >> ${D}/etc/env.d/05gcc${GCC_SUFFIX}
+	echo "CXX=\"g++\"" >> ${D}/etc/env.d/05gcc${GCC_SUFFIX}
 	if ! build_multiple
 	then
 		dosym /usr/bin/cpp /lib/cpp

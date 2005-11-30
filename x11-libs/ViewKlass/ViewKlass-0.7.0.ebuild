@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/ViewKlass/ViewKlass-0.7.0.ebuild,v 1.1 2004/01/27 20:10:07 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/ViewKlass/ViewKlass-0.7.0.ebuild,v 1.1.1.1 2005/11/30 09:54:21 chriswhite Exp $
 
 IUSE=""
 
@@ -13,9 +13,7 @@ LICENSE="LGPL-2.1"
 DEPEND="x11-libs/openmotif"
 
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
-
-S=${WORKDIR}/${P}
+KEYWORDS="~x86 ~sparc ~ppc"
 
 src_compile() {
 	./configure --prefix=/usr || die "./configure failed"

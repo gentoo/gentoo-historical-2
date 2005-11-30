@@ -1,6 +1,39 @@
-# ChangeLog for app-emulation/darcnes
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/darcnes/ChangeLog,v 1.1 2003/09/09 16:26:49 vapier Exp $
+# ChangeLog for games-emulation/darcnes
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/darcnes/ChangeLog,v 1.1.1.1 2005/11/30 09:50:27 chriswhite Exp $
+
+  13 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> darcnes-0401-r2.ebuild:
+  applied joypad emulation patch from Alastair Bridgewater (bug #75391); tidy
+
+  13 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -darcnes-0401-r1.ebuild:
+  clean old ebuild
+
+  15 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> darcnes-0401-r2.ebuild:
+  call games_pkg_setup in pkg_setup
+
+  04 Sep 2004; Sven Wegener <swegener@gentoo.org>
+  +files/darcnes-0401-gcc34.patch, darcnes-0401-r1.ebuild,
+  darcnes-0401-r2.ebuild:
+  Fixed compilation errors with gcc-3.4. Thanks to Anthony Mirabella
+  <mirabeaj@notes.udayton.edu> and Bjarke Istrup Pedersen
+  <Bjarke.ip@tekpunkt.dk> in bug #58718.
+
+  06 Jun 2004; Aron Griffis <agriffis@gentoo.org> darcnes-0401-r1.ebuild,
+  darcnes-0401-r2.ebuild:
+  Fix use invocation
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> darcnes-0401-r2.ebuild:
+  again with the use fun and games
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> darcnes-0401-r2.ebuild:
+  make X optional for the svgalib lovers.
+
+*darcnes-0401-r2 (10 May 2004)
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> darcnes-0401-r2.ebuild:
+  ebuild fixup - patch from Sven Wegener via bug #50636; also added new binary
+  for gtk support
 
 *darcnes-0401-r1 (23 Jul 2002)
 

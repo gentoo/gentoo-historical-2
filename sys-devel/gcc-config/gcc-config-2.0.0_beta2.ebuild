@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-config/gcc-config-2.0.0_beta2.ebuild,v 1.1 2005/10/02 20:51:15 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-config/gcc-config-2.0.0_beta2.ebuild,v 1.1.1.1 2005/11/30 09:53:56 chriswhite Exp $
 
 DESCRIPTION="Utility to configure the active toolchain compiler"
 HOMEPAGE="http://www.gentoo.org/"

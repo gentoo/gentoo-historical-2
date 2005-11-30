@@ -4,11 +4,6 @@
 <herd>net-mail</herd>
 <maintainer>
 	<email>genone@gentoo.org</email>
-</maintainer>
-<maintainer>
-	<email>seemant@gentoo.org</email>
-</maintainer>
-<maintainer>
-	<email>bcowan@gentoo.org</email>
+	<description>Primary maintainer</description>
 </maintainer>
 </pkgmetadata>

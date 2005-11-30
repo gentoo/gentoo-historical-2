@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/flex/flex-2.5.4a-r6.ebuild,v 1.1 2005/01/21 00:07:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/flex/flex-2.5.4a-r6.ebuild,v 1.1.1.1 2005/11/30 09:53:52 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -12,25 +12,25 @@ SRC_URI="mirror://gentoo/${P}.tar.gz
 
 LICENSE="FLEX"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
 IUSE="build static"
 
-RDEPEND="virtual/libc"
+DEPEND=""
 
 S=${WORKDIR}/${P/a/}
 
 src_unpack() {
 	unpack ${A}
 
-	cd ${S}
+	cd "${S}"
 	# Some Redhat patches to fix various problems
-	epatch ${FILESDIR}/flex-2.5.4-glibc22.patch
-	epatch ${FILESDIR}/flex-2.5.4a-gcc3.patch
-	epatch ${FILESDIR}/flex-2.5.4a-gcc31.patch
-	epatch ${FILESDIR}/flex-2.5.4a-skel.patch
+	epatch "${FILESDIR}"/flex-2.5.4-glibc22.patch
+	epatch "${FILESDIR}"/flex-2.5.4a-gcc3.patch
+	epatch "${FILESDIR}"/flex-2.5.4a-gcc31.patch
+	epatch "${FILESDIR}"/flex-2.5.4a-skel.patch
 
 	# included autotools are crusty, lets polish em up
-	epatch ${WORKDIR}/${P}-autoconf.patch
+	epatch "${WORKDIR}"/${P}-autoconf.patch
 }
 
 src_compile() {

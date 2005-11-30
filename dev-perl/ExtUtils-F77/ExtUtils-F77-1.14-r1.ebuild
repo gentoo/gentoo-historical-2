@@ -1,14 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-F77/ExtUtils-F77-1.14-r1.ebuild,v 1.1 2002/10/30 07:20:36 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-F77/ExtUtils-F77-1.14-r1.ebuild,v 1.1.1.1 2005/11/30 09:52:51 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
-DESCRIPTION="F77 Perl Module"
-SRC_URI="http://cpan.valueclick.com/modules/by-module/ExtUtils/${P}.tar.gz"
-HOMEPAGE="http://cpan.valueclick.com/modules/by-module/ExtUtils/${P}.readme"
+DESCRIPTION="Facilitate use of FORTRAN from Perl/XS code"
+HOMEPAGE="http://search.cpan.org/~kgb/${P}/"
+SRC_URI="mirror://cpan/authors/id/K/KG/KGB/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc alpha"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc sparc x86"
+IUSE=""

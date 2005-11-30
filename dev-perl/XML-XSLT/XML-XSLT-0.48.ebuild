@@ -1,17 +1,17 @@
-# Copyright 2000-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-XSLT/XML-XSLT-0.48.ebuild,v 1.1 2004/06/11 14:04:51 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-XSLT/XML-XSLT-0.48.ebuild,v 1.1.1.1 2005/11/30 09:52:40 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A Perl module to parse XSL Transformational sheets"
-SRC_URI="http://cpan.valueclick.com/modules/by-category/11_String_Lang_Text_Proc/XML/${P}.tar.gz"
-HOMEPAGE="http://cpan.valueclick.com/modules/by-category/11_String_Lang_Text_Proc/XML/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/J/JS/JSTOWE/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~jstowe/${P}/"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+IUSE=""
 
 SRC_TEST="do"
 

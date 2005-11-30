@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/xclass/xclass-0.8.2-r1.ebuild,v 1.1 2004/05/14 00:21:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/xclass/xclass-0.8.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:18 chriswhite Exp $
 
 DESCRIPTION="a C++ GUI toolkit for the X windows environment"
 HOMEPAGE="http://xclass.sourceforge.net/"
@@ -12,7 +12,8 @@ KEYWORDS="x86 ppc sparc alpha"
 IUSE=""
 
 DEPEND="virtual/x11
-	virtual/glibc"
+	virtual/libc
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
@@ -30,32 +31,28 @@ src_unpack() {
 
 src_compile() {
 	econf --enable-shared=yes --with-x || die
-	if use static ; then
-		emake || die "'emake' failed"
-	else
-		emake shared || die "'emake shared' failed"
-	fi
+	emake || die "'emake' failed"
 }
 
 src_install() {
 	rm -rf `find . -name 'Makefile*'`
 
-	dobin config/xc-config || die
+	dobin config/xc-config || die "xc-config failed"
 
 	insinto /etc
-	doins doc/xclassrc || die
+	doins doc/xclassrc || die "xclassrc failed"
 	newins doc/mime.types xclass.mime.types || die
 
 	dodoc doc/*
 
 	dodir /usr/share/icons/xclass
 	insinto /usr/share/icons/xclass
-	mv "icons/Lock screen.s.xpm" ${D}/usr/share/icons/xclass/
-	doins icons/*.xpm || die
+	doins icons/*.xpm || die "icons failed"
 
 	dodir /usr/include/xclass
 	insinto /usr/include/xclass
-	doins include/xclass/*.h || die
+	doins include/xclass/*.h || die "include failed"
 
-	dolib lib/libxclass/lib* || die
+	cd lib/libxclass
+	dolib libxclass* || die "lib failed"
 }

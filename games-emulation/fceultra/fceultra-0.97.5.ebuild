@@ -1,17 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/fceultra/fceultra-0.97.5.ebuild,v 1.1 2003/11/13 06:59:13 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/fceultra/fceultra-0.97.5.ebuild,v 1.1.1.1 2005/11/30 09:50:23 chriswhite Exp $
 
-inherit games gcc eutils
+inherit eutils games
 
-S="${WORKDIR}/fceu"
 DESCRIPTION="A portable NES/Famicom emulator"
 HOMEPAGE="http://fceultra.sourceforge.net/"
 SRC_URI="http://xodnizel.net/fceultra/downloads/fceu-${PV}.src.tar.gz"
 
-KEYWORDS="-* ~x86"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="-* x86"
 
 IUSE="sdl svga"
 
@@ -26,6 +25,8 @@ RDEPEND="|| (
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
+
+S=${WORKDIR}/fceu
 
 src_unpack() {
 	unpack ${A}
@@ -43,19 +44,19 @@ src_unpack() {
 }
 
 src_compile() {
-	if [ `use sdl` ] || [ -z "`use sdl``use svga`" ] ; then
+	if use sdl || ! use svga; then
 		emake -f Makefile.unixsdl || die "sdl make failed"
 		mv fceu fceu-sdl
 		make -f Makefile.unixsdl clean
 	fi
-	if [ `use svga` ] ; then
+	if use svga ; then
 		emake -f Makefile.linuxvga || die "svga make failed"
 		mv fceu fceu-svga
 	fi
 }
 
 src_install() {
-	if [ `use sdl` ] || [ -z "`use sdl``use svga`" ] ; then
+	if use sdl || ! use svga; then
 		dogamesbin fceu-sdl     || die "dogamesbin failed (sdl)"
 		doman Documentation/*.6 || die "doman failed (sdl)"
 	fi

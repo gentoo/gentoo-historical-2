@@ -1,38 +1,57 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/udhcp/udhcp-0.9.8-r3.ebuild,v 1.1 2004/03/08 23:51:40 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/udhcp/udhcp-0.9.8-r3.ebuild,v 1.1.1.1 2005/11/30 09:54:40 chriswhite Exp $
+
+inherit eutils toolchain-funcs
 
 DESCRIPTION="udhcp Server/Client Package"
 HOMEPAGE="http://udhcp.busybox.net/"
 SRC_URI="http://udhcp.busybox.net/source/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~ia64 amd64"
+SLOT="0"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ~ppc sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
+PROVIDE="virtual/dhcpc"
 
-PROIVDE="virtual/dhcpc"
+pkg_setup() {
+	enewgroup dhcp
+	enewuser dhcp -1 -1 /var/lib/dhcp dhcp
+}
+
+src_unpack() {
+
+	unpack ${A}
+	cd ${S}
+	#fixes #62714, thanks GurliGebis
+	if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "4" ]
+	then
+		epatch "${FILESDIR}"/udhcp-gcc-3.4.patch
+	fi
+}
 
 src_compile() {
-	emake SYSLOG=1 || die
+	emake CROSS_COMPILE=${CHOST}- STRIP=true SYSLOG=1 || die
 }
 
 src_install() {
-	dodir /usr/sbin
-	dodir /usr/bin
-	dodir /sbin
+	dodir /usr/sbin /usr/bin /sbin
 
 	insinto /etc
 	doins samples/udhcpd.conf
 
-	make prefix=${D}/usr SBINDIR=${D}/sbin install || die
+	make \
+		prefix=${D}/usr \
+		SBINDIR=${D}/sbin \
+		CROSS_COMPILE=${CHOST}- \
+		STRIP=true \
+		install \
+		|| die
 
-	dodoc AUTHORS COPYING ChangeLog README* TODO
+	dodoc AUTHORS ChangeLog README* TODO
 
 	insinto /usr/share/udhcpc
 	doins samples/*
-
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/udhcp.init udhcp
 }

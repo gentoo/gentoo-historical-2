@@ -1,6 +1,228 @@
 # ChangeLog for x11-libs/gtksourceview
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtksourceview/ChangeLog,v 1.1 2003/09/07 22:48:04 foser Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtksourceview/ChangeLog,v 1.1.1.1 2005/11/30 09:54:11 chriswhite Exp $
+
+*gtksourceview-1.4.2 (04 Oct 2005)
+
+  04 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -gtksourceview-1.4.1.ebuild, +gtksourceview-1.4.2.ebuild:
+  New version.
+
+*gtksourceview-1.4.1 (11 Sep 2005)
+
+  11 Sep 2005; <dang@gentoo.org> -gtksourceview-1.3.93.ebuild,
+  +gtksourceview-1.4.1.ebuild:
+  Bump to 1.4.1 for Gnome 2.12.0
+
+*gtksourceview-1.3.93 (05 Sep 2005)
+
+  05 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  -gtksourceview-1.3.92.ebuild, +gtksourceview-1.3.93.ebuild:
+  New version.
+
+*gtksourceview-1.3.92 (28 Aug 2005)
+
+  28 Aug 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -gtksourceview-1.3.91.ebuild, +gtksourceview-1.3.92.ebuild:
+  new version
+
+*gtksourceview-1.3.91 (23 Aug 2005)
+
+  23 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +gtksourceview-1.3.91.ebuild:
+  New version.
+
+  02 Jul 2005; Hardave Riar <hardave@gentoo.org> gtksourceview-1.2.0.ebuild:
+  Stable on mips, dep for bug #93352
+
+  11 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gtksourceview-1.2.0.ebuild:
+  Stable on alpha.
+
+  11 Jun 2005; Markus Rothe <corsair@gentoo.org> gtksourceview-1.2.0.ebuild:
+  Stable on ppc64; bug #93352
+
+  10 Jun 2005; Simon Stelling <blubb@gentoo.org> gtksourceview-1.2.0.ebuild:
+  stable wrt bug 93352
+
+  10 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtksourceview-1.2.0.ebuild:
+  Stable on ppc.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtksourceview-1.2.0.ebuild:
+  Stable on sparc
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org>
+  gtksourceview-1.1.1.ebuild:
+  stable on mips
+
+*gtksourceview-1.2.0 (08 Mar 2005)
+
+  08 Mar 2005; Joe McCann <joem@gentoo.org> +gtksourceview-1.2.0.ebuild:
+  gnome-2.10 release
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> gtksourceview-1.1.1.ebuild:
+  Stable on amd64.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> :
+  Stable on alpha.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> gtksourceview-1.1.1.ebuild:
+  Stable on hppa.
+
+  21 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtksourceview-1.1.1.ebuild:
+  Stable on sparc
+
+  19 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gtksourceview-1.1.1.ebuild:
+  Stable on alpha.
+
+  19 Dec 2004; Mike Gardiner <obz@gentoo.org> gtksourceview-1.1.1.ebuild:
+  Keyworded x86 and ppc for GNOME 2.8.1
+
+  17 Dec 2004; Markus Rothe <corsair@gentoo.org> gtksourceview-1.0.1.ebuild:
+  Stable on ppc64
+
+*gtksourceview-1.1.1 (06 Dec 2004)
+
+  06 Dec 2004; Mike Gardiner <obz@gentoo.org> +gtksourceview-1.1.1.ebuild:
+  New version, yes it's a 1.1.1 but it's in the stable 1.0 series
+
+  15 Nov 2004; Markus Rothe <corsair@gentoo.org> gtksourceview-1.0.1.ebuild:
+  Marked ~ppc64; bug #71282
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org>
+  gtksourceview-1.0.1.ebuild:
+  stable on mips
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gtksourceview-1.0.1.ebuild:
+  Masked gtksourceview-1.0.1.ebuild stable for ppc
+
+  23 Aug 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gtksourceview-1.0.1.ebuild:
+  Stable on alpha.
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtksourceview-1.0.1.ebuild:
+  Stable on sparc
+
+  05 Aug 2004; Guy Martin <gmsoft@gentoo.org> gtksourceview-1.0.1.ebuild:
+  Stable on hppa.
+
+  31 Jul 2004; <spider@gentoo.org> gtksourceview-1.0.1.ebuild:
+  stable on x86 for gnome 2.6.2
+
+  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gtksourceview-1.0.0.ebuild:
+  Stable on alpha.
+
+  03 Jun 2004; Stephen P. Becker <geoman@gentoo.org>
+  gtksourceview-1.0.0.ebuild:
+  Stable on mips.
+
+  25 May 2004; Guy Martin <gmsoft@gentoo.org> gtksourceview-1.0.0.ebuild:
+  Marked stable on hppa.
+
+  14 May 2004; Stephen P. Becker <geoman@gentoo.org>
+  gtksourceview-0.7.1.ebuild:
+  Stable on mips.
+
+*gtksourceview-1.0.1 (04 May 2004)
+
+  04 May 2004; foser <foser@gentoo.org> gtksourceview-1.0.1.ebuild :
+  New release
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> gtksourceview-0.7.0-r1.ebuild,
+  gtksourceview-0.7.1.ebuild:
+  Inherit eutils.
+
+  26 Mar 2004; Jon Portnoy <avenj@gentoo.org>
+  gtksourceview-0.7.1.ebuild :
+  Stable on AMD64.
+
+  25 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtksourceview-0.7.1.ebuild:
+  stable on sparc
+
+*gtksourceview-1.0.0 (23 Mar 2004)
+
+  23 Mar 2004; foser <foser@gentoo.org> gtksourceview-1.0.0.ebuild :
+  Gnome 2.6 final
+
+*gtksourceview-0.9.2 (21 Mar 2004)
+
+  21 Mar 2004; foser <foser@gentoo.org> gtksourceview-0.9.2.ebuild :
+  Gnome 2.6 release
+
+  16 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  gtksourceview-0.7.1.ebuild:
+  Added ~mips keyword.
+
+*gtksourceview-0.7.1 (07 Mar 2004)
+
+  07 Mar 2004; foser <foser@gentoo.org> :
+  New release, fix intltool dep for xml::parser
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org>
+  gtksourceview-0.7.0-r1.ebuild:
+  set ppc in keywords
+
+  10 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  set ppc in keywords
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org>
+  gtksourceview-0.7.0-r1.ebuild:
+  stable on ia64
+
+  11 Jan 2004; Jason Wever <weeve@gentoo.org> gtksourceview-0.7.0-r1.ebuild:
+  Marked stable on sparc.
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org>
+  gtksourceview-0.7.0-r1.ebuild:
+  stable on alpha
+
+*gtksourceview-0.7.0-r1 (08 Jan 2004)
+
+  08 Jan 2004; foser <foser@gentoo.org> gtksourceview-0.7.0-r1.ebuild :
+  Added workaround patch for problem described in http://bugzilla.gnome.org/show_bug.cgi?id=120118
+  Testing with 2.3 series glib/gtk show this bug doesn't show there, so it can probably
+  be remove by then
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> gtksourceview-0.6.0.ebuild:
+  Stable on ia64
+
+  08 Nov 2003; Todd Sunderlin <todd@gentoo.org> gtksourceview-0.6.0.ebuild:
+  added sparc keyword
+
+  22 Oct 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  gtksourceview-0.6.0.ebuild:
+  set ppc in keywords
+
+*gtksourceview-0.7.0 (20 Oct 2003)
+
+  20 Oct 2003; Mike Gardiner <obz@gentoo.org> gtksourceview-0.7.0.ebuild:
+  New version
+
+  16 Oct 2003; Aron Griffis <agriffis@gentoo.org> gtksourceview-0.6.0.ebuild:
+  Stable on alpha
+
+  05 Oct 2003; Mike Gardiner <obz@gentoo.org> gtksourceview-0.6.0.ebuild:
+  Marked stable on x86
+
+  16 Sep 2003; Jason Wever <weeve@gentoo.org> gtksourceview-0.6.0.ebuild:
+  Added ~sparc keyword
+
+  13 Sep 2003; Luca Barbato <lu_zero@gentoo.org> gtksourceview-0.6.0.ebuild:
+  Add ~ppc
+
+  12 Sep 2003; Aron Griffis <agriffis@gentoo.org> gtksourceview-0.6.0.ebuild:
+  Add ~alpha
 
 *gtksourceview-0.6.0 (07 Sep 2003)
 

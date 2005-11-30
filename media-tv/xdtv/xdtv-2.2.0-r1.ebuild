@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xdtv/xdtv-2.2.0-r1.ebuild,v 1.1 2005/07/25 09:52:37 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xdtv/xdtv-2.2.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:33 chriswhite Exp $
 
 inherit font multilib
 
-IUSE="alsa jpeg encode ffmpeg xvid lirc xinerama divx4linux
+IUSE="alsa jpeg encode ffmpeg xvid lirc xinerama
 	neXt Xaw3d mmx zvbi aqua_theme carbone_theme xv debug dvb"
 
 DESCRIPTION="TV viewer with support for AVI recording and plugins"
@@ -74,13 +74,12 @@ SRC_URI="${DOWNLOADS_URL}/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 RDEPEND="virtual/x11
 	zvbi? ( >=media-libs/zvbi-0.2.4 )
 	neXt? ( x11-libs/neXtaw )
 	Xaw3d? ( !neXt? ( x11-libs/Xaw3d ) )
-	divx4linux? ( >=media-libs/divx4linux-20030428 )
 	ffmpeg? ( >=media-video/ffmpeg-0.4.7 )
 	xvid? ( =media-libs/xvid-1* )
 	encode? ( >=media-sound/lame-3.93 )
@@ -152,7 +151,6 @@ src_compile() {
 		myconf="${myconf} --disable-mmx"
 
 	econf ${xawconf} \
-		$(use_enable divx4linux) \
 		$(use_enable alsa) \
 		$(use_enable jpeg) \
 		$(use_enable lirc) \
@@ -194,7 +192,7 @@ src_install() {
 	font_src_install
 
 	# Install documentation
-	dodoc ChangeLog AUTHORS INSTALL FAQ* README.* TODO lisez-moi* \
+	dodoc ChangeLog AUTHORS FAQ* README.* TODO lisez-moi* \
 		xdtvrc.sample lircrc.*.sample
 	docinto alevt
 	dodoc alevt/README alevt/ReadmeGR alevt/CHANGELOG alevt/COPYRIGHT

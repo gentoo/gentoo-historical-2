@@ -1,9 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.3.5.20050130-r1.ebuild,v 1.1 2005/03/19 00:46:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.3.5.20050130-r1.ebuild,v 1.1.1.1 2005/11/30 09:53:44 chriswhite Exp $
 
 MAN_VER="3.3.5"
-PATCH_VER="1.3"
+PATCH_VER="1.4"
 UCLIBC_VER="1.0"
 PIE_VER="8.7.7.1"
 PIE_CORE="gcc-3.3.5-piepatches-v${PIE_VER}.tar.bz2"
@@ -11,6 +11,7 @@ PP_VER="3_3_5_20050130"
 PP_FVER="${PP_VER//_/.}-1"
 HTB_VER="1.00-r2"
 #HTB_GCC_VER="3.3.5"
+HTB_EXCLUSIVE="true"
 
 ETYPE="gcc-compiler"
 
@@ -37,16 +38,16 @@ inherit toolchain eutils
 
 DESCRIPTION="The GNU Compiler Collection.  Includes C/C++, java compilers, pie+ssp extensions, Haj Ten Brugge runtime bounds checking"
 
-KEYWORDS="~alpha -amd64 ~arm ~hppa -ia64 ~mips ~sh sparc ~x86"
+KEYWORDS="~alpha ~amd64 arm ~hppa -ia64 ~mips sh sparc x86"
 
 # NOTE: we SHOULD be using at least binutils 2.15.90.0.1 everywhere for proper
 # .eh_frame ld optimisation and symbol visibility support, but it hasnt been
 # well tested in gentoo on any arch other than amd64!!
 RDEPEND="virtual/libc
-	>=sys-devel/gcc-config-1.3.6
+	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.10 )
 	>=sys-libs/zlib-1.1.4
 	!sys-devel/hardened-gcc
-	!uclibc? ( >=sys-libs/glibc-2.3.2-r9 )
+	elibc_glibc? ( >=sys-libs/glibc-2.3.2-r9 )
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	>=sys-devel/bison-1.875
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-glibc-1.1 ) )
@@ -67,7 +68,7 @@ fi
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r4
 	amd64? ( >=sys-devel/binutils-2.15.90.0.1.1-r1 )"
-PDEPEND="sys-devel/gcc-config"
+PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )"
 
 src_unpack() {
 	gcc_src_unpack
@@ -81,13 +82,19 @@ src_unpack() {
 	fi
 
 	# misc patches that havent made it into a patch tarball yet
-	epatch ${FILESDIR}/gcc-spec-env.patch
+	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env.patch
 
 	# Anything useful and objc will require libffi. Seriously. Lets just force
 	# libffi to install with USE="objc", even though it normally only installs
 	# if you attempt to build gcj.
-	if ! ( ! use build && use objc && ! use gcj ) ; then
-		GENTOO_PATCH_EXCLUDE="42*"
+	if use !build && use objc && ! use gcj ; then
+		epatch ${FILESDIR}/3.3.4/libffi-without-libgcj.patch
 		#epatch ${FILESDIR}/3.4.3/libffi-nogcj-lib-path-fix.patch
+	fi
+
+	if [[ $(tc-arch) == "amd64" ]] ; then
+		replace-cpu-flags k8 i686
+		replace-cpu-flags opteron i686
+		replace-cpu-flags athlon64 i686
 	fi
 }

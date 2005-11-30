@@ -1,34 +1,26 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/l7-filter/l7-filter-1.4.ebuild,v 1.1 2005/06/05 01:59:16 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/l7-filter/l7-filter-1.4.ebuild,v 1.1.1.1 2005/11/30 09:54:39 chriswhite Exp $
 
 inherit linux-info eutils
 
 MY_P=netfilter-layer7-v${PV}
 DESCRIPTION="Kernel modules for layer 7 iptables filtering"
 HOMEPAGE="http://l7-filter.sourceforge.net"
-SRC_URI="mirror://sourceforge/l7-filter/${MY_P}.tar.gz"
+SRC_URI="mirror://sourceforge/l7-filter/${MY_P}.tar.gz
+	mirror://gentoo/additional_patch_for_2.6.13.diff"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE=""
-SLOT="${KV}"
+#break repoman
+#SLOT="${KV}"
+SLOT="0"
 S=${WORKDIR}/${MY_P}
-DEPEND=""
+RDEPEND="net-misc/l7-protocols"
 
-src_unpack() {
+which_patch() {
 
-	pkg_postinst
-
-	unpack ${A}
-
-	cd ${S}
-
-	mkdir  kernel
-	mkdir  kernel/Documentation
-
-
-	local PATCH
 	if kernel_is 2 4
 	then
 		PATCH=kernel-${KV_MAJOR}.${KV_MINOR}-layer7-${PV}.patch
@@ -45,6 +37,27 @@ src_unpack() {
 		PATCH=for_older_kernels/kernel-2.6.0-2.6.8.1-layer7-0.9.2.patch
 	fi
 
+}
+
+src_unpack() {
+
+	pkg_postinst
+
+	if [ -f ${KV_DIR}/include/linux/netfilter_ipv4/ipt_layer7.h ]
+	then
+		ewarn "already installed ${PF} for kernel ${KV_FULL}"
+		return 0;
+	fi
+
+	unpack ${MY_P}.tar.gz
+
+	cd ${S}
+
+	mkdir  kernel
+	mkdir  kernel/Documentation
+
+	which_patch
+
 	if [ ! -f ${PATCH} ];
 	then
 		die "Patch ${PATCH} fpr Kernel version ${KV_FULL} not supported"
@@ -55,7 +68,6 @@ src_unpack() {
 	mkdir -p ${S}/kernel/include/linux/netfilter_ipv4/
 
 	cd ${KV_DIR}
-
 
 	# start to copy needed files, if file not exists create an empty file
 	FILES=$(patch -t --dry-run -p1 < ${S}/${PATCH} | grep "^patching file" | cut -f 3 -d ' ')
@@ -71,7 +83,13 @@ src_unpack() {
 
 	#patch the copied kernel source
 	cd ${S}/kernel
-	epatch ${S}/${PATCH}
+	EPATCH_OPTS="-F 3" epatch ${S}/${PATCH}
+
+	# bug #102813
+	if kernel_is ge 2 6 11
+	then
+		epatch ${DISTDIR}/additional_patch_for_2.6.13.diff
+	fi
 }
 
 src_compile() {
@@ -93,3 +111,19 @@ pkg_postinst() {
 	ewarn 'You will also need to emerge iptables with the "extensions" USE flag'
 }
 
+pkg_prerm() {
+	if [ -f ${ROOT}/usr/src/linux/include/linux/netfilter_ipv4/ipt_layer7.h ]
+	then
+		einfo 'attempting to unpatch l7-patch from kernel'
+		which_patch
+		if kernel_is ge 2 6 11
+		then
+			patch -F 3 -d ${ROOT}/usr/src/linux -R -p1 \
+				< ${DISTDIR}/additional_patch_for_2.6.13.diff
+		fi
+		cd ${T}
+		unpack ${MY_P}.tar.gz
+		EPATCH_SINGLE_MSG="removing previous patch" \
+			EPATCH_OPTS="-F 3 -d ${ROOT}/usr/src/linux -R" epatch "${T}/${MY_P}/${PATCH}"
+	fi
+}

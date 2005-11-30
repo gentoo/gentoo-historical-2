@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/amule/amule-2.0.3.ebuild,v 1.1 2005/07/10 15:02:47 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/amule/amule-2.0.3.ebuild,v 1.1.1.1 2005/11/30 09:51:10 chriswhite Exp $
 
 inherit eutils flag-o-matic wxwidgets
 
@@ -13,7 +13,7 @@ SRC_URI="http://download.berlios.de/${PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc ~ppc64 ~sparc ~alpha"
+KEYWORDS="x86 amd64 ~ppc ~ppc64 ~sparc ~alpha"
 IUSE="amuled debug gtk2 nls remote stats unicode"
 
 
@@ -22,7 +22,8 @@ DEPEND=">=x11-libs/wxGTK-2.6.0
 	nls? ( sys-devel/gettext )
 	remote? ( >=media-libs/libpng-1.2.8 )
 	stats? ( >=media-libs/gd-2.0.32 )
-	!net-p2p/xmule"
+	!net-p2p/xmule
+	sys-apps/sed"
 
 pkg_setup() {
 	export WX_GTK_VER="2.6"
@@ -33,6 +34,13 @@ pkg_setup() {
 	else
 		need-wxwidgets gtk2
 	fi
+
+}
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	sed -i -r "s:\\$\\(LN_S\\) (.*):\$\(LN_S\) ${D}/\1:g" docs/man/Makefile.in
 }
 
 src_compile() {
@@ -44,6 +52,7 @@ src_compile() {
 		--disable-optimize \
 		--with-wx-config=${WX_CONFIG} \
 		--with-wxbase-config=${WX_CONFIG} \
+		--disable-embedded-crypto \
 		`use_enable debug` \
 		`use_enable nls` \
 		`use_enable remote amulecmd` \
@@ -68,7 +77,7 @@ src_install() {
 	if use amuled || use remote; then
 		if ! id p2p >/dev/null; then
 		        enewgroup p2p
-			enewuser p2p -1 /bin/false /home/p2p p2p
+			enewuser p2p -1 -1 /home/p2p p2p
 		fi
 	fi
 

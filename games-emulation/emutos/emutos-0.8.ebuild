@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/emutos/emutos-0.8.ebuild,v 1.1 2005/07/08 21:34:59 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/emutos/emutos-0.8.ebuild,v 1.1.1.1 2005/11/30 09:50:26 chriswhite Exp $
 
 inherit games
 

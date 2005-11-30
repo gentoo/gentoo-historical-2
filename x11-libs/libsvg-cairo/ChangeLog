@@ -1,6 +1,70 @@
-# ChangeLog for media-libs/libsvg-cairo
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libsvg-cairo/ChangeLog,v 1.1 2004/03/17 23:50:01 twp Exp $
+# ChangeLog for x11-libs/libsvg-cairo
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libsvg-cairo/ChangeLog,v 1.1.1.1 2005/11/30 09:54:00 chriswhite Exp $
+
+  28 Oct 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libsvg-cairo-0.1.6.ebuild:
+  Add ~alpha + ~ia64 keywords.
+
+  26 Oct 2005; Fabian Groffen <grobian@gentoo.org>
+  libsvg-cairo-0.1.6.ebuild:
+  Marked ~ppc-macos
+
+  25 Oct 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  libsvg-cairo-0.1.6.ebuild:
+  Unstable on hppa.
+
+  19 Oct 2005; Tom Gall <tgall@gentoo.org> libsvg-cairo-0.1.6.ebuild:
+  added ~ppc64, bug #108808
+
+  15 Sep 2005; Luis Medinas <metalgod@gentoo.org> libsvg-cairo-0.1.4.ebuild:
+  Marked Stable on AMD64
+
+  17 Aug 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  libsvg-cairo-0.1.6.ebuild:
+  Fixing version changes on the depends that never got saved.
+
+  17 Aug 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  libsvg-cairo-0.1.4.ebuild, libsvg-cairo-0.1.5.ebuild,
+  libsvg-cairo-0.1.6.ebuild:
+  Readding dropped keywords -- checkout was broken.
+
+  17 Aug 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  libsvg-cairo-0.1.4.ebuild, libsvg-cairo-0.1.5.ebuild,
+  +libsvg-cairo-0.1.6.ebuild:
+  Dropping keywords for arm and s390 (bug #102788).  Version bump (needed to
+  compile cleanly on new CAIRO API).
+
+*libsvg-cairo-0.1.6 (17 Aug 2005)
+
+  24 Feb 2005; Peter Johanson <latexer@gentoo.org> libsvg-cairo-0.1.4.ebuild:
+  Move eclass inheritance to proper spot. See bug #82465.
+
+*libsvg-cairo-0.1.5 (24 Feb 2005)
+
+  24 Feb 2005; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  +libsvg-cairo-0.1.5.ebuild:
+  Bump. Add myself as a maintainer.
+
+  04 Feb 2005; Tom Payne <twp@gentoo.org>
+  +files/libsvg-cairo-stdarg_h.patch, libsvg-cairo-0.1.4.ebuild:
+  Added stdarg.h patch. Bug # 80680. Thanks lucass.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  libsvg-cairo-0.1.4.ebuild:
+  Masked libsvg-cairo-0.1.4.ebuild stable for ppc
+
+  04 Jun 2004; Jason Wever <weeve@gentoo.org> libsvg-cairo-0.1.4.ebuild:
+  Added ~sparc keyword.
+
+  11 May 2004; Travis Tilley <lv@gentoo.org> libsvg-cairo-0.1.4.ebuild:
+  added ~amd64 keyword
+
+  09 May 2004; <twp@gentoo.org> libsvg-cairo-0.1.4.ebuild:
+  Stable on x86.
+
+  18 Mar 2004; David Holm <dholm@gentoo.org> libsvg-cairo-0.1.4.ebuild:
+  Added to ~ppc.
 
 *libsvg-cairo-0.1.4 (18 Mar 2004)
 

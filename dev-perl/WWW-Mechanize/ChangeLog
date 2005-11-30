@@ -1,6 +1,71 @@
 # ChangeLog for dev-perl/WWW-Mechanize
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/WWW-Mechanize/ChangeLog,v 1.1 2004/02/27 14:43:26 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/WWW-Mechanize/ChangeLog,v 1.1.1.1 2005/11/30 09:52:28 chriswhite Exp $
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  WWW-Mechanize-1.12.ebuild:
+  Stable on sparc
+
+  12 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  WWW-Mechanize-1.12.ebuild:
+  Marking stable x86
+
+  30 Jul 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  WWW-Mechanize-1.04.ebuild, WWW-Mechanize-1.12.ebuild,
+  WWW-Mechanize-1.0301.ebuild:
+  PowerPC Stable
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> WWW-Mechanize-1.04.ebuild:
+  Stable on amd64.
+
+*WWW-Mechanize-1.12 (28 Apr 2005)
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -WWW-Mechanize-0.72.ebuild, -WWW-Mechanize-1.02.ebuild,
+  WWW-Mechanize-1.04.ebuild, +WWW-Mechanize-1.12.ebuild:
+  Cleaning
+
+*WWW-Mechanize-1.04 (17 Oct 2004)
+
+  17 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +WWW-Mechanize-1.04.ebuild:
+  New version on cpan. Please remember tests are disabled on purpose - tests
+  include external network requests that aren't safe in an automatic install.
+
+  15 Jul 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  WWW-Mechanize-1.0301.ebuild:
+  Sparc stable
+
+  13 Jul 2004; Robert Coie <rac@gentoo.org> WWW-Mechanize-1.0301.ebuild:
+  Keywording amd64 and x86
+
+*WWW-Mechanize-1.0301 (25 Jun 2004)
+
+  25 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  WWW-Mechanize-1.0301.ebuild:
+  new version, needed for bugger
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> WWW-Mechanize-1.02.ebuild:
+  Added to ~ppc.
+
+*WWW-Mechanize-1.02 (24 May 2004)
+
+  24 May 2004; Daniel Ahlberg <aliz@gentoo.org> WWW-Mechanize-1.02.ebuild:
+  Updated dependency for xmltv-0.5.34.
+
+  25 Mar 2004; Martin Holzer <mholzer@gentoo.org> WWW-Mechanize-0.72.ebuild:
+  fixing depend. see 45343
+
+  02 Mar 2004; Dylan Carlson <absinthe@gentoo.org> WWW-Mechanize-0.72.ebuild:
+  Added amd64 to KEYWORDS.
+
+  02 Mar 2004; Michael Cummings <mcummings@gentoo.org>
+  WWW-Mechanize-0.72.ebuild:
+  Tested on sparc - just an extension of existing HTTP modules
+
+  01 Mar 2004; Michael Cummings <mcummings@gentoo.org>
+  WWW-Mechanize-0.72.ebuild:
+  Fixed an interactive question
 
 *WWW-Mechanize-0.72 (27 Feb 2004)
 

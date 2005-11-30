@@ -1,6 +1,163 @@
 # ChangeLog for x11-libs/fox
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox/ChangeLog,v 1.1 2002/07/29 20:35:08 stroke Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox/ChangeLog,v 1.1.1.1 2005/11/30 09:54:20 chriswhite Exp $
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> fox-1.2.6-r2.ebuild:
+  stable on ia64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on ppc.
+
+  01 Jun 2005; Mike Frysinger <vapier@gentoo.org> fox-1.2.15.ebuild,
+  fox-1.4.11.ebuild, fox-1.4.12.ebuild, fox-1.5.4.ebuild:
+  Change USE=bzlib to USE=bzip2.
+
+  13 May 2005; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.6-r2.ebuild:
+  ~ia64 keyword.
+
+*fox-1.2.15 (07 May 2005)
+
+  07 May 2005; <rphillips@gentoo.org> +fox-1.0.53.ebuild, +fox-1.2.15.ebuild,
+  +fox-1.4.12.ebuild, +fox-1.5.4.ebuild:
+  Added Yaakov Selkowitz's eclass based fox ebuilds for testing.
+  Fixes #88924
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> fox-1.4.11.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*fox-1.2.6-r3 (02 Apr 2005)
+
+  02 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +fox-1.2.6-r3.ebuild, fox-1.4.11.ebuild:
+  Updated to use econf and make DESTDIR="${D}" install
+
+  01 Apr 2005; <rphillips@gentoo.org> fox-1.4.11.ebuild:
+  Updated ebuild to use emake and einstall.  Thanks to Diego. Fixes #74872
+
+*fox-1.4.11 (31 Mar 2005)
+
+  31 Mar 2005; <rphillips@gentoo.org> +fox-1.4.11.ebuild:
+  Version bump
+
+  19 Feb 2005; Markus Rothe <corsair@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on ppc64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Dec 2004; <rphillips@gentoo.org> fox-1.2.6-r2.ebuild:
+  changed freetye USE var to truetype
+
+  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on alpha.
+
+  23 Oct 2004; Tom Martin <slarti@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on amd64.
+
+  23 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> fox-1.2.6-r2.ebuild:
+  ~alpha keyword.
+
+  13 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> fox-1.2.6.ebuild,
+  fox-1.2.6-r1.ebuild:
+  Remove these older revisions...
+
+  12 Oct 2004; Guy Martin <gmsoft@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on hppa.
+
+  10 Oct 2004; Jason Wever <weeve@gentoo.org> fox-1.2.6-r2.ebuild:
+  Stable on sparc.
+
+*fox-1.2.6-r2 (05 Oct 2004)
+
+  05 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> fox-1.2.6-r2.ebuild:
+  Fixed freetype2 detection for xorg-x11 users. Closes #61694. Stable for x86.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> fox-1.0.49.ebuild:
+  Masked fox-1.0.49.ebuild stable for ppc
+
+  27 Aug 2004; Tom Gall <tgall@gentoo.org> fox-1.0.49.ebuild:
+  stable on ppc64, bug #59384
+
+*fox-1.2.6-r1 (23 Aug 2004)
+
+  23 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> fox-1.2.6-r1.ebuild:
+  New revision which adds support for freetype library, thus allowing for
+  antialiased fonts...
+
+  09 Jul 2004; Ferris McCormick <fmccor@gentoo.org> fox-1.2.6.ebuild:
+  Add ~sparc keyword.
+
+*fox-1.2.6 (07 Jul 2004)
+
+  07 Jul 2004; <rphillips@gentoo.org> fox-1.2.6.ebuild:
+  version bump
+
+  29 Jun 2004; David Holm <dholm@gentoo.org> fox-1.2.4.ebuild:
+  Added to ~ppc.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> fox-1.0.40.ebuild,
+  fox-1.0.43.ebuild, fox-1.0.49.ebuild, fox-1.2.4.ebuild:
+  glibc -> libc
+
+  23 Jun 2004; Ferris McCormick <fmccor@gentoo.org> fox-1.0.49.ebuild:
+  Marked stable for sparc.
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> fox-1.2.4.ebuild:
+  Marked ~amd64.
+
+*fox-1.2.4 (13 Jun 2004)
+
+  13 Jun 2004; <pyrania@gentoo.org> fox-1.0.40.ebuild, fox-1.0.43.ebuild,
+  fox-1.0.49.ebuild, +fox-1.2.4.ebuild:
+  Version bump, ebuild cleanups, added debug useflag.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fox-1.0.43.ebuild,
+  fox-1.0.49.ebuild:
+  Added IUSE=
+
+  10 Apr 2004; David Holm <dholm@gentoo.org> fox-1.0.49.ebuild:
+  Added to ~ppc.
+
+  23 Mar 2004; Dylan Carlson <absinthe@gentoo.org> fox-1.0.49.ebuild:
+  Added amd64 to KEYWORDS.
+
+  18 Feb 2004; Guy Martin <gmsoft@gentoo.org> fox-1.0.49.ebuild :
+  Marked stable on hppa.
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> fox-1.0.49.ebuild:
+  stable on alpha and ia64 for the sake of dev-ruby/fxruby
+
+  15 Feb 2004; Jason Wever <weeve@gentoo.org> fox-1.0.43.ebuild:
+  Marked stable on sparc to fix dev-ruby/fxruby's broken deps.
+
+*fox-1.0.49 (07 Feb 2004)
+
+  07 Feb 2004; Markus Nigbur <pyrania@gentoo.org> fox-1.0.17.ebuild,
+  fox-1.0.26.ebuild, fox-1.0.29.ebuild, fox-1.0.40.ebuild, fox-1.0.43.ebuild,
+  fox-1.0.49.ebuild:
+  Version bump, removed older ebuilds and fixed a DESC typo.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+*fox-1.0.43 (01 Aug 2003)
+
+  01 Aug 2003; Ryan Phillips <rphillips@gentoo.org> fox-1.0.43-ebuild:
+  version bump
+ 
+*fox-1.0.40 (10 Jun 2003)
+
+  10 Jun 2003; Ryan Phillips <rphillips@gentoo.org> :
+  Version bump. Fixes bug #21618
+
+*fox-1.0.29 (26 Dec 2002)
+
+  26 Dec 2002; Ryan Phillips <rphillips@gentoo.org> :
+  Version bump.
+ 
+*fox-1.0.26 (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
 
 *fox-1.0.17.ebuild (29 Jul 2002)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/pcsx2/pcsx2-0.6.ebuild,v 1.1 2004/06/06 05:29:48 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/pcsx2/pcsx2-0.6.ebuild,v 1.1.1.1 2005/11/30 09:50:29 chriswhite Exp $
 
 inherit eutils games
 
@@ -19,11 +19,12 @@ RDEPEND="virtual/x11
 		>=games-emulation/ps2emu-cddvdlinuz-0.3-r1
 		>=games-emulation/ps2emu-cdvdiso-0.3
 	)
-	>=games-emulation/ps2emu-gssoft-0.61
+	>=games-emulation/ps2emu-gssoft-0.6.1
 	>=games-emulation/ps2emu-padxwin-0.5
-	>=games-emulation/ps2emu-spu2null-0.21
+	>=games-emulation/ps2emu-spu2null-0.2.1
 	>=games-emulation/ps2emu-dev9null-0.1"
 DEPEND="${RDEPEND}
+	app-arch/unzip
 	dev-lang/nasm"
 
 S="${WORKDIR}/pcsx2_${PV}src"
@@ -43,6 +44,11 @@ src_compile() {
 src_install() {
 	newgamesbin Linux/pcsx2 pcsx2.bin || die "newgamesbin failed"
 	dogamesbin "${FILESDIR}/pcsx2" || die "dogamesbin failed"
+	sed -i \
+		-e "s:GAMES_BINDIR:${GAMES_BINDIR}:" \
+		-e "s:GAMES_LIBDIR:${GAMES_LIBDIR}:" \
+		"${D}/${GAMES_BINDIR}/pcsx2" \
+		|| die "sed failed"
 	dodir "${GAMES_LIBDIR}/ps2emu/Langs"
 	cp -r Intl/Langs/* "${D}/${GAMES_LIBDIR}/ps2emu/Langs/" || die "cp failed"
 	dodoc Docs/*.txt

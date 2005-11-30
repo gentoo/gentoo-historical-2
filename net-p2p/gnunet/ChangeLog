@@ -1,6 +1,193 @@
 # ChangeLog for net-p2p/gnunet
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnunet/ChangeLog,v 1.1 2002/07/10 18:42:29 rphillips Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnunet/ChangeLog,v 1.1.1.1 2005/11/30 09:51:08 chriswhite Exp $
+
+  02 Oct 2005; Jason Wever <weeve@gentoo.org> gnunet-0.7.0-r2.ebuild:
+  Added ~sparc keyword.
+
+*gnunet-0.7.0-r2 (28 Sep 2005)
+
+  28 Sep 2005; <mkay@gentoo.org> +gnunet-0.7.0-r2.ebuild:
+  Adding small trick to avoid autodetect of installed gtk and making gtk
+  dependency optional
+
+*gnunet-0.7.0-r1 (27 Sep 2005)
+
+  27 Sep 2005; <mkay@gentoo.org> +gnunet-0.7.0-r1.ebuild:
+  Changing default sql-module from sqlite into mysql if compiled without
+  sqlite support. Ebuild now also need at least one of sqlite or mysql USE
+  flags
+
+  26 Sep 2005; <mkay@gentoo.org> gnunet-0.7.0.ebuild:
+  mysql support was built even with USE=-mysql if mysql was installed in
+  system. fixed
+
+  21 Sep 2005; <mkay@gentoo.org> -gnunet-0.5.4-r1.ebuild:
+  Removing 0.5.4-r1
+
+  21 Sep 2005; <mkay@gentoo.org> gnunet-0.7.0.ebuild:
+  GTK support isn't optional. Fixing
+
+*gnunet-0.7.0 (06 Sep 2005)
+
+  12 Sep 2005; <mkay@gentoo.org> gnunet-0.7.0.ebuild:
+  Fixed compilation problem with mysql support (bug #105545)
+
+  06 Sep 2005; Karol Wojtaszek <sekretarz@gentoo.org> +gnunet-0.7.0.ebuild:
+  Version bump, thanks Glenn L. McGrath <bug1@iinet.net.au> in bug #104103
+
+  05 Sep 2005; Jason Wever <weeve@gentoo.org> gnunet-0.6.6b-r1.ebuild:
+  Added ~sparc keyword.
+
+  26 Aug 2005; <sekretarz@gentoo.org> gnunet-0.6.6b.ebuild,
+  gnunet-0.6.6b-r1.ebuild:
+  Using -1 option instead of /bin/false in enewuser to be compliant with
+  G/FBSD and G/Darwin, bug #103421
+
+*gnunet-0.6.6b-r1 (20 Aug 2005)
+
+  20 Aug 2005; <sekretarz@gentoo.org> +files/gnunet-ipv6-gentoo.patch,
+  +gnunet-0.6.6b-r1.ebuild:
+  Fixed ipv6 problems, bug #95530. Ebuild rewrite. Thanks aye in bug #101259
+
+  10 Jul 2005; Sven Wegener <swegener@gentoo.org> gnunet-0.6.6b.ebuild:
+  QA: Removed 'emake || make || die' and variants. Either a package is
+  parallel build safe or it is not. There's nothing like trying and falling
+  back.
+
+  29 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/gnunet-0.6.6b-autotools.patch, gnunet-0.6.6b.ebuild:
+  Solved problems with autotools' files
+
+  02 Apr 2005; Sven Wegener <swegener@gentoo.org> gnunet-0.6.6b.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*gnunet-0.6.6b (01 Apr 2005)
+
+  01 Apr 2005; <augustus@gentoo.org>
+  +files/gnunet-0.6.6b, +gnunet-0.6.6b.ebuild:
+  New version of gnunet by request in Bug #59296. Untested but will submit
+  back to bug for testing.
+
+  08 Aug 2004; Jon Hood <squinky86@gentoo.org> -gnunet-0.6.2a.ebuild,
+  gnunet-0.6.2b.ebuild:
+  Stable on x86.
+
+*gnunet-0.6.2b (28 Jun 2004)
+
+  28 Jun 2004; Jon Hood <squinky86@gentoo.org>
+  +files/gnunet-download-manager.scm, -gnunet-0.5.5.ebuild,
+  -gnunet-0.6.1b.ebuild, -gnunet-0.6.1c.ebuild, -gnunet-0.6.2.ebuild,
+  gnunet-0.6.2a.ebuild, +gnunet-0.6.2b.ebuild:
+  version bump, thanks to Jon Lund Steffensen <jonls@users.sourceforge.net> in
+  #55246
+
+*gnunet-0.6.2a (12 May 2004)
+
+  12 May 2004; Jon Hood <squinky86@gentoo.org> +gnunet-0.6.2a.ebuild:
+  version bump, closes #50566
+
+  02 May 2004; David Holm <dholm@gentoo.org> gnunet-0.6.2.ebuild:
+  Added to ~ppc.
+
+*gnunet-0.6.2 (01 May 2004)
+
+  01 May 2004; Jon Hood <squinky86@gentoo.org> +gnunet-0.6.2.ebuild:
+  Version bump. Closes #48170.
+
+  28 Apr 2004; Jon Hood <squinky86@gentoo.org> gnunet-0.5.4-r1.ebuild,
+  gnunet-0.5.5.ebuild, gnunet-0.6.0.ebuild, gnunet-0.6.1b.ebuild,
+  gnunet-0.6.1c.ebuild:
+  fix DEPEND for libextractor
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> gnunet-0.5.4-r1.ebuild,
+  gnunet-0.5.5.ebuild:
+  Add die following econf for bug 48950
+
+  24 Mar 2004; Jason Wever <weeve@gentoo.org> gnunet-0.5.4-r1.ebuild:
+  Added ~sparc keyword.
+
+  22 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnunet-0.5.4-r1.ebuild, gnunet-0.5.5.ebuild, gnunet-0.6.0.ebuild,
+  gnunet-0.6.0a.ebuild, gnunet-0.6.1a.ebuild, gnunet-0.6.1b.ebuild,
+  gnunet-0.6.1c.ebuild:
+  Updated webpage and SRC_URI to gnu locations. Removed old ebuilds.
+
+*gnunet-0.6.1c (22 Mar 2004)
+
+  22 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> gnunet-0.6.1c.ebuild:
+  Version bump and adding gtk, mysql, and crypt USE flag support closes bugs
+  #35873 and #45263.
+
+*gnunet-0.6.1b (26 Feb 2004)
+
+  26 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> gnunet-0.6.1b.ebuild:
+  Version bump for bug #40022.
+
+*gnunet-0.6.1a (15 Jan 2004)
+
+  15 Jan 2004; Martin Holzer <mholzer@gentoo.org> gnunet-0.6.1a.ebuild:
+  Version bumped. Closes 37837
+
+*gnunet-0.6.0a (09 Oct 2003)
+
+  09 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> gnunet-0.6.0a.ebuild:
+  version bump (bug 30791)
+
+*gnunet-0.6.0 (06 Oct 2003)
+
+  06 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> gnunet-0.6.0.ebuild:
+  version bump (bug 30498)
+
+*gnunet-0.5.5 (02 Oct 2003)
+
+  02 Oct 2003; Heinrich Wendel <lanius@gentoo.org> gnunet-0.5.1a.ebuild,
+  gnunet-0.5.2a.ebuild, gnunet-0.5.4.ebuild, gnunet-0.5.5.ebuild:
+  version bump
+
+  25 Aug 2003; <spider@gentoo.org> gnunet-0.5.4-r1.ebuild:
+  Bugfix worked. Marking as stable
+
+*gnunet-0.5.4-r1 (24 Aug 2003)
+
+  24 Aug 2003; <spider@gentoo.org> gnunet-0.5.4-r1.ebuild:
+  elibtoolize, to see if this solves a problem from bug 27100
+
+  09 Jul 2003; <spider@gentoo.org> gnunet-0.5.4.ebuild:
+  marking as stable x86
+
+*gnunet-0.5.4 (17 Jun 2003)
+
+  17 Jun 2003; <spider@gentoo.org> gnunet-0.5.4.ebuild:
+  Update, added ipv6 support. added default config.
+
+*gnunet-0.5.2a (23 mar 2003)
+
+  23 Mar 2003; Martin Holzer <mholzer@gentoo.org> gnunet-0.4.6.ebuild,
+  gnunet-0.5.1a.ebuild, gnunet-0.5.2a.ebuild:
+  Added postinst with einfo about the config file. closes #18020.
+
+  23 mar 2003; <spider@gentoo.org> gnunet-0.5.2a.ebuild:
+  Updated, bugfix release
+
+*gnunet-0.5.1a (05 Feb 2003)
+
+  05 Feb 2003; Nick Hadaway <raker@gentoo.org> gnunet-0.5.1a.ebuild,
+  files/digest-gnunet-0.5.1a :
+  Version bump.  Depends on libextractor-0.2.0 now.
+
+*gnunet-0.4.6 (27 Aug 2002)
+
+  27 Aug 2002; Ryan Phillips <rphillips@gentoo.org> gnunet-0.4.6.ebuild :
+
+  Some changes to the ebuild and an updated version.  Fixes bug #6915
+  Submitted by Jeremiah Mahler
+
+*gnunet-0.4.4 (18 Aug 2002)
+
+  18 Aug 2002; Ryan Phillips <rphillips@gentoo.org> gnunet-0.4.4.ebuild :
+
+  New version
 
 *gnunet-0.4.2 (10 Jul 2002)
 

@@ -1,19 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/perl-ldap/perl-ldap-0.31.ebuild,v 1.1 2004/02/29 10:22:27 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/perl-ldap/perl-ldap-0.31.ebuild,v 1.1.1.1 2005/11/30 09:52:34 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="A collection of perl modules which provide an object-oriented interface to LDAP servers."
-SRC_URI="http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/${P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/~gbarr/${P}/"
-IUSE="sasl xml ssl"
-SLOT="0"
-LICENSE="Artistic"
-KEYWORDS="x86 ~alpha ~sparc ~ppc ~ia64 ~mips"
+SRC_URI="mirror://cpan/authors/id/G/GB/GBARR/${P}.tar.gz"
 
-DEPEND="${DEPEND} dev-perl/Convert-ASN1
-		dev-perl/URI
-		sasl? ( dev-perl/Digest-MD5 dev-perl/Authen-SASL )
-		xml? ( dev-perl/XML-Parser )
-		ssl? ( >=dev-perl/IO-Socket-SSL-0.81 )"
+LICENSE="Artistic"
+SLOT="0"
+KEYWORDS="x86 ppc sparc mips alpha arm ia64 s390 hppa ppc64 amd64"
+IUSE="sasl xml ssl"
+
+DEPEND="dev-perl/Convert-ASN1
+	dev-perl/URI
+	sasl? ( perl-core/Digest-MD5 dev-perl/Authen-SASL )
+	xml? ( dev-perl/XML-Parser )
+	ssl? ( >=dev-perl/IO-Socket-SSL-0.81 )"

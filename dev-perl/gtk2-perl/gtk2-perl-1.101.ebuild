@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-perl/gtk2-perl-1.101.ebuild,v 1.1 2005/11/14 22:04:40 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-perl/gtk2-perl-1.101.ebuild,v 1.1.1.1 2005/11/30 09:53:18 chriswhite Exp $
 
 inherit perl-module
 

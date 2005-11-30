@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.50.ebuild,v 1.1 2005/03/03 22:24:58 peitolm Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.50.ebuild,v 1.1.1.1 2005/11/30 09:50:44 chriswhite Exp $
 
 inherit eutils
 

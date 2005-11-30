@@ -1,6 +1,48 @@
 # ChangeLog for dev-perl/Test-Class
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Class/ChangeLog,v 1.1 2004/03/29 11:23:46 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Class/ChangeLog,v 1.1.1.1 2005/11/30 09:52:35 chriswhite Exp $
+
+  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Test-Class-0.11.ebuild:
+  Stable on sparc
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Test-Class-0.03.ebuild,
+  Test-Class-0.11.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Test-Class-0.03.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Test-Class-0.03.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Test-Class-0.11.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Test-Class-0.03.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  20 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-Class-0.11.ebuild:
+  Marking stable x86, keywording ~sparc
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> Test-Class-0.03.ebuild,
+  Test-Class-0.11.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*Test-Class-0.11 (29 Apr 2005)
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Test-Class-0.03.ebuild, +Test-Class-0.11.ebuild:
+  Cleaning up, version bump
+
+  14 Mar 2005; Michael Cummings <mcummings@gentoo.org> Test-Class-0.03.ebuild:
+  Removing dep for Attribute-Handlers as the version installed with perl >=5.8.4
+  is newer than our ebuild
+
+  19 Dec 2004; Michael Cummings <mcummings@gentoo.org>
+  Test-Class-0.03.ebuild:
+  Missing dep
 
 *Test-Class-0.03 (29 Mar 2004)
 

@@ -1,6 +1,28 @@
 # ChangeLog for games-emulation/mupen64-glide64
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64-glide64/ChangeLog,v 1.1 2005/01/03 15:36:18 morfic Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64-glide64/ChangeLog,v 1.1.1.1 2005/11/30 09:50:25 chriswhite Exp $
+
+  20 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  mupen64-glide64-0.7.ebuild:
+  remove gtk2 use flag
+
+  18 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  mupen64-glide64-0.7.ebuild:
+  fix bad epatch logic (bug #85739); fix deps; tidy ebuild
+
+  19 Jan 2005; Daniel Goller <morfic@gentoo.org> mupen64-glide64-0.7.ebuild:
+  Stable on x86
+
+  09 Jan 2005; Daniel Goller <morfic@gentoo.org> mupen64-glide64-0.7.ebuild:
+  More fixes with paths
+
+  07 Jan 2005; Daniel Goller <morfic@gentoo.org>
+  files/mupen64-glide64-0.7-gtk2.patch,
+  +files/mupen64-glide64-0.7-inifix.patch, mupen64-glide64-0.7.ebuild:
+  Updated gtk2 patch and added inifix patch, glide64 plugin now works properly
+
+  07 Jan 2005; Daniel Goller <morfic@gentoo.org> metadata.xml:
+  Adding maintainer
 
 *mupen64-glide64-0.7 (02 Jan 2005)
 

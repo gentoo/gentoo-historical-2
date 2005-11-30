@@ -1,6 +1,53 @@
 # ChangeLog for x11-libs/fxscintilla
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fxscintilla/ChangeLog,v 1.1 2004/02/25 19:12:30 rphillips Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fxscintilla/ChangeLog,v 1.1.1.1 2005/11/30 09:54:26 chriswhite Exp $
+
+*fxscintilla-1.62-r1 (07 May 2005)
+
+  07 May 2005; <rphillips@gentoo.org> +files/1.62-fox-SLOT.patch,
+  +files/1.62-shared-libs.patch, +fxscintilla-1.62-r1.ebuild:
+  Added Yaakov Selkowitz's eclass based fox ebuilds for testing.
+  Fixes #88924
+
+  04 May 2005; Guy Martin <gmsoft@gentoo.org> fxscintilla-1.62.ebuild:
+  Stable on hppa.
+
+  14 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  fxscintilla-1.62.ebuild:
+  Stable on alpha.
+
+  26 Mar 2005; Jason Wever <weeve@gentoo.org> fxscintilla-1.62.ebuild:
+  Stable on SPARC.
+
+*fxscintilla-1.62 (06 Feb 2005)
+
+  06 Feb 2005; <rphillips@gentoo.org> fxscintilla-1.55.ebuild,
+  fxscintilla-1.61.ebuild, fxscintilla-1.62.ebuild:
+  version bump. Thanks to Soren Bog
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> fxscintilla-1.61.ebuild:
+  ~alpha keyword.
+
+  11 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> fxscintilla-1.61.ebuild:
+  Added amd64 keyword.
+
+  09 Jul 2004; Ferris McCormick <fmccor@gentoo.org> fxscintilla-1.61.ebuild:
+  Add ~sparc keyword.
+
+*fxscintilla-1.61 (07 Jul 2004)
+
+  07 Jul 2004; <rphillips@gentoo.org> fxscintilla-1.61.ebuild:
+  version bump
+
+  10 Apr 2004; David Holm <dholm@gentoo.org> fxscintilla-1.55.ebuild:
+  Added to ~ppc.
+
+  25 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  fxscintilla-1.55.ebuild:
+  tidy; add IUSE
 
 *fxscintilla-1.55 (25 Feb 2004)
 

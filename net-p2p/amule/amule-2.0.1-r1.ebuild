@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/amule/amule-2.0.1-r1.ebuild,v 1.1 2005/09/20 09:59:18 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/amule/amule-2.0.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:10 chriswhite Exp $
 
 inherit eutils flag-o-matic wxwidgets
 

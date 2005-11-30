@@ -1,18 +1,19 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-DES/Crypt-DES-2.03-r1.ebuild,v 1.1 2002/10/30 07:20:35 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-DES/Crypt-DES-2.03-r1.ebuild,v 1.1.1.1 2005/11/30 09:52:59 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Crypt::DES module for perl"
-SRC_URI="http://www.cpan.org/authors/id/D/DP/DPARIS/${P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/author/DPARIS/Crypt-DES-${PV}/"
+SRC_URI="mirror://cpan/authors/id/D/DP/DPARIS/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc alpha"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc >=sys-devel/perl-5"
+DEPEND="virtual/libc
+	>=dev-lang/perl-5"
 
 export OPTIMIZE="${CFLAGS}"

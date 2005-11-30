@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exception-Class/Exception-Class-1.22.ebuild,v 1.1 2005/11/19 08:45:39 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exception-Class/Exception-Class-1.22.ebuild,v 1.1.1.1 2005/11/30 09:53:16 chriswhite Exp $
 
 myconf='INSTALLDIRS=vendor'
 inherit perl-module

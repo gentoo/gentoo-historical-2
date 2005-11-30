@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-archive/autoconf-archive-2005.08.12.ebuild,v 1.1 2005/08/18 02:00:32 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf-archive/autoconf-archive-2005.08.12.ebuild,v 1.1.1.1 2005/11/30 09:53:52 chriswhite Exp $
 
 MY_PV=${PV//./-}
 DESCRIPTION="GNU Autoconf Macro Archive"

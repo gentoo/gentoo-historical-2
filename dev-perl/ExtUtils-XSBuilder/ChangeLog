@@ -1,6 +1,36 @@
 # ChangeLog for dev-perl/ExtUtils-XSBuilder
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-XSBuilder/ChangeLog,v 1.1 2004/05/02 00:27:08 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-XSBuilder/ChangeLog,v 1.1.1.1 2005/11/30 09:52:52 chriswhite Exp $
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-XSBuilder-0.27.ebuild:
+  Mark 0.27 stable on ia64
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-XSBuilder-0.27.ebuild:
+  Mark 0.27 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-XSBuilder-0.27.ebuild:
+  add ~ia64
+
+  15 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  -ExtUtils-XSBuilder-0.25.ebuild, ExtUtils-XSBuilder-0.27.ebuild:
+  Marking stable x86 and sparc
+
+  14 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  ExtUtils-XSBuilder-0.27.ebuild:
+  marked ~alpha, as a dependency of libapreq2 (bug #102503)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-XSBuilder-0.25.ebuild:
+  marking stable
+
+*ExtUtils-XSBuilder-0.27 (25 Apr 2005)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-XSBuilder-0.25.ebuild, +ExtUtils-XSBuilder-0.27.ebuild:
+  cleaning
 
 *ExtUtils-XSBuilder-0.25 (01 May 2004)
 
@@ -8,4 +38,3 @@
   ExtUtils-XSBuilder-0.25.ebuild, metadata.xml:
   Ebuild submitted by Doug Weimer <dweimer@socal.rr.com> in bug 47875 - dep for
   libapreq-2 in bug 35406
-

@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-pgpinline/sylpheed-claws-pgpinline-0.5.ebuild,v 1.1 2004/12/14 06:42:13 genone Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-pgpinline/sylpheed-claws-pgpinline-0.5.ebuild,v 1.1.1.1 2005/11/30 09:49:45 chriswhite Exp $
 
 MY_P="${P##sylpheed-claws-}"
 
 DESCRIPTION="Plugin for sylpheed-claws to support mails with inline pgp signatures"
-HOMEPAGE="http://sylpheed-claws.sourceforge.net"
-SRC_URI="http://sylpheed-claws.sourceforge.net/downloads/${MY_P}.tar.gz"
+HOMEPAGE="http://claws.sylpheed.org"
+SRC_URI="http://claws.sylpheed.org/downloads/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha"
+KEYWORDS="x86 ppc sparc amd64 alpha ppc64"
 IUSE=""
-DEPEND=">=mail-client/sylpheed-claws-0.9.12b-r1
+DEPEND="=mail-client/sylpheed-claws-1.0*
 		=app-crypt/gpgme-0.3.14-r1"
 
 S="${WORKDIR}/${MY_P}"

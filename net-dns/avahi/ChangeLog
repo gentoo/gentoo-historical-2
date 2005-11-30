@@ -1,10 +1,79 @@
 # ChangeLog for net-dns/avahi
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.1 2005/08/22 03:04:37 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/avahi/ChangeLog,v 1.1.1.1 2005/11/30 09:50:15 chriswhite Exp $
+
+  14 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> avahi-0.5.2-r1.ebuild:
+  Added to ~ppc. See bug #111461.
+
+  07 Nov 2005; Sven Wegener <swegener@gentoo.org> avahi-0.5.2.ebuild,
+  avahi-0.5.2-r1.ebuild:
+  Make the pygtk support dependant on the gtk USE flag in addition to the
+  python USE flag.
+
+*avahi-0.5.2-r1 (04 Nov 2005)
+
+  04 Nov 2005; Sven Wegener <swegener@gentoo.org> +avahi-0.5.2-r1.ebuild:
+  Revision bump for testing the mono docs stuff.
+
+  04 Nov 2005; Sven Wegener <swegener@gentoo.org> avahi-0.5.2.ebuild:
+  Add built_with_use test for bug #111413.
+
+*avahi-0.5.2 (03 Oct 2005)
+
+  03 Oct 2005; Sven Wegener <swegener@gentoo.org> -avahi-0.5.1.ebuild,
+  +avahi-0.5.2.ebuild:
+  Another bugfix release.
+
+*avahi-0.5.1 (30 Sep 2005)
+
+  30 Sep 2005; Sven Wegener <swegener@gentoo.org> -avahi-0.5.ebuild,
+  +avahi-0.5.1.ebuild:
+  Version bump, bugfix release.
+
+  25 Sep 2005; Sven Wegener <swegener@gentoo.org> -avahi-0.4.ebuild:
+  Removed old ebuild.
+
+  20 Sep 2005; Sven Wegener <swegener@gentoo.org> avahi-0.5.ebuild:
+  Updated mono dependency, bug #106640. Thanks to Frederick Martin.
+
+*avahi-0.5 (14 Sep 2005)
+
+  14 Sep 2005; Sven Wegener <swegener@gentoo.org> +avahi-0.5.ebuild:
+  Version bump.
+
+*avahi-0.4 (08 Sep 2005)
+
+  08 Sep 2005; Sven Wegener <swegener@gentoo.org> -files/0.2-anydbm.patch,
+  -avahi-0.2.ebuild, -avahi-0.3.ebuild, +avahi-0.4.ebuild:
+  Version bump.
+
+*avahi-0.3 (03 Sep 2005)
+
+  03 Sep 2005; Sven Wegener <swegener@gentoo.org> +avahi-0.3.ebuild:
+  Version bump.
+
+  30 Aug 2005; <dang@gentoo.org> avahi-0.2.ebuild:
+  Marked ~amd64
+
+  29 Aug 2005; Sven Wegener <swegener@gentoo.org> +files/0.2-anydbm.patch,
+  avahi-0.2.ebuild:
+  Only enable python support, if we also want dbus support, bug #104081. Use
+  anydbm instead of dbm for creating service-types.db.
+
+*avahi-0.2 (28 Aug 2005)
+
+  28 Aug 2005; Sven Wegener <swegener@gentoo.org> -files/avahi-daemon.initd,
+  -files/avahi-dnsconfd.initd, -avahi-0.1.ebuild, +avahi-0.2.ebuild:
+  Version bump.
+
+  23 Aug 2005; Sven Wegener <swegener@gentoo.org> -files/avahi.initd,
+  +files/avahi-daemon.initd, avahi-0.1.ebuild:
+  Renamed the avahi-daemon initscript to match the name used by upstream and
+  other distributions.
 
 *avahi-0.1 (22 Aug 2005)
 
   22 Aug 2005; Sven Wegener <swegener@gentoo.org> +files/avahi.initd,
-  +metadata.xml, +avahi-0.1.ebuild:
+  +files/avahi-dnsconfd.initd, +metadata.xml, +avahi-0.1.ebuild:
   Initial commit, ebuild written by me.
 

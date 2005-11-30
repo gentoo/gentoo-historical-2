@@ -1,8 +1,353 @@
 # ChangeLog for www-client/mozilla
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla/ChangeLog,v 1.1 2005/03/23 15:30:13 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla/ChangeLog,v 1.1.1.1 2005/11/30 09:52:15 chriswhite Exp $
 
-*mozilla-1.7.6-r1 (23 Mar 2005)
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.12-r2.ebuild:
+  Mark 1.7.12-r2 stable on ia64
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-1.7.12-r2.ebuild:
+  Fix a compilation issue using the 32-bit userland with 64-bit kernel on
+  PowerPC.
+
+  29 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-1.7.12-r2.ebuild:
+  Stable on sparc wrt #105396
+
+  29 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  mozilla-1.7.12-r2.ebuild:
+  Stable on alpha wrt security bug #105396
+
+  29 Sep 2005; Mark Loeser <halcy0n@gentoo.org> mozilla-1.7.12-r2.ebuild:
+  Stable on x86; bug #105396
+
+  28 Sep 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mozilla-1.7.12-r2.ebuild:
+  Stable on hppa.
+
+  28 Sep 2005; Homer Parker <hparker@gentoo.org> mozilla-1.7.12-r2.ebuild:
+  Stable on amd64.
+
+  28 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-1.7.12-r2.ebuild:
+  Stable on ppc.
+
+*mozilla-1.7.12-r2 (28 Sep 2005)
+
+  28 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  mozilla-1.7.12-r1.ebuild, +mozilla-1.7.12-r2.ebuild:
+  Add pango and other patches from fedora in effort to try and resolve bug
+  #107372. Update patch set with patch from bug #96869 (comment #48).
+
+*mozilla-1.7.12-r1 (26 Sep 2005)
+
+  26 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-1.7.12-gtk2xft-invalidate-pango_context.patch,
+  +files/mozilla-1.7.12-rpath.patch, +mozilla-1.7.12-r1.ebuild:
+  Add rpath stuff, bug #100597.  Fix epiphany/galeon/etc segfaulting at startup.
+
+  26 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> mozilla-1.7.12.ebuild:
+  Stable on sparc wrt #105396
+
+  26 Sep 2005; Martin Schlemmer <azarah@gentoo.org> mozilla-1.7.12.ebuild:
+  Fix doc installation.
+
+*mozilla-1.7.12 (25 Sep 2005)
+
+  25 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-1.7.12-gtk2xft-link-pangoxft.patch,
+  +files/mozilla-1.7.12-libart-freetype.patch, +mozilla-1.7.12.ebuild:
+  New release, GLSA105396. Use libart rather than cairo, bug #106713. Update
+  gtk2 and xft code from upstream to fix various freetype-2.1.9 issues
+  including printing non-latin. Same for the libart renderer code.
+
+  17 Sep 2005; Jason Wever <weeve@gentoo.org> mozilla-1.7.11-r3.ebuild:
+  Stable on SPARC wrt security bug #105396.
+
+  17 Sep 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mozilla-1.7.11-r3.ebuild:
+  Stable on hppa. bug #105396
+
+  17 Sep 2005; Markus Rothe <corsair@gentoo.org> mozilla-1.7.11-r3.ebuild:
+  added ~ppc64
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.11-r3.ebuild:
+  Mark 1.7.11-r3 stable on ia64
+
+  16 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  mozilla-1.7.11-r3.ebuild:
+  Stable on alpha wrt security bug #105396
+
+  16 Sep 2005; Luis Medinas <metalgod@gentoo.org> mozilla-1.7.11-r3.ebuild:
+  Marked Stable on amd64. Fixes bug #105396.
+
+  16 Sep 2005; Mark Loeser <halcy0n@gentoo.org> mozilla-1.7.11-r3.ebuild:
+  Stable on x86.
+
+  15 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-1.7.11-r3.ebuild:
+  Stable on ppc.
+
+*mozilla-1.7.11-r3 (15 Sep 2005)
+
+  15 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-1.7.11-GLSA105396.patch, +mozilla-1.7.11-r3.ebuild:
+  Fix buffer overflow, bug #105396.
+
+*mozilla-1.7.11-r2 (16 Aug 2005)
+
+  16 Aug 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +files/mozilla-rpath-1.patch, +mozilla-1.7.11-r2.ebuild:
+  rpath patch introduced, p.masked for further testing
+
+*mozilla-1.7.11-r1 (14 Aug 2005)
+
+  14 Aug 2005; Jory A. Pratt <anarchy@gentoo.org> +mozilla-1.7.11-r1.ebuild:
+  Adjusted dep wrt bug #102539
+
+  11 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org> mozilla-1.7.11.ebuild:
+  Stable on hppa.
+
+  11 Aug 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.11.ebuild:
+  stable on alpha
+
+  10 Aug 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.11.ebuild:
+  stable ia64
+
+  10 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> mozilla-1.7.11.ebuild:
+  Stable on sparc wrt #101921
+
+  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> mozilla-1.7.11.ebuild:
+  Marked Stable on AMD64.
+
+  10 Aug 2005; Hardave Riar <hardave@gentoo.org> mozilla-1.7.10-r1.ebuild,
+  mozilla-1.7.10-r2.ebuild, mozilla-1.7.10-r3.ebuild, mozilla-1.7.11.ebuild:
+  Removing the ~mips keywords from all ebuilds since it should never have been
+  there at all.
+
+  10 Aug 2005; Jory A. Pratt <anarchy@gentoo.org> mozilla-1.7.11.ebuild:
+  Stable on ppc and x86
+
+  09 Aug 2005; Jory A. Pratt <anarchy@gentoo.org> mozilla-1.7.10-r1.ebuild:
+  Added ~ppc64 to Keywords
+
+  08 Aug 2005; Jory A. Pratt <anarchy@gentoo.org> -mozilla-1.7.7.ebuild,
+  -mozilla-1.7.7-r2.ebuild, -mozilla-1.7.8.ebuild, -mozilla-1.7.8-r1.ebuild,
+  -mozilla-1.7.8-r2.ebuild, mozilla-1.7.10-r1.ebuild,
+  mozilla-1.7.10-r2.ebuild, mozilla-1.7.10-r3.ebuild, mozilla-1.7.11.ebuild:
+  cleanup, drop of mozxmlterm as it is expermimental and not supported by us
+  anymore
+
+  04 Aug 2005; Martin Schlemmer <azarah@gentoo.org>
+  mozilla-1.7.10-r1.ebuild, mozilla-1.7.10-r2.ebuild,
+  mozilla-1.7.10-r3.ebuild, mozilla-1.7.11.ebuild:
+  Remove --no-preserve=links from cp for bsd compatibility.
+
+*mozilla-1.7.11 (03 Aug 2005)
+
+  03 Aug 2005; Jory A. Pratt <anarchy@gentoo.org> +mozilla-1.7.11.ebuild:
+  revsision bump repairs regressions in 1.7.10
+
+  02 Aug 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.10-r3.ebuild:
+  Move GENTOO_NSPLUGINS_DIR and GENTOO_NSBROWSER_PLUGINS_DIR from the eclass
+  prior to econf, to the ebuild prior to emake, since ./configure chokes on
+  the definitions
+
+*mozilla-1.7.10-r3 (02 Aug 2005)
+
+  02 Aug 2005; Aron Griffis <agriffis@gentoo.org> +mozilla-1.7.10-r3.ebuild:
+  Update to v2 of the nsplugins patch, which actually works (even on multilib
+  systems)
+
+  25 Jul 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.10-r2.ebuild:
+  Don't attempt to build enigmail when USE=moznomail #100101 #100155
+
+*mozilla-1.7.10-r2 (23 Jul 2005)
+
+  23 Jul 2005; Aron Griffis <agriffis@gentoo.org> +mozilla-1.7.10-r2.ebuild:
+  Now that mozilla-launcher-1.42 handles -register gracefully for mozilla (by
+  calling mozilla-rebuild-databases.pl) we can use the same registration code
+  in the pkg_* functions that we use for firefox and thunderbird. 
+  
+  Refrain from unpacking the enigmail tarball unless USE=crypt
+  
+  Note: This is ~arch and should go through the standard soak period since
+  there's no pressing (e.g. security) reason to push it to stable sooner.
+
+  23 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-1.7.10-r1.ebuild:
+  Stable on sparc wrt #98846
+
+  23 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mozilla-1.7.10-r1.ebuild:
+  Stable on hppa. bug 98846
+
+  22 Jul 2005; Jory A. Pratt <anarchy@gentoo.org> mozilla-1.7.10-r1.ebuild:
+  Stable ppc wrt bug #98846
+
+  22 Jul 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.10-r1.ebuild:
+  Push to stable (alpha amd64 ia64 x86) for security and extensions issues
+
+*mozilla-1.7.10-r1 (22 Jul 2005)
+
+  22 Jul 2005; Aron Griffis <agriffis@gentoo.org> -mozilla-1.7.10.ebuild,
+  +mozilla-1.7.10-r1.ebuild:
+  Repair installation to actually work.  Now that we're using the firefox-style
+  installation method, we can drop the raw installation target patch.  Revert to
+  using mozilla-rebuild-databases.pl since mozilla doesn't support -register like
+  firefox and thunderbird.  Oh well.
+
+  22 Jul 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.10.ebuild:
+  Sync major changes from firefox and thunderbird ebuilds, including new
+  mozilla-launcher based registration.
+
+*mozilla-1.7.10 (21 Jul 2005)
+
+  21 Jul 2005; Jory A. Pratt <anarchy@gentoo.org> +mozilla-1.7.10.ebuild:
+  wrt #98846, modifications needed before p.mask is removed
+
+*mozilla-1.7.8-r2 (11 Jul 2005)
+
+  11 Jul 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.8-r1.ebuild,
+  +mozilla-1.7.8-r2.ebuild:
+  Add patch to solve math issues so that maps.google.com works on alpha
+
+  06 Jul 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.7.ebuild,
+  mozilla-1.7.7-r2.ebuild, mozilla-1.7.8.ebuild, mozilla-1.7.8-r1.ebuild:
+  Add missing flags to IUSE
+
+  27 Jun 2005; Sven Wegener <swegener@gentoo.org> mozilla-1.7.7.ebuild,
+  mozilla-1.7.7-r2.ebuild, mozilla-1.7.8.ebuild, mozilla-1.7.8-r1.ebuild:
+  Changed 'pgsql?' to 'postgres?' in *DEPEND.
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> mozilla-1.7.7.ebuild,
+  mozilla-1.7.7-r2.ebuild, mozilla-1.7.8.ebuild, mozilla-1.7.8-r1.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  24 May 2005; Herbie Hopkins <herbs@gentoo.org> mozilla-1.7.8-r1.ebuild:
+  Set correct libdir in env.d file.
+
+  16 May 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-1.7.8-amd64.patch, mozilla-1.7.8-r1.ebuild:
+  Fix building on amd64 with gcc4 (patch from Debian)
+
+*mozilla-1.7.8-r1 (15 May 2005)
+
+  15 May 2005; Michael Hanselmann <hansmi@gentoo.org> mozilla-1.7.8-r1.ebuild,
+  files/digest-mozilla-1.7.8-r1:
+  Added a backported patch which fixes rare crashes with
+  plugin.default_plugin_disabled being true.
+
+  13 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mozilla-1.7.8.ebuild:
+  stable on amd64 wrt #92394
+
+  13 May 2005; Carsten Lohrke <carlo@gentoo.org> mozilla-1.7.8.ebuild:
+  Stable on x86, #92394
+
+  13 May 2005; Guy Martin <gmsoft@gentoo.org> mozilla-1.7.8.ebuild:
+  Stable on hppa.
+
+  13 May 2005; Bryan Østergaard <kloeri@gentoo.org> mozilla-1.7.8.ebuild:
+  Stable on alpha, bug 92394.
+
+  12 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> mozilla-1.7.8.ebuild:
+  Stable on sparc wrt #92394
+
+  12 May 2005; Lars Weiler <pylon@gentoo.org> mozilla-1.7.8.ebuild:
+  Stable on ppc; bug #92394.
+
+  12 May 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.8.ebuild:
+  stable on ia64 #91859
+
+*mozilla-1.7.8 (12 May 2005)
+
+  12 May 2005; Aron Griffis <agriffis@gentoo.org>
+  -files/mozilla-1.7.5-stackgrowth.patch, -mozilla-1.7.5.ebuild,
+  -mozilla-1.7.5-r1.ebuild, -mozilla-1.7.6-r1.ebuild, +mozilla-1.7.8.ebuild:
+  bump to 1.7.8 #91859.  trim old versions
+
+*mozilla-1.7.7-r2 (25 Apr 2005)
+
+  25 Apr 2005; Brad Laue <brad@gentoo.org> +mozilla-1.7.7-r2.ebuild:
+  Keep development tools (xpidl, etc) in $MOZILLA_FIVE_HOME where they're 
+  expected.
+
+*mozilla-1.7.7-r1 (25 Apr 2005)
+
+  25 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-1.7.6-gcc4.patch, +mozilla-1.7.7-r1.ebuild:
+  Fix building with gcc4.  Patch from halcy0n's dev space.
+
+  19 Apr 2005; Markus Rothe <corsair@gentoo.org> mozilla-1.7.7.ebuild:
+  Added ppc64 patch to ebuild and marked ~ppc64; bug #89305
+
+  18 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> mozilla-1.7.7.ebuild:
+  Stable on ia64, bug 89305.
+
+  18 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> mozilla-1.7.7.ebuild:
+  Stable on alpha, bug 89305.
+
+  17 Apr 2005; Herbie Hopkins <herbs@gentoo.org> mozilla-1.7.7.ebuild:
+  Stable on amd64 wrt security bug fixes.
+
+  17 Apr 2005; Jason Wever <weeve@gentoo.org> mozilla-1.7.7.ebuild:
+  Stable on SPARC wrt security bug #89305.
+
+  17 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mozilla-1.7.7.ebuild:
+  Stable on hppa.
+
+  17 Apr 2005; Markus Rothe <corsair@gentoo.org> mozilla-1.7.6-r1.ebuild:
+  Patch for ppc64 didn't apply -> corrected
+
+  17 Apr 2005; Tom Gall <tgall@gentoo.org> mozilla-1.7.6-r1.ebuild,
+  +mozilla-1.7.6-ppc64.patch:
+  bug #54853 -- initial ppc64 port
+
+  16 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mozilla-1.7.7.ebuild:
+  Stable on ppc.
+
+*mozilla-1.7.7 (16 Apr 2005)
+
+  16 Apr 2005; Brad Laue <brad@gentoo.org> +mozilla-1.7.7.ebuild:
+  Bump to 1.7.7. Stable on x86 due to #89305.
+
+  28 Mar 2005; Guy Martin <gmsoft@gentoo.org> files/mozilla-hppa.patch,
+  mozilla-1.7.6-r1.ebuild:
+  Fixed hppa patch && stable on hppa.
+
+  25 Mar 2005; <blubb@gentoo.org> mozilla-1.7.6-r1.ebuild:
+  stable on amd64 wrt bug #84074
+
+  24 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> mozilla-1.7.6-r1.ebuild:
+  Stable on ppc.
+
+  24 Mar 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.6-r1.ebuild:
+  Stable on alpha ia64
+
+  24 Mar 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.5.ebuild,
+  mozilla-1.7.5-r1.ebuild, mozilla-1.7.6-r1.ebuild:
+  Add dep on ~autoconf-2.13 #86401
+
+  24 Mar 2005; Jason Wever <weeve@gentoo.org> mozilla-1.7.6-r1.ebuild:
+  Stable on SPARC wrt security bug #84074.
+
+  24 Mar 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.5-r1.ebuild:
+  Backport fixes from 1.7.6-r1 for USE=ldap build #85648
+
+  23 Mar 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.6-r1.ebuild:
+  Don't force CC, CXX, LD on the make cmdline so that we can build with
+  USE=ldap. Defining for the invocation of ./configure is sufficient.
+
+  23 Mar 2005; Aron Griffis <agriffis@gentoo.org> mozilla-1.7.5.ebuild,
+  mozilla-1.7.5-r1.ebuild, mozilla-1.7.6-r1.ebuild:
+  Fix smime to use /usr/bin/perl instead of /usr/local/bin/perl #51916
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> mozilla-1.7.6-r1.ebuild:
+  mozilla-launcher to www-client from net-www
+
+  23 Mar 2005; Aron Griffis <agriffis@gentoo.org> -mozilla-1.7.6.ebuild,
+  mozilla-1.7.6-r1.ebuild:
+  Remove 1.7.6 in favor of 1.7.6-r1 to avoid build/rebuild cycle
 
   23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
   +files/svg-cairo-0.3.0-fix.patch,
@@ -15,6 +360,12 @@
   +mozilla-1.7.5.ebuild, +mozilla-1.7.5-r1.ebuild, +mozilla-1.7.6.ebuild,
   +mozilla-1.7.6-r1.ebuild:
   mozilla now in www-client
+
+*mozilla-1.7.6-r1 (23 Mar 2005)
+
+  23 Mar 2005; Aron Griffis <agriffis@gentoo.org> +mozilla-1.7.6-r1.ebuild:
+  Use a stub script instead of symlink to mozilla-launcher.  This in
+  combination with mozilla-launcher-1.28 should fix #78890
 
 *mozilla-1.7.6 (23 Mar 2005)
 

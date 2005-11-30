@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/ps2emu-cddvdlinuz/ps2emu-cddvdlinuz-0.3-r1.ebuild,v 1.1 2003/12/12 22:04:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/ps2emu-cddvdlinuz/ps2emu-cddvdlinuz-0.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:28 chriswhite Exp $
 
 inherit games
 
@@ -10,20 +10,25 @@ SRC_URI="http://www.pcsx2.net/download/0.5release/CDVDlinuz${PV}.zip"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~ppc x86"
+IUSE=""
 
-DEPEND="=x11-libs/gtk+-1*"
+RDEPEND="=x11-libs/gtk+-1*"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
-S=${WORKDIR}/CDVDlinuz
+S="${WORKDIR}/CDVDlinuz"
 
 src_unpack() {
 	unpack ${A}
-	sed -i 's:-O2 -fomit-frame-pointer:$(OPTFLAGS):' ${S}/Src/Makefile
+	sed -i \
+		-e 's:-O2 -fomit-frame-pointer:$(OPTFLAGS):' ${S}/Src/Makefile \
+		|| die "sed failed"
 }
 
 src_compile() {
 	cd Src
-	emake OPTFLAGS="${CFLAGS}" || die
+	emake OPTFLAGS="${CFLAGS}" || die "emake failed"
 }
 
 src_install() {

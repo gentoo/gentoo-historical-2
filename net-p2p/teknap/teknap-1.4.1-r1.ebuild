@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/teknap/teknap-1.4.1-r1.ebuild,v 1.1 2004/06/23 22:08:53 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/teknap/teknap-1.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:22 chriswhite Exp $
 
 inherit eutils
 
@@ -12,10 +12,11 @@ SRC_URI="http://www.cactuz.org/jnbek/teknap/TekNap-1.4.orig.tar.gz
 HOMEPAGE="http://www.cactuz.org/jnbek/teknap"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="x86 ~ppc ~amd64 ~sparc"
 LICENSE="as-is"
 
-DEPEND="virtual/glibc >=sys-libs/ncurses-5.2
+DEPEND="virtual/libc
+	>=sys-libs/ncurses-5.2
 	gtk? ( =x11-libs/gtk+-1.2* )
 	tcpd? ( sys-apps/tcp-wrappers )
 	xmms? ( media-sound/xmms )"

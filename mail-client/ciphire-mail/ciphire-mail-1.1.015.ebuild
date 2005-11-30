@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/ciphire-mail/ciphire-mail-1.1.015.ebuild,v 1.1 2005/09/16 09:21:21 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/ciphire-mail/ciphire-mail-1.1.015.ebuild,v 1.1.1.1 2005/11/30 09:49:50 chriswhite Exp $
 
 inherit eutils qt3
 
@@ -55,7 +55,7 @@ pkg_setup() {
 		die "Old version of ciphire-mail installed"
 	fi
 
-	check_license || die "License check failed"
+	check_license Ciphire
 }
 
 src_unpack() {

@@ -1,6 +1,54 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# ChangeLog for app-portage/emerge-delta-webrsync
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/emerge-delta-webrsync/ChangeLog,v 1.1 2005/04/18 04:01:42 ferringb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/emerge-delta-webrsync/ChangeLog,v 1.1.1.1 2005/11/30 09:51:51 chriswhite Exp $
+
+  28 Sep 2005; Brian Harring <ferringb@gentoo.org>
+  emerge-delta-webrsync-3.3.ebuild, -files/v3-full-fix.patch:
+  Yanked dead/unused patch, and fixed typo of bug #98556 .
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  emerge-delta-webrsync-3.3.ebuild:
+  Mark 3.3 stable on alpha
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  emerge-delta-webrsync-3.3.ebuild:
+  stable on ia64
+
+  24 Jun 2005; Aron Griffis <agriffis@gentoo.org>
+  emerge-delta-webrsync-3.2.ebuild, emerge-delta-webrsync-3.3.ebuild:
+  fowners root:portage in src_install doesn't work. Use chgrp in pkg_preinst
+  instead
+
+*emerge-delta-webrsync-3.3: Jun 17 2005
+
+  17 Jun 2005; Brian Harring <ferringb@gentoo.org> emerge-delta-webrsync-3.3.ebuild, 
+  -emerge-delta-webrsync-3-r1 emerge-delta-webrsync-2 emerge-delta-webrsync-3:
+  bug 94581, plus supression of error message when looking for bases for patches.
+  Keywording x86, since it's just 3.2 + 94581 bug fix.
+  Removed older versions while I was at it.
+
+  27 May 2005; Brian Harring <ferringb@gentoo.org> emerge-delta-webrsync-3.2.ebuild:
+  Earlier fixes + final distdir cleansing fix for old snapshots. bug 94046
+
+  25 May 2005; Brian Harring <ferringb@gentoo.org> emerge-delta-webrsync-3-r1.ebuild:
+  revbump, with exit fix for initial download.
+
+*emerge-delta-webrsync-3: May 24 2005
+
+  24 May 2005; Brian Harring <ferringb@gentoo.org> emerge-delta-webrsync-3.ebuild:
+  fix ups, and addition of optional usage of app-arch/tarsync if it's available.
+  It's not required, purely a faster option and runtime detected.  No tarsync, 
+  falls back to tar + rsync.  Closes out issues detailed in bug #92224 .
+
+*emerge-delta-webrsync-2: May 06 2005
+
+  06 May 2005; Brian Harring <ferringb@gentoo.org> emerge-delta-webrsync-2.ebuild:
+  Added support for handling bzip2 compressor differences, and deployed
+  required upstream tweaks.  Good to go, hopefully.
+
+  18 Apr 2005; Sven Wegener <swegener@gentoo.org> metadata.xml,
+  emerge-delta-webrsync-1.ebuild:
+  Fixed ChangeLog header. Removed comments from metadata.xml. Cleanup.
 
 *emerge-delta-webrsync-1: Apr 18 2005
 

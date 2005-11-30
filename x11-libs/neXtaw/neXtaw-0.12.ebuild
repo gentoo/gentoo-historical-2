@@ -1,18 +1,16 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/neXtaw/neXtaw-0.12.ebuild,v 1.1 2002/08/11 09:29:50 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/neXtaw/neXtaw-0.12.ebuild,v 1.1.1.1 2005/11/30 09:54:13 chriswhite Exp $
 
 DESCRIPTION="Athena Widgets with N*XTSTEP appearance"
 HOMEPAGE="http://siag.nu/neXtaw/"
 SRC_URI="http://siag.nu/pub/neXtaw/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86"
-
-RDEPEND="x11-base/xfree"
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${P}"
+KEYWORDS="x86 sparc alpha ia64 amd64 ppc ppc64 hppa"
+IUSE=""
+DEPEND="virtual/x11
+	!>=net-libs/neXtaw-0.15.1-r1"
 
 src_compile() {
 	./configure \

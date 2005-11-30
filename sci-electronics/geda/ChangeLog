@@ -1,6 +1,39 @@
-# ChangeLog for app-sci/geda
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/geda/ChangeLog,v 1.1 2004/12/27 19:15:09 ribosome Exp $
+# ChangeLog for sci-electronics/geda
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/geda/ChangeLog,v 1.1.1.1 2005/11/30 09:51:07 chriswhite Exp $
+
+*geda-20050820 (14 Nov 2005)
+
+  14 Nov 2005; <plasmaroo@gentoo.org> -geda-20040111-r1.ebuild,
+  -geda-20041228.ebuild, +geda-20050820.ebuild,
+  -files/geda-20041228-glib26.patch:
+  Version bump (#107929); remove old versions. This ebuild and future ebuilds
+  will now contain only core components, the extra "recommended" EDA features
+  have now been moved to the geda-suite metapackage.
+
+  11 Oct 2005; Chris Bainbridge <chrb@gentoo.org> geda-20040111-r1.ebuild,
+  geda-20041228.ebuild, geda-20050313.ebuild:
+  fix for new (but older version number) gtkwave
+
+  16 Jul 2005; <plasmaroo@gentoo.org> geda-20050313.ebuild:
+  Remove vbs DEPEND.
+
+*geda-20050313 (26 Mar 2005)
+
+  26 Mar 2005; <plasmaroo@gentoo.org> +geda-20050313.ebuild:
+  Version bump; also fix #77361.
+
+  18 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> geda-20041228.ebuild:
+  Added to ~ppc.
+
+  04 Jan 2005; <plasmaroo@gentoo.org> geda-20041228.ebuild:
+  Adding sci-electronics/pcb DEPEND; bug #76531.
+
+*geda-20041228 (02 Jan 2005)
+
+  02 Jan 2005; <plasmaroo@gentoo.org> +geda-20041228.ebuild,
+  +files/geda-20041228-glib26.patch:
+  Version bump. Bug #76349.
 
 *geda-20040111-r1 (27 Dec 2004)
 

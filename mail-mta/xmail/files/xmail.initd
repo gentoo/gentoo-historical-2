@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/xmail/files/xmail.initd,v 1.1 2004/05/30 09:51:55 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/xmail/files/xmail.initd,v 1.1.1.1 2005/11/30 09:50:39 chriswhite Exp $
 
 depend() {
 	need net logger
@@ -70,7 +70,7 @@ start() {
 	chown -R xmail:xmail ${CHROOT}
 
 	cp `ldd ${CHROOT}${MAIL_ROOT}/bin/XMail |\
-	sed -n 's/[[:blank:]]*[^=]*=>\([^(]*\).*/\1/p'` ${CHROOT}/lib/
+	sed -n 's/[[:blank:]]*\([^=]*\=>\)\? \([^(]*\).*/\2/p;'` ${CHROOT}/lib/
 	start-stop-daemon --start -c xmail -r ${CHROOT} \
 		--startas ${MAIL_EXEC} --pidfile=${MAIL_PID} -- \
 		${MAIL_CMD_LINE} 

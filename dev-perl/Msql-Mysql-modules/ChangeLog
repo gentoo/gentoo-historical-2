@@ -1,6 +1,43 @@
 # ChangeLog for dev-perl/Msql-Mysql-modules
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Msql-Mysql-modules/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Msql-Mysql-modules/ChangeLog,v 1.1.1.1 2005/11/30 09:52:45 chriswhite Exp $
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Msql-Mysql-modules-1.2219-r2.ebuild:
+  add ~ia64
+
+*Msql-Mysql-modules-1.2219-r2 (17 May 2005)
+
+  17 May 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/Msql-Mysql-modules-mysql-4.1.patch,
+  +Msql-Mysql-modules-1.2219-r2.ebuild:
+  Bump with non-intrusive patch for mysql-4.1 support.
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Msql-Mysql-modules-1.2219.ebuild, Msql-Mysql-modules-1.2219-r1.ebuild:
+  Cleaning and bumping.
+
+*Msql-Mysql-modules-1.2219-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*Msql-Mysql-modules-1.2219 (5 May 2002)
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org>
+  Msql-Mysql-modules-1.2219.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  Msql-Mysql-modules-1.2219.ebuild :
+
+  Version bump and eclasses.  1.2215 also eclassified
 
 *Msql-Mysql-modules-1.2215 (1 Feb 2002)
 

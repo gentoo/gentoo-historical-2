@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/CPAN-Checksums/CPAN-Checksums-1.018.ebuild,v 1.1 2005/03/08 18:20:48 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CPAN-Checksums/CPAN-Checksums-1.018.ebuild,v 1.1.1.1 2005/11/30 09:53:17 chriswhite Exp $
 
 inherit perl-module
 

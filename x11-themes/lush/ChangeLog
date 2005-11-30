@@ -1,6 +1,31 @@
 # ChangeLog for x11-themes/lush
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/lush/ChangeLog,v 1.1 2003/06/20 08:36:34 tad Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/lush/ChangeLog,v 1.1.1.1 2005/11/30 09:51:33 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> lush-0.1.0-r1.ebuild:
+  Mark 0.1.0-r1 stable on alpha
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> lush-0.1.0-r1.ebuild:
+  Mark 0.1.0-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> lush-0.1.0-r1.ebuild:
+  add ~ia64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> lush-0.1.0-r1.ebuild:
+  stable on amd64
+
+  28 Nov 2004; Dominik Stadler <centic@gentoo.org> lush-0.1.0-r1.ebuild:
+  Mark stable on x86
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> lush-0.1.0-r1.ebuild,
+  lush-0.1.0.ebuild:
+  Fixed CVS Header.
+
+*lush-0.1.0-r1 (26 Apr 2004)
+
+  26 Apr 2004; Dominik Stadler <centic@gentoo.org> +lush-0.1.0-r1.ebuild:
+  Corrected the wrong install path, thanks to <elias.probst@gmx.de>, see Bug
+  38220
 
 *lush-0.1.0 (20 June 2003)
 

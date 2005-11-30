@@ -1,19 +1,30 @@
-Taken from upstream:
+Based on upstream patch:
 http://www.frozen-bubble.org/perl-SDL.patch
 
 To fix:
 http://bugs.gentoo.org/show_bug.cgi?id=74844
 
+This version of the patch works with both sdl-perl-1.x and sdl-perl-2.x
+
 --- frozen-bubble
 +++ frozen-bubble
-@@ -161,6 +161,15 @@
+@@ -90,3 +90,4 @@
+ 
+ $version = '1.0.0';
++$SDL_VER = substr($SDL::VERSION, 0, 1); # Extract sdl-perl's major num
+ 
+@@ -161,6 +161,19 @@
  
  #- ----------- sound related stuff ----------------------------------------
  
 +sub get_sound {
 +	my ($sound) = @_;
-+	if (ref($sound) eq 'HASH') {
-+		return $sound{$_}{-data};
++	if ($SDL_VER eq 1) {
++		if (ref($sound) eq 'SDL::Sound') {
++			return $sound{$_}{-data};
++		} else {
++			return $sound->{-data};
++		}
 +	} else {
 +		return $$sound;
 +	}
@@ -52,6 +63,21 @@ http://bugs.gentoo.org/show_bug.cgi?id=74844
  	    $sound{$_}->volume(80);
  	} else {
  	    print STDERR "Warning, could not create new sound from `$sound_path'.\n";
+@@ -233,6 +233,14 @@
+ 
+ #- ----------- graphics related stuff --------------------------------------
+ 
++sub SDL_TEXTWIDTH {
++	if (defined(&SDL::App::SDL_TEXTWIDTH)) {
++		SDL::App::SDL_TEXTWIDTH(@_);   # perl-sdl-1.x
++	} else {
++		SDL::SFont::SDL_TEXTWIDTH(@_); # perl-sdl-2.x
++	}
++}
++
+ sub add_default_rect($) {
+     my ($surface) = @_;
+     $rects{$surface} = SDL::Rect->new(-width => $surface->width, -height => $surface->height);
 @@ -304,10 +304,28 @@
      return $save;
  }

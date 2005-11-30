@@ -1,16 +1,15 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-hppa64/gcc-hppa64-3.4.0.ebuild,v 1.1 2004/06/22 13:13:16 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-hppa64/gcc-hppa64-3.4.0.ebuild,v 1.1.1.1 2005/11/30 09:53:39 chriswhite Exp $
 
 inherit eutils
 
 
-# Variables 
+# Variables
 MYARCH="$(echo ${PN} | cut -d- -f2)"
 TMP_P="${P/-${MYARCH}/}"
 TMP_PN="${PN/-${MYARCH}/}"
 I="/usr"
-S="${WORKDIR}/${P}"
 
 
 DESCRIPTION="Gcc for 64bit hppa kernels"
@@ -20,13 +19,14 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
 KEYWORDS="-* -hppa"
+IUSE="build"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-devel/binutils-hppa64-2.14.90.0.7
 	>=sys-devel/binutils-2.14.90.0.7
 	>=sys-devel/gcc-config-1.3.1"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	>=sys-devel/gcc-config-1.3.1
 	>=sys-libs/zlib-1.1.4
 	>=sys-apps/texinfo-4.2-r4

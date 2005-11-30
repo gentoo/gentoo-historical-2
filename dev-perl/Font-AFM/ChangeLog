@@ -1,6 +1,18 @@
 # ChangeLog for dev-perl/Font-AFM
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Font-AFM/ChangeLog,v 1.1 2004/08/25 11:08:14 rl03 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Font-AFM/ChangeLog,v 1.1.1.1 2005/11/30 09:52:54 chriswhite Exp $
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org> Font-AFM-1.19.ebuild:
+  cleaning
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> Font-AFM-1.19.ebuild:
+  Keyworded ~sparc
+
+  02 Sep 2004; David Holm <dholm@gentoo.org> Font-AFM-1.19.ebuild:
+  Added to ~ppc.
+
+  28 Aug 2004; Renat Lumpau <rl03@gentoo.org> Font-AFM-1.19.ebuild:
+  Added missing IUSE.
 
 *Font-AFM-1.19 (25 Aug 2004)
 

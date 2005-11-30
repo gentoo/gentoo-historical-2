@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gwebcache/gwebcache-1.0.0.ebuild,v 1.1 2004/09/17 16:51:00 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gwebcache/gwebcache-1.0.0.ebuild,v 1.1.1.1 2005/11/30 09:51:16 chriswhite Exp $
 
 inherit webapp
 
@@ -9,12 +9,12 @@ HOMEPAGE="http://www.gnucleus.com/gwebcache/"
 SRC_URI="http://www.gnucleus.com/gwebcache/dist/${P}.zip"
 LICENSE="GPL-2"
 IUSE=""
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 
 DEPEND=">=app-arch/unzip-5.42-r1"
 RDEPEND=">=net-www/apache-1.3.24-r1
 	>=dev-lang/perl-5.6.0
-	>=dev-perl/CGI-2.93"
+	>=perl-core/CGI-2.93"
 
 pkg_preinst() {
 	webapp_src_preinst

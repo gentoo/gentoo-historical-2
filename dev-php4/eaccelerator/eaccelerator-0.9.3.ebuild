@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/eaccelerator/eaccelerator-0.9.3.ebuild,v 1.1 2005/09/04 14:46:29 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/eaccelerator/eaccelerator-0.9.3.ebuild,v 1.1.1.1 2005/11/30 09:51:27 chriswhite Exp $
 
 PHP_EXT_ZENDEXT="yes"
 PHP_EXT_NAME="eaccelerator"
@@ -8,7 +8,7 @@ PHP_EXT_INI="yes"
 
 [ -z "${EACCELERATOR_CACHEDIR}" ] && EACCELERATOR_CACHEDIR=/var/cache/eaccelerator
 
-inherit php-ext-source-r1 
+inherit php-ext-source-r1
 
 DESCRIPTION="A PHP Accelerator & Encoder."
 HOMEPAGE="http://www.eaccelerator.net/"
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/eaccelerator/${P}.tar.gz"
 IUSE="inode session"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~ppc ~ppc64 ~x86"
 
 DEPEND="${DEPEND}
 		!dev-php4/pecl-apc"
@@ -30,6 +30,7 @@ need_php_by_category
 
 pkg_setup() {
 	require_php_sapi_from cgi apache apache2
+	require_php_with_use zlib
 }
 
 src_unpack() {
@@ -90,7 +91,7 @@ src_install() {
 
 pkg_postinst() {
 	# you only need to restart the webserver if you're using mod_php
-	if built_with_use ${PHP_PKG} apache || built_with_use ${PHP_PKG} apache2 ; then
+	if built_with_use =${PHP_PKG} apache || built_with_use =${PHP_PKG} apache2 ; then
 		einfo "You need to restart your webserver to activate eAccelerator."
 		einfo
 	fi

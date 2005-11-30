@@ -1,6 +1,13 @@
 # ChangeLog for dev-perl/File-RsyncP
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-RsyncP/ChangeLog,v 1.1 2004/09/18 05:15:41 rac Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-RsyncP/ChangeLog,v 1.1.1.1 2005/11/30 09:53:14 chriswhite Exp $
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  File-RsyncP-0.52.ebuild:
+  Keyworded ~sparc
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> File-RsyncP-0.52.ebuild:
+  Added to ~ppc.
 
 *File-RsyncP-0.52 (17 Sep 2004)
 

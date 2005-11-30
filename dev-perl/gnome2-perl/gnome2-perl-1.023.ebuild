@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-perl/gnome2-perl-1.023.ebuild,v 1.1 2005/11/14 16:12:54 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gnome2-perl/gnome2-perl-1.023.ebuild,v 1.1.1.1 2005/11/30 09:53:10 chriswhite Exp $
 
 inherit perl-module
 

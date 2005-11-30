@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/esearch/esearch-0.7.1.ebuild,v 1.1 2005/02/25 20:15:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/esearch/esearch-0.7.1.ebuild,v 1.1.1.1 2005/11/30 09:51:54 chriswhite Exp $
 
 inherit eutils
 
@@ -10,14 +10,14 @@ SRC_URI="http://david-peter.de/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~ppc-macos ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/python-2.2
 	>=sys-apps/portage-2.0.50"
 
 pkg_setup() {
-	if ! built_with_use python readline ; then
+	if ! built_with_use dev-lang/python readline ; then
 		eerror "Python has to be build with 'readline' support!"
 		eerror "To do so: USE=\"readline\" emerge python"
 		eerror "Or, add \"readline\" to your USE string in"

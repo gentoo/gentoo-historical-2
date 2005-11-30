@@ -1,15 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/nmh/nmh-1.1.ebuild,v 1.1 2004/07/31 02:41:24 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/nmh/nmh-1.1.ebuild,v 1.1.1.1 2005/11/30 09:49:58 chriswhite Exp $
 
 inherit eutils
 DESCRIPTION="New MH mail reader"
-SRC_URI="ftp://ftp.mhost.com/pub/nmh/${P}.tar.gz"
-HOMEPAGE="http://www.mhost.com/nmh/"
+SRC_URI="http://savannah.nongnu.org/download/nmh/${P}.tar.gz"
+HOMEPAGE="http://www.nongnu.org/nmh/"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="ppc sparc x86"
 IUSE=""
 
 DEPEND="virtual/libc

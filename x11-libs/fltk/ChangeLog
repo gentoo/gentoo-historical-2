@@ -1,6 +1,230 @@
 # ChangeLog for x11-libs/fltk
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/ChangeLog,v 1.1.1.1 2005/11/30 09:54:19 chriswhite Exp $
+
+  19 Nov 2005; Rene Nussbaumer <killerfox@gentoo.org> fltk-1.1.6.ebuild:
+  Stable on hppa.
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> fltk-1.1.6.ebuild:
+  Stable on ppc.
+
+  31 Oct 2005; Brent Baude <ranger@gentoo.org> fltk-1.1.6.ebuild:
+  marking fltk-1.1.6 ppc64 per 111007
+
+  31 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> fltk-1.1.6.ebuild:
+  Stable on sparc wrt #111007
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> fltk-1.1.6.ebuild:
+  Stable on x86.
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> fltk-1.1.4.ebuild,
+  fltk-1.1.6.ebuild:
+  Fixed dodoc not to install COPYING.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> fltk-1.1.4.ebuild:
+  stable on ia64
+
+  25 Jul 2005; Guy Martin <gmsoft@gentoo.org> fltk-1.1.4.ebuild,
+  fltk-1.1.6.ebuild:
+  Stable on hppa.
+
+  10 Jul 2005; Jonathan Smith <smithj@gentoo.org> fltk-1.1.6.ebuild:
+  #89558: fixed licence
+
+  27 Jun 2005; Markus Nigbur <pyrania@gentoo.org> fltk-1.1.6.ebuild:
+  Fixed DEPEND (X->!noxft). Thanks to nelchael for reporting.
+
+  24 Jun 2005; Jonathan Smith <smithj@gentoo.org> fltk-1.1.6.ebuild:
+  fixed use flags
+
+  22 Jun 2005; Herbie Hopkins <herbs@gentoo.org> fltk-1.1.6.ebuild:
+  Add multilib fix to this version too.
+
+*fltk-1.1.6 (17 Jun 2005)
+
+  17 Jun 2005; Jonathan Smith <smithj@gentoo.org> +files/libs-1.6.diff,
+  +files/Fl_Help_View.cxx.patch, -fltk-1.0.11-r3.ebuild,
+  -fltk-1.1.2-r2.ebuild, +fltk-1.1.6.ebuild:
+  version bump for #72556
+
+  17 May 2005; Heinrich Wendel <lanius@gentoo.org> fltk-1.0.11-r3.ebuild,
+  fltk-1.1.2-r2.ebuild, fltk-1.1.4.ebuild:
+  fix licence
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> fltk-1.1.4.ebuild:
+  add ~ia64
+
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org> fltk-1.1.4.ebuild:
+  fixed multilib-strict-issue
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> fltk-1.1.4.ebuild:
+  Stable on ppc64
+
+  05 Dec 2004; Markus Nigbur <pyrania@gentoo.org> fltk-1.1.4.ebuild:
+  Fixed bug #70116.
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> fltk-1.1.4.ebuild:
+  Marked ~ppc64; bug #64612
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> fltk-1.1.4.ebuild:
+  Masked fltk-1.1.4.ebuild stable for ppc
+
+  19 Aug 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org> fltk-1.1.4.ebuild:
+  add ~mips
+
+  12 May 2004; Bryan Østergaard <kloeri@gentoo.org> fltk-1.1.4.ebuild:
+  Stable on alpha.
+
+  01 May 2004; Andrew Bevitt <cyfred@gentoo.org>; +metadata.xml,
+  fltk-1.1.4.ebuild:
+  Fixing up ebuild syntax and adding metadata see bug #48311
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fltk-1.0.11-r3.ebuild:
+  Removed S=
+
+  05 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> fltk-1.1.4.ebuild:
+  stable on sparc
+
+  31 Oct 2003; Heinrich Wendel <lanius@gentoo.org> fltk-1.1.4.ebuild,
+  fltk-1.1.4_rc2.ebuild:
+  x86
+
+*fltk-1.1.4 (12 Oct 2003)
+
+  12 Oct 2003; Heinrich Wendel <lanius@gentoo.org> fltk-1.1.0_rc7.ebuild,
+  fltk-1.1.1.ebuild, fltk-1.1.2-r1.ebuild, fltk-1.1.2.ebuild,
+  fltk-1.1.3.ebuild, fltk-1.1.4.ebuild, fltk-1.1.4_rc1.ebuild:
+  version bump
+
+  15 Sep 2003; Aron Griffis <agriffis@gentoo.org> fltk-1.1.4_rc2.ebuild:
+  Add ~alpha
+
+  15 Aug 2003; Nick Hadaway <raker@gentoo.org> fltk-1.1.4_rc2.ebuild:
+  Added nptl to IUSE.  Only enable threading if nptl isn't in use.
+  See bug #26569.
+
+*fltk-1.1.4_rc2 (14 Aug 2003)
+
+  14 Aug 2003; Nick Hadaway <raker@gentoo.org> fltk-1.1.4_rc2.ebuild:
+  Version bump.  This one should work with xft2.  Now installing html
+  files into the proper directory as well.
+
+*fltk-1.1.4_rc1 (26 Jul 2003)
+
+  26 Jul 2003; Jared Hudson <jhhudso@gentoo.org> : Version bump.
+	
+*fltk-1.1.3 (16 May 2003)
+
+  16 May 2003; Alastair Tse <liquidx@gentoo.org> fltk-1.1.3.ebuild:
+  version bump. xft is now on by default
+
+*fltk-1.1.2-r2 (25 Apr 2003)
+*fltk-1.1.2-r1 (09 Jan 2003)
+
+  25 Apr 2003; Michael Fitzpatrick <leahcim@gentoo.org> fltk-1.1.2-r2.ebuild,
+  files/digest-fltk-1.1.2-r2 :
+  fix freetype2 header problem, bug #19894.
+
+  31 Mar 2003; Alastair Tse <liquidx@gentoo.org> fltk-1.1.2-r1.ebuild:
+  fix linking problem with libs. fixes #15572, #17894.
+
+  08 Jan 2003; Nick Hadaway <raker@gentoo.org> fltk-1.1.2-r1.ebuild,
+  files/digest-fltk-1.1.2-r1 :
+  New ebuild which only enables xft if you are using the "stock"
+  xfree86 xft headers/etc.
+
+*fltk-1.1.2 (09 Dec 2002)
+
+  18 Dec 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.2.ebuild :
+  Marked stable.
+                                                                                                   
+  09 Dec 2002; Jack Morgan <jmorgan@gentoo.org> fltk-1.1.*.ebuild : 
+  Removed ~sparc64/sparc64 keywords
+
+  09 Dec 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.2.ebuild,
+  files/digest-fltk-1.1.2 :
+  Version bump.  Lots of fluid bug fixes.  Also fixes for compatibility 
+  with Xft-2.0.
+
+*fltk-1.1.1 (30 Oct 2002)
+
+  23 Nov 2002; Sascha Schwabbauer <cybersystem@gentoo.org> fltk-1.1.1.ebuild :
+  Added ~ppc to keywords.  
+
+  30 Oct 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.1.ebuild,
+  files/digest-fltk-1.1.1 :
+  A non rc has finally been released.  Many bug fixes.  Check out...
+  http://www.fltk.org/news.php?V99 for the important changes.
+  Small ebuild changes made as we don't have to account for _rc?
+  with this one.
+
+*fltk-1.1.0_rc7 (20 Sep 2002)
+
+  03 Oct 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.10_rc7.ebuild :
+  Added missing dependancy on virtual/x11 thanks to bcowan.  w00t!
+
+  20 Sep 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.0_rc7.ebuild,
+  files/digest-fltk-1.1.0_rc7 :
+  Version bump.  Lots of bug fixes. See... 
+  http://www.fltk.org/news.php?V87 for info on the fixes.
+
+*fltk-1.1.0_rc6 (22 Aug 2002)
+
+  20 Sep 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.0_rc6.ebuild :
+  Changed 'emake' to 'emake CXX="g++"' so libsupc++ is properly
+  referenced on gcc3 systems.
+
+  20 Sep 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.0_rc6.ebuild :
+  Removed invalid xdbe and xft flags.
+
+  22 Aug 2002; Nick Hadaway <raker@gentoo.org> fltk-1.1.0_rc6.ebuild :
+  Updated install so all libraries are installed correctly.
+
+  22 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  fltk-1.1.0_rc6.ebuild, files/digest-fltk-1.1.0_rc6 :
+  Version bump.
+
+*fltk-1.0.11-r3 (12 Aug 2002)
+*fltk-1.1.0_rc5 (12 Aug 2002)
+
+  20 Sep 2002; Nick Hadaway <raker@gentoo.org> fltk-1.0.11-r3.ebuild :
+  Changed 'emake' to 'emake CXX="g++"' so libsupc++ is referenced 
+  properly on gcc3 systems.
+
+  12 Aug 2002; Seemant Kulleen <seemant@gentoo.org> fltk-1.0.11-r3.ebuild
+  fltk-1.1.0_rc5.ebuild :
+
+  SLOTified them again.  And made them install into different locations.
+
+*fltk-1.1.0_rc4 (16 Jul 2002)
+  
+  22 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Reverted SLOT's back to "0" as the problem is with POSE, not fltk
+  and they seem to overright each other :(
+  
+  Did some SLOT-fu so we don't break POSE.
+
+  16 Jul 2002; Seemant Kulleen <seemant@gentoo.org> fltk-1.1.0_rc4.ebuild
+  files/digest-fltk-1.1.0_rc4 :
+
+  Version bump.
+
+*fltk-1.1.0_beta10-r1 (28 Mar 2002)
+
+  28 Mar 2002; Tod Neidt <tod@gentoo.org> fltk-1.1.0_beta10-r1.ebuild :
+
+  Added missing ${myconf} to ./configure.
+  Bug# 1325, thanks for the catch R. Strusberg.
+
+*fltk-1.0.11-r2 (1 Feb 2002)
+
+  28 Mar 2002; Tod Neidt <tod@gentoo.org> fltk-1.0.11-r2.ebuild :
+  
+  Added missing ${myconf} to ./configure. Also fixed up SRC_URI.
+  Bug# 1325, thanks for the catch R. Strusberg.
 
 *fltk-1.1.0_beta10 (1 Feb 2002)
 

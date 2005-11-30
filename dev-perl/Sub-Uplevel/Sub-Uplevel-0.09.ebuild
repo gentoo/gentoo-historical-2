@@ -1,14 +1,14 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Uplevel/Sub-Uplevel-0.09.ebuild,v 1.1 2004/07/30 16:07:19 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Uplevel/Sub-Uplevel-0.09.ebuild,v 1.1.1.1 2005/11/30 09:53:20 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="apparently run a function in a higher stack frame"
 HOMEPAGE="http://search.cpan.org/~mschwern/${P}/"
-SRC_URI="http://www.cpan.org/authors/id/M/MS/MSCHWERN/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/M/MS/MSCHWERN/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ppc ~ppc64 sparc x86"
 IUSE=""

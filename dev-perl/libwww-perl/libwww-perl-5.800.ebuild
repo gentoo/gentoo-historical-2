@@ -1,22 +1,23 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/libwww-perl/libwww-perl-5.800.ebuild,v 1.1 2004/07/30 12:49:42 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/libwww-perl/libwww-perl-5.800.ebuild,v 1.1.1.1 2005/11/30 09:52:58 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="A collection of Perl Modules for the WWW"
-SRC_URI="http://cpan.org/modules/by-module/WWW/${P}.tar.gz"
-HOMEPAGE="http://cpan.org/modules/by-module/WWW/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/G/GA/GAAS/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~gaas/${P}/"
 IUSE="ssl"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~hppa ~ia64"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
 
 DEPEND=">=dev-perl/libnet-1.16
 	>=dev-perl/HTML-Parser-3.34
 	>=dev-perl/URI-1.10
-	>=dev-perl/Digest-MD5-2.12
-	>=dev-perl/MIME-Base64-2.12
+	>=perl-core/Digest-MD5-2.12
+	>=perl-core/MIME-Base64-2.12
+	dev-perl/Compress-Zlib
 	ssl? ( dev-perl/Crypt-SSLeay )"
 
 src_compile() {

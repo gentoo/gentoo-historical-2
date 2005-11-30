@@ -1,48 +1,45 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-1.2.10-r11.ebuild,v 1.1 2004/02/05 22:32:49 spider Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-1.2.10-r11.ebuild,v 1.1.1.1 2005/11/30 09:54:23 chriswhite Exp $
 
-inherit eutils libtool
+GNOME_TARBALL_SUFFIX="gz"
+inherit gnome.org eutils libtool toolchain-funcs
 
 DESCRIPTION="The GIMP Toolkit"
 HOMEPAGE="http://www.gtk.org/"
-SRC_URI="ftp://ftp.gtk.org/pub/gtk/v1.2/${P}.tar.gz
-	ftp://ftp.gnome.org/pub/GNOME/stable/sources/gtk+/${P}.tar.gz
-	http://ftp.gnome.org/pub/GNOME/stable/sources/gtk+/${P}.tar.gz
-	http://www.ibiblio.org/gentoo/distfiles/gtk+-1.2.10-r8-gentoo.diff.bz2"
+SRC_URI="${SRC_URI} http://www.ibiblio.org/gentoo/distfiles/gtk+-1.2.10-r8-gentoo.diff.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ~sparc x86"
 IUSE="nls debug"
 
 RDEPEND="virtual/x11
 	=dev-libs/glib-1.2*"
-
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext
 		dev-util/intltool )"
 
 src_unpack() {
 	unpack ${P}.tar.gz
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-m4.patch
 
-	cd ${S}/..
-	epatch ${DISTDIR}/gtk+-1.2.10-r8-gentoo.diff.bz2
+	cd "${S}"/..
+	epatch "${DISTDIR}"/gtk+-1.2.10-r8-gentoo.diff.bz2
 
 	# locale fix by sbrabec@suse.cz
-	cd ${S}
-	epatch ${FILESDIR}/${PN}-1.2-locale_fix.patch
+	cd "${S}"
+	epatch "${FILESDIR}"/${PN}-1.2-locale_fix.patch
+
+	uclibctoolize
 }
 
 src_compile() {
-
-	elibtoolize
-
 	local myconf=
 	use nls || myconf="${myconf} --disable-nls"
 
-	if [ `use debug` ]
-	then
+	if use debug ; then
 		myconf="${myconf} --enable-debug=yes"
 	else
 		myconf="${myconf} --enable-debug=minimum"
@@ -54,16 +51,15 @@ src_compile() {
 		--with-x \
 		${myconf} || die
 
-	emake || die
+	emake CC="$(tc-getCC)" || die
 }
 
 src_install() {
-
-	make install DESTDIR=${D} || die
+	make install DESTDIR="${D}" || die
 
 	preplib /usr
 
-	dodoc AUTHORS COPYING ChangeLog* HACKING
+	dodoc AUTHORS ChangeLog* HACKING
 	dodoc NEWS* README* TODO
 	docinto docs
 	cd docs
@@ -72,15 +68,13 @@ src_install() {
 
 	#install nice, clean-looking gtk+ style
 	insinto /usr/share/themes/Gentoo/gtk
-	doins ${FILESDIR}/gtkrc
+	doins "${FILESDIR}"/gtkrc
 }
 
 pkg_postinst() {
-
 	ewarn "Older versions added /etc/X11/gtk/gtkrc which changed settings for"
 	ewarn "all themes it seems.  Please remove it manually as it will not due"
 	ewarn "to /env protection."
 	echo ""
 	einfo "The old gtkrc is available through the new Gentoo gtk theme."
-
 }

@@ -4,5 +4,25 @@
 	<longdescription lang="en">
 		The games-emulation category contains game platform emulators.
 	</longdescription>
+	<longdescription lang="de">
+	    Die Kategorie games-emulation enthält Emulatoren für verschiedene
+	    Spieleplattformen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-emulation contiene emuladores dejuegos de plataforma.
+	</longdescription>
+	<longdescription lang="ja">
+		games-emulationカテゴリーにはプラットフォームをエミュレートしたゲームが
+		含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-emulation categorie bevat emulators voor verschillende spelcomputers.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-emulation chứa các bộ mô phỏng nền chơi game.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-emulation contiene emulatori di piattaforme di gioco.
+	</longdescription>
 </catmetadata>
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mDNSResponder/files/mDNSResponderPosix.init.d,v 1.1 2005/08/27 16:46:45 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mDNSResponder/files/mDNSResponderPosix.init.d,v 1.1.1.1 2005/11/30 09:54:31 chriswhite Exp $
 
 opts="${opts} reload debug"
 

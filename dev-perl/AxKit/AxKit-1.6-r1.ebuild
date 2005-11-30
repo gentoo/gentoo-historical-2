@@ -1,30 +1,29 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/AxKit/AxKit-1.6-r1.ebuild,v 1.1 2002/10/30 07:20:34 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/AxKit/AxKit-1.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:52:44 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="The Apache AxKit Perl Module"
 SRC_URI="http://axkit.org/download/${P}.tar.gz"
 HOMEPAGE="http://axkit.org/"
 
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 alpha sparc sparc64 ~ppc"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="x86 amd64 alpha sparc ~ppc"
+IUSE=""
 
-newdepend ">=dev-perl/libapreq-0.31 \
-	>=dev-perl/Compress-Zlib-1.10 \
-	>=dev-perl/Error-0.13 \
-	>=dev-perl/HTTP-GHTTP-1.06 \
-	>=dev-perl/Storable-1.0.7 \
-	>=dev-perl/XML-XPath-1.04 \
-	>=dev-perl/XML-XPath-1.04 \
-	>=dev-perl/XML-LibXML-1.31 \
-	>=dev-perl/XML-LibXSLT-1.31 \
-	>=dev-perl/libapreq-1.0 \
-	>=dev-perl/XML-Sablot-0.50 \
-	>=dev-perl/Digest-MD5-2.09"
+DEPEND=">=www-apache/libapreq-0.31
+	>=dev-perl/Compress-Zlib-1.10
+	>=dev-perl/Error-0.13
+	>=dev-perl/HTTP-GHTTP-1.06
+	>=perl-core/Storable-1.0.7
+	>=dev-perl/XML-XPath-1.04
+	>=dev-perl/XML-LibXML-1.31
+	>=dev-perl/XML-LibXSLT-1.31
+	>=www-apache/libapreq-1.0
+	>=dev-perl/XML-Sablot-0.50
+	>=perl-core/Digest-MD5-2.09"
 
 src_unpack() {
 	unpack ${A}
@@ -33,14 +32,12 @@ src_unpack() {
 	sed -e "s:0\.31_03:0.31:" Makefile.PL.orig > Makefile.PL
 }
 
-src_install () {
-	
+src_install() {
 	perl-module_src_install
-	
+
 	diropts -o nobody -g nogroup
 	dodir /var/cache/axkit
 	dodir /home/httpd/htdocs/xslt
 	insinto /etc/apache
 	doins ${FILESDIR}/httpd.axkit
-
 }

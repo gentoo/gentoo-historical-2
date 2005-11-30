@@ -1,6 +1,27 @@
-# ChangeLog for app-games/wumpus
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/wumpus/ChangeLog,v 1.1 2003/09/10 18:14:05 vapier Exp $
+# ChangeLog for games-misc/wumpus
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/wumpus/ChangeLog,v 1.1.1.1 2005/11/30 09:50:03 chriswhite Exp $
+
+  20 Sep 2005; Kito <kito@gentoo.org> wumpus-1.4.ebuild:
+  ~ppc-macos. Closes Bug 106570
+
+  24 Aug 2005; Olivier Crête <tester@gentoo.org> wumpus-1.4.ebuild:
+  Marked ~amd64, thanks to Erik Musick and darktama for testing
+
+  29 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> wumpus-1.4.ebuild:
+  fixup toolchain-funcs call for bug #100713; tidy
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> wumpus-1.4.ebuild:
+  Cleanup for bug #92745.
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> wumpus-1.4.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> wumpus-1.4.ebuild:
+  Added ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> wumpus-1.4.ebuild:
+  virtual/glibc -> virtual/libc
 
 *wumpus-1.4 (04 Mar 2003)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Tagset/HTML-Tagset-3.04.ebuild,v 1.1 2005/01/04 13:13:05 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Tagset/HTML-Tagset-3.04.ebuild,v 1.1.1.1 2005/11/30 09:53:11 chriswhite Exp $
 
 inherit perl-module
 

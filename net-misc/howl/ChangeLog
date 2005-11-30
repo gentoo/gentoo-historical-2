@@ -1,6 +1,137 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/howl/ChangeLog,v 1.1 2003/12/27 16:25:28 lisa Exp $
+# ChangeLog for net-misc/howl
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/howl/ChangeLog,v 1.1.1.1 2005/11/30 09:54:36 chriswhite Exp $
+
+  19 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> howl-0.9.8.ebuild:
+  Stable on sparc
+
+  18 Sep 2005; Saleem Abdulrasool <compnerd@gentoo.org> howl-0.9.8.ebuild:
+  Marking 0.9.8 stable for HumpBack.
+
+  05 Sep 2005; Markus Rothe <corsair@gentoo.org> howl-0.9.8.ebuild:
+  Stable on ppc64
+
+  24 Aug 2005; <plasmaroo@gentoo.org> howl-0.9.6-r2.ebuild, howl-0.9.8.ebuild,
+  howl-1.0.0.ebuild:
+  Remove IA64 headers tweak as it is no longer needed for 2.6.11 headers.
+
+  27 Jul 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  howl-0.9.8.ebuild:
+  Stable masking. I'd love to put 1.0.0 in stable too but it's only two weeks
+  in unstable. 0.9.8 is required by a newer GnomeMeeting.
+
+  23 Jul 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  howl-0.9.6-r2.ebuild, howl-0.9.8.ebuild, howl-1.0.0.ebuild:
+  Adding a RESTRICT="maketest" to all versions, as the logging library is not
+  provided by upstream.  Resolves bug #87436.
+
+  12 Jul 2005; Saleem Abdulrasool <compnerd@gentoo.org> metadata.xml,
+  howl-1.0.0.ebuild:
+  Updated the warning, updated metadata for maintainership
+
+  12 Jul 2005; Jonathan Smith <smithj@gentoo.org> howl-1.0.0.ebuild:
+  added warning about gnome-vfs
+
+*howl-1.0.0 (12 Jul 2005)
+
+  12 Jul 2005; Jonathan Smith <smithj@gentoo.org> metadata.xml,
+  -howl-0.8.2.ebuild, -howl-0.8.3.ebuild, -howl-0.9.ebuild,
+  -howl-0.9.2.ebuild, -howl-0.9.5.ebuild, -howl-0.9.6.ebuild,
+  -howl-0.9.6-r1.ebuild, +howl-1.0.0.ebuild:
+  #83777: version bump because i'm a nice guy. this package needs a maintainer
+
+  19 Apr 2005; <plasmaroo@gentoo.org> howl-0.9.8.ebuild:
+  Push 0.9.8 to ia64 stable as that doesn't break with 2.6 headers while current
+  stable does; bug #89700.
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> howl-0.9.6-r2.ebuild:
+  stable on mips
+
+  13 Mar 2005; Stefan Knoblich <stkn@gentoo.org> howl-0.9.8.ebuild:
+  Added patch to fix compilation problems due to missing type declarations
+  (#84030, thanks to Robin Princeley <princely@emirates.net.ae> and Greg Symons
+  <gsymons@gsconsulting.biz> for finding a fix and creating this patch).
+
+  24 Feb 2005; Kito <kito@gentoo.org> howl-0.9.8.ebuild:
+  ~ppc-macos keyword
+
+  22 Jan 2005; Aron Griffis <agriffis@gentoo.org> howl-0.9.6-r2.ebuild,
+  howl-0.9.8.ebuild:
+  0.9.6-r2 stable on ia64, repair compilation of 0.9.8 on ia64 with certain
+  versions of linux26-headers
+
+  10 Jan 2005; Stefan Knoblich <stkn@gentoo.org> howl-0.9.8.ebuild:
+  Updated ebuild to preserve old libraries because 0.9.8 introduces a
+  change in the naming scheme (bug #77238)
+
+*howl-0.9.8 (09 Jan 2005)
+
+  09 Jan 2005; Stefan Knoblich <stkn@gentoo.org> +howl-0.9.8.ebuild:
+  Version bump, sed workaround isn't needed anymore (custom src_unpack()
+  removed).
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> howl-0.9.6-r2.ebuild:
+  Stable on amd64.
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> howl-0.9.6-r2.ebuild:
+  Stable on hppa.
+
+  17 Dec 2004; Markus Rothe <corsair@gentoo.org> howl-0.9.6-r2.ebuild:
+  Stable on ppc64
+
+  11 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> howl-0.9.6-r2.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Mike Gardiner <obz@gentoo.org> howl-0.9.6-r2.ebuild:
+  Keyworded ppc
+
+  10 Nov 2004; <peter@gentoo.org> howl-0.9.6-r2.ebuild:
+  Marking 0.9.6-r2 stable, so gnome can feel the love.
+
+  08 Nov 2004; Markus Rothe <corsair@gentoo.org> howl-0.9.6-r2.ebuild:
+  Marked ~ppc64
+
+*howl-0.9.6-r2 (06 Oct 2004)
+
+  06 Oct 2004; <peter@gentoo.org> files/mDNSResponder.init.d,
+  files/nifd.conf.d, files/nifd.init.d, +howl-0.9.6-r2.ebuild:
+  Fix some typos and problems with the init scripts and do a revision bump to
+  propogate changes. See bug #66524.
+
+  30 Sep 2004; Stephen P. Becker <geoman@gentoo.org> howl-0.9.6-r1.ebuild:
+  added ~mips keyword
+
+*howl-0.9.6-r1 (20 Sep 2004)
+
+  20 Sep 2004; Lisa Seelye <lisa@gentoo.org> +howl-0.9.6-r1.ebuild:
+  Revision bump to close bug 64207
+
+  04 Aug 2004; Travis Tilley <lv@gentoo.org> howl-0.9.6.ebuild:
+  added ~amd64 keyword
+
+*howl-0.9.6 (03 Aug 2004)
+
+  03 Aug 2004; Peter Johanson <latexer@gentoo.org> howl-0.9.2.ebuild,
+  howl-0.9.5.ebuild, +howl-0.9.6.ebuild:
+  Bump to newest version, fix a epatch problem, and move the inherit line to the
+  top of a few of the older ebuilds.
+
+*howl-0.9.5 (10 Jul 2004)
+
+  10 Jul 2004; Lisa Seelye <lisa@gentoo.org> +howl-0.9.5.ebuild:
+  version bump for bug #54427
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> howl-0.9.2.ebuild:
+  Add inherit eutils
+
+  31 Mar 2004; David Holm <dholm@gentoo.org> howl-0.9.2.ebuild,
+  files/0.9.2-ppc.patch:
+  Added to ~ppc (patch included).
+
+*howl-0.9.2 (01 Feb 2004)
+
+  01 Feb 2004; Lisa Seelye <lisa@gentoo.org> howl-0.9.2.ebuild:
+  Version bump to close bug #38054. submitted by sandymac@gentoo.org
 
   27 Dec 2003; Lisa Seelye <lisa@gentoo.org> howl-0.8.2.ebuild,
   howl-0.8.3.ebuild, howl-0.9.ebuild, files/mDNSResponder.conf.d,

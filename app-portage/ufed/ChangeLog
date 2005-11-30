@@ -1,80 +1,122 @@
-# ChangeLog for app-admin/ufed
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/ufed/ChangeLog,v 1.1 2003/08/15 13:17:08 lanius Exp $
+# ChangeLog for app-portage/ufed
+# Copyright 2003-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/ufed/ChangeLog,v 1.1.1.1 2005/11/30 09:51:56 chriswhite Exp $
 
-*ufed-0.2 (15 Aug 2003)
+*ufed-0.40_rc-r1 (09 Nov 2005)
 
-  15 Aug 2003; Heinrich Wendel <lanius@gentoo.org> ufed-0.2.ebuild,
-  ufed-0.3.ebuild, ufed-0.31.ebuild, ufed-0.32.ebuild, ufed-0.33.ebuild,
-  ufed-0.34.ebuild:
-  moved from app-admin to app-portage
+  09 Nov 2005; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-usedefaults.patch, -ufed-0.40_rc.ebuild,
+  +ufed-0.40_rc-r1.ebuild:
+  Fix handling of use.defaults (bug #111902)
 
-*ufed-0.34 (12 Aug 2003)
+*ufed-0.40_rc (04 Nov 2005)
 
-  12 Aug 2003; Fred Van Andel <fava@gentoo.org> ufed-0.34.ebuild,
-  New version committed in stable, fixed bug 26360   
+  04 Nov 2005; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.40_rc.ebuild:
+  ufed 0.40RC, first non-hardmasked 0.40 prerelease
 
-*ufed-0.33 (01 Aug 2003)
+*ufed-0.39 (01 May 2005)
 
-  01 Aug 2003; Fred Van Andel <fava@gentoo.org> ufed-0.33.ebuild,
-  Fixed bug 25707. No version bump, ebuild change only.
-  
-*ufed-0.33 (22 July 2003)
+  01 May 2005; Harald van Dĳk <truedfx@gentoo.org> -ufed-0.38.ebuild,
+  +ufed-0.39.ebuild:
+  version bump
 
-  04 May 2003; Fred Van Andel <fava@gentoo.org> ufed-0.33.ebuild,
-  New version committed in stable, fixed bugs 22680 and 24670   
+*ufed-0.38 (30 Apr 2005)
 
-*ufed-0.32 (04 May 2003)
+  30 Apr 2005; Harald van Dĳk <truedfx@gentoo.org>
+  -files/ufed-0.37-nooverlay.patch, -files/ufed-0.37-profilesymlink.patch,
+  -ufed-0.37-r2.ebuild, +ufed-0.38.ebuild:
+  version bump for speed boost. Was going to wait until I got some other
+  changes done, but that's taking longer than expected
 
-  04 May 2003; Fred Van Andel <fava@gentoo.org> ufed-0.32.ebuild,
-  new version committed in stable
-  
-*ufed-0.31 (28 Apr 2003)
+*ufed-0.37-r2 (21 Apr 2005)
 
-  30 Apr 2003; Robin Johnson <robbat2@gentoo.org> Manifest,
-  files/digest-ufed-0.31: recommited digests since in error
-  
-  28 Apr 2003; Fred Van Andel <fava@gentoo.org> ufed-0.31.ebuild:
-  ufed-0.31 comitted in unstable 
+  21 Apr 2005; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.37-profilesymlink.patch, -ufed-0.37-r1.ebuild,
+  +ufed-0.37-r2.ebuild:
+  don't complain that /etc/make.profile isn't a symlink for no reason when it
+  is (bug #89903)
 
-*ufed-0.3 (25 Apr 2003)
+*ufed-0.37-r1 (20 Apr 2005)
 
-  25 Apr 2003; Robin Johnson <robbat2@gentoo.org> ufed-0.3.ebuild:
-  new version, in unstable only for testing
+  20 Apr 2005; Harald van Dĳk <truedfx@gentoo.org>
+  +files/ufed-0.37-nooverlay.patch, -files/cascaded-profile-support.patch,
+  -files/disabled-defaults.patch, -files/no-partial-match.patch,
+  -files/quote-escape.patch, -files/too-many-flags.patch,
+  -ufed-0.35-r2.ebuild, -ufed-0.35-r3.ebuild, -ufed-0.37.ebuild,
+  +ufed-0.37-r1.ebuild:
+  remove 0.35 now that 0.36 is stable
+  avoid a warning when PORTDIR_OVERLAY is unset in 0.37 (bug #89871)
 
-*ufed-0.2 (29 Dec 2002)
+  20 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> ufed-0.36.ebuild:
+  Stable on alpha, bug 88396.
 
-  11 Feb 2003; Guy Martin <gmsoft@gentoo.org> ufed-0.2.ebuild :
-  Added hppa to keywords.
+*ufed-0.37 (17 Apr 2005)
 
-  17 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest, ufed-0.1.ebuild,
-  ufed-0.1.ebuild, ufed-0.2.ebuild:
-  Changed SRC_URI.
+  17 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.37.ebuild:
+  Version bump, fixes bug #56534 (undoing changes after the Help screen)
 
-  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> ufed-0.2.ebuild:
-  Mark stable on alpha
+  11 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> ufed-0.36.ebuild:
+  stable on x86
 
-  03 Mar 2003; Zach Welch <zwelch@gentoo.org> ufed-0.2.ebuild:
-  add arm keyword
+  11 Apr 2005; Joshua Kinard <kumba@gentoo.org> ufed-0.36.ebuild:
+  Marked stable on mips.
 
-  23 Jan 2003; Jason Wever <weeve@gentoo.org> ufed-0.2.ebuild:
-  Added sparc to keywords.
+  11 Apr 2005; Markus Rothe <corsair@gentoo.org> ufed-0.36.ebuild:
+  Stable on ppc64
 
-  29 Dec 2002; Maik Schreiber <blizzy@gentoo.org> : New version.
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org> ufed-0.36.ebuild:
+  stable on amd64 wrt bug 88396
 
-  29 Dec 2002; Maik Schreiber <blizzy@gentoo.org> ufed-0.1.ebuild:
-  Fixed SRC_URI.
+  09 Apr 2005; Simon Stelling <blubb@gentoo.org> ufed-0.36.ebuild:
+  stable on amd64 wrt bug 88396
 
-  18 Oct 2002; Mark Guertin <gerk@gentoo.org> ufed-0.1.ebuild:
-  Added ppc to keywords, works and is stable
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> ufed-0.36.ebuild:
+  Stable on sparc wrt #88396
 
-  12 Oct 2002; Maik Schreiber <blizzy@gentoo.org> ufed-0.1.ebuild:
-  Removed ~ppc, ~sparc, ~sparc64 and ~alpha from KEYWORDS again.
-  Too much confusion...
+  08 Apr 2005; Lars Weiler <pylon@gentoo.org> ufed-0.36.ebuild:
+  Stable on ppc; bug #88396.
 
-  12 Oct 2002; Maik Schreiber <blizzy@gentoo.org> ufed-0.1.ebuild:
-  Added ~ppc, ~sparc, ~sparc64 and ~alpha to KEYWORDS.
+  07 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> ufed-0.36.ebuild:
+  depend on newer dialog version to fix bug #88233
 
-*ufed-0.1 (12 Oct 2002)
+*ufed-0.36 (06 Apr 2005)
 
-  12 Oct 2002; Maik Schreiber <blizzy@gentoo.org> : Initial import.
+  06 Apr 2005; Harald van Dĳk <truedfx@gentoo.org> +ufed-0.36.ebuild:
+  Version bump
+
+*ufed-0.34 (15 Dec 2004)
+
+  15 Dec 2004; Marius Mauch <genone@gentoo.org> -ufed-0.34.ebuild,
+  -ufed-0.35-r1.ebuild, +ufed-0.35-r3.ebuild, -ufed-0.35.ebuild:
+  Another revision carrying a bunch of patches from bugzilla, this will
+  probably be the last release of ufed as it is. Removing old ebuilds.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> ufed-0.35-r2.ebuild:
+  Stable on alpha.
+
+  08 Dec 2004; Daniel Black <dragonheart@gentoo.org> ufed-0.35-r2.ebuild:
+  ppc stable as per bug #72028
+
+  22 Nov 2004; Markus Rothe <corsair@gentoo.org> ufed-0.35-r2.ebuild:
+  Stable on ppc64; bug #72028
+
+*ufed-0.35-r2 (22 Nov 2004)
+
+  22 Nov 2004; Marius Mauch <genone@gentoo.org>
+  +files/disabled-defaults.patch, +files/no-partial-match.patch,
+  +files/quote-escape.patch, +files/too-many-flags.patch,
+  +ufed-0.35-r2.ebuild:
+  new revision featuring patches for bugs #59004, #68691, #68924 and #70776.
+  Thanks to fn_x@hotmail.com for providing those. Also made the dialog
+  dep more strict.Ideally this should be bumped straight to stable as some of
+  these bugs prevent ufed from working at all, but the new dialog dep isn't yet
+  stable on all archs. ufed-0.35 will probably be the last version of the perl
+  version, it will likely be replaced by a python version soon.
+
+*ufed-0.35-r1 (06 Oct 2004)
+
+  06 Oct 2004; <genone@gentoo.org> +files/cascaded-profile-support.patch,
+  +ufed-0.35-r1.ebuild +ChangeLog.old:
+  adding a patch to support cascading profiles (bug #62261), thanks to lu_zero
+  for providing that patch.
+  Previous entries moved to ChangeLog.old as they aren't echangelog compatible.

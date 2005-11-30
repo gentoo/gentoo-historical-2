@@ -1,20 +1,22 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/omni/omni-1.6.ebuild,v 1.1 2003/11/06 11:53:48 tester Exp $
-
-DESCRIPTION="The Omni OpenMP Compiler"
-HOMEPAGE="http://phase.etl.go.jp/Omni/"
-LICENSE="Omni"
-SLOT="0"
-KEYWORDS="~x86"
-MY_P=Omni-${PV}
-S=${WORKDIR}/${MY_P}
-RESTRICT="fetch"
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/omni/omni-1.6.ebuild,v 1.1.1.1 2005/11/30 09:53:34 chriswhite Exp $
 
 IUSE="java doc"
 
+MY_P=Omni-${PV}
+S=${WORKDIR}/${MY_P}
+DESCRIPTION="The Omni OpenMP Compiler"
+HOMEPAGE="http://phase.hpcc.jp/Omni/home.html"
+
+SLOT="0"
+LICENSE="Omni"
+KEYWORDS="~x86"
+
+RESTRICT="fetch"
+
 DEPEND="java? ( virtual/jdk
-		app-arch/zip )
+	app-arch/zip )
 	sys-apps/sed"
 
 RDEPEND="java? ( virtual/jdk )"
@@ -43,7 +45,7 @@ src_compile() {
 	myconf=""
 
 	# There is no configure script for the doc
-	if [ ! `use doc` ]  ; then
+	if ! use doc  ; then
 	    dosed s/doc// Makefile.in
 	fi
 

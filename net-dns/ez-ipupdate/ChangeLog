@@ -1,8 +1,54 @@
 # ChangeLog for net-dns/ez-ipupdate
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-dns/ez-ipupdate/ChangeLog,v 1.1 2002/06/29 00:55:03 bangert Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/ez-ipupdate/ChangeLog,v 1.1.1.1 2005/11/30 09:50:10 chriswhite Exp $
 
+  25 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  ez-ipupdate-3.0.11_beta8-r2.ebuild:
+  Don't use /bin/false as shell for non-GNU userlands.
+
+*ez-ipupdate-3.0.11_beta8-r2 (09 Oct 2005)
+
+  09 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/ez-ipupdate.initd, +metadata.xml,
+  +ez-ipupdate-3.0.11_beta8-r2.ebuild:
+  Switching to debian sources which contain all security fixes. Original
+  source is not available anymore. Ebuild completely rewritten, init-script
+  now handles more than one config. Solving bug #85158.
+
+  11 Dec 2004; Sven Wegener <swegener@gentoo.org>
+  ez-ipupdate-3.0.11_beta8-r1.ebuild:
+  Changed from insinto/doins to newinitd.
+
+*ez-ipupdate-3.0.11_beta8-r1 (09 Nov 2004)
+
+  09 Nov 2004; <solar@gentoo.org>
+  +files/ez-ipupdate-3.0.11_beta8-syslog.patch,
+  +ez-ipupdate-3.0.11_beta8-r1.ebuild, -ez-ipupdate-3.0.11_beta8.ebuild:
+  security bump. - Format string vulnerability in syslog handling. - bug #69658
+
+  15 Aug 2004; Daniel Ahlberg <aliz@gentoo.org>
+  ez-ipupdate-3.0.11_beta8.ebuild, files/ez-ipupdate.rc6:
+  Added initscript, closing #20473.
+
+  07 Jul 2004; Danny van Dyk <kugelfang@gentoo.org>
+  ez-ipupdate-3.0.11_beta8.ebuild:
+  Marked ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ez-ipupdate-3.0.11_beta8.ebuild:
+  virtual/glibc -> virtual/libc
+
+*ez-ipupdate-3.0.11_beta8 (29 Jun 2003)
+
+  Daniel Ahlberg <aliz@gentoo.org> ez-ipupdate-3.0.11_beta8.ebuild :
+  Version bump.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *ez-ipupdate-3.0.11_beta7 (08 May 2002)
+
+  16 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
 
   08 May 2002; Thilo Bangert <bangert@gentoo.org> :
 

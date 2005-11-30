@@ -1,11 +1,128 @@
 # ChangeLog for net-misc/pump
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pump/ChangeLog,v 1.1 2002/02/01 21:53:35 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pump/ChangeLog,v 1.1.1.1 2005/11/30 09:54:38 chriswhite Exp $
+
+*pump-0.8.21-r8 (18 Nov 2005)
+
+  18 Nov 2005; Roy Marples <uberlord@gentoo.org>
+  +files/pump-0.8.21-gcc4.patch, +pump-0.8.21-r8.ebuild:
+  Fixed gcc4 compilation warnings.
+  Only install specific po files if LINGUAS is set.
+
+  06 Oct 2005; Roy Marples <uberlord@gentoo.org> -files/pump.conf,
+  -pump-0.8.11-r1.ebuild, -pump-0.8.19-r1.ebuild:
+  Punted old ebuilds.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> pump-0.8.21-r7.ebuild:
+  stable on ia64
+
+  20 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> pump-0.8.21-r7.ebuild:
+  Stable on ppc and hppa (bug #102585).
+
+  16 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> pump-0.8.21-r7.ebuild:
+  Stable on sparc wrt #102585
+
+  15 Aug 2005; Roy Marples <uberlord@gentoo.org> pump-0.8.21-r7.ebuild:
+  Stable on amd64 and x86.
+
+*pump-0.8.21-r7 (15 Jul 2005)
+
+  15 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r6.ebuild,
+  +pump-0.8.21-r7.ebuild:
+  Fixed two bad pointers - thanks to DaPhreak in IRC.
+  Re-enabled building with -fPIC and CFLAGS.
+
+*pump-0.8.21-r6 (14 Jul 2005)
+
+  14 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r5.ebuild,
+  +pump-0.8.21-r6.ebuild:
+  Fixed --keep-up. Needs to be used when starting instead of releasing now. 
+
+*pump-0.8.21-r5 (14 Jul 2005)
+
+  14 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r4.ebuild,
+  +pump-0.8.21-r5.ebuild:
+  Integrated Debians pump patchset which fixes a few things.
+
+*pump-0.8.21-r4 (13 Jul 2005)
+
+  13 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  files/pump-0.8.21-gentoo.diff, -pump-0.8.21-r3.ebuild,
+  +pump-0.8.21-r4.ebuild:
+  Enable the creation of /etc/ntp.conf and the --no-ntp option
+
+*pump-0.8.21-r3 (01 Jul 2005)
+
+  01 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  +files/pump-0.8.21-gentoo.diff, -files/pump-0.8-gentoo.diff,
+  -pump-0.8.21-r2.ebuild, +pump-0.8.21-r3.ebuild:
+  Fixed an issue with not dropping the broadcast route
+
+*pump-0.8.21-r2 (01 Jul 2005)
+
+  01 Jul 2005; Roy Marples <uberlord@gentoo.org>
+  -files/pump-0.8.21-gentoo-disable-before-setup.diff,
+  +files/pump-0.8-gentoo.diff,
+  -files/pump-0.8-gentoo-etcdir-routemetric.diff, -pump-0.8.21-r1.ebuild,
+  +pump-0.8.21-r2.ebuild:
+  Combined the new features I've done into one Gentoo patch including :-
+  Enable the --script option to specify a script to run on DHCP actions
+  Enable the --keep-up option to keep interfaces up when we release
+  
+  The --keep-up option makes the disable-before-setup patch redundant
+
+*pump-0.8.21-r1 (30 Jun 2005)
+
+  30 Jun 2005; Roy Marples <uberlord@gentoo.org>
+  +files/pump-0.8.21-gentoo-disable-before-setup.diff,
+  +files/pump-0.8-gentoo-etcdir-routemetric.diff, -pump-0.8.21.ebuild,
+  +pump-0.8.21-r1.ebuild:
+  Enable the -e (--etc-dir) option to specify where to make
+  resolv.conf - default /etc
+  
+  Enable the -m (--route-metric) option to specify the default
+  metric applied to routes
+  
+  For some reason, pump doesn't disable the interface before
+  applying it's setup - this resulted in a duplicate route, so we
+  re-introduce the old behaviour
+
+*pump-0.8.21 (27 Apr 2005)
+
+  27 Apr 2005; Brian Jackson <iggy@gentoo.org> pump-0.8.19-r1.ebuild,
+  +pump-0.8.21.ebuild:
+  version bump, fix bug #64831
+
+*pump-0.8.11-r1 (08 Mar 2004)
+*pump-0.8.19-r1 (08 Mar 2004)
+
+  08 Mar 2004; Seemant Kulleen <seemant@gentoo.org> pump-0.8.11-r1.ebuild,
+  pump-0.8.11.ebuild, pump-0.8.19-r1.ebuild, pump-0.8.19.ebuild:
+  revision bumps to PROVIDE virtual/dhcpc, thanks to a request by William Hubbs
+  <kc5eiv@kc5eiv.homeip.net> on the gentoo-dev mailing list:
+  http://article.gmane.org/gmane.linux.gentoo.devel/11579
+
+*pump-0.8.19 (14 Sep 2003)
+
+  14 Sep 2003; <iggy@gentoo.org> pump-0.8.19.ebuild:
+  version bump thanks to hillster
 
 *pump-0.8.11 (1 Feb 2002)
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
+  17 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Removed init.d script ... see Bug 8917.
+
+  04 Dec 2002; Calum Selkirk <cselkirk@gentoo.org> pump-0.8.11.ebuild :
+  Added ppc to KEYWORDS.
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> pump-0.8.11.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+  Removed pump-0.8.3 from the tree.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

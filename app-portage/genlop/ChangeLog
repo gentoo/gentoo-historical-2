@@ -1,6 +1,122 @@
-# ChangeLog for app-admin/genlop
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/genlop/ChangeLog,v 1.1 2003/08/15 12:09:30 lanius Exp $
+# ChangeLog for app-portage/genlop
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/genlop/ChangeLog,v 1.1.1.1 2005/11/30 09:51:55 chriswhite Exp $
+
+*genlop-0.30.5 (24 Aug 2005)
+
+  24 Aug 2005; Michael Cummings <mcummings@gentoo.org> +genlop-0.30.5.ebuild:
+  Bug 100938, genlop bump
+
+  09 Aug 2005; Luis Medinas <metalgod@gentoo.org> genlop-0.30.3.ebuild:
+  Marked Stable on AMD64.
+
+  09 Aug 2005; Luca Barbato <lu_zero@gentoo.org> genlop-0.30.3.ebuild:
+  Marked ppc
+
+  08 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> genlop-0.30.3.ebuild:
+  Stable on mips.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> genlop-0.30.3.ebuild:
+  Stable on ppc64
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org> genlop-0.30.3.ebuild:
+  Stable on alpha.
+
+  03 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org> genlop-0.30.3.ebuild:
+  Stable on hppa.
+
+  31 Jul 2005; Michael Cummings <mcummings@gentoo.org> metadata.xml,
+  genlop-0.30.3.ebuild:
+  I've been asked by upstream to readminster this package. I've updated the
+  metadata to reflect this, leaving portage-tools as secondary maintainers. I
+  accept all responsibility for this switch out.
+
+  07 Jul 2005; Michael Cummings <mcummings@gentoo.org> genlop-0.30.2.ebuild,
+  genlop-0.30.3.ebuild:
+  oops - had it backwards, sorry
+
+  07 Jul 2005; Michael Cummings <mcummings@gentoo.org> genlop-0.30.2.ebuild,
+  genlop-0.30.3.ebuild:
+  Dep=rdep for upcoming rdep changes
+
+*genlop-0.30.3 (07 Apr 2005)
+
+  07 Apr 2005; Marius Mauch <genone@gentoo.org> -genlop-0.16.3.ebuild,
+  -genlop-0.20.2.ebuild, -genlop-0.30.1.ebuild, genlop-0.30.2.ebuild,
+  +genlop-0.30.3.ebuild:
+  bumping to 0.30.3, cleaning out old ebuilds, using bash-completion eclass
+  (bug 70322).
+
+  06 Feb 2005; Simon Stelling <blubb@gentoo.org> genlop-0.30.2.ebuild:
+  stable on amd64
+
+  21 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> genlop-0.30.2.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> genlop-0.30.2.ebuild:
+  Stable on ppc.
+
+  20 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> genlop-0.30.2.ebuild:
+  Stable on sparc
+
+  28 Oct 2004; <pyrania@gentoo.org> genlop-0.30.2.ebuild:
+  Added ~s390 keyword.
+
+  14 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> genlop-0.16.3.ebuild:
+  Added to ~ppc-macos.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> genlop-0.30.2.ebuild:
+  Added ~sparc keyword.
+
+  08 Aug 2004; Tom Gall <tgall@gentoo.org> genlop-0.30.2.ebuild:
+  stable on ppc64, bug #57436
+
+*genlop-0.30.2 (01 Jul 2004)
+
+  01 Jul 2004; Ian Leitch <port001@gentoo.org> +genlop-0.30.2.ebuild:
+  Version bump
+
+  30 Jun 2004; Ian Leitch <port001@gentoo.org> genlop-0.30.1.ebuild:
+  Removed old dependency; dev-perl/Time-Duration - #45955
+
+  15 May 2004; Joshua Kinard <kumba@gentoo.org> genlop-0.20.2.ebuild:
+  Marked stable on mips.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> genlop-0.20.2.ebuild :
+  Stable on AMD64.
+
+  02 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> genlop-0.30.1.ebuild:
+  removed hppa since it needs dev-perl/DateManip first
+
+*genlop-0.30.1 (28 Mar 2004)
+
+  28 Mar 2004; Marius Mauch <genone@gentoo.org> genlop-0.20.2.ebuild,
+  genlop-0.30.1.ebuild:
+  version bump + moving the bash-completion file from /usr/share/doc to
+  /usr/share/bash-completion (closing #45237 and #45840)
+
+  20 Mar 2004; Jon Portnoy <avenj@gentoo.org> genlop-0.20.2.ebuild :
+  AMD64 keywords.
+
+*genlop-0.20.2 (14 Dec 2003)
+
+  14 Dec 2003; Marius Mauch <genone@gentoo.org> genlop-0.16.1.ebuild,
+  genlop-0.20.2.ebuild:
+  version bump, removing unnecessary deps
+
+  13 Nov 2003; <tuxus@gentoo.org> genlop-0.16.3.ebuild:
+  added mips to KEYWORDS
+
+  05 Nov 2003; <rac@gentoo.org> genlop-0.16.3.ebuild:
+  keywording for amd64
+
+  23 Oct 2003; Sven Blumenstein <bazik@gentoo.org> genlop-0.16.3.ebuild:
+  Bumped to stable on sparc.
+
+*genlop-0.16.3 (22 Aug 2003)
+
+  22 Aug 2003; Michael Cummings <mcummings@gentoo.org> genlop-0.16.3.ebuild:
+  Version bump from authors, bug 25325
 
 *genlop-0.16.1 (15 Aug 2003)
 

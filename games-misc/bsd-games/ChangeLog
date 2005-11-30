@@ -1,12 +1,67 @@
-# ChangeLog for app-games/bsd-games
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
+# ChangeLog for games-misc/bsd-games
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/ChangeLog,v 1.1.1.1 2005/11/30 09:50:03 chriswhite Exp $
+
+  17 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/bsd-games-2.17-64bit.patch, -files/2.17-64bit.patch,
+  bsd-games-2.17.ebuild:
+  Fix 64bit issue with utmp structure #102667 by Bruno Lustosa.
+
+  17 Aug 2005; Mike Frysinger <vapier@gentoo.org> bsd-games-2.17.ebuild:
+  Remove fortune from the default build list since we already have a fortune
+  package #102720 by Jonathan Smith.
+
+  15 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  bsd-games-2.17.ebuild:
+  more hack support
+
+*bsd-games-2.17 (15 Aug 2005)
+
+  15 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/bsd-games-2.17-gcc4.patch, +files/2.17-64bit.patch,
+  +bsd-games-2.17.ebuild:
+  version bump
+
+  13 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/bsd-games-2.13-gcc4.patch, bsd-games-2.13-r1.ebuild:
+  Add a gcc4 fix by Jason Bucata #102311.
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  bsd-games-2.13-r1.ebuild:
+  Removed INSTALL file.
+
+*bsd-games-2.13-r1 (10 Jan 2005)
+
+  10 Jan 2005; Mike Frysinger <vapier@gentoo.org> +files/2.13-64bit.patch,
+  +files/2.13-debian-11.patch, +files/2.13-gentoo.patch,
+  -files/bsdgames-2.13-gentoo.diff, -files/bsdgames_2.13-11.diff,
+  +bsd-games-2.13-r1.ebuild:
+  Add patch by David Leverton to fix 64bit support #77032.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 May 2004; Jason Wever <weeve@gentoo.org> bsd-games-2.13.ebuild:
+  Added ~sparc keyword.
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> bsd-games-2.13.ebuild:
+  don't rdepend on bison
+
+  07 Jan 2004; Jon Portnoy <avenj@gentoo.org> bsd-games-2.13.ebuild :
+  AMD64 keywords.
+
+  05 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> bsd-games-2.13.ebuild:
+  fix wargames to look in the right place for the games (bug 32822)
+
+  01 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  files/bsdgames_2.13-11.diff:
+  chown user.group -> chown user:group
 
 *bsd-games-2.13 (18 Mar 2003)
 
   07 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
   Completely redid the ebuild ... much cleaner this way.
 
-  18 Mar 2003; J.Alberto Su·rez LÛpez <bass@gentoo.org> bsd-games-2.13.ebuild: 
+  18 Mar 2003; J.Alberto Su√°rez L√≥pez <bass@gentoo.org> bsd-games-2.13.ebuild: 
   First realse. Ebuild by Aric LeDell <aledell@rcn.com> 
 

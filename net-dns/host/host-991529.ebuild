@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/host/host-991529.ebuild,v 1.1 2005/07/15 10:19:20 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/host/host-991529.ebuild,v 1.1.1.1 2005/11/30 09:50:14 chriswhite Exp $
 
 # This is somewhat old tool, has not been changed since 1999,
 # Still looks like host from bind does not provide all possible functionality

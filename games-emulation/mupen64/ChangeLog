@@ -1,6 +1,79 @@
-# ChangeLog for app-emulation/mupen64
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64/ChangeLog,v 1.1 2003/09/09 16:26:50 vapier Exp $
+# ChangeLog for games-emulation/mupen64
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64/ChangeLog,v 1.1.1.1 2005/11/30 09:50:17 chriswhite Exp $
+
+  08 Nov 2005; Daniel Goller <morfic@gentoo.org>
+  -files/mupen64-gentoo-avi.patch, mupen64-0.4-r2.ebuild:
+  remove avifile dep and avi support wrt bug #111337, -amd64 since it doesn't
+  work
+
+  20 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  mupen64-0.4-r2.ebuild:
+  remove gtk2 use flag
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> mupen64-0.4-r2.ebuild:
+  Removed unneeded use of gcc.eclass.
+
+  24 Apr 2005; Daniel Goller <morfic@gentoo.org> mupen64-0.4-r2.ebuild:
+  amd64 fixes
+
+  23 Apr 2005; Daniel Goller <morfic@gentoo.org>
+  files/mupen64-gtk2-makefile.patch, files/mupen64-makefiles.patch,
+  mupen64-0.4-r2.ebuild:
+  adding amd64
+
+  18 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -mupen64-0.4-r1.ebuild:
+  clean old ebuild
+
+*mupen64-0.4-r2 (25 Mar 2005)
+
+  25 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  files/mupen64-gtk2-makefile.patch, +mupen64-0.4-r2.ebuild:
+  Update gtk2 patch (from Arnaud Lech via bug #86156); tidy ebuild
+
+  19 Jan 2005; Daniel Goller <morfic@gentoo.org> mupen64-0.4-r1.ebuild:
+  Stable on x86
+
+  08 Jan 2005; Daniel Goller <morfic@gentoo.org> files/mupen64:
+  Updated start script
+
+  07 Jan 2005; Daniel Goller <morfic@gentoo.org> metadata.xml:
+  Adding maintainer
+
+*mupen64-0.4-r1 (07 Jan 2005)
+
+  07 Jan 2005; Daniel Goller <morfic@gentoo.org> +mupen64-0.4-r1.ebuild,
+  -mupen64-0.4.ebuild:
+  Bump to force upgrade to fixed dep glN64
+
+  05 Jan 2005; Daniel Goller <morfic@gentoo.org> files/mupen64,
+  files/mupen64-confdir.patch, files/mupen64-makefiles.patch,
+  +files/mupen64-noasm.patch, mupen64-0.4.ebuild:
+  Fixed mupen64 , cleaned it up, split out plugins into own ebuilds
+
+*mupen64-0.4 (01 Jan 2005)
+
+  01 Jan 2005; Daniel Goller <morfic@gentoo.org>
+  +files/mupen64-SDL_ttf.patch, +files/mupen64-confdir.patch,
+  +files/mupen64-gcc3.patch, +files/mupen64-gentoo-avi.patch,
+  +files/mupen64-gentoo-sdl.patch, +files/mupen64-gtk2-makefile.patch,
+  +files/mupen64-makefiles.patch, +files/mupen64-rice-confdir.patch,
+  +mupen64-0.4.ebuild:
+  Initial commit of version 0.4 thanks to al contributors on bug#56195
+  Adding patch to allow it compile with ~arch freetype
+
+  27 Sep 2003; Michael Sterrett <msterret@gentoo.org> mupen64-0.3.ebuild,
+  files/mupen64:
+  disable the riceplugin for anything < gcc 3.3; more error messages; make
+  wrapper script run out of ~/.mupen64 to avoid segfault on exit; wrapper is a
+  bash script; cp ini file to ~ so it can be updated on exit. Should work
+  around bug 29206 enough to close that bug.
+
+*mupen64-0.3 (19 Sep 2003)
+
+  19 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #29016.
 
 *mupen64-0.2 (03 Sep 2003)
 

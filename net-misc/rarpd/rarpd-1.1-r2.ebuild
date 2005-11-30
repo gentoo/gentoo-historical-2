@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rarpd/rarpd-1.1-r2.ebuild,v 1.1 2003/11/04 03:23:48 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rarpd/rarpd-1.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:54:39 chriswhite Exp $
 
 inherit eutils
 
@@ -10,11 +10,12 @@ SRC_URI="ftp://ftp.dementia.org/pub/net-tools/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="~hppa ppc sparc x86"
+IUSE=""
 
 DEPEND=">=net-libs/libnet-1.0.2a-r3
 	<net-libs/libnet-1.1
-	>=net-libs/libpcap-0.7.1"
+	virtual/libpcap"
 
 src_unpack() {
 	unpack ${A}
@@ -23,18 +24,11 @@ src_unpack() {
 	epatch ${FILESDIR}/${PV}-daemon.patch
 }
 
-src_compile() {
-	econf || die
-	emake || die
-}
-
 src_install() {
 	#make install DESTDIR=${D} || die # only installs rarpd to /
 	dosbin rarpd
 	doman rarpd.8
 	dodoc AUTHORS COPYING README TODO VERSION INSTALL
-	insinto /etc/conf.d
-	newins ${FILESDIR}/rarpd.conf.d rarpd
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/rarpd.init.d rarpd
+	newconfd ${FILESDIR}/rarpd.conf.d rarpd
+	newinitd ${FILESDIR}/rarpd.init.d rarpd
 }

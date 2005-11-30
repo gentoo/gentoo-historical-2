@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.6.ebuild,v 1.1 2004/02/11 19:57:15 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.6.ebuild,v 1.1.1.1 2005/11/30 09:51:11 chriswhite Exp $
+
+IUSE=""
 
 DESCRIPTION="A OpenFT, Gnutella and FastTrack p2p network client"
 HOMEPAGE="http://gift.sourceforge.net"
@@ -9,17 +11,13 @@ RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64"
+KEYWORDS="x86 sparc ~ppc ~alpha amd64"
 
-DEPEND="virtual/glibc
-	!net-p2p/gift
-	>=sys-apps/sed-4
-	>=sys-libs/zlib-1.1.4"
+RDEPEND=">=sys-libs/zlib-1.1.4"
 
-src_compile() {
-	econf || die "Configure failed"
-	emake || die "Make failed"
-}
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig
+	>=sys-apps/sed-4"
 
 src_install() {
 	einstall \
@@ -31,7 +29,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "First, you need to run giFT-setup with your normal"
+	einfo "First, you need to run gift-setup with your normal"
 	einfo "user account to create the giFT configuration files."
 	echo
 	einfo "This package no longer contains any protocol plugins,"

@@ -1,6 +1,71 @@
 # ChangeLog for dev-perl/RPC-XML
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/RPC-XML/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/RPC-XML/ChangeLog,v 1.1.1.1 2005/11/30 09:53:15 chriswhite Exp $
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> RPC-XML-0.58.ebuild:
+  add ~ia64
+
+*RPC-XML-0.58 (30 May 2005)
+
+  30 May 2005; Michael Cummings <mcummings@gentoo.org> +RPC-XML-0.58.ebuild:
+  Version bump, bug 94160
+
+  09 May 2005; Elfyn McBratney <beu@gentoo.org> RPC-XML-0.40.ebuild,
+  RPC-XML-0.40-r1.ebuild, RPC-XML-0.53.ebuild, RPC-XML-0.54.ebuild:
+  dev-perl/mod_perl -> www-apache/mod_perl
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> RPC-XML-0.54.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> RPC-XML-0.53.ebuild:
+  Stable on ppc.
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  RPC-XML-0.40-r1.ebuild, RPC-XML-0.40.ebuild, RPC-XML-0.53.ebuild,
+  RPC-XML-0.54.ebuild:
+  bug 76590
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*RPC-XML-0.54 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> RPC-XML-0.54.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> RPC-XML-0.53.ebuild:
+  Stable on alpha.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> RPC-XML-0.53.ebuild:
+  Stable on sparc, thanks to Josh Grebe <josh@brokedown.net> for testing!
+
+*RPC-XML-0.53 (16 Jun 2003)
+
+  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> RPC-XML-0.53.ebuild:
+  CPAN version bump; needs testing; fixed missing dep
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+
+  forced version bump to install into correct locations
+# ChangeLog for dev-perl/RPC-XML
+
+*RPC-XML-0.40-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*RPC-XML-0.40 (6 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> RPC-XML-0.40.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> RPC-XML-0.40.ebuild
+  files/digest-RPC-XML-0.40 :
+
+  Version bump, and conversion to eclass.
 
 *RPC-XML-0.27 (1 Feb 2002)
 

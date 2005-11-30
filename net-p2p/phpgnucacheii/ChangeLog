@@ -1,6 +1,21 @@
 # ChangeLog for net-p2p/phpgnucacheii
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/phpgnucacheii/ChangeLog,v 1.1 2004/09/17 16:52:53 squinky86 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/phpgnucacheii/ChangeLog,v 1.1.1.1 2005/11/30 09:51:10 chriswhite Exp $
+
+  11 Sep 2005; Renat Lumpau <rl03@gentoo.org> phpgnucacheii-2.1.1.ebuild:
+  Fixed php dep wrt bug #102850.
+
+  24 Aug 2005; <sekretarz@gentoo.org> metadata.xml:
+  Removed squinky86@gentoo.org from metadata
+
+  24 Aug 2005; <sekretarz@gentoo.org> phpgnucacheii-2.1.1.ebuild:
+  Using -pPR instead -a option in cp, bug #103487
+
+  18 Oct 2004; Jon Hood <squinky86@gentoo.org> phpgnucacheii-2.1.1.ebuild:
+  Stable on x86.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> phpgnucacheii-2.1.1.ebuild:
+  Added to ~ppc.
 
 *phpgnucacheii-2.1.1 (17 Sep 2004)
 

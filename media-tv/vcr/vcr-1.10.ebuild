@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/vcr/vcr-1.10.ebuild,v 1.1 2003/08/05 14:45:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/vcr/vcr-1.10.ebuild,v 1.1.1.1 2005/11/30 09:50:35 chriswhite Exp $
 
 DESCRIPTION="VCR - Linux Console VCR"
 HOMEPAGE="http://www.stack.nl/~brama/vcr/"
@@ -8,16 +8,12 @@ SRC_URI="http://www.stack.nl/~brama/${PN}/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
+IUSE=""
 
-DEPEND="=media-video/avifile-0.7.37*"
-
-src_compile() {
-	econf || die "econf died"
-	make || die "emake died"
-}
+DEPEND=">=media-video/avifile-0.7.37"
 
 src_install () {
-	make install DESTDIR=${D} || die "einstall died"
+	einstall
 	dodoc AUTHORS ChangeLog NEWS README
 }

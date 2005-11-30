@@ -1,6 +1,76 @@
 # ChangeLog for net-misc/nxserver-freenx
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/ChangeLog,v 1.1 2004/08/30 20:25:09 stuart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-freenx/ChangeLog,v 1.1.1.1 2005/11/30 09:54:30 chriswhite Exp $
+
+  02 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  nxserver-freenx-0.2.7.ebuild, nxserver-freenx-0.2.8.ebuild,
+  nxserver-freenx-0.4.0.ebuild:
+  Don't use /bin/false as shell for nx user. Use -1 instead.
+
+*nxserver-freenx-0.4.0 (23 May 2005)
+
+  23 May 2005; Stuart Herbert <stuart@gentoo.org>
+  +nxserver-freenx-0.4.0.ebuild:
+  Version bump; thanks to Jon Severinsson <jon@severingsson.net>; see bug #84299
+
+*nxserver-freenx-0.2.8 (19 Feb 2005)
+
+  19 Feb 2005; Stuart Herbert <stuart@gentoo.org> +files/fixes.diff,
+  +nxserver-freenx-0.2.8.ebuild:
+  Version bump; Bug 76449: shell script loop patch; Neil Wilson
+  <neil@aldur.co.uk> Bug 76449: support for session names with spaces; Neil
+  Wilson <neil@aldur.co.uk> New USE flag 'commercial' if you want to use freenx
+  w/ NoMachine's nxclient
+  stable on x86
+
+  02 Jan 2005; Stuart Herbert <stuart@gentoo.org>
+  -nxserver-freenx-0.2.1.ebuild, -nxserver-freenx-0.2.2.ebuild,
+  -nxserver-freenx-0.2.3.ebuild, -nxserver-freenx-0.2.4.ebuild:
+  Removed obsolete version
+
+  02 Jan 2005; Stuart Herbert <stuart@gentoo.org> +files/nxserver-path.diff,
+  nxserver-freenx-0.2.4.ebuild:
+  Version bump; thanks to Christian Oyarzun for the patch; see bug #71694
+
+  24 Nov 2004; Sven Wegener <swegener@gentoo.org>
+  nxserver-freenx-0.2.2.ebuild:
+  Fixed SRC_URI to match real file name.
+
+  13 Sep 2004; Stuart Herbert <stuart@gentoo.org>
+  nxserver-freenx-0.2.4.ebuild:
+  Changed dep from netcat to gnu-netcat
+
+*nxserver-freenx-0.2.2 (12 Sep 2004)
+
+  12 Sep 2004; Stuart Herbert <stuart@gentoo.org>
+  +nxserver-freenx-0.2.2.ebuild, +nxserver-freenx-0.2.3.ebuild,
+  +nxserver-freenx-0.2.4.ebuild:
+  New versions; released for wider testing
+
+  08 Sep 2004; Stuart Herbert <stuart@gentoo.org>
+  -files/freenx-0.1-gentoo.patch, -nxserver-freenx-0.1.ebuild,
+  -nxserver-freenx-0.2.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  08 Sep 2004; Stuart Herbert <stuart@gentoo.org> -nxserver-freenx-0.1.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  08 Sep 2004; Stuart Herbert <stuart@gentoo.org>
+  nxserver-freenx-0.2.1.ebuild:
+  Fix for problem w/ creating the nx user in pkg_setup()
+
+*nxserver-freenx-0.2.1 (08 Sep 2004)
+
+  08 Sep 2004; Stuart Herbert <stuart@gentoo.org>
+  +nxserver-freenx-0.2.1.ebuild:
+  Version bump; still no fix for suspend / resume problems yet
+
+*nxserver-freenx-0.2 (07 Sep 2004)
+
+  07 Sep 2004; Stuart Herbert <stuart@gentoo.org>
+  +files/freenx-0.2-gentoo.patch, nxserver-freenx-0.1.ebuild,
+  +nxserver-freenx-0.2.ebuild:
+  Version bump; more compatibility fixes to the ebuild
 
 *nxserver-freenx-0.1 (30 Aug 2004)
 

@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/distcc-2.16-r2.ebuild,v 1.1 2004/09/17 19:11:18 lisa Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/distcc-2.16-r2.ebuild,v 1.1.1.1 2005/11/30 09:53:37 chriswhite Exp $
 
 # If you change this in any way please email lisa@gentoo.org and make an
 # entry in the ChangeLog (this means you spanky :P). (2004-04-11) Lisa Seelye
 
-inherit eutils gcc flag-o-matic gnuconfig
+inherit eutils flag-o-matic gnuconfig toolchain-funcs
 
 PATCHLEVEL="2.17"
 
@@ -15,10 +15,7 @@ SRC_URI="http://distcc.samba.org/ftp/distcc/distcc-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc sparc ~mips ~alpha ~arm ~hppa ~ia64 ~amd64 ~s390 ~ppc64"
-# ATTN s390 MAINTANER: if you bump this stable on s390 please remove 2.14 from cvs -lisa
-# 2004-07-08
-
+KEYWORDS="x86 ppc sparc mips alpha ~hppa ~ia64 ~amd64 ppc64 ~s390 ~arm"
 
 IUSE="gnome gtk selinux ipv6"
 
@@ -27,7 +24,7 @@ DEPEND=">=sys-apps/portage-2.0.49-r6
 	sys-apps/shadow
 	dev-util/pkgconfig"
 RDEPEND="
-	!arm? ( !mips? ( !s390? (
+	!arm? ( !s390? (
 	gnome? (
 		>=x11-libs/gtk+-2.0.0
 		>=gnome-base/libgnome-2.0.0
@@ -40,7 +37,7 @@ RDEPEND="
 		>=x11-libs/gtk+-2.0.0
 		x11-libs/pango
 	)
-	) ) )
+	) )
 	selinux? ( sec-policy/selinux-distcc )"
 
 src_unpack() {
@@ -57,10 +54,8 @@ src_compile() {
 	#configure script, so we'll just make the distinction here:
 	#gnome takes precedence over gtk if both are specified (gnome pulls
 	#in gtk anyways...)
-	use gtk && ! use gnome && ! use mips && myconf="${myconf} --with-gtk"
-	use gtk && use gnome && ! use mips && myconf="${myconf} --with-gnome"
-	use mips && use gtk || use gnome && ewarn "X support for Mips has been disabled."
-	#Above, mips is excluded due to version issues. 2004-02-20
+	use gtk && ! use gnome && myconf="${myconf} --with-gtk"
+	use gtk && use gnome && myconf="${myconf} --with-gnome"
 
 	[ `gcc-major-version` -eq 2 ] && filter-lfs-flags
 

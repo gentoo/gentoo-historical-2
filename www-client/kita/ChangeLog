@@ -1,6 +1,106 @@
-# ChangeLog for net-www/kita
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/kita/ChangeLog,v 1.1 2004/09/08 13:40:12 usata Exp $
+# ChangeLog for www-client/kita
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/kita/ChangeLog,v 1.1.1.1 2005/11/30 09:52:19 chriswhite Exp $
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> kita-0.176.0.ebuild:
+  Stable on ppc.
+
+*kita-0.177.0 (02 Aug 2005)
+
+  02 Aug 2005; Mamoru KOMACHI <usata@gentoo.org> +kita-0.177.0.ebuild:
+  Version bumped.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> kita-0.176.0.ebuild:
+  Stable on alpha.
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> kita-0.176.0.ebuild:
+  Stable on ppc64
+
+  03 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> -kita-0.174.0.ebuild,
+  -kita-0.175.0.ebuild, kita-0.176.0.ebuild:
+  Stable on x86.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> kita-0.175.1.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> kita-0.175.1.ebuild:
+  Stable on alpha.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> kita-0.175.1.ebuild:
+  Stable on ppc64
+
+*kita-0.176.0 (19 May 2005)
+
+  19 May 2005; Mamoru KOMACHI <usata@gentoo.org> kita-0.175.1.ebuild,
+  +kita-0.176.0.ebuild:
+  Version bumped.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> kita-0.175.0.ebuild:
+  Stable on ppc.
+
+  27 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> kita-0.175.0.ebuild:
+  Stable on alpha.
+
+  12 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> kita-0.175.0.ebuild:
+  Stable on x86.
+
+*kita-0.175.1 (28 Mar 2005)
+
+  28 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> +kita-0.175.1.ebuild:
+  Version bumped.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> kita-0.174.0.ebuild:
+  Stable on alpha.
+
+*kita-0.175.0 (17 Mar 2005)
+
+  17 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> +kita-0.175.0.ebuild:
+  Version bumped.
+
+  12 Feb 2005; Yuta SATOH <nigoro@gentoo.org> kita-0.174.0.ebuild:
+  Stable on ppc64
+
+  05 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> -kita-0.172.0.ebuild,
+  kita-0.174.0.ebuild:
+  Stable on x86 and ppc.
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> kita-0.174.0.ebuild:
+  added ~amd64 to KEYWORDS. fixes #79892
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> kita-0.160.0.ebuild,
+  kita-0.172.0.ebuild:
+  Changed dep on a kde-base monolithic package to accept the equivalent split
+  or -meta package. KDE 3.4 has 'split' packages as well as monolithic, and
+  either alternative may provide the same files. This dep may have to be
+  narrowed down in the future to the precise split packages required.
+
+*kita-0.174.0 (02 Jan 2005)
+
+  02 Jan 2005; Mamoru KOMACHI <usata@gentoo.org> kita-0.173.0.ebuild,
+  +kita-0.174.0.ebuild:
+  Version bumped. Marked previous version stable.
+
+  03 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> kita-0.160.0.ebuild,
+  -kita-0.171.0.ebuild, kita-0.172.0.ebuild, kita-0.173.0.ebuild:
+  Changed fam to virtual/fam; bug #67170.
+
+*kita-0.173.0 (30 Nov 2004)
+
+  30 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> -kita-0.170.0.ebuild,
+  kita-0.172.0.ebuild, +kita-0.173.0.ebuild:
+  Version bumped. Marked 0.172.0 stable on x86, ppc and alpha.
+
+*kita-0.172.0 (30 Oct 2004)
+
+  30 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> kita-0.171.0.ebuild,
+  +kita-0.172.0.ebuild:
+  Version bumped.
+
+*kita-0.171.0 (30 Sep 2004)
+
+  30 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> -kita-0.150.0.ebuild,
+  kita-0.170.0.ebuild, +kita-0.171.0.ebuild:
+  Version bumped. Added ~ppc64 which existed in 0.160.0. Removed old ebuild.
 
 *kita-0.160.0 (08 Sep 2004)
 

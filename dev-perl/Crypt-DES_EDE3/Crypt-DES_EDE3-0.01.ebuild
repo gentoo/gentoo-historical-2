@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-DES_EDE3/Crypt-DES_EDE3-0.01.ebuild,v 1.1 2005/04/11 16:34:11 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-DES_EDE3/Crypt-DES_EDE3-0.01.ebuild,v 1.1.1.1 2005/11/30 09:52:49 chriswhite Exp $
 
 inherit perl-module
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/paros/paros-3.2.4.ebuild,v 1.1 2005/08/20 17:31:46 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/paros/paros-3.2.4.ebuild,v 1.1.1.1 2005/11/30 09:51:43 chriswhite Exp $
 
 inherit eutils
 

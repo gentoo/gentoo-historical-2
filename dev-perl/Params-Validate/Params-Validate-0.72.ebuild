@@ -1,21 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Params-Validate/Params-Validate-0.72.ebuild,v 1.1 2004/02/16 15:11:47 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Params-Validate/Params-Validate-0.72.ebuild,v 1.1.1.1 2005/11/30 09:53:14 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A module to provide a flexible system for validation method/function call parameters"
-SRC_URI="http://www.perl.com/CPAN/modules/by-authors/id/D/DR/DROLSKY/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/D/DR/DROLSKY/${P}.tar.gz"
 HOMEPAGE="http://www.perl.com/CPAN/modules/by-authors/id/D/DR/DROLSKY/"
 
 SRC_TEST="do"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ~ppc ~alpha ~sparc"
-
-DEPEND="${DEPEND}
-	dev-perl/Attribute-Handlers"
+KEYWORDS="x86 amd64 ppc ~alpha sparc"
+IUSE=""
 
 mydoc="CREDITS UPGRADE"
 

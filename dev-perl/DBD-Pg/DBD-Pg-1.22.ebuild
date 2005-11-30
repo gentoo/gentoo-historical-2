@@ -1,20 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-Pg/DBD-Pg-1.22.ebuild,v 1.1 2003/06/07 13:24:06 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-Pg/DBD-Pg-1.22.ebuild,v 1.1.1.1 2005/11/30 09:52:50 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="The Perl DBD::Pg Module"
-SRC_URI="http://cpan.pair.com/authors/id/D/DW/DWHEELER/${P}.tar.gz"
-HOMEPAGE="http://cpan.pair.com/authors/id/D/DW/DWHEELER/${P}.readme"
+HOMEPAGE="http://search.cpan.org/~dwheeler/${P}"
+SRC_URI="mirror://cpan/authors/id/D/DW/DWHEELER/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc s390 sparc x86"
+IUSE=""
 
-DEPEND="${DEPEND}
-	dev-perl/Test-Simple
+DEPEND="perl-core/Test-Simple
 	dev-perl/DBI
 	dev-db/postgresql"
 

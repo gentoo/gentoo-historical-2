@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/ed2k-gtk-gui/ed2k-gtk-gui-0.6.2.ebuild,v 1.1 2004/04/21 20:51:19 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/ed2k-gtk-gui/ed2k-gtk-gui-0.6.2.ebuild,v 1.1.1.1 2005/11/30 09:51:09 chriswhite Exp $
 
 inherit libtool
 
@@ -10,12 +10,12 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 RESTRICT="nomirror"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64"
 IUSE=""
 
 DEPEND=">=x11-libs/gtk+-2.0
 	>=net-libs/gnet-1.1
-	>=net-p2p/overnet-0.51*"
+	dev-util/gtk-doc"
 
 src_compile() {
 	econf || die "configure failed"
@@ -28,10 +28,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
-	einfo "In order to run ${P}, please"
-	einfo "copy /usr/bin/overnet to the home directory"
-	einfo "of the user who will be using this program:"
-	einfo " cp /usr/bin/overnet ~/"
-	einfo
+	echo
+	einfo "Please refer to ${HOMEPAGE} if you are"
+	einfo "unable to set up the client."
+	echo
+	ewarn "ed2k-gtk-gui requires access to an overnet/edonkey core. If you"
+	ewarn "do not have access to a core, you can install net-p2p/overnet."
+	echo
 }

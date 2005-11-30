@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tie-StrictHash/Tie-StrictHash-1.0.ebuild,v 1.1 2005/02/07 12:41:39 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Tie-StrictHash/Tie-StrictHash-1.0.ebuild,v 1.1.1.1 2005/11/30 09:53:14 chriswhite Exp $
 
 inherit perl-module
 
@@ -11,6 +11,6 @@ IUSE=""
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 SRC_TEST="do"

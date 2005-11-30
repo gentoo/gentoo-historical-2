@@ -1,20 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-StackTrace/Devel-StackTrace-1.03.ebuild,v 1.1 2003/04/22 22:58:14 rac Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-StackTrace/Devel-StackTrace-1.03.ebuild,v 1.1.1.1 2005/11/30 09:53:14 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Devel-StackTrace module for perl"
-SRC_URI="http://www.perl.com/CPAN/modules/by-authors/id/D/DR/DROLSKY/${P}.tar.gz"
-HOMEPAGE="http://www.perl.com/CPAN/modules/by-authors/id/D/DR/DROLSKY/${P}.readme"
+HOMEPAGE="http://www.perl.com/CPAN/modules/by-modules/Devel/${P}.readme"
+SRC_URI="http://www.perl.com/CPAN/modules/by-modules/Devel/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc alpha"
+KEYWORDS="x86 ppc sparc alpha hppa amd64"
+IUSE=""
 
-DEPEND="${DEPEND}
- 	>=dev-perl/Test-Simple-0.47"
+DEPEND=">=perl-core/Test-Simple-0.47"
 
 export OPTIMIZE="$CFLAGS"
-

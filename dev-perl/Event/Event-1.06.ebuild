@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Event/Event-1.06.ebuild,v 1.1 2005/11/19 08:39:03 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Event/Event-1.06.ebuild,v 1.1.1.1 2005/11/30 09:52:52 chriswhite Exp $
 
 inherit perl-module
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.0.4.ebuild,v 1.1 2005/03/02 07:41:20 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-2.0.4.ebuild,v 1.1.1.1 2005/11/30 09:49:56 chriswhite Exp $
 
 inherit eutils gnome2 flag-o-matic alternatives
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://ximian.com/products/evolution/"
 
 LICENSE="GPL-2"
 SLOT="2.0"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~hppa ~ia64 ~mips ~alpha"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc sparc x86"
 IUSE="ssl mozilla ldap doc spell ipv6 kerberos crypt nntp debug pda"
 
 # Top stanza are ximian deps
@@ -36,7 +36,7 @@ RDEPEND=">=gnome-extra/libgtkhtml-3.2.5
 		>=app-pda/gnome-pilot-conduits-2.0.10 )
 	spell? ( >=app-text/gnome-spell-1.0.5 )
 	crypt? ( >=app-crypt/gnupg-1.2.2 )
-	ssl? ( mozilla? ( net-www/mozilla )
+	ssl? ( mozilla? ( www-client/mozilla )
 		!mozilla? ( >=dev-libs/nspr-4.4.1
 			>=dev-libs/nss-3.9.2 ) )
 	ldap? ( >=net-nds/openldap-2 )
@@ -121,7 +121,13 @@ src_compile() {
 
 	gnome2_src_configure ${G2CONF} ${myconf}
 
-	emake || make || die "make failed"
+	emake -j1 || die "make failed"
+}
+
+src_install() {
+
+	gnome2_src_install scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/
+
 }
 
 pkg_postinst() {

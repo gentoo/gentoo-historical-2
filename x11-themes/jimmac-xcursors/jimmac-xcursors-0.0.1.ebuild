@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/jimmac-xcursors/jimmac-xcursors-0.0.1.ebuild,v 1.1 2005/07/19 18:40:31 gothgirl Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/jimmac-xcursors/jimmac-xcursors-0.0.1.ebuild,v 1.1.1.1 2005/11/30 09:51:33 chriswhite Exp $
 
 MY_P="6550-Jimmac.tar.gz"
 DESCRIPTION="A high quality set of Xfree 4.3.0 animated mouse cursors"
@@ -9,7 +9,7 @@ SRC_URI="http://kde-look.org/content/files/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ppc64 x86"
 IUSE=""
 
 DEPEND=""
@@ -18,9 +18,10 @@ RDEPEND="virtual/x11"
 S=${WORKDIR}/Jimmac
 
 src_install() {
-	X11_IMPLEM_P="$(best_version virtual/x11)"
-	X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
-	X11_IMPLEM="${X11_IMPLEM##*\/}"
+	#X11_IMPLEM_P="$(best_version virtual/x11)"
+	#X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
+	#X11_IMPLEM="${X11_IMPLEM##*\/}"
+	X11_IMPLEM="xorg-x11"
 	einfo "X11 implementation is ${X11_IMPLEM}."
 
 	dodir /usr/share/cursors/${X11_IMPLEM}/Jimmac/cursors/
@@ -38,11 +39,9 @@ pkg_postinst() {
 	einfo "Xcursor.size: 48"
 	einfo ""
 	einfo "To globally use this set of mouse cursors edit the file:"
-	einfo "	  /usr/share/cursors/${X11_IMPLEM}/default/index.theme"
-	einfo "and change the line:"
-	einfo "	  Inherits=[current setting]"
-	einfo "to"
-	einfo "	  Inherits=Jimmac"
+	einfo "	  /etc/env.d/99xcursors"
+	einfo "and change add the line:"
+	einfo "	  XCURSORS_THEME="Jimmac""
 	einfo "Note this will be overruled by a user's ~/.Xdefaults file."
 	einfo ""
 	ewarn "If you experience flickering, try setting the following line in"

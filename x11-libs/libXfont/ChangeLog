@@ -1,6 +1,55 @@
 # ChangeLog for x11-libs/libXfont
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXfont/ChangeLog,v 1.1 2005/08/08 04:28:35 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXfont/ChangeLog,v 1.1.1.1 2005/11/30 09:54:06 chriswhite Exp $
+
+*libXfont-0.99.2 (11 Nov 2005)
+
+  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXfont-0.99.2.ebuild:
+  Bump for 7.0RC2.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXfont-0.99.0.ebuild, -libXfont-0.99.0-r1.ebuild,
+  libXfont-0.99.1.ebuild:
+  Update proto deps to better reflect compile-time requirements.  Also drop old
+  versions.
+
+  25 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXfont-0.99.0.ebuild, libXfont-0.99.0-r1.ebuild, libXfont-0.99.1.ebuild:
+  Added media-libs/freetype dependency for truetype fonts.  Spider, bug #110399.
+
+*libXfont-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXfont-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+*libXfont-0.99.0-r1 (08 Sep 2005)
+
+  08 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXfont-0.99.0-r1.ebuild:
+  Force --enable-type1 on to clear up problems with undefined
+  Type1RegisterFontFileFunctions.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> libXfont-0.99.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXfont-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXfont-0.99.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  libXfont-0.99.0.ebuild:
+  Get rid of font-server USE, it breaks the server build and isn't used
+  correctly.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXfont-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *libXfont-0.99.0 (08 Aug 2005)
 

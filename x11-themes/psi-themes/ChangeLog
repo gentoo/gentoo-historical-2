@@ -1,7 +1,52 @@
-# ChangeLog for x11-themes/xmms-themes
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/psi-themes/ChangeLog,v 1.1 2002/11/03 15:15:28 verwilst Exp $
+# ChangeLog for x11-themes/psi-themes
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/psi-themes/ChangeLog,v 1.1.1.1 2005/11/30 09:51:33 chriswhite Exp $
 
-*psi-themes-0.8.7 (3 Nov 2002) Bart Verwilst <verwilst@gentoo.org> 
+  02 Apr 2005; Jason Wever <weeve@gentoo.org> psi-themes-0.9.1.ebuild:
+  Stable on SPARC.
+
+  21 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  psi-themes-0.9.3_p1-r2.ebuild:
+  Added to ~amd64, bug #80444
+
+*psi-themes-0.9.3_p1-r2 (09 Jan 2005)
+
+  09 Jan 2005; Jason Wever <weeve@gentoo.org> psi-themes-0.9.3_p1-r2.ebuild:
+  Added ~sparc keyword as it went missing in the version bump.
+
+  31 Dec 2004; Gustavo Felisberto <humpback@gentoo.org>; :
+  New version of the package. Most of the work and packaging was done by Przemek
+  Maciag. This is my last contribution this year :) Time to go have some fun.
+
+  19 Jun 2004; <pyrania@gentoo.org> psi-themes-0.9.1.ebuild:
+  Added IUSE.
+
+  11 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  psi-themes-0.8.7.ebuild, psi-themes-0.8.8.ebuild:
+  clean older ebuilds
+
+  28 Mar 2004; Jason Wever <weeve@gentoo.org> psi-themes-0.9.1.ebuild:
+  Added ~sparc keyword.
+
+  03 Mar 2004; Gustavo Felisberto <humpback@gentoo.org>;
+  psi-themes-0.9.1.ebuild:
+  Problems with the original site, changing download location to backup on d.g.o
+
+*psi-themes-0.9.1 (01 Mar 2004)
+
+  01 Mar 2004; Gustavo Felisberto <humpback@gentoo.org>;
+  psi-themes-0.8.7.ebuild, psi-themes-0.8.8.ebuild, psi-themes-0.9.1.ebuild:
+  Adding 0.9.1 for psi 0.9.1 and making older versions of themes DEPEND on psi
+  <= 0.9.0. This closes bugs 37051 and 43352. Thanks to all involved.
+
+*psi-themes-0.8.8 (7 Nov 2003) 
+
+  07 Nov 2003; Stephan <stephan-01@gmx.de> 
+
+  Added new / missing icon themes
+
+*psi-themes-0.8.7 (3 Nov 2002) 
+
+  03 Nov 2002; Bart Verwilst <verwilst@gentoo.org> 
 
   Initial version

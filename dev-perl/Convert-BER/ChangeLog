@@ -1,6 +1,54 @@
 # ChangeLog for dev-perl/Convert-BER
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-BER/ChangeLog,v 1.1 2002/02/01 21:53:12 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-BER/ChangeLog,v 1.1.1.1 2005/11/30 09:52:58 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Convert-BER-1.3101.ebuild:
+  Mark 1.3101 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Convert-BER-1.3101.ebuild:
+  add ~ia64
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Convert-BER-1.31-r2.ebuild, -Convert-BER-1.31-r3.ebuild,
+  Convert-BER-1.3101.ebuild:
+  cleaning
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Convert-BER-1.3101.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> Convert-BER-1.3101.ebuild:
+  Stable on alpha.
+
+  20 Jan 2004; <gustavoz@gentoo.org> Convert-BER-1.3101.ebuild:
+  stable on sparc
+
+*Convert-BER-1.3101 (07 Jun 2003)
+
+  07 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Convert-BER-1.3101.ebuild:
+  CPAN update
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Convert-BER-1.31-r3 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*Convert-BER-1.31-r2 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Convert-BER-1.31-r2.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  Convert-BER-1.31-r2.ebuild files/digest-Convert-BER-r2 :
+
+  Now using eclasses.
 
 *Convert-BER-1.31-r1 (1 Feb 2002)
 

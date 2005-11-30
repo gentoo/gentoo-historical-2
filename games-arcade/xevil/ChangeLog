@@ -1,8 +1,20 @@
-# ChangeLog for app-games/xevil
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/xevil/ChangeLog,v 1.1 2003/09/10 19:29:22 vapier Exp $
+# ChangeLog for games-arcade/xevil
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xevil/ChangeLog,v 1.1.1.1 2005/11/30 09:52:00 chriswhite Exp $
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> xevil-2.02_p2.ebuild:
+  Making games last on inherit line.
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> xevil-2.02_p2.ebuild:
+  Marked ppc stable.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> xevil-2.02_p2.ebuild:
+  Added ~ppc.
 
 *xevil-2.02_p2 (25 Jul 2003)
+
+  29 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added debian patch to fix #34390.
 
   25 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by me.

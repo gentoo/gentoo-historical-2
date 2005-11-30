@@ -1,18 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Tabs+Wrap/Text-Tabs+Wrap-2001.0929.ebuild,v 1.1 2003/11/11 17:28:09 sj7trunks Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Tabs+Wrap/Text-Tabs+Wrap-2001.0929.ebuild,v 1.1.1.1 2005/11/30 09:52:41 chriswhite Exp $
 
 inherit perl-module
 
 MY_P=Text-Tabs+Wrap-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Expand/unexpand tabs per unix expand and line wrapping"
-SRC_URI="http://www.cpan.org/modules/by-module/Text/${MY_P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/M/MU/MUIR/modules/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Text/${MY_P}.readme"
 
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc alpha"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+IUSE=""
 
 src_compile() {
 	perl-module_src_compile

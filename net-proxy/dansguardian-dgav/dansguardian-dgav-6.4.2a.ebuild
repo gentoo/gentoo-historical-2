@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dansguardian-dgav/dansguardian-dgav-6.4.2a.ebuild,v 1.1 2005/08/29 10:36:25 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dansguardian-dgav/dansguardian-dgav-6.4.2a.ebuild,v 1.1.1.1 2005/11/30 09:51:46 chriswhite Exp $
 
 inherit eutils
 
@@ -17,7 +17,7 @@ SRC_URI="http://mirror.dansguardian.org/downloads/2/Stable/${DG_PN}-${DG_PV}.sou
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="~ppc ~sparc ~x86"
 IUSE=""
 DEPEND="!net-proxy/dansguardian
 	virtual/libc
@@ -59,7 +59,7 @@ src_install() {
 	rm -rf ${D}/etc/rc.d
 	sed -i -e 's/rc.d\///' ${D}/etc/dansguardian/logrotation #Fixing location of initscript
 
-	dodoc INSTALL README* LICENSE
+	dodoc README*
 
 	#Create log directory
 	diropts -m0700 -o clamav

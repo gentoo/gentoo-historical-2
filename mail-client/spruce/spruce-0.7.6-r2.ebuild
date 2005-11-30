@@ -1,10 +1,11 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/spruce/spruce-0.7.6-r2.ebuild,v 1.1 2004/05/30 03:00:54 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/spruce/spruce-0.7.6-r2.ebuild,v 1.1.1.1 2005/11/30 09:49:58 chriswhite Exp $
+
+inherit eutils
 
 IUSE="ssl nls gnome crypt"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Gtk email client"
 SRC_URI="ftp://spruce.sourceforge.net/pub/spruce/devel/${P}.tar.gz"
 HOMEPAGE="http://spruce.sourceforge.net/"
@@ -19,11 +20,15 @@ RDEPEND="nls? ( sys-devel/gettext )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc"
+KEYWORDS="x86 sparc ppc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+
+	# gcc-3.4 fix
+	epatch ${FILESDIR}/${PN}-gcc34.patch
+
 	autoconf
 }
 

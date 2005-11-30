@@ -1,6 +1,6 @@
 # ChangeLog for dev-perl/Proc-WaitStat
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Proc-WaitStat/ChangeLog,v 1.1 2005/05/19 09:26:13 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Proc-WaitStat/ChangeLog,v 1.1.1.1 2005/11/30 09:52:43 chriswhite Exp $
 
 *Proc-WaitStat-1.00 (19 May 2005)
 

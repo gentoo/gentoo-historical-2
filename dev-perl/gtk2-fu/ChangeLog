@@ -1,9 +1,84 @@
 # ChangeLog for dev-perl/gtk2-fu
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-fu/ChangeLog,v 1.1 2004/11/26 20:46:35 dams Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk2-fu/ChangeLog,v 1.1.1.1 2005/11/30 09:53:21 chriswhite Exp $
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> gtk2-fu-0.10.ebuild:
+  Mark 0.10 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> gtk2-fu-0.10.ebuild:
+  Mark 0.10 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> gtk2-fu-0.10.ebuild:
+  add ~ia64
+
+  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> gtk2-fu-0.10.ebuild:
+  Stable on sparc
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org> gtk2-fu-0.10.ebuild:
+  stable on amd64
+
+  22 Jun 2005; <dams@gentoo.org> gtk2-fu-0.10.ebuild:
+  added dep on dev-perl/module-build, bug #96720
+
+*gtk2-fu-0.10 (20 Jun 2005)
+
+  20 Jun 2005; <dams@gentoo.org> +gtk2-fu-0.10.ebuild:
+  new version
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> gtk2-fu-0.08.ebuild:
+  Stable on ppc64
+
+*gtk2-fu-0.08 (02 Jun 2005)
+
+  02 Jun 2005; <dams@gentoo.org> +gtk2-fu-0.08.ebuild:
+  new version
+
+  02 Jun 2005; <dams@gentoo.org> gtk2-fu-0.07.ebuild:
+  marked stable on x86 and ppc
+
+*gtk2-fu-0.06 (07 May 2005)
+
+  07 May 2005; <dams@gentoo.org> +gtk2-fu-0.06.ebuild:
+  version bump
+
+  19 Apr 2005; <dams@gentoo.org> gtk2-fu-0.05-r1.ebuild:
+  added dependancy on gtk2-perl
+
+  07 Mar 2005; Markus Rothe <corsair@gentoo.org> gtk2-fu-0.05.ebuild:
+  Stable on ppc64
+
+*gtk2-fu-0.05-r1 (08 Mar 2005)
+
+  08 Mar 2005; <dams@gentoo.org> +gtk2-fu-0.05-r1.ebuild:
+  switching to cpan ebuild
+
+  15 Jan 2005; Markus Rothe <corsair@gentoo.org> gtk2-fu-0.05.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*gtk2-fu-0.05 (09 Jan 2005)
+
+  09 Jan 2005; <dams@gentoo.org> +gtk2-fu-0.05.ebuild:
+  bug correction, minor API change
+
+*gtk2-fu-0.04 (07 Jan 2005)
+
+  07 Jan 2005; <dams@gentoo.org> +gtk2-fu-0.04.ebuild:
+  version 0.04
+
+*gtk2-fu-0.03 (06 Jan 2005)
+
+  06 Jan 2005; <dams@gentoo.org> +gtk2-fu-0.03.ebuild:
+  version 0.03 (MakeMaker)
+  corrected 2005 headers
+
+*gtk2-fu-0.02 (30 Nov 2004)
+
+  30 Nov 2004; <dams@gentoo.org> +gtk2-fu-0.02.ebuild:
+  version 0.02
 
 *gtk2-fu-0.01 (26 Nov 2004)
 
   26 Nov 2004; <dams@gentoo.org> +metadata.xml, +gtk2-fu-0.01.ebuild:
   first pre-release, needed for profuse
+
 

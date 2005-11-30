@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/xmltv-0.5.37-r1.ebuild,v 1.1 2005/01/25 14:42:12 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/xmltv-0.5.37-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:34 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/xmltv/${P}.tar.bz2"
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64 ~ppc"
 
 # NOTE: you can customize the xmltv installation by
 #       defining a XMLTV_OPTS variable which contains
@@ -52,8 +52,8 @@ RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Twig-3.10
 	>=dev-perl/DateManip-5.42
 	>=dev-perl/XML-Writer-0.4.6
-	dev-perl/Memoize
-	dev-perl/Storable
+	perl-core/Memoize
+	perl-core/Storable
 	dev-perl/Lingua-EN-Numbers-Ordinate
 	>=dev-perl/Lingua-Preferred-0.2.4
 	>=dev-perl/Term-ProgressBar-2.03
@@ -139,7 +139,7 @@ if [ -z "${XMLTV_OPTS}" ] || has tv_check ${XMLTV_OPTS} ; then
 fi
 
 if [ -z "${XMLTV_OPTS}" ] || has tv_pick_cgi ${XMLTV_OPTS} ; then
-	newdepend dev-perl/CGI
+	newdepend perl-core/CGI
 fi
 
 if [ -z "${XMLTV_OPTS}" ] || has tv_grab_se_swedb ${XMLTV_OPTS} ; then

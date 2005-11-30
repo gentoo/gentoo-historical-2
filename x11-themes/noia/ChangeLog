@@ -1,6 +1,73 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/noia/ChangeLog,v 1.1 2002/11/20 04:40:40 satai Exp $
+# ChangeLog for x11-themes/noia
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/noia/ChangeLog,v 1.1.1.1 2005/11/30 09:51:31 chriswhite Exp $
+
+  04 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> -noia-1.0.ebuild:
+  Removed 1.0 ebuild.
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> noia-1.0-r1.ebuild:
+  Stable on ppc.
+
+  22 Sep 2005; Chris White <chriswhite@gentoo.org> noia-1.0-r1.ebuild:
+  Marked x86 stable.
+
+  18 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> noia-1.0-r1.ebuild:
+  Stable on amd64.
+
+*noia-1.0-r1 (12 Jul 2005)
+
+  12 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> metadata.xml,
+  +noia-1.0-r1.ebuild:
+  Took over maintainership. Added -r1 version not depending on kde, installing
+  on noia theme folder (instead of noia-1.0).
+
+  09 Jul 2005; Jason Wever <weeve@gentoo.org> noia-1.0.ebuild:
+  Added ~sparc keyword.
+
+  10 Jan 2005; Karol Wojtaszek <sekretarz@gentoo.org> noia-1.0.ebuild:
+  Added to ~amd64, bug #71047
+
+  03 Sep 2004; Caleb Tennis <caleb@gentoo.org> -noia-021209.ebuild,
+  -noia-030203.ebuild:
+  Removing old package.masked versions
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> noia-021209.ebuild:
+  Masked noia-021209.ebuild stable for ppc
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> noia-021209.ebuild,
+  noia-030203.ebuild, noia-1.0.ebuild:
+  sync IUSE
+
+  28 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> noia-021209.ebuild,
+  noia-030203.ebuild, noia-1.0.ebuild:
+  clean obsolete comment
+
+*noia-1.0 (11 Nov 2003)
+
+  11 Nov 2003; Troy Dack <tad@gentoo.org> :
+  Version bump to 1.0. Closes Bug #32759.
+
+  01 Sep 2003; Luca Barbato <lu_zero@gentoo.org> :
+  Marked ppc
+
+  09 Feb 2003; Matthew Turk <satai@gentoo.org> :
+  Marked all as stable.
+
+*noia-030203 (03 Feb 03)
+
+  03 Feb 2003; Matthew Turk <satai@gentoo.org> :
+  Version bump.  Will have to remove all these old ebuilds once 1.0 is
+  released, so that we can use standard versioning from then on.
+
+*noia-021209 (10 Dec 02)
+
+  10 Dec 2002; Matthew Turk <satai@gentoo.org> :
+  Fixed versioning.
+
+*noia-120902 (09 Dec 02)
+
+  09 Dec 2002; Matthew Turk <satai@gentoo.org> :
+  Version bump, little behind on this one.
 
 *noia-111902 (19 Nov 02)
 

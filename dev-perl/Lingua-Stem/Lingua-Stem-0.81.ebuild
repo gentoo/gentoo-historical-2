@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lingua-Stem/Lingua-Stem-0.81.ebuild,v 1.1 2004/10/06 23:13:44 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lingua-Stem/Lingua-Stem-0.81.ebuild,v 1.1.1.1 2005/11/30 09:53:15 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://cpan/authors/id/S/SN/SNOWHARE/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~ppc sparc x86"
 IUSE=""
 
 SRC_TEST="do"

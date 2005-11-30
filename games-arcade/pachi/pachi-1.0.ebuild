@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/pachi/pachi-1.0.ebuild,v 1.1 2004/04/05 06:31:23 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/pachi/pachi-1.0.ebuild,v 1.1.1.1 2005/11/30 09:52:02 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="platform game inspired by games like Manic Miner and Jet Set Willy"
 HOMEPAGE="http://dragontech.sourceforge.net/index.php?main=pachi&lang=en"
@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libsdl-1.2
@@ -22,15 +22,14 @@ RDEPEND=">=media-libs/libsdl-1.2
 DEPEND="${RDEPEND}
 	sys-devel/automake"
 
-S="${WORKDIR}/Pachi"
+S=${WORKDIR}/Pachi
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 	epatch "${FILESDIR}/${PV}-autotools.patch"
-	aclocal
-	automake -a
-	autoconf
+	export WANT_AUTOCONF=2.5
+	aclocal && automake -a && autoconf || die "autotools failed"
 }
 
 src_install() {

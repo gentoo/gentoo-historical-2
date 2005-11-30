@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-peopsspu/psemu-peopsspu-1.0.9.ebuild,v 1.1 2004/12/07 06:02:13 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-peopsspu/psemu-peopsspu-1.0.9.ebuild,v 1.1.1.1 2005/11/30 09:50:19 chriswhite Exp $
 
 inherit eutils games
 

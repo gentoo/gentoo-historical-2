@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/cctools-extras/cctools-extras-576.2.ebuild,v 1.1 2005/05/19 20:56:16 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/cctools-extras/cctools-extras-576.2.ebuild,v 1.1.1.1 2005/11/30 09:53:31 chriswhite Exp $
 
 S=${WORKDIR}/cctools-${PV}
 

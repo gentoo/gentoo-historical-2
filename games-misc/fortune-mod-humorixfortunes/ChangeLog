@@ -1,6 +1,14 @@
-# ChangeLog for app-games/fortune-mod-humorixfortunes
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-humorixfortunes/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
+# ChangeLog for games-misc/fortune-mod-humorixfortunes
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-humorixfortunes/ChangeLog,v 1.1.1.1 2005/11/30 09:50:01 chriswhite Exp $
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-humorixfortunes-1.4-r1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-humorixfortunes-1.4-r1.ebuild:
+  Added ~ppc64 (bug #100217)
 
 *fortune-mod-humorixfortunes-1.4-r1 (31 Aug 2003)
 

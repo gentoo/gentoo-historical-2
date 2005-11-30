@@ -1,15 +1,17 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Algorithm-Annotate/Algorithm-Annotate-0.10.ebuild,v 1.1.1.1 2005/11/30 09:53:11 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
+HOMEPAGE="http://search.cpan.org/~clkao/${P}/"
 DESCRIPTION="Algorithm::Annotate - represent a series of changes in annotate form"
-SRC_URI="http://www.cpan.org/modules/by-authors/id/C/CL/CLKAO/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/C/CL/CLKAO/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~alpha ~ppc ~sparc x86"
+KEYWORDS="alpha ~amd64 ia64 ~ppc sparc x86"
+IUSE=""
 SRC_TEST="do"
 
 DEPEND="${DEPEND}

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gtk2-Html2/Gtk2-Html2-0.04.ebuild,v 1.1 2005/01/18 11:12:41 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Gtk2-Html2/Gtk2-Html2-0.04.ebuild,v 1.1.1.1 2005/11/30 09:52:47 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,11 +10,11 @@ HOMEPAGE="http://gtk2-perl.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 ~amd64 ~sparc"
 IUSE=""
 
 DEPEND="${DEPEND}
-	>=x11-libs/gtk+-2*
+	>=x11-libs/gtk+-2
 	>=gnome-extra/libgtkhtml-2.0.0
 	>=dev-perl/glib-perl-1.012
 	>=dev-perl/gtk2-perl-1.012"

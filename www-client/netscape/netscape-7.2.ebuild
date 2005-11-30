@@ -1,11 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/netscape/netscape-7.2.ebuild,v 1.1 2005/02/05 05:03:30 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/netscape/netscape-7.2.ebuild,v 1.1.1.1 2005/11/30 09:52:10 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Netscape 7.x - built with Mozilla(TM)"
 HOMEPAGE="http://channels.netscape.com/ns/browsers/"
 SRC_URI="http://ftp.netscape.com/pub/netscape7/english/${PV}/unix/linux/sea/netscape-i686-pc-linux-gnu-sea.tar.gz"
+
 LICENSE="MPL-1.1 NPL-1.1"
+
 RESTRICT="nomirror"
 SLOT="${PV}"
 KEYWORDS="-* ~x86"
@@ -14,6 +18,7 @@ DEPEND="virtual/x11
 	=dev-libs/glib-1.2*
 	=x11-libs/gtk+-1.2*
 	flash? ( !net-www/netscape-flash )"
+
 S="${WORKDIR}/netscape-installer"
 
 src_unpack() {
@@ -65,5 +70,7 @@ src_install() {
 	dosym /usr/lib/nsbrowser/plugins /opt/${P/-//}/plugins
 	dodir /usr/bin
 	dosym /opt/${P/-//}/netscape /usr/bin/${P}
-	rm -f ${D}/usr/lib/nsbrowser/libnullplugin.so
+	rm -f ${D}/usr/lib/nsbrowser/plugins/libnullplugin.so
+
+	make_desktop_entry "${P}" "Netscape ${PV}" /opt/${P/-//}/icons/mozicon50.xpm "Network"
 }

@@ -1,16 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/planet/planet-20040808.ebuild,v 1.1 2004/08/08 18:36:03 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/planet/planet-20040808.ebuild,v 1.1.1.1 2005/11/30 09:52:11 chriswhite Exp $
 
 DESCRIPTION="App to create sites like http://planet.kde.org/"
 HOMEPAGE="http://planetplanet.org/"
 SRC_URI="http://dev.gentoo.org/~stuart/planet/${P}.tar.bz2"
 LICENSE="PSF-2.2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc ~ppc-macos"
 IUSE=""
 SLOT=0
-DEPEND="$DEPEND"
-#RDEPEND=""
+DEPEND=""
 
 S=${WORKDIR}/${PN}-nightly
 

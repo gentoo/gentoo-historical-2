@@ -1,6 +1,37 @@
 # ChangeLog for dev-perl/Net-CIDR-Lite
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-CIDR-Lite/ChangeLog,v 1.1 2004/09/22 23:12:04 mcummings Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-CIDR-Lite/ChangeLog,v 1.1.1.1 2005/11/30 09:53:05 chriswhite Exp $
+
+*Net-CIDR-Lite-0.18 (19 Nov 2005)
+
+  19 Nov 2005; <mcumming@gentoo.org> +Net-CIDR-Lite-0.18.ebuild:
+  Version bump
+
+  12 Nov 2005; Brent Baude <ranger@gentoo.org> Net-CIDR-Lite-0.15.ebuild:
+  Marking Net-CIDR-Lite-0.15 ~ppc64 for bug# 112220
+
+  12 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  Net-CIDR-Lite-0.15.ebuild:
+  marked ~alpha as per bug #112220
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Net-CIDR-Lite-0.15.ebuild:
+  Stable on ppc.
+
+  15 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Net-CIDR-Lite-0.15.ebuild:
+  Stable on sparc
+
+  18 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Net-CIDR-Lite-0.15.ebuild:
+  Marking stable x86
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Net-CIDR-Lite-0.15.ebuild:
+  Keyworded ~sparc
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> Net-CIDR-Lite-0.15.ebuild:
+  Added to ~ppc.
 
 *Net-CIDR-Lite-0.15 (22 Sep 2004)
 

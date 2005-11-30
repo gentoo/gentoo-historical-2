@@ -1,7 +1,64 @@
 # ChangeLog for x11-libs/gtkDPS
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkDPS/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkDPS/ChangeLog,v 1.1.1.1 2005/11/30 09:54:09 chriswhite Exp $
 
+  14 Apr 2005; Luca Barbato <lu_zero@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Workaround for nls
+
+  13 Mar 2005; Jason Wever <weeve@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Stable on sparc.
+
+  18 Feb 2005; Aron Griffis <agriffis@gentoo.org> gtkDPS-0.3.4.ebuild:
+  stable on x86 amd64 ia64 for autotrace
+
+  02 Nov 2004; Daniel Black <dragonheart@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Make DEPENDs RDEPENDS as well
+
+  01 Nov 2004; Donnie Berkholz <spyderous@gentoo.org>;
+  gtkDPS-0.3.3-r1.ebuild, gtkDPS-0.3.4.ebuild:
+  Actually, just allow virtual/x11 -- going to pull app-text/dgs from the tree.
+
+  01 Nov 2004; Donnie Berkholz <spyderous@gentoo.org>;
+  gtkDPS-0.3.3-r1.ebuild, gtkDPS-0.3.4.ebuild:
+  Change app-text/dgs dependency to that or virtual/x11, which provides the
+  same stuff.
+
+  29 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Stable on ppc to support autotrace.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> gtkDPS-0.3.3-r1.ebuild,
+  gtkDPS-0.3.4.ebuild:
+  glibc -> libc
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org> gtkDPS-0.3.3-r1.ebuild,
+  gtkDPS-0.3.4.ebuild:
+  QA - fix use invocation, run gnuconfig_update everywhere instead of select
+  arches
+
+  18 May 2004; Danny van Dyk <kugelfang@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Marked ~amd64. Added gnuconfig_update for amd64 as well.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> gtkDPS-0.3.3-r1.ebuild,
+  gtkDPS-0.3.4.ebuild:
+  Removed S=
+
+  21 Mar 2004; David Holm <dholm@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Added to ~ppc.
+
+  03 Dec 2003; Aron Griffis <agriffis@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Stable on alpha to support lilypond-1.8.2
+
+  16 Sep 2003; Aron Griffis <agriffis@gentoo.org> gtkDPS-0.3.4.ebuild:
+  Add ~alpha
+
+*gtkDPS-0.3.4 (28 Jul 2003)
+
+  28 Jul 2003; Martin Holzer <mholzer@gentoo.org> gtkDPS-0.3.3-r1.ebuild,
+  gtkDPS-0.3.4.ebuild:
+  Version bumped & Hp update.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *gtkDPS-0.3.3-r1 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

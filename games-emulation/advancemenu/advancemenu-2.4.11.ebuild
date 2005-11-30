@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/advancemenu/advancemenu-2.4.11.ebuild,v 1.1 2005/10/17 01:39:48 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/advancemenu/advancemenu-2.4.11.ebuild,v 1.1.1.1 2005/11/30 09:50:23 chriswhite Exp $
 
 inherit eutils games
 

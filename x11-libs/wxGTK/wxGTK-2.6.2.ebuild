@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxGTK/wxGTK-2.6.2.ebuild,v 1.1 2005/10/11 19:09:06 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxGTK/wxGTK-2.6.2.ebuild,v 1.1.1.1 2005/11/30 09:54:12 chriswhite Exp $
 
 inherit wxlib gnuconfig
 
@@ -39,17 +39,13 @@ src_compile() {
 		$(use_with sdl)
 		$(use_enable joystick)"
 
-
-	use X && \
-		configure_build gtk2 unicode "${myconf} --with-gtk=2"
-
-	! use X \
-		configure_build base unicode "--disable-gui"
+	use X && configure_build gtk2 unicode "${myconf} --with-gtk=2"
+	use X || configure_build base unicode "--disable-gui"
 }
 
 src_install() {
 	use X && install_build gtk2
-	! use X install_build base
+	use X || install_build base
 
 	wxlib_src_install
 }

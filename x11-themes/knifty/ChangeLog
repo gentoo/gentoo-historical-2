@@ -1,6 +1,40 @@
-# ChangeLog for kde-base/kdebase
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/knifty/ChangeLog,v 1.1 2003/08/12 02:16:30 caleb Exp $
+# ChangeLog for x11-themes/knifty
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/knifty/ChangeLog,v 1.1.1.1 2005/11/30 09:51:36 chriswhite Exp $
+
+  12 Oct 2004; Carsten Lohrke <carlo@gentoo.org> knifty-0.4.2.ebuild:
+  stable on x86
+
+  05 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> knifty-0.4.2.ebuild:
+  Added amd64 keyword, closing #58987.
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  knifty-0.4.2.ebuild:
+  Masked knifty-0.4.2.ebuild stable for ppc
+
+  03 Aug 2004; Dominik Stadler <centic@gentoo.org> knifty-0.4.1.ebuild:
+  Mark 0.4.1 stable on x86
+
+*knifty-0.4.2 (25 Jul 2004)
+
+  25 Jul 2004; Carsten Lohrke <carlo@gentoo.org> +knifty-0.4.2.ebuild:
+  version bump
+
+  21 Jun 2004; Carsten Lohrke <carlo@gentoo.org> knifty-0.3.2.ebuild,
+  knifty-0.4.1.ebuild:
+  QA: kde-base -> kde, let 0.4.1 depend on KDE 3.2
+
+  23 Apr 2004; David Holm <dholm@gentoo.org> knifty-0.4.1.ebuild:
+  Added to ~ppc.
+
+*knifty-0.4.1 (22 Apr 2004)
+
+  22 Apr 2004; Dominik Stadler <centic@gentoo.org> knifty-0.3.2.ebuild,
+  +knifty-0.4.1.ebuild:
+  Correct IUSE and S= in 0.3.2, add new Version 0.4.1, see Bug 39849.
+
+  25 Nov 2003; Ciaran McCreesh <ciaranm@gentoo.org> knifty-0.3.2.ebuild:
+  Moved to ~sparc, thanks to gust4voz on #gentoo-sparc
 
 *knifty-0.3.2 (11 Aug 03)
 

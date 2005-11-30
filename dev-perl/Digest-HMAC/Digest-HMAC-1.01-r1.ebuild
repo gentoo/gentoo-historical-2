@@ -1,23 +1,22 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Digest-HMAC/Digest-HMAC-1.01-r1.ebuild,v 1.1 2002/10/30 07:20:36 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Digest-HMAC/Digest-HMAC-1.01-r1.ebuild,v 1.1.1.1 2005/11/30 09:52:46 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Keyed Hashing for Message Authentication"
-SRC_URI="http://www.cpan.org/authors/id/GAAS/${P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/doc/GAAS/${P}/README"
+SRC_URI="mirror://cpan/authors/id/GAAS/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
+IUSE=""
+
+SRC_TEST="do"
 
 mydoc="rfc*.txt"
 
-newdepend "dev-perl/Digest-MD5 dev-perl/Digest-SHA1"
-
-src_compile() {
-	perl-module_src_compile
-	make test || die "Tests didn't work out. Aborting!"
-}
+DEPEND="perl-core/digest-base
+	perl-core/Digest-MD5
+	dev-perl/Digest-SHA1"

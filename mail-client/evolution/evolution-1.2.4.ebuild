@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-1.2.4.ebuild,v 1.1 2004/05/30 02:43:48 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/evolution/evolution-1.2.4.ebuild,v 1.1.1.1 2005/11/30 09:49:55 chriswhite Exp $
 
 IUSE="ssl nls mozilla ldap doc spell pda ipv6 kerberos kde crypt"
 
@@ -9,7 +9,6 @@ IUSE="ssl nls mozilla ldap doc spell pda ipv6 kerberos kde crypt"
 inherit eutils flag-o-matic gnome.org libtool virtualx
 
 DB3="db-3.1.17"
-S="${WORKDIR}/${P}"
 DESCRIPTION="A GNOME groupware application, a Microsoft Outlook workalike"
 SRC_URI="ftp://ftp.ximian.com/pub/ximian-evolution/source/${P}.tar.gz
 	http://www.sleepycat.com/update/snapshot/${DB3}.tar.gz"
@@ -26,7 +25,7 @@ RDEPEND="app-text/scrollkeeper
 	=gnome-base/gconf-1.0*
 	>=gnome-extra/gtkhtml-1.1.10
 	>=gnome-base/oaf-0.6.10
-	>=gnome-base/ORBit-0.5.12
+	=gnome-base/orbit-0*
 	<gnome-base/libglade-2.0
 	>=media-libs/gdk-pixbuf-0.18.0
 	>=dev-libs/libxml-1.8.17
@@ -37,7 +36,7 @@ RDEPEND="app-text/scrollkeeper
 	crypt? ( >=app-crypt/gnupg-1.2.2 )
 	doc?	 ( >=app-text/scrollkeeper-0.3.10-r1 )
 	ssl? (
-		mozilla? ( >=net-www/mozilla-0.9.9 )
+		mozilla? ( >=www-client/mozilla-0.9.9 )
 		!mozilla? ( >=dev-libs/openssl-0.9.5 ) )
 	ldap?    ( >=net-nds/openldap-2.0 )
 	pda?     ( =app-pda/gnome-pilot-0.1*
@@ -125,26 +124,26 @@ src_compile() {
 	local myconf=""
 	local MOZILLA="${MOZILLA_FIVE_HOME}"
 
-	if [ -n "`use pda`" ] ; then
+	if use pda ; then
 		myconf="${myconf} --with-pisock=/usr --enable-pilot-conduits=yes"
 	else
 		myconf="${myconf} --enable-pilot-conduits=no"
 	fi
 
-	if [ -n "`use ldap`" ] ; then
+	if use ldap ; then
 		myconf="${myconf} --with-openldap=yes --with-static-ldap=no"
 	else
 		myconf="${myconf} --with-openldap=no"
 	fi
 
-	if [ -n "`use kerberos`" ]; then
+	if use kerberos; then
 		myconf="${myconf} --with-krb5=/usr --with-krb4=/usr"
 	else
 		myconf="${myconf} --with-krb5=no --with-krb4=no"
 	fi
 
 	# Use Mozilla NSS libs if 'mozilla' *and* 'ssl' in USE
-	if [ -n "`use ssl`" -a -n "`use mozilla`" ] ; then
+	if use ssl && use mozilla; then
 		myconf="${myconf} --enable-nss=yes \
 			--with-nspr-includes=${MOZILLA}/include/nspr \
 			--with-nspr-libs=${MOZILLA} \
@@ -156,23 +155,23 @@ src_compile() {
 	fi
 
 	# Else use OpenSSL if 'mozilla' not in USE  ...
-	if [ -n "`use ssl`" -a -z "`use mozilla`" ] ; then
+	if use ssl && ! use mozilla; then
 		myconf="${myconf} --enable-openssl=yes"
 	fi
 
-	if [ -n "`use doc`" ] ; then
+	if use doc ; then
 		myconf="${myconf} --enable-gtk-doc"
 	else
 		myconf="${myconf} --disable-gtk-doc"
 	fi
 
-	if [ -n "`use ipv6`" ] ; then
+	if use ipv6 ; then
 		myconf="${myconf} --enable-ipv6=yes"
 	else
 		myconf="${myconf} --enable-ipv6=no"
 	fi
 
-	if [ -z "`use nls`" ] ; then
+	if ! use nls ; then
 		myconf="${myconf} --disable-nls"
 	fi
 
@@ -192,7 +191,7 @@ src_compile() {
 	export LANG="C"
 
 	#needs to be able to connect to X display to build.
-	Xemake || Xmake || die
+	Xemake -j1 || die
 }
 
 src_install() {
@@ -217,7 +216,7 @@ src_install() {
 		install || die
 
 	# remove kde link if USE="-kde"
-	if [ -z "`use kde`" ]; then
+	if ! use kde; then
 		rm -rf ${D}/usr/share/applnk
 	fi
 
@@ -234,4 +233,3 @@ pkg_postrm() {
 	echo ">>> Updating Scrollkeeper database..."
 	scrollkeeper-update >/dev/null 2>&1
 }
-

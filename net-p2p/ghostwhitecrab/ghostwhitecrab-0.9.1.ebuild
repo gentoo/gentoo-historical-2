@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/ghostwhitecrab/ghostwhitecrab-0.9.1.ebuild,v 1.1 2004/11/25 00:35:10 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/ghostwhitecrab/ghostwhitecrab-0.9.1.ebuild,v 1.1.1.1 2005/11/30 09:51:13 chriswhite Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://www.ghostwhitecrab.com/crab/"
 SRC_URI="http://www.ghostwhitecrab.com/crab/${MY_P}.tar.bz2"
 LICENSE="as-is FDL-1.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 hppa"
 
 DEPEND=">=sys-apps/sed-4
 	sys-libs/zlib
@@ -65,4 +65,10 @@ src_install() {
 	newexe ${FILESDIR}/gwc.init gwc
 	dohtml doc/*.html doc/*.css doc/specs/*.html
 	dodoc doc/specs/*.txt examples/*
+}
+
+pkg_postinst() {
+	einfo "Please set the \"Location\" of your cache in /etc/${PN}/gwc.conf"
+	einfo "and submit your cache to:"
+	einfo "\thttp://dev.gentoo.org/~squinky86/gcache.html"
 }

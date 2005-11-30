@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnstop/dnstop-20031113.ebuild,v 1.1 2004/01/23 22:44:38 blkdeath Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnstop/dnstop-20031113.ebuild,v 1.1.1.1 2005/11/30 09:50:09 chriswhite Exp $
 
 DESCRIPTION="Displays various tables of DNS traffic on your network."
 HOMEPAGE="http://dnstop.measurement-factory.com/"
@@ -8,10 +8,11 @@ SRC_URI="http://dnstop.measurement-factory.com/src/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc ~sparc x86"
+KEYWORDS="x86 ~ppc ~sparc"
 
 IUSE=""
-DEPEND="ncurses libpcap"
+DEPEND="sys-libs/ncurses
+	virtual/libpcap"
 
 S=${WORKDIR}
 

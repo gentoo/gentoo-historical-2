@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/wwwoffle/wwwoffle-2.8e.ebuild,v 1.1 2005/04/22 19:15:12 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/wwwoffle/wwwoffle-2.8e.ebuild,v 1.1.1.1 2005/11/30 09:51:48 chriswhite Exp $
 
 inherit eutils
 
@@ -8,7 +8,7 @@ DESCRIPTION="wwwoffle = WWW Offline Explorer, an adv. caching proxy especially s
 
 SRC_URI="http://www.gedanken.freeserve.co.uk/download-wwwoffle/${P}.tgz"
 HOMEPAGE="http://www.gedanken.demon.co.uk/wwwoffle"
-KEYWORDS="~x86 ~sparc ~ppc ~ppc64 ~amd64"
+KEYWORDS="~amd64 ppc ppc64 sparc x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="ipv6"
@@ -70,7 +70,7 @@ pkg_preinst() {
 
 	# Add a wwwoffle user - required here for binary packages
 	enewgroup wwwoffle
-	enewuser wwwoffle -1 /bin/false /var/spool/wwwoffle wwwoffle
+	enewuser wwwoffle -1 -1 /var/spool/wwwoffle wwwoffle
 
 	# TODO maybe rootjail ${ROOT}
 	source /etc/init.d/functions.sh

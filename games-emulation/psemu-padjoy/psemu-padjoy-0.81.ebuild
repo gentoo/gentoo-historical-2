@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-padjoy/psemu-padjoy-0.81.ebuild,v 1.1 2003/09/09 16:26:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-padjoy/psemu-padjoy-0.81.ebuild,v 1.1.1.1 2005/11/30 09:50:23 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 DESCRIPTION="PSEmu plugin to use joysticks/gamepads in PSX-emulators"
 HOMEPAGE="http://www.ammoq.com/"
@@ -11,6 +11,7 @@ SRC_URI="http://members.chello.at/erich.kitzmueller/ammoq/padJoy${PV//.}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
 DEPEND="=x11-libs/gtk+-1*"
 

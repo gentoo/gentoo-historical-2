@@ -1,6 +1,47 @@
 # ChangeLog for net-misc/asterisk-oh323
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-oh323/ChangeLog,v 1.1 2004/02/18 23:22:06 stkn Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-oh323/ChangeLog,v 1.1.1.1 2005/11/30 09:54:31 chriswhite Exp $
+
+*asterisk-oh323-0.7.3 (20 Sep 2005)
+*asterisk-oh323-0.6.7 (20 Sep 2005)
+
+  20 Sep 2005; Stefan Knoblich <stkn@gentoo.org>
+  -files/asterisk-oh323-0.5.10-Makefile.patch,
+  -files/asterisk-oh323-0.5.10-asterisk-driver-Makefile.patch,
+  -files/asterisk-oh323-0.6.5-Makefile.patch,
+  +files/asterisk-oh323-0.6.7-Makefile.diff,
+  +files/asterisk-oh323-0.7.3-gentoo.diff, -asterisk-oh323-0.5.10.ebuild,
+  -asterisk-oh323-0.6.5.ebuild, +asterisk-oh323-0.6.7.ebuild,
+  +asterisk-oh323-0.7.3.ebuild:
+  Version bump, new versions work with current pwlib and openh323 versions and
+  removed old ebuilds.
+
+*asterisk-oh323-0.6.6 (09 Jul 2005)
+
+  09 Jul 2005; Stefan Knoblich <stkn@gentoo.org>
+  -files/asterisk-oh323-0.5.9-Makefile.patch,
+  -files/asterisk-oh323-0.5.9-asterisk-driver-Makefile.patch,
+  +files/asterisk-oh323-0.6.6-Makefile.patch, -asterisk-oh323-0.5.9.ebuild,
+  +asterisk-oh323-0.6.6.ebuild:
+  Version bump and removed old version.
+
+  10 May 2005; David Holm <dholm@gentoo.org> asterisk-oh323-0.6.5.ebuild:
+  Added to ~ppc.
+
+*asterisk-oh323-0.6.5 (10 Mar 2005)
+
+  10 Mar 2005; Stefan Knoblich <stkn@gentoo.org>
+  +files/asterisk-oh323-0.6.5-Makefile.patch, +asterisk-oh323-0.6.5.ebuild:
+  New version. Using openh323 and pwlib headers in /usr/include from now on.
+  Debug use-flag enables Wraptracing if needed.
+
+*asterisk-oh323-0.5.10 (12 Mar 2004)
+
+  12 Mar 2004; Stefan Knoblich <stkn@gentoo.org> asterisk-oh323-0.5.10.ebuild,
+  asterisk-oh323-0.5.9.ebuild, files/asterisk-oh323-0.5.10-Makefile.patch,
+  files/asterisk-oh323-0.5.10-asterisk-driver-Makefile.patch:
+  version bump and some fixes for the new openh323 release.
+  old blocks now with new openh323 installed (won't compile...)
 
 *asterisk-oh323-0.5.9 (19 Feb 2004)
 

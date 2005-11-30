@@ -1,16 +1,16 @@
 #!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/files/dnsmasq-init,v 1.1 2002/06/29 00:55:03 bangert Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/files/dnsmasq-init,v 1.1.1.1 2005/11/30 09:50:14 chriswhite Exp $
 
 depend() {
+	provide dns
 	need net
 }
 
 start() {
 	ebegin "Starting dnsmasq"
-	start-stop-daemon --start --quiet --exec /usr/sbin/dnsmasq \
-		-- -x /var/run/dnsmasq.pid ${DNSMASQ_OPTS}
+	/usr/sbin/dnsmasq -x /var/run/dnsmasq.pid ${DNSMASQ_OPTS}
 	eend $?
 }
 

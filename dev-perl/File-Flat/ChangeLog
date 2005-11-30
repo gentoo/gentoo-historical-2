@@ -1,6 +1,56 @@
 # ChangeLog for dev-perl/File-Flat
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Flat/ChangeLog,v 1.1 2003/06/04 00:57:53 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Flat/ChangeLog,v 1.1.1.1 2005/11/30 09:52:47 chriswhite Exp $
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> File-Flat-0.94.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> File-Flat-0.95.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> File-Flat-0.94.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> File-Flat-0.95.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> File-Flat-0.8.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> File-Flat-0.94.ebuild,
+  File-Flat-0.95.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*File-Flat-0.95 (25 Apr 2005)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org> -File-Flat-0.91.ebuild,
+  +File-Flat-0.95.ebuild:
+  cleaning
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> File-Flat-0.8.ebuild:
+  Stable on sparc
+
+  16 Mar 2005; Michael Cummings <mcummings@gentoo.org> File-Flat-0.94.ebuild:
+  style cleanup
+
+  14 Mar 2005; Michael Cummings <mcummings@gentoo.org> File-Flat-0.94.ebuild:
+  Missed dep for file-slurp somehow
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*File-Flat-0.94 (16 Oct 2004)
+
+  16 Oct 2004; Michael Cummings <mcummings@gentoo.org> +File-Flat-0.94.ebuild:
+  new version on cpan
+
+*File-Flat-0.91 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org> File-Flat-0.91.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> File-Flat-0.8.ebuild:
+  Stable on alpha.
 
 *File-Flat-0.8 (03 Jun 2003)
 

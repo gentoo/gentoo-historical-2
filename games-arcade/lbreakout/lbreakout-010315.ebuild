@@ -1,26 +1,30 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/lbreakout/lbreakout-010315.ebuild,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/lbreakout/lbreakout-010315.ebuild,v 1.1.1.1 2005/11/30 09:52:07 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit games
+
 DESCRIPTION="Breakout clone written with the SDL library"
-SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
 HOMEPAGE="http://lgames.sourceforge.net"
-KEYWORDS="x86 ppc"
-SLOT="0"
+SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz"
+
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc amd64"
+IUSE=""
 
 DEPEND=">=media-libs/libsdl-1.1.5"
 
 src_compile() {
-	./configure --prefix=/usr --host=${CHOST} || die
-	make || die
+	egamesconf --datadir="${GAMES_DATADIR_BASE}" || die
+	emake || die "emake failed"
 }
 
 src_install() {
+	# makefile fails to create this directory
 	dodir /var/lib/games
-	make DESTDIR=${D} install || die
-	dodoc AUTHORS COPYING README TODO ChangeLog
-	insinto /usr/share/doc/lbreakout/html
-	doins lbreakout/manual/*
+	make DESTDIR="${D}" install || die "make install failed"
+	dodoc AUTHORS README ChangeLog
+	dohtml lbreakout/manual/*
+	prepgamesdirs
 }

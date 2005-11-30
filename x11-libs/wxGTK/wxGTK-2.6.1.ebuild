@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxGTK/wxGTK-2.6.1.ebuild,v 1.1 2005/07/12 18:39:03 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxGTK/wxGTK-2.6.1.ebuild,v 1.1.1.1 2005/11/30 09:54:12 chriswhite Exp $
 
 inherit wxlib gnuconfig
 
@@ -8,20 +8,19 @@ DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit and
 wxbase non-gui library"
 
 SLOT="2.6"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~amd64 ~ia64 ~hppa ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="gnome gtk2 joystick odbc opengl sdl wxgtk1"
-
 RDEPEND="${RDEPEND}
 	opengl? ( virtual/opengl )
 	gtk2? ( >=x11-libs/gtk+-2.0
 		>=dev-libs/glib-2.0 )
 	wxgtk1? ( =x11-libs/gtk+-1.2*
 		=dev-libs/glib-1.2* )
-	wxgtk1? ( gtk2? (media-libs/libpng
+	wxgtk1? ( gtk2? ( media-libs/libpng
 		media-libs/jpeg
-		media-libs/tiff))
+		media-libs/tiff ) )
 	odbc? ( dev-db/unixODBC )
-	!mips? ( !arm? ( !hppa? ( !ia64? ( !ppc64? ( !alpha? ( !sparc? ( sdl? ( media-libs/sdl-sound ))))))))"
+	!mips? ( !arm? ( !hppa? ( !ia64? ( !ppc64? ( !alpha? ( !sparc? ( sdl? ( media-libs/sdl-sound ) ) ) ) ) ) ) )"
 
 DEPEND="${RDEPEND}
 	${DEPEND}

@@ -1,19 +1,20 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-Pg/DBD-Pg-1.41.ebuild,v 1.1 2005/04/17 13:59:46 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-Pg/DBD-Pg-1.41.ebuild,v 1.1.1.1 2005/11/30 09:52:51 chriswhite Exp $
 
 inherit perl-module eutils
 
 DESCRIPTION="The Perl DBD::Pg Module"
-SRC_URI="mirror://cpan/authors/id/D/DB/DBDPG/${P}.tar.gz"
 HOMEPAGE="http://cpan.org/modules/by-module/DBD/${P}.readme"
-IUSE=""
-SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~hppa ~ppc64"
+SRC_URI="mirror://cpan/authors/id/D/DB/DBDPG/${P}.tar.gz"
 
-DEPEND="dev-perl/Test-Simple
-	>=dev-perl/Test-Harness-2.03
+LICENSE="|| ( Artistic GPL-2 )"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE=""
+
+DEPEND="perl-core/Test-Simple
+	>=perl-core/Test-Harness-2.03
 	>=dev-perl/DBI-1.35
 	>=dev-db/postgresql-7.3"
 

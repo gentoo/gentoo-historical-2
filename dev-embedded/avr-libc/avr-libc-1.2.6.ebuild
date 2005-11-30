@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/avr-libc/avr-libc-1.2.6.ebuild,v 1.1 2005/11/13 04:08:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/avr-libc/avr-libc-1.2.6.ebuild,v 1.1.1.1 2005/11/30 09:53:28 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
 DESCRIPTION="Libc for the AVR microcontroller architecture"
 HOMEPAGE="http://www.nongnu.org/avr-libc/"
 SRC_URI="http://savannah.nongnu.org/download/avr-libc/${P}.tar.bz2
-		http://savannah.nongnu.org/download/avr-libc/${PN}-manpages-${PV}.tar.bz2
+		mirror://gentoo/${PN}-manpages-${PV}.tar.bz2
 		doc? ( http://savannah.nongnu.org/download/avr-libc/${PN}-user-manual-${PV}.tar.bz2 )"
 
 LICENSE="GPL-2"
@@ -53,7 +53,7 @@ src_install() {
 	# as they would then overwrite libc man pages
 	dosed "s:\$(VERSION):${PVR}:" /usr/bin/avr-man
 	insinto /usr/share/doc/${PF}/man/man3
-	doins "${WORKDIR}"/man3/*
+	doins "${WORKDIR}"/man/man3/*
 	prepman /usr/share/doc/${PF}
 
 	use doc	&& dohtml "${WORKDIR}"/${PN}-user-manual-${PV}/*

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-SPF-Query/Mail-SPF-Query-1.997.ebuild,v 1.1 2004/09/22 23:39:38 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-SPF-Query/Mail-SPF-Query-1.997.ebuild,v 1.1.1.1 2005/11/30 09:52:35 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://search.cpan.org/~freeside/${P}/"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86"
+KEYWORDS="~alpha ppc ~ppc64 sparc x86"
 IUSE=""
 
 DEPEND=">=dev-perl/Net-DNS-0.46
@@ -18,4 +18,4 @@ DEPEND=">=dev-perl/Net-DNS-0.46
 		dev-perl/Sys-Hostname-Long
 		dev-perl/URI"
 
-mydoc="TODO README"
+mydoc="TODO README sample/*"

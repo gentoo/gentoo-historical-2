@@ -1,19 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-OpenSSL-RSA/Crypt-OpenSSL-RSA-0.19.ebuild,v 1.1 2003/06/07 11:46:06 mcummings Exp $
-
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-OpenSSL-RSA/Crypt-OpenSSL-RSA-0.19.ebuild,v 1.1.1.1 2005/11/30 09:52:56 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Crypt::OpenSSL::RSA module for perl"
-SRC_URI="http://cpan.pair.com/authors/id/I/IR/IROBERTS/${P}.tar.gz"
-HOMEPAGE="http://cpan.pair.com/author/IROBERTS/Crypt-OpenSSL-RSA-${PV}/"
-LICENSE="Artistic | GPL-2"
-DEPEND="virtual/glibc 
-	dev-perl/Crypt-OpenSSL-Random 
-	dev-libs/openssl"
-KEYWORDS="x86 ~alpha ~sparc ~ppc"
+HOMEPAGE="http://search.cpan.org/~iroberts/${P}/"
+SRC_URI="mirror://cpan/authors/id/I/IR/IROBERTS/${P}.tar.gz"
+
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
+KEYWORDS="x86 ppc sparc alpha hppa amd64 ~mips"
+IUSE=""
+
+DEPEND="virtual/libc
+	dev-perl/Crypt-OpenSSL-Random
+	dev-libs/openssl"
 
 mydoc="rfc*.txt"

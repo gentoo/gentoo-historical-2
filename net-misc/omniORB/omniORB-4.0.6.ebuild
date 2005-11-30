@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/omniORB/omniORB-4.0.6.ebuild,v 1.1 2005/04/20 15:31:28 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/omniORB/omniORB-4.0.6.ebuild,v 1.1.1.1 2005/11/30 09:54:37 chriswhite Exp $
 
 inherit python
 

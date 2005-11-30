@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-mysql/qmail-mysql-1.03-r13.ebuild,v 1.1 2004/05/30 10:52:14 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-mysql/qmail-mysql-1.03-r13.ebuild,v 1.1.1.1 2005/11/30 09:50:42 chriswhite Exp $
 
 inherit eutils fixheadtails
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://qmail/qmail-1.03.tar.gz
 	http://www.suspectclass.com/~sgifford/qmail/qmail-0.0.0.0.patch
 	http://david.acz.org/software/sendmail-flagf.patch
 	mirror://qmail/qmail-1.03-qmtpc.patch
-	http://qmail.goof.com/qmail-smtpd-relay-reject
+	mirror://qmail/qmail-smtpd-relay-reject
 	mirror://gentoo/qmail-local-tabs.patch
 	http://www.shupp.org/patches/qmail-maildir++.patch
 	ftp://ftp.pipeline.com.au/pipeint/sources/linux/WebMail/qmail-date-localtime.patch.txt
@@ -33,22 +33,22 @@ SRC_URI="mirror://qmail/qmail-1.03.tar.gz
 	"
 # broken stuffs
 #http://www.qcc.ca/~charlesc/software/misc/nullenvsender-recipcount.patch
-#http://www.dataloss.nl/software/patches/qmail-pop3d-stat.patch 
+#http://www.dataloss.nl/software/patches/qmail-pop3d-stat.patch
 
 SLOT="0"
 LICENSE="as-is"
 KEYWORDS="x86 ppc sparc alpha ~hppa ~mips"
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-apps/groff
 	ssl? ( >=dev-libs/openssl-0.9.6g )
 	>=net-mail/queue-fix-1.4-r1"
 
 RDEPEND="!virtual/mta
-	virtual/glibc
+	virtual/libc
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-apps/daemontools-0.76-r1
+	>=sys-process/daemontools-0.76-r1
 	>=net-mail/checkpassword-0.90
-	>=net-mail/cmd5checkpw-0.22
+	~net-mail/cmd5checkpw-0.22
 	>=net-mail/dot-forward-0.71
 	>=net-mail/queue-fix-1.4-r1"
 
@@ -358,7 +358,7 @@ pkg_postinst() {
 	env-update
 
 	einfo "To setup qmail to run out-of-the-box on your system, run:"
-	einfo "ebuild /var/db/pkg/${CATEGORY}/${PN}-${PV}-${PR}/${PN}-${PV}-${PR}.ebuild config"
+	einfo "emerge --config =${PF}"
 	echo
 	einfo "To start qmail at boot you have to add svscan to your startup"
 	einfo "and create the following links:"
@@ -418,4 +418,3 @@ pkg_config() {
 		einfo "cat signed_req.pem >> /var/qmail/control/servercert.pem"
 	fi
 }
-

@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/xmltv-0.5.34.ebuild,v 1.1 2004/05/24 23:12:45 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/xmltv-0.5.34.ebuild,v 1.1.1.1 2005/11/30 09:50:33 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="Set of utilities to manage TV listings stored in the XMLTV format."
 HOMEPAGE="http://membled.com/work/apps/xmltv/"
 SRC_URI="mirror://sourceforge/xmltv/${P}.tar.bz2"
-
+IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64 ~ppc"
 
 # NOTE: you can customize the xmltv installation by
 #       defining a XMLTV_OPTS variable which contains
@@ -49,8 +49,8 @@ RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Twig-3.10
 	>=dev-perl/DateManip-5.42
 	>=dev-perl/XML-Writer-0.4.6
-	dev-perl/Memoize
-	dev-perl/Storable
+	perl-core/Memoize
+	perl-core/Storable
 	dev-perl/Lingua-EN-Numbers-Ordinate
 	>=dev-perl/Lingua-Preferred-0.2.4
 	>=dev-perl/Term-ProgressBar-2.03
@@ -63,41 +63,41 @@ DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_uk_rt ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} >=dev-perl/HTML-Parser-3.34"
+	&& newdepend \>=dev-perl/HTML-Parser-3.34
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_na_dd ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/SOAP-Lite dev-perl/TermReadKey"
+	&& newdepend dev-perl/SOAP-Lite dev-perl/TermReadKey
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_na_icons ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-TableExtract >=dev-perl/WWW-Mechanize-1.02"
+	&& newdepend dev-perl/HTML-TableExtract \>=dev-perl/WWW-Mechanize-1.02
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_fi ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_es ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_es_digital ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_nl ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_nl_wolf ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_huro ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_dk ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_jp ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree dev-perl/Text-Kakasi"
+	&& newdepend dev-perl/HTML-Tree dev-perl/Text-Kakasi
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_de_tvtoday ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} >=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree"
+	&& newdepend \>=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_se ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/XML-LibXML"
+	&& newdepend dev-perl/XML-LibXML
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_fr ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} >=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree"
+	&& newdepend \>=dev-perl/HTML-Parser-3.34 dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_no ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} >=dev-perl/HTML-Parser-3.34 dev-perl/HTML-TableExtract dev-perl/HTML-LinkExtractor"
+	&& newdepend \>=dev-perl/HTML-Parser-3.34 dev-perl/HTML-TableExtract dev-perl/HTML-LinkExtractor
 [ -z "${XMLTV_OPTS}" ] || has tv_grab_pt ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/HTML-Tree"
+	&& newdepend dev-perl/HTML-Tree
 [ -z "${XMLTV_OPTS}" ] || has tv_check ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/perl-tk dev-perl/Tk-TableMatrix"
+	&& newdepend dev-perl/perl-tk dev-perl/Tk-TableMatrix
 [ -z "${XMLTV_OPTS}" ] || has tv_pick_cgi ${XMLTV_OPTS} \
-	&& DEPEND="${DEPEND} dev-perl/CGI"
+	&& newdepend perl-core/CGI
 
 make_config() {
 	if [ -z "${XMLTV_OPTS}" ] ; then

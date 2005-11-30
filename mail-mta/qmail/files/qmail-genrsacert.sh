@@ -1,24 +1,18 @@
 #!/bin/bash
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail/files/qmail-genrsacert.sh,v 1.1 2004/05/30 10:50:13 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail/files/qmail-genrsacert.sh,v 1.1.1.1 2005/11/30 09:50:54 chriswhite Exp $
 # Robin H. Johnson <robbat2@gentoo.org> - October 17, 2003
-# This file generates the static temporary RSA keys needed for qmail to encrypt messages
-# It should be run from a crontab, once a day is ok on low load machines, but
-# if you do lots of mail, once per hour is more reasonable
-# if you do NOT create the rsa512.pem, qmail will generate it on the fly for
-# each connection, which can be VERY slow.
+#
+# This file generates the static temporary RSA keys needed for qmail to encrypt
+# messages. It should be run from a crontab, once a day is ok on low load
+# machines, but if you do lots of mail, once per hour is more reasonable if you
+# do NOT create the rsa512.pem, qmail will generate it on the fly for each
+# connection, which can be VERY slow.
 
 if [ -z "${ROOT}" -o "${ROOT}" = "/" ]; then
-confdir=/var/qmail/control
+	confdir=/var/qmail/control
 else
-confdir=${ROOT}/var/qmail/control
+	confdir=${ROOT}/var/qmail/control
 fi
-pemfile="${confdir}/rsa512.pem"
-tmpfile="${confdir}/rsa512.pem.tmp"
-
-# this is the number of bits in the key
-# it should be a power of 2 ideally
-# and it must be more than 64!
-bits="512"
 
 # the key should be 0600
 # which is readable by qmaild only!
@@ -26,8 +20,26 @@ umaskvalue="0077"
 uid="qmaild"
 gid="qmail"
 
-umask ${umaskvalue} ; 
-# we need to make sure that all of the operations succeed
-/usr/bin/openssl genrsa -out ${tmpfile} ${bits} 2>/dev/null && \
-/bin/chown ${uid}:${gid} ${tmpfile} && \
-/bin/mv -f ${tmpfile} ${pemfile}
+umask ${umaskvalue}
+
+# This is a list with bits of the generated keys. They should
+# be a power of 2 ideally and must be more than 64.
+keys="512 1024"
+
+for bits in ${keys}
+do
+	pemfile="${confdir}/rsa${bits}.pem"
+	tmpfile="${confdir}/rsa${bits}.pem.tmp"
+
+	# we need to make sure that all of the operations succeed
+	/usr/bin/openssl genrsa -out ${tmpfile} ${bits} 2>/dev/null && \
+	/bin/chown ${uid}:${gid} ${tmpfile} && \
+	/bin/mv -f ${tmpfile} ${pemfile} || exit 1
+
+	dhfile="${confdir}/dh${bits}.pem"
+	dtmpfile="${confdir}/dh${bits}.pem.tmp"
+
+	/usr/bin/openssl dhparam -2 -out ${dtmpfile} ${bits} 2>/dev/null && \
+	/bin/chown ${uid}:${gid} ${dtmpfile} && \
+	/bin/mv -f ${dtmpfile} ${dhfile} || exit 1
+done

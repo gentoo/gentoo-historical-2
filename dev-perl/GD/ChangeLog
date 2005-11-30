@@ -1,6 +1,138 @@
 # ChangeLog for dev-perl/GD
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/GD/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/GD/ChangeLog,v 1.1.1.1 2005/11/30 09:52:36 chriswhite Exp $
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> GD-2.23.ebuild:
+  Mark 2.23 stable on alpha
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> GD-2.23.ebuild:
+  Stable on ppc64
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> GD-2.23.ebuild:
+  stable on ia64
+
+  21 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org> GD-2.23.ebuild:
+  Stable on hppa.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> GD-2.23.ebuild:
+  Stable on ppc.
+
+  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> GD-2.23.ebuild:
+  Stable on sparc
+
+  12 Aug 2005; Michael Cummings <mcummings@gentoo.org> GD-2.23.ebuild:
+  Marking stable x86
+
+  05 Jun 2005; Michael Cummings <mcummings@gentoo.org> :
+  Updating digests under reports of bad/missing digests from solar
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> GD-2.19.ebuild:
+  Stable on ppc64
+
+*GD-2.23 (25 Apr 2005)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org> GD-2.18.ebuild,
+  GD-2.19.ebuild, +GD-2.23.ebuild:
+  cleaning
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> GD-2.19.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*GD-2.19 (06 Feb 2005)
+
+  06 Feb 2005; Mike Frysinger <vapier@gentoo.org> +GD-2.19.ebuild:
+  Version bump.
+
+*GD-2.18 (14 Nov 2004)
+
+  14 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  -files/2.12-gif-support.patch, -files/2.12-makefile-opts.patch,
+  -GD-2.12.ebuild, GD-2.16.ebuild, +GD-2.18.ebuild:
+  Version bump.
+
+*GD-2.16 (31 Oct 2004)
+
+  31 Oct 2004; Mike Frysinger <vapier@gentoo.org> GD-1.41.ebuild,
+  +GD-2.16.ebuild:
+  Version bump.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> GD-2.07.ebuild:
+  Stable on amd64.
+
+*GD-2.12 (09 May 2004)
+
+  09 May 2004; Eric Sammer <esammer@gentoo.org> +files/2.12-gif-support.patch,
+  +files/2.12-makefile-opts.patch, +GD-2.12.ebuild:
+  Revision bump. Fixed makefile patch for new version. Closes bug #50303.
+
+  25 Mar 2004; Joshua Kinard <kumba@gentoo.org> GD-2.07.ebuild:
+  Added ~mips to KEYWORDS.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> GD-2.07.ebuild:
+  Stable on sparc, thanks to Josh Grebe <josh@brokedown.net> for testing!
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> GD-1.41.ebuild,
+  GD-2.07.ebuild:
+  stable on alpha and ia64
+
+*GD-2.07 (26 Jun 2003)
+
+  26 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*GD-2.06 (23 Feb 2003)
+
+  25 Mar 2003; Seemant Kulleen <seemant@gentoo.org> GD-2.06.ebuild:
+  freetype USE to truetype USE, which ACTUALLY EXISTS, Sheesh
+
+  10 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added optional xpm/gif support (gif patch is from dragon@gentoo.org).
+
+  23 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to support libgd-2.x and to fix #15913.
+
+*GD-2.01 (8 Sep 2002)
+  
+  8 Sep 2002; <mcummings@gentoo.org> GD-2.01.ebuild :
+  Updated version corrects some GD related problems, depends on new GD; thanks
+  to Nicholas Wourms for doing the legwork on this one
+
+*GD-1.41 (26 Jun 2003)
+
+  26 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump + rework optional jpeg/xpm/truetype/gif.
+
+*GD-1.32-r3 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*GD-1.32-r2 (18 Sep 2002)
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+  24 Oct 2002; <mcummings@gentoo.org> : Fixed JPEG dep check - there
+  was no correction clause for jpeg if use jpeg was no. Thanks to
+  Lasse Mikkelsen who pointed this out months ago in bug 7136
+
+  21 Sep 2002; <mcummings@gentoo.org> : Fixed X dep check - there
+  was no correction clause for xpm if use X was no. Thanks ska-fan!
+
+  18 Sep 2002; <mcummings@gentoo.org> : Version bump because
+  although GD installed without error, it wasn't calling the perl module
+  eclass correctly and was misinstalling.
+  
+*GD-1.32-r1 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> GD-1.32-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> GD-1.32-r1.ebuild
+  files/digest-GD-1.32-r1 :
+
+  Changed to eclass
 
 *GD-1.32 (1 Feb 2002)
 

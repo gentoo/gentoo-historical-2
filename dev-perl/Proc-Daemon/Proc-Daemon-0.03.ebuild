@@ -1,11 +1,14 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Proc-Daemon/Proc-Daemon-0.03.ebuild,v 1.1.1.1 2005/11/30 09:52:54 chriswhite Exp $
+
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Perl Proc-Daemon -  Run Perl program as a daemon process"
-SRC_URI="http://www.cpan.org/modules/by-module/Proc/${P}.tar.gz"
-HOMEPAGE="http://www.cpan.org/"
+HOMEPAGE="http://search.cpan.org/~ehood/${P}"
+SRC_URI="mirror://cpan/authors/id/E/EH/EHOOD/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86"
-
+SLOT="0"
+KEYWORDS="~amd64 x86 sparc ppc ~ppc64"
+IUSE=""

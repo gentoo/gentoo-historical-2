@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/linuxtv-dvb-apps/linuxtv-dvb-apps-1.1.0_p20050702-r1.ebuild,v 1.1 2005/11/20 14:21:57 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/linuxtv-dvb-apps/linuxtv-dvb-apps-1.1.0_p20050702-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:35 chriswhite Exp $
 
 
 inherit eutils

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-prefpane/portage-prefpane-0.3.ebuild,v 1.1 2004/12/08 17:28:18 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-prefpane/portage-prefpane-0.3.ebuild,v 1.1.1.1 2005/11/30 09:51:54 chriswhite Exp $
 
 inherit eutils
 
@@ -23,3 +23,4 @@ src_install() {
 	mkdir -p "${D}/Library/PreferencePanes"
 	cp -R Portage.prefPane "${D}/Library/PreferencePanes/"
 }
+

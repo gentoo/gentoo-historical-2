@@ -1,6 +1,39 @@
 # ChangeLog for x11-libs/libXfixes
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXfixes/ChangeLog,v 1.1 2005/08/08 04:28:06 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXfixes/ChangeLog,v 1.1.1.1 2005/11/30 09:54:13 chriswhite Exp $
+
+*libXfixes-3.0.1 (11 Nov 2005)
+
+  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXfixes-3.0.1.ebuild:
+  Bump for 7.0RC2.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXfixes-3.0.0.ebuild:
+  Fix libX11 depend.
+
+  30 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libXfixes-3.0.0.ebuild:
+  Move some proto deps to reflect compile-time requirements.
+
+  24 Oct 2005; D.m.D. Ljungmark <spider@gentoo.org> libXfixes-3.0.0.ebuild:
+  Tweaked dependencies to match the headerfiles, making sure they are 
+  RDEPEND.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  04 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> libXfixes-3.0.0.ebuild:
+  Added ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXfixes-3.0.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXfixes-3.0.0.ebuild:
+  Marked ~amd64.
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXfixes-3.0.0.ebuild:
+  Add ~sparc keyword (X modular testing).
 
 *libXfixes-3.0.0 (08 Aug 2005)
 

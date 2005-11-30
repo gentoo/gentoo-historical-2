@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDDB/CDDB-1.16.ebuild,v 1.1 2005/11/09 13:51:09 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDDB/CDDB-1.16.ebuild,v 1.1.1.1 2005/11/30 09:52:51 chriswhite Exp $
 
 inherit perl-module
 

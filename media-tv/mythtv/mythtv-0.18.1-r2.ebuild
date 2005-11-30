@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.18.1-r2.ebuild,v 1.1 2005/05/30 07:43:09 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.18.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:50:32 chriswhite Exp $
 
 inherit flag-o-matic eutils debug
 
@@ -10,13 +10,13 @@ SRC_URI="http://www.mythtv.org/mc/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE="alsa altivec arts debug dvb frontendonly ieee1394 jack joystick lcd lirc mmx nvidia oggvorbis opengl oss unichrome xv"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="alsa altivec arts debug dvb frontendonly ieee1394 jack joystick lcd lirc mmx nvidia vorbis opengl oss unichrome"
 
 DEPEND=">=media-libs/freetype-2.0
 	>=media-sound/lame-3.93.1
 	virtual/x11
-	>=x11-libs/qt-3.1.1
+	=x11-libs/qt-3*
 	dev-db/mysql
 	alsa? ( >=media-libs/alsa-lib-0.9 )
 	arts? ( kde-base/arts )
@@ -25,9 +25,10 @@ DEPEND=">=media-libs/freetype-2.0
 	lcd? ( app-misc/lcdproc )
 	lirc? ( app-misc/lirc )
 	nvidia? ( media-video/nvidia-glx )
-	oggvorbis? ( media-libs/libvorbis )
+	vorbis? ( media-libs/libvorbis )
 	opengl? ( virtual/opengl )
 	ieee1394? (	>=sys-libs/libraw1394-1.2.0
+			sys-libs/libavc1394
 			>=media-libs/libiec61883-1.0.0 )
 	|| ( >=net-misc/wget-1.9.1 >=media-tv/xmltv-0.5.34 )
 	!x11-base/xfree
@@ -39,6 +40,12 @@ pkg_setup() {
 		eerror "Qt is missing MySQL support. Please add"
 		eerror "'mysql' to your USE flags, and re-emerge Qt."
 		die "Qt needs MySQL support"
+	fi
+
+	if ! built_with_use x11-base/xorg-x11 xv; then
+		eerror "xorg-x11 is missing XV support. Please add"
+		eerror "'xv' to your USE flags, and re-emerge xorg-x11."
+		die "xorg-x11 needs XV support"
 	fi
 
 	if use nvidia; then
@@ -62,6 +69,21 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${P}-opengl-fix.patch
 
+	# Add support for --arch options, bug 94696
+	epatch ${FILESDIR}/${P}-cputypes-configure.patch
+
+	# Turn on CC on Mute patch
+#	cd ${S}/libs/libmythtv
+#	epatch ${FILESDIR}/${P}-cc-on-mute.patch
+
+	if [ $(get_libdir) != "lib" ] ; then
+		sed -i -e "s:\$\${PREFIX}/lib/:\$\${PREFIX}/$(get_libdir)/:g" \
+			-e "s:\$\${PREFIX}/lib$:\$\${PREFIX}/$(get_libdir):g" \
+			${S}/{filters,libs}/*/*.pro || die
+		sed -i -e "s:/lib/mythtv/:/$(get_libdir)/mythtv/:" \
+			${S}/libs/libmyth/mythcontext.cpp || die
+	fi
+
 #	# Fix bugs 40964 and 42943.
 #	filter-flags -fforce-addr -fPIC -momit-leaf-frame-pointer
 #	is-flag "-fomit-frame-pointer" || append-flags "-fomit-frame-pointer"
@@ -81,9 +103,9 @@ src_compile() {
 		$(use_enable dvb dvb-eit)
 		--dvb-path=/usr/include
 		$(use_enable opengl opengl-vsync)
-		$(use_enable oggvorbis vorbis)
+		$(use_enable vorbis vorbis)
 		$(use_enable nvidia xvmc)
-		$(use_enable xv)
+		--enable-xv
 		$(use_enable ieee1394 firewire)
 		--disable-directfb
 		--enable-x11
@@ -127,8 +149,8 @@ src_compile() {
 	if use frontendonly; then
 		##Backend Removal
 		cd ${S}
-		sed -e "s:CONFIG  += linux backend:CONFIG  += linux:" \
-			-i 'settings.pro' || die "Removal of mythbackend failed"
+		sed -e "s:CCONFIG linux backend:CCONFIG linux:" \
+			-i 'configure' || die "Removal of mythbackend failed"
 	fi
 
 	# let MythTV come up with our CFLAGS. Upstream will support this
@@ -136,7 +158,7 @@ src_compile() {
 	CXXFLAGS=""
 	econf ${myconf} || die "configure died"
 
-	qmake -o "Makefile" mythtv.pro || die "qmake failed"
+	${QTDIR}/bin/qmake -o "Makefile" mythtv.pro || die "qmake failed"
 	emake || die "emake failed"
 
 }
@@ -160,6 +182,14 @@ src_install() {
 		newinitd ${FILESDIR}/0.18-mythbackend.rc mythbackend
 		newconfd ${FILESDIR}/0.18-mythbackend.conf mythbackend
 	fi
+
+	dobin ${FILESDIR}/runmythfe
+
+	ewarn "Want MythFrontend to always? Add the following to your"
+	ewarn "myth user. i.e. My user is mythtv"
+	echo "crontab -e -u mythtv"
+	echo "* * * * * /usr/bin/runmythfe &"
+	ewarn "And you're all set."
 
 	dodoc keys.txt docs/*.{txt,pdf}
 	dohtml docs/*.html

@@ -1,8 +1,8 @@
 #!/bin/bash
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # Author:  Martin Schlemmer <azarah@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/files/scan_libgcc_linked_ssp.sh,v 1.1 2003/12/28 21:46:24 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/files/scan_libgcc_linked_ssp.sh,v 1.1.1.1 2005/11/30 09:53:47 chriswhite Exp $
 
 usage() {
 cat << "USAGE_END"
@@ -33,7 +33,7 @@ then
 	exit 1
 fi
 
-einfo "Scannig system for __guard@GCC symbols..."
+einfo "Scanning system for __guard@GCC symbols..."
 /bin/gawk -f "${AWKDIR}/scanforssp.awk"
 
 exit $?

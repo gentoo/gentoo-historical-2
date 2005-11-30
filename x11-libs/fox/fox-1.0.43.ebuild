@@ -1,22 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox/fox-1.0.43.ebuild,v 1.1 2003/08/01 18:45:44 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox/fox-1.0.43.ebuild,v 1.1.1.1 2005/11/30 09:54:20 chriswhite Exp $
 
 IUSE="cups opengl"
-
-S=${WORKDIR}/${P}
-
-DESCRIPTION="C++ based Toolkit for developing Graphical User Interfaces easily a nd effectively"
-
+DESCRIPTION="C++ based Toolkit for developing Graphical User Interfaces easily and effectively"
 SRC_URI="http://www.fox-toolkit.org/ftp/${P}.tar.gz"
-
 HOMEPAGE="http://www.fox-toolkit.org"
-
 SLOT="0"
-KEYWORDS="~x86 ~sparc "
+KEYWORDS="x86 sparc "
 LICENSE="GPL-2"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	virtual/x11
 	opengl? ( virtual/opengl )"
 
@@ -24,16 +18,16 @@ DEPEND="virtual/glibc
 src_compile() {
 
 	local myconf
-	
+
 	use opengl || myconf="$myconf --with-opengl=no" #default enabled
 	use cups && myconf="$myconf --enable-cups"      #default disabled
-       
+
 	./configure \
 		--prefix=/usr \
 		--mandir='${prefix}'/share/man \
 		--host=${CHOST} \
 		${myconf} || die "Configuration Failed"
-	
+
 	emake || die "Parallel Make Failed"
 }
 
@@ -41,7 +35,7 @@ src_install () {
 
 	make prefix=${D}/usr/ \
 		install || die "Installation Failed"
-       
+
 	dodoc README INSTALL LICENSE ADDITIONS AUTHORS TRACING
 
 	dodir /usr/share/doc/${PF}/html

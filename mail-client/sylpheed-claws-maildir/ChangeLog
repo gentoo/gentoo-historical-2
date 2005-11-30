@@ -1,6 +1,84 @@
 # ChangeLog for mail-client/sylpheed-claws-maildir
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-maildir/ChangeLog,v 1.1 2004/10/17 23:08:31 genone Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-maildir/ChangeLog,v 1.1.1.1 2005/11/30 09:49:55 chriswhite Exp $
+
+*sylpheed-claws-maildir-0.11 (13 Nov 2005)
+
+  13 Nov 2005; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-maildir-0.8.ebuild, +sylpheed-claws-maildir-0.11.ebuild:
+  Version bump required for newer SC-versions. Also add the .a/.la kill from
+  bug 111481.
+
+  11 Nov 2005; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  Updated dependencies
+
+  15 Oct 2005; Jason Wever <weeve@gentoo.org>
+  sylpheed-claws-maildir-0.8.ebuild:
+  Added ~sparc keyword.
+
+*sylpheed-claws-maildir-0.8 (13 Aug 2005)
+
+  13 Aug 2005; Marius Mauch <genone@gentoo.org>
+  +sylpheed-claws-maildir-0.8.ebuild:
+  update for sylpheed-claws-1.9.13
+
+  05 Jul 2005; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  adding dependency on sys-libs/db (thanks to Anthony Gorecki for noticing this).
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  Stable on ppc64
+
+  29 Mar 2005; Markus Rothe <corsair@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  29 Mar 2005; Marius Mauch <genone@gentoo.org>
+  -sylpheed-claws-maildir-0.6.ebuild:
+  Removing old version
+
+  17 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  Stable on alpha, bug 84056.
+
+  12 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  Stable on ppc.
+
+  17 Feb 2005; Jason Wever <weeve@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  Stable on sparc.
+
+  13 Feb 2005; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-maildir-0.7.ebuild:
+  marking stable on x86 and amd64 for sc-1.0.0
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*sylpheed-claws-maildir-0.7 (14 Dec 2004)
+
+  14 Dec 2004; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-maildir-0.6.ebuild, +sylpheed-claws-maildir-0.7.ebuild:
+  Version bump to match sylpheed-claws-0.9.13.
+
+  03 Nov 2004; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-maildir-0.6.ebuild:
+  fixed the problem where the plugin would install to the wrong location (#69951)
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  sylpheed-claws-maildir-0.6.ebuild:
+  ~alpha keyword, bug 66691.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  sylpheed-claws-maildir-0.6.ebuild:
+  KEYWORDS ~amd64.
+
+  17 Oct 2004; Jason Wever <weeve@gentoo.org>
+  sylpheed-claws-maildir-0.6.ebuild:
+  Added ~sparc keyword wrt bug #66691.
 
 *sylpheed-claws-maildir-0.6 (18 Oct 2004)
 

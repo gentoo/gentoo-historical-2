@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.4.2.1.ebuild,v 1.1 2004/05/30 02:51:41 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.4.2.1.ebuild,v 1.1.1.1 2005/11/30 09:49:42 chriswhite Exp $
 
-IUSE="ssl nls slang mbox cjk vanilla"
+IUSE="cjk imap mbox nls slang ssl vanilla"
 
 inherit eutils flag-o-matic
 
@@ -18,21 +18,20 @@ SRC_URI="ftp://ftp.mutt.org/mutt/mutt-${PV}i.tar.gz
 	cjk? ( http://www.emaillab.org/mutt/1.4/${cjk_patch} )"
 #	http://www.spinnaker.de/mutt/compressed/${compressed_patch}
 
-RDEPEND="nls? ( sys-devel/gettext )"
-DEPEND="${RDEPEND}
+RDEPEND="nls? ( sys-devel/gettext )
 	>=sys-libs/ncurses-5.2
 	ssl? ( >=dev-libs/openssl-0.9.6 )
-	slang? ( >=sys-libs/slang-1.4.2 )
+	slang? ( >=sys-libs/slang-1.4.2 )"
+DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha hppa ~mips"
+KEYWORDS="alpha hppa ~mips ppc sparc x86"
 
 pkg_setup() {
 	if ! use imap; then
 		echo
-		einfo
 		einfo "NOTE: The USE variable 'imap' is not in your USE flags."
 		einfo "For imap support in mutt, you will need to restart the build with USE=imap"
 		echo
@@ -42,13 +41,13 @@ pkg_setup() {
 src_unpack() {
 	unpack ${P}i.tar.gz && cd ${S} || die "unpack failed"
 	if ! use vanilla; then
-		epatch ${DISTDIR}/${compressed_patch} || die
-		epatch ${DISTDIR}/${edit_threads_patch} || die
+		epatch ${DISTDIR}/${compressed_patch}
+		epatch ${DISTDIR}/${edit_threads_patch}
 	fi
 	if use cjk; then
 		cd ${WORKDIR}
 		unpack ${cjk_patch} && cd ${S} || die "unpack cjk failed"
-		epatch ${WORKDIR}/${cjk_patch%.t*}/patch-${PV}.tt.ja.1 || die
+		epatch ${WORKDIR}/${cjk_patch%.t*}/patch-${PV}.tt.ja.1
 	fi
 }
 
@@ -96,15 +95,15 @@ src_compile() {
 		# rr.compressed patch
 		myconf="${myconf} --enable-compressed"
 	fi
-	econf ${myconf} || die
+	econf ${myconf}
 	sed -i 's/README.UPGRADE//' doc/Makefile || die "sed failed"
 	make || die "make failed (myconf=${myconf})"
 }
 
 src_install () {
-	make DESTDIR=${D} install || die
+	make DESTDIR=${D} install || die "install failed"
 	find ${D}/usr/share/doc -type f | grep -v html | xargs gzip
-	if [ "`use mbox`" ]; then
+	if use mbox; then
 		echo "Not installing an /etc/Muttrc as mbox is default configuration"
 		echo "with mutt"
 	else
@@ -116,6 +115,8 @@ src_install () {
 }
 
 pkg_postinst() {
-	einfo "The USE variable 'imap' is not set by default on most architectures."
-	einfo "To enable imap support in mutt, make sure you have USE=imap"
+	echo
+	einfo "For information about using mutt, please refer to:"
+	einfo "  http://www.gentoo.org/doc/en/guide-to-mutt.xml"
+	echo
 }

@@ -1,6 +1,40 @@
 # ChangeLog for dev-perl/digest-bubblebabble
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/digest-bubblebabble/ChangeLog,v 1.1 2003/06/23 17:38:13 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/digest-bubblebabble/ChangeLog,v 1.1.1.1 2005/11/30 09:53:23 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Mark 0.01 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  add ~ia64
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Cleaning for mirror syntax
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  stable on amd64
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  25 Dec 2004; Yuta SATOH <nigoro@gentoo.org> digest-bubblebabble-0.01.ebuild:
+  added ~ppc64
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Stable on alpha.
+
+  25 Feb 2004; Joshua Kinard <kumba@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+  27 Oct 2003; Brad House <brad_mssw@gentoo.org>
+  digest-bubblebabble-0.01.ebuild:
+  add ~amd64 flag
 
 *digest-bubblebabble-0.01 (23 Jun 2003)
 

@@ -1,6 +1,106 @@
 # ChangeLog for games-emulation/advancemenu
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/advancemenu/ChangeLog,v 1.1 2004/01/13 13:45:37 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/advancemenu/ChangeLog,v 1.1.1.1 2005/11/30 09:50:23 chriswhite Exp $
+
+*advancemenu-2.4.11 (17 Oct 2005)
+
+  17 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/advancemenu-2.4.11-alsa-pkg-config.patch,
+  +advancemenu-2.4.11.ebuild:
+  version bump
+
+  25 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/advancemenu-2.4.10-alsa-pkg-config.patch,
+  advancemenu-2.4.10.ebuild:
+  Fix building with alsa and static #97628 by Mr. Anderson.
+
+*advancemenu-2.4.10 (20 Jul 2005)
+
+  20 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.4.10.ebuild:
+  version bump
+
+  31 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  advancemenu-2.4.9.ebuild:
+  fix install with fb or svga (bug #94313)
+
+*advancemenu-2.4.9 (25 May 2005)
+
+  25 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.4.9.ebuild:
+  version bump
+
+*advancemenu-2.4.8 (04 Apr 2005)
+
+  04 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.4.8.ebuild:
+  version bump
+
+*advancemenu-2.4.7 (21 Mar 2005)
+
+  21 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.4.7.ebuild:
+  version bump
+
+  22 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -advancemenu-2.4.5.ebuild, advancemenu-2.4.6.ebuild:
+  fix deps (bug #83005); clean old ebuild
+
+*advancemenu-2.4.6 (14 Feb 2005)
+
+  14 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.4.6.ebuild:
+  version bump
+
+  31 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -advancemenu-2.4.1.ebuild, -advancemenu-2.4.2.ebuild:
+  clean old ebuilds
+
+*advancemenu-2.4.5 (31 Jan 2005)
+
+  31 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.4.5.ebuild:
+  version bump; added more use flag support
+
+*advancemenu-2.4.2 (08 Nov 2004)
+
+  08 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -advancemenu-2.3.5.ebuild, -advancemenu-2.3.8.ebuild,
+  +advancemenu-2.4.2.ebuild:
+  version bump ; clean out 2.3*
+
+*advancemenu-2.4.1 (26 Sep 2004)
+
+  26 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.4.1.ebuild:
+  version bump
+
+*advancemenu-2.3.8 (23 Sep 2004)
+
+  23 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +advancemenu-2.3.8.ebuild:
+  version bump
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -advancemenu-2.2.17.ebuild, -advancemenu-2.3.4.ebuild:
+  clean older ebuilds
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  advancemenu-2.2.17.ebuild, advancemenu-2.3.4.ebuild,
+  advancemenu-2.3.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+*advancemenu-2.3.5 (15 Jun 2004)
+
+  15 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  advancemenu-2.3.5.ebuild:
+  version bump
+
+*advancemenu-2.3.4 (06 Jun 2004)
+
+  06 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  advancemenu-2.3.4.ebuild:
+  version bump (bug #51876)
 
 *advancemenu-2.2.17 (13 Jan 2004)
 

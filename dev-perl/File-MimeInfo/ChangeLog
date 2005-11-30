@@ -1,6 +1,32 @@
 # ChangeLog for dev-perl/File-MimeInfo
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-MimeInfo/ChangeLog,v 1.1 2004/02/15 02:54:32 esammer Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-MimeInfo/ChangeLog,v 1.1.1.1 2005/11/30 09:52:58 chriswhite Exp $
+
+  09 Jun 2005; <dang@gentoo.org> File-MimeInfo-0.11.ebuild:
+  Added ~amd64
+
+*File-MimeInfo-0.11 (25 Apr 2005)
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  File-MimeInfo-0.10.ebuild, +File-MimeInfo-0.11.ebuild:
+  cleaning
+
+  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> File-MimeInfo-0.10.ebuild:
+  added ~ppc64
+
+  12 Dec 2004; Jason Wever <weeve@gentoo.org> File-MimeInfo-0.10.ebuild:
+  Stable on sparc.
+
+  02 Sep 2004; David Holm <dholm@gentoo.org> File-MimeInfo-0.10.ebuild:
+  Added to ~ppc.
+
+  10 Aug 2004; Ferris McCormick <fmccor@gentoo.org> File-MimeInfo-0.10.ebuild:
+  Add ~sparc keyword (Bug 59941). Passes all tests for sparc and supports
+  filer (59943).
+
+  31 Mar 2004; Michael Cummings <mcummings@gentoo.org>
+  File-MimeInfo-0.10.ebuild:
+  Marking stable
 
 *File-MimeInfo-0.10 (14 Feb 2004)
 

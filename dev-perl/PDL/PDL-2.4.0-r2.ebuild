@@ -1,24 +1,24 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PDL/PDL-2.4.0-r2.ebuild,v 1.1 2004/09/04 16:10:13 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PDL/PDL-2.4.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:53:19 chriswhite Exp $
 
 IUSE="opengl"
 
 inherit perl-module eutils
 
 DESCRIPTION="PDL Perl Module"
-SRC_URI="http://cpan.valueclick.com/modules/by-module/PDL/${P}.tar.gz"
-HOMEPAGE="http://cpan.valueclick.com/modules/by-module/PDL/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/C/CS/CSOE/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~csoe/${P}/"
 SLOT="0"
 LICENSE="Artistic as-is"
-KEYWORDS="x86 ~ppc ~sparc ~alpha ~hppa ~mips"
+KEYWORDS="x86 ~ppc sparc alpha hppa mips amd64"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	dev-perl/Filter
-	|| ( dev-perl/File-Spec >=dev-lang/perl-5.8.0-r12 )
+	|| ( perl-core/File-Spec >=dev-lang/perl-5.8.0-r12 )
 	dev-perl/Inline
 	>=dev-perl/ExtUtils-F77-1.13
-	dev-perl/Text-Balanced
+	perl-core/Text-Balanced
 	opengl? ( virtual/opengl virtual/glu )
 	>=sys-apps/sed-4"
 
@@ -28,9 +28,9 @@ mydoc="DEPENDENCIES DEVELOPMENT MANIFEST* COPYING Release_Notes TODO"
 pkg_setup() {
 	echo ""
 	einfo "If you want GSL library support in PDL,"
-	einfo "you need to emerge dev-libs/gsl first."
+	einfo "you need to emerge sci-libs/gsl first."
 	echo ""
-	sleep 5
+	epause 5
 }
 src_unpack() {
 
@@ -46,10 +46,10 @@ src_unpack() {
 		sed -e "s:WITH_3D => undef:WITH_3D => 0:" \
 			${FILESDIR}/perldl.conf > ${S}/perldl.conf
 	fi
-	if use hppa || use amd64; then
-		cd ${S}/Lib/Slatec
-		sed -i -e "s/mycompiler -c -o/mycompiler -fPIC -c -o/" Makefile.PL
-	fi
+
+	# Unconditional -fPIC for the lib (#55238)
+	sed -i -e "s/mycompiler -c -o/mycompiler -fPIC -c -o/" ${S}/Lib/Slatec/Makefile.PL
+
 	# The below patch was supplied by Karl Steddom <k-steddom@tamu.edu>
 	# in bug 33936 to correct PDL's inability to detect GSL libraries
 	# correctly. 

@@ -1,8 +1,9 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/ldapdns/ldapdns-2.05.ebuild,v 1.1 2003/11/11 21:15:31 jhhudso Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/ldapdns/ldapdns-2.05.ebuild,v 1.1.1.1 2005/11/30 09:50:10 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="A tiny, fast authoritative nameserver that queries LDAP and can be updated instantly"
 SRC_URI="http://www.nimh.org/dl/${P}.tar.gz"
 HOMEPAGE="http://www.nimh.org/code/ldapdns/"
@@ -12,10 +13,10 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~x86"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=net-nds/openldap-2"
 RDEPEND="${DEPEND}
-	>=sys-apps/daemontools-0.70
+	>=sys-process/daemontools-0.70
 	sys-apps/ucspi-tcp"
 
 src_compile() {
@@ -34,14 +35,9 @@ src_install() {
 }
 
 pkg_postinst() {
-
-	groupadd &>/dev/null nofiles
-
-	id &>/dev/null ldapdns || \
-		useradd -g nofiles -d /nonexistent -s /bin/false ldapdns
-	id &>/dev/null dnslog || \
-		useradd -g nofiles -d /nonexistent -s /bin/false dnslog
+	enewgroup nofiles
+	enewuser ldapdns -1 /bin/false /nonexistent nofiles
+	enewuser dnslog -1 /bin/false /nonexistent nofiles
 
 	einfo "Read the readme.configure and use ldapdns-conf to setup"
 }
-

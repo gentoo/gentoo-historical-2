@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gerbv/gerbv-0.16-r1.ebuild,v 1.1 2005/10/01 17:33:55 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gerbv/gerbv-0.16-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:01 chriswhite Exp $
 
 DESCRIPTION="gerbv - The gEDA Gerber Viewer"
 SRC_URI="http://www.geda.seul.org/dist/${P}.tar.gz"

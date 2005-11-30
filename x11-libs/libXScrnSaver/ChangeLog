@@ -1,6 +1,62 @@
 # ChangeLog for x11-libs/libXScrnSaver
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXScrnSaver/ChangeLog,v 1.1 2005/08/08 04:41:53 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXScrnSaver/ChangeLog,v 1.1.1.1 2005/11/30 09:54:07 chriswhite Exp $
+
+  06 Nov 2005; <dang@gentoo.org> libXScrnSaver-0.99.2.ebuild:
+  Marked ~amd64
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -libXScrnSaver-0.99.1.ebuild:
+  Drop old version.
+
+*libXScrnSaver-0.99.2 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libXScrnSaver-0.99.2.ebuild:
+  Bump for 7.0 RC1.
+
+  21 Sep 2005; Luca Barbato <lu_zero@gentoo.org>
+  libXScrnSaver-0.99.1.ebuild:
+  Marked ~ppc
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+*libXScrnSaver-0.99.1 (03 Sep 2005)
+
+  03 Sep 2005; Doug Goldstein <cardoe@gentoo.org> -files/fix-libname.patch,
+  -libXScrnSaver-0.99.0-r2.ebuild, +libXScrnSaver-0.99.1.ebuild:
+  rev bump, includes libname fixes plus some extras
+
+  23 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  files/fix-libname.patch:
+  Add reference to upstream bug within the patch; this will be policy for all
+  modular X patches.
+
+  23 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  files/fix-libname.patch:
+  (#fd.o 4149) Fix up the pkgconfig file too.
+
+  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -libXScrnSaver-0.99.0.ebuild, -libXScrnSaver-0.99.0-r1.ebuild:
+  Remove old versions.
+
+*libXScrnSaver-0.99.0-r2 (20 Aug 2005)
+
+  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  files/fix-libname.patch, +libXScrnSaver-0.99.0-r2.ebuild:
+  Bump to make sure people get the libXss.so.1 instead of so.7.
+
+*libXScrnSaver-0.99.0-r1 (20 Aug 2005)
+
+  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/fix-libname.patch, +libXScrnSaver-0.99.0-r1.ebuild:
+  (fd.o #4149) Install as libXss rather than libXScrnSaver for backwards
+  compatibility.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  libXScrnSaver-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *libXScrnSaver-0.99.0 (08 Aug 2005)
 

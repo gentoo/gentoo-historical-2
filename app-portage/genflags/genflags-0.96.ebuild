@@ -1,35 +1,36 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/genflags/genflags-0.96.ebuild,v 1.1 2004/01/19 02:54:21 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/genflags/genflags-0.96.ebuild,v 1.1.1.1 2005/11/30 09:51:55 chriswhite Exp $
 
 DESCRIPTION="Gentoo CFLAGS generator"
 HOMEPAGE="http://www.gentoo.org/"
 SRC_URI="mirror://gentoo/${P}-bin.tar.bz2
-		 mirror://gentoo/${P}-devel.tar.bz2
-		 http://dev.gentoo.org/~robbat2/genflags/${P}-bin.tar.bz2
-		 http://dev.gentoo.org/~robbat2/genflags/${P}-devel.tar.bz2"
+	 mirror://gentoo/${P}-devel.tar.bz2
+	 http://dev.gentoo.org/~robbat2/genflags/${P}-bin.tar.bz2
+	 http://dev.gentoo.org/~robbat2/genflags/${P}-devel.tar.bz2"
+
 LICENSE="OSL-1.1"
-IUSE=""
 SLOT="0"
-KEYWORDS="x86 amd64 arm hppa ppc mips sparc alpha ia64"
-# should also work on : m68k cris s390 sh
+KEYWORDS="x86 ppc sparc mips alpha hppa amd64 ia64 s390"
+IUSE=""
+# should also work on : m68k cris sh
 # This is all explictly specified as might want this in early stages
+
 DEPEND=""
 RDEPEND="app-shells/bash
-		|| ( sys-apps/coreutils ( sys-apps/sh-utils sys-apps/textutils ) )
-		sys-apps/findutils
-		sys-apps/grep
-		sys-apps/sed
-		sys-apps/util-linux"
-S=${WORKDIR}/${P}
+	sys-apps/coreutils
+	sys-apps/findutils
+	sys-apps/grep
+	sys-apps/sed
+	sys-apps/util-linux"
 
 src_compile() {
 	einfo "No compiling needed!"
 }
 
 src_install() {
-	dosbin bin/*
-	dodoc LICENSE README docs/*
+	dosbin bin/* || die
+	dodoc README docs/*
 	insinto /usr/share/genflags
 	doins data/*
 
@@ -43,5 +44,5 @@ pkg_postinst() {
 	ewarn "AMD-K6{,-2,-3} and Athlon vs. Athlon-4."
 	einfo "Please file any patches/bugs to robbat2@gentoo.org via the Gentoo"
 	einfo "Bugzilla."
-	einfo "See /usr/share/doc/${PF}/README for quick instructions."
+	einfo "See /usr/share/doc/${PF}/README.gz for quick instructions."
 }

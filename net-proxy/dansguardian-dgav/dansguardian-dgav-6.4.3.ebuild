@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dansguardian-dgav/dansguardian-dgav-6.4.3.ebuild,v 1.1 2005/10/04 21:01:07 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dansguardian-dgav/dansguardian-dgav-6.4.3.ebuild,v 1.1.1.1 2005/11/30 09:51:46 chriswhite Exp $
 
 inherit eutils
 

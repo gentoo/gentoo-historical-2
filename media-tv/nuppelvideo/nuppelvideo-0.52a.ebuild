@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/nuppelvideo/nuppelvideo-0.52a.ebuild,v 1.1 2003/09/02 14:36:35 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/nuppelvideo/nuppelvideo-0.52a.ebuild,v 1.1.1.1 2005/11/30 09:50:37 chriswhite Exp $
+
+inherit eutils
 
 MY_P=NuppelVideo-${PV}
 S=${WORKDIR}/${MY_P}
@@ -12,9 +14,17 @@ SLOT="0"
 
 IUSE=""
 
-KEYWORDS="~x86"
-DEPEND="virtual/os-headers"
+KEYWORDS="x86"
+DEPEND="virtual/os-headers
+	>=sys-apps/sed-4"
 RDEPEND=""
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/gcc3.4.patch
+	sed -e 's:^CFLAGS.*::' -i Makefile || die "sed failed"
+}
 
 src_compile() {
 	emake || die

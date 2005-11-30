@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnome-btdownload/gnome-btdownload-0.0.16.ebuild,v 1.1 2004/08/24 23:51:13 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnome-btdownload/gnome-btdownload-0.0.16.ebuild,v 1.1.1.1 2005/11/30 09:51:15 chriswhite Exp $
 
 inherit gnome2
 

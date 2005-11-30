@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/proxyper/proxyper-341a.ebuild,v 1.1 2004/06/07 08:09:41 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/proxyper/proxyper-341a.ebuild,v 1.1.1.1 2005/11/30 09:54:38 chriswhite Exp $
 
 DESCRIPTION="distributed.net personal proxy"
 HOMEPAGE="http://www.distributed.net"
 SRC_URI="http://http.distributed.net/pub/dcti/${PN}/${PN}${PV}-linux-x86-uclibc.tar.gz"
 LICENSE="distributed.net"
 SLOT="0"
-KEYWORDS="~x86 -ppc -sparc -alpha"
+KEYWORDS="~x86 -sparc -alpha -ppc"
 IUSE=""
 DEPEND=""
-RDEPEND="net-misc/host"
+RDEPEND="net-dns/host"
 
 S="${WORKDIR}/${PN}${PV}-linux-x86-uclibc"
 

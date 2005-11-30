@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/kdetv/kdetv-0.8.7.ebuild,v 1.1 2005/05/01 13:47:53 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/kdetv/kdetv-0.8.7.ebuild,v 1.1.1.1 2005/11/30 09:50:34 chriswhite Exp $
 
 inherit kde
 
@@ -10,10 +10,11 @@ SRC_URI="http://dziegel.free.fr/releases/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
-IUSE="arts lirc"
+KEYWORDS="~amd64 ~ppc x86"
+IUSE="lirc"
 
-DEPEND=">=media-libs/zvbi-0.2.4"
+DEPEND=">=media-libs/zvbi-0.2.4
+	lirc? ( app-misc/lirc )"
 need-kde 3.2
 
 
@@ -21,8 +22,8 @@ src_unpack() {
 	LANGS="bg br ca cs cy da de en_GB es et fi fr ga gl hu is it lt nb nl pl pt pt_BR ro ru sr sv ta tr"
 	#LANGS_DOC="fr it nl pt ru sv"
 
-	MAKE_PO=$(echo "${LINGUAS} ${LANGS}" | fmt -w 1 | sort | uniq -d | fmt -w 10000)
-	#MAKE_DOC=$(echo "${LINGUAS} ${LANGS_DOC}" | fmt -w 1 | sort | uniq -d | fmt -w 10000)
+	MAKE_PO=$(echo $(echo "${LINGUAS} ${LANGS}" | fmt -w 1 | sort | uniq -d))
+	#MAKE_DOC=$(echo $(echo "${LINGUAS} ${LANGS_DOC}" | fmt -w 1 | sort | uniq -d))
 
 	kde_src_unpack
 	sed -i -r -e "s:^SUBDIRS =.*:SUBDIRS = ${MAKE_PO}:" ${S}/po/Makefile.in || die "sed for locale failed"

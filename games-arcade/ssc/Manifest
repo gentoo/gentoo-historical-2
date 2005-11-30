@@ -1,2 +1,4 @@
-MD5 316be5a9107ab5c8253571aed6e80119 ssc-0.7.ebuild 1298
-MD5 a3b77a565014bda8d84ec6a627fcc055 files/digest-ssc-0.7 60
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 467b1e58b834207816d317d070d858d5 ssc-0.8.ebuild 1186
+MD5 fce1c342ad142651226f2380bd3ad3d7 ChangeLog 548
+MD5 f9c44f3ae0f37ad3addec99ab96f7508 files/digest-ssc-0.8 60

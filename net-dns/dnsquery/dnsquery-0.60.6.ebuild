@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsquery/dnsquery-0.60.6.ebuild,v 1.1 2005/07/09 06:30:40 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsquery/dnsquery-0.60.6.ebuild,v 1.1.1.1 2005/11/30 09:50:08 chriswhite Exp $
 
 DESCRIPTION="A graphical tool for sending queries to DNS servers"
 HOMEPAGE="http://www.posadis.org/projects/dnsquery.php"

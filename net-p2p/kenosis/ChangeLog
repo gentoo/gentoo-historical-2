@@ -1,6 +1,27 @@
 # ChangeLog for net-p2p/kenosis
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/kenosis/ChangeLog,v 1.1 2005/01/11 21:55:03 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/kenosis/ChangeLog,v 1.1.1.1 2005/11/30 09:51:20 chriswhite Exp $
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> kenosis-0.92-r1.ebuild,
+  kenosis-0.95.ebuild, kenosis-0.941.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*kenosis-0.95 (18 Apr 2005)
+
+  18 Apr 2005; Rob Cakebread <pythonhead@gentoo.org> metadata.xml,
+  +kenosis-0.95.ebuild:
+  Version bump.
+
+*kenosis-0.941 (30 Jan 2005)
+
+  30 Jan 2005; Rob Cakebread <pythonhead@gentoo.org> +kenosis-0.941.ebuild:
+  Version bump.
+
+*kenosis-0.92-r1 (12 Jan 2005)
+
+  12 Jan 2005; Rob Cakebread <pythonhead@gentoo.org>
+  +kenosis-0.92-r1.ebuild, -kenosis-0.92.ebuild:
+  provides virtual/bittorrent. removed obsolete version. bug# 77720
 
 *kenosis-0.92 (11 Jan 2005)
 

@@ -1,36 +1,39 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkDPS/gtkDPS-0.3.4.ebuild,v 1.1 2003/07/28 21:29:01 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkDPS/gtkDPS-0.3.4.ebuild,v 1.1.1.1 2005/11/30 09:54:09 chriswhite Exp $
+
+inherit gnuconfig
 
 IUSE="nls"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Set of functions, objects and widgets to use DPS easily with GTK"
 SRC_URI="ftp://ftp.gyve.org/pub/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.gyve.org/gtkDPS/"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 sparc alpha ppc amd64 ia64"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	=x11-libs/gtk+-1.2*
-	>=app-text/dgs-0.5.9.1"
-
-RDEPEND="nls? ( sys-devel/gettext )"
+	virtual/x11
+	nls? ( sys-devel/gettext )"
 
 src_compile() {
-	if [ -z "`use nls`" ] ; then
+	# needed for alpha and amd64 ... but run everywhere
+	gnuconfig_update || die "gnuconfig_update failed"
+
+	if ! use nls ; then
 		myconf="--disable-nls"
 	fi
 
 	./configure --prefix=/usr --host=${CHOST} \
 		--with-x --with-dps $myconf || die
+	#Very ugly workaround 
+	use nls && echo '#define LOCALEDIR "/usr/share/locale"' >> config.h
 	make || die
-
 }
 
 src_install () {
-
 	make prefix=${D}/usr install || die
 	dodoc COPYING* ChangeLog GTKDPS-VERSION HACKING NEWS README TODO
 }

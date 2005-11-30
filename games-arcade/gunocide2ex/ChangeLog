@@ -1,6 +1,22 @@
 # ChangeLog for games-arcade/gunocide2ex
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/gunocide2ex/ChangeLog,v 1.1 2003/11/14 17:12:05 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/gunocide2ex/ChangeLog,v 1.1.1.1 2005/11/30 09:52:07 chriswhite Exp $
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  gunocide2ex-1.0.ebuild:
+  Cleanup for bug #92745.
+
+  22 Dec 2004; Joseph Jezak <josejx@gentoo.org> gunocide2ex-1.0.ebuild:
+  Marked ppc stable.
+
+  03 Nov 2004; Joseph Jezak <josejx@gentoo.org> gunocide2ex-1.0.ebuild:
+  Added ~ppc.
+
+  26 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gunocide2ex-1.0.ebuild:
+  don't rdepend on sed; tidy
+
+  28 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> gunocide2ex-1.0.ebuild:
+  actually compile; depend on sed-4; more error checking/messages; tidy
 
 *gunocide2ex-1.0 (14 Nov 2003)
 

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/blobwars/blobwars-1.04.ebuild,v 1.1 2005/04/27 01:39:33 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/blobwars/blobwars-1.04.ebuild,v 1.1.1.1 2005/11/30 09:52:05 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="Platform game about a blob and his quest to rescue MIAs from an alien invader"
 HOMEPAGE="http://www.parallelrealities.co.uk/blobWars.php"
@@ -11,13 +11,19 @@ SRC_URI="mirror://gentoo/${P}-1.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ppc x86"
+KEYWORDS="alpha amd64 ppc ~sparc x86"
 IUSE=""
 
 DEPEND=">=media-libs/libsdl-1.2.5
 	media-libs/sdl-mixer
 	media-libs/sdl-ttf
 	media-libs/sdl-image"
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${PV}-be_pak.diff
+}
 
 src_compile() {
 	emake \

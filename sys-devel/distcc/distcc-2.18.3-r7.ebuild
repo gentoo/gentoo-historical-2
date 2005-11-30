@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/distcc-2.18.3-r7.ebuild,v 1.1 2005/06/15 12:52:17 lisa Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/distcc/distcc-2.18.3-r7.ebuild,v 1.1.1.1 2005/11/30 09:53:38 chriswhite Exp $
 
 # If you change this in any way please email lisa@gentoo.org and make an
 # entry in the ChangeLog (this means you spanky :P). (2004-04-11) Lisa Seelye
@@ -15,7 +15,7 @@ SRC_URI="http://distcc.samba.org/ftp/distcc/distcc-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ia64 amd64 ~s390"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 ~s390 sh sparc x86"
 
 IUSE="gnome gtk selinux ipv6"
 
@@ -101,7 +101,7 @@ src_install() {
 	dodir /var/run/distccd
 	keepdir /var/run/distccd
 
-	if [ `use gnome` -o `use gtk` ]; then
+	if use gnome || use gtk; then
 	  einfo "Renaming /usr/bin/distccmon-gnome to /usr/bin/distccmon-gui"
 	  einfo "This is to have a little sensability in naming schemes between distccmon programs"
 	  mv ${D}/usr/bin/distccmon-gnome ${D}/usr/bin/distccmon-gui

@@ -1,6 +1,107 @@
-# ChangeLog for net-mail/ssmtp
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ChangeLog,v 1.1 2004/05/30 09:56:46 robbat2 Exp $
+# ChangeLog for mail-mta/ssmtp
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ChangeLog,v 1.1.1.1 2005/11/30 09:50:38 chriswhite Exp $
+
+  23 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61.ebuild,
+  ssmtp-2.61-r1.ebuild:
+  Use mirror://debian/ in SRC_URI
+
+  29 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on sh.
+
+  04 Jul 2005; Andrej Kacian <ticho@gentoo.org> ssmtp-2.61-r1.ebuild:
+  Better mailer-config compatibility.
+
+*ssmtp-2.61-r1 (25 Apr 2005)
+
+  25 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org> files/mailer.conf,
+  +ssmtp-2.61-r1.ebuild:
+  2.61-r1 uses the new mailer eclass
+
+  14 Mar 2005; Hardave Riar <hardave@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on mips, bug #82380.
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org> ssmtp-2.61.ebuild:
+  stable on alpha and ia64
+
+  17 Feb 2005; Markus Rothe <corsair@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on ppc64
+
+  17 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ssmtp-2.61.ebuild:
+  stable on amd64. see #82380
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on ppc and hppa.
+
+  17 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on sparc wrt #82380
+
+  10 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61.ebuild:
+  Fix the md5auth thing. Closes #81510. Thanks to Dan Check
+  <check@radicalmedia.com>
+
+*ssmtp-2.61-r1 (10 feb 2005)
+
+  10 feb 2005;  <>  ssmtp-2.61-r1.ebuild files/digest-ssmtp-2.61-r1
+  # INSERT ENTRY HERE
+
+  09 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org> ssmtp-2.61.ebuild:
+  Stable on x86
+
+*ssmtp-2.61 (24 Jan 2005)
+
+  24 Jan 2005; Fernando J. Pereda <ferdy@gentoo.org> +ssmtp-2.61.ebuild:
+  Version bump, closes #69999. Reported by: Yani Ioannou <yani.ioannou@gmail.com>
+
+  25 Dec 2004; Tom Martin <slarti@gentoo.org> ssmtp-2.60.9.ebuild:
+  Resolve bug 47562, by commenting out hostname=_HOSTNAME_ by default,
+  forcing ssmtp to determine the hostname for itself. Thanks to Sascha
+  Silbe <sascha@silbe.org> for reporting.
+
+  28 Jul 2004; Joshua Kinard <kumba@gentoo.org> ssmtp-2.60.9.ebuild:
+  Marked stable on mips.
+
+  27 Jul 2004; <agriffis@gentoo.org> ssmtp-2.60.9.ebuild:
+  stable on alpha and ia64 #57553
+
+  24 Jul 2004; Luca Barbato <lu_zero@gentoo.org> ssmtp-2.60.9.ebuild:
+  Marked ppc
+
+  21 Jul 2004; Jason Wever <weeve@gentoo.org> ssmtp-2.60.9.ebuild:
+  Stable on sparc wrt bug #57553.
+
+  21 Jul 2004; <malc@gentoo.org> ssmtp-2.60.9.ebuild:
+  Mark stable on amd64
+
+  20 Jul 2004; Grant Goodyear <g2boojum@gentoo.org> ssmtp-2.60.9.ebuild:
+  Marked stable on x86.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ssmtp-2.38.14-r1.ebuild, ssmtp-2.48.ebuild, ssmtp-2.60.4-r2.ebuild,
+  ssmtp-2.60.4.ebuild, ssmtp-2.60.7-r1.ebuild, ssmtp-2.60.7.ebuild,
+  ssmtp-2.60.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  11 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> ssmtp-2.60.7-r1.ebuild:
+  Marking stable on all arch's to fix the 
+  inconsistent-mailwrapper issues.
+
+*ssmtp-2.60.9 (07 Jun 2004)
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> ssmtp-2.60.4-r2.ebuild,
+  ssmtp-2.60.4.ebuild, ssmtp-2.60.7-r1.ebuild, ssmtp-2.60.7.ebuild,
+  ssmtp-2.60.9.ebuild:
+  Fix use invocation
+
+  06 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> :
+  Version bump.  Patches no longer required.  Fixes STARTTLS before ehlo bug.
+
+*ssmtp-2.60.7-r1 (30 May 2004)
+
+  30 May 2004; Grant Goodyear <g2boojum@gentoo.org> ssmtp-2.60.4-r2.ebuild,
+  +ssmtp-2.60.7-r1.ebuild, ssmtp-2.60.7.ebuild:
+  Made mailwrapper an optional dep w/ USE=mailwrapper.
+  Also fixed up which docs get installed.
 
 *ssmtp-2.48 (30 May 2004)
 
@@ -35,7 +136,7 @@
   24 Apr 2004; Luca Barbato <lu_zero@gentoo.org> ssmtp-2.60.7.ebuild:
   Marked ppc
 
-  23 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> ssmtp-2.60.7.ebuild:
+  23 Apr 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> ssmtp-2.60.7.ebuild:
   Stable on alpha.
 
   23 Apr 2004; Travis Tilley <lv@gentoo.org> ssmtp-2.60.7.ebuild:

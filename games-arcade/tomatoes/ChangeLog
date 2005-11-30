@@ -1,6 +1,27 @@
 # ChangeLog for games-arcade/tomatoes
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/tomatoes/ChangeLog,v 1.1 2004/10/19 02:00:48 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/tomatoes/ChangeLog,v 1.1.1.1 2005/11/30 09:52:00 chriswhite Exp $
+
+  22 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> tomatoes-1.55.ebuild:
+  use doicon
+
+  30 Dec 2004; Mike Frysinger <vapier@gentoo.org> tomatoes-1.55.ebuild:
+  Make sure sdl-mixer has USE=mikmod #76128.
+
+  28 Dec 2004; Joseph Jezak <josejx@gentoo.org> tomatoes-1.55.ebuild:
+  Marked ppc stable.
+
+  01 Dec 2004; Joseph Jezak <josejx@gentoo.org> tomatoes-1.55.ebuild:
+  Marked ~ppc.
+
+*tomatoes-1.55 (30 Nov 2004)
+
+  30 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +tomatoes-1.55.ebuild:
+  version that uses sdl-mixer instead of fmod for greater portability.
+
+  18 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +files/1.5-gcc34.patch,
+  tomatoes-1.5.ebuild:
+  gcc34 patch from Chris White via bug #68089
 
 *tomatoes-1.5 (18 Oct 2004)
 

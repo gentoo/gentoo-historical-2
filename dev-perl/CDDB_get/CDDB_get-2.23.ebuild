@@ -1,14 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDDB_get/CDDB_get-2.23.ebuild,v 1.1 2004/01/03 12:07:29 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDDB_get/CDDB_get-2.23.ebuild,v 1.1.1.1 2005/11/30 09:52:45 chriswhite Exp $
 
 inherit perl-module
 
-S="${WORKDIR}/${P}"
 DESCRIPTION="Read the CDDB entry for an audio CD in your drive"
 SRC_URI="http://armin.emx.at/cddb/${P}.tar.gz"
 HOMEPAGE="http://armin.emx.at/cddb/"
 
 SLOT="2"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="x86 amd64 ppc sparc alpha ppc64"
+IUSE=""

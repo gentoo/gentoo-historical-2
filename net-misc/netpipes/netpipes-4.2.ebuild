@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netpipes/netpipes-4.2.ebuild,v 1.1 2005/01/13 10:03:15 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netpipes/netpipes-4.2.ebuild,v 1.1.1.1 2005/11/30 09:54:34 chriswhite Exp $
 
 inherit toolchain-funcs
 

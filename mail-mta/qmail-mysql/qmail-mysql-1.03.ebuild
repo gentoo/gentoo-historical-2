@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-mysql/qmail-mysql-1.03.ebuild,v 1.1 2004/05/30 10:52:14 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-mysql/qmail-mysql-1.03.ebuild,v 1.1.1.1 2005/11/30 09:50:42 chriswhite Exp $
 
 inherit eutils
 
@@ -16,20 +16,21 @@ SRC_URI="http://cr.yp.to/software/qmail-1.03.tar.gz
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 ~ppc ~sparc"
+KEYWORDS="x86 ppc ~sparc"
+IUSE=""
 
 PROVIDE="virtual/mta
 	 virtual/mda"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88
 	>=net-mail/checkpassword-0.90"
 RDEPEND="!virtual/mta
-	virtual/glibc
+	virtual/libc
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-apps/daemontools-0.76-r1
+	>=sys-process/daemontools-0.76-r1
 	>=net-mail/checkpassword-0.90
 	>=net-mail/dot-forward-0.71"
 
@@ -247,7 +248,7 @@ pkg_postinst() {
 	chown qmails:qmail ${ROOT}/var/qmail/queue/lock/trigger
 
 	echo -e "\e[32;01m Please do not forget to run, the following syntax :\033[0m"
-	echo -e "\e[32;01m ebuild /var/db/pkg/${CATEGORY}/${PN}-${PV}-${PR}/${PN}-${PV}-${PR}.ebuild config \033[0m"
+	echo -e "\e[32;01m emerge --config =${PF} \033[0m"
 	echo -e "\e[32;01m This will setup qmail to run out-of-the-box on your system. \033[0m"
 	echo -e ""
 	echo -e "\e[32;01m To start qmail at boot you have to enable the /etc/init.d/svscan rc file \033[0m"

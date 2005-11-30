@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/ppracer/ppracer-0.3.1.ebuild,v 1.1 2005/03/01 17:16:54 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/ppracer/ppracer-0.3.1.ebuild,v 1.1.1.1 2005/11/30 09:51:58 chriswhite Exp $
 
-inherit flag-o-matic gnuconfig games
+inherit flag-o-matic gnuconfig games multilib
 
 DESCRIPTION="take on the role of Tux, the Linux Penguin, as he races down steep, snow-covered mountains"
 HOMEPAGE="http://developer.berlios.de/projects/ppracer/"
@@ -10,7 +10,7 @@ SRC_URI="http://download.berlios.de/ppracer/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86 ~ppc"
+KEYWORDS="amd64 ppc x86"
 IUSE="X"
 
 DEPEND="virtual/opengl
@@ -37,6 +37,7 @@ src_compile() {
 	egamesconf \
 		--disable-dependency-tracking \
 		--with-data-dir="${GAMES_DATADIR}/${PN}" \
+		--with-tcl=/usr/$(get_libdir) \
 		$(use_with X x) \
 		|| die
 	emake || die "emake failed"

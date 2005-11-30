@@ -1,3 +1,4 @@
-MD5 97fde28c86f05c4f4a7da53c006bf5ff ChangeLog 404
-MD5 42928406a899a6cb5e1fff8be32d8af2 Proc-Daemon-0.02.ebuild 253
-MD5 3ac974669a7b465e66d08f88b7981488 files/digest-Proc-Daemon-0.02 66
+MD5 086961ad687667deddfa3b39f582113d Proc-Daemon-0.03.ebuild 500
+MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305
+MD5 b6025e89c96bbc4d1d69ec85a759b602 ChangeLog 1224
+MD5 7a4d8cf71bef4348440c2111de584d8b files/digest-Proc-Daemon-0.03 66

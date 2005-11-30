@@ -1,2 +1,4 @@
-MD5 1f25389b2fe2e594807bf8c8a779729f Test-Pod-1.08.ebuild 505
-MD5 ceeef07981b290a6fd1d79264b6680d9 files/digest-Test-Pod-1.08 63
+MD5 e2d8f1bf77722def1dd432e26455c818 metadata.xml 305
+MD5 7935838660440373422020078782cd8c ChangeLog 1889
+MD5 2af7e887ceaafed1e50c34b1efc85b4b Test-Pod-1.20.ebuild 572
+MD5 bfff96688e82367482156f45ca125568 files/digest-Test-Pod-1.20 63

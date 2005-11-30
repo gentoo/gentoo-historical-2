@@ -1,17 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-NamespaceSupport/XML-NamespaceSupport-1.08.ebuild,v 1.1 2003/06/17 12:20:13 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-NamespaceSupport/XML-NamespaceSupport-1.08.ebuild,v 1.1.1.1 2005/11/30 09:52:36 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A Perl module that offers a simple to process namespaced XML names"
-SRC_URI="http://cpan.valueclick.com/modules/by-category/11_String_Lang_Text_Proc/XML/${P}.tar.gz"
-HOMEPAGE="http://cpan.valueclick.com/modules/by-category/11_String_Lang_Text_Proc/XML/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/R/RB/RBERJON/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~rberjon/${P}"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="x86 ~alpha ~sparc ~ppc"
+KEYWORDS="alpha amd64 ~mips ppc ppc64 sparc x86"
+IUSE=""
 
 DEPEND="${DEPEND}
 	>=dev-libs/libxml2-2.4.1"

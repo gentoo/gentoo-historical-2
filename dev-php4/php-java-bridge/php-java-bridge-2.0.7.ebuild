@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/php-java-bridge/php-java-bridge-2.0.7.ebuild,v 1.1 2005/09/04 16:07:00 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/php-java-bridge/php-java-bridge-2.0.7.ebuild,v 1.1.1.1 2005/11/30 09:51:26 chriswhite Exp $
 
 PHP_EXT_ZENDEXT="no"
 PHP_EXT_NAME="java"
@@ -14,7 +14,7 @@ HOMEPAGE="http://php-java-bridge.sourceforge.net/"
 DESCRIPTION="The PHP/Java bridge is a PHP module wich connects the PHP object system with the Java or ECMA 335 object system."
 LICENSE="PHP-3"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 DEPEND="${DEPEND}
@@ -26,12 +26,23 @@ need_php_by_category
 
 pkg_setup() {
 	has_php
-	require_php_with_use java-external
+
+	# we need session support in PHP for this to compile
+	require_php_with_use session
+
+	# if the user has compiled the internal Java extension, he can't use this package
+		if built_with_use =${PHP_PKG} java-internal ; then
+			eerror
+			eerror "You have built ${PHP_PKG} to use the internal Java extension."
+			eerror "If you want to use the php-java-bridge package, you must rebuild"
+			eerror "your PHP with the 'java-external' USE flag instead."
+			eerror
+			die "PHP built to use internal Java extension"
+		fi
 }
 
 src_compile() {
 	has_php
-	export WANT_AUTOCONF=2.5
 	my_conf="--disable-servlet --with-java=`java-config --jdk-home`"
 	php-ext-source-r1_src_compile
 }
@@ -43,5 +54,5 @@ src_install() {
 	doins modules/RunJavaBridge
 	doins modules/libnatcJavaBridge.a
 	doins modules/libnatcJavaBridge.so
-	dodoc ChangeLog README README.GNU_JAVA PROTOCOL.TXT
+	dodoc-php ChangeLog README README.GNU_JAVA PROTOCOL.TXT
 }

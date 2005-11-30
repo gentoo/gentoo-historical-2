@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/OilWar/OilWar-1.2.1.ebuild,v 1.1 2004/07/21 00:53:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/OilWar/OilWar-1.2.1.ebuild,v 1.1.1.1 2005/11/30 09:50:00 chriswhite Exp $
 
 inherit games
 
@@ -10,10 +10,11 @@ SRC_URI="http://www.2ndpoint.fi/projektit/filut/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc ~amd64"
 IUSE=""
 
 DEPEND="media-libs/libsdl
+	media-libs/sdl-image
 	media-libs/sdl-mixer"
 
 src_unpack() {
@@ -30,4 +31,5 @@ src_compile() {
 src_install() {
 	make install DESTDIR=${D} || die
 	dodoc AUTHORS ChangeLog NEWS README TODO
+	prepgamesdirs
 }

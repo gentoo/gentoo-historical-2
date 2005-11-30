@@ -1,6 +1,87 @@
-# ChangeLog for net-misc/dante
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/ChangeLog,v 1.1 2005/04/22 20:47:27 mrness Exp $
+# ChangeLog for net-proxy/dante
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/ChangeLog,v 1.1.1.1 2005/11/30 09:51:43 chriswhite Exp $
+
+  18 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> dante-1.1.18.ebuild:
+  Stable on hppa, ppc.
+
+  16 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> dante-1.1.18.ebuild:
+  Stable on sparc
+
+  16 Nov 2005; Alin Nastac <mrness@gentoo.org>
+  -files/dante-1.1.17-socksify.patch, -dante-1.1.17.ebuild,
+  dante-1.1.18.ebuild:
+  Remove old test version. Mark stable on x86.
+
+  15 Nov 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.17.ebuild,
+  dante-1.1.18.ebuild:
+  Remove libtool and automake from DEPEND (libtoolize isn't used anymore in
+  this versions). Closes #112610.
+
+*dante-1.1.18 (04 Oct 2005)
+
+  04 Oct 2005; Alin Nastac <mrness@gentoo.org>
+  -files/dante-1.1.16-socksify.patch, +files/dante-1.1.18-socksify.patch,
+  -dante-1.1.16.ebuild, +dante-1.1.18.ebuild:
+  Version bump. Remove old test version.
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> dante-1.1.15-r2.ebuild:
+  Stable on amd64.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> dante-1.1.15-r2.ebuild:
+  stable on ia64
+
+  17 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  dante-1.1.15-r2.ebuild:
+  Stable on hppa.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  dante-1.1.15-r2.ebuild:
+  Stable on ppc.
+
+  23 Jul 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.15-r1.ebuild,
+  dante-1.1.15-r2.ebuild, dante-1.1.16.ebuild, dante-1.1.17.ebuild:
+  Add dependency of sys-apps/shadow for being able to add user sockd when
+  compiled in stage 1 (#94745).
+
+  21 Jul 2005; Mike Frysinger <vapier@gentoo.org> dante-1.1.17.ebuild:
+  Fix autotool crappiness.
+
+  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> dante-1.1.15-r2.ebuild:
+  Stable on alpha.
+
+*dante-1.1.17 (16 Jul 2005)
+
+  16 Jul 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.15-r1.ebuild,
+  dante-1.1.15-r2.ebuild, dante-1.1.16.ebuild, +dante-1.1.17.ebuild,
+  +files/dante-1.1.17-socksify.patch:
+  Add libtool to dependencies (#98159). Version bump (#99047).
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> dante-1.1.15-r2.ebuild:
+  Stable on ppc64
+
+  05 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  dante-1.1.15-r2.ebuild:
+  Stable on sparc
+
+*dante-1.1.16 (04 Jul 2005)
+
+  04 Jul 2005; Alin Nastac <mrness@gentoo.org>
+  +files/dante-1.1.16-socksify.patch, dante-1.1.15-r2.ebuild,
+  +dante-1.1.16.ebuild:
+  Mark 1.1.15-r2 stable on x86. Version bumped to 1.1.16.
+
+*dante-1.1.15-r2 (04 Jun 2005)
+
+  04 Jun 2005; Alin Nastac <mrness@gentoo.org> files/dante-sockd-init,
+  +files/sockd.conf, +files/sockd.conf-with-libwrap.patch,
+  +files/sockd.conf-with-pam.patch, +files/socks.conf,
+  +dante-1.1.15-r2.ebuild:
+  Added default configuration files in /etc/socks. Create sockd user, used in
+  user.* parameters of the sockd daemon. Improve init script.
+
+  16 May 2005; Alin Nastac <mrness@gentoo.org> dante-1.1.15-r1.ebuild:
+  Remove unused inheritance of gcc eclass (#92745).
 
   22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
   Move from net-misc/dante to net-proxy/dante

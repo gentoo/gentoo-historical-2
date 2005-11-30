@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/dosbox/dosbox-0.63.ebuild,v 1.1 2004/11/19 01:33:41 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/dosbox/dosbox-0.63.ebuild,v 1.1.1.1 2005/11/30 09:50:30 chriswhite Exp $
 
 inherit eutils games
 
@@ -8,7 +8,7 @@ DESCRIPTION="DOS emulator"
 HOMEPAGE="http://dosbox.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dosbox/${P}.tar.gz"
 
-KEYWORDS="x86 ~amd64 ppc"
+KEYWORDS="~amd64 ppc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="alsa hardened opengl"
@@ -21,6 +21,13 @@ DEPEND="virtual/libc
 	>=media-libs/libsdl-1.2.0
 	>=media-libs/sdl-net-1
 	media-libs/sdl-sound"
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+
+	epatch "${FILESDIR}"/${PV}-64bit.patch
+}
 
 src_compile() {
 	local myconf=
@@ -42,6 +49,6 @@ src_compile() {
 
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog INSTALL NEWS README THANKS
+	dodoc AUTHORS ChangeLog NEWS README THANKS
 	prepgamesdirs
 }

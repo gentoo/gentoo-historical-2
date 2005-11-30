@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla/mozilla-1.7.11.ebuild,v 1.1 2005/08/03 17:00:22 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla/mozilla-1.7.11.ebuild,v 1.1.1.1 2005/11/30 09:52:15 chriswhite Exp $
 
 unset ALLOWED_FLAGS  # stupid extra-functions.sh ... bug 49179
 inherit flag-o-matic toolchain-funcs eutils mozconfig mozilla-launcher makeedit multilib
@@ -24,10 +24,10 @@ SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/${PN}${MY_PV}/s
 	mirror://gentoo/mozilla-firefox-1.0-4ft2.patch.bz2
 	http://dev.gentoo.org/~agriffis/dist/mozilla-1.7.10-nsplugins-v2.patch"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
 SLOT="0"
 LICENSE="MPL-1.1 NPL-1.1"
-IUSE="crypt gnome java ldap mozcalendar mozdevelop moznocompose moznoirc moznomail mozsvg mozxmlterm postgres ssl"
+IUSE="crypt gnome java ldap mozcalendar mozdevelop moznocompose moznoirc moznomail mozsvg postgres ssl"
 
 # xrender.pc appeared for the first time in xorg-x11-6.7.0-r2
 # and is required to build with support for cairo.  #71504
@@ -167,7 +167,6 @@ src_compile() {
 	mozconfig_use_enable gnome gnomevfs
 	mozconfig_use_extension gnome gnomevfs
 	mozconfig_use_extension !moznoirc irc
-	mozconfig_use_extension mozxmlterm xmlterm
 	mozconfig_use_extension postgres sql
 	if use postgres ; then
 		export MOZ_ENABLE_PGSQL=1
@@ -256,7 +255,7 @@ src_install() {
 
 	# Most of the installation happens here
 	dodir ${MOZILLA_FIVE_HOME}
-	cp -RL --no-preserve=links ${S}/dist/bin/* ${D}${MOZILLA_FIVE_HOME}
+	cp -RL ${S}/dist/bin/* ${D}${MOZILLA_FIVE_HOME}
 
 	# Create directory structure to support portage-installed extensions.
 	# See update_chrome() in mozilla-launcher

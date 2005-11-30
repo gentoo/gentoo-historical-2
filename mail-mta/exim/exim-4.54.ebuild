@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.54.ebuild,v 1.1 2005/10/08 10:10:01 peitolm Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/exim/exim-4.54.ebuild,v 1.1.1.1 2005/11/30 09:50:44 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.exim.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="alpha amd64 hppa ppc ~ppc64 sparc x86"
 
 PROVIDE="virtual/mta"
 DEPEND=">=sys-apps/sed-4.0.5
@@ -21,6 +21,7 @@ DEPEND=">=sys-apps/sed-4.0.5
 	pam? ( >=sys-libs/pam-0.75 )
 	tcpd? ( sys-apps/tcp-wrappers )
 	ssl? ( >=dev-libs/openssl-0.9.6 )
+	gnutls? ( net-libs/gnutls )
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	mysql? ( >=dev-db/mysql-3.23.28 )
 	postgres? ( >=dev-db/postgresql-7 )
@@ -56,8 +57,8 @@ src_unpack() {
 		-e "s:# AUTH_CRAM_MD5=yes:AUTH_CRAM_MD5=yes:" \
 		-e "s:# AUTH_PLAINTEXT=yes:AUTH_PLAINTEXT=yes:" \
 		-e "s:BIN_DIRECTORY=/usr/exim/bin:BIN_DIRECTORY=/usr/sbin:" \
-		-e "s:COMPRESS_COMMAND=/opt/gnu/bin/gzip:COMPRESS_COMMAND=/bin/gzip:" \
-		-e "s:ZCAT_COMMAND=/opt/gnu/bin/zcat:ZCAT_COMMAND=/bin/zcat:" \
+		-e "s:COMPRESS_COMMAND=/usr/bin/gzip:COMPRESS_COMMAND=/bin/gzip:" \
+		-e "s:ZCAT_COMMAND=/usr/bin/zcat:ZCAT_COMMAND=/bin/zcat:" \
 		-e "s:CONFIGURE_FILE=/usr/exim/configure:CONFIGURE_FILE=/etc/exim/exim.conf:" \
 		-e "s:EXIM_MONITOR=eximon.bin:# EXIM_MONITOR=eximon.bin:" \
 		-e "s:# INFO_DIRECTORY=/usr/local/info:INFO_DIRECTORY=/usr/share/info:" \
@@ -140,7 +141,7 @@ src_unpack() {
 				-e "s:# \(USE_GNUTLS=yes\):\1:" \
 				-e "s:# \(TLS_LIBS=-lgnutls -ltasn1 -lgcrypt\):\1:"Local/Makefile
 		else
-			sed \
+			sed -i \
 				-e "s:# \(TLS_LIBS=-lssl -lcrypto\):\1:" Local/Makefile
 		fi
 	fi

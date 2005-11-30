@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/kbiff/kbiff-3.7.1.ebuild,v 1.1 2004/11/18 23:35:57 motaboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/kbiff/kbiff-3.7.1.ebuild,v 1.1.1.1 2005/11/30 09:49:46 chriswhite Exp $
 
-inherit kde
+inherit kde eutils
 
 DESCRIPTION="KDE new mail notification utility (biff)"
 HOMEPAGE="http://www.granroth.org/kbiff/"
@@ -10,10 +10,10 @@ SRC_URI="http://devel-home.kde.org/~granroth/${PN}/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
-DEPEND=">=kde-base/kdebase-3"
+DEPEND="|| ( >=kde-base/kdelibs-3 >=kde-base/kdebase-3 )"
 need-kde 3
 
 src_unpack() {

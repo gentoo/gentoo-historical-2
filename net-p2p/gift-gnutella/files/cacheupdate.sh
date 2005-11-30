@@ -1,16 +1,23 @@
 #!/bin/bash
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-gnutella/files/cacheupdate.sh,v 1.1 2004/09/12 04:26:26 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-gnutella/files/cacheupdate.sh,v 1.1.1.1 2005/11/30 09:51:23 chriswhite Exp $
 
 if [ -d ~/.giFT/Gnutella/ ]; then
 	cd ~/.giFT/Gnutella
-	wget http://gwebcache.squinky.gotdns.com/perlgcache.cgi?get=1\&hostfile=1\&net=gnutella2\&client=GEN2\&version=0.1 -O gwebcaches.new || die
-	grep "u|" gwebcaches.new > gwebcaches.new1
-	sed -i -e 's:u|::g' gwebcaches.new1
-	sed -i -e 's:|.*::g' gwebcaches.new1
-	mv gwebcaches.new1 gwebcaches
-	rm gwebcaches.new
+	wget http://crab.bishopston.net:3558/?urlfile=1\&client=GEN2\&version=0.2 -O gwebcaches.new || die "Unable to retrieve new caches."
+	if [ "`grep ERROR gwebcaches.new`" ]; then
+		cat gwebcaches.new
+	else
+		mv gwebcaches.new gwebcaches
+	fi
+	wget http://crab.bishopston.net:3558/?hostfile=1\&client=GEN2\&version=0.2 -O nodes.new || die "Unable to retrieve new hosts."
+	if [ "`grep ERROR nodes.new`" ]; then
+		cat nodes.new
+	else
+		mv nodes.new nodes
+	fi
+	echo "Update complete!"
 else
 	echo "Please emerge gift-gnutella and run gift-setup."
 fi

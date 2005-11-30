@@ -1,6 +1,32 @@
-# ChangeLog for app-emulation/daphne
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/daphne/ChangeLog,v 1.1 2003/09/09 16:26:49 vapier Exp $
+# ChangeLog for games-emulation/daphne
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/daphne/ChangeLog,v 1.1.1.1 2005/11/30 09:50:20 chriswhite Exp $
+
+  10 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  daphne-0.99.6-r2.ebuild:
+  use user CFLAGS instead (bug #96403)
+
+  07 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  daphne-0.99.6-r2.ebuild:
+  filter flags before they're placed in the Makefile; error check sed; tidy
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  daphne-0.99.6-r2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
+  daphne-0.99.6-r2.ebuild:
+  Added IUSE and metadata.xml to package.
+
+*daphne-0.99.6-r2 (04 Nov 2003)
+
+  04 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Update patch to resolve #32586.
+
+*daphne-0.99.6-r1 (30 Oct 2003)
+
+  30 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Fix stupid path bug i made #32314.
 
 *daphne-0.99.6 (15 Jul 2003)
 

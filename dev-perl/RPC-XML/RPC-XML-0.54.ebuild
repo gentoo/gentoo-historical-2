@@ -1,30 +1,30 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/RPC-XML/RPC-XML-0.54.ebuild,v 1.1 2004/06/06 14:46:58 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/RPC-XML/RPC-XML-0.54.ebuild,v 1.1.1.1 2005/11/30 09:53:15 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A  Perl extension interface to James Clark's XML parser, expat."
-SRC_URI="http://cpan.valueclick.com/modules/by-module/RPC/${P}.tar.gz"
-HOMEPAGE="http://cpan.valueclick.com/modules/by-module/RPC/${PN}.${PV}.readme"
+SRC_URI="mirror://cpan/authors/id/R/RJ/RJRAY/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~rjray/${P}/"
 
 SLOT="0"
 LICENSE="Artistic"
 KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
+IUSE="apache2"
 
 SRC_TEST="do"
 
 DEPEND="dev-perl/libwww-perl
 	>=dev-perl/XML-Parser-2.31
-	!apache2? ( <dev-perl/mod_perl-1.99* )"
+	!apache2? ( <www-apache/mod_perl-1.99 )"
 
 pkg_postinst() {
 	perl-module_pkg_postinst
 
 	SETWARN=0
 	has_version '=net-www/apache-2*' && HAVE_APACHE2=1
-	has_version '>=dev-perl/mod_perl-1.99*' && HAVE_MP2=2
+	has_version '>=www-apache/mod_perl-1.99' && HAVE_MP2=2
 
 	[ -n "${HAVE_APACHE2}" ] && SETWARN=1
 	[ -n "${HAVE_MP2}" ] && SETWARN=1

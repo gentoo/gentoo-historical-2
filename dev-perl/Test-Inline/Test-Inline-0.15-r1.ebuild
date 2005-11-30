@@ -1,22 +1,23 @@
-# Copyright 2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Inline/Test-Inline-0.15-r1.ebuild,v 1.1 2002/10/30 07:20:40 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Inline/Test-Inline-0.15-r1.ebuild,v 1.1.1.1 2005/11/30 09:53:03 chriswhite Exp $
 
 inherit perl-module
 
 MY_P=Test-Inline-${PV}
-S=${WORKDIR}/${MY_P}
 DESCRIPTION="Inline test suite support for Perl"
-SRC_URI="http://www.cpan.org/modules/by-module/Test/${MY_P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/search?dist=Test-Inline"
+SRC_URI="http://www.cpan.org/modules/by-module/Test/${MY_P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+KEYWORDS="x86 ppc sparc alpha hppa amd64"
+IUSE=""
 
-DEPEND="${DEPEND}
-	dev-perl/Memoize
-	dev-perl/Test-Simple"
+DEPEND="perl-core/Memoize
+	perl-core/Test-Simple"
+
+S=${WORKDIR}/${MY_P}
 
 src_compile() {
 	perl-module_src_compile

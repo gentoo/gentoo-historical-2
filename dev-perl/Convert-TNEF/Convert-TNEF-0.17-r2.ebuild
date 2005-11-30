@@ -1,18 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-TNEF/Convert-TNEF-0.17-r2.ebuild,v 1.1 2002/11/26 17:29:49 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-TNEF/Convert-TNEF-0.17-r2.ebuild,v 1.1.1.1 2005/11/30 09:52:35 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
-
 DESCRIPTION="A Perl module for reading TNEF files"
-SRC_URI="http://www.cpan.org/modules/by-module/Convert/DOUGW/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/D/DO/DOUGW/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Convert/DOUGW/${P}.readme"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+IUSE=""
 
-DEPEND="${DEPEND} 
+DEPEND="${DEPEND}
 	dev-perl/MIME-tools"

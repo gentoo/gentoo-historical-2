@@ -1,6 +1,118 @@
 # ChangeLog for dev-perl/MIME-tools
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MIME-tools/ChangeLog,v 1.1 2002/10/23 15:18:28 raker Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MIME-tools/ChangeLog,v 1.1.1.1 2005/11/30 09:53:20 chriswhite Exp $
+
+  19 Oct 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  MIME-tools-5.417.ebuild:
+  Unstable on hppa.
+
+  14 Oct 2005; Aron Griffis <agriffis@gentoo.org> MIME-tools-5.417.ebuild:
+  Mark 5.417 stable on alpha
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> MIME-tools-5.417.ebuild:
+  Mark 5.417 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> MIME-tools-5.417.ebuild:
+  add ~ia64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-5.416.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-5.415.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-5.417.ebuild:
+  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-5.415.ebuild, MIME-tools-5.416.ebuild, MIME-tools-5.417.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+*MIME-tools-5.417 (28 Apr 2005)
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -MIME-tools-5.411a.ebuild, -MIME-tools-5.411a-r1.ebuild,
+  -MIME-tools-5.411a-r2.ebuild, -MIME-tools-5.413.ebuild,
+  -MIME-tools-5.414.ebuild, +MIME-tools-5.417.ebuild:
+  Cleaning
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> MIME-tools-5.415.ebuild:
+  Stable on ppc64
+
+*MIME-tools-5.416 (09 Jan 2005)
+
+  09 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  +MIME-tools-5.416.ebuild:
+  new version; bug 69670
+
+  29 Dec 2004; Markus Rothe <corsair@gentoo.org> MIME-tools-5.415.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  02 Nov 2004; Simon Stelling <blubb@gentoo.org> MIME-tools-5.415.ebuild:
+  stable on amd64 for security reasons (bug #69181)
+
+  29 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  MIME-tools-5.415.ebuild:
+  Stable on alpha, bug 69181.
+
+  28 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-5.415.ebuild:
+  marking stable on x86 and sparc - bug 69181
+
+  28 Oct 2004; <SeJo@gentoo.org> MIME-tools-5.415.ebuild:
+  stable on ppc gsla: 69181
+
+*MIME-tools-5.415 (28 Oct 2004)
+
+  28 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +MIME-tools-5.415.ebuild:
+  New version on cpan; security fixes - see bug 69181
+
+  15 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-5.414.ebuild:
+  New version on cpan; bug 66779
+
+  27 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-5.413.ebuild:
+  Typo in homepage; bug 65443; thanks for catching this Matthias Liertzer
+  <m_liertzer@gmx.at>
+
+*MIME-tools-5.413 (26 Sep 2004)
+
+  26 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  +MIME-tools-5.413.ebuild, -MIME-tools-6.20002.ebuild:
+  New version on CPAN; bug 65422; Thanks to Steph L <milter@free.fr> for keeping
+  me on my toes today
+
+  26 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  -MIME-tools-6.20002.ebuild:
+  The version was misnumbered upstream and shouldn't have existed (it turns out)
+
+*MIME-tools-6.20002 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  MIME-tools-6.20002.ebuild:
+  new version, dep for soap-lite
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*MIME-tools-5.411a-r2 (26 Nov 2002)
+
+  26 Nov 2002; Michael Cummings <mcummings@gentoo.org> 
+  MIME-tools-5.411a-r2.ebuild digest-MIME-tools-5.411a-r2:
+
+  Missing necessary dependancies
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*MIME-tools-5.411a-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
 
 *MIME-tools-5.411a (23 Oct 2002)
 

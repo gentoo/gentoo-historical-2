@@ -1,6 +1,18 @@
 # ChangeLog for games-arcade/aop
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/aop/ChangeLog,v 1.1 2004/12/02 10:26:27 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/aop/ChangeLog,v 1.1.1.1 2005/11/30 09:51:59 chriswhite Exp $
+
+  02 Jun 2005; Joseph Jezak <josejx@gentoo.org> aop-0.6.ebuild:
+  Marked ppc stable.
+
+  09 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> aop-0.6.ebuild:
+  added ~amd64 KEYWORD, fixes #84278
+
+  16 Jan 2005; Jason Wever <weeve@gentoo.org> aop-0.6.ebuild:
+  Added ~sparc keyword.
+
+  21 Dec 2004; Joseph Jezak <josejx@gentoo.org> aop-0.6.ebuild:
+  Marked ~ppc.
 
 *aop-0.6 (02 Dec 2004)
 

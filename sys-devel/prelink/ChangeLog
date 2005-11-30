@@ -1,8 +1,144 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/prelink/ChangeLog,v 1.1 2002/11/15 14:49:27 cretin Exp $
+# ChangeLog for sys-devel/prelink
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/prelink/ChangeLog,v 1.1.1.1 2005/11/30 09:53:36 chriswhite Exp $
 
-*prelink-20021002 (15 Nov 2002):
+*prelink-20050610 (20 Jul 2005)
+
+  20 Jul 2005; Martin Schlemmer <azarah@gentoo.org>
+  +prelink-20050610.ebuild:
+  Update version, bug #99389.
+
+*prelink-20050314 (19 May 2005)
+
+  19 May 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/prelink-20050314-amd64-gcc4.patch, +prelink-20050314.ebuild:
+  Update version.  Fix building on amd64 with gcc4.
+
+*prelink-20050207 (13 Mar 2005)
+
+  13 Mar 2005; Martin Schlemmer <azarah@gentoo.org>
+  +prelink-20050207.ebuild:
+  Update version. Add the blacklisted stuff from Fedora. Revamp the generation
+  of the env.d file.
+
+  11 Mar 2005; Heinrich Wendel <lanius@gentoo.org> prelink-20041123.ebuild:
+  stable on x86,amd64
+
+*prelink-20041123 (12 Feb 2005)
+
+  12 Feb 2005; Heinrich Wendel <lanius@gentoo.org> +prelink-20041123.ebuild:
+  version bump
+
+  10 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> prelink-20040317.ebuild,
+  prelink-20040707.ebuild:
+  Added in a message with a link to the Prelink Guide, bug #77337
+
+  09 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  prelink-20040707.ebuild:
+  Stable on alpha.
+
+  23 Oct 2004; Stefan Jones <cretin@gentoo.org> :
+  Mark Stable on x86
+
+  14 Oct 2004; Stefan Jones <cretin@gentoo.org> :
+  Run env-update after install and do not install prelink.conf
+
+*prelink-20040707 (09 Sep 2004)
+
+  10 Sep 2004; Stefan Jones <cretin@gentoo.org> :
+  Ready for big time, added env.d entry
+
+  09 Sep 2004; Stefan Jones <cretin@gentoo.org> :
+  New Version and add experimental reexec of init
+  Bugs #42929 and #56396
+
+*prelink-20040317 (05 Apr 2004)
+
+  15 Apr 2004; Stefan Jones <cretin@gentoo.org> :
+  Add dep for glibc-2.3.2-r9 as per bug 47644
+
+  13 Apr 2004; Stefan Jones <cretin@gentoo.org> :
+  Add dep for elfutils-0.94 as per bug 47644
+
+  11 Apr 2004; Stefan Jones <cretin@gentoo.org> :
+  Mark as stable for all remaining archs
+
+  09 Apr 2004; Stefan Jones <cretin@gentoo.org> :
+  Put in stable to fix bugs
+  
+  05 Apr 2004; Stefan Jones <cretin@gentoo.org> :
+  New version from what was Red Hat rawhide, see if it fixes 45225
+
+*prelink-20040216 (24 Feb 2004)
+
+  24 Feb 2004; Stefan Jones <cretin@gentoo.org> :
+  New version from what was Red Hat rawhide.
+
+*prelink-20031012 (20 Oct 2003)
+
+  20 Oct 2003; Stefan Jones <cretin@gentoo.org> :
+  New version from Red Hat rawhide.
+
+*prelink-20030902 (24 Sep 2003)
+
+  24 Sep 2003; Stefan Jones <cretin@gentoo.org> :
+  New version from Red Hat rawhide.
+
+*prelink-20030811 (19 Aug 2003)
+
+  27 Aug 2003; Stefan Jones <cretin@gentoo.org> :
+  mark stable as it fixes bug #19285
+
+  19 Aug 2003; Stefan Jones <cretin@gentoo.org> :
+  New version from Red Hat rawhide.
+
+*prelink-20030505 (18 May 2003)
+
+  21 May 2003; Stefan Jones <cretin@gentoo.org> :
+  Added the glibc231 patch so it now compiles on older glibc versions.
+
+  18 May 2003; Martin Schlemmer <azarah@gentoo.org> prelink-20030505.ebuild,
+  files/prelink-20030505-no-undosyslibs-test.patch:
+  New version.
+
+  28 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> prelink-20030217.ebuild :
+  Added installation of config file.
+
+09 Mar 2003; Stefan Jones <cretin@gentoo.org> prelink-*.ebuild :
+  Removed sparc from KEYWORDS as it is not supported by anyone.
+
+*prelink-20030217 (07 Mar 2003)
+
+  14 Apr 2003; Stefan Jones <cretin@gentoo.org> :
+  Added patch so compiles under sys-libs/glibc-2.3.1, moved to stable.
+
+  09 Mar 2003; Stefan Jones <cretin@gentoo.org> prelink-20030217.ebuild :
+  Changed DEPEND to glibc-2.3.2
+
+  07 Mar 2003; Stefan Jones <cretin@gentoo.org> prelink-20030217.ebuild :
+  New version from redhat rawhide.
+
+*prelink-20021213 (02 Jan 2003)
+
+  14 Apr 2003; Stefan Jones <cretin@gentoo.org> :
+  Put in stable, it is less buggier than last one
+  
+  02 Jan 2003; Martin Schlemmer <azarah@gentoo.org> prelink-20021213.ebuild :
+  Update version.
+
+*prelink-20021002-r1 (05 Dec 2002)
+
+  13 Apr 2003: Stefan Jones <cretin@gentoo.org> :
+  Added prelink-20021002-copyreloc.patch from bug #14924
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> :
+  Changed sparc ~sparc keywords.
+ 
+  05 Dec 2002; Martin Schlemmer <azarah@gentoo.org> prelink-20021002-r1.ebuild :
+  Do not run the undosyslibs.sh test, as it always fails if glibc is prelinked.
+  Thanks to Stefan Jones <cretin@gentoo.org> for this info/fix.
+
+*prelink-20021002 (15 Nov 2002)
 	
-	15 Nov 2002; Stefan Jones <cretin@gentoo.org> prelink-20021002.ebuild :
-	Initial masked ebuild you your hacking and breaking pleasure!
+  15 Nov 2002; Stefan Jones <cretin@gentoo.org> prelink-20021002.ebuild :
+  Initial masked ebuild you your hacking and breaking pleasure!

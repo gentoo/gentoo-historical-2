@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/freenet/freenet-0.5.2.1-r8.ebuild,v 1.1 2004/02/27 00:40:02 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/freenet/freenet-0.5.2.1-r8.ebuild,v 1.1.1.1 2005/11/30 09:51:24 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
@@ -12,7 +14,7 @@ RESTRICT="nomirror"
 HOMEPAGE="http://freenetproject.org/"
 
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86 ~ppc ~amd64"
 LICENSE="GPL-2"
 
 DEPEND="virtual/jre
@@ -39,17 +41,8 @@ src_install() {
 }
 
 pkg_preinst() {
-	if ! groupmod freenet > /dev/null 2>&1; then
-		groupadd freenet 2> /dev/null || \
-		die "Failed to create freenet group"
-	fi
-	if ! usermod freenet > /dev/null 2>&1; then
-		useradd -g freenet -s /bin/bash -d /var/empty \
-			-c "freenet" freenet 2> /dev/null || \
-			die "Failed to create freenet user"
-	else
-		usermod -s /bin/bash freenet
-	fi
+	enewgroup freenet
+	enewuser freenet -1 /bin/bash /var/freenet freenet
 }
 
 pkg_postinst() {
@@ -70,8 +63,8 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if [ -z has_version ]; then
-		einfo "Please remove /var/freenet manually if you are't going to"
+	if ! has_version net-p2p/freenet; then
+		einfo "Please remove /var/freenet manually if you are not going to"
 		einfo "continue to use Freenet on this machine!"
 	fi
 }
@@ -85,12 +78,15 @@ pkg_config() {
 	if [ -z "$(echo ${YN}|sed -e s/y//i)" ];then
 		einfo "Press U within 2 seconds to try an unstable snapshot"
 		read -n 1 -t 2 YN
+		cp -f /usr/lib/freenet/freenet.jar /usr/lib/freenet/freenet.jar.old
 		if [ "${YN}" == "U" ] || [ "${YN}" == "u" ]; then
 			wget http://freenetproject.org/snapshots/freenet-unstable-latest.jar -O /usr/lib/freenet/freenet.jar
-			wget http://freenetproject.org/snapshots/unstable.ref -O /var/freenet/seednodes.ref
+			wget http://freenetproject.org/snapshots/unstable.ref.bz2 -O /var/freenet/seednodes.ref.bz2
+			bunzip2 -f /var/freenet/seednodes.ref.bz2
 		else
 			wget http://freenetproject.org/snapshots/freenet-latest.jar -O /usr/lib/freenet/freenet.jar
-			wget http://freenetproject.org/snapshots/seednodes.ref -O /var/freenet/seednodes.ref
+			wget http://freenetproject.org/snapshots/seednodes.ref.bz2 -O /var/freenet/seednodes.ref.bz2
+			bunzip2 -f /var/freenet/seednodes.ref.bz2
 		fi
 		touch -d "1/1/1970" /var/freenet/seednodes.ref
 		chown freenet:freenet /var/freenet/seednodes.ref

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/ciphire-mail/ciphire-mail-1.0.0.ebuild,v 1.1 2005/07/13 18:53:57 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/ciphire-mail/ciphire-mail-1.0.0.ebuild,v 1.1.1.1 2005/11/30 09:49:50 chriswhite Exp $
 
-inherit eutils
+inherit eutils qt3
 
 LOC="/opt/ciphire-mail"
 DESCRIPTION="Ciphire Mail is an email encryption tool, operating seamlessly in the background."
@@ -11,13 +11,13 @@ SRC_URI="${P}-linux-i686.tar.gz"
 LICENSE="Ciphire"
 SLOT="0"
 # Do not support amd64 as yet, as we need 64bit support
-KEYWORDS="-* ~x86 -amd64"
+KEYWORDS="-* -amd64 x86"
 RESTRICT="nostrip fetch nomirror"
 IUSE="X gnome kde"
 
 DEPEND=
 RDEPEND="X? ( virtual/x11 )
-	x86? ( >=x11-libs/qt-3.2 )
+	x86? ( $(qt_min_version 3.2) )
 	amd64? ( app-emulation/emul-linux-x86-glibc
 			 >=app-emulation/emul-linux-x86-baselibs-2.1.1
 			 X? ( >=app-emulation/emul-linux-x86-xlibs-1.2
@@ -44,7 +44,7 @@ pkg_setup() {
 		die "Old version of ciphire-mail installed"
 	fi
 
-	check_license || die "License check failed"
+	check_license Ciphire
 }
 
 src_unpack() {

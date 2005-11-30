@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gsnes9x/gsnes9x-3.12.ebuild,v 1.1 2005/07/22 00:13:20 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gsnes9x/gsnes9x-3.12.ebuild,v 1.1.1.1 2005/11/30 09:50:21 chriswhite Exp $
 
 inherit eutils
 

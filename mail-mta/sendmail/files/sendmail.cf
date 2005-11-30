@@ -27,29 +27,29 @@
 ######################################################################
 ######################################################################
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
 
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-
-
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
-
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
+
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
+
+
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
 # level 10 config file format
 V10/Berkeley
@@ -1240,7 +1240,7 @@ Sauthinfo
 ###   Local and Program Mailer specification   ###
 ##################################################
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
 #
 #  Envelope sender rewriting
@@ -1292,7 +1292,7 @@ Mprog,		P=/usr/sbin/smrsh, F=lsDFMoqeu9, S=EnvFromL/HdrFromL, R=EnvToL/HdrToL, D
 ###   SMTP Mailer specification   ###
 #####################################
 
-#####  $Id: sendmail.cf,v 1.1 2004/05/30 09:20:40 robbat2 Exp $  #####
+#####  $Id: sendmail.cf,v 1.1.1.1 2005/11/30 09:50:52 chriswhite Exp $  #####
 
 #
 #  common sender and masquerading recipient rewriting

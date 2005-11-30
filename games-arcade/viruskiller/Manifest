@@ -1,3 +1,4 @@
-MD5 5a039497fd26db84e5233c78ace9db37 files/digest-viruskiller-0.1 70
-MD5 61b43a8a7e6d5caa700b9b57fa45122e ChangeLog 396
-MD5 0a5942c791722b76e20d8dc578d972dd viruskiller-0.1.ebuild 1099
+MD5 d6893c165b6e3cf9a9f6a1f8d359540f viruskiller-1.0.ebuild 1209
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 1706b90ee384e057c40d660a204ec243 ChangeLog 1353
+MD5 c828fb45b80d61372ef175e74b1157f6 files/digest-viruskiller-1.0 70

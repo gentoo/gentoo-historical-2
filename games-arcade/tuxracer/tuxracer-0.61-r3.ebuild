@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/tuxracer/tuxracer-0.61-r3.ebuild,v 1.1 2003/09/10 19:29:22 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/tuxracer/tuxracer-0.61-r3.ebuild,v 1.1.1.1 2005/11/30 09:51:58 chriswhite Exp $
 
-inherit games eutils gcc
+inherit eutils flag-o-matic games
 
 DESCRIPTION="take on the role of Tux, the Linux Penguin, as he races down steep, snow-covered mountains"
 HOMEPAGE="http://tuxracer.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/tuxracer/${PN}-data-${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="alpha amd64 ppc x86"
 IUSE="stencil-buffer"
 
 DEPEND="virtual/opengl
@@ -21,33 +21,40 @@ DEPEND="virtual/opengl
 
 src_unpack() {
 	unpack ${P}.tar.gz
-	cd ${S}
+	cd "${S}"
 	unpack ${PN}-data-${PV}.tar.gz
 
 	# braindead check in configure fails - hack approach
-	epatch ${FILESDIR}/${PV}-configure.in.patch
-	epatch ${FILESDIR}/${PV}-gcc3.patch
+	epatch "${FILESDIR}"/${PV}-configure.in.patch
+	epatch "${FILESDIR}"/${PV}-gcc3.patch
 
-	autoconf || die "autoconf failed"
+	export WANT_AUTOCONF=2.5
+	aclocal && \
+	autoheader && \
+	automake && \
+	autoconf || die "autotools failed"
 }
 
 src_compile() {
+	# alpha needs -mieee for this game to avoid FPE
+	use alpha && append-flags -mieee
+
 	egamesconf \
-		`use_enable stencil-buffer` \
-		--with-data-dir=${GAMES_DATADIR}/${PN} \
+		$(use_enable stencil-buffer) \
+		--with-data-dir="${GAMES_DATADIR}/${PN}" \
 		|| die
-	make || die "make failed"
+	emake || die "emake failed"
 }
 
 src_install() {
-	make install DESTDIR=${D} || die "install failed"
+	make DESTDIR="${D}" install || die "install failed"
 
-	dodir ${GAMES_DATADIR}/${PN}
-	cp -r ${PN}-data-${PV}/* ${D}/${GAMES_DATADIR}/${PN}/
+	dodir "${GAMES_DATADIR}/${PN}"
+	cp -r ${PN}-data-${PV}/* "${D}/${GAMES_DATADIR}/${PN}/" \
+		|| die "cp failed"
 
-	dodoc README AUTHORS NEWS
+	dodoc AUTHORS ChangeLog README
 	dohtml -r html/*
-
 	prepgamesdirs
 }
 

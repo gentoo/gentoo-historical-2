@@ -1,6 +1,77 @@
 # ChangeLog for x11-libs/libX11
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libX11/ChangeLog,v 1.1 2005/08/08 04:23:45 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libX11/ChangeLog,v 1.1.1.1 2005/11/30 09:54:11 chriswhite Exp $
+
+*libX11-0.99.3 (11 Nov 2005)
+
+  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libX11-0.99.3.ebuild:
+  Bump for 7.0RC2.
+
+  10 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>; libX11-0.99.2.ebuild:
+  (#111876) Add dep on xf86bigfontproto. Will be fixed in source in RC2.
+
+  31 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -files/fix-xkeysymdb-location.patch, -libX11-0.99.0.ebuild,
+  -libX11-0.99.0-r1.ebuild, -libX11-0.99.1_pre20050905.ebuild:
+  Pull old versions.
+
+  30 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libX11-0.99.2.ebuild:
+  Move some proto deps to reflect compile-time requirements.
+
+*libX11-0.99.2 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +libX11-0.99.2.ebuild:
+  Bump for 7.0 RC1.
+
+  08 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libX11-0.99.1_pre20050905.ebuild:
+  Add a dependency on an appropriate version of x11-misc/util-macros.  Thanks to
+  James Cloos in bug #108300.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  06 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  libX11-0.99.1_pre20050905.ebuild:
+  Fixed snapshot SRC_URI.
+
+*libX11-0.99.1_pre20050905 (06 Sep 2005)
+
+  06 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libX11-0.99.1_pre20050905.ebuild, -libX11-0.99.1.ebuild:
+  Fixed version name in anticipation of upstream release.
+
+*libX11-0.99.1 (05 Sep 2005)
+
+  05 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +libX11-0.99.1.ebuild:
+  New snapshot.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> libX11-0.99.0-r1.ebuild:
+  Marked ~sh
+
+  26 Aug 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  files/fix-xkeysymdb-location.patch:
+  Changed filetype of fix-xkeysymdb-location.patch dos->unix.  Fixes bug
+  #103766.
+
+*libX11-0.99.0-r1 (23 Aug 2005)
+
+  23 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/fix-xkeysymdb-location.patch, +libX11-0.99.0-r1.ebuild:
+  (fd.o #4050) Fix VT switches. Woohoo!
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libX11-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libX11-0.99.0.ebuild:
+  Marked ~amd64
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libX11-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *libX11-0.99.0 (08 Aug 2005)
 

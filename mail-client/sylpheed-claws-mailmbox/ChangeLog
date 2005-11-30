@@ -1,6 +1,42 @@
 # ChangeLog for mail-client/sylpheed-claws-mailmbox
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-mailmbox/ChangeLog,v 1.1 2004/10/17 23:09:16 genone Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-mailmbox/ChangeLog,v 1.1.1.1 2005/11/30 09:49:57 chriswhite Exp $
+
+*sylpheed-claws-mailmbox-1.4 (13 Nov 2005)
+
+  13 Nov 2005; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-mailmbox-1.2.ebuild, +sylpheed-claws-mailmbox-1.4.ebuild:
+  Version bump required for newer SC versions. Also add teh .a/.la kill from
+  bug 111481.
+
+  15 Oct 2005; Jason Wever <weeve@gentoo.org>
+  sylpheed-claws-mailmbox-1.2.ebuild:
+  Added ~sparc keyword.
+
+*sylpheed-claws-mailmbox-1.2 (13 Aug 2005)
+
+  13 Aug 2005; Marius Mauch <genone@gentoo.org>
+  +sylpheed-claws-mailmbox-1.2.ebuild:
+  update for sylpheed-claws-1.9.13
+
+  29 Mar 2005; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-mailmbox-0.9.ebuild:
+  Adding gtk include dir to make call.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
+  sylpheed-claws-mailmbox-0.9.ebuild:
+  ~alpha keyword, bug 66691.
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  sylpheed-claws-mailmbox-0.9.ebuild:
+  KEYWORDS ~amd64.
+
+  17 Oct 2004; Jason Wever <weeve@gentoo.org>
+  sylpheed-claws-mailmbox-0.9.ebuild:
+  Added ~sparc keyword wrt bug #66691.
 
 *sylpheed-claws-mailmbox-0.9 (18 Oct 2004)
 

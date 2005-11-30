@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vino/vino-2.10.0-r1.ebuild,v 1.1 2005/08/26 09:29:13 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vino/vino-2.10.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:37 chriswhite Exp $
 
 inherit gnome2 eutils
 

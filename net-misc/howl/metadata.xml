@@ -3,9 +3,8 @@
 <pkgmetadata>
  <herd>net-misc</herd>
  <maintainer>
-  <email>sandymac@gentoo.org</email>
-  <name>William A McArthur, Jr.</name>
-  <description>Just the guy who made the Gentoo package.</description>
+	 <email>compnerd@gentoo.org</email>
+	 <name>Saleem Abdulrasool</name>
  </maintainer>
  <longdescription>
   Howl is a cross-platform implementation of the Zeroconf networking standard.

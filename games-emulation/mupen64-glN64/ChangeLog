@@ -1,6 +1,43 @@
-# ChangeLog for games-emulation/blight-glN64
+# ChangeLog for games-emulation/mupen64-glN64
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64-glN64/ChangeLog,v 1.1 2005/01/06 03:04:36 morfic Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64-glN64/ChangeLog,v 1.1.1.1 2005/11/30 09:50:20 chriswhite Exp $
+
+  20 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  mupen64-glN64-0.4.1_rc2-r1.ebuild:
+  remove gtk2 use flag; tidy
+
+  24 Apr 2005; Daniel Goller <morfic@gentoo.org>
+  +files/mupen64-glN64-noasmfix.patch, -mupen64-glN64-0.4.1_pre1.ebuild,
+  mupen64-glN64-0.4.1_rc2-r1.ebuild:
+  amd64 fixes
+
+  23 Apr 2005; Daniel Goller <morfic@gentoo.org>
+  mupen64-glN64-0.4.1_rc2-r1.ebuild:
+  adding amd64
+
+  17 Apr 2005; Daniel Goller <morfic@gentoo.org>
+  +files/mupen64-glN64-ucode.patch, mupen64-glN64-0.4.1_rc2-r1.ebuild:
+  added ucode patch, thanks to alexander.rhodes@brentwood.bc.ca, bug #80547,
+  thanks to Bret Towe for testing
+
+  07 Jan 2005; Daniel Goller <morfic@gentoo.org> metadata.xml:
+  Adding maintainer
+
+*mupen64-glN64-0.4.1_rc2-r1 (07 Jan 2005)
+
+  07 Jan 2005; Daniel Goller <morfic@gentoo.org>
+  +mupen64-glN64-0.4.1_rc2-r1.ebuild, -mupen64-glN64-0.4.1_rc2.ebuild:
+  Forcing upgrade to proper/fixed glN64
+
+  07 Jan 2005; Daniel Goller <morfic@gentoo.org>
+  +files/mupen64-glN64-gtk2.patch, mupen64-glN64-0.4.1_rc2.ebuild:
+  Fixed config dialog problem with gtk2
+
+*mupen64-glN64-0.4.1_rc2 (05 Jan 2005)
+
+  05 Jan 2005; Daniel Goller <morfic@gentoo.org>
+  +mupen64-glN64-0.4.1_rc2.ebuild:
+  New version to work with new mupen64 ebuild
 
 *mupen64-glN64-0.4.1_pre1 (05 Jan 2005)
 

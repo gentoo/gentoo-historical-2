@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-dune/fortune-mod-dune-2.0.1.ebuild,v 1.1 2004/06/05 21:51:26 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-dune/fortune-mod-dune-2.0.1.ebuild,v 1.1.1.1 2005/11/30 09:50:01 chriswhite Exp $
 
 MY_P=${PN}-quotes.${PV}
 DESCRIPTION="Quotes from Frank Herbert's Dune Chronicles"
@@ -9,7 +9,8 @@ SRC_URI="http://dune.s31.pl/${MY_P}.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 hppa mips ppc ppc64 sparc x86"
+IUSE=""
 
 RDEPEND="games-misc/fortune-mod"
 

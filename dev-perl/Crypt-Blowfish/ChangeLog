@@ -1,6 +1,50 @@
 # ChangeLog for dev-perl/Crypt-Blowfish
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-Blowfish/ChangeLog,v 1.1 2002/02/01 21:53:12 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-Blowfish/ChangeLog,v 1.1.1.1 2005/11/30 09:53:22 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Crypt-Blowfish-2.09-r3.ebuild:
+  Mark 2.09-r3 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Crypt-Blowfish-2.09-r3.ebuild:
+  add ~ia64
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Crypt-Blowfish-2.09-r2.ebuild, Crypt-Blowfish-2.09-r3.ebuild:
+  Cleaning
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  Crypt-Blowfish-2.09-r2.ebuild, Crypt-Blowfish-2.09-r3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  25 Feb 2004; Joshua Kinard <kumba@gentoo.org> Crypt-Blowfish-2.09-r3.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+*Crypt-Blowfish-2.09-r3 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*Crypt-Blowfish-2.09-r2 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org>
+  Crypt-Blowfish-2.09-r2.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org>
+  Crypt-Blowfish-2.09-r2.ebuild files/digest-Crypt-Blowfish-2.09-r2 :
+
+  Using eclasses now.
+
+*Crypt-Blowfish-2.09-r1 (3 May 2002)
+  
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :          
+
+  Added LICENSE, SLOT.
 
 *Crypt-Blowfish-2.09 (1 Feb 2002)
 

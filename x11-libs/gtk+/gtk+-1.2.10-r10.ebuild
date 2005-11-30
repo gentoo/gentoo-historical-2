@@ -1,47 +1,44 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-1.2.10-r10.ebuild,v 1.1 2003/03/08 18:33:03 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-1.2.10-r10.ebuild,v 1.1.1.1 2005/11/30 09:54:23 chriswhite Exp $
 
-inherit eutils
+GNOME_TARBALL_SUFFIX="gz"
+inherit gnome.org eutils libtool
 
-IUSE="nls"
-
-S=${WORKDIR}/${P}
 DESCRIPTION="The GIMP Toolkit"
 HOMEPAGE="http://www.gtk.org/"
-SRC_URI="ftp://ftp.gtk.org/pub/gtk/v1.2/${P}.tar.gz
-	ftp://ftp.gnome.org/pub/GNOME/stable/sources/gtk+/${P}.tar.gz
-	http://ftp.gnome.org/pub/GNOME/stable/sources/gtk+/${P}.tar.gz
+SRC_URI="${SRC_URI}
 	http://www.ibiblio.org/gentoo/distfiles/gtk+-1.2.10-r8-gentoo.diff.bz2"
+
+LICENSE="LGPL-2.1"
+SLOT="1"
+KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64 mips"
+IUSE="nls debug"
 
 DEPEND="virtual/x11
 	=dev-libs/glib-1.2*
 	nls? ( sys-devel/gettext
-	dev-util/intltool )"
-
-SLOT="1"
-LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+		dev-util/intltool )"
 
 src_unpack() {
 	unpack ${P}.tar.gz
-	
+
 	cd ${S}/..
-	bzcat ${DISTDIR}/gtk+-1.2.10-r8-gentoo.diff.bz2 | patch -p0
+	epatch ${DISTDIR}/gtk+-1.2.10-r8-gentoo.diff.bz2
 
 	# locale fix by sbrabec@suse.cz
-	cd ${S}	
+	cd ${S}
 	epatch ${FILESDIR}/${PN}-1.2-locale_fix.patch
 }
 
 src_compile() {
 
-	libtoolize --copy --force
+	elibtoolize
 
-	local myconf
+	local myconf=
 	use nls || myconf="${myconf} --disable-nls"
 
-	if [ "${DEBUGBUILD}" ]
+	if use debug
 	then
 		myconf="${myconf} --enable-debug=yes"
 	else
@@ -49,7 +46,7 @@ src_compile() {
 	fi
 
 	econf \
-		--sysconfdir=/etc/X11 \
+		--sysconfdir=/etc \
 		--with-xinput=xfree \
 		--with-x \
 		${myconf} || die
@@ -76,9 +73,11 @@ src_install() {
 }
 
 pkg_postinst() {
+
 	ewarn "Older versions added /etc/X11/gtk/gtkrc which changed settings for"
 	ewarn "all themes it seems.  Please remove it manually as it will not due"
 	ewarn "to /env protection."
 	echo ""
 	einfo "The old gtkrc is available through the new Gentoo gtk theme."
+
 }

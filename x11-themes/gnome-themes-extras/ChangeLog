@@ -1,6 +1,146 @@
 # ChangeLog for x11-themes/gnome-themes-extras
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-themes-extras/ChangeLog,v 1.1 2003/07/27 15:42:26 foser Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gnome-themes-extras/ChangeLog,v 1.1.1.1 2005/11/30 09:51:41 chriswhite Exp $
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  Mark 0.8.1 stable on alpha
+
+  11 Sep 2005; Guy Martin <gmsoft@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  Stable on hppa.
+
+  03 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> ChangeLog:
+  It was ~alpha rather than stable on alpha
+
+  03 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  stable on alpha, wrt bug #101703
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  stable on ia64
+
+  14 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  Stable on AMD64.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  Stable on ppc.
+
+  05 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  Stable on sparc
+
+  04 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gnome-themes-extras-0.8.1.ebuild:
+  Stable on x86.
+
+  24 Apr 2005; <plasmaroo@gentoo.org> gnome-themes-extras-0.8.0-r1.ebuild:
+  Add ~ia64 keyword; bug #89292.
+
+*gnome-themes-extras-0.8.1 (04 Apr 2005)
+
+  04 Apr 2005; Joe McCann <joem@gentoo.org>
+  +gnome-themes-extras-0.8.1.ebuild:
+  new version with icon-cache support
+
+*gnome-themes-extras-0.8.0-r1 (08 Dec 2004)
+
+  08 Dec 2004; Mike Gardiner <obz@gentoo.org>
+  +gnome-themes-extras-0.8.0-r1.ebuild:
+  Don't install the Smooth theme engine, as gnome-themes provides it
+
+*gnome-themes-extras-0.8.0 (30 Nov 2004)
+
+  30 Nov 2004; Mike Gardiner <obz@gentoo.org>
+  +gnome-themes-extras-0.8.0.ebuild, gnome-themes-extras-0.7:
+  New version, as requested in bug #64827, 0.7 marked x86
+
+  23 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-themes-extras-0.7.ebuild:
+  Stable on sparc
+
+  01 Aug 2004; <spider@gentoo.org> gnome-themes-extras-0.7.ebuild:
+  added librsvg dep per bug #59029
+
+*gnome-themes-extras-0.7-r1 01 Aug 2004
+
+  01 Aug 2004; Spider <spider@gentoo.org> 
+  # INSERT ENTRY HERE
+
+*gnome-themes-extras-0.7 (09 Jun 2004)
+
+  09 Jun 2004; Yi Qiang <khai@gentoo.org> :
+  Version bump
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
+  gnome-themes-extras-0.5.ebuild, gnome-themes-extras-0.6.ebuild:
+  Inherit eutils.
+
+  03 Apr 2004; Lars Weiler <pylon@gentoo.org> gnome-themes-extras-0.6.ebuild:
+  stable on ppc
+
+  24 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  gnome-themes-extras-0.5.ebuild:
+  stable on sparc
+
+  24 Mar 2004; Luca Barbato <lu_zero@gentoo.org>
+  gnome-themes-extras-0.6.ebuild:
+  Marked ~ppc
+
+  19 Mar 2004; foser <foser@gentoo.org> gnome-themes-extras-*.ebuild :
+  Add patch for gtk+-2.4 (#44988)
+
+*gnome-themes-extras-0.6 (06 Mar 2004)
+
+  06 Mar 2004; Alastair Tse <liquidx@gentoo.org>
+  gnome-themes-extras-0.2.ebuild, gnome-themes-extras-0.3.ebuild,
+  gnome-themes-extras-0.5.ebuild, gnome-themes-extras-0.6.ebuild:
+  version bump (#40718)
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org>
+  gnome-themes-extras-0.4.ebuild:
+  set ppc in keywords
+
+  02 Jan 2004; <gustavoz@gentoo.org> gnome-themes-extras-0.5.ebuild:
+  added ~hppa keyword
+
+  13 Dec 2003; Brad House <brad_mssw@gentoo.org>
+  gnome-themes-extras-0.5.ebuild:
+  mark stable on amd64
+
+*gnome-themes-extras-0.5 (08 Dec 2003)
+
+  08 Dec 2003; Alastair Tse <liquidx@gentoo.org>
+  gnome-themes-extras-0.4.ebuild, gnome-themes-extras-0.5.ebuild,
+  files/gnome-themes-extras-0.5-industrial_uncorrupt.patch:
+  version bumped, added patch for industrial theme corruption with sodipodi
+  (http://bugzilla.ximian.com/show_bug.cgi?id=45579)
+
+  22 Oct 2003; Alastair Tse <liquidx@gentoo.org>
+  gnome-themes-extras-0.4.ebuild:
+  added workaround for gorilla typo (#31702)
+
+*gnome-themes-extras-0.4 (07 Oct 2003)
+
+  07 Oct 2003; Alastair Tse <liquidx@gentoo.org>
+  gnome-themes-extras-0.3.ebuild, gnome-themes-extras-0.4.ebuild:
+  version bump. marked 0.3 as x86 stable
+
+  08 Sep 2003; Todd Sunderlin <todd@gentoo.org>
+  gnome-themes-extras-0.3.ebuild:
+  Marked unstable on sparc
+
+*gnome-themes-extras-0.3 (17 Aug 2003)
+
+  17 Aug 2003; Mike Gardiner <obz@gentoo.org> gnome-themes-extras-0.2.ebuild,
+  gnome-themes-extras-0.3.ebuild:
+  Version bump to 0.3, and 0.2 marked x86
 
 *gnome-themes-extras-0.2 (27 Jul 2003)
 

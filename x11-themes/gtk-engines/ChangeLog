@@ -1,26 +1,189 @@
 # ChangeLog for x11-themes/gtk-engines
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines/ChangeLog,v 1.1 2002/06/29 13:21:50 seemant Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines/ChangeLog,v 1.1.1.1 2005/11/30 09:51:42 chriswhite Exp $
 
-  29 Jun 2002; Seemant Kulleen <seemant@gentoo.org> :
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> gtk-engines-2.6.5.ebuild:
+  Mark 2.6.5 stable on alpha
 
-  Migrated to x11-themes
+  10 Oct 2005; Hardave Riar <hardave@gentoo.org> gtk-engines-2.6.5.ebuild:
+  Stable on mips.
 
-*gtk-engines-1.9.0 (22 May 2002)
-  22 May 2002; Spider <spider@gentoo.org> gtk-engines-1.9.0.ebuild :
-  Theme engines for gtk+-2.0 this time
+  06 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtk-engines-2.6.5.ebuild:
+  Stable on hppa, ppc.
 
+  04 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-engines-2.6.5.ebuild:
+  Stable on sparc
 
-  14 Apr 2002; M.Schlemmer <azarah@gentoo.org> gtk-engines-0.12-r2 :
+  03 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
+  gtk-engines-2.6.5.ebuild:
+  stable on x86
 
-  Cleanup, and libtoolize.
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Mark 2.6.4-r2 stable on alpha
 
-*gtk-engines-0.12-r2 (1 Feb 2002)
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Stable on ppc.
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
-  Added initial ChangeLog which should be updated whenever the package is
-  updated in any way. This changelog is targetted to users. This means that the
-  comments should well explained and written in clean English. The details about
-  writing correct changelogs are explained in the skel.ChangeLog file which you
-  can find in the root directory of the portage repository.
+  11 Sep 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Stable on hppa.
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Mark 2.6.4-r2 stable on ia64
+
+  06 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Stable on ppc64
+
+  05 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Stable on sparc
+
+  05 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Stable on x86.
+
+*gtk-engines-2.6.5 (24 Aug 2005)
+
+  24 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +gtk-engines-2.6.5.ebuild:
+  New version.
+
+*gtk-engines-2.6.4-r2 (03 Aug 2005)
+
+  03 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-2.6.4-r2.ebuild:
+  Fix problem with 'accessibility' USE flag.
+
+  03 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-0.12.ebuild:
+  Pass the --copy option to libtoolize (bug #96242).
+
+*gtk-engines-2.6.4-r1 (03 Aug 2005)
+
+  03 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-2.6.4-r1.ebuild:
+  Added 'static' and 'accessibility' USE flags. The latter controls the
+  installation of the HighContrast engine.
+
+*gtk-engines-2.6.3-r1 (03 Aug 2005)
+*gtk-engines-0.12 (03 Aug 2005)
+
+  03 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-0.12.ebuild, gtk-engines-2.6.3-r1.ebuild:
+  Don't inherit from gtk-engines2.eclass. Split and re-slot the ebuilds
+  accordingly. Removed unnecessary blocks. Resolves bug #24439.
+
+*gtk-engines-2.6.4 (28 Jul 2005)
+
+  28 Jul 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-2.6.4.ebuild:
+  New version.
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  gtk-engines-2.6.3.ebuild:
+  stable on mips
+
+  30 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-2.2.0.ebuild, gtk-engines-2.6.2.ebuild,
+  gtk-engines-2.6.3.ebuild:
+  Remove 'sed' use from the global scope. Thanks to Georgi Georgiev for the
+  contribution on bug #91517.
+
+  23 Jun 2005; Guy Martin <gmsoft@gentoo.org> gtk-engines-2.6.3.ebuild:
+  Stable on hppa.
+
+  13 Jun 2005; Markus Rothe <corsair@gentoo.org> gtk-engines-2.6.3.ebuild:
+  Stable on ppc64
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> gtk-engines-2.6.3.ebuild:
+  Stable on amd64
+
+  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  gtk-engines-2.6.3.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  gtk-engines-2.6.3.ebuild:
+  Stable on alpha.
+
+  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  gtk-engines-2.6.3.ebuild:
+  Stable on sparc
+
+  04 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-2.6.2.ebuild, gtk-engines-2.6.3.ebuild:
+  Restrict the block with gtk-engines-thinice. See bug #46357.
+
+  12 May 2005; Joe McCann <joem@gentoo.org>
+  +files/gtk-engines-2.6.3-fix_clearlooks_path.patch,
+  gtk-engines-2.6.3.ebuild:
+  Add patch from bug 89626 to install clearlooks engine in proper location.
+  Thanks to Gad Kadoshfor reporting
+
+*gtk-engines-2.6.3 (18 Apr 2005)
+
+  18 Apr 2005; Joe McCann <joem@gentoo.org> +gtk-engines-2.6.3.ebuild:
+  bugfix release
+
+*gtk-engines-2.6.2 (09 Mar 2005)
+
+  09 Mar 2005; Joe McCann <joem@gentoo.org> +gtk-engines-2.6.2.ebuild:
+  gnome-2.10 version
+
+  27 Jul 2004; Tom Gall <tgall@gentoo.org> gtk-engines-2.2.0.ebuild:
+  stable on ppc64, bug #58191
+
+  01 Jul 2004; Tom Gall <tgall@gentoo.org> gtk-engines-2.2.0.ebuild:
+  added ~ppc64, bug #54806
+
+  13 May 2004; Stephen P. Becker <geoman@gentoo.org> gtk-engines-2.2.0.ebuild:
+  Stable on mips.
+
+  17 Apr 2004; Alastair Tse <liquidx@gentoo.org> gtk-engines-2.2.0.ebuild:
+  replace newdepend
+
+  14 Mar 2004; Stephen P. Becker <geoman@gentoo.org> gtk-engines-2.2.0.ebuild:
+  Added ~mips keyword.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> gtk-engines-2.2.0.ebuild:
+  Stable on ia64
+
+  08 Nov 2003; Todd Sunderlin <todd@gentoo.org> gtk-engines-2.2.0.ebuild:
+  added sparc keyword
+
+  17 Oct 2003; Aron Griffis <agriffis@gentoo.org> gtk-engines-2.2.0.ebuild:
+  Stable on alpha
+
+  08 Oct 2003; Mike Gardiner <obz@gentoo.org> gtk-engines-2.2.0.ebuild:
+  Modified imlib depend test re bug #24439
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org>
+  gtk-engines-2.2.0.ebuild:
+  set ppc in keywords
+
+  18 Aug 2003; Aron Griffis <agriffis@gentoo.org> gtk-engines-2.2.0.ebuild:
+  Add gnuconfig updates for Alpha EV67
+
+  25 Aug 2003; Mike Gardiner <obz@gentoo.org> gtk-engines-2.2.0.ebuild:
+  Moved to stable on x86
+
+  14 Jul 2003; Alastair Tse <liquidx@gentoo.org> gtk-engines-2.2.0.ebuild:
+  using newdepend to 'workaround' metadata conditional
+
+  13 Jul 2003; Alastair Tse <liquidx@gentoo.org> gtk-engines-2.2.0.ebuild:
+  add imlib dep if gtk+-1 is being used
+
+*gtk-engines-2.2.0 (19 Jun 2003)
+
+  26 Jun 2003; foser <foser@gentoo.org> gtk-engines-2.2.0.ebuild :
+  Fix SRC_URI GTK_PN to PN
+
+  19 Jun 2003; Alastair Tse <liquidx@gentoo.org> gtk-engines-2.2.0.ebuild:
+  merged metal, redmond86, pixmap, pixbuf and notif engines
+

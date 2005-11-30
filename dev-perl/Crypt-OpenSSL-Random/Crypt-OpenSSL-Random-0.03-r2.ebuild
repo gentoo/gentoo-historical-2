@@ -1,20 +1,19 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-OpenSSL-Random/Crypt-OpenSSL-Random-0.03-r2.ebuild,v 1.1 2002/10/30 07:20:35 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-OpenSSL-Random/Crypt-OpenSSL-Random-0.03-r2.ebuild,v 1.1.1.1 2005/11/30 09:52:50 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Crypt::OpenSSL::Random module for perl"
-SRC_URI="http://cpan.valueclick.com/authors/id/I/IR/IROBERTS/${P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/author/IROBERTS/Crypt-OpenSSL-Random-${PV}/"
+SRC_URI="mirror://cpan/authors/id/I/IR/IROBERTS/${P}.tar.gz"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc s390 sparc x86"
+IUSE=""
 
-DEPEND="${DEPEND}
-	dev-libs/openssl"
+DEPEND="dev-libs/openssl"
 
 export OPTIMIZE="${CFLAGS}"
 mydoc="ToDo"

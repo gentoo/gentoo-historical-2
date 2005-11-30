@@ -1,6 +1,33 @@
-# ChangeLog for net-mail/qmail-mysql
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-mysql/ChangeLog,v 1.1 2004/05/30 10:52:14 robbat2 Exp $
+# ChangeLog for mail-mta/qmail-mysql
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-mysql/ChangeLog,v 1.1.1.1 2005/11/30 09:50:42 chriswhite Exp $
+
+  24 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-mysql-1.03.ebuild, qmail-mysql-1.03-r13.ebuild:
+  Fixed configuration instruction.
+
+  17 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-mysql-1.03.ebuild, qmail-mysql-1.03-r13.ebuild:
+  Fixed the config instructions according to bug 109482.
+
+  06 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-mysql-1.03-r13.ebuild:
+  net-mail/cmd5checkpw-0.30 is not backwards compatible.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  qmail-mysql-1.03.ebuild:
+  Stable on ppc.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
+  qmail-mysql-1.03-r13.ebuild, qmail-mysql-1.03.ebuild:
+  Move sys-apps/daemontools -> sys-process/daemontools
+
+  20 Jul 2004; <tomk@gentoo.org> qmail-mysql-1.03-r13.ebuild:
+  Added third party mirror in SRC_URI for qmail-smtpd-relay-reject
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  qmail-mysql-1.03-r13.ebuild, qmail-mysql-1.03.ebuild:
+  virtual/glibc -> virtual/libc
 
   18 Jan 2004; Robin H. Johnson <robbat2@gentoo.org>
   qmail-mysql-1.03-r13.ebuild, qmail-mysql-1.03.ebuild:

@@ -1,6 +1,10 @@
-# ChangeLog for net-www/httrack
+# ChangeLog for www-client/httrack
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/httrack/ChangeLog,v 1.1 2005/03/18 14:46:09 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/httrack/ChangeLog,v 1.1.1.1 2005/11/30 09:52:11 chriswhite Exp $
+
+*httrack-3.33 (05 Apr 2005) 
+  05 Apr 2005; Pieter Van den Abeele <pvdabeel@gentoo.org> +httrack-3.33.ebuild:
+  Version bump, thanks to Davy Van Nieuwenborgh for reporting. 
 
 *httrack-3.32.2 (18 Mar 2005)
 *httrack-3.30 (18 Mar 2005)

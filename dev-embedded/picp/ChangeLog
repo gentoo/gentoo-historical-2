@@ -1,6 +1,17 @@
 # ChangeLog for dev-embedded/picp
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/picp/ChangeLog,v 1.1 2004/12/03 21:48:43 dragonheart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/picp/ChangeLog,v 1.1.1.1 2005/11/30 09:53:23 chriswhite Exp $
+
+*picp-0.6.7 (20 Aug 2005)
+
+  20 Aug 2005; Daniel Black <dragonheart@gentoo.org> +picp-0.6.7.ebuild:
+  version bump as per bug #90155. Thanks to Laurence Withers
+
+*picp-0.6.5 (13 Jan 2005)
+
+  13 Jan 2005; Daniel Black <dragonheart@gentoo.org> +picp-0.6.5.ebuild:
+  Version bump as per bug #77811. Thanks to Laurence Withers
+  <lwithers@users.sf.net>
 
 *picp-0.6.4 (04 Dec 2004)
 

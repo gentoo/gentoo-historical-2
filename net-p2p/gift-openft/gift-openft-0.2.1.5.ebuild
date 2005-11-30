@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-openft/gift-openft-0.2.1.5.ebuild,v 1.1 2004/12/06 20:02:50 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-openft/gift-openft-0.2.1.5.ebuild,v 1.1.1.1 2005/11/30 09:51:17 chriswhite Exp $
+
+inherit eutils
 
 IUSE="berkdb"
 DESCRIPTION="The giFT OpenFT plugin"
@@ -15,7 +17,7 @@ DEPEND="virtual/libc
 	dev-util/pkgconfig
 	berkdb? ( >=sys-libs/db-3.3 )"
 
-RDEPEND=">=net-p2p/gift-0.11.5
+RDEPEND=">=net-p2p/gift-0.11.8
 	>=sys-libs/zlib-1.1.4
 	berkdb? ( >=sys-libs/db-3.3 )"
 
@@ -26,7 +28,7 @@ src_compile() {
 
 src_install() {
 	einstall giftconfdir=${D}/etc/giFT \
-		 plugindir=${D}/usr/lib/giFT \
+		 plugindir=${D}/usr/$(get_libdir)/giFT \
 		 datadir=${D}/usr/share/giFT \
 		 giftperldir=${D}/usr/bin \
 		 libgiftincdir=${D}/usr/include/libgift || die "Install failed"
@@ -39,11 +41,9 @@ pkg_postinst() {
 		ewarn "in your USE flags."
 		echo
 	fi
-	einfo "Before you can use the new plugin,"
-	einfo "you should counfigure it with gift-setup command."
-	echo
-	einfo "To run giFT with OpenFT support, run:"
-	einfo "\tgiFT -p /usr/lib/giFT/libOpenFT.so"
+	einfo "It is recommended that you re-run gift-setup as"
+	einfo "the user you will run the giFT daemon as:"
+	einfo "\tgift-setup"
 	echo
 	einfo "Alternatively you can add the following line to"
 	einfo "your ~/.giFT/giftd.conf configuration file:"

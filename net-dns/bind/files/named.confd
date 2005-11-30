@@ -7,7 +7,7 @@ OPTIONS=""
 CPU="1"
 
 # If you wish to run bind in a chroot, run:
-# ebuild /var/db/pkg/net-dns/<bind version>/<bind-version> config
+# emerge --config =<bind-version>
 # and un-comment the following line.
-# 
-#CHROOT="/chroot/dns"
+# You can specify a different chroot directory but MAKE SURE it's empty.
+# CHROOT="/chroot/dns"

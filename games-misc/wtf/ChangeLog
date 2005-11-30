@@ -1,6 +1,35 @@
-# ChangeLog for app-games/wtf
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/wtf/ChangeLog,v 1.1 2003/09/10 18:14:05 vapier Exp $
+# ChangeLog for games-misc/wtf
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/wtf/ChangeLog,v 1.1.1.1 2005/11/30 09:50:02 chriswhite Exp $
+
+*wtf-20050505-r1 (29 Sep 2005)
+
+  29 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/wtf-20050505-updates.patch, +wtf-20050505-r1.ebuild:
+  Add some more useful definitions.
+
+  01 Aug 2005; Lina Pezzella <j4rg0n@gentoo.org> wtf-20050505.ebuild:
+  Stable ppc-macos
+
+  01 Jul 2005; Lina Pezzella <j4rg0n@gentoo.org> wtf-20050505.ebuild:
+  Testing ppc-macos. Keyworded on behalf of Fabian Groffen. Bug 75852
+
+*wtf-20050505 (11 May 2005)
+
+  11 May 2005; Mike Frysinger <vapier@gentoo.org> +wtf-20050505.ebuild:
+  Version bump.
+
+*wtf-20040124 (01 Jun 2004)
+
+  01 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> wtf-20040124.ebuild:
+  version bump - bug #52573
+
+  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> wtf-20021005.ebuild :
+  AMD64 keywords.
+
+  09 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> wtf-20021005.ebuild:
+  use games eclass; sed in unpack; more error checking/messages
+  Add metadata.xml
 
   28 Jun 2003; <msterret@gentoo.org> wtf-20021005.ebuild:
   use sed -i

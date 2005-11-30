@@ -1,17 +1,16 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CGI-FastTemplate/CGI-FastTemplate-1.09.ebuild,v 1.1.1.1 2005/11/30 09:53:16 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
-CATEGORY="dev-perl"
 DESCRIPTION="The Perl CGI::FastTemplate Module"
-SRC_URI="http://search.cpan.org/CPAN/authors/id/J/JM/JMOORE/${P}.tar.gz"
-HOMEPAGE="http://search.cpan.org/author/JMOORE/${P}/"
+SRC_URI="mirror://cpan/authors/id/J/JM/JMOORE/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~jmoore/${P}/"
 
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ~ppc ~alpha ~sparc"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+IUSE=""
 
-DEPEND="${DEPEND}
-		>=dev-perl/CGI-2.78-r3"
-
-
+DEPEND=">=perl-core/CGI-2.78-r3"

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/files/named.init-r3,v 1.1 2005/11/09 09:25:53 voxus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/files/named.init-r3,v 1.1.1.1 2005/11/30 09:50:13 chriswhite Exp $
 
 opts="start stop reload restart"
 

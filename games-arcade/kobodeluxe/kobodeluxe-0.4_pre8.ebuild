@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/kobodeluxe/kobodeluxe-0.4_pre8.ebuild,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/kobodeluxe/kobodeluxe-0.4_pre8.ebuild,v 1.1.1.1 2005/11/30 09:52:01 chriswhite Exp $
 
 inherit games
 
@@ -15,7 +15,7 @@ MY_P="KoboDeluxe-${PV/_/}"
 S=${WORKDIR}/${MY_P}
 SRC_URI="http://www.olofson.net/kobodl/download/${MY_P}.tar.gz"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	media-libs/libsdl
 	media-libs/sdl-image
 	opengl? ( virtual/opengl )"

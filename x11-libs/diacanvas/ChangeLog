@@ -1,6 +1,10 @@
 # ChangeLog for x11-libs/diacanvas
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/diacanvas/ChangeLog,v 1.1 2003/12/23 16:53:05 foser Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/diacanvas/ChangeLog,v 1.1.1.1 2005/11/30 09:54:18 chriswhite Exp $
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  diacanvas-0.10.0.ebuild:
+  Masked diacanvas-0.10.0.ebuild testing for ppc
 
 *diacanvas-0.10.0 (23 Dec 2003)
 

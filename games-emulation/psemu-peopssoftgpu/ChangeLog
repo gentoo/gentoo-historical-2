@@ -1,6 +1,30 @@
-# ChangeLog for app-emulation/psemu-peopssoftgpu
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-peopssoftgpu/ChangeLog,v 1.1 2003/09/09 16:26:50 vapier Exp $
+# ChangeLog for games-emulation/psemu-peopssoftgpu
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-peopssoftgpu/ChangeLog,v 1.1.1.1 2005/11/30 09:50:23 chriswhite Exp $
+
+  03 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/psemu-peopssoftgpu-1.16-fix-noxf86vm.patch,
+  +files/psemu-peopssoftgpu-1.16-makefile-cflags.patch,
+  psemu-peopssoftgpu-1.16.ebuild:
+  Fix non-x86 support #87716 by Wormo.
+
+*psemu-peopssoftgpu-1.16 (19 Feb 2005)
+
+  19 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/1.16-makefile-cflags.patch, psemu-peopssoftgpu-1.15.ebuild,
+  +psemu-peopssoftgpu-1.16.ebuild:
+  version bump (bug #52253)
+
+  15 Aug 2004; Mike Frysinger <vapier@gentoo.org>
+  psemu-peopssoftgpu-1.15.ebuild:
+  Remove all the x86-specifc code when ARCH != x86 #56763.
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  psemu-peopssoftgpu-1.15.ebuild:
+  Fix use invocation
+
+  13 Feb 2004; David Holm <dholm@gentoo.org> psemu-peopssoftgpu-1.15.ebuild:
+  Added some modifications to make it compile on non-x86 archs and added to ~ppc.
 
 *psemu-peopssoftgpu-1.15 (14 Aug 2003)
 

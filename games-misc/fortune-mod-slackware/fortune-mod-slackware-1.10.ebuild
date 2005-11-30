@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-slackware/fortune-mod-slackware-1.10.ebuild,v 1.1 2005/10/11 07:17:28 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-slackware/fortune-mod-slackware-1.10.ebuild,v 1.1.1.1 2005/11/30 09:50:02 chriswhite Exp $
 
 MY_PN=slack-fortunes-all
 DESCRIPTION="This fortune mod is a collection of quotes seen on AOLS (Slackware)"

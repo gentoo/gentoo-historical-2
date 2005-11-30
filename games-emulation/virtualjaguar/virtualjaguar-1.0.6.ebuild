@@ -1,10 +1,9 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/virtualjaguar/virtualjaguar-1.0.6.ebuild,v 1.1 2003/09/26 07:44:53 msterret Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/virtualjaguar/virtualjaguar-1.0.6.ebuild,v 1.1.1.1 2005/11/30 09:50:18 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
-S="${WORKDIR}/${P}-src"
 DESCRIPTION="an Atari Jaguar emulator"
 HOMEPAGE="http://www.icculus.org/virtualjaguar/"
 SRC_URI="http://www.icculus.org/virtualjaguar/tarballs/${P}-src.tar.bz2"
@@ -12,20 +11,29 @@ SRC_URI="http://www.icculus.org/virtualjaguar/tarballs/${P}-src.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="x86"
+KEYWORDS="x86 ~ppc"
 
 RDEPEND=">=media-libs/libsdl-1.2.5
 	>=sys-libs/zlib-1.1.4"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
+S="${WORKDIR}/${P}-src"
+
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
 	sed -i \
-		-e "s:-O3:${CFLAGS}:" Makefile.unix || \
-			die "sed Makefile.unix failed"
+		-e "s:-O3:${CFLAGS}:" Makefile.unix \
+		|| die "sed Makefile.unix failed"
+	epatch "${FILESDIR}/gcc331.patch"
+	cp "${FILESDIR}/virtualjaguar" "${T}" || die "cp failed"
+
+	sed -i \
+		-e "s:GENTOODIR:${GAMES_BINDIR}:" \
+		"${T}/virtualjaguar" \
+		|| die "sed failed"
 }
 
 src_compile() {
@@ -33,9 +41,8 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin vj
-	dogamesbin ${FILESDIR}/virtualjaguar
-	dodoc INSTALL docs/{README,TODO,WHATSNEW}
+	dogamesbin vj "${T}/virtualjaguar" || die "dogamesbin failed"
+	dodoc docs/{README,TODO,WHATSNEW}
 	prepgamesdirs
 }
 

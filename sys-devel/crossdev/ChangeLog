@@ -1,7 +1,157 @@
 # ChangeLog for sys-devel/crossdev
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/ChangeLog,v 1.1 2003/12/04 09:31:50 kumba Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/ChangeLog,v 1.1.1.1 2005/11/30 09:53:33 chriswhite Exp $
 
+*crossdev-0.9.10 (18 Nov 2005)
+
+  18 Nov 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  -crossdev-0.9.9-r3.ebuild, +crossdev-0.9.10.ebuild:
+  Add support for building bootstrap gcc with libc/kernel headers
+  (--with-headers), fix cleaning of categories/package.keywords files, add
+  generic support for future --with-/--without- options, better detect when a
+  package needs to be re-emerged or can be safely skipped, and touchup code in
+  general.
+
+*crossdev-0.9.9-r3 (08 Oct 2005)
+
+  08 Oct 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  -crossdev-0.9.9-r2.ebuild, +crossdev-0.9.9-r3.ebuild:
+  Add support for passing -d to portage #108383 by Jan Kobler and allow env
+  USE/ABI to be passed in.
+
+*crossdev-0.9.9-r2 (29 Aug 2005)
+
+  29 Aug 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9.9-r2.ebuild:
+  Update avr to require 3.4.4-r1 since 3.4.4 no longer exists.
+
+*crossdev-0.9.9-r1 (23 Aug 2005)
+
+  23 Aug 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  -crossdev-0.9.9.ebuild, +crossdev-0.9.9-r1.ebuild:
+  Touchup help output, add more error checking, clean more directories when
+  uninstalling, be a bit more user friendly with cmdline options, add untested
+  support for klibc, touchup internal syntax, and improve ABI faking out.
+
+*crossdev-0.9.9 (17 Aug 2005)
+
+  17 Aug 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9.9.ebuild:
+  Add a help target so the user knows what crossdev supports, and add initial
+  support for msp430 targets.
+
+*crossdev-0.9.8 (25 Jul 2005)
+
+  25 Jul 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9.8.ebuild:
+  Add an option to create a cross gdb.
+
+*crossdev-0.9.7 (15 Jul 2005)
+
+  15 Jul 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9.7.ebuild:
+  Add support for C++ with avr targets; fixes by Ludek Stepan #99014 / #99020.
+
+*crossdev-0.9.6-r1 (14 Jul 2005)
+
+  14 Jul 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9.6-r1.ebuild:
+  Make sure the stupid ABI var doesnt screw us up.
+
+  20 Jun 2005; Markus Rothe <corsair@gentoo.org> crossdev-0.9.6.ebuild:
+  Stable on ppc64
+
+  25 May 2005; Markus Rothe <corsair@gentoo.org> crossdev-0.9.6.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*crossdev-0.9.6 (18 Apr 2005)
+
+  18 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  -files/crossdev-0.4-fixes-one.patch, files/crossdev,
+  -crossdev-0.9.5-r1.ebuild, +crossdev-0.9.6.ebuild:
+  Add some initial support for ps2 targets (ee/iop/dvp).
+
+*crossdev-0.9.5-r1 (25 Mar 2005)
+
+  25 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9.5-r1.ebuild:
+  Make sure PORTDIR_OVERLAY is set #86641.
+
+*crossdev-0.9.5 (16 Mar 2005)
+
+  16 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  -crossdev-0.9.1-r2.ebuild, +crossdev-0.9.5.ebuild:
+  Make binutils/gcc/linux-headers dynamic package names (to support
+  mips-headers). Add support for pulling in avr libc (thanks to Scott).
+
+*crossdev-0.9.1-r2 (12 Mar 2005)
+
+  12 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  -crossdev-0.9.1-r1.ebuild, +crossdev-0.9.1-r2.ebuild:
+  Add a --stage0 (for binutils), use a diff PORTAGE_TMPDIR, and make sure that
+  the diff PKGDIR is actually used.
+
+*crossdev-0.9.1-r1 (10 Mar 2005)
+
+  10 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9.1-r1.ebuild:
+  Fix the set_use function to actually work, add an uninstall option, and make
+  sure the stage1-gcc is just a C compiler (no fortran/etc...).
+
+*crossdev-0.9.1 (09 Mar 2005)
+
+  09 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  -crossdev-0.9-r3.ebuild, +crossdev-0.9.1.ebuild:
+  Add sanity checks for host system and add support for avr (fixes from Scott
+  L Price).
+
+*crossdev-0.9-r3 (04 Mar 2005)
+
+  04 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  -crossdev-0.9-r2.ebuild, +crossdev-0.9-r3.ebuild:
+  Fix option collsion between internal -b (--binutils) and portages -b (build
+  package).
+
+*crossdev-0.9-r2 (03 Mar 2005)
+
+  03 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9-r2.ebuild:
+  Add sanity checks to keep from breaking the host system.
+
+*crossdev-0.9-r1 (03 Mar 2005)
+
+  03 Mar 2005; Mike Frysinger <vapier@gentoo.org> files/crossdev,
+  +crossdev-0.9-r1.ebuild:
+  Make sure we use a custom PKGDIR so we dont overwrite the users normal
+  toolchain binpkgs.
+
+*crossdev-0.9 (03 Mar 2005)
+
+  03 Mar 2005; Mike Frysinger <vapier@gentoo.org> +files/crossdev,
+  +crossdev-0.9.ebuild:
+  Version bumpage, use the portage tree now.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  crossdev-0.4-r1.ebuild:
+  Masked crossdev-0.4-r1.ebuild stable for ppc
+
+*crossdev-0.4-r1 (26 Feb 2004)
+
+  26 Feb 2004; Joshua Kinard <kumba@gentoo.org> crossdev-0.4-r1.ebuild,
+  crossdev-0.4.ebuild, files/crossdev-0.4-fixes-one.patch:
+  Added a patch to fix some annoying bugs, and bumped into stable for x86,
+  sparc, and mips.
+
+*crossdev-0.4 (30 Jan 2004)
+
+  30 Jan 2004; Joshua Kinard <kumba@gentoo.org> crossdev-0.4.ebuild:
+  New version, has lots of changes.  See the package changelog for more details.
+
+*crossdev-0.3 (24 Dec 2003)
+
+  23 Dec 2003; Joshua Kinard <kumba@gentoo.org> metadata.xml:
+  New revision, adds toolchain support for several new archs and other minor
+  fixes
 
 *crossdev-0.2 (04 Dec 2003)
 

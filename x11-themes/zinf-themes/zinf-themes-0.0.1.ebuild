@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/zinf-themes/zinf-themes-0.0.1.ebuild,v 1.1 2004/06/04 12:29:36 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/zinf-themes/zinf-themes-0.0.1.ebuild,v 1.1.1.1 2005/11/30 09:51:36 chriswhite Exp $
 
 RESTRICT="nomirror"
 DESCRIPTION="Collection of ZINF themes"
@@ -20,7 +20,6 @@ SRC_URI="${THEME_URI}/AquaX.fat
 	${THEME_URI}/kdc-7021.fat
 	${THEME_URI}/Sunset.fat
 	${THEME_URI}/PrimaryColors.fat
-	${THEME_URI}/fortissimo.fat
 	${THEME_URI}/po_v2.fat
 	${THEME_URI}/Radio.fat
 	${THEME_URI}/Spacy.fat
@@ -53,7 +52,7 @@ SRC_URI="${THEME_URI}/AquaX.fat
 
 SLOT="0"
 LICENSE="freedist"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~amd64"
 
 IUSE=""
 

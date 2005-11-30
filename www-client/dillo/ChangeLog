@@ -1,6 +1,166 @@
 # ChangeLog for www-client/dillo
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/dillo/ChangeLog,v 1.1 2004/09/08 13:53:32 usata Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-client/dillo/ChangeLog,v 1.1.1.1 2005/11/30 09:52:19 chriswhite Exp $
+
+*dillo-0.8.5-r2 (30 Oct 2005)
+
+  30 Oct 2005; Mamoru KOMACHI <usata@gentoo.org> -dillo-0.8.4-r1.ebuild,
+  -dillo-0.8.4-r2.ebuild, -dillo-0.8.5.ebuild, +dillo-0.8.5-r2.ebuild:
+  Updated i18n-misc patch to 20051010. Removed old ebuilds.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> dillo-0.8.5-r1.ebuild:
+  Stable on ppc.
+
+  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> dillo-0.8.5-r1.ebuild:
+  Marked Stable on AMD64.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> dillo-0.8.5-r1.ebuild:
+  Stable on ppc64
+
+  04 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org> dillo-0.8.5-r1.ebuild:
+  Stable on hppa.
+
+  03 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> dillo-0.8.5-r1.ebuild:
+  stable on alpha
+
+  02 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> dillo-0.8.5-r1.ebuild:
+  Stable on sparc
+
+  02 Aug 2005; Mamoru KOMACHI <usata@gentoo.org> -dillo-0.8.4.ebuild,
+  dillo-0.8.5-r1.ebuild:
+  Stable on x86.
+
+  10 Jul 2005; Sven Wegener <swegener@gentoo.org> dillo-0.7.3-r7.ebuild,
+  dillo-0.8.4.ebuild, dillo-0.8.4-r1.ebuild, dillo-0.8.4-r2.ebuild,
+  dillo-0.8.5.ebuild, dillo-0.8.5-r1.ebuild:
+  QA: Removed 'emake || make || die' and variants. Either a package is
+  parallel build safe or it is not. There's nothing like trying and falling
+  back.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> dillo-0.8.4-r2.ebuild:
+  Stable on alpha.
+
+*dillo-0.8.5-r1 (27 Jun 2005)
+
+  27 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> -dillo-0.8.3-r4.ebuild,
+  +dillo-0.8.5-r1.ebuild:
+  Added misc patch back.
+
+  26 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> dillo-0.8.4-r2.ebuild:
+  Stable on ppc.
+
+  21 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> dillo-0.8.4-r2.ebuild:
+  Stable on sparc
+
+  21 Jun 2005; Markus Rothe <corsair@gentoo.org> dillo-0.8.4-r2.ebuild:
+  Stable on ppc64
+
+  20 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> dillo-0.8.4-r2.ebuild:
+  Stable on hppa.
+
+*dillo-0.8.5 (19 Jun 2005)
+
+  19 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> dillo-0.8.4-r2.ebuild,
+  +dillo-0.8.5.ebuild:
+  Version bumped; bug #96502. Dropped misc patch until its ready.
+
+  14 May 2005; Guy Martin <gmsoft@gentoo.org> dillo-0.8.4-r1.ebuild:
+  Stable on hppa.
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> dillo-0.8.4-r1.ebuild:
+  Stable on alpha.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> dillo-0.8.4-r1.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> dillo-0.8.4-r1.ebuild:
+  Marked stable on amd64.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> dillo-0.8.4.ebuild:
+  stable on amd64
+
+  06 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> dillo-0.8.4-r1.ebuild:
+  Stable on sparc
+
+*dillo-0.8.4-r2 (06 Apr 2005)
+
+  06 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> -dillo-0.8.0-r5.ebuild,
+  dillo-0.8.4-r1.ebuild, +dillo-0.8.4-r2.ebuild:
+  Updated i18n-misc patch, and appended -O to CFLAGS (bug #86442).
+  Marked 0.8.4-r1 stable on x86 and ppc.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> dillo-0.8.4.ebuild:
+  Stable on alpha.
+
+  24 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> dillo-0.8.4.ebuild:
+  Stable on sparc
+
+*dillo-0.8.4-r1 (23 Feb 2005)
+
+  23 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +dillo-0.8.4-r1.ebuild,
+  dillo-0.8.4.ebuild:
+  Updated i18n-misc patch. Marked 0.8.4 stable on x86 and ppc.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> dillo-0.8.3-r4.ebuild:
+  Stable on ppc64
+
+*dillo-0.8.4 (18 Jan 2005)
+
+  18 Jan 2005; Mamoru KOMACHI <usata@gentoo.org> -dillo-0.8.3-r3.ebuild,
+  -dillo-0.8.3.ebuild, +dillo-0.8.4.ebuild:
+  Version bumped; bug #77679.
+
+  08 Jan 2005; Jason Wever <weeve@gentoo.org> dillo-0.8.3-r4.ebuild:
+  Stable on sparc wrt bug #76665.
+
+  08 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> dillo-0.8.3-r4.ebuild:
+  Stable on alpha, bug 76665.
+
+  08 Jan 2005; Lars Weiler <pylon@gentoo.org> dillo-0.8.3-r4.ebuild:
+  Stable on ppc, bug #76665.
+
+  07 Jan 2005; Mike Doty <kingtaco@gentoo.org> dillo-0.8.3-r4.ebuild:
+  stable on amd64 bug #76665
+
+*dillo-0.8.3-r4 (06 Jan 2005)
+
+  06 Jan 2005; Tavis Ormandy <taviso@gentoo.org>
+  +files/dillo-format-string-vulnerability.diff, +dillo-0.8.3-r4.ebuild:
+  add patch for #76665
+
+  27 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> dillo-0.8.3-r3.ebuild:
+  Stable on sparc
+
+  26 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> -dillo-0.8.3-r1.ebuild,
+  -dillo-0.8.3-r2.ebuild, dillo-0.8.3-r3.ebuild:
+  Removed old ebuilds and marked 0.8.3-r3 stable on x86, ppc and alpha.
+
+  23 Dec 2004; Markus Rothe <corsair@gentoo.org> dillo-0.8.3-r3.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #74861
+
+*dillo-0.8.3-r3 (07 Dec 2004)
+
+  07 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> +dillo-0.8.3-r3.ebuild:
+  Fixed bug #73312 and updated i18n-misc patch.
+
+*dillo-0.8.3-r2 (04 Dec 2004)
+
+  04 Dec 2004; Mamoru KOMACHI <usata@gentoo.org> +dillo-0.8.3-r2.ebuild:
+  Updated i18n-misc patch.
+
+*dillo-0.8.3-r1 (18 Nov 2004)
+
+  18 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> -dillo-0.8.2.ebuild,
+  +dillo-0.8.3-r1.ebuild:
+  Updated i18n patch to i18n-misc (tab, etc) patch.
+
+*dillo-0.8.3 (30 Oct 2004)
+
+  30 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +dillo-0.8.3.ebuild:
+  Version bumped.
+
+  14 Sep 2004; Stephen P. Becker <geoman@gentoo.org> dillo-0.8.2.ebuild:
+  Added ~mips keyword.
 
 *dillo-0.8.0-r5 (08 Sep 2004)
 

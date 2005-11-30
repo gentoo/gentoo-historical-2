@@ -1,6 +1,14 @@
 # ChangeLog for mail-client/sylpheed-claws-cachesaver
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-cachesaver/ChangeLog,v 1.1 2005/08/13 10:47:56 genone Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws-cachesaver/ChangeLog,v 1.1.1.1 2005/11/30 09:49:47 chriswhite Exp $
+
+  13 Nov 2005; Marius Mauch <genone@gentoo.org>
+  sylpheed-claws-cachesaver-0.5.ebuild:
+  Kill useless static and libtool libs, bug #111481.
+
+  13 Oct 2005; Jason Wever <weeve@gentoo.org>
+  sylpheed-claws-cachesaver-0.5.ebuild:
+  Added ~sparc keyword.
 
 *sylpheed-claws-cachesaver-0.5 (13 Aug 2005)
 

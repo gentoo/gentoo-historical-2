@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gnetman/gnetman-0.0.1_pre20050429.ebuild,v 1.1 2005/10/08 14:44:50 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gnetman/gnetman-0.0.1_pre20050429.ebuild,v 1.1.1.1 2005/11/30 09:51:05 chriswhite Exp $
 
 MY_PV="29Apr05"
 

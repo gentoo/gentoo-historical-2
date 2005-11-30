@@ -1,19 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/RPC-XML/RPC-XML-0.53.ebuild,v 1.1 2003/06/16 14:22:29 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/RPC-XML/RPC-XML-0.53.ebuild,v 1.1.1.1 2005/11/30 09:53:15 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A  Perl extension interface to James Clark's XML parser, expat."
-SRC_URI="http://cpan.valueclick.com/modules/by-module/RPC/${P}.tar.gz"
-HOMEPAGE="http://cpan.valueclick.com/modules/by-module/RPC/${PN}.${PV}.readme"
+SRC_URI="mirror://cpan/authors/id/R/RJ/RJRAY/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~rjray/${P}/"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 amd64 ppc sparc alpha"
+IUSE=""
 
 DEPEND="${DEPEND}
 	dev-perl/libwww-perl
 	dev-perl/XML-Parser
-	dev-perl/mod_perl"
+	www-apache/mod_perl"

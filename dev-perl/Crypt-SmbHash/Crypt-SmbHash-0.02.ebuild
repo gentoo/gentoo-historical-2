@@ -1,19 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-SmbHash/Crypt-SmbHash-0.02.ebuild,v 1.1 2003/08/14 02:41:09 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-SmbHash/Crypt-SmbHash-0.02.ebuild,v 1.1.1.1 2005/11/30 09:53:18 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
-DESCRIPTION="LM/NT hashing, for Samba's smbpasswd entries"
 AUTHOR="BJKUIT"
 BASE_URI="http://www.cpan.org/modules/by-authors/id/${AUTHOR:0:1}/${AUTHOR:0:2}/${AUTHOR}"
+DESCRIPTION="LM/NT hashing, for Samba's smbpasswd entries"
 SRC_URI="${BASE_URI}/${P}.tar.gz"
 HOMEPAGE="${BASE_URI}/${P}.readme"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc ppc64 s390 sparc x86"
+IUSE=""
 
 DEPEND="dev-perl/Digest-MD4"
-

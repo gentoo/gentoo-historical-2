@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-ldap/qmail-ldap-1.03-r1.ebuild,v 1.1 2004/05/30 10:52:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-ldap/qmail-ldap-1.03-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:56 chriswhite Exp $
 
 IUSE="ssl"
 
@@ -14,14 +14,14 @@ HOMEPAGE="http://www.qmail.org/
 	http://iain.cx/unix/qmail/mysql.php
 	http://www.nrg4u.com/"
 SRC_URI="http://cr.yp.to/software/qmail-1.03.tar.gz
-	http://www.qmail.org/big-todo.103.patch
-	http://www.qmail.org/big-concurrency.patch
+	mirror://qmail/big-todo.103.patch
+	mirror://qmail/big-concurrency.patch
 	http://www.ckdhr.com/ckd/qmail-103.patch
 	http://www.lifewithqmail.org/ldap/patches/smtp-auth/smtp-auth-20030301.patch
 	http://www.suspectclass.com/~sgifford/qmail/qmail-0.0.0.0.patch
 	http://www.nrg4u.com/qmail/qmail-ldap-1.03-20020901.patch.gz"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	net-nds/openldap
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88
@@ -30,11 +30,11 @@ DEPEND="virtual/glibc
 	ssl? ( >=dev-libs/openssl-0.9.6e )"
 
 RDEPEND="!virtual/mta
-	virtual/glibc
+	virtual/libc
 	sys-apps/groff
 	>=net-nds/openldap-2.0.25-r2
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-apps/daemontools-0.76-r1
+	>=sys-process/daemontools-0.76-r1
 	>=net-mail/checkpassword-0.90
 	>=net-mail/dot-forward-0.71"
 
@@ -77,7 +77,7 @@ src_unpack() {
 	#SMTP_AUTH PATCH
 	epatch ${DISTDIR}/smtp-auth-20030301.patch || die "SMTP_AUTH patch did not apply"
 
-	if [ `use ssl` ]; then
+	if use ssl; then
 		use ssl && { epatch ${FILESDIR}/tls.patch.bz2 || die "tls+auth patch failed"; }
 	fi
 
@@ -297,7 +297,7 @@ pkg_postinst() {
 	fi
 
 	echo -e "\e[32;01m Please do not forget to run, the following syntax :\033[0m"
-	echo -e "\e[32;01m ebuild /var/db/pkg/${CATEGORY}/${PN}-${PV}-${PR}/${PN}-${PV}-${PR}.ebuild config \033[0m"
+	echo -e "\e[32;01m emerge --config =${PF} \033[0m"
 	echo -e "\e[32;01m This will setup qmail to run out-of-the-box on your system. \033[0m"
 	echo -e ""
 	echo -e "\e[32;01m To start qmail at boot you have to enable the /etc/init.d/svscan rc file \033[0m"
@@ -308,9 +308,9 @@ pkg_postinst() {
 	echo -e ""
 	echo -e "\e[32;01m NOTE: Please check your /var/qmail/control/ldap* files to match your local \033[0m"
 	echo -e "\e[32;01m ldap settings and add the qmail.schema to your slapd.conf. For sample ldifs,\033[0m"
-	echo -e "\e[32;01m please check /usr/share/doc/${PN}-${PV}-${PR}/samples.ldif.gz \033[0m"
+	echo -e "\e[32;01m please check /usr/share/doc/${PF}/samples.ldif.gz \033[0m"
 
-	if  [ `use ssl` ]; then
+	if  use ssl; then
 		echo "Creating a self-signed ssl-cert:"
 		/usr/bin/openssl req -new -x509 -nodes -out /var/qmail/control/servercert.pem -days 366 -keyout /var/qmail/control/servercert.pem
 		chmod 640 /var/qmail/control/servercert.pem

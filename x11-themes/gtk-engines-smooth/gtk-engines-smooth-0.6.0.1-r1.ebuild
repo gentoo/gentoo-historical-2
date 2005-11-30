@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-smooth/gtk-engines-smooth-0.6.0.1-r1.ebuild,v 1.1 2005/08/02 12:23:53 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-smooth/gtk-engines-smooth-0.6.0.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:36 chriswhite Exp $
 
 MY_P="gtk-smooth-engine-${PV}"
 

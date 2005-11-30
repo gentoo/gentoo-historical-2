@@ -1,20 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Kismet/Net-Kismet-0.04.ebuild,v 1.1 2003/04/09 16:58:17 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Kismet/Net-Kismet-0.04.ebuild,v 1.1.1.1 2005/11/30 09:53:07 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Module for writing perl Kismet clients"
 SRC_URI="http://www.kismetwireless.net/code/${P}.tar.gz"
 HOMEPAGE="http://www.kismetwireless.net"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ppc x86"
+IUSE=""
 
 src_compile() {
-	
+
 	perl-module_src_compile
 	perl-module_src_test
 }

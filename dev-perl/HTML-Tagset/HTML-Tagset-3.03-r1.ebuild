@@ -1,12 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Tagset/HTML-Tagset-3.03-r1.ebuild,v 1.1 2002/05/05 16:02:27 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Tagset/HTML-Tagset-3.03-r1.ebuild,v 1.1.1.1 2005/11/30 09:53:11 chriswhite Exp $
 
-. /usr/portage/eclass/inherit.eclass || die
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A HTML tagset Perl Module"
-SRC_URI="http://cpan.valueclick.com/modules/by-category/15_World_Wide_Web_HTML_HTTP_CGI/HTML/${P}.tar.gz"
-HOMEPAGE="http://cpan.valueclick.com/modules/by-category/15_World_Wide_Web_HTML_HTTP_CGI/HTML/${P}.readme"
+SRC_URI="mirror://cpan/authors/id/S/SB/SBURKE/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~sburke/${P}/"
+
+SLOT="0"
+LICENSE="Artistic"
+KEYWORDS="x86 amd64 ppc sparc alpha"
+IUSE=""

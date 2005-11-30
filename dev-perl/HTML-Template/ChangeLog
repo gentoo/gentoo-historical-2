@@ -1,6 +1,51 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template/ChangeLog,v 1.1 2002/10/24 13:44:58 mcummings Exp $
+# ChangeLog for dev-perl/HTML-Template
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template/ChangeLog,v 1.1.1.1 2005/11/30 09:53:00 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> HTML-Template-2.7.ebuild:
+  Mark 2.7 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> HTML-Template-2.7.ebuild:
+  Mark 2.7 stable on alpha
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> HTML-Template-2.7.ebuild:
+  add ~ia64
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  HTML-Template-2.7.ebuild:
+  Stable on ppc.
+
+  15 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  HTML-Template-2.7.ebuild:
+  Marking stable x86 and sparc
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -HTML-Template-2.6.ebuild, HTML-Template-2.6-r1.ebuild,
+  HTML-Template-2.7.ebuild:
+  Cleaning
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*HTML-Template-2.7 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org>
+  +HTML-Template-2.7.ebuild:
+  New version on CPAN
+
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  HTML-Template-2.6-r1.ebuild:
+  Stable on alpha.
+
+*HTML-Template-2.6-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
 
 *HTML-Template-2.6 (24 Oct 2002)
 

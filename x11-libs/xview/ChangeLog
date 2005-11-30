@@ -1,6 +1,61 @@
 # ChangeLog for x11-libs/xview
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/xview/ChangeLog,v 1.1 2003/08/01 22:55:05 murphy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/xview/ChangeLog,v 1.1.1.1 2005/11/30 09:54:00 chriswhite Exp $
+
+*xview-3.2-r4 (14 Aug 2005)
+
+  14 Aug 2005; Olivier Fisette <ribosome@gentoo.org> +xview-3.2-r4.ebuild:
+  Fixed bug #88001: xview no longer builds its own versions of msgfmt and
+  xgettext.
+
+  28 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> xview-3.2.ebuild,
+  xview-3.2-r1.ebuild, xview-3.2-r3.ebuild:
+  Removed from hppa (#78118).
+
+  01 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> xview-3.2.ebuild,
+  xview-3.2-r1.ebuild, xview-3.2-r3.ebuild:
+  Mask alpha due to bug 78118.
+
+  17 Feb 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  +files/CAN-2005-0076.patch, -xview-3.2-r2.ebuild:
+  Removed -r2 that did not work with xorg. Added -r3 that does not use the
+  debian patches and has a new HOMEPAGE and seems to be supported there. This
+  version from the new home still needed the CAN-2005-0076 patch. This was
+  tested with xorg 6.8.0-r4 and 6.8.2 on x86.
+
+*xview-3.2-r2 (17 Feb 2005)
+
+  17 Feb 2005; Gustavo Felisberto <humpback@gentoo.org>; +xview-3.2-r2.ebuild:
+  Adding -r2 with debian patch to solve security problem reported in bug #78118.
+
+  16 Jan 2005; Guy Martin <gmsoft@gentoo.org> xview-3.2-r1.ebuild:
+  Stable on hppa.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> xview-3.2-r1.ebuild:
+  Stable on alpha.
+
+  18 Nov 2004; <pyrania@gentoo.org> xview-3.2-r1.ebuild:
+  Marked stable on x86.
+
+*xview-3.2-r1 (02 Oct 2004)
+
+  02 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> +xview-3.2-r1.ebuild:
+  Bump patches, new ebuild provided by genstef in #gentoo-bugs.
+
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> xview-3.2.ebuild:
+  Stable on alpha.
+
+  30 Mar 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml, xview-3.2.ebuild:
+  Added metadata.xml
+
+  30 Mar 2004; Chris Aniszczyk <zx@gentoo.org> xview-3.2.ebuild:
+  Marking stable on hppa.
+
+  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> xview-3.2.ebuild:
+  don't assign to PN; tidy
 
 *xview-3.2 (02 AUG 2003)
 

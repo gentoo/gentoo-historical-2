@@ -1,8 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-8.00.ebuild,v 1.1 2005/04/22 17:24:42 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-8.00.ebuild,v 1.1.1.1 2005/11/30 09:52:21 chriswhite Exp $
 
-IUSE="static spell"
+inherit eutils
+
+IUSE="static spell qt kde"
 
 OPERAVER="8.0-20050415"
 OPERAFTPDIR="800/final/en"
@@ -31,16 +33,17 @@ DEPEND=">=sys-apps/sed-4
 
 RDEPEND="virtual/x11
 	>=media-libs/fontconfig-2.1.94-r1
-	media-libs/libexif
-	x11-libs/openmotif
-	spell? ( app-text/aspell )
 	amd64? ( static? ( app-emulation/emul-linux-x86-xlibs )
-	         !static? ( =app-emulation/emul-linux-x86-qtlibs ) )
-	x86? ( !static? ( =x11-libs/qt-3* ) )"
+	         !static? ( app-emulation/emul-linux-x86-qtlibs ) )
+	!amd64? ( media-libs/libexif
+	          x11-libs/openmotif
+	          spell? ( app-text/aspell )
+	          x86? ( !static? ( =x11-libs/qt-3* ) )
+	          media-libs/jpeg )"
 
 SLOT="0"
 LICENSE="OPERA"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 src_unpack() {
 	unpack ${A}
@@ -51,6 +54,7 @@ src_unpack() {
 	       -e "s:/usr/share/icons:${D}/usr/share/icons:g" \
 	       -e "s:/etc/X11:${D}/etc/X11:g" \
 	       -e "s:/usr/share/gnome:${D}/usr/share/gnome:g" \
+	       -e "s:/opt/gnome/share:${D}/opt/gnome/share:g" \
 	       -e 's:#\(OPERA_FORCE_JAVA_ENABLED=\):\1:' \
 	       -e 's:#\(export LD_PRELOAD OPERA_FORCE_JAVA_ENABLED\):\1:' \
 		   -e 's:read str_answer:return 0:' \
@@ -103,6 +107,11 @@ src_install() {
 			use sparc && DIR=$OPERAVER.2 || DIR=$OPERAVER.5
 		fi
 		echo "Spell Check Engine=/opt/opera/lib/opera/${DIR}/spellcheck.so" >> ${D}/opt/opera/share/opera/ini/spellcheck.ini
+	fi
+
+	if use qt || use kde; then
+		cd ${D}/opt/opera/bin
+		epatch ${FILESDIR}/opera-qt.patch
 	fi
 }
 

@@ -1,24 +1,25 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-SSLeay/Crypt-SSLeay-0.51.ebuild,v 1.1 2004/06/05 17:04:08 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-SSLeay/Crypt-SSLeay-0.51.ebuild,v 1.1.1.1 2005/11/30 09:53:22 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="Crypt::SSLeay module for perl"
-SRC_URI="http://www.cpan.org/modules/by-module/Crypt/${P}.tar.gz"
-HOMEPAGE="http://search.cpan.org/author/CHAMAS/Crypt-SSLeay-${PV}/"
+SRC_URI="mirror://cpan/authors/id/C/CH/CHAMAS/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~chamas/${P}/"
 IUSE=""
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~amd64 ~alpha ~ppc ~sparc ~hppa ~mips ~ia64"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 
-SRC_TEST="do"
+# Disabling tests for now. Opening a port always leads to mixed results for
+# folks - bug 59554
+#SRC_TEST="do"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=dev-lang/perl-5
 	dev-perl/libwww-perl
 	>=dev-libs/openssl-0.9.7c"
 
 export OPTIMIZE="${CFLAGS}"
 myconf="${myconf} /usr"
-

@@ -1,6 +1,25 @@
 # ChangeLog for dev-php4/pecl-sqlite
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/pecl-sqlite/ChangeLog,v 1.1 2005/09/04 15:52:51 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/pecl-sqlite/ChangeLog,v 1.1.1.1 2005/11/30 09:51:27 chriswhite Exp $
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> pecl-sqlite-1.0.3.ebuild:
+  Added ~ppc64 keywords; bug #102649
+
+  16 Sep 2005; Christian Parpart <trapni@gentoo.org>
+  pecl-sqlite-1.0.3.ebuild:
+  added to ~amd64
+
+  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  pecl-sqlite-1.0.3.ebuild:
+  amd64 needs dev-lang/php-4
+
+  15 Sep 2005; Christian Parpart <trapni@gentoo.org>
+  pecl-sqlite-1.0.3.ebuild:
+  adding to ~amd64
+
+  09 Sep 2005; Jason Wever <weeve@gentoo.org> pecl-sqlite-1.0.3.ebuild:
+  Added ~sparc keyword to help fix the broken dependencies of
+  dev-php/PEAR-Date-1.4.3-r1.
 
   18 Aug 2005; <stuart@gentoo.org> ChangeLog:
   Initial version; replaces older dev-php/* packages

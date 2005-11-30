@@ -1,6 +1,73 @@
-# ChangeLog for app-games/rocksndiamonds
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/rocksndiamonds/ChangeLog,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# ChangeLog for games-arcade/rocksndiamonds
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/rocksndiamonds/ChangeLog,v 1.1.1.1 2005/11/30 09:52:01 chriswhite Exp $
+
+  22 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  rocksndiamonds-3.1.1.ebuild:
+  fix case where USE="-X sdl"
+
+*rocksndiamonds-3.1.1 (24 Aug 2005)
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +rocksndiamonds-3.1.1.ebuild:
+  version bump with help from gentoo-bugzilla@semisane.de (bug #103076)
+
+  27 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  rocksndiamonds-3.1.0.ebuild:
+  add user submitted levels to install (bug #90654)
+
+  11 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  rocksndiamonds-3.1.0.ebuild:
+  Added app-arch/unzip to DEPEND and closing bug #70808.
+
+*rocksndiamonds-3.1.0 (10 Jul 2004)
+
+  10 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +rocksndiamonds-3.1.0.ebuild:
+  version bump
+  use emake
+  more levels (patch from Tomer Chachamu via bug #55320)
+
+*rocksndiamonds-3.0.8 (02 Apr 2004)
+
+  02 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  rocksndiamonds-3.0.8.ebuild:
+  version bump and added two additional level packs
+
+  02 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  rocksndiamonds-3.0.6.ebuild:
+  fix IUSE
+
+  28 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  rocksndiamonds-3.0.6.ebuild:
+  enable sdl to be able to be selected as well as X since we compile both
+
+  28 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  rocksndiamonds-3.0.4.ebuild:
+  clean old version
+
+  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  rocksndiamonds-3.0.4.ebuild, rocksndiamonds-3.0.6.ebuild:
+  use || in DEPEND to say what we really mean
+
+  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> :
+  AMD64 keywords
+
+*rocksndiamonds-3.0.6 (11 Oct 2003)
+
+  11 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*rocksndiamonds-3.0.4 (15 Sep 2003)
+
+  15 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  rocksndiamonds-2.1.1.ebuild, rocksndiamonds-3.0.0.ebuild,
+  rocksndiamonds-3.0.2.ebuild:
+  removed old versions
+
+  15 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  rocksndiamonds-3.0.4.ebuild:
+  version bump
 
 *rocksndiamonds-3.0.2 (27 Aug 2003)
 

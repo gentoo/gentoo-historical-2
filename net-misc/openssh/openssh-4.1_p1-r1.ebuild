@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-4.1_p1-r1.ebuild,v 1.1 2005/07/15 12:30:14 lcars Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-4.1_p1-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:40 chriswhite Exp $
 
 inherit eutils flag-o-matic ccc pam
 
@@ -9,9 +9,9 @@ inherit eutils flag-o-matic ccc pam
 PARCH=${P/_/}
 
 SFTPLOG_PATCH_VER="1.2"
-X509_PATCH="${PARCH}+x509-5.1.diff.gz"
+X509_PATCH="${PARCH}+x509-5.2.diff.gz"
 SELINUX_PATCH="openssh-3.9_p1-selinux.diff"
-SECURID_PATCH="" #${PARCH}+SecurID_v1.3.1.patch
+SECURID_PATCH="${PARCH}+SecurID_v1.3.1.patch"
 LDAP_PATCH="${PARCH/-/-lpk-}-0.3.6.patch"
 HPN_PATCH="${PARCH}-hpn11.diff"
 
@@ -19,14 +19,14 @@ DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	ldap? ( http://www.opendarwin.org/en/projects/openssh-lpk/files/${LDAP_PATCH} )
-	X509? ( http://roumenpetrov.info/openssh/x509-5.1/${X509_PATCH} )
-	hpn? ( http://www.psc.edu/networking/projects/hpn-ssh/${HPN_PATCH} )"
-#	smartcard? ( http://www.omniti.com/~jesus/projects/${SECURID_PATCH} )
+	X509? ( http://roumenpetrov.info/openssh/x509-5.2/${X509_PATCH} )
+	hpn? ( http://www.psc.edu/networking/projects/hpn-ssh/${HPN_PATCH} )
+	smartcard? ( http://www.omniti.com/~jesus/projects/${SECURID_PATCH} )"
 
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="ipv6 static pam tcpd kerberos skey selinux chroot X509 ldap smartcard nocxx sftplogging hpn libedit"
+IUSE="ipv6 static pam tcpd kerberos skey selinux chroot X509 ldap smartcard sftplogging hpn libedit"
 
 RDEPEND="pam? ( virtual/pam )
 	kerberos? ( virtual/krb5 )
@@ -35,12 +35,11 @@ RDEPEND="pam? ( virtual/pam )
 	ldap? ( net-nds/openldap )
 	libedit? ( dev-libs/libedit )
 	>=dev-libs/openssl-0.9.6d
-	>=sys-libs/zlib-1.1.4
+	>=sys-libs/zlib-1.2.3
 	smartcard? ( dev-libs/opensc )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )"
 DEPEND="${RDEPEND}
 	virtual/os-headers
-	!nocxx? ( sys-apps/groff )
 	sys-devel/autoconf"
 PROVIDE="virtual/ssh"
 
@@ -50,29 +49,33 @@ src_unpack() {
 	unpack ${PARCH}.tar.gz
 	cd "${S}"
 
+	sed -i \
+		-e '/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:/usr/bin/xauth:' \
+		pathnames.h || die
+
 	#epatch "${FILESDIR}"/openssh-3.9_p1-largekey.patch.bz2
 	epatch "${FILESDIR}"/openssh-3.9_p1-kerberos-detection.patch #80811
 
-	use X509 && epatch ${DISTDIR}/${X509_PATCH}
-	use sftplogging && epatch ${FILESDIR}/openssh-4.0_p1-sftplogging-1.2-gentoo.patch.bz2
-	use skey && epatch ${FILESDIR}/openssh-3.9_p1-skey.patch.bz2
-	use chroot && epatch ${FILESDIR}/openssh-3.9_p1-chroot.patch
-	use selinux && epatch ${FILESDIR}/${SELINUX_PATCH}.bz2
-	use smartcard && epatch ${FILESDIR}/openssh-3.9_p1-opensc.patch.bz2
+	use X509 && epatch "${DISTDIR}"/${X509_PATCH}
+	use sftplogging && epatch "${FILESDIR}"/openssh-4.0_p1-sftplogging-1.2-gentoo.patch.bz2
+	use skey && epatch "${FILESDIR}"/openssh-3.9_p1-skey.patch.bz2
+	use chroot && epatch "${FILESDIR}"/openssh-3.9_p1-chroot.patch
+	use selinux && epatch "${FILESDIR}"/${SELINUX_PATCH}.bz2
+	use smartcard && epatch "${FILESDIR}"/openssh-3.9_p1-opensc.patch.bz2
 	if ! use X509 ; then
 		if [[ -n ${SECURID_PATCH} ]] && use smartcard ; then
-			epatch ${DISTDIR}/${SECURID_PATCH}
-			use ldap && epatch ${FILESDIR}/openssh-4.0_p1-smartcard-ldap-happy.patch
+			epatch "${DISTDIR}"/${SECURID_PATCH} "${FILESDIR}"/openssh-securid-1.3.1-updates.patch
+			use ldap && epatch "${FILESDIR}"/openssh-4.0_p1-smartcard-ldap-happy.patch
 		fi
 		if use sftplogging ; then
 			ewarn "Sorry, sftplogging and ldap don't get along"
 		else
-			use ldap && epatch ${DISTDIR}/${LDAP_PATCH}
+			use ldap && epatch "${DISTDIR}"/${LDAP_PATCH}
 		fi
 	elif use smartcard || use ldap ; then
 		ewarn "Sorry, x509 and smartcard/ldap don't get along"
 	fi
-	use hpn && epatch ${DISTDIR}/${HPN_PATCH}
+	use hpn && epatch "${DISTDIR}"/${HPN_PATCH}
 
 	sed -i '/LD.*ssh-keysign/s:$: -Wl,-z,now:' Makefile.in || die "setuid"
 
@@ -142,7 +145,7 @@ src_install() {
 
 pkg_postinst() {
 	enewgroup sshd 22
-	enewuser sshd 22 /bin/false /var/empty sshd
+	enewuser sshd 22 -1 /var/empty sshd
 
 	ewarn "Remember to merge your config files in /etc/ssh/ and then"
 	ewarn "restart sshd: '/etc/init.d/sshd restart'."

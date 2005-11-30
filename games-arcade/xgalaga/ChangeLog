@@ -1,6 +1,31 @@
-# ChangeLog for app-games/xgalaga
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/xgalaga/ChangeLog,v 1.1 2003/09/10 19:29:22 vapier Exp $
+# ChangeLog for games-arcade/xgalaga
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xgalaga/ChangeLog,v 1.1.1.1 2005/11/30 09:52:06 chriswhite Exp $
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  xgalaga-2.0.34-r6.ebuild:
+  Removed INSTALL file.
+
+*xgalaga-2.0.34-r6 (15 May 2005)
+
+  15 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/xgalaga-2.0.34-xpaths.patch, +xgalaga-2.0.34-r6.ebuild:
+  Update Debian patch and fix X lib/inc issues #79496.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*xgalaga-2.0.34-r5 (09 Jul 2004)
+
+  09 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +xgalaga-2.0.34-r5.ebuild:
+  update to latest debian patch; use games eclass (bug #56545)
+
+  03 Jan 2004; Jason Wever <weeve@gentoo.org> xgalaga-2.0.34-r4.ebuild:
+  Added ~sparc keyword, resolves bug #37075.
+
+  06 Oct 2003; Aron Griffis <agriffis@gentoo.org> xgalaga-2.0.34-r4.ebuild:
+  Stable on alpha
 
 *xgalaga-2.0.34-r4 (25 Aug 2003)
 
@@ -20,7 +45,7 @@
 
 *xgalaga-2.0.34-r2 (1 Feb 2002)
 
-  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> xgalaga-2.0.34-r2.ebuild :
+  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> xgalaga-2.0.34-r2.ebuild :
   Added LICENSE, KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

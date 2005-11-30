@@ -1,3 +1,14 @@
-MD5 567701a818fd6cbdc90b3a02c0fa086e .mahogany-0.65.ebuild.swp 12288
-MD5 df190e49ee12cc37bf92f6abd7ba2680 mahogany-0.65.ebuild 1550
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 5f953bf4f4edf62b0f7c29d5415c343c mahogany-0.65.ebuild 1632
+MD5 dc589a51168a7dd7052ca145491b2c72 ChangeLog 780
+MD5 37b92726b23fb53c0945ae805d202e26 metadata.xml 462
 MD5 ac95fcbfb3d628b354889fa06707cf8c files/digest-mahogany-0.65 67
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCe1c3I1lqEGTUzyQRAvk7AKDGjlgCt99LigLqxzn670IWjza1TACdGDwM
+HzIKPFbHGaSDbGxRXuVsMBU=
+=hd5B
+-----END PGP SIGNATURE-----

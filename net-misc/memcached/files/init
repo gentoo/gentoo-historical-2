@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/files/init,v 1.1 2004/07/08 19:14:45 lisa Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/files/init,v 1.1.1.1 2005/11/30 09:54:36 chriswhite Exp $
 
 depend() {
 	need net

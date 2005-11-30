@@ -1,7 +1,57 @@
 # ChangeLog for x11-libs/neXtaw
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/neXtaw/ChangeLog,v 1.1 2002/08/11 09:29:50 mkennedy Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/neXtaw/ChangeLog,v 1.1.1.1 2005/11/30 09:54:13 chriswhite Exp $
 
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> neXtaw-0.15.1.ebuild:
+  Mark 0.15.1 stable on alpha
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> neXtaw-0.15.1.ebuild:
+  Stable on ppc.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> neXtaw-0.15.1.ebuild:
+  Mark 0.15.1 stable on ia64
+
+  29 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> neXtaw-0.15.1.ebuild:
+  Stable on sparc
+
+  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org> neXtaw-0.15.1.ebuild:
+  Stable on x86.
+
+*neXtaw-0.15.1-r1 (29 Sep 2005)
+
+  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org> neXtaw-0.12.ebuild,
+  neXtaw-0.15.1.ebuild, +neXtaw-0.15.1-r1.ebuild:
+  Changed installation path from /usr/X11R6 to /usr; bug #90796.
+
+  29 Mar 2005; Guy Martin <gmsoft@gentoo.org> neXtaw-0.12.ebuild,
+  neXtaw-0.15.1.ebuild:
+  Added some hppa keywords.
+
+*neXtaw-0.15.1 (19 Nov 2004)
+
+  19 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +neXtaw-0.15.1.ebuild:
+  Version bumped for ppc-macos.
+
+  20 Jul 2004; Tom Gall <tgall@gentoo.org> neXtaw-0.12.ebuild:
+  stable on ppc64, bug #57174
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> neXtaw-0.12.ebuild:
+  Removed S, added IUSE.
+
+  10 Apr 2004; Martin Holzer <mholzer@gentoo.org> neXtaw-0.12.ebuild:
+  changing depend to virtual/x11. closes 47370
+
+  23 Mar 2004; Martin Holzer <mholzer@gentoo.org> neXtaw-0.12.ebuild:
+  fixing depend qa issue. see 45343.
+
+  13 Mar 2004; David Holm <dholm@gentoo.org> neXtaw-0.12.ebuild:
+  Added to ~ppc.
+
+  16 Feb 2004; Aron Griffis <agriffis@gentoo.org> neXtaw-0.12.ebuild:
+  stable on alpha and ia64
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *neXtaw-0.12 (11 Aug 2002)
 
   11 Aug; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,

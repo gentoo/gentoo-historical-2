@@ -1,20 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.4.3.20050110-r2.ebuild,v 1.1 2005/04/08 02:52:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.4.3.20050110-r2.ebuild,v 1.1.1.1 2005/11/30 09:53:42 chriswhite Exp $
 
 MAN_VER="3.4.3"
-PATCH_VER="1.3"
-UCLIBC_VER="1.0"
+PATCH_VER="2.0"
+UCLIBC_VER="1.1"
 PIE_VER="8.7.7"
 PIE_CORE="gcc-3.4.3-piepatches-v${PIE_VER}.tar.bz2"
 PP_VER="3.4.3.20050110"
 PP_FVER="${PP_VER//_/.}-0"
 HTB_VER="1.00"
-HTB_GCC_VER="3.4.2"
+HTB_EXCLUSIVE="true"
 
 GCC_LIBSSP_SUPPORT="true"
 
 ETYPE="gcc-compiler"
+
+# Punt redhat patch #87631
+GENTOO_PATCH_EXCLUDE="08_all_gcc34-chk.patch"
 
 # arch/libc configurations known to be stable with {PIE,SSP}-by-default
 SSP_STABLE="x86 sparc amd64 ppc ppc64"
@@ -39,20 +42,16 @@ inherit toolchain eutils
 
 DESCRIPTION="The GNU Compiler Collection.  Includes C/C++, java compilers, pie+ssp extensions, Haj Ten Brugge runtime bounds checking"
 
-KEYWORDS="-* ~amd64 -hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="-* ~amd64 -hppa ~ia64 mips ~ppc ~ppc64 ~sparc ~x86"
 
 # we need a proper glibc version for the Scrt1.o provided to the pie-ssp specs
 # NOTE: we SHOULD be using at least binutils 2.15.90.0.1 everywhere for proper
 # .eh_frame ld optimisation and symbol visibility support, but it hasnt been
 # well tested in gentoo on any arch other than amd64!!
 RDEPEND="virtual/libc
-	>=sys-devel/gcc-config-1.3.10
+	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.10 )
 	>=sys-libs/zlib-1.1.4
 	!sys-devel/hardened-gcc
-	!uclibc? (
-		>=sys-libs/glibc-2.3.3_pre20040420-r1
-		hardened? ( >=sys-libs/glibc-2.3.3_pre20040529 )
-	)
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-glibc-1.1 ) )
 	!build? (
 		gcj? (
@@ -72,8 +71,8 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	>=sys-devel/binutils-2.14.90.0.8-r1
 	amd64? ( >=sys-devel/binutils-2.15.90.0.1.1-r1 )"
-PDEPEND="sys-devel/gcc-config
-	!nocxx? ( !mips? ( !ia64? ( !uclibc? ( !build? ( sys-libs/libstdc++-v3 ) ) ) ) )"
+PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )
+	!nocxx? ( !mips? ( !ia64? ( !elibc_uclibc? ( !build? ( sys-libs/libstdc++-v3 ) ) ) ) )"
 
 src_unpack() {
 	gcc_src_unpack
@@ -82,7 +81,7 @@ src_unpack() {
 	sed -e 's/3\.4\.4/3.4.3/' -i ${S}/gcc/version.c
 
 	# misc patches that havent made it into a patch tarball yet
-	epatch ${FILESDIR}/gcc-spec-env.patch
+	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env.patch
 
 	# nothing in the tree provides libssp.so, so nothing will ever trigger this
 	# logic, but having the patch in the tree makes life so much easier for me
@@ -131,7 +130,7 @@ src_unpack() {
 			# to be enabled by passing -mip28-cache-barrier.  Only used to build kernels, 
 			# There is the possibility it may be used for very specific userland apps too.
 			if use ip28; then
-				epatch ${FILESDIR}/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers.patch
+				epatch ${FILESDIR}/3.4.2/gcc-3.4.2-mips-ip28_cache_barriers-v2.patch
 			fi
 			;;
 		amd64)

@@ -1,12 +1,12 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PerlQt/PerlQt-3.008.ebuild,v 1.1 2003/10/16 12:51:05 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PerlQt/PerlQt-3.008.ebuild,v 1.1.1.1 2005/11/30 09:52:32 chriswhite Exp $
 
 inherit perl-module
 
 #install pqtsh to this directory
 myinst="${myinst} INSTBINDIR=${D}/usr/bin"
-myconf="${myconf} --prefix=${D}/usr"
+myconf="${myconf} --prefix=${D}/usr --enable-smoke"
 mydoc="ChangeLog README TODO INSTALL COPYING AUTHORS"
 
 DESCRIPTION="Perl bindings for the Qt 3.x toolkit"
@@ -15,13 +15,14 @@ HOMEPAGE="http://perlqt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/perlqt/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~sparc"
+IUSE=""
 
 
 #if kdebindings is installed compilation is really fast!
 # because libsmoke comes with kdebindings-3.1
 
-newdepend ">=x11-libs/qt-3.0.0"
+DEPEND="=x11-libs/qt-3*"
 
 src_unpack() {
 	unpack ${A}

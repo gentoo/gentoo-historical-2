@@ -1,6 +1,38 @@
 # ChangeLog for x11-libs/liblbxutil
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/liblbxutil/ChangeLog,v 1.1 2005/08/08 04:22:18 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/liblbxutil/ChangeLog,v 1.1.1.1 2005/11/30 09:54:15 chriswhite Exp $
+
+  13 Nov 2005; Luca Barbato <lu_zero@gentoo.org> liblbxutil-0.99.2.ebuild:
+  Marked ~ppc
+
+  12 Nov 2005; <dang@gentoo.org> liblbxutil-0.99.2.ebuild:
+  Marked ~amd64
+
+  11 Nov 2005; <dang@gentoo.org> liblbxutil-0.99.1.ebuild:
+  Marked ~amd64
+
+*liblbxutil-0.99.2 (11 Nov 2005)
+
+  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +liblbxutil-0.99.2.ebuild:
+  Bump for 7.0RC2.
+
+  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -liblbxutil-0.99.0.ebuild:
+  Drop old version.
+
+*liblbxutil-0.99.1 (20 Oct 2005)
+
+  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +liblbxutil-0.99.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  liblbxutil-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *liblbxutil-0.99.0 (08 Aug 2005)
 

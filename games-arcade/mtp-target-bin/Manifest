@@ -1,5 +1,14 @@
-MD5 25451dba644bdc7f539cb692afd6a290 ChangeLog 380
-MD5 437eac2df7f863daaaf7b1ecf0f6c2b0 mtp-target-bin-1.0.4.ebuild 1070
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 837ff0470ba2d24c2142d149cdbeb830 mtp-target-bin-1.2.0.ebuild 1573
 MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 a5d8cc93809c2fd6360a0aa553551bb1 files/digest-mtp-target-bin-1.0.4 71
-MD5 f12c1730176555ecca3e431f71c4b560 files/mtp-target-bin.sh 245
+MD5 d707b5250f84795455e30d783997a961 ChangeLog 1403
+MD5 a650d3df41542781f682abbb250deb5b files/digest-mtp-target-bin-1.2.0 71
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDK0JcLLFUmVNQ7rkRArwYAKCKpVlwuSJd7OpG7EVMroPsl6yN0gCfavoY
+EPy56HY32p8CEMGPdijWVr8=
+=Omif
+-----END PGP SIGNATURE-----

@@ -1,7 +1,62 @@
 # ChangeLog for x11-themes/gtk-engines-lighthouseblue
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-lighthouseblue/ChangeLog,v 1.1 2002/10/29 06:26:27 leonardop Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-lighthouseblue/ChangeLog,v 1.1.1.1 2005/11/30 09:51:38 chriswhite Exp $
 
+  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtk-engines-lighthouseblue-0.6.3.ebuild:
+  Stable on ppc.
+
+  05 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-lighthouseblue-0.6.3.ebuild:
+  Stable on x86.
+
+*gtk-engines-lighthouseblue-0.6.3 (02 Aug 2005)
+
+  02 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-lighthouseblue-0.6.3.ebuild:
+  New version. Added 'static' USE flag.
+
+  02 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  gtk-engines-lighthouseblue-0.6.2-r1.ebuild:
+  Don't inherit from gtk-engines.eclass. Stable on x86.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
+  gtk-engines-lighthouseblue-0.7.0.ebuild:
+  Stable on alpha.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  gtk-engines-lighthouseblue-0.6.2-r1.ebuild,
+  gtk-engines-lighthouseblue-0.6.2-r2.ebuild:
+  sync IUSE
+
+  10 Jan 2004; <gustavoz@gentoo.org> gtk-engines-lighthouseblue-0.7.0.ebuild:
+  keyworded hppa
+
+  07 Jan 2004; <gustavoz@gentoo.org> gtk-engines-lighthouseblue-0.7.0.ebuild:
+  marked stable on sparc
+
+*gtk-engines-lighthouseblue-0.7.0 (19 Jun 2003)
+
+  19 Jun 2003; Alastair Tse <liquidx@gentoo.org>
+  gtk-engines-lighthouseblue-0.7.0.ebuild:
+  porting gtk theme engine to new eclass format
+
+  22 Mar 2003; Graham Forest <vladimir@gentoo.org>
+  gtk-engines-lighthouseblue-0.6.2-r1,
+  gtk-engines-lighthouseblue-0.6.2-r2 : Added ppc to keywords
+
+*gtk-engines-lighthouseblue-0.6.2-r2 (14 Jan 2003)
+*gtk-engines-lighthouseblue-0.6.2-r1 (14 Jan 2003)
+*gtk-engines-lighthouseblue-0.6.2 (14 Jan 2003)
+
+  14 Jan 2003; L. Boshell <leonardop@gentoo.org>
+  gtk-engines-lighthouseblue-0.6.2-r1,
+  gtk-engines-lighthouseblue-0.6.2-r2 : Introducing two ebuilds for both
+  GTK 1 and GTK 2 versions of this engine.
+  
 *gtk-engines-lighthouseblue-0.4.2 (29 Oct 2002)
 
   29 Oct 2002; L. Boshell <leonardop@gentoo.org> ChangeLog,

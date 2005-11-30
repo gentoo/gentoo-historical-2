@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/deltup/deltup-0.4.2-r1.ebuild,v 1.1 2005/04/28 10:03:17 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/deltup/deltup-0.4.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:55 chriswhite Exp $
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 		http://www.bzip.org/1.0.2/bzip2-1.0.2.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND="dev-libs/openssl
@@ -18,7 +18,7 @@ DEPEND="dev-libs/openssl
 	>=app-arch/bzip2-1.0.0
 	virtual/libc"
 RDEPEND="${DEPEND}
-	>=dev-util/xdelta-1.1.3
+	|| ( dev-util/bdelta >=dev-util/xdelta-1.1.3 )
 	>=app-arch/bzip2-1.0.3"
 
 src_unpack () {
@@ -32,7 +32,7 @@ src_unpack () {
 }
 
 src_compile () {
-	emake || "emake getdelta failed"
+	emake || die "emake getdelta failed"
 
 	cd ${WORKDIR}/bzip2-1.0.2
 	local makeopts="

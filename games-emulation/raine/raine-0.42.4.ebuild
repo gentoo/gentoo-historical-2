@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/raine/raine-0.42.4.ebuild,v 1.1 2005/07/21 02:22:49 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/raine/raine-0.42.4.ebuild,v 1.1.1.1 2005/11/30 09:50:22 chriswhite Exp $
 
 inherit games
 

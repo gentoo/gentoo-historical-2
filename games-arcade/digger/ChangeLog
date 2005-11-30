@@ -1,6 +1,9 @@
-# ChangeLog for app-games/digger
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/digger/ChangeLog,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# ChangeLog for games-arcade/digger
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/digger/ChangeLog,v 1.1.1.1 2005/11/30 09:52:02 chriswhite Exp $
+
+  25 Sep 2003; Chuck Short <zul@gentoo.org> digger-20020314.ebuild:
+  Added sparc to keywords.
 
   06 Dec 2003; Mark Guertin <gerk@gentoo.org> :
   Added ppc to keywords

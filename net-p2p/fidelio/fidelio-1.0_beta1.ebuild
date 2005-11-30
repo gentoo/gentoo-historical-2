@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/fidelio/fidelio-1.0_beta1.ebuild,v 1.1 2003/01/29 00:03:52 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/fidelio/fidelio-1.0_beta1.ebuild,v 1.1.1.1 2005/11/30 09:51:10 chriswhite Exp $
 
 IUSE="nls esd"
 S=${WORKDIR}/${P/_beta1/b1}
@@ -25,7 +25,7 @@ src_compile() {
 	local myconf
 
 	use nls || myconf="${myconf} --disable-nls"
-	
+
 	econf ${myconf} || die
 	emake || die
 
@@ -34,6 +34,6 @@ src_compile() {
 src_install () {
 
 	einstall || die
-	
+
 	dodoc AUTHORS ChangeLog NEWS README TODO
 }

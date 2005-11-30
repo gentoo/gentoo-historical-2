@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/maradns/maradns-1.0.27.ebuild,v 1.1 2005/05/05 01:21:46 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/maradns/maradns-1.0.27.ebuild,v 1.1.1.1 2005/11/30 09:50:17 chriswhite Exp $
 
 inherit eutils
 
@@ -48,5 +48,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	enewuser maradns 99 /bin/false /var/empty daemon
+	enewuser maradns 99 -1 /var/empty daemon
 }

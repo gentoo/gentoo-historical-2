@@ -1,58 +1,60 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/koules/koules-1.4-r1.ebuild,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/koules/koules-1.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:52:04 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 DESCRIPTION="fast action arcade-style game w/sound and network support"
-HOMEPAGE="http://www.paru.cas.cz/~hubicka/koules/English/"
+HOMEPAGE="http://www.ucw.cz/~hubicka/koules/English/"
 SRC_URI="http://www.ucw.cz/~hubicka/koules/packages/koules${PV}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE="X svga joystick"
+KEYWORDS="~amd64 ppc x86"
+IUSE="svga joystick tcltk"
 
 DEPEND=">=sys-apps/sed-4
-	svga? ( media-libs/svgalib )
-	X? ( virtual/x11 )
-	|| ( svga? ( ) X? ( ) virtual/x11 )"
-RDEPEND="virtual/glibc
-	svga? ( media-libs/svgalib )
-	X? ( virtual/x11 )
-	|| ( svga? ( ) X? ( ) virtual/x11 )
+	|| (
+		svga? ( media-libs/svgalib )
+		virtual/x11 )"
+RDEPEND="virtual/libc
+	|| (
+		svga? ( media-libs/svgalib )
+		virtual/x11 )
 	|| (
 		tcltk? ( dev-lang/tk dev-lang/tcl )
-		dev-util/dialog
-	)"
+		dev-util/dialog )"
 
-S=${WORKDIR}/${PN}${PV}
+S="${WORKDIR}/${PN}${PV}"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${PV}-gcc3.patch
+	epatch "${FILESDIR}/${PV}-gcc3.patch"
 	sed -i \
 		-e "/^KOULESDIR/s:=.*:=${GAMES_BINDIR}:" \
-		-e "/^SOUNDDIR/s:=.*:=${GAMES_DATADIR}/${PN}:" \
-		Iconfig || die
+		-e "/^SOUNDDIR/s:=.*:=${GAMES_DATADIR}/${PN}:" Iconfig \
+			|| die "sed Iconfig failed"
 	sed -i \
 		-e 's:-c -o $*.o:-c:' \
 		-e 's:-S -o $*.s:-S:' \
 		-e 's:$(ARCH)::' \
 		-e "s:-fomit-frame-pointer -O3 -ffast-math:${CFLAGS}:" \
-		Makefile.svgalib
-	#[ ${ARCH} == "x86" ] && echo '#define I386ASSEMBLY' >> Iconfig
-	[ `use joystick` ] && echo '#define JOYSTICK' >> Iconfig
-	sed -i "s:/usr/local/bin:${GAMES_BINDIR}:" koules
-	if [ `use tcltk` ] ; then
+		Makefile.svgalib || die "sed Makefile.svgalib failed"
+	use joystick && echo '#define JOYSTICK' >> Iconfig
+	sed -i \
+		-e "s:/usr/local/bin:${GAMES_BINDIR}:" koules \
+			|| die "sed koules failed"
+	if use tcltk ; then
 		sed -i \
 			-e "s:/usr/bin/X11:${GAMES_BINDIR}:" \
 			-e "s:/usr/local/bin:${GAMES_BINDIR}:" \
-			-e "s:/usr/local/lib/koules:${GAMES_DATADIR}/${PN}:" \
-			koules.tcl
+			-e "s:/usr/local/lib/koules:${GAMES_DATADIR}/${PN}:" koules.tcl \
+				|| die "sed koules.tcl failed"
 	else
-		sed -i 's:exec.*tcl:exec xkoules "$@":' koules
+		sed -i \
+			-e 's:exec.*tcl:exec xkoules "$@":' koules \
+				|| die "sed koules failed"
 	fi
 	ln -s xkoules.6 xkoules.man
 	ln -s xkoules.6 xkoules._man
@@ -60,28 +62,31 @@ src_unpack() {
 
 src_compile() {
 	mkdir bins
-	if [ `use X` ] || [ -z "`use X``use svga`" ] ; then
+	if ! use svga ; then
 		xmkmf -a
-		sed -i "/^ *CFLAGS =/s:$: ${CFLAGS}:" Makefile
-		make || die "emake X failed"
+		sed -i \
+			-e "/^ *CFLAGS =/s:$: ${CFLAGS}:" Makefile \
+				|| die "sed Makefile failed"
+		emake -j1 || die "emake X failed"
 		mv xkoules bins/
 	fi
-	if [ `use svga` ] ; then
+	if use svga ; then
 		make clean
 		ln -s ../init.o svgalib/
-		make -f Makefile.svgalib || die "emake svga failed"
+		emake -j1 -f Makefile.svgalib || die "emake svga failed"
 		mv koules.svga bins/
 	fi
 }
 
 src_install() {
-	dogamesbin bins/*
-	exeinto ${GAMES_DATADIR}/${PN}
-	doexe koules.sndsrv.linux
-	[ `use tcltk` ] && dogamesbin koules.tcl
+	dogamesbin koules bins/* || die "dogamesbin failed"
+	exeinto "${GAMES_DATADIR}/${PN}"
+	doexe koules.sndsrv.linux || die "doexe failed"
+	if use tcltk ; then
+		dogamesbin koules.tcl || die "dogamebin failed (tcl)"
+	fi
 	insinto ${GAMES_DATADIR}/${PN}
-	doins sounds/*
-	dogamesbin koules
+	doins sounds/* || die "doins failed (sounds)"
 
 	doman xkoules.6
 	use svga && doman koules.svga.6

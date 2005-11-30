@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gnap/gnap-1.7.1.ebuild,v 1.1 2005/06/23 13:05:26 koon Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gnap/gnap-1.7.1.ebuild,v 1.1.1.1 2005/11/30 09:53:25 chriswhite Exp $
 
 MY_P="${P/gnap/gnap-tools}"
 S="${WORKDIR}/${MY_P}"

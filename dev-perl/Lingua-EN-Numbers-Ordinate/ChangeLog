@@ -1,6 +1,31 @@
 # ChangeLog for dev-perl/Lingua-EN-Numbers-Ordinate
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lingua-EN-Numbers-Ordinate/ChangeLog,v 1.1 2003/02/12 02:59:05 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Lingua-EN-Numbers-Ordinate/ChangeLog,v 1.1.1.1 2005/11/30 09:52:59 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  Lingua-EN-Numbers-Ordinate-1.02.ebuild:
+  Mark 1.02 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Lingua-EN-Numbers-Ordinate-1.02.ebuild:
+  add ~ia64
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org> :
+  Bad file on the mirrors was why we had a bad digest. Reposting. Again :)
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org> :
+  Bad digest
+
+*Lingua-EN-Numbers-Ordinate-1.02 (27 Apr 2005)
+
+  27 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Lingua-EN-Numbers-Ordinate-0.01.ebuild,
+  +Lingua-EN-Numbers-Ordinate-1.02.ebuild:
+  Cleaning up. Author rebundled code in a cpan-friendly way and bumped the
+  number, but there is NO code change between this version and the last.
+
+  08 Jun 2003; <rac@gentoo.org> Lingua-EN-Numbers-Ordinate-0.01.ebuild:
+  Fix header, stabilize URL, add IUSE
 
 *Lingua-EN-Numbers-Ordinate-0.01 (11 Feb 2003)
 

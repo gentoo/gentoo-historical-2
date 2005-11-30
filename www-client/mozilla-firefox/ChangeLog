@@ -1,15 +1,532 @@
-# ChangeLog for net-www/mozilla-firefox
+# ChangeLog for www-client/mozilla-firefox
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-firefox/ChangeLog,v 1.1 2005/03/18 19:47:25 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-firefox/ChangeLog,v 1.1.1.1 2005/11/30 09:52:26 chriswhite Exp $
 
-*mozilla-firefox-1.0.1 (18 Mar 2005)
-*mozilla-firefox-1.0-r3 (18 Mar 2005)
-*mozilla-firefox-1.0_rc2 (18 Mar 2005)
-*mozilla-firefox-1.0-r2 (18 Mar 2005)
-*mozilla-firefox-1.0 (18 Mar 2005)
-*mozilla-firefox-1.0_rc1 (18 Mar 2005)
-*mozilla-firefox-1.0_pre-r2 (18 Mar 2005)
-*mozilla-firefox-0.9.3 (18 Mar 2005)
+*mozilla-firefox-1.5_rc3 (18 Nov 2005)
+
+  18 Nov 2005; <anarchy@gentoo.org> -mozilla-firefox-1.5_rc2-r3.ebuild,
+  +mozilla-firefox-1.5_rc3.ebuild:
+  revision bump on 1.5
+
+*mozilla-firefox-1.5_rc2-r3 (17 Nov 2005)
+
+  17 Nov 2005; <anarchy@gentoo.org> +files/firefox-pkgconfig.patch,
+  -mozilla-firefox-1.5_rc2-r2.ebuild, +mozilla-firefox-1.5_rc2-r3.ebuild:
+  patch for pkgconfig files, now accecpting bug reports
+
+*mozilla-firefox-1.5_rc2-r2 (16 Nov 2005)
+
+  16 Nov 2005; <anarchy@gentoo.org> -mozilla-firefox-1.0.6-r2.ebuild,
+  -mozilla-firefox-1.0.6-r3.ebuild, -mozilla-firefox-1.0.6-r4.ebuild,
+  -mozilla-firefox-1.0.6-r5.ebuild, -mozilla-firefox-1.0.6-r6.ebuild,
+  -mozilla-firefox-1.0.6-r7.ebuild, -mozilla-firefox-1.5_rc2-r1.ebuild,
+  +mozilla-firefox-1.5_rc2-r2.ebuild:
+  cleanup, rpath fix on 1.5rc2-r2
+
+*mozilla-firefox-1.5_rc2-r1 (14 Nov 2005)
+
+  14 Nov 2005; <anarchy@gentoo.org> -mozilla-firefox-1.5_rc1-r1.ebuild,
+  +mozilla-firefox-1.5_rc2-r1.ebuild:
+  revision bump, refer to ChangeLog
+
+*mozilla-firefox-1.5_rc1-r1 (07 Nov 2005)
+
+  07 Nov 2005; Jory A. Pratt <anarchy@gentoo.org>
+  -mozilla-firefox-1.5_rc1.ebuild, +mozilla-firefox-1.5_rc1-r1.ebuild:
+  New eclass to support >=1.5 mozilla products
+
+*mozilla-firefox-1.5_rc1 (03 Nov 2005)
+
+  03 Nov 2005; Jory A. Pratt <anarchy@gentoo.org>
+  -mozilla-firefox-1.5_beta2-r1.ebuild, +mozilla-firefox-1.5_rc1.ebuild:
+  1.5rc1 changed to use default desktop file and icon
+
+  02 Nov 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/mozilla-1.7.12-gtk2xft-link-pangoxft.patch,
+  +files/mozilla-1.7.12-pango-needs-pangox.patch:
+  Add pangox to pango enabled build.
+
+  23 Oct 2005; <anarchy@gentoo.org> -files/1.5/embed-typeaheadfind.patch,
+  mozilla-firefox-1.5_beta2-r1.ebuild:
+  moved typeaheadfind patch to mirror
+
+  17 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Mark 1.0.7-r2 stable on ia64
+
+*mozilla-firefox-1.5_beta2-r1 (13 Oct 2005)
+
+  13 Oct 2005; <anarchy@gentoo.org>
+  +files/1.5/mozilla-firefox-1.1a2-ia64.patch,
+  +files/1.5/embed-typeaheadfind.patch,
+  +files/1.5/firefox-cairo-canvas.patch,
+  +files/1.5/firefox-nopangoxft.patch, +files/1.5/firefox-visibility.patch,
+  +files/1.5/mozilla-hppa.patch, +files/1.5/mozilla-1.3-alpha-stubs.patch,
+  +files/gentoo-default-prefs.js, +files/icon/deerpark-icon.png,
+  files/icon/mozillafirefox.desktop, +mozilla-firefox-1.5_beta2-r1.ebuild:
+  1.5 initial import, masked for all until further notice
+
+  07 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-firefox-1.0.7-r3.ebuild:
+  Fix a compilation issue using the 32-bit userland with 64-bit kernel on
+  PowerPC.
+
+  02 Oct 2005; Martin Schlemmer <azarah@gentoo.org>
+  mozilla-firefox-1.0.7-r3.ebuild:
+  Fix flag replacement, bug #107917.
+
+*mozilla-firefox-1.0.7-r3 (02 Oct 2005)
+
+  02 Oct 2005; Martin Schlemmer <azarah@gentoo.org> +files/firefox.1,
+  files/icon/mozillafirefox.desktop, +mozilla-firefox-1.0.7-r3.ebuild:
+  Fix default theme not being listed in theme manager, bug #107660.  Filter
+  flags for SSP, as firefox at least do not seem to work with it, bug #96869.
+  Add MIME types associations, bug #107491.  Add manpage, bug #107493.
+
+  30 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Add missing idldir to pkgconfig files (firefox-config is fine).
+
+  29 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Stable on sparc wrt #105396
+
+  29 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Stable on alpha wrt security bug #105396
+
+  29 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Stable on x86; bug #105396
+
+  28 Sep 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Stable on hppa.
+
+  28 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Stable on ppc.
+
+  28 Sep 2005; <dang@gentoo.org> mozilla-firefox-1.0.7-r2.ebuild:
+  Marked stable on amd64
+
+  28 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  mozilla-firefox-1.0.7-r2.ebuild:
+  Update patch set with patch from bug #96869 (comment #48). Unmask as it
+  seems to fix bug #107372.
+
+*mozilla-firefox-1.0.7-r2 (27 Sep 2005)
+
+  27 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +mozilla-firefox-1.0.7-r2.ebuild:
+  Add pango and other patches from fedora in effort to try and resolve bug
+  #107372.
+
+*mozilla-firefox-1.0.7-r1 (26 Sep 2005)
+
+  26 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-1.7.12-gtk2xft-invalidate-pango_context.patch,
+  +files/mozilla-1.7.12-rpath.patch, +mozilla-firefox-1.0.7-r1.ebuild:
+  Add rpath stuff, bug #100597. Fix epiphany/galeon/etc segfaulting at
+  startup. Fix firefox segfaulting at first startup, bug #107233.
+
+  26 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-firefox-1.0.7.ebuild:
+  Stable on sparc wrt #105396
+
+  26 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  mozilla-firefox-1.0.7.ebuild:
+  Fix doc installation.
+
+*mozilla-firefox-1.0.7 (25 Sep 2005)
+
+  25 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-1.7.6-gcc4.patch, +files/mozilla-1.7.8-amd64.patch,
+  +files/mozilla-1.7.12-gtk2xft-link-pangoxft.patch,
+  +files/mozilla-1.7.12-libart-freetype.patch,
+  +mozilla-firefox-1.0.7.ebuild:
+  New release, GLSA105396. Use libart rather than cairo, bug #106713. Update
+  gtk2 and xft code from upstream to fix various freetype-2.1.9 issues
+  including printing non-latin. Same for the libart renderer code. Update gcc4
+  patches to allow building on gcc4.
+
+  17 Sep 2005; Jason Wever <weeve@gentoo.org>
+  mozilla-firefox-1.0.6-r7.ebuild:
+  Stable on SPARC wrt security bug #105396.
+
+  17 Sep 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mozilla-firefox-1.0.6-r7.ebuild:
+  Stable on hppa. bug #105396
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.6-r7.ebuild:
+  Mark 1.0.6-r7 stable on ia64
+
+  16 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  mozilla-firefox-1.0.6-r7.ebuild:
+  Stable on alpha wrt security bug #105396
+
+  16 Sep 2005; Mark Loeser <halcy0n@gentoo.org>
+  mozilla-firefox-1.0.6-r7.ebuild:
+  Stable on x86.
+
+  15 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-firefox-1.0.6-r7.ebuild:
+  Stable on ppc.
+
+  15 Sep 2005; <dang@gentoo.org> mozilla-firefox-1.0.6-r7.ebuild:
+  Bump for bug #105396
+
+*mozilla-firefox-1.0.6-r7 (15 Sep 2005)
+
+  15 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/mozilla-firefox-1.0.6-GLSA105396.patch,
+  +mozilla-firefox-1.0.6-r7.ebuild:
+  Fix buffer overflow, bug #105396.
+
+  15 Sep 2005; Joseph Jezak <josejx@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  Marked ppc stable.
+
+  11 Sep 2005; Guy Martin <gmsoft@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  Stable on hppa.
+
+  07 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  Stable on sparc
+
+  06 Sep 2005; Doug Goldstein <cardoe@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  stable on x86. marking as per brad's request
+
+*mozilla-firefox-1.0.6-r6 (15 Aug 2005)
+
+  15 Aug 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +files/mozilla-rpath-1.patch, +mozilla-firefox-1.0.6-r6.ebuild:
+  add rpath patch, p.masked for further testing, also mozcalendar removed as
+  it is busted majoryly
+
+  14 Aug 2005; Jory A. Pratt <anarchy@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  Adjusted dep wrt bug #102539
+
+  13 Aug 2005; Jory A. Pratt <anarchy@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  added die wrt bug #102341
+
+  11 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  stable on alpha ia64
+
+  10 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  mozilla-firefox-1.0.6-r5.ebuild:
+  Stable amd64 - bug #91984.
+
+*mozilla-firefox-1.0.6-r5 (10 Aug 2005)
+
+  10 Aug 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +mozilla-firefox-1.0.6-r5.ebuild:
+  revision bump for bug #91984
+
+  06 Aug 2005; Jory A. Pratt <anarchy@gentoo.org>
+  -mozilla-firefox-1.0.5-r1.ebuild:
+  cleanup of tree
+
+  04 Aug 2005; Martin Schlemmer <azarah@gentoo.org>
+  mozilla-firefox-1.0.5-r1.ebuild, mozilla-firefox-1.0.6-r2.ebuild,
+  mozilla-firefox-1.0.6-r3.ebuild, mozilla-firefox-1.0.6-r4.ebuild:
+  Remove --no-preserve=links from cp for bsd compatibility.
+
+*mozilla-firefox-1.0.6-r4 (02 Aug 2005)
+
+  02 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  +mozilla-firefox-1.0.6-r4.ebuild:
+  Update to v2 of the nsplugins patch, which actually works (even on multilib
+  systems). Define GENTOO_NSPLUGINS_DIR and GENTOO_NSBROWSER_PLUGINS_DIR in
+  the ebuild prior to emake, rather than in the eclass prior to econf, since
+  ./configure chokes on the definitions
+
+  27 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +files/mozilla-firefox-1.0.6-gcc4.patch, mozilla-firefox-1.0.6-r3.ebuild:
+  Updated gcc4 patch
+
+*mozilla-firefox-1.0.6-r3 (24 Jul 2005)
+
+  24 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +files/embedprompter-modal.patch, +files/gtk-prompt-service.patch, 
+  +files/gtk-tooltips.patch, +files/securebrowserui-iirq.patch, 
+  +mozilla-firefox-1.0.6-r3.ebuild:
+  updated to contain patches need to compile epiphany against. Reference
+  bug#86872
+
+  23 Jul 2005; Guy Martin <gmsoft@gentoo.org>
+  mozilla-firefox-1.0.6-r2.ebuild:
+  Stable on hppa.
+
+  23 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-firefox-1.0.6-r2.ebuild:
+  Stable on sparc wrt #99957
+
+*mozilla-firefox-1.0.6-r2 (23 Jul 2005)
+
+  23 Jul 2005; Jory A. Pratt <anarchy@gentoo.org> files/10MozillaFirefox,
+  -mozilla-firefox-1.0.6-r1.ebuild, +mozilla-firefox-1.0.6-r2.ebuild:
+  update for 10MozillaFirefox lib dir
+
+  22 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
+  mozilla-firefox-1.0.6-r1.ebuild:
+  Stable ppc wrt bug #99957
+
+  22 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.6-r1.ebuild:
+  Push to stable (alpha amd64 ia64 x86) for security and extensions issues
+
+  22 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.6-r1.ebuild:
+  More synchronization goodness from mozilla and thunderbird ebuilds
+
+  21 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.6-r1.ebuild:
+  Sync minor changes from upcoming mozilla-1.7.10 ebuild. Install
+  documentation (LEGAL and LICENSE). Update the component registry in
+  pkg_postrm() as well.
+
+  21 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.6-r1.ebuild:
+  Fix pkgconfig and firefox-config include dirs
+
+*mozilla-firefox-1.0.6-r1 (21 Jul 2005)
+
+  21 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  -mozilla-firefox-1.0.6.ebuild, +mozilla-firefox-1.0.6-r1.ebuild:
+  Stop using the nsplugins eclass in favor of the nsplugins patch which adds
+  additional plugin search paths. The plugin symlink madness stops here.
+  
+  Move firefox to /usr/lib/mozilla-firefox just as thunderbird has moved to
+  /usr/lib/mozilla-thunderbird (instead of MozillaFirefox and
+  MozillaThunderbird respectively)
+  
+  Use new mozilla-launcher registration code instead of the drop-in tarball.
+  This should allow us to eventually package up extensions as ebuilds ;-)
+
+*mozilla-firefox-1.0.6 (20 Jul 2005)
+
+  20 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +mozilla-firefox-1.0.6.ebuild:
+  revision, corrects API issues
+
+*mozilla-firefox-1.0.5-r1 (18 Jul 2005)
+
+  18 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  -mozilla-firefox-1.0.2.ebuild, -mozilla-firefox-1.0.2-r1.ebuild,
+  -mozilla-firefox-1.0.3.ebuild, -mozilla-firefox-1.0.3-r1.ebuild,
+  -mozilla-firefox-1.0.4.ebuild, -mozilla-firefox-1.0.4-r1.ebuild,
+  -mozilla-firefox-1.0.5.ebuild, +mozilla-firefox-1.0.5-r1.ebuild:
+  Install /usr/bin/firefox stub using install_mozilla_launcher_stub from
+  mozilla-launcher.eclass #99084
+
+  14 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.5.ebuild:
+  stable on x86 #95199
+
+  14 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  mozilla-firefox-1.0.5.ebuild:
+  Stable on alpha + ia64, bug 95199.
+
+  14 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  mozilla-firefox-1.0.5.ebuild:
+  Stable on hppa. Bug #95199
+
+  13 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-firefox-1.0.5.ebuild:
+  Stable on sparc wrt #95199
+
+  13 Jul 2005; Herbie Hopkins <herbs@gentoo.org>
+  mozilla-firefox-1.0.5.ebuild:
+  Stable on amd64 wrt bug #95199.
+
+  13 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
+  mozilla-firefox-1.0.5.ebuild:
+  Stable on PPC
+
+*mozilla-firefox-1.0.5 (13 Jul 2005)
+
+  13 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  +mozilla-firefox-1.0.5.ebuild:
+  Bump to 1.0.5
+
+  12 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  -files/mozilla-firefox-1.0-4ft2.patch, mozilla-firefox-1.0.2.ebuild,
+  mozilla-firefox-1.0.2-r1.ebuild, mozilla-firefox-1.0.3.ebuild,
+  mozilla-firefox-1.0.3-r1.ebuild, mozilla-firefox-1.0.4.ebuild,
+  mozilla-firefox-1.0.4-r1.ebuild:
+  Move mozilla-firefox-1.0-4ft2.patch to mirrors. Put patches in
+  d.g.o/~agriffis/dist as a secondary source
+
+*mozilla-firefox-1.0.4-r1 (11 Jul 2005)
+
+  11 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  -files/mozilla-firefox-1.0.3-ia64.patch, mozilla-firefox-1.0.3-r1.ebuild,
+  mozilla-firefox-1.0.4.ebuild, +mozilla-firefox-1.0.4-r1.ebuild:
+  Move ia64 patch to mirrors. Add alpha patch to solve math issues that
+  prevented maps.google.com from working properly
+
+  06 Jul 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.2.ebuild, mozilla-firefox-1.0.2-r1.ebuild,
+  mozilla-firefox-1.0.3.ebuild, mozilla-firefox-1.0.3-r1.ebuild,
+  mozilla-firefox-1.0.4.ebuild:
+  Add missing flags to IUSE
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org>
+  mozilla-firefox-1.0.2.ebuild, mozilla-firefox-1.0.2-r1.ebuild,
+  mozilla-firefox-1.0.3.ebuild, mozilla-firefox-1.0.3-r1.ebuild,
+  mozilla-firefox-1.0.4.ebuild:
+  Removed unneeded use of gcc.eclass.
+
+  25 May 2005; Herbie Hopkins <herbs@gentoo.org>
+  mozilla-firefox-1.0.4.ebuild:
+  Use correct libdir in env.d file.
+
+  17 May 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  mozilla-firefox-1.0.4.ebuild:
+  Removing newline which causes sed errors during src_install
+
+  15 May 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/mozilla-firefox-1.0.4-gcc4.patch, mozilla-firefox-1.0.4.ebuild:
+  GCC4 compile fix; bug #87800
+
+  13 May 2005; Carsten Lohrke <carlo@gentoo.org>
+  mozilla-firefox-1.0.4.ebuild:
+  Stable on x86, #92393
+
+  13 May 2005; Guy Martin <gmsoft@gentoo.org> mozilla-firefox-1.0.4.ebuild:
+  Stable on hppa.
+
+  13 May 2005; Bryan Østergaard <kloeri@gentoo.org>
+  mozilla-firefox-1.0.4.ebuild:
+  Stable on alpha, bug 92393.
+
+  12 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  dropped devspace URI mirrors are seeded.
+
+  12 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  mozilla-firefox-1.0.4.ebuild:
+  Stable on sparc wrt #91859
+
+  12 May 2005; Seemant Kulleen <seemant@gentoo.org>
+  mozilla-firefox-1.0.4.ebuild:
+  marked stable for amd64 -- after testing :)
+
+  12 May 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.4.ebuild:
+  add keywords that were dropped: ~alpha ~arm ~hppa ~sparc
+
+  12 May 2005; Lars Weiler <pylon@gentoo.org> mozilla-firefox-1.0.4.ebuild:
+  Stable on ppc; bug #91859.
+
+*mozilla-firefox-1.0.4 (12 May 2005)
+
+  12 May 2005; <anarchy@gentoo.org> +mozilla-firefox-1.0.4.ebuild:
+  security fixes bug #91859
+
+*mozilla-firefox-1.0.3-r1 (25 Apr 2005)
+
+  25 Apr 2005; Aron Griffis <agriffis@gentoo.org>
+  -files/mozilla-firebird-amd64.patch,
+  +files/mozilla-firefox-1.0.3-ia64.patch,
+  +files/mozilla-firefox-1.0.3-prefs.patch, -files/firefox,
+  -files/mozilla-firefox-mousebuttons.patch, mozilla-firefox-1.0.3.ebuild,
+  +mozilla-firefox-1.0.3-r1.ebuild:
+  Mark 1.0.3 as non-working on ia64; add 1.0.3-r1 with ia64 patch, plus a patch
+  to set a few default preferences as Debian does: disable application updating
+  by default since we want to control it with portage, inherit LANG from env,
+  etc.  Did not add ~arches to 1.0.3-r1 since the rebuild is unnecessary for the
+  installed base.  Instead just plan to use 1.0.3-r1 as the basis for the next
+  ~arches-marked ebuild.  Remove some dead wood from files dir.  
+
+  18 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  mozilla-firefox-1.0.3.ebuild:
+  Stable on ia64, bug 89303.
+
+  18 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  mozilla-firefox-1.0.3.ebuild:
+  Stable on alpha, bug 89303.
+
+  17 Apr 2005; Jason Wever <weeve@gentoo.org> mozilla-firefox-1.0.3.ebuild:
+  Stable on SPARC wrt security bug #89303.
+
+  17 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-firefox-1.0.3.ebuild:
+  Stable on hppa.
+
+  17 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  mozilla-firefox-1.0.3.ebuild:
+  stable on amd64 wrt #89303
+
+  16 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mozilla-firefox-1.0.3.ebuild:
+  Stable on ppc.
+
+*mozilla-firefox-1.0.3 (16 Apr 2005)
+
+  16 Apr 2005; Brad Laue <brad@gentoo.org> -mozilla-firefox-0.9.3.ebuild,
+  -mozilla-firefox-1.0_pre-r2.ebuild, -mozilla-firefox-1.0_rc1.ebuild,
+  -mozilla-firefox-1.0_rc2.ebuild, -mozilla-firefox-1.0.ebuild,
+  -mozilla-firefox-1.0-r2.ebuild, -mozilla-firefox-1.0-r3.ebuild,
+  -mozilla-firefox-1.0.1.ebuild, -mozilla-firefox-1.0.1-r1.ebuild,
+  +mozilla-firefox-1.0.3.ebuild:
+  Bump to 1.0.3. Stable on x86 immediately due to #89303.
+
+  27 Mar 2005; Guy Martin <gmsoft@gentoo.org> files/mozilla-hppa.patch,
+  mozilla-firefox-1.0.2.ebuild:
+  Fixed hppa patch && stable on hppa.
+
+  26 Mar 2005; Brad Laue <brad@gentoo.org> mozilla-firefox-1.0.2-r1.ebuild:
+  Fix firefox-config to truly report library and include paths.
+
+  25 Mar 2005; Brad Laue <brad@gentoo.org> mozilla-firefox-1.0.2-r1.ebuild:
+  Change perl -pi -e to sed -i -e - fixes bug #86639.
+
+*mozilla-firefox-1.0.2-r1 (24 Mar 2005)
+
+  24 Mar 2005; Brad Laue <brad@gentoo.org> +mozilla-firefox-1.0.2-r1.ebuild:
+  Add headers and pkgconfig files so we can build other browsers against Firefox
+  rather than Mozilla Suite.
+
+  25 Mar 2005; Jason Wever <weeve@gentoo.org> mozilla-firefox-1.0.2.ebuild:
+  Stable on SPARC wrt security bug #86148.
+
+  24 Mar 2005; Luca Barbato <lu_zero@gentoo.org>
+  mozilla-firefox-1.0.2.ebuild:
+  Marked ppc
+
+  24 Mar 2005; Aron Griffis <agriffis@gentoo.org>
+  mozilla-firefox-1.0.2.ebuild:
+  Stable on alpha ia64
+
+  24 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  mozilla-firefox-1.0.2.ebuild:
+  Marked stable on amd64, bug 86148.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
+  mozilla-firefox-0.9.3.ebuild, mozilla-firefox-1.0_pre-r2.ebuild,
+  mozilla-firefox-1.0_rc1.ebuild, mozilla-firefox-1.0_rc2.ebuild,
+  mozilla-firefox-1.0.ebuild, mozilla-firefox-1.0-r2.ebuild,
+  mozilla-firefox-1.0.1-r1.ebuild, mozilla-firefox-1.0.2.ebuild:
+  mozilla-launcher to www-client from net-www
+
+*mozilla-firefox-1.0.2 (23 Mar 2005)
+
+  23 Mar 2005; Brad Laue <brad@gentoo.org> +mozilla-firefox-1.0.2.ebuild:
+  Version bump. Moving to stable x86 immediately for security updates.
+
+*mozilla-firefox-1.0.1-r1 (23 Mar 2005)
+
+  23 Mar 2005; Aron Griffis <agriffis@gentoo.org>
+  +mozilla-firefox-1.0.1-r1.ebuild:
+  Use a stub script instead of symlink to mozilla-launcher. This in
+  combination with mozilla-launcher-1.28 should fix #78890
 
   18 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
   +files/svg-cairo-0.3.0-fix.patch, +files/firefox-0.8-gcc-3.4.patch,

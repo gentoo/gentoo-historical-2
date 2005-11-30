@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/elmo/elmo-1.3.2-r1.ebuild,v 1.1 2004/10/20 19:08:18 citizen428 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/elmo/elmo-1.3.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:46 chriswhite Exp $
 
 inherit eutils
 
@@ -11,32 +11,39 @@ HOMEPAGE="http://elmo.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
-KEYWORDS="~x86"
+KEYWORDS="alpha x86"
 SLOT="0"
 
-RDEPEND="ssl? ( >=dev-libs/openssl )
+RDEPEND="ssl? ( dev-libs/openssl )
 	nls? ( sys-devel/gettext )
 	crypt? ( >=app-crypt/gpgme-0.9.0 )"
-
 
 src_compile() {
 	local myconf
 
-	epatch ${FILESDIR}/configure.in.patch
+	epatch ${FILESDIR}/configure.in.patch || die "epatch failed"
 
-	myconf="${myconf} `use_enable nls`"
-	myconf="${myconf} `use_with ssl openssl`"
-	myconf="${myconf} `use_with crypt gpgme`"
+	ebegin "Rebuilding configure"
+		autoconf || die "autoconf failed"
+	eend $?
 
-	econf ${myconf} || die "econf failed"
+	use ssl && myconf="--with-openssl=/usr"
+
+	econf ${myconf} \
+			$(use_enable nls) \
+			$(use_with crypt gpgme) || die "econf failed"
+
 	emake || die "emake failed"
 }
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc ABOUT-NLS ADVOCACY AUTHORS BUGS COPYING ChangeLog INSTALL NEWS THANKS TODO doc/*
+	dodoc ABOUT-NLS ADVOCACY AUTHORS BUGS ChangeLog NEWS THANKS TODO
+	cd doc
+	dodoc README.txt sample.{,pl.}elmorc tutorial{,.gpg}
 }
 
 pkg_postinst() {
-	einfo "If you compiled elmo with GCC 3.4 and experience run-time problems, please consider recompiling with GCC 3.3."
+	einfo "If you compiled elmo with GCC 3.4 and experience run-time problems, please"
+	einfo "consider recompiling with GCC 3.3."
 }

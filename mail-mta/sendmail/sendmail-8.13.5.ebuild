@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.5.ebuild,v 1.1 2005/09/17 10:22:13 lcars Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.5.ebuild,v 1.1.1.1 2005/11/30 09:50:49 chriswhite Exp $
 
 inherit eutils mailer
 

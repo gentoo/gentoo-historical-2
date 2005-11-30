@@ -1,8 +1,26 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# /space/gentoo/cvsroot/gentoo-x86/skel.ebuild,v 1.7 2002/05/18 17:25:12 agenkin Exp
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-cleanice/gtk-engines-cleanice-0.8.5.ebuild,v 1.1.1.1 2005/11/30 09:51:29 chriswhite Exp $
 
+MY_PN="gtk-cleanice-theme"
+MY_P=${MY_PN}-${PV}
+
+DESCRIPTION="Cleanice theme engine for GTK+ 1"
+HOMEPAGE="http://themes.freshmeat.net/"
+SRC_PATH="${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="mirror://debian/pool/main/${SRC_PATH}"
+
+KEYWORDS="x86 ppc alpha sparc hppa amd64"
+LICENSE="GPL-2"
 SLOT="1"
+IUSE=""
 
-inherit gtk-engines
-DESCRIPTION="Cleanice theme engine for GTK+"
+DEPEND="=x11-libs/gtk+-1.2*"
+
+S=${WORKDIR}/${MY_P}
+
+src_install() {
+	make DESTDIR="${D}" install || die "Installation failed"
+
+	dodoc AUTHORS ChangeLog README
+}

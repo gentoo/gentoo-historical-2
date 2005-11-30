@@ -1,10 +1,82 @@
 # ChangeLog for dev-perl/Chart-Math-Axis
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Chart-Math-Axis/ChangeLog,v 1.1 2003/06/02 20:52:45 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Chart-Math-Axis/ChangeLog,v 1.1.1.1 2005/11/30 09:53:05 chriswhite Exp $
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  Mark 0.3 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  add ~ia64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  dev-perl/Math-BigInt => perl-core/Math-BigInt
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> :
+  dev-perl/Math-BigInt => perl-core/Math-BigInt migration
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Chart-Math-Axis-0.1.ebuild, -Chart-Math-Axis-0.2.ebuild,
+  Chart-Math-Axis-0.3.ebuild:
+  Cleaning
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> Chart-Math-Axis-0.3.ebuild:
+  stable on amd64
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  Unmasking for x86
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  Chart-Math-Axis-0.2.ebuild:
+  Marked stable on amd64.
+
+*Chart-Math-Axis-0.3 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Chart-Math-Axis-0.3.ebuild:
+  new version on cpan
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  Chart-Math-Axis-0.2.ebuild:
+  Stable on alpha.
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org>
+  Chart-Math-Axis-0.2.ebuild:
+  Masked for 185 days, unmasking
+
+*Chart-Math-Axis-0.2 (26 Aug 2003)
+
+  26 Aug 2003; Michael Cummings <mcummings@gentoo.org>
+  Chart-Math-Axis-0.2.ebuild:
+  CPAN Version bump; bux fix
+
+  04 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  Chart-Math-Axis-0.1.ebuild:
+  Fixed description, S decleration
 
 *Chart-Math-Axis-0.1 (02 Jun 2003)
 
   02 Jun 2003; Michael Cummings <mcummings@gentoo.org>
   Chart-Math-Axis-0.1.ebuild:
   Fills bug 21791
+
+
 

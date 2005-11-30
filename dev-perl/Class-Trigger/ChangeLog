@@ -1,6 +1,51 @@
 # ChangeLog for dev-perl/Class-Trigger
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Trigger/ChangeLog,v 1.1 2004/03/31 11:46:58 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Trigger/ChangeLog,v 1.1.1.1 2005/11/30 09:53:04 chriswhite Exp $
+
+*Class-Trigger-0.10 (12 Nov 2005)
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +Class-Trigger-0.10.ebuild:
+  Version bump upstream
+
+  23 Sep 2005; Markus Rothe <corsair@gentoo.org> Class-Trigger-0.08.ebuild,
+  Class-Trigger-0.09.ebuild:
+  Stable on ppc64 (bug #101114)/added ~ppc64 to 0.09
+
+  05 Sep 2005; Brent Baude <ranger@gentoo.org> Class-Trigger-0.08.ebuild:
+  marking Class-Trigger-0.08 ~ppc64 in support of Bug 101114
+
+  03 Aug 2005; Chris White <chriswhite@gentoo.org>
+  Class-Trigger-0.09.ebuild:
+  Marked ~ppc.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Trigger-0.09.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Trigger-0.08.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+*Class-Trigger-0.09 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Trigger-0.08.ebuild, +Class-Trigger-0.09.ebuild:
+  mirror; bump
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> Class-Trigger-0.08.ebuild:
+  added ~amd64 to KEYWORDS.
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Trigger-0.08.ebuild:
+  Stable on sparc
+
+  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> Class-Trigger-0.08.ebuild:
+  Added ~sparc, #50265
+
+  02 May 2004; Michael Cummings <mcummings@gentoo.org>
+  Class-Trigger-0.08.ebuild:
+  Missing dep for IO-stringy added.
 
 *Class-Trigger-0.08 (31 Mar 2004)
 

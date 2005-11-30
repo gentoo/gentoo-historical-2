@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.6.ebuild,v 1.1 2005/06/17 17:47:02 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.6.ebuild,v 1.1.1.1 2005/11/30 09:54:19 chriswhite Exp $
 
-IUSE="X opengl debug"
+IUSE="noxft opengl debug"
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs multilib
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL."
 HOMEPAGE="http://www.fltk.org"
 SRC_URI="http://ftp.easysw.com/pub/${PN}/${PV}/${P}-source.tar.bz2"
 
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~mips ~ppc64"
-LICENSE="FLTK GPL-2"
+KEYWORDS="~alpha ~amd64 hppa ~mips ppc ppc64 sparc x86"
+LICENSE="FLTK LGPL-2"
 
 PV_MAJOR=${PV/.*/}
 PV_MINOR=${PV#${PV_MAJOR}.}
@@ -19,10 +19,10 @@ PV_MINOR=${PV_MINOR/.*}
 SLOT="${PV_MAJOR}.${PV_MINOR}"
 
 INCDIR=/usr/include/fltk-${SLOT}
-LIBDIR=/usr/lib/fltk-${SLOT}
+LIBDIR=/usr/$(get_libdir)/fltk-${SLOT}
 
 DEPEND="virtual/x11
-	X? ( virtual/xft )
+	!noxft? ( virtual/xft )
 	media-libs/libpng
 	media-libs/jpeg
 	opengl? ( virtual/opengl )"
@@ -39,7 +39,7 @@ src_compile() {
 	local myconf
 	myconf="--enable-shared --enable-xdbe --enable-static --enable-threads"
 
-	if use X; then
+	if ! use noxft; then
 		myconf="${myconf} --enable-xft"
 	else
 		myconf="${myconf} --disable-xft"
@@ -74,7 +74,7 @@ src_install() {
 
 	ranlib ${D}${LIBDIR}/*.a
 
-	dodoc CHANGES COPYING README
+	dodoc CHANGES README
 
 	echo "LDPATH=${LIBDIR}" > 99fltk-${SLOT}
 	echo "FLTK_DOCDIR=/usr/share/doc/${PF}/html" >> 99fltk-${SLOT}
@@ -85,4 +85,10 @@ src_install() {
 	dodir /usr/share/doc/${P}/html
 	mv ${D}/usr/share/doc/fltk/* ${D}/usr/share/doc/${PF}/html
 	rmdir ${D}/usr/share/doc/fltk
+	rm -rf ${D}/usr/share/man/cat{1,3}
+}
+
+pkg_postinst() {
+	ewarn "the xft USE flag has been changed to noxft. this was because most"
+	ewarn "users want xft, but if you do not, be sure to change the flag"
 }

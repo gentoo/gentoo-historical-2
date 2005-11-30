@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx/mailx-8.1.2.20040524-r1.ebuild,v 1.1 2005/01/27 08:00:02 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mailx/mailx-8.1.2.20040524-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:46 chriswhite Exp $
 
 inherit ccc eutils flag-o-matic
 
@@ -9,10 +9,8 @@ MX_VER="8.1.2"
 S=${WORKDIR}/${PN}-${MX_VER}
 
 DESCRIPTION="The /bin/mail program, which is used to send mail via shell scripts."
-SRC_URI="http://dev.gentoo.org/~ferdy/distfiles/${PN}_${MX_VER}.orig.tar.gz
-	http://dev.gentoo.org/~ferdy/distfiles/${PN}-20040524-cvs.diff.bz2"
-#SRC_URI="mirror://gentoo/mailx_${MX_VER}.orig.tar.gz
-#	mirror://gentoo/${PN}-20040524-cvs.diff.bz2"
+SRC_URI="mirror://gentoo/mailx_${MX_VER}.orig.tar.gz
+	mirror://gentoo/${PN}-20040524-cvs.diff.bz2"
 HOMEPAGE="http://www.debian.org"
 
 DEPEND=">=net-libs/liblockfile-1.03
@@ -23,14 +21,14 @@ DEPEND=">=net-libs/liblockfile-1.03
 PROVIDE="virtual/mailx"
 
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~ia64 ~amd64 ~ppc64"
+LICENSE="BSD"
+KEYWORDS="alpha amd64 ~hppa ia64 mips ppc ppc64 sparc x86"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${DISTDIR}/${PN}-20040524-cvs.diff.bz2 || die "epatch failed"
-	epatch ${FILESDIR}/${PN}-2004-cflags.diff || die "epatch failed"
+	sed -i -e "s: -O2: \$(EXTRAFLAGS):g" Makefile
 }
 
 src_compile() {
@@ -52,7 +50,7 @@ src_install() {
 	dosym mail.1 /usr/share/man/man1/Mail.1
 
 	cd ${S}/misc
-	insinto /usr/lib
+	insinto /usr/share/${PN}/
 	insopts -m 644
 	doins mail.help mail.tildehelp
 	insinto /etc

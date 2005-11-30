@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/openmotif/openmotif-2.1.30-r9.ebuild,v 1.1 2005/03/02 17:01:34 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/openmotif/openmotif-2.1.30-r9.ebuild,v 1.1.1.1 2005/11/30 09:54:02 chriswhite Exp $
 
 inherit eutils flag-o-matic multilib
 
@@ -12,14 +12,11 @@ SRC_URI="ftp://ftp.metrolink.com/pub/openmotif/2.1.30-4/${MY_P}.tar.gz"
 
 LICENSE="MOTIF"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~ppc-macos ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos sparc x86"
 IUSE=""
 
+DEPEND="virtual/x11"
 PROVIDE="virtual/motif"
-
-DEPEND="virtual/libc
-	virtual/x11
-	>=sys-apps/sed-4"
 
 pkg_setup() {
 	# multilib includes don't work right in this package...
@@ -104,7 +101,7 @@ src_install() {
 		f="${D}/usr/X11R6/bin/${nib}"; rm "$f" || die "rm $f"
 	done
 	for nim in ${NOINSTMAN1}; do
-		if useq ppc-macos || useq macos ; then
+		if useq ppc-macos ; then
 			f="${D}/usr/X11R6/man/man1/${nim}.1"
 		else
 			f="${D}/usr/X11R6/man/man1/${nim}.1x"

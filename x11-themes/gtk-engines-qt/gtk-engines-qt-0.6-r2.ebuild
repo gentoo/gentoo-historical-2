@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-qt/gtk-engines-qt-0.6-r2.ebuild,v 1.1 2005/10/23 09:18:44 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-qt/gtk-engines-qt-0.6-r2.ebuild,v 1.1.1.1 2005/11/30 09:51:33 chriswhite Exp $
 
 inherit eutils kde-functions
 

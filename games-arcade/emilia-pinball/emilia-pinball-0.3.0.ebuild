@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/emilia-pinball/emilia-pinball-0.3.0.ebuild,v 1.1.1.1 2005/11/30 09:52:00 chriswhite Exp $
 
 inherit games
 
@@ -12,19 +12,22 @@ SRC_URI="mirror://sourceforge/pinball/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 alpha"
+IUSE=""
 
-DEPEND="virtual/opengl
+RDEPEND="virtual/opengl
 	virtual/x11
 	media-libs/libsdl
 	media-libs/sdl-image
 	media-libs/sdl-mixer"
+DEPEND="${RDEPEND}
+	>=sys-devel/autoconf-2.58"
 
 S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	unpack ${A}
-	export WANT_AUTOCONF_2_5=1
+	export WANT_AUTOCONF=2.5
 	cd ${S}/libltdl
 	autoconf || die
 }
@@ -38,7 +41,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc AUTHORS Changelog INSTALL NEWS README
+	dodoc AUTHORS Changelog NEWS README
 	make DESTDIR=${D} install || die
 	dosym ${GAMES_BINDIR}/pinball ${GAMES_BINDIR}/emilia-pinball
 	rm -rf ${D}/${GAMES_PREFIX}/include

@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt/qt-4.0.1.ebuild,v 1.1 2005/08/19 14:52:16 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt/qt-4.0.1.ebuild,v 1.1.1.1 2005/11/30 09:54:24 chriswhite Exp $
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs multilib
 
 SRCTYPE="opensource-src"
-DESCRIPTION="QT version ${PV}"
+DESCRIPTION="The Qt toolkit is a comprehensive C++ application development framework."
 HOMEPAGE="http://www.trolltech.com/"
 
 SRC_URI="ftp://ftp.trolltech.com/qt/source/qt-x11-${SRCTYPE}-${PV}.tar.gz"
@@ -13,7 +13,7 @@ S=${WORKDIR}/qt-x11-${SRCTYPE}-${PV}
 
 LICENSE="|| ( QPL-1.0 GPL-2 )"
 SLOT="4"
-KEYWORDS="-*"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="accessibility cups debug doc examples firebird gif jpeg mng mysql nas nis odbc opengl png postgres sqlite xinerama zlib"
 
 DEPEND="virtual/x11 virtual/xft >=media-libs/freetype-2
@@ -63,12 +63,11 @@ qt_mkspecs_dir() {
 }
 
 src_unpack() {
-	unpack ${A}
 
+	unpack ${A}
 	cd ${S}
 
-	cp configure configure.orig
-	sed -e 's:read acceptance:acceptance=yes:' configure.orig > configure
+	sed -i -e 's:read acceptance:acceptance=yes:' configure
 
 	cd mkspecs/$(qt_mkspecs_dir)
 	# set c/xxflags and ldflags
@@ -82,12 +81,15 @@ src_unpack() {
 		-e "s:QMAKE_CXXFLAGS_RELEASE.*=.*:QMAKE_CXXFLAGS_RELEASE=${CXXFLAGS}:" \
 		-e "s:QMAKE_LFLAGS_RELEASE.*=.*:QMAKE_LFLAGS_RELEASE=${LDFLAGS}:" \
 		qmake.conf
+
+	# Do not link with -rpath. See bug #75181.
+	sed -i -e "s:QMAKE_RPATH.*=.*:QMAKE_RPATH=:" \
+		qmake.conf
 	cd ${S}
 
-	epatch ${FILESDIR}/qt4-rpath.patch
 	epatch ${FILESDIR}/qt4-nomkdir.patch
 
-	if [[ $(gcc-major-version = "4") ]]; then
+	if [[ "$(gcc-major-version)" == "4" ]]; then
 		einfo "Visibility support: auto"
 	else
 		einfo "Visibility support: disabled"
@@ -96,9 +98,10 @@ src_unpack() {
 }
 
 src_compile() {
-	export SYSCONF=${D}${QTPREFIXDIR}/etc/settings
 	export PATH="${S}/bin:${PATH}"
 	export LD_LIBRARY_PATH="${S}/lib:${LD_LIBRARY_PATH}"
+
+	[ $(get_libdir) != "lib" ] && myconf="${myconf} -L/usr/$(get_libdir)"
 
 	myconf="${myconf} $(qt_use accessibility) $(qt_use cups) $(qt_use xinerama)"
 	myconf="${myconf} $(qt_use opengl) $(qt_use nis)"
@@ -132,7 +135,6 @@ src_compile() {
 }
 
 src_install() {
-	export SYSCONF=${D}${QTPREFIXDIR}/etc/settings
 	export PATH="${S}/bin:${PATH}"
 	export LD_LIBRARY_PATH="${S}/lib:${LD_LIBRARY_PATH}"
 
@@ -151,14 +153,13 @@ src_install() {
 	fi
 
 	# The QtAssistant header files aren't installed..not sure why
-	cp -a ${S}/include/QtAssistant ${D}/${QTHEADERDIR}/QtAssistant
+	cp -pPR ${S}/include/QtAssistant ${D}/${QTHEADERDIR}/QtAssistant
 
-	mkdir -p ${D}/${QTSYSCONFDIR}
+	keepdir "${QTSYSCONFDIR}"
 
 	sed -i -e "s:${S}/lib:${QTLIBDIR}:g" ${D}/${QTLIBDIR}/*.la
 	sed -i -e "s:${S}/lib:${QTLIBDIR}:g" ${D}/${QTLIBDIR}/*.prl
-	sed -i -e "s:${S}/lib:${QTLIBDIR}:g" ${D}/${QTLIBDIR}/pkgconfig/*.pc
-	sed -i -e "s:${S}:${QTBASEDIR}:g" ${D}/${QTLIBDIR}/pkgconfig/*.pc
+	sed -i -e "s:${S}/lib:${QTLIBDIR}:g" ${D}/${QTLIBDIR}/*.pc
 
 	# List all the multilib libdirs
 	local libdirs
@@ -166,12 +167,11 @@ src_install() {
 		libdirs="${libdirs}:/usr/${libdir}/qt4"
 	done
 
-	mkdir -p ${D}/etc/env.d
-
-	cat > ${D}/etc/env.d/44qt4 << EOF
+	cat > "${T}/44qt4" << EOF
 PATH=${QTBINDIR}
 ROOTPATH=${QTBINDIR}
 LDPATH=${libdirs:1}
 QMAKESPEC=$(qt_mkspecs_dir)
 EOF
+	doenvd "${T}/44qt4"
 }

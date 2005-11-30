@@ -1,6 +1,50 @@
 # ChangeLog for dev-perl/Mail-Audit
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-Audit/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-Audit/ChangeLog,v 1.1.1.1 2005/11/30 09:53:05 chriswhite Exp $
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> Mail-Audit-2.1-r1.ebuild:
+  Mark 2.1-r1 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Mail-Audit-2.1-r1.ebuild:
+  add ~ia64
+
+  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Mail-Audit-2.1.ebuild, Mail-Audit-2.1-r1.ebuild:
+  Cleaning
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org>
+  Mail-Audit-2.1-r1.ebuild, Mail-Audit-2.1.ebuild:
+  Slot cleanup
+
+  16 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  Mail-Audit-2.1-r1.ebuild, Mail-Audit-2.1.ebuild:
+  corrected pointer for pop3client - thought 1q-2004 took care of this
+
+  06 Oct 2003; Michael Cummings <mcummings@gentoo.org>
+  Mail-Audit-2.1-r1.ebuild:
+  bug 29663 - missing dep, thanks Xavier Roblot <roblot@euler.univ-lyon1.fr>
+
+*Mail-Audit-2.1-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*Mail-Audit-2.1 (5 May 2002)
+  
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Mail-Audit-2.1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> Mail-Audit-2.1.ebuild
+  files/digest-Mail-Audit-2.1 :
+
+  Version bump and eclasses.  Also converted the old ebuild in place to
+  eclsses.
 
 *Mail-Audit-1.8 (1 Feb 2002)
 

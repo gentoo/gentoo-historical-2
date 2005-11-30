@@ -1,31 +1,211 @@
 # ChangeLog for media-tv/xmltv
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/ChangeLog,v 1.1 2003/07/09 00:08:10 johnm Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/ChangeLog,v 1.1.1.1 2005/11/30 09:50:34 chriswhite Exp $
 
-  03 Jul 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.11.ebuild,
+  29 May 2005; Doug Goldstein <cardoe@gentoo.org> xmltv-0.5.39.ebuild:
+  Lock down the version of Class-MethodMaker to under 2.0 since it 
+  apparently doesn't work. There is a report that pre-2.0.5 works as well, 
+  but none of those exist in the tree.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> xmltv-0.5.37-r1.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> xmltv-0.5.39.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> xmltv-0.5.34.ebuild:
+  dev-perl/Storable => perl-core/Storable migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> xmltv-0.5.37-r1.ebuild:
+  dev-perl/Memoize => perl-core/Memoize migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> xmltv-0.5.39.ebuild:
+  dev-perl/Memoize => perl-core/Memoize migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> xmltv-0.5.34.ebuild:
+  dev-perl/Memoize => perl-core/Memoize migration
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> xmltv-0.5.34.ebuild,
+  xmltv-0.5.37-r1.ebuild, xmltv-0.5.39.ebuild:
+  dev-perl/CGI => perl-core/CGI
+
+*xmltv-0.5.39 (12 May 2005)
+
+  12 May 2005; <cardoe@gentoo.org> +xmltv-0.5.39.ebuild:
+  let's hope this rev bump fixes bug #91439. nuke old ebuilds too
+
+  04 May 2005; David Holm <dholm@gentoo.org> xmltv-0.5.37-r1.ebuild:
+  Readded to ~ppc. Please don't remove it without filing a proper bug report.
+
+*xmltv-0.5.37-r1 (25 Jan 2005)
+
+  25 Jan 2005; Doug Goldstein <cardoe@gentoo.org> +xmltv-0.5.37-r1.ebuild:
+  bump to fix depends, bug #63361
+
+  21 Jan 2005; Doug Goldstein <cardoe@gentoo.org> -xmltv-0.5.23.ebuild:
+  remove outdated rev
+
+*xmltv-0.5.37 (01 Jan 2005)
+
+  01 Jan 2005; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.37.ebuild:
+  Version bump, closing #69314 and #72801.
+
+*xmltv-0.5.35 (29 Sep 2004)
+
+  29 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.35.ebuild:
+  Version bump. Upstream fixed uk_rt, added uk_bleb and disabled pt. Closing
+  #65658.
+
+*xmltv-0.5.34-r1 (11 Sep 2004)
+
+  11 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.34-r1.ebuild:
+  Changed the dependency creation system, should close #63361.
+
+  25 Aug 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.34.ebuild:
+  Change dependency creation to newdepend so that it actually set the correct
+  dependencies.
+
+  13 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.29.ebuild,
+  xmltv-0.5.30.ebuild, xmltv-0.5.31.ebuild, xmltv-0.5.32.ebuild,
+  xmltv-0.5.33.ebuild, xmltv-0.5.34.ebuild:
+  Stable on x86 and amd64, removed a bunch of old ebuilds. Closing #56748.
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> xmltv-0.5.34.ebuild:
+  Added to ~ppc, again. Stop dropping our keywords!
+
+*xmltv-0.5.34 (24 May 2004)
+
+  24 May 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.34.ebuild:
+  Version bump, fixed config and dependencies for all grabbers.
+
+*xmltv-0.5.33 (16 May 2004)
+
+  16 May 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.33.ebuild:
+  Version bump.
+
+*xmltv-0.5.32 (17 Apr 2004)
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.32.ebuild:
+  Version bump.
+
+*xmltv-0.5.31 (22 Mar 2004)
+
+  22 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> xmltv-0.5.31.ebuild:
+  Version bump.
+
+*xmltv-0.5.30 (09 Mar 2004)
+
+  09 Mar 2004; Max Kalika <max@gentoo.org> xmltv-0.5.30.ebuild:
+  Bump to version 0.5.30. Clean up dependencies. Add support for 4 extra
+  grabbers.
+
+  09 Mar 2004; David Holm <dholm@gentoo.org> xmltv-0.5.29.ebuild:
+  Added to ~ppc.
+
+*xmltv-0.5.29 (07 Mar 2004)
+
+  07 Mar 2004; Martin Holzer <mholzer@gentoo.org> xmltv-0.5.28.ebuild,
+  xmltv-0.5.29.ebuild:
+  VErsion bumped.
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> xmltv-0.5.28.ebuild :
+  AMD64 keywords.
+
+*xmltv-0.5.28 (07 Feb 2004)
+
+  07 Feb 2004; Max Kalika <max@gentoo.org> xmltv-0.5.28.ebuild:
+  Bump to version 0.5.28. This one removes the regular uk grabber. The
+  alternate, uk_rt, is still available.
+
+*xmltv-0.5.27 (16 Jan 2004)
+
+  16 Jan 2004; Max Kalika <max@gentoo.org> xmltv-0.5.27.ebuild:
+  Bump to version 0.5.27.
+
+*xmltv-0.5.25 (11 Dec 2003)
+
+  11 Dec 2003; Max Kalika <max@gentoo.org> xmltv-0.5.25.ebuild:
+  Disable tv_grab_sn checking, it is disabled in this release.
+
+*xmltv-0.5.23 (02 Dec 2003)
+
+  02 Dec 2003; <max@gentoo.org> xmltv-0.5.14-r1.ebuild, xmltv-0.5.16.ebuild,
+  xmltv-0.5.17.ebuild, xmltv-0.5.18.ebuild, xmltv-0.5.19.ebuild,
+  xmltv-0.5.20.ebuild, xmltv-0.5.21.ebuild, xmltv-0.5.23.ebuild,
+  xmltv-0.5.24.ebuild, files/xmltv-0.5.14-code_500.patch,
+  files/xmltv-0.5.19-newer-MM.patch:
+  Bump to new stable version 0.5.23 and new experimental version 0.5.24 which
+  requires new XML-Parser-2.34. Cleanup no-longer working versions.
+
+*xmltv-0.5.21 (08 Nov 2003)
+
+  08 Nov 2003; <max@gentoo.org> xmltv-0.5.20.ebuild, xmltv-0.5.21.ebuild:
+  Bump to version 0.5.21 and mark stable on x86.
+
+*xmltv-0.5.20 (03 Nov 2003)
+
+  03 Nov 2003; Max Kalika <max@gentoo.org> xmltv-0.5.14-r1.ebuild,
+  xmltv-0.5.16.ebuild, xmltv-0.5.17.ebuild, xmltv-0.5.18.ebuild,
+  xmltv-0.5.19.ebuild, xmltv-0.5.20.ebuild:
+  Bump to version 0.5.20. Disable tv_grab_de checking -- disabled upstream. Fix
+  copy/paste error in all.
+
+  12 Oct 2003; Max Kalika <max@gentoo.org> xmltv-0.5.19.ebuild,
+  files/xmltv-0.5.19-newer-MM.patch:
+  Fix sandbox problems with newer perl/MakeMaker
+
+*xmltv-0.5.19 (01 Oct 2003)
+
+  01 Oct 2003; Max Kalika <max@gentoo.org> xmltv-0.5.18.ebuild,
+  xmltv-0.5.19.ebuild:
+  Bump to version 0.5.19 and mark stable.
+
+*xmltv-0.5.18 (16 Sep 2003)
+
+  16 Sep 2003; Max Kalika <max@gentoo.org> xmltv-0.5.18.ebuild:
+  Bump to version 0.5.18 and mark <= 0.5.17 stable.
+
+*xmltv-0.5.17 (02 Sep 2003)
+
+  02 Sep 2003; Max Kalika <max@gentoo.org> metadata.xml, xmltv-0.5.17.ebuild:
+  Bump version to 0.5.17 and add metadata.
+
+*xmltv-0.5.14-r1 (19 Aug 2003)
+
+  19 Aug 2003; Max Kalika <max@gentoo.org> xmltv-0.5.14-r1.ebuild,
+  xmltv-0.5.14.ebuild, files/xmltv-0.5.14-code_500.patch:
+  Add patch to handle 500 error codes returned by zap2it. Thanks to Mark Lopes
+  for the submission. Fixes bug #26515.
+
+*xmltv-0.5.16 (18 Aug 2003)
+
+  18 Aug 2003; Max Kalika <max@gentoo.org> xmltv-0.5.16.ebuild:
+  Bump version to 0.5.16.
+
+  03 Jul 2003; Max Kalika <max@gentoo.org> xmltv-0.5.11.ebuild,
   xmltv-0.5.12.ebuild, xmltv-0.5.14.ebuild:
   Change DateManip dependency to >= 5.42 which is officially out today and seems
   to work with xmltv.
 
 *xmltv-0.5.14 (01 Jul 2003)
 
-  01 Jul 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.13.ebuild,
+  01 Jul 2003; Max Kalika <max@gentoo.org> xmltv-0.5.13.ebuild,
   xmltv-0.5.14.ebuild:
   Bump version to 0.5.14 and drop version 0.5.13 as it got pulled upstream.
 
 *xmltv-0.5.13 (01 Jul 2003)
 
-  01 Jul 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.13.ebuild:
+  01 Jul 2003; Max Kalika <max@gentoo.org> xmltv-0.5.13.ebuild:
   Bump version to 0.5.13.
 
 *xmltv-0.5.12 (29 Jun 2003)
 
-  29 Jun 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.12.ebuild:
+  29 Jun 2003; Max Kalika <max@gentoo.org> xmltv-0.5.12.ebuild:
   Bump version to 0.5.12.
 
 *xmltv-0.5.11 (22 Jun 2003)
 
-  22 Jun 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.11.ebuild:
+  22 Jun 2003; Max Kalika <max@gentoo.org> xmltv-0.5.11.ebuild:
   Bump to 0.5.11. This one requires some changes: *ALL* grabbers are optional
   now, so enable support for them. Add support for two new grabbers: Hungary and
   Denmark. Since there is an option to build everything, simplify the
@@ -37,12 +217,12 @@
 
 *xmltv-0.5.10-r4 (18 Jun 2003)
 
-  18 Jun 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.10-r4.ebuild:
+  18 Jun 2003; Max Kalika <max@gentoo.org> xmltv-0.5.10-r4.ebuild:
   Move to media-tv.
 
 *xmltv-0.5.10-r3 (16 Jun 2003)
 
-  16 Jun 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.10-r3.ebuild:
+  16 Jun 2003; Max Kalika <max@gentoo.org> xmltv-0.5.10-r3.ebuild:
   Correctly fix the PREFIX issue.  Just setting the PREFIX="${D}/usr" is
   insufficient because the resulting executable script contains incorrectly
   hard-coded paths to the SHARE_DIR (as pointed out by bug #10536 comment #66).
@@ -58,7 +238,7 @@
 
 *xmltv-0.5.10-r1 (13 Jun 2003)
 
-  13 Jun 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.10-r1.ebuild:
+  13 Jun 2003; Max Kalika <max@gentoo.org> xmltv-0.5.10-r1.ebuild:
   Drop all the local USE flag, use environment variable (XMLTV_OPTS)
   instead.  Drop the apache/cgi stuff and install tv_pick_cgi into
   /usr/bin with a note on how to procede (until Gentoo has a standard
@@ -69,7 +249,7 @@
 
 *xmltv-0.5.10 (28 Apr 2003)
 
-  28 Apr 2003; Max Kalika <max@lsit.ucsb.edu> xmltv-0.5.10.ebuild:
+  28 Apr 2003; Max Kalika <max@gentoo.org> xmltv-0.5.10.ebuild:
   Initial import.  Bump to 0.5.10.  Add xmltvnonlwolf flag to support
   a new grabber.  Install tv_pick_cgi file into ScriptAlias if the
   xmltvnocgi USE flag is unset.

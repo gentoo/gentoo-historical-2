@@ -1,6 +1,98 @@
 # ChangeLog for dev-perl/ExtUtils-AutoInstall
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-AutoInstall/ChangeLog,v 1.1 2003/06/01 00:01:48 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-AutoInstall/ChangeLog,v 1.1.1.1 2005/11/30 09:53:13 chriswhite Exp $
+
+*ExtUtils-AutoInstall-0.63 (12 Nov 2005)
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +ExtUtils-AutoInstall-0.63.ebuild:
+  Version bump upstream
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-AutoInstall-0.61.ebuild:
+  Mark 0.61 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  ExtUtils-AutoInstall-0.61.ebuild:
+  add ~ia64
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ExtUtils-AutoInstall-0.61.ebuild:
+  Stable on ppc.
+
+  01 Jun 2005; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-AutoInstall-0.61.ebuild:
+  Disabling tests - ickkkkk
+
+  01 May 2005; Tom Martin <slarti@gentoo.org>
+  ExtUtils-AutoInstall-0.61.ebuild:
+  Stable on amd64.
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  ExtUtils-AutoInstall-0.61.ebuild:
+  Stable on alpha.
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -ExtUtils-AutoInstall-0.55.ebuild, -ExtUtils-AutoInstall-0.59.ebuild,
+  ExtUtils-AutoInstall-0.61.ebuild:
+  cleaning
+
+  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ExtUtils-AutoInstall-0.56.ebuild:
+  Stable on ppc.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*ExtUtils-AutoInstall-0.61 (28 Oct 2004)
+
+  28 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +ExtUtils-AutoInstall-0.61.ebuild:
+  New version on cpan
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  ExtUtils-AutoInstall-0.56.ebuild:
+  Stable on amd64.
+
+*ExtUtils-AutoInstall-0.59 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-AutoInstall-0.59.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  ExtUtils-AutoInstall-0.56.ebuild:
+  Stable on alpha.
+
+  25 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  ExtUtils-AutoInstall-0.56.ebuild:
+  stable on sparc
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org>
+  ExtUtils-AutoInstall-0.55.ebuild:
+  Stable on sparc, thanks to Josh Grebe <josh@brokedown.net> for testing!
+
+*ExtUtils-AutoInstall-0.56 (15 Feb 2004)
+
+  15 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  ExtUtils-AutoInstall-0.56.ebuild:
+  Current version
+
+  24 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  ExtUtils-AutoInstall-0.52-r1.ebuild, ExtUtils-AutoInstall-0.52.ebuild:
+  No longer available on CPAN
+
+*ExtUtils-AutoInstall-0.55 (24 Dec 2003)
+
+  24 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
+  ExtUtils-AutoInstall-0.55.ebuild:
+  New version on CPAN
+
+*ExtUtils-AutoInstall-0.52-r1 (02 Jun 2003)
+
+  02 Jun 2003; Michael Cummings <mcummings@gentoo.org>
+  ExtUtils-AutoInstall-0.52-r1.ebuild, ExtUtils-AutoInstall-0.52.ebuild:
+  Fixed questions, corrects bug 22123
 
 *ExtUtils-AutoInstall-0.52 (31 May 2003)
 
@@ -8,4 +100,3 @@
   ExtUtils-AutoInstall-0.52.ebuild:
   ExtUtils-AutoInstall is a new dependancy for modules like POE and PDL. It is
   used to automatically install module dependancies
-

@@ -1,5 +1,14 @@
-MD5 3cf163696e5dd6a36ec412d023ee4946 ChangeLog 391
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 d9200814997d0443268a3d8d8ddd861a ChangeLog 1377
+MD5 d8e299efc92ef1ebed5aa4a483491347 files/digest-gtk-engines-experience-0.9.8 69
+MD5 a79de90eea277e7777c912e11b36a036 gtk-engines-experience-0.9.8.ebuild 893
 MD5 93943e7c2afb973d270b413a50e4a630 metadata.xml 473
-MD5 fd5d6b67e689c120dcbded2c304d4c5d gtk-engines-experience-0.9.7.ebuild 808
-MD5 cec645e8e36ba45b71aaea718361d4e2 .gtk-engines-experience-0.9.7.ebuild.swp 4096
-MD5 889c7d0375a68627c6dd09f68c755d25 files/digest-gtk-engines-experience-0.9.7 69
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDUuv7p5vW4rUFj5oRAmXpAJ0bi59mtVLwI3rQV/wFwNeHuDFvXACfawo8
+WJbP71fNE0xzy5FIG7GRzh8=
+=URNa
+-----END PGP SIGNATURE-----

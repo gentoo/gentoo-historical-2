@@ -1,6 +1,81 @@
 # ChangeLog for dev-perl/DBD-SQLite
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-SQLite/ChangeLog,v 1.1 2004/03/31 11:59:04 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-SQLite/ChangeLog,v 1.1.1.1 2005/11/30 09:53:10 chriswhite Exp $
+
+  12 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> DBD-SQLite-1.08.ebuild,
+  DBD-SQLite-1.09.ebuild:
+  Marked ~alpha, as per bug #112220
+
+*DBD-SQLite-1.09 (09 Nov 2005)
+
+  09 Nov 2005; Chris White <chriswhite@gentoo.org> +DBD-SQLite-1.09.ebuild:
+  Version bump to 1.09 for bug #111933.
+
+  23 Sep 2005; Markus Rothe <corsair@gentoo.org> DBD-SQLite-1.07.ebuild,
+  DBD-SQLite-1.08.ebuild:
+  Stable on ppc64 (dependency of bug #101116)/added ~ppc64 to 1.07
+
+  05 Sep 2005; Brent Baude <ranger@gentoo.org> DBD-SQLite-1.07.ebuild:
+  Marking DBD-SQLite-1.07.ebuild ~ppc64 in support of Bug 101114
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  DBD-SQLite-1.07.ebuild:
+  Stable on ppc.
+
+  26 Jun 2005; Simon Stelling <blubb@gentoo.org> DBD-SQLite-1.08.ebuild:
+  added ~amd64 keyword
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> DBD-SQLite-1.07.ebuild,
+  DBD-SQLite-1.08.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*DBD-SQLite-1.08 (02 May 2005)
+
+  02 May 2005; Michael Cummings <mcummings@gentoo.org>
+  -DBD-SQLite-1.00.ebuild, -DBD-SQLite-1.06.ebuild, +DBD-SQLite-1.08.ebuild:
+  Cleannig, version bump
+
+  02 May 2005; Michael Cummings <mcummings@gentoo.org>
+  DBD-SQLite-1.07.ebuild:
+  Unmasking for x86 and sparc
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> DBD-SQLite-1.07.ebuild:
+  added ~amd64 to KEYWORDS.
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> DBD-SQLite-0.31.ebuild:
+  Stable on sparc
+
+*DBD-SQLite-1.07 (21 Oct 2004)
+
+  21 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +DBD-SQLite-1.07.ebuild:
+  New version on cpan; sparc fixed without patching
+
+  05 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +files/sparc-DBD-SQLite-1.06.patch, DBD-SQLite-1.06.ebuild:
+  Fixes for sparc for a clean test/compile. Read notes in ebuild - better
+  solutions welcome, but these work.
+
+*DBD-SQLite-1.06 (22 Sep 2004)
+
+  22 Sep 2004; Michael Cummings <mcummings@gentoo.org>
+  +DBD-SQLite-1.06.ebuild:
+  New version on CPAN
+
+*DBD-SQLite-1.00 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org>
+  +DBD-SQLite-1.00.ebuild:
+  New version on CPAN. Regarding the block against upgrades (from the author):
+  (Older verions of DBD::SQLite use) the old sqlite database format. This
+  version of DBD::SQLite will *NOT* open these files, and installing this module
+  may cause problems on your system.
+
+  05 Jun 2004; David Holm <dholm@gentoo.org> DBD-SQLite-0.31.ebuild:
+  Added to ~ppc.
+
+  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> DBD-SQLite-0.31.ebuild:
+  Added ~sparc, #50267
 
 *DBD-SQLite-0.31 (31 Mar 2004)
 

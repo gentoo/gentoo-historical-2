@@ -1,17 +1,21 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Socket-SSL/IO-Socket-SSL-0.96.ebuild,v 1.1 2004/06/06 12:21:59 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Socket-SSL/IO-Socket-SSL-0.96.ebuild,v 1.1.1.1 2005/11/30 09:53:07 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="Nearly transparent SSL encapsulation for IO::Socket::INET"
-HOMEPAGE="http://search.cpan.org/author/BEHROOZI/${P}/README"
-SRC_URI="http://cpan.valueclick.com/authors/id/B/BE/BEHROOZI/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/B/BE/BEHROOZI/${P}.tar.gz"
+HOMEPAGE="http://search.cpan.org/~behroozi/${P}/"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~amd64 ~ia64 ~s390"
+KEYWORDS="alpha amd64 arm ia64 mips ppc ppc64 s390 sparc x86 hppa"
+IUSE=""
 
-SRC_TEST="do"
+# Disabled because the tests conflict with other services already running on the
+# desired ports -and who wants to write a patch to try and locate a free prot
+# range just for this?
+#SRC_TEST="do"
 
 DEPEND="dev-perl/Net-SSLeay"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/ps2emu-padxwin/ps2emu-padxwin-0.9.ebuild,v 1.1 2005/08/07 07:23:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/ps2emu-padxwin/ps2emu-padxwin-0.9.ebuild,v 1.1.1.1 2005/11/30 09:50:28 chriswhite Exp $
 
 inherit games
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.pcsx2.net/download/0.8release/PADwin${PV//.}.rar"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="=x11-libs/gtk+-1*"
@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/PADwin${PV//.}
 
 src_unpack() {
-	unrar x -idq "${DISTDIR}"/${A}
+	unrar x -idq "${DISTDIR}"/${A} || die
 	cd "${S}"
 	sed -i 's:-O2 -fomit-frame-pointer:$(OPTFLAGS):' Src/Makefile || die
 }

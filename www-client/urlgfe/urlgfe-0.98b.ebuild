@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/urlgfe/urlgfe-0.98b.ebuild,v 1.1 2005/09/09 11:33:01 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/urlgfe/urlgfe-0.98b.ebuild,v 1.1.1.1 2005/11/30 09:52:20 chriswhite Exp $
 
 DESCRIPTION="Download manager using gtk+ and libcurl"
 HOMEPAGE="http://urlget.sourceforge.net/"

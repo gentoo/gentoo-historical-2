@@ -1,6 +1,175 @@
-# ChangeLog for net-mail/nail
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/nail/ChangeLog,v 1.1 2004/05/30 02:53:21 seemant Exp $
+# ChangeLog for mail-client/nail
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/nail/ChangeLog,v 1.1.1.1 2005/11/30 09:49:45 chriswhite Exp $
+
+  03 Oct 2005; Andrej Kacian <ticho@gentoo.org> nail-11.25-r1.ebuild,
+  nail-11.25-r3.ebuild:
+  Do not install generic COPYING document.
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> nail-11.25-r3.ebuild:
+  Stable on ppc.
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> nail-11.25-r3.ebuild:
+  Mark 11.25-r3 stable on ia64
+
+  22 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> nail-11.25-r3.ebuild:
+  Stable on sparc
+
+  22 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> nail-11.25-r3.ebuild:
+  stable on alpha and x86
+
+*nail-11.25-r3 (02 Sep 2005)
+
+  02 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> -nail-11.25-r2.ebuild,
+  +nail-11.25-r3.ebuild:
+  bump with a fix for bug #104491. Remove -r2
+
+  02 Sep 2005; Joseph Jezak <josejx@gentoo.org> nail-11.25-r1.ebuild:
+  Marked ppc stable for bug #103291.
+
+  01 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> -nail-11.20.ebuild,
+  -nail-11.22.ebuild:
+  remove old versions
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> nail-11.25-r1.ebuild:
+  stable on ia64
+
+  23 Aug 2005; Markus Rothe <corsair@gentoo.org> nail-11.25-r2.ebuild:
+  added ~ppc64 (bug #103291)
+
+*nail-11.25-r2 (22 Aug 2005)
+
+  22 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/nail-nosocket.patch, +nail-11.25-r2.ebuild:
+  Inlude a fix to allow it to be built without network support
+
+  22 Aug 2005; Markus Rothe <corsair@gentoo.org> nail-11.25-r1.ebuild:
+  added ~ppc64 (bug #103291)
+
+  22 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> nail-11.25-r1.ebuild:
+  Stable on sparc wrt #103291
+
+  22 Aug 2005; Luis Medinas <metalgod@gentoo.org> nail-11.25-r1.ebuild:
+  Marked Stable on AMD64. Bug #103291.
+
+  21 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> nail-11.25-r1.ebuild:
+  11.25-r1 stable on alpha and x86
+
+  11 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> nail-11.25-r1.ebuild:
+  USE net doesn't work as expected, removing. Fix for bug #102132
+
+*nail-11.25-r1 (10 Aug 2005)
+
+  10 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/nail-10.8-Makefile.patch, -nail-11.23.ebuild, -nail-11.25.ebuild,
+  +nail-11.25-r1.ebuild:
+  fix ssl dependency and add net flag support. clean broken versions
+
+*nail-11.25 (31 Jul 2005)
+
+  31 Jul 2005; Fernando J. Pereda <ferdy@gentoo.org> +nail-11.25.ebuild:
+  version bump
+
+*nail-11.23 (28 Jun 2005)
+
+  28 Jun 2005; Andrej Kacian <ticho@gentoo.org> +nail-11.23.ebuild:
+  Version bump.
+
+  10 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> nail-11.22.ebuild:
+  Stable on sparc
+
+  09 May 2005; Fernando J. Pereda <ferdy@gentoo.org> nail-11.22.ebuild:
+  keyworded alpha ~hppa x86
+
+  08 May 2005; Fernando J. Pereda <ferdy@gentoo.org> nail-11.20.ebuild,
+  nail-11.22.ebuild:
+  remove the nail does not support maildir einfo
+
+*nail-11.22 (08 May 2005)
+
+  08 May 2005; Fernando J. Pereda <ferdy@gentoo.org> -nail-9.30.ebuild,
+  -nail-10.7.ebuild, -nail-10.8.ebuild, -nail-11.1.ebuild,
+  -nail-11.1-r1.ebuild, -nail-11.18.ebuild, +nail-11.22.ebuild:
+  Bump nail and clean out old ebuilds
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> nail-11.20.ebuild:
+  stable on ia64
+
+  07 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> nail-11.20.ebuild:
+  Stable on sparc
+
+  07 Feb 2005; Andrej Kacian <ticho@gentoo.org> nail-11.20.ebuild:
+  Stable on x86.
+
+  25 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> nail-11.18.ebuild:
+  Stable on sparc
+
+*nail-11.20 (22 Jan 2005)
+
+  22 Jan 2005; Andrej Kacian <ticho@gentoo.org> +nail-11.20.ebuild:
+  New version. Added ssl USE flag.
+
+  22 Jan 2005; Andrej Kacian <ticho@gentoo.org> nail-11.18.ebuild:
+  Stable on x86.
+
+*nail-11.18 (21 Dec 2004)
+
+  21 Dec 2004; Andrej Kacian <ticho@gentoo.org> +nail-11.18.ebuild:
+  Version bump. Bug #75206, reported by Vanquirius <marcelogoes@gmail.com>.
+
+*nail-11.1-r1 (15 Dec 2004)
+
+  15 Dec 2004; Andrej Kacian <ticho@gentoo.org> +nail-11.1-r1.ebuild:
+  Create /usr/bin/mailx symlink to nail executable. Closes #73602, reported by
+  Aron Griffis <agriffis@gentoo.org>.
+
+  07 Dec 2004; Aron Griffis <agriffis@gentoo.org> nail-11.1.ebuild:
+  add ~alpha, ~amd64, ~ia64
+
+  25 Nov 2004; Jason Wever <weeve@gentoo.org> nail-11.1.ebuild:
+  Stable on sparc.
+
+  24 Nov 2004; Andrej Kacian <ticho@gentoo.org> nail-11.1.ebuild:
+  Stable on x86.
+
+*nail-11.1 (17 Oct 2004)
+
+  17 Oct 2004; Andrej Kacian <ticho@gentoo.org> +nail-11.1.ebuild:
+  Version bump, closes #67436. Installation has changed a bit, thanks to Steph
+  L <linux4ibook@free.fr> for the ebuild. Also, I changed the postinst notice
+  to use einfo.
+
+  25 Sep 2004; Jason Wever <weeve@gentoo.org> nail-10.8.ebuild:
+  Stable on sparc.
+
+  23 Sep 2004; Andrej Kacian <ticho@gentoo.org> nail-10.8.ebuild:
+  Stable on x86.
+
+  15 Aug 2004; Jason Wever <weeve@gentoo.org> nail-10.7.ebuild:
+  Stable on sparc.
+
+  26 Jul 2004; Tuan Van <langthang@gentoo.org> nail-10.7.ebuild:
+  >30 days passed without bugs. Stable on x86.
+
+*nail-10.8 (26 Jul 2004)
+
+  26 Jul 2004; Tuan Van <langthang@gentoo.org>
+  +files/nail-10.8-Makefile.patch, +nail-10.8.ebuild:
+  version bump.
+  added virtual/mailx.
+  added blocks virtual/mailx.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> nail-10.7.ebuild,
+  nail-9.30.ebuild:
+  virtual/glibc -> virtual/libc
+
+*nail-10.7 (06 Jun 2004)
+
+  06 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> +nail-10.7.ebuild:
+  Version bump, thanks to Steph L and scootersmk (Bug # 53096).
+
+  04 Jun 2004; David Holm <dholm@gentoo.org> nail-9.30.ebuild:
+  Added to ~ppc.
 
 *nail-9.30 (29 May 2004)
 

@@ -1,6 +1,95 @@
-# ChangeLog for net-www/kazehakase
+# ChangeLog for www-client/kazehakase
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/kazehakase/ChangeLog,v 1.1 2005/03/18 19:39:03 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/kazehakase/ChangeLog,v 1.1.1.1 2005/11/30 09:52:12 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kazehakase-0.3.1.ebuild:
+  Stable on ppc.
+
+*kazehakase-0.3.2 (30 Oct 2005)
+
+  30 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +kazehakase-0.3.2.ebuild:
+  Version bumped.
+
+  18 Oct 2005; Masatomo Nakano <nakano@gentoo.org>
+  -files/kazehakase-0.2.5-gentoo.patch,
+  -files/kazehakase-0.2.6-gentoo.patch,
+  -files/kazehakase-0.2.6-gentoo-2.patch, -kazehakase-0.2.2.ebuild,
+  -kazehakase-0.2.5.ebuild, -kazehakase-0.2.6.ebuild,
+  -kazehakase-0.2.8.ebuild, -kazehakase-0.2.9.ebuild,
+  -kazehakase-0.3.0.ebuild:
+  Removed old ebuilds.
+
+  18 Oct 2005; Masatomo Nakano <nakano@gentoo.org> kazehakase-0.3.1.ebuild:
+  Marked stable on x86.
+
+*kazehakase-0.3.1 (09 Oct 2005)
+
+  09 Oct 2005; Masatomo Nakano <nakano@gentoo.org> +kazehakase-0.3.1.ebuild:
+  Version bump.
+
+  12 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> kazehakase-0.2.7.ebuild:
+  Stable on amd64.
+
+*kazehakase-0.3.0 (29 Aug 2005)
+
+  29 Aug 2005; Masatomo Nakano <nakano@gentoo.org> +kazehakase-0.3.0.ebuild:
+  Version bump.
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kazehakase-0.2.7.ebuild:
+  Stable on ppc.
+
+*kazehakase-0.2.9 (29 Jul 2005)
+
+  29 Jul 2005; Masatomo Nakano <nakano@gentoo.org> +kazehakase-0.2.9.ebuild:
+  Version bump.
+
+*kazehakase-0.2.8 (01 Jul 2005)
+
+  01 Jul 2005; Masatomo Nakano <nakano@gentoo.org> +kazehakase-0.2.8.ebuild:
+  Version bump.
+
+  07 Jun 2005; Masatomo Nakano <nakano@gentoo.org> kazehakase-0.2.7.ebuild:
+  Marked stable on x86
+
+  09 May 2005; Masatomo Nakano <nakano@gentoo.org> kazehakase-0.2.6.ebuild:
+  Marked stable on x86/ppc.
+
+*kazehakase-0.2.7 (29 Apr 2005)
+
+  29 Apr 2005; Masatomo Nakano <nakano@gentoo.org> +kazehakase-0.2.7.ebuild:
+  Version bump.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kazehakase-0.2.5.ebuild:
+  Stable on ppc.
+
+  08 Apr 2005; Masatomo Nakano <nakano@gentoo.org>
+  +files/kazehakase-0.2.6-gentoo-2.patch, kazehakase-0.2.6.ebuild:
+  Added patch to fix compile error without firefox.
+
+*kazehakase-0.2.6 (29 Mar 2005)
+
+  29 Mar 2005; Masatomo Nakano <nakano@gentoo.org>
+  +files/kazehakase-0.2.6-gentoo.patch, +kazehakase-0.2.6.ebuild:
+  Version bump.
+
+  25 Mar 2005; Masatomo Nakano <nakano@gentoo.org> kazehakase-0.2.5.ebuild:
+  Removed !kazehakase-cvs dependency since conflict problem has been removed.
+
+  25 Mar 2005; Masatomo Nakano <nakano@gentoo.org>
+  +files/kazehakase-0.2.5-gentoo.patch, kazehakase-0.2.5.ebuild:
+  fixed for mozilla-1.7.6
+
+  24 Mar 2005; Masatomo Nakano <nakano@gentoo.org> -kazehakase-0.2.1.ebuild,
+  -kazehakase-0.2.3.ebuild, -kazehakase-0.2.4.ebuild:
+  Removed old ebuilds.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> kazehakase-0.2.1.ebuild,
+  kazehakase-0.2.2.ebuild, kazehakase-0.2.3.ebuild, kazehakase-0.2.4.ebuild,
+  kazehakase-0.2.5.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
 
 *kazehakase-0.2.5 (18 Mar 2005)
 *kazehakase-0.2.4 (18 Mar 2005)

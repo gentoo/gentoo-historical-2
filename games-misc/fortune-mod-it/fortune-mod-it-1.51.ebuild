@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-it/fortune-mod-it-1.51.ebuild,v 1.1.1.1 2005/11/30 09:50:02 chriswhite Exp $
 
 DESCRIPTION="Database of the Italian cookies for the fortune program"
 HOMEPAGE="http://www.orson.it/~fedeliallalinea/"
@@ -8,7 +8,7 @@ SRC_URI="http://www.orson.it/~fedeliallalinea/files/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
 IUSE="offensive"
 
 DEPEND="games-misc/fortune-mod"

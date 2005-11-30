@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/totd/totd-1.3.ebuild,v 1.1 2005/04/25 20:25:25 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/totd/totd-1.3.ebuild,v 1.1.1.1 2005/11/30 09:50:14 chriswhite Exp $
 
 DESCRIPTION="Trick Or Treat Daemon, a DNS proxy for 6to4"
 HOMEPAGE="http://www.vermicelli.pasta.cs.uit.no/ipv6/software.html"

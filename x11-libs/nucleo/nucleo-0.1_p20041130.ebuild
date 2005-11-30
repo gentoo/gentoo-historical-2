@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/nucleo/nucleo-0.1_p20041130.ebuild,v 1.1 2004/12/02 11:34:58 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/nucleo/nucleo-0.1_p20041130.ebuild,v 1.1.1.1 2005/11/30 09:54:11 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
@@ -16,16 +18,17 @@ DEPEND="virtual/x11
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc"
 
 S="${WORKDIR}/${P/_p*/}"
 
-src_compile() {
-	econf || die "configure failed"
-	emake || die "make failed"
+src_unpack() {
+	unpack ${A}
+	cd "${S}"/nucleo/gl/texture
+	epatch "${FILESDIR}"/${P/_p*/}-nv.patch
 }
 
 src_install() {
-	make DESTDIR=${D} install || die "make install failed"
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc README ChangeLog AUTHORS NEWS
 }

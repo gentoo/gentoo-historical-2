@@ -1,21 +1,21 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/qlife/qlife-0.7.ebuild,v 1.1 2004/09/13 06:22:44 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/qlife/qlife-0.7.ebuild,v 1.1.1.1 2005/11/30 09:50:02 chriswhite Exp $
 
 inherit kde
 need-qt 3
 
-DESCRIPTION="Simulates the classical Game of Life invented by John Conway."
+DESCRIPTION="Simulates the classical Game of Life invented by John Conway"
 HOMEPAGE="http://personal.inet.fi/koti/rkauppila/projects/life/"
 SRC_URI="http://freshmeat.net/redir/qlife/50265/url_tgz/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 src_compile() {
-	qmake || die "qmake failed"
+	${QTDIR}/bin/qmake || die "qmake failed"
 	emake || die "emake failed"
 }
 

@@ -1,13 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.3.6.ebuild,v 1.1 2005/05/24 04:33:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.3.6.ebuild,v 1.1.1.1 2005/11/30 09:53:46 chriswhite Exp $
 
 MAN_VER=""
-PATCH_VER="1.0"
+PATCH_VER="1.3"
 UCLIBC_VER="1.0"
 PIE_VER="8.7.8"
-PP_VER=""
-PP_FVER=""
+PP_VER="1.0"
 HTB_VER="1.00-r1"
 
 ETYPE="gcc-compiler"
@@ -35,15 +34,16 @@ inherit toolchain eutils
 
 DESCRIPTION="The GNU Compiler Collection.  Includes C/C++, java compilers, pie+ssp extensions, Haj Ten Brugge runtime bounds checking"
 
-KEYWORDS="-*"
+# ia64 - broken static handling; USE=static emerge busybox
+KEYWORDS="-* ~alpha ~amd64 ~hppa -ia64 ~sparc x86"
 
 # NOTE: we SHOULD be using at least binutils 2.15.90.0.1 everywhere for proper
 # .eh_frame ld optimisation and symbol visibility support, but it hasnt been
 # well tested in gentoo on any arch other than amd64!!
-RDEPEND=">=sys-devel/gcc-config-1.3.10
+RDEPEND="|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.10 )
 	>=sys-libs/zlib-1.1.4
 	!sys-devel/hardened-gcc
-	!uclibc? ( >=sys-libs/glibc-2.3.2-r9 )
+	elibc_glibc? ( >=sys-libs/glibc-2.3.2-r9 )
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	>=sys-devel/bison-1.875
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-glibc-1.1 ) )
@@ -64,7 +64,7 @@ fi
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r4
 	amd64? ( >=sys-devel/binutils-2.15.90.0.1.1-r1 )"
-PDEPEND="sys-devel/gcc-config"
+PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )"
 
 src_unpack() {
 	gcc_src_unpack
@@ -75,7 +75,8 @@ src_unpack() {
 	fi
 
 	# misc patches that havent made it into a patch tarball yet
-	epatch "${FILESDIR}"/gcc-spec-env.patch
+	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env.patch
+	epatch "${FILESDIR}"/3.3.6/gcc-3.3.6-cross-compile.patch
 
 	# Anything useful and objc will require libffi. Seriously. Lets just force
 	# libffi to install with USE="objc", even though it normally only installs

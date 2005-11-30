@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ssmtp-2.60.9.ebuild,v 1.1 2004/06/06 23:09:56 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ssmtp-2.60.9.ebuild,v 1.1.1.1 2005/11/30 09:50:38 chriswhite Exp $
 
 inherit eutils
 
@@ -10,10 +10,10 @@ SRC_URI="ftp://ftp.debian.org/debian/pool/main/s/ssmtp/${P/-/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc ppc64 s390 sparc x86"
 IUSE="ssl ipv6 md5sum mailwrapper"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	ssl? ( dev-libs/openssl )"
 RDEPEND="mailwrapper? ( >=net-mail/mailwrapper-0.2 )
 	!mailwrapper? ( !virtual/mta )
@@ -26,9 +26,9 @@ S=${WORKDIR}/ssmtp-2.60
 src_compile() {
 	econf \
 		--sysconfdir=/etc/ssmtp \
-		`use_enable ssl` \
-		`use_enable ipv6 inet6` \
-		`use_enable md5sum md5suth` \
+		$(use_enable ssl) \
+		$(use_enable ipv6 inet6) \
+		$(use_enable md5sum md5suth) \
 		|| die
 	make clean || die
 	make etcdir=/etc || die
@@ -44,7 +44,7 @@ src_install() {
 	# See bug #7448
 	#dosym /usr/sbin/ssmtp /usr/bin/mail
 	#The sendmail symlink is now handled by mailwrapper if used
-	! use mailwrapper && \
+	use mailwrapper || \
 		dosym /usr/sbin/ssmtp /usr/sbin/sendmail
 	dosym /usr/sbin/sendmail /usr/lib/sendmail
 	doman ssmtp.8
@@ -71,7 +71,7 @@ src_install() {
 	#        -e "s:_HOSTNAME_:${hostname}:" \
 	#        -e "s:^mailhub=mail:mailhub=mail.${domainname}:g" \
 	#        ${conffile}.orig > ${conffile}.pre
-	#if [ `use ssl` ];
+	#if use ssl;
 	#then
 	#        sed -e "s:^#UseTLS=YES:UseTLS=YES:g" \
 	#                ${conffile}.pre > ${conffile}
@@ -79,6 +79,18 @@ src_install() {
 	#else
 	#        mv ${conffile}.pre ${conffile}
 	#fi
+
+	# set up config file, v2. Bug 47562
+	local conffile="${D}/etc/ssmtp/ssmtp.conf"
+	mv "${conffile}" "${conffile}.orig"
+	# Sorry about the weird indentation, I couldn't figure out a cleverer way
+	# to do this without having horribly >80 char lines.
+	sed -e "s:^hostname=:\n# Gentoo bug #47562\\
+# Commenting the following line will force ssmtp to figure\\
+# out the hostname itself.\n\\
+# hostname=:" \
+		"${conffile}.orig" > "${conffile}" \
+		|| die "sed failed"
 }
 
 pkg_postinst() {

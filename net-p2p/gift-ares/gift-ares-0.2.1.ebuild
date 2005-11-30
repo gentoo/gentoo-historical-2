@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-ares/gift-ares-0.2.1.ebuild,v 1.1 2005/02/02 16:55:19 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift-ares/gift-ares-0.2.1.ebuild,v 1.1.1.1 2005/11/30 09:51:12 chriswhite Exp $
 
 IUSE=""
 

@@ -1,2 +1,4 @@
-MD5 ebedc372e9483defd15c7d1fd0a2700f emergence-bin-0.7.ebuild 989
-MD5 12e50ded043ea46f1d84f899ab60ec82 files/digest-emergence-bin-0.7 80
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 ddda59b81d7580d1ca51b6a2b1fe0e88 ChangeLog 792
+MD5 5eeb59f6e1d194dd21ffc693ff3d45ca emergence-bin-0.9.ebuild 1163
+MD5 4f5fea7a1a05183c4ced208a58f738d9 files/digest-emergence-bin-0.9 80

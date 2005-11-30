@@ -1,6 +1,64 @@
-# ChangeLog for app-games/lbreakout2
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/lbreakout2/ChangeLog,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# ChangeLog for games-arcade/lbreakout2
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/lbreakout2/ChangeLog,v 1.1.1.1 2005/11/30 09:51:58 chriswhite Exp $
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> lbreakout2-2.5.2.ebuild:
+  Mark 2.5.2 stable on alpha
+
+  20 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  use a png for the icon instead of a gif.  latest gtk+ doesn't like gifs
+  all that much (bug #99555); tidy
+
+  30 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  lbreakout2-2.5.2.ebuild:
+  Add ~alpha keyword, bug 86601.
+
+*lbreakout2-2.5.2 (24 Jan 2005)
+
+  24 Jan 2005; Mike Frysinger <vapier@gentoo.org> +lbreakout2-2.5.2.ebuild:
+  Version bump #79093 by Alexandru Toma.
+
+  18 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org> lbreakout2-2.4.ebuild,
+  lbreakout2-2.5.1.ebuild, lbreakout2-2.5.ebuild,
+  lbreakout2-2.5_beta6.ebuild:
+  Updated with a .desktop entry and closing bug #76656.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*lbreakout2-2.5.1 (06 Oct 2004)
+
+  06 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +lbreakout2-2.5.1.ebuild:
+  version bump (bug #65860)
+
+*lbreakout2-2.5 (11 Aug 2004)
+
+  11 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +lbreakout2-2.5.ebuild:
+  version bump (bug #59865)
+
+  16 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5_beta3.ebuild:
+  beta5 seems nicer all around
+
+*lbreakout2-2.5_beta6 (15 Jun 2004)
+
+  15 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lbreakout2-2.5_beta6.ebuild:
+  version bump (bug #52181)
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> lbreakout2-2.4.ebuild,
+  lbreakout2-2.5_beta3.ebuild:
+  put the high scores in GAMES_STATEDIR
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> lbreakout2-2.4.ebuild,
+  lbreakout2-2.5_beta3.ebuild:
+  use all-levels snapshot archive instead of individual level files (should fix
+  bug #44447); use emake
+
+  04 Nov 2003; Jason Wever <weeve@gentoo.org> lbreakout2-2.4.ebuild:
+  Added ~sparc keyword.
 
 *lbreakout2-2.5_beta3 (19 Jul 2003)
 
@@ -38,10 +96,10 @@
   themes with all available on the homepage.  Updated install flags
   to avoid sandbox violations.
 
-  17 jul 2002; Jose Alberto Su�rez L�pez <bass@gentoo.org> lbreakout2-2.2.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> lbreakout2-2.2.ebuild :
   Added LICENSE, KEYWORDS.
 
-  17 jul 2002; Jose Alberto Su�rez L�pez <bass@gentoo.org> lbreakout2-2.2.2.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> lbreakout2-2.2.2.ebuild :
   Added KEYWORDS.
 
   03 Jul 2002; J.Alberto S.L. <bass@gentoo.org>

@@ -1,5 +1,16 @@
-MD5 1b6808bbd78c9161f8b7efb090d966f8 metadata.xml 162
-MD5 d2d96a92d03dd1e68cb5f57db7668709 ChangeLog 808
-MD5 a3142acca84279f02fc1225868503da9 kuroo-0.53.0.ebuild 445
-MD5 155439727aeb85b1464de8bf58e2bbf2 files/digest-kuroo-0.52.0 64
-MD5 21a344fa5508e70a2c357c19d0864292 files/digest-kuroo-0.53.0 64
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 91375383dcd86cbc534440d2cadf6cbe ChangeLog 1278
+MD5 b2db3c50836cae2211a984e54b1a1117 files/digest-kuroo-0.70.1 65
+MD5 b6efca9ab664e01e3ec774260c8b3056 files/digest-kuroo-0.71.0_rc2 69
+MD5 c651d37f46f4c990207f0c504dfc9e51 kuroo-0.70.1.ebuild 501
+MD5 68736a11fca8be57bed025836ce0183b kuroo-0.71.0_rc2.ebuild 520
+MD5 acc03a4b12bb0433a57e95bd253b9501 metadata.xml 156
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDdzKhntT9W3vfTuoRAsRyAJ4rK11KthGUeEXF9EVDWUdTn52USgCghKF+
+4/oxwBHlXzV/kdMmAS0/qMc=
+=IJYm
+-----END PGP SIGNATURE-----

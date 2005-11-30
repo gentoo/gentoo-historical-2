@@ -1,10 +1,95 @@
 # ChangeLog for dev-perl/Class-Autouse
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Autouse/ChangeLog,v 1.1 2003/06/02 20:56:20 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Autouse/ChangeLog,v 1.1.1.1 2005/11/30 09:53:09 chriswhite Exp $
+
+*Class-Autouse-1.21 (12 Nov 2005)
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +Class-Autouse-1.21.ebuild:
+  Version bump upstream
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.17.ebuild:
+  Mark 1.17 stable on ia64
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.17.ebuild:
+  Mark 1.17 stable on alpha
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Class-Autouse-1.17.ebuild:
+  add ~ia64
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Class-Autouse-1.17.ebuild:
+  Stable on ppc.
+
+  15 Aug 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.17.ebuild:
+  Marking stable x86 and sparc
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.17.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.03.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+*Class-Autouse-1.17 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Class-Autouse-0.7.ebuild, +Class-Autouse-1.17.ebuild:
+  version bump, cleaning
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Stable on ppc.
+
+  16 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Removed old style directive
+
+  22 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Added ExtUtils-AutoInstall dep wrt #77610, sparc stable
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.12.ebuild:
+  Unmasking for x86
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Class-Autouse-0.7.ebuild:
+  Stable on sparc
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*Class-Autouse-1.12 (06 Dec 2004)
+
+  06 Dec 2004; Michael Cummings <mcummings@gentoo.org>
+  +Class-Autouse-1.12.ebuild:
+  New version on CPAN
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> Class-Autouse-1.03.ebuild:
+  Stable on alpha.
+
+  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
+  Class-Autouse-1.03.ebuild:
+  Syntax fix for newdepend, bug 29064
+
+*Class-Autouse-1.03 (22 Dec 2003)
+
+  22 Dec 2003; <rac@gentoo.org> Class-Autouse-1.03.ebuild:
+  Version bump, add testing
 
 *Class-Autouse-0.7 (02 Jun 2003)
 
   02 Jun 2003; Michael Cummings <mcummings@gentoo.org>
   Class-Autouse-0.7.ebuild:
   Fills bug 21791
-

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/proxyper/proxyper-333.ebuild,v 1.1 2004/06/07 08:09:41 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/proxyper/proxyper-333.ebuild,v 1.1.1.1 2005/11/30 09:54:38 chriswhite Exp $
 
 DESCRIPTION="distributed.net personal proxy"
 HOMEPAGE="http://www.distributed.net"
@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="x86 -ppc -sparc ~alpha"
 IUSE=""
 DEPEND=""
-RDEPEND="net-misc/host"
+RDEPEND="net-dns/host"
 if use x86; then
 	S="${WORKDIR}/${PN}${PV}-linux-x86"
 elif use ppc; then

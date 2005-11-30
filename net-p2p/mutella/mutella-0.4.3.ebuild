@@ -1,19 +1,26 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/mutella/mutella-0.4.3.ebuild,v 1.1 2003/03/06 12:25:15 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mutella/mutella-0.4.3.ebuild,v 1.1.1.1 2005/11/30 09:51:20 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Text-mode gnutella client"
 SRC_URI="mirror://sourceforge/mutella/${P}.tar.gz"
 HOMEPAGE="http://mutella.sourceforge.net/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc ~amd64"
 IUSE=""
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-libs/readline"
 
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/mutella-gcc33-fix.gz
+}
+
 src_compile() {
-	econf
+	econf || die "econf failed"
 	emake || die
 }
 

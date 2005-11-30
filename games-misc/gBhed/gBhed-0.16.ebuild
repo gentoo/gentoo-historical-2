@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/gBhed/gBhed-0.16.ebuild,v 1.1 2005/07/14 00:25:59 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/gBhed/gBhed-0.16.ebuild,v 1.1.1.1 2005/11/30 09:50:01 chriswhite Exp $
 
 inherit games
 
@@ -10,10 +10,10 @@ SRC_URI="http://liquidchile.net/software/gbhed/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gtk"
 
-DEPEND="gtk? ( >=x11-libs/gtk+-2.2* >=dev-libs/glib-2.2* )"
+DEPEND="gtk? ( >=x11-libs/gtk+-2.2 >=dev-libs/glib-2.2 )"
 
 src_compile() {
 	egamesconf $(use_enable gtk gbhed) || die

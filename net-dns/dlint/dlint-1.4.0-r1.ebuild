@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dlint/dlint-1.4.0-r1.ebuild,v 1.1 2004/10/19 14:10:26 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dlint/dlint-1.4.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:13 chriswhite Exp $
 
-inherit eutils
+inherit eutils fixheadtails
 
 S=${WORKDIR}/${P/-/}
 DESCRIPTION="Dlint analyzes any DNS zone you specify, and reports any problems it finds by displaying errors and warnings"
@@ -10,7 +10,7 @@ SRC_URI="http://www.domtools.com/pub/${P/-/}.tar.gz"
 HOMEPAGE="http://www.domtools.com/dns/dlint.shtml"
 
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 sparc"
 IUSE=""
 LICENSE="GPL-2"
 
@@ -23,13 +23,12 @@ RDEPEND="sys-apps/coreutils
 src_compile() {
 	sed -i -e 's:rrfilt=\"/usr/local/bin/digparse\":rrfilt=\"/usr/bin/digparse\":' \
 		dlint
-	sed -i -e "s:head -:head -n :g" dlint
-	sed -i -e "s:tail +:tail -n +:g" dlint
+	ht_fix_file dlint
 }
 
 src_install () {
 	dobin digparse
 	dobin dlint
 	doman dlint.1
-	dodoc BUGS COPYING INSTALL README CHANGES COPYRIGHT TESTCASES
+	dodoc BUGS INSTALL README CHANGES COPYRIGHT TESTCASES
 }

@@ -1,21 +1,21 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/links/links-2.1_pre18.ebuild,v 1.1 2005/08/28 22:14:40 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/links/links-2.1_pre18.ebuild,v 1.1.1.1 2005/11/30 09:52:24 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="links is a fast lightweight text tand graphic web-browser"
-HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~clock/twibright/links/"
+DESCRIPTION="links is a fast lightweight text and graphic web-browser"
+HOMEPAGE="http://links.twibright.com/"
 # To handle pre-version ...
 MY_P="${P/_/}"
 S="${WORKDIR}/${MY_P}"
-SRC_URI="ftp://atrey.karlin.mff.cuni.cz/pub/local/clock/links/${MY_P}.tar.bz2
-	http://dev.gentoo.org/~vanquirius/files/${MY_P}-utf8.diff.bz2"
-	# mirror://gentoo/${MY_P}-utf8.diff.bz2"
+SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
+	http://dev.gentoo.org/~vanquirius/files/${MY_P}.tar.bz2
+	mirror://gentoo/${MY_P}-utf8.diff.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~ppc-macos ~s390 ~sparc ~x86 ~sh"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ~ppc64 s390 sh sparc x86"
 IUSE="directfb ssl javascript png X gpm tiff fbcon svga jpeg unicode livecd"
 
 # Note: if X or fbcon usegflag are enabled, links will be built in graphic
@@ -63,13 +63,15 @@ pkg_setup (){
 }
 
 src_unpack (){
-	unpack ${A}; cd ${S}
+	unpack ${A}; cd "${S}"
 
 	if use unicode ; then
-		epatch ${WORKDIR}/${MY_P}-utf8.diff
+		epatch "${WORKDIR}/${MY_P}-utf8.diff"
 		export LANG=C
-		cd ${S}/intl && ./gen-intl && cd .. || die "gen-intl filed"
+		cd "${S}/intl" && ./gen-intl && cd .. || die "gen-intl filed"
 	fi
+
+	epatch "${FILESDIR}/links-2.1pre18-no-javascript-fix.patch"
 }
 
 src_compile (){
@@ -120,7 +122,7 @@ src_install (){
 	# Only install links icon if X driver was compiled in ...
 	use X && doicon graphics/links.xpm
 
-	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS README SITES TODO
+	dodoc AUTHORS BUGS ChangeLog NEWS README SITES TODO
 	dohtml doc/links_cal/*
 
 	# Install a compatibility symlink links2:

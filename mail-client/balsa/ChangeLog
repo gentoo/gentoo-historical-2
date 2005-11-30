@@ -1,6 +1,144 @@
-# ChangeLog for net-mail/balsa
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/ChangeLog,v 1.1 2004/05/30 02:38:38 seemant Exp $
+# ChangeLog for mail-client/balsa
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/ChangeLog,v 1.1.1.1 2005/11/30 09:49:43 chriswhite Exp $
+
+*balsa-2.3.4-r1 (07 Jul 2005)
+
+  07 Jul 2005; John N. Laliberte <allanonl@bu.edu>
+  +files/balsa-2.3.4-icon-cache.patch, -balsa-2.3.4.ebuild,
+  +balsa-2.3.4-r1.ebuild:
+  fix for bug #98148, remove icon-cache file.
+
+*balsa-2.3.4 (05 Jul 2005)
+
+  05 Jul 2005; John N. Laliberte <allanonjl@gentoo.org> +balsa-2.3.4.ebuild:
+  version bump to fix #97825. Add gnome use flag with deps since its supported
+  upstream. remove patches since they have since been merged.
+
+  16 Jun 2005; John N. Laliberte <allanonjl@gentoo.org>
+  balsa-2.0.15-r2.ebuild:
+  2.0.15 scrollkeeper fix.
+
+*balsa-2.2.6-r4 (11 Jun 2005)
+
+  11 Jun 2005; John N. Laliberte <allanonjl@gentoo.org> -balsa-2.2.6.ebuild,
+  -balsa-2.2.6-r1.ebuild, -balsa-2.2.6-r2.ebuild, +balsa-2.2.6-r4.ebuild:
+  scrollkeeper violation fix as reported in #92920, cleanup old ebuilds.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  balsa-2.0.15-r2.ebuild:
+  Stable on ppc.
+
+*balsa-2.2.6-r3 (24 May 2005)
+
+  24 May 2005; John N. Laliberte <allanonjl@gentoo.org>
+  files/balsa-sqlite3-fix.patch, +balsa-2.2.6-r3.ebuild:
+  update to sqlite3 patch, run autoheader
+
+*balsa-2.2.6-r2 (24 May 2005)
+
+  24 May 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +files/balsa-sqlite3-fix.patch, +balsa-2.2.6-r2.ebuild:
+  fixes bug #93511, backport patch from cvs to fix compilation issue with
+  sqlite3.
+
+*balsa-2.2.6-r1 (23 May 2005)
+
+  23 May 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +files/balsa-ssl.patch, +balsa-2.2.6-r1.ebuild:
+  patch to make ssl work. Thanks to Andrea Pinazzi for researching. fixes
+  #93670
+
+  17 May 2005; Fernando J. Pereda <ferdy@gentoo.org> balsa-2.2.6.ebuild:
+  keyworded ~alpha wrt #86732
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> balsa-2.2.6.ebuild:
+  Added missing parentheses to *DEPEND.
+
+  24 Apr 2005; John N. Laliberte <allanonjl@gentoo.org> balsa-2.2.6.ebuild:
+  Fix to RDEPEND to allow gtkhtml 2 or 3.
+
+  30 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> balsa-2.2.6.ebuild:
+  Keyworded ~sparc wrt #86731
+
+  30 Mar 2005; Sven Wegener <swegener@gentoo.org> balsa-2.2.6.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  29 Mar 2005; John N. Laliberte <allanonjl@gentoo.org>
+  +files/balsa-2.2.6-deprecation.fix.patch, balsa-2.2.6.ebuild:
+  Updated deps in ebuild and reworked some parts. Ebuild now applies a
+  deprecation patch.
+
+  27 Mar 2005; John N. Laliberte <allanonjl@gentoo.org> balsa-2.2.6.ebuild:
+  Typo on the gmime dep.
+
+  27 Mar 2005; John N. Laliberte <allanonjl@gentoo.org> balsa-2.2.6.ebuild:
+  Updated deps to require >=gmime-2.1.9-r1. Fixes bug #86750.
+
+  26 Mar 2005; John N. Laliberte <allanonjl@gentoo.org> balsa-2.2.6.ebuild:
+  -m Added ~amd64 support.  Forgot to carry this arch over on previous commit.
+
+*balsa-2.2.6 (25 Mar 2005)
+
+  25 Mar 2005; John N. Laliberte <allanonjl@gentoo.org> metadata.xml,
+  +balsa-2.2.6.ebuild:
+  Updated ebuild that fix #77938 and #57200. sparc and alpha support was dropped
+  because gmime, a required dep is not supported on those archs. Bugs were filed
+  with those archs. Updated metadata that included myself as maintainer.
+
+  12 Dec 2004; Daniel Black <dragonheart@gentoo.org> -balsa-2.0.15-r1.ebuild:
+  remove balsa-2.0.15-r1 in order to remove old gpgme dependancies. bug #72620
+  refers
+
+  12 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> balsa-2.0.15-r2.ebuild:
+  Stable on alpha.
+
+  04 Dec 2004; Tom Martin <slarti@gentoo.org> balsa-2.0.15-r2.ebuild:
+  Marked ~amd64 for bug 72417.
+
+  30 Nov 2004; Mike Gardiner <obz@gentoo.org> balsa-2.0.15-r2.ebuild:
+  Marked x86 for bug #72620
+
+  15 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> balsa-2.0.15-r2.ebuild:
+  Stable on sparc wrt #64485
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> balsa-2.0.15-r1.ebuild,
+  balsa-2.0.15-r2.ebuild:
+  Changed =app-crypt/gpgme-0.3.14 RDEPEND to ~app-crypt/gpgme-0.3.14. Closes
+  #64969, reported by Antonio <netbix@tiscali.it>
+
+  16 Sep 2004; Daniel Black <dragonheart@gentoo.org> balsa-2.0.14.ebuild:
+  Fixed gpgme dependancy in accordance with bug #63501
+
+  16 Aug 2004; Daniel Black <dragonheart@gentoo.org>
+  -files/gpgme3-autoconf.patch, balsa-2.0.15-r2.ebuild:
+  Have modified gpgme-0.3.14-r1 a bit to make it easier. As a result this needed
+  to changed
+
+*balsa-1.4.3 (10 Aug 2004)
+
+  10 Aug 2004; Daniel Black <dragonheart@gentoo.org>
+  +files/balsa-1.4.0-gentoo.diff, +balsa-1.4.3.ebuild:
+  overzealous trimming last time. Reintroduced gtk-1 version. Fixes bug #59875
+
+*balsa-2.0.14 (10 Aug 2004)
+
+  10 Aug 2004; Daniel Black <dragonheart@gentoo.org> +balsa-2.0.14.ebuild,
+  +files/gtk+2.4-2.patch:
+  overzealous trimming last time. Reintroduced stable version
+
+*balsa-2.0.15-r2 (08 Aug 2004)
+
+  08 Aug 2004; Daniel Black <dragonheart@gentoo.org>
+  -files/balsa-1.4.0-gentoo.diff, +files/gpgme3-autoconf.patch,
+  -files/gtk+2.4-2.patch, -files/gtk+2.4.patch, -balsa-1.4.3.ebuild,
+  -balsa-2.0.11.ebuild, -balsa-2.0.14.ebuild, balsa-2.0.15-r1.ebuild,
+  +balsa-2.0.15-r2.ebuild:
+  Depandancy changes as per bug #57193. Cleanout of old version. Version bump
+  for new gpgme0.3.14-r1 (permission from foser
+
+  04 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> balsa-2.0.15-r1.ebuild:
+  Stable on alpha.
 
 *balsa-2.0.11 (29 May 2004)
 

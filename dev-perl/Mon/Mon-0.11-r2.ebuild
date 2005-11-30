@@ -1,17 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mon/Mon-0.11-r2.ebuild,v 1.1 2002/10/30 07:20:39 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mon/Mon-0.11-r2.ebuild,v 1.1.1.1 2005/11/30 09:52:33 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A Monitor Perl Module"
 SRC_URI="http://www.cpan.org/modules/by-module/Mon/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Mon/${P}.readme"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+IUSE=""
 
 DEPEND="${DEPEND}
 	>=net-analyzer/fping-2.2_beta1

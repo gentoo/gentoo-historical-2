@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/privoxy/privoxy-3.0.3-r3.ebuild,v 1.1 2005/04/22 19:15:11 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/privoxy/privoxy-3.0.3-r3.ebuild,v 1.1.1.1 2005/11/30 09:51:49 chriswhite Exp $
 
 inherit toolchain-funcs eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/ijbswa/${P}-stable-src.tar.gz"
 
 IUSE="pcre selinux"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ppc sparc x86"
+KEYWORDS="alpha ~amd64 ppc sparc x86"
 LICENSE="GPL-2"
 
 DEPEND=">=sys-apps/sed-4
@@ -26,7 +26,7 @@ S="${WORKDIR}/${P}-stable"
 
 pkg_setup() {
 	enewgroup privoxy
-	enewuser privoxy -1 /bin/false /etc/privoxy privoxy
+	enewuser privoxy -1 -1 /etc/privoxy privoxy
 }
 
 src_unpack() {

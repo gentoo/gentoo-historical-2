@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/libperl/libperl-5.8.6-r1.ebuild,v 1.1 2005/06/30 14:54:49 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/libperl/libperl-5.8.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:53:58 chriswhite Exp $
 
 # The basic theory based on comments from Daniel Robbins <drobbins@gentoo.org>.
 #
@@ -52,7 +52,7 @@
 #
 # Martin Schlemmer <azarah@gentoo.org> (28 Dec 2002).
 
-IUSE="berkdb debug gdbm ithreads nocxx"
+IUSE="berkdb debug gdbm ithreads"
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -68,7 +68,7 @@ HOMEPAGE="http://www.perl.org"
 SLOT="${PERLSLOT}"
 LIBPERL="libperl.so.${PERLSLOT}.${SHORT_PV}"
 LICENSE="Artistic GPL-2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 
 # rac 2004.08.06
 
@@ -80,7 +80,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh sparc
 
 RESTRICT="test"
 
-DEPEND="!nocxx? ( sys-apps/groff )
+DEPEND="!elibc_uclibc? ( sys-apps/groff )
 	berkdb? ( sys-libs/db )
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )"
 
@@ -155,6 +155,8 @@ src_compile() {
 
 	if [[ ${KERNEL} == "FreeBSD" && "${ELIBC}" = "FreeBsd" ]]; then
 		osname="freebsd"
+	elif [[ ${KERNEL} == "NetBSD" ]]; then
+		osname="netbsd"
 	else
 		osname="linux"
 	fi

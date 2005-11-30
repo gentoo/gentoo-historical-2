@@ -1,9 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/lesstif/lesstif-0.94.4.ebuild,v 1.1 2005/04/26 13:56:47 lanius Exp $
-
-# disable sandbox, needed for motif-config
-SANDBOX_DISABLED="1"
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/lesstif/lesstif-0.94.4.ebuild,v 1.1.1.1 2005/11/30 09:54:19 chriswhite Exp $
 
 inherit libtool flag-o-matic multilib
 
@@ -21,7 +18,8 @@ RDEPEND="virtual/libc
 	>=x11-libs/motif-config-0.9"
 
 DEPEND="dev-lang/perl
-	${RDEPEND}"
+	${RDEPEND}
+	>=sys-devel/libtool-1.5.10"
 
 PROVIDE="virtual/motif"
 
@@ -44,10 +42,18 @@ src_compile() {
 	  --enable-verbose=no \
 	  --with-x || die "./configure failed"
 
+	# fix linkage against already installed version
+	perl -pi -e 's/^(hardcode_into_libs)=.*/$1=no/' libtool
+
 	emake CFLAGS="${CFLAGS}" || die
 }
 
 src_install() {
+	# fix linkage against already installed version
+	for f in `find . -name \*.la -type f` ; do
+		perl -pi -e 's/^(relink_command=.*)/# $1/' $f
+	done
+
 	make DESTDIR=${D} install || die "make install"
 
 
@@ -88,6 +94,7 @@ src_install() {
 	rm -fR ${D}/usr/$(get_libdir)/lesstif-2.1/LessTif/
 	rm -fR ${D}/usr/$(get_libdir)/lesstif-2.1/X11/
 	rm -fR ${D}/usr/$(get_libdir)/X11/
+	rm -f ${D}/usr/$(get_libdir)/lesstif-2.1/motif-config
 
 	# profile stuff
 	dodir /etc/env.d

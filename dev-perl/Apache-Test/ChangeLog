@@ -1,6 +1,129 @@
 # ChangeLog for dev-perl/Apache-Test
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-Test/ChangeLog,v 1.1 2003/06/21 02:28:09 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-Test/ChangeLog,v 1.1.1.1 2005/11/30 09:52:37 chriswhite Exp $
+
+  19 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> Apache-Test-1.23.ebuild:
+  Stable on amd64.
+
+  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.23.ebuild:
+  Mark 1.23 stable on alpha
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.23.ebuild:
+  stable on ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Apache-Test-1.23.ebuild:
+  Stable on ppc.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> Apache-Test-1.23.ebuild:
+  Stable on ppc64
+
+*Apache-Test-1.22 (29 Jul 2005)
+
+  29 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.22.ebuild:
+  Removed 1.22 by mistake - terribly sorry ppc64 folks
+
+  28 Jul 2005; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.26.ebuild:
+  Adding a block against mod-perl-2. Here's the gist: mod-perl-2.0.1 comes with
+  its own version of Apache-Test. It installs to a different place, and is
+  largely incompatible with the standalone version of Apache-Test. However,
+  Apache-Test has value outside of the Mod-Perl-2 arena, so it is being retained
+  as a separate ebuild.
+
+*Apache-Test-1.26 (28 Jul 2005)
+
+  28 Jul 2005; Michael Cummings <mcummings@gentoo.org> metadata.xml,
+  -Apache-Test-1.22.ebuild, Apache-Test-1.23.ebuild, +Apache-Test-1.26.ebuild:
+  Version bump; unmasking 1.23 for sparc and x86, no bugs in 30+ days
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org> Apache-Test-1.22.ebuild:
+  Stable on ppc64
+
+*Apache-Test-1.23 (09 May 2005)
+
+  09 May 2005; Elfyn McBratney <beu@gentoo.org> +Apache-Test-1.23.ebuild:
+  Version bump.
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -Apache-Test-1.07.ebuild, -Apache-Test-1.11.ebuild,
+  -Apache-Test-1.15.ebuild, -Apache-Test-1.21.ebuild:
+  cleanup
+
+*Apache-Test-1.22 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.22.ebuild:
+  Version bump upstream. Read
+  http://search.cpan.org/~geoff/Apache-Test-1.22/Changes
+
+  19 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  Apache-Test-1.15.ebuild:
+  Stable on ppc.
+
+  11 Apr 2005; Markus Rothe <corsair@gentoo.org> Apache-Test-1.21.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  01 Apr 2005; Simon Stelling <blubb@gentoo.org> Apache-Test-1.15.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.15.ebuild:
+  stable on ia64
+
+*Apache-Test-1.21 (23 Mar 2005)
+
+  23 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.21.ebuild:
+  New version on cpan
+
+  08 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> Apache-Test-1.15.ebuild:
+  Stable on sparc
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Apache-Test-1.15.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.15.ebuild:
+  Unmasking for x86
+
+*Apache-Test-1.15 (28 Oct 2004)
+
+  28 Oct 2004; Michael Cummings <mcummings@gentoo.org>
+  +Apache-Test-1.15.ebuild:
+  New version on cpan
+
+  25 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> Apache-Test-1.07.ebuild:
+  Marked stable on amd64.
+
+*Apache-Test-1.11 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.11.ebuild:
+  new version
+
+  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org> Apache-Test-1.07.ebuild:
+  Stable on sparc
+
+  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
+  Apache-Test-1.07.ebuild:
+  Syntax fix for newdepend, bug 29064
+
+  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> Apache-Test-1.07.ebuild:
+  stable on alpha and ia64
+
+  15 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  Apache-Test-1.07.ebuild:
+  Unmasking for x86
+
+  18 Jan 2004; <tuxus@gentoo.org> Apache-Test-1.03.ebuild:
+  Added ~mips to KEYWORDS.
+
+*Apache-Test-1.07 (22 Dec 2003)
+
+  22 Dec 2003; <rac@gentoo.org> Apache-Test-1.07.ebuild:
+  upstream bump
 
 *Apache-Test-1.03 (20 Jun 2003)
 

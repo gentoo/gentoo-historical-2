@@ -1,6 +1,179 @@
 # ChangeLog for app-portage/profuse
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/profuse/ChangeLog,v 1.1 2004/11/26 21:59:08 dams Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/profuse/ChangeLog,v 1.1.1.1 2005/11/30 09:51:53 chriswhite Exp $
+
+  30 Oct 2005; Jason Wever <weeve@gentoo.org> profuse-0.23.0.ebuild:
+  Stable on SPARC.
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org> profuse-0.23.0.ebuild:
+  stable on amd64
+
+  09 Jul 2005; <dams@gentoo.org> -profuse-0.1.ebuild, -profuse-0.11.ebuild,
+  -profuse-0.12.ebuild, -profuse-0.13.ebuild, -profuse-0.14.ebuild,
+  -profuse-0.15.ebuild, -profuse-0.16.ebuild, -profuse-0.17.ebuild,
+  -profuse-0.18.ebuild, -profuse-0.18.1.ebuild, -profuse-0.20.ebuild,
+  -profuse-0.20.1.ebuild, -profuse-0.20.2.ebuild, -profuse-0.20.2-r1.ebuild,
+  -profuse-0.20.3.ebuild, -profuse-0.21.0.ebuild, -profuse-0.22.0.ebuild,
+  -profuse-0.22.0-r1.ebuild:
+  removed useless ebuilds
+
+  09 Jul 2005; Sven Wegener <swegener@gentoo.org> profuse-0.1.ebuild,
+  profuse-0.11.ebuild, profuse-0.12.ebuild, profuse-0.13.ebuild,
+  profuse-0.14.ebuild, profuse-0.15.ebuild, profuse-0.16.ebuild,
+  profuse-0.17.ebuild, profuse-0.18.ebuild, profuse-0.18.1.ebuild,
+  profuse-0.20.ebuild, profuse-0.20.1.ebuild, profuse-0.20.2.ebuild,
+  profuse-0.20.2-r1.ebuild, profuse-0.20.3.ebuild, profuse-0.21.0.ebuild,
+  profuse-0.22.0.ebuild, profuse-0.22.0-r1.ebuild, profuse-0.22.1.ebuild,
+  profuse-0.23.0.ebuild:
+  QA: Removed useless MY_P, use default src_compile() and make install instead
+  of einstall.
+
+  27 Jun 2005; Sven Wegener <swegener@gentoo.org> profuse-0.22.0.ebuild,
+  profuse-0.22.0-r1.ebuild, profuse-0.22.1.ebuild:
+  Fixed typo, !ppc64? instead of !ppc4?
+
+  27 Jun 2005; Markus Rothe <corsair@gentoo.org> profuse-0.23.0.ebuild:
+  Stable on ppc64
+
+  23 Jun 2005; <dams@gentoo.org> profuse-0.23.0.ebuild:
+  removed useless line in ebuild
+
+  20 Jun 2005; <dams@gentoo.org> profuse-0.23.0.ebuild:
+  corrected deps
+
+*profuse-0.23.0 (20 Jun 2005)
+
+  20 Jun 2005; <dams@gentoo.org> +profuse-0.23.0.ebuild:
+  new version
+
+  11 Jun 2005; <dams@gentoo.org> profuse-0.20.3.ebuild,
+  profuse-0.22.1.ebuild:
+  added ~amd64 and removed it from broken ebuild
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> profuse-0.22.1.ebuild:
+  Added ~ppc64
+
+  02 Jun 2005; <dams@gentoo.org> profuse-0.22.0.ebuild,
+  profuse-0.22.0-r1.ebuild:
+  masking broken versions
+
+*profuse-0.22.1 (02 Jun 2005)
+
+  02 Jun 2005; <dams@gentoo.org> +profuse-0.22.1.ebuild:
+  new version
+
+*profuse-0.22.0-r1 (02 Jun 2005)
+
+  02 Jun 2005; <dams@gentoo.org> +profuse-0.22.0-r1.ebuild:
+  new release for the dependance on gtk2-fu-0.08
+
+  02 Jun 2005; <dams@gentoo.org> profuse-0.22.0.ebuild:
+  depends on gtk2-fu-0.0.8, because of the progressbar
+
+*profuse-0.14 (02 Jun 2005)
+
+  02 Jun 2005; <dams@gentoo.org> +profuse-0.14.ebuild,
+  profuse-0.22.0.ebuild:
+  readded 0.14, stable on ppc64
+
+  02 Jun 2005; <dams@gentoo.org> -profuse-0.14.ebuild,
+  profuse-0.22.0.ebuild:
+  changed description, stable on x86 and ppc
+
+  02 Jun 2005; <dams@gentoo.org> -profuse-0.14.ebuild,
+  profuse-0.22.0.ebuild:
+  removed obsolette -0.14
+
+*profuse-0.22.0 (02 Jun 2005)
+
+  02 Jun 2005; <dams@gentoo.org> +profuse-0.22.0.ebuild:
+  new version, search feature in ncurses
+
+  13 May 2005; Sven Wegener <swegener@gentoo.org> profuse-0.21.0.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+*profuse-0.21.0 (13 May 2005)
+
+  13 May 2005; <dams@gentoo.org> +profuse-0.21.0.ebuild:
+  version bump, console versions
+
+*profuse-0.20.3 (09 May 2005)
+
+  09 May 2005; <dams@gentoo.org> +profuse-0.20.3.ebuild:
+  version bump
+  correction of bug #91976
+
+*profuse-0.20.2-r1 (08 May 2005)
+
+  08 May 2005; <dams@gentoo.org> +profuse-0.20.2-r1.ebuild:
+  depend on newer version of libconf
+
+*profuse-0.20.2 (08 May 2005)
+
+  08 May 2005; <dams@gentoo.org> +profuse-0.20.2.ebuild:
+  version bump
+
+  08 May 2005; <dams@gentoo.org> profuse-0.20.1.ebuild:
+  corrected dependancy
+
+*profuse-0.20.1 (08 May 2005)
+
+  08 May 2005; <dams@gentoo.org> +profuse-0.20.1.ebuild:
+  version bump
+
+*profuse-0.20 (08 May 2005)
+
+  08 May 2005; <dams@gentoo.org> +profuse-0.20.ebuild:
+  version bump : lot of bugs corrections
+
+  07 Mar 2005; Markus Rothe <corsair@gentoo.org> profuse-0.14.ebuild:
+  Stable on ppc64
+
+  18 Feb 2005; <dams@gentoo.org> :
+  I messed the 0.18 tarball, here it should be allright
+
+*profuse-0.18 (17 Feb 2005)
+
+  17 Feb 2005; <dams@gentoo.org> +profuse-0.18.ebuild:
+  require libconf-0.39.10
+
+*profuse-0.17 (17 Feb 2005)
+
+  17 Feb 2005; <dams@gentoo.org> +profuse-0.17.ebuild:
+  version 0.17
+
+*profuse-0.16 (15 Feb 2005)
+
+  15 Feb 2005; <dams@gentoo.org> +profuse-0.16.ebuild:
+  version 0.16
+
+*profuse-0.15 (24 Jan 2005)
+
+  24 Jan 2005; <dams@gentoo.org> +profuse-0.15.ebuild:
+  new features, uses new libconf
+
+  15 Jan 2005; Markus Rothe <corsair@gentoo.org> profuse-0.14.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*profuse-0.14 (10 Jan 2005)
+
+  10 Jan 2005; <dams@gentoo.org> +profuse-0.14.ebuild:
+  version 0.14 : redundancy setting, search feature, debug
+
+*profuse-0.13 (08 Dec 2004)
+
+  08 Dec 2004; <dams@gentoo.org> +profuse-0.13.ebuild:
+  bug correction, and a cool search feature in use flags and description ! enjoy
+
+*profuse-0.12 (30 Nov 2004)
+
+  30 Nov 2004; <dams@gentoo.org> +profuse-0.12.ebuild:
+  version 0.12 : it's better with the logo
+
+*profuse-0.11 (30 Nov 2004)
+
+  30 Nov 2004; <dams@gentoo.org> +profuse-0.11.ebuild:
+  version 0.11
 
 *profuse-0.1 (26 Nov 2004)
 

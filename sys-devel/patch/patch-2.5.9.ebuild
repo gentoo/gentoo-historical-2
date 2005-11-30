@@ -1,35 +1,47 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/patch/patch-2.5.9.ebuild,v 1.1 2003/06/18 01:38:26 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/patch/patch-2.5.9.ebuild,v 1.1.1.1 2005/11/30 09:53:54 chriswhite Exp $
 
-IUSE="build static"
+inherit flag-o-matic
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Utility to apply diffs to files"
 HOMEPAGE="http://www.gnu.org/software/patch/patch.html"
-SRC_URI="http://alpha.gnu.org/gnu/patch/${P}.tar.gz"
+#SRC_URI="mirror://gnu/patch/${P}.tar.gz"
+#Using own mirrors until gnu has md5sum and all packages up2date
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="build static"
 
-DEPEND="virtual/glibc"
+DEPEND=""
 
 src_compile() {
+	strip-flags
 	CFLAGS="$CFLAGS -DLINUX -D_XOPEN_SOURCE=500"
+	# workaround for hardened on amd64, 1st part
+	if use amd64 && is-ldflags -pie; then
+		einfo Stripping "-pie" from LDFLAGS, adding it to Makefile manually
+		filter-ldflags -pie
+		append-flags -fPIC
+		LDFLAGS_PIE="1"
+	fi
 	ac_cv_sys_long_file_names=yes \
 		./configure --host=${CHOST} --prefix=/usr --mandir=/usr/share/man
-	if [ -z "`use static`" ]; then
-		emake || die "emake failed"
-	else
-		emake LDFLAGS=-static || die "emake failed"
+	# workaround for hardened on amd64, 2nd part
+	if [ "${LDFLAGS_PIE}" = "1" ]; then
+		einfo "Patching Makefile..."
+		sed -i -e 's/^LDFLAGS =/& -pie/' Makefile || die "Patching Makefile failed!"
 	fi
+	use static && append-ldflags -static
+	emake LDFLAGS="${LDFLAGS}" || die "emake failed"
 }
 
 src_install() {
-	einstall
-	if [ -z "`use build`" ]; then
-		dodoc AUTHORS COPYING ChangeLog NEWS README
+	einstall || die
+	if ! use build ; then
+		dodoc AUTHORS ChangeLog NEWS README
 	else
 		rm -rf ${D}/usr/share/man
 	fi

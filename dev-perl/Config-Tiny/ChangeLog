@@ -1,6 +1,66 @@
 # ChangeLog for dev-perl/Config-Tiny
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Config-Tiny/ChangeLog,v 1.1 2003/06/02 21:03:13 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Config-Tiny/ChangeLog,v 1.1.1.1 2005/11/30 09:52:47 chriswhite Exp $
+
+*Config-Tiny-2.02 (12 Nov 2005)
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +Config-Tiny-2.02.ebuild:
+  Version bump upstream
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Config-Tiny-2.01.ebuild:
+  Mark 2.01 stable on ia64
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Config-Tiny-2.01.ebuild:
+  add ~ia64
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Config-Tiny-2.01.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> Config-Tiny-1.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Config-Tiny-2.01.ebuild:
+  Stable on amd64.
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  Config-Tiny-2.01.ebuild:
+  Stable on alpha.
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Config-Tiny-2.01.ebuild:
+  Stable on sparc
+
+*Config-Tiny-2.01 (24 Apr 2005)
+
+  24 Apr 2005; Michael Cummings <mcummings@gentoo.org> Config-Tiny-1.ebuild,
+  -Config-Tiny-1.6.ebuild, -Config-Tiny-2.00.ebuild,
+  +Config-Tiny-2.01.ebuild:
+  bump and cleaning
+
+  30 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> Config-Tiny-1.ebuild:
+  Stable on sparc
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  24 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Config-Tiny-2.00.ebuild:
+  added ~ppc64
+
+*Config-Tiny-2.00 (30 Jul 2004)
+
+  30 Jul 2004; Michael Cummings <mcummings@gentoo.org>
+  +Config-Tiny-2.00.ebuild:
+  New version on CPAN
+
+*Config-Tiny-1.6 (05 Jun 2004)
+
+  05 Jun 2004; Michael Cummings <mcummings@gentoo.org> Config-Tiny-1.6.ebuild:
+  new version on cpan
+
+  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> Config-Tiny-1.ebuild:
+  Stable on alpha.
 
 *Config-Tiny-1 (02 Jun 2003)
 

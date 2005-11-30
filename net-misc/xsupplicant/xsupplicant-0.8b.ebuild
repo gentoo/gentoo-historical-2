@@ -1,5 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/xsupplicant/xsupplicant-0.8b.ebuild,v 1.1.1.1 2005/11/30 09:54:27 chriswhite Exp $
 
 S="${WORKDIR}/${PN}"
 DESCRIPTION="Open Source Implementation of IEEE 802.1x"
@@ -14,7 +15,7 @@ KEYWORDS="~x86"
 
 
 DEPEND=">=dev-libs/openssl-0.9.7
-	>=net-libs/libpcap-0.7.1
+	virtual/libpcap
 	>=dev-libs/libdnet-1.6"
 
 src_compile() {

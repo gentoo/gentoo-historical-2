@@ -1,6 +1,38 @@
 # ChangeLog for games-arcade/mtp-target-bin
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/mtp-target-bin/ChangeLog,v 1.1 2004/06/19 02:57:33 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/mtp-target-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:52:01 chriswhite Exp $
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  23 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  mtp-target-bin-1.2.0.ebuild:
+  cp -dpR -> cp -pPR for bug #103487.
+
+  23 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  mtp-target-bin-1.2.0.ebuild:
+  cp -a -> cp -dpR for bug #103487.
+
+  19 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  mtp-target-bin-1.2.0.ebuild:
+  Fixed games_make_wrapper ordering and closing bug #99562.
+
+*mtp-target-bin-1.2.0 (12 Feb 2005)
+
+  12 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  +mtp-target-bin-1.2.0.ebuild:
+  Version bump #57727 by Kåre Baastrup.
+
+  25 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -mtp-target-bin-1.0.4.ebuild:
+  upstream tarball went away
+
+*mtp-target-bin-1.1.0 (25 Jun 2004)
+
+  25 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  files/mtp-target-bin.sh, +mtp-target-bin-1.1.0.ebuild:
+  version bump (bug #54966); fixed to use GAMES_PREFIX_OPT in wrapper and
+  games eclass in ebuild.
 
 *mtp-target-bin-1.0.4 (18 Jun 2004)
 

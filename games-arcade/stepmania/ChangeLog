@@ -1,8 +1,24 @@
 # ChangeLog for games-arcade/stepmania
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/stepmania/ChangeLog,v 1.1 2004/11/08 04:58:58 warpzero Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/stepmania/ChangeLog,v 1.1.1.1 2005/11/30 09:52:04 chriswhite Exp $
+
+  06 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  stepmania-3.9_rc2.ebuild, stepmania-3.9_rc3.ebuild:
+  oggvorbis -> vorbis for bug #94254.
+
+  07 Jun 2005; Malcolm Lashley <malc@gentoo.org> stepmania-3.9_rc3.ebuild:
+  ~amd64 - closes bug #94997
+
+*stepmania-3.9_rc3 (21 May 2005)
+
+  21 May 2005; Joshua Charles Campbell <warpzero@gentoo.org>
+  +files/stepmania-3.9-rc3-gentoo.patch, +stepmania-3.9_rc3.ebuild:
+  bump on the bizump
 
 *stepmania-rc2 (07 Nov 2004)
+
+  30 Nov 2004; Joshua Charles Campbell warpzero@gentoo.org stepmania-3.9_rc2.ebuild :
+  Fixed keywords.
 
   07 Nov 2004; Joshua Charles Campbell warpzero@gentoo.org stepmania-3.9-rc2a-gentoo.patch, stepmania-3.9_rc2.ebuild :
   Initial import.  Ebuild submitted by Sean Burke sburke@onewest.net

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/libxml-perl/libxml-perl-0.08.ebuild,v 1.1 2005/01/04 15:22:38 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/libxml-perl/libxml-perl-0.08.ebuild,v 1.1.1.1 2005/11/30 09:52:43 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://search.cpan.org/modules/by-module/XML/${P}.readme"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~ia64"
+KEYWORDS="alpha ~amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="${DEPEND}

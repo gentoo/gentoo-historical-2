@@ -10,7 +10,7 @@ diff -ur gtk-gnutella-0.95-old/src/ui/gtk/gtk2/pbarcellrenderer.c gtk-gnutella-0
 +
  #include "gtk/gui.h"
  
- RCSID("$Id: 0.95-gtk2.6.patch,v 1.1 2005/01/30 20:46:05 squinky86 Exp $");
+ RCSID("$Id: 0.95-gtk2.6.patch,v 1.1.1.1 2005/11/30 09:51:15 chriswhite Exp $");
 @@ -426,5 +429,5 @@
  	G_FREE_NULL(cellprogress->priv);
  	(*G_OBJECT_CLASS(parent_class)->finalize)(object);

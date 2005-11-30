@@ -1,19 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/daphne/daphne-0.99.6-r2.ebuild,v 1.1 2003/11/04 08:11:02 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/daphne/daphne-0.99.6-r2.ebuild,v 1.1.1.1 2005/11/30 09:50:20 chriswhite Exp $
 
-inherit games eutils flag-o-matic
+inherit eutils flag-o-matic games
 
 DESCRIPTION="Laserdisc Arcade Game Emulator"
-SRC_URI="http://www.daphne-emu.com/download/${P}-src.tar.gz"
 HOMEPAGE="http://www.daphne-emu.com/"
+SRC_URI="http://www.daphne-emu.com/download/${P}-src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
-RDEPEND="virtual/glibc
-	media-libs/libogg
+RDEPEND="media-libs/libogg
 	media-libs/libvorbis
 	media-libs/libsdl
 	media-libs/sdl-mixer
@@ -24,37 +24,57 @@ S=${WORKDIR}/${PN}
 src_unpack() {
 	unpack ${A}
 
-	cd ${S}/src
-	sed -e "s:-march=i686:${CFLAGS}:" Makefile.vars.linux_x86 > Makefile.vars
+	replace-cpu-flags i686 pentium3 pentium4 i586 #18807
+
+	cd "${S}/src"
+	sed \
+		-e "/^DFLAGS/d" \
+		-e "/-fexpensive-optimizations/d " \
+		-e "s/\${DFLAGS}/${CFLAGS}/g" \
+		Makefile.vars.linux_x86 > Makefile.vars \
+		|| die "sed failed"
 
 	# lets make this guy play nice with our filesystem setup
-	sed -i "s:pics/:${GAMES_DATADIR}/${PN}/pics/:g" video/video.cpp
-	sed -i "s:roms/:${GAMES_DATADIR}/${PN}/roms/:g" game/game.cpp
-	sed -i "s:sound/:${GAMES_DATADIR}/${PN}/sound/:g" sound/sound.cpp
-	sed -i "s:./lib:${GAMES_LIBDIR}/${PN}/lib:g" io/dll.h
-	sed -i 's:daphne_log.txt:/tmp/daphne_log.txt:g' daphne.cpp daphne.h io/error.cpp
-	epatch ${FILESDIR}/${PV}-local-dapinput.patch
+	sed -i \
+		-e "s:pics/:${GAMES_DATADIR}/${PN}/pics/:g" \
+		video/video.cpp \
+		|| die "sed failed"
+	sed -i \
+		-e "s:roms/:${GAMES_DATADIR}/${PN}/roms/:g" \
+		game/game.cpp \
+		|| die "sed failed"
+	sed -i \
+		-e "s:sound/:${GAMES_DATADIR}/${PN}/sound/:g" \
+		sound/sound.cpp \
+		|| die "sed failed"
+	sed -i \
+		-e "s:./lib:${GAMES_LIBDIR}/${PN}/lib:g" \
+		io/dll.h \
+		|| die "sed failed"
+	sed -i \
+		-e 's:daphne_log.txt:/tmp/daphne_log.txt:g' \
+		daphne.cpp daphne.h io/error.cpp \
+		|| die "sed failed"
+	epatch "${FILESDIR}/${PV}-local-dapinput.patch"
 }
 
 src_compile() {
-	replace-flags -march=i686 -march=i586		# Bug 18807 Comment #11
-	replace-flags -march=pentium3 -march=i586	# Bug 18807 Comment #4
-
-	cd ${S}/src
+	cd "${S}/src"
 	emake || die "src build failed"
-	cd ${S}/src/vldp
+	cd "${S}/src/vldp"
 	emake -f Makefile.linux || die "vldp build failed"
-	cd ${S}/src/vldp2
+	cd "${S}/src/vldp2"
 	egamesconf || die
 	emake -f Makefile.linux || die "vldp2 build failed"
 }
 
 src_install() {
-	dogamesbin daphne
-	exeinto ${GAMES_LIBDIR}/${PN}
-	doexe libvldp*.so
-	dodir ${GAMES_DATADIR}/${PN}
-	cp -rf pics sound roms ${D}/${GAMES_DATADIR}/${PN}/
+	dogamesbin daphne || die "dogamesbin failed"
+	exeinto "${GAMES_LIBDIR}/${PN}"
+	doexe libvldp*.so || die "doexe failed"
+	dodir "${GAMES_DATADIR}/${PN}"
+	cp -rf pics sound roms "${D}/${GAMES_DATADIR}/${PN}/" \
+		|| die "cp failed"
 	dodoc doc/*.{ini,txt}
 	dohtml -r doc/*
 	prepgamesdirs

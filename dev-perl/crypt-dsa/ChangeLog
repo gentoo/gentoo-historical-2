@@ -1,6 +1,26 @@
 # ChangeLog for dev-perl/crypt-dsa
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/crypt-dsa/ChangeLog,v 1.1 2003/06/23 16:38:01 mcummings Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/crypt-dsa/ChangeLog,v 1.1.1.1 2005/11/30 09:52:40 chriswhite Exp $
+
+*crypt-dsa-0.13 (12 Nov 2005)
+
+  12 Nov 2005; Michael Cummings <mcummings@gentoo.org>
+  +crypt-dsa-0.13.ebuild:
+  Version bump upstream
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> crypt-dsa-0.12.ebuild:
+  Mark 0.12 stable on alpha
+
+  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  crypt-dsa-0.12.ebuild:
+  Cleaning for mirror
+
+  22 Mar 2005; Michael Cummings <mcummings@gentoo.org>
+  crypt-dsa-0.12.ebuild:
+  missing deps, bug 86317
+
+  25 Feb 2004; Joshua Kinard <kumba@gentoo.org> crypt-dsa-0.12.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
 
 *crypt-dsa-0.12 (23 Jun 2003)
 

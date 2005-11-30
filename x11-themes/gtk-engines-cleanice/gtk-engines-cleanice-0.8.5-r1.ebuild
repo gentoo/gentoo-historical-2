@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-cleanice/gtk-engines-cleanice-0.8.5-r1.ebuild,v 1.1 2005/08/02 08:48:00 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gtk-engines-cleanice/gtk-engines-cleanice-0.8.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:29 chriswhite Exp $
 
 MY_PN="gtk-cleanice-theme"
 MY_P=${MY_PN}-${PV}
@@ -8,9 +8,9 @@ MY_P=${MY_PN}-${PV}
 DESCRIPTION="Cleanice theme engine for GTK+ 1"
 HOMEPAGE="http://themes.freshmeat.net/"
 SRC_PATH="${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.gz"
-SRC_URI="http://ftp.debian.org/debian/pool/main/$SRC_PATH"
+SRC_URI="mirror://debian/pool/main/${SRC_PATH}"
 
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc x86"
 LICENSE="GPL-2"
 SLOT="1"
 IUSE="static"

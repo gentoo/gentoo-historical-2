@@ -1,7 +1,7 @@
 --- sendmail-8.12.2/devtools/OS/Linux	Tue Feb 19 15:23:34 2002
 +++ sendmail-8.12.2/devtools/OS/Linux	Tue Feb 19 15:24:05 2002
 @@ -1,7 +1,7 @@
- #	$Id: sendmail-8.12.2-makemapman.patch,v 1.1 2004/05/30 09:20:40 robbat2 Exp $
+ #	$Id: sendmail-8.12.2-makemapman.patch,v 1.1.1.1 2005/11/30 09:50:51 chriswhite Exp $
  define(`confDEPEND_TYPE', `CC-M')
  define(`confSM_OS_HEADER', `sm_os_linux')
 -define(`confMANROOT', `/usr/man/man')

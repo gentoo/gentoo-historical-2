@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/adocman/adocman-0.12.ebuild,v 1.1 2004/11/23 20:48:09 rizzo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/adocman/adocman-0.12.ebuild,v 1.1.1.1 2005/11/30 09:52:35 chriswhite Exp $
 
 DESCRIPTION="Automation tool for Sourceforge.net DocManager handling"
 HOMEPAGE="http://sitedocs.sourceforge.net/projects/adocman/adocman.html"
@@ -13,7 +13,7 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="dev-perl/Crypt-SSLeay
-		dev-perl/Digest-MD5
+		perl-core/Digest-MD5
 		dev-perl/TermReadKey"
 
 src_install() {

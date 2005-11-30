@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gdm-themes/gdm-themes-2.0-r2.ebuild,v 1.1 2005/09/26 21:17:36 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gdm-themes/gdm-themes-2.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:51:29 chriswhite Exp $
 
 #RESTRIC="nomirror"
 DESCRIPTION="Some nice themes for the GDM Greeter"
@@ -37,7 +37,6 @@ SRC_URI="${THEME_URI}GDM-300-lantueno.tar.gz
 	${THEME_URI}GDM-DumbCloud.tar.gz
 	${THEME_URI}GDM-Dune.tar.gz
 	${THEME_URI}GDM-Eli-Theme.zip
-	${THEME_URI}GDM-Emo-Blue.tar.gz
 	${THEME_URI}GDM-Falling-Angel.tar.gz
 	${THEME_URI}GDM-Flame.tar.gz
 	${THEME_URI}GDM-Flowers.tar.gz
@@ -84,7 +83,6 @@ SRC_URI="${THEME_URI}GDM-300-lantueno.tar.gz
 	${THEME_URI}GDM-Segovia.tar.gz
 	${THEME_URI}GDM-Segovia-Night.tar.gz
 	${THEME_URI}GDM-Simple-Gnome-Logo.tar.gz
-	${THEME_URI}GDM-Space.tar.gz
 	${THEME_URI}GDM-Splinter.tar.gz
 	${THEME_URI}GDM-Sunset.tar.gz
 	${THEME_URI}GDM-Synergy.tar.gz
@@ -107,7 +105,7 @@ SRC_URI="${THEME_URI}GDM-300-lantueno.tar.gz
 	${THEME_URI2}15783-tux-vs-msbutterfly.tar.gz
 	${THEME_URI2}13475-GDM-gentoo.tar.bz2
 	${THEME_URI2}19759-cafe-1.2-1.tar.bz2
-	${THEME_URI2}variety_blue.tar.gz"
+	http://ardchoille.org/themes/gdm/variety_blue.tar.gz"
 
 HOMEPAGE="http://art.gnome.org/themes/gdm_greeter/
 http://www.gnome-look.org/index.php?xcontentmode=150"

@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/snes9x-1.42-r1.ebuild,v 1.1 2004/04/14 07:33:50 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/snes9x-1.42-r1.ebuild,v 1.1.1.1 2005/11/30 09:50:25 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="http://www.snes9x.com/"
@@ -10,7 +10,7 @@ SRC_URI="http://www.lysator.liu.se/snes9x/${PV}/snes9x-${PV}-src.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86 ppc ~amd64"
 IUSE="3dfx opengl X joystick"
 
 RDEPEND="sys-libs/zlib
@@ -52,13 +52,16 @@ src_compile() {
 				target=snes9x;;
 		esac
 		# this stuff is ugly but hey the build process sucks ;)
+		OPTFLAGS="${CXXFLAGS} -DHAVE_LIBPNG" \
 		egamesconf \
 			--with-screenshot \
 			$(use_with joystick) \
 			${vidconf} \
 			$(use_with x86 assembler) \
 				|| die
-		emake ${target} || die "making ${target}"
+		emake \
+			EXTRALIBS="$(libpng-config --libs) -lpthread" \
+			${target} || die "making ${target}"
 		mv ${target} "${S}/mybins/"
 		cd "${WORKDIR}"
 		rm -rf "${S}/snes9x"
@@ -67,7 +70,7 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin mybins/*
+	dogamesbin mybins/* || die "dogamesbin failed"
 	dodoc faqs.txt readme.txt readme.unix snes9x/*.txt
 	prepgamesdirs
 }

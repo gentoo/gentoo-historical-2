@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gerbv/gerbv-1.0.1.ebuild,v 1.1 2005/03/13 16:57:58 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gerbv/gerbv-1.0.1.ebuild,v 1.1.1.1 2005/11/30 09:51:01 chriswhite Exp $
 
 inherit eutils
 

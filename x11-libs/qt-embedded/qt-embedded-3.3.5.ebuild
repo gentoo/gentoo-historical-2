@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-embedded/qt-embedded-3.3.5.ebuild,v 1.1 2005/10/08 07:40:59 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/qt-embedded/qt-embedded-3.3.5.ebuild,v 1.1.1.1 2005/11/30 09:54:18 chriswhite Exp $
 
 DESCRIPTION="Embedded Linux port of Qt"
 HOMEPAGE="http://www.trolltech.com/products/embedded/"

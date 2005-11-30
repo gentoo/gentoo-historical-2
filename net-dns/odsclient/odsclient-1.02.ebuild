@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/odsclient/odsclient-1.02.ebuild,v 1.1 2003/06/25 20:08:42 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/odsclient/odsclient-1.02.ebuild,v 1.1.1.1 2005/11/30 09:50:10 chriswhite Exp $
 
 inherit eutils
 
@@ -13,10 +13,10 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="x86"
 IUSE=""
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 src_compile() {
-	sed -i "s:CFLAGS=-O2::" Makefile	
+	sed -i "s:CFLAGS=-O2::" Makefile
 	epatch ${DISTDIR}/${PN}.patch
 	emake || die
 }

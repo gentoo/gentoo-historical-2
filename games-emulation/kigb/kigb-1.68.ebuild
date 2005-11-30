@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/kigb/kigb-1.68.ebuild,v 1.1 2004/08/31 11:15:11 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/kigb/kigb-1.68.ebuild,v 1.1.1.1 2005/11/30 09:50:20 chriswhite Exp $
 
 inherit games
 

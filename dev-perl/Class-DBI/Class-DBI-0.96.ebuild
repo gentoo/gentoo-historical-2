@@ -1,25 +1,26 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-DBI/Class-DBI-0.96.ebuild,v 1.1 2004/06/05 14:59:57 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-DBI/Class-DBI-0.96.ebuild,v 1.1.1.1 2005/11/30 09:53:18 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="Simple Database Abstraction"
 HOMEPAGE="http://search.cpan.org/~tmtm/${P}/"
-SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TM/TMTM/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/T/TM/TMTM/${P}.tar.gz"
 
-LICENSE="Artistic | GPL-2"
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~amd64 ~ppc ppc64 sparc x86"
+IUSE=""
 
 # Tests aren't possible since they require interaction with the DB's
 
 DEPEND="dev-perl/Class-Data-Inheritable
 		dev-perl/Class-Accessor
 		dev-perl/Class-Trigger
-		dev-perl/File-Temp
-		dev-perl/Storable
-		dev-perl/Test-Simple
+		perl-core/File-Temp
+		perl-core/Storable
+		perl-core/Test-Simple
 		dev-perl/Ima-DBI
 		dev-perl/Scalar-List-Utils
 		dev-perl/UNIVERSAL-moniker"

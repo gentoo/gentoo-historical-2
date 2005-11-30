@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/perl-PBS/perl-PBS-0.23.ebuild,v 1.1 2005/07/21 19:43:22 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/perl-PBS/perl-PBS-0.23.ebuild,v 1.1.1.1 2005/11/30 09:53:20 chriswhite Exp $
 
 inherit perl-module
 
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="virtual/pbs"
+DEPEND="virtual/pbs
+		dev-perl/Curses"
 RDEPEND="${DEPEND}"
 
 #src_compile() {

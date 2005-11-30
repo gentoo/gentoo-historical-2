@@ -1,9 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header:
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CUFlow/CUFlow-1.5.ebuild,v 1.1.1.1 2005/11/30 09:52:31 chriswhite Exp $
 
 inherit eutils
-
 
 DESCRIPTION="Provides an API for reading and analysing raw flow files"
 HOMEPAGE="http://www.columbia.edu/acis/networks/advanced/CUFlow/CUFlow.html"

@@ -1,6 +1,24 @@
 # ChangeLog for games-arcade/apricots
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/apricots/ChangeLog,v 1.1 2004/09/19 08:32:39 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/apricots/ChangeLog,v 1.1.1.1 2005/11/30 09:51:59 chriswhite Exp $
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> apricots-0.2.6.ebuild:
+  Removed INSTALL file.
+
+  02 Jun 2005; Joseph Jezak <josejx@gentoo.org> apricots-0.2.6.ebuild:
+  Marked ppc stable.
+
+  16 Jan 2005; Jason Wever <weeve@gentoo.org> apricots-0.2.6.ebuild:
+  Added ~sparc keyword.
+
+  17 Dec 2004; Joseph Jezak <josejx@gentoo.org> apricots-0.2.6.ebuild:
+  Marked ~ppc.
+
+  11 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> apricots-0.2.6.ebuild:
+  Added ~amd64 KEYWORD and closing bug #70598.
+
+  30 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> apricots-0.2.6.ebuild:
+  fix cfg file support; docs++ (bug #64325 again)
 
 *apricots-0.2.6 (19 Sep 2004)
 

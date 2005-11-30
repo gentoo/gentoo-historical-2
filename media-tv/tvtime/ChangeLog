@@ -1,6 +1,93 @@
 # ChangeLog for media-tv/tvtime
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/tvtime/ChangeLog,v 1.1.1.1 2005/11/30 09:50:33 chriswhite Exp $
+
+*tvtime-1.0.1 (29 Sep 2005)
+
+  29 Sep 2005; Mike Gardiner <obz@gentoo.org> -tvtime-0.9.10-r1.ebuild,
+  +tvtime-1.0.1.ebuild:
+  New version, as requested in bug #105301.
+
+  10 Jul 2005; David Holm <dholm@gentoo.org> tvtime-0.99.ebuild:
+  Added to ~ppc.
+
+*tvtime-0.99 (09 Jul 2005)
+
+  09 Jul 2005; Lars Weiler <pylon@gentoo.org>
+  -files/tvtime-0.9.15-pic.patch, +files/tvtime-pic.patch,
+  tvtime-0.9.15.ebuild, +tvtime-0.99.ebuild:
+  Version bump.  Previous version stable on x86.
+
+  01 Mar 2005; Mike Gardiner <obz@gentoo.org> tvtime-0.9.15.ebuild:
+  Updated HOMEPAGE
+
+*tvtime-0.9.15 (24 Feb 2005)
+
+  24 Feb 2005; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  +files/tvtime-0.9.15-pic.patch, +tvtime-0.9.15.ebuild:
+  New version of tvtime, 0.9.15 - as requested in bug #66293. 
+  Thanks to contributors there, especially 
+  <bugtracker@surasoft.com> and <dgp85@users.sourceforge.net> 
+  for their help. Also includes a patch for PIC/__PIC__ 
+  from <co@kevquinn.com>, see bug #24227.
+
+  20 Jul 2004; Travis Tilley <lv@gentoo.org> tvtime-0.9.12.ebuild:
+  stable on amd64
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> tvtime-0.9.10-r1.ebuild:
+  Add inherit eutils
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> tvtime-0.9.10-r1.ebuild,
+  tvtime-0.9.12.ebuild:
+  Add die following econf for bug 48950
+
+  12 Jan 2004; Max Kalika <max@gentoo.org> tvtime-0.9.12.ebuild:
+  Mark stable on x86. Get rid of the old version on Author's request.
+
+  01 Jan 2004; Martin Holzer <mholzer@gentoo.org> tvtime-0.9.10-r1.ebuild,
+  tvtime-0.9.12.ebuild, tvtime-0.9.8.5.ebuild:
+  adding RESTRICT=nomirror
+
+*tvtime-0.9.12 (02 Dec 2003)
+
+  02 Dec 2003; <max@gentoo.org> tvtime-0.9.11.ebuild, tvtime-0.9.12.ebuild:
+  Bump to version 0.9.12. Drop version 0.9.11 at author's request.
+
+  16 Nov 2003; <max@gentoo.org> tvtime-0.9.11.ebuild:
+  Final version is now on sourceforge.
+
+*tvtime-0.9.11 (13 Nov 2003)
+
+  13 Nov 2003; <max@gentoo.org> tvtime-0.9.11.ebuild:
+  Bump to version 0.9.11, not yet released.
+
+  09 Nov 2003; <max@gentoo.org> tvtime-0.9.10-r1.ebuild:
+  Force libxml2 DEPEND to 2.5.11. Fixes bug 32432.
+
+  22 Sep 2003; Max Kalika <max@gentoo.org> tvtime-0.9.10-r1.ebuild,
+  tvtime-0.9.8.2.ebuild:
+  Bump to stable on x86 and cleanup old version.
+
+*tvtime-0.9.10-r1 (16 Sep 2003)
+
+  16 Sep 2003; Max Kalika <max@gentoo.org> tvtime-0.9.10-r1.ebuild,
+  tvtime-0.9.10.ebuild:
+  Clean up, add support for sdl and directfb, fix location of localstatedir, and
+  make sure there are proper permissions on /var/run/tvtime.
+
+*tvtime-0.9.10 (14 Sep 2003)
+
+  14 Sep 2003; Seemant Kulleen <seemant@gentoo.org> tvtime-0.9.10.ebuild,
+  files/tvtime-0.9.10-make.patch:
+  version bump. Thanks to: Joel Hill <joelhill@earthlink.net> (hillster on irc),
+  vektor (upstream author) for the ebuild, submitted in bug #27999 Henrik
+  Johansson <henrik_johansson@home.se> who had, in fairness, done an ebuild for
+  0.9.9 that never got added :/
+
+*tvtime-0.9.8.5 (24 Jun 2003)
+
+  24 Jun 2003; mkeadle <mkeadle@gentoo.org> tvtime-0.9.8.5.ebuild:
+  bumping to latest release. thanks vektor.
 
 *tvtime-0.9.8.2 (18 Jun 2003)
 

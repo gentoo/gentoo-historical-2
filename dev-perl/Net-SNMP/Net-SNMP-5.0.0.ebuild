@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SNMP/Net-SNMP-5.0.0.ebuild,v 1.1 2004/07/30 16:14:51 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-SNMP/Net-SNMP-5.0.0.ebuild,v 1.1.1.1 2005/11/30 09:52:35 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,12 +10,12 @@ HOMEPAGE="http://www.cpan.org/modules/by-module/Net/${P}.readme"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 amd64 ppc sparc alpha"
 IUSE=""
 
 DEPEND="${DEPEND}
 	>=dev-perl/libnet-1.0703
-	dev-perl/Digest-MD5
+	perl-core/Digest-MD5
 	dev-perl/Digest-SHA1
 	dev-perl/Digest-HMAC
 	>=dev-perl/Crypt-DES-2.03"

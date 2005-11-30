@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/zsnes/zsnes-1.42.ebuild,v 1.1 2005/01/24 04:59:30 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/zsnes/zsnes-1.42.ebuild,v 1.1.1.1 2005/11/30 09:50:28 chriswhite Exp $
 
 inherit eutils flag-o-matic games
 
@@ -10,13 +10,10 @@ SRC_URI="mirror://sourceforge/zsnes/${PN}${PV//.}src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="opengl png"
 
-# we need libsdl for headers on amd64, even though we'll technically be using
-# the 32bit sdl from emul-linux-x86-sdl.
-RDEPEND="virtual/libc
-	>=media-libs/libsdl-1.2.0
+RDEPEND=">=media-libs/libsdl-1.2.0
 	>=sys-libs/zlib-1.1
 	amd64? ( app-emulation/emul-linux-x86-sdl )
 	opengl? ( virtual/opengl )
@@ -28,14 +25,18 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}_${PV//./_}"
 
-multilib_check() {
+pkg_setup() {
+	use amd64 || return 0
 	if has_m32 ; then
-		einfo "multilib detected, adding -m32 to CFLAGS. note that opengl"
-		einfo "support probably wont work quite right."
-		append-flags -m32
+		export ABI=x86
 	else
-		die "zsnes requires multilib support in gcc. please re-emerge gcc with multilib in USE and try again"
+		eerror "Your compiler seems to be unable to compile 32bit code."
+		eerror "Make sure you compile gcc with:"
+		echo
+		eerror "    USE=multilib FEATURES=-sandbox"
+		die "Cannot produce 32bit code"
 	fi
+	games_pkg_setup
 }
 
 src_unpack() {
@@ -47,7 +48,6 @@ src_unpack() {
 }
 
 src_compile() {
-	use amd64 && multilib_check
 	cd src
 	egamesconf \
 		$(use_enable png libpng) \

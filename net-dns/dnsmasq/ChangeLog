@@ -1,7 +1,316 @@
 # ChangeLog for net-dns/dnsmasq
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/ChangeLog,v 1.1 2002/06/29 00:55:03 bangert Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnsmasq/ChangeLog,v 1.1.1.1 2005/11/30 09:50:14 chriswhite Exp $
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> dnsmasq-2.22.ebuild:
+  Mark 2.22 stable on alpha
+
+*dnsmasq-2.23 (30 Aug 2005)
+
+  30 Aug 2005; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.23.ebuild :
+  Version bump; various bugfixes for DHCP, experimental DBus support, 
+  gcc4 fixes, etc; see http://thekelleys.org.uk/dnsmasq/CHANGELOG
+
+  04 Apr 2005; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.22.ebuild :
+  Stable on x86.
+
+  03 Apr 2005; Hardave Riar <hardave@gentoo.org> dnsmasq-2.22.ebuild:
+  Stable on mips, bug #86718.
+
+  03 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> dnsmasq-2.22.ebuild:
+  ~alpha keyword, bug 86718.
+
+  01 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> dnsmasq-2.22.ebuild:
+  stable on amd64 wrt #86718
+
+  01 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> dnsmasq-2.22.ebuild:
+  Stable on sparc wrt #86718
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> dnsmasq-2.22.ebuild:
+  stable on ia64
+
+  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> dnsmasq-2.22.ebuild:
+  Stable on ppc.
+
+*dnsmasq-2.22 (31 Mar 2005)
+
+  31 Mar 2005; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.22.ebuild :
+  Version bump fixes all outstanding issues with 2.21 including
+  bug 87091. Much thanks to Rob Holland (tigger@gentoo.org) for
+  tracking these down and coordinating with upstream.
+
+  27 Mar 2005; Jason Wever <weeve@gentoo.org> dnsmasq-2.21.ebuild:
+  Stable on SPARC wrt security bug #86718.
+
+  27 Mar 2005; Konstantin Arkhipov <voxus@gentoo.org> dnsmasq-2.21.ebuild:
+  Stable on amd64 and x86.
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> dnsmasq-2.21.ebuild:
+  Stable on ppc.
+
+*dnsmasq-2.21 (27 Mar 2005)
+
+  27 Mar 2005; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.21.ebuild, 
+  files/dnsmasq221-netlink.diff :
+  Version bump for security bug 86710. Included is an upstream patch to
+  fix compile issues with netlink.c.
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> dnsmasq-2.15.ebuild:
+  Marked stable on mips.
+
+*dnsmasq-2.20 (24 Jan 2005)
+
+  24 Jan 2005; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.20.ebuild :
+  Version bump.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*dnsmasq-2.19 (14 Dec 2004)
+
+  14 Dec 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.19.ebuild :
+  Version bump.
+
+  22 Nov 2004; Mike Frysinger <vapier@gentoo.org> dnsmasq-2.18.ebuild:
+  Make sure we use a proper $CC.
+
+*dnsmasq-2.18 (22 Nov 2004)
+
+  22 Nov 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.18.ebuild :
+  Version bump.
+
+  21 Nov 2004; <solar@gentoo.org> dnsmasq-2.15.ebuild, dnsmasq-2.16.ebuild,
+  dnsmasq-2.17.ebuild:
+  qa fix DEPEND/RDEPEND
+
+*dnsmasq-2.17 (16 Nov 2004)
+
+  16 Nov 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.17.ebuild :
+  Version bump.
+
+  06 Nov 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.16.ebuild,
+  files/dnsmasq-2.16-gcc34.diff :
+  Patch to fix GCC 3.4 compilation errors. Written by upstream and
+  submitted by Holger Hoffstatte in bug #68598.
+
+*dnsmasq-2.16 (22 Oct 2004)
+
+  22 Oct 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.16.ebuild :
+  Version bump.
+
+  16 Oct 2004; <solar@gentoo.org> dnsmasq-2.9.ebuild:
+  qa fix DEPEND/RDEPEND usage for embedded when installing into ROOT=/somedir
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> dnsmasq-2.15.ebuild:
+  Stable on sparc.
+
+  02 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> dnsmasq-2.9.ebuild:
+  Keyword ~alpha, bug 65841.
+
+  30 Sep 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.15.ebuild :
+  Stable on x86 and AMD64.
+
+*dnsmasq-2.15 (20 Sep 2004)
+
+  20 Sep 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.15.ebuild :
+  Version bump, bugfix release.
+
+*dnsmasq-2.14 (12 Sep 2004)
+
+  12 Sep 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.14.ebuild :
+  Version bump, upstream summarizes changes as "a collection of
+  tweaks to the DHCP server"
+
+*dnsmasq-2.13 (14 Aug 2004)
+
+  14 Aug 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.13.ebuild :
+  Version bump, bugfix release.
+
+*dnsmasq-2.12 (12 Aug 2004)
+
+  12 Aug 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.12.ebuild :
+  Version bump, minor documentation/default config changes.
+  Also altered description in ebuild (dnsmasq isn't limited to local
+  networks).
+
+*dnsmasq-2.11 (02 Aug 2004)
+
+  02 Aug 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.11.ebuild :
+  Version bump, minor DHCP and FreeBSD fixes
+
+*dnsmasq-2.10 (27 Jul 2004)
+
+  27 Jul 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.10.ebuild :
+  Version bump. Also cleaned out unneeded ebuilds: 2.5, 2.7, 2.8
+
+  23 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> dnsmasq-2.9.ebuild:
+  Stable on sparc, mips
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  dnsmasq-2.5-r1.ebuild, dnsmasq-2.5.ebuild, dnsmasq-2.7.ebuild,
+  dnsmasq-2.8-r1.ebuild, dnsmasq-2.8.ebuild, dnsmasq-2.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Jun 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.9.ebuild :
+  Stable on x86 + AMD64.
+
+  26 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> dnsmasq-2.8-r1.ebuild:
+  Stable on mips
+
+*dnsmasq-2.9 (23 Jun 2004)
+
+  23 Jun 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.9.ebuild :
+  Version bump.
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> dnsmasq-2.8-r1.ebuild:
+  Stable on sparc.
+
+  02 Jun 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.8-r1.ebuild :
+  Stable on x86 and amd64.
+
+*dnsmasq-2.8-r1 (14 May 2004)
+
+  14 May 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.8-r1.ebuild :
+  Install dnsmasq.conf to /etc. Bug 51016.
+
+*dnsmasq-2.5-r1 (14 May 2004)
+
+  14 May 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.5-r1.ebuild :
+  Install dnsmasq.conf to /etc. Bug 51016.
+
+*dnsmasq-2.8 (13 May 2004)
+
+  13 May 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.8.ebuild :
+  Version bump.
+
+*dnsmasq-2.7 (23 Apr 2004)
+
+  23 Apr 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.7.ebuild :
+  Version bump.
+
+  17 Apr 2004; Michael McCabe <randy@gentoo.org> dnsmasq-2.6.ebuild:
+  added s390 keywords
+
+  04 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org> dnsmasq-2.5.ebuild:
+  Stable on sparc, mips
+
+*dnsmasq-2.6 (03 Apr 2004)
+
+  03 Apr 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.6.ebuild :
+  Version bump.
+
+  28 Mar 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.5.ebuild :
+  Stable on x86 and AMD64.
+
+  20 Mar 2004; Ciaran McCreesh <ciaranm@gentoo.org> dnsmasq-2.4.ebuild:
+  Stable on sparc
+
+*dnsmasq-2.5 (15 Mar 2004)
+
+  15 Mar 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.5.ebuild :
+  Version bump.
+
+*dnsmasq-2.4 (11 Mar 2004)
+
+  11 Mar 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.4.ebuild :
+  Version bump. Fixes DHCP bugs in 2.3.
+
+*dnsmasq-2.3 (10 Mar 2004)
+
+  10 Mar 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.3.ebuild :
+  Version bump.
+
+*dnsmasq-2.2-r1 (09 Mar 2004)
+
+  09 Mar 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.2-r1.ebuild,
+  files/dnsmasq-init :
+  init.d tweaks from Seemant (#43978) to make the DHCP daemon work
+  properly.
+
+  27 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> dnsmasq-2.2.ebuild:
+  Moving 2.x to stable on sparc, as 1.x is flaky on some boxes
+
+  07 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> dnsmasq-2.2.ebuild:
+  Adding ~mips to keywords
+
+*dnsmasq-2.2 (30 Jan 2004)
+
+  30 Jan 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.2.ebuild :
+  Version bump that fixes a bug that would disable DHCP on IPv6
+  systems.
+
+*dnsmasq-2.1 (29 Jan 2004)
+
+  29 Jan 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.1.ebuild :
+  Version bump; bugfixes and documentation updates, especially for
+  the new DHCP code.
+
+*dnsmasq-2.0 (22 Jan 2004)
+
+  22 Jan 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.0.ebuild :
+  Version bump.
+
+  15 Jan 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.0_rc1.ebuild :
+  Stable on x86 and AMD64.
+
+*dnsmasq-2.0_rc1 (04 Jan 2004)
+
+  04 Jan 2004; Jon Portnoy <avenj@gentoo.org> dnsmasq-2.0_rc1.ebuild :
+  Version bump.
+
+  16 Dec 2003; Jon Portnoy <avenj@gentoo.org> files/dnsmasq-init :
+  Added a 'provide dns' to depend(). Fixes bug 35966.
+
+*dnsmasq-1.18 (10 Nov 2003)
+
+  10 Nov 2003; Jon Portnoy <avenj@gentoo.org> dnsmasq-1.18.ebuild :
+  Version bump.
+
+*dnsmasq-1.17 (11 Oct 2003)
+
+  11 Oct 2003; Jon Portnoy <avenj@gentoo.org> dnsmasq-1.17.ebuild :
+  Version bump - important crash bugfix, marking stable.
+
+*dnsmasq-1.16 (21 Sep 2003)
+
+  21 Sep 2003; Jon Portnoy <avenj@gentoo.org> dnsmasq-1.16.ebuild :
+  Version bump.
+
+*dnsmasq-1.15 (16 Sep 2003)
+
+  16 Sep 2003; Jon Portnoy <avenj@gentoo.org> dnsmasq-1.15.ebuild :
+  Version bump - upstream added functionality for blocking Verisign's
+  unethical wildcard record for .com/net.
+
+*dnsmasq-1.14 (14 Sep 2003)
+
+  14 Sep 2003; Jon Portnoy <avenj@gentoo.org> dnsmasq-1.14.ebuild :
+  Version bump.
+
+*dnsmasq-1.13 (10 Jun 2003)
+
+  10 Jun 2003; Jon Portnoy <avenj@gentoo.org> dnsmasq-1.13.ebuild :
+  Version bump.
+
+*dnsmasq-1.12 (22 Apr 2003)
+
+  22 Apr 2003; Jon Portnoy <avenj@gentoo.org> dnsmasq-1.12.ebuild :
+  Version bump.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  19 Oct 2002; Donny Davies <woodchip@gentoo.org> :
+  Mark all arch with ~, they were there before.
+
+*dnsmasq-1.9 (12 Oct 2002)
+
+  12 Oct 2002; Donny Davies <woodchip@gentoo.org> :
+  Chase latest release; mark with ~x86.  Close #8910.
 
 *dnsmasq-1.6 (6 Jun 2002)
+
+  30 Aug 2002; Sascha Schwabbauer <cybersystem@gentoo.org> :
+  Added ppc to keywords .
+
   6 Jun 2002; Donny Davies <woodchip@gentoo.org> :
   Based on a submission by bardur-gta@odense.kollegienet.dk; #2079.

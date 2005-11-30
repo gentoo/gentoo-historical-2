@@ -1,6 +1,29 @@
 # ChangeLog for dev-perl/Sub-Override
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Override/ChangeLog,v 1.1 2004/10/17 17:04:03 mcummings Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sub-Override/ChangeLog,v 1.1.1.1 2005/11/30 09:53:20 chriswhite Exp $
+
+  30 Jul 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  Sub-Override-0.05.ebuild:
+  PowerPC Stable
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  Sub-Override-0.05.ebuild:
+  dev-perl/Test-Simple => perl-core/Test-Simple migration
+
+  21 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  Sub-Override-0.05.ebuild:
+  stable on amd64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> Sub-Override-0.05.ebuild:
+  Marked ~amd64.
+
+  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  Sub-Override-0.05.ebuild:
+  unmasking for x86
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  Sub-Override-0.05.ebuild:
+  Stable on sparc
 
 *Sub-Override-0.05 (17 Oct 2004)
 

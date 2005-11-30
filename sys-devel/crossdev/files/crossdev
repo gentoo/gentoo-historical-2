@@ -1,9 +1,17 @@
 #!/bin/bash
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/files/crossdev,v 1.1 2005/03/03 18:44:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/crossdev/files/crossdev,v 1.1.1.1 2005/11/30 09:53:34 chriswhite Exp $
+
+cd /
+
+if [[ ${ROOT:-/} != "/" ]] ; then
+	echo "Sorry, but crossdev does not support ROOT."
+	exit 2
+fi
 
 source /sbin/functions.sh || exit 1
+esyslog() { :; }
 die() {
 	echo
 	eerror $*
@@ -15,51 +23,66 @@ die() {
 
 usage() {
 cat << EOF
-
 Usage: ${HILITE}crossdev${NORMAL} ${GOOD}[options]${NORMAL} ${BRACKET}--target TARGET${NORMAL}
 
-${GOOD}Options${NORMAL}:
-    ${GOOD}-b, --binutils${NORMAL} ver    Specify version of binutils to use
-    ${GOOD}-g, --gcc${NORMAL} ver         Specify version of gcc to use
-    ${GOOD}-k, --kernel${NORMAL} ver      Specify version of kernel headers to use
-    ${GOOD}-l, --libc${NORMAL} ver        Specify version of libc to use
-    ${GOOD}-p, -v, -a${NORMAL}            Options to pass to emerge (see emerge(1))
+Options:
+    ${GOOD}--b, --binutils${NORMAL} ver   Specify version of binutils to use
+    ${GOOD}--g, --gcc${NORMAL} ver        Specify version of gcc to use
+    ${GOOD}--k, --kernel${NORMAL} ver     Specify version of kernel headers to use
+    ${GOOD}--l, --libc${NORMAL} ver       Specify version of libc to use
+    ${GOOD}-C, --clean${NORMAL} target    Uninstall specified target
+    ${GOOD}-b, -d, -p, -v${NORMAL}        Options to pass to emerge (see emerge(1))
+Stage Options:
+    ${GOOD}-s0, --stage0${NORMAL}         Build just binutils
+    ${GOOD}-s1, --stage1${NORMAL}         Also build a C compiler (no libc/C++)
+    ${GOOD}-s2, --stage2${NORMAL}         Also build kernel headers
+    ${GOOD}-s3, --stage3${NORMAL}         Also build the C library (no C++)
+    ${GOOD}-s4, --stage4${NORMAL}         Also build a C++ compiler [default]
+Extra Fun (must be run after above stages):
+    ${GOOD}--ex-only${NORMAL}             Skip the stage steps above
+    ${GOOD}--ex-gcc${NORMAL}              Build extra gcc targets (gcj/ada/etc...)
+    ${GOOD}--ex-gdb${NORMAL}              Build a cross gdb
 
-    ${GOOD}-s1, --stage1${NORMAL}         Build a C compiler (no libc/C++)
-    ${GOOD}-s2, --stage2${NORMAL}         Build a C compiler & libc (no C++)
-    ${GOOD}-s3, --stage3${NORMAL}         Build a C/C++ compiler & libc [default]
-
-${BRACKET}Target (-t)${NORMAL}:
-    The target takes the form:   ${BRACKET}ARCH-VENDOR-OS-LIBC${NORMAL}
-    The default 'pc-linux-gnu' will be appended if only ARCH is specified.
-    Examples:
-       arm-pc-linux-gnu      hppa2.0-pc-linux-gnu   sparc-pc-linux-gnu
-       i386-pc-linux-uclibc  mips-pc-linux-uclibc   sh4-pc-linux-uclibc
-
-For more info, please see ${HILITE}crossdev${NORMAL}(8).
+${BRACKET}Target (-t)${NORMAL}:   takes the form: ${BRACKET}ARCH-VENDOR-OS-LIBC${NORMAL}
+    Run 'crossdev -t help' for examples
 EOF
 	exit ${1:-0}
 }
+STAGE_BINUTILS=0
+STAGE_C_ONLY=1
+STAGE_LIBC=3
+STAGE_C_CPP=4
+STAGE_DISP=( "binutils" "C compiler only" "kernel headers" "C compiler & libc" "C/C++ compiler" )
 
 parse_target() {
 	[[ -z $1 ]] && usage 1
-	CTARGET=$1
+	CTARGET=${1#cross-}
 	local CPRE=${CTARGET%%-*} CPOST=${CTARGET#*-}
 
 	# Did they give us just an ARCH or the full TARGET ?
-	[[ ${CTARGET/-} == ${CTARGET} || -z ${CPOST} ]] && CPOST="pc-linux-gnu"
+	if [[ ${CTARGET/-} == ${CTARGET} || -z ${CPOST} ]] ; then
+		case ${CPRE} in
+			x86|i?86*|amd64|x86_64*) CPOST="pc-linux-gnu";;
+			s390*) CPOST="ibm-linux-gnu";;
+			*) CPOST="unknown-linux-gnu";;
+		esac
+	fi
 
 	# Let's accept ARCH in both the portage and the standard forms ...
 	# CTARGET is in the standard form while TARCH is in the portage form
 	case ${CPRE} in
+
+		#####################
+		### linux targets ###
 		alpha*)     TARCH=alpha;;
 		arm*)       TARCH=arm;;
 		hppa*)      TARCH=hppa;;
-		ia64*)      TARCH=ia64;;
+		parisc)     TARCH=hppa;   CPRE="hppa";;
+		ia64*)      TARCH=ia64    WITH_DEF_HEADERS="yes";;
 		i?86*)      TARCH=x86;;
 		x86)        TARCH=x86;    CPRE="i386";;
 		m68*)       TARCH=m68k;;
-		mips*)      TARCH=mips;;
+		mips*)      TARCH=mips ;  KPKG="mips-headers";;
 		powerpc64*) TARCH=ppc64;;
 		ppc64)      TARCH=ppc64;  CPRE="powerpc64";;
 		powerpc*)   TARCH=ppc;;
@@ -69,10 +92,173 @@ parse_target() {
 		sh*)        TARCH=sh;;
 		x86_64*)    TARCH=amd64;;
 		amd64)      TARCH=amd64;  CPRE="x86_64";;
-		*)          usage 1;;
+
+		#####################
+		### other targets ###
+		avr*) TARCH=${HARCH}; CPOST="";
+		      KPKG="[none]"; STAGE=${STAGE_LIBC};
+		      LCAT="dev-embedded"; LPKG="avr-libc";
+		      GVER="3.4.4-r1"; BVER="2.16.1";
+		      GUSE="-fortran -gtk -gcj -objc";;
+
+		msp430)
+		      TARCH=${HARCH}; CPOST="";
+		      STAGE=${STAGE_BINUTILS};;
+
+		ps2*) einfo "The ps2 target is really an alias for the ee/iop/dvp targets"
+		      ${CROSSDEV} -t ee  || exit 1
+		      ${CROSSDEV} -t iop || exit 1
+		      ${CROSSDEV} -t dvp || exit 1
+		      exit 0;;
+		ee*)  TARCH=${HARCH}; CPOST="";
+		      KPKG="[none]"
+		      GVER="3.2.2"; BVER="2.14";
+		      STAGE=${STAGE_C_ONLY};
+		      GUSE="-fortran -gtk -gcj -objc";;
+		iop*) TARCH=${HARCH}; CPOST="";
+		      GVER="3.2.2"; BVER="2.14";
+		      STAGE=${STAGE_C_ONLY};
+		      GUSE="-fortran -gtk -gcj -objc";;
+		dvp*) TARCH=${HARCH}; CPOST="";
+		      GVER="3.2.2"; BVER="2.14";
+		      STAGE=${STAGE_BINUTILS};;
+
+		############
+		### help ###
+		help)
+			cat <<-EOF
+			Supported Architectures:
+			   alpha
+			   arm / armeb
+			   hppa (parisc)
+			   ia64
+			   i386 / i486 / i586 / i686 (x86)
+			   m68k
+			   mips / mipsel / mips64 / mips64el
+			   powerpc (ppc) / powerpc64 (ppc64)
+			   sparc / sparc64
+			   s390 / s390x
+			   sh / sh[1-5] / sh64
+			   x86_64 (amd64)
+			Supported C Libraries:
+			   gnu (glibc)
+			   klibc       [prob wont work]
+			   uclibc      [not all arches are ported]
+			Special Targets:
+			   avr
+			   msp430
+			   ee / iop / dvp (ps2) [Playstation 2 targets]
+			EOF
+			exit 0
+			;;
+
+		#######################
+		### unknown targets ###
+		*) usage 1;;
 	esac
-	CTARGET=${CPRE}-${CPOST}
+
+	CTARGET=${CPRE}
+	[[ -n ${CPOST} ]] && CTARGET=${CTARGET}-${CPOST}
+
+	# Tweak packages based upon CTARGET
+	case ${CTARGET} in
+		# Normal Linux host, just diff libc
+		*-dietlibc) LPKG="dietlibc";;
+		*-klibc)    LPKG="klibc";;
+		*-uclibc)   LPKG="uclibc";;
+
+		# Now for the BSDs ...
+		*-freebsd*)
+			TARCH="${TARCH}-fbsd"
+			LCAT="sys-freebsd" LPKG="freebsd-lib"
+			KCAT="sys-freebsd" KPKG="freebsd-headers"
+			;;
+	esac
 }
+
+setup_portage_vars() {
+	PORTDIR_OVERLAY=$(portageq envvar PORTDIR_OVERLAY)
+	PORTDIR_OVERLAY=${PORTDIR_OVERLAY%% *}
+	PORTDIR=$(portageq envvar PORTDIR)
+	PORT_LOGDIR=$(portageq envvar PORT_LOGDIR)
+	PORT_LOGDIR=${PORT_LOGDIR:-/var/log/portage}
+	export PKGDIR=$(portageq envvar PKGDIR)/cross/${CTARGET}
+	export PORTAGE_TMPDIR=$(portageq envvar PORTAGE_TMPDIR)/cross/${CTARGET}
+	[[ ! -d ${PORT_LOGDIR} ]] && mkdir -p ${PORT_LOGDIR}
+	[[ ! -d ${PORTAGE_TMPDIR} ]] && mkdir -p ${PORTAGE_TMPDIR}
+}
+
+uninstall() {
+	setup_portage_vars
+
+	ewarn "Uninstalling target '${CTARGET}' ..."
+
+	[[ -d ${PORTDIR_OVERLAY}/cross-${CTARGET} ]] \
+		&& rm -r ${PORTDIR_OVERLAY}/cross-${CTARGET}
+	for f in package.{mask,keywords,use} categories ; do
+		f="/etc/portage/${f}"
+		[[ ! -e ${f} ]] && continue
+		sed -i -e "/cross-${CTARGET}\//d" "${f}"
+	done
+
+	if [[ ! -d /var/db/pkg/cross-${CTARGET} ]] ; then
+		eerror "${CTARGET} is not installed."
+		exit 1
+	fi
+
+	export CLEAN_DELAY=0
+	cd /var/db/pkg
+	for p in cross-${CTARGET}/* ; do
+		emerge -C =${p} || exit 1
+	done
+	for b in addr2line ar as c++filt ld nm objcopy objdump ranlib readelf size strings strip ; do
+		rm -f /usr/bin/${CTARGET}-${b} /usr/${CTARGET}/bin/${b}
+	done
+	rm -f /usr/${CTARGET}/{sys-include,usr}
+	rm -f /usr/bin/${CTARGET}-{gcc,{c,g}++}
+	rmdir /usr/${CTARGET}/{include/asm,include} &> /dev/null
+	for d in /usr/${CTARGET} /usr/lib/gcc{,-lib}/${CTARGET} ; do
+		if [[ ! -d ${d} ]] ; then
+			rm -f "${d}" &> /dev/null
+		else
+			rmdir "${d}" &> /dev/null && continue
+			rm -ri "${d}"
+		fi
+	done
+	rm -f /etc/env.d/{binutils,gcc}/config-${CTARGET}
+	rmdir /var/db/pkg/cross-${CTARGET}
+
+	exit 0
+}
+
+set_withval() {
+	local withval varname
+	varname=${*#--with-}
+	varname=${varname#--without-}
+	varname=${varname%%=*}
+	if [[ $* == *=* ]] ; then
+		withval=${*#*=}
+	else
+		[[ $* == --with-* ]] && withval="yes" || withval="no"
+	fi
+
+	echo WITH_`echo ${varname} | tr '[:lower:]' '[:upper:]'`=\"${withval}\"
+}
+
+is_stage() { [[ ${STAGE} -ge $1 ]] ; }
+is_s0()    { is_stage 0 ; }
+is_s1()    { is_stage 1 ; }
+is_s2()    { is_stage 2 ; }
+is_s3()    { is_stage 3 ; }
+is_s4()    { is_stage 4 ; }
+is_s5()    { is_stage 5 ; }
+
+with_headers()   { [[ ${WITH_HEADERS}   == "yes" ]] ; }
+
+ex_fast()  { [[ ${EX_FAST} == "yes" ]] ; }
+ex_gcc()   { [[ ${EX_GCC}  == "yes" ]] ; }
+ex_gdb()   { [[ ${EX_GDB}  == "yes" ]] ; }
+
 hr() {
 	local c=${COLUMNS:-0}
 	if [[ ${c} -eq 0 ]] ; then
@@ -81,125 +267,260 @@ hr() {
 			&& c=50 \
 			|| c=${c##* }
 	fi
-	local br=""
-	for ((i=0; i<${c}; ++i)) ; do
-		br=${br}-
+	local ext=${1:-  _  -  ~  -} br=""
+	while [[ ${#br} -lt ${c} ]] ; do
+		br=${br}${ext}
 	done
-	echo ${br}
+	echo "${br:0:${c}}"
 }
 
-#################
+##################
+### setup vars ###
+CROSSDEV=$0
 EOPTS=
 UOPTS=
 TARCH=
-HARCH=
+HARCH=$(env -uARCH portageq envvar ARCH)
 CTARGET=
-STAGE=3
-BVER="[latest]"
-GVER="[latest]"
-KVER="[latest]"
-LPKG="glibc"
-LVER="[latest]"
+STAGE="COW"
+BCAT="sys-devel"  ; BPKG="binutils"      ; BVER="[latest]" ; BUSE=""
+GCAT="sys-devel"  ; GPKG="gcc"           ; GVER="[latest]" ; GUSE=""
+KCAT="sys-kernel" ; KPKG="linux-headers" ; KVER="[latest]" ; KUSE=""
+LCAT="sys-libs"   ; LPKG="glibc"         ; LVER="[latest]" ; LUSE=""
+WITH_HEADERS="COW"   WITH_DEF_HEADERS="no"
+EX_FAST="no"
+EX_GCC="no"
+EX_GDB="no"
+SET_X="no"
 
 while [[ $# -gt 0 ]] ; do
 	case $1 in
-	-t|--target)   shift; parse_target $1;;
-	-b|--binutils) shift; BVER=-$1;;
-	-g|--gcc)      shift; GVER=-$1;;
-	-k|--kernel)   shift; KVER=-$1;;
-	-l|--libc)     shift; LVER=-$1;;
-	-s?|--stage?)  STAGE=${1:0-1};;
-	-p|-v|-a)      UOPTS="${UOPTS} $1";;
-	-h|--help)     usage;;
-	*)             eerror "UNKNOWN OPTION: '$1'" ; usage 1;;
+	-V|--version)   echo "crossdev-GENTOO_PV"; exit 0;;
+	-t|--target)    shift; parse_target $1;;
+	--b|--binutils) shift; BVER=$1;;
+	--g|--gcc)      shift; GVER=$1;;
+	--k|--kernel)   shift; KVER=$1;;
+	--l|--libc)     shift; LVER=$1;;
+	-C|--clean)     shift; parse_target $1; uninstall;;
+	-s?|--stage?)   [[ ${STAGE} == "COW" ]] && STAGE=${1:0-1};;
+	--ex-only)      EX_FAST="yes";;
+	--ex-gcc)       EX_GCC="yes";;
+	--ex-gdb)       EX_GDB="yes";;
+	--with-*)       eval $(set_withval $1);;
+	--without-*)    eval $(set_withval $1);;
+	-x)             SET_X="yes";;
+	-b|-d|-p|-v)    UOPTS="${UOPTS} $1";;
+	-pv|-vp)        UOPTS="${UOPTS} -p -v";;
+	-h|--help)      usage;;
+	-*)             eerror "UNKNOWN OPTION: '$1'" ; usage 1;;
+	*)              parse_target $1;;
 	esac
 	shift
 done
-[[ -z ${CTARGET} ]] && usage 1
-[[ ${CTARGET} == *-uclibc ]] && LPKG="uclibc"
+[[ ${SET_X} == "yes" ]] && set -x
 
-#################
-HARCH=$(env -uARCH portageq envvar ARCH)
-PORTDIR_OVERLAY=$(portageq envvar PORTDIR_OVERLAY)
-PORTDIR=$(portageq envvar PORTDIR)
-PORT_LOGDIR=$(portageq envvar PORT_LOGDIR)
-PORT_LOGDIR=${PORT_LOGDIR:-/var/log/portage}
-[[ ! -d ${PORT_LOGDIR} ]] && mkdir -p ${PORT_LOGDIR}
+[[ -z ${CTARGET} ]] && usage 1
+[[ ${STAGE} == "COW" ]] && STAGE=${STAGE_C_CPP}
+for with in HEADERS ; do
+	var=WITH_${with} defvar=WITH_DEF_${with}
+	[[ ${!var} == "COW" ]] && eval ${var}=${!defvar}
+done
+
+#####################
+### sanity checks ###
+if ! binutils-config -v &> /dev/null ; then
+	eerror "Sorry, but your host system needs to have binutils-config"
+	eerror "in order to keep from screwing things up."
+	eerror "That means you must be running unstable versions of"
+	eerror "both binutils and binutils-config."
+	exit 1
+fi
+if ! egrep -qs 'inherit.*toolchain( |$)' /var/db/pkg/sys-devel/gcc-*/*.ebuild ; then
+	eerror "Sorry, but your host system needs to have"
+	eerror "an unstable version of gcc in order to"
+	eerror "keep from screwing things up."
+	exit 1
+fi
+
+setup_portage_vars
+if [[ -z ${PORTDIR_OVERLAY} ]] ; then
+	eerror "You need to set PORTDIR_OVERLAY in your make.conf."
+	eerror "A standard setting is /usr/local/portage"
+	exit 1
+fi
+
+if [[ $(env -u CHOST portageq envvar CHOST) == ${CTARGET} ]] ; then
+	eerror "Refusing to create a cross-compiler using the same"
+	eerror "target name as your host utils."
+	exit 1
+fi
+
+#####################
+### do the emerge ###
 (
-hr
+hr -
 einfo "Host Portage ARCH:     ${HARCH}"
 einfo "Target Portage ARCH:   ${TARCH}"
 einfo "Target System:         ${CTARGET}"
-einfo "Stage:                 ${STAGE}"
+einfo "Stage:                 ${STAGE} (${STAGE_DISP[${STAGE}]})"
 echo
-einfo "binutils:              ${BVER}"
-einfo "gcc:                   ${GVER}"
-[[ ${STAGE} -gt 1 ]] && \
-einfo "linux-headers:         ${KVER}" && \
-einfo "libc:                  ${LPKG}${LVER}"
+ex_fast || {
+is_s0 && {
+einfo "binutils:              ${BPKG}-${BVER}"
+}
+is_s1 && {
+einfo "gcc:                   ${GPKG}-${GVER}"
+}
+is_s2 && {
+[[ ${KPKG} != "[none]" ]] && \
+einfo "headers:               ${KPKG}-${KVER}"
+}
+is_s3 && {
+einfo "libc:                  ${LPKG}-${LVER}"
+}
+}
+ex_gcc && {
+einfo "Extra: gcc pass:       DO IT"
+}
+ex_gdb && {
+einfo "Extra: gdb:            DO IT"
+}
 echo
 einfo "PORTDIR_OVERLAY:       ${PORTDIR_OVERLAY}"
 einfo "PORT_LOGDIR:           ${PORT_LOGDIR}"
+einfo "PKGDIR:                ${PKGDIR}"
+einfo "PORTAGE_TMPDIR:        ${PORTAGE_TMPDIR}"
 hr
-) >& ${PORT_LOGDIR}/cross-${CTARGET}-info.log
+) >& ${PORT_LOGDIR}/cross-${CTARGET}-info.log || exit 1
 cat ${PORT_LOGDIR}/cross-${CTARGET}-info.log
+emerge info >> ${PORT_LOGDIR}/cross-${CTARGET}-info.log
 
-#################
-mkdir -p /etc/portage
-[[ -z $(grep -s "^cross-${CTARGET}$" /etc/portage/categories) ]] \
-	&& echo cross-${CTARGET} >> /etc/portage/categories
-mkdir -p "${PORTDIR_OVERLAY}"/cross-${CTARGET}
+####################################
+### Fix up portage files / paths ###
 
-cd /etc/portage
 set_keywords() {
 	local pkg=$1 ver=$2
-	sed -i -e "/cross-${CTARGET}\/${pkg}/d" package.keywords package.mask
-	if [[ ${ver} == "[latest]" ]] ; then
+	[[ -z ${pkg} ]] && return 0
+	sed -i -e "/^cross-${CTARGET}\/${pkg} /d" package.keywords
+	if [[ ${ver} == "[latest]" ]] || [[ -z ${ver} ]] ; then
 		echo "cross-${CTARGET}/${pkg} $TARCH ~$TARCH" >> package.keywords
 	else
+		sed -i -e "/cross-${CTARGET}\/${pkg}/d" package.mask
 		echo ">cross-${CTARGET}/${pkg}-${ver}" >> package.mask
 		echo "cross-${CTARGET}/${pkg} * ~* -*" >> package.keywords
 	fi
 }
-touch package.keywords package.mask
-set_keywords binutils ${BVER}
-set_keywords gcc ${GVER}
-set_keywords linux-headers ${KVER}
-set_keywords ${LPKG} ${LVER}
+set_use() {
+	local pkg=$1
+	shift
+	local use=$@
+	[[ -z ${use} ]] && return 0
+	sed -i -e "/cross-${CTARGET}\/${pkg}/d" package.use
+	echo "cross-${CTARGET}/${pkg} ${use}" >> package.use
+}
+set_links() {
+	local cat=$1 pkg=$2
+	[[ -e ${PORTDIR_OVERLAY}/cross-${CTARGET}/${pkg} ]] \
+		&& rm -f "${PORTDIR_OVERLAY}"/cross-${CTARGET}/${pkg}
+	ln -s "${PORTDIR}"/${cat}/${pkg} "${PORTDIR_OVERLAY}"/cross-${CTARGET}/${pkg}
+}
+set_portage() {
+	local cat=$1 pkg=$2 ver=$3
+	shift ; shift ; shift
+	local use=$@
 
-cd "${PORTDIR_OVERLAY}"/cross-${CTARGET}
-ln -sf "${PORTDIR}"/sys-devel/binutils
-ln -sf "${PORTDIR}"/sys-kernel/linux-headers
-ln -sf "${PORTDIR}"/sys-devel/gcc
-ln -sf "${PORTDIR}"/sys-libs/${LPKG} ${LPKG}
+	[[ ${pkg} == "[none]" ]] && return 0
+
+	set_keywords ${pkg} ${ver}
+	set_use ${pkg} ${use}
+	set_links ${cat} ${pkg}
+}
+
+mkdir -p /etc/portage
+grep -qs "^cross-${CTARGET}$" /etc/portage/categories \
+	|| echo cross-${CTARGET} >> /etc/portage/categories
+mkdir -p "${PORTDIR_OVERLAY}"/cross-${CTARGET}
+cd /etc/portage
+touch package.{keywords,mask,use}
+
+set_portage ${BCAT} ${BPKG} ${BVER} ${BUSE}
+set_portage ${GCAT} ${GPKG} ${GVER} ${GUSE}
+set_portage ${KCAT} ${KPKG} ${KVER} ${KUSE}
+set_portage ${LCAT} ${LPKG} ${LVER} ${LUSE}
+set_portage sys-devel gdb
 
 #################
+emerged_with_use() {
+	local pkg=$1 use=$2
+	grep -qs ${use} /var/db/pkg/cross-${CTARGET}/${pkg}-*/USE
+}
+set_eopts_on_pkg_status() {
+	emerged_with_use "$@" \
+		&& EOPTS=${EOPTS_DEF} \
+		|| EOPTS=${EOPTS_UP}
+}
 doemerge() {
+	[[ $1 == "[none]" ]] && return 0
+
 	local logfile=${PORT_LOGDIR}/cross-${CTARGET}
 	[[ -z $2 ]] \
 		&& logfile=${logfile}-$1.log \
 		|| logfile=${logfile}-$2.log
 
+	einfo "Log: ${logfile}"
 	ebegin "Emerging cross-${2:-$1}"
+
 	if [[ ${UOPTS/-v} != ${UOPTS} ]] ; then
 		emerge cross-${CTARGET}/$1 ${EOPTS} \
-			2>&1 | tee ${logfile} || die "$1 failed :("
+			2>&1 | tee ${logfile}
 	else
 		emerge cross-${CTARGET}/$1 ${EOPTS} \
-			>& ${logfile} || die "$1 failed :("
+			>& ${logfile}
 	fi
+	local _pipestatus=${PIPESTATUS[*]}
+	[[ "${_pipestatus// /}" -eq 0 ]] || die "$1 failed :("
 	eend 0
 }
 
 # we include the '-u' so that we don't re-emerge packages
-EOPTS="${UOPTS} -u --nodeps"
+EOPTS_DEF="${UOPTS} --nodeps"
+EOPTS_UP="${EOPTS_DEF} -u"
+EOPTS=${EOPTS_UP}
 
-doemerge binutils
-USE=nocxx doemerge gcc gcc-stage1
-doemerge linux-headers
-USE=$TARCH doemerge ${LPKG}
+# make sure multilib crap doesn't screw us over
+export ABI=${ABI:-pos} LIBDIR_pos="lib" CFLAGS_pos="" LDFLAGS_pos=""
 
-if ! type -p ${CTARGET}-g++ > /dev/null ; then
-	EOPTS="${UOPTS} --nodeps"
+ex_fast || {
+
+doemerge ${BPKG}
+
+is_s1 || exit 0
+if with_headers ; then
+USE="${USE} _E_CROSS_HEADERS_ONLY" _E_CROSS_HEADERS_ONLY="yes" \
+	doemerge ${KPKG} ${KPKG}-quick
+USE="${USE} _E_CROSS_HEADERS_ONLY" _E_CROSS_HEADERS_ONLY="yes" \
+	doemerge ${LPKG} ${LPKG}-headers
 fi
-doemerge gcc gcc-stage2
+USE="${USE} -boundschecking -fortran -gcj -mudflap nocxx -objc -static _E_CROSS_BOOTSTRAP" \
+	doemerge ${GPKG} ${GPKG}-stage1
+
+is_s2 || exit 0
+set_eopts_on_pkg_status ${KPKG} _E_CROSS_HEADERS_ONLY
+doemerge ${KPKG}
+
+is_s3 || exit 0
+set_eopts_on_pkg_status ${LPKG} _E_CROSS_HEADERS_ONLY
+USE="${USE} $TARCH" doemerge ${LPKG}
+
+is_s4 || exit 0
+set_eopts_on_pkg_status ${GPKG} _E_CROSS_BOOTSTRAP
+USE="${USE} -fortran -gcj -objc" \
+	doemerge ${GPKG} ${GPKG}-stage2
+
+}
+
+EOPTS=${EOPTS_UP}
+ex_gcc && doemerge ${GPKG} ${GPKG}-extra
+ex_gdb && doemerge gdb
+
+exit 0

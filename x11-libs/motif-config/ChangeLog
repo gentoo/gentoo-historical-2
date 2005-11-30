@@ -1,6 +1,80 @@
 # ChangeLog for x11-libs/motif-config
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/motif-config/ChangeLog,v 1.1 2005/02/14 19:04:43 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/motif-config/ChangeLog,v 1.1.1.1 2005/11/30 09:54:07 chriswhite Exp $
+
+  10 Jul 2005; Heinrich Wendel <lanius@gentoo.org> motif-config-0.9.ebuild:
+  bug #94804
+
+*motif-config-0.9 (26 Apr 2005)
+
+  26 Apr 2005; Heinrich Wendel <lanius@gentoo.org> +files/motif-config-0.9,
+  files/system.mwmrc, +motif-config-0.9.ebuild:
+  block old versions to prevent upgrade bugs; hopefully fix outstanding bugs
+
+*motif-config-0.8 (25 Mar 2005)
+
+  25 Mar 2005; Heinrich Wendel <lanius@gentoo.org> +files/motif-config-0.8,
+  +motif-config-0.8.ebuild:
+  fix upgrading from unslottet version
+
+*motif-config-0.7 (24 Mar 2005)
+
+  24 Mar 2005; Heinrich Wendel <lanius@gentoo.org> -files/motif-config-0.1,
+  -files/motif-config-0.2, -files/motif-config-0.3, -files/motif-config-0.4,
+  -files/motif-config-0.5, +files/motif-config-0.7, -motif-config-0.4.ebuild,
+  -motif-config-0.5.ebuild, +motif-config-0.7.ebuild:
+  cleanups; some fixes
+
+*motif-config-0.6 (22 Mar 2005)
+
+  22 Mar 2005; Heinrich Wendel <lanius@gentoo.org> +files/motif-config-0.6,
+  +motif-config-0.6.ebuild:
+  fix bug #86201
+
+*motif-config-0.5 (14 Mar 2005)
+
+  14 Mar 2005; Heinrich Wendel <lanius@gentoo.org> +files/motif-config-0.5,
+  +motif-config-0.5.ebuild:
+  don't build against already installed motif-versions
+
+  08 Mar 2005; Heinrich Wendel <lanius@gentoo.org> -motif-config-0.1.ebuild,
+  -motif-config-0.2-r1.ebuild, -motif-config-0.2.ebuild,
+  -motif-config-0.3.ebuild:
+  cleanups
+
+*motif-config-0.4 (07 Mar 2005)
+
+  07 Mar 2005; Heinrich Wendel <lanius@gentoo.org> +files/motif-config-0.4,
+  +motif-config-0.4.ebuild:
+  move binaries to /usr/lib/ to support FHS, install ldpath entry
+
+*motif-config-0.3 (02 Mar 2005)
+
+  02 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> motif-config-0.2-r1.ebuild,
+  motif-config-0.3.ebuild:
+  Removed ppc-macos once again. Please talk to myself or gongloo (we are
+  porting co-leads) before adding ppc-macos.
+
+*motif-config-0.2-r1 (27 Feb 2005)
+
+  27 Feb 2005; Heinrich Wendel <lanius@gentoo.org>
+  +motif-config-0.2-r1.ebuild:
+  bump to install correct version of motif-config
+
+  26 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> motif-config-0.1.ebuild,
+  motif-config-0.2.ebuild:
+  Depends on baselayout, which is not keyworded ppc-macos
+
+*motif-config-0.2 (23 Feb 2005)
+
+  23 Feb 2005; Heinrich Wendel <lanius@gentoo.org> +files/motif-config-0.2,
+  +motif-config-0.2.ebuild:
+  fix return/break statemens
+
+  16 Feb 2005; Heinrich Wendel <lanius@gentoo.org> +files/Mwm.defaults,
+  +files/bindings.tbz2, +files/bitmaps.tbz2, files/motif-config-0.1,
+  +files/system.mwmrc, motif-config-0.1.ebuild:
+  add default config files
 
 *motif-config-0.1 (14 Feb 2005)
 

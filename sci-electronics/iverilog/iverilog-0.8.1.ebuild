@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/iverilog/iverilog-0.8.1.ebuild,v 1.1 2005/02/18 20:17:31 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/iverilog/iverilog-0.8.1.ebuild,v 1.1.1.1 2005/11/30 09:51:06 chriswhite Exp $
 
 S="${WORKDIR}/verilog-${PV}"
 
@@ -12,7 +12,7 @@ DEPEND="dev-util/gperf"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE=""
 
 src_compile() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/courier-0.48.1.ebuild,v 1.1 2005/01/05 19:30:46 swtaylor Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/courier-0.48.1.ebuild,v 1.1.1.1 2005/11/30 09:50:40 chriswhite Exp $
 
 inherit eutils
 
@@ -13,8 +13,9 @@ S="${WORKDIR}/${P%%_pre}"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~alpha ~ppc ~sparc ~amd64 ~mips"
-IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite uclibc mailwrapper"
+# not in keywords due to missing dependencies: ~arm ~s390 ~ppc64
+KEYWORDS="x86 alpha amd64 hppa ia64 ~mips ppc sparc"
+IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite mailwrapper"
 
 PROVIDE="virtual/mta
 	 virtual/mda
@@ -37,7 +38,7 @@ DEPEND="virtual/libc
 RDEPEND="${DEPEND}
 	virtual/fam
 	dev-lang/perl
-	sys-apps/procps"
+	sys-process/procps"
 
 PDEPEND="mailwrapper? ( >=net-mail/mailwrapper-0.2 )
 	crypt? ( >=app-crypt/gnupg-1.0.4 )"
@@ -46,7 +47,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	use norewrite && epatch ${FILESDIR}/norewrite.patch
-	use uclibc && sed -i -e 's:linux-gnu\*:linux-gnu\*\ \|\ linux-uclibc:' config.sub
+	use elibc_uclibc && sed -i -e 's:linux-gnu\*:linux-gnu\*\ \|\ linux-uclibc:' config.sub
 }
 
 src_compile() {
@@ -64,12 +65,12 @@ src_compile() {
 		myconf="${myconf} --enable-mimetypes=/etc/mime.types"
 
 	einfo "Configuring courier: `echo ${myconf} | xargs echo`"
-	./configure \
+	econf \
 		--prefix=/usr \
 		--disable-root-check \
 		--mandir=/usr/share/man \
 		--sysconfdir=/etc/courier \
-		--libexecdir=/usr/lib/courier \
+		--libexecdir=/usr/$(get_libdir)/courier \
 		--datadir=/usr/share/courier \
 		--sharedstatedir=/var/lib/courier/com \
 		--localstatedir=/var/lib/courier \
@@ -116,28 +117,21 @@ set_maildir() {
 src_install() {
 	local f
 	dodir /etc/pam.d
+
+	einfo "Setting up maildirs in the account skeleton ..."
+	diropts -m 755 -o root -g root
+	dodir /etc/skel
+	${S}/maildir/maildirmake ${D}/etc/skel/.maildir
+	keepdir /etc/skel/.maildir
+
+	diropts -o mail -g mail
 	dodir /var/lib/courier
 	dodir /var/run/courier
 	make install DESTDIR=${D} || die "install"
 	make install-configure || die "install-configure"
-	diropts -o mail -g mail
-	for dir2keep in `(cd ${D} && find . -type d)` ; do
-		keepdir $dir2keep || die "failed running keepdir: $dir2keep"
-	done
-
-	einfo "Setting up maildirs in the account skeleton ..."
-	diropts -m 755 -o root -g root
-	keepdir /etc/skel
-	${D}/usr/bin/maildirmake ${D}/etc/skel/.maildir
-	keepdir /etc/skel/.maildir
-	keepdir /var/spool/mail
-	${D}/usr/bin/maildirmake ${D}/var/spool/mail/.maildir
-	keepdir /var/spool/mail/.maildir
 
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/courier-init courier
-	`grep DAEMONLIST /etc/init.d/courier >&/dev/null` && \
-		newexe ${FILESDIR}/courier courier-old
 
 	cd ${D}/etc/courier
 	insinto /etc/courier
@@ -180,8 +174,8 @@ src_install() {
 	echo "See /usr/share/courier/htmldoc/index.html for docs in html format" \
 		>> ${D}/usr/share/doc/${P}/README.htmldocs
 
-	insinto /usr/lib/courier/courier
-	insopts -m  755 -o mail -g mail
+	insinto /usr/$(get_libdir)/courier/courier
+	insopts -m 755 -o mail -g mail
 	doins ${S}/courier/webmaild
 	insinto /etc/courier/webadmin
 	insopts -m 400 -o mail -g mail

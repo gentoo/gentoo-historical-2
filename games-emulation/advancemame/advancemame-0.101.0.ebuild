@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/advancemame/advancemame-0.101.0.ebuild,v 1.1 2005/10/17 03:37:45 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/advancemame/advancemame-0.101.0.ebuild,v 1.1.1.1 2005/11/30 09:50:30 chriswhite Exp $
 
 inherit eutils games
 

@@ -1,5 +1,5 @@
 #%PAM-1.0
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/files/squid.pam-include,v 1.1 2005/05/19 19:27:53 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/files/squid.pam-include,v 1.1.1.1 2005/11/30 09:51:51 chriswhite Exp $
 auth       include		system-auth
 auth       required     pam_nologin.so
 account    include		system-auth

@@ -1,6 +1,107 @@
 # ChangeLog for dev-perl/MailTools
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MailTools/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MailTools/ChangeLog,v 1.1.1.1 2005/11/30 09:53:04 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> MailTools-1.67.ebuild:
+  Stable on hppa, ppc.
+
+  18 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> MailTools-1.67.ebuild:
+  Stable on sparc
+
+  18 Oct 2005; Andrej Kacian <ticho@gentoo.org> MailTools-1.67.ebuild:
+  Stable on x86.
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> MailTools-1.65.ebuild:
+  stable on ia64
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> MailTools-1.65.ebuild:
+  Stable on amd64.
+
+  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> MailTools-1.65.ebuild:
+  Stable on ppc.
+
+  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> MailTools-1.65.ebuild:
+  Stable on alpha.
+
+*MailTools-1.67 (27 Apr 2005)
+
+  27 Apr 2005; Michael Cummings <mcummings@gentoo.org>
+  -MailTools-1.44-r1.ebuild, -MailTools-1.44.ebuild, -MailTools-1.51.ebuild,
+  -MailTools-1.58.ebuild, -MailTools-1.62.ebuild, MailTools-1.65.ebuild,
+  +MailTools-1.67.ebuild:
+  Cleaning
+
+  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> MailTools-1.65.ebuild:
+  ~ia64 keyword.
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> MailTools-1.60.ebuild:
+  Stable on ppc.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> MailTools-1.65.ebuild:
+  Stable on ppc64
+
+*MailTools-1.65 (04 Jan 2005)
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  +MailTools-1.65.ebuild:
+  Bug 76389
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Dec 2004; Markus Rothe <corsair@gentoo.org> MailTools-1.62.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> MailTools-1.60.ebuild:
+  Stable on amd64.
+
+*MailTools-1.62 (06 Jun 2004)
+
+  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> MailTools-1.62.ebuild:
+  new version on cpan
+
+  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> MailTools-1.60.ebuild:
+  Stable on alpha.
+
+*MailTools-1.60 (16 Feb 2004)
+
+  16 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
+  MailTools-1.60.ebuild:
+  Installed and tested on x86 and sparc. Resolves bug 41733.
+
+  21 Jan 2004; <gustavoz@gentoo.org> MailTools-1.58.ebuild:
+  stable on sparc
+
+*MailTools-1.58 (16 Jun 2003)
+
+  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> MailTools-1.58.ebuild:
+  CPAN version bump; needs testing
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*MailTools-1.51 (06 Nov 2002)
+
+  06 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update.
+
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*MailTools-1.44-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*MailTools-1.44 (5 May 2002)
+
+  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> MailTools-1.44.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  5 May 2002; Seemant Kulleen <seemant@gentoo.org> MailTools-1.44.ebuild
+  files/digest-MailTools-1.44 :
+
+  Version bump and eclasses.
 
 *MailTools-1.15 (1 Feb 2002)
 

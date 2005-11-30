@@ -1,6 +1,97 @@
 # ChangeLog for net-p2p/lopster
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/lopster/ChangeLog,v 1.1 2002/06/25 10:26:11 bangert Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/lopster/ChangeLog,v 1.1.1.1 2005/11/30 09:51:09 chriswhite Exp $
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> lopster-1.2.2.ebuild:
+  Mark 1.2.2 stable on alpha
+
+  12 Sep 2005; <mkay@gentoo.org> lopster-1.2.2.ebuild,
+  lopster-1.2.2-r1.ebuild  lopster-1.2.2-r2.ebuild:
+  Removing redundant --with-zlib configure flag (bug #105684)
+
+*lopster-1.2.2-r2 (07 Sep 2005)
+
+  07 Sep 2005; <sekretarz@gentoo.org> lopster-1.2.2.ebuild,
+  lopster-1.2.2-r1.ebuild, +lopster-1.2.2-r2.ebuild:
+  Added some bugfixes from cvs. Provided by Lars (Polynomial-C)
+  <polynomial-C@gmx.de>, bug #93667. Using vorbis instead of oggvorbis, bug
+  #94254
+
+  30 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  lopster-1.2.2-r1.ebuild:
+  Added WANT_AUTOCONF=2.5 to fix problems with autoconf
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> lopster-1.2.2.ebuild:
+  stable on amd64
+
+*lopster-1.2.2-r1 (24 Feb 2005)
+
+  24 Feb 2005; Jon Hood <squinky86@gentoo.org>
+  +files/1.2.2-bugfixes-1.patch, -lopster-1.0.1.20020702.ebuild,
+  -lopster-1.2.1.ebuild, +lopster-1.2.2-r1.ebuild:
+  Minor bugfixes. Thanks Lars <polynomial-C@gmx.de>, #83126. Remove old versions.
+
+  01 Oct 2004; Jon Hood <squinky86@gentoo.org> lopster-1.2.2.ebuild:
+  Stable on x86.
+
+*lopster-1.2.2 (30 Aug 2004)
+
+  30 Aug 2004; Jon Hood <squinky86@gentoo.org> +lopster-1.2.2.ebuild:
+  Version bump, add changes from arcosen@hotmail.com, #62232.
+
+  04 Aug 2004; Jon Hood <squinky86@gentoo.org> -lopster-1.0.2_pre5.ebuild,
+  lopster-1.2.1.ebuild:
+  Stable on x86.
+
+  03 Aug 2004; Jon Hood <squinky86@gentoo.org> :
+  Upstream changed the package; fixing digests.
+
+*lopster-1.2.1 (03 Jul 2004)
+
+  03 Jul 2004; Jon Hood <squinky86@gentoo.org> +lopster-1.2.1.ebuild:
+  version bump, closes #55964
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> lopster-1.0.2_pre5.ebuild,
+  lopster-1.2.0.ebuild:
+  Add die following econf for bug 48950
+
+  12 Jun 2003; Seemant Kulleen <seemant@gentoo.org> lopster-1.2.0.ebuild:
+  unmasked on x86, thanks to Magnade in #gentoo-dev
+
+*lopster-1.2.0 (09 Mar 2003)
+
+  09 Mar 2003; Seemant Kulleen <seemant@gentoo.org> lopster-1.2.0.ebuild:
+  version bump. Ebuild thanks to: Kfir Ozer <ufk2k@yahoo.com> in bug #17007
+
+*lopster-1.0.2_pre5 (30 Nov 2002)
+
+  30 Nov 2002; Seemant Kulleen <seemant@gentoo.org>
+  lopster-1.0.2_pre5.ebuild files/digest-lopster-1.0.2_pre5 :
+
+  The version is a misnomer, but it is a cvs snapshot, labelled
+  1.0.1-dev5.12 on the lopster site.  Either way, it is a version bump that
+  addresses many issues.
+
+*lopster-1.0.1.20020702 (02 Jul 2002)
+
+  24 Jul 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  02 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
+  lopster-1.0.1-20020702.ebuild files/digest-lopster-1.0.1.20020702 :
+
+  Bug fixes for the nls/intl stuff.
+
+*lopster-1.0.1.20020701 (01 Jul 2002)
+
+  01 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
+  lopster-1.0.1.20020701.ebuild files/digest-lopster-1.0.1.20020701 :
+
+  Updated to CVS snapshot which offers WPNP support.
+
+  26 Jun 2002; Thilo Bangert <bangert@gentoo.org> :
+
+  moved to net-p2p; added SLOT="0"
 
 *lopster-1.0.1-r2 (30 Apr 2002)
 

@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/ponyprog/ponyprog-2.06c.ebuild,v 1.1 2004/03/16 11:38:09 dragonheart Exp $
-
-RESTRICT="nomirror"
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/ponyprog/ponyprog-2.06c.ebuild,v 1.1.1.1 2005/11/30 09:53:29 chriswhite Exp $
 
 S=${WORKDIR}
 DESCRIPTION="EEprom e Pic Programmer"
@@ -10,10 +8,10 @@ HOMEPAGE="http://www.lancos.com/ppwin95.html"
 SRC_URI="http://www.lancos.com/e2p/V2_06/${P}-rh70.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 DEPEND=""
-RDEPEND="x11-base/xfree
+RDEPEND="virtual/x11
 	sys-libs/lib-compat
 	sys-libs/glibc"
 
@@ -45,4 +43,3 @@ pkg_postinst() {
 	einfo ""
 	einfo "You can use /opt/bin/ponyprog"
 }
-

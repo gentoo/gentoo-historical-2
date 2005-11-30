@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/libidn-0.5.15.ebuild,v 1.1 2005/04/19 14:31:25 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/libidn/libidn-0.5.15.ebuild,v 1.1.1.1 2005/11/30 09:50:07 chriswhite Exp $
 
 inherit java-pkg
 
@@ -10,35 +10,35 @@ SRC_URI="ftp://alpha.gnu.org/pub/gnu/libidn/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="java doc nls"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+IUSE="java doc nls emacs"
 
-DEPEND="java? ( virtual/jdk )"
-RDEPEND="java? ( virtual/jre )"
-
-check_java_config() {
-	JDKHOME="`java-config --jdk-home`"
-	if [[ -z "${JDKHOME}" || ! -d "${JDKHOME}" ]]; then
-		NOJDKERROR="You need to use java-config to set your JVM to a JDK!"
-		eerror "${NOJDKERROR}"
-		die "${NOJDKERROR}"
-	fi
-}
+DEPEND="java? ( >=virtual/jdk-1.4 )"
+RDEPEND="java? ( >=virtual/jre-1.4 )"
 
 src_compile() {
+	local jdkhome
+
 	if use java; then
-		check_java_config
+		jdkhome=$(java-config --jdk-home)
+		if [[ -z ${jdkhome} || ! -d ${jdkhome} ]]; then
+			die "You need to use java-config to set your JVM to a JDK!"
+		fi
 	fi
 
-	econf $(use_enable nls) \
-	      $(use_enable java) || die
+	econf \
+		$(use_enable nls) \
+		$(use_enable java) \
+		|| die
 
 	emake || die
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die
+	make install DESTDIR=${D} || die
 	dodoc AUTHORS ChangeLog FAQ NEWS README THANKS TODO
+
+	use emacs || rm -r ${D}/usr/share/emacs
 
 	if use doc; then
 		dohtml -r doc/reference/html/*

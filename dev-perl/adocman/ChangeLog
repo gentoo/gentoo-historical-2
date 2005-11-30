@@ -1,6 +1,27 @@
 # ChangeLog for dev-perl/adocman
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/adocman/ChangeLog,v 1.1 2003/12/01 17:27:52 rizzo Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/adocman/ChangeLog,v 1.1.1.1 2005/11/30 09:52:35 chriswhite Exp $
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org> adocman-0.10.ebuild,
+  adocman-0.12.ebuild, adocman-0.13.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> adocman-0.13.ebuild:
+  Keyworded ~sparc
+
+*adocman-0.13 (23 Mar 2005)
+
+  23 Mar 2005; Don Seiler <rizzo@gentoo.org> +adocman-0.13.ebuild:
+  Version bump
+
+*adocman-0.12 (23 Nov 2004)
+
+  23 Nov 2004; Don Seiler <rizzo@gentoo.org> metadata.xml,
+  +adocman-0.12.ebuild:
+  Version bump
+
+  03 Dec 2003; Don Seiler <rizzo@gentoo.org>; adocman-0.10.ebuild:
+  Restricting to nomirror since this is a sourceforge-hosted project
 
 *adocman-0.10 (01 Dec 2003)
 

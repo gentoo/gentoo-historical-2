@@ -1,18 +1,16 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Data-Inheritable/Class-Data-Inheritable-0.02.ebuild,v 1.1 2002/11/17 05:54:09 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Data-Inheritable/Class-Data-Inheritable-0.02.ebuild,v 1.1.1.1 2005/11/30 09:52:56 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Exception::Class module for perl"
-SRC_URI="http://www.cpan.org/authors/id/M/MS/MSCHWERN/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/M/MS/MSCHWERN/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/authors/id/M/MS/MSCHWERN/"
 
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+IUSE=""
 
-DEPEND="${DEPEND}"
-
-export OPTIMIZE="$CFLAGS"
+export OPTIMIZE="${CFLAGS}"

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/tomatoes/tomatoes-1.55.ebuild,v 1.1 2004/12/01 07:43:30 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/tomatoes/tomatoes-1.55.ebuild,v 1.1.1.1 2005/11/30 09:52:00 chriswhite Exp $
 
 inherit eutils games
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/tomatoes/tomatoes-linux-src-${PV}.tar.bz2
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 DEPEND="virtual/opengl
@@ -21,10 +21,20 @@ DEPEND="virtual/opengl
 	>=media-libs/sdl-image-1.2.2
 	media-libs/sdl-mixer"
 
+pkg_setup() {
+	if ! built_with_use media-libs/sdl-mixer mikmod ; then
+		eerror "Tomatoes doesn't work properly if sdl-mixer"
+		eerror "is built with USE=-mikmod"
+		die "Please emerge sdl-mixer with USE=mikmod"
+	fi
+	games_pkg_setup
+}
+
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	mv ../tomatoes-1.5/* . || die "mv failed"
+	mv icon.png ${PN}.png
 
 	sed -i \
 		-e '/^CC/d' \
@@ -47,9 +57,8 @@ src_install() {
 	cp -r tomatoes.mpk music/ "${D}${GAMES_DATADIR}/${PN}" \
 		|| die "failed to copy game data"
 
-	insinto /usr/share/icons/
-	newins icon.png ${PN}.png
-	make_desktop_entry tomatoes "I Have No Tomatoes" ${PN}.png
+	doicon ${PN}.png
+	make_desktop_entry tomatoes "I Have No Tomatoes"
 
 	touch "${D}${GAMES_STATEDIR}/${PN}/hiscore.lst" || die "touch failed"
 	fperms 660 "${GAMES_STATEDIR}/${PN}/hiscore.lst"

@@ -1,8 +1,69 @@
-# ChangeLog for app-emulation/snes9x
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/ChangeLog,v 1.1 2003/09/09 16:26:50 vapier Exp $
+# ChangeLog for games-emulation/snes9x
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/snes9x/ChangeLog,v 1.1.1.1 2005/11/30 09:50:25 chriswhite Exp $
 
-*snes9x-139-r1 (20 Feb 2003)
+  28 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/snes9x-1.43-porting.patch, snes9x-1.43-r1.ebuild:
+  Add dev support for building for native amd64 #104049.
+
+*snes9x-1.43-r1 (27 Aug 2005)
+
+  27 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/snes9x-1.43-key-bindings-fix.patch, +snes9x-1.43-r1.ebuild:
+  Fix reverse save/load keys by Matteo Settenvini #81980.
+
+  22 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/snes9x-1.43-build.patch, snes9x-1.43.ebuild:
+  Fix amd64 support so it works.
+
+  21 Jul 2005; Mike Frysinger <vapier@gentoo.org> snes9x-1.43.ebuild:
+  Punt 3dfx support since it requires glide-2 but we only have glide-3 #93097.
+
+  04 Jan 2005; Mike Frysinger <vapier@gentoo.org> snes9x-1.43.ebuild:
+  Add support for USE=dga. Also remove forced linking with X libs (let
+  configure script do it) #76538.
+
+*snes9x-1.43 (03 Jan 2005)
+
+  03 Jan 2005; Mike Frysinger <vapier@gentoo.org> +snes9x-1.43.ebuild:
+  Version bump.
+
+  11 Nov 2004; Joseph Jezak <josejx@gentoo.org> snes9x-1.42-r1.ebuild:
+  Marked ppc stable.
+
+  11 Jun 2004; Travis Tilley <lv@gentoo.org> snes9x-1.42-r1.ebuild:
+  added ~amd64 keyword
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> snes9x-1.42-r1.ebuild:
+  attempt at fixing bug #48859
+
+  03 May 2004; Michael Sterrett <mr_bones_@gentoo.org> snes9x-1.42.ebuild:
+  clean old ebuild
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> snes9x-1.42-r1.ebuild:
+  Add inherit eutils
+
+*snes9x-1.42-r1 (13 Apr 2004)
+
+  13 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> snes9x-1.42-r1.ebuild:
+  add nojoy.patch to support the -nojoy option even when compiled without
+  joystick support (bug #46210); tidy
+
+  11 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> snes9x-1.39-r1.ebuild,
+  snes9x-1.41.1.ebuild:
+  clean older ebuilds
+
+*snes9x-1.42 (04 Dec 2003)
+
+  04 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  More version bumpage.
+
+*snes9x-1.41.1 (03 Oct 2003)
+
+  03 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumpage #25935.
+
+*snes9x-1.39-r1 (20 Feb 2003)
 
   03 Mar 2003; Bartosch Pixa <darkspecter@gentoo.org> snes9x-139-r1.ebuild:
   BE sound fix

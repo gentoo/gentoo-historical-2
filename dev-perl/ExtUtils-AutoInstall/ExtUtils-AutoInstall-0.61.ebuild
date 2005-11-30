@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-AutoInstall/ExtUtils-AutoInstall-0.61.ebuild,v 1.1 2004/10/28 15:02:02 mcummings Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-AutoInstall/ExtUtils-AutoInstall-0.61.ebuild,v 1.1.1.1 2005/11/30 09:53:13 chriswhite Exp $
 
 inherit perl-module
 
@@ -12,12 +10,13 @@ HOMEPAGE="http://search.cpan.org/~autrijus/${P}/"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+IUSE=""
 
-SRC_TEST="do"
+# TESTS BAD. Wants to write to cpan's config on the live system
+#SRC_TEST="do"
 
 DEPEND="dev-perl/Sort-Versions"
-
 
 src_compile() {
 	echo "n" | perl-module_src_compile

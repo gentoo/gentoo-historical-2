@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sort-Tree/Sort-Tree-1.09.ebuild,v 1.1 2005/11/04 12:07:42 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Sort-Tree/Sort-Tree-1.09.ebuild,v 1.1.1.1 2005/11/30 09:52:47 chriswhite Exp $
 
 inherit perl-module
 SRC_TEST="do"

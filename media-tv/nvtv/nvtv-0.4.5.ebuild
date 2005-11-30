@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/nvtv/nvtv-0.4.5.ebuild,v 1.1 2003/06/18 18:35:13 blauwers Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/nvtv/nvtv-0.4.5.ebuild,v 1.1.1.1 2005/11/30 09:50:31 chriswhite Exp $
 
-IUSE="X gtk gtk2"
+IUSE="X gtk"
 
 DESCRIPTION="TV-Out for NVidia cards"
 HOMEPAGE="http://sourceforge.net/projects/nv-tv-out/"
@@ -10,27 +10,27 @@ SRC_URI="mirror://sourceforge/nv-tv-out/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64"
 
 DEPEND="sys-apps/pciutils
-	gtk? ( =x11-libs/gtk+-1.2* )
-	gtk2? ( =x11-libs/gtk+-2* )
-	X? ( >=x11-base/xfree-4.0 )"
+	gtk? ( x11-libs/gtk+ )
+	X? ( virtual/x11 )"
 
 src_compile() {
 	local myconf
 
-	if use gtk2; then
-		myconf="${myconf} --with-gtk=gtk2"
-	elif use gtk; then
-		myconf="${myconf} --with-gtk=gtk1"
+	if use gtk
+	then
+		myconf="${myconf} --with-gtk"
 	else
-		myconf="${myconf} --without-gtk";
+		myconf="${myconf} --without-gtk"
 	fi
 
-	use X && myconf="${myconf} --with-x" || myconf="${myconf} --without-x"
+	use X \
+		&& myconf="${myconf} --with-x" \
+		|| myconf="${myconf} --without-x"
 
-	econf ${myconf}
+	econf ${myconf} || die
 
 	# The CFLAGS don't seem to make it into the Makefile.
 	cd src

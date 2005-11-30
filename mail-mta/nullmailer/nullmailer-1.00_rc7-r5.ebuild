@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/nullmailer/nullmailer-1.00_rc7-r5.ebuild,v 1.1 2004/11/16 09:24:33 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/nullmailer/nullmailer-1.00_rc7-r5.ebuild,v 1.1.1.1 2005/11/30 09:50:48 chriswhite Exp $
 
 inherit eutils
 
@@ -21,8 +21,8 @@ DEPEND="virtual/libc
 RDEPEND="!mailwrapper? ( !virtual/mta )
 		mailwrapper? ( >=net-mail/mailwrapper-0.2 )
 		virtual/libc
-		>=sys-apps/supervise-scripts-3.2
-		>=sys-apps/daemontools-0.76-r1
+		>=sys-process/supervise-scripts-3.2
+		>=sys-process/daemontools-0.76-r1
 		sys-apps/shadow"
 PROVIDE="virtual/mta"
 
@@ -115,10 +115,8 @@ pkg_postinst() {
 	chmod 770 /var/log/nullmailer /var/nullmailer/{tmp,queue}
 	chmod 660 /var/nullmailer/trigger
 
-	TMP_P="${PN}-${PV}"
-	[ "${PR}" != "r0" ] && TMP_P="${TMP_P}-${PR}"
 	einfo "To create an initial setup, please do:"
-	einfo "ebuild /var/db/pkg/${CATEGORY}/${TMP_P}/${TMP_P}.ebuild config"
+	einfo "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
 	einfo "To start nullmailer at boot you have to enable the /etc/init.d/svscan rc file"
 	einfo "and create the following link :"
 	einfo "ln -fs /var/nullmailer/service /service/nullmailer"

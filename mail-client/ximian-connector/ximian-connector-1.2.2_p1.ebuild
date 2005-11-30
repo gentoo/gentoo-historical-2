@@ -1,49 +1,45 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/ximian-connector/ximian-connector-1.2.2_p1.ebuild,v 1.1 2004/05/30 03:08:18 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/ximian-connector/ximian-connector-1.2.2_p1.ebuild,v 1.1.1.1 2005/11/30 09:49:49 chriswhite Exp $
 
 DESCRIPTION="Ximian Connector (An Evolution Plugin to talk to Exchange Servers)"
-HOMEPAGE="http://www.ximian.com"
+HOMEPAGE="http://www.novell.com/products/desktop/features/evolution.html"
 LICENSE="Ximian-Connector"
 SLOT="0"
 KEYWORDS="x86 ~ppc -sparc -alpha -mips"
+IUSE=""
 RESTRICT="fetch nostrip"
 
 XIMIAN_ARCH="blargh"
 XIMIAN_DIST="frobs"
 
-if [ `use ppc` ]; then
+if use ppc; then
 	XIMIAN_DIST="yellowdog-22-ppc"
 	XIMIAN_ARCH="ppc"
-elif [ `use x86` ]; then
+elif use x86; then
 	XIMIAN_DIST="redhat-73-i386"
 	XIMIAN_ARCH="i386"
 fi
 
 # make the ximian rev from the package version
 # 1.2.1_p2 should result in 1.2.1-2
-XIMIAN_REV=`echo ${PV} | sed -e "s/_p/-/"`
+XIMIAN_REV="${PV/_p/-}"
 
-SRC_URI="${PN}-${XIMIAN_REV}.ximian.1.${XIMIAN_ARCH}.rpm"
-RDEPEND="=net-mail/evolution-1.2*"
+# we break the cache if we use $ARCH in the global scope,
+# so we specify the x86/ppc rpms here
+SRC_URI="x86? ( ${PN}-${XIMIAN_REV}.ximian.1.i386.rpm )
+		 ppc? ( ${PN}-${XIMIAN_REV}.ximian.1.ppc.rpm )"
+RDEPEND="=mail-client/evolution-1.2*"
 DEPEND="app-arch/rpm2targz
 		${RDEPEND}"
 
 pkg_nofetch() {
 	einfo "This package requires that you download the rpm from:"
 	einfo "http://ximian.com/products/connector/download/download.html"
-	einfo "and place it in ${DISTFILES}."
+	einfo "and place it in ${DISTDIR}."
 	einfo ""
 	einfo "NOTE: x86 users should download the package for redhat-73-i386"
 	einfo "      ppc users should download the package for yellowdog-22-ppc"
-}
-
-pkg_setup() {
-	if [ "${ARCH}" != "x86" -a "${ARCH}" != "ppc" ]
-	then
-		einfo "This package is only available for x86 and ppc, sorry"
-		die "Not supported on your ARCH"
-	fi
 }
 
 src_unpack() {
@@ -59,7 +55,7 @@ src_install() {
 	dosym /usr/lib/libcrypto.so /usr/lib/libcrypto.so.2
 }
 
-post_install(){
+pkg_postinst() {
 	einfo "NOTE: Ximian connector requires the purchase of a"
 	einfo "key from Ximian to function properly."
 }

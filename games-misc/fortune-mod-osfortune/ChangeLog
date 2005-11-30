@@ -1,7 +1,21 @@
-# ChangeLog for app-games/fortune-mod-osfortune
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-osfortune/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
+# ChangeLog for games-misc/fortune-mod-osfortune
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-osfortune/ChangeLog,v 1.1.1.1 2005/11/30 09:50:01 chriswhite Exp $
 
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-osfortune-1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-osfortune-1.ebuild:
+  Added ~ppc64 (bug #100217)
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> +files/spelling.patch,
+  fortune-mod-osfortune-1.ebuild:
+  spelling fixes from bug 60774 by Anthony Giorgio
+
+  16 Sep 2003; David Holm <dholm@gentoo.org> fortune-mod-osfortune-1.ebuild:
+  Added to ~ppc.
 
 *fortune-mod-osfortune-1 (26 Jun 2003)
 

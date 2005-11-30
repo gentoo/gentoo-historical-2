@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ossh/ossh-1.5.12.ebuild,v 1.1 2004/05/29 07:38:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ossh/ossh-1.5.12.ebuild,v 1.1.1.1 2005/11/30 09:54:39 chriswhite Exp $
 
 inherit gnuconfig flag-o-matic
 
@@ -10,12 +10,12 @@ SRC_URI="ftp://ftp.nada.kth.se/pub/krypto/ossh/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="zlib socks5"
 
 DEPEND="!virtual/ssh
 	zlib? ( sys-libs/zlib )
-	socks5? ( net-misc/dante )
+	socks5? ( net-proxy/dante )
 	dev-libs/gmp
 	dev-libs/openssl"
 PROVIDE="virtual/ssh"

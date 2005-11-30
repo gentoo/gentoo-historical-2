@@ -1,6 +1,50 @@
-# ChangeLog for app-games/kobodeluxe
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/kobodeluxe/ChangeLog,v 1.1 2003/09/10 19:29:21 vapier Exp $
+# ChangeLog for games-arcade/kobodeluxe
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/kobodeluxe/ChangeLog,v 1.1.1.1 2005/11/30 09:52:01 chriswhite Exp $
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Mark 0.4_pre10 stable on alpha
+
+  24 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Stable on amd64.
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  stable for x86
+
+  24 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Add ~alpha keyword, bug 86212.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> kobodeluxe-0.4_pre10.ebuild:
+  Marked ppc stable.
+
+  22 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  standardize; tidy
+
+  18 Jun 2004; Michael Hanselmann <hansmi@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Added to ~ppc.
+
+  15 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  kobodeluxe-0.4_pre10.ebuild:
+  Filtered -fforce-addr and closing bug #53980.
+
+*kobodeluxe-0.4_pre10 (14 May 2004)
+
+  14 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +kobodeluxe-0.4_pre10.ebuild:
+  Version bump and adding ~amd64 KEYWORD.  Blame bug #51075.
+
+  24 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  kobodeluxe-0.3-r1.ebuild, kobodeluxe-0.4_pre6.ebuild:
+  tidy old versions
 
   04 Jul 2003; Michael Sterrett <msterret@gentoo.org>
   kobodeluxe-0.4_pre8.ebuild:
@@ -22,7 +66,7 @@
 
 *kobodeluxe-0.4_pre6 (03 Jun 2002)
 
-  17 jul 2002; Jose Alberto Su�rez L�pez <bass@gentoo.org> kobodeluxe-0.4_pre6.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> kobodeluxe-0.4_pre6.ebuild :
   Added KEYWORDS.
 
   03 Jun 2002; Wout Mertens <wmertens@gentoo.org> :
@@ -35,7 +79,7 @@
 
 *kobodeluxe-0.3-r1 (02 Jun 2002)
 
-  17 jul 2002; Jose Alberto Su�rez L�pez <bass@gentoo.org> kobodeluxe-0.3-r1.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> kobodeluxe-0.3-r1.ebuild :
   Added KEYWORDS.
 
   02 Jun 2002; Wout Mertens <wmertens@gentoo.org> :

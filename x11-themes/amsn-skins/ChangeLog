@@ -1,6 +1,29 @@
 # ChangeLog for x11-themes/amsn-skins
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/amsn-skins/ChangeLog,v 1.1 2004/02/23 15:09:05 rizzo Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/amsn-skins/ChangeLog,v 1.1.1.1 2005/11/30 09:51:33 chriswhite Exp $
+
+  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  amsn-skins-20040223.ebuild:
+  Mark 20040223 stable on alpha
+
+  14 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  amsn-skins-20040223.ebuild:
+  Stable on AMD64.
+
+  02 Nov 2004; <pyrania@gentoo.org> amsn-skins-20040223.ebuild:
+  Added unzip dependency.
+
+  28 Aug 2004; Tom Martin <slarti@gentoo.org> amsn-skins-20040223.ebuild:
+  Marked ~amd64.
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> amsn-skins-20040223.ebuild:
+  Added IUSE=
+
+  30 Mar 2004; Gustavo Felisberto <humpback@gentoo.org>; :
+  Small bug in digest thanks to Greg Andreou <gregorya@dai.ed.ac.uk> in bug 46035
+
+  23 Feb 2004; <tester@gentoo.org> amsn-skins-20040223.ebuild:
+  There should not be build deps.
 
 *amsn-skins-20040223 (23 Feb 2004)
 

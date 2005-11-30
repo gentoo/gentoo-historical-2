@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64/mupen64-0.4-r2.ebuild,v 1.1 2005/03/25 05:42:54 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mupen64/mupen64-0.4-r2.ebuild,v 1.1.1.1 2005/11/30 09:50:17 chriswhite Exp $
 
-inherit games gcc eutils libtool
+inherit eutils games
 
 DESCRIPTION="A Nintendo 64 (N64) emulator"
 HOMEPAGE="http://mupen64.emulation64.com/"
@@ -13,21 +13,18 @@ SRC_URI="http://mupen64.emulation64.com/files/${PV}/mupen64_src-${PV}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE="avi gtk2 asm"
+KEYWORDS="-amd64 x86"
+IUSE="asm"
 
 RDEPEND="sys-libs/zlib
 	media-libs/libsdl
 	virtual/glu
 	virtual/opengl
-	avi? ( media-video/avifile )
-	!gtk2? ( =x11-libs/gtk+-1.2* )
-	gtk2? ( =x11-libs/gtk+-2* )"
+	=x11-libs/gtk+-2*"
 DEPEND="${RDEPEND}
-	gtk2? ( dev-util/pkgconfig )"
+	dev-util/pkgconfig"
 RDEPEND="${RDEPEND}
 	>=games-emulation/mupen64-glN64-0.4.1_rc2-r1"
-
 
 S=${WORKDIR}
 
@@ -35,20 +32,16 @@ src_unpack() {
 	unpack ${A}
 
 	cd "${S}"
-	epatch "${FILESDIR}/${PN}-makefiles.patch"
-	epatch "${FILESDIR}/${PN}-confdir.patch"
-	# gtk2 breaks some configuration dialogs (bug 56195 #35)
-	use gtk2 && epatch "${FILESDIR}/${PN}-gtk2-makefile.patch"
-	use avi && epatch "${FILESDIR}/${PN}-gentoo-avi.patch"
+	epatch "${FILESDIR}/${PN}-makefiles.patch" \
+		"${FILESDIR}/${PN}-confdir.patch" \
+		"${FILESDIR}/${PN}-gtk2-makefile.patch"
 
-	if use x86 ; then
-		if ! use asm ; then
-			epatch "${FILESDIR}/${PN}-noasm.patch"
-		fi
+	if ! use asm ; then
+		epatch "${FILESDIR}/${PN}-noasm.patch"
 	fi
 	sed -i \
-		-e "s:CFLAGS.*=\(.*\):CFLAGS=\1 ${CFLAGS}:" \
-		-e "s:CXXFLAGS.*=\(.*\):CXXFLAGS=\1 ${CXXFLAGS}:" \
+		-e "s:CFLAGS.*=\(.*\):CFLAGS=\1 -fPIC ${CFLAGS}:" \
+		-e "s:CXXFLAGS.*=\(.*\):CXXFLAGS=\1 -fPIC ${CXXFLAGS}:" \
 		*/Makefile \
 		|| die "sed failed"
 }

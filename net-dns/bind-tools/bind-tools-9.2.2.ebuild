@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind-tools/bind-tools-9.2.2.ebuild,v 1.1 2003/03/04 17:51:41 lostlogic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind-tools/bind-tools-9.2.2.ebuild,v 1.1.1.1 2005/11/30 09:50:16 chriswhite Exp $
 
 MY_P=${P//-tools}
 MY_P=${MY_P/_}
@@ -9,25 +9,28 @@ DESCRIPTION="bind tools: dig, nslookup, and host"
 SRC_URI="ftp://ftp.isc.org/isc/bind9/${PV/_}/${MY_P}.tar.gz"
 HOMEPAGE="http://www.isc.org/products/BIND/bind9-beta.html"
 
-KEYWORDS="~x86 ~ppc ~alpha ~hppa"
+KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64 mips"
+IUSE=""
 LICENSE="as-is"
 SLOT="0"
 
-DEPEND="virtual/glibc"
- 
+DEPEND="virtual/libc"
+
 src_compile() {
 	econf || die "configure failed"
 
+	export MAKEOPTS="${MAKEOPTS} -j1"
+
 	cd ${S}/lib/isc
-	make || die "make failed in /lib/isc"
+	emake || die "make failed in /lib/isc"
 
 	cd ${S}/lib/dns
-	make || die "make failed in /lib/dns"
+	emake || die "make failed in /lib/dns"
 
 	cd ${S}/bin/dig
-	make || die "make failed in /bin/dig"
+	emake || die "make failed in /bin/dig"
 }
- 
+
 src_install() {
 	cd ${S}/bin/dig
 	dobin dig host nslookup

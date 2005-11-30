@@ -1,6 +1,24 @@
-# ChangeLog for app-games/fortune-mod-sp-fortunes
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-sp-fortunes/ChangeLog,v 1.1 2003/09/10 18:14:05 vapier Exp $
+# ChangeLog for games-misc/fortune-mod-sp-fortunes
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-sp-fortunes/ChangeLog,v 1.1.1.1 2005/11/30 09:50:03 chriswhite Exp $
+
+*fortune-mod-sp-fortunes-0.2 (13 Oct 2005)
+
+  13 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +fortune-mod-sp-fortunes-0.2.ebuild:
+  Version bump #108375 by Peter Hyman.
+
+  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-sp-fortunes-0.1.ebuild:
+  Stable on ppc64
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
+  fortune-mod-sp-fortunes-0.1.ebuild:
+  Added ~ppc64 (bug #100217)
+
+  16 Sep 2003; David Holm <dholm@gentoo.org>
+  fortune-mod-sp-fortunes-0.1.ebuild:
+  Added to ~ppc
 
 *fortune-mod-sp-fortunes-0.1 (03 Sep 2003)
 

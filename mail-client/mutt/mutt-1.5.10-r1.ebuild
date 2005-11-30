@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.10-r1.ebuild,v 1.1 2005/08/17 22:42:48 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.10-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:42 chriswhite Exp $
 
 inherit eutils flag-o-matic
 

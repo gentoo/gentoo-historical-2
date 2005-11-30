@@ -1,15 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vino/vino-2.8.1.ebuild,v 1.1 2004/12/11 08:44:00 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vino/vino-2.8.1.ebuild,v 1.1.1.1 2005/11/30 09:54:37 chriswhite Exp $
 
 inherit gnome2
 
 DESCRIPTION="VNC server"
 HOMEPAGE="http://www.gnome.org"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~mips ~hppa ~ia64 ~alpha ~ppc64"
+KEYWORDS="alpha amd64 hppa ia64 mips ppc ~ppc64 sparc x86"
 #IUSE="jpeg zlib gnutls crypt"
 IUSE="jpeg gnutls crypt"
 
@@ -33,9 +33,9 @@ USE_DESTDIR="1"
 
 G2CONF="${G2CONF} \
 	--with-zlib \
-	`use_with jpeg` \
-	`use_enable gnutls` \
-	`use_enable crypt gcrypt`"
-#	`use_with zlib` \
+	$(use_with jpeg) \
+	$(use_enable gnutls) \
+	$(use_enable crypt gcrypt)"
+#	$(use_with zlib) \
 
 DOCS="AUTHORS ChangeLog NEWS README"

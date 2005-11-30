@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/redhat-artwork/redhat-artwork-0.122.1-r1.ebuild,v 1.1 2005/04/06 13:48:57 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/redhat-artwork/redhat-artwork-0.122.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:51:41 chriswhite Exp $
 
 inherit eutils rpm versionator kde-functions
 
@@ -11,7 +11,7 @@ SRC_URI="http://download.fedora.redhat.com/pub/fedora/linux/core/development/SRP
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~amd64"
+KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
 IUSE="gtk kde xmms"
 
 RDEPEND=">=x11-libs/gtk+-2.0
@@ -115,9 +115,10 @@ src_install () {
 	sed -i -e 's|Screenshot=|#Screenshot=|' GdmGreeterTheme.desktop
 
 	# move cursors to /usr/share/cursors/${X11_IMPL}
-	X11_IMPLEM_P="$(best_version virtual/x11)"
-	X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
-	X11_IMPLEM="${X11_IMPLEM##*\/}"
+	#X11_IMPLEM_P="$(best_version virtual/x11)"
+	#X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
+	#X11_IMPLEM="${X11_IMPLEM##*\/}"
+	X11_IMPLEM="xorg-x11"
 
 	for x in Bluecurve Bluecurve-inverse; do
 		dodir /usr/share/cursors/${X11_IMPLEM}/${x}

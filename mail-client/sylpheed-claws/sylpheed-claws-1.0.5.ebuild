@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws/sylpheed-claws-1.0.5.ebuild,v 1.1 2005/07/05 23:04:21 genone Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws/sylpheed-claws-1.0.5.ebuild,v 1.1.1.1 2005/11/30 09:49:48 chriswhite Exp $
 
 IUSE="nls gnome dillo crypt spell imlib ssl ldap ipv6 pda clamav pdflib maildir xface kde" # mbox
 
@@ -12,13 +12,13 @@ PGP_VERSION="pgpinline-0.5"
 MAILDIR_VERSION="maildir-0.7"
 
 DESCRIPTION="Bleeding edge version of Sylpheed"
-HOMEPAGE="http://sylpheed-claws.sf.net"
+HOMEPAGE="http://claws.sylpheed.org"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 #SRC_URI="mirror://gentoo/${P}.tar.bz2 http://dev.gentoo.org/~genone/distfiles/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha ~ppc64"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 COMMONDEPEND="=x11-libs/gtk+-1.2*
 	pda? ( >=app-pda/jpilot-0.99 )
@@ -26,6 +26,7 @@ COMMONDEPEND="=x11-libs/gtk+-1.2*
 	ldap? ( >=net-nds/openldap-2.0.7 )
 	crypt? ( =app-crypt/gpgme-0.3.14-r1 )
 	dillo? ( www-client/dillo )
+	clamav? ( app-antivirus/clamav )
 	gnome? ( >=media-libs/gdk-pixbuf-0.16 )
 	imlib? ( >=media-libs/imlib-1.9.10 )
 	spell? ( virtual/aspell-dict )

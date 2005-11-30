@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Date-Calc/Date-Calc-5.4.ebuild,v 1.1 2004/10/19 10:19:52 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Date-Calc/Date-Calc-5.4.ebuild,v 1.1.1.1 2005/11/30 09:52:35 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,13 +10,12 @@ SRC_URI="mirror://cpan/authors/id/STBEY/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 s390 sparc x86"
 IUSE=""
 
-SRC_TEST="do"
-
 DEPEND=">=dev-perl/Bit-Vector-6.4
-		>=dev-perl/Carp-Clan-5.3"
+	>=dev-perl/Carp-Clan-5.3"
 
+SRC_TEST="do"
 export OPTIMIZE="$CFLAGS"
 mydoc="ToDo"

@@ -1,6 +1,62 @@
 # ChangeLog for dev-perl/XML-XSLT
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-XSLT/ChangeLog,v 1.1 2002/02/01 21:53:28 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-XSLT/ChangeLog,v 1.1.1.1 2005/11/30 09:52:40 chriswhite Exp $
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> XML-XSLT-0.48.ebuild:
+  add ~ia64
+
+  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
+  XML-XSLT-0.40-r1.ebuild, XML-XSLT-0.40.ebuild, XML-XSLT-0.45.ebuild,
+  XML-XSLT-0.48.ebuild:
+  bug 76590
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> XML-XSLT-0.45.ebuild:
+  Marked stable on amd64.
+
+*XML-XSLT-0.48 (11 Jun 2004)
+
+  11 Jun 2004; Michael Cummings <mcummings@gentoo.org> XML-XSLT-0.48.ebuild:
+  new version on cpan
+
+  27 May 2004; Bryan Østergaard <kloeri@gentoo.org> XML-XSLT-0.45.ebuild:
+  Stable on alpha.
+
+  18 Apr 2004; Jason Wever <weeve@gentoo.org> XML-XSLT-0.45.ebuild:
+  Stable on sparc.
+
+  30 Mar 2004; Lars Weiler <pylon@gentoo.org> XML-XSLT-0.45.ebuild:
+  stable on ppc
+
+  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> XML-XSLT-0.45.ebuild:
+  unmasking after 208 days
+
+*XML-XSLT-0.45 (03 Aug 2003)
+
+  03 Aug 2003; Michael Cummings <mcummings@gentoo.org> XML-XSLT-0.45.ebuild:
+  CPAN Version bump
+
+*XML-XSLT-0.40-r1 (21 Jun 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
+  forced version bump to install into correct locations
+
+*XML-XSLT-0.40 (6 May 2002)
+
+  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> XML-XSLT-0.40.ebuild :
+
+  Added ppc to KEYWORDS. 
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> XML-XSLT-0.40.ebuild
+  files/digest-XML-XSLT-0.40 :
+
+  Version bump.
 
 *XML-XSLT-0.31 (1 Feb 2002)
 

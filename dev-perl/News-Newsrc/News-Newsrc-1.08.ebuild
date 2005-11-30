@@ -1,16 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/News-Newsrc/News-Newsrc-1.08.ebuild,v 1.1 2003/12/24 05:10:26 rac Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/News-Newsrc/News-Newsrc-1.08.ebuild,v 1.1.1.1 2005/11/30 09:53:12 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="Manage newsrc files"
-SRC_URI="http://cpan.org/modules/by-module/News/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/S/SW/SWMCD/${P}.tar.gz"
 HOMEPAGE="http://cpan.org/modules/by-module/News/${P}.readme"
 IUSE=""
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~amd64 ~hppa"
+LICENSE="|| ( Artistic GPL-2 )"
+KEYWORDS="alpha ~amd64 ~hppa ia64 ~ppc sparc x86"
 SRC_TEST="do"
-newdepend ">=dev-perl/Set-IntSpan-1.07"
-
+DEPEND=">=dev-perl/Set-IntSpan-1.07"

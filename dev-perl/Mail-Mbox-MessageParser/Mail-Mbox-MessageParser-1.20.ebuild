@@ -1,21 +1,21 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-Mbox-MessageParser/Mail-Mbox-MessageParser-1.20.ebuild,v 1.1 2004/08/06 01:25:40 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-Mbox-MessageParser/Mail-Mbox-MessageParser-1.20.ebuild,v 1.1.1.1 2005/11/30 09:53:19 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Manipulation of electronic mail addresses"
-SRC_URI="http://www.cpan.org/modules/by-module/Mail/DCOPPIT/${P}.tar.gz"
+SRC_URI="mirror://cpan/authors/id/D/DC/DCOPPIT/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/~dcoppit/${P}/"
+IUSE=""
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc amd64 sparc"
 
 DEPEND="${DEPEND}
 	dev-perl/FileHandle-Unget"
 
 src_compile() {
-        echo "" | perl-module_src_compile
+	echo "" | perl-module_src_compile
 }

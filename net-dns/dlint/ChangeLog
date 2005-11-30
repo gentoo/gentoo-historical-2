@@ -1,7 +1,40 @@
 # ChangeLog for net-dns/dlint
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dlint/ChangeLog,v 1.1 2002/06/29 00:55:03 bangert Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dlint/ChangeLog,v 1.1.1.1 2005/11/30 09:50:14 chriswhite Exp $
 
+  03 Oct 2005; Andrej Kacian <ticho@gentoo.org> dlint-1.4.0-r1.ebuild,
+  dlint-1.4.0-r2.ebuild:
+  Do not install generic COPYING file.
+
+  03 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> dlint-1.4.0-r2.ebuild:
+  Stable on sparc wrt Ticho
+
+*dlint-1.4.0-r2 (03 Mar 2005)
+
+  03 Mar 2005; Andrej Kacian <ticho@gentoo.org> +dlint-1.4.0-r2.ebuild:
+  Fixed 'tail +/usr/share/mc/bin/mc.sh' occurances not caught by
+  fixheadtails.eclass. Thanks to Heiko Helmle <helman@gmx.de> for reporting.
+  Closes bug 83932.
+
+  17 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> dlint-1.4.0-r1.ebuild:
+  Stable on sparc
+
+  17 Jan 2005; Andrej Kacian <ticho@gentoo.org> dlint-1.4.0-r1.ebuild:
+  Stable on x86.
+
+  14 Jan 2005; Andrej Kacian <ticho@gentoo.org> dlint-1.4.0-r1.ebuild:
+  Use fixheadtails.eclass instead of arbitrary sed calls. Fix changelog.
+
+*dlint-1.4.0-r1 (19 Oct 2004)
+
+  19 Oct 2004; Andrej Kacian <ticho@gentoo.org> :
+  Fix deprecated use of head(1) and tail(1). Closes #67995, reported by Ray
+  Booysen <bugzilla.gentoo@rjb.za.net>. Also, optimized the ebuild a bit.
+  Added sys-apps/coreutils to DEPEND, since head and tail are provided by that
+  package. And finally, set myself as maintainer for dlint.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *dlint-1.4.0 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
