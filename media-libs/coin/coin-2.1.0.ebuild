@@ -1,16 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/coin/coin-2.1.0.ebuild,v 1.1 2003/07/20 13:48:25 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/coin/coin-2.1.0.ebuild,v 1.1.1.1 2005/11/30 10:04:07 chriswhite Exp $
 
 MY_P=${P/c/C}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="An OpenSource implementation of SGI's OpenInventor"
+HOMEPAGE="http://www.coin3d.org/"
 SRC_URI="ftp://ftp.coin3d.org/pub/coin/src/${MY_P}.tar.gz"
-HOMEPAGE="http://www.coin3d.org"
 
+LICENSE="GPL-2"
 SLOT="0"
-LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 sparc"
+IUSE="X"
 
 DEPEND="virtual/x11
 	virtual/opengl"
@@ -20,7 +21,7 @@ src_compile() {
 	emake || die
 }
 
-src_install () {
+src_install() {
 	# Note that this is slightly different from einstall
 	make DESTDIR=${D} \
 		prefix=/usr \

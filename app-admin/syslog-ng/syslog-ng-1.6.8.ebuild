@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-1.6.8.ebuild,v 1.1 2005/05/26 21:36:58 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-1.6.8.ebuild,v 1.1.1.1 2005/11/30 09:59:47 chriswhite Exp $
+
+inherit fixheadtails
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
@@ -8,7 +10,7 @@ SRC_URI="http://www.balabit.com/downloads/syslog-ng/${PV%.*}/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 IUSE="hardened selinux static tcpd"
 
 RDEPEND=">=dev-libs/libol-0.3.16
@@ -20,6 +22,8 @@ PROVIDE="virtual/logger"
 
 src_unpack() {
 	unpack ${A}
+	cd "${S}"
+	ht_fix_file configure
 	cd "${S}/doc/sgml"
 	tar xzf syslog-ng.html.tar.gz || die "tar failed"
 }

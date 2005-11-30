@@ -1,34 +1,32 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author AJ Lewis <aj@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-admin/whowatch/whowatch-1.5.2.ebuild,v 1.1 2001/06/28 14:27:19 roadrunner Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/whowatch/whowatch-1.5.2.ebuild,v 1.1.1.1 2005/11/30 09:59:45 chriswhite Exp $
 
-#P=
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
-DESCRIPTION="an interactive who-like program that displays information
-about the users currently logged on to the machine, in real time."
-SRC_URI="http://wizard.ae.krakow.pl/~mike/download/${A}"
+inherit eutils
+
+DESCRIPTION="interactive who-like program that displays information about users currently logged on in real time"
 HOMEPAGE="http://wizard.ae.krakow.pl/~mike/"
+SRC_URI="http://wizard.ae.krakow.pl/~mike/download/${P}.tar.gz"
 
-DEPEND=""
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 ppc sparc x86"
+IUSE=""
+
+DEPEND="sys-libs/ncurses"
 
 src_unpack() {
-   unpack ${A}
-   cd ${S}
-   try patch -p1 < ${FILESDIR}/${PF}-gentoo.diff
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PF}-gentoo.diff
 }
 
 src_compile() {
-
-    try ./configure --prefix=/usr --host=${CHOST}
-    try make
-
+	econf || die "econf failed"
+	make || die
 }
 
-src_install () {
-
-    try make prefix=${D}/usr mandir=${DIR}/usr/share/man install
-
+src_install() {
+	einstall || die
+	dodoc AUTHORS ChangeLog KEYS NEWS README TODO VERSION
 }
-

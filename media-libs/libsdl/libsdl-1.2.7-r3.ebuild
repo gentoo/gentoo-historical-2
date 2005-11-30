@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.7-r3.ebuild,v 1.1 2004/10/01 00:26:46 kugelfang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.7-r3.ebuild,v 1.1.1.1 2005/11/30 10:04:17 chriswhite Exp $
 
-inherit fixheadtails eutils gnuconfig
+inherit toolchain-funcs fixheadtails eutils gnuconfig flag-o-matic
 
 DESCRIPTION="Simple Direct Media Layer"
 HOMEPAGE="http://www.libsdl.org/"
@@ -10,11 +10,11 @@ SRC_URI="http://www.libsdl.org/release/SDL-${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="oss alsa esd arts nas X dga xv xinerama fbcon directfb ggi svga aalib opengl libcaca noaudio novideo nojoystick"
 # if you disable audio/video/joystick and something breaks, you pick up the pieces
 
-RDEPEND=">=media-libs/audiofile-0.1.9
+RDEPEND="!noaudio? ( >=media-libs/audiofile-0.1.9 )
 	alsa? ( media-libs/alsa-lib )
 	esd? ( >=media-sound/esound-0.2.19 )
 	arts? ( kde-base/arts )
@@ -29,7 +29,7 @@ RDEPEND=">=media-libs/audiofile-0.1.9
 DEPEND="${RDEPEND}
 	x86? ( dev-lang/nasm )"
 
-S="${WORKDIR}/SDL-${PV}"
+S=${WORKDIR}/SDL-${PV}
 
 pkg_setup() {
 	if use noaudio || use novideo || use nojoystick ; then
@@ -43,13 +43,15 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
-	epatch ${FILESDIR}/${PV}-nobuggy-X.patch #30089
-	epatch ${FILESDIR}/${PV}-libcaca.patch #40224
-	epatch ${FILESDIR}/${PV}-gcc34.patch #48947
-	epatch ${FILESDIR}/${PV}-joystick2.patch #52833
-	epatch ${FILESDIR}/${PV}-26headers.patch #58192
+	epatch "${FILESDIR}/${PV}-nobuggy-X.patch" #30089
+	epatch "${FILESDIR}/${PV}-libcaca.patch" #40224
+	[ "$(gcc-major-version)" != "2" ] \
+		&& epatch "${FILESDIR}/${PV}-gcc34.patch" #48947
+	epatch "${FILESDIR}/${PV}-joystick2.patch" #52833
+	epatch "${FILESDIR}/${PV}-26headers.patch" #58192
+	epatch "${FILESDIR}"/1.2.8-keyrepeat.patch #76448
 
 	ht_fix_file configure.in
 
@@ -60,12 +62,12 @@ src_unpack() {
 	fi
 
 	./autogen.sh || die "autogen failed"
-
+	epunt_cxx
 	gnuconfig_update
 }
 
 src_compile() {
-	local myconf=""
+	local myconf=
 	use noaudio && myconf="${myconf} --disable-audio"
 	use novideo \
 		&& myconf="${myconf} --disable-video" \
@@ -78,11 +80,14 @@ src_compile() {
 		# dependency loop, only link against DirectFB if it
 		# isn't broken #61592
 		echo 'int main(){}' > directfb-test.c
-		$(gcc-getCC) directfb-test.c -ldirectfb 2>/dev/null \
+		$(tc-getCC) directfb-test.c -ldirectfb 2>/dev/null \
 			&& directfbconf="--enable-video-directfb" \
 			|| ewarn "Disabling DirectFB since libdirectfb.so is broken"
 	fi
 	myconf="${myconf} ${directfbconf}"
+
+	# filter -fomit-frame-pointer as per bug #82618
+	filter-flags -fomit-frame-pointer
 
 	econf \
 		--enable-events \
@@ -115,9 +120,9 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 	preplib
-	# Bug 34804
+	# Bug 34804; $(get_libdir) fixed BUG #65495
 	sed -i \
-		-e "s:-pthread::g" "${D}/usr/lib/libSDL.la" \
+		-e "s:-pthread::g" "${D}/usr/$(get_libdir)/libSDL.la" \
 		|| die "sed failed"
 	dodoc BUGS CREDITS README README-SDL.txt README.CVS TODO WhatsNew
 	dohtml -r ./

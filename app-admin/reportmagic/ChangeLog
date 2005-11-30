@@ -1,6 +1,31 @@
 # ChangeLog for app-admin/reportmagic
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/reportmagic/ChangeLog,v 1.1 2004/04/28 10:22:39 aliz Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/reportmagic/ChangeLog,v 1.1.1.1 2005/11/30 10:00:09 chriswhite Exp $
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  reportmagic-2.21.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  reportmagic-2.21.ebuild:
+  dev-perl/File-Spec => perl-core/File-Spec migration
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> reportmagic-2.21.ebuild:
+  stable on amd64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  reportmagic-2.21.ebuild:
+  Masked reportmagic-2.21.ebuild stable for ppc
+
+  20 Jun 2004; <pyrania@gentoo.org> reportmagic-2.21.ebuild:
+  Stable on x86.
+
+  24 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  reportmagic-2.21.ebuild:
+  fix DESCRIPTION - Peter Jensen (bug #51382); error check sed; tidy
+
+  28 Apr 2004; David Holm <dholm@gentoo.org> reportmagic-2.21.ebuild:
+  Added to ~ppc.
 
 *reportmagic-2.21 (28 Apr 2004)
 

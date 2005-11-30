@@ -1,6 +1,10 @@
 # ChangeLog for games-action/shootingstar
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/shootingstar/ChangeLog,v 1.1 2004/02/23 12:33:46 mr_bones_ Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/shootingstar/ChangeLog,v 1.1.1.1 2005/11/30 10:02:35 chriswhite Exp $
+
+  26 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/1.2.0-gcc34.patch, shootingstar-1.2.0.ebuild:
+  Add patch from Loz Hygate to address gcc 3.4 compile (bug #58287)
 
 *shootingstar-1.2.0 (23 Feb 2004)
 

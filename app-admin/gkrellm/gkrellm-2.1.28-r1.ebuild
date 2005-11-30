@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gkrellm/gkrellm-2.1.28-r1.ebuild,v 1.1 2004/04/11 06:04:07 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gkrellm/gkrellm-2.1.28-r1.ebuild,v 1.1.1.1 2005/11/30 09:59:44 chriswhite Exp $
+
+inherit eutils
 
 S=${WORKDIR}/${P/a/}
 DESCRIPTION="Single process stack of various system monitors"
@@ -9,18 +11,19 @@ SRC_URI="http://web.wt.net/~billw/gkrellm/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="x86 ~ppc ~alpha ~sparc ~hppa ~amd64 ~ia64"
+KEYWORDS="x86 ppc alpha sparc hppa amd64 ~ia64"
 IUSE="X nls ssl"
 
 DEPEND=">=sys-apps/sed-4
 	ssl? ( dev-libs/openssl )
-	X? (  >=x11-libs/gtk+-2.0.5 )"
+	X? (  >=x11-libs/gtk+-2.0.5 )
+	!X? ( =dev-libs/glib-1* )"
 RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_compile() {
 	local myconf
-	if [ ! "`use nls`" ]; then
+	if ! use nls; then
 		sed -i "s:enable_nls=1:enable_nls=0:" Makefile
 	fi
 

@@ -1,18 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vqadmin/vqadmin-2.3.6.ebuild,v 1.1 2004/01/05 09:48:33 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vqadmin/vqadmin-2.3.6.ebuild,v 1.1.1.1 2005/11/30 10:03:27 chriswhite Exp $
 
 inherit gnuconfig
 
-S=${WORKDIR}/${P}
 DESCRIPTION="A web based control pannel to manage Virtual Qmail Domains. Works with qmailadmin"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.inter7.com/${PN}"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc ~sparc"
+IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
 DEPEND=">=net-mail/vpopmail-5.3
-		net-mail/qmail"
+		mail-mta/qmail"
 RDEPEND="${DEPEND}
 	net-mail/qmailadmin
 	net-www/apache"
@@ -95,7 +95,7 @@ src_install () {
 #require valid-user
 #satisfy any
 #EOF
-#	# Tightening Permissions 
+#	# Tightening Permissions
 #	chown apache.apache ${REAL_CGIBINDIR}/vqadmin/.htaccess
 #	chmod 600 ${REAL_CGIBINDIR}/vqadmin/.htaccess
 #

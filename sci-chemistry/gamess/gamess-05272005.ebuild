@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gamess/gamess-05272005.ebuild,v 1.1 2005/09/20 02:20:37 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gamess/gamess-05272005.ebuild,v 1.1.1.1 2005/11/30 10:00:47 chriswhite Exp $
 
 inherit eutils toolchain-funcs fortran
 

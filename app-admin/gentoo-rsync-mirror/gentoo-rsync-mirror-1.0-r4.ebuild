@@ -1,18 +1,21 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gentoo-rsync-mirror/gentoo-rsync-mirror-1.0-r4.ebuild,v 1.1 2004/08/30 23:38:09 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gentoo-rsync-mirror/gentoo-rsync-mirror-1.0-r4.ebuild,v 1.1.1.1 2005/11/30 09:59:46 chriswhite Exp $
 
-IUSE=""
-S=${WORKDIR}/gentoo-rsync-mirror-${PV}
 DESCRIPTION="Ebuild for setting up a Gentoo rsync mirror"
 HOMEPAGE="http://www.gentoo.org/doc/en/rsync.xml"
+SRC_URI=""
 
-DEPEND="virtual/glibc"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 alpha ppc sparc x86 ~hppa ~ppc64"
+IUSE=""
+
+DEPEND="virtual/libc"
 RDEPEND="net-misc/rsync
 	dev-lang/perl"
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha amd64"
+
+S=${WORKDIR}/gentoo-rsync-mirror-${PV}
 
 src_install() {
 	dodir /opt/gentoo-rsync
@@ -23,8 +26,6 @@ src_install() {
 	doins ${FILESDIR}/rsyncd.motd
 	doins ${FILESDIR}/gentoo-mirror.conf
 	dodir /opt/gentoo-rsync/portage
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/rsyncd.init rsyncd
 }
 
 pkg_postinst() {
@@ -50,4 +51,3 @@ pkg_postinst() {
 	einfo
 	einfo "For more information visit: http://www.gentoo.org/doc/en/rsync.xml"
 }
-

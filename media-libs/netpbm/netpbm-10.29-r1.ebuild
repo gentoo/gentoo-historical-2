@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/netpbm/netpbm-10.29-r1.ebuild,v 1.1 2005/09/27 01:14:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/netpbm/netpbm-10.29-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:48 chriswhite Exp $
 
-inherit flag-o-matic toolchain-funcs eutils
+inherit flag-o-matic toolchain-funcs eutils multilib
 
 DESCRIPTION="A set of utilities for converting to/from the netpbm (and related) formats"
 HOMEPAGE="http://netpbm.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~alpha ~amd64 hppa ~ia64 ~mips ~ppc ~sparc ~x86"
 IUSE="svga jpeg tiff png zlib"
 
 DEPEND="jpeg? ( >=media-libs/jpeg-6b )
@@ -23,8 +23,24 @@ DEPEND="jpeg? ( >=media-libs/jpeg-6b )
 	media-libs/jasper
 	media-libs/urt"
 
+netpbm_libtype() {
+	case ${CHOST} in
+		*-darwin*) echo dylib;;
+		*)         echo unixshared;;
+	esac
+}
+netpbm_libsuffix() {
+	local suffix=$(get_libname)
+	echo ${suffix//\.}
+}
+netpbm_ldshlib() {
+	case ${CHOST} in
+		*-darwin*) echo '-dynamiclib -install_name $(SONAME)';;
+		*)         echo '-shared -Wl,-soname,$(SONAME)';;
+	esac
+}
 netpbm_config() {
-	use $1 && echo ${2:-lib$1.so} || echo NONE
+	use $1 && echo -l${2:-$1} || echo NONE
 }
 
 src_unpack() {
@@ -34,6 +50,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/netpbm-10.29-anytopnm.patch #105127
 	epatch "${FILESDIR}"/netpbm-10.29-pnmtopng-alpha-check.patch #104434
 	epatch "${FILESDIR}"/netpbm-10.29-build.patch
+	epatch "${FILESDIR}"/netpbm-10.29-infinity.patch
 
 	rm -f configure
 	cp Makefile.config.in Makefile.config
@@ -46,20 +63,24 @@ src_unpack() {
 	STRIPFLAG =
 	CFLAGS_SHLIB = -fPIC
 
+	NETPBMLIBTYPE = $(netpbm_libtype)
+	NETPBMLIBSUFFIX = $(netpbm_libsuffix)
+	LDSHLIB = $(netpbm_ldshlib)
+
 	# Gentoo build options
 	TIFFLIB = $(netpbm_config tiff)
 	JPEGLIB = $(netpbm_config jpeg)
 	PNGLIB = $(netpbm_config png)
-	ZLIB = $(netpbm_config zlib libz.so)
-	LINUXSVGALIB = $(netpbm_config svga libvga.so)
+	ZLIB = $(netpbm_config zlib z)
+	LINUXSVGALIB = $(netpbm_config svga vga)
 
 	# Use system versions instead of bundled
-	JBIGLIB = libjbig.a
+	JBIGLIB = -ljbig
 	JBIGHDR_DIR =
-	JASPERLIB = libjasper.so
+	JASPERLIB = -ljasper
 	JASPERHDR_DIR =
-	URTLIB = librle.a
-	URTHDR_DIR = /usr/include/urt
+	URTLIB = -lrle
+	URTHDR_DIR =
 	EOF
 
 	# Sparc support ...

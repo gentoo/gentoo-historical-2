@@ -1,8 +1,48 @@
 # ChangeLog for app-admin/gps
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gps/ChangeLog,v 1.1 2002/10/31 18:27:14 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gps/ChangeLog,v 1.1.1.1 2005/11/30 09:59:52 chriswhite Exp $
+
+  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> gps-1.1.0-r1.ebuild:
+  Fixed dodoc not to install INSTALL.
+
+  08 Apr 2005; Seemant Kulleen <seemant@gentoo.org> -gps-1.1.0.ebuild,
+  gps-1.1.0-r1.ebuild:
+  added a nouserpriv restriction to the ebuild, which should hopefully solve
+  bug #71396 by Klaus Kusche <Klaus.Kusche@inode.at>
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> gps-1.1.0-r1.ebuild:
+  Stable on ppc.
+
+  17 Jan 2005; Simon Stelling <blubb@gentoo.org> gps-1.1.0-r1.ebuild:
+  stable on amd64
+
+  30 Dec 2004; Seemant Kulleen <seemant@gentoo.org>
+  -files/gps-1.1.0-gentoo.bz2, gps-1.1.0-r1.ebuild:
+  move patch to distfiles mirrors
+
+*gps-1.1.0-r1 (30 Dec 2004)
+
+  30 Dec 2004; Seemant Kulleen <seemant@gentoo.org>
+  +files/gps-1.1.0-gentoo.bz2, +gps-1.1.0-r1.ebuild:
+  several fixes and cleanups including docs dir and compile warnings. Also,
+  should fix bug #71396 by Klaus Kusche <Klaus.Kusche@inode.at>
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> gps-1.1.0.ebuild:
+  Masked gps-1.1.0.ebuild stable for ppc
+
+  23 Jul 2004; Travis Tilley <lv@gentoo.org> gps-1.1.0.ebuild:
+  stable on amd64
+
+  02 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> gps-1.1.0.ebuild:
+  Marked ~amd64.
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gps-1.1.0.ebuild:
+  Don't assign default to S; header fix
 
 *gps-1.1.0 (31 Oct 2002)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> gps-1.1.0.ebuild
+  Moving this to unstable ppc
 
   31 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gps-1.1.0.ebuild
   ChangeLog files/digest-gps-1.1.0 :

@@ -1,6 +1,103 @@
 # ChangeLog for net-mail/lbdb
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-mail/lbdb/ChangeLog,v 1.1 2002/02/01 21:53:34 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/lbdb/ChangeLog,v 1.1.1.1 2005/11/30 10:03:09 chriswhite Exp $
+
+*lbdb-0.31 (09 Nov 2005)
+
+  09 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> +lbdb-0.31.ebuild:
+  version bump
+
+  30 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  -files/lbdb-configure-in.patch, -lbdb-0.29.ebuild, -lbdb-0.29-r1.ebuild:
+  cleanup old versions
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> lbdb-0.30.ebuild:
+  Stable on ppc.
+
+  13 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> lbdb-0.30.ebuild:
+  fully replace gnome use flag with evo and use get_libdir. also merge both
+  DEPEND vars. All of them spotted by Torsten Veller <tove@gentoo.org>
+
+  10 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> lbdb-0.30.ebuild:
+  Stable on sparc
+
+  07 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> lbdb-0.30.ebuild:
+  fix evolution-addressbbook-export checking (2nd round) wrt bug #95291
+
+  31 May 2005; Fernando J. Pereda <ferdy@gentoo.org> lbdb-0.30.ebuild:
+  Replace gnome with evo use flag (fixes bug #94603) and fix
+  evolution-addressbook-export checking (fixes bug #94602). Thanks to Samuel
+  Tardieu <sam@rfc1149.net>. Stable on alpha
+
+  30 May 2005; Fernando J. Pereda <ferdy@gentoo.org> lbdb-0.30.ebuild:
+  Stable on x86
+
+  15 May 2005; Fernando J. Pereda <ferdy@gentoo.org> lbdb-0.29-r1.ebuild,
+  lbdb-0.30.ebuild:
+  marked ~alpha
+
+  11 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> lbdb-0.29-r1.ebuild:
+  Stable on sparc
+
+*lbdb-0.30 (09 May 2005)
+
+  09 May 2005; Fernando J. Pereda <ferdy@gentoo.org> -lbdb-0.26-r1.ebuild,
+  -lbdb-0.28.ebuild, +lbdb-0.30.ebuild:
+  Version bump. Remove old ebuilds. Mark 0.29-r1 x86 stable
+
+  20 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> lbdb-0.29.ebuild:
+  Stable on ppc.
+
+*lbdb-0.29-r1 (26 Mar 2005)
+
+  26 Mar 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/lbdb-configure-in.patch, +lbdb-0.29-r1.ebuild:
+  Improve useflag/deps handling wrt 24674
+
+  18 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> lbdb-0.29.ebuild:
+  Stable on sparc
+
+  14 Jan 2005; Andrej Kacian <ticho@gentoo.org> lbdb-0.28.ebuild,
+  lbdb-0.29.ebuild:
+  Stable on x86.
+
+*lbdb-0.29 (04 Sep 2004)
+
+  04 Sep 2004; Andrej Kacian <ticho@gentoo.org> lbdb-0.26-r1.ebuild,
+  lbdb-0.28.ebuild, +lbdb-0.29.ebuild:
+  Version bump. Reported by Daniel Webert <rockoo@rockoo.homelinux.org>, closes
+  #49783.
+
+  04 Sep 2004; Andrej Kacian <ticho@gentoo.org> lbdb-0.26-r1.ebuild:
+  Corrected HOMEPAGE. Reported by Daniel Webert <rockoo@rockoo.homelinux.org>,
+  closes #49781.
+
+*lbdb-0.28 (14 Dec 2003)
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> lbdb-0.28.ebuild:
+  Make stable on ppc
+
+  13 Sep 2003; Robin H. Johnson <robbat2@gentoo.org> :
+  version bump
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*lbdb-0.26-r1 (16 Jul 2002)
+
+  02 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> libdb-0.26-r1.ebuild :
+
+  Added ppc to KEYWORDS. 
+
+  16 Jul 2002; Seemant Kulleen <seemant@gentoo.org> libdb-0.26-r1.ebuild
+  files/digest-lbdb-0.26-r1 :
+
+  Added USE dependent p5-Palm DEPEND in list.
+
+*lbdb-0.26 (10 Jul 2002)
+
+  10 Jul 2002; Nick Hadaway <raker@gentoo.org> lbdb-0.26.ebuild
+
+  Version bump.
 
 *lbdb-0.24 (1 Feb 2002)
 

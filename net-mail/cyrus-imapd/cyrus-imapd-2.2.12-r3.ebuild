@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.2.12-r3.ebuild,v 1.1 2005/07/20 16:51:52 strerror Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.2.12-r3.ebuild,v 1.1.1.1 2005/11/30 10:03:20 chriswhite Exp $
 
 inherit eutils ssl-cert gnuconfig fixheadtails
 

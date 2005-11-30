@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/devil/devil-1.6.6-r2.ebuild,v 1.1 2004/05/30 06:53:10 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/devil/devil-1.6.6-r2.ebuild,v 1.1.1.1 2005/11/30 10:04:29 chriswhite Exp $
 
 inherit eutils libtool
 
@@ -50,5 +50,5 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc AUTHORS BUGS CREDITS ChangeLog* INSTALL NEWS* README*
+	dodoc AUTHORS BUGS CREDITS ChangeLog* NEWS* README*
 }

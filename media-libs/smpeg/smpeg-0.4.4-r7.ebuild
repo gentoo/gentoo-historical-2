@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/smpeg/smpeg-0.4.4-r7.ebuild,v 1.1 2005/10/04 23:22:02 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/smpeg/smpeg-0.4.4-r7.ebuild,v 1.1.1.1 2005/11/30 10:03:46 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 

@@ -1,17 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/rrs/rrs-1.70.ebuild,v 1.1 2004/06/04 08:08:32 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/rrs/rrs-1.70.ebuild,v 1.1.1.1 2005/11/30 10:00:20 chriswhite Exp $
 
 DESCRIPTION="Reverse Remote Shell"
 HOMEPAGE="http://www.cycom.se/dl/rrs"
 SRC_URI="http://www.cycom.se/uploads/36/19/${P}.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc"
 IUSE="ssl"
 
 DEPEND="ssl? ( dev-libs/openssl )
-	virtual/glibc"
+	virtual/libc"
 
 src_compile() {
 	local target=""
@@ -22,7 +23,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin rrs
+	dobin rrs || die
 	dodoc CHANGES README
 	doman rrs.1
 }

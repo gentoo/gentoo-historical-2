@@ -1,6 +1,30 @@
 # ChangeLog for gnustep-apps/preview
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/preview/ChangeLog,v 1.1 2004/10/13 01:29:27 fafhrd Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/preview/ChangeLog,v 1.1.1.1 2005/11/30 10:02:18 chriswhite Exp $
+
+*preview-0.7.5 (12 Jan 2005)
+
+  12 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org> +preview-0.7.5.ebuild,
+  -preview-0.7.ebuild:
+  Version bump; pruned old ebuilds
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  preview-0.7.5_pre20041021.ebuild, preview-0.7.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  22 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  preview-0.7.5_pre20041021.ebuild:
+  Tested and keywording for ~x86
+
+*preview-0.7.5_pre20041021 (22 Oct 2004)
+
+  22 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +preview-0.7.5_pre20041021.ebuild:
+  Version bump to new release; cvs pull style ebuild
 
 *preview-0.7 (12 Oct 2004)
 

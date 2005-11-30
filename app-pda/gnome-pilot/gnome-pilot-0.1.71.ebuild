@@ -1,17 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/gnome-pilot-0.1.71.ebuild,v 1.1 2003/08/30 09:36:33 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/gnome-pilot-0.1.71.ebuild,v 1.1.1.1 2005/11/30 10:02:22 chriswhite Exp $
 
 
 DESCRIPTION="Gnome Pilot apps"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/gnome-pilot/0.1/${P}.tar.bz2"
-HOMEPAGE="http://www.gnome.org/gnome-pilot/"
+SRC_URI="mirror://gnome/sources/gnome-pilot/${PV:0:3}/${P}.tar.bz2"
+HOMEPAGE="http://live.gnome.org/GnomePilot"
 
 RDEPEND="dev-lang/perl
 	=gnome-base/control-center-1.4*
 	>=gnome-base/gnome-libs-1.4.1.7
 	=gnome-base/gnome-panel-1.4*
-	>=dev-libs/pilot-link-0.11.0
+	>=app-pda/pilot-link-0.11.0
 	=dev-util/gob-1*
 	=gnome-base/libglade-0.17*"
 
@@ -29,7 +29,8 @@ src_unpack() {
 	cd ${S}
 	# USB patch from Mandrake.  Allows gnome-pilot to watch /dev/pilot even
 	# when it does not yet exist (because of using devfs).
-	patch -p1 < ${FILESDIR}/gnome-pilot-0.1.70-usb.patch
+	epatch ${FILESDIR}/gnome-pilot-0.1.70-usb.patch
+	#epatch ${FILESDIR}/gnome-pilot-0.1.71-logmacro.patch
 }
 
 src_compile() {
@@ -43,15 +44,15 @@ src_compile() {
 	use nls \
 		&& myconf="--enable-nls" \
 		|| myconf="--disable-nls"
-	
+
 	myconf="${myconf} --enable-usb --with-gnome-libs=/usr/lib"
 
-	
+
 	mkdir intl && touch intl/libgettext.h
-	
+
 	econf ${myconf} || die
-	
-	
+
+
 	emake || die
 }
 

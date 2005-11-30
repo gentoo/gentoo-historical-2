@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/star/star-1.5_alpha62.ebuild,v 1.1 2005/08/02 18:32:25 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/star/star-1.5_alpha62.ebuild,v 1.1.1.1 2005/11/30 10:00:38 chriswhite Exp $
 
 DESCRIPTION="An enhanced (world's fastest) tar, as well as enhanced mt/rmt"
 HOMEPAGE="http://cdrecord.berlios.de/old/private/star.html"

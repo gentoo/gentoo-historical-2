@@ -1,16 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/bzflag/bzflag-1.10.8.20041007.ebuild,v 1.1 2004/11/08 11:38:08 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/bzflag/bzflag-1.10.8.20041007.ebuild,v 1.1.1.1 2005/11/30 10:02:42 chriswhite Exp $
 
+GAMES_USE_SDL="nojoystick"
 inherit flag-o-matic games
 
 DESCRIPTION="OpenGL accelerated 3d tank combat simulator game"
 HOMEPAGE="http://www.BZFlag.org/"
 SRC_URI="mirror://sourceforge/bzflag/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="amd64 ppc x86"
 IUSE="dedicated"
 
 RDEPEND="virtual/libc
@@ -20,7 +21,7 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 	sed -i \
 		-e 's:^CFLAGS=.*::' \
 		-e 's:^CXXFLAGS=.*::' \
@@ -31,15 +32,15 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf="--disable-dependency-tracking"
-
 	if use dedicated ; then
 		ewarn
-		ewarn "You are building a servers-only copy of BZFlag."
+		ewarn "You are building a server-only copy of BZFlag"
 		ewarn
-		egamesconf ${myconf} --disable-client || die
+		egamesconf \
+			--disable-dependency-tracking \
+			--disable-client || die
 	else
-		egamesconf ${myconf} || die
+		egamesconf --disable-dependency-tracking || die
 	fi
 	emake || die "emake failed"
 }

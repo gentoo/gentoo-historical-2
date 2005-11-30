@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/allegro/allegro-4.1.18.ebuild,v 1.1 2005/01/29 08:20:50 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/allegro/allegro-4.1.18.ebuild,v 1.1.1.1 2005/11/30 10:03:55 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
 DESCRIPTION="cross-platform multimedia library"
 HOMEPAGE="http://alleg.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
 LICENSE="Allegro"
 SLOT="0"
 #-amd64, -sparc: inportb, outportb, outportw undefined
-KEYWORDS="~alpha -amd64 ~ia64 ~ppc -sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc -sparc ~x86"
 IUSE="static mmx sse oss alsa esd arts X fbcon svga tetex doc"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
@@ -26,7 +26,9 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-m4.patch
+	epatch "${FILESDIR}"/${P}-gcc4.patch
 	sed -i \
 		-e 's/&_oss_\(numfrags\|fragsize\)/NULL/' \
 		"${S}/setup/setup.c" \

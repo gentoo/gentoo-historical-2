@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-pango/ruby-pango-0.10.1.ebuild,v 1.1 2004/08/18 16:37:58 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-pango/ruby-pango-0.10.1.ebuild,v 1.1.1.1 2005/11/30 10:01:23 chriswhite Exp $
 
 inherit ruby ruby-gnome2
 
 DESCRIPTION="Ruby Pango bindings"
-KEYWORDS="~alpha ~x86 ~ppc ~ia64 ~sparc ~amd64"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE=""
 USE_RUBY="ruby16 ruby18 ruby19"
 DEPEND="${DEPEND} >=x11-libs/pango-1.2.1"

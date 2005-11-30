@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/listings/listings-1.2.ebuild,v 1.1 2004/08/17 23:08:23 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/listings/listings-1.2.ebuild,v 1.1.1.1 2005/11/30 10:00:51 chriswhite Exp $
 
 inherit latex-package
 
@@ -14,7 +14,8 @@ LICENSE="LPPL-1.2"
 
 IUSE=""
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~sparc ~ppc"
+KEYWORDS="x86 ~amd64 ~sparc ppc"
+DEPEND="app-arch/unzip"
 
 # these functions are overridden from the base class because
 # we need to do docs things using texi2dvi in

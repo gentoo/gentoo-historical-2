@@ -1,6 +1,37 @@
 # ChangeLog for sec-policy/selinux-lvm
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-lvm/ChangeLog,v 1.1 2005/02/25 11:31:32 kaiowas Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-lvm/ChangeLog,v 1.1.1.1 2005/11/30 10:02:15 chriswhite Exp $
+
+  18 Sep 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-lvm-20050605.ebuild, selinux-lvm-20050813.ebuild:
+  mark stable
+
+*selinux-lvm-20050813 (20 Aug 2005)
+
+  20 Aug 2005; petre rodan <kaiowas@gentoo.org>
+  +selinux-lvm-20050813.ebuild:
+  merge with upstream
+
+  27 Jun 2005; petre rodan <kaiowas@gentoo.org> selinux-lvm-20050605.ebuild:
+  mark stable
+
+*selinux-lvm-20050605 (26 Jun 2005)
+
+  26 Jun 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-lvm-20050507.ebuild, +selinux-lvm-20050605.ebuild:
+  merge with upstream
+
+*selinux-lvm-20050507 (07 May 2005)
+
+  07 May 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-lvm-20050408.ebuild, +selinux-lvm-20050507.ebuild:
+  merge with upstream
+
+*selinux-lvm-20050408 (23 Apr 2005)
+
+  23 Apr 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-lvm-20050130.ebuild, +selinux-lvm-20050408.ebuild:
+  tiny merge, no semantic diffs
 
 *selinux-lvm-20050130 (25 Feb 2005)
 

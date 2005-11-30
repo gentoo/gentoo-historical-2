@@ -1,21 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/flite/flite-1.2-r1.ebuild,v 1.1 2004/05/31 16:44:48 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/flite/flite-1.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:36 chriswhite Exp $
 
 inherit eutils
-
-IUSE="static"
 
 DESCRIPTION="Flite text to speech engine"
 HOMEPAGE="http://www.speech.cs.cmu.edu/flite/index.html"
 SRC_URI="http://www.speech.cs.cmu.edu/flite/packed/${P}/${P}-release.tar.bz2
 	 http://www.speech.cs.cmu.edu/flite/packed/${P}/${PN}_lexfix.tar.gz"
 
-SLOT="0"
 LICENSE="BSD as-is"
-KEYWORDS="~x86 ~ppc ~amd64"
+SLOT="0"
+KEYWORDS="x86 ppc amd64 sparc"
+IUSE="static"
 
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
 
 S=${WORKDIR}/${P}-release
 
@@ -31,8 +30,8 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf;
-	if ! use static; then
+	local myconf
+	if ! use static ; then
 		myconf="${myconf} --enable-shared"
 	fi
 	myconf="${myconf} --with-vox=cmu_us_kal16"
@@ -42,11 +41,11 @@ src_compile() {
 	emake -j1 || die "Failed compilation"
 }
 
-src_install () {
-	dobin bin/*
-	dodoc ACKNOWLEDGEMENTS README COPYING
+src_install() {
+	dobin bin/* || die
+	dodoc ACKNOWLEDGEMENTS README
 
-	if use static; then
+	if use static ; then
 		dolib.a lib/*.a
 	else
 		for lib in lib/*.so*; do

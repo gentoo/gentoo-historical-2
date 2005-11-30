@@ -1,6 +1,77 @@
 # ChangeLog for dev-ruby/ruby-atk
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-atk/ChangeLog,v 1.1 2004/03/20 15:33:41 agriffis Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-atk/ChangeLog,v 1.1.1.1 2005/11/30 10:01:19 chriswhite Exp $
+
+*ruby-atk-0.14.1 (15 Nov 2005)
+
+  15 Nov 2005; Michael Kohl <citizen428@gentoo.org> +ruby-atk-0.14.1.ebuild:
+  Version bump. See bugs #103470 and #109641.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> ruby-atk-0.12.0.ebuild:
+  stable on ia64
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ruby-atk-0.12.0.ebuild:
+  Stable on ppc.
+
+  02 Aug 2005; Simon Stelling <blubb@gentoo.org> ruby-atk-0.12.0.ebuild:
+  stable on amd64
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> ruby-atk-0.12.0.ebuild:
+  Stable on alpha.
+
+  27 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ruby-atk-0.12.0.ebuild:
+  Stable on sparc
+
+  26 Jun 2005; Mamoru KOMACHI <usata@gentoo.org> -ruby-atk-0.9.1.ebuild,
+  ruby-atk-0.11.0.ebuild, ruby-atk-0.12.0.ebuild:
+  Stable on x86.
+
+  21 May 2005; Jason Wever <weeve@gentoo.org> ruby-atk-0.10.1.ebuild:
+  Stable on SPARC.
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> ruby-atk-0.10.1.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> ruby-atk-0.10.1.ebuild:
+  stable on ia64
+
+*ruby-atk-0.12.0 (13 Mar 2005)
+
+  13 Mar 2005; Michael Kohl <citizen428@gentoo.org> +ruby-atk-0.12.0.ebuild:
+  Version bump.
+
+*ruby-atk-0.11.0 (25 Nov 2004)
+
+  25 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +ruby-atk-0.11.0.ebuild:
+  Version bumped.
+
+  05 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -ruby-atk-0.10.0.ebuild,
+  ruby-atk-0.10.1.ebuild:
+  Stable on x86, alpha and ppc; bug #66274.
+
+*ruby-atk-0.10.1 (19 Aug 2004)
+
+  19 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +ruby-atk-0.10.1.ebuild:
+  Version bumped.
+
+*ruby-atk-0.10.0 (09 Aug 2004)
+
+  09 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +ruby-atk-0.10.0.ebuild:
+  Version bumped.
+
+  03 Jul 2004; Tom Martin <slarti@gentoo.org> ruby-atk-0.9.1.ebuild:
+  Marked ~amd64.
+
+  01 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-atk-0.9.1.ebuild:
+  Stable on x86, alpha and ppc
+
+  30 Jun 2004; Ferris McCormick <fmccor@gentoo.org> ruby-atk-0.9.1.ebuild:
+  Add ~sparc keyword (part of ruby-gnome2-all)
+
+  12 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-atk-0.9.1.ebuild:
+  Added ruby.eclass support
 
 *ruby-atk-0.9.1 (20 Mar 2004)
 

@@ -1,6 +1,18 @@
 # ChangeLog for app-accessibility/at-poke
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/at-poke/ChangeLog,v 1.1 2004/03/18 00:06:56 leonardop Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/at-poke/ChangeLog,v 1.1.1.1 2005/11/30 10:04:39 chriswhite Exp $
+
+  10 Oct 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Added metadata.xml longdescription in english and japanese.
+
+  22 Jul 2005; David Holm <dholm@gentoo.org> at-poke-0.2.2.ebuild:
+  Added to ~ppc.
+
+  28 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> at-poke-0.2.2.ebuild:
+  Stable on sparc
+
+  18 Apr 2004; L. Boshell <leonardop@gentoo.org> at-poke-0.2.2.ebuild:
+  Marked stable on x86.
 
   17 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> at-poke-0.2.1.ebuild:
   stable on sparc

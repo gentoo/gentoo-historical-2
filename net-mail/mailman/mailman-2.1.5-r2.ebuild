@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailman/mailman-2.1.5-r2.ebuild,v 1.1 2004/07/28 23:27:02 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailman/mailman-2.1.5-r2.ebuild,v 1.1.1.1 2005/11/30 10:03:17 chriswhite Exp $
 
 inherit eutils
 IUSE="apache2"
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.list.org/"
 
 SLOT="O"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~sparc ~ppc ~amd64"
+KEYWORDS="x86 sparc ~ppc amd64"
 
 DEPEND=">=dev-lang/python-2.3
 	virtual/mta
@@ -108,17 +108,11 @@ src_install () {
 
 pkg_postinst() {
 	enewgroup mailman 280
-	enewuser mailman 280 /bin/false ${INSTALLDIR} mailman -G cron -c "mailman"
+	enewuser mailman 280 -1 ${INSTALLDIR} mailman -G cron -c "mailman"
 	cd ${INSTALLDIR}
 	bin/update
-	einfo "*********************************************** *"
 	einfo "Running \`${INSTALLDIR}/bin/check_perms -f\` *"
-	einfo "*********************************************** *"
 	bin/check_perms -f
-	einfo "************************************************************* *"
-	einfo "Running \`${INSTALLDIR}/bin/check_perms_grsecurity.py -f\` *"
-	einfo "************************************************************* *"
-	bin/check_perms_grsecurity.py -f
 	einfo ""
 	einfo "Please read /usr/share/doc/${PF}/README.gentoo.gz for additional"
 	einfo "Setup information, mailman will NOT run unless you follow"
@@ -135,8 +129,8 @@ pkg_config() {
 	if ! use apache2; then
 		einfo "Updating apache config"
 		einfo "added: \"Include  conf/addon-modules/mailman.conf\""
-		einfo "to ${ROOT}etc/apache/conf/apache.conf"
+		einfo "to ${ROOT}/etc/apache/conf/apache.conf"
 		echo "Include  conf/addon-modules/mailman.conf" \
-			>> ${ROOT}etc/apache/conf/apache.conf
+			>> ${ROOT}/etc/apache/conf/apache.conf
 	fi
 }

@@ -1,19 +1,21 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer:  Martin Schlemmer <azarah@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/media-libs/glut/glut-3.7-r2.ebuild,v 1.1 2002/02/25 04:09:51 azarah Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/glut/glut-3.7-r2.ebuild,v 1.1.1.1 2005/11/30 10:03:38 chriswhite Exp $
 
 MESA_VER="4.0.1"
 S=${WORKDIR}/Mesa-${MESA_VER}
 DESCRIPTION="The OpenGL Utility Toolkit (GLUT)"
-SRC_URI="http://prdownloads.sourceforge.net/mesa3d/MesaLib-${MESA_VER}.tar.bz2
-	http://prdownloads.sourceforge.net/mesa3d/MesaDemos-${MESA_VER}.tar.bz2"
+SRC_URI="mirror://sourceforge/mesa3d/MesaLib-${MESA_VER}.tar.bz2
+	mirror://sourceforge/mesa3d/MesaDemos-${MESA_VER}.tar.bz2"
 HOMEPAGE="http://www.opengl.org/developers/documentation/glut/"
 
-DEPEND="virtual/glibc
-	virtual/opengl
+LICENSE="glut"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha"
+IUSE=""
+
+DEPEND="virtual/opengl
 	virtual/glu"
-	
 
 PROVIDE="virtual/glut"
 
@@ -22,24 +24,24 @@ src_compile() {
 	./configure || die
 
 	cd ${S}/src-glut
-			
+
 	emake || die
 }
 
 src_install() {
 
-	insinto /usr/lib
+	insinto /usr/$(get_libdir)
 	doins ${S}/src-glut/libglut.la
-	dosed -e "s: -L${S}/si-glu : -L/usr/lib :" /usr/lib/libglut.la
-	dosed -e "s:/usr/local/lib:/usr/lib:g" /usr/lib/libglut.la
-	dosed -e "s:installed=no:installed=yes:" /usr/lib/libglut.la
-	
+	dosed -e "s: -L${S}/si-glu : -L/usr/$(get_libdir) :" /usr/$(get_libdir)/libglut.la
+	dosed -e "s:/usr/local/$(get_libdir):/usr/$(get_libdir):g" /usr/$(get_libdir)/libglut.la
+	dosed -e "s:installed=no:installed=yes:" /usr/$(get_libdir)/libglut.la
+
 	dolib.so ${S}/src-glut/.libs/libglut.so.${PV}.0
-	dosym libglut.so.${PV}.0 /usr/lib/libglut.so
-	
+	dosym libglut.so.${PV}.0 /usr/$(get_libdir)/libglut.so
+	preplib
+
 	insinto /usr/include/GL
 	doins ${S}/include/GL/glut*
 
-	dodoc ${S}/docs/COPYRIGHT
+	dodoc ${S}/docs/COPY*
 }
-

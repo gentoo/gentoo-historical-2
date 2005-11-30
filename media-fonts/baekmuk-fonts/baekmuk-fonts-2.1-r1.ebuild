@@ -1,23 +1,21 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/baekmuk-fonts/baekmuk-fonts-2.1-r1.ebuild,v 1.1 2003/07/30 20:29:44 usata Exp $
-
-IUSE="X truetype"
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/baekmuk-fonts/baekmuk-fonts-2.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:27 chriswhite Exp $
 
 DESCRIPTION="Korean Baekmuk Font"
+HOMEPAGE="http://kldp.net/projects/baekmuk/"
 SRC_URI="http://gentoo.or.kr/distfiles/baekmuk-fonts/${P}.tar.gz"
-HOMEPAGE="http://www.mizi.co.kr/ko/prod/etc/mos-pro2.htm"
 
-SLOT="0"
 LICENSE="BAEKMUK"
-KEYWORDS="~x86 ~alpha ~ppc ~sparc hppa amd64"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="X truetype"
 
-DEPEND="virtual/x11 
+DEPEND="virtual/x11
 	truetype? ( virtual/xft )"
 RDEPEND="X? ( virtual/x11
 	truetype? ( virtual/xft ) )"
 
-S=${WORKDIR}/${P}
 FONTDIR="/usr/share/fonts/baekmuk"
 TTFONTDIR="/usr/share/fonts/ttf/korean/baekmuk"
 
@@ -34,9 +32,9 @@ src_install () {
 	insinto ${FONTDIR}
 	doins pcf/* || die
 
-	if [ -n "`use X`" ] ; then
+	if use X ; then
 		mkfontdir ${D}${FONTDIR}
-		if [ -n "`use truetype`" ] ; then
+		if use truetype ; then
 			insinto ${TTFONTDIR}
 			doins ttf/* || die
 			mkfontscale ${D}${TTFONTDIR}
@@ -49,7 +47,7 @@ src_install () {
 }
 
 pkg_postinst() {
-	if [ -n "`use X`" ] ; then
+	if use X ; then
 		einfo
 		einfo "You MUST add the path of Baekmuk fonts in /etc/X11/XF86Config"
 		einfo ""

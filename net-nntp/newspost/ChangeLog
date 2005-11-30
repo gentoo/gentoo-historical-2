@@ -1,6 +1,25 @@
-# ChangeLog for net-news/newspost
+# ChangeLog for net-nntp/newspost
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/newspost/ChangeLog,v 1.1 2005/01/17 19:59:11 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/newspost/ChangeLog,v 1.1.1.1 2005/11/30 10:02:44 chriswhite Exp $
+
+  13 Sep 2005; Luis Medinas <metalgod@gentoo.org> newspost-2.0-r1.ebuild,
+  newspost-2.1.1-r1.ebuild:
+  Both versions Marked Stable on AMD64.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  newspost-2.0-r1.ebuild, newspost-2.1.1-r1.ebuild:
+  Stable on ppc.
+
+  02 Feb 2005; Sven Wegener <swegener@gentoo.org> -newspost-2.0.ebuild,
+  -newspost-2.1.1.ebuild:
+  Removed old vulnerable ebuilds.
+
+*newspost-2.1.1-r1 (01 Feb 2005)
+
+  01 Feb 2005; Sven Wegener <swegener@gentoo.org>
+  +files/CAN-2005-0101.patch, +newspost-2.0-r1.ebuild,
+  +newspost-2.1.1-r1.ebuild:
+  Revision bumps, security bug #78530. Stable on x86.
 
 *newspost-2.0 (17 Jan 2005)
 

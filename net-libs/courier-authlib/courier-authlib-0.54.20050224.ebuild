@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-authlib/courier-authlib-0.54.20050224.ebuild,v 1.1 2005/02/25 23:09:36 swtaylor Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/courier-authlib/courier-authlib-0.54.20050224.ebuild,v 1.1.1.1 2005/11/30 10:02:59 chriswhite Exp $
 
 inherit eutils gnuconfig
 
@@ -13,7 +13,7 @@ S="${WORKDIR}/${P%%_pre}"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~s390 ~sparc ~ppc64"
-IUSE="postgres ldap mysql berkdb gdbm pam crypt uclibc debug"
+IUSE="postgres ldap mysql berkdb gdbm pam crypt debug"
 
 DEPEND="virtual/libc
 		gdbm? ( sys-libs/gdbm )
@@ -38,7 +38,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	sed -e"s|^chk_file .* |&\${DESTDIR}|g" -i.orig authmigrate.in
-	use uclibc && sed -i -e 's:linux-gnu\*:linux-gnu\*\ \|\ linux-uclibc:' config.sub
+	use elibc_uclibc && sed -i -e 's:linux-gnu\*:linux-gnu\*\ \|\ linux-uclibc:' config.sub
 	if ! use gdbm ; then
 		epatch ${FILESDIR}/configure-db4.patch
 		export WANT_AUTOCONF="2.5"
@@ -70,7 +70,7 @@ src_compile() {
 	fi
 	use gdbm && myconf="${myconf} --with-db=gdbm"
 
-	if [ -f /var/vpopmail/etc/lib_deps ]; then
+	if has_version 'net-mail/vpopmail' ; then
 		myconf="${myconf} --with-authvchkpw --without-authmysql --without-authpgsql"
 		use mysql && ewarn "vpopmail found. authmysql will not be built."
 		use postgres && ewarn "vpopmail found. authpgsql will not be built."
@@ -141,7 +141,7 @@ src_install() {
 	dodoc AUTHORS COPYING ChangeLog* INSTALL NEWS README
 	dohtml README.html README_authlib.html NEWS.html INSTALL.html README.authdebug.html
 	use mysql && ( dodoc README.authmysql.myownquery ; dohtml README.authmysql.html )
-	use postgres && dohtml README.authpostgres.html
+	use postgres && dohtml README.authpostgres.html README.authmysql.html
 	use ldap && ( dodoc README.ldap ; dodir /etc/openldap/schema ; \
 		cp authldap.schema ${D}/etc/openldap/schema/ )
 	dodir /etc/init.d

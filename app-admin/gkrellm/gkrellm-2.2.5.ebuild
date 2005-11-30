@@ -1,33 +1,40 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gkrellm/gkrellm-2.2.5.ebuild,v 1.1 2005/03/28 10:22:48 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gkrellm/gkrellm-2.2.5.ebuild,v 1.1.1.1 2005/11/30 09:59:44 chriswhite Exp $
 
 inherit eutils
 
-S=${WORKDIR}/${P/a/}
 DESCRIPTION="Single process stack of various system monitors"
 HOMEPAGE="http://www.gkrellm.net/"
 SRC_URI="http://members.dslextreme.com/users/billw/gkrellm/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64 ~ia64 ~ppc64 ~mips"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="X nls ssl"
 
-DEPEND=">=sys-apps/sed-4
+DEPEND="=dev-libs/glib-1*
 	ssl? ( dev-libs/openssl )
-	X? (  >=x11-libs/gtk+-2.0.5
+	X? ( >=x11-libs/gtk+-2.0.5
 		>=x11-libs/pango-1.4.0 )"
 RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )"
 
+S=${WORKDIR}/${P/a/}
+
 src_compile() {
 	local myconf
 	if ! use nls; then
-		sed -i "s:enable_nls=1:enable_nls=0:" Makefile
+		sed -i "s:enable_nls=1:enable_nls=0:" Makefile || die
 	fi
 
-	sed -i 's:INSTALLROOT ?= /usr/local:INSTALLROOT ?= ${D}/usr:' Makefile
+	sed -i -e 's:INSTALLROOT ?= /usr/local:INSTALLROOT ?= ${D}/usr:' \
+		-e "s:\(PKGCONFIGDIR ?= \$(INSTALLROOT)/\)lib:\1$(get_libdir):" \
+		Makefile || die
+
+	sed -i -e "s:/usr/lib:/usr/$(get_libdir):" \
+		-e "s:/usr/local/lib:/usr/local/$(get_libdir):" \
+		src/gkrellm.h || die
 
 	if use X
 	then
@@ -45,14 +52,14 @@ src_install() {
 	if use X
 	then
 		keepdir /usr/share/gkrellm2/themes
-		keepdir /usr/lib/gkrellm2/plugins
+		keepdir /usr/$(get_libdir)/gkrellm2/plugins
 
 		make DESTDIR=${D} install \
 			INSTALLDIR=${D}/usr/bin \
 			MANDIR=${D}/usr/share/man/man1 \
 			INCLUDEDIR=${D}/usr/include \
 			LOCALEDIR=${D}/usr/share/locale \
-			PKGCONFIGDIR=${D}/usr/lib/pkgconfig
+			PKGCONFIGDIR=${D}/usr/$(get_libdir)/pkgconfig
 
 		cd ${S}
 		mv gkrellm.1 gkrellm2.1
@@ -76,6 +83,6 @@ src_install() {
 	insinto /etc
 	doins server/gkrellmd.conf
 
-	dodoc COPYRIGHT CREDITS INSTALL README Changelog
+	dodoc CREDITS INSTALL README Changelog
 	dohtml *.html
 }

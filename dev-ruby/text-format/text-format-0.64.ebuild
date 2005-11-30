@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/text-format/text-format-0.64.ebuild,v 1.1 2004/04/10 16:56:17 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/text-format/text-format-0.64.ebuild,v 1.1.1.1 2005/11/30 10:01:15 chriswhite Exp $
 
-inherit eutils
+inherit eutils ruby
 
 DESCRIPTION="Text::Format provides strong text formatting capabilities to Ruby"
 HOMEPAGE="http://www.halostatue.ca/ruby/Text__Format.html"
@@ -10,10 +10,10 @@ SRC_URI="http://www.halostatue.ca/files/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ppc64"
 IUSE=""
 DEPEND="virtual/ruby"
-S=${WORKDIR}/${P}
+USE_RUBY="any"
 
 src_unpack() {
 	unpack ${A}
@@ -21,9 +21,18 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-prefix.diff
 }
 
+src_compile() {
+	return
+}
+
 src_install() {
 	ruby install.rb --prefix=${D}/usr || die
 
 	dohtml -r doc/*
 	dodoc Changelog
+}
+
+src_test() {
+	cd tests
+	ruby unit_tests.rb || die "unit_tests.rb failed."
 }

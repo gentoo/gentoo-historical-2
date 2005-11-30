@@ -1,4 +1,16 @@
-MD5 cd77f73fc2efc9b438488108184e3cfd ChangeLog 307
-MD5 5f31b867d97398b3bff8ffcd48c7dac4 metadata.xml 381
-MD5 ec8ebb79c2cc36c7fbdb1226c2816adf selinux-apache-20040103.ebuild 414
-MD5 d072d1492c573c529f0b4b888e8169e9 files/digest-selinux-apache-20040103 74
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 41ee796bf4d06d5da7c52a4505fcd0cc ChangeLog 1255
+MD5 b8068a5f43a13e057dfc0628697eeda6 metadata.xml 518
+MD5 252a271ed6e834eb62c02b620a7c70e6 selinux-apache-20040925.ebuild 471
+MD5 acab55aba127e8335a95f67fc2070e48 selinux-apache-20050211.ebuild 418
+MD5 4e8912251b197ed8b38a6a26741a01c2 files/digest-selinux-apache-20040925 74
+MD5 456292da171365053e78d79a85bb858c files/digest-selinux-apache-20050211 74
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.6 (GNU/Linux)
+
+iD8DBQFCHiDQGSBEIeh4AEYRAqmlAKCKBJVFFflJpWvptTns+nn5IlDrHgCfU2zb
+s47u9U7Ye45nNp1h5zQTh/8=
+=lo8t
+-----END PGP SIGNATURE-----

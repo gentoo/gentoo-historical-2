@@ -1,24 +1,27 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Ryan Tolboom <ryan@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ofbis/ofbis-0.1.1.ebuild,v 1.1 2001/03/31 18:34:44 ryan Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ofbis/ofbis-0.1.1.ebuild,v 1.1.1.1 2005/11/30 10:04:28 chriswhite Exp $
 
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
 DESCRIPTION="Framebuffer graphical library"
-SRC_URI="ftp://ftp.nocrew.org/pub/osis/ofbis/"${A}
+SRC_URI="ftp://ftp.nocrew.org/pub/osis/ofbis/${P}.tar.gz"
 HOMEPAGE="http://www.nocrew.org/pub/ofbis"
 
-DEPEND="virtual/glibc"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc "
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_compile() {
 
-	try ./configure --prefix=/usr
-	try make CFLAGS=\"${CFLAGS}\" all
+	./configure --prefix=/usr || die
+	make CFLAGS="${CFLAGS}" all || die
 }
 
 src_install() {
 
-	try make DESTDIR=${D} install
-	dodoc AUTHORS CREDITS DESIGN NEW OFBIS-VERSION README TODO ChangeLog doc/ofbis.doc
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS CREDITS DESIGN NEW OFBIS-VERSION README TODO \
+		ChangeLog doc/ofbis.doc
 }

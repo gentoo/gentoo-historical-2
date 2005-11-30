@@ -1,6 +1,24 @@
 # ChangeLog for media-libs/libmpd
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpd/ChangeLog,v 1.1 2005/08/23 15:24:39 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpd/ChangeLog,v 1.1.1.1 2005/11/30 10:03:46 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> libmpd-0.01.ebuild:
+  Stable on ppc.
+
+  25 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> libmpd-0.01.ebuild:
+  Stable on sparc
+
+  25 Oct 2005; Andrej Kacian <ticho@gentoo.org> libmpd-0.01.ebuild:
+  Stable on x86 - a dependency of >=media-sound/gmpc-0.12.0.
+
+  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> libmpd-0.01.ebuild:
+  ~sparc wrt #103486
+
+  23 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libmpd-0.01.ebuild:
+  Marked ~amd64 wrt bug #103486.
+
+  23 Aug 2005; Lars Weiler <pylon@gentoo.org> libmpd-0.01.ebuild:
+  Added ~ppc-keyword as requested in Bug #103486.
 
 *libmpd-0.01 (23 Aug 2005)
 

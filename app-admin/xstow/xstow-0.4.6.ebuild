@@ -1,40 +1,32 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/xstow/xstow-0.4.6.ebuild,v 1.1 2003/04/02 23:53:58 liquidx Exp $
-
-IUSE="ncurses"
+# $Header: /var/cvsroot/gentoo-x86/app-admin/xstow/xstow-0.4.6.ebuild,v 1.1.1.1 2005/11/30 09:59:55 chriswhite Exp $
 
 inherit eutils
 
-DESCRIPTION="XStow is a replacement for GNU stow with extensions"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+DESCRIPTION="replacement for GNU stow with extensions"
 HOMEPAGE="http://xstow.sourceforge.net/"
+SRC_URI="mirror://sourceforge/xstow/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="~ppc x86"
+IUSE="ncurses"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	ncurses? ( sys-libs/ncurses )"
 
 src_unpack() {
 	unpack ${A}
-    epatch ${FILESDIR}/${P}-configure-ncurses.diff
+	epatch ${FILESDIR}/${P}-configure-ncurses.diff
 }
 
 src_compile() {
-	local myconf
-	use ncurses || myconf="--without-ncurses"
-
-	./configure \
-		--prefix=/usr \
-		--mandir=/usr/share/man \
-		--host=${CHOST} \
-		${myconf} || die
+	econf `use_with ncurses` || die
 	emake || die
 }
 
 src_install() {
-	dodoc README AUTHORS COPYING NEWS README TODO ChangeLog
+	dodoc README AUTHORS NEWS README TODO ChangeLog
 	make DESTDIR=${D} PACKAGE=${P} install || die
 }

@@ -1,25 +1,25 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/arc/arc-5.21j.ebuild,v 1.1 2004/02/24 19:56:17 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/arc/arc-5.21j.ebuild,v 1.1.1.1 2005/11/30 10:00:39 chriswhite Exp $
+
+inherit toolchain-funcs
 
 DESCRIPTION="Create & extract files from DOS .ARC files."
-SRC_URI="mirror://sourceforge/arc/${P}.tar.gz"
 HOMEPAGE="http://arc.sourceforge.net/"
+SRC_URI="mirror://sourceforge/arc/${P}.tar.gz"
 
-KEYWORDS="x86 ~alpha ~amd64"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha amd64 ppc64"
+IUSE=""
 
-DEPEND="virtual/glibc"
-
-S=${WORKDIR}/${P}
+DEPEND="virtual/libc"
 
 src_compile() {
-	emake OPT="${CFLAGS}" || die
+	emake CC="$(tc-getCC)" OPT="${CFLAGS}" || die "emake failed"
 }
 
 src_install() {
-	into /usr
-	dobin arc marc
+	dobin arc marc || die "dobin failed"
 	doman arc.1
 }

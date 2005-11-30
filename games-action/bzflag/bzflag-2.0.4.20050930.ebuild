@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/bzflag/bzflag-2.0.4.20050930.ebuild,v 1.1 2005/10/30 08:27:49 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/bzflag/bzflag-2.0.4.20050930.ebuild,v 1.1.1.1 2005/11/30 10:02:42 chriswhite Exp $
 
 GAMES_USE_SDL="nojoystick"
 inherit eutils flag-o-matic games

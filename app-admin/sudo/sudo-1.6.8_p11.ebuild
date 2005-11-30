@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/sudo-1.6.8_p11.ebuild,v 1.1 2005/10/29 08:54:22 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/sudo-1.6.8_p11.ebuild,v 1.1.1.1 2005/11/30 10:00:05 chriswhite Exp $
 
 inherit eutils pam
 

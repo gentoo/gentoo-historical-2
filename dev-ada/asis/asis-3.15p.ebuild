@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/asis/asis-3.15p.ebuild,v 1.1 2003/07/13 17:46:21 george Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/asis/asis-3.15p.ebuild,v 1.1.1.1 2005/11/30 10:00:30 chriswhite Exp $
 
-inherit gnat
+inherit gnat eutils
 
 S="${WORKDIR}/${P}-src"
 DESCRIPTION="The Ada Semantic Interface Specification queries and services provide a consistent interface to information within the Ada Program Library created at compile time."
@@ -10,16 +10,15 @@ SRC_URI="http://gd.tuwien.ac.at/languages/ada/gnat/3.15p/asis/${P}-src.tgz"
 HOMEPAGE="http://www.gnat.com/"
 
 LICENSE="GMGPL"
-DEPEND="dev-lang/gnat"
+DEPEND="<dev-lang/gnat-5.0"
 RDEPEND=""
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE=""
 
 src_unpack() {
-	unpack "${P}-src.tgz"
-	cd "${S}"
-	patch -p1 < "${FILESDIR}/${P}.diff"
+	unpack ${A} ; cd ${S}
+	epatch ${FILESDIR}/${P}.diff
 }
 
 src_compile() {
@@ -79,5 +78,19 @@ src_install () {
 	dobin tools/asistant/asistant
 	dobin tools/gnatelim/gnatelim
 	dobin tools/gnatstub/gnatstub
+
+	#set up environment
+	dodir /etc/env.d
+	echo "ADA_OBJECTS_PATH=/usr/lib/ada/adalib/${PN}" \
+		> ${D}/etc/env.d/55asis
+	echo "ADA_INCLUDE_PATH=/usr/lib/ada/adainclude/${PN}" \
+		>> ${D}/etc/env.d/55asis
 }
 
+pkg_postinst() {
+	einfo "The envaironment has been set up to make gnat automatically find files for"
+	einfo "ASIS. In order to immediately activate these settings please do:"
+	einfo "env-update"
+	einfo "source /etc/profile"
+	einfo "Otherwise the settings will become active next time you login"
+}

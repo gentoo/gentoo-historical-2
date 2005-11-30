@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/x11-drm/x11-drm-4.3.0-r7.ebuild,v 1.1 2004/08/29 08:11:06 battousai Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/x11-drm/x11-drm-4.3.0-r7.ebuild,v 1.1.1.1 2005/11/30 10:01:07 chriswhite Exp $
 
 IUSE="gatos"
 IUSE_VIDEO_CARDS="3dfx gamma i810 i830 matrox rage128 radeon sis mach64"
 
-inherit eutils xfree
+inherit eutils x11
 
 # Make sure Portage does _NOT_ strip symbols.  We will do it later and make sure
 # that only we only strip stuff that are safe to strip ...
@@ -39,14 +39,12 @@ SRC_URI="mirror://gentoo/${MY_PF}-gentoo-${PATCHVER}.tar.bz2
 
 SLOT="${KV}"
 LICENSE="X11"
-KEYWORDS="x86 alpha ia64 ~ppc"
+KEYWORDS="x86 alpha ia64 ppc"
 
 # Need new portage for USE_EXPAND
 DEPEND="virtual/x11
 	virtual/linux-sources
 	>=sys-apps/portage-2.0.49-r13"
-
-PROVIDE="virtual/drm"
 
 pkg_setup() {
 	# mach64 is exclusive of other modules
@@ -109,6 +107,7 @@ src_unpack() {
 
 	# Change the install location for the modules.d stuff
 	sed -ie "s:/kernel/drivers/char/drm:/${PN}:g" Makefile.linux
+	sed -ie "s:xfree-drm:${PN}:g" Makefile
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.40.0-r1.ebuild,v 1.1 2004/07/13 18:23:13 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.40.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:36 chriswhite Exp $
 
 inherit gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="http://expect.nist.gov/src/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64 ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="X doc"
 
 DEPEND=">=dev-lang/tcl-8.2
@@ -21,17 +21,17 @@ S=${WORKDIR}/${NON_MICRO_V}
 
 src_unpack() {
 	unpack ${A}
-	sed -i 's#/usr/local/bin#/usr/bin#' ${S}/expect.man
-	sed -i 's#/usr/local/bin#/usr/bin#' ${S}/expectk.man
+	cd ${S}
+	sed -i 's#/usr/local/bin#/usr/bin#' expect.man
+	sed -i 's#/usr/local/bin#/usr/bin#' expectk.man
 	#stops any example scripts being installed by default
-	sed -i '/^install:/s/install-libraries //' ${S}/Makefile.in
-	sed -i 's/^SCRIPTS_MANPAGES = /_&/' ${S}/Makefile.in
+	sed -i \
+		-e '/^install:/s/install-libraries //' \
+		-e 's/^SCRIPTS_MANPAGES = /_&/' Makefile.in
+	gnuconfig_update
 }
 
 src_compile() {
-	use amd64 && gnuconfig_update
-	use ppc64 && gnuconfig_update
-
 	local myconf
 	local tclv
 	local tkv

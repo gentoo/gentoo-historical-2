@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-1.6.6.ebuild,v 1.1 2005/02/26 17:20:02 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-1.6.6.ebuild,v 1.1.1.1 2005/11/30 09:59:47 chriswhite Exp $
 
 DESCRIPTION="syslog replacement with advanced filtering features"
 HOMEPAGE="http://www.balabit.com/products/syslog_ng/"
@@ -9,7 +9,7 @@ SRC_URI="http://www.balabit.com/downloads/syslog-ng/${PV%.*}/src/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="static tcpd"
+IUSE="hardened selinux static tcpd"
 
 RDEPEND=">=dev-libs/libol-0.3.14
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )"
@@ -45,7 +45,11 @@ src_install() {
 
 	# Install default configuration
 	insinto /etc/syslog-ng
-	newins "${FILESDIR}/syslog-ng.conf.gentoo" syslog-ng.conf
+	if use hardened || use selinux ; then
+		newins "${FILESDIR}/syslog-ng.conf.gentoo.hardened" syslog-ng.conf
+	else
+		newins "${FILESDIR}/syslog-ng.conf.gentoo" syslog-ng.conf
+	fi
 
 	# Install snippet for logrotate, which may or may not be installed
 	insinto /etc/logrotate.d

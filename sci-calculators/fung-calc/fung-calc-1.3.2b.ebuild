@@ -1,24 +1,25 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/fung-calc/fung-calc-1.3.2b.ebuild,v 1.1 2004/12/24 14:53:02 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/fung-calc/fung-calc-1.3.2b.ebuild,v 1.1.1.1 2005/11/30 10:02:33 chriswhite Exp $
 
 inherit kde eutils flag-o-matic
 
-IUSE="opengl"
+IUSE="arts opengl"
 
 DESCRIPTION="Scientific Graphing Calculator"
 HOMEPAGE="http://fung-calc.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="x86 ~ppc ~amd64"
 
 DEPEND=">=sys-libs/zlib-1
 	>=media-libs/libpng-1.2
 	>=media-libs/jpeg-6
 	virtual/libc
-	opengl? ( virtual/opengl )
-	>=kde-base/kdebase-3.1"
+	opengl? ( virtual/opengl
+		media-libs/glut )
+	kde-base/kdelibs"
 
 need-kde 3.1
 need-qt 3.1

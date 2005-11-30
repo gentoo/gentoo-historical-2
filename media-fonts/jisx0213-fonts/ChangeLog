@@ -1,8 +1,24 @@
 # ChangeLog for media-fonts/jisx0213-fonts
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/jisx0213-fonts/ChangeLog,v 1.1 2003/07/26 21:25:11 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/jisx0213-fonts/ChangeLog,v 1.1.1.1 2005/11/30 10:01:29 chriswhite Exp $
+
+  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  jisx0213-fonts-20040425.ebuild:
+  Stable on amd64.
+
+*jisx0213-fonts-20040425 (04 Aug 2004)
+
+  04 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> jisx0213-fonts-1.03.ebuild,
+  +jisx0213-fonts-20040425.ebuild:
+  Updated to the latest tarballs.
+
+  03 Feb 2004; <augustus@gentoo.org> jisx0213-fonts-1.03.ebuild:
+  Added ~amd64 keyword.
 
 *jisx0213-fonts-1.03 (27 Jul 2003)
+
+  09 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> jisx0213-fonts-1.03.ebuild:
+  Marked stable on x86.  Added ~alpha, ~sparc and ~ppc keywords.
 
   27 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> jisx0213-fonts-1.03.ebuild:
   Initial import. This closes bug #22758

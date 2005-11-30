@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ghemical/ghemical-1.01.ebuild,v 1.1 2005/01/04 16:32:19 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ghemical/ghemical-1.01.ebuild,v 1.1.1.1 2005/11/30 10:00:49 chriswhite Exp $
 
 inherit eutils
 

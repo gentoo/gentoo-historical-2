@@ -1,40 +1,39 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xbomb/xbomb-2.1-r1.ebuild,v 1.1 2003/09/10 06:36:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/xbomb/xbomb-2.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:02:28 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="Minesweeper clone with hexagonal, rectangular and triangular grid"
-SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/games/strategy/${P}.tgz"
 HOMEPAGE="http://www.gedanken.demon.co.uk/xbomb/"
+SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/games/strategy/${P}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
 SLOT="0"
+KEYWORDS="amd64 ia64 ppc ppc64 x86"
+IUSE=""
 
-DEPEND="virtual/x11
-	>=sys-apps/sed-4"
+DEPEND="virtual/x11"
 
 src_unpack() {
 	unpack ${A}
-	patch -p0 < ${FILESDIR}/${P}.diff || die
+	epatch "${FILESDIR}"/${P}.diff
 	sed -i \
 		-e "/^CFLAGS/ { s:=.*:=${CFLAGS}: }" \
-		-e "s:/usr/bin:${GAMES_BINDIR}:" ${S}/Makefile || \
-		die "sed Makefile failed"
+		-e "s:/usr/bin:${GAMES_BINDIR}:" \
+		"${S}"/Makefile \
+		|| die "sed Makefile failed"
 	sed -i \
-		-e "s:/var/tmp:/var/games:g" ${S}/hiscore.c || \
-			die "sed hiscore.c failed"
-}
-
-src_compile() {
-	emake || die
+		-e "s:/var/tmp:/var/games:g" \
+		"${S}"/hiscore.c \
+		|| die "sed hiscore.c failed"
 }
 
 src_install() {
-	einstall DESTDIR=${D} || die
-	dodoc README LSM || die
-	keepdir /var/games || die
+	make DESTDIR="${D}" install || die "make install failed"
+	dodoc README LSM
+	# FIXME: need to use GAMES_STATEDIR here
+	dodir /var/games
 	touch ${D}/var/games/xbomb{3,4,6}.hi || die "touch failed"
 	fperms 664 /var/games/xbomb{3,4,6}.hi || die
 

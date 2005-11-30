@@ -1,16 +1,15 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/resid/resid-0.13.ebuild,v 1.1 2002/08/07 08:24:50 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/resid/resid-0.13.ebuild,v 1.1.1.1 2005/11/30 10:04:14 chriswhite Exp $
 
 DESCRIPTION="C++ library to emulate the C64 SID chip"
 HOMEPAGE="http://sidplay2.sourceforge.net"
-SRC_URI="http://unc.dl.sourceforge.net/sourceforge/sidplay2/${P}.tgz"
+SRC_URI="mirror://sourceforge/sidplay2/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 sparc"
+IUSE=""
 DEPEND=""
-RDEPEND="${DEPEND}"
-S=${WORKDIR}/${P}
 
 src_compile() {
 	./configure \

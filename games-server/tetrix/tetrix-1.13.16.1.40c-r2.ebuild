@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/tetrix/tetrix-1.13.16.1.40c-r2.ebuild,v 1.1 2003/09/21 04:47:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-server/tetrix/tetrix-1.13.16.1.40c-r2.ebuild,v 1.1.1.1 2005/11/30 10:04:32 chriswhite Exp $
 
-inherit games gcc
+inherit eutils toolchain-funcs games
 
 MY_SV=${PV#*.*.*.}
 MY_PV=${PV%.${MY_SV}}
@@ -14,11 +14,12 @@ SRC_URI="mirror://sourceforge/tetrinetx/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~amd64"
+IUSE=""
 
 DEPEND="net-libs/adns"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
 	unpack ${A}
@@ -34,7 +35,7 @@ src_unpack() {
 
 src_compile() {
 	cd src
-	$(gcc-getCC) ${CFLAGS} main.c -o tetrix -ladns || die "compile failed"
+	$(tc-getCC) ${CFLAGS} main.c -o tetrix -ladns || die "compile failed"
 }
 
 src_install() {
@@ -49,7 +50,7 @@ src_install() {
 
 	keepdir ${GAMES_STATEDIR}/${PN}
 	dodir ${GAMES_LOGDIR}
-	touch ${GAMES_LOGDIR}/${PN}.log
+	touch ${D}/${GAMES_LOGDIR}/${PN}.log
 
 	prepgamesdirs
 	fowners ${GAMES_USER_DED}:${GAMES_GROUP} ${GAMES_STATEDIR}/${PN}

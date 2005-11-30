@@ -1,6 +1,21 @@
 # ChangeLog for media-libs/ploticus
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ploticus/ChangeLog,v 1.1 2005/01/24 09:08:58 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ploticus/ChangeLog,v 1.1.1.1 2005/11/30 10:04:07 chriswhite Exp $
+
+*ploticus-2.32 (01 Oct 2005)
+
+  01 Oct 2005; Daniel Black <dragonheart@gentoo.org> +files/pl232src.patch,
+  +ploticus-2.32.ebuild:
+  version bump as per bug #107175 thanks david somers
+
+  16 Jul 2005; David Holm <dholm@gentoo.org> ploticus-2.31.ebuild:
+  Added to ~ppc.
+
+*ploticus-2.31 (16 Jul 2005)
+
+  16 Jul 2005; Daniel Black <dragonheart@gentoo.org> +files/pl231src.patch,
+  +ploticus-2.31.ebuild:
+  Version bump thanks to Tobias Minich. bug #85907
 
 *ploticus-2.30 (24 Jan 2005)
 

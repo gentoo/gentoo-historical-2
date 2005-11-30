@@ -1,13 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/dlm-kernel/dlm-kernel-1.00.00-r1.ebuild,v 1.1 2005/09/05 02:15:28 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/dlm-kernel/dlm-kernel-1.00.00-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:46 chriswhite Exp $
 
 inherit eutils linux-mod
 
-CLUSTER_VERSION="1.00.00"
+MY_P="cluster-${PV}"
+
 DESCRIPTION="General-purpose Distributed Lock Manager kernel module"
 HOMEPAGE="http://sources.redhat.com/cluster/"
-SRC_URI="ftp://sources.redhat.com/pub/cluster/releases/cluster-${CLUSTER_VERSION}.tar.gz"
+SRC_URI="ftp://sources.redhat.com/pub/cluster/releases/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -22,8 +23,7 @@ DEPEND="|| (
 
 RDEPEND=""
 
-
-S="${WORKDIR}/cluster-${CLUSTER_VERSION}/${PN}"
+S="${WORKDIR}/${MY_P}/${PN}"
 
 pkg_setup() {
 	if kernel_is 2 4; then

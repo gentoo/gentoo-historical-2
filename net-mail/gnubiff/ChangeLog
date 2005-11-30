@@ -1,6 +1,34 @@
 # ChangeLog for net-mail/gnubiff
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/gnubiff/ChangeLog,v 1.1 2004/11/05 13:46:59 ticho Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/gnubiff/ChangeLog,v 1.1.1.1 2005/11/30 10:03:25 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> gnubiff-2.1.3.ebuild:
+  Mark 2.1.3 ~alpha
+
+  27 Sep 2005; Luis Medinas <metalgod@gentoo.org> gnubiff-2.1.3.ebuild:
+  Added ~amd64 keyword. Closes bug #107280.
+
+  06 May 2005; Masatomo Nakano <nakano@gentoo.org> gnubiff-2.1.3.ebuild:
+  Marked stable on x86.
+
+*gnubiff-2.1.3 (08 Apr 2005)
+
+  08 Apr 2005; Masatomo Nakano <nakano@gentoo.org> +gnubiff-2.1.3.ebuild:
+  Version bump.
+
+  12 Mar 2005; Masatomo Nakano <nakano@gentoo.org> gnubiff-2.1.1.ebuild:
+  Added libglade to DEPEND.
+
+*gnubiff-2.0.2 (10 Mar 2005)
+
+  10 Mar 2005; Masatomo Nakano <nakano@gentoo.org> -gnubiff-2.0.2.ebuild:
+  Remove old ebuild.
+
+*gnubiff-2.1.1 (07 Mar 2005)
+
+  07 Mar 2005; Masatomo Nakano <nakano@gentoo.org> metadata.xml,
+  +gnubiff-2.1.1.ebuild:
+  version bump
 
   05 Nov 2004; Andrej Kacian <ticho@gentoo.org> :
   Initial import, closes #39429. Ebuild submitted by Andreas Waschinski

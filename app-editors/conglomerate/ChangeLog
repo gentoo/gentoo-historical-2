@@ -1,6 +1,68 @@
 # ChangeLog for app-editors/conglomerate
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/conglomerate/ChangeLog,v 1.1 2003/09/28 21:08:26 foser Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/conglomerate/ChangeLog,v 1.1.1.1 2005/11/30 10:02:09 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  conglomerate-0.9.0.ebuild:
+  Stable on ppc.
+
+*conglomerate-0.9.1 (06 Nov 2005)
+
+  06 Nov 2005; Mike Gardiner <obz@gentoo.org> conglomerate-0.9.0.ebuild,
+  +conglomerate-0.9.1.ebuild:
+  Added a new version 0.9.1, as requested in bug #99153. Also, marked 0.9.0
+  stable on x86.
+
+  07 Apr 2005; John N. Laliberte <allanonjl@gentoo.org>
+  conglomerate-0.9.0.ebuild:
+  Updated RDEPEND and added debug and spell to IUSE.
+
+*conglomerate-0.9.0 (19 Mar 2005)
+
+  19 Mar 2005; John N. Laliberte <allanonjl@gentoo.org> metadata.xml,
+  +conglomerate-0.9.0.ebuild:
+  version bump to fill bug #68587
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  conglomerate-0.7.11.ebuild, conglomerate-0.7.6.ebuild:
+  Masked conglomerate-0.7.6.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  conglomerate-0.7.11.ebuild:
+  Masked conglomerate-0.7.11.ebuild stable for ppc
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> conglomerate-0.7.12.ebuild:
+  marked ~amd64
+
+  06 Mar 2004; Alastair Tse <liquidx@gentoo.org> conglomerate-0.7.11.ebuild,
+  conglomerate-0.7.12.ebuild:
+  added scrollkeeper deps
+
+*conglomerate-0.7.12 (18 Feb 2004)
+
+  18 Feb 2004; Alastair Tse <liquidx@gentoo.org> conglomerate-0.7.11.ebuild,
+  conglomerate-0.7.12.ebuild:
+  version bump
+
+*conglomerate-0.7.11 (04 Feb 2004)
+
+  04 Feb 2004; Alastair Tse <liquidx@gentoo.org> conglomerate-0.7.11.ebuild,
+  conglomerate-0.7.4.ebuild, conglomerate-0.7.5.ebuild,
+  conglomerate-0.7.6.ebuild:
+  version bump (#40173)
+
+  28 Nov 2003; Luca Barbato <lu_zero@gentoo.org> conglomerate-0.7.6.ebuild:
+  Marked ~ppc
+
+*conglomerate-0.7.6 (07 Nov 2003)
+
+  07 Nov 2003; Alastair Tse <liquidx@gentoo.org> conglomerate-0.7.6.ebuild:
+  version bump
+
+*conglomerate-0.7.5 (08 Oct 2003)
+
+  08 Oct 2003; foser <foser@gentoo.org> conglomerate-0.7.5.ebuild :
+  New version, add doc USE for gtk-doc
 
 *conglomerate-0.7.4 (28 Sep 2003)
 

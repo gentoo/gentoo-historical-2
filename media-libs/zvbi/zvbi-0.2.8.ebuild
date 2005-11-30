@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/zvbi/zvbi-0.2.8.ebuild,v 1.1 2004/08/29 11:36:56 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/zvbi/zvbi-0.2.8.ebuild,v 1.1.1.1 2005/11/30 10:04:15 chriswhite Exp $
 
 IUSE="nls"
 

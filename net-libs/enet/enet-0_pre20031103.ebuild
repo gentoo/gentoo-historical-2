@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/enet/enet-0_pre20031103.ebuild,v 1.1 2003/11/09 18:18:43 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/enet/enet-0_pre20031103.ebuild,v 1.1.1.1 2005/11/30 10:02:57 chriswhite Exp $
 
 #ECVS_SERVER=sferik.cubik.org:/home/enet/cvsroot
 #ECVS_USER=anoncvs
@@ -13,7 +13,11 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86 ~ppc"
+IUSE=""
+
+DEPEND=">=sys-devel/autoconf-2.58"
+RDEPEND=""
 
 S=${WORKDIR}/${ECVS_MODULE}
 
@@ -23,19 +27,14 @@ src_unpack() {
 	else
 		cvs_src_unpack
 	fi
-	cd ${S}
+	cd "${S}"
 	export WANT_AUTOCONF=2.5
 	aclocal || die "aclocal"
 	automake -a || die "automake"
 	autoconf || die "autoconf"
 }
 
-src_compile() {
-	econf || die
-	emake || die
-}
-
 src_install() {
-	emake install DESTDIR=${D} || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc *.txt README
 }

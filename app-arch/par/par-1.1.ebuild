@@ -1,28 +1,26 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Spider <spider@gentoo.org> Author: Craig Dooley <cd5697@albany.edu>
-# $Header: /var/cvsroot/gentoo-x86/app-arch/par/par-1.1.ebuild,v 1.1 2002/04/24 19:29:15 spider Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/par/par-1.1.ebuild,v 1.1.1.1 2005/11/30 10:00:32 chriswhite Exp $
 
-S=${WORKDIR}/par-cmdline
 DESCRIPTION="Parchive archive fixing tool"
-SRC_URI="http://prdownloads.sourceforge.net/parchive/par-v${PV}.tar.gz"
-HOMEPAGE="http://parchive.sourceforge.net"
-DEPEND="virtual/glibc"
+HOMEPAGE="http://parchive.sourceforge.net/"
+SRC_URI="mirror://sourceforge/parchive/par-v${PV}.tar.gz"
 
-src_unpack() {
-	unpack par-v${PV}.tar.gz
-	cd ${S}
-	source /etc/make.conf
-	mv Makefile Makefile.orig
-	sed "s/CFLAGS.*/CFLAGS = -Wall $CFLAGS/" Makefile.orig > Makefile
-}
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc amd64 ~ppc-macos"
+IUSE=""
+
+DEPEND=""
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}"/par-cmdline
 
 src_compile() {
-	emake || die
+	emake CFLAGS="${CFLAGS}" || die "emake failed"
 }
 
-src_install () {
-	exeinto /usr/bin
-	doexe par
-	dodoc COPYING AUTHORS NEWS README rs.doc
+src_install() {
+	dobin par || die "dobin failed"
+	dodoc AUTHORS NEWS README
 }

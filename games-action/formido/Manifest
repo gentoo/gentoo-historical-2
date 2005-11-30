@@ -1,3 +1,5 @@
-MD5 b69f52f3959cd580b002869b6cd1f688 formido-1.0.ebuild 1253
-MD5 2d05f5b96c8b7044de9a3b6bb828fc88 files/digest-formido-20031024 146
+MD5 19e2dddd9f1934570c7308d6e8a167a3 ChangeLog 655
+MD5 a263d4e043eba05edfdc4c99f6ce1427 formido-1.0.ebuild 1543
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 aaf2970c6efd0a241e14e1113a2ef80e files/homedir.patch 4606
 MD5 85c542a67baa6657dbe274491dd84d36 files/digest-formido-1.0 132

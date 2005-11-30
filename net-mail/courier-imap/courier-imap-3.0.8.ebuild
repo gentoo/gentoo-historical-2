@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/courier-imap-3.0.8.ebuild,v 1.1 2004/09/22 16:32:35 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/courier-imap-3.0.8.ebuild,v 1.1.1.1 2005/11/30 10:03:29 chriswhite Exp $
 
 inherit eutils gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~hppa ~amd64 ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ~ppc ~ppc64 s390 sparc x86"
 IUSE="fam berkdb gdbm debug ipv6 ldap mysql nls pam postgres selinux"
 #userpriv breaks linking against vpopmail
 RESTRICT="nouserpriv"
@@ -19,17 +19,18 @@ RDEPEND="virtual/libc
 	>=dev-libs/openssl-0.9.6
 	pam? ( >=sys-libs/pam-0.75 )
 	berkdb? ( sys-libs/db )
-	gdbm ( >=sys-libs/gdbm-1.8.0 )
+	gdbm? ( >=sys-libs/gdbm-1.8.0 )
 	mysql? ( >=dev-db/mysql-3.23.36 )
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	postgres? ( >=dev-db/postgresql-7.2 )
 	>=dev-tcltk/expect-5.33.0
-	fam? ( app-admin/fam )
+	fam? ( virtual/fam )
 	selinux? ( sec-policy/selinux-courier-imap )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
 	dev-lang/perl
-	sys-apps/procps"
+	sys-process/procps
+	!mail-mta/courier"
 PROVIDE="virtual/imapd"
 
 pkg_setup() {
@@ -151,7 +152,7 @@ src_compile() {
 	myconf="${myconf} --without-redhat"
 
 	# bug #29879 - FAM support
-	#if has_version 'app-admin/fam' && ! use fam; then
+	#if has_version 'virtual/fam' && ! use fam; then
 	#	ewarn "FAM will be detected by the package and support will be enabled"
 	#	ewarn "The package presently provides no way to disable fam support if you don't want it"
 	#fi
@@ -312,4 +313,9 @@ pkg_postinst() {
 	einfo "Make sure to change /etc/courier-imap/authdaemond.conf if"
 	einfo "you would like to use something other than the"
 	einfo "authdaemond.plain authenticator"
+}
+
+src_test() {
+	ewarn "make check not supported by package due to"
+	ewarn "--enable-workarounds-for-imap-client-bugs option."
 }

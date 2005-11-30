@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Header: /var/cvsroot/gentoo-x86/app-admin/tmpwatch/files/tmpwatch.cron,v 1.1 2004/09/18 19:47:15 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tmpwatch/files/tmpwatch.cron,v 1.1.1.1 2005/11/30 09:59:52 chriswhite Exp $
 # vim: ft=sh
 
 # This cron script contains several (commented out) examples.  You may use
@@ -9,7 +9,7 @@
 ### Variables ###
 
 TMPWATCH="/usr/sbin/tmpwatch"
-#PORTAGE_TMPDIR="$(portageq envvar PORTAGE_TMP_DIR)/portage"
+#PORTAGE_TMPDIR="$(portageq envvar PORTAGE_TMPDIR)/portage"
 #DISTDIR="$(portageq distdir)"
 
 ### EXAMPLES ###

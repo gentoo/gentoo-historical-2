@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-misc-ethiopic/font-misc-ethiopic-0.99.1.ebuild,v 1.1 2005/10/20 06:26:26 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-misc-ethiopic/font-misc-ethiopic-0.99.1.ebuild,v 1.1.1.1 2005/11/30 10:01:31 chriswhite Exp $
 
 # Must be before x-modular eclass is inherited
 SNAPSHOT="yes"

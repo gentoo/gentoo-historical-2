@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/raster3d/raster3d-2.6e.ebuild,v 1.1 2004/12/24 17:04:44 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/raster3d/raster3d-2.6e.ebuild,v 1.1.1.1 2005/11/30 10:00:49 chriswhite Exp $
 
 Name="Raster3D"
 S="${WORKDIR}/${Name}_${PV}"

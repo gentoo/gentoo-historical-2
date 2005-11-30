@@ -1,0 +1,20 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 190aaddfae40928d909d2a261f5fa9df nvi-1.81.4.ebuild 712
+MD5 b76725e7e081d1f2f5c89f6444bc82b0 ChangeLog 3420
+MD5 097be8de63d6000e28275ce4ca15e3b5 nvi-1.81.5.ebuild 740
+MD5 01f064c8fcf86ffd327320acf0646a7e nvi-1.81.5-r1.ebuild 1024
+MD5 f11aad7670562e59219d0c56241a3a5d nvi-1.81.5-r2.ebuild 1153
+MD5 47f5a61b93feb15280fbaf8deae78ea5 files/digest-nvi-1.81.4 63
+MD5 9c126ee8e4a3070016e51438d8ad45b9 files/digest-nvi-1.81.5 63
+MD5 9c126ee8e4a3070016e51438d8ad45b9 files/digest-nvi-1.81.5-r2 63
+MD5 e4c11bab15aaee62f61cbe103c890cb9 files/nvi-1.81.5-tcsetattr.patch 565
+MD5 9c126ee8e4a3070016e51438d8ad45b9 files/digest-nvi-1.81.5-r1 63
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.6 (GNU/Linux)
+
+iD8DBQFCC3fFLLFUmVNQ7rkRAn9OAKC0lhQwboLWZ5yvPWxptJvwPi31LwCgqif6
+n9iqtu+BCx/EKkbNjq3vVik=
+=+/D/
+-----END PGP SIGNATURE-----

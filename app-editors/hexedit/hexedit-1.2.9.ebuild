@@ -1,30 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/hexedit/hexedit-1.2.9.ebuild,v 1.1 2004/04/13 16:24:06 zul Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/hexedit/hexedit-1.2.9.ebuild,v 1.1.1.1 2005/11/30 10:01:56 chriswhite Exp $
 
-S="${WORKDIR}/hexedit"
-DESCRIPTION="View and edit files in hex or ASCII."
-SRC_URI="http://merd.net/pixel/${P}.src.tgz"
+DESCRIPTION="View and edit files in hex or ASCII"
 HOMEPAGE="http://www.chez.com/prigaux/hexedit.html"
+SRC_URI="http://merd.net/pixel/${P}.src.tgz"
 
-DEPEND="virtual/glibc
-	sys-libs/ncurses"
+LICENSE="GPL-1"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha arm hppa amd64"
+IUSE=""
+
+DEPEND="sys-libs/ncurses"
 RDEPEND=""
 
-SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
-LICENSE="GPL-1"
+S=${WORKDIR}/${PN}
 
-src_compile() {
-	cd "${S}"
-	./configure --host="${CHOST}" --prefix=/usr --mandir=/usr/share/man \
-	|| die "./configure failed"
-
-	emake || die
-}
-
-src_install () {
-	dobin hexedit
-	doman hexedit.1
-	dodoc COPYING Changes TODO
+src_install() {
+	dobin hexedit || die "dobin failed"
+	doman hexedit.1 || die "doman failed"
+	dodoc Changes TODO || die "dodoc failed"
 }

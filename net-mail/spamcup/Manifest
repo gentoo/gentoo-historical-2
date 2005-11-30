@@ -1,3 +1,14 @@
-MD5 71fc194100a0a4247a848bbcb6ff95cc spamcup-1.08.ebuild 520
-MD5 779bb1df8351bad5b97749502589372d files/digest-spamcup-1.06 62
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 3ea82030f8ff7f23c3eae917e36b1139 ChangeLog 710
+MD5 2641a745352a757c40b3cb074e4433a1 metadata.xml 253
+MD5 7328aad365bb5b373f8ad3d9c14f86f0 spamcup-1.08.ebuild 659
 MD5 7615c8407d7006e44fac9ba7ce7197d9 files/digest-spamcup-1.08 62
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.6 (GNU/Linux)
+
+iD8DBQFBjE9ImdTrptrqvGERAnljAJ9kpBNt33ycMdltpxYuIbkGE2zxxwCeK/4B
+p1yqZAHEpiw21gm5NJ5zHsA=
+=mhK2
+-----END PGP SIGNATURE-----

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/xml-simple/xml-simple-1.0.6.ebuild,v 1.1 2004/10/23 11:32:27 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/xml-simple/xml-simple-1.0.6.ebuild,v 1.1.1.1 2005/11/30 10:01:19 chriswhite Exp $
 
 inherit ruby
 

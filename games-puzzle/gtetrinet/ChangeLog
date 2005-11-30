@@ -1,6 +1,44 @@
-# ChangeLog for app-games/gtetrinet
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/gtetrinet/ChangeLog,v 1.1 2003/09/10 06:36:00 vapier Exp $
+# ChangeLog for games-puzzle/gtetrinet
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/gtetrinet/ChangeLog,v 1.1.1.1 2005/11/30 10:02:28 chriswhite Exp $
+
+  16 Sep 2005; Mike Frysinger <vapier@gentoo.org> gtetrinet-0.7.9.ebuild:
+  Fix linking against esound libs and clean up build process in general
+  #106088 by Marien Zwart.
+
+*gtetrinet-0.7.9 (03 Jun 2005)
+
+  03 Jun 2005; Thomas Matthijs <axxo@gentoo.org> +gtetrinet-0.7.9.ebuild:
+  version bump
+
+*gtetrinet-0.7.8 (22 Feb 2005)
+
+  22 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +gtetrinet-0.7.8.ebuild:
+  Version bumped and closing bug #80931.
+
+  06 Sep 2004; Lars Weiler <pylon@gentoo.org> gtetrinet-0.7.7.ebuild:
+  Stable on ppc.
+
+*gtetrinet-0.7.7 (24 Jul 2004)
+
+  24 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +gtetrinet-0.7.7.ebuild:
+  version bump (bug #58238)
+
+  18 Jun 2004; Michael Hanselmann <hansmi@gentoo.org> gtetrinet-0.7.5.ebuild:
+  Added to ~ppc.
+
+  04 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> gtetrinet-0.7.5.ebuild:
+  remove G*DISABLE_DEPRECATED from compile flags to attempt to address bug #46675
+
+  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> :
+  AMD64 keywords.
+
+*gtetrinet-0.7.5 (14 Oct 2003)
+
+  14 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
+  version bump #31091.
 
 *gtetrinet-0.7.4 (28 Aug 2003)
 

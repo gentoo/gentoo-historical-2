@@ -1,6 +1,23 @@
 # ChangeLog for dev-tex/curve
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/curve/ChangeLog,v 1.1 2004/04/16 00:05:15 pylon Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/curve/ChangeLog,v 1.1.1.1 2005/11/30 10:00:55 chriswhite Exp $
+
+*curve-1.9 (02 Aug 2005)
+
+  02 Aug 2005; Lars Weiler <pylon@gentoo.org> +curve-1.9.ebuild:
+  Version bump; bug #95284.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> curve-1.7.ebuild:
+  Stable on amd64.
+
+  27 Oct 2004; Tom Martin <slarti@gentoo.org> curve-1.7.ebuild:
+  Marked ~amd64.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> curve-1.7.ebuild:
+  Stable on x86 and ppc.
+
+  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> curve-1.7.ebuild:
+  Added ~sparc, #50242
 
 *curve-1.7 (16 Apr 2004)
 

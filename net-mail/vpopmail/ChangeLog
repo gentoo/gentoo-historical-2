@@ -1,10 +1,286 @@
 # ChangeLog for net-mail/vpopmail
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vpopmail/ChangeLog,v 1.1 2002/07/24 10:49:23 carpaski Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vpopmail/ChangeLog,v 1.1.1.1 2005/11/30 10:03:13 chriswhite Exp $
+
+  16 Nov 2005; <anarchy@gentoo.org> vpopmail-5.4.6-r1.ebuild,
+  vpopmail-5.4.9-r2.ebuild, vpopmail-5.4.10.ebuild, vpopmail-5.4.13.ebuild:
+  description fixed as postfix is not supported as of right now
+
+*vpopmail-5.4.13 (03 Nov 2005)
+
+  03 Nov 2005; Jory A. Pratt <anarchy@gentoo.org> +vpopmail-5.4.13.ebuild:
+  revision bump, -fPIC support added upstream
+
+  24 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  vpopmail-5.4.6-r1.ebuild, vpopmail-5.4.9-r2.ebuild,
+  vpopmail-5.4.10.ebuild:
+  chown root:root -> chown root:0, wrt bug #103563
+
+  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> vpopmail-5.4.6-r1.ebuild,
+  vpopmail-5.4.9-r2.ebuild, vpopmail-5.4.10.ebuild:
+  Use -1 for shell argument to enewuser. Bug #103421.
+
+*vpopmail-5.4.10 (21 Jun 2005)
+
+  21 Jun 2005; <anarchy@gentoo.org> -vpopmail-5.2.2-r1.ebuild,
+  -vpopmail-5.4.9-r1.ebuild, +vpopmail-5.4.10.ebuild,
+  -vpopmail-5.5.0.ebuild:
+  revision bump bug #96101, cleanup
+
+  25 May 2005; Jory A. Pratt <anarchy@gentoo.org> vpopmail-5.4.9-r2.ebuild,
+  vpopmail-5.5.0.ebuild:
+  updated to copy compile file from automake-1.6, also removed all keywords
+  for 5.5.0
+
+  25 May 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +files/vpopmail-fPIC.patch, +vpopmail-5.4.9-r2.ebuild:
+  added pure -fPIC on libvpopmail.a only
+
+*vpopmail-5.5.0 (10 May 2005)
+
+  10 May 2005; <anarchy@gentoo.org> +vpopmail-5.5.0.ebuild:
+  updated, access patch has been applied upstream
+
+  10 May 2005; <anarchy@gentoo.org> -files/vpopmail-5.4.9-Makefile.patch,
+  -vpopmail-5.4.9-r2.ebuild:
+  wrong ebuilds and patches were added OOPS
+
+*vpopmail-5.4.9-r2 (10 May 2005)
+
+  10 May 2005; <anarchy@gentoo.org> +files/vpopmail-5.4.9-Makefile.patch,
+  -vpopmail-5.4.9.ebuild, +vpopmail-5.4.9-r2.ebuild:
+  working on -fPIC support for amd64 so only libs compile not entire package
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> vpopmail-5.2.2-r1.ebuild,
+  vpopmail-5.4.6-r1.ebuild, vpopmail-5.4.9.ebuild, vpopmail-5.4.9-r1.ebuild:
+  Fixed [<>]=cat/pkg-ver* dependencies.
+
+  29 Apr 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +files/vpopmail-cdb-Makefile.patch, vpopmail-5.4.9-r1.ebuild:
+  add patch for -fPIC on cdb only
+
+  27 Apr 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  vpopmail-5.4.9-r1.ebuild:
+  fix IUSE and use append-flag, wrt #90621
+
+*vpopmail-5.4.9-r1 (17 Apr 2005)
+
+  17 Apr 2005; <anarchy@gentoo.org> +vpopmail-5.4.9-r1.ebuild:
+  added -fPIC support for x86_64
+
+*vpopmail-5.4.9 (09 Apr 2005)
+
+  09 Apr 2005; <anarchy@gentoo.org> 
+  vpopmail-5.4.9.ebuild:
+  revision added, masked due to testing needed. Bug#75911
+
+  20 Feb 2005; Robin H. Johnson <robbat2@gentoo.org>
+  vpopmail-5.4.6-r1.ebuild:
+  Bug #80506, need workaround for portage bug.
+
+  23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed digest.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> vpopmail-5.2.1-r5.ebuild,
+  vpopmail-5.2.1-r6.ebuild, vpopmail-5.2.1-r7.ebuild,
+  vpopmail-5.2.1-r8.ebuild, vpopmail-5.2.1-r9.ebuild,
+  vpopmail-5.2.2-r1.ebuild, vpopmail-5.2.2.ebuild, vpopmail-5.4.0_rc1.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  24 Aug 2004; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.4.6-r1.ebuild,
+  vpopmail-5.4.6.ebuild:
+  Fix bug #58647.
+
+  22 Aug 2004; Tuan Van <langthang@gentoo.org>
+  +files/vpopmail-5.4.6-access.violation.patch, vpopmail-5.4.6-r1.ebuild:
+  add patch for access violation during configure.
+
+  21 Aug 2004; Jason Wever <weeve@gentoo.org> vpopmail-5.4.6-r1.ebuild:
+  Stable on sparc wrt security bug #60844.
+
+*vpopmail-5.4.6-r1 (21 Aug 2004)
+
+  21 Aug 2004; Robin H. Johnson <robbat2@gentoo.org>
+  +vpopmail-5.4.6-r1.ebuild:
+  make it actually work. *grumble*.
+
+  21 Aug 2004; Tuan Van <langthang@gentoo.org> vpopmail-5.4.6.ebuild:
+  stable on x86 wrt bug #60844.
+
+*vpopmail-5.4.6 (20 Aug 2004)
+
+  21 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> vpopmail-5.4.6.ebuild:
+  Masked stable on ppc - advisory #60844
+
+  20 Aug 2004; Tuan Van <langthang@gentoo.org> +vpopmail-5.4.6.ebuild:
+  Version bump wrt bug #60844.
+
+  04 Aug 2004; <tomk@gentoo.org> vpopmail-5.2.1-r5.ebuild,
+  vpopmail-5.2.1-r6.ebuild, vpopmail-5.2.1-r7.ebuild,
+  vpopmail-5.2.1-r8.ebuild, vpopmail-5.2.1-r9.ebuild,
+  vpopmail-5.2.2-r1.ebuild, vpopmail-5.2.2.ebuild, vpopmail-5.4.0-r1.ebuild,
+  vpopmail-5.4.0.ebuild, vpopmail-5.4.0_rc1.ebuild:
+  HOMEPAGE changed.
+
+  28 Jun 2004; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.4.0-r1.ebuild:
+  bug #55313, RESTRICT=nouserpriv.
+
+*vpopmail-5.4.0-r1 (20 Jun 2004)
+
+  20 Jun 2004; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.4.0-r1.ebuild:
+  fix bug #48444.
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> vpopmail-5.2.1-r5.ebuild,
+  vpopmail-5.2.1-r6.ebuild, vpopmail-5.2.1-r7.ebuild,
+  vpopmail-5.2.1-r8.ebuild, vpopmail-5.2.1-r9.ebuild,
+  vpopmail-5.2.2-r1.ebuild, vpopmail-5.2.2.ebuild, vpopmail-5.4.0.ebuild,
+  vpopmail-5.4.0_rc1.ebuild:
+  Fix use invocation
+
+  03 Jun 2004; David Holm <dholm@gentoo.org> vpopmail-5.4.0.ebuild:
+  Added to ~ppc.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> vpopmail-5.2.1-r5.ebuild,
+  vpopmail-5.2.1-r6.ebuild, vpopmail-5.2.1-r7.ebuild,
+  vpopmail-5.2.1-r8.ebuild, vpopmail-5.2.1-r9.ebuild,
+  vpopmail-5.2.2-r1.ebuild, vpopmail-5.2.2.ebuild, vpopmail-5.4.0_rc1.ebuild:
+  Add die following econf for bug 48950
+
+  25 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> vpopmail-5.4.0.ebuild:
+  marked ~amd64.
+
+*vpopmail-5.4.0 (02 Apr 2004)
+
+  02 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #39639.
+
+  08 Mar 2004; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r8.ebuild,
+  vpopmail-5.2.1-r9.ebuild:
+  fix bug 44029, make sure gcc3.3 patch is applied
+
+  15 Feb 2004; Robin Johnson,,604-339-5621,604-298-8414 <robbat2@gentoo.org>
+  vpopmail-5.4.0_rc1.ebuild:
+  fix fowner/fowners.
+
+*vpopmail-5.4.0_rc1 (05 Jan 2004)
+
+  05 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.2-r1.ebuild,
+  vpopmail-5.2.2.ebuild, vpopmail-5.4.0_rc1.ebuild:
+  migration to new pre-release version.
+
+*vpopmail-5.2.2-r1 (04 Jan 2004)
+
+  04 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.2-r1.ebuild:
+  change src uri to use sourceforge now
+
+*vpopmail-5.2.2 (04 Jan 2004)
+
+  04 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r9.ebuild,
+  vpopmail-5.2.2.ebuild:
+  add conversion script to -r9, and do version bump to new stable version
+
+*vpopmail-5.2.1-r9 (25 Dec 2003)
+
+  25 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r9.ebuild,
+  files/vpopmail-Maildir-dotmaildir-fix.sh:
+  fix .keep from bug #35308. do changeover to new storage style, including
+  upgrade script.
+
+  08 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r5.ebuild,
+  vpopmail-5.2.1-r6.ebuild, vpopmail-5.2.1-r7.ebuild,
+  vpopmail-5.2.1-r8.ebuild:
+  fix bug #35127
+
+*vpopmail-5.2.1-r8 (08 Oct 2003)
+
+  08 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r8.ebuild:
+  fix bug #30414 and #30642
+
+*vpopmail-5.2.1-r7 (02 Oct 2003)
+
+  02 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r7.ebuild:
+  bump version to ensure mysql fix is in place
+
+  02 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r6.ebuild:
+  fix typo bug #30203
+
+  01 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r6.ebuild:
+  bump to x86
+
+  25 Sep 2003; <solar@gentoo.org> vpopmail-5.2.1-r6.ebuild:
+  new local use flag clearpasswd that enables clear text passwd storage of
+  vpasswd files. This changes the default behavior to now not store cleartext by
+  default. closes bug 20127
+
+  06 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r6.ebuild,
+  files/vpopmail-5.2.1-showall.patch:
+  fix bug #23876
+
+  06 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r6.ebuild,
+  files/99vpopmail:
+  obsolete piles of symlinks, as only root needs to access the binaries in
+  /var/vpopmail/bin, so we do it via env.d instead, along with a CONFIG_PROTECT
+  entry for their user data
+
+*vpopmail-5.2.1-r6 (06 Aug 2003)
+
+  06 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r6.ebuild,
+  files/vpopmail.clearopensmtp:
+  large ebuild fixup. security fixes, and doing the cronjob properly!
+
+*vpopmail-5.2.1-r5 (02 Apr 2003)
+  
+  23 May 2003; Robin Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r5.ebuild:
+  Fix an error in SRC_URI (mysql?) from Martin's minor changes. 
+
+  23 May 2003; Martin Holzer <mholzer@gentoo.org> vpopmail-5.2.1-r5.ebuild:
+  Added ipalias. Closes #17684.
+
+  02 Apr 2003; Robin Johnson <robbat2@gentoo.org> vpopmail-5.2.1-r5.ebuild,
+  files/digest-vpopmail-5.2.1-r5:
+  Removed MySQL v4 block (see bug 18193)
+
+*vpopmail-5.2.1-r4 (10 Feb 2003)
+
+  10 Feb 2003; Nick Hadaway <raker@gentoo.org> vpopmail-5.2.1-r4.ebuild,
+  files/digest-vpopmail-5.2.1-r4 :
+  changed mysql logic so if mysql is not in use to force disabling of
+  mysql support.
+
+*vpopmail-5.2.1-r3 (05 Feb 2003)
+
+  05 Feb 2003; Nick Hadaway <raker@gentoo.org> vpopmail-5.2.1-r3.ebuild,
+  files/digest-vpopmail-5.2.1-r3 :
+  Changed to epatch and made the mysql patch download via mysql USE.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  31 Oct 2002; J Robert Ray <jrray@gentoo.org> vpopmail-5.2.1-r2.ebuild :
+  Remove portion of configure that forces itself to be run as root, so
+  it can still be merged with portage fakeroot patches.
 
 *vpopmail-5.2.1 (24 Jul 2002)
 
-  1 Feb 2002; Maurizio Disimino <kevin@aptbasilicata.it> ChangeLog :
+  07 Oct 2002; Nick Hadaway <raker@gentoo.org> vpopmail-5.2.1-r2.ebuild :
+  Added vpopmail_set_homedir to pkg_postrm so comments display correct
+  variable values.
+
+  30 Jul 2002; Nick Hadaway <raker@gentoo.org>
+  files/vpopmail.diff, vpopmail-5.2.1-r2.ebuild :
+
+  Added a patch submitted by Vadim Berezniker backported from the devel
+  branch of vpopmail.  Fixes some login issues.  Closes bug #5746.
+
+  26 Feb 2002; Nicholas Jones <carpaski@gentoo.org> vpopmail-5.2.1-r2 :
+
+  Revised -r1 submitted via consortium of Patrick Naubert and Maurizio
+  Disimino to fix the library data and sandbox issues.
+	
+  Added homedir-via-passwd-homedir capability. Moved some code around.
+  
+*vpopmail-5.2.1 (24 Jul 2002)
+
+  24 2002; Maurizio Disimino <kevin@aptbasilicata.it> ChangeLog :
   
   Vpopmail is a PITA if you turn on MySQL support. Nicholas Jones
   (carpaski@gentoo.org) wrote a patch to make our life much simpler. 

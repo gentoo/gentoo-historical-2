@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/grepmail/grepmail-5.30.ebuild,v 1.1 2004/09/03 17:15:10 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/grepmail/grepmail-5.30.ebuild,v 1.1.1.1 2005/11/30 10:03:06 chriswhite Exp $
 
 inherit perl-module
 
@@ -11,14 +11,14 @@ RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc ~amd64 sparc"
 IUSE=""
 
 DEPEND="${DEPEND}
 	dev-perl/Inline
 	dev-perl/TimeDate
 	dev-perl/DateManip
-	dev-perl/Digest-MD5
+	perl-core/Digest-MD5
 	dev-perl/Mail-Mbox-MessageParser"
 
 RDEPEND=""

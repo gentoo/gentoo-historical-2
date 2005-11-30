@@ -1,18 +1,33 @@
-# ChangeLog for app-games/bombermaze
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/bombermaze/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/bombermaze
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/bombermaze/ChangeLog,v 1.1.1.1 2005/11/30 10:02:37 chriswhite Exp $
+
+  24 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/bombermaze-0.6.6-gcc.patch, bombermaze-0.6.6.ebuild:
+  Fix building with newer gcc versions #93736 by Igor Galchevsky.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  bombermaze-0.6.6.ebuild:
+  die backticks
+
+  02 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  bombermaze-0.6.6.ebuild:
+  doc tidy; header fix
 
   06 Dec 2003; Mark Guertin <gerk@gentoo.org> bombermaze-0.6.6.ebuild :
   Added ppc to keywords
 
 *bombermaze-0.6.6 (23 May 2002)
 
-  06 Oct 2002; Jose Alberto Suárez López <bass@gentoo.org>
+  06 Oct 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org>
   bombermaze-0.6.6.ebuild:
   Changed DEPEND, gnome-core to gnome-libs. It prevents the error
   masked of the game. thanks David Vollbracht for the email.
 
-  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> bombermaze-0.6.6.ebuild :
+  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> bombermaze-0.6.6.ebuild :
   Added KEYWORDS, SLOT.
 
   23 May 2002; Ryan Phillips <rphillips@gentoo.org> Changelog :

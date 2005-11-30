@@ -1,6 +1,18 @@
-# ChangeLog for app-games/powermanga
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/powermanga/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/powermanga
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/powermanga/ChangeLog,v 1.1.1.1 2005/11/30 10:02:41 chriswhite Exp $
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> powermanga-0.79.ebuild:
+  added ~amd64
+
+  07 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> powermanga-0.79.ebuild:
+  no need to install the Makefiles
+
+*powermanga-0.79 (03 Aug 2004)
+
+  03 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +powermanga-0.79.ebuild:
+  version bump
 
   29 Jul 2003; Michael Sterrett <msterret@gentoo.org> powermanga-0.78.ebuild:
   use the distribution site now that they're providing versioned releases.

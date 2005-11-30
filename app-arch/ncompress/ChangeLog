@@ -1,8 +1,65 @@
 # ChangeLog for app-arch/ncompress
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-arch/ncompress/ChangeLog,v 1.1 2002/02/01 21:52:59 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/ncompress/ChangeLog,v 1.1.1.1 2005/11/30 10:00:31 chriswhite Exp $
 
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  09 Oct 2004; Tom Gall <tgall@gentoo.org> ncompress-4.2.4-r1.ebuild:
+  stable on ppc64, bug #66251
+
+  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ncompress-4.2.4-r1.ebuild:
+  Stable amd64.
+
+  07 Oct 2004; Olivier Crete <tester@gentoo.org> ncompress-4.2.4-r1.ebuild:
+  Marking stable on x86 wrt security bug #66251
+
+  07 Oct 2004; Ferris McCormick <fmccor@gentoo.org> ncompress-4.2.4-r1.ebuild:
+  Stable for sparc. Bug 66251.
+
+  07 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> ncompress-4.2.4-r1.ebuild:
+  Stable on alpha, bug 66251.
+
+  07 Oct 2004; Lars Weiler <pylon@gentoo.org> ncompress-4.2.4-r1.ebuild:
+  Stable on ppc as requested in bug #66251.
+
+*ncompress-4.2.4-r1 (06 Oct 2004)
+
+  06 Oct 2004; <solar@gentoo.org> +metadata.xml, +ncompress-4.2.4-r1.ebuild:
+  This update adds bounds checking to command line options used by ncompress bug
+  #66251. Also minor clode cleanups and a bugfixes by using debian patch from
+  http://packages.qa.debian.org/n/ncompress.html
+
+  15 Jun 2004; <solar@gentoo.org> ncompress-4.2.4.ebuild:
+  skip manfile when USE=build is set
+
+  26 Apr 2004; Travis Tilley <lv@gentoo.org> +files/ncompress-gcc34.patch,
+  ncompress-4.2.4.ebuild:
+  gcc 3.4 fix
+
+  02 Mar 2004; Brian Jackson <iggy@gentoo.org> ncompress-4.2.4.ebuild:
+  adding initial s390 support
+
+  18 May 2003; Tavis Ormandy <taviso@gentoo.org> ncompress-4.2.4.ebuild:
+  removing hardcoded compiler.
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> ncompress-4.2.4.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *ncompress-4.2.4 (1 Feb 2002)
+
+  27 Feb 2003; Zach Welch <zwelch@gentoo.org> ncompress-4.2.4.ebuild:
+  add arm keyword
+
+  18 Jan 2003; Jan Seidel <tuxus@gentoo.org> :
+  Added mips to keywords
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

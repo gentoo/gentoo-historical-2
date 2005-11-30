@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20040817.ebuild,v 1.1 2004/08/17 20:02:12 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20040817.ebuild,v 1.1.1.1 2005/11/30 10:04:25 chriswhite Exp $
 
-inherit eutils
+inherit eutils gnuconfig
 
 IUSE="alsa arts esd sdl debug oggvorbis mpeg"
 DESCRIPTION="OpenAL, the Open Audio Library, is an open, vendor-neutral, cross-platform API for interactive, primarily spatialized audio"
@@ -11,7 +11,7 @@ HOMEPAGE="http://opensource.creative.com/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="x86 sparc ppc amd64 ppc64"
 
 DEPEND="x86? ( dev-lang/nasm )
 	alsa? ( >=media-libs/alsa-lib-1.0.2 )
@@ -22,6 +22,7 @@ DEPEND="x86? ( dev-lang/nasm )
 	mpeg? ( media-libs/smpeg )"
 
 src_compile() {
+	gnuconfig_update
 	local myconf
 
 	use esd && myconf="${myconf} --enable-esd"
@@ -34,8 +35,10 @@ src_compile() {
 
 	cd ${S}/linux
 	use alsa && epatch ${FILESDIR}/${P}-alsa_capture.diff
+	epatch ${FILESDIR}/${P}-destdir.patch
+
 	WANT_AUTOCONF=2.5 ./autogen.sh || die
-	./configure  --prefix=/usr ${myconf} --enable-paranoid-locks \
+	econf ${myconf} --enable-paranoid-locks --libdir=/usr/$(get_libdir) \
 		--enable-capture --enable-optimize || die
 	emake all || die
 }
@@ -43,7 +46,7 @@ src_compile() {
 src_install() {
 	cd ${S}/linux
 
-	make install DESTDIR=${D}/usr/|| die
+	make install DESTDIR="${D}" || die
 
 	dodoc CREDITS ChangeLog INSTALL NOTES PLATFORM TODO
 	dodoc ${FILESDIR}/openalrc

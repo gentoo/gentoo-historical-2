@@ -1,6 +1,29 @@
 # ChangeLog for app-editors/gobby
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/gobby/ChangeLog,v 1.1 2005/06/19 14:20:12 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/gobby/ChangeLog,v 1.1.1.1 2005/11/30 10:01:57 chriswhite Exp $
+
+*gobby-0.3.0_rc1 (16 Nov 2005)
+
+  16 Nov 2005; Gustavo Felisberto <humpback@gentoo.org>; gobby-0.2.2.ebuild,
+  +gobby-0.3.0_rc1.ebuild:
+  Bump to version 0.3.0_rc1. Arch teams please do not mark stable, I'll open a
+  bug when i think it is ready.
+
+*gobby-0.2.2 (09 Sep 2005)
+
+  09 Sep 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  -files/gobby.desktop, -gobby-0.1.1.ebuild, -gobby-0.2.0.ebuild,
+  +gobby-0.2.2.ebuild:
+  Removing older 0.1.* series version and bumping to 0.2.2
+
+*gobby-0.2.0 (14 Aug 2005)
+
+  14 Aug 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  +files/gobby.desktop-r1, +gobby-0.2.0.ebuild:
+  Version bump.
+
+  15 Jul 2005; Gustavo Felisberto <humpback@gentoo.org>; gobby-0.1.1.ebuild:
+  Keywording ~amd64
 
   19 Jun 2005; Gustavo Felisberto <humpback@gentoo.org>;
   +files/gobby.desktop, +metadata.xml, +gobby-0.1.1.ebuild:

@@ -1,7 +1,7 @@
 --- Makefile.orig	2004-02-09 11:12:03.000000000 +0900
 +++ Makefile	2004-02-27 03:22:14.563256080 +0900
 @@ -1,9 +1,10 @@
- # $Id: latex2rtf-Makefile-gentoo.diff,v 1.1 2004/02/26 19:05:41 usata Exp $
+ # $Id: latex2rtf-Makefile-gentoo.diff,v 1.1.1.1 2005/11/30 10:00:53 chriswhite Exp $
  
 -CC=gcc
 +CC=$(CC)

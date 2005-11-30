@@ -1,6 +1,9 @@
-# ChangeLog for app-sci/transcalc
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/transcalc/ChangeLog,v 1.1 2004/12/24 15:09:41 ribosome Exp $
+# ChangeLog for sci-calculators/transcalc
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/transcalc/ChangeLog,v 1.1.1.1 2005/11/30 10:02:34 chriswhite Exp $
+
+  25 Sep 2005; <dang@gentoo.org> transcalc-0.14.ebuild:
+  Marked ~amd64
 
 *transcalc-0.14 (24 Dec 2004)
 

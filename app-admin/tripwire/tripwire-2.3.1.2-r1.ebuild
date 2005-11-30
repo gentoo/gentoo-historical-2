@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/tripwire/tripwire-2.3.1.2-r1.ebuild,v 1.1 2004/06/04 19:39:59 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tripwire/tripwire-2.3.1.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:59:50 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -15,11 +15,11 @@ SLOT="0"
 KEYWORDS="x86 -alpha"
 IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	dev-util/patchutils
 	sys-devel/automake
 	dev-libs/openssl"
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	virtual/cron
 	virtual/mta
 	dev-libs/openssl"
@@ -60,14 +60,11 @@ src_compile() {
 	# 	-taviso@gentoo.org
 	strip-flags
 
-	emake release RPM_OPT_FLAGS="${CXXFLAGS}"
+	emake -j1 release RPM_OPT_FLAGS="${CXXFLAGS}" || die
 }
 
 src_install() {
-	dosbin ${S}/bin/*/siggen
-	dosbin ${S}/bin/*/tripwire
-	dosbin ${S}/bin/*/twadmin
-	dosbin ${S}/bin/*/twprint
+	dosbin ${S}/bin/*/{tripwire,twadmin,twprint} || die
 
 	for i in {4,5,8}
 	do
@@ -85,8 +82,9 @@ src_install() {
 	dodoc README Release_Notes ChangeLog policy/policyguide.txt TRADEMARK \
 		${FILESDIR}/tripwire.gif ${FILESDIR}/tripwire.txt
 
+	zcat ${FILESDIR}/twpol.txt > ${T}/twpol.txt || ewarn "twcfg.txt zcat error"
 	insinto /etc/tripwire
-	doins ${FILESDIR}/twcfg.txt ${FILESDIR}/twpol.txt
+	doins ${T}/twpol.txt ${FILESDIR}/twcfg.txt
 
 	exeinto /etc/tripwire
 	doexe ${FILESDIR}/twinstall.sh

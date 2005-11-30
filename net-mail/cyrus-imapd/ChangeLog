@@ -1,12 +1,371 @@
 # ChangeLog for net-mail/cyrus-imapd
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.1 2002/07/13 21:56:00 raker Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/ChangeLog,v 1.1.1.1 2005/11/30 10:03:21 chriswhite Exp $
+
+*cyrus-imapd-2.2.12-r3 (20 Jul 2005)
+
+  20 Jul 2005; Benjamin Smee <strerror@gentoo.org>
+  +cyrus-imapd-2.2.12-r3.ebuild:
+  Added enewuser lines for bug 99602. The second one was added for bin installs
+
+*cyrus-imapd-2.2.12-r2 (22 May 2005)
+
+  22 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/cyrus.pam-include, +cyrus-imapd-2.2.12-r2.ebuild:
+  fixes to make bsd happier, wrt #93168
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> cyrus-imapd-2.2.12-r1.ebuild,
+  cyrus-imapd-2.2.12.ebuild:
+  Stable on ppc64/added ~ppc64 to KEYWORDS
+
+  02 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  cyrus-imapd-2.2.12-r1.ebuild:
+  virtual/snmp went away
+
+*cyrus-imapd-2.2.12-r1 (01 Mar 2005)
+
+  01 Mar 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/cyrus-imapd-unsupported-8bit.patch, +cyrus-imapd-2.2.12-r1.ebuild:
+  Add 8bit patch wrt #18706 and #80630
+
+  24 Feb 2005; Markus Rothe <corsair@gentoo.org> cyrus-imapd-2.2.12.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  23 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> cyrus-imapd-2.2.12.ebuild:
+  Marked stable on amd64, bug 82404.
+
+  21 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  cyrus-imapd-2.2.10-r1.ebuild, cyrus-imapd-2.2.10.ebuild,
+  cyrus-imapd-2.2.12.ebuild:
+  removing ucd-snmp as per bug #69451.
+
+  19 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  cyrus-imapd-2.2.12.ebuild:
+  Stable on hppa.
+
+  19 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  cyrus-imapd-2.2.12.ebuild:
+  Stable on ppc.
+
+  18 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  cyrus-imapd-2.2.12.ebuild:
+  Stable on sparc wrt #82404
+
+  17 Feb 2005; Olivier Crête <tester@gentoo.org> cyrus-imapd-2.2.12.ebuild:
+  Marking stable on x86 for security bug #82404
+
+*cyrus-imapd-2.2.12 (17 Feb 2005)
+
+  17 Feb 2005; Tuấn Văn <langthang@gentoo.org>
+  +files/cyrus-imapd-2.2.12-drac.patch,
+  +files/cyrus-imapd-2.2.12-libwrap.patch, +cyrus-imapd-2.2.12.ebuild:
+  Version bump. Upstream ChangeLog URL:
+  http://asg.web.cmu.edu/cyrus/download/imapd/changes.html
+
+*cyrus-imapd-2.2.10-r1 (13 Feb 2005)
+
+  13 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/cyrus-imapd-2.2.10-drac.patch, +cyrus-imapd-2.2.10-r1.ebuild:
+  Remove pam.d stuff and depend on >=mailbase-0.00-r8 (#79240). Commit patch
+  from Tuan Van <langthang@gentoo.org> (#79442 and #72352).
+
+  29 Dec 2004; Sven Wegener <swegener@gentoo.org> +files/cyrus.confd,
+  files/cyrus.rc6, cyrus-imapd-2.2.10.ebuild:
+  Added /etc/conf.d script for passing additional options.
+
+  26 Nov 2004; Tuan Van <langthang@gentoo.org>
+  -files/cyrus-imapd-2.2.8-db4.patch,
+  -files/cyrus-imapd-2.2.8-libwrap.patch, -cyrus-imapd-2.2.8-r1.ebuild,
+  -cyrus-imapd-2.2.8.ebuild:
+  Remove old ebuilds.
+
+  24 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  cyrus-imapd-2.2.10.ebuild:
+  Stable on sparc
+
+  24 Nov 2004; Tuan Van <langthang@gentoo.org> :
+  Stable on x86.
+
+  24 Nov 2004; Guy Martin <gmsoft@gentoo.org> cyrus-imapd-2.2.10.ebuild:
+  Stable on hppa.
+
+*cyrus-imapd-2.2.10 (23 Nov 2004)
+
+  23 Nov 2004; Tuan Van <langthang@gentoo.org>
+  +files/cyrus-imapd-2.2.10-libwrap.patch,
+  -files/cyrus-imapd-2.2.9-libwrap.patch, +cyrus-imapd-2.2.10.ebuild,
+  -cyrus-imapd-2.2.9.ebuild:
+  Version bump WRT #72194.
+
+*cyrus-imapd-2.2.9 (23 Nov 2004)
+
+  23 Nov 2004; Tuan Van <langthang@gentoo.org>
+  +files/cyrus-imapd-2.2.9-libwrap.patch, +cyrus-imapd-2.2.9.ebuild:
+  Version bump WRT #72194.
+
+  01 Nov 2004; Tuan Van <langthang@gentoo.org>
+  -files/cyrus-imapd-2.1.12-includepath.patch,
+  -files/cyrus-imapd-2.1.14-db4.patch, -files/cyrus-imapd-2.1.15-db4.patch,
+  -files/cyrus-imapd-2.2.3-db4.patch, -files/cyrus-imapd-libwrap.patch,
+  -files/cyrus.rc6_2, -files/cyrus_2.conf, -files/gentestcrt.sh,
+  -files/imapd_2.conf, -files/master.8.diff, -files/pam.d-imap,
+  -cyrus-imapd-2.1.15-r1.ebuild, -cyrus-imapd-2.1.15.ebuild,
+  -cyrus-imapd-2.2.3.ebuild, cyrus-imapd-2.2.8.ebuild:
+  remove old ebuilds.
+
+  23 Oct 2004; Tuan Van <langthang@gentoo.org>
+  +files/cyrus-imapd-2.2.8-libwrap.patch, cyrus-imapd-2.2.8-r1.ebuild:
+  add logic to detect if cyrus-imapd and {ucd,net}-snmp have "tpcd" USE 
+  flag sync (ie both emerge with or without "tcpd".) Bug #68254.
+  add logic to check for net-snmp "mininal USE flag. Thanks to 
+  weeve@gentoo.org. Bug #67411.
+  add "idled" local use flag. Bug #62959. Thanks to sbriesen@gmx.de, 
+  swegener@gentoo.org, junkmonkey@gmail.com.
+
+  20 Oct 2004; Sven Wegener <swegener@gentoo.org> cyrus-imapd-2.2.3.ebuild,
+  cyrus-imapd-2.2.8-r1.ebuild, cyrus-imapd-2.2.8.ebuild:
+  Fixed deprecated tail -1 usage in imap/xversion.sh with ht_fix_file in all
+  2.2* ebuilds.
+
+*cyrus-imapd-2.2.8-r1 (17 Oct 2004)
+
+  17 Oct 2004; Tuan Van <langthang@gentoo.org> +cyrus-imapd-2.2.8-r1.ebuild:
+  add missing sievec binary. Needed for upgrade sieve from 2.1.* to 2.2.*.
+  add waring/info for those upgrade perl after net-snmp emerged. Bug #67411.
+
+  15 Oct 2004; Guy Martin <gmsoft@gentoo.org> cyrus-imapd-2.2.8.ebuild:
+  Stable on hppa.
+
+  13 Oct 2004; Tuan Van <langthang@gentoo.org> cyrus-imapd-2.2.8.ebuild:
+  stable on x86.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> cyrus-imapd-2.2.8.ebuild:
+  Added to ~ppc.
+
+  30 Aug 2004; Tuan Van <langthang@gentoo.org> cyrus-imapd-2.2.8.ebuild:
+  depend on virtual/snmp.
+
+  26 Aug 2004; Tuan Van <langthang@gentoo.org> files/imapd.conf:
+  add options to use auxprop with sql.
+
+*cyrus-imapd-2.2.8 (27 Aug 2004)
+
+  27 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> cyrus-imapd-2.2.8.ebuild:
+  Marked ~amd64.
+
+  21 Aug 2004; Tuan Van <langthang@gentoo.org> :
+  Version bump.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  cyrus-imapd-2.1.12.ebuild, cyrus-imapd-2.1.13.ebuild,
+  cyrus-imapd-2.1.14.ebuild, cyrus-imapd-2.1.15-r1.ebuild,
+  cyrus-imapd-2.1.15.ebuild:
+  virtual/glibc -> virtual/libc
+
+  10 Jun 2004; Aron Griffis <agriffis@gentoo.org> cyrus-imapd-2.1.12.ebuild,
+  cyrus-imapd-2.1.13.ebuild, cyrus-imapd-2.1.14.ebuild,
+  cyrus-imapd-2.1.15-r1.ebuild, cyrus-imapd-2.1.15.ebuild,
+  cyrus-imapd-2.2.3.ebuild:
+  Fix use invocation, and fix nasty typo [ "'use ssl'" ] (somebody
+  accidentally used normal single quotes instead of back-quotes, so that
+  condition would always be true)
+
+  23 May 2004; Jason Wever <weeve@gentoo.org> cyrus-imapd-2.2.3.ebuild:
+  Added ~sparc keyword.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> cyrus-imapd-2.2.3.ebuild:
+  Add die following econf for bug 48950
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> cyrus-imapd-2.1.12.ebuild,
+  cyrus-imapd-2.1.13.ebuild, cyrus-imapd-2.1.14.ebuild,
+  cyrus-imapd-2.1.15-r1.ebuild, cyrus-imapd-2.1.15.ebuild:
+  Add die following econf for bug 48950
+
+  24 Feb 2004; Jason Wever <weeve@gentoo.org> cyrus-imapd-2.1.15-r1.ebuild:
+  Added ~sparc keyword.  Thanks to gsdali from the sparc forum for testing :)
+
+  22 Feb 2004; Aron Griffis <agriffis@gentoo.org> cyrus-imapd-2.1.12.ebuild,
+  cyrus-imapd-2.1.13.ebuild:
+  Remove arm keywords
+
+*cyrus-imapd-2.2.3 (20 Jan 2004)
+
+  20 Jan 2004; Max Kalika <max@gentoo.org> cyrus-imapd-2.1.11-r1.ebuild,
+  cyrus-imapd-2.1.12.ebuild, cyrus-imapd-2.1.13.ebuild,
+  cyrus-imapd-2.1.14.ebuild, cyrus-imapd-2.1.15-r1.ebuild,
+  cyrus-imapd-2.1.15.ebuild, cyrus-imapd-2.2.3.ebuild, files/2.1.14-db4.patch,
+  files/2.1.15-db4.patch, files/cyrus-imapd-2.1.12-libwrap.patch,
+  files/cyrus-imapd-2.1.14-db4.patch, files/cyrus-imapd-2.1.15-db4.patch,
+  files/cyrus-imapd-2.2.3-db4.patch, files/cyrus-imapd-libwrap.patch,
+  files/cyrus.conf, files/cyrus.rc6, files/imap.pam, files/imapd.conf:
+  Bump version to 2.2.3. Major cleanup/rewrite: quote variables where possible;
+  whitespace consistancy use more ebuild semantics (use_with, use_enable);
+  drop creation of cyrus user; move all binaries to /usr/lib/cyrus from
+  /usr/cyrus; make tcpd support optional, based on tcpd USE flag; add optional
+  DRAC support, based on local drac USE flag; vastly simplified install
+  procedure; move ssl files to /etc/ssl/cyrus from /etc/cyrusimapd; IMAP spool
+  hashing fixes; startup script fixes; make PAM optional. Generate server.pem
+  along with server.key and server.crt if USE=ssl. Depend on sed-4. Migrate to
+  ssl-cert.eclass.
+
+  14 Dec 2003; <spider@gentoo.org> cyrus-imapd-2.1.11-r1.ebuild,
+  cyrus-imapd-2.1.12.ebuild, cyrus-imapd-2.1.13.ebuild,
+  cyrus-imapd-2.1.14.ebuild, cyrus-imapd-2.1.15-r1.ebuild,
+  cyrus-imapd-2.1.15.ebuild:
+  QA: fixing chown user.group to user:group, bug #35127
+
+*cyrus-imapd-2.1.15-r1 (04 Oct 2003)
+
+  04 Oct 2003; Markus Nigbur <pyrania@gentoo.org>
+  cyrus-imapd-2.1.15-r1.ebuild:
+  headtail fix
+
+  19 Sep 2003; Max Kalika <max@gentoo.org> cyrus-imapd-2.1.15.ebuild:
+  Fix SRC_URI.
+
+*cyrus-imapd-2.1.15 (18 Sep 2003)
+
+  18 Sep 2003; Max Kalika <max@gentoo.org> cyrus-imapd-2.1.14.ebuild,
+  cyrus-imapd-2.1.15.ebuild, files/2.1.14-db4.patch, files/2.1.15-db4.patch:
+  Remove --with-auth=krb. It is only used for kerberos 4 according to the docs.
+  Only allow gssapi when USE=kerberos. Fix the db4 patch to redefine 3 extra
+  symbols. Bump to version 2.1.15. Fix bugs 24429, 26760, and maybe 27645
+
+  18 Sep 2003; Max Kalika <max@gentoo.org> cyrus-imapd-2.1.11-r1.ebuild,
+  cyrus-imapd-2.1.12.ebuild, cyrus-imapd-2.1.13.ebuild,
+  cyrus-imapd-2.1.14.ebuild:
+  Fix SRC_URI. Upstream moved these.
+
+  13 Jul 2003; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.14.ebuild:
+  Changed kerberos dep to app-crypt/mit-krb5 as heimdal isn't supported
+  properly.  Marked stable for x86
+
+  09 Jul 2003; Peter Johanson <latexer@gentoo.org> :
+  Fixed digest to include ipv6 patch
+
+*cyrus-imapd-2.1.14 (09 Jul 2003)
+
+  09 Jul 2003; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.14.ebuild,
+  files/2.1.14-db4.patch:
+  Version bump.  patch for versioned symbols in db4.  Added ipv6 support
+  thanks to the heads up from Bernhard Schmidt on bug #23690.
+
+*cyrus-imapd-2.1.13 (09 Jun 2003)
+
+  09 Jun 2003; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.13.ebuild,
+  files/digest-cyrus-imapd-2.1.13:
+  Version bump.
+
+  02 Jun 2003; robh <robh@gentoo.org> cyrus-imapd-2.1.12.ebuild:
+  added IUSE line
+
+*cyrus-imapd-2.1.12 (07 Feb 2003)
+
+  11 Feb 2003; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.12.ebuild,
+  files/cyrus-imapd-2.1.12-includepath.patch :
+  Added a patch to remove spurious -I/usr/include statements so users
+  configure runs will detect things such as sasl properly.
+
+  07 Feb 2003; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.12.ebuild,
+  files/digest-cyrus-imapd-2.1.12, files/cyrus-imapd-2.1.12-libwrap.patch :
+  Version bump.
+
+*cyrus-imapd-2.1.11-r1 (05 Feb 2003)
+
+  05 Feb 2003; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.11-r1.ebuild,
+  files/digest-cyrus-imapd-2.1.11-r1 :
+  Added keepdir's to all the /var directories.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*cyrus-imapd-2.1.11 (07 Dec 2002)
+
+  01 Feb 2003; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.11.ebuild :
+  Changed configure options and DEPEND for proper kerberos(krb4) detection.
+
+  07 Dec 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.11.ebuild,
+  files/digest-cyrus-imapd-2.1.11, files/configure.diff :
+  New version with previously added secutity fixes.  Also added
+  a ucd-snmp fix which needs testing.  Removed -I/usr/include warnings
+  during compile-time.  Currently marked unstable.
+
+*cyrus-imapd-2.1.10 (03 Dec 2002)
+
+  03 Dec 2002; Nick Hadaway <raker@gentoo.org>
+  cyrus-imapd-2.1.10.ebuild, files/digest-cyrus-imapd-2.1.10,
+  files/libsieve-overflow.diff, files/imap-overflow.diff :
+  New ebuild with overflow patches from bug #11537.
+
+*cyrus-imapd-2.1.9-r2 (26 Nov 2002)
+
+  26 Nov 2002; Nick Hadaway <raker@gentoo.org>
+  cyrus-imapd-2.1.9-r2.ebuild, files/digest-cyrus-imapd-2.1.9-r2 :
+  Added some sed magic so kerberos support is detected correctly.
+  See bug #11013.
+
+*cyrus-imapd-2.1.9-r1 (01 Oct 2002)
+
+  11 Oct 2002; Nick Hadaway <raker@gentoo.org>
+  cyrus-imapd-2.1.9-r1.ebuild :
+  Added gssapi support based on the kerberos use flag.  Beautified the
+  ebuild a bit more.
+
+  01 Oct 2002; Alexander Holler <holler@ahsoftware.de>
+  cyrus-imapd-2.1.9-r1.ebuild, files/cyrus_2.conf, files/gentestcrt.sh,
+  files/imapd_2.conf, files/master.8.diff:
+  Removed cyradm and sieveshell (now in package cyrus-imap-admin).
+  Added generation of a self-signed test certificate.
+  Added 'use dns logger' to the startup-script.
+  Renamed master to cyrusmaster because postfix has a master too (manpage conflict)
+
+*cyrus-imapd-2.1.9 (10 Sep 2002)
+
+  23 Sep 2002; Nick Hadaway <raker@gentoo.org> files/cyrus.conf :
+  Changed imap and pop3 listen port names to imap2 and pop-3.  See bug
+  #7178 for further information.
+
+  16 Sep 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.9.ebuild :
+  Updated src_install() to delete the empty /var/log{auth,imapd}.log
+  files.  Closes bug #7196.
+
+  10 Sep 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.9.ebuild,
+  files/digest-cyrus-imapd-2.1.9, files/config.diff :
+  Version bump.  Cleaned up the ebuild even more.  Added a patch to
+  bypass the -I/usr/include gcc problem.  Added kerberos use flag.
+
+*cyrus-imapd-2.1.5-r1 (13 Aug 2002)
+
+  22 Aug 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.5-r1.ebuild :
+  Added RDEPEND on net-mail/mailbase.  Closes bug #6573.
+
+  13 Aug 2002; Nick Hadaway <raker@gentoo.org>
+  cyrus-imapd-2.1.5-r1.ebuild, files/digest-cyrus-imapd-2.1.5-r1 :
+  Updated ebuild with fixes provided by Dominik Westner.  Enabled perl and
+  cyradm in configure if use perl is set.  This will install cyradm and
+  sieveshell scripts and the perl modules for cyrus imapd.
 
 *cyrus-imapd-2.1.5 (13 Jul 2002)
 
-  13 Jul 2002; Nick Hadaway <raker@gentoo.org>
-  cyrus-imapd-2.1.5.ebuild and friends:
+  13 Aug 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.5.ebuild :
+  Re-enabled --without-perl until installation snafus are fixed.
 
+  12 Aug 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.5.ebuild :
+  I have no idea why --without-perl was one of the configure options.
+
+  08 Aug 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.5.ebuild :
+  Added a couple of configure options suggested by mhromada@elas.sk on
+  bug #6156.
+
+  06 Aug 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.5.ebuild :
+  Changed emake to make after experiencing compile problems on multiple
+  systems.  Updated keywords.  ppc and sparc need testing.  Fixed little
+  typos and removed an unneeded comment about /etc/services.
+
+  22 Jul 2002; Nick Hadaway <raker@gentoo.org> cyrus-imapd-2.1.5.ebuild :
+  Fixed small typo in dependancies.  Changed open-afs to openafs.
+
+  13 Jul 2002; Nick Hadaway <raker@gentoo.org>
+  cyrus-imapd-2.1.5.ebuild and friends :
   Ebuild and friends created by Alexander Holler.  Thank you!
   Created diff so program will compile with current version of
   e2fsprogs.

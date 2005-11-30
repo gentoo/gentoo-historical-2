@@ -1,14 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-rra/synce-rra-0.9.0.ebuild,v 1.1 2004/09/25 17:54:11 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-rra/synce-rra-0.9.0.ebuild,v 1.1.1.1 2005/11/30 10:02:24 chriswhite Exp $
 
-DESCRIPTION="Synchronize Windows CE devices with Linux."
+inherit eutils
+
+DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync."
 HOMEPAGE="http://sourceforge.net/projects/synce/"
-SRC_URI="mirror://sourceforge/synce/${P}.tar.gz mirror://sourceforge/synce/librra-synce-kde-0.7.diff"
+SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND=">=dev-libs/check-0.8.2
@@ -17,9 +19,9 @@ DEPEND=">=dev-libs/check-0.8.2
 	>=app-pda/synce-librapi2-0.9.0"
 
 src_unpack() {
-	unpack ${P}.tar.gz
-	cd ${WORKDIR}/${P}
-	epatch ${DISTDIR}/librra-synce-kde-0.7.diff
+	unpack ${A}
+	cd ${S}/lib
+	epatch ${FILESDIR}/${PV}-gcc34.patch
 }
 
 src_install() {

@@ -1,47 +1,52 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-mixer/sdl-mixer-1.2.5-r1.ebuild,v 1.1 2003/03/25 00:26:17 malverian Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-mixer/sdl-mixer-1.2.5-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:59 chriswhite Exp $
 
-IUSE="mpeg mikmod oggvorbis"
+inherit eutils gnuconfig
 
 MY_P="${P/sdl-/SDL_}"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
-SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 HOMEPAGE="http://www.libsdl.org/projects/SDL_mixer/index.html"
+SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
+LICENSE="LGPL-2"
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc ~alpha"
+KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 sparc x86"
+IUSE="mp3 mikmod oggvorbis"
 
-DEPEND=">=media-libs/libsdl-1.2.5
-	>=media-libs/smpeg-0.4.4-r1
-	mikmod? ( >=media-libs/libmikmod-3.1.10 )
+#	mikmod? ( >=media-libs/libmikmod-3.1.10 )
+RDEPEND=">=media-libs/libsdl-1.2.5
+	mp3? ( >=media-libs/smpeg-0.4.4-r1 )
 	oggvorbis? ( >=media-libs/libvorbis-1.0_beta4 )"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
 
 src_unpack() {
-unpack ${A}
-cd ${S}/timidity
-cp config.h config.h.orig
-sed -e 's:/usr/local/lib/timidity:/usr/share/timidity:' config.h.orig > config.h
-rm -f config.h.orig
+	unpack ${A}
+	cd ${S}
+	epatch "${FILESDIR}/${PV}-gcc3.patch"
+	epatch "${FILESDIR}/${P}-amd64-mikmod.patch"
+	aclocal || die "aclocal"
+	automake -a -c || die "automake"
+	autoconf || die "autoconf"
+	sed -i \
+		-e 's:/usr/local/lib/timidity:/usr/share/timidity:' \
+		timidity/config.h \
+		|| die "sed timidity/config.h failed"
+	gnuconfig_update
 }
 
 src_compile() {
-
-	local myconf
-
-	use mikmod || myconf="${myconf} --disable-mod"
-	use mpeg || myconf="${myconf} --disable-music-mp3"
-	use oggvorbis || myconf="${myconf} --disable-music-ogg"
-
-	econf ${myconf} || die
-	emake || die
+	econf \
+		$(use_enable mikmod mod) \
+		$(use_enable mp3 music-mp3) \
+		$(use_enable oggvorbis music-ogg) \
+		|| die
+	emake || die "emake failed"
 }
 
 src_install() {
-
-	make DESTDIR=${D} install || die
-	
-	dodoc CHANGES COPYING README  
+	make DESTDIR="${D}" install || die "make install failed"
+	dodoc CHANGES README
 }

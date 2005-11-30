@@ -1,32 +1,26 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/app-shells/ccsh/ccsh-0.0.4-r2.ebuild,v 1.1 2001/04/13 13:01:59 achim Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/ccsh/ccsh-0.0.4-r2.ebuild,v 1.1.1.1 2005/11/30 10:00:26 chriswhite Exp $
 
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
 DESCRIPTION="UNIX Shell for people already familiar with the C language"
-SRC_URI="http://download.sourceforge.net/ccsh/${A}"
-HOMEPAGE="http://ccsh.sourceforge.net"
+HOMEPAGE="http://ccsh.sourceforge.net/"
+SRC_URI="http://download.sourceforge.net/ccsh/${P}.tar.gz"
 
-DEPEND="virtual/glibc"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_compile() {
-	
-	make CFLAGS="${CFLAGS}" all
+	make CFLAGS="${CFLAGS}" all || die
 }
 
-src_install() {                               
-
+src_install() {
 	into /
-	dobin ccsh
+	dobin ccsh || die
 	into /usr
 	newman ccsh.man ccsh.1
-	dodoc ChangeLog COPYING README TODO
-
+	dodoc ChangeLog README TODO
 }
-
-
-
-
-

@@ -1,17 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosix-3dmon/openmosix-3dmon-0.2.1.ebuild,v 1.1 2004/03/21 19:44:52 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosix-3dmon/openmosix-3dmon-0.2.1.ebuild,v 1.1.1.1 2005/11/30 10:01:44 chriswhite Exp $
+
+inherit eutils
 
 S=${WORKDIR}/3dmon-${PV}
 DESCRIPTION="Three dimensional monitoring tool for openmosix cluster"
 SRC_URI="mirror://sourceforge/threedmosmon/3dmon-${PV}.tar.gz"
 HOMEPAGE="http://sourceforge.net/projects/threedmosmon"
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	virtual/opengl"
 RDEPEND="${DEPEND}"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="-* ~x86"
+IUSE=""
 
 src_unpack() {
 	unpack ${A}

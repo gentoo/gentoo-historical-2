@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-1.2.0_p5.ebuild,v 1.1 2005/08/11 20:51:30 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-1.2.0_p5.ebuild,v 1.1.1.1 2005/11/30 10:01:49 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.clusterresources.com/downloads/torque/${MY_P}.tar.gz
 LICENSE="openpbs"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 x86"
 IUSE="doc tcltk X"
 PROVIDE="virtual/pbs"
 
@@ -53,7 +53,7 @@ src_compile() {
 #	use X || myconf="--disable-gui"
 #	use tcltk && myconf="${myconf} --with-tcl"
 #	use doc && myconf="${myconf} --enable-docs"
-	append-flags -DJOB_DELETE_NANNY 
+	append-flags -DJOB_DELETE_NANNY
 
 	./configure \
 		$(use_enable X gui) \

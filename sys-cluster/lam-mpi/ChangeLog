@@ -1,11 +1,170 @@
-# ChangeLog for dev-libs/lam-mpi
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/lam-mpi/ChangeLog,v 1.1 2003/07/08 05:31:28 george Exp $
+# ChangeLog for sys-cluster/lam-mpi
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/lam-mpi/ChangeLog,v 1.1.1.1 2005/11/30 10:01:47 chriswhite Exp $
+
+  03 Oct 2005; Christian Zoffoli <xmerlin@gentoo.org> lam-mpi-7.1.1-r3.ebuild:
+  fixed bug #106443.
+
+*lam-mpi-7.1.1-r3 (15 Aug 2005)
+
+  15 Aug 2005; Danny van Dyk <kugelfang@gentoo.org>
+  files/lam-mpi-7.1.1-shared-romio.patch, -lam-mpi-7.1.1.ebuild,
+  -lam-mpi-7.1.1-r1.ebuild, -lam-mpi-7.1.1-r2.ebuild,
+  +lam-mpi-7.1.1-r3.ebuild:
+  Fixed BUG #88110 (finally). Removed obsolete versions of 7.1.1.
+
+  03 Aug 2005; Ferris McCormick <fmccor@gentoo.org> lam-mpi-7.1.1-r2.ebuild:
+  Add ~sparc keyword.  Builds without incident (with ssh interface)
+  and seems to be fine.
+
+  12 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  lam-mpi-7.1.1-r2.ebuild:
+  Move where fortran_pkg_setup runs, as it is not needed for merging a binary
+  package in pkg_setup.
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> lam-mpi-7.1.1-r2.ebuild:
+  added ~ppc64
+
+  06 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  lam-mpi-7.1.1-r2.ebuild:
+  Update ebuild to actually use functionality from fortran.eclass.
+
+*lam-mpi-7.1.1-r2 (05 Jul 2005)
+
+  05 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +lam-mpi-7.1.1-r2.ebuild:
+  Implement virtual/mpi. Bug #96537: examples. Bug #96543: documentation
+  location. Bug #97417: Fix fortran support.
+
+*lam-mpi-7.1.1-r1 (06 Jul 2005)
+
+  06 Jul 2005; Danny van Dyk <kugelfang@gentoo.org> lam-mpi-7.1.1-r1.ebuild:
+  Bumped to circumvent my broken romio patch. Sorry :-/
+
+  24 May 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  files/lam-mpi-7.1.1-shared-romio.patch:
+  (#92832) Fix misformatted patch.
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> lam-mpi-7.1.1.ebuild:
+  Stable on ppc64
+
+  15 May 2005; Danny van Dyk <kugelfang@gentoo.org> lam-mpi-7.1.1.ebuild:
+  Marked stable on amd64.
+
+  15 May 2005; Danny van Dyk <kugelfang@gentoo.org>
+  +files/lam-mpi-7.1.1-shared-romio.patch, lam-mpi-7.1.1.ebuild:
+  Fixed BUG #88110. liblammpio will now be built as static and shared library.
+
+  06 May 2005; David Holm <dholm@gentoo.org> lam-mpi-7.1.1.ebuild:
+  Readded to ~ppc. Please don't remove it without filing a proper bug report.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> lam-mpi-7.1.1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*lam-mpi-7.1.1 (21 Feb 2005)
+
+  21 Feb 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +lam-mpi-7.1.1.ebuild:
+  Version bump. (#66291) Build Fortran stuff. (#62561) Check for Fortran
+  compiler.
+
+  07 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org> lam-mpi-7.1.ebuild:
+  Adding ~amd64 as it was mistakenly removed.
+
+  05 Oct 2004; Ferris McCormick <fmccor@gentoo.org> lam-mpi-7.1.ebuild:
+  Add ~sparc keyword. (Runs lamtests-7.1.1 (configured 2x3), pyMPI (2x2),
+  hardened, with USE='crypt' (=ssh).)
+
+  04 Oct 2004; Ferris McCormick <fmccor@gentoo.org> lam-mpi-7.0.6.ebuild:
+  Stable for sparc.
+
+  23 Sep 2004; Donnie Berkholz <spyderous@gentoo.org>; lam-mpi-7.0.6.ebuild:
+  x86.
+
+*lam-mpi-7.1 (23 Sep 2004)
+
+  23 Sep 2004; Donnie Berkholz <spyderous@gentoo.org>; +lam-mpi-7.1.ebuild:
+  Bump. See HISTORY in source tarball for changes.
+
+  19 Sep 2004; Michael Imhof <tantive@gentoo.org> lam-mpi-7.0.4-r1.ebuild:
+  Added local use flag for f77.
+
+  19 Sep 2004; Michael Imhof <tantive@gentoo.org> -lam-mpi-6.5.6-r1.ebuild,
+  -lam-mpi-6.5.9-r1.ebuild, -lam-mpi-7.0.2.ebuild, -lam-mpi-7.0.3.ebuild:
+  Cleaned out old ebuilds.
+
+  02 Sep 2004; Ferris McCormick <fmccor@gentoo.org> lam-mpi-7.0.6.ebuild:
+  Add ~sparc keyword. Builds for sparc and runs lamtests-7.0.6 in a cluster
+  of 2 smp systems (2xSMP(2)), with USE=crypt (ssh).
+
+*lam-mpi-7.0.4-r1 (13 Jul 2004)
+
+  13 Jul 2004; Michael Imhof <tantive@gentoo.org> +lam-mpi-7.0.4-r1.ebuild:
+  Fixed the ebuild. Added more config options. Closes #55046.
+
+*lam-mpi-7.0.6 (13 Jul 2004)
+
+  13 Jul 2004; Michael Imhof <tantive@gentoo.org> +lam-mpi-7.0.6.ebuild:
+  Version bumped. Closes #55047.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  lam-mpi-6.5.6-r1.ebuild, lam-mpi-6.5.9-r1.ebuild, lam-mpi-7.0.2.ebuild,
+  lam-mpi-7.0.3.ebuild, lam-mpi-7.0.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  15 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lam-mpi-6.5.6-r1.ebuild, lam-mpi-6.5.9-r1.ebuild, lam-mpi-7.0.2.ebuild,
+  lam-mpi-7.0.3.ebuild, lam-mpi-7.0.4.ebuild:
+  PROVIDE is for virtuals
+
+  24 Apr 2004; Tom Gall <tgall@gentoo.org> lam-mpi-7.0.4.ebuild:
+  Marked stable for ppc64
+
+  16 Apr 2004; Ferris McCormick <fmccor@gentoo.org> lam-mpi-7.0.4.ebuild:
+  Mark stable for sparc
+
+  02 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>; lam-mpi-7.0.4.ebuild:
+  Move mpich from DEPEND to RDEPEND.
+
+  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lam-mpi-6.5.9-r1.ebuild:
+  don't use deprecated ? : use syntax
+
+  04 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> lam-mpi-7.0.4.ebuild:
+  Added ~ppc and ~sparc since older versions were ok, bumped others to stable
+
+*lam-mpi-7.0.4 (04 Mar 2004)
+
+  04 Mar 2004; Michael Imhof <tantive@gentoo.org> lam-mpi-7.0.4.ebuild:
+  Version bumped.
+
+  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> lam-mpi-7.0.3.ebuild:
+  add ~alpha
+
+*lam-mpi-6.5.6-r1 (07 Jan 2004)
+
+  07 Jan 2004; Jason Wever <weeve@gentoo.org> lam-mpi-6.5.6-r1.ebuild:
+  Added 6.5.6-r1 back into the repository as it was the last stable version for
+  sparc and broke dependencies by being removed.
+
+*lam-mpi-7.0.3 (07 Jan 2004)
+
+  07 Jan 2004; Olivier Crete <tester@gentoo.org> lam-mpi-7.0.3.ebuild:
+  Version bump as reported by JFMuggs on irc
+
+  14 Nov 2003; Brad House <brad_mssw@gentoo.org> lam-mpi-7.0.2.ebuild:
+  add ~amd64 flag
+
+*lam-mpi-7.0.2 (02 Nov 2003)
+
+  02 Nov 2003; Donnie Berkholz <spyderous@gentoo.org>; lam-mpi-7.0.2.ebuild,
+  metadata.xml:
+  Bump to close bug #31288. Added metadata.xml for cluster herd.
 
   07 Jul 2003; George Shapovalov <george@gentoo.org> :
   moved from dev-libs into sys-cluster
 
-*lam-mpi-6.5.9-r1.ebuild (03 Jun 2003)
+*lam-mpi-6.5.9-r1 (03 Jun 2003)
 
   03 Jun 2003; Michael Imhof <imhofml@gentoo.org> lam-mpi-6.5.9-r1.ebuild, files/digest-lam-mpi-6.5.9-r1 :
   corrected ebuild submitted by Marc St-Pierre <marc@cyberlogic.ca>

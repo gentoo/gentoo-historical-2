@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/tentakel/tentakel-2.1.3.ebuild,v 1.1 2004/11/03 12:57:24 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/tentakel/tentakel-2.1.3.ebuild,v 1.1.1.1 2005/11/30 10:01:47 chriswhite Exp $
 
 inherit distutils
 

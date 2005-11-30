@@ -1,27 +1,29 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdcss/libdvdcss-1.2.8.ebuild,v 1.1 2003/07/30 19:11:39 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdcss/libdvdcss-1.2.8.ebuild,v 1.1.1.1 2005/11/30 10:04:00 chriswhite Exp $
 
-IUSE=""
+inherit eutils
 
 DESCRIPTION="A portable abstraction library for DVD decryption"
-SRC_URI="http://developers.videolan.org/pub/videolan/libdvdcss/${PV}/${P}.tar.bz2"
-HOMEPAGE="http://developers.videolan.org/pub/videolan/libdvdcss/"
+HOMEPAGE="http://developers.videolan.org/libdvdcss/"
+SRC_URI="http://www.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 
-SLOT="1.2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~alpha"
+SLOT="1.2"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos sparc x86"
+IUSE="doc static"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc
+	doc? ( app-doc/doxygen )"
 
 pkg_preinst() {
 	# these could cause problems if they exist from
 	# earlier builds
-	for x in libdvdcss.so.0 libdvdcss.so.1
+	for x in libdvdcss.so.0 libdvdcss.so.1 libdvdcss.0.dylib libdvdcss.1.dylib
 	do
-		if [ -f /usr/lib/${x} ] || [ -L /usr/lib/${x} ]
+		if [ -f /usr/$(get_libdir)/${x} ] || [ -L /usr/$(get_libdir)/${x} ]
 		then
-			rm -f /usr/lib/${x}
+			rm -f /usr/$(get_libdir)/${x}
 		fi
 	done
 }
@@ -32,36 +34,36 @@ src_compile() {
 	unset CFLAGS
 	unset CXXFLAGS
 
-	econf || die
-		    
-	make || die
+	econf `use_enable static` || die
+	emake || die
+	use doc && emake doc
 }
 
 src_install() {
 	einstall || die
 
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
-	
+	dodoc AUTHORS ChangeLog NEWS README
+	use doc && dohtml doc/html/*
+
 	##
 	## 0.0.3.* and 1.0.0 compat
 	##
 
 	# NOTE: this should be the last code in src_install() !!!
 
-	if [ -L ${D}/usr/lib/libdvdcss.so ]
+	if [ -L ${D}/usr/$(get_libdir)/libdvdcss.so ]
 	then
 		# on some locales the name of the file a symlink points to, is in the
 		# tenth field, and not the eleventh (bug #2908)
 		LC_ALL='C'
-		local realname="$(ls -l ${D}/usr/lib/libdvdcss.so |gawk '{print $11}')"
+		local realname="$(ls -l ${D}/usr/$(get_libdir)/libdvdcss.so |gawk '{print $11}')"
 		[ -z "${realname}" ] && \
-			realname="$(ls -l ${D}/usr/lib/libdvdcss.so |gawk '{print $10}')"
+			realname="$(ls -l ${D}/usr/$(get_libdir)/libdvdcss.so |gawk '{print $10}')"
 		[ -z "${realname}" ] && return 0
-	
+
 		for x in libdvdcss.so.0 libdvdcss.so.1
 		do
-			dosym ${realname} /usr/lib/${x}
+			dosym ${realname} /usr/$(get_libdir)/${x}
 		done
 	fi
 }
-

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-0.9.8.ebuild,v 1.1 2003/10/24 15:54:13 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-0.9.8.ebuild,v 1.1.1.1 2005/11/30 10:03:59 chriswhite Exp $
 
 inherit libtool
 
@@ -8,21 +8,32 @@ DESCRIPTION="Advanced Linux Sound Architecture Library"
 HOMEPAGE="http://www.alsa-project.org/"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha"
+KEYWORDS="alpha"
 LICENSE="GPL-2 LGPL-2.1"
 
-DEPEND="virtual/glibc
+IUSE="jack"
+
+RDEPEND="jack? ( media-sound/jack-audio-connection-kit )"
+
+DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.7.2
 	>=sys-devel/autoconf-2.57-r1"
 
 SRC_URI="mirror://alsaproject/lib/${P}.tar.bz2"
 RESTRICT="nomirror"
-S=${WORKDIR}/${P}
 
 src_compile() {
 	elibtoolize
 	econf || die "./configure failed"
-	make || die "make failed"
+	emake || die "make failed"
+
+	if use jack; then
+	cd ${S}/src/pcm/ext
+	make jack || die "make on jack plugin failed"
+		sed -i \
+			-e "s:\$(pkglibLTLIBRARIES_INSTALL) \$(INSTALL_STRIP_FLAG):\$(pkglibLTLIBRARIES_INSTALL) \$(INSTALL) \$(INSTALL_STRIP_FLAG):" Makefile || \
+		die "make on jack plugin failed"
+	fi
 }
 
 src_install() {
@@ -35,6 +46,10 @@ src_install() {
 	#compatible with libasound.so.2 and a simple link
 	#fixes the problem (fingers crossed)
 	dosym /usr/lib/libasound.so.2 /usr/lib/libasound.so.1
-
 	dodoc ChangeLog COPYING TODO
+
+	if use jack; then
+		cd ${S}/src/pcm/ext
+		make DESTDIR=${D} install-jack || die "make install on jack plugin failed"
+	fi
 }

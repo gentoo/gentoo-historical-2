@@ -1,8 +1,70 @@
 # ChangeLog for net-mail/tpop3d
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/tpop3d/ChangeLog,v 1.1 2003/01/19 10:36:36 raker Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/tpop3d/ChangeLog,v 1.1.1.1 2005/11/30 10:03:19 chriswhite Exp $
+
+*tpop3d-1.5.3-r1 (04 Mar 2005)
+
+  04 Mar 2005; Maurice van der Pot <griffon26@gentoo.org>
+  +tpop3d-1.5.3-r1.ebuild:
+  Depend on mailbase and create tpop3d symlink for pam (bug #79240)
+  Depend on efence with debug use flag (bug #82988)
+
+  16 Feb 2005; Tom Martin <slarti@gentoo.org> tpop3d-1.5.3.ebuild:
+  Marked ~amd64.
+
+  21 Oct 2004; Maurice van der Pot <griffon26@gentoo.org>
+  +files/tpop3d-1.5.3-variable-name-clash.patch, tpop3d-1.5.3.ebuild:
+  Added support for authentication using a PostgreSQL database to
+  ebuild as suggested by Lionel Bouton <lionel-dev@bouton.name> in 
+  bug #68024.
+
+  26 Aug 2004; Maurice van der Pot <griffon26@gentoo.org>
+  +files/tpop3d-1.5.3-invalid-user-message.patch, tpop3d-1.5.3.ebuild:
+  Fixed invalid user error message as reported by Jaroslaw Swierad 
+  <messer@7thguard.net> in bug #51911
+  Marked stable on x86
+
+  26 Aug 2004; Maurice van der Pot <griffon26@gentoo.org> metadata.xml,
+  tpop3d-1.4.2.ebuild, tpop3d-1.5.3.ebuild:
+  Taken over maintenance from <net-mail@gentoo.org>
+  Fixed installation of tpop3d init script, closing bug #35651.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tpop3d-1.4.2.ebuild,
+  tpop3d-1.5.3.ebuild:
+  virtual/glibc -> virtual/libc
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> tpop3d-1.4.2.ebuild,
+  tpop3d-1.5.3.ebuild:
+  Fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> tpop3d-1.4.2.ebuild:
+  Add inherit eutils
+
+  03 Mar 2004; Martin Holzer <mholzer@gentoo.org> tpop3d-1.4.2.ebuild,
+  tpop3d-1.5.3.ebuild:
+  adding ssl to config. Closes 43510
+
+*tpop3d-1.5.3 (26 Nov 2003)
+
+  26 Nov 2003; Greg Fitzgerald <gregf@gentoo.org> tpop3d-1.5.3.ebuild:
+  Version Bump.
+
+*tpop3d-1.5.2 (19 Nov 2003)
+
+  19 Nov 2003; Greg Fitzgerald <gregf@gentoo.org> tpop3d-1.5.2.ebuild:
+  Version bump. Closes bug #31792 by Michael C. Ferguson <mcf@augustmail.com>
+
+  02 Aug 2003; <iggy@gentoo.org> tpop3d-1.4.2.ebuild, files/tpop3d-init:
+  added Gentoo init script, fixes bug # 23401, thanks to Michael C. Ferguson
+  <mcf@augustmail.com>
+
+  12 Jun 2003; <msterret@gentoo.org> tpop3d-1.4.2.ebuild:
+  fix Header
 
 *tpop3d-1.4.2 (19 Jan 2003)
+
+  04 Feb 2003; Nick Hadaway <raker@gentoo.org> tpop3d-1.4.2.ebuild :
+  Added KEYWORDS and fixed DEPEND spacing.
 
   19 Jan 2003; Nick Hadaway <raker@gentoo.org> tpop3d-1.4.2.ebuild,
   files/digest-tpop3d-1.4.2 :

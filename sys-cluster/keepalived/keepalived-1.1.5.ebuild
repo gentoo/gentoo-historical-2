@@ -1,20 +1,19 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/keepalived/keepalived-1.1.5.ebuild,v 1.1 2004/01/26 06:41:21 iggy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/keepalived/keepalived-1.1.5.ebuild,v 1.1.1.1 2005/11/30 10:01:49 chriswhite Exp $
 
 DESCRIPTION="The main goal of the keepalived project is to add a strong & robust keepalive facility to the Linux Virtual Server project."
-HOMEPAGE="http://keepalived.sourceforge.net"
+HOMEPAGE="http://www.keepalived.org"
 LICENSE="GPL-2"
 
 DEPEND="dev-libs/popt
-	sys-apps/iproute"
+	sys-apps/iproute2"
 
-SRC_URI="http://keepalived.sourceforge.net/software/${P}.tar.gz"
+SRC_URI="http://www.keepalived.org/software/${P}.tar.gz"
 
-IUSE=""
+IUSE="debug"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~amd64 ~ppc"
-S="${WORKDIR}/${P}"
+KEYWORDS="x86 ~sparc ~amd64 ppc"
 
 src_compile() {
 	local myconf

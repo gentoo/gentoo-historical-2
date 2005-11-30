@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/popa3d/popa3d-1.0.ebuild,v 1.1 2005/08/12 16:22:41 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/popa3d/popa3d-1.0.ebuild,v 1.1.1.1 2005/11/30 10:03:32 chriswhite Exp $
 
 inherit eutils
 
@@ -60,7 +60,7 @@ SRC_URI="http://www.openwall.com/popa3d/${P}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ~ppc ~sparc"
 
 DEPEND=">=sys-apps/sed-4
 	pam? ( >=sys-libs/pam-0.72
@@ -98,7 +98,7 @@ pkg_setup() {
 	epause 5
 
 	enewgroup popa3d
-	enewuser popa3d -1 /bin/false /nonexistent popa3d
+	enewuser popa3d -1 -1 /nonexistent popa3d
 }
 
 src_unpack() {

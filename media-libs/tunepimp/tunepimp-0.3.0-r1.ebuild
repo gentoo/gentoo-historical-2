@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/tunepimp/tunepimp-0.3.0-r1.ebuild,v 1.1 2005/02/02 10:39:28 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/tunepimp/tunepimp-0.3.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:23 chriswhite Exp $
 
 inherit eutils distutils perl-module
 
@@ -10,26 +10,33 @@ SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/lib${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="flac mad oggvorbis readline python perl"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+IUSE="flac mp3 readline perl python vorbis"
 
-RDEPEND="dev-libs/expat"
-DEPEND="${RDEPEND}
+RDEPEND=">=media-libs/musicbrainz-2.1.0
 	flac? ( media-libs/flac )
-	oggvorbis? ( media-libs/libvorbis )
+	vorbis? ( media-libs/libvorbis )
 	readline? ( sys-libs/readline )
-	mad? ( media-libs/libmad )
-	>=media-libs/musicbrainz-2.1.0
-	dev-util/pkgconfig
+	mp3? ( media-libs/libmad )
 	!media-sound/trm"
+
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
 S=${WORKDIR}/lib${P}
 
-src_compile() {
-	# do not try to link against obsolete libtermcap
-	sed -i -e 's,-ltermcap,-lncurses,' configure
+src_unpack() {
+	unpack ${A}
+	cd ${S}
 
 	epatch ${FILESDIR}/thread.patch
+
+	# do not try to link against obsolete libtermcap
+	sed -i -e 's,-ltermcap,-lncurses,' configure
+	sed -i -e 's:-lthr:-lpthread:g' ${S}/lib/threads/posix/Makefile.in
+}
+
+src_compile() {
 	econf || die "configure failed"
 	emake || die "emake failed"
 	if use perl; then

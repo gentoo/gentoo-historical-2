@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/transaction-simple/transaction-simple-1.1.1.ebuild,v 1.1 2004/09/02 09:34:09 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/transaction-simple/transaction-simple-1.1.1.ebuild,v 1.1.1.1 2005/11/30 10:01:20 chriswhite Exp $
 
 inherit ruby
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.halostatue.ca/files/${P}.tar.gz"
 LICENSE="MIT"
 
 USE_RUBY="ruby18 ruby19"
-KEYWORDS="~x86"
+KEYWORDS="~ppc x86"
 
 IUSE=""
 

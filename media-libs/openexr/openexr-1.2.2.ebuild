@@ -1,25 +1,26 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/openexr-1.2.2.ebuild,v 1.1 2005/03/18 20:02:12 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/openexr-1.2.2.ebuild,v 1.1.1.1 2005/11/30 10:04:27 chriswhite Exp $
 
 MY_P=OpenEXR-${PV}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="ILM's HDR image file format libraries"
+HOMEPAGE="http://www.openexr.com/"
 SRC_URI="http://savannah.nongnu.org/download/openexr/${MY_P}.tar.gz"
-HOMEPAGE="http://www.openexr.com"
 
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc"
+SLOT="0"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="doc"
 
 DEPEND="x11-libs/fltk"
 
 src_unpack() {
 	unpack ${A}
-	sed -i -e "s:OpenEXR-@OPENEXR_VERSION@:\$\(P\):" ${S}/IlmImfExamples/Makefile.in
-	sed -i -e "s:NVSDK_CXXFLAGS=\"\":NVSDK_CXXFLAGS=\"-DUNIX\":" ${S}/acinclude.m4
+	sed -i \
+		-e "/^examplesdir/s:OpenEXR-@OPENEXR_VERSION@:${P}:" \
+		"${S}"/IlmImfExamples/Makefile.in || die
 }
 
 src_compile() {
@@ -29,9 +30,9 @@ src_compile() {
 	emake || die "make failed"
 }
 
-src_install () {
-	einstall || die "install failed"
+src_install() {
+	make install DESTDIR="${D}" || die "install failed"
 
-	dodoc AUTHORS README INSTALL ChangeLog LICENSE NEWS
-	use doc && dohtml -r ${S}/doc/*
+	dodoc AUTHORS README ChangeLog NEWS
+	use doc && dohtml -r "${S}"/doc/*
 }

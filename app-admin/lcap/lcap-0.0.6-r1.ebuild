@@ -1,44 +1,36 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/lcap/lcap-0.0.6-r1.ebuild,v 1.1 2003/06/11 13:14:43 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/lcap/lcap-0.0.6-r1.ebuild,v 1.1.1.1 2005/11/30 10:00:12 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="kernel capability remover"
-
-# The normal homepage of the program was not reachable by the time
-# this ebuild was written
-HOMEPAGE="http://packages.debian.org/unstable/admin/lcap.html"
-
-# same for the sources
-SRC_URI="http://ftp.debian.org/debian/pool/main/l/lcap/${PN}_${PV}.orig.tar.gz"
+# Real homepage seems to be dead http://pweb.netcom.com/~spoon/lcap/
+HOMEPAGE="http://packages.debian.org/stable/admin/lcap.html"
+SRC_URI="mirror://debian/pool/main/l/lcap/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-2"
-
 SLOT="0"
-
-KEYWORDS="x86"
-
+KEYWORDS="ppc x86"
 IUSE="lids"
 
-DEPEND="virtual/os-headers
-		virtual/glibc"
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
+	virtual/os-headers"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	patch < ${FILESDIR}/${PF}.patch || die "patch failed"
-	use lids || (sed < Makefile > Makefile.tmp -e "s:LIDS =:#\0:" && \
-				mv Makefile.tmp Makefile)
+	epatch ${FILESDIR}/${PF}.patch
+	use lids || sed -i -e "s:LIDS =:#\0:" Makefile
 }
-		
+
 src_compile() {
 	emake || die
 }
 
 src_install() {
-	exeinto /usr/sbin
-	doexe lcap
+	dosbin lcap || die
 	doman lcap.8
-	dodoc README
-	dodoc ${FILESDIR}/README.gentoo
+	dodoc README ${FILESDIR}/README.gentoo
 }

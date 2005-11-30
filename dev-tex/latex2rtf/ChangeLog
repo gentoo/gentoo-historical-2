@@ -1,8 +1,46 @@
 # ChangeLog for dev-tex/latex2rtf
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2rtf/ChangeLog,v 1.1 2004/02/26 19:05:41 usata Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2rtf/ChangeLog,v 1.1.1.1 2005/11/30 10:00:53 chriswhite Exp $
+
+  06 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -latex2rtf-1.9.15-r1.ebuild, latex2rtf-1.9.15-r2.ebuild:
+  Changed gcc.eclass to toolchain-funcs.eclass and fixed bug #70010.
+
+*latex2rtf-1.9.15-r2 (28 Sep 2004)
+
+  28 Sep 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/latex2rtf-1.9.15-definitions.c.diff, +latex2rtf-1.9.15-r2.ebuild:
+  Added a security fix extracted from Debian's patch. See bug #64947.
+
+  28 Aug 2004; Danny van Dyk <kugelfang@gentoo.org>
+  latex2rtf-1.9.15-r1.ebuild:
+  Marked ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  latex2rtf-1.9.15-r1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  07 May 2004; Ferris McCormick <fmccor@gentoo.org>
+  latex2rtf-1.9.15-r1.ebuild:
+  Add ~sparc keyword at user request (bug 50326).
+  (Package builds and generates abiword-readable rtf on sparc.)
+
+  22 Apr 2004; David Holm <dholm@gentoo.org> latex2rtf-1.9.15-r1.ebuild:
+  Added to ~ppc.
+
+*latex2rtf-1.9.15-r1 (21 Apr 2004)
+
+  21 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> latex2rtf-1.9.15-r1.ebuild,
+  files/latex2rtf-1.9.15-direntry.patch:
+  Fixed info directory entry. Thanks to Doug Weimer <dweimer@socal.rr.com>
+  for supplying the patch. Closing bug #48417.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> latex2rtf-1.9.14.ebuild,
+  latex2rtf-1.9.15.ebuild:
+  Inherit eutils.
 
 *latex2rtf-1.9.15 (27 Feb 2004)
+*latex2rtf-1.9.14 (27 Feb 2004)
 
   27 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> latex2rtf-1.9.14.ebuild,
   latex2rtf-1.9.15.ebuild, files/latex2rtf-Makefile-gentoo.diff:

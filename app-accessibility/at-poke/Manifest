@@ -1,8 +1,14 @@
-MD5 0b442070614c19a009fe7ae3fb225537 ChangeLog 1283
-MD5 7f4c4205dc1161de3b8ec355fdb8c973 at-poke-0.1.0-r1.ebuild 764
-MD5 5253659a4a0e45baa9f1788dcb705895 metadata.xml 172
-MD5 1d796bbe5cfc67cb4d38519b6791592c at-poke-0.2.2.ebuild 698
-MD5 5578dbe3e51be4c392b1ff921aa94e72 at-poke-0.2.1.ebuild 723
-MD5 6acba1fb6e4ef224efc884f23b61e3ec files/digest-at-poke-0.1.0-r1 66
-MD5 f6a812352544d473d3150d94a54256ec files/digest-at-poke-0.2.1 66
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 f0c5da6c4f82fb88b560f025b7670663 metadata.xml 411
+MD5 6397bb16e1d6912a300a71acb25f76a8 ChangeLog 1691
+MD5 629060fb60d5431093ce26fcb59db0ac at-poke-0.2.2.ebuild 684
 MD5 a781d8b13dc3a577fbdf5d58a226acbe files/digest-at-poke-0.2.2 66
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDSoPaFdQwWVoAgN4RAr+bAKDJuZGXqV2Gcc7UlbFI8t3oF4LgkACgnz8B
+D8csVME98G8QmRCGnZ2cdl4=
+=drcU
+-----END PGP SIGNATURE-----

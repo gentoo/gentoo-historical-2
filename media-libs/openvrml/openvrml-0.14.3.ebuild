@@ -1,25 +1,24 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openvrml/openvrml-0.14.3.ebuild,v 1.1 2003/11/22 20:34:16 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openvrml/openvrml-0.14.3.ebuild,v 1.1.1.1 2005/11/30 10:04:03 chriswhite Exp $
 
-IUSE="zlib png jpeg truetype javascript java opengl doc"
+IUSE="java javascript jpeg opengl png truetype truetype zlib"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="VRML97 library"
-SRC_URI="http://telia.dl.sourceforge.net/sourceforge/openvrml/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/openvrml/${P}.tar.gz"
 HOMEPAGE="http://openvrml.org"
 
 SLOT="0"
 LICENSE="LGPL-2.1 GPL-2"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="~x86 ~sparc ~amd64"
 
 DEPEND="virtual/x11
 	app-doc/doxygen
 	zlib? ( sys-libs/zlib )
 	png? ( media-libs/libpng )
 	jpeg? ( media-libs/jpeg )
-	text? ( media-libs/freetype media-libs/fontconfig )
-	javascript? ( net-www/mozilla )
+	truetype? ( media-libs/freetype media-libs/fontconfig )
+	javascript? ( www-client/mozilla )
 	java? ( virtual/jdk )
 	opengl? ( virtual/opengl virtual/glut )"
 
@@ -56,7 +55,7 @@ src_compile() {
 		|| myconf="${myconf} --disable-script-node-javascript"
 
 	use java \
-		&& myconf="${myconf} --enable-script-node-java" \
+		&& myconf="${myconf} --enable-script-node-java --with-jdk=`java-config -O`" \
 		|| myconf="${myconf} --disable-script-node-java"
 
 	use opengl \

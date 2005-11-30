@@ -1,8 +1,29 @@
-# ChangeLog for app-games/quadra
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/quadra/ChangeLog,v 1.1 2003/09/10 06:36:00 vapier Exp $
+# ChangeLog for games-puzzle/quadra
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/quadra/ChangeLog,v 1.1.1.1 2005/11/30 10:02:30 chriswhite Exp $
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> quadra-1.1.8.ebuild:
+  Cleanup for bug #92745.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> quadra-1.1.8.ebuild:
+  Added Daniel Karlsson's patch to get it working on amd64 and marked testing
+
+  19 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.1.8.ebuild:
+  use_with svga instead of use_with svgalib; tidy
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.1.8.ebuild:
+  virtual/x11; depend on sed >= 4; error check sed
+
+  27 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> quadra-1.1.8.ebuild:
+  remove incorrectly named patch attempt
 
 *quadra-1.1.8 (7 May 2002)
+
+  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Clean up and support games.eclass.
 
   27 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
   Added a patch to make configure detect libpng properly
@@ -13,7 +34,7 @@
   7 May 2002; Spider <spider@gentoo.org> quandra-1.1.8.ebuild :
   fix sourceforge mirroring.
 
-  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> quadra-1.1.8.ebuild :
+  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> quadra-1.1.8.ebuild :
   Added LICENSE, KEYWORDS.
 
   28 Apr 2002; Bruce A. Locke <blocke@shivan.org> quadra-1.1.8.ebuild :

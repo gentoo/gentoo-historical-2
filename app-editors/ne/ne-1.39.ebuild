@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/ne/ne-1.39.ebuild,v 1.1 2004/12/05 00:47:18 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/ne/ne-1.39.ebuild,v 1.1.1.1 2005/11/30 10:02:04 chriswhite Exp $
+
+inherit toolchain-funcs
 
 DESCRIPTION="the nice editor, easy to use for the beginner and powerful for the wizard"
 HOMEPAGE="http://ne.dsi.unimi.it/"
@@ -8,15 +10,20 @@ SRC_URI="http://ne.dsi.unimi.it/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc ppc64 amd64"
 IUSE=""
 
-DEPEND=">=sys-libs/ncurses-5.2"
+RDEPEND=">=sys-libs/ncurses-5.2"
+DEPEND="${RDEPEND}
+	dev-lang/perl"
+
 PROVIDE="virtual/editor"
 
 src_compile() {
-	emake -j1 -C src ne \
+	emake \
+		-j1 -C src ne \
 		CFLAGS="${CFLAGS} -DNODEBUG -D_POSIX_C_SOURCE=199506L" \
+		CC="$(tc-getCC)" \
 		LIBS="-lncurses" || die "emake failed"
 }
 

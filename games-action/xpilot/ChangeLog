@@ -1,6 +1,21 @@
-# ChangeLog for app-games/xpilot
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/xpilot/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/xpilot
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/xpilot/ChangeLog,v 1.1.1.1 2005/11/30 10:02:40 chriswhite Exp $
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> xpilot-4.5.4.ebuild:
+  Stable on amd64.
+
+  06 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> xpilot-4.5.4.ebuild:
+  Marked ~amd64.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  02 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> xpilot-4.5.4.ebuild:
+  die backticks
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> xpilot-4.5.4.ebuild:
+  sed in unpack; IUSE; virtual/x11
 
   17 Jun 2003; msterret xpilot-4.5.4.ebuild:
   use sed -i and emake
@@ -12,7 +27,7 @@
   30 Nov 2002; Jon Nall <nall@gentoo.org> xpilot-4.5.3.ebuild:
   keyworded as ~ppc
 
-  17 Jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> xpilot-4.5.3.ebuild:
+  17 Jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> xpilot-4.5.3.ebuild:
   Added KEYWORDS.
 
 *xpilot-4.5.3 (21 Jun 2002)

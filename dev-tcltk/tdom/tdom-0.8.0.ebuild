@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tdom/tdom-0.8.0.ebuild,v 1.1 2005/03/27 02:09:48 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tdom/tdom-0.8.0.ebuild,v 1.1.1.1 2005/11/30 10:01:33 chriswhite Exp $
 
 MY_P="tDOM-${PV}"
 DESCRIPTION="XML manipulation library for TCL"

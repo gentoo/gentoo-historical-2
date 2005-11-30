@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<herd>no-herd</herd>
-	<maintainer>
-		<email>bug-wranglers@gentoo.org</email>
-		<description>This package lacks a primary herd or maintainer.</description>
-	</maintainer>
+<herd>sci</herd>
+<maintainer>
+  <email>nerdboy@gentoo.org</email>
+  <name>Steve Arnold</name>
+</maintainer>
+<longdescription>The original GIS, yes the first one, developed by the US Army Corp of Engineers, now an active open source GIS. 
+See the GRASS Documentation Project for more info http://grass.itc.it/gdp/index.php
+</longdescription>
 </pkgmetadata>

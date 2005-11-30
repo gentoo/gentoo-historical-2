@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/fundus/fundus-19970826.ebuild,v 1.1 2004/01/31 16:34:14 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/fundus/fundus-19970826.ebuild,v 1.1.1.1 2005/11/30 10:00:53 chriswhite Exp $
 
 inherit latex-package
 
@@ -14,10 +14,10 @@ HOMEPAGE="http://www.ctan.org/tex-archive/help/Catalogue/entries/fundus.html"
 #	ftp://ftp.dante.de/tex-archive/fonts/calligra.tar.gz
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	mirror://gentoo/${PN}-fonts.tar.gz"
-
+IUSE=""
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~amd64 ~sparc ~ppc"
 
 src_unpack() {
 	unpack ${A}

@@ -2,7 +2,7 @@
 # Gentoo Zope Product selection tool.
 # Copyright 2003 Jason Shoemaker <kutsuya@gentoo.org>
 # Distributed under GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/zprod-manager/files/0.1/zprod-manager,v 1.1 2003/02/26 06:57:46 kutsuya Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/zprod-manager/files/0.1/zprod-manager,v 1.1.1.1 2005/11/30 10:00:11 chriswhite Exp $
 
 VERSION="0.1"
 COMMAND_LIST="add del"
@@ -211,6 +211,11 @@ prod_add()
 	sort -u ${2}/${ZPROD_PLIST_FNAME} > ${2}/.tmp 
 	mv -f ${2}/.tmp ${2}/${ZPROD_PLIST_FNAME}
 	RESULT=$?
+    
+    # setting owner and group as in Products folder, so we can compile
+    # python scripts with the zope user
+    
+    chown -R  `stat -c %U:%G ${2}/Products` ${2}/Products
     fi
 
     return ${RESULT}

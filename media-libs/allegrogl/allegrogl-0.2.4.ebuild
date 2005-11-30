@@ -1,37 +1,37 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/allegrogl/allegrogl-0.2.4.ebuild,v 1.1 2004/10/15 09:40:12 eradicator Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-libs/allegrogl/allegrogl-0.2.4.ebuild,v 1.1.1.1 2005/11/30 10:03:37 chriswhite Exp $
 
 inherit eutils
 
 MY_PN="alleggl"
-S="${WORKDIR}/${MY_PN}"
-
 DESCRIPTION="A library to mix OpenGL graphics with Allegro routines"
-HOMEPAGE="http://${PN}.sourceforge.net"
-SRC_URI="mirror://sourceforge/${PN}/${MY_PN}-${PV}.tar.gz"
+HOMEPAGE="http://allegrogl.sourceforge.net"
+SRC_URI="mirror://sourceforge/allegrogl/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~sparc x86"
+IUSE="doc"
 
 DEPEND=">=media-libs/allegro-4.0.0"
+
+S="${WORKDIR}/${MY_PN}"
 
 src_unpack() {
 	unpack ${A}
 
-	cd ${S}
-	epatch ${FILESDIR}/${P}-destdir.patch
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-destdir.patch"
 }
 
 src_compile() {
 	econf || die
-	emake -j1 || die
+	emake -j1 || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
-	dodoc howto.txt faq.txt quickstart.txt readme.txt todo.txt bugs.txt changelog
+	make DESTDIR="${D}" install || die "make install failed"
+	dodoc *txt
+	use doc && dodoc examp/*
 }

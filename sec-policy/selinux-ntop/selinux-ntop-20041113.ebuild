@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-ntop/selinux-ntop-20041113.ebuild,v 1.1 2004/11/13 19:59:26 kaiowas Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-ntop/selinux-ntop-20041113.ebuild,v 1.1.1.1 2005/11/30 10:02:15 chriswhite Exp $
 
 inherit selinux-policy
 

@@ -1,19 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.11.8.ebuild,v 1.1 2003/09/02 09:41:59 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.11.8.ebuild,v 1.1.1.1 2005/11/30 10:02:21 chriswhite Exp $
 
-inherit perl-module
+inherit perl-module eutils
 
 DESCRIPTION="suite of tools for moving data between a Palm device and a desktop"
-SRC_URI="http://pilot-link.org/source/${P}.tar.bz2"
 HOMEPAGE="http://www.pilot-link.org/"
+SRC_URI="http://pilot-link.org/source/${P}.tar.bz2"
 
+LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
-LICENSE="GPL-2 | LGPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="perl java tcltk python png readline"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-libs/ncurses
 	perl? ( dev-lang/perl )
 	java? ( virtual/jre )
@@ -24,11 +24,11 @@ DEPEND="virtual/glibc
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/${P}-javapath.patch
+	epatch ${FILESDIR}/${P}-java_install_all.patch
 }
 
 src_compile() {
-	local myconf="--with-gnu-ld --includedir=/usr/include/libpisock"
+	local myconf="--includedir=/usr/include/libpisock"
 
 	use java \
 		&& myconf="${myconf} --with-java=yes" \
@@ -56,7 +56,7 @@ src_compile() {
 	# java fails w/emake
 	make || die
 
-	if [ `use perl` ] ; then
+	if use perl ; then
 		cd ${S}/bindings/Perl
 		perl-module_src_prep
 		perl-module_src_compile
@@ -68,7 +68,7 @@ src_install() {
 
 	dodoc ChangeLog README doc/README* doc/TODO NEWS AUTHORS
 
-	if [ `use perl` ] ; then
+	if use perl ; then
 		cd ${S}/bindings/Perl
 		perl-module_src_install
 	fi

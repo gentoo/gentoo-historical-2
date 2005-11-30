@@ -1,6 +1,12 @@
 # ChangeLog for games-action/deathchase3d
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/deathchase3d/ChangeLog,v 1.1 2004/12/09 07:36:27 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/deathchase3d/ChangeLog,v 1.1.1.1 2005/11/30 10:02:37 chriswhite Exp $
+
+  11 Aug 2005; Carlos Silva <r3pek@gentoo.org> deathchase3d-0.9.ebuild:
+  marked ~amd64. closes bug #102028
+
+  21 Dec 2004; Joseph Jezak <josejx@gentoo.org> deathchase3d-0.9.ebuild:
+  Marked ~ppc.
 
 *deathchase3d-0.9 (08 Dec 2004)
 

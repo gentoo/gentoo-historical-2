@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openinventor/openinventor-2.1.5.10.ebuild,v 1.1 2005/09/16 21:49:31 stefaan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openinventor/openinventor-2.1.5.10.ebuild,v 1.1.1.1 2005/11/30 10:04:24 chriswhite Exp $
 
 inherit eutils versionator
 
@@ -13,7 +13,7 @@ SRC_URI="ftp://oss.sgi.com/projects/${MY_PN}/download/${MY_PN}-${MY_PV}.src.tar.
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86"
+KEYWORDS="alpha ~amd64 x86"
 IUSE=""
 
 RDEPEND="virtual/x11
@@ -67,7 +67,8 @@ src_install() {
 	make \
 		IVROOT="${D}" \
 		LLDOPTS= \
-		LD_LIBRARY_PATH="${D}/usr/lib" \
+		IVLIBDIR="${D}usr/$(get_libdir)" \
+		LD_LIBRARY_PATH="${D}usr/$(get_libdir)" \
 		install \
 		|| die "Install failed"
 

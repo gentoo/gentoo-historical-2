@@ -1,42 +1,42 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.12-r3.ebuild,v 1.1 2003/12/22 15:31:12 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.12-r3.ebuild,v 1.1.1.1 2005/11/30 10:00:18 chriswhite Exp $
 
-MY_P="${PN}-${PV}.00"
+inherit eutils
+
+MY_P="${P}.00"
 DESCRIPTION="Enhanced version of the Berkeley C shell (csh)"
-SRC_URI="ftp://ftp.astron.com/pub/tcsh/${MY_P}.tar.gz"
 HOMEPAGE="http://www.tcsh.org/"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz
+	mirror://gentoo/tcsh-complete"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ~ppc sparc ~alpha ia64 amd64 hppa"
+KEYWORDS="x86 ppc sparc alpha arm hppa amd64 ia64 ppc64 mips"
 IUSE="cjk perl"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	>=sys-libs/ncurses-5.1
 	perl? ( dev-lang/perl )"
 
 S="${WORKDIR}/${MY_P}"
 
 src_unpack() {
-	unpack ${A}
+	unpack ${MY_P}.tar.gz
 	cd ${S}
-	patch -p0 < ${FILESDIR}/${P}-tc.os.h-gentoo.diff || die
-	if [ "`use cjk`" ]
-	then
-		patch -p0 < ${FILESDIR}/tcsh_enable_kanji.diff || die
-	fi
+	epatch ${FILESDIR}/${P}-tc.os.h-gentoo.diff
+	use cjk && epatch ${FILESDIR}/tcsh_enable_kanji.diff
 }
 
 src_compile() {
-	econf --prefix=/
+	econf --prefix=/ || die "econf failed"
 	emake || die "compile problem"
 }
 
 src_install() {
 	make DESTDIR=${D} install install.man || die
 
-	if [ "`use perl`" ] ; then
+	if use perl ; then
 		perl tcsh.man2html || die
 		dohtml tcsh.html/*.html
 	fi
@@ -52,5 +52,5 @@ src_install() {
 	newins ${FILESDIR}/tcsh.config .tcsh.config
 
 	insinto /etc/profile.d
-	doins ${FILESDIR}/tcsh-settings ${FILESDIR}/tcsh-aliases ${FILESDIR}/tcsh-bindkey ${FILESDIR}/tcsh-complete
+	doins ${FILESDIR}/tcsh-settings ${FILESDIR}/tcsh-aliases ${FILESDIR}/tcsh-bindkey ${DISTDIR}/tcsh-complete
 }

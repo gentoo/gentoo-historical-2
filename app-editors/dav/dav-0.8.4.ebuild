@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/dav/dav-0.8.4.ebuild,v 1.1 2003/10/17 20:48:35 avenj Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/dav/dav-0.8.4.ebuild,v 1.1.1.1 2005/11/30 10:02:02 chriswhite Exp $
 
 DESCRIPTION="A minimal console text editor"
 HOMEPAGE="http://dav-text.sourceforge.net/"
@@ -11,15 +11,15 @@ SRC_URI="http://dav-text.sourceforge.net/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 
 DEPEND="sys-libs/ncurses"
 
 src_compile() {
-	emake || die
+	emake CFLAGS="${CFLAGS}" LDFLAGS="-lncurses ${CFLAGS}" || die
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	emake DESTDIR=${D} install || die
 }

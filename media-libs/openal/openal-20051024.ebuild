@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20051024.ebuild,v 1.1 2005/10/24 16:53:14 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20051024.ebuild,v 1.1.1.1 2005/11/30 10:04:25 chriswhite Exp $
 
 inherit eutils gnuconfig
 
@@ -29,10 +29,11 @@ DEPEND="${RDEPEND}
 S="${S}/linux"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
+	unpack "${A}"
+	cd "${S}"
 
 	use alsa && epatch ${FILESDIR}/${P}-alsa_dmix.patch
+	epatch ${FILESDIR}/${P}-amd64-configure.patch
 
 	gnuconfig_update
 
@@ -53,8 +54,12 @@ src_compile() {
 	use debug && myconf="${myconf} --enable-debug-maximus"
 
 	econf ${myconf} --enable-paranoid-locks --libdir=/usr/$(get_libdir) \
-		--enable-capture --enable-optimize || die
+		--enable-capture --enable-optimization || die
 	emake all || die
+}
+
+src_test() {
+	einfo "Testing is broken, so we're going to skip it."
 }
 
 src_install() {
@@ -62,13 +67,12 @@ src_install() {
 
 	make install DESTDIR="${D}" || die
 
-	dodoc CREDITS ChangeLog INSTALL NOTES PLATFORM TODO
+	dodoc ChangeLog INSTALL NOTES PLATFORM TODO
 	dodoc ${FILESDIR}/openalrc
 	makeinfo doc/openal.texi
 	doinfo doc/openal.info
 
 	cd ${S}
-	dodoc CHANGES COPYING CREDITS
 	dohtml docs/*.html
 }
 

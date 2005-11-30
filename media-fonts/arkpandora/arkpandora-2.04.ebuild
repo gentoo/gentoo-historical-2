@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/arkpandora/arkpandora-2.04.ebuild,v 1.1 2004/10/17 08:16:40 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/arkpandora/arkpandora-2.04.ebuild,v 1.1.1.1 2005/11/30 10:01:24 chriswhite Exp $
 
 inherit font
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.users.bigpond.net.au/gavindi/${MY_P}.tgz"
 
 LICENSE="BitstreamVera"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ppc64 ~amd64 sparc"
 
 FONT_S="${S}"
 FONT_SUFFIX="ttf"

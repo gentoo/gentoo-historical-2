@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/showeq/showeq-5.0.0.18.ebuild,v 1.1 2005/03/08 23:18:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/showeq/showeq-5.0.0.18.ebuild,v 1.1.1.1 2005/11/30 10:01:00 chriswhite Exp $
 
 inherit kde games
 
@@ -10,13 +10,13 @@ SRC_URI="mirror://sourceforge/seq/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~ppc x86"
 IUSE=""
 
 DEPEND="virtual/x11
 	media-libs/libpng
 	virtual/libpcap
-	>=x11-libs/qt-3.1
+	$(qt_min_version 3.1)
 	>=sys-libs/gdbm-1.8.0"
 
 src_compile() {
@@ -28,7 +28,7 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 	doman showeq.1
-	dodoc BUGS FAQ INSTALL README* ROADMAP TODO doc/*.{doc,txt}
+	dodoc BUGS FAQ README* ROADMAP TODO doc/*.{doc,txt}
 	dohtml doc/*
 	prepgamesdirs
 }

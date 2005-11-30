@@ -1,9 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/courier-imap-4.0.1.ebuild,v 1.1 2005/01/05 15:46:55 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/courier-imap-4.0.1.ebuild,v 1.1.1.1 2005/11/30 10:03:28 chriswhite Exp $
 
 inherit eutils gnuconfig
-IUSE="fam berkdb gdbm debug ipv6 nls selinux"
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
 HOMEPAGE="http://www.courier-mta.org/"
@@ -13,7 +12,8 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 mips ppc ~ppc64 s390 sh sparc x86"
+IUSE="fam berkdb gdbm debug ipv6 nls selinux"
 #userpriv breaks linking against vpopmail
 RESTRICT="nouserpriv"
 
@@ -26,7 +26,7 @@ RDEPEND="virtual/libc
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
 	dev-lang/perl
-	sys-apps/procps
+	sys-process/procps
 	>=net-libs/courier-authlib-0.50
 	!mail-mta/courier"
 PROVIDE="virtual/imapd"
@@ -170,7 +170,7 @@ src_compile() {
 		--bindir=/usr/sbin \
 		--mandir=/usr/share/man \
 		--sysconfdir=/etc/courier-imap \
-		--libexecdir=/usr/lib/courier-imap \
+		--libexecdir=/usr/$(get_libdir)/courier-imap \
 		--localstatedir=/var/lib/courier-imap \
 		--enable-workarounds-for-imap-client-bugs \
 		--with-authdaemonvar=/var/lib/courier-imap/authdaemon \
@@ -206,7 +206,7 @@ src_install() {
 
 	# hack /usr/lib/courier-imap/foo.rc to use ${MAILDIR} instead of
 	# 'Maildir', and to use /usr/sbin/courier-foo names.
-	cd ${D}/usr/lib/courier-imap
+	cd ${D}/usr/$(get_libdir)/courier-imap
 	local service
 	for service in imapd pop3d; do
 		local type
@@ -269,7 +269,7 @@ src_install() {
 		doexe ${FILESDIR}/mkimapdcert ${FILESDIR}/mkpop3dcert || \
 			die "doexe failed"
 
-	dosym /usr/sbin/courierlogger /usr/lib/courier-imap/courierlogger || \
+	dosym /usr/sbin/courierlogger /usr/$(get_libdir)/courier-imap/courierlogger || \
 			die "dosym failed"
 
 	exeinto /etc/init.d
@@ -278,7 +278,7 @@ src_install() {
 		newexe ${FILESDIR}/${P}-courier-pop3d.rc6 courier-pop3d || die "newexe failed"
 		newexe ${FILESDIR}/${P}-courier-pop3d-ssl.rc6 courier-pop3d-ssl || die "newexe failed"
 
-	exeinto /usr/lib/courier-imap
+	exeinto /usr/$(get_libdir)/courier-imap
 		newexe ${FILESDIR}/${P}-gentoo-imapd.rc gentoo-imapd.rc || die "newexe failed"
 		newexe ${FILESDIR}/${P}-gentoo-imapd-ssl.rc gentoo-imapd-ssl.rc || die "newexe failed"
 		newexe ${FILESDIR}/${P}-gentoo-pop3d.rc gentoo-pop3d.rc || die "newexe failed"

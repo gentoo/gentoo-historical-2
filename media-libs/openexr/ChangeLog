@@ -1,6 +1,95 @@
 # ChangeLog for media-libs/openexr
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/ChangeLog,v 1.1 2003/10/15 12:28:13 brandy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/ChangeLog,v 1.1.1.1 2005/11/30 10:04:27 chriswhite Exp $
+
+  22 Oct 2005; Hanno Boeck <hanno@gentoo.org>
+  +files/openexr-1.2.2-gcc4.patch, openexr-1.2.2-r1.ebuild:
+  Fix for gcc4.
+
+  12 Sep 2005; Aron Griffis <agriffis@gentoo.org> openexr-1.2.2.ebuild:
+  Mark 1.2.2 stable on alpha
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> openexr-1.0.7.ebuild,
+  openexr-1.2.2.ebuild, openexr-1.2.2-r1.ebuild:
+  Don't install INSTALL file.
+
+  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> openexr-1.2.2.ebuild:
+  stable on ia64
+
+  25 Jul 2005; Guy Martin <gmsoft@gentoo.org> openexr-1.2.2.ebuild,
+  openexr-1.2.2-r1.ebuild:
+  Stable on hppa.
+
+*openexr-1.2.2-r1 (21 Jul 2005)
+
+  21 Jul 2005; Carsten Lohrke <carlo@gentoo.org> +openexr-1.2.2-r1.ebuild:
+  optionalise fltk dependency and examples installation
+
+  14 Jul 2005; Hardave Riar <hardave@gentoo.org> openexr-1.2.2.ebuild:
+  Keyworded ~mips
+
+  04 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> openexr-1.2.2.ebuild:
+  Add ~alpha keyword.
+
+  01 Jul 2005; Markus Rothe <corsari@gentoo.org> openexr-1.2.2.ebuild:
+  Stable on ppc64 (bug #97544)
+
+  01 Jul 2005; Joseph Jezak <josejx@gentoo.org> openexr-1.2.2.ebuild:
+  Marked ppc stable.
+
+  30 Jun 2005; Dan Armak <danarmak@gentoo.org> openexr-1.2.2.ebuild:
+  Stable on amd64 - been around long enough, and needed for kde 3.4 going stable
+
+  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> openexr-1.2.2.ebuild:
+  Stable on sparc
+
+  22 Jun 2005; Gregorio Guidi <greg_g@gentoo.org> openexr-1.2.2.ebuild:
+  Stable on x86.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> openexr-1.2.2.ebuild:
+  add ~ia64
+
+  01 May 2005; Luca Barbato <lu_zero@gentoo.org> metadata.xml,
+  openexr-1.0.7.ebuild:
+  fix from F. Steinel <fsteinel@flonet.net>, thanks a lot
+
+  27 Apr 2005; Markus Rothe <corsair@gentoo.org> openexr-1.2.2.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*openexr-1.2.2 (19 Mar 2005)
+
+  19 Mar 2005; Chris White <chriswhite@gentoo.org> +openexr-1.2.2.ebuild:
+  Bump to 1.2.2
+
+  15 Feb 2005; Jason Wever <weeve@gentoo.org> openexr-1.2.1.ebuild:
+  Added ~sparc keyword.
+
+  11 Jan 2005; Marc Hildebrand <zypher@gentoo.org> openexr-1.2.1.ebuild:
+  Added to ~ppc.
+
+  29 Nov 2004; Chris White <chriswhite@gentoo.org> openexr-1.0.7.ebuild:
+  Marked 1.0.7 stable. Test case was running with FEATURES=maketest and using
+  sample images from the homepage and a test program.
+
+  28 Nov 2004; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Taking over as maintainer.
+
+*openexr-1.2.1 (10 Sep 2004)
+
+  10 Sep 2004; <blubb@gentoo.org> +openexr-1.2.1.ebuild:
+  version bump. Thanks to Carsten Lohrke for providing this ebuild.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> openexr-1.0.6.ebuild,
+  openexr-1.0.7.ebuild:
+  Add inherit eutils
+
+  02 Mar 2004; David Holm <dholm@gentoo.org> openexr-1.0.7.ebuild:
+  Added to ~ppc.
+
+*openexr-1.0.7 (02 Mar 2004)
+
+  02 Mar 2004; Martin Holzer <mholzer@gentoo.org> openexr-1.0.7.ebuild:
+  Version bumped. Closes 37646
 
 *openexr-1.0.6 (16 Oct 2003)
 

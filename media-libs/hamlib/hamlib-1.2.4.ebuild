@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.4.ebuild,v 1.1 2005/07/12 02:23:26 killsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.4.ebuild,v 1.1.1.1 2005/11/30 10:04:13 chriswhite Exp $
 
 inherit eutils multilib
 
 DESCRIPTION="Ham radio backend rig control libraries"
-HOMEPAGE="http://sourceforge.net/projects/hamlib/"
+HOMEPAGE="http://hamlib.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~amd64"
+KEYWORDS="alpha ~amd64 ~ppc x86"
 IUSE="doc gd python tcltk X"
 
 RDEPEND="virtual/libc

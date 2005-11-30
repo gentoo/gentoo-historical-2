@@ -1,15 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/ksh/ksh-93.20050202.ebuild,v 1.1 2005/03/27 09:45:16 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/ksh/ksh-93.20050202.ebuild,v 1.1.1.1 2005/11/30 10:00:26 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
 RELEASE="2005-02-02"
 DESCRIPTION="The Original Korn Shell, 1993 revision (ksh93)"
 HOMEPAGE="http://www.kornshell.com/"
-SRC_URI="http://www.research.att.com/~gsf/download/tgz/INIT.${RELEASE}.tgz
-	http://www.research.att.com/~gsf/download/tgz/ast-ksh.${RELEASE}.tgz
-	nls? ( http://www.research.att.com/~gsf/download/tgz/ast-ksh-locale.${RELEASE}.tgz )"
+#SRC_URI="http://www.research.att.com/~gsf/download/tgz/INIT.${RELEASE}.tgz
+#	http://www.research.att.com/~gsf/download/tgz/ast-ksh.${RELEASE}.tgz
+#	nls? ( http://www.research.att.com/~gsf/download/tgz/ast-ksh-locale.${RELEASE}.tgz )"
+SRC_URI="mirror://gentoo/INIT.${RELEASE}.tgz
+	mirror://gentoo/ast-ksh.${RELEASE}.tgz
+	nls? ( mirror://gentoo/ast-ksh-locale.${RELEASE}.tgz )"
 
 LICENSE="CPL-1.0"
 SLOT="0"
@@ -28,7 +31,7 @@ src_unpack() {
 	cp ${DISTDIR}/ast-ksh.${RELEASE}.tgz ${S}/lib/package/tgz/ || die
 
 	if use nls; then
-		cp ${DISTDIR}/ast-ksh-locale.2003-04-22.tgz ${S}/lib/package/tgz/ || die
+		cp ${DISTDIR}/ast-ksh-locale.${RELEASE}.tgz ${S}/lib/package/tgz/ || die
 	fi
 
 	# INIT provides the basic tools to start building.

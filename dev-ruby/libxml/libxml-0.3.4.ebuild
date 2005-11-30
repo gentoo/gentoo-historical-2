@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/libxml/libxml-0.3.4.ebuild,v 1.1 2004/09/02 09:17:56 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/libxml/libxml-0.3.4.ebuild,v 1.1.1.1 2005/11/30 10:01:12 chriswhite Exp $
 
 inherit ruby
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://raa.ruby-lang.org/project/libxml/"
 SRC_URI="http://www.rubynet.org/modules/xml/libxml/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~sparc ~x86"
 IUSE=""
 USE_RUBY="ruby16 ruby18 ruby19"
 

@@ -1,34 +1,26 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Geert Bevin <gbevin@theleaf.be>
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libical-moz/libical-moz-0.23.ebuild,v 1.1 2002/01/07 12:42:47 gbevin Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libical-moz/libical-moz-0.23.ebuild,v 1.1.1.1 2005/11/30 10:02:56 chriswhite Exp $
 
 S=${WORKDIR}/libical-0.23-moz
 DESCRIPTION="libical is used by the mozilla calendar component"
-SRC_URI="http://www.oeone.com/files/libical-0.23-moz.tar.gz"
+SRC_URI="http://www.oeone.com/files/libical-${PV}-moz.tar.gz"
 HOMEPAGE="http://www.mozilla.org/projects/calendar/installation.html"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
-RDEPEND="virtual/glibc"
-	
-src_unpack() {
-
-	unpack ${A}
-
-}
+LICENSE="|| ( MPL-1.1 LGPL-2 )"
+SLOT="0"
+KEYWORDS="x86 sparc alpha"
+IUSE=""
 
 src_compile() {
-
 	cd ${S}
 	./autogen.sh --prefix=/usr --disable-python-bindings || die
 	emake || die
-
 }
 
-src_install () {
-
+src_install() {
 	make DESTDIR=${D} install || die
-
+	dodoc AUTHORS ChangeLog LICENSE NEWS README TEST THANKS TODO
 }
-

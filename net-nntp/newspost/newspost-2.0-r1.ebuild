@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/newspost/newspost-2.0-r1.ebuild,v 1.1 2005/02/01 16:50:00 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/newspost/newspost-2.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:02:44 chriswhite Exp $
 
 inherit eutils
 
@@ -14,18 +14,20 @@ IUSE=""
 # NOTE: This package should work on PPC but not tested!
 # It also has a solaris make file but we don't do solaris.
 # but it should mean that it is 64bit clean.
-KEYWORDS="x86 ~amd64 ~ppc"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND=""
 DEPEND=">=sys-apps/sed-4"
 
 src_unpack() {
-	unpack $A
-	cd $S
+	unpack ${A}
+	cd ${S}
 
 	epatch ${FILESDIR}/CAN-2005-0101.patch
 
-	sed -i -e "s:OPT_FLAGS = :OPT_FLAGS = ${CFLAGS}#:" Makefile
+	sed -i \
+		-e "s:OPT_FLAGS = :OPT_FLAGS = ${CFLAGS}#:" Makefile \
+		|| die "sed Makefile failed"
 }
 
 src_compile() {
@@ -35,5 +37,5 @@ src_compile() {
 src_install () {
 	dobin newspost || die "dobin failed"
 	doman man/man1/newspost.1 || die "doman failed"
-	dodoc README CHANGES COPYING || die "dodoc failed"
+	dodoc README CHANGES || die "dodoc failed"
 }

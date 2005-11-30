@@ -1,21 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/hoh-bin/hoh-bin-1.01.ebuild,v 1.1 2004/01/13 21:46:44 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/hoh-bin/hoh-bin-1.01.ebuild,v 1.1.1.1 2005/11/30 10:02:32 chriswhite Exp $
 
 inherit games
 
-S="${WORKDIR}/hoh-install-${PV}"
-DESCRIPTION="PC remake of the spectrum game"
+DESCRIPTION="PC remake of the spectrum game, Head Over Heels"
 HOMEPAGE="http://retrospec.sgn.net/games/hoh/"
 SRC_URI="http://retrospec.sgn.net/download.php?id=63\&path=games/hoh/bin/hohlin-${PV/./}.tar.bz2"
 
 RESTRICT="nostrip"
-KEYWORDS="x86"
 LICENSE="free-noncomm"
 SLOT="0"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
-DEPEND="virtual/x11"
+DEPEND="virtual/x11
+	amd64? ( >=app-emulation/emul-linux-x86-xlibs-1.0 )"
+
+S=${WORKDIR}/hoh-install-${PV}
 
 src_compile() {
 	cat > "${T}/hoh" <<-EOF
@@ -30,9 +32,9 @@ src_install() {
 	local DATADIR="${GAMES_PREFIX_OPT}/HoH/data"
 	local DOCDIR="${GAMES_PREFIX_OPT}/HoH/docs"
 
-	dogamesbin "${T}/hoh"            || die "dogames bin failed"
-	dodir "${DATADIR}" "${DOCDIR}"   || die "dodir failed"
-	cp -af data/* "${D}/${DATADIR}/" || die "cp failed (data)"
-	cp -af docs/* "${D}/${DOCDIR}/"  || die "cp failed (docs)"
+	dogamesbin "${T}/hoh" || die "dogames bin failed"
+	dodir "${DATADIR}" "${DOCDIR}"
+	cp -pPRf data/* "${D}/${DATADIR}/" || die "cp failed (data)"
+	cp -pPRf docs/* "${D}/${DOCDIR}/"  || die "cp failed (docs)"
 	prepgamesdirs
 }

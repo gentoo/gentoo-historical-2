@@ -1,43 +1,43 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openpbs/openpbs-2.3.16-r1.ebuild,v 1.1 2003/06/03 12:56:02 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openpbs/openpbs-2.3.16-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:39 chriswhite Exp $
 
-NAME=`echo ${P} | sed -e "s|openpbs-|OpenPBS_|; y|.|_|"`
-A=${NAME}.tar.gz
+inherit eutils
+
+NAME="${P/openpbs-/OpenPBS_}"
+NAME="${NAME//./_}"
+DESCRIPTION="The Portable Batch System (PBS) is a flexible batch queuing and workload management system"
+HOMEPAGE="http://www.openpbs.org/"
+SRC_URI="${NAME}.tar.gz"
+
+LICENSE="openpbs"
+SLOT="0"
+KEYWORDS="x86 ~ppc"
+IUSE="X tcltk crypt doc"
+RESTRICT="fetch"
+
+PROVIDE="virtual/pbs"
+DEPEND="virtual/libc
+		X? ( virtual/x11 )
+		tcltk? ( dev-lang/tcl )"
+RDEPEND="${DEPEND}
+		crypt? ( net-misc/openssh )"
+
 S="${WORKDIR}/${NAME}"
 
-DESCRIPTION="The Portable Batch System (PBS) is a flexible batch queueing and workload management system"
-HOMEPAGE="http://www.openpbs.org/"
-LICENSE="openpbs"
-
-SLOT="0"
-KEYWORDS="x86"
-IUSE="X tcltk crypt doc"
-
-DEPEND="virtual/glibc
-		X? ( x11-base/xfree )
-		tcltk? ( dev-lang/tcl )"
-RDEPEND="${DEPEND} crypt? ( net-misc/openssh )"
-
+pkg_nofetch() {
+	einfo "Please visit http://www.openpbs.org/."
+	einfo "You must register to download the archive."
+	einfo "Place ${A} in ${DISTDIR}."
+}
 
 src_unpack() {
-        if [ ! -e ${DISTDIR}/${A} ] ; then
-                einfo "Due to license issues you have to download"
-                einfo "the appropriate openpbs archive:"
-		einfo "http://www.openpbs.org/UserArea/Download/"${A}
-		einfo ""
-                einfo "The archive should be placed into ${DISTDIR}."
-
-                die "package archive not found"
-        fi
-
-	cd ${WORKDIR}
 	unpack ${A}
 	cd ${S}
 	# apply a patch I made for gcc3. 
 	# maybe this should be done with sed but I'm too lazy
-	patch -p0 < ${FILESDIR}/makedepend-sh-gcc3.patch
-
+	epatch ${FILESDIR}/makedepend-sh-gcc3.patch
+	epatch ${FILESDIR}/${PF}-errno-fixup.patch
 	# this thing doesn't use make install, but rather it's own install script
 	# fix it here so the install dirs are set to the ${D} directory
 	cd buildutils
@@ -70,7 +70,6 @@ src_compile() {
 }
 
 src_install() {
-
 	make prefix=${D}/usr \
 		mandir=${D}/usr/share/man \
 		PBS_SERVER_HOME=${D}/var/spool/PBS \

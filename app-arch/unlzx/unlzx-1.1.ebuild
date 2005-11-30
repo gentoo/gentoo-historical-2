@@ -1,38 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Per Wigren <wigren@home.se>
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unlzx/unlzx-1.1.ebuild,v 1.1 2002/02/24 03:54:35 tod Exp $
-
-S=${WORKDIR}/${P}
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/unlzx/unlzx-1.1.ebuild,v 1.1.1.1 2005/11/30 10:00:42 chriswhite Exp $
 
 DESCRIPTION="Unarchiver for Amiga LZX archives"
-
-#This site is listed as the master site in NetBSD makefile
 SRC_URI="ftp://us.aminet.net/pub/aminet/misc/unix/${PN}.c.gz ftp://us.aminet.net/pub/aminet/misc/unix/${PN}.c.gz.readme"
-
-#For lack of anything better
 HOMEPAGE="ftp://us.aminet.net/pub/aminet/misc/unix/${PN}.c.gz.readme"
 
-DEPEND="virtual/glibc"
+SLOT="0"
+LICENSE="freedist"
+IUSE=""
+KEYWORDS="alpha amd64 ppc ~ppc-macos sparc x86"
 
 src_unpack() {
-   
-   mkdir ${S}
-   gzip -dc ${DISTDIR}/${PN}.c.gz > ${S}/unlzx.c
-   cp ${DISTDIR}/${PN}.c.gz.readme  ${S}/${PN}.c.gz.readme
-
+	mkdir ${S}
+	gzip -dc ${DISTDIR}/${PN}.c.gz > ${S}/unlzx.c
+	cp ${DISTDIR}/${PN}.c.gz.readme  ${S}/${PN}.c.gz.readme
 }
 
 src_compile() {
-	
-    gcc ${CFLAGS} -o unlzx unlzx.c
-
+	gcc ${CFLAGS} -o unlzx unlzx.c || die
 }
 
-src_install () {
-
+src_install() {
 	dobin unlzx
-
 	dodoc unlzx.c.gz.readme
-
 }

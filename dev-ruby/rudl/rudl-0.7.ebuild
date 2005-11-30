@@ -1,24 +1,32 @@
-# Copyright 2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rudl/rudl-0.7.ebuild,v 1.1 2002/11/11 16:33:59 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rudl/rudl-0.7.ebuild,v 1.1.1.1 2005/11/30 10:01:11 chriswhite Exp $
+
+inherit ruby eutils
 
 DESCRIPTION="Rubyesque Directmedia Layer - Ruby/SDL bindings"
-HOMEPAGE="http://froukepc.dhs.org/rudl/"
-SRC_URI="http://froukepc.dhs.org/rudl/download/source/${P}-source.tgz"
+HOMEPAGE="http://rudl.sourceforge.net/"
+SRC_URI="mirror://sourceforge/rudl/${P}-source.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
+USE_RUBY="ruby16 ruby18 ruby19"
 IUSE=""
-DEPEND=">=libsdl-1.2.4.20020601
-	>=sdl-gfx-2.0.3
-	>=sdl-image-1.2.2
-	>=sdl-mixer-1.2.4
-	>=sdl-ttf-2.0.5
-	>=ruby-1.6.7"
-S="${WORKDIR}/rudl"
+DEPEND=">=media-libs/libsdl-1.2.4.20020601
+	>=media-libs/sdl-gfx-2.0.3
+	>=media-libs/sdl-image-1.2.2
+	>=media-libs/sdl-mixer-1.2.4
+	>=media-libs/sdl-ttf-2.0.5
+	virtual/ruby"
+S="${WORKDIR}/${PN}"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-extconf-gentoo.diff
+}
 
 src_compile() {
-	cd ${S}
 	ruby extconf.rb
 	emake || die
 	#make || die

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-unicode/latex-unicode-20040307.ebuild,v 1.1 2004/04/13 16:23:07 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-unicode/latex-unicode-20040307.ebuild,v 1.1.1.1 2005/11/30 10:00:55 chriswhite Exp $
 
 inherit latex-package
 
@@ -9,18 +9,33 @@ HOMEPAGE="http://www.unruh.de/DniQ/latex/unicode/"
 # Taken from
 #SRC_URI="http://www.unruh.de/DniQ/latex/unicode/unicode.tgz"
 SRC_URI="mirror://gentoo/${P}.tar.gz
-	http://dev.gentoo.org/~usata/distfiles/${P}.tar.gz"
+	http://www.unicode.org/Public/UNIDATA/UnicodeData.txt"
 
 LICENSE="LPPL-1.2"
 
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 amd64 ~ppc ~sparc"
 IUSE="cjk"
 
 DEPEND="virtual/tetex
 	cjk? ( dev-tex/cjk-latex )"
 
 S=${WORKDIR}/ucs
+
+src_unpack() {
+	unpack ${P}.tar.gz
+	cp ${DISTDIR}/UnicodeData.txt ${S}
+}
+
+src_compile() {
+
+	latex-package_src_compile
+
+	if ! use cjk ; then
+		rm -rf data/*
+		perl makeunidef.pl -t data -v --nocomments --exclude cjkbg5,cjkgb,cjkjis,cjkhangul config/* || die "makeunidef.pl failed"
+	fi
+}
 
 src_install() {
 

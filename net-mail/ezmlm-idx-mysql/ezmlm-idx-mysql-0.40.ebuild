@@ -1,22 +1,22 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/ezmlm-idx-mysql/ezmlm-idx-mysql-0.40.ebuild,v 1.1 2002/10/16 20:56:38 drobbins Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/ezmlm-idx-mysql/ezmlm-idx-mysql-0.40.ebuild,v 1.1.1.1 2005/11/30 10:03:08 chriswhite Exp $
 
 # NOTE: ezmlm-idx, ezmlm-idx-mysql and ezmlm-idx-pgsql all supported by this single ebuild
 # (Please keep them in sync)
 
 PB=ezmlm-idx
-S2=${WORKDIR}/${P}
+S2=${WORKDIR}/${PB}-${PV}
 S=${WORKDIR}/ezmlm-0.53
 DESCRIPTION="Simple yet powerful mailing list manager for qmail."
 SRC_URI="http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/${PB}-${PV}.tar.gz http://cr.yp.to/software/ezmlm-0.53.tar.gz"
 HOMEPAGE="http://www.ezmlm.org"
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86"
+KEYWORDS="x86"
+IUSE=""
 DEPEND="sys-apps/grep sys-apps/groff"
-RDEPEND="net-mail/qmail"
-PROVIDE="net-mail/ezmlm"
+RDEPEND="mail-mta/qmail"
 
 if [ "$PN" = "${PB}-pgsql" ]
 then
@@ -31,9 +31,9 @@ fi
 src_unpack() {
 	unpack ${A}
 	cd ${S2}
-	mv ${S2}/* ${S}
+	mv ${S2}/* ${S} || die
 	cd ${S}
-	patch < idx.patch
+	patch < idx.patch || die
 	#remove cat-man pages
 	cp MAN MAN.orig
 	cat MAN.orig | grep -v cat > MAN

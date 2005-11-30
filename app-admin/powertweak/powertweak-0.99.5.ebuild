@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/powertweak/powertweak-0.99.5.ebuild,v 1.1 2003/08/16 06:33:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/powertweak/powertweak-0.99.5.ebuild,v 1.1.1.1 2005/11/30 10:00:12 chriswhite Exp $
 
 inherit eutils
 
@@ -17,7 +17,6 @@ DEPEND="gtk? ( =x11-libs/gtk+-1.2* )
 	>=dev-libs/libxml2-2.3.0
 	sys-devel/autoconf
 	sys-devel/automake"
-
 RDEPEND=">=sys-apps/pciutils-2.1.0
 	gtk? ( =x11-libs/gtk+-1.2* )"
 
@@ -29,7 +28,7 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die
 
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
+	dodoc AUTHORS ChangeLog INSTALL NEWS README
 	docinto Documentation
 	dodoc Documentation/* Documentation/Hackers/*
 

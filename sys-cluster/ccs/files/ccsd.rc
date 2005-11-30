@@ -1,27 +1,27 @@
 #!/sbin/runscript
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ccs/files/ccsd.rc,v 1.1 2005/03/19 21:00:48 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ccs/files/ccsd.rc,v 1.1.1.1 2005/11/30 10:01:39 chriswhite Exp $
 
 depend() {
 	use net
-	before cman fence gfs
 	provide ccs
 }
 
 exefile=/sbin/ccsd
-pidfile=/var/run/ccsd.pid
 
 start() {
 	ebegin "Starting ccsd"
 	start-stop-daemon --start --quiet \
 		--exec ${exefile} -- ${CCSD_OPTS}
+	sleep 2s
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping ccsd"
-	start-stop-daemon --stop --quiet --exec ${exefile} > /dev/null
+	start-stop-daemon --stop --quiet \
+		-s 9 --exec ${exefile}
 	eend $?
 }
 

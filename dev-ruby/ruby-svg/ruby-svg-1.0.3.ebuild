@@ -1,16 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-svg/ruby-svg-1.0.3.ebuild,v 1.1 2003/12/15 17:28:55 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-svg/ruby-svg-1.0.3.ebuild,v 1.1.1.1 2005/11/30 10:01:23 chriswhite Exp $
+
+inherit ruby
 
 DESCRIPTION="Ruby SVG Generator"
 HOMEPAGE="http://ruby-svg.sourceforge.jp/"
 SRC_URI="http://downloads.sourceforge.jp/ruby-svg/2288/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
+USE_RUBY="any"
 IUSE=""
-DEPEND=">=dev-lang/ruby-1.6.5"
-S="${WORKDIR}/${P}"
+DEPEND="virtual/ruby"
 
 src_install() {
 

@@ -1,8 +1,17 @@
-# ChangeLog for app-games/phobiaii
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/phobiaii/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/phobiaii
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/phobiaii/ChangeLog,v 1.1.1.1 2005/11/30 10:02:36 chriswhite Exp $
+
+  11 Aug 2005; Carlos Silva <r3pek@gentoo.org> phobiaii-1.1.ebuild:
+  marked ~amd64. closes bug #102056
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> phobiaii-1.1.ebuild:
+  Added IUSE.
 
 *phobiaii-1.1 (12 Dec 2002)
+
+  19 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Trim DEPEND #33822.
 
   09 May 2003; Martin Holzer <mholzer@gentoo.org> phobiaii-1.1.ebuild:
   Added sys-libs/lib-compat to DEPEND. Closes #17321.

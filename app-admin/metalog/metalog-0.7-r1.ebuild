@@ -1,40 +1,33 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/metalog-0.7-r1.ebuild,v 1.1 2003/09/17 22:28:16 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/metalog-0.7-r1.ebuild,v 1.1.1.1 2005/11/30 10:00:13 chriswhite Exp $
 
 DESCRIPTION="A highly configurable replacement for syslogd/klogd"
-SRC_URI="mirror://sourceforge/metalog/${P}.tar.gz"
 HOMEPAGE="http://metalog.sourceforge.net/"
+SRC_URI="mirror://sourceforge/metalog/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64"
+SLOT="0"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc s390 sparc x86"
+IUSE=""
 
 DEPEND=">=dev-libs/libpcre-3.4"
-
 PROVIDE="virtual/logger"
 
 src_unpack() {
 	unpack ${A} ; cd ${S}
 	cd ${S}/src
-	mv metalog.h metalog.h.orig
-	sed -e "s:/metalog.conf:/metalog/metalog.conf:g" \
-		metalog.h.orig > metalog.h
+	sed -i -e "s:/metalog.conf:/metalog/metalog.conf:g" \
+		metalog.h
 	cd ${S}/man
-	mv metalog.8 metalog.8.orig
-	sed -e "s:/etc/metalog.conf:/etc/metalog/metalog.conf:g" \
-		metalog.8.orig > metalog.8
-}
-
-src_compile() {
-	econf
-	emake || die
+	sed -i -e "s:/etc/metalog.conf:/etc/metalog/metalog.conf:g" \
+		metalog.8
 }
 
 src_install() {
 	make DESTDIR=${D} install || die
 
-	dodoc AUTHORS COPYING ChangeLog README
+	dodoc AUTHORS ChangeLog README
 	newdoc metalog.conf metalog.conf.sample
 
 	insinto /etc/metalog ; doins ${FILESDIR}/metalog.conf

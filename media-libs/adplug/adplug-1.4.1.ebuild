@@ -1,21 +1,20 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/adplug/adplug-1.4.1.ebuild,v 1.1 2004/07/20 14:11:31 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/adplug/adplug-1.4.1.ebuild,v 1.1.1.1 2005/11/30 10:03:40 chriswhite Exp $
+
+IUSE=""
 
 DESCRIPTION="A free, cross-platform, hardware independent AdLib sound player library"
 HOMEPAGE="http://adplug.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE=""
+KEYWORDS="x86 ~ppc amd64 sparc"
+
 DEPEND=">=dev-cpp/libbinio-1.2"
 
-src_compile() {
-	econf || die
-	emake || die "emake failed"
-}
-
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
+	dodoc AUTHORS BUGS ChangeLog NEWS README TODO
 }

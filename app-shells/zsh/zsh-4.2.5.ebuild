@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/zsh-4.2.5.ebuild,v 1.1 2005/04/06 15:21:19 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/zsh-4.2.5.ebuild,v 1.1.1.1 2005/11/30 10:00:27 chriswhite Exp $
 
-inherit eutils
+inherit eutils multilib
 
 DESCRIPTION="UNIX Shell similar to the Korn shell"
 HOMEPAGE="http://www.zsh.org/"
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.zsh.org/pub/${P}.tar.bz2
 
 LICENSE="ZSH"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc-macos ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ~ppc-macos sparc x86"
 IUSE="maildir ncurses static doc pcre cap"
 
 RDEPEND="pcre? ( >=dev-libs/libpcre-3.9 )
@@ -49,7 +49,7 @@ src_compile() {
 
 	econf \
 		--bindir=/bin \
-		--libdir=/usr/lib \
+		--libdir=/usr/$(get_libdir) \
 		--enable-etcdir=/etc/zsh \
 		--enable-zshenv=/etc/zsh/zshenv \
 		--enable-zlogin=/etc/zsh/zlogin \
@@ -78,19 +78,28 @@ src_compile() {
 			Makefile || die
 	fi
 
+	# hack for Darwin8 broken poll()
+	if use ppc-macos ; then
+		sed -i -e "s/define HAVE_POLL_H/undef HAVE_POLL_H/g" \
+			-e "s/define HAVE_POLL/undef HAVE_POLL/g" \
+			config.h
+	fi
+
 	# emake still b0rks
 	emake -j1 || die "make failed"
 }
 
 src_test() {
-	addpredict /dev/ptmx
+	for f in /dev/pt* ; do
+		addpredict $f
+	done
 	make check || die "make check failed"
 }
 
 src_install() {
 	einstall \
 		bindir=${D}/bin \
-		libdir=${D}/usr/lib \
+		libdir=${D}/usr/$(get_libdir) \
 		fndir=${D}/usr/share/zsh/${PV%_*}/functions \
 		sitefndir=${D}/usr/share/zsh/site-functions \
 		install.bin install.man install.modules \

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jasspa-microemacs/jasspa-microemacs-20021205.ebuild,v 1.1 2004/03/14 10:54:29 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jasspa-microemacs/jasspa-microemacs-20021205.ebuild,v 1.1.1.1 2005/11/30 10:02:02 chriswhite Exp $
 
 MY_PV=${PV:2}	# 20021205 -> 021205
 
@@ -19,20 +19,17 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE=""
+KEYWORDS="x86"
+IUSE="X"
 
-PROVIDE=""
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-libs/ncurses
 	X? ( virtual/x11 )"
-# X11 might actually be optional ... but I'm not so clever yet 
-RDEPEND=""
 
 src_compile() {
 	sed -i "/^COPTIMISE/s/.*/COPTIMISE = ${CFLAGS}/" linux2.gmk
 	local loadpath="~/.jasspa:/usr/share/jasspa/site:/usr/share/jasspa"
-	if [ "`use X`" ]
+	if use X
 	then
 		./build -p "$loadpath"
 	else

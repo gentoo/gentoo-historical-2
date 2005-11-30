@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/lam-mpi/lam-mpi-7.0.6.ebuild,v 1.1 2004/07/13 16:11:49 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/lam-mpi/lam-mpi-7.0.6.ebuild,v 1.1.1.1 2005/11/30 10:01:47 chriswhite Exp $
 
 IUSE="crypt"
 
@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}
 	!sys-cluster/mpich"
 
 SLOT="6"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc sparc"
 LICENSE="as-is"
 
 src_unpack() {
@@ -48,6 +48,7 @@ src_compile() {
 		--disable-checking  \
 		--enable-cstdio=stdio \
 		--with-system-zlib \
+		--without-fc \
 		${myconf} || die
 
 	# sometimes emake doesn't finish since it gets ahead of itself :)

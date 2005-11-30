@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/email/email-2.3.3.ebuild,v 1.1 2005/04/06 14:02:55 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/email/email-2.3.3.ebuild,v 1.1.1.1 2005/11/30 10:03:05 chriswhite Exp $
 
 DESCRIPTION="Advanced CLI tool for sending email."
 HOMEPAGE="http://email.cleancode.org"
@@ -8,16 +8,26 @@ SRC_URI="http://email.cleancode.org/download/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64"
 IUSE=""
 
 DEPEND="virtual/libc"
 
 src_compile() {
+	local myconf=""
+
+	if [ -f /etc/rc.conf ]; then
+		. /etc/rc.conf
+		if [ x$CLOCK = "xUTC" ]; then
+			einfo "Using UTC timestamps (from /etc/rc.conf)"
+			myconf="${myconf} --with-utc"
+		fi
+	fi
+
 	sed -i -e "s:/doc/email-\${version}:/share/doc:" configure
 	sed -i -e "s:DIVIDER = '---':DIVIDER = '-- ':" email.conf
 
-	econf || die "econf failed"
+	econf ${myconf} || die "econf failed"
 	emake || die "emake failed"
 }
 

@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-1.0.7.ebuild,v 1.1 2004/11/12 10:58:15 eradicator Exp $
-
-IUSE="static jack"
+# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-1.0.7.ebuild,v 1.1.1.1 2005/11/30 10:03:59 chriswhite Exp $
 
 inherit libtool eutils
 
@@ -10,12 +8,15 @@ DESCRIPTION="Advanced Linux Sound Architecture Library"
 HOMEPAGE="http://www.alsa-project.org/"
 SRC_URI="mirror://alsaproject/lib/${P}.tar.bz2"
 
-SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86"
 LICENSE="GPL-2 LGPL-2.1"
+SLOT="0"
+KEYWORDS="~alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+IUSE="static jack doc"
 
-DEPEND="virtual/alsa
+RDEPEND="virtual/alsa
 	>=media-sound/alsa-headers-${PV}"
+DEPEND="${RDEPEND}
+	doc? ( >=app-doc/doxygen-1.2.6 )"
 
 PDEPEND="jack? ( =media-plugins/alsa-jack-${PV}* )"
 
@@ -45,6 +46,10 @@ src_compile() {
 	econf --enable-static=no --enable-shared=yes || die
 	emake || die
 
+	if use doc; then
+		emake doc || die
+	fi
+
 	# Can't do both according to alsa docs and bug #48233
 	if use static; then
 		cd ${S}.static
@@ -59,6 +64,7 @@ src_install() {
 	preserve_old_lib /usr/$(get_libdir)/libasound.so.1
 
 	dodoc ChangeLog COPYING TODO
+	use doc && dohtml -r doc/doxygen/html/*
 
 	if use static; then
 		cd ${S}.static

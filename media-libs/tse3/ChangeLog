@@ -1,6 +1,55 @@
 # ChangeLog for media-libs/tse3
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/tse3/ChangeLog,v 1.1 2003/02/25 00:03:46 lu_zero Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/tse3/ChangeLog,v 1.1.1.1 2005/11/30 10:03:38 chriswhite Exp $
+
+*tse3-0.3.0-r1 (30 Oct 2005)
+
+  30 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> -tse3-0.3.0.ebuild,
+  +tse3-0.3.0-r1.ebuild:
+  Re-create autotools support with eautoreconf (and run elibtoolize), so that
+  .so extension on libraries is respected. Fixes bug #94484.
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> tse3-0.2.5.ebuild,
+  tse3-0.2.7.ebuild:
+  Don't install COPYING and INSTALL files.
+
+  13 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  files/tse3-0.2.7-gcc4.patch, files/tse3-0.2.7-size_t-64bit.patch:
+  Fix size_t issues on both 32 and 64-bit systems. Close #92117.
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> tse3-0.2.7.ebuild:
+  Stable on ppc.
+
+  30 Jul 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/tse3-0.2.7-gcc4.patch, tse3-0.2.7.ebuild:
+  GCC 4 patch by Håvard Wall <haavardw@ifi.uio.no>, closes bug #100708.
+
+  08 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> tse3-0.2.7.ebuild:
+  multilib fixes.
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> tse3-0.2.7.ebuild:
+  Stable amd64, sparc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tse3-0.2.7.ebuild:
+  size_t patch conditionally applied to close bug #57632.
+
+  14 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/tse3-0.2.7-gcc34.patch:
+  gcc-3.4 fixes provided by Patrick Dawson <pkdawson@buffalo.edu> to close bug
+  #56867.
+
+  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tse3-0.2.7.ebuild:
+  Moved patching goodness to src_unpack().  Added to ~sparc.
+
+  25 May 2004; Jason Eric Huebel <jhuebel@gentoo.org>
+  +files/tse3-0.2.7-size_t-64bit.patch, tse3-0.2.7.ebuild:
+  patch for 64bit systems where size_t != unsigned int. provided by Evgeny
+  Stambulchik <fnevgeny@plasma-gate.weizmann.ac.il>
+
+*tse3-0.2.7 (15 Mar 2003)
+
+  15 Mar 2003; Luca Barbato <lu_zero@gentoo.org> :
+  New version.  Ebuild submitted by Nicolas Kaiser <nikai@nikai.net>
 
 *tse3-0.2.5 (24 Feb 2003)
 

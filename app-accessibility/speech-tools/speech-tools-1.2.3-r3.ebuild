@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speech-tools/speech-tools-1.2.3-r3.ebuild,v 1.1 2005/07/24 00:55:24 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speech-tools/speech-tools-1.2.3-r3.ebuild,v 1.1.1.1 2005/11/30 10:04:33 chriswhite Exp $
 
-IUSE="doc esd"
+IUSE="doc esd X"
 
 inherit eutils fixheadtails toolchain-funcs
 
@@ -17,7 +17,7 @@ SRC_URI="${CSTR}/${MY_P}-release.tar.gz
 
 LICENSE="FESTIVAL BSD as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="${RDEPEND}
@@ -28,18 +28,22 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/speech_tools"
 
 src_unpack() {
-	[ "${A}" ] && unpack ${A}
+	unpack ${A}
 
 	use doc && mv festdoc-1.4.2 festdoc
 
+	cd ${S}
 	[[ "$(gcc-version)" == "3.3" ]] && epatch ${FILESDIR}/${PN}-gcc3.3.diff
 	[[ "$(gcc-version)" == "3.4" ]] && epatch ${WORKDIR}/${P}-gcc3.4.patch
 
 	ht_fix_file ${S}/config.guess
-	sed -i 's:-O3:$(OPTIMISE_CXXFLAGS):' ${S}/base_class/Makefile
+	sed -i -e 's:-O3:$(OPTIMISE_CXXFLAGS):' ${S}/base_class/Makefile
 
 	# Compile fix for #41329.
-	sed -i 's/-fpic/-fPIC/' ${S}/config/compilers/gcc_defaults.mak
+	sed -i -e 's/-fpic/-fPIC/' ${S}/config/compilers/gcc_defaults.mak
+
+	use esd && sed -i -e 's/# \(INCLUDE_MODULES += ESD_AUDIO\)/\1/' ${S}/config/config.in
+	use X || sed -i -e 's/-lX11 -lXt//' ${S}/config/modules/esd_audio.mak
 }
 
 src_compile() {
@@ -85,9 +89,9 @@ src_install() {
 	find . -print | cpio -pmd ${D}/usr/include/speech-tools || die "Unable to install include files"
 	dosym /usr/include/speech-tools /usr/share/speech-tools/include
 
-	chown -R root:root ${D}
+	chown -R root:0 ${D}
 
-	find ${D}/usr/share/speech-tools/config -type f | xargs sed -i 's/-ltermcap/-lncurses/g'
+	find ${D}/usr/share/speech-tools/config -type f | xargs sed -i -e 's/-ltermcap/-lncurses/g'
 
 	doenvd ${FILESDIR}/58speech-tools
 

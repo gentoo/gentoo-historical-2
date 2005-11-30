@@ -1,5 +1,5 @@
-#!/bin/sh
-# $Id: gentoo-imapd-ssl-1.7.3-r1.rc,v 1.1 2003/08/01 02:25:34 robbat2 Exp $
+#!/bin/bash
+# $Id: gentoo-imapd-ssl-1.7.3-r1.rc,v 1.1.1.1 2005/11/30 10:03:29 chriswhite Exp $
 #
 # Copyright 1998 - 2000 Double Precision, Inc.
 # See COPYING for distribution information.

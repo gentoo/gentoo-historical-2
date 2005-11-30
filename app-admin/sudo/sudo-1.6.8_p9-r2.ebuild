@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/sudo-1.6.8_p9-r2.ebuild,v 1.1 2005/07/05 16:52:30 lcars Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sudo/sudo-1.6.8_p9-r2.ebuild,v 1.1.1.1 2005/11/30 10:00:05 chriswhite Exp $
 
 inherit eutils pam
 
@@ -11,15 +11,18 @@ HOMEPAGE="http://www.sudo.ws/"
 SRC_URI="ftp://ftp.sudo.ws/pub/sudo/${P/_/}.tar.gz"
 LICENSE="Sudo"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="pam skey offensive ldap"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ~ppc64 s390 sh sparc x86"
+IUSE="pam skey offensive ldap selinux"
 
 DEPEND="pam? ( || ( virtual/pam sys-libs/pam ) )
 	ldap? ( >=net-nds/openldap-2.1.30-r1 )
 	skey? ( >=app-admin/skey-1.1.5-r1 )
 	sys-devel/bison
+	virtual/editor
 	virtual/mta"
-RDEPEND="${DEPEND} ldap? ( dev-lang/perl )"
+RDEPEND="selinux? ( sec-policy/selinux-sudo )
+	ldap? ( dev-lang/perl )
+	${DEPEND}"
 
 S=${WORKDIR}/${P/_/}
 
@@ -147,12 +150,12 @@ src_install() {
 	if has_version virtual/pam; then
 		pamd_mimic_system sudo auth account password session
 	else
-		newpamd ${FILESDIR}/sudo-1.6.8_p8 sudo
+		dopamd ${FILESDIR}/sudo
 	fi
 
 	insinto /etc
 	doins ${FILESDIR}/sudoers
-	fperms 0640 /etc/sudoers
+	fperms 0440 /etc/sudoers
 }
 
 # remove duplicate path entries from $1

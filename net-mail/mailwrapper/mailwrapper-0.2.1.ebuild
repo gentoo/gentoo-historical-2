@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailwrapper/mailwrapper-0.2.1.ebuild,v 1.1 2004/12/15 21:42:50 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailwrapper/mailwrapper-0.2.1.ebuild,v 1.1.1.1 2005/11/30 10:03:31 chriswhite Exp $
 
-inherit gcc
+inherit toolchain-funcs
 
 DESCRIPTION="Program to invoke an appropriate MTA based on a config file"
 HOMEPAGE="http://www.gentoo.org/"
@@ -10,13 +10,13 @@ SRC_URI="mirror://gentoo/${P}.tbz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 DEPEND=""
 
 src_compile() {
-	$(gcc-getCC) ${CFLAGS} \
+	$(tc-getCC) ${CFLAGS} \
 		-o mailwrapper \
 		mailwrapper.c fparseln.c fgetln.c \
 		|| die "build failed"

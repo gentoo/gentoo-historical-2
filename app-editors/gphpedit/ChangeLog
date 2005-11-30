@@ -1,6 +1,30 @@
 # ChangeLog for app-editors/gphpedit
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/gphpedit/ChangeLog,v 1.1 2003/07/20 15:30:59 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/gphpedit/ChangeLog,v 1.1.1.1 2005/11/30 10:02:01 chriswhite Exp $
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> gphpedit-0.9.6.ebuild:
+  Stable on ppc.
+
+*gphpedit-0.9.50 (15 Nov 2004)
+
+  15 Nov 2004; Alastair Tse <liquidx@gentoo.org> +gphpedit-0.9.50.ebuild:
+  version bump (#70969)
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gphpedit-0.4.3.ebuild:
+  Masked gphpedit-0.4.3.ebuild stable for ppc
+
+*gphpedit-0.9.6 (18 Feb 2004)
+
+  18 Feb 2004; Alastair Tse <liquidx@gentoo.org> gphpedit-0.9.6.ebuild:
+  version bump
+
+  12 Oct 2003; David Holm <dholm@gentoo.org> gphpedit-0.4.3.ebuild:
+  Added to ~ppc.
+
+  08 Oct 2003; Alastair Tse <liquidx@gentoo.org> gphpedit-0.4.3.ebuild,
+  metadata.xml:
+  stable bump and adding to gnome herd
 
 *gphpedit-0.4.3 (20 Jul 2003)
 

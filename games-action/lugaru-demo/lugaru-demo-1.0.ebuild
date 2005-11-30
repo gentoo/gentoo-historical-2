@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/lugaru-demo/lugaru-demo-1.0.ebuild,v 1.1 2005/09/06 02:33:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/lugaru-demo/lugaru-demo-1.0.ebuild,v 1.1.1.1 2005/11/30 10:02:40 chriswhite Exp $
 
 inherit games
 
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="sys-libs/glibc"
+RDEPEND="sys-libs/glibc
+	amd64? ( app-emulation/emul-linux-x86-sdl )"
 DEPEND="app-arch/unzip"
 
 S=${WORKDIR}
@@ -33,7 +34,7 @@ src_install() {
 
 	exeinto "${dir}"
 	doexe lugaru-bin *.so *.so.0 || die "doexe"
-	games_make_wrapper lugaru ./lugaru-bin "${dir}"
+	games_make_wrapper lugaru ./lugaru-bin "${dir}" "${dir}"
 
 	doicon lugaru.xpm
 	make_desktop_entry lugaru "Lugaru" lugaru.xpm

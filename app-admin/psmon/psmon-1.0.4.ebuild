@@ -1,28 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/psmon/psmon-1.0.4.ebuild,v 1.1 2003/10/30 13:19:10 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/psmon/psmon-1.0.4.ebuild,v 1.1.1.1 2005/11/30 10:00:04 chriswhite Exp $
 
 DESCRIPTION="Monitors process table to slay aggressive, and spawn dead, processes"
-HOMEPAGE="http://psmon.sourceforge.net/"
+HOMEPAGE="http://www.psmon.com/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
-RESTRICT="nomirror"
-
 LICENSE="GPL-1"
 SLOT="0"
-
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE=""
-DEPEND=">=perl-5.6.0
+
+DEPEND=">=dev-lang/perl-5.6.0
 	dev-perl/config-general
 	dev-perl/Proc-ProcessTable
 	dev-perl/Unix-Syslog
-	dev-perl/Getopt-Long"
-
-S=${WORKDIR}/${P}
-
-src_unpack() {
-	unpack ${A}
-}
+	perl-core/Getopt-Long"
 
 src_install() {
 	doman psmon.1

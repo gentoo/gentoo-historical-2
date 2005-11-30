@@ -1,25 +1,41 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich/mpich-1.2.5.2.ebuild,v 1.1 2003/11/10 09:26:20 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich/mpich-1.2.5.2.ebuild,v 1.1.1.1 2005/11/30 10:01:40 chriswhite Exp $
+
+# Set the MPICH_CONFIGURE_OPTS environment variable to change the signal
+# mpich listens on or any other custom options (#38207).
+# The default USR1 conflicts with pthreads. Options include SIGUSR2 and SIGBUS.
+# For example: MPICH_CONFIGURE_OPTS="--with-device=ch_p4:-listener_sig=SIGBUS"
 
 DESCRIPTION="MPICH - A portable MPI implementation"
 HOMEPAGE="http://www-unix.mcs.anl.gov/mpi/mpich"
 SRC_URI="ftp://ftp.mcs.anl.gov/pub/mpi/${P}.tar.gz"
-IUSE="doc crypt"
-DEPEND=""
-RDEPEND="${DEPEND}
-	crypt? ( net-misc/openssh ) : ( net-misc/netkit-rsh )
-	!dev-libs/lam-mpi
-	virtual/glibc"
-SLOT="0"
+
 LICENSE="as-is"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="x86 ~ppc ~amd64"
+IUSE="doc crypt"
+
+DEPEND="virtual/libc"
+RDEPEND="${DEPEND}
+	crypt? ( net-misc/openssh )
+	!crypt? ( net-misc/netkit-rsh )
+	!sys-cluster/lam-mpi"
+
+pkg_setup() {
+	if [ -n "${MPICH_CONFIGURE_OPTS}" ]; then
+		einfo "Custom configure options are ${MPICH_CONFIGURE_OPTS}."
+	fi
+}
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	grep -FrlZ '$(P) ' . | xargs -0 sed -i -e 's/\$(P)//'
+}
 
 src_compile() {
-	#looks like P is one of used vars, need to wrap around build...
-	local PSave RSHCOMMAND
-	PSave=${P}
-	unset P
+	local RSHCOMMAND
 
 	if use crypt; then
 		RSHCOMMAND="ssh -x"
@@ -29,20 +45,17 @@ src_compile() {
 
 	export RSHCOMMAND
 
+	local myconf="${myconf} ${MPICH_CONFIGURE_OPTS}"
+
 	./configure \
+		${myconf} \
 		--mandir=/usr/share/man \
 		--prefix=/usr || die
 	make || die
-	P=${PSave}
 }
 
 src_install() {
 	dodir /usr/sbin
-
-	#mangle P here as well..
-	local PSave
-	PSave=${P}
-	unset P
 
 	# mpich install process is really weird, need to do some hand work perhaps
 
@@ -51,15 +64,11 @@ src_install() {
 
 	./bin/mpiinstall -echo -prefix=${D}/usr || die
 
-	P=${PSave}
-
 	if use doc; then
 		dodir /usr/share/doc/${PF}
 		mv ${D}/usr/doc/* ${D}/usr/share/doc/${PF}
-		rmdir ${D}/usr/doc/
-	else
-		rm -rf ${D}/usr/doc/
 	fi
+	rm -rf ${D}/usr/doc/
 
 	dodir /etc/mpich
 	mv ${D}/usr/etc/* ${D}/etc/mpich/
@@ -97,7 +106,13 @@ src_install() {
 	dosed /usr/share/mpich/upshot/bin/upshot
 
 	# those are dangling symlinks
-	rm ${D}/usr/share/mpich/examples1/mpirun
-	rm ${D}/usr/share/mpich/examples2/mpirun
-}
+	rm -f \
+		${D}/usr/share/mpich/examples1/mpirun \
+		${D}/usr/share/mpich/examples2/mpirun
 
+	mv ${D}/usr/man ${D}/usr/share/man
+	prepallman
+
+	#FIXME: Here, we should either clean the empty directories
+	# or use keepdir to make sure they stick around.
+}

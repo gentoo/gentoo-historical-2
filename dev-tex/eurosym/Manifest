@@ -1,3 +1,14 @@
-MD5 8efcff275e4e9f310574799f224d39f0 ChangeLog 339
-MD5 2ca573702855564994dff675412e8dd8 eurosym-1.2.ebuild 1150
-MD5 bf6c1d96c8df267854ec096a6c55ec78 files/digest-eurosym-1.2 59
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 9e115d9d1da5e685413dc8c8870d6ef7 ChangeLog 1727
+MD5 c472f5fd1646eb8bca71d8df5cb2bdcc metadata.xml 164
+MD5 f6d4380c25288d7301ae6cb9ae5a9868 eurosym-1.4.ebuild 1135
+MD5 994b8cb5d08447177dfbb306002185dd files/digest-eurosym-1.4 63
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.6 (GNU/Linux)
+
+iD8DBQFBdR9XVWNWqTUmv+0RAlvZAJ9ls9f3izQbCaRcMaWQ4lDtWn4lwQCfUdCt
+p/f+8FTwlIOcu/NHEdZd0kA=
+=Kawc
+-----END PGP SIGNATURE-----

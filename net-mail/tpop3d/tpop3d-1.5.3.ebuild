@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/tpop3d/tpop3d-1.5.3.ebuild,v 1.1 2003/11/27 02:14:44 gregf Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/tpop3d/tpop3d-1.5.3.ebuild,v 1.1.1.1 2005/11/30 10:03:19 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="An extensible POP3 server with vmail-sql/MySQL support."
 HOMEPAGE="http://www.ex-parrot.com/~chris/tpop3d/"
@@ -8,30 +10,35 @@ SRC_URI="http://www.ex-parrot.com/~chris/tpop3d/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="ssl ldap mysql perl pam tcpd maildir debug"
+KEYWORDS="x86 ~amd64"
+IUSE="ssl ldap mysql perl pam tcpd maildir debug postgres"
 
-DEPEND="virtual/glibc
-	ssl?	( >=dev-libs/openssl-0.9.6 )
-	ldap? 	( >=net-nds/openldap-2.0.7 )
-	mysql? 	( >=dev-db/mysql-3.23.28 )
-	perl?	( >=dev-lang/perl-5.6.1 )
-	pam?	( >=sys-libs/pam-0.75 )
-	tcpd?	( >=sys-apps/tcp-wrappers-7.6 )"
+DEPEND="virtual/libc
+	ssl?		( >=dev-libs/openssl-0.9.6 )
+	ldap? 		( >=net-nds/openldap-2.0.7 )
+	mysql? 		( >=dev-db/mysql-3.23.28 )
+	postgres?	( >=dev-db/postgresql-7.3 )
+	perl?		( >=dev-lang/perl-5.6.1 )
+	pam?		( >=sys-libs/pam-0.75 )
+	tcpd?		( >=sys-apps/tcp-wrappers-7.6 )"
 
 src_unpack() {
 	unpack ${P}.tar.gz
 	cd ${S}
+	epatch ${FILESDIR}/${P}-invalid-user-message.patch
+	epatch ${FILESDIR}/${P}-variable-name-clash.patch
 }
 
 src_compile() {
 	local myconf
 	use mysql		&& myconf="--enable-auth-mysql"
+	use postgres	&& myconf="${myconf} --enable-auth-pgsql"
 	use ldap		&& myconf="${myconf} --enable-auth-ldap"
 	use perl		&& myconf="${myconf} --enable-auth-perl"
 	use tcpd		&& myconf="${myconf} --enable-tcp-wrappers"
 	use pam			|| myconf="${myconf} --disable-auth-pam"
 	use maildir		&& myconf="${myconf} --enable-mbox-maildir"
+	use ssl			&& myconf="${myconf} --enable-tls"
 	# If you want plaintext /etc/passwd authentication
 	if [ ! -z $ENABLE_PASSWD ]; then
 		myconf="${myconf} --enable-auth-passwd"
@@ -53,11 +60,11 @@ src_compile() {
 	if [ ! -z $BE_NICE ]; then
 		myconf="${myconf} --disable-snide-comments"
 	fi
-	# Install net-mail/drac for integration with tpop3d
+	# Install mail-client/drac for integration with tpop3d
 	if [ ! -a $ENABLE_DRAC ]; then
 		myconf="${myconf} --enable-drac"
 	fi
-	if [ `use debug` ]; then
+	if use debug; then
 		myconf="${myconf} --enable-electric-fence --enable-backtrace"
 	fi
 	econf ${myconf} || die "./configure failed"
@@ -73,7 +80,7 @@ src_install() {
 	dodir /etc/tpop3d
 
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/tpop3d-init
+	newexe ${FILESDIR}/tpop3d-init tpop3d
 }
 
 pkg_postinst() {

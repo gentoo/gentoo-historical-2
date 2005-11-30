@@ -1,6 +1,82 @@
 # ChangeLog for sec-policy/selinux-postfix
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-postfix/ChangeLog,v 1.1 2004/04/28 03:58:47 pebenito Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-postfix/ChangeLog,v 1.1.1.1 2005/11/30 10:02:14 chriswhite Exp $
+
+*selinux-postfix-20051023 (24 Oct 2005)
+
+  24 Oct 2005; petre rodan <kaiowas@gentoo.org>
+  +selinux-postfix-20051023.ebuild:
+  merge with upstream
+
+  18 Oct 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-postfix-20050918.ebuild:
+  mark stable
+
+*selinux-postfix-20050918 (18 Sep 2005)
+
+  18 Sep 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-postfix-20050417.ebuild, +selinux-postfix-20050918.ebuild:
+  merge with upstream, added mips arch
+
+  26 Jun 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-postfix-20050626.ebuild:
+  mark stable
+
+*selinux-postfix-20050626 (26 Jun 2005)
+
+  26 Jun 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-postfix-20050219.ebuild, +selinux-postfix-20050626.ebuild:
+  added name_connect rules
+
+  23 Apr 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-postfix-20041211.ebuild, selinux-postfix-20050417.ebuild:
+  mark stable
+
+*selinux-postfix-20050417 (16 Apr 2005)
+
+  16 Apr 2005; petre rodan <kaiowas@gentoo.org>
+  +selinux-postfix-20050417.ebuild:
+  fix for bug #89321
+
+  23 Mar 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-postfix-20050219.ebuild:
+  mark stable
+
+*selinux-postfix-20050219 (25 Feb 2005)
+
+  25 Feb 2005; petre rodan <kaiowas@gentoo.org>
+  +selinux-postfix-20050219.ebuild:
+  merge with upstream policy
+
+*selinux-postfix-20041211 (12 Dec 2004)
+
+  12 Dec 2004; petre rodan <kaiowas@gentoo.org>
+  -selinux-postfix-20040427.ebuild, -selinux-postfix-20041021.ebuild,
+  -selinux-postfix-20041109.ebuild, -selinux-postfix-20041120.ebuild,
+  +selinux-postfix-20041211.ebuild:
+  removed old builds, small merge with upstream policy
+
+  23 Nov 2004; petre rodan <kaiowas@gentoo.org>
+  selinux-postfix-20041120.ebuild:
+  mark stable
+
+*selinux-postfix-20041120 (22 Nov 2004)
+
+  22 Nov 2004; petre rodan <kaiowas@gentoo.org>
+  +selinux-postfix-20041120.ebuild:
+  merge with nsa policy
+
+*selinux-postfix-20041109 (13 Nov 2004)
+
+  13 Nov 2004; petre rodan <kaiowas@gentoo.org>
+  +selinux-postfix-20041109.ebuild:
+  merge with nsa policy
+
+*selinux-postfix-20041021 (27 Oct 2004)
+
+  27 Oct 2004; petre rodan <kaiowas@gentoo.org>
+  +selinux-postfix-20041021.ebuild:
+  merge with nsa policy
 
 *selinux-postfix-20040427 (27 Apr 2004)
 

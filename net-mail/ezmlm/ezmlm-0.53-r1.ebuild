@@ -1,23 +1,24 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/ezmlm/ezmlm-0.53-r1.ebuild,v 1.1 2003/11/30 11:12:03 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/ezmlm/ezmlm-0.53-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:33 chriswhite Exp $
 
-inherit eutils fixheadtails
+inherit eutils fixheadtails toolchain-funcs
 
-DESCRIPTION="Simple yet powerful mailing list manager for qmail."
+DESCRIPTION="Simple yet powerful mailing list manager for qmail"
+HOMEPAGE="http://cr.yp.to/ezmlm.html"
 SRC_URI="http://cr.yp.to/software/${P}.tar.gz
-		http://csa-net.dk/djbware/ezmlm-0.53-ia64.patch"
-HOMEPAGE="http://cr.yp.to/software/${PN}.html"
+	http://csa-net.dk/djbware/ezmlm-0.53-ia64.patch"
 
-SLOT="0"
 LICENSE="as-is"
+SLOT="0"
 KEYWORDS="x86 sparc ppc alpha"
+IUSE=""
 
 DEPEND="sys-apps/groff"
-RDEPEND="|| (	net-mail/qmail
-				net-mail/qmail-mysql
-				net-mail/qmail-ldap )"
-S=${WORKDIR}/${P}
+RDEPEND="|| (
+	mail-mta/qmail
+	mail-mta/qmail-mysql
+	mail-mta/qmail-ldap )"
 
 src_unpack() {
 	unpack ${A}
@@ -28,8 +29,8 @@ src_unpack() {
 	ht_fix_file Makefile *.do
 	echo "/usr/bin" > conf-bin
 	echo "/usr/share/man" > conf-man
-	echo "${CC} ${CFLAGS}" > conf-cc
-	echo "${CC} ${LDFLAGS}" > conf-ld
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
 }
 
 src_compile() {
@@ -40,8 +41,9 @@ src_compile() {
 
 src_install () {
 	dobin ezmlm-list ezmlm-make ezmlm-manage \
-	ezmlm-reject ezmlm-return ezmlm-send \
-	ezmlm-sub ezmlm-unsub ezmlm-warn ezmlm-weed
+		ezmlm-reject ezmlm-return ezmlm-send \
+		ezmlm-sub ezmlm-unsub ezmlm-warn ezmlm-weed \
+		|| die
 
 	doman *.1 *.5
 }

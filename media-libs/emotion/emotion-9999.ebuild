@@ -1,15 +1,30 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/emotion/emotion-9999.ebuild,v 1.1 2004/12/27 14:39:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/emotion/emotion-9999.ebuild,v 1.1.1.1 2005/11/30 10:04:22 chriswhite Exp $
 
-EHACKAUTOGEN=yes
 inherit enlightenment
 
 DESCRIPTION="video libraries for e17"
 
-DEPEND=">=dev-libs/eet-0.9.9.20041031
-	>=x11-libs/evas-1.0.0.20041031_pre13
-	>=media-libs/edje-0.5.0.20041031
-	>=x11-libs/ecore-1.0.0.20041031_pre7
-	>=dev-libs/embryo-0.9.1.20041031
-	>=media-libs/xine-lib-1_rc5"
+IUSE="gstreamer xine"
+
+DEPEND=">=dev-libs/eet-0.9.9
+	>=x11-libs/evas-0.9.9
+	>=media-libs/edje-0.5.0
+	>=x11-libs/ecore-0.9.9
+	>=dev-libs/embryo-0.9.1
+	xine? ( >=media-libs/xine-lib-1_rc5 )
+	!gstreamer? ( !xine? ( >=media-libs/xine-lib-1_rc5 ) )
+	gstreamer? ( =media-libs/gstreamer-0.8* )"
+
+src_compile() {
+	if ! use xine && ! use gstreamer ; then
+		export MY_ECONF="--enable-xine --disable-gstreamer"
+	else
+		export MY_ECONF="
+			$(use_enable xine) \
+			$(use_enable gstreamer) \
+		"
+	fi
+	enlightenment_src_compile
+}

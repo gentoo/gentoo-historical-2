@@ -1,6 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/flexlm/files/flexlm-init,v 1.1.1.1 2005/11/30 10:00:03 chriswhite Exp $
 
 depend() {
 	need net
@@ -8,7 +9,7 @@ depend() {
 
 start() {
 	ebegin "Starting lmgrd"
-	su - $LMUSER -c "umask 022; /opt/flexlm/bin/lmgrd -c '$LMLICENSE' -l '$LMLOG'" 
+	su - ${LMUSER} -c "umask 022; /opt/flexlm/bin/lmgrd -c '${LMLICENSE}' -l '${LMLOG}'"
 	eend $?
 }
 

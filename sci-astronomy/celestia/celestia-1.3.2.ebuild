@@ -1,72 +1,70 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/celestia/celestia-1.3.2.ebuild,v 1.1 2004/12/24 03:44:58 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/celestia/celestia-1.3.2.ebuild,v 1.1.1.1 2005/11/30 10:01:52 chriswhite Exp $
 
 inherit eutils flag-o-matic gnome2 kde-functions
 
-DESCRIPTION="Celestia is a free real-time space simulation that lets you experience our universe in three dimensions"
+DESCRIPTION="real-time space simulation that lets you experience our universe in three dimensions"
 HOMEPAGE="http://www.shatters.net/celestia/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="amd64 ppc x86"
 IUSE="gnome gtk kde arts"
 
-DEPEND=">=media-libs/glut-3.7.1
+DEPEND="virtual/glut
 	virtual/glu
 	media-libs/jpeg
 	media-libs/libpng
 	dev-lang/lua
-	gtk? (	>=x11-libs/gtk+-2.0
-			>=x11-libs/gtkglext-1.0 )
+	gtk? ( >=x11-libs/gtk+-2.0 >=x11-libs/gtkglext-1.0 )
+	!gnome? ( !kde? ( >=x11-libs/gtk+-2.0 >=x11-libs/gtkglext-1.0 ) )
 	gnome? ( >=gnome-base/libgnomeui-2.0 )
-	kde? ( >=kde-base/kdelibs-3.0.5 )"
+	kde? (
+		>=kde-base/kdelibs-3.0.5
+		arts? ( kde-base/arts )
+	)"
 
 pkg_setup() {
 	# Check for one for the following use flags to be set.
-	if use kde; then
+	if use kde ; then
 		einfo "USE=\"kde\" detected. This will override any gnome/gtk USE preferences."
 		export MYMAKE="kde"
-	elif use gnome; then
+	elif use gnome ; then
 		einfo "USE=\"gnome\" detected."
 		export MYMAKE="gnome"
-	elif use gtk; then
+	elif use gtk ; then
 		einfo "USE=\"gtk\" detected."
 		export MYMAKE="gtk"
 	else
-		eerror "You must set at least one of USE=\"{kde/gnome/gtk}\""
-		ewarn "Please set one of the USE flags end re-emerge"
-		ewarn "ie. 'env USE=\"kde\" emerge celestia"
-		die "No valid USE flags set"
+		ewarn "You should set at least one of USE=\"{kde/gnome/gtk}\""
+		ewarn "Defaulting to gtk support."
+		export MYMAKE="gtk"
 	fi
 
 	# Get X11 implementation
-	X11_IMPLEM_P="$(portageq best_version "${ROOT}" virtual/x11)"
+	X11_IMPLEM_P="$(best_version virtual/x11)"
 	X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
 	X11_IMPLEM="${X11_IMPLEM##*\/}"
 
 	einfo "Please note:"
 	einfo "if you experience problems building celestia with nvidia drivers,"
 	einfo "you can try:"
-	einfo "opengl-update ${X11_IMPLEM}"
+	einfo "eselect opengl set xorg-x11"
 	einfo "emerge celestia"
-	einfo "opengl-update nvidia"
+	einfo "eselect opengl set nvidia"
 }
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
 	# adding gcc-3.4 support as posted in
 	# (http://bugs.gentoo.org/show_bug.cgi?id=53479#c2)
-	epatch ${FILESDIR}/resmanager.h.patch \
-	|| die "patching gcc 3.4 support failed"
+	epatch "${FILESDIR}"/resmanager.h.patch \
 
-	if use !arts;
-	then
-		epatch ${FILESDIR}/celestia-1.3.2-noarts.patch
-	fi
+	! use arts && epatch "${FILESDIR}"/celestia-1.3.2-noarts.patch
 
 	if [ "${MYMAKE}" != "gnome" ]; then
 		# alright this snapshot seems to have some trouble with installing a
@@ -92,10 +90,10 @@ src_compile() {
 		export kde_widgetdir="$KDEDIR/lib/kde3/plugins/designer"
 	fi
 
-	./configure --prefix=/usr \
-				--with-lua \
-				--with-${MYMAKE} || die
-
+	./configure \
+		--prefix=/usr \
+		--with-lua \
+		--with-${MYMAKE} || die "configure failed"
 	emake all || die
 }
 
@@ -103,9 +101,9 @@ src_install() {
 	if [ "${MYMAKE}" = "gnome" ]; then
 		gnome2_src_install
 	else
-		make install prefix=${D}/usr
+		make install prefix="${D}"/usr || die
 	fi
 
-	dodoc AUTHORS COPYING README TODO controls.txt
+	dodoc AUTHORS README TODO controls.txt
 	dohtml manual/*.html manual/*.css
 }

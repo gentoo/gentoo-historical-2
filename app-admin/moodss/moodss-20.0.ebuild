@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/moodss/moodss-20.0.ebuild,v 1.1 2005/05/11 22:30:43 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/moodss/moodss-20.0.ebuild,v 1.1.1.1 2005/11/30 09:59:53 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Modular Object Oriented Dynamic SpreadSheet"
 HOMEPAGE="http://moodss.sourceforge.net/"
@@ -8,7 +10,7 @@ SRC_URI="mirror://sourceforge/moodss/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64"
 IUSE="mysql perl python"
 
 DEPEND=">=dev-lang/tcl-8.4"

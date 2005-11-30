@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libddmpeg/libddmpeg-1.6.ebuild,v 1.1 2004/02/07 16:32:24 max Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libddmpeg/libddmpeg-1.6.ebuild,v 1.1.1.1 2005/11/30 10:04:06 chriswhite Exp $
 
 inherit flag-o-matic
 
@@ -10,12 +10,18 @@ SRC_URI="http://www.ivor.it/cle266/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 -*"
+KEYWORDS="x86 ~amd64 -*"
+IUSE=""
 
 src_compile() {
-	local cpu="`get-flag march || get-flag mcpu`"
+	local cpu="`get-flag march`"
 	if [ -n "${cpu}" ] ; then
 		sed -e "s:-march=i386:-march=${cpu}:" -i "Makefile" || die "sed failed"
+	fi
+	# We don't want -march=i386 but we do want -fPIC. Quick swap...
+	# - avenj@gentoo.org (8 Mar 04)
+	if use amd64; then
+		sed -e "s:-march=i386:-fPIC:" -i "Makefile" || die "sed failed"
 	fi
 
 	emake || die "compile problem"

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sary-ruby/sary-ruby-1.1.0.1.ebuild,v 1.1 2004/12/13 15:34:57 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sary-ruby/sary-ruby-1.1.0.1.ebuild,v 1.1.1.1 2005/11/30 10:01:12 chriswhite Exp $
 
 inherit ruby
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://sary.namazu.org/#ruby
 SRC_URI="http://prime.sourceforge.jp/src/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~alpha ~ppc"
+KEYWORDS="x86 alpha ppc ~ppc64"
 SLOT="0"
 USE_RUBY="ruby16 ruby18 ruby19"
 #S="${WORKDIR}/${PN}"

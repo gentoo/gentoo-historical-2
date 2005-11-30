@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/uglygs/uglygs-0_rc11.ebuild,v 1.1 2003/09/10 18:53:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/uglygs/uglygs-0_rc11.ebuild,v 1.1.1.1 2005/11/30 10:00:58 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 MY_P=${P/0_/}
 DESCRIPTION="quickly searches the network for game servers"
@@ -11,7 +11,8 @@ SRC_URI="ftp://ftp.uglypunk.com/uglygs/current/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha"
+KEYWORDS="x86 ppc sparc alpha hppa"
+IUSE=""
 
 DEPEND=">=sys-apps/sed-4"
 RDEPEND="net-analyzer/rrdtool
@@ -39,7 +40,7 @@ src_install() {
 	insinto ${GAMES_SYSCONFDIR}
 	doins uglygs.conf qstat/qstat.cfg
 
-	dogamesbin uglygs.pl
+	dogamesbin uglygs.pl || die
 
 	dodir ${UGLY_BASEDIR}
 	cp -rf data images templates tmp ${D}/${UGLY_BASEDIR}
@@ -48,7 +49,7 @@ src_install() {
 	exeinto ${UGLY_BASEDIR}
 	doexe qstat/qstat
 
-	dodoc CHANGES INSTALL README
+	dodoc CHANGES README
 
 	prepgamesdirs
 }

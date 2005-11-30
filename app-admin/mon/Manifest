@@ -1,7 +1,15 @@
-MD5 eed6c3c5c760e04d24fe29e13d91f8fa ChangeLog 1570
-MD5 d7aa7af935a60a2cf181430f0cb53903 mon-0.38.20-r7.ebuild 1206
-MD5 669e4f624b0ebffafd9d087ccc01e7f7 mon-0.99.2-r1.ebuild 1227
-MD5 6f9b736e996d6842e162c4613104417b files/digest-mon-0.38.20-r7 64
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 6f33e8f07369f900d73d777a998bcce3 ChangeLog 2105
+MD5 082b64a036a2bbbb1bc45ffea0dffe48 mon-0.99.2-r1.ebuild 1258
 MD5 c1b296ca6c47a90395f9950e261dbd85 files/digest-mon-0.99.2-r1 63
 MD5 b7e59d208dfd4162a4d6c04f8410cafd files/mon.cf 795
-MD5 79104b21050f14e44fe4bf6ffa601991 files/mon.rc6 705
+MD5 f83ef533930787d7b81f5e434a42ac78 files/mon.rc6 715
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.0 (GNU/Linux)
+
+iD8DBQFClJgitG5z4I8BtQoRAuvTAJ9Ok/TmmpkqZuaJm4AiWaIU5h/+/wCglJwF
+3hATeifiWkC2eoVz9+y/vf4=
+=CCBw
+-----END PGP SIGNATURE-----

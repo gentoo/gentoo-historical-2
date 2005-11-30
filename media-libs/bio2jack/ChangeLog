@@ -1,6 +1,77 @@
-# ChangeLog for dev-libs/bio2jack
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/bio2jack/ChangeLog,v 1.1 2004/09/22 10:20:33 eradicator Exp $
+# ChangeLog for media-libs/bio2jack
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/bio2jack/ChangeLog,v 1.1.1.1 2005/11/30 10:03:49 chriswhite Exp $
+
+  07 Aug 2005; <gongloo@gentoo.org> bio2jack-0.7.ebuild:
+  Keyworded ~ppc-macos.
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> bio2jack-0.4.ebuild:
+  stable on ia64
+
+*bio2jack-0.7 (05 May 2005)
+
+  05 May 2005; Jan Brinkmann <luckyduck@gentoo.org> +bio2jack-0.7.ebuild:
+  new upstream version
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> bio2jack-0.4.ebuild:
+  Stable on ppc.
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> bio2jack-0.4.ebuild:
+  Added to ~hppa, bug 66571.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> bio2jack-0.4.ebuild:
+  Stable on ppc64
+
+  31 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  bio2jack-0.4.ebuild:
+  Stable amd64, sparc, x86.
+
+  29 Jan 2005; Eric Shattow <jnc@gentoo.org> bio2jack-0.3-r1.ebuild:
+  closes bug #74980
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  19 Dec 2004; Luca Barbato <lu_zero@gentoo.org> bio2jack-0.4.ebuild:
+  Fix libtool
+
+  19 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  bio2jack-0.3-r1.ebuild:
+  Stable on ppc.
+
+  17 Dec 2004; Markus Rothe <corsair@gentoo.org> bio2jack-0.3-r1.ebuild:
+  Stable on ppc64
+
+*bio2jack-0.4 (04 Dec 2004)
+
+  04 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +bio2jack-0.4.ebuild:
+  Version bump.
+
+  14 Nov 2004; Markus Rothe <corsair@gentoo.org> bio2jack-0.3-r1.ebuild:
+  Marked ~ppc64; bug #68112
+
+  05 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bio2jack-0.3-r1.ebuild:
+  Stable amd64, sparc, x86.
+
+  17 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> bio2jack-0.3-r1.ebuild:
+  Add ~alpha keyword, bug 66571.
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  bio2jack-0.3-r1.ebuild:
+  Added static USE flag support.
+
+*bio2jack-0.3-r1 (27 Sep 2004)
+
+  27 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -bio2jack-0.2-r1.ebuild, -bio2jack-0.2.ebuild, +bio2jack-0.3-r1.ebuild,
+  -bio2jack-0.3.ebuild:
+  Removing old versions. Revision bump to fix build tools to make the correct
+  lib filename.  Added to ~sparc
+
+  24 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
 
 *bio2jack-0.2-r1 (22 Sep 2004)
 

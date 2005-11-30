@@ -1,6 +1,57 @@
-# ChangeLog for app-games/atanks
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/atanks/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/atanks
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/atanks/ChangeLog,v 1.1.1.1 2005/11/30 10:02:40 chriswhite Exp $
+
+  19 Aug 2005; Mark Loeser <halcy0n@gentoo.org> -files/atanks-gcc34.patch,
+  +files/atanks-1.1.0-gcc4.patch, atanks-1.1.0.ebuild:
+  Fix compilation on GCC-4.  Similar fix as was needed for gcc-3.4, but this one
+  sucks less.  Removed the old fix and apply this one in all cases since it
+  doesn't break on gcc-3.3.
+
+  10 Aug 2005; <dang@gentoo.org> atanks-1.1.0.ebuild:
+  Keyworded ~amd64
+
+  19 May 2005; Michael Sterrett <mr_bones_@gentoo.org> atanks-1.1.0.ebuild:
+  fix up patching.  gcc-3.3 doesn't like the patch for gcc-3.4.
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> atanks-1.1.0.ebuild:
+  Cleanup for bug #92745.
+
+  19 Dec 2004; Joseph Jezak <josejx@gentoo.org> atanks-1.1.0.ebuild:
+  Marked ppc stable.
+
+  20 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/1.1.0-gentoo.patch, atanks-1.1.0.ebuild:
+  add two patches from basic (bug #66718)
+
+  01 Nov 2004; Joseph Jezak <josejx@gentoo.org> atanks-1.1.0.ebuild:
+  Marked ~ppc
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> atanks-1.1.0.ebuild:
+  need eutils for epatch
+
+  04 Sep 2004; Daniel Goller <morfic@gentoo.org> +files/atanks-gcc34.patch,
+  atanks-1.1.0.ebuild:
+  applied gcc34 patch, fixing bug #60692
+  thanks Halcy0n
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> atanks-1.1.0.ebuild:
+  don't rdepend on sed
+
+  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> atanks-0.9.9d.ebuild,
+  atanks-1.0.0.ebuild:
+  clean old versions
+
+*atanks-1.1.0 (05 Feb 2004)
+
+  05 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> atanks-0.9.9d.ebuild,
+  atanks-1.0.0.ebuild, atanks-1.1.0.ebuild:
+  version bump
+
+*atanks-1.0.0 (25 Nov 2003)
+
+  25 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> atanks-1.0.0.ebuild:
+  version bump
 
 *atanks-0.9.9d (20 Aug 2003)
 

@@ -1,8 +1,115 @@
 # ChangeLog for app-arch/zip
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-arch/zip/ChangeLog,v 1.1 2002/02/01 21:53:00 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/zip/ChangeLog,v 1.1.1.1 2005/11/30 10:00:42 chriswhite Exp $
 
+  23 Jul 2005; Kito <kito@gentoo.org> zip-2.31.ebuild:
+  ~ppc-macos keyword
+
+*zip-2.31 (13 Mar 2005)
+
+  13 Mar 2005; Mike Frysinger <vapier@gentoo.org> +zip-2.31.ebuild:
+  Version bump #84914 by Kenyon Ralph.
+
+  07 Nov 2004; Joshua Kinard <kumba@gentoo.org> zip-2.3-r4.ebuild:
+  Marked stable on mips.
+
+  06 Nov 2004; Lars Weiler <pylon@gentoo.org> zip-2.3-r4.ebuild:
+  Stable on ppc, bug #70227.
+
+  06 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> zip-2.3-r4.ebuild:
+  Stable on alpha, bug 70227.
+
+  06 Nov 2004; <plasmaroo@gentoo.org> zip-2.3-r4.ebuild:
+  Stabling on Gentoo/IA64 with regard to security bug #70227.
+
+  06 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> zip-2.3-r4.ebuild:
+  Stable on amd64, bug #70227
+
+  06 Nov 2004; Jason Wever <weeve@gentoo.org> zip-2.3-r4.ebuild:
+  Stable on sparc wrt security bug #70227.
+
+  06 Nov 2004; Olivier Crete <tester@gentoo.org> zip-2.3-r4.ebuild:
+  Stable on x86 per #70227
+
+  06 Nov 2004; Markus Rothe <corsair@gentoo.org> zip-2.3-r4.ebuild:
+  Stable on ppc64; bug #70227
+
+*zip-2.3-r4 (06 Nov 2004)
+
+  06 Nov 2004; <solar@gentoo.org> +files/zip-CAN-2004-1010.patch,
+  +zip-2.3-r4.ebuild:
+  security bump for bug #70227 - CAN-2004-1010
+
+*zip-2.3-r3 (28 Sep 2004)
+
+  28 Sep 2004; <solar@gentoo.org> +files/zip-2.3-unix_configure-pic.patch,
+  +zip-2.3-r3.ebuild:
+  pie executables will have runtime text relocations in them with zip unless we
+  disable the inline asm. This is done by adding a patch(tests via the pre
+  compiler to see if we are generating pic code) to zips homegrown configure
+  script. A better long term solution would be to fix said asm so pic users can
+  get any speed advantages that may come from using inline asm.
+
+  20 Jul 2004; Tom Gall <tgall@gentoo.org> zip-2.3-r2.ebuild:
+  stable on ppc64, bug #57660
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> zip-2.3-r2.ebuild:
+  Fix use invocation
+
+  13 Apr 2004; Joshua Kinard <kumba@gentoo.org> zip-2.3-r2.ebuild:
+  Marked stable on mips.
+
+  17 Feb 2004; Joshua Kinard <kumba@gentoo.org> zip-2.3-r2.ebuild:
+  Added ~mips to keywords
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> zip-2.3-r2.ebuild:
+  set ppc in keywords
+
+  11 Jan 2004; Jason Wever <weeve@gentoo.org> zip-2.3-r2.ebuild:
+  Marked stable on sparc.
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> zip-2.3-r2.ebuild:
+  stable on alpha
+
+  28 Dec 2003; Seemant Kulleen <seemant@gentoo.org> zip-2.3-r2.ebuild:
+  SRC_URI to mirror://gentoo instead of ibiblio only
+
+  13 Dec 2003; Guy Martin <gmsoft@gentoo.org> zip-2.3-r2.ebuild:
+  Marked stable on hppa.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> zip-2.3-r2.ebuild:
+  Stable on ia64
+
+  12 Oct 2003; Chuck Short <zul@gentoo.org> zip-2.3-r2.ebuild:
+  Added ~ia64 to keywords.
+
+  07 Aug 2003; Lisa Seelye <lisa@gentoo.org> zip-2.3-r2.ebuild:
+  Changed make to emake for bug 26149
+
+  18 Jul 2003; Martin Holzer <mholzer@gentoo.org> zip-2.3-r2.ebuild:
+  Added DEPEND. Closes #24739.
+
+*zip-2.3-r2 (16 Jul 2003)  
+
+  16 Jul 2003; <raker@gentoo.org> zip-2.3-r2.ebuild:
+  Added encryption support via the crypt use variable.
+  Thanks to tobias on bug #13598 for suggesting this feature.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *zip-2.3-r1 (1 Feb 2002)
+
+  14 Jun 2003; Guy Martin <gmsoft@gentoo.org> zip-2.3-r1.ebduild :
+  Added hppa to KEYWORDS.
+
+  15 Aug 2002; Jack Morgan <jmorgan@gentoo.org> :
+  Added KEYWORDS sparc64
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+  Added KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

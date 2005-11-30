@@ -1,17 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailbase/mailbase-0.00-r6.ebuild,v 1.1 2003/08/05 23:24:10 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailbase/mailbase-0.00-r6.ebuild,v 1.1.1.1 2005/11/30 10:03:31 chriswhite Exp $
 
-S="${WORKDIR}"
 DESCRIPTION="MTA layout package"
 SRC_URI=""
 HOMEPAGE="http://www.gentoo.org/"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~arm ~amd64"
+SLOT="0"
+KEYWORDS="x86 ~ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390 ppc-macos"
+IUSE=""
 
 DEPEND=""
+
+S=${WORKDIR}
 
 src_install() {
 	dodir /etc/mail
@@ -21,7 +23,7 @@ src_install() {
 	doins ${FILESDIR}/mailcap
 
 	keepdir /var/spool/mail
-	fowners root.mail /var/spool/mail
+	fowners root:mail /var/spool/mail
 	fperms 0775 /var/spool/mail
 	dosym /var/spool/mail /var/mail
 }
@@ -33,6 +35,6 @@ pkg_postinst() {
 	fi
 
 	# Always set these to close bug #8029.
-	chown root.mail ${ROOT}/var/spool/mail
+	chown root:mail ${ROOT}/var/spool/mail
 	chmod 0775 ${ROOT}/var/spool/mail
 }

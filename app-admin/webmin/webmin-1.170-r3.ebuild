@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webmin/webmin-1.170-r3.ebuild,v 1.1 2005/01/13 13:19:13 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webmin/webmin-1.170-r3.ebuild,v 1.1.1.1 2005/11/30 09:59:51 chriswhite Exp $
 
 IUSE="ssl apache2 webmin-minimal"
 
@@ -16,7 +16,7 @@ SRC_URI="webmin-minimal? ( mirror://sourceforge/webadmin/${P}-minimal.tar.gz )
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~s390 sparc x86 ~mips"
+KEYWORDS="~mips"
 
 DEPEND="dev-lang/perl"
 RDEPEND="ssl? ( dev-perl/Net-SSLeay )
@@ -118,7 +118,9 @@ src_install() {
 
 pkg_postinst() {
 	local crypt=$(grep "^root:" ${ROOT}/etc/shadow | cut -f 2 -d :)
-	dosed "s/root:XXX/root:${crypt}/" /etc/webmin/miniserv.users
+	crypt=${crypt//\\/\\\\}
+	crypt=${crypt//\//\\\/}
+	sed -i "s/root:XXX/root:${crypt}/" /etc/webmin/miniserv.users
 
 	einfo "To make webmin start at boot time, run: 'rc-update add webmin default'."
 	einfo "Point your web browser to http://localhost:10000 to use webmin."

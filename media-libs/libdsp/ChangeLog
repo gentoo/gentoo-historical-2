@@ -1,6 +1,26 @@
-# ChangeLog for media-sound/libdsp
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdsp/ChangeLog,v 1.1 2004/08/19 22:46:18 chriswhite Exp $
+# ChangeLog for media-libs/libdsp
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdsp/ChangeLog,v 1.1.1.1 2005/11/30 10:04:09 chriswhite Exp $
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org> libdsp-4.9.2-r1.ebuild,
+  libdsp-4.9.2.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  libdsp-4.9.2-r1.ebuild:
+  Stable x86. Added -amd64, -sparc.
+
+*libdsp-4.9.2-r1 (20 Aug 2004)
+
+  20 Aug 2004; Chris White <chriswhite@gentoo.org> +libdsp-4.9.2-r1.ebuild:
+  Bumped to -r1 and added user posted doc flags and INLINES install fix. Thanks
+  to Ed Wildgoose <gentoo@wildgooses.com> for reporting.
 
 *libdsp-4.9.2 (20 Aug 2004)
 

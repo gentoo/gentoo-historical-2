@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gnbd/gnbd-1.01.00.ebuild,v 1.1 2005/10/08 15:53:06 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gnbd/gnbd-1.01.00.ebuild,v 1.1.1.1 2005/11/30 10:01:46 chriswhite Exp $
 
 MY_P="cluster-${PV}"
 

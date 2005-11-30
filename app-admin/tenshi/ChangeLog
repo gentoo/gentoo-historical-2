@@ -1,6 +1,43 @@
 # ChangeLog for app-admin/tenshi
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/tenshi/ChangeLog,v 1.1 2004/07/15 22:17:16 tigger Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tenshi/ChangeLog,v 1.1.1.1 2005/11/30 10:00:05 chriswhite Exp $
+
+  23 Aug 2005; Rob Holland <tigger@gentoo.org> tenshi-0.3.3.ebuild,
+  tenshi-0.3.4.ebuild:
+  Avoid hard coding shell for enewuser for compatability with !linux.
+
+  16 Jul 2005; Andrea Barisani <lcars@gentoo.org> tenshi-0.3.4.ebuild:
+  stable on x86
+
+  16 Jun 2005; Rob Holland <tigger@gentoo.org> tenshi-0.3.3.ebuild:
+  stable on x86
+
+*tenshi-0.3.4 (16 Jun 2005)
+
+  16 Jun 2005; Rob Holland <tigger@gentoo.org> +tenshi-0.3.4.ebuild:
+  version bump.
+
+  15 May 2005; Konstantin Arkhipov <voxus@gentoo.org> tenshi-0.3.3.ebuild:
+  Added ~amd64 keyword wrt bug #71740.
+
+*tenshi-0.3.3 (18 Mar 2005)
+
+  18 Mar 2005; Rob Holland <tigger@gentoo.org> -tenshi-0.3.1.ebuild,
+  -tenshi-0.3.2.ebuild, +tenshi-0.3.3.ebuild, -tenshi-0.3.ebuild:
+  version bump. tidied old versions.
+
+  25 Jan 2005; Rob Holland <tigger@gentoo.org> tenshi-0.3.2.ebuild:
+  fix binary packages. per #77137. thanks to lars.geiger@gmx.net.
+
+*tenshi-0.3.2 (09 Nov 2004)
+
+  09 Nov 2004; Rob Holland <tigger@gentoo.org> +tenshi-0.3.2.ebuild:
+  version bump.
+
+*tenshi-0.3.1 (21 Jul 2004)
+
+  21 Jul 2004; Rob Holland <tigger@gentoo.org> :
+  version bump
 
 *tenshi-0.3 (15 Jul 2004)
 

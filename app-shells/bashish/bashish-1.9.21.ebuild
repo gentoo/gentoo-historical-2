@@ -1,14 +1,15 @@
-# Copyright 2003 Thomas Eriksson.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bashish/bashish-1.9.21.ebuild,v 1.1 2003/06/17 03:04:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bashish/bashish-1.9.21.ebuild,v 1.1.1.1 2005/11/30 10:00:25 chriswhite Exp $
 
 DESCRIPTION="Text console theme engine"
 HOMEPAGE="http://bashish.sourceforge.net/"
 SRC_URI="mirror://sourceforge/bashish/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc alpha sparc"
 SLOT="0"
+KEYWORDS="x86 ppc sparc alpha"
+IUSE=""
 
 src_unpack() {
 	unpack ${A}
@@ -23,6 +24,7 @@ src_install() {
 	dodir /usr/share/bashish
 	./InstallBashish || die
 	dobin bashish
+	dosed /usr/bin/bashish
 	insinto /usr/share/bashish/modules/sh/conf
 	doins ${FILESDIR}/bashish.conf
 }

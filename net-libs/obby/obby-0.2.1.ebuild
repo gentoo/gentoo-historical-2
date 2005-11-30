@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/obby/obby-0.2.1.ebuild,v 1.1 2005/09/18 19:25:14 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/obby/obby-0.2.1.ebuild,v 1.1.1.1 2005/11/30 10:02:59 chriswhite Exp $
 
 DESCRIPTION="Library for collaborative text editing"
 HOMEPAGE="http://darcs.0x539.de/libobby"

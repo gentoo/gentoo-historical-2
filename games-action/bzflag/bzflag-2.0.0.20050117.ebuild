@@ -1,29 +1,31 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/bzflag/bzflag-2.0.0.20050117.ebuild,v 1.1 2005/01/25 01:37:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/bzflag/bzflag-2.0.0.20050117.ebuild,v 1.1.1.1 2005/11/30 10:02:42 chriswhite Exp $
 
-inherit flag-o-matic games
+GAMES_USE_SDL="nojoystick"
+inherit eutils flag-o-matic games
 
 DESCRIPTION="OpenGL accelerated 3d tank combat simulator game"
 HOMEPAGE="http://www.BZFlag.org/"
 SRC_URI="mirror://sourceforge/bzflag/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE="dedicated adns"
+IUSE="adns curl dedicated"
+# kerberos"
 
-RDEPEND="virtual/libc
-	!dedicated? ( virtual/opengl media-libs/libsdl )
-	adns? ( net-libs/adns )
+RDEPEND="adns? ( net-libs/adns )
 	curl? ( net-misc/curl )
-	kerberos? ( virtual/krb5 )"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+	!dedicated? (
+		virtual/opengl
+		media-libs/libsdl )"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
+	cp data/bzflag-48x48.png "${T}/bzflag.png"
 	sed -i \
 		-e 's:^CFLAGS=.*::' \
 		-e 's:^CXXFLAGS=.*::' \
@@ -41,11 +43,11 @@ src_compile() {
 		ewarn
 		myconf="--disable-client --without-SDL"
 	fi
+#		$(use_with kerberos) \
 	egamesconf \
 		--disable-dependency-tracking \
-		$(use_with kerberos) \
-		$(use_enable curl) \
 		$(use_enable adns) \
+		$(use_enable curl) \
 		${myconf} \
 		|| die
 	emake || die "emake failed"
@@ -54,5 +56,9 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS README.UNIX TODO README ChangeLog BUGS PORTING
+	if ! use dedicated ; then
+		doicon "${T}/bzflag.png"
+		make_desktop_entry bzflag "BZFlag"
+	fi
 	prepgamesdirs
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/rpc/rpc-0.98.ebuild,v 1.1 2004/12/25 16:49:20 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/rpc/rpc-0.98.ebuild,v 1.1.1.1 2005/11/30 10:02:34 chriswhite Exp $
 
 inherit eutils
 

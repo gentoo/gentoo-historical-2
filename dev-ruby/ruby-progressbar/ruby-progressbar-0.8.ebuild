@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-progressbar/ruby-progressbar-0.8.ebuild,v 1.1 2004/03/21 21:34:02 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-progressbar/ruby-progressbar-0.8.ebuild,v 1.1.1.1 2005/11/30 10:01:20 chriswhite Exp $
 
 inherit ruby
 
@@ -11,11 +11,8 @@ SRC_URI="http://namazu.org/~satoru/ruby-progressbar/${P}.tar.gz"
 LICENSE="Ruby"
 SLOT="0"
 USE_RUBY="any"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="alpha amd64 ~ia64 ppc ppc64 x86"
 
 IUSE=""
 
-DEPEND="dev-lang/ruby"
-#RDEPEND=""
-
-S=${WORKDIR}/${P}
+DEPEND="virtual/ruby"

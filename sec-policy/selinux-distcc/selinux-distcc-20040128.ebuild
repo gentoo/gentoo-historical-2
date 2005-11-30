@@ -1,13 +1,14 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-distcc/selinux-distcc-20040128.ebuild,v 1.1 2004/01/29 05:16:27 pebenito Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-distcc/selinux-distcc-20040128.ebuild,v 1.1.1.1 2005/11/30 10:02:13 chriswhite Exp $
 
 TEFILES="distcc.te"
 FCFILES="distcc.fc"
+IUSE=""
 
 inherit selinux-policy
 
 DESCRIPTION="SELinux policy for distcc"
 
-KEYWORDS="x86 ppc sparc"
+KEYWORDS="x86 ppc sparc amd64"
 

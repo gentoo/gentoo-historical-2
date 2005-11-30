@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: php.eselect,v 1.1 2005/09/04 09:47:51 stuart Exp $
+# $Id: php.eselect,v 1.1.1.1 2005/11/30 10:00:16 chriswhite Exp $
 
 DESCRIPTION="Manage the /usr/bin/php link"
 MAINTAINER="stuart@gentoo.org"
-SVN_DATE='$Date: 2005/09/04 09:47:51 $'
+SVN_DATE='$Date: 2005/11/30 10:00:16 $'
 VERSION=$(svn_date_to_version "${SVN_DATE}" )
 
 PHP_SYMLINK_TARGETDIR="${ROOT}/usr/bin"

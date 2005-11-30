@@ -1,30 +1,27 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: System Team <system@gentoo.org>
-# Author: Karl Trygve Kalleberg <karltk@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/net-mail/teapop/teapop-0.3.3.ebuild,v 1.1 2002/01/03 09:54:56 karltk Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/teapop/teapop-0.3.3.ebuild,v 1.1.1.1 2005/11/30 10:03:14 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Tiny POP3 server"
-SRC_URI="ftp://ftp.toontown.org/pub/teapop/teapop-0.3.3.tar.gz"
+SRC_URI="ftp://ftp.toontown.org/pub/teapop/${P}.tar.gz"
 HOMEPAGE="http://www.toontown.org/teapop/"
 DEPEND=""
-#RDEPEND=""
+
+SLOT="0"
+LICENSE="as-is"
+KEYWORDS="x86 sparc"
+IUSE="mysql postgres"
 
 src_compile() {
-	local myconf 
-	use mysql && myconf="$myconf --enable-mysql"
-	use postgres && myconf="$myconf --enable-pgsql"
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
+	local myconf
+	use mysql && myconf="${myconf} --enable-mysql"
+	use postgres && myconf="${myconf} --enable-pgsql"
+	econf \
 		--enable-lock=flock,dotlock \
 		--enable-homespool=mail \
-		--enable-mailsppol=/var/spool/mail \
-		--mandir=/usr/share/man \
+		--enable-mailspool=/var/spool/mail \
 		--enable-apop \
-		$myconf || die "./configure failed"
+		${myconf} || die "./configure failed"
 	emake || die
 }
 
@@ -33,19 +30,18 @@ src_install () {
 		prefix=${D}/usr \
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
+		sysconfdir=${D}/etc \
 		install || die
 
-	dodir /etc/teapop
-	mv ${D}/usr/etc/teapop.passwd ${D}/etc/teapop/
-	
 	dodir /usr/sbin
 	mv ${D}/usr/libexec/teapop ${D}/usr/sbin/
-	
+
 	dodoc doc/{CREDITS,ChangeLog,INSTALL,TODO}
-	
+
 	docinto contrib
-	dodoc contrib/{README,popauther3.pl,teapop+exim.txt,virtualmail.html}
-	
+	dodoc contrib/{README,popauther3.pl,teapop+exim.txt}
+	dohtml contrib/*.html
+
 	docinto rfc
 	dodoc rfc/rfc*.txt
 }

@@ -1,6 +1,23 @@
 # ChangeLog for sec-policy/selinux-publicfile
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-publicfile/ChangeLog,v 1.1 2003/12/21 17:42:42 pebenito Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-publicfile/ChangeLog,v 1.1.1.1 2005/11/30 10:02:16 chriswhite Exp $
+
+  20 Jan 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-publicfile-20031221.ebuild, -selinux-publicfile-20041016.ebuild,
+  selinux-publicfile-20041121.ebuild:
+  mark stable
+
+*selinux-publicfile-20041121 (22 Nov 2004)
+
+  22 Nov 2004; petre rodan <kaiowas@gentoo.org>
+  +selinux-publicfile-20041121.ebuild:
+  added network-hooks related rules
+
+*selinux-publicfile-20041016 (24 Oct 2004)
+
+  24 Oct 2004; petre rodan <kaiowas@gentoo.org>
+  selinux-publicfile-20041016.ebuild:
+  mark stable
 
 *selinux-publicfile-20031221 (21 Dec 2003)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.2.10.ebuild,v 1.1 2004/11/23 20:12:22 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imapd/cyrus-imapd-2.2.10.ebuild,v 1.1.1.1 2005/11/30 10:03:21 chriswhite Exp $
 
 inherit eutils ssl-cert gnuconfig fixheadtails
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~amd64 ~ppc ~hppa"
+KEYWORDS="x86 sparc ~amd64 ~ppc hppa"
 IUSE="afs drac idled kerberos pam snmp ssl tcpd"
 
 PROVIDE="virtual/imapd"
@@ -19,7 +19,7 @@ RDEPEND=">=sys-libs/db-3.2
 	afs? ( >=net-fs/openafs-1.2.2 )
 	pam? ( >=sys-libs/pam-0.75 )
 	kerberos? ( virtual/krb5 )
-	snmp? ( virtual/snmp )
+	snmp? ( net-analyzer/net-snmp )
 	ssl? ( >=dev-libs/openssl-0.9.6 )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	drac? ( >=mail-client/drac-1.12-r1 )"
@@ -71,11 +71,8 @@ tcpd_flag_check() {
 }
 
 net-snmp_check() {
-	if has_version ucd-snmp; then
-		tcpd_flag_check net-analyzer/ucd-snmp
-	fi
 
-	if has_version net-snmp; then
+	if has_version net-analyzer/net-snmp; then
 		tcpd_flag_check net-analyzer/net-snmp
 		# check for minimal USE flag.
 		local has_minimal
@@ -227,11 +224,10 @@ src_install() {
 	find "${D}/usr/share/doc" -name CVS -print0 | xargs -0 rm -rf
 
 	insinto /etc
-	newins "${FILESDIR}/imapd.conf" imapd.conf
-	newins "${FILESDIR}/cyrus.conf" cyrus.conf
+	doins "${FILESDIR}/cyrus.conf" "${FILESDIR}/imapd.conf"
 
-	exeinto /etc/init.d
-	newexe "${FILESDIR}/cyrus.rc6" cyrus
+	newinitd "${FILESDIR}/cyrus.rc6" cyrus
+	newconfd "${FILESDIR}/cyrus.confd" cyrus
 
 	if use pam ; then
 		insinto /etc/pam.d

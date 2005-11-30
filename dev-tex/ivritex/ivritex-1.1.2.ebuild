@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ivritex-1.1.2.ebuild,v 1.1 2004/05/17 16:03:47 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ivritex-1.1.2.ebuild,v 1.1.1.1 2005/11/30 10:00:53 chriswhite Exp $
 
 inherit latex-package
 
@@ -15,7 +15,7 @@ LICENSE="LPPL-1.2"
 
 SLOT="0"
 DEPEND="virtual/tetex"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 
 src_install () {
 

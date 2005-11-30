@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gnumail/gnumail-1.2.0_pre20050414.ebuild,v 1.1 2005/04/15 05:09:36 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gnumail/gnumail-1.2.0_pre20050414.ebuild,v 1.1.1.1 2005/11/30 10:02:19 chriswhite Exp $
 
 ECVS_CVS_COMMAND="cvs -q"
 ECVS_SERVER="Sophos.ca:/opt/cvsroot"
@@ -22,12 +22,12 @@ KEYWORDS="~x86 ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="${IUSE} xface crypt emoticon"
+IUSE="crypt doc emoticon xface"
 DEPEND="${GS_DEPEND}
 	=gnustep-libs/pantomime-${PV}
 	gnustep-apps/addresses"
 RDEPEND="${GS_RDEPEND}
-	crypt? app-crypt/gnupg
+	crypt? ( app-crypt/gnupg )
 	=gnustep-libs/pantomime-${PV}
 	gnustep-apps/addresses"
 

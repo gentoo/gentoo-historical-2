@@ -1,23 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libshout/libshout-1.0.9.ebuild,v 1.1 2002/07/28 15:46:04 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libshout/libshout-1.0.9.ebuild,v 1.1.1.1 2005/11/30 10:03:42 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE=""
+
 DESCRIPTION="libshout is a library for connecting and sending data to icecast servers."
 SRC_URI="http://developer.icecast.org/libshout/releases/${P}.tar.gz"
 HOMEPAGE="http://developer.icecast.org/libshout/"
 
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 sparc ~ppc"
 LICENSE="GPL-2"
 
 DEPEND="sys-devel/gcc
-	virtual/glibc"
+	virtual/libc"
 
 src_compile() {
 	./configure --prefix=/usr \
 		--mandir=/usr/share/man || die
-		
+
 	emake || die
 }
 

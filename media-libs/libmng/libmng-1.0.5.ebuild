@@ -1,23 +1,22 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmng/libmng-1.0.5.ebuild,v 1.1 2003/06/22 19:21:39 raker Exp $
-
-S=${WORKDIR}/${P}
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmng/libmng-1.0.5.ebuild,v 1.1.1.1 2005/11/30 10:04:27 chriswhite Exp $
 
 DESCRIPTION="Multiple Image Networkgraphics lib (animated png's)"
-SRC_URI="http://download.sourceforge.net/libmng/${P}.tar.gz"
 HOMEPAGE="http://www.libmng.com/"
+SRC_URI="http://download.sourceforge.net/libmng/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa"
+SLOT="0"
+KEYWORDS="~x86 ~ppc ~sparc mips alpha arm ~hppa amd64 ia64 ppc64"
+IUSE=""
 
-DEPEND=">=media-libs/jpeg-6b 
-	>=sys-libs/zlib-1.1.4
+RDEPEND=">=media-libs/jpeg-6b
+	>=sys-libs/zlib-1.1.4"
+DEPEND="${RDEPEND}
 	>=media-libs/lcms-1.0.8"
 
 src_unpack() {
-
 	unpack ${A}
 	cd ${S}
 	cp libmng_types.h libmng_types.h.orig
@@ -27,22 +26,15 @@ src_unpack() {
 }
 
 src_compile() {
-
 	econf || die
-
 	make || die
-
 }
 
-src_install () {
+src_install() {
+	make DESTDIR=${D} install || die
 
-	make prefix=${D}/usr install || die
-
-	dodoc Changes LICENSE README*
+	dodoc Changes README*
 	dodoc doc/doc.readme doc/libmng.txt
-
 	doman doc/man/*
-
 	dohtml -r doc
-
 }

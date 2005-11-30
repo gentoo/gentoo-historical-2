@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gnome-speech/gnome-speech-0.3.9.ebuild,v 1.1 2005/11/15 16:00:34 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gnome-speech/gnome-speech-0.3.9.ebuild,v 1.1.1.1 2005/11/30 10:04:35 chriswhite Exp $
 
 inherit java-pkg gnome2
 

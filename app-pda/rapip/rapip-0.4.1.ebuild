@@ -1,21 +1,22 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/rapip/rapip-0.4.1.ebuild,v 1.1 2003/03/20 05:58:41 zwelch Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/rapip/rapip-0.4.1.ebuild,v 1.1.1.1 2005/11/30 10:02:21 chriswhite Exp $
 
-DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync. - KDE System Tray utility" 
+DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync. - KDE System Tray utility"
 HOMEPAGE="http://sourceforge.net/projects/synce/"
 SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
+IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	app-pda/synce-libsynce"
 
 src_compile() {
-	econf
-	emake || die 
+	econf || die "econf failed"
+	emake || die
 }
 
 src_install() {

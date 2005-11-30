@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/spacetripper-demo/spacetripper-demo-1.ebuild,v 1.1 2004/05/12 21:50:56 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/spacetripper-demo/spacetripper-demo-1.ebuild,v 1.1.1.1 2005/11/30 10:02:37 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 MY_P="spacetripperdemo"
 DESCRIPTION="hardcore arcade shoot-em-up"
@@ -11,29 +11,36 @@ SRC_URI="http://www.btinternet.com/%7Ebongpig/${MY_P}.sh"
 
 LICENSE="POMPOM"
 SLOT="0"
-KEYWORDS="-* x86"
+KEYWORDS="-* ~amd64 x86"
 IUSE=""
+
+dir=${GAMES_PREFIX_OPT}/${PN}
+Ddir=${D}/${dir}
 
 S=${WORKDIR}
 
+pkg_setup() {
+	check_license POMPOM
+	games_pkg_setup
+}
+
 src_unpack() {
-	check_license
 	unpack_makeself
 }
 
 src_install() {
-	local dir=${GAMES_PREFIX_OPT}/${PN}
-	dodir ${dir} ${GAMES_BINDIR}
-
-	cp -r preview run styles ${D}/${dir}/
-
-	exeinto ${dir}
+	exeinto "${dir}"
 	doexe bin/x86/*
-	dosed "s:XYZZY:${dir}:" ${dir}/${PN}
-	dosym ${dir}/spacetripperdemo ${GAMES_BINDIR}/${PN}
+	sed -i \
+		-e "s:XYZZY:${dir}:" "${Ddir}/${MY_P}" \
+		|| die "sed failed"
 
-	insinto ${dir}
+	insinto "${dir}"
+	doins -r preview run styles || die "doins failed"
 	doins README license.txt icon.xpm
+
+	dodir "${GAMES_BINDIR}"
+	dosym "${dir}/${MY_P}" "${GAMES_BINDIR}/${PN}"
 
 	prepgamesdirs
 }

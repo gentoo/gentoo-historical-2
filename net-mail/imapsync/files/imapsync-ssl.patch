@@ -4,7 +4,7 @@
 ---- imapsync	Fri Jul  9 11:08:43 2004
 +--- imapsync-ssl	Fri Jul  9 11:08:43 2004
  +++ imapsync-ssl	Tue Aug 31 12:13:06 2004
- @@ -33,9 +33,9 @@ $Revision: 1.1 $
+ @@ -33,9 +33,9 @@ $Revision: 1.1.1.1 $
     imapsync --help
 @@ -45,8 +45,8 @@
   $user2 || missing_option("--user2");

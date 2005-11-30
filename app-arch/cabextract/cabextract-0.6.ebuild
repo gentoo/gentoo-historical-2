@@ -1,25 +1,20 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/cabextract/cabextract-0.6.ebuild,v 1.1 2002/10/17 19:57:45 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/cabextract/cabextract-0.6.ebuild,v 1.1.1.1 2005/11/30 10:00:34 chriswhite Exp $
 
-S="${WORKDIR}/${P}"
 DESCRIPTION="Extracts files from Microsoft .cab files"
-SRC_URI="http://www.kyz.uklinux.net/downloads/${P}.tar.gz"
 HOMEPAGE="http://www.kyz.uklinux.net/cabextract.php3"
+SRC_URI="http://www.kyz.uklinux.net/downloads/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+SLOT="0"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64"
+IUSE=""
 
-DEPEND="virtual/glibc"
-
-src_compile() {
-	econf || die
-	emake || die
-}
+DEPEND="virtual/libc"
 
 src_install() {
-	dobin cabextract
+	dobin cabextract || die
 	doman cabextract.1
-	dodoc COPYING NEWS README TODO AUTHORS
+	dodoc NEWS README TODO AUTHORS
 }

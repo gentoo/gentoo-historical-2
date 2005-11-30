@@ -1,15 +1,16 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/nas/nas-1.6.ebuild,v 1.1 2003/02/03 18:43:12 jhhudso Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/nas/nas-1.6.ebuild,v 1.1.1.1 2005/11/30 10:04:17 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Network Audio System"
 SRC_URI="http://radscan.com/nas/${P}.src.tar.gz"
 HOMEPAGE="http://radscan.com/nas.html"
 
 SLOT="0"
 LICENSE="X11"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="x86 ~sparc ppc hppa alpha amd64 ia64 mips"
+
+IUSE=""
 
 # This is ridculuous, we only need xmkmf, but no other package
 # provides it. 20020607 (Seemant): Actually, the homepage says it needs
@@ -25,15 +26,15 @@ src_compile() {
 src_install () {
 	make DESTDIR=${D} install || die
 	make DESTDIR=${D} install.man || die
-	
-	for i in ${D}/usr/X11R6/man/man?/*.?x 
+
+	for i in ${D}/usr/X11R6/man/man?/*.?x
 	do
 		gzip -9 $i
 	done
-	
+
 	dodoc BUGS BUILDNOTES FAQ HISTORY README RELEASE TODO
 	mv ${D}/usr/X11R6/lib/X11/doc/html ${D}/usr/share/doc/${P}/
 	rmdir ${D}/usr/X11R6/lib/X11/doc
-	
-	
+
+
 }

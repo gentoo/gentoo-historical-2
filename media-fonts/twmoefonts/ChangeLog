@@ -1,6 +1,36 @@
 # ChangeLog for media-fonts/twmoefonts
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/twmoefonts/ChangeLog,v 1.1 2003/06/02 13:47:47 seemant Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/twmoefonts/ChangeLog,v 1.1.1.1 2005/11/30 10:01:30 chriswhite Exp $
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  twmoefonts-0.1-r1.ebuild:
+  Stable on sparc
+
+  13 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  twmoefonts-0.1-r1.ebuild:
+  Stable on amd64.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> twmoefonts-0.1-r1.ebuild:
+  Stable on x86, alpha and ppc.
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> twmoefonts-0.1-r1.ebuild,
+  twmoefonts-0.1.ebuild:
+  Typo in DESCRIPTION: tranditional -> traditional. Bug 59717.
+
+  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> twmoefonts-0.1-r1.ebuild:
+  Marked ~amd64.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  twmoefonts-0.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+*twmoefonts-0.1-r1 (22 Jun 2004)
+
+  22 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +twmoefonts-0.1-r1.ebuild:
+  font.eclassify
+
+  03 May 2004; David Holm <dholm@gentoo.org> twmoefonts-0.1.ebuild:
+  Added to ~ppc.
 
 *twmoefonts-0.1 (02 Jun 2003)
 

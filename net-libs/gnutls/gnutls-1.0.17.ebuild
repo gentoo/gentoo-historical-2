@@ -1,31 +1,28 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.0.17.ebuild,v 1.1 2004/08/04 13:32:56 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.0.17.ebuild,v 1.1.1.1 2005/11/30 10:02:51 chriswhite Exp $
 
-inherit eutils
+inherit eutils gnuconfig
 
 DESCRIPTION="A TLS 1.0 and SSL 3.0 implementation for the GNU project"
 HOMEPAGE="http://www.gnutls.org/"
 SRC_URI="ftp://ftp.gnutls.org/pub/gnutls/${P}.tar.bz2"
 
-IUSE="zlib doc crypt"
-LICENSE="LGPL-2.1 | GPL-2"
 # GPL-2 for the gnutls-extras library and LGPL for the gnutls library.
-
+LICENSE="|| ( LGPL-2.1 GPL-2 )"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~sparc ~ppc ~mips ~alpha ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="zlib doc crypt"
 
 RDEPEND=">=dev-libs/libgcrypt-1.1.94
-	crypt? ( >=app-crypt/opencdk-0.5.3 )
+	crypt? ( >=app-crypt/opencdk-0.5.5 )
 	zlib? ( >=sys-libs/zlib-1.1 )
-	virtual/libc"
+	virtual/libc
+	dev-libs/libgpg-error"
 
 # Need masking on ~amd64 ~sparc ~ppc ~mips ~alpha
 #	>=dev-libs/libtasn1-0.2
 #	>=dev-libs/lzo-1.0"
-
-# should be crypt? ( >=app-crypt/opencdk-0.5.5 ) however I did see the source for it
-# ^^ this is what configure expects.
 
 DEPEND="${RDEPEND}
 	sys-apps/gawk
@@ -40,10 +37,13 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}/includes/gnutls; epatch ${FILESDIR}/${PN}-1.0.14-extra.h.patch
+	cd ${S}/includes/gnutls; epatch ${FILESDIR}/${P}-extra.h.patch
 }
 
 src_compile() {
+	# Needed for mips and probablly others
+	gnuconfig_update
+
 	#   I think this vvv gets ignored if not present
 	local myconf="--without-included-libtasn1 --without-included-opencdk"
 
@@ -52,7 +52,7 @@ src_compile() {
 
 	econf  \
 		`use_with zlib` \
-		--with-included-minilzo \
+		--with-included-lzo \
 		--with-included-libtasn1 \
 		${myconf} || die
 	emake || die
@@ -72,4 +72,23 @@ src_install() {
 		docinto examples
 		dodoc doc/examples/*.c
 	fi
+}
+
+pkg_postinst() {
+	ewarn "An API has changed in gnutls. This is why the library has gone from "
+	ewarn "libgnutls.so.10 to libgnutls.so.11."
+	ewarn
+	ewarn "What is required is a revdep-rebuild."
+	ewarn "To show you what is needed to rebuild"
+	ewarn "revdep-rebuild --soname libgnutls.so.10 -- -p"
+	ewarn ""
+	ewarn "Then do:"
+	ewarn "revdep-rebuild --soname libgnutls.so.10"
+	einfo ""
+	einfo "Afterward just try:"
+	einfo "revdep-rebuild -- -p"
+	einfo "to see if there are any other packages broken."
+	einfo "To rebuild these:"
+	einfo "revdep-rebuild"
+
 }

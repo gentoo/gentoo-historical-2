@@ -1,6 +1,130 @@
 # ChangeLog for app-admin/prelude-manager
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/prelude-manager/ChangeLog,v 1.1 2003/06/21 17:09:01 solar Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/prelude-manager/ChangeLog,v 1.1.1.1 2005/11/30 09:59:58 chriswhite Exp $
+
+  12 Nov 2005; <soulse@gentoo.org> prelude-manager-0.9.0.ebuild:
+  Fixed ebuild as per bug #104704 thanks to tigger^ and Peter Fern
+  <gentoo@obfusc8.org>
+
+  25 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  prelude-manager-0.9.0.ebuild:
+  Depend on >=dev-libs/libprelude-0.9.0.
+
+*prelude-manager-0.9.0 (23 Sep 2005)
+
+  23 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -prelude-manager-0.9.0_rc7.ebuild, -prelude-manager-0.9.0_rc8.ebuild,
+  +prelude-manager-0.9.0.ebuild:
+  Version bump.
+
+  07 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  prelude-manager-0.9.0_rc8.ebuild:
+  Added ~amd64 keyword.
+
+  07 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  prelude-manager-0.8.10.ebuild:
+  Added ~amd64 keyword.
+
+  01 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  prelude-manager-0.8.10.ebuild:
+  Depend on <dev-libs/libprelude-0.9.0_rc1. Fixes bug 104502. Thanks to Eric
+  Ireland <Artanin@gmail.com>.
+
+*prelude-manager-0.9.0_rc8 (19 Aug 2005)
+
+  19 Aug 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -prelude-manager-0.9.0_rc6.ebuild, +prelude-manager-0.9.0_rc8.ebuild:
+  Version bump.
+
+*prelude-manager-0.9.0_rc7 (03 Aug 2005)
+
+  03 Aug 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +prelude-manager-0.9.0_rc7.ebuild:
+  Version bump.
+
+  29 Jul 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -prelude-manager-0.9.0_rc5.ebuild:
+  Removing old version.
+
+  02 Jul 2005; David Holm <dholm@gentoo.org>
+  prelude-manager-0.9.0_rc6.ebuild:
+  Added to ~ppc.
+
+*prelude-manager-0.9.0_rc6 (01 Jul 2005)
+
+  01 Jul 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +prelude-manager-0.9.0_rc6.ebuild:
+  Version bump.
+
+  30 Jun 2005; Aaron Walker <ka0ttic@gentoo.org>
+  prelude-manager-0.9.0_rc5.ebuild:
+  keepdir /var/lib/spool/prelude-manager, bug 94740.
+
+*prelude-manager-0.9.0_rc5 (26 May 2005)
+
+  26 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -prelude-manager-0.9.0_rc4.ebuild, +prelude-manager-0.9.0_rc5.ebuild:
+  Version bump.
+
+  17 May 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -prelude-manager-0.9.0_rc3.ebuild, prelude-manager-0.9.0_rc4.ebuild:
+  Drop ssl, mysql and postgresql use flags, add dbx use flag for libpreludedb
+  and xml use flag. Thanks to Yoann Vandoorselaere <yoann@prelude-ids.org>. See
+  bug 87408.
+
+*prelude-manager-0.9.0_rc4 (14 May 2005)
+
+  14 May 2005; Marcelo Goes <vanquirius@gentoo.org>
+  -prelude-manager-0.9.0_rc1.ebuild, +prelude-manager-0.9.0_rc4.ebuild:
+  Version bump.
+
+*prelude-manager-0.9.0_rc3 (07 May 2005)
+
+  07 May 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +prelude-manager-0.9.0_rc3.ebuild:
+  Version bump.
+
+*prelude-manager-0.9.0_rc1 (01 Apr 2005)
+
+  01 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +prelude-manager-0.9.0_rc1.ebuild:
+  Version bump, bug 87408. Thanks Carlos Silva <r3pek@gentoo.org>.
+
+  04 Aug 2004; Jon Hood <squinky86@gentoo.org> prelude-manager-0.8.10.ebuild:
+  Fix typo, #58638, thanks steveb <tp22a@softhome.net>.
+
+  17 Apr 2004; Jason Wever <weeve@gentoo.org> prelude-manager-0.8.10.ebuild:
+  Stable on sparc.
+
+  18 Mar 2004; Jason Wever <weeve@gentoo.org> prelude-manager-0.8.10.ebuild:
+  Added ~sparc keyword.
+
+  17 Jan 2004; Michael Boman <mboman@gentoo.org> files/gentoo.init:
+  Made init script less verbose
+
+*prelude-manager-0.8.10 (17 Dec 2003)
+
+  17 Dec 2003; Michael Boman <mboman@gentoo.org>
+  prelude-manager-0.8.10.ebuild:
+  New upstream version.
+
+*prelude-manager-0.8.9 (17 Nov 2003)
+
+  17 Nov 2003; Michael Boman <mboman@gentoo.org> prelude-manager-0.8.9.ebuild:
+  New upstream version.
+  Added "debug" USE flag to faciliate debugging.
+
+*prelude-manager-0.8.8 (14 Oct 2003)
+
+  14 Oct 2003; <solar@gentoo.org> metadata.xml, prelude-manager-0.8.8.ebuild:
+  prelude updates. contribution made by anonymous user
+
+  08 Jul 2003; <solar@gentoo.org> metadata.xml:
+  Added metadata.xml
+
+  30 Jun 2003; <solar@gentoo.org> prelude-manager-0.8.7.ebuild:
+  small fix for -doc,-ssl,-postgres,-mysql option were used. No revision bump
+  needed
 
 *prelude-manager-0.8.7 (21 Jun 2003)
 

@@ -1,122 +1,93 @@
-" Configuration file for gvim
-" Written for Debian GNU/Linux by W.Akkerman <wakkerma@debian.org>
-" Some modifications by J.H.M. Dassen <jdassen@wi.LeidenUniv.nl>
+" Default configuration file for Vim
+" Written by Aron Griffis <agriffis@gentoo.org>
+" Modified by Ryan Phillips <rphillips@gentoo.org>
+" Added Redhat's vimrc info by Seemant Kulleen <seemant@gentoo.org>
+
+" The following are some sensible defaults for Vim for most users.
+" We attempt to change as little as possible from Vim's defaults,
+" deviating only where it makes sense
+set nocompatible		" Use Vim defaults (much better!)
+set bs=2				" Allow backspacing over everything in insert mode
+set ai					" Always set auto-indenting on
+"set backup				" Keep a backup file
+set viminfo='20,\"50	" read/write a .viminfo file -- limit to only 50
+set history=50			" keep 50 lines of command history
+set ruler				" Show the cursor position all the time
 
 
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
-set nocompatible        " Use Vim defaults (much better!)
-set backspace=2         " allow backspacing over everything in insert mode
-" Now we set some defaults for the editor
-set autoindent          " always set autoindenting on
-set textwidth=0         " Don't wrap words by default
-set nobackup            " Don't keep a backup file
-set viminfo='20,\"50    " read/write a .viminfo file, don't store more than
-                        " 50 lines of registers
-set history=50          " keep 50 lines of command line history
-set ruler               " show the cursor position all the time
+" Added to default to high security within Gentoo. Fixes bug #14088
+set modelines=0
 
-" Suffixes that get lower priority when doing tab completion for filenames.
-" These are files we are not likely to want to edit or read.
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-
-" We know xterm-debian is a color terminal
-if &term =~ "xterm-debian" || &term =~ "xterm-xfree86"
-  set t_Co=16
-  set t_Sf=[3%dm
-  set t_Sb=[4%dm
+if v:lang =~ "^ko"
+   set fileencodings=euc-kr
+   set guifontset=-*-*-medium-r-normal--16-*-*-*-*-*-*-*
+elseif v:lang =~ "^ja_JP"
+   set fileencodings=euc-jp
+   set guifontset=-misc-fixed-medium-r-normal--14-*-*-*-*-*-*-*
+elseif v:lang =~ "^zh_TW"
+   set fileencodings=big5
+   set guifontset=-sony-fixed-medium-r-normal--16-150-75-75-c-80-iso8859-1,-taipei-fixed-medium-r-normal--16-150-75-75-c-160-big5-0
+elseif v:lang =~ "^zh_CN"
+   set fileencodings=gb2312
+   set guifontset=*-r-*
+endif
+if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
+   set fileencodings=utf-8,latin1
 endif
 
-" Vim5 comes with syntaxhighlighting. If you want to enable syntaxhightlighting
-" by default uncomment the next three lines.
-"if has("syntax")
-"  syntax on            " Default to no syntax highlightning
-"endif
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+  " In text files, always limit the width of text to 78 characters
+  autocmd BufRead *.txt set tw=78
+  " When editing a file, always jump to the last cursor position
+  autocmd BufReadPost *
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal g'\"" |
+  \ endif
+endif
 
-" Debian uses compressed helpfiles. We must inform vim that the main
-" helpfiles is compressed. Other helpfiles are stated in the tags-file.
-set helpfile=$VIMRUNTIME/doc/help.txt
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+if &term=="xterm"
+     set t_RV=			" don't check terminal version
+     set t_Co=8
+     set t_Sb=^[4%dm
+     set t_Sf=^[3%dm
+endif
 
 if has("autocmd")
 
-" Set some sensible defaults for editing C-files
-augroup cprog
-  " Remove all cprog autocommands
-  au!
-
-  " When starting to edit a file:
-  "   For *.c and *.h files set formatting of comments and set C-indenting on.
-  "   For other files switch it off.
-  "   Don't change the order, it's important that the line with * comes first.
-  autocmd BufRead *       set formatoptions=tcql nocindent comments&
-  autocmd BufRead *.c,*.h set formatoptions=croql cindent comments=sr:/*,mb:*,el:*/,://
+" Gentoo-specific settings for ebuilds.  These are the federally-mandated
+" required tab settings.  See the following for more information:
+" http://www.gentoo.org/doc/en/xml/gentoo-howto.xml
+augroup gentoo
+	au!
+	au BufRead,BufNewFile *.ebuild set tabstop=4 shiftwidth=4 noexpandtab
 augroup END
 
-" Also, support editing of gzip-compressed files. DO NOT REMOVE THIS!
-" This is also used when loading the compressed helpfiles.
-augroup gzip
-  " Remove all gzip autocommands
-  au!
+endif " has("autocmd")
 
-  " Enable editing of gzipped files
-  "       read: set binary mode before reading the file
-  "             uncompress text in buffer after reading
-  "      write: compress file after writing
-  "     append: uncompress file, append, compress file
-  autocmd BufReadPre,FileReadPre        *.gz set bin
-  autocmd BufReadPre,FileReadPre        *.gz let ch_save = &ch|set ch=2
-  autocmd BufReadPost,FileReadPost      *.gz '[,']!gunzip
-  autocmd BufReadPost,FileReadPost      *.gz set nobin
-  autocmd BufReadPost,FileReadPost      *.gz let &ch = ch_save|unlet ch_save
-  autocmd BufReadPost,FileReadPost      *.gz execute ":doautocmd BufReadPost " . expand("%:r")
-
-  autocmd BufWritePost,FileWritePost    *.gz !mv <afile> <afile>:r
-  autocmd BufWritePost,FileWritePost    *.gz !gzip <afile>:r
-
-  autocmd FileAppendPre                 *.gz !gunzip <afile>
-  autocmd FileAppendPre                 *.gz !mv <afile>:r <afile>
-  autocmd FileAppendPost                *.gz !mv <afile> <afile>:r
-  autocmd FileAppendPost                *.gz !gzip <afile>:r
-augroup END
-
-augroup bzip2
-  " Remove all bzip2 autocommands
-  au!
-
-  " Enable editing of bzipped files
-  "       read: set binary mode before reading the file
-  "             uncompress text in buffer after reading
-  "      write: compress file after writing
-  "     append: uncompress file, append, compress file
-  autocmd BufReadPre,FileReadPre        *.bz2 set bin
-  autocmd BufReadPre,FileReadPre        *.bz2 let ch_save = &ch|set ch=2
-  autocmd BufReadPost,FileReadPost      *.bz2 |'[,']!bunzip2
-  autocmd BufReadPost,FileReadPost      *.bz2 let &ch = ch_save|unlet ch_save
-  autocmd BufReadPost,FileReadPost      *.bz2 execute ":doautocmd BufReadPost " . expand("%:r")
-
-  autocmd BufWritePost,FileWritePost    *.bz2 !mv <afile> <afile>:r
-  autocmd BufWritePost,FileWritePost    *.bz2 !bzip2 <afile>:r
-
-  autocmd FileAppendPre                 *.bz2 !bunzip2 <afile>
-  autocmd FileAppendPre                 *.bz2 !mv <afile>:r <afile>
-  autocmd FileAppendPost                *.bz2 !mv <afile> <afile>:r
-  autocmd FileAppendPost                *.bz2 !bzip2 -9 --repetitive-best <afile>:r
-augroup END
-
-endif " has ("autocmd")
-
-" Some Debian-specific things
-augroup filetype
-  au BufRead reportbug.*                set ft=mail
-augroup END
-
-" The following are commented out as they cause vim to behave a lot
-" different from regular vi. They are highly recommended though.
-"set showcmd            " Show (partial) command in status line.
-"set showmatch          " Show matching brackets.
-"set ignorecase         " Do case insensitive matching
-"set incsearch          " Incremental search
-"set autowrite          " Automatically save before commands like :next and :make
-
-
+" some extra commands for HTML editing
+nmap ,mh wbgueyei<<ESC>ea></<ESC>pa><ESC>bba
+nmap ,h1 _i<h1><ESC>A</h1><ESC>
+nmap ,h2 _i<h2><ESC>A</h2><ESC>
+nmap ,h3 _i<h3><ESC>A</h3><ESC>
+nmap ,h4 _i<h4><ESC>A</h4><ESC>
+nmap ,h5 _i<h5><ESC>A</h5><ESC>
+nmap ,h6 _i<h6><ESC>A</h6><ESC>
+nmap ,hb wbi<b><ESC>ea</b><ESC>bb
+nmap ,he wbi<em><ESC>ea</em><ESC>bb
+nmap ,hi wbi<i><ESC>ea</i><ESC>bb
+nmap ,hu wbi<u><ESC>ea</i><ESC>bb
+nmap ,hs wbi<strong><ESC>ea</strong><ESC>bb
+nmap ,ht wbi<tt><ESC>ea</tt><ESC>bb
+nmap ,hx wbF<df>f<df>
 

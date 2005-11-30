@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.11.8-r1.ebuild,v 1.1 2004/09/23 09:32:59 sejo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/pilot-link/pilot-link-0.11.8-r1.ebuild,v 1.1.1.1 2005/11/30 10:02:21 chriswhite Exp $
 
 inherit perl-module eutils
 
@@ -8,9 +8,9 @@ DESCRIPTION="suite of tools for moving data between a Palm device and a desktop"
 HOMEPAGE="http://www.pilot-link.org/"
 SRC_URI="http://pilot-link.org/source/${P}.tar.bz2"
 
-LICENSE="GPL-2 | LGPL-2"
+LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="perl java tcltk python png readline"
 
 DEPEND="virtual/libc
@@ -24,15 +24,28 @@ DEPEND="virtual/libc
 
 src_unpack() {
 	unpack ${A}
-	if use java && use ppc; then
-		epatch ${FILESDIR}/${P}-javappc.patch
-	else
-		epatch ${FILESDIR}/${P}-javapath.patch
+	cd "${S}"
+
+	epatch ${FILESDIR}/${P}-java_fPIC_fix.patch
+
+	if use java; then
+		if use ppc; then
+			epatch ${FILESDIR}/${P}-java_install_ppc.patch
+		elif use amd64; then
+			epatch ${FILESDIR}/${P}-java_install_amd64.patch
+		else
+			epatch ${FILESDIR}/${P}-java_install_all.patch
+		fi
 	fi
+
+	epatch "${FILESDIR}"/${P}-m4.patch
+
+	# bug #62873
+	cd ${S}/libpisock; epatch ${FILESDIR}/${P}-netsync.patch
 }
 
 src_compile() {
-	local myconf="--with-gnu-ld --includedir=/usr/include/libpisock"
+	local myconf="--includedir=/usr/include/libpisock"
 
 	use java \
 		&& myconf="${myconf} --with-java=yes" \

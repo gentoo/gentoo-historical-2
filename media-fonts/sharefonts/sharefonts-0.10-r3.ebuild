@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/sharefonts/sharefonts-0.10-r3.ebuild,v 1.1 2004/05/31 15:38:44 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/sharefonts/sharefonts-0.10-r3.ebuild,v 1.1.1.1 2005/11/30 10:01:26 chriswhite Exp $
 
 inherit font
 
@@ -9,10 +9,12 @@ SRC_URI="mirror://gimp/fonts/${P}.tar.gz"
 HOMEPAGE="http://www.gimp.org/"
 LICENSE="public-domain"
 
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="x86 sparc ppc amd64 alpha ppc64"
+IUSE=""
 SLOT="0"
 
-S=${WORKDIR}/sharefont
+FONT_S=${WORKDIR}/sharefont
+S=${FONT_S}
 
 FONT_SUFFIX="pfb"
 

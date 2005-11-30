@@ -4,5 +4,23 @@
 	<longdescription lang="en">
 		The net-libs category contains libraries which are network-related.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-libs enthält Bibliotheken zur Netzwerkprogrammierung.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-libs contiene librerías relacionadas con las redes.
+	</longdescription>
+	<longdescription lang="ja">
+		net-libsカテゴリーにはネットワーク関連のライブラリが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-libs categorie bevat bibliotheken voor netwerk-gebruik.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-libs chứa các thư viện về mạng.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-libs contiene librerie per le reti.
+	</longdescription>
 </catmetadata>
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-kde/synce-kde-0.8.0.ebuild,v 1.1.1.1 2005/11/30 10:02:25 chriswhite Exp $
 
 inherit kde
 
@@ -9,11 +9,11 @@ AGVER="agsync-0.2-pre"
 DESCRIPTION="Synchronize Windows CE devices with Linux.  KDE System Tray utility"
 HOMEPAGE="http://synce.sourceforge.net/synce/kde/"
 SRC_URI="mirror://sourceforge/synce/${P}.tar.gz
-	avantgo? (http://www.mechlord.ca/%7Elownewulf/${AGVER}.tgz)"
+	avantgo? ( http://www.mechlord.ca/%7Elownewulf/${AGVER}.tgz )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="avantgo"
 
 DEPEND=">=app-pda/synce-libsynce-0.9

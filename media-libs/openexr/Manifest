@@ -1,5 +1,20 @@
-MD5 b3e922da309217794d1bf4bd4909eb2e ChangeLog 355
-MD5 dffd46174e78b327c834fc3e4b1cf848 metadata.xml 160
-MD5 658ac93bec38439b551ee91a64bd32f7 openexr-1.0.6.ebuild 750
-MD5 1b4be24d1142935a598e5ce3580ad8af files/openexr-1.0.6-gentoo.patch 954
-MD5 5c15fc8183a5c726df8c76d20689bfb6 files/digest-openexr-1.0.6 66
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 42bc823bb4d3bb80a755861bedc0902c ChangeLog 3783
+MD5 21ea9ea0c3fabd1e25cd34b7de57dc62 files/digest-openexr-1.0.7 66
+MD5 ae16061f11f8add38c447314c0f8724c files/digest-openexr-1.2.2 66
+MD5 ae16061f11f8add38c447314c0f8724c files/digest-openexr-1.2.2-r1 66
+MD5 dd45e17d712e65d12cb5a8cb704fc11c files/openexr-1.0.7-gentoo.patch 993
+MD5 bc17a0faf5bb747f36271992bc598a15 files/openexr-1.2.2-gcc4.patch 311
+MD5 7300a7b361fa9f48e37722c6952bd432 metadata.xml 158
+MD5 6f69b195aab90aaa3d98f058bc0f584d openexr-1.0.7.ebuild 1006
+MD5 cf302ab9e9b6094b081093ae2a12aa51 openexr-1.2.2-r1.ebuild 1661
+MD5 c9c0d28408bc3c035ac3d1de86ea72ac openexr-1.2.2.ebuild 1005
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDWsQ5r2QksT29OyARAnzcAJ0YM+zPde7QU/WbCC0w0l0AXXKVlgCfc8ci
+OMAnWc/9yIHoztGzqHPwU+g=
+=E2o8
+-----END PGP SIGNATURE-----

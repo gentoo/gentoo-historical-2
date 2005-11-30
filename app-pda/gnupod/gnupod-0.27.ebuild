@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnupod/gnupod-0.27.ebuild,v 1.1 2003/03/20 04:37:00 zwelch Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnupod/gnupod-0.27.ebuild,v 1.1.1.1 2005/11/30 10:02:25 chriswhite Exp $
 
 DESCRIPTION="Tools for updating your iPod"
 
@@ -10,7 +10,7 @@ SRC_URI="http://blinkenlights.ch/gnupod/${PN}-tools-${PV}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ppc"
+KEYWORDS="~x86 ppc ~amd64"
 
 IUSE=""
 
@@ -59,5 +59,5 @@ src_install() {
 
 	dodoc CHANGES
 	cd ${S}/doc
-	dodoc gnupod.html gnutunesdb.example 
+	dodoc gnupod.html gnutunesdb.example
 }

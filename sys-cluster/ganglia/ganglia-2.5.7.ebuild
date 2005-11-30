@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/ganglia-2.5.7.ebuild,v 1.1 2005/07/28 23:20:38 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/ganglia/ganglia-2.5.7.ebuild,v 1.1.1.1 2005/11/30 10:01:41 chriswhite Exp $
 
 MY_P=ganglia-monitor-core-${PV}
 DESCRIPTION="Ganglia is a scalable distributed monitoring system for high-performance computing systems such as clusters and Grids"

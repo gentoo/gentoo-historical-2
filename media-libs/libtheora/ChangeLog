@@ -1,6 +1,138 @@
 # ChangeLog for media-libs/libtheora
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libtheora/ChangeLog,v 1.1 2004/02/24 19:12:28 mholzer Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libtheora/ChangeLog,v 1.1.1.1 2005/11/30 10:04:12 chriswhite Exp $
+
+*libtheora-1.0_alpha5 (21 Aug 2005)
+
+  21 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
+  +libtheora-1.0_alpha5.ebuild:
+  New version
+
+  23 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  -libtheora-1.0_alpha4.ebuild:
+  alpha4.ebuild has a broken encoder
+
+*libtheora-1.0_alpha4-r1 (23 Jun 2005)
+
+  23 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
+  +files/libtheora-1.0_alpha4-enable-flags.patch,
+  +libtheora-1.0_alpha4-r1.ebuild:
+  fix stupid upstream configure, enable-encode disables encoder. Thanks bilboed
+  for the patch, also been committed upstream in cvs
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  Add ~alpha keyword.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  Stable on ppc64
+
+  21 May 2005; Jason Wever <weeve@gentoo.org> libtheora-1.0_alpha4.ebuild:
+  Stable on SPARC.
+
+  21 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  Stable on hppa
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  stable on ia64
+
+  05 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -libtheora-1.0_alpha2.ebuild, -libtheora-1.0_alpha2-r1.ebuild,
+  libtheora-1.0_alpha4.ebuild:
+  stable on amd64 and x86
+
+  28 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  Got rid of incorrect pic USE flag usage.
+
+  22 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  applied patch which was suggested by Diego Pettenò
+  <dgp85@users.sourceforge.net>. fixes #82745
+
+  07 Feb 2005; Chris White <chriswhite@gentoo.org>
+  libtheora-1.0_alpha3.ebuild, libtheora-1.0_alpha4.ebuild:
+  Fixing bug #75403.
+
+  04 Jan 2005; Hardave Riar <hardave@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Stable on mips, dep of bug #74475.
+
+  01 Jan 2005; John Mylchreest <johnm@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  Update to bug #76290, fixes access violation
+
+  01 Jan 2005; Chris White <chriswhite@gentoo.org>
+  libtheora-1.0_alpha4.ebuild:
+  Fixed bug #76290 with ${D}/${D}.
+
+*libtheora-1.0_alpha4 (01 Jan 2005)
+
+  01 Jan 2005; Chris White <chriswhite@gentoo.org>
+  +libtheora-1.0_alpha4.ebuild:
+  Fixed bug #76281 for libtheora alpha4 update. Thanks to Matsuu Takuto for
+  putting a diff up.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Oct 2004; Kito <kito@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  added ~ppc-macos. closes bug 67560
+
+  23 Aug 2004; Hardave Riar <hardave@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Added ~mips keyword.
+
+  28 Jul 2004; Tom Gall <tgall@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  stable on ppc64, bug #55076
+
+  27 May 2004; Guy Martin <gmsoft@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Marked stable on hppa.
+
+  26 Apr 2004; Brandon Hale <tseng@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Stable on x86.
+
+  26 Apr 2004; David Holm <dholm@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Stable on ppc.
+
+  17 Apr 2004; Jason Wever <weeve@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Stable on sparc.
+
+  17 Apr 2004; Bryan Østergaard <kloeri@gentoo.org>
+  libtheora-1.0_alpha3.ebuild:
+  Stable on Alpha.
+
+  17 Apr 2004; Travis Tilley <lv@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  stable on amd64
+
+  07 Apr 2004; Aron Griffis <agriffis@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Add ~alpha per bug 46903
+
+  21 Mar 2004; Jason Wever <weeve@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Added ~sparc keyword.
+
+*libtheora-1.0_alpha3 (21 Mar 2004)
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> libtheora-1.0_alpha3.ebuild:
+  Version bumped. Closes 42807
+
+*libtheora-1.0_alpha2-r1 (21 Mar 2004)
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org>
+  libtheora-1.0_alpha2-r1.ebuild:
+  should fix problems with build and install.
+
+  18 Mar 2004; Patrick Kursawe <phosphan@gentoo.org>
+  libtheora-1.0_alpha2.ebuild:
+  Added another SRC_URI because of bug #44758
+
+  25 Feb 2004; David Holm <dholm@gentoo.org> libtheora-1.0_alpha2.ebuild:
+  Added to ~ppc.
 
 *libtheora-1.0_alpha2 (24 Feb 2004)
 

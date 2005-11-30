@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gnome-system-tools/gnome-system-tools-1.2.0-r1.ebuild,v 1.1 2005/06/05 16:09:08 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gnome-system-tools/gnome-system-tools-1.2.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:00:09 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -9,11 +9,11 @@ HOMEPAGE="http://www.gnome.org/projects/gst/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~ppc64 ~ia64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="nfs samba"
 
 RDEPEND="net-misc/openssh
-	sys-apps/shadow
+	userland_GNU? ( sys-apps/shadow )
 	>=x11-libs/gtk+-2.6
 	>=gnome-base/libgnomeui-2.9.0
 	>=gnome-base/libglade-2.4
@@ -40,9 +40,9 @@ if ! use nfs && ! use samba; then
 	G2CONF="${G2CONF} --disable-shares"
 fi
 
-src_compile() {
+src_install() {
 
 	# fix sandboxing (#92920)
-	gnome2_src_compile scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/
+	gnome2_src_install scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/
 
 }

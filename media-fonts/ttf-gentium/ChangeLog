@@ -1,6 +1,24 @@
 # ChangeLog for media-fonts/ttf-gentium
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/ttf-gentium/ChangeLog,v 1.1 2004/07/05 06:51:09 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/ttf-gentium/ChangeLog,v 1.1.1.1 2005/11/30 10:01:26 chriswhite Exp $
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ttf-gentium-1.0.1.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ttf-gentium-1.0.1.ebuild:
+  Added ~sparc
+
+  03 Jan 2005; Markus Rothe <corsair@gentoo.org> ttf-gentium-1.0.1.ebuild:
+  Stable on ppc64
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> ttf-gentium-1.0.1.ebuild:
+  Stable on x86, alpha and ppc. Changed HOMEPAGE and LICENSE;
+  suggested by gna <gnagent2@yahoo.com.au>, bug #63402.
+
+  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> ttf-gentium-1.0.1.ebuild:
+  Marked ~amd64.
 
 *ttf-gentium-1.0.1 (05 Jul 2004)
 

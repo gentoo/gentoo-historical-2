@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/wakkabox/wakkabox-1.1.0.ebuild,v 1.1 2003/09/10 06:36:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/wakkabox/wakkabox-1.1.0.ebuild,v 1.1.1.1 2005/11/30 10:02:28 chriswhite Exp $
 
 inherit games
 
@@ -9,14 +9,14 @@ HOMEPAGE="http://kenn.frap.net/wakkabox/"
 SRC_URI="http://kenn.frap.net/wakkabox/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
 SLOT="0"
+KEYWORDS="ppc x86"
 IUSE=""
 
-DEPEND=">=libsdl-1.0.1"
+DEPEND=">=media-libs/libsdl-1.0.1"
 
 src_install() {
-	egamesinstall || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS NEWS README
 	prepgamesdirs
 }

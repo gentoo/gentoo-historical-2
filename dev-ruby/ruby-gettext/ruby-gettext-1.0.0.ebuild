@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gettext/ruby-gettext-1.0.0.ebuild,v 1.1 2005/09/23 01:55:52 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gettext/ruby-gettext-1.0.0.ebuild,v 1.1.1.1 2005/11/30 10:01:23 chriswhite Exp $
 
 inherit ruby gems
 

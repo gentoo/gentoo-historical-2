@@ -2,7 +2,7 @@
 ##
 ## Gentoo system tcsh scripts
 ##
-## $Id: tcsh-bindkey,v 1.1 2003/01/25 19:59:15 alain Exp $
+## $Id: tcsh-bindkey,v 1.1.1.1 2005/11/30 10:00:19 chriswhite Exp $
 ##
 ## Based on the TCSHRC package (http://tcshrc.sourceforge.net)
 ##

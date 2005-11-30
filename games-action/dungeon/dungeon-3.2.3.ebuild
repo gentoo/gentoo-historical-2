@@ -1,44 +1,49 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/dungeon/dungeon-3.2.3.ebuild,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/dungeon/dungeon-3.2.3.ebuild,v 1.1.1.1 2005/11/30 10:02:40 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="A linux port of the Dungeon game once distributed by DECUS"
 HOMEPAGE="http://www.ibiblio.org/linsearch/lsms/dungeon-3.2.3.html"
 SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/games/textrpg/${P}.src.tar.gz"
+
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="ppc x86"
 IUSE=""
-DEPEND="dev-lang/f2c
-	>=sys-apps/sed-4"
 
-S="${WORKDIR}/dungn32c"
+DEPEND="dev-lang/f2c"
 
-DATS="${GAMES_DATADIR}/${PN}"
+S=${WORKDIR}/dungn32c
+DATS=${GAMES_DATADIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	sed -i -e "s:-O:${CFLAGS}:g" Makefile || die "sed Makefile failed"
+	cd "${S}"
+	epatch "${FILESDIR}/${P}-makefile.patch"
 }
 
 src_compile() {
-	make game.c || die "make game.c failed"
+	local f
+
+	# f2c steps on itself
+	for f in *.f
+	do
+		emake ${f/.f/.c} || die "emake failed"
+	done
 	sed -i \
 		-re "s:d(indx|text).dat:${DATS}/&:g" \
 		-e "s:ofnmlen = [^;]+:&+${#DATS}+1:g" \
 		game.c || die "sed game.c failed"
-
-	emake || die
+	emake || die "emake failed"
 }
 
 src_install() {
-	dogamesbin dungeon
-	insinto ${DATS}
-	doins dindx.dat dtext.dat
-	doman ${FILESDIR}/dungeon.6
+	dogamesbin dungeon || die "dogamesbin failed"
+	insinto "${DATS}"
+	doins dindx.dat dtext.dat || die "doins failed"
+	doman "${FILESDIR}/dungeon.6"
 	dodoc README *.txt *.doc
 	prepgamesdirs
 }

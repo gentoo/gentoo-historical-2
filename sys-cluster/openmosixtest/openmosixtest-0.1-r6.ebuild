@@ -1,12 +1,12 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixtest/openmosixtest-0.1-r6.ebuild,v 1.1 2004/03/28 10:01:23 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixtest/openmosixtest-0.1-r6.ebuild,v 1.1.1.1 2005/11/30 10:01:49 chriswhite Exp $
 
 S=${WORKDIR}/omtest
 DESCRIPTION="openMosix stress test"
-SRC_URI="www.openmosixview.com/omtest/omtest-${PV}-4.1.tar.gz
+SRC_URI="http://www.openmosixview.com/omtest/omtest-${PV}-4.1.tar.gz
 		http://www.openmosixview.com/omtest/portfolio04.tgz
-		http://belnet.dl.sourceforge.net/sourceforge/ltp/ltp-full-20040304.tgz
+		mirror://sourceforge/ltp/ltp-full-20040304.tgz
 		ftp://ftp.bitmover.com/lmbench/lmbench-2.0.4.tgz"
 HOMEPAGE="http://www.openmosixview.com/omtest/"
 IUSE=""

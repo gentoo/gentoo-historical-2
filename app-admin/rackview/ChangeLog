@@ -1,6 +1,27 @@
 # ChangeLog for app-admin/rackview
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/rackview/ChangeLog,v 1.1 2003/05/16 21:14:41 tantive Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/rackview/ChangeLog,v 1.1.1.1 2005/11/30 09:59:48 chriswhite Exp $
+
+  01 Mar 2004; Markus Nigbur <pyrania@gentoo.org> rackview-0.05.ebuild:
+  Stable on x86.
+
+  06 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> rackview-0.04-r1.ebuild,
+  rackview-0.05.ebuild:
+  grep stuff and those variables should NOT be global
+
+*rackview-0.05 (13 Oct 2003)
+
+  13 Oct 2003; Martin Holzer <mholzer@gentoo.org> rackview-0.05.ebuild:
+  Version bumped.
+
+  11 Jun 2003; <msterret@gentoo.org> rackview-0.04-r1.ebuild:
+  fix Header
+
+*rackview-0.04-r1 (20 May 2003)
+
+  20 May 2003; <tantive@gentoo.org> rackview-0.04-r1.ebuild:
+  Some changes to ensure all paths are set correct.
+  Submitted by Rigo Ketelings <rigo@home.nl>.
 
 *rackview-0.04 (16 May 2003)
 

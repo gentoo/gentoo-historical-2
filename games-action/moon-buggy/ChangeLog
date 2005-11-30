@@ -1,6 +1,58 @@
-# ChangeLog for app-games/moon-buggy
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/moon-buggy/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/moon-buggy
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/moon-buggy/ChangeLog,v 1.1.1.1 2005/11/30 10:02:37 chriswhite Exp $
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> moon-buggy-1.0.ebuild:
+  Stable on ppc.
+
+  30 Aug 2005; Luis Medinas <metalgod@gentoo.org> moon-buggy-1.0.ebuild:
+  Marked Stable on AMD64.
+
+  29 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  moon-buggy-1.0.ebuild:
+  stable for x86
+
+*moon-buggy-1.0 (18 Jan 2005)
+
+  18 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +moon-buggy-1.0.ebuild:
+  Version bump and closing bug #76768.
+
+  16 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  moon-buggy-0.5.53-r1.ebuild:
+  eutils; stable
+
+  02 Aug 2004; Mike Frysinger <vapier@gentoo.org> moon-buggy-0.5.53-r1.ebuild:
+  Fix autotool stuff #59194 by Stefan and clean up other logic as well.
+
+*moon-buggy-0.5.53-r1 (02 Aug 2004)
+
+  02 Aug 2004; <tomk@gentoo.org> +moon-buggy-0.5.53-r1.ebuild,
+  moon-buggy-0.5.53.ebuild:
+  Added esd sound support, HOMEPAGE and SRC_URI have changed
+
+  06 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  moon-buggy-0.5.1.ebuild:
+  clean older version
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  moon-buggy-0.5.53.ebuild:
+  Marking stable on amd64 (no bugs in 300 days).
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> moon-buggy-0.5.1.ebuild,
+  moon-buggy-0.5.53.ebuild:
+  Added IUSE.
+
+  19 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  moon-buggy-0.5.53.ebuild:
+  Added ~amd64.  Closing bug #45156.
+
+  04 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  moon-buggy-0.5.53.ebuild:
+  install global score file in ${GAMES_STATEDIR}; more error checking/messages
+
+  26 Oct 2003; David Holm <dholm@gentoo.org> moon-buggy-0.5.53.ebuild:
+  Added to ~ppc.
 
   12 Jul 2003; Michael Sterrett <msterret@gentoo.org> moon-buggy-0.5.1.ebuild,
   moon-buggy-0.5.53.ebuild:

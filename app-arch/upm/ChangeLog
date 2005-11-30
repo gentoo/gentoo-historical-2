@@ -1,8 +1,17 @@
-# ChangeLog for sys-apps/upm
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/upm/ChangeLog,v 1.1 2002/12/27 17:15:33 cretin Exp $
+# ChangeLog for app-arch/upm
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/upm/ChangeLog,v 1.1.1.1 2005/11/30 10:00:40 chriswhite Exp $
+
+  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> upm-0.85.ebuild:
+  Don't assign default to S; header fix
+
+  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> upm-0.85.ebuild:
+  Stable on alpha
 
 *upm-0.85 (27 Dec 2002)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Moved to ppc stable
 
   27 Dec 2002; Stefan Jones <cretin@gentoo.org> :
   Another package manager for your hacking pleasure

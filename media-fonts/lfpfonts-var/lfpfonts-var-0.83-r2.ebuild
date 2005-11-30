@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/lfpfonts-var/lfpfonts-var-0.83-r2.ebuild,v 1.1 2004/05/31 15:16:12 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/lfpfonts-var/lfpfonts-var-0.83-r2.ebuild,v 1.1.1.1 2005/11/30 10:01:28 chriswhite Exp $
 
 inherit font
 
@@ -10,7 +10,8 @@ SRC_URI="mirror://sourceforge/xfonts/${P}.tar.bz2"
 LICENSE="public-domain"
 
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64"
+KEYWORDS="x86 sparc ppc alpha amd64"
+IUSE=""
 
 S=${WORKDIR}/${PN}
 

@@ -1,6 +1,6 @@
 # ChangeLog for sys-boot/psoload
 # Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/psoload/ChangeLog,v 1.1 2004/11/15 00:31:43 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/psoload/ChangeLog,v 1.1.1.1 2005/11/30 10:04:40 chriswhite Exp $
 
 *psoload (14 Nov 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jove/jove-4.16.0.56.1.ebuild,v 1.1 2005/03/25 21:53:25 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jove/jove-4.16.0.56.1.ebuild,v 1.1.1.1 2005/11/30 10:02:00 chriswhite Exp $
 
 inherit eutils
 

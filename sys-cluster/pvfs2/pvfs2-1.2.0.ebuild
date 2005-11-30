@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/pvfs2/pvfs2-1.2.0.ebuild,v 1.1 2005/08/11 18:00:51 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/pvfs2/pvfs2-1.2.0.ebuild,v 1.1.1.1 2005/11/30 10:01:45 chriswhite Exp $
 
 inherit kernel-mod eutils
 
@@ -14,7 +14,7 @@ DEPEND="${RDEPEND}
 		virtual/linux-sources"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 S="${WORKDIR}/${P/_/}"
 
 src_compile() {
@@ -62,7 +62,7 @@ src_install() {
 	# this is LARGE (~5mb)
 	if use docs; then
 		docdir="/usr/share/doc/${PF}/"
-		cp -ra ${S}/doc ${D}${docdir}
+		cp -pPR ${S}/doc ${D}${docdir}
 		rm -rf ${D}${docdir}/man
 	fi
 }

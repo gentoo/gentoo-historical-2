@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libfwbuilder/libfwbuilder-1.0.2-r2.ebuild,v 1.1 2004/04/13 12:55:13 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libfwbuilder/libfwbuilder-1.0.2-r2.ebuild,v 1.1.1.1 2005/11/30 10:02:55 chriswhite Exp $
 
 inherit eutils
 
@@ -8,10 +8,10 @@ IUSE="ssl snmp"
 
 DESCRIPTION="A firewall GUI (library functions)"
 SRC_URI="mirror://gentoo/${P}-2.tar.gz
-	gentoo.tamperd.net/distfiles/${P}-2.tar.gz"
+	http://gentoo.tamperd.net/distfiles/${P}-2.tar.gz"
 HOMEPAGE="http://www.fwbuilder.org/"
 
-KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
+KEYWORDS="x86 sparc amd64 ppc"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -21,7 +21,7 @@ DEPEND="sys-devel/libtool
 	>=dev-libs/libxml2-2.4.19
 	!=dev-libs/libxml2-2.4.25
 	>=dev-libs/libxslt-1.0.15
-	snmp? ( virtual/snmp )
+	snmp? ( net-analyzer/net-snmp )
 	ssl? ( dev-libs/openssl )"
 
 src_compile() {

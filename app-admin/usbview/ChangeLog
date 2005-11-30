@@ -1,8 +1,33 @@
 # ChangeLog for app-admin/usbview
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-admin/usbview/ChangeLog,v 1.1 2002/02/01 21:52:59 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/usbview/ChangeLog,v 1.1.1.1 2005/11/30 10:00:05 chriswhite Exp $
 
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> usbview-1.0-r1.ebuild:
+  Mark 1.0-r1 stable on alpha
+
+*usbview-1.0-r2 (01 May 2005)
+
+  01 May 2005; John N. Laliberte <allanonjl@gentoo.org +metadata.xml,
+  +usbview-1.0-r2.ebuild:
+  Add a .desktop menu item. Fixes bug #58380
+
+  30 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> usbview-1.0-r1.ebuild:
+  Add ~alpha keyword, bug 87008.
+
+  03 Jan 2005; Markus Rothe <corsair@gentoo.org> usbview-1.0-r1.ebuild:
+  Stable on ppc64
+
+  12 Jul 2004; Tom Gall <tgall@gentoo.org> usbview-1.0-r1.ebuild:
+  add ~ppc64, bug #56697
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> usbview-1.0-r1.ebuild:
+  Add die following econf for bug 48950
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *usbview-1.0-r1 (1 Feb 2002)
+  11 Sep 2002; Owen Stampflee <owen@gentoo.org> usbview-1.0-r1.ebuild
+  Added PPC to KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

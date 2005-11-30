@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/rssh/rssh-2.2.3.ebuild,v 1.1 2005/01/16 19:10:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/rssh/rssh-2.2.3.ebuild,v 1.1.1.1 2005/11/30 10:00:17 chriswhite Exp $
 
 DESCRIPTION="Restricted shell for SSHd"
 HOMEPAGE="http://rssh.sourceforge.net/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/rssh/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="sparc ppc x86"
+KEYWORDS="~amd64 ppc sparc x86"
 IUSE="static"
 
 RDEPEND="virtual/ssh"

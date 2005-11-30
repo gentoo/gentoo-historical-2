@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/speex/speex-1.0.2.ebuild,v 1.1 2003/11/20 23:09:53 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/speex/speex-1.0.2.ebuild,v 1.1.1.1 2005/11/30 10:04:27 chriswhite Exp $
 
-IUSE="oggvorbis sse"
+IUSE="ogg sse"
 
 MY_P=${P/_/}
 S=${WORKDIR}/${MY_P}
@@ -13,17 +13,19 @@ SRC_URI="http://www.speex.org/download/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD as-is"
-KEYWORDS="~x86 ~hppa"
+KEYWORDS="x86 hppa amd64 sparc"
 
-DEPEND="virtual/glibc
-	oggvorbis? ( >=media-libs/libogg-1.0 )"
+DEPEND="virtual/libc
+	ogg? ( >=media-libs/libogg-1.0 )"
 
 src_compile() {
 	local myconf
-	use oggvorbis && myconf="--enable-ogg=yes --with-ogg-dir=/usr" \
+	use ogg && myconf="--enable-ogg=yes --with-ogg-dir=/usr" \
 		|| myconf="--enable-ogg=no"
-	use sse && myconf="${myconf} --enable-sse"
-
+	if [ "${ARCH}" != "amd64" ]
+	then
+		use sse && myconf="${myconf} --enable-sse"
+	fi
 	econf ${myconf} || die
 	emake || die
 }

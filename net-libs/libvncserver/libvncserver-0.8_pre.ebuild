@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libvncserver/libvncserver-0.8_pre.ebuild,v 1.1 2005/10/27 23:59:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libvncserver/libvncserver-0.8_pre.ebuild,v 1.1.1.1 2005/11/30 10:02:53 chriswhite Exp $
 
 inherit eutils
 

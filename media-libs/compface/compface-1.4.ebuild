@@ -1,26 +1,31 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Michael C Tisltra <tadpol@tadpol.org>
-# $header
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/compface/compface-1.4.ebuild,v 1.1.1.1 2005/11/30 10:03:46 chriswhite Exp $
 
-#P=
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
+IUSE=""
+
+inherit eutils
+
 DESCRIPTION="Utilities and library to convert to/from X-Face format"
-SRC_URI="http://www.ibiblio.org/pub/Linux/apps/graphics/convert/${A}"
-HOMEPAGE=""
+HOMEPAGE="http://www.ibiblio.org/pub/Linux/apps/graphics/convert/"
+SRC_URI="http://www.ibiblio.org/pub/Linux/apps/graphics/convert/${P}.tar.gz"
 
-DEPEND=">=sys-libs/glibc-2.2.1"
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64 ppc64 ppc-macos"
 
-src_compile() {
-    try ./configure --prefix=/usr --mandir=/usr/share/man --host=${CHOST}
-    try make
+DEPEND="virtual/libc"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-errno.diff
+	epatch ${FILESDIR}/${P}-destdir.diff
 }
 
-src_install () {
-    dodir /usr/share/man/man3
-    try make DESTDIR=${D} install
-    dodoc README ChangeLog
-}
+src_install() {
+	dodir /usr/share/man/man{1,3} /usr/{bin,include,$(get_libdir)}
+	make DESTDIR="${D}" install || die
 
+	dodoc README ChangeLog
+}

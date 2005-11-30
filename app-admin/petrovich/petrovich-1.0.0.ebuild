@@ -1,27 +1,27 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Chad Huneycutt <chad.huneycutt@acm.org>
-# $Header: /var/cvsroot/gentoo-x86/app-admin/petrovich/petrovich-1.0.0.ebuild,v 1.1 2001/08/07 01:20:08 chadh Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/petrovich/petrovich-1.0.0.ebuild,v 1.1.1.1 2005/11/30 09:59:53 chriswhite Exp $
 
-S=${WORKDIR}/petrovich
+inherit eutils
+
+S=${WORKDIR}/${PN}
 DESCRIPTION="Filesystem Integrity Checker"
-SRC_URI="http://prdownloads.sf.net/petrovich/${PF}.tar.gz"
+SRC_URI="mirror://sourceforge/petrovich/${P}.tar.gz"
 HOMEPAGE="http://sourceforge.net/projects/petrovich"
+IUSE=""
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc"
 
-#build-time dependencies
-DEPEND="sys-devel/perl"
-
-#run-time dependencies, same as DEPEND if RDEPEND isn't defined:
-#RDEPEND=""
+DEPEND="perl-core/Digest-MD5"
 
 src_unpack () {
 	unpack ${A}
 	cd ${WORKDIR}
-	patch -p0 < ${FILESDIR}/${PF}-gentoo.diff
+	epatch ${FILESDIR}/${PF}-gentoo.diff
 }
 
-src_install () {
-	into /usr
+src_install() {
 	dosbin petrovich.pl
 
 	insinto /etc
@@ -29,6 +29,5 @@ src_install () {
 
 	dodir /var/db/petrovich
 
-	dodoc CHANGES.HTML LICENSE.HTML README.HTML TODO.HTML USAGE.HTML
+	dohtml CHANGES.HTML LICENSE.HTML README.HTML TODO.HTML USAGE.HTML
 }
-

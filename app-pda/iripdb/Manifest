@@ -1,3 +1,4 @@
-MD5 53c11476ac2f2668f4c154c1d0055e44 metadata.xml 789
-MD5 a24d17d21e3f04c7c3bc070f335064b8 iripdb-0.1.1.ebuild 809
-MD5 75a18c7fcd88a614b247cd6fd269ae3f files/digest-iripdb-0.1.1 63
+MD5 f884d2b08eefef254e63415960a233a4 metadata.xml 725
+MD5 c6479ab5e53d4a546bbcd8a639421139 iripdb-0.1.3b.ebuild 1421
+MD5 22023d079a31cfa8f730642f0e6044d1 ChangeLog 1158
+MD5 e7baedeee0805d5ab253d1af916adec3 files/digest-iripdb-0.1.3b 61

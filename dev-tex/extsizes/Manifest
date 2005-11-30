@@ -1,3 +1,14 @@
-MD5 29f71f6e43dcdcb9c1b4b102df59ecd0 extsizes-1.0.ebuild 528
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 309f9109a13132ddf8b0103eaa94fbeb ChangeLog 781
+MD5 2f8a76cfc2621ec15785dda7a18887fd extsizes-1.0.ebuild 767
 MD5 c472f5fd1646eb8bca71d8df5cb2bdcc metadata.xml 164
 MD5 caef2c572681b616ba21af21e79d9a64 files/digest-extsizes-1.0 55
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.6 (GNU/Linux)
+
+iD8DBQFBdR/8VWNWqTUmv+0RArkEAKCik8Aht/AJgi8npafdxijQOogg/QCgtTlE
+vNyKELiHpLOjs1+IHBfIeX0=
+=ZpCh
+-----END PGP SIGNATURE-----

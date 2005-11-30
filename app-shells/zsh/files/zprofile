@@ -1,5 +1,5 @@
 # /etc/zsh/zprofile
-# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/files/zprofile,v 1.1 2003/07/23 17:48:19 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/zsh/files/zprofile,v 1.1.1.1 2005/11/30 10:00:27 chriswhite Exp $
 
 [[ -e "/etc/profile.env" ]] && source /etc/profile.env
 

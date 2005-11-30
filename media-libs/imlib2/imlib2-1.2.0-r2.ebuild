@@ -1,18 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/imlib2/imlib2-1.2.0-r2.ebuild,v 1.1 2005/03/01 00:02:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/imlib2/imlib2-1.2.0-r2.ebuild,v 1.1.1.1 2005/11/30 10:04:03 chriswhite Exp $
 
 EHACKAUTOGEN=yes
 inherit enlightenment
 
 MY_P=${P/_/-}
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
-HOMEPAGE="http://www.enlightenment.org/pages/imlib2.html"
+HOMEPAGE="http://www.enlightenment.org/Libraries/Imlib2.html"
 
 IUSE="X gif jpeg mmx png tiff"
 
 DEPEND="=media-libs/freetype-2*
-	gif? ( || ( media-libs/libungif >=media-libs/giflib-4.1.0 ) )
+	gif? ( >=media-libs/giflib-4.1.0 )
 	png? ( >=media-libs/libpng-1.2.1 )
 	jpeg? ( media-libs/jpeg )
 	tiff? ( >=media-libs/tiff-3.5.5 )
@@ -20,8 +20,13 @@ DEPEND="=media-libs/freetype-2*
 
 src_unpack() {
 	enlightenment_src_unpack
-	cd ${S}
-	epatch ${FILESDIR}/${P}-loaders.patch
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-loaders.patch
+	epatch "${FILESDIR}"/imlib-1.2.0-bounds-check.patch
+	# uClibc doesnt have lround() and upstream changed to round() ...
+	sed -i \
+		-e 's:lround:round:' \
+		src/lib/color_helpers.c || die
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/vgui/vgui-1.90a.ebuild,v 1.1 2004/05/30 20:47:24 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/vgui/vgui-1.90a.ebuild,v 1.1.1.1 2005/11/30 10:03:54 chriswhite Exp $
 
 MY_PN="v"
 MY_PV="${PV/a}"
@@ -11,10 +11,10 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
 		 mirror://sourceforge/${PN}/${MY_PN}-${PV}-patch.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
-DEPEND="x11-base/xfree virtual/glibc"
-S=${WORKDIR}/${P}
+DEPEND="virtual/x11
+	virtual/libc"
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz

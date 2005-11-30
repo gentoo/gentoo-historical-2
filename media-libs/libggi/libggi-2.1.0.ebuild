@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libggi/libggi-2.1.0.ebuild,v 1.1 2005/03/28 04:58:21 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libggi/libggi-2.1.0.ebuild,v 1.1.1.1 2005/11/30 10:04:12 chriswhite Exp $
 
 inherit eutils libtool
 
@@ -8,23 +8,16 @@ DESCRIPTION="Fast and safe graphics and drivers for about any graphics card to t
 HOMEPAGE="http://www.ggi-project.org/"
 SRC_URI="http://www.ggi-project.org/ftp/ggi/v2.1/${P}.src.tar.bz2"
 
-LICENSE="LGPL-2"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
 IUSE="X aalib svga fbcon directfb dga 3dfx debug mmx vis"
 
 DEPEND=">=media-libs/libgii-0.9.0
 	X? ( virtual/x11 )
 	svga? ( >=media-libs/svgalib-1.4.2 )
 	aalib? ( >=media-libs/aalib-1.2-r1 )
-	dga? (virtual/x11)"
-
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	use ppc && epatch ${FILESDIR}/libggi-${PV}-ppc.patch
-}
+	dga? ( virtual/x11 )"
 
 src_compile() {
 	elibtoolize

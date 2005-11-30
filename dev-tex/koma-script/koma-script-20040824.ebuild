@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/koma-script/koma-script-20040824.ebuild,v 1.1 2004/09/01 08:59:05 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/koma-script/koma-script-20040824.ebuild,v 1.1.1.1 2005/11/30 10:00:51 chriswhite Exp $
 
 inherit latex-package
 

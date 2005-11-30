@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/teco/teco-1.00-r3.ebuild,v 1.1 2005/08/21 17:41:07 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/teco/teco-1.00-r3.ebuild,v 1.1.1.1 2005/11/30 10:02:04 chriswhite Exp $
 
 inherit toolchain-funcs flag-o-matic
 
@@ -14,12 +14,11 @@ SRC_URI="http://www.ibiblio.org/pub/linux/apps/editors/tty/teco.tar.gz
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~alpha ~ppc ~x86"
+KEYWORDS="alpha ~amd64 ~ppc x86"
 IUSE="doc"
 
-RDEPEND="virtual/libc"
-DEPEND="${DEPEND}
-	>=sys-apps/sed-4"
+RDEPEND="sys-libs/ncurses"
+DEPEND="${DEPEND}"
 PROVIDE="virtual/editor"
 
 S=${WORKDIR}

@@ -1,8 +1,130 @@
 # ChangeLog for app-admin/hddtemp
-# Copyright 2002 Imran Rafique; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-admin/hddtemp/ChangeLog,v 1.1 2002/06/22 06:05:31 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/hddtemp/ChangeLog,v 1.1.1.1 2005/11/30 10:00:13 chriswhite Exp $
 
+  08 Nov 2005; Michał Januszewski <spock@gentoo.org>
+  hddtemp-0.3_beta14.ebuild:
+  Removed explicit dependencies on libc and wget since these two are in the
+  system profile.
+
+*hddtemp-0.3_beta14 (06 Nov 2005)
+
+  06 Nov 2005; Michał Januszewski <spock@gentoo.org>
+  -files/hddtemp-0.2-db_location.patch, -hddtemp-0.2.ebuild,
+  -hddtemp-0.3_beta8.ebuild, -hddtemp-0.3_beta10.ebuild,
+  -hddtemp-0.3_beta11.ebuild, -hddtemp-0.3_beta12.ebuild,
+  +hddtemp-0.3_beta14.ebuild:
+  Version bump (#111232). Removed old ebuilds.
+
+  19 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  hddtemp-0.3_beta13.ebuild:
+  Stable on amd64.
+
+  19 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  hddtemp-0.3_beta13.ebuild:
+  Stable on sparc
+
+  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  hddtemp-0.3_beta13.ebuild:
+  Stable on ppc.
+
+  16 Sep 2005; Michał Januszewski <spock@gentoo.org>
+  hddtemp-0.3_beta13.ebuild:
+  Marked 0.3_beta13 stable on x86.
+
+*hddtemp-0.3_beta13 (13 Jul 2005)
+
+  13 Jul 2005; Michał Januszewski <spock@gentoo.org>
+  +files/hddtemp-0.3_beta13-setsid.patch, metadata.xml,
+  +hddtemp-0.3_beta13.ebuild:
+  Version bump. Closes bugs #86550 and #91972.
+
+  29 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  hddtemp-0.3_beta12.ebuild:
+  Stable on sparc
+
+  19 Mar 2005; Jason Wever <weeve@gentoo.org> hddtemp-0.3_beta12.ebuild:
+  Changed -sparc keyword to ~sparc.
+
+*hddtemp-0.3_beta12 (25 Oct 2004)
+
+  25 Oct 2004; Lars Weiler <pylon@gentoo.org> +hddtemp-0.3_beta12.ebuild:
+  Version bump. At least on ppc this resolves problems with
+  >linux26-headers-2.6.8.
+
+  25 Oct 2004; Lars Weiler <pylon@gentoo.org> hddtemp-0.2.ebuild,
+  hddtemp-0.3_beta10.ebuild, hddtemp-0.3_beta11.ebuild,
+  hddtemp-0.3_beta8.ebuild:
+  Changed all appearances of http://coredump.free.fr to http://www.guzu.net
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> hddtemp-0.2.ebuild:
+  add sed-4 dep
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> hddtemp-0.2.ebuild:
+  Added IUSE=.
+
+  31 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> hddtemp-0.3_beta11.ebuild:
+  Mark stable on x86, removing an old version.
+
+*hddtemp-0.3_beta11 (11 Feb 2004)
+
+  11 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> hddtemp-0.3_beta11.ebuild,
+  files/hddtemp-conf.d, files/hddtemp-init, files/hddtemp.db:
+  Version bump, added init script and conf.d script by Sam Wouters
+  <sam@ericom.be> in #36047. Also updated hddtemp.db
+
+  10 Jan 2004; Jason Wever <weeve@gentoo.org> hddtemp-0.3_beta10.ebuild:
+  Changed ~sparc keyword to -sparc as src/backtrace.c only works for x86 and
+  requires an include file not found on sparc.
+
+  04 Jan 2004; Jason Wever <weeve@gentoo.org> hddtemp-0.2.ebuild,
+  hddtemp-0.3_beta10.ebuild, hddtemp-0.3_beta6-r1.ebuild,
+  hddtemp-0.3_beta6.ebuild, hddtemp-0.3_beta8.ebuild:
+  Marked 0.3_beta8 stable on sparc and updated copyright dates on all ebuilds.
+
+*hddtemp-0.3_beta10 (17 Dec 2003)
+
+  17 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> hddtemp-0.3_beta10.ebuild,
+  hddtemp-0.3_beta8.ebuild, files/hddtemp.db:
+  Version bump, keywords update and new hddtemp.db.
+
+  01 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> hddtemp-0.3_beta8.ebuild :
+  I was working on this update too, but Martin commited his bump before me. 
+  My new version uses the new configuration script and tries to download the latest hddtemp.db file.
+
+*hddtemp-0.3_beta8 (31 Aug 2003)
+
+  31 Aug 2003; Martin Holzer <mholzer@gentoo.org> hddtemp-0.3_beta8.ebuild:
+  Version bumped.
+
+*hddtemp-0.3_beta6-r1 (11 Jun 2003)
+
+  11 Jun 2003; Robin Johnson <robbat2@gentoo.org> hddtemp-0.3_beta6-r1.ebuild:
+  Changes to ebuild to make it easy to bump the version for getting the
+  database updates. One reason for just not updating the hddtemp.db in the
+  tree is that in some cases you might want to go back versions, and the
+  author is also considering changing the hddtemp.db file format.
+  Redo the concept of the hddtemp.db patch, using sed, so we can change the
+  location inside the ebuild. This is important as we want to be able to
+  easily update the file without worrying about CONFIG_PROTECT.
+
+*hddtemp-0.3_beta6 (15 Apr 2003)
+
+  09 May 2003; Martin Holzer <mholzer@gentoo.org> hddtemp-0.2.ebuild,
+  hddtemp-0.3_beta6.ebuild:
+  Updated Homepage. Closes #18742.
+
+  15 Apr 2003; Martin Holzer <mholzer@gentoo.org> Manifest,
+  hddtemp-0.2.ebuild, hddtemp-0.3_beta6.ebuild, files/hddtemp.db:
+  Version bumped, moved hddtemp.db out of portage tree.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *hddtemp-0.2 (10 Jun 2002)
+
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> hddtemp-0.2.ebuild :
+
+  Added ppc to KEYWORDS.
 
   21 June 2002; George Shapovalov <george@gentoo.org> hddtemp-0.2.ebuild :
   

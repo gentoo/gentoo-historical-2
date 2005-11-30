@@ -1,17 +1,18 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# /space/gentoo/cvsroot/gentoo-x86/skel.ebuild,v 1.7 2002/05/18 17:25:12 agenkin Exp
+# $Header: /var/cvsroot/gentoo-x86/net-mail/randomsig/randomsig-1.10.0.ebuild,v 1.1.1.1 2005/11/30 10:03:22 chriswhite Exp $
 
 MY_P=${PN}-v${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="randomsig - perl script for generating random .signature files"
 HOMEPAGE="http://suso.suso.org/programs/randomsig/"
-DEPEND="sys-devel/perl"
+DEPEND="dev-lang/perl"
 SRC_URI="http://suso.suso.org/programs/randomsig/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 sparc s390"
+IUSE=""
 
 src_unpack() {
 	unpack ${A}

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/ipkg-utils/ipkg-utils-1.7.ebuild,v 1.1 2004/08/24 23:18:34 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/ipkg-utils/ipkg-utils-1.7.ebuild,v 1.1.1.1 2005/11/30 10:00:34 chriswhite Exp $
 
 inherit distutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://handhelds.org/download/packages/ipkg-utils/${P}.tar.gz"
 LICENSE="GPL-2"
 IUSE=""
 SLOT="0"
-KEYWORDS="~x86 ~mips ~arm"
+KEYWORDS="~x86 ~mips ~arm ~ppc"
 
 DEPEND="dev-lang/python"
 

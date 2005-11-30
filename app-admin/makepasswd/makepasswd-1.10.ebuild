@@ -1,19 +1,20 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# /space/gentoo/cvsroot/gentoo-x86/skel.ebuild,v 1.8 2002/05/30 01:54:49 sandymac Exp
+# $Header: /var/cvsroot/gentoo-x86/app-admin/makepasswd/makepasswd-1.10.ebuild,v 1.1.1.1 2005/11/30 10:00:03 chriswhite Exp $
 
 DESCRIPTION="Random password generator"
+HOMEPAGE="http://packages.debian.org/stable/admin/makepasswd.html"
+SRC_URI="mirror://debian/dists/potato/main/source/admin/${P/-/_}.orig.tar.gz"
 
-LICENSE="GPL2"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha amd64 ia64 s390 ppc-macos"
+IUSE=""
 
-DEPEND=""
-RDEPEND="perl"
+RDEPEND="dev-lang/perl"
 
-SRC_URI="http://ftp.debian.org/debian/dists/stable/main/source/admin/makepasswd_${PV}.orig.tar.gz"
-
-src_install () {
-	into /usr
-	dobin makepasswd
+src_install() {
+	dobin makepasswd || die
 	doman makepasswd.1
-	dodoc README CHANGES COPYING-2.0
+	dodoc README CHANGES
 }

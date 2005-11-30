@@ -1,6 +1,40 @@
 # ChangeLog for media-libs/libkipi
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libkipi/ChangeLog,v 1.1 2004/10/18 20:30:35 carlo Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libkipi/ChangeLog,v 1.1.1.1 2005/11/30 10:03:59 chriswhite Exp $
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> libkipi-0.1.1.ebuild:
+  Mark 0.1.1 stable on alpha
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> libkipi-0.1.1.ebuild:
+  Mark 0.1.1 stable on ia64
+
+*libkipi-0.1.2 (27 Sep 2005)
+
+  27 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> +libkipi-0.1.2.ebuild:
+  Version bump, bug 107195.
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> libkipi-0.1.1.ebuild:
+  add ~alpha ~ia64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> libkipi-0.1.1.ebuild:
+  stable on amd64
+
+  03 Mar 2005; Carsten Lohrke <carlo@gentoo.org> libkipi-0.1.1.ebuild:
+  stable on x86
+
+  09 Feb 2005; Dominik Stadler <centic@gentoo.org> libkipi-0.1.ebuild:
+  Mark 0.1 stable on x86
+
+*libkipi-0.1.1 (09 Feb 2005)
+
+  09 Feb 2005; Dominik Stadler <centic@gentoo.org> +libkipi-0.1.1.ebuild:
+  Add new version 0.1.1
+
+  31 Dec 2004; Jason Wever <weeve@gentoo.org> libkipi-0.1.ebuild:
+  Added ~sparc keyword.
+
+  02 Dec 2004; Mike Doty <kingtaco@gentoo.org> libkipi-0.1.ebuild:
+  ~amd64 keyword added per bug #67644
 
 *libkipi-0.1 (18 Oct 2004)
 

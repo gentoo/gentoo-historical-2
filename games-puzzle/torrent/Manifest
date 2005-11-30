@@ -1,2 +1,4 @@
-MD5 7d6defcf35b8c0a33c2aefb3c18d49ba torrent-0.8.ebuild 868
-MD5 6a3cfa6b20bb08ba4772b9e714bedd75 files/digest-torrent-0.8 63
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 2a5835a06268352e3e5628549f58b685 ChangeLog 773
+MD5 a0128bea702a37547c1c3c2f77311cc5 torrent-0.8.2.ebuild 749
+MD5 5f582b7cc26049b3c6cd2162519faca1 files/digest-torrent-0.8.2 65

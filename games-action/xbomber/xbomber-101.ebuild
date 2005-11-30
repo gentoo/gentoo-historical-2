@@ -1,36 +1,43 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/xbomber/xbomber-101.ebuild,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/xbomber/xbomber-101.ebuild,v 1.1.1.1 2005/11/30 10:02:42 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="Bomberman clone w/multiplayer support"
-SRC_URI="http://www.xdr.com/dash/${P}.tgz"
 HOMEPAGE="http://www.xdr.com/dash/bomber.html"
+SRC_URI="http://www.xdr.com/dash/${P}.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
 SLOT="0"
+KEYWORDS="~amd64 ~ppc x86"
+IUSE=""
 
-DEPEND="virtual/x11
-	>=sys-apps/sed-4"
+DEPEND="virtual/x11"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	sed -i "s:X386:X11R6:" Makefile
-	sed -i "s:data/%s:${GAMES_DATADIR}/${PN}/%s:" bomber.c
-	sed -i "s:=\"data\":=\"${GAMES_DATADIR}/${PN}\":" sound.c
+	cd "${S}"
+	sed -i \
+		-e "s:X386:X11R6:" Makefile \
+		|| die "sed failed"
+	sed -i \
+		-e "s:data/%s:${GAMES_DATADIR}/${PN}/%s:" bomber.c \
+		|| die "sed failed"
+	sed -i \
+		-e "s:=\"data\":=\"${GAMES_DATADIR}/${PN}\":" sound.c \
+		|| die "sed failed"
+	epatch "${FILESDIR}"/${P}-va_list.patch
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" || die
+	emake CFLAGS="${CFLAGS}" || die "emake failed"
 }
 
 src_install() {
-	dogamesbin matcher bomber
-	dodir ${GAMES_DATADIR}/${PN}
-	cp -r data/* ${D}/${GAMES_DATADIR}/${PN}/
+	dogamesbin matcher bomber || die "dogamesbin failed"
+	insinto "${GAMES_DATADIR}"/${PN}
+	doins -r data/* || die "doins failed"
 	dodoc README Changelog
 	prepgamesdirs
 }

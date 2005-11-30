@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-beamer/latex-beamer-3.00.ebuild,v 1.1 2004/10/13 23:25:30 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-beamer/latex-beamer-3.00.ebuild,v 1.1.1.1 2005/11/30 10:00:54 chriswhite Exp $
 
 inherit latex-package
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/latex-beamer/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc ~amd64 ~sparc"
+KEYWORDS="x86 alpha ppc amd64 ~sparc"
 
 IUSE=""
 
@@ -26,7 +26,7 @@ src_compile() {
 src_install() {
 
 	dodir /usr/share/texmf/tex/latex/beamer
-	cp -a base extensions solutions themes \
+	cp -pPR base extensions solutions themes \
 		${D}/usr/share/texmf/tex/latex/beamer || die
 
 	insinto /usr/share/texmf/tex/latex/beamer/emulation
@@ -38,7 +38,7 @@ src_install() {
 	done
 
 	if has_version 'app-office/lyx' ; then
-		cp -a lyx ${D}/usr/share/doc/${PF}
+		cp -pPR lyx ${D}/usr/share/doc/${PF}
 	fi
 
 	dodoc AUTHORS ChangeLog FILES TODO README

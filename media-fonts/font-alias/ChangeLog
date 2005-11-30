@@ -1,6 +1,26 @@
 # ChangeLog for media-fonts/font-alias
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-alias/ChangeLog,v 1.1 2005/08/08 07:37:01 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-alias/ChangeLog,v 1.1.1.1 2005/11/30 10:01:33 chriswhite Exp $
+
+  20 Oct 2005; Stephen P. Becker <geoman@gentoo.org>
+  font-alias-0.99.0.ebuild:
+  added ~mips keyword
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> font-alias-0.99.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> font-alias-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> font-alias-0.99.0.ebuild:
+  Marked ~amd64
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  font-alias-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *font-alias-0.99.0 (08 Aug 2005)
 

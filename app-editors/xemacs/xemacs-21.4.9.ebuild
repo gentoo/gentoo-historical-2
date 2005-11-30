@@ -1,27 +1,28 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.4.9.ebuild,v 1.1 2002/09/26 18:39:43 mkennedy Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/xemacs/xemacs-21.4.9.ebuild,v 1.1.1.1 2005/11/30 10:02:10 chriswhite Exp $
+
+inherit eutils
 
 # this is just TEMPORARY until we can get to the core of the problem
 SANDBOX_DISABLED="1"
 
-LICENSE="GPL-2"
-
-S="${WORKDIR}/${P}"
-DESCRIPTION="XEmacs is a highly customizable open source text editor and application development system."
 EFS=1.29
-BASE=1.67
+BASE=1.68
 MULE=1.42
-
+DESCRIPTION="highly customizable open source text editor and application development system"
+HOMEPAGE="http://www.xemacs.org/"
 SRC_URI="http://ftp.xemacs.org/xemacs-21.4/${P}.tar.gz
 	http://ftp.xemacs.org/packages/efs-${EFS}-pkg.tar.gz
 	http://ftp.xemacs.org/packages/xemacs-base-${BASE}-pkg.tar.gz
 	mule? ( http://ftp.xemacs.org/packages/mule-base-${MULE}-pkg.tar.gz )"
 
-HOMEPAGE="http://www.xemacs.org"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE="gpm esd postgres xface nas X jpeg tiff png mule"
 
-
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	!virtual/xemacs
 
 	>=sys-libs/gdbm-1.8.0
@@ -40,25 +41,28 @@ RDEPEND="virtual/glibc
 	tiff? ( media-libs/tiff )
 	png? ( =media-libs/libpng-1.2* )
 	jpeg? ( media-libs/jpeg )"
-
 DEPEND="${RDEPEND}
 	>=sys-libs/ncurses-5.2"
-
-PROVIDE="virtual/xemacs"
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc sparc64"
-
+PROVIDE="virtual/xemacs virtual/editor"
 
 src_unpack() {
 	unpack ${P}.tar.gz
-	
+
 	cd ${S}
-	patch -p0 <${FILESDIR}/emodules.info-21.4.8-gentoo.patch || die
-	
+	epatch ${FILESDIR}/emodules.info-21.4.8-gentoo.patch || die
+
 	if [ ${ARCH} = "ppc" ] ; then
-		patch -p0 < ${FILESDIR}/${P}-ppc.diff || die
+		epatch ${FILESDIR}/${P}-ppc.diff || die
+
+		# xemacs broke with glibc-2.3.x. this code checks that condition
+		# and patches xemacs appropriately.
+		# http://sources.redhat.com/ml/bug-glibc/2002-11/msg00066.html
+		glibc_version=`/sbin/ldconfig -V | head -n1 | sed -e "s/[^0-9]*[0-9]\.//" | sed -e "s/\.//"`
+		if (( $glibc_version >= "31" ))
+		then
+			einfo "PPC runtime fix for glibc >= 2.3.1 (Gentoo bug #14458)"
+			epatch ${FILESDIR}/${P}-ppc-glibc-2.3.x.diff
+		fi
 	fi
 
 }
@@ -69,14 +73,14 @@ src_compile() {
 	if use X;
 	then
 		myconf="${myconf}
-			--with-x 
-			--with-xpm 
-			--with-dragndrop 
+			--with-x
+			--with-xpm
+			--with-dragndrop
 			--with-gif=no"
 
-		use tiff && myconf="${myconf} --with-tiff" || 
+		use tiff && myconf="${myconf} --with-tiff" ||
 			myconf="${myconf} --without-tiff"
-		use png && mconf="${myconf} --with-png" || 
+		use png && myconf="${myconf} --with-png" ||
 			myconf="${myconf} --without-png"
 		use jpeg && myconf="${myconf} --with-jpeg" ||
 			myconf="${myconf} --without-jpeg"
@@ -88,10 +92,10 @@ src_compile() {
 		myconf="${myconf} --with-scrollbars=lucid"
 		myconf="${myconf} --with-menubars=lucid"
 	else
-		myconf="${myconf} 
-			--without-x 
-			--without-xpm 
-			--without-dragndrop 
+		myconf="${myconf}
+			--without-x
+			--without-xpm
+			--without-dragndrop
 			--with-gif=no"
 	fi
 
@@ -101,7 +105,7 @@ src_compile() {
 		myconf="${myconf} --without-postgresql"
 	use mule && myconf="${myconf} --with-mule" ||
 		myconf="${myconf} --without-mule"
-	
+
 	local soundconf="native"
 
 	use nas	&& soundconf="${soundconf},nas"
@@ -124,31 +128,30 @@ src_compile() {
 	make || die
 }
 
-src_install() {                               
+src_install() {
 	make prefix=${D}/usr \
 		mandir=${D}/usr/share/man/man1 \
 		infodir=${D}/usr/share/info \
 		install gzip-el || die
-	
+
 	# install base packages
 	dodir /usr/lib/xemacs/xemacs-packages/
 	cd ${D}/usr/lib/xemacs/xemacs-packages/
 	unpack efs-${EFS}-pkg.tar.gz
 	unpack xemacs-base-${BASE}-pkg.tar.gz
-	# (optionally) install mule base package 
+	# (optionally) install mule base package
 	if use mule;
 	then
 		dodir /usr/lib/xemacs/mule-packages
 		cd ${D}/usr/lib/xemacs/mule-packages/
 		unpack mule-base-${MULE}-pkg.tar.gz
 	fi
-	
+
 	# remove extraneous files
 	cd ${D}/usr/share/info
 	rm -f dir info.info texinfo* termcap*
 	cd ${S}
-	dodoc BUGS CHANGES-* COPYING ChangeLog GETTING* INSTALL PROBLEMS README*
+	dodoc BUGS CHANGES-* ChangeLog GETTING* INSTALL PROBLEMS README*
 	dodoc ${FILESDIR}/README.Gentoo
 	rm -f ${D}/usr/share/info/emodules.info~*
 }
-

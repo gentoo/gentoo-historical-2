@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/bvi/bvi-1.3.1.ebuild,v 1.1 2002/11/14 18:22:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/bvi/bvi-1.3.1.ebuild,v 1.1.1.1 2005/11/30 10:01:59 chriswhite Exp $
 
 DESCRIPTION="display-oriented editor for binary files, based on the vi texteditor"
 HOMEPAGE="http://bvi.sourceforge.net/"
@@ -8,12 +8,13 @@ SRC_URI="mirror://sourceforge/bvi/${P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+IUSE=""
+KEYWORDS="x86 amd64 ppc"
 
 DEPEND="sys-libs/ncurses"
 
 src_compile() {
-	econf --with-ncurses=/usr
+	econf --with-ncurses=/usr || die "econf failed"
 
 	cp bmore.h bmore.h.old
 	sed -e 's:ncurses/term.h:term.h:g' bmore.h.old > bmore.h

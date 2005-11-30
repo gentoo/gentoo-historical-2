@@ -1,8 +1,44 @@
 # ChangeLog for dev-tex/listings
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/listings/ChangeLog,v 1.1 2003/09/19 17:21:51 obz Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/listings/ChangeLog,v 1.1.1.1 2005/11/30 10:00:52 chriswhite Exp $
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> listings-1.3.ebuild:
+  Mark 1.3 stable on alpha
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> listings-1.3.ebuild:
+  Stable on ppc and sparc.
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> listings-1.3.ebuild:
+  Stable on amd64.
+
+  05 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -listings-1.1.ebuild,
+  listings-1.2.ebuild, listings-1.3.ebuild:
+  Added app-arch/unzip to DEPEND.
+
+*listings-1.3 (09 Sep 2004)
+
+  09 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +listings-1.3.ebuild:
+  Version bumped. This closes bug #63205.
+
+*listings-1.2 (18 Aug 2004)
+
+  18 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +listings-1.2.ebuild:
+  Version bumped. This closes bug #59909.
+
+  21 Jun 2004; Michael Hanselmann <hansmi@gentoo.org> listings-1.1.ebuild:
+  Added to ~ppc, bug #54668.
+
+  16 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> listings-1.1.ebuild:
+  Added ~sparc, bug #53552
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> listings-1.1.ebuild:
+  marked ~amd64
 
 *listings-1.1 (20 Sep 2003)
+
+  14 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> listings-1.1.ebuild:
+  Removed ${S} from pkg_postinst and added addwrite to src_install.
+  Marked as stable.
 
   20 Sep 2003; Mike Gardiner <obz@gentoo.org> listings-1.1.ebuild, metadata.xml:
   First commit. Needed some eclass overriding, which may in fact hint at fixes

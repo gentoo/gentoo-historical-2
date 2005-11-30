@@ -1,6 +1,170 @@
 # ChangeLog for app-accessibility/dasher
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/dasher/ChangeLog,v 1.1 2004/03/17 22:23:13 leonardop Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/dasher/ChangeLog,v 1.1.1.1 2005/11/30 10:04:34 chriswhite Exp $
+
+  10 Oct 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
+  Japanese translation of longdescription.
+
+*dasher-3.2.18 (06 Sep 2005)
+
+  06 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +dasher-3.2.18.ebuild:
+  New version.
+
+*dasher-3.2.17 (29 Aug 2005)
+
+  29 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +dasher-3.2.17.ebuild:
+  New version.
+
+*dasher-3.2.16 (24 Aug 2005)
+
+  24 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
+  +dasher-3.2.16.ebuild:
+  New version.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> dasher-3.2.15.ebuild:
+  stable on ia64
+
+  13 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  dasher-3.2.10-r1.ebuild, dasher-3.2.15.ebuild:
+  removing mips keywords, as accessibility is masked for us, and I can not
+  test this
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> dasher-3.2.15.ebuild:
+  Stable on alpha.
+
+  12 Jun 2005; Olivier Crête <tester@gentoo.org> dasher-3.2.15.ebuild:
+  Stable on amd64
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org> dasher-3.2.15.ebuild:
+  Stable on ppc64
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> dasher-3.2.15.ebuild:
+  Stable on ppc.
+
+  19 May 2005; Guy Martin <gmsoft@gentoo.org> dasher-3.2.15.ebuild:
+  Stable on hppa.
+
+  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> dasher-3.2.15.ebuild:
+  Stable on sparc
+
+  13 May 2005; Leonardo Boshell <leonardop@gentoo.org> dasher-3.2.15.ebuild:
+  Stable on x86.
+
+  11 May 2005; Guy Martin <gmsoft@gentoo.org> dasher-3.2.13.ebuild:
+  Stable on hppa.
+
+  08 May 2005; Aron Griffis <agriffis@gentoo.org> dasher-3.2.15.ebuild:
+  add ~ia64
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> dasher-3.2.13.ebuild:
+  Stable on amd64.
+
+  06 May 2005; Markus Rothe <corsair@gentoo.org> dasher-3.2.15.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  25 Apr 2005; Mike Gardiner <obz@gentoo.org> dasher-3.2.13.ebuild:
+  Keyworded ppc x86
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> dasher-3.2.11.ebuild:
+  Stable on ppc.
+
+*dasher-3.2.15 (10 Mar 2005)
+
+  10 Mar 2005; Leonardo Boshell <leonardop@gentoo.org> dasher-3.2.15.ebuild,
+  files/dasher-3.2.15-buildwindowtree.patch:
+  New release. Updated patch.
+
+*dasher-3.2.13 (01 Mar 2005)
+
+  01 Mar 2005; Leonardo Boshell <leonardop@gentoo.org> dasher-3.2.13.ebuild,
+  files/dasher-3.2.13-buildwindowtree.patch:
+  New release. Added dependency to libwnck. Added new patch to avoid
+  segmentation fault.
+
+  12 Feb 2005; Leonardo Boshell <leonardop@gentoo.org> dasher-3.2.11.ebuild,
+  files/dasher-3.2.11-xtst_fix.patch:
+  Added patch to fix a broken library test that can break compilation.
+  Thanks to <s.b.wielinga> for his contribution on bug #79181.
+
+  17 Jan 2005; Simon Stelling <blubb@gentoo.org> dasher-3.2.11.ebuild:
+  stable on amd64
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> dasher-3.2.11.ebuild:
+  Stable on hppa.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> dasher-3.2.11.ebuild:
+  Stable on alpha.
+
+  25 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> dasher-3.2.11.ebuild:
+  Stable on sparc
+
+  23 Nov 2004; Leonardo Boshell <leonardop@gentoo.org> dasher-3.2.11.ebuild:
+  Stable on x86.
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org> dasher-3.2.10-r1.ebuild,
+  dasher-3.2.11.ebuild:
+  stable and ~mips for accessibility use flag unmasking
+
+*dasher-3.2.11 (18 Sep 2004)
+
+  18 Sep 2004; Leonardo Boshell <leonardop@gentoo.org> dasher-3.2.11.ebuild:
+  New release.
+
+  23 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> dasher-3.2.10-r1.ebuild:
+  Stable on alpha.
+
+  05 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> dasher-3.2.10-r1.ebuild:
+  Stable on sparc
+
+  05 Aug 2004; Guy Martin <gmsoft@gentoo.org> dasher-3.2.10-r1.ebuild:
+  Stable on hppa.
+
+  23 Jul 2004; Travis Tilley <lv@gentoo.org> dasher-3.2.10-r1.ebuild:
+  stable on amd64
+
+  01 Jul 2004; Aron Griffis <agriffis@gentoo.org> dasher-3.2.10-r1.ebuild:
+  add ~alpha
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> dasher-3.2.4.ebuild:
+  sync IUSE (-nls)
+
+  30 May 2004; L. Boshell <leonardop@gentoo.org> dasher-3.2.10-r1.ebuild:
+  Marked stable on x86.
+
+  25 May 2004; David Holm <dholm@gentoo.org> dasher-3.2.10-r1.ebuild:
+  Readded to ~ppc.
+
+  24 May 2004; Jon Portnoy <avenj@gentoo.org> dasher-3.2.10-r1.ebuild :
+  AMD64 keywords to fix GNOME repoman report.
+
+*dasher-3.2.10-r1 (11 May 2004)
+
+  11 May 2004; L. Boshell <leonardop@gentoo.org> dasher-3.2.10-r1.ebuild,
+  files/dasher-3.2.10-glade_fix.patch:
+  Revision bump, including a patch that fixes the color preferences widget.
+
+*dasher-3.2.10 (28 Apr 2004)
+
+  28 Apr 2004; L. Boshell <leonardop@gentoo.org> dasher-3.2.10.ebuild:
+  New release.
+
+  23 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> dasher-3.2.4.ebuild:
+  Fixed IUSE.
+
+  18 Apr 2004; L. Boshell <leonardop@gentoo.org> dasher-3.2.4.ebuild:
+  Added scrollkeeper dependecy. Thanks to Daniel Rendall for his help on
+  bug #47824.
+
+  12 Apr 2004; L. Boshell <leonardop@gentoo.org> dasher-3.2.4.ebuild:
+  Marked stable on x86.
+
+  20 Mar 2004; L. Boshell <leonardop@gentoo.org> dasher-3.2.1.ebuild:
+  Marked stable on x86.
 
   13 Mar 2004; foser <foser@gentoo.org> metadata.xml :
   Maintainership to gnome-accessibility

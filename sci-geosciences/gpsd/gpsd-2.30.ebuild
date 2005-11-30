@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/gpsd-2.30.ebuild,v 1.1 2005/10/01 05:51:09 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gpsd/gpsd-2.30.ebuild,v 1.1.1.1 2005/11/30 10:02:12 chriswhite Exp $
 
 inherit eutils libtool distutils
 

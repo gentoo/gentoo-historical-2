@@ -1,7 +1,31 @@
 # ChangeLog for media-libs/coin
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-libs/coin/ChangeLog,v 1.1 2002/02/01 21:53:30 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/coin/ChangeLog,v 1.1.1.1 2005/11/30 10:04:07 chriswhite Exp $
 
+  05 Nov 2005; Luis Medinas <metalgod@gentoo.org> coin-2.4.3.ebuild:
+  Added ~amd64 keyword.
+
+  13 Jul 2005; David Holm <dholm@gentoo.org> coin-2.4.3.ebuild:
+  Added to ~ppc.
+
+*coin-2.4.3 (12 Jul 2005)
+
+  12 Jul 2005; Jonathan Smith <smithj@gentoo.org> +metadata.xml,
+  +coin-2.4.3.ebuild:
+  #96661: version bump. this package needs a maintainer...
+
+*coin-2.1.0 (20 Jul 2003)
+
+  20 Jul 2003; Caleb Tennis <caleb@gentoo.org> coin-2.1.0.ebuild:
+  Version bump
+
+*coin-20030619 (21 Jun 2003)
+
+  21 Jun 2003; <msterret@gentoo.org> coin-20030619.ebuild:
+  update to later snapshot (bug 20541)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *coin-20010601-r1 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

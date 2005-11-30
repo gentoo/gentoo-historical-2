@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-dbi/ruby-dbi-0.0.21.ebuild,v 1.1 2004/03/31 19:02:42 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-dbi/ruby-dbi-0.0.21.ebuild,v 1.1.1.1 2005/11/30 10:01:18 chriswhite Exp $
 
-inherit ruby
+inherit ruby eutils
 
 DESCRIPTION="Ruby/DBI - a database independent interface for accessing databases - similar to Perl's DBI"
 HOMEPAGE="http://ruby-dbi.sourceforge.net/"
@@ -10,11 +10,11 @@ SRC_URI="mirror://sourceforge/ruby-dbi/ruby-dbi-all-${PV}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 USE_RUBY="ruby16 ruby18 ruby19"
 IUSE="firebird odbc postgres mysql"
 
-DEPEND="dev-lang/ruby
+DEPEND="virtual/ruby
 	mysql? ( >=dev-db/mysql-3.23.49 )
 	postgres? ( >=dev-db/postgresql-7.1.3-r4 )
 	firebird? ( >=dev-db/firebird-1.0-r1 )

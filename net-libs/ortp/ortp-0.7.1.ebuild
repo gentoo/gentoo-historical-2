@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/ortp/ortp-0.7.1.ebuild,v 1.1 2005/11/12 04:36:03 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/ortp/ortp-0.7.1.ebuild,v 1.1.1.1 2005/11/30 10:03:02 chriswhite Exp $
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP) stack"
 HOMEPAGE="http://www.linphone.org/ortp/"

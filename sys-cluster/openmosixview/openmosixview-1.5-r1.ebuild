@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixview/openmosixview-1.5-r1.ebuild,v 1.1 2005/04/16 13:01:07 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixview/openmosixview-1.5-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:46 chriswhite Exp $
 
 inherit toolchain-funcs eutils
 
 S=${WORKDIR}/openmosixview-${PV}
 DESCRIPTION="cluster-management GUI for OpenMosix"
-SRC_URI="www.openmosixview.com/download/openmosixview-${PV}.tar.gz"
+SRC_URI="http://www.openmosixview.com/download/openmosixview-${PV}.tar.gz"
 HOMEPAGE="http://www.openmosixview.com"
 IUSE=""
 
-DEPEND=">=x11-libs/qt-2.3.0
+DEPEND="<x11-libs/qt-4
 	>=sys-cluster/openmosix-user-0.3.0
 	>=sys-kernel/openmosix-sources-2.4.19"
 

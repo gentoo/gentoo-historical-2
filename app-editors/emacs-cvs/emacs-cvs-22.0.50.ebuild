@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-cvs/emacs-cvs-22.0.50.ebuild,v 1.1 2005/02/11 07:17:37 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs-cvs/emacs-cvs-22.0.50.ebuild,v 1.1.1.1 2005/11/30 10:02:05 chriswhite Exp $
 
 ECVS_AUTH="ext"
 export CVS_RSH="ssh"
@@ -28,7 +28,7 @@ RESTRICT="$RESTRICT nostrip"
 DEPEND=">=sys-libs/ncurses-5.3
 	spell? ( || ( app-text/ispell app-text/aspell ) )
 	X? ( virtual/x11
-		gif? ( >=media-libs/libungif-4.1.0.1b )
+		gif? ( >=media-libs/giflib-4.1.0.1b )
 		jpeg? ( >=media-libs/jpeg-6b )
 		tiff? ( >=media-libs/tiff-3.5.7 )
 		png? ( >=media-libs/libpng-1.2.5 )
@@ -42,15 +42,21 @@ PROVIDE="virtual/emacs virtual/editor"
 
 SLOT="22.0.50"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~ppc-macos"
+KEYWORDS="x86 ppc sparc ~amd64 ~ppc-macos"
 
 DFILE=emacs-${SLOT}.desktop
 
 src_compile() {
 
+	# no flag is allowed
+	ALLOWED_FLAGS=" "
 	strip-flags
+	unset LDFLAGS
+
 	epatch ${FILESDIR}/emacs-subdirs-el-gentoo.diff
-	use ppc-macos && epatch ${FILESDIR}/emacs-21.3.50-nofink.diff
+	use ppc-macos && epatch ${FILESDIR}/emacs-cvs-21.3.50-nofink.diff
+
+	sed -i -e "s/-lungif/-lgif/g" configure* src/Makefile* || die
 
 	local myconf
 
@@ -97,6 +103,7 @@ src_install () {
 	# make DESTDIR=${D} install doesn't work
 	einstall || die "einstall failed"
 	rm ${D}/usr/bin/emacs-${SLOT}.emacs-${SLOT} || die "removing duplicate emacs executable failed"
+	dohard /usr/bin/emacs.emacs-${SLOT} /usr/bin/emacs-${SLOT} || die
 
 	if use aqua ; then
 		einfo "Installing Carbon Emacs..."
@@ -132,7 +139,7 @@ src_install () {
 	dodoc BUGS ChangeLog README
 
 	if use gnome; then
-		insinto /usr/share/gnome/apps/Application
+		insinto /usr/share/applications
 		doins ${FILESDIR}/${DFILE} || die "install desktop file failed"
 	fi
 }

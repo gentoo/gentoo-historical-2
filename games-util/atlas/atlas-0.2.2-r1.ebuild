@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/atlas/atlas-0.2.2-r1.ebuild,v 1.1 2005/02/14 16:35:14 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/atlas/atlas-0.2.2-r1.ebuild,v 1.1.1.1 2005/11/30 10:00:59 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 MY_P="Atlas-${PV}"
 DESCRIPTION="Chart Program to use with Flightgear Flight Simulator"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/atlas/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~sparc ~x86"
+KEYWORDS="ppc ~sparc x86"
 IUSE=""
 
 DEPEND=">=games-simulation/flightgear-0.9.4
@@ -21,7 +21,7 @@ DEPEND=">=games-simulation/flightgear-0.9.4
 
 S=${WORKDIR}/${MY_P}
 
-INSDESTTREE="/usr/games/lib/FlightGear"
+INSDESTTREE="${GAMES_LIBDIR}/FlightGear"
 
 src_unpack() {
 	unpack ${A}
@@ -30,14 +30,14 @@ src_unpack() {
 }
 
 src_compile() {
-	egamesconf --with-fgbase=/usr/games/lib/FlightGear || die
+	egamesconf --with-fgbase="${GAMES_LIBDIR}/FlightGear" || die
 	emake || die "emake failed"
 }
 
 src_install() {
 	doins "${S}/src/AtlasPalette" || die
 	egamesinstall || die
-	keepdir /usr/games/lib/FlightGear/Atlas/lowres
+	keepdir "${GAMES_LIBDIR}/FlightGear/Atlas/lowres"
 	dodoc AUTHORS README
 	prepgamesdirs
 }
@@ -46,8 +46,8 @@ pkg_postinst() {
 	games_pkg_postinst
 
 	einfo "You now can make the maps with the following commands:"
-	einfo "/usr/games/bin/Map --atlas=/usr/games/lib/FlightGear/Atlas"
-	einfo "/usr/games/bin/Map --atlas=/usr/games/lib/FlightGear/Atlas/lowres --size=64"
+	einfo "${GAMES_BINDIR}/Map --atlas=${GAMES_LIBDIR}/FlightGear/Atlas"
+	einfo "${GAMES_BINDIR}/Map --atlas=${GAMES_LIBDIR}/FlightGear/Atlas/lowres --size=64"
 	echo
 	einfo "To run Atlas concurrently with FlightGear use the following:"
 	einfo "Atlas --path=[path of map images] --udp=[port number]"
@@ -60,6 +60,6 @@ pkg_postrm() {
 	einfo "You must manually remove the maps if you don't want them around."
 	einfo "They are found in the following directory:"
 	echo
-	einfo "/usr/games/lib/FlightGear/Atlas"
+	einfo "${GAMES_LIBDIR}/FlightGear/Atlas"
 	echo
 }

@@ -1,36 +1,37 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/courier-imap-3.0.7.ebuild,v 1.1 2004/08/20 05:53:46 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/courier-imap-3.0.7.ebuild,v 1.1.1.1 2005/11/30 10:03:29 chriswhite Exp $
 
 inherit eutils gnuconfig
 
 DESCRIPTION="An IMAP daemon designed specifically for maildirs"
-SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 HOMEPAGE="http://www.courier-mta.org/"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~hppa ~amd64"
+SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="x86 ppc sparc ~mips ~alpha hppa amd64 ppc64 ia64"
 IUSE="fam berkdb gdbm debug ipv6 ldap mysql nls pam postgres selinux"
-PROVIDE="virtual/imapd"
-# not compatible with >=sys-libs/db-4
+#userpriv breaks linking against vpopmail
+RESTRICT="nouserpriv"
+
 RDEPEND="virtual/libc
 	>=dev-libs/openssl-0.9.6
 	pam? ( >=sys-libs/pam-0.75 )
-	berkdb? ( >=sys-libs/db-3* )
-	gdbm ( >=sys-libs/gdbm-1.8.0 )
+	berkdb? ( sys-libs/db )
+	gdbm? ( >=sys-libs/gdbm-1.8.0 )
 	mysql? ( >=dev-db/mysql-3.23.36 )
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	postgres? ( >=dev-db/postgresql-7.2 )
 	>=dev-tcltk/expect-5.33.0
-	fam? ( app-admin/fam )
+	fam? ( virtual/fam )
 	selinux? ( sec-policy/selinux-courier-imap )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
 	dev-lang/perl
-	sys-apps/procps"
+	sys-process/procps"
+PROVIDE="virtual/imapd"
 
-#userpriv breaks linking against vpopmail
-RESTRICT="nouserpriv nomirror"
 pkg_setup() {
 	if ! use berkdb && ! use gdbm; then
 		echo
@@ -58,37 +59,17 @@ vpopmail_setup() {
 src_unpack() {
 	unpack ${A}
 
-	# patch to fix db4.0 detection as db4.1
-	# bug #27517, patch was sent upstream, but was ignored :-(
-	# EPATCH_OPTS="${EPATCH_OPTS} -p1 -d ${S}" \
-	# epatch ${FILESDIR}/${PN}-3.0.2-db40vs41.patch
-
 	cd ${S}
-	# explicitly use db3 over db4
-	#if use berkdb; then
-	#	sed -i -e 's,-ldb,-ldb-3.2,g' configure
-	#	sed -i -e 's,-ldb,-ldb-3.2,g' bdbobj/configure
-	#	sed -i -e 's#s,@CFLAGS@,$CFLAGS,#s,@CFLAGS@,-I/usr/include/db3 $CFLAGS,#' configure
-	#	sed -i -e 's#s,@CFLAGS@,$CFLAGS,#s,@CFLAGS@,-I/usr/include/db3 $CFLAGS,#' bdbobj/configure
-	#fi
-
-	# Fix a bug with where the password change module is installed. Upstream bug in configure file.
-	#sed -i -e 's,--with-authchangepwdir=/var/tmp/dev/null,--with-authchangepwdir=$libexecdir/authlib,' configure
-
-	# epatch ${FILESDIR}/${PN}-3.0.2-removerpm.patch || die "patch failed."
-
-	# bug #48838 - make is possible to disable fam
-	# EPATCH_OPTS="${EPATCH_OPTS} -p1 -d ${S}" \
-	# epatch ${FILESDIR}/${P}-disable-fam.diff || die "patch failed."
-
-	#rm -f configure config.h.in saslauthd/configure
-	#cp ${FILESDIR}/configure.in . || die "failed copy configure.in"
+	# bug #48838. Patch to enable/disable FAM support.
+	# 20 Aug 2004; langthang@gentoo.org.
+	# This new patch should fix bug #51540. fam USE flag is not needed for shared folder support.
 	epatch ${FILESDIR}/${P}-disable-fam-configure.in.patch || die "patch failed"
+
+	# These patches should fix problem detecting Berkeley DB.
+	# We now can compile with db4 support.
 	epatch ${FILESDIR}/${P}-db4-bdbobj_configure.in.patch || die "patch failed"
 	epatch ${FILESDIR}/${P}-db4-configure.in.patch || die "patch failed"
-	#cp ${FILESDIR}/bdbobj_configure.in bdbobj/configure.in || die "failed copy bdbobj/configure.in"
 
-	#cd ${S}
 	export WANT_AUTOCONF="2.5"
 	gnuconfig_update
 	ebegin "Recreating configure"
@@ -96,24 +77,17 @@ src_unpack() {
 		die "recreate configure failed"
 	eend $?
 
-	#cd ${S}/authlib
-	#ebegin "Recreating authlib/configure"
-	#autoconf || \
-        #        die "recreate configure failed"
-	#eend $?
-
 	cd ${S}/maildir
 	ebegin "Recreating maildir/configure"
 	autoconf || \
 		die "recreate configure failed"
 	eend $?
 
-        cd ${S}/bdbobj
-        ebegin "Recreating bdbobj/configure"
-        autoconf || \
-                die "recreate configure failed"
-        eend $?
-	#elibtoolize
+	cd ${S}/bdbobj
+	ebegin "Recreating bdbobj/configure"
+		autoconf || \
+		die "recreate configure failed"
+	eend $?
 }
 src_compile() {
 	vpopmail_setup
@@ -126,7 +100,9 @@ src_compile() {
 	# the --with-ipv6 is broken
 	#myconf="${myconf} --with-ipv6"
 	use ipv6 || myconf="${myconf} --without-ipv6"
-	# default to gdbm if both berkdb and gdbm present. langthang@g.o 20040819
+
+	# 19 Aug 2004; langthang@gentoo.org
+	# default to gdbm if both berkdb and gdbm present.
 	if use berkdb; then
 		if use gdbm; then
 			einfo "build with GDBM support."
@@ -166,16 +142,16 @@ src_compile() {
 	rm -f ${cachefile}
 
 	# fix for bug #21330
-	# CFLAGS="`echo ${CFLAGS} | xargs`"
-	# CXXFLAGS="`echo ${CXXFLAGS} | xargs`"
-	# LDFLAGS="`echo ${LDFLAGS} | xargs`"
+	CFLAGS="`echo ${CFLAGS} | xargs`"
+	CXXFLAGS="`echo ${CXXFLAGS} | xargs`"
+	LDFLAGS="`echo ${LDFLAGS} | xargs`"
 
 	# fix for bug #27528
 	# they really should use a better way to detect redhat
 	myconf="${myconf} --without-redhat"
 
 	# bug #29879 - FAM support
-	#if has_version 'app-admin/fam' && ! use fam; then
+	#if has_version 'virtual/fam' && ! use fam; then
 	#	ewarn "FAM will be detected by the package and support will be enabled"
 	#	ewarn "The package presently provides no way to disable fam support if you don't want it"
 	#fi
@@ -256,8 +232,15 @@ src_install() {
 	do
 		echo -e '\n#Hardwire a value for ${MAILDIR}' >> ${service}
 		echo 'MAILDIR=.maildir' >> ${service}
+		echo 'MAILDIRPATH=.maildir' >> ${service}
 		echo -e '#Put any program for ${PRERUN} here' >> ${service}
 		echo 'PRERUN='>> ${service}
+	done
+	# upstream has an extra setting of MAILDIRPATH (it's already in the base files)
+	for service in imapd-ssl pop3d-ssl
+	do
+		echo -e '\n#Hardwire a value for ${MAILDIR}' >> ${service}
+		echo 'MAILDIRPATH=.maildir' >> ${service}
 	done
 
 	cd ${D}/usr/sbin
@@ -311,15 +294,16 @@ src_install() {
 
 	keepdir /var/lib/courier-imap/authdaemon
 
-	# bug #42686, more docs
-	dodoc 00README.NOW.OR.SUFFER AUTHORS INSTALL NEWS NEWS.html README ChangeLog
+	# bug #45953, more docs
+	cd ${S}
+	dohtml -r ${S}/*
+	dodoc ${S}/{00README.NOW.OR.SUFFER,AUTHORS,INSTALL,NEWS,README,ChangeLog}
 	docinto imap
-	dodoc ${S}/imap/{ChangeLog,BUGS,FAQ,FAQ.html,README,README.html,README.imapkeywords.html}
+	dodoc ${S}/imap/{ChangeLog,BUGS,BUGS.html,README}
 	docinto maildir
-	dodoc ${S}/maildir/{AUTHORS,INSTALL,README.maildirfilter.html,README.maildirquota.txt,README.sharedfolders.txt}
+	dodoc ${S}/maildir/{AUTHORS,INSTALL,README.maildirquota.txt,README.sharedfolders.txt}
 	docinto tcpd
 	dodoc ${S}/tcpd/README.couriertls
-
 }
 
 pkg_postinst() {

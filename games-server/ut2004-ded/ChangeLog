@@ -1,6 +1,36 @@
 # ChangeLog for games-server/ut2004-ded
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/ut2004-ded/ChangeLog,v 1.1 2004/07/04 00:38:43 wolf31o2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/ut2004-ded/ChangeLog,v 1.1.1.1 2005/11/30 10:04:31 chriswhite Exp $
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3355.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-ded-3339.ebuild, ut2004-ded-3355.ebuild:
+  Marking 3355 stable on x86 and amd64 and removing old version.
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  ut2004-ded-3355.ebuild:
+  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
+
+*ut2004-ded-3355 (16 May 2005)
+
+  16 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +ut2004-ded-3355.ebuild:
+  Added 3355 version for testing.
+
+*ut2004-ded-3339 (26 Nov 2004)
+
+  26 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  -ut2004-ded-3323.ebuild, +ut2004-ded-3339.ebuild:
+  Updated to latest version and closing bug #67105.
+
+*ut2004-ded-3323 (14 Sep 2004)
+
+  14 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> -ut2004-ded-3236.ebuild,
+  +ut2004-ded-3323.ebuild:
+  Removing old versions and updating to newest patch.
 
 *ut2004-ded-3236 (03 Jul 2004)
 

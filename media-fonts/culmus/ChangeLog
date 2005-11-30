@@ -1,6 +1,48 @@
 # ChangeLog for media-fonts/culmus
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/ChangeLog,v 1.1 2004/05/15 09:07:53 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/ChangeLog,v 1.1.1.1 2005/11/30 10:01:32 chriswhite Exp $
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> culmus-0.101.ebuild:
+  Mark 0.101 stable on alpha
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> culmus-0.101.ebuild:
+  Stable on sparc
+
+  24 Aug 2005; Jonathan Smith <smithj@gentoo.org> culmus-0.93-r1.ebuild,
+  culmus-0.100-r1.ebuild:
+  #103487: changed cp -a to cp -pPR for non-GNU userlands
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> culmus-0.101.ebuild:
+  Keyworded ~sparc
+
+*culmus-0.101 (28 Mar 2005)
+
+  28 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> +culmus-0.101.ebuild:
+  Version bumped; bug #86537.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> culmus-0.100-r1.ebuild,
+  -culmus-0.100.ebuild:
+  Stable on x86, alpha and ppc.
+
+  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> culmus-0.100-r1.ebuild:
+  Marked ~amd64.
+
+  21 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> -culmus-0.8.ebuild,
+  -culmus-0.90-r1.ebuild, -culmus-0.90.ebuild, -culmus-0.93.ebuild:
+  Ebuilds cleanup.
+
+  14 Jun 2004; <pyrania@gentoo.org> culmus-0.93-r1.ebuild:
+  Stable on x86.
+
+*culmus-0.100-r1 (14 Jun 2004)
+
+  14 Jun 2004; Alex Veber <coronalvr@gentoo.org> +culmus-0.100-r1.ebuild:
+  Added some more fancy fonts.
+
+*culmus-0.100 (14 Jun 2004)
+
+  14 Jun 2004; Alex Veber <coronalvr@gentoo.org> +culmus-0.100.ebuild:
+  Version bump.
 
 *culmus-0.93-r1 (15 May 2004)
 

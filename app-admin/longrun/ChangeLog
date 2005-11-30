@@ -1,8 +1,41 @@
 # ChangeLog for app-admin/longrun
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-admin/longrun/ChangeLog,v 1.1 2002/02/01 21:52:59 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/longrun/ChangeLog,v 1.1.1.1 2005/11/30 10:00:15 chriswhite Exp $
+
+  03 Sep 2005; Petteri Räty <betelgeuse@gentoo.org> longrun-0.9-r2.ebuild:
+  Marked stable on x86.
+
+  12 Aug 2005; Petteri Räty <betelgeuse@gentoo.org> longrun-0.9-r1.ebuild:
+  Moved the gcc-3 patch from Debian to distfiles mirrors.
+
+*longrun-0.9-r2 (31 Jul 2005)
+
+  31 Jul 2005; Petteri Räty <betelgeuse@gentoo.org> +metadata.xml,
+  +longrun-0.9-r2.ebuild:
+  Added Debian patches. Resolves bug #55369.
+  Also added checks for the right kernel config.
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> longrun-0.9-r1.ebuild:
+  inherit eutils for epatch; error check
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> longrun-0.9.ebuild:
+  clean old ebuild
+
+  25 May 2003; Martin Holzer <mholzer@gentoo.org> longrun-0.9-r1.ebuild,
+  longrun-0.9.ebuild:
+  now uses mirror://kernel
+
+*longrun-0.9-r1 (17 Apr 2003)
+
+  17 Apr 2003; Brandon Low <lostlogic@gentoo.org> Manifest,
+  longrun-0.9-r1.ebuild, files/longrun-0.9-r1-debian-gcc-3.diff:
+  Add a fix for compilation on gcc-3
 
 *longrun-0.9 (1 Feb 2002)
+
+  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> longrun-0.9.ebuild :
+
+  Added -ppc to KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

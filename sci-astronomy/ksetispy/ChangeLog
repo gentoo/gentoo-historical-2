@@ -1,6 +1,10 @@
-# ChangeLog for app-sci/ksetispy
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/ksetispy/ChangeLog,v 1.1 2004/12/24 03:47:11 ribosome Exp $
+# ChangeLog for sci-astronomy/ksetispy
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/ksetispy/ChangeLog,v 1.1.1.1 2005/11/30 10:01:52 chriswhite Exp $
+
+  23 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -ksetispy-0.5.2.ebuild,
+  -ksetispy-0.5.3.ebuild:
+  Removed obsolete versions.
 
 *ksetispy-0.6.2 (23 Dec 2004)
 

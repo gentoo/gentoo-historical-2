@@ -1,6 +1,18 @@
 # ChangeLog for media-fonts/sgi-fonts
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/sgi-fonts/ChangeLog,v 1.1 2004/10/01 18:48:19 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/sgi-fonts/ChangeLog,v 1.1.1.1 2005/11/30 10:01:29 chriswhite Exp $
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> sgi-fonts-1.0.ebuild:
+  Mark 1.0 stable on alpha
+
+  14 Dec 2004; Markus Rothe <corsair@gentoo.org> sgi-fonts-1.0.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> sgi-fonts-1.0.ebuild:
+  Marked ~ppc64; bug #68103
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> sgi-fonts-1.0.ebuild:
+  keywords ~amd64
 
 *sgi-fonts-1.0 (02 Oct 2004)
 

@@ -1,8 +1,51 @@
 # ChangeLog for app-admin/logsentry
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logsentry/ChangeLog,v 1.1 2002/09/27 22:20:03 g2boojum Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logsentry/ChangeLog,v 1.1.1.1 2005/11/30 09:59:48 chriswhite Exp $
 
-*logsentry-1.1.1 (27 Sept. 2002)
+  07 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> logsentry-1.1.1.ebuild:
+  Added ~mips.
+
+  31 Dec 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
+  Taking over as placeholder maintainer.  Fixed some ebuild stuff.
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> logsentry-1.1.1.ebuild:
+  was testing for over 2 years without bug reports, marking stable on amd64
+
+  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> logsentry-1.1.1.ebuild:
+  Fix an einfo typo mentioned by Leonid Kabanov <lkabanov@mail.ru> in bug #73971.
+
+  10 Dec 2004; Andrej Kacian <ticho@gentoo.org> logsentry-1.1.1.ebuild:
+  Changed mail-client/mailx -> virtual/mailx in RDEPEND, for bug #73972.
+
+  07 Nov 2004; Simon Stelling <blubb@gentoo.org> logsentry-1.1.1.ebuild:
+  added ~amd64
+
+  14 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> logsentry-1.1.1.ebuild:
+  logsentry.cron should be executable (bug #67531).
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> logsentry-1.1.1.ebuild:
+  QA - IUSE fix
+
+  30 May 2004; Robin H. Johnson <robbat2@gentoo.org> logsentry-1.1.1.ebuild:
+  mailx move
+
+  09 Jun 2003; <msterret@gentoo.org> logsentry-1.1.1.ebuild:
+  DEPEND on sed >=4; use sed -i; fix SRC_URI and comment out HOMEPAGE since
+  things are unclear.
+
+  07 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> logsentry-1.1.1.ebuild :
+  Updated dependencies, closes #13332.
+
+*logsentry-1.1.1 (27 Sep 2002)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> logsentry-1.1.1 :
+  Moved to stable on ppc
+
+  07 Dec 2002; Jack Morgan <jmorgan@gentoo.org> logsentry-1.1.1 :
+  Changed sparc64 to sparc keyword
+
+  16 Oct 2002; <mcummings@gentoo.org>
+  Added sparc64 
 
   27 Sept. 2002; Grant Goodyear <g2boojum@gentoo.org> 
   New package

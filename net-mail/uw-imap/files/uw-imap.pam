@@ -1,4 +1,5 @@
 #%PAM-1.0
+# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/files/uw-imap.pam,v 1.1.1.1 2005/11/30 10:03:07 chriswhite Exp $
 auth       required     pam_pwdb.so shadow nullok
 account    required     pam_pwdb.so
 session    required     pam_pwdb.so

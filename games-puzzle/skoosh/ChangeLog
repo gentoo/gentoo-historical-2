@@ -1,6 +1,23 @@
 # ChangeLog for games-puzzle/skoosh
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/skoosh/ChangeLog,v 1.1 2004/03/08 07:43:31 mr_bones_ Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/skoosh/ChangeLog,v 1.1.1.1 2005/11/30 10:02:28 chriswhite Exp $
+
+  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> skoosh-2.5.0.ebuild:
+  tidy
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> skoosh-2.5.0.ebuild:
+  Marked ppc stable.
+
+  11 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> skoosh-2.5.0.ebuild:
+  Added ~amd64 KEYWORD and closing bug #69758.
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> skoosh-2.5.0.ebuild:
+  Added ~ppc.
+
+*skoosh-2.5.0 (25 Jul 2004)
+
+  25 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +skoosh-2.5.0.ebuild:
+  version bump - ebuild from Holly Bostick via bug #57375
 
 *skoosh-2.0.8 (07 Mar 2004)
 

@@ -1,6 +1,36 @@
 # ChangeLog for app-arch/pbzip2
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/pbzip2/ChangeLog,v 1.1 2004/09/29 03:25:38 wolf31o2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/pbzip2/ChangeLog,v 1.1.1.1 2005/11/30 10:00:35 chriswhite Exp $
+
+  14 Sep 2005; Fabian Groffen <grobian@gentoo.org> pbzip2-0.9.4.ebuild:
+  Marking ~ppc-macos (bug #105854)
+
+  12 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> -pbzip2-0.9.1.ebuild:
+  Cleaning out older versions.
+
+*pbzip2-0.9.4 (30 Aug 2005)
+
+  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> +pbzip2-0.9.4.ebuild:
+  Version bumped to 0.9.4 thanks to an email from Jeff Gilchrist
+  <pbzip2@compression.ca>.
+
+*pbzip2-0.9.1 (10 Jun 2005)
+
+  10 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> -pbzip2-0.8.2.ebuild,
+  +pbzip2-0.9.1.ebuild:
+  Version bumped to 0.9.1 and closing bug #82327.
+
+  16 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> pbzip2-0.8.ebuild,
+  pbzip2-0.8.2.ebuild:
+  Removed inherit line for bug #92745.
+
+*pbzip2-0.8.2 (30 Dec 2004)
+
+  30 Dec 2004; Thomas Matthijs <axxo@gentoo.org> +pbzip2-0.8.2.ebuild:
+  version bump
+
+  15 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org> pbzip2-0.8.ebuild:
+  Fixing sed line and closing bug #69576.
 
 *pbzip2-0.8 (28 Sep 2004)
 

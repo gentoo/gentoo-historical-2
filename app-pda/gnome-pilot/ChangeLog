@@ -1,8 +1,75 @@
-# ChangeLog for gnome-extra/gnome-pilot
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/ChangeLog,v 1.1 2003/08/30 09:36:33 liquidx Exp $
+# ChangeLog for app-pda/gnome-pilot
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/ChangeLog,v 1.1.1.1 2005/11/30 10:02:22 chriswhite Exp $
 
-*gnome-pilot-2.0.9 (30 Aug 2003)
+  19 Nov 2005; Alastair Tse <liquidx@gentoo.org>
+  gnome-pilot-0.1.65-r5.ebuild, gnome-pilot-0.1.71.ebuild,
+  gnome-pilot-2.0.10-r1.ebuild, gnome-pilot-2.0.12.ebuild,
+  gnome-pilot-2.0.13.ebuild:
+  fix homepage
+
+*gnome-pilot-2.0.13 (17 May 2005)
+
+  17 May 2005; Alastair Tse <liquidx@gentoo.org> gnome-pilot-0.1.71.ebuild,
+  +gnome-pilot-2.0.13.ebuild:
+  version bump
+
+  22 Sep 2004; Alastair Tse <liquidx@gentoo.org>
+  +files/gnome-pilot-2.0.12-zire31.patch, gnome-pilot-2.0.12.ebuild:
+  added zire31 support (#62332)
+
+*gnome-pilot-2.0.12 (03 Sep 2004)
+
+  03 Sep 2004; Brandon Hale <tseng@gentoo.org> +gnome-pilot-2.0.12.ebuild:
+  Version bump, drop patches merged upstream.
+
+  13 Aug 2004; Alastair Tse <liquidx@gentoo.org>
+  files/gnome-pilot-2.0.10-gcc34.patch:
+  better gcc 3.4 patch thanks to Matthew Baker <shadesfox@nightstar.net> (#60016)
+
+  24 Jul 2004; Alastair Tse <liquidx@gentoo.org> gnome-pilot-2.0.10-r1.ebuild,
+  -gnome-pilot-2.0.9.ebuild:
+  fix SRC_URI (#56769)
+
+  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/gnome-pilot-2.0.10-gcc34.patch:
+  Added gcc-3.4 fixes to close bug #53655
+
+  27 Jun 2004; Alastair Tse <liquidx@gentoo.org>
+  +files/gnome-pilot-2.0.10-clie.patch:
+  patch to support Clie TJ-35 by Guy Van Sanden <nocturn@pandora.be> (#52550)
+
+  26 Jun 2004; Alastair Tse <liquidx@gentoo.org>
+  +files/gnome-pilot-2.0.10-missing_proc.patch, gnome-pilot-2.0.10-r1.ebuild:
+  added patch to prevent segv on missing /proc/bus/usb/devices (#42378)
+
+  04 Feb 2004; Alastair Tse <liquidx@gentoo.org> gnome-pilot-2.0.10-r1.ebuild,
+  files/gnome-pilot-2.0.10-treo600.patch:
+  add patch to support treo600 (#39004)
+
+  14 Dec 2003; Lars Weiler <pylon@gentoo.org> gnome-pilot-2.0.10-r1.ebuild:
+  Make stable on ppc
+
+  13 Dec 2003; Brad House <brad_mssw@gentoo.org> gnome-pilot-2.0.10-r1.ebuild:
+  mark stable on amd64
+
+  21 Nov 2003; Jason Wever <weeve@gentoo.org> gnome-pilot-2.0.10-r1.ebuild:
+  Marked stable on sparc.
+
+*gnome-pilot-2.0.10-r1 (20 Sep 2003)
+
+  20 Sep 2003; Alastair Tse <liquidx@gentoo.org> gnome-pilot-2.0.10-r1.ebuild,
+  files/gnome-pilot-2.0.10-memofile.patch:
+  added patch to fix memofile syncing problems (eg. it works now)
+
+  12 Sep 2003; Alastair Tse <liquidx@gentoo.org> gnome-pilot-2.0.10.ebuild,
+  gnome-pilot-2.0.9.ebuild:
+  removed bonobo-activation dep
+
+  30 Aug 2003; Alastair Tse <liquidx@gentoo.org> gnome-pilot-0.1.65-r5.ebuild,
+  gnome-pilot-0.1.71.ebuild, gnome-pilot-2.0.10.ebuild,
+  gnome-pilot-2.0.9.ebuild:
+  moved dev-libs/pilot-link to app-pda/pilot-link
 
   30 Aug 2003; Alastair Tse <liquidx@gentoo.org> gnome-pilot-0.1.65-r5.ebuild,
   gnome-pilot-0.1.71.ebuild, gnome-pilot-2.0.10.ebuild,

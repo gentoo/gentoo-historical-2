@@ -1,38 +1,61 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Your Name <your email>
-# $Header: /var/cvsroot/gentoo-x86/media-libs/SoGtk/SoGtk-20010601-r1.ebuild,v 1.1 2001/10/06 15:30:16 danarmak Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/SoGtk/SoGtk-20010601-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:14 chriswhite Exp $
 
+inherit eutils
 
-A=${P}.tar.gz
-S=${WORKDIR}/${PN}
-DESCRIPTION="A Qt Interface for coin"
-SRC_URI="ftp://ftp.coin3d.org/pub/snapshots/${A}"
+DESCRIPTION="A Gtk Interface for coin"
 HOMEPAGE="http://www.coin3d.org"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
+LICENSE="LGPL-2.1"
+SLOT="0"
+KEYWORDS="x86 sparc"
+IUSE="doc nls"
 
-DEPEND="virtual/x11 sys-devel/autoconf sys-devel/automake sys-devel/libtool
-	>=x11-libs/gtkglarea-1.2.2
-        =media-libs/coin-${PV}"
+DEPEND="virtual/x11
+	<x11-libs/gtkglarea-1.99.0
+	media-libs/coin
+	=sys-apps/sed-4*
+	nls? ( sys-devel/gettext )
+	doc? ( app-doc/doxygen )"
 
-RDEPEND="virtual/x11
-	>=x11-libs/gtkglarea-1.2.2
-        =media-libs/coin-${PV}"
+S=${WORKDIR}/${PN}
+
+src_unpack() {
+	unpack ${A}; cd ${S}
+	epatch ${FILESDIR}/${P}-string.patch
+}
+
 src_compile() {
 
-    ./bootstrap --add
+	./bootstrap --add
 
-    try ./configure --prefix=/usr --host=${CHOST} --build=${CHOST}
-    try make
+	local myconf
 
+	if ! use nls
+	then
+		myconf="${myconf} --disable-nls"
+		touch intl/libgettext.h
+	fi
+	use doc && myconf="${myconf} --with-html --with-man"
+
+	econf \
+		--with-x \
+		${myconf} || die
+
+	sed -i "s:ENABLE_NLS 1:ENABLE_NLS 0:" config.h
+	make || die
 }
 
 src_install () {
-    
-    try make prefix=${D}/usr install
-    cd ${S}
-    dodoc AUTHORS COPYING ChangeLog* LICENSE* NEWS README*
-    docinto txt
-    dodoc docs/qtcomponents.doxygen
 
+	einstall \
+		bindir=${D}/usr/bin \
+		includedir=${D}/usr/include \
+		libdir=${D}/usr/lib || die
+
+	cd ${S}
+	dodoc AUTHORS COPYING ChangeLog* LICENSE* NEWS README*
+	docinto txt
+	dodoc docs/*
 }
-

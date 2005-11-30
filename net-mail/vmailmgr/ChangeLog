@@ -1,9 +1,73 @@
 # ChangeLog for net-mail/vmailmgr
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vmailmgr/ChangeLog,v 1.1.1.1 2005/11/30 10:03:10 chriswhite Exp $
 
+*vmailmgr-0.96.9-r3 (24 May 2005)
+
+  24 May 2005; Alin Nastac <mrness@gentoo.org>
+  -files/vmailmgr-0.96.9-gentoo-r1.diff, -vmailmgr-0.96.9-r1.ebuild,
+  +files/vmailmgr-0.96.9-gentoo-r3.patch, +vmailmgr-0.96.9-r3.ebuild:
+  Fix installation path of vmail.inc (#40324). Remove obsolete version.
+
+  16 May 2005; Andrej Kacian <ticho@gentoo.org> vmailmgr-0.96.9-r1.ebuild,
+  vmailmgr-0.96.9-r2.ebuild:
+  Inherit toolchain-funcs.eclass instead of gcc.eclass. Bug #92745.
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org> vmailmgr-0.96.9-r2.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+*vmailmgr-0.96.9-r2 (05 Mar 2005)
+
+  05 Mar 2005; Alin Nastac <mrness@gentoo.org>
+  +files/vmailmgr-0.96.9-gentoo-r2.patch,
+  -files/vmailmgr-0.96.9-gentoo.diff, +vmailmgr-0.96.9-r2.ebuild:
+  Fix bugs 25960 and 40324. This version is incompatible with
+  net-mail/courier-imap-4*.
+
+  24 Nov 2004; Andrej Kacian <ticho@gentoo.org> vmailmgr-0.96.9-r1.ebuild:
+  Inherit eutils, use epatch instead of patch.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> vmailmgr-0.96.9-r1.ebuild:
+  Added to ~ppc.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> vmailmgr-0.96.9-r1.ebuild:
+  Stable on sparc.
+
+  30 Sep 2004; Andrej Kacian <ticho@gentoo.org>
+  +files/vmailmgr-0.96.9-gcc3.3.patch, vmailmgr-0.96.9-r1.ebuild:
+  Apply patch to fix multiline strings so we compile cleanly on >=gcc3.3.
+  Closes #65400, patch provided by Christophe Saout <christophe@saout.de>.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  vmailmgr-0.96.9-r1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 Dec 2003; Jason Wever <weeve@gentoo.org> vmailmgr-0.96.9-r1.ebuild:
+  Changed sparc keyword to ~sparc since there were previously NO ebuilds of
+  ucspi-unix with sparc or ~sparc keywords to satisfy the dependency.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *vmailmgr-0.96.9-r1 (16 Apr 2002)
 
-  16 Apr 2002; Thilo Bangert <bangert@gentoo.org> ChangeLog :
+  29 Oct 2002; Nick Hadaway <raker@gentoo.org>
+  Now inheriting the gcc eclass so gcc2/gcc3 related fixes are only
+  applied if you are using the associated compiler.  Please see bug
+  #8994
 
+  30 Sep 2002; Nick Hadaway <raker@gentoo.org>
+  vmailmgr-0.96.9-r1.ebuild :
+  Reverted back to make DESTDIR=${D} install instead of einstall.
+
+  28 Sep 2002; Nick Hadaway <raker@gentoo.org>
+  vmailmgr-0.96.9-r1.ebuild, files/vmailmgr-0.96.9-gentoo-r1.diff :
+  Updated diff from bug #8445.  Added CXX="g++" to solve compile
+  problems with gcc3 and added -lsupc++ to LIBS so linked code will
+  understand the new, delete, etc. operator functions.  Changed to
+  econf and einstall.  Whew!
+
+  29 Apr 2002; Thilo Bangert <bangert@gentoo.org> ChangeLog :
+  fix install locations for the courier-imap auth lib and php and cgi scripts
+
+  16 Apr 2002; Thilo Bangert <bangert@gentoo.org> ChangeLog :
   initial release ;-)

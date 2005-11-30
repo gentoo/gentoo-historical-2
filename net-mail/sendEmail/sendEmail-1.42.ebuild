@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/sendEmail/sendEmail-1.42.ebuild,v 1.1 2004/06/19 01:29:20 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/sendEmail/sendEmail-1.42.ebuild,v 1.1.1.1 2005/11/30 10:03:15 chriswhite Exp $
 
 DESCRIPTION="Command line based, SMTP email agent"
 
@@ -12,7 +12,7 @@ LICENSE="as-is"
 
 SLOT="0"
 
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 
 IUSE=""
 

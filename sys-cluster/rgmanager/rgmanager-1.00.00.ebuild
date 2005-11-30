@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/rgmanager-1.00.00.ebuild,v 1.1 2005/06/30 23:24:49 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/rgmanager/rgmanager-1.00.00.ebuild,v 1.1.1.1 2005/11/30 10:01:51 chriswhite Exp $
 
 inherit linux-mod
 

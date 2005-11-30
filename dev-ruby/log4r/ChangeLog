@@ -1,6 +1,6 @@
 # ChangeLog for dev-ruby/log4r
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/log4r/ChangeLog,v 1.1 2005/08/19 15:02:11 tigger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/log4r/ChangeLog,v 1.1.1.1 2005/11/30 10:01:24 chriswhite Exp $
 
 *log4r-1.0.5 (19 Aug 2005)
 

@@ -1,7 +1,114 @@
 # ChangeLog for dev-ruby/fxruby
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fxruby/ChangeLog,v 1.1 2002/12/27 18:22:07 rphillips Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fxruby/ChangeLog,v 1.1.1.1 2005/11/30 10:01:17 chriswhite Exp $
 
+  23 Sep 2005; Ferris McCormick <fmccor@gentoo.org> fxruby-1.2.2.ebuild,
+  fxruby-1.2.6.ebuild:
+  Do not force '-O0' when building fxruby.  Closes Bug #87016 at request
+  of the developer, caleb@gentoo.org.
+
+  23 Sep 2005; Caleb Tennis <caleb@gentoo.org> -fxruby-1.0.28-r1.ebuild,
+  -fxruby-1.0.29.ebuild, -fxruby-1.2.4.ebuild, -fxruby-1.2.5.ebuild:
+  Remove old versions
+
+  23 Sep 2005; Caleb Tennis <caleb@gentoo.org> fxruby-1.2.6.ebuild:
+  x86 stable
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> fxruby-1.0.25.ebuild,
+  fxruby-1.0.28-r1.ebuild, fxruby-1.0.29.ebuild, fxruby-1.2.2.ebuild,
+  fxruby-1.2.4.ebuild:
+  Don't use -d option with cp.
+
+*fxruby-1.2.6 (07 May 2005)
+
+  07 May 2005; <rphillips@gentoo.org> +fxruby-1.0.29-r1.ebuild,
+  +fxruby-1.2.5.ebuild, +fxruby-1.2.6.ebuild:
+  Added Yaakov Selkowitz's eclass based fox ebuilds for testing.
+  Fixes #88924
+
+  04 May 2005; Guy Martin <gmsoft@gentoo.org> fxruby-1.2.2.ebuild:
+  Stable on hppa.
+
+  14 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> fxruby-1.2.2.ebuild:
+  Stable on alpha.
+
+  26 Mar 2005; Jason Wever <weeve@gentoo.org> fxruby-1.2.2.ebuild:
+  Stable on SPARC.
+
+  12 Mar 2005; Michael Kohl <citizen428@gentoo.org> fxruby-1.2.2.ebuild:
+  Marked stable on x86.
+
+*fxruby-1.2.4 (24 Feb 2005)
+
+  24 Feb 2005; Rob Cakebread <pythonhead@gentoo.org> +fxruby-1.2.4.ebuild:
+  Version bump.
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> fxruby-1.2.2.ebuild:
+  ~alpha keyword.
+
+*fxruby-1.2.2 (22 Oct 2004)
+
+  22 Oct 2004; Michael Kohl <citizen428@gentoo.org> +fxruby-1.2.2.ebuild:
+  New version for the 1.2 branch of Fox.
+
+  23 Jul 2004; <twp@gentoo.org> fxruby-1.0.25.ebuild, fxruby-1.0.28-r1.ebuild,
+  fxruby-1.0.29.ebuild:
+  Current implementations require <x11-libs/fox-1.2.
+
+*fxruby-1.0.29 (23 Jun 2004)
+
+  23 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +fxruby-1.0.29.ebuild:
+  Version bumped.
+
+  11 Apr 2004; David Holm <dholm@gentoo.org> fxruby-1.0.28-r1.ebuild:
+  Added to ~ppc.
+
+*fxruby-1.0.28-r1 (10 Apr 2004)
+
+  10 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> fxruby-1.0.25.ebuild,
+  fxruby-1.0.28-r1.ebuild, fxruby-1.0.28.ebuild:
+  virtual/ruby fix
+
+  13 Mar 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.23.ebuild,
+  fxruby-1.0.23.ebuild :
+  Removed old versions.
+
+*fxruby-1.0.28 (13 Mar 2003)
+
+  13 Mar 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.28.ebuild :
+  Version bump. Bug # 44319. Add fxscintilla dependency. Bug # 44228.
+
+*fxruby-1.0.25 (10 Aug 2003)
+
+  10 Aug 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.25.ebuild :
+  Version bump.
+
+*fxruby-1.0.24 (17 Jun 2003)
+
+  17 Jun 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.24.ebuild :
+  Version bump.
+
+*fxruby-1.0.23 (23 May 2003)
+
+  23 May 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.23.ebuild :
+  Version bump. Added IUSE.
+
+*fxruby-1.0.22 (24 Apr 2003)
+
+  13 May 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.22-r1.ebuild :
+  Mark stable on all ARCHes. Install docs properly. Ebuild tidy-up.
+
+  24 Apr 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.22.ebuild :
+  Version bump. Ease dependencies.
+
+*fxruby-1.0.21 (23 Apr 2003)
+
+  23 Apr 2003; Tom Payne <twp@gentoo.org> fxruby-1.0.21.ebuild :
+  Version bump. Minor ebuild tidying. Bug # 19476.
+  
 *fxruby-1.0.17 (27 Dec 2002)
 
   27 Dec 2002; Ryan Phillips <rphillips@gentoo.org> : Initial release. Submitted by: Holden Glova

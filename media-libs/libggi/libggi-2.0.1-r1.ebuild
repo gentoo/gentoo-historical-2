@@ -1,19 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libggi/libggi-2.0.1-r1.ebuild,v 1.1 2002/12/28 05:49:59 azarah Exp $
-
-IUSE="X aalib svga fbcon directfb"
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libggi/libggi-2.0.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:12 chriswhite Exp $
 
 inherit eutils libtool
 
-S="${WORKDIR}/${P}"
 DESCRIPTION="Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)"
-SRC_URI="http://www.ggi-project.org/ftp/ggi/v2.0/${P}.tar.bz2"
 HOMEPAGE="http://www.ggi-project.org/"
+SRC_URI="http://www.ggi-project.org/ftp/ggi/v2.0/${P}.tar.bz2"
 
+LICENSE="MIT"
 SLOT="0"
-LICENSE="LGPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
+IUSE="X aalib svga fbcon directfb"
 
 DEPEND=">=media-libs/libgii-0.8.1
 	X? ( virtual/x11 )
@@ -37,7 +35,7 @@ src_compile() {
 
 	use svga \
 		|| myconf="${myconf} --disable-svga --disable-vgagl"
-	
+
 	use fbcon \
 		&& myconf="${myconf} --enable-fbdev"
 
@@ -63,7 +61,7 @@ src_install () {
 	# This la file seems to bug mesa.
 # Hopefully libtoolize will fix for mesa-3.5.  The *.la needed
 # for mesa-5.0 in the works - <azarah@gentoo.org> (28 Dec 2002)
-#	rm ${D}/usr/lib/*.la
+#	rm ${D}/usr/$(get_libdir)/*.la
 
 	dodoc ChangeLog* FAQ NEWS README TODO
 	docinto txt

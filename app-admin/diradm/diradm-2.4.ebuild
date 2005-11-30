@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/diradm/diradm-2.4.ebuild,v 1.1 2005/07/04 01:46:39 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/diradm/diradm-2.4.ebuild,v 1.1.1.1 2005/11/30 09:59:58 chriswhite Exp $
 
 DESCRIPTION="diradm is a nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP."
 HOMEPAGE="http://research.iat.sfu.ca/custom-software/diradm/"
@@ -8,7 +8,7 @@ SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
 IUSE="samba irixpasswd automount"
 DEPEND="net-nds/openldap
 	sys-apps/gawk

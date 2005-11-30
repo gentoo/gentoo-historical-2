@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/slrn/slrn-0.9.8.1.ebuild,v 1.1 2005/01/17 20:11:08 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/slrn/slrn-0.9.8.1.ebuild,v 1.1.1.1 2005/11/30 10:02:46 chriswhite Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 sparc ~ppc x86"
+KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="ssl nls unicode uudeview"
 
 RDEPEND="virtual/mta
@@ -36,14 +36,14 @@ pkg_setup() (
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
 	for i in ${SLRN_PATCHES}
 	do
-		epatch ${FILESDIR}/${PV}/${P}-${i}.diff
+		epatch "${FILESDIR}"/${PV}/${P}-${i}.diff
 	done
 
-	use unicode && epatch ${FILESDIR}/0.9.8.0/slrn-0.9.8.0-utf8.patch
+	use unicode && epatch "${FILESDIR}"/${PV}-utf8.patch
 }
 
 src_compile() {
@@ -58,5 +58,5 @@ src_compile() {
 }
 
 src_install () {
-	make DESTDIR=${D} install || die "make install failed"
+	make DESTDIR="${D}" install || die "make install failed"
 }

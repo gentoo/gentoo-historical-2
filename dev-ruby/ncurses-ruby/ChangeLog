@@ -1,6 +1,60 @@
 # ChangeLog for dev-ruby/ncurses-ruby
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ncurses-ruby/ChangeLog,v 1.1 2003/07/07 21:56:06 twp Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ncurses-ruby/ChangeLog,v 1.1.1.1 2005/11/30 10:01:15 chriswhite Exp $
+
+  19 Nov 2005; Joseph Jezak <josejx@gentoo.org> ncurses-ruby-0.9.1.ebuild:
+  Marked ppc stable.
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> ncurses-ruby-0.9.2.ebuild:
+  Mark 0.9.2 ~ia64
+
+  08 May 2005; Mamoru KOMACHI <usata@gentoo.org> ncurses-ruby-0.9.2.ebuild:
+  0.9.2 doesn't build on ruby16
+
+  24 Apr 2005; Simon Stelling <blubb@gentoo.org> ncurses-ruby-0.9.1.ebuild:
+  stable on amd64
+
+  14 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  ncurses-ruby-0.9.1.ebuild:
+  Stable on alpha.
+
+*ncurses-ruby-0.9.2 (16 Mar 2005)
+
+  16 Mar 2005; Caleb Tennis <caleb@gentoo.org> +ncurses-ruby-0.9.2.ebuild:
+  version bump
+
+  12 Mar 2005; Michael Kohl <citizen428@gentoo.org>
+  ncurses-ruby-0.9.1.ebuild:
+  Marked stable on x86.
+
+*ncurses-ruby-0.9.1 (15 Feb 2005)
+
+  15 Feb 2005; Michael Kohl <citizen428@gentoo.org>
+  +ncurses-ruby-0.9.1.ebuild:
+  Version bump; submitted by Thomas Kirchner <gentoo@halffull.org> in bug #81638
+
+  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> ncurses-ruby-0.8.ebuild:
+  Added to ~ppc.
+
+  11 Sep 2004; Tom Martin <slarti@gentoo.org> ncurses-ruby-0.8.ebuild:
+  Marked ~amd64.
+
+  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> ncurses-ruby-0.8.ebuild:
+  Stable on alpha.
+
+  10 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> ncurses-ruby-0.8.ebuild:
+  virtual/ruby fix
+
+  31 Oct 2003; Tom Payne <twp@gentoo.org> ncurses-ruby-0.8.ebuild :
+  Marked stable on x86. Removed old version.
+
+*ncurses-ruby-0.8 (12 Sep 2003)
+
+  12 Sep 2003; Tom Payne <twp@gentoo.org> ncurses-ruby-0.8.ebuild :
+  Version bump. Use ruby.eclass.
 
 *ncurses-ruby-0.7.1 (7 Jul 2003)
 

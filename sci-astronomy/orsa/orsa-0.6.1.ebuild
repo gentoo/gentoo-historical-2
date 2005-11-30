@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/orsa/orsa-0.6.1.ebuild,v 1.1 2004/12/24 04:00:28 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/orsa/orsa-0.6.1.ebuild,v 1.1.1.1 2005/11/30 10:01:54 chriswhite Exp $
 
-inherit base flag-o-matic
+inherit base flag-o-matic qt3
 
 DESCRIPTION="Orbit Reconstruction, Simulation and Analysis"
 HOMEPAGE="http://orsa.sourceforge.net/"
@@ -16,14 +16,14 @@ IUSE="opengl mpi fftw ginac cln gsl qt"
 S="${WORKDIR}/${P/_/-}"
 
 DEPEND="virtual/libc
-	fftw? ( =dev-libs/fftw-2.1* )
-	>=dev-libs/gsl-1.3
-	qt? ( >=x11-libs/qt-3.3 )
+	fftw? ( =sci-libs/fftw-2.1* )
+	>=sci-libs/gsl-1.3
+	qt? ( $(qt_min_version 3.3) )
 	>=sys-libs/readline-4.2
 	mpi? ( sys-cluster/lam-mpi )
-	ginac? ( >=app-sci/ginac-1.2.0 )
-	gsl? ( dev-libs/gsl )
-	cln? ( >=dev-libs/cln-1.1.6 )"
+	ginac? ( >=sci-mathematics/ginac-1.2.0 )
+	gsl? ( sci-libs/gsl )
+	cln? ( >=sci-libs/cln-1.1.6 )"
 
 replace-flags k6-3 i586
 replace-flags k6-2 i586

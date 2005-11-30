@@ -1,39 +1,53 @@
 #!/bin/bash
 # Copyright 2004 The Gentoo Foundation, Pieter Van den Abeele
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/scripts/bootstrap-macos.sh,v 1.1 2004/07/13 00:14:34 pvdabeel Exp $
+# $Header: /var/cvsroot/gentoo-x86/scripts/bootstrap-macos.sh,v 1.1.1.1 2005/11/30 10:02:43 chriswhite Exp $
 
-source /usr/lib/portage/bin/functions.sh
+# Make sure sudo passwd is asked for
 
-# This is currently a Mac OS only script. But it could easily be reused
-# for Operating systems such as Solaris, ... If your interested in doing
-# such a port, contact Pieter Van den Abeele at pvdabeel@gentoo.org 
+sudo true
+
+# Source functions to have colors and nice output
 
 trap 'exit 1' TERM KILL INT QUIT ABRT
 
 echo
-echo -e "${GOOD}Gentoo Mac OS ; \e[34;01mhttp://www.gentoo.org/${NORMAL}"
+echo -e "Gentoo for Mac OS X; http://www.gentoo.org/"
 echo -e "Copyright 2004 The Gentoo Foundation ; Distributed under the GPL v2"
 echo
 
-BEAST=`uname -r | grep 7 | echo "Panther" || echo "Tiger"`
-RELEASE=`uname -r | grep 7 | echo "10.3" || echo "10.4"`
+NAME="Mac OS X"
+RELEASE="10"
 
-ebegin "Portage will attempt taming the ${BEAST} it found"
+case "`uname -r`" in
+        6*)
+		# We don't really support this
+		NAME="Jaguar"
+		# We reuse the Panther profile
+		RELEASE="10.3"
+		;;
+		7*)
+		NAME="Panther"
+		RELEASE="10.3"
+		;;
+        8*)
+        NAME="Tiger"
+		RELEASE="10.4"
+		;;
+esac
 
-function eaten {
+sudo ln -sf /usr/portage/profiles/default-darwin/macos/${RELEASE} /etc/make.profile
+
+# ebegin "Portage will attempt taming your ${NAME}"
+
+function missing_devtools {
 	ewend 1 
-	echo -e "Please install the Mac OS X developer tools"
+	echo -e "Please install the ${NAME} developer tools (>1.1)"
 	echo
 	exit 1
 }
 
-gcc -v 2> /dev/null || eaten
-echo 
-for package in `cat /usr/portage/profiles/default-macos-${RELEASE}/packages.build`; do
-	ebegin " >>> Injecting ${package} " && ewend $?
-	emerge inject ${package} > /dev/null 2> /dev/null 
-done
+gcc -v 2> /dev/null || missing_devtools
 
 echo
-echo -e "Portage successfully tamed your ${BEAST}"
+echo -e "Portage successfully tamed your ${NAME}"

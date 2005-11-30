@@ -1,8 +1,120 @@
 # ChangeLog for net-libs/c-client
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/c-client/ChangeLog,v 1.1 2003/06/08 03:41:35 robbat2 Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/c-client/ChangeLog,v 1.1.1.1 2005/11/30 10:03:00 chriswhite Exp $
+
+*c-client-2004g (06 Oct 2005)
+
+  06 Oct 2005; Robin H. Johnson <robbat2@gentoo.org> +c-client-2004g.ebuild:
+  Bug #107562, version bump.
+
+  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Stable on alpha.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> c-client-2004a-r1.ebuild:
+  Stable on ppc64
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Stable on ppc.
+
+  06 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Marked stable on amd64.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> c-client-2004a-r1.ebuild:
+  stable on ia64
+
+  31 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Stable on sparc
+
+*c-client-2004c (30 Mar 2005)
+
+  30 Mar 2005; Robin H. Johnson <robbat2@gentoo.org> +c-client-2004c.ebuild:
+  Version bump.
+
+  30 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  c-client-2004a-r1.ebuild:
+  Move 2004a-r1 to stable x86.
+
+  10 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> c-client-2004a-r1.ebuild:
+  Tiny cleanup in symlink creation of the .so.
+
+  20 Feb 2005; Hardave Riar <hardave@gentoo.org> c-client-2004a.ebuild:
+  Stable on mips
+
+*c-client-2004a-r1 (01 Feb 2005)
+
+  01 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/c-client-2004a-amd64-so-fix.patch, +c-client-2004a-r1.ebuild:
+  Patched Makefile to build a shared library for amd64, allowing PHP 5 with imap
+  to compile. Also fixed the symlinking of c-client.a for multilib archs.
+
+  03 Nov 2004; Bret Curtis <psi29a@gentoo.org> :
+  Addeing to ~mips for testing
+
+*c-client-2004a (02 Oct 2004)
+
+  02 Oct 2004; <iggy@gentoo.org> +c-client-2004a.ebuild:
+  version bump, added pam use flag
+
+  18 Aug 2004; Tom Gall <tgall@gentoo.org> c-client-2002e-r2.ebuild:
+  stable on ppc64
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> c-client-2002e-r2.ebuild:
+  adding s390 keywords
+
+*c-client-2002e-r2 (05 Feb 2004)
+
+  05 Feb 2004; Robin H. Johnson <robbat2@gentoo.org> c-client-2002e-r2.ebuild:
+  fix bug #40146, move -fPIC to all arches as it's needed for lots of fixes.
+
+  01 Jan 2004; Jon Portnoy <avenj@gentoo.org> c-client-2002e-r1.ebuild :
+  AMD64 keywords.
+
+  10 Jan 2004; <agriffis@gentoo.org> c-client-2002e-r1.ebuild:
+  stable on ia64
+
+  22 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002d-r1.ebuild,
+  c-client-2002d.ebuild, c-client-2002e-r1.ebuild, c-client-2002e.ebuild:
+  fix bug #35437
+
+*c-client-2002e-r1 (08 Dec 2003)
+
+  08 Dec 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002e-r1.ebuild:
+  fix bug #35378 and move new ebuild to stable right away to fix some other
+  glitches
+
+  25 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  add metadata.xml
+
+*c-client-2002e (25 Oct 2003)
+
+  25 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002e.ebuild:
+  version bump
+
+  25 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002d-r1.ebuild:
+  bump -r1 to stable
+
+*c-client-2002d-r1 (11 Aug 2003)
+
+  11 Aug 2003; Robin H. Johnson <robbat2@gentoo.org> c-client-2002d-r1.ebuild:
+  add more -fPIC support
+
+  02 Aug 2003; Tavis Ormandy <taviso@gentoo.org> c-client-2002d.ebuild:
+  stable on alpha
+
+  12 Jul 2003; Jason Wever <weeve@gentoo.org> c-client-2002d.ebuild:
+  Changed ~sparc keyword to sparc to fix dependency borkage.
+
+  28 Jun 2003; Tavis Ormandy <taviso@gentoo.org> c-client-2002d.ebuild:
+  alpha needs -fPIC
 
 *c-client-2002d (07 Jun 2003)
+
+  20 Jun 2003; Guy Martin <gmsoft@gentoo.org> c-client-2002d.ebuild :
+  Added hppa to KEYWORDS to fix dependencies problem with mod_php.
 
   07 Jun 2003; Robin Johnson <robbat2@gentoo.org> Manifest,
   files/digest-c-client-2002d, files/2002d-Makefile.patch, ChangeLog,

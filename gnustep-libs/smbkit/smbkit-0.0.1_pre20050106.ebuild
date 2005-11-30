@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/smbkit/smbkit-0.0.1_pre20050106.ebuild,v 1.1 2005/01/10 16:25:09 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/smbkit/smbkit-0.0.1_pre20050106.ebuild,v 1.1.1.1 2005/11/30 10:00:58 chriswhite Exp $
 
 ECVS_CVS_COMMAND="cvs -q"
 ECVS_SERVER="savannah.gnu.org:/cvsroot/gnustep"
@@ -21,11 +21,10 @@ KEYWORDS="~x86 ~ppc"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-IUSE="${IUSE}"
+IUSE=""
 DEPEND="${GS_DEPEND}
 	net-fs/samba"
 RDEPEND="${GS_RDEPEND}
 	net-fs/samba"
 
 egnustep_install_domain "System"
-

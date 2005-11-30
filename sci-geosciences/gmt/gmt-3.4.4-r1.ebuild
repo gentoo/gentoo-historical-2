@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gmt/gmt-3.4.4-r1.ebuild,v 1.1 2004/12/29 01:29:52 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gmt/gmt-3.4.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:02:11 chriswhite Exp $
 
 MAINV="${PV:0:1}"
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT${PV}_progs.tar.bz2
 	ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT${PV}_scripts.tar.bz2
 	ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT${PV}_man.tar.bz2
 	doc? ( ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT${PV}_pdf.tar.bz2 )
-	gmtsuppl? ( ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT${PV}_suppl.tar.bz2)
+	gmtsuppl? ( ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT${PV}_suppl.tar.bz2 )
 	gmtfull? ( ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT_full.tar.bz2 )
 	gmthigh? ( ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/GMT_high.tar.bz2 )
 	gmttria? ( ftp://gmt.soest.hawaii.edu/pub/gmt/${MAINV}/triangle.tar.bz2 )"
@@ -25,7 +25,7 @@ IUSE="gmtsuppl gmtfull gmthigh gmttria doc"
 
 RDEPEND=">=sci-libs/netcdf-3.5.0"
 DEPEND="${RDEPEND}
-	gmtsuppl? ( >=sys-devel/autoconf-2.58 )"
+	gmtsuppl? ( =sys-devel/autoconf-2.13* )"
 
 S="${WORKDIR}/GMT${PV}"
 
@@ -40,7 +40,7 @@ src_unpack() {
 }
 
 src_compile() {
-	use gmtsuppl && autoconf # the configure in 3.4.4 is faulty when using gmtsuppl
+	use gmtsuppl && autoconf-2.13 # the configure in 3.4.4 is faulty when using gmtsuppl
 	#In make process will include /lib and /include to NETCDFHOME
 	export NETCDFHOME="/usr"
 

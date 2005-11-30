@@ -1,6 +1,21 @@
-# ChangeLog for app-sci/tilp
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/tilp/ChangeLog,v 1.1 2004/12/24 15:08:13 ribosome Exp $
+# ChangeLog for sci-calculators/tilp
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/tilp/ChangeLog,v 1.1.1.1 2005/11/30 10:02:32 chriswhite Exp $
+
+  11 Mar 2005; Karol Wojtaszek <sekretarz@gentoo.org> tilp-6.76.ebuild:
+  Added to ~amd64, bug #84461
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org> tilp-6.76.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> tilp-6.76.ebuild:
+  Dependency update: dev-libs/libticalcs -> sci-libs/libticalcs.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> tilp-6.76.ebuild:
+  Dependency update: dev-libs/libticables -> sci-libs/libticables.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> tilp-6.76.ebuild:
+  Dependency update: dev-libs/libtifiles -> sci-libs/libtifiles.
 
 *tilp-6.76 (24 Dec 2004)
 

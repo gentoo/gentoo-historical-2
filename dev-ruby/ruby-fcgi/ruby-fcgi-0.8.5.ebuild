@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-fcgi/ruby-fcgi-0.8.5.ebuild,v 1.1 2005/02/01 08:04:44 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-fcgi/ruby-fcgi-0.8.5.ebuild,v 1.1.1.1 2005/11/30 10:01:20 chriswhite Exp $
 
 inherit ruby
 

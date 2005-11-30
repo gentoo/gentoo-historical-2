@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdv/libdv-0.102.ebuild,v 1.1 2004/04/10 15:33:25 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdv/libdv-0.102.ebuild,v 1.1.1.1 2005/11/30 10:03:41 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="Software codec for dv-format video (camcorders etc)."
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-RESTRICT="nomirror"
 HOMEPAGE="http://libdv.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc alpha ~hppa ia64 ~mips"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="debug gtk sdl xv"
 
 RDEPEND="dev-libs/popt
@@ -35,7 +34,7 @@ src_compile() {
 
 	unset CFLAGS CXXFLAGS
 
-	econf ${myconf}
+	econf ${myconf} || die "econf failed"
 	make || die "compile problem"
 }
 

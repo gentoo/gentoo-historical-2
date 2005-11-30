@@ -1,2 +1,4 @@
-MD5 4caf42e917df80d556ddc6367c81fdae ruby-zlib-0.6.0.ebuild 505
+MD5 3eec9f3fe48b51f49dbc1f171a3b026f metadata.xml 157
+MD5 e5af163048cb80f22b95238992270646 ChangeLog 637
+MD5 b88ecaea66c0bc097dc7b47c212aeafe ruby-zlib-0.6.0.ebuild 526
 MD5 70223a78f1d17200eeab31b8dec45658 files/digest-ruby-zlib-0.6.0 66

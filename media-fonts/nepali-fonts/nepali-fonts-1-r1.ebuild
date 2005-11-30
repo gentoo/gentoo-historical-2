@@ -1,21 +1,20 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/nepali-fonts/nepali-fonts-1-r1.ebuild,v 1.1 2004/06/21 16:11:44 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/nepali-fonts/nepali-fonts-1-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:28 chriswhite Exp $
 
 inherit font
 
 DESCRIPTION="a collection of fonts for Nepali users"
-HOMEPAGE="http://www.mpp.org.np/
-	http://www.nepali.info/
-	http://www.nepalipost.com/
-	http://www.moics.gov.np/download/fonts.html"
+HOMEPAGE="http://www.mpp.org.np/ http://www.nepali.info/ http://www.nepalipost.com/ http://www.moics.gov.np/download/fonts.html"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc s390 sparc x86"
+IUSE=""
 
 DEPEND=""
 
-FONT_S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
+FONT_S=${S}
 FONT_SUFFIX="ttf"

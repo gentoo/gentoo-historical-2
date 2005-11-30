@@ -1,6 +1,52 @@
-# ChangeLog for app-games/monopd
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/monopd/ChangeLog,v 1.1 2003/09/10 05:51:11 vapier Exp $
+# ChangeLog for games-server/monopd
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/monopd/ChangeLog,v 1.1.1.1 2005/11/30 10:04:32 chriswhite Exp $
+
+  14 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.9.3.ebuild:
+  use doinitd as suggested by Nikolas Garofil via bug #98751
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> -monopd-0.9.0.ebuild:
+  clean older ebuild
+
+  08 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.9.3.ebuild:
+  stable on x86
+
+  31 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> -monopd-0.9.2.ebuild:
+  clean older version
+
+*monopd-0.9.3 (31 Aug 2004)
+
+  31 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +monopd-0.9.3.ebuild:
+  version bump
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.8.2-r1.ebuild,
+  monopd-0.8.3.ebuild:
+  clean out 0.8
+
+*monopd-0.9.2 (14 Jun 2004)
+
+  14 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.9.2.ebuild,
+  files/monopd:
+  version bump
+
+  19 Apr 2004; David Holm <dholm@gentoo.org> monopd-0.9.0.ebuild:
+  Added to ~ppc.
+
+*monopd-0.9.0 (18 Apr 2004)
+
+  18 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #39339 by Rob Kaper.
+
+*monopd-0.8.3 (14 Nov 2003)
+
+  14 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.8.2.ebuild:
+  roll off old ebuild
+
+  14 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> monopd-0.8.3.ebuild:
+  version bump
 
 *monopd-0.8.2-r1 (25 Aug 2003)
 
@@ -28,6 +74,6 @@
 
 *monopd-0.4.3 (1 Aug 2002)
 
-  1 Aug 2002; J. Alberto Su·rez LÛpez <bass@gentoo.org> monopd-0.4.3.ebuild
+  1 Aug 2002; J. Alberto Su√°rez L√≥pez <bass@gentoo.org> monopd-0.4.3.ebuild
   First relase 
 

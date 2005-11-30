@@ -1,6 +1,22 @@
 # ChangeLog for app-admin/chrootuid
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/chrootuid/ChangeLog,v 1.1 2004/02/23 12:12:07 hattya Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/chrootuid/ChangeLog,v 1.1.1.1 2005/11/30 09:59:47 chriswhite Exp $
+
+  10 Nov 2005; <dang@gentoo.org> chrootuid-1.3.ebuild:
+  Marked stable on amd64
+
+  03 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> chrootuid-1.3.ebuild:
+  added ~amd64 to KEYWORDS. fixes #80180
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  chrootuid-1.3.ebuild:
+  Masked chrootuid-1.3.ebuild testing for ppc
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> chrootuid-1.3.ebuild:
+  add sed-4 dep, fix description
+
+  22 Mar 2004; Akinori Hattori <hattya@gentoo.org> chrootuid-1.3.ebuild:
+  stable on x86.
 
 *chrootuid-1.3 (23 Feb 2004)
 

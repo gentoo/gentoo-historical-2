@@ -1,6 +1,9 @@
-# ChangeLog for app-sci/vis5d+
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/vis5d+/ChangeLog,v 1.1 2004/12/29 02:00:35 ribosome Exp $
+# ChangeLog for sci-geosciences/vis5d+
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/vis5d+/ChangeLog,v 1.1.1.1 2005/11/30 10:02:12 chriswhite Exp $
+
+  10 Nov 2005; Luis Medinas <metalgod@gentoo.org> vis5d+-1.2.1.ebuild:
+  Fix build on amd64 to be able to build with multilib-strict. Fix ebuild header.
 
 *vis5d+-1.2.1 (28 Dec 2004)
 

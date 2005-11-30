@@ -1,11 +1,111 @@
 # ChangeLog for net-libs/openslp
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-libs/openslp/ChangeLog,v 1.1 2002/02/01 21:53:34 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/openslp/ChangeLog,v 1.1.1.1 2005/11/30 10:03:02 chriswhite Exp $
+
+  02 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> openslp-1.2.1.ebuild:
+  Stable on sh.
+
+  26 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> openslp-1.2.1.ebuild:
+  Stable on hppa. bug #85347
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> openslp-1.2.1.ebuild:
+  stable on ia64
+
+  20 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> openslp-1.2.1.ebuild:
+  stable on amd64 wrt #85347
+
+  18 Mar 2005; Alastair Tse <liquidx@gentoo.org> openslp-1.0.11.ebuild,
+  openslp-1.2.1.ebuild:
+  removing tests
+
+  18 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> openslp-1.0.11.ebuild,
+  openslp-1.0.9a.ebuild, openslp-1.2.1.ebuild:
+  Marked -amd64 as they don't pass make check. Additionally package.mask'ed on
+  amd64 and slp USE flag masked as well wrt Security BUG #85347
+
+  17 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> openslp-1.2.1.ebuild:
+  Stable on sparc wrt #85347
+
+  17 Mar 2005; Hardave Riar <hardave@gentoo.org> openslp-1.2.1.ebuild:
+  Stable on mips, bug #85347.
+
+  16 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> openslp-1.2.1.ebuild:
+  Stable on alpha, bug 85347.
+
+  16 Mar 2005; Markus Rothe <corsair@gentoo.org> openslp-1.2.1.ebuild:
+  Stable on ppc64; bug #85347
+
+  16 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> openslp-1.2.1.ebuild:
+  Stable on ppc.
+
+*openslp-1.2.1 (16 Mar 2005)
+
+  16 Mar 2005; Alastair Tse <liquidx@gentoo.org> +openslp-1.2.1.ebuild:
+  version bump. security vunerability fix (SUSE-SA:2005:015) (#85347)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  openslp-1.0.11.ebuild, openslp-1.0.9a.ebuild:
+  virtual/glibc -> virtual/libc
+
+  12 Jun 2004; Tom Gall <tgall@gentoo.org> openslp-1.0.11.ebuild:
+  stable on ppc64 bug #53766
+
+  11 May 2004; Michael McCabe <randy@gentoo.org> openslp-1.0.11.ebuild:
+  Added s390 keywords
+
+  21 Mar 2004; Joshua Kinard <kumba@gentoo.org> openslp-1.0.11.ebuild,
+  openslp-1.0.9a.ebuild:
+  Marked stable on mips.
+
+  27 Feb 2004; Joshua Kinard <kumba@gentoo.org> openslp-1.0.11.ebuild:
+  Added ~mips to KEYWORDS to satisfy repoman deps.
+
+  28 Jan 2004; Aron Griffis <agriffis@gentoo.org> openslp-1.0.11.ebuild:
+  stable on alpha
+
+  26 Jan 2004; <gustavoz@gentoo.org> openslp-1.0.11.ebuild:
+  stable on sparc
+
+  23 Sep 2003; Bartosch Pixa <darkspecter@gentoo.org> openslp-1.0.11.ebuild:
+  set ppc in keywords
+
+  03 Jul 2003; Nick Hadaway <raker@gentoo.org> openslp-1.0.11.ebuild:
+  Marked stable for x86
+
+*openslp-1.0.11 (26 Mar 2003)
+
+  25 Jul 2003; Guy Martin <gmsoft@gentoo.org> openslp-1.0.11.ebuild :
+  Marked stable on hppa.
+
+  26 Mar 2003; Alastair Tse <liquidx@gentoo.org> openslp-1.0.11.ebuild:
+  version bumpage
+
+  19 Mar 2003; Guy Martin <gmsoft@gentoo.org> openslp-1.0.9a.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*openslp-1.0.9a (2 Nov 2002) 
+
+  02 Nov 2003; Bart Verwilst <verwilst@gentoo.org>
+
+  New version, + fixed license
+
+*openslp-1.0.8a (27 Apr 2002)
+
+  25 Oct 2002; Donny Davies <woodchip@gentoo.org> slpd-init :
+  Created an initscript; as requested in #9256.
+
+  19 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> openslp-1.0.8a.ebuild :
+  Added ppc to KEYWORDS.
+
+  27 Apr 2002; Seemant Kulleen <seemant@gentoo.org> openslp-1.0.8a.ebuild
+  files/digest-openslp-1.0.8a :
+  Thanks to lotia@umich.edu (ali asad lotia) in bug #1508 for the version bump.
 
 *openslp-1.0.4 (1 Feb 2002)
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

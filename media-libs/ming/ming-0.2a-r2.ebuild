@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ming/ming-0.2a-r2.ebuild,v 1.1 2005/10/01 12:01:03 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ming/ming-0.2a-r2.ebuild,v 1.1.1.1 2005/11/30 10:04:04 chriswhite Exp $
 
 inherit eutils toolchain-funcs python
 

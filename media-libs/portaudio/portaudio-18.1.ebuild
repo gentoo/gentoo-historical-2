@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/portaudio/portaudio-18.1.ebuild,v 1.1 2004/05/06 18:37:41 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/portaudio/portaudio-18.1.ebuild,v 1.1.1.1 2005/11/30 10:04:26 chriswhite Exp $
 
 inherit eutils
 
@@ -10,34 +10,39 @@ DESCRIPTION="An open-source cross platform audio API."
 HOMEPAGE="http://www.portaudio.com"
 SRC_URI="http://www.portaudio.com/archives/${MY_P}.zip"
 
-SLOT="0"
+SLOT="18"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~amd64"
+KEYWORDS="x86 sparc amd64 ppc ppc-macos ~mips hppa"
 
 IUSE=""
 
-DEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
+DEPEND="app-arch/unzip"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
 	epatch ${FILESDIR}/${P}-use-fpic.patch
+	use ppc-macos && cp ${FILESDIR}/${PN}-Makefile.macos ${S}/Makefile || \
+	cp ${S}/Makefile.linux ${S}/Makefile
 }
 
 src_compile() {
-	make -f Makefile.linux sharedlib || die
+	cd ${S}
+	make sharedlib || die
 }
 
 src_install() {
+	if ! use ppc-macos
+	then
+		dolib pa_unix_oss/libportaudio.so
+	else
+		dolib pa_mac_core/libportaudio.dylib
+	fi
 
-	dodir /usr/lib
-	cp -f ./pa_unix_oss/libportaudio.so ${D}/usr/lib || die
+	insinto /usr/include
+	doins pa_common/portaudio.h
 
-	dodir /usr/include
-	cp ./pa_common/portaudio.h ${D}/usr/include || die
-
-	dodir /usr/share/doc/portaudio-18
-	cp ./docs/* ${D}/usr/share/doc/portaudio-18 || die
-
+	dodoc docs/*
 }

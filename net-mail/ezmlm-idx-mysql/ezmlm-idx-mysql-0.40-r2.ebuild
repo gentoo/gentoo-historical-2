@@ -1,11 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/ezmlm-idx-mysql/ezmlm-idx-mysql-0.40-r2.ebuild,v 1.1 2003/04/08 23:12:30 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/ezmlm-idx-mysql/ezmlm-idx-mysql-0.40-r2.ebuild,v 1.1.1.1 2005/11/30 10:03:08 chriswhite Exp $
 
 # NOTE: ezmlm-idx, ezmlm-idx-mysql and ezmlm-idx-pgsql all supported by this single ebuild
 # (Please keep them in sync)
 
-inherit eutils
+inherit eutils fixheadtails
 
 PB=ezmlm-idx
 EZMLM_P=ezmlm-0.53
@@ -17,10 +17,10 @@ SRC_URI="http://gd.tuwien.ac.at/infosys/mail/qmail/ezmlm-patches/${PB}-${PV}.tar
 HOMEPAGE="http://www.ezmlm.org"
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~alpha ~hppa ~amd64 ~ppc ~mips ~sparc"
+IUSE=""
 DEPEND="sys-apps/grep sys-apps/groff"
-RDEPEND="net-mail/qmail"
-PROVIDE="net-mail/ezmlm"
+RDEPEND="mail-mta/qmail"
 
 if [ "$PN" = "${PB}-pgsql" ]
 then
@@ -36,7 +36,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S2}
 	mv ${S2}/* ${S} || die
-	
+
 	cd ${S}
 	patch < idx.patch || die
 	#remove cat-man pages
@@ -50,15 +50,16 @@ src_unpack() {
 	cp Makefile Makefile.orig
 	sed -e "s:/install.*conf-bin\`\":/install ${D}usr/bin:" \
 	-e "s:/install.*conf-man\`\":/install ${D}usr/share/man:" Makefile.orig > Makefile
-	#apply patch from Ed Korthof (edk@collab.net) that allows ezmlm-issub  and ezmlm-gate 
-	#to check against the From: header as well as qmail's SENDER variable, which is set 
-	#from the envelope sender and often reflects the local MTA rather than the user's 
+	#apply patch from Ed Korthof (edk@collab.net) that allows ezmlm-issub  and ezmlm-gate
+	#to check against the From: header as well as qmail's SENDER variable, which is set
+	#from the envelope sender and often reflects the local MTA rather than the user's
 	#"official" email address... enable this option by using "-f" with ezmlm-issub and/or
 	#ezmlm-gate.
 	cp ${FILESDIR}/get_header.[ch] . || die
 	patch < ${FILESDIR}/from-header.patch || die
 	echo ">>> Successfully applied Ed Korthof's From: header patch."
 	epatch ${FILESDIR}/${EZMLM_P}-errno.patch
+	ht_fix_file default.do ezmlm-test.sh setup.do auto_qmail.c.do auto_bin.c.do Makefile
 }
 
 src_compile() {

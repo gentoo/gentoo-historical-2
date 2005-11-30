@@ -1,6 +1,164 @@
 # ChangeLog for net-mail/dovecot
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/ChangeLog,v 1.1 2004/04/10 14:21:11 g2boojum Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/ChangeLog,v 1.1.1.1 2005/11/30 10:03:22 chriswhite Exp $
+
+  10 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  dovecot-0.99.14-r1.ebuild:
+  fix for bug #112070
+
+*dovecot-1.0_alpha3 (23 Sep 2005)
+
+  23 Sep 2005; Wolfram Schlich <wschlich@gentoo.org>
+  +dovecot-1.0_alpha3.ebuild:
+  version bump
+
+  13 Sep 2005; Wolfram Schlich <wschlich@gentoo.org>
+  dovecot-1.0_alpha2.ebuild:
+  fixups
+
+*dovecot-1.0_alpha2 (13 Sep 2005)
+
+  13 Sep 2005; Wolfram Schlich <wschlich@gentoo.org>
+  +dovecot-1.0_alpha2.ebuild:
+  version bump
+
+  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> dovecot-0.99.11-r1.ebuild,
+  dovecot-0.99.13.ebuild, dovecot-0.99.14.ebuild, dovecot-0.99.14-r1.ebuild:
+  Use -1 for shell argument to enewuser. Bug #103421.
+
+  17 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  dovecot-0.99.14-r1.ebuild:
+  Stable on alpha
+
+  20 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  dovecot-0.99.14-r1.ebuild:
+  keyworded ~alpha wrt #93325
+
+  16 May 2005; Jason Wever <weeve@gentoo.org> dovecot-0.99.14-r1.ebuild:
+  Stable on SPARC.
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  dovecot-0.99.14-r1.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Andrej Kacian <ticho@gentoo.org> dovecot-0.99.14-r1.ebuild:
+  Stable on x86. Closes #87676, reported by Daniel Webert <rockoo@gmail.com>.
+
+  01 Apr 2005; Wolfram Schlich <wschlich@gentoo.org>
+  dovecot-0.99.11-r1.ebuild, dovecot-0.99.13.ebuild,
+  dovecot-0.99.14-r1.ebuild, dovecot-0.99.14.ebuild:
+  fix broken sed calls (-ie -> -i -e)
+
+*dovecot-0.99.14-r1 (25 Feb 2005)
+
+  25 Feb 2005; Andrej Kacian <ticho@gentoo.org> +dovecot-0.99.14-r1.ebuild:
+  Use common PAM profiles provided by >=net-mail/mailbase-0.00-r8 if pam USE
+  flag is set. This only means changing auth_passdb setting in installed
+  config file to "pam *".
+
+*dovecot-0.99.14 (18 Feb 2005)
+
+  18 Feb 2005; Grant Goodyear <g2boojum@gentoo.org> dovecot-0.99.13.ebuild,
+  +dovecot-0.99.14.ebuild:
+  Version bump (bug #82493), thanks to Daniel Webert.
+
+*dovecot-0.99.13 (08 Jan 2005)
+
+  08 Jan 2005; Grant Goodyear <g2boojum@gentoo.org> -dovecot-0.99.12.ebuild,
+  +dovecot-0.99.13.ebuild:
+  Version bump.  Should solve bugs 74334 (thanks Daniel Webert)
+  and 77131 (thanks Alexander Skwar).  Removing .12.
+
+*dovecot-0.99.12 (07 Dec 2004)
+
+  07 Dec 2004; Grant Goodyear <g2boojum@gentoo.org> +dovecot-0.99.12.ebuild:
+  Version bump; thanks to Andreas Simon (bug #73561).
+
+*dovecot-0.99.11-r1 (01 Nov 2004)
+
+  01 Nov 2004; Grant Goodyear <g2boojum@gentoo.org>
+  -dovecot-0.99.10.9-r1.ebuild, +dovecot-0.99.11-r1.ebuild,
+  -dovecot-0.99.11.ebuild:
+  New revision that removes gnutls support, since
+  upstream tells us that gnutls will be broken for some
+  time (http://www.dovecot.org/list/dovecot/2004-November/005169.html),
+  thanks to Ooblick (bug #67628) for finding the problem.  Also fixed
+  permissions, thanks to tove (bug #68824).  Marking stable on x86
+  and removing old (and broken) versions.
+
+  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> dovecot-0.99.10.9-r1.ebuild,
+  dovecot-0.99.11.ebuild:
+  Do not use ${HOMEPAGE} in SRC_URI.
+
+*dovecot-0.99.11 (19 Sep 2004)
+
+  19 Sep 2004; Grant Goodyear <g2boojum@gentoo.org>
+  dovecot-0.99.10.9-r1.ebuild, +dovecot-0.99.11.ebuild:
+  Version bump.  Thanks to Daniel Webert (bug #63849).
+  Also set static uid/gid.  (Thanks to Nils Marving, bug #58772)
+
+*dovecot-0.99.10.9-r1 (31 Aug 2004)
+
+  31 Aug 2004; <ticho@gentoo.org> +dovecot-0.99.10.9-r1.ebuild:
+  Applied patch to add mysql USE flag, committed by pille <pille@struction.de>.
+  Closes #61297.
+
+*dovecot-0.99.10.9 (17 Aug 2004)
+
+  17 Aug 2004; Grant Goodyear <g2boojum@gentoo.org> -dovecot-0.99.10.7.ebuild,
+  +dovecot-0.99.10.9.ebuild:
+  Whoops, should have bumped to .9, not .7.
+
+*dovecot-0.99.10.7 (16 Aug 2004)
+
+  16 Aug 2004; Grant Goodyear <g2boojum@gentoo.org> dovecot-0.99.10.6.ebuild,
+  +dovecot-0.99.10.7.ebuild:
+  Version bump (Bug 57136; thanks to Andreas Simon and Daniel Webert),
+  removing old versions, marking .6 stable on x86.
+
+*dovecot-0.99.10.6 (24 Jun 2004)
+
+  24 Jun 2004; Grant Goodyear <g2boojum@gentoo.org> +dovecot-0.99.10.6.ebuild:
+  Version bump (Thanks to Andreas Simon, Bug # 54826).
+
+*dovecot-0.99.10.5-r1 (12 Jun 2004)
+
+  12 Jun 2004; Grant Goodyear <g2boojum@gentoo.org>
+  +dovecot-0.99.10.4-r1.ebuild, -dovecot-0.99.10.4.ebuild,
+  +dovecot-0.99.10.5-r1.ebuild, -dovecot-0.99.10.5.ebuild:
+  Security fix: old ebuilds installed /etc/dovecot.conf w/ 0644 
+  permissions, but sql passwords might be stored there.
+  
+  Thanks to Andreas Simon (Bug #53707).
+
+  11 Jun 2004; Aron Griffis <agriffis@gentoo.org> dovecot-0.99.10.4.ebuild:
+  Fix use invocation
+
+  03 Jun 2004; David Holm <dholm@gentoo.org> dovecot-0.99.10.5.ebuild:
+  Added to ~ppc.
+
+  30 May 2004; Grant Goodyear <g2boojum@gentoo.org> dovecot-0.99.10.4.ebuild:
+  Added "gnutls" to IUSE and fixed ssl certificate handling
+  (thanks to Andreas Simon, bugs # 49876 and # 49690)
+
+*dovecot-0.99.10.5 (30 May 2004)
+
+  30 May 2004; Grant Goodyear <g2boojum@gentoo.org> +dovecot-0.99.10.5.ebuild:
+  Version bump (thanks to David Pufer, bug # 52371).  I also did some
+  fairly massive cleaning, so this ebuild could be massively broken
+  (although it does seem to be working just fine for me -- dovecot is the imap
+  server that my family uses).  Also replaced the "maildir" USE flag with 
+  "mbox", since maildir is the Gentoo default and thus should never have
+  been a USE flag, and cleaned up the logic to make gnutls preferred over
+  ssl if both gnutls and ssl are secified in USE.
+
+  09 May 2004; Jason Wever <weeve@gentoo.org> dovecot-0.99.10.4.ebuild:
+  Added ~sparc keyword.
+
+  07 May 2004; Danny van Dyk <kugelfang@gentoo.org> dovecot-0.99.10.4.ebuild:
+  Marked ~amd64.
+
+*dovecot-0.99.10.4 (10 Apr 2004)
 
   10 Apr 2004; Grant Goodyear <g2boojum@hotmail.com> :
   Long overdue new package.  Thanks to Zach Bagnell, Andreas Simon, Lars 

@@ -1,6 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/heartbeat/files/heartbeat-init,v 1.1.1.1 2005/11/30 10:01:43 chriswhite Exp $
 
 HA_DIR=/etc/ha.d
 
@@ -9,46 +10,35 @@ depend() {
 	need net
 }
 
-checkconfig() {
-	[ ! -f /etc/ha.d/ha.cf ] && \
-		eerror "You need a heartbeat config file" && return 1
-
-	if [  -f $HA_DIR/ipresources -a ! -f $HA_DIR/haresources ] ; then
-		cat $HA_DIR/ipresources >> $HA_DIR/haresources
-	fi
-}
-
 # Run pre-startup script if it exists
 RunStartStop() {
-
-	[  -f $HA_DIR/resource.d/startstop ] && $HA_DIR/resource.d/startstop  "$@"
-
+	[ -f $HA_DIR/resource.d/startstop ] && $HA_DIR/resource.d/startstop  "$@"
 }
 
 start() {
-	checkconfig
 	ebegin "Starting Heartbeat"
 
 	RunStartStop pre-start
 
-	/usr/bin/heartbeat 2>&1
-	/usr/bin/ResourceManager verifyallidle
+	/usr/lib/heartbeat/heartbeat 2>&1
+	ret=$?
+	/usr/lib/heartbeat/ResourceManager verifyallidle
 
 	RunStartStop post-start
 
-	eend $?
+	eend $ret
 }
 
 stop() {
 	ebegin "Stopping Heartbeat"
-	/usr/bin/heartbeat -k &> /dev/null
+	/usr/lib/heartbeat/heartbeat -k &> /dev/null
 	eend $?
 }
 
 restart() {
-	heartbeat -r
+	/usr/lib/heartbeat/heartbeat -r
 }
 
 status() {
-	heartbeat -s
+	/usr/lib/heartbeat/heartbeat -s
 }

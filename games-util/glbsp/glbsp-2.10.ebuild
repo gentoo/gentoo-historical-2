@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/glbsp/glbsp-2.10.ebuild,v 1.1 2005/05/13 07:00:23 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/glbsp/glbsp-2.10.ebuild,v 1.1.1.1 2005/11/30 10:01:00 chriswhite Exp $
 
 DESCRIPTION="A node builder specially designed for OpenGL ports of the DOOM game engine"
 HOMEPAGE="http://glbsp.sourceforge.net/"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/opengl-update/opengl-update-2.2.1.ebuild,v 1.1 2005/04/27 21:43:26 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/opengl-update/opengl-update-2.2.1.ebuild,v 1.1.1.1 2005/11/30 10:01:10 chriswhite Exp $
 
 inherit multilib toolchain-funcs eutils
 
@@ -19,22 +19,20 @@ SRC_URI="http://dev.gentoo.org/~eradicator/opengl/glext.h-${GLEXT}.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-#KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
 IUSE=""
 RESTRICT="multilib-pkg-force"
 
 DEPEND="virtual/libc
 	app-arch/bzip2"
 
-RDEPEND="!x11-base/xfree86
-	 !<x11-base/xorg-x11-6.8.0-r4
-	 !<media-video/ati-drivers-8.8.25-r3"
-
 S="${WORKDIR}"
 
 src_unpack() {
 	unpack ${A}
+
+	mv glext.h-${GLEXT} glext.h
+	mv glxext.h-${GLXEXT} glxext.h
 
 	# Bugs #81199, #81472
 	epatch ${FILESDIR}/glxext.h-inttypes.patch
@@ -80,15 +78,15 @@ src_install() {
 		for ABI in $(get_install_abis); do
 			# Install default glext.h
 			insinto /usr/$(get_libdir)/opengl/global/include
-			newins ${WORKDIR}/glext.h-${GLEXT} glext.h || die
-			newins ${WORKDIR}/glxext.h-${GLXEXT} glxext.h || die
+			doins ${WORKDIR}/glext.h || die
+			doins ${WORKDIR}/glxext.h || die
 		done
 		ABI="${OABI}"
 		unset OABI
 	else
 		# Install default glext.h
 		insinto /usr/$(get_libdir)/opengl/global/include
-		newins ${WORKDIR}/glext.h-${GLEXT} glext.h || die
-		newins ${WORKDIR}/glxext.h-${GLXEXT} glxext.h || die
+		doins ${WORKDIR}/glext.h || die
+		doins ${WORKDIR}/glxext.h || die
 	fi
 }

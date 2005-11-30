@@ -1,8 +1,29 @@
-# ChangeLog for media-sound/sphinx2
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header
+# ChangeLog for app-accessibility/sphinx2
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/sphinx2/ChangeLog,v 1.1.1.1 2005/11/30 10:04:35 chriswhite Exp $
 
-*sphinx2-0.4 (16 Mar 2004)
+  28 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> sphinx2-0.4.ebuild:
+  DESTDIR. Install documentation. USE=static support to toggle building static
+  libs.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> sphinx2-0.4.ebuild:
+  Masked sphinx2-0.4.ebuild stable for ppc
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> sphinx2-0.4.ebuild:
+  Stable on amd64.
+
+  24 Sep 2004; <blubb@gentoo.org> sphinx2-0.4.ebuild:
+  added ~amd64 which wasn't done by kugelfang
+
+  29 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> sphinx2-0.4.ebuild:
+  Marked ~amd64. gnuconfig_update allows successfull ./configure on amd64.
+
+  29 Apr 2004; Jon Hood <squinky86@gentoo.org> +files/sphinx2-gcc3.4.patch,
+  sphinx2-0.4.ebuild:
+  added gcc 3.4 fix
+
+  17 Mar 2004; David Holm <dholm@gentoo.org> sphinx2-0.4.ebuild:
+  Added to ~ppc.
 
   16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
   sphinx2-0.4.ebuild:

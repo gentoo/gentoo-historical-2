@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdcss/libdvdcss-1.2.9.ebuild,v 1.1 2005/07/14 10:26:17 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdcss/libdvdcss-1.2.9.ebuild,v 1.1.1.1 2005/11/30 10:04:00 chriswhite Exp $
 
-inherit eutils
+inherit eutils autotools
 
 DESCRIPTION="A portable abstraction library for DVD decryption"
 HOMEPAGE="http://developers.videolan.org/libdvdcss/"
@@ -10,7 +10,7 @@ SRC_URI="http://www.videolan.org/pub/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1.2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~hppa ia64 ~mips ppc ~ppc-macos ppc64 sparc x86"
 IUSE="doc static"
 
 DEPEND="doc? ( app-doc/doxygen )"
@@ -34,8 +34,7 @@ src_unpack() {
 	# add configure switches to enable/disable doc building
 	epatch ${FILESDIR}/${P}-doc.patch
 
-	autoreconf || die "autoreconf failed"
-	libtoolize --copy --force || die "libtoolize failed"
+	eautoreconf
 }
 
 src_compile() {
@@ -43,6 +42,9 @@ src_compile() {
 	# on some archs
 	unset CFLAGS
 	unset CXXFLAGS
+
+	# See bug #98854, requires access to fonts cache for TeX
+	use doc && addwrite /var/cache/fonts
 
 	econf \
 		$(use_enable static) \
@@ -54,7 +56,7 @@ src_compile() {
 src_install() {
 	einstall || die
 
-	dodoc AUTHORS ChangeLog INSTALL NEWS README
+	dodoc AUTHORS ChangeLog NEWS README
 	use doc && dohtml doc/html/*
 
 	##

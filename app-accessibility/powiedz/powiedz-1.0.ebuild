@@ -1,30 +1,35 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/powiedz/powiedz-1.0.ebuild,v 1.1 2004/07/09 11:17:02 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/powiedz/powiedz-1.0.ebuild,v 1.1.1.1 2005/11/30 10:04:36 chriswhite Exp $
 
 inherit eutils
 
 IUSE="arts esd"
 
-DESCRIPTION="Polish speak synthesizer based on rsynth"
+DESCRIPTION="Polish speech synthesizer based on rsynth"
 HOMEPAGE="http://kadu.net/index.php?page=download&lang=en"
 SRC_URI="http://kadu.net/download/additions/powiedz-1.0.tgz"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ppc ~sparc x86"
 
-DEPEND="esd? ( media-sound/esound )
+RDEPEND="esd? ( media-sound/esound )
 	arts? ( kde-base/arts )"
+
+DEPEND="${RDEPEND}
+	esd? ( dev-util/pkgconfig )"
 
 S=${WORKDIR}/${PN}
 
 src_compile() {
 	cflags=${CFLAGS}
+	ldlibs="-lm"
 
 	if use esd; then
-		ldlibs="${ldlibs} -lesd"
+		ldlibs="${ldlibs} `esd-config --libs`"
 		defs="${defs} -DUSE_ESD=1"
+		cflags="${cflags} `esd-config --cflags`"
 	fi
 
 	if use arts; then
@@ -35,7 +40,7 @@ src_compile() {
 
 	cd ${S}
 
-	epatch ${FILESDIR}/${PN}-dsp-handle-fix.patch || die "patching failed"
+	epatch ${FILESDIR}/${PN}-dsp-handle-fix.patch
 	emake -f Makefile_plain LDLIBS="${ldlibs}" CFLAGS="${cflags}" DEFS="${defs}" || die "make failed"
 }
 

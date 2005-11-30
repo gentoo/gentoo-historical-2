@@ -1,20 +1,21 @@
-# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.1.ebuild,v 1.1 2004/06/27 23:57:32 killsoft Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.1.ebuild,v 1.1.1.1 2005/11/30 10:04:13 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="Ham radio backend rig control libraries"
 HOMEPAGE="http://sourceforge.net/projects/hamlib/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 ~ppc alpha"
 IUSE="doc gd X"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	X? ( virtual/x11 )
-	gd? ( media-libs/libgd )"
-
+	gd? ( media-libs/gd )"
 DEPEND="sys-devel/libtool
 	>=dev-util/pkgconfig-0.12.0
 	doc? ( >=app-doc/doxygen-1.3.5-r1 )"
@@ -29,7 +30,6 @@ src_unpack() {
 src_compile() {
 	econf \
 		--libdir=/usr/lib/hamlib \
-		--includedir=/usr/include/hamlib \
 		--with-microtune \
 		--without-rpc-backends \
 		--without-perl-binding \
@@ -39,19 +39,18 @@ src_compile() {
 		$(use_with X x) \
 		|| die "configure failed"
 	emake || die "emake failed"
-	if [ -n "$(use doc)" ] ; then
+	if use doc ; then
 		cd doc && make doc || die "make doc failed"
 	fi
 }
 
 src_install() {
 	einstall \
-		libdir=${D}/usr/lib/hamlib \
-		includedir=${D}/usr/include/hamlib || \
+		libdir=${D}/usr/lib/hamlib || \
 		die "einstall failed"
 	dodoc AUTHORS PLAN README README.betatester
 	dodoc README.developer LICENSE NEWS TODO
-	if [ -n "$(use doc)" ]; then
+	if use doc; then
 		dohtml doc/html/*
 		doman doc/man/man3/*
 	fi
@@ -62,9 +61,3 @@ src_install() {
 	doins 73hamlib
 }
 
-pkg_postinst() {
-	echo
-	einfo "Add \"hamlib\" to your /etc/make.conf USE flags"
-	einfo "to enable applications to use hamlib libraries."
-	echo
-}

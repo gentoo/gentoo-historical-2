@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mod_ruby/mod_ruby-1.2.4-r1.ebuild,v 1.1 2005/03/23 16:39:06 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/mod_ruby/mod_ruby-1.2.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:19 chriswhite Exp $
 
 inherit apache-module
 
@@ -26,7 +26,7 @@ DOCFILES="ChangeLog COPYING README.* doc/*.html doc/*.css"
 need_apache
 
 src_compile() {
-	if [ "${APACHE_VERSION}" == "2"]; then
+	if [ "${APACHE_VERSION}" == "2" ]; then
 		APXS=${APXS2}
 		APACHE_BASEDIR=${APACHE2_BASEDIR}
 	else

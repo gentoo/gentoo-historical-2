@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/bzip2/bzip2-1.0.3-r5.ebuild,v 1.1 2005/07/13 10:14:45 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/bzip2/bzip2-1.0.3-r5.ebuild,v 1.1.1.1 2005/11/30 10:00:31 chriswhite Exp $
 
 inherit eutils multilib toolchain-funcs flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.bzip.org/${PV}/${P}.tar.gz"
 
 LICENSE="BZIP2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="build static"
 
 DEPEND=""
@@ -24,6 +24,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-shared-largefile-support.patch
 	epatch "${FILESDIR}"/${PN}-1.0.2-progress.patch
 	epatch "${FILESDIR}"/${PN}-1.0.2-chmod.patch
+	epatch "${FILESDIR}"/${P}-no-test.patch
 	sed -i -e 's:\$(PREFIX)/man:\$(PREFIX)/share/man:g' Makefile || die "sed manpath"
 
 	# - Generate symlinks instead of hardlinks
@@ -32,12 +33,6 @@ src_unpack() {
 		-e 's:ln $(PREFIX)/bin/:ln -s :' \
 		-e 's:$(PREFIX)/lib:$(PREFIX)/$(LIBDIR):g' \
 		Makefile || die "sed links"
-
-	# bzip2 will to run itself after it has built itself which we
-	# can't do if we are cross compiling. -solar
-	if [[ -x /bin/bzip2 ]] && tc-is-cross-compiler ; then
-		sed -i -e 's:./bzip2 -:bzip2 -:g' Makefile || die "sed cross-compile"
-	fi
 }
 
 src_compile() {
@@ -51,6 +46,10 @@ src_compile() {
 	fi
 	use static && append-flags -static
 	emake ${makeopts} all || die "Make failed"
+
+	if ! tc-is-cross-compiler ; then
+		make check || die "test failed"
+	fi
 }
 
 src_install() {

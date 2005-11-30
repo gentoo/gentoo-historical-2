@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gperiodic/gperiodic-2.0.7.ebuild,v 1.1 2004/12/24 16:39:21 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/gperiodic/gperiodic-2.0.7.ebuild,v 1.1.1.1 2005/11/30 10:00:50 chriswhite Exp $
 
 inherit toolchain-funcs
 
@@ -8,7 +8,7 @@ DESCRIPTION="Periodic table application for Linux"
 SRC_URI="http://www.acclab.helsinki.fi/~frantz/software/${P}.tar.gz"
 HOMEPAGE="http://www.acclab.helsinki.fi/~frantz/software/gperiodic.php"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="nls"
@@ -46,6 +46,9 @@ src_install() {
 	# Fix permissions
 	chmod 644 ${D}/usr/share/pixmaps/*
 	chmod 644 ${D}/usr/share/applications/*
+
+	# Fix the chemistry category in the .desktop file, bug 97202.
+	sed -i -e "s|Chemestry|Chemistry|" ${D}/usr/share/applications/gperiodic.desktop
 
 	# The man page seems to have been removed too.
 #	doman man/gperiodic.1

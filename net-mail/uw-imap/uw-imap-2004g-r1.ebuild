@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/uw-imap-2004g-r1.ebuild,v 1.1 2005/10/06 11:55:09 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/uw-imap-2004g-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:07 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.washington.edu/imap/"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
 IUSE="ipv6 ssl pic kerberos clearpasswd"
 
 PROVIDE="virtual/imapd"
@@ -72,7 +72,7 @@ src_unpack() {
 		# Now there is only c-client left, which should be built with -fPIC
 		append-flags -fPIC
 		# Apply our patch to actually build the shared library for PHP5
-		epatch ${FILESDIR}/${P}-amd64-so-fix.patch
+		epatch ${FILESDIR}/${PN}-2004c-amd64-so-fix.patch
 	fi
 
 	use pic || use alpha && append-flags -fPIC
@@ -162,7 +162,8 @@ src_install() {
 	cd ${S}
 
 	insinto /usr/include/imap
-	doins c-client/{c-client,mail,imap4r1,rfc822,linkage,misc,smtp,nntp}.h
+	doins c-client/{c-client,mail,imap4r1,rfc822,misc,smtp,nntp}.h
+	doins c-client/linkage.{c,h}
 	doins c-client/{osdep,env_unix,env,fs,ftl,nl,tcp}.h
 	dolib.a c-client/c-client.a
 	dosym /usr/$(get_libdir)/c-client.a /usr/$(get_libdir)/libc-client.a

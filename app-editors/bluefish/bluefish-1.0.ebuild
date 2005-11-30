@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/bluefish/bluefish-1.0.ebuild,v 1.1 2005/01/16 11:46:45 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/bluefish/bluefish-1.0.ebuild,v 1.1.1.1 2005/11/30 10:01:55 chriswhite Exp $
 
 inherit eutils fdo-mime
 
@@ -11,7 +11,7 @@ SRC_URI="http://pkedu.fbt.eitn.wau.nl/~olivier/downloads/${P}.tar.bz2"
 HOMEPAGE="http://bluefish.openoffice.nl/"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha ~ia64 ~ppc64"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 SLOT="0"
 
 RDEPEND=">=x11-libs/gtk+-2
@@ -33,5 +33,5 @@ src_install() {
 }
 
 pkg_postinst() {
-    update-mime-database /usr/share/mime
+	update-mime-database /usr/share/mime
 }

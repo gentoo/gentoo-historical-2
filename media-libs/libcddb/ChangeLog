@@ -1,6 +1,60 @@
 # ChangeLog for media-libs/libcddb
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libcddb/ChangeLog,v 1.1 2003/05/03 01:39:29 blauwers Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libcddb/ChangeLog,v 1.1.1.1 2005/11/30 10:03:54 chriswhite Exp $
+
+*libcddb-1.2.1 (21 Oct 2005)
+
+  21 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +libcddb-1.2.1.ebuild:
+  Version bumped. Bug 107456.
+
+  04 Oct 2005; Hardave Riar <hardave@gentoo.org> libcddb-0.9.5.ebuild:
+  Keyworded ~mips.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> libcddb-0.9.5.ebuild:
+  Stable on ppc.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> libcddb-0.9.5.ebuild:
+  stable on ia64
+
+  07 Feb 2005; Markus Rothe <corsair@gentoo.org> libcddb-0.9.5.ebuild:
+  Stable on ppc64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> libcddb-0.9.5.ebuild:
+  Stable on alpha.
+
+  10 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -libcddb-0.9.2.ebuild, libcddb-0.9.5.ebuild:
+  Stable amd64, sparc, x86.  Removing old version.
+
+*libcddb-0.9.5 (24 Sep 2004)
+
+  24 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +libcddb-0.9.5.ebuild:
+  Version bump.
+
+  23 Sep 2004; Tom Gall <tgall@gentoo.org> libcddb-0.9.4.ebuild:
+  added ~ppc64
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> libcddb-0.9.4.ebuild:
+  Stable sparc.
+
+  17 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> libcddb-0.9.4.ebuild:
+  Marked ~alpha.
+
+  07 Apr 2004; David Holm <dholm@gentoo.org> libcddb-0.9.4.ebuild:
+  Added to ~ppc.
+
+  13 Jan 2004; Martin Holzer <mholzer@gentoo.org> libcddb-0.9.2.ebuild,
+  libcddb-0.9.4.ebuild:
+  adding RESTRICT=nomirror
+
+*libcddb-0.9.4 (06 Dec 2003)
+
+  06 Dec 2003; Heinrich Wendel <lanius@gentoo.org> libcddb-0.9.4.ebuild:
+  bump
 
 *libcddb-0.9.2 (03 MAY 2003)
 

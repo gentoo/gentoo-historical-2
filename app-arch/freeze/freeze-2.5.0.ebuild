@@ -1,44 +1,42 @@
-DESCRIPTION="freeze / melt compression program"
-SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/utils/compress/${P}.tar.gz"
-HOMEPAGE="http://www.ibiblio.org/pub/Linux/utils/compress/"
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/freeze/freeze-2.5.0.ebuild,v 1.1.1.1 2005/11/30 10:00:36 chriswhite Exp $
 
-SLOT="0"
+DESCRIPTION="Freeze/unfreeze compression program"
+HOMEPAGE="http://www.ibiblio.org/pub/Linux/utils/compress/"
+SRC_URI="ftp://ftp.ibiblio.org/pub/Linux/utils/compress/${P}.tar.gz"
+
 LICENSE="as-is"
-KEYWORDS="x86"
+SLOT="0"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
 
-DEPEND="virtual/glibc"
-RDEPEND="${DEPEND}"
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# hard links confuse prepman and these links are absolute
-	sed -i.orig \
-		-e "s:ln -f \$@ \$(DEST):ln -sf freeze \$(DEST):g" \
-		-e "s:ln -f \$@ \$(MANDEST):ln -sf freeze.\$(SEC) \$(MANDEST):g" \
-		Makefile.in
+	# Hard links confuse prepman and these links are absolute.
+	sed -e "s:ln -f:ln -sf:g" -i Makefile.in || die "sed failed"
 }
 
 src_compile() {
-	cd ${S}
+	econf || die
 
-	econf || die "configure failed"
-	emake	CC="gcc" \
-		CFLAGS="$CFLAGS" \
+	emake \
 		OPTIONS="-DDEFFILE=\\\"/etc/freeze.cnf\\\"" \
-		|| die "compile failed"
+		|| die "compile problem"
 }
 
 src_install() {
-	cd ${S}
-
 	dodir /usr/bin /usr/share/man/man1
-	make	DEST="$D/usr/bin" \
-		MANDEST="$D/usr/share/man/man1" \
-		install
-
-	dobin showhuf
+	make install \
+		DEST="${D}/usr/bin" \
+		MANDEST="${D}/usr/share/man/man1" \
+		|| die
+	dobin showhuf || die
 	dodoc README *.lsm
 }

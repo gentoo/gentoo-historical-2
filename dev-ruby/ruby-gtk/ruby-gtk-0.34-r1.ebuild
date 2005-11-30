@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtk/ruby-gtk-0.34-r1.ebuild,v 1.1 2003/12/11 17:16:26 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gtk/ruby-gtk-0.34-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:16 chriswhite Exp $
 
 inherit ruby-gnome2 ruby
 
@@ -11,8 +11,18 @@ SRC_URI="mirror://sourceforge/ruby-gnome/ruby-gnome-all-${PV}.tar.gz"
 
 LICENSE="Ruby"
 SLOT="0"
-USE_RUBY="ruby16 ruby18"
-KEYWORDS="~x86 ~alpha"
+USE_RUBY="ruby16 ruby18 ruby19"
+KEYWORDS="alpha ~ia64 ppc ppc64 ~sparc x86"
+IUSE=""
 
-DEPEND=">=dev-lang/ruby-1.6.8-r2
+DEPEND="virtual/ruby
 	=x11-libs/gtk+-1.2*"
+
+src_unpack() {
+
+	unpack ${A}
+	cd ${S}
+
+	ruby -i -pe 'sub "PLATFORM","RUBY_PLATFORM"' \
+		extconf.rb src/makedefconst.rb || "substitution failed"
+}

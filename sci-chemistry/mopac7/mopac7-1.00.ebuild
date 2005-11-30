@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mopac7/mopac7-1.00.ebuild,v 1.1 2005/07/08 06:55:29 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/mopac7/mopac7-1.00.ebuild,v 1.1.1.1 2005/11/30 10:00:48 chriswhite Exp $
 
 inherit flag-o-matic
 
@@ -11,11 +11,11 @@ LICENSE="mopac7"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
-DEPEND="dev-lang/f2c
+DEPEND="dev-libs/libf2c
 	sys-devel/autoconf
 	sys-devel/automake
 	sys-devel/libtool"
-RDEPEND="dev-lang/f2c"
+RDEPEND="dev-libs/libf2c"
 
 src_compile() {
 	libtoolize --copy --force
@@ -29,7 +29,7 @@ src_compile() {
 	# but they break the actual linking of it. Something's obviously broken.
 	einfo "Removing LDFLAGS, as they break the build"
 	sed -i "/^LDFLAGS/d" src/Makefile.in
-	emake || die "emake failed"
+	emake -j1 || die "emake failed"
 }
 
 src_install() {

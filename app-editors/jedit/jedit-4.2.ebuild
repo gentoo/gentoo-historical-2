@@ -1,29 +1,50 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jedit/jedit-4.2.ebuild,v 1.1 2004/08/30 17:08:13 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jedit/jedit-4.2.ebuild,v 1.1.1.1 2005/11/30 10:01:56 chriswhite Exp $
 
 inherit java-utils
 
-MY_PV="${PV//.}"
-MY_PV="${MY_PV//_}"
+MY_PV="${PV//./}"
+MY_PV="${MY_PV//_/}"
 
 DESCRIPTION="Programmer's editor written in Java"
 HOMEPAGE="http://www.jedit.org"
 SRC_URI="mirror://sourceforge/jedit/jedit${MY_PV}source.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="x86 sparc ppc amd64"
 SLOT="0"
-IUSE="jikes doc"
+IUSE="jikes doc gnome kde"
 
-RDEPEND=">=virtual/jdk-1.3"
+RDEPEND=">=virtual/jdk-1.4"
 DEPEND="${RDEPEND}
+	doc? (
+		=app-text/docbook-xml-dtd-4.3*
+		>=app-text/docbook-xsl-stylesheets-1.65.1
+		dev-libs/libxslt
+	)
 	>=dev-java/ant-1.5.4
 	jikes? ( >=dev-java/jikes-1.17 )"
 
 S="${WORKDIR}/jEdit"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	if use doc; then
+		local xsl=$(echo /usr/share/sgml/docbook/xsl-stylesheets-*)
+		xsl=${xsl// *}
+
+		local xml=$(echo /usr/share/sgml/docbook/xml-dtd-4.3*)
+		xml=${xml// *}
+
+		echo "build.directory=." > build.properties
+		echo "docbook.dtd.catalog=${xml}/docbook.cat" >> build.properties
+		echo "docbook.xsl=${xsl}" >> build.properties
+	fi
+}
 src_compile() {
-	local antflags=""
+	local antflags="dist"
 
 	if use jikes ; then
 		einfo "Please ignore the following compiler warnings."
@@ -31,9 +52,9 @@ src_compile() {
 		antflags="${antflags} -Dbuild.compiler=jikes"
 	fi
 
-	use doc && antflags="${antflags} javadoc"
+	use doc && antflags="${antflags} javadoc docs-html"
 
-	ant dist ${antflags} || die "compile problem"
+	ant ${antflags} || die "compile problem"
 }
 
 src_install () {
@@ -48,11 +69,16 @@ src_install () {
 	cat >${D}/usr/share/jedit/jedit.sh <<-EOF
 		#!/bin/bash
 
-		java -jar /usr/share/jedit/jedit.jar \$@
+		java -jar /usr/share/jedit/jedit.jar \"\$@\"
 	EOF
 	chmod 755 ${D}/usr/share/jedit/jedit.sh
 
 	ln -s ../share/jedit/jedit.sh ${D}/usr/bin/jedit
+
+	if use gnome || use kde ; then
+		insinto /usr/share/applications
+		doins ${FILESDIR}/jedit.desktop
+	fi
 
 	keepdir /usr/share/jedit/jars
 }

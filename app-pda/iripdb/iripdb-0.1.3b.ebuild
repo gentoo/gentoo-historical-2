@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/iripdb/iripdb-0.1.3b.ebuild,v 1.1 2005/02/19 13:26:33 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/iripdb/iripdb-0.1.3b.ebuild,v 1.1.1.1 2005/11/30 10:02:25 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -16,8 +16,8 @@ KEYWORDS="~x86 ~ppc ~amd64"
 
 IUSE=""
 DEPEND="virtual/libc
-	=media-libs/taglib
-	=sys-libs/zlib*"
+	media-libs/taglib
+	sys-libs/zlib"
 
 pkg_setup() {
 	if test_version_info 3.3

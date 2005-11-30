@@ -1,3 +1,14 @@
-MD5 3d412192c75721ed0099677d2bf637e9 rssh-2.1.1.ebuild 678
-MD5 6b415835c1990f66d38c723853af0003 files/digest-rssh-2.1.1 61
-MD5 2f9d3977b8501a0394094ff2f52ab539 ChangeLog 382
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 7de2c370bb347ca049dca537568659ae rssh-2.2.3.ebuild 844
+MD5 fc4c77dcc9ecf4d55db84d2c59e7b629 ChangeLog 1238
+MD5 7b93999626c2904945bb487fe7f4b377 metadata.xml 273
+MD5 3867f15cbcd6dbd7f3b1817143ffaa45 files/digest-rssh-2.2.3 62
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDNFTkntT9W3vfTuoRAuhsAKCUm3tHwzWCaCBxdDEzYYgrgyshsQCeKDlq
+8Wn9yQCprHYMc2StSyWer5I=
+=Ujub
+-----END PGP SIGNATURE-----

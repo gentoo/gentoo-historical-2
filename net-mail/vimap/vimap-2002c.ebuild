@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vimap/vimap-2002c.ebuild,v 1.1 2003/05/28 22:12:10 alron Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vimap/vimap-2002c.ebuild,v 1.1.1.1 2005/11/30 10:03:10 chriswhite Exp $
 
 S=${WORKDIR}/imap-2002c1
 
@@ -10,21 +10,23 @@ HOMEPAGE="http://www.washington.edu/imap/ http://vimap.sf.net/"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc ~hppa ~alpha"
-IUSE="ssl mbox"
+KEYWORDS="x86 sparc ppc hppa alpha"
+IUSE="ssl"
 
 PROVIDE="virtual/imapd"
+PROVIDE="${PROVIDE} virtual/imap-c-client"
 DEPEND="!net-mail/uw-imap
-	virtual/glibc
+	!virtual/imap-c-client
+	virtual/libc
 	>=sys-libs/pam-0.72
 	ssl? ( dev-libs/openssl )"
 
 src_unpack() {
 	unpack ${A}
 	# Tarball packed with bad file perms
-	chmod -R ug+w ${S} 
+	chmod -R ug+w ${S}
 	cd ${S}
-	bzcat ${FILESDIR}/imap-2002c-virtual.patch.bz2 | patch -p0 
+	bzcat ${FILESDIR}/imap-2002c-virtual.patch.bz2 | patch -p0
 	cd ${S}/src/osdep/unix/
 	cp Makefile Makefile.orig
 	sed \
@@ -35,7 +37,7 @@ src_unpack() {
 	cd ${S}
 }
 
-src_compile() {                           
+src_compile() {
 	if use ssl; then
 		cd ${S}
 		yes | make lnv SSLTYPE=unix || die
@@ -67,7 +69,7 @@ EOF
 	fi
 }
 
-src_install() {                               
+src_install() {
 	into /usr
 	dosbin imapd/imapd ipopd/ipop?d
 

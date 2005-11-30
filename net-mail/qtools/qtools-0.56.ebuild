@@ -1,38 +1,33 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/qtools/qtools-0.56.ebuild,v 1.1 2003/04/05 23:29:37 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qtools/qtools-0.56.ebuild,v 1.1.1.1 2005/11/30 10:03:04 chriswhite Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="Several utilities for use with qmail, typically as part of .qmail command processing"
-
 HOMEPAGE="http://www.superscript.com/qtools/intro.html"
-
 SRC_URI="http://www.superscript.com/qtools/${P}.tar.gz"
-
 LICENSE="as-is"
-
 SLOT="0"
+KEYWORDS="alpha ~hppa ~mips ppc ~sparc x86"
+IUSE="static"
 
-KEYWORDS="~x86"
-
-DEPEND=""
-
-S=${WORKDIR}/${P}
+DEPEND="sys-devel/gcc-config"
 
 src_unpack() {
-    unpack ${A}
+	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${P}-errno.patch
+	epatch ${FILESDIR}/${P}-head.patch
 }
 
 src_compile() {
-    LDFLAGS=
-    use static && LDFLAGS="-static"
-    echo "gcc ${CFLAGS}" > conf-cc
-    echo "gcc ${LDFLAGS}" > conf-ld
-    echo "/usr" > conf-home
-    emake || die "emake failed"
+	use static && LDFLAGS="${LDFLAGS} -static"
+	export CC="$(tc-getCC)"
+	echo "${CC} ${CFLAGS}" > conf-cc
+	echo "${CC} ${LDFLAGS}" > conf-ld
+	echo "/usr" > conf-home
+	emake || die "emake failed"
 }
 
 src_install() {
@@ -41,6 +36,6 @@ src_install() {
 		  822headerok 822headers checkaddr checkdomain \
 		  condtomaildir filterto ifaddr iftoccfrom replier \
 		  replier-config tomaildir
-	
+
 	dodoc BAPVERSION CHANGES FILES README SYSDEPS TARGETS TODO VERSION
 }

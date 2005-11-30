@@ -1,16 +1,21 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/urw-fonts/urw-fonts-2.0-r1.ebuild,v 1.1 2003/06/02 13:48:00 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/urw-fonts/urw-fonts-2.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:32 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="free good quality fonts gpl'd by URW++"
+HOMEPAGE="http://www.urwpp.de/"
 SRC_URI="mirror://gentoo/urw-fonts-2.0-29.src.rpm"
-HOMEPAGE=""
-KEYWORDS="~x86 ~ppc"
-LICENSE="GPL-2"
-DEPEND="rpm2targz"
-SLOT="0"
 
-S="${WORKDIR}"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ~ppc amd64"
+IUSE=""
+
+DEPEND="app-arch/rpm2targz"
+
+S=${WORKDIR}
 
 src_unpack() {
 	cp ${DISTDIR}/${A} ${WORKDIR}
@@ -33,7 +38,9 @@ src_install() {
 	cp -f *.afm *.pfb ${D}/usr/share/fonts/default/Type1
 	cp ${S}/fonts/fonts.scale ${D}/usr/share/fonts/default/Type1/
 	mkdir -p ${D}/etc/fonts
-	cp ${FILESDIR}/fonts.conf ${D}/etc/fonts/
+	# Don't add this, it makes no changes not already needed in fonts.conf
+	# Brad Laue <brad@gentoo.org> 08/07/2003
+#	cp ${FILESDIR}/fonts.conf ${D}/etc/fonts/
 }
 
 pkg_postinst() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libtheora/libtheora-1.0_alpha4-r1.ebuild,v 1.1 2005/06/23 10:52:35 zaheerm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libtheora/libtheora-1.0_alpha4-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:12 chriswhite Exp $
 inherit flag-o-matic
 
 DESCRIPTION="The Theora Video Compression Codec"

@@ -1,6 +1,38 @@
 # ChangeLog for media-fonts/sazanami
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/sazanami/ChangeLog,v 1.1 2004/06/21 07:18:05 usata Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/sazanami/ChangeLog,v 1.1.1.1 2005/11/30 10:01:25 chriswhite Exp $
+
+  20 Dec 2004; Yuta SATOH <nigoro@gentoo.org> sazanami-20040629.ebuild:
+  Stable on ppc64
+
+  18 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> sazanami-20040629.ebuild:
+  Stable on sparc and amd64.
+
+  06 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> sazanami-20040629.ebuild:
+  Added to ~ppc-macos.
+
+  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> -sazanami-20040618.ebuild,
+  sazanami-20040621.ebuild, sazanami-20040629.ebuild:
+  Stable on x86, alpha and ppc.
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> sazanami-20040621.ebuild:
+  stable on ppc64, bug #55517
+
+  05 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> sazanami-20040629.ebuild:
+  Added ~sparc to KEYWORDS.
+
+  02 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> sazanami-20040629.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+*sazanami-20040629 (01 Jul 2004)
+
+  01 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> +sazanami-20040629.ebuild:
+  Version bumped.
+
+*sazanami-20040621 (22 Jun 2004)
+
+  22 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +sazanami-20040621.ebuild:
+  Version bumped.
 
 *sazanami-20040618 (21 Jun 2004)
 

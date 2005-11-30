@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-1.6.8-r1.ebuild,v 1.1 2005/09/02 01:30:12 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/syslog-ng-1.6.8-r1.ebuild,v 1.1.1.1 2005/11/30 09:59:47 chriswhite Exp $
 
 inherit fixheadtails
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.balabit.com/downloads/syslog-ng/${PV%.*}/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ~ppc64 s390 sh sparc x86"
 IUSE="hardened selinux static tcpd"
 
 RDEPEND=">=dev-libs/libol-0.3.16
@@ -24,8 +24,10 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	ht_fix_file configure
+	# fix for bugs #104538 and bug #104475
 	sed -i \
 		-e "s:utils/::" \
+		-e "s:--local-:--:" \
 		configure \
 		|| die "sed failed"
 	cd "${S}/doc/sgml"

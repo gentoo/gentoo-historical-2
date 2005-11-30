@@ -1,26 +1,26 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/relay-ctrl/relay-ctrl-3.1.1-r2.ebuild,v 1.1 2004/05/24 09:40:01 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/relay-ctrl/relay-ctrl-3.1.1-r2.ebuild,v 1.1.1.1 2005/11/30 10:03:27 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils toolchain-funcs fixheadtails
+
 DESCRIPTION="SMTP Relaying Control designed for qmail & tcpserver."
-SRC_URI="http://untroubled.org/relay-ctrl/${P}.tar.gz"
 HOMEPAGE="http://untroubled.org/relay-ctrl/"
+SRC_URI="http://untroubled.org/relay-ctrl/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc"
+SLOT="0"
+KEYWORDS="x86 sparc ~amd64 ~ppc"
+IUSE=""
 
 DEPEND="sys-devel/gcc-config"
-RDEPEND="sys-apps/ucspi-tcp sys-apps/daemontools"
+RDEPEND="sys-apps/ucspi-tcp sys-process/daemontools"
 
 RELAYCTRL_BASE="/var/spool/relay-ctrl"
 # this is relative to RELAYCTRL_BASE
 RELAYCTRL_STORAGE="allow"
 RELAYCTRL_CONFDIR="/etc/relay-ctrl"
 RELAYCTRL_BINDIR="/usr/bin"
-
-inherit fixheadtails
 
 src_unpack() {
 	unpack ${A}
@@ -29,8 +29,9 @@ src_unpack() {
 }
 
 src_compile() {
-	echo "${CC} ${CFLAGS}" > conf-cc
-	echo "${CC} ${LDFLAGS}" > conf-ld
+	myCC="$(tc-getCC)"
+	echo "${myCC} ${CFLAGS}" > conf-cc
+	echo "${myCC} ${LDFLAGS}" > conf-ld
 	emake || die
 }
 
@@ -53,8 +54,9 @@ src_install () {
 	# default to 30 minutes
 	echo "1800" > ${D}${RELAYCTRL_CONFDIR}/RELAY_CTRL_EXPIRY
 
+	dodir /etc/cron.hourly
 	echo "/usr/bin/envdir ${RELAYCTRL_CONFDIR} ${RELAYCTRL_BINDIR}/relay-ctrl-age" >${D}/etc/cron.hourly/relay-ctrl-age
-	chmod +x ${D}/etc/cron.hourly/relay-ctrl-age
+	fperms 755 /etc/cron.hourly/relay-ctrl-age
 }
 
 pkg_postinst() {

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.40.0.ebuild,v 1.1 2004/04/04 22:13:08 zx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.40.0.ebuild,v 1.1.1.1 2005/11/30 10:01:36 chriswhite Exp $
 
 inherit gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="http://expect.nist.gov/src/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips hppa amd64 ppc64 sh"
 IUSE="X doc"
 
 DEPEND=">=dev-lang/tcl-8.2
@@ -18,11 +18,13 @@ DEPEND=">=dev-lang/tcl-8.2
 
 S=${WORKDIR}/${P%.0}
 
-src_compile() {
-	if [ "${ARCH}" == "amd64" ]; then
-		gnuconfig_update
-	fi
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	gnuconfig_update
+}
 
+src_compile() {
 	local myconf
 	local tclv
 	local tkv

@@ -1,32 +1,32 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/adns/adns-1.1.ebuild,v 1.1 2003/11/22 08:48:58 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/adns/adns-1.1.ebuild,v 1.1.1.1 2005/11/30 10:02:52 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils multilib
+
 DESCRIPTION="Advanced, easy to use, asynchronous-capable DNS client library and utilities"
 HOMEPAGE="http://www.chiark.greenend.org.uk/~ian/adns/"
 SRC_URI="ftp://ftp.chiark.greenend.org.uk/users/ian/adns/${P}.tar.gz"
 
-
-SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~arm ~ia64 ~amd64"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha hppa ~mips ia64 amd64 ppc64"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
+RDEPEND=""
 
-src_compile() {
-
-	econf || die
-	emake || die
-
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-gcc34.patch
 }
 
 src_install () {
-	dodir /usr/{include,bin,lib}
-	make prefix=${D}/usr install || die
-	dodoc README GPL-vs-LGPL COPYING TODO
+	dodir /usr/{include,bin,$(get_libdir)}
+	make prefix=${D}/usr lib_dir=${D}/usr/$(get_libdir) install || die
+	dodoc README TODO
 	dohtml *.html
 
-	cd ${D}/usr/lib
-	dosym libadns.so.1 /usr/lib/libadns.so
+	dosym libadns.so.1 /usr/$(get_libdir)/libadns.so
 }

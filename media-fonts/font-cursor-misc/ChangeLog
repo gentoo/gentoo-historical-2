@@ -1,6 +1,34 @@
 # ChangeLog for media-fonts/font-cursor-misc
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-cursor-misc/ChangeLog,v 1.1 2005/08/08 07:42:49 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-cursor-misc/ChangeLog,v 1.1.1.1 2005/11/30 10:01:33 chriswhite Exp $
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  added ~mips keyword
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  Marked ~amd64.
+
+  14 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-0.99.0.ebuild:
+  Autodiscover fonts instead of specifying them.
+
+  11 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  font-cursor-misc-0.99.0.ebuild:
+  Update to use new x-modular.eclass setup code. See font-misc-misc ChangeLog
+  for more details.
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  font-cursor-misc-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *font-cursor-misc-0.99.0 (08 Aug 2005)
 

@@ -1,8 +1,398 @@
 # ChangeLog for net-mail/getmail
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/getmail/ChangeLog,v 1.1 2002/06/18 18:09:01 stroke Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/getmail/ChangeLog,v 1.1.1.1 2005/11/30 10:03:26 chriswhite Exp $
 
+*getmail-4.4.2 (13 Nov 2005)
+
+  13 Nov 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.4.2.ebuild:
+  Version bump.
+
+*getmail-4.4.1 (10 Nov 2005)
+
+  10 Nov 2005; Andrej Kacian <ticho@gentoo.org> -getmail-4.3.12.ebuild,
+  -getmail-4.3.13.ebuild, -getmail-4.4.0.ebuild, +getmail-4.4.1.ebuild:
+  Version bump. Removing older ebuilds.
+
+*getmail-4.4.0 (09 Nov 2005)
+
+  09 Nov 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.4.0.ebuild:
+  Version bump. Removed unnecessarry sed call.
+
+*getmail-4.3.14 (02 Nov 2005)
+
+  02 Nov 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.14.ebuild:
+  Version bump.
+
+*getmail-4.3.13 (15 Oct 2005)
+
+  15 Oct 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.13.ebuild:
+  Version bump.
+
+  14 Oct 2005; Andrej Kacian <ticho@gentoo.org> -getmail-4.3.6.ebuild,
+  -getmail-4.3.7.ebuild, -getmail-4.3.8.ebuild, -getmail-4.3.10.ebuild,
+  getmail-4.3.11.ebuild:
+  4.3.11 stable on amd64. Removed older ebuilds.
+
+  14 Oct 2005; Andrej Kacian <ticho@gentoo.org> -getmail-4.3.3.ebuild,
+  -getmail-4.3.4.ebuild, -getmail-4.3.5.ebuild:
+  Removed older ebuilds.
+
+*getmail-4.3.12 (14 Oct 2005)
+
+  14 Oct 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.12.ebuild:
+  Version bump. Added postinst and postrm python magic.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> getmail-4.3.11.ebuild:
+  Stable on ppc.
+
+  01 Aug 2005; Fernando J. Pereda <ferdy@gentoo.org> getmail-4.3.11.ebuild:
+  stable on alpha
+
+  07 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.3.11.ebuild:
+  Stable on sparc
+
+  07 Jul 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.3.11.ebuild:
+  Stable on x86.
+
+  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> getmail-4.3.10.ebuild:
+  Stable on alpha.
+
+  26 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> getmail-4.3.10.ebuild:
+  Stable on ppc.
+
+  21 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.3.10.ebuild:
+  Stable on sparc
+
+  18 Jun 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.3.10.ebuild:
+  Stable on x86.
+
+*getmail-4.3.11 (18 Jun 2005)
+
+  18 Jun 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.11.ebuild:
+  Version bump.
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> getmail-4.3.8.ebuild:
+  Stable on ppc.
+
+  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> getmail-4.3.8.ebuild:
+  Stable on alpha.
+
+  08 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.3.8.ebuild:
+  Stable on sparc
+
+  06 Jun 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.3.8.ebuild:
+  Stable on x86.
+
+  24 May 2005; Andrej Kacian <ticho@gentoo.org>
+  -files/getmail-4.3.9-fix.patch, -getmail-4.3.9.ebuild:
+  Removed 4.3.9, as it was faulty.
+
+*getmail-4.3.10 (19 May 2005)
+
+  19 May 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.10.ebuild:
+  Version bump.
+
+  19 May 2005; Andrej Kacian <ticho@gentoo.org>
+  +files/getmail-4.3.9-fix.patch, getmail-4.3.9.ebuild:
+  Fix missing import and deprecation warning for python 2.4.
+
+*getmail-4.3.9 (19 May 2005)
+
+  19 May 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.9.ebuild:
+  Version bump.
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> getmail-4.3.6.ebuild:
+  Stable on ppc.
+
+  13 May 2005; Fernando J. Pereda <ferdy@gentoo.org> getmail-4.3.6.ebuild:
+  4.3.6 alpha stable
+
+*getmail-4.3.8 (06 May 2005)
+
+  06 May 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.8.ebuild:
+  Version bump.
+
+  01 May 2005; Tom Martin <slarti@gentoo.org> getmail-4.3.6.ebuild:
+  Stable on amd64, sparc.
+
+  01 May 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.3.6.ebuild:
+  Stable on x86.
+
+*getmail-4.3.7 (01 May 2005)
+
+  01 May 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.3.4.ebuild,
+  getmail-4.3.5.ebuild, +getmail-4.3.7.ebuild:
+  Version bump. Mark 4.3.4 and 4.3.5 stable on x86.
+
+*getmail-4.3.6 (09 Apr 2005)
+
+  09 Apr 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.6.ebuild:
+  Version bump. Closes #88465, reported by Thomas Kirchner <gentoo@halffull.org>.
+
+*getmail-4.3.5 (06 Apr 2005)
+
+  06 Apr 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.5.ebuild:
+  Version bump.
+
+  30 Mar 2005; Andrej Kacian <ticho@gentoo.org> -getmail-4.2.5.ebuild,
+  -getmail-4.2.5-r1.ebuild, -getmail-4.2.6.ebuild, -getmail-4.3.0.ebuild,
+  -getmail-4.3.1.ebuild, -getmail-4.3.1-r1.ebuild, -getmail-4.3.2.ebuild:
+  Removed old deprecated ebuilds.
+
+  30 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> getmail-4.3.3.ebuild:
+  Stable on alpha, bug 87181.
+
+  30 Mar 2005; Karol Wojtaszek <sekretarz@gentoo.org> getmail-4.3.3.ebuild:
+  Stable on amd64, bug #87181
+
+  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> getmail-4.3.3.ebuild:
+  Stable on ppc.
+
+  29 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.3.3.ebuild:
+  Stable on sparc wrt #87181
+
+*getmail-4.3.4 (29 Mar 2005)
+
+  29 Mar 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.3.3.ebuild,
+  +getmail-4.3.4.ebuild:
+  Version bump. 4.3.3 stable on x86.
+
+  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> getmail-4.3.1.ebuild:
+  Stable on alpha.
+
+*getmail-4.3.3 (21 Feb 2005)
+
+  21 Feb 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.3.ebuild:
+  Version bump.
+
+  17 Feb 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.2.5-r1.ebuild,
+  getmail-4.2.5.ebuild, getmail-4.2.6.ebuild, getmail-4.3.0.ebuild,
+  getmail-4.3.1-r1.ebuild, getmail-4.3.1.ebuild, getmail-4.3.2.ebuild:
+  Project page moved, adjusted HOMEPAGE and SRC_URI in all ebuilds.
+
+  14 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.3.1.ebuild:
+  Stable on sparc
+
+*getmail-4.2.5-r1 (09 Feb 2005)
+
+  09 Feb 2005; Andrej Kacian <ticho@gentoo.org> +files/python2.4-fix.patch,
+  +getmail-4.2.5-r1.ebuild, +getmail-4.3.1-r1.ebuild, getmail-4.3.2.ebuild:
+  Fix deprecation warnings for "strict" usage in python 2.4. Patch submitted
+  by Marien Zwart <m_zwart@123mail.org>, bug #80073.
+
+*getmail-4.3.2 (09 Feb 2005)
+
+  09 Feb 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.2.5.ebuild,
+  getmail-4.2.6.ebuild, getmail-4.3.0.ebuild, getmail-4.3.1.ebuild,
+  +getmail-4.3.2.ebuild:
+  Version bump. Stable on x86 up to 4.3.1. 4.2.5 unstable on ppc, due to
+  lack of stable >=python-2.3.3.
+
+  05 Feb 2005; Andrej Kacian <ticho@gentoo.org> -getmail-4.2.0.ebuild,
+  -getmail-4.2.2.ebuild, -getmail-4.2.3.ebuild, -getmail-4.2.4.ebuild:
+  Removed old ebuilds.
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> getmail-4.2.5.ebuild:
+  Stable on alpha.
+
+  21 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> getmail-4.2.5.ebuild:
+  Stable on ppc, bug 78609.
+
+  19 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> getmail-4.2.5.ebuild:
+  stable on amd64.
+
+*getmail-4.3.1 (19 Jan 2005)
+
+  19 Jan 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.1.ebuild:
+  Version bump.
+
+  17 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.2.5.ebuild:
+  Stable on sparc
+
+  14 Jan 2005; Andrej Kacian <ticho@gentoo.org> getmail-4.2.3.ebuild,
+  getmail-4.2.4.ebuild, getmail-4.2.5.ebuild:
+  Stable on x86.
+
+*getmail-4.3.0 (11 Jan 2005)
+
+  11 Jan 2005; Andrej Kacian <ticho@gentoo.org> +getmail-4.3.0.ebuild:
+  Version bump. Closes #77459, reported by Daniel Webert
+  <rockoo@rockoo.homelinux.org>.
+
+*getmail-4.2.6 (09 Jan 2005)
+
+  09 Jan 2005; Andrej Kacian <ticho@gentoo.org> :
+  Version bump. Closes #77037, reported by Daniel Webert
+  <rockoo@rockoo.homelinux.org>.
+
+*getmail-4.2.5 (12 Dec 2004)
+
+  12 Dec 2004; Andrej Kacian <ticho@gentoo.org> +getmail-4.2.5.ebuild:
+  Version bump. Closes #74194, reported by Daniel Webert
+  <rockoo@rockoo.homelinux.org>.
+
+  07 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.2.2.ebuild:
+  Stable on sparc
+
+  04 Dec 2004; Tom Martin <slarti@gentoo.org> getmail-4.2.2.ebuild:
+  Stable on amd64.
+
+  24 Nov 2004; Andrej Kacian <ticho@gentoo.org> getmail-4.2.2.ebuild:
+  Stable on x86.
+
+*getmail-4.2.4 (23 Nov 2004)
+
+  23 Nov 2004; Andrej Kacian <ticho@gentoo.org> +getmail-4.2.4.ebuild:
+  Version bump. Closes #72222, reported by Daniel Webert
+  <rockoo@rockoo.homelinux.org>.
+
+*getmail-4.2.3 (20 Nov 2004)
+
+  20 Nov 2004; Andrej Kacian <ticho@gentoo.org> +getmail-4.2.3.ebuild:
+  Version bump. Closes #71829, reported by Daniel Webert
+  <rockoo@rockoo.homelinux.org>.
+
+*getmail-4.2.2 (14 Oct 2004)
+
+  14 Oct 2004; Andrej Kacian <ticho@gentoo.org> +getmail-4.2.2.ebuild:
+  Version bump. Closes #67344, reported by tove <bugs@veller.net>.
+
+  14 Oct 2004; Andrej Kacian <ticho@gentoo.org> -getmail-4.0.10.ebuild,
+  -getmail-4.0.2-r1.ebuild, -getmail-4.0.6.ebuild, -getmail-4.0.8.ebuild,
+  -getmail-4.1.3.ebuild, -getmail-4.1.4.ebuild, -getmail-4.1.5.ebuild:
+  Removed all ebuilds < 4.2.0 (#67344, #64643).
+
+*getmail-3.2.4 (21 Sep 2004)
+
+  21 Sep 2004; Andrej Kacian <ticho@gentoo.org> -getmail-3.1.7.ebuild,
+  -getmail-3.2.1.ebuild, -getmail-3.2.4.ebuild:
+  Removed all getmail-3 ebuilds, since 4.2.0 is now stable on all archs set in
+  KEYWORDS.
+
+  21 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> getmail-4.2.0.ebuild:
+  Marked stable on amd64.
+
+  20 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org> getmail-4.2.0.ebuild:
+  Stable on alpha, bug 64643.
+
+  20 Sep 2004; Andrej Kacian <ticho@gentoo.org> getmail-4.2.0.ebuild:
+  Stable on x86 (GLSA bug #64643)
+
+  20 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> getmail-4.2.0.ebuild:
+  Stable on sparc wrt #64643
+
+  20 Sep 2004; <SeJo@gentoo.org> getmail-4.2.0.ebuild:
+  marked ppc gsla bug: 64643
+
+*getmail-4.2.0 (19 Sep 2004)
+
+  19 Sep 2004; Andrej Kacian <ticho@gentoo.org> +getmail-4.2.0.ebuild:
+  Version bump for security bug #64643.
+
+*getmail-4.1.5 (15 Sep 2004)
+
+  15 Sep 2004; Andrej Kacian <ticho@gentoo.org> +getmail-4.1.5.ebuild:
+  Version bump. Closes (once again) #61527, reported by tove <bugs@veller.net>.
+
+  14 Sep 2004; Andrej Kacian <ticho@gentoo.org> getmail-4.0.2-r1.ebuild:
+  Pretty much stable on x86.
+
+*getmail-4.1.4 (04 Sep 2004)
+
+  04 Sep 2004; Andrej Kacian <ticho@gentoo.org> +getmail-4.1.4.ebuild:
+  Version bump.
+
+*getmail-4.1.3 (01 Sep 2004)
+
+  01 Sep 2004; Andrej Kacian <ticho@gentoo.org> :
+  Version bump, closes #61527, thanks to Daniel Webert
+  <rockoo@rockoo.homelinux.org>.
+
+  13 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> getmail-4.0.2-r1.ebuild:
+  Stable on sparc
+
+  13 Aug 2004; Tom Martin <slarti@gentoo.org> getmail-4.0.2-r1.ebuild:
+  Marked stable on amd64.
+
+*getmail-4.0.10 (13 Aug 2004)
+
+  13 Aug 2004; Tom Martin <slarti@gentoo.org> +getmail-4.0.10.ebuild:
+  Version bumped to getmail-4.0.10. Thanks to Daniel Webert
+  <rockoo@rockoo.homelinux.org> for reporting in bug 60183.
+
+  06 Aug 2004; Tom Martin <slarti@gentoo.org> getmail-4.0.6.ebuild,
+  getmail-4.0.8.ebuild:
+  Stylistic changes in gzipping of man pages.
+
+*getmail-4.0.8 (06 Aug 2004)
+
+  06 Aug 2004; Tom Martin <slarti@gentoo.org> getmail-4.0.6.ebuild,
+  +getmail-4.0.8.ebuild:
+  Version bump -> 4.0.8. Tidy, and handle upstream's new method of handling docs
+  so it's consistent with Gentoo's. Thanks to Frank Benkstein <benkstein@gmx.de>
+  for reporting the new version in bug 59618.
+
+*getmail-4.0.6 (06 Aug 2004)
+
+  04 Aug 2004; Tom Martin <slarti@gentoo.org> :
+  Version bump, thanks to Martin KlaffenBĂÂśck <martin.klaffenboeck@gmx.de> for
+  reporting. Resolves bug #59400.
+
+*getmail-4.0.2-r1 (02 Aug 2004)
+
+  02 Aug 2004; Tuan Van <langthang@gentoo.org> +getmail-4.0.2-r1.ebuild:
+  Revision bump. Thanks to Frank Benkstein <benkstein@gmx.de>. Resolved 
+  bug #59101.
+
+*getmail-4.0.2 (31 Jul 2004)
+
+  31 Jul 2004; Tuan Van <langthang@gentoo.org> +getmail-4.0.2.ebuild:
+  Version bump, resolve bug #58998.
+
+*getmail-4.0.1 (30 Jul 2004)
+
+  30 Jul 2004; Tuan Van <langthang@gentoo.org> +getmail-4.0.1.ebuild:
+  version bump, resolve bug #56673.
+
+  07 Jul 2004; Tuan Van<langthang@gentoo.org> :
+  Version bump bug #47741. Thanks to tove <bugs-at-veller-dot-net>, Daniel 
+  Webert <daniel_webert-at-web-dot-de>.
+
+  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> getmail-3.2.1.ebuild:
+  Stable on alpha.
+
+  08 Nov 2003; Brad House <brad_mssw@gentoo.org> getmail-3.2.1.ebuild:
+  add ~amd64 flag
+
+*getmail-3.2.1 (19 Oct 2003)
+
+  19 Oct 2003; Heinrich Wendel <lanius@gentoo.org> getmail-3.1.7.ebuild,
+  getmail-3.2.1.ebuild:
+  stable bump, version bump
+
+*getmail-3.1.7 (21 Jun 2003)
+
+  21 Jun 2003; Jon Portnoy <avenj@gentoo.org> getmail-3.1.7.ebuild :
+  Version bump, submitted by Wim Uyttebroek in bug 22785.
+
+*getmail-3.1.3 (12 May 2003)
+ 
+  13 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*getmail-3.1.1 (11 May 2003)
+
+  11 May 2003; Jon Portnoy <avenj@gentoo.org> getmail-3.1.3.ebuild :
+  Version bump, submitted by Alex F and webmaster@quantumz.net in 
+  bug 16204.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *getmail-2.3.8 (18 Jun 2002)
+
+  4 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> getmail-2.3.8.ebuild :
+
+  Added ppc to KEYWORDS.
 
   18 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> ChangeLog :
 

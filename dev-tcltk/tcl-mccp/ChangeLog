@@ -1,6 +1,12 @@
 # ChangeLog for dev-tcltk/tcl-mccp
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tcl-mccp/ChangeLog,v 1.1 2004/08/28 19:02:02 cardoe Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tcl-mccp/ChangeLog,v 1.1.1.1 2005/11/30 10:01:39 chriswhite Exp $
+
+  29 Aug 2005; <dang@gentoo.org> tcl-mccp-0.6.ebuild:
+  Marking ~amd64
+
+  15 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> tcl-mccp-0.6.ebuild:
+  tidy
 
 *tcl-mccp-0.6 (28 Aug 2004)
 

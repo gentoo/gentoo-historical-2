@@ -1,8 +1,46 @@
 # ChangeLog for app-admin/procinfo
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-admin/procinfo/ChangeLog,v 1.1 2002/02/01 21:52:59 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/procinfo/ChangeLog,v 1.1.1.1 2005/11/30 09:59:52 chriswhite Exp $
 
+  23 Oct 2005; Brent Baude <ranger@gentoo.org> procinfo-18-r1.ebuild:
+  Marking procinfo-18-r1 as ~ppc64 for bug 110150
+
+  24 Sep 2005; Carsten Lohrke <carlo@gentoo.org> -procinfo-18.ebuild,
+  procinfo-18-r1.ebuild:
+  fixed url, #107084
+
+  09 Aug 2005; Olivier Crête <tester@gentoo.org> procinfo-18-r1.ebuild:
+  Stable on amd64, bug #101816
+
+  28 Apr 2005; Simon Stelling <blubb@gentoo.org> procinfo-18-r1.ebuild:
+  added ~amd64
+
+  18 Mar 2005; Sven Wegener <swegener@gentoo.org> procinfo-18-r1.ebuild:
+  Fixed double .patch in epatch line.
+
+*procinfo-18-r1 (18 Mar 2005)
+
+  18 Mar 2005; Carlos Silva <r3pek@gentoo.org> +files/cpu-usage-fix.patch,
+  +files/kernel-2.6.patch, +procinfo-18-r1.ebuild:
+  Fixing bug #79754 thx to Arkadi Shishlov
+
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  procinfo-18.ebuild:
+  QA - IUSE fix
+
+  18 Jan 2004; Chuck Short <zul@gentoo.org> procinfo-18.ebuild:
+  Added amd64 keyword closes 37548.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *procinfo-18 (1 Feb 2002)
+
+  23 Jun 2003; Guy Martin <gmsoft@gentoo.org> :
+  Added hppa to KEYWORDS.
+
+  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
+
+  Added KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

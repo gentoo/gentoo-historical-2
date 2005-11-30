@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/enet/enet-0_pre20040813.ebuild,v 1.1 2004/08/13 09:19:33 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/enet/enet-0_pre20040813.ebuild,v 1.1.1.1 2005/11/30 10:02:57 chriswhite Exp $
 
 #ECVS_SERVER=sferik.cubik.org:/home/enet/cvsroot
 #ECVS_USER=anoncvs

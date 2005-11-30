@@ -1,6 +1,8 @@
-# Copyright 2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/guilib/guilib-1.1.0.ebuild,v 1.1 2002/12/16 14:10:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/guilib/guilib-1.1.0.ebuild,v 1.1.1.1 2005/11/30 10:03:53 chriswhite Exp $
+
+inherit eutils
 
 MY_P="GUIlib-${PV}"
 DESCRIPTION="a simple widget set for SDL"
@@ -9,20 +11,20 @@ HOMEPAGE="http://www.libsdl.org/projects/GUIlib/"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="x86 ppc sparc"
+KEYWORDS="x86 ppc sparc ~amd64"
+IUSE=""
 
 DEPEND=">=media-libs/libsdl-1.0.1"
 
 S="${WORKDIR}/${MY_P}"
 
-src_compile() {
-	patch < ${FILESDIR}/${P}.makefile.patch
-
-	econf --with-gnu-ld `use_with pic`
-	emake || die
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}.makefile.patch
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR=${D} install || die "make install failed"
 	dodoc CHANGES README
 }

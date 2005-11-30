@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/hearse/hearse-1.5.ebuild,v 1.1 2005/05/02 04:47:09 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/hearse/hearse-1.5.ebuild,v 1.1.1.1 2005/11/30 10:01:00 chriswhite Exp $
 
 inherit games
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.argon.org/~roderick/hearse/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="ppc x86"
 IUSE=""
 
 RDEPEND=">=games-roguelike/nethack-3.4.1

@@ -1,24 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/passook/passook-1.0.0.ebuild,v 1.1 2002/07/25 13:17:40 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/passook/passook-1.0.0.ebuild,v 1.1.1.1 2005/11/30 10:00:06 chriswhite Exp $
+
+inherit eutils
 
 S=${WORKDIR}
 DESCRIPTION="Password generator capable of generating pronounceable and/or secure passwords."
-SRC_URI="ftp://mackers.com/pub/scripts/passook.tar.gz"
+SRC_URI="http://mackers.com/projects/passook/${PN}.tar.gz"
 HOMEPAGE="http://mackers.com/misc/scripts/passook/"
+IUSE=""
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86"
+KEYWORDS="amd64 ppc ppc-macos ppc64 sparc x86"
 
-DEPEND="sys-devel/perl
+DEPEND="dev-lang/perl
 	sys-apps/grep
 	sys-apps/miscfiles"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	patch -p0 < ${FILESDIR}/passook.diff || die
+	epatch ${FILESDIR}/passook.diff
 }
 
 src_install() {

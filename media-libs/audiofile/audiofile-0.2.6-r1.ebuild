@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/audiofile/audiofile-0.2.6-r1.ebuild,v 1.1 2004/04/05 07:20:53 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/audiofile/audiofile-0.2.6-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:52 chriswhite Exp $
 
-inherit libtool gnuconfig eutils
+inherit libtool eutils
 
 DESCRIPTION="An elegant API for accessing audio files"
 HOMEPAGE="http://www.68k.org/~michael/audiofile/"
@@ -10,20 +10,17 @@ SRC_URI="http://www.68k.org/~michael/audiofile/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha hppa ~amd64 ~mips ~ia64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND=""
 
 src_unpack() {
 	unpack ${A}
-
-	cd ${S}/sfcommands
-	epatch ${FILESDIR}/sfconvert-eradicator.patch
-
-	cd ${S}
-	# Allows configure to detect mipslinux systems
-	use mips && gnuconfig_update
-
+	cd "${S}"/sfcommands
+	epatch "${FILESDIR}"/sfconvert-eradicator.patch
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-m4.patch
 	elibtoolize
 }
 
@@ -33,7 +30,6 @@ src_compile() {
 }
 
 src_install() {
-#	einstall || die
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
 	dodoc ACKNOWLEDGEMENTS AUTHORS ChangeLog README TODO NEWS NOTES
 }

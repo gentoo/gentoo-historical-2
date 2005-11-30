@@ -4,5 +4,23 @@
 	<longdescription lang="en">
 		The games-server category contains game servers.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie games-server enthält Spieleserver.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría games-server contiene servidores de juegos.
+	</longdescription>
+	<longdescription lang="ja">
+		games-serverカテゴリーにはゲーム・サーバーが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De games-server categorie bevat spelservers.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm games-server chứa các game server.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria games-server contiene server per i giochi multigiocatore.
+	</longdescription>
 </catmetadata>
 

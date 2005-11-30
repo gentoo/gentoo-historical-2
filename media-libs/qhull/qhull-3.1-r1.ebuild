@@ -1,62 +1,57 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/qhull/qhull-3.1-r1.ebuild,v 1.1 2003/06/09 18:28:07 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/qhull/qhull-3.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:22 chriswhite Exp $
 
-IUSE=""
+inherit eutils
 
-S=${WORKDIR}/qhull3.1
+MY_P="${PN}${PV}"
 DESCRIPTION="Geometry library"
-SRC_URI="http://www.geom.umn.edu/software/qhull/qhull3.1.tgz"
-HOMEPAGE="http://www.geom.umn.edu/software/qhull/"
+HOMEPAGE="http://www.qhull.org"
+SRC_URI="http://www.geom.umn.edu/software/qhull/${MY_P}.tgz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~sparc "
+KEYWORDS="x86 sparc ppc amd64"
+IUSE=""
 
-DEPEND=""
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
+
+S="${WORKDIR}/${MY_P}"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}/src
+	mv Makefile.txt Makefile
+	# Replaced sed/echo hacks by a clean patch. Fix build error on -fPIC archs
+	# BUG #82646
+	# Danny van Dyk <kugelfang@gentoo.org> 2005/02/22
+	epatch ${FILESDIR}/${P}-makefile.patch
+}
 
 src_compile() {
 	cd src
-	# This echo statement appends a new build target to the exisiting Makefile
-	# for an additional shared library; originally added to support octave-forge
-	echo 'libqhull.so: $(OBJS)
-	c++ -shared -Xlinker -soname -Xlinker $@ -o libqhull.so $(OBJS)' >> Makefile.txt
-	# This line now specifies the build targets, including the target added on
-	# the previous line
-	make -f Makefile.txt all libqhull.so
-
+	emake CCOPTS1="${CFLAGS}" || die "emake failed"
 }
 
-src_install () {
-
+src_install() {
 	cd src
 
-	dolib libqhull.a
-	# This line installs the extra shared lib compiled with the target added
-	# above
-	dolib.so libqhull.so
-	dobin qconvex
-	dobin qdelaunay
-	dobin qhalf
-	dobin qhull
-	dobin qvoronoi
-	dobin rbox
+	dolib libqhull.a || die "dolib failed"
+	dolib.so libqhull.so || die "dolib.so failed"
+	dobin qconvex qdelaunay qhalf qhull qvoronoi rbox || die "dobin failed"
 
-	dodir /usr/include/qhull
 	insinto /usr/include/qhull
 	doins *.h
 
 	cd ${S}
 	dodoc Announce.txt COPYING.txt File_id.diz README.txt REGISTER.txt
-
 	cd html
-
-	rename .htm .html *.htm
-	rename .man .1 *.man
-
-	dohtml -a html,gif *
-
-	doman *.1
-
+	dohtml *
 	dodoc *.txt
+	for m in *man
+	do
+		newman ${m} ${m/.man/.1}
+	done
 }

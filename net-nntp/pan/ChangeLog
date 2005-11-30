@@ -1,6 +1,33 @@
-# ChangeLog for net-news/pan
+# ChangeLog for net-nntp/pan
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/pan/ChangeLog,v 1.1 2005/01/17 20:08:10 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/pan/ChangeLog,v 1.1.1.1 2005/11/30 10:02:47 chriswhite Exp $
+
+*pan-0.14.2.91-r3 (03 Jul 2005)
+*pan-0.14.2-r1 (03 Jul 2005)
+
+  03 Jul 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/pan-0.14.2-update-desktop-file.patch, +pan-0.14.2-r1.ebuild,
+  +pan-0.14.2.91-r3.ebuild:
+  Install desktop file in new location, and add Categories entry, bug #97815.
+
+*pan-0.14.2.91-r2 (30 Apr 2005)
+
+  30 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/pan-0.14.2.91-gcc4-2.patch, +pan-0.14.2.91-r2.ebuild:
+  Fix typo in gcc4 patch, bug #90943.
+
+*pan-0.14.2.91-r1 (29 Apr 2005)
+
+  29 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  files/pan-0.14.2.91-gcc4.patch, +pan-0.14.2.91-r1.ebuild:
+  Fix gcc4 patch's pointer arithmatic.
+
+  25 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
+  +files/pan-0.14.2.91-gcc4.patch, pan-0.14.2.91.ebuild:
+  Fix for building with gcc4.
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> pan-0.14.2.91.ebuild:
+  Stable on ppc64
 
 *pan-0.14.2 (17 Jan 2005)
 

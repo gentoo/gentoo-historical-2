@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imspd/cyrus-imspd-1.7b-r1.ebuild,v 1.1 2005/05/26 12:20:17 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cyrus-imspd/cyrus-imspd-1.7b-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:05 chriswhite Exp $
 
 inherit eutils gnuconfig ssl-cert
 

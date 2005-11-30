@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/swfdec/swfdec-0.3.1.ebuild,v 1.1 2004/11/16 20:32:08 rizzo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/swfdec/swfdec-0.3.1.ebuild,v 1.1.1.1 2005/11/30 10:03:38 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 # Excluding other keywords until those arches can test liboil
 #KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 IUSE="X mozilla gtk sdl mad"
 
@@ -24,7 +24,7 @@ RDEPEND=">=dev-libs/glib-2
 	sdl? ( media-libs/libsdl )
 	mad? ( media-sound/madplay )
 	>=sys-libs/zlib-1.1.4
-	mozilla? ( >=net-www/mozilla-1.0.0 )"
+	mozilla? ( >=www-client/mozilla-1.0.0 )"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"

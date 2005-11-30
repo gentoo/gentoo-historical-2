@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/gtkada/gtkada-2.2.1.ebuild,v 1.1 2003/11/21 20:12:49 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/gtkada/gtkada-2.2.1.ebuild,v 1.1.1.1 2005/11/30 10:00:28 chriswhite Exp $
 
-inherit gnat
+inherit gnat eutils
 
 Name="GtkAda"
 DESCRIPTION="Gtk+ bindings to the Ada language"
@@ -15,10 +15,16 @@ KEYWORDS="x86 ~ppc"
 IUSE="nls opengl"
 
 DEPEND=">=dev-lang/gnat-3.14p
-	>=x11-libs/gtk+-2.2.0"
+	>=x11-libs/gtk+-2.2.0
+	>=sys-apps/sed-4"
 RDEPEND=""
 
 S="${WORKDIR}/${Name}-${PV}"
+
+src_unpack() {
+	unpack ${A} ; cd ${S}
+	epatch ${FILESDIR}/${PN}-2.2.0-gentoo.patch
+}
 
 src_compile() {
 	local myconf
@@ -27,7 +33,6 @@ src_compile() {
 	use nls    || myconf="${myconf} --disable-nls"
 	use opengl && myconf="${myconf} --with-GL=auto"
 
-	patch -p1 < ${FILESDIR}/${P}-gentoo.patch
 	sed -i -e "s|-I\$prefix/include|-I/usr/lib/ada/adainclude|" \
 		src/gtkada-config.in
 	sed -i -e "s|-L\$prefix/include|-L/usr/lib/ada/adalib|" \
@@ -70,7 +75,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "The envaironment has been set up to make gnat automatically find files for"
+	einfo "The environment has been set up to make gnat automatically find files for"
 	einfo "GtkAda. In order to immediately activate these settings please do:"
 	einfo "env-update"
 	einfo "source /etc/profile"

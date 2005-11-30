@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.3.ebuild,v 1.1 2004/12/08 23:41:12 killsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hamlib/hamlib-1.2.3.ebuild,v 1.1.1.1 2005/11/30 10:04:13 chriswhite Exp $
 
-inherit eutils
+inherit eutils multilib
 
 DESCRIPTION="Ham radio backend rig control libraries"
 HOMEPAGE="http://sourceforge.net/projects/hamlib/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha"
+KEYWORDS="x86 ~ppc ~alpha ~amd64"
 IUSE="doc gd python tcltk X"
 
 RDEPEND="virtual/libc
@@ -34,7 +34,7 @@ src_unpack() {
 
 src_compile() {
 	econf \
-		--libdir=/usr/lib/hamlib \
+		--libdir=/usr/$(get_libdir)/hamlib \
 		--with-microtune \
 		--without-rpc-backends \
 		--without-perl-binding \
@@ -51,7 +51,7 @@ src_compile() {
 
 src_install() {
 	einstall \
-		libdir=${D}/usr/lib/hamlib || \
+		libdir=${D}/usr/$(get_libdir)/hamlib || \
 		die "einstall failed"
 	dodoc AUTHORS PLAN README README.betatester
 	dodoc README.developer LICENSE NEWS TODO
@@ -59,9 +59,9 @@ src_install() {
 		dohtml doc/html/*
 		doman doc/man/man3/*
 	fi
-	insinto /usr/lib/pkgconfig
+	insinto /usr/$(get_libdir)/pkgconfig
 	doins hamlib.pc
-	echo "LDPATH=/usr/lib/hamlib" > 73hamlib
+	echo "LDPATH=/usr/$(get_libdir)/hamlib" > 73hamlib
 	insinto /etc/env.d
 	doins 73hamlib
 }

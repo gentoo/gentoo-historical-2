@@ -1,2 +1,5 @@
-MD5 67a55a1ecfbea09202c8491854083450 gamepick-0.30.ebuild 784
+MD5 bdde178fbf2234eeee8b8c294563d4d4 gamepick-0.30.ebuild 1076
+MD5 f6864106e53e235bf9234d1254e66819 ChangeLog 633
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
 MD5 59ba428bb01df2957f9e905fc90ccb3a files/digest-gamepick-0.30 64
+MD5 86bcdc14d7b121d7104e62e56b976113 files/gamepick-0.30-paths.patch 765

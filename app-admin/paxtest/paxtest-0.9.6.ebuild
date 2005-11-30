@@ -1,12 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/paxtest/paxtest-0.9.6.ebuild,v 1.1 2004/08/06 11:56:08 lv Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/paxtest/paxtest-0.9.6.ebuild,v 1.1.1.1 2005/11/30 10:00:01 chriswhite Exp $
 
-inherit eutils
-
-# pax flags are not strip safe.
-RESTRICT="nostrip"
-FEATURES="-distcc"
+inherit eutils multilib
 
 DESCRIPTION="PaX regression test suite"
 HOMEPAGE="http://www.adamantix.org/paxtest/"
@@ -14,8 +10,10 @@ SRC_URI="http://www.adamantix.org/paxtest/paxtest-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE=""
+# pax flags are not strip safe.
+RESTRICT="nostrip"
 
 DEPEND="virtual/libc
 	>=sys-apps/chpax-0.5"
@@ -26,13 +24,12 @@ src_unpack() {
 }
 
 src_compile() {
-	emake DESTDIR=${D} BINDIR=${D}/usr/bin RUNDIR=/usr/lib/paxtest || die
+	emake DESTDIR=${D} BINDIR=${D}/usr/bin RUNDIR=/usr/$(get_libdir)/paxtest || die
 }
 
 src_install() {
-	emake DESTDIR=${D} BINDIR=/usr/bin RUNDIR=/usr/lib/paxtest install
+	make DESTDIR="${D}" BINDIR=/usr/bin RUNDIR=/usr/$(get_libdir)/paxtest install || die
 	for doc in Changelog README ;do
-		[ -f "${doc}" ] && dodoc ${doc}
+		[[ -f ${doc} ]] && dodoc ${doc}
 	done
 }
-

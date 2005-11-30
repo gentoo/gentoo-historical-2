@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/xine-lib/xine-lib-1.0.1-r4.ebuild,v 1.1 2005/10/08 14:45:53 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/xine-lib/xine-lib-1.0.1-r4.ebuild,v 1.1.1.1 2005/11/30 10:03:44 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs libtool
 
@@ -13,7 +13,7 @@ PATCHLEVEL="5"
 DESCRIPTION="Core libraries for Xine movie player"
 HOMEPAGE="http://xine.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xine/${MY_P}.tar.gz
-	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
+	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1"
@@ -49,7 +49,7 @@ RDEPEND="vorbis? ( media-libs/libvorbis )
 	!=media-libs/xine-lib-0.9.13*"
 
 DEPEND="${RDEPEND}
-	v4l? ( sys-kernel/linux-headers )
+	v4l? ( virtual/os-headers )
 	>=sys-devel/automake-1.7
 	>=sys-devel/autoconf-2.59
 	dev-util/pkgconfig

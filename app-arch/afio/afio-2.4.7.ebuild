@@ -1,30 +1,38 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Dominik Bartenstein <dom@wahuu.at>
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/afio/afio-2.4.7.ebuild,v 1.1.1.1 2005/11/30 10:00:40 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="makes cpio-format archives and deals somewhat gracefully with \
-input data corruption."
+inherit eutils
+
+DESCRIPTION="makes cpio-format archives and deals somewhat gracefully with input data corruption."
 SRC_URI="http://www.ibiblio.org/pub/linux/system/backup/${P}.tgz"
 HOMEPAGE="http://freshmeat.net/projects/afio/"
 
-DEPEND="virtual/glibc"
-RDEPEND="$DEPEND sys-apps/gzip"
+SLOT="0"
+LICENSE="Artistic LGPL-2"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
+
+DEPEND="app-arch/gzip"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/Makefile.patch
+}
 
 src_compile() {
-    emake || die
-
+	emake CFLAGS1="${CFLAGS}" || die "emake failed"
 }
 
-src_install () {
-	cd ${S}
-	dobin afio
-	dodoc README SCRIPTS HISTORY INSTALLATION PORTING
+src_install() {
+	local i
+
+	dobin afio                                || die "dobin failed"
+	dodoc README SCRIPTS HISTORY INSTALLATION || die "dodoc failed"
 	for i in 1 2 3 4 5 ; do
 		insinto /usr/share/doc/${P}/script$i
-		doins script$i/*
+		doins script$i/*                      || die "doins failed (${i})"
 	done
-	#prepalldocs
-	doman afio.1
+	doman afio.1                              || die "doman failed"
 }
-

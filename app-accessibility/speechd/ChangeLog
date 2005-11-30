@@ -1,8 +1,51 @@
-# ChangeLog for media-sound/speechd
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speechd/ChangeLog,v 1.1 2004/03/17 03:40:52 eradicator Exp $
+# ChangeLog for app-accessibility/speechd
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speechd/ChangeLog,v 1.1.1.1 2005/11/30 10:04:34 chriswhite Exp $
 
-*speechd-0.56-r1 (16 Mar 2004)
+  02 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org> files/speechd.rc:
+  Cleaned up init script to set permissions on /dev/speech.
+
+*speechd-0.56-r2 (01 Aug 2005)
+
+  01 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/speechd-0.56-catspeech-eof.patch, +speechd-0.56-r2.ebuild:
+  Make catspeech honor EOF like its man page says it should.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  speechd-0.56-r1.ebuild:
+  Masked speechd-0.56-r1.ebuild stable for ppc
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> -speechd-0.56.ebuild:
+  Removing old version.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speechd-0.56-r1.ebuild:
+  Stable sparc.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> files/speechd.rc:
+  Trimmed trailing whitespace.
+
+  22 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speechd-0.56-r1.ebuild:
+  Added to ~sparc.  Moved config stuff to postinst.
+
+  14 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speechd-0.56-r1.ebuild:
+  Stable amd64.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speechd-0.56-r1.ebuild:
+  Stable x86.
+
+  24 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> speechd-0.56.ebuild:
+  Added IUSE.
+
+  18 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> speechd-0.56.ebuild:
+  Removed postrm.
+
+  16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  speechd-0.56-r1.ebuild, speechd-0.56.ebuild:
+  festival is now in app-accessibility.
 
   16 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
   speechd-0.56-r1.ebuild, speechd-0.56.ebuild, files/speechd.rc:

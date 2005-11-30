@@ -1,6 +1,31 @@
 # ChangeLog for media-fonts/encodings
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/encodings/ChangeLog,v 1.1 2005/08/08 07:34:06 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/encodings/ChangeLog,v 1.1.1.1 2005/11/30 10:01:29 chriswhite Exp $
+
+*encodings-0.99.1 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +encodings-0.99.1.ebuild:
+  Bump for 7.0RC2.
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org>
+  encodings-0.99.0.ebuild:
+  added ~mips keyword
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> encodings-0.99.0.ebuild:
+  Marked ~sh
+
+  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> encodings-0.99.0.ebuild:
+  Marked ~ppc
+
+  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> encodings-0.99.0.ebuild:
+  Marked ~amd64
+
+  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org> encodings-0.99.0.ebuild:
+  Add ~sparc keyword (modular X testing).
 
 *encodings-0.99.0 (08 Aug 2005)
 

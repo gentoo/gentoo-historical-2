@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/csh/csh-1.29-r3.ebuild,v 1.1 2004/01/09 08:58:30 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/csh/csh-1.29-r3.ebuild,v 1.1.1.1 2005/11/30 10:00:20 chriswhite Exp $
 
 inherit flag-o-matic eutils ccc
 
@@ -10,11 +10,12 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 alpha arm amd64 ia64 sparc ppc"
 IUSE="static doc"
 
-DEPEND="sys-devel/pmake !app-shells/tcsh"
-RDEPEND="virtual/glibc"
+DEPEND="sys-devel/pmake !app-shells/tcsh
+	>=sys-apps/sed-4"
+RDEPEND="virtual/libc"
 
 S=${WORKDIR}/src/bin/csh
 
@@ -80,7 +81,7 @@ src_compile() {
 	append-flags -DTTYHOG=1024 -DMAXPATHLEN=4096 -D_GNU_SOURCE
 	append-flags -D_DIAGASSERT="assert"
 
-	# maybe they dont warn on BSD, but _damn_.
+	# maybe they dont warn on BSD, but on linux they are very noisy.
 	export NOGCCERROR=1
 
 	# if csh is a users preferred shell, they may want
@@ -90,7 +91,7 @@ src_compile() {
 	# pmake is a portage binary as well, so specify full path.
 	# if yours isnt in /usr/bin, you can set PMAKE_PATH.
 	einfo "Starting build..."
-	${PMAKE_PATH:-/usr/bin/}pmake || die "compile failed."
+	${PMAKE_PATH:-/usr/bin/}pmake LIBC='' || die "compile failed."
 
 	echo
 	size csh
@@ -126,16 +127,16 @@ src_install() {
 
 pkg_postinst() {
 	echo
-	use doc && {
+	if use doc; then
 		einfo "An Introduction to the C shell by Bill Joy, a "
 		einfo "postscript document included with this shell has"
 		einfo "been installed in /usr/share/doc/${PF}, if you are new"
 		einfo "to the C shell, you may find it interesting."
-	} || {
-		einfo "You didnt have the \`doc\` use flag set, the"
+	else
+		einfo "You don't have USE=doc, so the"
 		einfo "postscript document \"An Introduction to the C"
 		einfo "shell by Bill Joy\" was not installed."
-	}
+	fi
 	echo
 	einfo "Example login scripts have been installed in /usr/share/doc/${PF}."
 	einfo "You can install a simple dot.cshrc like this:"

@@ -1,18 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/zh-kcfonts/zh-kcfonts-1.05.ebuild,v 1.1 2003/06/02 13:48:21 seemant Exp $
-
-KCFONTS="zh-kcfonts-1.05.tgz"
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/zh-kcfonts/zh-kcfonts-1.05.ebuild,v 1.1.1.1 2005/11/30 10:01:31 chriswhite Exp $
 
 DESCRIPTION="Kuo Chauo Chinese Fonts collection in BIG5 encoding"
-SRC_URI="ftp://ftp.freebsd.org.tw/pub/i386/4.6.2-RELEASE/packages/x11-fonts/${P}.tgz"
+SRC_URI="ftp://ftp.freebsd.org.tw/pub/releases/i386/4.9-RELEASE/packages/x11-fonts/${P}.tgz"
 HOMEPAGE=""	#No homepage exists that I am aware of or able to find
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
+IUSE=""
 
-DEPEND="x11-base/xfree"
+DEPEND="virtual/x11"
 S=${WORKDIR}/${PN}
 CFONTDIR=/usr/X11R6/lib/X11/fonts/misc/
 
@@ -31,7 +30,7 @@ src_install() {
 pkg_postinst() {
 	mkfontdir ${CFONTDIR}
 	cd ${CFONTDIR}
-	cat kc_fonts.alias >> fonts.alias ; 
+	cat kc_fonts.alias >> fonts.alias ;
 	cp fonts.alias ..fonts.alias.. ;
 	sort ..fonts.alias.. | uniq > fonts.alias ; rm ..fonts.alias..
 }

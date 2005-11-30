@@ -1,6 +1,22 @@
-# ChangeLog for app-games/geki3-KXL
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/geki3-KXL/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/geki3-KXL
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/geki3-KXL/ChangeLog,v 1.1.1.1 2005/11/30 10:02:36 chriswhite Exp $
+
+  10 Aug 2005; Carlos Silva <r3pek@gentoo.org> geki3-KXL-1.0.3-r1.ebuild:
+  Marked ~amd64. Closes bug #102036
+
+  23 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  geki3-KXL-1.0.3-r1.ebuild:
+  fix bug #93701 with WANT_AUTOCONF=2.5; tidy
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  geki3-KXL-1.0.3-r1.ebuild:
+  Added IUSE.
+
+*geki3-KXL-1.0.3-r1 (31 Dec 2003)
+
+  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
+  Make install paths cleaner.
 
 *geki3-KXL-1.0.3 (04 Mar 2003)
 

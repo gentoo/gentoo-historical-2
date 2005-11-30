@@ -1,11 +1,86 @@
 # ChangeLog for net-libs/libnids
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnids/ChangeLog,v 1.1 2002/02/01 21:53:34 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnids/ChangeLog,v 1.1.1.1 2005/11/30 10:02:51 chriswhite Exp $
 
-*libnids-1.16 (1 Feb 2002)
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> libnids-1.18.ebuild:
+  Mark 1.18 stable on alpha
 
+  27 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> libnids-1.20.ebuild:
+  Old HOMEPAGE works again, setting it back.
+
+  27 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> libnids-1.20.ebuild:
+  ~amd64 keyword. Tested using sample programs from samples directory. Also
+  updated the HOMEPAGE, as the current one leads to an online store.
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> libnids-1.18.ebuild:
+  Stable on ppc.
+
+  20 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> libnids-1.18.ebuild:
+  install_prefix="${D}" for bug 86024.
+  Thanks to Marco Morales <soulse@gmail.com> for reporting.
+
+  11 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> libnids-1.20.ebuild:
+  Re-add install_prefix=${D} for bug 84699.
+
+*libnids-1.20 (24 Feb 2005)
+
+  24 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/libnids-1.20-chksum.c-ebx.patch, libnids-1.18.ebuild,
+  +libnids-1.20.ebuild:
+  Version bump for bug 81689; also fixed src_install (setting install_prefix
+  to ${D} caused part of ${D} to be installed).
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> libnids-1.18.ebuild:
+  Transition dependancy from net-libs/libpcap to virtual/libpcap
+
+  17 Dec 2004; Eldad Zack <eldad@gentoo.org> -files/1.16-libnet-1.0.patch,
+  +files/libnids-1.18-chksum.c-ebx.patch, -files/libnids_gcc33_fix,
+  libnids-1.18.ebuild:
+  Cleanup. Added patch to prevent clobbering of ebx, in order to compile cleanly
+  with gcc 3.5. Thanks to Thomas <Thomas.Eschenbacher@gmx.de>. Closes bug
+  #55906.
+
+  03 Sep 2004; Caleb Tennis <caleb@gentoo.org> -libnids-1.16-r1.ebuild,
+  -libnids-1.16.ebuild, -libnids-1.17_rc1.ebuild:
+  removing old versions
+
+  10 Nov 2003; <solar@gentoo.org> libnids-1.18.ebuild:
+  bumping to stable on x86
+
+*libnids-1.18 (04 Nov 2003)
+
+  04 Nov 2003; <solar@gentoo.org> libnids-1.18.ebuild:
+  version bump, security fix #32724
+
+*libnids-1.17_rc1 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*libnids-1.16-r1 (21 Aug 2003)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add SLOT support with libnet SLOT support #17772.  This
+  deprecates 1.16 and makes 1.17+ the default.
+
+*libnids-1.16 (01 Feb 2002)
+
+  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Add ~ppc KEYWORDS #27012.
+
+  26 Jul 2003; Hanno Boeck <hanno@gentoo.org> libnids-1.16.ebuild,
+  files/libnids_gcc33_fix.gz:
+  Fix compile errors with gcc 3.3.
+
+  23 Jul 2003; Tavis Ormandy <taviso@gentoo.org> libnids-1.16.ebuild:
+  marking ~alpha
+
+  07 Mar 20003; Martin Holzer <mholzer@gentoo.org> libnids-1.16.ebuild :
+  Fixed Depend to libnet-1.0*. Closes #17017.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

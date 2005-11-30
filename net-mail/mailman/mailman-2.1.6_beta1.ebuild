@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailman/mailman-2.1.6_beta1.ebuild,v 1.1 2005/02/12 17:11:28 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailman/mailman-2.1.6_beta1.ebuild,v 1.1.1.1 2005/11/30 10:03:17 chriswhite Exp $
 
 inherit eutils depend.apache
 IUSE="apache2"
@@ -121,7 +121,7 @@ src_install () {
 
 pkg_postinst() {
 	enewgroup mailman 280
-	enewuser mailman 280 /bin/false ${INSTALLDIR} mailman -G cron -c "mailman"
+	enewuser mailman 280 -1 ${INSTALLDIR} mailman -G cron -c "mailman"
 	cd ${INSTALLDIR}
 	bin/update
 	einfo "Running \`${INSTALLDIR}/bin/check_perms -f\` *"
@@ -146,8 +146,8 @@ pkg_config() {
 	if ! use apache2; then
 		einfo "Updating apache config"
 		einfo "added: \"Include  conf/addon-modules/mailman.conf\""
-		einfo "to ${ROOT}etc/apache/conf/apache.conf"
+		einfo "to ${ROOT}/etc/apache/conf/apache.conf"
 		echo "Include  conf/addon-modules/mailman.conf" \
-			>> ${ROOT}etc/apache/conf/apache.conf
+			>> ${ROOT}/etc/apache/conf/apache.conf
 	fi
 }

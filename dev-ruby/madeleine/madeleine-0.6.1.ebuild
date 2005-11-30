@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/madeleine/madeleine-0.6.1.ebuild,v 1.1 2004/04/12 05:11:25 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/madeleine/madeleine-0.6.1.ebuild,v 1.1.1.1 2005/11/30 10:01:21 chriswhite Exp $
 
 inherit ruby
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://madeleine.sourceforge.net/"
 SRC_URI="mirror://sourceforge/madeleine/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~hppa ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha ~hppa ~mips ~ppc ~sparc ~x86"
 USE_RUBY="ruby18 ruby19"
 IUSE=""
 DEPEND="|| ( >=dev-lang/ruby-1.8.0 dev-lang/ruby-cvs )"

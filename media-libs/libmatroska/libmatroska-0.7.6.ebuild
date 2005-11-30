@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmatroska/libmatroska-0.7.6.ebuild,v 1.1 2005/04/24 21:27:38 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmatroska/libmatroska-0.7.6.ebuild,v 1.1.1.1 2005/11/30 10:03:57 chriswhite Exp $
 
 IUSE=""
 
-inherit flag-o-matic gcc eutils
+inherit flag-o-matic eutils
 
 DESCRIPTION="Extensible multimedia container format based on EBML"
 HOMEPAGE="http://www.matroska.org/"
@@ -12,7 +12,7 @@ SRC_URI="http://www.bunkus.org/videotools/mkvtoolnix/sources/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ppc64 ~ppc amd64"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 
 DEPEND=">=dev-libs/libebml-0.7.3"
 
@@ -32,10 +32,7 @@ src_compile() {
 	append-flags -fPIC
 
 	#fixes locale for gcc3.4.0 to close bug 52385
-	if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "4" ]
-	then
-		append-flags -finput-charset=ISO8859-15
-	fi
+	append-flags $(test_flag -finput-charset=ISO8859-15)
 
 	emake PREFIX=/usr \
 		LIBEBML_INCLUDE_DIR=/usr/include/ebml \

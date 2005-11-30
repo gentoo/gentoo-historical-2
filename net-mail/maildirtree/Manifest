@@ -1,5 +1,14 @@
-MD5 97e754eaf4a7437a8e639e7b734f4ced maildirtree-0.6.ebuild 336
-MD5 7b0b4ab0608fc140dd491edec1a0d06a skel.ebuild 6945
-MD5 53c11476ac2f2668f4c154c1d0055e44 skel.metadata.xml 789
-MD5 41b06d0a80915d08c681c65343c5beef skel.ChangeLog 3666
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 ff2d345df558f8fd2787bcb0a16a1253 ChangeLog 644
+MD5 54614362530048f21a127e4a200cf571 metadata.xml 345
+MD5 87fd689ad90f969bd934f701d0e9ea98 maildirtree-0.6.ebuild 558
 MD5 f30b820e08352ae221ae9a5316bcac6e files/digest-maildirtree-0.6 66
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFCcU0ACHk4+ZoBpvsRAnq2AJ9AjOrIxoB+m6SqudJWiJjBTXclsQCgwkkq
+TXeCwD+AVNWucueZW5DtpUA=
+=Usnr
+-----END PGP SIGNATURE-----

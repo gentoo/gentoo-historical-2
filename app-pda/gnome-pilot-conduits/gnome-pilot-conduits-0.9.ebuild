@@ -1,10 +1,10 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot-conduits/gnome-pilot-conduits-0.9.ebuild,v 1.1 2003/08/30 09:51:16 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot-conduits/gnome-pilot-conduits-0.9.ebuild,v 1.1.1.1 2005/11/30 10:02:26 chriswhite Exp $
 
 DESCRIPTION="Gnome Pilot Conduits"
-SRC_URI="ftp://ftp.gnome.org/pub/gnome/unstable/sources/${PN}/${P}.tar.bz2"
-HOMEPAGE="http://www.eskil.org/gnome-pilot/"
+SRC_URI="mirror://gnome/sources/gnome-pilot-conduits/${PV:0:3}/${P}.tar.bz2"
+HOMEPAGE="http://live.gnome.org/GnomePilot"
 
 RDEPEND="<app-pda/gnome-pilot-2"
 
@@ -13,14 +13,14 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc "
+KEYWORDS="x86 sparc"
 IUSE="nls"
 
 src_unpack() {
 
 	unpack ${A}
 
-	# the new gnome-pilot works better, but redefines 
+	# the new gnome-pilot works better, but redefines
 	# PI_AF_SLP to PI_AF_PILOT for some reason.
 	cd ${S}/mal-conduit/mal/client/unix
 	cp malsync.c malsync.c.orig
@@ -29,12 +29,12 @@ src_unpack() {
 }
 
 src_compile() {
-	
+
 	local myconf
-	
+
 	myconf="--enable-pilotlinktest"
 	use nls || myconf="${myconf} --disable-nls"
-	
+
 	econf ${myconf} || die
 	emake || die
 }

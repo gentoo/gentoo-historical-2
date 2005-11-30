@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/europecv/europecv-20050408.ebuild,v 1.1 2005/05/22 11:42:33 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/europecv/europecv-20050408.ebuild,v 1.1.1.1 2005/11/30 10:00:53 chriswhite Exp $
 
 inherit latex-package
 

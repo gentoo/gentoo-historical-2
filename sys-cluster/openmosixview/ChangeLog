@@ -1,6 +1,38 @@
-# ChangeLog for app-admin/openmosixview
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixview/ChangeLog,v 1.1 2003/10/16 10:07:49 tantive Exp $
+# ChangeLog for sys-cluster/openmosixview
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixview/ChangeLog,v 1.1.1.1 2005/11/30 10:01:46 chriswhite Exp $
+
+  21 Jul 2005; Caleb Tennis <caleb@gentoo.org> openmosixview-1.4-r1.ebuild,
+  openmosixview-1.5-r1.ebuild:
+  Change Qt dep per bug #98180
+
+  21 May 2005; Michael Imhof <tantive@gentoo.org>
+  openmosixview-1.4-r1.ebuild, openmosixview-1.5-r1.ebuild:
+  Fixed SRC_URI
+
+*openmosixview-1.5-r1 (16 Apr 2005)
+
+  16 Apr 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  +openmosixview-1.5-r1.ebuild, -openmosixview-1.5.ebuild:
+  revision bump.
+
+  15 Apr 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  +files/openmosixview-1.5-logdirectory.diff,
+  +files/openmosixview-1.5-nonodestmp.diff,
+  +files/openmosixview-1.5-typos.patch,
+  +files/openmosixview-1.5-usesyslog.diff, openmosixview-1.5.ebuild:
+  Fixed temporary files creation (security bug). Closes bug #86686.
+  Fixed typos. Closes bug #84672.
+
+  18 Jan 2005; Michael Imhof <tantive@gentoo.org> openmosixview-1.4-r1.ebuild,
+  openmosixview-1.5.ebuild:
+  Changed CC=gcc to tc-getCC. Closes #70144.
+
+  26 Oct 2004; Michael Imhof <tantive@gentoo.org> openmosixview-1.4-r1.ebuild,
+  openmosixview-1.5.ebuild:
+  Changed rc-update add /etc/init.d/openmosixcollector default
+  to rc-update add openmosixcollector default.
+  Closes #68982.
 
 *openmosixview-1.5 (24 Jul 2003)
 

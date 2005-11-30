@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gnomevfs/ruby-gnomevfs-0.12.0.ebuild,v 1.1 2005/03/14 19:37:25 citizen428 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gnomevfs/ruby-gnomevfs-0.12.0.ebuild,v 1.1.1.1 2005/11/30 10:01:15 chriswhite Exp $
 
 inherit ruby ruby-gnome2
 
 DESCRIPTION="Ruby GnomeVFS bindings"
-KEYWORDS="~x86 ~ppc ~alpha"
+KEYWORDS="alpha ~ia64 ppc x86"
 IUSE=""
 USE_RUBY="ruby16 ruby18 ruby19"
 DEPEND=">=gnome-base/gnome-vfs-2.2"

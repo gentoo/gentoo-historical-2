@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc., Doug Goldstein
+# Copyright 1999-2004 Gentoo Foundation, Doug Goldstein
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/y-windows/y-windows-0.2.ebuild,v 1.1 2004/02/28 17:37:29 hhg Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/y-windows/y-windows-0.2.ebuild,v 1.1.1.1 2005/11/30 10:01:09 chriswhite Exp $
 
 DESCRIPTION="Y Windows"
 HOMEPAGE="http://www.y-windows.org/"
@@ -8,11 +8,12 @@ SRC_URI="http://www.cardoe.com/y-base/patches/Y-patch26.tar.bz2"
 LICENSE="GPL-2 LGPL-2 CPL-1.0"
 SLOT="0"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 ~amd64 ~ppc"
+IUSE=""
 
 DEPEND="virtual/x11
-	>=automake-1.8
-	>=autoconf-2.58
+	>=sys-devel/automake-1.8
+	>=sys-devel/autoconf-2.58
 	>=media-libs/libsdl-1.2.0
 	>=media-libs/freetype-2.1.3
 	=dev-libs/libsigc++-1.0*

@@ -1,8 +1,11 @@
 # ChangeLog for media-libs/sdl-gui
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-gui/ChangeLog,v 1.1 2003/06/28 07:01:28 vapier Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-gui/ChangeLog,v 1.1.1.1 2005/11/30 10:03:58 chriswhite Exp $
 
-*sdl-0.10.3 (28 Jun 2003)
+  25 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> sdl-gui-0.10.3.ebuild:
+  fix HOMEPAGE; header fix
+
+*sdl-gui-0.10.3 (28 Jun 2003)
 
   28 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by Susie Edgeworth <arienadean@yahoo.com> #18959.

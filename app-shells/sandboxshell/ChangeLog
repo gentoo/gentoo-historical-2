@@ -1,8 +1,31 @@
 # ChangeLog for app-shells/sandboxshell
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/sandboxshell/ChangeLog,v 1.1 2003/07/09 14:53:38 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/sandboxshell/ChangeLog,v 1.1.1.1 2005/11/30 10:00:23 chriswhite Exp $
+
+*sandboxshell-0.2 (20 Nov 2005)
+
+  20 Nov 2005; Mike Frysinger <vapier@gentoo.org> files/sandboxshell,
+  files/sandboxshell.conf, -sandboxshell-0.1-r2.ebuild,
+  +sandboxshell-0.2.ebuild:
+  Touchup code and add support for exporting vars from the portage environment
+  file #112618 by Petteri Raty.
+
+*sandboxshell-0.1-r2 (27 Apr 2005)
+
+  27 Apr 2005; Mike Frysinger <vapier@gentoo.org> files/sandboxshell,
+  +sandboxshell-0.1-r2.ebuild:
+  Newer sandboxes install into /usr/lib instead of /lib.
+
+*sandboxshell-0.1-r1 (23 Jun 2004)
+
+  23 Jun 2004; Mike Frysinger <vapier@gentoo.org> files/sandboxshell.conf,
+  +sandboxshell-0.1-r1.ebuild:
+  Add support for new homedir and trap signals went prompting
 
 *sandboxshell-0.1 (09 Jul 2003)
+
+  31 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added manpage.
 
   09 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by me.

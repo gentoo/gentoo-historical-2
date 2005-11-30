@@ -1,9 +1,19 @@
-MD5 d582736316533a814fb03252b0441d05 ChangeLog 1552
-MD5 f20349cea71e158cdb63697e90aaa5f0 usermin-1.000.ebuild 1271
-MD5 9c327f52611226c5caf081a470862013 usermin-1.020.ebuild 1275
-MD5 049fedf8df8f47a02fd4cca679feacfb files/digest-usermin-1.020 66
-MD5 9b49ce0b06e30694e52d3a84155c9506 files/digest-usermin-1.000 66
-MD5 a5311bbc9c1fc378a6b0bfb3ca1b2394 files/usermin.pam 431
-MD5 132cc62364a676b308f4ad7da4ea889b files/patch/setup.sh 16690
-MD5 11ea632d9111384325feec6c91c7c26c files/patch/usermin 413
-MD5 3b136185745fbd0f394df41aabbc06d9 files/patch/usermin-init 1355
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 3923b6ae9bc25fc124e24e7747c8a802 metadata.xml 226
+MD5 75570ea70b71e0c8472e09664024950f usermin-1.160.ebuild 2290
+MD5 2114cb71e24db72292efc3ef29091b25 ChangeLog 10402
+MD5 0267babe04fc651a7357b983fe40ec98 files/digest-usermin-1.160 66
+MD5 2e7c19bb66f99c168fc2e86b4bb4862c files/init.d.usermin 825
+MD5 bd4b2cc177b4fb7b0f96edc60008a6b5 files/usermin-1.080-safestop.patch 620
+MD5 2e7603feaff187884dd9b1e66601f02b files/usermin.pam 382
+MD5 609774f17b0470a793fb7791278e270d files/usermin.pam-include 210
+MD5 ba4e105ca9f8d294ba4e3d7774bf0760 files/usermin-1.150-setup-nocheck.patch 998
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDNaV3ArHZZzCEUG0RAlFlAJ9Lk+pOn8GjqGXIVPbl1MAwodJKFQCeLqP+
+a3Vr2xvYi68V0g9yusQojq4=
+=x+ur
+-----END PGP SIGNATURE-----

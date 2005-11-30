@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jasspa-microemacs/jasspa-microemacs-20040301.ebuild,v 1.1 2004/04/25 16:09:43 usata Exp $
-
-IUSE="X"
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jasspa-microemacs/jasspa-microemacs-20040301.ebuild,v 1.1.1.1 2005/11/30 10:02:02 chriswhite Exp $
 
 MY_PV=${PV:2}	# 20021205 -> 021205
 
@@ -19,9 +17,10 @@ SRC_URI="http://www.jasspa.com/release_${MY_PV}/jasspa-memacros-${PV}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
+IUSE="X"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-libs/ncurses
 	X? ( virtual/x11 )"
 
@@ -37,7 +36,7 @@ src_unpack() {
 src_compile() {
 	sed -i "/^COPTIMISE/s/.*/COPTIMISE = ${CFLAGS}/" linux2.gmk
 	local loadpath="~/.jasspa:/usr/share/jasspa/site:/usr/share/jasspa"
-	if [ "`use X`" ]
+	if use X
 	then
 		./build -p "$loadpath"
 	else

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/arrows/arrows-0.6.ebuild,v 1.1 2004/06/05 06:04:20 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/arrows/arrows-0.6.ebuild,v 1.1.1.1 2005/11/30 10:02:27 chriswhite Exp $
 
 inherit games
 
@@ -10,16 +10,14 @@ SRC_URI="http://noreason.ca/data/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
-RDEPEND=">=x11-libs/gtk+-2.4.0"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+DEPEND=">=x11-libs/gtk+-2.4.0"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
 	# Modify path to data
 	sed -i \
@@ -27,10 +25,12 @@ src_unpack() {
 		-e 's:nm\[9:nm[35:' \
 		-e 's:nm\[6:nm[30:' \
 		-e 's:nm\[7:nm[31:' \
-		game.c || die "sed game.c failed"
+		game.c \
+		|| die "sed game.c failed"
 }
 
 src_compile() {
+	make clean || die "make clean failed"
 	emake CCOPTS="${CFLAGS}" || die "emake failed"
 }
 

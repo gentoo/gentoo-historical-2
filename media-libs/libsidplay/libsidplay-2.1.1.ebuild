@@ -1,8 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsidplay/libsidplay-2.1.1.ebuild,v 1.1 2004/07/03 08:23:29 eradicator Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsidplay/libsidplay-2.1.1.ebuild,v 1.1.1.1 2005/11/30 10:03:33 chriswhite Exp $
 
 inherit libtool eutils
 
@@ -13,11 +11,11 @@ S="${WORKDIR}/${MY_P}"
 DESCRIPTION="C64 SID player library"
 HOMEPAGE="http://sidplay2.sourceforge.net/"
 SRC_URI="mirror://sourceforge/sidplay2/${MY_P}.tar.gz"
-RESTRICT="nomirror"
 
-SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+SLOT="2"
+KEYWORDS="x86 ~ppc sparc hppa amd64 alpha"
+IUSE=""
 
 DEPEND="virtual/libc"
 
@@ -30,7 +28,12 @@ src_unpack() {
 	elibtoolize
 }
 
-src_install () {
+src_compile() {
+	econf --with-pic || die
+	emake || die
+}
+
+src_install() {
 	make DESTDIR="${D}" install || die
 
 	cd ${S}/libsidplay

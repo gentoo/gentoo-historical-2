@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rake/rake-0.4.15.ebuild,v 1.1 2005/01/27 19:29:13 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rake/rake-0.4.15.ebuild,v 1.1.1.1 2005/11/30 10:01:17 chriswhite Exp $
 
 inherit ruby
 

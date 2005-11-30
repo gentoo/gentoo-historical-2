@@ -1,6 +1,37 @@
 # ChangeLog for media-libs/libkexif
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libkexif/ChangeLog,v 1.1 2004/10/18 20:28:13 carlo Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libkexif/ChangeLog,v 1.1.1.1 2005/11/30 10:04:13 chriswhite Exp $
+
+*libkexif-0.2.2 (25 Sep 2005)
+
+  25 Sep 2005; Carsten Lohrke <carlo@gentoo.org> +libkexif-0.2.2.ebuild:
+  version bump
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> libkexif-0.2.1-r1.ebuild:
+  add ~alpha ~ia64
+
+*libkexif-0.2.1-r1 (08 Aug 2005)
+
+  08 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> +libkexif-0.2.1-r1.ebuild,
+  +files/libkexif-0.2.1-gcc4.patch:
+  Added patch for gcc4 compatibility (and general sanity).
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> libkexif-0.2.1.ebuild:
+  stable on amd64
+
+  03 Mar 2005; Carsten Lohrke <carlo@gentoo.org> libkexif-0.2.1.ebuild:
+  stable on x86
+
+  12 Jan 2005; Jason Wever <weeve@gentoo.org> libkexif-0.2.1.ebuild:
+  Added ~sparc keyword.
+
+*libkexif-0.2.1 (04 Jan 2005)
+
+  04 Jan 2005; Carsten Lohrke <carlo@gentoo.org> +libkexif-0.2.1.ebuild:
+  version bump
+
+  31 Dec 2004; Jason Wever <weeve@gentoo.org> libkexif-0.1.ebuild:
+  Added ~sparc keyword.
 
 *libkexif-0.1 (18 Oct 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-zoom/ruby-zoom-0.2.0.ebuild,v 1.1 2005/08/25 09:07:42 citizen428 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-zoom/ruby-zoom-0.2.0.ebuild,v 1.1.1.1 2005/11/30 10:01:13 chriswhite Exp $
 
 inherit ruby
 
@@ -12,7 +12,7 @@ SRC_URI="http://rubyforge.org/frs/download.php/5601/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="virtual/ruby
 	dev-libs/yaz"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/accelerator3d/accelerator3d-0.1.0.ebuild,v 1.1 2005/10/22 05:58:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/accelerator3d/accelerator3d-0.1.0.ebuild,v 1.1.1.1 2005/11/30 10:02:41 chriswhite Exp $
 
 inherit games eutils
 

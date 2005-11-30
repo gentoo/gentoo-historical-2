@@ -1,17 +1,31 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libggi/libggi-2.0.1.ebuild,v 1.1 2002/04/14 18:44:21 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libggi/libggi-2.0.1.ebuild,v 1.1.1.1 2005/11/30 10:04:12 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="Fast and safe graphics and drivers for about any graphics card to the Linux kernel (sometimes)"
 SRC_URI="http://www.ggi-project.org/ftp/ggi/v2.0/${P}.tar.bz2"
 HOMEPAGE="http://www.ggi-project.org/"
 
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS="alpha ppc sparc x86"
+IUSE="X aalib svga directfb"
+
 DEPEND=">=media-libs/libgii-0.8.1
-		X? ( virtual/x11 )
-		svga? ( >=media-libs/svgalib-1.4.2 )
-		aalib? ( >=media-libs/aalib-1.2-r1 )"
+	X? ( virtual/x11 )
+	svga? ( >=media-libs/svgalib-1.4.2 )
+	aalib? ( >=media-libs/aalib-1.2-r1 )"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	if [ ${ARCH} = "ppc" ]
+	then
+		epatch ${FILESDIR}/libggi-${PV}-ppc.patch || die "epatch failed"
+	fi
+}
 
 src_compile() {
 
@@ -30,13 +44,7 @@ src_compile() {
 	use aalib \
 		|| myconf="${myconf} --disable-aa"
 
-	./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--mandir=/usr/share/man \
-		--host=${CHOST} \
-		${myconf} || die
-
+	econf ${myconf} || die
 	emake || die
 
 }
@@ -50,7 +58,7 @@ src_install () {
 	#This la file seems to bug mesa
 	rm ${D}/usr/lib/*.la
 
-	dodoc ChangeLog* FAQ NEWS README
+	dodoc ChangeLog* FAQ NEWS README TODO
 	docinto txt
 	dodoc doc/*.txt
 	docinto docbook

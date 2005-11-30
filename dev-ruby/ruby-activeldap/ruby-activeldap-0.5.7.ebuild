@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-activeldap/ruby-activeldap-0.5.7.ebuild,v 1.1 2005/08/19 15:03:38 tigger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-activeldap/ruby-activeldap-0.5.7.ebuild,v 1.1.1.1 2005/11/30 10:01:13 chriswhite Exp $
 
 inherit ruby gems
 

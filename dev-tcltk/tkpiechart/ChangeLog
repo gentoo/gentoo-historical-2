@@ -1,6 +1,15 @@
 # ChangeLog for dev-tcltk/tkpiechart
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkpiechart/ChangeLog,v 1.1 2004/05/16 23:27:08 matsuu Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tkpiechart/ChangeLog,v 1.1.1.1 2005/11/30 10:01:37 chriswhite Exp $
+
+  06 Nov 2004; <pyrania@gentoo.org> tkpiechart-6.5.ebuild:
+  Marked stable on x86.
+
+  28 Sep 2004; MATSUU Takuto <matsuu@gentoo.org> tkpiechart-6.5.ebuild:
+  Added to ~amd64.
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> tkpiechart-6.5.ebuild:
+  Added to ~ppc.
 
 *tkpiechart-6.5 (17 May 2004)
 

@@ -1,21 +1,25 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdif/sdif-3.8.6.ebuild,v 1.1 2004/09/03 05:42:13 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdif/sdif-3.8.6.ebuild,v 1.1.1.1 2005/11/30 10:03:47 chriswhite Exp $
+
+IUSE="doc threads ftruncate debug"
 
 inherit eutils
 
 MY_PN="${PN/sdif/SDIF}"
 MY_P=${MY_PN}-${PV}-src
+S=${WORKDIR}/${MY_P}
+
 DESCRIPTION="The Sound Description Interchange Format Library is a library that deals with audio and wave processing."
 HOMEPAGE="http://www.ircam.fr/anasyn/sdif"
 SRC_URI="http://www.ircam.fr/anasyn/sdif/download/${MY_P}.tar.gz
-		doc? ( http://www.ircam.fr/anasyn/sdif/download/${MY_PN}-doc.tar.gz  )"
+	 doc? ( http://www.ircam.fr/anasyn/sdif/download/${MY_PN}-doc.tar.gz  )"
+
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="doc threads ftruncate debug"
+KEYWORDS="amd64 ~ppc sparc x86"
+
 DEPEND=""
-S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	# a hack that I need to bother upstream about
@@ -42,6 +46,6 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
 	use doc && dohtml -r ${WORKDIR}/SDIF-doc
 }

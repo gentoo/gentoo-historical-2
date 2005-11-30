@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/adadoc/adadoc-2.01.ebuild,v 1.1 2003/08/14 01:57:09 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/adadoc/adadoc-2.01.ebuild,v 1.1.1.1 2005/11/30 10:00:29 chriswhite Exp $
 
-inherit gnat
+inherit eutils gnat
 
 DESCRIPTION="A tool for Ada95 to create documentation from specification packages."
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/adadoc/${PN}-v${PV}.src.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 
 IUSE=""
 
@@ -27,6 +27,8 @@ S=${WORKDIR}/dev
 
 src_unpack() {
 	unpack ${PN}-v${PV}.src.tar.bz2
+	cd ${S}
+	epatch ${FILESDIR}/${P}-xmlada.patch || die "epatch failed"
 }
 
 src_compile() {

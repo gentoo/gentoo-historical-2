@@ -1,18 +1,17 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/kiki/kiki-0.9.0-r1.ebuild,v 1.1 2004/08/30 20:45:30 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/kiki/kiki-0.9.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:02:28 chriswhite Exp $
 
 inherit python games
 
 DATA="${GAMES_DATADIR}/${PN}"
-S="${WORKDIR}"
 DESCRIPTION="Fun 3D puzzle game using SDL/OpenGL"
 HOMEPAGE="http://kiki.sourceforge.net/"
 SRC_URI="mirror://sourceforge/kiki/${PN}-src-${PV}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="ppc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libsdl-1.2
@@ -21,13 +20,14 @@ RDEPEND=">=media-libs/libsdl-1.2
 		>=dev-lang/python-2.2
 		virtual/glut"
 DEPEND="${RDEPEND}
-	>=sys-devel/gcc-3
-	>=sys-apps/sed-4"
+	>=sys-devel/gcc-3"
+
+S=${WORKDIR}
 
 src_unpack() {
 	unpack ${A}
 
-	cd ${S}
+	cd "${S}"
 	# There are CVS directories in the tgz file
 	rm -rf $(find -name CVS -type d)
 	rm -rf $(find -name .cvsignore)

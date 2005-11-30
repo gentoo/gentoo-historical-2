@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/metamail/metamail-2.7.45.3.ebuild,v 1.1 2004/05/11 19:05:56 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/metamail/metamail-2.7.45.3.ebuild,v 1.1.1.1 2005/11/30 10:03:24 chriswhite Exp $
 
 inherit eutils
 
@@ -11,32 +11,32 @@ S=${WORKDIR}/mm${PV%.*.*}/src
 DESCRIPTION="Metamail (with Debian patches) - Generic MIME package"
 HOMEPAGE="ftp://thumper.bellcore.com/pub/nsb/"
 SRC_URI="ftp://thumper.bellcore.com/pub/nsb/mm${PV%.*.*}.tar.Z
-	http://ftp.debian.org/debian/pool/main/m/metamail/metamail_${MY_PV}.diff.gz"
+	mirror://debian/pool/main/m/metamail/metamail_${MY_PV}.diff.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~alpha ~ia64 ~sparc ~s390 ~amd64 ~hppa"
+KEYWORDS="x86 ppc alpha ia64 sparc s390 amd64 hppa ppc64"
 
 DEPEND="sys-libs/ncurses
 	app-arch/sharutils
 	net-mail/mailbase"
+RDEPEND="app-misc/mime-types"
 
 src_unpack() {
 	unpack ${A}
-	export WANT_AUTOCONF=2.1
 	cd ${S}
 	epatch ${WORKDIR}/metamail_${MY_PV}.diff
-	autoreconf
 	chmod +x ${S}/configure
 }
 
+src_compile() {
+	export WANT_AUTOCONF=2.5
+	econf || die
+	emake || die
+}
 src_install () {
 	make DESTDIR=${D} install || die
 	dodoc COPYING CREDITS README
 	rm man/mmencode.1
-	doman man/*
-	doman debian/mimencode.1 debian/mimeit.1
-	insinto /etc
-	doins ${FILESDIR}/mime.types
+	doman man/* debian/mimencode.1 debian/mimeit.1
 }
-

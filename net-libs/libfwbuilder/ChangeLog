@@ -1,6 +1,233 @@
 # ChangeLog for net-libs/libfwbuilder
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libfwbuilder/ChangeLog,v 1.1 2002/02/01 21:53:34 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libfwbuilder/ChangeLog,v 1.1.1.1 2005/11/30 10:02:55 chriswhite Exp $
+
+  06 Oct 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  libfwbuilder-2.0.9.ebuild:
+  marked ~alpha wrt bug #107450
+
+*libfwbuilder-2.0.9 (20 Sep 2005)
+
+  20 Sep 2005; Benjamin Smee <strerror@gentoo.org>
+  +libfwbuilder-2.0.9.ebuild:
+  version bump
+
+*libfwbuilder-2.0.8 (11 Jul 2005)
+
+  11 Jul 2005; Carsten Lohrke <carlo@gentoo.org> libfwbuilder-2.0.6.ebuild,
+  libfwbuilder-2.0.7.ebuild, +libfwbuilder-2.0.8.ebuild:
+  assure Qt 3 is used to build, version bump
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> libfwbuilder-2.0.6.ebuild,
+  libfwbuilder-2.0.7.ebuild:
+  Fix qt dep
+
+*libfwbuilder-2.0.7 (12 May 2005)
+
+  12 May 2005; Carsten Lohrke <carlo@gentoo.org>
+  -libfwbuilder-1.0.2-r1.ebuild, -libfwbuilder-2.0.0.ebuild,
+  -libfwbuilder-2.0.1.ebuild, -libfwbuilder-2.0.2.ebuild,
+  -libfwbuilder-2.0.3.ebuild, -libfwbuilder-2.0.4.ebuild,
+  -libfwbuilder-2.0.5.ebuild, +libfwbuilder-2.0.7.ebuild:
+  version bump, clean up
+
+  17 Apr 2005; Eric Shattow <jnc@gentoo.org> libfwbuilder-2.0.6.ebuild:
+  Stable on x86; Bug #85580
+
+  29 Mar 2005; Markus Rothe <corsair@gentoo.org> libfwbuilder-2.0.6.ebuild:
+  Stable on ppc64; bug #85580
+
+  19 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> libfwbuilder-2.0.6.ebuild:
+  stable on amd64 wrt #85580
+
+  19 Mar 2005; Joseph Jezak <josejx@gentoo.org> libfwbuilder-2.0.6.ebuild:
+  Marked ppc stable for bug #85580.
+
+  17 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libfwbuilder-2.0.6.ebuild:
+  Stable on sparc wrt #85580
+
+*libfwbuilder-2.0.6 (21 Feb 2005)
+
+  21 Feb 2005; Carsten Lohrke <carlo@gentoo.org> +libfwbuilder-2.0.6.ebuild:
+  version bump
+
+  21 Feb 2005; Daniel Black <dragonheart@gentoo.org>
+  libfwbuilder-1.0.2-r1.ebuild, libfwbuilder-1.0.2-r2.ebuild,
+  libfwbuilder-2.0.0.ebuild, libfwbuilder-2.0.1.ebuild,
+  libfwbuilder-2.0.2.ebuild, libfwbuilder-2.0.3.ebuild,
+  libfwbuilder-2.0.4.ebuild, libfwbuilder-2.0.5.ebuild:
+  removing ucd-snmp as per bug #69451
+
+*libfwbuilder-2.0.5 (07 Feb 2005)
+
+  07 Feb 2005; Carsten Lohrke <carlo@gentoo.org> +libfwbuilder-2.0.5.ebuild:
+  version bump
+
+*libfwbuilder-2.0.4 (18 Dec 2004)
+
+  18 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +libfwbuilder-2.0.4.ebuild:
+  version bump
+
+*libfwbuilder-2.0.3 (05 Oct 2004)
+
+  05 Oct 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-2.0.3.ebuild:
+  Version bump, closing #66116.
+
+  07 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  libfwbuilder-2.0.0.ebuild:
+  Stable on sparc
+
+*libfwbuilder-2.0.2 (01 Sep 2004)
+
+  01 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-2.0.0.ebuild,
+  libfwbuilder-2.0.2.ebuild:
+  Version bump and unmask.
+
+  01 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-2.0.1.ebuild:
+  Fix DEPEND vars, closing #61991.
+
+*libfwbuilder-2.0.1 (18 Aug 2004)
+
+  18 Aug 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-2.0.1.ebuild:
+  Version bump, closing #60153.
+
+  06 Aug 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-2.0.0.ebuild:
+  Added missing arches.
+
+*libfwbuilder-2.0.0 (02 Aug 2004)
+
+  02 Aug 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-2.0.0.ebuild:
+  Version bump, ebuild contributed by Carsten Lohrke <carlo@gentoo.org> in
+  #58794.
+
+  13 Jun 2004; Jason Wever <weeve@gentoo.org> libfwbuilder-1.0.2-r2.ebuild:
+  Stable on sparc.
+
+  10 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  libfwbuilder-1.0.1-r1.ebuild:
+  Fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  libfwbuilder-1.0.1-r1.ebuild:
+  Add inherit eutils
+
+*libfwbuilder-1.0.2-r2 (13 Apr 2004)
+
+  13 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-1.0.2-r1.ebuild,
+  libfwbuilder-1.0.2-r2.ebuild:
+  Upstream released a new revision of 1.0.2, but didn't rename source tarball.
+  Change -r1 SRC_URI to point to original release and add -r2 to use the new
+  revision. Closing #47298.
+
+  31 Mar 2004; Lars Weiler <pylon@gentoo.org> libfwbuilder-1.0.2-r1.ebuild:
+  stable on ppc
+
+  18 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-1.0.2-r1.ebuild:
+  Inherit eutils for epatch.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org>
+  libfwbuilder-1.0.2-r1.ebuild:
+  Stable on sparc.
+
+*libfwbuilder-1.0.2-r1 (13 Jan 2004)
+
+  13 Jan 2004; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-1.0.2-r1.ebuild:
+  Fix libxml2 >=2.6.4 issues. Also removing static support, closing #34862.
+
+  12 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-1.0.1-r1.ebuild, 
+  libfwbuilder-1.0.2.ebuild :
+  Add sys-devel/libtool to dependencies. Closing #35079.
+
+  06 Dec 2003; Jason Wever <weeve@gentoo.org> libfwbuilder-1.0.1-r1.ebuild:
+  Marked stable on sparc.
+
+*libfwbuilder-1.0.2 (26 Nov 2003)
+
+  26 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-1.02.ebuild :
+  Version bump.
+
+*libfwbuilder-1.0.1-r1 (13 Nov 2003)
+
+  13 Nov 2003; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-1.0.1-r1.ebuild :
+  Added patch from upstream CVS. When built against libxml2 2.6.2 fwbuilder would exit with an 
+  error. See upstream #840427.
+
+*libfwbuilder-1.0.1 (19 Sep 2003)
+
+  19 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-1.0.1.ebuild:
+  Version bump
+
+  12 Jun 2003; <msterret@gentoo.org> libfwbuilder-0.10.10.ebuild,
+  libfwbuilder-0.10.11.ebuild, libfwbuilder-0.10.12.ebuild,
+  libfwbuilder-0.10.13.ebuild, libfwbuilder-1.0.0.ebuild:
+  fix Header
+
+*libfwbuilder-1.0.0 (27 May 2003)
+
+  27 May 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump and ebuild cleanup.
+
+*libfwbuilder-0.10.13 (01 Mar 2003)
+
+  01 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+  10 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Removed old files.
+
+*libfwbuilder-0.10.12 (05 Jan 2003)
+
+  05 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Versionbump.
+
+  05 Jan 2003; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-0.10.11.ebuild :
+  Marked stable for x86.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libfwbuilder-0.10.11 (04 Nov 2002)
+
+  04 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump. Found by AutoBot <autobot@midsouth.rr.com> in #10084.
+
+*libfwbuilder-0.10.10 (03 Oct 2002)
+
+  03 Oct 2002; Mike Frysinger <vapier@gentoo.org> libfwbuilder-0.10.10.ebuild :
+  Version bump for #6926 #8380 #8707 ... also set libsigc++ to =1.0* since newer
+  versions are incompatible
+
+*libfwbuilder-0.10.8-r1 (26 Aug 2002)
+
+  26 Aug 2002; Matthew Kennedy <mkennedy@gentoo.org>
+  libfwbuilder-0.10.8-r1.ebuild, files/digest-libfwbuilder-0.10.8-r1,
+  files/FWReference.cc-gcc3-gentoo.patch, ChangeLog : :
+
+  Created patch to fix broken C++ code (shows up on gcc3.2). Resolves
+  bug #6926.
+
+*libfwbuilder-0.10.8 (05 July 2002)
+
+  05 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> libfwbuilder-0.10.8.ebuild:
+  Version bump, ebuild contributed by Arthus Wanzel <t1ck@bonetmail.com>.
+
+*libfwbuilder-0.10.7 (10 July 2002)
+
+  10 Jul 2002; phoen][x <phoenix@gentoo.org> libfwbuilder-0.10.7.ebuild :
+  Bumped to new version. Thanks to Artur Wanzel <t1ck@bonetmail.com>
+  for the contribution.
+
+*libfwbuilder-0.10.5 (30 Mar 2002)
+
+  30 Mar 2002; Seemant Kulleen <seemant@gentoo.org> libfwbuilder-0.10.5.ebuild :
+  Version bump.
+
+*libfwbuilder-0.10.4 (29 Mar 2002)
+
+  29 Mar 2002; Seemant Kulleen <seemant@gentoo.org> libfwbuilder-0.10.4.ebuild :
+
+  Lars Jensen informed us of the version bump.  Also, cleaned up the ebuild a 
+  little bit.
 
 *libfwbuilder-0.10.0 (1 Feb 2002)
 

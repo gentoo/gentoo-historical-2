@@ -1,6 +1,27 @@
 # ChangeLog for games-util/mattricks
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/mattricks/ChangeLog,v 1.1 2004/09/01 14:05:31 wolf31o2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/mattricks/ChangeLog,v 1.1.1.1 2005/11/30 10:00:59 chriswhite Exp $
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> mattricks-0.7.ebuild:
+  Stable on ppc.
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> mattricks-0.7.ebuild:
+  stable on x86
+
+*mattricks-0.7 (23 Jun 2005)
+
+  23 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +mattricks-0.7.ebuild:
+  version bump (bug #83170)
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> mattricks-0.6.ebuild:
+  Stable on ppc.
+
+  09 May 2005; David Holm <dholm@gentoo.org> mattricks-0.6.ebuild:
+  Added to ~ppc.
+
+  05 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> mattricks-0.6.ebuild:
+  stable; use distutils; fix build (more bug #57671)
 
 *mattricks-0.6 (01 Sep 2004)
 

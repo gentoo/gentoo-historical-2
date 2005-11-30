@@ -1,2 +1,6 @@
-MD5 8ee4b971131fb904d04abfc29fd96421 aabrowse-0.0.6.ebuild 615
+MD5 07ed893942bf934880d439e94bcce416 aabrowse-0.0.6.ebuild 810
+MD5 b9d8fa4842947bf50d2b524d38da9faf aabrowse-0.0.8.ebuild 840
+MD5 4229326d444cb865c9a6d41c42a42127 ChangeLog 871
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
 MD5 ac373a76a9a52b60e556f27f3c613427 files/digest-aabrowse-0.0.6 66
+MD5 7aedfb01519c4eb8e6fdcac218e1564e files/digest-aabrowse-0.0.8 66

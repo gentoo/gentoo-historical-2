@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-cyrus-sasl/selinux-cyrus-sasl-20050918.ebuild,v 1.1 2005/09/18 09:56:24 kaiowas Exp $
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-cyrus-sasl/selinux-cyrus-sasl-20050918.ebuild,v 1.1.1.1 2005/11/30 10:02:15 chriswhite Exp $
 
 inherit selinux-policy
 

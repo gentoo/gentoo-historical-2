@@ -1,6 +1,107 @@
-# ChangeLog for dev-libs/libwmf
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# /space/gentoo/cvsroot/gentoo-x86/dev-lang/swig/ChangeLog,v 1.1 2002/02/01 21:53:11 gbevin Exp
+# ChangeLog for media-libs/libwmf
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libwmf/ChangeLog,v 1.1.1.1 2005/11/30 10:04:24 chriswhite Exp $
+
+  21 Aug 2005; Fabian Groffen <grobian@gentoo.org> libwmf-0.2.8.3-r1.ebuild:
+  Marking ~ppc-macos
+
+*libwmf-0.2.8.3-r1 (02 Aug 2005)
+
+  02 Aug 2005; <sekretarz@gentoo.org> +libwmf-0.2.8.3-r1.ebuild:
+  Ebuild clean up, added buildtime dependency on pkgconfig, as it's used.
+  Changed the way X and jpeg useflags are passed to configure, using use_with
+  instead of outer conditionals on . Added pic useflag. Added xml and xml2
+  useflags: they are used to request if we are going to use expat or libxml2.
+  If both are used, it defaults to expat, as the automatic ./configure do. It
+  also make optional dependency on them (before both where dependency, also if
+  only expat was used!). Added a debug useflag passed to configure. Added a
+  gtk useflag which makes it possible to avoid building gdk-pixbuf plugins
+  (and fixes the unlinked dependency on gtk2 of the old ebuild). Thanks 
+  Flameeyes in bug #82747
+
+*libwmf-0.2.8.3 (12 Jul 2005)
+
+  12 Jul 2005; Jonathan Smith <smithj@gentoo.org> +metadata.xml,
+  +libwmf-0.2.8.3.ebuild:
+  #97681: version bump. this package needs a maintainer...
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> libwmf-0.2.8.2.ebuild:
+  stable on ppc64, bug #55801
+
+  15 Mar 2004; Bret Curtis <psi29a@gentoo.org> libwmf-0.2.8.2.ebuild:
+  Added ~mips to KEYWORDS
+
+  10 Feb 2004; Aron Griffis <agriffis@gentoo.org> libwmf-0.2.8.2.ebuild:
+  stable on ia64
+
+  09 Jan 2004; <gustavoz@gentoo.org> libwmf-0.2.8.2.ebuild:
+  marked stable on sparc
+
+  07 Jan 2004; <gustavoz@gentoo.org> libwmf-0.2.8.2.ebuild:
+  keyworded ~sparc
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> libwmf-0.2.8.2.ebuild,
+  libwmf-0.2.8.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+*libwmf-0.2.8.2 (30 Nov 2003)
+
+  30 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*libwmf-0.2.8 (24 Mar 2003)
+
+  06 Jun 2003; Aron Griffis <agriffis@gentoo.org> libwmf-0.2.8.ebuild:
+  Mark stable on alpha
+
+  04 Aug 2003; Guy Martin <gmsoft@gentoo.org> libwmf-0.2.8.ebuild :
+  Added hppa to KEYWORDS.
+
+  12 May 2003; Graham Forest <vladimir@gentoo.org> libwmf-0.2.8.ebuild:
+  set ppc in keywords
+
+  24 Mar 2003; Alastair Tse <liquidx@gentoo.org> libwmf-0.2.8.ebuild:
+  Version Bump
+
+*libwmf-0.2.7-r2 (19 Mar 2003)
+
+  19 Mar 2003; Alastair Tse <liquidx@gentoo.org> libwmf-0.2.7-r2.ebuild:
+  Libtool fix. Now works fine when upgrading from <libwmf-0.2.7. Resolves
+  #17730.
+
+*libwmf-0.2.7-r1 (05 Mar 2003)
+
+  05 Mar 2003; Alastair Tse <liquidx@gentoo.org> libwmf-0.2.7-r1.ebuild files/digest-libwmf-0.2.7-r1 :
+  Fixed missing libwmf.so. Resolves #13661.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libwmf-0.2.7 (27 Nov 2002)
+
+  05 Dec 2002; George Shapovalov <george@gentoo.org> libwmf-0.2.7.ebuild :
+
+  Incorporated changes by Lapo Calamandrei <l_calamandrei@neri-group.com> (bug #9080).
+  Basically made jpeg and X headers support optional, depending on jped and X use falgs.
+  *Not* upping the revision number - there is no new functionality/interface changes, no need to force 
+  rebuild on users.
+
+  05 Dec 2002; Jon Nall <nall@gentoo.org> libwmf-0.2.7.ebuild :
+  keyworded ~ppc
+
+  27 Nov 2002; Brad Cowan <bcowan@gentoo.org> libwmf-0.2.7.ebuild, 
+  files/digest-0.2.7:
+  
+  Version bump.
+
+*libwmf-0.2.6 (10 July 2002)
+
+  05 Dec 2002; Jon Nall <nall@gentoo.org> libwmf-0.2.6.ebuild :
+  keyworded ~ppc
+
+  10 July 2002; G shapovalov <georges@gentoo.org> libwmf-0.2.6.ebuild, files/digest-0.2.6 :
+  new version.
+  0.2.5 ebuild submitted by Mark Gilbert <webmaster@dofty.zzn.com>
+  upped to 0.2.6 by Paul de Vrieze <gentoo-bugs@devrieze.net>
 
 *libwmf-0.2.2-pre1 (7 Feb 2002)
   

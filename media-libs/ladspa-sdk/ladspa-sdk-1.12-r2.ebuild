@@ -1,38 +1,43 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ladspa-sdk/ladspa-sdk-1.12-r2.ebuild,v 1.1 2004/08/15 22:44:38 fvdpol Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ladspa-sdk/ladspa-sdk-1.12-r2.ebuild,v 1.1.1.1 2005/11/30 10:03:44 chriswhite Exp $
 
 inherit eutils
 
-IUSE=""
-
 MY_PN=${PN/-/_}
 MY_P=${MY_PN}_${PV}
-S=${WORKDIR}/${MY_PN}/src
 
-DESCRIPTION="The Linux Audio Developer's Simple Plugin API and some example plugins"
-SRC_URI="http://www.ladspa.org/download/${MY_P}.tgz"
+DESCRIPTION="The Linux Audio Developer's Simple Plugin API"
 HOMEPAGE="http://www.ladspa.org/"
+SRC_URI="http://www.ladspa.org/download/${MY_P}.tgz"
 
-SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
+SLOT="0"
+KEYWORDS="alpha amd64 hppa ppc ppc64 ppc-macos sparc x86"
+IUSE=""
 
-DEPEND="virtual/libc
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
+
+S=${WORKDIR}/${MY_PN}/src
 
 src_unpack() {
 	unpack ${A}
 	sed -i \
-		-e "/^CFLAGS/ s:-O3:${CFLAGS}:" ${S}/makefile || \
-			die "sed makefile failed (CFLAGS)"
-	sed -i s:-mkdirhier:mkdir\ -p:g ${S}/makefile || \
-			die "sed makefile failed (mkdirhier)"
+		-e "/^CFLAGS/ s:-O3:${CFLAGS}:" \
+		${S}/makefile || die "sed makefile failed (CFLAGS)"
+	sed -i \
+		-e 's:-mkdirhier:mkdir\ -p:g' \
+		${S}/makefile || die "sed makefile failed (mkdirhier)"
 	epatch ${FILESDIR}/${P}-test.patch
+	use ppc-macos && epatch ${FILESDIR}/${P}-ppc-macos.patch
 }
 
 src_compile() {
-	emake targets || die
+	# It sets CXXFLAGS to CFLAGS, can be wrong..
+	# Just set CXXFLAGS to what they should be
+	emake -j1 targets CXXFLAGS="$CXXFLAGS -I. -fPIC" || die
 }
 
 src_test() {
@@ -44,7 +49,7 @@ src_test() {
 
 src_install() {
 	make \
-		INSTALL_PLUGINS_DIR=${D}/usr/lib/ladspa \
+		INSTALL_PLUGINS_DIR=${D}/usr/$(get_libdir)/ladspa \
 		INSTALL_INCLUDE_DIR=${D}/usr/include \
 		INSTALL_BINARY_DIR=${D}/usr/bin \
 		install || die "make install failed"
@@ -54,5 +59,5 @@ src_install() {
 
 	# Needed for apps like rezound
 	dodir /etc/env.d
-	echo "LADSPA_PATH=/usr/lib/ladspa" > ${D}/etc/env.d/60ladspa
+	echo "LADSPA_PATH=/usr/$(get_libdir)/ladspa" > ${D}/etc/env.d/60ladspa
 }

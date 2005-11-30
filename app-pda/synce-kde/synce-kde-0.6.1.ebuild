@@ -1,28 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# Author Kevin Koltzau <kevin@plop.org>
-# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-kde/synce-kde-0.6.1.ebuild,v 1.1 2003/11/11 14:26:48 tad Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-kde/synce-kde-0.6.1.ebuild,v 1.1.1.1 2005/11/30 10:02:25 chriswhite Exp $
 
-inherit kde-base
-
-need-kde 3.1
+inherit kde
 
 AGVER="agsync-0.2-pre"
 
-IUSE="avantgo"
 DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync. - KDE System Tray utility (formerly app-pda/rapip)"
-SRC_URI="mirror://sourceforge/synce/${P}.tar.gz
-	avantgo? (http://www.mechlord.ca/%7Elownewulf/${AGVER}.tgz)"
 HOMEPAGE="http://synce.sourceforge.net"
+SRC_URI="mirror://sourceforge/synce/${P}.tar.gz
+	avantgo? ( http://www.mechlord.ca/%7Elownewulf/${AGVER}.tgz )"
+
 
 SLOT="0"
-
 LICENSE="GPL-2"
 KEYWORDS="~x86"
+IUSE="avantgo"
 
-newdepend ">=app-pda/synce-0.8
-	>=app-pda/synce-rra-0.8
+DEPEND=">=app-pda/synce-0.8
+	>=app-pda/synce-rra-0.8.9
 	!app-pda/rapip"
+RDEPEND=">=app-pda/synce-0.8
+	>=app-pda/synce-rra-0.8.9"
+need-kde 3.1
 
 src_unpack() {
 	kde_src_unpack
@@ -35,7 +35,7 @@ src_unpack() {
 }
 
 src_compile() {
-	if [ `use avantgo` ]; then
+	if use avantgo; then
 		cd ${S}/../agsync-0.2-pre
 		emake
 		cd ${S}

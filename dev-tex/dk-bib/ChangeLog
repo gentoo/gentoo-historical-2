@@ -1,6 +1,36 @@
 # ChangeLog for dev-tex/dk-bib
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/dk-bib/ChangeLog,v 1.1 2005/05/23 18:19:57 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/dk-bib/ChangeLog,v 1.1.1.1 2005/11/30 10:00:52 chriswhite Exp $
+
+  17 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  dk-bib-20051002.ebuild:
+  Stable on x86.
+
+  22 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -dk-bib-20050120.ebuild:
+  Pruned old versions.
+
+*dk-bib-20051002 (17 Oct 2005)
+
+  17 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +dk-bib-20051002.ebuild:
+  Version bump.
+
+  15 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  dk-bib-20050810.ebuild:
+  Stable on x86.
+
+*dk-bib-20050810 (17 Aug 2005)
+
+  17 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +dk-bib-20050810.ebuild:
+  Version bump.
+
+  07 Jul 2005; <brix@gentoo.org> dk-bib-20050120.ebuild:
+  Fixed DEPEND/RDEPEND issue.
+
+  23 Jun 2005; <brix@gentoo.org> dk-bib-20050120.ebuild:
+  Stable on x86.
 
 *dk-bib-20050120 (23 May 2005)
 

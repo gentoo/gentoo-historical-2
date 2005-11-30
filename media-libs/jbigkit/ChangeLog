@@ -1,8 +1,60 @@
 # ChangeLog for media-libs/jbigkit
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/jbigkit/ChangeLog,v 1.1 2002/11/05 17:21:22 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/jbigkit/ChangeLog,v 1.1.1.1 2005/11/30 10:04:29 chriswhite Exp $
+
+  10 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/jbigkit-1.6-respect-make.patch, jbigkit-1.6-r1.ebuild:
+  Added patch to respect the $(MAKE) variable. Use the right compiler for
+  current arch to build with newer compiler-config.
+
+*jbigkit-1.6-r1 (30 Sep 2005)
+
+  30 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/jbigkit-1.6-shared-lib.patch, +jbigkit-1.6-r1.ebuild:
+  Build a shared library since imagemagick tries to link against libjbig #107542.
+
+*jbigkit-1.6 (27 Sep 2005)
+
+  27 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/jbigkit-1.6-build.patch, +jbigkit-1.6.ebuild:
+  Version bump.
+
+  21 Feb 2005; <gongloo@gentoo.org> jbigkit-1.4.ebuild:
+  Stable on ppc-macos.
+
+  21 Jan 2005; <gongloo@gentoo.org> jbigkit-1.4.ebuild:
+  Keyworded ~ppc-macos.
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> jbigkit-1.4.ebuild:
+  stable on ppc64, bug #55801
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> jbigkit-1.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  07 Mar 2004; Bret Curtis <psi29a@gentoo.org> jbigkit-1.4.ebuild:
+  Added ~mips to KEYWORDS
+
+  29 Nov 2003; Brad House <brad_mssw@gentoo.org> jbigkit-1.4.ebuild:
+  needs -fPIC for koffice on amd64
+
+  22 Oct 2003; Christian Birchinger <joker@gentoo.org> jbigkit-1.4.ebuild:
+  Added sparc stable keyword
+
+  09 Jul 2003; Michael Sterrett <msterret@gentoo.org> jbigkit-1.4.ebuild:
+  use sed -i in src_unpack
 
 *jbigkit-1.4 (05 Nov 2002)
 
+  04 Aug 2003; Guy Martin <gmsoft@gentoo.org> jbigkit-1.4.ebuild :
+  Added hppa to KEYWORDS.
+
+  30 Mar 2003; <rac@gentoo.org> jbigkit-1.4.ebuild:
+  marking stable on ppc, as stable imagemagick version depends on it
+
+  21 Feb 2003; Aron Griffis <agriffis@gentoo.org> jbigkit-1.4.ebuild :
+  Mark stable on alpha
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
   05 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by Marko Mikulicic <marko@seul.org>.

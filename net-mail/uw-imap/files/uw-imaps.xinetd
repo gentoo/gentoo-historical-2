@@ -1,4 +1,5 @@
 # default: off
+# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/files/uw-imaps.xinetd,v 1.1.1.1 2005/11/30 10:03:07 chriswhite Exp $
 # description: The IMAPS service allows remote users to access their mail \
 #	       using an IMAP client with SSL support such as Netscape \
 #	       Communicator or fetchmail.

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-mixer/sdl-mixer-1.2.6-r1.ebuild,v 1.1 2005/10/10 15:01:39 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-mixer/sdl-mixer-1.2.6-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:59 chriswhite Exp $
 
 inherit eutils
 
@@ -11,11 +11,12 @@ SRC_URI="http://www.libsdl.org/projects/SDL_mixer/release/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
-IUSE="mp3 mikmod vorbis"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="mp3 mikmod timidity vorbis"
 
 DEPEND=">=media-libs/libsdl-1.2.5
-	>=media-libs/smpeg-0.4.4-r1
+	timidity? ( media-sound/timidity++ )
+	mp3? ( >=media-libs/smpeg-0.4.4-r1 )
 	vorbis? ( >=media-libs/libvorbis-1.0_beta4 media-libs/libogg )
 	mikmod? ( >=media-libs/libmikmod-3.1.10 )"
 
@@ -32,8 +33,11 @@ src_unpack() {
 }
 
 src_compile() {
+	# don't use the internal mikmod library, use the system one if USE=mikmod
 	econf \
+		--disable-music-mod \
 		--disable-dependency-tracking \
+		$(use_enable timidity timidity-midi) \
 		$(use_enable mikmod music-libmikmod) \
 		$(use_enable mp3 music-mp3) \
 		$(use_enable vorbis music-ogg) \

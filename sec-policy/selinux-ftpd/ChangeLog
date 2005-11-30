@@ -1,6 +1,44 @@
 # ChangeLog for sec-policy/selinux-ftpd
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-ftpd/ChangeLog,v 1.1 2004/07/13 14:00:49 method Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-ftpd/ChangeLog,v 1.1.1.1 2005/11/30 10:02:13 chriswhite Exp $
+
+*selinux-ftpd-20050903 (09 Sep 2005)
+
+  09 Sep 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-ftpd-20050408.ebuild, +selinux-ftpd-20050903.ebuild:
+  added support for pure-ftpd
+
+  26 Jun 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-ftpd-20050626.ebuild:
+  mark stable
+
+*selinux-ftpd-20050525 (25 May 2005)
+
+  25 May 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-ftpd-20050211.ebuild, +selinux-ftpd-20050525.ebuild:
+  fix for #93935, removed obsolete inetd ifdefs
+
+  07 May 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-ftpd-20041120.ebuild, selinux-ftpd-20050408.ebuild:
+  mark stable
+
+*selinux-ftpd-20050408 (23 Apr 2005)
+
+  23 Apr 2005; petre rodan <kaiowas@gentoo.org>
+  +selinux-ftpd-20050408.ebuild:
+  merge with upstream
+
+*selinux-ftpd-20050211 (23 Mar 2005)
+
+  23 Mar 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-ftpd-20050211.ebuild:
+  mark stable
+
+*selinux-ftpd-20041120 (20 Jan 2005)
+
+  20 Jan 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-ftpd-20041120.ebuild:
+  mark stable
 
 *selinux-ftpd-20040713 (13 Jul 2004)
 

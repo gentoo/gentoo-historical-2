@@ -1,28 +1,32 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libexif-gtk/libexif-gtk-0.3.3.ebuild,v 1.1 2003/01/08 13:23:01 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libexif-gtk/libexif-gtk-0.3.3.ebuild,v 1.1.1.1 2005/11/30 10:03:48 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
 IUSE="nls"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="GTK frontend to the libexif library (parsing, editing, and saving EXIF data)"
 SRC_URI="mirror://sourceforge/libexif/${P}.tar.gz"
 HOMEPAGE="http://libexif.sf.net/"
 
 SLOT="0"
-LICENSE="LGPL"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc ~sparc ~alpha amd64"
 
 DEPEND="dev-util/pkgconfig
 		>=x11-libs/gtk+-2.0
 		>=media-libs/libexif-0.5.9"
 
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${P}-gtk24.patch
+}
+
 src_compile() {
 	local myconf
 	use nls || myconf="${myconf} --disable-nls"
-	econf ${myconf}
+	econf ${myconf} || die "econf failed"
 	emake || die
 }
 

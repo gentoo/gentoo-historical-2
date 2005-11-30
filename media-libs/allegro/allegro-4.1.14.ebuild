@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/allegro/allegro-4.1.14.ebuild,v 1.1 2004/06/04 07:08:39 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/allegro/allegro-4.1.14.ebuild,v 1.1.1.1 2005/11/30 10:03:55 chriswhite Exp $
+
+IUSE="static mmx sse oss alsa esd arts X fbcon svga tetex doc"
 
 inherit flag-o-matic
 
@@ -10,8 +12,7 @@ SRC_URI="mirror://sourceforge/alleg/${P}.tar.gz"
 
 LICENSE="Allegro"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64"
-IUSE="static mmx sse oss alsa esd arts X fbcon svga tetex"
+KEYWORDS="alpha ~amd64 ia64 ppc ~sparc ~x86"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	esd? ( media-sound/esound )
@@ -23,7 +24,7 @@ DEPEND="${RDEPEND}
 	tetex? ( virtual/tetex )"
 
 src_compile() {
-	filter-flags -fPIC
+	filter-flags -fPIC -fprefetch-loop-arrays
 	econf \
 		--enable-linux \
 		--enable-vga \
@@ -66,6 +67,7 @@ src_install() {
 	# Different format versions of the Allegro documentation
 	dodoc AUTHORS CHANGES THANKS readme.txt todo.txt
 	use tetex && dodoc docs/allegro.{dvi,ps}
+	use doc && dodoc examples/*
 	dohtml docs/html/*
 	docinto txt ; dodoc docs/txt/*.txt
 	docinto rtf ; dodoc docs/rtf/*.rtf

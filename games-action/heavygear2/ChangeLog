@@ -1,6 +1,36 @@
-# ChangeLog for app-games/heavygear2
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/heavygear2/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/heavygear2
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/heavygear2/ChangeLog,v 1.1.1.1 2005/11/30 10:02:41 chriswhite Exp $
+
+  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  heavygear2-1.0b.ebuild:
+  Added addition dir variable to games_make_wrapper for bug #109793.
+
+  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  heavygear2-1.0b.ebuild:
+  Changed check_license to explicitly list license to check.
+
+  06 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  heavygear2-1.0b.ebuild:
+  Updated to use lokigames mirrors.
+
+  25 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org> -files/hg2,
+  heavygear2-1.0b.ebuild:
+  Updated to use newer functions from games.eclass and eutils.eclass to
+  simplify the ebuild and also removing old launcher shell script.
+
+  07 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  heavygear2-1.0b.ebuild:
+  Changed hardcoded /opt/heavygear2 to dir variable and closing bug #84363.
+
+  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> heavygear2-1.0b.ebuild:
+  fix use invocation
+
+  15 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> heavygear2-1.0b.ebuild:
+  Updated to use new cdrom_get_cds routine in eutils.eclass.
+
+  17 Oct 2003; Chris Gianelloni <wolf31o2@gentoo.org> heavygear2-1.0b.ebuild:
+  Adding RDEPEND on freetype-1* and closing bug #27587.
 
   05 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> heavygear2-1.0b.ebuild:
   Updating description

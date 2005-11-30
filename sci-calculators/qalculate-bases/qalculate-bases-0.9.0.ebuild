@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/qalculate-bases/qalculate-bases-0.9.0.ebuild,v 1.1 2005/11/16 03:55:18 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/qalculate-bases/qalculate-bases-0.9.0.ebuild,v 1.1.1.1 2005/11/30 10:02:34 chriswhite Exp $
 
 DESCRIPTION="A GTK+ base conversion tool"
 LICENSE="GPL-2"

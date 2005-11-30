@@ -1,18 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmatroska/libmatroska-0.7.3-r1.ebuild,v 1.1 2004/10/08 10:29:50 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmatroska/libmatroska-0.7.3-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:57 chriswhite Exp $
 
 IUSE=""
 
-inherit flag-o-matic gcc eutils
+inherit flag-o-matic eutils
 
 DESCRIPTION="Extensible multimedia container format based on EBML"
 HOMEPAGE="http://www.matroska.org/"
-SRC_URI="http://www.bunkus.org/videotools/mkvtoolnix/sources/${P}.tar.bz2"
+SRC_URI="http://www.bunkus.org/videotools/mkvtoolnix/sources/old/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~hppa ~amd64 ~ia64"
+KEYWORDS="~x86 ppc ~sparc ~mips ~alpha ~hppa ~amd64 ~ia64"
 
 DEPEND=">=dev-libs/libebml-0.7.1-r1"
 
@@ -20,7 +20,7 @@ src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-	epatch ${FILESDIR}/${P}-shared.patch
+	epatch ${FILESDIR}/libmatroska-shared.patch
 
 	cd ${S}/make/linux
 	sed -i -e 's/CXXFLAGS=/CXXFLAGS+=/g' Makefile
@@ -36,10 +36,7 @@ src_compile() {
 	use ppc && append-flags -fPIC
 
 	#fixes locale for gcc3.4.0 to close bug 52385
-	if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "4" ]
-	then
-		append-flags -finput-charset=ISO8859-15
-	fi
+	append-flags $(test_flag -finput-charset=ISO8859-15)
 
 	make PREFIX=/usr \
 		LIBEBML_INCLUDE_DIR=/usr/include/ebml \

@@ -1,7 +1,97 @@
-# ChangeLog for app-admin/openmosixview
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich/ChangeLog,v 1.1 2002/11/05 15:06:09 tantive Exp $
+# ChangeLog for sys-cluster/mpich
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpich/ChangeLog,v 1.1.1.1 2005/11/30 10:01:40 chriswhite Exp $
 
+*mpich-1.2.7_p1 (07 Nov 2005)
+
+  07 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/1.2.7_p1-fix-romio-sandbox-breakage.patch, +mpich-1.2.7_p1.ebuild:
+  Bump to the latest, released only 2 days ago. This probably makes our mpich
+  current for the first time in a year.
+
+*mpich-1.2.6-r4 (07 Nov 2005)
+
+  07 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +mpich-1.2.6-r4.ebuild:
+  (#103218) Overrule mpich's broken build system to get datadir set to
+  /usr/share/mpich. Also, add dependency on libX11 or virtual/x11 for
+  cxgraphics and cpi_anim. I'm open to patches to stop building them and
+  prevent the X dependency. In addition, change 'make' to 'emake' to allow
+  parallel builds.
+
+*mpich-1.2.6-r3 (05 Sep 2005)
+
+  05 Sep 2005; Michael Imhof <tantive@gentoo.org> -mpich-1.2.6.ebuild,
+  -mpich-1.2.6-r1.ebuild, -mpich-1.2.6-r2.ebuild, +mpich-1.2.6-r3.ebuild:
+  Fixed paths. Closes #98038. Cleaned out old ebuilds.
+
+*mpich-1.2.6-r2 (05 Jul 2005)
+
+  05 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +mpich-1.2.6-r2.ebuild:
+  Implement virtual/mpi.
+
+*mpich-1.2.6-r1 (24 May 2005)
+
+  24 May 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +mpich-1.2.6-r1.ebuild:
+  (#43358) Set datadir to /usr/share/mpich so machines.LINUX et al show up in
+  the right place.
+
+  03 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org> mpich-1.2.6.ebuild:
+  Added ~ppc64
+
+*mpich-1.2.6 (20 Feb 2005)
+
+  20 Feb 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/1.2.6-fix-romio-sandbox-breakage.patch, +mpich-1.2.6.ebuild:
+  Update to latest version, after building up suitable suspense over the past
+  six months it's been out.
+
+  28 Sep 2004; Simon Stelling <blubb@gentoo.org> mpich-1.2.5.2.ebuild:
+  added ~amd64
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mpich-1.2.5.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  02 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>; mpich-1.2.5.2.ebuild:
+  Add MPICH_CONFIGURE_OPTS variable for customization (#38207).
+
+  02 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>; mpich-1.2.5.2.ebuild:
+  lam-mpi changed categories a while back, but RDEPEND was never changed to
+  reflect this.
+
+  26 Mar 2004; David Holm <dholm@gentoo.org> mpich-1.2.5.2.ebuild:
+  Added to ~ppc.
+
+  17 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> mpich-1.2.5.2.ebuild:
+  don't mess with P (bug #44712); install man pages in /usr/share/man;
+  crypt? () : () -> crypt? () !crypt ()
+
+  17 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> mpich-1.2.5-r1.ebuild:
+  tidy older version
+
+  17 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> mpich-1.2.5.2.ebuild:
+  move mpich-1.2.5.2.ebuild to x86
+
+  17 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> mpich-1.2.4.ebuild,
+  mpich-1.2.5.ebuild:
+  tidy extra ebuilds
+
+*mpich-1.2.5.2 (10 Nov 2003)
+
+  10 Nov 2003; Donnie Berkholz <spyderous@gentoo.org>; mpich-1.2.5.2.ebuild:
+  Version bump. Slight cleanup also, mostly in deps and for USE=doc.
+
+*mpich-1.2.5-r1 (03 Jun 2003)
+  
+  03 Jun 2003; Michael Imhof <tantive@gentoo.org>:
+  Corrected ebuild. Submitted by Marc St-Pierre <marc@cyberlogic.ca>
+
+*mpich-1.2.5 (28 Mar 2003)
+
+  28 Mar 2003; George Shapovalov <george@gentoo.org> mpich-1.2.5.ebuild :
+  new version, 
+  made ebuild actually compile stuff and install it properly.. (see #10345)
 
 *mpich-1.2.4 (05 Nov 2002)
   

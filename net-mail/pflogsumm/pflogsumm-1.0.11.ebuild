@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/pflogsumm/pflogsumm-1.0.11.ebuild,v 1.1 2004/11/03 09:50:57 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/pflogsumm/pflogsumm-1.0.11.ebuild,v 1.1.1.1 2005/11/30 10:03:25 chriswhite Exp $
 
 DESCRIPTION="Pflogsumm is a log analyzer for Postfix logs"
 HOMEPAGE="http://jimsun.linxnet.com/postfix_contrib.html"
@@ -10,7 +10,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE=""
-KEYWORDS="~x86"
+KEYWORDS="x86"
 DEPEND="dev-lang/perl
 	dev-perl/Date-Calc"
 

@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/files/authdaemond-3.0.4-r1,v 1.1 2004/05/19 09:04:10 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/courier-imap/files/authdaemond-3.0.4-r1,v 1.1.1.1 2005/11/30 10:03:29 chriswhite Exp $
 depend() {
 	need net
 }
@@ -18,7 +18,7 @@ setauth() {
 	AUTHLIB="/usr/lib/courier-imap/authlib"
 	source /etc/courier-imap/authdaemond.conf
 	[ -z "$version" ] && version="${AUTHDAEMOND}"
-	pidfile="/var/lib/courier-imap/authdaemon/pid"
+	pidfile="/var/run/authdaemon.pid"
 	logger="/usr/lib/courier-imap/courierlogger"
 }
 

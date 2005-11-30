@@ -1,14 +1,16 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixview/openmosixview-1.4-r1.ebuild,v 1.1 2003/10/16 10:07:49 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosixview/openmosixview-1.4-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:46 chriswhite Exp $
+
+inherit toolchain-funcs
 
 S=${WORKDIR}/openmosixview-${PV}
 DESCRIPTION="cluster-management GUI for OpenMosix"
-SRC_URI="www.openmosixview.com/download/openmosixview-${PV}.tar.gz"
+SRC_URI="http://www.openmosixview.com/download/openmosixview-${PV}.tar.gz"
 HOMEPAGE="http://www.openmosixview.com"
 IUSE=""
 
-DEPEND=">=x11-libs/qt-2.3.0
+DEPEND="<x11-libs/qt-4
 	>=sys-cluster/openmosix-user-0.2.4
 	>=sys-kernel/openmosix-sources-2.4.18"
 
@@ -26,7 +28,7 @@ src_unpack() {
 		QTDIR=/usr/qt/3; else
 		QTDIR=/usr/qt/2;
 	fi
-	CC=gcc
+	CC=$(tc-getCC)
 EOF
 }
 
@@ -75,7 +77,7 @@ pkg_postinst() {
 	einfo "Start openmosixcollector"
 	einfo "manually (/etc/init.d/openmosixcollector start) or"
 	einfo "automatically using rc-update"
-	einfo "(rc-update add /etc/init.d/openmosixcollector default)."
+	einfo "(rc-update add openmosixcollector default)."
 	einfo
 	einfo "Run openmosixview by simply typing openmosixview."
 	einfo

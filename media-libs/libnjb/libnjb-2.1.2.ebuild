@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libnjb/libnjb-2.1.2.ebuild,v 1.1 2005/06/13 15:00:26 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libnjb/libnjb-2.1.2.ebuild,v 1.1.1.1 2005/11/30 10:04:16 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/libnjb/${PN}-${MY_PV}.tar.gz"
 IUSE=""
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND=">=dev-libs/libusb-0.1.7"
 
@@ -33,7 +33,7 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die "failed to install"
 
-	# Backwards compatability
+	# Backwards compatibility
 	dosym libnjb.so /usr/$(get_libdir)/libnjb.so.0
 
 	dodoc FAQ INSTALL CHANGES README

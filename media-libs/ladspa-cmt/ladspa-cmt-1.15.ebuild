@@ -1,42 +1,54 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ladspa-cmt/ladspa-cmt-1.15.ebuild,v 1.1 2003/07/07 18:07:53 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ladspa-cmt/ladspa-cmt-1.15.ebuild,v 1.1.1.1 2005/11/30 10:04:26 chriswhite Exp $
+
+inherit eutils
+
+IUSE=""
+
+S="${WORKDIR}/cmt/src"
+MY_P="cmt_src_${PV}"
 
 DESCRIPTION="CMT (computer music toolkit) Lasdpa library plugins"
 HOMEPAGE="http://www.ladspa.org/"
-LICENSE="LGPL-2.1"
-DEPEND="media-libs/ladspa-sdk"
-SRC_URI="http://www.ladspa.org/download/cmt_src_${PV}.tgz"
-KEYWORDS="x86"
+SRC_URI="http://www.ladspa.org/download/${MY_P}.tgz"
 
+KEYWORDS="x86 ppc amd64 sparc ppc-macos"
+LICENSE="LGPL-2.1"
 SLOT="0"
 
-S=${WORKDIR}/cmt/src
-P=cmt_src
-A=${P}.tgz
+DEPEND="media-libs/ladspa-sdk
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack "${A}"
 	cd "${S}"
-	sed -e "/^CFLAGS/ s/-O3/${CFLAGS}/" \
-		-e 's|/usr/local/include||g' \
-		-e 's|/usr/local/lib||g' \
-		makefile > makefile.new
-		mv makefile.new makefile
 
+	sed -i \
+		-e "/^CFLAGS/ s/-O3/${CFLAGS}/" \
+		-e 's|/usr/local/include||g' \
+		-e 's|/usr/local/lib||g' makefile \
+			|| die "sed makefile failed"
+
+	cd "${S}"
+	if use userland_Darwin ; then
+		epatch ${FILESDIR}/${PN}-darwin.patch
+		# gcc-4 bails
+		sed -i -e 's|-Werror||g' makefile \
+			|| die "sed makefile failed"
+	fi
 }
+
 src_compile() {
-        emake || die
+	# It sets CXXFLAGS to CFLAGS, can be wrong..
+	# Just set CXXFLAGS to what they should be
+	emake CXXFLAGS="$CXXFLAGS -I. -fPIC" || die
 }
 
 src_install() {
-
-	dodoc ../doc/*
-	insinto /usr/lib/ladspa
-	INSOPTIONS="-m755"
-	doins ../plugins/*.so
-
-
-
+	insopts -m755
+	insinto /usr/$(get_libdir)/ladspa
+	doins ../plugins/*.so || die "doins failed"
+	dodoc ../README       || die "dodoc failed"
+	dohtml ../doc/*       || die "dohtml failed"
 }
-																				

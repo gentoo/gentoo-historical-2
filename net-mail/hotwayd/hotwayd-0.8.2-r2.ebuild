@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/hotwayd/hotwayd-0.8.2-r2.ebuild,v 1.1 2005/05/31 17:25:28 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/hotwayd/hotwayd-0.8.2-r2.ebuild,v 1.1.1.1 2005/11/30 10:03:04 chriswhite Exp $
 
 inherit eutils
 

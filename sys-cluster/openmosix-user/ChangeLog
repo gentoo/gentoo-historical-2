@@ -1,7 +1,129 @@
-# ChangeLog for sys-apps/openmosix-user
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosix-user/ChangeLog,v 1.1 2002/11/04 21:45:00 tantive Exp $
+# ChangeLog for sys-cluster/openmosix-user
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosix-user/ChangeLog,v 1.1.1.1 2005/11/30 10:01:39 chriswhite Exp $
 
+  03 Aug 2005; Konstantin Arkhipov <voxus@gentoo.org>
+  -openmosix-user-0.3.6-r2.ebuild, openmosix-0.3.6-r3.ebuild:
+  Finally -r3 goes stable.
+
+  15 Jun 2005; Robin H. Johnson <robbat2@gentoo.org>
+  openmosix-user-0.3.6-r3.ebuild:
+  Fix for compile under gcc-3.4.
+
+*openmosix-user-0.3.6-r3 (17 Apr 2005)
+
+  17 Apr 2005; Konstantin Arkhipov <voxus@gentoo.org>
+  +openmosix-user-0.3.6-r3.ebuild:
+  Fixed mosrun script path's. Closes #85435.
+
+  18 Jan 2005; Michael Imhof <tantive@gentoo.org>
+  openmosix-user-0.3.6-r2.ebuild:
+  Changed CC=gcc to tc-getCC. Closes #70144.
+
+*openmosix-user-0.3.6-r2 (07 Aug 2004)
+
+  07 Aug 2004; Konstantin Arkhipov <voxus@gentoo.org>
+  -openmosix-user-0.3.6-r1,
+  +openmosix-user-0.3.6-r2:
+  Minor fix with OMRELEASE.
+
+*openmosix-user-0.3.6-r1 (06 Aug 2004)
+
+  06 Aug 2004; Konstantin Arkhipov <voxus@gentoo.org>
+  -openmosix-user-0.3.6.ebuild,
+  openmosix-user-0.3.6-r1.ebuild:
+  Unmasked -r1 on x86, old version dropped.
+
+*openmosix-user-0.3.6-r1 (05 Aug 2004)
+
+  05 Aug 2004; Konstantin Arkhipov <voxus@gentoo.org>
+  +openmosix-user-0.3.6-r1.ebuild,
+  -openmosix-user-0.3.2.ebuild,
+  -openmosix-user-0.3.3.ebuild,
+  -openmosix-user-0.3.4-r1.ebuild,
+  -openmosix-user-0.3.4.ebuild,
+  -openmosix-user-0.3.5.ebuild:
+  Version bump. Old ebuild wiped out.
+
+*openmosix-user-0.3.6 (06 Jul 2004)
+
+  06 Jul 2004; Konstantin Arkhipov <voxus@gentoo.org>
+  +openmosix-user-0.3.6:
+  Version bump.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  openmosix-user-0.3.2.ebuild, openmosix-user-0.3.3.ebuild,
+  openmosix-user-0.3.4-r1.ebuild, openmosix-user-0.3.4.ebuild,
+  openmosix-user-0.3.5.ebuild:
+  virtual/glibc -> virtual/libc
+
+*openmosix-user-0.3.5 (02 Dec 2003)
+
+  02 Dec 2003; Michael Imhof <tantive@gentoo.org> openmosix-user-0.3.5.ebuild:
+  Version bumped.
+
+* openmosix-user-0.3.4-r1 (06 Nov 2003)
+
+  06 Nov 2003; Michael Imhof <tantive@gentoo.org>
+  Version bumped to make sure everyone gets the new init-script.
+  Closes #28239.
+
+  27 Sep 2003; Michael Imhof <tantive@gentoo.org>
+  Cleaned out old ebuilds.
+
+* openmosix-user-0.3.4 (22 Jun 2003)
+
+  22 Jun 2003; Michael Imhof <tantive@gentoo.org>
+  Version bump.
+
+* openmosix-user-0.3.3 (13 Jun 2003)
+
+  13 Jun 2003; Michael Imhof <tantive@gentoo.org>
+  Version bump.
+
+* openmosix-user-0.3.2 (09 Jun 2003)
+
+  09 Jun 2003; Michael Imhof <tantive@gentoo.org>
+  Version bump.
+
+* openmosix-user-0.3.-r3 (07 May 2003)
+
+  07 May 2003; Michael Imhof <tantive@gentoo.org>
+  Changed the openmosixcollector init script. Should close #20481
+
+* openmosix-user-0.3.-r2 (02 May 2003)
+
+  02 May 2003; Michael Imhof <tantive@gentoo.org>
+  Official solution is to install openmosix.config into /etc/openmosix
+  and to correct the init-script.
+
+* openmosix-user-0.3.-r1 (01 May 2003)
+
+  01 May 2003; Michael Imhof <tantive@gentoo.org>
+  Add sed magic to make sure openmosix.config get's installed into /etc and not into /etc/openmosix
+  as the init script looks into /etc.
+
+* openmosix-user-0.3 (12 Apr 2003)
+
+  12 Apr 2003; Michael Imhof <tantive@gentoo.org>
+  Version bumped. Cleaned up the ebuild.
+
+* openmosix-user-0.2.4-r6 (31 Mar 2003)
+
+  31 Mar 2003; Michael Imhof <tantive@gentoo.org>
+  Version bumped to make sure autodiscovery works when used.
+  That error was introduced with -r5 and discovered in #18372.
+
+* openmosix-user-0.2.4-r5 (26 Mar 2003)
+
+  26 Mar 2003; Michael Imhof <tantive@gentoo.org>
+  Version bumped to make sure everyone gets the new init script.
+  Changed the name of the config file from /etc/mosix.map to
+  /etc/openmosix.map. The ebuild will take care of moving old
+  config files or install a new if no old one is present.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
   04 Nov 2002; Michael Imhof <tantive@gentoo.org>
   Moved to sys-cluster/openmosix-user
 

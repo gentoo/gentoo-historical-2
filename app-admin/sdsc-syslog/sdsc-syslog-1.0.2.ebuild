@@ -1,28 +1,24 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sdsc-syslog/sdsc-syslog-1.0.2.ebuild,v 1.1 2004/05/07 01:11:25 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sdsc-syslog/sdsc-syslog-1.0.2.ebuild,v 1.1.1.1 2005/11/30 09:59:44 chriswhite Exp $
 
 DESCRIPTION="SDSC Secure Syslog provides RFC3080 and RFC3081 logging services"
 HOMEPAGE="http://security.sdsc.edu/software/sdsc-syslog/"
 SRC_URI="mirror://sourceforge/sdscsyslog/sdscsyslogd-${PV}-src.tgz"
-RESTRICT="nomirror"
+
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
-S=${WORKDIR}/sdscsyslogd-${PV}
-
+KEYWORDS="ppc x86"
 # beep		= support BEEP (through RoadRunner)
-# debug		= include debug info
 # doc		= include documentation
 # static    = link with RoadRunner statically
 IUSE="beep debug doc static"
 
 RDEPEND="beep? ( >=net-libs/roadrunner-0.9.1 )
-	virtual/glibc
+	virtual/libc
 	dev-libs/libxml2
 	sys-libs/zlib
 	>=dev-libs/glib-2"
-
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.15.0
 	doc? ( >=app-doc/doxygen-1.3.2 )
@@ -31,35 +27,35 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	>=sys-devel/automake-1.5
 	>=sys-devel/autoconf-2.52"
-
 PROVIDE="virtual/logger"
 
-use debug && RESTRICT="${RESTRICT} nostrip"
+S=${WORKDIR}/sdscsyslogd-${PV}
 
 src_compile() {
 	local myconf
-	use beep && ( \
-		use static && myconf=`use_enable beep static-rr` \
-			|| myconf=`use_with beep librr` \
-	)
+	if use beep ; then
+		use static \
+			&& myconf=$(use_enable beep static-rr) \
+			|| myconf=$(use_with beep librr)
+	fi
 
 	econf \
 		${myconf} \
-		`use_enable debug debug` \
-		`use_enable debug testing` \
-		`use_with doc doxygen` \
+		$(use_with doc doxygen) \
 		|| die "configure failed"
 
 	# Build the logger itself ...
 	emake all || die "emake failed"
 
 	# ... and optionally generate HTML documentation
-	use doc && ( emake docs || "emake failed" )
+	if use doc ; then
+		emake docs || die "emake failed"
+	fi
 }
 
 src_install() {
 	# Makefiles seem to be OK
-	einstall || die
+	emake DESTDIR=${D} install || die
 
 	# Gzip potential man pages
 	prepallman
@@ -72,6 +68,7 @@ src_install() {
 	mv ${D}/usr/share/SDSCSyslogd/syslogd.conf* ${D}/etc
 	mv ${D}/usr/share/SDSCSyslogd/* ${D}/usr/share/doc/${PF}
 	rmdir ${D}/usr/share/SDSCSyslogd
+	rm ${D}/usr/share/doc/${PF}/COPYING
 
 	# ... and optionally doxygen-generated one
 	use doc && dohtml docs/html/*
@@ -79,7 +76,6 @@ src_install() {
 
 
 pkg_postinst() {
-
 	einfo "See /etc/syslogd.conf.sample for client configuration and"
 	einfo "/etc/syslogd.conf.sample-loghost for server configuration"
 }

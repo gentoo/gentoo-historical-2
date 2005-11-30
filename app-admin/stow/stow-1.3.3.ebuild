@@ -1,21 +1,20 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author: Jim Nutt <jim@nuttz.org>
-# $Header: /var/cvsroot/gentoo-x86/app-admin/stow/stow-1.3.3.ebuild,v 1.1 2002/02/01 22:52:22 agriffis Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/stow/stow-1.3.3.ebuild,v 1.1.1.1 2005/11/30 09:59:48 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="GNU Stow -- manage installation of software in /usr/local"
-SRC_URI="ftp://ftp.gnu.org/pub/gnu/stow/${P}.tar.gz"
+DESCRIPTION="manage installation of software in /usr/local"
+SRC_URI="mirror://gnu/stow/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/${PN}/"
 
-DEPEND=">=sys-devel/perl-5.005"
+SLOT="0"
+LICENSE="GPL-2"
+IUSE=""
+KEYWORDS="x86 ppc sparc amd64 ppc-macos"
+
+DEPEND="dev-lang/perl"
 
 src_compile() {
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man || die "./configure failed"
+	econf || die
 	emake || die "emake failed"
 }
 

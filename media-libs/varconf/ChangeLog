@@ -1,6 +1,33 @@
 # ChangeLog for media-libs/varconf
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/varconf/ChangeLog,v 1.1 2002/07/18 22:57:53 drobbins Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/varconf/ChangeLog,v 1.1.1.1 2005/11/30 10:04:14 chriswhite Exp $
+
+  04 Feb 2005; Sven Wegener <swegener@gentoo.org> varconf-0.5.0.ebuild,
+  varconf-0.5.4.ebuild, varconf-0.6.2.ebuild:
+  Updated HOMEPAGE, bug #80691.
+
+*varconf-0.6.2 (04 Feb 2005)
+
+  04 Feb 2005; <avatar@gentoo.org> +varconf-0.6.2.ebuild:
+  Version bumped and added to ~ppc
+
+  27 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> varconf-0.5.4.ebuild:
+  Stable on sparc
+
+  15 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> varconf-0.5.4.ebuild:
+  Keyworded ~sparc
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> varconf-0.5.0.ebuild,
+  varconf-0.5.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*varconf-0.5.4 (1 Oct 2002) 
+
+  01 Oct 2002; Bart Verwilst <verwilst@gentoo.org>:
+
+  bugfix release
 
 *varconf-0.5.0 (18 Jul 2002)
 

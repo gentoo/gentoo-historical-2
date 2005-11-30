@@ -1,2 +1,18 @@
-MD5 aed01193aca062ff66dd65f125e308c5 ccs-20040626.ebuild 432
-MD5 bc2c13d81ca75bdb7dc563a7938c60df files/digest-ccs-20040626 66
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 36285fb8bcb80d9df2f6c36b16f56ab8 ChangeLog 2304
+MD5 4aa5aa144d111a402b797db185c541ea ccs-1.00.00-r1.ebuild 802
+MD5 a64b9a1937a5cfc2fbaf373521f65d47 metadata.xml 223
+MD5 aced86939614147caab0c6dfb655d225 ccs-1.01.00.ebuild 799
+MD5 8a51744fb1f2de377f819ec48a69729f files/ccsd.conf 254
+MD5 d1e8cec0a97091432dc92d7721f79442 files/ccsd.rc 522
+MD5 4f2d164091c3df995eb6cd31f2347a68 files/digest-ccs-1.00.00-r1 68
+MD5 9d2b25c988a934245d5ef85edcf067d8 files/digest-ccs-1.01.00 68
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDR9SLgMUyd/cdjWsRAq7hAKCPxMRLd0FWAGhSPS7Qi2GJRlmQgwCfciW1
+O01Y5DGn1MZ3dkGA3SWDYTo=
+=imiI
+-----END PGP SIGNATURE-----

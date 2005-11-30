@@ -1,2 +1,4 @@
-MD5 3fe482cb0e40b9f16ac1400a59ef8a11 rbbr-0.4.0.ebuild 931
-MD5 b3b40e1b66437bf7e76e648b6cbfd981 files/digest-rbbr-0.4.0 128
+MD5 1b0ca7cc1487a736d620763a1a5232b8 ChangeLog 1739
+MD5 de25fedd264f1a4c774374fea6ce760b files/digest-rbbr-0.6.0 70
+MD5 3eec9f3fe48b51f49dbc1f171a3b026f metadata.xml 157
+MD5 d65be0fa868351276f2c98e18325fba5 rbbr-0.6.0.ebuild 978

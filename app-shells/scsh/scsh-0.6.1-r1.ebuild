@@ -1,34 +1,35 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: System Team <system@gentoo.org>
-# Author: Matthew Kennedy <mbkennedy@ieee.org>
-# $Header: /var/cvsroot/gentoo-x86/app-shells/scsh/scsh-0.6.1-r1.ebuild,v 1.1 2002/03/06 17:54:10 karltk Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-shells/scsh/scsh-0.6.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:00:24 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Scsh is a Unix shell embedded in Scheme"
-SRC_URI="ftp://ftp.scsh.net/pub/scsh/0.6/scsh-${PV}.tar.gz"
+DESCRIPTION="Unix shell embedded in Scheme"
 HOMEPAGE="http://www.scsh.net/"
+SRC_URI="ftp://ftp.scsh.net/pub/scsh/0.6/${P}.tar.gz"
 
-DEPEND="virtual/glibc"
+LICENSE="|| ( as-is BSD GPL-2 )"
+SLOT="0"
+KEYWORDS="x86 ppc sparc"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_compile() {
-	./configure --prefix=/ --host=${CHOST} \
-		--mandir=/usr/share/man \
+	econf --prefix=/ \
 		--libdir=/usr/lib \
-		--includedir=/usr/include
+		--includedir=/usr/include \
+		|| die
 	make || die
 }
 
 src_install() {
-	make prefix=${D} \
-		htmldir=${D}/usr/share/doc/${P}/html \
+	einstall \
+		prefix=${D} \
+		htmldir=${D}/usr/share/doc/${PF}/html \
 		incdir=${D}/usr/include \
-		libdir=${D}/usr/lib \
 		mandir=${D}/usr/share/man/man1 \
-		install || die
-
-	dodoc COPYING INSTALL RELEASE
-
+		libdir=${D}/usr/lib \
+		|| die
+	dodoc RELEASE
 
 	# Scsh doesn't have a very consistent documentation
 	# structure. It's possible to override the placement of the
@@ -38,11 +39,10 @@ src_install() {
 	# Thus we let scsh install the documentation and then clean up
 	# afterwards.
 
-	mv ${D}/usr/lib/scsh/doc/* ${D}/usr/share/doc/${P}
+	dosed "s:${D}::" /usr/share/man/man1/scsh.1
+
+	dodir /usr/share/doc/${PF}
+	mv ${D}/usr/lib/scsh/doc/* ${D}/usr/share/doc/${PF}
 	rmdir ${D}/usr/lib/scsh/doc
-	find ${D}/usr/share/doc/${P} \( -name \*.ps -o \
-		-name \*.txt -o \
-		-name \*.dvi -o \
-		-name \*.tex \) \
-		-print | xargs gzip
+	prepalldocs
 }

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/londonlaw/londonlaw-0.2.0.ebuild,v 1.1 2005/04/11 02:58:25 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/londonlaw/londonlaw-0.2.0.ebuild,v 1.1.1.1 2005/11/30 10:02:28 chriswhite Exp $
 
-inherit python games
+inherit eutils python games
 
 DESCRIPTION="Clone of the famous Scotland Yard board game"
 HOMEPAGE="http://www.eecs.umich.edu/~pelzlpj/londonlaw/"
@@ -10,7 +10,7 @@ SRC_URI="http://www.eecs.umich.edu/~pelzlpj/londonlaw/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
 DEPEND=">=dev-lang/python-2.3

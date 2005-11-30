@@ -289,7 +289,7 @@ diff -r -P -c -C 4 SDL-1.2.6/src/video/caca/SDL_cacaevents.c SDL-1.2.6.patched/s
 + 
 + #ifdef SAVE_RCSID
 + static char rcsid =
-+  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1 2004/04/18 21:50:31 vapier Exp $";
++  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1.1.1 2005/11/30 10:04:18 chriswhite Exp $";
 + #endif
 + 
 + #include <stdio.h>
@@ -393,7 +393,7 @@ diff -r -P -c -C 4 SDL-1.2.6/src/video/caca/SDL_cacaevents_c.h SDL-1.2.6.patched
 + 
 + #ifdef SAVE_RCSID
 + static char rcsid =
-+  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1 2004/04/18 21:50:31 vapier Exp $";
++  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1.1.1 2005/11/30 10:04:18 chriswhite Exp $";
 + #endif
 + 
 + #include "SDL_cacavideo.h"
@@ -434,7 +434,7 @@ diff -r -P -c -C 4 SDL-1.2.6/src/video/caca/SDL_cacavideo.c SDL-1.2.6.patched/sr
 + 
 + #ifdef SAVE_RCSID
 + static char rcsid =
-+  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1 2004/04/18 21:50:31 vapier Exp $";
++  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1.1.1 2005/11/30 10:04:18 chriswhite Exp $";
 + #endif
 + 
 + /* libcaca based SDL video driver implementation.
@@ -741,7 +741,7 @@ diff -r -P -c -C 4 SDL-1.2.6/src/video/caca/SDL_cacavideo.h SDL-1.2.6.patched/sr
 + 
 + #ifdef SAVE_RCSID
 + static char rcsid =
-+  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1 2004/04/18 21:50:31 vapier Exp $";
++  "@(#) $Id: 1.2.7-libcaca.patch,v 1.1.1.1 2005/11/30 10:04:18 chriswhite Exp $";
 + #endif
 + 
 + #ifndef _SDL_cacavideo_h

@@ -1,6 +1,27 @@
-# ChangeLog for net-news/tin
+# ChangeLog for net-nntp/tin
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/tin/ChangeLog,v 1.1 2005/01/17 20:20:32 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/tin/ChangeLog,v 1.1.1.1 2005/11/30 10:02:45 chriswhite Exp $
+
+*tin-1.7.8 (16 May 2005)
+
+  16 May 2005; Sven Wegener <swegener@gentoo.org> -tin-1.6.0.ebuild,
+  tin-1.6.2.ebuild, tin-1.7.7-r1.ebuild, +tin-1.7.8.ebuild:
+  Version bump. Switched from .tar.gz to .tar.bz2. Use functions from
+  versionator.eclass for SRC_URI generation.
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> tin-1.6.2.ebuild:
+  stable on ia64
+
+*tin-1.7.7-r1 (20 Feb 2005)
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/tin-1.7.7-mbox-mmdf.patch, +tin-1.7.7-r1.ebuild, -tin-1.7.7.ebuild:
+  Don't install mbox.5 or mmdf.5 to avoid conflict with mutt #82647
+
+*tin-1.7.7 (17 Feb 2005)
+
+  17 Feb 2005; Sven Wegener <swegener@gentoo.org> +tin-1.7.7.ebuild:
+  Version bump.
 
 *tin-1.6.0 (17 Jan 2005)
 

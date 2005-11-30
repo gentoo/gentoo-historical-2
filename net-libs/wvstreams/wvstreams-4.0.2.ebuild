@@ -1,35 +1,34 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/wvstreams/wvstreams-4.0.2.ebuild,v 1.1 2005/03/29 09:20:10 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/wvstreams/wvstreams-4.0.2.ebuild,v 1.1.1.1 2005/11/30 10:02:50 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="A network programming library in C++"
 HOMEPAGE="http://open.nit.ca/wiki/?page=WvStreams"
-SRC_URI="http://people.nit.ca/~sfllaw/${P}.tar.gz"
+SRC_URI="http://www.csclub.uwaterloo.ca/~ja2morri/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
-IUSE="gtk qt oggvorbis speex fam qdbm pam slp doc fftw tcltk debug"
+KEYWORDS="alpha ~amd64 hppa ppc sparc x86"
+IUSE="gtk qt vorbis speex fam qdbm pam slp doc fftw tcltk debug"
 
 RDEPEND="virtual/libc
+	>=sys-libs/db-3
+	>=sys-libs/zlib-1.1.4
+	>=dev-libs/openssl-0.9.7
 	dev-libs/xplc
 	gtk? ( >=x11-libs/gtk+-2.2.0 )
 	qt? ( =x11-libs/qt-3* )
-	oggvorbis? ( >=media-libs/libogg-1.0
-		>=media-libs/libvorbis-1.0 )
+	vorbis? ( >=media-libs/libvorbis-1.0 )
 	speex? ( media-libs/speex !=media-libs/speex-1.1.4 )
 	fam? ( virtual/fam )
-	>=sys-libs/db-3
 	qdbm? ( dev-db/qdbm )
 	pam? ( >=sys-libs/pam-0.75 )
 	slp? ( >=net-libs/openslp-1.0.9a )
-	>=sys-libs/zlib-1.1.4
-	dev-libs/openssl
 	doc? ( app-doc/doxygen )
 	fftw? ( sci-libs/fftw )
-	tcltk? ( >=dev-lang/tcl-8.4* dev-lang/swig )"
+	tcltk? ( >=dev-lang/tcl-8.4 dev-lang/swig )"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
@@ -39,6 +38,8 @@ src_unpack() {
 	unpack ${A} ; cd ${S}
 
 	epatch ${FILESDIR}/${P}-linux-serial.patch
+	epatch ${FILESDIR}/${P}-wireless-user.patch
+	epatch ${FILESDIR}/${P}-speex-const.patch
 
 	if useq tcltk; then
 		epatch ${FILESDIR}/${P}-tcl_8_4.patch
@@ -58,8 +59,8 @@ src_compile() {
 	fi
 	econf ${myconf} \
 		`use_with gtk` \
-		`use_with oggvorbis ogg` \
-		`use_with oggvorbis vorbis` \
+		`use_with vorbis ogg` \
+		`use_with vorbis` \
 		`use_with speex` \
 		`use_with fam` \
 		`use_with qdbm` \
@@ -70,8 +71,8 @@ src_compile() {
 		`use_enable debug` \
 		--enable-verbose \
 		--with-bdb \
-		--with-openssl \
 		--with-zlib \
+		--with-openssl \
 		--with-xplc \
 		|| die "configure failed"
 	emake CXXOPTS="-fPIC -DPIC" COPTS="-fPIC -DPIC" || die "compile failed"

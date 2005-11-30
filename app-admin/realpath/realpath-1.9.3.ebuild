@@ -1,15 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/realpath/realpath-1.9.3.ebuild,v 1.1 2003/06/10 20:41:38 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/realpath/realpath-1.9.3.ebuild,v 1.1.1.1 2005/11/30 10:00:16 chriswhite Exp $
 
 DESCRIPTION="Return the canonicalized absolute pathname"
 HOMEPAGE="http://packages.debian.org/unstable/utils/realpath.html"
-SRC_URI="http://ftp.debian.org/debian/pool/main/d/dwww/dwww_${PV}.tar.gz"
+SRC_URI="mirror://debian/pool/main/d/dwww/dwww_${PV}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~sparc ~mips amd64"
 IUSE=""
-DEPEND=""
 
 S=${WORKDIR}/dwww-${PV}
 
@@ -18,7 +18,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin realpath
+	dobin realpath || die
 	doman man/realpath.1
-	dodoc COPYING README TODO
+	dodoc README TODO
 }

@@ -1,26 +1,52 @@
 #!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/syslog-ng/files/syslog-ng.rc6,v 1.1.1.1 2005/11/30 09:59:47 chriswhite Exp $
 
-need() {
-    need clock
+opts="depend checkconfig start stop reload"
+
+depend() {
+	# Make networking dependency conditional on configuration
+	case $(sed 's/#.*//' /etc/syslog-ng/syslog-ng.conf) in
+		*source*tcp*|*source*udp*|*destination*tcp*|*destination*udp*)
+			need net ;;
+	esac
+
+	need clock hostname
+	provide logger
 }
 
 checkconfig() {
-    if [ ! -e /etc/syslog-ng/syslog-ng.conf ] ; then
-	eerror "You need a /etc/syslog-ng/syslog-ng.conf first"
-	eerror "There is a sample in /usr/share/docs/syslog-ng"
-	return 1
-    fi
+	if [ ! -e /etc/syslog-ng/syslog-ng.conf ] ; then
+		eerror "You need to create /etc/syslog-ng/syslog-ng.conf first."
+		eerror "An example can be found in /etc/syslog-ng/syslog-ng.conf.sample"
+		return 1
+	fi
+	syslog-ng -s /etc/syslog-ng/syslog-ng.conf
+	eend $? "Configuration error. Please fix your configfile (/etc/syslog-ng/syslog-ng.conf)"
 }
 
 start() {
-    checkconfig || return 1
-    ebegin "Starting syslog-ng"
-    start-stop-daemon --start --quiet --exec /usr/sbin/syslog-ng
-    eend $?
+	checkconfig || return 1
+	ebegin "Starting syslog-ng"
+	start-stop-daemon --start --quiet --exec /usr/sbin/syslog-ng
+	eend $? "Failed to start syslog-ng"
 }
 
 stop() {
-    ebegin "Stopping syslog-ng"
-    start-stop-daemon --stop --quiet --pidfile /var/run/syslog-ng.pid
-    eend $?
+	ebegin "Stopping syslog-ng"
+	start-stop-daemon --stop --quiet --pidfile /var/run/syslog-ng.pid
+	eend $? "Failed to stop syslog-ng"
+	sleep 1 # needed for syslog-ng to stop in case we're restarting
+}
+
+reload() {
+	if [ ! -f /var/run/syslog-ng.pid ]; then
+		eerror "syslog-ng isn't running"
+		return 1
+	fi
+	checkconfig || return 1
+	ebegin "Reloading configuration and re-opening log files"
+	kill -HUP `cat /var/run/syslog-ng.pid` &>/dev/null
+	eend $?
 }

@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/profiler/profiler-1.ebuild,v 1.1 2003/07/10 04:25:39 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/profiler/profiler-1.ebuild,v 1.1.1.1 2005/11/30 10:00:04 chriswhite Exp $
+
+inherit java-pkg
 
 DESCRIPTION="provides 3D visual representation of file system statistics"
 HOMEPAGE="http://visualversion.com/profiler/"
@@ -8,7 +10,8 @@ SRC_URI="http://visualversion.com/profiler/profiler.jar"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+IUSE=""
+KEYWORDS="x86 ppc"
 
 RDEPEND="virtual/jre"
 
@@ -20,5 +23,5 @@ src_unpack() {
 
 src_install() {
 	dobin ${FILESDIR}/profiler
-	dojar ${A}
+	java-pkg_dojar ${A}
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival/festival-1.4.3-r3.ebuild,v 1.1 2005/02/10 07:15:05 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival/festival-1.4.3-r3.ebuild,v 1.1.1.1 2005/11/30 10:04:38 chriswhite Exp $
 
 inherit eutils
 
@@ -23,7 +23,7 @@ SRC_URI="${SITE}/${P}-release.tar.gz
 
 LICENSE="FESTIVAL BSD as-is"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="asterisk doc"
 
 RDEPEND=">=app-accessibility/speech-tools-1.2.3-r2"
@@ -85,9 +85,9 @@ src_install() {
 	cd ${WORKDIR}/festival/lib/etc/*Linux*
 	dobin audsp
 
-	einfo ""
+	einfo
 	einfo "Please ignore errors about skipped directories. They are harmless."
-	einfo ""
+	einfo
 
 	# Install the main libraries
 	insinto /usr/share/festival
@@ -187,7 +187,8 @@ src_install() {
 	fi
 
 	# We used to put stuff here, so be safe for now...
-	dosym /usr/share/festival /usr/lib/festival
+	dodir /usr/lib
+	dosym ../share/festival /usr/lib/festival
 }
 
 pkg_postinst() {

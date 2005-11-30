@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdc1394/libdc1394-2.0.0_pre5.ebuild,v 1.1 2005/10/19 18:38:02 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdc1394/libdc1394-2.0.0_pre5.ebuild,v 1.1.1.1 2005/11/30 10:04:16 chriswhite Exp $
 
 inherit eutils
 

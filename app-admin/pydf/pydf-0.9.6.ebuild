@@ -1,36 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-admin/pydf/pydf-0.9.6.ebuild,v 1.1 2003/05/04 01:32:19 avenj Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/pydf/pydf-0.9.6.ebuild,v 1.1.1.1 2005/11/30 09:59:56 chriswhite Exp $
 
-S="${WORKDIR}/${P}"
-
-DESCRIPTION="Enhanced df with colors."
-
-SRC_URI="http://melkor.dnp.fmph.uniba.sk/~garabik/pydf/pydf_${PV}.tar.gz"
+DESCRIPTION="Enhanced df with colors"
 HOMEPAGE="http://melkor.dnp.fmph.uniba.sk/~garabik/pydf"
+SRC_URI="http://melkor.dnp.fmph.uniba.sk/~garabik/pydf/pydf_${PV}.tar.gz"
+
 LICENSE="as-is"
-DEPEND="dev-lang/python"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
+RDEPEND="dev-lang/python"
 
-src_compile() {
-	echo "Nothing to compile for ${P}."
-}
+src_compile() { return 0; }
 
-src_install () {
-
-	dobin pydf
-
-	dodoc COPYING INSTALL README
-
+src_install() {
+	dobin pydf || die
+	dodoc INSTALL README
 	doman pydf.1
-
 	insinto /etc
 	doins pydfrc
 }
 
 pkg_postinst() {
-	ewarn "Please edit /etc/pydfrc to suit your needs."
+	ewarn "Please edit /etc/pydfrc to suit your needs"
 }

@@ -1,6 +1,72 @@
 # ChangeLog for media-libs/sdl-ttf
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-ttf/ChangeLog,v 1.1 2002/02/01 21:53:31 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-ttf/ChangeLog,v 1.1.1.1 2005/11/30 10:03:40 chriswhite Exp $
+
+  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> sdl-ttf-2.0.7.ebuild:
+  Mark 2.0.7 stable on ia64
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> sdl-ttf-2.0.7.ebuild:
+  add ~ia64
+
+  27 May 2005; Joseph Jezak <josejx@gentoo.org> sdl-ttf-2.0.7.ebuild:
+  Marked ppc stable.
+
+  08 Apr 2005; Markus Rothe <corsair@gentoo.org> sdl-ttf-2.0.7.ebuild:
+  Stable on ppc64
+
+  07 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> sdl-ttf-2.0.7.ebuild:
+  Stable on alpha.
+
+  31 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> sdl-ttf-2.0.7.ebuild:
+  Stable on sparc
+
+  30 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> sdl-ttf-2.0.7.ebuild:
+  stable for x86
+
+*sdl-ttf-2.0.7 (16 Dec 2004)
+
+  16 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +sdl-ttf-2.0.7.ebuild:
+  version bump
+
+  10 Aug 2004; Tom Gall <tgall@gentoo.org> sdl-ttf-2.0.6.ebuild:
+  stable on ppc64, bug #57993
+
+  30 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> +files/ft2build.patch,
+  sdl-ttf-2.0.6.ebuild:
+  Add patch from Ming Zhao via bug #55746 to support latest freetype
+
+  29 Nov 2003; Brad House <brad_mssw@gentoo.org> sdl-ttf-2.0.6.ebuild:
+  mark stable on amd64
+
+  02 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> sdl-ttf-2.0.6.ebuild:
+  tidy
+
+  02 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> sdl-ttf-2.0.6.ebuild:
+  more error message and checking
+
+*sdl-ttf-2.0.6 (11 Jun 2003)
+
+  11 Jun 2003; Graham Forest <vladimir@gentoo.org> Manifest,
+  sdl-ttf-2.0.6.ebuild:
+  Version bump
+
+  31 Jan 2003; Mark GUertin <gerk@gentoo.org> sdl-ttf-2.0.5.ebuild :
+  Set to ppc stable
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sdl-ttf-2.0.5 (17 Apr 2002)
+
+  10 Mar 2003; Aron Griffis <agriffis@gentoo.org> sdl-ttf-2.0.5.ebuild:
+  Mark stable on alpha
+
+  15 Jan 2003; Jon Nall <nall@gentoo.org> sdl-ttf-2.0.5.ebuild :
+  keyworded ~ppc
+
+  17 Apr 2002; Seemant Kulleen <seemant@gentoo.org> sdl-ttf-2.0.5.ebuild
+  files/digest-sdl-ttf-2.0.5 :
+
+  Version bump
 
 *sdl-ttf-2.0.4 (1 Feb 2002)
 

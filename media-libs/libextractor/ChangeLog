@@ -1,6 +1,92 @@
-# ChangeLog for dev-libs/libextractor
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libextractor/ChangeLog,v 1.1 2004/04/28 18:46:52 squinky86 Exp $
+# ChangeLog for media-libs/libextractor
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libextractor/ChangeLog,v 1.1.1.1 2005/11/30 10:03:43 chriswhite Exp $
+
+  03 Nov 2005; Mark Loeser <halcy0n@gentoo.org> libextractor-0.5.6a.ebuild:
+  Stable on x86; bug #109760
+
+  02 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libextractor-0.5.6a.ebuild:
+  Stable on sparc wrt #109760
+
+*libextractor-0.5.6a (29 Oct 2005)
+
+  29 Oct 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +libextractor-0.5.6a.ebuild:
+  Version bump, bug #109760
+
+*libextractor-0.5.4 (06 Sep 2005)
+
+  06 Sep 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +libextractor-0.5.4.ebuild:
+  Version bump, thanks Glenn L. McGrath <bug1@iinet.net.au> in bug #104103.
+  Updated homepage and SRC_URI. Switched to vorbis USE flag. Added new use
+  flags
+
+  31 May 2005; Olivier Crête <tester@gentoo.org> libextractor-0.5.0.ebuild:
+  Disabled tests because they break, and marked stable on x86 per security bug
+  #79704
+
+  30 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  files/libextractor-0.5.0-autotools.patch:
+  Fixed linking problems, bug #79704
+
+  30 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  libextractor-0.5.0.ebuild:
+  Stable on amd64
+
+*libextractor-0.5.0 (29 May 2005)
+
+  29 May 2005; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/libextractor-0.5.0-autotools.patch, +libextractor-0.5.0.ebuild:
+  Version bump, security bug #79704
+
+*libextractor-0.4.2 (27 Feb 2005)
+
+  27 Feb 2005; Jon Hood <squinky86@gentoo.org> +libextractor-0.4.2.ebuild:
+  Security fix, #79704; version bump, #79543.
+
+  03 Oct 2004; Jason Wever <weeve@gentoo.org> libextractor-0.3.5.ebuild:
+  Stable on sparc.
+
+*libextractor-0.3.7 (01 Oct 2004)
+
+  01 Oct 2004; Jon Hood <squinky86@gentoo.org> libextractor-0.3.5.ebuild,
+  +libextractor-0.3.7.ebuild:
+  Mark 0.3.5 stable on x86, version bump ~testing branch.
+
+*libextractor-0.3.5 (30 Aug 2004)
+
+  30 Aug 2004; Jon Hood <squinky86@gentoo.org> +libextractor-0.3.5.ebuild:
+  Version bump.
+
+  18 Aug 2004; Jon Hood <squinky86@gentoo.org> -libextractor-0.3.1.ebuild,
+  -libextractor-0.3.2.ebuild, libextractor-0.3.3.ebuild:
+  Stable on x86, remove old versions.
+
+*libextractor-0.3.3 (19 Jul 2004)
+
+  19 Jul 2004; Jon Hood <squinky86@gentoo.org> libextractor-0.3.2.ebuild,
+  +libextractor-0.3.3.ebuild:
+  version bump for testing and stable x86
+
+*libextractor-0.3.2 (15 Jun 2004)
+
+  15 Jun 2004; Jon Hood <squinky86@gentoo.org> -libextractor-0.2.6.ebuild,
+  -libextractor-0.3.0.ebuild, libextractor-0.3.1.ebuild,
+  +libextractor-0.3.2.ebuild:
+  stable and unstable version bumps, ebuild cleanups
+
+  02 May 2004; David Holm <dholm@gentoo.org> libextractor-0.3.1.ebuild:
+  Added to ~ppc.
+
+*libextractor-0.3.1 (01 May 2004)
+
+  01 May 2004; Jon Hood <squinky86@gentoo.org> +libextractor-0.3.1.ebuild:
+  version bump, closes #49458
+
+  30 Apr 2004; Jon Hood <squinky86@gentoo.org> libextractor-0.2.6.ebuild:
+  stable on x86
 
 *libextractor-0.3.0 (28 Apr 2004)
 

@@ -1,25 +1,26 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nedit/nedit-5.4.ebuild,v 1.1 2004/03/09 14:25:42 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/nedit/nedit-5.4.ebuild,v 1.1.1.1 2005/11/30 10:02:00 chriswhite Exp $
+
+inherit toolchain-funcs
 
 DESCRIPTION="multi-purpose text editor for the X Window System"
 HOMEPAGE="http://nedit.org/"
 SRC_URI="mirror://sourceforge/nedit/${P}-source.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~mips"
+SLOT="0"
+KEYWORDS="x86 ppc sparc ~mips amd64 alpha"
 IUSE="spell"
 
 RDEPEND="spell? ( virtual/aspell-dict )
-	x11-base/xfree"
-
+	virtual/x11"
 DEPEND="${RDEPEND}
 	dev-util/yacc
 	x11-libs/openmotif"
 
 src_compile() {
-	make CC=${CC} linux || die
+	make CC=$(tc-getCC) linux || die
 }
 
 src_install() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-1.0.10.ebuild,v 1.1 2005/11/16 19:59:17 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-1.0.10.ebuild,v 1.1.1.1 2005/11/30 10:03:58 chriswhite Exp $
 
 inherit eutils autotools
 
@@ -15,7 +15,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
 # -sparc: http://bugtrack.alsa-project.org/alsa-bug/view.php?id=1268
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ppc64 -sparc ~x86"
 IUSE="doc jack"
 
 RDEPEND="virtual/alsa
@@ -30,6 +30,7 @@ src_unpack() {
 	cd ${S}
 	epatch "${FILESDIR}/${PN}-1.0.10_rc3-hardened.patch"
 	epatch "${FILESDIR}/${PN}-1.0.10_rc3-test.patch"
+	epatch "${FILESDIR}/${P}-test-ppc.patch"
 
 	eautoreconf
 }

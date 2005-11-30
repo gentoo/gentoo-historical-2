@@ -1,6 +1,146 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gtkpod/ChangeLog,v 1.1 2003/05/19 05:24:07 jrray Exp $
+# ChangeLog for app-pda/gtkpod
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gtkpod/ChangeLog,v 1.1.1.1 2005/11/30 10:02:25 chriswhite Exp $
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> gtkpod-0.94.0.ebuild:
+  Stable on ppc.
+
+  24 Aug 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.93.1.ebuild,
+  gtkpod-0.94.0.ebuild:
+  Stable on amd64 and x86
+
+*gtkpod-0.94.0 (19 Jul 2005)
+
+  19 Jul 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.94.0.ebuild:
+  Version bump
+
+*gtkpod-0.93.1 (25 Jun 2005)
+
+  25 Jun 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.93.ebuild,
+  +gtkpod-0.93.1.ebuild:
+  Version bump
+
+*gtkpod-0.93 (24 Jun 2005)
+
+  24 Jun 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.93.ebuild:
+  Version bump
+
+  09 May 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.85.0.ebuild,
+  gtkpod-0.88.2.ebuild:
+  Stable on amd64, cleanup old version
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gtkpod-0.88.2.ebuild:
+  Stable on ppc.
+
+  23 Apr 2005; Olivier Crête <tester@gentoo.org> -gtkpod-0.80.2.ebuild,
+  -gtkpod-0.88.1.ebuild, gtkpod-0.88.2.ebuild:
+  Stable on x86
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gtkpod-0.85.0.ebuild:
+  stable on amd64
+
+  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gtkpod-0.85.0.ebuild:
+  Stable on ppc.
+
+*gtkpod-0.88.2 (01 Apr 2005)
+
+  01 Apr 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.88.2.ebuild:
+  Version bump
+
+*gtkpod-0.88.1 (17 Mar 2005)
+
+  17 Mar 2005; Olivier Crête <tester@gentoo.org> +gtkpod-0.88.1.ebuild,
+  -gtkpod-0.88.ebuild:
+  Version bump
+
+*gtkpod-0.88 (10 Mar 2005)
+
+  10 Mar 2005; Olivier Crête <tester@gentoo.org>
+  -files/gtkpod-0.72-c89_fix.patch, -files/gtkpod-0.72-faad2.patch,
+  -gtkpod-0.72.ebuild, -gtkpod-0.87.3.ebuild, +gtkpod-0.88.ebuild:
+  Version bump, clean 0.72 and 0.87.3
+
+*gtkpod-0.87.3 (04 Mar 2005)
+
+  04 Mar 2005; Olivier Crete <tester@gentoo.org> +gtkpod-0.87.3.ebuild:
+  Version bump
+
+  20 Dec 2004; Olivier Crete <tester@gentoo.org> gtkpod-0.85.0.ebuild:
+  Stable on x86
+
+  14 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> gtkpod-0.72.ebuild,
+  gtkpod-0.80.2.ebuild, gtkpod-0.85.0.ebuild:
+  Changed USE flag to aac.
+
+*gtkpod-0.85.0 (20 Nov 2004)
+
+  20 Nov 2004; Olivier Crete <tester@gentoo.org> +gtkpod-0.85.0.ebuild:
+  Version bump
+
+  31 Oct 2004; Lars Weiler <pylon@gentoo.org> gtkpod-0.80.2.ebuild:
+  Stable on ppc.
+
+  23 Aug 2004; Jason Wever <weeve@gentoo.org> gtkpod-0.80.2.ebuild:
+  Added ~sparc keyword.
+
+  20 Aug 2004; <tester@gentoo.org> gtkpod-0.80.2.ebuild:
+  Marking stable on x86
+
+  06 Aug 2004; <tester@gentoo.org> gtkpod-0.80.2.ebuild, -gtkpod-0.70.ebuild:
+  Added patch so it compiles with gtk 2.0 and cleanup up 0.70
+
+*gtkpod-0.80.2 (18 Jul 2004)
+
+  18 Jul 2004; <tester@gentoo.org> +gtkpod-0.80.2.ebuild:
+  Version bump
+
+  06 Jul 2004; <tester@gentoo.org> :
+  Added upstream patch for <gtk-2.4 support
+
+*gtkpod-0.80 (04 Jul 2004)
+
+  04 Jul 2004; <tester@gentoo.org> +gtkpod-0.80.ebuild:
+  Version bump
+
+  02 Jun 2004; <SeJo@gentoo.org> gtkpod-0.72.ebuild:
+  added ~ppc keyword
+
+  29 May 2004; Danny van Dyk <kugelfang@gentoo.org> gtkpod-0.72.ebuild:
+  Marked ~amd64.
+
+  27 Feb 2004; <tester@gentoo.org> gtkpod-0.72.ebuild,
+  files/gtkpod-0.72-faad2.patch:
+  Add patch to allow gtkpod's m4a support to work with the libmp4v2 from faad2
+  too. The dependency is now mpeg4ip or faad2.
+
+  05 Feb 2004; <tester@gentoo.org> gtkpod-0.72.ebuild,
+  files/gtkpod-0.72-c89_fix.patch:
+  Added patch to make gtkpod compilable with gcc 2.95 from bug #39177
+
+*gtkpod-0.72 (21 Jan 2004)
+
+  21 Jan 2004; <tester@gentoo.org> gtkpod-0.72.ebuild:
+  Version bump, dep switch from id3lib to libid3tag
+
+*gtkpod-0.70 (14 Dec 2003)
+
+  14 Dec 2003; <tester@gentoo.org> gtkpod-0.70.ebuild:
+  Bumped and added mpeg4 use flag for mpeg4ip to be able to load mpeg aac files.
+  Thanks to martin dederer <st.ing.ray@gmx.de> for reporting this new version.
+
+*gtkpod-0.60 (08 Oct 2003)
+
+  08 Oct 2003; Olivier Crete <tester@gentoo.org> gtkpod-0.60.ebuild:
+  New version bump
+
+*gtkpod-0.52 (27 Jul 2003)
+
+  27 Jul 2003; Olivier Crete <tester@gentoo.org> gtkpod-0.52.ebuild:
+  Version bump
+
+  27 May 2003; <jrray@gentoo.org> gtkpod-0.51.ebuild:
+  Depend on a newer version of pango to avoid linker errors with old version.
+  Also, install the README file.
 
 *gtkpod-0.51 (18 May 2003)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/integrit/integrit-3.05.ebuild,v 1.1 2005/10/03 03:29:30 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/integrit/integrit-3.05.ebuild,v 1.1.1.1 2005/11/30 09:59:44 chriswhite Exp $
 
 DESCRIPTION="file integrity verification program"
 HOMEPAGE="http://integrit.sourceforge.net/"

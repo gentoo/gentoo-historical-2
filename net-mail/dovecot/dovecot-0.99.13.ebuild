@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/dovecot-0.99.13.ebuild,v 1.1 2005/01/08 19:46:05 g2boojum Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/dovecot-0.99.13.ebuild,v 1.1.1.1 2005/11/30 10:03:22 chriswhite Exp $
 
 IUSE="debug ipv6 ldap mbox pam postgres sasl ssl gnutls vpopmail nopop3d mysql"
 inherit eutils
@@ -11,7 +11,7 @@ SRC_URI="http://dovecot.org/releases/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~amd64 ~sparc ~ppc"
+KEYWORDS="x86 ~amd64 ~sparc ~ppc"
 
 #PROVIDE="virtual/imapd"
 
@@ -35,7 +35,7 @@ RDEPEND="${DEPEND}
 pkg_setup() {
 	# Add user and group for login process (same as for fedora/redhat)
 	enewgroup dovecot 97
-	enewuser dovecot 97 /bin/false /dev/null dovecot
+	enewuser dovecot 97 -1 /dev/null dovecot
 }
 
 src_compile() {
@@ -113,7 +113,7 @@ src_install () {
 	# per default dovecot wants it ssl cert called dovecot.pem
 	# fix this in mkcert.sh, which we use to generate the ssl certs
 	cd ${S}/doc
-	sed -ie 's/imapd.pem/dovecot.pem/g' mkcert.sh
+	sed -i -e 's/imapd.pem/dovecot.pem/g' mkcert.sh
 	dodoc mkcert.sh
 
 	# rc script

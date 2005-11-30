@@ -1,30 +1,27 @@
-MD5 1388f8c8e8516b9fa9888072abb566d8 xine-lib-0.9.13-r3.ebuild 3704
-MD5 55fe7dc6b1fe7fb9a2c108bc9a662341 xine-lib-1_beta9.ebuild 3480
-MD5 9d82ce9114c5e771ec3b52afcf78d5cc xine-lib-1_beta11.ebuild 3480
-MD5 218c18f42011f0fcac9f16da0a604bbb xine-lib-0.9.13.ebuild 3031
-MD5 d95ccacba6d8b7dc21015fa12027648a xine-lib-0.9.13-r2.ebuild 3687
-MD5 b8f5890f8d2570139de0617b699f4140 xine-lib-1_beta6.ebuild 3480
-MD5 661b4227d0f1261785038f0f275ef57f xine-lib-0.9.10-r1.ebuild 2627
-MD5 04c05d2a7d3a566d480b19235864a391 xine-lib-1_beta8.ebuild 3480
-MD5 1daf8b387966892b2f47ff7f63b8f00a xine-lib-0.9.12-r2.ebuild 3191
-MD5 9d82ce9114c5e771ec3b52afcf78d5cc xine-lib-1_beta10.ebuild 3480
-MD5 61dc38b2a4565b7953551380ffe49b30 xine-lib-0.9.13-r1.ebuild 3389
-MD5 fbd7ae97d4be724dc01819b25e666739 ChangeLog 10402
-MD5 043c241269aaf0acd4dfd9a52ccac47c files/digest-xine-lib-1_beta6 69
-MD5 790f330d136eac4ab025b9f013e9cb07 files/digest-xine-lib-1_beta8 69
-MD5 06ed3dc39a0e981aa6b99cc007b74ccc files/digest-xine-lib-1_beta9 69
-MD5 aa54582a91933533008c1211dcbcfb35 files/xine-lib-disable-directfb.patch 4169
-MD5 af33e921f7041fafac652c324d3984c1 files/digest-xine-lib-1_beta10 70
-MD5 5903fa4c80658b8265910c8745913dae files/digest-xine-lib-1_beta11 70
-MD5 dcb0c79c0bb106397aad42f6d936627d files/xineconfig.patch-0.9.12 601
-MD5 dcb0c79c0bb106397aad42f6d936627d files/xineconfig.patch-0.9.13 601
-MD5 279ee4d06acc78adef09fe7ae4a64980 files/xine-lib-0.9.13-kxine.patch 9041
-MD5 f1570a69c99207f65b5cdf1d154bbcd4 files/digest-xine-lib-0.9.13 68
-MD5 0cf698a9ff87a3595140d92df7b900b6 files/xine-lib-configure.patch 342
-MD5 beea8b4dacbd153e4c6b06e57ee711d2 files/xine-lib-0.9.12-r2-directfb.patch 746
-MD5 8d33811119961dce3cfa64ea8a1f79bd files/digest-xine-lib-0.9.10-r1 68
-MD5 90fa77efe86690eeac2c578ede10732e files/digest-xine-lib-0.9.12-r2 68
-MD5 f1570a69c99207f65b5cdf1d154bbcd4 files/digest-xine-lib-0.9.13-r1 68
-MD5 f1570a69c99207f65b5cdf1d154bbcd4 files/digest-xine-lib-0.9.13-r2 68
-MD5 f1570a69c99207f65b5cdf1d154bbcd4 files/digest-xine-lib-0.9.13-r3 68
-MD5 6e79367c32da81354d36e68fd1a24ae2 files/xineconfig.patch 699
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 583db25a87caad160e6bea40eff0c2e2 ChangeLog 18793
+MD5 9678227c043f04d5e8561cb6ba80d3e6 files/digest-xine-lib-1.0.1-r4 137
+MD5 33da8deb9637be23cd464aba9c5c4ac4 files/digest-xine-lib-1.1.0 137
+MD5 3d6e1d0e96ea02e463d045cd83e2e32f files/digest-xine-lib-1.1.0-r5 138
+MD5 9ca4799efa33fefe9faaad047fb3dcbb files/digest-xine-lib-1.1.0-r7 138
+MD5 c67420852e94a93aef8edd92271497e0 files/digest-xine-lib-1.1.1 137
+MD5 648f776c694beba27e3a1115194afb54 files/digest-xine-lib-1.1.1-r1 137
+MD5 51e97df2f6ae538ab33a802eafb10457 files/digest-xine-lib-1_rc8-r2 138
+MD5 cd292167e0ca6e7910e1cf32091e3a27 files/xine-lib-formatstring.patch 315
+MD5 40462be9f1caff6326630fc3b93e7105 metadata.xml 330
+MD5 e8e9ff87a88138924d026c3e5c9dd27a xine-lib-1.0.1-r4.ebuild 7482
+MD5 5aa3700abdfbc432b89a5ac75ae9bc03 xine-lib-1.1.0-r5.ebuild 6820
+MD5 36cffcbea10e76a1963c6da1ddd77fb8 xine-lib-1.1.0-r7.ebuild 6827
+MD5 3e7009cff141eff5526219bfc185ece9 xine-lib-1.1.0.ebuild 7254
+MD5 3f81408542d26546cbae742a59a9ea0a xine-lib-1.1.1-r1.ebuild 7305
+MD5 763b50b7933568c96be6a5b639e2bf69 xine-lib-1.1.1.ebuild 6706
+MD5 8e8e38d54e416b12108a0597f4d0801f xine-lib-1_rc8-r2.ebuild 5288
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDgvRsAiZjviIA2XgRAiUWAKCUwUBLt3+pBckQFxQEXlq4EpWuEgCcCyt8
+L4+AmnDiGsgydlIUhUb+y8M=
+=Wljq
+-----END PGP SIGNATURE-----

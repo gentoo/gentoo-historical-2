@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/openexr-1.0.7.ebuild,v 1.1 2004/03/02 19:19:05 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/openexr-1.0.7.ebuild,v 1.1.1.1 2005/11/30 10:04:27 chriswhite Exp $
+
+inherit eutils
 
 MY_P=OpenEXR-${PV}
 S=${WORKDIR}/${MY_P}
@@ -11,7 +13,8 @@ HOMEPAGE="http://www.openexr.com"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
+IUSE=""
 
 DEPEND="x11-libs/fltk"
 
@@ -23,17 +26,20 @@ src_unpack() {
 }
 
 src_compile() {
-	./configure --disable-fltktest \
+	econf \
+		--disable-fltktest \
 		--enable-imfexamples \
-		--prefix=/usr \
-		--sysconfdir=/etc || die "configure failed"
+		|| die "configure failed"
 
-	emake || die "make failed"
+	emake \
+	CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" \
+	AM_CFLAGS="${CFLAGS}" AM_CXXFLAGS="${CXXFLAGS}" \
+	|| die "make failed"
 }
 
 src_install () {
 	einstall || die "install failed"
 
-	dodoc AUTHORS README INSTALL ChangeLog LICENSE NEWS
+	dodoc AUTHORS README ChangeLog LICENSE NEWS
 	dohtml -r ${S}/doc/*
 }

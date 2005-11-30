@@ -1,6 +1,114 @@
-# ChangeLog for media-lib/libdvdnav
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/ChangeLog,v 1.1 2002/05/01 03:07:14 agenkin Exp $
+# ChangeLog for media-libs/libdvdnav
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/ChangeLog,v 1.1.1.1 2005/11/30 10:04:02 chriswhite Exp $
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> libdvdnav-0.1.10.ebuild:
+  Stable on ppc64; bug #111133
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
+  libdvdnav-0.1.10.ebuild:
+  Stable on hppa, ppc.
+
+  09 Nov 2005; Luis Medinas <metalgod@gentoo.org> libdvdnav-0.1.10.ebuild:
+  Marked Stable on amd64. Bug #111133.
+
+  05 Nov 2005; Mark Loeser <halcy0n@gentoo.org> libdvdnav-0.1.10.ebuild:
+  Stable on x86; bug #111133
+
+  04 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libdvdnav-0.1.10.ebuild:
+  Stable on sparc wrt #111133
+
+  01 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
+  -libdvdnav-0.1.3.ebuild:
+  Remove old ebuilds.
+
+  10 Sep 2005; Kito <kito@gentoo.org> libdvdnav-0.1.10.ebuild:
+  ~ppc-macos keyword
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> libdvdnav-0.1.3.ebuild,
+  libdvdnav-0.1.9.ebuild, libdvdnav-0.1.10.ebuild:
+  Don't install INSTALL and COPYING files.
+
+*libdvdnav-0.1.10 (16 Jan 2005)
+
+  16 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +libdvdnav-0.1.10.ebuild:
+  new upstream version. fixes bug #55177.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Dec 2004; Markus Rothe <corsair@gentoo.org> libdvdnav-0.1.9.ebuild:
+  I should have marked this ppc64 before
+
+  27 Dec 2004; Markus Rothe <corsair@gentoo.org> libdvdnav-0.1.9.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #75746
+
+  13 Nov 2004; Kito <kito@gentoo.org> libdvdnav-0.1.9.ebuild:
+  added ~ppc-macos keyword as well as vm and btree patches from DarwinPorts
+
+  06 Nov 2004; Luca Barbato <lu_zero@gentoo.org> libdvdnav-0.1.9.ebuild:
+  Marked ppc
+
+  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> libdvdnav-0.1.9.ebuild:
+  Stable on alpha.
+
+  14 Apr 2004; Jason Wever <weeve@gentoo.org> libdvdnav-0.1.9.ebuild:
+  Stable on sparc.
+
+*libdvdnav-0.1.9 (10 Jun 2003)
+
+  10 Jun 2003; Arcady Genkin <agenkin@gentoo.org> :
+  Version bump.
+  Removed redundant src_unpack().
+
+*libdvdnav-0.1.7 (16 Apr 2003)
+
+  16 Apr 2003; Martin Holzer <mholzer@gentoo.org> libdvdnav-0.1.7.ebuild,
+  files/libdvdnav-0.1.2-gentoo.patch:
+  Version bumped.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*libdvdnav-0.1.3 (06 Aug 2002)
+
+  10 Mar 2003; Aron Griffis <agriffis@gentoo.org> libdvdnav-0.1.3.ebuild:
+  Mark stable on alpha
+
+  12 Agu 2002; Mark Guertin <gerk@gentoo.org> libdvdnav-0.1.3.ebuild :
+  Added ppc to keywords
+
+  06 Aug 2002; Brandon Low <lostlogic@gentoo.org> libdvdnav-0.1.3.ebuild
+
+  New version to match xine-dvdnav-0.9.13
+
+*libdvdnav-0.1.2-r2 (1 Jul 2002)
+
+  1 Jul 2002; Brandon Low <lostlogic@gentoo.org> libdvdnav-0.1.2-r2.ebuild
+
+  One more try, patch is now compiler dependant so that this will comile
+  successfully on gcc 2.95.3 and 3.1 systems.
+
+*libdvdnav-0.1.2-r1 (1 Jul 2002)
+
+  1 Jul 2002; Seemant Kulleen <seemant@gentoo.org> libdvdnav-0.1.2-r1.ebuild
+  files/libdvdnav-0.1.2-gentoo.patch files/digest-libdvdnav-0.1.2-r1 :
+
+  Patch for read_cache applied, so this now actually compiles.  Patch
+  submitted by: Roman Weber <gentoo@gonzo.ch> in bug #4374 reported by
+  matt@oddprocess.org (Matthew Daubenspeck)
+
+*libdvdnav-0.1.2 (30 Jun 2002)
+
+  30 Jun  2002; Brandon Low <lostlogic@gentoo.org> libdvdnav-0.1.2.ebuild:
+
+  New version to match xine-dvdnav-0.9.12
+
+*libdvdnav-0.1.1 (16 Jun 2002)
+
+  16 Jun  2002; Brandon Low <lostlogic@gentoo.org> libdvdnav-0.1.1.ebuild:
+
+  Update to new version for xine-0.9.10
 
 *libdvdnav-0.1.0 (30 Apr 2002)
 

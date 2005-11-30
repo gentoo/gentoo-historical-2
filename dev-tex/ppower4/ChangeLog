@@ -1,6 +1,24 @@
 # ChangeLog for dev-tex/ppower4
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/ppower4/ChangeLog,v 1.1 2004/02/23 17:21:08 usata Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/ppower4/ChangeLog,v 1.1.1.1 2005/11/30 10:00:52 chriswhite Exp $
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> ppower4-0.9.6.ebuild:
+  Keywords ~amd64.
+
+  05 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> ppower4-0.9.6.ebuild:
+  Added app-arch/unzip to DEPEND. Stable on ppc.
+
+  16 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> ppower4-0.9.6.ebuild:
+  Added ~sparc, bug #53552
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> ppower4-0.9.6.ebuild:
+  Stable on x86
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> ppower4-0.9.6.ebuild:
+  Inherit eutils, added IUSE, removed S=.
+
+  21 Mar 2004; David Holm <dholm@gentoo.org> ppower4-0.9.6.ebuild:
+  Added to ~ppc.
 
 *ppower4-0.9.6 (24 Feb 2004)
 

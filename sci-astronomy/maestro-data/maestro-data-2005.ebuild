@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/maestro-data/maestro-data-2005.ebuild,v 1.1 2005/08/01 21:14:30 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/maestro-data/maestro-data-2005.ebuild,v 1.1.1.1 2005/11/30 10:01:51 chriswhite Exp $
 
 DESCRIPTION="Maestro data updates for the Spirit and Opportunity Rovers."
 SRC_URI="http://maestro2.sun.com/Maestro-Update01-LinuxAndSolaris.tar.gz

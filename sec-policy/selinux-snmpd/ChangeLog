@@ -1,6 +1,49 @@
 # ChangeLog for sec-policy/selinux-snmpd
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-snmpd/ChangeLog,v 1.1 2004/10/23 08:49:41 kaiowas Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-snmpd/ChangeLog,v 1.1.1.1 2005/11/30 10:02:16 chriswhite Exp $
+
+*selinux-snmpd-20051023 (24 Oct 2005)
+
+  24 Oct 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-snmpd-20050219.ebuild, +selinux-snmpd-20051023.ebuild:
+  added mips keyword, merge with upstream
+
+  27 Jun 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-snmpd-20050605.ebuild:
+  mark stable
+
+*selinux-snmpd-20050605 (26 Jun 2005)
+
+  26 Jun 2005; petre rodan <kaiowas@gentoo.org>
+  -selinux-snmpd-20041128.ebuild, +selinux-snmpd-20050605.ebuild:
+  merge with upstream
+
+  23 Mar 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-snmpd-20050219.ebuild:
+  mark stable
+
+*selinux-snmpd-20050219 (25 Feb 2005)
+
+  25 Feb 2005; petre rodan <kaiowas@gentoo.org>
+  +selinux-snmpd-20050219.ebuild:
+  merge with upstream policy
+
+  20 Jan 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-snmpd-20041128.ebuild:
+  mark stable
+
+*selinux-snmpd-20041128 (12 Dec 2004)
+
+  12 Dec 2004; petre rodan <kaiowas@gentoo.org>
+  -selinux-snmpd-20041014.ebuild, -selinux-snmpd-20041120.ebuild,
+  +selinux-snmpd-20041128.ebuild:
+  merge with upstream policy
+
+*selinux-snmpd-20041120 (22 Nov 2004)
+
+  22 Nov 2004; petre rodan <kaiowas@gentoo.org>
+  +selinux-snmpd-20041120.ebuild:
+  policy cleanup
 
 *selinux-snmpd-20041014 (23 Oct 2004)
 

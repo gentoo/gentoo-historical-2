@@ -1,12 +1,102 @@
 # ChangeLog for app-admin/webmin
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webmin/ChangeLog,v 1.1 2002/07/10 01:20:03 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webmin/ChangeLog,v 1.1.1.1 2005/11/30 09:59:51 chriswhite Exp $
 
-*webmin-0.992 (09 Jul 2002)
+  03 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> webmin-1.230.ebuild:
+  Stable on sh.
 
-  09 Jul 2002; Seemant Kulleen <seemant@gentoo.org> webmin-0.992.ebuild
-  ChangeLog files/digest-webmin-0.992 :
+  24 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -webmin-1.210-r1.ebuild:
+  Removing insecure versions.
 
-  Jamie Cameron, the venerable upstream author of Webmin, wrote us an
-  ebuild.
+  22 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> webmin-1.230.ebuild:
+  Stable on hppa, ppc.
+
+  22 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> webmin-1.230.ebuild:
+  stable on alpha wrt bug #106705
+
+  22 Sep 2005; Markus Rothe <corsair@gentoo.org> webmin-1.230.ebuild:
+  Stable on ppc64 (bug #106705)
+
+*webmin-1.230 (21 Sep 2005)
+
+  21 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/webmin-1.230-ldap-useradmin.patch, +webmin-1.230.ebuild:
+  Version bump for bug #106705.
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> webmin-1.210-r1.ebuild:
+  Mark 1.210-r1 stable on alpha
+
+*webmin-1.220 (03 Sep 2005)
+
+  03 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -webmin-1.200-r1.ebuild, +webmin-1.220.ebuild:
+  Version bump.
+
+*webmin-1.210-r1 (17 Aug 2005)
+
+  17 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -webmin-1.210.ebuild, +webmin-1.210-r1.ebuild:
+  Revbump.  Don't install the AuthenSolaris crap.
+
+  17 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  files/webmin-gentoo-init:
+  Fixed init script.  Bug #102826.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> webmin-1.210.ebuild:
+  Stable on ppc.
+
+  09 Aug 2005; Markus Rothe <corsair@gentoo.org> webmin-1.210.ebuild:
+  Stable on ppc64
+
+  07 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  webmin-1.210.ebuild:
+  Stable amd64, sparc, x86.
+
+  13 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -webmin-1.160.ebuild, webmin-1.170-r3.ebuild, webmin-1.200.ebuild,
+  webmin-1.200-r1.ebuild, webmin-1.210.ebuild:
+  Removed old, insecure versions. Keeping 170 (insecure) for just mips since
+  they still haven't keyworded the fixed version yet.
+
+  11 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  webmin-1.210.ebuild:
+  Added addpredict to src_install for bug #97212.
+  Fixed http:// -> https:// note in postinst if USE=ssl... bug #98606.
+
+*webmin-1.210 (24 Jun 2005)
+
+  24 Jun 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/virtual-server-2.60-nocgibin.patch, webmin-1.200-r1.ebuild,
+  +webmin-1.210.ebuild:
+  Added pam use flag for pam dependency. Bumped webmin and virtualmin versions
+  for small feature additions and bugfixes. Fixes bugs #95670 and #96698.
+
+*webmin-1.200-r1 (19 Jun 2005)
+
+  19 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +webmin-1.200-r1.ebuild:
+  Use sed -i -e instead of just sed -i, changed a find loop into an xargs sed
+  call, fixed root:root chown, use newinitd/newpamd to install init.d and
+  pam.d files, add dependency over virtual/pam.
+
+  24 Apr 2005; Guy Martin <gmsoft@gentoo.org> webmin-1.200.ebuild:
+  Stable on hppa.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> webmin-1.200.ebuild:
+  Stable on alpha, bug 89141.
+
+  18 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  files/webmin-1.140-apache2.patch:
+  Edited apache2 patch.  Closes bug #89518.
+
+  16 Apr 2005; Markus Rothe <corsair@gentoo.org> webmin-1.200.ebuild:
+  Stable on ppc64; bug #89141
+
+  15 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> webmin-1.200.ebuild:
+  Stable on ppc.
+
+  15 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  webmin-1.200.ebuild:
+  Use -exec instead of xargs for sed because arg list might be too long.
 

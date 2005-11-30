@@ -1,6 +1,33 @@
 # ChangeLog for net-mail/libpst
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/libpst/ChangeLog,v 1.1 2004/03/05 09:02:05 phosphan Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/libpst/ChangeLog,v 1.1.1.1 2005/11/30 10:03:15 chriswhite Exp $
+
+  13 Sep 2005; Luis Medinas <metalgod@gentoo.org> libpst-0.5.1.ebuild:
+  Added ~amd64 keywords. Closes bug #105828.
+
+  18 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> libpst-0.5.1.ebuild:
+  Marked stable on x86.
+
+*libpst-0.5.1 (16 Dec 2004)
+
+  16 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  +files/libpst-0.5.1-gentoo.diff, +libpst-0.5.1.ebuild:
+  Version bump ; new upstream maintainer (w/ a working homepage too!). Closes
+  bug 74556.
+
+*libpst-0.4.1-r1 (15 Dec 2004)
+
+  15 Dec 2004; Aaron Walker <ka0ttic@gentoo.org>
+  files/libpst-0.4.1-gentoo.diff, +libpst-0.4.1-r1.ebuild,
+  -libpst-0.4.1.ebuild:
+  Fixed typo in patch that caused libpst.h to be installed in /usr/inclue.
+
+*libpst-0.4.1 (04 Dec 2004)
+
+  04 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  +files/libpst-0.4.1-gentoo.diff, +libpst-0.4.1.ebuild:
+  Version bump which closes bug 73302; updated metadata.xml to reflect
+  forensics herd.
 
 *libpst-0.3.4 (05 Mar 2004)
 

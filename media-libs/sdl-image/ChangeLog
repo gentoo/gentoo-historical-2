@@ -1,6 +1,69 @@
 # ChangeLog for media-libs/sdl-image
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-image/ChangeLog,v 1.1 2002/02/01 21:53:30 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-image/ChangeLog,v 1.1.1.1 2005/11/30 10:04:15 chriswhite Exp $
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> sdl-image-1.2.4.ebuild:
+  add ~ia64
+
+  07 Jan 2005; Mike Frysinger <vapier@gentoo.org> sdl-image-1.2.3-r1.ebuild,
+  sdl-image-1.2.4.ebuild:
+  Remove DEPEND on gif since it is an internal feature #77011 by P.L.Hayes.
+
+*sdl-image-1.2.4 (16 Dec 2004)
+
+  16 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +sdl-image-1.2.4.ebuild:
+  version bump
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> sdl-image-1.2.3.ebuild:
+  stable on amd64.
+
+  11 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  sdl-image-1.2.3-r1.ebuild:
+  always gnuconfig_update; tidy
+
+  08 Aug 2004; Tom Gall <tgall@gentoo.org> sdl-image-1.2.3-r1.ebuild:
+  stable on ppc64, bug #57991
+
+*sdl-image-1.2.3-r1 (02 Apr 2004)
+
+  02 Apr 2004; Seemant Kulleen <seemant@gentoo.org> sdl-image-1.2.3-r1.ebuild:
+  install the showimage binary, thanks to: Gerry <trick@icculus.org> in bug
+  #46655. Also, use USE flag to determine what support to build
+
+  19 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> sdl-image-1.2.3.ebuild:
+  stable on sparc
+
+  14 Mar 2004; Stephen P. Becker <geoman@gentoo.org> sdl-image-1.2.3.ebuild:
+  Added ~mips keyword.
+
+  06 Oct 2003; Aron Griffis <agriffis@gentoo.org> sdl-image-1.2.3.ebuild:
+  Stable on alpha
+
+  15 Sep 2003; Michael Sterrett <msterret@gentoo.org> sdl-image-1.2.3.ebuild:
+  mark stable for x86
+
+*sdl-image-1.2.3 (09 Sep 2003)
+
+  09 Sep 2003; Michael Sterrett <msterret@gentoo.org> sdl-image-1.2.3.ebuild:
+  version bump
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*sdl-image-1.2.2 (6 May 2002)
+
+  06 Aug 2002; Mark Guertin <gerk@gentoo.org> :
+  Added ppc to keywords
+
+  6 May 2002; Seemant Kulleen <seemant@gentoo.org> sdl-image-1.2.2.ebuild
+  files/digest-sdl-image-1.2.2 :
+
+  Version bump to keep up with the rest of the SDL applications.
+
+*sdl-image-1.2.1-r1 (12 Apr 2002)
+  12 Apr 2002; Spider <spider@gentoo.org>
+  updating with new libpng version
+
 
 *sdl-image-1.2.1 (1 Feb 2002)
 

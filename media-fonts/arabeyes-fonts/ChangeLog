@@ -1,6 +1,24 @@
 # ChangeLog for media-fonts/arabeyes-fonts
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/arabeyes-fonts/ChangeLog,v 1.1 2004/09/29 08:10:01 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/arabeyes-fonts/ChangeLog,v 1.1.1.1 2005/11/30 10:01:27 chriswhite Exp $
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Keyworded ~sparc
+
+  26 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  arabeyes-fonts-1.1.ebuild:
+  Added to ~amd64.
+
+  21 Jan 2005; Lars Weiler <pylon@gentoo.org> arabeyes-fonts-1.1.ebuild:
+  Stable on ppc.
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> arabeyes-fonts-1.1.ebuild:
+  Added to ~ppc.
 
 *arabeyes-fonts-1.1 (29 Sep 2004)
 

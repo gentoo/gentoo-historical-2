@@ -1,40 +1,44 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unzip/unzip-5.50-r2.ebuild,v 1.1 2003/07/11 12:39:07 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/unzip/unzip-5.50-r2.ebuild,v 1.1.1.1 2005/11/30 10:00:41 chriswhite Exp $
 
-S="${WORKDIR}/${P}"
+inherit eutils toolchain-funcs
+
 DESCRIPTION="Unzipper for pkzip-compressed files"
-SRC_URI="ftp://ftp.info-zip.org/pub/infozip/src/${PN}${PV/.}.tar.gz"
 HOMEPAGE="ftp://ftp.info-zip.org/pub/infozip/UnZip.html"
+SRC_URI="ftp://ftp.info-zip.org/pub/infozip/src/${PN}${PV/.}.tar.gz"
 
-SLOT="0"
 LICENSE="Info-ZIP"
-KEYWORDS="x86 ppc alpha hppa mips arm"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc
-	>=sys-apps/sed-4"
+DEPEND=""
 
 src_unpack() {
-	unpack ${A} ; cd ${S}
-
+	unpack ${A}
+	cd ${S}
 	epatch ${FILESDIR}/${P}-dotdot.patch
+
+	sed -i \
+		-e "s:-O3:${CFLAGS}:" \
+		-e "s:CC=gcc LD=gcc:CC=$(tc-getCC) LD=$(tc-getCC):" \
+		-e "s:-O :${CFLAGS} :" \
+		-e "s:LF2 = -s:LF2 = :" \
+		unix/Makefile \
+		|| die "sed unix/Makefile failed"
 }
 
 src_compile() {
-	sed -i -e "s:-O3:${CFLAGS}:" \
-		-e "s:CC=gcc LD=gcc:CC=${CC:-gcc} LD=${CC:-gcc}:" \
-		-e "s:-O :${CFLAGS} :" unix/Makefile
-
 	use x86 \
 		&& TARGET=linux \
 		|| TARGET=linux_noasm
-
-	make -f unix/Makefile ${TARGET} || die
+	emake -f unix/Makefile ${TARGET} || die "emake failed"
 }
 
 src_install() {
-	dobin unzip funzip unzipsfx unix/zipgrep
-	dosym /usr/bin/unzip /usr/bin/zipinfo
+	dobin unzip funzip unzipsfx unix/zipgrep || die "dobin failed"
+	dosym unzip /usr/bin/zipinfo
 	doman man/*.1
-	dodoc BUGS COPYING.OLD History* LICENSE README ToDo WHERE
+	dodoc BUGS History* README ToDo WHERE
 }

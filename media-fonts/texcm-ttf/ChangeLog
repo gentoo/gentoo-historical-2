@@ -1,6 +1,15 @@
 # ChangeLog for media-fonts/texcm-ttf
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/texcm-ttf/ChangeLog,v 1.1 2005/05/03 13:45:40 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/texcm-ttf/ChangeLog,v 1.1.1.1 2005/11/30 10:01:33 chriswhite Exp $
+
+  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> texcm-ttf-1.0.ebuild:
+  Stable on sparc
+
+  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> texcm-ttf-1.0.ebuild:
+  Added ~sparc
+
+  26 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> texcm-ttf-1.0.ebuild:
+  Added to ~amd64.
 
 *texcm-ttf-1.0 (03 May 2005)
 

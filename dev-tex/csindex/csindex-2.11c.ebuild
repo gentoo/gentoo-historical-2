@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/csindex/csindex-2.11c.ebuild,v 1.1 2004/02/26 20:09:11 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/csindex/csindex-2.11c.ebuild,v 1.1.1.1 2005/11/30 10:00:51 chriswhite Exp $
+
+inherit toolchain-funcs
 
 MY_P="${PN}-19980713"
 
@@ -8,21 +10,20 @@ DESCRIPTION="Utility for creating Czech/Slovak-sorted LaTeX index-files"
 HOMEPAGE="http://math.feld.cvut.cz/olsak/cstex/"
 SRC_URI="ftp://math.feld.cvut.cz/pub/cstex/base/${MY_P}.tar.gz"
 
-KEYWORDS="~x86"
-SLOT="0"
 LICENSE="MakeIndex"
+SLOT="0"
+KEYWORDS="x86"
 IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
-S="${WORKDIR}/${MY_P}"
+S=${WORKDIR}/${MY_P}
 
 src_compile() {
-
-	emake CC="${CC}" CFLAGS="${CFLAGS}" || die "make failed"
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "make failed"
 }
 
 src_install() {
-	dobin csindex
+	dobin csindex || die
 	dodoc README
 }

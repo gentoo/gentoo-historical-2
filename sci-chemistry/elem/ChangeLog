@@ -1,6 +1,9 @@
-# ChangeLog for app-sci/elem
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/elem/ChangeLog,v 1.1 2004/12/24 16:34:18 ribosome Exp $
+# ChangeLog for sci-chemistry/elem
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/elem/ChangeLog,v 1.1.1.1 2005/11/30 10:00:47 chriswhite Exp $
+
+  29 May 2005; Marcus D. Hanwell <marcus@gentoo.org> elem-1.0.3-r1.ebuild:
+  Stable on amd64.
 
 *elem-1.0.3-r1 (24 Dec 2004)
 

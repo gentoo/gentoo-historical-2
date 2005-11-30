@@ -1,27 +1,27 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/c-client/c-client-2002e-r1.ebuild,v 1.1 2003/12/09 04:02:22 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/c-client/c-client-2002e-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:00 chriswhite Exp $
+
+inherit flag-o-matic eutils
 
 MY_PN=imap
 MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="UW IMAP c-client library"
-SRC_URI="ftp://ftp.cac.washington.edu/imap/${MY_P}.tar.Z"
 HOMEPAGE="http://www.washington.edu/imap/"
+SRC_URI="ftp://ftp.cac.washington.edu/imap/${MY_P}.tar.Z"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 sparc ppc hppa alpha"
+KEYWORDS="x86 sparc ppc hppa alpha ia64 amd64"
 IUSE="ssl pic"
 
-PROVIDE="virtual/imap-c-client"
 RDEPEND="ssl? ( dev-libs/openssl )
-		 !virtual/imap-c-client"
+	 !virtual/imap-c-client"
 DEPEND="${RDEPEND}
-		>=sys-libs/pam-0.72"
-
-inherit flag-o-matic eutils
+	>=sys-libs/pam-0.72"
+PROVIDE="virtual/imap-c-client"
 
 src_unpack() {
 	unpack ${A}
@@ -30,14 +30,14 @@ src_unpack() {
 	chmod -R ug+w ${S}
 
 	# alpha needs -fPIC
-	use pic || use alpha && append-flags -fPIC
+	use pic || use alpha || use amd64 && append-flags -fPIC
 
 	# Modifications so we can build it optimially and correctly
 	sed \
-		-e "s,BASECFLAGS=\".*\",BASECFLAGS=\"${CFLAGS}\",g" \
-		-e 's,SSLDIR=/usr/local/ssl,SSLDIR=/usr,g' \
-		-e 's,SSLCERTS=$(SSLDIR)/certs,SSLCERTS=/etc/ssl/certs,g' \
-		-i ${S}/src/osdep/unix/Makefile
+		-e "s:BASECFLAGS=\".*\":BASECFLAGS=\"${CFLAGS}\":g" \
+		-e 's:SSLDIR=/usr/local/ssl:SSLDIR=/usr:g' \
+		-e 's:SSLCERTS=$(SSLDIR)/certs:SSLCERTS=/etc/ssl/certs:g' \
+		-i ${S}/src/osdep/unix/Makefile || die "Makefile sed fixing failed"
 
 	# Apply a patch to only build the stuff we need for c-client
 	EPATCH_OPTS="${EPATCH_OPTS} -d ${S}" \

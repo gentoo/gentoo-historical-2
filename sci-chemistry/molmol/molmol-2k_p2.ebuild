@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molmol/molmol-2k_p2.ebuild,v 1.1 2005/07/13 10:12:46 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/molmol/molmol-2k_p2.ebuild,v 1.1.1.1 2005/11/30 10:00:49 chriswhite Exp $
 
 inherit eutils toolchain-funcs multilib
 
@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.mol.biol.ethz.ch/software/MOLMOL/unix-gzip/${MY_P}-src.tar.gz
 	ftp://ftp.mol.biol.ethz.ch/software/MOLMOL/unix-gzip/${MY_P}-doc.tar.gz"
 LICENSE="molmol"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 DEPEND="virtual/motif
 	virtual/x11
@@ -53,17 +53,13 @@ src_unpack() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake -j1 || die "emake failed"
 }
 
 src_install() {
 	dobin molmol
 
-	EXEDESTTREE=/usr/lib/molmol newexe src/main/molmol molmol.lnx
-
-	# Macros, setup and tips must be subdirs of molmol.
-	# Perhaps we should do /usr/lib/molmol?
-
+	EXEDESTTREE=${MMDIR} newexe src/main/molmol molmol.lnx
 	INSDESTTREE=${MMDIR} doins -r auxil help macros man setup tips
 
 	dodoc HISTORY README

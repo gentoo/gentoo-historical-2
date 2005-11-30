@@ -1,8 +1,79 @@
 # ChangeLog for app-admin/gtkdiskfree
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gtkdiskfree/ChangeLog,v 1.1 2002/11/06 06:31:21 blocke Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gtkdiskfree/ChangeLog,v 1.1.1.1 2005/11/30 10:00:12 chriswhite Exp $
+
+  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  gtkdiskfree-1.9.3-r1.ebuild:
+  Mark 1.9.3-r1 ~ia64
+
+  30 Sep 2005; Simon Stelling <blubb@gentoo.org>
+  gtkdiskfree-1.9.3-r1.ebuild:
+  stable on amd64 wrt bug 104565
+
+  30 Sep 2005; Paul Varner <fuzzyray@gentoo.org>
+  gtkdiskfree-1.9.3-r1.ebuild:
+  Stable on x86 (bug #104565)
+
+  30 Sep 2005; Markus Rothe <corsair@gentoo.org>
+  gtkdiskfree-1.9.3-r1.ebuild:
+  Stable on ppc64 (bug #104565)
+
+  29 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gtkdiskfree-1.9.3-r1.ebuild:
+  Stable on ppc.
+
+*gtkdiskfree-1.9.3-r1 (29 Sep 2005)
+
+  29 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/gtkdiskfree-1.9.3-tempfile.patch, +gtkdiskfree-1.9.3-r1.ebuild:
+  Fix by Tavis Ormandy for insecure tempfile usage #104565.
+
+  08 May 2005; Herbie Hopkins <herbs@gentoo.org> gtkdiskfree-1.9.3.ebuild:
+  Stable on amd64.
+
+  13 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> gtkdiskfree-1.9.3.ebuild:
+  added ~amd64 to KEYWORDS, fixes #88942
+
+  02 Jan 2005; Daniel Goller <morfic@gentoo.org> :
+  added metadata.xml
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> gtkdiskfree-1.9.3.ebuild:
+  Stable on ppc64
+
+  29 Nov 2004; Mike Frysinger <vapier@gentoo.org>
+  +files/1.9.3-makefile-DESTDIR.patch, gtkdiskfree-1.9.3.ebuild:
+  Fix makefile to use DESTDIR #72413.
+
+  17 Nov 2004; Mike Frysinger <vapier@gentoo.org> gtkdiskfree-1.8.4.ebuild,
+  -gtkdiskfree-1.9.3.ebuild:
+  Use make install DESTDIR.
+
+  03 Nov 2004; Markus Rothe <corsair@gentoo.org> gtkdiskfree-1.9.3.ebuild:
+  Marked ~ppc64; bug #69838
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gtkdiskfree-1.8.4.ebuild, gtkdiskfree-1.9.3.ebuild:
+  Masked gtkdiskfree-1.9.3.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gtkdiskfree-1.8.4.ebuild:
+  Masked gtkdiskfree-1.8.4.ebuild stable for ppc
+
+*gtkdiskfree-1.9.3 (18 Apr 2003)
+
+  28 Jul 2003; foser <foser@gentoo.org> gtkdiskfree-1.9.3.ebuild :
+  Remove gdk-pixbuf dep (#25346)
+
+  18 Apr 2003; Jon Portnoy <avenj@gentoo.org> gtkdiskfree-1.9.3.ebuild :
+  New ~arch-masked development-tree gtkdiskfree using GTK-2.
 
 *gtkdiskfree-1.8.4 (06 Nov 2002)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> gtkdiskfree-1.8.4.ebuild :
+  Moved to unstable ppc
+  
+  12 Feb 2003; Yannick Koehler <ykoehler@gentoo.org> gtkdiskfree-1.8.4.ebuild :
+  Added nls flags to IUSE.
 
   06 Nov 2002; Bruce A. Locke <blocke@shivan.org> gtkdiskfree-1.8.4.ebuild:
   Initial version.  Fixes long standing bug #654 filed by

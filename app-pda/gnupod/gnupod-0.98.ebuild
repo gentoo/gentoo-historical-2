@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnupod/gnupod-0.98.ebuild,v 1.1 2005/04/08 18:37:25 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnupod/gnupod-0.98.ebuild,v 1.1.1.1 2005/11/30 10:02:25 chriswhite Exp $
 
 inherit perl-module
 
@@ -10,7 +10,7 @@ SRC_URI="http://blinkenlights.ch/gnupod-dist/stable/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc ppc64 ~x86"
 IUSE=""
 
 # perl-5.8.0 contains Getopt-Long and Digest-MD5.
@@ -19,8 +19,8 @@ DEPEND="dev-lang/perl
 	dev-perl/XML-Parser
 	dev-perl/Unicode-String
 	|| ( >=dev-lang/perl-5.8.0
-		( dev-perl/Getopt-Long
-		dev-perl/Digest-MD5
+		( perl-core/Getopt-Long
+		perl-core/Digest-MD5
 		)
 	)"
 

@@ -1,42 +1,37 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-editors/gedit/gedit-0.9.6-r1.ebuild,v 1.1 2002/07/15 16:10:09 stroke Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/gedit/gedit-0.9.6-r1.ebuild,v 1.1.1.1 2005/11/30 10:02:05 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit flag-o-matic
+
 DESCRIPTION="Gnome Text Editor"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 HOMEPAGE="http://gedit.sourceforge.net/"
-SLOT="O"
+SRC_URI="mirror://gnome//sources/gedit/${PV/.6}/${P}.tar.gz"
+
 LICENSE="GPL-2"
-KEYWORDS="x86"
+SLOT="O"
+KEYWORDS="x86 sparc ppc"
+IUSE="nls"
 
-RDEPEND="( >=gnome-base/libglade-0.17-r1
-	 <gnome-base/libglade-2.0.0 )
-	 >=gnome-base/gnome-print-0.30
-         >=gnome-base/gnome-vfs-1.0.2-r1"
-
+RDEPEND="<gnome-base/libglade-2
+	>=gnome-base/gnome-print-0.30
+	=gnome-base/gnome-vfs-1*"
 DEPEND="${RDEPEND}
-        nls? ( sys-devel/gettext )"
-
+	nls? ( sys-devel/gettext )"
 
 src_compile() {
 	local myconf
+	use nls || myconf="--disable-nls"
+	append-flags `gnome-config --cflags libglade vfs`
 
-	if [ -z "`use nls`" ] ; then
-		myconf="--disable-nls"
-	fi
-
-	CFLAGS="${CFLAGS} `gnome-config --cflags libglade vfs`"
-
-	./configure --host=${CHOST} 					\
-		    --prefix=/usr					\
-		    ${myconf} || die
-	
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		${myconf} || die
 	emake || die
 }
 
 src_install() {
-  	make prefix=${D}/usr install || die
-
-	dodoc AUTHORS BUGS COPYING ChangeLog FAQ NEWS README* THANKS TODO
+	make prefix=${D}/usr install || die
+	dodoc AUTHORS BUGS ChangeLog FAQ NEWS README* THANKS TODO
 }

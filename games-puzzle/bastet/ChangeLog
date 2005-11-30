@@ -1,6 +1,21 @@
 # ChangeLog for games-puzzle/bastet
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/bastet/ChangeLog,v 1.1 2004/10/22 01:44:42 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/bastet/ChangeLog,v 1.1.1.1 2005/11/30 10:02:27 chriswhite Exp $
+
+  19 May 2005; Yuta SATOH <nigoro@gentoo.org> bastet-0.41.ebuild:
+  Stable on ppc64
+
+  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> bastet-0.41.ebuild:
+  Marked ppc stable.
+
+  21 Dec 2004; Yuta SATOH <nigoro@gentoo.org> bastet-0.41.ebuild:
+  added ~ppc64
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> bastet-0.41.ebuild:
+  Added ~ppc.
+
+  22 Oct 2004; Simon Stelling <blubb@gentoo.org> bastet-0.41.ebuild:
+  added ~amd64
 
 *bastet-0.41 (21 Oct 2004)
 

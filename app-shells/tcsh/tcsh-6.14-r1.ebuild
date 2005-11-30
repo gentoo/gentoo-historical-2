@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.14-r1.ebuild,v 1.1 2005/09/30 19:42:05 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.14-r1.ebuild,v 1.1.1.1 2005/11/30 10:00:18 chriswhite Exp $
 
 MY_P="${P}.00"
 DESCRIPTION="Enhanced version of the Berkeley C shell (csh)"
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~mips"
 IUSE="perl"
 
-RDEPEND="virtual/libc
+DEPEND="virtual/libc
 	>=sys-libs/ncurses-5.1
 	perl? ( dev-lang/perl )"
 
@@ -28,32 +28,36 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install install.man || die
+	make DESTDIR="${D}" install install.man || die
 
 	if use perl ; then
 		perl tcsh.man2html || die
 		dohtml tcsh.html/*.html
 	fi
 
-	dosym /bin/tcsh /bin/csh
 	dodoc FAQ Fixes NewThings Ported README WishList Y2K
 
 	insinto /etc
-	doins ${WORKDIR}/gentoo/csh.cshrc
-	doins ${WORKDIR}/gentoo/csh.login
+	doins \
+		"${WORKDIR}"/gentoo/csh.cshrc \
+		"${WORKDIR}"/gentoo/csh.login
 
 	insinto /etc/skel
-	newins ${WORKDIR}/gentoo/tcsh.config .tcsh.config
+	newins "${WORKDIR}"/gentoo/tcsh.config .tcsh.config
 
 	insinto /etc/profile.d
-	doins ${WORKDIR}/gentoo/tcsh-bindkey.csh
-	doins ${WORKDIR}/gentoo/tcsh-settings.csh
-	doins ${WORKDIR}/gentoo/tcsh-aliases
-	doins ${WORKDIR}/gentoo/tcsh-complete
-	doins ${WORKDIR}/gentoo/tcsh-gentoo_legacy
+	doins \
+		"${WORKDIR}"/gentoo/tcsh-bindkey.csh \
+		"${WORKDIR}"/gentoo/tcsh-settings.csh \
+		"${WORKDIR}"/gentoo/tcsh-aliases \
+		"${WORKDIR}"/gentoo/tcsh-complete \
+		"${WORKDIR}"/gentoo/tcsh-gentoo_legacy
 }
 
 pkg_postinst() {
+	# add csh -> tcsh symlink only if csh is not yet there
+	[ ! -e /bin/csh ] && dosym /bin/tcsh /bin/csh
+
 	while read line; do einfo "${line}"; done <<EOF
 The default behaviour of tcsh has significantly changed starting from
 this ebuild.  In contrast to previous ebuilds, the amount of

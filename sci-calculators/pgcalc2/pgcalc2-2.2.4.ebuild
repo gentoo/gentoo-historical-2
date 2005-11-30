@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/pgcalc2/pgcalc2-2.2.4.ebuild,v 1.1 2004/12/24 15:03:11 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/pgcalc2/pgcalc2-2.2.4.ebuild,v 1.1.1.1 2005/11/30 10:02:33 chriswhite Exp $
 
 inherit kde
 need-kde 3.2

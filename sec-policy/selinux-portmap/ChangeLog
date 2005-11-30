@@ -1,6 +1,24 @@
 # ChangeLog for sec-policy/selinux-portmap
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-portmap/ChangeLog,v 1.1 2003/08/12 02:38:53 pebenito Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-portmap/ChangeLog,v 1.1.1.1 2005/11/30 10:02:13 chriswhite Exp $
+
+  09 Oct 2005; Stephen Bennett <spb@gentoo.org>
+  selinux-portmap-20050908.ebuild:
+  Marked stable
+
+*selinux-portmap-20050908 (08 Sep 2005)
+
+  08 Sep 2005; Chris PeBenito <pebenito@gentoo.org>
+  +selinux-portmap-20050908.ebuild:
+  New release to add new perms from 2.6.12.
+
+  23 May 2005; Stephen Bennett <spb@gentoo.org>
+  selinux-portmap-20030811.ebuild:
+  ~mips keywords
+
+  09 Apr 2004; Chris PeBenito <pebenito@gentoo.org>
+  selinux-portmap-20030811.ebuild:
+  Add missing ppc and sparc keywords
 
 *selinux-portmap-20030811 (11 Aug 2003)
 

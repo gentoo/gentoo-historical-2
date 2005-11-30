@@ -1,3 +1,4 @@
-MD5 3430407c0fef5c36c590bddeefad508a ruby-termios-0.9.4.ebuild 492
-MD5 ddf2f56133f662c44e6fd9150c1b7a05 .ruby-termios-0.9.4.ebuild.swp 16384
+MD5 3eec9f3fe48b51f49dbc1f171a3b026f metadata.xml 157
+MD5 5f82463cba2ce614155ca719cd7c5165 ChangeLog 1012
+MD5 83c08add5fa27332457e782876b1354d ruby-termios-0.9.4.ebuild 711
 MD5 23ee30229f890432c588dc86bfac7e24 files/digest-ruby-termios-0.9.4 68

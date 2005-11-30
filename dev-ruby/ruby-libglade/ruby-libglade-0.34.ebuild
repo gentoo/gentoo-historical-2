@@ -1,28 +1,33 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-libglade/ruby-libglade-0.34.ebuild,v 1.1 2003/08/06 01:54:49 agriffis Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-libglade/ruby-libglade-0.34.ebuild,v 1.1.1.1 2005/11/30 10:01:12 chriswhite Exp $
+
+inherit ruby
 
 S=${WORKDIR}/ruby-gnome-all-${PV}/libglade
 DESCRIPTION="Ruby libglade bindings"
-SRC_URI="mirror://sourceforge/ruby-gnome/ruby-gnome-all-${PV}.tar.gz"
 HOMEPAGE="http://ruby-gnome.sourceforge.net/"
-LICENSE="Ruby"
-KEYWORDS="x86 ~alpha"
-SLOT="0"
+SRC_URI="mirror://sourceforge/ruby-gnome/ruby-gnome-all-${PV}.tar.gz"
 
-DEPEND=">=dev-lang/ruby-1.6.4-r1
-		=x11-libs/gtk+-1.2*
-		>=dev-libs/libxml-1.8.17-r2
-		>=sys-libs/zlib-1.1.4
-		=gnome-base/libglade-0*"
+LICENSE="Ruby"
+SLOT="0"
+KEYWORDS="alpha ~ia64 ppc ~sparc x86"
+IUSE=""
+USE_RUBY="ruby16 ruby18 ruby19"
+
+DEPEND="virtual/ruby
+	=x11-libs/gtk+-1.2*
+	>=dev-libs/libxml-1.8.17-r2
+	>=sys-libs/zlib-1.1.4
+	=gnome-base/libglade-0*"
 
 src_compile() {
 	ruby extconf.rb || die "ruby extconf.rb failed"
 	emake || die "emake failed"
 }
 
-src_install () {
+src_install() {
 	make site-install DESTDIR=${D}
 	dodoc [A-Z]*
-	cp -dr sample ${D}/usr/share/doc/${PF}
+	cp -r sample ${D}/usr/share/doc/${PF}
 }

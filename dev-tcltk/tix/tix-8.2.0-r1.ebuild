@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tix/tix-8.2.0-r1.ebuild,v 1.1 2004/04/13 00:43:34 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tix/tix-8.2.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:36 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/tixlibrary/${MY_P}b1.tar.gz"
 IUSE=""
 LICENSE="as-is BSD"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86 ~ppc sparc"
 
 DEPEND=">=sys-apps/portage-2.0.47-r10
 		>=sys-apps/sed-4
@@ -21,7 +21,7 @@ DEPEND=">=sys-apps/portage-2.0.47-r10
 src_unpack() {
 	unpack ${A}
 	cd ${S}/..
-	epatch "${FILESDIR}/${PF}-gentoo.diff"
+	epatch "${FILESDIR}/${P}-gentoo.diff"
 }
 
 src_compile() {
@@ -36,7 +36,7 @@ src_compile() {
 	ebegin "Fixing the Makefile..."
 	sed -e 's:TK_LIBS =:TK_LIBS = -L/usr/X11R6/lib -lX11:' \
 		-e 's:^\(SHLIBS_LD_LIBS.*\):\1 ${TK_LIBS}:' \
-		-i ${S}/unix/Makefile
+		-i ${S}/Makefile
 
 	eend $?
 	emake -j1 || die "emake failed"

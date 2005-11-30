@@ -1,9 +1,30 @@
-# ChangeLog for dev-ruby/ruby-gnome
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/text-format/ChangeLog,v 1.1 2003/05/17 10:33:53 mholzer Exp $
+# ChangeLog for dev-ruby/text-format
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/text-format/ChangeLog,v 1.1.1.1 2005/11/30 10:01:15 chriswhite Exp $
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  14 Mar 2005; Yuta SATOH <nigoro@gentoo.org> text-format-0.64.ebuild:
+  Stable on ppc64
+
+  30 Dec 2004; Yuta SATOH <nigoro@gentoo.org> text-format-0.64.ebuild:
+  added ~ppc64
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> text-format-0.64.ebuild:
+  Added src_test(). Stable on x86 and ppc.
+
+  11 Apr 2004; David Holm <dholm@gentoo.org> text-format-0.64.ebuild:
+  Added to ~ppc.
+
+*text-format-0.64 (11 Apr 2004)
+
+  11 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> text-format-0.61.ebuild,
+  text-format-0.64.ebuild, files/text-format-0.64-prefix.diff:
+  Version bumped. virtual/ruby fix
 
 *text-format-0.61 (17 May 2003)
 
   17 May 2003; Martin Holzer <mholzer@gentoo.org> text-format-0.61.ebuild:
-  Initial Version. Submitted by Björn Lindström <bkhl@privat.utfors.se> 
+  Initial Version. Submitted by BjÃ¶rn LindstrÃ¶m <bkhl@privat.utfors.se> 
   in #17609.

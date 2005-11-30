@@ -1,23 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-dccm/synce-dccm-0.3.1.ebuild,v 1.1 2002/11/28 10:10:51 zwelch Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-dccm/synce-dccm-0.3.1.ebuild,v 1.1.1.1 2005/11/30 10:02:23 chriswhite Exp $
 
-DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync." 
+DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync."
 HOMEPAGE="http://sourceforge.net/projects/synce/"
-SRC_URI="http://belnet.dl.sourceforge.net/sourceforge/synce/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="gnome"
-DEPEND="virtual/glibc
+KEYWORDS="x86"
+IUSE=""
+
+DEPEND="virtual/libc
 	app-pda/synce-libsynce"
 
 src_compile() {
-	econf || die
-	emake || die 
+	econf || die "econf failed"
+	emake || die
 }
 
 src_install() {
 	make DESTDIR="${D%/}" install || die
 }
-

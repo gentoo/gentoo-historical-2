@@ -1,12 +1,12 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/cronyx-fonts/cronyx-fonts-2.3.1-r1.ebuild,v 1.1 2004/07/08 06:54:24 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/cronyx-fonts/cronyx-fonts-2.3.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:01:29 chriswhite Exp $
 
 DESCRIPTION="Cronyx Cyrillic bitmap fonts for X"
 HOMEPAGE="http://koi8.pp.ru/frame.html?xwin.html#xwin_fonts"
 S=${WORKDIR}/cyrillic
 SRC_URI="http://koi8.pp.ru/dist/x6rus-${PV}-bin.tgz"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="alpha amd64 ppc sparc x86"
 SLOT="0"
 LICENSE="freedist"
 DEPEND="X? ( virtual/x11 )"

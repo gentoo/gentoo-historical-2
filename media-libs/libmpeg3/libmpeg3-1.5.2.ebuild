@@ -1,22 +1,25 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpeg3/libmpeg3-1.5.2.ebuild,v 1.1 2003/11/04 02:40:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmpeg3/libmpeg3-1.5.2.ebuild,v 1.1.1.1 2005/11/30 10:03:39 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils toolchain-funcs
 
+PATCHLEVEL="1"
 DESCRIPTION="An mpeg library for linux"
 HOMEPAGE="http://heroinewarrior.com/libmpeg3.php3"
-SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2"
+SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2
+	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE=""
 
 RDEPEND="sys-libs/zlib
 	media-libs/jpeg
 	media-libs/a52dec"
 DEPEND="${RDEPEND}
-		x86? ( dev-lang/nasm ) "
+	x86? ( dev-lang/nasm )"
 
 src_unpack() {
 	unpack ${A}
@@ -24,17 +27,26 @@ src_unpack() {
 	# The Makefile is patched to install the header files as well.
 	# This patch was generated using the info in the src.rpm that
 	# SourceForge provides for this package.
-	epatch ${FILESDIR}/${PV}-gentoo-p1.patch
-	# Add in support for mpeg3split
-	epatch ${FILESDIR}/${PV}-gentoo-mpeg3split.patch
-	epatch ${FILESDIR}/${PV}-pthread.patch
-	epatch ${FILESDIR}/${PV}-largefile.patch
-	epatch ${FILESDIR}/${PV}-proper-c.patch
+
+	EPATCH_EXCLUDE="09_all_gcc4.patch"
+
+	#49452
+	[ "`gcc-version`" == "3.4" ] || EPATCH_EXCLUDE="${EPATCH_EXCLUDE} 08_all_gcc34.patch"
+
+	EPATCH_SUFFIX="patch" epatch ${WORKDIR}/${PV}
+
 	# remove a52 crap
 	echo > Makefile.a52
 	rm -rf a52dec-0.7.3/*
 	ln -s /usr/include/a52dec a52dec-0.7.3/include
-	sed -i '/LIBS = /s:$: -la52:' Makefile
+	local libs
+	libs=" -la52"
+	if ! [ -f "${ROOT}/usr/$(get_libdir)/liba52.so" ]; then
+		if grep -q djbfft ${ROOT}/usr/$(get_libdir)/liba52.a; then
+			libs="${libs} -ldjbfft"
+		fi
+	fi
+	sed -i "/LIBS = /s:$: -L\${ROOT}usr/$(get_libdir) ${libs}:" Makefile
 }
 
 src_compile() {
@@ -43,8 +55,6 @@ src_compile() {
 	[ ${ARCH} = alpha ] && append-flags -fPIC
 	[ ${ARCH} = hppa ] && append-flags -fPIC
 	[ ${ARCH} = amd64 ] && append-flags -fPIC
-	# http://www.gentoo.org/proj/en/hardened/etdyn-ssp.xml
-	has_version 'sys-devel/hardened-gcc' && append-flags '-yet_exec'
 
 	make || die
 }
@@ -53,7 +63,7 @@ src_install() {
 	# This patch patches the .h files that get installed into /usr/include
 	# to show the correct include syntax '<>' instead of '""'  This patch
 	# was also generated using info from SF's src.rpm
-	epatch ${FILESDIR}/${PV}-gentoo-p2.patch
-	make DESTDIR=${D}/usr install || die
+	epatch ${WORKDIR}/${PV}/gentoo-p2.patch
+	make DESTDIR="${D}/usr" LIBDIR="$(get_libdir)" install || die
 	dohtml -r docs
 }

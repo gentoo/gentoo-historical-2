@@ -1,33 +1,33 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libogg/libogg-1.1.ebuild,v 1.1 2003/11/22 19:13:23 lostlogic Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libogg/libogg-1.1.ebuild,v 1.1.1.1 2005/11/30 10:04:23 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit gnuconfig
+
 DESCRIPTION="the Ogg media file format library"
-SRC_URI="http://www.vorbis.com/files/1.0.1/unix/${P}.tar.gz"
 HOMEPAGE="http://www.xiph.org/ogg/vorbis/index.html"
+SRC_URI="http://www.vorbis.com/files/1.0.1/unix/${P}.tar.gz"
 
-DEPEND="virtual/glibc"
-
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~mips ~ia64"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ~ppc-macos sparc x86"
+IUSE=""
 
-src_compile() {
-	./configure --prefix=/usr --host=${CHOST} || die
+DEPEND="virtual/libc"
 
-	emake || die
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	gnuconfig_update
 }
 
 src_install () {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die "make install failed"
 
 	# remove the docs installed by make install, since I'll install
 	# them in portage package doc directory
-	echo "Removing docs installed by make install"
-	rm -rf ${D}/usr/share/doc
+	rm -rf "${D}/usr/share/doc"
 
-	dodoc AUTHORS CHANGES COPYING README
+	dodoc AUTHORS CHANGES README
 	dohtml doc/*.{html,png}
 }
-

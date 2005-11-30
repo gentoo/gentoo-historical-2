@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/abuse_sdl/abuse_sdl-0.7.0-r2.ebuild,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/abuse_sdl/abuse_sdl-0.7.0-r2.ebuild,v 1.1.1.1 2005/11/30 10:02:41 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 DESCRIPTION="port of Abuse by Crack Dot Com"
 HOMEPAGE="http://www.labyrinth.net.au/~trandor/abuse/"
@@ -11,13 +11,15 @@ SRC_URI="http://www.labyrinth.net.au/~trandor/abuse/files/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="x86 ppc ~sparc"
+IUSE=""
 
-DEPEND="virtual/x11
-	>=sys-apps/sed-4
+RDEPEND="virtual/x11
 	>=media-libs/libsdl-1.1.6"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
 
-DATA=${WORKDIR}/datafiles
+DATA="${WORKDIR}/datafiles"
 
 src_unpack() {
 	cd ${WORKDIR}
@@ -35,13 +37,13 @@ src_unpack() {
 }
 
 src_compile() {
-	egamesconf --datadir=${GAMES_DATADIR_BASE} || die
+	egamesconf --datadir="${GAMES_DATADIR_BASE}" || die
 	emake || die "emake failed"
 }
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc AUTHORS ChangeLog INSTALL README TODO
+	dodoc AUTHORS ChangeLog README TODO
 
 	cd ${DATA}
 	dodir ${GAMES_DATADIR}/abuse

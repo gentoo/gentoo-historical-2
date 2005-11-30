@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.9.ebuild,v 1.1 2005/10/26 00:11:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.9.ebuild,v 1.1.1.1 2005/11/30 10:02:02 chriswhite Exp $
 
 inherit eutils
 

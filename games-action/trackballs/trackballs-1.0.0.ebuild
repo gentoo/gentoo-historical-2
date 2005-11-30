@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/trackballs/trackballs-1.0.0.ebuild,v 1.1 2004/02/28 16:07:26 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/trackballs/trackballs-1.0.0.ebuild,v 1.1.1.1 2005/11/30 10:02:39 chriswhite Exp $
 
 inherit eutils games
 
@@ -11,12 +11,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~ppc"
+IUSE=""
 
 RDEPEND="virtual/opengl
 	virtual/glu
 	media-libs/libsdl
-	>=dev-util/guile-1.6*
+	>=dev-util/guile-1.6
 	media-libs/sdl-mixer
 	media-libs/sdl-image
 	media-libs/sdl-ttf
@@ -26,27 +27,27 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 	sed -i \
 		-e 's/icons//' share/Makefile.in \
-			|| die "sed share/Makefile.in failed"
+		|| die "sed share/Makefile.in failed"
 }
 
 src_compile() {
 	egamesconf \
 		--disable-dependency-tracking \
-		--with-highscores=${GAMES_STATEDIR}/${PN}-highscores || \
-			die "egamesconf failed"
+		--with-highscores=${GAMES_STATEDIR}/${PN}-highscores \
+		|| die "egamesconf failed"
 	emake || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install            || die "make install failed"
+	make DESTDIR="${D}" install || die "make install failed"
 	insinto /usr/share/pixmaps
 	doins share/icons/*png || die "doins failed"
 	make_desktop_entry trackballs "Trackballs" trackballs-48x48.png
 	insinto "${GAMES_DATADIR}/${PN}/music"
-	doins "${WORKDIR}"/tb_*.ogg            || die "doins failed"
-	dodoc AUTHORS ChangeLog README* NEWS   || die "dodoc failed"
+	doins "${WORKDIR}"/tb_*.ogg || die "doins failed"
+	dodoc AUTHORS ChangeLog README* NEWS
 	prepgamesdirs
 }

@@ -1,22 +1,22 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/safecat/safecat-1.11.ebuild,v 1.1 2003/08/11 10:11:10 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/safecat/safecat-1.11.ebuild,v 1.1.1.1 2005/11/30 10:03:22 chriswhite Exp $
+
+inherit fixheadtails eutils toolchain-funcs
 
 IUSE=""
 
-S=${WORKDIR}/${P}
-
 DESCRIPTION="Safecat implements qmail's maildir algorithm, copying standard input safely to a specified directory."
-HOMEPAGE="http://budney.homeunix.net:8080/users/budney/linux/software/${PN}/"
+HOMEPAGE="http://budney.homeunix.net:8080/users/budney/linux/software/safecat/"
 SRC_URI="http://budney.homeunix.net:8080/users/budney/linux/software/${PN}/${P}.tar.gz"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-apps/groff"
 
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="alpha amd64 ~hppa ia64 ~mips ppc ~sparc x86"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -26,13 +26,16 @@ src_unpack() {
 
 	cd ${S}
 	echo "/usr" > conf-root
-	echo "${CC} ${CFLAGS}" > conf-cc
-	echo "${CC} ${LDFLAGS}" > conf-ld
+	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
+	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
 
+	ht_fix_file Makefile make-compile.sh
+
+	egrep -v 'man|doc' hier.c > hier.c.new
+	mv hier.c.new hier.c
 }
 
 src_compile() {
-	grep -v man hier.c | grep -v doc > hier.c
 	make it man || die
 }
 
@@ -40,7 +43,6 @@ src_install() {
 	dodir /usr
 	echo "${D}/usr" > conf-root
 	make man setup check || die
-	dodoc CHANGES COPYING INSTALL README 
+	dodoc CHANGES COPYING INSTALL README
 	doman maildir.1 safecat.1
 }
-

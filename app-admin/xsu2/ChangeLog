@@ -1,8 +1,26 @@
 # ChangeLog for app-admin/xsu2
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/xsu2/ChangeLog,v 1.1 2002/11/05 18:39:38 bcowan Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/xsu2/ChangeLog,v 1.1.1.1 2005/11/30 10:00:03 chriswhite Exp $
 
-*xsu2-0.2.5  (05 Nov 2002)
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xsu2-0.2.5.ebuild:
+  Masked xsu2-0.2.5.ebuild stable for ppc
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> xsu2-0.2.5.ebuild :
+  Stable on AMD64.
+
+  15 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> xsu2-0.2.5.ebuild:
+  marked ~amd64
+
+  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> xsu2-0.2.5.ebuild:
+  Removed S=.
+
+  09 Jul 2003; Alastair Tse <liquidx@gentoo.org> xsu2-0.2.5.ebuild:
+  add pkgconfig dep
+
+*xsu2-0.2.5 (05 Nov 2002)
+
+  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> xsu2-0.2.5.ebuild :
+  moved to ~ppc
 
   05 Nov 2002; Brad Cowan <bcowan@gentoo.org> xsu2-0.2.5.ebuild,
   files/digest-xsu2-0.2.5, ChangeLog :

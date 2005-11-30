@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libvorbis/libvorbis-1.1.1.ebuild,v 1.1 2005/09/16 01:29:59 lostlogic Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvorbis/libvorbis-1.1.1.ebuild,v 1.1.1.1 2005/11/30 10:04:22 chriswhite Exp $
 
 inherit libtool flag-o-matic eutils toolchain-funcs
 
@@ -10,7 +10,7 @@ SRC_URI="http://downloads.xiph.org/releases/vorbis/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sh ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=media-libs/libogg-1.0"
@@ -73,11 +73,11 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die
 	if use ppc-macos; then
-		dosym /usr/$(get_libdir)/libvorbisfile.3.1.0.dylib /usr/$(get_libdir)/libvorbisfile.3.dylib
-		dosym /usr/$(get_libdir)/libvorbisenc.2.0.1.dylib /usr/$(get_libdir)/libvorbisenc.2.dylib
+		dosym libvorbisfile.3.1.0.dylib /usr/$(get_libdir)/libvorbisfile.3.dylib
+		dosym libvorbisenc.2.0.1.dylib /usr/$(get_libdir)/libvorbisenc.2.dylib
 	else
-		dosym /usr/$(get_libdir)/libvorbisfile.so.3.1.0 /usr/$(get_libdir)/libvorbisfile.so.3
-		dosym /usr/$(get_libdir)/libvorbisenc.so.2.0.1 /usr/$(get_libdir)/libvorbisenc.so.2
+		dosym libvorbisfile.so.3.1.0 /usr/$(get_libdir)/libvorbisfile.so.3
+		dosym libvorbisenc.so.2.0.1 /usr/$(get_libdir)/libvorbisenc.so.2
 	fi
 
 	rm -rf ${D}/usr/share/doc

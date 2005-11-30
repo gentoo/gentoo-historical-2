@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/vflib/vflib-2.25.6-r1.ebuild,v 1.1 2003/08/06 01:29:50 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/vflib/vflib-2.25.6-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:09 chriswhite Exp $
 
-inherit eutils
+inherit toolchain-funcs eutils
 
 IUSE=""
 
@@ -14,10 +14,9 @@ SRC_URI="ftp://TypeHack.aial.hiroshima-u.ac.jp/pub/TypeHack/${MY_PN}-${PV}.tar.g
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="2"
-KEYWORDS="~x86 ~alpha ~ppc ~sparc"
+KEYWORDS="x86 alpha ppc sparc"
 
-DEPEND=">=media-libs/freetype-1.1
-	<media-libs/freetype-2
+DEPEND="=media-libs/freetype-1*
 	virtual/x11"
 RDEPEND="${DEPEND}
 	media-fonts/kochi-substitute"
@@ -27,6 +26,8 @@ S=${WORKDIR}/${MY_PN}-${PV}
 src_unpack () {
 	unpack ${A}
 	epatch ${FILESDIR}/${PF}-gentoo.diff
+	[ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "3" ] \
+		&& epatch ${FILESDIR}/${P}-gcc3.diff
 }
 
 src_compile () {
@@ -34,7 +35,7 @@ src_compile () {
 		--with-freetype-includedir=/usr/include/freetype \
 		--with-freetype-libdir=/usr/lib || die
 
-	emake || die
+	emake CC="$(tc-getCC)" || die
 }
 
 src_install () {

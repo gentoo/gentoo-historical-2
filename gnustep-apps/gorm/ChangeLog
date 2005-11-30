@@ -1,17 +1,83 @@
-# ChangeLog for app-gnustep/gorm
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gorm/ChangeLog,v 1.1 2004/07/23 13:16:13 fafhrd Exp $
+# ChangeLog for gnustep-apps/gorm
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gorm/ChangeLog,v 1.1.1.1 2005/11/30 10:02:20 chriswhite Exp $
+
+*gorm-0.9.10 (07 Jul 2005)
+
+  07 Jul 2005; Armando Di Cianno <fafhrd@gentoo.org> -gorm-0.8.0-r1.ebuild,
+  -gorm-0.9.3_pre20050312.ebuild, +gorm-0.9.10.ebuild:
+  Version bump; cleanups
+
+*gorm-0.9.2 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gorm-0.8.1_pre20041203.ebuild, -gorm-0.8.1_pre20050106.ebuild,
+  +gorm-0.9.2.ebuild, +gorm-0.9.3_pre20050312.ebuild:
+  ebuild updates for GNUstep base, libs, and apps across the board; proper
+  versions (to be stabilized, in due time) added where apropos, cvs-pull
+  versions updated where needed
+
+*gorm-0.8.1_pre20050106 (10 Jan 2005)
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -gorm-0.8.1_pre20040927-r1.ebuild, +gorm-0.8.1_pre20050106.ebuild:
+  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
+  date spec on ebuild headers as repoman was complaining
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  gorm-0.8.1_pre20040927-r1.ebuild, gorm-0.8.1_pre20041203.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+*gorm-0.8.1_pre20041203 (03 Dec 2004)
+
+  03 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gorm-0.8.1_pre20041203.ebuild:
+  General version bump
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> -gorm-0.3.0.ebuild,
+  gorm-0.8.0-r1.ebuild, -gorm-0.8.0.ebuild, gorm-0.8.1_pre20040927-r1.ebuild,
+  -gorm-0.8.1_pre20040927.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  17 Oct 2004; David Holm <dholm@gentoo.org>
+  gorm-0.8.1_pre20040927-r1.ebuild:
+  Added to ~ppc.
+
+*gorm-0.8.0-r1 (04 Oct 2004)
+
+  04 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org> +gorm-0.8.0-r1.ebuild,
+  +gorm-0.8.1_pre20040927-r1.ebuild:
+  Fixed Documenation install paths; bug 66305
+
+*gorm-0.8.1_pre20040927 (28 Sep 2004)
+
+  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +gorm-0.8.1_pre20040927.ebuild:
+  Version bump; pre release date specd live cvs pull.
+
+*gorm-0.8.0 (26 Sep 2004)
+
+  26 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
+  +gorm-0.8.0.ebuild:
+  New version; key'd for ~x86.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> gorm-0.3.0.ebuild:
+  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
 
 *gorm-0.3.0 (23 Jul 2004)
 
-  23 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org> +metadata.xml,
+  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
   +gorm-0.3.0.ebuild:
   Moved from app-gnustep/gorm to gnustep-apps/gorm.
 
-  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org> gorm-0.3.0.ebuild:
-  Changing the eclass to gnustep-old
-
-  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org> gorm-0.3.0.ebuild:
+  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> gorm-0.3.0.ebuild:
   Changing the eclass to gnustep-old
 
   17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> gorm-0.3.0.ebuild:

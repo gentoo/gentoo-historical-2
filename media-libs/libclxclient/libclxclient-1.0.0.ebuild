@@ -1,32 +1,27 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libclxclient/libclxclient-1.0.0.ebuild,v 1.1 2004/10/09 22:14:49 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libclxclient/libclxclient-1.0.0.ebuild,v 1.1.1.1 2005/11/30 10:03:53 chriswhite Exp $
+
+IUSE=""
 
 inherit eutils
+
+S="${WORKDIR}/clxclient-${PV}"
 
 DESCRIPTION="An audio library by Fons Adriaensen <fons.adriaensen@skynet.be>"
 HOMEPAGE="http://users.skynet.be/solaris/linuxaudio"
 SRC_URI="http://users.skynet.be/solaris/linuxaudio/downloads/clxclient-${PV}.tar.bz2"
-RESTRICT=""
-IUSE=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~sparc x86"
 
-S=${WORKDIR}/clxclient-${PV}
-
-#first two for WANT_AUTOMAKE/CONF
-DEPEND="
-	>=sys-devel/autoconf-2.58
-	>=sys-devel/automake-1.7.2
-	virtual/glibc
+DEPEND="virtual/libc
 	virtual/x11
-	>=media-libs/libclthreads-1.0.0
-"
+	>=media-libs/libclthreads-1.0.0"
 
 src_compile() {
-	epatch "${FILESDIR}/${P}-makefile.patch" || die
+	epatch "${FILESDIR}/${P}-makefile.patch"
 	emake || die
 }
 

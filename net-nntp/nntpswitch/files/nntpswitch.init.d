@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/nntpswitch/files/nntpswitch.init.d,v 1.1 2005/01/17 19:40:02 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/nntpswitch/files/nntpswitch.init.d,v 1.1.1.1 2005/11/30 10:02:45 chriswhite Exp $
 
 depend() {
 	use net

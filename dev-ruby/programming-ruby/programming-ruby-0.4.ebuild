@@ -1,14 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/programming-ruby/programming-ruby-0.4.ebuild,v 1.1 2003/05/20 10:40:40 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/programming-ruby/programming-ruby-0.4.ebuild,v 1.1.1.1 2005/11/30 10:01:17 chriswhite Exp $
 
 MY_P=ProgrammingRuby-${PV}
-DESCRIPTION="This is a sample skeleton ebuild file"
+DESCRIPTION="Programming Ruby: The Pragmatic Programmers' Guide by Dave Thomas and Andrew Hunt"
 HOMEPAGE="http://www.rubycentral.com/"
 SRC_URI="http://dev.rubycentral.com/downloads/files/${MY_P}.tgz"
 LICENSE="OPL"
 SLOT="0"
-KEYWORDS="alpha arm hppa mips sparc x86"
+KEYWORDS="alpha amd64 hppa ~ia64 mips ~ppc ~ppc-macos ppc64 sparc x86"
+IUSE=""
 DEPEND=""
 S=${WORKDIR}/${MY_P}
 

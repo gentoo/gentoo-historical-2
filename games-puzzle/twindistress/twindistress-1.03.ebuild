@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/twindistress/twindistress-1.03.ebuild,v 1.1 2004/02/22 13:28:21 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/twindistress/twindistress-1.03.ebuild,v 1.1.1.1 2005/11/30 10:02:31 chriswhite Exp $
 
 inherit eutils games
 
@@ -10,7 +10,7 @@ DESCRIPTION="Match and remove all of the blocks before time runs out"
 HOMEPAGE="http://twind.sourceforge.net/"
 SRC_URI="mirror://sourceforge/twind/${MY_P}.tar.gz"
 
-KEYWORDS="x86"
+KEYWORDS="x86 ~amd64 ppc"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

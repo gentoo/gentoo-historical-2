@@ -1,42 +1,40 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/SphinxTrain/SphinxTrain-0.9.1-r1.ebuild,v 1.1 2004/03/17 04:10:20 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/SphinxTrain/SphinxTrain-0.9.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:36 chriswhite Exp $
 
-S=${WORKDIR}/${PN}
-DESCRIPTION="SphinxTrain - Speech Recognition (Training Module)"
-HOMEPAGE="http://www.speech.cs.cmu.edu/SphinxTrain/"
+inherit eutils
+
+DESCRIPTION="Speech Recognition (Training Module)"
+HOMEPAGE="http://cmusphinx.sourceforge.net/html/cmusphinx.php"
 SRC_URI="http://www.speech.cs.cmu.edu/${PN}/${P}-beta.tar.gz"
-SLOT="0"
+
 LICENSE="BSD as-is"
-KEYWORDS="x86"
+SLOT="0"
+KEYWORDS="x86 ppc"
 IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	app-accessibility/sphinx2
 	app-accessibility/festival"
+
+S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-
 	epatch ${FILESDIR}/gcc.patch
+	epatch ${FILESDIR}/gcc34.patch
 }
 
-src_compile() {
-	econf || die "econf failed"
-	emake || die "emake failed"
-}
+src_install() {
+	# dobin bin.*/* fails ... see bug #73586
+	find bin.* -mindepth 1 -maxdepth 1 -type f -exec dobin '{}' \; || die
 
-src_install () {
-	dodoc etc/*cfg
-	dobin bin.*/*
-	dodoc README
+	dodoc README etc/*cfg
 	dohtml doc/*[txt html sgml]
 }
 
 pkg_postinst() {
-	einfo
 	einfo "Detailed usage and training instructions can be found at"
 	einfo "http://www.speech.cs.cmu.edu/SphinxTrain/"
-	einfo
 }

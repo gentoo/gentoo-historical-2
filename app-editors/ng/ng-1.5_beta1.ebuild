@@ -1,26 +1,26 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: ng-1.5_beta1.ebuild,v 1.1 2004/05/15 18:19:20 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/ng/ng-1.5_beta1.ebuild,v 1.1.1.1 2005/11/30 10:01:55 chriswhite Exp $
 
-IUSE="canna"
+inherit eutils
 
 MY_P=${P/_beta/beta}
 
 DESCRIPTION="Emacs like micro editor Ng -- based on mg2a"
+HOMEPAGE="http://tt.sakura.ne.jp/~amura/ng/"
 SRC_URI="http://tt.sakura.ne.jp/~amura/archives/ng/${MY_P}.tar.gz"
 
-HOMEPAGE="http://tt.sakura.ne.jp/~amura/ng/"
-
-SLOT="0"
 LICENSE="Emacs"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc x86"
+IUSE="canna"
 
-PROVIDE="virtual/editor"
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	>=sys-libs/ncurses-5.0
 	canna? ( app-i18n/canna )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4.0"
+PROVIDE="virtual/editor"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -31,10 +31,11 @@ src_unpack() {
 }
 
 src_compile() {
-
 	local myconf
 
-	myconf="`use_enable canna`"
+	if use canna; then
+		myconf="--enable-canna"
+	fi
 	econf ${myconf} || die
 	sed -i -e "s/^#undef NO_BACKUP/#define NO_BACKUP/" config.h \
 		|| die "sed failed"
@@ -43,9 +44,8 @@ src_compile() {
 }
 
 src_install() {
-
-	dobin ng
-	dodoc docs/* COPYING LICENSE MANIFEST dot.ng
+	dobin ng || die
+	dodoc docs/* MANIFEST dot.ng
 
 	insinto /usr/share/ng
 	doins bin/*
@@ -61,4 +61,3 @@ pkg_postinst() {
 	einfo "and edit your .ng configuration file."
 	einfo
 }
-

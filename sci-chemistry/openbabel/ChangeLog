@@ -1,6 +1,6 @@
-# ChangeLog for app-sci/openbabel
+# ChangeLog for sci-chemistry/openbabel
 # Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel/ChangeLog,v 1.1 2004/12/24 16:54:33 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/openbabel/ChangeLog,v 1.1.1.1 2005/11/30 10:00:48 chriswhite Exp $
 
 *openbabel-1.100.2 (24 Dec 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.0-r11.ebuild,v 1.1 2005/04/29 22:21:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.0-r11.ebuild,v 1.1.1.1 2005/11/30 10:00:21 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -14,7 +14,6 @@ HOMEPAGE="http://cnswww.cns.cwru.edu/~chet/bash/bashtop.html"
 SRC_URI="mirror://gnu/bash/${P}.tar.gz
 	ftp://ftp.cwru.edu/pub/bash/${P}.tar.gz
 	mirror://gentoo/${P}-gentoo.diff.bz2
-	ftp://progn.org/pub/software/tools/bash-2.05b-preexec-0.3.diff.gz
 	$(for ((i=1; i<=PLEVEL; i++)); do
 		printf 'ftp://ftp.cwru.edu/pub/bash/bash-%s-patches/bash%s-%03d\n' \
 			${PV} ${PV/\.} ${i}
@@ -24,8 +23,8 @@ SRC_URI="mirror://gnu/bash/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="nls build"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="nls build bashlogger"
 
 # we link statically with ncurses
 DEPEND=">=sys-libs/ncurses-5.2-r2"
@@ -56,6 +55,17 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-{afs,crash,jobs,manpage,pwd,read-e-segfault,ulimit}.patch
 	# Fix read-builtin and the -u pipe option #87093
 	epatch "${FILESDIR}"/${P}-read-builtin-pipe.patch
+	# Don't barf on handled signals in scripts
+	epatch "${FILESDIR}"/${P}-trap-fg-signals.patch
+	# Log bash commands to syslog #91327
+	if use bashlogger ; then
+		echo
+		ewarn "The logging patch should ONLY be used in restricted (i.e. honeypot) envs."
+		ewarn "This will log ALL output you enter into the shell, you have been warned."
+		ebeep
+		epause
+		epatch "${FILESDIR}"/${P}-bash-logger.patch
+	fi
 
 	# Enable SSH_SOURCE_BASHRC (#24762)
 	echo '#define SSH_SOURCE_BASHRC' >> config-top.h
@@ -75,6 +85,9 @@ src_unpack() {
 	echo '#define PGRP_PIPE 1' >> config-bot.h
 
 	sed -i 's:-lcurses:-lncurses:' configure || die "sed configure"
+
+	# Fix parallel builds #87247
+	epatch ${FILESDIR}/${P}-parallel.patch
 }
 
 src_compile() {
@@ -122,6 +135,10 @@ src_install() {
 
 	insinto /etc/bash
 	doins "${FILESDIR}"/{bashrc,bash_logout}
+	insinto /etc/skel
+	for f in bash{_logout,_profile,rc} ; do
+		newins "${FILESDIR}"/dot-${f} .${f}
+	done
 
 	if use build ; then
 		rm -rf "${D}"/usr

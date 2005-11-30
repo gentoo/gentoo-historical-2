@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ghemical/ghemical-1.02.ebuild,v 1.1 2005/07/09 00:08:06 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/ghemical/ghemical-1.02.ebuild,v 1.1.1.1 2005/11/30 10:00:49 chriswhite Exp $
 
 inherit eutils
 
@@ -17,7 +17,7 @@ DEPEND="dev-libs/libf2c
 	sci-chemistry/mopac7
 	>=sci-chemistry/openbabel-1.100.2
 	sci-chemistry/mpqc
-	>=media-libs/glut-3.7
+	virtual/glut
 	dev-libs/libxml
 	>=dev-util/pkgconfig-0.15
 	=x11-libs/gtkglarea-1.2*
@@ -36,8 +36,8 @@ src_compile() {
 	./configure \
 		--prefix=/usr \
 		$(use_enable mpqc) \
-		$(use_enable gtk) ||die
-	emake || die "Configure failed"
+		$(use_enable gtk) || die "Configure failed"
+	emake || die "Make failed"
 }
 
 src_install() {

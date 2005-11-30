@@ -1,6 +1,61 @@
-# ChangeLog for app-misc/grass
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/ChangeLog,v 1.1 2004/12/29 02:04:34 ribosome Exp $
+# ChangeLog for sci-geosciences/grass
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/grass/ChangeLog,v 1.1.1.1 2005/11/30 10:02:12 chriswhite Exp $
+
+  13 Oct 2005; Steve Arnold <nerdboy@gentoo.org> -grass-6.0.0-r2.ebuild,
+  grass-6.0.1.ebuild:
+  ebuild cleanup and change for bug #106877
+
+  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> grass-6.0.0-r2.ebuild:
+  Stable on ppc.
+
+*grass-6.0.1 (14 Sep 2005)
+
+  14 Sep 2005; Steve Arnold <nerdboy@gentoo.org> +grass-6.0.1.ebuild:
+  version bump to close bug #103361
+
+  11 Sep 2005; Steve Arnold <nerdboy@gentoo.org> grass-5.4.0.ebuild,
+  grass-6.0.0-r2.ebuild:
+  stable bump for sparc and x86
+
+  11 Aug 2005; Steve Arnold <nerdboy@gentoo.org>
+  files/digest-grass-6.0.0-r2, Manifest:
+  Fixing weird digest problem (bug #101719) - old soource tarball?
+
+*grass-5.4.0 (08 Aug 2005)
+
+  08 Aug 2005; Steve Arnold <nerdboy@gentoo.org> +grass-5.4.0.ebuild
+  -grass-5.0.3.ebuild:
+  added interim version (bug 72353) since 5.0.3 is broken wrt newer freetype
+
+*grass-6.0.0-r2 (25 Jul 2005)
+
+  25 Jul 2005; Steve Arnold <nerdboy@gentoo.org> files/99grass-6,
+  -grass-6.0.0-r1.ebuild, +grass-6.0.0-r2.ebuild:
+  fixed environment glitch (bug 100105)
+
+*grass-6.0.0-r1 (23 Jul 2005)
+
+  23 Jul 2005; Steve Arnold <nerdboy@gentoo.org> +grass-6.0.0-r1.ebuild:
+  fixed for use with gdal, ogdi, proj, etc (gdal is apparently no
+  longer optional)
+
+  20 Jul 2005; Steve Arnold <nerdboy@gentoo.org> grass-6.0.0.ebuild:
+  fixed up gdal use flag handling and added to use.local
+
+*grass-6.0.0 (15 Jun 2005)
+
+  15 Jun 2005; Steve Arnold <nerdboy@gentoo.org> +files/99grass-6,
+  metadata.xml, +grass-6.0.0.ebuild:
+  modified version of user-submitted ebuild (bug 72353 and 84862).
+  The former bug is not being closed just yet...
+
+  02 Jun 2005; Olivier Fisette <ribosome@gentoo.org> grass-5.0.2.ebuild,
+  grass-5.0.3.ebuild:
+  Use "virtual/motif" instead of "x11-libs/openmotif".
+
+  10 Jan 2005; Danny van Dyk <kugelfang@gentoo.org> grass-5.0.3.ebuild:
+  Marked ~amd64.
 
 *grass-5.0.2 (28 Dec 2004)
 

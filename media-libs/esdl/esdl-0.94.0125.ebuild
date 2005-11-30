@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/esdl/esdl-0.94.0125.ebuild,v 1.1 2004/02/21 12:46:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/esdl/esdl-0.94.0125.ebuild,v 1.1.1.1 2005/11/30 10:03:38 chriswhite Exp $
+
+inherit fixheadtails
 
 DESCRIPTION="Erlang bindings for the SDL library"
 HOMEPAGE="http://esdl.sourceforge.net/"
@@ -8,16 +10,21 @@ SRC_URI="mirror://sourceforge/esdl/${P}.src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc"
+IUSE=""
 
 DEPEND=">=dev-lang/erlang-9b
 	>=media-libs/libsdl-1.2.4"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	sed -i "/CFLAGS.*=/s:-g -O2:${CFLAGS}:" c_src/Makefile
+	ht_fix_file Makefile c_src/Makefile
+}
+
 src_compile() {
-	cp c_src/Makefile{,.orig}
-	sed -e "/^CFLAGS.*/s:\\\\$: ${CFLAGS} \\\\:" \
-		c_src/Makefile.orig > c_src/Makefile
-	make || die
+	emake || die
 }
 
 src_install() {

@@ -1,8 +1,44 @@
 # ChangeLog for media-libs/libswf
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libswf/ChangeLog,v 1.1 2002/02/01 21:53:30 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libswf/ChangeLog,v 1.1.1.1 2005/11/30 10:04:06 chriswhite Exp $
+
+  11 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> libswf-0.99.ebuild:
+  Call has_multilib_profile from pkg_setup instead of global scope.
+
+  21 Jun 2005; Danny van Dyk <kugelfang@gentoo.org> libswf-0.99.ebuild:
+  Fixed keywords. This package is natively x86 and doesn't run on hppa or ppc!
+  Added logic to work cleanly on amd64 (BUG #96458).
+
+  20 Jul 2004; Patrick Kursawe <phosphan@gentoo.org> libswf-0.99.ebuild:
+  Fixing bug 57334 by changing swftest to ./swftest in the Makefile.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> libswf-0.99.ebuild:
+  virtual/glibc -> virtual/libc
 
 *libswf-0.99 (1 Feb 2002)
+
+  19 Jun 2003; Joshua Kinard <kumba@gentoo.org> libswf-0.99.ebuild:
+  Changed sparc to -sparc and added -mips to KEYWORDS, as this lib "seems" to be
+  x86-only.  ppc and hppa people should double check this lib and mask as
+  appropriate.
+
+  15 May 2003; Patrick Kursawe <phosphan@gentoo.org> libswf-0.99.ebuild:
+  Hopefully fixed bug 20346 (problem while unpacking, seems default unpack
+  changed behaviour)
+
+  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> libswf-0.99.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+
+  02 Nov 2002; Calum Selkirk <cselkirk@gentoo.org> libswf-0.99.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  06 Aug 2002; Seemant Kulleen <seemant@gentoo.org> libswf-0.99.ebuild :
+
+  Made some changes to fix unpacking the tar.Z file and other changes as
+  outlined by wongs15@tartarus.uwa.edu.au (Steven Wong) in bug #6092
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

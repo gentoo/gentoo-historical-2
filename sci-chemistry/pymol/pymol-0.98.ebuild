@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol/pymol-0.98.ebuild,v 1.1 2005/05/18 17:56:11 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol/pymol-0.98.ebuild,v 1.1.1.1 2005/11/30 10:00:47 chriswhite Exp $
 
 inherit distutils eutils multilib
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pymol/${PN}-${PV/./_}-src.tgz"
 LICENSE="PSF-2.2"
 IUSE=""
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~amd64 ppc x86"
 
 DEPEND="dev-lang/python
 	dev-python/pmw

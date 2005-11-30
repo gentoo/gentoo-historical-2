@@ -1,6 +1,116 @@
 # ChangeLog for app-pda/multisync
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/multisync/ChangeLog,v 1.1 2003/09/08 14:21:42 tad Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-pda/multisync/ChangeLog,v 1.1.1.1 2005/11/30 10:02:25 chriswhite Exp $
+
+  11 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
+  multisync-0.83_pre20050414-r2.ebuild:
+  change kdepim to || (kdepim kdepim-meta) to make emergeing with
+  kde-meta-ebuilds possible
+
+  18 May 2005; Stefan Schweizer <genstef@gentoo.org>
+  multisync-0.83_pre20050414-r2.ebuild:
+  Fix multisync-kdepim bug thanks to Dan Laba <gentoo@iwegaia.co.uk>, Shawn
+  Kovalchick <bamapookie@gmail.com>, Christoph Kretschmer <ckret@celtx.de> and
+  Stuart Grimshaw <stuart.gentoo@smgsystems.co.uk> in bug 91197
+
+*multisync-0.83_pre20050414-r2 (10 May 2005)
+
+  10 May 2005; John Mylchreest <johnm@gentoo.org>
+  -multisync-0.83_pre20050414-r1.ebuild,
+  +multisync-0.83_pre20050414-r2.ebuild:
+  Fixing broken kdepim
+
+*multisync-0.83_pre20050414-r1 (02 May 2005)
+
+  02 May 2005; John Mylchreest <johnm@gentoo.org>
+  -multisync-0.83_pre20050414.ebuild, +multisync-0.83_pre20050414-r1.ebuild:
+  fix bug #82422
+
+*multisync-0.83_pre20050414 (01 May 2005)
+
+  01 May 2005; John Mylchreest <johnm@gentoo.org>
+  -files/multisync-0.80-r1-gentoo.patch, metadata.xml,
+  -multisync-0.83_pre20050115.ebuild, +multisync-0.83_pre20050414.ebuild:
+  Comitting new cvs snapshot, nice and stable it seems :D cleaning up older
+  files.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  multisync-0.83_pre20050115.ebuild:
+  stable on amd64
+
+  18 Apr 2005; Stefan Schweizer <genstef@gentoo.org>
+  multisync-0.83_pre20050115.ebuild:
+  Fixing kdepim compile, patch thanks to Andreas Hinterland
+  <ich@meister-rohrfix.de>in bug 79048
+
+*multisync-0.83_pre20050115 (20 Jan 2005)
+
+  20 Jan 2005; John Mylchreest <johnm@gentoo.org> metadata.xml,
+  +multisync-0.83_pre20050115.ebuild:
+  fixes bug #55311, #67588, #77546 and #29365
+
+  16 Oct 2004; Alastair Tse <liquidx@gentoo.org> multisync-0.81-r1.ebuild:
+  removing bluez-sdp dep
+
+  04 Oct 2004; Henrik Brix Andersen <brix@gentoo.org>
+  multisync-0.81-r1.ebuild, multisync-0.82.ebuild:
+  Updated irda-utils dependency to new location
+
+  02 Oct 2004; Gustavo Felisberto <humpback@gentoo.org>;
+  +files/multisync-0.82-bluetooth-sdp-2.patch, multisync-0.82.ebuild:
+  Adding missing patch for -lsdp bug #63743
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> multisync-0.81.ebuild:
+  Fix USE test in DEPEND.  Should be !gtk2? instead of plain !gtk2
+
+  24 Jul 2004; Alastair Tse <liquidx@gentoo.org>
+  +files/multisync-0.82-bluetooth-sdp.patch, multisync-0.82.ebuild:
+  added bluetooth sdp patch for multisync. thanks to Ronny Haryanto
+  <rh-gentoo@terasi.net> (#55758)
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  multisync-0.80-r1.ebuild, multisync-0.81-r1.ebuild, multisync-0.81.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Jun 2004; David Holm <dholm@gentoo.org> multisync-0.82.ebuild:
+  Added to ~ppc.
+
+*multisync-0.82 (26 Jun 2004)
+
+  26 Jun 2004; Alastair Tse <liquidx@gentoo.org> +multisync-0.82.ebuild:
+  version bump (#53696)
+
+  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  multisync-0.80-r1.ebuild, multisync-0.81.ebuild:
+  don't use the deprecated ? : use syntax
+
+  06 Mar 2004; Alastair Tse <liquidx@gentoo.org> multisync-0.81-r1.ebuild:
+  added libgnomeui, bluez-* deps and bluetooth USE flag (#43722)
+
+  29 Feb 2004; Alastair Tse <liquidx@gentoo.org> multisync-0.81-r1.ebuild:
+  add gnome-vfs dep (#43095)
+
+*multisync-0.81-r1 (15 Jan 2004)
+
+  15 Jan 2004; Troy Dack <tad@gentoo.org> multisync-0.81-r1.ebuild,
+  multisync-0.81.ebuild:
+  Remove GTK+-1 and Evolution-1.2 as deps, 0.81 no longer supports GTK+-1.
+  Closes Bug #35399 (finaly!)
+
+*multisync-0.81 (10 Jan 2004)
+
+  10 Jan 2004; Troy Dack <tad@gentoo.org> multisync-0.81.ebuild,
+  files/multisync-0.81-gentoo.patch:
+  Version bump to 0.81. Marked stable (0.81 is upstream stable release)
+
+  10 Jan 2004; Troy Dack <tad@gentoo.org> multisync-0.80-r1.ebuild,
+  files/multisync-0.80-r1-gentoo.patch:
+  Added patch from Jeremy Huddleston <jeremyhu@cory.eecs.berkeley.edu> to enable
+  the Opie plugin to build correctly. Closes Bug #35554.
+
+  15 Sep 2003; Michael Sterrett <msterret@gentoo.org>
+  multisync-0.80-r1.ebuild:
+  fix HOMEPAGE per bug 28769
 
 *multisync-0.80-r1 (09 Sep 2003)
 

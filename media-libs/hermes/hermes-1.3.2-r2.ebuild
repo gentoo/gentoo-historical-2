@@ -1,46 +1,61 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Seemant Kulleen <seemant@rocketmail.com>
-# $Header: /var/cvsroot/gentoo-x86/media-libs/hermes/hermes-1.3.2-r2.ebuild,v 1.1 2002/04/14 07:44:54 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hermes/hermes-1.3.2-r2.ebuild,v 1.1.1.1 2005/11/30 10:04:05 chriswhite Exp $
 
-PN0=Hermes
-S=${WORKDIR}/${PN0}-${PV}
+IUSE=""
+
+inherit eutils libtool gnuconfig
+
+MY_P=${P/h/H}
+S=${WORKDIR}/${MY_P}
+
 DESCRIPTION="Library for fast colorspace conversion and other graphics routines"
-SRC_URI="http://dark.x.dtu.dk/~mbn/clanlib/download/download-sphair/${PN0}-${PV}.tar.gz"
-HOMEPAGE="http://hermes.terminal.at"
+HOMEPAGE="http://hermes.terminal.at/"
+SRC_URI="http://dark.x.dtu.dk/~mbn/clanlib/download/download-sphair/${MY_P}.tar.gz"
 
-DEPEND="sys-devel/libtool
-	sys-devel/automake 
-	sys-devel/autoconf" 
+LICENSE="LGPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc sparc alpha ~mips amd64 ~hppa ppc64"
 
-src_compile() {
+DEPEND=">=sys-devel/autoconf-2.50
+	>=sys-devel/automake-1.8"
 
-	aclocal || die
-	automake -a
-	autoconf || die
+RDEPEND="virtual/libc"
 
-    ./configure \
-		--prefix=/usr \
-		|| die
+src_unpack() {
+	unpack ${A} || die
+	cd ${S} || die
+	epatch ${FILESDIR}/${P}-amd64.patch
+	epatch ${FILESDIR}/${P}-destdir.patch
 
-    sh ltconfig ltmain.sh || die
-    emake || die
+	export WANT_AUTOMAKE=1.8
+	export WANT_AUTOCONF=2.5
 
+	libtoolize --force --copy || die
+	aclocal || die "aclocal failed"
+	automake -a -f -c || die "automake failed"
+	autoconf || die "autoconf failed"
+
+	gnuconfig_update
+	elibtoolize
 }
 
-src_install () {
+src_compile() {
+	econf || die
+	sh ltconfig ltmain.sh || die "ltconfig failed"
+	emake || die "emake failed"
+}
 
-    make \
-		prefix=${D}/usr \
-		install || die
+src_install() {
+	make DESTDIR="${D}" install || die
 
-    dodoc AUTHORS COPYING ChangeLog FAQ NEWS README TODO*
+	dodoc AUTHORS ChangeLog FAQ NEWS README TODO*
 
-    dohtml docs/api/*.htm
-    docinto print
-    dodoc docs/api/*.ps
-    docinto txt
-    dodoc docs/api/*.txt
-    docinto sgml
-    dodoc docs/api/sgml/*.sgml
+	dohtml docs/api/*.htm
+	docinto print
+	dodoc docs/api/*.ps
+	docinto txt
+	dodoc docs/api/*.txt
+	docinto sgml
+	dodoc docs/api/sgml/*.sgml
 }

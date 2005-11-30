@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libiec61883/libiec61883-1.0.0-r1.ebuild,v 1.1 2005/09/03 07:37:15 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libiec61883/libiec61883-1.0.0-r1.ebuild,v 1.1.1.1 2005/11/30 10:04:15 chriswhite Exp $
 
 inherit autotools eutils
 

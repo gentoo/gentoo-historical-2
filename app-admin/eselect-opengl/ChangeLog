@@ -1,6 +1,35 @@
 # ChangeLog for app-admin/eselect-opengl
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect-opengl/ChangeLog,v 1.1 2005/08/17 21:42:20 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect-opengl/ChangeLog,v 1.1.1.1 2005/11/30 10:00:15 chriswhite Exp $
+
+*eselect-opengl-1.0.3 (19 Oct 2005)
+
+  19 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  eselect-opengl-1.0.2-r1.ebuild, +eselect-opengl-1.0.3.ebuild:
+  Version bump for eselect-1.0_rc
+
+  01 Oct 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -eselect-opengl-1.0.1.ebuild, -eselect-opengl-1.0.2.ebuild:
+  Removing old versions.
+
+*eselect-opengl-1.0.2-r1 (14 Sep 2005)
+
+  14 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +eselect-opengl-1.0.2-r1.ebuild:
+  Fixed ACTION->action
+
+*eselect-opengl-1.0.2 (05 Sep 2005)
+
+  05 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +eselect-opengl-1.0.2.ebuild:
+  Version bump to fix symlinking to tls libs and --impl-headers. Plus much
+  cleanup of the module thanks to kugs.
+
+*eselect-opengl-1.0.1 (23 Aug 2005)
+
+  23 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -eselect-opengl-1.0.0.ebuild, +eselect-opengl-1.0.1.ebuild:
+  Fixed a bug in setting up the header files.
 
 *eselect-opengl-1.0.0 (17 Aug 2005)
 

@@ -1,6 +1,21 @@
 # ChangeLog for app-admin/ccze
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/ccze/ChangeLog,v 1.1 2003/06/26 11:29:55 joker Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/ccze/ChangeLog,v 1.1.1.1 2005/11/30 10:00:06 chriswhite Exp $
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> ccze-0.2.1.ebuild:
+  was unstable for over a year without bug reports, marking stable on amd64
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> ccze-0.2.1.ebuild:
+  Masked ccze-0.2.1.ebuild stable for ppc
+
+  30 Sep 2004; Tom Martin <slarti@gentoo.org> ccze-0.2.1.ebuild:
+  Marked ~amd64.
+
+  12 Aug 2004; Christian Birchinger <joker@gentoo.org> ccze-0.2.1.ebuild:
+  Fixed bug #59939. Thanks to Aaron Walker <ka0ttic@butsugenjitemple.org>
+
+  11 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> ccze-0.2.1.ebuild:
+  IUSE, use standard src_compile, error message, header fix
 
 *ccze-0.2.1 (26 June 2003)
 

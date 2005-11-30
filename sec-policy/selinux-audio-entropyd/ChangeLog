@@ -1,10 +1,20 @@
 # ChangeLog for sec-policy/selinux-audio-entropyd
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-audio-entropyd/ChangeLog,v 1.1 2004/04/08 00:33:51 pebenito Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-audio-entropyd/ChangeLog,v 1.1.1.1 2005/11/30 10:02:15 chriswhite Exp $
 
-*selinux-samba-20040407 (07 Apr 2004)
+  07 May 2005; petre rodan <kaiowas@gentoo.org>
+  selinux-audio-entropyd-20050210.ebuild:
+  mark stable
+
+*selinux-audio-entropyd-20050210 (23 Apr 2005)
+
+  23 Apr 2005; petre rodan <kaiowas@gentoo.org>
+  +selinux-audio-entropyd-20050210.ebuild:
+  minor socket-related tweak
+
+*selinux-audio-entropyd-20040407 (07 Apr 2004)
 
   07 Apr 2004; Chris PeBenito <pebenito@gentoo.org> metadata.xml,
-  selinux-samba-20040407.ebuild:
+  selinux-audio-entropyd-20040407.ebuild:
   Initial commit.
 

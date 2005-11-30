@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/karchiver/karchiver-3.1.1-r1.ebuild,v 1.1 2005/05/10 18:22:29 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/karchiver/karchiver-3.1.1-r1.ebuild,v 1.1.1.1 2005/11/30 10:00:34 chriswhite Exp $
 
 inherit kde
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://perso.wanadoo.fr/coquelle/karchiver/"
 SRC_URI="http://perso.wanadoo.fr/coquelle/karchiver/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc sparc"
+KEYWORDS="~amd64 ppc sparc x86"
 SLOT="0"
 IUSE=""
 
@@ -17,9 +17,15 @@ need-kde 3.1
 
 # Nasty packaging...
 src_unpack() {
-	unpack ${A}
-	cd ${S}
+	kde_src_unpack
 	rm -rf karchiver/.libs
 	rm -f karchiver/*.l[ao] karchiver/*.o
 	rm -f config.log config.status
 }
+
+# ...continued.
+src_install() {
+	kde_src_install
+	rm -rf ${D}/usr/share/applnk-mdk
+}
+

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vpopmail/vpopmail-5.4.6-r1.ebuild,v 1.1 2004/08/22 02:03:36 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vpopmail/vpopmail-5.4.6-r1.ebuild,v 1.1.1.1 2005/11/30 10:03:14 chriswhite Exp $
 
 inherit eutils gnuconfig fixheadtails
 
@@ -8,18 +8,18 @@ inherit eutils gnuconfig fixheadtails
 #MY_PV=${PV/_/-}
 #MY_P=${PN}-${MY_PV}
 HOMEPAGE="http://www.inter7.com/index.php?page=vpopmail"
-DESCRIPTION="A collection of programs to manage virtual email domains and accounts on your Qmail or Postfix mail servers."
+DESCRIPTION="A collection of programs to manage virtual email domains and accounts on your Qmail mail servers."
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 #	mysql? ( http://gentoo.twobit.net/misc/${PN}-5.2.1-mysql.diff )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~amd64 ppc"
+KEYWORDS="amd64 arm hppa ppc sparc x86"
 IUSE="mysql ipalias clearpasswd"
 # vpopmail will NOT build if non-root.
-RESTRICT="nouserpriv"
+RESTRICT="nouserpriv userpriv"
 DEPEND_COMMON="mail-mta/qmail
-	mysql? ( >=dev-db/mysql-3.23* )"
+	mysql? ( >=dev-db/mysql-3.23 )"
 DEPEND="sys-apps/sed
 	sys-apps/ucspi-tcp
 	${DEPEND_COMMON}"
@@ -48,7 +48,7 @@ vpopmail_set_homedir() {
 
 pkg_setup() {
 	enewgroup vpopmail 89
-	enewuser vpopmail 89 /bin/false ${VPOP_DEFAULT_HOME} vpopmail
+	enewuser vpopmail 89 -1 ${VPOP_DEFAULT_HOME} vpopmail
 	upgradewarning
 }
 
@@ -59,7 +59,7 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/vpopmail-5.2.1-showall.patch || die "failed to patch."
-
+	epatch ${FILESDIR}/${P}-access.violation.patch || die "failed to patch."
 	sed -i \
 		's|Maildir|.maildir|g' \
 		vchkpw.c vconvert.c vdelivermail.c \
@@ -72,6 +72,7 @@ src_unpack() {
 		|| die "failed to remove vpopmail advertisement"
 
 	gnuconfig_update
+	autoconf || die "reconfigure failed."
 	ht_fix_file ${S}/cdb/Makefile || die "failed to fix file"
 }
 
@@ -85,12 +86,12 @@ src_compile() {
 	use mysql \
 		&& myopts="${myopts} --enable-auth-module=mysql \
 			--enable-libs=/usr/include/mysql \
-			--enable-sqllibdir=/usr/lib/mysql \
+			--enable-libdir=/usr/lib/mysql \
 			--enable-mysql-logging=y \
 			--enable-auth-logging=y \
 			--enable-valias=y \
 			--enable-mysql-replication=n \
-			--enable-mysql-limits" 
+			--enable-mysql-limits"
 
 	# Bug 20127
 	use clearpasswd \
@@ -181,7 +182,7 @@ src_install() {
 
 	einfo "Locking down vpopmail permissions"
 	# secure things more, i don't want the vpopmail user being able to write this stuff!
-	chown -R root:root ${D}${VPOP_HOME}/{bin,etc,include}
+	chown -R root:0 ${D}${VPOP_HOME}/{bin,etc,include}
 }
 
 pkg_preinst() {

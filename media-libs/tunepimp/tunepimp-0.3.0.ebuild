@@ -1,36 +1,55 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/tunepimp/tunepimp-0.3.0.ebuild,v 1.1 2004/08/10 20:56:51 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/tunepimp/tunepimp-0.3.0.ebuild,v 1.1.1.1 2005/11/30 10:04:23 chriswhite Exp $
 
-IUSE="flac oggvorbis readline"
+inherit eutils distutils perl-module
 
-DESCRIPTION="Client library to access metadata of mp3/vorbis/CD media"
-HOMEPAGE="http://www.musicbrainz.org/"
+DESCRIPTION="Client library to create MusicBrainz enabled tagging applications"
+HOMEPAGE="http://www.musicbrainz.org/products/tunepimp"
 SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/lib${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
-SLOT="1"
-KEYWORDS="~x86"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="flac mad vorbis readline python perl"
 
 RDEPEND="dev-libs/expat"
-
 DEPEND="${RDEPEND}
 	flac? ( media-libs/flac )
-	oggvorbis? ( media-libs/libvorbis )
+	vorbis? ( media-libs/libvorbis )
 	readline? ( sys-libs/readline )
-	media-libs/libmad media-libs/libid3tag
-	media-libs/musicbrainz
-	dev-util/pkgconfig"
+	mad? ( media-libs/libmad )
+	>=media-libs/musicbrainz-2.1.0
+	dev-util/pkgconfig
+	!media-sound/trm"
 
 S=${WORKDIR}/lib${P}
 
 src_compile() {
+	epatch ${FILESDIR}/thread.patch
 	econf || die "configure failed"
 	emake || die "emake failed"
+	if use perl; then
+		cd ${S}/perl/tunepimp-perl
+		perl-module_src_compile || die "perl module failed to compile"
+	fi
 }
 
 src_install() {
-	make DESTDIR=${D} install || die "make install failed"
+	cd ${S}
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS ChangeLog INSTALL README TODO
+	if use python; then
+		cd ${S}/python
+		distutils_src_install
+		insinto /usr/share/doc/${PF}/examples/
+		doins examples/*
+	fi
+	if use perl; then
+		cd ${S}/perl/tunepimp-perl
+		perl-module_src_install || die "perl module failed to install"
+		insinto /usr/share/doc/${PF}/examples/
+		doins examples/*
+	fi
 }
 

@@ -1,6 +1,17 @@
 # ChangeLog for net-libs/roadrunner
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/roadrunner/ChangeLog,v 1.1 2004/05/07 00:55:52 dragonheart Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/roadrunner/ChangeLog,v 1.1.1.1 2005/11/30 10:02:59 chriswhite Exp $
+
+  07 Oct 2005; Daniel Black <dragonheart@gentoo.org>
+  roadrunner-0.9.1.ebuild:
+  ppc stable and QA fixes
+
+  24 Jun 2004; David Holm <dholm@gentoo.org> roadrunner-0.9.1.ebuild:
+  Added to ~ppc.
+
+  15 Jun 2004; Daniel Black <dragonheart@gentoo.org> roadrunner-0.9.1.ebuild:
+  x86 stable. Downgraded gtk-doc version dependancy. Replaced einstall with
+  emake DESTDIR=${D}
 
 *roadrunner-0.9.1 (07 May 2004)
 

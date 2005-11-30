@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
+<herd>shell-tools</herd>
 <maintainer>
-  <email>joker@gentoo.org</email>
-  <name>Christian Birchinger</name>
+	<email>ka0ttic@gentoo.org</email>
+	<name>Aaron Walker</name>
 </maintainer>
 <longdescription>
   Since v2.04, bash has allowed you to intelligently program and extend its

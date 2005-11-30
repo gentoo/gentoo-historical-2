@@ -1,11 +1,27 @@
-# ChangeLog for app-games/nighthawk
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/nighthawk/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
+# ChangeLog for games-action/nighthawk
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/nighthawk/ChangeLog,v 1.1.1.1 2005/11/30 10:02:37 chriswhite Exp $
+
+  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> nighthawk-2.2.ebuild:
+  Stable on amd64.
+
+  09 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> nighthawk-2.2.ebuild:
+  added ~amd64 KEYWORD, fixes #84325
+
+  25 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> nighthawk-2.2.ebuild:
+  fix HOMEPAGE (bug #83305); tidy
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> nighthawk-2.2.ebuild:
+  Added IUSE.
+
+  28 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> nighthawk-2.2.ebuild:
+  use games eclass (bug 34644); inherit eutils for epatch; patch in src_unpack;
+  more error checking/messages; tidy
 
   12 Jul 2003; Michael Sterrett <msterret@gentoo.org> nighthawk-2.2.ebuild:
   fix DESCRIPTION; tidy
 
-*nighthawk-2.2-1 (16 Jul 2002)
+*nighthawk-2.2 (16 Jul 2002)
 
   30 Sep 2002; Mike Frysinger <vapier@gentoo.org> nighthawk.patch:
   Added an additional small patch to compile under gcc3.2

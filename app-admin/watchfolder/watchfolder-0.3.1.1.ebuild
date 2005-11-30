@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/watchfolder/watchfolder-0.3.1.1.ebuild,v 1.1 2003/01/04 01:31:30 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/watchfolder/watchfolder-0.3.1.1.ebuild,v 1.1.1.1 2005/11/30 10:00:02 chriswhite Exp $
 
 MY_PV="${PV:0:5}_p1"
 
@@ -10,7 +10,7 @@ SRC_URI="http://dstunrea.sdf-eu.org/files/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 IUSE=""
 DEPEND=""
 #RDEPEND=""
@@ -20,8 +20,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	mv Makefile Makefile.orig
-	sed "3s:OPT=:OPT=${CFLAGS} :" Makefile.orig >Makefile
+	sed -i "3s:OPT=:OPT=${CFLAGS} :" Makefile
 }
 
 src_compile() {

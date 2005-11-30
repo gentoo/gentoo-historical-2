@@ -1,10 +1,19 @@
-# ChangeLog for app-text/latex-leaflet
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/leaflet/ChangeLog,v 1.1 2003/06/09 13:11:26 satai Exp $
+# ChangeLog for dev-tex/leaflet
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/leaflet/ChangeLog,v 1.1.1.1 2005/11/30 10:00:52 chriswhite Exp $
+
+  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> leaflet-19990601.ebuild:
+  Stable on amd64.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> leaflet-19990601.ebuild:
+  Added IUSE=.
+
+  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> leaflet-19990601.ebuild:
+  marked ~amd64
 
   06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
  
-*latex-leaflet-19990601 (21 May 2002)
+*leaflet-19990601 (21 May 2002)
 
   21 May 2002; Bruce A. Locke <blocke@shivan.org> latex-leaflet-19990601.ebuild :
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/tin/tin-1.7.8.ebuild,v 1.1 2005/05/16 17:01:25 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/tin/tin-1.7.8.ebuild,v 1.1.1.1 2005/11/30 10:02:45 chriswhite Exp $
 
 inherit eutils versionator
 
