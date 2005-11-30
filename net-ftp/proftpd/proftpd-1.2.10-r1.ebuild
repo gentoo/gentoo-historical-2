@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.10-r1.ebuild,v 1.1 2004/11/26 15:34:56 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.10-r1.ebuild,v 1.1.1.1 2005/11/30 09:36:18 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -13,13 +13,13 @@ S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="An advanced and very configurable FTP server"
 SRC_URI="ftp://ftp.proftpd.org/distrib/source/${MY_P}.tar.bz2
-		shaper? http://www.castaglia.org/${PN}/modules/${PN}-mod-shaper-0.5.5.tar.gz
+		shaper? ( http://www.castaglia.org/${PN}/modules/${PN}-mod-shaper-0.5.5.tar.gz )
 		http://www.castaglia.org/${PN}/modules/${PN}-mod-delay-0.4.tar.gz"
 HOMEPAGE="http://www.proftpd.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~hppa ~alpha ~ppc ~mips ~amd64"
+KEYWORDS="x86 sparc hppa alpha ppc ~mips amd64"
 
 DEPEND="pam? ( >=sys-libs/pam-0.75 )
 	mysql? ( >=dev-db/mysql-3.23.26 )
@@ -42,6 +42,7 @@ src_unpack() {
 }
 
 src_compile() {
+	addpredict /etc/krb5.conf
 	local modules myconf
 
 	modules="mod_ratio:mod_readme:mod_delay"

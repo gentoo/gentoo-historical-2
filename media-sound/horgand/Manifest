@@ -1,2 +1,6 @@
-MD5 5fe808af10e1b298ca72a79ed36399e6 horgand-0.91.ebuild 554
+MD5 2ae6f16de45ae88038f31223f382c3e8 ChangeLog 1248
+MD5 27751442fc730c76fe0a4f3bd4224635 horgand-0.91.ebuild 757
+MD5 8e4b455101da5a97a99d83e8455ad511 horgand-1.06.ebuild 673
+MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
 MD5 3ddaec66640532a300bf88ed3f05fe47 files/digest-horgand-0.91 63
+MD5 81b9ca40ecea06bde638c645123ce5f4 files/digest-horgand-1.06 65

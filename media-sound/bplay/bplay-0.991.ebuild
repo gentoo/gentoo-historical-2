@@ -1,24 +1,26 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# Maintainer: Arcady Genkin <agenkin@thpoon.com>
-# $Header: /var/cvsroot/gentoo-x86/media-sound/bplay/bplay-0.991.ebuild,v 1.1 2002/03/13 06:00:55 agenkin Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/bplay/bplay-0.991.ebuild,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
+
+IUSE=""
 
 DESCRIPTION="No-frills command-line buffered player and recorder."
 HOMEPAGE="http://www.amberdata.demon.co.uk/bplay/"
-
 SRC_URI="http://www.amberdata.demon.co.uk/bplay/${P}.tar.gz"
-S="${WORKDIR}/${P}"
 
-DEPEND="virtual/glibc"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 hppa ~ppc sparc x86"
+
+DEPEND="virtual/libc"
 
 src_compile() {
-    emake CFLAGS="${CFLAGS} -Wall -DUSEBUFFLOCK" bplay || die
+	emake CFLAGS="${CFLAGS} -Wall -DUSEBUFFLOCK" bplay || die
 }
 
 src_install () {
-    exeinto /usr/bin
-    doexe bplay
-    dosym /usr/bin/bplay /usr/bin/brec
-    doman bplay.1 brec.1
-    dodoc COPYING README
+	dobin bplay || die
+	dosym /usr/bin/bplay /usr/bin/brec
+	doman bplay.1 brec.1
+	dodoc README
 }

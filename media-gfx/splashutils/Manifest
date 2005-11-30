@@ -1,17 +1,22 @@
-MD5 4dcae7f7dfe19ee2441b8ba73620775d splashutils-0.9_pre04.ebuild 2505
-MD5 f4ce235ff3db59715830c33eac59d428 splashutils-0.9_pre06.ebuild 2728
-MD5 097b19a13dc749d636bf9b9ca8f30d33 splashutils-0.9_pre03.ebuild 785
-MD5 4dcae7f7dfe19ee2441b8ba73620775d splashutils-0.9_pre05.ebuild 2505
-MD5 285d246ff6d86975c6db0a18a328e443 splashutils-0.9_pre07.ebuild 1913
-MD5 19fcfc01b17ba5d8df6d139ca3c15cdb files/rc 18710
-MD5 51b24ed63c332283553019f6e245b2a7 files/runscript.sh 12328
-MD5 8384ef0de697d8a905415195d331fe56 files/functions.sh 11452
-MD5 c7beb32cfdb3c544db31bb4c1c601c40 files/digest-splashutils-0.9_pre03 143
-MD5 0005eb751201e533426dcda23e083e43 files/digest-splashutils-0.9_pre04 214
-MD5 2828f94ce7ce1d230c8f19fb2e55f0e4 files/digest-splashutils-0.9_pre05 214
-MD5 3e182e1395c82217ada9dd2b1caa54e4 files/digest-splashutils-0.9_pre06 216
-MD5 ebf22f53007c23687b34a3131f69b230 files/digest-splashutils-0.9_pre07 299
-MD5 cdfbad1f12adf713f414104b14c84edf files/splash-functions.sh 4240
-MD5 b9e63c7ad2c10de42102ff1cfec67aa3 files/splash 3175
-MD5 072119bd0d46d0e81c9a762c94c87f90 files/splash.conf 551
-MD5 893755d681290bbc52c6bacdd4686a26 files/rc-services.sh 15746
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 9bb520965d955a7a145093568fd90291 ChangeLog 10633
+MD5 c518e5f1875064cb0c5784f53f9db7f5 files/digest-splashutils-1.1.9.10 484
+MD5 c55d25b2df1c791c0fa802c0de31af73 files/digest-splashutils-1.1.9.8 547
+MD5 227086af2d5e8360c3e2f23cdbfb97eb files/digest-splashutils-1.1.9.9 548
+MD5 887e148191dfd124be52f9682e391c78 files/digest-splashutils-1.1.9.9-r1 483
+MD5 6b70ab6899c37465a35de0f0a89c6365 files/splashutils-1.1.9.10-ppc-2.6.14.patch 749
+MD5 c9591cbde5eca614a8e1694ee01c315f files/splashutils-1.1.9.9-external-klibc.patch 10294
+MD5 cfe1b5f88cc51ac6ffc42809178d2a06 metadata.xml 221
+MD5 49dce03a53018b483790a604c1745a4d splashutils-1.1.9.10.ebuild 6327
+MD5 4180e756570d9f26db82b36b42c8cbc3 splashutils-1.1.9.8.ebuild 6287
+MD5 1b03f7bbbe2db156b7b1a54d51d76ea0 splashutils-1.1.9.9-r1.ebuild 6234
+MD5 98fd11c248eba6f1f945bc2d7e530664 splashutils-1.1.9.9.ebuild 6323
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDgOUschej4aZK9/cRAjH4AJ9FG34BrxVesp4OwTrTMo76m97dSgCfSQpI
+XnPQ09IEJrA40Z0ASO2xheQ=
+=rRBG
+-----END PGP SIGNATURE-----

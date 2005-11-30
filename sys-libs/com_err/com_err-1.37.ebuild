@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/com_err/com_err-1.37.ebuild,v 1.1 2005/03/24 03:55:20 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/com_err/com_err-1.37.ebuild,v 1.1.1.1 2005/11/30 09:39:10 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -10,8 +10,7 @@ SRC_URI="mirror://sourceforge/e2fsprogs/e2fsprogs-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-*"
-#~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="nls"
 
 RDEPEND=""
@@ -58,4 +57,16 @@ src_install() {
 	mv "${D}"/usr/$(get_libdir)/*.so* "${D}"/$(get_libdir)/
 	dolib.a lib/libcom_err.a || die "dolib.a"
 	gen_usr_ldscript libcom_err.so
+}
+
+pkg_postinst() {
+	echo
+	einfo "PLEASE PLEASE take note of this"
+	einfo "Please make *sure* to run revdep-rebuild now"
+	einfo "Certain things on your system may have linked against a"
+	einfo "different version of com_err -- those things need to be"
+	einfo "recompiled.  Sorry for the inconvenience"
+	echo
+	epause 10
+	ebeep
 }

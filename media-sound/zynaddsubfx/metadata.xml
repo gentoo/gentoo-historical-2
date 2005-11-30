@@ -3,6 +3,7 @@
 <pkgmetadata>
 <herd>sound</herd>
 <maintainer>
-  <email>torbenh@gentoo.org</email>
+  <email>jnc@gentoo.org</email>
+  <name>Eric Shattow</name>
 </maintainer>
 </pkgmetadata>

@@ -1,6 +1,61 @@
 # ChangeLog for media-sound/gnome-alsamixer
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnome-alsamixer/ChangeLog,v 1.1 2003/03/01 03:01:38 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnome-alsamixer/ChangeLog,v 1.1.1.1 2005/11/30 09:38:39 chriswhite Exp $
+
+  24 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gnome-alsamixer-0.9.6.ebuild:
+  Forgot to inherit fdo-mime.  This closes bug #90275.
+
+  21 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/gnome-alsamixer-0.9.6-fixpath.patch, gnome-alsamixer-0.9.6.ebuild:
+  Added patch to fix path to alsa includes. This closes bug #88730 thanks to
+  Alexey Maximov <amax@mail.ru>.
+
+  21 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  -gnome-alsamixer-0.9.3.ebuild, gnome-alsamixer-0.9.6.ebuild:
+  Use fdo-mime_desktop_database_update in postinst.  Closes bug #71904.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gnome-alsamixer-0.9.6.ebuild:
+  Stable on ppc.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnome-alsamixer-0.9.6.ebuild:
+  Stable amd64.
+
+  15 Jul 2004; Tom Martin <slarti@gentoo.org> :
+  Marked ~amd64; closing 51724.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnome-alsamixer-0.9.6.ebuild:
+  inherit eutils.
+
+  04 Apr 2004; Alastair Tse <liquidx@gentoo.org> gnome-alsamixer-0.9.6.ebuild,
+  files/gnome-alsamixer-0.9.6-gtk24.patch:
+  fixed GTK 2.4 support (#45947)
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnome-alsamixer-0.9.3.ebuild, gnome-alsamixer-0.9.6.ebuild:
+  Stable on x86.
+
+  18 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnome-alsamixer-0.9.3.ebuild:
+  Back to einstall to fix bug #42019
+
+*gnome-alsamixer-0.9.6 (17 Feb 2004)
+
+  17 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnome-alsamixer-0.9.3.ebuild, gnome-alsamixer-0.9.6.ebuild, metadata.xml,
+  files/gnome-alsamixer.desktop:
+  Version bump closes bug #35870.
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org>
+  gnome-alsamixer-0.9.3.ebuild:
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org>
+  gnome-alsamixer-0.9.3.ebuild:
+  set ppc in keywords
 
 *gnome-alsamixer-0.9.3 (01 Mar 2003)
 

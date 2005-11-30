@@ -1,8 +1,25 @@
 # ChangeLog for media-sound/smixer
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-sound/smixer/ChangeLog,v 1.1 2002/02/01 21:53:31 gbevin Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/smixer/ChangeLog,v 1.1.1.1 2005/11/30 09:38:13 chriswhite Exp $
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> smixer-1.0.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  22 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> smixer-1.0.1.ebuild:
+  Stable on sparc after some time...
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> smixer-1.0.1.ebuild:
+  Added IUSE.
+
+  11 Apr 2004; Jason Wever <weeve@gentoo.org> smixer-1.0.1.ebuild:
+  Added ~sparc keyword.
+
+  28 Jan 2004; Brad House <brad_mssw@gentoo.org> smixer-1.0.1.ebuild:
+  mark stable on amd64
 
 *smixer-1.0.1 (1 Feb 2002)
+  6 Sep 2002; Owen Stampflee <owen@gentoo.org> smixer-1.0.1.ebuild:
+  Added PPC to KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

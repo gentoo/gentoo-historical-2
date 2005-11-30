@@ -1,6 +1,35 @@
-# ChangeLog for app-games/liquidwar
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/liquidwar/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
+# ChangeLog for games-strategy/liquidwar
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/liquidwar/ChangeLog,v 1.1.1.1 2005/11/30 09:36:44 chriswhite Exp $
+
+  03 Sep 2005; Luis Medinas <metalgod@gentoo.org> liquidwar-5.6.2.ebuild:
+  Added ~amd64 keywords.
+
+  02 Jan 2005; Mike Frysinger <vapier@gentoo.org> liquidwar-5.6.2.ebuild:
+  Pass --disable-target-opt since all it does is add -mcpu to CFLAGS #76338 by
+  Simon Stelling.
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  07 Nov 2004; Joseph Jezak <josejx@gentoo.org> liquidwar-5.6.2.ebuild:
+  Marked ppc stable.
+
+  09 Apr 2004; David Holm <dholm@gentoo.org> liquidwar-5.6.2.ebuild:
+  Added to ~ppc.
+
+*liquidwar-5.6.2 (08 Apr 2004)
+
+  08 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> liquidwar-5.6.2.ebuild:
+  version bump
+
+*liquidwar-5.6.1 (12 Jan 2004)
+
+  12 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> liquidwar-5.6.1.ebuild:
+  version bump (bug 37917)
+
+  06 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> liquidwar-5.5.9.ebuild:
+  turn off the messages from the Makefile; more error checking/messages
 
 *liquidwar-5.5.9 (05 Jun 2003)
 
@@ -29,7 +58,7 @@
  
 *liquidwar-5.5.3.ebuild (17 julio 2002)
 
-  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> Changelog :
+  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> Changelog :
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

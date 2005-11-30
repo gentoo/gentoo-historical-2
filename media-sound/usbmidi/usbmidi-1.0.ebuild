@@ -1,14 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/usbmidi/usbmidi-1.0.ebuild,v 1.1 2003/05/22 11:30:15 jje Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/usbmidi/usbmidi-1.0.ebuild,v 1.1.1.1 2005/11/30 09:38:06 chriswhite Exp $
 
 DESCRIPTION="Sets up hotplugging support for MidiMan midisport 1x1/2x2 usb devices"
-HOMEPAGE="http:///"
-SRC_URI="http://member.nifty.ne.jp/Breeze/softwares/unix/bin/usbmidi-20030126.tar.gz"
+HOMEPAGE="http://homepage3.nifty.com/StudioBreeze/software/usbmidi-e.html"
+SRC_URI="http://homepage3.nifty.com/StudioBreeze/software/bin/usbmidi-20030126.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 DEPEND=""
 
@@ -18,7 +18,7 @@ RDEPEND="sys-apps/hotplug
 
 S="${WORKDIR}/usbmidi-20030126"
 src_install() {
-	insinto ${D}/usr/share/usb/ezusbmidi
+	insinto /usr/share/usb/ezusbmidi
 	doins ${S}/testing/MidiSport/ezusbmidi*.ihx
 
 	insinto /etc/hotplug/usb
@@ -29,11 +29,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo ""
+	einfo
 	einfo "Now the firmware is installed and hotplug has been setup."
 	einfo "Please unplug the midisport, then plug it back in."
 	einfo "The light should start to glow, if that happens its worked."
 	einfo "The midisport ports will appear as 'normal' midi ports under /dev"
-	einfo ""
+	einfo
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/wordpress-1.5.1.3.ebuild,v 1.1 2005/06/30 03:00:09 superlag Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/wordpress-1.5.1.3.ebuild,v 1.1.1.1 2005/11/30 09:37:12 chriswhite Exp $
 
 inherit webapp eutils
 
@@ -14,12 +14,12 @@ HOMEPAGE="http://wordpress.org/"
 #Download is renamed by HTTP Header as wordpress-1.5.1.2.tar.gz
 SRC_URI=mirror://gentoo/${P}.tar.gz
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 RDEPEND=">=dev-php/mod_php-4.1
 	 >=dev-db/mysql-3.23.23"
 
-DEPEND="${DEPEND} ${RDEPEND} >=net-www/webapp-config-1.10-r5"
+DEPEND="${DEPEND} ${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
 
@@ -64,10 +64,6 @@ src_install() {
 	#
 	# for wordpress, we *assume* that all .php files need to have CGI/BIN
 	# support added
-
-	for x in `find . -name '*.php' -print ` ; do
-		webapp_runbycgibin php ${MY_HTDOCSDIR}/$x
-	done
 
 	# post-install instructions
 	#webapp_postinst_txt en ${FILESDIR}/1.2/postinstall-en.txt

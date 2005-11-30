@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.23-r1.ebuild,v 1.1 2005/02/14 13:32:30 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.23-r1.ebuild,v 1.1.1.1 2005/11/30 09:36:50 chriswhite Exp $
 
 inherit toolchain-funcs eutils
 
@@ -10,9 +10,9 @@ SRC_URI="mirror://openldap/openldap-release/${P}.tgz"
 
 LICENSE="OPENLDAP"
 SLOT="0"
-IUSE="berkdb crypt debug gdbm ipv6 odbc perl readline samba sasl slp ssl tcpd"
+IUSE="berkdb crypt debug gdbm ipv6 odbc perl readline samba sasl slp ssl tcpd kerberos"
 #In portage for testing only, hardmasked in package.mask
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~amd64 ~s390 ~hppa ~ppc64"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	>=sys-apps/sed-4
@@ -82,7 +82,7 @@ pkg_setup() {
 
 pkg_preinst() {
 	enewgroup ldap 439
-	enewuser ldap 439 /bin/false /usr/lib/openldap ldap
+	enewuser ldap 439 -1 /usr/lib/openldap ldap
 }
 
 src_unpack() {
@@ -136,7 +136,7 @@ src_compile() {
 	# enable slapd/slurpd servers
 	myconf="${myconf} --enable-ldap"
 	myconf="${myconf} --enable-slapd --enable-slurpd"
-	# basic stuff	
+	# basic stuff
 	myconf="${myconf} --enable-syslog"
 	use debug && myconf="${myconf} --enable-debug" # there is no disable-debug
 	# extra functionality
@@ -152,10 +152,10 @@ src_compile() {
 	myconf="${myconf} --enable-cleartext --enable-slapi"
 
 	# disabled options:
-	# --with-bdb-module=dynamic 
+	# --with-bdb-module=dynamic
 	# alas, for BSD only:
 	# --with-fetch
-	
+
 	for i in crypt ipv6 slp readline; do
 		myconf="${myconf} `use_enable ${i}`"
 	done
@@ -170,6 +170,8 @@ src_compile() {
 	myconf="${myconf} `use_with ssl tls` `use_with samba lmpasswd`"
 
 	econf \
+		--enable-static \
+		--enable-shared \
 		--libexecdir=/usr/lib/openldap \
 		${myconf} || die "configure failed"
 

@@ -1,13 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/id3v2/id3v2-0.1.9-r1.ebuild,v 1.1 2004/02/08 03:40:57 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/id3v2/id3v2-0.1.9-r1.ebuild,v 1.1.1.1 2005/11/30 09:38:33 chriswhite Exp $
+
+inherit eutils
+
+IUSE=""
 
 DESCRIPTION="A command line editor for id3v2 tags."
 HOMEPAGE="http://id3v2.sourceforge.net/"
 SRC_URI="mirror://sourceforge/id3v2/${P}.tar.gz"
+RESTRICT="nomirror"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm"
+KEYWORDS="x86 ~ppc sparc ~alpha ~hppa amd64"
 
 DEPEND="media-libs/id3lib"
 
@@ -34,5 +39,5 @@ src_install()
 {
 	dobin id3v2
 	doman id3v2.1
-	dodoc COPYING INSTALL README
+	dodoc README
 }

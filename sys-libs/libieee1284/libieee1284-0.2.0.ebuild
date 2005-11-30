@@ -1,15 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libieee1284/libieee1284-0.2.0.ebuild,v 1.1 2002/08/04 23:03:26 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libieee1284/libieee1284-0.2.0.ebuild,v 1.1.1.1 2005/11/30 09:39:09 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit libtool
+
 DESCRIPTION="Library to query devices using IEEE1284"
 HOMEPAGE="http://cyberelk.net/tim/libieee1284/index.html"
-SRC_URI="http://cyberelk.net/tim/data/libieee1284/stable/${P}.tar.bz2"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+IUSE=""
 
 LICENSE="GPL-2"
-KEYWORDS="x86 -ppc"
 SLOT="0"
+KEYWORDS="x86 -ppc"
 
 DEPEND="app-text/docbook-sgml-utils
 	>=app-text/docbook-sgml-dtd-4.1
@@ -18,6 +20,8 @@ DEPEND="app-text/docbook-sgml-utils
 
 
 src_compile() {
+	elibtoolize
+
 	econf || die "./configure failed"
 
 	make || die

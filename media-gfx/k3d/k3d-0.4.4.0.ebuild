@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/k3d/k3d-0.4.4.0.ebuild,v 1.1 2005/01/13 07:53:37 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/k3d/k3d-0.4.4.0.ebuild,v 1.1.1.1 2005/11/30 09:37:47 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/k3d/${P}.tbz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~sparc"
 
 DEPEND="virtual/x11
 	virtual/opengl
@@ -22,6 +22,7 @@ DEPEND="virtual/x11
 	=dev-libs/libsigc++-1.0*
 	>=media-libs/netpbm-10
 	media-libs/plib
+	media-gfx/imagemagick
 	truetype? ( >=media-libs/freetype-2 )
 	doc? ( app-text/xmlto )
 	python? ( >=dev-lang/python-2.3 )

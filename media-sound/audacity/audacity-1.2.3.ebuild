@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-1.2.3.ebuild,v 1.1 2004/11/29 13:02:12 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-1.2.3.ebuild,v 1.1.1.1 2005/11/30 09:38:06 chriswhite Exp $
 
 IUSE="encode flac mad oggvorbis"
 
@@ -15,10 +15,11 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-# Do not unmask on amd64 without talking to eradicator
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+# amd64: causes xfce pannel to crash...
+# Bad x86 assembly: #73248
+KEYWORDS="~amd64 ~ppc sparc -x86 ppc64"
 
-DEPEND=">=x11-libs/wxGTK-2.2.9
+DEPEND="=x11-libs/wxGTK-2.4*
 	>=app-arch/zip-2.3
 	>=media-libs/id3lib-3.8.0
 	media-libs/libid3tag

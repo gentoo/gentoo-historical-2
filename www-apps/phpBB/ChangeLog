@@ -1,6 +1,92 @@
-# ChangeLog for net-www/phpBB
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpBB/ChangeLog,v 1.1 2004/08/15 15:27:23 stuart Exp $
+# ChangeLog for www-apps/phpBB
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phpBB/ChangeLog,v 1.1.1.1 2005/11/30 09:37:01 chriswhite Exp $
+
+  31 Oct 2005; Renat Lumpau <rl03@gentoo.org> files/digest-phpBB-2.0.18,
+  Manifest:
+  Recommiting digest as UPSTREAM updated tarball
+
+*phpBB-2.0.18 (31 Oct 2005)
+
+  31 Oct 2005; Renat Lumpau <rl03@gentoo.org>
+  -files/2.0.17-postinstall-en.txt, +files/2.0.18-postinstall-en.txt,
+  -phpBB-2.0.17.ebuild, +phpBB-2.0.18.ebuild:
+  Version bump wrt bug #111000.
+
+  23 Aug 2005; Renat Lumpau <rl03@gentoo.org> phpBB-2.0.17.ebuild:
+  Fixing cp -a wrt bug #103487
+
+*phpBB-2.0.17 (20 Jul 2005)
+
+  20 Jul 2005; Renat Lumpau <rl03@gentoo.org>
+  +files/2.0.17-postinstall-en.txt, -files/2.0.16-postinstall-en.txt,
+  -phpBB-2.0.16.ebuild, +phpBB-2.0.17.ebuild:
+  Version bump wrt bug #98058
+
+  10 Jul 2005; Renat Lumpau <rl03@gentoo.org>
+  +files/2.0.16-postinstall-en.txt, -files/2.0.10-postinstall-en.txt,
+  -files/2.0.11-postinstall-en.txt, -phpBB-2.0.10.ebuild,
+  -phpBB-2.0.11.ebuild, -phpBB-2.0.13.ebuild, -phpBB-2.0.14.ebuild,
+  -phpBB-2.0.15.ebuild, phpBB-2.0.16.ebuild:
+  Removed old versions
+
+  06 Jul 2005; Renat Lumpau <rl03@gentoo.org> phpBB-2.0.16.ebuild:
+  Fixed DEPEND (#57418), permissions (#78126).
+
+*phpBB-2.0.16 (30 Jun 2005)
+
+  30 Jun 2005; Renat Lumpau <rl03@gentoo.org>
+  files/2.0.10-postinstall-en.txt, +phpBB-2.0.16.ebuild:
+  Version bump. Fix #97278.
+
+  12 May 2005; Lars Weiler <pylon@gentoo.org> phpBB-2.0.15.ebuild:
+  Stable on ppc; bug #90213.
+
+*phpBB-2.0.15 (08 May 2005)
+
+  08 May 2005; Aaron Walker <ka0ttic@gentoo.org> +phpBB-2.0.15.ebuild:
+  Version bump for security bug 90213.
+
+  18 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> phpBB-2.0.14.ebuild:
+  Stable on ppc.
+
+*phpBB-2.0.14 (18 Apr 2005)
+
+  18 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +phpBB-2.0.14.ebuild:
+  Version bump for sec bug 89248.
+
+  01 Mar 2005; Lars Weiler <pylon@gentoo.org> phpBB-2.0.13.ebuild:
+  Stable on ppc wrt bug #82955.
+
+*phpBB-2.0.13 (01 Mar 2005)
+
+  01 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +phpBB-2.0.13.ebuild:
+  Version bump for security bug 82955.
+
+  24 Nov 2004; Kurt Lieber <klieber@gentoo.org> phpBB-2.0.11.ebuild:
+  mark stable on ppc, fixes 71681
+
+*phpBB-2.0.11 (21 Nov 2004)
+
+  21 Nov 2004; Rob Holland <tigger@gentoo.org>
+  +files/2.0.11-postinstall-en.txt, +phpBB-2.0.11.ebuild:
+  Fix for bug #71681. Fix tested and confirmed by lcars@gentoo.org
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  phpBB-2.0.10.ebuild:
+  Masked phpBB-2.0.10.ebuild stable for ppc
+
+  03 Sep 2004; Renat Lumpau <rl03@gentoo.org> -phpBB-2.0.8a-r1.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+*phpBB-2.0.10 (27 Aug 2004)
+
+  27 Aug 2004; Martin Holzer <mholzer@gentoo.org>
+  +files/2.0.10-postinstall-en.txt, +phpBB-2.0.10.ebuild:
+  Version bumped. This is a Security release. See 56915
 
 *phpBB-2.0.6-r2 (15 Aug 2004)
 

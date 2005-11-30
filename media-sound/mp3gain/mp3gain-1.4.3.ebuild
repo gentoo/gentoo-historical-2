@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3gain/mp3gain-1.4.3.ebuild,v 1.1 2004/01/14 00:10:22 mholzer Exp $ 
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3gain/mp3gain-1.4.3.ebuild,v 1.1.1.1 2005/11/30 09:38:20 chriswhite Exp $
+
+IUSE=""
 
 S=${WORKDIR}
 DESCRIPTION="MP3Gain automatically adjusts mp3s so that they all have the same volume"
@@ -11,7 +13,11 @@ RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~hppa"
+KEYWORDS="x86 amd64 ~ppc sparc ~alpha ~hppa"
+
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
+	app-arch/unzip"
 
 src_compile() {
 	sed -i 's:INSTALL_PATH= /usr/local/bin:INSTALL_PATH= /usr/bin:' Makefile

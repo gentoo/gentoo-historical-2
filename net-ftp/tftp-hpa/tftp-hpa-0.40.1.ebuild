@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/tftp-hpa/tftp-hpa-0.40.1.ebuild,v 1.1 2005/10/01 07:45:49 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/tftp-hpa/tftp-hpa-0.40.1.ebuild,v 1.1.1.1 2005/11/30 09:36:23 chriswhite Exp $
 
 DESCRIPTION="port of the OpenBSD TFTP server"
 HOMEPAGE="http://www.kernel.org/pub/software/network/tftp/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://kernel/software/network/tftp/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="readline selinux tcpd"
 
 DEPEND="readline? ( sys-libs/readline )
@@ -27,7 +27,7 @@ src_compile() {
 
 src_install() {
 	make INSTALLROOT="${D}" install || die
-	dodoc README* CHANGES 
+	dodoc README* CHANGES
 
 	# iputils installs this
 	rm -f "${D}"/usr/share/man/man8/tftpd.8

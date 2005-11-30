@@ -1,19 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpdscribble/mpdscribble-0.2.6.ebuild,v 1.1 2005/09/15 18:15:32 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpdscribble/mpdscribble-0.2.6.ebuild,v 1.1.1.1 2005/11/30 09:38:23 chriswhite Exp $
 
 DESCRIPTION="An MPD client that submits information to audioscrobbler."
 HOMEPAGE="http://scribble.frob.nl/"
 SRC_URI="http://warp.frob.nl/projects/scribble/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
-DEPEND=">=dev-libs/glib-2.0
-	>=net-libs/libsoup-2.0
-	>=dev-libs/libxml2-2.0
-	>=net-libs/gnutls-1.2.4
-	>=dev-libs/libgcrypt-1.2.1"
+DEPEND=">=net-libs/libsoup-2.0"
 
 src_install() {
 	make DESTDIR=${D} install || die
@@ -22,8 +18,7 @@ src_install() {
 	doexe setup.sh
 
 	doman mpdscribble.1
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/mpdscribble.rc mpdscribble
+	newinitd ${FILESDIR}/mpdscribble.rc mpdscribble
 
 	dodoc AUTHORS ChangeLog NEWS README TODO
 

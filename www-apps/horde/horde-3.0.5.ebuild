@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/horde-3.0.5.ebuild,v 1.1 2005/08/07 21:58:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/horde-3.0.5.ebuild,v 1.1.1.1 2005/11/30 09:36:56 chriswhite Exp $
 
 inherit horde
 
@@ -18,8 +18,6 @@ RDEPEND="virtual/php
 	dev-php/PEAR-Log
 	dev-php/PEAR-Mail_Mime
 	mysql? ( dev-php/PEAR-DB )"
-
-EHORDE_PATCHES="${FILESDIR}/horde-3.0.4-freebusy.patch"
 
 pkg_setup() {
 	has_version '>=virtual/php-5' \

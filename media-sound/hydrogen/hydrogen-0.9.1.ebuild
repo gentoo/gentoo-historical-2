@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/hydrogen/hydrogen-0.9.1.ebuild,v 1.1 2005/04/11 13:55:30 luckyduck Exp $
-
-IUSE="alsa jack ladspa"
+# $Header: /var/cvsroot/gentoo-x86/media-sound/hydrogen/hydrogen-0.9.1.ebuild,v 1.1.1.1 2005/11/30 09:38:28 chriswhite Exp $
 
 inherit eutils kde-functions
 
@@ -15,14 +13,23 @@ SRC_URI="mirror://sourceforge/hydrogen/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~ppc64"
+IUSE="alsa jack ladspa"
 
 DEPEND=">=media-libs/libsndfile-1.0.0
-	alsa? ( media-libs/alsa-lib )
 	>=media-libs/audiofile-0.2.3
 	>=media-libs/flac-1
+	=x11-libs/qt-3*
+	alsa? ( media-libs/alsa-lib )
 	jack? ( media-sound/jack-audio-connection-kit )
-	ladspa? ( media-libs/liblrdf )
-	>=x11-libs/qt-3"
+	ladspa? ( media-libs/liblrdf )"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	if use ppc; then
+		epatch ${FILESDIR}/${PV}-OSS.patch
+	fi
+}
 
 src_compile() {
 	need-autoconf 2.5
@@ -36,4 +43,7 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS ChangeLog README TODO
+
+	newicon hydrogen_gui/img/icon32.png hydrogen.png
+	make_desktop_entry hydrogen hydrogen hydrogen.png Audio
 }

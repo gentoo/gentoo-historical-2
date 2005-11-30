@@ -1,6 +1,6 @@
 # ChangeLog for app-mobilephone/esms
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/esms/ChangeLog,v 1.1 2005/05/15 19:06:59 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/esms/ChangeLog,v 1.1.1.1 2005/11/30 09:36:33 chriswhite Exp $
 
   15 May 2005; Alin Nastac <mrness@gentoo.org> metadata.xml:
   Moved from net-misc/esms to app-mobilephone/esms.

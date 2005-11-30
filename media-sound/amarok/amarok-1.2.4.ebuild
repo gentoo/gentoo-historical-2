@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-1.2.4.ebuild,v 1.1 2005/05/21 17:34:29 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/amarok/amarok-1.2.4.ebuild,v 1.1.1.1 2005/11/30 09:38:03 chriswhite Exp $
 
 inherit kde eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/amarok/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc -sparc ~x86"
+KEYWORDS="amd64 ppc -sparc x86"
 IUSE="arts flac gstreamer kde mad mysql noamazon oggvorbis opengl xine xmms visualization"
 # kde: enables compilation of the konqueror sidebar plugin
 
@@ -28,7 +28,7 @@ RDEPEND="kde? ( || ( kde-base/konqueror kde-base/kdebase ) )
 		      oggvorbis? ( >=media-plugins/gst-plugins-ogg-0.8.6
 				   >=media-plugins/gst-plugins-vorbis-0.8.6 )
 		      flac? ( >=media-plugins/gst-plugins-flac-0.8.6 ) )
-	 mysql? ( >=dev-db/mysql-4 )
+	 mysql? ( >=dev-db/mysql-4.0.16 )
 	 visualization? ( media-libs/libsdl
 			  >=media-plugins/libvisual-plugins-0.2 )"
 
@@ -55,11 +55,16 @@ pkg_setup() {
 	kde_pkg_setup
 }
 
+src_unpack() {
+	kde_src_unpack
+	epatch ${FILESDIR}/amarok-gcc4.gz
+}
+
 src_compile() {
 	# amarok does not respect kde coding standards, and makes a lot of
 	# assuptions regarding its installation directory. For this reason,
 	# it must be installed in the KDE install directory.
-	PREFIX="`kde-config --prefix`"
+	PREFIX="${KDEDIR}"
 
 	myconf="$(use_with arts) $(use_with xine)
 		$(use_with gstreamer) $(use_enable mysql)

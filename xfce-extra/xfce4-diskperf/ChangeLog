@@ -1,6 +1,42 @@
 # ChangeLog for xfce-extra/xfce4-diskperf
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-diskperf/ChangeLog,v 1.1 2003/10/10 04:18:55 bcowan Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-diskperf/ChangeLog,v 1.1.1.1 2005/11/30 09:38:58 chriswhite Exp $
+
+*xfce4-diskperf-1.5-r2 (06 Oct 2005)
+
+  06 Oct 2005; Brad Cowan <bcowan@gentoo.org> +xfce4-diskperf-1.5-r2.ebuild:
+  Xfce builds for new eclass and modular Xorg.
+
+*xfce4-diskperf-1.5-r1 (06 Jan 2005)
+
+  06 Jan 2005; Brad Cowan <bcowan@gentoo.org> +xfce4-diskperf-1.5-r1.ebuild:
+  Updated to use Xfce4 eclass.
+
+  19 Sep 2004; Brad Cowan <bcowan@gentoo.org> :
+  Version bump.
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> xfce4-diskperf-1.4.1.ebuild:
+  Stable on sparc.
+
+*xfce4-diskperf-1.4.1 (07 Dec 2003)
+
+  07 Dec 2003; Brad Cowan <bcowan@gentoo.org> xfce4-diskperf-1.4.1.ebuild:
+  Version bump.
+
+*xfce4-diskperf-1.4 (12 Nov 2003)
+
+  12 Nov 2003; Brad Cowan <bcowan@gentoo.org> xfce4-diskperf-1.4.ebuild:
+  Version bump.
+
+*xfce4-diskperf-1.3 (05 Nov 2003)
+
+  05 Nov 2003; Brad Cowan <bcowan@gentoo.org> xfce4-diskperf-1.3.ebuild:
+  Version bump.
+
+*xfce4-diskperf-1.1 (26 Oct 2003)
+
+  26 Oct 2003; Daniel Ahlberg <aliz@gentoo.org xfce4-diskperf-1.1.ebuild:
+  Version bump
 
 *xfce4-diskperf-1.0 (10 Oct 2003)
 

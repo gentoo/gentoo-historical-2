@@ -1,12 +1,12 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/opendx/opendx-4.3.2-r1.ebuild,v 1.1 2004/05/24 11:35:26 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/opendx/opendx-4.3.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:23 chriswhite Exp $
 
 # Set SMP="no" to force disable of SMP compilation.
 # Set SMP="yes" to force enable of SMP compilation.
 # Otherwise it will be autodetected from /usr/src/linux.
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic linux-info
 
 DESCRIPTION="A 3D data visualization tool"
 HOMEPAGE="http://www.opendx.org/"
@@ -24,16 +24,16 @@ SRC_URI="http://opendx.npaci.edu/source/${P/open}.tar.gz"
 LICENSE="IPL-1"
 SLOT="0"
 # Should work on x86, ppc, alpha at least
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ppc x86"
 
 IUSE="hdf cdf netcdf tiff imagemagick szip" # java doc"
 
 DEPEND="virtual/x11
 	x11-libs/openmotif
-	szip? ( dev-libs/szip )
-	hdf? ( dev-libs/hdf )
-	cdf? ( app-sci/cdf )
-	netcdf? ( app-sci/netcdf )
+	szip? ( sci-libs/szip )
+	hdf? ( sci-libs/hdf )
+	cdf? ( sci-libs/cdf )
+	netcdf? ( sci-libs/netcdf )
 	tiff? ( media-libs/tiff )
 	imagemagick? ( >=media-gfx/imagemagick-5.3.4 )"
 # waiting on bug #36349 for media-libs/jasper in imagemagick
@@ -48,17 +48,7 @@ smp() {
 }
 
 smp_check() {
-	if [ -e /usr/src/linux/.config ]
-	then
-		if [ "`grep SMP /usr/src/linux/.config | cut -d= -f2`" = "y" ]
-		then
-			return 0
-		else
-			return 1
-		fi
-	else
-		die "SMP check failed. Make sure /usr/src/linux/.config exists."
-	fi
+	linux_chkconfig_present SMP
 }
 
 src_compile() {
@@ -84,6 +74,9 @@ src_compile() {
 	# with gcc 3.3.2 I had an infinite loop on src/exec/libdx/zclipQ.c
 	append-flags -fno-strength-reduce
 
+	# (#82672)
+	filter-flags -finline-functions
+	replace-flags -O3 -O2
 
 	local GENTOOARCH="${ARCH}"
 	# opendx uses this variable

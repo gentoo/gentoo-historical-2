@@ -1,3 +1,4 @@
-MD5 166bf6a071476d096a14cc12f5c634f9 files/digest-angband-3.0.3 66
-MD5 34844b84a0c5a39960ef8380ba9583c4 angband-3.0.3.ebuild 1104
-MD5 59b8a6d7bac1cc0c334664e5634f3bac ChangeLog 822
+MD5 a6983508558ec383e6f709e8f2860b92 angband-3.0.5.ebuild 1331
+MD5 96b051f3ecd3fcbcd4bd9bc598c80e56 ChangeLog 2019
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 664ca676ca11ddb5e8c75f01ed3d89cf files/digest-angband-3.0.5 66

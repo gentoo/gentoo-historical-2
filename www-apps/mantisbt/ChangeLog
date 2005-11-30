@@ -1,6 +1,88 @@
 # ChangeLog for www-apps/mantisbt
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mantisbt/ChangeLog,v 1.1 2004/08/30 09:31:26 rl03 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mantisbt/ChangeLog,v 1.1.1.1 2005/11/30 09:37:13 chriswhite Exp $
+
+*mantisbt-1.0.0_rc3 (31 Oct 2005)
+
+  31 Oct 2005; Renat Lumpau <rl03@gentoo.org> +mantisbt-1.0.0_rc3.ebuild:
+  Version bump
+
+  25 Oct 2005; Renat Lumpau <rl03@gentoo.org> mantisbt-1.0.0_rc2.ebuild:
+  Added postgres support wrt bug #106488.
+
+  25 Oct 2005; Renat Lumpau <rl03@gentoo.org> -files/0.19.2-debian.patch,
+  -mantisbt-0.19.2.ebuild:
+  Removing old version
+
+  24 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mantisbt-0.19.3.ebuild:
+  Stable on ppc.
+
+*mantisbt-0.19.3 (24 Oct 2005)
+
+  24 Oct 2005; Renat Lumpau <rl03@gentoo.org> +files/0.19.3-debian.patch,
+  +mantisbt-0.19.3.ebuild:
+  Version bump wrt security bug #110326.
+
+  16 Sep 2005; Renat Lumpau <rl03@gentoo.org> mantisbt-0.19.2.ebuild:
+  Fixed ${S}
+
+  15 Sep 2005; Renat Lumpau <rl03@gentoo.org> -mantisbt-0.18.3.ebuild:
+  Removing vulnerable version wrt security bug #103308.
+
+  15 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  mantisbt-0.19.2.ebuild:
+  Stable on ppc.
+
+*mantisbt-0.19.2 (14 Sep 2005)
+
+  14 Sep 2005; Renat Lumpau <rl03@gentoo.org> +files/0.19.2-debian.patch,
+  +mantisbt-0.19.2.ebuild:
+  Version bump wrt security bug #103308. Using a Debian patch.
+
+*mantisbt-1.0.0_rc2 (14 Sep 2005)
+
+  14 Sep 2005; Renat Lumpau <rl03@gentoo.org> -mantisbt-1.0.0_rc1.ebuild,
+  +mantisbt-1.0.0_rc2.ebuild:
+  Version bump
+
+  11 Sep 2005; Renat Lumpau <rl03@gentoo.org> mantisbt-0.18.3.ebuild,
+  mantisbt-1.0.0_rc1.ebuild:
+  Fixed php deps wrt bug #105419.
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org>
+  files/postinstall-en-1.0.0.txt:
+  Housekeeping
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org>
+  files/postinstall-en-1.0.0.txt, mantisbt-1.0.0_rc1.ebuild:
+  Housekeeping
+
+  12 Aug 2005; Luis Medinas <metalgod@gentoo.org> mantisbt-1.0.0_rc1.ebuild:
+  Add ~amd64 Keywords. Closes bug #98747.
+
+*mantisbt-1.0.0_rc1 (28 Jul 2005)
+
+  28 Jul 2005; Renat Lumpau <rl03@gentoo.org>
+  +files/postinstall-en-1.0.0.txt, -mantisbt-1.0.0_alpha3.ebuild,
+  +mantisbt-1.0.0_rc1.ebuild:
+  Version bump (bug #100564)
+
+*mantisbt-1.0.0_alpha3 (04 Jul 2005)
+
+  04 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +mantisbt-1.0.0_alpha3.ebuild:
+  Version bump, closes #77253.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mantisbt-0.18.3.ebuild:
+  Masked mantisbt-0.18.3.ebuild stable for ppc
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> mantisbt-0.18.3.ebuild:
+  Added to ~ppc.
+
+  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> mantisbt-0.18.3.ebuild:
+  Fixed DEPEND/RDEPEND
 
 *mantisbt-0.18.3 (30 Aug 2004)
 

@@ -1,10 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/rt/rt-3.2.1.ebuild,v 1.1 2004/08/25 13:01:01 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/rt/rt-3.2.1.ebuild,v 1.1.1.1 2005/11/30 09:36:58 chriswhite Exp $
 
 inherit webapp eutils
 
-IUSE="mysql postgres fastcgi apache2"
+IUSE="mysql postgres fastcgi"
+#IUSE="mysql postgres fastcgi apache2"
 
 DESCRIPTION="RT is an industrial-grade ticketing system"
 HOMEPAGE="http://www.bestpractical.com/rt/"
@@ -12,7 +13,7 @@ SRC_URI="http://www.fsck.com/pub/${PN}/release/${P}.tar.gz
 	ftp://ftp.eu.uu.net/pub/unix/ticketing/${PN}/release/${P}.tar.gz
 	ftp://rhinst.ece.cmu.edu/${PN}/release/${P}.tar.gz"
 
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="
 	>=dev-lang/perl-5.8.3
@@ -61,22 +62,24 @@ RDEPEND="
 	mysql? ( >=dev-db/mysql-4.0.13 >=dev-perl/DBD-mysql-2.0416 )
 	postgres? ( >=dev-db/postgresql-7.4.2-r1 dev-perl/DBD-Pg )
 	fastcgi? ( dev-perl/FCGI net-www/mod_fastcgi )
-	apache2? ( >=net-www/apache-2 dev-perl/FCGI net-www/mod_fastcgi )
-	!apache2? ( =net-www/apache-1* =dev-perl/libapreq-1* )
+	!fastcgi? ( =www-apache/libapreq-1* )
+	=net-www/apache-1*
 "
-#	apache2? ( >=net-www/apache-2  >=dev-perl/mod_perl-1.99.11 >=dev-perl/libapreq-2 ) : ( =net-www/apache-1* dev-perl/libapreq-1* )
+#	apache2? ( >=net-www/apache-2 dev-perl/FCGI net-www/mod_fastcgi )
+#	!apache2? ( =net-www/apache-1* =www-apache/libapreq-1* )
 
 LICENSE="GPL-2"
 
 pkg_setup() {
 	webapp_pkg_setup
 
-	if use apache2; then
-		ewarn "mod_perl2 isn't ready for prime time, fastcgi will be used instead"
-		ewarn "If you really want mod_perl2, you can edit the ebuild and uncomment a few lines"
-		ewarn "but if your RT breaks, you get to keep the pieces."
-		ewarn
-	fi
+#	if use apache2; then
+#		ewarn "mod_perl2 isn't ready for prime time, fastcgi will be used instead"
+#		ewarn "If you really want mod_perl2, you can edit the ebuild and uncomment a few lines"
+#		ewarn "but if your RT breaks, you get to keep the pieces."
+#		ewarn
+#	fi
+	ewarn "RT needs MySQL with innodb support"
 	ewarn
 	ewarn "If you are upgrading from an existing _RT2_ installation,"
 	ewarn "stop this ebuild (Ctrl-C now), download the upgrade tool,"
@@ -94,9 +97,9 @@ src_unpack() {
 
 src_compile() {
 	# capture the list of files from configure to patch later on
-	files=`./configure --prefix=${D}/usr \
+	files=$(./configure --prefix=${D}/usr \
 		--with-web-user=apache \
-		--with-web-group=apache | grep creating | cut -d':' -f2 | cut -d' ' -f3`
+		--with-web-group=apache | grep creating | cut -d':' -f2 | cut -d' ' -f3)
 	# ./configure doesn't accept locations, so patch these files directly
 	sed -i "s|/usr/etc|${MY_HOSTROOTDIR}/rt-config|
 			s|/usr/man|/usr/share/man|
@@ -110,10 +113,17 @@ src_compile() {
 	" ${files}
 
 	# check for missing deps and ask to report if something is broken
-	if `make testdeps | grep "MISSING"`; then
-		ewarn "Missing Perl dependency, please file a bug in the Gentoo Bugzilla with the information above"
+	/usr/bin/perl ./sbin/rt-test-dependencies --verbose \
+		$(use_with mysql) \
+		$(use_with postgres pg) > ${T}/t
+	if grep -q "MISSING" ${T}/t; then
+		ewarn "Missing Perl dependency!"
+		ewarn
+		cat ${T}/t
+		ewarn
+		ewarn "Please file a bug in the Gentoo Bugzilla with the information above"
 		ewarn "and assign it to rl03@gentoo.org"
-		die "Missing dependencies"
+		die "Missing dependencies."
 	fi
 }
 
@@ -137,7 +147,7 @@ src_install() {
 	grep -Rl "${D}" * | xargs dosed
 	chmod +r ${D}/${MY_HOSTROOTDIR}/rt-config/RT*
 
-	webapp_postinst_txt en ${FILESDIR}/postinstall-en.txt
-	webapp_hook_script ${FILESDIR}/reconfig
+	webapp_postinst_txt en ${FILESDIR}/${PV}/postinstall-en.txt
+	webapp_hook_script ${FILESDIR}/${PV}/reconfig
 	webapp_src_install
 }

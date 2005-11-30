@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpcollab/phpcollab-2.5_rc3.ebuild,v 1.1 2005/08/22 21:06:25 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phpcollab/phpcollab-2.5_rc3.ebuild,v 1.1.1.1 2005/11/30 09:37:07 chriswhite Exp $
 
 inherit webapp
 

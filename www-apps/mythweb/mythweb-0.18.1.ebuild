@@ -1,31 +1,25 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mythweb/mythweb-0.18.1.ebuild,v 1.1 2005/05/20 09:16:17 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mythweb/mythweb-0.18.1.ebuild,v 1.1.1.1 2005/11/30 09:36:54 chriswhite Exp $
 
-inherit webapp
+inherit webapp depend.php
 
 DESCRIPTION="PHP scripts intended to manage MythTV from a web browser."
 HOMEPAGE="http://www.mythtv.org/"
 SRC_URI="http://www.mythtv.org/mc/mythplugins-${PV}.tar.bz2"
 IUSE=""
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc x86"
 
-RDEPEND=">=dev-php/mod_php-4.2
-	~media-tv/mythtv-${PV}"
+RDEPEND="virtual/httpd-php"
 
 S="${WORKDIR}/mythplugins-${PV}/${PN}"
 
 pkg_setup() {
 	webapp_pkg_setup
 
-	if has_version \>=dev-php/mod_php-5 ; then
-		local modphp_use="$(</var/db/pkg/`best_version =dev-php/mod_php`/USE)"
-	        if ! has session ${modphp_use} ; then
-	                eerror "mod_php is missing session support. Please add"
-	                eerror "'session' to your USE flags, and re-emerge mod_php and php."
-	                die "mod_php needs session support"
-	        fi
+	if has_version 'dev-lang/php' ; then
+	    require_php_with_use session
 	fi
 }
 

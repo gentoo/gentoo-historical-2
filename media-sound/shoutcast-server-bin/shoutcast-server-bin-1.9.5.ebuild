@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/shoutcast-server-bin/shoutcast-server-bin-1.9.5.ebuild,v 1.1 2005/01/03 20:57:42 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/shoutcast-server-bin/shoutcast-server-bin-1.9.5.ebuild,v 1.1.1.1 2005/11/30 09:38:44 chriswhite Exp $
 
 IUSE=""
 
@@ -13,10 +13,16 @@ HOMEPAGE="http://www.shoutcast.com/download/license.phtml"
 SRC_URI="shoutcast-${SVER}-linux-glibc6.tar.gz"
 LICENSE="shoutcast"
 SLOT="0"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 DEPEND="amd64? ( app-emulation/emul-linux-x86-glibc )"
 
 S="${WORKDIR}/shoutcast-${SVER}-linux-glibc6"
+
+pkg_nofetch() {
+	einfo "Please download ${A} from:"
+	einfo "${HOMEPAGE}"
+	einfo "and move it to ${DISTDIR}"
+}
 
 src_compile() {
 	einfo "Nothing to compile."
@@ -61,10 +67,19 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "To start shoutcast, use the init.d script by running /etc/init.d/shoutcast."
+	einfo
+	einfo "To start shoutcast, use the init.d script by running"
+	einfo "/etc/init.d/shoutcast."
 	einfo
 	einfo "On demand content should be stored in /opt/shoutcast/content"
-	einfo "See http://forums.winamp.com/showthread.php?threadid=75736 for more information on setting up on demand content"
+	einfo "See http://forums.winamp.com/showthread.php?threadid=75736 for"
+	einfo "more information on setting up on demand content"
 	einfo
-	einfo "FAQ's can be found at: http://forums.winamp.com/showthread.php?threadid=75736 and can help you with server setup."
+	einfo "FAQ's can be found at:"
+	einfo "http://forums.winamp.com/showthread.php?threadid=75736 "
+	einfo "and can help you with server setup."
+	einfo
+	einfo "An Gentoo Linux shoutcast guide can be found at "
+	einfo "http://www.gentoo.org/doc/en/shoutcast-config.xml"
+	einfo
 }

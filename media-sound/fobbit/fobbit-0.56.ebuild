@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/fobbit/fobbit-0.56.ebuild,v 1.1 2003/08/10 04:23:57 jje Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/fobbit/fobbit-0.56.ebuild,v 1.1.1.1 2005/11/30 09:38:07 chriswhite Exp $
 
 MY_P="${PN}-0.60rc1"
 S="${WORKDIR}/${MY_P}/src"
@@ -8,11 +8,13 @@ DESCRIPTION="Software to use the Creative VoiceBlaster USB VoIP phone device"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 HOMEPAGE="http://www.fobbit.org/ http://www.sourceforge.net/projects/fobbit/"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86"
+KEYWORDS="x86"
+
+IUSE=""
 
 src_compile() {
 	check_KV
@@ -23,9 +25,9 @@ src_compile() {
 	einfo "Building kernel module"
 
 	cd ${S}/linux_drv/
-	
+
 	# the linux driver for kernel series 2.4.20 is different than for
-	# earlier kernels, so we have to detect the kernel version and 
+	# earlier kernels, so we have to detect the kernel version and
 	# manually select the source file.
 
 	# snippet courtesy of media-video/nvidia-kernel
@@ -45,7 +47,7 @@ src_compile() {
 		mv usbvb-2.4.20.c usbvb.c
 	fi
 
-	make
+	make || die
 }
 
 src_install() {
@@ -72,16 +74,16 @@ pkg_config() {
 }
 
 pkg_postinst() {
-	einfo ""
+	einfo
 	einfo "Execute:"
-	einfo ""
+	einfo
 	einfo " \"ebuild /var/db/pkg/media-sound/${P}/${P}.ebuild config\""
-	einfo ""
+	einfo
 	einfo "to create the USB VB devices in /dev/vbc[0-3] and /dev/vbv[0-3]."
-	einfo ""
+	einfo
 	einfo "To load the usbvb module, you may type \"insmod usbvb\". To have"
 	einfo "the module load automatically at boot time, add the line \"usbvb\""
 	einfo "to /etc/modules.autoload"
-	einfo ""
+	einfo
 }
 

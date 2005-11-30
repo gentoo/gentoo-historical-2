@@ -1,22 +1,20 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/dbench/dbench-2.0.ebuild,v 1.1 2002/07/25 12:11:11 achim Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/dbench/dbench-2.0.ebuild,v 1.1.1.1 2005/11/30 09:36:37 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Popular filesystem benchmark"
 SRC_URI="ftp://samba.org/pub/tridge/dbench/${P}.tar.gz"
 HOMEPAGE="ftp://samba.org/pub/tridge/dbench/"
-DEPEND="virtual/glibc sys-apps/sed"
-
-KEYWORDS="x86"
-SLOT=0
+SLOT="0"
 LICENSE="GPL-2"
+KEYWORDS="x86 ppc amd64 sparc"
+IUSE=""
+DEPEND="sys-apps/sed"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	cp Makefile Makefile.orig
-	sed -e "s:-O2 -Wall:${CFLAGS}:g" Makefile.orig > Makefile
+	sed -i -e "s:-O2 -Wall:${CFLAGS}:g" Makefile
 }
 
 src_compile() {

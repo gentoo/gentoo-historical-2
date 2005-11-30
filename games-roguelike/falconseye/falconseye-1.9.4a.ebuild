@@ -1,23 +1,24 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/falconseye/falconseye-1.9.4a.ebuild,v 1.1 2003/12/02 01:20:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/falconseye/falconseye-1.9.4a.ebuild,v 1.1.1.1 2005/11/30 09:38:48 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="A graphical version of nethack (unofficially developed version 1.94)"
 HOMEPAGE="http://falconseye.sourceforge.net/"
 SRC_URI="http://cage.ugent.be/~jdemeyer/nethack/nethack-341-jtp-194a.tar.bz2"
 
+KEYWORDS="x86 ppc ~amd64"
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="x86 ppc"
+IUSE=""
 
 DEPEND="media-libs/libsdl
 	dev-util/yacc
 	dev-util/byacc"
 RDEPEND="media-libs/libsdl
 	media-sound/timidity++
-	media-sound/mpg123"
+	virtual/mpg123"
 
 S=${WORKDIR}/nethack-341-jtp-194a
 
@@ -42,7 +43,7 @@ src_compile() {
 	cd doc
 	emake || die "doc failed"
 }
- 
+
 src_install() {
 	emake \
 		GAMEPERM=0755 \
@@ -60,4 +61,5 @@ src_install() {
 	doman doc/falconseye.6
 	dodoc ChangeLog README falcon.txt
 	prepgamesdirs
+	chmod -R g+w ${D}/${GAMES_STATEDIR}
 }

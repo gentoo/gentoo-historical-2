@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xli/xli-1.17.0-r1.ebuild,v 1.1 2005/02/28 11:22:14 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xli/xli-1.17.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:20 chriswhite Exp $
 
 inherit alternatives
 
@@ -11,13 +11,14 @@ SRC_URI="http://pantransit.reptiles.org/prog/xli/xli-${SNAPSHOT}.tar.gz"
 
 LICENSE="X11"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc-macos ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc-macos ppc64 sparc x86"
 IUSE=""
 
 DEPEND="virtual/x11
 	>=sys-libs/zlib-1.1.4
 	>=media-libs/libpng-1.0.5
-	>=media-libs/jpeg-6b-r2"
+	>=media-libs/jpeg-6b-r2
+	app-arch/bzip2"
 
 S=${WORKDIR}/${PN}-${SNAPSHOT}
 
@@ -33,7 +34,7 @@ src_unpack() {
 	fi
 
 	sed -i Imakefile \
-		-e "/^DEFINES =/s/$/ -DHAVE_GUNZIP/" \
+		-e "/^DEFINES =/s/$/ -DHAVE_GUNZIP -DHAVE_BUNZIP2 /" \
 		-e "/CCOPTIONS =/s/=.*/=/"
 
 	# This is a hack to avoid a parse error on /usr/include/string.h
@@ -48,7 +49,7 @@ src_unpack() {
 }
 
 src_compile() {
-	/usr/X11R6/bin/xmkmf || die
+	xmkmf || die "xmkmf failed."
 
 	emake CDEBUGFLAGS="${CFLAGS}" || die
 }

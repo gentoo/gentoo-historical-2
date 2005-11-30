@@ -1,8 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/transfig/transfig-3.2.4-r2.ebuild,v 1.1 2004/09/02 02:54:03 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/transfig/transfig-3.2.4-r2.ebuild,v 1.1.1.1 2005/11/30 09:37:46 chriswhite Exp $
 
-inherit gcc eutils
+IUSE=""
+
+inherit toolchain-funcs eutils
 
 MY_P=${PN}.${PV}
 S=${WORKDIR}/${MY_P}
@@ -15,8 +17,7 @@ HOMEPAGE="http://www.xfig.org"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64"
-IUSE=""
+KEYWORDS="alpha amd64 ~hppa ~ppc ~ppc-macos ppc64 ~sparc ~x86"
 
 DEPEND="virtual/x11
 	>=media-libs/jpeg-6
@@ -28,8 +29,8 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}.patch
 	epatch ../${SHAPE_P}/${PN}.${SHAPE_P#*.}.patch	# bug #20877
 
-	#bad way to fix a bad issue
-	if [ "$(gcc-major-version)" -eq "3" -a "$(gcc-minor-version)" -ge "3" ]
+	# Apply gcc-3.3 patch for GCC 3.3 and above -- bug #110948
+	if [ "$(gcc-major-version)$(gcc-minor-version)" -ge "33" ];
 	then
 		epatch  ${FILESDIR}/${P}-gcc-3.3.patch
 	fi
@@ -39,14 +40,14 @@ src_compile() {
 	xmkmf || die "xmkmf failed"
 	make Makefiles || die "make Makefiles failed"
 
-	emake BINDIR=/usr/bin LIBDIR=/usr/lib || die "emake failed"
+	emake BINDIR=/usr/bin LIBDIR=/usr/$(get_libdir) || die "emake failed"
 }
 
 src_install() {
 	make \
 		DESTDIR=${D} \
 		BINDIR=/usr/bin \
-		LIBDIR=/usr/lib \
+		LIBDIR=/usr/$(get_libdir) \
 		install || die
 
 	#Install docs

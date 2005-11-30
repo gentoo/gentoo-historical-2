@@ -1,7 +1,12 @@
 # ChangeLog for sys-libs/gi-detect
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/gi-detect/ChangeLog,v 1.1 2002/09/15 15:40:54 verwilst Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/gi-detect/ChangeLog,v 1.1.1.1 2005/11/30 09:39:10 chriswhite Exp $
 
-*gi-detect-0.1 (15 Sept 2002) Bart Verwilst <verwilst@gentoo.org>:
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> gi-detect-0.1.ebuild:
+  Added missing IUSE.
+
+*gi-detect-0.1 (15 Sep 2002) 
+
+  15 Sep 2002; Bart Verwilst <verwilst@gentoo.org>:
   
   Initial ebuild.

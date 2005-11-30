@@ -1,6 +1,81 @@
-# ChangeLog for net-www/twiki
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/twiki/ChangeLog,v 1.1 2004/08/15 15:49:56 stuart Exp $
+# ChangeLog for www-apps/twiki
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/twiki/ChangeLog,v 1.1.1.1 2005/11/30 09:36:59 chriswhite Exp $
+
+  10 Nov 2005; Renat Lumpau <rl03@gentoo.org> twiki-20041030-r1.ebuild:
+  DEPEND on app-arch/unzip wrt bug #112054.
+
+*twiki-20041030-r1 (16 Sep 2005)
+
+  16 Sep 2005; Renat Lumpau <rl03@gentoo.org> -twiki-20041030.ebuild,
+  +twiki-20041030-r1.ebuild:
+  Revbump
+
+  16 Sep 2005; Renat Lumpau <rl03@gentoo.org> +files/exec_command.patch,
+  files/postinstall-en.txt, twiki-20041030.ebuild:
+  Security fixes for bug #106149.
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  files/reconfig, twiki-20041030.ebuild:
+  Housekeeping
+
+  29 Jun 2005; Renat Lumpau <rl03@gentoo.org> twiki-20041030.ebuild:
+  Added missing IUSE
+
+*twiki-20041030 (29 Jun 2005)
+
+  29 Jun 2005; Renat Lumpau <rl03@gentoo.org> +files/execwithsearch.patch,
+  +files/postinstall-en.txt, +files/reconfig, files/twiki.conf,
+  -twiki-20030201.ebuild, -twiki-20040901.ebuild, -twiki-20040902.ebuild,
+  -twiki-20040902-r1.ebuild, +twiki-20041030.ebuild:
+  Added recent version of twiki with correct dependencies, using
+  webapp.eclass. Fixes #52157, #53057, #60460, #77308, #84589, #93208.
+  Removing old versions of ebuilds, including stable on ppc (which should not
+  have been stabled in the first place). Whoever committed the original ebuild
+  is A BAD MAN.
+
+  22 Jun 2005; Jason Wever <weeve@gentoo.org> twiki-20040902-r1.ebuild:
+  Added ~sparc keyword.
+
+  27 May 2005; Simon Stelling <blubb@gentoo.org> twiki-20040902-r1.ebuild:
+  added ~amd64 keyword
+
+  07 May 2005; Elfyn McBratney <beu@gentoo.org> twiki-20030201.ebuild,
+  twiki-20040901.ebuild, twiki-20040902.ebuild, twiki-20040902-r1.ebuild:
+  Update LICENSE (twiki is GPL-licensed), bug #76782.
+
+  01 Mar 2005; Elfyn McBratney <beu@gentoo.org> twiki-20030201.ebuild,
+  twiki-20040901.ebuild, twiki-20040902-r1.ebuild, twiki-20040902.ebuild:
+  Fix einfo's.
+
+*twiki-20040902-r1 (01 Mar 2005)
+
+  01 Mar 2005; Elfyn McBratney <beu@gentoo.org> +twiki-20040902-r1.ebuild:
+  Rev bump.  Update to use the new apache paths.
+
+  06 Nov 2004; Joseph Jezak <josejx@gentoo.org> twiki-20040902.ebuild:
+  Marked stable on ppc for bug #71305
+
+*twiki-20040902 (22 Nov 2004)
+
+  22 Nov 2004; Rob Holland <tigger@gentoo.org> +twiki-20040902.ebuild:
+  Version bump again as last version was still vulnerable.
+
+*twiki-20040901 (22 Nov 2004)
+
+  22 Nov 2004; Rob Holland <tigger@gentoo.org> +twiki-20040901.ebuild:
+  Version bump to fix #71035.
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org>
+  .#twiki-20030201.ebuild.1.4, .#twiki-20030201.ebuild.1.6:
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  twiki-20030201.ebuild:
+  Masked twiki-20030201.ebuild stable for ppc
 
 *twiki-20030201 (15 Aug 2004)
 

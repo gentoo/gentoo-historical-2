@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/povray/povray-3.6.1-r1.ebuild,v 1.1 2004/10/27 16:19:07 morfic Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/povray/povray-3.6.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:33 chriswhite Exp $
+
+inherit flag-o-matic
 
 DESCRIPTION="The Persistence Of Vision Ray Tracer"
 SRC_URI="ftp://ftp.povray.org/pub/povray/Official/Unix/povray-3.6.tar.bz2"
@@ -8,7 +10,7 @@ HOMEPAGE="http://www.povray.org/"
 
 SLOT="0"
 LICENSE="povlegal-3.6"
-KEYWORDS="~x86 ~ppc ~alpha ~amd64"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="X svga"
 
 DEPEND="media-libs/libpng
@@ -21,6 +23,11 @@ DEPEND="media-libs/libpng
 
 src_compile() {
 	local myconf
+
+	# closes bug 71255
+	if  get-flag march == k6-2 ; then
+		filter-flags -fomit-frame-pointer
+	fi
 
 	use X && myconf="${myconf} --with-x" \
 		|| myconf="${myconf} --without-x"\

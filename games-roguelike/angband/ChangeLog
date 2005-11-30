@@ -1,11 +1,45 @@
-# ChangeLog for app-games/angband
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/angband/ChangeLog,v 1.1 2003/09/10 04:59:58 vapier Exp $
+# ChangeLog for games-roguelike/angband
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/angband/ChangeLog,v 1.1.1.1 2005/11/30 09:38:46 chriswhite Exp $
 
-  09 Jun 2003; <msterret@gentoo.org> angband-3.0.3.ebuild:
+  29 Oct 2005; Fabian Groffen <grobian@gentoo.org> angband-3.0.5.ebuild:
+  Marked ~ppc-macos (bug #106116)
+
+  27 Oct 2005; Luis Medinas <metalgod@gentoo.org> angband-3.0.5.ebuild:
+  Marked Stable on amd64.
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> angband-3.0.5.ebuild:
+  Stable on sparc
+
+  18 Oct 2004; Gustavo Zacarias <gustavoz@gentoo.org> angband-3.0.5.ebuild:
+  Keyworded ~sparc wrt #67950
+
+  23 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> angband-3.0.5.ebuild:
+  restore missing ~amd64 keyword
+
+*angband-3.0.5 (06 Jun 2004)
+
+  06 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> angband-3.0.5.ebuild:
+  version bump (bug #51896)
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> angband-3.0.3.ebuild:
+  don't RDEPEND on sed; error check sed; virtual/x11; tidy
+
+  10 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> angband-3.0.4.ebuild:
+  chown foo.bar -> chown foo:bar (bug #44294)
+
+  10 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> angband-3.0.3.ebuild:
+  Adding amd64 keyword. Closing #44152.
+
+*angband-3.0.4 (08 Mar 2004)
+
+  08 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> angband-3.0.4.ebuild:
+  version bump (bug #44102 includes detailed changelog)
+
+  09 Jun 2003; <mr_bones_@gentoo.org> angband-3.0.3.ebuild:
   don't mangle myconf when USE=-X; removed DOCDIR (unused)
 
-  09 Jun 2003; <msterret@gentoo.org> angband-3.0.3.ebuild:
+  09 Jun 2003; <mr_bones_@gentoo.org> angband-3.0.3.ebuild:
   DEPEND on sed >= 4; check sed return value
 
 *angband-3.0.3 (19 May 2003)

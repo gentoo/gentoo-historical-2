@@ -1,6 +1,29 @@
 # ChangeLog for media-sound/audacious
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacious/ChangeLog,v 1.1 2005/10/30 14:20:41 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacious/ChangeLog,v 1.1.1.1 2005/11/30 09:37:50 chriswhite Exp $
+
+  20 Nov 2005; <chainsaw@gentoo.org> audacious-0.1-r1.ebuild:
+  Install libFLAC.m4, which is available separately. Closes bug #112990.
+
+  14 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  audacious-0.1-r1.ebuild:
+  Keyworded ~sparc wrt #112452
+
+  14 Nov 2005; Brent Baude <ranger@gentoo.org> audacious-0.1.ebuild:
+  Marking audacious-0.1 ~ppc64 for bug request 112452
+
+*audacious-0.1-r1 (01 Nov 2005)
+
+  01 Nov 2005; <chainsaw@gentoo.org> +files/0.1-aac-makefile.am,
+  +audacious-0.1-r1.ebuild:
+  Revision bump, need corrected makefile to disable AAC. Forcibly disable AAC,
+  closes bug #110987.
+
+  30 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> audacious-0.1.ebuild:
+  Added ~x86 keyword requested in bug #110892.
+
+  30 Oct 2005; Luca Barbato <lu_zero@gentoo.org> audacious-0.1.ebuild:
+  Marked ~ppc
 
 *audacious-0.1 (30 Oct 2005)
 

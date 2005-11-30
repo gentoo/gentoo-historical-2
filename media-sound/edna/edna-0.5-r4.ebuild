@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/edna/edna-0.5-r4.ebuild,v 1.1 2004/10/26 16:25:13 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/edna/edna-0.5-r4.ebuild,v 1.1.1.1 2005/11/30 09:38:42 chriswhite Exp $
 
 inherit eutils
 
@@ -13,18 +13,15 @@ SRC_URI="mirror://sourceforge/edna/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64"
+KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 sparc x86"
 
 DEPEND="dev-lang/python
-	oggvorbis? ( dev-python/pyogg )
-	oggvorbis? ( dev-python/pyvorbis )"
+	oggvorbis? ( dev-python/pyogg
+		dev-python/pyvorbis )"
 
 src_install() {
-
 	einfo "Installing in daemon mode"
-	insinto /etc/init.d
-	insopts -m 755
-	newins ${FILESDIR}/edna.gentoo edna
+	newinitd ${FILESDIR}/edna.gentoo edna
 
 	dodir /usr/bin /usr/$(get_libdir)/edna /usr/$(get_libdir)/edna/templates
 	exeinto /usr/bin ; newexe edna.py edna
@@ -39,18 +36,19 @@ src_install() {
 	doins edna.conf
 	dosym /usr/$(get_libdir)/edna/templates /etc/edna/templates
 
-	dodoc COPYING README ChangeLog
+	dodoc README ChangeLog
 	dohtml -r www/*
 }
 
 pkg_postinst() {
 	ewarn
 	einfo "Edit edna.conf to taste before starting (multiple source"
-	einfo "directories are allowed).  Test ednad from a shell prompt"
+	einfo "directories are allowed).  Test edna from a shell prompt"
 	einfo "until you have it configured properly, then add edna to"
 	einfo "the default runlevel when you're ready.  Add the USE flag"
 	einfo "oggvorbis if you want edna to serve ogg files."
-	einfo ""
-	einfo "See edna.conf and the html docs for more info."
+	einfo
+	einfo "See edna.conf and the html docs for more info, and set"
+	einfo "PYTHONPATH=/usr/lib/edna to run from a shell prompt."
 	ewarn
 }

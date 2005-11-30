@@ -1,6 +1,6 @@
-# Copyright 2002 damien krotkine <dams@gentoo.org>
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ldetect/ldetect-0.4.7.ebuild,v 1.1 2002/12/01 21:00:08 dams Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/ldetect/ldetect-0.4.7.ebuild,v 1.1.1.1 2005/11/30 09:39:09 chriswhite Exp $
 
 ECVS_ANON="no"
 ECVS_USER="anoncvs"
@@ -18,44 +18,18 @@ HOMEPAGE="http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/ldetect/"
 SRC_URI=""
 
 SLOT="0"
-LICENSE="GPL"
-KEYWORDS="~x86"
-
-#DEPEND="${DEPEND}
-#        >=dev-lang/ocaml"
-
-#This patch may or may not be backwards compatible with perl-5.6.1
-#Add gaurd as necessary...
-
-#src_unpack() {
-#	echo " ***** pouet $PWD";
-#	echo "filesdir : ${FILESDIR}"
-#        #unpack ${A}
-#	echo " pwd : $PWD"
-#        patch -p0 <${FILESDIR}/Common-1.0.4.patch || die
-#}
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc alpha"
+IUSE=""
 
 src_compile() {
 	cd ../../ldetect;
-	echo " ------- pwd : $PWD"
-        patch -p1 <${FILESDIR}/ldetect-0.4.7.patch || die
-	echo "compile in ${PWD}";
+	patch -p1 <${FILESDIR}/ldetect-0.4.7.patch || die
 	make clean;
 	make
-	#perl-module_src_prep;
-	#perl-module_src_compile;
 }
 
 src_install() {
 	cd ../../ldetect;
-	echo " ----------- install in ${PWD}"
 	make prefix=${D}/usr install
 }
-
-src_prep() {
-	SRC_PREP="yes"
-	cd ../../perl-MDK-Common
-	echo "prep in ${PWD}";	
-}
-
-

@@ -1,6 +1,16 @@
 # ChangeLog for games-strategy/xconq
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/xconq/ChangeLog,v 1.1 2003/12/12 06:11:55 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/xconq/ChangeLog,v 1.1.1.1 2005/11/30 09:36:42 chriswhite Exp $
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> xconq-7.4.1.ebuild:
+  Stable on ppc.
+
+  30 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> xconq-7.4.1.ebuild:
+  add eutils for epatch
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> +files/xconq-gcc-3.4.patch,
+  xconq-7.4.1.ebuild:
+  Fixed compiling with gcc 3.4 and addded ~ppc.
 
 *xconq-7.4.1 (12 Dec 2003)
 

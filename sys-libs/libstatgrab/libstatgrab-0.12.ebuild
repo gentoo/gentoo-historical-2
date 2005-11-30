@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstatgrab/libstatgrab-0.12.ebuild,v 1.1 2005/09/03 06:52:55 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstatgrab/libstatgrab-0.12.ebuild,v 1.1.1.1 2005/11/30 09:39:18 chriswhite Exp $
 
 DESCRIPTION="Provides cross platform access to statistics about the system on which it's run."
 HOMEPAGE="http://www.i-scream.org/libstatgrab/"

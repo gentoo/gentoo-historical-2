@@ -1,6 +1,26 @@
 # ChangeLog for media-gfx/pngrewrite
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngrewrite/ChangeLog,v 1.1 2003/11/07 01:43:07 ciaranm Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pngrewrite/ChangeLog,v 1.1.1.1 2005/11/30 09:37:29 chriswhite Exp $
+
+  30 Oct 2005; Fabian Groffen <grobian@gentoo.org> pngrewrite-1.2.1.ebuild:
+  Marked ~ppc-macos (bug #110828)
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  pngrewrite-1.2.1.ebuild:
+  Stable on ppc.
+
+  23 Apr 2005; Ciaran McCreesh <ciaranm@gentoo.org> pngrewrite-1.2.1.ebuild:
+  Add unzip dep, bug #90103
+
+  15 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
+  pngrewrite-1.2.1.ebuild:
+  Added to ~ppc.
+
+  24 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> pngrewrite-1.2.1.ebuild:
+  Stable on x86
+
+  29 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> pngrewrite-1.2.1.ebuild:
+  Stable on sparc
 
 *pngrewrite-1.2.1 (07 Nov 2003)
 

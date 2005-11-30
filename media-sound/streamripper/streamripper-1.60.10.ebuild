@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/streamripper/streamripper-1.60.10.ebuild,v 1.1 2004/10/05 08:06:04 jhhudso Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/streamripper/streamripper-1.60.10.ebuild,v 1.1.1.1 2005/11/30 09:37:58 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://streamripper.sourceforge.net/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="media-libs/libmad"
@@ -26,12 +26,16 @@ src_unpack() {
 	# Force package to use system libmad
 	rm -rf libmad-0.15.1b
 
-	WANT_AUTOMAKE=1.8 aclocal >& /dev/null
-	WANT_AUTOMAKE=1.8 automake
-	WANT_AUTOCONF=2.5 autoconf
+	export WANT_AUTOMAKE=1.8
+	export WANT_AUTOCONF=2.5
+
+	libtoolize --copy --force
+	aclocal
+	automake -a -f -c
+	autoconf
 }
 
 src_install() {
-	make install DESTDIR=${D} || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc TODO README THANKS readme_xfade.txt
 }

@@ -1,6 +1,51 @@
 # ChangeLog for media-sound/mp3splt
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3splt/ChangeLog,v 1.1 2003/05/13 09:43:19 jje Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3splt/ChangeLog,v 1.1.1.1 2005/11/30 09:38:24 chriswhite Exp $
+
+  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> mp3splt-2.0.ebuild:
+  Mark 2.0 stable on alpha
+
+  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mp3splt-2.1.ebuild:
+  Dont make use of the deprecated oggvorbis useflag any longer, see #94254.
+
+  15 Apr 2005; Stephen P. Becker <geoman@gentoo.org> mp3splt-1.9.ebuild,
+  mp3splt-2.0.ebuild, mp3splt-2.1.ebuild:
+  changed to -mips until mad issues are worked out
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> mp3splt-2.1.ebuild:
+  --enable-ogg is broken...
+
+*mp3splt-2.1 (21 Nov 2004)
+
+  21 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +mp3splt-2.1.ebuild:
+  Version bump.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> mp3splt-2.0.ebuild:
+  Stable amd64, sparc.
+
+  03 May 2004; Jeremy Huddleston <eradicator@gentoo.org> mp3splt-1.9.ebuild,
+  mp3splt-2.0.ebuild:
+  Changing mad dep to madplay.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> mp3splt-1.9.ebuild,
+  mp3splt-2.0.ebuild:
+  Removed explicit S=.  Stable x86.
+
+*mp3splt-2.0 (18 Jan 2004)
+  
+  18 Jan 2004; Seemant Kulleen <seemant@gentoo.org> mp3splt-2.0.ebuild :
+
+  Version bump
+
+  20 Sep 2003; jje <jje@gentoo.org> mp3splt-1.9.ebuild:
+  Fixed up v1.9 ebuild. Not sure what happened, it was missing install. Closes
+  #29161.
+
+*mp3splt-1.9 (16 Sep 2003)
+
+  16 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> mp3splt-1.9.ebuild :
+  Version bump.
 
 *mp3splt-1.7 (13 May 2003)
 

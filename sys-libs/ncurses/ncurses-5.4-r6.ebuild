@@ -1,17 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.4-r6.ebuild,v 1.1 2005/03/23 05:01:01 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.4-r6.ebuild,v 1.1.1.1 2005/11/30 09:39:04 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="console display library"
 HOMEPAGE="http://www.gnu.org/software/ncurses/"
-SRC_URI="mirror://gnu/ncurses/${P}.tar.gz
-	ftp://invisible-island.net/ncurses/5.4/ncurses-5.4-20050319-patch.sh.bz2"
+SRC_URI="mirror://gnu/ncurses/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="5"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="gpm build bootstrap debug doc minimal unicode nocxx"
 
 DEPEND="gpm? ( sys-libs/gpm )"
@@ -31,6 +30,7 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-xterm.patch
 	epatch "${FILESDIR}"/${P}-share-sed.patch #42336
+	epatch "${FILESDIR}"/${P}-c++-templates.patch #90819
 }
 
 src_compile() {
@@ -130,12 +130,12 @@ src_install() {
 		cd "${D}"
 		rm -rf usr/share/man
 		cd usr/share/terminfo
-		cp -a l/linux n/nxterm v/vt100 "${T}"
+		cp -pPR l/linux n/nxterm v/vt100 "${T}"
 		rm -rf *
 		mkdir l x v
-		cp -a "${T}"/linux l
-		cp -a "${T}"/nxterm x/xterm
-		cp -a "${T}"/vt100 v
+		cp -pPR "${T}"/linux l
+		cp -pPR "${T}"/nxterm x/xterm
+		cp -pPR "${T}"/vt100 v
 	else
 		# Install xterm-debian terminfo entry to satisfy bug #18486
 		LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${D}/usr/$(get_libdir):${D}/$(get_libdir) \

@@ -1,5 +1,5 @@
 #!/sbin/runscript
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/files/alsasound-1.0.10_rc2,v 1.1 2005/10/31 18:39:21 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/files/alsasound-1.0.10_rc2,v 1.1.1.1 2005/11/30 09:37:55 chriswhite Exp $
 #
 # Gentoo users: add this script to 'boot' run level.
 # ==================================================

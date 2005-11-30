@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/readline/readline-5.0-r2.ebuild,v 1.1 2005/02/12 05:25:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/readline/readline-5.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:39:07 chriswhite Exp $
 
-inherit eutils gnuconfig
+inherit eutils multilib
 
 # Official patches
 PLEVEL="x001 x002 x003 x004 x005"
@@ -14,7 +14,7 @@ SRC_URI="mirror://gnu/readline/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
 IUSE=""
 
 # We must be certain that we have a bash that is linked
@@ -35,9 +35,13 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-no_rpath.patch
 	epatch "${FILESDIR}"/${P}-self-insert.patch
 	epatch "${FILESDIR}"/${P}-del-backspace-policy.patch
+	epatch "${FILESDIR}"/${P}-darwin.patch
 
 	# force ncurses linking #71420
 	sed -i -e 's:^SHLIB_LIBS=:SHLIB_LIBS=-lncurses:' support/shobj-conf || die "sed"
+
+	# fix building in parallel
+	epatch "${FILESDIR}"/readline-5.0-parallel.patch
 }
 
 src_compile() {
@@ -53,21 +57,26 @@ src_install() {
 	# directory, since readline's configure automatically sets libdir for you.
 	make DESTDIR="${D}" install || die
 	dodir /$(get_libdir)
-	mv "${D}"/usr/$(get_libdir)/*.so* "${D}"/$(get_libdir)
-	chmod a+rx "${D}"/$(get_libdir)/*.so*
 
-	# Bug #4411
-	gen_usr_ldscript libreadline.so
-	gen_usr_ldscript libhistory.so
+	if ! use userland_Darwin ; then
+		mv "${D}"/usr/$(get_libdir)/*.so* "${D}"/$(get_libdir)
+		chmod a+rx "${D}"/$(get_libdir)/*.so*
+
+		# Bug #4411
+		gen_usr_ldscript libreadline.so
+		gen_usr_ldscript libhistory.so
+	fi
 
 	dodoc CHANGELOG CHANGES README USAGE NEWS
 	docinto ps
 	dodoc doc/*.ps
 	dohtml -r doc
+}
 
+pkg_preinst() {
 	# Backwards compatibility #29865
 	if [[ -e ${ROOT}/$(get_libdir)/libreadline.so.4 ]] ; then
-		cp -a "${ROOT}"/$(get_libdir)/libreadline.so.4* "${D}"/$(get_libdir)/
+		cp -pPR "${ROOT}"/$(get_libdir)/libreadline.so.4* "${D}"/$(get_libdir)/
 		touch "${D}"/$(get_libdir)/libreadline.so.4*
 	fi
 }

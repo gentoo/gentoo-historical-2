@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/bonnie++/bonnie++-1.93c.ebuild,v 1.1 2004/07/22 17:24:09 morfic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/bonnie++/bonnie++-1.93c.ebuild,v 1.1.1.1 2005/11/30 09:36:35 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Hard drive bottleneck testing benchmark suite."
 HOMEPAGE="http://www.coker.com.au/bonnie++/"
@@ -8,15 +10,21 @@ SRC_URI="http://www.coker.com.au/bonnie++/experimental/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc alpha ~amd64"
+KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
 IUSE="debug"
 
-DEPEND="virtual/libc"
+DEPEND=""
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-64bit.patch
+}
 
 src_compile() {
 	econf \
-		`use_with debug` \
-		`use_enable !debug stripping` \
+		$(use_with debug) \
+		--disable-stripping \
 		|| die
 	emake || die "emake failed"
 	emake zcav || die "emake zcav failed" # see #9073

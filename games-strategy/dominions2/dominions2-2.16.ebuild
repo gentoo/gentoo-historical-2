@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/dominions2/dominions2-2.16.ebuild,v 1.1 2005/10/05 15:58:31 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/dominions2/dominions2-2.16.ebuild,v 1.1.1.1 2005/11/30 09:36:40 chriswhite Exp $
 
 inherit eutils games
 
@@ -10,7 +10,7 @@ SRC_URI="x86? (
 		http://www.shrapnelgames.com/downloads/dompatch${PV/\./}_linux_x86.tgz )
 	amd64? (
 		http://www.shrapnelgames.com/downloads/dompatch${PV/\./}_linux_x86.tgz )
-	ppc? ( 
+	ppc? (
 		http://www.shrapnelgames.com/downloads/dompatch${PV/\./}_linux_ppc.tgz )
 	doc? ( http://www.shrapnelgames.com/downloads/DOM2_Walkthrough.pdf
 		http://www.shrapnelgames.com/downloads/manual_addenda.pdf )
@@ -31,6 +31,9 @@ DEPEND="virtual/x11
 	amd64? ( app-emulation/emul-linux-x86-xlibs
 		app-emulation/emul-linux-x86-sdl )"
 
+dir="${GAMES_PREFIX_OPT}/${PN}"
+Ddir="${D}/${dir}"
+
 src_unpack() {
 	mkdir -p ${S}/patch
 	cd ${S}/patch
@@ -47,9 +50,7 @@ src_install() {
 	cdrom_get_cds dom2icon.ico
 	einfo "Copying files to harddisk... this may take a while..."
 
-	DOM2DIR="${GAMES_PREFIX_OPT}/${PN}"
-	dodir ${DOM2DIR}
-	exeinto ${DOM2DIR}
+	exeinto "${dir}"
 	if use amd64 || use x86
 	then
 		doexe ${CDROM_ROOT}/bin_lin/x86/dom2* || die "doexe failed"
@@ -57,7 +58,7 @@ src_install() {
 	then
 		doexe ${CDROM_ROOT}/bin_lin/ppc/dom2* || die "doexe failed"
 	fi
-	insinto ${DOM2DIR}
+	insinto "${dir}"
 	doins -r ${CDROM_ROOT}/dominions2.app/Contents/Resources/* || \
 		die "doins failed"
 	dodoc ${CDROM_ROOT}/doc/* || die "dodoc failed"
@@ -85,7 +86,7 @@ src_install() {
 	# update times
 	find ${D} -exec touch '{}' \;
 
-	games_make_wrapper dominions2 ./dom2 ${DOM2DIR}
+	games_make_wrapper dominions2 ./dom2 "${dir}" "${dir}"
 	make_desktop_entry dominions2 "Dominions II" dominions2.png
 
 	prepgamesdirs

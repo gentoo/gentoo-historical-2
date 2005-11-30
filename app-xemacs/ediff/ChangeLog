@@ -1,6 +1,24 @@
 # ChangeLog for app-xemacs/ediff
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ediff/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ediff/ChangeLog,v 1.1.1.1 2005/11/30 09:38:51 chriswhite Exp $
+
+  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> ediff-1.46.ebuild:
+  Marked ppc stable.
+
+  09 Aug 2004; Tom Gall <tgall@gentoo.org> ediff-1.46.ebuild:
+  stable on ppc64, bug #57174
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> ediff-1.46.ebuild:
+  Stable on alpha
+
+*ediff-1.46 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> ediff-1.44.ebuild ediff-1.46.ebuild files/digest-ediff-1.46 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
+  changed alpha to ~alpha
 
 *ediff-1.44 (16 Dec 2002)
 

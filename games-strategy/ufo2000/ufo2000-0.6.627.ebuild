@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/ufo2000/ufo2000-0.6.627.ebuild,v 1.1 2005/01/27 01:40:41 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/ufo2000/ufo2000-0.6.627.ebuild,v 1.1.1.1 2005/11/30 09:36:39 chriswhite Exp $
 
 inherit games
 
@@ -9,18 +9,18 @@ HOMEPAGE="http://ufo2000.sourceforge.net/"
 SRC_URI="http://ufo2000.lxnt.info/files/${P}-src.tar.bz2
 	ftp://ftp.microprose.com/pub/mps-online/x-com/xcomdemo.zip
 	ftp://ftp.microprose.com/pub/mps-online/demos/terror.zip
-	oggvorbis? ( http://ufo2000.lxnt.info/files/ufo2000-music-20041222.zip )"
+	vorbis? ( http://ufo2000.lxnt.info/files/ufo2000-music-20041222.zip )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* x86 ~ppc"
-IUSE="oggvorbis"
+KEYWORDS="-* ppc x86"
+IUSE="vorbis"
 
 RDEPEND="virtual/libc
 	dev-libs/expat
 	>=dev-games/hawknl-1.66
 	>=media-libs/allegro-4.0.0
-	oggvorbis? ( >=media-libs/aldumb-0.9.2
+	vorbis? ( >=media-libs/aldumb-0.9.2
 		media-libs/libogg
 		media-libs/libvorbis )"
 DEPEND="${RDEPEND}
@@ -40,7 +40,7 @@ src_unpack() {
 	unzip -qLL TFTD.ZIP || die "unzip failed"
 	rm TFTD.ZIP
 
-	if use oggvorbis ; then
+	if use vorbis ; then
 		cd "${S}/newmusic"
 		unpack ufo2000-music-20041222.zip
 	fi
@@ -49,7 +49,7 @@ src_unpack() {
 src_compile() {
 	local myconf
 
-	use oggvorbis && myconf="dumbogg=1"
+	use vorbis && myconf="dumbogg=1"
 
 	emake \
 		DATA_DIR="${GAMES_DATADIR}/${PN}" \
@@ -71,7 +71,7 @@ src_install() {
 		"${D}/${GAMES_DATADIR}/${PN}/XCOM/readme.txt"
 	echo "Please copy data files from TFTD here" > \
 		"${D}/${GAMES_DATADIR}/${PN}/TFTD/readme.txt"
-	dodoc *.txt INSTALL AUTHORS ChangeLog || die "dodoc failed"
+	dodoc *.txt AUTHORS ChangeLog || die "dodoc failed"
 	prepgamesdirs
 }
 

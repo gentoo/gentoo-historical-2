@@ -1,6 +1,61 @@
 # ChangeLog for media-gfx/wings
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/wings/ChangeLog,v 1.1 2003/02/18 00:14:03 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/wings/ChangeLog,v 1.1.1.1 2005/11/30 09:37:39 chriswhite Exp $
+
+*wings-0.98.29b (02 Jul 2005)
+
+  02 Jul 2005; Mike Frysinger <vapier@gentoo.org> +wings-0.98.29b.ebuild:
+  Version bump #97573 by Tupone Alfredo.
+
+*wings-0.98.21c (11 Apr 2004)
+
+  11 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump.
+
+*wings-0.98.21 (22 Mar 2004)
+
+  22 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump from Robust.
+
+*wings-0.98.20c (22 Mar 2004)
+
+  22 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump from Robust.
+
+*wings-0.98.19b (21 Feb 2004)
+
+  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #35605.
+
+*wings-0.98.15a (14 Aug 2003)
+
+  14 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #26273.
+
+*wings-0.98.11c (13 Jul 2003)
+
+  13 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #24263.
+
+*wings-0.98.11b (13 Jul 2003)
+
+  13 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #24263.
+
+*wings-0.98.11a (28 Jun 2003)
+
+  28 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #23636.
+
+*wings-0.98.11 (21 Jun 2003)
+
+  21 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #23190.
+
+*wings-0.98.10e (19 Jun 2003)
+
+  19 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #20758.
 
 *wings-0.98.08d (17 Feb 2003)
 

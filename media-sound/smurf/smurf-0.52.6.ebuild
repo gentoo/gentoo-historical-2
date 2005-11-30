@@ -1,13 +1,13 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/smurf/smurf-0.52.6.ebuild,v 1.1 2003/06/25 09:40:10 torbenh Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/smurf/smurf-0.52.6.ebuild,v 1.1.1.1 2005/11/30 09:38:37 chriswhite Exp $
 
 DESCRIPTION="The Smurf Sound Font Editor"
 HOMEPAGE="http://smurf.sourceforge.net/"
 SRC_URI="mirror://sourceforge/smurf/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 IUSE="nls debug alsa oss png"
 
@@ -18,8 +18,6 @@ DEPEND="=x11-libs/gtk+-1.2*
 	png? ( >=media-libs/libpng-1.2.5-r4 )"
 
 #RDEPEND=""
-
-S=${WORKDIR}/${P}
 
 src_compile() {
 	local myconf="--with-audiofile"
@@ -35,5 +33,5 @@ src_compile() {
 
 src_install() {
 	einstall || die
-	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog HACKING INSTALL NEWS README
+	dodoc AUTHORS ChangeLog HACKING NEWS README
 }

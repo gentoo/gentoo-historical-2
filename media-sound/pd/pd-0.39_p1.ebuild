@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pd/pd-0.39_p1.ebuild,v 1.1 2005/11/01 21:41:54 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pd/pd-0.39_p1.ebuild,v 1.1.1.1 2005/11/30 09:38:02 chriswhite Exp $
 
 IUSE="alsa debug jack"
 

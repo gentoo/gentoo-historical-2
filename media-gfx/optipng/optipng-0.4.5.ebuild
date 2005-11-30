@@ -1,25 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/optipng/optipng-0.4.5.ebuild,v 1.1 2004/06/02 22:54:30 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/optipng/optipng-0.4.5.ebuild,v 1.1.1.1 2005/11/30 09:37:30 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
-DESCRIPTION="PNG optimizing utility"
+DESCRIPTION="Find the optimal compression settings for your png files"
 SRC_URI="http://www.cs.toronto.edu/~cosmin/pngtech/optipng/${P}.tar.gz"
 HOMEPAGE="http://www.cs.toronto.edu/~cosmin/pngtech/optipng/"
 
 LICENSE="as-is"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha"
+KEYWORDS="x86 ~ppc alpha ~amd64"
 
 IUSE="ext-png ext-zlib mmx"
 
 DEPEND="ext-png? ( media-libs/libpng )
 	ext-zlib? ( sys-libs/zlib )
-	virtual/glibc"
-
-S=${WORKDIR}/${P}
+	virtual/libc"
 
 src_unpack() {
 	unpack ${A}
@@ -41,17 +39,17 @@ src_compile() {
 		# do amd64/ia64 support mmx?
 		use x86 || ewarn "mmx flag set, but not on x86?"
 
-		pngmake=makefile.gcmmx
+		usemmx=1
 	else
-		pngmake=makefile.gcc
+		usemmx=0
 	fi
 
-	# only defined in bundled zlib?
+	# only defined in bundled zlib
 	if use ext-zlib || use ext-png; then
 		append-flags -DZ_RLE=3
 	fi
 
-	export pngmake LDFLAGS
+	export usemmx LDFLAGS
 
 	# some logic to decide which version to build...
 	if ! use ext-png; then
@@ -84,4 +82,18 @@ src_install() {
 	dobin ${S}/src/optipng
 	dodoc ${S}/doc/{CAVEAT,DESIGN,FEATURES,HISTORY,LICENSE,README,TODO,USAGE}
 	dohtml ${S}/doc/index.html
+}
+
+pkg_postinst() {
+	if use ext-zlib || use ext-png; then
+		ewarn "the ext-zlib and ext-png USE flags are designed for users"
+		ewarn "that require special modifications to libpng or zlib."
+		ewarn
+		ewarn "the bundled libraries are highly optimised specifically"
+		ewarn "for use with compressing png files, and should be used if"
+		ewarn "possible."
+		ewarn
+		ewarn "if you set these flags in error, please unset them and"
+		ewarn "re-merge ${PN}."
+	fi
 }

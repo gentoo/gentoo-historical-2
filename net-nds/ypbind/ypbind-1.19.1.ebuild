@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ypbind/ypbind-1.19.1.ebuild,v 1.1 2005/08/11 18:22:34 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypbind/ypbind-1.19.1.ebuild,v 1.1.1.1 2005/11/30 09:36:45 chriswhite Exp $
 
 MY_P=${PN}-mt-${PV}
 S="${WORKDIR}/${MY_P}"

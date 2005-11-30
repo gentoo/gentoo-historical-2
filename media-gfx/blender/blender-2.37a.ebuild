@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.37a.ebuild,v 1.1 2005/06/17 12:48:52 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.37a.ebuild,v 1.1.1.1 2005/11/30 09:37:45 chriswhite Exp $
 
 inherit flag-o-matic eutils python
 
@@ -27,7 +27,7 @@ RDEPEND="virtual/x11
 	>=media-gfx/yafray-0.0.7
 	nls? ( >=media-libs/ftgl-2.1 )"
 
-DEPEND="dev-util/scons
+DEPEND="=dev-util/scons-0.96.1
 	${RDEPEND}"
 
 S=${WORKDIR}/${PN}
@@ -37,9 +37,10 @@ src_unpack() {
 	cd ${S}/release/plugins
 	chmod 755 bmake
 	rm -fR include
-	cp -a ${S}/source/blender/blenpluginapi include
+	cp -pPR ${S}/source/blender/blenpluginapi include
 	cd ${S}
 	epatch ${FILESDIR}/${P}-dirs.patch
+	epatch ${FILESDIR}/${P}-x86_64.patch
 	mkdir -p ${WORKDIR}/build/linux2/{extern,intern,source}
 }
 
@@ -80,7 +81,7 @@ src_compile() {
 		einfo "enabling internationalization"
 		sed -i -e "s:USE_INTERNATIONAL.*$:USE_INTERNATIONAL = 'true':" \
 		-e "s:FTGL_INCLUDE.*$:FTGL_INCLUDE = ['/usr/include/FTGL']:"	\
-		-e "s:FTGL_LIBPATH.*$:FTGL_LIBPATH = ['/usr/lib']:"				\
+		-e "s:FTGL_LIBPATH.*$:FTGL_LIBPATH = ['/usr/$(get_libdir)']:"				\
 		config.opts
 	fi
 
@@ -108,13 +109,14 @@ src_install() {
 	doexe ${S}/blenderplayer
 
 
-	exeinto /usr/lib/${PN}/textures
+	exeinto /usr/$(get_libdir)/${PN}/textures
 	doexe ${S}/release/plugins/texture/*.so
-	exeinto /usr/lib/${PN}/sequences
+	exeinto /usr/$(get_libdir)/${PN}/sequences
 	doexe ${S}/release/plugins/sequence/*.so
-	cp -a ${S}/release/{bpydata,plugins,scripts} ${D}/usr/lib/${PN}
+	cp -pPR ${S}/release/{bpydata,plugins,scripts} ${D}/usr/$(get_libdir)/${PN}
 	use nls && \
-	cp -a ${S}/bin/.blender/{.Blanguages,.bfont.ttf,locale} ${D}/usr/lib/${PN}
+	cp -pPR ${S}/bin/.blender/{.Blanguages,.bfont.ttf,locale}
+	${D}/usr/$(get_libdir)/${PN}
 	insinto /usr/share/pixmaps
 	doins ${FILESDIR}/${PN}.png
 	insinto /usr/share/applications
@@ -125,8 +127,8 @@ src_install() {
 }
 
 pkg_preinst(){
-	if [ -h "/usr/lib/blender/plugins/include" ];
+	if [ -h "/usr/$(get_libdir)/blender/plugins/include" ];
 	then
-		rm -f /usr/lib/blender/plugins/include
+		rm -f /usr/$(get_libdir)/blender/plugins/include
 	fi
 }

@@ -1,10 +1,51 @@
-# ChangeLog for app-games/uqm
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/uqm/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
+# ChangeLog for games-strategy/uqm
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/uqm/ChangeLog,v 1.1.1.1 2005/11/30 09:36:42 chriswhite Exp $
+
+  06 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> -uqm-0.3-r2.ebuild:
+  clean older version
+
+  27 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/digest-uqm-0.4.0, Manifest:
+  Fixing diget for bug #94165.
+
+*uqm-0.4.0 (27 May 2005)
+
+  27 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +uqm-0.4.0.ebuild:
+  version bump (bug #93491) - ebuild patch from Robert Zaleski
+
+  09 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> uqm-0.3-r2.ebuild:
+  more use flag knobs to support specific content install (bug #67045) -
+  ebuild mods from John Croisant
+
+  25 Nov 2004; Joseph Jezak <josejx@gentoo.org> uqm-0.3-r2.ebuild:
+  Markked ppc stable.
+
+*uqm-0.3-r2 (06 Mar 2004)
+
+  06 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> uqm-0.3-r2.ebuild:
+  Addition of remixed addon music.  patch from Eldad Zack via bug #43875
+
+*uqm-0.3-r1 (26 Feb 2004)
+
+  26 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> uqm-0.3-r1.ebuild:
+  fix up data directory location (/usr/games/share -> /usr/share/games)
+
+  16 Sep 2003; Michael Sterrett <msterret@gentoo.org> uqm-0.3.ebuild:
+  Mark stable
+
+*uqm-0.3 (15 Sep 2003)
+
+  15 Sep 2003; Michael Sterrett <msterret@gentoo.org> uqm-0.2.ebuild,
+  uqm-0.3.ebuild:
+  sys-apps/textutils -> coreutils
+
+  11 Sep 2003; Michael Sterrett <msterret@gentoo.org> :
+  version bump; change last entry to be more correct
 
 *uqm-0.2 (09 Jul 2003)
 
   09 Jul 2003; Michael Sterrett <msterret@gentoo.org> uqm-0.2.ebuild:
-  initial commit.  ebuild based on the one provided by Regan Myers in bug 12153
-  and vapier's continued work on it as well.
+  initial commit.  ebuild based on the one provided by Martti Rannanjarvi
+  in bug 12153 and vapier's continued work on it as well.
 

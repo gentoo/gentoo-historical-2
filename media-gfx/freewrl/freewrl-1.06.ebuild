@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.06.ebuild,v 1.1 2004/06/27 15:54:57 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/freewrl/freewrl-1.06.ebuild,v 1.1.1.1 2005/11/30 09:37:32 chriswhite Exp $
 
-inherit nsplugins
+inherit nsplugins eutils
 
-IUSE="opengl doc mozilla"
+IUSE="opengl"
 
 MY_P="FreeWRL-${PV}"
 DESCRIPTION="VRML2 and X3D compliant browser"
@@ -18,11 +18,11 @@ S="${WORKDIR}/${MY_P}"
 
 DEPEND="virtual/x11
 	virtual/jdk
-	>=dev-java/saxon-7.5
+	>=dev-java/saxon-bin-7.5
 	>=dev-lang/perl-5.8.2
-	>=dev-perl/Digest-MD5-2.09
+	>=perl-core/Digest-MD5-2.09
 	>=dev-perl/HTML-Parser-2.25
-	>=dev-perl/MIME-Base64-2.11
+	>=perl-core/MIME-Base64-2.11
 	>=dev-perl/URI-1.04
 	>=dev-perl/libnet-1.0607
 	>=dev-perl/libwww-perl-5.47

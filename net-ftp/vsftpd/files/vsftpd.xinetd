@@ -1,5 +1,6 @@
 # default: off
 # description: Vsftpd is an FTP server, designed to be secure.
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/files/vsftpd.xinetd,v 1.1.1.1 2005/11/30 09:36:29 chriswhite Exp $
 
 service ftp
 {
@@ -8,8 +9,7 @@ service ftp
 	user            = root
 	server          = /usr/sbin/vsftpd
 	server_args     = /etc/vsftpd/vsftpd.conf
-	log_on_success  += DURATION USERID
-	log_on_failure  += USERID
+	log_on_success  += DURATION 
 	nice            = 10
 	disable         = yes
 }

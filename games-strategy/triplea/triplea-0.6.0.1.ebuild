@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/triplea/triplea-0.6.0.1.ebuild,v 1.1 2005/07/14 07:16:27 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/triplea/triplea-0.6.0.1.ebuild,v 1.1.1.1 2005/11/30 09:36:39 chriswhite Exp $
 
-inherit java-utils java-pkg games
+inherit eutils java-utils java-pkg games
 
 MY_PV=${PV//\./_}
 DESCRIPTION="An open source clone of the popular Axis and Allies boardgame"
@@ -10,7 +10,7 @@ HOMEPAGE="http://triplea.sf.net"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_source_${MY_PV}.zip"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc x86"
 SLOT="0"
 IUSE="doc jikes"
 
@@ -19,6 +19,7 @@ RDEPEND=">=virtual/jre-1.4
 	dev-java/backport-util-concurrent"
 
 DEPEND=">=virtual/jdk-1.4
+	dev-java/ant-core
 	app-arch/unzip
 	jikes? ( >=dev-java/jikes-1.17 )
 	${RDEPEND}"

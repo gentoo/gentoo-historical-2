@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/splashutils/splashutils-1.1.9.9.ebuild,v 1.1 2005/08/21 19:52:07 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/splashutils/splashutils-1.1.9.9.ebuild,v 1.1.1.1 2005/11/30 09:37:21 chriswhite Exp $
 
 inherit multilib linux-mod
 

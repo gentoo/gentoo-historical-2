@@ -1,6 +1,28 @@
 # ChangeLog for media-sound/wavplay
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wavplay/ChangeLog,v 1.1 2003/04/02 15:35:08 phosphan Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavplay/ChangeLog,v 1.1.1.1 2005/11/30 09:38:45 chriswhite Exp $
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> wavplay-1.4.ebuild:
+  -amd64, -sparc.
+
+  06 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/wavplay-1.4-gcc34.patch, wavplay-1.4.ebuild:
+  Fixed gcc-34 compile issues. Bug #61958
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> wavplay-1.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Dylan Carlson <absinthe@gentoo.org> wavplay-1.4.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+  24 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> wavplay-1.4.ebuild :
+  Considered stable for x86
+
+  04 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> wavplay-1.4.ebuild :
+  Trivial change for tracking a repoman problem
+
+  03 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> wavplay-1.4.ebuild :
+  Corrected the copyright line
 
 *wavplay-1.4 (02 Apr 2003)
 

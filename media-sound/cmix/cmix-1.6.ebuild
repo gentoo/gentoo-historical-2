@@ -1,33 +1,26 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cmix/cmix-1.6.ebuild,v 1.1 2003/03/04 22:17:50 agenkin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cmix/cmix-1.6.ebuild,v 1.1.1.1 2005/11/30 09:38:10 chriswhite Exp $
 
-DESCRIPTION="cmix is a command line audio mixer :D"
-HOMEPAGE="http://cmix.sourceforge.net/"
-LICENSE="GPL-2"
-
-SLOT="0"
-KEYWORDS="~x86"
 IUSE=""
-DEPEND="virtual/glibc"
 
+DESCRIPTION="command line audio mixer"
+HOMEPAGE="http://cmix.sourceforge.net/"
 SRC_URI="http://antipoder.dyndns.org/downloads/${P}.tbz2"
-S=${WORKDIR}/${P}
 
-src_unpack() {
-	
-	unpack ${A}
-	cd ${S}
-}
+LICENSE="GPL-2"
+SLOT="0"
+#-amd64: 1.6: 'cmix list' gives: MIXER_READ(SOUND_MIXER_OUTSRC): Input/output error 
+KEYWORDS="-amd64 ~ppc sparc x86"
+
+DEPEND="virtual/libc"
 
 src_compile() {
-
 	make || die
 }
 
 src_install() {
-
-	einstall
+	einstall || die
 	dobin cmix
-	dodoc COPYING README || die
-}			
+	dodoc README || die
+}

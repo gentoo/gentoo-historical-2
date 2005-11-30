@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-taskbar/xfce4-taskbar-0.2.2-r2.ebuild,v 1.1 2005/10/06 17:48:00 bcowan Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-taskbar/xfce4-taskbar-0.2.2-r2.ebuild,v 1.1.1.1 2005/11/30 09:38:59 chriswhite Exp $
 
 inherit xfce42
 

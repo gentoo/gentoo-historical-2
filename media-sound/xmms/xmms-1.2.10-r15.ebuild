@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms/xmms-1.2.10-r15.ebuild,v 1.1 2005/05/27 02:26:02 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms/xmms-1.2.10-r15.ebuild,v 1.1.1.1 2005/11/30 09:38:31 chriswhite Exp $
 
 inherit flag-o-matic eutils libtool gnuconfig
 
@@ -19,10 +19,8 @@ SRC_URI="http://www.xmms.org/files/1.2.x/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-# Testing still
-KEYWORDS="-*"
-#KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="nls esd mmx oggvorbis 3dnow mikmod directfb alsa oss arts jack sndfile lirc flac mad mp3"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="nls esd mmx vorbis 3dnow mikmod directfb alsa oss arts jack sndfile lirc flac mad mp3"
 
 DEPEND="=x11-libs/gtk+-1.2*"
 
@@ -32,7 +30,7 @@ RDEPEND="${DEPEND}
 
 #We want these things in DEPEND only
 DEPEND="${DEPEND}
-	>=sys-devel/automake-1.7
+	>=sys-devel/automake-1.9
 	>=sys-devel/autoconf-2.5
 	sys-devel/libtool
 	nls? ( dev-util/intltool
@@ -46,7 +44,7 @@ PDEPEND="lirc? ( media-plugins/xmms-lirc )
 	 mikmod? ( media-plugins/xmms-mikmod )
 	 mp3? ( mad? ( >=media-plugins/xmms-mad-0.7 )
 	        >=media-plugins/xmms-mpg123-1.2.10-r1 )
-	 oggvorbis? ( >=media-plugins/xmms-vorbis-1.2.10-r1 )
+	 vorbis? ( >=media-plugins/xmms-vorbis-1.2.10-r1 )
 	 sndfile? ( media-plugins/xmms-sndfile )
 
 	 alsa? ( media-plugins/xmms-alsa )
@@ -68,7 +66,7 @@ src_unpack() {
 	EPATCH_SUFFIX="patch"
 	epatch ${PATCHDIR}
 
-	export WANT_AUTOMAKE=1.7
+	export WANT_AUTOMAKE=1.9
 	export WANT_AUTOCONF=2.5
 
 	sed -i 's:Output Input Effect General Visualization::' Makefile.am
@@ -131,7 +129,7 @@ src_install() {
 	doins xmms/xmms_mini.xpm
 
 	insinto /etc/X11/wmconfig
-	donewins xmms/xmms.wmconfig xmms
+	newins xmms/xmms.wmconfig xmms
 
 	insinto /usr/share/applications
 	doins ${FILESDIR}/xmms.desktop

@@ -1,14 +1,14 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wavesurfer/wavesurfer-1.7.ebuild,v 1.1 2004/07/01 22:34:00 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavesurfer/wavesurfer-1.7.ebuild,v 1.1.1.1 2005/11/30 09:38:38 chriswhite Exp $
 
-DESCRIPTION="tool for recording, playing, editing, viewing and labling of audio"
+DESCRIPTION="tool for recording, playing, editing, viewing and labeling of audio"
 HOMEPAGE="http://www.speech.kth.se/wavesurfer/"
 SRC_URI="http://www.speech.kth.se/wavesurfer/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
+KEYWORDS="x86 ~ppc amd64 sparc ppc64"
 IUSE=""
 
 RDEPEND=">=dev-tcltk/snack-2.2.4"
@@ -24,12 +24,12 @@ src_install() {
 	local mydir="wsurf${PV}"
 
 	newbin wavesurfer.tcl wavesurfer
-	dodir /usr/lib/${mydir}
-	cp -r ${mydir} ${D}/usr/lib/
+	dodir /usr/$(get_libdir)/${mydir}
+	cp -r ${mydir} ${D}/usr/$(get_libdir)/
 
-	insinto /usr/lib/${mydir}/plugins
+	insinto /usr/$(get_libdir)/${mydir}/plugins
 	doins plugins/*.plug
-	insinto /usr/lib/${mydir}/icons
+	insinto /usr/$(get_libdir)/${mydir}/icons
 	doins icons/*
 
 	dodoc README.txt

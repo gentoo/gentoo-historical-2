@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/Apache-Gallery/Apache-Gallery-0.8-r1.ebuild,v 1.1 2004/09/21 16:15:11 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/Apache-Gallery/Apache-Gallery-0.8-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:07 chriswhite Exp $
 
 inherit perl-module webapp
 
@@ -8,18 +8,18 @@ DESCRIPTION="Apache gallery for mod_perl"
 SRC_URI="http://cpan.org/modules/by-module/Apache/${P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/author/LEGART/${P}"
 
-LICENSE="Artistic | GPL-2"
+LICENSE="|| ( Artistic GPL-2 )"
 KEYWORDS="~x86 ~amd64 ~ppc ~alpha ~sparc"
 IUSE="apache2"
 
 DEPEND="${DEPEND}
-	>=dev-perl/libapreq-1.0
+	>=www-apache/libapreq-1.0
 	>=media-libs/imlib2-1.0.6-r1
-	>=dev-perl/mod_perl-1.27-r1
+	>=www-apache/mod_perl-1.27-r1
 	>=dev-perl/ImageInfo-1.04-r2
 	>=dev-perl/ImageSize-2.99-r1
 	dev-perl/Image-Imlib2
-	>=dev-perl/CGI-2.93
+	>=perl-core/CGI-2.93
 	>=dev-perl/CGI-FastTemplate-1.09
 	>=dev-perl/Parse-RecDescent-1.80-r3
 	dev-perl/URI
@@ -35,16 +35,16 @@ src_install() {
 
 	perl-module_src_install
 
-	insinto ${MY_ICONSDIR}
+	insinto ${MY_ICONSDIR}/gallery
 	doins htdocs/*.png
 
 	dodir ${MY_HOSTROOTDIR}/${PN}/templates/default
 	dodir ${MY_HOSTROOTDIR}/${PN}/templates/new
 
 	insinto ${MY_HOSTROOTDIR}/${PN}/templates/default
-	doins templates/default/*.tpl
+	doins templates/default/*
 	insinto ${MY_HOSTROOTDIR}/${PN}/templates/new
-	doins templates/default/*.tpl
+	doins templates/new/*
 
 	if use apache2; then
 		insinto /etc/apache2/conf/modules.d
@@ -62,7 +62,7 @@ pkg_postinst() {
 		einfo "You should edit your /etc/apache2/conf/modules.d/76_apache-gallery.conf file to suit."
 	else
 		einfo
-		einfo "Execute \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
+		einfo "Execute \"emerge --config =${PF}\""
 		einfo "to have your apache.conf auto-updated."
 		einfo "You should then edit your /etc/apache/conf/addon-modules/apache-gallery.conf file to suit."
 		einfo

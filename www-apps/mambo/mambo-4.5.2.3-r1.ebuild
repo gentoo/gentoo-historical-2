@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mambo/mambo-4.5.2.3-r1.ebuild,v 1.1 2005/11/20 10:41:41 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mambo/mambo-4.5.2.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:11 chriswhite Exp $
 
 inherit webapp eutils
 

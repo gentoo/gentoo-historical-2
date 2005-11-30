@@ -1,6 +1,15 @@
-MD5 254a1ae4a7080861d624c8b10afc5e42 egroupware-0.9.99.008.ebuild 1551
-MD5 34b376f52ca199fffb4e52b83169574a metadata.xml 156
-MD5 7fdd0f6c4f4e5f5fead1301ada6cbb13 ChangeLog 1713
-MD5 42e2f1aefd3bfe444e8e1ef7c9bd9681 egroupware-0.9.99.015.ebuild 1552
-MD5 da8e1975f63b112c72f732c2d6279354 files/digest-egroupware-0.9.99.008 77
-MD5 8885a0517fbc24b08c81bb3bb5678067 files/digest-egroupware-0.9.99.015 78
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 31794927c816e482e64aa85ebc7e41a0 egroupware-1.0.0.009_p3.ebuild 1421
+MD5 e9db2697420124cbfb4d5c6bd409ae3d ChangeLog 8175
+MD5 f61bfa064e3acdfcd826e4a38b121196 metadata.xml 161
+MD5 e76f8e156f0ad2ebdbdb725b9954d33f files/postinstall-en.txt 393
+MD5 e7f10c95953f8abeaa26b544b2ba30df files/digest-egroupware-1.0.0.009_p3 77
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDNsD5EzitwsaoONoRAtgoAKCjPa0ai1YHV3A1jvS2z/k8u4tsXQCdHrJy
+vLUwplMoVWTpIsk8vc2gcAc=
+=TID3
+-----END PGP SIGNATURE-----

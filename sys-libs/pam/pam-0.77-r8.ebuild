@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/pam-0.77-r8.ebuild,v 1.1 2005/02/09 17:39:13 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/pam-0.77-r8.ebuild,v 1.1.1.1 2005/11/30 09:39:41 chriswhite Exp $
 
 PATCH_LEVEL="1.9"
 BDB_VER="4.1.25"
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 # link statically to it - <azarah@gentoo.org> (09 Nov 2003).
 
 #inherit needs to be after DEPEND definition to protect RDEPEND
-inherit gcc eutils flag-o-matic gnuconfig
+inherit toolchain-funcs eutils flag-o-matic gnuconfig
 
 # Note that we link to static versions of glib (pam_console.so)
 # and pwdb (pam_pwdb.so) ...
@@ -43,7 +43,7 @@ DESCRIPTION="Pluggable Authentication Modules"
 S="${WORKDIR}/Linux-PAM-${PV}"
 S2="${WORKDIR}/pam-${PV}-patches"
 SRC_URI="http://www.kernel.org/pub/linux/libs/pam/pre/library/Linux-PAM-${PV}.tar.gz
-	mirror://gentoo/${P}-patches-${PATCH_LEVEL}.tar.bz2
+	mirror://gentoo/pam-${PV}-patches-${PATCH_LEVEL}.tar.bz2
 	berkdb? ( http://www.sleepycat.com/update/snapshot/db-${BDB_VER}.tar.gz )"
 
 LICENSE="PAM"

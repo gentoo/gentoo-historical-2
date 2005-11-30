@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/muine/muine-0.8.3.ebuild,v 1.1 2005/05/06 13:29:43 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/muine/muine-0.8.3.ebuild,v 1.1.1.1 2005/11/30 09:38:13 chriswhite Exp $
 
 inherit gnome2 mono eutils multilib
 
@@ -11,14 +11,14 @@ SRC_URI="${HOMEPAGE}/${P}.tar.gz"
 LICENSE="GPL-2"
 IUSE="xine mad vorbis flac aac"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 
 RDEPEND=">=dev-lang/mono-0.96
-	>=dev-dotnet/gtk-sharp-1.9.1
-	>=dev-dotnet/gnome-sharp-1.9.1
-	>=dev-dotnet/gnomevfs-sharp-1.9.1
-	>=dev-dotnet/glade-sharp-1.9.1
-	>=dev-dotnet/gconf-sharp-1.9.1
+	>=dev-dotnet/gtk-sharp-2.3.90
+	>=dev-dotnet/gnome-sharp-2.3.90
+	>=dev-dotnet/gnomevfs-sharp-2.3.90
+	>=dev-dotnet/glade-sharp-2.3.90
+	>=dev-dotnet/gconf-sharp-2.3.90
 	xine? ( >=media-libs/xine-lib-1_rc4 )
 	!xine? (
 		>=media-libs/gstreamer-0.8.9-r3
@@ -39,6 +39,7 @@ RDEPEND=">=dev-lang/mono-0.96
 	>=gnome-base/gconf-2.0.0
 	>=gnome-base/gnome-vfs-2.0.0
 	>=x11-libs/gtk+-2.6.0
+	>=dev-util/intltool-0.29
 	>=sys-apps/dbus-0.23.2-r1
 	media-libs/flac"
 
@@ -73,6 +74,9 @@ src_unpack() {
 	# Fix the install location of the dbus service file
 	sed -i "s:libdir)/dbus-1.0:datadir)/dbus-1:" \
 		${S}/data/Makefile.am || die "sed failed"
+
+	epatch ${FILESDIR}/${P}-gtk-sharp-2.x.90-compat.diff || die
+	epatch ${FILESDIR}/${P}-64-bit-int.diff || die
 
 	autoconf || die "autoconf failed"
 	automake || die "automake failed"

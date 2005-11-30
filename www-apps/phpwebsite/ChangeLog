@@ -1,6 +1,214 @@
-# ChangeLog for net-www/phpwebsite
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpwebsite/ChangeLog,v 1.1 2004/08/15 15:32:57 stuart Exp $
+# ChangeLog for www-apps/phpwebsite
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phpwebsite/ChangeLog,v 1.1.1.1 2005/11/30 09:37:08 chriswhite Exp $
+
+  20 Nov 2005; Stuart Herbert <stuart@gentoo.org>
+  phpwebsite-0.10.2_rc2.ebuild:
+  Removed explicit DEPEND on webapp-config; this is handled by the webapp eclass
+
+  31 Aug 2005; Renat Lumpau <rl03@gentoo.org> -phpwebsite-0.10.2_rc1.ebuild:
+  Removing vulnerable versions
+
+  30 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  phpwebsite-0.10.2_rc2.ebuild:
+  Stable on alpha due to security bug #102785
+
+  26 Aug 2005; Renat Lumpau <rl03@gentoo.org> phpwebsite-0.10.2_rc2.ebuild:
+  Stable on x86 wrt security bug #102785
+
+  25 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpwebsite-0.10.2_rc2.ebuild:
+  Stable on ppc.
+
+  25 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpwebsite-0.10.2_rc2.ebuild:
+  Stable on sparc wrt #102785
+
+  25 Aug 2005; Renat Lumpau <rl03@gentoo.org>
+  -files/phpwebsite-0.10.1-xml-rpc.diff, -phpwebsite-0.10.1-r1.ebuild:
+  Cleaning old versions
+
+*phpwebsite-0.10.2_rc2 (25 Aug 2005)
+
+  25 Aug 2005; Renat Lumpau <rl03@gentoo.org> +phpwebsite-0.10.2_rc2.ebuild:
+  Version bump wrt security bug #102785.
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Housekeeping
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Housekeeping
+
+  20 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  phpwebsite-0.10.2_rc1.ebuild:
+  Stable on alpha wrt security bug #102785
+
+  19 Aug 2005; Renat Lumpau <rl03@gentoo.org> phpwebsite-0.10.2_rc1.ebuild:
+  stable on x86 wrt security bug #102785.
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpwebsite-0.10.2_rc1.ebuild:
+  Stable on ppc.
+
+  18 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  phpwebsite-0.10.2_rc1.ebuild:
+  Stable on sparc wrt #102785
+
+*phpwebsite-0.10.2_rc1 (17 Aug 2005)
+
+  17 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +phpwebsite-0.10.2_rc1.ebuild:
+  Version bump wrt security bug #102785.
+
+  10 Jul 2005; Renat Lumpau <rl03@gentoo.org>
+  -files/phpwebsite-0.10.0-xml-rpc.diff,
+  +files/phpwebsite-0.10.1-xml-rpc.diff, -phpwebsite-0.9.3_p4-r1.ebuild,
+  -phpwebsite-0.9.3_p4-r2.ebuild, -phpwebsite-0.10.0.ebuild,
+  -phpwebsite-0.10.0-r1.ebuild, -phpwebsite-0.10.0-r2.ebuild,
+  -phpwebsite-0.10.0-r3.ebuild, phpwebsite-0.10.1-r1.ebuild:
+  Removed old versions
+
+  09 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  phpwebsite-0.10.1-r1.ebuild:
+  Stable on alpha, bug 97461.
+
+  09 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> files/postinstall-en.txt:
+  Update postinstall-en.txt with upgrade information from upstream's upgrade doc.
+
+  09 Jul 2005; Jason Wever <weeve@gentoo.org> phpwebsite-0.10.1-r1.ebuild:
+  Stable on SPARC wrt security bug #97461.
+
+  08 Jul 2005; Renat Lumpau <rl03@gentoo.org> phpwebsite-0.10.1-r1.ebuild:
+  Stable on x86
+
+*phpwebsite-0.10.1-r1 (08 Jul 2005)
+
+  08 Jul 2005; Renat Lumpau <rl03@gentoo.org> -phpwebsite-0.10.1.ebuild,
+  +phpwebsite-0.10.1-r1.ebuild:
+  revbumped
+
+  08 Jul 2005; Renat Lumpau <rl03@gentoo.org> phpwebsite-0.10.1.ebuild:
+  Updated security patch wrt #97461
+
+  07 Jul 2005; Renat Lumpau <rl03@gentoo.org> phpwebsite-0.10.1.ebuild:
+  Fix patch location
+
+  06 Jul 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpwebsite-0.10.1.ebuild:
+  Stable on ppc.
+
+*phpwebsite-0.10.1 (06 Jul 2005)
+
+  06 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +phpwebsite-0.10.1.ebuild:
+  Version bump.
+
+*phpwebsite-0.10.0-r3 (06 Jul 2005)
+
+  06 Jul 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/phpwebsite-0.10.0-xml-rpc.diff, +phpwebsite-0.10.0-r3.ebuild:
+  Revision bump for security bug 97461.
+
+  01 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  phpwebsite-0.10.0-r2.ebuild:
+  Stable on alpha.
+
+  01 Mar 2005; Don Seiler <rizzo@gentoo.org> phpwebsite-0.10.0-r2.ebuild:
+  stable on x86
+
+  28 Feb 2005; Jason Wever <weeve@gentoo.org> phpwebsite-0.10.0-r2.ebuild:
+  Stable on sparc wrt security bug #83297.
+
+  28 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
+  phpwebsite-0.10.0-r2.ebuild:
+  Stable on ppc, bug 83297.
+
+*phpwebsite-0.10.0-r2 (28 Feb 2005)
+
+  28 Feb 2005; Don Seiler <rizzo@gentoo.org> +phpwebsite-0.10.0-r2.ebuild:
+  Revision bump for another patch for bug #83297
+
+  27 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
+  phpwebsite-0.10.0-r1.ebuild:
+  Stable on alpha, bug 83297.
+
+*phpwebsite-0.10.0-r1 (25 Feb 2005)
+
+  25 Feb 2005; Don Seiler <rizzo@gentoo.org> +phpwebsite-0.10.0-r1.ebuild:
+  Revision bump for security fix.  Bug #83297
+
+  20 Jan 2005; Don Seiler <rizzo@gentoo.org> phpwebsite-0.10.0.ebuild:
+  Marking stable in x86
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*phpwebsite-0.10.0 (24 Nov 2004)
+
+  24 Nov 2004; Don Seiler <rizzo@gentoo.org> +phpwebsite-0.10.0.ebuild:
+  Version bump
+
+  24 Nov 2004; Olivier Crete <tester@gentoo.org>
+  phpwebsite-0.9.3_p4-r2.ebuild:
+  Stable in x86 per security bug 71502
+
+  06 Nov 2004; Joseph Jezak <josejx@gentoo.org>
+  phpwebsite-0.9.3_p4-r2.ebuild:
+  Marked ppc stable for bug #71502.
+
+  24 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  phpwebsite-0.9.3_p4-r2.ebuild:
+  Stable on alpha, bug 71502.
+
+  24 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
+  phpwebsite-0.9.3_p4-r2.ebuild:
+  Stable on alpha, bug 71502.
+
+*phpwebsite-0.9.3_p4-r2 (17 Nov 2004)
+
+  17 Nov 2004; Don Seiler <rizzo@gentoo.org> +phpwebsite-0.9.3_p4-r2.ebuild:
+  Revision bump for security patch, bug #71502
+
+  15 Sep 2004; Don Seiler <rizzo@gentoo.org> -phpwebsite-0.9.3_p2-r1.ebuild,
+  phpwebsite-0.9.3_p4-r1.ebuild, -phpwebsite-0.9.3_p4.ebuild:
+  Removing obsolete versions
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  04 Sep 2004; Bryan Østergaard <kloeri@gentoo.org>
+  phpwebsite-0.9.3_p4-r1.ebuild:
+  Stable on alpha.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  phpwebsite-0.9.3_p2-r1.ebuild, phpwebsite-0.9.3_p4-r1.ebuild,
+  phpwebsite-0.9.3_p4.ebuild:
+  Masked phpwebsite-0.9.3_p4.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  phpwebsite-0.9.3_p2-r1.ebuild, phpwebsite-0.9.3_p4-r1.ebuild:
+  Masked phpwebsite-0.9.3_p4-r1.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  phpwebsite-0.9.3_p2-r1.ebuild:
+  Masked phpwebsite-0.9.3_p2-r1.ebuild stable for ppc
+
+  27 Aug 2004; Don Seiler <rizzo@gentoo.org> :
+  Upstream updated patch file, new digest needed
+
+  27 Aug 2004; Don Seiler <rizzo@gentoo.org> phpwebsite-0.9.3_p4-r1.ebuild:
+  Stable on x86
+
+*phpwebsite-0.9.3_p4-r1 (25 Aug 2004)
+
+  25 Aug 2004; Don Seiler <rizzo@gentoo.org> +phpwebsite-0.9.3_p4-r1.ebuild:
+  Patch for possible cross-site scripting and SQL injection issues
+
+*phpwebsite-0.9.3_p4 (16 Aug 2004)
+
+  16 Aug 2004; Don Seiler <rizzo@gentoo.org> +files/postinstall-en.txt,
+  +phpwebsite-0.9.3_p4.ebuild:
+  Version bump, now with webapp eclass
 
 *phpwebsite-0.9.3_p2-r1 (15 Aug 2004)
 
@@ -8,7 +216,7 @@
   +phpwebsite-0.9.3_p2-r1.ebuild:
   Moved from net-www/phpwebsite to www-apps/phpwebsite.
 
-  11 Jun 2004; Bryan �stergaard <kloeri@gentoo.org>
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org>
   phpwebsite-0.9.3_p2-r1.ebuild:
   Stable on alpha.
 

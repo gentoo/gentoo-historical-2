@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.4-r5.ebuild,v 1.1 2004/08/30 10:33:50 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.4-r5.ebuild,v 1.1.1.1 2005/11/30 09:39:05 chriswhite Exp $
 
-inherit eutils flag-o-matic gnuconfig
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="console display library"
 HOMEPAGE="http://www.gnu.org/software/ncurses/ncurses.html"
@@ -10,31 +10,27 @@ SRC_URI="mirror://gnu/ncurses/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="5"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
-IUSE="build bootstrap debug doc uclibc unicode"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="gpm build bootstrap debug doc unicode nocxx"
 
-DEPEND="virtual/libc"
-# This doesn't fix the problem. bootstrap builds ncurses again with
-# normal USE flags while bootstrap is unset, which apparently causes
-# things to break -- avenj  2 Apr 04
-#	!bootstrap? ( gpm? ( sys-libs/gpm ) )"
+DEPEND="gpm? ( sys-libs/gpm )"
+
+pkg_setup() {
+	# check for unicode use flag, see bug #78313
+	if use !unicode && [ -f /usr/lib/libncursesw.so ] && [ "$COMPILE_NCURSES" != "TRUE" ]; then
+		ewarn "Remerging ncurses without unicode in USE flags will break your system."
+		ewarn "For more information see bug #78313."
+		ewarn "If you still want continue set COMPILE_NCURSES variable to TRUE."
+		die
+	fi
+}
 
 src_unpack() {
 	unpack ${A}
-
-	cd ${S}
-	epatch ${FILESDIR}/${P}-xterm.patch
-	# Bug #42336.
-	epatch ${FILESDIR}/${P}-share-sed.patch
-	gnuconfig_update
-}
-
-pkg_setup() {
-	# this adds support for installing to lib64/lib32. since only portage
-	# 2.0.51 will have this functionality supported in dolib and friends,
-	# and since it isnt expected that many profiles will define it, we need
-	# to make this variable default to lib.
-	[ -z "${CONF_LIBDIR}" ] && export CONF_LIBDIR="lib"
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-xterm.patch
+	epatch "${FILESDIR}"/${P}-share-sed.patch #42336
+	epatch "${FILESDIR}"/${P}-c++-templates.patch #90819
 }
 
 src_compile() {
@@ -55,11 +51,11 @@ src_compile() {
 	# building it.  We will rebuild ncurses after gcc's second
 	# build in bootstrap.sh.
 	# <azarah@gentoo.org> (23 Oct 2002)
-	( use build || use bootstrap || use uclibc ) \
+	( use build || use bootstrap || use nocxx ) \
 		&& myconf="${myconf} --without-cxx --without-cxx-binding --without-ada"
 
-	# see note about DEPEND above -- avenj@gentoo.org  2 Apr 04
-#	use gpm && myconf="${myconf} --with-gpm"
+	# whee gpm !
+	use gpm && myconf="${myconf} --with-gpm"
 
 	# enable utf-8 support
 	use unicode && myconf="${myconf} --enable-widec"
@@ -67,14 +63,16 @@ src_compile() {
 	# We need the basic terminfo files in /etc, bug #37026.  We will
 	# add '--with-terminfo-dirs' and then populate /etc/terminfo in
 	# src_install() ...
+	tc-export BUILD_CC
 	econf \
-		--libdir=/${CONF_LIBDIR} \
+		--libdir=/$(get_libdir) \
 		--with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo" \
 		--disable-termcap \
 		--with-shared \
 		--with-rcs-ids \
 		--without-ada \
 		--enable-symlinks \
+		--program-prefix="" \
 		${myconf} \
 		|| die "configure failed"
 
@@ -90,26 +88,28 @@ src_compile() {
 src_install() {
 	local x=
 
-	make DESTDIR=${D} install || die "make install failed"
+	make DESTDIR="${D}" install || die "make install failed"
 
 	# Move static and extraneous ncurses libraries out of /lib
-	cd ${D}/${CONF_LIBDIR}
-	dodir /usr/${CONF_LIBDIR}
-	mv libform* libmenu* libpanel* *.a ${D}/usr/${CONF_LIBDIR}
+	cd ${D}/$(get_libdir)
+	dodir /usr/$(get_libdir)
+	mv libform* libmenu* libpanel* *.a ${D}/usr/$(get_libdir)
 
 	if use unicode ; then
-		gen_usr_ldscript libncursesw.so
-		for i in ${D}/usr/${CONF_LIBDIR}/*w.*; do
+		gen_usr_ldscript libncursesw.so || die "gen_usr_ldscript failed"
+		gen_usr_ldscript libcursesw.so || die "gen_usr_ldscript failed"
+		for i in ${D}/usr/$(get_libdir)/*w.* ; do
 			local libncurses=${i/${D}/}
 			dosym ${libncurses} ${libncurses/w./.}
 		done
-		for i in ${D}/${CONF_LIBDIR}/libncursesw.so*; do
+		for i in ${D}/$(get_libdir)/libncursesw.so* ; do
 			local libncurses=${i/${D}}
 			dosym ${libncurses} ${libncurses/w./.}
 		done
 	else
 		# bug #4411
 		gen_usr_ldscript libncurses.so || die "gen_usr_ldscript failed"
+		gen_usr_ldscript libcurses.so || die "gen_usr_ldscript failed"
 	fi
 
 	# We need the basic terminfo files in /etc, bug #37026
@@ -118,11 +118,10 @@ src_install() {
 	#for x in dumb linux rxvt screen sun vt{52,100,102,220} xterm
 	for x in ansi console dumb linux rxvt screen sun vt{52,100,102,200,220} xterm xterm-color xterm-xfree86
 	do
-		local termfile="$(find "${D}/usr/share/terminfo/" -name "${x}" 2>/dev/null)"
-		local basedir="$(basename $(dirname "${termfile}"))"
+		local termfile=$(find "${D}"/usr/share/terminfo/ -name "${x}" 2>/dev/null)
+		local basedir=$(basename $(dirname "${termfile}"))
 
-		if [ -n "${termfile}" ]
-		then
+		if [[ -n ${termfile} ]] ; then
 			dodir /etc/terminfo/${basedir}
 			mv ${termfile} ${D}/etc/terminfo/${basedir}/
 			dosym ../../../../etc/terminfo/${basedir}/${x} \
@@ -131,40 +130,39 @@ src_install() {
 	done
 
 	# Build fails to create this ...
-	dosym ../share/terminfo /usr/${CONF_LIBDIR}/terminfo
+	dosym ../share/terminfo /usr/$(get_libdir)/terminfo
 
 	dodir /etc/env.d
 	echo "CONFIG_PROTECT_MASK=\"/etc/terminfo\"" > ${D}/etc/env.d/50ncurses
 
-	if use build
-	then
+	if use build ; then
 		cd ${D}
 		rm -rf usr/share/man
 		cd usr/share/terminfo
-		cp -a l/linux n/nxterm v/vt100 ${T}
+		cp -pPR l/linux n/nxterm v/vt100 ${T}
 		rm -rf *
 		mkdir l x v
-		cp -a ${T}/linux l
-		cp -a ${T}/nxterm x/xterm
-		cp -a ${T}/vt100 v
+		cp -pPR ${T}/linux l
+		cp -pPR ${T}/nxterm x/xterm
+		cp -pPR ${T}/vt100 v
 		# bash compilation requires static libncurses libraries, so
 		# this breaks the "build a new build image" system.  We now
 		# need to remove libncurses.a from the build image manually.
 		# cd ${D}/usr/lib; rm *.a
 		# remove extraneous ncurses libraries
-		cd ${D}/usr/${CONF_LIBDIR}; rm -f lib{form,menu,panel}*
+		cd ${D}/usr/$(get_libdir); rm -f lib{form,menu,panel}*
 		cd ${D}/usr/include; rm -f {eti,form,menu,panel}.h
 	else
 		if use bootstrap ; then
-			cd ${D}/usr/${CONF_LIBDIR}; rm -f lib{form,menu,panel,ncurses++}*
+			cd ${D}/usr/$(get_libdir); rm -f lib{form,menu,panel,ncurses++}*
 			cd ${D}/usr/include; rm -f {eti,form,menu,panel}.h cursesapp.h curses?.h cursslk.h etip.h
 		fi
 		# Install xterm-debian terminfo entry to satisfy bug #18486
-		LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${D}/usr/${CONF_LIBDIR}:${D}/${CONF_LIBDIR} \
+		LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${D}/usr/$(get_libdir):${D}/$(get_libdir) \
 			TERMINFO=${D}/usr/share/terminfo \
 			${D}/usr/bin/tic ${FILESDIR}/xterm-debian.ti
 
-		if use uclibc ; then
+		if use elibc_uclibc ; then
 			cp ${D}/usr/share/terminfo/x/xterm-debian ${D}/etc/terminfo/x/
 			rm -rf ${D}/usr/share/terminfo/*
 		fi
@@ -176,19 +174,18 @@ src_install() {
 }
 
 pkg_preinst() {
-	if [ ! -f "${ROOT}/etc/env.d/50ncurses" ]
-	then
-		mkdir -p "${ROOT}/etc/env.d"
+	if [[ ! -f ${ROOT}/etc/env.d/50ncurses ]] ; then
+		mkdir -p "${ROOT}"/etc/env.d
 		echo "CONFIG_PROTECT_MASK=\"/etc/terminfo\"" > \
-			${ROOT}/etc/env.d/50ncurses
+			"${ROOT}"/etc/env.d/50ncurses
 	fi
 }
 
 pkg_postinst() {
 	# Old ncurses may still be around from old build tbz2's.
-	rm -f /lib/libncurses.so.5.[23] /usr/lib/lib{form,menu,panel}.so.5.[23]
-	if [ "${CONF_LIBDIR}" != "lib" ] ;then
-		rm -f /${CONF_LIBDIR}/libncurses.so.5.[23] \
-			/usr/${CONF_LIBDIR}/lib{form,menu,panel}.so.5.[23]
+	rm -f ${ROOT}/lib/libncurses.so.5.[23] ${ROOT}/usr/lib/lib{form,menu,panel}.so.5.[23]
+	if [ "$(get_libdir)" != "lib" ] ; then
+		rm -f ${ROOT}/$(get_libdir)/libncurses.so.5.[23] \
+			${ROOT}/usr/$(get_libdir)/lib{form,menu,panel}.so.5.[23]
 	fi
 }

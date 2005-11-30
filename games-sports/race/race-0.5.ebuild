@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/race/race-0.5.ebuild,v 1.1 2003/09/11 12:26:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/race/race-0.5.ebuild,v 1.1.1.1 2005/11/30 09:39:02 chriswhite Exp $
 
-inherit games gcc eutils
+inherit eutils toolchain-funcs games
 
 DESCRIPTION="OpenGL Racing Game"
 HOMEPAGE="http://projectz.org/?id=70"
@@ -10,9 +10,10 @@ SRC_URI="ftp://users.freebsd.org.uk/pub/foobar2k/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ppc x86"
+IUSE=""
 
-DEPEND="virtual/opengl
+RDEPEND="virtual/opengl
 	virtual/glu
 	media-libs/libsdl
 	media-libs/sdl-image
@@ -25,19 +26,20 @@ src_unpack() {
 	sed -i \
 		-e "s:GENTOO_DATADIR:${GAMES_DATADIR}/${PN}:g" \
 		-e "s:GENTOO_CONFDIR:${GAMES_SYSCONFDIR}:g" \
-		*.c
+		*.c || die "sed failed"
+	find "${S}"/data/ -type d -name .xvpics -print0 | xargs -0 rm -r
 }
 
 src_compile() {
-	emake CC="$(gcc-getCC) ${CFLAGS}" || die
+	emake CC="$(tc-getCC) ${CFLAGS}" || die "emake failed"
 }
 
 src_install() {
-	dogamesbin race
+	dogamesbin race || die "dogamesbin failed"
 	insinto ${GAMES_SYSCONFDIR}
-	newins config race.conf
+	newins config race.conf || die "newins failed"
 	dodir ${GAMES_DATADIR}/${PN}
-	mv data/* ${D}/${GAMES_DATADIR}/${PN}/
+	cp -r data/* ${D}/${GAMES_DATADIR}/${PN}/ || die "cp failed"
 	dodoc README
 	prepgamesdirs
 }

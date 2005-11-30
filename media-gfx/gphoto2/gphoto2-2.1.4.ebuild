@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gphoto2/gphoto2-2.1.4.ebuild,v 1.1 2004/02/01 22:56:13 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gphoto2/gphoto2-2.1.4.ebuild,v 1.1.1.1 2005/11/30 09:37:26 chriswhite Exp $
 
 inherit libtool flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/gphoto/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
 IUSE="nls jpeg readline ncurses aalib"
 
 # jpeg useflag -> exif support
@@ -27,9 +27,9 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_compile() {
+	aclocal
 	elibtoolize
 
-	aclocal
 	# -pipe does no work
 	filter-flags -pipe
 
@@ -53,7 +53,7 @@ src_compile() {
 	use readline \
 		||  myconf="${myconf} --without-readline"
 
-	econf ${myconf}
+	econf ${myconf} || die "econf failed"
 	emake || die
 }
 

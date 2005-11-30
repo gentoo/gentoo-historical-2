@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.26.ebuild,v 1.1 2004/01/28 04:38:47 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.26.ebuild,v 1.1.1.1 2005/11/30 09:36:52 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="LDAP suite of application and development tools"
 HOMEPAGE="http://www.OpenLDAP.org/"
-SRC_URI="ftp://ftp.OpenLDAP.org/pub/OpenLDAP/openldap-release/${P}.tgz"
+SRC_URI="mirror://openldap/openldap-release/${P}.tgz"
 
 LICENSE="OPENLDAP"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha amd64 ppc64"
+KEYWORDS="x86 ppc sparc alpha amd64 ~mips ia64"
 IUSE="berkdb crypt debug gdbm ipv6 kerberos odbc perl readline samba sasl slp ssl tcpd"
 
 DEPEND=">=sys-libs/ncurses-5.1
@@ -32,11 +32,15 @@ DEPEND=">=sys-libs/ncurses-5.1
 # else
 #	pull in sys-libs/db
 DEPEND="${DEPEND}
-	berkdb? ( >=sys-libs/db-4.1.25_p1-r3 ) : ( gdbm? ( >=sys-libs/gdbm-1.8.0 ) : ( >=sys-libs/db-4.1.25_p1-r3 ) )"
+	berkdb? ( >=sys-libs/db-4.1.25_p1-r3 )
+	!berkdb? (
+		gdbm? ( >=sys-libs/gdbm-1.8.0 )
+		!gdbm? ( >=sys-libs/db-4.1.25_p1-r3 )
+	)"
 
 pkg_preinst() {
 	enewgroup ldap 439
-	enewuser ldap 439 /dev/null /usr/lib/openldap ldap
+	enewuser ldap 439 -1 /usr/lib/openldap ldap
 }
 
 src_unpack() {
@@ -53,6 +57,10 @@ src_unpack() {
 	# (the net result is that "passwd" can be used to change ldap passwords w/
 	#  proper pam support)
 	sed -ie 's/$(SECURITY_LIBS) $(LDIF_LIBS) $(LUTIL_LIBS)/$(LUTIL_LIBS) $(SECURITY_LIBS) $(LDIF_LIBS)/' ${S}/servers/slapd/Makefile.in
+
+	#cd ${S}
+	#epatch ${FILESDIR}/${PN}-2.1.26-perlfix.patch
+	sed -ie '49 a#include <XSUB.h>' ${S}/servers/slapd/back-perl/perl_back.h
 }
 
 src_compile() {
@@ -157,20 +165,25 @@ src_install() {
 	newins ${FILESDIR}/2.0/slapd.conf slapd
 
 	# install MDK's ssl cert script
-	dodir /etc/openldap/ssl
-	exeinto /etc/openldap/ssl
-	doexe ${FILESDIR}/gencert.sh
-
+	if use ssl || use samba; then
+		dodir /etc/openldap/ssl
+		exeinto /etc/openldap/ssl
+		doexe ${FILESDIR}/gencert.sh
+	fi
 }
 
 pkg_postinst() {
-	# make a self-signed ssl cert (if there isn't one there already)
-	if [ ! -e /etc/openldap/ssl/ldap.pem ]
-	then
-		cd /etc/openldap/ssl
-		yes "" | sh gencert.sh
-		chmod 640 ldap.pem
-		chown root:ldap ldap.pem
+	if use ssl; then
+		# make a self-signed ssl cert (if there isn't one there already)
+		if [ ! -e /etc/openldap/ssl/ldap.pem ]
+		then
+			cd /etc/openldap/ssl
+			yes "" | sh gencert.sh
+			chmod 640 ldap.pem
+			chown root:ldap ldap.pem
+		else
+			einfo "An LDAP cert already appears to exist, not creating"
+		fi
 	fi
 
 	# Since moving to running openldap as user ldap there are some
@@ -183,4 +196,17 @@ pkg_postinst() {
 	chown root:ldap /etc/openldap/slapd.conf.default
 	chmod 0640 /etc/openldap/slapd.conf.default
 	chown ldap:ldap /var/lib/openldap-{data,ldbm,slurp}
+
+	# notes from bug #41297, bug #41039
+	ewarn "If you are upgrading from OpenLDAP 2.0, major changes have occured:"
+	ewarn "- bind_anon_dn is now disabled by default for security"
+	ewarn "  add 'allow bind_anon_dn' to your config for the old behavior."
+	ewarn "- Default schemas have changed, you should slapcat your entire DB to"
+	ewarn "  a file, delete your DB, and then slapadd it again. Alternatively"
+	ewarn "  you can try slapindex which should work in almost all cases. Be"
+	ewarn "  sure to check the permissions on the database files afterwards!"
+	if use ssl; then
+		ewarn "- Self-signed SSL certificates are treated harshly by OpenLDAP 2.1"
+		ewarn "  add 'TLS_REQCERT never' if you want to use them."
+	fi
 }

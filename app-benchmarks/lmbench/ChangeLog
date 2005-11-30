@@ -1,6 +1,32 @@
 # ChangeLog for app-benchmarks/lmbench
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/lmbench/ChangeLog,v 1.1 2004/02/08 01:34:00 dragonheart Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/lmbench/ChangeLog,v 1.1.1.1 2005/11/30 09:36:35 chriswhite Exp $
+
+  15 May 2005; Marcelo Goes <vanquirius@gentoo.org> lmbench-3.0_alpha3.ebuild:
+  Use toolchain-funcs.eclass instead of gcc.eclass for bug 92745. Also, avoiding
+  file collision with /usr/bin/line and sys-apps/util-linux.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> lmbench-3.0_alpha3.ebuild:
+  stable on amd64
+
+  05 Jun 2004; Jason Wever <weeve@gentoo.org> :
+  Added ~sparc keyword.
+
+  13 May 2004; Ferris McCormick <fmccor@gentoo.org> lmbench-3.0_alpha3.ebuild:
+  Added sparc keyword.
+
+  09 May 2004; Daniel Ahlberg <aliz@gentoo.org> lmbench-3.0_alpha3.ebuild:
+  Added amd64 keyword, closing #50472.
+
+  14 Apr 2004; Daniel Black <dragonheart@gentoo.org>
+  lmbench-3.0_alpha3.ebuild:
+  Stable on x86 ppc
+
+  17 Feb 2004; David Holm <dholm@gentoo.org> lmbench-3.0_alpha3.ebuild:
+  Added to ~ppc.
+
+  08 Feb 2004; Daniel Black <dragonheart@gentoo.org> lmbench-3.0_alpha3.ebuild:
+  Fixed for non-root users hopefully.
 
 *lmbench-3.0_alpha3 (08 Feb 2004)
 

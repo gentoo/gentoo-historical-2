@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/abcm2ps/abcm2ps-3.7.21.ebuild,v 1.1 2004/12/19 01:32:59 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/abcm2ps/abcm2ps-3.7.21.ebuild,v 1.1.1.1 2005/11/30 09:38:45 chriswhite Exp $
 
 IUSE=""
 
@@ -12,7 +12,7 @@ SRC_URI="http://moinejf.free.fr/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 sparc x86"
+KEYWORDS="amd64 sparc x86 ~ppc"
 
 DEPEND=""
 
@@ -24,5 +24,5 @@ src_unpack() {
 
 src_install() {
 	make DESTDIR="${D}" install || die
-	dodoc README abc-draft.txt Changes INSTALL
+	dodoc README abc-draft.txt Changes
 }

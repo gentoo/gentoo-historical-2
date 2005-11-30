@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/lilypond-2.5.2.ebuild,v 1.1 2004/11/28 19:46:52 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/lilypond-2.5.2.ebuild,v 1.1.1.1 2005/11/30 09:38:14 chriswhite Exp $
 
 IUSE="doc"
 
@@ -13,9 +13,9 @@ HOMEPAGE="http://lilypond.org/"
 SLOT="0"
 LICENSE="GPL-2"
 #-amd64: 2.2.6: lilypond-bin exits error code 139 ... upstream needs to fix it...
-KEYWORDS="~x86 -amd64"
+KEYWORDS="~x86 ~amd64 ~sparc"
 
-RDEPEND=">=dev-util/guile-1.6.4
+RDEPEND=">=dev-util/guile-1.6.5
 	virtual/ghostscript
 	virtual/tetex
 	>=dev-lang/python-2.2.3-r1
@@ -24,7 +24,7 @@ RDEPEND=">=dev-util/guile-1.6.4
 DEPEND="${RDEPEND}
 	>=app-text/t1utils-1.32
 	>=dev-lang/perl-5.8.0-r12
-	>=sys-apps/texinfo-4.6
+	>=sys-apps/texinfo-4.7
 	>=sys-devel/flex-2.5.4a-r5
 	>=sys-devel/gcc-3.1-r8
 	>=sys-devel/make-3.80

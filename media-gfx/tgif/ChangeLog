@@ -1,6 +1,20 @@
 # ChangeLog for media-gfx/tgif
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/tgif/ChangeLog,v 1.1 2005/05/19 19:46:59 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/tgif/ChangeLog,v 1.1.1.1 2005/11/30 09:37:41 chriswhite Exp $
+
+  17 Nov 2005; Homer Parker <hparker@gentoo.org> tgif-4.1.44.ebuild:
+  Marked ~amd64.
+
+  03 Nov 2005; Fabian Groffen <grobian@gentoo.org> tgif-4.1.44.ebuild:
+  Marked ~ppc-macos (bug #110939)
+
+  07 Jun 2005; Luca Barbato <lu_zero@gentoo.org> tgif-4.1.44.ebuild:
+  Fix url, thanks to alawi <alawi@csail.mit.edu> for the report
+
+*tgif-4.1.44 (20 May 2005)
+
+  20 May 2005; Luca Barbato <lu_zero@gentoo.org> +tgif-4.1.44.ebuild:
+  Updated version
 
 *tgif-4.1.43 (19 May 2005)
 

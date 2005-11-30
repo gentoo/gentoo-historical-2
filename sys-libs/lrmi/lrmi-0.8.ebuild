@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/lrmi/lrmi-0.8.ebuild,v 1.1 2004/06/15 18:22:35 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/lrmi/lrmi-0.8.ebuild,v 1.1.1.1 2005/11/30 09:39:10 chriswhite Exp $
 
 IUSE=""
 DESCRIPTION="LRMI is a library for calling real mode BIOS routines under Linux."
 HOMEPAGE="http://www.sourceforge.net/projects/lrmi/"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 SLOT="0"
 LICENSE="MIT"
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 RDEPEND=""
 SRC_URI="mirror://sourceforge/lrmi/${P}.tar.gz"
-S=${WORKDIR}/${P}
 
 src_compile() {
 	emake CFLAGS="${CFLAGS}" || die
@@ -19,8 +18,13 @@ src_compile() {
 
 src_install () {
 	dobin vbetest
-	insinto /usr/lib
-	doins liblrmi.so
+
+	dolib.a liblrmi.a
+
+	dolib.so liblrmi.so
+	dosym liblrmi.so /usr/lib/liblrmi.so.0
+	dosym liblrmi.so.0 /usr/lib/liblrmi.so.0.0
+
 	insinto /usr/include
 	doins lrmi.h vbe.h
 }

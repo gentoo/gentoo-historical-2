@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/freeradius-dialupadmin/freeradius-dialupadmin-1.70-r1.ebuild,v 1.1 2005/08/06 11:28:03 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/freeradius-dialupadmin/freeradius-dialupadmin-1.70-r1.ebuild,v 1.1.1.1 2005/11/30 09:36:59 chriswhite Exp $
 
 inherit eutils webapp
 MY_FREERADIUS_P="freeradius-1.0.2"

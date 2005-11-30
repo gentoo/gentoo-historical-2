@@ -1,22 +1,25 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/tunesbrowser/tunesbrowser-0.1.6.ebuild,v 1.1 2004/09/04 19:53:31 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tunesbrowser/tunesbrowser-0.1.6.ebuild,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
+
+IUSE=""
 
 inherit eutils
 
-SLOT="0"
-LICENSE="crazney"
-KEYWORDS="~x86"
-DESCRIPTION="TunesBrowser is a simple musi player, capable of playing music found in iTunes(R) shares"
+DESCRIPTION="TunesBrowser is a simple music player, capable of playing music found in iTunes(R) shares"
+HOMEPAGE="http://crazney.net/programs/itunes/tunesbrowser.html"
 SRC_URI="http://crazney.net/programs/itunes/files/${P}.tar.bz2
 	http://dev.gentoo.org/~squinky86/files/${PV}-gstreamer.patch.bz2"
-HOMEPAGE="http://crazney.net/programs/itunes/tunesbrowser.html"
-IUSE=""
+
+SLOT="0"
+LICENSE="crazney"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND=">=media-libs/gstreamer-0.8
 	>=media-plugins/gst-plugins-mad-0.8
 	>=media-plugins/gst-plugins-oss-0.8
-	media-libs/libopendaap"
+	media-libs/libopendaap
+	>=gnome-base/libglade-2.0"
 
 src_unpack() {
 	unpack ${A}
@@ -24,12 +27,7 @@ src_unpack() {
 	epatch ${DISTDIR}/${PV}-gstreamer.patch.bz2
 }
 
-src_compile() {
-	econf || die
-	emake || die
-}
-
 src_install() {
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
-	einstall || die
+	make DESTDIR="${D}" install || die
+	dodoc AUTHORS ChangeLog
 }

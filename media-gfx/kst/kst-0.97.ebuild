@@ -1,18 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/kst/kst-0.97.ebuild,v 1.1 2004/12/24 01:34:30 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kst/kst-0.97.ebuild,v 1.1.1.1 2005/11/30 09:37:36 chriswhite Exp $
 
 inherit kde
 
-DESCRIPTION="A plotting and data viewing program for KDE"
-HOMEPAGE="http://omega.astro.utoronto.ca/kst/"
+DESCRIPTION="A plotting and data viewing program for KDE."
+HOMEPAGE="http://kst.kde.org/"
 SRC_URI="http://omega.astro.utoronto.ca/kst/${P}.tar.gz"
 
-KEYWORDS="x86 ~ppc ~sparc amd64"
+KEYWORDS="amd64 ppc ~sparc x86"
 LICENSE="GPL-2"
 
 SLOT="0"
 IUSE=""
 
-DEPEND=">=kde-base/kdebase-3.1"
+DEPEND="kde-base/kdelibs"
 need-kde 3.1

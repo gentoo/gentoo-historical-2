@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/moregroupware/moregroupware-0.7.3.ebuild,v 1.1 2005/08/22 20:46:47 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/moregroupware/moregroupware-0.7.3.ebuild,v 1.1.1.1 2005/11/30 09:37:09 chriswhite Exp $
 
 inherit webapp
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://moregroupware.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-core-${PV}.tar.gz"
 
 LICENSE="X11 GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="virtual/php

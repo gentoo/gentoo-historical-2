@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sodipodi/sodipodi-0.33.ebuild,v 1.1 2003/12/04 15:47:55 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sodipodi/sodipodi-0.33.ebuild,v 1.1.1.1 2005/11/30 09:37:40 chriswhite Exp $
 
 inherit gnome2
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="~x86 ~ppc sparc ~alpha ~amd64"
 IUSE="gnome mmx"
 
 RDEPEND=">=x11-libs/gtk+-2.2.1
@@ -34,4 +34,4 @@ G2CONF="${G2CONF} --with-xft --with-popt"
 # disable experimental features for now
 G2CONF="${G2CONF} --without-mlview --without-kde"
 
-DOCS="AUTHORS COPYING ChangeLog HACKING NEWS README TODO"
+DOCS="AUTHORS ChangeLog HACKING NEWS README TODO"

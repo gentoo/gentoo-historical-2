@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zphoto/zphoto-1.2-r1.ebuild,v 1.1 2005/04/23 06:31:00 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/zphoto/zphoto-1.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:20 chriswhite Exp $
 
 IUSE="wxwindows gtk2"
 
@@ -9,7 +9,7 @@ SRC_URI="http://namazu.org/~satoru/zphoto/${P}.tar.gz"
 HOMEPAGE="http://namazu.org/~satoru/zphoto/"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 LICENSE="LGPL-2.1"
 
 DEPEND=">=media-libs/ming-0.2a
@@ -24,11 +24,18 @@ src_compile() {
 	local myconf
 
 	if use wxwindows ; then
-		if use gtk2 ; then
-			myconf="--with-wx-config=/usr/bin/wxgtk2-2.4-config"
-		else
-			myconf="--with-wx-config=/usr/bin/wxgtk-2.4-config"
+		if use gtk2 && has_version '>=x11-libs/wxGTK-2.6' ; then
+			wx_config="/usr/bin/wx-config-2.6"
+			sed -i -e 's@\($WXCONFIG --cflags\)@\1 --unicode=no@' \
+				-e 's@\($WXCONFIG --libs\)@\1 --unicode=no@' \
+				configure || die
+			sed -i -e 's@FALSE@false@g' wxzphoto.cpp || die
+		elif use gtk2 ; then
+			wx_config="/usr/bin/wxgtk2-2.4-config"
+		else	# gtk1
+			wx_config="/usr/bin/wxgtk-2.4-config"
 		fi
+		myconf="--with-wx-config=$wx_config"
 	else
 		myconf="--disable-wx"
 	fi

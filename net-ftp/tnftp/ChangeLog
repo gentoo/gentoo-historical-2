@@ -1,6 +1,58 @@
 # ChangeLog for net-ftp/tnftp
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/tnftp/ChangeLog,v 1.1 2003/09/04 21:58:35 g2boojum Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/tnftp/ChangeLog,v 1.1.1.1 2005/11/30 09:36:23 chriswhite Exp $
+
+  25 Sep 2005; Sven Wegener <swegener@gentoo.org> -tnftp-20050103.ebuild,
+  -tnftp-20050610.ebuild:
+  Removed old ebuilds.
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> tnftp-20050625.ebuild:
+  Mark 20050625 stable on alpha
+
+  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> tnftp-20050625.ebuild:
+  Stable on sparc
+
+*tnftp-20050625 (03 Jul 2005)
+
+  03 Jul 2005; Sven Wegener <swegener@gentoo.org> +tnftp-20050625.ebuild:
+  Version bump.
+
+*tnftp-20050610 (21 Jun 2005)
+
+  21 Jun 2005; Sven Wegener <swegener@gentoo.org> +tnftp-20050610.ebuild:
+  Version bump.
+
+  21 Mar 2005; Sven Wegener <swegener@gentoo.org> metadata.xml,
+  tnftp-20050103.ebuild:
+  Added ${ROOT} support. Taking over maintainership.
+
+  11 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> tnftp-20050103.ebuild:
+  Stable on alpha, bug 74704.
+
+  09 Jan 2005; Jason Wever <weeve@gentoo.org> tnftp-20050103.ebuild:
+  Marked stable on sparc wrt security bug #74704.
+
+*tnftp-20050103 (08 Jan 2005)
+
+  08 Jan 2005; Grant Goodyear <g2boojum@gentoo.org> -tnftp-20030825.ebuild,
+  +tnftp-20050103.ebuild:
+  Version bump to fix 74704.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tnftp-20030825.ebuild:
+  virtual/glibc -> virtual/libc
+
+  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> tnftp-20030825.ebuild :
+  AMD64 keywords.
+
+  05 Dec 2003; Grant Goodyear <g2boojum@gentoo.org> tnftp-20030825.ebuild:
+  Whoops, not yet tested on ppc.
+
+  05 Dec 2003; Grant Goodyear <g2boojum@gentoo.org> tnftp-20030825.ebuild:
+  Marking stable on all listed archs
+
+  20 Oct 2003; Jason Wever <weeve@gentoo.org> tnftp-20030825.ebuild:
+  Added sparc keyword to help resolve bug #31076.
 
 *tnftp-20030825 (04 Sep 2003)
 

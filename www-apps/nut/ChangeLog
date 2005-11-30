@@ -1,6 +1,48 @@
-# ChangeLog for net-misc/nut
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/nut/ChangeLog,v 1.1 2004/08/15 15:19:10 stuart Exp $
+# ChangeLog for www-apps/nut
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/nut/ChangeLog,v 1.1.1.1 2005/11/30 09:37:04 chriswhite Exp $
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> nut-2.0.0-r1.ebuild:
+  Mark 2.0.0-r1 stable on alpha
+
+  12 Jul 2005; Simon Stelling <blubb@gentoo.org> nut-2.0.0-r1.ebuild:
+  stable on amd64
+
+*nut-2.0.1_pre4 (17 Feb 2005)
+
+  17 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> +nut-2.0.1_pre4.ebuild:
+  Bug #82382: bump.
+
+*nut-2.0.0-r1 (13 Feb 2005)
+
+  13 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> -files/upsd-init,
+  +files/upsdrv.rc6-r1, -files/upsmon-init, +nut-2.0.0-r1.ebuild:
+  Bug #47482. Move stuff away from the root filesystem where it wouldn't work
+  anyway.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Nov 2004; Simon Stelling <blubb@gentoo.org> nut-2.0.0.ebuild:
+  added ~amd64
+
+  08 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> nut-2.0.0.ebuild:
+  fix media-libs/gd dep per bug #69959; clean out nut-1
+
+  28 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org> nut-2.0.0.ebuild:
+  Add ~alpha.
+
+  18 Sep 2004; Jason Wever <weeve@gentoo.org> nut-2.0.0.ebuild:
+  Stable on sparc.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> nut-2.0.0.ebuild:
+  Masked nut-2.0.0.ebuild stable for ppc
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> nut-2.0.0.ebuild:
+  Added to ~ppc.
 
 *nut-1.2.2 (15 Aug 2004)
 

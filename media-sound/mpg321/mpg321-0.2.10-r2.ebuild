@@ -1,53 +1,53 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpg321/mpg321-0.2.10-r2.ebuild,v 1.1 2003/07/17 21:12:09 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpg321/mpg321-0.2.10-r2.ebuild,v 1.1.1.1 2005/11/30 09:38:27 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
+IUSE=""
+
 DESCRIPTION="Free MP3 player, drop-in replacement for mpg123"
-SRC_URI="http://unc.dl.sourceforge.net/sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://sourceforge.net/projects/mpg321/"
 
-DEPEND=">=media-libs/libmad-0.15.0b
-	>=media-libs/libid3tag-0.15.0b
+DEPEND="media-libs/libmad
+	media-libs/libid3tag
 	>=media-libs/libao-0.8.0"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="amd64 x86 ppc sparc -mips alpha ppc64 ~ppc-macos"
 
-MPG123="false"
+PROVIDE="virtual/mpg123"
 
-pkg_setup() {
-	
-	# test if mpg123 owns the /usr/bin/mpg123 file. If it does, then do not
-	# create a symlink.  If it is already a symlink or does not exist, then
-	# we create it
-	if [ -f /usr/bin/mpg123 ]
-	then
-		if [ -L /usr/bin/mpg123 ]
-		then
-			MPEG123="false"
-		else
-			MPEG123="true"
-		fi
-	else
-		MPEG123="false"
-	fi
+src_unpack() {
+	unpack ${A}
+	epatch ${FILESDIR}/${P}.diff
 }
 
 src_compile() {
-	local myconf
-	if [ ${MPEG123} = "true" ]
-	then
-		myconf="--disable-mpg123-symlink"
-	else
-		myconf="--enable-mpg123-symlink"
-	fi
-	einfo ${myconf}
-	econf ${myconf} || die
+	# disabling the symlink here and doing it in postinst is better for GRP
+	econf --disable-mpg123-symlink || die
 	emake || die
 }
 
 src_install () {
-	einstall || die
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS BUGS ChangeLog HACKING NEWS README README.remote THANKS TODO
+}
+
+pkg_postinst() {
+	# We create a symlink for /usr/bin/mpg123 if it doesn't already exist
+	if ! [ -f ${ROOT}/usr/bin/mpg123 ]; then
+		ln -s mpg321 ${ROOT}/usr/bin/mpg123
+	fi
+}
+
+pkg_postrm() {
+	# We delete the symlink if it's nolonger valid.
+	if [ -L "${ROOT}/usr/bin/mpg123" ] && [ ! -x "${ROOT}/usr/bin/mpg123" ]; then
+		einfo "We are removing the ${ROOT}/usr/bin/mpg123 symlink since it is no longer valid."
+		einfo "If you are using another virtual/mpg123 program, you should setup the appropriate symlink."
+		rm ${ROOT}/usr/bin/mpg123
+	fi
 }

@@ -1,6 +1,83 @@
-# ChangeLog for net-www/horde
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/ChangeLog,v 1.1 2004/08/15 10:04:53 stuart Exp $
+# ChangeLog for www-apps/horde
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/ChangeLog,v 1.1.1.1 2005/11/30 09:36:55 chriswhite Exp $
+
+  19 Nov 2005; Simon Stelling <blubb@gentoo.org> horde-2.2.9.ebuild:
+  stable on amd64 wrt bug 112491
+
+  18 Nov 2005; Mark Loeser <halcy0n@gentoo.org> horde-2.2.9.ebuild:
+  Stable on x86; bug #112491
+
+  16 Nov 2005; Jose Luis Rivero <yoswink@gentoo.org> horde-2.2.9.ebuild:
+  Stable on alpha wrt security #112491
+
+  15 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> horde-2.2.9.ebuild:
+  Stable on hppa, ppc. See bug #112491.
+
+  15 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> horde-2.2.9.ebuild:
+  Stable on sparc wrt security #112491
+
+*horde-2.2.9 (15 Nov 2005)
+
+  15 Nov 2005; Mike Frysinger <vapier@gentoo.org> +horde-2.2.9.ebuild:
+  Version bump for security #112491.
+
+*horde-3.0.6 (28 Oct 2005)
+
+  28 Oct 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.6.ebuild:
+  Version bump #110754 by Christoph Gysin.
+
+*horde-3.0.5 (07 Aug 2005)
+
+  07 Aug 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.5.ebuild:
+  Version bump.
+
+*horde-3.0.4-r1 (07 May 2005)
+
+  07 May 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/horde-3.0.4-freebusy.patch, +horde-3.0.4-r1.ebuild:
+  Add patch from upstream to fix Free/Busy information #89227 by Jeffrey
+  Crawford.
+
+*horde-2.2.8 (26 Apr 2005)
+
+  26 Apr 2005; Mike Frysinger <vapier@gentoo.org> +horde-2.2.8.ebuild:
+  Version bump for security #90365.
+
+*horde-3.0.4 (29 Mar 2005)
+
+  29 Mar 2005; Mike Frysinger <vapier@gentoo.org> -horde-3.0.3.ebuild,
+  +horde-3.0.4.ebuild:
+  Version bump for security #87134.
+
+*horde-3.0.3 (23 Feb 2005)
+
+  23 Feb 2005; Mike Frysinger <vapier@gentoo.org> -horde-3.0.2.ebuild,
+  +horde-3.0.3.ebuild:
+  Version bump.
+
+*horde-3.0.2 (16 Jan 2005)
+
+  16 Jan 2005; Mike Frysinger <vapier@gentoo.org> +horde-3.0.2.ebuild,
+  -horde-3.0.ebuild:
+  Version bump for security #77872.
+
+*horde-3.0 (24 Dec 2004)
+
+  17 Dec 2004; Mike Frysinger <vapier@gentoo.org> +horde-3.0.ebuild:
+  Version bump #72276 by Jory A. Pratt.
+
+*horde-2.2.7 (08 Nov 2004)
+
+  08 Nov 2004; Mike Frysinger <vapier@gentoo.org> horde-2.2.5.ebuild,
+  +horde-2.2.7.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  15 Aug 2004; Stuart Herbert <stuart@gentoo.org> horde-2.2.5.ebuild:
+  Deps updated to reflect net-www split
 
 *horde-2.2.5 (15 Aug 2004)
 

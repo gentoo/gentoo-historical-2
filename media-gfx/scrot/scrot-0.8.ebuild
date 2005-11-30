@@ -1,20 +1,26 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/scrot/scrot-0.8.ebuild,v 1.1 2003/10/24 21:01:28 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/scrot/scrot-0.8.ebuild,v 1.1.1.1 2005/11/30 09:37:41 chriswhite Exp $
+
+inherit bash-completion
 
 DESCRIPTION="Screen Shooter"
-SRC_URI="http://www.linuxbrit.co.uk/downloads/${P}.tar.gz"
 HOMEPAGE="http://www.linuxbrit.co.uk/"
+SRC_URI="http://www.linuxbrit.co.uk/downloads/${P}.tar.gz"
 
+LICENSE="as-is BSD"
 SLOT="0"
-LICENSE="as-is | BSD"
-KEYWORDS="~x86 ~alpha ~ppc"
+KEYWORDS="alpha amd64 ~hppa ppc ppc64 sparc x86"
+IUSE=""
 
 DEPEND=">=media-libs/imlib2-1.0.3
 	>=media-libs/giblib-1.2.3"
 
-src_install () {
-	make DESTDIR=${D} install || die
+src_install() {
+	make DESTDIR="${D}" install || die
+	rm -r "${D}"/usr/doc
 
 	dodoc TODO README AUTHORS ChangeLog
+
+	dobashcompletion ${FILESDIR}/${PN}.bash-completion ${PN}
 }

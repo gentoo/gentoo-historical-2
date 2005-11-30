@@ -1,8 +1,46 @@
 # ChangeLog for media-sound/cdplay
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cdplay/ChangeLog,v 1.1 2002/05/06 00:45:18 rphillips Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cdplay/ChangeLog,v 1.1.1.1 2005/11/30 09:38:38 chriswhite Exp $
+
+  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> cdplay-0.9-r1.ebuild:
+  Mark 0.9-r1 stable on alpha
+
+*cdplay-0.9-r1 (20 Apr 2005)
+
+  20 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> -cdplay-0.8.ebuild,
+  +cdplay-0.9-r1.ebuild, -cdplay-0.9.ebuild:
+  now blocking media-sound/cdtool, see #76896. also did some cleanup
+
+  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> cdplay-0.9.ebuild:
+  Stable on ppc.
+
+  18 Oct 2004; Tom Gall <tgall@gentoo.org> cdplayer-0.9.ebuild:
+  stable on ppc64, bug #64542
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> cdplay-0.9.ebuild:
+  Stable amd64, sparc.
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cdplay-0.9.ebuild:
+  ~sparc ~amd64
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cdplay-0.8.ebuild,
+  cdplay-0.9.ebuild:
+  virtual/glibc -> virtual/libc
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> cdplay-0.8.ebuild,
+  cdplay-0.9.ebuild:
+  Stable on x86.
+
+*cdplay-0.9 (20 Sep 2003)
+
+  20 Sep 2003; jje <jje@gentoo.org> cdplay-0.9.ebuild:
+  Version bump.
 
 *cdplay-0.8 (5 May 2002)
+
+  05 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> cdplay-0.8.ebuild :
+
+  Added ppc to KEYWORDS.
 
   5 May 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
   

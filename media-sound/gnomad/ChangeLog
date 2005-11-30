@@ -1,6 +1,84 @@
 # ChangeLog for media-sound/gnomad
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnomad/ChangeLog,v 1.1 2004/03/04 01:33:36 eradicator Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnomad/ChangeLog,v 1.1.1.1 2005/11/30 09:37:50 chriswhite Exp $
+
+*gnomad-2.8.2 (25 Oct 2005)
+
+  25 Oct 2005; Thomas Matthijs <axxo@gentoo.org> +gnomad-2.8.2.ebuild:
+  Version bump
+
+  13 Aug 2005; Thomas Matthijs <axxo@gentoo.org> gnomad-2.8.0.ebuild:
+  keyword x86
+
+*gnomad-2.8.0 (16 Jul 2005)
+
+  16 Jul 2005; Thomas Matthijs <axxo@gentoo.org> -gnomad-2.4.4.ebuild,
+  -gnomad-2.6.3.ebuild, -gnomad-2.7.1.ebuild, +gnomad-2.8.0.ebuild:
+  version bump
+
+*gnomad-2.7.1 (13 Jun 2005)
+
+  13 Jun 2005; Thomas Matthijs <axxo@gentoo.org> +gnomad-2.7.1.ebuild:
+  version bump
+
+*gnomad-2.6.3 (11 Feb 2005)
+
+  11 Feb 2005; Thomas Matthijs <axxo@gentoo.org> +gnomad-2.6.3.ebuild:
+  version bump
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnomad-2.5.0.ebuild:
+  Stable amd64, x86.
+
+  31 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -gnomad-2.3.0.ebuild:
+  Only install .desktop to applications.
+
+  06 Oct 2004; Thomas Matthijs <axxo@gentoo.org> gnomad-2.5.0.ebuild:
+  2.5 uses media-libs/libid3tag and not media-libs/id3lib
+
+*gnomad-2.5.0 (05 Oct 2004)
+
+  05 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +gnomad-2.5.0.ebuild:
+  Version bump.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> gnomad-2.4.4.ebuild:
+  Stable amd64.
+
+  13 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gnomad-2.4.4.ebuild:
+  -sparc
+
+  24 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> gnomad-2.4.4.ebuild:
+  Stable x86. Added ~amd64.
+
+  09 May 2004; Michael Sterrett <mr_bones_@gentoo.org> gnomad-2.4.4.ebuild:
+  fix bug #50516; tidy
+
+  03 May 2004; David Holm <dholm@gentoo.org> gnomad-2.4.4.ebuild:
+  Added to ~ppc.
+
+*gnomad-2.4.4 (02 May 2004)
+
+  02 May 2004; Jeremy Huddleston <eradicator@gentoo.org> gnomad-2.4.2.ebuild,
+  gnomad-2.4.4.ebuild:
+  Version bump.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> gnomad-2.3.0.ebuild,
+  gnomad-2.4.2.ebuild:
+  Added IUSE.
+
+  08 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> gnomad-2.3.0.ebuild:
+  Stable x86.
+
+  29 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gnomad-2.3.0.ebuild,
+  gnomad-2.4.2.ebuild:
+  add flag-o-matic for strip-flags
+
+*gnomad-2.4.2 (04 Mar 2004)
+
+  04 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> gnomad-2.4.2.ebuild:
+  Version bump.
 
 *gnomad-2.3.0 (03 Mar 2004)
 

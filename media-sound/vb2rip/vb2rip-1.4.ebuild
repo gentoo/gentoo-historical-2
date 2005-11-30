@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/vb2rip/vb2rip-1.4.ebuild,v 1.1 2005/03/01 21:33:14 pkdawson Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vb2rip/vb2rip-1.4.ebuild,v 1.1.1.1 2005/11/30 09:38:22 chriswhite Exp $
 
 inherit versionator
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.neillcorlett.com/vb2rip/${PN}${MY_PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

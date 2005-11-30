@@ -1,6 +1,27 @@
 # ChangeLog for media-sound/cdmp3
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cdmp3/ChangeLog,v 1.1 2003/11/26 02:07:37 mkennedy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cdmp3/ChangeLog,v 1.1.1.1 2005/11/30 09:38:28 chriswhite Exp $
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> cdmp3-0.5.0.ebuild:
+  Added to ~ppc.
+
+*cdmp3-0.5.0 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> cdmp3-0.4.1.ebuild,
+  +cdmp3-0.5.0.ebuild:
+  new upstream version, 0.4.1 stable on amd64
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> cdmp3-0.4.1.ebuild:
+  Stable on ppc64
+
+  04 Nov 2004; Markus Rothe <corsair@gentoo.org> cdmp3-0.4.1.ebuild:
+  Marked ~ppc64; bug #70048
+
+  06 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cdmp3-0.4.1.ebuild:
+  ~amd64 ~sparc.
+
+  10 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> cdmp3-0.4.1.ebuild:
+  DEPEND -> RDEPEND since it's not needed to compile.  Moved to stable x86.
 
 *cdmp3-0.4.1 (25 Nov 2003)
 

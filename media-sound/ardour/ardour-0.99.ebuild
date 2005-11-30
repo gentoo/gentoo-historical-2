@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ardour/ardour-0.99.ebuild,v 1.1 2005/09/26 07:56:32 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ardour/ardour-0.99.ebuild,v 1.1.1.1 2005/11/30 09:37:56 chriswhite Exp $
 
 inherit eutils
 
@@ -49,6 +49,12 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${P/_/}"
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-scons.patch
+}
+
 src_compile() {
 	# bug 99664
 	cd ${S}/libs/gtkmm
@@ -71,6 +77,7 @@ src_compile() {
 		NLS=${NLS} \
 		PREFIX=/usr \
 		USE_SSE_EVERYWHERE=${SSE} \
+		BUILD_SSE_OPTIMIZATIONS=${SSE} \
 		KSI=0 \
 		-j2
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/longplayer/longplayer-0.99.3.ebuild,v 1.1 2004/04/01 06:24:47 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/longplayer/longplayer-0.99.3.ebuild,v 1.1.1.1 2005/11/30 09:37:54 chriswhite Exp $
 
 inherit eutils kde
 
@@ -15,7 +15,7 @@ RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc sparc amd64"
 
 RDEPEND="x11-libs/qt
 	media-sound/xmms
@@ -45,6 +45,6 @@ src_compile() {
 }
 
 src_install () {
-	einstall || dir "einstall failed"
-	dodoc AUTHORS BUGS COPYING FAQ ChangeLog INSTALL NEWS README TODO
+	einstall || die "einstall failed"
+	dodoc AUTHORS BUGS FAQ ChangeLog NEWS README TODO
 }

@@ -2,7 +2,7 @@ diff -upr mantis-0.19.3/core/database_api.php mantis-0.19.3_fixed/core/database_
 --- mantis-0.19.3/core/database_api.php	2004-12-09 13:55:06.000000000 -0500
 +++ mantis-0.19.3_fixed/core/database_api.php	2005-10-24 10:30:31.000000000 -0400
 @@ -9,6 +9,10 @@
- 	# $Id: 0.19.3-debian.patch,v 1.1 2005/10/24 14:41:57 rl03 Exp $
+ 	# $Id: 0.19.3-debian.patch,v 1.1.1.1 2005/11/30 09:37:13 chriswhite Exp $
  	# --------------------------------------------------------
  
 +	# Patch for #0005956: Database system scanner via variable poisoning

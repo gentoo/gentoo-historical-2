@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gnocky/gnocky-0.0.3.ebuild,v 1.1 2005/10/31 10:31:50 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gnocky/gnocky-0.0.3.ebuild,v 1.1.1.1 2005/11/30 09:36:32 chriswhite Exp $
 
 DESCRIPTION="GTK-2 version of gnokii"
 HOMEPAGE="http://www.gnokii.org/"

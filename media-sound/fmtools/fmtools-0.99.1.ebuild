@@ -1,21 +1,21 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/fmtools/fmtools-0.99.1.ebuild,v 1.1 2003/02/12 08:47:04 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/fmtools/fmtools-0.99.1.ebuild,v 1.1.1.1 2005/11/30 09:38:29 chriswhite Exp $
 
 IUSE=""
 
 DESCRIPTION="A collection of programs for controlling v4l radio card drivers."
-HOMEPAGE="http://www.exploits.org/v4l/fmtools/index.html"
-SRC_URI="http://www.exploits.org/v4l/fmtools/${P}.tar.gz"
+HOMEPAGE="http://www.stanford.edu/~blp/fmtools/"
+SRC_URI="http://www.stanford.edu/~blp/fmtools/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 -ppc -sparc  -alpha"
+KEYWORDS="amd64 x86 -ppc -sparc -alpha"
 
-DEPEND="virtual/glibc"
+DEPEND=""
 
 src_compile() {
-	make || die
+	emake || die
 }
 
 src_install() {
@@ -23,5 +23,5 @@ src_install() {
 	dobin fmscan
 	doman fm.1
 	doman fmscan.1
-	dodoc README CHANGES COPYING
+	dodoc README CHANGES
 }

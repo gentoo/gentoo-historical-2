@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/bossogg/bossogg-0.13.6-r3.ebuild,v 1.1 2005/09/02 16:59:23 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/bossogg/bossogg-0.13.6-r3.ebuild,v 1.1.1.1 2005/11/30 09:38:36 chriswhite Exp $
 
 inherit eutils autotools
 
@@ -35,7 +35,6 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${P}-Makefile.patch
 	epatch ${FILESDIR}/${P}-gcc4.patch
-	touch NEWS AUTHORS
 
 	eautoreconf
 }

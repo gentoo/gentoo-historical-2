@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/linuxsms/linuxsms-0.77.ebuild,v 1.1 2005/05/15 18:49:12 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/linuxsms/linuxsms-0.77.ebuild,v 1.1.1.1 2005/11/30 09:36:32 chriswhite Exp $
 
 DESCRIPTION="A console perl script for sending SMS to cell phones"
 HOMEPAGE="http://linuxsms.sourceforge.net/"
@@ -14,7 +14,7 @@ IUSE=""
 DEPEND=">=dev-lang/perl-5.6.1"
 
 src_install() {
-	dobin linuxsms || die
+	dobin linuxsms || die "could not install the script"
 	doman linuxsms.1
 	dodoc BUGS CHANGES README README.ES TODO
 }

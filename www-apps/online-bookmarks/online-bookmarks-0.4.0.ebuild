@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/online-bookmarks/online-bookmarks-0.4.0.ebuild,v 1.1 2004/08/15 15:22:21 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/online-bookmarks/online-bookmarks-0.4.0.ebuild,v 1.1.1.1 2005/11/30 09:36:54 chriswhite Exp $
 
 inherit webapp
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.frech.ch/online-bookmarks/index.php"
 SRC_URI="http://www.frech.ch/online-bookmarks/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ppc"
 
 IUSE=""
 

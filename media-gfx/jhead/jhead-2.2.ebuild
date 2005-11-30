@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/jhead/jhead-2.2.ebuild,v 1.1 2004/09/23 17:03:42 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/jhead/jhead-2.2.ebuild,v 1.1.1.1 2005/11/30 09:37:41 chriswhite Exp $
+
+inherit toolchain-funcs
 
 DESCRIPTION="Exif Jpeg camera setting parser and thumbnail remover"
 HOMEPAGE="http://www.sentex.net/~mwandel/jhead/"
@@ -8,7 +10,7 @@ SRC_URI="http://www.sentex.net/~mwandel/jhead/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha ~ia64 ~hppa"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ~ppc-macos ppc64 sparc x86"
 IUSE=""
 
 DEPEND="virtual/libc"
@@ -20,6 +22,7 @@ src_unpack() {
 }
 
 src_compile() {
+	export CC="$(tc-getCC)"
 	emake || die
 }
 

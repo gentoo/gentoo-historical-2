@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sfftobmp/sfftobmp-3.0.ebuild,v 1.1 2004/11/15 17:54:24 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sfftobmp/sfftobmp-3.0.ebuild,v 1.1.1.1 2005/11/30 09:37:38 chriswhite Exp $
 
 MY_P=${PN}_${PV/./_}
 S=${WORKDIR}/${MY_P}
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/sfftools/${MY_P}_src.zip"
 SLOT="0"
 IUSE=""
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ppc x86"
 
 RDEPEND="virtual/libc
 	>=dev-libs/boost-1.31.0
@@ -20,7 +20,8 @@ RDEPEND="virtual/libc
 	media-libs/jpeg"
 
 DEPEND="${RDEPEND}
-	>=sys-devel/autoconf-2.59"
+	>=sys-devel/autoconf-2.59
+	app-arch/unzip"
 
 src_unpack() {
 	unpack ${A}

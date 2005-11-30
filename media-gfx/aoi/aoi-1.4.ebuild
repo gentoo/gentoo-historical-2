@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/aoi/aoi-1.4.ebuild,v 1.1 2003/05/15 09:34:25 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/aoi/aoi-1.4.ebuild,v 1.1.1.1 2005/11/30 09:37:40 chriswhite Exp $
 
 inherit java-pkg
 
@@ -10,12 +10,12 @@ DESCRIPTION="A free, open-source 3D modelling and rendering studio."
 SRC_URI="mirror://sourceforge/${PN}/${At}
 	doc? ( http://aoi.sourceforge.net/docs/downloads/manual.zip )"
 HOMEPAGE="http://aoi.sourceforge.net/index"
-KEYWORDS="x86 ppc sparc alpha mips hppa"
+KEYWORDS="x86 sparc"
 LICENSE="GPL-2"
 SLOT="0"
-DEPEND=""
+DEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jdk-1.2
-	quicktime? ( dev-java/jmf )"
+	quicktime? ( dev-java/jmf-bin )"
 IUSE="doc quicktime"
 
 src_unpack() {
@@ -33,11 +33,11 @@ src_install() {
 	use quicktime && DEP_APPEND="jmf"
 	dobin ${FILESDIR}/aoi
 	dodoc HISTORY LICENSE README
-	if [ -n "`use doc`" ] ; then
+	if use doc ; then
 		mv ${WORKDIR}/AoI\ Manual/ ${WORKDIR}/aoi_manual/
 		dohtml -r ${WORKDIR}/aoi_manual/
 	fi
-	java-pkg_dojar ArtOfIllusion.jar 
+	java-pkg_dojar ArtOfIllusion.jar
 	JARDESTTREE="lib/Plugins"
 	java-pkg_dojar Plugins/*.jar
 }

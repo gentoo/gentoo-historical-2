@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms/xmms-1.2.10-r14.ebuild,v 1.1 2005/04/16 00:44:55 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmms/xmms-1.2.10-r14.ebuild,v 1.1.1.1 2005/11/30 09:38:31 chriswhite Exp $
 
 inherit flag-o-matic eutils libtool gnuconfig
 
-PATCH_VER="2.2.3"
+PATCH_VER="2.2.5"
 M4_VER="1.1"
 
 PATCHDIR="${WORKDIR}/patches"
@@ -19,8 +19,8 @@ SRC_URI="http://www.xmms.org/files/1.2.x/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="nls esd mmx oggvorbis 3dnow mikmod directfb alsa oss arts jack sndfile lirc flac mad mp3"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+IUSE="nls esd mmx vorbis 3dnow mikmod directfb alsa oss arts jack sndfile lirc flac mad mp3"
 
 DEPEND="=x11-libs/gtk+-1.2*"
 
@@ -43,8 +43,8 @@ PDEPEND="lirc? ( media-plugins/xmms-lirc )
 	 flac? ( media-libs/flac )
 	 mikmod? ( media-plugins/xmms-mikmod )
 	 mp3? ( mad? ( >=media-plugins/xmms-mad-0.7 )
-	        !mad? ( >=media-plugins/xmms-mpg123-1.2.10-r1 ) )
-	 oggvorbis? ( >=media-plugins/xmms-vorbis-1.2.10-r1 )
+	        >=media-plugins/xmms-mpg123-1.2.10-r1 )
+	 vorbis? ( >=media-plugins/xmms-vorbis-1.2.10-r1 )
 	 sndfile? ( media-plugins/xmms-sndfile )
 
 	 alsa? ( media-plugins/xmms-alsa )
@@ -129,7 +129,7 @@ src_install() {
 	doins xmms/xmms_mini.xpm
 
 	insinto /etc/X11/wmconfig
-	donewins xmms/xmms.wmconfig xmms
+	newins xmms/xmms.wmconfig xmms
 
 	insinto /usr/share/applications
 	doins ${FILESDIR}/xmms.desktop

@@ -1,6 +1,26 @@
 # ChangeLog for media-sound/mpdscribble
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpdscribble/ChangeLog,v 1.1 2005/09/15 18:15:32 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpdscribble/ChangeLog,v 1.1.1.1 2005/11/30 09:38:23 chriswhite Exp $
+
+*mpdscribble-0.2.7 (10 Nov 2005)
+
+  10 Nov 2005; Tom Martin <slarti@gentoo.org> +mpdscribble-0.2.7.ebuild:
+  Version bump to 0.2.7.
+
+  29 Oct 2005; Tom Martin <slarti@gentoo.org> files/mpdscribble.rc:
+  A few grammar and consistency corrections in the RC script's messages.
+
+  15 Oct 2005; Joseph Jezak <josejx@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Marked ~ppc for bug #107814.
+
+  17 Sep 2005; Thomas Matthijs <axxo@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Fix dep, keyword ~x86
+
+  17 Sep 2005; Tom Martin <slarti@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Alter DEPEND, resolves bug #106172.
+
+  16 Sep 2005; Tom Martin <slarti@gentoo.org> mpdscribble-0.2.6.ebuild:
+  Added an RDEPEND for mpd or mpd-svn. I really am scatter-brained.
 
 *mpdscribble-0.2.6 (15 Sep 2005)
 

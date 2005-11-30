@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.27.ebuild,v 1.1 2004/03/09 01:25:53 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.27.ebuild,v 1.1.1.1 2005/11/30 09:36:50 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="LDAP suite of application and development tools"
 HOMEPAGE="http://www.OpenLDAP.org/"
-SRC_URI="ftp://ftp.OpenLDAP.org/pub/OpenLDAP/openldap-release/${P}.tgz"
+SRC_URI="mirror://openldap/openldap-release/${P}.tgz"
 
 LICENSE="OPENLDAP"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~ppc64 ~mips"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 mips"
 IUSE="berkdb crypt debug gdbm ipv6 kerberos odbc perl readline samba sasl slp ssl tcpd"
 
 DEPEND=">=sys-libs/ncurses-5.1
@@ -37,11 +37,15 @@ DEPEND=">=sys-libs/ncurses-5.1
 # else
 #	pull in sys-libs/db
 DEPEND="${DEPEND}
-	berkdb? ( >=sys-libs/db-4.1.25_p1-r3 ) : ( gdbm? ( >=sys-libs/gdbm-1.8.0 ) : ( >=sys-libs/db-4.1.25_p1-r3 ) )"
+	berkdb? ( >=sys-libs/db-4.1.25_p1-r3 )
+	!berkdb? (
+		gdbm? ( >=sys-libs/gdbm-1.8.0 )
+		!gdbm? ( >=sys-libs/db-4.1.25_p1-r3 )
+	)"
 
 pkg_preinst() {
 	enewgroup ldap 439
-	enewuser ldap 439 /dev/null /usr/lib/openldap ldap
+	enewuser ldap 439 -1 /usr/lib/openldap ldap
 }
 
 src_unpack() {
@@ -161,7 +165,7 @@ src_install() {
 	newins ${FILESDIR}/2.0/slapd.conf slapd
 
 	# install MDK's ssl cert script
-	if [ "`use ssl`" -o "`use samba`" ]; then
+	if use ssl || use samba; then
 		dodir /etc/openldap/ssl
 		exeinto /etc/openldap/ssl
 		doexe ${FILESDIR}/gencert.sh

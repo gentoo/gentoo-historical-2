@@ -1,30 +1,31 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pornview/pornview-0.2.0_pre1.ebuild,v 1.1 2003/07/25 14:26:24 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pornview/pornview-0.2.0_pre1.ebuild,v 1.1.1.1 2005/11/30 09:37:36 chriswhite Exp $
 
-IUSE="avi gtk2 jpeg mpeg nls static"
+inherit eutils
+
+IUSE="jpeg mplayer nls static xine"
 
 DESCRIPTION="Image viewer/manager with optional support for MPEG movies."
 HOMEPAGE="http://pornview.sourceforge.net"
 LICENSE="GPL-2"
 
-DEPEND=">=media-libs/gdk-pixbuf-0.16
-	media-libs/libpng
-	=x11-libs/gtk+-1.2*
-	avi? ( media-video/mplayer )
+DEPEND="media-libs/libpng
+	mplayer? ( media-video/mplayer )
 	jpeg? ( media-libs/jpeg )
-	gtk2? ( >=x11-libs/gtk+-2.0 )
-	mpeg? ( =media-libs/xine-lib-1* )
+	>=x11-libs/gtk+-2.0
+	xine? ( =media-libs/xine-lib-1* )
 	nls? ( sys-devel/gettext )"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc amd64"
 SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.gz"
+RESTRICT="nomirror"
 
 S="${WORKDIR}/${P/_/}"
 
 src_compile() {
-	local myflags="--with-gnu-ld"
+	local myflags
 	# --with-normal-paned     Use standard gtk+ paned
 
 	# This is considered experimental but appears to work fine
@@ -34,9 +35,9 @@ src_compile() {
 
 	# mplayer and xine movie support cannot be installed at the same
 	# time so prefer xine support over mplayer if both are available
-	if [ "`use mpeg`" ]; then
+	if use xine; then
 		myflags="${myflags} --enable-xine"
-	elif [ "`use avi`"]; then
+	elif use mplayer; then
 		myflags="${myflags} --disable-xinetest --enable-mplayer"
 	else
 		myflags="${myflags} --disable-xinetest"
@@ -45,6 +46,9 @@ src_compile() {
 	use nls || myflags="${myflags} --disable-nls"
 
 	use static && myflags="${myflags} --enable-static"
+
+	epatch ${FILESDIR}/${P}-4.diff || die
+	epatch ${FILESDIR}/gtkxine.diff || die
 
 	econf ${myflags} || die "./configure failed"
 
@@ -56,4 +60,3 @@ src_install() {
 
 	dodoc AUTHORS NEWS README
 }
-

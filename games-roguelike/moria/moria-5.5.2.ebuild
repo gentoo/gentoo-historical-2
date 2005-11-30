@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/moria/moria-5.5.2.ebuild,v 1.1 2003/12/31 20:28:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/moria/moria-5.5.2.ebuild,v 1.1.1.1 2005/11/30 09:38:47 chriswhite Exp $
 
-inherit games eutils gcc
+inherit eutils toolchain-funcs games
 
 DESCRIPTION="Rogue-like D&D curses game similar to nethack (BUT BETTER)"
 HOMEPAGE="http://remarque.org/~grabiner/moria.html"
@@ -14,20 +14,22 @@ SRC_URI="ftp://ftp.greyhelm.com/pub/Games/Moria/source/um${PV}.tar.Z
 
 LICENSE="Moria"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="amd64 ppc x86"
+IUSE=""
 
-DEPEND="virtual/glibc
-	>=sys-apps/sed-4
-	>=sys-libs/ncurses-5"
+DEPEND=">=sys-libs/ncurses-5"
 
 S=${WORKDIR}/umoria
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
+	local f
 
-	epatch ${FILESDIR}/${PV}-gentoo-paths.patch
-	epatch ${FILESDIR}/${PV}-glibc.patch
+	unpack ${A}
+	cd "${S}"
+
+	epatch \
+		"${FILESDIR}"/${PV}-gentoo-paths.patch \
+		"${FILESDIR}"/${PV}-glibc.patch
 
 	for f in source/* unix/* ; do
 		ln -s ${f} $(basename ${f})
@@ -37,7 +39,8 @@ src_unpack() {
 		-e "s:David Grabiner:root:" \
 		-e "s:GENTOO_DATADIR:${GAMES_DATADIR}/${PN}:" \
 		-e "s:GENTOO_STATEDIR:${GAMES_STATEDIR}:" \
-		config.h
+		config.h \
+		|| die "sed failed"
 	sed -i \
 		-e "/^STATEDIR =/s:=.*:=\$(DESTDIR)${GAMES_STATEDIR}:" \
 		-e "/^BINDIR = /s:=.*:=\$(DESTDIR)${GAMES_BINDIR}:" \
@@ -45,22 +48,18 @@ src_unpack() {
 		-e "/^CFLAGS = /s:=.*:=${CFLAGS}:" \
 		-e "/^OWNER = /s:=.*:=${GAMES_USER}:" \
 		-e "/^GROUP = /s:=.*:=${GAMES_GROUP}:" \
-		-e "/^CC = /s:=.*:=$(gcc-getCC):" \
-		Makefile
-}
-
-src_compile() {
-	emake || die "make failed"
+		-e "/^CC = /s:=.*:=$(tc-getCC):" \
+		Makefile \
+		|| die "sed failed"
+	mv doc/moria.6 "${S}" || die "mv failed"
 }
 
 src_install() {
-	dodir ${GAMES_BINDIR} ${GAMES_DATADIR}/${PN} ${GAMES_STATEDIR}
-	make install DESTDIR=${D} || die
+	dodir "${GAMES_BINDIR}" "${GAMES_DATADIR}/${PN}" "${GAMES_STATEDIR}"
+	make DESTDIR="${D}" install || die "make install failed"
 
-	doman doc/moria.6
-	rm doc/moria.6
-	dodoc README doc/* ${WORKDIR}/${PN}-extras/*
+	doman moria.6
+	dodoc README doc/* "${WORKDIR}"/${PN}-extras/*
 
 	prepgamesdirs
-	fperms g+w ${GAMES_STATEDIR}/moriascores
 }

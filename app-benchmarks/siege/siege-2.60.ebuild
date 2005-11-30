@@ -1,36 +1,53 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/siege/siege-2.60.ebuild,v 1.1 2004/08/21 18:16:56 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/siege/siege-2.60.ebuild,v 1.1.1.1 2005/11/30 09:36:36 chriswhite Exp $
 
-DESCRIPTION="An http regression testing and benchmarking utility"
+inherit eutils bash-completion
+
+DESCRIPTION="A HTTP regression testing and benchmarking utility"
 HOMEPAGE="http://www.joedog.org/siege/"
-SRC_URI="ftp://sid.joedog.org/pub/siege/${P}.tar.gz"
+SRC_URI="ftp://sid.joedog.org/pub/${PN}/${P}.tar.gz"
 
-KEYWORDS="~x86 ~ppc"
-SLOT="0"
 LICENSE="GPL-2"
+KEYWORDS="x86 ppc ~amd64"
+SLOT="0"
 IUSE="ssl"
 
 DEPEND="ssl? ( >=dev-libs/openssl-0.9.6d )"
+RDEPEND="${DEPEND}
+	dev-lang/perl"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-gentoo.diff
+}
 
 src_compile() {
-	has_version '=dev-libs/openssl-0.9.7*' \
-		&& sed -i -e "s:^# include <openssl/e_os.h>::" src/ssl.h
-	local myconf
-	use ssl && myconf="--with-ssl" || myconf="--with-ssl=off"
-	econf ${myconf} || die "econf failed"
-	emake || die
-
+	einfo "Running autoreconf"
+	autoreconf || die "autoreconf failed"
+	econf $(use_with ssl) || die "econf failed"
+	emake || die "emake failed"
 }
 
 src_install() {
-	# makefile tries to install into $HOME by default... bad monkey!
-	dodir /usr/share/doc/${P}
+	make DESTDIR="${D}" install || die "make install failed"
 
-	einstall SIEGERC="${D}/usr/share/doc/${P}/siegerc-example"
+	# bug 111057 - siege.config utility uses ${} which gets
+	# interpreted by bash sending the contents to stderr
+	# instead of ${HOME}/.siegerc
+	sed -i -e 's|\${}|\\${}|' -e 's|\$(HOME)|\\$(HOME)|' \
+		${D}/usr/bin/siege.config
 
-	# all non-html docs must be gzip'd
-	gzip ${D}/usr/share/doc/${P}/siegerc-example
+	dodoc AUTHORS ChangeLog INSTALL MACHINES README KNOWNBUGS \
+		siegerc-example urls.txt || die "dodoc failed"
+	use ssl && dodoc README.https
+	dobashcompletion ${FILESDIR}/${PN}.bash-completion ${PN}
+}
 
-	dodoc AUTHORS ChangeLog INSTALL KNOWNBUGS NEWS MACHINES README
+pkg_postinst() {
+	echo
+	einfo "An example ~/.siegerc file has been installed as"
+	einfo "/usr/share/doc/${PF}/siegerc-example.gz"
+	bash-completion_pkg_postinst
 }

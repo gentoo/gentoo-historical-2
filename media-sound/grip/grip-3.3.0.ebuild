@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/grip/grip-3.3.0.ebuild,v 1.1 2005/03/13 01:04:44 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/grip/grip-3.3.0.ebuild,v 1.1.1.1 2005/11/30 09:37:57 chriswhite Exp $
 
-inherit gnuconfig flag-o-matic eutils
+inherit gnuconfig flag-o-matic eutils toolchain-funcs
 
 IUSE="nls oggvorbis"
 
@@ -12,11 +12,10 @@ SRC_URI="mirror://sourceforge/grip/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86 ~ppc64"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
 
 RDEPEND=">=x11-libs/gtk+-2.2
 	x11-libs/vte
-	=sys-libs/db-1*
 	media-sound/lame
 	media-sound/cdparanoia
 	>=media-libs/id3lib-3.8.3
@@ -41,7 +40,7 @@ src_unpack() {
 
 src_compile() {
 	# Bug #69536
-	use x86 && append-flags "-mno-sse"
+	[[ $(tc-arch) == "x86" ]] && append-flags "-mno-sse"
 
 	econf \
 		--disable-dependency-tracking \

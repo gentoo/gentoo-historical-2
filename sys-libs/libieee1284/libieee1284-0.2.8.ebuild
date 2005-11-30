@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libieee1284/libieee1284-0.2.8.ebuild,v 1.1 2005/01/16 23:23:01 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libieee1284/libieee1284-0.2.8.ebuild,v 1.1.1.1 2005/11/30 09:39:09 chriswhite Exp $
 
 inherit libtool eutils gnuconfig
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 -ppc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE="doc"
 
 RDEPEND="virtual/libc"
@@ -30,11 +30,6 @@ src_unpack() {
 	autoconf || die
 	libtoolize --copy --force || die
 	gnuconfig_update
-}
-
-src_compile() {
-	econf || die "./configure failed"
-	emake || die
 }
 
 src_install () {

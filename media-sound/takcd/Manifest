@@ -1,3 +1,4 @@
-MD5 392c2be8e32df0eb01dad696ba196c0e ChangeLog 516
-MD5 460318763d21792ab0e7b2b43810495c takcd-0.08.ebuild 580
-MD5 a3080599817fc56ecab6ea2f7f8ef718 files/digest-takcd-0.08 61
+MD5 aa0bfeeaf772ac88a10eaadfcec3936f metadata.xml 250
+MD5 6f599e06e4b50469b82ec751bd8616e6 ChangeLog 1478
+MD5 d7056476210dcefcdd36e94f50ecaaae takcd-0.10.ebuild 690
+MD5 4ed64a024c0ed185031f62585ddc799c files/digest-takcd-0.10 61

@@ -1,8 +1,24 @@
 # ChangeLog for app-xemacs/view-process
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/view-process/ChangeLog,v 1.1 2002/12/16 12:22:48 rendhalver Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/view-process/ChangeLog,v 1.1.1.1 2005/11/30 09:38:55 chriswhite Exp $
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  view-process-1.12.ebuild:
+  Stable on ppc.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> view-process-1.12.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> view-process-1.12.ebuild:
+  Marked ~ppc64; bug #67096
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> view-process-1.12.ebuild:
+  Stable on alpha
 
 *view-process-1.12 (16 Dec 2002)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> view-process-1.12.ebuild :
+  Add ~alpha to KEYWORDS
 
   16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
   Initial import.

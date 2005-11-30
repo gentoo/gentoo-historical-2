@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/noegnud-slashem/noegnud-slashem-0.8.2.ebuild,v 1.1 2003/09/19 02:43:08 vapier Exp $ 
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/noegnud-slashem/noegnud-slashem-0.8.2.ebuild,v 1.1.1.1 2005/11/30 09:38:49 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 VAR_NAME=slashem
 VAR_SNAME=se
@@ -17,12 +17,14 @@ SRC_URI="mirror://sourceforge/noegnud/noegnud-${PV}_linux_src-minimal.tar.bz2
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
+IUSE=""
 
 DEPEND="media-libs/libsdl
 	dev-util/yacc"
 RDEPEND="media-libs/libsdl
 	media-libs/sdl-image
+	media-libs/sdl-mixer
 	virtual/opengl
 	games-roguelike/noegnud-data"
 

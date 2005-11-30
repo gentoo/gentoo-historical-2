@@ -1,6 +1,88 @@
 # ChangeLog for net-ftp/ftp
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftp/ChangeLog,v 1.1 2002/02/01 21:53:32 gbevin Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/ftp/ChangeLog,v 1.1.1.1 2005/11/30 09:36:25 chriswhite Exp $
+
+*ftp-0.17-r6 (14 Oct 2005)
+
+  14 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/netkit-ftp-0.17-dont-strcpy-overlapping.patch,
+  files/netkit-ftp-0.17-ipv6.patch, +files/netkit-ftp-0.17-segv.patch,
+  +ftp-0.17-r6.ebuild:
+  Grab segv patch from Fedora, make sure we fixup the ssl port code since ipv6
+  changes it, and fix a segfault when using strcpy() on the same areas of
+  memory #104311.
+
+  03 Aug 2005; Mike Frysinger <vapier@gentoo.org> ftp-0.17-r5.ebuild:
+  Make sure we build with LFS #101038 by Maik Musall.
+
+*ftp-0.17-r5 (30 Jul 2005)
+
+  30 Jul 2005; Mike Frysinger <vapier@gentoo.org> +ftp-0.17-r5.ebuild:
+  Add some user-input buffer len checks #100423 by Amir Sadoughi.
+
+  27 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> ftp-0.17-r4.ebuild:
+  Use the correct toolchain compiler.
+
+*ftp-0.17-r4 (11 Feb 2005)
+
+  11 Feb 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/netkit-ftp-0.17-acct.patch,
+  +files/netkit-ftp-0.17-custom-cflags.patch,
+  +files/netkit-ftp-0.17-ipv6.patch, +files/netkit-ftp-0.17-locale.patch,
+  +files/netkit-ftp-0.17-runique_mget.patch,
+  +files/netkit-ftp-0.17-security.patch,
+  +files/netkit-ftp-0.17-ssl-0.2.patch, +ftp-0.17-r4.ebuild:
+  Add a bunch of misc patches from Fedora.  Add a tweaked ipv6 patch #47507 by
+  Jasmin Buchert.  Touchup the ssl patch and include -z option fix by Andreas
+  Kling #81586.
+
+  20 Feb 2004; Aron Griffis <agriffis@gentoo.org> ftp-0.17-r3.ebuild:
+  stable on alpha
+
+  18 Sep 2003; Jon Portnoy <avenj@gentoo.org> ftp-0.17-r3.ebuild :
+  ia64 keywords.
+
+  15 Jul 2003; Christian Birchinger <joker@gentoo.org> ftp-0.17-r3.ebuild:
+  Added sparc stable keyword
+
+*ftp-0.17-r3 (13 Jun 2003)
+
+  08 Aug 2003; Jan Seidel <tuxus@gentoo.org> ftp-0.17-r3.ebuild :
+  Marked stable on mips
+
+  25 Jul 2003; Guy Martin <gmsoft@gentoo.org> ftp-0.17-r3.ebuild :
+  Marked stable on hppa.
+
+  13 Jun 2003; Seemant Kulleen <seemant@gentoo.org> ftp-0.17-r3.ebuild,
+  files/netkit-ftp-0.17+ssl-0.2+auth.diff:
+  patch to establish a secure (ssl/tls) connection to an ftp server; submitted
+  by: Norberto Bensa <nbensa@yahoo.com> and ebuild by: Tobias Sager
+  <moixa@gmx.ch>
+
+*ftp-0.17-r2 (12 Nov 2002)
+  
+  15 Feb 2003; Jan Seidel <tuxus@gentoo.org> ftp-0.17-r2.ebuild :
+  Added mips to keywords
+
+  09 Feb 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
+
+  Sed expression delimiters from / to :, closing bug #15006 by Blu3
+  <david+gentoo.org@blue-labs.org> and also changed to use epatch.
+
+  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> ftp-0.17-r2.ebuild :
+  Added hppa to keywords.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  05 Dec 2002; Nick Hadaway <raker@gentoo.org> ftp-0.17-r2.ebuild :
+  Marked stable.
+
+  23 Nov 2002; Nick Hadaway <raker@gentoo.org> ftp-0.17-r2.ebuild,
+  files/digest-ftp-0.17-r2, files/netkit-ftp-0.17+ssl-0.2.diff :
+  Fixed a typo, marked unstable, and added to portage.
+
+  12 Nov 2002; T.Sager <moixa@gmx.ch> ChangeLog :
+  Added patch for SSL support.
 
 *ftp-0.17-r1 (1 Feb 2002)
 

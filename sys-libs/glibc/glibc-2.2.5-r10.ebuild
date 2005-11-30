@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.2.5-r10.ebuild,v 1.1 2005/02/06 07:45:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.2.5-r10.ebuild,v 1.1.1.1 2005/11/30 09:39:29 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -46,6 +46,7 @@ src_unpack() {
 	cd "${S}"
 	unpack ${P}-manpages.tar.bz2 glibc-linuxthreads-${PV}.tar.bz2
 	epatch ${WORKDIR}/patch
+	epatch ${FILESDIR}/2.3.3/glibc-2.3.3-localedef-fix-trampoline.patch
 }
 
 src_compile() {
@@ -115,6 +116,7 @@ src_install() {
 		insinto /etc
 		doins "${S}"/nscd/nscd.conf
 		doinitd "${FILESDIR}"/nscd
+		doins "${FILESDIR}"/nsswitch.conf
 
 		dodoc BUGS ChangeLog* CONFORMANCE FAQ INTERFACE \
 			NEWS NOTES PROJECTS README*

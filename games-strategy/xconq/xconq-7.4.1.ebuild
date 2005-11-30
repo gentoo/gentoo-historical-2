@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/xconq/xconq-7.4.1.ebuild,v 1.1 2003/12/12 06:11:55 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/xconq/xconq-7.4.1.ebuild,v 1.1.1.1 2005/11/30 09:36:42 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="a general strategy game system"
 HOMEPAGE="http://sources.redhat.com/xconq/"
@@ -10,11 +10,18 @@ SRC_URI="ftp://sources.redhat.com/pub/xconq/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
+IUSE=""
 
 DEPEND="virtual/x11
 	dev-lang/tk
 	dev-lang/tcl"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-gcc-3.4.patch
+}
 
 src_compile() {
 	egamesconf \

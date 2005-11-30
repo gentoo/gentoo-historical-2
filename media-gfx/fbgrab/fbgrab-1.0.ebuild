@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbgrab/fbgrab-1.0.ebuild,v 1.1 2004/02/29 18:54:34 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbgrab/fbgrab-1.0.ebuild,v 1.1.1.1 2005/11/30 09:37:40 chriswhite Exp $
 
 DESCRIPTION="Framebuffer screenshot utility"
 HOMEPAGE="http://hem.bredband.net/gmogmo/fbgrab/"
@@ -8,12 +8,12 @@ SRC_URI="http://hem.bredband.net/gmogmo/fbgrab/${PN}-1.0.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~hppa"
+KEYWORDS="amd64 ~hppa ppc ~sparc x86"
+IUSE=""
 
-DEPEND="media-libs/libpng
-	>=sys-apps/sed-4"
+DEPEND="media-libs/libpng"
 
-S="${WORKDIR}/${PN}-1.0"
+S=${WORKDIR}/${PN}-1.0
 
 src_unpack() {
 	unpack ${A}
@@ -29,6 +29,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin fbgrab
+	dobin fbgrab || die
 	newman fbgrab.1.man fbgrab.1
 }

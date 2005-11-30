@@ -1,6 +1,22 @@
 # ChangeLog for media-sound/amp
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/amp/ChangeLog,v 1.1 2003/03/09 01:16:54 jje Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/amp/ChangeLog,v 1.1.1.1 2005/11/30 09:38:27 chriswhite Exp $
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> amp-0.7.6.ebuild:
+  Stable amd64, sparc.
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/amp-0.7.6-gcc34.patch, -files/amp-0.7.6-gentoo.diff:
+  gcc3.4 fixes close bug #56023.  ~amd64
+
+  04 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> amp-0.7.6.ebuild:
+  ~sparc.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> amp-0.7.6.ebuild:
+  Added IUSE.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> amp-0.7.6.ebuild:
+  Ebuild cleanup.
 
 *amp-0.7.6 (09 Mar 2003)
 

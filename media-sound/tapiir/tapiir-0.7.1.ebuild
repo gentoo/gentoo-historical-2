@@ -1,28 +1,40 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/tapiir/tapiir-0.7.1.ebuild,v 1.1 2003/05/09 13:13:36 jje Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tapiir/tapiir-0.7.1.ebuild,v 1.1.1.1 2005/11/30 09:38:19 chriswhite Exp $
+
+inherit eutils
+
+IUSE=""
 
 DESCRIPTION=" Tapiir is a simple and flexible audio effects processor, inspired on the classical magnetic tape delay systems"
 HOMEPAGE="http://www.iua.upf.es/~mdeboer/projects/tapiir/"
-SRC_URI="ftp://www.iua.upf.es/pub/mdeboer/projects/tapiir/${P}.tar.gz"
+SRC_URI="ftp://www.iua.upf.es/pub/mdeboer/projects/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
-DEPEND="virtual/jack
-	>=media-sound/alsa-driver-0.9
+DEPEND="media-sound/jack-audio-connection-kit
+	>=media-libs/alsa-lib-0.9
 	x11-libs/fltk"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	epatch ${FILESDIR}/${P}-gcc3.patch
+	sed -i "/#include <alsa\\/asoundlib.h>/i\\#define ALSA_PCM_OLD_HW_PARAMS_API 1\\" src/alsaio.cxx
+}
 
 src_compile() {
 	local myconf
-	myconf="--with-fltk-prefix=/usr/lib/fltk-1.1 \
+	myconf="--with-fltk-prefix=/usr/$(get_libdir)/fltk-1.1 \
 		--with-fltk-inc-prefix=/usr/include/fltk-1.1"
-	./configure ${myconf} || die
+	econf ${myconf} || die
 	emake || die
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
 	dodoc AUTHORS
 }

@@ -1,6 +1,33 @@
 # ChangeLog for media-sound/linuxsampler
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/linuxsampler/ChangeLog,v 1.1 2005/05/29 23:32:02 fvdpol Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/linuxsampler/ChangeLog,v 1.1.1.1 2005/11/30 09:38:01 chriswhite Exp $
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  linuxsampler-0.3.1.ebuild, linuxsampler-0.3.2.ebuild,
+  linuxsampler-0.3.3.ebuild:
+  Don't install INSTALL file.
+
+*linuxsampler-0.3.3 (17 Jul 2005)
+
+  17 Jul 2005; Frank van de Pol <fvdpol@gentoo.org>
+  +linuxsampler-0.3.3.ebuild:
+  Version bump to 0.3.3. It solves one
+  usability issue regarding small fragments / high sampling rates of audio
+  drivers, fixes some compile time errors with GCC 4.0 and a general efficiency
+  bug.
+
+  12 Jul 2005; Frank van de Pol <fvdpol@gentoo.org> linuxsampler-0.3.2.ebuild:
+  unmasked for amd64
+
+  11 Jul 2005; Frank van de Pol <fvdpol@gentoo.org>
+  linuxsampler-0.3.1.ebuild, linuxsampler-0.3.2.ebuild:
+  masked amd64 architecture
+
+*linuxsampler-0.3.2 (10 Jul 2005)
+
+  10 Jul 2005; Frank van de Pol <fvdpol@gentoo.org>
+  +linuxsampler-0.3.2.ebuild:
+  version bump
 
   30 May 2005; Frank van de Pol <fvdpol@gentoo.org> :
   New ebuild for LinuxSampler

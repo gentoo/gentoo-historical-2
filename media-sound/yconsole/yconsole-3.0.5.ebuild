@@ -1,16 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/yconsole/yconsole-3.0.5.ebuild,v 1.1 2004/02/22 09:18:10 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/yconsole/yconsole-3.0.5.ebuild,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="monitor and control the Y server"
 HOMEPAGE="http://wolfpack.twu.net/YIFF/"
-SRC_URI="ftp://wolfpack.twu.net/users/wolfpack/${P}.tgz"
+SRC_URI="ftp://wolfpack.twu.net/users/wolfpack/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc sparc amd64"
+IUSE=""
 
 DEPEND="=x11-libs/gtk+-1*
 	media-libs/imlib

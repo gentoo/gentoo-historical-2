@@ -1,25 +1,21 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-3.2.9-r10.ebuild,v 1.1 2003/10/18 10:29:17 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-3.2.9-r10.ebuild,v 1.1.1.1 2005/11/30 09:39:15 chriswhite Exp $
 
-IUSE="doc java"
+inherit gnuconfig libtool eutils db
 
-inherit libtool
-inherit eutils
-inherit db
-
-S="${WORKDIR}/${P}"
 DESCRIPTION="Berkeley DB for transaction support in MySQL"
-SRC_URI="http://www.sleepycat.com/update/snapshot/${P}.tar.gz"
 HOMEPAGE="http://www.sleepycat.com/"
+SRC_URI="ftp://ftp.sleepycat.com/releases/${P}.tar.gz"
 
-SLOT="3"
 LICENSE="DB"
+SLOT="3"
 # This ebuild is to be the compatibility ebuild for when db4 is put
 # in the tree.
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm ia64"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sparc x86"
+IUSE="doc java"
 
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
 DEPEND="${RDEPEND}
 	=sys-libs/db-1.85*
 	sys-devel/libtool
@@ -59,7 +55,10 @@ src_unpack() {
 	rm -f config.guess
 	sed -i "s,\(-D_GNU_SOURCE\),\1 ${CFLAGS}," configure
 
+	cd ${S}
 	epatch ${FILESDIR}/${P}-jarlocation.patch
+	epatch ${FILESDIR}/db-3.2.9-java15.patch
+	gnuconfig_update
 }
 
 src_compile() {
@@ -95,12 +94,14 @@ src_compile() {
 	mkdir -p ${S}/build-static
 	cd ${S}/build-static
 	../dist/configure ${conf} ${conf_static} \
+		--libdir=/usr/$(get_libdir) \
 		--enable-static || die
 
 	einfo "Configuring ${P} (shared)..."
 	mkdir -p ${S}/build-shared
 	cd ${S}/build-shared
 	../dist/configure ${conf} ${conf_shared} \
+		--libdir=/usr/$(get_libdir) \
 		--enable-shared || die
 
 	# Parallel make does not work
@@ -118,6 +119,7 @@ src_install () {
 	make libdb=libdb-3.2.a \
 		libcxx=libcxx_3.2.a \
 		prefix=${D}/usr \
+		libdir=${D}/usr/$(get_libdir) \
 		install || die
 
 	cd ${S}/build-static
@@ -133,7 +135,7 @@ src_install () {
 	# For some reason, db.so's are *not* readable by group or others,
 	# resulting in no one but root being able to use them!!!
 	# This fixes it -- DR 15 Jun 2001
-	cd ${D}/usr/lib
+	cd ${D}/usr/$(get_libdir)
 	chmod go+rx *.so
 	# The .la's aren't readable either
 	chmod go+r *.la

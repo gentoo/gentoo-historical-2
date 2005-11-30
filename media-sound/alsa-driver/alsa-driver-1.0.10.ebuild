@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.10.ebuild,v 1.1 2005/11/16 19:59:34 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.10.ebuild,v 1.1.1.1 2005/11/30 09:38:35 chriswhite Exp $
 
 inherit linux-mod flag-o-matic eutils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://alsaproject/driver/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ppc64 ~x86"
 IUSE="oss doc"
 
 RDEPEND="virtual/modutils
@@ -71,7 +71,6 @@ src_unpack() {
 	cd ${S}
 
 	epatch "${FILESDIR}"/${PN}-1.0.10_rc1-include.patch
-	epatch "${FILESDIR}/${PN}-1.0.10_rc3-ppc-unbreakage.patch"
 
 	convert_to_m ${S}/Makefile
 	sed -i -e 's:\(.*depmod\):#\1:' ${S}/Makefile

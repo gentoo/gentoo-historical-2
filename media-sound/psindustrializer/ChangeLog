@@ -1,6 +1,21 @@
 # ChangeLog for media-sound/psindustrializer
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/psindustrializer/ChangeLog,v 1.1 2003/05/25 08:27:13 jje Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/psindustrializer/ChangeLog,v 1.1.1.1 2005/11/30 09:38:19 chriswhite Exp $
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  psindustrializer-0.2.2.ebuild:
+  Stable amd64, sparc.
+
+  04 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  psindustrializer-0.2.2.ebuild:
+  Added to ~sparc
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  psindustrializer-0.2.2.ebuild:
+  Added to ~amd64.
+
+  19 Jul 2004; David Holm <dholm@gentoo.org> psindustrializer-0.2.2.ebuild:
+  Added to ~ppc.
 
 *psindustrializer-0.2.2 (25 May 2003)
 

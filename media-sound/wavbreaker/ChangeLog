@@ -1,6 +1,52 @@
 # ChangeLog for media-sound/wavbreaker
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wavbreaker/ChangeLog,v 1.1 2003/07/09 21:22:37 torbenh Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavbreaker/ChangeLog,v 1.1.1.1 2005/11/30 09:38:23 chriswhite Exp $
+
+  09 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> wavbreaker-0.5.ebuild,
+  wavbreaker-0.6.1.ebuild:
+  Don't install INSTALL and COPYING files.
+
+  08 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> wavbreaker-0.6.1.ebuild:
+  readded -sparc keyword, see #95036 for details.
+
+*wavbreaker-0.6.1 (05 Jun 2005)
+
+  05 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/wavbreaker-0.4-gcc2_fix.patch, -wavbreaker-0.3.ebuild,
+  -wavbreaker-0.4.ebuild, +wavbreaker-0.6.1.ebuild:
+  New upstream release, fixes #95036. Added ~amd64 back to KEYWORDS.
+
+*wavbreaker-0.5 (20 Jul 2004)
+
+  20 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +wavbreaker-0.5.ebuild:
+  Version bump closes bug #56810.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  wavbreaker-0.4.ebuild:
+  -sparc -amd64
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  wavbreaker-0.3.ebuild, wavbreaker-0.4.ebuild:
+  virtual/glibc -> virtual/libc
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  wavbreaker-0.3.ebuild, wavbreaker-0.4.ebuild:
+  Added IUSE.
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  wavbreaker-0.4.ebuild:
+  Stable on x86.  inherit eutils.
+
+  03 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  wavbreaker-0.4.ebuild, files/wavbreaker-0.4-gcc2_fix.patch:
+  Added patch to fix non-ANSI C provided by Tristan Henderson
+  <T.Henderson@cs.ucl.ac.uk> in bug #39365
+
+*wavbreaker-0.4 (19 Dec 2003)
+
+  19 Dec 2003; Martin Holzer <mholzer@gentoo.org> wavbreaker-0.4.ebuild:
+  Version bumped. Closes 32110.
 
 *wavbreaker-0.3 (09 Jul 2003)
 

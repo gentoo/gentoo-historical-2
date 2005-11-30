@@ -1,19 +1,19 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.15.ebuild,v 1.1 2004/11/16 14:41:59 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.15.ebuild,v 1.1.1.1 2005/11/30 09:37:16 chriswhite Exp $
 
 inherit eutils
 
 IUSE="usb gphoto2 ipv6"
 
 DESCRIPTION="Scanner Access Now Easy - Backends"
-HOMEPAGE="http://www.mostang.com/sane/"
+HOMEPAGE="http://www.sane-project.org/"
 
 DEPEND=">=media-libs/jpeg-6b
 	x86? ( sys-libs/libieee1284 )
 	=sys-apps/sed-4*
 	usb? ( dev-libs/libusb )
-	gphoto2? ( media-gfx/gphoto2 )"
+	gphoto2? ( media-libs/libgphoto2 )"
 
 BROTHERMFCDRIVER="sane-backends-1.0.15-brothermfc.patch"
 
@@ -22,7 +22,7 @@ SRC_URI="ftp://ftp.mostang.com/pub/sane/${P}/${P}.tar.gz
 	usb? ( mirror://gentoo/${BROTHERMFCDRIVER}.bz2 )"
 SLOT="0"
 LICENSE="GPL-2 public-domain"
-KEYWORDS="~x86 ~sparc ~ppc ~ppc64 ~amd64"
+KEYWORDS="x86 sparc ppc ppc64 amd64 alpha"
 
 
 src_unpack() {
@@ -67,6 +67,7 @@ src_install () {
 		sysconfdir=${D}/etc \
 		mandir=${D}/usr/share/man \
 		docdir=${D}/usr/share/doc/${PF} \
+		libdir=${D}/usr/$(get_libdir) \
 		install || die
 
 	if use usb; then

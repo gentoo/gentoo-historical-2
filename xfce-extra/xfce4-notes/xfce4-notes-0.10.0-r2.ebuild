@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-notes/xfce4-notes-0.10.0-r2.ebuild,v 1.1 2005/10/06 17:40:45 bcowan Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-notes/xfce4-notes-0.10.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:38:57 chriswhite Exp $
 
 inherit xfce42 eutils
 

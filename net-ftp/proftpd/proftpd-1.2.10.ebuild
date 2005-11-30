@@ -1,22 +1,24 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.10.ebuild,v 1.1 2004/09/07 18:09:56 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.10.ebuild,v 1.1.1.1 2005/11/30 09:36:19 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
-IUSE="hardened ipv6 ldap mysql pam postgres shaper softquota ssl tcpd selinux"
+#Mod shaper is giving problems on some machines
+#IUSE="hardened ipv6 ldap mysql pam postgres shaper softquota ssl tcpd selinux"
+IUSE="hardened ipv6 ldap mysql pam postgres softquota ssl tcpd selinux"
 
 MY_P=${P/_/}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="An advanced and very configurable FTP server"
-SRC_URI="ftp://ftp.proftpd.org/distrib/source/${MY_P}.tar.bz2
-		shaper? http://www.castaglia.org/${PN}/modules/${PN}-mod-shaper-0.5.3.tar.gz"
+SRC_URI="ftp://ftp.proftpd.org/distrib/source/${MY_P}.tar.bz2"
+#		shaper? http://www.castaglia.org/${PN}/modules/${PN}-mod-shaper-0.5.3.tar.gz"
 HOMEPAGE="http://www.proftpd.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~hppa ~alpha ~ppc ~mips ~amd64"
+KEYWORDS="x86 sparc hppa alpha ppc ~mips amd64"
 
 DEPEND="pam? ( >=sys-libs/pam-0.75 )
 	mysql? ( >=dev-db/mysql-3.23.26 )
@@ -30,19 +32,20 @@ RDEPEND="selinux? ( sec-policy/selinux-ftpd )"
 src_unpack() {
 	unpack ${MY_P}.tar.bz2
 	cd ${S}
-	if use shaper; then
-		unpack ${PN}-mod-shaper-0.5.3.tar.gz
-		mv mod_shaper/mod_shaper.c contrib/
-	fi
+#	if use shaper; then
+#		unpack ${PN}-mod-shaper-0.5.3.tar.gz
+#		mv mod_shaper/mod_shaper.c contrib/
+#	fi
 }
 
 src_compile() {
+	addpredict /etc/krb5.conf
 	local modules myconf
 
 	modules="mod_ratio:mod_readme"
 	use pam && modules="${modules}:mod_auth_pam"
 	use tcpd && modules="${modules}:mod_wrap"
-	use shaper && modules="${modules}:mod_shaper"
+#	use shaper && modules="${modules}:mod_shaper"
 
 	if use ldap; then
 		einfo ldap
@@ -123,7 +126,7 @@ src_install() {
 		COPYING CREDITS ChangeLog NEWS README* \
 		doc/{license.txt,GetConf}
 	dohtml doc/*.html
-	use shaper && dohtml mod_shaper/mod_shaper.html
+	#use shaper && dohtml mod_shaper/mod_shaper.html
 	docinto rfc
 	dodoc doc/rfc/*.txt
 

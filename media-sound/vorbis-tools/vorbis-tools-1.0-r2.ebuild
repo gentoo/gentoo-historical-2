@@ -1,32 +1,25 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/vorbis-tools/vorbis-tools-1.0-r2.ebuild,v 1.1 2003/11/17 00:20:08 spider Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vorbis-tools/vorbis-tools-1.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:38:16 chriswhite Exp $
 
-IUSE="nls"
-
-S=${WORKDIR}/${P}
 DESCRIPTION="tools for using the Ogg Vorbis sound file format"
+HOMEPAGE="http://www.vorbis.com/"
 SRC_URI="http://fatpipe.vorbis.com/files/1.0/unix/vorbis-tools-1.0.tar.gz"
-HOMEPAGE="http://www.xiph.org/ogg/vorbis/index.html"
+
+LICENSE="as-is"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc sparc x86"
+IUSE="nls"
 
 RDEPEND=">=media-libs/libvorbis-${PV}
 	>=media-libs/libogg-${PV}
 	>=media-libs/libao-0.8.2
-	>=net-ftp/curl-7.9"
-
+	>=net-misc/curl-7.9"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64"
-LICENSE="as-is"
-
 src_compile() {
-
-	local myconf
-	use nls || myconf="${myconf} --disable-nls"
-
-	econf ${myconf} || die
+	econf `use_enable nls` || die
 	emake || die
 }
 
@@ -34,8 +27,7 @@ src_install () {
 	make DESTDIR=${D} install || die
 
 	rm -rf ${D}/usr/share/doc
-	dodoc AUTHORS COPYING README
+	dodoc AUTHORS README
 	docinto ogg123
 	dodoc ogg123/ogg123rc-example
 }
-

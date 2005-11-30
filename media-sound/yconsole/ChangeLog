@@ -1,6 +1,24 @@
 # ChangeLog for media-sound/yconsole
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/yconsole/ChangeLog,v 1.1 2003/08/17 19:03:06 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/yconsole/ChangeLog,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
+
+*yconsole-3.0.8 (19 Apr 2005)
+
+  19 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/yconsole-3.0.8-gcc33.patch, metadata.xml, +yconsole-3.0.8.ebuild:
+  Version bump.
+
+  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  yconsole-3.0.5.ebuild:
+  Added ~sparc ~amd64
+
+  30 Jun 2004; David Holm <dholm@gentoo.org> yconsole-3.0.5.ebuild:
+  Added to ~ppc.
+
+*yconsole-3.0.5 (22 Feb 2004)
+
+  22 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #42386 by daniel webert.
 
 *yconsole-3.0.1 (17 Aug 2003)
 

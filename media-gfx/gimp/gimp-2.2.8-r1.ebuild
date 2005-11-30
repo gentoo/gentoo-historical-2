@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-2.2.8-r1.ebuild,v 1.1 2005/07/01 02:57:59 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-2.2.8-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:44 chriswhite Exp $
 
 inherit flag-o-matic libtool eutils fdo-mime alternatives
 
@@ -14,9 +14,9 @@ SRC_URI="mirror://gimp/v2.2/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="aalib altivec debug doc gtkhtml gimpprint hardened jpeg lcms mmx mng png
-python scanner smp sse svg tiff wmf"
+python smp sse svg tiff wmf"
 
 #	X? ( virtual/x11 )"
 RDEPEND="virtual/x11
@@ -45,12 +45,7 @@ RDEPEND="virtual/x11
 	aalib?	( media-libs/aalib )
 	python?	( >=dev-lang/python-2.2
 		>=dev-python/pygtk-2 )
-	lcms? ( media-libs/lcms )
-
-	scanner? ( media-gfx/xsane
-		media-gfx/sane-backends
-		media-gfx/sane-frontends
-		)"
+	lcms? ( media-libs/lcms )"
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0
@@ -94,7 +89,8 @@ src_compile() {
 	replace-flags "-march=k6*" "-march=i586"
 
 	# gimp uses inline functions (plug-ins/common/grid.c) (#23078)
-	filter-flags "-fno-inline"
+	# gimp uses floating point math, needs accuracy (#98685)
+	filter-flags "-fno-inline" "-ffast-math"
 
 	if use hardened; then
 		ewarn "hardened use flag suppressing mmx use flag"
@@ -165,11 +161,6 @@ src_install() {
 
 	# Create the gimp-remote link, see bug #36648
 	dosym gimp-remote-2.2 /usr/bin/gimp-remote
-
-	# if use scanner, create the symlink see bug #93018
-	if use scanner; then
-		dosym /usr/bin/xscanimage /usr/lib/gimp/2.0/plug-ins/
-	fi
 }
 
 pkg_postinst() {

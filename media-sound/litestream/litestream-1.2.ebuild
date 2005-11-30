@@ -1,21 +1,21 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/litestream/litestream-1.2.ebuild,v 1.1 2004/03/24 22:53:14 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/litestream/litestream-1.2.ebuild,v 1.1.1.1 2005/11/30 09:38:28 chriswhite Exp $
 
-inherit eutils
+IUSE=""
+
+inherit eutils flag-o-matic
 
 DESCRIPTION="Litstream is a lightweight and robust shoutcast-compatible streaming mp3 server."
 HOMEPAGE="http://www.litestream.org/"
 SRC_URI="http://litestream.org/litestream/${P}.tar.gz"
+
 LICENSE="BSD"
-
-IUSE=""
 SLOT="0"
-
-KEYWORDS="~x86"
+# -amd64: 1.2 build errors - eradicator
+KEYWORDS="-amd64 sparc ~ppc x86"
 
 DEPEND=""
-RDEPEND=""
 
 S=${WORKDIR}/${PN}
 
@@ -35,11 +35,10 @@ src_compile() {
 }
 
 src_install() {
-	exeinto /usr/bin
-	doexe litestream literestream
-	newexe source litestream-source
-	newexe server litestream-server
-	newexe client litestream-client
+	dobin litestream literestream
+	newbin source litestream-source
+	newbin server litestream-server
+	newbin client litestream-client
 
-	dodoc ABOUT ACKNOWLEDGEMENTS BUGS CHANGELOG CONTACT FILES LICENSE MAKEITGO README
+	dodoc ABOUT ACKNOWLEDGEMENTS BUGS CHANGELOG CONTACT FILES MAKEITGO README
 }

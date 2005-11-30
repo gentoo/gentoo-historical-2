@@ -1,6 +1,14 @@
 # ChangeLog for net-nds/ldapvi
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ldapvi/ChangeLog,v 1.1 2005/09/19 10:36:31 lcars Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ldapvi/ChangeLog,v 1.1.1.1 2005/11/30 09:36:53 chriswhite Exp $
+
+*ldapvi-1.4 (19 Nov 2005)
+
+  19 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> +ldapvi-1.4.ebuild:
+  New version and added to ~hppa.
+
+  19 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> ldapvi-1.1.ebuild:
+  Added to ~ppc.
 
   19 Sep 2005; Andrea Barisani <lcars@gentoo.org> ChangeLog:
   Added initial ChangeLog.

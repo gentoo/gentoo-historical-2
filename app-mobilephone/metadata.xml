@@ -4,5 +4,18 @@
 	<longdescription lang="en">
 		The app-mobilephone category contains software for working with mobile phones.
 	</longdescription>
+	<longdescription lang="ja">
+		app-mobilephoneカテゴリにはケタイと使うソフトウェアが含まれます。
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm app-mobilephone chứa các phần mềm hoạt động với
+		điện thoại di động.
+	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie app-mobilephone enthält Software für das Arbeiten mit Mobiltelefonen.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria app-mobilephone contiene software per la telefonia mobile.
+	</longdescription>
 </catmetadata>
 

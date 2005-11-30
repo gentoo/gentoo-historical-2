@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jaaa/jaaa-0.1.2.ebuild,v 1.1 2004/11/27 18:46:24 fvdpol Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jaaa/jaaa-0.1.2.ebuild,v 1.1.1.1 2005/11/30 09:38:23 chriswhite Exp $
 
 IUSE=""
 
@@ -12,11 +12,11 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~sparc ~x86"
 
-DEPEND="virtual/jack
+DEPEND="media-sound/jack-audio-connection-kit
 	>=media-libs/libclalsadrv-1.0.1
 	>=media-libs/libclthreads-1.0.2
 	>=media-libs/libclxclient-1.0.1
-	>=dev-libs/fftw-3.0.0
+	>=sci-libs/fftw-3.0.0
 	>=x11-libs/gtk+-2.0.0"
 
 src_compile() {
@@ -25,5 +25,5 @@ src_compile() {
 
 src_install() {
 	dobin jaaa || die "dobin failed"
-	dodoc AUTHORS INSTALL README
+	dodoc AUTHORS README
 }

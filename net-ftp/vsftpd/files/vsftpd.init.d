@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 2003 Gentoo Technologies, Inc.
+# Copyright 2003-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/files/vsftpd.init.d,v 1.1 2003/09/03 01:41:05 rajiv Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/files/vsftpd.init.d,v 1.1.1.1 2005/11/30 09:36:29 chriswhite Exp $
 
 depend() {
 	need net
@@ -9,29 +9,33 @@ depend() {
 }
 
 checkconfig() {
-	if [ ! -e ${VSFTPD_CONF} ] ; then
+	if [[ ! -e ${VSFTPD_CONF} ]] ; then
 		eerror "Please setup ${VSFTPD_CONF} before starting vsftpd"
 		eerror "There are sample configurations in /usr/share/doc/vsftpd"
 		return 1
-	else
-		source ${VSFTPD_CONF}
-		if [ "${background}" != "YES" ] ; then
-			eerror "${VSFTPD_CONF} must contain background=YES in order to start vsftpd from /etc/init.d/vsftpd"
-			return 2
-		fi
 	fi
+
+	if grep -q "^background=YES" ${VSFTPD_CONF} ; then
+		local c=$( grep -c "^\(listen\|listen_ipv6\)=YES" "${VSFTPD_CONF}" )
+		[[ ${c} == "1" ]] && return 0
+	fi
+		
+	eerror "${VSFTPD_CONF} must contain background=YES and either"
+	eerror "listen=YES or listen_ipv6=YES (but not both)"
+	eerror "in order to start vsftpd from /etc/init.d/vsftpd"
+	return 1
 }
 
 start() {
 	checkconfig || return 1
 	ebegin "Starting vsftpd"
-	start-stop-daemon --start --quiet \
-		--exec /usr/sbin/vsftpd ${VSFTPD_CONF}
+	start-stop-daemon --start \
+		--exec /usr/sbin/vsftpd -- ${VSFTPD_CONF}
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping vsftpd"
-	start-stop-daemon --stop --quiet --exec /usr/sbin/vsftpd
+	killall vsftpd
 	eend $?
 }

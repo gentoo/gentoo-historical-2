@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/jftpgw/jftpgw-0.13.4-r1.ebuild,v 1.1 2003/06/26 00:32:57 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/jftpgw/jftpgw-0.13.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:36:25 chriswhite Exp $
 
 inherit eutils
 
@@ -10,13 +10,11 @@ SRC_URI="http://www.mcknight.de/jftpgw/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="crypt tcpd xinetd"
+KEYWORDS="x86 ~ppc"
+IUSE="crypt tcpd"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	tcpd? ( sys-apps/tcp-wrappers )"
-RDEPEND="${DEPEND}
-	xinetd? ( sys-apps/xinetd )"
 
 src_compile() {
 	econf \
@@ -37,11 +35,11 @@ src_install() {
 
 	exeinto /etc/init.d ; newexe ${FILESDIR}/jftpgw.rc jftpgw
 
-	if [ `use xinetd` ] ; then
+	if has_version sys-apps/xinetd ; then
 		insinto /etc/xinetd.d
 		newins support/jftpgw.xinetd jftpgw
 		dosed "s:nobody:${PN}:" /etc/xinetd.d/jftpgw
 	fi
 
-	enewuser ${PN} -1 /bin/false /dev/null nobody
+	enewuser ${PN} -1 -1 /dev/null nobody
 }

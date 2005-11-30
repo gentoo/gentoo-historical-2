@@ -1,29 +1,33 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/awesfx/awesfx-0.5.0c.ebuild,v 1.1 2004/07/21 19:55:23 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/awesfx/awesfx-0.5.0c.ebuild,v 1.1.1.1 2005/11/30 09:37:49 chriswhite Exp $
 
 IUSE="alsa"
 
-inherit eutils
+inherit eutils portability
 
 DESCRIPTION="AWE Utilities - sfxload"
 HOMEPAGE="http://www.alsa-project.org/~iwai/awedrv.html#Utils"
 SRC_URI=http://www.alsa-project.org/~iwai/${P}.tar.gz
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="amd64 ~ppc ~sparc x86"
+
 DEPEND="virtual/libc
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )"
+
+BANK_LOC="/usr/share/sounds/sf2"
 
 src_compile() {
 	if ! use alsa; then
 		einfo "Removing ALSA support!"
 		epatch ${FILESDIR}/${PN}-0.5.0b-configure-noalsa.patch
-		econf --with-sfpath=/usr/share/sfbank || die
+		econf --with-sfpath=${BANK_LOC} || die
 		epatch ${FILESDIR}/${PN}-0.5.0b-makefile-noalsa.patch
-		sed -i -e 's/'^LIBS.*-lasound.*$'/LIBS = -lm -ldl -lpthread/' Makefile
+		sed -i -e 's/'^LIBS.*-lasound.*$'/LIBS = -lm $(dlopen_lib) -lpthread/' Makefile
 	else
-		econf --with-sfpath=/usr/share/sfbank || die
+		econf --with-sfpath=${BANK_LOC} || die
 	fi
 
 	emake || die
@@ -31,12 +35,12 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog INSTALL README SBKtoSF2.txt
+	dodoc AUTHORS ChangeLog README SBKtoSF2.txt
+	dodoc ${D}/usr/share/sounds/sf2/README-bank
+	rm ${D}/usr/share/sounds/sf2/README-bank
 }
 
 pkg_postinst() {
 	einfo "Please copy your SoundFont files from the original CD-ROM"
-	einfo "shipped with your soundcard to"
-	einfo "/usr/share/sfbank"
+	einfo "shipped with your soundcard to ${BANK_LOC}"
 }
-

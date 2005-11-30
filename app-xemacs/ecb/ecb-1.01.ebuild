@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ecb/ecb-1.01.ebuild,v 1.1 2003/02/22 12:46:39 rendhalver Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ecb/ecb-1.01.ebuild,v 1.1.1.1 2005/11/30 09:38:52 chriswhite Exp $
 
 SLOT="0"
 IUSE=""
@@ -19,7 +19,6 @@ app-xemacs/ediff
 app-xemacs/xemacs-devel
 app-xemacs/speedbar
 "
-KEYWORDS="x86 ~ppc ~alpha sparc"
+KEYWORDS="x86 ~ppc alpha sparc amd64"
 
 inherit xemacs-packages
-

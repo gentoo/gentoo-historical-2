@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/rt/rt-3.4.3.ebuild,v 1.1 2005/08/11 23:45:59 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/rt/rt-3.4.3.ebuild,v 1.1.1.1 2005/11/30 09:36:58 chriswhite Exp $
 
 inherit webapp eutils
 
@@ -12,10 +12,9 @@ SRC_URI="http://download.bestpractical.com/pub/${PN}/release/${P}.tar.gz
 	ftp://ftp.eu.uu.net/pub/unix/ticketing/${PN}/release/${P}.tar.gz
 	ftp://rhinst.ece.cmu.edu/${PN}/release/${P}.tar.gz"
 
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 
 DEPEND="
-	>=net-www/webapp-config-1.11-r1
 	>=dev-lang/perl-5.8.3
 	>=dev-perl/Params-Validate-0.02
 	dev-perl/Cache-Cache
@@ -95,7 +94,7 @@ add_user_rt() {
 	if [[ ${euser} == $(egetent passwd "${euser}" | cut -d: -f1) ]] ; then
 		# check uid
 		rt_uid=$(egetent passwd "${euser}" | cut -d: -f3)
-		if `expr ${rt_uid} '<' 1000 > /dev/null`; then
+		if $(expr ${rt_uid} '<' 1000 > /dev/null); then
 			ewarn "uid of user rt is less than 1000. suexec2 will not work."
 			ewarn "If you want to use FastCGI, please delete the user 'rt'"
 			ewarn "from your system and re-emerge www-apps/rt"
@@ -119,7 +118,7 @@ add_user_rt() {
 
 	einfo " - Userid: ${euid}"
 
-	enewuser rt ${euid} /bin/false /dev/null rt > /dev/null
+	enewuser rt ${euid} -1 /dev/null rt > /dev/null
 	return 0
 }
 
@@ -143,11 +142,15 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+	epatch ${FILESDIR}/3.4.2/Callback.patch # fix for bug #109745
 
 	# add Gentoo-specific layout
 	cat ${FILESDIR}/3.4.2/config.layout-gentoo >> config.layout
 	sed -e "s|PREFIX|${D}/${MY_HOSTROOTDIR}/${PF}|
 			s|HTMLDIR|${D}/${MY_HTDOCSDIR}|g" -i ./config.layout || die
+
+	# don't need to check dev dependencies
+	sed -e "s|\$args{'with-DEV'} =1;|#\$args{'with-DEV'} =1;|" -i sbin/rt-test-dependencies.in || die
 }
 
 src_compile() {
@@ -166,7 +169,16 @@ src_compile() {
 		--with-web-group=${web}
 
 	# check for missing deps and ask to report if something is broken
-	make testdeps > ${T}/t
+	local myconf="--verbose $(use_with mysql) \
+		$(use_with postgres pg) \
+		$(use_with fastcgi) \
+		$(use_with lighttpd fastcgi)"
+	if ! useq fastcgi && ! useq lighttpd; then
+		myconf="${myconf} $(use_with apache2 modperl2)"
+		! useq apache2 && myconf="${myconf} --with-modperl1"
+	fi
+
+	/usr/bin/perl ./sbin/rt-test-dependencies ${myconf} > ${T}/t
 	if grep -q "MISSING" ${T}/t; then
 		ewarn "Missing Perl dependency!"
 		ewarn

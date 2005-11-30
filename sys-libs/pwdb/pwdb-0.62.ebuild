@@ -1,22 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pwdb/pwdb-0.62.ebuild,v 1.1 2003/11/09 18:48:05 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pwdb/pwdb-0.62.ebuild,v 1.1.1.1 2005/11/30 09:39:13 chriswhite Exp $
 
 inherit eutils flag-o-matic
-filter-flags "-fstack-protector"
-
-IUSE="selinux"
 
 DESCRIPTION="Password database"
-HOMEPAGE="http://www.firstlinux.com/cgi-bin/package/content.cgi?ID=6886"
-SRC_URI="mirror://gentoo/${P}.tar.gz
-	http://nl.lunar-linux.org/lunar/sources/sources/${P}.tar.gz"
+HOMEPAGE="http://packages.gentoo.org/ebuilds/?pwdb-${PVR}"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
-LICENSE="BSD | GPL-2"
+LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm ~ia64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
+IUSE="selinux"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	selinux? ( sys-libs/libselinux )"
 
 src_unpack () {
@@ -28,12 +25,16 @@ src_unpack () {
 
 	use selinux && epatch ${FILESDIR}/${P}-selinux.patch
 
-	sed -i -e "s/^DIRS = .*/DIRS = libpwdb/" -e "s:EXTRAS += :EXTRAS += ${CFLAGS} :" \
+	sed -i \
+		-e "s/^DIRS = .*/DIRS = libpwdb/" \
+		-e "s:EXTRAS += :EXTRAS += ${CFLAGS} :" \
 		Makefile
-	sed -i -e "s/=gcc/=${CC:-gcc}/g" default.defs
+	sed -i -e "s/=gcc/=$(tc-getCC)/g" default.defs
 }
 
 src_compile() {
+	filter-flags -fstack-protector
+
 	# author has specified application to be compiled with `-g` 
 	# no problem, but with ccc `-g` disables optimisation to make
 	# debugging easier, `-g3` enables debugging and optimisation
@@ -43,25 +44,24 @@ src_compile() {
 }
 
 src_install() {
-	dodir /lib /usr/include/pwdb
-	make INCLUDED=${D}/usr/include/pwdb \
-		LIBDIR=${D}/lib \
+	dodir /$(get_libdir) /usr/$(get_libdir) /usr/include/pwdb
+	make \
+		INCLUDED=${D}/usr/include/pwdb \
+		LIBDIR=${D}/$(get_libdir) \
 		LDCONFIG="echo" \
 		install || die
 
 	preplib /
-	dodir /usr/lib
-	mv ${D}/lib/*.a ${D}/usr/lib
+	mv ${D}/$(get_libdir)/*.a ${D}/usr/$(get_libdir)
 
-	# See bug $4411 for more info
+	# See bug #4411 for more info
 	gen_usr_ldscript libpwdb.so
 
 	insinto /etc
 	doins conf/pwdb.conf
 
-	dodoc CHANGES Copyright CREDITS README
+	dodoc CHANGES CREDITS README
 	dohtml -r doc
 	docinto txt
 	dodoc doc/*.txt
 }
-

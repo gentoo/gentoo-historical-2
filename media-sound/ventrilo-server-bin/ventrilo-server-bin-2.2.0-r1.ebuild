@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ventrilo-server-bin/ventrilo-server-bin-2.2.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:38:39 chriswhite Exp $
 
 IUSE=""
 DESCRIPTION="The Ventrilo Voice Communication Server"
@@ -9,12 +9,12 @@ SRC_URI="ventrilo_srv-${PV}-Linux-i386.tar.gz"
 
 LICENSE="ventrilo"
 SLOT="0"
-KEYWORDS="-* ~x86 ~amd64"
+KEYWORDS="-* x86 amd64"
 RESTRICT="fetch"
 
 S=${WORKDIR}
 
-DEPEND="amd64? ( emul-linux-x86-baselibs )"
+DEPEND="amd64? ( app-emulation/emul-linux-x86-baselibs )"
 
 pkg_nofetch() {
 	einfo "Please visit http://www.ventrilo.com/download.php"

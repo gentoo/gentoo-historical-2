@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/psgml-dtds/psgml-dtds-1.02.ebuild,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/psgml-dtds/psgml-dtds-1.02.ebuild,v 1.1.1.1 2005/11/30 09:38:51 chriswhite Exp $
 
 SLOT="0"
 IUSE=""
@@ -12,9 +12,10 @@ app-xemacs/psgml
 app-xemacs/edit-utils
 app-xemacs/mail-lib
 app-xemacs/fsf-compat
-app-xemacs/eterm
+app-xemacs/xemacs-eterm
 app-xemacs/sh-script
 "
+KEYWORDS="x86 ~ppc alpha sparc amd64"
 
 inherit xemacs-packages
 

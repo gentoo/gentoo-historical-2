@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mixxx/mixxx-1.4.2.ebuild,v 1.1 2004/11/17 05:37:38 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mixxx/mixxx-1.4.2.ebuild,v 1.1.1.1 2005/11/30 09:37:51 chriswhite Exp $
 
 IUSE="alsa jack"
 
-inherit eutils
+inherit eutils qt3
 
 S="${WORKDIR}/${P}/src"
 
@@ -15,9 +15,9 @@ SRC_URI="mirror://sourceforge/mixxx/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 # -amd64: 1.4.2 - static noise comes out of speakers at startup - eradicator
-KEYWORDS="-amd64 ~sparc ~x86"
+KEYWORDS="-amd64 sparc x86 ~ppc"
 
-DEPEND=">=x11-libs/qt-3.1.0
+DEPEND="$(qt_min_version 3.1)
 	media-sound/madplay
 	media-libs/libogg
 	media-libs/libvorbis
@@ -42,7 +42,7 @@ src_unpack() {
 }
 
 src_compile() {
-	./configure `use_enable alsa Alsa` `use_enable jack Jack` || die "configure failed"
+	./configure `use_enable alsa` `use_enable jack` || die "configure failed"
 
 	sed -i -e "s/CFLAGS *= -pipe -w -O2/CFLAGS   = ${CFLAGS} -w/" \
 	       -e "s/CXXFLAGS *= -pipe -w -O2/CXXFLAGS   = ${CXXFLAGS} -w/" Makefile

@@ -1,6 +1,211 @@
-# ChangeLog for dev-php/egroupware
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/egroupware/ChangeLog,v 1.1 2004/08/19 09:43:07 rl03 Exp $
+# ChangeLog for www-apps/egroupware
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/egroupware/ChangeLog,v 1.1.1.1 2005/11/30 09:37:09 chriswhite Exp $
+
+  25 Sep 2005; Renat Lumpau <rl03@gentoo.org> -egroupware-1.0.0.009.ebuild,
+  -egroupware-1.0.0.009_p2.ebuild:
+  Removing vulnerable versions
+
+  24 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.0.009_p3.ebuild:
+  Stable on alpha, bug 106841.
+
+  24 Sep 2005; Simon Stelling <blubb@gentoo.org>
+  egroupware-1.0.0.009_p3.ebuild:
+  stable on amd64 wrt bug 106841
+
+  22 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  egroupware-1.0.0.009_p3.ebuild:
+  Stable on ppc.
+
+  22 Sep 2005; Renat Lumpau <rl03@gentoo.org>
+  egroupware-1.0.0.009_p3.ebuild:
+  Stable on x86
+
+*egroupware-1.0.0.009_p3 (21 Sep 2005)
+
+  21 Sep 2005; Renat Lumpau <rl03@gentoo.org>
+  +egroupware-1.0.0.009_p3.ebuild:
+  Version bump wrt security bug #106841.
+
+  18 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.0.009_p2.ebuild:
+  Add back alpha keyword, bug 106002.
+
+  18 Sep 2005; Renat Lumpau <rl03@gentoo.org> -egroupware-1.0.0.008.ebuild,
+  -egroupware-1.0.0.008_p2.ebuild:
+  Cleaning old versions
+
+  18 Sep 2005; Renat Lumpau <rl03@gentoo.org>
+  egroupware-1.0.0.009_p2.ebuild:
+  Not using depend.php as it is not yet stable
+
+  18 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.0.009_p2.ebuild:
+  Removing alpha keyword until the dev-lang/php problem is fixed.
+
+  18 Sep 2005; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.0.009_p2.ebuild:
+  Stable on alpha, bug 106002.
+
+  17 Sep 2005; Simon Stelling <blubb@gentoo.org>
+  egroupware-1.0.0.009_p2.ebuild:
+  stable on amd64 wrt bug 106002
+
+  15 Sep 2005; Renat Lumpau <rl03@gentoo.org>
+  egroupware-1.0.0.009_p2.ebuild:
+  Stable on x86 wrt bug #106002.
+
+  15 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  egroupware-1.0.0.009_p2.ebuild:
+  Stable on ppc.
+
+*egroupware-1.0.0.009_p2 (14 Sep 2005)
+
+  14 Sep 2005; Renat Lumpau <rl03@gentoo.org>
+  +egroupware-1.0.0.009_p2.ebuild:
+  Version bump wrt security bug #106002
+
+  24 Aug 2005; Homer Parker <hparker@gentoo.org>
+  egroupware-1.0.0.009.ebuild:
+  Stable on amd64.
+
+  24 Aug 2005; Homer Parker <hparker@gentoo.org> ChangeLog:
+  Stable on amd64.
+
+  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> egroupware-1.0.0.009.ebuild:
+  Housekeeping
+
+  20 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org>
+  egroupware-1.0.0.009.ebuild:
+  Stable on alpha wrt security bug #102374
+
+  17 Aug 2005; Renat Lumpau <rl03@gentoo.org> egroupware-1.0.0.009.ebuild:
+  stable on x86
+
+  16 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  egroupware-1.0.0.009.ebuild:
+  Stable on ppc.
+
+*egroupware-1.0.0.009 (16 Aug 2005)
+
+  16 Aug 2005; Renat Lumpau <rl03@gentoo.org> +egroupware-1.0.0.009.ebuild:
+  Version bump wrt security bug #102374.
+
+*egroupware-1.0.0.008_p2 (17 Jul 2005)
+
+  17 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  +egroupware-1.0.0.008_p2.ebuild:
+  Version bump
+
+  10 Jul 2005; Renat Lumpau <rl03@gentoo.org> -egroupware-1.0.0.007.ebuild:
+  Removed old versions
+
+  10 Jul 2005; Danny van Dyk <kugelfang@gentoo.org>
+  egroupware-1.0.0.008.ebuild:
+  Stable on amd64 wrt BUG #97651.
+
+*egroupware-1.0.0.008 (10 Jul 2005)
+
+  10 Jul 2005; Renat Lumpau <rl03@gentoo.org>
+  -files/egroupware-1.0.0.007-xmlrpc.patch, -egroupware-1.0.0.007-r1.ebuild,
+  +egroupware-1.0.0.008.ebuild:
+  Version bump wrt security bug 97651. Remove unnecessary 007-r1.
+
+  08 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.0.007-r1.ebuild:
+  Stable on alpha, bug 97651.
+
+  06 Jul 2005; Michael Hanselmann <hansmi@gentoo.org>
+  egroupware-1.0.0.007-r1.ebuild:
+  Stable on ppc.
+
+*egroupware-1.0.0.007-r1 (06 Jul 2005)
+
+  06 Jul 2005; Stuart Herbert <stuart@gentoo.org>
+  +files/egroupware-1.0.0.007-xmlrpc.patch, +egroupware-1.0.0.007-r1.ebuild:
+  Patch for security bug #97651
+
+  24 Apr 2005; Martin Holzer <mholzer@gentoo.org>
+  egroupware-1.0.0.007.ebuild:
+  x86 stable
+
+  22 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.0.007.ebuild:
+  Stable on alpha, bug 89517.
+
+  20 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  egroupware-1.0.0.007.ebuild:
+  Stable on amd64, bug 89517.
+
+  20 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  egroupware-1.0.0.007.ebuild:
+  Stable on ppc.
+
+*egroupware-1.0.0.007 (20 Apr 2005)
+
+  20 Apr 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +egroupware-1.0.0.007.ebuild:
+  Version bump for security bug 89517.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  08 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  egroupware-1.0.00.006.ebuild:
+  Stable on amd64, bug #70515
+
+  05 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.00.006.ebuild:
+  Stable on alpha, bug 70515.
+
+  03 Dec 2004; <SeJo@gentoo.org> egroupware-1.0.00.006.ebuild:
+  stable on ppc gsla: 70515, btw i'm back!!!!
+
+*egroupware-1.0.00.006 (02 Dec 2004)
+
+  02 Dec 2004; Stuart Herbert <stuart@gentoo.org>
+  +egroupware-1.0.00.006.ebuild:
+  Version bump; addresses bug #70515
+
+*egroupware-1.0.00.005 (03 Nov 2004)
+
+  03 Nov 2004; Martin Holzer <mholzer@gentoo.org>
+  +egroupware-1.0.00.005.ebuild:
+  Version bumped.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  egroupware-1.0.00.004.ebuild:
+  Masked egroupware-1.0.00.004.ebuild stable for ppc
+
+  03 Sep 2004; Renat Lumpau <rl03@gentoo.org> -egroupware-0.9.99.008.ebuild,
+  -egroupware-0.9.99.015.ebuild, -egroupware-1.0.00.003.ebuild:
+  Obsolete version; removed by eversionrm tool
+
+  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> egroupware-1.0.00.003.ebuild,
+  egroupware-1.0.00.004.ebuild:
+  Fixed DEPEND/RDEPEND. Removed empty src_compile
+
+  25 Aug 2004; Bryan Østergaard <kloeri@gentoo.org>
+  egroupware-1.0.00.004.ebuild:
+  Stable on alpha, bug 61510.
+
+*egroupware-1.0.00.004 (25 Aug 2004)
+
+  25 Aug 2004; Renat Lumpau <rl03@gentoo.org> +egroupware-1.0.00.004.ebuild:
+  Version bump (security update, bug #61510)
+
+  25 Aug 2004; Renat Lumpau <rl03@gentoo.org> egroupware-1.0.00.003.ebuild:
+  Removed sleep. Fixed pkg_compile insanity.
+
+*egroupware-1.0.00.003 (19 Aug 2004)
+
+  19 Aug 2004; Renat Lumpau <rl03@gentoo.org> +files/postinstall-en.txt,
+  +egroupware-1.0.00.003.ebuild:
+  Version bump (bug #59778). Converted to use webapp.eclass (bug #53749).
 
 *egroupware-0.9.99.015 (19 Aug 2004)
 
@@ -14,7 +219,7 @@
   +egroupware-0.9.99.015.ebuild:
   Version bumped. Closes 53747
 
-  31 May 2004; Bryan �stergaard <kloeri@gentoo.org>
+  31 May 2004; Bryan Østergaard <kloeri@gentoo.org>
   egroupware-0.9.99.008.ebuild:
   Stable on alpha.
 

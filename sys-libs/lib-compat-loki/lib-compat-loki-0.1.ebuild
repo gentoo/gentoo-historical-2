@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/lib-compat-loki/lib-compat-loki-0.1.ebuild,v 1.1 2005/02/23 02:47:50 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/lib-compat-loki/lib-compat-loki-0.1.ebuild,v 1.1.1.1 2005/11/30 09:39:05 chriswhite Exp $
 
 DESCRIPTION="Compatibility libc6 libraries for Loki games"
 HOMEPAGE="http://www.gentoo.org/"

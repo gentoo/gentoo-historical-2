@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/snd/snd-7.10.ebuild,v 1.1 2005/03/13 22:00:32 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/snd/snd-7.10.ebuild,v 1.1.1.1 2005/11/30 09:38:29 chriswhite Exp $
 
 IUSE="esd motif guile X gtk ruby alsa"
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://snd.sourceforge.net"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 amd64 ~ppc sparc"
+KEYWORDS="x86 amd64 ppc sparc"
 
 DEPEND="X? ( virtual/x11 )
 	sci-libs/gsl
@@ -66,7 +66,7 @@ src_compile() {
 src_install () {
 	dobin snd
 
-	dodoc COPYING *.Snd *.scm *.rb *.png *.html
+	dodoc *.Snd *.scm *.rb *.png *.html
 
 	cd tutorial
 	dohtml *

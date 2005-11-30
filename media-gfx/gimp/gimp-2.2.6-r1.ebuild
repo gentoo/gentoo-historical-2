@@ -1,22 +1,22 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-2.2.6-r1.ebuild,v 1.1 2005/05/10 12:54:05 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-2.2.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:44 chriswhite Exp $
 
 inherit flag-o-matic libtool eutils fdo-mime
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="http://www.gimp.org/"
-LICENSE="GPL-2"
 
 P_HELP="gimp-help-2-0.7" #gimp-help-2-{version}
 S_HELP="$WORKDIR/${P_HELP}"
 SRC_URI="mirror://gimp/v2.2/${P}.tar.bz2
 	doc? ( mirror://gimp/help/testing/${P_HELP}.tar.gz )"
 
+LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="x86 ~ppc ~hppa ~sparc ~amd64 ~mips ~ppc64 ~alpha"
+KEYWORDS="~alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
 #IUSE="X aalib altivec debug doc gimpprint jpeg mmx mng png python sse svg tiff wmf"
-IUSE="aalib altivec debug doc gtkhtml gimpprint jpeg mmx mng png python sse svg tiff wmf"
+IUSE="aalib altivec debug doc gtkhtml gimpprint hardened jpeg mmx mng png python sse svg tiff wmf"
 
 # FIXME : some more things can be (local) USE flagged
 # a few options are detection only, fix them to switch
@@ -79,7 +79,8 @@ src_compile() {
 	replace-flags "-march=k6*" "-march=i586"
 
 	# gimp uses inline functions (plug-ins/common/grid.c) (#23078)
-	filter-flags "-fno-inline"
+	# gimp uses floating point math, needs accuracy (#98685)
+	filter-flags "-fno-inline" "-ffast-math"
 
 	if use hardened; then
 		ewarn "hardened use flag suppressing mmx use flag"

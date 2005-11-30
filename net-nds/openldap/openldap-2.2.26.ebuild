@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.26.ebuild,v 1.1 2005/04/30 23:13:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.26.ebuild,v 1.1.1.1 2005/11/30 09:36:51 chriswhite Exp $
 
 inherit toolchain-funcs eutils
 
@@ -12,7 +12,7 @@ LICENSE="OPENLDAP"
 SLOT="0"
 IUSE="berkdb crypt debug gdbm ipv6 kerberos odbc perl readline samba sasl slp ssl tcpd"
 #In portage for testing only, hardmasked in package.mask
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~amd64 ~s390 ~hppa ~ppc64 ~ia64"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	>=sys-apps/sed-4
@@ -25,7 +25,6 @@ DEPEND=">=sys-libs/ncurses-5.1
 	perl? ( >=dev-lang/perl-5.6 )
 	samba? ( >=dev-libs/openssl-0.9.6 )
 	kerberos? ( virtual/krb5 )"
-
 
 # note that the 'samba' USE flag pulling in OpenSSL is NOT an error.  OpenLDAP
 # uses OpenSSL for LanMan/NTLM hashing (which is used in some enviroments, like
@@ -59,6 +58,8 @@ openldap_upgrade_warning() {
 	echo
 	ewarn "Part of the configuration file syntax has changed:"
 	ewarn "'access to attribute=' is now 'access to attrs='"
+	echo
+	ewarn "You must also run revdep-rebuild after upgrading from 2.1 to 2.2."
 }
 
 pkg_setup() {
@@ -66,7 +67,7 @@ pkg_setup() {
 	openldap_datadirs="$(awk '{if($1 == "directory") print $2 }' /etc/openldap/slapd.conf)"
 	datafiles=""
 	for d in $openldap_datadirs; do
-		datafiles="${datafiles} $(ls $d/*{bdb,gdbm} 2>/dev/null)"
+		datafiles="${datafiles} $(ls $d/*db* 2>/dev/null)"
 	done
 	# remove extra spaces
 	datafiles="$(echo ${datafiles// })"
@@ -102,7 +103,7 @@ pkg_setup() {
 pkg_preinst() {
 	openldap_upgrade_warning
 	enewgroup ldap 439
-	enewuser ldap 439 /bin/false /usr/lib/openldap ldap
+	enewuser ldap 439 -1 /usr/lib/openldap ldap
 }
 
 src_unpack() {

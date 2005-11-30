@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/spiralmodular/spiralmodular-0.2.2a.ebuild,v 1.1 2004/03/21 03:49:50 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/spiralmodular/spiralmodular-0.2.2a.ebuild,v 1.1.1.1 2005/11/30 09:38:38 chriswhite Exp $
 
 inherit eutils
 
@@ -9,17 +9,16 @@ IUSE="alsa jack"
 DESCRIPTION="SSM is a object oriented modular softsynth/ sequencer/ sampler."
 HOMEPAGE="http://www.pawfal.org/Software/SSM/"
 SRC_URI="mirror://sourceforge/spiralmodular/${P}.tar.bz2"
-RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 
 DEPEND=">=x11-libs/fltk-1.1
 	media-libs/libsndfile
 	media-libs/liblrdf
 	alsa? ( media-libs/alsa-lib )
-	jack? ( virtual/jack )
+	jack? ( media-sound/jack-audio-connection-kit )
 	media-libs/ladspa-sdk"
 
 S=${WORKDIR}/${PN}-0.2.2
@@ -51,7 +50,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo ""
+	einfo
 	einfo "Remember to remove any old ~/.sprialmodular files"
-	einfo ""
+	einfo
 }

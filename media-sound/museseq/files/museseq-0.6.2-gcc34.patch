@@ -101,7 +101,7 @@ diff -ru muse-0.6.2-orig/midithread.cpp muse-0.6.2/midithread.cpp
 +
  //  MusE
  //  Linux Music Editor
- //  $Id: museseq-0.6.2-gcc34.patch,v 1.1 2004/07/11 22:21:52 fvdpol Exp $
+ //  $Id: museseq-0.6.2-gcc34.patch,v 1.1.1.1 2005/11/30 09:38:06 chriswhite Exp $
 @@ -570,7 +570,7 @@
                    panic();
                    break;

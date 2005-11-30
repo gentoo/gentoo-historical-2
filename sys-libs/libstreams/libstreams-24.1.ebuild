@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstreams/libstreams-24.1.ebuild,v 1.1 2005/05/19 20:46:58 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstreams/libstreams-24.1.ebuild,v 1.1.1.1 2005/11/30 09:39:18 chriswhite Exp $
 
 DESCRIPTION="NeXT/Darwin Streams routines."
 HOMEPAGE="http://darwinsource.opendarwin.org/10.3.6/"

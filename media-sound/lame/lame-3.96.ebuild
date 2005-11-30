@@ -1,29 +1,36 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lame/lame-3.96.ebuild,v 1.1 2004/04/11 19:06:35 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lame/lame-3.96.ebuild,v 1.1.1.1 2005/11/30 09:38:24 chriswhite Exp $
 
-inherit flag-o-matic gcc eutils
+inherit flag-o-matic toolchain-funcs eutils
 
-DESCRIPTION="LAME Ain't an Mp3 Encoder"
+DESCRIPTION="LAME Ain't an MP3 Encoder"
 HOMEPAGE="http://lame.sourceforge.net"
 SRC_URI="mirror://sourceforge/lame/${P}.tar.gz"
 RESTRICT="nomirror"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips"
+KEYWORDS="x86 ppc sparc alpha hppa amd64 ~ia64 ~mips ppc64 ppc-macos"
 IUSE="gtk debug"
 
 RDEPEND=">=sys-libs/ncurses-5.2
 	gtk? ( =x11-libs/gtk+-1.2* )"
 
 DEPEND="${RDEPEND}
-	x86? ( dev-lang/nasm )"
+	sys-devel/autoconf"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/intcast.spider
+	cd ${S} || die
+
+	# If ccc (alpha compiler) is installed on the system, the default
+	# configure is broken, fix it to respect CC.  This is only
+	# directly broken for ARCH=alpha but would affect anybody with a
+	# ccc binary in their PATH.  Bug #41908  (26 Jul 2004 agriffis)
+	epatch ${FILESDIR}/lame-3.96-ccc.patch
+	autoconf || die
+	epunt_cxx # embedded bug #74498
 }
 
 src_compile() {
@@ -40,7 +47,7 @@ src_compile() {
 	fi
 
 	# as of 3.95.1 changed from "yes" to "norm" ("alot" is also accepted)
-	[ `use debug` ] \
+	use debug \
 		&& myconf="${myconf} --enable-debug=norm" \
 		|| myconf="${myconf} --enable-debug=no"
 
@@ -51,7 +58,6 @@ src_compile() {
 
 	econf \
 		--enable-shared \
-		--enable-nasm \
 		--enable-mp3rtp \
 		${myconf} || die
 

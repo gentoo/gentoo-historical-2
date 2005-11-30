@@ -1,13 +1,12 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.34-r1.ebuild,v 1.1 2004/12/24 14:45:31 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.34-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:44 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
 #IUSE="sdl jpeg png mozilla truetype static fmod"
 IUSE=""  #blender-game" # blender-plugin"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="3D Creation/Animation/Publishing System"
 HOMEPAGE="http://www.blender.org/"
 SRC_URI="http://download.blender.org/source/${P}.tar.bz2"
@@ -29,8 +28,6 @@ RDEPEND="virtual/x11
 
 DEPEND="dev-util/scons
 	${RDEPEND}"
-
-
 
 src_unpack() {
 	unpack ${A}

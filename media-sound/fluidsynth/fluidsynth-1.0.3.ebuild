@@ -1,34 +1,42 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/fluidsynth/fluidsynth-1.0.3.ebuild,v 1.1 2003/09/21 02:23:34 jje Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/fluidsynth/fluidsynth-1.0.3.ebuild,v 1.1.1.1 2005/11/30 09:38:21 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
-DESCRIPTION="IIWU Synth is a software real-time synthesizer based on the
-Soundfont 2 specifications."
+DESCRIPTION="IIWU Synth is a software real-time synthesizer based on the Soundfont 2 specifications."
 HOMEPAGE="http://www.fluidsynth.org/"
 SRC_URI="http://savannah.nongnu.org/download/fluid/stable.pkg/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc amd64"
 
-IUSE="alsa ladcca jack sse"
+IUSE="alsa jack sse ladcca"
 
-DEPEND="ladcca? ( media-libs/ladcca ) \
-	jack? ( virtual/jack ) \
-	media-libs/ladspa-sdk \
-	alsa? ( media-sound/alsa-driver \
-	media-libs/alsa-lib \
-	media-sound/alsa-utils )"
+DEPEND="jack? ( media-sound/jack-audio-connection-kit )
+	media-libs/ladspa-sdk
+	ladcca? ( =media-libs/ladcca-0.3* )
+	alsa? ( media-libs/alsa-lib )"
+
+# ladcca-0.4 support is broken.  bug #46916
+
+src_unpack() {
+	unpack ${A}
+
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-nonx86.patch
+}
 
 src_compile() {
 	local myconf
 	myconf="--enable-ladspa"
-	use ladcca || myconf="--disable-ladcca ${myconf}"
+	#use ladcca || myconf="--disable-ladcca ${myconf}"
+	use amd64 && myconf="`use_enable ladcca` ${myconf}" \
+		|| myconf="--disable-ladcca ${myconf}"
 	use alsa || myconf="--disable-alsa ${myconf}"
 	use jack || myconf="--disable-jack-support ${myconf}"
-	if [ `use sse` ]; then
+	if use sse; then
 		myconf="--enable-SSE ${myconf}"
 		# If your CFLAGS include optimizations for sse, ie:
 		# -march=pentium4 -mfpmath=sse -msse2

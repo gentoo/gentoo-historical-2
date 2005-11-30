@@ -1,6 +1,19 @@
-# ChangeLog for app-games/zangband
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/zangband/ChangeLog,v 1.1 2003/09/10 04:59:58 vapier Exp $
+# ChangeLog for games-roguelike/zangband
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/zangband/ChangeLog,v 1.1.1.1 2005/11/30 09:38:49 chriswhite Exp $
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+*zangband-2.7.4b (01 Feb 2004)
+
+  01 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> zangband-2.7.4b.ebuild:
+  bug-fix version bump (bug 39941)
+
+*zangband-2.7.4 (25 Nov 2003)
+
+  25 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> zangband-2.7.4.ebuild:
+  version bump (bug 34315)
 
   10 Jun 2003; <msterret@gentoo.org> zangband-2.7.3.ebuild:
   DEPEND on sed >= 4
@@ -13,7 +26,7 @@
 
 *zangband-2.7.2 (16 Mar 2003)
 
-  16 Mar 2003; JosÈ Alberto Su·rez LÛpez <bass@gentoo.org> zangband-2.7.2.ebuild:
+  16 Mar 2003; Jos√© Alberto Su√°rez L√≥pez <bass@gentoo.org> zangband-2.7.2.ebuild:
   bumped version and use game.eclass
 
 *zangband-2.7.1 (15 Jul 2002)

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.30-r4.ebuild,v 1.1 2004/12/02 04:54:33 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.30-r4.ebuild,v 1.1.1.1 2005/11/30 09:36:49 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://openldap/openldap-release/${P}.tgz"
 
 LICENSE="OPENLDAP"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~amd64 ~s390 ~hppa ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="berkdb crypt debug gdbm ipv6 odbc perl readline samba sasl slp ssl tcpd"
 
 DEPEND=">=sys-libs/ncurses-5.1
@@ -44,7 +44,7 @@ DEPEND="${DEPEND}
 
 pkg_preinst() {
 	enewgroup ldap 439
-	enewuser ldap 439 /dev/null /usr/lib/openldap ldap
+	enewuser ldap 439 -1 /usr/lib/openldap ldap
 }
 
 src_unpack() {
@@ -134,6 +134,8 @@ src_compile() {
 	# --enable-dnsserv --with-dnsserv-module=dynamic
 
 	econf \
+		--enable-static \
+		--enable-shared \
 		--libexecdir=/usr/lib/openldap \
 		${myconf} || die "configure failed"
 
@@ -143,6 +145,7 @@ src_compile() {
 }
 
 src_test() {
+	einfo "Doing tests"
 	cd tests ; make tests || die "make tests failed"
 }
 

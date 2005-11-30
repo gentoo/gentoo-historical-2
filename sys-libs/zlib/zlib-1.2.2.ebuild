@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/zlib/zlib-1.2.2.ebuild,v 1.1 2004/11/04 00:27:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/zlib/zlib-1.2.2.ebuild,v 1.1.1.1 2005/11/30 09:39:09 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -11,12 +11,15 @@ SRC_URI="http://www.gzip.org/zlib/${P}.tar.bz2
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="build"
 
-RDEPEND="virtual/libc"
-DEPEND="${RDEPEND}
-	>=sys-devel/binutils-2.14.90.0.6"
+RDEPEND=""
+
+pkg_setup() {
+	tc-export CC RANLIB
+	export AR="$(tc-getAR) rc"
+}
 
 src_unpack() {
 	unpack ${A}
@@ -37,17 +40,11 @@ src_unpack() {
 src_compile() {
 	./configure --shared --prefix=/usr --libdir=/$(get_libdir) || die
 	emake || die
-	make test || die
-
-	./configure --prefix=/usr --libdir=/$(get_libdir) || die
-	emake || die
 }
 
 src_install() {
 	einstall libdir=${D}/$(get_libdir) || die
-	rm ${D}/$(get_libdir)/libz.a
-	into /usr
-	dodir /usr/include
+	rm "${D}"/$(get_libdir)/libz.a
 	insinto /usr/include
 	doins zconf.h zlib.h
 
@@ -60,7 +57,6 @@ src_install() {
 
 	# we don't need the static lib in /lib
 	# as it's only for compiling against
-	into /usr
 	dolib libz.a
 
 	# all the shared libs go into /lib
@@ -70,6 +66,5 @@ src_install() {
 	( cd ${D}/$(get_libdir) ; chmod 755 libz.so.* )
 	dosym libz.so.${PV} /$(get_libdir)/libz.so
 	dosym libz.so.${PV} /$(get_libdir)/libz.so.1
-	# with an extra symlink at /usr/lib
-	dosym /$(get_libdir)/libz.so.${PV} /usr/$(get_libdir)/libz.so
+	gen_usr_ldscript libz.so
 }

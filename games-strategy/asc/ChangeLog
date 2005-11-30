@@ -1,6 +1,70 @@
-# ChangeLog for app-games/asc
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/asc/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
+# ChangeLog for games-strategy/asc
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/asc/ChangeLog,v 1.1.1.1 2005/11/30 09:36:44 chriswhite Exp $
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> -asc-1.15.1.0.ebuild,
+  -asc-1.15.2.1.ebuild, -asc-1.15.3.0.ebuild, -asc-1.16.0.0.ebuild,
+  -asc-1.16.1.0.ebuild:
+  clean older ebuilds
+
+  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> asc-1.16.2.0.ebuild:
+  stable for x86
+
+*asc-1.16.2.0 (08 Aug 2005)
+
+  08 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> +asc-1.16.2.0.ebuild:
+  version bump
+
+*asc-1.16.1.0 (18 Jul 2005)
+
+  18 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> +asc-1.16.1.0.ebuild:
+  version bump - ebuild submitted by Robert Schuster via bug #99423
+
+*asc-1.16.0.0 (04 May 2005)
+
+  04 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +asc-1.16.0.0.ebuild:
+  version bump
+
+*asc-1.15.3.0 (14 Feb 2005)
+
+  14 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +asc-1.15.3.0.ebuild:
+  version bump
+
+  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*asc-1.15.2.1 (01 Dec 2004)
+
+  01 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +asc-1.15.2.1.ebuild:
+  version bump
+
+*asc-1.15.1.0 (15 Oct 2004)
+
+  15 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org> +asc-1.15.1.0.ebuild:
+  version bump (bug #67005)
+
+  24 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> -asc-1.13.8.0.ebuild,
+  -asc-1.14.0.0.ebuild:
+  clean older versions
+
+  24 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> asc-1.15.0.0.ebuild:
+  no need to depend on media-libs/paragui if we're not using it
+
+  21 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> asc-1.15.0.0.ebuild:
+  Added --disable-paragui for bug #61154
+
+  24 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> asc-1.15.0.0.ebuild:
+  Changed DEPEND for libsigc and closing bug #55004.
+
+*asc-1.15.0.0 (23 Jun 2004)
+
+  23 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> +asc-1.15.0.0.ebuild:
+  version bump (bug #54845)
+
+*asc-1.14.0.0 (06 Mar 2004)
+
+  06 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> asc-1.14.0.0.ebuild:
+  version bump (bug #43707)
 
 *asc-1.13.8.0 (25 Aug 2003)
 
@@ -33,7 +97,7 @@
   31 Jul 2002; J.Alberto S. L. <bass@gentoo.org> asc-1.10.2.ebuild-r1:
   Fix #4488 adding '--disable-paraguitest' to configure.
 
-  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> asc-1.10.2.ebuild :
+  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> asc-1.10.2.ebuild :
   Added KEYWORDS.
 
   7 May 2002; Spider <spider@gentoo.org> asc-1.10.2.ebuild :

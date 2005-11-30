@@ -153,7 +153,7 @@
 +.\" SUCH DAMAGE.
 +.\"
 +.\"     from: @(#)portmap.8	5.3 (Berkeley) 3/16/91
-+.\"	$Id: portmap_5beta.dif,v 1.1 2000/08/09 23:55:48 achim Exp $
++.\"	$Id: portmap_5beta.dif,v 1.1.1.1 2005/11/30 09:36:47 chriswhite Exp $
 +.\"
 +.Dd March 16, 1991
 +.Dt PORTMAP 8

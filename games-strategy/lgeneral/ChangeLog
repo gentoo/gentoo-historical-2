@@ -1,6 +1,81 @@
-# ChangeLog for app-games/lgeneral
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/lgeneral/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
+# ChangeLog for games-strategy/lgeneral
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/lgeneral/ChangeLog,v 1.1.1.1 2005/11/30 09:36:38 chriswhite Exp $
+
+*lgeneral-1.2_beta9 (07 Nov 2005)
+
+  07 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +lgeneral-1.2_beta9.ebuild:
+  version bump
+
+*lgeneral-1.2_beta8 (29 Oct 2005)
+
+  29 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +lgeneral-1.2_beta8.ebuild:
+  version bump
+
+*lgeneral-1.2_beta7 (18 Oct 2005)
+
+  18 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +lgeneral-1.2_beta7.ebuild:
+  version bump
+
+  16 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/lgeneral-1.2_beta6-gcc3.patch, lgeneral-1.2_beta6.ebuild:
+  Fix by ph for build error with gcc-3.x #109476 by Mike Bonar.
+
+*lgeneral-1.2_beta6 (15 Oct 2005)
+
+  15 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/1.2_beta6-gcc4.patch, +lgeneral-1.2_beta6.ebuild:
+  version bump
+
+  11 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/1.2_beta5-gcc4.patch, lgeneral-1.2_beta5.ebuild:
+  add patch from Marien Zwart for current gcc __FUNCTION__ handling (bug
+  #106258)
+
+*lgeneral-1.2_beta5 (06 Oct 2005)
+
+  06 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +lgeneral-1.2_beta5.ebuild:
+  unstable version bump
+
+  23 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  lgeneral-1.2_beta2.ebuild:
+  cp -dpR -> cp -pPR for bug #103487.
+
+  23 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  lgeneral-1.2_beta2.ebuild:
+  cp -a -> cp -dpR for bug #103487.
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  lgeneral-1.1.1-r1.ebuild, lgeneral-1.2_beta2.ebuild:
+  Removed INSTALL file.
+
+  26 Jan 2005; Joseph Jezak <josejx@gentoo.org> lgeneral-1.1.1-r1.ebuild:
+  Marked ~ppc for bug #77759.
+
+  29 Dec 2004; Tom Martin <slarti@gentoo.org> lgeneral-1.2_beta2.ebuild:
+  Marked ~amd64.
+
+  23 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lgeneral-1.2_beta2.ebuild:
+  Use pg-data as recommended by upstream.  Patch from Derek Dolney via bug #56302
+
+*lgeneral-1.2_beta2 (29 May 2004)
+
+  29 May 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lgeneral-1.2_beta2.ebuild:
+  version bump - seems to fix bug #41173 as well.
+
+  05 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lgeneral-1.1.1-r1.ebuild, files/1.1.1-netbsd-audio.patch:
+  audio patch from netbsd
+
+  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  lgeneral-1.1.1-r1.ebuild:
+  IUSE; error messages
 
 *lgeneral-1.1.1-r1 (12 Dec 2002)
 

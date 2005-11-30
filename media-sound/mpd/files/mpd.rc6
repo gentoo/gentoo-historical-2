@@ -1,42 +1,37 @@
 #!/sbin/runscript
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/files/mpd.rc6,v 1.1.1.1 2005/11/30 09:37:49 chriswhite Exp $
 
 depend() {
 	need localmount
+	use netmount nfsmount
 } 
 
 checkconfig() {
-	if [ -z "$PORT" ] || \
-	   [ -z "$MUSIC_DIR" ] || \
-	   [ -z "$PLAYLIST_DIR" ] || \
-	   [ -z "$LOG_FILE" ] || \
-	   [ -z "$ERROR_FILE" ]
-	then
-		eerror "You need to set PORT, MUSIC_DIR, PLAYLIST_DIR,"
-		eerror "	LOG_FILE and ERROR_FILE in /etc/conf.d/mpd"
-                return 1
-        fi
+	if [ -f /etc/conf.d/mpd ]; then
+		eerror "Please remove the /etc/conf.d/mpd file as it is no longer used."
+		eerror "You may configure your mpd settings in /etc/mpd.conf"
+	fi
+
+	if ! [ -f /etc/mpd.conf ]; then
+		eerror "Configuration file /etc/mpd.conf does not exist."
+		return 1
+	fi
+
+	return 0
 }
 
 start() {
 	checkconfig || return 1
+
 	ebegin "Starting Music Player Daemon" 
-
-	/usr/bin/mpd ${PORT} \
-	             ${MUSIC_DIR} \
-	             ${PLAYLIST_DIR} \
-                     ${LOG_FILE} \
-	             ${ERROR_FILE}
-
+	start-stop-daemon --start --quiet --exec /usr/bin/mpd -- --no-create-db /etc/mpd.conf
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping Music Player Daemon"
-
-   killall mpd &>/dev/null 
-
-   eend $? 
+	start-stop-daemon --stop --quiet --exec /usr/bin/mpd --oknodo
+	eend $? 
 }

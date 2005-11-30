@@ -1,8 +1,7 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/gq/gq-0.6.0.ebuild,v 1.1 2002/12/07 09:13:07 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/gq/gq-0.6.0.ebuild,v 1.1.1.1 2005/11/30 09:36:45 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="GTK-based LDAP client"
 SRC_URI="mirror://sourceforge/gqclient/${P}.tar.gz"
 HOMEPAGE="http://www.biot.com/gq/"
@@ -10,11 +9,11 @@ IUSE="kerberos jpeg nls ssl"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86 sparc"
 
 DEPEND="=x11-libs/gtk+-1.2*
 	>=net-nds/openldap-2
-	kerberos? ( app-crypt/krb5 )
+	kerberos? ( app-crypt/mit-krb5 )
 	jpeg? ( media-libs/gdk-pixbuf )
 	ssl? ( dev-libs/openssl )"
 
@@ -26,14 +25,15 @@ src_compile() {
 		|| myconf="${myconf} --disable-nls"
 
 	use kerberos && myconf="${myconf} --with-kerberos-prefix=/usr"
-	
-    econf $myconf || die "./configure failed"
-	
-    emake || die "Compilation failed"
+
+	econf $myconf || die "./configure failed"
+
+	emake || die "Compilation failed"
 }
 
 src_install() {
-    einstall || die "Installation failed"
-	
-    dodoc ABOUT-NLS AUTHORS ChangeLog COPYING NEWS README* TODO
+	emake DESTDIR=${D} install || die "Installation failed"
+
+	rm -f ${D}/usr/share/locale/locale.alias
+	dodoc ABOUT-NLS AUTHORS ChangeLog COPYING NEWS README* TODO
 }

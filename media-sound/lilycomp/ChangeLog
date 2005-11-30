@@ -1,6 +1,13 @@
 # ChangeLog for media-sound/lilycomp
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lilycomp/ChangeLog,v 1.1 2004/11/22 04:56:20 agriffis Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lilycomp/ChangeLog,v 1.1.1.1 2005/11/30 09:38:17 chriswhite Exp $
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> lilycomp-1.0.2.ebuild:
+  Added to ~ppc.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  lilycomp-1.0.2.ebuild:
+  Added to ~amd64 and ~sparc.
 
 *lilycomp-1.0.2 (21 Nov 2004)
 

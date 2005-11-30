@@ -1,15 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/dcraw/dcraw-6.09.ebuild,v 1.1 2004/10/24 19:56:41 wschlich Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/dcraw/dcraw-6.09.ebuild,v 1.1.1.1 2005/11/30 09:37:32 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
 DESCRIPTION="Converts the native (RAW) format of various digital cameras into netpbm portable pixmap (.ppm) image"
 HOMEPAGE="http://www.cybercom.net/~dcoffin/dcraw/"
-SRC_URI="http://dev.gentoo.org/~wschlich/src/media-gfx/dcraw/dcraw-6.08.tar.bz2"
-LICENSE="public-domain"
+SRC_URI="http://dev.gentoo.org/~wschlich/src/media-gfx/dcraw/${P}.tar.bz2"
+LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE="debug"
 DEPEND="virtual/libc >=media-libs/jpeg-6b"
 RDEPEND="media-libs/netpbm"

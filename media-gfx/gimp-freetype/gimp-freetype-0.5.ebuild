@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp-freetype/gimp-freetype-0.5.ebuild,v 1.1 2004/04/18 19:41:03 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp-freetype/gimp-freetype-0.5.ebuild,v 1.1.1.1 2005/11/30 09:37:46 chriswhite Exp $
 
 IUSE=""
 
@@ -10,13 +10,13 @@ HOMEPAGE="http://freetype.gimp.org/"
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ppc x86"
 
 RDEPEND=">=media-gfx/gimp-2
 	>=media-libs/freetype-2"
 
 DEPEND="${RDEPEND}
-	dev-util/intltool
+	>=dev-util/intltool-0.29
 	dev-util/pkgconfig"
 
 src_compile() {

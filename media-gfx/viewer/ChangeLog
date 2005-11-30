@@ -1,6 +1,12 @@
 # ChangeLog for media-gfx/viewer
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/viewer/ChangeLog,v 1.1 2003/10/20 09:50:15 brandy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/viewer/ChangeLog,v 1.1.1.1 2005/11/30 09:37:41 chriswhite Exp $
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> viewer-0.7.3.ebuild:
+  Added to ~ppc.
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> viewer-0.7.3.ebuild:
+  Typo in DESCRIPTION: stero -> stereo. Bug 59717.
 
 *viewer-0.7.3 (20 Oct 2003)
 

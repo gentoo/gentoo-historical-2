@@ -1,6 +1,19 @@
-# ChangeLog for app-games/spacehulk
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/spacehulk/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
+# ChangeLog for games-strategy/spacehulk
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/spacehulk/ChangeLog,v 1.1.1.1 2005/11/30 09:36:41 chriswhite Exp $
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> spacehulk-1.4.5.ebuild,
+  spacehulk-1.4.99.ebuild:
+  Fix qt dep
+
+  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> spacehulk-1.4.5.ebuild:
+  Added ~ppc.
+
+*spacehulk-1.4.99 (08 Nov 2003)
+
+  08 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
+  spacehulk-1.4.99.ebuild:
+  version bump
 
 *spacehulk-1.4.5 (28 Aug 2003)
 

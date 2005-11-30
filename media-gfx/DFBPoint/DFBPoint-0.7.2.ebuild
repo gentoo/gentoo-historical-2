@@ -1,33 +1,30 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
- 
-S=${WORKDIR}/${P}
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/DFBPoint/DFBPoint-0.7.2.ebuild,v 1.1.1.1 2005/11/30 09:37:41 chriswhite Exp $
+
 DESCRIPTION="DFBPoint is presentation program based on DirectFB"
-SRC_URI="http://www.directfb.org/download/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.directfb.org/dfbpoint.xml"
+SRC_URI="http://www.directfb.org/download/${PN}/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="~amd64 -sparc x86"
+IUSE=""
 
-DEPEND="virtual/x11 dev-libs/DirectFB"
-RDEPEND="${DEPEND}"
+DEPEND="virtual/libc
+	dev-libs/DirectFB"
 
 src_install () {
-	
-	make DESTDIR=${D} install || die
-	
+	make DESTDIR=${D} install || die "make install failed"
+
 	dodir /usr/share/DFBPoint/
-	cp dfbpoint.dtd ${D}/usr/share/DFBPoint/
-	
-	dodoc AUTHORS COPYING ChangeLog INSTALL README NEWS
-	
+	cp dfbpoint.dtd ${D}/usr/share/DFBPoint/ || die "cp failed"
+
+	dodoc AUTHORS ChangeLog INSTALL README NEWS
+
 	dodir /usr/share/DFBPoint/examples/
 	cd examples
-	cp bg.png ${D}/usr/share/DFBPoint/examples/
-	cp bullet.png ${D}/usr/share/DFBPoint/examples/
-	cp decker.ttf ${D}/usr/share/DFBPoint/examples/
-	cp test.xml ${D}/usr/share/DFBPoint/examples/
-	cp wilber_stoned.png ${D}/usr/share/DFBPoint/examples/
-	cp -R guadec/ ${D}/usr/share/DFBPoint/examples/
+	cp bg.png bullet.png decker.ttf test.xml wilber_stoned.png \
+		${D}/usr/share/DFBPoint/examples/ || die "cp failed"
+	cp -R guadec/ ${D}/usr/share/DFBPoint/examples/ || die "cp failed"
 }

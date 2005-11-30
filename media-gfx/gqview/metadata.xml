@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
+<herd>graphics</herd>
 <maintainer>
-<name>Jon Portnoy</name>
-<email>avenj@gentoo.org</email>
+<email>mr_bones_@gentoo.org</email>
+<name>Michael Sterrett</name>
 </maintainer>
 </pkgmetadata>
-

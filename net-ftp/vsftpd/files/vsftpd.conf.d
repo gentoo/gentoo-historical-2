@@ -1,6 +1,6 @@
-# Copyright 2003 Gentoo Technologies, Inc.
+# Copyright 2003-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/files/vsftpd.conf.d,v 1.1 2003/09/03 01:41:05 rajiv Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/files/vsftpd.conf.d,v 1.1.1.1 2005/11/30 09:36:29 chriswhite Exp $
 
 # Config file for /etc/init.d/vsftpd
 

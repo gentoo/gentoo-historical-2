@@ -1,6 +1,50 @@
-# ChangeLog for app-sci/kst
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/kst/ChangeLog,v 1.1 2004/12/24 01:34:30 ribosome Exp $
+# ChangeLog for media-gfx/kst
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kst/ChangeLog,v 1.1.1.1 2005/11/30 09:37:36 chriswhite Exp $
+
+  15 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> kst-1.1.1.ebuild:
+  Reverted changes to kst patch as 1.1.1 also failed to link on amd64 due to
+  netcdf.
+
+*kst-1.1.1 (10 Nov 2005)
+
+  10 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> +kst-1.1.1.ebuild:
+  New version (#111625).
+
+*kst-1.1.0-r1 (28 Oct 2005)
+
+  28 Oct 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/kst-1.1.0-netcdf-fix.patch, +kst-1.1.0-r1.ebuild:
+  Patch configure so that it doesn not link to netcdf unconditionally, thanks
+  to Lucas Chiesa <lucas.chiesa@gmail.com> for providing the patch.
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> kst-1.1.0.ebuild:
+  Stable on ppc.
+
+  20 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -kst-0.94.ebuild,
+  kst-0.97.ebuild, -kst-0.99.ebuild, -kst-1.0.0.ebuild, kst-1.1.0.ebuild:
+  Changed dependency from kdebase to kdelibs (see bug #83059). Added 1.1.0 to
+  x86. Pruned old versions.
+
+*kst-1.1.0 (17 Jun 2005)
+
+  17 Jun 2005; Dominik Stadler <centic@gentoo.org> +kst-1.1.0.ebuild:
+  Add new version 1.1.0, fixes Bug 96136
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> kst-0.97.ebuild:
+  Stable on ppc.
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> kst-0.94.ebuild,
+  kst-0.97.ebuild, kst-0.99.ebuild, kst-1.0.0.ebuild:
+  Changed dep on kdebase to accept kdebase-meta, the split 'meta' package.
+  This dep will be narrowed down in the future to the precise split packages
+  required.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> kst-0.99.ebuild:
+  Dependency update: dev-libs/gsl -> sci-libs/gsl.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> kst-1.0.0.ebuild:
+  Dependency update: dev-libs/gsl -> sci-libs/gsl.
 
 *kst-0.97 (23 Dec 2004)
 

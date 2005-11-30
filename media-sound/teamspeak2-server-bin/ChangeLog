@@ -1,6 +1,67 @@
 # ChangeLog for media-sound/teamspeak2-server-bin
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak2-server-bin/ChangeLog,v 1.1 2003/09/27 11:27:47 jje Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak2-server-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:38:43 chriswhite Exp $
+
+*teamspeak2-server-bin-2.0.20.1-r1 (31 Jan 2005)
+
+  31 Jan 2005; Christian Parpart <trapni@gentoo.org>
+  +files/2.0.20.1-r1/teamspeak2-server.rc6,
+  +teamspeak2-server-bin-2.0.20.1-r1.ebuild:
+  According to bug 73847, added to init script and changed config file
+  location from /var/lib/teamspeak-server/ to /etc/teamspeak-server/;
+  also adding a sleep to svc restart() as it really takes some time
+  sometimes (bug 73941).
+
+  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  emul-linux-x86 fixes.  Closes bug #73084.
+
+  07 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  teamspeak2-server-bin-2.0.19.40.ebuild,
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  updated homepage. fixes #76964.
+
+  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> :
+  Added sqlite_sql symlink to fix bug #66639.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  Stable amd64.
+
+  09 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  ~amd64 added
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  -* for non x86 archs
+
+  30 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  Stable x86.
+
+  28 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  Removed second IUSE line.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.19.40.ebuild,
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  QA fix.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild:
+  Fixed init script source filename.
+
+*teamspeak2-server-bin-2.0.20.1 (20 Apr 2004)
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.20.1.ebuild, files/teamspeak2-server.rc6:
+  Version bump.  Closes bug #47758.  Thanks Dustin Parr <parr@cs.utk.edu>.
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  teamspeak2-server-bin-2.0.19.40.ebuild:
+  Stable on x86.
 
 *teamspeak2-server-bin-2.0.19.40 (27 Sep 2003)
 

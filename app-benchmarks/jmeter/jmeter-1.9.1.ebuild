@@ -1,15 +1,19 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/jmeter/jmeter-1.9.1.ebuild,v 1.1 2004/02/26 05:17:17 zx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/jmeter/jmeter-1.9.1.ebuild,v 1.1.1.1 2005/11/30 09:36:36 chriswhite Exp $
+
+inherit java-pkg
 
 DESCRIPTION="Load test and measure performance on HTTP/FTP services, and databases."
 HOMEPAGE="http://jakarta.apache.org/jmeter/index.html"
 SRC_URI="mirror://apache/jakarta/jmeter/source/jakarta-${P}.src.tgz"
-DEPEND=">=virtual/jdk-1.3"
-RDEPEND=">=virtual/jdk-1.3"
+DEPEND=">=virtual/jdk-1.3
+	dev-java/ant
+	jikes? ( dev-java/jikes )"
+RDEPEND=">=virtual/jre-1.3"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="doc jikes"
 
 S=${WORKDIR}/jakarta-${P}
@@ -17,15 +21,15 @@ S=${WORKDIR}/jakarta-${P}
 src_compile () {
 	local antflags="package"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
-	use doc && antflags="${antflags} alldocs"
-	ant ${antflags}
+	use doc && antflags="${antflags} all-docs"
+	ant ${antflags} || die "build failed"
 }
 
-src_install () {
+src_install() {
 	# Can't think of a better way to deal with this for now...
 	DIROPTIONS="--mode=0775"
 	dodir /opt/${PN}
-	cp -ar bin/ lib/ ${D}/opt/${PN}/
+	cp -ar bin/ lib/ ${D}/opt/${PN}/ || die "failed to install"
 	dodoc README
-	use doc && dohtml -r docs/*
+	use doc && java-pkg_dohtml -r docs/*
 }

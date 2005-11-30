@@ -1,27 +1,23 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/flphoto/flphoto-1.1.ebuild,v 1.1 2003/10/12 18:48:26 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/flphoto/flphoto-1.1.ebuild,v 1.1.1.1 2005/11/30 09:37:40 chriswhite Exp $
 
 DESCRIPTION="Basic image management and display program based on the FLTK toolkit"
 HOMEPAGE="http://www.easysw.com/~mike/flphoto/"
 SRC_URI="mirror://sourceforge/fltk/${P}-source.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE="cups gphoto2"
-S="${WORKDIR}/${P}"
 
 DEPEND=">=x11-libs/fltk-1.1.2-r2
 	cups? ( net-print/cups )
 	gphoto2? ( media-gfx/gphoto2 )"
 
-MAKEOPTS="${MAKEOPTS} -j1"
-
 src_compile() {
 	econf || die
-	make espmsg || die
-	emake || die
+	emake -j1 || die
 }
 
 src_install() {

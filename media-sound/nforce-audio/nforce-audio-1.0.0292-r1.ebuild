@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/nforce-audio/nforce-audio-1.0.0292-r1.ebuild,v 1.1 2005/03/07 21:19:58 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/nforce-audio/nforce-audio-1.0.0292-r1.ebuild,v 1.1.1.1 2005/11/30 09:38:43 chriswhite Exp $
 
 inherit eutils linux-mod
 
@@ -11,8 +11,8 @@ AMD64_NV_PACKAGE="NFORCE-Linux-x86_64-${NV_V}"
 
 DESCRIPTION="Linux kernel module for the NVIDIA's nForce SoundStorm audio chipset"
 HOMEPAGE="http://www.nvidia.com/"
-SRC_URI="x86? (http://download.nvidia.com/XFree86/nforce/${NV_V}/${X86_NV_PACKAGE}-${PKG_V}.run)
-	amd64? (http://download.nvidia.com/XFree86/nforce/amd64/${NV_V}/${AMD64_NV_PACKAGE}-${PKG_V}.run)"
+SRC_URI="x86? ( http://download.nvidia.com/XFree86/nforce/${NV_V}/${X86_NV_PACKAGE}-${PKG_V}.run )
+	amd64? ( http://download.nvidia.com/XFree86/nforce/amd64/${NV_V}/${AMD64_NV_PACKAGE}-${PKG_V}.run )"
 
 if use x86; then
 	NV_PACKAGE="${X86_NV_PACKAGE}"
@@ -24,7 +24,7 @@ S=${WORKDIR}/${NV_PACKAGE}-${PKG_V}/nvsound
 
 LICENSE="NVIDIA"
 SLOT="0"
-KEYWORDS="-* ~x86 ~amd64"
+KEYWORDS="-* x86 ~amd64"
 RESTRICT="nostrip"
 IUSE=""
 
@@ -59,13 +59,6 @@ src_compile() {
 
 src_install() {
 	linux-mod_src_install
-	dodir /etc/modules.d
-	cat > ${D}/etc/modules.d/nvsound << EOF
-# change spdif_status to 1 to enable digital out; this will cause audio
-# playback to be clamped to 48KHz which can cause some programs to play
-# back audio at the wrong speed.
-options nvsound spdif_status=0
-EOF
 
 	dobin nvmixer
 	dodoc ${S}/ReleaseNotes.html

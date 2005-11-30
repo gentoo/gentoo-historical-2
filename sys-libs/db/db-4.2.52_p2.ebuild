@@ -1,14 +1,12 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.2.52_p2.ebuild,v 1.1 2004/04/15 20:40:15 pauldv Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.2.52_p2.ebuild,v 1.1.1.1 2005/11/30 09:39:14 chriswhite Exp $
 
-IUSE="tcltk java doc"
-
-inherit eutils gnuconfig
-inherit db
+inherit eutils gnuconfig db
 
 #Number of official patches
-PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
+#PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
+PATCHNO=${PV/*.*.*_p}
 if [ "${PATCHNO}" == "${PV}" ]; then
 	MY_PV=${PV}
 	MY_P=${P}
@@ -20,21 +18,19 @@ fi
 
 S=${WORKDIR}/${MY_P}/build_unix
 DESCRIPTION="Berkeley DB"
-SRC_URI="http://www.sleepycat.com/update/snapshot/${MY_P}.tar.gz"
-
-for (( i=1 ; i<=$PATCHNO ; i++ ))
-do
+HOMEPAGE="http://www.sleepycat.com/"
+SRC_URI="ftp://ftp.sleepycat.com/releases/${MY_P}.tar.gz"
+for (( i=1 ; i<=$PATCHNO ; i++ )) ; do
 	export SRC_URI="${SRC_URI} http://www.sleepycat.com/update/${MY_PV}/patch.${MY_PV}.${i}"
 done
 
-HOMEPAGE="http://www.sleepycat.com"
-SLOT="4.2"
 LICENSE="DB"
-KEYWORDS="~x86"
+SLOT="4.2"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
+IUSE="tcltk java doc nocxx bootstrap"
 
 DEPEND="tcltk? ( >=dev-lang/tcl-8.4 )
 	java? ( virtual/jdk )"
-
 RDEPEND="tcltk? ( dev-lang/tcl )
 	java? ( virtual/jre )"
 
@@ -43,46 +39,40 @@ src_unpack() {
 	cd ${WORKDIR}/${MY_P}
 	for (( i=1 ; i<=$PATCHNO ; i++ ))
 	do
-		patch -p0 <${DISTDIR}/patch.${MY_PV}.${i}
+		epatch ${DISTDIR}/patch.${MY_PV}.${i}
 	done
 	epatch ${FILESDIR}/${PN}-${SLOT}-jarlocation.patch
+	epatch ${FILESDIR}/${PN}-${SLOT}-libtool.patch
 
 	epatch ${FILESDIR}/${PN}-4.0.14-fix-dep-link.patch
 
+	gnuconfig_update "${S}/../dist"
+
+	sed -i -e "s,\(ac_compiler\|\${MAKEFILE_CC}\|\${MAKEFILE_CXX}\|\$CC\)\( *--version\),\1 -dumpversion,g" ${S}/../dist/configure
 }
 
 src_compile() {
 	addwrite /proc/self/maps
 
-	# Mips needs a gnuconfig update so obscure things like mips64 are known
-	# db-4.1.25_p1 extracts to ${WORKDIR}/db-4.1.25, so we need to strip the _p1
-	if use mips; then
-		einfo "Updating config.{guess,sub} for mips"
-		local OLDS="${S}"
-		S="${S}/dist"
-		gnuconfig_update
-		S="${OLDS}"
-	fi
+	local myconf=""
 
+	use amd64 && myconf="${myconf} --with-mutex=x86/gcc-assembly"
 
-	local myconf="--enable-rpc"
-
-	use java \
-		&& myconf="${myconf} --enable-java" \
-		|| myconf="${myconf} --disable-java"
+	use bootstrap \
+		&& myconf="${myconf} --disable-cxx" \
+		|| myconf="${myconf} $(use_enable !nocxx cxx)"
 
 	use tcltk \
-		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/lib" \
+		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/$(get_libdir)" \
 		|| myconf="${myconf} --disable-tcl"
 
-	if use java && [ -n "${JAVAC}" ]; then
+	myconf="${myconf} $(use_enable java)"
+	if use java && [[ -n ${JAVAC} ]] ; then
 		export PATH=`dirname ${JAVAC}`:${PATH}
 		export JAVAC=`basename ${JAVAC}`
 	fi
 
-	if [ "${PROFILE_ARCH}" = "sparc64" ]; then
-		myconf="${myconf} --host=${CHOST}"
-	fi
+	[[ -n ${CBUILD} ]] && myconf="${myconf} --build=${CBUILD}"
 
 	../dist/configure \
 		--prefix=/usr \
@@ -91,17 +81,19 @@ src_compile() {
 		--datadir=/usr/share \
 		--sysconfdir=/etc \
 		--localstatedir=/var/lib \
+		--libdir=/usr/$(get_libdir) \
 		--enable-compat185 \
-		--enable-cxx \
 		--with-uniquename \
-		${myconf} || die
+		--enable-rpc \
+		--host=${CHOST} \
+		${myconf} || die "configure failed"
 
-	emake || make || die
+	emake -j1 || die "make failed"
 }
 
-src_install () {
+src_install() {
 
-	einstall || die
+	einstall libdir="${D}/usr/$(get_libdir)" || die
 
 	db_src_install_usrbinslot
 

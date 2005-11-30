@@ -1,6 +1,18 @@
-# ChangeLog for app-games/xarchon
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/xarchon/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
+# ChangeLog for games-strategy/xarchon
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/xarchon/ChangeLog,v 1.1.1.1 2005/11/30 09:36:42 chriswhite Exp $
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> xarchon-0.60.ebuild:
+  Stable on ppc.
+
+  12 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> xarchon-0.60.ebuild:
+  no bugs reported for 375 days.  Marking stable for x86
+
+  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> xarchon-0.50.ebuild:
+  Fix use invocation
+
+  13 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> xarchon-0.60.ebuild:
+  games eclass inherits eutils already; error check sed; use flag tidy
 
 *xarchon-0.60 (31 Jul 2003)
 

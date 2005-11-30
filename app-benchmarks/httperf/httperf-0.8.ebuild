@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/httperf/httperf-0.8.ebuild,v 1.1 2005/08/17 20:51:18 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/httperf/httperf-0.8.ebuild,v 1.1.1.1 2005/11/30 09:36:36 chriswhite Exp $
 
 inherit eutils
 
@@ -10,11 +10,13 @@ SRC_URI="ftp://ftp.hpl.hp.com/pub/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~mips ~sparc ~x86"
+KEYWORDS="~amd64 ~mips ~sparc ~x86"
 IUSE="debug ssl"
 
 DEPEND=""
 RDEPEND=""
+
+MAKEOPTS="${MAKEOPTS} -j1"
 
 src_unpack() {
 	unpack ${A}

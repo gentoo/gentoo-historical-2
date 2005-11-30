@@ -1,6 +1,56 @@
-# ChangeLog for net-ndsmigrationtoolsChangeLog/
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-nds/migrationtools/ChangeLog,v 1.1 2002/09/22 18:09:26 g2boojum Exp $
+# ChangeLog for net-nds/migrationtools
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-nds/migrationtools/ChangeLog,v 1.1.1.1 2005/11/30 09:36:44 chriswhite Exp $
+
+  29 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  migrationtools-46.ebuild:
+  stable on amd64, fixes #90195
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  migrationtools-46.ebuild:
+  Stable on ppc.
+
+  12 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  migrationtools-46.ebuild:
+  Stable on sparc
+
+  12 Jan 2005; Guy Martin <gmsoft@gentoo.org> migrationtools-46.ebuild:
+  Stable on hppa.
+
+  07 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
+  migrationtools-46.ebuild:
+  v46 in x86 stable.
+
+*migrationtools-44-r2 (07 Jan 2005)
+*migrationtools-45-r1 (07 Jan 2005)
+
+  07 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/skip-account-objectclass.patch, +migrationtools-44-r2.ebuild,
+  +migrationtools-45-r1.ebuild:
+  Bug #52052, objectclass account fixing.
+
+*migrationtools-46 (31 Oct 2004)
+
+  31 Oct 2004; Robin H. Johnson <robbat2@gentoo.org>
+  +migrationtools-46.ebuild:
+  new version.
+
+*migrationtools-45 (06 Jun 2004)
+
+  06 Jun 2004; Guy Martin <gmsoft@gentoo.org> migrationtools-45.ebuild:
+  Marked stable on hppa.
+
+  24 May 2004; Grant Goodyear <g2boojum@gentoo.org> :
+  Version bump (thanks to Davide Rebeccani, bug 45880)
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> migrationtools-44-r1.ebuild:
+  Adding amd64 keyword. Closing #43585.
+
+  12 Dec 2003; Jason Wever <weeve@gentoo.org> migrationtools-44-r1.ebuild:
+  Marked stable on sparc.
+
+  05 Dec 2003; Jason Wever <weeve@gentoo.org> migrationtools-44-r1.ebuild:
+  Added ~sparc keyword.
 
 *migrationtools-44-r1 (21 Sep 2002)
 

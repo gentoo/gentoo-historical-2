@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/musepack-tools-1.15v.ebuild,v 1.1 2005/03/19 14:06:14 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/musepack-tools-1.15v.ebuild,v 1.1.1.1 2005/11/30 09:38:37 chriswhite Exp $
 
 IUSE="static 16bit esd"
 
@@ -14,9 +14,9 @@ SRC_URI="http://files.musepack.net/source/mpcsv7-src-${PV}.tar.bz2"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 
-RDEPEND="media-sound/esound
+RDEPEND="esd? ( media-sound/esound )
 	 media-libs/id3lib"
 
 DEPEND="${RDEPEND}
@@ -33,9 +33,10 @@ src_unpack() {
 	sed -i 's/#define USE_IRIX_AUDIO/#undef USE_IRIX_AUDIO/' mpp.h
 
 	if ! use esd ; then
-		sed -i 's/#define USE_ESD_AUDIO/#undef USE_ESD_AUDIO/' mpp.h
+		sed -i -e 's/#define USE_ESD_AUDIO/#undef USE_ESD_AUDIO/' mpp.h
 	else
-		sed -i 's/#LDADD   += -lesd/LDADD   += -lesd/' Makefile
+		sed -i -e 's/^LDADD    = -lm$/LDADD    = $(shell esd-config --libs)/' \
+			Makefile
 	fi
 
 	if ! use x86 ; then
@@ -43,16 +44,21 @@ src_unpack() {
 	fi
 
 	use 16bit && sed -i 's|//#define MAKE_16BIT|#define MAKE_16BIT|' mpp.h
+
+	# Bug #109699; console redirection to /dev/tty makes no sense
+	sed -i -e 's/$(LDADD) &> $(LOGFILE)/$(LDADD)/' Makefile
 }
 
 src_compile() {
 	filter-flags "-fprefetch-loop-arrays"
 	filter-flags "-mfpmath=sse" "-mfpmath=sse,387"
 	use static && export BLD_STATIC=1
+
+	append-flags -I${S}
 	ARCH= emake mppenc mppdec replaygain || die
 }
 
 src_install() {
 	dobin mppenc mppdec replaygain
-	dodoc COPYING* README doc/ChangeLog doc/MANUAL.TXT doc/NEWS doc/SV7.txt doc/TODO*
+	dodoc README doc/ChangeLog doc/MANUAL.TXT doc/NEWS doc/SV7.txt doc/TODO*
 }

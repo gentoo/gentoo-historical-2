@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpcollab/phpcollab-2.4.ebuild,v 1.1 2004/08/30 15:05:57 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phpcollab/phpcollab-2.4.ebuild,v 1.1.1.1 2005/11/30 09:37:07 chriswhite Exp $
 
 inherit webapp
 
@@ -12,14 +12,12 @@ DESCRIPTION="phpCollab is an open-source internet-enabled collaboration workspac
 HOMEPAGE="http://php-collab.com/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-KEYWORDS="~x86"
+KEYWORDS="~x86 ppc"
 
-DEPEND="$DEPEND"
 RDEPEND="
-	${DEPEND}
 	>=net-www/apache-1.3
 	|| ( >=dev-db/mysql-3.23 >=dev-db/postgresql-7 )
-	>=dev-php/mod_php-4.2.0
+	virtual/httpd-php
 "
 
 LICENSE="GPL-2"

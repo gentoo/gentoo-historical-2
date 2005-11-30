@@ -103,7 +103,7 @@ diff -ru ltp-full-20041203/testcases/ballista/ballista/perllib/LWP/Debug.pm ltp-
 -#!/usr/local/bin/perl -w
 +#!/usr/bin/env perl -w
  #
- # $Id: ltp-20041203-ballista-paths.patch,v 1.1 2004/12/04 05:02:56 dragonheart Exp $
+ # $Id: ltp-20041203-ballista-paths.patch,v 1.1.1.1 2005/11/30 09:36:36 chriswhite Exp $
  #
 diff -ru ltp-full-20041203/testcases/ballista/create.sh ltp-full-20041203.mod/testcases/ballista/create.sh
 --- ltp-full-20041203/testcases/ballista/create.sh	2004-10-06 07:45:09.000000000 +0930

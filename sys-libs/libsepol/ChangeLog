@@ -1,6 +1,40 @@
 # ChangeLog for sys-libs/libsepol
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libsepol/ChangeLog,v 1.1 2004/09/08 00:32:56 pebenito Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libsepol/ChangeLog,v 1.1.1.1 2005/11/30 09:39:18 chriswhite Exp $
+
+  09 Sep 2005; Chris PeBenito <pebenito@gentoo.org> libsepol-1.6.ebuild:
+  Mark stable.
+
+*libsepol-1.6 (25 Jun 2005)
+
+  25 Jun 2005; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.6.ebuild:
+  New upstream release.
+
+  10 May 2005; Stephen Bennett <spb@gentoo.org> libsepol-1.4.ebuild:
+  mips stable
+
+  01 May 2005; Stephen Bennett <spb@gentoo.org> libsepol-1.4.ebuild:
+  Added ~mips.
+
+  01 May 2005; Chris PeBenito <pebenito@gentoo.org> libsepol-1.4.ebuild:
+  Mark stable.
+
+*libsepol-1.4 (13 Mar 2005)
+
+  13 Mar 2005; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.4.ebuild:
+  New upstream release.
+
+  07 Jan 2005; Chris PeBenito <pebenito@gentoo.org> libsepol-1.0.ebuild,
+  libsepol-1.2.ebuild:
+  Mark 1.2 stable.  Change glibc dep to libc virtual.
+
+  15 Nov 2004; Chris PeBenito <pebenito@gentoo.org> libsepol-1.2.ebuild:
+  Fix non mls compile.
+
+*libsepol-1.2 (14 Nov 2004)
+
+  14 Nov 2004; Chris PeBenito <pebenito@gentoo.org> +libsepol-1.2.ebuild:
+  New upstream release.
 
 *libsepol-1.0 (07 Sep 2004)
 

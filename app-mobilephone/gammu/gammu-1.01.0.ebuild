@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gammu/gammu-1.01.0.ebuild,v 1.1 2005/05/14 12:56:50 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gammu/gammu-1.01.0.ebuild,v 1.1.1.1 2005/11/30 09:36:33 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.gammu.net/projects/gammu.php"
 IUSE="bluetooth irda mysql nls ssl"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ppc x86"
 
 RDEPEND="mysql? ( dev-db/mysql )
 	ssl? ( >=dev-libs/openssl-0.9.7d )

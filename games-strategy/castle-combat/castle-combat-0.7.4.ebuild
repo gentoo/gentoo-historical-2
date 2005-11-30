@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/castle-combat/castle-combat-0.7.4.ebuild,v 1.1 2003/09/10 05:27:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/castle-combat/castle-combat-0.7.4.ebuild,v 1.1.1.1 2005/11/30 09:36:44 chriswhite Exp $
 
 inherit games
 
@@ -10,9 +10,10 @@ SRC_URI="http://user.cs.tu-berlin.de/~karlb/castle-combat/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc"
+IUSE=""
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	sys-libs/zlib
 	media-libs/libpng
 	media-libs/libsdl
@@ -26,16 +27,13 @@ src_unpack() {
 	cd ${S}
 	# dist file seems to include a copy of SDL_net.  Take it out so we link
 	# against the system copy instead.
-	sed -i -e "s/SDL_net//" src/Makefile.in || die "sed src/Makefile.in failed"
-}
-
-src_compile() {
-	egamesconf || die
-	emake || die
+	sed -i \
+		-e "s/SDL_net//" src/Makefile.in \
+			|| die "sed src/Makefile.in failed"
 }
 
 src_install() {
-	make install DESTDIR=${D} || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS ChangeLog README TODO || die "dodoc failed"
 	prepgamesdirs
 }

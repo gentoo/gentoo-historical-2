@@ -1,17 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gqmpeg/gqmpeg-0.20.0.ebuild,v 1.1 2003/06/25 20:46:19 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gqmpeg/gqmpeg-0.20.0.ebuild,v 1.1.1.1 2005/11/30 09:38:15 chriswhite Exp $
 
 IUSE="nls gnome"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="front end to various audio players, including mpg123"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://gqmpeg.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 ~ppc ppc64 sparc x86"
 
 DEPEND="=x11-libs/gtk+-1.2*
 	>=media-libs/gdk-pixbuf-0.13.0"

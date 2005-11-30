@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gsmlib/gsmlib-1.10.ebuild,v 1.1 2005/05/15 20:19:12 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/gsmlib/gsmlib-1.10.ebuild,v 1.1.1.1 2005/11/30 09:36:30 chriswhite Exp $
 
 IUSE=""
 DESCRIPTION="Library and Applications to access GSM mobile phones"

@@ -9,8 +9,8 @@ diff -u -r1.8 -r1.9
   *
   *  @author Pablo d'Angelo <pablo.dangelo@web.de>
   *
-- *  $Id: hugin-0.5_rc2-gcc4.patch,v 1.1 2005/11/19 05:10:01 halcy0n Exp $
-+ *  $Id: hugin-0.5_rc2-gcc4.patch,v 1.1 2005/11/19 05:10:01 halcy0n Exp $
+- *  $Id: hugin-0.5_rc2-gcc4.patch,v 1.1.1.1 2005/11/30 09:37:42 chriswhite Exp $
++ *  $Id: hugin-0.5_rc2-gcc4.patch,v 1.1.1.1 2005/11/30 09:37:42 chriswhite Exp $
   *
   *  This is free software; you can redistribute it and/or
   *  modify it under the terms of the GNU General Public

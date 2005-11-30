@@ -1,46 +1,104 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstdc++-v3/libstdc++-v3-3.3.3-r1.ebuild,v 1.1 2004/05/24 21:17:43 lv Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstdc++-v3/libstdc++-v3-3.3.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:39:08 chriswhite Exp $
 
-IUSE="nls"
+inherit eutils flag-o-matic libtool gnuconfig versionator
 
-inherit eutils flag-o-matic libtool
+transform_known_flags() {
+	declare setting
 
-# Compile problems with these (bug #6641 among others)...
-#filter-flags "-fno-exceptions -fomit-frame-pointer -fforce-addr"
+	# and on x86, we just need to filter the 3.4 specific amd64 -marchs
+	replace-cpu-flags k8 athlon64 opteron x86-64
 
-# Recently there has been a lot of stability problem in Gentoo-land.  Many
-# things can be the cause to this, but I believe that it is due to gcc3
-# still having issues with optimizations, or with it not filtering bad
-# combinations (protecting the user maybe from himeself) yet.
-#
-# This can clearly be seen in large builds like glibc, where too aggressive
-# CFLAGS cause the tests to fail miserbly.
-#
-# Quote from Nick Jones <carpaski@gentoo.org>, who in my opinion
-# knows what he is talking about:
-#
-#   People really shouldn't force code-specific options on... It's a
-#   bad idea. The -march options aren't just to look pretty. They enable
-#   options that are sensible (and include sse,mmx,3dnow when apropriate).
-#
-# The next command strips CFLAGS and CXXFLAGS from nearly all flags.  If
-# you do not like it, comment it, but do not bugreport if you run into
-# problems.
-#
-# <azarah@gentoo.org> (13 Oct 2002)
+	# gcc 3.3 doesn't support -march=pentium-m
+	replace-cpu-flags pentium-m pentium3m pentium3
+
+	#GCC 3.3 does not understand G3, G4, G5 on ppc
+	replace-cpu-flags G3 750
+	replace-cpu-flags G4 7400
+	replace-cpu-flags G5 7400
+}
+
+is_arch_allowed() {
+	i386_processor_table="i386 i486 i586 pentium pentium-mmx winchip-c6 \
+		winchip2 c3 i686 pentiumpro pentium2 pentium3 pentium4 prescott \
+		nocona k6 k6-2 k6-3 athlon athlon-tbird x86-64 athlon-4 athlon-xp \
+		athlon-mp"
+
+	for proc in ${i386_processor_table} ; do
+		[ "${proc}" == "${1}" ] && return 0
+	done
+
+
+	mips_processor_table="mips1 mips2 mips3 mips4 mips32 mips64 r3000 r2000 \
+		r3900 r6000 r4000 vr4100 vr4111 vr4120 vr4300 r4400 r4600 orion \
+		r4650 r8000 vr5000 vr5400 vr5500 4kc 4kp 5kc 20kc sr71000 sb1"
+
+	for proc in ${mips_processor_table} ; do
+		[ "${proc}" == "${1}" ] && return 0
+	done
+
+
+	rs6000_processor_table="common power power2 power3 power4 powerpc \
+		powerpc64 rios rios1 rsc rsc1 rios2 rs64a 401 403 405 505 601 602 \
+		603 603e ec603e 604 604e 620 630 740 750 7400 7450 8540 801 821 823 \
+		860"
+
+	for proc in ${rs6000_processor_table} ; do
+		[ "${proc}" == "${1}" ] && return 0
+	done
+
+
+	return 1
+}
+
+
 do_filter_flags() {
-	strip-flags
+	declare setting
 
 	# In general gcc does not like optimization, and add -O2 where
 	# it is safe.  This is especially true for gcc 3.3 + 3.4
 	replace-flags -O? -O2
 
-	if use amd64
-	then
-		setting="`get-flag march`"
-		[ ! -z "${setting}" ] && filter-flags -march="${setting}"
+
+	# gcc 3.3 doesn't support -mtune on numerous archs, so xgcc will fail
+	setting="`get-flag mtune`"
+	[ ! -z "${setting}" ] && filter-flags -mtune="${setting}"
+
+
+	# only allow the flags that we -know- are supported
+	transform_known_flags
+	setting="`get-flag march`"
+	if [ ! -z "${setting}" ] ; then
+		is_arch_allowed "${setting}" || filter-flags -march="${setting}"
 	fi
+	setting="`get-flag mcpu`"
+	if [ ! -z "${setting}" ] ; then
+		is_arch_allowed "${setting}" || filter-flags -mcpu="${setting}"
+	fi
+
+
+	# xgcc wont understand gcc 3.4 flags...
+	filter-flags -fno-unit-at-a-time
+	filter-flags -funit-at-a-time
+	filter-flags -fweb
+	filter-flags -fno-web
+	filter-flags -mno-tls-direct-seg-refs
+
+	# xgcc isnt patched with propolice
+	filter-flags -fstack-protector-all
+	filter-flags -fno-stack-protector-all
+	filter-flags -fstack-protector
+	filter-flags -fno-stack-protector
+
+	# xgcc isnt patched with the gcc symbol visibility patch
+	filter-flags -fvisibility-inlines-hidden
+	filter-flags -fvisibility=hidden
+
+	# ...sure, why not?
+	strip-unsupported-flags
+
+	strip-flags
 }
 
 S=${WORKDIR}/gcc-${PV}
@@ -49,8 +107,10 @@ S=${WORKDIR}/gcc-${PV}
 [ ! -n "${CCHOST}" ] && export CCHOST="${CHOST}"
 
 LOC="/usr"
-MY_PV="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
-MY_PV_FULL="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
+#MY_PV="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
+#MY_PV_FULL="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
+MY_PV="$(get_version_component_range 1-2)"
+MY_PV_FULL="$(get_version_component_range 1-3)"
 
 LIBPATH="${LOC}/lib/gcc-lib/${CCHOST}/${MY_PV_FULL}"
 BINPATH="${LOC}/${CCHOST}/gcc-bin/${MY_PV}"
@@ -66,26 +126,28 @@ HOMEPAGE="http://gcc.gnu.org/libstdc++/"
 
 LICENSE="GPL-2 LGPL-2.1"
 
-KEYWORDS="-*"
+KEYWORDS="amd64 ~x86 mips ppc64 ppc ~sparc"
+IUSE="nls nptl uclibc build"
 
+# 3.2.3 -> 3.3.x install .so.5, so lets slot to 5
 if [ "${CHOST}" == "${CCHOST}" ]
 then
-	SLOT="3.3.3"
+	SLOT="5"
 else
-	SLOT="${CCHOST}-3.3.3"
+	SLOT="${CCHOST}-5"
 fi
 
-DEPEND="virtual/glibc
-	!nptl? ( >=sys-libs/glibc-2.3.2-r3 )
+DEPEND="virtual/libc
+	!nptl? ( !uclibc? ( >=sys-libs/glibc-2.3.2-r3 ) )
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	>=sys-devel/bison-1.875
 	>=sys-devel/gcc-config-1.3.1
-	>=sys-devel/gcc-3.4*
+	>=sys-devel/gcc-3.3.3_pre20040130
 	!build? ( >=sys-libs/ncurses-5.2-r2
 	          nls? ( sys-devel/gettext ) )"
 
-RDEPEND="virtual/glibc
-	!nptl? ( >=sys-libs/glibc-2.3.2-r3 )
+RDEPEND="virtual/libc
+	!nptl? ( !uclibc? ( >=sys-libs/glibc-2.3.2-r3 ) )
 	>=sys-devel/gcc-config-1.3.1
 	>=sys-libs/zlib-1.1.4
 	>=sys-apps/texinfo-4.2-r4
@@ -106,6 +168,7 @@ src_unpack() {
 	cp -a ${S}/libstdc++-v3/config/cpu/i{4,3}86/atomicity.h
 
 	cd ${S}; ./contrib/gcc_update --touch &> /dev/null
+	gnuconfig_update
 }
 
 src_compile() {
@@ -154,9 +217,6 @@ src_compile() {
 
 	touch ${S}/gcc/c-gperf.h
 
-	# Setup -j in MAKEOPTS
-	get_number_of_jobs
-
 	einfo "Compiling libstdc++..."
 	S="${WORKDIR}/build" \
 	emake all-target-libstdc++-v3 \
@@ -201,14 +261,27 @@ src_install() {
 		LIBPATH="${LIBPATH}" \
 		install-target-libstdc++-v3 || die
 
+	# we'll move this into a directory we can put at the end of ld.so.conf
+	# other than the normal versioned directory, so that it doesnt conflict
+	# with gcc 3.3.3
+	mkdir -p ${D}/${LOC}/lib/libstdc++-v3/
+	mv ${D}/${LIBPATH}/lib* ${D}/${LOC}/lib/libstdc++-v3/
 	# we dont want the headers...
-	rm -rf ${D}/${STDCXX_INCDIR}
+	rm -rf ${D}/${LOC}/lib/gcc*
 	# or locales...
 	rm -rf ${D}/${LOC}/share
 	# or anything other than the .so files, really.
 	find ${D} | grep -e c++.la$ -e c++.a$ | xargs rm -f
+	# we dont even want the un-versioned .so symlink, as it confuses some
+	# apps and also causes others to link against the old libstdc++...
+	rm ${D}/${LOC}/lib/libstdc++-v3/libstdc++.so
+
+	# and it's much easier to just move around the result than it is to
+	# configure libstdc++-v3 to use CONF_LIDIR
+	if [ "$(get_libdir)" != "lib" ] ; then
+		mv ${D}/${LOC}/lib ${D}/${LOC}/$(get_libdir)
+	fi
 
 	mkdir -p ${D}/etc/env.d/
-	echo "LDPATH=\"${LIBPATH}\"" >> ${D}/etc/env.d/99libstdc++
+	echo "LDPATH=\"${LOC}/lib/libstdc++-v3/\"" >> ${D}/etc/env.d/99libstdc++
 }
-

@@ -1,36 +1,42 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/ypserv-2.13-r1.ebuild,v 1.1 2004/06/08 05:28:54 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/ypserv-2.13-r1.ebuild,v 1.1.1.1 2005/11/30 09:36:44 chriswhite Exp $
 
 DESCRIPTION="Network Information Service server"
 HOMEPAGE="http://www.linux-nis.org/nis/"
-SRC_URI="mirror://kernel/linux/utils/net/NIS/${P}.tar.bz2"
+SRC_URI="mirror://kernel/linux/utils/net/NIS/OLD/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~ppc64"
-IUSE=""
+KEYWORDS="amd64 ia64 ppc ppc64 sparc x86"
+IUSE="slp"
 
-DEPEND=">=sys-libs/gdbm-1.8.0"
+RDEPEND=">=sys-libs/gdbm-1.8.0
+	slp? ( net-libs/openslp )"
+DEPEND="${RDEPEND}
+	>=sys-apps/portage-2.0.51"
+
+src_compile() {
+	econf $(use_enable slp) || die
+	emake || die
+}
 
 src_install() {
-	make DESTDIR=${D} install
+	make DESTDIR=${D} install || die
 	dodoc AUTHORS ChangeLog INSTALL NEWS README THANKS TODO
 
 	insinto /etc
 	doins etc/ypserv.conf etc/netgroup etc/netmasks
-
 	insinto /var/yp
 	newins etc/securenets securenets.default
 
-	insinto /etc/conf.d
-	newins ${FILESDIR}/ypserv.confd ypserv
-	newins ${FILESDIR}/rpc.yppasswdd.confd rpc.yppasswdd
+	newconfd ${FILESDIR}/ypserv.confd ypserv
+	newconfd ${FILESDIR}/rpc.yppasswdd.confd rpc.yppasswdd
+	newconfd ${FILESDIR}/rpc.ypxfrd.confd rpc.ypxfrd
 
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/ypserv.rc ypserv
-	newexe ${FILESDIR}/rpc.yppasswdd-r1 rpc.yppasswdd
-	newexe ${FILESDIR}/rpc.ypxfrd rpc.ypxfrd
+	newinitd ${FILESDIR}/ypserv ypserv
+	newinitd ${FILESDIR}/rpc.yppasswdd-r1 rpc.yppasswdd
+	newinitd ${FILESDIR}/rpc.ypxfrd rpc.ypxfrd
 
 	# Save the old config into the new package as CONFIG_PROTECT
 	# doesn't work for this package.

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/pureadmin/pureadmin-0.2.2.ebuild,v 1.1 2005/09/06 22:39:09 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/pureadmin/pureadmin-0.2.2.ebuild,v 1.1.1.1 2005/11/30 09:36:23 chriswhite Exp $
 
 inherit eutils
 IUSE="debug gnome doc"

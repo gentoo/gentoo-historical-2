@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/netpanzer/netpanzer-0.8-r1.ebuild,v 1.1 2005/07/14 02:24:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/netpanzer/netpanzer-0.8-r1.ebuild,v 1.1.1.1 2005/11/30 09:36:37 chriswhite Exp $
 
 inherit eutils games
 

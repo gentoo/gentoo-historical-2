@@ -1,6 +1,132 @@
 # ChangeLog for media-sound/musepack-tools
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/ChangeLog,v 1.1 2004/04/22 09:31:01 eradicator Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/ChangeLog,v 1.1.1.1 2005/11/30 09:38:37 chriswhite Exp $
+
+  18 Oct 2005; Tony Vroon <chainsaw@gentoo.org> musepack-tools-1.15v.ebuild:
+  Do not attempt to redirect output to /dev/tty, this makes no sense. Closes
+  bug #109699.
+
+  04 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  files/musepack-tools-1.15v-Makefile.patch, musepack-tools-1.15v.ebuild:
+  Fixed patch for +esd/-esd handling. See bug #104147.
+
+  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  musepack-tools-1.15s-r2.ebuild, musepack-tools-1.15t.ebuild,
+  musepack-tools-1.15u.ebuild, musepack-tools-1.15v.ebuild:
+  Don't install COPYING file.
+
+  23 Aug 2005; Tony Vroon <chainsaw@gentoo.org> musepack-tools-1.15v.ebuild:
+  1.15v stable on x86.
+
+  11 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  musepack-tools-1.15v.ebuild:
+  Fix dependency over esd just when needed. Made it link to libm else it fails
+  to link.
+
+*musepack-tools-1.15v (19 Mar 2005)
+
+  19 Mar 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/musepack-tools-1.15v-Makefile.patch,
+  +files/musepack-tools-1.15v-gcc4.patch, musepack-tools-1.15s-r2.ebuild,
+  musepack-tools-1.15t.ebuild, musepack-tools-1.15u.ebuild,
+  +musepack-tools-1.15v.ebuild:
+  Version bump, closes bug #83365. Correct LICENSE in all ebuilds.
+
+*musepack-tools-1.15u (08 Mar 2005)
+
+  08 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/musepack-tools-1.15u-Makefile.patch,
+  +files/musepack-tools-1.15u-gcc4.patch, +musepack-tools-1.15u.ebuild:
+  new upstream version, fixes #83528
+
+  09 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  musepack-tools-1.15s-r2.ebuild, musepack-tools-1.15t.ebuild:
+  corrected issue with esound dependency, fixes #81311
+
+  11 Feb 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/musepack-tools-1.15t-gcc4.patch, musepack-tools-1.15t.ebuild:
+  GCC 4 compatability fix by Radoslaw -AstralStorm- Szkodzinski
+  <astralstorm@gorzow.mm.pl> closes bug #81443.
+
+  07 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  files/musepack-tools-1.15t-Makefile.patch:
+  modified the makefile patch to preserve UNBREAK cflags. see #81033
+
+  07 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  musepack-tools-1.15s-r2.ebuild, musepack-tools-1.15t.ebuild:
+  removed wrong homepage urls, fixes #81157
+
+*musepack-tools-1.15t (07 Feb 2005)
+
+  07 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/musepack-tools-1.15t-Makefile.patch, +musepack-tools-1.15t.ebuild:
+  new upstream release. fixes #81033
+
+*musepack-tools-1.15s-r2 (17 Jan 2005)
+
+  17 Jan 2005; Tony Vroon <chainsaw@gentoo.org>
+  -musepack-tools-1.15s-r1.ebuild, +musepack-tools-1.15s-r2.ebuild:
+  Portability fix, do not try to use x86 asm on amd64. Closes bug #78336,
+  patch by Tom Martin <slarti@gentoo.org>.
+
+  22 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -musepack-tools-1.15r-r2.ebuild:
+  Removing old version.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musepack-tools-1.15s-r1.ebuild:
+  Stable amd64, x86.
+
+  04 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musepack-tools-1.15r-r2.ebuild, musepack-tools-1.15s-r1.ebuild:
+  Added missing esd? around esound DEPEND.  Closes bug #72287.
+
+*musepack-tools-1.15s-r1 (27 Nov 2004)
+
+  27 Nov 2004; Tony Vroon <chainsaw@gentoo.org>
+  +musepack-tools-1.15s-r1.ebuild, -musepack-tools-1.15s.ebuild:
+  Add 16bit local USE-flag, closes bug #72500. Made oss dependency explicit as
+  to never break emerge world.
+
+*musepack-tools-1.15s (26 Nov 2004)
+
+  26 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -files/musepack-tools-1.15r-Makefile.patch,
+  +files/musepack-tools-1.15s-Makefile.patch, +musepack-tools-1.15s.ebuild:
+  Version bump closes bug #72486.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  -musepack-tools-1.15r.ebuild, -musepack-tools-1.15r-r1.ebuild,
+  musepack-tools-1.15r-r2.ebuild:
+  Stable x86.  Removing old ebuilds.
+
+*musepack-tools-1.15r-r2 (05 Sep 2004)
+
+  05 Sep 2004; Patrick Dawson <pkdawson@gentoo.org>
+  +musepack-tools-1.15r-r2.ebuild:
+  Added filters for some mfpmath flags. Thanks to <numlock@freesurf.ch>
+  Closes bug #62224.
+
+*musepack-tools-1.15r-r1 (07 Jul 2004)
+
+  07 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/musepack-tools-1.15r-r1-Makefile.patch,
+  +musepack-tools-1.15r-r1.ebuild:
+  prelink bug fix thanks to 4nykey@nm.ru closes bug #49821. -* because of nasm
+  dep.
+
+  16 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musepack-tools-1.15r.ebuild:
+  SRC_URI fixed for bug #52148.
+
+  14 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musepack-tools-1.15r.ebuild:
+  Removed nomirror so we can get source from the gentoo mirror. Added nasm
+  dependency. Added to ~amd64. Removed -mpreferred-stack-boundary=2 from vendor
+  CFLAGS.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> musepack-tools-1.15r.ebuild:
+  Add flag-o-matic for bug 49179
 
 *musepack-tools-1.15r (22 Apr 2004)
 

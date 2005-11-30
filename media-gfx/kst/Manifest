@@ -1,10 +1,21 @@
-MD5 7a7f64fd16613fe42409b6276a550f89 kst-0.97.ebuild 498
-MD5 c74e0c01c6376c41e25c33c28444d508 kst-0.99.ebuild 532
-MD5 83076a01c8073acc3561706f5936072b kst-0.94.ebuild 491
-MD5 a83c837da0c6d0fd5f9ec968209e0b62 kst-1.0.0.ebuild 536
-MD5 47300e32772e6d2c1e0353cbbfbdfcc1 ChangeLog 1046
-MD5 201497e376059503f8b7afd504d41023 metadata.xml 179
-MD5 a9c083343a53c0028f39d92ac01dc93a files/digest-kst-1.0.0 62
-MD5 124f013d204eb93390b67c4a9442e5aa files/digest-kst-0.94 61
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 cc230ff78650cedc0521a4df3f873db8 ChangeLog 2922
 MD5 19eccdaf16ff3e3301ad96c85fd3417b files/digest-kst-0.97 61
-MD5 eda462e34c4db01289aca79fcb10f263 files/digest-kst-0.99 61
+MD5 b3c3b4529c7a84a69be4e52b98c71a53 files/digest-kst-1.1.0 63
+MD5 b3c3b4529c7a84a69be4e52b98c71a53 files/digest-kst-1.1.0-r1 63
+MD5 4c04a9b00cd2b78b80a7b38eb3d4574a files/digest-kst-1.1.1 62
+MD5 7d7826a4f8fadf0c3c8627577a4f55a9 files/kst-1.1.0-netcdf-fix.patch 2939
+MD5 27834100f5137f06a3001217f76e74fa kst-0.97.ebuild 479
+MD5 5d6b71a99a2af171fbb39416e1816f9d kst-1.1.0-r1.ebuild 692
+MD5 441ad79778d2e3a21a44dd85f7be64da kst-1.1.0.ebuild 540
+MD5 d1127db7a7ca1c477d1a87642e89bb6f kst-1.1.1.ebuild 623
+MD5 862e7941cb21c9dd10e8bd6183f21fb0 metadata.xml 173
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDecJKntT9W3vfTuoRAtgCAJ4xGy6rdFJjY0U+NAcZlQg5dQnh4gCePiJw
+Bhbc1ACMwBXN+jW3RmJrIrI=
+=BztN
+-----END PGP SIGNATURE-----

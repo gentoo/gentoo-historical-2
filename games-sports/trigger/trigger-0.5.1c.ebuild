@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/trigger/trigger-0.5.1c.ebuild,v 1.1 2005/05/09 00:11:55 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/trigger/trigger-0.5.1c.ebuild,v 1.1.1.1 2005/11/30 09:39:01 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 PSOURCE="${P}-src"
 PDATA="${P}-data"
@@ -27,6 +27,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${PSOURCE}
 
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-glx-check.patch
+}
+
 src_compile() {
 	egamesconf --datadir="${GAMES_DATADIR}/${PN}" || die
 	jam || "jam failed"
@@ -42,4 +48,11 @@ src_install() {
 
 	dodoc ../${PDATA}/{README.txt,README-stereo.txt}
 	prepgamesdirs
+}
+
+pkg_postinst() {
+	games_pkg_postinst
+	einfo "After running ${PN} for the first time, a config file is"
+	einfo "available in ~/.trigger/trigger.config"
+	echo
 }

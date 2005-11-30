@@ -1,6 +1,32 @@
-# ChangeLog for sys-apps/nbench
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/nbench/ChangeLog,v 1.1 2004/11/07 23:32:37 morfic Exp $
+# ChangeLog for app-benchmarks/nbench
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/nbench/ChangeLog,v 1.1.1.1 2005/11/30 09:36:34 chriswhite Exp $
+
+  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> nbench-2.2.2.ebuild:
+  Mark 2.2.2 stable on alpha
+
+  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> nbench-2.2.2.ebuild:
+  ppc stable
+
+  20 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on sparc
+
+  19 Jul 2005; MATSUU Takuto <matsuu@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on x86, amd64 and sh.
+
+  29 Mar 2005; Guy Martin <gmsoft@gentoo.org> nbench-2.2.2.ebuild:
+  Stable on hppa.
+
+  13 Mar 2005; Tavis Ormandy <taviso@gentoo.org> nbench-2.2.2.ebuild:
+  add ~alpha keyword
+
+*nbench-2.2.2 (30 Dec 2004)
+
+  30 Dec 2004; MATSUU Takuto <matsuu@gentoo.org> +nbench-2.2.2.ebuild:
+  Version bumped.
+
+  18 Nov 2004; Daniel Goller <morfic@gentoo.org> nbench-2.2.1.ebuild:
+  Added support for LDFLAGS
 
 *nbench-2.2.1 (07 Nov 2004)
 

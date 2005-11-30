@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/horde-3.0.6.ebuild,v 1.1 2005/10/28 23:10:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde/horde-3.0.6.ebuild,v 1.1.1.1 2005/11/30 09:36:55 chriswhite Exp $
 
 inherit horde
 

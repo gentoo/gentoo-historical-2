@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/streamripper/streamripper-1.61.7.ebuild,v 1.1 2005/04/18 16:45:48 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/streamripper/streamripper-1.61.7.ebuild,v 1.1.1.1 2005/11/30 09:37:58 chriswhite Exp $
 
 
 inherit eutils

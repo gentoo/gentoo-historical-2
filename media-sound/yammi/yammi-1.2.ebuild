@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/yammi/yammi-1.2.ebuild,v 1.1 2005/03/15 21:12:48 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/yammi/yammi-1.2.ebuild,v 1.1.1.1 2005/11/30 09:38:41 chriswhite Exp $
 
 inherit kde
 
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/yammi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~sparc ~ppc"
-IUSE="cdr encode kde oggvorbis xmms"
+KEYWORDS="x86 amd64 sparc ~ppc"
+IUSE="cdr encode kde ogg xmms"
 
 DEPEND=">=media-libs/taglib-1.3
 	xmms? ( media-sound/xmms )"
@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}
 	kde? ( || ( kde-base/noatun kde-base/kdemultimedia ) )
 	media-sound/sox
 	virtual/mpg123
-	oggvorbis? ( media-sound/vorbis-tools )
+	ogg? ( media-sound/vorbis-tools )
 	encode? ( media-sound/cdparanoia
 		  media-sound/lame )"
 
@@ -32,14 +32,11 @@ RDEPEND="${DEPEND}
 need-kde 3
 
 pkg_setup() {
-	if ! use arts && ! use xmms; then
-		eerror "Yammi needs either aRts or Xmms to work,"
-		eerror "please try again with USE=\"arts\" or USE=\"xmms\"".
+	if ! use arts; then
+		eerror "${PN} can only be built with USE=\"arts\","
+		eerror "and with kde-base/kdelibs compiled with USE=\"arts\"."
 		die
 	fi
-
-	# check whether kdelibs was compiled with arts support
-	kde_pkg_setup
 }
 
 src_unpack() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.15-r2.ebuild,v 1.1 2005/05/09 09:45:49 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.15-r2.ebuild,v 1.1.1.1 2005/11/30 09:37:16 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ DEPEND=">=media-libs/jpeg-6b
 	amd64? ( sys-libs/libieee1284 )
 	x86? ( sys-libs/libieee1284 )
 	usb? ( dev-libs/libusb )
-	gphoto2? ( media-gfx/gphoto2 )
+	gphoto2? ( media-libs/libgphoto2 )
 	v4l? ( sys-kernel/linux-headers )"
 
 BROTHERMFCDRIVER="sane-backends-1.0.15-brothermfc.patch"
@@ -23,7 +23,7 @@ SRC_URI="ftp://ftp.mostang.com/pub/sane/${P}/${P}.tar.gz
 	usb? ( mirror://gentoo/${BROTHERMFCDRIVER}.bz2 )"
 SLOT="0"
 LICENSE="GPL-2 public-domain"
-KEYWORDS="~x86 ~sparc ~ppc ~ppc64 ~amd64 ~alpha"
+KEYWORDS="~x86 ~sparc ~ppc ~ppc64 ~amd64 ~alpha ~ia64"
 
 # To enable specific backends, define SANE_BACKENDS with the backends you want
 # in those:

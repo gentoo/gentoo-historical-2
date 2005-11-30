@@ -1,5 +1,26 @@
-# ChangeLog for media-video/DFBSee-0.7.2.ebuild
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# ChangeLog for media-gfx/DFBPoint
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/DFBPoint/ChangeLog,v 1.1.1.1 2005/11/30 09:37:41 chriswhite Exp $
+
+  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> DFBPoint-0.7.2.ebuild:
+  Marked Testing on AMD64.
+
+  21 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> DFBPoint-0.7.2.ebuild:
+  tidy; error check cp
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  DFBPoint-0.7.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+  02 Jan 2004; Sven Blumenstein <bazik@gentoo.org> DFBPoint-0.7.2.ebuild:
+  Masked on sparc as DEPEND dev-libs/DirectFB is -sparc.
+
+  09 Oct 2003; Brandy Westcott brandy@gentoo.org DFBPoint-0.7.2.ebuild,
+  metadata.xml:
+  Changed virtual/x11 dependency to virtual/glibc. We don't need X for DFBPoint.
+
+  12 Jun 2003; <msterret@gentoo.org> DFBPoint-0.7.2.ebuild:
+  add Header
 
 *DFBPoint-0.7.2 (12 Jun 2002)
 

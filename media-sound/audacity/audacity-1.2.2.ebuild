@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-1.2.2.ebuild,v 1.1 2004/10/31 10:37:32 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacity/audacity-1.2.2.ebuild,v 1.1.1.1 2005/11/30 09:38:06 chriswhite Exp $
 
 IUSE="encode flac mad oggvorbis"
 
@@ -18,7 +18,7 @@ SLOT="0"
 # Do not unmask on amd64 without talking to eradicator
 KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 
-DEPEND=">=x11-libs/wxGTK-2.2.9
+DEPEND="=x11-libs/wxGTK-2.4*
 	>=app-arch/zip-2.3
 	>=media-libs/id3lib-3.8.0
 	media-libs/libid3tag
@@ -84,7 +84,7 @@ src_install() {
 	rm -rf ${D}/share/doc
 
 	insinto /usr/share/pixmaps
-	newins AudacityLogo48x48.xpm audacity.xpm
+	newins images/AudacityLogo48x48.xpm audacity.xpm
 
 	insinto /usr/share/applications
 	doins ${FILESDIR}/audacity.desktop

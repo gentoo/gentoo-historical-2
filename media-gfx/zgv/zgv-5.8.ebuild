@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/zgv/zgv-5.8.ebuild,v 1.1 2004/11/06 15:30:05 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/zgv/zgv-5.8.ebuild,v 1.1.1.1 2005/11/30 09:37:37 chriswhite Exp $
 
 inherit eutils
 

@@ -1,9 +1,26 @@
 # ChangeLog for media-sound/quark
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/quark/ChangeLog,v 1.1 2003/10/10 02:31:09 tseng Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/quark/ChangeLog,v 1.1.1.1 2005/11/30 09:38:15 chriswhite Exp $
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> quark-3.21.ebuild:
+  Mark 3.21 stable on alpha
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> quark-3.21.ebuild:
+  Stable on ppc.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> quark-3.21.ebuild:
+  Stable amd64, sparc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> quark-3.21.ebuild:
+  Added to ~amd64
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> quark-3.21.ebuild:
+  Added DOCS.  Added to ~amd64.
+
+  19 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> quark-3.21.ebuild:
+  fixed dep.  bump to stable x86
 
 *quark-3.21 (09 Oct 2003)
 
-  09 Oct 2003; ,,, <brandon@gentoo.org> quark-3.21.ebuild:
+  09 Oct 2003; Brandon Hale <tseng@gentoo.org> quark-3.21.ebuild:
   Initial commit.
-

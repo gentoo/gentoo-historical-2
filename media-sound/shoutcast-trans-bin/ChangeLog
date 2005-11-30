@@ -1,6 +1,38 @@
 # ChangeLog for media-sound/shoutcast-trans-bin
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/shoutcast-trans-bin/ChangeLog,v 1.1 2004/08/31 23:57:00 chriswhite Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/shoutcast-trans-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:38:21 chriswhite Exp $
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  shoutcast-trans-bin-0.4.0-r1.ebuild:
+  Stable amd64.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org>
+  shoutcast-trans-bin-0.4.0-r1.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  24 Sep 2004; Sven Wegener <swegener@gentoo.org> files/shoutcast_trans:
+  Fixed CVS keyword replacement.
+
+*shoutcast-trans-bin-0.4.0-r1 (16 Sep 2004)
+
+  16 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +shoutcast-trans-bin-0.4.0-r1.ebuild, -shoutcast-trans-bin-0.4.0.ebuild:
+  Revision bump for security bug #63551.  Added ~amd64.
+
+  05 Sep 2004; Chris White <chriswhite@gentoo.org> files/shoutcast_trans:
+  Fixed the stop() function in shoutcast_trans init.d script.
+
+  05 Sep 2004; Chris White <chriswhite@gentoo.org> files/shoutcast_trans,
+  shoutcast-trans-bin-0.4.0.ebuild:
+  Made shoutcast_trans use pidfile in start-stop-daemon for upcomming shoutcast
+  doc. Marking x86 stable.
+
+  04 Sep 2004; Chris White <chriswhite@gentoo.org>
+  shoutcast-trans-bin-0.4.0.ebuild:
+  Used keepdir instead of mkdir.  Thanks to eradicator for pointing this out.
 
 *shoutcast-trans-bin-0.4.0 (01 Sep 2004)
 

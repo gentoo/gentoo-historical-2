@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.16-r2.ebuild,v 1.1 2005/08/30 08:00:38 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.16-r2.ebuild,v 1.1.1.1 2005/11/30 09:37:17 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -9,12 +9,15 @@ IUSE="usb gphoto2 ipv6 v4l"
 DESCRIPTION="Scanner Access Now Easy - Backends"
 HOMEPAGE="http://www.sane-project.org/"
 
-DEPEND=">=media-libs/jpeg-6b
+RDEPEND=">=media-libs/jpeg-6b
 	amd64? ( sys-libs/libieee1284 )
 	x86? ( sys-libs/libieee1284 )
 	usb? ( dev-libs/libusb )
 	gphoto2? ( media-libs/libgphoto2 )
 	v4l? ( sys-kernel/linux-headers )"
+
+DEPEND="${DEPEND}
+	>=sys-apps/sed-4"
 
 BROTHERMFCDRIVER="sane-${PV}-brother-driver.diff"
 
@@ -38,6 +41,8 @@ KEYWORDS="~x86 ~sparc ~ppc ~ppc64 ~amd64 ~alpha ~ia64"
 # Note that some backends has specific dependencies which make the compilation
 # fail because not supported on your current platform.
 pkg_setup() {
+	enewgroup scanner
+
 	IEEE1284_BACKENDS="canon_pp hpsj5s mustek_pp"
 
 	if [[ "${SANE_BACKENDS}" != "" ]]; then
@@ -83,17 +88,27 @@ src_unpack() {
 		:
 	fi
 	epatch ${FILESDIR}/lide25.patch
+
+	# trouble with -ffast-math, see bug #103118
+	for file in backend/matsushita.c backend/sceptre.c backend/leo.c \
+		backend/sp15c.h backend/teco1.c backend/teco2.c backend/teco3.c \
+		backend/sp15c-scsi.h backend/dc210.c include/sane/sanei_backend.h; do
+			sed -e 's/__unused__/sane_unused__/g' -i ${file} || \
+				die "Could not apply __unused__-fix for ${file}"
+	done
+
 }
 
 src_compile() {
-	filter-flags -ffast-math
+	if use amd64; then
+		filter-flags -fstack-protector
+	fi
 	SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" \
 	BACKENDS="${SANE_BACKENDS}" \
 	econf \
 		$(use_enable usb libusb) \
 		$(use_with gphoto2) \
 		$(use_enable ipv6) \
-		--with-group=scanner \
 		${myconf} || die "econf failed"
 
 	emake || die
@@ -107,7 +122,9 @@ src_compile() {
 
 src_install () {
 	einstall docdir=${D}/usr/share/doc/${PF}
-	touch ${D}/var/lib/lock/sane/.keep # don't use keepdir, it changes the permissions
+	keepdir /var/lib/lock/sane
+	fowners root:scanner /var/lib/lock/sane
+	fperms g+w /var/lib/lock/sane
 	if use usb; then
 		cd tools/hotplug
 		insinto /etc/hotplug/usb
@@ -127,8 +144,3 @@ src_install () {
 	doins 30sane
 
 }
-
-pkg_preinst() {
-	enewgroup scanner
-}
-

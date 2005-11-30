@@ -1,28 +1,31 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3splt/mp3splt-2.1.ebuild,v 1.1 2004/11/21 21:41:37 eradicator Exp $
-
-IUSE="oggvorbis"
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3splt/mp3splt-2.1.ebuild,v 1.1.1.1 2005/11/30 09:38:24 chriswhite Exp $
 
 DESCRIPTION="A command line utility to split mp3 and ogg files"
 HOMEPAGE="http://mp3splt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mp3splt/${P}-src.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~hppa -mips ~ppc ~sparc ~x86"
+IUSE="ogg"
 
-DEPEND="oggvorbis? ( media-libs/libogg
-	             media-libs/libvorbis )
+DEPEND="ogg? ( media-libs/libogg
+	media-libs/libvorbis )
 	media-libs/libmad"
 
 src_compile() {
-	econf $(use_enable oggvorbis ogg) || die "econf failed"
+	local myconf
+
+	# --enable-ogg doesn't enable ogg...
+	use ogg || myconf="--disable-ogg"
+	econf ${myconf} || die "econf failed"
 
 	emake || die "build failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS ChangeLog NEWS README
 }

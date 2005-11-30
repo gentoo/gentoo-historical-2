@@ -1,6 +1,69 @@
-# ChangeLog for net-www/mythweb
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mythweb/ChangeLog,v 1.1 2004/08/15 15:15:27 stuart Exp $
+# ChangeLog for www-apps/mythweb
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mythweb/ChangeLog,v 1.1.1.1 2005/11/30 09:36:53 chriswhite Exp $
+
+  09 Oct 2005; Doug Goldstein <cardoe@gentoo.org> -mythweb-0.17.ebuild,
+  mythweb-0.18.1.ebuild:
+  Actually fix the PHP depends
+
+  23 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  mythweb-0.17.ebuild, mythweb-0.18.1.ebuild:
+  Setup php RDEPEND to be virtual.
+
+  31 May 2005; David Holm <dholm@gentoo.org> mythweb-0.18.1.ebuild:
+  Added to ~ppc.
+
+  30 May 2005; Doug Goldstein <cardoe@gentoo.org> -mythweb-0.16.ebuild,
+  -mythweb-0.18.ebuild, mythweb-0.18.1.ebuild:
+  stable on x86. clean up old ebuilds.
+
+  22 May 2005; Doug Goldstein <cardoe@gentoo.org> mythweb-0.18.1.ebuild:
+  removed MythTV depend
+
+*mythweb-0.18.1 (20 May 2005)
+
+  20 May 2005; Doug Goldstein <cardoe@gentoo.org> +mythweb-0.18.1.ebuild:
+  rev bump
+
+*mythweb-0.18 (18 Apr 2005)
+
+  18 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  +mythweb-0.18.ebuild:
+  Version bump.
+
+*mythweb-0.16.20050115 (18 Jan 2005)
+
+  18 Jan 2005; Doug Goldstein <cardoe@gentoo.org> metadata.xml,
+  files/postinstall-en.txt, -mythweb-0.14-r1.ebuild, -mythweb-0.14.ebuild,
+  -mythweb-0.15.1.ebuild, +mythweb-0.16.20050115.ebuild:
+  rev bump to CVS snapshot to support CVS snapshot of MythTV
+  purged old, non-working versions
+
+  04 Dec 2004; Brian Jackson <iggy@gentoo.org> mythweb-0.16.ebuild:
+  I can't find any of the other media-tv guys, and it's been fairly bug free,
+  so marking as x86
+
+  19 Oct 2004; Daniel Ahlberg <aliz@gentoo.org> mythweb-0.16.ebuild:
+  Fixed some problems that would occur when re-emerging the package. Also added
+  php_sessions dir. Closing #67840.
+
+  05 Oct 2004; Daniel Ahlberg <aliz@gentoo.org> mythweb-0.16.ebuild:
+  Install .htacess file
+
+  16 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythweb-0.16.ebuild:
+  Fix creation of some dirs.
+
+  10 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythweb-0.16.ebuild:
+  + Webapp-config support, closing #58382.
+  + Added checks and warning about php5.
+
+*mythweb-0.16 (10 Sep 2004)
+
+  10 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythweb-0.16.ebuild:
+  Version bump.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
 
 *mythweb-0.15.1 (15 Aug 2004)
 

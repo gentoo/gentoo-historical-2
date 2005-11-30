@@ -1,6 +1,12 @@
 # ChangeLog for www-apps/openwebstats
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/openwebstats/ChangeLog,v 1.1 2005/08/09 12:33:40 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/openwebstats/ChangeLog,v 1.1.1.1 2005/11/30 09:36:57 chriswhite Exp $
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Housekeeping
+
+  09 Aug 2005; Renat Lumpau <rl03@gentoo.org> openwebstats-1.1.ebuild:
+  removed unnecessary eutils
 
 *openwebstats-1.1 (09 Aug 2005)
 

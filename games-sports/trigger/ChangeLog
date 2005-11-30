@@ -1,6 +1,32 @@
 # ChangeLog for games-sports/trigger
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/trigger/ChangeLog,v 1.1 2004/10/20 07:59:57 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-sports/trigger/ChangeLog,v 1.1.1.1 2005/11/30 09:39:01 chriswhite Exp $
+
+  30 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/trigger-0.5.1c-glx-check.patch, trigger-0.5.1c.ebuild:
+  Refine the glx version check #100374 by David Grant.
+
+  26 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  trigger-0.5.1c.ebuild:
+  mention ~/.trigger/trigger.config in pkg_postinst
+
+  26 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -trigger-0.5.0.ebuild, -trigger-0.5.1.ebuild:
+  clean old versions
+
+*trigger-0.5.1c (09 May 2005)
+
+  09 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +trigger-0.5.1c.ebuild:
+  version bump (bug #91933)
+
+  19 Dec 2004; Simon Stelling <blubb@gentoo.org> trigger-0.5.1.ebuild:
+  added ~amd64
+
+*trigger-0.5.1 (13 Dec 2004)
+
+  13 Dec 2004; Mike Frysinger <vapier@gentoo.org> +trigger-0.5.1.ebuild:
+  Version bump.
 
 *trigger-0.5.0 (20 Oct 2004)
 

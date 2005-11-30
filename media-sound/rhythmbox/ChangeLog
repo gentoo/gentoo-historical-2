@@ -1,7 +1,208 @@
 # ChangeLog for media-sound/rhythmbox
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rhythmbox/ChangeLog,v 1.1 2002/06/01 16:30:35 spider Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rhythmbox/ChangeLog,v 1.1.1.1 2005/11/30 09:38:45 chriswhite Exp $
 
-*rhythmbox-0.2.1 (1 Jun 2002)
-  1 Jun 2002; Spider <spider@gentoo.org> rhythmbox-0.2.1.ebuild ChangeLog: 
-  A media thingie that mimics iTunes for Gnome2 
+  26 Sep 2005; <dang@gentoo.org> +files/rhythmbox-0.8.8-empty-xlib.patch,
+  rhythmbox-0.8.8-r1.ebuild:
+  Fix empty xlibs. Bug #91707
+
+  27 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  rhythmbox-0.8.8-r1.ebuild:
+  Stable on sparc
+
+  29 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  rhythmbox-0.8.8-r1.ebuild:
+  To ~sparc
+
+  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -rhythmbox-0.8.5.ebuild,
+  rhythmbox-0.8.8-r1.ebuild:
+  Dont make use of the deprecated oggvorbis useflag any longer, see #94254.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  rhythmbox-0.8.8-r1.ebuild:
+  Stable on ppc.
+
+  30 Jan 2005; lanius@gentoo.org rhythmbox-0.8.8-r1.ebuild:
+  stable on amd64
+
+  14 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rhythmbox-0.8.5.ebuild, rhythmbox-0.8.8-r1.ebuild:
+  Changed USE flag to aac.
+
+*rhythmbox-0.8.8-r1 (03 Nov 2004)
+
+  03 Nov 2004; foser <foser@gentoo.org> rhythmbox-0.8.8-r1.ebuild :
+  Add ipod crasher fix (#68651)
+
+*rhythmbox-0.8.8 (12 Oct 2004)
+
+  12 Oct 2004; foser <foser@gentoo.org> rhythmbox-0.8.8.ebuild :
+  New release
+  Add a little patch to provide shorten support (though this isn't available as plugin)
+
+*rhythmbox-0.8.7 (02 Oct 2004)
+
+  02 Oct 2004; Yi Qiang <khai@gentoo.org> rhythmbox-0.8.7.ebuild:
+  Forgot to reset keywords
+
+  30 Sep 2004; Yi Qiang <khai@gentoo.org> rhythmbox-0.8.0.ebuild:
+  New version (you can stop complaining now)
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rhythmbox-0.8.5.ebuild:
+  Stable amd64.
+
+  14 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rhythmbox-0.8.5.ebuild:
+  -sparc
+
+*rhythmbox-0.8.5 (12 Jul 2004)
+
+  12 Jul 2004; foser <foser@gentoo.org> rhythmbox-0.8.5.ebuild :
+  Add faad support (m4a), closes bug #51529
+
+*rhythmbox-0.8.3 (05 May 2004)
+
+  05 May 2004; foser <foser@gentoo.org> rhythmbox-0.8.3.ebuild :
+  New release (requested in #49664)
+
+*rhythmbox-0.8.1 (25 Apr 2004)
+
+  25 Apr 2004; foser <foser@gentoo.org> rhythmbox-0.8.1.ebuild :
+  New release
+  Drop xine backend support, because it is not maintained in gentoo
+  Add faad support
+
+  21 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rhythmbox-0.6.8.ebuild:
+  Inherit eutils.
+
+*rhythmbox-0.8.0-r1 (20 Apr 2004)
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rhythmbox-0.8.0-r1.ebuild, rhythmbox-0.8.0.ebuild:
+  Fixed DEPs. Other ebuild cleanup per foser's request. Bump due to
+  gst-plugins-ogg DEP being added.
+
+*rhythmbox-0.8.0 (16 Apr 2004)
+
+  16 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rhythmbox-0.8.0.ebuild:
+  Version Bump.
+
+  15 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  rhythmbox-0.6.1-r1.ebuild, rhythmbox-0.6.8.ebuild:
+  Filter out -ffast-math.  Closes bug #47183.
+
+  03 Apr 2004; foser <foser@gentoo.org> rhythmbox-0.6.{1,8}.ebuild :
+  Fix gst deps
+
+  28 Mar 2004; <liquidx@gentoo.org> rhythmbox-0.6.8.ebuild:
+  install schemas manually (#45417)
+
+  18 Mar 2004; L. Boshell <leonardop@gentoo.org> rhythmbox-0.6.5.ebuild:
+  Inherit from eutils.
+
+  06 Mar 2004; foser <foser@gentoo.org> rhythmbox-0.6.8.ebuild :
+  Fixed flac switch, so it now actually works the way it should
+  Had to fix deps & configure switch usage accordingly
+
+*rhythmbox-0.6.8 (06 Mar 2004)
+
+  06 Mar 2004; Alastair Tse <liquidx@gentoo.org> rhythmbox-0.6.3.ebuild,
+  rhythmbox-0.6.4.ebuild, rhythmbox-0.6.5.ebuild, rhythmbox-0.6.7.ebuild:
+  this time we fix the amd64 patch as well.
+
+  06 Mar 2004; foser <foser@gentoo.org> rhythmbox-0.6.8.ebuild :
+  new release
+
+*rhythmbox-0.6.7 (06 Mar 2004)
+
+  06 Mar 2004; Alastair Tse <liquidx@gentoo.org> rhythmbox-0.6.7.ebuild:
+  version bump (#43158)
+
+  25 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> rhythmbox-0.6.5.ebuild:
+  Adding patch from upstream submitted by Benjamin Schindler <config@gmx.ch> in
+  #41509.
+
+  12 Feb 2004; L. Boshell <leonardop@gentoo.org> rhythmbox-0.6.5.ebuild,
+  files/rhythmbox-0.6.5-gcc2_fix.patch:
+  Added patch to make it compile with gcc-2.
+
+*rhythmbox-0.6.5 (22 Jan 2004)
+
+  22 Jan 2004; <spider@gentoo.org> rhythmbox-0.6.5.ebuild:
+  New release
+
+*rhythmbox-0.6.4 (12 Jan 2003)
+
+  12 Jan 2003; foser <foser@gentoo.org> rhythmbox-0.6.4.ebuild :
+  New release
+
+*rhythmbox-0.6.3 (23 Dec 2003)
+
+  23 Dec 2003; foser <foser@gentoo.org> rhythmbox-0.6.3.ebuild :
+  New release
+
+*rhythmbox-0.6.2 (20 Dec 2003)
+
+  20 Dec 2003; foser <foser@gentoo.org> rhythmbox-0.6.2.ebuild :
+  New release
+  up xine-lib dep to rc3 (http://mail.gnome.org/archives/rhythmbox-devel/2003-December/msg00132.html)
+
+*rhythmbox-0.6.1-r1 (25 Nov 2003)
+
+  25 Nov 2003; foser <foser@gentoo.org> rhythmbox-0.6.1-r1.ebuild :
+  Add mp4 support by faad USE flag and dependency
+
+*rhythmbox-0.6.1 (22 Nov 2003)
+
+  22 Nov 2003; <spider@gentoo.org> rhythmbox-0.6.1.ebuild:
+  Versionbump
+
+  20 Nov 2003; Luca Barbato <lu_zero@gentoo.org> rhythmbox-0.6.0.ebuild:
+  Marked ~ppc
+
+*rhythmbox-0.6.0 (15 Nov 2003)
+
+  15 Nov 2003; foser <foser@gentoo.org> rhythmbox-0.6.0.ebuild :
+  New release
+
+*rhythmbox-0.5.4 (30 Oct 2003)
+
+  30 Oct 2003; foser <foser@gentoo.org> rhythmbox-0.5.4.ebuild :
+  New version, minor deps cleanup
+  Limit buildjobs to 1 to avoid breakage
+
+*rhythmbox-0.5.3 (09 Sep 2003)
+
+  13 Oct 2003; foser <foser@gentoo.org> rhythmbox-0.5.3.ebuild :
+  add scrollkeeper dep (#30911)
+
+  06 Oct 2003; foser <foser@gentoo.org> rhythmbox-0.5.3.ebuild :
+  Added local USE flag for flac support
+
+  21 Sep 2003; foser <foser@gentoo.org> rhythmbox-0.5.3.ebuild :
+  Added ORBit2 fix as suggested by TGL <degrenier@easyconnect.fr> in (#28739)
+  Always regenerate orbit stubs
+
+  12 Sep 2003; foser <foser@gentoo.org> rhythmbox-0.5.3.ebuild :
+  Fix gst-plugins-* deps, they moved
+
+  09 Sep 2003; foser <foser@gentoo.org> rhythmbox-0.5.3.ebuild :
+  New version, adapted to new gst-plugins eclass
+  Added mad, oggvorbis and xine (local) USE 
+  Taken dep hint from 27688 and omf fix provided by Obz
+
+*rhythmbox-0.5.1 (19 Aug 2003)
+
+  19 Aug 2003; Nick Hadaway <raker@gentoo.org> rhythmbox-0.5.1.ebuild:
+  Version bump and added gstreamer support into the build along with a
+  big fat warning if gstreamer isn't in USE. :)
+
+*rhythmbox-0.5.0 (17 Aug 2003)
+
+  17 Aug 2003; Nick Hadaway <raker@gentoo.org> rhythmbox-0.5.0.ebuild:
+  New ebuild.  See bug #26789 for the plea.  gstreamer support will
+  be added in once gst-plugins-{vorbis,cdparanois} are unmasked and
+  the mad plugin is added to portage.

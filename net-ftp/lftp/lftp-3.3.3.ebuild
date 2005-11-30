@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/lftp-3.3.3.ebuild,v 1.1 2005/11/13 12:35:48 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/lftp/lftp-3.3.3.ebuild,v 1.1.1.1 2005/11/30 09:36:21 chriswhite Exp $
 
 DESCRIPTION="A sophisticated ftp/http client, file transfer program"
 HOMEPAGE="http://ftp.yars.free.net/projects/lftp/"

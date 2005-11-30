@@ -1,6 +1,133 @@
-# ChangeLog for net-www/wordpress
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/ChangeLog,v 1.1 2004/08/15 15:56:24 stuart Exp $
+# ChangeLog for www-apps/wordpress
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/wordpress/ChangeLog,v 1.1.1.1 2005/11/30 09:37:12 chriswhite Exp $
+
+  20 Nov 2005; Stuart Herbert <stuart@gentoo.org> wordpress-1.5.1.3.ebuild,
+  wordpress-1.5.2.ebuild:
+  Fixed broken DEPEND
+
+  21 Aug 2005; Olivier Crête <tester@gentoo.org> wordpress-1.5.2.ebuild:
+  Stable on x86 per security bug #102002
+
+  16 Aug 2005; Jason Wever <weeve@gentoo.org> wordpress-1.5.2.ebuild:
+  Stable on SPARC wrt bug #102002.
+
+  15 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wordpress-1.5.2.ebuild:
+  Stable on ppc.
+
+  15 Aug 2005; Aaron Kulbe <superlag@gentoo.org> wordpress-1.5.2.ebuild:
+  Setting proper keywords. Sorry guys.
+
+*wordpress-1.5.2 (15 Aug 2005)
+
+  15 Aug 2005; Aaron Kulbe <superlag@gentoo.org> +wordpress-1.5.2.ebuild:
+  Version bump. Cleans up issues in bug #102002
+
+  20 Jul 2005; Aaron Kulbe <superlag@gentoo.org> wordpress-1.5.1.3.ebuild:
+  Tidy up all vulnerable versions: -wordpress-1.2.2.ebuild
+  -wordpress-1.5.ebuild -wordpress-1.5.1.2.ebuild
+  -files/digest-wordpress-1.2.2 -files/digest-wordpress-1.5
+  -files/digest-wordpress-1.5.1.2
+
+  20 Jul 2005; Aaron Kulbe <superlag@gentoo.org> wordpress-1.5.1.3.ebuild:
+  Removed deprecated webapp_runbycgibin calls.  Bug #99292
+
+  04 Jul 2005; Aaron Kulbe <superlag@gentoo.org> wordpress-1.5.1.3.ebuild:
+  Stable on amd64 and x86.
+
+  03 Jul 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wordpress-1.5.1.3.ebuild:
+  Stable on ppc.
+
+  02 Jul 2005; Jason Wever <weeve@gentoo.org> wordpress-1.5.1.3.ebuild:
+  Stable on SPARC wrt security bug #97374.
+
+  30 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wordpress-1.5.1.3.ebuild:
+  Readded to ~ppc. Please *don't drop arch keywords*. Thanks.
+
+*wordpress-1.5.1.3 (30 Jun 2005)
+
+  30 Jun 2005; Aaron Kulbe <superlag@gentoo.org> +wordpress-1.5.1.3.ebuild:
+  Bumping to 1.5.1.3, to address issues in Bug #97374.  ~amd64, ~x86
+
+  28 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wordpress-1.5.1.2.ebuild:
+  Stable on ppc.
+
+  27 May 2005; Jason Wever <weeve@gentoo.org> wordpress-1.5.1.2.ebuild:
+  Stable on SPARC wrt security bug #88926.
+
+  27 May 2005; Aaron Kulbe <superlag@gentoo.org> wordpress-1.5.1.2.ebuild:
+  Since this is a security release, marking stable on amd64 and x86
+
+*wordpress-1.5.1.2 (27 May 2005)
+
+  27 May 2005; Aaron Kulbe <superlag@gentoo.org> +wordpress-1.5.1.2.ebuild:
+  Bumping to 1.5.1.2, keywording for all arches, removing from package.mask,
+  per #88926
+
+  12 May 2005; Aaron Kulbe <superlag@gentoo.org> wordpress-1.5.ebuild:
+  Keywording for ~amd64
+
+  27 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> wordpress-1.5.ebuild:
+  Stable on sparc wrt #88926
+
+  20 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> wordpress-1.5.ebuild:
+  Stable on ppc.
+
+*wordpress-1.5 (20 Apr 2005)
+
+  20 Apr 2005; Elfyn McBratney <beu@gentoo.org> +files/dummy-templates.php,
+  +wordpress-1.5.ebuild:
+  Version bump, fixes security bug #88926.  Stable on x86.
+
+  02 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/wordpress-1.0.2.gentoo.diff, -files/1.2/login-patch.diff,
+  -files/1.2/postinstall-en.txt, -files/1.2.1/login-patch.diff,
+  -files/1.2.1/postinstall-en.txt, -wordpress-1.0.2.ebuild,
+  -wordpress-1.2-r1.ebuild, -wordpress-1.2.1.ebuild, -wordpress-1.2.ebuild:
+  Tidy all vulnerable ebuilds <1.2.2.
+
+  18 Dec 2004; Jason Wever <weeve@gentoo.org> wordpress-1.2.2.ebuild:
+  Stable on sparc wrt security bug #74649.
+
+  18 Dec 2004; Jason Wever <weeve@gentoo.org> wordpress-1.2-r1.ebuild:
+  Stable on sparc.
+
+*wordpress-1.2.2 (18 Dec 2004)
+
+  18 Dec 2004; Stuart Herbert <stuart@gentoo.org> +wordpress-1.2.2.ebuild:
+  Version bump; fixes bug 74649; thanks to Peter Westwood
+  (peter.westwood@ftwr.co.uk) for his help
+
+  12 Oct 2004; <SeJo@gentoo.org> :
+  stable on ppc gsla: 65798
+
+*wordpress-1.2.1 (08 Oct 2004)
+
+  08 Oct 2004; Stuart Herbert <stuart@gentoo.org> +wordpress-1.2.1.ebuild:
+  Version bump; fixes security bug #65798; thanks to Peter Westwood
+  <peter.westwood@ftwr.co.uk> for testing
+
+  08 Sep 2004; Renat Lumpau <rl03@gentoo.org> metadata.xml:
+  Fixed herd name
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wordpress-1.0.2.ebuild, wordpress-1.2-r1.ebuild, wordpress-1.2.ebuild:
+  Masked wordpress-1.2.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wordpress-1.0.2.ebuild, wordpress-1.2-r1.ebuild:
+  Masked wordpress-1.2-r1.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  wordpress-1.0.2.ebuild:
+  Masked wordpress-1.0.2.ebuild stable for ppc
 
 *wordpress-1.2 (15 Aug 2004)
 

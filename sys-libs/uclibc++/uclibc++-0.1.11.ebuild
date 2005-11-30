@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc++/uclibc++-0.1.11.ebuild,v 1.1 2005/07/02 17:12:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc++/uclibc++-0.1.11.ebuild,v 1.1.1.1 2005/11/30 09:39:10 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 

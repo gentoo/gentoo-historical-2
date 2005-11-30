@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/abcde/abcde-2.2.0.ebuild,v 1.1 2005/03/12 16:08:25 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/abcde/abcde-2.2.0.ebuild,v 1.1.1.1 2005/11/30 09:37:51 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.hispalinux.es/~data/files/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 ~amd64 ~ppc ~ppc64"
 IUSE=""
 
 DEPEND=">=media-sound/id3-0.12
@@ -18,7 +18,7 @@ DEPEND=">=media-sound/id3-0.12
 	>=media-sound/cdparanoia-3.9.7
 	>=media-sound/vorbis-tools-1.0_rc3
 	media-sound/id3v2
-	>=media-libs/flac-1*
+	>=media-libs/flac-1
 	>=media-sound/normalize-0.7.4"
 
 src_unpack() {

@@ -1,2 +1,6 @@
-MD5 41d97343a22f44321e8c7f062d0d4511 poc-0.4.1.ebuild 426
+MD5 5bf67e162160ed10696f6a7fbd9b967f ChangeLog 404
+MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
+MD5 5b080febad9cc8359ac57d1cc3c20f11 poc-0.4.1.ebuild 831
 MD5 85c8e3877f2983937b9172a1d78a36aa files/digest-poc-0.4.1 61
+MD5 ee2d925c329ebaf40933bfb65b0fd4eb files/poc-0.4.1-fec-pkt-prototype.patch 214
+MD5 8a34db148f26bb79f24b9ed0d2253a4a files/poc-0.4.1-file-perms.patch 269

@@ -1,18 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-audio-connection-kit/jack-audio-connection-kit-0.80.0.ebuild,v 1.1 2003/09/16 13:51:32 tigger Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-audio-connection-kit/jack-audio-connection-kit-0.80.0.ebuild,v 1.1.1.1 2005/11/30 09:38:08 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
 IUSE="doc debug jack-tmpfs"
 
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://jackit.sourceforge.net/"
 SRC_URI="mirror://sourceforge/jackit/${P}.tar.gz"
+RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc amd64"
 
 DEPEND=">=media-libs/alsa-lib-0.9.1
 	>=media-libs/libsndfile-1.0.0
@@ -22,9 +23,17 @@ DEPEND=">=media-libs/alsa-lib-0.9.1
 	doc? ( app-doc/doxygen )
 	!media-sound/jack-cvs"
 
-PROVIDE="virtual/jack"
 
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-alsalib-fix.patch || \
+		die "Alsalib-1.0 patch failed"
+	epatch ${FILESDIR}/${PN}-doc-option.patch || \
+		die "Documentation configure option patch failed"
+	autoconf
+}
 
 src_compile() {
 	local myconf
@@ -36,8 +45,8 @@ src_compile() {
 	cd $S
 	sed -i "s/^CFLAGS=\$JACK_CFLAGS/CFLAGS=\"\$JACK_CFLAGS $myarch\"/" configure
 	use doc \
-		&& myconf="--with-html-dir=/usr/share/doc/${PF}/html" \
-		|| myconf="--without-html-dir"
+		&& myconf="--enable-html-docs --with-html-dir=/usr/share/doc/${PF}/html" \
+		|| myconf="--disable-html-docs"
 
 	use jack-tmpfs && myconf="${myconf} --with-default-tmpdir=/dev/shm"
 	use debug && myconf="${myconf} --enable-debug"

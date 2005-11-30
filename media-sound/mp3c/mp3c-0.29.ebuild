@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3c/mp3c-0.29.ebuild,v 1.1 2004/06/08 05:10:54 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3c/mp3c-0.29.ebuild,v 1.1.1.1 2005/11/30 09:38:25 chriswhite Exp $
 
 IUSE="oggvorbis"
 
@@ -10,19 +10,14 @@ SRC_URI="ftp://excelsior.kullen.rwth-aachen.de/pub/linux/wspse/${P}.tar.gz"
 
 DEPEND="media-sound/lame
 	>=media-sound/mp3info-0.8.4-r1
-	app-cdr/cdrtools
+	virtual/cdrtools
 	oggvorbis? ( media-libs/libvorbis )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
-
-src_compile() {
-	econf || die "./configure failed"
-	emake || die "make failed"
-}
+KEYWORDS="x86 ~ppc amd64 sparc"
 
 src_install () {
 	make DESTDIR="${D}" install || die
-	dodoc AUTHORS *README BUGS CDDB_HOWTO COPYING ChangeLog FAQ NEWS OTHERS TODO
+	dodoc AUTHORS *README BUGS CDDB_HOWTO ChangeLog FAQ NEWS OTHERS TODO
 }

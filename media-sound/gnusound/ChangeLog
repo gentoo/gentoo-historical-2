@@ -1,6 +1,35 @@
 # ChangeLog for media-sound/gnusound
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnusound/ChangeLog,v 1.1 2004/02/11 21:19:33 jake Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnusound/ChangeLog,v 1.1.1.1 2005/11/30 09:38:13 chriswhite Exp $
+
+*gnusound-0.7 (27 Apr 2005)
+
+  27 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/gnusound-0.7-destdir.patch, +gnusound-0.7.ebuild:
+  new upstream version, fixes #90560. added ~amd64 back, seems to work now.
+
+  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/gnusound-0.6.2-destdir.patch, +files/gnusound-0.6.2-gcc34.patch,
+  -gnusound-0.6.1.ebuild, gnusound-0.6.2.ebuild:
+  Cleaned up and added to -amd64, -sparc.
+
+  08 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  gnusound-0.6.2.ebuild, +files/gnusound-0.6.2-gtkdep.patch:
+  Patch to fix compilation with new versions of gtk/glib.
+
+  06 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnusound-0.6.2.ebuild:
+  gnuconfig_update
+
+*gnusound-0.6.2 (26 Mar 2004)
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnusound-0.6.2.ebuild:
+  Version bump.
+
+  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  gnusound-0.6.1.ebuild:
+  Stable in x86.  Fixed USE flags
 
 *gnusound-0.6.1 (11 Feb 2004)
 

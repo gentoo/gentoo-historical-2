@@ -1,3 +1,7 @@
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.37.ebuild,v 1.1.1.1 2005/11/30 09:37:44 chriswhite Exp $
+
 inherit flag-o-matic eutils python
 
 #IUSE="sdl jpeg png mozilla truetype static fmod"
@@ -9,7 +13,7 @@ SRC_URI="http://download.blender.org/source/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="|| (GPL-2 BL)"
-KEYWORDS="~ppc ~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND="virtual/x11
 	media-libs/libsdl
@@ -43,7 +47,6 @@ src_unpack() {
 src_compile() {
 	local myconf=""
 
-	replace-flags -march=pentium4 -march=pentium3
 	scons -q
 
 	# SDL Support

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xd3d/xd3d-8.2.1.ebuild,v 1.1 2004/12/24 03:00:27 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xd3d/xd3d-8.2.1.ebuild,v 1.1.1.1 2005/11/30 09:37:19 chriswhite Exp $
 
 DESCRIPTION="scientific visualization tool"
 
@@ -11,14 +11,16 @@ LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 
 IUSE="icc"
 
 RDEPEND="virtual/x11 \
 	icc? ( dev-lang/icc dev-lang/ifc )"
 
-DEPEND="${RDEPEND} sys-apps/which"
+DEPEND="${RDEPEND}
+	sys-apps/which
+	app-shells/tcsh"
 
 src_unpack() {
 	unpack ${A}

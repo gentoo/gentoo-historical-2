@@ -1,13 +1,279 @@
 # ChangeLog for media-gfx/blender
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/ChangeLog,v 1.1.1.1 2005/11/30 09:37:44 chriswhite Exp $
+
+  02 Nov 2005; Jory A. Pratt <anarchy@gentoo.org>
+  +files/blender-2.37a-x86_64.patch:
+  patch added wrt bug #111237
+
+  31 Oct 2005; Simon Stelling <blubb@gentoo.org>
+  +files/blender-2.37a-gcc-4.0.patch, blender-2.37a.ebuild:
+  adding patch to make blender work with gcc 4.0
+
+  23 Aug 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.37a.ebuild:
+  BSD support
+
+  02 Aug 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.37a.ebuild:
+  Make sure blender can build, the newer scons are problematic
+
+*blender-2.37a (17 Jun 2005)
+
+  17 Jun 2005; Luca Barbato <lu_zero@gentoo.org>
+  +files/blender-2.37a-dirs.patch, +blender-2.37a.ebuild:
+  New version
+
+  16 Jun 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.37.ebuild:
+  Minor change, as requested in bug #96105
+
+  14 Jun 2005; Ferris McCormick <fmccor@gentoo.org> blender-2.37.ebuild:
+  Add ~sparc keyword.  Blender builds on sparc without incident, and
+  appears to run.  In the past, there have been endian problems with
+  blender and loading .blend files, and I have not tested this.  I
+  built blender in response to a (non-sparc) user question regarding
+  the necessity of emerging mesa as a separate package in order to
+  build blender.  (1) You don't have to; (2) blender does build and
+  run on sparc, and it's a nice program.  Hence, the ~sparc.
+
+  12 Jun 2005; Marcus D. Hanwell <marcus@gentoo.org> blender-2.36-r1.ebuild:
+  Stable on amd64.
+
+  03 Jun 2005; Luca Barbato <lu_zero@gentoo.org> metadata.xml:
+  Metadata fix
+
+  02 Jun 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.37.ebuild:
+  Missing cvs header
+
+*blender-2.37 (01 Jun 2005)
+
+  01 Jun 2005; Luca Barbato <lu_zero@gentoo.org>
+  +files/blender-2.37-dirs.patch, +blender-2.37.ebuild:
+  New version and some cleanups
+
+  26 Apr 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.36-r1.ebuild:
+  inheriting python eclass
+
+  07 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> blender-2.36-r1.ebuild:
+  Added ~amd64 back into KEYWORDS.
+
+  28 Feb 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.36-r1.ebuild:
+  Marked ppc
+
+  28 Feb 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.36-r1.ebuild:
+  Marked x86
+
+  22 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> blender-2.36-r1.ebuild:
+  fix use invocation
+
+  04 Jan 2005; Luca Barbato <lu_zero@gentoo.org> blender-2.36-r1.ebuild:
+  Minor fix
+
+*blender-2.36-r1 (03 Jan 2005)
+
+  03 Jan 2005; Luca Barbato <lu_zero@gentoo.org> +blender-2.36-r1.ebuild,
+  +files/blender-2.36-dirs.patch:
+  Make it use saner paths, added back plugins, scripts and internationalization
+
+  03 Jan 2005; Luca Barbato <lu_zero@gentoo.org> -files/blender-2.12,
+  -files/blender-2.31a-plugins.patch, -blender-2.33a.ebuild.
+  -files/configure-fix-2.30.patch, -files/configure-fix-2.31.patch,
+  -files/configure-fix-2.31a.patch, -blender-2.30.ebuild,
+  -blender-2.31.ebuild, -blender-2.31a.ebuild, -blender-2.32.ebuild:
+  Cleanups
+
+*blender-2.36 (25 Dec 2004)
+
+  25 Dec 2004; Luca Barbato <lu_zero@gentoo.org> +blender-2.36.ebuild:
+  New version
+
+*blender-2.34-r1 (24 Dec 2004)
+
+  24 Dec 2004; Luca Barbato <lu_zero@gentoo.org> +blender-2.34-r1.ebuild:
+  Added back plugins and scripts
+
+  16 Nov 2004; Luca Barbato <lu_zero@gentoo.org> blender-2.35.ebuild:
+  Fixed keywords
+
+*blender-2.35 (16 Nov 2004)
+
+  16 Nov 2004; Luca Barbato <lu_zero@gentoo.org> +blender-2.35.ebuild:
+  New version
+
+  28 Oct 2004; Sven Wegener <swegener@gentoo.org> :
+  Removed stray digests.
+
+  28 Oct 2004; Luca Barbato <lu_zero@gentoo.org> -blender-2.23-r1.ebuild,
+  -blender-2.26.ebuild, -blender-2.27.ebuild, -blender-2.28.ebuild,
+  -blender-2.28a.ebuild, -blender-2.28c.ebuild, blender-2.30.ebuild,
+  blender-2.31.ebuild, blender-2.31a.ebuild, blender-2.32.ebuild,
+  blender-2.33a.ebuild, blender-2.34.ebuild:
+  Marked x86 and ppc, global cleanup
+
+  09 Aug 2004; Luca Barbato <lu_zero@gentoo.org> blender-2.34.ebuild:
+  Forcing blender-game, otherwise blender won't build
+
+*blender-2.34 (07 Aug 2004)
+
+  07 Aug 2004; Luca Barbato <lu_zero@gentoo.org> +blender-2.34.ebuild:
+  New version
+
+  21 Jul 2004; Luca Barbato <lu_zero@gentoo.org> :
+  Missing digest added
+
+  20 Jul 2004; Luca Barbato <lu_zero@gentoo.org> blender-2.33a.ebuild:
+  Typo in the patch URI
+
+  19 Jul 2004; Luca Barbato <lu_zero@gentoo.org> blender-2.28c.ebuild,
+  blender-2.33a.ebuild:
+  New version eventually ~arch, minor fix on IUSE
+
+  13 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> blender-2.33a.ebuild:
+  header fix; replace-flags in src_compile; whitespace cleanup
+
+*blender-2.33a (12 Jul 2004)
+
+  12 Jul 2004; Luca Barbato <lu_zero@gentoo.org> +blender-2.33a.ebuild:
+  Version bumped and marked -* since it has a feature regression
+
+  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> blender-2.28.ebuild,
+  blender-2.28a.ebuild, blender-2.28c.ebuild:
+  Fix use invocation
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> blender-2.28c.ebuild,
+  blender-2.30.ebuild, blender-2.31.ebuild, blender-2.31a.ebuild,
+  blender-2.32.ebuild:
+  Add inherit eutils
+
+  09 Apr 2004; Luca Barbato <lu_zero@gentoo.org> blender-2.32.ebuild:
+  Added a missing useflag to the IUSE, thanks to Carlo <current@myrealbox.com>
+  for pointing it at bug #47244
+
+  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> blender-2.26.ebuild,
+  blender-2.28.ebuild, blender-2.28a.ebuild, blender-2.28c.ebuild,
+  blender-2.30.ebuild, blender-2.31.ebuild, blender-2.31a.ebuild,
+  blender-2.32.ebuild:
+  adding categorie. see 45110 for details
+
+  07 Mar 2004; Jon Portnoy <avenj@gentoo.org> :
+  Removed AMD64 keywords from all versions prior to 2.32. 
+  Added !amd64() contruct for dev-games/ode.
+
+  18 Feb 2004; <augustus@gentoo.org> blender-2.32.ebuild:
+  Made 2.32 testing ~amd64.
+
+*blender-2.32 (04 Feb 2004)
+
+  04 Feb 2004; Luca Barbato <lu_zero@gentoo.org> blender-2.32.ebuild,
+  files/blender-2.32.patch:
+  New blender release
+
+  07 Dec 2003; Brandy Westcott brandy@gentoo.org blender-2.31a.ebuild:
+  Added blender.desktop file.
+
+*blender-2.31a (05 Dec 2003)
+
+  05 Dec 2003; Brandy Westcott brandy@gentoo.org blender-2.31a.ebuild:
+  Bumped to 2.31a; added patch so we can compile plugins.
+
+  04 Dec 2003; Brandy Westcott brandy@gentoo.org
+  files/configure-fix-2.31.patch:
+  Fixed configure-fix-2.31.patch header. Thanks to ferret
+  <james.noble@worc.ox.ac.uk> to pointing this out.
+
+*blender-2.31 (04 Dec 2003)
+
+  04 Dec 2003; Luca Barbato <lu_zero@gentoo.org> blender-2.28c.ebuild,
+  blender-2.31.ebuild, files/configure-fix-2.31.patch:
+  new version, thanks to Bjarke Freund-Hansen <gentoo-bugzilla@rocekiller.dk>
+  and Tarmo TÃÂ¤nav <sn4ip3r@estprog.ee>
+
+  08 Nov 2003; Brad House <brad_mssw@gentoo.org> blender-2.30.ebuild:
+  add ~amd64 flag
+
+*blender-2.30 (07 Nov 2003)
+
+  07 Nov 2003; Philip Walls <malverian@gentoo.org> blender-2.30.ebuild 
+  files/configure-fix-2.30.patch metadata.xml:
+  Version bump, changed to "use foo && ..." instead of ifs. Thanks to 
+  Dan Bryant <dan@omega.blackdaemon.net> in bug #32585 for configure 
+  patch. Cleaned up ChangeLog.
+
+*blender-2.28c (11 Oct 2003)
+
+  30 Oct 2003; Luca Barbato <lu_zero@gentoo.org> blender-2.28c.ebuild:
+  Moved to stable
+
+  11 Oct 2003; Luca Barbato <lu_zero@gentoo.org> blender-2.28c.ebuild, 
+  blender-2.27.ebuild :
+  Minor fixes, blender-2.27 bumped to stable for ppc and x86
+
+  11 Oct 2003; Bart Lauwers <blauwers@gentoo.org> blender-2.28c.ebuild :
+  Version bump.
+
+*blender-2.28a (26 Jul 2003)
+
+  30 Sep 2003; Michael Sterrett <mr_bones_@gentoo.org> blender-2.28.ebuild,
+  blender-2.28a.ebuild:
+  Massive whitespace cleanup
+
+  30 Sep 2003; Luca Barbato <lu_zero@gentoo.org> blender-2.28a.ebuild :
+  Version bump.
+
+  26 Jul 2003; Luca Barbato <lu_zero@gentoo.org> blender-2.28.ebuild :
+  Version bump.
+
+*blender-2.27 (25 May 2003)
+
+  25 May 2003; Thomas Raschbacher <lordvan@gentoo.org> blender-2.27.ebuild:
+  Version bump
+	
+*blender-2.26 (12 Feb 2003)
+
+  27 May 2003; Hanno Boeck <hanno@gentoo.org> blender-2.26.ebuild,
+  blender-2.27.ebuild:
+  Changed license, it must be GPL-2 or BL, not both.
+
+  18 Apr 2003; Philip Walls <malverian@gentoo.org> blender-2.26.ebuild :
+  Strip Pentium4 -march flag. Fixes bug #19526
+
+  12 Feb 2003; Hanno Boeck <hanno@gentoo.org> blender-2.26.ebuild :
+  Version bump.
+
+*blender-2.26_pre20030109 (10 Jan 2003)
+
+  12 Jan 2003; Martin Holzer <mholzer@gentoo.org> :
+  Changed Homepage. Closes #13707
+
+  10 Jan 2003; Kain <kain@kain.org> : blender-2.26_pre20030109.ebuild
+  files/digest-blender-2.26_pre20030109
+  Blender CVS snapshot source build for 2.26.  I figured this would be decent
+  to work with, since Blender CVS is in feature freeze at the moment.  This
+  blender works with autoconf and has GCC-3 fixes, so it builds (and runs!)
+  for me on PPC and x86.  Testers wanted.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*blender-2.23-r1 (13 Feb 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*blender-2.23 (15 Oct 2002)
+
+  15 Oct 2002; Matt Keadle <mkeadle@gentoo.org> blender-2.23-r1.ebuild
+  files/digest-blender-2.23-r1
+
+  Added sys-libs/lib-compat to RDEPEND
+
+*blender-2.23 (19 August 2002)
+
+  19 August 2002; Sascha Schwabbauer <cybersystem@gentoo.org> ChangeLog, blender-2.23.ebuild :
+
+  Added -ppc to the keywords.
+
+*blender-2.23 (15 Jun 2002)
+
+  15 Jun 2002; Daniel Robbins <drobbins@gentoo.org> : The final Blender release;
+  no longer mirrored at blender.nl so we now download it from an unofficial mirror
+  (since there's no longer an official one :/ )
 
 *blender-2.22 (1 Feb 2002)
-
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
-  Added initial ChangeLog which should be updated whenever the package is
-  updated in any way. This changelog is targetted to users. This means that the
-  comments should well explained and written in clean English. The details about
-  writing correct changelogs are explained in the skel.ChangeLog file which you
-  can find in the root directory of the portage repository.

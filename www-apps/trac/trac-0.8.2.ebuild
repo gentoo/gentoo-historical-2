@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/trac/trac-0.8.2.ebuild,v 1.1 2005/06/01 19:59:32 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/trac/trac-0.8.2.ebuild,v 1.1.1.1 2005/11/30 09:37:11 chriswhite Exp $
 
 inherit distutils webapp
 
@@ -21,9 +21,14 @@ DEPEND="$DEPEND
 	app-text/silvercity
 	>=dev-util/subversion-1.0.3"
 
+POSTINST_PV="0.8.1"
+
 # need choice between enscript/silvercity/nothing
 # need choice between sqlite-3 + pysqlite-1.1 / sqlite-2.8 + pysqlite-1.0
 # need choice between mod_python/nothing
+#
+# NOTE: could someone please enlight me in why ${who} wrote those notes above?
+# What's been ${who}'s goals? -- trapni (2005-06-02 07:17 UTC)
 
 DOCS="AUTHORS COPYING ChangeLog INSTALL MANIFEST.in PKG-INFO README README.tracd RELEASE THANKS UPGRADE"
 
@@ -43,7 +48,9 @@ src_install () {
 	mv ${my_dir}/htdocs/* ${D}${MY_HTDOCSDIR} || die
 	rm -rf ${my_dir}/htdocs || die
 
-	webapp_postinst_txt en ${FILESDIR}/${PV}-postinst-en.txt
+	for lang in en; do
+		webapp_postinst_txt ${lang} ${FILESDIR}/${POSTINST_PV}-postinst-${lang}.txt
+	done
 
 	# the trac dir itself needs to be server-owned
 	# this should do the trick

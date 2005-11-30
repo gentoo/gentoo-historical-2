@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/foosball/foosball-0.92.ebuild,v 1.1 2003/10/25 09:58:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/foosball/foosball-0.92.ebuild,v 1.1.1.1 2005/11/30 09:39:02 chriswhite Exp $
 
 inherit games
 
@@ -10,11 +10,13 @@ SRC_URI="http://www.autismuk.freeserve.co.uk/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~amd64 ~ppc"
+IUSE=""
 
 DEPEND="media-libs/libsdl"
 
 src_install() {
-	emake install DESTDIR=${D} || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS ChangeLog README TODO
+	prepgamesdirs
 }

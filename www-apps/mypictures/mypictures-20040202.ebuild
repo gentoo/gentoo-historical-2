@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mypictures/mypictures-20040202.ebuild,v 1.1 2004/08/15 15:13:01 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mypictures/mypictures-20040202.ebuild,v 1.1.1.1 2005/11/30 09:36:57 chriswhite Exp $
 
 inherit webapp eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.splitbrain.org/Programming/PHP/mypictures/index.php"
 SRC_URI="http://www.splitbrain.org/Programming/PHP/mypictures/mypictures.tgz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ppc"
 IUSE=""
 
 DEPEND="sys-apps/sed"

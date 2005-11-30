@@ -1,26 +1,23 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-3.2.9-r7.ebuild,v 1.1 2003/08/17 08:09:17 pauldv Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-3.2.9-r7.ebuild,v 1.1.1.1 2005/11/30 09:39:14 chriswhite Exp $
 
-IUSE=""
+inherit libtool eutils
 
-inherit libtool
-inherit eutils
-
-S="${WORKDIR}/${P}"
 DESCRIPTION="Berkeley DB for transaction support in MySQL"
-SRC_URI="http://www.sleepycat.com/update/snapshot/${P}.tar.gz"
+SRC_URI="ftp://ftp.sleepycat.com/releases/${P}.tar.gz"
 HOMEPAGE="http://www.sleepycat.com/"
 
+IUSE=""
 SLOT="3"
 LICENSE="DB"
 # This ebuild is to be the compatibility ebuild for when db4 is put
 # in the tree.
-KEYWORDS="x86 ppc sparc alpha mips hppa arm"
+KEYWORDS="x86 ppc sparc alpha mips hppa amd64"
 
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc"
 DEPEND="${RDEPEND}
-	=sys-libs/db-1.85-r1
+	=sys-libs/db-1.85*
 	sys-devel/libtool
 	sys-devel/m4"
 # We need m4 too else build fails without config.guess
@@ -30,7 +27,7 @@ export CXXFLAGS="${CXXFLAGS/-fno-exceptions/-fexceptions}"
 
 src_unpack() {
 	unpack ${A}
-	
+
 	chmod -R ug+w *
 
 	cd ${WORKDIR}/${P}
@@ -53,6 +50,7 @@ src_unpack() {
 	# Fix invalid .la files
 	cd ${WORKDIR}/${P}/dist
 	rm -f ltversion.sh
+
 	# remove config.guess else we have problems with gcc-3.2
 	rm -f config.guess
 	sed -i "s,\(-D_GNU_SOURCE\),\1 ${CFLAGS}," configure
@@ -66,10 +64,11 @@ src_compile() {
 		--enable-cxx \
 		--enable-compat185 \
 		--enable-dump185 \
+		--libdir=/usr/$(get_libdir) \
 		--prefix=/usr"
 	# --enable-rpc aparently does not work .. should verify this
 	# at some stage ...
-	
+
 	# NOTE: we should not build both shared and static versions
 	#       of the libraries in the same build root!
 
@@ -84,7 +83,7 @@ src_compile() {
 	cd ${S}/build-shared
 	../dist/configure ${conf} \
 		--enable-shared || die
-		
+
 	# Parallel make does not work
 	MAKEOPTS="${MAKEOPTS} -j1"
 	einfo "Building ${P} (static)..."
@@ -100,8 +99,9 @@ src_install () {
 	make libdb=libdb-3.2.a \
 		libcxx=libcxx_3.2.a \
 		prefix=${D}/usr \
+		libdir=${D}/usr/$(get_libdir) \
 		install || die
-	
+
 	cd ${S}/build-static
 	cp libdb.a libdb-3.2.a
 	cp libdb_cxx.a libdb_cxx-3.2.a
@@ -111,18 +111,18 @@ src_install () {
 	cd ${D}/usr/include
 	mv *.h db3
 	ln db3/db.h db.h
-	
-	cd ${D}/usr/lib
+
+	cd ${D}/usr/$(get_libdir)
 	ln -s libdb-3.2.so libdb.so.3
 
 	# For some reason, db.so's are *not* readable by group or others,
 	# resulting in no one but root being able to use them!!!
 	# This fixes it -- DR 15 Jun 2001
-	cd ${D}/usr/lib
+	cd ${D}/usr/$(get_libdir)
 	chmod go+rx *.so
 	# The .la's aren't readable either
 	chmod go+r *.la
-	
+
 	cd ${S}
 	dodoc README LICENSE
 
@@ -139,7 +139,7 @@ src_install () {
 }
 
 fix_so () {
-	cd ${ROOT}/usr/lib
+	cd ${ROOT}/usr/$(get_libdir)
 	target=`find -type f -maxdepth 1 -name "libdb-*.so" |sort |tail -n 1`
 	[ -n "${target}" ] && ln -sf ${target//.\//} libdb.so
 	target=`find -type f -maxdepth 1 -name "libdb_cxx*.so" |sort |tail -n 1`
@@ -162,4 +162,3 @@ pkg_postinst () {
 pkg_postrm () {
 	fix_so
 }
-

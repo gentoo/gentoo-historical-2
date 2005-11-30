@@ -1,20 +1,23 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/squelch/squelch-1.0.1.ebuild,v 1.1 2002/12/19 19:08:28 danarmak Exp $
-inherit kde-functions
-S=${WORKDIR}/${P}
-DESCRIPTION="qt-based Ogg Vorbis player"
-SRC_URI="http://rikkus.info/arch/${P}.tar.gz"
-HOMEPAGE="http://rikkus.info/squelch.html"
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/squelch/squelch-1.0.1.ebuild,v 1.1.1.1 2005/11/30 09:38:11 chriswhite Exp $
 
-SLOT="0"
+inherit kde
+need-qt 3
+
+IUSE=""
+
+DESCRIPTION="qt-based Ogg Vorbis player"
+HOMEPAGE="http://rikkus.info/squelch.html"
+SRC_URI="http://rikkus.info/arch/${P}.tar.gz"
+
 LICENSE="MIT"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="~ppc ~sparc x86"
 
 DEPEND="media-libs/libvorbis
-	media-libs/libao"
-
-need-qt 3
+	media-libs/libao
+	=x11-libs/qt-3*"
 
 src_compile() {
 	./configure --prefix=/usr
@@ -23,6 +26,5 @@ src_compile() {
 
 src_install() {
 	dobin src/squelch
-	dodoc AUTHORS COPYING INSTALL README THANKS
+	dodoc AUTHORS README THANKS
 }
-

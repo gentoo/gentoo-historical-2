@@ -1,19 +1,19 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/skencil/skencil-0.6.16.ebuild,v 1.1 2004/02/09 22:59:21 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/skencil/skencil-0.6.16.ebuild,v 1.1.1.1 2005/11/30 09:37:27 chriswhite Exp $
 
 IUSE="nls"
-S=${WORKDIR}/${P}
 DESCRIPTION="Interactive X11 vector drawing program"
 SRC_URI="mirror://sourceforge/sketch/${P}.tar.gz"
-HOMEPAGE="http://sketch.sourceforge.net/"
-DEPEND=">=dev-python/Imaging-1.1.2-r1
+HOMEPAGE="http://www.skencil.org/"
+DEPEND=">=dev-python/imaging-1.1.2-r1
 	dev-python/reportlab
-	dev-lang/tk"
+	dev-lang/tk
+	dev-python/pyxml"
 RDEPEND="nls? ( sys-devel/gettext )"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 src_compile() {
 	use nls && useopts="${useopts} --with-nls"

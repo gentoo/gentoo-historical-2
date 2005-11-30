@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ecasound/ecasound-2.4.1.ebuild,v 1.1 2005/04/21 21:36:41 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ecasound/ecasound-2.4.1.ebuild,v 1.1.1.1 2005/11/30 09:38:15 chriswhite Exp $
 
 IUSE="ncurses arts alsa python oss mikmod oggvorbis jack audiofile"
 
@@ -80,15 +80,15 @@ src_install () {
 		cd ..
 	fi
 
-	dodoc INSTALL FAQ BUGS COPYING NEWS README TODO
+	dodoc FAQ BUGS NEWS README TODO
 	dohtml `find Documentation -name "*.html"`
 	dodoc Documentation/edi-list.txt
 }
 
 pkg_postinst() {
 	if use arts; then
-		ewarn "WARNING: You have requested ecasound ARTS support, 	"
-		ewarn "this is no longer supported and may go away in 		"
-		ewarn "future releases.										"
+		ewarn "WARNING: You have requested ecasound ARTS support,"
+		ewarn "this is no longer supported and may go away in"
+		ewarn "future releases."
 	fi
 }

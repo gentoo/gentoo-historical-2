@@ -1,6 +1,309 @@
 # ChangeLog for games-strategy/wesnoth
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/wesnoth/ChangeLog,v 1.1 2003/10/22 21:21:07 mr_bones_ Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/wesnoth/ChangeLog,v 1.1.1.1 2005/11/30 09:36:41 chriswhite Exp $
+
+  18 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> wesnoth-1.0.1.ebuild:
+  Stable on ppc.
+
+  14 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> wesnoth-1.0.1.ebuild:
+  Stable on sparc
+
+  14 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-1.0.1.ebuild:
+  stable for x86
+
+  07 Nov 2005; Brent Baude <ranger@gentoo.org> wesnoth-1.0.1.ebuild:
+  Marking wesnoth-1.0.1 ~ppc64 per bug 111430
+
+*wesnoth-1.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> +files/wesnothd.rc,
+  +wesnoth-1.0.1.ebuild:
+  version bump
+
+*wesnoth-0.9.7 (08 Sep 2005)
+
+  08 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.7.ebuild:
+  version bump
+
+*wesnoth-0.9.6 (29 Aug 2005)
+
+  29 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.6.ebuild:
+  version bump
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> wesnoth-0.9.5.ebuild:
+  Stable on amd64, closes bug 103542.
+
+  20 Aug 2005; Jason Wever <weeve@gentoo.org> wesnoth-0.9.5.ebuild:
+  Stable on SPARC.
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> wesnoth-0.9.5.ebuild:
+  Stable on ppc.
+
+  19 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.9.4.ebuild,
+  wesnoth-0.9.5.ebuild:
+  filter -fstack-protector again for bug #88899 - Upstream says it's a gcc-3
+  issue that is addressed in gcc-4.
+
+  17 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.9.5.ebuild:
+  stable for x86
+
+  09 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -wesnoth-0.9.1.ebuild, -wesnoth-0.9.2.ebuild, -wesnoth-0.9.3.ebuild:
+  clean old versions
+
+*wesnoth-0.9.5 (09 Aug 2005)
+
+  09 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.5.ebuild:
+  version bump
+
+*wesnoth-0.9.4 (24 Jul 2005)
+
+  24 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.4.ebuild:
+  version bump
+
+*wesnoth-0.9.3 (30 Jun 2005)
+
+  30 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.3.ebuild:
+  version bump
+
+  08 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.9.2.ebuild:
+  Fix error in packaging (bug #95466)
+
+*wesnoth-0.9.2 (07 Jun 2005)
+
+  07 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.2.ebuild:
+  version bump
+
+  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> wesnoth-0.8.10.ebuild,
+  wesnoth-0.8.11.ebuild, wesnoth-0.9.0.ebuild, wesnoth-0.9.1.ebuild:
+  Cleanup for bug #92745.
+
+*wesnoth-0.9.1 (26 Apr 2005)
+
+  26 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.1.ebuild:
+  version bump
+
+*wesnoth-0.9.0 (11 Apr 2005)
+
+  11 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +wesnoth-0.9.0.ebuild:
+  version bump
+
+*wesnoth-0.8.11 (22 Feb 2005)
+
+  22 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.8.11.ebuild:
+  version bump
+
+*wesnoth-0.8.7 (12 Feb 2005)
+
+  12 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.8.10.ebuild,
+  -wesnoth-0.8.7.ebuild, -wesnoth-0.8.8.ebuild, -wesnoth-0.8.9.ebuild:
+  filter more flags (bug #81749); clean old ebuilds
+
+*wesnoth-0.8.10 (07 Feb 2005)
+
+  07 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.8.10.ebuild:
+  version bump
+
+*wesnoth-0.8.9 (01 Feb 2005)
+
+  01 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.8.9.ebuild:
+  version bump (bug #79562); switch to lite use flag
+
+  20 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/0.8.4-conf.patch, -files/0.8.5-conf.patch, -wesnoth-0.8.1.ebuild,
+  -wesnoth-0.8.2.ebuild, -wesnoth-0.8.4.ebuild, -wesnoth-0.8.5.ebuild,
+  -wesnoth-0.8.ebuild:
+  clean old ebuilds
+
+*wesnoth-0.8.8 (05 Dec 2004)
+
+  05 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.8.8.ebuild:
+  version bump
+
+  02 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> :
+  version bump
+
+*wesnoth-0.8.5 (05 Oct 2004)
+
+  05 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.8.5-conf.patch, +wesnoth-0.8.5.ebuild:
+  version bump
+
+  12 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.8.4.ebuild:
+  use mirror: in SRC_URI; tidy
+
+*wesnoth-0.8.4 (11 Sep 2004)
+
+  11 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.8.4-conf.patch, +wesnoth-0.8.4.ebuild:
+  version bump; patched source to fix autotool mess from upstream
+
+  16 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.8.2.ebuild:
+  enable lite install knob (bug #60570)
+
+  15 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> -wesnoth-0.7.10.ebuild,
+  -wesnoth-0.7.11.ebuild:
+  clean version 0.7
+
+*wesnoth-0.8.2 (15 Aug 2004)
+
+  15 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.8.2.ebuild:
+  version bump
+
+*wesnoth-0.8.1 (03 Aug 2004)
+
+  03 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.8.1.ebuild:
+  version bump
+
+*wesnoth-0.8 (04 Jul 2004)
+
+  04 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.8.ebuild:
+  version bump
+
+*wesnoth-0.7.11 (28 Jun 2004)
+
+  28 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> +wesnoth-0.7.11.ebuild:
+  version bump
+
+*wesnoth-0.7.10 (21 Jun 2004)
+
+  21 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.10.ebuild:
+  version bump
+
+  11 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.6.ebuild,
+  wesnoth-0.7.7.ebuild:
+  clean older ebuilds
+
+*wesnoth-0.7.9 (11 Jun 2004)
+
+  11 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.9.ebuild:
+  version bump
+
+*wesnoth-0.7.8 (27 May 2004)
+
+  27 May 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.8.ebuild:
+  version bump
+
+*wesnoth-0.7.7 (24 May 2004)
+
+  24 May 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.7.ebuild:
+  version bump
+
+  03 May 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.1.ebuild,
+  wesnoth-0.7.2.ebuild, wesnoth-0.7.ebuild:
+  clean older ebuilds
+
+*wesnoth-0.7.6 (03 May 2004)
+
+  03 May 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.6.ebuild:
+  version bump; unsigned char issue is supposed to be fixed upstream so the
+  work around was removed.
+
+*wesnoth-0.7.5 (25 Apr 2004)
+
+  25 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.5.ebuild:
+  version bump
+
+  20 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.3.ebuild:
+  Work around for broken compile on ppc from Ernst Persson via bug #48326; tidy
+
+*wesnoth-0.7.3 (18 Apr 2004)
+
+  18 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.3.ebuild:
+  version bump
+
+*wesnoth-0.7.2 (09 Apr 2004)
+
+  09 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.2.ebuild:
+  version bump; added gnome and kde USE.
+
+  03 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  wesnoth-0.6.99.1.ebuild, wesnoth-0.6.99.2.ebuild, wesnoth-0.6.99.3.ebuild,
+  wesnoth-0.6.99.4.ebuild, wesnoth-0.6.99.5.ebuild:
+  cleaned version 0.6 from portage
+
+*wesnoth-0.7.1 (03 Apr 2004)
+
+  03 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.1.ebuild:
+  version bump
+
+*wesnoth-0.7 (19 Mar 2004)
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.7.ebuild:
+  version bump (bug #45171)
+
+  19 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org> wesnoth-0.6.99.5.ebuild:
+  ~sparc lovin
+
+  17 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  wesnoth-0.6.99.5.ebuild:
+  use emake -j1 (bug #44831)
+
+*wesnoth-0.6.99.5 (15 Mar 2004)
+
+  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  wesnoth-0.6.99.5.ebuild:
+  version bump (bug #44793)
+
+*wesnoth-0.6.99.4 (21 Feb 2004)
+
+  21 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  wesnoth-0.6.99.4.ebuild:
+  version bump
+
+*wesnoth-0.6.99.3 (16 Feb 2004)
+
+  16 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  wesnoth-0.6.99.3.ebuild:
+  version bump (bug #41619)
+
+*wesnoth-0.6.99.2 (06 Feb 2004)
+
+  06 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  wesnoth-0.6.99.2.ebuild:
+  version bump (bug #40458)
+
+*wesnoth-0.6.99.1 (28 Jan 2004)
+
+  28 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  wesnoth-0.6.99.1.ebuild:
+  version bump
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> wesnoth-0.6.1.ebuild:
+  set ppc in keywords
+
+*wesnoth-0.6.1 (03 Jan 2004)
+
+  03 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #36148 #35909.  Thanks to Russell Valentine <russ_allegro@yahoo.com>
+  and Arndt Faulhaber <arndt.faulhaber@diagnosdata.com>.
+
+*wesnoth-0.5.1 (10 Nov 2003)
+
+  29 Nov 2003; Brad House <brad_mssw@gentoo.org> wesnoth-0.5.1.ebuild:
+  mark stable on amd64
+
+  10 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.5.1.ebuild:
+  version bump
+
+  01 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.5.ebuild:
+  add DEPEND on sdl-net
+
+*wesnoth-0.5 (31 Oct 2003)
+
+  31 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> wesnoth-0.5.ebuild:
+  version bump
 
 *wesnoth-0.4.8 (22 Oct 2003)
 

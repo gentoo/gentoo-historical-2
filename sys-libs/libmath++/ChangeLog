@@ -1,9 +1,28 @@
-# ChangeLog for sys-libs/libmath++-0.0.3 
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libmath++/ChangeLog,v 1.1 2002/08/01 14:59:34 bass Exp $
+# ChangeLog for sys-libs/libmath++
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libmath++/ChangeLog,v 1.1.1.1 2005/11/30 09:39:10 chriswhite Exp $
 
-*sys-libs/libmath++-0.0.3 (1 Aug 2002)
+  17 Mar 2005; Christian Parpart <trapni@gentoo.org> libmath++-0.0.4.ebuild:
+  adding to amd64
 
-  1 Aug 2002; J. Alberto Su·rez LÛpez <bass@gentoo.org> libmath++-0.0.3.ebuild
+  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*libmath++-0.0.4 (25 Nov 2004)
+
+  25 Nov 2004; Christian Parpart <trapni@gentoo.org> libmath++-0.0.3.ebuild,
+  +libmath++-0.0.4.ebuild:
+  * version bump to 0.0.4 (contains bugfixes and gcc3.4 compile fixes)
+  * updated download URLs
+
+  30 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> libmath++-0.0.3.ebuild:
+  Add IUSE; use generic src_compile; install some docs
+
+  17 Apr 2004; Michael McCabe <randy@gentoo.org> libmath++-0.0.3.ebuild:
+  added s390 to keywords
+
+*libmath++-0.0.3 (1 Aug 2002)
+
+  1 Aug 2002; J. Alberto Su√°rez L√≥pez <bass@gentoo.org> libmath++-0.0.3.ebuild
   First relase 
 

@@ -1,12 +1,13 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/radiance/radiance-3.5.ebuild,v 1.1 2003/12/14 17:44:53 malverian Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/radiance/radiance-3.5.ebuild,v 1.1.1.1 2005/11/30 09:37:19 chriswhite Exp $
+
+inherit eutils
 
 MY_P=${P/./R}
 MY_P=${MY_P/radiance-/rad}
 
-# Compilation fails with multiple jobs here
-MAKEOPTS=""
+IUSE="X"
 
 DESCRIPTION="Radiance is a suite of programs for the analysis and visualization of lighting in design"
 HOMEPAGE="http://radsite.lbl.gov/radiance/"
@@ -16,16 +17,16 @@ LICENSE="Radiance"
 SLOT="0"
 KEYWORDS="~x86"
 
-RDEPEND="media-libs/tiff
-		virtual/x11"
-
-DEPEND="${RDEPEND}"
+DEPEND="media-libs/tiff
+	app-shells/tcsh
+	X? ( virtual/x11 dev-lang/tk )"
 
 src_unpack() {
-
 	unpack ${A}
 	cd ${WORKDIR}/ray
 	mkdir -p src/lib
+
+	use X ||  epatch ${FILESDIR}/${P}-noX11.patch
 
 	# patch to not build libtiff that comes with Radiance
 	cp src/px/Rmakefile src/px/Rmakefile.orig
@@ -41,7 +42,6 @@ src_unpack() {
 	cp src/cal/ev.c src/cal/ev.c.orig
 	sed -e "s/extern int  errno;/#include <errno.h>/g" \
 		src/cal/ev.c.orig > src/cal/ev.c
-
 }
 
 src_compile() {
@@ -54,7 +54,7 @@ src_compile() {
 	for i in $srcdirs ;
 	do
 		pushd $i
-		emake "SPECIAL=" \
+		make "SPECIAL=" \
 			"OPT=$CFLAGS -DSPEED=200" \
 			"MACH=-Dlinux -L/usr/X11R6/lib -I/usr/include/X11 -DNOSTEREO -DBIGMEM" \
 			ARCH=IBMPC "COMPAT=bmalloc.o erf.o getpagesize.o" \
@@ -89,6 +89,8 @@ src_install() {
 	doman doc/man/man3/*.3
 	doman doc/man/man5/*.5
 	prepallman
+
+	dodoc README
 
 	docinto notes
 	dodoc doc/notes/*

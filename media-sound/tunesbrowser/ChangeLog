@@ -1,6 +1,31 @@
 # ChangeLog for media-sound/tunesbrowser
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/tunesbrowser/ChangeLog,v 1.1 2004/09/04 19:53:31 squinky86 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tunesbrowser/ChangeLog,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
+
+*tunesbrowser-0.3.0 (29 Sep 2005)
+
+  29 Sep 2005; Daniel Drake <dsd@gentoo.org> +tunesbrowser-0.3.0.ebuild:
+  Version bump thanks to Andrew D and Joshua Jackson in bug #103301
+
+  02 Mar 2005; Tony Vroon <chainsaw@gentoo.org> tunesbrowser-0.1.6.ebuild,
+  tunesbrowser-0.2.0.ebuild:
+  Dependency update, closes bug #83616.
+
+*tunesbrowser-0.2.0 (22 Jan 2005)
+
+  22 Jan 2005; Daniel Drake <dsd@gentoo.org> +tunesbrowser-0.2.0.ebuild:
+  Version bump thanks to Matt Wolfzorn <mwolfzorn@gmail.com> in bug 79045
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tunesbrowser-0.1.6.ebuild:
+  Stable amd64.
+
+  05 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  tunesbrowser-0.1.6.ebuild:
+  Stable x86.  Added to ~amd64.
+
+  05 Sep 2004; Seemant Kulleen <seemant@gentoo.org> tunesbrowser-0.1.6.ebuild:
+  change musi to music
 
 *tunesbrowser-0.1.6 (04 Sep 2004)
 

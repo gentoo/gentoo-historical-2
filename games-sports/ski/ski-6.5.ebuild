@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/ski/ski-6.5.ebuild,v 1.1 2004/01/13 00:45:30 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/ski/ski-6.5.ebuild,v 1.1.1.1 2005/11/30 09:39:01 chriswhite Exp $
 
 inherit games
 
@@ -8,7 +8,7 @@ DESCRIPTION="A simple text-mode skiing game"
 HOMEPAGE="http://www.catb.org/~esr/ski/"
 SRC_URI="http://www.catb.org/~esr/ski/${P}.tar.gz"
 
-KEYWORDS="x86"
+KEYWORDS="x86 ~amd64 ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

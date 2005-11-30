@@ -1,6 +1,18 @@
-# ChangeLog for net-www/phpmp
+# ChangeLog for www-apps/phpmp
 # Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpmp/ChangeLog,v 1.1 2004/08/15 15:30:12 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phpmp/ChangeLog,v 1.1.1.1 2005/11/30 09:36:56 chriswhite Exp $
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> phpmp-0.11.0.ebuild:
+  Stable amd64, sparc.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  23 Aug 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> phpmp-0.11.0.ebuild:
+  Stable on alpha.
 
 *phpmp-0.10.2 (15 Aug 2004)
 
@@ -8,7 +20,7 @@
   +files/postinstall-en.txt, +phpmp-0.10.2.ebuild, +phpmp-0.11.0.ebuild:
   Moved from net-www/phpmp to www-apps/phpmp.
 
-  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> phpmp-0.10.2.ebuild:
+  19 Jul 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> phpmp-0.10.2.ebuild:
   Stable on alpha.
 
   13 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> phpmp-0.11.0.ebuild:
@@ -22,7 +34,7 @@
   26 Jun 2004; Martin Holzer <mholzer@gentoo.org> phpmp-0.11.0.ebuild:
   Version bumped.
 
-  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> phpmp-0.10.1-r1.ebuild:
+  11 Jun 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> phpmp-0.10.1-r1.ebuild:
   Stable on alpha.
 
 *phpmp-0.10.2 (23 May 2004)

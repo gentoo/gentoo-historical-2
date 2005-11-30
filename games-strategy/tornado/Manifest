@@ -1,3 +1,4 @@
-MD5 33e4b1ca261fad083f6b2c8d19f3b145 tornado-1.2.1a.ebuild 1115
-MD5 e5b0200c5605d6793f275c3dcd3b2db5 ChangeLog 413
-MD5 3ae493c92807e676ee29bf2bcdb95283 files/digest-tornado-1.2.1a 65
+MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 1e3364a300ee7aa9884a786cf845b5af tornado-1.3.ebuild 1068
+MD5 164c4f5b535a5ed016b6d2e13eac5cb5 ChangeLog 1110
+MD5 92951a813f97524acb84295187e6e655 files/digest-tornado-1.3 62

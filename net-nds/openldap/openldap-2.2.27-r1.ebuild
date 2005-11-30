@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.27-r1.ebuild,v 1.1 2005/07/03 19:14:50 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.27-r1.ebuild,v 1.1.1.1 2005/11/30 09:36:51 chriswhite Exp $
 
 inherit flag-o-matic toolchain-funcs eutils multilib
 
@@ -50,7 +50,7 @@ RDEPEND="${RDEPEND}
 	)"
 
 DEPEND="${RDEPEND}
-		sys-devel/libtool
+		>=sys-devel/libtool-1.5.18-r1
 		>=sys-apps/sed-4"
 
 # for tracking versions
@@ -77,7 +77,7 @@ pkg_setup() {
 	openldap_datadirs="$(awk '{if($1 == "directory") print $2 }' /etc/openldap/slapd.conf)"
 	datafiles=""
 	for d in $openldap_datadirs; do
-		datafiles="${datafiles} $(ls $d/*db*} 2>/dev/null)"
+		datafiles="${datafiles} $(ls $d/*db* 2>/dev/null)"
 	done
 	# remove extra spaces
 	datafiles="$(echo ${datafiles// })"
@@ -108,12 +108,15 @@ pkg_setup() {
 		exit 1
 	fi
 	openldap_upgrade_warning
+	if built_with_use dev-lang/perl minimal ; then
+		die "You must have a complete (USE='-minimal') Perl install to use the perl backend!"
+	fi
 }
 
 pkg_preinst() {
 	openldap_upgrade_warning
 	enewgroup ldap 439
-	enewuser ldap 439 /bin/false /usr/$(get_libdir)/openldap ldap
+	enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
 }
 
 src_unpack() {
@@ -247,7 +250,7 @@ src_compile() {
 	# now build old compat lib
 	cd ${OLD_S} && \
 	econf \
-		--enable-static --enable-shared \
+		--disable-static --enable-shared \
 		--libexecdir=/usr/$(get_libdir)/openldap \
 		--disable-slapd --disable-aci --disable-cleartext --disable-crypt \
 		--disable-lmpasswd --disable-spasswd --enable-modules \
@@ -327,7 +330,8 @@ src_install() {
 	if use ssl || use samba; then
 		dodir /etc/openldap/ssl
 		exeinto /etc/openldap/ssl
-		newexe ${FILESDIR}/gencert.sh-2.2.27 gencert.sh
+		#newexe ${FILESDIR}/gencert.sh-2.2.27 gencert.sh
+		doexe ${FILESDIR}/gencert.sh
 	fi
 
 	dolib.so ${OLD_S}/libraries/liblber/.libs/liblber.so.2.0.130 || \

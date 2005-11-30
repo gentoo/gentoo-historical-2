@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/quat
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/quat/ChangeLog,v 1.1 2003/09/12 04:16:31 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/quat/ChangeLog,v 1.1.1.1 2005/11/30 09:37:35 chriswhite Exp $
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> quat-1.20.ebuild:
+  Added to ~ppc.
 
 *quat-1.20 (30 Aug 2003)
 

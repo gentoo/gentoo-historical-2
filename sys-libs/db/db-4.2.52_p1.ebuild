@@ -1,14 +1,12 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.2.52_p1.ebuild,v 1.1 2003/12/22 11:20:31 pauldv Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.2.52_p1.ebuild,v 1.1.1.1 2005/11/30 09:39:14 chriswhite Exp $
 
-IUSE="tcltk java doc"
-
-inherit eutils gnuconfig
-inherit db
+inherit eutils gnuconfig db
 
 #Number of official patches
-PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
+#PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
+PATCHNO=${PV/*.*.*_p}
 if [ "${PATCHNO}" == "${PV}" ]; then
 	MY_PV=${PV}
 	MY_P=${P}
@@ -18,9 +16,10 @@ else
 	MY_P=${PN}-${MY_PV}
 fi
 
+IUSE="tcltk java doc"
 S=${WORKDIR}/${MY_P}/build_unix
 DESCRIPTION="Berkeley DB"
-SRC_URI="http://www.sleepycat.com/update/snapshot/${MY_P}.tar.gz"
+SRC_URI="ftp://ftp.sleepycat.com/releases/${MY_P}.tar.gz"
 
 for (( i=1 ; i<=$PATCHNO ; i++ ))
 do
@@ -30,17 +29,20 @@ done
 HOMEPAGE="http://www.sleepycat.com"
 SLOT="4.2"
 LICENSE="DB"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc ~alpha ~ia64"
 
 DEPEND="tcltk? ( >=dev-lang/tcl-8.4 )
 	java? ( virtual/jdk )"
+
+RDEPEND="tcltk? ( dev-lang/tcl )
+	java? ( virtual/jre )"
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
 	cd ${WORKDIR}/${MY_P}
 	for (( i=1 ; i<=$PATCHNO ; i++ ))
 	do
-		patch -p0 <${DISTDIR}/patch.${MY_PV}.${i}
+		epatch ${DISTDIR}/patch.${MY_PV}.${i}
 	done
 	epatch ${FILESDIR}/${PN}-${SLOT}-jarlocation.patch
 
@@ -69,7 +71,7 @@ src_compile() {
 		|| myconf="${myconf} --disable-java"
 
 	use tcltk \
-		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/lib" \
+		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/$(get_libdir)" \
 		|| myconf="${myconf} --disable-tcl"
 
 	if use java && [ -n "${JAVAC}" ]; then
@@ -88,17 +90,18 @@ src_compile() {
 		--datadir=/usr/share \
 		--sysconfdir=/etc \
 		--localstatedir=/var/lib \
+		--libdir=/usr/$(get_libdir) \
 		--enable-compat185 \
 		--enable-cxx \
 		--with-uniquename \
 		${myconf} || die
 
-	emake || make || die
+	emake -j1 || die
 }
 
 src_install () {
 
-	einstall || die
+	einstall libdir="${D}/usr/$(get_libdir)" || die
 
 	db_src_install_usrbinslot
 

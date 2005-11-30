@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-passwd/horde-passwd-3.0.ebuild,v 1.1 2005/10/14 00:40:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/horde-passwd/horde-passwd-3.0.ebuild,v 1.1.1.1 2005/11/30 09:37:10 chriswhite Exp $
 
 HORDE_MAJ="-h3"
 inherit horde eutils

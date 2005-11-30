@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.4.20040619-r2.ebuild,v 1.1 2004/10/07 22:24:28 lv Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.4.20040619-r2.ebuild,v 1.1.1.1 2005/11/30 09:39:31 chriswhite Exp $
 
-inherit eutils flag-o-matic gcc
+inherit eutils flag-o-matic toolchain-funcs
 
 # Branch update support.  Following will disable:
 #  BRANCH_UPDATE=
@@ -45,7 +45,7 @@ fi
 LICENSE="LGPL-2"
 SLOT="2.2"
 KEYWORDS="-* ~x86 mips amd64 ~hppa ~ppc ~ia64"
-IUSE="userlocales pic build nptl erandom hardened makecheck multilib debug n32 n64"
+IUSE="build erandom hardened multilib n32 n64 nls nptl pic test userlocales"
 RESTRICT="nostrip" # we'll handle stripping ourself #46186
 
 # We need new cleanup attribute support from gcc for NPTL among things ...
@@ -56,13 +56,12 @@ DEPEND=">=sys-devel/gcc-3.2.3-r1
 	nptl? ( >=sys-devel/gcc-3.3.1-r1 )
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	virtual/os-headers
-	nptl? ( =sys-kernel/linux26-headers-2.6* )
+	nptl? ( >=sys-kernel/linux-headers-2.6 )
 	nls? ( sys-devel/gettext )"
 RDEPEND="virtual/os-headers
-	sys-apps/baselayout
 	nls? ( sys-devel/gettext )"
 
-PROVIDE="virtual/glibc virtual/libc"
+PROVIDE="virtual/libc"
 
 
 # Theoretical cross-compiler support
@@ -186,7 +185,7 @@ want_nptl() {
 	if use nptl; then
 		# Archs that can use NPTL
 		if use amd64 || use alpha || use ia64 || use ppc || \
-		   use ppc64 || use s390 || use sparc; then
+		   use ppc64 || use s390 ; then
 			return 0
 		fi
 
@@ -205,7 +204,7 @@ want_nptl() {
 want_tls() {
 	# Archs that can use TLS (Thread Local Storage)
 	if use amd64 || use alpha || use ia64 || use ppc || \
-	   use ppc64 || use s390 || use sparc; then
+	   use ppc64 || use s390 ; then
 		return 0
 	fi
 
@@ -221,7 +220,7 @@ want_tls() {
 }
 
 
-do_makecheck() {
+do_test() {
 	ATIME=`mount | awk '{ print $3,$6 }' | grep ^\/\  | grep noatime`
 	if [ "$ATIME" = "" ]; then
 		cd ${WORKDIR}/build
@@ -249,8 +248,8 @@ install_locales() {
 
 
 setup_locales() {
-	if use !userlocales || use makecheck; then
-		einfo "makecheck in USE or userlocales not enabled, installing -ALL- locales..."
+	if use !userlocales || use test; then
+		einfo "test in USE or userlocales not enabled, installing -ALL- locales..."
 		install_locales || die
 	elif [ -e /etc/locales.build ]; then
 		einfo "Installing locales in /etc/locales.build..."
@@ -306,7 +305,7 @@ glibc_setup() {
 	fi
 	echo
 
-	hasq sandbox $FEATURES && use makecheck && die "sandbox breaks make check. either take makecheck out of USE or set FEATURES=-sandbox"
+	hasq sandbox $FEATURES && use test && die "sandbox breaks make check. either take test out of USE or set FEATURES=-sandbox"
 }
 
 
@@ -342,6 +341,7 @@ do_arch_hppa_patches() {
 	cd ${T}
 	unpack glibc-hppa-patches-${HPPA_PATCHES}.tar.gz
 	cd ${S}
+	epatch "${FILESDIR}"/2.3.4/hppa-no-pie.patch
 	export EPATCH_OPTS=-p1
 	for i in ${T}/glibc-hppa-patches-${HPPA_PATCHES}/*.diff
 	do
@@ -378,18 +378,18 @@ do_arch_mips_patches() {
 	epatch ${FILESDIR}/2.3.1/${PN}-2.3.1-librt-mips.patch
 	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3_pre20040420-mips-dl-machine-calls.diff
 	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3_pre20040420-mips-incl-sgidefs.diff
-	epatch ${FILESDIR}/2.3.3/mips-addabi.diff
-	epatch ${FILESDIR}/2.3.3/mips-syscall.h.diff
-	epatch ${FILESDIR}/2.3.3/semtimedop.diff
-	epatch ${FILESDIR}/2.3.3/mips-sysify.diff
+	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-addabi.diff
+	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-syscall.h.diff
+	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-semtimedop.diff
+	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-sysify.diff
 
 	if use n32 || use n64; then
-		epatch ${FILESDIR}/2.3.4/mips-sysdep-cancel.diff
+		epatch ${FILESDIR}/2.3.4/${PN}-2.3.4-mips-sysdep-cancel.diff
 	fi
 
 	# Need to install into /lib for n32-only userland for now.
 	# Propper solution is to make all userland /lib{32|64}-aware.
-	use multilib || epatch ${FILESDIR}/2.3.3/mips-nolib3264.diff
+	use multilib || epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-nolib3264.diff
 }
 
 
@@ -606,6 +606,15 @@ src_compile() {
 	make PARALLELMFLAGS="${MAKEOPTS}" || die
 }
 
+src_test() {
+	# This is wrong, but glibc's tests fail bad when screwing 
+	# around with sandbox, so lets just punt it
+	unset LD_PRELOAD
+
+	cd ${WORKDIR}/build
+	make check || die "make check failed :("
+}
+
 src_install() {
 	setup_flags
 
@@ -665,6 +674,7 @@ EOF
 		# Install nscd config file
 		insinto /etc ; doins ${FILESDIR}/nscd.conf
 		exeinto /etc/init.d ; doexe ${FILESDIR}/nscd
+		doins "${FILESDIR}"/nsswitch.conf
 
 		cd ${S}
 		dodoc BUGS ChangeLog* CONFORMANCE FAQ INTERFACE \
@@ -711,14 +721,19 @@ EOF
 	insinto /etc
 	doins ${FILESDIR}/locales.build
 
-	if use makecheck; then
+	if use test; then
 		local OLD_SANDBOX_ON="${SANDBOX_ON}"
 		# make check will fail if sandbox is enabled.  Do not do it
 		# globally though, else we might fail to find sandbox violations ...
 		SANDBOX_ON="0"
-		do_makecheck
+		do_test
 		SANDBOX_ON="${OLD_SANDBOX_ON}"
 	fi
+}
+
+pkg_preinst() {
+	# Shouldnt need to keep this updated
+	[[ -e ${ROOT}/etc/locales.build ]] && rm -f "${D}"/etc/locales.build
 }
 
 pkg_postinst() {

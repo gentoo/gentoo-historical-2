@@ -1,22 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: George Shapovalov <georges@its.caltech.edu>
-# /space/gentoo/cvsroot/gentoo-x86/media-sound/rip/rip-1.01-r1.ebuild,v 1.4 2002/03/12 16:05:09 tod Exp
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rip/rip-1.01-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:51 chriswhite Exp $
 
+IUSE=""
 
-S="${WORKDIR}/${P}"
 DESCRIPTION="A command-line based audio CD ripper and mp3 encoder"
 SRC_URI="http://rip.sourceforge.net/download/${P}.tar.gz"
 HOMEPAGE="http://rip.sourceforge.net"
 
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc"
+
 DEPEND=""
 
 RDEPEND="media-sound/cdparanoia
-	sys-devel/perl
-	>=dev-perl/CDDB_get-1.66
+	sys-apps/eject
+	dev-lang/perl
+	>=dev-perl/CDDB_get-2.10
 	>=dev-perl/MP3-Info-0.91"
-
-
 
 src_compile() {
 	#the thing itself is just a perl script

@@ -1,27 +1,24 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/darkice/darkice-0.14.ebuild,v 1.1 2004/03/01 18:51:56 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/darkice/darkice-0.14.ebuild,v 1.1.1.1 2005/11/30 09:38:09 chriswhite Exp $
 
-IUSE="encode oggvorbis"
+IUSE="encode oggvorbis alsa"
 
-S=${WORKDIR}/${P}
-DESCRIPTION="IceCast live streamer delivering Ogg and mp3 streams simulatenously to multiple hosts."
+DESCRIPTION="IceCast live streamer delivering Ogg and mp3 streams simultaneously to multiple hosts."
 HOMEPAGE="http://darkice.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa"
-
+KEYWORDS="alpha amd64 ~hppa ~ppc sparc x86"
 
 DEPEND="encode?	( >=media-sound/lame-1.89 )
-	oggvorbis? ( >=media-libs/libvorbis-1.0 )"
+	oggvorbis? ( >=media-libs/libvorbis-1.0 )
+	alsa? ( >=media-libs/alsa-lib-1.0.0 )"
 
 src_compile() {
-	local myconf=""
-
-	if [ ! "`use encode`" ] && [ ! "`use oggvorbis`" ]
+	if ! use encode && ! use oggvorbis
 	then
 
 		eerror "You need support for mp3 or Ogg Vorbis enconding for this"
@@ -33,10 +30,9 @@ src_compile() {
 		die "Won't build without support for lame nor vorbis"
 	fi
 
-	use encode    || myconf="--without-lame"
-	use oggvorbis || myconf="--without-vorbis"
-
-	econf ${myconf}
+	econf `use_with alsa` \
+	      `use_with encode lame` \
+	      `use_with oggvorbis vorbis` || die
 
 	emake || die "Compilation failed"
 }
@@ -44,5 +40,5 @@ src_compile() {
 src_install() {
 	einstall darkicedocdir=${D}/usr/share/doc/${PF} || die
 
-	dodoc AUTHORS ChangeLog COPYING NEWS README TODO
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }

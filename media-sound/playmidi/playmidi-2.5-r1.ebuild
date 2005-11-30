@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/playmidi/playmidi-2.5-r1.ebuild,v 1.1 2005/01/18 09:09:19 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/playmidi/playmidi-2.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:38:09 chriswhite Exp $
 
 IUSE="svga X gtk"
 

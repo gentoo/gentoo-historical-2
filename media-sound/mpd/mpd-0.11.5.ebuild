@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/mpd-0.11.5.ebuild,v 1.1 2004/11/07 10:04:53 axxo Exp $
-
-IUSE="oggvorbis mad aac audiofile ipv6 flac mikmod alsa unicode"
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpd/mpd-0.11.5.ebuild,v 1.1.1.1 2005/11/30 09:37:49 chriswhite Exp $
 
 inherit eutils
 
@@ -10,47 +8,57 @@ DESCRIPTION="Music Player Daemon (mpd)"
 HOMEPAGE="http://www.musicpd.org"
 SRC_URI="http://mercury.chem.pitt.edu/~shank/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+SLOT="0"
+KEYWORDS="amd64 hppa ppc sparc x86"
+IUSE="aac alsa audiofile flac ipv6 mad mikmod unicode vorbis"
 
-DEPEND="oggvorbis? ( media-libs/libvorbis )
-	mad? ( media-libs/libmad
-	       media-libs/libid3tag )
+DEPEND=">=media-libs/libao-0.8.4
+	!media-sound/mpd-svn
+	sys-libs/zlib
 	aac? ( >=media-libs/faad2-2.0_rc2 )
+	alsa? ( media-libs/alsa-lib )
 	audiofile? ( media-libs/audiofile )
 	flac? ( >=media-libs/flac-1.1.0 )
+	mad? ( media-libs/libmad
+	       media-libs/libid3tag )
 	mikmod? ( media-libs/libmikmod )
-	alsa? ( media-libs/alsa-lib )
-	>=media-libs/libao-0.8.4
-	sys-libs/zlib"
+	vorbis? ( media-libs/libvorbis )"
 
 pkg_setup() {
+	echo
+	ewarn "This package now uses 'vorbis' USE flag, instead of 'ogg'."
+	ewarn "See http://bugs.gentoo.org/show_bug.cgi?id=101877 for details."
+	echo
+
 	enewuser mpd '' '' '' audio || die "problem adding user mpd"
 }
 
 src_compile() {
-	econf `use_enable aac` \
-		`use_enable oggvorbis ogg` \
-		`use_enable oggvorbis oggtest` \
-		`use_enable oggvorbis vorbistest` \
-		`use_enable audiofile` \
-		`use_enable audiofile audiofiletest` \
-		`use_enable ipv6` \
-		`use_enable flac libFLACtest` \
-		`use_enable flac` \
-		`use_enable !mad mpd-mad` \
-		`use_enable !mad id3tag` \
-		`use_enable mikmod libmikmodtest` \
-		`use_enable mikmod mod` || die "could not configure"
+	econf \
+		$(use_enable aac) \
+		$(use_enable audiofile) \
+		$(use_enable audiofile audiofiletest) \
+		$(use_enable flac libFLACtest) \
+		$(use_enable flac) \
+		$(use_enable ipv6) \
+		$(use_enable !mad mpd-mad) \
+		$(use_enable !mad id3tag) \
+		$(use_enable mikmod libmikmodtest) \
+		$(use_enable mikmod mod) \
+		$(use_enable vorbis ogg) \
+		$(use_enable vorbis oggtest) \
+		$(use_enable vorbis vorbistest) \
+		|| die "could not configure"
 
 	emake || die "emake failed"
 }
 
 src_install() {
-	emake install DESTDIR=${D} || die
+	make install DESTDIR=${D} || die "make install failed"
+
 	rm -rf ${D}/usr/share/doc/mpd/
-	dodoc COPYING ChangeLog INSTALL README TODO UPGRADING
+	dodoc ChangeLog INSTALL README TODO UPGRADING
 	dodoc doc/COMMANDS doc/mpdconf.example
 
 	insinto /etc
@@ -80,12 +88,14 @@ src_install() {
 	insopts -m0640 -o mpd -g audio
 	newins ${T}/blah mpd.log
 	newins ${T}/blah mpd.error.log
+
+	use alsa && \
+		dosed 's:need :need alsasound :' /etc/init.d/mpd
 }
 
 pkg_postinst() {
-	einfo "libao prior to 0.8.4 has issues with the ALSA drivers"
-	einfo "please refer to the FAQ"
-	einfo "http://www.musicpd.org/wiki/moin.cgi/MpdFAQ if you are having problems."
-	einfo
-	einfo "The default config now binds the daemon strictly to localhost, rather then all available IPs."
+	echo
+	einfo "The default config now binds the daemon strictly to localhost,"
+	einfo "rather then all available IPs."
+	echo
 }

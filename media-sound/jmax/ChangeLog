@@ -1,6 +1,41 @@
 # ChangeLog for media-sound/jmax
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jmax/ChangeLog,v 1.1 2004/01/19 08:47:46 torbenh Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jmax/ChangeLog,v 1.1.1.1 2005/11/30 09:37:50 chriswhite Exp $
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> jmax-4.1.0.ebuild:
+  Added to ~ppc.
+
+  17 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
+  jmax-4.1.0.ebuild:
+  libtoolize, fixes #74760. also updated metadata.xml, torbenh is retired.
+
+  09 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> jmax-4.1.0.ebuild:
+  added use_enable jack call to econf, fixes #67371.
+
+  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  files/jmax-4.1.0-fix-java-check.patch:
+  Fix java detection in executeable.
+
+  22 Jul 2004; Thomas Matthijs <axxo@gentoo.org>
+  +files/jmax-4.1.0-fix-java-check.patch, jmax-4.1.0.ebuild:
+  fix java checking 57691
+
+*jmax-4.1.0 (08 Jul 2004)
+
+  08 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> jmax-4.0.2.ebuild,
+  jmax-4.1.0.ebuild, files/jmax-4.1.0-gcc34.patch,
+  files/jmax-4.1.0-otherArch.patch:
+  Version bump. -sparc, -amd64. Direct to stable as the old version no longer
+  compiles.
+
+  05 May 2004; Jeremy Huddleston <eradicator@gentoo.org> jmax-4.0.2.ebuild:
+  emake -j1 becasue of bug #47978.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> jmax-4.0.2.ebuild:
+  Added IUSE.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> jmax-4.0.2.ebuild:
+  Stable x86.  Ebuild cleanup.
 
 *jmax-4.0.2 (19 Jan 2004)
 

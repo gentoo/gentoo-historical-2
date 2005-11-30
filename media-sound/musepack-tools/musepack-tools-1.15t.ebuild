@@ -1,22 +1,22 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/musepack-tools-1.15t.ebuild,v 1.1 2005/02/07 15:10:21 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/musepack-tools/musepack-tools-1.15t.ebuild,v 1.1.1.1 2005/11/30 09:38:37 chriswhite Exp $
 
-IUSE="static esd 16bit"
+IUSE="static 16bit"
 
 inherit eutils flag-o-matic
 
 S="${WORKDIR}/sv7"
 
 DESCRIPTION="Musepack audio compression tools"
-HOMEPAGE="http://www.uni-jena.de/~pfk/mpp/ http://corecodec.org/projects/mpc/ http://www.musepack.net"
+HOMEPAGE="http://www.musepack.net"
 SRC_URI="http://files.musepack.net/source/mpcsv7-src-${PV}.tar.bz2"
 
 SLOT="0"
-LICENSE="GPL-2 LGPL-2.1"
+LICENSE="LGPL-2.1"
 KEYWORDS="amd64 x86"
 
-RDEPEND="esd? ( media-sound/esound )
+RDEPEND="media-sound/esound
 	 media-libs/id3lib"
 
 DEPEND="${RDEPEND}
@@ -28,6 +28,7 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/${P}-Makefile.patch
+	epatch ${FILESDIR}/${P}-gcc4.patch
 
 	sed -i 's/#define USE_IRIX_AUDIO/#undef USE_IRIX_AUDIO/' mpp.h
 
@@ -53,5 +54,5 @@ src_compile() {
 
 src_install() {
 	dobin mppenc mppdec replaygain
-	dodoc COPYING* README doc/ChangeLog doc/MANUAL.TXT doc/NEWS doc/SV7.txt doc/TODO*
+	dodoc README doc/ChangeLog doc/MANUAL.TXT doc/NEWS doc/SV7.txt doc/TODO*
 }

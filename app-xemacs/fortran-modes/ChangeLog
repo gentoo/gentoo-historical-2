@@ -1,6 +1,17 @@
 # ChangeLog for app-xemacs/fortran-modes
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/fortran-modes/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/fortran-modes/ChangeLog,v 1.1.1.1 2005/11/30 09:38:51 chriswhite Exp $
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> fortran-modes-1.02.ebuild:
+  Stable on alpha
+
+*fortran-modes-1.02 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> fortran-modes-1.01.ebuild fortran-modes-1.02.ebuild files/digest-fortran-modes-1.02 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
 
 *fortran-modes-1.01 (16 Dec 2002)
 

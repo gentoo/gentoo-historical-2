@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sox/sox-12.17.7-r2.ebuild,v 1.1 2005/08/25 13:08:15 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sox/sox-12.17.7-r2.ebuild,v 1.1.1.1 2005/11/30 09:38:36 chriswhite Exp $
 
 inherit gnuconfig flag-o-matic eutils
 

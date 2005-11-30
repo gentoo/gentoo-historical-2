@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/darwinia-demo/darwinia-demo-1.2.1.ebuild,v 1.1 2005/09/09 14:40:08 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/darwinia-demo/darwinia-demo-1.2.1.ebuild,v 1.1.1.1 2005/11/30 09:36:40 chriswhite Exp $
 
 inherit eutils games
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.introversion.co.uk/darwinia/downloads/${P}.sh"
 
 LICENSE="Introversion"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 RESTRICT="nostrip"
 
@@ -19,7 +19,7 @@ dir=${GAMES_PREFIX_OPT}/${PN}
 Ddir=${D}/${dir}
 
 pkg_setup() {
-	check_license
+	check_license Introversion
 	games_pkg_setup
 }
 
@@ -28,20 +28,18 @@ src_unpack() {
 }
 
 src_install() {
-	dodir ${dir} ${GAMES_BINDIR} || die "failed to create dirs"
-	into ${dir}
-	dolib lib/lib{gcc_s.so.1,SDL-1.2.so.0,vorbis{.so.0,file.so.3},ogg.so.0} \
+	exeinto "${dir}/lib"
+	doexe lib/lib{gcc_s.so.1,SDL-1.2.so.0,vorbis{.so.0,file.so.3},ogg.so.0} \
 		|| die "Copying libraries"
-	exeinto ${dir}/lib
 	doexe lib/{darwinia.bin.x86,open-www.sh} || die "copying executables"
-	insinto ${dir}/lib
+	insinto "${dir}/lib"
 	doins lib/{sounds,main,language}.dat || die "copying data files"
-	insinto ${dir}
+	insinto "${dir}"
 	dodoc README || die "copying docs"
 
-	exeinto ${dir}
+	exeinto "${dir}"
 	doexe bin/Linux/x86/darwinia || die "couldn't do exe"
 
-	games_make_wrapper darwinia-demo ./darwinia ${dir}
+	games_make_wrapper darwinia-demo ./darwinia "${dir}" "${dir}"
 	prepgamesdirs
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/crossfire-client/crossfire-client-1.7.1.ebuild,v 1.1 2005/03/09 07:18:13 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/crossfire-client/crossfire-client-1.7.1.ebuild,v 1.1.1.1 2005/11/30 09:38:47 chriswhite Exp $
 
 inherit games
 

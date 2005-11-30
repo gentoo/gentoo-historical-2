@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp32ogg/mp32ogg-0.11-r4.ebuild,v 1.1 2005/01/01 15:59:45 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp32ogg/mp32ogg-0.11-r4.ebuild,v 1.1.1.1 2005/11/30 09:37:49 chriswhite Exp $
 
 inherit eutils
 IUSE=""

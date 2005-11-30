@@ -1,5 +1,5 @@
 # Alsa 0.9.X kernel modules' configuration file.
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/files/alsa-modules.conf-rc,v 1.1 2003/08/05 21:07:55 johnm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/files/alsa-modules.conf-rc,v 1.1.1.1 2005/11/30 09:37:55 chriswhite Exp $
 
 # ALSA portion
 alias char-major-116 snd

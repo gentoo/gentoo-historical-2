@@ -1,6 +1,37 @@
 # ChangeLog for media-sound/mt-daapd
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mt-daapd/ChangeLog,v 1.1 2005/04/29 21:37:17 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mt-daapd/ChangeLog,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
+
+  30 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> files/mt-daapd.init.2:
+  Don't provide daap to avoid warnings during start/stop of services. mt-daapd
+  is going to be the only daapd server for now anyway.
+
+*mt-daapd-0.2.3-r1 (21 Oct 2005)
+
+  21 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +files/mt-daapd-0.2.3-pidfile.patch, +files/mt-daapd.init.2,
+  +mt-daapd-0.2.3-r1.ebuild:
+  New revision, patched to allow launching more than one instance of mt-daapd.
+  Also new init.d file that allows symlinked-launches.
+
+  04 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> mt-daapd-0.2.3.ebuild:
+  Added ~sh.
+
+*mt-daapd-0.2.3 (03 Oct 2005)
+
+  03 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +mt-daapd-0.2.3.ebuild:
+  Version bumped, Bug 106032.
+  Fixed howl USE flag problem, Bug 94899.
+  Fixed vorbis USE flag problem, Bug 96202.
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> mt-daapd-0.2.1.1.ebuild:
+  Added to ~ppc.
+
+  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mt-daapd-0.2.1.1.ebuild:
+  cosmetic changes
+
+  25 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mt-daapd-0.2.1.1.ebuild:
+  stable on amd64 and x86
 
 *mt-daapd-0.2.1.1 (29 Apr 2005)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-ispell/xemacs-ispell-1.24.ebuild,v 1.1 2003/02/20 11:25:05 rendhalver Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-ispell/xemacs-ispell-1.24.ebuild,v 1.1.1.1 2005/11/30 09:38:56 chriswhite Exp $
 
 SLOT="0"
 IUSE=""
@@ -12,7 +12,7 @@ MY_PN=${PN/xemacs-/}
 SRC_URI="ftp://ftp.xemacs.org/packages/${MY_PN}-${PV}-pkg.tar.gz"
 
 DEPEND=""
-KEYWORDS="x86 ~ppc ~alpha sparc"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
 

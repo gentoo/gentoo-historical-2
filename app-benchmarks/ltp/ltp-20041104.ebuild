@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/ltp/ltp-20041104.ebuild,v 1.1 2004/11/06 23:34:10 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/ltp/ltp-20041104.ebuild,v 1.1.1.1 2005/11/30 09:36:35 chriswhite Exp $
 
-inherit eutils
+inherit eutils portability
 
 MY_P="${PN}-full-${PV}"
 S="${WORKDIR}/${MY_P}"
@@ -24,7 +24,9 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/IDcheck-noninteractive.patch
 	epatch ${FILESDIR}/runltp-path.patch
+	epatch ${FILESDIR}/ltp-ballista-paths.patch
 }
+
 src_compile() {
 	emake || die "emake failed"
 }
@@ -33,7 +35,7 @@ src_install() {
 	make install || die "install failed"
 
 	mkdir -p ${D}/usr/libexec/ltp/testcases ${D}/usr/bin/ || die "mkdir failed"
-	cp --parents -r testcases/bin pan/pan runtest ver_linux IDcheck.sh ${D}/usr/libexec/ltp || die "cp failed"
+	treecopy testcases pan/pan runtest ver_linux IDcheck.sh ${D}/usr/libexec/ltp || die "cp failed"
 	cp runltp runalltests.sh ${D}/usr/bin || die "cp failed"
 
 	# TODO: fix this so it works from "outside" the source tree

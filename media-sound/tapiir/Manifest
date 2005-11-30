@@ -1,3 +1,5 @@
-MD5 54f15b6e5cca8d6f225ba5ad1694fe9b tapiir-0.7.1.ebuild 737
-MD5 fb45ef7d2a41805d0f4b2a8d0b004835 ChangeLog 234
+MD5 25d7c647b0e7ec03c1f5508294eb8999 ChangeLog 507
+MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
+MD5 a3934d9819ad95cb16f6132eef741675 tapiir-0.7.1.ebuild 1072
 MD5 129400b384f4804d81050abef03da3e8 files/digest-tapiir-0.7.1 64
+MD5 e9418ac273accb63dde90b8282224b25 files/tapiir-0.7.1-gcc3.patch 4632

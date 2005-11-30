@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/crossfire-client/crossfire-client-1.7.0.ebuild,v 1.1 2004/05/30 08:18:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/crossfire-client/crossfire-client-1.7.0.ebuild,v 1.1.1.1 2005/11/30 09:38:46 chriswhite Exp $
 
 inherit eutils games
 

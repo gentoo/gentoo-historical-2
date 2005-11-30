@@ -1,6 +1,65 @@
 # ChangeLog for media-sound/moc
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/moc/ChangeLog,v 1.1 2003/06/26 15:21:29 robh Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/moc/ChangeLog,v 1.1.1.1 2005/11/30 09:38:29 chriswhite Exp $
+
+  14 Jul 2005; David Holm <dholm@gentoo.org> moc-2.3.0.ebuild:
+  Added to ~ppc.
+
+*moc-2.3.0 (13 Jul 2005)
+
+  13 Jul 2005; Jonathan Smith <smithj@gentoo.org> +moc-2.3.0.ebuild:
+  #98736: version bump
+
+*moc-2.2.0-r1 (18 Apr 2005)
+
+  18 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  -files/moc-1.1.0-gcc3.patch, -files/moc-1.1.0-gcc34.patch,
+  -moc-1.1.0.ebuild, +moc-2.1.4-r1.ebuild, -moc-2.1.4.ebuild,
+  +moc-2.2.0-r1.ebuild, -moc-2.2.0.ebuild:
+  neither a binary nor a symlink named moc gets installed any longer, fixes bug
+  #76702. also did some cleanup and moved oggvorbis useflag to vorbis, oggvorbis
+  is deprecated.
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> moc-2.2.0.ebuild:
+  introduced support for the flac useflag, fixes #86226
+
+*moc-2.2.0 (27 Feb 2005)
+
+  27 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org> +moc-2.2.0.ebuild:
+  Version bump, bug #83402
+
+*moc-2.1.4 (21 Jan 2005)
+
+  21 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +moc-2.1.4.ebuild:
+  new version released. fixes #76588.
+
+  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Added media-libs/libid3tag to depend to fix bug #74533. Thanks go to Pinky
+  <master_up@post.cz> for the fix.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Stable amd64, x86.
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Added to ~sparc.
+
+  16 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/moc-1.1.0-gcc34.patch, moc-1.1.0.ebuild:
+  Ebuild cleanup. Added gcc-3.4 fix thanks to James
+  <James@superbug.demon.co.uk> in bug #71139. Added to ~amd64.
+
+  24 Sep 2004; Sven Wegener <swegener@gentoo.org> moc-1.1.0.ebuild:
+  Fixed CVS keyword replacement.
+
+  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> moc-1.1.0.ebuild:
+  Stable x86.  Added inherit eutils and removed explicit S=.
+
+  28 Oct 2003; Martin Holzer <mholzer@gentoo.org> moc-1.1.0.ebuild:
+  more config through IUSE. Closes #31568.
+
+  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> moc-1.1.0.ebuild,
+  files/moc-1.1.0-gcc3.patch:
+  Adding gcc3 patch. Closes #31399.
 
 *moc-1.1.0 (26 Jun 2003)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ldapvi/ldapvi-1.4.ebuild,v 1.1 2005/11/19 19:40:56 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ldapvi/ldapvi-1.4.ebuild,v 1.1.1.1 2005/11/30 09:36:53 chriswhite Exp $
 
 DESCRIPTION="Manage LDAP entries with a text editor"
 HOMEPAGE="http://www.lichteblau.com/src.html"

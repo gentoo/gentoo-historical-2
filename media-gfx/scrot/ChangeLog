@@ -1,8 +1,57 @@
 # ChangeLog for media-gfx/scrot
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/scrot/ChangeLog,v 1.1 2002/02/01 21:53:30 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/scrot/ChangeLog,v 1.1.1.1 2005/11/30 09:37:41 chriswhite Exp $
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> scrot-0.8.ebuild:
+  Mark 0.8 stable on alpha
+
+  09 Dec 2004; Mike Doty <kingtaco@gentoo.org> scrot-0.8.ebuild:
+  stable on amd64.  see bug #73936
+
+  06 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> scrot-0.8.ebuild:
+  Remove pkg_postinst since bash-completion.eclass now exports it.
+
+  03 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> scrot-0.8.ebuild:
+  Updated to use bash-completion.eclass
+
+  04 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> scrot-0.8.ebuild:
+  Fixed minor bug where make install installs docs in /usr/doc/${PN}.
+
+  11 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  scrot-0.8.ebuild:
+  Fixed LICENSE declaration, updated metadata info, and added a bash-completion
+  script (please test).
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> scrot-0.8.ebuild:
+  stable on ppc64, bug #57034
+
+  03 Jul 2004; Jason Wever <weeve@gentoo.org> scrot-0.8.ebuild:
+  Added ~sparc keyword.
+
+  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> scrot-0.8.ebuild:
+  Marked ~amd64.
+
+  09 Jun 2004; Seemant Kulleen <seemant@gentoo.org> -scrot-0.6.ebuild,
+  scrot-0.8.ebuild:
+  moved 0.8 to stable, and shipped 0.6 out due to non-compilation
+
+*scrot-0.8 (24 Oct 2003)
+
+  24 Oct 2003; Heinrich Wendel <lanius@gentoo.org> scrot-0.8.ebuild:
+  bump, 31933
 
 *scrot-0.6 (1 Feb 2002)
+
+  17 May 2003; Graham Forest <vladimir@gentoo.org> scrot-0.6.ebuild:
+  set ~ppc in keywords
+
+  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> scrot-0.6.ebuild:
+  Add ~alpha to KEYWORDS
+
+  11 Sep 2002; Seemant Kulleen <seemant@gentoo.org> scrot-0.6.ebuild :
+
+  Installs man page now.  Thanks to: xelnix@yahoo.com (Austin Johnson) in
+  bug #3831.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

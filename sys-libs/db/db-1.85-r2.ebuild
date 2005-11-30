@@ -1,53 +1,54 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# Author Daniel Robbins <drobbins@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-1.85-r2.ebuild,v 1.1 2002/05/08 19:25:23 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-1.85-r2.ebuild,v 1.1.1.1 2005/11/30 09:39:13 chriswhite Exp $
+
+inherit eutils toolchain-funcs
+
+DESCRIPTION="db 1.85 -- required for RPM 4.0 to compile; that's about it."
+HOMEPAGE="http://www.sleepycat.com/"
+SRC_URI="ftp://ftp.sleepycat.com/releases/db.${PV}.tar.gz
+	mirror://gentoo/${P}.patch.bz2"
+
+LICENSE="DB"
+SLOT="1"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ~ppc ~ppc64 s390 sh sparc x86"
+IUSE=""
+
+DEPEND=""
 
 S=${WORKDIR}/db.${PV}
-DESCRIPTION="db 1.85 -- required for RPM 4.0 to compile; that's about it."
-SRC_URI="http://www.sleepycat.com/update/snapshot/db.${PV}.tar.gz"
-HOMEPAGE="http://www.sleepycat.com"
-DEPEND="virtual/glibc"
-RDEPEND=$DEPEND
-SLOT="1"
+
 src_unpack() {
-
-	unpack db.${PV}.tar.gz
+	unpack ${A}
 	cd ${S}
-	patch -p1 < ${FILESDIR}/db.${PV}.patch
-
+	epatch ${WORKDIR}/${P}.patch
 }
 
 src_compile() {
-
-    cd ${S}/PORT/linux
-    make ${MAKEOPTS} OORG="${CFLAGS} -fomit-frame-pointer" prefix=/usr || die
-
+	cd ${S}/PORT/linux
+	tc-export CC AR RANLIB
+	emake OORG="${CFLAGS}" prefix=/usr || die
 }
 
-src_install () {
-
+src_install() {
 	cd ${S}/PORT/linux
 
-	cp libdb.a libdb1.a
-	dolib.a libdb1.a
-	cp libdb.so.2 libdb1.so.2
-	dolib.so libdb1.so.2
-	dosym libdb1.so.2 /usr/lib/libdb1.so
-	dosym libdb1.so.2 /usr/lib/libdb.so.2
-	dosym libdb1.so.2 /usr/lib/libndbm.so
-	dosym libdb1.a /usr/lib/libndbm.a
+	newlib.a libdb.a libdb1.a || die "newlib.a failed"
+	newlib.so libdb.so.2 libdb1.so.2 || die "newlib.so failed"
+	dosym libdb1.so.2 /usr/$(get_libdir)/libdb1.so
+	dosym libdb1.so.2 /usr/$(get_libdir)/libdb.so.2
+	dosym libdb1.so.2 /usr/$(get_libdir)/libndbm.so
+	dosym libdb1.a /usr/$(get_libdir)/libndbm.a
 
 	dodir /usr/include/db1
 	insinto /usr/include/db1
 	doins include/db.h include/mpool.h
 
 	insinto /usr/include/db1
-        doins include/ndbm.h
+	doins include/ndbm.h
 	dosed "s:<db.h>:<db1/db.h>:" /usr/include/db1/ndbm.h
-        dosym db1/ndbm.h /usr/include/ndbm.h
-	cp db_dump185 db1_dump185
-	dobin db1_dump185
+	dosym db1/ndbm.h /usr/include/ndbm.h
+	newbin db_dump185 db1_dump185
 
 	cd ${S}
 	dodoc changelog README
@@ -55,7 +56,4 @@ src_install () {
 	dodoc docs/*.ps
 	docinto hash
 	dodoc hash/README
-
 }
-
-

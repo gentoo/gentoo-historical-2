@@ -1,6 +1,9 @@
 # ChangeLog for media-gfx/xwgui2
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xwgui2/ChangeLog,v 1.1 2003/10/29 23:45:17 plasmaroo Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xwgui2/ChangeLog,v 1.1.1.1 2005/11/30 09:37:15 chriswhite Exp $
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> xwgui2-2.08.ebuild:
+  Added to ~ppc.
 
 *xwgui2-2.08 (29 Oct 2003)
 

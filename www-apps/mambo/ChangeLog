@@ -1,6 +1,75 @@
 # ChangeLog for www-apps/mambo
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mambo/ChangeLog,v 1.1 2004/08/18 18:15:42 rl03 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mambo/ChangeLog,v 1.1.1.1 2005/11/30 09:37:11 chriswhite Exp $
+
+*mambo-4.5.2.3-r1 (20 Nov 2005)
+
+  20 Nov 2005; Stuart Herbert <stuart@gentoo.org>
+  +files/mambo-4.5.2.3-globals_overwrite.patch, +mambo-4.5.2.3-r1.ebuild:
+  Added patch for security bug #112968; thanks to Vic Fryzel <vic@shellsage.com>
+  for the patch
+
+  23 Oct 2005; Renat Lumpau <rl03@gentoo.org> mambo-4.5.2.3.ebuild:
+  Fixed emerge --config wrt bug #109482.
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
+  Housekeeping
+
+  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> mambo-4.5.2.3.ebuild:
+  Housekeeping
+
+  15 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  mambo-4.5.2.3.ebuild:
+  minor cleanup
+
+  03 Jul 2005; Renat Lumpau <rl03@gentoo.org> mambo-4.5.2.3.ebuild:
+  Clean up pkg_config. Fix #71289
+
+  16 Jun 2005; Renat Lumpau <rl03@gentoo.org> -mambo-4.5-r1.ebuild,
+  -mambo-4.5.2.ebuild, -mambo-4.5.2.2.ebuild:
+  Removing old versions.
+
+*mambo-4.5.2.3 (16 Jun 2005)
+
+  16 Jun 2005; Renat Lumpau <rl03@gentoo.org> +mambo-4.5.2.3.ebuild:
+  Version bump (bug #96183).
+
+*mambo-4.5.2.2 (02 Jun 2005)
+
+  02 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> +mambo-4.5.2.2.ebuild:
+  Version bump for security bug 94817.
+
+  08 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> mambo-4.5.2.ebuild:
+  Marked ~amd64, closes bug 88270.
+
+*mambo-4.5.2 (21 Feb 2005)
+
+  25 Feb 2005; Elfyn McBratney <beu@gentoo.org> mambo-4.5.2.ebuild:
+  The "Changelog" file has been renamed to "CHANGELOG". Also, the
+  "documentation" directory has been punted, so remove that dohtml.
+
+  21 Feb 2005; Stuart Herbert <stuart@gentoo.org> +mambo-4.5.2.ebuild:
+  Version bump; includes the patch needed for bug 82830
+
+*mambo-4.5-r1 (10 Feb 2005)
+
+  10 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +mambo-4.5-r1.ebuild,
+  -mambo-4.5.ebuild:
+  Revision bump for sec bug 80578.
+
+  09 Jan 2005; Jason Wever <weeve@gentoo.org> mambo-4.5.ebuild:
+  Added ~sparc keyword.
+
+  19 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> mambo-4.5.ebuild:
+  Added to ~ppc.
+
+  22 Sep 2004; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
+  -files/reconfig, mambo-4.5.ebuild:
+  Don't rm things in src_install. Move reconfig hook to pkg_config. Warn about
+  db and dbuser.
+
+  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> mambo-4.5.ebuild:
+  Fixed DEPEND/RDEPEND, removed sleep
 
 *mambo-4.5 (18 Aug 2004)
 

@@ -1,6 +1,80 @@
 # ChangeLog for media-sound/edna
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/edna/ChangeLog,v 1.1 2003/12/14 22:57:58 nerdboy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/edna/ChangeLog,v 1.1.1.1 2005/11/30 09:38:42 chriswhite Exp $
+
+  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> edna-0.5-r4.ebuild:
+  Mark 0.5-r4 stable on alpha
+
+  09 Sep 2005; Steve Arnold <nerdboy@gentoo.org> files/edna.gentoo:
+  reverting init script change (seems to be a baselayout _pre issue)
+
+*edna-0.5-r5 (09 Sep 2005)
+
+  09 Sep 2005; Steve Arnold <nerdboy@gentoo.org>
+  +files/edna-0.5-pep-0263.patch, files/edna.gentoo, -edna-0.5-r3.ebuild,
+  +edna-0.5-r5.ebuild:
+  fixed some new baselayout and python issues; init script and pep0263 patch
+  amd64 needed a stable bump, Lance's bug (Bug #103346)got an einfo message.
+
+  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> edna-0.5-r4.ebuild:
+  Cleaned up dependency variables, use newinitd to install init.d file, don't
+  install COPYING.
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> edna-0.5-r4.ebuild:
+  Stable on hppa and ppc.
+
+  28 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> edna-0.5-r4.ebuild:
+  Stable on sparc
+
+  22 May 2005; Steve Arnold <nerdboy@gentoo.org> edna-0.5-r4.ebuild:
+  bump stable on x86
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> edna-0.5-r3.ebuild:
+  Stable on ppc.
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> edna-0.5-r4.ebuild:
+  Stable on ppc64
+
+  03 Nov 2004; Markus Rothe <corsair@gentoo.org> edna-0.5-r4.ebuild:
+  Marked ~ppc64; bug #69126
+
+  26 Oct 2004; Steve Arnold <nerdboy@gentoo.org> metadata.xml,
+  files/edna.gentoo, edna-0.5-r3.ebuild, edna-0.5-r4.ebuild:
+  added USE flag for oggvorbis support, update comments and einfo
+
+  15 Oct 2004; Sven Wegener <swegener@gentoo.org> edna-0.5-r3.ebuild:
+  Added inherit eutils for get_libdir. Thanks to Thomas Kirchner
+  <gentoo@halffull.org> in bug #67669.
+
+  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> edna-0.5-r3.ebuild:
+  get_libdir fixes.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> edna-0.5-r3.ebuild:
+  Stable amd64, sparc.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> edna-0.5-r3.ebuild:
+  ~amd64
+
+  06 May 2004; Jeremy Huddleston <eradicator@gentoo.org> edna-0.5-r3.ebuild:
+  removed explicit setting of RDEPEND to DEPEND.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> edna-0.5-r3.ebuild:
+  QA fix.
+
+*edna-0.5-r3 (14 Dec 2003)
+
+  14 Dec 2003; <nerdboy@gentoo.org> edna-0.5-r3.ebuild, files/edna.gentoo:
+  finally fixed init script and env stuff
+
+*edna-0.5-r2 (14 Dec 2003)
+
+  14 Dec 2003; <nerdboy@gentoo.org> edna-0.5-r2.ebuild, files/edna.gentoo:
+  changed init script and got rid of local USE flag (still has pidfile glitch)
+
+*edna-0.5-r1 (14 Dec 2003)
+
+  14 Dec 2003; <nerdboy@gentoo.org> edna-0.5-r1.ebuild, edna-0.5.ebuild:
+  added html docs (doh!) and cleaned up ebuilds a bit
 
 *edna-0.5 (14 Dec 2003)
 

@@ -1,6 +1,13 @@
-# ChangeLog for app-sci/spectromatic
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/spectromatic/ChangeLog,v 1.1 2004/12/24 02:55:48 ribosome Exp $
+# ChangeLog for media-gfx/spectromatic
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/spectromatic/ChangeLog,v 1.1.1.1 2005/11/30 09:37:35 chriswhite Exp $
+
+  22 Jul 2005; David Holm <dholm@gentoo.org> spectromatic-1.0.ebuild:
+  Added to ~ppc.
+
+  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org>
+  spectromatic-1.0.ebuild:
+  Dependency update: dev-libs/gsl -> sci-libs/gsl.
 
 *spectromatic-1.0 (23 Dec 2004)
 

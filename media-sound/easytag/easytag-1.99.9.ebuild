@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/easytag/easytag-1.99.9.ebuild,v 1.1 2005/11/04 00:57:33 dsd Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/easytag/easytag-1.99.9.ebuild,v 1.1.1.1 2005/11/30 09:38:13 chriswhite Exp $
 
 DESCRIPTION="EasyTAG mp3/ogg ID3 tag editor"
 HOMEPAGE="http://easytag.sourceforge.net/"

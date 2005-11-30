@@ -1,19 +1,21 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/videorbits/videorbits-2.201.ebuild,v 1.1 2002/11/27 18:59:42 george Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/videorbits/videorbits-2.201.ebuild,v 1.1.1.1 2005/11/30 09:37:29 chriswhite Exp $
 
+DESCRIPTION="a collection of programs for creating high dynamic range images"
+HOMEPAGE="http://comparametric.sourceforge.net/"
+SRC_URI="mirror://sourceforge/comparametric/${P}.tgz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~ppc x86"
 IUSE=""
 
-S="${WORKDIR}/${P}"
-DESCRIPTION="a collection of programs for creating high dynamic range images."
-SRC_URI="http://us.dl.sourceforge.net/comparametric/${P}.tgz"
-HOMEPAGE="http://comparametric.sourceforge.net/"
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86"
-
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc
+	virtual/x11
+	sys-libs/zlib
+	media-libs/libpng
+	media-libs/jpeg"
 
 src_unpack() {
 	unpack ${A}
@@ -33,15 +35,7 @@ src_compile() {
 	emake || die
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
-	# If the above installs anything outside of DESTDIR, try the following.
-	#make \
-	#	prefix=${D}/usr \
-	#	mandir=${D}/usr/share/man \
-	#	infodir=${D}/usr/share/info \
-	#	install || die
-
-	# Install documentation.
 	dodoc AUTHORS ChangeLog COPYING NEWS README README.MORE
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/lgeneral/lgeneral-1.2_beta7.ebuild,v 1.1 2005/10/18 03:55:33 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/lgeneral/lgeneral-1.2_beta7.ebuild,v 1.1.1.1 2005/11/30 09:36:38 chriswhite Exp $
 
 inherit eutils games
 

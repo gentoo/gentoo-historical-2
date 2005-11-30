@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sexypsf/sexypsf-0.4.6.ebuild,v 1.1 2004/10/07 23:50:44 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sexypsf/sexypsf-0.4.6.ebuild,v 1.1.1.1 2005/11/30 09:38:41 chriswhite Exp $
 
 IUSE="xmms"
 
@@ -18,7 +18,7 @@ SLOT="0"
 
 #-amd64: 0.4.6: Segfault on playback using sexypsf.
 #-sparc: 0.4.5: Couldn't load minispf
-KEYWORDS="~x86 ~ppc -amd64 -sparc"
+KEYWORDS="-amd64 ppc -sparc x86"
 
 DEPEND="sys-libs/zlib
 	xmms? ( media-sound/xmms )"

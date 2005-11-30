@@ -1,6 +1,42 @@
 # ChangeLog for media-sound/ventrilo-server-bin
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ventrilo-server-bin/ChangeLog,v 1.1 2003/12/28 19:48:45 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ventrilo-server-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:38:39 chriswhite Exp $
+
+*ventrilo-server-bin-2.3.1 (19 Nov 2005)
+
+  19 Nov 2005; <chainsaw@gentoo.org> +ventrilo-server-bin-2.3.1.ebuild:
+  Security version bump with stable keywords for denial of service
+  vulnerability, closes bug #111955.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org>
+  ventrilo-server-bin-2.2.0-r1.ebuild, ventrilo-server-bin-2.2.0.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ventrilo-server-bin-2.2.0-r1.ebuild:
+  Stable amd64, x86.
+
+*ventrilo-server-bin-2.2.0-r1 (21 Jul 2004)
+
+  21 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/conf.d.ventrilo, +files/init.d.ventrilo,
+  +ventrilo-server-bin-2.2.0-r1.ebuild:
+  Added init script to close bug #52421. Thanks to Donald R. Gray Jr
+  <donaldgray@dslextreme.com> for the initial script.
+
+*ventrilo-server-bin-2.2.0 (09 Jul 2004)
+
+  09 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +ventrilo-server-bin-2.2.0.ebuild:
+  Version bump closes bug #55141.  Added to ~amd64.  Added -*
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ventrilo-server-bin-2.1.2.ebuild:
+  Added IUSE.
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ventrilo-server-bin-2.1.2.ebuild:
+  Stable on x86.
 
 *ventrilo-server-bin-2.1.2 (28 Dec 2003)
 

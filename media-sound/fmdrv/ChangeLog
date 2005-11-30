@@ -1,6 +1,18 @@
 # ChangeLog for media-sound/fmdrv
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/fmdrv/ChangeLog,v 1.1 2004/03/18 16:21:50 eradicator Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/fmdrv/ChangeLog,v 1.1.1.1 2005/11/30 09:37:56 chriswhite Exp $
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> fmdrv-1.0.7.ebuild:
+  Stable amd64.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> fmdrv-1.0.7.ebuild:
+  ~amd64
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> fmdrv-1.0.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> fmdrv-1.0.7.ebuild:
+  Stable x86.
 
 *fmdrv-1.0.7 (18 Mar 2004)
 

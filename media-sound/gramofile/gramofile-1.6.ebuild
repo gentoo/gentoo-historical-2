@@ -1,29 +1,37 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gramofile/gramofile-1.6.ebuild,v 1.1 2003/03/02 09:04:17 jje Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gramofile/gramofile-1.6.ebuild,v 1.1.1.1 2005/11/30 09:38:10 chriswhite Exp $
 
-DESCRIPTION="Gramofile"
+inherit eutils
+
+DESCRIPTION="Gramofile is an audio recording/editing program whose main goal is to allow recording of analog audio for digital remastering."
 HOMEPAGE="http://panic.et.tudelft.nl/~costar/gramofile/"
-SRC_URI="http://panic.et.tudelft.nl/~costar/gramofile/${P}.tar.gz"
+SRC_URI="http://panic.et.tudelft.nl/~costar/gramofile/${P}.tar.gz
+	http://panic.et.tudelft.nl/~costar/gramofile/tappin3a.patch
+	http://panic.et.tudelft.nl/~costar/gramofile/tappin3b.patch"
 
-LICENSE="GPL2"
+LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~x86"
+KEYWORDS="amd64 ~ppc sparc x86"
 IUSE=""
 
-DEPEND="sys-libs/ncurses"
+DEPEND="sys-libs/ncurses \
+	=sci-libs/fftw-2*"
 
-S=${WORKDIR}/${P}
+src_unpack() {
+	unpack ${P}.tar.gz
+	cd ${S}
+	epatch ${DISTDIR}/tappin3a.patch
+	epatch ${DISTDIR}/tappin3b.patch
+}
 
 src_compile() {
-	sed -e "s/CFLAGS = -Wall -O2 -DTURBO_MEDIAN -DTURBO_BUFFER/CFLAGS \= -Wall `echo ${CFLAGS}` -DTURBO_MEDIAN -DTURBO_BUFFER/" Makefile > Makefile.new
-	mv Makefile.new Makefile
+	sed -i -e "s/CFLAGS = -Wall -O2 -DTURBO_MEDIAN -DTURBO_BUFFER/CFLAGS \= -Wall `echo ${CFLAGS}` -DTURBO_MEDIAN -DTURBO_BUFFER/" Makefile
 	make || die
 }
 
 src_install() {
 	dobin gramofile bplay_gramo brec_gramo
-    dodoc Signproc.txt  Tracksplit2.txt README ChangeLog TODO
+	dodoc Signproc.txt  Tracksplit2.txt README ChangeLog TODO
 }
-

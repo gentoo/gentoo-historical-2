@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cdcd/cdcd-0.6.6-r1.ebuild,v 1.1 2005/08/17 10:27:50 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cdcd/cdcd-0.6.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
 
 IUSE=""
 

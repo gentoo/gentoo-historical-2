@@ -1,10 +1,42 @@
 # ChangeLog for media-sound/gramofile
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gramofile/ChangeLog,v 1.1 2003/03/02 09:04:17 jje Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gramofile/ChangeLog,v 1.1.1.1 2005/11/30 09:38:10 chriswhite Exp $
+
+*gramofile-1.6-r1 (08 Oct 2005)
+
+  08 Oct 2005; Simon Stelling <blubb@gentoo.org>
+  +files/gramofile-1.6-64bit.patch, +gramofile-1.6-r1.ebuild:
+  revision bump to fix bug 95727
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> gramofile-1.6.ebuild:
+  Added to ~ppc.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> gramofile-1.6.ebuild:
+  Stable amd64, sparc.
+
+  13 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gramofile-1.6.ebuild:
+  Added ~sparc and ~amd64
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> gramofile-1.6.ebuild:
+  QA fix.
+
+  09 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> gramofile-1.6.ebuild:
+  DESCRIPTION update. fftw DEPEND is now =dev-libs/fftw-2*.  This closes bug #44097.
 
 *gramofile-1.6 (02 Mar 2003)
 
-  02 Mar 2003; root <root@gentoo.org> gramofile-1.6.ebuild:
+  22 Mar 2003; jje <jje@gentoo.org> gramofile-1.6.ebuild:
+  Updated DEPEND to include fftw.
+
+  15 Mar 2003; jje gramofile-1.6.ebuild:
+  Added two patches for plugin filters.
+  
+  Submitted by: Roland "Robelix" Obermayer
+
+  03 Mar 2003; <vladimir@gentoo.org> gramofile-1.6.ebuild:
+  Fixed small LICENSE problem
+
+  02 Mar 2003; jje <jje@gentoo.org> gramofile-1.6.ebuild:
   Initial revision.
 
   Submitted by Georg Sauthoff.

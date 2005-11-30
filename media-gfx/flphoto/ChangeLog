@@ -1,6 +1,27 @@
 # ChangeLog for media-gfx/flphoto
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/flphoto/ChangeLog,v 1.1 2003/01/16 04:41:01 jhhudso Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/flphoto/ChangeLog,v 1.1.1.1 2005/11/30 09:37:40 chriswhite Exp $
+
+26 Jul 2003; Jared Hudson <jhhudso@gentoo.org> : Fixed flphoto so that it only
+  depends on a specific version of fltk, since the other versions cause
+  compile errors.
+
+  22 Jul 2005; David Holm <dholm@gentoo.org> flphoto-1.2.ebuild:
+  Added to ~ppc.
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> flphoto-1.2.ebuild:
+  Adding amd64 keyword. Closing #45583.
+
+*flphoto-1.2 (22 Mar 2004)
+
+  22 Mar 2004; Heinrich Wendel <lanius@gentoo.org> flphoto-1.0.ebuild,
+  flphoto-1.2.ebuild:
+  version bump, bug #45424
+
+*flphoto-1.1 (12 Oct 2003)
+
+  12 Oct 2003; Heinrich Wendel <lanius@gentoo.org> flphoto-1.1.ebuild:
+  version bump
 
 *flphoto-1.0 (15 Jan 2003)
 

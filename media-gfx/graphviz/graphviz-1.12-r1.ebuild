@@ -1,26 +1,26 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/graphviz/graphviz-1.12-r1.ebuild,v 1.1 2004/07/26 03:24:27 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/graphviz/graphviz-1.12-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:28 chriswhite Exp $
 
 inherit gnuconfig eutils
 
 DESCRIPTION="open source graph drawing software"
 HOMEPAGE="http://www.research.att.com/sw/tools/graphviz/"
-SRC_URI="http://www.graphviz.org/pub/graphviz/ARCHIVE/${P}.tar.gz"
-LICENSE="as-is | ATT"
-SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips"
-IUSE="tcltk"
+SRC_URI="http://www.graphviz.org/pub/graphviz/ARCHIVE/${P}.tar.gz
+		mirror://gentoo/graphviz-1.12-configure.ac.bz2"
 
-#remove this for 1.13
-#the d.g.o location is there until it propogates to mirrors
-SRC_URI="${SRC_URI} mirror://gentoo/${P}-configure.ac.bz2 http://dev.gentoo.org/~robbat2/distfiles/${P}-configure.ac.bz2"
+LICENSE="as-is ATT"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+IUSE="tcltk"
 
 #Can use freetype-1.3 or 2.0, but not both
 DEPEND=">=sys-libs/zlib-1.1.3
 	>=media-libs/libpng-1.2
 	>=media-libs/jpeg-6b
 	media-libs/freetype
+	dev-util/pkgconfig
+	sys-devel/gettext
 	tcltk? ( >=dev-lang/tk-8.3 )"
 
 src_unpack() {

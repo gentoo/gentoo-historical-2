@@ -1,6 +1,16 @@
-# ChangeLog for net-www/mypictures
+# ChangeLog for www-apps/mypictures
 # Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mypictures/ChangeLog,v 1.1 2004/08/15 15:13:01 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mypictures/ChangeLog,v 1.1.1.1 2005/11/30 09:36:57 chriswhite Exp $
+
+  08 Sep 2004; Renat Lumpau <rl03@gentoo.org> :
+  Fixed herd name
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  mypictures-20040202.ebuild:
+  Masked mypictures-20040202.ebuild stable for ppc
 
 *mypictures-20040202 (15 Aug 2004)
 

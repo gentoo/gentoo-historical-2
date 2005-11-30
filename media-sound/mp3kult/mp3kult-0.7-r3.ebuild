@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3kult/mp3kult-0.7-r3.ebuild,v 1.1 2005/10/30 15:32:47 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3kult/mp3kult-0.7-r3.ebuild,v 1.1.1.1 2005/11/30 09:38:42 chriswhite Exp $
 
 inherit kde
 

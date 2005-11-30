@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/crwinfo/crwinfo-0.2.ebuild,v 1.1 2005/01/27 00:28:45 swtaylor Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/crwinfo/crwinfo-0.2.ebuild,v 1.1.1.1 2005/11/30 09:37:20 chriswhite Exp $
 
 DESCRIPTION="Canon raw image (CRW) information and thumbnail extractor"
 HOMEPAGE="http://freshmeat.net/projects/crwinfo/"

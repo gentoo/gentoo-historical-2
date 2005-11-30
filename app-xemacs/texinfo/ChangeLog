@@ -1,6 +1,20 @@
 # ChangeLog for app-xemacs/texinfo
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/texinfo/ChangeLog,v 1.1 2002/12/16 12:22:48 rendhalver Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/texinfo/ChangeLog,v 1.1.1.1 2005/11/30 09:38:52 chriswhite Exp $
+
+  20 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> texinfo-1.23.ebuild:
+  Stable on ppc.
+
+  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> texinfo-1.23.ebuild:
+  Stable on alpha
+
+*texinfo-1.23 (22 Feb 2003)
+
+  22 Feb 2003;  <rendhalver@gentoo.org> texinfo-1.21.ebuild texinfo-1.23.ebuild files/digest-texinfo-1.23 :
+  Add ~alpha to KEYWORDS
+
+  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
+  new stable ebuild
 
 *texinfo-1.21 (16 Dec 2002)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mediawiki/mediawiki-1.4.9-r1.ebuild,v 1.1 2005/09/15 21:01:57 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mediawiki/mediawiki-1.4.9-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:02 chriswhite Exp $
 
 inherit webapp
 

@@ -1,9 +1,38 @@
 # ChangeLog for media-sound/fapg
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/fapg/ChangeLog,v 1.1 2004/08/09 19:29:49 pkdawson Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/fapg/ChangeLog,v 1.1.1.1 2005/11/30 09:38:41 chriswhite Exp $
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> fapg-0.30.ebuild:
+  Stable on ppc.
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> fapg-0.30.ebuild:
+  Stable amd64, sparc, x86.
+
+*fapg-0.30 (24 Oct 2004)
+
+  24 Oct 2004; Patrick Dawson <pkdawson@gentoo.org> +fapg-0.30.ebuild:
+  Version bump.
+
+  19 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> fapg-0.22.ebuild:
+  Stable sparc.  Using toolchain-funs to get the compiler now.
+
+  28 Sep 2004; Tom Gall <tgall@gentoo.org> fapg-0.22.ebuild:
+  added ~ppc64, bug #64240
+
+  28 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> fapg-0.22.ebuild:
+  Stable amd64.  Added to ~sparc.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> fapg-0.22.ebuild:
+  Stable x86.  Added ~amd64.  Respect user CFLAGS.
+
+  29 Aug 2004; David Holm <dholm@gentoo.org> fapg-0.22.ebuild:
+  Added to ~ppc.
 
 *fapg-0.22 (09 Aug 2004)
 
   09 Aug 2004; Patrick Dawson <pkdawson@gentoo.org> fapg-0.22.ebuild :
-  Initial import.  Ebuild submitted by Dennis Nienhüser <fragfred@gmx.de>.
+  Initial import.  Ebuild submitted by Dennis NienhÃ¼ser <fragfred@gmx.de>.
   Closes bug #37842.

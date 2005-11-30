@@ -1,71 +1,56 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Bruce A. Locke <blocke@shivan.org>
-# $Header: /var/cvsroot/gentoo-x86/media-sound/soundtracker/soundtracker-0.6.6.ebuild,v 1.1 2002/07/01 04:05:51 blocke Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/soundtracker/soundtracker-0.6.6.ebuild,v 1.1.1.1 2005/11/30 09:38:18 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="nls esd gnome oss alsa"
+
 DESCRIPTION="SoundTracker is a music tracking tool for UNIX/X11 (MOD tracker)"
 SRC_URI="http://www.soundtracker.org/dl/v0.6/${P}.tar.gz"
 HOMEPAGE="http://www.soundtracker.org"
 
-DEPEND="=x11-libs/gtk+-1.2*
-	>=media-libs/audiofile-0.2.1 
-	alsa? ( media-libs/alsa-lib ) 
-	esd? ( media-sound/esound ) 
-	gnome? ( >=gnome-base/gnome-libs-1.4.1.7 )
-	sys-libs/zlib"
+DEPEND="sys-libs/zlib
+	=x11-libs/gtk+-1.2*
+	>=media-libs/audiofile-0.2.1
+	alsa? ( media-libs/alsa-lib )
+	esd? ( media-sound/esound )
+	gnome? ( >=gnome-base/gnome-libs-1.4.1.7 )"
 
-RDEPEND="$DEPEND sys-apps/bzip2 sys-apps/gzip app-arch/unzip"
+
+RDEPEND="$DEPEND app-arch/bzip2 app-arch/gzip app-arch/unzip"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86"
 
 src_compile() {
-	
+
 	local myconf
 
-	if [ -z "`use oss`" ] ; then
-		myconf="--disable-oss"
-    fi
+	use oss || myconf="--disable-oss"
 
-	if [ -z "`use alsa`" ] ; then
-		myconf="${myconf} --disable-alsa"
-	fi
+	use esd || myconf="${myconf} --disable-esd"
 
-	if [ -z "`use esd`" ] ; then
-		myconf="${myconf} --disable-esd"
-    fi
+	use nls || myconf="${myconf} --disable-nls"
 
-	if [ -z "`use gnome`" ] ; then
-		myconf="${myconf} --disable-gnome"
-	fi
+	use alsa || myconf="${myconf} --disable-alsa"
 
-	if [ -z "`use nls`" ] ; then
-		myconf="${myconf} --disable-nls"
-    fi
+	use gnome || myconf="${myconf} --disable-gnome"
 
-	./configure	\
-		--infodir=/usr/share/info	\
-		--mandir=/usr/share/man	\
-		--prefix=/usr	\
-		--host=${CHOST}	\
-		${myconf} || die
-		
-
+	econf ${myconf} || die
 	emake || die
 
 }
 
 src_install () {
-	
-	make 	\
-		prefix=${D}/usr	\
-		install || die
+
+	einstall || die
 
 	# strip suid from binary
 	chmod -s ${D}/usr/bin/soundtracker
 
 	# documentation
-	dodoc AUTHORS COPYING ChangeLog FAQ INSTALL NEWS README TODO
+	dodoc AUTHORS ChangeLog FAQ NEWS README TODO
 	dodoc doc/*.txt
 	dohtml -r doc
 
 }
-

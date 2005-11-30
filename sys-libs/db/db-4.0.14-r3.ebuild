@@ -1,21 +1,23 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.0.14-r3.ebuild,v 1.1 2003/10/18 10:29:17 robbat2 Exp $
-
-IUSE="tcltk java doc"
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.0.14-r3.ebuild,v 1.1.1.1 2005/11/30 09:39:14 chriswhite Exp $
 
 inherit eutils gnuconfig db
 
 S="${WORKDIR}/${P}/build_unix"
 DESCRIPTION="Berkeley DB"
-SRC_URI="http://www.sleepycat.com/update/snapshot/${P}.tar.gz"
+SRC_URI="ftp://ftp.sleepycat.com/releases/${P}.tar.gz"
 HOMEPAGE="http://www.sleepycat.com"
+IUSE="tcltk java doc"
 SLOT="4"
 LICENSE="DB"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~arm amd64 ia64"
+KEYWORDS="alpha amd64 ~hppa ia64 m68k ~mips ppc ppc64 sparc x86"
 
 DEPEND="tcltk? ( dev-lang/tcl )
 	java? ( virtual/jdk )"
+
+RDEPEND="tcltk? ( dev-lang/tcl )
+	java? ( virtual/jre )"
 
 src_unpack() {
 	unpack ${A}
@@ -25,12 +27,13 @@ src_unpack() {
 	# libpthread, but does not do so ...
 	# <azarah@gentoo.org> (23 Feb 2003)
 	cd ${WORKDIR}/${P}; epatch ${FILESDIR}/${P}-fix-dep-link.patch
+	epatch ${FILESDIR}/${PN}-4.1.25-java.patch
 
 	cd ${WORKDIR} ; epatch ${FILESDIR}/${P}-jarlocation.patch
 }
 
 src_compile() {
-
+	addwrite /proc/self/maps
 	# gnuconfig doesn't work if ${S} points to build_unix, so we
 	# change it temporarily
 	if use mips; then
@@ -48,7 +51,7 @@ src_compile() {
 		|| myconf="${myconf} --disable-java"
 
 	use tcltk \
-		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/lib" \
+		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/$(get_libdir)" \
 		|| myconf="${myconf} --disable-tcl"
 
 	if use java && [ -n "${JAVAC}" ]; then
@@ -63,6 +66,7 @@ src_compile() {
 		--datadir=/usr/share \
 		--sysconfdir=/etc \
 		--localstatedir=/var/lib \
+		--libdir=/usr/$(get_libdir) \
 		--enable-compat185 \
 		--enable-cxx \
 		--with-uniquename \
@@ -73,12 +77,12 @@ src_compile() {
 #
 #		--enable-posixmutexes \
 
-	emake || make || die
+	emake -j1 || die
 }
 
 src_install () {
 
-	einstall || die
+	einstall libdir="${D}/usr/$(get_libdir)" || die
 
 	db_src_install_usrbinslot
 

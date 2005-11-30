@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phpwiki/phpwiki-1.3.10.ebuild,v 1.1 2004/09/08 12:23:16 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phpwiki/phpwiki-1.3.10.ebuild,v 1.1.1.1 2005/11/30 09:37:09 chriswhite Exp $
 
 inherit webapp
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://phpwiki.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~ppc ~sparc ~x86"
 IUSE=""
 
 RDEPEND=">=virtual/php-4.0.6
@@ -24,7 +24,7 @@ src_unpack() {
 src_install() {
 	webapp_src_preinst
 
-	cp -a * ${D}/${MY_HTDOCSDIR}
+	cp -pPR * ${D}/${MY_HTDOCSDIR}
 	rm -rf ${D}/${MY_HTDOCSDIR}/{doc,schemas,README,INSTALL,UPGRADING}
 
 	dodoc README INSTALL UPGRADING doc/* schemas/*

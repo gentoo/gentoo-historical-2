@@ -1,28 +1,26 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/bootsplash-themes-livecd/bootsplash-themes-livecd-2004.1.ebuild,v 1.1 2004/05/19 20:27:17 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/bootsplash-themes-livecd/bootsplash-themes-livecd-2004.1.ebuild,v 1.1.1.1 2005/11/30 09:37:13 chriswhite Exp $
 
 IUSE="livecd"
-S=${WORKDIR}/${PF}
-DESCRIPTION="Gentoo ${PV} theme for bootsplash consoles"
+S=${WORKDIR}/bootsplash-themes-livecd-${PV}
+DESCRIPTION="Gentoo theme for bootsplash consoles"
 HOMEPAGE="http://www.gentoo.org/"
-SRC_URI="mirror://gentoo/${PF}.tar.bz2
-	http://dev.gentoo.org/~wolf31o2/${PF}.tar.bz2"
+SRC_URI="http://dev.gentoo.org/~wolf31o2/sources/${PN}/${PF}.tar.bz2"
 
-SLOT="0"
+SLOT=${PV}
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 
 DEPEND=">=media-gfx/bootsplash-0.6-r16"
 
 src_install() {
-	cp -r * ${D}/etc/bootsplash/themes/livecd-${PV}
+	dodir /etc/bootsplash/livecd-${PV}
+	cp -r ${S}/* ${D}/etc/bootsplash/livecd-${PV}
 
-	# link default config for boot images if not already set
-	if [ ! -e ${ROOT}/etc/bootsplash/default ]; then
-		use livecd \
-			&& dosym ./livecd-${PV} /etc/bootsplash/default \
-			|| dosym ./gentoo /etc/bootsplash/default
-	fi
-	use livecd && dosed "s:gentoo:livecd-${PV}:" /etc/conf.d/bootsplash
+	# link default config for livecd images if USE=livecd set
+	use livecd \
+		&& cd ${D}/etc/bootsplash \
+		&& rm default \
+		&& dosym ./livecd-${PV} /etc/bootsplash/default
 }

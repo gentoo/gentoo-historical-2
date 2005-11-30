@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnump3d/gnump3d-2.9.8.ebuild,v 1.1 2005/11/18 01:32:46 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnump3d/gnump3d-2.9.8.ebuild,v 1.1.1.1 2005/11/30 09:37:57 chriswhite Exp $
 
 inherit eutils
 

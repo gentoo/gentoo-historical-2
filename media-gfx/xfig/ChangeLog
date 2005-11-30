@@ -1,6 +1,80 @@
 # ChangeLog for media-gfx/xfig
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xfig/ChangeLog,v 1.1 2002/02/01 21:53:30 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xfig/ChangeLog,v 1.1.1.1 2005/11/30 09:37:37 chriswhite Exp $
+
+*xfig-3.2.5_alpha5 (24 Sep 2005)
+
+  24 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/xfig-3.2.5_alpha5-gentoo.diff, +files/xfig-3.2.5_alpha5-xaw3d.diff,
+  +metadata.xml, -xfig-3.2.3d-r1.ebuild, -xfig-3.2.4.ebuild,
+  +xfig-3.2.5_alpha5.ebuild:
+  Version bump for bug 71205, thanks to Cristian Peraferrer <corellian at
+  interec dot org>. Ported gentoo and xaw3d patches, shape patch is integrated
+  upstream.
+
+  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> xfig-3.2.4-r2.ebuild:
+  Mark 3.2.4-r2 stable on alpha
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  16 Dec 2004; Markus Rothe <corsair@gentoo.org> xfig-3.2.4-r2.ebuild:
+  Stable on ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org> xfig-3.2.4-r2.ebuild:
+  Marked ~ppc64
+
+  01 Nov 2004; Markus Rothe <corsair@gentoo.org>
+
+  xfig-3.2.4-r1.ebuild:
+  Marked ~ppc64; bug #66756
+
+*xfig-3.2.4-r2 (02 Sep 2004)
+
+  02 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +xfig-3.2.4-r2.ebuild:
+  Added shapepatch. Thanks to Geoffrey <geoffrey@andrews.edu>, see bug #20877.
+
+  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> xfig-3.2.4-r1.ebuild:
+  Stable on alpha.
+
+  25 Mar 2004; Joshua Kinard <kumba@gentoo.org> xfig-3.2.4-r1.ebuild:
+  Removed ~mips from KEYWORDS until this can be tested on mips.
+
+  13 Dec 2003; Brad House <brad_mssw@gentoo.org> xfig-3.2.4-r1.ebuild:
+  mark stable on amd64
+
+*xfig-3.2.4-r1 (10 Mar 2003)
+
+  10 Mar 2003; Seemant Kulleen <seemant@gentoo.org> xfig-3.2.4-r1.ebuild,
+  files/xfig-3.2.4-xaw3d.diff:
+  supports Xaw3d now. thanks to: Sander Graswinckel <sgraswinckel@hotmail.com>
+  for the patch in bug #16224
+
+*xfig-3.2.4 (12 Feb 2003)
+
+  12 Feb 2003; Seemant Kulleen <seemant@gentoo.org> xfig-3.2.4.ebuild :
+
+  Version bump thanks to: Daniele Foci <sunscan@sunscan.org> in bug
+  #14245.  Also, removed the patch from files and sent it to the mirrors,
+  and using epatch from eutils.eclass to handle the patching.
+
+*xfig-3.2.3d-r1 (13 Apr 2002)
+
+  07 Jan 2003; George Shapovalov <george@gentoo.org> xfig-3.2.3d-r1.ebuild :
+  added IUSE, few cosmetic touch-ups
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> xfig-3.2.3d-r1.ebuild :
+
+  Added media-libs/netpbm to RDEPEND, closing bug #11515 by ntl@swt.edu
+  (nate lynch)
+
+  7 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
+
+  13 Apr 2002; Seemant Kulleen <seemant@gentoo.org> xfig-3.2.3d-r1.ebuild :
+
+  Added transfig to the RDEPEND. Did not bump version numbers though.
+  Closes bug #1619 by ekoontz@hiro-tan.dhs.org (Eugene Koontz)
 
 *xfig-3.2.3d (1 Feb 2002)
 

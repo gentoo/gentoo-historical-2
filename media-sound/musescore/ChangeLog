@@ -1,6 +1,28 @@
 # ChangeLog for media-sound/musescore
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/musescore/ChangeLog,v 1.1 2003/03/08 12:54:09 jje Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/musescore/ChangeLog,v 1.1.1.1 2005/11/30 09:38:42 chriswhite Exp $
+
+  25 Jul 2005; Caleb Tennis <caleb@gentoo.org> musescore-0.0.6.ebuild:
+  Fix qt dep per bug #100235
+
+  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musescore-0.0.6.ebuild:
+  Stable sparc.
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musescore-0.0.6.ebuild:
+  Added to ~sparc.
+
+  01 May 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musescore-0.0.6.ebuild, files/musescore-0.0.6-assert.patch:
+  Fix bug #49377.
+
+  17 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  musescore-0.0.6.ebuild:
+  removed IUSE=X.  Removed einstall.
+
+  12 Jun 2003; <msterret@gentoo.org> musescore-0.0.6.ebuild:
+  fix Header
 
 *musescore-0.0.6 (08 Mar 2003)
 

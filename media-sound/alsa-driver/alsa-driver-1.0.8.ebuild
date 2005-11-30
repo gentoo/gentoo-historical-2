@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.8.ebuild,v 1.1 2005/01/14 13:52:55 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.8.ebuild,v 1.1.1.1 2005/11/30 09:38:34 chriswhite Exp $
 
 IUSE="oss doc"
 inherit linux-mod flag-o-matic eutils
@@ -14,7 +14,7 @@ SRC_URI="mirror://alsaproject/driver/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="alpha amd64 ~ia64 ~mips ppc ppc64 sparc x86"
 
 RDEPEND="virtual/modutils
 	 ~media-sound/alsa-headers-${PV}"
@@ -28,13 +28,6 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/alsa"
 
 pkg_setup() {
-	CONFIG_CHECK="SOUND !SND !SOUND_PRIME"
-	SND_ERROR="ALSA is already compiled into the kernel."
-	SOUND_ERROR="Your kernel doesn't have sound support enabled."
-	SOUND_PRIME_ERROR="Your kernel is configured to use the deprecated OSS drivers.  Please disable them and re-emerge alsa-driver."
-
-	linux-mod_pkg_setup
-
 	# By default, drivers for all supported cards will be compiled.
 	# If you want to only compile for specific card(s), set ALSA_CARDS
 	# environment to a space-separated list of drivers that you want to build.
@@ -42,10 +35,30 @@ pkg_setup() {
 	#
 	#   env ALSA_CARDS='emu10k1 intel8x0 ens1370' emerge alsa-driver
 	#
-	if [ -z "${ALSA_CARDS}" ]; then
-		ewarn "\${ALSA_CARDS} isn't set, so we are compiling all alsa drivers."
-		ALSA_CARDS="all"
+	ALSA_CARDS=${ALSA_CARDS:-all}
+
+	if [ "${PROFILE_ARCH}" == "xbox" ]; then
+		ALSA_CARDS='intel8x0'
 	fi
+
+	# Which drivers need PNP
+	local PNP_DRIVERS="interwave interwave-stb"
+
+	CONFIG_CHECK="SOUND !SND !SOUND_PRIME"
+	SND_ERROR="ALSA is already compiled into the kernel."
+	SOUND_ERROR="Your kernel doesn't have sound support enabled."
+	SOUND_PRIME_ERROR="Your kernel is configured to use the deprecated OSS drivers.  Please disable them and re-emerge alsa-driver."
+	PNP_ERROR="Some of the drivers you selected require PNP in your kernel (${PNP_DRIVERS}).  Either enable PNP in your kernel or trim which drivers get compiled using ALSA_CARDS in /etc/make.conf."
+
+	if [[ "${ALSA_CARDS}" == "all" ]]; then
+		CONFIG_CHECK="${CONFIG_CHECK} PNP"
+	else
+		for pnpdriver in ${PNP_DRIVERS}; do
+			hasq ${pnpdriver} ${ALSA_CARDS} && CONFIG_CHECK="${CONFIG_CHECK} PNP"
+		done
+	fi
+
+	linux-mod_pkg_setup
 }
 
 src_unpack() {
@@ -53,10 +66,14 @@ src_unpack() {
 
 	cd ${S}
 
-	[ "${PROFILE_ARCH}" == "xbox" ] && \
-		epatch ${FILESDIR}/${PN}-1.0.7-xbox.patch
+	#see #81666
+	epatch ${FILESDIR}/${PV}-msi_audigyls.patch
 
 	convert_to_m ${S}/Makefile
+
+	if [ "${PROFILE_ARCH}" == "xbox" ]; then
+		epatch ${FILESDIR}/xbox-1.0.8.patch
+	fi
 }
 
 src_compile() {
@@ -71,9 +88,11 @@ src_compile() {
 		--with-cards="${ALSA_CARDS}" || die "econf failed"
 
 	# linux-mod_src_compile doesn't work well with alsa
-	unset ARCH
+
 	# -j1 : see bug #71028
-	emake -j1 || die "Parallel Make Failed"
+	ARCH=$(tc-arch-kernel)
+	emake -j1 || die "Make Failed"
+	ARCH=$(tc-arch)
 
 	if use doc;
 	then
@@ -90,7 +109,8 @@ src_compile() {
 
 src_install() {
 	dodir /usr/include/sound
-	make DESTDIR="${D}" install || die
+
+	make DESTDIR=${D} install || die
 
 	# Provided by alsa-headers now
 	rm -rf ${D}/usr/include/sound
@@ -99,7 +119,7 @@ src_install() {
 	test -e ${D}/etc/init.d/alsasound && rm ${D}/etc/init.d/alsasound
 	test -e ${D}/etc/rc.d/init.d/alsasound && rm ${D}/etc/rc.d/init.d/alsasound
 
-	dodoc CARDS-STATUS INSTALL FAQ README WARNING TODO
+	dodoc CARDS-STATUS FAQ README WARNING TODO
 
 	if use doc; then
 		docinto doc
@@ -112,6 +132,12 @@ src_install() {
 
 		docinto Documentation
 		dodoc sound/Documentation/*
+	fi
+
+	if kernel_is 2 6; then
+		# mv the drivers somewhere they won't be killed by the kernel's make modules_install
+		mv ${D}/lib/modules/${KV_FULL}/kernel/sound ${D}/lib/modules/${KV_FULL}/${PN}
+		rmdir ${D}/lib/modules/${KV_FULL}/kernel &> /dev/null
 	fi
 }
 
@@ -126,8 +152,20 @@ pkg_postinst() {
 	einfo "If you experience problems, please report bugs to http://bugs.gentoo.org."
 	einfo
 
+
 	linux-mod_pkg_postinst
 
 	einfo "Check out the ALSA installation guide availible at the following URL:"
 	einfo "http://www.gentoo.org/doc/en/alsa-guide.xml"
+
+	if kernel_is 2 6 && [ -e ${ROOT}/lib/modules/${KV_FULL}/kernel/sound  ]; then
+		# Cleanup if they had older alsa installed
+		for file in $(find ${ROOT}/lib/modules/${KV_FULL}/${PN} -type f); do
+			rm -f ${file//${KV_FULL}\/${PN}/${KV_FULL}\/kernel\/sound}
+		done
+
+		for dir in $(find ${ROOT}/lib/modules/${KV_FULL}/kernel/sound -type d | tac); do
+			rmdir ${dir} &> /dev/null
+		done
+	fi
 }

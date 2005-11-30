@@ -1,66 +1,50 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sodipodi/sodipodi-0.28.ebuild,v 1.1 2002/11/27 19:59:15 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sodipodi/sodipodi-0.28.ebuild,v 1.1.1.1 2005/11/30 09:37:40 chriswhite Exp $
 
+inherit flag-o-matic
+
+DESCRIPTION="Vector illustration application for GNOME"
+HOMEPAGE="http://sodipodi.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 ppc ~amd64"
 IUSE="xml2 nls bonobo wmf"
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Vector illustration application for GNOME"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-HOMEPAGE="http://sodipodi.sourceforge.net/"
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86"
-
 RDEPEND=">=gnome-base/gnome-print-0.35
-	>=gnome-extra/gal-0.13
+	<gnome-extra/gal-1.99
 	media-libs/gdk-pixbuf
 	bonobo? ( gnome-base/bonobo )
 	xml2? ( dev-libs/libxml2 )
 	wmf? ( >=media-libs/libwmf-0.2.1 )"
-
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	>=sys-devel/autoconf-2.58"
 
-# trick to make the configure compile tests work
 src_unpack() {
-        unpack ${A}
-        
-        cd ${S}
-        export WANT_AUTOCONF_2_5=1
-        autoconf --force
+	unpack ${A}
+
+	cd ${S}
+	export WANT_AUTOCONF=2.5
+	autoconf --force
 }
 
 src_compile() {
-	local myconf
-
-	use bonobo \
-		&& myconf="${myconf} --with-bonobo" \
-		|| myconf="${myconf} --without-bonobo"
-
-	use xml2 \
-		&& myconf="${myconf} --with-gnome-xml2" \
-		|| myconf="${myconf} --without-gnome-xml2"
-
-	use wmf \
-		&& myconf="${myconf} --with-libwmf" \
-		|| myconf="${myconf} --without-libwmf"
-
-	use nls || myconf="${myconf} --disable-nls"
-
-	CFLAGS="${CFLAGS} `gnome-config --cflags gdk_pixbuf`"
-
+	append-flags `gnome-config --cflags gdk_pixbuf`
 	econf \
 		--enable-gnome \
 		--enable-gnome-print \
-		${myconf} || die
-
+		`use_with bonobo` \
+		`use_with xml2 gnome-xml2` \
+		`use_with wmf libwmf` \
+		`use_enable nls` \
+		|| die
 	emake || die
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
-
-	dodoc AUTHORS COPYING ChangeLog README NEWS TODO
+	dodoc AUTHORS ChangeLog README NEWS TODO
 }

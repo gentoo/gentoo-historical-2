@@ -1,6 +1,37 @@
 # ChangeLog for media-sound/vsound
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/vsound/ChangeLog,v 1.1 2002/08/13 18:11:01 agenkin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vsound/ChangeLog,v 1.1.1.1 2005/11/30 09:37:52 chriswhite Exp $
+
+  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> vsound-0.5.ebuild,
+  vsound-0.6.ebuild:
+  Don't install INSTALL or COPYING files.
+
+  08 Apr 2005; Joseph Jezak <josejx@gentoo.org> vsound-0.6.ebuild:
+  Marked ~ppc for bug #88231.
+
+  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> vsound-0.6.ebuild:
+  Stable amd64, sparc, x86.
+
+*vsound-0.6 (25 Jul 2004)
+
+  25 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> +vsound-0.6.ebuild:
+  Version bump.  Closes bug #57873.
+
+  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> vsound-0.5.ebuild:
+  Added to ~amd64 and ~sparc
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> vsound-0.5.ebuild:
+  Added IUSE.
+
+  12 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> vsound-0.5.ebuild:
+  Fixed mirror:/// to mirror:// in SRC_URI to fix bug #47490.
+
+  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> vsound-0.5.ebuild:
+  nomirror.  Removed explicit S=
+
+  26 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
+  vsound-0.5.ebuild:
+  Removing realplayer from DEPEND.  Closes bug #41387.
 
 *vsound-0.5 (13 Aug 2002)
 

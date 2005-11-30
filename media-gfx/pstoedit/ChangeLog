@@ -1,6 +1,80 @@
 # ChangeLog for media-gfx/pstoedit
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/pstoedit/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/pstoedit/ChangeLog,v 1.1.1.1 2005/11/30 09:37:46 chriswhite Exp $
+
+*pstoedit-3.42 (02 Nov 2005)
+
+  02 Nov 2005; Leonardo Boshell <leonardop@gentoo.org>
+  pstoedit-3.40.ebuild, +pstoedit-3.42.ebuild:
+  Fix SRC_URI in version 3.40 (bug #110958). Version bump to 3.42.
+
+  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> pstoedit-3.40.ebuild:
+  Stable on sparc
+
+  09 Jun 2005; <sekretarz@gentoo.org> pstoedit-3.40.ebuild:
+  Stable on amd64
+
+  05 Jun 2005; Markus Rothe <corsair@gentoo.org> pstoedit-3.40.ebuild:
+  Stable on ppc64; dependency for bug #92995
+
+  21 May 2005; Markus Rothe <corsair@gentoo.org> pstoedit-3.40.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  26 Mar 2005; Jason Wever <weeve@gentoo.org> pstoedit-3.40.ebuild:
+  Added ~sparc keyword wrt bug #86280.
+
+  22 Mar 2005; Karol Wojtaszek <sekretarz@gentoo.org> pstoedit-3.40.ebuild:
+  Added to ~amd64
+
+*pstoedit-3.40 (21 Feb 2005)
+
+  21 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +pstoedit-3.40.ebuild:
+  Version bumped. Added plututils to IUSE. This closes bug #43820.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> pstoedit-3.32.ebuild,
+  pstoedit-3.33.ebuild:
+  Add die following econf for bug 48950
+
+  16 Feb 2004; Mike Gardiner <obz@gentoo.org> pstoedit-3.33.ebuild:
+  Added libemf as a dependency, and fixed libemf related compilation problems by
+  removing -pedantic CFLAG
+
+  02 Feb 2004; Martin Holzer <mholzer@gentoo.org> pstoedit-3.32.ebuild,
+  pstoedit-3.33.ebuild:
+  adding media-libs/libexif to depend. closes 39693
+
+  31 Jan 2004; Mike Gardiner <obz@gentoo.org> pstoedit-3.32.ebuild,
+  pstoedit-3.33.ebuild:
+  Now installs all documentation, and a man page. Removed -pedantic flag which
+  causes errors with libEMF
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> pstoedit-3.32.ebuild,
+  pstoedit-3.33.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
+
+  02 Oct 2003; Mike Gardiner <obz@gentoo.org> metadata.xml,
+  pstoedit-3.33.ebuild:
+  Fixes re bug: 29724 for libEMF and removed ming support which is currently
+  un-supported support (?). We're also going stable on x86
+
+*pstoedit-3.33 (17 Jun 2003)
+
+  17 Jun 2003; Seemant Kulleen <seemant@gentoo.org> pstoedit-3.33.ebuild:
+  version bump, thanks to: Sean P. Kane <spkane@genomatica.com> in bug #22962
+
+*pstoedit-3.32 (22 Oct 2002)
+
+  22 Oct 2002; Seemant Kulleen <seemant@gentoo.org> pstoedit-3.32.ebuild
+  files/digest-pstoedit-3.32 :
+
+  Version bump thanks to: mavos@bigfoot.com (Martin Vollrathson) in bug
+  #8967.
+
+*pstoedit-3.31-r1 (12 Apr 2002)
+
+  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> pstoedit-3.31-r1.ebuild :
+
+  Compile against latest libpng
 
 *pstoedit-3.31 (1 Feb 2002)
 

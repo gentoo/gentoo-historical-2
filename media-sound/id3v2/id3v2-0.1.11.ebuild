@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/id3v2/id3v2-0.1.11.ebuild,v 1.1 2004/09/01 07:56:30 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/id3v2/id3v2-0.1.11.ebuild,v 1.1.1.1 2005/11/30 09:38:33 chriswhite Exp $
 
 IUSE=""
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://id3v2.sourceforge.net/"
 SRC_URI="mirror://sourceforge/id3v2/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64"
+KEYWORDS="alpha amd64 ~hppa ppc ~ppc64 sparc x86"
 
 DEPEND="media-libs/id3lib"
 
@@ -35,5 +35,5 @@ src_compile() {
 src_install() {
 	dobin id3v2
 	doman id3v2.1
-	dodoc COPYING INSTALL README
+	dodoc README
 }

@@ -1,13 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ventrilo-server-bin/ventrilo-server-bin-2.1.2.ebuild,v 1.1.1.1 2005/11/30 09:38:39 chriswhite Exp $
 
+IUSE=""
 DESCRIPTION="The Ventrilo Voice Communication Server"
 HOMEPAGE="http://www.ventrilo.com/"
 SRC_URI="ventrilo_srv-2.1.2-Linux-i386.tar.gz"
 
 LICENSE="ventrilo"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 RESTRICT="fetch"
 
 S=${WORKDIR}

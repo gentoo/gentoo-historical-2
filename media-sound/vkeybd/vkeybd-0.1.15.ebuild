@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/vkeybd/vkeybd-0.1.15.ebuild,v 1.1 2003/12/20 17:42:57 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vkeybd/vkeybd-0.1.15.ebuild,v 1.1.1.1 2005/11/30 09:38:19 chriswhite Exp $
+
+IUSE="alsa oss ladcca"
 
 DESCRIPTION="A virtual MIDI keyboard for X"
 HOMEPAGE="http://www.alsa-project.org/~iwai/alsa.html"
@@ -8,8 +10,7 @@ SRC_URI="http://www.alsa-project.org/~iwai/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="alsa oss ladcca"
+KEYWORDS="amd64 ~sparc x86"
 
 DEPEND="alsa? ( >=media-libs/alsa-lib-0.5.0 )
 	>=dev-lang/tk-8.3
@@ -18,9 +19,10 @@ DEPEND="alsa? ( >=media-libs/alsa-lib-0.5.0 )
 	ladcca? ( >=media-libs/ladcca-0.3.1 )"
 
 S=${WORKDIR}/${PN}
-TCL_VERSION=`awk -F\' '/TCL_VERSION/ {print $2}' /usr/lib/tclConfig.sh`
 
 src_compile() {
+	TCL_VERSION=`echo 'puts [info tclversion]' | tclsh`
+
 	local myconf="PREFIX=/usr"
 
 	#vkeybd requires at least one of its USE_ variable to be set
@@ -36,8 +38,9 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} PREFIX=/usr install || die "Installation Failed"
-	make DESTDIR=${D} PREFIX=/usr install-man || die \
-					    "Man-Page Installation Failed"
+	make DESTDIR=${D} TCL_VERSION=$TCL_VERSION PREFIX=/usr install || \
+		die "Installation Failed"
+	make DESTDIR=${D} TCL_VERSION=$TCL_VERSION PREFIX=/usr install-man || \
+		die "Man-Page Installation Failed"
 	dodoc README
 }

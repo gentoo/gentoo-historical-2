@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/mousepad/mousepad-0.2.1.ebuild,v 1.1 2005/02/20 21:02:10 bcowan Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/mousepad/mousepad-0.2.1.ebuild,v 1.1.1.1 2005/11/30 09:38:57 chriswhite Exp $
 
 DESCRIPTION="Small text editor for Xfce 4"
 SRC_URI="http://erikharrison.net/software/${P}.tar.gz"

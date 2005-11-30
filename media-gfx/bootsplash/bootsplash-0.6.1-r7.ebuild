@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/bootsplash/bootsplash-0.6.1-r7.ebuild,v 1.1 2004/10/11 16:30:14 dams Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/bootsplash/bootsplash-0.6.1-r7.ebuild,v 1.1.1.1 2005/11/30 09:37:27 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 S=${WORKDIR}
@@ -11,7 +13,7 @@ SRC_URI="mirror://gentoo/${PN}-core-0.6.1-r6.tar.bz2
 	mirror://gentoo/${PN}-kernel-0.6.1-r6.tar.bz2"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="amd64 ppc x86"
 
 DEPEND=">=media-libs/freetype-2
 	media-libs/libmng
@@ -19,8 +21,6 @@ DEPEND=">=media-libs/freetype-2
 	!media-gfx/splashutils"
 
 PATCHS="${FILESDIR}/0.6.1-r7-default_theme.patch"
-
-inherit eutils
 
 src_compile() {
 	# compile utils
@@ -44,7 +44,7 @@ src_install() {
 	doexe utils/fbtruetype/fbtruetype{,.static}
 	doexe misc/bootsplash_resize
 	newexe utils/splashutils/splash splash.bin
-	doexe misc/splash
+	doexe misc/{splash,bootanim}
 	doexe utils/splashutils/{fbresolution,getkey,progress,splashpbm}
 
 	insinto /sbin

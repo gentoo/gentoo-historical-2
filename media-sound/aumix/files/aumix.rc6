@@ -1,25 +1,22 @@
 #!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/media-sound/aumix/files/aumix.rc6,v 1.1 2001/12/23 23:01:00 azarah Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/aumix/files/aumix.rc6,v 1.1.1.1 2005/11/30 09:38:02 chriswhite Exp $
 
 depend() {
-	# User could have some wierd setup that uses /etc/init.d/local ?
-	need modules local
-	use alsa
+	use modules hotplug coldplug alsasound
 }
 
 checkconfig() {
-	if [ -z "`grep 'sound' /proc/devices`" ] && [ ! -d /proc/asound ]
-	then
+	if ! grep -q -E 'sound|OSS|sparcaudio' /proc/devices && [[ ! -d /proc/asound ]] ; then
 		eerror "Sound support has not been compiled into the kernel,"
 		eerror "or is disabled.  Please check that the correct modules"
 		eerror "is loaded."
 		return 1
 	fi
 	# /dev/mixer can be a symlink
-	if [ ! -e /dev/mixer ] ; then
-		eerror "/dev/mixer do not exist, please create it, or load the"
+	if [[ ! -e /dev/mixer ]] ; then
+		eerror "/dev/mixer does not exist, please create it, or load the"
 		eerror "correct modules to enable your card's mixer"
 		return 1
 	fi
@@ -27,7 +24,7 @@ checkconfig() {
 
 start() {
 	checkconfig || return 1
-	if [ -f /etc/aumixrc ] ; then
+	if [[ -f /etc/aumixrc ]] ; then
 		ebegin "Loading Mixer settings"
 		/usr/bin/aumix -f /etc/aumixrc -L >/dev/null 2>&1
 	else

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/smac/smac-6.0a.ebuild,v 1.1 2005/09/09 01:56:57 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/smac/smac-6.0a.ebuild,v 1.1.1.1 2005/11/30 09:36:43 chriswhite Exp $
 
 inherit games
 
@@ -8,7 +8,7 @@ IUSE="videos"
 
 DESCRIPTION="Sid Meier's Alpha Centauri"
 HOMEPAGE="http://www.lokigames.com/products/smac/"
-SRC_URI="ftp://sunsite.dk/mirrors/lokigames/updates/${PN}/${P}-x86.run"
+SRC_URI="mirror://lokigames/${PN}/${P}-x86.run"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
@@ -68,8 +68,8 @@ src_install() {
 	insinto /usr/share/pixmaps
 	newins ${CDROM_ROOT}/icon.xpm smac.xpm
 
-	games_make_wrapper ${PN} ./${PN} "${dir}"
-	games_make_wrapper ${PN}x ./${PN}x "${dir}"
+	games_make_wrapper ${PN} ./${PN} "${dir}" "${dir}"
+	games_make_wrapper ${PN}x ./${PN}x "${dir}" "${dir}"
 	prepgamesdirs
 
 	einfo "Linking libs provided by 'sys-libs/lib-compat-loki' to '${dir}'."

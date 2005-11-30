@@ -1,18 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wavsplit/wavsplit-1.0.ebuild,v 1.1 2003/09/21 08:55:00 jje Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavsplit/wavsplit-1.0.ebuild,v 1.1.1.1 2005/11/30 09:38:32 chriswhite Exp $
+
+IUSE=""
 
 DESCRIPTION="WavSplit is a simple command line tool to split WAV files"
-HOMEPAGE="http://sourceforge.net/projects/${PN}/"
+HOMEPAGE="http://sourceforge.net/projects/wavsplit/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE=""
+#-sparc, -amd64: 1.0: "Only supports PCM wave format"
+KEYWORDS="x86 -sparc -amd64"
 DEPEND=""
-#RDEPEND=""
-S=${WORKDIR}/${P}
 
 src_compile() {
 	emake || die
@@ -21,6 +21,5 @@ src_compile() {
 src_install() {
 	dobin wavsplit wavren
 	doman wavsplit.1 wavren.1
-	dodoc BUGS CHANGES COPYING CREDITS README README.wavren
+	dodoc BUGS CHANGES CREDITS README README.wavren
 }
-

@@ -1,6 +1,35 @@
 # ChangeLog for media-sound/cm
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cm/ChangeLog,v 1.1 2003/05/18 13:16:12 jje Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cm/ChangeLog,v 1.1.1.1 2005/11/30 09:38:31 chriswhite Exp $
+
+  25 Jul 2005; David Holm <dholm@gentoo.org> cm-2.4.2.ebuild:
+  Added to ~ppc.
+
+  20 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> -cm-2.4.0.ebuild:
+  Removing old version.  Ebuild cleanup.
+
+  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> cm-2.4.2.ebuild:
+  Stable amd64, sparc.
+
+  05 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cm-2.4.2.ebuild:
+  Added ~amd64 ~sparc.
+
+  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> cm-2.4.0.ebuild,
+  cm-2.4.2.ebuild:
+  Added IUSE.
+
+  22 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> cm-2.4.0.ebuild,
+  cm-2.4.2.ebuild:
+  Using keepdir to fix bug #45361.
+
+  19 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> cm-2.4.0.ebuild,
+  cm-2.4.2.ebuild:
+  Fixing dep and moving to stable x86.
+
+*cm-2.4.2 (29 Feb 2004)
+
+  29 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> cm-2.4.2.ebuild:
+  Version bump.  Closes bug #39677.
 
 *cm-2.4.0 (18 May 2003)
 

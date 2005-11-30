@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/cracklib/cracklib-2.8.3-r1.ebuild,v 1.1 2005/04/16 05:41:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/cracklib/cracklib-2.8.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:39:06 chriswhite Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs multilib
 
 MY_P=${P/_}
 DESCRIPTION="Password Checking Library"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/cracklib/${MY_P}.tar.gz"
 
 LICENSE="CRACKLIB"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 DEPEND=""
@@ -23,6 +23,7 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}"/cracklib-2.8.3-dictname.patch
 	epatch "${FILESDIR}"/cracklib-2.8.3-packer-defines.patch
+	epunt_cxx
 }
 
 src_compile() {
@@ -42,6 +43,7 @@ src_install() {
 	mv "${D}"/usr/$(get_libdir)/*.so* "${D}"/$(get_libdir)/ || die "could not move shared"
 	gen_usr_ldscript libcrack.so
 
+	echo -n "Generating cracklib dicts ... "
 	insinto /usr/share/dict
 	doins dicts/cracklib-small || die "word dict"
 	tc-is-cross-compiler \

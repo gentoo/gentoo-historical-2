@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audacious/audacious-0.1-r1.ebuild,v 1.1 2005/11/01 00:23:08 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audacious/audacious-0.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:37:50 chriswhite Exp $
 
 IUSE="alsa esd flac gnome mmx mp3 nls oss sdl vorbis"
 
@@ -9,12 +9,13 @@ inherit flag-o-matic eutils libtool autotools
 DESCRIPTION="Audacious Player - Your music, your way, no exceptions."
 HOMEPAGE="http://audacious.nenolod.net/Main_Page"
 SRC_URI="http://audacious.nenolod.net/release/audacious-0.1.tgz
-	 mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2"
+	 mirror://gentoo/gentoo_ice-xmms-0.2.tar.bz2
+	 http://svn.atheme.org/audacious/trunk/m4/libFLAC.m4"
 
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND="app-arch/unzip
 	>=x11-libs/gtk+-2.4
@@ -37,6 +38,9 @@ src_unpack() {
 	if ! useq mp3; then
 		ewarn "MP3 support is now optional and you have not enabled it."
 	fi
+
+	mkdir -p ${S}/m4/
+	cp ${DISTDIR}/libFLAC.m4 ${S}/m4/
 
 	unpack ${A}
 	cd ${S}

@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/yablex/yablex-20030826.ebuild,v 1.1 2003/11/25 11:52:25 brandy Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/yablex/yablex-20030826.ebuild,v 1.1.1.1 2005/11/30 09:37:29 chriswhite Exp $
+
+inherit eutils
 
 MY_P=${PN}${PV}
 DESCRIPTION="YaBle - Yet Another Blender Exporter"
@@ -9,10 +11,10 @@ SRC_URI="mirror://gentoo/${MY_P}-leope.zip"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 
 IUSE=""
-DEPEND=""
+DEPEND="app-arch/unzip"
 RDEPEND="media-gfx/blender
 	dev-lang/python"
 
