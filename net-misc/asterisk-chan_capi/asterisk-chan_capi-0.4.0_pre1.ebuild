@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_capi/asterisk-chan_capi-0.4.0_pre1.ebuild,v 1.4 2005/08/16 16:30:33 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_capi/asterisk-chan_capi-0.4.0_pre1.ebuild,v 1.1 2005/05/07 18:01:08 stkn Exp $
 
-IUSE=""
+IUSE="fax"
 
 inherit eutils
 
@@ -15,10 +15,9 @@ SRC_URI="http://www.junghanns.net/asterisk/downloads/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 
 DEPEND=">=net-misc/asterisk-1.0.5-r1
-	!>=net-misc/asterisk-1.1.0
 	net-dialup/capi4k-utils"
 
 S=${WORKDIR}/${MY_P}

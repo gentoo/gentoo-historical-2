@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/pam-0.78-r2.ebuild,v 1.28 2005/08/23 17:28:09 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/pam/pam-0.78-r2.ebuild,v 1.1 2005/03/09 10:36:17 azarah Exp $
 
 FORCE_SYSTEMAUTH_UPDATE="no"
 
@@ -14,7 +14,7 @@ FORCE_SYSTEMAUTH_UPDATE="no"
 PATCH_LEVEL="1.2"
 BDB_VER="4.3.27"
 BDB_VER2="4.1.25"
-GLIB_VER="2.6.5"
+GLIB_VER="2.6.3"
 PAM_REDHAT_VER="0.78-3"
 
 HOMEPAGE="http://www.kernel.org/pub/linux/libs/pam/"
@@ -23,16 +23,17 @@ DESCRIPTION="Pluggable Authentication Modules"
 S="${WORKDIR}/Linux-PAM-${PV}"
 S2="${WORKDIR}/pam-${PV}-patches"
 SRC_URI="http://www.kernel.org/pub/linux/libs/pam/pre/library/Linux-PAM-${PV}.tar.gz
-	mirror://gentoo/pam-${PV}-patches-${PATCH_LEVEL}.tar.bz2
+	mirror://gentoo/${P}-patches-${PATCH_LEVEL}.tar.bz2
+	http://dev.gentoo.org/~seemant/distfiles/${P}-patches-${PATCH_LEVEL}.tar.bz2
 	berkdb? ( http://downloads.sleepycat.com/db-${BDB_VER}.tar.gz )
 	pam_console? ( ftp://ftp.gtk.org/pub/gtk/v2.6/glib-${GLIB_VER}.tar.bz2 )"
 
 LICENSE="PAM"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="berkdb pwdb selinux pam_chroot pam_console pam_timestamp nis"
 
-RDEPEND=">=sys-libs/cracklib-2.8.3
+RDEPEND=">=sys-libs/cracklib-2.7-r8
 	selinux? ( sys-libs/libselinux )
 	berkdb? ( >=sys-libs/db-${BDB_VER2} )
 	pwdb? ( >=sys-libs/pwdb-0.62 )"
@@ -50,10 +51,8 @@ DEPEND="${RDEPEND}
 # Have python sandbox issues currently ...
 #	doc? ( app-text/sgmltools-lite )
 
-PROVIDE="virtual/pam"
-
 #inherit needs to be after DEPEND definition to protect RDEPEND
-inherit toolchain-funcs eutils flag-o-matic gnuconfig pam
+inherit gcc eutils flag-o-matic gnuconfig
 
 apply_pam_patches() {
 	local x=
@@ -165,7 +164,6 @@ src_compile() {
 		#./s_config
 		CFLAGS="${CFLAGS} -fPIC" \
 		../dist/configure \
-			--host=${CHOST} \
 			--cache-file=config.cache \
 			--disable-compat185 \
 			--disable-cxx \
@@ -186,7 +184,7 @@ src_compile() {
 		# XXX: hack out O_DIRECT support in db4 for now.
 		#      (Done above now with --disable-o_direct now)
 
-		make CC="$(tc-getCC)" || die "BDB build failed"
+		make || die "BDB build failed"
 		make install || die
 	fi
 
@@ -198,9 +196,7 @@ src_compile() {
 		sed -i -s 's:G_GNUC_INTERNAL::g' "${GLIB_DIR}/glib"/*.c
 
 		CFLAGS="${CFLAGS} -fPIC" \
-		./configure \
-			--host=${CHOST} \
-			--enable-static \
+		./configure --enable-static \
 			--disable-shared \
 			--with-pic \
 			--disable-threads \
@@ -211,7 +207,7 @@ src_compile() {
 
 		# Do not need to build the whole shebang
 		cd "${GLIB_DIR}/glib" || die
-		make CC="$(tc-getCC)" || die "GLIB build failed"
+		make || die "GLIB build failed"
 		make install || die
 		# Install pkg-config stuff and needed headers
 		cd "${GLIB_DIR}" || die
@@ -268,7 +264,7 @@ src_compile() {
 			_pam_aconf.h
 	fi
 
-	make CC="$(tc-getCC)" || die "PAM build failed"
+	make || die "PAM build failed"
 }
 
 src_install() {
@@ -294,12 +290,7 @@ src_install() {
 				echo
 				die "${mod_name} module did not build."
 			fi
-			if [[ -n $(ldd "${sec_dir}/${mod_name}"*.so 2>&1 | \
-			           grep "/usr/lib/" | \
-			           grep "/usr/$(get_libdir)/" | \
-			           grep -v "/usr/lib/gcc" | \
-			           grep -v "/usr/$(get_libdir)/gcc" | \
-			           grep -v "libsandbox") ]] ; then
+			if [[ -n $(ldd "${sec_dir}/${mod_name}"*.so 2>&1 | grep '/usr/') ]] ; then
 				echo
 				eerror "ERROR: ${mod_name} have dependencies in /usr."
 				echo
@@ -350,12 +341,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
-	einfo "If you have sshd running, please restart it to avoid possible login issues."
-	echo
-	ebeep
-	sleep 3
-
 	if [[ ${FORCE_SYSTEMAUTH_UPDATE} = "yes" ]] ; then
 		local CHECK1=$(md5sum ${ROOT}/etc/pam.d/system-auth | cut -d ' ' -f 1)
 		local CHECK2=$(md5sum ${ROOT}/etc/pam.d/system-auth.new | cut -d ' ' -f 1)
@@ -368,7 +353,7 @@ pkg_postinst() {
 			ewarn "  ${ROOT}etc/pam.d/system-auth.bak"
 			echo
 
-			cp -pPR ${ROOT}/etc/pam.d/system-auth \
+			cp -a ${ROOT}/etc/pam.d/system-auth \
 				${ROOT}/etc/pam.d/system-auth.bak;
 			mv -f ${ROOT}/etc/pam.d/system-auth.new \
 				${ROOT}/etc/pam.d/system-auth
@@ -376,12 +361,5 @@ pkg_postinst() {
 		else
 			rm -f ${ROOT}/etc/pam.d/system-auth.new
 		fi
-	fi
-
-	if use pam_console; then
-		echo
-		einfo "If you want to enable the pam_console module, please follow"
-		einfo "the instructions in /usr/share/doc/${PF}/README.pam_console."
-		echo
 	fi
 }

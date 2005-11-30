@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws/sylpheed-claws-1.9.100.ebuild,v 1.3 2005/11/29 03:40:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/sylpheed-claws/sylpheed-claws-1.9.100.ebuild,v 1.1 2005/11/11 13:52:49 genone Exp $
 
 IUSE="gnome dillo crypt spell ssl ldap ipv6 pda clamav xface kde imap spamassassin doc"
 
@@ -19,7 +19,7 @@ fi
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 COMMONDEPEND=">=x11-libs/gtk+-2.4
 	pda? ( >=app-pda/jpilot-0.99 )
@@ -30,7 +30,7 @@ COMMONDEPEND=">=x11-libs/gtk+-2.4
 	spell? ( virtual/aspell-dict )
 	clamav? ( app-antivirus/clamav )
 	kde? ( kde-base/kdelibs )
-	imap? ( >=net-libs/libetpan-0.40 )
+	imap? ( >=net-libs/libetpan-0.38 )
 	gnome? ( >=gnome-base/libgnomeprintui-2.2 )
 	x11-libs/startup-notification
 	!mail-client/sylpheed-claws-pgpinline"	# included in the main package now
@@ -96,6 +96,10 @@ src_compile() {
 		${myconf} || die "./configure failed"
 
 	emake || die
+
+	# build the extra tools
+	cd ${S}/tools
+	emake || die
 }
 
 src_install() {
@@ -113,7 +117,7 @@ src_install() {
 	# => also install higher resolution icons in /usr/share/icons/hicolor/...
 	insinto /usr/share/pixmaps
 	doins sylpheed-claws.png
-	local res resdir
+	local resdir
 	for res in 64x64 128x128 ; do
 		resdir="/usr/share/icons/hicolor/${res}/apps"
 		insinto ${resdir}
@@ -141,9 +145,6 @@ src_install() {
 		insinto ${kdeprefix}/bin
 		doexe ${servicescript}
 	fi
-
-	# kill useless plugin files
-	rm -f ${D}/usr/lib*/${PN}/plugins/*.{la,a}
 }
 
 pkg_postinst() {

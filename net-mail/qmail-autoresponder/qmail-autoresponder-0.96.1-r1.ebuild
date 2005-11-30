@@ -1,23 +1,23 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/qmail-autoresponder/qmail-autoresponder-0.96.1-r1.ebuild,v 1.11 2004/10/26 19:54:07 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qmail-autoresponder/qmail-autoresponder-0.96.1-r1.ebuild,v 1.1 2003/11/29 03:36:18 robbat2 Exp $
 
-inherit fixheadtails eutils toolchain-funcs
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Rate-limited autoresponder for qmail."
 SRC_URI="http://untroubled.org/qmail-autoresponder/${P}.tar.gz"
 HOMEPAGE="http://untroubled.org/qmail-autoresponder/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc alpha ~mips ~hppa ~amd64"
-IUSE="mysql"
+KEYWORDS="x86 ~sparc ~ppc"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 		dev-libs/bglibs
 		mysql? ( dev-db/mysql )"
-RDEPEND=">=mail-mta/qmail-1.03-r7
+RDEPEND=">=net-mail/qmail-1.03-r7
 		 mysql? ( dev-db/mysql )"
+
+inherit fixheadtails
 
 src_unpack() {
 	unpack ${A}
@@ -34,8 +34,8 @@ src_compile() {
 	cd ${S}
 	echo "/usr/lib/bglibs/include" > conf-bgincs
 	echo "/usr/lib/bglibs/lib" > conf-bglibs
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
+	echo "${CC} ${CFLAGS}" > conf-cc
+	echo "${CC} ${LDFLAGS}" > conf-ld
 
 	# fails on parallel builds!
 	make qmail-autoresponder || die "Failed to make qmail-autoresponder"
@@ -56,5 +56,5 @@ src_install () {
 }
 
 pkg_postinst() {
-	einfo "Please see /usr/share/doc/${PF}/README.gz for per-user configurations"
+	einfo "Please see /usr/share/doc/${PF}/README for per-user configurations"
 }

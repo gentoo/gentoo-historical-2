@@ -1,7 +1,0 @@
-MD5 7c537e5e195ee8bf20caab7ca5f62f54 gprolog-1.2.16.ebuild 1105
-MD5 f1f8ec7ca742fbf31d25ed8e65d3b2c3 gprolog-1.2.13.ebuild 1023
-MD5 c2374d52c8611546965295863c03621f ChangeLog 987
-MD5 9187f53634e60ab7eb2ac7e98b0b19f7 metadata.xml 159
-MD5 11cc47f5ddc2ab3660ba5ecb53107af3 files/gprolog-1.2.16-gcc4.patch 1056
-MD5 343cd0728a313eee77e9f5f9c9f74415 files/digest-gprolog-1.2.13 67
-MD5 dd04de7b5904293113f5838da347c4f9 files/digest-gprolog-1.2.16 67

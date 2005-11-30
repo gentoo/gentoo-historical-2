@@ -1,5 +1,3 @@
-MD5 32d25a5ba5dc51cde2d9da6e67873406 ChangeLog 860
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 2c112b42104c169129a76413cfd6ad9a xfreecell-1.0.5b.ebuild 847
+MD5 7711a77007c4357dd12ff9b9f9b55fb6 xfreecell-1.0.5b.ebuild 882
 MD5 51a8fae46811047f83a26319fbb01ec8 files/digest-xfreecell-1.0.5b 122
-MD5 3748d34df2621b2391ef0e177dc140e6 files/xfreecell-1.0.5b-gentoo.patch 11172
+MD5 7017bfae6e22894f57b92088888acb43 files/xfreecell-1.0.5b-gentoo.diff 10843

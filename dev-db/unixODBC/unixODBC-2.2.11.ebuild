@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/unixODBC/unixODBC-2.2.11.ebuild,v 1.4 2005/07/25 15:38:13 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/unixODBC/unixODBC-2.2.11.ebuild,v 1.1 2005/07/16 00:10:47 dragonheart Exp $
 
 inherit eutils gnuconfig
 
@@ -10,14 +10,14 @@ SRC_URI="http://www.unixodbc.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~s390 ~ppc64"
 IUSE="qt gnome"
 
 DEPEND="virtual/libc
 	>=sys-libs/readline-4.1
 	>=sys-libs/ncurses-5.2
 	gnome? ( gnome-base/gnome-libs )
-	qt? ( =x11-libs/qt-3* )"
+	qt? ( >=x11-libs/qt-3.0* )"
 
 # the configure.in patch is required for 'use qt'
 src_unpack() {
@@ -27,10 +27,8 @@ src_unpack() {
 	# braindead check in configure fails - hack approach
 	epatch ${FILESDIR}/${P}-configure.in.patch
 
-	aclocal && \
-	libtoolize -c -f && \
-	automake && \
-	autoconf || die "autotools failed"
+	libtoolize --copy --force || die "libtoolize failed"
+	autoconf || die "autoconf failed"
 }
 
 src_compile() {

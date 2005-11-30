@@ -1,46 +1,6 @@
 # ChangeLog for sec-policy/selinux-ipsec-tools
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-ipsec-tools/ChangeLog,v 1.8 2005/03/12 11:27:10 kaiowas Exp $
-
-  12 Mar 2005; petre rodan <kaiowas@gentoo.org>
-  -selinux-ipsec-tools-20050112.ebuild, selinux-ipsec-tools-20050308.ebuild:
-  mark stable
-
-*selinux-ipsec-tools-20050308 (09 Mar 2005)
-
-  09 Mar 2005; petre rodan <kaiowas@gentoo.org>
-  +selinux-ipsec-tools-20050308.ebuild:
-  added rules needed by >=ipsec-tools-0.5
-
-  23 Jan 2005; petre rodan <kaiowas@gentoo.org>
-  -selinux-ipsec-tools-20040703.ebuild,
-  -selinux-ipsec-tools-20041113.ebuild, selinux-ipsec-tools-20050112.ebuild:
-  mark stable
-
-*selinux-ipsec-tools-20050112 (20 Jan 2005)
-
-  20 Jan 2005; petre rodan <kaiowas@gentoo.org>
-  +selinux-ipsec-tools-20050112.ebuild:
-  policy cleanup
-
-*selinux-ipsec-tools-20041007 (20 Jan 2005)
-
-  20 Jan 2005; petre rodan <kaiowas@gentoo.org>
-  -selinux-ipsec-tools-20041007.ebuild,
-  -selinux-ipsec-tools-20041026.ebuild, selinux-ipsec-tools-20041113.ebuild:
-  mark stable
-
-*selinux-ipsec-tools-20041113 (22 Nov 2004)
-
-  22 Nov 2004; petre rodan <kaiowas@gentoo.org>
-  +selinux-ipsec-tools-20041113.ebuild:
-  added network-related rules
-
-*selinux-ipsec-tools-20041026 (27 Oct 2004)
-
-  27 Oct 2004; petre rodan <kaiowas@gentoo.org>
-  +selinux-ipsec-tools-20041026.ebuild:
-  policy cleanup. dropped overgrown nsa version
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-ipsec-tools/ChangeLog,v 1.1 2004/07/04 01:13:12 pebenito Exp $
 
 *selinux-ipsec-tools-20040703 (03 Jul 2004)
 

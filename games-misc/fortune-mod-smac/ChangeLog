@@ -1,17 +1,7 @@
-# ChangeLog for games-misc/fortune-mod-smac
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-smac/ChangeLog,v 1.6 2005/08/27 18:07:19 corsair Exp $
+# ChangeLog for app-games/fortune-mod-smac
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-smac/ChangeLog,v 1.1 2003/09/10 18:14:05 vapier Exp $
 
-  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-smac-0.1.ebuild:
-  Stable on ppc64
-
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-smac-0.1.ebuild:
-  Added ~ppc64 (bug #100217)
-
-  16 Sep 2003; David Holm <dholm@gentoo.org> fortune-mod-smac-0.1.ebuild:
-  Added to ~ppc.
 
 *fortune-mod-smac-0.1 (14 Dec 2002)
 

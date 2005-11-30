@@ -61,10 +61,10 @@ single_make() {
 	JOBS="-j1"
 }
 
-## want_einstall
+## want_einstall 
 want_einstall() {
 	INSTALL="einstall"
-}
+} 
 
 ## LICENSE is set to Xfce base packages default
 LICENSE="GPL-2"
@@ -72,13 +72,14 @@ SLOT="0"
 
 IUSE="${IUSE}"
 
-RDEPEND=">=x11-libs/gtk+-2.2
+RDEPEND=">=x11-libs/gtk+-2.2*
         dev-libs/libxml2
+        x11-libs/startup-notification
         >=dev-libs/dbh-1.0.20
         >=x11-themes/gtk-engines-xfce-2.2.5
 	${RDEPEND}"
 DEPEND="${RDEPEND}
-        dev-util/pkgconfig"
+        dev-util/pkgconfig"	
 
 #S="${WORKDIR}/${MY_P:-${P}}"
 

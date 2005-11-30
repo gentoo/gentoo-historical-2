@@ -1,37 +1,34 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/avalon-logkit/avalon-logkit-2.0.ebuild,v 1.15 2005/10/15 13:17:52 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/avalon-logkit/avalon-logkit-2.0.ebuild,v 1.1 2005/02/22 16:15:01 luckyduck Exp $
 
 inherit java-pkg
 
 DESCRIPTION="Easy-to-use Java logging toolkit"
 HOMEPAGE="http://avalon.apache.org/"
-SRC_URI="mirror://apache/avalon/avalon-logkit/distributions/${P}.dev-0-src.tar.gz"
-KEYWORDS="x86 amd64 ppc64 sparc ppc"
+SRC_URI="mirror://apache/avalon/avalon-logkit/distributions/${PF}.dev-0-src.tar.gz"
+KEYWORDS="~x86 ~amd64"
 LICENSE="Apache-2.0"
 SLOT="2.0"
-IUSE="doc jikes jms javamail source"
+IUSE="doc jikes jms javamail"
+DEPEND=">=virtual/jdk-1.4
+		jikes? ( >=dev-java/jikes-1.21 )
+		>=dev-java/ant-1.5"
 RDEPEND=">=virtual/jre-1.4
 		dev-java/log4j
 		jms? ( || (
-			dev-java/sun-jms
-			!ppc? ( dev-java/openjms )
+			dev-java/jms
+			dev-java/openjms
 			)
 		)
 		javamail? ( || (
-				=dev-java/gnu-javamail-1.0*
+				dev-java/gnu-javamail
 				dev-java/sun-javamail-bin
 			)
-		)
-		=dev-java/servletapi-2.4*"
-DEPEND=">=virtual/jdk-1.4
-		jikes? ( >=dev-java/jikes-1.21 )
-		source? ( app-arch/zip )
-		dev-java/ant-core
-		dev-java/junit
-		${RDEPEND}"
+			dev-java/servletapi
+		)"
 
-S=${WORKDIR}/${P}.dev-0
+S=${WORKDIR}/${PF}.dev-0
 
 src_unpack() {
 	unpack ${A}
@@ -43,9 +40,9 @@ src_unpack() {
 	# decide which mail implementation we use
 	local javamail=""
 	if use javamail; then
-		if has_version dev-java/gnu-javamail; then
-			javamail="gnu-javamail-1"
-		elif has_version dev-java/sun-javamail-bin; then
+		if has_version gnu-javamail; then
+			javamail="gnu-javamail"
+		elif has_version sun-javamail-bin; then
 			javamail="sun-javamail-bin"
 		fi
 	fi
@@ -53,29 +50,29 @@ src_unpack() {
 	# decide which jms implementation we use
 	local jms=""
 	if use jms; then
-		if has_version dev-java/openjms; then
+		if has_version openjms; then
 			jms="openjms"
-		elif has_version dev-java/sun-jms; then
-			jms="sun-jms"
+		elif has_version jms; then
+			jms="jms"
 		fi
 	fi
 
-	local libs="log4j,servletapi-2.4"
+	local libs="log4j"
 	use jms && libs="${libs},${jms}"
 	use javamail && libs="${libs},${javamail}"
 
-	echo "classpath=$(java-pkg_getjars ${libs})" > build.properties
+	echo "classpath=`java-config -p ${libs}`" > build.properties
 
 	cd ${S}/src/java/org/apache/log/output/
 
 	if ! use jms; then
-		echo "Removing jms related files"
+		einfo "Removing jms related files"
 		rm -rf jms || die "JMS Failure!"
 		rm -f ServletOutputLogTarget.java || die "JMS Failure!"
 	fi
 
 	if ! use javamail; then
-		echo "Removing javamail related files"
+		einfo "Removing javamail related files"
 		rm -rf net || die "JavaMail Failure!"
 	fi
 }
@@ -92,5 +89,4 @@ src_install() {
 
 	dodoc README.txt LICENSE.txt
 	use doc && java-pkg_dohtml -r ${S}/dist/docs/*
-	use source && java-pkg_dosrc src/java/*
 }

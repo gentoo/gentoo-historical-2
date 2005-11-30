@@ -1,46 +1,35 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.33.ebuild,v 1.14 2005/07/05 22:59:08 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.33.ebuild,v 1.1 2004/10/29 08:27:12 stuart Exp $
 
-# Gentoo ARCH teams
+# stuart@gentoo.org - 2004/10/29:
 #
-# Do NOT mark this ebuild as stable unless the corresponding mod_ssl package
-# can also be marked as stable on your arch.
-#
-# Thanks,
-# stuart@gentoo.org
+# this ebuild is masked, awaiting the release of the corresponding mod_ssl
 
 inherit eutils fixheadtails
 
-IUSE="pam ssl selinux"
+IUSE="pam"
 
-mod_ssl_dep=2.8.21
-mod_ssl_ver=2.8.21-1.3.32
+mod_ssl_ver=2.8.21
 
 S=${WORKDIR}/${PN}_${PV}
 DESCRIPTION="The Apache Web Server"
 HOMEPAGE="http://www.apache.org http://www.modssl.org"
-KEYWORDS="x86 ppc sparc alpha ~hppa ~amd64 ~ia64 ~mips"
-SRC_URI="mirror://apache/httpd/apache_${PV}.tar.gz
-	ftp://ftp.modssl.org/source/mod_ssl-${mod_ssl_ver}.tar.gz
-	http://dev.gentoo.org/~stuart/apache/apache-patches-1.3.33.tar.bz2"
-
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips"
+SRC_URI="http://www.apache.org/dist/httpd/apache_${PV}.tar.gz
+	ftp://ftp.modssl.org/source/mod_ssl-${mod_ssl_ver}-${PV}.tar.gz
+	http://dev.gentoo.org/~stuart/apache-patches-1.3.33.tar.bz2"
 
 # The mod_ssl archive is only for providing the EAPI patch in here.
 # You should install the net-www/mod_ssl package for the actual DSO.
 
-DEPEND="dev-lang/perl
-	<=sys-libs/db-4.1
+DEPEND="dev-lang/perl <=sys-libs/db-4.1
 	>=dev-libs/mm-1.1.3
 	>=sys-libs/gdbm-1.8
 	>=dev-libs/expat-1.95.2
+	>=sys-apps/sed-4
 	=sys-libs/db-1*
-	selinux? ( sec-policy/selinux-apache )
-	!dev-libs/apr
-	!dev-libs/apr-util"
-
-PDEPEND="ssl? ( =net-www/mod_ssl-${mod_ssl_dep} )"
-
+	selinux? ( sec-policy/selinux-apache )"
 LICENSE="Apache-2.0"
 SLOT="1"
 
@@ -56,11 +45,10 @@ src_unpack() {
 	epatch ${WORKDIR}/apache-patches-${PVR} || die
 
 	#Obsolete 'head -1' and 'tail -1' calls.
-	ht_fix_file src/Configure src/helpers/getuid.sh \
-		src/helpers/fmn.sh src/helpers/buildinfo.sh
+	ht_fix_file src/Configure src/helpers/getuid.sh
 
 	# setup eapi...
-	myssl=${WORKDIR}/mod_ssl-${mod_ssl_ver}
+	myssl=${WORKDIR}/mod_ssl-${mod_ssl_ver}-${PV}
 	cp ${myssl}/pkg.eapi/*.h src/include
 	cp ${myssl}/pkg.eapi/*.c src/ap
 	epatch ${myssl}/pkg.eapi/eapi.patch || die "eapi"

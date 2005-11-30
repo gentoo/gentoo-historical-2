@@ -1,7 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus/nessus-2.3.1.ebuild,v 1.3 2005/09/26 20:31:49 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus/nessus-2.3.1.ebuild,v 1.1 2005/05/18 13:49:40 ka0ttic Exp $
 
+S=${WORKDIR}/${PN}
 DESCRIPTION="A remote security scanner for Linux"
 HOMEPAGE="http://www.nessus.org/"
 DEPEND="~net-analyzer/nessus-libraries-${PV}
@@ -17,10 +18,10 @@ pkg_postrm() {
 	einfo "Note: this is a META ebuild for ${P}."
 	einfo "to remove it completely or before re-emerging"
 	einfo "either use 'depclean', or remove/re-emerge these packages:"
-	echo
+	echo ""
 	for dep in ${RDEPEND}; do
 		einfo "     ${dep}"
 	done
-	echo
+	echo ""
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/perl-5.8.7.ebuild,v 1.13 2005/11/14 21:39:25 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/perl-5.8.7.ebuild,v 1.1 2005/06/29 22:14:31 mcummings Exp $
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -13,15 +13,16 @@ DESCRIPTION="Larry Wall's Practical Extraction and Reporting Language"
 S="${WORKDIR}/${MY_P}"
 SRC_URI="ftp://ftp.perl.org/pub/CPAN/src/${MY_P}.tar.bz2"
 HOMEPAGE="http://www.perl.org/"
-LIBPERL="libperl$(get_libname ${PERLSLOT}.${SHORT_PV})"
+LIBPERL="libperl.so.${PERLSLOT}.${SHORT_PV}"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~ppc-macos ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="berkdb debug doc gdbm ithreads perlsuid build minimal"
 PERL_OLDVERSEN="5.8.0 5.8.2 5.8.4 5.8.5 5.8.6"
 
-DEPEND="berkdb? ( sys-libs/db )
+DEPEND="!elibc_uclibc? ( sys-apps/groff )
+	berkdb? ( sys-libs/db )
 	gdbm? ( >=sys-libs/gdbm-1.8.3 )
 	>=sys-devel/libperl-${PV}
 	!<perl-core/ExtUtils-MakeMaker-6.17
@@ -39,20 +40,18 @@ pkg_setup() {
 	# in USE if it could break things ...
 	if use ithreads
 	then
-		ewarn "PLEASE NOTE: You are compiling ${MY_P} with"
+		ewarn "PLEASE NOTE: You are compiling perl-5.8 with"
 		ewarn "interpreter-level threading enabled."
 		ewarn "Threading is not supported by all applications "
 		ewarn "that compile against perl. You use threading at "
 		ewarn "your own discretion. "
-		epause 5
-	fi
-
-	if use minimal
-	then
-		ewarn "You have the minimal USE flag set. The resulting"
-		ewarn "perl is stripped of most of its module functionality"
-		ewarn "and is intended for minmal use case where you need"
-		ewarn "just the perl interpreter, no extras."
+		epause 10
+	else
+		einfo "PLEASE NOTE: If you want to compile perl-5.8 with"
+		einfo "interpreter-level threading enabled , you must "
+		einfo "restart this emerge with USE=ithreads"
+		einfo "Interpreter-level threading is not supported by "
+		einfo "all applications that compile against perl."
 	fi
 
 	if [ ! -f "${ROOT}/usr/$(get_libdir)/${LIBPERL}" ]
@@ -116,12 +115,7 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${P}-tempfiles.patch
 
-	# Starting and hopefully ending with 5.8.7 we observe stack 
-	# corruption with the regexp handling in perls DynaLoader code 
-	# with ssp enabled. This become fatal during compile time so we 
-	# temporally disable ssp on two regexp files till upstream has a 
-	# chance to work it out. Bug #97452
-	use userland_Darwin || epatch "${FILESDIR}"/${P}-regexp-nossp.patch
+
 }
 
 src_configure() {
@@ -134,18 +128,12 @@ src_configure() {
 	use elibc_uclibc || replace-flags "-Os" "-O2"
 	# This flag makes compiling crash in interesting ways
 	filter-flags -malign-double
-	# Fixes bug #97645
-	use ppc && filter-flags -mpowerpc-gpopt
 
 	export LC_ALL="C"
 	local myconf=""
 
 	if [[ ${KERNEL} == "FreeBSD" && "${ELIBC}" = "FreeBSD" ]]; then
 		osname="freebsd"
-	elif [[ ${KERNEL} == "NetBSD" ]]; then
-		osname="netbsd"
-	elif [[ ${USERLAND} == "Darwin" ]]; then
-		osname="darwin"
 	else
 		# Default setting
 		osname="linux"
@@ -220,11 +208,6 @@ src_configure() {
 
 	[[ ${ELIBC} == "FreeBSD" ]] && myconf="${myconf} -Dlibc=/usr/lib/libc.a"
 
-	if [[ $(get_libdir) != "lib" ]] ; then
-		myconf="${myconf} -Dlibpth='/usr/local/$(get_libdir) /$(get_libdir) \
-		/usr/$(get_libdir)'"
-	fi
-
 	sh Configure -des \
 		-Darchname="${myarch}" \
 		-Dcccdlflags='-fPIC' \
@@ -274,8 +257,8 @@ src_install() {
 	local coredir="/usr/lib/perl5/${PV}/${myarch}${mythreading}/CORE"
 	dodir ${coredir}
 	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/${LIBPERL}
-	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl$(get_libname ${PERLSLOT})
-	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl$(get_libname)
+	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl.so.${PERLSLOT}
+	dosym ../../../../../$(get_libdir)/${LIBPERL} ${coredir}/libperl.so
 
 	# Fix for "stupid" modules and programs
 	dodir /usr/lib/perl5/site_perl/${PV}/${myarch}${mythreading}
@@ -403,31 +386,6 @@ src_remove_extra_files()
 	${prV}/DirHandle.pm
 	${prV}/Exporter/Heavy.pm
 	${prV}/Exporter.pm
-	${prV}/ExtUtils/Command.pm
-	${prV}/ExtUtils/Constant.pm
-	${prV}/ExtUtils/Embed.pm
-	${prV}/ExtUtils/Installed.pm
-	${prV}/ExtUtils/Install.pm
-	${prV}/ExtUtils/Liblist.pm
-	${prV}/ExtUtils/MakeMaker.pm
-	${prV}/ExtUtils/Manifest.pm
-	${prV}/ExtUtils/Mkbootstrap.pm
-	${prV}/ExtUtils/Mksymlists.pm
-	${prV}/ExtUtils/MM_Any.pm
-	${prV}/ExtUtils/MM_MacOS.pm
-	${prV}/ExtUtils/MM.pm
-	${prV}/ExtUtils/MM_Unix.pm
-	${prV}/ExtUtils/MY.pm
-	${prV}/ExtUtils/Packlist.pm
-	${prV}/ExtUtils/testlib.pm
-	${prV}/ExtUtils/Miniperl.pm
-	${prV}/ExtUtils/Command/MM.pm
-	${prV}/ExtUtils/Constant/Base.pm
-	${prV}/ExtUtils/Constant/Utils.pm
-	${prV}/ExtUtils/Constant/XS.pm
-	${prV}/ExtUtils/Liblist/Kid.pm
-	${prV}/ExtUtils/MakeMaker/bytes.pm
-	${prV}/ExtUtils/MakeMaker/vmsish.pm
 	${prV}/fields.pm
 	${prV}/File/Basename.pm
 	${prV}/File/Compare.pm
@@ -441,32 +399,32 @@ src_remove_extra_files()
 	${prV}/filetest.pm
 	${prVA}/attrs.pm
 	${prVA}/auto/attrs
-	${prVA}/auto/Cwd/Cwd.$(get_libname)
-	${prVA}/auto/Data/Dumper/Dumper.$(get_libname)
+	${prVA}/auto/Cwd/Cwd.so
+	${prVA}/auto/Data/Dumper/Dumper.so
 	${prVA}/auto/DynaLoader/dl_findfile.al
-	${prVA}/auto/Fcntl/Fcntl.$(get_libname)
-	${prVA}/auto/File/Glob/Glob.$(get_libname)
-	${prVA}/auto/IO/IO.$(get_libname)
+	${prVA}/auto/Fcntl/Fcntl.so
+	${prVA}/auto/File/Glob/Glob.so
+	${prVA}/auto/IO/IO.so
 	${prVA}/auto/POSIX/autosplit.ix
 	${prVA}/auto/POSIX/fstat.al
 	${prVA}/auto/POSIX/load_imports.al
 	${prVA}/auto/POSIX/POSIX.bs
-	${prVA}/auto/POSIX/POSIX.$(get_libname)
+	${prVA}/auto/POSIX/POSIX.so
 	${prVA}/auto/POSIX/stat.al
 	${prVA}/auto/POSIX/tmpfile.al
-	${prVA}/auto/re/re.$(get_libname)
-	${prVA}/auto/Socket/Socket.$(get_libname)
+	${prVA}/auto/re/re.so
+	${prVA}/auto/Socket/Socket.so
 	${prVA}/auto/Storable/autosplit.ix
 	${prVA}/auto/Storable/_retrieve.al
 	${prVA}/auto/Storable/retrieve.al
-	${prVA}/auto/Storable/Storable.$(get_libname)
+	${prVA}/auto/Storable/Storable.so
 	${prVA}/auto/Storable/_store.al
 	${prVA}/auto/Storable/store.al
 	${prVA}/B/Deparse.pm
 	${prVA}/B.pm
 	${prVA}/Config.pm
 	${prVA}/Config_heavy.pl
-	${prVA}/CORE/libperl$(get_libname)
+	${prVA}/CORE/libperl.so
 	${prVA}/Cwd.pm
 	${prVA}/Data/Dumper.pm
 	${prVA}/DynaLoader.pm
@@ -541,15 +499,6 @@ src_remove_extra_files()
 	${prV}/warnings.pm
 	${prV}/warnings/register.pm"
 
-	# Catch the headers in CORE
-	if use minimal ; then
-		for header in `find ${D}${prVA} -name "*.h"|sed -e "s:${D}::g"`; do
-			#header=`echo $head|sed -e "s:${D}::g"`
-			MINIMAL_PERL_INSTALL="${MINIMAL_PERL_INSTALL}
-			$header"
-		done
-	fi
-
 	if use perlsuid ; then
 		MINIMAL_PERL_INSTALL="${MINIMAL_PERL_INSTALL}
 		${bindir}/suidperl
@@ -559,8 +508,6 @@ src_remove_extra_files()
 	pushd ${D} > /dev/null
 	# Remove cruft
 	einfo "Removing files that are not in the minimal install"
-	echo "${MINIMAL_PERL_INSTALL}"
-	sleep 120
 	for f in $(find . -type f); do
 		has ${f} ${MINIMAL_PERL_INSTALL} || rm -f ${f}
 	done
@@ -571,12 +518,12 @@ src_remove_extra_files()
 
 pkg_postinst() {
 	# Make sure we do not have stale/invalid libperl.so 's ...
-	if [ -f "${ROOT}usr/$(get_libdir)/libperl$(get_libname)" -a ! -L "${ROOT}usr/$(get_libdir)/libperl$(get_libname)" ]
+	if [ -f "${ROOT}usr/$(get_libdir)/libperl.so" -a ! -L "${ROOT}usr/$(get_libdir)/libperl.so" ]
 	then
-		mv -f ${ROOT}usr/$(get_libdir)/libperl$(get_libname) ${ROOT}usr/$(get_libdir)/libperl$(get_libname).old
+		mv -f ${ROOT}usr/$(get_libdir)/libperl.so ${ROOT}usr/$(get_libdir)/libperl.so.old
 	fi
 
-	local perllib="`readlink -f ${ROOT}usr/$(get_libdir)/libperl$(get_libname) | sed -e 's:^.*/::'`"
+	local perllib="`readlink -f ${ROOT}usr/$(get_libdir)/libperl.so | sed -e 's:^.*/::'`"
 
 	# If we are installing perl, we need the /usr/lib/libperl.so symlink to
 	# point to the version of perl we are running, else builing something
@@ -584,12 +531,12 @@ pkg_postinst() {
 	if [ "${perllib}" != "${LIBPERL}" ]
 	then
 		# Delete stale symlinks
-		rm -f ${ROOT}usr/$(get_libdir)/libperl$(get_libname)
-		rm -f ${ROOT}usr/$(get_libdir)/libperl$(get_libname ${PERLSLOT})
+		rm -f ${ROOT}usr/$(get_libdir)/libperl.so
+		rm -f ${ROOT}usr/$(get_libdir)/libperl.so.${PERLSLOT}
 		# Regenerate libperl.so.${PERLSLOT}
-		ln -snf ${LIBPERL} ${ROOT}usr/$(get_libdir)/libperl$(get_libname).${PERLSLOT}
+		ln -snf ${LIBPERL} ${ROOT}usr/$(get_libdir)/libperl.so.${PERLSLOT}
 		# Create libperl.so (we use the *soname* versioned lib here ..)
-		ln -snf libperl$(get_libname ${PERLSLOT}) ${ROOT}usr/$(get_libdir)/libperl$(get_libname)
+		ln -snf libperl.so.${PERLSLOT} ${ROOT}usr/$(get_libdir)/libperl.so
 	fi
 
 	INC=$(perl -e 'for $line (@INC) { next if $line eq "."; next if $line =~ m/'${PV}'|etc|local|perl$/; print "$line\n" }')
@@ -623,7 +570,7 @@ pkg_postinst() {
 	# Tried doing this via  -z, but $INC is too big...
 	if [ "${INC}x" != "x" ]; then
 		cleaner_msg
-		epause 5
+		epause 10
 	fi
 }
 
@@ -633,7 +580,7 @@ cleaner_msg() {
 	eerror "assist with this transition. This script is capable"
 	eerror "of cleaning out old .ph files, rebuilding modules for "
 	eerror "your new version of perl, as well as re-emerging"
-	eerror "applications that compiled against your old libperl$(get_libname)"
+	eerror "applications that compiled against your old libperl.so"
 	eerror
 	eerror "PLEASE DO NOT INTERRUPT THE RUNNING OF THIS SCRIPT."
 	eerror "Part of the rebuilding of applications compiled against "

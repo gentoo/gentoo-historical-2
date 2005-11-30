@@ -1,51 +1,6 @@
 # ChangeLog for net-mail/mlmmj
-# Copyright 2004-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mlmmj/ChangeLog,v 1.8 2005/06/23 10:46:36 lcars Exp $
-
-  23 Jun 2005; lcars <lcars@gentoo.org> -files/mlmmj-1.0.0-r1-print.patch, 
-  metadata.xml, -mlmmj-1.0.0.ebuild, -mlmmj-1.0.0-r1.ebuild, -mlmmj-1.1.0.ebuild:
-  Taking over maintainership, cleaning up obsolete versions.
-
-*mlmmj-1.2.8 (21 Jun 2005)
-
-  21 Jun 2005; Andrea Barisani <lcars@gentoo.org> +mlmmj-1.2.8.ebuild:
-  version bump.
-
-  18 Mar 2005; Rob Holland <tigger@gentoo.org> mlmmj-1.2.4.ebuild:
-  nicer version of ebuild from #51071. not bumping due to very small window
-  from inital commit of this version.
-
-*mlmmj-1.2.4 (18 Mar 2005)
-
-  18 Mar 2005; Rob Holland <tigger@gentoo.org> +mlmmj-1.2.4.ebuild:
-  version bump.
-
-*mlmmj-1.0.0-r1 (04 Dec 2004)
-
-  04 Dec 2004; Kurt Lieber <klieber@gentoo.org> +mlmmj-1.0.0-r1.ebuild,
-  mlmmj-1.0.0.ebuild, +mlmmj-1.1.0.ebuild:
-  committing 1.1.0 final for siggy
-
-*mlmmj-1.1.0_rc2 (24 Nov 2004)
-  24 Nov 2004; Luca Mercuri <siggy@gentoo.org> mlmmj-1.1.0_rc2.ebuild:
-  release version 1.1.0-RC2,
-  Strip envelope from before resending to +owner,
-  Make statctrl bail if it's not possible to stat()
-  Add mlmmj-list binary to list the subcribers (-count) of a list
-	
-
-*mlmmj-1.1-pre-09162004 (18 Sep 2004)
-  18 Sep 2004; Luca Mercuri <siggy@gentoo.org> mlmmj-1.1_pre09162004.ebuild:
-  realese version 1.1-pre-09162004, add function for nomail, 
-  add digest functionality
-
-*mlmmj-1.0.0-r1 (14 Sep 2004)
-  14 Sep 2004; Luca Mercuri <siggy@gentoo.org> mlmmj-1.0.0-r1.ebuild, 
-  files/mlmmj-1.0.0-r1-print.patch:
-  add patch for print bug in subscription
-
-  12 Sep 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
-  Corrected metadata.xml to match DTD.
+# Copyright 2004-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mlmmj/ChangeLog,v 1.1 2004/09/11 20:45:06 klieber Exp $
 
   11 Sep 2004; Kurt Lieber <klieber@gentoo.org> :
   committing for siggy

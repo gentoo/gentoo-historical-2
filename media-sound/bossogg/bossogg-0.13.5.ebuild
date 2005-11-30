@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/bossogg/bossogg-0.13.5.ebuild,v 1.7 2005/11/07 10:42:52 flameeyes Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-sound/bossogg/bossogg-0.13.5.ebuild,v 1.1 2004/03/05 02:49:12 eradicator Exp $
 
 IUSE="oggvorbis mad"
 
@@ -11,13 +9,13 @@ HOMEPAGE="http://bossogg.wishy.org"
 SRC_URI="mirror://sourceforge/bossogg/${P}.tar.gz"
 RESTRICT="nomirror"
 
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86 ~ppc"
 SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND=">=media-libs/libao-0.8.3
 	oggvorbis? ( media-libs/libvorbis )
-	mad? ( media-sound/madplay media-libs/id3lib )"
+	mad? ( media-sound/mad media-libs/id3lib )"
 
 RDEPEND="${DEPEND}
 	 dev-python/pysqlite"
@@ -39,7 +37,7 @@ src_compile() {
 src_install() {
 	# borks make DESTDIR=${D} install || die
 	einstall || die
-	dodoc README TODO
+	dodoc README TODO INSTALL COPYING
 
 	exeinto /etc/init.d; newexe ${FILESDIR}/bossogg.initd bossogg
 }

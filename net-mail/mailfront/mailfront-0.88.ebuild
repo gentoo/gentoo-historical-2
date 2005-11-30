@@ -1,22 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailfront/mailfront-0.88.ebuild,v 1.8 2005/05/16 10:08:22 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailfront/mailfront-0.88.ebuild,v 1.1 2004/01/05 23:03:24 robbat2 Exp $
 
-inherit fixheadtails toolchain-funcs
+inherit fixheadtails
 
-DESCRIPTION="Mail server network protocol front-ends"
-HOMEPAGE="http://untroubled.org/mailfront/"
+S=${WORKDIR}/${P}
+DESCRIPTION="Mail server network protocol front-ends."
 SRC_URI="http://untroubled.org/mailfront/${P}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc"
-IUSE=""
-
-DEPEND="virtual/libc
+HOMEPAGE="http://untroubled.org/mailfront/"
+DEPEND="virtual/glibc
 	>=dev-libs/bglibs-1.006"
 RDEPEND="net-mail/cvm-vmailmgr
-	mail-mta/qmail"
+		 net-mail/qmail"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ~sparc"
 
 src_unpack() {
 	unpack ${A}
@@ -27,16 +25,16 @@ src_compile() {
 	echo "/usr/lib/bglibs/include" > conf-bgincs
 	echo "/usr/lib/bglibs/lib" > conf-bglibs
 	echo "/var/qmail/bin" > conf-bin
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) -s" > conf-ld
+	echo "${CC} ${CFLAGS}" > conf-cc
+	echo "${CC} -s" > conf-ld
 	emake || die
 }
 
-src_install() {
+src_install () {
 	exeinto /var/qmail/bin
 	doexe pop3front-auth pop3front-maildir smtpfront-echo \
 		smtpfront-qmail smtpfront-reject imapfront-auth \
-		qmqpfront-qmail qmtpfront-qmail || die
+		qmqpfront-qmail qmtpfront-qmail
 
 	#install new run files for qmail-smtpd and qmail-pop3
 	exeinto /var/qmail/supervise/qmail-smtpd

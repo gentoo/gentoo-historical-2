@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/rox-base/volume/volume-0.0.6.ebuild,v 1.3 2005/10/17 09:41:46 svyatogor Exp $
+# $Header: /var/cvsroot/gentoo-x86/rox-base/volume/volume-0.0.6.ebuild,v 1.1 2004/12/18 19:19:00 sergey Exp $
 
 DESCRIPTION="Volume - A Volume control Applet and a Mixer for ROX Desktop"
 
@@ -8,9 +8,9 @@ MY_PN="Volume"
 
 MY_PV="006"
 
-HOMEPAGE="http://www.hayber.us/rox/Volume"
+HOMEPAGE=""
 
-SRC_URI="http://www.hayber.us/rox/applets/${MY_PN}-${MY_PV}.tgz"
+SRC_URI="${MY_PN}-${MY_PV}.tgz"
 
 LICENSE="GPL-2"
 

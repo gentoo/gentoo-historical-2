@@ -1,15 +1,6 @@
 # ChangeLog for dev-ruby/ruby-gd
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gd/ChangeLog,v 1.5 2005/11/01 14:35:45 caleb Exp $
-
-  01 Nov 2005; Caleb Tennis <caleb@gentoo.org> ruby-gd-0.7.4.ebuild:
-  Making X dep optional - bug #109289
-
-  16 Dec 2004; Markus Rothe <corsair@gentoo.org> ruby-gd-0.7.4.ebuild:
-  Stable on ppc64
-
-  01 Nov 2004; Markus Rothe <corsair@gentoo.org> ruby-gd-0.7.4.ebuild:
-  Marked ~ppc64; bug #67391
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gd/ChangeLog,v 1.1 2004/05/01 12:19:04 usata Exp $
 
 *ruby-gd-0.7.4 (01 May 2004)
 

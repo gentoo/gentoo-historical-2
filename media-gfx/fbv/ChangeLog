@@ -1,47 +1,6 @@
 # ChangeLog for media-gfx/fbv
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbv/ChangeLog,v 1.13 2005/08/10 13:13:06 metalgod Exp $
-
-  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> fbv-1.0b.ebuild:
-  Marked ~amd64.
-
-  22 Jul 2005; David Holm <dholm@gentoo.org> fbv-1.0b.ebuild:
-  Added to ~ppc.
-
-  21 Jul 2005; Markus Rothe <corsair@gentoo.org> fbv-1.0b.ebuild:
-  Stable on ppc64
-
-  20 Jul 2005; Daniel Black <dragonheart@gentoo.org> fbv-0.99.ebuild,
-  fbv-1.0b.ebuild:
-  finished fixed for giflib and the deprecation of libungif - bug #85720
-
-  24 Apr 2005; Daniel Black <dragonheart@gentoo.org> fbv-0.99.ebuild:
-  Changed libungif to giflib for version 0.99
-
-  28 Mar 2005; Michał Januszewski <spock@gentoo.org> fbv-1.0b.ebuild:
-  Removed dependency on libungif and changed the makefiles so that everything
-  could work properly with giflib.
-
-  30 Jan 2005; Daniel Black <dragonheart@gentoo.org>
-  +files/oob-segfault-fbv-1.0b.diff, fbv-1.0b.ebuild, +metadata.xml:
-  Patch added as per bug 78015. Thanks to Philip Nilsson <leffeman@gmail.com>
-
-  26 Jan 2005; Markus Rothe <corsair@gentoo.org> fbv-0.99.ebuild:
-  Stable on ppc64
-
-*fbv-1.0b (04 Jan 2005)
-
-  04 Jan 2005; Daniel Black <dragonheart@gentoo.org> fbv-0.99.ebuild,
-  +fbv-1.0b.ebuild:
-  QA fix - eclass gcc replaced with toolchain-funcs. Version bump as per bug
-  #76535 by Philip Nilsson <leffeman@gmail.com>
-
-  18 Dec 2004; Markus Rothe <corsair@gentoo.org> fbv-0.99.ebuild:
-  added ~ppc64 to KEYWORDS; bug #74653
-
-  07 Oct 2004; Karol Wojtaszek <sekretarz@gentoo.org> fbv-0.99.ebuild:
-  Using ./configure instead of econf, because econf defines some switches that
-  aren't valid in fbv configure script
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbv/ChangeLog,v 1.1 2003/08/25 13:43:46 usata Exp $
 
 *fbv-0.99 (25 Aug 2003)
 

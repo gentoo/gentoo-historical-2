@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.5-r3.ebuild,v 1.7 2005/11/17 05:31:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.5-r3.ebuild,v 1.1 2005/10/27 01:07:27 vapier Exp $
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -16,7 +16,7 @@
 #  CHOST = CTARGET  - install into /
 #  CHOST != CTARGET - install into /usr/CTARGET/
 
-KEYWORDS="-* ~alpha ~amd64 ~arm -hppa ~ppc ~sparc ~x86"
+KEYWORDS="-* ~alpha ~amd64 ~arm -hppa ~x86"
 
 BRANCH_UPDATE=""
 
@@ -27,7 +27,7 @@ GLIBC_MANPAGE_VERSION="2.3.5"
 GLIBC_INFOPAGE_VERSION="2.3.5"
 
 # Gentoo patchset
-PATCH_VER="1.15"
+PATCH_VER="1.14"
 
 # C Stubbs addon (contained in fedora, so ignoring)
 #CSTUBS_VER="2.1.2"
@@ -103,7 +103,7 @@ LT_KERNEL_VERSION=${LT_KERNEL_VERSION:-"2.4.1"}
 #	PATCH_GLIBC_VER
 #			This should be set to the version of the gentoo patch tarball.
 #			The resulting filename of this tarball will be:
-#			glibc-${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2
+#			${PN}-${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2
 #
 #	GLIBC_MANPAGE_VERSION
 #	GLIBC_INFOPAGE_VERSION
@@ -117,31 +117,31 @@ LT_KERNEL_VERSION=${LT_KERNEL_VERSION:-"2.4.1"}
 get_glibc_src_uri() {
 	GENTOO_TOOLCHAIN_BASE_URI=${GENTOO_TOOLCHAIN_BASE_URI:-"mirror://gentoo"}
 
-#	GLIBC_SRC_URI="http://ftp.gnu.org/gnu/glibc/glibc-${GLIBC_RELEASE_VER}.tar.bz2
-#	               http://ftp.gnu.org/gnu/glibc/glibc-linuxthreads-${GLIBC_RELEASE_VER}.tar.bz2
-#	               http://ftp.gnu.org/gnu/glibc/glibc-libidn-${GLIBC_RELEASE_VER}.tar.bz2
-	GLIBC_SRC_URI="mirror://gnu/glibc/glibc-${GLIBC_RELEASE_VER}.tar.bz2
-	               mirror://gnu/glibc/glibc-linuxthreads-${GLIBC_RELEASE_VER}.tar.bz2
-	               mirror://gnu/glibc/glibc-libidn-${GLIBC_RELEASE_VER}.tar.bz2"
+#	GLIBC_SRC_URI="http://ftp.gnu.org/gnu/glibc/${PN}-${GLIBC_RELEASE_VER}.tar.bz2
+#	               http://ftp.gnu.org/gnu/glibc/${PN}-linuxthreads-${GLIBC_RELEASE_VER}.tar.bz2
+#	               http://ftp.gnu.org/gnu/glibc/${PN}-libidn-${GLIBC_RELEASE_VER}.tar.bz2
+	GLIBC_SRC_URI="mirror://gnu/glibc/${PN}-${GLIBC_RELEASE_VER}.tar.bz2
+	               mirror://gnu/glibc/${PN}-linuxthreads-${GLIBC_RELEASE_VER}.tar.bz2
+	               mirror://gnu/glibc/${PN}-libidn-${GLIBC_RELEASE_VER}.tar.bz2"
 
 	if [[ -n ${BRANCH_UPDATE} ]] ; then
 		GLIBC_SRC_URI="${GLIBC_SRC_URI}
-			${GENTOO_TOOLCHAIN_BASE_URI}/glibc-${GLIBC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2"
+			${GENTOO_TOOLCHAIN_BASE_URI}/${PN}-${GLIBC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2"
 	fi
 
 	if [[ -n ${PATCH_VER} ]] ; then
 		GLIBC_SRC_URI="${GLIBC_SRC_URI}
-			${GENTOO_TOOLCHAIN_BASE_URI}/glibc-${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2"
+			${GENTOO_TOOLCHAIN_BASE_URI}/${PN}-${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2"
 	fi
 
 	if [[ ${GLIBC_MANPAGE_VERSION} != "none" ]] ; then
 		GLIBC_SRC_URI="${GLIBC_SRC_URI}
-			${GENTOO_TOOLCHAIN_BASE_URI}/glibc-manpages-${GLIBC_MANPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2"
+			${GENTOO_TOOLCHAIN_BASE_URI}/${PN}-manpages-${GLIBC_MANPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2"
 	fi
 
 	if [[ ${GLIBC_INFOPAGE_VERSION} != "none" ]] ; then
 		GLIBC_SRC_URI="${GLIBC_SRC_URI}
-			${GENTOO_TOOLCHAIN_BASE_URI}/glibc-infopages-${GLIBC_INFOPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2"
+			${GENTOO_TOOLCHAIN_BASE_URI}/${PN}-infopages-${GLIBC_INFOPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2"
 	fi
 
 	if [[ -n ${CSTUBS_URI} ]] ; then
@@ -156,25 +156,25 @@ get_glibc_src_uri() {
 }
 
 SRC_URI=$(get_glibc_src_uri)
-S=${WORKDIR}/glibc-${GLIBC_RELEASE_VER}
+S=${WORKDIR}/${PN}-${GLIBC_RELEASE_VER}
 
 ### EXPORTED FUNCTIONS ###
 toolchain-glibc_src_unpack() {
 	# Check NPTL support _before_ we unpack things to save some time
 	want_nptl && check_nptl_support
 
-	unpack glibc-${GLIBC_RELEASE_VER}.tar.bz2
+	unpack ${PN}-${GLIBC_RELEASE_VER}.tar.bz2
 
 	cd "${S}"
-	unpack glibc-linuxthreads-${GLIBC_RELEASE_VER}.tar.bz2
-	unpack glibc-libidn-${GLIBC_RELEASE_VER}.tar.bz2
+	unpack ${PN}-linuxthreads-${GLIBC_RELEASE_VER}.tar.bz2
+	unpack ${PN}-libidn-${GLIBC_RELEASE_VER}.tar.bz2
 
 	[[ -n ${CSTUBS_TARBALL} ]] && unpack ${CSTUBS_TARBALL}
 	[[ -n ${FEDORA_TARBALL} ]] && unpack ${FEDORA_TARBALL}
 
 	if [[ -n ${PATCH_VER} ]] ; then
 		cd "${WORKDIR}"
-		unpack glibc-${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2
+		unpack ${PN}-${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2
 	fi
 
 	# XXX: We should do the branchupdate, before extracting the manpages and
@@ -182,7 +182,7 @@ toolchain-glibc_src_unpack() {
 	# to them with branchupdate)
 	if [[ -n ${BRANCH_UPDATE} ]] ; then
 		cd "${S}"
-		epatch "${DISTDIR}"/glibc-${GLIBC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
+		epatch "${DISTDIR}"/${PN}-${GLIBC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
 
 		# Snapshot date patch
 		einfo "Patching version to display snapshot date ..."
@@ -191,12 +191,12 @@ toolchain-glibc_src_unpack() {
 
 	if [[ ${GLIBC_MANPAGE_VERSION} != "none" ]] ; then
 		cd "${WORKDIR}"
-		unpack glibc-manpages-${GLIBC_MANPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
+		unpack ${PN}-manpages-${GLIBC_MANPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
 	fi
 
 	if [[ ${GLIBC_INFOPAGE_VERSION} != "none" ]] ; then
 		cd "${S}"
-		unpack glibc-infopages-${GLIBC_INFOPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
+		unpack ${PN}-infopages-${GLIBC_INFOPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
 	fi
 
 	if [[ -n ${PATCH_VER} ]] ; then
@@ -759,7 +759,7 @@ want_nptl() {
 
 	# Archs that can use NPTL
 	case $(tc-arch) in
-		alpha|amd64|ia64|mips|ppc|ppc64|s390|sh|x86)
+		alpha|amd64|ia64|mips|ppc|ppc64|s390|x86)
 			return 0;
 		;;
 		sparc)
@@ -781,7 +781,7 @@ want_linuxthreads() {
 want_tls() {
 	# Archs that can use TLS (Thread Local Storage)
 	case $(tc-arch) in
-		alpha|amd64|ia64|mips|ppc|ppc64|s390|sh)
+		alpha|amd64|ia64|mips|ppc|ppc64|s390)
 			return 0;
 		;;
 		sparc)
@@ -985,24 +985,24 @@ setup_env() {
 		if ! use multilib ; then
 			MULTILIB_ABIS=${DEFAULT_ABI}
 		else
-			MULTILIB_ABIS=${MULTILIB_ABIS:-${DEFAULT_ABI}}
+			case ${CTARGET} in
+			mips64*) MULTILIB_ABIS=${MULTILIB_ABIS/o32} ;;
+			esac
 		fi
-
-		# If the user has CFLAGS_<CTARGET> in their make.conf, use that,
-		# and fall back on CFLAGS.
-		local VAR=CFLAGS_${CTARGET//[-.]/_}
-		CFLAGS=${!VAR-${CFLAGS}}
 	fi
-
-	setup_flags
 
 	export ABI=${ABI:-${DEFAULT_ABI:-default}}
 
+	setup_flags
+
 	if is_crosscompile || tc-is-cross-compiler ; then
-		local VAR=CFLAGS_${ABI}
+		# We only install for this CTARGET on crosscompilers
+		MULTILIB_ABIS=${MULTILIB_ABIS:-${DEFAULT_ABI}}
+
 		# We need to export CFLAGS with abi information in them because
 		# glibc's configure script checks CFLAGS for some targets (like mips)
-		export CFLAGS="${!VAR} ${CFLAGS}"
+		local VAR1=CFLAGS_${CTARGET//[-.]/_} VAR2=CFLAGS_${ABI}
+		export CFLAGS="${CFLAGS} ${!VAR1-${!VAR2--O2 -pipe}}"
 	fi
 }
 

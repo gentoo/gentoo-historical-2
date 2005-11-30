@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.15-r1.ebuild,v 1.3 2005/09/05 19:52:38 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.15-r1.ebuild,v 1.1 2005/06/22 00:08:29 dsd Exp $
 
 inherit gnome2 eutils mono
 
@@ -34,9 +34,6 @@ src_unpack() {
 	sed -i -e 's:^libdir.*:libdir=@libdir@:' \
 		-e 's:^prefix=:exec_prefix=:' \
 		mono/gmime-sharp.pc.in || die "sed failed (2)"
-	# Fix doc targets (bug #97154)
-	sed -i -e 's!\<\(tmpl-build.stamp\): !\1 $(srcdir)/tmpl/*.sgml: !' \
-		gtk-doc.make docs/reference/Makefile.in || die "sed failed (3)"
 }
 
 src_compile() {
@@ -44,7 +41,7 @@ src_compile() {
 	    `use_enable ipv6` \
 	    `use_enable mono` \
 	    `use_enable doc gtk-doc` || die "configure failed"
-	MONO_PATH=${S} emake -j1 || die
+	MAKEOPTS="-j1" MONO_PATH=${S} emake || die
 }
 
 src_install() {

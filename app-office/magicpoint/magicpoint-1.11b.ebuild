@@ -1,29 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/magicpoint/magicpoint-1.11b.ebuild,v 1.10 2005/09/29 08:30:40 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/magicpoint/magicpoint-1.11b.ebuild,v 1.1 2004/10/06 11:40:30 usata Exp $
 
-inherit elisp-common eutils fixheadtails
+inherit elisp-common eutils
 
 DESCRIPTION="an X11 based presentation tool"
 SRC_URI="ftp://sh.wide.ad.jp/WIDE/free-ware/mgp/${P}.tar.gz
 	ftp://ftp.mew.org/pub/MagicPoint/${P}.tar.gz"
-HOMEPAGE="http://member.wide.ad.jp/wg/mgp/"
+HOMEPAGE="http://www.mew.org/mgp/"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 alpha sparc ppc amd64"
-IUSE="cjk nls m17n-lib emacs truetype gif imlib mng"
+KEYWORDS="~x86 ~alpha ~sparc ~ppc ~amd64"
+IUSE="cjk nls m17n-lib emacs truetype gif imlib"
 
-MY_DEPEND="virtual/x11
-	gif? ( >=media-libs/giflib-4.0.1 )
+DEPEND="virtual/x11
+	gif? ( >=media-libs/libungif-4.0.1 )
 	imlib? ( media-libs/imlib )
 	truetype? ( virtual/xft )
 	emacs? ( virtual/emacs )
-	m17n-lib? ( dev-libs/m17n-lib )
-	mng? ( media-libs/libmng )"
-DEPEND="${MY_DEPEND}
-	sys-devel/autoconf"
-RDEPEND="${MY_DEPEND}
+	m17n-lib? ( dev-libs/m17n-lib )"
+RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )
 	truetype? ( cjk? ( media-fonts/sazanami ) )"
 
@@ -41,27 +38,18 @@ has_emacs() {
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
-	epatch ${FILESDIR}/${P}-mng_optional.patch
-
-	# bug #85720
-	sed -i -e "s/ungif/gif/g" configure.in || die
-	ht_fix_file configure.in
-	autoreconf
+	epatch ${FILESDIR}/${PF}-gentoo.diff
 }
 
 src_compile() {
 	econf \
 		$(use_enable gif) \
 		$(use_enable imlib) \
-		$(use_enable mng) \
 		$(use_enable nls locale) \
 		$(use_enable truetype xft2) \
 		$(use_with m17n-lib) \
 		--disable-vflib \
-		--disable-freetype \
-		--x-libraries=/usr/X11R6/lib \
-		--x-includes=/usr/X11R6/include || die
+		--disable-freetype || die
 
 	xmkmf || die
 	make Makefiles || die

@@ -1,4 +1,2 @@
-MD5 1b311dfc126e334f9dd3bd601aaa94e7 ChangeLog 1378
-MD5 41bf2c0ed3ad6e8bdeb3a604f1635207 files/digest-libXmu-0.99.1-r1 66
-MD5 0ebfefa5dad7dde2852221e0a93a4eee libXmu-0.99.1-r1.ebuild 662
-MD5 a37bab73e2f24b213932c30997d3d360 metadata.xml 156
+MD5 aaebfcaf6b905663fea8f03db7c75f34 libXmu-0.99.0.ebuild 444
+MD5 0003a37882ab236c57b3f60c332f501b files/digest-libXmu-0.99.0 66

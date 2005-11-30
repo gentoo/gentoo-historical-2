@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gxine/gxine-0.4.5.ebuild,v 1.8 2005/09/10 14:05:49 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gxine/gxine-0.4.5.ebuild,v 1.1 2005/05/25 14:54:01 flameeyes Exp $
 
 inherit eutils nsplugins fdo-mime
 
@@ -18,11 +18,11 @@ DEPEND="media-libs/libpng
 RDEPEND="nls? ( sys-devel/gettext )
 	dev-util/pkgconfig"
 
-IUSE="nls lirc nsplugin"
+IUSE="nls lirc mozilla"
 
 SLOT="0"
 # Those needs spidermonkey: ~sparc
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 SRC_URI="mirror://sourceforge/xine/${P}.tar.gz"
 
@@ -39,7 +39,7 @@ src_compile() {
 	econf \
 		$(use_enable nls) \
 		$(use_enable lirc) \
-		$(use_with nsplugin browser-plugin) \
+		$(use_with mozilla browser-plugin) \
 		--disable-gtk-compat \
 		--disable-dependency-tracking || die
 	emake || die
@@ -51,12 +51,12 @@ src_install() {
 		docsdir=/usr/share/doc/${PF} \
 		install || die
 
-	dodoc AUTHORS ChangeLog NEWS README
+	dodoc AUTHORS ChangeLog INSTALL NEWS README
 
 	insinto /usr/share/icons/hicolor/48x48/apps
 	newins pixmaps/gxine-logo.png gxine.png
 
-	use nsplugin && inst_plugin /usr/$(get_libdir)/gxine/gxineplugin.so
+	use mozilla && inst_plugin /usr/$(get_libdir)/gxine/gxineplugin.so
 }
 
 pkg_postinst() {

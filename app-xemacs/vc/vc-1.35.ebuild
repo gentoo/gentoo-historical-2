@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/vc/vc-1.35.ebuild,v 1.8 2005/09/29 06:24:46 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/vc/vc-1.35.ebuild,v 1.1 2003/02/22 12:46:41 rendhalver Exp $
 
 SLOT="0"
 IUSE=""
@@ -12,7 +12,7 @@ app-xemacs/xemacs-base
 app-xemacs/mail-lib
 app-xemacs/ediff
 "
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="x86 ~ppc ~alpha sparc"
 
 inherit xemacs-packages
 

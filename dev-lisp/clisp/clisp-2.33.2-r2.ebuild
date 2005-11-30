@@ -1,8 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/clisp/clisp-2.33.2-r2.ebuild,v 1.8 2005/11/15 14:21:15 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/clisp/clisp-2.33.2-r2.ebuild,v 1.1 2005/02/10 09:18:30 mkennedy Exp $
 
-inherit flag-o-matic common-lisp-common-2 eutils toolchain-funcs
+inherit flag-o-matic common-lisp-common-2 eutils gcc
+
+DEB_PV=7
 
 DESCRIPTION="A portable, bytecode-compiled implementation of Common Lisp"
 HOMEPAGE="http://clisp.sourceforge.net/"
@@ -10,7 +12,7 @@ SRC_URI="mirror://sourceforge/clisp/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="x86 ppc ~ppc-macos ~amd64 -sparc"
+KEYWORDS="x86 ppc"
 IUSE="X fastcgi nls pcre postgres readline"
 
 DEPEND="dev-libs/libsigsegv
@@ -28,7 +30,6 @@ src_unpack() {
 	unpack ${A}
 	epatch ${FILESDIR}/${PV}/fastcgi-Makefile.in-gentoo.patch || die
 	epatch ${FILESDIR}/${PV}/glibc-linux.lisp-sigpause-gentoo.patch || die
-	epatch ${FILESDIR}/${PV}/compilefix.patch || die
 }
 
 src_compile() {
@@ -63,20 +64,17 @@ src_compile() {
 #	einfo "Using CFLAGS: ${CFLAGS}"
 #	export CC="$(gcc-getCC) ${CFLAGS}"
 
-	CC="$(tc-getCC)"			# used further down
-
 	# Let CLISP use its own set of optimizations
 	unset CFLAGS CXXFLAGS
 	local myconf="--with-dynamic-ffi
 		--with-unicode
 		--with-module=regexp
 		--with-module=syscalls
-		--with-module=wildcard"
-	use ppc-macos || myconf="${myconf} --with-module=bindings/glibc"
+		--with-module=wildcard
+		--with-module=bindings/glibc"
 	use readline || myconf="${myconf} --with-noreadline"
 	use nls || myconf="${myconf} --with-nogettext"
-#	use X && myconf="${myconf} --with-module=clx/new-clx"
-	use X && myconf="${myconf} --with-module=clx/mit-clx"
+	use X && myconf="${myconf} --with-module=clx/new-clx"
 	if use postgres; then
 		myconf="${myconf} --with-module=postgresql"
 		CC="${CC} -I $(pg_config --includedir)"

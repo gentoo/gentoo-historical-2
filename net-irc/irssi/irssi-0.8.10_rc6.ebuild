@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi/irssi-0.8.10_rc6.ebuild,v 1.3 2005/11/28 13:02:09 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi/irssi-0.8.10_rc6.ebuild,v 1.1 2005/10/13 13:09:27 swegener Exp $
 
-inherit perl-app eutils flag-o-matic
+inherit perl-module eutils flag-o-matic
 
 MY_P="${P//_/-}"
 
@@ -23,7 +23,7 @@ RDEPEND="!net-irc/irssi-cvs
 	perl? ( dev-lang/perl )
 	socks5? ( >=net-proxy/dante-1.1.13 )"
 DEPEND="${RDEPEND}
-	>=dev-util/pkgconfig-0.9.0
+	dev-lang/perl
 	>=sys-apps/sed-4"
 
 S="${WORKDIR}"/${MY_P}
@@ -53,13 +53,18 @@ src_compile() {
 	fi
 
 	econf \
+		--with-glib2 \
+		--without-servertest \
 		--with-proxy \
 		--with-ncurses \
 		$(use_with perl) \
 		$(use_enable ipv6) \
 		$(use_with socks5 socks) \
-		${myconf} || die "econf failed"
+		${myconf} || die "./configure failed"
 	emake || die "emake failed"
+
+	# Generate updated help
+	./syntax.pl
 }
 
 src_install() {
@@ -68,7 +73,7 @@ src_install() {
 		for dir in "${S}"/src/perl/{common,irc,textui,ui}
 		do
 			cd "${dir}"
-			perl-app_src_prep
+			perl-module_src_prep
 		done
 		cd "${S}"
 	fi

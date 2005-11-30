@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcalc/wmcalc-0.4.ebuild,v 1.8 2005/11/10 08:44:13 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcalc/wmcalc-0.4.ebuild,v 1.1 2004/08/15 20:38:38 s4t4n Exp $
 
 inherit eutils
 
 DESCRIPTION="A WindowMaker DockApp calculator"
-HOMEPAGE="http://dockapps.org/file.php/id/130"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="http://freakzone.net/gordon/#wmcalc"
+SRC_URI="http://freakzone.net/gordon/src/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ppc ppc64 ~sparc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 DEPEND="virtual/x11"
 
 IUSE=""
@@ -30,7 +30,7 @@ src_install ()
 {
 	dobin wmcalc
 
-	dodoc README
+	dodoc README COPYING
 
 	newman ${FILESDIR}/wmcalc.man wmcalc.1
 

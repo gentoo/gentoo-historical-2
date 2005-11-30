@@ -1,4 +1,2 @@
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 fb4c884b46198c42bb01019c06c043bd moagg-0.18.ebuild 1429
-MD5 f0e775f1a784cdc8774c6071c17e1a20 ChangeLog 1957
-MD5 5409873e6ef3d63c6eb6349acdb9b15c files/digest-moagg-0.18 135
+MD5 363f408019632e07f0e80afb1174ed81 moagg-0.12.ebuild 980
+MD5 79ba754f5ae799f7cf0ba0049c89bf08 files/digest-moagg-0.12 135

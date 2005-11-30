@@ -1,41 +1,7 @@
 # ChangeLog for x11-plugins/wmfishtime
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfishtime/ChangeLog,v 1.13 2005/11/10 09:10:57 s4t4n Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfishtime/ChangeLog,v 1.1 2002/08/30 07:44:13 seemant Exp $
 
-  10 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmfishtime-1.24.ebuild,
-  wmfishtime-1.23-r2.ebuild:
-  Removed COPYING and INSTALL from dodoc.
-
-  03 Sep 2005; Markus Rothe <corsair@gentoo.org> wmfishtime-1.24.ebuild:
-  Stable on ppc64
-
-  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
-  wmfishtime-1.24.ebuild:
-  Stable on ppc.
-
-  30 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  wmfishtime-1.24.ebuild:
-  Stable on sparc
-
-  29 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmfishtime-1.24.ebuild:
-  Stable for x86.
-
-*wmfishtime-1.24 (29 Mar 2005)
-
-  29 Mar 2005; Michele Noberasco <s4t4n@gentoo.org> wmfishtime-1.24.ebuild:
-  Version bump. Closes #86805.
-  wmfishtime-1.23-r1.ebuild:
-  Wiped out older ebuild.
-
-  31 Aug 2004; Tom Gall <tgall@gentoo.org> wmfishtime-1.23-r2.ebuild:
-  stable on ppc64, bug #61762
-
-  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmfishtime-1.23-r1.ebuild,
-  wmfishtime-1.23-r2.ebuild:
-  add sed-4 dep
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *wmfishtime-1.23-r2 (7 Jun 2002)
 
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :

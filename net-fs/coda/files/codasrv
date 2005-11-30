@@ -1,44 +1,39 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/coda/files/codasrv,v 1.5 2004/07/26 17:50:21 griffon26 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/coda/files/codasrv,v 1.1 2004/03/23 20:18:49 dragonheart Exp $
 
 depend() {
 	need net coda-update auth2
 }
 
 checkconfig() {
-	if [ ! -e $vicedir/hostname ] ; then
-		eerror "Please run vice-setup before starting the service..."
+	if [ ! -e /var/lib/vice/hostname ] ; then
+		eerror "Please set up vice before starting the service..."
 		return 1
 	fi
 }
 
 we_are_scm() {
-	if [ "`cat $vicedir/hostname`" = "`cat $vicedir/db/scm`" ] ; then
+	if [ "`cat /var/lib/vice/hostname`" = "`cat /var/lib/vice/db/scm`" ] ; then
 		return 0
 	else
 		return 1
 	fi
 }
 
-getvicedir() {
-        vicedir=`/usr/sbin/codaconfedit server.conf vicedir`
-}
-
 start() {
-	getvicedir
-
 	checkconfig || return 1
 
 	ebegin "Starting codasrv"
-	start-stop-daemon --start --background --exec /usr/sbin/codasrv
+	start-stop-daemon --start --exec /usr/sbin/codasrv
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping codasrv"
-	msg=`/usr/sbin/volutil shutdown 2>&1` || echo "$msg"
-	start-stop-daemon --stop --quiet --retry 30/TERM --oknodo --exec /usr/sbin/codasrv
+	start-stop-daemon --stop --quiet --exec /usr/sbin/codasrv
+	/usr/sbin/volutil shutdown
+	sleep 30
 	eend $?
 }

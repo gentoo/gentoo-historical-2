@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jrockit-jdk-bin/jrockit-jdk-bin-1.5.0.03.ebuild,v 1.6 2005/09/02 12:28:09 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jrockit-jdk-bin/jrockit-jdk-bin-1.5.0.03.ebuild,v 1.1 2005/07/19 14:22:26 axxo Exp $
 
 # WARNING: This is the default VM on ia64, so treat this ebuild
 # with proper care.
@@ -11,14 +11,13 @@ RESTRICT="nostrip fetch"
 inherit java
 
 DESCRIPTION="BEA WebLogic's J2SE Development Kit, version 5.0"
-HOMEPAGE="http://commerce.bea.com/products/weblogicjrockit/5.0/jr_50.jsp"
+HOMEPAGE="http://commerce.bea.com/downloads/weblogicjrockit/5.0/jr_50.jsp"
 SRC_URI="ia64? ( jrockit-25.2.0-jdk1.5.0_03-linux-ipf.bin )
-	amd64? ( jrockit-25.2.0-jdk1.5.0_03-linux-x64.bin )
 	x86? ( jrockit-25.2.0-jdk1.5.0_03-linux-ia32.bin )"
 
 LICENSE="jrockit"
 SLOT="1.5"
-KEYWORDS="~amd64 ia64 ~x86"
+KEYWORDS="~ia64 ~x86"
 IUSE=""
 
 DEPEND="virtual/libc
@@ -46,11 +45,11 @@ src_unpack() {
 }
 
 src_install() {
-	local dirs="bin console include jre lib man"
+	local dirs="bin console include jre lib"
 	dodir /opt/${P}
 
 	for i in ${dirs} ; do
-		cp -R $i ${D}/opt/${P}/ || die
+		cp -dR $i ${D}/opt/${P}/ || die
 	done
 
 	newdoc README.TXT README

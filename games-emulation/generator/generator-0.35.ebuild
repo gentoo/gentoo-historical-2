@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/generator/generator-0.35.ebuild,v 1.13 2005/05/17 17:50:02 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/generator/generator-0.35.ebuild,v 1.1 2003/09/09 16:26:50 vapier Exp $
 
-inherit eutils toolchain-funcs games
+inherit games gcc
 
 DESCRIPTION="Sega Genesis / Mega Drive console emulator"
 HOMEPAGE="http://www.squish.net/generator/"
@@ -10,67 +10,42 @@ SRC_URI="http://www.squish.net/generator/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~amd64"
-IUSE="svga gtk"
+KEYWORDS="x86"
+IUSE="svga tcltk gtk" #allegro fails to compile
 
-RDEPEND="virtual/libc
-	gtk? (
-		=x11-libs/gtk+-1*
-		media-libs/libsdl
-	)
+DEPEND="gtk? ( =x11-libs/gtk+-1* media-libs/libsdl )
 	svga? ( media-libs/svgalib )
-	media-libs/jpeg"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
+	jpeg? ( media-libs/jpeg )
 	x86? ( dev-lang/nasm )"
-
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	mkdir my-bins
-	if use ppc ; then
-		sed -i \
-			-e 's/-minline-all-stringops//g' configure \
-				|| die "sed configure failed"
-	fi
-
-	if [ $(gcc-major-version) -eq 3 ] ; then
-		sed -i \
-			-e "s/-malign-functions/-falign-functions/" \
-			-e "s/-malign-loops/-falign-loops/" \
-			-e "s/-malign-jumps/-falign-jumps/" configure \
-				|| die "sed configure failed"
-	fi
-	epatch "${FILESDIR}/netbsd-gcc-3.3.patch"
-}
+#	allegro? ( media-libs/allegro )
+#	tcltk? ( dev-lang/tk dev-lang/tcl ) #deprecated upstream
 
 src_compile() {
-	local myconf="--with-gcc=$(gcc-major-version)"
-	local mygui myguis
+	mkdir my-bins
 
-	use x86 \
+	local myconf="--with-gcc=`gcc-major-version`"
+	[ "${ARCH}" == "x86" ] \
 		&& myconf="${myconf} --with-raze" \
 		|| myconf="${myconf} --with-cmz80"
 
-	use gtk && myguis="gtk"
-	use svga && myguis="svgalib"
-	[ -n "${myguis}" ] || myguis="gtk"
-
-	for mygui in ${myguis}; do
-		if [ -f Makefile ] ; then
-			make clean
-		fi
-		egamesconf \
-			${myconf} \
-			--with-${mygui} || die
-		emake -j1 || die "building ${mygui}"
+	local mygui
+	for mygui in `use gtk` `use svga` ; do #`use allegro` `use tcltk`
+		[ "${mygui}" == "svga" ] && mygui=svgalib
+		make clean
+		egamesconf ${myconf} --with-${mygui} || die
+		make || die "building ${mygui}"
 		mv main/generator-${mygui} my-bins/
 	done
+	if [ -z "`use gtk``use allegro``use svga``use tcltk`" ] ; then
+		egamesconf ${myconf} --with-gtk || die
+		make || die "building ${mygui}"
+		mv main/generator-gtk my-bins/
+	fi
 }
 
 src_install() {
-	dogamesbin my-bins/* || die "dogamesbin failed"
+	#make install DESTDIR=${D} || die #all it does is install the binary ;)
+	dogamesbin my-bins/*
 	dodoc AUTHORS ChangeLog NEWS README TODO
 	prepgamesdirs
 }

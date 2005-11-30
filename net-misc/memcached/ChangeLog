@@ -1,65 +1,6 @@
-# ChangeLog for net-misc/memcached
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/ChangeLog,v 1.15 2005/11/15 18:52:35 gustavoz Exp $
-
-  15 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  memcached-1.1.12.ebuild:
-  Stable on sparc
-
-  08 Nov 2005; Lisa Seelye <lisa@gentoo.org> -memcached-1.1.12_rc1.ebuild,
-  memcached-1.1.12.ebuild:
-  Remove the OLD RC1 for 1.1.12 and bump 1.1.12 to stable on x86 (i think
-  seven months is enough testing). Other arches please test and bump as
-  needed.
-
-  21 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  memcached-1.1.12.ebuild:
-  Keyworded ~sparc
-
-  28 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> memcached-1.1.12.ebuild:
-  Added ~mips.
-
-  03 Jul 2005; Konstantin Arkhipov <voxus@gentoo.org> memcached-1.1.12.ebuild:
-  Stable on amd64.
-
-*memcached-1.1.12 (17 May 2005)
-
-  17 May 2005; Konstantin Arkhipov <voxus@gentoo.org> +memcached-1.1.12.ebuild:
-  Version bump.
-
-  29 Mar 2005; Konstantin Arkhipov <voxus@gentoo.org> memcached-1.1.11.ebuild:
-  Stable on amd64.
-
-  01 Feb 2005; Konstantin Arkhipov <voxus@gentoo.org> memcached-1.1.11.ebuild:
-  Added ~amd64 keyword.
-
-  21 Jan 2005; Konstantin Arkhipov <voxus@gentoo.org>
-  memcached-1.1.12_rc1.ebuild:
-  Added ~amd64 keyword.
-
-*memcached-1.1.12_rc1 (14 Jan 2005)
-
-  14 Jan 2005; Lisa Seelye <lisa@gentoo.org> +metadata.xml,
-  +files/1.1.12/conf, +files/1.1.12/init, +memcached-1.1.12_rc1.ebuild:
-  Add 1.1.12-rc1 and retool the conf/init scripts to take advantage of the new
-  -P (pidfile) option. The default behavior is to save the pidfile in
-  /var/run/memcached/memcached-PORT.pid. This, it seems would make it easier
-  for people to have multiple instances of memcached running (simply rename
-  /etc/init.d/memcached to /etc/init.d/memcached.instance and the conf.d file
-  accordingly.
-
-  05 Jan 2005; Lisa Seelye <lisa@gentoo.org> memcached-1.1.11.ebuild:
-  Dependency update: dev-libs/memcached-api-perl -> dev-perl/Cache-Memcached.
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  22 Aug 2004; Lisa Seelye <lisa@gentoo.org> -memcached-1.1.10.ebuild,
-  memcached-1.1.11.ebuild, -memcached-1.1.9.ebuild:
-  bump to arch, do some cleanup
-
-  17 Jul 2004; David Holm <dholm@gentoo.org> memcached-1.1.11.ebuild:
-  Added to ~ppc.
+# ChangeLog for net-www/memcached
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/memcached/ChangeLog,v 1.1 2004/07/08 19:14:45 lisa Exp $
 
   08 Jul 2004; Lisa Seelye <lisa@gentoo.org> +files/conf, +files/init,
   +memcached-1.1.10.ebuild, +memcached-1.1.11.ebuild, +memcached-1.1.9.ebuild:

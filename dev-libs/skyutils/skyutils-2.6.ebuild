@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/skyutils/skyutils-2.6.ebuild,v 1.8 2005/10/06 05:54:30 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/skyutils/skyutils-2.6.ebuild,v 1.1 2004/04/18 01:35:51 dragonheart Exp $
 
 IUSE="ssl"
 
@@ -10,21 +10,21 @@ SRC_URI="http://zekiller.skytech.org/fichiers/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~sparc amd64"
+KEYWORDS="~x86 ~ppc ~sparc"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-apps/gawk
 	sys-devel/gcc
 	ssl? ( dev-libs/openssl )"
 
-RDEPEND="virtual/libc"
+RDEPEND="virtual/glibc"
 
 src_compile() {
 	econf `use_enable ssl` || die "./configure failed"
-	emake || die "make failed"
+	emake || die
 }
 
 src_install () {
-	emake DESTDIR=${D} install || die "make install failed"
-	dodoc AUTHORS ChangeLog NEWS README
+	emake DESTDIR=${D} install || die
+	dodoc AUTHORS ChangeLog COPYING INSTALL License.txt NEWS README
 }

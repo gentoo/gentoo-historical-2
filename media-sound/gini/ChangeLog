@@ -1,15 +1,6 @@
 # ChangeLog for media-sound/gini
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gini/ChangeLog,v 1.6 2004/09/14 08:08:33 eradicator Exp $
-
-  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> gini-0.5.1.ebuild:
-  Stable amd64, sparc.
-
-  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gini-0.5.1.ebuild:
-  ~amd64 ~sparc
-
-  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> gini-0.5.1.ebuild:
-  Stable on x86.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gini/ChangeLog,v 1.1 2003/12/18 21:34:20 mholzer Exp $
 
 *gini-0.5.1 (18 Dec 2003)
 

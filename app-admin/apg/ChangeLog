@@ -1,65 +1,8 @@
 # ChangeLog for app-admin/apg
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/apg/ChangeLog,v 1.16 2005/08/03 18:41:51 voxus Exp $
-
-  03 Aug 2005; Konstantin Arkhipov <voxus@gentoo.org> -apg-2.3.0b.ebuild:
-  Cleanup.
-
-  05 Jul 2005; Rene Nussbaumer <killerfox@gentoo.org> apg-2.3.0b-r1.ebuild:
-  Stable on hppa.
-
-  03 Jul 2005; Michael Hanselmann <hansmi@gentoo.org> apg-2.3.0b-r1.ebuild:
-  Stable on ppc.
-
-  01 Jul 2005; Konstantin Arkhipov <voxus@gentoo.org> apg-2.3.0b-r1.ebuild:
-  Stable on amd64 and x86.
-
-*apg-2.3.0b-r1 (30 Dec 2004)
-
-  30 Dec 2004; Seemant Kulleen <seemant@gentoo.org>
-  +files/apg-2.3.0b-cracklib.patch, -apg-2.1.0.ebuild, -apg-2.2.3.ebuild,
-  +apg-2.3.0b-r1.ebuild, apg-2.3.0b.ebuild:
-  move 2.3.0b to stable x86, remove crufty versions, and add -r1 which has
-  support for cracklib, thanks to: Conway S. Smith <beolach@comcast.net> in
-  bug #67564
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> apg-2.3.0b.ebuild:
-  Masked apg-2.3.0b.ebuild stable for ppc
-
-  30 Jun 2004; Guy Martin <gmsoft@gentoo.org> apg-2.3.0b.ebuild:
-  Marked stable on hppa.
-
-  29 Feb 2004; Jason Wever <weeve@gentoo.org> apg-2.3.0b.ebuild:
-  ~sparc, it's what's for dinner.
-
-  08 Feb 2004; Dylan Carlson <absinthe@gentoo.org> apg-2.3.0b.ebuild:
-  added amd64 keyword.
-
-  04 Dec 2003; Ciaran McCreesh <ciaranm@gentoo.org> apg-2.2.3.ebuild:
-  Moved to ~sparc, thanks to squash
-
-*apg-2.3.0b (16 Nov 2003)
-
-  16 Nov 2003; Troy Dack <tad@gentoo.org> apg-2.3.0b.ebuild:
-  Added src_unpack() function to fix permission problem that existed when
-  FEATURES="userpriv" was set. Closes bug #33527.
-
-*apg-2.2.3 (12 Nov 2003)
-
-  12 Nov 2003; Troy Dack <tad@gentoo.org> apg-2.2.3.ebuild, apg-2.3.0b.ebuild:
-  Latest development release. Closes Bug #33261. Thanks Sven Wegener
-  <sven.wegener@stealer.net> for subnmitting the ebuild.
-
-*apg-2.2.3 (12 Nov 2003)
-
-  12 Nov 2003; Troy Dack <tad@gentoo.org> apg-2.2.3.ebuild:
-  Version bump, 2.2.3 is the stable release. Thanks to Sven Wegener
-  <sven.wegener@stealer.net> for the ebuild. Closes Bug #33260.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/apg/ChangeLog,v 1.1 2003/03/02 05:44:24 tad Exp $
 
 *apg-2.1.0 (02 Mar 2003)
-
-  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> apg-2.1.0.ebuild:
-  absolutely stable on ppc. reflected that in keywording
 
   02 Mar 2003; Troy Dack <tad@gentoo.org> apg-2.1.0.ebuild:
   Initial import. Ebuild submitted by Robert Hennig <rob@geekmind.org>

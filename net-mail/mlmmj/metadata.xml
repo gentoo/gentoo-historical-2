@@ -3,9 +3,7 @@
 <pkgmetadata>
 <herd>net-mail</herd>
 <maintainer>
-  <email>lcars@gentoo.org</email>
-</maintainer>
-<maintainer>
+  <email>siggy@gentoo.org</email>
   <email>klieber@gentoo.org</email>
 </maintainer>
 </pkgmetadata>

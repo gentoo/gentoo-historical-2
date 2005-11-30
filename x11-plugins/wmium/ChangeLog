@@ -1,59 +1,6 @@
 # ChangeLog for x11-plugins/wmium
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmium/ChangeLog,v 1.15 2005/07/18 13:51:15 dragonheart Exp $
-
-  18 Jul 2005; Daniel Black <dragonheart@gentoo.org> -wmium-1.0.9.ebuild,
-  wmium-1.0.9b.ebuild:
-  typo fix thanks to bug #99401 thanks to Michael Knight
-
-*wmium-1.0.9b (17 Jul 2005)
-
-  17 Jul 2005; Daniel Black <dragonheart@gentoo.org> +wmium-1.0.9b.ebuild:
-  version bump
-
-  12 Jun 2005; Sven Wegener <swegener@gentoo.org> wmium-1.0.9.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  01 Jun 2005; Daniel Black <dragonheart@gentoo.org> -wmium-1.0.7.ebuild,
-  -wmium-1.0.8.ebuild:
-  old version cleanout
-
-  12 Aug 2004; Daniel Black <dragonheart@gentoo.org> wmium-1.0.9.ebuild:
-  x86 stable
-
-  08 Aug 2004; Tom Martin <slarti@gentoo.org> wmium-1.0.7.ebuild,
-  wmium-1.0.8.ebuild, wmium-1.0.9.ebuild:
-  Typo in DESCRIPTION: pluggin -> plugin. Bug 59717.
-
-  15 Jul 2004; Daniel Black <dragonheart@gentoo.org> wmium-1.0.9.ebuild:
-  fixed S= dir according to bug #56012. Thanks to Michael Knight
-  <jedimike@gmail.com>
-
-*wmium-1.0.9 (03 Jul 2004)
-
-  03 Jul 2004; <pyrania@gentoo.org> +wmium-1.0.9.ebuild:
-  Version bump. Closing bug #55884.
-
-  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmium-1.0.7.ebuild,
-  wmium-1.0.8.ebuild:
-  glibc -> libc
-
-  23 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmium-1.0.7.ebuild,
-  wmium-1.0.8.ebuild:
-  QA - add error checking, clean up, fix use invocation
-
-  13 Apr 2004; Don Seiler <rizzo@gentoo.org>; wmium-1.0.7.ebuild,
-  wmium-1.0.8.ebuild:
-  Changed dependency to virtual/x11 to work with x11-base/xorg-x11
-
-  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> wmium-1.0.8.ebuild:
-  Removing S=
-
-*wmium-1.0.8 (05 Mar 2004)
-
-  05 Mar 2004; Daniel Black <dragonheart@gentoo.org> wmium-1.0.7.ebuild,
-  wmium-1.0.8.ebuild:
-  Version bump. unmask for x86 and small documentation fix
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmium/ChangeLog,v 1.1 2004/02/07 04:27:40 port001 Exp $
 
 *wmium-1.0.7 (07 Feb 2004)
 

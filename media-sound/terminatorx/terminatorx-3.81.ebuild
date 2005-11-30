@@ -1,27 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/terminatorx/terminatorx-3.81.ebuild,v 1.14 2005/05/28 17:08:24 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/terminatorx/terminatorx-3.81.ebuild,v 1.1 2003/09/20 06:55:55 jje Exp $
 
 inherit gnome2
 
 MY_P=${P/terminatorx/terminatorX}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION='realtime audio synthesizer that allows you to "scratch" on digitally sampled audio data'
+DESCRIPTION='terminatorX is a realtime audio synthesizer that allows you to "scratch" on digitally sampled audio data'
 HOMEPAGE="http://www.terminatorx.cx/"
 SRC_URI="http://www.terminatorx.cx/dist/${MY_P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 sparc"
-IUSE="3dnow alsa mpeg vorbis oss sox"
+KEYWORDS="~x86"
+IUSE="3dnow alsa mpeg oggvorbis oss sox"
 
 DEPEND="alsa? ( >=media-libs/alsa-lib-0.9 )
-	mpeg? ( media-sound/madplay )
-	vorbis? ( >=media-libs/libvorbis-1.0_beta4 )
+	mpeg? ( media-sound/mad )
+	oggvorbis? ( >=media-libs/libvorbis-1.0_beta4 )
 	sox? ( media-sound/sox )
 	>=x11-libs/gtk+-2.2.0
 	>=dev-libs/glib-2.2.0
-	virtual/x11
+	>=x11-base/xfree-4.2.0-r11
 	dev-libs/libxml
 	media-libs/audiofile
 	media-libs/ladspa-sdk
@@ -51,7 +50,7 @@ src_compile() {
 		&& myconf="${myconf} --enable-mad" \
 		|| myconf="${myconf} --disable-mad" \
 		|| myconf="${myconf} --disable-mpg123"
-	use vorbis \
+	use oggvorbis \
 		&& myconf="${myconf} --enable-vorbis" \
 		|| myconf="${myconf} --disable-vorbis" \
 		|| myconf="${myconf} --disable-ogg123"
@@ -59,10 +58,9 @@ src_compile() {
 		&& myconf="${myconf} --enable-oss" \
 		#|| myconf="${myconf} --disable-oss" # Doesn't work
 	use sox \
-		&& myconf="${myconf} --enable-sox" \
-		|| myconf="${myconf} --disable-sox"
+		&& myconf="${myconf} --enable-sox"
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 
 	emake || die
 }
@@ -79,3 +77,4 @@ pkg_postinst() {
 	ewarn "Please read http://www.terminatorx.cx/faq.html#11"
 	ewarn "for details and potential security risks."
 }
+

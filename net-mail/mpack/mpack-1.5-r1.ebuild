@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mpack/mpack-1.5-r1.ebuild,v 1.11 2005/05/22 10:34:40 blubb Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mpack/mpack-1.5-r1.ebuild,v 1.1 2002/08/02 10:56:03 aliz Exp $
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="Command-line MIME encoding and decoding utilities"
@@ -11,16 +9,15 @@ SRC_URI="ftp://ftp.andrew.cmu.edu/pub/mpack/${P}-src.tar.Z"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 sparc ~amd64"
-IUSE=""
+KEYWORDS="x86"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${P}-src.tar.Z
 	cd ${S}
-	patch -l -p1 <${FILESDIR}/${P}-r1.patch || die "patch failed"
-	epatch ${FILESDIR}/${P}-malloc-fix.patch || die "epatch failed"
+	patch -l -p1 <${FILESDIR}/${P}-r1.patch
 }
 
 src_compile() {
@@ -30,5 +27,4 @@ src_compile() {
 src_install () {
 	dodir /usr
 	make DESTDIR=${D}/usr install || die
-	dodoc README.* SCOPTIONS
 }

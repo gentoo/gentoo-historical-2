@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/grender/grender-0.1.3.ebuild,v 1.5 2005/08/17 07:52:32 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/grender/grender-0.1.3.ebuild,v 1.1 2004/06/18 19:50:47 eradicator Exp $
 
 IUSE=""
 
@@ -9,13 +9,14 @@ MY_P="${MY_PN}-${PV}"
 
 S="${WORKDIR}/${MY_P}"
 
-DESCRIPTION="grender is a queue management system for rendering in Maya."
+DESCRIPTION="grender is aa queue management system for rendering in Maya."
 HOMEPAGE="http://grender.sourceforge.net/"
 SRC_URI="mirror://sourceforge/grender/GRender-0.1.3.tar.gz"
+RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86 "
+KEYWORDS="~x86 ~amd64"
 
 DEPEND=">=x11-libs/gtk+-2.2
 	media-gfx/maya"

@@ -1,23 +1,6 @@
-# ChangeLog for dev-java/scala-bin
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/scala-bin/ChangeLog,v 1.6 2005/05/19 13:51:37 luckyduck Exp $
-
-  19 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  scala-bin-1.2.0.1.ebuild:
-  stable on amd64 and x86
-
-  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> scala-bin-1.2.0.1.ebuild:
-  Keywords ~amd64.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> scala-bin-1.2.0.1.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  28 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Gentoo Technologies, Inc. -> Gentoo Foundation
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
+# ChangeLog for dev-java/scala
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/scala-bin/ChangeLog,v 1.1 2004/08/02 13:12:26 karltk Exp $
 
 *scala-bin-1.2.0.1 (02 Aug 2004)
 

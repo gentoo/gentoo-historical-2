@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/autoconf-2.13.ebuild,v 1.13 2005/03/13 04:40:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autoconf/autoconf-2.13.ebuild,v 1.1 2004/10/21 01:06:27 vapier Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="${PV:0:3}"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86 ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
 DEPEND=">=sys-apps/texinfo-4.3
@@ -55,6 +55,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Please note that the 'WANT_AUTOCONF_2_1=1' syntax is now:"
+	einfo "Please note that the 'WANT_AUTOCONF_2_1=1' syntax is now:" 
 	einfo "  WANT_AUTOCONF=2.1"
 }

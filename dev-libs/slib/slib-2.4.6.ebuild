@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/slib/slib-2.4.6.ebuild,v 1.8 2005/10/02 11:57:17 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/slib/slib-2.4.6.ebuild,v 1.1 2003/09/07 22:06:00 weeve Exp $
 
 MY_P=${PN}2d6
 S=${WORKDIR}/${PN}
@@ -10,8 +10,7 @@ HOMEPAGE="http://swissnet.ai.mit.edu/~jaffer/SLIB.html"
 
 SLOT="0"
 LICENSE="public-domain BSD"
-KEYWORDS="alpha amd64 ia64 ~ppc ~sparc ~x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
 RDEPEND=">=dev-util/guile-1.4"
 DEPEND="${RDEPEND}
@@ -28,6 +27,6 @@ src_install() {
 pkg_postinst() {
 	if [ "${ROOT}" == "/" ] ; then
 		einfo "Installing..."
-		guile -c "(use-modules (ice-9 slib)) (require 'new-catalog)" "/"
+		guile -c "(use-modules (ice-9 slib)) (require 'new-catalog)" "/" 
 	fi
 }

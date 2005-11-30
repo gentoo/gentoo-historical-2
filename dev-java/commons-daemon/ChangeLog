@@ -1,46 +1,6 @@
 # ChangeLog for dev-java/commons-daemon
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-daemon/ChangeLog,v 1.14 2005/06/07 18:05:53 luckyduck Exp $
-
-*commons-daemon-1.0.1 (07 Jun 2005)
-
-  07 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  +commons-daemon-1.0.1.ebuild:
-  New upstream release, fixes #95049. Introduced support for the examples and
-  the source useflag.
-
-  29 May 2005; Markus Rothe <corsair@gentoo.org> commons-daemon-1.0.ebuild:
-  Stable on ppc64
-
-  14 May 2005; Martin Holzer <mholzer@gentoo.org> commons-daemon-1.0.ebuild:
-  amd64 stable
-
-  08 May 2005; Jason Wever <weeve@gentoo.org> commons-daemon-1.0.ebuild:
-  Added ~sparc keyword.
-
-  12 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-daemon-1.0.ebuild:
-  added ~ppc to KEYWORDS
-
-  09 Apr 2005; Markus Rothe <corsair@gentoo.org> commons-daemon-1.0.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-daemon-1.0.ebuild:
-  added missing jikes dependency. see #78819.
-
-  12 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-daemon-1.0.ebuild:
-  slightly modified ebuild as recommended by Dad <dan@intuitivelyobvious.net> to
-  make package amd64 compatible. added ~amd64 to KEYWORDS. fixes bug #67323.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> commons-daemon-1.0.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  commons-daemon-1.0.ebuild:
-  virtual/glibc -> virtual/libc
-
-  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-daemon-1.0.ebuild:
-  Marking stable on x86. Fixes according to #45398
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-daemon/ChangeLog,v 1.1 2004/02/24 22:05:51 zx Exp $
 
 *commons-daemon-1.0 (27 Feb 2004)
 

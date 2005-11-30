@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/entrance/entrance-9999.ebuild,v 1.5 2005/10/12 04:44:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/entrance/entrance-9999.ebuild,v 1.1 2004/10/21 20:38:02 vapier Exp $
 
 inherit enlightenment eutils
 
@@ -16,22 +16,23 @@ IUSE="pam"
 DEPEND="virtual/x11
 	pam? ( sys-libs/pam )
 	>=dev-db/edb-1.0.5
-	>=x11-libs/evas-0.9.9
-	>=x11-libs/ecore-0.9.9
+	>=x11-libs/evas-1.0.0_pre13
+	>=x11-libs/ecore-1.0.0_pre7
 	>=media-libs/edje-0.5.0
-	>=x11-libs/esmart-0.9.0"
+	>=x11-libs/esmart-0.0.2.20040501
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	enlightenment_src_unpack
 	if [ -d gentooed ] ; then
-		mv gentooed "${S}"/data/themes/
-		cd "${S}"/data/themes
+		mv gentooed ${S}/data/themes/
+		cd ${S}/data/themes
 		sed -i '/^SUBDIRS/s:$: gentooed:' Makefile.am
 		cp default/{Makefile.am,build_theme.sh} gentooed/
 		cd gentooed
 		ln -s images img
 		sed -i 's:default:gentooed:g' Makefile.am build_theme.sh
-		sed -i 's:\(data/themes/default/Makefile\):\1 data/themes/gentooed/Makefile:' "${S}"/configure.in
+		sed -i 's:\(data/themes/default/Makefile\):\1 data/themes/gentooed/Makefile:' ${S}/configure.in
 	fi
 }
 

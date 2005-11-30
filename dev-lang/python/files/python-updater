@@ -21,11 +21,13 @@
 # PKGS_MASKED     = list of packages that are installed, but masked.
 #
 
+OLD_PY_VER=2.2
 NEW_PY_VER=$(python -V 2>&1 | sed 's:Python ::' | cut -d. -f1-2)
+OLD_MODULES_DIR=/usr/lib/python${OLD_PY_VER}
 
-PKGS_EXCEPTIONS="dev-lang/python sys-apps/portage"
+PKGS_EXCEPTIONS="dev-lang/python"
 PKGS_MANUAL="app-office/gnumeric app-office/dia x11-libs/vte"
-LOGFILE="/var/log/python-updater.log"
+LOGFILE="/tmp/python-updater.log"
 
 # portage variables
 PKG_DBDIR=/var/db/pkg
@@ -35,30 +37,11 @@ PORTDIR_OVERLAYS=`portageq portdir_overlay`
 PRETEND=0
 PKGS_TO_REMERGE=""
 PKGS_COUNT_REMERGE=0
-PORTAGE_PYTHON="/usr/bin/python"
 
 # load the gentoo-style info macros, but hack to get around
 # it thinking this is an rc script
 EBUILD="1" 
 source /sbin/functions.sh
-
-
-
-for old in 2.4 2.3 2.2 2.1; do
-	if [ "${old}" != "${NEW_PY_VER}" ]; then
-		if [ -e /usr/bin/python${old} ] ; then
-			OLD_PY_VER=${old}
-			break;
-		fi
-	fi
-done
-
-
-if [ -z "${OLD_PY_VER}" ] ; then
-    eerror "Can't determine any previous Python version(s)."
-    exit 1
-fi
-
 
 # misc helper functions
 eloginfo() {
@@ -77,88 +60,34 @@ elogecho() {
 elogerr() {
 	eerror $*
 	DATESTRING=`date +"%Y/%m/%d %H:%M:%S"`
-	echo "${DATESTRING} ! ${*}" >> ${LOGFILE} 
+	echo "${DATESTRING} ! ${*}" >> ${LOGFILE}	
 }
 
 elog() {
 	DATESTRING=`date +"%Y/%m/%d %H:%M:%S"`
-	echo "${DATESTRING} - ${*}" >> ${LOGFILE}
+	echo "${DATESTRING} - ${*}" >> ${LOGFILE}	
 }
-
-
-usage() {
-	echo "usage: python-updater [-h|-p|-o X.X|-n X.X]"
-	echo " -h      help"
-	echo " -p      pretend (don't do anything)"
-	echo " -o X.X  set old python version to upgrade from [default: ${OLD_PY_VER}]"
-	echo " -n X.X  set new python version to upgrade to [default: ${NEW_PY_VER}]"
-}
-
-#
-# Sanity check
-#
-
-if [ -z "${PORTDIR}" ]; then
-	eerror "Unable to proceed. Can not find PORTDIR. Make sure the command:"
-	eerror " "
-	eerror "  portageq portdir"
-	eerror " "
-	eerror "returns a value. If it doesn't, make sure you have updated to"
-	eerror "latest portage version."
-	eerror " "
-	eerror "Report bugs to http://bugs.gentoo.org/"
-	exit 1
-fi	
-
-if [ ! -f ${LOGFILE} ]; then
-	if ! touch ${LOGFILE} 2>&1 > /dev/null; then
-		ewarn "Logging disabled due to permissions"
-		LOGFILE=/dev/null
-	fi
-elif [ ! -w ${LOGFILE} -o ! -L ${LOGFILE} ]; then
-	ewarn "Logging disabled due to permissions"
-	LOGFILE=/dev/null
-fi
 
 # 
 #
 # Command Line Parsing
 #
 #
-while [ -n "$1" ]; do
+
+if [ -n "$1" ]; then
 	case "$1" in
-		-h)
-			usage
-			exit 0
+		-h) 
+			echo "usage: python-updater [-h|-p]"
+			echo " -h    help"
+			echo " -p    pretend (don't do anything)"
 			;;
 		-p)
 			PRETEND=1
 			;;
-		-o)
-			shift
-			OLD_PY_VER="$1"
-			;;
-		-n)
-			shift
-			NEW_PY_VER="$1"
-			;;
 		*)
-			usage
-			echo "unrecognised option: $1"
 			;;
 	esac
-	shift
-done
-
-#
-# Test where portage is, in python2.2 or somewhere else?
-#
-for py in /usr/bin/python /usr/bin/python${OLD_PY_VER} /usr/bin/python${NEW_PY_VER}; do
-	if ${py} -c "import portage"; then
-		PORTAGE_PYTHON=${py}
-		break;
-	fi
-done
+fi	
 
 #
 #
@@ -166,11 +95,9 @@ done
 # /usr/lib/python${OLD_PY_VER}
 #
 #
-OLD_MODULES_DIRS="/usr/lib/python${OLD_PY_VER} /usr/lib32/python${OLD_PY_VER} /usr/lib64/python${OLD_PY_VER}"
-OLD_INCLUDE_DIR=/usr/include/python${OLD_PY_VER}
 
 eloginfo "Starting Python Updater from ${OLD_PY_VER} to ${NEW_PY_VER} :"
-eloginfo "Searching for packages with files in ${OLD_MODULES_DIRS} .."
+eloginfo "Searching for packages with files in ${OLD_MODULES_DIR} .."
 
 # iterate thru all the installed package's contents
 for content in `find ${PKG_DBDIR} -name CONTENTS`; do
@@ -190,14 +117,10 @@ for content in `find ${PKG_DBDIR} -name CONTENTS`; do
        continue;
     fi
 
-    for OLD_MODULES_DIR in ${OLD_MODULES_DIRS}; do
-        if fgrep "${OLD_MODULES_DIR}" ${content} > /dev/null; then
-            PKGS_TO_REMERGE="${PKGS_TO_REMERGE} ${CATPKGVER}"
-	    elogecho "Adding to list: ${CATPKGVER}"
-	elif fgrep "${OLD_INCLUDE_DIR}" ${content} > /dev/null; then
-            PKGS_TO_REMERGE="${PKGS_TO_REMERGE} ${CATPKGVER}"
-        fi
-    done
+    if fgrep "${OLD_MODULES_DIR}" ${content} > /dev/null; then
+       PKGS_TO_REMERGE="${PKGS_TO_REMERGE} ${CATPKGVER}"
+	   elogecho "Adding to list: ${CATPKGVER}"
+    fi
 done    
 
 # now we have to do each emerge seperately because if an installed version
@@ -227,14 +150,19 @@ for pkg in ${PKGS_TO_REMERGE}; do
 done      
 
 #
-# Use my super dumb package reordering algorithm that works most of the time
+# Check the actual order which these should be merged (probably doesn't work)
 #
 
 eloginfo "Re-ordering packages to merge .."
 
-PKGS_OK_SORTED="$(${PORTAGE_PYTHON} ${PORTDIR}/dev-lang/python/files/depreorder.py ${PKGS_OK} | xargs)"
+PKGS_OK_SORTED_CMD="emerge -p " 
+for pkg in $PKGS_OK; do
+	PKGS_OK_SORTED_CMD="${PKGS_OK_SORTED_CMD} =$pkg"
+done
+PKGS_OK_SORTED_CMD="${PKGS_OK_SORTED_CMD}"
 
 eloginfo "Preparing to merge these packages in this order:"
+PKGS_OK_SORTED="`${PKGS_OK_SORTED_CMD}  | grep ebuild | sed 's:\[ebuild.*\] ::'`"
 for pkg in $PKGS_OK_SORTED; do
 	elogecho "$pkg"
 done
@@ -245,7 +173,7 @@ done
 COUNT=1
 PKGS_FAILED=""
 if [ "${PRETEND}" != "1" ]; then
-	for pkg in ${PKGS_OK_SORTED}; do
+	for pkg in ${PKGS_OK}; do
 		eloginfo "Starting to merge ($COUNT/$PKGS_COUNT_REMERGE) $pkg .."
 		if ! emerge --oneshot --nodeps =$pkg; then
 			PKGS_FAILED="${PKGS_FAILED} $pkg"
@@ -264,42 +192,39 @@ OUTPUT_PKGS_FAILED=""
 for pkg in ${PKGS_FAILED}; do OUTPUT_PKGS_FAILED="${OUTPUT_PKGS_FAILED} \=$pkg"; done
 
 if [ -n "${PKGS_FAILED}" -o -n "${PKGS_MISSING}" -o -n "${PKGS_MASKED}" ]; then
-   echo
    ewarn "************************************************************"
    ewarn "* Packages that still need to be manually emerged :        *"
    ewarn "************************************************************"
    if [ -n "${OUTPUT_PKGS_MASKED}" ]; then
-      echo
       ewarn " Masked Packages:"
 	  ewarn " ----------------"
       ewarn " Unmask the following packages (at your own risk) and  "
       ewarn " emerge them using this command after removing the '-p'"
       ewarn " parameter."
-      echo
+      ewarn ""
       ewarn " emerge -p ${OUTPUT_PKGS_MASKED}"
-      echo
+      ewarn ""
    fi
    if [ -n "${OUTPUT_PKGS_MISSING}" ]; then
-      echo
       ewarn " Missing Packages:"
 	  ewarn " -----------------"
       ewarn " These packages need to be updated because their versions do"
       ewarn " not exist in portage anymore."
-      echo
+      ewarn ""
       for x in ${OUTPUT_PKGS_MISSING}; do 
          echo "   ${x}"
       done
+      ewarn ""
    fi
    if [ -n "${OUTPUT_PKGS_FAILED}" ]; then
-      echo
       ewarn " Failed Packaged:"
 	  ewarn " ----------------"
       ewarn " These packages have failed and need to be re-emerged again."
 	  ewarn " Alternatively, try re-running this script again to see if it"
 	  ewarn " can be fixed."
-      echo
+      ewarn ""
       ewarn " emerge -p ${OUTPUT_PKGS_FAILED}"
-      echo
+      ewarn ""
    fi
    
    elog "Python update completed with errors."
@@ -319,4 +244,3 @@ if [ -n "${PKGS_FAILED}" -o -n "${PKGS_MISSING}" -o -n "${PKGS_MASKED}" ]; then
 else
    eloginfo "Python update completed successfully."
 fi
-

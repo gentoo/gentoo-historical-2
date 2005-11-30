@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/blitz/blitz-0.8.ebuild,v 1.7 2005/09/02 19:34:01 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/blitz/blitz-0.8.ebuild,v 1.1 2004/11/19 13:47:24 dragonheart Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
 DESCRIPTION="High-performance C++ numeric library"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -12,13 +12,13 @@ DEPEND="virtual/tetex
 IUSE="icc"
 
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="~x86 ~ppc"
 LICENSE="GPL-2"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/blitz-0.8-makefile.patch
+	epatch ${FILESDIR}/blitz-0.8-makefile.patch || die "patch failed"
 }
 
 src_compile() {
@@ -26,7 +26,6 @@ src_compile() {
 	# ICC: if we've got it, use it
 	use icc && myconf="--with-cxx=icc" || myconf="--with-cxx=gcc"
 
-	export CC=$(tc-getCC) CXX=$(tc-getCXX)
 	econf ${myconf} || die "econf failed"
 	if ! emake lib;
 	then
@@ -35,12 +34,8 @@ src_compile() {
 	fi
 }
 
-src_test() {
-	make check-testsuite || die "selftest failed"
-}
-
 src_install () {
-	dodir /usr/share/doc/${PF}
+
 	emake DESTDIR=${D} docdir=/usr/share/doc/${PF} install || \
 		die "install failed - please include above output in a bug report to bugs.gentoo.org"
 	dodoc ChangeLog ChangeLog.1 LICENSE README README.binutils \

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/maya/maya-6.5.ebuild,v 1.4 2005/10/13 17:31:24 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/maya/maya-6.5.ebuild,v 1.1 2005/08/11 08:50:25 eradicator Exp $
 
 inherit rpm eutils versionator
 
@@ -33,7 +33,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="app-arch/unzip"
 
 RDEPEND="|| ( app-shells/tcsh app-shells/csh )
-	 x86? ( virtual/fam
+	 x86? ( app-admin/fam
 	        !bundled-libs? ( =x11-libs/qt-3*
 	                         || ( sys-libs/libstdc++-v3 =sys-devel/gcc-3.3* )
 	                         >=x11-libs/openmotif-2.2 ) )
@@ -64,16 +64,16 @@ src_unpack() {
 
 	# rpm_unpack unpacks in ${WORKDIR} no matter what we try... so get it out of the way...
 	cd ${S}
-	rpm_unpack ${CDROM_ROOT}/${AWCOMMON_RPM} || die
-	rpm_unpack ${CDROM_ROOT}/${AWCOMMON_SERVER_RPM} || die
-	rpm_unpack ${CDROM_ROOT}/${MAYA_RPM} || die
+	rpm_unpack ${CDROM_ROOT}/${AWCOMMON_RPM}
+	rpm_unpack ${CDROM_ROOT}/${AWCOMMON_SERVER_RPM}
+	rpm_unpack ${CDROM_ROOT}/${MAYA_RPM}
 
 	if use doc ; then
-		rpm_unpack ${CDROM_ROOT}/${MAYA_DOCS_RPM} || die
+		rpm_unpack ${CDROM_ROOT}/${MAYA_DOCS_RPM}
 
 		if ! use bundled-libs; then
-			rm -rf ${S}/usr/aw/maya6.5/docs/jre || die
-			sed -i -e 's:JAVACMD=\./jre/bin/java:JAVACMD=java:g' ${S}/usr/aw/maya6.5/docs/startDocServer.sh || die
+			rm -rf ${S}/usr/aw/maya6.5/docs/jre
+			sed -i -e 's:JAVACMD=\./jre/bin/java:JAVACMD=java:g' ${S}/usr/aw/maya6.5/docs/startDocServer.sh
 		fi
 	fi
 
@@ -81,34 +81,34 @@ src_unpack() {
 		pushd ${CDROM_ROOT} >& /dev/null
 		[[ -d shaderLibrary ]] || die "Could not locate shaderLibrary on Maya Installation CD."
 
-		tar -c -f - shaderLibrary | (cd ${S}/usr/aw/maya${SLOT}; tar -x -f -) || die "Failed to copy over maya shader library"
+		tar -c -f - shaderLibrary | (cd ${S}; tar -x -f -) || die "Failed to copy over maya shader library"
 
 		popd >& /dev/null
 	fi
 
-	# Use app-admin/flexlm
-	rm -rf ${S}/usr/COM/{bin/lmutil,etc/lmgrd} || die
+	mkdir ${S}/insroot
+	mv ${S}/usr ${S}/insroot/opt
+	rm -rf ${S}/insroot/opt/sbin
 
 	# Don't need RedHat's init script
-	rm -rf ${S}/etc || die
+	rm -rf ${S}/etc
 
-	mkdir ${S}/insroot || die
-	mv ${S}/usr ${S}/insroot/opt || die
-	rm -rf ${S}/insroot/opt/sbin || die
+	# Use app-admin/flexlm
+	rm -rf ${S}/insroot/opt/COM/{bin/lmutil,etc/lmgrd}
 
-	cp -a ${CDROM_ROOT}/README.html ${S} || die
+	cp -a ${CDROM_ROOT}/README.html ${S}
 
 	# Remove unneeded libs (provided by RDEPEND).
 	if ! use bundled-libs; then
-		#rm -f ${S}/insroot/${AWDIR}/COM/lib/libXm.so.2.1 || die
-		rm -f ${S}/insroot/${MAYADIR}/lib/libgcc_s.so.1 || die
-		rm -f ${S}/insroot/${MAYADIR}/lib/libstdc++.so.5.0.6 || die
+		#rm -f ${S}/insroot/${AWDIR}/COM/lib/libXm.so.2.1
+		rm -f ${S}/insroot/${MAYADIR}/lib/libgcc_s.so.1
+		rm -f ${S}/insroot/${MAYADIR}/lib/libstdc++.so.5.0.6
 
 		# We keep this one because of possible C++ ABI changes...
 		# Maya 6.5 was compiled with CXXABI_1.2 (libstdc++.so.5)
-		# rm -f ${S}/insroot/${MAYADIR}/lib/libqt.so.3 || die
+		# rm -f ${S}/insroot/${MAYADIR}/lib/libqt.so.3
 
-		rm -f ${S}/insroot/${MAYADIR}/lib/libXm.so.3 || die
+		rm -f ${S}/insroot/${MAYADIR}/lib/libXm.so.3
 	fi
 }
 
@@ -116,7 +116,7 @@ src_install() {
 	dohtml README.html
 
 	cd ${S}/insroot
-	cp -a . ${D} || die
+	cp -a . ${D}
 
 	# We use our own Motif runtime unless USE=bundled-libs
 	#if use bundled-libs; then
@@ -166,18 +166,17 @@ src_install() {
 
 	doenvd ${FILESDIR}/50maya
 
+	doinitd ${FILESDIR}/aw_flexlm
+	newconfd  ${FILESDIR}/aw_flexlm.conf.d aw_flexlm
+
 	if use maya-shaderlibrary ; then
-		echo "MAYA_SHADER_LIBRARY_PATH=\"${AWDIR}/maya/shaderLibrary/shaders\"" >> ${D}/etc/env.d/50maya
+		die "Add support to install the shaderLibrary here"
 	fi
 
 	# Fix permissions
 	find ${D}${AWDIR} -type d -exec chmod 755 {} \;
 
 	dosed 's:tail -1: tail -n 1:g' /opt/aw/maya${SLOT}/bin/Maya${SLOT}
-
-	# For compatibility purposes.  Also, COM/bin/installKey uses
-	# /usr/aw/COM/lib as runtime lib path to find libXm.so.2
-	dosym ../opt/aw /usr/aw
 }
 
 pkg_postinst() {

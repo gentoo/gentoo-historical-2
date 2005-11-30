@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/mp/mp-3.3.12.ebuild,v 1.9 2005/08/23 03:14:21 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/mp/mp-3.3.12.ebuild,v 1.1 2005/04/03 08:01:20 compnerd Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.triptico.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~sparc ~alpha"
 IUSE="gtk gtk2 ncurses pcre"
 
 DEPEND="virtual/libc

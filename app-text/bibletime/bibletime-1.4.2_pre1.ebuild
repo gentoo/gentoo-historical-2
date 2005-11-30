@@ -1,22 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/bibletime/bibletime-1.4.2_pre1.ebuild,v 1.10 2005/07/27 21:21:38 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/bibletime/bibletime-1.4.2_pre1.ebuild,v 1.1 2004/06/23 21:49:22 squinky86 Exp $
 
-inherit kde eutils
+inherit kde
+need-kde 3
 
-DESCRIPTION="KDE Bible study application using the SWORD library."
+IUSE="curl"
+DESCRIPTION="BibleTime KDE Bible study application using the SWORD library."
 HOMEPAGE="http://bibletime.sourceforge.net/"
-SRC_URI="http://dev.gentoo.org/~squinky86/files/${P}.tar.bz2"
-
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
-IUSE="curl"
-
-RDEPEND=">=app-text/sword-1.5.8_pre1
+# temporary ebuild to fix #48523
+KEYWORDS="~x86 ~ppc"
+newdepend ">=app-text/sword-1.5.8_pre1
 	>=net-misc/curl-7.10"
-DEPEND=${RDEPEND}
-need-kde 3
 
 src_unpack() {
 	unpack ${A}
@@ -37,8 +35,11 @@ pkg_preinst() {
 		ewarn "Press ctrl+c to abort the merge of BibleTime if you want to"
 		ewarn "recompile SWORD with curl support."
 		ewarn
-		ebeep 5
-		epause 8
+		for TICKER in 1 2 3 4 5; do
+			echo -ne "\a" ; sleep 0.1 &>/dev/null ; sleep 0,1 &>/dev/null
+			echo -ne "\a" ; sleep 1
+		done
+		sleep 8
 	fi
 }
 

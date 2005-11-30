@@ -1,38 +1,8 @@
 # ChangeLog for dev-util/dmake
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dmake/ChangeLog,v 1.14 2005/08/07 12:51:11 hansmi Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dmake/ChangeLog,v 1.1 2002/02/01 21:53:28 gbevin Exp $
 
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> dmake-4.1-r1.ebuild:
-  Stable on ppc.
-
-  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> dmake-4.1-r1.ebuild:
-  removed die from epatch || die.
-
-  07 May 2005; David Holm <dholm@gentoo.org> dmake-4.1-r1.ebuild:
-  Added to ~ppc.
-
-  22 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> dmake-4.1-r1.ebuild:
-  added ~amd64 to KEYWORDS, fixes #83157
-
-  27 Dec 2004; Seemant Kulleen <seemant@gentoo.org> dmake-4.1-r1.ebuild:
-  HOMEPAGE and SRC_URI fix thanks to: Adam Chodorowski <adam@chodorowski.com>
-  in bug #68646
-
-  12 Dec 2004; Sven Wegener <swegener@gentoo.org> dmake-4.1-r1.ebuild:
-  Tidied the ebuild. Fixed broken Manifest.
-
-  06 Nov 2004; <pyrania@gentoo.org> dmake-4.1-r1.ebuild:
-  Hooray for epatch.
-
-  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> dmake-4.1-r1.ebuild:
-  Don't assign default to S; header fix
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *dmake-4.1-r1 (1 Feb 2002)
-
-  10 Mar 2003; Stefan Jones <cretin@gentoo.org> :
-  Added patch to fix errno in newer glibc and merged sed lines also int patch
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

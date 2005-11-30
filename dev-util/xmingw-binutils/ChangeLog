@@ -1,33 +1,8 @@
 # ChangeLog for dev-util/xmingw-binutils
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-binutils/ChangeLog,v 1.8 2005/11/10 22:22:41 cretin Exp $
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-binutils/ChangeLog,v 1.1 2003/10/02 10:15:30 cretin Exp $
 
-  10 Nov 2005; Stefan Jones <cretin@gentoo.org>
-  +files/xmingw-binutils-2.15.94.20050118.1-gcc4.patch,
-  xmingw-binutils-2.15.94.20050118.1.ebuild:
-  Fix compile with gcc4, bug #112109
-  Fix found by Dario Birtic
-
-*xmingw-binutils-2.15.94.20050118.1 (27 May 2005)
-
-  27 May 2005; Stefan Jones <cretin@gentoo.org>
-  New version
-
-  07 Feb 2005; Simon Stelling <blubb@gentoo.org>
-  xmingw-binutils-2.15.90.0.2.ebuild:
-  added ~amd64
-
-*xmingw-binutils-2.15.90.0.2 (15 Apr 2004)
-
-  15 Apr 2004; Stefan Jones <cretin@gentoo.org>
-  xmingw-binutils-2.15.90.0.2.ebuild:
-  New version from bug 47874
-
-  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  xmingw-binutils-2.14.90.0.6.ebuild:
-  don't assign to P; use epatch; error messages
-
-*xmingw-binutils-2.14.90.0.6 (01 Oct 2003)
+* xmingw-binutils-2.14.90.0.6 (01 Oct 2003)
 
   01 Oct 2003; Stefan Jones <cretin@gentoo.org> :
   Initial ebuild

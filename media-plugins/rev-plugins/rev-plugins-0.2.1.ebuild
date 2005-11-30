@@ -1,17 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/rev-plugins/rev-plugins-0.2.1.ebuild,v 1.8 2005/09/04 09:59:25 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/rev-plugins/rev-plugins-0.2.1.ebuild,v 1.1 2004/01/19 09:07:38 torbenh Exp $
 #
 MY_P=${P/rev/REV}
 
-DESCRIPTION="REV LADSPA plugins package. A stereo reverb plugin based on the well-known greverb"
-HOMEPAGE="http://users.skynet.be/solaris/linuxaudio/"
-SRC_URI="http://users.skynet.be/solaris/linuxaudio/downloads/${MY_P}.tar.bz2"
+DESCRIPTION="REV ladspa plugins package. Looks like a nive reverb"
+HOMEPAGE="http://alsamodular.sourceforge.net/"
+SRC_URI="http://alsamodular.sourceforge.net/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64"
-
-IUSE=""
+KEYWORDS="~x86"
 
 DEPEND="media-libs/ladspa-sdk"
 
@@ -22,7 +20,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc AUTHORS README ${S}/ams/*
+	dodoc AUTHORS COPYING README ${S}/ams/*
 	insinto /usr/lib/ladspa
 	insopts -m0755
 	doins *.so

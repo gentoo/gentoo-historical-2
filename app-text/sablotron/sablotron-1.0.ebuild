@@ -1,36 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/sablotron/sablotron-1.0.ebuild,v 1.13 2005/01/01 16:34:37 eradicator Exp $
-
-inherit libtool flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/app-text/sablotron/sablotron-1.0.ebuild,v 1.1 2003/09/12 16:07:56 obz Exp $
 
 MY_PN="Sablot"
 MY_P="${MY_PN}-${PV}"
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="An XSLT Parser in C++"
-HOMEPAGE="http://www.gingerall.com/charlie/ga/xml/p_sab.xml"
-SRC_URI="http://download-1.gingerall.cz/download/sablot/${MY_P}.tar.gz"
+SRC_URI="http://download-2.gingerall.cz/download/sablot/${MY_P}.tar.gz"
+HOMEPAGE="http://www.gingerall.com/charlie-bin/get/webGA/act/sablotron.act"
 # Sablotron can optionally be built under GPL, using MPL for now
 LICENSE="MPL-1.1"
 
 SLOT="0"
 IUSE="doc perl"
-KEYWORDS="x86 sparc ~ppc hppa alpha amd64 ia64"
+KEYWORDS="~x86 ~sparc ~ppc ~hppa ~alpha ~amd64"
 
-RDEPEND=">=dev-libs/expat-1.95.6-r1"
-DEPEND="${RDEPEND}
-	doc? ( >=dev-perl/XML-Parser-2.3 )"
+DEPEND=">=dev-libs/expat-1.95.6-r1
+	>=dev-perl/XML-Parser-2.3"
 
 DOCS="INSTALL README README_JS RELEASE src/TODO"
-
+	
 src_compile() {
-
-	local myconf=
-
-	# Please do not remove, else we get references to PORTAGE_TMPDIR
-	# in /usr/lib/libsablot.la ...
-	elibtoolize
+	
+	local myconf=""
 
 	use perl \
 		&& myconf="${myconf} --enable-perlconnect"
@@ -43,16 +36,16 @@ src_compile() {
 	# this is fixed for me with apache2, but keeping it in here
 	# for apache1 users and/or until some clever detection
 	# is added <obz@gentoo.org>
-	append-ldflags -lstdc++
+	export LDFLAGS="-lstdc++"
 
-	econf ${myconf} || die "Configure failed"
+	econf ${myconf} --prefix=${D} || die "Configure failed"
 	emake || die "Make failed"
 
 }
 
 src_install() {
-
-	einstall prefix=${D}/usr || die "Install failed"
+	
+	einstall || die "Install failed"
 	dodoc ${DOCS}
 
 }

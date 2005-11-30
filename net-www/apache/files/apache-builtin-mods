@@ -1,5 +1,3 @@
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/files/apache-builtin-mods,v 1.3 2004/07/18 04:20:47 dragonheart Exp $
-#
 # This is a config file for choosing which Apache built-in modules you
 # want and how they should be compiled.  You have the option of either
 # compiling them statically into the apache binary, or building them

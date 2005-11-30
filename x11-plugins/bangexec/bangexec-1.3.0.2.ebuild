@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/bangexec/bangexec-1.3.0.2.ebuild,v 1.4 2005/10/17 03:45:38 gothgirl Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/bangexec/bangexec-1.3.0.2.ebuild,v 1.1 2005/06/21 02:23:49 anarchy Exp $
 
 inherit eutils
 
 DESCRIPTION="GAIM Shell OutPut Plugin"
-HOMEPAGE="http://ignorance.sourceforge.net/bangexec"
-SRC_URI="mirror:sourceforge/ignorance/bangexec/${P}.tar.bz2"
+HOMEPAGE="http://bard.sytes.net/bangexec/"
+SRC_URI="http://bard.sytes.net/bangexec/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,10 +19,10 @@ src_unpack() {
 	unpack ${A}
 	# Set correct plugindir
 	sed -i -e "s:^\(plugindir = \$(prefix)/\)lib/:\1$(get_libdir)/:" \
-		"${S}"/Makefile.in || die "sed failed"
+		${S}/Makefile.in || die "sed failed"
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die "Install failed"
+	make install DESTDIR=${D} || die "Install failed"
 	dodoc ChangeLog INSTALL README AUTHORS
 }

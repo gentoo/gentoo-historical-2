@@ -1,30 +1,6 @@
 # ChangeLog for x11-themes/etheme-Ganymede
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/etheme-Ganymede/ChangeLog,v 1.8 2005/03/30 16:44:55 hansmi Exp $
-
-  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
-  etheme-Ganymede-0.16.7.1.ebuild:
-  Stable on ppc.
-
-  09 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
-  etheme-Ganymede-0.16.7.1.ebuild:
-  Stable on alpha.
-
-  30 Dec 2004; Guy Martin <gmsoft@gentoo.org> etheme-Ganymede-0.16.7.1.ebuild:
-  Stable on hppa.
-
-  22 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  etheme-Ganymede-0.16.7.1.ebuild:
-  Stable on sparc
-
-  23 Jul 2004; Tom Gall <tgall@gentoo.org> ethemes-Ganymede-0.16.7.1.ebuild:
-  stable on ppc64, bug #57624
-
-*etheme-Ganymede-0.16.7.1 (31 May 2004)
-
-  31 May 2004; Mike Frysinger <vapier@gentoo.org>
-  +etheme-Ganymede-0.16.7.1.ebuild:
-  Version bump.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/etheme-Ganymede/ChangeLog,v 1.1 2004/05/11 07:14:34 vapier Exp $
 
 *etheme-Ganymede-0.16.7 (11 May 2004)
 

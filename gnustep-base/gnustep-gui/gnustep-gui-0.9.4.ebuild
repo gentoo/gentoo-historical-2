@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-gui/gnustep-gui-0.9.4.ebuild,v 1.13 2005/07/16 15:49:54 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-gui/gnustep-gui-0.9.4.ebuild,v 1.1 2004/09/25 16:27:28 fafhrd Exp $
 
 inherit gnustep
 
@@ -8,25 +8,24 @@ DESCRIPTION="It is a library of graphical user interface classes written complet
 HOMEPAGE="http://www.gnustep.org"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
 
-KEYWORDS="ppc x86 amd64 sparc ~alpha"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-IUSE="cups gif gsnd jpeg png"
+IUSE="${IUSE} jpeg gif png gsnd doc cups"
 DEPEND="${GNUSTEP_BASE_DEPEND}
-	~gnustep-base/gnustep-base-1.10.1
+	=gnustep-base/gnustep-make-1.10.0
+	=gnustep-base/gnustep-base-1.10.0
 	virtual/x11
-	>=media-libs/tiff-3
-	jpeg? ( >=media-libs/jpeg-6b )
-	gif? ( >=media-libs/libungif-4.1 )
-	png? ( >=media-libs/libpng-1.2 )
-	gsnd? ( >=media-libs/audiofile-0.2 )
-	cups? ( >=net-print/cups-1.1 )
-	app-text/aspell"
+	=media-libs/tiff-3.5.7*
+	jpeg? =media-libs/jpeg-6b*
+	gif? =media-libs/libungif-4.1.0*
+	png? =media-libs/libpng-1.2.5*
+	gsnd? =media-libs/audiofile-0.2.6*
+	cups? =net-print/cups-1.1.20*
+	=app-text/aspell-0.50.5*"
 RDEPEND="${DEPEND}
 	${DOC_RDEPEND}"
-
-egnustep_install_domain "System"
 
 src_compile() {
 	egnustep_env

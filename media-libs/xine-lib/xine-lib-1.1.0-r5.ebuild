@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/xine-lib/xine-lib-1.1.0-r5.ebuild,v 1.3 2005/11/22 10:34:43 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/xine-lib/xine-lib-1.1.0-r5.ebuild,v 1.1 2005/10/08 14:45:54 flameeyes Exp $
 
 inherit eutils flag-o-matic toolchain-funcs libtool autotools
 
@@ -13,7 +13,7 @@ PATCHLEVEL="15"
 DESCRIPTION="Core libraries for Xine movie player"
 HOMEPAGE="http://xine.sourceforge.net/"
 SRC_URI="mirror://sourceforge/xine/${MY_P}.tar.gz
-	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
+	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1"
@@ -69,7 +69,7 @@ DEPEND="${RDEPEND}
 		virtual/x11 )
 		)
 	xinerama? ( || ( x11-proto/xineramaproto virtual/x11 ) )
-	v4l? ( virtual/os-headers )
+	v4l? ( sys-kernel/linux-headers )
 	dev-util/pkgconfig
 	>=sys-devel/automake-1.7
 	>=sys-devel/autoconf-2.59

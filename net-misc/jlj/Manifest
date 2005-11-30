@@ -1,6 +1,2 @@
-MD5 188d02c80a338b5b502dcf0c99d51766 jlj-2.5.ebuild 825
-MD5 206b584206fc16b6fee90c1be5154dd9 jlj-2.7.ebuild 723
-MD5 9a46c7e49bc7c55410f3933a214feb01 ChangeLog 455
-MD5 fc26ed717570ad800500c5dd12ffe1c9 files/jlj.1 14724
+MD5 6d7e310b0bdf4bfa1e320afdb2955c14 jlj-2.5.ebuild 741
 MD5 d87e00ac7252bceb3373c57aa67128b4 files/digest-jlj-2.5 58
-MD5 d6b3378f7030860cf7eeb4b26531b835 files/digest-jlj-2.7 58

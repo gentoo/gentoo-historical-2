@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/golem/golem-0.0.5-r1.ebuild,v 1.9 2005/05/08 15:44:47 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/golem/golem-0.0.5-r1.ebuild,v 1.1 2003/08/26 17:56:39 matsuu Exp $
 
 DESCRIPTION="Small window manager with themes and plugins"
 HOMEPAGE="http://golem.sourceforge.net/"
@@ -8,19 +8,14 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 sparc amd64 ppc"
+KEYWORDS="~x86 ~sparc"
 IUSE="nls xinerama esd"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/x11
 	esd? ( media-sound/esound )"
 
-src_unpack() {
-	unpack ${A}
-	# Build shared libraries (plugins) with -fPIC
-	sed -i -e "s/^CFLAGS=.*/& -fPIC/" \
-		${S}/plugins/Makefile.plugin.in || die "sed failed"
-}
+S="${WORKDIR}/${P}"
 
 src_compile() {
 	econf \
@@ -46,3 +41,4 @@ pkg_postinst() {
 	einfo "The user you intend to use golem as (not root!!),"
 	einfo "just type golem.install"
 }
+

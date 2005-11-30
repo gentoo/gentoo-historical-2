@@ -1,5 +1,2 @@
-MD5 771900411731330925dd4e7f7dfd64cc metadata.xml 224
-MD5 46703a11cde864da9e0dc370079eeb5c ChangeLog 2081
-MD5 985918558c70e1ee526b74bf181f2f19 kletterwizard-0.9.6.ebuild 966
-MD5 bead1367fe377e3aa71427f048472657 files/kletterwizard-0.9.6-gentoo.diff 1505
-MD5 b28a8de5a4b3cca948dbc0b34cc67768 files/digest-kletterwizard-0.9.6 71
+MD5 77f73cbeb17c055931152d42391b4a57 kletterwizard-0.9.2.ebuild 500
+MD5 abb91ac9161eb87b157654c2a511ad33 files/digest-kletterwizard-0.9.2 72

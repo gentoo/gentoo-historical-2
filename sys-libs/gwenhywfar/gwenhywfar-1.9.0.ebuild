@@ -1,19 +1,21 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/gwenhywfar/gwenhywfar-1.9.0.ebuild,v 1.3 2005/09/16 11:49:03 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/gwenhywfar/gwenhywfar-1.9.0.ebuild,v 1.1 2005/03/13 22:36:15 hanno Exp $
 
 DESCRIPTION="A multi-platform helper library for other libraries"
 HOMEPAGE="http://gwenhywfar.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~ppc ~sparc x86"
+KEYWORDS="x86 ~amd64 ~sparc ~alpha ~ppc"
 
 IUSE="debug ssl doc"
 
 DEPEND="ssl? ( >=dev-libs/openssl-0.9.6b )
 		sys-libs/ncurses
 		doc? ( app-doc/doxygen )"
+
+S=${WORKDIR}/${P}
 
 src_compile() {
 	if use doc; then

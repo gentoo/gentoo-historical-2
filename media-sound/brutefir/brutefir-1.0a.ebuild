@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/brutefir/brutefir-1.0a.ebuild,v 1.7 2005/01/22 11:53:26 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/brutefir/brutefir-1.0a.ebuild,v 1.1 2004/08/17 22:55:24 fvdpol Exp $
 
 IUSE=""
 
@@ -12,15 +12,12 @@ SRC_URI="http://www.ludd.luth.se/~torger/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 
-DEPEND=">=media-libs/alsa-lib-0.9.1
+DEPEND="virtual/libc
+	>=media-libs/alsa-lib-0.9.1
 	media-sound/jack-audio-connection-kit
-	>=sci-libs/fftw-3.0.0"
-
-src_compile() {
-	emake || die
-}
+	>=dev-libs/fftw-3.0.0"
 
 src_install() {
 
@@ -29,10 +26,6 @@ src_install() {
 
 	einstall DESTDIR=${D} \
 		INSTALL_PREFIX=${D}/usr	|| die
-
-	if [ "$(get_libdir)" != "lib" ]; then
-		mv ${D}/usr/lib ${D}/usr/$(get_libdir)
-	fi
 
 	dodoc CHANGES README LICENSE
 

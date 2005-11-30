@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake1-ctf/quake1-ctf-4.0.ebuild,v 1.3 2005/11/05 22:37:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake1-ctf/quake1-ctf-4.0.ebuild,v 1.1 2005/01/16 23:37:26 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="The original Three Wave Capture The Flag"
 HOMEPAGE="http://www.threewave.com/"
@@ -46,7 +46,9 @@ src_unpack() {
 }
 
 src_install() {
-	insinto "${GAMES_DATADIR}/quake1"
-	doins -r * || die
+	local dir=${GAMES_DATADIR}/quake-data
+	dodir "${dir}"
+	insinto "${dir}"
+	doins -r *
 	prepgamesdirs
 }

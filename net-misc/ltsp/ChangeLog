@@ -1,44 +1,6 @@
-# ChangeLog for net-misc/ltsp
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ltsp/ChangeLog,v 1.11 2005/06/06 12:48:46 lanius Exp $
-
-  06 Jun 2005; Heinrich Wendel <lanius@gentoo.org> ltsp-4.1.1.ebuild:
-  bug 93620
-
-*ltsp-4.1.1 (29 Apr 2005)
-
-  29 Apr 2005; Heinrich Wendel <lanius@gentoo.org>
-  +files/ltsp-4.1.1-usb-config.patch, ltsp-4.1-r1.ebuild,
-  +ltsp-4.1.1.ebuild:
-  version bump; fix /etc/ltsp.conf; fix dev-perl/libwww-perl dependency; add
-  usb configure option
-
-  13 Apr 2005; Heinrich Wendel <lanius@gentoo.org> ltsp-4.1-r1.ebuild:
-  fix pxe file location
-
-  02 Mar 2005; Heinrich Wendel <lanius@gentoo.org> ltsp-4.1-r1.ebuild:
-  fix pxe support, bug #83463
-
-  07 Dec 2004; Simon Stelling <blubb@gentoo.org> ltsp-4.1-r1.ebuild:
-  added ~amd64
-
-  05 Dec 2004; lanius@gentoo.org ltsp-4.1-r1.ebuild:
-  fix handling of src_uri
-
-  11 Nov 2004; <lanius@gentoo.org> -files/INSTALL.Gentoo, -files/Xaccess,
-  -files/Xsetup_workstation, -files/dhcpd.conf, -files/gdm.conf.pl,
-  -files/install.sh, -files/kdmrc.pl, -files/ltsp.conf, -files/ltsp.gif,
-  -files/tftp, -ltsp-3.0.9-r3.ebuild, -ltsp-4.0.ebuild:
-  remove old ebuilds
-
-  28 Sep 2004; Heinrich Wendel <lanius@gentoo.org> ltsp-4.1-r1.ebuild:
-  fix installation of sound packages, bug #65578
-
-  27 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  25 Sep 2004; Heinrich Wendel <lanius@gentoo.org> ltsp-4.1-r1.ebuild:
-  mark x86
+# ChangeLog for net-misc/ltsp-core
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ltsp/ChangeLog,v 1.1 2004/09/25 07:53:51 lanius Exp $
 
 *ltsp-3.0.9-r3 (25 Sep 2004)
 

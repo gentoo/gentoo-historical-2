@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.61.ebuild,v 1.14 2005/11/25 23:04:02 tgall Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.61.ebuild,v 1.1 2004/09/16 18:01:16 carlo Exp $
 
 inherit eutils
 
@@ -13,24 +13,23 @@ HOMEPAGE="http://www.riverbankcomputing.co.uk/qscintilla/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha ia64 amd64 ppc64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64"
 IUSE="doc"
 
 DEPEND="virtual/libc
 	sys-apps/sed
-	=x11-libs/qt-3*"
+	x11-libs/qt"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}/qt
-	${QTDIR}/bin/qmake -o Makefile qscintilla.pro
+	qmake -o Makefile qscintilla.pro
 	sed -i -e "s/CFLAGS   = -pipe -w -O2/CFLAGS   = ${CFLAGS} -w/" Makefile
 	sed -i -e "s/CXXFLAGS = -pipe -w -O2/CXXFLAGS = ${CXXFLAGS} -w/" Makefile
 	epatch ${FILESDIR}/${P}-sandbox.patch
 }
 
 src_compile() {
-	cd ${S}/qt
 	make all staticlib
 }
 
@@ -42,9 +41,7 @@ src_install() {
 	cp qscintilla*.qm ${D}/$QTDIR/translations
 	cp libqscintilla.a* ${D}/$QTDIR/lib
 	cp -d libqscintilla.so.* ${D}/$QTDIR/lib
-	if use doc ; then
-		dohtml ${S}/doc/html/*
+	use doc && ( dohtml ${S}/doc/html/*
 		insinto /usr/share/doc/${PF}/Scintilla
-		doins ${S}/doc/Scintilla/*
-	fi
+		doins ${S}/doc/Scintilla/* )
 }

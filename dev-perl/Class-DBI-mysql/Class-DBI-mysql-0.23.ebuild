@@ -1,20 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-DBI-mysql/Class-DBI-mysql-0.23.ebuild,v 1.9 2005/06/30 12:02:02 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-DBI-mysql/Class-DBI-mysql-0.23.ebuild,v 1.1 2004/03/31 12:18:07 mcummings Exp $
 
 inherit perl-module
 
 DESCRIPTION="Extensions to Class::DBI for MySQL"
 HOMEPAGE="http://search.cpan.org/~tmtm/${P}/"
-SRC_URI="mirror://cpan/authors/id/T/TM/TMTM/${P}.tar.gz"
+SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TM/TMTM/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
+LICENSE="Artistic | GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ~amd64"
-IUSE=""
+KEYWORDS="x86"
 
 #Can't put tests here because they require interaction with the DB
 
 DEPEND="dev-perl/Class-DBI
-		perl-core/Test-Simple
+		dev-perl/Test-Simple
 		dev-perl/DBD-mysql"

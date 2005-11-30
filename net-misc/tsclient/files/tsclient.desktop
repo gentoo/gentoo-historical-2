@@ -1,5 +1,4 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=Terminal Server Client
 Comment=Frontend for rdesktop
 TryExec=tsclient
@@ -7,4 +6,3 @@ Exec=tsclient
 Icon=/usr/share/pixmaps/tsclient/tsclient.png
 Terminal=0
 Type=Application
-Categories=Application;Network;

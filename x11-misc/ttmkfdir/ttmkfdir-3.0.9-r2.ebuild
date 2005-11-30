@@ -1,17 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/ttmkfdir/ttmkfdir-3.0.9-r2.ebuild,v 1.16 2005/02/08 02:46:34 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/ttmkfdir/ttmkfdir-3.0.9-r2.ebuild,v 1.1 2004/09/04 04:22:30 seemant Exp $
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic gcc
+
+IUSE=""
 
 DESCRIPTION="A utility to create a fonts.scale file from a set of TrueType fonts"
 HOMEPAGE="http://www.joerg-pommnitz.de/TrueType/xfsft.html"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
-LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
-IUSE=""
+LICENSE="as-is"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64"
 
 RDEPEND="virtual/libc
 	sys-libs/zlib
@@ -22,7 +23,6 @@ DEPEND="${RDEPEND}
 	sys-devel/libtool"
 
 src_unpack() {
-
 	unpack ${A}
 
 	cd ${S}
@@ -30,15 +30,12 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-zlib.patch
 	epatch ${FILESDIR}/${P}-gcc34.patch
 	epatch ${FILESDIR}/${P}-encoding.patch
-	# fix pack to work with new freetype include scheme (#44119)
-	epatch ${FILESDIR}/${P}-freetype_new_includes.patch
-
 }
 
 src_compile() {
-	filter-flags -O -O? -foptimize-sibling-calls -fstack-protector
+	filter-flags -O -O1 -O2 -O3
 	emake \
-		CXX="$(tc-getCXX)" \
+		CXX="$(gcc-getCXX)" \
 		OPTFLAGS="${CFLAGS}" \
 		DEBUG="" \
 		|| die "emake failed"

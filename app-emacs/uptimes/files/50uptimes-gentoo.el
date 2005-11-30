@@ -2,4 +2,5 @@
 ;;; boxquote site-lisp configuration
 
 (setq load-path (cons "@SITELISP@" load-path))
-(require 'uptimes)
+(require 'boxquote)
+

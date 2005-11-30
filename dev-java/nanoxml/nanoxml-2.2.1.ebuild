@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/nanoxml/nanoxml-2.2.1.ebuild,v 1.5 2005/07/11 21:28:28 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/nanoxml/nanoxml-2.2.1.ebuild,v 1.1 2004/09/21 19:36:44 axxo Exp $
 
 inherit java-pkg
 
@@ -11,12 +11,11 @@ MY_P=NanoXML-${PV}
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86"
 IUSE="doc"
-DEPEND=">=virtual/jdk-1.3
-		${RDEPEND}"
-RDEPEND=">=virtual/jre-1.3
+DEPEND="virtual/jdk
 		dev-java/sax"
+RDEPEND="virtual/jre"
 
 S=${WORKDIR}/${MY_P}
 
@@ -25,7 +24,7 @@ src_unpack() {
 	cd ${S}/ThirdParty/SAX
 	java-pkg_jar-from sax
 	cd ${S}
-	sed -e "s:/tmp/:${T}:g" -i build.sh || die "failed to sed"
+	sed -e "s:/tmp/:${T}:" -i build.sh
 }
 
 src_compile() {
@@ -35,5 +34,5 @@ src_compile() {
 src_install() {
 	java-pkg_dojar Output/*.jar
 
-	use doc && java-pkg_dohtml -r Documentation/*
+	use doc && dohtml -r Documentation/*
 }

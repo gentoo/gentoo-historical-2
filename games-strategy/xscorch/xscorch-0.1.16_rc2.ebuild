@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/xscorch/xscorch-0.1.16_rc2.ebuild,v 1.5 2004/06/24 23:30:56 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/xscorch/xscorch-0.1.16_rc2.ebuild,v 1.1 2003/09/10 05:27:31 vapier Exp $
 
-inherit eutils games
+inherit games
 
 S="${WORKDIR}/xscorch-0.1.15"
 DESCRIPTION="clone of the classic DOS game, 'Scorched Earth'"
@@ -12,31 +12,21 @@ SRC_URI="http://chaos2.org/xscorch/${PN}-0.1.15.tar.gz
 	http://chaos2.org/xscorch/xscorch-0.1.15-0.1.16pre2.patch.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~alpha ~amd64"
+KEYWORDS="~x86 ~ppc ~alpha"
 SLOT="0"
 
 IUSE="gtk mikmod readline gnome"
 
-RDEPEND="virtual/x11
+DEPEND="virtual/x11
 	gtk? ( =x11-libs/gtk+-1* )
 	mikmod? ( >=media-libs/libmikmod-3.1.5 )
 	readline? ( sys-libs/readline )
 	gnome? ( gnome-base/gnome-libs )"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
 
 src_unpack() {
-	local HELPFILE="${GAMES_DATADIR}/${PN}/xscorch.help"
-
 	unpack ${A}
 	cd ${WORKDIR}
 	epatch xscorch-0.1.15-0.1.16pre2.patch
-	cp ${S}/doc/xscorch.6 ${S}/xscorch.help || \
-		die "xscorch.help creation failed"
-	sed -i \
-		-e "/SC_GROFF_MANUAL_FILE/ s:@mandir@/man6/xscorch.6:${HELPFILE}:" \
-			${S}/xscorch.h.in || die "sed xscorch.h.in failed"
-
 }
 
 src_compile() {
@@ -55,9 +45,7 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install || die "make install failed"
-	insinto "${GAMES_DATADIR}/${PN}"
-	doins xscorch.help || die "doins failed"
-	dodoc AUTHORS ChangeLog NEWS README TODO || die "dodoc failed"
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS ChangeLog NEWS README TODO
 	prepgamesdirs
 }

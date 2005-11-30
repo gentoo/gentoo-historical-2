@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxdg/pyxdg-0.11.ebuild,v 1.3 2005/05/30 22:11:04 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxdg/pyxdg-0.11.ebuild,v 1.1 2005/05/23 17:32:26 lanius Exp $
 
 inherit distutils
 
@@ -9,9 +9,9 @@ SRC_URI="http://www.freedesktop.org/~lanius/${P}.tar.gz"
 HOMEPAGE="http://pyxdg.freedesktop.org/"
 LICENSE="LGPL-2"
 
-KEYWORDS="~x86 ~ppc ~amd64"
-DEPEND="dev-lang/python"
+DEPEND="virtual/python"
 SLOT="0"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE=""
 
 src_install () {

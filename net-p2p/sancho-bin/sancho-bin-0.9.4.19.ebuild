@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/sancho-bin/sancho-bin-0.9.4.19.ebuild,v 1.5 2005/09/20 16:34:37 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/sancho-bin/sancho-bin-0.9.4.19.ebuild,v 1.1 2004/10/18 17:08:27 squinky86 Exp $
 
 IUSE="gtk"
 
@@ -11,10 +11,11 @@ use gtk && TOOLKIT="gtk" || TOOLKIT="fox"
 
 DESCRIPTION="a powerful frontend for mldonkey"
 HOMEPAGE="http://sancho-gui.sourceforge.net/"
+SRC_URI="http://sancho-gui.sourceforge.net/tmp/${MY_P}-linux-${TOOLKIT}.tar.bz2"
 SRC_URI="gtk? ( http://sancho-gui.sourceforge.net/tmp/${MY_P}-linux-gtk.tar.bz2 )
 	!gtk? ( http://sancho-gui.sourceforge.net/tmp/${MY_P}-linux-fox.tar.bz2 )"
 
-KEYWORDS="~amd64 x86"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="CPL-1.0 LGPL-2.1"
 
@@ -50,5 +51,9 @@ pkg_postinst() {
 	einfo
 	einfo "Sancho requires the presence of a p2p core, like"
 	einfo "net-p2p/mldonkey, in order to operate."
+	einfo
+	einfo "Note also that previous versions of sancho-bin"
+	einfo "had the gtk2 USE flag by mistake. This has now"
+	einfo "been changed to \"gtk\" for those affected."
 	einfo
 }

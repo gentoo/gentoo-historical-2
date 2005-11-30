@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/bootcreator/bootcreator-1.1.ebuild,v 1.3 2005/10/15 23:33:57 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/bootcreator/bootcreator-1.1.ebuild,v 1.1 2005/01/16 19:21:50 pylon Exp $
 
 inherit eutils
 
@@ -10,12 +10,9 @@ HOMEPAGE="http://tbs-software.com/morgoth/projects.html"
 SRC_URI="http://tbs-software.com/morgoth/files/bootcreator-src.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc -*"
+KEYWORDS="~ppc -*"
 IUSE=""
 DEPEND=""
-
-PROVIDE="virtual/bootloader"
-
 S=${WORKDIR}/${PN}
 
 src_unpack() {

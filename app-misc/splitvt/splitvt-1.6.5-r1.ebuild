@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/splitvt/splitvt-1.6.5-r1.ebuild,v 1.5 2005/05/17 11:27:51 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/splitvt/splitvt-1.6.5-r1.ebuild,v 1.1 2005/01/30 00:58:12 ka0ttic Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.devolution.com/~slouken/projects/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ppc"
+KEYWORDS="~x86 ~sparc ~ppc"
 IUSE=""
 
 DEPEND=">=sys-libs/ncurses-5.2"
@@ -23,7 +23,6 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${WORKDIR}/${MY_P}-${DEB_PL}.diff
-	epatch ${FILESDIR}/${P}-gcc4.diff
 	sed -i "s:/usr/local/bin:${D}/usr/bin:g" config.c
 }
 

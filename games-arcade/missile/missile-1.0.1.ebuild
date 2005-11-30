@@ -1,29 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/missile/missile-1.0.1.ebuild,v 1.10 2005/06/15 18:11:24 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/missile/missile-1.0.1.ebuild,v 1.1 2003/09/10 19:29:21 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
-DESCRIPTION="The game Missile Command for Linux"
+DESCRIPTION="The Atari game Missile Command for Linux"
 HOMEPAGE="http://missile.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="x86"
 
-RDEPEND=">=media-libs/libsdl-1.2.4
+DEPEND=">=media-libs/libsdl-1.2.4
 	>=media-libs/sdl-image-1.2.1
 	>=media-libs/sdl-mixer-1.2.4
-	media-libs/libpng"
-DEPEND="${RDEPEND}
+	media-libs/libpng
 	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch "${FILESDIR}/${PV}-Makefile-path-fix.patch"
+	epatch ${FILESDIR}/${PV}-Makefile-path-fix.patch
 	sed -i \
 		-e "/^game_prefix/s:=GENTOO:=${GAMES_PREFIX}:" \
 		-e "/^game_bin/s:=GENTOO:=${GAMES_PREFIX}/bin:" \
@@ -31,16 +29,15 @@ src_unpack() {
 		-e "/^game_icons/s:=GENTOO:=/usr/share/pixmaps/${PN}:" \
 		-e "/^install_as_owner/s:=GENTOO:=${GAMES_USER}:" \
 		-e "/^install_as_group/s:=GENTOO:=${GAMES_GROUP}:" \
-		Makefile \
-			|| die "sed failed"
+		Makefile
 }
 
 src_compile() {
-	emake MYOPTS="${CFLAGS}" || die "emake failed"
+	make MYOPTS="${CFLAGS}" || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc README
+	make install DESTDIR=${D} || die
+	dodoc README INSTALL
 	prepgamesdirs
 }

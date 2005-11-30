@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/ikvm/ikvm-0.8.0.0.ebuild,v 1.6 2005/05/18 18:07:07 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/ikvm/ikvm-0.8.0.0.ebuild,v 1.1 2004/06/30 20:15:00 latexer Exp $
 
 inherit mono
 
@@ -12,12 +12,11 @@ SRC_URI="http://www.go-mono.com/archive/1.0/${P}.tar.gz"
 LICENSE="as-is"
 SLOT="0"
 
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
 
-RDEPEND=">=dev-lang/mono-1.0"
-DEPEND="${RDEPEND}
-		!dev-dotnet/ikvm-bin"
+RDEPEND=">=dev-dotnet/mono-1.0"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	unpack ${A}

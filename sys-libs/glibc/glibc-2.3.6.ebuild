@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.6.ebuild,v 1.7 2005/11/13 21:24:37 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.6.ebuild,v 1.1 2005/11/10 14:34:49 azarah Exp $
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -21,7 +21,7 @@ KEYWORDS="-*"
 BRANCH_UPDATE=""
 
 # From linuxthreads/man
-GLIBC_MANPAGE_VERSION="2.3.6-1"
+GLIBC_MANPAGE_VERSION="2.3.6"
 
 # From manual
 GLIBC_INFOPAGE_VERSION="2.3.6"
@@ -1039,10 +1039,10 @@ RESTRICT="nostrip multilib-pkg-force"
 # should work with userspace apps, at least on amd64 and ppc64.
 #
 # We need a new-enough binutils for as-needed
-DEPEND=">=sys-devel/gcc-3.3.3
-	nptl? ( >=sys-kernel/linux-headers-2.6.5 )
-	>=sys-devel/binutils-2.16.1
-	>=sys-devel/gcc-config-1.3.12
+DEPEND=">=sys-devel/gcc-3.2.3-r1
+	nptl? ( >=sys-devel/gcc-3.3.1-r1 >=sys-kernel/linux-headers-2.6.5 )
+	>=sys-devel/binutils-2.15
+	>=sys-devel/gcc-config-1.3.9
 	virtual/os-headers
 	sys-libs/timezone-data
 	nls? ( sys-devel/gettext )
@@ -1066,15 +1066,9 @@ if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
 fi
 
 pkg_setup() {
-	if portageq has_version / '>=sys-libs/glibc-2.3.5.20050201' && \
-	   portageq	has_version / '<sys-libs/glibc-2.3.6' ; then
-		eerror "Portage have a serious bug in regards to symlinks, and merging"
-		eerror "this with current versions will fail!  See:"
-		echo
-		eerror "  http://bugs.gentoo.org/show_bug.cgi?id=112082"
-		echo
-		die "Might break upgrading."
-	fi
+	eerror "Portage have a serious bug in regards to symlinks, and merging"
+	eerror "this with current versions will fail!"
+	die "Portage sucks."
 
 	if use nptlonly && ! use nptl ; then
 		eerror "If you want nptlonly, add nptl to your USE too ;p"

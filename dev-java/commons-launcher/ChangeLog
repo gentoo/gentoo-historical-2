@@ -1,41 +1,6 @@
 # ChangeLog for dev-java/commons-launcher
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-launcher/ChangeLog,v 1.11 2005/05/29 15:42:25 corsair Exp $
-
-  29 May 2005; Markus Rothe <corsair@gentoo.org>
-  commons-launcher-0.9.ebuild:
-  Stable on ppc64
-
-  09 Apr 2005; Markus Rothe <corsair@gentoo.org>
-  commons-launcher-0.9.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  03 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  commons-launcher-0.9.ebuild:
-  stable on amd64, added ~ppc to KEYWORDS and introduced support for the source
-  useflag.
-
-  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  commons-launcher-0.9.ebuild:
-  added missing jikes dependency. see #78819.
-
-  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
-  commons-launcher-0.9.ebuild:
-  keywords ~amd64; closes #67330.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
-  commons-launcher-0.9.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-launcher-0.9.ebuild:
-  Stable on x86. Fixes according to #45398
-
-*commons-launcher-0.9 (29 Feb 2004)
-
-  29 Feb 2004; Chris Aniszczyk <zx@gentoo.org> commons-launcher-0.9.ebuild:
-  Forgot to mention, thanks to Cory Visi <cory@visi.name> also for the initial
-  ebuild. Closes #35346
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-launcher/ChangeLog,v 1.1 2004/02/24 21:35:44 zx Exp $
 
   27 Feb 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml:
   Initial Import.

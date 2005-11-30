@@ -1,54 +1,13 @@
 # ChangeLog for x11-themes/sawfish-themes
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/sawfish-themes/ChangeLog,v 1.13 2005/09/19 13:43:31 gustavoz Exp $
-
-  19 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  sawfish-themes-0.0.1-r3.ebuild:
-  Stable on sparc
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
-  sawfish-themes-0.0.1-r3.ebuild:
-  Mark 0.0.1-r3 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  sawfish-themes-0.0.1-r3.ebuild:
-  add ~ia64
-
-  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  sawfish-themes-0.0.1-r3.ebuild:
-  To ~sparc
-
-  23 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
-  sawfish-themes-0.0.1-r3.ebuild:
-  Don't use cp -a.
-
-  29 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  sawfish-themes-0.0.1-r3.ebuild:
-  Keywording ~amd64.
-
-  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  sawfish-themes-0.0.1-r1.ebuild, sawfish-themes-0.0.1-r3.ebuild:
-  Masked sawfish-themes-0.0.1-r3.ebuild stable for ppc
-
-  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  sawfish-themes-0.0.1-r1.ebuild:
-  Masked sawfish-themes-0.0.1-r1.ebuild stable for ppc
-
-  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  sawfish-themes-0.0.1-r1.ebuild, sawfish-themes-0.0.1-r3.ebuild:
-  don't assign default to S; tidy
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/sawfish-themes/ChangeLog,v 1.1 2002/06/29 10:06:56 seemant Exp $
 
 *sawfish-themes-0.0.1-r3 (29 Jun 2002)
-
-  26 Mar 2003; Graham Forest <vladimir@gentoo.org>
-  sawfish-themes-0.0.1-r1.ebuild, sawfish-themes-0.0.1-r3.ebuild:
-  Automated cleanup of LICENSE
 
   29 Jun 2002; Seemant Kulleen <seemant@gentoo.org> sawfish-themes-0.0.1-r3
   files/digest-sawfish-themes-0.0.1-r3 ChangeLog :
 
-  Relocated from x11-wm.  New themes reflect freshmeat's site -- thanks to
-  gentoo@kapcoweb.com (Leonardo Boshell) in bug #1921
+  Relocated from x11-wm.  New themes reflect freshmeat's site
 
 *sawfish-themes-0.0.1-r1 (1 Feb 2002)
 

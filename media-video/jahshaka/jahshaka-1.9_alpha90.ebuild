@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/jahshaka/jahshaka-1.9_alpha90.ebuild,v 1.5 2005/07/07 04:50:49 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/jahshaka/jahshaka-1.9_alpha90.ebuild,v 1.1 2004/11/27 16:18:08 chriswhite Exp $
 
 inherit eutils
 
@@ -16,10 +16,9 @@ KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="virtual/x11
-	media-video/avifile
 	>=media-libs/glut-3.7.1
 	>=media-libs/freetype-2.1.4
-	=x11-libs/qt-3*"
+	>=x11-libs/qt-3"
 
 RDEPEND=${DEPEND}
 
@@ -29,8 +28,6 @@ src_unpack() {
 	unpack ${A}
 	einfo "Patching plugins.pro"
 	sed -e '/jitplugins/a csplugins \\' -i ${S}/plugins/plugins.pro
-
-	cp ${FILESDIR}/configure ${S}/configure
 }
 
 cflags_replacement() {
@@ -74,7 +71,7 @@ src_install() {
 	done
 
 	dodir /opt/${PN}/plugins
-	local dirs="csplugins jfxplugins jitplugins rfxplugins rtplugins"
+	local dirs="csplugins jfxplugins jitplugins rfxplugins ftplugins"
 	for i in $dirs ; do
 	    dodir /opt/${PN}/plugins/${i}
 	    cp -a ${S}/plugins/${i}/*.so ${D}/opt/${PN}/plugins/${i}/
@@ -82,7 +79,6 @@ src_install() {
 
 	cp -a jahshaka ${D}/opt/${PN}/
 
-	dodir /usr/bin
 	ln -s ${D}/opt/${PN}/jahshaka ${D}/usr/bin/jahshaka
 
 	dodoc README AUTHORS TODO

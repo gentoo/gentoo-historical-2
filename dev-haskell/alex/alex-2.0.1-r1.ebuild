@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/alex/alex-2.0.1-r1.ebuild,v 1.6 2005/10/04 15:11:06 dcoutts Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/alex/alex-2.0.1-r1.ebuild,v 1.1 2005/03/23 16:40:43 kosmikus Exp $
 #
 # USE variable summary:
 #   doc	   - Build extra documenation from DocBook sources,
@@ -9,22 +9,22 @@
 
 
 inherit base eutils ghc-package
-IUSE="doc"
-# java use flag disabled because of bug #107019
+IUSE="doc tetex"
 
 DESCRIPTION="A lexical analyser generator for Haskell"
 SRC_URI="http://www.haskell.org/alex/dist/${P}-src.tar.gz"
 HOMEPAGE="http://www.haskell.org/alex"
 
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc ~sparc"
+KEYWORDS="~x86 ~amd64"
 LICENSE="as-is"
 
 DEPEND=">=virtual/ghc-6.2
 	doc? (	~app-text/docbook-xml-dtd-4.2
 		app-text/docbook-xsl-stylesheets
-		>=dev-libs/libxslt-1.1.2 )"
-# java? >=dev-java/fop-0.20.5
+		>=dev-libs/libxslt-1.1.2
+		java? ( >=dev-java/fop-0.20.5 ) )"
+
 RDEPEND=""
 
 src_compile() {
@@ -35,9 +35,9 @@ src_compile() {
 	# determine what to do with documentation
 	if use doc; then
 		mydoc="html"
-		#if use java; then
-		#	mydoc="${mydoc} ps"
-		#fi
+		if use java; then
+			mydoc="${mydoc} ps"
+		fi
 	else
 		mydoc=""
 		# needed to prevent haddock from being called

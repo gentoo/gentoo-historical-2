@@ -1,30 +1,9 @@
 # ChangeLog for net-analyzer/pktstat
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pktstat/ChangeLog,v 1.8 2005/08/11 01:32:54 metalgod Exp $
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/pktstat/ChangeLog,v 1.1 2003/10/10 17:57:59 mholzer Exp $
 
-  11 Aug 2005; Luis Medinas <metalgod@gentoo.org> pktstat-1.7.5.ebuild:
-  Added ~amd64 keywords.
-
-  19 Jul 2005; David Holm <dholm@gentoo.org> pktstat-1.7.5.ebuild:
-  Added to ~ppc.
-
-  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> pktstat-1.7.5.ebuild:
-  Marked stable on x86.
-
-  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> pktstat-1.7.2q.ebuild,
-  pktstat-1.7.5.ebuild:
-  changed net-libs/libpcap depend to virtual/libcap
-
-*pktstat-1.7.5 (06 Nov 2004)
-
-  06 Nov 2004; Eldad Zack <eldad@gentoo.org> +pktstat-1.7.5.ebuild:
-  Version bump.
-
-  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
-  pktstat-1.7.2q.ebuild:
-  Tidy. x86 stable
-
-*pktstat-1.7.2q (10 Jul 2004)
+*pktstat-1.7.2q (11 Oct 2003)
 
   11 Oct 2003; Martin Holzer <mholzer@gentoo.org> pktstat-1.7.2q.ebuild:
   Initial Version. Submitted by Jeff Shirley <shirjs0@wfu.edu> in #25807.
+

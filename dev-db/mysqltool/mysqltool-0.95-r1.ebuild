@@ -1,39 +1,34 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysqltool/mysqltool-0.95-r1.ebuild,v 1.21 2005/11/28 12:18:41 mcummings Exp $
-
-inherit perl-app
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysqltool/mysqltool-0.95-r1.ebuild,v 1.1 2002/05/04 01:58:36 woodchip Exp $
 
 S=${WORKDIR}/MysqlTool-${PV}
 DESCRIPTION="Web interface for managing one or more mysql server installations"
-SRC_URI="http://www.brouhaha.com/~eric/software/mysqltool/download/MysqlTool-${PV}.tar.gz"
-HOMEPAGE="http://www.brouhaha.com/~eric/software/mysqltool/"
+SRC_URI="http://www.dajoba.com/projects/mysqltool/MysqlTool-${PV}.tar.gz"
+HOMEPAGE="http://www.dajoba.com/projects/mysqltool/"
 
+DEPEND="virtual/glibc sys-devel/perl"
+RDEPEND="${DEPEND} >=net-www/apache-1.3.24-r1 >=dev-db/mysql-3.23.38
+	dev-perl/CGI dev-perl/DBI dev-perl/DBD-mysql dev-perl/Crypt-Blowfish"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc"
-IUSE=""
 
-DEPEND="virtual/libc
-	dev-lang/perl"
-RDEPEND="${DEPEND}
-	>=net-www/apache-1.3.24-r1
-	>=dev-db/mysql-3.23.38
-	perl-core/CGI
-	dev-perl/Apache-DBI
-	dev-perl/DBI
-	dev-perl/DBD-mysql
-	dev-perl/Crypt-Blowfish"
+src_compile() {
+	perl Makefile.PL || die
+	make || die
+	make test || die
+}
 
 src_install() {
 	eval `perl '-V:installarchlib'`
-	dodir /$installarchlib
+	mkdir -p ${D}/$installarchlib
 
-	cp ${S}/Makefile ${S}/Makefile.orig
-	cat ${S}/Makefile | sed -e "s!INSTALLMAN1DIR = /usr/share/man/man1!INSTALLMAN1DIR = ${D}/usr/share/man/man1!" -e "s!INSTALLMAN3DIR = /usr/share/man/man3!INSTALLMAN3DIR = ${D}/usr/share/man/man3!" > ${S}/Makefile.gentoo
-	mv ${S}/Makefile.gentoo ${S}/Makefile
-
-	make install || die
+	perl Makefile.PL
+	make \
+		PREFIX=${D}/usr \
+		INSTALLMAN3DIR=${D}/usr/share/man/man3 \
+		INSTALLMAN1DIR=${D}/usr/share/man/man1 \
+		install || die
 
 	dodoc COPYING Changes MANIFEST README Upgrade
 
@@ -45,7 +40,7 @@ src_install() {
 	# the config file..
 	insinto /etc/apache/conf/addon-modules
 	doins htdocs/mysqltool.conf
-	fowners apache:apache /etc/apache/conf/addon-modules/mysqltool.conf
+	fowners apache.apache /etc/apache/conf/addon-modules/mysqltool.conf
 	fperms 0600 /etc/apache/conf/addon-modules/mysqltool.conf
 
 	# now fix its location in the main cgi..
@@ -55,16 +50,4 @@ src_install() {
 		${D}/home/httpd/htdocs/mysqltool/index.cgi.orig > \
 		${D}/home/httpd/htdocs/mysqltool/index.cgi
 	rm ${D}/home/httpd/htdocs/mysqltool/index.cgi.orig
-}
-
-pkg_postinst() {
-	einfo "Please add the following to commonapache.conf:"
-	einfo "PerlRequire {apache_root}/conf/mysqltool.conf"
-	einfo "<Directory {apache_document_root}/htdocs/mysqltool>"
-	einfo "Options ExecCGI"
-	einfo "<Files *.cgi>"
-	einfo "SetHandler perl-script"
-	einfo "PerlHandler MysqlTool"
-	einfo "</Files>"
-	einfo "</Directory>"
 }

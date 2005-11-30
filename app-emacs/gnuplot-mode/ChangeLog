@@ -1,13 +1,6 @@
 # ChangeLog for app-emacs/gnuplot-mode
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuplot-mode/ChangeLog,v 1.5 2005/01/01 13:46:25 eradicator Exp $
-
-  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> files/50gnuplot-gentoo.el,
-  gnuplot-mode-0.6.0.ebuild:
-  Removed stale info file. Updated SITELISP.
-
-  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> gnuplot-mode-0.6.0.ebuild:
-  Marked as stable.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuplot-mode/ChangeLog,v 1.1 2004/03/13 21:45:55 usata Exp $
 
 *gnuplot-mode-0.6.0 (14 Mar 2004)
 

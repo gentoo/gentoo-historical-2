@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/dlx/dlx-1.0.0.ebuild,v 1.6 2005/04/24 11:11:27 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/dlx/dlx-1.0.0.ebuild,v 1.1 2003/11/21 19:00:31 rphillips Exp $
 
 S=${WORKDIR}/dlx
 DESCRIPTION="DLX Simulator"
@@ -9,7 +9,7 @@ SRC_URI="http://www.davidviner.com/dlx/dlx.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="x86"
 IUSE=""
 DEPEND=""
 

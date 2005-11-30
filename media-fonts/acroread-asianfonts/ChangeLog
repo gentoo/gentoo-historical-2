@@ -1,66 +1,9 @@
 # ChangeLog for media-fonts/acroread-asianfonts
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/acroread-asianfonts/ChangeLog,v 1.13 2005/11/08 23:14:27 matsuu Exp $
-
-*acroread-asianfonts-7.0.20050728 (08 Nov 2005)
-
-  08 Nov 2005; MATSUU Takuto <matsuu@gentoo.org>
-  +acroread-asianfonts-7.0.20050728.ebuild:
-  Version bumped. Bug 109798.
-
-  25 Sep 2005; MATSUU Takuto <matsuu@gentoo.org>
-  -acroread-asianfonts-7.0.20020815.ebuild:
-  acroread-7* have no use for acroread-asianfonts.
-
-  01 Apr 2005; Mamoru KOMACHI <usata@gentoo.org>
-  acroread-asianfonts-5.0.20020815.ebuild,
-  acroread-asianfonts-7.0.20020815.ebuild:
-  Fixed another typo on zh_CN :( This closes bug #87054.
-
-  29 Mar 2005; Mamoru KOMACHI <usata@gentoo.org>
-  acroread-asianfonts-5.0.20020815.ebuild,
-  acroread-asianfonts-7.0.20020815.ebuild:
-  Fixed a typo; bug #87044.
-
-  28 Mar 2005; Mamoru KOMACHI <usata@gentoo.org>
-  acroread-asianfonts-5.0.20020815.ebuild,
-  acroread-asianfonts-7.0.20020815.ebuild,
-  -acroread-asianfonts-20020815.ebuild:
-  Forgot the last negation in pkg_setup() :/
-
-*acroread-asianfonts-7.0.20020815 (28 Mar 2005)
-*acroread-asianfonts-5.0.20020815 (28 Mar 2005)
-
-  28 Mar 2005; Mamoru KOMACHI <usata@gentoo.org>
-  +acroread-asianfonts-5.0.20020815.ebuild,
-  +acroread-asianfonts-7.0.20020815.ebuild:
-  Temporal asianfont pack corresponding to Acroread 7; bug #86181.
-  Thanks to Kalin KOZHUHAROV <kalin@ThinRope.net>.
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  acroread-asianfonts-20020815.ebuild:
-  stable on amd64
-
-  30 Aug 2004; Danny van Dyk <kugelfang@gentoo.org>
-  acroread-asianfonts-20020815.ebuild:
-  Marked ~amd64.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  acroread-asianfonts-20020815.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/acroread-asianfonts/ChangeLog,v 1.1 2003/07/22 07:13:27 matsuu Exp $
 
 *acroread-asianfonts-20020815 (22 Jul 2003)
 
-  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org>
-  acroread-asianfonts-20020815.ebuild:
-  Marked stable on x86
-
-  28 Jul 2003; MATSUU Takuto <matsuu@gentoo.org>
-  acroread-asianfonts-20020815.ebuild:
-  Add app-text/acroread in DEPEND.
-
-  22 Jul 2003; MATSUU Takuto <matsuu@gentoo.org>
-  acroread-asianfonts-20020815.ebuild:
-
+  22 Jul 2003; MATSUU Takuto <matsuu@gentoo.org> acroread-asianfonts-20020815.ebuild:
   Initial import. closing bug #20821
 

@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libao/libao-0.8.6-r1.ebuild,v 1.5 2005/09/05 10:55:29 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libao/libao-0.8.6-r1.ebuild,v 1.1 2005/04/29 21:35:00 flameeyes Exp $
 
-inherit libtool eutils autotools
+inherit libtool eutils
 
-PATCHLEVEL="2"
+PATCHLEVEL="1"
 
 DESCRIPTION="the audio output library"
 HOMEPAGE="http://www.xiph.org/ao/"
@@ -13,7 +13,7 @@ SRC_URI="http://downloads.xiph.org/releases/ao/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~ppc-macos ~sparc ~x86"
 IUSE="alsa arts esd nas mmap static"
 
 RDEPEND="virtual/libc
@@ -32,7 +32,7 @@ src_unpack() {
 
 	EPATCH_SUFFIX="patch" epatch ${WORKDIR}/${PV}
 
-	AT_M4DIR="${WORKDIR}/${PV}/m4" eautoreconf
+	autoreconf -I ${WORKDIR}/${PV}/m4
 	elibtoolize
 }
 

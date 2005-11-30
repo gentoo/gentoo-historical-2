@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/html2latex/html2latex-1.1.ebuild,v 1.3 2005/11/28 12:00:11 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/html2latex/html2latex-1.1.ebuild,v 1.1 2005/02/16 14:54:51 usata Exp $
 
-inherit perl-app
+inherit perl-module
 
 DESCRIPTION="Perl script to convert HTML files into formatted LaTeX"
 HOMEPAGE="http://html2latex.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/html2latex/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~x86"
 
 IUSE="imagemagick libwww"
 

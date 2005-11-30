@@ -1,10 +1,6 @@
 # ChangeLog for app-admin/watchfolder
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/watchfolder/ChangeLog,v 1.5 2005/04/24 05:25:45 wormo Exp $
-
-  23 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  watchfolder-0.3.1.1.ebuild:
-  marked ~ppc
+# Copyright 2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/watchfolder/ChangeLog,v 1.1 2003/01/04 01:31:30 aliz Exp $
 
 *watchfolder-0.3.1.1 (04 Jan 2003)
 

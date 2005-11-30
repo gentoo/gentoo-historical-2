@@ -1,41 +1,40 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/serialmail-0.75-r2.ebuild,v 1.9 2005/05/04 09:03:55 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/serialmail-0.75-r2.ebuild,v 1.1 2004/07/29 03:33:43 langthang Exp $
 
 inherit eutils
 
 DESCRIPTION="A serialmail is a collection of tools for passing mail across serial links."
 HOMEPAGE="http://cr.yp.to/serialmail.html"
-SRC_URI="http://cr.yp.to/software/${P}.tar.gz
-	mirror://gentoo/${P}-patch.tar.bz2"
+SRC_URI="http://cr.yp.to/software/${P}.tar.gz"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88"
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-process/daemontools-0.76-r1"
+	>=sys-apps/daemontools-0.76-r1"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 ppc sparc ~amd64"
+KEYWORDS="~x86 ~ppc ~sparc"
 IUSE="static"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${WORKDIR}/${P}-gentoo.patch
-	epatch ${WORKDIR}/${P}-smtpauth.patch
-	epatch ${WORKDIR}/${P}-smtpauth_comp.patch
+	epatch ${FILESDIR}/${P}-gentoo.patch
+	epatch ${FILESDIR}/${P}-smtpauth.patch
+	epatch ${FILESDIR}/${P}-smtpauth_comp.patch
 	sed -i "s:@CFLAGS@:${CFLAGS}:" conf-cc
 	use static && LDFLAGS="${LDFLAGS} -static"
 	sed -i "s:@LDFLAGS@:${LDFLAGS}:" conf-ld
 }
 
 src_compile() {
-	grep -v man hier.c | grep -v doc > hier.c.tmp ; mv hier.c.tmp hier.c
+	grep -v man hier.c | grep -v doc > hier.c
 	emake it man || die
 }
 

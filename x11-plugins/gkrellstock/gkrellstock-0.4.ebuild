@@ -1,20 +1,19 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellstock/gkrellstock-0.4.ebuild,v 1.9 2004/06/24 22:59:40 agriffis Exp $
+# Copyright 2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellstock/gkrellstock-0.4.ebuild,v 1.1 2002/10/30 23:42:55 seemant Exp $
 
-IUSE=""
 S=${WORKDIR}/${P/s/S}
 DESCRIPTION="Get Stock quotes plugin for GKrellM"
-SRC_URI="mirror://sourceforge/gkrellstock/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://gkrellstock.sourceforge.net/"
 
 DEPEND="=app-admin/gkrellm-1*
 	dev-perl/libwww-perl
-	dev-perl/Finance-Quote"
+	dev-perl/Finance-Quote"	
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc"
+KEYWORDS="x86 sparc sparc64"
 
 src_compile() {
 	emake || die

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>net-misc</herd>
+<herd>noherd</herd>
 <maintainer>
   <email>wolf31o2@gentoo.org</email>
   <name>Chris Gianelloni</name>

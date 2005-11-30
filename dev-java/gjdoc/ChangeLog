@@ -1,21 +1,6 @@
 # ChangeLog for dev-java/gjdoc
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gjdoc/ChangeLog,v 1.5 2005/11/21 19:12:26 josejx Exp $
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org> gjdoc-0.7.5.ebuild,
-  gjdoc-0.7.6.ebuild:
-  Marked ~ppc for bug #106829.
-
-*gjdoc-0.7.6 (16 Oct 2005)
-
-  16 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> +gjdoc-0.7.6.ebuild:
-  Version bump.
-
-  02 Oct 2005; Gustavo Felisberto <humpback@gentoo.org>; gjdoc-0.7.5.ebuild:
-  Added ~amd64
-
-  01 Oct 2005; Jason Wever <weeve@gentoo.org> gjdoc-0.7.5.ebuild:
-  Added ~sparc keyword wrt bug #107432.
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gjdoc/ChangeLog,v 1.1 2005/09/27 09:53:41 betelgeuse Exp $
 
 *gjdoc-0.7.5 (27 Sep 2005)
 

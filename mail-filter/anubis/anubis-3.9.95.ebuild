@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/anubis/anubis-3.9.95.ebuild,v 1.4 2004/11/27 12:38:50 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/anubis/anubis-3.9.95.ebuild,v 1.1 2004/09/08 19:45:29 ticho Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ SRC_URI="ftp://mirddin.farlep.net/pub/alpha/anubis/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86 ~ppc"
 IUSE="crypt dbm guile mysql postgres nls pam pcre sasl socks5 ssl tcpd"
 
 DEPEND="crypt? ( >=app-crypt/gpgme-0.9.0 )
@@ -26,6 +26,7 @@ DEPEND="crypt? ( >=app-crypt/gpgme-0.9.0 )
 	nls? ( sys-devel/gettext )
 	pcre? ( >=dev-libs/libpcre-3.9 )
 	sasl? ( virtual/gsasl )
+	socks5? ( net-misc/dante )
 	ssl?   ( >=dev-libs/openssl-0.9.6 )
 	tcpd?  ( >=sys-apps/tcp-wrappers-7.6 )"
 
@@ -51,7 +52,7 @@ src_compile() {
 
 	use ssl  && myconf="${myconf} --with-openssl"
 	use tcpd && myconf="${myconf} --with-tcp-wrappers"
-	use socks5 && myconf="${myconf} --with-socks-proxy"
+	use sock5 && myconf="${myconf} --with-socks-proxy"
 
 	econf ${myconf} `use_with mysql` `use_with postgres` \
 		`use_with pam` `use_with pcre` `use_with nls` \

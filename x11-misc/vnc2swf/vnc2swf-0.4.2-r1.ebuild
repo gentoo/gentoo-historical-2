@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/vnc2swf/vnc2swf-0.4.2-r1.ebuild,v 1.5 2005/10/08 22:03:13 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/vnc2swf/vnc2swf-0.4.2-r1.ebuild,v 1.1 2005/02/06 18:05:16 fserb Exp $
 
 inherit eutils
 
@@ -10,10 +10,10 @@ SRC_URI="http://www.unixuser.org/~euske/vnc2swf/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="~ppc ~x86 ~amd64"
 IUSE="x11vnc"
 
-DEPEND=">=media-libs/ming-0.2a
+DEPEND="=media-libs/ming-0.2a
 	virtual/libc
 	virtual/x11
 	sys-apps/sed
@@ -22,7 +22,7 @@ DEPEND=">=media-libs/ming-0.2a
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 	sed -ie "s:docs:html:" README
 	sed -ie "s:-mouse ::" recordwin.sh
 }

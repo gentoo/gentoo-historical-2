@@ -1,15 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/antiword/antiword-0.35.ebuild,v 1.10 2005/01/01 16:02:56 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/antiword/antiword-0.35.ebuild,v 1.1 2003/12/22 13:36:05 zul Exp $
 
 IUSE="kde"
+S=${WORKDIR}/${P}
 DESCRIPTION="free MS Word reader"
 SRC_URI="http://www.winfield.demon.nl/linux/${P}.tar.gz"
 HOMEPAGE="http://www.winfield.demon.nl"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 amd64 ppc sparc alpha ~hppa ppc64"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~hppa ~mips ~arm"
 
 DEPEND="virtual/ghostscript"
 

@@ -1,8 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/psmisc/psmisc-21.8.ebuild,v 1.3 2005/11/22 03:36:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/psmisc/psmisc-21.8.ebuild,v 1.1 2005/11/17 05:23:37 vapier Exp $
 
 inherit eutils
+
+SELINUX_PATCH="${P}-selinux.diff.bz2"
 
 DESCRIPTION="A set of tools that use the proc filesystem"
 HOMEPAGE="http://psmisc.sourceforge.net/"
@@ -11,7 +13,7 @@ SRC_URI="mirror://sourceforge/psmisc/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="ipv6 nls selinux"
+IUSE="nls selinux"
 
 RDEPEND=">=sys-libs/ncurses-5.2-r2
 	selinux? ( sys-libs/libselinux )"
@@ -22,8 +24,10 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${P}-ipv6.patch
-	use ipv6 && echo '#define HAVE_IPV6' >> config.h.in
+	if use selinux ; then
+		epatch "${FILESDIR}"/${SELINUX_PATCH}
+		libtoolize --copy --force
+	fi
 	epunt_cxx #73632
 }
 

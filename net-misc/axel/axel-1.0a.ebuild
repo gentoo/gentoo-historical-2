@@ -1,30 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/axel/axel-1.0a.ebuild,v 1.20 2005/03/06 05:53:06 dragonheart Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-misc/axel/axel-1.0a.ebuild,v 1.1 2002/06/01 02:24:09 stroke Exp $
 
-DESCRIPTION="light Unix download accelerator"
-HOMEPAGE="http://wilmer.gaast.net/main.php/axel.html"
-SRC_URI="http://wilmer.gaast.net/downloads/${P}.tar.gz"
-
-LICENSE="GPL-2"
+S=${WORKDIR}/${P}
+DESCRIPTION="Axel: A light Unix download accelerator"
+HOMEPAGE="http://www.lintux.cx/axel.html"
+SRC_URI="http://www.lintux.cx/downloads/${P}.tar.gz"
 SLOT="0"
-KEYWORDS="~amd64 ppc ppc64 ppc-macos sparc x86"
-IUSE="debug"
+LICENSE="GPL-2"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+RDEPEND="${DEPEND}"
 
 src_compile() {
-	local myconf
-
-	use debug && myconf="--debug=1 --strip=0"
-	econf \
+	local mconf
+	cd work/${P}
+	( [ -n "$DEBUG" ] || [ -n "$DEBUGBUILD" ] ) && \
+		myconf="${myconf} --debug=1 --strip=0"
+	./configure --prefix=/usr \
 		--etcdir=/etc \
-		${myconf} \
-		|| die
-	emake || die "emake failed"
+		--mandir=/usr/share/man $myconf || die
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc API CHANGES CREDITS README axelrc.example
+	make DESTDIR=${D} install || die
+	dodoc API CHANGES COPYING CREDITS README axelrc.example
 }

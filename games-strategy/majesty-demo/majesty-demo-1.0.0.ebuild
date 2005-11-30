@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/majesty-demo/majesty-demo-1.0.0.ebuild,v 1.3 2005/10/21 18:16:17 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/majesty-demo/majesty-demo-1.0.0.ebuild,v 1.1 2005/02/23 03:38:43 wolf31o2 Exp $
 
 inherit eutils games
 
@@ -10,7 +10,7 @@ SRC_URI="http://demos.linuxgamepublishing.com/majesty/majesty_demo.run"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc"
+KEYWORDS="~amd64 ~x86" # ~ppc
 IUSE=""
 
 RDEPEND="virtual/x11"
@@ -38,7 +38,7 @@ src_install() {
 	elif use ppc; then
 		doexe bin/Linux/ppc/glibc-2.1/maj_demo || die "doexe"
 	fi
-	games_make_wrapper maj_demo ./maj_demo "${dir}" "${dir}"
+	games_make_wrapper maj_demo ./maj_demo ${dir}
 	prepgamesdirs
 	make_desktop_entry maj_demo "Majesty Demo" ${PN}.xpm
 }

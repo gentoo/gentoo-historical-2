@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhash/libhash-1.0.2.ebuild,v 1.4 2005/06/14 22:41:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libhash/libhash-1.0.2.ebuild,v 1.1 2004/07/14 01:59:27 vapier Exp $
 
-inherit toolchain-funcs
+inherit gcc
 
 DESCRIPTION="a small hash library written in C"
 HOMEPAGE="ftp://ftp.ugh.net.au/pub/unix/libhash/"
@@ -10,17 +10,17 @@ SRC_URI="ftp://ftp.ugh.net.au/pub/unix/libhash/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc x86"
+KEYWORDS="x86"
 IUSE="doc"
 
-DEPEND=""
+DEPEND="virtual/libc"
 
 S=${WORKDIR}/${PN}
 
 src_compile() {
 	rm -f Makefile
-	$(tc-getCC) ${CFLAGS} -fPIC -shared -o libhash.so hash.c || die ".so failed"
-	$(tc-getCC) ${CFLAGS} -c -o libhash.a hash.c || die ".a failed"
+	$(gcc-getCC) ${CFLAGS} -fPIC -shared -o libhash.so hash.c || die ".so failed"
+	$(gcc-getCC) ${CFLAGS} -c -o libhash.a hash.c || die ".a failed"
 }
 
 src_install() {

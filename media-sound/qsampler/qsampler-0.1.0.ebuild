@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2005-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qsampler/qsampler-0.1.0.ebuild,v 1.5 2005/11/07 11:45:31 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qsampler/qsampler-0.1.0.ebuild,v 1.1 2005/05/29 23:35:00 fvdpol Exp $
 
 inherit kde eutils
 
@@ -9,10 +9,10 @@ HOMEPAGE="http://www.linuxsampler.org/"
 SRC_URI="http://download.linuxsampler.org/packages/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 RDEPEND="virtual/libc
-	=x11-libs/qt-3*
+	>=x11-libs/qt-3.1.1
 	>=media-libs/liblscp-0.2.9
 	>=media-libs/libgig-2.0.0
 	media-libs/alsa-lib"
@@ -43,5 +43,5 @@ src_compile() {
 
 src_install() {
 	einstall || die "einstall failed"
-	dodoc AUTHORS ChangeLog README
+	dodoc AUTHORS ChangeLog INSTALL README
 }

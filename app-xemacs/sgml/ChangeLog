@@ -1,14 +1,8 @@
 # ChangeLog for app-xemacs/sgml
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/sgml/ChangeLog,v 1.6 2005/01/01 17:14:45 eradicator Exp $
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> sgml-1.08.ebuild:
-  Stable on alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/sgml/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *sgml-1.08 (16 Dec 2002)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> sgml-1.08.ebuild :
-  Add ~alpha to KEYWORDS
 
   16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
   Initial import.

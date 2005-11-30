@@ -1,14 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/multiplesearch/multiplesearch-1.2.1-r1.ebuild,v 1.6 2005/04/24 12:12:53 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/multiplesearch/multiplesearch-1.2.1-r1.ebuild,v 1.1 2004/09/06 21:52:57 ciaranm Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: allows multiple highlighted searches"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=479"
-
 LICENSE="vim"
-KEYWORDS="alpha ia64 mips ppc sparc x86"
+KEYWORDS="~alpha ~sparc ~x86 ~ia64 ~mips ~ppc"
 IUSE=""
 
 VIM_PLUGIN_HELPFILES="MultipleSearch"

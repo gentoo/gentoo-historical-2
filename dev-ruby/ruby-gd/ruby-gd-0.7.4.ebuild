@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gd/ruby-gd-0.7.4.ebuild,v 1.6 2005/11/01 14:35:45 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gd/ruby-gd-0.7.4.ebuild,v 1.1 2004/05/01 12:19:04 usata Exp $
 
 inherit ruby
 USE_RUBY="ruby16 ruby18 ruby19"
@@ -11,25 +11,21 @@ S="${WORKDIR}/${MY_P}"
 DESCRIPTION="ruby-gd: an interface to Boutell GD library"
 HOMEPAGE="http://tam.0xfa.com/ruby-gd/"
 SRC_URI="http://tam.0xfa.com/ruby-gd/${MY_P}-1.tar.gz"
-
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~x86 ppc64"
-IUSE="jpeg truetype X"
+KEYWORDS="~x86"
+
+IUSE="jpeg truetype"
 
 DEPEND="virtual/ruby
-	>=media-libs/gd-2.0
+	virtual/x11
+	>=media-libs/libgd-2.0
 	jpeg? ( media-libs/jpeg )
-	truetype? ( media-libs/freetype )
-	X? ( virtual/x11 )"
+	truetype? ( media-libs/freetype )"
 
 src_compile() {
 	local myconf=""
 	myconf="${myconf} --enable-gd2_0 --with-xpm"
-
-	if use X; then
-		myconf="${myconf} --with-xpm"
-	fi
 
 	if use jpeg; then
 		myconf="${myconf} --with-jpeg"

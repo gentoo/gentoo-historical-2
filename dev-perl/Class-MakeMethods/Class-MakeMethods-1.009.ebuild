@@ -1,17 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-MakeMethods/Class-MakeMethods-1.009.ebuild,v 1.12 2005/10/02 12:26:05 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-MakeMethods/Class-MakeMethods-1.009.ebuild,v 1.1 2004/06/05 15:10:09 mcummings Exp $
 
 inherit perl-module
 
+MY_P=Class-MakeMethods-${PV}
+S=${WORKDIR}/${MY_P}
+CATEGORY="dev-perl"
 DESCRIPTION="Automated method creation module for Perl"
-SRC_URI="mirror://cpan/modules/by-module/Class/${P}.tar.gz"
-HOMEPAGE="http://www.cpan.org/modules/by-module/Class/${P}.readme"
+SRC_URI="http://www.cpan.org/modules/by-module/Class/${MY_P}.tar.gz"
+HOMEPAGE="http://www.cpan.org/modules/by-module/Class/${MY_P}.readme"
 
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
 
 SRC_TEST="do"
 

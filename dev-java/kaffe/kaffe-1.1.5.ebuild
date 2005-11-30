@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/kaffe/kaffe-1.1.5.ebuild,v 1.8 2005/09/10 16:48:52 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/kaffe/kaffe-1.1.5.ebuild,v 1.1 2005/04/09 18:53:35 karltk Exp $
 
-inherit java flag-o-matic
+inherit java
 
 DESCRIPTION="A cleanroom, open source Java VM and class libraries"
 SRC_URI="http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/${P/_/-}.tar.gz"
@@ -16,17 +16,15 @@ DEPEND=">=dev-libs/gmp-3.1
 	dev-java/jikes"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~amd64 -ppc"
+KEYWORDS="~x86"
 IUSE="alsa esd"
 
-PROVIDE="virtual/jdk
-	virtual/jre"
+PROVIDE="virtual/jdk-1.4
+	virtual/jre-1.4
+	virtual/java-scheme-2"
 #S=${WORKDIR}/kaffe-${date}
 
 src_compile() {
-	# see #88330
-	strip-flags "-fomit-frame-pointer"
-
 	./configure \
 		--prefix=/opt/${P} \
 		--host=${CHOST} \
@@ -38,13 +36,13 @@ src_compile() {
 	make || die "Failed to compile"
 }
 
-src_install() {
+src_install () {
 	make DESTDIR=${D} install || die "Failed to install"
 	set_java_env ${FILESDIR}/${VMHANDLE} || die "Failed to install environment files"
 }
 
 pkg_postinst() {
-	ewarn "Please, do not use Kaffe as your default JDK/JRE!"
+	ewarn "Plase do not use Kaffe as your default JDK/JRE!"
 	ewarn "Kaffe is currently meant for testing... it should be"
 	ewarn "only be used by developers or bug-hunters willing to deal"
 	ewarn "with oddities that are bound to come up while using Kaffe!"

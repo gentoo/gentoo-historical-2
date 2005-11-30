@@ -1,9 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/smarteiffel/smarteiffel-1.0.ebuild,v 1.10 2005/04/24 03:31:32 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/smarteiffel/smarteiffel-1.0.ebuild,v 1.1 2002/12/10 08:45:55 george Exp $
 
-IUSE="doc"
-#IUSE="doc tcc"
+IUSE="doc tcc"
 
 DESCRIPTION="GNU Eiffel compiler"
 HOMEPAGE="http://smarteiffel.loria.fr/"
@@ -12,10 +11,10 @@ SRC_URI="ftp://ftp.loria.fr/pub/loria/SmartEiffel/se-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~alpha ~sparc"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc ~sparc64"
 
 #DEPEND="tcc? ( >=dev-lang/tcc-0.9.14 )"
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 S="${WORKDIR}/SmartEiffel"
 # Destination directory to hold most of the SmartEiffel distribution.
@@ -66,7 +65,7 @@ src_install () {
 	done
 
 	# Install documentation.
-	if use doc; then
+	if [ -n `use doc` ]; then
 		einfo "Installing documentation"
 		dodir /usr/share/doc/${PF}
 		cp -a ${S}/{man,misc,tutorial,READ_ME} ${D}/usr/share/doc/${PF} || die

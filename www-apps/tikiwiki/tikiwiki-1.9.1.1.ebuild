@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/tikiwiki/tikiwiki-1.9.1.1.ebuild,v 1.3 2005/11/07 17:26:00 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/tikiwiki/tikiwiki-1.9.1.1.ebuild,v 1.1 2005/10/23 15:39:10 rl03 Exp $
 
 inherit webapp
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 IUSE="mysql postgres graphviz"
-KEYWORDS="~amd64 ppc ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 
 RDEPEND="virtual/php
 	mysql? ( >=dev-db/mysql-4 )
@@ -80,7 +80,7 @@ pkg_config() {
 
 pkg_postinst() {
 	einfo "To setup a MySQL database, run:"
-	einfo "\"emerge --config =${PF}\""
+	einfo "\"ebuild /var/db/pkg/www-apps/${PF}/${PF}.ebuild config\""
 	einfo "If you are using PostgreSQL, consult your documentation"
 	webapp_pkg_postinst
 }

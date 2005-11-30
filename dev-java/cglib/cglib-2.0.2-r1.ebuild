@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cglib/cglib-2.0.2-r1.ebuild,v 1.3 2005/07/15 17:52:17 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cglib/cglib-2.0.2-r1.ebuild,v 1.1 2005/01/20 16:00:59 luckyduck Exp $
 
 inherit eutils java-pkg
 
@@ -9,16 +9,14 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.jar"
 HOMEPAGE="http://cglib.sourceforge.net"
 LICENSE="Apache-1.1"
 SLOT="2"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 RDEPEND=">=virtual/jre-1.4
 	jikes? ( >=dev-java/jikes-1.21 )
-	source? ( app-arch/zip )
 	=dev-java/asm-1.4*
 	=dev-java/aspectwerkz-2*"
 DEPEND=">=virtual/jdk-1.4
-	${RDEPEND}
 	>=dev-java/ant-core-1.5"
-IUSE="doc jikes source"
+IUSE="doc jikes"
 
 S=${WORKDIR}
 
@@ -41,10 +39,12 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_newjar dist/${PN}-${PV}.jar ${PN}.jar
-	java-pkg_newjar dist/${PN}-full-${PV}.jar ${PN}-full.jar
+	mv dist/${PN}-${PV}.jar dist/${PN}.jar
+	mv dist/${PN}-full-${PV}.jar dist/${PN}-full.jar
+	java-pkg_dojar dist/${PN}.jar dist/${PN}-full.jar
 
-	dodoc NOTICE README
-	use doc && java-pkg_dohtml -r docs/*
-	use source && java-pkg_dosrc src/proxy/net
+	dodoc LICENSE NOTICE README
+	if use doc; then
+		java-pkg_dohtml -r docs/*
+	fi
 }

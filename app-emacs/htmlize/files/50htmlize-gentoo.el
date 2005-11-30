@@ -1,5 +1,7 @@
 
 ;;; htmlize site-lisp configuration
 
-(add-to-list 'load-path "@SITELISP@")
-(require 'htmlize)
+(setq load-path (cons "@SITELISP@" load-path))
+(autoload 'htmlize-file "htmlize"
+htmlize-many-files
+htmlize-many-files-dired

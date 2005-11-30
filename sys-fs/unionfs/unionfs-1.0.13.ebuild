@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/unionfs/unionfs-1.0.13.ebuild,v 1.2 2005/08/17 17:59:42 malc Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/unionfs/unionfs-1.0.13.ebuild,v 1.1 2005/08/11 08:59:26 genstef Exp $
 
 inherit eutils linux-mod
 
@@ -26,7 +26,8 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/${P}-delbranch-fix.patch
-	epatch ${FILESDIR}/${P}-amd64.patch
+
+	use amd64 && epatch ${FILESDIR}/unionfs-1.0.11-amd64.patch
 
 	if ! use debug; then
 		echo "UNIONFS_DEBUG_CFLAG=" >> ${user_Makefile}

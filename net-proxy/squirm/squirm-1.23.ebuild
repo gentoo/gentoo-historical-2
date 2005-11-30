@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squirm/squirm-1.23.ebuild,v 1.2 2005/07/10 01:09:55 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/squirm/squirm-1.23.ebuild,v 1.1 2005/04/22 19:15:11 mrness Exp $
 
 DESCRIPTION="A redirector for Squid"
 HOMEPAGE="http://squirm.foote.com.au"
@@ -12,6 +12,8 @@ IUSE=""
 
 RDEPEND="net-proxy/squid"
 
+S="${WORKDIR}/${P}"
+
 src_unpack() {
 	unpack ${A} || die "unpack failed"
 	cd ${S} || die
@@ -20,6 +22,11 @@ src_unpack() {
 		-e 's|^PREFIX=.*|PREFIX=/usr/squirm|' \
 		-e "s|^OPTIMISATION=.*|OPTIMISATION=${CFLAGS}|" \
 		-e "s|^CFLAGS =.*|CFLAGS=${CFLAGS} -DPREFIX=\\\\\"\$(PREFIX)\\\\\"|" Makefile.orig > Makefile
+}
+
+src_compile() {
+	cd ${S}
+	emake || die "make failed"
 }
 
 src_install() {

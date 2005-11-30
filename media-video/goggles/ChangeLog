@@ -1,40 +1,6 @@
 # ChangeLog for media-video/goggles
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/goggles/ChangeLog,v 1.8 2005/05/15 14:20:02 flameeyes Exp $
-
-  15 May 2005; Diego Pettenò <flameeyes@gentoo.org>
-  goggles-0.7.4-r1.ebuild, goggles-0.7.10.ebuild, goggles-0.8.0-r1.ebuild:
-  Moved using toolchain-funcs eclass.
-
-  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -goggles-0.7.4.ebuild,
-  goggles-0.7.4-r1.ebuild:
-  stable on amd64 and x86
-
-*goggles-0.8.0-r1 (04 Apr 2005)
-
-  04 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> +goggles-0.8.0-r1.ebuild,
-  -goggles-0.8.0.ebuild:
-  modified startscript, fixes #87618
-
-*goggles-0.8.0 (31 Mar 2005)
-
-  31 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +goggles-0.8.0.ebuild:
-  new upstream version
-
-*goggles-0.7.10 (22 Mar 2005)
-
-  22 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +goggles-0.7.10.ebuild:
-  new upstream version, fixes #74198
-
-*goggles-0.7.4-r1 (05 Feb 2005)
-
-  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> +goggles-0.7.4-r1.ebuild,
-  goggles-0.7.4.ebuild:
-  added ~amd64 to KEYWORDS. added enhancements suggested by Przemyslaw Maciag
-  <p_maciag@wp.pl>. fixes #80808 and #61844
-
-  03 Sep 2004; David Holm <dholm@gentoo.org> goggles-0.7.4.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/goggles/ChangeLog,v 1.1 2004/08/26 05:14:59 vapier Exp $
 
 *goggles-0.7.4 (26 Aug 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mew/mew-3.3.ebuild,v 1.7 2005/01/01 13:53:58 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mew/mew-3.3.ebuild,v 1.1 2003/07/28 22:57:05 usata Exp $
 
 inherit elisp
 
@@ -9,9 +9,10 @@ IUSE="ssl"
 DESCRIPTION="great MIME mail reader for Emacs/XEmacs"
 HOMEPAGE="http://www.mew.org/"
 SRC_URI="ftp://ftp.mew.org/pub/Mew/release/${P}.tar.gz"
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha ppc sparc"
+KEYWORDS="~x86 ~alpha ~ppc ~sparc"
+S="${WORKDIR}/${P}"
 
 DEPEND="virtual/emacs"
 RDEPEND="${DEPEND}

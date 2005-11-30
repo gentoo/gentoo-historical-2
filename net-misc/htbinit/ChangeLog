@@ -1,34 +1,9 @@
 # ChangeLog for net-misc/htbinit
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/htbinit/ChangeLog,v 1.9 2005/06/13 14:06:28 bass Exp $
-
-
-*htbinit-0.8.5 (11 Aug 2004)
-
-  13 Jun 2005; José Alberto Suárez López <bass@gentoo.org> htbinit-0.8.5.ebuild:
-  fix #86621
-
-  03 May 2005; Simon Stelling <blubb@gentoo.org> htbinit-0.8.5.ebuild:
-  added ~amd64 keyword
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-  
-  11 Aug 2004; José Alberto Suárez López <bass@gentoo.org>
-  +htbinit-0.8.5.ebuild:
-  version bump.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/htbinit/ChangeLog,v 1.1 2003/08/17 18:34:53 bass Exp $
 
 *htbinit-0.8.4 (17 Aug 2003)
 
-  08 Aug 2004; Tom Martin <slarti@gentoo.org> htbinit-0.8.4.ebuild:
-  Typo in DESCRIPTION: Hierachical -> Hierarchical. Bug 59717.
-
-  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> htbinit-0.8.4.ebuild:
-  Stable on alpha.
-
-  19 Jun 2003; J.Alberto Suárez L. <bass@gentoo.org> htbinit-0.8.4.ebuild:
+    19 Jun 2003; J.Alberto Su�rez L. <bass@gentoo.org> htbinit-0.8.4.ebuild:
     First release. Thanks to Juan J. Prieto <jjptapia@eresmas.com>.
-
-  25 Aug 2003; J.Alberto Suárez L. <bass@gentoo.org> htbinit-0.8.4.ebuild:
-    Added to initscript the "clear" & "reload" options. Juan J. Prieto <jjptapia@eresmas.com>.
 

@@ -1,4 +1,3 @@
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 0fdcfa4df71291fb54181bb88a396ea1 nestra-0.66-r1.ebuild 1478
-MD5 8a5b60dc3f5222d10cbd4dfa66541878 ChangeLog 1016
-MD5 1b72c901305b3f39e947ffbe00b7a13e files/digest-nestra-0.66-r1 126
+MD5 5d044df0a5fe990c7654cddd26af095c ChangeLog 437
+MD5 30aba1fd0c27d47f14a9ab1fd35526ce nestra-0.66.ebuild 842
+MD5 32d582dc60a09f353a5bc5f1cf254960 files/digest-nestra-0.66 126

@@ -1,5 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>hardened</herd>
 <maintainer>
@@ -7,9 +5,5 @@
 	<name>Chris PeBenito</name>
 	<description>Primary Maintainer</description>
 </maintainer>
-<longdescription>
-Libselinux provides an API for SELinux applications to get and set
-process and file security contexts and to obtain security policy
-decisions.  Required for any applications that use the SELinux API.
-</longdescription>
+<longdescription>Base required libraries for SELinux userland</longdescription>
 </pkgmetadata>

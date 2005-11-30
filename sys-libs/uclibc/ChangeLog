@@ -1,55 +1,6 @@
-# ChangeLog for sys-libs/uclibc
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc/ChangeLog,v 1.14 2005/11/25 22:20:41 solar Exp $
-
-  25 Nov 2005; <solar@gentoo.org> uclibc-0.9.28.ebuild:
-  - the __uClibc_start_main is becoming a problem for users thus we need to
-  check the bins before allowing them to have uclibc-compat disabled
-
-  13 Nov 2005; <solar@gentoo.org> uclibc-0.9.28.ebuild:
-  - moredefs..
-
-  07 Nov 2005; <solar@gentoo.org> uclibc-0.9.28.ebuild:
-  Enabled DL_FINI_CRT_COMPAT by default
-
-  05 Sep 2005; Mike Frysinger <vapier@gentoo.org> uclibc-0.9.27.ebuild,
-  uclibc-0.9.27-r1.ebuild:
-  Fix optimized strn functions so nano stops crashing #95395.
-
-*uclibc-0.9.28 (18 Aug 2005)
-
-  18 Aug 2005; Mike Frysinger <vapier@gentoo.org> +uclibc-0.9.28.ebuild:
-  Version bump.
-
-  05 Aug 2005; Mike Frysinger <vapier@gentoo.org> uclibc-0.9.27.ebuild,
-  uclibc-0.9.27-r1.ebuild:
-  Add patch by Yuri Vasilevski to fix FPU endian on arm #75585.
-
-  29 Jul 2005; Mike Frysinger <vapier@gentoo.org> uclibc-0.9.27.ebuild,
-  uclibc-0.9.27-r1.ebuild:
-  Update patchset to include armeb stat and getent fixes.
-
-*uclibc-0.9.27-r1 (18 Jun 2005)
-
-  18 Jun 2005; Mike Frysinger <vapier@gentoo.org> +uclibc-0.9.27-r1.ebuild:
-  New testing version by psm with partial locale support.
-
-  18 Jun 2005; Mike Frysinger <vapier@gentoo.org> uclibc-0.9.27.ebuild:
-  Add patches from upstream to fix arm/TEXTRELs and remove the duplicated
-  pthread_atfork() prototype from unistd.h.
-
-  21 Apr 2005; <solar@gentoo.org> files/getent, uclibc-0.9.27.ebuild:
-  - update getent script in FILESDIR
-
-  17 Jan 2005; Mike Frysinger <vapier@gentoo.org> uclibc-0.9.26-r8.ebuild,
-  uclibc-0.9.27.ebuild:
-  Make sure uclibc doesnt destroy glibc hosts (sorry solar!) and fix
-  src_test() so it actually works.
-
-*uclibc-0.9.27 (14 Jan 2005)
-
-  14 Jan 2005; Mike Frysinger <vapier@gentoo.org> +uclibc-0.9.27.ebuild:
-  Version bump.
+# ChangeLog for dev-libs/uclibc
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc/ChangeLog,v 1.1 2005/01/12 00:50:53 vapier Exp $
 
   11 Jan 2005; Mike Frysinger <vapier@gentoo.org> uclibc-0.9.26-r8.ebuild:
   Merge psm & my cross compile work together and BAM we have a sweet ebuild.

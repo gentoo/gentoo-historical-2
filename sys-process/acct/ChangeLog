@@ -1,28 +1,6 @@
-# ChangeLog for sys-process/acct
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/ChangeLog,v 1.7 2005/10/04 23:48:37 vapier Exp $
-
-*acct-6.3.5-r2 (04 Oct 2005)
-
-  04 Oct 2005; Mike Frysinger <vapier@gentoo.org> +acct-6.3.5-r2.ebuild:
-  Patchset version bump #108110 by Tim Schmielau.
-
-  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> acct-6.3.5-r1.ebuild:
-  Stable on ppc.
-
-  19 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> acct-6.3.5-r1.ebuild:
-  Stable on alpha.
-
-*acct-6.3.5-r1 (20 Mar 2005)
-
-  20 Mar 2005; Robin H. Johnson <robbat2@gentoo.org> files/acct.rc6,
-  +acct-6.3.5-r1.ebuild:
-  Bug #79665, provide a new acct build that works with v3 acct format and is
-  also backwards compatible. Also do not provide the "last" binary anymore, as
-  it is provided by sysvinit.
-
-  03 Mar 2005; Mike Frysinger <vapier@gentoo.org> acct-6.3.5.ebuild:
-  Dont install ansi2knr.1 since we dont install ansi2knr #83876 by Mike Nerone.
+# ChangeLog for sys-apps/acct
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/ChangeLog,v 1.1 2005/03/03 15:21:43 ciaranm Exp $
 
 *acct-6.3.5 (03 Mar 2005)
 

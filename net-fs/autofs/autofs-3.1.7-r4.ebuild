@@ -1,10 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r4.ebuild,v 1.11 2005/01/07 11:54:04 robbat2 Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r4.ebuild,v 1.1 2002/10/27 05:21:15 bcowan Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
-SRC_URI="mirror://kernel/linux/daemons/autofs/${P}.tar.bz2"
+SRC_URI="ftp://ftp.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2
+	ftp://ftp.de.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2
+	ftp://ftp.uk.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2"
 
 DEPEND="ldap? ( >=net-nds/openldap-1.2 )"
 RDEPEND=">=net-nds/portmap-5b-r6
@@ -12,13 +15,12 @@ RDEPEND=">=net-nds/portmap-5b-r6
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
-IUSE="ldap"
+KEYWORDS="~x86"
 
 src_unpack() {
-	unpack ${A}
+	unpack ${A}  
 	patch -p0 < ${FILESDIR}/nisyp.patch || die
-
+	
 	cd ${S}/include
 	patch -p0 < ${FILESDIR}/automount.diff || die
 }
@@ -26,7 +28,7 @@ src_unpack() {
 src_compile() {
 	local myconf
 	use ldap || myconf="--without-openldap"
-	export HAVE_LDAP=1
+	export HAVE_LDAP=1 
 	export LIBLDAP="$LIBLDAP -lldap -llber -lresolv"
 	export LIBS="-lldap -llber -lresolv $LIBS"
 	./configure --host=${HOST} --prefix=/usr ${myconf} || die
@@ -61,4 +63,4 @@ pkg_postinst() {
 	echo ""
 	einfo "Also the normal autofs status has been renamed stats"
 	einfo "as there is already a predefined Gentoo status"
-}
+}	

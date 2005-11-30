@@ -1,18 +1,20 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/ssl-cert.eclass,v 1.9 2005/07/11 15:08:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/ssl-cert.eclass,v 1.1 2003/10/30 17:14:37 max Exp $
 #
 # Author: Max Kalika <max@gentoo.org>
 #
 # This eclass implements standard installation procedure for installing
 # self-signed SSL certificates.
 
+ECLASS=ssl-cert
+INHERITED="$INHERITED $ECLASS"
+
 # Conditionally depend on OpenSSL: allows inheretence
 # without pulling extra packages if not needed
-DEPEND="ssl? ( dev-libs/openssl )"
-IUSE="ssl"
+newdepend "ssl? ( dev-libs/openssl )"
 
-# Initializes variables and generates the needed
+# Initializes variables and generates the needed 
 # OpenSSL configuration file and a CA serial file
 #
 # Access: private
@@ -23,7 +25,7 @@ gen_cnf() {
 	SSL_SERIAL="${T}/${$}ca.ser"
 	# Location of some random files OpenSSL can use: don't use
 	# /dev/u?random here -- doesn't work properly on all platforms
-	SSL_RANDOM="${T}/environment:${T}/eclass-debug.log:/etc/resolv.conf"
+	SSL_RANDOM="${T}/evironment:${T}/eclass-debug.log:/etc/resolv.conf"
 
 	# These can be overridden in the ebuild
 	SSL_DAYS="${SSL_BITS:-730}"
@@ -31,7 +33,7 @@ gen_cnf() {
 	SSL_COUNTRY="${SSL_COUNTRY:-US}"
 	SSL_STATE="${SSL_STATE:-California}"
 	SSL_LOCALITY="${SSL_LOCALITY:-Santa Barbara}"
-	SSL_ORGANIZATION="${SSL_ORGANIZATION:-SSL Server}"
+	SSL_ORGANIZATION="${SSL_ORGANIZTION:-SSL Server}"
 	SSL_UNIT="${SSL_UNIT:-For Testing Purposes Only}"
 	SSL_COMMONNAME="${SSL_COMMONNAME:-localhost}"
 	SSL_EMAIL="${SSL_EMAIL:-root@localhost}"
@@ -56,7 +58,7 @@ gen_cnf() {
 		emailAddress       = ${SSL_EMAIL}
 	EOF
 	eend $?
-
+	
 	return $?
 }
 

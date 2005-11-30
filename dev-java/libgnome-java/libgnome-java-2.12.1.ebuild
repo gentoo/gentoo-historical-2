@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/libgnome-java/libgnome-java-2.12.1.ebuild,v 1.4 2005/11/19 21:28:30 compnerd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/libgnome-java/libgnome-java-2.12.1.ebuild,v 1.1 2005/11/12 23:40:45 compnerd Exp $
 
 # Must be before the gnome.org inherit
 GNOME_TARBALL_SUFFIX="gz"
@@ -15,7 +15,7 @@ SRC_URI="http://research.operationaldynamics.com/linux/java-gnome/dist/${PF}.tar
 
 LICENSE="LGPL-2.1"
 SLOT="2.12"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86"
 IUSE="doc gcj"
 
 DEPS=">=gnome-base/libgnome-2.10.0
@@ -32,14 +32,12 @@ RDEPEND=">=virtual/jre-1.4
 		 ${DEPS}"
 
 pkg_setup() {
-	if use gcj ; then
-		if ! built_with_use sys-devel/gcc gcj ; then
-			ewarn
-			ewarn "You must build gcc with the gcj support to build with gcj"
-			ewarn
-			ebeep 5
-			die "No GCJ support found!"
-		fi
+	if use gcj -a ! built_with_use sys-devel/gcc gcc ; then
+		ewarn
+		ewarn "You must build gcc with the gcj support to build with gcj"
+		ewarn
+		ebeep 5
+		die "No GCJ support found!"
 	fi
 }
 

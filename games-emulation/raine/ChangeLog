@@ -1,43 +1,6 @@
-# ChangeLog for games-emulation/raine
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/raine/ChangeLog,v 1.12 2005/09/16 02:27:36 mr_bones_ Exp $
-
-  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> raine-0.39.0.ebuild:
-  needs app-arch/unzip; tidy
-
-*raine-0.42.4 (21 Jul 2005)
-
-  21 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> +raine-0.42.4.ebuild:
-  version bump
-
-*raine-0.42.2 (03 Jun 2005)
-
-  03 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> +raine-0.42.2.ebuild:
-  version bump
-
-*raine-0.42.0 (29 Nov 2004)
-
-  29 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> +raine-0.42.0.ebuild:
-  version bump
-
-  01 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> -raine-0.36.2.ebuild:
-  clean older ebuild
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> raine-0.36.2.ebuild,
-  raine-0.39.0.ebuild:
-  virtual/glibc -> virtual/libc
-
-  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> raine-0.39.0.ebuild:
-  fix depend for bug #50509
-
-  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> raine-0.36.2.ebuild,
-  raine-0.39.0.ebuild:
-  Fix use invocation
-
-*raine-0.39.0 (Jan 13 2004)
-
-  Jan 13 2004; Mike Frysinger <vapier@gentoo.org> :
-  Version cleanup + bump + games.eclass.
+# ChangeLog for app-emulation/raine
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/raine/ChangeLog,v 1.1 2003/09/09 16:26:50 vapier Exp $
 
 *raine-0.36.2 (25 Nov 2002)
 

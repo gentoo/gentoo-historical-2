@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/unixODBC/unixODBC-2.2.8.ebuild,v 1.21 2005/07/07 04:31:57 caleb Exp $
-
-inherit eutils gnuconfig multilib
+# $Header: /var/cvsroot/gentoo-x86/dev-db/unixODBC/unixODBC-2.2.8.ebuild,v 1.1 2004/02/20 02:56:58 rphillips Exp $
 
 DESCRIPTION="ODBC Interface for Linux"
 HOMEPAGE="http://www.unixodbc.org/"
@@ -10,44 +8,35 @@ SRC_URI="http://www.unixodbc.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ppc ~sparc mips ~alpha arm hppa ~amd64 s390 ppc64"
+KEYWORDS="~x86 ~ppc ~hppa ~alpha ~amd64 ~sparc"
 IUSE="qt gnome"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=sys-libs/readline-4.1
 	>=sys-libs/ncurses-5.2
-	!mips? (
-		gnome? ( gnome-base/gnome-libs )
-		qt? ( =x11-libs/qt-3* )
-	)"
+	gnome? ( gnome-base/gnome-libs )
+	qt? ( >=x11-libs/qt-3.0* )"
 
 # the configure.in patch is required for 'use qt'
 src_unpack() {
 	unpack ${P}.tar.gz
 	cd ${S}
 
-	# braindead check in configure fails - hack approach
+# braindead check in configure fails - hack approach
 	epatch ${FILESDIR}/unixODBC-2.2.6-configure.in.patch
 
-	libtoolize --copy --force || die "libtoolize failed"
 	autoconf || die "autoconf failed"
 }
 
 src_compile() {
 	local myconf
 
-	if use qt && ! use mips
+	if [ "`use qt`" ]
 	then
-		myconf="--enable-gui=yes --x-libraries=/usr/$(get_libdir) "
+		myconf="--enable-gui=yes"
 	else
 		myconf="--enable-gui=no"
 	fi
-
-	# Fix multilib-strict BUG #94262
-	myconf="${myconf} --libdir=\${exec_prefix}/$(get_libdir)"
-
-	# Detect mips systems properly
-	gnuconfig_update
 
 	./configure --host=${CHOST} \
 		    --prefix=/usr \
@@ -56,17 +45,11 @@ src_compile() {
 
 	make || die
 
-	if use gnome
+	if [ "`use gnome`" ]
 	then
-		# Symlink for configure
-		ln -s ${S}/odbcinst/.libs ./lib
-		# Symlink for libtool
-		ln -s ${S}/odbcinst/.libs ./lib/.libs
 		cd gODBCConfig
 		./configure --host=${CHOST} \
-				--with-odbc=${S} \
 				--prefix=/usr \
-				--x-libraries=/usr/$(get_libdir) \
 				--sysconfdir=/etc/unixODBC \
 				${myconf} || die
 
@@ -81,14 +64,14 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die
 
-	if use gnome
+	if [ "`use gnome`" ]
 	then
 		cd gODBCConfig
 		make DESTDIR=${D} install || die
 		cd ..
 	fi
 
-	dodoc AUTHORS ChangeLog NEWS README*
+	dodoc AUTHORS COPYING ChangeLog NEWS README*
 	find doc/ -name "Makefile*" -exec rm '{}' \;
 	dohtml doc/*
 	prepalldocs

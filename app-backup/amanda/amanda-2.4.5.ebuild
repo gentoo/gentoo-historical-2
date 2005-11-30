@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.4.5.ebuild,v 1.5 2005/08/14 10:09:13 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/amanda-2.4.5.ebuild,v 1.1 2005/07/04 01:48:56 robbat2 Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.amanda.org/"
 SRC_URI="mirror://sourceforge/amanda/${P/_/}.tar.gz"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc amd64"
 RDEPEND="sys-libs/readline
 		virtual/inetd
 		app-arch/mt-st
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	sys-devel/autoconf
 	sys-devel/automake"
 
-IUSE="berkdb debug gdbm samba xfs"
+IUSE="pic debug gdbm berkdb samba xfs"
 
 S="${WORKDIR}/${P/_/}"
 MYFILESDIR="${WORKDIR}/files"
@@ -176,7 +176,7 @@ src_compile() {
 	myconf="${myconf} --with-gnutar=/bin/tar"
 
 	econf ${myconf} || die "econf failed!"
-	emake -j1 || die "emake failed!"
+	emake || die "emake failed!"
 
 	# Compile the tapetype program too
 	# This is deprecated, use amtapetype instead!

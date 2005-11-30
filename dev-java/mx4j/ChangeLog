@@ -1,20 +1,6 @@
 # ChangeLog for dev-java/mx4j
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j/ChangeLog,v 1.5 2005/11/30 03:30:08 nichoj Exp $
-
-  30 Nov 2005; <nichoj@gentoo.org> mx4j-2.1.0-r1.ebuild:
-  Added ~amd64 keyword (bug #110369).
-
-*mx4j-2.1.0-r1 (24 Oct 2005)
-
-  24 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> +mx4j-2.1.0-r1.ebuild:
-  New revision with fixed dependencies. Fixes bug #95830.
-
-  19 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mx4j-2.1.0.ebuild:
-  stable on amd64 and x86
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> mx4j-2.1.0.ebuild:
-  mx4j now makes use of java-pkg_dosrc
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j/ChangeLog,v 1.1 2005/01/22 15:23:32 luckyduck Exp $
 
 *mx4j-2.1.0 (22 Jan 2005)
 

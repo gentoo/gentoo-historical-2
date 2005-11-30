@@ -1,10 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl/bioperl-1.2.3.ebuild,v 1.7 2005/11/28 12:03:14 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl/bioperl-1.2.3.ebuild,v 1.1 2004/12/23 22:05:32 ribosome Exp $
 
-inherit perl-app eutils
+inherit perl-module eutils
 
-DESCRIPTION="A collection of tools for bioinformatics, genomics and life science research"
+CATEGORY="app-sci"
+
+DESCRIPTION="collection of tools for bioinformatics, genomics and life science research"
 HOMEPAGE="http://www.bioperl.org/"
 #SRC_URI="http://www.cpan.org/modules/by-module/Bio/${P}.tar.gz"
 SRC_URI="http://www.bioperl.org/ftp/DIST/${P}.tar.bz2"
@@ -14,12 +16,13 @@ SLOT="0"
 KEYWORDS="x86"
 IUSE="mysql gd"
 
-DEPEND="perl-core/File-Temp
+DEPEND="${DEPEND}
+	dev-perl/File-Temp
 	dev-perl/HTML-Parser
 	dev-perl/IO-String
 	dev-perl/IO-stringy
 	dev-perl/SOAP-Lite
-	perl-core/Storable
+	dev-perl/Storable
 	dev-perl/XML-DOM
 	dev-perl/XML-Parser
 	dev-perl/XML-Writer

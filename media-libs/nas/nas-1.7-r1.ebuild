@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/nas/nas-1.7-r1.ebuild,v 1.8 2005/08/24 16:54:19 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/nas/nas-1.7-r1.ebuild,v 1.1 2004/11/23 03:12:23 eradicator Exp $
 
 IUSE="static"
 
@@ -12,7 +12,7 @@ SRC_URI="http://radscan.com/nas/${P}.src.tar.gz"
 
 SLOT="0"
 LICENSE="X11"
-KEYWORDS="alpha amd64 ~hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="virtual/x11"
 
@@ -22,8 +22,7 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-header.patch
-	epatch ${FILESDIR}/${P}-gcc4.patch
+	epatch ${FILESDIR}/${PN}-1.7-header.patch
 }
 
 src_compile() {
@@ -53,8 +52,10 @@ src_install () {
 	# Remove the static lib
 	use static || rm ${D}/usr/X11R6/lib/libaudio.a
 
-	newconfd ${FILESDIR}/nas.conf.d nas
-	newinitd ${FILESDIR}/nas.init.d nas
+	insinto /etc/conf.d
+	newins ${FILESDIR}/nas.conf.d nas
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/nas.init.d nas
 }
 
 pkg_postinst() {

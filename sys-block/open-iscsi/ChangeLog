@@ -1,37 +1,6 @@
 # ChangeLog for sys-block/open-iscsi
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/ChangeLog,v 1.6 2005/11/06 06:39:16 robbat2 Exp $
-
-*open-iscsi-0.4.438 (06 Nov 2005)
-
-  06 Nov 2005; Robin H. Johnson <robbat2@gentoo.org>
-  +files/r438-idbm-file-locking.diff, +files/backward-compile-2.6.13.patch,
-  +open-iscsi-0.4.438.ebuild:
-  Version bump. Custom patches for compile agasinst 2.6.13 or newer, and
-  possible IDBM corruption fix.
-
-*open-iscsi-0.4.434 (03 Nov 2005)
-
-  03 Nov 2005; Robin H. Johnson <robbat2@gentoo.org>
-  +open-iscsi-0.4.434.ebuild:
-  Version bump.
-
-*open-iscsi-0.4.413-r1 (23 Sep 2005)
-
-  23 Sep 2005; Robin H. Johnson <robbat2@gentoo.org> files/iscsid-init.d,
-  +open-iscsi-0.4.413-r1.ebuild:
-  Add debug support, and improve init script to properly stop iscsid.
-
-  21 Sep 2005; Robin H. Johnson <robbat2@gentoo.org>
-  files/digest-open-iscsi-0.4.413, Manifest:
-  Incorrect digest from duplicate tarball.
-
-  20 Sep 2005; Robin H. Johnson <robbat2@gentoo.org> files/iscsid-init.d,
-  open-iscsi-0.4.413.ebuild:
-  Change SRC_URI to mirror://gentoo/ now that the source has spread, also
-  clean up install location for modules, security of config file and
-  databases, and clean up the init script to be gentoo-like instead of
-  debian-like.
+# $Header: /var/cvsroot/gentoo-x86/sys-block/open-iscsi/ChangeLog,v 1.1 2005/09/20 04:33:34 robbat2 Exp $
 
 *open-iscsi-0.4.413 (20 Sep 2005)
 

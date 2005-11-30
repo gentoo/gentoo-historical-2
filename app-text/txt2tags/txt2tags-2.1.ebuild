@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/txt2tags/txt2tags-2.1.ebuild,v 1.8 2005/07/09 19:41:16 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/txt2tags/txt2tags-2.1.ebuild,v 1.1 2004/12/03 04:20:52 usata Exp $
 
 inherit elisp-common
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://txt2tags.sourceforge.net/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 sparc ppc amd64"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 DEPEND="virtual/python
 	tcltk? ( dev-lang/tk )
 	emacs? ( virtual/emacs )"
@@ -23,7 +23,7 @@ pkg_setup() {
 	# need to test if the tcltk support in python is working
 	if use tcltk; then
 		if ! python -c "import _tkinter" 2>&1 > /dev/null ; then
-			echo
+			echo ""
 			eerror "You have requested tcltk, but your build of Python"
 			eerror "doesnt support import _tkinter. You may need to"
 			eerror "remerge dev-lang/python, or build ${P}"
@@ -44,10 +44,8 @@ SITEFILE="50${PN}-gentoo.el"
 src_install() {
 	dobin t2tconv txt2tags
 
-	dodoc README* TEAM TODO ChangeLog* doc/txt2tagsrc
-	dohtml -r doc/*
-	insinto /usr/share/doc/${PF}
-	doins doc/userguide.pdf
+	dodoc README* doc/RULES TODO ChangeLog* doc/txt2tagsrc
+	dohtml doc/userguide/*
 	# samples go into "samples" doc directory
 	docinto samples
 	dodoc samples/abuseme.* samples/sample.*

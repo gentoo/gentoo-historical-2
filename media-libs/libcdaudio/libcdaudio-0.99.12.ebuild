@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libcdaudio/libcdaudio-0.99.12.ebuild,v 1.8 2005/07/12 05:19:17 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libcdaudio/libcdaudio-0.99.12.ebuild,v 1.1 2005/04/07 21:45:42 eradicator Exp $
 
 IUSE=""
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 src_unpack() {
 	unpack ${A}
@@ -23,11 +23,11 @@ src_unpack() {
 }
 
 src_compile() {
-	econf --enable-threads || die "configure failed"
+	econf --enable-threads
 	emake || die "compile problem."
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR="${D}" install || die
 	dodoc AUTHORS ChangLog NEWS README TODO
 }

@@ -1,4 +1,3 @@
-MD5 93f02cf17e28c71ad2a43ecc2399b56f metadata.xml 279
-MD5 f686fdade991ec0c40c92ee65fca6ce7 blueglass-xcursors-0.4.ebuild 2105
-MD5 80e59c74873295498705d82649855b65 ChangeLog 2693
-MD5 de0300160ad31c18630f323abbc1a7a2 files/digest-blueglass-xcursors-0.4 83
+MD5 15c8297278de51f7d306782e158db8bb blueglass-xcursors-0.3.ebuild 1487
+MD5 d7a8249b9adceab7e32b1a4119eb0787 ChangeLog 366
+MD5 cfbe0a169db47e1e023e4374461a8ebb files/digest-blueglass-xcursors-0.3 83

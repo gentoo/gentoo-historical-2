@@ -1,6 +1,3 @@
-MD5 842e6d6ec5384fe74095378e793b024b ChangeLog 1015
-MD5 dc320553971ad2db4dc1d929dcd4d8d4 PEAR-Net_Server-0.12.0.ebuild 400
+MD5 eb1dbe3ef3580116ca84789964c5c944 PEAR-Net_Server-0.12.0.ebuild 383
 MD5 34b376f52ca199fffb4e52b83169574a metadata.xml 156
-MD5 9a4ef767e8f467b2d706c3742b220cdf PEAR-Net_Server-0.12.0-r1.ebuild 379
 MD5 178b769f3fd50f68a726cf8a328eb443 files/digest-PEAR-Net_Server-0.12.0 64
-MD5 178b769f3fd50f68a726cf8a328eb443 files/digest-PEAR-Net_Server-0.12.0-r1 64

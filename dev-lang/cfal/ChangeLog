@@ -1,15 +1,10 @@
 # ChangeLog for dev-lang/cfal
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/cfal/ChangeLog,v 1.5 2005/08/24 07:45:30 flameeyes Exp $
-
-  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> cfal-1.2.0.4.ebuild:
-  Don't call chown with root:root.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cfal-1.2.0.4.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/cfal/ChangeLog,v 1.1 2003/08/19 22:24:41 taviso Exp $
 
 *cfal-1.2.0.4 (19 Aug 2003)
 
   19 Aug 2003; Tavis Ormandy <taviso@gentoo.org> cfal-1.2.0.4.ebuild:
-  Initial import, ebuild contributed by Jesse Becker in #25902
+  Initial import, ebuild contributed by Jesse Becker <jbecker@speakeasy.net> in
+  #25902
 

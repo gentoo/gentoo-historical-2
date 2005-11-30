@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/vte-0.11.15-r1.ebuild,v 1.3 2005/11/15 06:44:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/vte/vte-0.11.15-r1.ebuild,v 1.1 2005/11/06 15:21:07 obz Exp $
 
 inherit eutils gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm ~hppa ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug doc python static"
 
 RDEPEND=">=dev-libs/glib-2
@@ -21,11 +21,7 @@ RDEPEND=">=dev-libs/glib-2
 	python? (
 		>=dev-python/pygtk-2.4
 		>=dev-lang/python-2.2 )
-	virtual/xft
-	|| ( (
-		x11-libs/libICE
-		x11-libs/libSM )
-	virtual/x11 )"
+	virtual/x11"
 
 DEPEND="${RDEPEND}
 	doc? ( >=dev-util/gtk-doc-0.6 )

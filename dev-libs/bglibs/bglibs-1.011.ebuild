@@ -1,19 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/bglibs/bglibs-1.011.ebuild,v 1.9 2005/05/30 18:22:57 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/bglibs/bglibs-1.011.ebuild,v 1.1 2003/12/26 03:31:07 robbat2 Exp $
 
-inherit fixheadtails toolchain-funcs
+inherit fixheadtails
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Bruce Guenters Libraries Collection"
 HOMEPAGE="http://untroubled.org/bglibs/"
 SRC_URI="http://untroubled.org/bglibs/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc ~mips alpha amd64 ~hppa"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc ~mips ~alpha ~ppc ~arm ~amd64 ~hppa"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
@@ -26,16 +26,17 @@ src_unpack() {
 
 src_compile() {
 	echo "${D}/usr/lib/bglibs" > conf-home
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
+	echo "${CC} ${CFLAGS}" > conf-cc
+	echo "${CC} ${LDFLAGS}" > conf-ld
 	# parallel builds fail badly
-	emake -j1 || die
+	MAKEOPTS="`echo ${MAKEOPTS} | sed -re 's/-j[[:digit:]]+//g'`" \
+	emake || die
 }
 
 src_install () {
 	dodir /usr/lib/bglibs
 	./installer || die "install failed"
-	dodoc ANNOUNCEMENT NEWS README ChangeLog TODO VERSION
+	dodoc ANNOUNCEMENT COPYING NEWS README ChangeLog TODO VERSION
 	docinto html
 	dodoc doc/html/*
 	docinto latex

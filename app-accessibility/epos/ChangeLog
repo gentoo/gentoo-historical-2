@@ -1,54 +1,6 @@
 # ChangeLog for app-accessibility/epos
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/epos/ChangeLog,v 1.13 2005/07/24 22:44:03 eradicator Exp $
-
-  24 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  epos-2.5.35-r1.ebuild:
-  Set versioned dep for sgmltools-lite and removed addpredict.  Thanks foser =).
-
-  24 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  epos-2.5.35-r1.ebuild:
-  Added addpredict to start of src_compile since some people are hitting
-  access violations. See bug #10053.
-
-  23 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  epos-2.5.35-r1.ebuild:
-  Setting versioned dep for portaudio so it gets the newer version which has
-  the include files in the expected locations.
-
-*epos-2.5.35-r1 (22 Jul 2005)
-
-  22 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org> +files/eposd,
-  -epos-2.5.35.ebuild, +epos-2.5.35-r1.ebuild:
-  Revbump to fix init script. Added to ~amd64. Changed portaudio dep to
-  pablio. removed ~ppc because they haven't marked pablio yet.
-
-*epos-2.5.35 (20 Jul 2005)
-
-  20 Jul 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  +files/epos-2.5.35-destdir.patch, +files/epos-2.5.35-sysportaudio.patch,
-  +epos-2.5.35.ebuild:
-  Version bump for bug #78983.  Added support for portaudio.
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  epos-2.5.23-r1.ebuild:
-  Masked epos-2.5.23-r1.ebuild stable for ppc
-
-  19 Jul 2004; Jon Hood <squinky86@gentoo.org> epos-2.5.23-r1.ebuild,
-  -epos-2.5.23.ebuild:
-  stable on x86
-
-  18 Jun 2004; David Holm <dholm@gentoo.org> epos-2.5.23-r1.ebuild:
-  Added to ~ppc.
-
-*epos-2.5.23-r1 (15 Jun 2004)
-
-  15 Jun 2004; Jon Hood <squinky86@gentoo.org> +files/epos-waveform.patch,
-  +epos-2.5.23-r1.ebuild:
-  add patch for broken waveform
-
-  02 Jun 2004; Jon Hood <squinky86@gentoo.org> epos-2.5.23.ebuild:
-  stable on x86
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/epos/ChangeLog,v 1.1 2004/04/02 22:43:00 dmwaters Exp $
 
 *epos-2.5.23 (02 Apr 2004)
 

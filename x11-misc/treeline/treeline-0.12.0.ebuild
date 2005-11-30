@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-0.12.0.ebuild,v 1.6 2005/08/13 23:21:47 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-0.12.0.ebuild,v 1.1 2005/06/03 16:03:10 taviso Exp $
 
-inherit python
+inherit eutils python
 
 DESCRIPTION="TreeLine is a structured information storage program."
 HOMEPAGE="http://www.bellz.org/treeline/"
@@ -11,13 +11,13 @@ SRC_URI="http://www.bellz.org/treeline/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="ppc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="spell"
 
 DEPEND="spell? ( || ( app-text/aspell app-text/ispell ) )
 	|| ( dev-python/pyxml dev-libs/expat )
 	virtual/python dev-python/PyQt
-	=x11-libs/qt-3*"
+	>=x11-libs/qt-3.3.0-r1"
 
 S=${WORKDIR}/TreeLine
 
@@ -26,7 +26,7 @@ src_compile() {
 		/usr/lib/treeline > ${T}/treeline
 	sed -i -e "s#\(helpFilePath = \)None#\1'/usr/lib/treeline'#g" \
 		-e "s#\(iconPath = \)None#\1'/usr/share/icons/treeline'#g" \
-			${S}/source/treeline.py || die
+			${S}/source/treeline.py || die 
 }
 
 src_install() {
@@ -35,6 +35,7 @@ src_install() {
 	insinto /usr/lib/treeline
 	doins ${S}/source/*.py ${S}/doc/README.html
 
+	dodir /usr/share/icons/treeline
 	insinto /usr/share/icons/treeline
 	doins ${S}/icons/*.png
 

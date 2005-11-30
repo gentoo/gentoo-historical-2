@@ -1,43 +1,6 @@
 # ChangeLog for dev-libs/openct
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/openct/ChangeLog,v 1.12 2005/09/14 03:05:13 vapier Exp $
-
-*openct-0.6.6 (14 Sep 2005)
-
-  14 Sep 2005; Mike Frysinger <vapier@gentoo.org> +openct-0.6.6.ebuild:
-  Version bump.
-
-*openct-0.6.5 (26 Jun 2005)
-
-  26 Jun 2005; Mike Frysinger <vapier@gentoo.org> +openct-0.6.5.ebuild:
-  Version bump #92291 by Andreas Jellinghaus.
-
-  23 Jan 2005; Markus Rothe <corsair@gentoo.org> openct-0.5.0.ebuild,
-  openct-0.6.2.ebuild:
-  added ~ppc64 to KEYWORDS
-
-*openct-0.6.2 (02 Nov 2004)
-
-  02 Nov 2004; Mike Frysinger <vapier@gentoo.org> +openct-0.6.2.ebuild:
-  Version bump #66966.
-
-*openct-0.6.1 (31 Aug 2004)
-
-  31 Aug 2004; Mike Frysinger <vapier@gentoo.org> -openct-0.6.0_alpha.ebuild,
-  +openct-0.6.1.ebuild:
-  Version bump.
-
-  17 Jul 2004; David Holm <dholm@gentoo.org> openct-0.5.0.ebuild,
-  openct-0.6.0_alpha.ebuild:
-  Added to ~ppc.
-
-*openct-0.6.0_alpha (13 Jul 2004)
-
-  13 Jul 2004; Mike Frysinger <vapier@gentoo.org> +openct-0.6.0_alpha.ebuild:
-  Add an alpha version -* for Lars T. Mikkelsen #55828.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> openct-0.5.0.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/openct/ChangeLog,v 1.1 2004/02/22 07:16:42 vapier Exp $
 
 *openct-0.5.0 (22 Feb 2004)
 

@@ -1,21 +1,6 @@
 # ChangeLog for app-i18n/uim-kdehelper
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim-kdehelper/ChangeLog,v 1.5 2005/07/12 13:37:16 matsuu Exp $
-
-  12 Jul 2005; MATSUU Takuto <matsuu@gentoo.org>
-  uim-kdehelper-0.1.0-r1.ebuild:
-  Added ~amd64.
-
-  20 Jun 2005; Mamoru KOMACHI <usata@gentoo.org>
-  -uim-kdehelper-0.1.0.ebuild, uim-kdehelper-0.1.0-r1.ebuild:
-  Removed old ebuild and added version restriction to uim.
-
-*uim-kdehelper-0.1.0-r1 (10 Nov 2004)
-
-  10 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
-  +uim-kdehelper-0.1.0-r1.ebuild:
-  Fixed compilation without arts; bug #70502. Thanks to Simone Gotti
-  <motaboy@gentoo.org> for the ebuild.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim-kdehelper/ChangeLog,v 1.1 2004/11/03 08:35:03 usata Exp $
 
 *uim-kdehelper-0.1.0 (03 Nov 2004)
 

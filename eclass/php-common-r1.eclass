@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php-common-r1.eclass,v 1.4 2005/11/01 10:04:13 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php-common-r1.eclass,v 1.1 2005/09/04 10:54:53 stuart Exp $
 
 # ########################################################################
 #
@@ -63,9 +63,21 @@ php_check_imap() {
 # there is now the PHP-Java-Bridge that works under both PHP4 and PHP5.
 # ########################################################################
 
-php_check_java() {
-	if ! useq java-internal ; then
+php_uses_java() {
+	if ! useq java ; then
 		return 1
+	fi
+
+	if useq alpha || useq amd64 ; then
+		return 1
+	fi
+
+	return 0
+}
+
+php_check_java() {
+	if ! php_uses_java ; then
+		return
 	fi
 
 	JDKHOME="`java-config --jdk-home`"
@@ -77,6 +89,7 @@ php_check_java() {
 
 	# stuart@gentoo.org - 2003/05/18
 	# Kaffe JVM is not a drop-in replacement for the Sun JDK at this time
+
 	if echo ${JDKHOME} | grep kaffe > /dev/null 2>&1 ; then
 		eerror
 		eerror "PHP will not build using the Kaffe Java Virtual Machine."
@@ -84,17 +97,18 @@ php_check_java() {
 		eerror
 		eerror "To build PHP without Java support, please re-run this emerge"
 		eerror "and place the line:"
-		eerror "  USE='-java-internal'"
+		eerror "  USE='-java'"
 		eerror "in front of your emerge command; e.g."
-		eerror "  USE='-java-internal' emerge =dev-lang/php-4*"
+		eerror "  USE='-java' emerge mod_php"
 		eerror
 		eerror "or edit your USE flags in /etc/make.conf"
 		die "Kaffe JVM not supported"
 	fi
 
-	JDKVER=$(java-config --java-version 2>&1 | awk '/^java version/ { print $3 }' | xargs )
+	JDKVER=$(java-config --java-version 2>&1 | awk '/^java version/ { print $3
+}' | xargs )
 	einfo "Active JDK version: ${JDKVER}"
-	case "${JDKVER}" in
+	case ${JDKVER} in
 		1.4.*) ;;
 		1.5.*) ewarn "Java 1.5 is NOT supported at this time, and might not work." ;;
 		*) eerror "A Java 1.4 JDK is required for Java support in PHP." ; die ;;
@@ -102,8 +116,8 @@ php_check_java() {
 }
 
 php_install_java() {
-	if ! useq java-internal ; then
-		return 1
+	if ! php_uses_java ; then
+		return
 	fi
 
 	# we put these into /usr/lib so that they cannot conflict with
@@ -115,25 +129,16 @@ php_install_java() {
 	einfo "Installing Java test page"
 	newins ext/java/except.php java-test.php
 
+	JAVA_LIBRARY="`grep -- '-DJAVALIB' Makefile | sed -e 's,.\+-DJAVALIB=\"\([^"]*\)\".*$,\1,g;'| sort | uniq `"
+	sed -e "s|;java.library .*$|java.library = ${JAVA_LIBRARY}|g" -i ${phpinisrc}
+	sed -e "s|;java.class.path .*$|java.class.path = ${PHPEXTDIR}/php_java.jar|g" -i ${phpinisrc}
+	sed -e "s|;java.library.path .*$|java.library.path = ${PHPEXTDIR}|g" -i ${phpinisrc}
+	sed -e "s|;extension=php_java.dll.*$|extension = java.so|g" -i ${phpinisrc}
+
 	einfo "Installing Java extension for PHP"
 	doins modules/java.so
 
 	dosym ${PHPEXTDIR}/java.so ${PHPEXTDIR}/libphp_java.so
-}
-
-php_install_java_inifile() {
-	if ! useq java-internal ; then
-		return 1
-	fi
-
-	JAVA_LIBRARY="`grep -- '-DJAVALIB' Makefile | sed -e 's,.\+-DJAVALIB=\"\([^"]*\)\".*$,\1,g;'| sort | uniq `"
-
-	echo "extension = java.so" >> "${D}/${PHP_EXT_INI_DIR}/java.ini"
-	echo "java.library = ${JAVA_LIBRARY}" >> "${D}/${PHP_EXT_INI_DIR}/java.ini"
-	echo "java.class.path = ${PHPEXTDIR}/php_java.jar" >> "${D}/${PHP_EXT_INI_DIR}/java.ini"
-	echo "java.library.path = ${PHPEXTDIR}" >> "${D}/${PHP_EXT_INI_DIR}/java.ini"
-
-	dosym "${PHP_EXT_INI_DIR}/java.ini" "${PHP_EXT_INI_DIR_ACTIVE}/java.ini"
 }
 
 # ########################################################################

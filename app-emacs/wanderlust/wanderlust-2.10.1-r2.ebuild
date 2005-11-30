@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/wanderlust/wanderlust-2.10.1-r2.ebuild,v 1.7 2005/01/01 14:06:02 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/wanderlust/wanderlust-2.10.1-r2.ebuild,v 1.1 2004/06/02 17:02:46 usata Exp $
 
 inherit elisp eutils
 
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.gohome.org/wl/stable/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha sparc ppc ppc-macos"
+KEYWORDS="~x86 ~alpha ~sparc ~ppc"
 
 DEPEND="virtual/emacs
 	>=app-emacs/apel-10.6

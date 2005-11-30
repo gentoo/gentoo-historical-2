@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/licq/licq-1.3.0.ebuild,v 1.8 2005/08/25 12:12:03 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/licq/licq-1.3.0.ebuild,v 1.1 2004/10/01 14:47:37 voxus Exp $
 
-inherit eutils kde-functions
+inherit eutils
 
 DESCRIPTION="ICQ Client with v8 support"
 HOMEPAGE="http://www.licq.org/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P/_pre/-PRE}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ia64 ppc ~sparc ~x86"
+KEYWORDS="~x86"
 IUSE="ssl socks5 qt kde ncurses crypt"
 
 # we can't have conditional dependencies so "use kde && inherit kde"
@@ -22,9 +22,11 @@ IUSE="ssl socks5 qt kde ncurses crypt"
 RDEPEND="kde? ( >=kde-base/kdelibs-3.0 )"
 DEPEND="kde? ( >=kde-base/kdelibs-3.0 )
 	ssl? ( >=dev-libs/openssl-0.9.6 )
-	qt? ( =x11-libs/qt-3* )
+	qt? ( >=x11-libs/qt-3.0.0 )
 	ncurses? ( sys-libs/ncurses dev-libs/cdk )
 	crypt? ( =app-crypt/gpgme-0.3.14-r1 )"
+
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}
@@ -52,11 +54,6 @@ src_unpack() {
 	cd ${S}/plugins/qt-gui && \
 		epatch ${FILESDIR}/${PV}-no_stupid_koloboks.patch || \
 		ewarn "Fail to kill koloboks, forget it"
-
-	if use crypt; then
-		cd ${S}
-		epatch ${FILESDIR}/1.3.0-gpgme3_hack.patch
-	fi
 }
 
 src_compile() {
@@ -66,6 +63,7 @@ src_compile() {
 	if use crypt
 	then
 		myconf="${myconf} --enable-gpgme"
+		epatch ${FILESDIR}/1.3.0-gpgme3_hack.patch
 	else
 		myconf="${myconf} --disable-gpgme"
 	fi
@@ -78,9 +76,13 @@ src_compile() {
 	# First, the Qt plug-in
 	if use qt
 	then
-		set-qtdir 3
-		set-kdedir 3
-
+		# A hack to build against the latest QT:
+		local v
+		for v in /usr/qt/[0-9]
+		do
+			[ -d "${v}" ] && export QTDIR="${v}"
+		done
+#		use kde && kde_src_compile myconf
 		use kde && myconf="${myconf} --with-kde"
 
 		# note! watch the --prefix=/usr placement;

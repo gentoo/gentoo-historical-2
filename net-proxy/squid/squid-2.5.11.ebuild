@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/squid-2.5.11.ebuild,v 1.7 2005/11/23 01:28:57 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/squid-2.5.11.ebuild,v 1.1 2005/10/19 18:26:51 mrness Exp $
 
 inherit eutils pam toolchain-funcs
 
@@ -20,7 +20,7 @@ S=${WORKDIR}/${S_PP}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="pam ldap ssl sasl snmp debug selinux underscores logrotate customlog zero-penalty-hit follow-xff"
 
 RDEPEND="pam? ( virtual/pam )
@@ -81,6 +81,8 @@ src_compile() {
 	local myconf=""
 	use snmp && myconf="${myconf} --enable-snmp" || myconf="${myconf} --disable-snmp"
 	use ssl && myconf="${myconf} --enable-ssl" || myconf="${myconf} --disable-ssl"
+
+	use amd64 && myconf="${myconf} --disable-internal-dns "
 
 	if use underscores; then
 		ewarn "Enabling underscores in domain names will result in dns resolution"

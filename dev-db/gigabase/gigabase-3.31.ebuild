@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/gigabase/gigabase-3.31.ebuild,v 1.2 2005/01/08 10:57:45 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/gigabase/gigabase-3.31.ebuild,v 1.1 2005/01/06 22:16:22 rphillips Exp $
 
 DESCRIPTION="OO-DBMS with interfaces for C/C++/Java/PHP/Perl"
 HOMEPAGE="http://www.garret.ru/~knizhnik/gigabase.html"

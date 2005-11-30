@@ -1,27 +1,6 @@
-# ChangeLog for sci-mathematics/yacas
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/yacas/ChangeLog,v 1.5 2005/10/02 02:47:45 ribosome Exp $
-
-*yacas-1.0.58 (02 Oct 2005)
-
-  02 Oct 2005; Olivier Fisette <ribosome@gentoo.org> yacas-1.0.56.ebuild,
-  yacas-1.0.57.ebuild, +yacas-1.0.58.ebuild:
-  New version. Ebuild clean-ups. Fixed location of help files (bug #106308).
-
-*yacas-1.0.57 (14 Jan 2005)
-
-  14 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> +files/1.0.57.patch,
-  +yacas-1.0.57.ebuild:
-  Removing GMP support because it looks like it is not maintained upstream (does
-  not compile without the patches from 1.0.56 and fails on several tests).
-  Added optional media-libs/glut dependency.
-  Switching off the plugin size optimization because it causes yacas to segfault
-  when trying to build the plugins (source: BSD ports).
-
-  14 Jan 2005; Patrick Kursawe <phosphan@gentoo.org>
-  +files/opengl-gcc3.4.patch, yacas-1.0.56.ebuild:
-  Adding a fix for yet another gcc 3.4 problem that appears only when
-  media-libs/glut is not installed (bug #77595)
+# ChangeLog for app-sci/yacas
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/yacas/ChangeLog,v 1.1 2004/12/28 15:19:17 ribosome Exp $
 
 *yacas-1.0.56 (28 Dec 2004)
 

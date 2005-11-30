@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxGTK/wxGTK-2.5.3.ebuild,v 1.7 2005/05/02 17:57:03 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxGTK/wxGTK-2.5.3.ebuild,v 1.1 2004/11/13 03:32:58 pythonhead Exp $
 
-inherit eutils gnuconfig multilib toolchain-funcs
+inherit eutils
 
-DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit"
+DESCRIPTION="GTK+ version of wxWidgets, a cross-platform C++ GUI toolkit."
 HOMEPAGE="http://www.wxwidgets.org/"
 SRC_URI="mirror://sourceforge/wxwindows/${P}.tar.bz2"
 
 LICENSE="wxWinLL-3"
 SLOT="2.5"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~amd64 ~ia64 ~hppa ~ppc64"
 IUSE="debug no_wxgtk1 gtk2 odbc opengl unicode"
 
 RDEPEND="virtual/x11
@@ -51,8 +51,6 @@ pkg_setup() {
 }
 
 src_compile() {
-	gnuconfig_update
-
 	local myconf
 	export LANG='C'
 	sed -i "s/-O2//g" configure || die "sed configure failed"
@@ -60,20 +58,20 @@ src_compile() {
 	myconf="${myconf} `use_with opengl`"
 	myconf="${myconf} --with-gtk"
 	myconf="${myconf} `use_enable debug`"
-	myconf="${myconf} --libdir=/usr/$(get_libdir)"
+	myconf="${myconf} --enable-monolithic"
 
 	if ! use no_wxgtk1 ; then
 		mkdir build_gtk
 		einfo "Building gtk version"
 		cd build_gtk
-		../configure ${myconf} --disable-gtk2 `use_with odbc`\
+		../configure ${myconf} `use_with odbc`\
 			--host=${CHOST} \
 			--prefix=/usr \
 			--infodir=/usr/share/info \
 			--mandir=/usr/share/man || die "./configure failed"
-		emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "make gtk failed"
+		emake || die "make gtk failed"
 		cd contrib/src
-		emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "make gtk contrib failed"
+		emake || die "make gtk contrib failed"
 	fi
 	cd ${S}
 
@@ -87,9 +85,9 @@ src_compile() {
 			--prefix=/usr \
 			--infodir=/usr/share/info \
 			--mandir=/usr/share/man || die "./configure failed"
-		emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "make gtk2 failed"
+		emake || die "make gtk2 failed"
 		cd contrib/src
-		emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "make gtk2 contrib failed"
+		emake || die "make gtk2 contrib failed"
 
 		cd ${S}
 
@@ -104,10 +102,10 @@ src_compile() {
 				--infodir=/usr/share/info \
 				--mandir=/usr/share/man || die "./configure failed"
 
-			emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "make unicode failed"
+			emake || die "make unicode failed"
 
 			cd contrib/src
-			emake CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "make unicode contrib failed"
+			emake || die "make unicode contrib failed"
 		fi
 	fi
 }
@@ -115,23 +113,23 @@ src_compile() {
 src_install() {
 	if [ -e ${S}/build_gtk ] ; then
 		cd ${S}/build_gtk
-		einstall libdir="${D}/usr/$(get_libdir)" || die "install gtk failed"
+		einstall || die "install gtk failed"
 		cd contrib/src
-		einstall libdir="${D}/usr/$(get_libdir)" || die "install gtk contrib failed"
+		einstall || die "install gtk contrib failed"
 	fi
 
 	if [ -e ${S}/build_unicode ] ; then
 		cd ${S}/build_unicode
-		einstall libdir="${D}/usr/$(get_libdir)" || die "install unicode failed"
+		einstall || die "install unicode failed"
 		cd contrib/src
-		einstall libdir="${D}/usr/$(get_libdir)" || die "install unicode contrib failed"
+		einstall || die "install unicode contrib failed"
 	fi
 
 	if [ -e ${S}/build_gtk2 ] ; then
 		cd ${S}/build_gtk2
-		einstall libdir="${D}/usr/$(get_libdir)" || die "install gtk2 failed"
+		einstall || die "install gtk2 failed"
 		cd contrib/src
-		einstall libdir="${D}/usr/$(get_libdir)" || die "install gtk2 contrib failed"
+		einstall || die "install gtk2 contrib failed"
 	fi
 
 	# /usr/bin/wx-config is a symlink to the real wx-config. 2.4 and 2.5 

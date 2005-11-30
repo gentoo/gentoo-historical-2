@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs-kernel/openafs-kernel-1.2.13.ebuild,v 1.7 2005/09/19 15:24:50 stefaan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs-kernel/openafs-kernel-1.2.13.ebuild,v 1.1 2005/07/28 12:10:58 seemant Exp $
 
-inherit eutils linux-mod versionator toolchain-funcs
+inherit eutils linux-mod versionator
 
-PATCHVER=0.2a
+PATCHVER=0.1
 MY_PN=${PN/-kernel}
 MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_P}
@@ -12,21 +12,17 @@ DESCRIPTION="The OpenAFS distributed file system kernel module"
 HOMEPAGE="http://www.openafs.org/"
 SRC_URI="http://openafs.org/dl/${MY_PN}/${PV}/${MY_P}-src.tar.bz2
 	mirror://gentoo/${MY_PN}-gentoo-${PATCHVER}.tar.bz2
-	http://dev.gentoo.org/~stefaan/distfiles/${MY_PN}-gentoo-${PATCHVER}.tar.bz2"
+	http://dev.gentoo.org/~seemant/distfiles/${MY_PN}-gentoo-${PATCHVER}.tar.bz2"
 
 LICENSE="IPL-1"
 SLOT="0"
 KEYWORDS="~x86 ~alpha ~ia64"
-IUSE=""
 
-PATCHDIR=${WORKDIR}/gentoo/patches/$(get_version_component_range 1-2)
+DEPEND="virtual/linux-sources"
+
+PATCHDIR=${WORKDIR}/gentoo/patches/$(get_version_component_range 1-2)/kernel
 
 pkg_setup() {
-	if kernel_is gt 2 4; then
-		eerror "openafs-1.2 does not support kernels newer than Linux 2.4."
-		einfo "Please try the openafs-1.4 series"
-		die "Kernel is too new!"
-	fi
 	linux-mod_pkg_setup
 }
 
@@ -37,8 +33,10 @@ src_unpack() {
 }
 
 src_compile() {
-	econf --with-linux-kernel-headers=${KV_DIR} || die "Failed: econf"
-	ARCH="$(tc-arch-kernel)" make only_libafs || die "Failed: make"
+	econf --with-linux-kernel-headers=$KERNEL_DIR || die "Failed: econf"
+	# unset ARCH, because else it will be used as an incent to start
+	# cross-compiling the kernel module
+	env -u ARCH make only_libafs || die "Failed: make"
 }
 
 src_install() {

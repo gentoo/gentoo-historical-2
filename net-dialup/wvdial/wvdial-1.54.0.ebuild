@@ -1,8 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/wvdial/wvdial-1.54.0.ebuild,v 1.15 2005/10/04 20:21:38 mrness Exp $
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
 DESCRIPTION="Excellent program to automatically configure PPP sessions"
 HOMEPAGE="http://open.nit.ca/wiki/?page=WvDial"
@@ -10,12 +9,11 @@ SRC_URI="http://open.nit.ca/download/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc alpha amd64 hppa ~ppc"
-IUSE=""
+KEYWORDS="~x86 ~sparc ~alpha ~amd64 ~hppa"
 
-DEPEND="virtual/libc
-	net-dialup/ppp
-	>=net-libs/wvstreams-4.00"
+DEPEND="virtual/glibc
+	>=net-dialup/ppp
+	>=net-libs/wvstreams-3.74"
 
 src_unpack() {
 	unpack ${A}
@@ -30,7 +28,7 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
 
-	dodoc CHANGES FAQ MENUS README TODO
+	dodoc COPYING.LIB CHANGES FAQ MENUS README TODO
 }
 
 pkg_postinst() {

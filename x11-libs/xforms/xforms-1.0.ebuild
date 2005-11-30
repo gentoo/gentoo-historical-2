@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/xforms/xforms-1.0.ebuild,v 1.10 2005/07/31 04:22:27 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/xforms/xforms-1.0.ebuild,v 1.1 2003/02/09 08:57:55 mkennedy Exp $
 
 S=${WORKDIR}/${P}-release
 DESCRIPTION="A graphical user interface toolkit for X"
@@ -9,29 +9,32 @@ SRC_URI="ftp://ncmir.ucsd.edu/pub/xforms/OpenSource/${P}-release.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc amd64"
+KEYWORDS="~x86 ppc sparc"
 
-DEPEND="virtual/x11
-	>=sys-apps/sed-4
-	media-libs/jpeg"
+DEPEND="virtual/x11"
 IUSE=""
+
+PROVIDE="virtual/xforms"
 
 src_unpack() {
 	unpack $A
 	cd ${WORKDIR}/${P}-release
-
+	
 	# use custom CFLAGS
-	sed -i -e "s:CDEBUGFLAGS =:CDEBUGFLAGS = ${CFLAGS} #:" \
-		-e "s:CDEBUGFLAGS	=:CDEBUGFLAGS	= ${CFLAGS} #:" Imakefile
+	cp Imakefile Imakefile.orig
+	sed -e "s:CDEBUGFLAGS =:CDEBUGFLAGS = ${CFLAGS} #:" \
+		-e "s:CDEBUGFLAGS	=:CDEBUGFLAGS	= ${CFLAGS} #:" Imakefile.orig > Imakefile
 }
 
 src_compile() {
 	xmkmf -a
-	sed -i -e s/'demos$'// Makefile
-
+	cp Makefile Makefile.orig
+	sed -e s/'demos$'// Makefile.orig > Makefile
+	
 	# use custom CFLAGS
-	sed -i -e "s:CDEBUGFLAGS =:CDEBUGFLAGS = ${CFLAGS} #:" \
-		-e "s:CDEBUGFLAGS	=:CDEBUGFLAGS	= ${CFLAGS} #:" Makefile
+	cp Makefile Makefile.orig
+	sed -e "s:CDEBUGFLAGS =:CDEBUGFLAGS = ${CFLAGS} #:" \
+		-e "s:CDEBUGFLAGS	=:CDEBUGFLAGS	= ${CFLAGS} #:" Makefile.orig > Makefile
 
 	make || die
 }

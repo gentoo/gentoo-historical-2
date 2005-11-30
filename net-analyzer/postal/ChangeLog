@@ -1,15 +1,6 @@
 # ChangeLog for net-analyzer/postal
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/postal/ChangeLog,v 1.4 2005/03/17 19:39:05 hansmi Exp $
-
-  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> postal-0.62.ebuild:
-  Added to ~hppa, stable on ppc.
-
-  08 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> postal-0.62.ebuild:
-  Fixed not working use_enable because of a broken configure script.
-
-  08 Jan 2005; Sven Wegener <swegener@gentoo.org> postal-0.62.ebuild:
-  Fixed invalid atoms in *DEPEND.
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/postal/ChangeLog,v 1.1 2005/01/08 00:35:45 hansmi Exp $
 
 *postal-0.62 (08 Jan 2005)
 

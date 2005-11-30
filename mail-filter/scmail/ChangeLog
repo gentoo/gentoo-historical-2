@@ -1,22 +1,6 @@
-# ChangeLog for mail-filter/scmail
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/scmail/ChangeLog,v 1.6 2004/09/09 13:21:35 hattya Exp $
-
-  09 Sep 2004; Akinori Hattori <hattya@gentoo.org> scmail-1.3.ebuild:
-  stable on x86.
-
-  19 Aug 2004; Akinori Hattori <hattya@gentoo.org>
-  -files/scmail-0.2-gentoo.diff, -scmail-0.2.ebuild:
-  cleaned out old ebuild.
-
-*scmail-1.3 (19 Aug 2004)
-
-  19 Aug 2004; Akinori Hattori <hattya@gentoo.org> +scmail-1.3.ebuild:
-  new upstream release.
-
-  11 Jul 2004; Akinori Hattori <hattya@gentoo.org> scmail-0.2.ebuild,
-  scmail-1.1.ebuild, scmail-1.2.ebuild:
-  dev-lisp/gauche to dev-lang/gauche.
+# ChangeLog for net-mail/scmail
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/scmail/ChangeLog,v 1.1 2004/06/03 07:30:00 seemant Exp $
 
 *scmail-1.1 (03 Jun 2004)
 

@@ -1,58 +1,6 @@
 # ChangeLog for net-wireless/orinoco
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/orinoco/ChangeLog,v 1.12 2005/11/27 22:41:51 brix Exp $
-
-  27 Nov 2005; Henrik Brix Andersen <brix@gentoo.org> orinoco-9999.ebuild:
-  Forgot to set KEYWORDS=-* for the live CVS ebuild.
-
-*orinoco-0.15_rc3-r1 (27 Nov 2005)
-
-  27 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
-  +files/orinoco-0.15rc3-memleak.patch, -orinoco-0.15_rc3.ebuild,
-  +orinoco-0.15_rc3-r1.ebuild:
-  Fix memory leak, bug #113322.
-
-*orinoco-9999 (27 Nov 2005)
-
-  27 Nov 2005; Henrik Brix Andersen <brix@gentoo.org> +orinoco-9999.ebuild:
-  Added new, improved live CVS ebuild. This replaces net-wireless/orinoco-cvs.
-
-*orinoco-0.15_rc3 (27 Nov 2005)
-
-  27 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
-  +orinoco-0.15_rc3.ebuild:
-  Version bump.
-
-  15 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
-  orinoco-0.15_rc2-r2.ebuild:
-  Instruct user to use the in-kernel module for linux-2.6.15+.
-
-  28 May 2005; <brix@gentoo.org> -orinoco-0.15_rc2.ebuild,
-  -orinoco-0.15_rc2-r1.ebuild:
-  Pruned old ebuilds.
-
-  23 May 2005; <brix@gentoo.org> orinoco-0.15_rc2-r2.ebuild:
-  Stable on x86.
-
-*orinoco-0.15_rc2-r2 (28 Apr 2005)
-
-  28 Apr 2005; <brix@gentoo.org> +files/orinoco-0.15rc2-firmware.patch,
-  +orinoco-0.15_rc2-r2.ebuild:
-  Fixed bug #69929 and bug #78366.
-
-  07 Jan 2005; Henrik Brix Andersen <brix@gentoo.org>
-  +files/orinoco-0.15rc2-2.6.10.patch, orinoco-0.15_rc2-r1.ebuild:
-  Allow compiling against kernel 2.6.10, fixes bug #76979.
-
-  04 Jan 2005; Henrik Brix Andersen <brix@gentoo.org>
-  orinoco-0.15_rc2-r1.ebuild:
-  Use MODULESD_ORINOCO_DOCS for installing README.orinoco.
-
-*orinoco-0.15_rc2-r1 (04 Jan 2005)
-
-  04 Jan 2005; Henrik Brix Andersen <brix@gentoo.org>
-  +orinoco-0.15_rc2-r1.ebuild:
-  Ported to use linux-mod.eclass, bumping because of modules.d file additions.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/orinoco/ChangeLog,v 1.1 2004/11/01 12:22:47 brix Exp $
 
   01 Nov 2004; Henrik Brix Andersen <brix@gentoo.org> +metadata.xml:
   Initial check-in, ebuild by me. Thanks to all who commented on bug #57031.

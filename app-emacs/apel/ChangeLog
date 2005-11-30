@@ -1,33 +1,6 @@
 # ChangeLog for app-emacs/apel
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/apel/ChangeLog,v 1.13 2005/01/01 13:38:46 eradicator Exp $
-
-  13 Oct 2004; <agriffis@gentoo.org> apel-10.6.ebuild:
-  add ia64
-
-  08 Aug 2004; Tom Gall <tgall@gentoo.org> apel-10.6.ebuild:
-  stable on ppc64, bug #57676
-
-  30 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> apel-10.6.ebuild:
-  Added to ~amd64.
-
-  19 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
-  Added to macos
-
-  04 May 2004; Guy Martin <gmsoft@gentoo.org> apel-10.6.ebuild:
-  Marked stable on hppa.
-
-*apel-10.6 (12 Jul 2003)
-
-  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
-  Marked stable on sparc and ppc
-
-  29 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
-  Marked x86 and alpha stable.
-
-  12 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> apel-10.6.ebuild:
-  New version, added ~sparc, ~ppc and ~alpha to KEYWORDS.
-  Changed HOMEPAGE to point at correct URI.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/apel/ChangeLog,v 1.1 2002/11/01 02:52:00 mkennedy Exp $
 
 *apel-10.4 (31 Oct 2002)
 
@@ -36,9 +9,3 @@
   files/digest-apel-10.4, APEL-CFG.patch :
 
   Initial import.
-
-*apel-10.3 (13 Feb 2003)
-
-  29 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-

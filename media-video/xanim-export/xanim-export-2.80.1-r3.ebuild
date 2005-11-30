@@ -1,10 +1,7 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/xanim-export/xanim-export-2.80.1-r3.ebuild,v 1.12 2004/07/14 22:26:55 agriffis Exp $
-
-inherit flag-o-matic eutils
-strip-flags -finline-functions
-replace-flags -O3 -O2
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Id: xanim-export-2.80.1-r3.ebuild,v 1.1 2002/04/27 11:40:49 pvdabeel Exp $
 
 _XA_CYUV_SPARC=xa1.0_cyuv_sparcELF.o
 _XA_CVID_SPARC=xa2.0_cvid_sparcELF.o
@@ -22,97 +19,104 @@ _XA_IV32_PPC=xa2.0_iv32_linuxPPC.o
 _XA_PPC_EXT=.Z
 
 case $ARCH in
-	sparc)
-		_XA_CYUV=$_XA_CYUV_SPARC
-		_XA_CVID=$_XA_CVID_SPARC
-		_XA_IV32=$_XA_IV32_SPARC
-		_XA_EXT=$_XA_SPARC_EXT
-		_XA_UNCOMPRESS=uncompress
-		;;
+	sparc*)
+			_XA_CYUV=$_XA_CYUV_SPARC
+			_XA_CVID=$_XA_CVID_SPARC
+			_XA_IV32=$_XA_IV32_SPARC
+			_XA_EXT=$_XA_SPARC_EXT
+			_XA_UNCOMPRESS=uncompress
+			;;
 	ppc)
-		_XA_CYUV=$_XA_CYUV_PPC
-		_XA_CVID=$_XA_CVID_PPC
-		_XA_IV32=$_XA_IV32_PPC
-		_XA_EXT=$_XA_PPC_EXT
-		_XA_UNCOMPRESS=uncompress
-		;;
-	x86)
-		_XA_CYUV=$_XA_CYUV_I386
-		_XA_CVID=$_XA_CVID_I386
-		_XA_IV32=$_XA_IV32_I386
-		_XA_EXT=$_XA_I386_EXT
-		_XA_UNCOMPRESS=gunzip
-		;;
+			_XA_CYUV=$_XA_CYUV_PPC
+			_XA_CVID=$_XA_CVID_PPC
+			_XA_IV32=$_XA_IV32_PPC
+			_XA_EXT=$_XA_PPC_EXT
+			_XA_UNCOMPRESS=uncompress
+			;;
+	*)
+			_XA_CYUV=$_XA_CYUV_I386
+			_XA_CVID=$_XA_CVID_I386
+			_XA_IV32=$_XA_IV32_I386
+			_XA_EXT=$_XA_I386_EXT
+			_XA_UNCOMPRESS=gunzip
+			;;
 esac
 
+A="xanim_exporting_edition.tar.gz \
+	${_XA_CYUV_SPARC}${_XA_SPARC_EXT} ${_XA_CVID_SPARC}${_XA_SPARC_EXT} \
+	${_XA_IV32_SPARC}${_XA_SPARC_EXT} \
+	${_XA_CYUV_I386}${_XA_I386_EXT} ${_XA_CVID_I386}${_XA_I386_EXT} \
+	${_XA_IV32_I386}${_XA_I386_EXT} \
+	${_XA_CYUV_PPC}${_XA_PPC_EXT} ${_XA_CVID_PPC}${_XA_PPC_EXT} \
+	${_XA_IV32_PPC}${_XA_PPC_EXT}"
+S=${WORKDIR}/xanim_exporting_edition
 DESCRIPTION="XAnim with Quicktime and RAW Audio export functions"
-HOMEPAGE="http://heroin.linuxave.net/toys.html"
-SRC_URI="http://heroine.linuxave.net/xanim_exporting_edition.tar.gz
-	sparc? (
-		ftp://xanim.va.pubnix.com/modules/${_XA_CYUV_SPARC}${_XA_SPARC_EXT}
-		ftp://xanim.va.pubnix.com/modules/${_XA_CVID_SPARC}${_XA_SPARC_EXT}
-		ftp://xanim.va.pubnix.com/modules/${_XA_IV32_SPARC}${_XA_SPARC_EXT}
-	)
-	ppc? (
-		ftp://xanim.va.pubnix.com/modules/${_XA_CYUV_PPC}${_XA_PPC_EXT}
-		ftp://xanim.va.pubnix.com/modules/${_XA_CVID_PPC}${_XA_PPC_EXT}
-		ftp://xanim.va.pubnix.com/modules/${_XA_IV32_PPC}${_XA_PPC_EXT}
-	)
-	x86? (
-		ftp://xanim.va.pubnix.com/modules/${_XA_CYUV_I386}${_XA_I386_EXT}
-		ftp://xanim.va.pubnix.com/modules/${_XA_CVID_I386}${_XA_I386_EXT}
-		ftp://xanim.va.pubnix.com/modules/${_XA_IV32_I386}${_XA_I386_EXT}
-	)"
+SRC_URI="http://heroine.linuxave.net/xanim_exporting_edition.tar.gz \
+     ftp://xanim.va.pubnix.com/modules/${_XA_CYUV_SPARC}${_XA_SPARC_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_CVID_SPARC}${_XA_SPARC_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_IV32_SPARC}${_XA_SPARC_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_CYUV_PPC}${_XA_PPC_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_CVID_PPC}${_XA_PPC_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_IV32_PPC}${_XA_PPC_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_CYUV_I386}${_XA_I386_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_CVID_I386}${_XA_I386_EXT} 
+	 ftp://xanim.va.pubnix.com/modules/${_XA_IV32_I386}${_XA_I386_EXT}"
 
-LICENSE="XAnim"
-SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
+HOMEPAGE="http://heroin.linuxave.net/toys.html"
 
 DEPEND=">=sys-libs/glibc-2.1.3
 	>=media-libs/jpeg-6b
 	>=media-libs/libpng-1.2.1
 	virtual/x11"
-RDEPEND="app-arch/ncompress"
 
-S=${WORKDIR}/xanim_exporting_edition
-
+case $ARCH in 
+  sparc)
+	RDEPEND="app-arch/ncompress"
+	;;
+  sparc64)
+	RDEPEND="app-arch/ncompress"
+	;;
+  ppc)
+	RDEPEND="app-arch/ncompress"
+	;;
+esac
+ 
 src_unpack() {
-	unpack xanim_exporting_edition.tar.gz
-
-	cd ${S}/mods
-	cp ${DISTDIR}/${_XA_CYUV}${_XA_EXT} .
-	$_XA_UNCOMPRESS ${_XA_CYUV}${_XA_EXT}
-	cp ${DISTDIR}/${_XA_CVID}${_XA_EXT} .
-	$_XA_UNCOMPRESS ${_XA_CVID}${_XA_EXT}
-	cp ${DISTDIR}/${_XA_IV32}${_XA_EXT} .
-	$_XA_UNCOMPRESS ${_XA_IV32}${_XA_EXT}
-
-	cd ${S}
-	rm xanim
-	epatch ${FILESDIR}/${PV}-makefile.patch
+  unpack xanim_exporting_edition.tar.gz
+  mkdir ${S}/mods
+  cd ${S}/mods
+  cp ${DISTDIR}/${_XA_CYUV}${_XA_EXT} .
+  $_XA_UNCOMPRESS ${_XA_CYUV}${_XA_EXT}
+  cp ${DISTDIR}/${_XA_CVID}${_XA_EXT} .
+  $_XA_UNCOMPRESS ${_XA_CVID}${_XA_EXT}
+  cp ${DISTDIR}/${_XA_IV32}${_XA_EXT} .
+  $_XA_UNCOMPRESS ${_XA_IV32}${_XA_EXT}
+  cd ${S}
+  rm xanim
+  sed -e "s:-O2:${CFLAGS}:" ${FILESDIR}/Makefile > ${S}/Makefile
 }
-
 src_compile() {
-	cd ${S}/quicktime
-	make \
-		XA_IV32_LIB=mods/${_XA_CYUV} \
-		XA_CVID_LIB=mods/${_XA_CVID} \
-		XA_CYUV_LIB=mods/${_XA_IV32} \
-		|| die "make quicktime failed"
+
+
+
+    cd ${S}/quicktime
+    try make XA_IV32_LIB=mods/${_XA_CYUV} XA_CVID_LIB=mods/${_XA_CVID} \
+			XA_CYUV_LIB=mods/${_XA_IV32}
 	cd ..
-	make \
-		XA_IV32_LIB=mods/${_XA_CYUV} \
-		XA_CVID_LIB=mods/${_XA_CVID} \
-		XA_CYUV_LIB=mods/${_XA_IV32} \
-		OPTIMIZE="${CFLAGS}" \
-		|| die "main make failed"
+	try make XA_IV32_LIB=mods/${_XA_CYUV} XA_CVID_LIB=mods/${_XA_CVID} \
+			XA_CYUV_LIB=mods/${_XA_IV32}
+
 }
 
-src_install() {
-	newbin xanim xanim-export
-	insinto /usr/lib/xanim/mods-export
-	doins mods/*
-	dodoc README*
-	dodoc docs/README.* docs/*.readme docs/*.doc
+src_install () {
+
+    into /usr
+    newbin xanim xanim-export
+    insinto /usr/lib/xanim/mods-export
+    doins mods/*
+    dodoc README*
+    dodoc docs/README.* docs/*.readme docs/*.doc
 }
+
+
+

@@ -1,17 +1,7 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 08c53aee4ebc9b4ef9938c56e1aa9230 ChangeLog 808
-MD5 6510019b5ad470eca5527b55081d8531 libuta-0.4.1-r1.ebuild 678
-MD5 b50a9204d14c59812bb3861633b26859 libuta-0.4.3.ebuild 615
-MD5 017eb9c836e284a2ba46672be8e2734a libuta-0.4.4.ebuild 617
+MD5 02dab1b6ce402dc9fac37adbd3616457 ChangeLog 652
+MD5 62b5478f3132e22e16408ebc70a1cbdf libuta-0.4.1-r1.ebuild 694
+MD5 552d05bfe131665be89dbcd4476489de libuta-0.4.3.ebuild 625
+MD5 4d24ef30492829caef59db8c6261406a libuta-0.4.4.ebuild 619
 MD5 ded5edb2a8f9af87ed322f37874cf6a3 files/digest-libuta-0.4.1-r1 64
 MD5 84280089e834226654f02d9f6d56546b files/digest-libuta-0.4.3 64
 MD5 7657c11ed4f3894330569e5973691867 files/digest-libuta-0.4.4 64
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQFBybxPKRy60XGEcJIRAuAfAJ4+FvoTMf+/zoBDkap7TkstF8TfaACeLYW3
-burWU5NRRpAefc9cjH8vUvE=
-=/jUV
------END PGP SIGNATURE-----

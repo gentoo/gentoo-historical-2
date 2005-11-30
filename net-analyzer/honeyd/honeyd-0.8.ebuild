@@ -1,6 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/honeyd/honeyd-0.8.ebuild,v 1.9 2005/01/29 05:12:51 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/honeyd/honeyd-0.8.ebuild,v 1.1 2004/01/21 18:21:43 mboman Exp $
+
+inherit eutils
 
 DESCRIPTION="Honeyd is a small daemon that creates virtual hosts on a network"
 HOMEPAGE="http://www.citi.umich.edu/u/provos/honeyd/"
@@ -9,29 +11,32 @@ SRC_URI="http://www.citi.umich.edu/u/provos/honeyd/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc"
-IUSE="doc"
+KEYWORDS="~x86"
 
+IUSE="doc"
 DEPEND=">=dev-libs/libdnet-1.7
 	>=dev-libs/libevent-0.6
-	virtual/libpcap"
+	>=net-libs/libpcap-0.7.1"
+RDEPEND=${DEPEND}
+
+S="${WORKDIR}/${P}"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i "s:^CFLAGS = -O2:CFLAGS = ${CFLAGS}:g" Makefile.in || die "sed failed"
+	unpack ${A} ; cd ${S}
+
+	sed -i "s:^CFLAGS = -O2:CFLAGS = ${CFLAGS}:g" Makefile.in
 }
 
 src_compile() {
 	econf --with-libdnet=/usr || die "econf failed"
-	emake || die "emake failed"
+	emake || die
 }
 
 src_install() {
 	dodoc README
 	dosbin honeyd
 
-	einstall || die "make install failed"
+	einstall
 
 	rm ${D}/usr/bin/honeyd
 	rm ${D}/usr/share/honeyd/README
@@ -40,17 +45,14 @@ src_install() {
 	exeinto /usr/share/honeyd/scripts
 	doexe scripts/web.sh scripts/router-telnet.pl scripts/test.sh
 
-	insinto /etc
-	newins config.sample honeyd.conf || die "failed to install honeyd.conf"
-
-	newinitd ${FILESDIR}/${PN}.initd ${PN}
-	newconfd ${FILESDIR}/${PN}.confd ${PN}
-
 	# This adds all the services and example configurations collected
 	# by Lance Spitzer
 
 	# Install the white-papers if 'doc' USE flags are specified
-	use doc && dodoc ${WORKDIR}/honeyd-0.7a-beta2/contrib/*
+	use doc && (
+		cd ${WORKDIR}/honeyd-0.7a-beta2/contrib
+		dodoc *
+	)
 
 	# Install the example configurations
 	cd ${WORKDIR}/honeyd-0.7a-beta2
@@ -58,10 +60,16 @@ src_install() {
 	dodoc honeyd.conf.simple honeyd.conf.bloat nmap.prints.new
 	dodoc xprobe2.conf.new honeyd.conf.networks
 
+	# Install example start/stop scripts.. Those should _really_
+	# be re-written to gentoo instead..
+	dodoc start-arpd.sh start-honeyd.sh
+
 	# Install all the example scripts
 	cd ${WORKDIR}/honeyd-0.7a-beta2/scripts
 	cp -R * ${D}/usr/share/honeyd/scripts/
 	cd ${D}/usr/share/honeyd/scripts/
 	find -type f -name "*.sh" -o -name "*.pl" | xargs chmod +x
+
+
 }
 

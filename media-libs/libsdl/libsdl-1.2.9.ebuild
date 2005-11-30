@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.9.ebuild,v 1.8 2005/10/29 02:47:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.9.ebuild,v 1.1 2005/08/28 22:10:40 vapier Exp $
 
 inherit flag-o-matic toolchain-funcs eutils
 
@@ -17,11 +17,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x8
 # bug reports to be marked INVALID.
 IUSE="oss alsa esd arts nas X dga xv xinerama fbcon directfb ggi svga aalib opengl libcaca pic noaudio novideo nojoystick noflagstrip"
 
-RDEPEND="!noaudio? ( >=media-libs/audiofile-0.1.9 )
+RDEPEND=">=media-libs/audiofile-0.1.9
 	alsa? ( media-libs/alsa-lib )
 	esd? ( >=media-sound/esound-0.2.19 )
 	arts? ( kde-base/arts )
-	nas? ( media-libs/nas virtual/x11 )
+	nas? ( media-libs/nas
+		virtual/x11 )
 	X? ( virtual/x11 )
 	directfb? ( >=dev-libs/DirectFB-0.9.19 )
 	ggi? ( >=media-libs/libggi-2.0_beta3 )
@@ -58,9 +59,6 @@ src_unpack() {
 	epatch "${FILESDIR}"/libsdl-1.2.8-libcaca.patch #40224
 	epatch "${FILESDIR}"/libsdl-1.2.8-sdl-config.patch
 	epatch "${FILESDIR}"/libsdl-1.2.8-no-cxx.patch
-	epatch "${FILESDIR}"/libsdl-1.2.9-dlvsym-check.patch #105160
-	epatch "${FILESDIR}"/1.2.8-gcc4.patch
-	epatch "${FILESDIR}"/${P}-DirectFB-updates.patch
 
 	./autogen.sh || die "autogen failed"
 	epunt_cxx
@@ -68,12 +66,10 @@ src_unpack() {
 
 src_compile() {
 	local myconf=
-	# silly bundled asm triggers TEXTREL ... maybe someday
-	# i'll fix this properly, but for now hide with USE=pic
-	if [[ $(tc-arch) != "x86" ]] || use pic ; then
-		myconf="${myconf} --disable-nasm"
-	else
-		myconf="${myconf} $(use_enable x86 nasm)"
+	if use x86 ; then
+		# silly bundled asm triggers TEXTREL ... maybe someday
+		# i'll fix this properly, but for now hide with USE=pic
+		use pic || myconf="${myconf} $(use_enable x86 nasm)"
 	fi
 	use noflagstrip || strip-flags
 	use noaudio && myconf="${myconf} --disable-audio"
@@ -93,11 +89,18 @@ src_compile() {
 			|| ewarn "Disabling DirectFB since libdirectfb.so is broken"
 	fi
 
+	if use ppc-macos ; then
+		append-flags -fno-common -undefined dynamic_lookup -framework OpenGL
+		# fix for gcc-apple >3.3
+		if [ -e libgcc_s.1.dylib ] ; then
+			append-ldflags -lgcc_s
+		fi
+	fi
+
 	myconf="${myconf} ${directfbconf}"
 
 	econf \
 		--disable-dependency-tracking \
-		--disable-rpath \
 		--enable-events \
 		--enable-cdrom \
 		--enable-threads \

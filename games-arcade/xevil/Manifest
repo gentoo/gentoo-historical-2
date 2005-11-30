@@ -1,4 +1,3 @@
-MD5 3420eaeeaf181bfca31e4f91360e8823 ChangeLog 716
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 dcae3a77ab271df9039e36b73132b205 xevil-2.02_p2.ebuild 1132
-MD5 f82eccd2bfaf4e7990a45c7075a64659 files/digest-xevil-2.02_p2 130
+MD5 5c781960e3373046db24552912cba206 files/digest-xevil-2.02_p2 64
+MD5 6173c7666fe6bf710438cbd6a93d3f00 xevil-2.02_p2.ebuild 896
+MD5 6f091a4427c46201aff027d97cc25f0a ChangeLog 337

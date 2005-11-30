@@ -1,19 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gtm/gtm-0.4.11-r2.ebuild,v 1.15 2005/11/15 14:29:26 gustavoz Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gtm/gtm-0.4.11-r2.ebuild,v 1.1 2002/06/28 03:10:38 spider Exp $
 
-inherit eutils
-
-IUSE="ssl nls gnome"
-
+S=${WORKDIR}/${P}
 DESCRIPTION="GTM - a transfer manager"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://gtm.sourceforge.net/"
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86"
+LICENSE="GPL-"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/x11
 	x11-libs/gtk+
 	gnome-base/oaf
@@ -23,11 +19,11 @@ DEPEND="virtual/libc
 	gnome? ( gnome-base/gnome-applets )
 	ssl?   ( dev-libs/openssl )"
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	virtual/x11
 	net-misc/wget
 	>=gnome-base/gnome-libs-1.4.0.2
-	=gnome-base/orbit-0*"
+	>=gnome-base/ORBit-0.5.11"
 
 
 src_unpack() {
@@ -42,11 +38,11 @@ src_unpack() {
 			>${S}/doc/${lang}/Makefile.in
 	done
 
-	epatch ${FILESDIR}/wget-log.c.patch || die "epatch failed."
+	patch -p0 < ${FILESDIR}/wget-log.c.patch						
 }
 
 src_compile() {
-
+        
 	local myconf
 	use nls   || myconf="--disable-nls"
 	use gnome || myconf="${myconf} --disable-applet"
@@ -62,11 +58,12 @@ src_compile() {
 		--sysconfdir=/etc \
 		--without-debug \
 		$myconf || die
-
+			
 	emake || die
 }
 
 src_install() {
-
+	
 	make DESTDIR=${D} install || die
 }
+

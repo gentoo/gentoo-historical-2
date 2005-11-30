@@ -1,4 +1,3 @@
-MD5 17792debff74fc104db81b2f8b059cd7 ChangeLog 842
-MD5 dffd46174e78b327c834fc3e4b1cf848 metadata.xml 160
-MD5 096cab2224b7ab0bba92a71ccd955656 tcl-debug-2.0.ebuild 1118
+MD5 8c962abdb6abebf0fcb293ceaca419d3 tcl-debug-2.0.ebuild 1021
 MD5 843ce7fd6ebd1485509ac6a7ddaebf26 files/digest-tcl-debug-2.0 118
+MD5 843ce7fd6ebd1485509ac6a7ddaebf26 files/digest-tcl-debug-93 118

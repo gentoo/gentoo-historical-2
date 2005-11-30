@@ -1,30 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipchains/ipchains-1.3.10-r1.ebuild,v 1.6 2005/06/06 04:22:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/ipchains/ipchains-1.3.10-r1.ebuild,v 1.1 2003/03/11 21:57:03 mholzer Exp $
 
-inherit eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="legacy Linux firewall/packet mangling tools"
-HOMEPAGE="http://netfilter.filewatcher.org/ipchains/"
 SRC_URI="http://netfilter.kernelnotes.org/ipchains/${P}.tar.gz"
-
-LICENSE="GPL-2"
+HOMEPAGE="http://netfilter.filewatcher.org/ipchains/"
+KEYWORDS="x86 ppc sparc "
 SLOT="0"
-KEYWORDS="ppc sparc x86"
-IUSE=""
+LICENSE="GPL-2"
 
-DEPEND=""
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/ipchains-1.3.10-gcc34.patch
-	epatch "${FILESDIR}"/ipchains-1.3.10-fixman.patch
-	epatch "${FILESDIR}"/ipchains-1.3.10-nonroot.patch
-	sed -i \
-		-e "s/= -g -O/= ${CFLAGS}/" \
-		Makefile libipfwc/Makefile \
-		|| die "sed CFLAGS"
+	cd ${S}
+	mv Makefile Makefile.orig
+	sed -e "s/= -g -O/= ${CFLAGS}/" Makefile.orig > Makefile
+	cd ${S}/libipfwc
+	mv Makefile Makefile.orig
+	sed -e "s/= -g -O/= ${CFLAGS}/" Makefile.orig > Makefile
 }
 
 src_compile() {
@@ -34,9 +29,9 @@ src_compile() {
 
 src_install() {
 	into /
-	dosbin ipchains || die
+	dosbin ipchains
 	doman ipfw.4 ipchains.8
-	dodoc README
+	dodoc COPYING README
 	docinto ps
 	dodoc ipchains-quickref.ps
 }

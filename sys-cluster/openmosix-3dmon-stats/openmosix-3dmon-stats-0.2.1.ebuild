@@ -1,20 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosix-3dmon-stats/openmosix-3dmon-stats-0.2.1.ebuild,v 1.5 2004/07/15 03:04:10 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/openmosix-3dmon-stats/openmosix-3dmon-stats-0.2.1.ebuild,v 1.1 2004/03/21 19:49:31 tantive Exp $
 
 S=${WORKDIR}/mosstatd-${PV}
 DESCRIPTION="Statistics daemon for three dimensional openmosix's monitoring tool"
 SRC_URI="mirror://sourceforge/threedmosmon/mosstatd-${PV}.tar.gz"
 HOMEPAGE="http://sourceforge.net/projects/threedmosmon"
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-cluster/openmosix-user"
 RDEPEND="${DEPEND}"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="-* ~x86"
-IUSE=""
 
 pkg_setup() {
 	if [ -z "`readlink /usr/src/linux|grep openmosix`" ]; then

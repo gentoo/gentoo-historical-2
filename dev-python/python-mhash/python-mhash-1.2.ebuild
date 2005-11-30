@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-mhash/python-mhash-1.2.ebuild,v 1.3 2005/02/18 21:07:45 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-mhash/python-mhash-1.2.ebuild,v 1.1 2004/05/24 06:39:18 robbat2 Exp $
 
 inherit distutils
 
@@ -11,7 +11,7 @@ DEPEND="virtual/python
 		app-crypt/mhash"
 IUSE=""
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 LICENSE="GPL-2"
 
 src_unpack() {

@@ -1,18 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/openbox/openbox-3.2-r1.ebuild,v 1.10 2005/02/05 23:30:46 superlag Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/openbox/openbox-3.2-r1.ebuild,v 1.1 2004/05/06 16:20:41 tseng Exp $
 
-inherit eutils
-
+S=${WORKDIR}/${P/_/-}
 DESCRIPTION="Openbox is a standards compliant, fast, light-weight, extensible window manager."
-HOMEPAGE="http://icculus.org/openbox/"
-SRC_URI="http://icculus.org/openbox/releases/${P/_/-}.tar.gz
-	mirror://gentoo/ob-themes-usability.tar.bz2"
 
-LICENSE="GPL-2"
-SLOT="3"
-KEYWORDS="x86 ppc sparc ~alpha hppa amd64"
+SRC_URI="http://icculus.org/openbox/releases/${P/_/-}.tar.gz
+		mirror://gentoo/ob-themes-usability.tar.bz2"
+
+HOMEPAGE="http://icculus.org/openbox/"
 IUSE="nls"
+SLOT="3"
 
 RDEPEND="virtual/xft
 	virtual/x11
@@ -22,7 +20,8 @@ RDEPEND="virtual/xft
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
-S=${WORKDIR}/${P/_/-}
+LICENSE="GPL-2"
+KEYWORDS="x86"
 
 src_unpack() {
 	unpack ${A}
@@ -31,11 +30,14 @@ src_unpack() {
 }
 
 src_compile() {
-	econf `use_enable nls` || die
+
+	econf \
+		`use_enable nls` || die
 	emake || die
 }
 
-src_install() {
+src_install () {
+
 	dodir /etc/X11/Sessions
 	echo "/usr/bin/openbox" > ${D}/etc/X11/Sessions/openbox
 	fperms a+x /etc/X11/Sessions/openbox

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-console/vmware-console-2.5.1.5336.ebuild,v 1.8 2005/01/01 14:19:18 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/vmware-console/vmware-console-2.5.1.5336.ebuild,v 1.1 2004/04/09 23:12:22 wolf31o2 Exp $
 
 MY_PN="VMware-console-2.5.1-5336.tar.gz"
 S="${WORKDIR}/vmware-console-distrib"
@@ -11,18 +11,18 @@ SRC_URI="${MY_PN}"
 
 LICENSE="vmware-console"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 RESTRICT="fetch nostrip"
+IUSE=""
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/x11"
 
 pkg_nofetch() {
 	einfo "Please place ${FN} in ${DISTDIR}"
 }
 
-src_install() {
+src_install () {
 	dodir /opt/vmware/bin
 	cp -a bin/* ${D}/opt/vmware/bin/
 

@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnuplot/gnuplot-3.8j-r1.ebuild,v 1.6 2005/01/02 06:45:19 j4rg0n Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gnuplot/gnuplot-3.8j-r1.ebuild,v 1.1 2004/04/09 04:01:51 lv Exp $
 
 MY_P="${P}.0"
 S=${WORKDIR}/${MY_P}
@@ -16,7 +14,7 @@ KEYWORDS="-x86 -ppc -sparc -alpha amd64 -ia64"
 IUSE="X readline svga plotutils pdflib doc"
 
 # Old png driver seems to have problems; switching to gd instead
-DEPEND=">=media-libs/gd-2
+DEPEND=">=media-libs/libgd-2
 	pdflib? ( media-libs/pdflib )
 	doc? ( virtual/tetex )
 	X? ( virtual/x11 )
@@ -57,7 +55,7 @@ src_compile() {
 	cd ${S}
 	emake || die
 
-	if use doc ; then
+	if [ -n "`use doc`" ] ; then
 		cd docs
 		make pdf || die
 	fi
@@ -71,7 +69,7 @@ src_install () {
 }
 
 pkg_postinst() {
-	if use svga ; then
+	if [ "`use svga`" ] ; then
 		einfo "In order to enable ordinary users to use SVGA console graphics"
 		einfo "gnuplot needs to be set up as setuid root.  Please note that"
 		einfo "this is usually considered to be a security hazard."

@@ -1,29 +1,31 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4-r3.ebuild,v 1.8 2005/11/17 13:50:56 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4-r3.ebuild,v 1.1 2005/03/19 17:51:20 pythonhead Exp $
 
 # NOTE about python-portage interactions :
 # - Do not add a pkg_setup() check for a certain version of portage
 #   in dev-lang/python. It _WILL_ stop people installing from
 #   Gentoo 1.4 images.
 
-inherit eutils flag-o-matic python multilib versionator
+inherit eutils flag-o-matic python multilib
 
-PYVER_MAJOR=$(get_major_version)
-PYVER_MINOR=$(get_version_component_range 2)
+PYVER_MAJOR="`echo ${PV%_*} | cut -d '.' -f 1`"
+PYVER_MINOR="`echo ${PV%_*} | cut -d '.' -f 2`"
 PYVER="${PYVER_MAJOR}.${PYVER_MINOR}"
 MY_P="Python-${PV}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="A really great language"
-HOMEPAGE="http://www.python.org/"
 SRC_URI="http://www.python.org/ftp/python/${PYVER}/${MY_P}.tar.bz2"
+HOMEPAGE="http://www.python.org"
 
+IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X"
 LICENSE="PSF-2.2"
 SLOT="2.4"
-KEYWORDS="~x86 ~ppc ~sparc ~arm ~hppa ~amd64 ~s390 ~alpha ~ia64 ~mips"
-IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X nocxx"
 
-DEPEND=">=sys-libs/zlib-1.1.3
+KEYWORDS="~x86 ~ppc ~sparc ~arm ~hppa ~amd64 ~s390 ~alpha ~ia64 ~mips"
+
+DEPEND="virtual/libc
+	>=sys-libs/zlib-1.1.3
 	!build? (
 		X? ( tcltk? ( >=dev-lang/tk-8.0 ) )
 		ncurses? ( >=sys-libs/ncurses-5.2 readline? ( >=sys-libs/readline-4.1 ) )
@@ -34,24 +36,16 @@ DEPEND=">=sys-libs/zlib-1.1.3
 		dev-libs/expat
 	)"
 
-# NOTE: The dev-python/python-fchksum RDEPEND is needed so that this python 
-#       provides the functionality expected from previous pythons.
+RDEPEND="${DEPEND} dev-python/python-fchksum"
 
-# NOTE: python-fchksum is only a RDEPEND and not a DEPEND since we don't need
-#       it to compile python. We just need to ensure that when we install
-#       python, we definitely have fchksum support. - liquidx
-
-RDEPEND="${DEPEND} 	dev-python/python-fchksum"
+# The dev-python/python-fchksum RDEPEND is needed to that this python provides
+# the functionality expected from previous pythons.
 
 PROVIDE="virtual/python"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-
-	# unnecessary termcap dep in readline (#79013)
-	epatch ${FILESDIR}/${PN}-2.4-readline.patch
-
 	#Fixes security vulnerability in XML-RPC server - pythonhead (06 Feb 05)
 	#http://www.python.org/security/PSF-2005-001/
 	epatch ${FILESDIR}/${PN}-2.4-xmlrpc.patch
@@ -74,11 +68,6 @@ src_unpack() {
 		Modules/Setup.dist \
 		Modules/getpath.c \
 		setup.py
-
-	# fix os.utime() on hppa. utimes it not supported but unfortunately reported as working - gmsoft (22 May 04)
-	# PLEASE LEAVE THIS FIX FOR NEXT VERSIONS AS IT'S A CRITICAL FIX !!!
-	[ "${ARCH}" = "hppa" ] && sed -e 's/utimes //' -i ${S}/configure
-
 }
 
 src_configure() {
@@ -120,7 +109,7 @@ src_compile() {
 
 	local myconf
 	#if we are creating a new build image, we remove the dependency on g++
-	if use build && ! use bootstrap || use nocxx ; then
+	if use build && ! use bootstrap; then
 		myconf="--with-cxx=no"
 	fi
 
@@ -172,7 +161,7 @@ src_install() {
 	if use build ; then
 		rm -rf ${D}/usr/lib/python${PYVER}/{test,encodings,email,lib-tk,bsddb/test}
 	else
-		use elibc_uclibc && rm -rf ${D}/usr/lib/python${PYVER}/{test,bsddb/test}
+		use uclibc && rm -rf ${D}/usr/lib/python${PYVER}/{test,bsddb/test}
 		use berkdb || rm -rf ${D}/usr/lib/python${PYVER}/bsddb
 		( use !X || use !tcltk ) && rm -rf ${D}/usr/lib/python${PYVER}/lib-tk
 	fi

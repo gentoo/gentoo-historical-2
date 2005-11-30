@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.1-r1.ebuild,v 1.10 2005/08/24 08:16:52 lcars Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.1-r1.ebuild,v 1.1 2004/12/07 01:59:31 g2boojum Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.sendmail.org/pub/${PN}/${PN}.${PV}.tar.gz"
 
 LICENSE="Sendmail"
 SLOT="0"
-KEYWORDS="x86 ppc sparc hppa alpha ia64 s390 amd64 ppc64"
+KEYWORDS="~x86 ~ppc ~sparc ~hppa ~alpha ~ia64 ~s390 ~amd64 ~ppc64"
 IUSE="ssl ldap sasl tcpd mbox milter mailwrapper ipv6"
 
 DEPEND="net-mail/mailbase
@@ -129,7 +129,7 @@ src_install () {
 
 	newdoc cf/README README.cf
 	newdoc cf/cf/README README.install-cf
-	cp -pPR cf/* ${D}/usr/share/sendmail-cf
+	cp -a cf/* ${D}/usr/share/sendmail-cf
 	insinto /etc/mail
 	if use mbox
 	then
@@ -137,8 +137,7 @@ src_install () {
 	else
 		newins ${FILESDIR}/sendmail-procmail.mc sendmail.mc
 	fi
-	m4 ${D}/usr/share/sendmail-cf/m4/cf.m4 ${D}/etc/mail/sendmail.mc \
-		> ${D}/etc/mail/sendmail.cf
+	m4 ${D}/etc/mail/sendmail.mc > ${D}/etc/mail/sendmail.cf
 	echo "# local-host-names - include all aliases for your machine here" \
 		> ${D}/etc/mail/local-host-names
 	cat << EOF > ${D}/etc/mail/trusted-users

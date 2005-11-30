@@ -1,19 +1,6 @@
 # ChangeLog for media-plugins/xmms-lyrc
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-lyrc/ChangeLog,v 1.5 2005/10/30 23:12:40 metalgod Exp $
-
-*xmms-lyrc-0.3-r1 (30 Oct 2005)
-
-  30 Oct 2005; Luis Medinas <metalgod@gentoo.org>
-  +files/xmms-lyrc-0.3-xml-fix.patch, +xmms-lyrc-0.3-r1.ebuild:
-  Added a patch to fix invalid xml-data received from servers. Thanks to
-  Arudil <mmueller12345@yahoo.de> on bug #93665.
-
-  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> xmms-lyrc-0.3.ebuild:
-  Stable amd64, sparc, x86...
-
-  18 Jun 2004; David Holm <dholm@gentoo.org> xmms-lyrc-0.3.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-lyrc/ChangeLog,v 1.1 2004/06/16 19:39:41 eradicator Exp $
 
 *xmms-lyrc-0.3 (16 Jun 2004)
 

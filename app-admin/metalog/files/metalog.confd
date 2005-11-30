@@ -1,9 +1,4 @@
-# /etc/conf.d/metalog
-# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/files/metalog.confd,v 1.6 2005/03/15 03:21:34 vapier Exp $
+# Config file for /etc/init.d/metalog
 
-# Some useful options:
-#  -a   Log with buffering
-#  -s   Log without buffering
-# See `metalog --help` for more
-
-METALOG_OPTS=""
+# Add '-s' if you dont want buffering.  (See things realtime)
+METALOG_OPTS="-B"

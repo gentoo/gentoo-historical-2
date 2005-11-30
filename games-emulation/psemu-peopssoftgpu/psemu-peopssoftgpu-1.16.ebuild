@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-peopssoftgpu/psemu-peopssoftgpu-1.16.ebuild,v 1.2 2005/04/03 07:47:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/psemu-peopssoftgpu/psemu-peopssoftgpu-1.16.ebuild,v 1.1 2005/02/19 07:28:08 mr_bones_ Exp $
 
 inherit eutils games
 
@@ -26,21 +26,20 @@ S=${WORKDIR}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	edos2unix src/makes/mk.fpse
-	epatch "${FILESDIR}"/${P}-makefile-cflags.patch
-	epatch "${FILESDIR}"/${P}-fix-noxf86vm.patch
+	return 0
+	epatch "${FILESDIR}/${PV}-makefile-cflags.patch"
 
-	if [[ ${ARCH} != "x86" ]] ; then
+	if [ "${ARCH}" != "x86" ] ; then
 		cd src
 		sed -i \
 			-e "s/^CPU = i386/CPU = ${ARCH}/g" \
 			-e '/^XF86VM =/s:TRUE:FALSE:' makes/mk.x11 \
-			|| die "sed non-x86 failed"
+			|| die "sed failed"
 		if use sdl ; then
 			sed -i \
 				-e "s/OBJECTS.*i386.o//g" \
 				-e "s/-D__i386__//g" makes/mk.fpse \
-				|| die "sed sdl failed"
+				|| die "sed failed"
 		fi
 	fi
 }

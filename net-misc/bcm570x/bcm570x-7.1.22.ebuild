@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/bcm570x/bcm570x-7.1.22.ebuild,v 1.4 2005/01/21 18:40:50 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bcm570x/bcm570x-7.1.22.ebuild,v 1.1 2004/04/09 03:33:05 steel300 Exp $
 
 MY_P=${P/570x/5700}
 SRC_URI="http://www.broadcom.com/docs/driver_download/570x/${MY_P}.tar.gz"
@@ -10,7 +10,6 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE=""
 
 S=${WORKDIR}/${PN/570x/5700}-${PV}/src
 

@@ -1,8 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xfig/xfig-3.2.4-r1.ebuild,v 1.10 2004/11/01 20:17:28 corsair Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2.
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xfig/xfig-3.2.4-r1.ebuild,v 1.1 2003/03/10 11:34:45 seemant Exp $
 
 inherit eutils
+
+IUSE=""
 
 MY_P=${PN}.${PV}
 S=${WORKDIR}/${MY_P}
@@ -11,15 +13,15 @@ HOMEPAGE="http://www.xfig.org"
 SRC_URI="http://www.xfig.org/xfigdist/${MY_P}.full.tar.gz
 	mirror://gentoo/${P}-gentoo.diff.bz2"
 
-LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ppc ~sparc alpha ~hppa amd64 ~ppc64"
-IUSE=""
+LICENSE="BSD"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa"
 
 DEPEND="virtual/x11
 	x11-libs/Xaw3d
 	media-libs/jpeg
 	media-libs/libpng"
+
 RDEPEND="${DEPEND}
 	media-gfx/transfig
 	media-libs/netpbm"
@@ -36,8 +38,10 @@ src_compile() {
 	make || die
 }
 
-src_install() {
-	make DESTDIR=${D} install || die
+src_install () {
+	make \
+		DESTDIR=${D} \
+		install || die
 
 	make \
 		DESTDIR=${D} \

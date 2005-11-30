@@ -1,18 +1,6 @@
 # ChangeLog for dev-embedded/picasm
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/picasm/ChangeLog,v 1.6 2005/09/16 21:45:39 ciaranm Exp $
-
-  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-*picasm-1.12c (20 May 2005)
-
-  20 May 2005; Daniel Black <dragonheart@gentoo.org> -picasm-1.12b.ebuild,
-  +picasm-1.12c.ebuild:
-  Security bump as per bug #93351 thanks to Jean-François Brunette
-
-  05 Mar 2004; Daniel Black <dragonheart@gentoo.org> picasm-1.12b.ebuild:
-  Marked stable on x86
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/picasm/ChangeLog,v 1.1 2003/10/20 08:28:11 robbat2 Exp $
 
 *picasm-1.12b (20 Oct 2003)
 

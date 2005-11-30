@@ -1,24 +1,8 @@
 # ChangeLog for net-analyzer/zodiac
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zodiac/ChangeLog,v 1.6 2005/01/29 05:12:52 dragonheart Exp $
-
-  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> zodiac-0.4.9-r1.ebuild,
-  zodiac-0.4.9.ebuild:
-  changed net-libs/libpcap depend to virtual/libcap
-
-  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
-  zodiac-0.4.9-r1.ebuild, zodiac-0.4.9.ebuild:
-  Added missing IUSE. Added metadata.
-
-*zodiac-0.4.9-r1 (21 Aug 2003)
-
-  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
-  Patch to compile against SLOT-ed libnet-1.0.x #17772.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zodiac/ChangeLog,v 1.1 2003/02/26 02:55:12 vapier Exp $
 
 *zodiac-0.4.9 (25 Feb 2003)
-
-  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> zodiac-0.4.9.ebuild :
-  Fixed Depend to libnet-1.0*. Closes #17017.
 
   25 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by me for #11784.

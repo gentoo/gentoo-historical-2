@@ -1,19 +1,28 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/whatmask/whatmask-1.1.ebuild,v 1.14 2005/07/30 18:41:26 swegener Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Ben Lutgens <lamer@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/net-misc/whatmask/whatmask-1.1.ebuild,v 1.1 2001/09/25 15:58:58 lamer Exp $
 
-IUSE=""
+S=${WORKDIR}/${P}
 DESCRIPTION="little C program to compute different subnet mask notations"
-HOMEPAGE="http://www.laffeycomputer.com/whatmask.html"
 SRC_URI="http://downloads.laffeycomputer.com/current_builds/whatmask/${P}.tar.gz"
+HOMEPAGE="http://www.laffeycomputer.com/whatmask.html"
+DEPEND="virtual/glibc"
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 sparc"
+#RDEPEND=""
 
-DEPEND="virtual/libc"
-
-src_install() {
-	make DESTDIR="${D}" install || die
-	dodoc README INSTALL AUTHORS ChangeLog NEWS
+src_compile() {
+	try ./configure --infodir=/usr/share/info --mandir=/usr/share/man --prefix=/usr --host=${CHOST}
+	
+	emake || die
+	#make || die
 }
+
+src_install () {
+	
+	# try make prefix=${D}/usr install
+
+    try make DESTDIR=${D} install
+	 dodoc README INSTALL AUTHORS ChangeLog NEWS
+}
+

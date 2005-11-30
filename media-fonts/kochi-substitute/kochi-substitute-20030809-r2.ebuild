@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/kochi-substitute/kochi-substitute-20030809-r2.ebuild,v 1.4 2004/10/05 03:23:11 tgall Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/kochi-substitute/kochi-substitute-20030809-r2.ebuild,v 1.1 2004/05/19 05:11:19 usata Exp $
 
 IUSE="X"
 
@@ -11,9 +11,9 @@ SRC_URI="mirror://sourceforge.jp/efont/5411/${P}.tar.bz2"
 # naga10 has free-noncomm license
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="~ia64 ~x86 ~alpha ~sparc ~ppc ~hppa ~amd64 ~mips ppc64"
+KEYWORDS="~ia64 ~x86 ~alpha ~sparc ~ppc ~hppa ~amd64 ~mips"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	X? ( virtual/x11 )"
 
 S=${WORKDIR}/${PN}-${PV:0:8}

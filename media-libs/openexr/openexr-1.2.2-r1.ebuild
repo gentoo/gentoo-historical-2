@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/openexr-1.2.2-r1.ebuild,v 1.4 2005/10/22 22:57:43 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openexr/openexr-1.2.2-r1.ebuild,v 1.1 2005/07/21 20:45:01 carlo Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.openexr.com"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~hppa"
+KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc examples fltk"
 
 RDEPEND="virtual/x11
@@ -35,8 +35,6 @@ src_unpack() {
 	unpack ${A}
 	sed -i -e "s:OpenEXR-@OPENEXR_VERSION@:\$\(P\):" ${S}/IlmImfExamples/Makefile.in
 	sed -i -e "s:NVSDK_CXXFLAGS=\"\":NVSDK_CXXFLAGS=\"-DUNIX\":" ${S}/acinclude.m4
-
-	epatch ${FILESDIR}/openexr-1.2.2-gcc4.patch
 }
 
 src_compile() {
@@ -47,7 +45,7 @@ src_compile() {
 
 src_install () {
 	make DESTDIR="${D}" install || die "install failed"
-	dodoc AUTHORS Changelog README* ChangeLog LICENSE NEWS
+	dodoc AUTHORS Changelog README* INSTALL ChangeLog LICENSE NEWS
 	if use examples && [ "${P}" != "${PF}" ] ; then
 		mv ${D}/usr/share/doc/${P}/examples ${D}/usr/share/doc/${PF}/examples
 	fi

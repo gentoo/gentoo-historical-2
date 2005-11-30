@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/SVN-Simple/SVN-Simple-0.26.ebuild,v 1.4 2005/05/07 02:54:03 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/SVN-Simple/SVN-Simple-0.26.ebuild,v 1.1 2004/11/27 06:11:36 pclouds Exp $
 
 inherit perl-module
 
 DESCRIPTION="SVN::Simple::Edit - Simple interface to SVN::Delta::Editor"
-SRC_URI="mirror://cpan/authors/id/C/CL/CLKAO/${P}.tar.gz"
+SRC_URI="http://www.cpan.org/authors/id/C/CL/CLKAO/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/authors/id/C/CL/CLKAO/${P}.readme"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="~x86 ~amd64 ~sparc"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="${DEPEND}

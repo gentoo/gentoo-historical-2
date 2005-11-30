@@ -1,65 +1,6 @@
 # ChangeLog for app-i18n/nabi
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/nabi/ChangeLog,v 1.18 2005/06/05 11:44:59 hansmi Exp $
-
-  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> nabi-0.14.ebuild:
-  Stable on ppc.
-
-*nabi-0.15 (09 May 2005)
-
-  09 May 2005; Mamoru KOMACHI <usata@gentoo.org> metadata.xml,
-  nabi-0.14.ebuild, +nabi-0.15.ebuild:
-  Version bumped. Requested by Choe Hwanjin ;) This closes bug #91844.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> nabi-0.13.ebuild:
-  Stable on ppc.
-
-  12 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> nabi-0.13.ebuild,
-  nabi-0.14.ebuild:
-  added ~amd64 to KEYWORDS, fixes #76981. also removed default src_compile and
-  COPYING doesnt get installed any longer.
-
-*nabi-0.14 (31 Aug 2004)
-
-  31 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> -nabi-0.10.ebuild,
-  -nabi-0.12.ebuild, +nabi-0.14.ebuild, -nabi-0.9.ebuild:
-  Version bumped. This closes bug #62075. Cleaned old versions.
-
-  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
-  nabi-0.10.ebuild, nabi-0.12.ebuild, nabi-0.13.ebuild, nabi-0.9.ebuild:
-  QA - IUSE fix
-
-  29 Apr 2004; David Holm <dholm@gentoo.org> nabi-0.13.ebuild:
-  Added to ~ppc.
-
-*nabi-0.13 (29 Apr 2004)
-
-  29 Apr 2004; Jay Kwak <jayskwak@gentoo.org> nabi-0.13.ebuild,
-  version update
-
-  13 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> nabi-0.10.ebuild,
-  nabi-0.12.ebuild, nabi-0.9.ebuild:
-  Don't assign default to S; header fix
-
-*nabi-0.12 (26 Feb 2004)
-  26 Feb 2004: Jay Kwak <jayskwak@gentoo.org> nabi-0.12.ebuild:
-  ChangeLog : changed KEYWORDS to x86
-
-*nabi-0.10 (25 Jan 2004)
-  25 Jan 2004: Jay Kwak <jayskwak@gentoo.org> nabi-0.10.ebuild:
-  ChangeLog : changed to x86
-
-*nabi-0.12 (25 Jan 2004)
-  25 Jan 2004: Jay Kwak <jayskwak@gentoo.org> nabi-0.12.ebuild:
-  version update
-
-*nabi-0.10 (17 Nov 2003)
-  17 Nov 2003: Jay Kwak <jayskwak@gentoo.org> nabi-0.10.ebuild:
-  version update
-
-*nabi-0.9 (17 Nov 2003)
-  17 Nov 2003: Jay Kwak <jayskwak@gentoo.org> nabi-0.9.ebuild:
-  ChangeLog : changed to x86
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/nabi/ChangeLog,v 1.1 2003/10/26 03:35:32 jayskwak Exp $
 
 *nabi-0.9 (26 Oct 2003)
 

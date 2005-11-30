@@ -1,28 +1,6 @@
 # ChangeLog for dev-embedded/sdcc-cvs
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc-cvs/ChangeLog,v 1.8 2005/09/28 07:59:46 dragonheart Exp $
-
-  28 Sep 2005; Daniel Black <dragonheart@gentoo.org>
-  sdcc-cvs-2.4.0-r1.ebuild:
-  unstabilisied x86 due to cvs
-
-  27 Sep 2005; Simon Stelling <blubb@gentoo.org> sdcc-cvs-2.4.0-r1.ebuild:
-  remove stable amd64 keyword, cvs live builds should never get marked stable
-
-  28 Jul 2005; Daniel Black <dragonheart@gentoo.org>
-  sdcc-cvs-2.4.0-r1.ebuild:
-  correct bad scripting
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> sdcc-cvs-2.4.0-r1.ebuild:
-  stable on amd64
-
-*sdcc-cvs-2.4.0-r1 (16 Dec 2004)
-
-  16 Dec 2004; Daniel Black <dragonheart@gentoo.org>
-  +sdcc-cvs-2.4.0-r1.ebuild, -sdcc-cvs-2.4.0.ebuild:
-  changed make DESTDIR=${D} to make... install which kinda help. Thanks for bug
-  #74611 by Stefan Nickl <snickl@snickl.freaks.de> for bringing it to my
-  attention
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc-cvs/ChangeLog,v 1.1 2004/09/28 07:29:20 dragonheart Exp $
 
 *sdcc-cvs-2.4.0 (28 Sep 2004)
 

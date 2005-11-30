@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rsbac-admin/rsbac-admin-1.2.4.ebuild,v 1.6 2005/05/05 15:57:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rsbac-admin/rsbac-admin-1.2.4.ebuild,v 1.1 2005/02/10 11:24:55 kang Exp $
 
 inherit eutils
 
-IUSE="debug pam"
+IUSE="debug"
 
 # RSBAC Adming packet name
 ADMIN=rsbac-admin-v${PV}
@@ -15,16 +15,14 @@ SRC_URI="http://rsbac.org/download/code/v${PV}/rsbac-admin-v${PV}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
-NSS="1.2.4"
+KEYWORDS="~x86"
 
 DEPEND="dev-util/dialog
-	pam? ( sys-libs/pam )
+	sys-libs/pam
 	sys-apps/baselayout
-	|| (
-		>=sys-kernel/rsbac-sources-2.4.29-r1
-		>=sys-kernel/rsbac-dev-sources-2.6.10-r3
-	)"
+	|| ( >=sys-kernel/rsbac-sources-2.4.29-r1
+	>=sys-kernel/rsbac-dev-sources-2.6.10-r3 )"
+
 
 RDEPEND=">=sys-libs/ncurses-5.2"
 
@@ -44,13 +42,8 @@ src_compile() {
 	a RSBAC-enabled kernel ? Please check the documentation at:
 	http://hardened.gentoo.org/rsbac"
 	emake -C contrib/rsbac-klogd-2.0 || die "cannot make rsbac-klogd"
-	cd contrib/nss_rsbac
-	LD="../../src/librsbac.so.$NSS" econf  || die "cannot conf nss_rsbac"
-	cd ${WORKDIR}/${ADMIN}
 	emake -C contrib/nss_rsbac || die "cannot make nss_rsbac"
-	use pam && {
-		emake -C contrib/pam_rsbac || die "cannot make pam_rsbac"
-	}
+	emake -C contrib/pam_rsbac || die "cannot make pam_rsbac"
 	if use debug; then
 		emake -C contrib/regression || die "cannot make regression"
 	fi
@@ -69,10 +62,9 @@ src_install() {
 	newins ${FILESDIR}/rsbac.conf rsbac.conf ${FILESDIR}/nsswitch.conf
 	exeinto /etc/init.d
 	newinitd ${FILESDIR}/rklogd.init rklogd
-	use pam && {
-		insinto /lib/security
-		newins ${WORKDIR}/${ADMIN}/contrib/pam_rsbac/pam_rsbac.so pam_rsbac.so
-	}
+	insinto /lib/security
+	newins ${WORKDIR}/${ADMIN}/contrib/pam_rsbac/pam_rsbac.so
+
 	dodir /secoff
 	keepdir /secoff
 	dodir /secoff/log
@@ -80,8 +72,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	enewgroup secoff 400 || die "problem adding group secoff"
-	enewuser secoff 400 /bin/bash /secoff secoff || die "problem adding user secoff"
+	if ! groupmod secoff; then
+		enewgroup secoff 400 || die "problem adding group secoff"
+	fi
+
+	if ! id secoff; then
+		enewuser secoff 400 /bin/bash /secoff secoff || die "problem adding user secoff"
+	fi
 
 	chmod 700 /secoff /secoff/log || die "problem changing permissions of /secoff and/or /secoff/log"
 	chown secoff:secoff -R /secoff || die "problem changing ownership of /secoff"

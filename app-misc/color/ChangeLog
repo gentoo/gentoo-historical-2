@@ -1,30 +1,6 @@
 # ChangeLog for app-misc/color
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/color/ChangeLog,v 1.11 2005/11/22 02:36:04 jer Exp $
-
-  22 Nov 2005; Jeroen Roovers <jer@gentoo.org> color-1.1.ebuild:
-  Marked ~hppa (bug 109192).
-
-  02 Jun 2005; Yuta SATOH <nigoro@gentoo.org> color-1.1.ebuild:
-  Stable on ppc64
-
-  21 Apr 2005; Yuta SATOH <nigoro@gentoo.org> color-1.1.ebuild:
-  added ~ppc64
-
-  31 Oct 2004; Ciaran McCreesh <ciaranm@gentoo.org> color-1.1.ebuild:
-  Stable on sparc, mips
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> color-1.1.ebuild:
-  Masked color-1.1.ebuild stable for ppc
-
-  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> color-1.1.ebuild:
-  Added ~sparc, ~mips
-
-  25 Oct 2003; Tavis Ormandy <taviso@gentoo.org> color-1.1.ebuild:
-  marking stable.
-
-  24 Oct 2003; Tavis Ormandy <taviso@gentoo.org> color-1.1.ebuild:
-  some usage info moved to pkg_postinst, minor typo.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/color/ChangeLog,v 1.1 2003/10/24 19:34:27 taviso Exp $
 
 *color-1.1 (24 Oct 2003)
 

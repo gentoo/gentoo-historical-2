@@ -1,30 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/less/less-382-r2.ebuild,v 1.15 2005/08/18 04:02:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/less/less-382-r2.ebuild,v 1.1 2004/06/17 00:03:19 agriffis Exp $
 
 DESCRIPTION="Excellent text file viewer"
-HOMEPAGE="http://www.greenwoodsoftware.com/less/"
+HOMEPAGE="http://www.greenwoodsoftware.com/"
 SRC_URI="http://www.greenwoodsoftware.com/less/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
 IUSE=""
 
-DEPEND=">=sys-libs/ncurses-5.2"
-PROVIDE="virtual/pager"
+DEPEND="virtual/glibc
+	>=sys-libs/ncurses-5.2"
 
 src_install() {
 	dobin less lessecho lesskey || die
-	newbin "${FILESDIR}"/lesspipe.sh lesspipe.sh
+	newbin ${FILESDIR}/lesspipe.sh-r2 lesspipe.sh
 
 	# Needed for groff-1.18 and later ...
-	echo "LESS=\"-R\"" > 70less
-	doenvd 70less
+	dodir /etc/env.d
+	echo "LESS=\"-R\"" > ${D}/etc/env.d/70less
 
-	for m in *.nro ; do
-		newman ${m} ${m/nro/1}
-	done
+	newman lesskey.nro lesskey.1
+	newman less.nro less.1
 
 	dodoc NEWS README
 }

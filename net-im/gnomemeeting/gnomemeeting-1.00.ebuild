@@ -1,21 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.00.ebuild,v 1.13 2005/02/06 22:53:39 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.00.ebuild,v 1.1 2004/03/17 00:14:07 stkn Exp $
 
-inherit eutils gnome2
+inherit gnome2
 
-DESCRIPTION="H.323 compatible Gnome VoIP/videoconferencing client"
+DESCRIPTION="Gnome NetMeeting client"
 HOMEPAGE="http://www.gnomemeeting.org"
 # now part of gnome-2.4
 SRC_URI="http://www.gnomemeeting.org/includes/clicks_counter.php?http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~sparc amd64 ppc"
-IUSE="ipv6 sdl ssl"
+KEYWORDS="~x86"
+IUSE="sdl ssl ipv6"
 
-RDEPEND="~dev-libs/pwlib-1.6.3
-	~net-libs/openh323-1.13.2
+RDEPEND=">=dev-libs/pwlib-1.6.3-r1
+	>=net-libs/openh323-1.13.2-r1
 	>=net-nds/openldap-2.0.25
 	ssl? ( >=dev-libs/openssl-0.9.6g )
 	sdl? ( >=media-libs/libsdl-1.2.4 )
@@ -29,7 +29,7 @@ RDEPEND="~dev-libs/pwlib-1.6.3
 	>=gnome-base/gconf-2.0
 	>=dev-libs/libxml2-2.6.1
 	>=media-sound/esound-0.2.28
-	>=gnome-base/orbit-2.5.0"
+	>=gnome-base/ORBit2-2.5.0"
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0
@@ -38,14 +38,6 @@ DEPEND="${RDEPEND}
 	app-text/scrollkeeper"
 
 MAKEOPTS="${MAKEOPTS} -j1"
-
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	# closes #80232
-	epatch ${FILESDIR}/${P}-gcc34.patch
-}
 
 src_compile() {
 
@@ -56,7 +48,7 @@ src_compile() {
 	myconf="${myconf} --with-openh323-includes=/usr/include/openh323"
 	myconf="${myconf} --with-openh323-libs=/usr/lib"
 
-	if use ssl; then
+	if [ -n "`use ssl`" ]; then
 		myconf="${myconf} --with-openssl-libs=/usr/lib"
 		myconf="${myconf} --with-openssl-includes=/usr/include/openssl"
 	fi

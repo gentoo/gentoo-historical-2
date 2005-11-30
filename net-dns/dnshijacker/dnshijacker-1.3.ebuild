@@ -1,21 +1,21 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnshijacker/dnshijacker-1.3.ebuild,v 1.5 2005/01/29 21:18:40 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnshijacker/dnshijacker-1.3.ebuild,v 1.1 2003/03/07 22:52:56 mholzer Exp $
 
 # Note: Archive file and internal directory structure lack version numbers
-# so a difference in the digest file _may_ mean its a newer version
+# so a difference in the digest file _may_ mean its a newer version 
+S=${WORKDIR}/${P}
 DESCRIPTION="dnshijacker is a libnet/libpcap based packet sniffer and spoofer"
 HOMEPAGE="http://pedram.redhive.com/projects.php"
 SRC_URI="http://pedram.redhive.com/downloads/${P}.tar.gz"
 SLOT="0"
 
 # Note: License is GPL according to correspondence with software author
-# Pedram Amini <pedram@redhive.com>
+# Pedram Amini <pedram@redhive.com> 
 LICENSE="GPL-2"
 KEYWORDS="x86"
-IUSE=""
 
-DEPEND="virtual/libpcap
+DEPEND=">=net-libs/libpcap-0.7.1
 		=net-libs/libnet-1.0*"
 
 src_compile() {
@@ -30,7 +30,7 @@ src_install() {
 
 	dosbin dnshijacker ask_dns answer_dns
 
-	insinto /etc/dnshijacker
+	insinto /usr/share/dnshijacker
 	doins ftable
 
 	dodoc README

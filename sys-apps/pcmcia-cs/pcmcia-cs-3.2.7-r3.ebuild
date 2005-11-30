@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcmcia-cs/pcmcia-cs-3.2.7-r3.ebuild,v 1.5 2005/07/07 10:47:47 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcmcia-cs/pcmcia-cs-3.2.7-r3.ebuild,v 1.1 2005/04/12 19:09:07 brix Exp $
 
 inherit linux-info eutils
 
@@ -14,14 +14,13 @@ SRC_URI="mirror://sourceforge/pcmcia-cs/${P}.tar.gz
 
 HOMEPAGE="http://pcmcia-cs.sourceforge.net"
 IUSE="X trusted build apm pnp nocardbus"
-RDEPEND="!sys-apps/pcmcia-cs-cis
+DEPEND="virtual/os-headers
 		>=sys-apps/sed-4
 		X? ( virtual/x11 )"
-DEPEND="${RDEPEND} virtual/os-headers"
+RDEPEND=""
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ppc amd64"
-PROVIDE="virtual/pcmcia"
+KEYWORDS="~x86 ppc amd64 ~mips"
 
 src_unpack() {
 	unpack ${P}.tar.gz || die "unpack failed"

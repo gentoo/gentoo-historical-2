@@ -1,16 +1,6 @@
 # ChangeLog for app-editors/hexcurse
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/hexcurse/ChangeLog,v 1.6 2005/02/20 05:04:25 gongloo Exp $
-
-  19 Feb 2005; <gongloo@gentoo.org> hexcurse-1.55.ebuild:
-  Stable on ppc-macos.
-
-  20 Jan 2005; <gongloo@gentoo.org> hexcurse-1.55.ebuild:
-  Keyworded ~ppc-macos.
-
-  09 Aug 2004; Mike Frysinger <vapier@gentoo.org> +files/1.55-gcc.patch,
-  hexcurse-1.55.ebuild:
-  Add gcc-3.4 patch by Aard Keimpema #59845.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/hexcurse/ChangeLog,v 1.1 2004/02/21 05:31:53 vapier Exp $
 
 *hexcurse-1.55 (21 Feb 2004)
 

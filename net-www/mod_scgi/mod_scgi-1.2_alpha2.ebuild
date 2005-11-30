@@ -1,15 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_scgi/mod_scgi-1.2_alpha2.ebuild,v 1.7 2005/09/29 02:35:36 vericgar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_scgi/mod_scgi-1.2_alpha2.ebuild,v 1.1 2004/05/22 01:12:44 robbat2 Exp $
 
 detectapache() {
-	# DO NOT REPLICATE THIS IN ANY OTHER PACKAGE WITHOUT PORTAGE DEVS PERMISSION
-	# IT IS BROKEN AND A TEMPORARY MEASURE!
-	# YOU'VE BEEN WARNED.
-	if [[ ${EBUILD_PHASE/depend} != ${EBUILD_PHASE} ]]; then
-		APACHEVER=1
-		return
-	fi
 	local domsg=
 	[ -n "$1" ] && domsg=1
 	HAVE_APACHE1=
@@ -25,7 +18,7 @@ detectapache() {
 	1) [ -n "${domsg}" ] && einfo 'Apache1 only detected' ;;
 	2) [ -n "${domsg}" ] && einfo 'Apache2 only detected';;
 	both)
-		if use apache2; then
+		if [ "`use apache2`" ]; then
 			[ -n "${domsg}" ] && einfo "Multiple Apache versions detected, using Apache2 (USE=apache2)"
 			APACHEVER=2
 		else
@@ -52,10 +45,10 @@ URI_BASE="http://www.mems-exchange.org/software"
 HOMEPAGE="${URI_BASE}/scgi/"
 SRC_URI="${URI_BASE}/files/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="CNRI"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="apache2"
 DEPEND="${DEPEND}
-		www-apps/scgi
+		net-www/scgi
 		net-www/apache
 		apache2? ( >=net-www/apache-2 )"
 

@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgl/lablgl-1.00.ebuild,v 1.21 2005/07/21 15:41:52 herbs Exp $
-
-inherit multilib eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgl/lablgl-1.00.ebuild,v 1.1 2004/02/06 03:33:08 mattam Exp $
 
 IUSE="tcltk glut doc"
 
@@ -11,31 +9,28 @@ HOMEPAGE="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgl.html"
 LICENSE="as-is"
 
 DEPEND=">=dev-lang/ocaml-3.05
-	virtual/opengl
-	glut? ( virtual/glut )
-	tcltk? (
-		>=dev-lang/tcl-8.3
-		>=dev-lang/tk-8.3
-	)"
+virtual/opengl
+glut ? ( media-libs/glut )
+tcltk? ( >=dev-lang/tcl-8.3*
+	>=dev-lang/tk-8.3* )"
 
 SRC_URI="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/${P}.tar.gz"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha ia64 amd64 hppa"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 pkg_setup()
 {
 	if ( use tcltk )
 	then
 		#lablgl requires ocaml compiled with tk support while ocaml has it as an optional dependency
-		if ( ! built_with_use dev-lang/ocaml tcltk )
+		if ( ! which labltk )
 		then
-			eerror "You don't have ocaml compiled with tk support"
+			eerror "It seems you don't have ocaml compiled with tk support"
 			eerror ""
 			eerror "lablgl requires ocaml be built with tk support."
 			eerror ""
-			eerror "Please recompile ocaml with tcltk useflag enabled."
-			sleep 5;
-			die "Ocaml is missing tk support";
+			eerror "Please make sure that ocaml is installed with tk support."
+			false;
 		fi
 	fi
 }
@@ -44,31 +39,23 @@ src_compile() {
 	# make configuration file
 	cp ${FILESDIR}/${P}-Makefile.config ${S}/Makefile.config || die
 
-	if ! (use glut); then
-		sed -i "s/-lglut//" Makefile.config
-	fi
+	use tcltk && make && make opt
 
-	if use tcltk; then
-		make togl toglopt
-	fi
+	use glut && make glut glutopt
 
-	if use glut; then
-		make glut glutopt
-	else
-		make lib libopt
-	fi
+	make lib libopt || die
 }
 
 src_install () {
-	# Makefile do not use mkdir so the library is not installed
+	# Makefile do not use mkdir so the library is not installed 
 	# but copied as a 'stublibs' file.
-	dodir /usr/$(get_libdir)/ocaml/stublibs
+	dodir /usr/lib/ocaml/stublibs
 
 	# Same for lablglut's toplevel
 	dodir /usr/bin
 
 	BINDIR=${D}/usr/bin
-	BASE=${D}/usr/$(get_libdir)/ocaml
+	BASE=${D}/usr/lib/ocaml
 	make BINDIR=${BINDIR} INSTALLDIR=${BASE}/lablGL DLLDIR=${BASE}/stublibs install || die
 
 	dodoc README CHANGES COPYRIGHT

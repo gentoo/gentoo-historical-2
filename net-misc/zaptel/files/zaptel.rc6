@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/zaptel/files/zaptel.rc6,v 1.4 2005/05/11 12:36:55 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/zaptel/files/zaptel.rc6,v 1.1 2004/05/10 01:18:13 stkn Exp $
 
 depend() {
 	need net
@@ -9,11 +9,11 @@ depend() {
 
 checkconfig() {
 	if [ ! -f /etc/zaptel.conf ]; then
-		eerror "Please create /etc/zaptel.conf!"
-		return 1
+		echo "Please create /etc/zaptel.conf!"
+		return 0
 	fi
 
-	return 0
+	return 1
 }
 
 create_devices() {
@@ -25,14 +25,11 @@ create_devices() {
 	mknod /dev/zap/timer c 196 253
 	mknod /dev/zap/channel c 196 254
 	mknod /dev/zap/pseudo c 196 255
-
-	chown -R root:dialout   /dev/zap
-	chmod -R u=rwX,g=rwX,o= /dev/zap
 }
 
 
 start() {
-	checkconfig || return 1
+	checkconfig || exit 1
 
 	if [ ! -d /dev/zap ] && [ "$ZAP_FORCE_CREATE" != "no" ]; then
 		einfo "Creating zaptel device nodes"

@@ -1,37 +1,6 @@
 # ChangeLog for app-antivirus/klamav
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/klamav/ChangeLog,v 1.8 2005/10/06 00:59:12 carlo Exp $
-
-*klamav-0.30.3 (06 Oct 2005)
-
-  06 Oct 2005; Carsten Lohrke <carlo@gentoo.org> +klamav-0.30.3.ebuild:
-  version bump
-
-*klamav-0.22.1 (05 Aug 2005)
-
-  05 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> +klamav-0.22.1.ebuild:
-  New version (#101150).
-
-  22 Jul 2005; David Holm <dholm@gentoo.org> klamav-0.17.3.ebuild:
-  Added to ~ppc.
-
-*klamav-0.17.3 (13 May 2005)
-
-  13 May 2005; Gregorio Guidi <greg_g@gentoo.org> metadata.xml,
-  +klamav-0.17.3.ebuild:
-  New version, fixing serious problem with KDE 3.4 (#90872).
-
-*klamav-0.17 (17 Apr 2005)
-
-  17 Apr 2005; Andrej Kacian <ticho@gentoo.org> +klamav-0.17.ebuild:
-  Version bump, closes #81439, reported by Erinn Looney-Triggs
-  <erinn.looneytriggs@gmail.com>.
-
-  19 Mar 2005; <blubb@gentoo.org> klamav-0.09.4.ebuild:
-  added ~amd64
-
-  24 Feb 2005; Jason Wever <weeve@gentoo.org> klamav-0.09.4.ebuild:
-  Added ~sparc keyword.
+# $Header: /var/cvsroot/gentoo-x86/app-antivirus/klamav/ChangeLog,v 1.1 2005/02/03 18:03:27 centic Exp $
 
 *klamav-0.09.4 (03 Feb 2005)
 

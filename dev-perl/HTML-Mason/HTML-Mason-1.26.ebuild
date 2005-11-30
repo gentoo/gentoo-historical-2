@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Mason/HTML-Mason-1.26.ebuild,v 1.9 2005/11/09 22:30:17 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Mason/HTML-Mason-1.26.ebuild,v 1.1 2004/09/28 19:46:30 rac Exp $
 
 inherit perl-module
 
@@ -9,19 +9,18 @@ SRC_URI="http://www.masonhq.com/download/${P}.tar.gz"
 HOMEPAGE="http://www.masonhq.com/"
 
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ppc sparc x86"
+LICENSE="Artistic | GPL-2"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
 IUSE=""
-SRC_TEST="do"
 
 DEPEND="${DEPEND}
-	>=www-apache/libapreq-1.0-r2
+	>=dev-perl/libapreq-1.0-r2
 	>=dev-perl/Params-Validate-0.24-r2
 	>=dev-perl/Class-Container-0.08
 	>=dev-perl/Exception-Class-1.14
 	dev-perl/Scalar-List-Utils
-	perl-core/CGI
-	|| ( perl-core/File-Spec >=dev-lang/perl-5.8.0-r12 )
+	dev-perl/CGI
+	|| ( dev-perl/File-Spec >=dev-lang/perl-5.8.0-r12 )
 	>=dev-perl/Cache-Cache-1.01"
 
 mydoc="CREDITS UPGRADE"

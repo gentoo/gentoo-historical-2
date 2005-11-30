@@ -1,30 +1,6 @@
 # ChangeLog for dev-perl/HTML-Template-Expr
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template-Expr/ChangeLog,v 1.8 2005/05/25 15:19:19 mcummings Exp $
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  HTML-Template-Expr-0.04.ebuild:
-  dev-perl/Text-Balanced => perl-core/Text-Balanced migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  HTML-Template-Expr-0.04.ebuild:
-  dev-perl/Test-Simple => perl-core/Test-Simple migration
-
-  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  HTML-Template-Expr-0.04.ebuild:
-  Stable on sparc
-
-  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  HTML-Template-Expr-0.04.ebuild:
-  Cleaning
-
-  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  HTML-Template-Expr-0.04.ebuild:
-  ~sparc added
-
-  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  HTML-Template-Expr-0.04.ebuild:
-  added ~amd64 to KEYWORDS. fixes #79729
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template-Expr/ChangeLog,v 1.1 2004/03/27 15:11:20 mcummings Exp $
 
 *HTML-Template-Expr-0.04 (27 Mar 2004)
 

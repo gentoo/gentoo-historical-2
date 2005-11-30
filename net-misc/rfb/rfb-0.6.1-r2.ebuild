@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/rfb/rfb-0.6.1-r2.ebuild,v 1.4 2004/07/15 03:23:31 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/rfb/rfb-0.6.1-r2.ebuild,v 1.1 2003/06/27 20:54:45 vapier Exp $
 
 inherit eutils
 
@@ -11,7 +11,6 @@ SRC_URI="http://download.hexonet.com/software/rfb/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~ppc ~sparc ~alpha"
-IUSE=""
 
 DEPEND="x11-libs/xclass"
 
@@ -31,7 +30,7 @@ src_install() {
 #	dolib lib/librfb.a	#does anything other than rfb use this ?
 
 	dobin rfbcat/rfbcat x0rfbserver/x0rfbserver \
-		xrfbviewer/{xplayfbs,xrfbviewer}
+		xrfbviewer/{xplayfbs,xrfbviewer} 
 	for f in rfbcat x0rfbserver xvncconnect xrfbviewer ; do
 		dobin ${f}/${f}
 	done

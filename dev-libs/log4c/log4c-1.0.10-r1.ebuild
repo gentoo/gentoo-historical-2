@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4c/log4c-1.0.10-r1.ebuild,v 1.8 2005/07/29 23:30:05 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4c/log4c-1.0.10-r1.ebuild,v 1.1 2004/11/20 01:02:23 dragonheart Exp $
 
 inherit eutils
 
@@ -10,44 +10,39 @@ HOMEPAGE="http://log4c.sourceforge.net"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="x86 sparc ppc amd64"
+KEYWORDS="x86 ~sparc ~ppc ~amd64"
 IUSE="doc"
 
-# The virtual/logger
+# This is the last version of log4c that uses 'expat' and the last one I could
+# get working with a gcc 3.3.4 gentoo box.  Later version work okay on 
+# redhat boxes, but the ones I had around we're gcc 3.2.  The virtual/logger
 # could probably be deleted, but it just doesn't seem right to have log4c
 # without a logger underneath it.
 
-RDEPEND=">=dev-libs/expat-1.95.2
-	>=media-gfx/graphviz-1.7.15-r2
-	virtual/logger"
+DEPEND=">=dev-libs/expat-1.95.2
+	>=media-gfx/graphviz-1.7.15-r2"
 
-DEPEND="${RDEPEND}
-	doc? ( >=app-doc/doxygen-1.2.15 )"
+RDEPEND="virtual/logger
+	>=dev-libs/expat-1.95.2
+	>=media-gfx/graphviz-1.7.15-r2"
+
 
 src_unpack() {
 	unpack ${P}.tar.gz
 	cd ${S}
-	if use doc;
-	then
-		epatch ${FILESDIR}/makefile.doc.in.patch
-		epatch ${FILESDIR}/makefile.doc.am.patch
-	else
-		### comment out the docs with this patch to minimize depenencies
-		epatch ${FILESDIR}/${P}-nodocs.patch
-	fi
-	# fixes gcc-3.4 problems
-	epatch ${FILESDIR}/log4c-1.0.11-function.patch
-	epatch ${FILESDIR}/log4c_1.0.11_test.patch
+	### comment out the docs with this patch to minimize depenencies
+	useq doc || epatch ${FILESDIR}/${P}-nodocs.patch
 }
 
 src_compile() {
+
 	econf --enable-test || die
 	emake || die
 }
 
 src_install () {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
+	dodoc AUTHORS COPYING ChangeLog INSTALL README
 	# Currently with this ebuild you have to have a /etc/log4crc file and
 	# have LOG4C_RCPATH defined or log4c quitely does nothing
 	cp ${D}/etc/log4crc.sample ${D}/etc/log4crc

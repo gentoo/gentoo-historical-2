@@ -1,58 +1,11 @@
 # ChangeLog for net-misc/clockspeed
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/clockspeed/ChangeLog,v 1.17 2004/11/02 00:30:23 robbat2 Exp $
-
-  01 Nov 2004; Robin H. Johnson <robbat2@gentoo.org>
-  clockspeed-0.62-r3.ebuild:
-  Add ~mips for my mips32 hardware.
-
-  27 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  clockspeed-0.62-r3.ebuild:
-  Fixed missing INSTALL, thanks to Yassen Damyanov
-
-  09 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  clockspeed-0.62-r3.ebuild:
-  Keyworded -sparc, uses hires timer methods not present for us, also bug #63346
-
-  08 Sep 2004; <blubb@gentoo.org> clockspeed-0.62-r3.ebuild:
-  added ~amd64 keyword
-
-  06 Apr 2004; Joshua Brindle <method@gentoo.org> clockspeed-0.62-r3.ebuild:
-  added selinux policy to rdepend
-
-*clockspeed-0.62-r3 (11 Dec 2003)
-
-  11 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bump to fix state file install locations #34708.
-
-*clockspeed-0.62-r2 (09 Jan 2003)
-
-  10 Feb 2003; Seemant Kulleen <seemant@gentoo.org> *.ebuild :
-
-  Inherit eutils to use epatch instead, and also changed sed expression
-  delimiters from / to :, closing bug #15006 by Blu3
-  <david+gentoo.org@blue-labs.org>
-
-  09 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
-  Added a patch to support static in USE #12978
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-misc/clockspeed/ChangeLog,v 1.1 2002/02/01 21:53:34 gbevin Exp $
 
 *clockspeed-0.62-r1 (1 Feb 2002)
- 
-  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> clockspeed-0.62-r1.ebuild :
-  Added ppc to KEYWORDS.
 
-  09 Jul 2002; phoen][x <phoenix@gentoo.org> clockspeed-0.62-r1.ebuild
-  Added KEYWORDS, LICENSE, SLOT.
-
-  21 Jun 2002; Thilo Bangert <bangert@gentoo.org> :  
-  minor bugfix - make sure ntpclockset is installed correctly
-
-  16 Apr 2002; Thilo Bangert <bangert@gentoo.org> clockspeed-0.62-r1.ebuild :
-  - Added INSTALL to dodoc
-  - Major code cleanup
-  - Added notice about ntpclockset at the end of install
-
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

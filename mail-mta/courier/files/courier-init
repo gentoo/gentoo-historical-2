@@ -1,13 +1,10 @@
 #!/sbin/runscript
 # Portions Copyright 2003 Gentoo Linux
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/courier/files/courier-init,v 1.6 2005/05/10 10:54:03 swegener Exp $
+# $ Header: $
 #
 # script originally from Courier distfile original name = courier.sysvinit
 # adapted for Gentoo by Brian Jackson
 #
-# TODO
-# should we update all the .dat/.pem files when the source/config files are 
-#	newer than the .dat/.pem files?
 
 prefix="/usr"
 exec_prefix="/usr/bin"
@@ -15,11 +12,11 @@ sysconfdir="/etc/courier"
 sbindir="/usr/sbin"
 libexecdir="/usr/lib/courier"
 datadir="/usr/share/courier"
+#authlib="/usr/lib/courier/authlib"
+
 
 depend() {
 	need net
-	[ -d /etc/courier/authlib ] && need courier-authlib
-	grep -q "^IMAPDSTART=.*[Yy].*" /etc/courier/imapd && need famd
 }
 
 checkconfig() {
@@ -49,6 +46,14 @@ checkconfig() {
 	[ -f ${sysconfdir}/${ACCESSFILE}.dat ] || ${sbindir}/makesmtpaccess
 
 	[ -f ${sysconfdir}/${ACCESSFILE}.dat ] || ${sbindir}/makesmtpaccess-msa
+
+	# we need this for now to check for the old init scripts
+	if [ -f /etc/init.d/courier-authdaemond ] ; then
+		einfo "As of courier-0.42.2-r2, there is only one init script used"
+		einfo "you can remove /etc/init.d/courier-*. /etc/init.d/courier is"
+		einfo "the only one you need."
+	fi
+
 }
 
 start() {
@@ -60,7 +65,7 @@ start() {
 	ebegin " Starting courierfilterd"
 	${sbindir}/courierfilter start
 
-	[ ! -d /etc/courier/authlib ] && [ -x ${libexecdir}/authlib/authdaemond ] && \
+	[ -x ${libexecdir}/authlib/authdaemond ] && \
 	${libexecdir}/authlib/authdaemond start && ebegin " Starting authdaemond"
 
 	[ -x ${libexecdir}/courier/webmaild ] && \
@@ -153,7 +158,7 @@ stop() {
 	[ -x ${sbindir}/courier-pop3d ] && \
 		ebegin " Stopping courier-pop3d" && ${sbindir}/courier-pop3d stop
 
-	[ -x ${sbindir}/courier-pop3d-ssl ] && \
+	[ -x ${sbindir}/pop3d-ssl ] && \
 		ebegin " Stopping courier-pop3d-ssl" && ${sbindir}/courier-pop3d-ssl stop
 
 	[ -x ${sbindir}/courier-imapd ] && \
@@ -174,7 +179,7 @@ stop() {
 	[ ! -x ${libexecdir}/courier/webmaild ] && [ -x ${libexecdir}/courier/sqwebmaild ] && \
 	  ( ${libexecdir}/courier/sqwebmaild stop ; ebegin " Stopping sqwebmaild" )
 
-	[ ! -d /etc/courier/authlib ] && [ -x ${libexecdir}/authlib/authdaemond ] && \
+	[ -x ${libexecdir}/authlib/authdaemond ] && \
 	( ${libexecdir}/authlib/authdaemond stop ; ebegin " Stopping authdaemond" )
 
 	${sbindir}/courierfilter stop
@@ -182,3 +187,11 @@ stop() {
 
 	eend $?
 }
+
+
+
+# restart() {
+# 	ebegin "Restarting courier filterd"
+# 	/usr/sbin/courierfilter restart
+# 	eend $?
+# }

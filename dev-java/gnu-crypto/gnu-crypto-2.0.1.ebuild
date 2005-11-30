@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/gnu-crypto-2.0.1.ebuild,v 1.16 2005/10/30 19:36:30 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-crypto/gnu-crypto-2.0.1.ebuild,v 1.1 2004/04/01 00:03:58 karltk Exp $
 
 inherit java-pkg
 
@@ -9,35 +9,34 @@ HOMEPAGE="http://www.gnu.org/software/gnu-crypto/"
 SRC_URI="ftp://ftp.gnupg.org/GnuPG/gnu-crypto/gnu-crypto-2.0.1.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64 ppc64"
-IUSE="doc"
-DEPEND=">=virtual/jdk-1.3"
+KEYWORDS="~x86"
+IUSE="doc jikes"
+DEPEND="jikes? >=dev-java/jikes-1.19
+	>=virtual/jdk-1.3"
 RDEPEND=">=virtual/jre-1.3"
-RESTRICT="test"
 
 src_compile() {
-	# jikes support disabled, doesnt work: #86655
+	use jikes && export JAVAC=$(which jikes)
 	econf \
 		--with-jce=yes \
 		--with-sasl=yes \
 		|| die
-	emake -j1 || die
+	emake || die
 	if use doc ; then
-		emake -j1 javadoc || die
+		emake javadoc || die
 	fi
 }
 
 src_install() {
-	einstall || die
+	einstall || die 
 	rm ${D}/usr/share/*.jar
 
 	java-pkg_dojar source/gnu-crypto.jar
 	java-pkg_dojar jce/javax-crypto.jar
 	java-pkg_dojar security/javax-security.jar
-
+	
 	if use doc ; then
-		java-pkg_dohtml -r api/*
+		dohtml -r api/*
 	fi
-
-	dodoc AUTHORS ChangeLog NEWS README THANKS
 }
+

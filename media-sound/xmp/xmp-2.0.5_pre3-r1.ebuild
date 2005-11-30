@@ -1,32 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xmp/xmp-2.0.5_pre3-r1.ebuild,v 1.7 2005/09/10 15:50:36 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmp/xmp-2.0.5_pre3-r1.ebuild,v 1.1 2004/03/11 12:13:27 karltk Exp $
 
-IUSE="xmms arts esd nas X oss"
-
-inherit eutils
+IUSE="xmms arts esd nas X oss alsa"
 
 S="${WORKDIR}/${PN}-2.0.5-pre3"
-
 DESCRIPTION="Extended Module Player"
-HOMEPAGE="http://xmp.sf.net"
 SRC_URI="mirror://sourceforge/xmp/${PN}-2.0.5pre3.tar.bz2"
+HOMEPAGE="http://xmp.sf.net"
 
 SLOT="0"
 LICENSE="GPL-2"
-#-amd64: 2.0.5_pre3-r1 - compilation nightmare
-#-sparc: Segfaults
-KEYWORDS="-amd64 x86 -sparc"
+KEYWORDS="~x86"
 
 DEPEND="X? ( virtual/x11 )
 	esd? ( media-sound/esound )
 	nas? ( media-libs/nas )
+	alsa? ( =media-libs/alsa-lib-0.5* )
 	arts? ( kde-base/arts )
 	xmms? ( media-sound/xmms )"
-
-#	Nobody uses alsa5, but if they do, they can hand edit this...
-#	alsa? ( =media-libs/alsa-lib-0.5* )
-
 
 src_unpack() {
 	unpack ${A}
@@ -34,11 +26,11 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf="--disable-alsa"
+	local myconf
 
-#	use alsa \
-#		&& myconf="${myconf} --enable-alsa" \
-#		|| myconf="${myconf} --disable-alsa"
+	use alsa \
+		&& myconf="${myconf} --enable-alsa" \
+		|| myconf="${myconf} --disable-alsa"
 
 	use arts \
 		&& myconf="${myconf} --enable-arts" \
@@ -71,5 +63,5 @@ src_compile() {
 
 src_install () {
 	make DEST_DIR=${D} MAN_DIR=${D}/usr/share/man/man1 install || die
-	dodoc README
+	dodoc INSTALL README
 }

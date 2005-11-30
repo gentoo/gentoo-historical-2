@@ -1,37 +1,6 @@
-# ChangeLog for games-action/d2x
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/d2x/ChangeLog,v 1.11 2005/09/29 19:59:30 wolf31o2 Exp $
-
-*d2x-0.2.5-r2 (29 Sep 2005)
-
-  29 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  +files/d2x-0.2.5-dofpcalcs-macro.patch, +d2x-0.2.5-r2.ebuild:
-  Added patch submitted to bug #98810 and closing bug #98810.
-
-  07 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org> d2x-0.2.5-r1.ebuild:
-  Changed nocd to cdinstall, since it is optional and breaks interactivity.
-
-  09 Jan 2005; Sven Wegener <swegener@gentoo.org> d2x-0.2.5-r1.ebuild:
-  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
-
-  26 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> d2x-0.2.5-r1.ebuild:
-  typo fix from Bertram Felgenhauer via bug #61833
-
-  28 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> d2x-0.2.5-r1.ebuild:
-  Fixing cdinstall and closing bug #55417.
-
-  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> d2x-0.2.5-r1.ebuild,
-  d2x-0.2.5.ebuild:
-  QA - fix use invocation
-
-*d2x-0.2.5-r1 (26 Jun 2004)
-
-  26 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> +d2x-0.2.5-r1.ebuild:
-  Added ability to install from CD. Ebuild submitted by David A. Bestor
-  <gentoo1@indenial.com> to bug #49487. Closing bug.
-
-  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> d2x-0.2.5.ebuild:
-  don't rdepend on nasm
+# ChangeLog for app-games/d2x
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/d2x/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
 *d2x-0.2.5 (19 Jul 2003)
 

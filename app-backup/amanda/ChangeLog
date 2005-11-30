@@ -1,17 +1,6 @@
-# ChangeLog for app-backup/amanda
+# ChangeLog for app-admin/amanda
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/ChangeLog,v 1.5 2005/08/14 10:09:13 hansmi Exp $
-
-  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> amanda-2.4.5.ebuild:
-  Stable on ppc.
-
-  12 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> amanda-2.4.5.ebuild:
-  Stable 2.4.5 on x86.
-
-  05 Aug 2005; Aron Griffis <agriffis@gentoo.org> amanda-2.4.4_p3.ebuild,
-  amanda-2.4.5.ebuild:
-  Add -j1 to emake cmdline. This package doesn't build reliably when make is
-  parallelized
+# $Header: /var/cvsroot/gentoo-x86/app-backup/amanda/ChangeLog,v 1.1 2005/07/04 01:48:56 robbat2 Exp $
 
   04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
   +files/patch-tar-1.14.90, +files/amanda-2.4.5-4tb-holding-disk.patch,

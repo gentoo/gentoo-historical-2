@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/busybox-1.1_pre20050802.ebuild,v 1.3 2005/08/24 00:29:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/busybox-1.1_pre20050802.ebuild,v 1.1 2005/08/03 01:31:24 vapier Exp $
 
 inherit eutils
 
@@ -53,8 +53,6 @@ src_unpack() {
 	busybox_set_env
 	unpack ${A}
 	cd "${S}"
-
-	epatch "${FILESDIR}"/1.00/bb.patch
 
 	# check for a busybox config before making one of our own.
 	# if one exist lets return and use it.
@@ -165,9 +163,9 @@ src_install() {
 		fi
 		make CROSS="${CROSS}" install || die
 		dodir /bin
-		cp -pPR _install/bin/* "${D}"/bin/
+		cp -a _install/bin/* "${D}"/bin/
 		dodir /sbin
-		cp -pPR _install/sbin/* "${D}"/sbin/
+		cp -a _install/sbin/* "${D}"/sbin/
 		cd "${D}"
 		local symlink
 		for symlink in {bin,sbin}/* ; do

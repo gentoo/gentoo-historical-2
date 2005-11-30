@@ -1,25 +1,6 @@
 # ChangeLog for media-sound/rplay
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rplay/ChangeLog,v 1.8 2004/07/31 01:51:11 tgall Exp $
-
-  31 Jul 2004; Tom Gall <tgall@gentoo.org> rplay-3.3.2.ebuild:
-  stable on ppc64, bug #57040
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> rplay-3.3.2.ebuild:
-  virtual/glibc -> virtual/libc
-
-  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> rplay-3.3.2.ebuild :
-  AMD64 keywords.
-
-  26 Dec 2003; Jason Wever <weeve@gentoo.org> rplay-3.3.2.ebuild:
-  Marked stable on sparc to fix broken x11-wm/fvwm dependencies.
-
-  26 Dec 2003; Tavis Ormandy <taviso@gentoo.org> rplay-3.3.2.ebuild:
-  fixing #36527
-  minor cleanup
-
-  30 Jul 2003; Tavis Ormandy <taviso@gentoo.org> rplay-3.3.2.ebuild:
-  marking stable
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rplay/ChangeLog,v 1.1 2003/07/03 16:41:32 taviso Exp $
 
 *rplay-3.3.2 (03 Jul 2003)
 

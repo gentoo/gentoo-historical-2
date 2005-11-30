@@ -1,13 +1,6 @@
 # ChangeLog for net-dialup/bpalogin
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/bpalogin/ChangeLog,v 1.4 2004/11/17 18:28:56 mrness Exp $
-
-  17 Nov 2004; Alin Nastac <mrness@gentoo.org> bpalogin-2.0.2.ebuild:
-  Marked stable on x86.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  bpalogin-2.0.2.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/bpalogin/ChangeLog,v 1.1 2003/11/23 09:22:46 lanius Exp $
 
 *bpalogin-2.0.2 (23 Nov 2003)
 

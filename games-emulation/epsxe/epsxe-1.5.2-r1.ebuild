@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/epsxe/epsxe-1.5.2-r1.ebuild,v 1.5 2004/06/24 22:26:08 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/epsxe/epsxe-1.5.2-r1.ebuild,v 1.1 2003/09/09 16:26:50 vapier Exp $
 
 inherit games
 
@@ -20,10 +20,10 @@ RDEPEND=">=dev-libs/glib-1.2
 	=sys-libs/ncurses-5*
 	=sys-libs/zlib-1*
 	net-misc/wget
-	games-emulation/psemu-peopsspu
+	app-emulation/psemu-peopsspu
 	|| (
-		opengl? ( games-emulation/psemu-gpupetemesagl )
-		games-emulation/psemu-peopssoftgpu
+		opengl? ( app-emulation/psemu-gpupetemesagl )
+		app-emulation/psemu-peopssoftgpu
 	)"
 
 S=${WORKDIR}

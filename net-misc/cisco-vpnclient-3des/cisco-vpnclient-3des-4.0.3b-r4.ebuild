@@ -1,21 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.0.3b-r4.ebuild,v 1.10 2005/11/20 17:58:35 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.0.3b-r4.ebuild,v 1.1 2004/04/24 15:22:30 wolf31o2 Exp $
 
-inherit eutils linux-info
+inherit eutils
 
 MY_PV=${PV/b/.B-k9}
 DESCRIPTION="Cisco VPN Client (3DES)"
-HOMEPAGE="http://cco.cisco.com/en/US/products/sw/secursw/ps2308/index.html"
+HOMEPAGE="http://www.cisco.com/en/US/products/sw/secursw/ps2308/index.html"
 SRC_URI="vpnclient-linux-${MY_PV}.tar.gz"
 
 LICENSE="cisco-vpn-client"
-SLOT="0"
+SLOT="${KV}"
 KEYWORDS="-* x86"
 RESTRICT="fetch"
 IUSE=""
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/linux-sources
 	>=sys-apps/sed-4"
 
@@ -48,7 +48,7 @@ src_unpack() {
 }
 
 src_compile () {
-	unset ARCH
+	check_KV
 	sh ./driver_build.sh /lib/modules/${KV}/build
 	[ ! -f ./cisco_ipsec ] && die "Failed to make module 'cisco_ipsec'"
 	sed -i "s#@VPNBINDIR@#/usr/bin#" vpnclient_init

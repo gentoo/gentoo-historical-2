@@ -1,7 +1,4 @@
 #!/bin/bash
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/amd64/2005.0/scripts/2004.3-2005.0upgrade.sh,v 1.8 2005/08/21 04:28:00 eradicator Exp $
 
 TMPDIR="$(portageq envvar PORTAGE_TMPDIR)"
 PORTDIR="$(portageq envvar PORTDIR)"
@@ -94,32 +91,10 @@ if [[ ! -f step0 ]]; then
 	fi
 
 	if [[ "$(gcc -m32 -print-multi-directory)" != "32" ]]; then
-		eerror "Your compiler does not have multilib support. Pleasse switch to a multilib"
-		eerror "enabled compiler with gcc-config.  If you don't have one on your system, you can"
-		eerror "emerga a multilib gcc by executing the following line:"
-		eerror "FEATURES=-sandbox USE=multilib emerge gcc"
+		eerror "Your compiler does not have multilib support."
+		eerror "Please emerge gcc with USE=multilib:"
+		eerror "FEATURES=-sandbox USE=multilib emerge gcc."
 		exit 1
-	fi
-
-	if [[ -f /proc/config.gz ]] ; then
-		KERNEL_CONFIG="gunzip -dc /proc/config.gz"
-	elif [[ -f /proc/config.bz2 ]] ; then
-		KERNEL_CONFIG="bunzip2 -dc /proc/config.bz2"
-	elif [[ -f /proc/config ]] ; then
-		KERNEL_CONFIG="cat /proc/config"
-	elif [[ -f /lib/modules/$(uname -r)/build/.config ]] ; then
-		KERNEL_CONFIG="cat /lib/modules/$(uname -r)/build/.config"
-	elif [[ -f /lib/modules/$(uname -r)/source/.config ]] ; then
-		KERNEL_CONFIG="cat /lib/modules/$(uname -r)/source/.config"
-	else
-		ewarn "Can't find a config for the running kernel, so we're assuminig"
-		ewarn "you correctly have CONFIG_IA32_EMULATION (support for 32bit"
-		ewarn "applications) enabled."
-		KERNEL_CONFIG="echo CONFIG_IA32_EMULATION=y"
-	fi
-
-	if ! eval ${KERNEL_CONFIG} | grep -q CONFIG_IA32_EMULATION=y ; then
-		myDie "Running kernel does not have support for executing 32bit applications.  You need to enable CONFIG_IA32_EMULATION in your running kernel."
 	fi
 
 	# Always install portage since current might not be multilib friendly
@@ -171,31 +146,22 @@ if [[ ! -f step2 ]]; then
 	fi
 	
 	env-update || myDie "env-update failed"
-
-	echo "int main(){return 0;}" > ${TMPDIR}/32test.c
-	if ! gcc -m32 ${TMPDIR}/32test.c -o ${TMPDIR}/32test >& ${TMPDIR}/32test.comp.log ; then
-		myDie "Error compiling 32bit executable.  Please see ${TMPDIR}/32test.comp.log"
-	fi
-
-	if ! ${TMPDIR}/32test >& ${TMPDIR}/32test.exec.log ; then
-		myDie "Error executing 32bit executable.  Please see ${TMPDIR}/32test.exec.log"
-	fi
-
+	
 	touch step2
 fi
 
 if [[ ! -f step3 ]]; then
-	[[ -L /lib32 ]] && rm /lib32 && mkdir /lib32
-	[[ -L /usr/lib32 ]] && rm /usr/lib32 && mkdir /usr/lib32
-	[[ -L /usr/X11R6/lib32 ]] && rm /usr/X11R6/lib32 && mkdir /usr/X11R6/lib32
+	[ -L /lib32 ] && rm /lib32 && mkdir /lib32
+	[ -L /usr/lib32 ] && rm /usr/lib32 && mkdir /usr/lib32
+	[ -L /usr/X11R6/lib32 ] && rm /usr/X11R6/lib32 && mkdir /usr/X11R6/lib32
 	cp /emul/linux/x86/{usr/,}lib32/libsandbox.so* /usr/lib32 &> /dev/null
 	[[ -f /usr/lib32/libsandbox.so ]] || myDie "Failed to copy over 32bit libsandbox."
 	cp /emul/linux/x86/usr/lib32/libc.so /usr/lib32 || myDie "Failed to copy 32bit libc"
 	cp /emul/linux/x86/usr/lib32/libpthread.so /usr/lib32 || myDie "Failed to copy 32bit libpthread."
 	cp /emul/linux/x86/usr/lib32/*crt*.o /usr/lib32 || myDie "Failed to copy 32bit *crt*.o"
-	[[ -d /emul/linux/x86/usr/lib32/nptl ]] && mkdir /usr/lib32/nptl
-	[[ -d /emul/linux/x86/usr/lib32/nptl ]] && cp /emul/linux/x86/usr/lib32/nptl/libc.so /usr/lib32/nptl
-	[[ -d /emul/linux/x86/usr/lib32/nptl ]] && cp /emul/linux/x86/usr/lib32/nptl/libpthread.so /usr/lib32/nptl
+	[ -d /emul/linux/x86/usr/lib32/nptl ] && mkdir /usr/lib32/nptl
+	[ -d /emul/linux/x86/usr/lib32/nptl ] && cp /emul/linux/x86/usr/lib32/nptl/libc.so /usr/lib32/nptl
+	[ -d /emul/linux/x86/usr/lib32/nptl ] && cp /emul/linux/x86/usr/lib32/nptl/libpthread.so /usr/lib32/nptl
 	env-update || myDie "env-update failed"
 
 	touch step3
@@ -212,12 +178,11 @@ if [[ ! -f step4 ]]; then
 fi
 
 if [[ ! -f step5 ]]; then
-	emerge -v --oneshot sys-libs/glibc || myDie "emerge glibc failed"
+	emerge -v --oneshot glibc || myDie "emerge glibc failed"
 	touch step5
 fi
 
 if [[ ! -f step6 ]] ; then
-	rm -f /emul/linux/x86/usr/lib/libsandbox.* &> /dev/null
 	emerge unmerge emul-linux-x86-glibc || myDie "emerge emul-glibc failed"
 	touch step6
 fi

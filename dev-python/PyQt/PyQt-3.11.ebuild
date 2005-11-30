@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt/PyQt-3.11.ebuild,v 1.8 2005/02/08 05:46:02 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt/PyQt-3.11.ebuild,v 1.1 2004/03/18 01:44:51 caleb Exp $
 
 inherit distutils
 
@@ -8,20 +8,18 @@ IUSE=""
 MY_P="PyQt-x11-gpl-${PV}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="set of Python bindings for the QT 3.x Toolkit"
-SRC_URI="mirror://gentoo/${MY_P}.tar.gz"
+SRC_URI="http://www.river-bank.demon.co.uk/download/PyQt/${MY_P}.tar.gz"
 HOMEPAGE="http://www.riverbankcomputing.co.uk/pyqt/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ppc ~sparc ~alpha amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 
-RDEPEND="virtual/libc
+DEPEND="virtual/glibc
+	sys-devel/libtool
 	x11-libs/qt
 	dev-lang/python
 	>=dev-python/sip-3.10.1
-	<=dev-python/qscintilla-1.54"
-
-DEPEND="${RDEPEND}
-	sys-devel/libtool"
+	>=dev-python/qscintilla-1.54"
 
 src_compile() {
 	distutils_python_version

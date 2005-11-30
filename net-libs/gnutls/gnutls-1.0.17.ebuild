@@ -1,28 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.0.17.ebuild,v 1.21 2005/11/27 15:55:07 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.0.17.ebuild,v 1.1 2004/08/04 13:32:56 liquidx Exp $
 
-inherit eutils gnuconfig
+inherit eutils
 
 DESCRIPTION="A TLS 1.0 and SSL 3.0 implementation for the GNU project"
 HOMEPAGE="http://www.gnutls.org/"
 SRC_URI="ftp://ftp.gnutls.org/pub/gnutls/${P}.tar.bz2"
 
-# GPL-2 for the gnutls-extras library and LGPL for the gnutls library.
-LICENSE="|| ( LGPL-2.1 GPL-2 )"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="zlib doc crypt"
+LICENSE="LGPL-2.1 | GPL-2"
+# GPL-2 for the gnutls-extras library and LGPL for the gnutls library.
+
+SLOT="0"
+KEYWORDS="~x86 ~amd64 ~sparc ~ppc ~mips ~alpha ~ppc64"
 
 RDEPEND=">=dev-libs/libgcrypt-1.1.94
-	crypt? ( >=app-crypt/opencdk-0.5.5 )
+	crypt? ( >=app-crypt/opencdk-0.5.3 )
 	zlib? ( >=sys-libs/zlib-1.1 )
-	virtual/libc
-	dev-libs/libgpg-error"
+	virtual/libc"
 
 # Need masking on ~amd64 ~sparc ~ppc ~mips ~alpha
 #	>=dev-libs/libtasn1-0.2
 #	>=dev-libs/lzo-1.0"
+
+# should be crypt? ( >=app-crypt/opencdk-0.5.5 ) however I did see the source for it
+# ^^ this is what configure expects.
 
 DEPEND="${RDEPEND}
 	sys-apps/gawk
@@ -37,13 +40,10 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}/includes/gnutls; epatch ${FILESDIR}/${P}-extra.h.patch
+	cd ${S}/includes/gnutls; epatch ${FILESDIR}/${PN}-1.0.14-extra.h.patch
 }
 
 src_compile() {
-	# Needed for mips and probablly others
-	gnuconfig_update
-
 	#   I think this vvv gets ignored if not present
 	local myconf="--without-included-libtasn1 --without-included-opencdk"
 
@@ -52,7 +52,7 @@ src_compile() {
 
 	econf  \
 		`use_with zlib` \
-		--with-included-lzo \
+		--with-included-minilzo \
 		--with-included-libtasn1 \
 		${myconf} || die
 	emake || die
@@ -64,7 +64,7 @@ src_install() {
 	# make compatibility symlinks - 0.8.x
 	#dosym /usr/lib/libgnutls.so.10 /usr/lib/libgnutls.so.7
 
-	dodoc AUTHORS ChangeLog NEWS \
+	dodoc AUTHORS COPYING COPYING.LIB ChangeLog NEWS \
 		README THANKS doc/TODO
 
 	if use doc ; then
@@ -72,23 +72,4 @@ src_install() {
 		docinto examples
 		dodoc doc/examples/*.c
 	fi
-}
-
-pkg_postinst() {
-	ewarn "An API has changed in gnutls. This is why the library has gone from "
-	ewarn "libgnutls.so.10 to libgnutls.so.11."
-	ewarn
-	ewarn "What is required is a revdep-rebuild."
-	ewarn "To show you what is needed to rebuild"
-	ewarn "revdep-rebuild --soname libgnutls.so.10 -- -p"
-	ewarn ""
-	ewarn "Then do:"
-	ewarn "revdep-rebuild --soname libgnutls.so.10"
-	einfo ""
-	einfo "Afterward just try:"
-	einfo "revdep-rebuild -- -p"
-	einfo "to see if there are any other packages broken."
-	einfo "To rebuild these:"
-	einfo "revdep-rebuild"
-
 }

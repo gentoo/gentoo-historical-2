@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.0.24.ebuild,v 1.10 2005/04/15 14:45:43 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avidemux/avidemux-2.0.24.ebuild,v 1.1 2004/05/08 18:13:29 zypher Exp $
 
 inherit eutils flag-o-matic
 
@@ -11,8 +11,8 @@ SRC_URI="http://fixounet.free.fr/avidemux/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="x86 ppc ~amd64"
-IUSE="alsa arts debug nls oggvorbis truetype xvid"
+KEYWORDS="~x86 ~ppc"
+IUSE="debug nls oggvorbis arts truetype alsa xvid"
 
 RDEPEND="virtual/x11
 	media-sound/madplay
@@ -31,20 +31,15 @@ RDEPEND="virtual/x11
 	alsa? ( >=media-libs/alsa-lib-0.9.8 )"
 # media-sound/toolame is supported as well
 
-DEPEND="$RDEPEND >=sys-devel/autoconf-2.58
-		>=sys-devel/automake-1.8.3"
+DEPEND="$RDEPEND >=sys-devel/autoconf-2.58"
 
 S=${WORKDIR}/${MY_P}
 
-filter-flags "-fno-default-inline -funroll-loops -funroll-all-loops \
-	    -maltivec -mabi=altivec"
+filter-flags "-fno-default-inline"
 
 src_compile() {
 	# Fixes a possible automake error due to clock skew
 	touch -r *
-
-	# Small cosmetic correction of configure:
-	sed -i -e /^d$/d ${S}/configure ${S}/configure.in ${S}/configure.in.in
 
 	export WANT_AUTOCONF=2.5
 	autoconf
@@ -66,6 +61,9 @@ src_compile() {
 	use debug && myconf="${myconf} --enable-debug=full"
 	use nls || myconf="${myconf} --disable-nls"
 
+	filter-flags -funroll-loops
+	filter-flags -maltivec -mabi=altivec
+
 	econf ${myconf} || die "configure failed"
 
 	make || die "make failed"
@@ -77,7 +75,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use ppc ; then
+	if [ `use pcc` ] ; then
 		echo
 		einfo "OSS sound output may not work on ppc"
 		einfo "If your hear only static noise, try"

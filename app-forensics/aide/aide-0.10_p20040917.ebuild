@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/aide/aide-0.10_p20040917.ebuild,v 1.8 2005/04/21 18:46:53 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/aide/aide-0.10_p20040917.ebuild,v 1.1 2004/09/18 14:22:11 ka0ttic Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 IUSE="nls postgres zlib crypt"
 
 DEPEND="app-arch/gzip
@@ -57,7 +57,7 @@ src_compile() {
 
 src_test() {
 	# aide abort()'s inside the sandbox for some reason
-	if ! has sandbox ${FEATURES};
+	if ! hasq sandbox ${FEATURES};
 	then
 		src/aide --init -c doc/aide.conf -V20 \
 			|| die "failed to initialise database"
@@ -84,7 +84,7 @@ pkg_postinst() {
 	einfo "Read the aide.conf(5) manual page for more information."
 	echo
 
-	if use postgres; then
+	if useq postgres; then
 		einfo "Due to a bad assumption by aide, you must issue the following"
 		einfo "command after the database initialization (aide --init ...):"
 		einfo

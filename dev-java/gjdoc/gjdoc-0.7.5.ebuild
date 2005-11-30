@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gjdoc/gjdoc-0.7.5.ebuild,v 1.6 2005/11/21 19:12:26 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gjdoc/gjdoc-0.7.5.ebuild,v 1.1 2005/09/27 09:53:41 betelgeuse Exp $
 
 inherit java-pkg
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.gnu.org/gnu/classpath/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86"
 
 # Possible USE flags.
 #
@@ -26,13 +26,12 @@ IUSE=""
 DEPEND=">=dev-java/antlr-2.7.1
 		>=virtual/jdk-1.4"
 
-RDEPEND=">=virtual/jre-1.4
-		>=dev-java/antlr-2.7.1"
+RDEPEND=">=virtual/jre-1.4"
 
 src_compile() {
 	# I think that configure will do --enable-native if it finds gcj
 	# so we'll disable it explicitly
-	local myc="--with-antlr-jar=$(java-pkg_getjar antlr antlr.jar) --disable-native"
+	local myc="--with-antlr-jar=$(java-config --classpath=antlr) --disable-native"
 	myc="${myc} --disable-dependency-tracking"
 	econf ${myc} || die "econf failed"
 	emake || die "emake failed"

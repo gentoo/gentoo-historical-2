@@ -1,15 +1,6 @@
 # ChangeLog for app-emacs/mpg123-el
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mpg123-el/ChangeLog,v 1.6 2005/09/29 05:35:25 josejx Exp $
-
-  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> mpg123-el-1.42.ebuild:
-  Marked ~ppc.
-
-  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> mpg123-el-1.42.ebuild:
-  Keywording ~amd64.
-
-  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> mpg123-el-1.42.ebuild:
-  Stable on x86.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mpg123-el/ChangeLog,v 1.1 2004/06/04 20:16:24 usata Exp $
 
 *mpg123-el-1.42 (05 Jun 2004)
 

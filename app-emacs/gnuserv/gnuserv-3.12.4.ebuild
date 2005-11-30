@@ -1,26 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuserv/gnuserv-3.12.4.ebuild,v 1.8 2005/05/03 11:01:57 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnuserv/gnuserv-3.12.4.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
 inherit elisp
 
-DESCRIPTION="attach to an already running Emacs"
-HOMEPAGE="http://meltin.net/hacks/emacs/"
-SRC_URI="http://meltin.net/hacks/emacs/src/OLD/${P}.tar.gz"
+IUSE=""
 
+DESCRIPTION="Gnuserv allows you to attach to an already running Emacs."
+HOMEPAGE="http://meltin.net/hacks/emacs/"
+SRC_URI="http://meltin.net/hacks/emacs/src/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/emacs"
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50gnuserv-gentoo.el
 
 src_compile() {
-	unset LDFLAGS
-	econf || die
+	./configure --host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die "./configure failed"
 	emake || die
 }
 
@@ -34,5 +38,13 @@ src_install() {
 	elisp-install ${PN} *.el *.elc
 	elisp-site-file-install ${FILESDIR}/${SITEFILE}
 
-	dodoc ChangeLog INSTALL README README.orig
+	dodoc ChangeLog COPYING INSTALL README README.orig
+}
+
+pkg_postinst() {
+	elisp-site-regen
+}
+
+pkg_postrm() {
+	elisp-site-regen
 }

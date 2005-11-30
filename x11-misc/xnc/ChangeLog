@@ -1,31 +1,6 @@
-# ChangeLog for x11-misc/xnc
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnc/ChangeLog,v 1.10 2005/11/01 15:10:44 nelchael Exp $
-
-  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> xnc-5.0.2.ebuild,
-  xnc-5.0.4.ebuild:
-  Fixed dodoc not to install COPYING and/or INSTALL.
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> xnc-5.0.4.ebuild:
-  Masked xnc-5.0.4.ebuild stable for ppc
-
-  10 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> xnc-5.0.4.ebuild:
-  Marked ~amd64.
-
-  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> xnc-5.0.4.ebuild:
-  Marked stable on x86.
-
-  24 Mar 2004; Jason Wever <weeve@gentoo.org> xnc-5.0.4.ebuild:
-  Added ~sparc keyword.
-
-  01 Mar 2004; David Holm <dholm@gentoo.org> xnc-5.0.4.ebuild:
-  Added to ~ppc.
-
-*xnc-5.0.4 (29 Feb 2004)
-
-  29 Feb 2004; Brandon Hale <tseng@gentoo.org> xnc-5.0.0.ebuild,
-  xnc-5.0.2.ebuild, xnc-5.0.4.ebuild:
-  Version bump, cleanup old, change DEPEND from x11-base/xfree to virtual/x11.
+# ChangeLog for app-misc/xnc
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xnc/ChangeLog,v 1.1 2003/11/18 16:23:44 port001 Exp $
 
 *xnc-5.0.2 (18 Nov 2003)
 

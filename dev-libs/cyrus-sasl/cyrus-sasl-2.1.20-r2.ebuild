@@ -1,15 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.20-r2.ebuild,v 1.7 2005/05/22 15:23:47 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.20-r2.ebuild,v 1.1 2005/02/15 19:36:27 ferdy Exp $
 
-inherit eutils gnuconfig flag-o-matic java-pkg multilib
-
-ntlm_patch=${PN}-ntlm_impl-spnego.patch.gz
+inherit eutils gnuconfig flag-o-matic java-pkg
 
 DESCRIPTION="The Cyrus SASL (Simple Authentication and Security Layer)"
 HOMEPAGE="http://asg.web.cmu.edu/sasl/"
-SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/${P}.tar.gz
-	ntlm_unsupported_patch? ( mirror://gentoo/${ntlm_patch} )"
+SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="2"
@@ -30,11 +27,8 @@ RDEPEND="virtual/libc
 		|| (
 			>=net-mail/courier-imap-3.0.7
 			>=mail-mta/courier-0.46
-		)
-	)
-	java? ( virtual/jdk )
-	ntlm_unsupported_patch? ( >=net-fs/samba-3.0.9 )"
-
+	))
+	java? ( virtual/jdk )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
 	>=sys-devel/autoconf-2.58
@@ -101,7 +95,8 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-gcc4.patch"
 
 	# UNSUPPORTED ntlm patch. Bug #81342
-	use ntlm_unsupported_patch && epatch "${DISTDIR}/${ntlm_patch}"
+	use ntlm_unsupported_patch && \
+		epatch "${FILESDIR}/cyrus-sasl-ntlm_impl-spnego.patch.gz"
 
 	# Recreate configure.
 	export WANT_AUTOCONF="2.5"
@@ -113,9 +108,6 @@ src_unpack() {
 
 	# Sypport for crypted passwords. Bug #45181
 	use crypt && epatch "${FILESDIR}/cyrus-sasl-2.1.19-checkpw.c.patch"
-
-	# Upstream doesn't even honor their own configure options... grumble
-	sed -i 's:^sasldir = .*$:sasldir = $(plugindir):' ${S}/plugins/Makefile.{am,in}
 }
 
 src_compile() {
@@ -167,12 +159,9 @@ src_compile() {
 		--with-saslauthd=/var/lib/sasl2 \
 		--with-pwcheck=/var/lib/sasl2 \
 		--with-configdir=/etc/sasl2 \
-		--with-plugindir=/usr/$(get_libdir)/sasl2 \
+		--with-plugindir=/usr/lib/sasl2 \
 		--with-dbpath=/etc/sasl2/sasldb2 \
 		${myconf} || die "econf failed"
-
-	# Upstream doesn't even honor their own configure options... grumble
-	sed -i 's:^sasldir = .*$:sasldir = $(plugindir):' ${S}/plugins/Makefile
 
 	# Fix PEBCAK in make.conf. Bug #75538.
 	CFLAGS="$(echo ${CFLAGS} | xargs)"
@@ -220,16 +209,16 @@ src_install () {
 	        insinto /usr/share/${PN}-2/examples/sample/.deps
 	        doins sample/.deps/*
 		dodir /usr/share/${PN}-2/examples/lib
-	        dosym /usr/$(get_libdir)/libsasl2.la /usr/share/${PN}-2/examples/lib/libsasl2.la
+	        dosym /usr/lib/libsasl2.la /usr/share/${PN}-2/examples/lib/libsasl2.la
 		dodir /usr/share/${PN}-2/examples/lib/.libs
-	        dosym /usr/$(get_libdir)/libsasl2.so /usr/share/${PN}-2/examples/lib/.libs/libsasl2.so
+	        dosym /usr/lib/libsasl2.so /usr/share/${PN}-2/examples/lib/.libs/libsasl2.so
 	fi
 
 	# Bug #60769. Default location for java classes breaks OpenOffice.
 	if use java; then
 		java-pkg_dojar ${PN}.jar
 		#hackish, don't wanna dig though makefile
-		rm -rf ${D}/usr/$(get_libdir)/java
+		rm -rf ${D}/usr/lib/java
 		docinto java
 		dodoc ${S}/java/README ${FILESDIR}/java.README.gentoo ${S}/java/doc/*
 		mkdir ${D}/usr/share/doc/${PF}/java/Test/ \
@@ -240,7 +229,7 @@ src_install () {
 
 	# Generate an empty sasldb2 with correct permissions.
 	LD_OLD="${LD_LIBRARY_PATH}"
-	export LD_LIBRARY_PATH="${D}/usr/$(get_libdir)" SASL_PATH="${D}/usr/$(get_libdir)/sasl2"
+	export LD_LIBRARY_PATH="${D}/usr/lib" SASL_PATH="${D}/usr/lib/sasl2"
 	echo "p" | "${D}/usr/sbin/saslpasswd2" -f "${D}/etc/sasl2/sasldb2" -p login
 	"${D}/usr/sbin/saslpasswd2" -f "${D}/etc/sasl2/sasldb2" -d login
 	export LD_LIBRARY_PATH="${LD_OLD}"

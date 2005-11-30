@@ -1,17 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/freedroidrpg/freedroidrpg-0.9.12.ebuild,v 1.6 2005/07/06 22:38:31 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/freedroidrpg/freedroidrpg-0.9.12.ebuild,v 1.1 2004/04/09 06:12:11 vapier Exp $
 
 inherit games
 
-DESCRIPTION="A modification of the classical Freedroid engine into an RPG"
+DESCRIPTION="Freedroid - a Paradroid clone"
 HOMEPAGE="http://freedroid.sourceforge.net/"
 SRC_URI="mirror://sourceforge/freedroid/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
-IUSE=""
+KEYWORDS="x86 ppc"
 
 DEPEND=">=media-libs/libsdl-1.1.5
 	media-libs/jpeg
@@ -23,7 +22,7 @@ DEPEND=">=media-libs/libsdl-1.1.5
 	virtual/x11"
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR=${D} install || die
 	dodoc AUTHORS ChangeLog NEWS README TODO
 	prepgamesdirs
 }

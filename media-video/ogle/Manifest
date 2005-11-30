@@ -1,21 +1,9 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 429e23ffa47ffd63bd090fd322b2bf75 ChangeLog 4554
+MD5 ba74d68a9a9f0c759b1bbaa4526369a0 ChangeLog 1922
+MD5 4b5db47abf159111b5ef29b7294fac2e ogle-0.8.4.ebuild 1303
+MD5 a95ebbd1e235099b0a3ed86092e5e563 ogle-0.8.5.ebuild 1671
+MD5 db293ae3d19343fede54e9f2c36b80fe ogle-0.9.0.ebuild 1690
+MD5 7a994dadd565a0a322823bfb3b21e662 ogle-0.9.1.ebuild 1690
+MD5 a9913cfa78533d985bda1f20df7b157d files/digest-ogle-0.8.4 62
+MD5 072cf7eae5df5158d463a4daf99f820d files/digest-ogle-0.8.5 62
+MD5 5665fbb3f89c43abfebf16ad5382d57b files/digest-ogle-0.9.0 62
 MD5 69fb0f18b0f74a88453cf989a0515f08 files/digest-ogle-0.9.1 62
-MD5 9e5be8c6673243e1604cfbec495081d5 files/digest-ogle-0.9.2 62
-MD5 9e5be8c6673243e1604cfbec495081d5 files/digest-ogle-0.9.2-r1 62
-MD5 d928c8bc3c69f3128bda1f74f0424f52 files/ogle-configure-alsa-fix.patch 726
-MD5 7034a848ff2f633d14ed0465e8a07a63 files/ogle-gcc34-fix.patch 228
-MD5 2944cd6510b7709a7c2068ae91d7bf1e files/ogle-gcc4-fix.patch 279
-MD5 7300a7b361fa9f48e37722c6952bd432 metadata.xml 158
-MD5 48eb1335e280252c79162cf4a877afc3 ogle-0.9.1.ebuild 1951
-MD5 a675efc13c32c81dd51df68a2275084a ogle-0.9.2-r1.ebuild 1684
-MD5 06e259d193deb6588b6ef89a19f45d32 ogle-0.9.2.ebuild 2046
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1-ecc0.1.6 (GNU/Linux)
-
-iD8DBQFDS8m1KRy60XGEcJIRAkc6AJ0QFhGrGDd204atHxljQUAyX8Yg4ACfQp5X
-8dc+AOuUjTbpqrGF4JqQn6o=
-=axVv
------END PGP SIGNATURE-----

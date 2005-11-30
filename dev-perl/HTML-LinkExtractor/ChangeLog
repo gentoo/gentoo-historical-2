@@ -1,55 +1,6 @@
 # ChangeLog for dev-perl/HTML-LinkExtractor
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-LinkExtractor/ChangeLog,v 1.13 2005/11/27 22:52:43 tgall Exp $
-
-  27 Nov 2005; Tom Gall <tgall@gentoo.org> HTML-LinkExtractor-0.13.ebuild:
-  stable on ppc64
-
-  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  HTML-LinkExtractor-0.13.ebuild:
-  Stable on sparc
-
-  12 Aug 2005; Michael Cummings <mcummings@gentoo.org>
-  HTML-LinkExtractor-0.13.ebuild:
-  Marking stable x86
-
-  30 Jul 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  HTML-LinkExtractor-0.11.ebuild, HTML-LinkExtractor-0.12.1.ebuild,
-  HTML-LinkExtractor-0.13.ebuild:
-  PowerPC stable
-
-  12 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  HTML-LinkExtractor-0.12.1.ebuild:
-  stable on amd64
-
-*HTML-LinkExtractor-0.13 (25 Apr 2005)
-
-  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  HTML-LinkExtractor-0.12.1.ebuild, +HTML-LinkExtractor-0.13.ebuild:
-  Cleaning
-
-  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  HTML-LinkExtractor-0.12.1.ebuild:
-  Stable on sparc
-
-  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org>
-  HTML-LinkExtractor-0.12.1.ebuild:
-  added ~ppc64
-
-*HTML-LinkExtractor-0.12.1 (17 Oct 2004)
-
-  17 Oct 2004; Michael Cummings <mcummings@gentoo.org>
-  +HTML-LinkExtractor-0.12.1.ebuild:
-  New version on cpan, contains bug fixes; changed dep for tokeparser. Version number adjusted so future upgrades weren't blocked by portage expectations of number sequences.
-
-  13 Jul 2004; Robert Coie <rac@gentoo.org> HTML-LinkExtractor-0.11.ebuild:
-  Keywording amd64 and x86
-
-  13 Jul 2004; <rac@gentoo.org> HTML-LinkExtractor-0.11.ebuild:
-  Keyword x86 and amd64
-
-  18 Apr 2004; David Holm <dholm@gentoo.org> HTML-LinkExtractor-0.11.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-LinkExtractor/ChangeLog,v 1.1 2004/04/17 12:25:57 aliz Exp $
 
 *HTML-LinkExtractor-0.11 (17 Apr 2004)
 

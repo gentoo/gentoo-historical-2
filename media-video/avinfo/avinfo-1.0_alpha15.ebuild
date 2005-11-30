@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avinfo/avinfo-1.0_alpha15.ebuild,v 1.6 2005/08/07 13:35:30 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avinfo/avinfo-1.0_alpha15.ebuild,v 1.1 2004/11/16 15:28:08 chriswhite Exp $
 
 inherit eutils
 
@@ -11,16 +11,16 @@ SRC_URI="http://shounen.ru/soft/avinfo/${MY_P}.zip"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="~x86"
 
 IUSE=""
-DEPEND="app-arch/unzip"
+DEPEND=""
 
 S=${WORKDIR}
 
 src_compile() {
 	cd src
-	emake CFLAGS="${CFLAGS}" OUTPUTNAME=avinfo || die
+	emake OUTPUTNAME=avinfo || die
 }
 
 src_install() {

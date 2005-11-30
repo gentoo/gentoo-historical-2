@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mu-cite/mu-cite-8.1_p20020225.ebuild,v 1.3 2005/07/01 19:49:37 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mu-cite/mu-cite-8.1_p20020225.ebuild,v 1.1 2004/10/22 10:51:23 usata Exp $
 
 inherit elisp
 
@@ -15,7 +15,7 @@ SRC_URI="http://www.jpl.org/elips/mu/snapshots/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc-macos ~x86"
+KEYWORDS="~x86 ~ppc-macos"
 
 RDEPEND="app-emacs/apel
 	virtual/flim"

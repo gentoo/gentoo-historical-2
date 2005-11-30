@@ -1,61 +1,6 @@
 # ChangeLog for dev-tcltk/snack
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/snack/ChangeLog,v 1.16 2005/10/24 21:48:35 gustavoz Exp $
-
-  24 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> snack-2.2.9.ebuild:
-  Stable on sparc
-
-  09 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> snack-2.2.4.ebuild,
-  snack-2.2.9.ebuild:
-  Fixed install path. Bug 108549.
-
-  06 Sep 2005; Markus Rothe <corsair@gentoo.org> snack-2.2.9.ebuild:
-  Stable on ppc64
-
-  04 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> snack-2.2.4.ebuild,
-  snack-2.2.9.ebuild:
-  Fixed wrong use flag and $ROOT missing, Bug 101874.
-
-  29 May 2005; MATSUU Takuto <matsuu@gentoo.org> -snack-2.2.2.ebuild,
-  snack-2.2.9.ebuild:
-  use ogg useflag instead of oggvoribs, Bug 94254.
-
-*snack-2.2.9 (02 Apr 2005)
-
-  02 Apr 2005; MATSUU Takuto <matsuu@gentoo.org> metadata.xml,
-  +snack-2.2.9.ebuild:
-  Version bumped. cleanup ebuild.
-  Added threads and python USE flags.
-  Maintainership to tcltk herd
-
-  05 Mar 2005; Markus Rothe <corsair@gentoo.org> snack-2.2.4.ebuild:
-  Stable on ppc64
-
-  01 Jan 2005; Markus Rothe <corsair@gentoo.org> snack-2.2.4.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> snack-2.2.4.ebuild:
-  Stable sparc, x86.
-
-  16 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org> snack-2.2.4.ebuild:
-  Stable amd64.  Added ~sparc.
-
-  25 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> snack-2.2.4.ebuild:
-  marked ~amd64.
-
-  25 Apr 2004; David Holm <dholm@gentoo.org> snack-2.2.4.ebuild:
-  Added to ~ppc.
-
-*snack-2.2.4 (04 Apr 2004)
-
-  04 Apr 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml,
-  snack-2.2.2.ebuild, snack-2.2.3.ebuild, snack-2.2.4.ebuild:
-  Version bump and some major clean up.
-
-*snack-2.2.3 (18 Dec 2003)
-
-  18 Dec 2003; Martin Holzer <mholzer@gentoo.org> snack-2.2.3.ebuild:
-  Version bumped. closes 34459
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/snack/ChangeLog,v 1.1 2003/08/15 00:53:57 g2boojum Exp $
 
 *snack-2.2.2 (14 Aug 2003)
 

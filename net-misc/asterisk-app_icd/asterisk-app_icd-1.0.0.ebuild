@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-app_icd/asterisk-app_icd-1.0.0.ebuild,v 1.6 2005/09/19 18:33:33 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-app_icd/asterisk-app_icd-1.0.0.ebuild,v 1.1 2005/06/15 23:42:46 stkn Exp $
 
 inherit eutils
 
@@ -14,11 +14,10 @@ IUSE="debug"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="-*"
 
 DEPEND="sys-libs/glibc
 	>=net-misc/asterisk-1.0.7-r1
-	!>=net-misc/asterisk-1.1.0
 	>=net-misc/zaptel-1.0.7-r1"
 
 S=${WORKDIR}/${MY_PN}-${PV}
@@ -33,9 +32,6 @@ src_unpack() {
 	if built_with_use net-misc/asterisk bri; then
 		epatch ${FILESDIR}/${P}-bristuff.diff
 	fi
-
-	# fix segfault in config parser (patch sent upstream)
-	epatch ${FILESDIR}/${P}-configsegv.diff
 }
 
 src_compile() {
@@ -44,10 +40,7 @@ src_compile() {
 	use debug && \
 		myconf="${myconf} DEBUG=1"
 
-	emake CFLAGS="${CFLAGS}" \
-		.sqlite || die "Building sqlite failed"
-
-	emake \
+	emake -j1 \
 		${myconf} || die "emake failed"
 }
 

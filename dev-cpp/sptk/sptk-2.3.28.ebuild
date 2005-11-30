@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sptk/sptk-2.3.28.ebuild,v 1.4 2005/11/10 19:49:14 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sptk/sptk-2.3.28.ebuild,v 1.1 2005/04/18 23:49:40 iluxa Exp $
 
 IUSE="fltk odbc"
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://sptk.tts-sf.com"
 
 SLOT="2"
 LICENSE="|| ( FLTK GPL-2 )"
-KEYWORDS="x86 ~sparc ~mips ~amd64 ~ppc"
+KEYWORDS="~x86 ~sparc ~mips ~amd64"
 
 DEPEND="fltk? ( x11-libs/fltk )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )"
@@ -36,7 +36,7 @@ src_install () {
 		includedir=${D}/usr/include/sptk \
 		libdir=${D}/usr/lib || die "Installation Failed"
 
-	dodoc CHANGES README
+	dodoc CHANGES COPYING README
 
 	dodir /usr/share/doc/${PF}/html
 	mv ${D}/usr/share/doc/sptk/* ${D}/usr/share/doc/${PF}/html

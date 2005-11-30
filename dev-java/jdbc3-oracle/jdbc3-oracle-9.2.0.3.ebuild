@@ -1,68 +1,82 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc3-oracle/jdbc3-oracle-9.2.0.3.ebuild,v 1.15 2005/07/18 15:46:46 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc3-oracle/jdbc3-oracle-9.2.0.3.ebuild,v 1.1 2003/05/14 23:23:05 absinthe Exp $
 
 inherit java-pkg
 
-IUSE="debug doc"
-
-file_main_orig=ojdbc14.jar
-file_main_debug_orig=ojdbc14_g.jar
-file_rowset_orig=ocrs12.zip
-file_doc_orig=javadoc.tar
-
-file_main=${P}-${file_main_orig}
-file_main_debug=${P}-${file_main_debug_orig}
-file_rowset=${P}-${file_rowset_orig}
-file_doc=${P}-${file_doc_orig}
-
 S=${WORKDIR}
 DESCRIPTION="JDBC 3.0 Drivers for Oracle"
+SRC_URI=""
 HOMEPAGE="http://otn.oracle.com/software/tech/java/sqlj_jdbc/htdocs/jdbc9201.html"
-SRC_URI="${file_rowset} ${file_main}
-		doc? ( ${file_doc} )
-		debug? ( ${file_main_debug} )"
-KEYWORDS="x86 sparc ~ppc amd64"
+KEYWORDS="x86 ppc sparc alpha"
 LICENSE="oracle-jdbc"
 SLOT="2"
-DEPEND=">=app-arch/unzip-5.50-r1"
-RDEPEND=">=virtual/jre-1.4"
-RESTRICT="fetch"
+DEPEND=""
+RDEPEND=">=virtual/jdk-1.4"
+IUSE="debug doc"
 
-pkg_nofetch() {
-	einfo
-	einfo " Because of license terms and file name conventions, please:"
-	einfo
-	einfo " 1. Visit ${HOMEPAGE}"
-	einfo "    (you may need to create an account on Oracle's site)"
-	einfo " 2. Download the appropriate files:"
-	einfo "    - ${file_main_orig}"
-	einfo "    - ${file_rowset_orig}"
-	use doc > /dev/null && einfo "    - ${file_doc_orig}"
-	use debug > /dev/null && einfo "    - ${file_main_debug_orig}"
-	einfo " 3. Rename the files:"
-	einfo "    - ${file_main_orig} --> ${file_main}"
-	einfo "    - ${file_rowset_orig} --> ${file_rowset}"
-	use doc > /dev/null && einfo "    - ${file_doc_orig} --> ${file_doc}"
-	use debug > /dev/null && einfo "    - ${file_main_debug_orig} --> ${file_main_debug}"
-	einfo " 4. Place the files in ${DISTDIR}"
-	einfo " 5. Repeat the emerge process to continue."
-	einfo
-}
+use debug && DISTFILE1=ojdbc14_g.jar || DISTFILE1=ojdbc14.jar
+DISTFILE2=ocrs12.zip
+DISTFILE3=javadoc.tar
+FILE1=${P}-${DISTFILE1}
+FILE2=${P}-${DISTFILE2}
+FILE3=${P}-${DISTFILE3}
 
 src_unpack() {
-	use debug && cp ${DISTDIR}/${file_main_debug} ${S}/${file_main_debug_orig} || cp ${DISTDIR}/${file_main} ${S}/${file_main_orig}
-	cp ${DISTDIR}/${file_rowset} ${S}/${file_rowset_orig}
-
-	if use doc; then
-		mkdir ${S}/javadoc
-		cd ${S}/javadoc
-		tar -xf ${DISTDIR}/${file_doc}
+	# Build File List
+	FILELIST="${FILE1} ${FILE2}"
+	use doc > /dev/null && FILELIST="${FILELIST} ${FILE3}" 
+	
+	# Check for distributables
+	echo " "
+	for i in ${FILELIST} ; do
+		if [ ! -f ${DISTDIR}/${i} ] ; then
+			echo "!!! MISSING FILE: ${DISTDIR}/${i}"
+			MISSING_FILES="true"
+		else
+			cp ${DISTDIR}/${i} ${S}
+		fi
+	done
+	echo " "
+	
+	
+	if [ "${MISSING_FILES}" == "true" ] ; then
+		einfo " "
+		einfo " Because of license terms and file name conventions, please:"
+		einfo " "
+		einfo " 1. Visit ${HOMEPAGE}"
+		einfo "    (you may need to create an account on Oracle's site)"
+		einfo " 2. Download the appropriate files:"
+		einfo "    2a. ${DISTFILE1}"
+		einfo "    2b. ${DISTFILE2}"
+		use doc > /dev/null && einfo "    2c. ${DISTFILE3}"
+		einfo " 3. Rename the files:"
+		einfo "    3a. ${DISTFILE1} ---> ${FILE1}"
+		einfo "    3b. ${DISTFILE2} ---> ${FILE2}"
+		use doc > /dev/null && einfo "    3c. ${DISTFILE3} ---> ${FILE4}"
+		einfo " 4. Place the files in ${DISTDIR}"
+		einfo " 5. Repeat the emerge process to continue."
+		einfo " "
+		die "User must manually fetch/rename files"
 	fi
+	
+	# Move files back to their original filenames
+	mv ${S}/${FILE1} ${S}/${DISTFILE1}
+	mv ${S}/${FILE2} ${S}/${DISTFILE2}
+	use doc && mv ${S}/${FILE3} ${S}/${DISTFILE3}
 }
+
+src_compile() {
+	einfo " This is a binary-only (bytecode) ebuild."
+} 
 
 src_install() {
-	use doc && java-pkg_dohtml -r ${S}/javadoc/
+	if [ -n "`use doc`" ] ; then
+		mkdir ${S}/javadoc
+		cd ${S}/javadoc
+		tar xf ${DISTDIR}/${FILE3}
+		dohtml -r ${S}/javadoc/
+	fi
 	java-pkg_dojar ${S}/*.zip
-	java-pkg_dojar ${S}/*.jar
 }
+

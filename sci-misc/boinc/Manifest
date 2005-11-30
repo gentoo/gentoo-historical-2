@@ -1,17 +1,8 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 b21fd4f2428430014b25560516dc969d ChangeLog 3614
-MD5 2e4104084577e624961e3622335525e5 boinc-4.72.20050813-r3.ebuild 2323
-MD5 603e1bde6bb2873a014b6b8984e21564 files/boinc-4.72.20050813-gcc4-fix.patch 315
-MD5 5418cddcce4923a19fdf0c6bafea11bf files/boinc.conf 440
-MD5 2e064f401619e4905a21342edec0f4e7 files/boinc.init 1732
-MD5 54ee39e6bbb50b705cb5fac638568d8b files/digest-boinc-4.72.20050813-r3 80
-MD5 4b2e94b92c84896e0204d9e7710f9c6a metadata.xml 420
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDi3/DntT9W3vfTuoRAiEUAJ9l7bsdiyYa1RROw1J7N0hbs7aFgwCcDizX
-CtkXaMyXP30gyNm9XaF/uIY=
-=Fm5K
------END PGP SIGNATURE-----
+MD5 f2d89df8916248a61310040904367117 boinc-4.32.ebuild 2279
+MD5 56db2c5e42189e746dd14e1b9cd0c06f boinc-4.19.ebuild 2183
+MD5 b8461876cf4db83859fbd94562dfc3b4 files/digest-boinc-4.19 80
+MD5 5dc63ab398e7b399eaa9e1fdab388453 files/digest-boinc-4.32 80
+MD5 87e5c7b66fd1b782ab5b01bae9cbc94e files/boinc.conf 441
+MD5 8045c6272078fa2e0458ba4119ce999a files/boinc.init 1762
+MD5 f34dc99c2f866383c11c0a3ac849baf8 files/boinc-4.32_cmdline_options.patch 2477
+MD5 25cfc5918b31da56263edfee7a5fa682 files/boinc-4.32_socket_close_fix.patch 1208

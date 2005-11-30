@@ -4,23 +4,5 @@
 	<longdescription lang="en">
 		The net-fs category contains network filesystem packages.
 	</longdescription>
-	<longdescription lang="de">
-		Die Kategorie net-fs enthült Netzwerkdateisysteme.
-	</longdescription>
-	<longdescription lang="es">
-		La categoría net-fs contiene paquetes de sistemas de ficheros en red.
-	</longdescription>
-	<longdescription lang="ja">
-		net-fsカテゴリーにはネットワーク・ファイルシステムのパッケージが含まれています。
-	</longdescription>
-	<longdescription lang="nl">
-		De net-fs categorie bevat netwerk-bestandssystemen.
-	</longdescription>
-	<longdescription lang="vi">
-		Nhóm net-fs chứa các gói hệ tập tin mạng.
-	</longdescription>
-	<longdescription lang="it">
-		La categoria net-fs contiene pacchetti per i filesystem di rete.
-	</longdescription>
 </catmetadata>
 

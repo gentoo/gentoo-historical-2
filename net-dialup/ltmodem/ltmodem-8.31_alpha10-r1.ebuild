@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ltmodem/ltmodem-8.31_alpha10-r1.ebuild,v 1.4 2005/08/29 21:59:06 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/ltmodem/ltmodem-8.31_alpha10-r1.ebuild,v 1.1 2005/03/07 20:21:17 mrness Exp $
 
 inherit linux-mod
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.physcip.uni-stuttgart.de/heby/ltmodem/${MY_P}.tar.gz
 	http://linmodems.technion.ac.il/packages/ltmodem/kernel-2.6/ltmodem-2.6-alk-7.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RESTRICT="nouserpriv"
@@ -22,22 +22,18 @@ S_2_4=${WORKDIR}/${MY_P}
 
 DEPEND="sys-apps/util-linux"
 
+MODULE_NAMES="ltmodem(ltmodem:) ltserial(ltmodem:)"
 BUILD_TARGETS="module"
 BUILD_PARAMS="KERNEL_DIR=${KV_DIR}"
+MODULESD_LTMODEM_ALIASES=( "char-major-62 ltserial"
+	"/dev/tts/LT0  ltserial"
+	"/dev/modem ltserial" )
 
 pkg_setup() {
 	if kernel_is 2 4; then
-		MODULE_NAMES="lt_modem(lt_modem:) lt_serial(lt_modem:)"
-		MODULESD_LTMODEM_ALIASES=( "char-major-62 lt_serial"
-			"/dev/tts/LT0  lt_serial"
-			"/dev/modem lt_serial" )
 		CONFIG_CHECK="SERIAL"
 		SERIAL_8250_ERROR="This driver requires you to compile your kernel with serial core (CONFIG_SERIAL) support."
 	else
-		MODULE_NAMES="ltmodem(ltmodem:) ltserial(ltmodem:)"
-		MODULESD_LTMODEM_ALIASES=( "char-major-62 ltserial"
-			"/dev/tts/LT0  ltserial"
-			"/dev/modem ltserial" )
 		CONFIG_CHECK="SERIAL_8250"
 		SERIAL_8250_ERROR="This driver requires you to compile your kernel with serial core (CONFIG_SERIAL_8250) support."
 	fi
@@ -103,29 +99,13 @@ pkg_postinst() {
 		eend $?
 		einfo "modules-update to complete configuration."
 
-		einfo "Use /dev/tts/LT0 or /dev/ttyLT0 to access modem"
 	elif [ -e ${ROOT}/dev/.udev ]; then
 		ebegin "Restarting udev to reread udev rules"
 			udevstart
 		eend $?
-
-		einfo "Use /dev/ttyLTM0 to access modem"
 	fi
 
-	echo
-	ewarn "Remember, in order to access the modem,"
-	ewarn "you have to be in the 'dialout' group."
-	ewarn "Also, if your dialing application use locking mechanism (e.g wvdial),"
-	ewarn "you should have write access to /var/lock directory."
-
-	if linux_chkconfig_present SMP ; then
-		echo
-		ewarn "Please note that Linux support for SMP (symmetric multi processor)"
-		ewarn "is reported to be incompatible with this driver!"
-		ewarn "In case it doesn't work, you should try first to disable CONFIG_SMP in your kernel."
-	fi
-
-	echo
+	einfo "Use /dev/tts/LT0 to access modem"
 	einfo "If you have problems, read this doc:"
 	einfo "/usr/share/doc/${PF}/html/post-install.html"
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/sun-jdk-1.3.1.16.ebuild,v 1.3 2005/10/18 20:22:01 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/sun-jdk-1.3.1.16.ebuild,v 1.1 2005/10/13 09:50:49 axxo Exp $
 
 inherit java eutils
 
@@ -24,7 +24,7 @@ SLOT="1.3"
 KEYWORDS="x86 -*"
 RESTRICT="fetch"
 
-IUSE="doc browserplugin nsplugin mozilla"
+IUSE="doc browserplugin mozilla"
 # this is needed for proper operating under a PaX kernel without activated grsecurity acl
 CHPAX_CONSERVATIVE_FLAGS="pemsv"
 
@@ -87,9 +87,7 @@ src_install() {
 	dodir /opt/${P}/share/
 	cp -a demo src.jar ${D}/opt/${P}/share/
 
-	if use nsplugin ||       # global useflag for netscape-compat plugins
-	   use browserplugin ||  # deprecated but honor for now
-	   use mozilla; then     # wrong but used to honor it
+	if use browserplugin || use mozilla; then
 		install_mozilla_plugin  /opt/${P}/jre/plugin/i386/ns600/libjavaplugin_oji.so
 	fi
 
@@ -99,13 +97,6 @@ src_install() {
 pkg_postinst () {
 	# Set as default VM if none exists
 	java_pkg_postinst
-
-	if ! use nsplugin && ( use browserplugin || use mozilla ); then
-		echo
-		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
-		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
-		ewarn "update your USE to include 'nsplugin'."
-	fi
 
 	# if chpax is on the target system, set the appropriate PaX flags
 	# this will not hurt the binary, it modifies only unused ELF bits

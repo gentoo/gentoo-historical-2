@@ -1,58 +1,6 @@
 # ChangeLog for x11-plugins/wmcoincoin
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcoincoin/ChangeLog,v 1.13 2005/09/02 19:25:51 hansmi Exp $
-
-  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
-  wmcoincoin-2.5.0g.ebuild:
-  Stable on ppc.
-
-  29 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmcoincoin-2.5.0g.ebuild,
-  Stable for x86.
-  -wmcoincoin-2.5.0f.ebuild:
-  Wiped out older unstable version.
-
-*wmcoincoin-2.5.0g (25 Jun 2005)
-
-  25 Jun 2005; <pyrania@gentoo.org> wmcoincoin-2.5.0g.ebuild,
-  +wmcoincoin-2.5.0g.ebuild:
-  Version bump and fixed dependecy issues with imlib2.
-
-*wmcoincoin-2.5.0f (11 Apr 2005)
-
-  11 Apr 2005; Michele Noberasco <s4t4n@gentoo.org> wmcoincoin-2.5.0f.ebuild:
-  Version bump, closes #88383.
-  wmcoincoin-2.5.0c.ebuild:
-  Updated copyright headers.
-  wmcoincoin-2.4.5b.ebuild:
-  Wiped out older version.
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmcoincoin-2.5.0c.ebuild:
-  Stable on amd64.
-
-  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmcoincoin-2.5.0c.ebuild:
-  Stable for x86...
-
-  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  wmcoincoin-2.5.0c.ebuild:
-  Masked wmcoincoin-2.5.0c.ebuild stable for ppc
-
-*wmcoincoin-2.5.0c (27 Jul 2004)
-
-  27 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmcoincoin-2.5.0c.ebuild:
-  Version bump.
-  wmcoincoin-2.4.5b.ebuild:
-  Stable for x86.
-  wmcoincoin-2.3.8b.ebuild:
-  Wipe out old ebuilds.
-
-  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmcoincoin-2.3.8b.ebuild,
-  wmcoincoin-2.4.5b.ebuild:
-  glibc -> libc
-
-*wmcoincoin-2.4.5b (25 Jul 2003)
-
-  25 Jul 2003; Nick Hadaway <raker@gentoo.org> wmcoincoin-2.4.5b.ebuild:
-  Version bump.  Minor build cleanups.  Closes bug #25109.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcoincoin/ChangeLog,v 1.1 2002/10/04 19:00:55 raker Exp $
 
 *wmcoincoin-2.3.8b (04 Oct 2002)
 

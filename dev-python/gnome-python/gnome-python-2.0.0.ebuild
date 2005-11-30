@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gnome-python/gnome-python-2.0.0.ebuild,v 1.12 2005/05/05 23:51:25 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gnome-python/gnome-python-2.0.0.ebuild,v 1.1 2003/09/03 12:47:17 liquidx Exp $
 
 # devel version - debug
 inherit gnome2 debug
@@ -8,11 +8,11 @@ inherit gnome2 debug
 IUSE="gtkhtml"
 
 DESCRIPTION="GNOME 2 bindings for Python"
-HOMEPAGE="http://www.pygtk.org/"
+HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
 LICENSE="LGPL-2"
 
 RDEPEND=">=dev-lang/python-2.2
-	>=dev-python/pygtk-${PV}
+	>=dev-python/pygtk-${PV}*
 	>=dev-python/pyorbit-2.0
 	>=dev-libs/glib-2
 	>=x11-libs/gtk+-2
@@ -22,6 +22,7 @@ RDEPEND=">=dev-lang/python-2.2
 	>=gnome-base/gnome-vfs-2
 	>=gnome-base/gconf-1.2
 	>=x11-libs/libzvt-2
+	>=gnome-base/bonobo-activation-1
 	>=gnome-base/libbonobo-2
 	>=gnome-base/libbonoboui-2
 	>=gnome-base/nautilus-2
@@ -30,11 +31,11 @@ RDEPEND=">=dev-lang/python-2.2
 	>=gnome-base/libgnomeprintui-2.2
 	gtkhtml? ( =gnome-extra/libgtkhtml-2* )"
 
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND} 
 	>=dev-util/pkgconfig-0.12.0"
 
 SLOT="2"
-KEYWORDS="x86 ppc alpha sparc"
+KEYWORDS="~x86 ~ppc"
 
 # ugly, but necessary
 addwrite /usr/share/pygtk/2.0/codegen

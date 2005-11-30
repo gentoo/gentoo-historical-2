@@ -1,22 +1,6 @@
 # ChangeLog for games-server/crossfire-server
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/crossfire-server/ChangeLog,v 1.5 2005/10/19 03:19:10 mr_bones_ Exp $
-
-*crossfire-server-1.8.0 (19 Oct 2005)
-
-  19 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +crossfire-server-1.8.0.ebuild:
-  version bump (bug #104626)
-
-*crossfire-server-1.7.0 (26 Jul 2005)
-
-  26 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  +crossfire-server-1.7.0.ebuild:
-  Version bumped to version 1.7.0 and closing bug #84120.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  crossfire-server-1.6.0.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/crossfire-server/ChangeLog,v 1.1 2004/05/30 10:22:50 vapier Exp $
 
 *crossfire-server-1.6.0 (30 May 2004)
 

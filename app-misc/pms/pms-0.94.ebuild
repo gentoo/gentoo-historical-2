@@ -1,28 +1,45 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/pms/pms-0.94.ebuild,v 1.13 2005/07/21 17:25:19 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/pms/pms-0.94.ebuild,v 1.1 2003/06/16 16:36:20 rphillips Exp $
 
-inherit eutils
-
-DESCRIPTION="Password Management System"
-HOMEPAGE="http://passwordms.sourceforge.net/"
+S=${WORKDIR}/${P}
+IUSE="ncurses"
+DESCRIPTION="Passwort Management System"
 SRC_URI="mirror://sourceforge/passwordms/${P}.tar.gz"
-
+HOMEPAGE="http://passwordms.sourceforge.net/"
 LICENSE="LGPL-2.1"
+KEYWORDS="x86"
+
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
-IUSE=""
 
 DEPEND="sys-libs/ncurses
-	dev-libs/cdk"
+		dev-libs/cdk"
+
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/ui.diff
+	patch pms/ui.c ${FILESDIR}/ui.diff
+}
+
+src_compile() {
+	econf || die "econf failed"
+	emake || die "emake failed."
 }
 
 src_install() {
-	dobin bin/{pms,pms_export,pms_import,pms_passwd} || die "dobin failed"
-	dodoc AUTHORS BUGS ChangeLog NOTES README TODO CONFIGURE.problems
+
+	install -d ${D}/usr/bin && \
+	install ${S}/bin/pms ${D}/usr/bin && \
+	install ${S}/bin/pms_export ${D}/usr/bin && \
+	install ${S}/bin/pms_import ${D}/usr/bin && \
+	install ${S}/bin/pms_passwd ${D}/usr/bin || die
+
+	dodoc AUTHORS COPYING ChangeLog \
+		README TODO
 }
+
+
+
+

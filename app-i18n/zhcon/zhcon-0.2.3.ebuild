@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/zhcon/zhcon-0.2.3.ebuild,v 1.7 2005/01/01 14:44:34 eradicator Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/zhcon/zhcon-0.2.3.ebuild,v 1.1 2004/03/14 11:27:41 usata Exp $
 
 DESCRIPTION="A Fast CJK (Chinese/Japanese/Korean) Console Environment"
 HOMEPAGE="http://zhcon.sourceforge.net/"
@@ -10,27 +8,28 @@ SRC_URI="mirror://sourceforge/zhcon/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
+
 IUSE=""
 
-DEPEND="virtual/libc
-	sys-devel/autoconf"
-RDEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+#RDEPEND=""
 
 src_unpack() {
+
 	unpack ${A}
 	epatch ${FILESDIR}/${P}-gentoo.diff
 	epatch ${FILESDIR}/${P}-assert-gentoo.diff
-
-	epatch ${FILESDIR}/${P}-gcc34.patch
 }
 
 src_compile() {
-	autoconf || die "autoconf failed"
+
+	autoconf || die
 	econf || die
-	emake || die "make failed"
+	emake || die
 }
 
 src_install() {
+
 	make DESTDIR=${D} install || die
 }

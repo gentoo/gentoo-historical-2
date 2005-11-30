@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.13-r1.ebuild,v 1.12 2005/07/09 13:29:17 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/tcsh/tcsh-6.13-r1.ebuild,v 1.1 2005/03/02 08:54:49 dragonheart Exp $
 
 inherit eutils
 
-MY_P="${P}.00"
+MY_P="${PN}-${PV}.00"
 DESCRIPTION="Enhanced version of the Berkeley C shell (csh)"
 HOMEPAGE="http://www.tcsh.org/"
 SRC_URI="ftp://ftp.astron.com/pub/tcsh/${MY_P}.tar.gz
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.astron.com/pub/tcsh/${MY_P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~mips"
 IUSE="perl"
 
 RDEPEND="virtual/libc

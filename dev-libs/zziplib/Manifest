@@ -1,5 +1,2 @@
-MD5 11911455d52421a3183f66f7485f618e ChangeLog 1962
-MD5 de39c4481f01799a68687e64255b391b zziplib-0.13.36.ebuild 934
-MD5 8f8db724fae9244f615b245cf8f7edf8 zziplib-0.13.38.ebuild 1032
-MD5 8c8297e1f481bd0a0e076393cd827e40 files/digest-zziplib-0.13.36 68
-MD5 6f915eca707d184af05408eb5a75e73c files/digest-zziplib-0.13.38 68
+MD5 f550e9802aebceed18e667da656214bd zziplib-0.10.82.ebuild 642
+MD5 aba0f2b1c4a7c38014bbd1eb2e3d4f29 files/digest-zziplib-0.10.82 68

@@ -1,36 +1,6 @@
 # ChangeLog for games-puzzle/gweled
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/gweled/ChangeLog,v 1.9 2005/10/31 08:40:31 mr_bones_ Exp $
-
-  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> gweled-0.7.ebuild:
-  stable for x86
-
-*gweled-0.7 (04 Oct 2005)
-
-  04 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> +gweled-0.7.ebuild:
-  version bump
-
-  19 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  +files/gweled-0.6-gcc4.patch, gweled-0.6.ebuild:
-  Added patch from Halcy0n for GCC 4.
-
-*gweled-0.6 (27 Jan 2005)
-
-  27 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org> +gweled-0.6.ebuild:
-  Version bumped to 0.6 and closing bug #78581.
-
-  05 Sep 2004; David Holm <dholm@gentoo.org> gweled-0.5.ebuild:
-  Added to ~ppc.
-
-*gweled-0.5 (30 Aug 2004)
-
-  30 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +gweled-0.5.ebuild:
-  version bump
-
-*gweled-0.4 (31 Dec 2003)
-
-  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
-  Remove games.eclass since this package is too gnome-ified #35119.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/gweled/ChangeLog,v 1.1 2003/11/29 06:19:01 mr_bones_ Exp $
 
 *gweled-0.3 (28 Nov 2003)
 

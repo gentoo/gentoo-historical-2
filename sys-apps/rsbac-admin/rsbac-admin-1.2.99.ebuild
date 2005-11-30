@@ -1,14 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rsbac-admin/rsbac-admin-1.2.99.ebuild,v 1.3 2005/11/29 19:48:07 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rsbac-admin/rsbac-admin-1.2.99.ebuild,v 1.1 2005/05/09 23:19:48 kang Exp $
 
-inherit eutils
 inherit subversion
 
-IUSE="pam"
+IUSE="debug pam"
 
 # RSBAC Adming packet name
-#ADMIN=rsbac-admin-v${PV}
+ADMIN=rsbac-admin-v${PV}
 
 DESCRIPTION="Rule Set Based Access Control (RSBAC) Admin Tools"
 HOMEPAGE="http://www.rsbac.org/ http://hardened.gentoo.org/rsbac"
@@ -20,57 +19,69 @@ NSS="1.2.5"
 
 DEPEND="dev-util/dialog
 	pam? ( sys-libs/pam )
-	sys-apps/baselayout"
+	sys-apps/baselayout
+	|| (
+		>=sys-kernel/rsbac-sources-2.4.99
+		>=sys-kernel/rsbac-dev-sources-2.6.99
+	)"
 
 RDEPEND=">=sys-libs/ncurses-5.2"
 
-
 src_unpack() {
-	ESVN_REPO_URI="svn://rsbac.de/rsbac1/rsbac-admin/trunk"
+	ESVN_REPO_URI="svn://rsbac.mprivacy-update.de/rsbac/rsbac-admin-v1.2.5"
 	subversion_src_unpack
 	cd ${WORKDIR}/${P}/${ADMIN}
 }
 
-
 src_compile() {
-	local rsbacmakeargs
-	rsbacmakeargs="libs tools"
+	cd ${WORKDIR}/${P}/${ADMIN}
+	econf || die "cannot ./configure RSBAC Admin Tools."
+	cd ${WORKDIR}/${ADMIN}/contrib/rsbac-klogd-2.0; econf || die "cannot ./configure rsbac-klogd"
+	cd ${WORKDIR}/${ADMIN}/contrib/nss_rsbac; econf || die "cannot ./configure nss_rsbac"
+	cd ${WORKDIR}/${ADMIN}
+	emake || die "cannot make RSBAC Admin tools: Did you really already compiled
+	a RSBAC-enabled kernel ? Please check the documentation at:
+	http://hardened.gentoo.org/rsbac"
+	emake -C contrib/rsbac-klogd-2.0 || die "cannot make rsbac-klogd"
+	cd contrib/nss_rsbac
+	LD="../../src/librsbac.so.$NSS" econf  || die "cannot conf nss_rsbac"
+	cd ${WORKDIR}/${ADMIN}
+	emake -C contrib/nss_rsbac || die "cannot make nss_rsbac"
 	use pam && {
-		rsbacmakeargs="${makeargs} pam nss"
+		emake -C contrib/pam_rsbac || die "cannot make pam_rsbac"
 	}
-	emake PREFIX=/usr ${rsbacmakeargs} || die "cannot build (${rsbacmakeargs})"
+	if use debug; then
+		emake -C contrib/regression || die "cannot make regression"
+	fi
 }
 
 src_install() {
-	local rsabacinstallargs
-	rsbacinstallargs="headers-install libs-install tools-install"
-	use pam && {
-		rsbacinstallargs="${rsbacinstallargs} pam-install nss-install"
-	}
-	make PREFIX=${D}/usr DESTDIR=${D} ${rsbacinstallargs} || \
-	die "cannot install (${rsbacinstallargs})"
+	cd ${WORKDIR}/${ADMIN}
+	einstall || die "cannot make install"
+	einstall -C contrib/rsbac-klogd-2.0 || die "cannot install rsbac-klogd"
+	einstall -C contrib/nss_rsbac || die "cannot install nss_rsbac"
+	if use debug; then
+		exeinto /usr/share/rsbac-admin-dev/regression
+		doexe contrib/regression/*_test
+	fi
 	insinto /etc
 	newins ${FILESDIR}/rsbac.conf rsbac.conf ${FILESDIR}/nsswitch.conf
+	exeinto /etc/init.d
+	newinitd ${FILESDIR}/rklogd.init rklogd
+	use pam && {
+		insinto /lib/security
+		newins ${WORKDIR}/${ADMIN}/contrib/pam_rsbac/pam_rsbac.so pam_rsbac.so
+	}
 	dodir /secoff
 	keepdir /secoff
-	dodir /var/log/rsbac
-	keepdir /var/log/rsbac
+	dodir /secoff/log
+	keepdir /secoff/log
 }
 
 pkg_postinst() {
 	enewgroup secoff 400 || die "problem adding group secoff"
-	enewuser secoff 400 /bin/bash /secoff secoff || \
-	die "problem adding user secoff"
-	enewgroup audit 404 || die "problem adding group audit"
-	enewuser audit 404 -1 /dev/null audit || \
-	die "problem adding user audit"
+	enewuser secoff 400 /bin/bash /secoff secoff || die "problem adding user secoff"
 
-	chmod 700 /secoff /var/log/rsbac ||  \
-	die "problem changing permissions of /secoff and/or /secoff/log"
-	chown secoff:secoff -R /secoff || \
-	die "problem changing ownership of /secoff"
-	einfo "It is suggested to run (for example) a separate copy of syslog-ng to"
-	einfo "log RSBAC messages, as user audit (uid 404) instead of using the deprecated"
-	einfo "rklogd. See http://rsbac.org/documentation/administration_examples/syslog-ng"
-	einfo "for more information."
+	chmod 700 /secoff /secoff/log || die "problem changing permissions of /secoff and/or /secoff/log"
+	chown secoff:secoff -R /secoff || die "problem changing ownership of /secoff"
 }

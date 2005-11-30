@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/monotone-0.16.ebuild,v 1.5 2005/04/19 21:32:29 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/monotone/monotone-0.16.ebuild,v 1.1 2005/01/02 00:11:03 dragonheart Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,16 +10,18 @@ SRC_URI="http://www.venge.net/monotone/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="x86"
 #Target Keywords  ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64"
 
 IUSE="nls"
 # "doc"
 
-RDEPEND=">=dev-libs/boost-1.31.0
+RDEPEND="virtual/libc
+	>=dev-libs/boost-1.31.0
 	dev-libs/popt"
+
 DEPEND="${RDEPEND}
-	>=sys-devel/gcc-3.2
+	>=sys-devel/gcc-3.3.3
 	sys-devel/gettext
 	doc? ( dev-lang/perl sys-apps/texinfo )"
 
@@ -29,8 +31,7 @@ src_compile() {
 	# crypto library
 	# disable stack protector
 
-	strip-flags
-	# replace-flags -O3 -O2
+	replace-flags -O3 -O2
 	append-flags -fno-stack-protector-all -fno-stack-protector -fno-strict-aliasing
 
 	econf `use_enable nls` || die
@@ -38,12 +39,11 @@ src_compile() {
 }
 
 src_test() {
-	make check
-	einfo "test may fail on test 62"
+	einfo "self test currently broken"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR=${D} install || die
 
 	# Generate html docs
 

@@ -1,22 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/barbarian-bin/barbarian-bin-1.01.ebuild,v 1.4 2005/10/21 11:14:41 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/barbarian-bin/barbarian-bin-1.01.ebuild,v 1.1 2004/12/13 08:39:22 mr_bones_ Exp $
 
 inherit games
 
 MY_PN=${PN/-bin/}
 DESCRIPTION="Save Princess Mariana through one-on-one battles with demonic barbarians."
-HOMEPAGE="http://www.tdbsoft.tk/"
+HOMEPAGE="http://members.home.nl/tdbsoft/"
 SRC_URI="http://www.pcpages.com/tomberrr/downloads/${MY_PN}${PV/./}_linux.zip"
 
 LICENSE="CCPL-Attribution-NonCommercial-NoDerivs-2.0"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
-RDEPEND="!amd64? ( >=media-libs/libsdl-1.2 )
-		amd64? ( app-emulation/emul-linux-x86-sdl )"
+RDEPEND=">=media-libs/libsdl-1.2"
 
 S="${WORKDIR}"
 

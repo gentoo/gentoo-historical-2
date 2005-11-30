@@ -1,8 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/arts/arts-3.4.1-r2.ebuild,v 1.13 2005/09/18 14:16:38 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/arts/arts-3.4.1-r2.ebuild,v 1.1 2005/06/08 09:55:26 greg_g Exp $
 
 inherit kde flag-o-matic eutils
+set-qtdir 3
 set-kdedir 3.4
 
 MY_PV=${PV/#3/1}
@@ -14,17 +15,17 @@ SRC_URI="mirror://kde/stable/${PV}/src/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="3.4"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64 ~ia64 ~ppc64 ~ppc ~sparc ~sparc ~ppc ~ppc64 ~ia64"
 IUSE="alsa esd artswrappersuid jack mp3 hardened vorbis"
 
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	vorbis? ( media-libs/libvorbis media-libs/libogg )
 	esd? ( media-sound/esound )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.90 )
+	jack? ( media-sound/jack-audio-connection-kit )
 	mp3? ( media-libs/libmad )
 	media-libs/audiofile
 	>=dev-libs/glib-2
-	$(qt_min_version 3.3)"
+	>=x11-libs/qt-3.3"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"

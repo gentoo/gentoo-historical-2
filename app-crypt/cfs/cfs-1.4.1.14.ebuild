@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/cfs/cfs-1.4.1.14.ebuild,v 1.5 2005/01/01 12:27:00 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/cfs/cfs-1.4.1.14.ebuild,v 1.1 2004/09/17 21:48:30 mkennedy Exp $
 
 inherit eutils
 
@@ -17,7 +17,7 @@ SRC_URI="http://ftp.debian.org/debian/pool/main/c/cfs/cfs_${MY_PV}.orig.tar.gz
 	http://ftp.debian.org/debian/pool/main/c/cfs/cfs_${MY_PV}-${DEB_PV}.diff.gz"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND="net-fs/nfs-utils"
 
@@ -76,6 +76,6 @@ src_install() {
 
 pkg_postinst() {
 	rm -f /var/lib/cfs/.cfsfs/.keep
-	einfo "Please read /usr/share/doc/${PF}/README.Gentoo.gz for"
+	einfo "Please read /usr/share/docs/cfs-${PF}/README.Gentoo for"
 	einfo "information on how to get started with CFS on Gentoo."
 }

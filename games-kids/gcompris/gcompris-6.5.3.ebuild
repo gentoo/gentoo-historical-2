@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/gcompris/gcompris-6.5.3.ebuild,v 1.3 2005/06/07 02:25:35 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-kids/gcompris/gcompris-6.5.3.ebuild,v 1.1 2005/06/06 18:17:28 mr_bones_ Exp $
 
 inherit eutils games
 
@@ -11,20 +11,19 @@ SRC_URI="mirror://sourceforge/gcompris/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-#IUSE="python editor" #editor didn't compile for me.
-IUSE="python"
+IUSE="python editor"
 
 RDEPEND="virtual/x11
 	>=dev-libs/glib-2.0
 	=x11-libs/gtk+-2*
 	>=gnome-base/libgnomecanvas-2.0.2
+	>=dev-python/gnome-python-2.0
 	media-libs/sdl-mixer
 	media-libs/libsdl
 	dev-libs/libxml2
 	dev-libs/popt
 	games-board/gnuchess
-	python? ( dev-lang/python
-		>=dev-python/gnome-python-2.0 )
+	python? ( dev-lang/python )
 	editor? (
 		>=gnome-base/libgnome-1.96.0
 		>=gnome-base/libgnomeui-1.96.0
@@ -44,11 +43,10 @@ src_unpack() {
 
 src_compile() {
 	export GNUCHESS="${GAMES_BINDIR}/gnuchess"
-	# $(use_with editor) - editor didn't compile for me.
 	econf \
 		--disable-dependency-tracking \
 		$(use_with python python /usr/bin/python) \
-		--without-editor \
+		$(use_with editor) \
 		|| die
 	emake -j1 || die "emake failed"
 }

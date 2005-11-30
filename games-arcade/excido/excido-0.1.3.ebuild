@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/excido/excido-0.1.3.ebuild,v 1.8 2005/06/15 18:10:07 wolf31o2 Exp $
+# $Header:
 
 inherit games
 
@@ -9,9 +9,8 @@ HOMEPAGE="http://icculus.org/excido/"
 SRC_URI="http://icculus.org/excido/${P}.tar.bz2"
 
 LICENSE="GPL-2"
+KEYWORDS="x86"
 SLOT="0"
-KEYWORDS="x86 ~alpha ~amd64"
-IUSE=""
 
 DEPEND="dev-games/physfs
 	media-libs/libsdl
@@ -40,7 +39,7 @@ src_install() {
 	dogamesbin excido
 	dodir ${GAMES_DATADIR}/${PN}
 	cp helmetr.ttf data/*.{wav,png} ${D}${GAMES_DATADIR}/${PN}
-	dodoc BUGS CHANGELOG HACKING README RELNOTES* TODO \
+	dodoc BUGS CHANGELOG HACKING INSTALL README RELNOTES* TODO \
 		keyguide.txt data/CREDITS data/*.txt
 	prepgamesdirs
 }

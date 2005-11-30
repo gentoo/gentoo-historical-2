@@ -1,16 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 b608d9bf60f75bbf230a63959e0b658b ChangeLog 615
-MD5 345366230c8459cb246f52f09be78d5a files/digest-selinux-openldap-20050626 76
-MD5 447a5b942f75c925db5020c5f684b693 files/digest-selinux-openldap-20051122 76
+MD5 2f90c3863fac802733999f26c6e8cad9 ChangeLog 132
 MD5 a5bea22a8c01550a4e15eafb2e91bb78 metadata.xml 522
-MD5 5258eee88394ed387b2ca3520d4209a8 selinux-openldap-20050626.ebuild 454
-MD5 3be359c3f6eba7111b13f099b405eb9f selinux-openldap-20051122.ebuild 459
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQFDisU4GSBEIeh4AEYRAtI0AJ9lZ72wkVTM4NP+qlwFmGxrcm7JPACfShM6
-S026pq+H/LIMm50rpSqJiBk=
-=HyGx
------END PGP SIGNATURE-----
+MD5 a0d4dc9d4b5cc3d4e8ae88a5ffd86092 selinux-openldap-20050626.ebuild 334
+MD5 89e008249e191c009cda20da90f99066 files/digest-selinux-openldap-20050626 76

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.19.ebuild,v 1.6 2005/09/22 19:57:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.19.ebuild,v 1.1 2004/12/02 04:39:31 robbat2 Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ LICENSE="OPENLDAP"
 SLOT="0"
 IUSE="berkdb crypt debug gdbm ipv6 odbc perl readline samba sasl slp ssl tcpd"
 #In portage for testing only, hardmasked in package.mask
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha arm ~amd64 ~s390 ~hppa ppc64"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	>=sys-apps/sed-4
@@ -28,13 +28,12 @@ DEPEND=">=sys-libs/ncurses-5.1
 # We do NOT support major version upgrades yet
 # required process is:
 # 1. stop slapd/slurpd
-# 2. slapcat -l file ## THIS WILL NOT WORK AFTER THE EMERGE, YOU MUST DO IT WITH THE OLD VERSION
+# 2. slapcat -l file
 # 3. egrep -v '^entryCSN:' file >file.new ## are any other changes required?
-# 4. emerge unmerge '<=net-nds/openldap-2.1*'
-# 5. emerge '>=net-nds/openldap-2.2'
-# 6. etc-update ## !!!IMPORTANT!!! new config file stuff that we need to write for users (I haven't done it yet)
+# 4. unmerge openldap-2.1
+# 5. emerge openldap-2.2
+# 6. etc-update # !!!IMPORTANT!!! new config file stuff that we need to write for users (I haven't done it yet)
 # 7. slapadd -l file.new
-# 8. chown ldap:ldap /var/lib/openldap-data/*
 # 8. start slapd again, set up new replication system maybe
 DEPEND="${DEPEND} !<net-nds/openldap-2.2"
 
@@ -60,7 +59,7 @@ DEPEND="${DEPEND}
 
 pkg_preinst() {
 	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/lib/openldap ldap
+	enewuser ldap 439 /dev/null /usr/lib/openldap ldap
 }
 
 src_unpack() {
@@ -156,7 +155,6 @@ src_compile() {
 }
 
 src_test() {
-	einfo "Doing tests"
 	cd tests ; make tests || die "make tests failed"
 }
 
@@ -184,7 +182,7 @@ src_install() {
 	fowners ldap:ldap /var/run/openldap
 	fperms 0755 /var/run/openldap
 	for f in /etc/openldap/slapd.conf /etc/openldap/slapd.conf.default; do
-		sed -e "s:/var/lib/run/slapd.:/var/run/openldap/slapd.:" -i ${D}/${f}
+		sed -e "s:/var/lib/slapd.:/var/run/openldap/slapd.:" -i ${D}/${f}
 		sed -e "/database\tbdb$/acheckpoint	32	30 # <kbyte> <min>" -i ${D}/${f}
 		fowners root:ldap ${f}
 		fperms 0640 ${f}

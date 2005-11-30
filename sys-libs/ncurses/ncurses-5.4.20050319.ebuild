@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.4.20050319.ebuild,v 1.4 2005/08/24 00:35:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/ncurses/ncurses-5.4.20050319.ebuild,v 1.1 2005/04/28 23:08:05 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -35,7 +35,6 @@ src_unpack() {
 	cd "${S}"
 	epatch "${WORKDIR}"/${MY_P}-${PV_SNAP}-patch.sh
 	epatch "${FILESDIR}"/${MY_P}-share-sed.patch #42336
-	epatch "${FILESDIR}"/${MY_P}-c++-templates.patch #90819
 }
 
 src_compile() {
@@ -65,14 +64,11 @@ src_compile() {
 do_compile() {
 	ECONF_SOURCE=${S}
 
-	local mylibprefix=""
-	[[ ${USERLAND} == "Darwin" ]] && mylibprefix="/usr"
-
 	# We need the basic terminfo files in /etc, bug #37026.  We will
 	# add '--with-terminfo-dirs' and then populate /etc/terminfo in
 	# src_install() ...
 	econf \
-		--libdir=${mylibprefix}/$(get_libdir) \
+		--libdir=/$(get_libdir) \
 		--with-terminfo-dirs="/etc/terminfo:/usr/share/terminfo" \
 		--disable-termcap \
 		--with-shared \
@@ -105,14 +101,12 @@ src_install() {
 	cd "${WORKDIR}"/narrowc
 	make DESTDIR="${D}" install || die "make narrowc install failed"
 
-	if [[ ${USERLAND} != "Darwin" ]] ; then
-		# Move static and extraneous ncurses libraries out of /lib
-		dodir /usr/$(get_libdir)
-		cd "${D}"/$(get_libdir)
-		mv lib{form,menu,panel}.so* *.a "${D}"/usr/$(get_libdir)/
-		gen_usr_ldscript lib{,n}curses.so
-		use unicode && gen_usr_ldscript lib{,n}cursesw.so
-	fi
+	# Move static and extraneous ncurses libraries out of /lib
+	dodir /usr/$(get_libdir)
+	cd "${D}"/$(get_libdir)
+	mv libform* libmenu* libpanel* *.a "${D}"/usr/$(get_libdir)/
+	gen_usr_ldscript lib{,n}curses.so
+	use unicode && gen_usr_ldscript lib{,n}cursesw.so
 
 	# We need the basic terminfo files in /etc, bug #37026
 	einfo "Installing basic terminfo files in /etc..."
@@ -140,12 +134,12 @@ src_install() {
 		cd "${D}"
 		rm -rf usr/share/man
 		cd usr/share/terminfo
-		cp -pPR l/linux n/nxterm v/vt100 "${T}"
+		cp -a l/linux n/nxterm v/vt100 "${T}"
 		rm -rf *
 		mkdir l x v
-		cp -pPR "${T}"/linux l
-		cp -pPR "${T}"/nxterm x/xterm
-		cp -pPR "${T}"/vt100 v
+		cp -a "${T}"/linux l
+		cp -a "${T}"/nxterm x/xterm
+		cp -a "${T}"/vt100 v
 	else
 		# Install xterm-debian terminfo entry to satisfy bug #18486
 		LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${D}/usr/$(get_libdir):${D}/$(get_libdir) \

@@ -1,43 +1,6 @@
 # ChangeLog for dev-lang/spidermonkey
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.10 2005/08/17 03:12:23 squash Exp $
-
-  17 Aug 2005; Josh Grebe <squash@gentoo.org> spidermonkey-1.5_rc5.ebuild:
-  GOod on sparc, bug #89510
-
-  01 Aug 2005; Joseph Jezak <josejx@gentoo.org>
-  spidermonkey-1.5_rc6-r1.ebuild:
-  Marked ppc stable.
-
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
-  spidermonkey-1.5_rc6-r1.ebuild:
-  Stable on ppc64 (bug #100841)
-
-  30 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
-  spidermonkey-1.5_rc6-r1.ebuild:
-  Stable on amd64 (dependency of gxine).
-
-  18 Apr 2005; Markus Rothe <corsair@gentoo.org>
-  spidermonkey-1.5_rc6-r1.ebuild:
-  Added ~ppc64 to KEYWORDS; bug #89510
-
-  19 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
-  +files/spidermonkey-1.5_rc6-va_copy-fix.patch,
-  spidermonkey-1.5_rc6-r1.ebuild:
-  Added patch from bug 81473. It fixes va_copy vs. VA_COPY.
-
-*spidermonkey-1.5_rc6-r1 (04 Sep 2004)
-
-  04 Sep 2004; Mamoru KOMACHI <usata@gentoo.org>
-  +spidermonkey-1.5_rc6-r1.ebuild:
-  spidermonkey-1.5_rc6.ebuild doesn't install all the headers needed by
-  sablotron to build with JavaScript support. Also moved headers to
-  /usr/include/js.
-
-*spidermonkey-1.5_rc6 (04 Sep 2004)
-
-  04 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +spidermonkey-1.5_rc6.ebuild:
-  Version bumped. Install headers, too. See bug #24502.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/ChangeLog,v 1.1 2003/02/24 01:59:06 vapier Exp $
 
 *spidermonkey-1.5_rc5 (23 Feb 2003)
 

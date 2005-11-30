@@ -1,21 +1,8 @@
 # ChangeLog for app-xemacs/mule-base
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/mule-base/ChangeLog,v 1.8 2005/01/01 17:10:08 eradicator Exp $
-
-  09 Aug 2004; Tom Gall <tgall@gentoo.org> mule-base-1.42.ebuild:
-  stable on ppc64, bug #57174
-
-  27 Jul 2004; Robert Coie <rac@gentoo.org> +metadata.xml,
-  mule-base-1.42.ebuild:
-  keywording ppc
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> mule-base-1.42.ebuild:
-  Stable on alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/mule-base/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *mule-base-1.42 (16 Dec 2002)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> mule-base-1.42.ebuild :
-  Add ~alpha to KEYWORDS
 
   16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
   Initial import.

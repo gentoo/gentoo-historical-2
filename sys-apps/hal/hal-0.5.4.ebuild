@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/hal-0.5.4.ebuild,v 1.7 2005/11/29 17:20:17 compnerd Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/hal-0.5.4.ebuild,v 1.1 2005/08/27 04:09:31 cardoe Exp $
 
-inherit eutils linux-info
+inherit eutils linux-info versionator flag-o-matic
 
 DESCRIPTION="Hardware Abstraction Layer"
 HOMEPAGE="http://www.freedesktop.org/Software/hal"
@@ -10,46 +10,38 @@ SRC_URI="http://freedesktop.org/~david/dist/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 AFL-2.0 )"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ia64 ~ppc ~ppc64 ~sparc"
+KEYWORDS="~x86 ~amd64 ~ia64 ~ppc ~ppc64"
 IUSE="debug pcmcia doc pam_console"
 
+
+### We don't technically "need" pam, but without pam_console, stuff 
+### doesn't work (particularly NetworkManager).
+### dep on a specific util-linux version for managed mount patches #70873
 RDEPEND=">=dev-libs/glib-2.6
 	>=sys-apps/dbus-0.33
 	dev-libs/expat
 	>=sys-fs/udev-063
 	sys-apps/hotplug
 	>=sys-apps/util-linux-2.12i
-	||( >=sys-kernel/linux-headers-2.6 >=sys-kernel/mips-headers-2.6 )
+	>=sys-kernel/linux-headers-2.6
 	dev-libs/libusb
 	pam_console? ( sys-libs/pam )"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	>=dev-util/intltool-0.29
-	doc? ( app-doc/doxygen app-text/docbook-sgml-utils )"
+	doc? ( app-doc/doxygen )"
 
 ## HAL Daemon drops privledges so we need group access to read disks
-HALDAEMON_GROUPS="haldaemon,disk,cdrom,cdrw,floppy,usb"
+HALDAEMON_GROUPS="haldaemon,disk,cdrom,cdrw,floppy"
 
-function notify_uevent() {
-	eerror
-	eerror "You must enable Kernel Userspace Events in your kernel."
-	eerror "This can be set under 'General Setup'.  It is marked as"
-	eerror "CONFIG_KOBJECT_UEVENT in the config file."
-	eerror
-	ebeep 5
-
-	die "KOBJECT_UEVENT is not set"
-}
-
+# We need to run at least a 2.6.10 kernel, this is a
+# way to ensure that to some extent
 pkg_setup() {
 
 	linux-info_pkg_setup
 	kernel_is ge 2 6 10 \
 		|| die "You need a 2.6.10 or newer kernel to run this package"
-
-	linux_chkconfig_present KOBJECT_UEVENT \
-		|| notify_uevent
 
 	if use pam_console && ! built_with_use sys-libs/pam pam_console ; then
 			eerror "You need to build pam with pam_console support"
@@ -57,7 +49,7 @@ pkg_setup() {
 			die "pam without pam_console detected"
 	fi
 
-	if [ -d ${ROOT}/etc/hal/device.d ]; then
+	if [ -d ${D}/etc/hal/device.d ]; then
 		eerror "HAL 0.5.x will not run with the HAL 0.4.x series of"
 		eerror "/etc/hal/device.d/ so please remove this directory"
 		eerror "with rm -rf /etc/hal/device.d/ and then re-emerge."
@@ -75,20 +67,27 @@ src_unpack() {
 }
 
 src_compile() {
+
+	local myconf
+
+	# NOTE: fstab-sync dies at an assert() and is deprecated upstream.
+	# As such, no need to support it.  
 	econf \
-		$(use_enable debug verbose-mode) \
-		$(use_enable pcmcia pcmcia-support) \
+		`use_enable debug verbose-mode` \
+		`use_enable pcmcia pcmcia-support` \
 		--enable-sysfs-carrier \
 		--enable-hotplug-map \
-		$(use_enable doc docbook-docs) \
-		$(use_enable doc doxygen-docs) \
+		`use_enable doc docbook-docs` \
+		`use_enable doc doxygen-docs` \
 		--with-pid-file=/var/run/hald.pid \
 		|| die "configure failed"
 
 	emake || die "make failed"
+
 }
 
 src_install() {
+
 	make DESTDIR=${D} install || die
 
 	# We install this in a seperate package to avoid gnome-python dep
@@ -102,9 +101,15 @@ src_install() {
 	# Script to unmount devices if they are yanked out (from upstream)
 	exeinto /etc/dev.d/default
 	doexe ${FILESDIR}/hal-unmount.dev
+
+
 }
 
 pkg_postinst() {
+	##
+	## The old hal ran as root.  This was *very* bad because of all the user IO that HAL does.
+	## The new hal runs as 'haldaemon', but haldaemon needs to be in the appropriate groups to work.
+	## Below is a hack to make this transition (upgrade from previous versions) smooth.
 	## We need to add the user/groups *after* package compilation/installation, so that we
 	## don't change the user without the package being installed.
 	##
@@ -121,11 +126,4 @@ pkg_postinst() {
 	einfo "work. Suggested is to add the init script to your start-up"
 	einfo "scripts, this should be done like this :"
 	einfo "\`rc-update add hald default\`"
-
-	ewarn
-	ewarn "If you are upgrading from a previous version of hal you should run"
-	ewarn "revdep-rebuild to find any programs which were built against the old"
-	ewarn "version and then rebuild them.  Not doing so may result in a broken"
-	ewarn "system."
-	ewarn
 }

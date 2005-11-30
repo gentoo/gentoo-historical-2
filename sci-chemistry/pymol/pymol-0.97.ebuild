@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol/pymol-0.97.ebuild,v 1.5 2005/06/17 20:09:52 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/pymol/pymol-0.97.ebuild,v 1.1 2004/12/24 17:00:58 ribosome Exp $
 
-inherit distutils eutils multilib
+inherit distutils eutils
 
 DESCRIPTION="A Python-extensible molecular graphics system."
 HOMEPAGE="http://pymol.sourceforge.net/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pymol/${PN}-${PV/./_}-src.tgz"
 LICENSE="PSF-2.2"
 IUSE=""
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="x86"
 
 DEPEND="dev-lang/python
 	dev-python/pmw
@@ -32,7 +32,7 @@ src_unpack() {
 src_install() {
 	distutils_src_install
 	cd ${S}
-	PYTHONPATH=$(find ${D}/usr/$(get_libdir) -type d -name site-packages) ${python} setup2.py
+	PYTHONPATH=$(find ${D}/usr/lib -type d -name site-packages) ${python} setup2.py
 
 	local sedexp="s:${D%/}::g"
 	sed -e ${sedexp} pymol.com > pymol

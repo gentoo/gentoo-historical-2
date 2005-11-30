@@ -1,77 +1,11 @@
-# ChangeLog for games-util/xqf
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/xqf/ChangeLog,v 1.20 2005/10/21 05:11:12 vapier Exp $
-
-*xqf-1.0.4 (21 Oct 2005)
-
-  21 Oct 2005; Mike Frysinger <vapier@gentoo.org> +xqf-1.0.4.ebuild:
-  Version bump.
-
-  24 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> xqf-1.0.3.ebuild:
-  add dep on gdk-pixbuf (bug #107106)
-
-  20 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> xqf-1.0.3.ebuild:
-  remove gtk2 use flag
-
-  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> xqf-1.0.3.ebuild:
-  Stable on ppc.
-
-  17 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> -xqf-1.0.ebuild,
-  xqf-1.0.3.ebuild:
-  stablize 1.0.3 for x86; clean old ebuild
-
-*xqf-1.0.3 (06 Apr 2005)
-
-  06 Apr 2005; Mike Frysinger <vapier@gentoo.org> +xqf-1.0.3.ebuild:
-  Version bump #88064 by Stephan.
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*xqf-1.0.2 (24 Dec 2004)
-
-  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +xqf-1.0.2.ebuild:
-  Version bump #75444 by Jan Brinkmann.
-
-*xqf-1.0 (16 Aug 2004)
-
-  16 Aug 2004; Mike Frysinger <vapier@gentoo.org> +xqf-1.0.ebuild:
-  Version bump #60505 by Alexander Jenisch.
-
-  05 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> xqf-0.9.14.ebuild:
-  "splash.png" is pretty generic.  Renamed the splash graphic to
-  xqfsplash.png.  (bug #55949)
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> xqf-0.9.14.ebuild:
-  virtual/glibc -> virtual/libc
-
-  11 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> xqf-0.9.14.ebuild:
-  too painful to use games eclass (bug #46740); depend tidy
-
-  10 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> xqf-0.9.13.ebuild:
-  clean older ebuild
-
-*xqf-0.9.14 (27 Mar 2004)
-
-  27 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> xqf-0.9.13.ebuild,
-  xqf-0.9.14.ebuild:
-  version bump (bug #45388)
-
-  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> xqf-0.9.13.ebuild:
-  stop using deprecated ?: use syntax
-
-  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> :
-  AMD64 keywords.
-
-*xqf-0.9.13 (29 Nov 2003)
-
-  29 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bump #34386.
-
-*xqf-0.9.12 (23 Jun 2003)
+# ChangeLog for app-games/xqf
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/xqf/ChangeLog,v 1.1 2003/09/10 18:53:23 vapier Exp $
 
   11 Jul 2003; Michael Sterrett <msterret@gentoo.org> xqf-0.9.12.ebuild:
   emake error message
+
+*xqf-0.9.12 (23 Jun 2003)
 
   23 Jun 2003; Tal Peer <coredumb@gentoo.org> xqf-0.9.12.ebuild:
   Added gdk-pixbuf dep, fixes #22729.
@@ -104,14 +38,14 @@
 
 *xqf-0.9.8 (7 May 2002)
 
-  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> xqf-0.9.8.ebuild :
+  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> xqf-0.9.8.ebuild :
   Added LICENSE, KEYWORDS.
 
   7 May 2002; Spider <spider@gentoo.org> xqf-0.9.8.ebuild :
   fix sourceforge mirroring.
 	  
   13 April 2002; Bart Verwilst <verwilst@gentoo.org>: just added a 
-  description, and cleaned up the $Header: /var/cvsroot/gentoo-x86/games-util/xqf/ChangeLog,v 1.20 2005/10/21 05:11:12 vapier Exp $
+  description, and cleaned up the $Header: /var/cvsroot/gentoo-x86/games-util/xqf/ChangeLog,v 1.1 2003/09/10 18:53:23 vapier Exp $
 
 *xqf-0.9.8 (6 Apr 2002)
 

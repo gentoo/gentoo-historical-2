@@ -1,24 +1,6 @@
 # ChangeLog for app-xemacs/fsf-compat
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/fsf-compat/ChangeLog,v 1.8 2005/01/01 17:05:01 eradicator Exp $
-
-  09 Aug 2004; Tom Gall <tgall@gentoo.org> fsf-compat-1.12.ebuild:
-  stable on ppc64, bug #57174
-
-  27 Jul 2004; Robert Coie <rac@gentoo.org> +metadata.xml,
-  fsf-compat-1.11.ebuild, fsf-compat-1.12.ebuild:
-  keywording ppc
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> fsf-compat-1.12.ebuild:
-  Stable on alpha
-
-*fsf-compat-1.12 (22 Feb 2003)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> fsf-compat-1.11.ebuild fsf-compat-1.12.ebuild files/digest-fsf-compat-1.12 :
-  Add ~alpha to KEYWORDS
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  new stable ebuild
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/fsf-compat/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *fsf-compat-1.11 (16 Dec 2002)
 

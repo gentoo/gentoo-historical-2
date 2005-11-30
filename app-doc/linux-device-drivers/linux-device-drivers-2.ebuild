@@ -1,25 +1,21 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/linux-device-drivers/linux-device-drivers-2.ebuild,v 1.5 2005/04/23 18:58:28 wormo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/linux-device-drivers/linux-device-drivers-2.ebuild,v 1.1 2005/02/19 19:11:13 vapier Exp $
 
 DESCRIPTION="howto write linux device drivers (updated for Linux 2.4)"
 HOMEPAGE="http://www.oreilly.com/catalog/linuxdrive2/"
-SRC_URI="http://www.xml.com/ldd/chapter/book/pdf/ldd_book_pdf.zip
-	ftp://ftp.oreilly.com/examples/linuxdrive2/ldd2-samples-1.0.1.tar.gz"
+SRC_URI="http://www.xml.com/ldd/chapter/book/pdf/ldd_book_pdf.zip"
 
 LICENSE="FDL-1.1"
 SLOT="2"
-KEYWORDS="amd64 arm hppa ia64 ppc s390 x86"
+KEYWORDS="amd64 arm hppa ia64 s390 sh x86"
 IUSE=""
 
-DEPEND="app-arch/unzip"
+DEPEND="app-arch/zip"
 RDEPEND=""
 
 S=${WORKDIR}
 
 src_install() {
-	insinto /usr/share/doc/${PF}
-	doins *.pdf || die "pdfs"
-	insinto /usr/share/doc/${PF}/samples
-	doins -r ldd2-samples-*/* || die "samples"
+	dodoc *.pdf || die
 }

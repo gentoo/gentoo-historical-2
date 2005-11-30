@@ -1,14 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/rsbac-sources/rsbac-sources-2.4.99.ebuild,v 1.3 2005/10/07 15:41:13 kang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/rsbac-sources/rsbac-sources-2.4.99.ebuild,v 1.1 2005/05/09 23:06:54 kang Exp $
 
 IUSE=""
 ETYPE="sources"
-inherit kernel-2 subversion
+inherit kernel-2
+inherit subversion
 detect_version
 
 # rsbac versions
-RSBACV=1.2.5
+RSBACV=1.2.4
 
 # Gentoo rsbac kernel patches
 # arent used in SVN but you can still get them applied if you wish
@@ -38,7 +39,7 @@ SVN sources!"
 ESVN_PROJECT="rsbac-sources-2.4-svn"
 
 src_unpack() {
-	ESVN_REPO_URI="svn://rsbac.mprivacy-update.de/rsbac1/linux-kernel/2.4/branches/linux-rsbac"
+	ESVN_REPO_URI="svn://rsbac.mprivacy-update.de/rsbac/linux-2.4.30-rsbac-v1.2.5"
 	subversion_src_unpack
 	S=${WORKDIR}/${P}
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/libgtk-java/libgtk-java-2.6.2-r1.ebuild,v 1.3 2005/07/19 09:35:09 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/libgtk-java/libgtk-java-2.6.2-r1.ebuild,v 1.1 2005/05/01 16:20:48 karltk Exp $
 
 #
 # WARNING: Because java-gnome is a set of bindings to native GNOME libraries, 
@@ -19,8 +19,8 @@ HOMEPAGE="http://java-gnome.sourceforge.net/"
 RDEPEND=">=x11-libs/gtk+-2.6
 	>=virtual/jre-1.2"
 
-DEPEND=">=virtual/jdk-1.2
-	${RDEPEND}
+DEPEND="${RDEPEND}
+	>=virtual/jdk-1.2
 	app-arch/zip"
 
 #
@@ -28,7 +28,7 @@ DEPEND=">=virtual/jdk-1.2
 #
 SLOT="2.6"
 LICENSE="LGPL-2.1"
-KEYWORDS="~ppc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="gcj"
 
 src_unpack() {

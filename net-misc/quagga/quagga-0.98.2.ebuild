@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/quagga-0.98.2.ebuild,v 1.11 2005/11/10 05:19:51 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/quagga-0.98.2.ebuild,v 1.1 2005/03/20 18:09:43 mrness Exp $
 
 inherit eutils
 
@@ -10,18 +10,17 @@ SRC_URI="http://www.quagga.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ppc ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="ipv6 snmp pam tcpmd5 bgpclassless ospfapi"
 
-RDEPEND="sys-apps/iproute2
-	>=sys-libs/libcap-1.10-r5
+RDEPEND="!net-misc/zebra
+	sys-apps/iproute2
+	sys-libs/libcap
 	snmp? ( net-analyzer/net-snmp )
 	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	virtual/libc
-	sys-devel/binutils
-	sys-devel/autoconf-wrapper
-	sys-devel/libtool"
+	sys-devel/binutils"
 
 # TCP MD5 for BGP patch for Linux (RFC 2385) 
 MD5_PATCH="ht-20050110-0.98.0-bgp-md5.patch"
@@ -48,6 +47,8 @@ CONNECTED_PATCH="amir-connected-route.patch"
 pkg_preinst() {
 	enewgroup ${QUAGGA_GROUP_NAME} ${QUAGGA_GROUP_GID}
 	enewuser ${QUAGGA_USER_NAME} ${QUAGGA_USER_UID} ${QUAGGA_USER_SH} ${QUAGGA_USER_HOMEDIR} ${QUAGGA_USER_GROUPS}
+	fperms 770 /etc/quagga || die
+	fowners root:${QUAGGA_GROUP_NAME} /etc/quagga || die
 }
 
 src_unpack() {
@@ -104,12 +105,13 @@ src_install() {
 
 	keepdir /var/run/quagga || die
 
-	local i MY_SERVICES_LIST="zebra ripd ospfd bgpd"
-	use ipv6 && MY_SERVICES_LIST="${MY_SERVICES_LIST} ripngd ospf6d"
-	for i in ${MY_SERVICES_LIST} ; do
-		newinitd ${FILESDIR}/${i}.init ${i} || die "failed to install ${i} init.d script"
-	done
-	newconfd ${FILESDIR}/zebra.conf zebra || die "failed to install zebra conf.d script"
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/init/zebra zebra && \
+		newexe ${FILESDIR}/init/ripd ripd && \
+		newexe ${FILESDIR}/init/ospfd ospfd && \
+		( ! use ipv6 || newexe ${FILESDIR}/init/ripngd ripngd ) && \
+		( ! use ipv6 || newexe ${FILESDIR}/init/ospf6d ospf6d ) && \
+		newexe ${FILESDIR}/init/bgpd bgpd || die "failed to install init scripts"
 
 	if use pam; then
 		insinto /etc/pam.d
@@ -122,16 +124,10 @@ src_install() {
 pkg_postinst() {
 	# empty dir for pid files for the new priv separation auth
 	#set proper owner/group/perms even if dir already existed
-	install -d -m0770 -o root -g ${QUAGGA_GROUP_NAME} ${ROOT}/etc/quagga
+	install -d -m0700 -o ${QUAGGA_USER_NAME} -g ${QUAGGA_GROUP_NAME} ${ROOT}/etc/quagga
 	install -d -m0755 -o ${QUAGGA_USER_NAME} -g ${QUAGGA_GROUP_NAME} ${ROOT}/var/run/quagga
 
-	einfo "Sample configuration files can be found in /etc/quagga/samples."
+	einfo "Sample configuration files can be found in /etc/quagga/sample."
 	einfo "You have to create config files in /etc/quagga before"
 	einfo "starting one of the daemons."
-
-	if use tcpmd5; then
-		echo
-		ewarn "TCP MD5 for BGP needs a patched kernel!"
-		einfo "See http://hasso.linux.ee/quagga/bgp-md5.en.php for more info."
-	fi
 }

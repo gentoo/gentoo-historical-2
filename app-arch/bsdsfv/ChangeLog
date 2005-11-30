@@ -1,62 +1,13 @@
 # ChangeLog for app-arch/bsdsfv
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/bsdsfv/ChangeLog,v 1.18 2005/09/20 12:32:55 flameeyes Exp $
-
-  20 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
-  files/bsdsfv-1.18-64bit.patch:
-  Fix patch to work on non-glibc systems, inttypes seems to be needed there, too.
-
-*bsdsfv-1.18-r1 (19 Sep 2005)
-
-  19 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
-  +files/bsdsfv-1.18-64bit.patch, +bsdsfv-1.18-r1.ebuild:
-  Added patch to work fine on 64bit arches. Don't let the package be stripped
-  by the makefile. Respected the configured compiler.
-
-  10 Apr 2005; Mike Frysinger <vapier@gentoo.org> bsdsfv-1.18.ebuild:
-  Mark -amd64 since it failed to properly verify half the files in a 70 disk set.
-
-  20 Feb 2005; <gongloo@gentoo.org> bsdsfv-1.18.ebuild:
-  Stable on ppc-macos.
-
-  20 Jan 2005; <gongloo@gentoo.org> bsdsfv-1.18.ebuild:
-  Keyworded ~ppc-macos.
-
-  27 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> bsdsfv-1.18.ebuild:
-  Added IUSE.
-
-*bsdsfv-1.18 (10 Nov 2003)
-
-  10 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bump #33135.
-
-*bsdsfv-1.17 (29 Jun 2003)
-
-  29 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bump.
-
-*bsdsfv-1.14 (15 Apr 2003)
-
-  16 Apr 2003; Dylan Carlson <absinthe@gentoo.org> bsdsfv-1.14.ebuild,
-  files/bsdsfv-1.14-gentoo.diff:
-  Fixed the patch (thanks to dragon for pointing this out).
-
-  15 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
-  bsdsfv-1.14.ebuild, files/bsdsfv-1.14-gentoo.diff:
-  Version bump, masked for testing. The authors changed the versioning scheme.
-  This new version also includes a patch supplied by PJ to colorize the output
-  ( thanks to: PJ <PJ@EliteGamer.com> in #18214 )
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*bsdsfv-1.0.13 (17 Aug 2002)
-
-  17 Aug 2002; Bruce A. Locke <blocke@shivan.org> bsdsfv-1.0.13.ebuild:
-
-  Version Bump (reminded by cr0t.daywalker@gmx.net (Cr0t))
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-arch/bsdsfv/ChangeLog,v 1.1 2002/02/01 21:52:59 gbevin Exp $
 
 *bsdsfv-1.0.12 (1 Feb 2002)
 
-  13 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
-  Added ppc keyword
-
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

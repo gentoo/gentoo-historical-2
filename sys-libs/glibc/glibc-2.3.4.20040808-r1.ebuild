@@ -1,26 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.4.20040808-r1.ebuild,v 1.50 2005/07/29 16:26:13 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.4.20040808-r1.ebuild,v 1.1 2004/10/07 22:24:28 lv Exp $
 
-inherit eutils multilib flag-o-matic toolchain-funcs versionator
+inherit eutils flag-o-matic gcc
 
 # Branch update support.  Following will disable:
 #  BRANCH_UPDATE=
 BRANCH_UPDATE="20040808"
 
+
 # Minimum kernel version we support
 # (Recent snapshots fails with 2.6.5 and earlier)
-# also, we do not have a single 2.4 kernel in the tree with backported
-# support required to enable nptl.
 MIN_KERNEL_VERSION="2.6.5"
-
-# (very) Theoretical cross-compiler support
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} = ${CHOST} ]] ; then
-	if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
-		export CTARGET=${CATEGORY/cross-}
-	fi
-fi
 
 
 if [ -z "${BRANCH_UPDATE}" ]; then
@@ -47,14 +38,10 @@ SRC_URI="http://dev.gentoo.org/~lv/${PN}-${BASE_PV}.tar.bz2
 	http://dev.gentoo.org/~lv/${PN}-${NEW_PV}-branch-update-${BRANCH_UPDATE}.patch.bz2"
 
 LICENSE="LGPL-2"
-[[ ${CTARGET} != ${CHOST} ]] \
-	&& SLOT="${CTARGET}-2.2" \
-	|| SLOT="2.2"
-#~sparc: This is only used by the sparc64-multilib PROFILE_ARCH as versions
-#        after ~2.3.3.20040420 break blackdown-jdk on sparc.
-KEYWORDS="x86 amd64 hppa ppc64 ~ppc -mips ~sparc"
-IUSE="build erandom hardened multilib n32 nls nptl pic userlocales"
-RESTRICT="nostrip multilib-pkg-force" # we'll handle stripping ourself #46186
+SLOT="2.2"
+KEYWORDS="-* ~x86 amd64 ~hppa ppc64 ~ppc ~mips"
+IUSE="nls pic build nptl erandom hardened makecheck multilib debug userlocales"
+RESTRICT="nostrip" # we'll handle stripping ourself #46186
 
 # We need new cleanup attribute support from gcc for NPTL among things ...
 # We also need linux26-headers if using NPTL. Including kernel headers is
@@ -64,50 +51,31 @@ DEPEND=">=sys-devel/gcc-3.2.3-r1
 	nptl? ( >=sys-devel/gcc-3.3.1-r1 )
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	virtual/os-headers
-	nptl? ( >=sys-kernel/linux-headers-2.6.5 )
+	nptl? ( >=sys-kernel/linux26-headers-2.6.5 )
 	nls? ( sys-devel/gettext )"
 RDEPEND="virtual/os-headers
+	sys-apps/baselayout
 	nls? ( sys-devel/gettext )"
-# until amd64's 2004.3 is purged out of existence
+# until we compile the 32bit glibc here
 PDEPEND="amd64? ( multilib? ( app-emulation/emul-linux-x86-glibc ) )"
 
-PROVIDE="virtual/libc"
+PROVIDE="virtual/glibc virtual/libc"
+
+
+# (very) Theoretical cross-compiler support
+[ -z "${CCHOST}" ] && CCHOST="${CHOST}"
 
 # We need to be able to set alternative headers for
 # compiling for non-native platform
 # Will also become useful for testing kernel-headers without screwing up
-# the whole system.
-# note: intentionally undocumented.
-alt_headers() {
-	if [ -z "${ALT_HEADERS}" ] ; then
-		if [[ ${CTARGET} = ${CHOST} ]] ; then
-			ALT_HEADERS="${ROOT}/usr/include"
-		else
-			ALT_HEADERS="${ROOT}/usr/${CTARGET}/include"
-		fi
-	fi
-	echo "${ALT_HEADERS}"
-}
-alt_prefix() {
-	if [[ ${CTARGET} = ${CHOST} ]] ; then
-		echo /usr
-	else
-		echo /usr/${CTARGET}
-	fi
-}
-alt_libdir() {
-	if [[ ${CTARGET} = ${CHOST} ]] ; then
-		echo /$(get_libdir)
-	else
-		echo /usr/${CTARGET}/$(get_libdir)
-	fi
-}
+# whole system
+[ -z "${ALT_HEADERS}" ] && ALT_HEADERS="${ROOT}/usr/include"
+
 
 setup_flags() {
-	# Over-zealous CFLAGS can often cause problems.  What may work for one
-	# person may not work for another.  To avoid a large influx of bugs
-	# relating to failed builds, we strip most CFLAGS out to ensure as few
-	# problems as possible.
+	# Over-zealous CFLAGS can often cause problems.  What may work for one person may not
+	# work for another.  To avoid a large influx of bugs relating to failed builds, we
+	# strip most CFLAGS out to ensure as few problems as possible.
 	strip-flags
 	strip-unsupported-flags
 
@@ -121,88 +89,37 @@ setup_flags() {
 		append-flags "-fcall-used-g6"
 
 		# Sparc64 Only support...
-		if [ "${PROFILE_ARCH}" = "sparc64" ] && !has_multilib_profile; then
-			# Get rid of -mcpu options (the CHOST will fix this up) and flags
-			# known to fail
+		if [ "${PROFILE_ARCH}" = "sparc64" ]; then
+			# Get rid of -mcpu options (the CHOST will fix this up) and flags known to fail
 			filter-flags "-mcpu=ultrasparc -mcpu=v9 -mvis"
 
 			# Setup the CHOST properly to insure "sparcv9"
 			# This passes -mcpu=ultrasparc -Wa,-Av9a to the compiler
 			if [ "${CHOST}" = "sparc-unknown-linux-gnu" ]; then
-				CTARGET="sparcv9-unknown-linux-gnu"
-				CHOST="${CTARGET}"
+				export CHOST="sparcv9-unknown-linux-gnu"
+				export CCHOST="sparcv9-unknown-linux-gnu"
 			fi
 		fi
-
-		if [ "${PROFILE_ARCH}" = "sparc64" ] && has_multilib_profile; then
-			# We change our CHOST, so set this right here
-			export CC="$(tc-getCC)"
-
-			# glibc isn't too smart about guessing our flags.  It
-			# will default to -xarch=v9, but assembly in sparc64 glibc
-			# requires v9a or greater...
-			if is-flag "-mcpu=ultrasparc3"; then
-				# Change CHOST to include us3 assembly
-				if [ "${ABI}" = "sparc32" ]; then
-					CTARGET="sparcv9b-unknown-linux-gnu"
-					CHOST="${CTARGET}"
-				else
-					CTARGET="sparc64b-unknown-linux-gnu"
-					CHOST="${CTARGET}"
-					export CFLAGS_sparc64="$(get_abi_CFLAGS) -Wa,-xarch=v9b"
-				fi
-			else
-				if [ "${ABI}" = "sparc32" ]; then
-					CTARGET="sparcv9-unknown-linux-gnu"
-					CHOST="${CTARGET}"
-				else
-					CTARGET="sparc64-unknown-linux-gnu"
-					CHOST="${CTARGET}"
-					export CFLAGS_sparc64="$(get_abi_CFLAGS) -Wa,-xarch=v9a"
-				fi
-			fi
-
-			filter-flags -mvis -m32 -m64 -Wa,-xarch -Wa,-A
-		fi
-	fi
-
-	# AMD64 multilib
-	if use amd64 && has_multilib_profile; then
-		# We change our CHOST, so set this right here
-		export CC="$(tc-getCC)"
-
-		if [ "${ABI}" = "amd64" ]; then
-			CTARGET="x86_64-pc-linux-gnu"
-			CHOST="${CTARGET}"
-		else
-			CTARGET="i686-pc-linux-gnu"
-			CHOST="${CTARGET}"
-		fi
-
-		filter-flags -m32 -m64
 	fi
 
 	if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "4" ]; then
 		# broken in 3.4.x
 		replace-flags -march=pentium-m -mtune=pentium3
-	fi
-
-	if gcc -v 2>&1 | grep -q 'gcc version 3.[0123]'; then
-		append-flags -finline-limit=2000
+		ewarn "-march=pentium-m seems to be broken in gcc 3.4, changing to -mtune=pentium3"
 	fi
 
 	# We don't want these flags for glibc
 	filter-flags -fomit-frame-pointer -malign-double
 	filter-ldflags -pie
 
-	# Lock glibc at -O2 -- linuxthreads needs it and we want to be
-	# conservative here
+	# Lock glibc at -O2 -- linuxthreads needs it and we want to be conservative here
 	append-flags -O2
+	export LDFLAGS="${LDFLAGS//-Wl,--relax}"
 }
 
 
 check_kheader_version() {
-	local header="$(alt_headers)/linux/version.h"
+	local header="${ALT_HEADERS}/linux/version.h"
 
 	[ -z "$1" ] && return 1
 
@@ -266,8 +183,8 @@ check_nptl_support() {
 want_nptl() {
 	if use nptl; then
 		# Archs that can use NPTL
-		if use amd64 || use ia64 || use ppc || \
-		   use ppc64 || use s390 ; then
+		if use amd64 || use alpha || use ia64 || use ppc || \
+		   use ppc64 || use s390 || use sparc; then
 			return 0
 		fi
 
@@ -302,18 +219,36 @@ want_tls() {
 }
 
 
+do_makecheck() {
+	ATIME=`mount | awk '{ print $3,$6 }' | grep ^\/\  | grep noatime`
+	if [ "$ATIME" = "" ]; then
+		cd ${WORKDIR}/build
+		make check || die
+	else
+		ewarn "remounting / without noatime option so that make check"
+		ewarn "does not fail!"
+		epause 2
+		mount / -o remount,atime
+		cd ${WORKDIR}/build
+		make check || die
+		einfo "remounting / with noatime"
+		mount / -o remount,noatime
+	fi
+}
+
+
 install_locales() {
 	unset LANGUAGE LANG LC_ALL
 	cd ${WORKDIR}/build
-	make PARALLELMFLAGS="${MAKEOPTS} -j1" \
+	make PARALLELMFLAGS="${MAKEOPTS}" \
 		install_root=${D} localedata/install-locales || die
-	[[ ${CTARGET} = ${CHOST} ]] && keepdir /usr/lib/locale/ru_RU/LC_MESSAGES
+	keepdir /usr/lib/locale/ru_RU/LC_MESSAGES
 }
 
 
 setup_locales() {
-	if use !userlocales; then
-		einfo "userlocales not enabled, installing -ALL- locales..."
+	if use !userlocales || use makecheck; then
+		einfo "makecheck in USE or userlocales not enabled, installing -ALL- locales..."
 		install_locales || die
 	elif [ -e /etc/locales.build ]; then
 		einfo "Installing locales in /etc/locales.build..."
@@ -345,11 +280,20 @@ pkg_setup() {
 		die "GCC too old"
 	fi
 	echo
+
+	hasq sandbox $FEATURES && use makecheck && die "sandbox breaks make check. either take makecheck out of USE or set FEATURES=-sandbox"
+}
+
+
+do_arch_amd64_patches() {
+	cd ${S};
+	# CONF_LIBDIR support
+	epatch ${FILESDIR}/2.3.4/glibc-gentoo-libdir.patch
+	sed -i -e "s:@GENTOO_LIBDIR@:$(get_libdir):g" ${S}/sysdeps/unix/sysv/linux/configure
 }
 
 
 do_arch_alpha_patches() {
-	[[ $(tc-arch ${CTARGET}) != "alpha" ]] && return 0
 	cd ${S}
 
 	# Fix compatability with compaq compilers by ifdef'ing out some
@@ -362,25 +306,7 @@ do_arch_alpha_patches() {
 }
 
 
-do_arch_amd64_patches() {
-	[[ $(tc-arch ${CTARGET}) != "amd64" ]] && return 0
-	cd ${S};
-
-	if ! has_multilib_profile; then
-		# CONF_LIBDIR support
-		epatch ${FILESDIR}/2.3.4/glibc-gentoo-libdir.patch
-		sed -i -e "s:@GENTOO_LIBDIR@:$(get_libdir):g" ${S}/sysdeps/unix/sysv/linux/configure
-	fi
-
-	# fixes compiling with the new binutils on at least amd64 and ia64.
-	# see http://sources.redhat.com/ml/libc-alpha/2004-08/msg00076.html
-	# and http://bugs.gentoo.org/show_bug.cgi?id=66396 for more info.
-	epatch ${FILESDIR}/2.3.4/glibc-2.3.4-res_init.patch
-}
-
-
 do_arch_arm_patches() {
-	[[ $(tc-arch ${CTARGET}) != "arm" ]] && return 0
 	cd ${S};
 
 	# Any needed patches for arm go here
@@ -389,19 +315,15 @@ do_arch_arm_patches() {
 
 
 do_arch_hppa_patches() {
-	[[ $(tc-arch ${CTARGET}) != "hppa" ]] && return 0
 	einfo "Applying hppa specific path of ${HPPA_PATCHES} ..."
 	cd ${T}
 	unpack glibc-hppa-patches-${HPPA_PATCHES}.tar.gz
 	cd ${S}
-	epatch "${FILESDIR}"/2.3.4/hppa-no-pie.patch
 	export EPATCH_OPTS=-p1
 	for i in ${T}/glibc-hppa-patches-${HPPA_PATCHES}/*.diff
 	do
 		epatch ${i}
 	done
-
-	unset EPATCH_OPTS
 
 	use hardened && epatch ${FILESDIR}/2.3.4/glibc-2.3.4-hppa-hardened-disable__init_arrays.patch
 
@@ -409,7 +331,6 @@ do_arch_hppa_patches() {
 
 
 do_arch_ia64_patches() {
-	[[ $(tc-arch ${CTARGET}) != "ia64" ]] && return 0
 	cd ${S};
 
 	# The basically problem is glibc doesn't store information about
@@ -419,17 +340,10 @@ do_arch_ia64_patches() {
 	#   http://sources.redhat.com/ml/libc-alpha/2003-09/msg00165.html
 
 #	epatch ${FILESDIR}/2.3.2/${LOCAL_P}-ia64-LOAD_ARGS-fixup.patch
-
-
-	# fixes compiling with the new binutils on at least amd64 and ia64.
-	# see http://sources.redhat.com/ml/libc-alpha/2004-08/msg00076.html
-	# and http://bugs.gentoo.org/show_bug.cgi?id=66396 for more info.
-	epatch ${FILESDIR}/2.3.4/glibc-2.3.4-res_init.patch
 }
 
 
 do_arch_mips_patches() {
-	[[ $(tc-arch ${CTARGET}) != "mips" ]] && return 0
 	cd ${S}
 
 	# A few patches only for the MIPS platform.  Descriptions of what they
@@ -437,13 +351,13 @@ do_arch_mips_patches() {
 	# <tuxus@gentoo.org> thx <dragon@gentoo.org> (11 Jan 2003)
 	# <kumba@gentoo.org> remove tst-rndseek-mips & ulps-mips patches
 	# <iluxa@gentoo.org> add n32/n64 patches, remove pread patch
-	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-addabi.diff
-	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-syscall.h.diff
-	epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-sysify.diff
+	epatch ${FILESDIR}/2.3.3/mips-addabi.diff
+	epatch ${FILESDIR}/2.3.3/mips-syscall.h.diff
+	epatch ${FILESDIR}/2.3.3/mips-sysify.diff
 
 	# Need to install into /lib for n32-only userland for now.
 	# Propper solution is to make all userland /lib{32|64}-aware.
-	has_multilib_profile || use multilib || epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-nolib3264.diff
+	use multilib || epatch ${FILESDIR}/2.3.3/mips-nolib3264.diff
 
 	# Found this on Google (yay google!) and it fixes glibc not building
 	# a correct bits/syscall.h from 2.6.x headers.  It possibly breaks older
@@ -453,7 +367,6 @@ do_arch_mips_patches() {
 
 
 do_arch_ppc_patches() {
-	[[ $(tc-arch ${CTARGET}) != "ppc" ]] && return 0
 	cd ${S};
 	epatch ${FILESDIR}/2.3.4/glibc-2.3.4-getcontext.patch
 	# Any needed patches for ppc go here
@@ -461,7 +374,6 @@ do_arch_ppc_patches() {
 
 
 do_arch_ppc64_patches() {
-	[[ $(tc-arch ${CTARGET}) != "ppc64" ]] && return 0
 	cd ${S};
 	epatch ${FILESDIR}/2.3.4/glibc-2.3.4-getcontext.patch
 	# Any needed patches for ppc64 go here
@@ -469,7 +381,6 @@ do_arch_ppc64_patches() {
 
 
 do_arch_s390_patches() {
-	[[ $(tc-arch ${CTARGET}) != "s390" ]] && return 0
 	cd ${S};
 
 	# Any needed patches for s390 go here
@@ -477,7 +388,6 @@ do_arch_s390_patches() {
 
 
 do_arch_sparc_patches() {
-	[[ $(tc-arch ${CTARGET}) != "sparc" ]] && return 0
 	cd ${S};
 
 	# Any needed patches for sparc go here
@@ -485,7 +395,6 @@ do_arch_sparc_patches() {
 
 
 do_arch_x86_patches() {
-	[[ $(tc-arch ${CTARGET}) != "x86" ]] && return 0
 	cd ${S};
 	# CONF_LIBDIR support
 	epatch ${FILESDIR}/2.3.4/glibc-gentoo-libdir.patch
@@ -532,7 +441,7 @@ do_ssp_patches() {
 	# __guard_setup__stack_smash_handler
 	#
 	#  http://www.gentoo.org/proj/en/hardened/etdyn-ssp.xml
-	if use !hppa ; then
+	if [ "${ARCH}" != "hppa" ] && [ "${ARCH}" != "hppa64" ]; then
 		epatch ${FILESDIR}/2.3.3/glibc-2.3.2-propolice-guard-functions-v3.patch
 		cp ${FILESDIR}/2.3.3/ssp.c ${S}/sysdeps/unix/sysv/linux || \
 			die "failed to copy ssp.c to ${S}/sysdeps/unix/sysv/linux/"
@@ -574,35 +483,30 @@ src_unpack() {
 	# SSP support in glibc (where it belongs)
 	do_ssp_patches
 
+
 	# PaX-related Patches
 	do_pax_patches
 
 	# disable binutils -as-needed
 	sed -e 's/^have-as-needed.*/have-as-needed = no/' -i ${S}/config.make.in
 
-	# Glibc is stupid sometimes, and doesn't realize that with a 
-	# static C-Only gcc, -lgcc_eh doesn't exist.
-	# http://sources.redhat.com/ml/libc-alpha/2003-09/msg00100.html
-	echo 'int main(){}' > ${T}/gcc_eh_test.c
-	if ! $(tc-getCC) ${T}/gcc_eh_test.c -lgcc_eh 2>/dev/null ; then
-		sed -i -e 's:-lgcc_eh::' Makeconfig || die "sed gcc_eh"
-	fi
-
 	# hardened toolchain/relro/nptl/security/etc fixes
 	do_hardened_fixes
 
+
 	# Arch specific patching
-	do_arch_alpha_patches
-	do_arch_amd64_patches
-	do_arch_arm_patches
-	do_arch_hppa_patches
-	do_arch_ia64_patches
-	do_arch_mips_patches
-	do_arch_ppc_patches
-	do_arch_ppc64_patches
-	do_arch_s390_patches
-	do_arch_sparc_patches
-	do_arch_x86_patches
+	use amd64	&& do_arch_amd64_patches
+	use alpha	&& do_arch_alpha_patches
+	use arm		&& do_arch_arm_patches
+	use hppa	&& do_arch_hppa_patches
+	use ia64	&& do_arch_ia64_patches
+	use mips	&& do_arch_mips_patches
+	use ppc		&& do_arch_ppc_patches
+	use ppc64	&& do_arch_ppc64_patches
+	use s390	&& do_arch_s390_patches
+	use sparc	&& do_arch_sparc_patches
+	use x86		&& do_arch_x86_patches
+
 
 	# Remaining patches
 	cd ${S}
@@ -620,23 +524,7 @@ src_unpack() {
 	chmod u+x ${S}/scripts/*.sh
 }
 
-
 src_compile() {
-	# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
-	local MLTEST=$(type dyn_unpack)
-	if has_multilib_profile && [ -z "${OABI}" -a "${MLTEST/set_abi}" = "${MLTEST}" ]; then
-		OABI="${ABI}"
-		for ABI in $(get_install_abis); do
-			export ABI
-			einfo "Compiling ${ABI} glibc"
-			src_compile && mv ${WORKDIR}/build ${WORKDIR}/build.${ABI}
-		done
-		ABI="${OABI}"
-		unset OABI
-		return 0
-	fi
-	unset MLTEST
-
 	setup_flags
 
 	# These should not be set, else the
@@ -661,9 +549,6 @@ src_compile() {
 	want_tls || myconf="${myconf} --without-tls"
 	want_tls && myconf="${myconf} --with-tls"
 
-	# Who knows if this works :)
-	[[ -n ${CBUILD} ]] && myconf="${myconf} --build=${CBUILD}"
-
 	# some silly people set LD_RUN_PATH and that breaks things.
 	# see bug 19043
 	unset LD_RUN_PATH
@@ -674,15 +559,15 @@ src_compile() {
 	cd ${WORKDIR}/build
 	${S}/configure \
 		--build=${CHOST} \
-		--host=${CTARGET} \
+		--host=${CCHOST} \
 		--disable-profile \
 		--without-gd \
 		--without-cvs \
-		--with-headers=$(alt_headers) \
-		--prefix=$(alt_prefix) \
-		--mandir=$(alt_prefix)/share/man \
-		--infodir=$(alt_prefix)/share/info \
-		--libexecdir=$(alt_prefix)/lib/misc \
+		--with-headers=${ALT_HEADERS} \
+		--prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		--libexecdir=/usr/lib/misc \
 		--enable-bind-now \
 		${myconf} || die
 
@@ -690,66 +575,8 @@ src_compile() {
 	make PARALLELMFLAGS="${MAKEOPTS}" || die
 }
 
-src_test() {
-	# This is wrong, but glibc's tests fail bad when screwing 
-	# around with sandbox, so lets just punt it
-	unset LD_PRELOAD
-
-	cd ${WORKDIR}/build
-	make check || die "make check failed :("
-}
-
 src_install() {
-	# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
-	local MLTEST=$(type dyn_unpack)
-	if has_multilib_profile && [ -z "${OABI}" -a "${MLTEST/set_abi}" = "${MLTEST}" ]; then
-		OABI="${ABI}"
-		for ABI in $(get_install_abis); do
-			export ABI
-			mv ${WORKDIR}/build.${ABI} ${WORKDIR}/build
-
-			# Handle stupid lib32 BS
-			if use amd64 && [ "${ABI}" = "x86" -a "$(get_libdir)" != "lib" ]; then
-				OLD_LIBDIR="$(get_libdir)"
-				LIBDIR_x86="lib"
-			fi
-
-			src_install && mv ${WORKDIR}/build ${WORKDIR}/build.${ABI}
-
-			# Handle stupid lib32 BS
-			if use amd64 && [ "${ABI}" = "x86" -a -n "${OLD_LIBDIR}" ]; then
-				LIBDIR_x86="${OLD_LIBDIR}"
-				unset OLD_LIBDIR
-
-				mv ${D}/lib ${D}/$(get_libdir)
-				mv ${D}/usr/lib ${D}/usr/$(get_libdir)
-				mkdir ${D}/lib
-				dosym ../$(get_libdir)/ld-linux.so.2 /lib/ld-linux.so.2
-				dosed "s:/lib/:/$(get_libdir)/:g" /usr/$(get_libdir)/libc.so /usr/$(get_libdir)/libpthread.so
-
-				rm -rf ${D}/usr/$(get_libdir)/misc ${D}/usr/$(get_libdir)/locale
-
-				for f in ${D}/usr/$(get_libdir)/*.so; do
-					local basef=$(basename ${f})
-					if [ -L ${f} ]; then
-						local target=$(readlink ${f})
-						target=${target/\/lib\//\/$(get_libdir)\/}
-						rm ${f}
-						dosym ${target} /usr/$(get_libdir)/${basef}
-					fi
-				done
-			fi
-
-		done
-		ABI="${OABI}"
-		unset OABI
-		return 0
-	fi
-	unset MLTEST
 	setup_flags
-
-	# Need to dodir first because it might not exist (bad amd64 profiles)
-	dodir /usr/$(get_libdir)
 
 	# These should not be set, else the
 	# zoneinfo do not always get installed ...
@@ -761,59 +588,35 @@ src_install() {
 	make PARALLELMFLAGS="${MAKEOPTS}" \
 		install_root=${D} \
 		install || die
-	if [[ ${CTARGET} != ${CHOST} ]] ; then
-		# punt all the junk not needed by a cross-compiler
-		rm -r "${D}"/usr/${CTARGET}/{bin,etc,lib/gconv,sbin,share}
-	fi
-
 	# now, strip everything but the thread libs #46186
-	mkdir -p ${T}/thread-backup
-	mv ${D}/$(alt_libdir)/lib{pthread,thread_db}* ${T}/thread-backup/
-	env -uRESTRICT CHOST=${CTARGET} prepallstrip
-
-	# this directory can be empty in certain cases so || die is wrong
-	ls  ${T}/thread-backup/*  1>/dev/null 2>&1 && mv -f ${T}/thread-backup/* ${D}/$(alt_libdir)/
+	mkdir ${T}/thread-backup
+	mv ${D}/lib/lib{pthread,thread_db}* ${T}/thread-backup/
+	env -uRESTRICT prepallstrip
+	mv ${T}/thread-backup/* ${D}/lib/
 
 	# If librt.so is a symlink, change it into linker script (Redhat)
-	if [ -L "${D}/usr/$(get_libdir)/librt.so" -a "${LIBRT_LINKERSCRIPT}" = "yes" ]; then
-		local LIBRTSO="`cd ${D}/$(get_libdir); echo librt.so.*`"
-		local LIBPTHREADSO="`cd ${D}/$(get_libdir); echo libpthread.so.*`"
+	if [ -L "${D}/usr/lib/librt.so" -a "${LIBRT_LINKERSCRIPT}" = "yes" ]; then
+		local LIBRTSO="`cd ${D}/lib; echo librt.so.*`"
+		local LIBPTHREADSO="`cd ${D}/lib; echo libpthread.so.*`"
 
-		rm -f ${D}/usr/$(get_libdir)/librt.so
-		cat > ${D}/usr/$(get_libdir)/librt.so <<EOF
+		rm -f ${D}/usr/lib/librt.so
+		cat > ${D}/usr/lib/librt.so <<EOF
 /* GNU ld script
 	librt.so.1 needs libpthread.so.0 to come before libc.so.6*
 	in search scope.  */
 EOF
-		grep "OUTPUT_FORMAT" ${D}/usr/$(get_libdir)/libc.so >> ${D}/usr/$(get_libdir)/librt.so
-		echo "GROUP ( /$(get_libdir)/${LIBPTHREADSO} /$(get_libdir)/${LIBRTSO} )" \
-			>> ${D}/usr/$(get_libdir)/librt.so
+		grep "OUTPUT_FORMAT" ${D}/usr/lib/libc.so >> ${D}/usr/lib/librt.so
+		echo "GROUP ( /lib/${LIBPTHREADSO} /lib/${LIBRTSO} )" \
+			>> ${D}/usr/lib/librt.so
 
-		for x in ${D}/usr/$(get_libdir)/librt.so.[1-9]; do
+		for x in ${D}/usr/lib/librt.so.[1-9]; do
 			[ -L "${x}" ] && rm -f ${x}
 		done
 	fi
 
-	if use pic && ! use amd64 ; then
-		find ${S}/${buildtarget}/ -name "soinit.os" -exec cp {} ${D}/lib/soinit.o \;
-		find ${S}/${buildtarget}/ -name "sofini.os" -exec cp {} ${D}/lib/sofini.o \;
-		find ${S}/${buildtarget}/ -name "*_pic.a" -exec cp {} ${D}/lib \;
-		find ${S}/${buildtarget}/ -name "*.map" -exec cp {} ${D}/lib \;
+	if ! use build; then
+		cd ${WORKDIR}/build
 
-		for i in ${D}/lib/*.map; do
-			mv ${i} ${i%.map}_pic.map
-		done
-	fi
-
-	# We'll take care of the cache ourselves
-	rm -f ${D}/etc/ld.so.cache
-
-	#################################################################
-	# EVERYTHING AFTER THIS POINT IS FOR NATIVE GLIBC INSTALLS ONLY #
-	[[ ${CTARGET} != ${CHOST} ]] && return 0
-
-	cd ${WORKDIR}/build
-	if ! use build ; then
 		if ! has noinfo ${FEATURES} ; then
 			einfo "Installing Info pages..."
 			make PARALLELMFLAGS="${MAKEOPTS}" \
@@ -829,12 +632,11 @@ EOF
 		doman ${S}/man/*.3thr
 
 		# Install nscd config file
-		insinto /etc ; doins ${FILESDIR}/nscd.conf
-		exeinto /etc/init.d ; doexe ${FILESDIR}/nscd
-		doins "${FILESDIR}"/nsswitch.conf
+		insinto /etc
+		doins ${FILESDIR}/nscd.conf
 
 		cd ${S}
-		dodoc BUGS ChangeLog* CONFORMANCE FAQ INTERFACE \
+		dodoc BUGS ChangeLog* CONFORMANCE COPYING* FAQ INTERFACE \
 			NEWS NOTES PROJECTS README*
 	else
 		rm -rf ${D}/usr/share ${D}/usr/lib/gconv
@@ -842,26 +644,52 @@ EOF
 		einfo "Installing Timezone data..."
 		make PARALLELMFLAGS="${MAKEOPTS}" \
 			install_root=${D} \
-			timezone/install-others || die
+			timezone/install-others -C ${WORKDIR}/build || die
+	fi
+
+	if use pic && ! use amd64 ; then
+		find ${S}/${buildtarget}/ -name "soinit.os" -exec cp {} ${D}/lib/soinit.o \;
+		find ${S}/${buildtarget}/ -name "sofini.os" -exec cp {} ${D}/lib/sofini.o \;
+		find ${S}/${buildtarget}/ -name "*_pic.a" -exec cp {} ${D}/lib \;
+		find ${S}/${buildtarget}/ -name "*.map" -exec cp {} ${D}/lib \;
+
+		for i in ${D}/lib/*.map; do
+			mv ${i} ${i%.map}_pic.map
+		done
 	fi
 
 	# Is this next line actually needed or does the makefile get it right?
 	# It previously has 0755 perms which was killing things.
 	fperms 4711 /usr/lib/misc/pt_chown
 
+	# Currently libraries in  /usr/lib/gconv do not get loaded if not
+	# in search path ...
+#	insinto /etc/env.d
+#	doins ${FILESDIR}/03glibc
+
+	rm -f ${D}/etc/ld.so.cache
+
 	# Prevent overwriting of the /etc/localtime symlink.  We'll handle the
 	# creation of the "factory" symlink in pkg_postinst().
 	rm -f ${D}/etc/localtime
 
 	# Some things want this, notably ash.
-	dosym libbsd-compat.a /usr/$(get_libdir)/libbsd.a
+	dosym /usr/lib/libbsd-compat.a /usr/lib/libbsd.a
 
 	# This is our new config file for building locales
 	insinto /etc
 	doins ${FILESDIR}/locales.build
 
-	# Handle includes for different ABIs
-	prep_ml_includes
+	# this whole section is useless, it fails if sandbox is LOADED, not if it's
+	# enabled. but forcing sandbox not to load isnt an option...
+	if use makecheck; then
+		local OLD_SANDBOX_ON="${SANDBOX_ON}"
+		# make check will fail if sandbox is enabled.  Do not do it
+		# globally though, else we might fail to find sandbox violations ...
+		SANDBOX_ON="0"
+		do_makecheck
+		SANDBOX_ON="${OLD_SANDBOX_ON}"
+	fi
 }
 
 fix_lib64_symlinks() {
@@ -906,15 +734,7 @@ pkg_preinst() {
 	# decide to be multilib compatible and FHS compliant. note that this 
 	# chunk of FHS compliance only applies to 64bit archs where 32bit
 	# compatibility is a major concern (not IA64, for example).
-
-	# amd64's 2005.0 is the first amd64 profile to not need this code.
-	# 2005.0 is setup properly, and this is executed as part of the
-	# 2004.3 -> 2005.0 upgrade script.
-	# It can be removed after 2004.3 has been purged from portage.
-	use amd64 && [ "$(get_libdir)" == "lib64" ] && ! has_multilib_profile && fix_lib64_symlinks
-
-	# Shouldnt need to keep this updated
-	[[ -e ${ROOT}/etc/locales.build ]] && rm -f "${D}"/etc/locales.build
+	use amd64 && [ "$(get_libdir)" == "lib64" ] && fix_lib64_symlinks
 }
 
 pkg_postinst() {
@@ -950,8 +770,4 @@ pkg_postinst() {
 	if [ "${ROOT}" = "/" ]; then
 		/sbin/init U &> /dev/null
 	fi
-}
-
-must_exist() {
-	test -e ${D}/${1}/${2} || die "${1}/${2} was not installed"
 }

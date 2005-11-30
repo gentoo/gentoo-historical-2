@@ -1,12 +1,6 @@
 # ChangeLog for dev-java/jcalendar
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jcalendar/ChangeLog,v 1.3 2005/05/15 01:18:14 luckyduck Exp $
-
-  15 May 2005; Jan Brinkmann <luckyduck@gentoo.org> jcalendar-1.2.2.ebuild:
-  stable on amd64 and x86, added ~ppc to KEYWORDS
-
-  06 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> jcalendar-1.2.2.ebuild:
-  jcalendar now uses jgoodies-looks instead of jgoodies-looks-bin.
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jcalendar/ChangeLog,v 1.1 2004/12/04 17:34:09 karltk Exp $
 
 *jcalendar-1.2.2 (04 Dec 2004)
 

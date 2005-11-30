@@ -1,10 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/linux-wlan-ng/linux-wlan-ng-0.2.1_pre20.ebuild,v 1.9 2005/07/14 23:23:59 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/linux-wlan-ng/linux-wlan-ng-0.2.1_pre20.ebuild,v 1.1 2004/03/01 05:42:22 latexer Exp $
 
 inherit pcmcia
 
-IUSE="build pcmcia usb"
+IUSE="${IUSE} usb build"
 
 MY_P=${PN}-${PV/_/-}
 S=${WORKDIR}/${MY_P}
@@ -15,13 +15,13 @@ SRC_URI="${SRC_URI}
 		mirror://gentoo/${PN}-gentoo-init.gz"
 
 HOMEPAGE="http://linux-wlan.org"
-DEPEND="virtual/os-headers"
-RDEPEND="dev-libs/openssl
-		>=sys-apps/sed-4.0"
+DEPEND="sys-kernel/linux-headers
+		dev-libs/openssl
+		>=sys-apps/sed-4.0*"
 
 SLOT="0"
 LICENSE="MPL-1.1"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86"
 
 src_unpack() {
 	check_KV
@@ -65,7 +65,7 @@ src_compile() {
 		-e 's:PRISM2_PCI=n:PRISM2_PCI=y:' \
 		config.in
 
-	if use pcmcia; then
+	if [ -n "`use pcmcia`" ]; then
 		if [ -n "${PCMCIA_SOURCE_DIR}" ];
 		then
 			export PCMCIA_SOURCE_DIR=${PCMCIA_SOURCE_DIR}
@@ -79,7 +79,7 @@ src_compile() {
 		config.in
 	fi
 
-	if use usb; then
+	if [ -n "`use usb`" ]; then
 		sed -i -e 's:PRISM2_USB=n:PRISM2_USB=y:' \
 			config.in
 	fi
@@ -105,7 +105,7 @@ src_install () {
 	dodir etc/wlan
 	mv ${D}/etc/conf.d/shared ${D}/etc/wlan/
 
-	if ! use build; then
+	if [ -z "`use build`" ]; then
 
 		dodir /usr/share/man/man1
 		newman ${S}/man/nwepgen.man nwepgen.1

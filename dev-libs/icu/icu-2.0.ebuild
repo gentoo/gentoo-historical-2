@@ -1,22 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/icu/icu-2.0.ebuild,v 1.18 2005/02/26 23:09:38 latexer Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author: Charles Kerr <punt@kerrskorner.org>
+# Maintainer: Chris Houser <chouser@gentoo.org>
+# /space/gentoo/cvsroot/gentoo-x86/skel.build,v 1.11 2001/12/06 22:12:34 drobbins Exp
 
 S=${WORKDIR}/${PN}/source
 DESCRIPTION="IBM Internationalization Components for Unicode"
 SRC_URI="http://oss.software.ibm.com/icu/download/${PV}/${P}.tgz"
-HOMEPAGE="http://ibm.com/software/globalization/icu/"
+HOMEPAGE="http://oss.software.ibm.com/icu/index.html"
 
-SLOT="0"
-LICENSE="as-is"
-KEYWORDS="x86 sparc"
-IUSE=""
-
-DEPEND="virtual/libc"
+DEPEND=""
+RDEPEND=""
 
 src_compile() {
-	econf --enable-layout || die
-	make || die "emake failed"
+	./configure \
+		--build=${CHOST} \
+		--enable-layout \
+		--prefix=/usr \
+		--mandir=/usr/share/man || die "./configure failed"
+	emake || die "emake failed"
 }
 
 src_install () {

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/libtool/libtool-1.5.20.ebuild,v 1.11 2005/11/19 19:11:21 corsair Exp ${P}-r1.ebuild,v 1.8 2002/10/04 06:34:42 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/libtool/libtool-1.5.20.ebuild,v 1.1 2005/09/02 05:06:09 vapier Exp ${P}-r1.ebuild,v 1.8 2002/10/04 06:34:42 kloeri Exp $
 
-inherit eutils
+inherit eutils libtool
 
 DESCRIPTION="A shared library tool for developers"
 HOMEPAGE="http://www.gnu.org/software/libtool/libtool.html"
@@ -10,14 +10,14 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1.5"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-RDEPEND="sys-devel/gnuconfig
+DEPEND="sys-devel/gnuconfig
 	>=sys-devel/autoconf-2.59
 	>=sys-devel/automake-1.9"
-DEPEND="${RDEPEND}
-	sys-apps/help2man"
+# the autoconf dep is due to it complaining 'configure.ac:55: error: Autoconf version 2.58 or higher is required'
+# the automake dep is due to Bug #46037
 
 lt_setup() {
 	export WANT_AUTOCONF=2.5
@@ -73,7 +73,6 @@ src_unpack() {
 	epatch "${FILESDIR}"/1.5.6/${PN}-1.5.6-ltmain-SED.patch
 	epatch "${FILESDIR}"/1.4.3/${PN}-1.4.2-expsym-linux.patch
 	epatch "${FILESDIR}"/1.4.3/${PN}-1.4.3-pass-thread-flags.patch
-	epatch "${FILESDIR}"/1.5.20/${PN}-1.5.20-use-linux-version-in-fbsd.patch #109105
 
 	# Gentoo Patches
 	# Do not create bogus entries in $dependency_libs or $libdir
@@ -107,9 +106,6 @@ src_unpack() {
 	# In some cases EGREP is not set by the build system.
 	epatch "${FILESDIR}"/1.5.14/libtool-1.5.14-egrep.patch
 
-	# Make sure LD_LIBRARY_PATH doesn't override RUNPATH #99593
-	epatch "${FILESDIR}"/1.5.20/libtool-1.5.20-override-LD_LIBRARY_PATH.patch
-
 	ebegin "Generating ltmain.sh"
 	gen_ltmain_sh || die "Failed to generate ltmain.sh!"
 	eend 0
@@ -120,7 +116,7 @@ src_unpack() {
 	local d p
 	for d in . libltdl ; do
 		ebegin "Running autotools in '${d}'"
-		cd "${S}"/${d}
+		cd ${S}/${d}
 		touch acinclude.m4
 		for p in aclocal "automake -c -a" autoconf ; do
 			${p} || die "${p}"
@@ -129,6 +125,7 @@ src_unpack() {
 	done
 	cd "${S}"
 
+	uclibctoolize
 	epunt_cxx
 }
 
@@ -141,12 +138,6 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die
 	dodoc AUTHORS ChangeLog* NEWS README THANKS TODO doc/PLATFORMS
-
-	local x
-	for x in libtool libtoolize ; do
-		help2man ${x} > ${x}.1
-		doman ${x}.1
-	done
 
 	for x in $(find "${D}" -name config.guess -o -name config.sub) ; do
 		rm -f "${x}" ; ln -sf ../gnuconfig/$(basename "${x}") "${x}"

@@ -1,4 +1,4 @@
 #!/bin/bash
 
 /opt/vlnx/check-updates.sh
-/opt/vlnx/uvscan --config /etc/uvscan.conf /home
+uvscan --config /etc/uvscan.conf /home

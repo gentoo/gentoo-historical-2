@@ -1,29 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-jpeg/cl-jpeg-1.033-r1.ebuild,v 1.8 2005/05/24 18:48:33 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-jpeg/cl-jpeg-1.033-r1.ebuild,v 1.1 2004/02/12 09:13:14 mkennedy Exp $
 
-inherit common-lisp eutils
+inherit common-lisp
 
 DESCRIPTION="A JPEG library for Common Lisp"
 HOMEPAGE="http://sourceforge.net/projects/cljl"
 SRC_URI="mirror://sourceforge/cljl/cljl-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
-IUSE=""
-DEPEND="dev-lisp/cl-plus"
+KEYWORDS="~x86"
+DEPEND="dev-lisp/common-lisp-controller
+	virtual/commonlisp"
 
 CLPACKAGE=cl-jpeg
 
 S=${WORKDIR}/cljl
-
-src_unpack() {
-	unpack ${A}
-	# patch: defconstant - compilation fix for SBCL
-	# patch: exports - export symbols at load time as well
-	epatch ${FILESDIR}/${PV}-defconstant-gentoo.patch || die
-	epatch ${FILESDIR}/${PV}-exports-gentoo.patch || die
-}
 
 src_install() {
 	common-lisp-install *.lisp *.asd

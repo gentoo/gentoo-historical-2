@@ -1,9 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-opengl/ruby-opengl-0.32c.ebuild,v 1.9 2005/04/24 10:50:53 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-opengl/ruby-opengl-0.32c.ebuild,v 1.1 2004/02/21 10:43:10 usata Exp $
 
-inherit ruby eutils
-USE_RUBY="ruby16 ruby18"
+inherit ruby
 
 DESCRIPTION="OpenGL / GLUT bindings for ruby"
 HOMEPAGE="http://www2.giganet.net/~yoshi/"
@@ -11,10 +10,11 @@ SRC_URI="http://www2.giganet.net/~yoshi/rbogl-${PV}.tar.gz"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="x86 ppc alpha ~sparc amd64"
-IUSE=""
+KEYWORDS="~x86"
 
-DEPEND="virtual/ruby"
+IUSE=""
+USE_RUBY="ruby16 ruby18"
+DEPEND=">=dev-lang/ruby-1.6"
 
 S=${WORKDIR}/opengl-${PV}
 

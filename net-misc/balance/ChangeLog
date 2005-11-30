@@ -1,25 +1,6 @@
 # ChangeLog for net-misc/balance
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/balance/ChangeLog,v 1.8 2005/11/02 20:21:55 genstef Exp $
-
-  02 Nov 2005; Stefan Schweizer <genstef@gentoo.org> balance-3.24.ebuild,
-  balance-3.26.ebuild:
-  app-text/ghostscript -> virtual/ghostscript
-
-*balance-3.26 (03 Sep 2005)
-
-  03 Sep 2005; Daniel Black <dragonheart@gentoo.org> +balance-3.26.ebuild:
-  version bump
-
-*balance-3.24 (06 Jul 2005)
-
-  06 Jul 2005; Mike Frysinger <vapier@gentoo.org> +balance-3.24.ebuild:
-  Version bump #97948 by wolf3d.
-
-*balance-3.19 (05 Dec 2004)
-
-  05 Dec 2004; Mike Frysinger <vapier@gentoo.org> +balance-3.19.ebuild:
-  Version bump #73374 by werner maier.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/balance/ChangeLog,v 1.1 2003/12/25 20:20:44 vapier Exp $
 
 *balance-3.11 (25 Dec 2003)
 

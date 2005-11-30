@@ -1,23 +1,9 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 2a885afad3e1f3e896a8219cdf938937 ChangeLog 6609
-MD5 c7eea8e9fc52ce118ca126979309da45 files/digest-pilot-link-0.11.8 70
-MD5 c7eea8e9fc52ce118ca126979309da45 files/digest-pilot-link-0.11.8-r1 70
-MD5 bf74434daf1ebd09156aad1d90c93675 files/pilot-link-0.11.8-java_compile_amd64.patch 579
-MD5 a90104dea453f1eed8b69ed821118caa files/pilot-link-0.11.8-java_fPIC_fix.patch 580
-MD5 90560348093b5a7b47849896f35b4d54 files/pilot-link-0.11.8-java_install_all.patch 562
-MD5 a664432d4308170abcc8201e3a1500bf files/pilot-link-0.11.8-java_install_amd64.patch 390
-MD5 73901859bb01a4c7aa0dbddf1d6e898a files/pilot-link-0.11.8-java_install_ppc.patch 560
-MD5 93ddce2c38bb25e99877e9f08414d740 files/pilot-link-0.11.8-m4.patch 123
-MD5 cc5d291e67e5ebc1caa5cc3c401f3ced files/pilot-link-0.11.8-netsync.patch 4371
-MD5 075fea99b82d61028585dc3e42f00466 metadata.xml 156
-MD5 a2a1c269f59b9957ab0e0d35320bdac8 pilot-link-0.11.8-r1.ebuild 2237
-MD5 9b169021a24b8ab07a468ec34532b55c pilot-link-0.11.8.ebuild 1879
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDaoJw9ZFPrqoILX8RArCmAJ9xtd2zH4AVqKKi1KmWdExAzm9TkwCfWlcv
-JUNy7Z9ue6+NnxCg6kdEUqI=
-=j4Bq
------END PGP SIGNATURE-----
+MD5 4ed5cde53dbd9e15bb794538763b55eb files/digest-pilot-link-0.11.3 70
+MD5 469bfe2e33b13b930be59dea48e25719 files/perlpatch.diff 702
+MD5 6d5485ccfa72ceeae0193839586e7252 files/digest-pilot-link-0.11.5-r2 70
+MD5 6ba6541a846ca65d5b4985c0b3e63707 files/digest-pilot-link-0.11.7-r1 70
+MD5 03ad2e6c4ab41244af1015a8bbb0b39f metadata.xml 158
+MD5 6f20a5ea31452ca52ce3cd3b5e92c567 pilot-link-0.11.3.ebuild 1135
+MD5 9f190aa461d84a4263fd5f311ee6aea3 ChangeLog 3495
+MD5 3d685455711f3f76c90d7098c2780e0c pilot-link-0.11.5-r2.ebuild 2795
+MD5 f55d4e5d753c75400f4e70ac7f85118d pilot-link-0.11.7-r1.ebuild 1810

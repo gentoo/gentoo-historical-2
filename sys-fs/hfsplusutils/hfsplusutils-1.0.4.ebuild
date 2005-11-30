@@ -1,20 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/hfsplusutils/hfsplusutils-1.0.4.ebuild,v 1.5 2005/02/16 09:59:37 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/hfsplusutils/hfsplusutils-1.0.4.ebuild,v 1.1 2003/09/15 17:46:25 seemant Exp $
 
 MY_P="hfsplus_${PV}"
-DESCRIPTION="HFS+ Filesystem Access Utilities"
-HOMEPAGE="http://ftp.penguinppc.org/users/hasi/"
+DESCRIPTION="HFS+ Filesystem Access Utilities (PPC Only)"
 SRC_URI="http://ftp.penguinppc.org/users/hasi/${MY_P}.src.tar.bz2"
+HOMEPAGE="http://ftp.penguinppc.org/users/hasi/"
 
+KEYWORDS="ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ppc"
-IUSE=""
 
 DEPEND="sys-devel/autoconf
 	sys-devel/automake
-	app-arch/bzip2"
+	sys-apps/bzip2"
 RDEPEND=""
 
 S=${WORKDIR}/hfsplus-${PV}

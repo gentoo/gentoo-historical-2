@@ -1,36 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/grustibus/grustibus-0.43-r4.ebuild,v 1.8 2005/06/15 18:34:10 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/grustibus/grustibus-0.43-r4.ebuild,v 1.1 2003/09/09 16:28:07 vapier Exp $
 
-inherit eutils
-
-DESCRIPTION="A GNOME-based front-end for the M.A.M.E. video game emulator"
-HOMEPAGE="http://grustibus.sourceforge.net"
+S=${WORKDIR}/${P}
 SRC_URI="mirror://sourceforge/grustibus/${P}.tar.gz"
-
-KEYWORDS="x86"
-LICENSE="GPL-2"
+HOMEPAGE="http://grustibus.sourceforge.net"
+DESCRIPTION="A GNOME-based front-end for the M.A.M.E. video game emulator"
 SLOT="0"
-IUSE="nls"
+LICENSE="GPL-2"
+KEYWORDS="x86"
 
-DEPEND=">=games-emulation/xmame-0.80.1
+DEPEND=">=app-emulation/xmame-0.56.1
 	>=media-libs/gdk-pixbuf-0.17.0
 	>=gnome-base/gnome-libs-1.4.1.2"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch "${FILESDIR}/${PV}-crash.patch"
-	epatch "${FILESDIR}/${PV}-filename.patch" # bug #57004
-}
-
 src_compile() {
-	export CPPFLAGS=$(gdk-pixbuf-config --cflags)
-	econf $(use_enable nls) || die
-	emake || die "emake failed"
+	local myconf
+	export CPPFLAGS=`gdk-pixbuf-config --cflags`
+	use nls || myconf="--disable-nls"
+	econf ${myconf}
+	emake || die
 }
 
 src_install() {
-	einstall || die
-	dodoc README ChangeLog TODO NEWS
+	einstall
+	dodoc README INSTALL ChangeLog ABOUT-NLS TODO NEWS
 }

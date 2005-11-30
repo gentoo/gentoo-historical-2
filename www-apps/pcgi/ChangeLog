@@ -1,18 +1,6 @@
-# ChangeLog for www-apps/pcgi
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/pcgi/ChangeLog,v 1.5 2005/08/23 19:35:23 rl03 Exp $
-
-  23 Aug 2005; Renat Lumpau <rl03@gentoo.org> pcgi-2.0_alpha5.ebuild:
-  Fixing cp -a wrt bug #103487
-
-  27 Jun 2005; Stuart Herbert <stuart@gentoo.org> metadata.xml:
-  Fixed herd entry in metadata
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  28 Aug 2004; David Holm <dholm@gentoo.org> pcgi-2.0_alpha5.ebuild:
-  Added to ~ppc.
+# ChangeLog for net-www/pcgi
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/pcgi/ChangeLog,v 1.1 2004/08/15 15:24:42 stuart Exp $
 
 *pcgi-2.0_alpha5 (15 Aug 2004)
 

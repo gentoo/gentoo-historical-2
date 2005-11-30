@@ -1,46 +1,50 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/elfkickers/elfkickers-2.0a.ebuild,v 1.13 2005/05/07 11:32:14 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/elfkickers/elfkickers-2.0a.ebuild,v 1.1 2003/07/25 20:37:26 solar Exp $
 
-inherit eutils
+IUSE=""
 
 MY_PN=${PN/elf/ELF}
 S=${WORKDIR}/${MY_PN}
 
-DESCRIPTION="collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc, ebfc"
+DESCRIPTION="ELFkickers is a collection of programs to manipulate ELF files: sstrip, rebind, elfls, elftoc, ebfc"
 HOMEPAGE="http://www.muppetlabs.com/~breadbox/software/elfkickers.html"
 SRC_URI="http://www.muppetlabs.com/~breadbox/pub/software/${MY_PN}-${PV}.tar.gz"
-
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~mips sparc x86 ~ppc"
-IUSE="doc"
+LICENSE="GPL-2"
+KEYWORDS="~x86"
 
-DEPEND=""
+DEPEND="virtual/glibc
+	 dev-lang/nasm"
+
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}.diff
+	# custom made patch to keep the compiler warnings down
+	epatch ${FILESDIR}/${P}.diff
+}
 
-	sed -i -e '/^SUBDIRS/s:tiny::' Makefile
-	use x86 || sed -i -e '/^SUBDIRS/s:ebfc::' Makefile
+src_compile() {
+	cd ${S}
+	emake -C ebfc
+	emake -C elfls
+	emake -C elftoc
+	emake -C rebind
+	emake -C sstrip
+	# emake -C tiny
 }
 
 src_install() {
-	for d in elfls elftoc rebind sstrip ; do
-		newdoc ${d}/README README.${d}
-		dobin ${d}/${d} || die "dobin ${d} failed"
-	done
-	if use x86 ; then
-		newdoc ebfc/README README.ebfc
-		dobin ebfc/ebfc || die "dobin ebfc failed"
-	fi
-
-	doman */*.1
-	dodoc Changelog README ebfc/elfparts.txt
-	if use doc ; then
-		docinto tiny
-		dodoc tiny/*.asm
-	fi
+	cd ${S}
+	mv -f ebfc/README README.ebfc
+	mv -f elfls/README README.elfls
+	mv -f elftoc/README README.elftoc
+	mv -f rebind/README README.rebind
+	mv -f sstrip/README README.sstrip
+	insinto /usr
+	dobin ebfc/ebfc sstrip/sstrip elfls/elfls elftoc/elftoc rebind/rebind
+	doman */*.1 
+	dodoc COPYING Changelog README
+	dodoc README.ebfc README.elfls README.elftoc README.rebind README.sstrip ebfc/elfparts.txt
 }

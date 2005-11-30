@@ -1,15 +1,5 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 d8d909b028e8408b2d88f6cd212c000a openmosix-3dmon-0.2.1.ebuild 1095
-MD5 9d89153737ed7ed560ecc4bf4c31296a ChangeLog 663
-MD5 c43fa6073244d71313f9aeb54f341ca8 metadata.xml 316
-MD5 e7e474db70b36a023069787bfbd82999 files/openmosix-3dmon-0.2.1-trivial.patch.bz2 1162
+MD5 db9f6a73bd5beb69f311697d6e43c6dc openmosix-3dmon-0.2.1.ebuild 957
+MD5 7289022c3b1540c641489e65ca2bb155 ChangeLog 277
+MD5 38b162d167a080358674dce5209afb67 metadata.xml 371
 MD5 12b76f693a04290ceb320175b28a90f5 files/digest-openmosix-3dmon-0.2.1 62
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.9.10 (GNU/Linux)
-
-iD8DBQFBw2uAI1lqEGTUzyQRAv9gAJ41XgDbbOCuZEEMiMTEGCWJ1qMXZgCfVbC9
-t+EJ6m0Rw7uowLiiIhmOSfs=
-=CTHJ
------END PGP SIGNATURE-----
+MD5 e7e474db70b36a023069787bfbd82999 files/openmosix-3dmon-0.2.1-trivial.patch.bz2 1162

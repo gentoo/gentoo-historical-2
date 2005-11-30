@@ -1,12 +1,6 @@
-# ChangeLog for net-nntp/slrnconf
+# ChangeLog for net-news/slrnconf
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/slrnconf/ChangeLog,v 1.4 2005/10/30 02:29:50 weeve Exp $
-
-  30 Oct 2005; Jason Wever <weeve@gentoo.org> slrnconf-0.8.4.ebuild:
-  Added ~sparc keyword.
-
-  20 Jun 2005; Simon Stelling <blubb@gentoo.org> slrnconf-0.8.4.ebuild:
-  added ~amd64 keyword
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/slrnconf/ChangeLog,v 1.1 2005/01/17 20:14:41 swegener Exp $
 
 *slrnconf-0.8.4 (17 Jan 2005)
 

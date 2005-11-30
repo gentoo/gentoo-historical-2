@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/prothon/prothon-0.1.0_p532.ebuild,v 1.3 2004/07/02 04:30:07 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/prothon/prothon-0.1.0_p532.ebuild,v 1.1 2004/05/24 20:57:20 kloeri Exp $
 
 MY_P=${P/_p/-b}
 DESCRIPTION="A classless prototype-based programming language with the sensibilities of Python."
@@ -10,7 +10,7 @@ LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~x86 ~sparc"
 IUSE=""
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-devel/gcc
 	sys-devel/make
 	sys-devel/bison

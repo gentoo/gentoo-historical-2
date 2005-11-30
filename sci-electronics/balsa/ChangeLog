@@ -1,17 +1,6 @@
-# ChangeLog for sci-electronics/balsa
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/balsa/ChangeLog,v 1.5 2005/08/23 20:44:53 chrb Exp $
-
-  23 Aug 2005; Chris Bainbridge <chrb@gentoo.org> balsa-3.4.3.ebuild:
-  cp -a bad. #103487
-
-*balsa-3.4.3 (26 May 2005)
-
-  26 May 2005; Chris Bainbridge <chrb@gentoo.org> +balsa-3.4.3.ebuild:
-  Version bump. Verilog simulator wrappers not built for the moment.
-
-  06 May 2005; David Holm <dholm@gentoo.org> balsa-3.4.ebuild:
-  Added to ~ppc.
+# ChangeLog for app-sci/balsa
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/balsa/ChangeLog,v 1.1 2004/12/27 18:53:15 ribosome Exp $
 
 *balsa-3.4 (27 Dec 2004)
 

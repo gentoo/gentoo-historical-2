@@ -1,26 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/dos2unix-3.1.ebuild,v 1.20 2005/01/01 16:11:28 eradicator Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/dos2unix-3.1.ebuild,v 1.1 2002/12/01 05:54:20 vapier Exp $
 
 DESCRIPTION="Dos2unix converts DOS or MAC text files to UNIX format"
-HOMEPAGE="I HAVE NO HOME :("
+HOMEPAGE=""
 SRC_URI="http://www2.tripleg.net.au/dos2unix.builder/${P}.tar.bz2"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ppc64 ppc-macos"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND=""
-RDEPEND="!app-text/hd2u"
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}.patch
-	epatch ${FILESDIR}/${P}-segfault.patch
+	patch -p1 < ${FILESDIR}/${P}.patch || die
+	patch -p1 < ${FILESDIR}/${P}-segfault.patch || die
 }
 
 src_compile() {
@@ -29,7 +26,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin dos2unix || die
+	dobin dos2unix
 	dosym dos2unix /usr/bin/mac2unix
 
 	doman dos2unix.1

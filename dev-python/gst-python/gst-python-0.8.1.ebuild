@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/gst-python/gst-python-0.8.1.ebuild,v 1.3 2005/09/06 10:10:00 zaheerm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/gst-python/gst-python-0.8.1.ebuild,v 1.1 2005/03/16 00:07:32 zaheerm Exp $
 
-inherit python
+inherit python debug
 
 DESCRIPTION="A Python Interface to GStreamer"
 HOMEPAGE="http://gstreamer.freedesktop.org"
@@ -24,18 +24,21 @@ DEPEND="${RDEPEND}
 		doc? ( app-text/xmlto
 		       dev-libs/libxml2 )"
 
+S=${WORKDIR}/${P}
+
 src_compile() {
-	myconf=`use_enable doc docs`
+	use doc && myconf="--enable-docs" || myconf="--disable-docs"
+
 	econf ${myconf} || die
 	emake || die
 }
 
 src_install() {
 
-	make DESTDIR=${D} install || die
+	einstall || die
 	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 	docinto examples
-	cp -pPR examples/* ${D}usr/share/doc/${PF}/examples
+	cp -a examples/* ${D}usr/share/doc/${PF}/examples
 	prepalldocs
 }
 

@@ -1,33 +1,6 @@
-# ChangeLog for x11-misc/gtodo
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gtodo/ChangeLog,v 1.11 2005/01/06 03:21:13 port001 Exp $
-
-  06 Jan 2005; Ian Leitch <port001@gentoo.org> metadata.xml:
-  Removed myself from metadata, reassigned back to desktop-misc
-
-  02 Jan 2005; Joseph Jezak <josejx@gentoo.org> gtodo-0.14.ebuild:
-  Marked ~ppc.
-
-  03 Jul 2004; <pyrania@gentoo.org> gtodo-0.14.ebuild:
-  Added gtodo-applet support. Closing bug #44233.
-
-  15 Jun 2004; Ian Leitch <port001@gentoo.org> gtodo-0.13.5.ebuild,
-  gtodo-0.14.ebuild:
-  Fixed dependencies
-
-  01 Jun 2004; Brandon Hale <tseng@gentoo.org> gtodo-0.14.ebuild:
-  Stable on x86, remove S=
-
-  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> gtodo-0.13.5.ebuild:
-  ebuild fixup.
-
-*gtodo-0.14 (10 Mar 2004)
-
-  10 Mar 2004; Markus Nigbur <pyrania@gentoo.org> gtodo-0.14.ebuild:
-  Version bump.
-
-  07 Dec 2003; Markus Nigbur <pyrania@gentoo.org> gtodo-0.13.5.ebuild:
-  Bumped stable
+# ChangeLog for app-misc/gtodo
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gtodo/ChangeLog,v 1.1 2003/11/18 02:32:38 port001 Exp $
 
   18 Nov 2003; Ian Leitch <port001@gentoo.org> gtodo-0.13.5.ebuild:
   Moved from app-misc to x11-misc and added metadata.xml

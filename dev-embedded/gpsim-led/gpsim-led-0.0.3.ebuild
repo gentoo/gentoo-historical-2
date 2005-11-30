@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpsim-led/gpsim-led-0.0.3.ebuild,v 1.9 2005/08/24 13:58:10 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpsim-led/gpsim-led-0.0.3.ebuild,v 1.1 2003/10/21 05:45:15 robbat2 Exp $
 
 inherit eutils
 
@@ -13,10 +13,10 @@ SRC_URI="http://www.dattalo.com/gnupic/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
-DEPEND=">=dev-embedded/gpsim-0.20"
+RDEPEND=">=dev-embedded/gpsim-0.20*"
+DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
@@ -25,9 +25,14 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-gcc33.patch
 }
 
+src_compile(){
+	econf || die
+	emake || die
+}
+
 src_install() {
 	einstall || die
 	dodoc AUTHORS ChangeLog INSTALL NEWS README
-	cp -pPR ${S}/examples ${D}/usr/share/doc/${PF}
+	cp -ra ${S}/examples ${D}/usr/share/doc/${PF}
 	find ${D}/usr/share/doc/${PF} -name 'Makefile*' -exec rm -f \{} \;
 }

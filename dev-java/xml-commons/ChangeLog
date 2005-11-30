@@ -1,48 +1,6 @@
 # ChangeLog for dev-java/xml-commons
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-commons/ChangeLog,v 1.12 2005/11/29 18:31:08 betelgeuse Exp $
-
-  29 Nov 2005; Petteri Räty <betelgeuse@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  Corrected LICENSE to include licenses of SAX2 and W3C dom.
-
-  12 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  Introduced support for the source useflag. Marked stable on ppc.
-
-  18 May 2005; Markus Rothe <corsair@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  Stable on ppc64
-
-  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  Stable on sparc
-
-  17 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  added ~ppc to KEYWORDS.
-
-  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  Keyworded ~sparc wrt #84992
-
-  13 Mar 2005; Markus Rothe <corsair@gentoo.org> xml-commons-1.0_beta2.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  04 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  stable on amd64 and x86
-
-  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  +files/1.0_beta2-jdk15.patch, xml-commons-1.0_beta2.ebuild:
-  added a patch to make compiling against the jdk15 possible, fixes #81008
-
-  15 Jan 2005; Saleem Abdulrasool <compnerd@gentoo.org> xml-commons-1.0_beta2.ebuild
-  Resolves the error with javadoc; closes bug #78104
-
-  15 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  xml-commons-1.0_beta2.ebuild:
-  added ~amd64 to KEYWORDS.
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-commons/ChangeLog,v 1.1 2004/12/22 23:26:55 karltk Exp $
 
 *xml-commons-1.0_beta2 (23 Dec 2004)
 

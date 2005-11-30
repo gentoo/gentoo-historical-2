@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sqlite-ruby/sqlite-ruby-2.2.2.ebuild,v 1.9 2005/02/17 13:52:51 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sqlite-ruby/sqlite-ruby-2.2.2.ebuild,v 1.1 2004/11/19 20:36:17 usata Exp $
 
 inherit ruby
 
@@ -12,7 +12,7 @@ LICENSE="BSD"
 # change the filename on the end, it still downloads the same file.
 SRC_URI="http://rubyforge.org/frs/download.php/1901/${P}.tar.bz2"
 
-KEYWORDS="x86 ppc sparc ~mips alpha ~hppa"
+KEYWORDS="~x86"
 SLOT="0"
 IUSE=""
 

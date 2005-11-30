@@ -1,26 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/bchunk/bchunk-1.1.1.ebuild,v 1.19 2005/05/30 18:03:13 pylon Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Per Wigren <wigren@home.se>
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/bchunk/bchunk-1.1.1.ebuild,v 1.1 2002/05/13 01:17:38 rphillips Exp $
 
-inherit toolchain-funcs
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Converts bin/cue CD-images to iso+wav/cdr"
-HOMEPAGE="http://hes.iki.fi/bchunk/"
 SRC_URI="http://hes.iki.fi/bchunk/${P}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc ~amd64"
-IUSE=""
-
-DEPEND="virtual/libc"
+HOMEPAGE="http://hes.iki.fi/bchunk/"
+LICENSE="GPL"
+DEPEND="virtual/glibc"
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} -o bchunk bchunk.c || die
+	gcc ${CFLAGS} -o bchunk bchunk.c
 }
 
-src_install() {
-	dobin bchunk || die
+src_install () {
+	dobin bchunk
 	doman bchunk.1
-	dodoc ${P}.lsm README
+	dodoc ${P}.lsm
+	dodoc COPYING README
 }
+

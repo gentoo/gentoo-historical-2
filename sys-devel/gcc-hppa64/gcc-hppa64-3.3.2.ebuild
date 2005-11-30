@@ -1,15 +1,14 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-hppa64/gcc-hppa64-3.3.2.ebuild,v 1.7 2004/07/15 03:23:32 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-hppa64/gcc-hppa64-3.3.2.ebuild,v 1.1 2004/01/03 18:49:19 gmsoft Exp $
 
 
-# Variables
+# Variables 
 MYARCH="$(echo ${PN} | cut -d- -f2)"
 TMP_P="${P/-${MYARCH}/}"
 TMP_PN="${PN/-${MYARCH}/}"
 I="/usr"
+S="${WORKDIR}/${P}"
 
 
 DESCRIPTION="Gcc for 64bit hppa kernels"
@@ -18,15 +17,13 @@ SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${TMP_P}/${TMP_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="-* hppa"
-IUSE="build"
+KEYWORDS="-* ~hppa"
 
-DEPEND="virtual/libc
-	>=sys-devel/binutils-hppa64-2.14.90.0.7
+DEPEND="virtual/glibc
 	>=sys-devel/binutils-2.14.90.0.7
 	>=sys-devel/gcc-config-1.3.1"
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	>=sys-devel/gcc-config-1.3.1
 	>=sys-libs/zlib-1.1.4
 	>=sys-apps/texinfo-4.2-r4

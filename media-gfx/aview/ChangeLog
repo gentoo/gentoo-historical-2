@@ -1,26 +1,8 @@
 # ChangeLog for media-gfx/aview
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/aview/ChangeLog,v 1.8 2005/08/16 01:31:56 halcy0n Exp $
-
-  16 Aug 2005; Mark Loeser <halcy0n@gentoo.org>
-  +files/aview-1.3.0_rc1-filename-spaces.patch, aview-1.3.0_rc1.ebuild:
-  Adding patch to fix using asciiview with files that have spaces in the name,
-  thanks to kyberneticist AT yahoo DOT com for the patch; bug #39207
-
-  19 Jun 2005; Simon Stelling <blubb@gentoo.org> aview-1.3.0_rc1.ebuild:
-  stable on amd64
-
-  01 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> aview-1.3.0_rc1.ebuild:
-  added ~amd64 to KEYWORDS. fixes #83701
-
-  08 Jul 2003; Martin Holzer <mholzer@gentoo.org> aview-1.3.0_rc1.ebuild:
-  Changed Desc. Closes #24074.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/aview/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
 
 *aview-1.3.0_rc1 (1 Feb 2002)
-
-  08 Aug 2002; Mark Guertin <gerk@gentoo.org> aview-1.3.0_rc1.ebuild :
-  Fixed broken ${S}, and added to this ChangeLog (no one else has even though
-  the file has been updated several times), added ppc to keywords
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

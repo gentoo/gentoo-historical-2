@@ -1,18 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-panel/gnome-panel-1.4.2-r2.ebuild,v 1.14 2005/06/07 16:30:49 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-panel/gnome-panel-1.4.2-r2.ebuild,v 1.1 2003/02/24 12:05:23 spider Exp $
+
+IUSE="kde nls"
 
 inherit libtool
 
 S=${WORKDIR}/gnome-core-${PV}
 DESCRIPTION="Split out panel from gnome-core"
-HOMEPAGE="http://www.gnome.org/"
 SRC_URI="mirror://gnome/sources/gnome-core/1.4/gnome-core-${PV}.tar.bz2"
-
-LICENSE="GPL-2"
+HOMEPAGE="http://www.gnome.org/"
 SLOT="1.4"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~sparc x86"
-IUSE="kde nls"
+KEYWORDS="x86 ~ppc ~sparc ~alpha"
+LICENSE="GPL-2"
 
 RDEPEND="=gnome-base/control-center-1.4*
 	<gnome-base/libglade-0.99.0
@@ -21,8 +21,6 @@ RDEPEND="=gnome-base/control-center-1.4*
 
 DEPEND="${RDEPEND}
 	>=app-text/scrollkeeper-0.2
-	=sys-devel/automake-1.4*
-	sys-devel/autoconf
 	nls? ( sys-devel/gettext
 	>=dev-util/intltool-0.11 )"
 
@@ -38,17 +36,17 @@ src_unpack() {
 	# Libtoolize
 	elibtoolize
 	aclocal -I macros
-	WANT_AUTOMAKE=1.4 automake --add-missing
+	automake --add-missing
 	autoconf
 }
 
 src_compile() {
 	local myconf=""
 	local myldflags=""
-
+	
 	use nls || myconf="${myconf} --disable-nls"
 
-	if use kde
+	if [ "`use kde`" ]
 	then
 		myconf="${myconf} --with-kde-datadir=/usr/share"
 	fi
@@ -68,7 +66,7 @@ src_compile() {
 	cat gnome-panel-screenshot.c.orig | \
 		sed 's:\(^#include <errno.h>\):\1\n#include <locale.h>:' \
 		> gnome-panel-screenshot.c
-
+	
 	cd ${S}
 	make -C panel
 }

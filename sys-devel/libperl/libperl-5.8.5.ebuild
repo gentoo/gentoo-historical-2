@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/libperl/libperl-5.8.5.ebuild,v 1.22 2005/11/05 14:54:47 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/libperl/libperl-5.8.5.ebuild,v 1.1 2004/08/07 06:39:27 rac Exp $
 
 # The basic theory based on comments from Daniel Robbins <drobbins@gentoo.org>.
 #
@@ -52,10 +52,12 @@
 #
 # Martin Schlemmer <azarah@gentoo.org> (28 Dec 2002).
 
-IUSE="berkdb debug gdbm ithreads"
+IUSE="berkdb gdbm threads uclibc"
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic
 
+# Perl has problems compiling with -Os in your flags
+use uclibc || replace-flags "-Os" "-O2"
 # This flag makes compiling crash in interesting ways
 filter-flags "-malign-double"
 
@@ -71,7 +73,7 @@ HOMEPAGE="http://www.perl.org"
 SLOT="${PERLSLOT}"
 LIBPERL="libperl.so.${PERLSLOT}.${SHORT_PV}"
 LICENSE="Artistic GPL-2"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390 sh"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
 
 # rac 2004.08.06
 
@@ -81,11 +83,12 @@ KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390 sh"
 # badly when you -n it, because it won't exist and will therefore try
 # to build itself again ad infinitum.
 
-RESTRICT="test"
+RESTRICT="maketest"
 
-DEPEND="!elibc_uclibc? ( sys-apps/groff )
+DEPEND="!uclibc? ( sys-apps/groff )
 	berkdb? ( sys-libs/db )
-	gdbm? ( >=sys-libs/gdbm-1.8.0 )"
+	gdbm? ( >=sys-libs/gdbm-1.8.0 )
+	>=sys-apps/portage-2.0.45-r4"
 
 RDEPEND="
 	berkdb? ( sys-libs/db )
@@ -94,28 +97,28 @@ RDEPEND="
 PDEPEND=">=dev-lang/perl-${PV}"
 
 pkg_setup() {
-	# I think this should rather be displayed if you *have* 'ithreads'
+	# I think this should rather be displayed if you *have* 'threads'
 	# in USE if it could break things ...
-	if use ithreads
+	if use threads
 	then
 		ewarn ""
 		ewarn "PLEASE NOTE: You are compiling perl-5.8 with"
-		ewarn "interpreter-level threading enabled."
+		ewarn "threading enabled."
 		ewarn "Threading is not supported by all applications "
 		ewarn "that compile against perl. You use threading at "
 		ewarn "your own discretion. "
 		ewarn ""
-		epause 10
+		sleep 10
 	else
 		ewarn ""
 		ewarn "PLEASE NOTE: If you want to compile perl-5.8 with"
 		ewarn "threading enabled , you must restart this emerge"
-		ewarn "with USE=ithreads emerge...."
+		ewarn "with USE=threads emerge...."
 		ewarn "Threading is not supported by all applications "
 		ewarn "that compile against perl. You use threading at "
 		ewarn "your own discretion. "
 		ewarn ""
-		epause 10
+		sleep 10
 	fi
 }
 
@@ -132,16 +135,16 @@ src_unpack() {
 	#
 	#   LIBPERL=libperl.so.${SLOT}.`echo ${PV} | cut -d. -f1,2`
 	#
-	cd ${S}; epatch ${FILESDIR}/${PN}-create-libperl-soname.patch
+	cd ${S}; epatch ${FILESDIR}/${P}-create-libperl-soname.patch
 
 	# uclibc support - dragonheart 2004.06.16
-	cd ${S}; epatch ${FILESDIR}/${PN}-uclibc.patch
+	cd ${S}; epatch ${FILESDIR}/${P}-uclibc.patch
 
 	# Configure makes an unwarranted assumption that /bin/ksh is a
 	# good shell. This patch makes it revert to using /bin/sh unless
 	# /bin/ksh really is executable. Should fix bug 42665.
 	# rac 2004.06.09
-	cd ${S}; epatch ${FILESDIR}/${PN}-noksh.patch
+	cd ${S}; epatch ${FILESDIR}/${P}-noksh.patch
 
 }
 
@@ -150,12 +153,9 @@ src_compile() {
 	export LC_ALL="C"
 	local myconf=""
 
-	# Perl has problems compiling with -Os in your flags
-	use elibc_uclibc || replace-flags "-Os" "-O2"
-
-	if use ithreads
+	if use threads
 	then
-		einfo "using ithreads"
+		einfo "using threads"
 		mythreading="-multi"
 		myconf="-Dusethreads ${myconf}"
 		myarch="${CHOST%%-*}-linux-thread"
@@ -180,12 +180,6 @@ src_compile() {
 		# <rac@gentoo.org> 2003.06.26
 		myconf="${myconf} -Dd_u32align"
 	fi
-
-	if use debug
-	then
-		CFLAGS="${CFLAGS} -g"
-	fi
-
 	if use sparc
 	then
 		myconf="${myconf} -Ud_longdbl"
@@ -193,13 +187,11 @@ src_compile() {
 
 	rm -f config.sh Policy.sh
 
-	[ -n "${ABI}" ] && myconf="${myconf} -Dusrinc=$(get_ml_incdir)"
-
 	sh Configure -des \
 		-Darchname="${myarch}" \
 		-Dcccdlflags='-fPIC' \
 		-Dccdlflags='-rdynamic' \
-		-Dcc="$(tc-getCC)" \
+		-Dcc="${CC:-gcc}" \
 		-Dprefix='/usr' \
 		-Dvendorprefix='/usr' \
 		-Dsiteprefix='/usr' \
@@ -216,7 +208,7 @@ src_compile() {
 		${myconf} || die
 
 	emake -j1 -f Makefile depend || die "Couldn't make libperl.so depends"
-	emake -j1 -f Makefile LIBPERL=${LIBPERL} ${LIBPERL} || die "Unable to make libperl.so"
+	emake -j1 -f Makefile ${LIBPERL} || die "Unable to make libperl.so"
 	mv ${LIBPERL} ${WORKDIR}
 }
 
@@ -246,6 +238,7 @@ src_install() {
 			install || die "Unable to make install"
 
 		cp -f utils/h2ph utils/h2ph_patched
+		epatch ${FILESDIR}/perl-5.8.0-RC2-special-h2ph-not-failing-on-machine_ansi_header.patch
 
 		LD_LIBRARY_PATH=. ./perl -Ilib utils/h2ph_patched \
 			-a -d ${D}/usr/lib/perl5/${PV}/${myarch}${mythreading} <<EOF

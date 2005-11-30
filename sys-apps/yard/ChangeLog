@@ -1,31 +1,8 @@
 # ChangeLog for sys-apps/yard
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/yard/ChangeLog,v 1.9 2004/06/24 22:33:30 agriffis Exp $
-
-*yard-2.2 (25 Aug 2002)
-
-  02 Sep 2002; Daniel Ahlberg <aliz@gentoo.org> yard-2.2.ebuild :
-  Moved files from files/ to ibiblio mirror.
-
-  25 Aug 2002; Daniel Ahlberg <aliz@gentoo.org> yard-2.2.ebuild :
-  Version bump. Closes #6790.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/yard/ChangeLog,v 1.1 2002/02/01 21:53:38 gbevin Exp $
 
 *yard-2.0-r1 (1 Feb 2002)
-
-  02 Sep 2002; Daniel Ahlberg <aliz@gentoo.org> yard-2.0-r1.ebuild :
-  Moved files from files/ to ibiblio mirror.
-
-  24 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> yard-2.0-r1.ebuild :
-
-  Fixed configuration and installation, econf and einstall doesnt seem to work
-  with this package. Closes bug #5499.
-
-  20 Jul 2002; Mark Guertin <gerk@gentoo.org> yard-2.0-r1.ebuild :
-  adjusted keywords, and fixed missing DEPEND and RDEPEND (this is
-  a perl suite).  All devs should be using repoman to commit
-
-  14 Jul 2002; phoen][x <phoenix@gentoo.org> yard-2.0-r1.ebuild :
-  Added KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

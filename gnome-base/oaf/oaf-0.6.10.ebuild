@@ -1,36 +1,44 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/oaf/oaf-0.6.10.ebuild,v 1.22 2005/08/18 23:14:21 herbs Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/oaf/oaf-0.6.10.ebuild,v 1.1 2002/09/27 13:43:22 azarah Exp $
 
-inherit gnome.org libtool gnuconfig multilib
+inherit gnome.org libtool
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Object Activation Framework for GNOME"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE="nls"
+KEYWORDS="x86 ppc sparc sparc64"
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	>=dev-libs/popt-1.5
-	=gnome-base/orbit-0*
+	>=gnome-base/ORBit-0.5.10-r1
 	>=dev-libs/libxml-1.8.15"
+
 DEPEND="${RDEPEND}
-	>=dev-lang/perl-5
+	>=sys-devel/perl-5
 	dev-util/indent
 	nls? ( sys-devel/gettext )"
 
+src_unpack() {
+	unpack ${A}
+
+	cd ${S}
+	cp -a configure configure.orig
+	sed -e "s:perl5\.00404:perl5.6.1:" configure.orig > configure
+	rm configure.orig
+}
+
 src_compile() {
 	elibtoolize
-	gnuconfig_update
-
+	
 	local myconf=""
 	use nls || myconf="--disable-nls"
 
 	./configure --host=${CHOST} \
 		--prefix=/usr \
-		--libdir=/usr/$(get_libdir) \
 		--mandir=/usr/share/man \
 		--sysconfdir=/etc \
 		--localstatedir=/var/lib \
@@ -41,11 +49,12 @@ src_compile() {
 
 src_install() {
 	make prefix=${D}/usr \
-		libdir=${D}/usr/$(get_libdir) \
 		mandir=${D}/usr/share/man \
 		sysconfdir=${D}/etc \
 		localstatedir=${D}/var/lib \
 		install || die
 
-	dodoc AUTHORS ChangeLog README NEWS TODO
+	dodoc AUTHORS COPYING* ChangeLog README
+	dodoc NEWS TODO
 }
+

@@ -1,8 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-5.3.ebuild,v 1.11 2005/10/01 12:35:13 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-5.3.ebuild,v 1.1 2005/03/14 15:38:14 ciaranm Exp $
 
-inherit flag-o-matic
+inherit 64-bit eutils flag-o-matic
+
+IUSE="xgetdefault tabs"
 
 DESCRIPTION="rxvt clone with XFT and Unicode support"
 HOMEPAGE="http://software.schmorp.de/"
@@ -10,17 +12,16 @@ SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
-IUSE="xgetdefault tabs"
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
 
-RDEPEND="virtual/x11
+DEPEND="virtual/libc
+	dev-util/pkgconfig
+	sys-devel/libtool
+	virtual/x11
 	dev-lang/perl
 	tabs? ( dev-perl/gtk2-perl )"
-DEPEND="${RDEPEND}
-	dev-util/pkgconfig
-	sys-devel/libtool"
 
-pkg_setup() {
+pkg_preinst() {
 	filter-flags -mno-accumulate-outgoing-args
 	replace-flags -Os -O2
 }

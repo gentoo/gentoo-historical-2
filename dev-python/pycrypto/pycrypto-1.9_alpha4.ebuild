@@ -1,18 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 Arcady Genkin <agenkin@thpoon.com>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pycrypto/pycrypto-1.9_alpha4.ebuild,v 1.11 2005/01/25 01:54:54 lucass Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pycrypto/pycrypto-1.9_alpha4.ebuild,v 1.1 2002/09/04 03:51:30 agenkin Exp $
 
 DESCRIPTION="Python cryptography toolkit."
 HOMEPAGE="http://www.amk.ca/python/code/crypto.html"
 LICENSE="freedist"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	dev-lang/python"
+RDEPEND="${DEPEND}"
 
 SLOT="0"
-KEYWORDS="x86 alpha"
-SRC_URI="http://www.amk.ca/files/python/crypto/${P/_alpha/a}.tar.gz"
-IUSE=""
+KEYWORDS="x86"
+SRC_URI="http://www.amk.ca/files/python/${P/_alpha/a}.tar.gz"
 
 S="${WORKDIR}/${P/_alpha/a}"
 

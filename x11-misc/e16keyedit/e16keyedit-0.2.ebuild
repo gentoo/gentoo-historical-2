@@ -1,36 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/e16keyedit/e16keyedit-0.2.ebuild,v 1.21 2005/01/29 05:35:49 vapier Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Ben Lutgens <lamer@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/e16keyedit/e16keyedit-0.2.ebuild,v 1.1 2001/09/10 23:51:27 lamer Exp $
 
-inherit eutils toolchain-funcs
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Key binding editor for enlightenment 16"
-HOMEPAGE="http://www.enlightenment.org/"
-SRC_URI="mirror://sourceforge/enlightenment/e16utils/${P}.tar.gz"
+SRC_URI="ftp://ftp.enlightenment.org/enlightenment/e16utils/${P}.tar.gz"
+HOMEPAGE="http://www.enlightenment.org"
+DEPEND="virtual/x11
+		>=x11-wm/enlightenment-0.16"
 
-LICENSE="as-is"
-SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
-IUSE=""
-
-RDEPEND="virtual/x11
-	>=x11-wm/enlightenment-0.16
-	=x11-libs/gtk+-1*"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i 's:-lgdbm -lgdk_imlib::' Makefile
-	epatch ${FILESDIR}/${PV}-fullscreen.patch
-}
+#RDEPEND=""
 
 src_compile() {
-	emake CC=$(tc-getCC) EXTRA_CFLAGS="${CFLAGS}" || die
+	
+	emake || die
 }
 
-src_install() {
-	 dobin e16keyedit || die
-	 dodoc README ChangeLog AUTHORS
+src_install () {
+	
+	 dobin e16keyedit
+	 dodoc README COPYING ChangeLog AUTHORS
 }
+

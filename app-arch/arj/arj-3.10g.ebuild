@@ -1,35 +1,40 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/arj/arj-3.10g.ebuild,v 1.11 2005/01/01 11:41:07 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/arj/arj-3.10g.ebuild,v 1.1 2003/07/21 08:21:19 raker Exp $
 
-inherit eutils
-
-DESCRIPTION="Utility for opening arj archives"
-HOMEPAGE="http://arj.sourceforge.net/"
-SRC_URI="mirror://sourceforge/arj/${P}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc"
 IUSE=""
-RESTRICT="nostrip"
-
-DEPEND="virtual/libc"
 
 S=${WORKDIR}/${PN}
 
-src_compile() {
-	epatch ${FILESDIR}/arj-3.10.18-2.6.headers.patch
-	cd gnu
-	autoconf
-	econf || die
-	cd ../
-	make prepare || die "make prepare failed"
-	make package || die "make package failed"
+DESCRIPTION="Utility for opening arj archives."
+HOMEPAGE="http://arj.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
+SLOT="0"
+LICENSE="GPL"
+KEYWORDS="x86 ~ppc ~sparc"
+
+DEPEND=""
+
+RESTRICT=nostrip
+
+src_compile() 
+{
+    cd ${S}
+    cd gnu
+    autoconf
+    econf || die
+    cd ../
+    make prepare || die
+    make package || die
 }
 
-src_install() {
-	cd ${S}/linux-gnu/en/rs/u
-	dobin bin/* || die
-	dodoc doc/arj/* ${S}/ChangeLog
+src_install() 
+{
+    cd ${S}/linux-gnu/en/rs/u
+    dobin bin/*
+    dodoc doc/arj/*
+    
+    cd ${S}
+    dodoc ChangeLog
 }

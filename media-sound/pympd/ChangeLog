@@ -1,22 +1,6 @@
 # ChangeLog for media-sound/pympd
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/pympd/ChangeLog,v 1.5 2005/11/19 01:07:40 metalgod Exp $
-
-  19 Nov 2005; Luis Medinas <metalgod@gentoo.org> pympd-0.05.2.ebuild:
-  Added ~amd64 keyword. Closes bug #112877.
-
-*pympd-0.05.2 (18 Nov 2005)
-
-  18 Nov 2005; Andrej Kacian <ticho@gentoo.org> -pympd-0.04.ebuild,
-  +pympd-0.05.2.ebuild:
-  Version bump. Closes bug #112843, by Anton Romanov <theli at ukr.net>.
-	Removed 0.04.
-
-*pympd-0.05 (18 Oct 2005)
-
-  18 Oct 2005; Andrej Kacian <ticho@gentoo.org> +pympd-0.05.ebuild:
-  Version bump. Added a desktop entry. Closes bug #109700, by Anton Romanov
-  <theli at ukr.net>.
+# $Header: /var/cvsroot/gentoo-x86/media-sound/pympd/ChangeLog,v 1.1 2005/10/16 19:15:17 ticho Exp $
 
 *pympd-0.04 (16 Oct 2005)
 

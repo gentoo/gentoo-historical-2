@@ -1,12 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeartwork/kdeartwork-3.3.2.ebuild,v 1.12 2005/07/02 01:11:55 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeartwork/kdeartwork-3.3.2.ebuild,v 1.1 2004/12/09 02:39:45 caleb Exp $
 
 inherit kde-dist eutils
 
 DESCRIPTION="KDE artwork package"
 
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64 ~sparc ~ppc ~ppc64 ~hppa ~alpha"
 IUSE="opengl xscreensaver"
 
 DEPEND="opengl? ( virtual/opengl )
@@ -15,12 +15,7 @@ DEPEND="opengl? ( virtual/opengl )
 
 src_unpack() {
 	kde_src_unpack
-	sed -ie "s:X11R6/lib\(/X11\)\?:lib:g" kscreensaver/kxsconfig/Makefile.am
-
-	# Fix compilation with --without-gl. See bug #46775 and kde bug 89387.
-	epatch ${FILESDIR}/${P}-gl-kdesavers.patch
-
-	make -f admin/Makefile.common
+	sed -ie "s:X11R6/lib\(/X11\)\?:lib:g" kscreensaver/kxsconfig/Makefile.in
 }
 
 src_compile() {

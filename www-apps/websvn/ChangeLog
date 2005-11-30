@@ -1,62 +1,8 @@
 # ChangeLog for www-apps/websvn
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/websvn/ChangeLog,v 1.10 2005/10/20 19:38:39 uberlord Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/websvn/ChangeLog,v 1.1 2005/02/24 14:15:49 uberlord Exp $
 
-*websvn-1.70_beta1 (20 Oct 2005)
-
-  20 Oct 2005; Roy Marples <uberlord@gentoo.org> +websvn-1.70_beta1.ebuild:
-  New version.
-
-  18 Oct 2005; Roy Marples <uberlord@gentoo.org>
-  files/websvn-1.61-german.patch:
-  Fixed gay CR's in the german patch - thanks to vapier, #109589
-
-*websvn-1.61-r3 (17 Oct 2005)
-
-  17 Oct 2005; Roy Marples <uberlord@gentoo.org>
-  +files/websvn-1.61-german.patch, +files/websvn-1.61-issue32.patch,
-  +websvn-1.61-r3.ebuild:
-  Fixed an issue with German characters - thanks to Lars Teifland for an almost
-  working patch, #65351
-  
-  Fixed the error "svn: Can't check path '/root/.subversion': Permission denied"
-  (websvn issue 32)
-
-*websvn-1.61-r2 (05 Sep 2005)
-
-  05 Sep 2005; Roy Marples <uberlord@gentoo.org>
-  +files/websvn-1.61-r2.patch, websvn-1.61.ebuild, websvn-1.61-r1.ebuild,
-  +websvn-1.61-r2.ebuild:
-  Fixed Compare with previous wrt #104712
-  DEPEND on virtual/php instead of mod_php
-
-  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> websvn-1.61.ebuild,
-  websvn-1.61-r1.ebuild:
-  Keyworded ~sparc wrt #104326
-
-*websvn-1.61-r1 (16 Aug 2005)
-
-  16 Aug 2005; Roy Marples <uberlord@gentoo.org>
-  +files/websvn-1.61-r1.patch, +websvn-1.61-r1.ebuild:
-  Created a patch from the below user submitted patches to websvn
-  
-  http://websvn.tigris.org/issues/show_bug.cgi?id=29
-  http://websvn.tigris.org/issues/show_bug.cgi?id=31
-  http://websvn.tigris.org/issues/show_bug.cgi?id=33
-  http://websvn.tigris.org/issues/show_bug.cgi?id=37
-  
-  Fixes our #102675
-
-  21 May 2005; Simon Stelling <blubb@gentoo.org> websvn-1.61.ebuild:
-  added ~amd64 keyword
-
-  19 Apr 2005; Roy Marples <uberlord@gentoo.org> websvn-1.61.ebuild:
-  stable on x86
-
-  28 Feb 2005; Roy Marples <uberlord@gentoo.org> websvn-1.61.ebuild:
-  Corrected homepage.
-
-*websvn-1.61 (24 Feb 2005)
+*webapps/websvn-1.61 (24 Feb 2005)
 
   24 Feb 2005; Roy Marples <uberlord@gentoo.org> +websvn-1.61.ebuild:
   Initial import.

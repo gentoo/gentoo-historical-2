@@ -1,10 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/aolserver/aolserver-4.0.10.ebuild,v 1.4 2005/08/23 16:00:57 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/aolserver/aolserver-4.0.10.ebuild,v 1.1 2005/01/27 20:55:47 port001 Exp $
 
 inherit eutils
-
-IUSE="nptl"
 
 DESCRIPTION="Webserver with Tcl page scripting"
 HOMEPAGE="http://www.aolserver.com/"
@@ -13,6 +11,8 @@ SRC_URI="mirror://sourceforge/aolserver/${P}-src.tar.gz"
 LICENSE="MPL-1.1"
 SLOT="0"
 KEYWORDS="~x86"
+
+IUSE="nptl"
 
 DEPEND=">=dev-lang/tcl-8.4.3"
 
@@ -47,20 +47,34 @@ ns_inst_mods="nslog/nslog.so
 ns_inst_includes="nsd/*.h include/*.h"
 ns_inst_docs="ChangeLog
 	README
-	sample-config.tcl"
+	install-sh"
 
 check_tcl_threads() {
 
-	if ! built_with_use dev-lang/tcl threads;
-	then
-		echo
-		eerror
-		eerror "dev-lang/tcl was not merged with threading enabled."
-		eerror "please re-emerge dev-lang/tcl with USE=threads"
-		eerror
-		die "threading not enabled in dev-lang/tcl"
-	fi
+	local threads_found=""
 
+	for tcl_install in /var/db/pkg/dev-lang/tcl*; do
+
+		# find the version of tcl installed
+		# in slot 0
+		if grep 0 ${tcl_install}/SLOT > /dev/null; then
+			# check that tcl was compiled with threads
+			# enabled
+			for candidate_flag in `cat ${tcl_install}/USE`; do
+				if [ ${candidate_flag} == threads ]; then
+					threads_found="true"
+				fi
+			done
+		fi
+	done
+
+	if [ -n "${threads_found}" ]; then
+		einfo "tcl was merged with threading enabled"
+	else
+		eerror "tcl was not merged with threading enabled."
+		eerror "please re-emerge tcl with USE=threads"
+		die "threading not enabled in tcl"
+	fi
 }
 
 pkg_setup() {
@@ -106,7 +120,7 @@ src_install () {
 	keepdir /var/run/aolserver
 
 	enewgroup aolserver
-	enewuser aolserver -1 -1 ${ns_data} aolserver
+	enewuser aolserver -1 /bin/false ${ns_data} aolserver
 
 	chown -R root:aolserver ${D}/${ns_data}
 	chmod -R g+w ${D}/${ns_data}
@@ -172,6 +186,9 @@ src_install () {
 		doins nsperm/${perm_file}
 	done
 
+	insinto ${ns_data}
+	doins sample-config.tcl
+
 	insinto ${ns_conf}
 	doins ${FILESDIR}/${PV}/Makefile.global
 	newins ${S}/include/Makefile.global Makefile.global.orig
@@ -192,7 +209,7 @@ pkg_postinst () {
 
 	echo
 	einfo "Upgrading:"
-	einfo "  Check /usr/share/doc/${PF}/sample-config.tcl.gz"
+	einfo "  Check /usr/share/aolserver/sample-config.tcl"
 	einfo "  for new configuration options that you may want"
 	einfo "  to use in your existing configuration."
 	echo
@@ -222,7 +239,7 @@ pkg_config() {
 	then
 		ebegin "Updating user 'aolserver'"
 			userdel aolserver
-			enewuser aolserver -1 -1 ${ns_data} aolserver
+			enewuser aolserver -1 /bin/false ${ns_data} aolserver
 		eend $?
 	fi
 }

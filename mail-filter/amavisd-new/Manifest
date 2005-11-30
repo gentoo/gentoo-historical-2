@@ -1,31 +1,10 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 349200a4e89133278a05775dbf040001 ChangeLog 15498
-MD5 37f2d574a0d3587ed447df3872b842b4 amavisd-new-2.2.1-r2.ebuild 5075
-MD5 59cb95aa4e4ba0f79bffff4edf70e083 amavisd-new-2.3.0.ebuild 5172
-MD5 2ff214f0341b527c1869559c83fb3b4d amavisd-new-2.3.1.ebuild 5156
-MD5 6456afc858f873606f288f47712ad0b9 amavisd-new-2.3.2.ebuild 5386
-MD5 0a5d0d62559d548c3a234d6c268468f8 amavisd-new-2.3.3-r1.ebuild 5431
-MD5 3e669cdc19b7b88c8a3dd1b867eff729 amavisd-new-2.3.3-r2.ebuild 5501
-MD5 5c931181fd3738ed4ec09bdbe5c731bd amavisd-new-2.3.3.ebuild 5413
-MD5 ccd66b725ef1b2e2ed20d4a1057b03b8 files/amavisd-new-2.2.1-amavisd.conf-gentoo.patch 6849
-MD5 ee33de51df853bd8426a4304f264245f files/amavisd-new-2.2.1-qmail-lf-workaround.patch 688
-MD5 a9c49eb16b5fa7dfecd54a436bc07200 files/amavisd-new-2.3.0-amavisd.conf-gentoo.patch 6687
-MD5 bfca14b90ddc76f513a6f96752003da5 files/amavisd-new-2.3.3-bsmtp-quarantine.patch 949
-MD5 1da4ebb5c79b4892074a61f52aff3eff files/amavisd.rc6 310
-MD5 1ec247b48d1de4fdbc2a57fc9b338681 files/digest-amavisd-new-2.2.1-r2 69
-MD5 20d1361125dc21db61b44dec3a13dea2 files/digest-amavisd-new-2.3.0 69
-MD5 d7ee87336e865f363c430fc60f105d44 files/digest-amavisd-new-2.3.1 69
-MD5 64e273484857758e614f8afa7aa14e09 files/digest-amavisd-new-2.3.2 69
-MD5 d252feb4cca639dcab4ebd07f2b20a90 files/digest-amavisd-new-2.3.3 69
-MD5 d252feb4cca639dcab4ebd07f2b20a90 files/digest-amavisd-new-2.3.3-r1 69
-MD5 d252feb4cca639dcab4ebd07f2b20a90 files/digest-amavisd-new-2.3.3-r2 69
+MD5 1f1f4cf9c92f92f966361a8ac08aa543 files/amavisd.rc6 305
+MD5 0c677a1cb17705ea75841cabd5d14634 files/digest-amavisd-new-20030616_p8 75
+MD5 f45025857b1aaeeb225782bf7f35c5c3 files/addr_extensions_in_sql.patch 10222
+MD5 0a2364d819d448c49ea72dfe8c2a109a files/digest-amavisd-new-20030616_p9 75
+MD5 b9ac0b985d0cb7da0ab45fa22ebe38c8 files/lost_connection.patch 567
+MD5 3256d64018bee64fa34ed62fb93e44af files/sql_timeout.patch 3282
+MD5 7f1cfdf2c440b5fbe641896ce05ce61c ChangeLog 4130
+MD5 2d5e57cf8d2e3fe7f732094202816f39 amavisd-new-20030616_p8.ebuild 2589
+MD5 8ea5e2ba914fdb717d548ff5f1164959 amavisd-new-20030616_p9.ebuild 2855
 MD5 7e32edfd72887a57b16ecd73f0f7a1a0 metadata.xml 184
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDX8c9ntT9W3vfTuoRAgveAKCv9octHQoe2ZNztIo3l/GM3EOZUQCePrOE
-HNRiPkThKyK9/uMRVq4GjCY=
-=ZGe3
------END PGP SIGNATURE-----

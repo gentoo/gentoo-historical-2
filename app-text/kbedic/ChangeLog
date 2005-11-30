@@ -1,60 +1,8 @@
 # ChangeLog for app-text/kbedic
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/kbedic/ChangeLog,v 1.19 2005/09/14 19:13:59 josejx Exp $
-
-  14 Sep 2005; Joseph Jezak <josejx@gentoo.org>
-  +files/ppc-gfxopt.patch, kbedic-4.0.ebuild:
-  Marked ppc and added patch for -mpowerpc-gfxopt fix. Thanks bambam. (Bug
-  #99198)
-
-  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> kbedic-4.0.ebuild:
-  Fix qt dep
-
-  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> kbedic-4.0.ebuild:
-  mark ~ppc
-
-  15 Apr 2005; Simon Stelling <blubb@gentoo.org> kbedic-4.0.ebuild:
-  added ~amd64
-
-  29 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> kbedic-4.0.ebuild:
-  Proper usage of kde eclasses, to make sure KDEDIR is defined (#33079).
-
-  29 Jun 2004; Carsten Lohrke <carlo@gentoo.org> kbedic-4.0.ebuild:
-  QA: IUSE before inherit
-
-  13 Apr 2004; Dominik Stadler <centic@gentoo.org> kbedic-4.0.ebuild:
-  Remove S=.. from ebuild, not needed
-
-  03 Jan 2004; Caleb Tennis <caleb@gentoo.org> kbedic-3.1.ebuild,
-  kbedic-4.0.ebuild:
-  Move the deps around just a little bit
-
-*kbedic-4.0 (11 Aug 2003)
-
-  11 Aug 2003; Caleb Tennis <caleb@gentoo.org> : kbedic-4.0.ebuild
-  Version bump
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*kbedic-3.1 (11 Sep 2002)
-
-  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> kbedic-3.1.ebuild :
-  Added IUSE.
-
-  11 Sep 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
-
-  A new version, which works with kde/qt3.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-text/kbedic/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
 
 *kbedic-2.1 (1 Feb 2002)
- 
-  19 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> .ebuild :
-  Updated to mirror://sourceforge in SRC_URI.
-
-  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> kbedic-2.1.ebuild :
-  Added IUSE.
-
-  2 Aug 2002; phoen][x <phoenix@gentoo.org> kbedic-2.1.ebuild :
-  Added LICENSE, KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

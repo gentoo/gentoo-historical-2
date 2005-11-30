@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/mp/mp-3.3.14.ebuild,v 1.4 2005/08/23 18:18:56 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/mp/mp-3.3.14.ebuild,v 1.1 2005/06/23 08:03:02 compnerd Exp $
 
 inherit eutils
 
@@ -10,8 +10,8 @@ SRC_URI="http://www.triptico.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
-IUSE="gtk gtk2 ncurses nls pcre"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="gtk gtk2 ncurses nls pcre syntax"
 
 DEPEND="virtual/libc
 		ncurses? ( sys-libs/ncurses )

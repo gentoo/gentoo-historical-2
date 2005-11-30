@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vmnet/vmnet-0.4.ebuild,v 1.8 2005/03/01 22:34:02 vapier Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vmnet/vmnet-0.4.ebuild,v 1.1 2003/07/28 01:51:26 robbat2 Exp $
 
 DESCRIPTION="A simple virtual networking program"
 HOMEPAGE="ftp://ftp.xos.nl/pub/linux/${PN}/"
@@ -10,15 +8,14 @@ HOMEPAGE="ftp://ftp.xos.nl/pub/linux/${PN}/"
 # So this might be better but it's a different filename
 # http://ftp.debian.org/debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz
 # We use the debian patch anyway
-SRC_URI="ftp://ftp.xos.nl/pub/linux/${PN}/${P}.tar.gz
-	mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}-1.diff.gz"
-
+SRC_URI="ftp://ftp.xos.nl/pub/linux/${PN}/${P}.tar.gz 
+	http://ftp.debian.org/debian/pool/main/${PN:0:1}/${PN}/${P/-/_}-1.diff.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~x86"
 IUSE=""
-
 DEPEND="sys-apps/net-tools"
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -30,13 +27,19 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN} || die "dobin"
-	fperms 4711 /usr/bin/${PN} || die "fperms"
-
+	# Binary
+	into /usr
+	dobin ${PN}
+	# This line doesn't seem to work?
+	# fperms 4755 ${PN}
+	chmod 4755 ${D}/usr/bin/${PN}
+	
+	# Docs
 	doman ${PN}.1
-	dodoc README debian/${PN}.sgml
-
-	insinto /etc
+	dodoc COPYING README debian/${PN}.sgml
+	
+	# Config file
+	into /etc
 	doins debian/${PN}.conf
 }
 

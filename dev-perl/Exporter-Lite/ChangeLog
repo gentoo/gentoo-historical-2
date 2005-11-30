@@ -1,28 +1,6 @@
 # ChangeLog for dev-perl/Exporter-Lite
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exporter-Lite/ChangeLog,v 1.8 2005/06/17 20:40:02 hansmi Exp $
-
-  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
-  Exporter-Lite-0.01.ebuild:
-  Stable on ppc.
-
-  08 May 2005; Aron Griffis <agriffis@gentoo.org> Exporter-Lite-0.01.ebuild:
-  stable on ia64
-
-  01 May 2005; Tom Martin <slarti@gentoo.org> Exporter-Lite-0.01.ebuild:
-  Stable on amd64.
-
-  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
-  Exporter-Lite-0.01.ebuild:
-  ~ia64 keyword.
-
-  26 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
-  Exporter-Lite-0.01.ebuild:
-  Stable on alpha.
-
-  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  Exporter-Lite-0.01.ebuild:
-  cleaning
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exporter-Lite/ChangeLog,v 1.1 2004/06/06 03:23:54 mcummings Exp $
 
 *Exporter-Lite-0.01 (05 Jun 2004)
 

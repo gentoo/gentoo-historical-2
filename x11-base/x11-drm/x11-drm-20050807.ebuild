@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/x11-drm/x11-drm-20050807.ebuild,v 1.2 2005/10/29 03:18:25 battousai Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/x11-drm/x11-drm-20050807.ebuild,v 1.1 2005/08/09 01:56:12 battousai Exp $
 
 inherit eutils x11 linux-mod
 
@@ -21,7 +21,7 @@ HOMEPAGE="http://dri.sf.net"
 SRC_URI="mirror://gentoo/${P}-gentoo-${PATCHVER}.tar.bz2
 	 mirror://gentoo/linux-drm-${PV}-kernelsource.tar.bz2"
 
-SLOT="0"
+SLOT="${KV}"
 LICENSE="X11"
 KEYWORDS="~x86 ~alpha ~ia64 ~ppc ~amd64"
 
@@ -80,7 +80,7 @@ src_unpack() {
 	# Apply patches
 	EPATCH_SUFFIX="patch" epatch ${PATCHDIR}
 
-	# Substitute new directory under /lib/modules/${KV_FULL}
+	# Substitute new directory under /lib/modules/${KV}
 	cd ${SRC_BUILD}
 	sed -ie "s:/kernel/drivers/char/drm:/${PN}:g" Makefile
 
@@ -97,7 +97,7 @@ src_compile() {
 	# This now uses an M= build system. Makefile does most of the work.
 	unset ARCH
 	make M="${SRC_BUILD}" \
-		LINUXDIR="${KERNEL_DIR}" \
+		LINUXDIR="${ROOT}/usr/src/linux" \
 		DRM_MODULES="${VIDCARDS}" \
 		modules || die_error
 
@@ -115,8 +115,8 @@ src_compile() {
 
 	cd ${SRC_BUILD}
 	# LINUXDIR is needed to allow Makefiles to find kernel release.
-	make LINUXDIR="${KERNEL_DIR}" dristat || die "Building dristat failed."
-	make LINUXDIR="${KERNEL_DIR}" drmstat || die "Building drmstat failed."
+	make LINUXDIR="${ROOT}/usr/src/linux" dristat || die "Building dristat failed."
+	make LINUXDIR="${ROOT}/usr/src/linux" drmstat || die "Building drmstat failed."
 }
 
 src_install() {
@@ -124,10 +124,10 @@ src_install() {
 	cd ${SRC_BUILD}
 
 	unset ARCH
-	make KV="${KV_FULL}" \
-		LINUXDIR="${KERNEL_DIR}" \
+	make KV="${KV}" \
+		LINUXDIR="${ROOT}/usr/src/linux" \
 		DESTDIR="${D}" \
-		RUNNING_REL="${KV_FULL}" \
+		RUNNING_REL="${KV}" \
 		MODULE_LIST="${VIDCARDS} drm.${KV_OBJ}" \
 		install || die "Install failed."
 
@@ -136,13 +136,16 @@ src_install() {
 	dobin dristat
 	dobin drmstat
 
+	cd ${S}
+	emake DESTDIR=${D} install || die "libdrm install failed."
+
 	# Strip binaries, leaving /lib/modules untouched (bug #24415)
 	strip_bins \/lib\/modules
 
 	# Yoinked from the sys-apps/touchpad ebuild. Thanks to whoever made this.
 	keepdir /etc/modules.d
 	sed 's:%PN%:'${PN}':g' ${FILESDIR}/modules.d-${PN} > ${D}/etc/modules.d/${PN}
-	sed -i 's:%KV%:'${KV_FULL}':g' ${D}/etc/modules.d/${PN}
+	sed -i 's:%KV%:'${KV}':g' ${D}/etc/modules.d/${PN}
 }
 
 pkg_postinst() {

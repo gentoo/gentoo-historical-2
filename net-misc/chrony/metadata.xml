@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
+<herd>net-misc</herd>
 <maintainer>
-	<email>tove@gentoo.org</email>
+  <email>wmertens@gentoo.org</email>
 </maintainer>
-<longdescription>
-Chrony is a pair of programs (chronyd and chronyc) which are used to maintain
-the accuracy of the system clock on a computer. chronyd has been specifically
-written to work well for systems which have only an intermittent (e.g. dial-up)
-connection to the network where the NTP servers are. It still works well
-in a "permanently connected" mode.
-</longdescription>
 </pkgmetadata>

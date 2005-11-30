@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/rezound/rezound-0.12.0_beta.ebuild,v 1.3 2005/09/09 13:19:09 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/rezound/rezound-0.12.0_beta.ebuild,v 1.1 2005/05/21 09:38:00 luckyduck Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="16bittmp alsa flac jack nls oss portaudio soundtouch vorbis"
 
 RDEPEND="virtual/x11
@@ -70,7 +70,9 @@ src_install() {
 
 	# remove wrong doc directory
 	rm -rf ${D}/usr/doc/${PN}
-	dodoc docs/{AUTHORS,NEWS,README*}
+	# install docs manually, but don't install
+	# COPYING, since this is obsolete ($LICENCE is enough)
+	dodoc ABOUT-NLS docs/{AUTHORS,*INSTALL,NEWS,README*}
 	dodoc docs/{TODO_FOR_USERS_TO_READ,*.txt}
 
 	docinto code

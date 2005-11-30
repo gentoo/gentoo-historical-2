@@ -1,30 +1,24 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/dspam/dspam-3.6.0.ebuild,v 1.7 2005/11/20 01:37:41 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/dspam/dspam-3.6.0.ebuild,v 1.1 2005/10/17 16:11:47 st_lim Exp $
 
 inherit eutils
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A statistical-algorithmic hybrid anti-spam filter"
 SRC_URI="http://dspam.nuclearelephant.com/sources/${P}.tar.gz
 		http://dspam.nuclearelephant.com/sources/extras/dspam_sa_trainer.tar.gz"
 HOMEPAGE="http://dspam.nuclearelephant.com/"
 LICENSE="GPL-2"
 
-IUSE="clamav debug large-domain logrotate mysql neural oci8 postgres sqlite sqlite3 virtual-users user-homedirs"
-DEPEND="clamav? ( >=app-antivirus/clamav-0.86 )
-		mysql? ( >=dev-db/mysql-3.23 )
-		sqlite? ( <dev-db/sqlite-3* )
-		sqlite3? ( =dev-db/sqlite-3* )
+IUSE="debug mysql neural oci8 postgres sqlite large-domain logrotate virtual-users"
+DEPEND="mysql? ( >=dev-db/mysql-3.23 ) || ( >=sys-libs/db-4.0 )
+		sqlite? ( dev-db/sqlite )
 		postgres? ( >=dev-db/postgresql-7.4.3 )
+		x86? ( cyrus? ( >=net-mail/cyrus-imapd-2.1.15 ) )
 		>=sys-libs/db-4.0
 		"
 RDEPEND="sys-process/cronbase
-		clamav? ( >=app-antivirus/clamav-0.86 )
-		mysql? ( >=dev-db/mysql-3.23 )
-		sqlite? ( <dev-db/sqlite-3 )
-		sqlite3? ( =dev-db/sqlite-3* )
-		postgres? ( >=dev-db/postgresql-7.4.3 )
-		>=sys-libs/db-4.0
 		logrotate? ( app-admin/logrotate )"
 KEYWORDS="~x86 ~ppc ~alpha ~amd64"
 SLOT="0"
@@ -36,7 +30,7 @@ LOGDIR="/var/log/dspam"
 
 pkg_setup() {
 	local multiple_dbs="0"
-	local supported_dbs="mysql postgres oci8 sqlite sqlite3"
+	local supported_dbs="mysql postgres oci8 sqlite"
 	for foo in ${supported_dbs}; do
 		if use ${foo}; then
 			let multiple_dbs="((multiple_dbs + 1 ))"
@@ -79,13 +73,6 @@ pkg_setup() {
 		ewarn "(Control-C to abort)..."
 		epause 30
 	)
-	if use virtual-users && use user-homedirs ; then
-		ewarn "If the users are virtual, then they probably should not have home directories."
-	fi
-	if use user-homedirs ; then
-		ewarn "WARNING: dspam-web will not work with user-homedirs.  Disable this USE flag"
-		ewarn "if you intend on using dspam-web."
-	fi
 	id dspam 2>/dev/null || enewgroup dspam 26
 	id dspam 2>/dev/null || enewuser dspam 26 /bin/bash ${HOMEDIR} dspam
 }
@@ -100,8 +87,7 @@ src_compile() {
 
 	myconf="${myconf} --with-dspam-home=${HOMEDIR}"
 	myconf="${myconf} --sysconfdir=${CONFDIR}"
-	use user-homedirs || myconf="${myconf} --enable-homedir"
-	use clamav || myconf="${myconf} --enable-clamav"
+	use virtual-users || myconf="${myconf} --enable-homedir"
 
 	# enables support for debugging (touch /etc/dspam/.debug to turn on)
 	# optional: even MORE debugging output, use with extreme caution!
@@ -110,9 +96,6 @@ src_compile() {
 	# select storage driver
 	if use sqlite ; then
 		myconf="${myconf} --with-storage-driver=sqlite_drv"
-		myconf="${myconf} --enable-virtual-users"
-	elif use sqlite3 ; then
-		myconf="${myconf} --with-storage-driver=sqlite3_drv"
 		myconf="${myconf} --enable-virtual-users"
 	elif use mysql; then
 		myconf="${myconf} --with-storage-driver=mysql_drv"
@@ -229,11 +212,7 @@ src_install () {
 	if use sqlite; then
 		insinto ${CONFDIR}
 		insopts -m644 -o dspam -g dspam
-		newins src/tools.sqlite_drv/purge-2.sql sqlite_purge.sql
-	elif use sqlite3; then
-		insinto ${CONFDIR}
-		insopts -m644 -o dspam -g dspam
-		newins src/tools.sqlite_drv/purge-3.sql sqlite3_purge.sql
+		newins src/tools.sqlite_drv/purge.sql sqlite_purge.sql
 	elif use mysql; then
 		# Use existing configuration if possible
 		if [[ -f ${ROOT}${CONFDIR}/mysql.data ]]; then
@@ -417,7 +396,7 @@ pkg_config () {
 		DSPAM_MySQL_DB="${DSPAM_DB_DATA[4]}"
 
 		ewarn "When prompted for a password, please enter your MySQL root password"
-		ewarn
+		ewarn ""
 
 		einfo "Creating DSPAM MySQL database \"${DSPAM_MySQL_DB}\""
 		/usr/bin/mysqladmin -u root -p create ${DSPAM_MySQL_DB}
@@ -461,7 +440,7 @@ pkg_config () {
 		DSPAM_PgSQL_DB="${DSPAM_DB_DATA[4]}"
 
 		ewarn "When prompted for a password, please enter your PgSQL postgres password"
-		ewarn
+		ewarn ""
 
 		einfo "Creating DSPAM PostgreSQL database \"${DSPAM_PgSQL_DB}\" and user \"${DSPAM_PgSQL_USER}\""
 		/usr/bin/psql -h localhost -d template1 -U postgres -c "CREATE USER ${DSPAM_PgSQL_USER} WITH PASSWORD '${DSPAM_PgSQL_PWD}' NOCREATEDB NOCREATEUSER; CREATE DATABASE ${DSPAM_PgSQL_DB}; GRANT ALL PRIVILEGES ON DATABASE ${DSPAM_PgSQL_DB} TO ${DSPAM_PgSQL_USER}; GRANT ALL PRIVILEGES ON SCHEMA public TO ${DSPAM_PgSQL_USER}; UPDATE pg_database SET datdba=(SELECT usesysid FROM pg_shadow WHERE usename='${DSPAM_PgSQL_USER}') WHERE datname='${DSPAM_PgSQL_DB}';"
@@ -477,7 +456,7 @@ pkg_config () {
 		einfo "We have not enought Oracle knowledge to configure Oracle"
 		einfo "automatically. If you know how, please post a message in"
 		einfo "Gentoo Bugzilla."
-		einfo
+		einfo ""
 		einfo "You need manually to create the Oracle user for DSPAM and"
 		einfo "the necessary database."
 		einfo "But the DSPAM configuration file dspam.conf and oracle.data"

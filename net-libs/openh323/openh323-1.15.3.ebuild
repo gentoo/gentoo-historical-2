@@ -1,19 +1,21 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/openh323/openh323-1.15.3.ebuild,v 1.4 2005/09/16 01:37:39 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/openh323/openh323-1.15.3.ebuild,v 1.1 2005/04/10 22:06:02 stkn Exp $
+
+IUSE="ssl novideo noaudio debug"
 
 inherit eutils flag-o-matic multilib
 
 MY_P="${PN}-v${PV//./_}"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Open Source implementation of the ITU H.323 teleconferencing protocol"
 HOMEPAGE="http://www.openh323.org/"
 SRC_URI="http://www.gnomemeeting.org/admin/downloads/latest/sources/sources/${P}.tar.gz"
 
-IUSE="ssl novideo noaudio debug"
 SLOT="0"
 LICENSE="MPL-1.1"
-KEYWORDS="alpha ~amd64 ppc ~sparc ~x86"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc ~amd64"
 
 DEPEND=">=sys-apps/sed-4
 	>=dev-libs/pwlib-1.8.4

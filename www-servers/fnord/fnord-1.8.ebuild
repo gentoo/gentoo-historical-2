@@ -1,42 +1,53 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/fnord/fnord-1.8.ebuild,v 1.11 2005/08/28 06:17:15 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/fnord/fnord-1.8.ebuild,v 1.1 2004/08/08 11:37:29 stuart Exp $
 
-inherit flag-o-matic eutils fixheadtails
+S=${WORKDIR}/${P}
+
+# needed for replace-sparc64-flags
+inherit flag-o-matic
 
 DESCRIPTION="Yet another small httpd."
+SRC_URI="http://www.fefe.de/fnord/${P}.tar.bz2
+	mirror://gentoo/${P}-gentoo.diff"
 HOMEPAGE="http://www.fefe.de/fnord/"
-SRC_URI="http://www.fefe.de/fnord/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+KEYWORDS="~x86 ~sparc ~ppc"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
-IUSE=""
+LICENSE="GPL-2"
 
-DEPEND=""
-RDEPEND="${DEPEND}
-	sys-process/daemontools
-	sys-apps/ucspi-tcp"
+DEPEND="dev-libs/dietlibc"
+RDEPEND="sys-apps/daemontools"
 
 pkg_setup() {
-	enewuser fnord -1 -1 /etc/fnord nofiles
-	enewuser fnordlog -1 -1 /etc/fnord nofiles
+
+	if ! grep -q ^fnord: /etc/passwd ; then
+	    useradd  -g nofiles -s /bin/false -d /etc/fnord -c "fnord" fnord\
+			|| die "problem adding user fnord"
+	fi
+	if ! grep -q ^fnordlog: /etc/passwd ; then
+	    useradd  -g nofiles -s /bin/false -d /etc/fnord -c "fnordlog" fnordlog\
+			|| die "problem adding user fnordlog"
+	fi
 }
 
 src_unpack() {
-	unpack ${A} && cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
-	ht_fix_all
-}
-
-src_compile() {
 	# Fix for bug #45716
 	replace-sparc64-flags
 
-	emake DIET="" CFLAGS="${CFLAGS}" || die "emake failed"
+	unpack ${A} ; cd ${S}
+	sed -i "s:^CFLAGS=-O.*:CFLAGS=${CFLAGS}:" Makefile
+
+	patch -p0 < ${DISTDIR}/${PF}-gentoo.diff
+}
+
+src_compile() {
+	emake || die
 }
 
 src_install () {
-	dobin fnord-conf fnord || die
+	exeinto /usr/bin
+	doexe fnord-conf fnord
+
 	dodoc TODO README SPEED COPYING CHANGES
 }

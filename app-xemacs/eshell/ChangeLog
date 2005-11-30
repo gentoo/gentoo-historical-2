@@ -1,27 +1,6 @@
 # ChangeLog for app-xemacs/eshell
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/eshell/ChangeLog,v 1.9 2005/01/01 17:03:24 eradicator Exp $
-
-  16 Dec 2004; Markus Rothe <corsair@gentoo.org> eshell-1.04.ebuild:
-  Stable on ppc64
-
-  01 Nov 2004; Markus Rothe <corsair@gentoo.org> eshell-1.04.ebuild:
-  Marked ~ppc64; bug #67089
-
-  02 Oct 2004; Robert Coie <rac@gentoo.org> eshell-1.03.ebuild,
-  eshell-1.04.ebuild:
-  eterm -> xemacs-eterm renaming
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> eshell-1.04.ebuild:
-  Stable on alpha
-
-*eshell-1.04 (22 Feb 2003)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> eshell-1.03.ebuild eshell-1.04.ebuild files/digest-eshell-1.04 :
-  Add ~alpha to KEYWORDS
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  new stable ebuild
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/eshell/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *eshell-1.03 (16 Dec 2002)
 

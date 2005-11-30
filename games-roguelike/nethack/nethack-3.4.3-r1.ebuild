@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/nethack/nethack-3.4.3-r1.ebuild,v 1.10 2005/11/22 22:07:03 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/nethack/nethack-3.4.3-r1.ebuild,v 1.1 2004/07/10 09:39:36 mr_bones_ Exp $
 
-inherit eutils toolchain-funcs flag-o-matic games
+inherit eutils gcc flag-o-matic games
 
 MY_PV=${PV//.}
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
@@ -12,13 +12,14 @@ SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~ppc-macos sparc x86"
+KEYWORDS="x86 ppc sparc amd64"
 IUSE="X qt gnome"
 
 DEPEND="virtual/libc
+	dev-util/yacc
 	>=sys-libs/ncurses-5.2-r5
 	X? ( virtual/x11 )
-	qt? ( =x11-libs/qt-3* )
+	qt? ( x11-libs/qt )
 	gnome? ( >=gnome-base/gnome-libs-1.4.1.4-r2 )"
 
 HACKDIR="${GAMES_DATADIR}/${PN}"
@@ -26,7 +27,7 @@ HACKDIR="${GAMES_DATADIR}/${PN}"
 src_unpack() {
 	unpack ${A}
 
-	# This copies the /sys/unix Makefile.*s to their correct places for
+	# This copies the /sys/unix Makefile.*s to their correct places for 
 	# seding and compiling.
 	cd "${S}/sys/unix"
 	source setup.sh || die
@@ -34,8 +35,6 @@ src_unpack() {
 	cd "${S}"
 	epatch "${FILESDIR}/${PV}-gentoo-paths.patch"
 	epatch "${FILESDIR}/${PV}-default-options.patch"
-	epatch "${FILESDIR}/${PV}-bison.patch"
-	epatch "${FILESDIR}/${PV}-macos.patch"
 
 	sed -i \
 		-e "s:GENTOO_STATEDIR:${GAMES_STATEDIR}/${PN}:" include/unixconf.h \
@@ -49,10 +48,6 @@ src_unpack() {
 			-e "115c\#define DEF_PAGER \"${PAGER}\"" \
 			include/unixconf.h \
 			|| die "setting statedir"
-		# bug #57410
-		sed -i \
-			-e "s/^DATNODLB =/DATNODLB = \$(DATHELP)/" Makefile \
-			|| die "sed Makefile failed"
 	fi
 
 	if use X ; then
@@ -68,28 +63,25 @@ src_unpack() {
 
 src_compile() {
 	local qtver=
-	local lflags="-L/usr/X11R6/lib"
-
-	use ppc-macos && lflags="${lflags} -undefined dynamic_lookup"
 
 	has_version =x11-libs/qt-3* \
 		&& qtver=3 \
 		|| qtver=2
 	cd ${S}/src
 	append-flags -I../include
-
+	
 	emake \
 		QTDIR=/usr/qt/${qtver} \
-		CC="$(tc-getCC)" \
+		CC="$(gcc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		LFLAGS="${lflags}" \
+		LFLAGS="-L/usr/X11R6/lib" \
 		../util/makedefs \
 		|| die "initial makedefs build failed"
 	emake \
 		QTDIR=/usr/qt/${qtver} \
-		CC="$(tc-getCC)" \
+		CC="$(gcc-getCC)" \
 		CFLAGS="${CFLAGS}" \
-		LFLAGS="${lflags}" \
+		LFLAGS="-L/usr/X11R6/lib" \
 		|| die "main build failed"
 	cd ${S}/util
 	emake CFLAGS="${CFLAGS}" recover || die "util build failed"
@@ -97,7 +89,7 @@ src_compile() {
 
 src_install() {
 	make \
-		CC="$(tc-getCC)" \
+		CC="$(gcc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LFLAGS="-L/usr/X11R6/lib" \
 		GAMEPERM=0755 \
@@ -163,7 +155,6 @@ src_install() {
 	local statedir="${GAMES_STATEDIR}/${PN}"
 	keepdir "${statedir}/save"
 	mv "${D}/${HACKDIR}/"{record,logfile,perm} "${D}/${statedir}/"
-	make_desktop_entry nethack "Nethack"
 
 	prepgamesdirs
 	chmod -R 660 "${D}/${statedir}"
@@ -176,5 +167,5 @@ pkg_postinst() {
 		ewarn "the qt frontend may be a little unstable with this version of qt"
 		ewarn "please see Bug 32629 for more information"
 	fi
-	einfo "You may want to look at /etc/skel/.nethackrc for interesting options"
+	einfo "you may want to look at /etc/skel/.nethackrc for interesting options"
 }

@@ -1,8 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/rigs/rigs-0.2.2.20050714.ebuild,v 1.2 2005/07/15 16:47:52 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-libs/rigs/rigs-0.2.2.20050714.ebuild,v 1.1 2005/07/15 15:25:46 fafhrd Exp $
 
 inherit gnustep
+
+S=${WORKDIR}/${PN}-${PV}
 
 DESCRIPTION="Ruby Interface for GNUstep."
 HOMEPAGE="http://www.gnustep.org/experience/RIGS.html"
@@ -12,7 +14,7 @@ KEYWORDS="~x86 ~ppc"
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
 
-IUSE="doc"
+IUSE="${IUSE} doc"
 DEPEND="${GS_DEPEND}
 	dev-lang/ruby"
 RDEPEND="${GS_RDEPEND}
@@ -77,3 +79,4 @@ src_install() {
 			${D}/${GNUSTEP_LOCAL_ROOT}/Library/Documentation/RIGS/Examples/Gui/CVS
 	fi
 }
+

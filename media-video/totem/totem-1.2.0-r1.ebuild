@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/totem/totem-1.2.0-r1.ebuild,v 1.5 2005/11/24 06:59:48 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/totem/totem-1.2.0-r1.ebuild,v 1.1 2005/10/08 12:26:19 leonardop Exp $
 
 inherit eutils multilib gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://gnome.org/projects/totem/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="a52 dvd flac gnome lirc mad mpeg nsplugin ogg theora vorbis win32codecs xine xv"
 
 RDEPEND=">=dev-libs/glib-2.6.3
@@ -45,11 +45,11 @@ RDEPEND=">=dev-libs/glib-2.6.3
 			>=media-plugins/gst-plugins-ogg-0.8.10
 			>=media-plugins/gst-plugins-theora-0.8.10 )
 		mad? ( >=media-plugins/gst-plugins-mad-0.8.10 )
-		!sparc? ( dvd? (
+		dvd? (
 			>=media-plugins/gst-plugins-a52dec-0.8.10
 			>=media-plugins/gst-plugins-dvdread-0.8.10
 			>=media-plugins/gst-plugins-mpeg2dec-0.8.10
-			>=media-plugins/gst-plugins-dvdnav-0.8.11 ) )
+			>=media-plugins/gst-plugins-dvdnav-0.8.11 )
 		win32codecs? ( >=media-plugins/gst-plugins-pitfdll-0.8.1 ) )
 	nsplugin? (
 		>=net-libs/gecko-sdk-1.7

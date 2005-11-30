@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/undms/undms-1.3.ebuild,v 1.3 2005/09/15 18:05:11 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/undms/undms-1.3.ebuild,v 1.1 2004/09/11 12:29:51 dholm Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ SRC_URI="ftp://us.aminet.net/pub/aminet/misc/unix/${P}.c.Z ftp://us.aminet.net/p
 HOMEPAGE="ftp://us.aminet.net/pub/aminet/misc/unix/${P}.c.Z.readme"
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="~ppc ~ppc-macos ~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 src_unpack() {

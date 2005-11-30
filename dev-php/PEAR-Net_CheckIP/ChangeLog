@@ -1,28 +1,6 @@
 # ChangeLog for dev-php/PEAR-Net_CheckIP
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_CheckIP/ChangeLog,v 1.6 2005/11/22 18:33:18 corsair Exp $
-
-  22 Nov 2005; Markus Rothe <corsair@gentoo.org>
-  PEAR-Net_CheckIP-1.1-r1.ebuild:
-  Stable on ppc64; bug #109993
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
-  PEAR-Net_CheckIP-1.1-r1.ebuild:
-  Marked ~ppc for bug #105385.
-
-  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  PEAR-Net_CheckIP-1.1-r1.ebuild:
-  Add ~amd64.
-
-  11 Sep 2005; Jason Wever <weeve@gentoo.org>
-  PEAR-Net_CheckIP-1.1-r1.ebuild:
-  Added ~sparc keyword.
-
-*PEAR-Net_CheckIP-1.1-r1 (08 Sep 2005)
-
-  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  +PEAR-Net_CheckIP-1.1-r1.ebuild:
-  Use new PEAR eclass.
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_CheckIP/ChangeLog,v 1.1 2005/08/04 07:17:40 sebastian Exp $
 
 *PEAR-Net_CheckIP-1.1 (04 Aug 2005)
 

@@ -1,44 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ltrace/ltrace-0.3.31.ebuild,v 1.17 2005/06/09 13:34:05 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ltrace/ltrace-0.3.31.ebuild,v 1.1 2003/05/21 18:28:51 kumba Exp $
 
-inherit eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="ltrace shows runtime library call information for dynamically linked executables"
+SRC_URI="http://ftp.debian.org/debian/pool/main/l/ltrace/${PN}_${PV}.tar.gz"
 HOMEPAGE="http://packages.debian.org/unstable/utils/ltrace.html"
-SRC_URI="mirror://debian/pool/main/l/ltrace/${PN}_${PV}.tar.gz
-	amd64? ( http://gentoo.tamperd.net/distfiles/ltrace-0.3.26-x86_64.tar.bz2
-		mirror://gentoo/ltrace-0.3.26-x86_64.tar.bz2 )"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc -sparc ~alpha ~hppa ~mips ~amd64 ~ia64"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc"
 
-DEPEND=">=sys-apps/sed-4
-	virtual/libc"
-
-src_unpack() {
-	unpack ${PN}_${PV}.tar.gz ; cd ${S}
-
-	if [ "${ARCH}" == "amd64" ]; then
-		unpack ltrace-0.3.26-x86_64.tar.bz2
-	fi
-
-	epatch ${FILESDIR}/${P}-64bit-fixes.patch
-	epatch ${FILESDIR}/${P}-gcc4.patch
-}
+DEPEND="virtual/glibc"
 
 src_compile() {
+
 	econf || die
 
 	# modify CFLAGS (hopefully in a more time friendly way)
-	sed -i "s/ -O2 / ${CFLAGS} /" Makefile
-
-	emake all || make all || die
+	mv Makefile Makefile.orig
+	sed "s/ -O2 / ${CFLAGS} /" \
+		Makefile.orig > Makefile || die "sed failed...new version of Makefile?"
+	
+	emake all || die
 }
 
 src_install() {
+
 	einstall || die
 
 	# documentation

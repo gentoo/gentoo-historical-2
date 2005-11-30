@@ -1,51 +1,6 @@
 # ChangeLog for dev-perl/XML-GDOME
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-GDOME/ChangeLog,v 1.14 2005/11/21 18:36:25 mcummings Exp $
-
-  21 Nov 2005; <mcumming@gentoo.org> +files/gdome-version-check.patch,
-  XML-GDOME-0.86.ebuild:
-  bug 112775, cpan rt ticket 16009
-
-  03 Aug 2005; Bryan Ãstergaard <kloeri@gentoo.org> XML-GDOME-0.86.ebuild:
-  Stable on alpha.
-
-  06 May 2005; Sven Wegener <swegener@gentoo.org> XML-GDOME-0.86.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  01 May 2005; Tom Martin <slarti@gentoo.org> XML-GDOME-0.86.ebuild:
-  Stable on amd64.
-
-  30 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> XML-GDOME-0.86.ebuild:
-  Stable on sparc
-
-  30 Apr 2005; Bryan Ãstergaard <kloeri@gentoo.org> XML-GDOME-0.86.ebuild:
-  ~alpha keyword.
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  XML-GDOME-0.85.ebuild, XML-GDOME-0.86.ebuild:
-  Cleaning for mirror syntax
-
-  14 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> XML-GDOME-0.86.ebuild:
-  added ~amd64 to KEYWORDS, fixes #88637
-
-*XML-GDOME-0.86 (11 Jun 2004)
-
-  11 Jun 2004; Michael Cummings <mcummings@gentoo.org> XML-GDOME-0.86.ebuild:
-  new version on cpan
-
-  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> XML-GDOME-0.85.ebuild:
-  Corrected gdome dep for specific version
-
-  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
-  XML-GDOME-0.83.ebuild:
-  No longer on CPAN
-
-*XML-GDOME-0.85 (30 Dec 2003)
-
-  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
-  XML-GDOME-0.85.ebuild:
-  Current stable release. Has been tested successfully on a sparc and x86. Also
-  fills dep for XML-LibXML-XPathContext 
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-GDOME/ChangeLog,v 1.1 2003/10/03 11:11:08 mcummings Exp $
 
 *XML-GDOME-0.83 (03 Oct 2003)
 

@@ -1,64 +1,6 @@
-# ChangeLog for sci-mathematics/octave-forge
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave-forge/ChangeLog,v 1.12 2005/10/01 21:54:30 ribosome Exp $
-
-*octave-forge-2005.06.13-r1 (01 Oct 2005)
-*octave-forge-2004.11.16-r2 (01 Oct 2005)
-
-  01 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
-  octave-forge-2004.11.16-r1.ebuild, +octave-forge-2004.11.16-r2.ebuild,
-  +octave-forge-2005.06.13-r1.ebuild:
-  New revisions using ncurses in place of libtermcap-compat (see bug #103105).
-
-  21 Aug 2005; Olivier Fisette <ribosome@gentoo.org>
-  -files/2004.11.16.patch, +files/octave-forge-mex.patch,
-  +files/octave-forge-randmtzig.patch:
-  Added mex and randmtzig patches (fixes bug #99783). Thanks to Federico
-  Zenith <zenith@chemeng.ntnu.no>.
-
-*octave-forge-2005.06.13 (20 Aug 2005)
-
-  20 Aug 2005; Olivier Fisette <ribosome@gentoo.org>
-  +octave-forge-2005.06.13.ebuild:
-  New version. Depends strictly on Octave 2.69 rather than 2.69 or later like
-  previous ebuilds (see bug #99781). This dependency should be kept in sync as
-  new versions of Octave and Octave-Forge are released.
-
-  26 Jun 2005; Olivier Fisette <ribosome@gentoo.org>
-  -files/octave-2.1.57+.patch, -files/octave-forge-2004.02.12-fPIC.patch,
-  -octave-forge-2004.02.12.ebuild, -octave-forge-2004.02.12-r1.ebuild,
-  -octave-forge-2004.11.16.ebuild, octave-forge-2004.11.16-r1.ebuild:
-  Stable x86 and amd64. Removed obsolete versions.
-
-*octave-forge-2004.02.12-r1 (10 Mar 2005)
-
-  10 Mar 2005; Patrick Kursawe <phosphan@gentoo.org>
-  +octave-forge-2004.02.12-r1.ebuild, octave-forge-2004.02.12.ebuild:
-  Fixing bug #84366 (wrong path to graceplot) for old version
-
-*octave-forge-2004.11.16-r1 (08 Mar 2005)
-
-  08 Mar 2005; Patrick Kursawe <phosphan@gentoo.org>
-  +octave-forge-2004.11.16-r1.ebuild:
-  Fixing bug #84366 (wrong path to graceplot)
-
-  12 Feb 2005; Robin H. Johnson <robbat2@gentoo.org>
-  octave-forge-2004.11.16.ebuild:
-  Put in a fix to allow aurecord to build when X isn't installed.
-
-  18 Jan 2005; Patrick Kursawe <phosphan@gentoo.org>
-  octave-forge-2004.02.12.ebuild:
-  Fixing range of allowed octave versions
-
-  17 Jan 2005; Patrick Kursawe <phosphan@gentoo.org>
-  octave-forge-2004.02.12.ebuild:
-  Updating DEPEND
-
-*octave-forge-2004.11.16 (17 Jan 2005)
-
-  17 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> +files/2004.11.16.patch
-  +octave-forge-2004.11.16.ebuild:
-  Version bump
+# ChangeLog for app-sci/octave-forge
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave-forge/ChangeLog,v 1.1 2004/12/28 14:54:43 ribosome Exp $
 
 *octave-forge-2003.02.22 (28 Dec 2004)
 

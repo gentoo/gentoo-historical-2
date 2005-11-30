@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/warzone2100/warzone2100-0.2.2.ebuild,v 1.3 2005/11/15 22:00:09 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/warzone2100/warzone2100-0.2.2.ebuild,v 1.1 2005/10/12 00:34:11 wolf31o2 Exp $
 
 inherit eutils games
 
@@ -23,19 +23,16 @@ DEPEND=">=media-libs/libsdl-1.2.8
 src_unpack() {
 	unpack ${A}
 
-	sed -e "s:DATADIR:${GAMES_DATADIR}/${PN}/:" \
+	sed s:DATADIR:"$GAMES_DATADIR"/${PN}/: \
 		"${FILESDIR}"/${PV}-clparse.c.patch > \
-		"${T}"/${PV}-clparse.c.patch \
-		|| die "sed failed"
+		${T}/${PV}-clparse.c.patch \
+	|| die "sed failed"
 
-	cd "${S}"
-	sed -i \
-		-e 's: -m32::' configure || die
-	sed -i \
-		-e 's:-m32::' makerules/common.mk || die
-	epatch \
-		"${T}"/${PV}-clparse.c.patch \
-		"${FILESDIR}"/${P}-headers.patch
+	sed -i 's: -m32::' ${S}/configure || die
+	sed -i 's:-m32::' ${S}/makerules/common.mk || die
+
+	cd ${S}
+	epatch ${T}/${PV}-clparse.c.patch || die "epatch failed"
 }
 
 src_compile() {
@@ -46,7 +43,7 @@ src_compile() {
 		$(use_with mp3) \
 		CFLAGS="${CFLAGS}" \
 		CPPFLAGS="${CXXFLAGS}" \
-		|| die "egamesconf failed"
+	|| die "egamesconf failed"
 	emake || die "emake failed"
 }
 
@@ -55,5 +52,6 @@ src_install() {
 	insinto "${GAMES_DATADIR}"/${PN}
 	doins -r data/* || die "install data failed"
 	dodoc AUTHORS CHANGELOG README || "install doc failed"
+
 	prepgamesdirs
 }

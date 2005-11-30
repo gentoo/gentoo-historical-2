@@ -1,9 +1,9 @@
 
 ;;; nxml site-lisp configuration
 
-(add-to-list 'load-path "@SITELISP@")
+(setq load-path (cons "@SITELISP@" load-path))
 (load "@SITELISP@/rng-auto.el")
 
 (setq auto-mode-alist
-      (cons '("\\.\\(xml\\|xsl\\|xsd\\|rng\\|xhtml\\)\\'" . nxml-mode)
+      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
 	        auto-mode-alist))

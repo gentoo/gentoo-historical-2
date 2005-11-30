@@ -1,46 +1,6 @@
 # ChangeLog for app-admin/eselect
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/ChangeLog,v 1.9 2005/11/19 19:05:12 corsair Exp $
-
-  19 Nov 2005; Markus Rothe <corsair@gentoo.org> eselect-0.9.6.ebuild,
-  eselect-1.0_rc1.ebuild, eselect-1.0_rc2.ebuild:
-  Added ~ppc64; bug #102649
-
-*eselect-1.0_rc2 (16 Nov 2005)
-
-  16 Nov 2005; Danny van Dyk <kugelfang@gentoo.org> +eselect-1.0_rc2.ebuild:
-  Second release candidate for eselect-1.0. Fixes some bugs in BLAS and LAPACK
-  support. Adds support for MKL72.
-
-*eselect-1.0_rc1 (19 Oct 2005)
-
-  19 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> +eselect-1.0_rc1.ebuild:
-  First release candidate for 1.0. Please test; the more testers we get, the
-  faster we'll get a stable eselect. This release fixes bugs #101898,#104354,
-  and #106540 as well as a sleu of others (see NEWS for a full list).
-
-  19 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> -eselect-0.9.5.ebuild:
-  0.9.5 has a broken digest; not worth keeping around, so removing it.
-
-  01 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> eselect-0.9.5.ebuild,
-  eselect-0.9.6.ebuild:
-  Since I'm an idiot, use newins rather than doins for installing the bashcomp.
-
-  31 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> eselect-0.9.5.ebuild,
-  eselect-0.9.6.ebuild:
-  Added ~hppa; updated ebuilds to not use bash-completion.eclass; also added
-  missing NEWS/AUTHORS to the list of dodoc'd files.
-
-*eselect-0.9.6 (25 Jul 2005)
-
-  25 Jul 2005; Danny van Dyk <kugelfang@gentoo.org> +eselect-0.9.6.ebuild:
-  Version bump.
-
-*eselect-0.9.5 (18 Jun 2005)
-
-  18 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> -eselect-0.9.4.ebuild,
-  +eselect-0.9.5.ebuild:
-  Version bump.
+# $Header: /var/cvsroot/gentoo-x86/app-admin/eselect/ChangeLog,v 1.1 2005/06/13 12:59:11 ka0ttic Exp $
 
 *eselect-0.9.4 (13 Jun 2005)
 

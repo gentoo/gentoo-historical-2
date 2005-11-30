@@ -1,42 +1,25 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kttsd/kttsd-3.4.1.ebuild,v 1.7 2005/07/08 03:30:15 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kttsd/kttsd-3.4.1.ebuild,v 1.1 2005/05/25 21:23:12 danarmak Exp $
 KMNAME=kdeaccessibility
 MAXKDEVER=$PV
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta
 
 DESCRIPTION="KDE text-to-speech subsystem"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="gstreamer"
-DEPEND="arts? ( $(deprange $PV $MAXKDEVER kde-base/arts) )
+DEPEND="$(deprange $PV $MAXKDEVER kde-base/arts)
 	$(deprange-dual $PV $MAXKDEVER kde-base/kcontrol)
 	gstreamer? ( >=media-libs/gstreamer-0.8.7 )
 	>=dev-util/pkgconfig-0.9.0"
 
-RDEPEND="${DEPEND}
-	arts? ( || ( app-accessibility/festival
-		     app-accessibility/epos
-		     app-accessibility/flite
-		     app-accessibility/freetts ) )
+RDEPEND="
+|| ( app-accessibility/festival
+app-accessibility/epos
+app-accessibility/flite
+app-accessibility/freetts
+)"
 
-	gstreamer? ( || ( app-accessibility/festival
-		     app-accessibility/epos
-		     app-accessibility/flite ) )"
+myconf="$(use_enable gstreamer kttsd-gstreamer)"
 
-pkg_setup() {
-	kde_pkg_setup
-	if use gstreamer; then
-		ewarn "gstreamer support in kdeaccessibility is experimental"
-	fi
-}
-
-src_unpack() {
-	kde-meta_src_unpack
-	epatch ${FILESDIR}/kdeaccessibility-3.4.0-noarts.patch
-}
-
-src_compile() {
-	myconf="$(use_enable gstreamer kttsd-gstreamer)"
-	kde-meta_src_compile
-}

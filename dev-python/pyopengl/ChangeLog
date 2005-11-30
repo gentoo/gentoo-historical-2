@@ -1,56 +1,10 @@
-# ChangeLog for dev-python/pyopengl
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopengl/ChangeLog,v 1.12 2005/02/08 12:03:36 fserb Exp $
-
-  08 Feb 2005; Fernando Serboncini <fserb@gentoo.org>
-  pyopengl-2.0.0.44.ebuild, pyopengl-2.0.1.09.ebuild:
-  Fixed lib vars. Thanks to Tom Payne <twp@gentoo.org> for the diff. Closes
-  #81217
-
-  07 Feb 2005; Fernando Serboncini <fserb@gentoo.org>
-  pyopengl-2.0.0.44.ebuild, pyopengl-2.0.1.09.ebuild:
-  Fixed SED expression. Closes #81164
-
-  31 Jan 2005; Fernando Serboncini <fserb@gentoo.org>
-  -files/pyopengl-2.0.0.44-disable_togl.patch,
-  +files/pyopengl-2.0.0.44-fix_togl.patch, pyopengl-2.0.0.44.ebuild,
-  pyopengl-2.0.1.09.ebuild:
-  removed virtualx eclass dependency on both ebuilds. Closes #80090.
-
-  28 Jan 2005; Mike Frysinger <vapier@gentoo.org> pyopengl-2.0.0.44.ebuild,
-  pyopengl-2.0.1.09.ebuild:
-  Remove opengl-update cruft.
-
-  25 Jan 2005; Fernando Serboncini <fserb@gentoo.org>
-  pyopengl-2.0.0.44.ebuild, pyopengl-2.0.1.09.ebuild:
-  Fixed opengl-update switch on both ebuilds. Fixes #76928
-
-  25 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  pyopengl-2.0.0.44.ebuild, pyopengl-2.0.1.09.ebuild:
-  Use proper env.d file.
-
-*pyopengl-2.0.1.09 (25 Jan 2005)
-
-  25 Jan 2005; Fernando Serboncini <fserb@gentoo.org>
-  +pyopengl-2.0.1.09.ebuild:
-  Version bump, closes #68921.
-  Thanks to Keith Lyon <kglyon@uwyo.edu> for the ebuild.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  13 Aug 2004; Alastair Tse <liquidx@gentoo.org> pyopengl-2.0.0.44.ebuild:
-  stop unary warnings
-
-  29 Jul 2004; Tom Gall <tgall@gentoo.org> PyOpenGL-2.0.0.44.ebuild:
-  stable on ppc64, bug #57015
+# ChangeLog for dev-python/PyOpenGL
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopengl/ChangeLog,v 1.1 2004/07/20 19:52:08 kloeri Exp $
 
 *pyopengl-2.0.0.44 (20 Jul 2004)
 
-  20 Jul 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> +metadata.xml,
+  20 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
   +files/config.diff, +files/pyopengl-2.0.0.44-disable_togl.patch,
   +pyopengl-2.0.0.44.ebuild:
   Rename dev-python/PyOpenGL to dev-python/pyopengl.
@@ -58,7 +12,7 @@
   13 May 2004; Stephen P. Becker <geoman@gentoo.org> PyOpenGL-2.0.0.44.ebuild:
   Stable on mips.
 
-  07 May 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> PyOpenGL-2.0.0.44.ebuild:
+  07 May 2004; Bryan Østergaard <kloeri@gentoo.org> PyOpenGL-2.0.0.44.ebuild:
   Add missing IUSE.
 
   11 Apr 2004; Donnie Berkholz <spyderous@gentoo.org>;

@@ -1,56 +1,8 @@
 # ChangeLog for dev-libs/xapian
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xapian/ChangeLog,v 1.14 2005/10/07 10:18:44 dragonheart Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xapian/ChangeLog,v 1.1 2003/03/13 09:58:06 george Exp $
 
-  07 Oct 2005; Daniel Black <dragonheart@gentoo.org> -xapian-0.7.5.ebuild,
-  xapian-0.8.3.ebuild, -xapian-0.8.5.ebuild, -xapian-0.9.1.ebuild,
-  xapian-0.9.2.ebuild:
-  x86 and ppc stable. removed old versions. QA fixes (install and copyright
-  docs installed) also applied
-
-*xapian-0.9.2 (16 Jul 2005)
-
-  16 Jul 2005; Daniel Black <dragonheart@gentoo.org> +xapian-0.9.2.ebuild:
-  version bump
-
-  26 Jun 2005; Daniel Black <dragonheart@gentoo.org> xapian-0.9.1.ebuild:
-  Fixed src_test thanks to Olly Betts
-
-*xapian-0.9.1 (25 Jun 2005)
-
-  25 Jun 2005; Daniel Black <dragonheart@gentoo.org> +xapian-0.9.1.ebuild:
-  version bump
-
-*xapian-0.8.5 (24 Jan 2005)
-
-  24 Jan 2005; Daniel Black <dragonheart@gentoo.org> -xapian-0.5.5.ebuild,
-  xapian-0.8.3.ebuild, +xapian-0.8.5.ebuild:
-  version bump as per bug #78691. Old version removed. PPC and x86 Keywords
-  added to 0.8.3. Thanks to Sig Lange <exonic@signuts.net> for the bug report
-
-*xapian-0.8.3 (15 Nov 2004)
-
-  15 Nov 2004; Daniel Black <dragonheart@gentoo.org> +xapian-0.8.3.ebuild:
-  version bump as per bug #70662. Thanks to  
-  Greg Bowyer <gbowyer@fastmail.co.uk> for the updated ebuild
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> xapian-0.5.5.ebuild,
-  xapian-0.7.5.ebuild:
-  virtual/glibc -> virtual/libc
-
-  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> xapian-0.7.5.ebuild:
-  x86 keyword.
-
-  20 Apr 2004; David Holm <dholm@gentoo.org> xapian-0.7.5.ebuild:
-  Added to ~ppc.
-
-*xapian-0.7.5 (20 Apr 2004)
-
-  20 Apr 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
-  xapian-0.7.5.ebuild:
-  version bump. Thanks to Ludwig Ruderstaller <lr@bestheads.com> in bug #48035
-
-*xapian-0.5.5 (13 Mar 2003)
+*xapian-0.5.5.ebuild (13 Mar 2003)
 
   13 Mar 2003; George Shapovalov <george@gentoo.org> ChangeLog, xapian-0.5.5.ebuild, files/{digest-xapian-0.5.5} :
   initial release (#14849)

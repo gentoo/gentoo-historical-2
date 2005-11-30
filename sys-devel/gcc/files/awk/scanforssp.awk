@@ -1,65 +1,64 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
 # Author:  Martin Schlemmer <azarah@gentoo.org>
-# Contributor: Ned Ludd <solar@gentoo.org>
-# Contributor: Natanael Copa  <nat@c2i.net>
-# Contributor: Carter Smithhart <derheld42@derheld.net>
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/files/awk/scanforssp.awk,v 1.7 2004/07/15 00:59:02 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/files/awk/scanforssp.awk,v 1.1 2003/12/28 21:46:24 azarah Exp $
 
-
-# Does not seem to be used in this script.
 function printn(string)
 {
-	printf("%s", string)
+	system("echo -n \"" string "\"")
 }
 
 function einfo(string)
 {
-	printf(" %s %s%s", "\033[32;01m*\033[0m", string, "\n")
+	system("echo -e \" \\e[32;01m*\\e[0m " string "\"")
 }
 
-# Does not seem to be used in this script.
 function einfon(string)
 {
-	printf(" %s %s" , "\033[32;01m*\033[0m", string)
+	system("echo -ne \" \\e[32;01m*\\e[0m " string "\"")
 }
 
 function ewarn(string)
 {
-	printf(" %s %s%s" , "\033[33;01m*\033[0m", string, "\n")
+	system("echo -e \" \\e[33;01m*\\e[0m " string "\"")
 }
 
-# Does not seem to be used in this script.
 function ewarnn(string)
 {
-	printf("%s %s" , "\032[33;01m*\033[0m", string)
+	system("echo -ne \" \\e[33;01m*\\e[0m " string "\"")
 }
-
+	
 function eerror(string)
 {
-	printf(" %s %s%s" , "\033[31;01m*\033[0m", string, "\n")
+	system("echo -e \" \\e[31;01m*\\e[0m " string "\"")
 }
 
-								# These are private, else wierd things
-								# might happen ...
-function iself(scan_files,		scan_file_pipe, scan_data) {
-	# Can we open() a file and read() 4 bytes?
-	scan_file_pipe = ("head -c 4 " scan_files " 2>/dev/null | tail -c 3")
-	scan_file_pipe | getline scan_data
-	close(scan_file_pipe)
-	return ((scan_data == "ELF") ? 0 : 1)
+# assert --- assert that a condition is true. Otherwise exit.
+# This is from the gawk info manual.
+function assert(condition, string)
+{
+	if (! condition) {
+		printf("%s:%d: assertion failed: %s\n",
+			FILENAME, FNR, string) > "/dev/stderr"
+		_assert_exit = 1
+		exit 1
+	}
 }
+
+# system() wrapper that normalize return codes ...
+function dosystem(command,		ret)
+{
+	ret = 0
+ 
+	ret = system(command)
+	if (ret == 0)
+		return 1
+	else
+		return 0
+}
+
 
 BEGIN {
-	# Do we have etcat ?
-	pipe = ("which etcat 2>/dev/null")
-	if ((((pipe) | getline etcat_data) > 0) && (etcat_data != ""))
-		auto_etcat = 1
-	else
-		auto_etcat = 0
-
-	# Fix bug that causes script to fail when pipe is not closed. Closes bug #36792
-	close(pipe)
 
 	DIRCOUNT = 0
 	# Add the two default library paths
@@ -67,7 +66,7 @@ BEGIN {
 	DIRLIST[2] = "/usr/lib"
 
 	# Walk /etc/ld.so.conf line for line and get any library paths
-	pipe = ("cat /etc/ld.so.conf 2>/dev/null | sort")
+	pipe = "cat /etc/ld.so.conf 2>/dev/null | sort"
 	while(((pipe) | getline ldsoconf_data) > 0) {
 
 		if (ldsoconf_data !~ /^[[:space:]]*#/) {
@@ -109,14 +108,11 @@ BEGIN {
 		}
 	}
 
+	close(pipe)
+
 # We have no guarantee that ld.so.conf have more library paths than
 # the default, and its better scan files only in /lib and /usr/lib
-# than nothing at all ...
-#
-#	exit_val = close(pipe)
-#	if (exit_val != 0)
-#	print(exit_val " - " ERRNO)
-#
+# than not at all ...
 #	if (DIRCOUNT == 0) {
 #		eerror("Could not read from /etc/ld.so.conf!")
 #		exit 1
@@ -131,21 +127,18 @@ BEGIN {
 	for (x = 1;x <= count;x++) {
 
 		ADDED = 0
-
-		# Already added?
+	
 		for (dnode in DIRLIST)
 			if (PATHLIST[x] == DIRLIST[dnode])
 				ADDED = 1
 
 		if (ADDED)
 			continue
-
-		# Valid?  If so, add it ...
-		if (((PATHLIST[x] != "") && (PATHLIST[x] != "/") && (PATHLIST[x] != ".")))
-			DIRLIST[++DIRCOUNT] = PATHLIST[x]
-		
+			
+		DIRLIST[++DIRCOUNT] = PATHLIST[x]
 	}
 	
+	FOUND_SSP = 0
 	GCCLIBPREFIX = "/usr/lib/gcc-lib/"
 	
 	for (x = 1;x <= DIRCOUNT;x++) {
@@ -153,72 +146,40 @@ BEGIN {
 		# Do nothing if the target dir is gcc's internal library path
 		if (DIRLIST[x] ~ GCCLIBPREFIX) continue
 
-		einfo(" Scanning " ((x <= 9) ? "0"x : x)" of " DIRCOUNT " " DIRLIST[x] "...")
-		
-		pipe = ("find " DIRLIST[x] "/ -type f -perm -1 2>/dev/null")
-		while ( (pipe | getline scan_files) > 0) {
+		einfo("  Scanning " DIRLIST[x] "...")
 
-                    #print scan_files
-			# Do nothing if the file is located in gcc's internal lib path ...
+		FOUND = 0
+
+		pipe = "find " DIRLIST[x] "/ -type f -perm -1 -maxdepth 90 2>/dev/null"
+		while ((((pipe) | getline scan_files) > 0) && (!FOUND)) {
+
+			# Do nothing if the file is located in gcc's internal lib path
 			if (scan_files ~ GCCLIBPREFIX) continue
-			# Or if its hardend files ...
-			if (scan_files ~ "/lib/libgcc-3" ) continue
-			# Or not a elf image ...
-			if (iself(scan_files)) continue
 
-                        scan_file_pipe = ("readelf -s " scan_files " 2>&1")
-			while (((scan_file_pipe) | getline scan_data) > 0) {
-                            bad = 0;
-				if (scan_data ~ /__guard@GCC/ || scan_data ~ /__guard@@GCC/) {
-                                bad = 1;
-					print
+			scan_file_pipe = "readelf -s " scan_files " 2>/dev/null"
+#			while ((((scan_file_pipe) | getline scan_data) > 0) && (!FOUND)) {
+			while (((getline scan_data < (scan_files)) > 0) && (!FOUND)) {
 
-					# 194: 00000000    32 OBJECT  GLOBAL DEFAULT  UND __guard@GCC_3.0 (3)
-					# 59: 00008ee0    32 OBJECT  GLOBAL DEFAULT   22 __guard@@GCC_3.0
-					split(scan_data, scan_data_nodes)
-					ewarn("Found " scan_data_nodes[8] " in " scan_files "!")
-					print
-                            }
-                            if (scan_data ~ /readelf: Error: Unable to seek/) {
-                                bad = 1;
-                                print
-                                ewarn("Error executing readelf. Bad block? Filesystem error? in " scan_files)
-                                print
-                            }
+				if (scan_data ~ /__guard@GCC/) {
 
-                            if (bad) {
-
-					if (auto_etcat) {
-					
-						# Use etcat that comes with gentoolkit if auto_etcat is true.
-						etcat_pipe = ("etcat belongs " scan_files)
-						(etcat_pipe) | getline etcat_belongs
-
-						while(((etcat_pipe) | getline etcat_belongs) > 0)
-							eerror(etcat_belongs != "" ? "Please emerge '>=" etcat_belongs "'": "")
-						close(etcat_pipe)
-					} else {
-					
-						eerror("You need to remerge package that above file belongs to!")
-						eerror("To find out what package it is, please emerge gentoolkit,")
-						eerror("and then run:")
-						print
-						print "    # etcat belongs " scan_files
-					}
-
-					print
-					
-					close(scan_file_pipe)
-					close(pipe)
-					exit(1)
+					ewarn("    Found files containing '__guard@GCC'!")
+					FOUND = 1
+					FOUND_SSP = 1
+					break
 				}
 			}
-			close(scan_file_pipe)
+
+#			close(scan_file_pipe)
+			close(scan_files)
 		}
+
 		close(pipe)
 	}
 
-	exit(0)
+	if (FOUND_SSP)
+		exit(1)
+	else
+		exit(0)
 }
 
 

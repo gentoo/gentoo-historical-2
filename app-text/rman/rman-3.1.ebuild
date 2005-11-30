@@ -1,17 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/rman/rman-3.1.ebuild,v 1.9 2005/07/28 04:35:58 j4rg0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/rman/rman-3.1.ebuild,v 1.1 2003/09/24 19:06:59 mholzer Exp $
 
-inherit eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="PolyGlotMan man page translator AKA RosettaMan"
-HOMEPAGE="http://polyglotman.sourceforge.net/"
 SRC_URI="mirror://sourceforge/polyglotman/${P}.tar.gz"
-
-LICENSE="Artistic"
+HOMEPAGE="http://polyglotman.sourceforge.net/"
+KEYWORDS="~x86 ~ppc ~sparc"
 SLOT="0"
-KEYWORDS="ppc ppc-macos sparc x86"
-IUSE=""
+LICENSE="Artistic"
 
 DEPEND=""
 
@@ -25,7 +22,7 @@ src_compile() {
 	emake CFLAGS="${CFLAGS} -finline-functions" || die "make failed"
 }
 
-src_install() {
-	dobin ${PN} || die
+src_install () {
+	dobin ${PN}
 	doman ${PN}.1
 }

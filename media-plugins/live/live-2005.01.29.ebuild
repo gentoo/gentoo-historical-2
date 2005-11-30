@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/live-2005.01.29.ebuild,v 1.13 2005/09/13 22:13:10 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/live-2005.01.29.ebuild,v 1.1 2005/01/30 17:02:13 luckyduck Exp $
 
 IUSE=""
 
-inherit flag-o-matic eutils toolchain-funcs multilib
+inherit flag-o-matic eutils
 
 MY_P=${P/-/.}
 DESCRIPTION="Source-code libraries for standards-based RTP/RTCP/RTSP multimedia streaming, suitable for embedded and/or low-cost streaming applications"
@@ -13,7 +13,7 @@ SRC_URI="http://www.live.com/liveMedia/public/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~mips"
 
 DEPEND="virtual/libc"
 
@@ -42,9 +42,7 @@ src_unpack() {
 src_compile() {
 	./genMakefiles linux
 	# emake doesn't work
-	make CPLUSPLUS_COMPILER="$(tc-getCXX)" \
-	     C_COMPILER="$(tc-getCC)" \
-	     LINK="$(tc-getCXX) -o" || die
+	make || die
 }
 
 src_install() {
@@ -60,10 +58,10 @@ src_install() {
 		local dir
 		dir=$(basename $(dirname ${lib}))
 
-		insinto "/usr/$(get_libdir)/live/${dir}"
+		insinto "/usr/lib/live/${dir}"
 		doins "${lib}"
 
-		insinto "/usr/$(get_libdir)/live/${dir}/include"
+		insinto "/usr/lib/live/${dir}/include"
 		doins ${S}/${dir}/include/*h
 	done
 

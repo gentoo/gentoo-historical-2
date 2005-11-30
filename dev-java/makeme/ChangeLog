@@ -1,47 +1,8 @@
 # ChangeLog for dev-java/makeme
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/makeme/ChangeLog,v 1.13 2005/11/26 03:00:04 nichoj Exp $
-
-  26 Nov 2005; Joshua Nichols <nichoj@gentoo.org> makeme-0.02-r2.ebuild:
-  Disabled jikes support (bug #10020). Also did some minor cleanup.
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> makeme-0.02-r2.ebuild:
-  stable on amd64
-
-  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> makeme-0.02-r2.ebuild:
-  Keywords ~amd64.
-
-  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> makeme-0.02-r2.ebuild:
-  use epatch
-
-  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> makeme-0.02-r2.ebuild:
-  Fix use invocation
-
-  28 May 2004; Lim Swee Tat <st_lim@gentoo.org>
-  files/makeme-0.02-r2-gentoo.diff:
-  Fixed diff so that it points to the right library.
-
-  10 Feb 2004; Adrian Almenar <strider@gentoo.org> makeme-0.02-r2.ebuild:
-  Removed alpha keyword.
-
-  15 Aug 2003; Adrian Almenar <strider@gentoo.org> makeme-0.02-r2.ebuild:
-  Fixes bug 21887, That makes the ebuild to build with jikes java compiler,
-  Thanks to Jonas Berlin <jberlin@cc.hut.fi> for the patch
-
-*makeme-0.02-r2 (24 May 2003)
-
-  24 May 2003; Dylan Carlson <absinthe@gentoo.org> makeme-0.02-r2.ebuild,
-  files/makeme-0.02-r2-gentoo.diff, files/makeme.sh:
-
-  Many fixes... Should close #13652, but have no real-world test 
-  scenarios for this. Please reopen that bug should there be 
-  continued problems.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-java/makeme/ChangeLog,v 1.1 2002/02/01 21:53:11 gbevin Exp $
 
 *makeme-0.02-r1 (1 Feb 2002)
-
-  01 Aug 2002; Karl Trygve Kalleberg <karltk@gentoo.org> makeme-0.02-r1.ebuild :
-
-  Added LICENSE, SLOT and KEYWORDS. Removed old versions.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

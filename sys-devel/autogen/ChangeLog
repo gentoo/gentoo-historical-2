@@ -1,24 +1,6 @@
 # ChangeLog for sys-devel/autogen
-# Copyright 2004-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/autogen/ChangeLog,v 1.5 2005/07/11 03:49:21 agriffis Exp $
-
-*autogen-5.7.1 (11 Jul 2005)
-
-  11 Jul 2005; Aron Griffis <agriffis@gentoo.org> +autogen-5.7.1.ebuild:
-  Update to 5.7.1 #78033
-
-  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> autogen-5.6.4.ebuild:
-  Added to ~ppc.
-
-  10 Dec 2004; Aron Griffis <agriffis@gentoo.org> autogen-5.6.4.ebuild:
-  Add ~ia64 since autogen builds with guile-1.6.6
-
-*autogen-5.6.4 (08 Dec 2004)
-
-  08 Dec 2004; Aron Griffis <agriffis@gentoo.org> -autogen-5.5.7.ebuild,
-  +autogen-5.6.4.ebuild:
-  Bump to 5.6.4 since that's the current version (d'oh). Remove ia64 keyword
-  since it isn't building there yet
+# Copyright 2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/autogen/ChangeLog,v 1.1 2004/12/08 20:21:58 agriffis Exp $
 
 *autogen-5.5.7 (08 Dec 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/piave/piave-0.2.4.ebuild,v 1.5 2005/03/03 16:02:05 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/piave/piave-0.2.4.ebuild,v 1.1 2004/03/18 22:06:48 zypher Exp $
 
 DESCRIPTION="PIAVE - Piave Is A Video Editor"
 HOMEPAGE="http://modesto.sourceforge.net/piave/index.html"
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/modesto/${P}.tar.gz"
 IUSE="nls"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~sparc"
+KEYWORDS="x86"
 
 DEPEND="virtual/x11
 	>=dev-util/pkgconfig-0.15.0

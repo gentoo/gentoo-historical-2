@@ -1,8 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/museseq/museseq-0.7.2_pre2.ebuild,v 1.4 2005/11/07 11:17:33 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/museseq/museseq-0.7.2_pre2.ebuild,v 1.1 2005/07/24 17:25:36 fvdpol Exp $
 
 inherit kde-functions virtualx eutils
+need-qt 3
 
 MY_P=${P/museseq/muse}
 MY_P=${MY_P/_/}
@@ -13,10 +14,10 @@ HOMEPAGE="http://lmuse.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc ladcca debug"
 
-DEPEND="$(qt_min_version 3.2)
+DEPEND=">=x11-libs/qt-3.2.0
 	>=media-libs/alsa-lib-0.9.0
 	media-sound/fluidsynth
 	doc? ( app-text/openjade
@@ -42,7 +43,7 @@ src_compile() {
 src_install() {
 	cd ${WORKDIR}/${MY_P}
 	make DESTDIR=${D} install || die "install failed"
-	dodoc AUTHORS ChangeLog NEWS README SECURITY README.*
+	dodoc AUTHORS ChangeLog INSTALL NEWS README SECURITY README.*
 	mv ${D}/usr/bin/muse ${D}/usr/bin/museseq
 }
 

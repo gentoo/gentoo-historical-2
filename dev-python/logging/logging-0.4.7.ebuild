@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/logging/logging-0.4.7.ebuild,v 1.7 2005/05/01 17:09:49 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/logging/logging-0.4.7.ebuild,v 1.1 2003/11/12 19:01:14 pythonhead Exp $
 
 inherit distutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.red-dove.com/python_logging.html"
 SRC_URI="http://www.red-dove.com/logging-${PV}.tar.gz"
 LICENSE="logging"
 SLOT="0"
-KEYWORDS="x86 amd64 ppc"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND="virtual/python"
 DOCS="liblogging.tex"

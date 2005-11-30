@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-libsynce/synce-libsynce-0.8.9.ebuild,v 1.7 2005/04/24 11:30:27 hansmi Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-libsynce/synce-libsynce-0.8.9.ebuild,v 1.1 2004/03/26 12:34:10 tad Exp $
 
 DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync."
 HOMEPAGE="http://sourceforge.net/projects/synce/"
@@ -10,14 +8,14 @@ SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="x86"
 IUSE=""
 
-DEPEND=">=dev-libs/check-0.8.3.1"
+DEPEND=""
 
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/${PV}/${P}-gcc33.patch
+src_compile() {
+	econf
+	emake || die
 }
 
 src_install() {

@@ -1,17 +1,21 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/x11.eclass,v 1.8 2005/07/11 15:08:07 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/x11.eclass,v 1.1 2004/10/04 06:23:10 spyderous Exp $
 #
 # Author: Seemant Kulleen <seemant@gentoo.org>
 #
-# The x11.eclass is designed to ease the checking functions that are
-# performed in xorg-x11, xfree and x11-drm ebuilds.  In the new scheme, a
-# variable called VIDEO_CARDS will be used to indicate which cards a user
-# wishes to build support for.  Note, that this variable is only unlocked if
-# the USE variable "expertxfree" is switched on, at least for xfree.
+# The xfree.eclass is designed to ease the checking functions that are
+# performed in xfree and xfree-drm ebuilds.  In the new scheme, a variable
+# called VIDEO_CARDS will be used to indicate which cards a user wishes to
+# build support for.  Note, that this variable is only unlocked if the USE
+# variable "expertxfree" is switched on, at least for xfree.
 
+ECLASS=xfree
+INHERITED="${INHERITED} ${ECLASS}"
 
-vcards() {
+EXPORT_FUNCTIONS vcards is_kernel strip_bins
+
+vcards() {	
 	has "$1" ${VIDEO_CARDS} && return 0
 	return 1
 }
@@ -82,7 +86,7 @@ is_kernel() {
 # /usr/X11R6/lib/modules for xfree modules:
 # $1=\/usr\/X11R6\/lib\/modules
 strip_bins() {
-	einfo "Stripping binaries ..."
+	einfo "Stripping binaries..."
 	# This bit I got from Redhat ... strip binaries and drivers ..
 	# NOTE:  We do NOT want to strip the drivers, modules or DRI modules!
 	for x in $(find ${D}/ -type f -perm +0111 -exec file {} \; | \

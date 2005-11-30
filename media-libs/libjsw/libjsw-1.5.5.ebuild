@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libjsw/libjsw-1.5.5.ebuild,v 1.5 2005/06/03 00:49:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libjsw/libjsw-1.5.5.ebuild,v 1.1 2005/03/18 23:27:25 vapier Exp $
 
 inherit eutils
 
@@ -18,11 +18,7 @@ DEPEND="gtk? ( =x11-libs/gtk+-1.2* )"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${P}-gcc33.patch
 	bunzip2 libjsw/man/* jscalibrator/jscalibrator.1.bz2 || die "bunzip failed"
-	cd jscalibrator
-	epatch "${FILESDIR}"/${P}-gcc33.patch
-	epatch "${FILESDIR}"/${P}-liborder.patch
 }
 
 src_compile() {
@@ -51,7 +47,7 @@ src_install() {
 
 	cd "${S}"/libjsw
 	dolib.so libjsw.so.${PV} || die "dolib.so"
-	dosym libjsw.so.${PV} /usr/$(get_libdir)/libjsw.so
+	dosym libjsw.so.${PV} /usr/lib/libjsw.so
 	doman man/*
 
 	if use gtk ; then

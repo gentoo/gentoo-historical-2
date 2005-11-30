@@ -1,27 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/bashburn/bashburn-1.4.ebuild,v 1.9 2005/06/06 18:36:13 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/bashburn/bashburn-1.4.ebuild,v 1.1 2004/03/29 17:16:25 rphillips Exp $
 
+IUSE=""
 
 MY_P=${P//b/B}
+S=${WORKDIR}/${PN//b/B}
 DESCRIPTION="cd burning shell script"
 HOMEPAGE="http://bashburn.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~amd64 ppc"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="x86 ~sparc"
 
-DEPEND="virtual/libc
-	>=app-cdr/cdrtools-2.01_alpha25
-	>=app-cdr/cdrdao-1.1.7
-	virtual/mpg123
-	media-sound/lame
-	media-sound/vorbis-tools
-	media-sound/normalize
-	media-libs/flac
-	virtual/eject"
+DEPEND="virtual/glibc"
 
 RDEPEND="app-shells/bash"
 
@@ -40,7 +33,7 @@ src_install() {
 	mv {burning,config,convert,menus,misc} ${D}/opt/BashBurn
 
 	exeinto /opt/BashBurn
-	doexe BashBurn.sh || die
+	doexe BashBurn.sh
 	cp bashburnrc ${D}/etc/bashburn
 	ln -sf /opt/BashBurn/BashBurn.sh ${D}/usr/bin/bashburn
 

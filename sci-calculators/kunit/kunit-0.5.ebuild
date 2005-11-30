@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/kunit/kunit-0.5.ebuild,v 1.3 2005/08/23 15:12:00 cryos Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/kunit/kunit-0.5.ebuild,v 1.1 2004/12/24 15:01:42 ribosome Exp $
 
 DESCRIPTION="An excellent qt-based unit conversion tool"
 SRC_URI="http://www.netmeister.org/apps/${P}.tar.gz"
@@ -14,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 DEPEND="virtual/x11
-	=x11-libs/qt-3*"
+	>=x11-libs/qt-2.2.0"
 
 src_compile() {
 	cd kunit
@@ -25,5 +23,4 @@ src_install() {
 	dobin kunit/kunit
 	dodoc AUTHORS COPYING README
 	dohtml kunit/docs/*
-	make_desktop_entry kunit KUnit kunit Utility
 }

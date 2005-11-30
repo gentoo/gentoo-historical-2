@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcdio/libcdio-0.74.ebuild,v 1.3 2005/05/30 17:16:41 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libcdio/libcdio-0.74.ebuild,v 1.1 2005/05/26 15:48:07 luckyduck Exp $
 
 inherit libtool eutils
 
@@ -29,12 +29,10 @@ src_compile() {
 		$(use_enable cddb) \
 		$(use_with !minimal cd-drive) \
 		$(use_with !minimal cd-info) \
-		$(use_with !minimal cd-paranoia) \
 		$(use_with !minimal cdda-player) \
 		$(use_with !minimal cd-read) \
 		$(use_with !minimal iso-info) \
 		$(use_with !minimal iso-read) \
-		--with-cd-paranoia-name=libcdio-paranoia \
 		--disable-vcd-info \
 		--disable-dependency-tracking || die "configure failed"
 	# had problem with parallel make (phosphan@gentoo.org)

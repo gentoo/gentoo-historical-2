@@ -1,29 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/streamtuner-local/streamtuner-local-0.4.0.ebuild,v 1.12 2005/09/04 10:27:59 flameeyes Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/streamtuner-local/streamtuner-local-0.4.0.ebuild,v 1.1 2004/04/09 04:50:29 eradicator Exp $
 
 DESCRIPTION="A plugin for Streamtuner to browse and play local files."
 SRC_URI="http://savannah.nongnu.org/download/streamtuner/${P}.tar.gz"
 HOMEPAGE="http://www.nongnu.org/streamtuner/"
 
-LICENSE="BSD"
+IUSE="oggvorbis"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
-IUSE="vorbis"
+KEYWORDS="~x86"
+LICENSE="BSD"
 
-DEPEND=">=net-misc/streamtuner-0.12.0
+RDEPEND=">=net-misc/streamtuner-0.12.0
 	>=media-libs/libid3tag-0.15
-	vorbis? ( >=media-libs/libvorbis-1.0 >=media-libs/libogg-1.1 )"
+	oggvorbis? ( media-libs/libvorbis )"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PV}-gcc34.patch
-}
-
-src_install() {
+src_install () {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog NEWS README
+	dodoc AUTHORS COPYING ChangeLog NEWS README INSTALL
 }

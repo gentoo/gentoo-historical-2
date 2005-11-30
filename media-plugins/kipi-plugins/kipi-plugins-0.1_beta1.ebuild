@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/kipi-plugins/kipi-plugins-0.1_beta1.ebuild,v 1.5 2005/09/27 22:20:03 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/kipi-plugins/kipi-plugins-0.1_beta1.ebuild,v 1.1 2004/10/18 20:40:22 carlo Exp $
 
 inherit kde
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/digikam/${MY_P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+KEYWORDS="~x86"
 IUSE="opengl"
 
 DEPEND="media-libs/libkexif
@@ -35,10 +35,6 @@ RDEPEND="media-libs/libkexif
 	>=media-video/mjpegtools-1.6.0
 	opengl? ( virtual/opengl )"
 need-kde 3.1
-
-pkg_setup(){
-	slot_rebuild "media-libs/libkipi media-libs/libkexif" && die
-}
 
 src_compile() {
 	myconf="$(use_with opengl)"

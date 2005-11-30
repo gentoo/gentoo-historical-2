@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnophone/gnophone-0.2.4.ebuild,v 1.10 2005/03/23 16:18:32 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnophone/gnophone-0.2.4.ebuild,v 1.1 2002/11/02 20:59:04 raker Exp $
 
-IUSE="esd mozilla"
+IUSE=""
 
 DESCRIPTION="internet telephone"
 HOMEPAGE="http://www.gnophone.com/"
@@ -10,25 +10,31 @@ LICENSE="GPL-2"
 DEPEND="media-sound/gsm
 	net-libs/iax
 	media-sound/sox
-	mozilla? ( www-client/mozilla )
+	mozilla? ( net-www/mozilla )
 	esd? ( media-sound/esound )
 	x11-libs/gtk+
 	media-libs/gdk-pixbuf
 	dev-libs/glib
+	sys-devel/ld.so
+	x11-base/xfree
 	media-libs/imlib
-	virtual/libc"
+	virtual/glibc"
 RDEPEND="media-sound/gsm
 	net-libs/iax
 	media-sound/sox
-	mozilla? ( www-client/mozilla )
+	mozilla? ( net-www/mozilla )
 	esd? ( media-sound/esound )
 	x11-libs/gtk+
 	media-libs/gdk-pixbuf
 	dev-libs/glib
+	sys-devel/ld.so
+	x11-base/xfree
 	media-libs/imlib
-	virtual/libc"
+	virtual/glibc"
 SLOT="0"
 SRC_URI="ftp://ftp.gnophone.com/pub/gnophone/${P}.tar.gz"
+
+S=${WORKDIR}/${P}
 
 D_PREFIX=/usr
 
@@ -38,9 +44,9 @@ src_compile() {
 	local myconf
 
 	use mozilla \
-		&& myconf="${myconf}
-			--with-mozilla-home=/usr/lib/mozilla
-			--with-mozilla-lib=/usr/lib/mozilla
+                && myconf="${myconf} 
+			--with-mozilla-home=/usr/lib/mozilla 
+			--with-mozilla-lib=/usr/lib/mozilla 
 			--with-mozilla-include=/usr/lib/mozilla/include" \
 		|| myconf="${myconf} --disable-mozilla"
 	use esd \

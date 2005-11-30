@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ptlink-services/ptlink-services-2.25.1.ebuild,v 1.3 2005/04/10 11:34:20 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ptlink-services/ptlink-services-2.25.1.ebuild,v 1.1 2004/10/18 16:20:04 swegener Exp $
 
 inherit fixheadtails eutils
 
@@ -28,7 +28,7 @@ src_unpack() {
 }
 
 src_compile() {
-	econf $(use_with mysql) || die "econf failed"
+	econf || die "econf failed"
 
 	# Now we're going to override the paths setup by configure
 	echo "#define BINPATH \"/usr/bin\"" > include/path.h
@@ -40,29 +40,30 @@ src_compile() {
 }
 
 src_install() {
-	newbin src/services ptlink-services || die "newbin failed"
+	newbin src/services ptlink-services
 
 	keepdir /var/{lib,log}/ptlink-services
 	dosym /var/log/ptlink-services /var/lib/ptlink-services/logs
 
 	insinto /usr/share/ptlink-services/languages
 	for file in src/lang/*.l ; do
-		doins \
-			src/lang/$(basename ${file} .l) \
-			src/lang/$(basename ${file} .l).auth \
-			src/lang/$(basename ${file} .l).setemail || die "doins failed"
+		doins src/lang/$(basename ${file} .l)
+		doins src/lang/$(basename ${file} .l).auth
+		doins src/lang/$(basename ${file} .l).setemail
 	done
 	dosym /usr/share/ptlink-services/languages /var/lib/ptlink-services
 
 	insinto /etc/ptlink-services
-	newins data/example.conf services.conf || die "newins failed"
-	doins data/create_tables.sql data/domain.def || die "doins failed"
+	newins data/example.conf services.conf
+	doins data/create_tables.sql
 
-	dohtml html_manual/* || die "dohtml failed"
-	dodoc CHANGES FAQ FEATURES README || die "dodoc failed"
+	dohtml html_manual/*
+	dodoc CHANGES FAQ FEATURES README
 
-	newinitd ${FILESDIR}/ptlink-services.init.d ptlink-services
-	newconfd ${FILESDIR}/ptlink-services.conf.d ptlink-services
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/ptlink-services.init.d ptlink-services
+	insinto /etc/conf.d
+	newins ${FILESDIR}/ptlink-services.conf.d ptlink-services
 }
 
 pkg_postinst() {

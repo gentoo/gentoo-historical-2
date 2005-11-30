@@ -1,19 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.4.0-r3.ebuild,v 1.13 2005/10/29 22:16:12 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.4.0-r3.ebuild,v 1.1 2005/09/18 20:59:30 hollow Exp $
 
 IUSE="apache2"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 detectapache() {
-	# DO NOT REPLICATE THIS IN ANY OTHER PACKAGE WITHOUT PORTAGE DEVS PERMISSION
-	# IT IS BROKEN AND A TEMPORARY MEASURE!
-	# YOU'VE BEEN WARNED.
-	if [[ ${EBUILD_PHASE/depend} != ${EBUILD_PHASE} ]]; then
-		APACHEVER=1
-		return
-	fi
 	local domsg=
 	[ -n "$1" ] && domsg=1
 	HAVE_APACHE1=
@@ -70,7 +63,7 @@ PDEPEND=">=${PHP_PROVIDER_PKG}-4.4.0"
 PROVIDE="${PROVIDE} virtual/httpd-php"
 
 # fixed PCRE library for security issues, bug #102373
-SRC_URI="${SRC_URI} http://gentoo.longitekk.com/php-pcrelib-new-secpatch.tar.bz2"
+SRC_URI="${SRC_URI} http://dl.longitekk.com/php-pcrelib-new-secpatch.tar.bz2"
 
 # generalize some apache{,2} vars (defined by apache-module.eclass)
 if [ -n ${USE_APACHE2} ]; then
@@ -133,7 +126,6 @@ src_compile() {
 		einfo "Apache2 MPM: ${APACHE2_MPM}"
 		case "${APACHE2_MPM}" in
 			*prefork*) ;;
-			*peruser*) ;;
 			*) myconf="${myconf} --enable-experimental-zts" ; ewarn "Enabling ZTS for Apache2 MPM" ;;
 		esac;
 	fi
@@ -151,25 +143,38 @@ src_install() {
 	PHP_INSTALLTARGETS="install"
 	php-sapi_src_install
 
+	einfo "Adding extra symlink to php.ini for Apache${USE_APACHE2}"
 	dodir ${APACHE_CONFDIR}
 	dodir ${PHPINIDIRECTORY}
+	dosym ${PHPINIDIRECTORY}/${PHPINIFILENAME} ${APACHE_CONFDIR}/${PHPINIFILENAME}
 
 	einfo "Cleaning up a little"
 	rm -rf ${D}${APACHE_MODULESDIR}/libphp4.so
 
+	einfo "Adding symlink to Apache${USE_APACHE2} modules for PHP"
+	dosym ${APACHE_MODULESDIR} ${PHPINIDIRECTORY}/lib
 	exeinto ${APACHE_MODULESDIR}
+
 	einfo "Installing mod_php shared object now"
 	doexe .libs/libphp4.so
 
 	if [ -n "${USE_APACHE2}" ] ; then
 		einfo "Installing a Apache2 config for PHP (70_mod_php.conf)"
 		insinto ${APACHE2_MODULES_CONFDIR}
-		doins ${FILESDIR}/4.4.0-a2/70_mod_php.conf
+		doins "${FILESDIR}/4.3.11-r2/70_mod_php.conf"
 	else
-		einfo "Installing a Apache config for PHP (70_mod_php.conf)"
+		einfo "Installing a Apache config for PHP (mod_php.conf)"
 		insinto ${APACHE1_MODULES_CONFDIR}
-		doins ${FILESDIR}/4.4.0-a1/70_mod_php.conf
+		doins ${FILESDIR}/mod_php.conf
+		dosym ${PHPINIDIRECTORY}/${PHPINIFILENAME} ${APACHE1_MODULES_CONFDIR}/${PHPINIFILENAME}
 	fi
+}
+
+apache2msg() {
+	einfo "Edit /etc/conf.d/apache2 and add \"-D PHP4\" to APACHE2_OPTS"
+	ewarn "This is a CHANGE from previous behavior, which was \"-D PHP\""
+	ewarn "This is for the upcoming PHP5 support. The ebuild will attempt"
+	ewarn "to make this update between PHP and PHP4 automatically"
 }
 
 multiinstwarn() {
@@ -198,9 +203,27 @@ pkg_preinst() {
 pkg_postinst() {
 	php-sapi_pkg_postinst
 	multiinstwarn
-	APACHE1_MOD_DEFINE="PHP4"
-	APACHE1_MOD_CONF="70_mod_php.conf"
-	APACHE2_MOD_DEFINE="PHP4"
-	APACHE2_MOD_CONF="70_mod_php.conf"
-	apache-module_pkg_postinst
+	einfo "To have Apache run php programs, please do the following:"
+	if [ -n "${USE_APACHE2}" ]; then
+		apache2msg
+	else
+		einfo "1. Execute the command:"
+		einfo " \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
+		einfo "2. Edit /etc/conf.d/apache and add \"-D PHP4\" to APACHE_OPTS"
+		einfo "That will include the php mime types in your configuration"
+		einfo "automagically and setup Apache to load php when it starts."
+	fi
+}
+
+pkg_config() {
+	multiinstwarn
+	if [ -n "${USE_APACHE2}" ]; then
+		apache2msg
+	else
+		${ROOT}/usr/sbin/apacheaddmod \
+			${ROOT}/etc/apache/apache.conf \
+			modules/libphp4.so mod_php4.c php4_module \
+			before=perl define=PHP4 addconf=addon-modules/mod_php.conf
+			:;
+	fi
 }

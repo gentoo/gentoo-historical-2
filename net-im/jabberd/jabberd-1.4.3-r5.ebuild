@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd/jabberd-1.4.3-r5.ebuild,v 1.5 2005/11/24 16:50:10 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd/jabberd-1.4.3-r5.ebuild,v 1.1 2005/05/21 18:35:51 humpback Exp $
 
-inherit eutils multilib
+inherit eutils
 
 S="${WORKDIR}/jabberd-${PV}"
 DESCRIPTION="Open Source Jabber Server"
@@ -13,7 +13,7 @@ SRC_URI="http://jabberd.jabberstudio.org/1.4/dist/jabberd-${PV}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 hppa ~ppc sparc x86"
+KEYWORDS="x86 ~ppc ~hppa ~sparc ~amd64 ~alpha"
 IUSE="ssl ldap ipv6 msn oscar yahoo icq"
 
 DEPEND="!net-im/jabber-server
@@ -72,7 +72,7 @@ src_compile() {
 src_install() {
 	insinto /etc/conf.d ; newins ${FILESDIR}/jabber-conf.d jabber
 	exeinto /etc/init.d ; newexe ${FILESDIR}/jabber.rc6-r8 jabber
-	dodir /usr/sbin /etc/jabber /usr/$(get_libdir)/jabberd /var/log/jabber /usr/include/jabberd
+	dodir /usr/sbin /etc/jabber /usr/lib/jabberd /var/log/jabber /usr/include/jabberd
 	touch ${D}/var/log/jabber/error.log
 	touch ${D}/var/log/jabber/record.log
 	dodir /var/spool/jabber
@@ -82,7 +82,7 @@ src_install() {
 
 	exeinto /usr/sbin
 	doexe jabberd/jabberd
-	insinto /usr/$(get_libdir)/jabberd
+	insinto /usr/lib/jabberd
 	doins platform-settings
 	doins jsm/jsm.so
 	doins xdb_file/xdb_file.so
@@ -94,7 +94,7 @@ src_install() {
 		doins xdb_ldap/jabber.schema
 		doins xdb_ldap/slapd.conf
 		doins config/xdb-ldap.xml
-		insinto /usr/$(get_libdir)/jabberd
+		insinto /usr/lib/jabberd
 		doins xdb_ldap/src/xdb_ldap.so
 	fi
 	insinto /etc/jabber
@@ -111,7 +111,7 @@ src_install() {
 	local test_user=`grep ^jabber: /etc/passwd | cut -d: -f1`
 	if [ -z $test_user ]
 	then
-		enewuser jabber -1 -1 /var/spool/jabber jabber
+		enewuser jabber -1 /bin/false /var/spool/jabber jabber
 	fi
 
 	dodoc README UPGRADE ${FILESDIR}/README.Gentoo

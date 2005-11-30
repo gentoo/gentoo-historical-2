@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.2.0.ebuild,v 1.9 2005/03/21 07:29:04 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.2.0.ebuild,v 1.1 2004/05/15 19:18:16 lu_zero Exp $
 
 inherit gcc eutils flag-o-matic
 export WANT_GCC_3="yes"
@@ -17,11 +17,10 @@ SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 -ppc ~amd64"
-IUSE=""
+KEYWORDS="~x86 -ppc"
 
 DEPEND="virtual/x11
-	virtual/libc
+	virtual/glibc
 	=sys-devel/gcc-3*
 	dev-lang/nasm"
 #	>=media-libs/a52dec-0.7.3"
@@ -30,7 +29,6 @@ src_unpack() {
 	unpack ${A}
 #	epatch ${FILESDIR}/gcc-3.3.1-collate.patch
 #	epatch ${FILESDIR}/pthread_t_not_int.patch
-	epatch ${FILESDIR}/${P}-gcc34.patch
 	touch ${S}/hvirtual_config.h
 }
 
@@ -41,22 +39,17 @@ src_compile() {
 	cd ${S}/quicktime/ffmpeg-0.4.8
 	econf ||die
 
-	echo "#undef HAVE_V4L2" >> ${S}/hvirtual_config.h
-
 	cd ${S}
 	make || die "make failed"
 }
 
 src_install() {
 	local myarch
-	if use x86; then
-		myarch="${CHOST/-*/}" #should solve the i586/i686 problem
+	if [ -n "`use x86`" ]; then
+	myarch="${CHOST/-*/}" #should solve the i586/i686 problem
 	fi
-	if use amd64; then
-		myarch="x86_64" #Fixes BUG #51740
-	fi
-	if use ppc; then
-		myarch="ppc"
+	if [ -n "`use ppc`" ]; then
+	myarch="ppc"
 	fi
 	cd ${S}/${PN}/${myarch}
 	dobin ${PN} || die "cinelerra not built"

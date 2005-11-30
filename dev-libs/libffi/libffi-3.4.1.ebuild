@@ -1,14 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/libffi-3.4.1.ebuild,v 1.9 2005/07/14 21:49:14 agriffis Exp $
+# $Header: 
 
-IUSE="nls nptl"
-SLOT="0"
+IUSE="nls"
+
 inherit eutils flag-o-matic libtool
 
 # This ebuild mod'd from libstdc++ compatbility package ebuild to create
 #   a similar structure for libffi, which is also included in gcc sources.
-#   __Armando Di Cianno <fafhrd@gentoo.org>
+#   __Armando Di Cianno
 
 # Compile problems with these (bug #6641 among others)...
 #filter-flags "-fno-exceptions -fomit-frame-pointer -fforce-addr"
@@ -34,11 +34,11 @@ inherit eutils flag-o-matic libtool
 #
 # <azarah@gentoo.org> (13 Oct 2002)
 do_filter_flags() {
-	strip-flags
+    strip-flags
 
-	# In general gcc does not like optimization, and add -O2 where
-	# it is safe.  This is especially true for gcc 3.3 + 3.4
-	replace-flags -O? -O2
+    # In general gcc does not like optimization, and add -O2 where
+    # it is safe.  This is especially true for gcc 3.3 + 3.4
+    replace-flags -O? -O2
 
 	# xgcc isnt patched with propolice
 	filter-flags -fstack-protector-all
@@ -50,8 +50,8 @@ do_filter_flags() {
 	filter-flags -fvisibility-inlines-hidden
 	filter-flags -fvisibility=hidden
 
-	# ...sure, why not?
-	strip-unsupported-flags
+    # ...sure, why not?
+    strip-unsupported-flags
 }
 
 S=${WORKDIR}/gcc-${PV}
@@ -80,13 +80,13 @@ BRANCH_UPDATE=
 SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/gcc-${PV}/gcc-${PV}.tar.bz2"
 
 DESCRIPTION="libffi (from gcc) does not commonly build unless gcj is compiled, but is used by other projects, like GNUstep."
-HOMEPAGE="http://gcc.gnu.org/"
+HOMEPAGE="http://gcc.gnu.org/libstdc++/"
 
 # libffi itself under an "as-is" license, the rest of GCC can be.
 #  and is, different
-LICENSE="libffi"
+LICENSE="GPL-2 LGPL-2.1 as-is"
 
-KEYWORDS="-* amd64"
+KEYWORDS="-* ~amd64"
 
 DEPEND="virtual/libc
 	!nptl? ( >=sys-libs/glibc-2.3.2-r3 )
@@ -171,6 +171,9 @@ src_compile() {
 		${myconf} || die
 
 	touch ${S}/gcc/c-gperf.h
+
+	# Setup -j in MAKEOPTS
+	get_number_of_jobs
 
 	einfo "Compiling libffi..."
 	S="${WORKDIR}/build" \

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/splashutils/splashutils-1.1.9.9-r1.ebuild,v 1.5 2005/09/09 23:52:10 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/splashutils/splashutils-1.1.9.9-r1.ebuild,v 1.1 2005/08/28 19:33:33 spock Exp $
 
 inherit eutils multilib linux-mod
 
@@ -8,13 +8,8 @@ MISCSPLASH="miscsplashutils-0.1.3"
 GENTOOSPLASH="splashutils-gentoo-0.1.13"
 V_JPEG="6b"
 V_PNG="1.2.8"
-V_ZLIB="1.2.3"
+V_ZLIB="1.2.1"
 V_FT="2.1.9"
-
-ZLIBSRC="libs/zlib-${V_ZLIB}"
-LPNGSRC="libs/libpng-${V_PNG}"
-JPEGSRC="libs/jpeg-${V_JPEG}"
-FT2SRC="libs/freetype-${V_FT}"
 
 IUSE="hardened png truetype kdgraphics"
 
@@ -101,13 +96,8 @@ src_unpack() {
 		spl_conf yes CONFIG_FBSPLASH
 	fi
 
-	if built_with_use sys-devel/gcc vanilla ; then
-		ewarn "Your GCC was built with the 'vanilla' flag set. If you can't compile"
-		ewarn "splashutils, you're on your own, as this configuration is not supported."
-	else
-		# This should make splashutils compile on systems with hardened GCC.
-		sed -e 's@K_CFLAGS =@K_CFLAGS = -fno-stack-protector@' -i ${S}/Makefile
-	fi
+	# This should make splashutils compile on systems with hardened GCC.
+	sed -e 's@K_CFLAGS =@K_CFLAGS = -fno-stack-protector@' -i ${S}/Makefile
 
 	mkdir ${S}/kernel
 
@@ -121,11 +111,12 @@ src_compile() {
 	spl_conf_use truetype CONFIG_TTF_KERNEL
 	spl_conf_use kdgraphics CONFIG_SILENT_KD_GRAPHICS
 	sed -i -e "s/^CFLAGS[ \t]*=.*/CFLAGS = ${CFLAGS}/" Makefile
+		LIBCSRC="libs/klibc-${V_KLIBC}/klibc" \
+		|| die "failed to build splashutils"
 
 	cd ${SM}
 	emake LIB=$(get_libdir) || die "failed to build miscsplashutils"
 	cd ${S}
-	export ZLIBSRC LPNGSRC JPEGSRC FT2SRC
 	emake -j1 LIB=$(get_libdir) || die "failed to build splashutils"
 }
 
@@ -133,7 +124,6 @@ src_install() {
 	cd ${SM}
 	make DESTDIR=${D} install || die
 
-	export ZLIBSRC LPNGSRC JPEGSRC FT2SRC
 	cd ${S}
 	make DESTDIR=${D} install || die
 

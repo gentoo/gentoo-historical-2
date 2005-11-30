@@ -1,10 +1,8 @@
-# ChangeLog for sci-chemistry/rasmol
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/rasmol/ChangeLog,v 1.4 2005/07/08 05:21:32 spyderous Exp $
+# ChangeLog for app-sci/rasmol
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/rasmol/ChangeLog,v 1.1 2004/12/24 17:03:16 ribosome Exp $
 
-  02 Jan 2005; Olivier Fisette <ribosome@gentoo.org> -rasmol-2.7.1.1.ebuild,
-  rasmol-2.7.2.1.1.ebuild:
-  Removed obsolete version. Use toolchain-funcs rather than gcc eclass.
+*rasmol-2.7.2.1.1 (24 Dec 2004)
 
   24 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
   +files/rasmol.sh.debian, +rasmol-2.7.1.1.ebuild, +rasmol-2.7.2.1.1.ebuild:

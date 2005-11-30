@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/aranym/aranym-0.9.0_beta2.ebuild,v 1.3 2005/07/20 14:14:04 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/aranym/aranym-0.9.0_beta2.ebuild,v 1.1 2005/03/08 22:21:43 dholm Exp $
 
 inherit flag-o-matic eutils
 
@@ -17,16 +17,14 @@ SLOT="0"
 KEYWORDS="~ppc ~x86"
 IUSE="opengl"
 
-RDEPEND="media-libs/libsdl
+DEPEND="media-libs/libsdl
 	games-emulation/emutos
-	opengl? ( virtual/opengl )"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+	app-arch/unzip
+	opengl? ( virtual/opengl )
+	>=sys-apps/sed-4"
 
 src_unpack() {
-	unpack ${PN}-${MY_PV}.tar.gz
-	cd ${S}
-	epatch ${FILESDIR}/${P}-fix.patch
+	unpack "${PN}-${MY_PV}.tar.gz"
 }
 
 src_compile() {

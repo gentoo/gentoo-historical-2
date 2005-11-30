@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/cabextract/cabextract-1.1.ebuild,v 1.12 2005/10/06 19:38:33 grobian Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-arch/cabextract/cabextract-1.1.ebuild,v 1.1 2004/10/29 22:39:41 spyderous Exp $
 
 DESCRIPTION="Extracts files from Microsoft .cab files"
 HOMEPAGE="http://www.kyz.uklinux.net/cabextract.php"
@@ -10,18 +8,10 @@ SRC_URI="http://www.kyz.uklinux.net/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86 ppc-macos"
+KEYWORDS="x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64"
 IUSE=""
 
 DEPEND="virtual/libc"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	if use userland_BSD || use userland_Darwin ; then
-		epatch ${FILESDIR}/${PN}-configure.patch
-	fi
-}
 
 src_install() {
 	make DESTDIR=${D} install || die

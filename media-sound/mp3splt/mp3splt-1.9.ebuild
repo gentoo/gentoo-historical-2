@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3splt/mp3splt-1.9.ebuild,v 1.7 2005/04/15 03:35:13 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3splt/mp3splt-1.9.ebuild,v 1.1 2003/09/16 09:12:59 aliz Exp $
 
 IUSE=""
 
@@ -8,19 +8,10 @@ DESCRIPTION="A command line utility to split mp3 and ogg files"
 HOMEPAGE="http://mp3splt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mp3splt/${P}-src.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 -mips"
-
+SLOT="0"
+KEYWORDS="~x86"
 DEPEND="media-libs/libogg
 	media-libs/libvorbis
-	media-sound/madplay"
-
-src_compile() {
-	econf || die
-	emake || die "build failed"
-}
-
-src_install() {
-	einstall || die "install failed"
-}
+	media-sound/mad"
+S=${WORKDIR}/${P}

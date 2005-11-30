@@ -1,65 +1,6 @@
-# ChangeLog for app-editors/nvu
+# ChangeLog for net-www/nvu
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nvu/ChangeLog,v 1.14 2005/11/18 03:03:27 anarchy Exp $
-
-*nvu-1.0-r2 (18 Nov 2005)
-
-  18 Nov 2005; <anarchy@gentoo.org> +files/1.0/nvu-1.0-gcc4-1.patch,
-  -nvu-1.0-r1.ebuild, +nvu-1.0-r2.ebuild:
-  gcc-4 patch update
-
-  17 Nov 2005; Herbie Hopkins <herbs@gentoo.org> nvu-1.0-r1.ebuild:
-  Fix multilib-strict issue, bug 104431.
-
-  24 Oct 2005; <anarchy@gentoo.org> -nvu-0.90-r1.ebuild, nvu-0.90-r2.ebuild,
-  -nvu-1.0.ebuild, nvu-1.0-r1.ebuild:
-  removed unneeded dep/removed stale ebuilds
-
-*nvu-1.0-r1 (03 Oct 2005)
-*nvu-0.90-r2 (03 Oct 2005)
-
-  03 Oct 2005; <anarchy@gentoo.org> +nvu-0.90-r2.ebuild, +nvu-1.0-r1.ebuild:
-  changed from mozilla.eclass to mozconfig.eclass to clean up gtk2
-
-*nvu-1.0 (01 Jul 2005)
-
-  01 Jul 2005; Jory A. Pratt <anarchy@gentoo.org> +files/1.0/nvu-0.50-dir.patch,
-  +files/1.0/nvu-0.50-freetype-compile.patch, +files/1.0/nvu-0.50-nvu.patch,
-  -files/mozconfig2, -files/nvu-0.50-dir.patch,
-  -files/nvu-0.50-freetype-compile.patch, -files/nvu-0.50-nvu.patch,
-  +files/1.0/mozconfig-1.0, +files/1.0/nvu-1.0-gcc4.patch,
-  -files/mozconfig-1.0PR, -files/nvu-1.0_pre-gcc4.patch,
-  +files/1.0/nvu.desktop, -files/nvu.desktop, -nvu-0.81.ebuild,
-  -nvu-0.90.ebuild, nvu-0.90-r1.ebuild, +nvu-1.0.ebuild:
-  revision bump 1.0 final. CleanUp.
-
-  20 Jun 2005; <anarchy@gentoo.org> files/nvu.desktop:
-  fixed bug #96532
-
-  20 Jun 2005; Mark Loeser <halcy0n@gentoo.org>
-  +files/nvu-1.0_pre-gcc4.patch, nvu-1.0_pre.ebuild:
-  GCC4 compile fix (bug #94753), and fix slight typo in ebuild
-
-  01 Jun 2005; Jory A. Pratt <anarchy@gentoo.org> nvu-1.0_pre.ebuild:
-  modified ebuild to include die if patches or make fails
-
-  29 Apr 2005; Tom Martin <slarti@gentoo.org> nvu-0.90-r1.ebuild:
-  Marked stable on amd64 and sparc, resolves bug 90773.
-
-*nvu-0.90-r1 (28 Apr 2005)
-
-  28 Apr 2005; Jory A. Pratt <anarchy@gentoo.org> +nvu-0.90-r1.ebuild:
-  marking stable test being requested for other archs
-
-  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml:
-  Remove retired developer from metadata.xml.
-
-*nvu-1.0_pre (14 Apr 2005)
-
-  14 Apr 2005; <anarchy@gentoo.org> 
-  +files/mozconfig-1.0PR, +nvu-1.0_pre.ebuild
-  -files/mozconfig, -nvu-0.50.ebuild, -nvu-0.60.ebuild :
-  Bumped to version 1.0PR
+# $Header: /var/cvsroot/gentoo-x86/app-editors/nvu/ChangeLog,v 1.1 2005/03/23 16:43:16 seemant Exp $
 
   23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
   +files/nvu-0.50-dir.patch, +files/nvu-0.50-freetype-compile.patch,

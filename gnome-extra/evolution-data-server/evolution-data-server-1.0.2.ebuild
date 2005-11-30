@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-1.0.2.ebuild,v 1.17 2005/02/04 06:16:38 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/evolution-data-server/evolution-data-server-1.0.2.ebuild,v 1.1 2004/10/16 19:12:41 liquidx Exp $
 
-inherit eutils gnome2
+inherit gnome2
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="http://www.ximian.com/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha amd64 arm hppa ia64 mips ppc sparc ppc64"
+KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~mips ~hppa"
 IUSE="doc ldap"
 
 RDEPEND=">=dev-libs/glib-2
@@ -31,12 +31,6 @@ G2CONF="${G2CONF} `use_with ldap openldap`"
 
 MAKEOPTS="${MAKEOPTS} -j1"
 USE_DESTDIR=1
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-amd64_mutex.patch
-}
 
 src_compile() {
 	cd ${S}/libdb/dist

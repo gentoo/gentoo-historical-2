@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/radiusclient-ng/radiusclient-ng-0.5.0.ebuild,v 1.4 2005/08/03 16:37:17 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/radiusclient-ng/radiusclient-ng-0.5.0.ebuild,v 1.1 2005/05/22 18:37:43 mrness Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://download.berlios.de/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc ~sparc x86"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="virtual/libc"

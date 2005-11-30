@@ -1,37 +1,61 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/libtool.eclass,v 1.61 2005/10/09 13:01:41 flameeyes Exp $
-#
+#!/bin/bash
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
 # Author: Martin Schlemmer <azarah@gentoo.org>
-#
+# $Header: /var/cvsroot/gentoo-x86/eclass/libtool.eclass,v 1.1 2002/06/05 22:53:11 azarah Exp $
 # This eclass patches ltmain.sh distributed with libtoolized packages with the
-# relink and portage patch among others
-
-
-# 2004.09.25 rac
-# i have verified that at least one package can use this eclass and
-# build properly even without libtool installed yet, probably using
-# the files in the distribution.  eliminating this dependency fixes
-# bug 65209, which is a showstopper for people doing installs using
-# stageballs <3.  if anybody decides to revert this, please attempt
-# to find an alternate way of resolving that bug at the same time.
+# relink and portage patch
+ECLASS=libtool
+newdepend sys-devel/libtool
 
 DESCRIPTION="Based on the ${ECLASS} eclass"
 
-ELIBTOOL_VERSION="2.0.2"
 
-ELT_PATCH_DIR="${PORTDIR}/eclass/ELT-patches"
-ELT_APPLIED_PATCHES=
-ELT_LTMAIN_SH=
+elibtoolize() {
+
+	local x=""
+	local y=""
+	local dopatch="no"
+
+	for x in $(find_ltmain)
+	do
+		cd ${x}
+		einfo "Working directory: ${x}..."
+		dopatch="yes"
+		
+		for y in test_patch relink_patch portage_patch
+		do
+			if ! eval ${y} --test $>${T}/libtool.foo
+			then
+				dopatch="no"
+				break
+			fi
+		done
+
+		for y in test_patch relink_patch portage_patch
+		do
+			if [ "${dopatch}" = "yes" ]
+			then
+				einfo "Applying libtool-${y/_patch/}.patch..."
+				eval ${y} $>${T}/libtool.foo
+			else
+				libtoolize --copy --force
+				break
+			fi
+		done
+	done
+}
 
 #
 # Returns all the directories containing ltmain.sh
 #
-ELT_find_ltmain_sh() {
-	local x=
-	local dirlist=
+find_ltmain() {
+	
+	local x=""
+	local dirlist=""
 
-	for x in $(find "${S}" -name 'ltmain.sh') ; do
+	for x in $(find ${S} -name 'ltmain.sh')
+	do
 		dirlist="${dirlist} ${x%/*}"
 	done
 
@@ -39,402 +63,523 @@ ELT_find_ltmain_sh() {
 }
 
 #
-# See if we can apply $2 on $1, and if so, do it
+# Various patches we want to apply.
 #
-ELT_try_and_apply_patch() {
-	local ret=0
-	local file=$1
-	local patch=$2
+# Contains:  portage_patch
+#            relink_patch
+#            test_patch
+#
+portage_patch() {
 
-	# We only support patchlevel of 0 - why worry if its static patches?
-	if patch -p0 --dry-run "${file}" < "${patch}" &> "${T}/elibtool.log" ; then
-		einfo "  Applying $(basename "$(dirname "${patch}")")-${patch##*/}.patch ..."
-		patch -p0 "${file}" < "${patch}" &> "${T}/elibtool.log"
-		ret=$?
-		export ELT_APPLIED_PATCHES="${ELT_APPLIED_PATCHES} ${patch##*/}"
-	else
-		ret=1
+	local opts=""
+
+	if [ "${1}" = "--test" ]
+	then
+		opts="--force --dry-run"
 	fi
 
-	return "${ret}"
+	patch ${opts} -p0 <<-"ENDPATCH"
+		--- ltmain.sh.orig	Wed Apr  3 01:19:37 2002
+		+++ ltmain.sh	Sun May 26 19:50:52 2002
+		@@ -3940,9 +3940,39 @@
+		 		  $echo "$modename: \`$deplib' is not a valid libtool archive" 1>&2
+		 		  exit 1
+		 		fi
+		-		newdependency_libs="$newdependency_libs $libdir/$name"
+		+		# We do not want portage's install root ($D) present.  Check only for
+		+		# this if the .la is being installed.
+		+		if test "$installed" = yes; then
+		+		  mynewdependency_lib="`echo "$libdir/$name" |sed -e "s:${D}::g" -e 's://:/:g'`"
+		+		else
+		+		  mynewdependency_lib="$libdir/$name"
+		+		fi
+		+		# Do not add duplicates
+		+		if test -z "`echo $newdependency_libs |grep -e "$mynewdependency_lib"`" 
+		+		then
+		+		  newdependency_libs="$newdependency_libs $mynewdependency_lib"
+		+		fi
+		+		;;
+		+	      *)
+		+	      	if test "$installed" = yes; then
+		+		  # We do not want portage's build root ($S} present.
+		+	          if test -n "`echo $deplib |grep -e "${S}"`"
+		+		  then
+		+	            newdependency_libs=""
+		+		  # We do not want portage's install root ($D) present.
+		+		  elif test -n "`echo $deplib |grep -e "${D}"`"
+		+		  then
+		+		    mynewdependency_lib="`echo "$deplib" |sed -e "s:${D}::g" -e 's://:/:g'`"
+		+		  fi
+		+		else
+		+		  mynewdependency_lib="$deplib"
+		+		fi
+		+		# Do not add duplicates
+		+		if test -z "`echo $newdependency_libs |grep -e "$mynewdependency_lib"`"
+		+		then
+		+			newdependency_libs="$newdependency_libs $mynewdependency_lib"
+		+		fi
+		 		;;
+		-	      *) newdependency_libs="$newdependency_libs $deplib" ;;
+		 	      esac
+		 	    done
+		 	    dependency_libs="$newdependency_libs"
+		@@ -3975,6 +4005,10 @@
+		 	  case $host,$output,$installed,$module,$dlname in
+		 	    *cygwin*,*lai,yes,no,*.dll) tdlname=../bin/$dlname ;;
+		 	  esac
+		+	  # Do not add duplicates
+		+	  if test "$installed" = yes; then
+		+	    install_libdir="`echo "$install_libdir" |sed -e "s:${D}::g" -e 's://:/:g'`"
+		+	  fi
+		 	  $echo > $output "\
+		 # $outputname - a libtool library file
+		 # Generated by $PROGRAM - GNU $PACKAGE $VERSION$TIMESTAMP
+	ENDPATCH
 }
 
-#
-# Get string version of ltmain.sh or ltconfig (passed as $1)
-#
-ELT_libtool_version() {
-	local ltmain_sh=$1
-	local version=
+relink_patch() {
 
-	version=$(eval $(grep -e '^[[:space:]]*VERSION=' "${ltmain_sh}"); \
-	                 echo "${VERSION}")
-	[[ -z ${version} ]] && version="0"
+	local opts=""
+	local retval=0
 
-	echo "${version}"
-}
-
-#
-# Run through the patches in $2 and see if any
-# apply to $1 ...
-#
-ELT_walk_patches() {
-	local x=
-	local y=
-	local ret=1
-	local file=$1
-	local patch_set=$2
-	local patch_dir=
-	local rem_int_dep=$3
-	local version=
-	local ltmain_sh=$1
-
-	[[ ${file} == *"/configure" ]] && ltmain_sh=${ELT_LTMAIN_SH}
-	version=$(ELT_libtool_version "${ltmain_sh}")
-
-	if [[ -n ${patch_set} ]] ; then
-		if [[ -d ${ELT_PATCH_DIR}/${patch_set} ]] ; then
-			patch_dir="${ELT_PATCH_DIR}/${patch_set}"
-		else
-			return "${ret}"
-		fi
-
-		if [[ ${version} == "0" ]] ; then
-			eerror "Could not get VERSION for ${file##*/}!"
-			die "Could not get VERSION for ${file##*/}!"
-		fi
-
-		# Go through the patches in reverse order (large to small)
-		for x in $(ls -d "${patch_dir}"/* 2> /dev/null | sort -r) ; do
-			if [[ -n ${x} && -f ${x} ]] ; then
-				local ltver=$(VER_to_int "${version}")
-				local ptver=$(VER_to_int "${x##*/}")
-
-				# If libtool version smaller than patch version, skip patch.
-				[[ ${ltver} -lt ${ptver} ]] && continue
-				# For --remove-internal-dep ...
-				if [[ -n ${rem_int_dep} ]] ; then
-					# For replace @REM_INT_DEP@ with what was passed
-					# to --remove-internal-dep
-					sed -e "s|@REM_INT_DEP@|${rem_int_dep}|g" ${x} > \
-						"${T}/$$.rem_int_deps.patch"
-
-					x="${T}/$$.rem_int_deps.patch"
-				fi
-
-				if ELT_try_and_apply_patch "${file}" "${x}" ; then
-					ret=0
-					break
-				fi
-			fi
-		done
+	if [ "${1}" = "--test" ]
+	then
+		opts="--force --dry-run"
 	fi
 
-	return "${ret}"
-}
+	patch ${opts} -p0 <<-"ENDPATCH"
+		--- ltmain.sh	Sun Aug 12 18:08:05 2001
+		+++ ltmain-relinkable.sh	Tue Aug 28 18:55:13 2001
+		@@ -827,6 +827,7 @@
+		     linker_flags=
+		     dllsearchpath=
+		     lib_search_path=`pwd`
+		+    inst_prefix_dir=
+		 
+		     avoid_version=no
+		     dlfiles=
+		@@ -959,6 +960,11 @@
+		 	  prev=
+		 	  continue
+		 	  ;;
+		+        inst_prefix)
+		+	  inst_prefix_dir="$arg"
+		+	  prev=
+		+	  continue
+		+	  ;;
+		 	release)
+		 	  release="-$arg"
+		 	  prev=
+		@@ -1167,6 +1173,11 @@
+		 	continue
+		 	;;
+		 
+		+      -inst-prefix-dir)
+		+	prev=inst_prefix
+		+	continue
+		+	;;
+		+
+		       # The native IRIX linker understands -LANG:*, -LIST:* and -LNO:*
+		       # so, if we see these flags be careful not to treat them like -L
+		       -L[A-Z][A-Z]*:*)
+		@@ -2231,7 +2242,16 @@
+		 	    if test "$hardcode_direct" = yes; then
+		 	      add="$libdir/$linklib"
+		 	    elif test "$hardcode_minus_L" = yes; then
+		-	      add_dir="-L$libdir"
+		+	      # Try looking first in the location we're being installed to.
+		+	      add_dir=
+		+	      if test -n "$inst_prefix_dir"; then
+		+		case "$libdir" in
+		+		[\\/]*)
+		+		  add_dir="-L$inst_prefix_dir$libdir"
+		+		  ;;
+		+		esac
+		+	      fi
+		+	      add_dir="$add_dir -L$libdir"
+		 	      add="-l$name"
+		 	    elif test "$hardcode_shlibpath_var" = yes; then
+		 	      case :$finalize_shlibpath: in
+		@@ -2241,7 +2261,16 @@
+		 	      add="-l$name"
+		 	    else
+		 	      # We cannot seem to hardcode it, guess we'll fake it.
+		-	      add_dir="-L$libdir"
+		+	      # Try looking first in the location we're being installed to.
+		+	      add_dir=
+		+	      if test -n "$inst_prefix_dir"; then
+		+		case "$libdir" in
+		+		[\\/]*)
+		+		  add_dir="-L$inst_prefix_dir$libdir"
+		+		  ;;
+		+		esac
+		+	      fi
+		+	      add_dir="$add_dir -L$libdir"
+		 	      add="-l$name"
+		 	    fi
+		 
+		@@ -4622,12 +4651,30 @@
+		 	dir="$dir$objdir"
+		 
+		 	if test -n "$relink_command"; then
+		+	  # Determine the prefix the user has applied to our future dir.
+		+	  inst_prefix_dir=`$echo "$destdir" | sed "s%$libdir\$%%"`
+		+
+		+	  # Don't allow the user to place us outside of our expected
+		+	  # location b/c this prevents finding dependent libraries that
+		+	  # are installed to the same prefix.
+		+	  if test "$inst_prefix_dir" = "$destdir"; then
+		+	    $echo "$modename: error: cannot install \`$file' to a directory not ending in $libdir" 1>&2
+		+	    exit 1
+		+	  fi
+		+
+		+	  if test -n "$inst_prefix_dir"; then
+		+	    # Stick the inst_prefix_dir data into the link command.
+		+	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%-inst-prefix-dir $inst_prefix_dir%"`
+		+	  else
+		+	    relink_command=`$echo "$relink_command" | sed "s%@inst_prefix_dir@%%"`
+		+	  fi
+		+
+		 	  $echo "$modename: warning: relinking \`$file'" 1>&2
+		 	  $show "$relink_command"
+		 	  if $run eval "$relink_command"; then :
+		 	  else
+		 	    $echo "$modename: error: relink \`$file' with the above command before installing it" 1>&2
+		-	    continue
+		+	    exit 1
+		 	  fi
+		 	fi
+		 
+		@@ -4782,7 +4829,11 @@
+		 	    if test "$finalize" = yes && test -z "$run"; then
+		 	      tmpdir="/tmp"
+		 	      test -n "$TMPDIR" && tmpdir="$TMPDIR"
+		-	      tmpdir="$tmpdir/libtool-$$"
+		+              tmpdir=`mktemp -d $tmpdir/libtool-XXXXXX 2> /dev/null`
+		+              if test $? = 0 ; then :
+		+              else
+		+                tmpdir="$tmpdir/libtool-$$"
+		+              fi
+		 	      if $mkdir -p "$tmpdir" && chmod 700 "$tmpdir"; then :
+		 	      else
+		 		$echo "$modename: error: cannot create temporary directory \`$tmpdir'" 1>&2
+	ENDPATCH
 
-elibtoolize() {
-	local x=
-	local y=
-	local do_portage="no"
-	local do_reversedeps="no"
-	local do_only_patches="no"
-	local do_uclibc="yes"
-	local deptoremove=
-	local my_dirlist=
-	local elt_patches="portage relink max_cmd_len sed test tmp"
-	local start_dir=${PWD}
+	retval=$?
 
-	my_dirlist=$(ELT_find_ltmain_sh)
-
-	for x in "$@" ; do
-		case "${x}" in
-			"--portage")
-				# Only apply portage patch, and don't
-				# 'libtoolize --copy --force' if all patches fail.
-				do_portage="yes"
-				;;
-			"--reverse-deps")
-				# Apply the reverse-deps patch
-				# http://bugzilla.gnome.org/show_bug.cgi?id=75635
-				do_reversedeps="yes"
-				elt_patches="${elt_patches} fix-relink"
-				;;
-			"--patch-only")
-				# Do not run libtoolize if none of the patches apply ..
-				do_only_patches="yes"
-				;;
-			"^--remove-internal-dep="*)
-				# We will replace @REM_INT_DEP@ with what is needed
-				# in ELT_walk_patches() ...
-				deptoremove=$(echo "${x}" | sed -e 's|--remove-internal-dep=||')
-
-				# Add the patch for this ...
-				[[ -n ${deptoremove} ]] && elt_patches="${elt_patches} rem-int-dep"
-				;;
-			"--shallow")
-				# Only patch the ltmain.sh in ${S}
-				if [[ -f ${S}/ltmain.sh ]] ; then
-					my_dirlist=${S}
-				else
-					my_dirlist=
-				fi
-				;;
-			"--no-uclibc")
-				do_uclibc="no"
-				;;
-			*)
-				eerror "Invalid elibtoolize option: ${x}"
-				die "elibtoolize called with ${x} ??"
-		esac
-	done
-
-	[[ ${do_uclibc} == "yes" ]] && \
-		elt_patches="${elt_patches} uclibc-conf uclibc-ltconf"
-
-	[[ ${CHOST} == *"-freebsd"* ]] && \
-		elt_patches="${elt_patches} fbsd-conf"
-
-	if useq ppc-macos ; then
-		local opts
-		[[ -f Makefile.am ]] && opts="--automake"
-		glibtoolize --copy --force ${opts}
-
-		elt_patches="${elt_patches} darwin-ltconf darwin-ltmain"
+	# This one dont apply clean to libtool-1.4.2a, so do it manually.
+	if [ "${1}" != "--test" ] && [ "${retval}" -eq 0 ]
+	then
+		cp ltmain.sh ltmain.sh.orig
+		sed -e 's:cd `pwd`; $SHELL $0 --mode=relink $libtool_args:cd `pwd`; $SHELL $0 --mode=relink $libtool_args @inst_prefix_dir@:' \
+			ltmain.sh.orig > ltmain.sh
+		rm -f ltmain.sh.orig
 	fi
 
-	for x in ${my_dirlist} ; do
-		local tmp=$(echo "${x}" | sed -e "s|${WORKDIR}||")
-		export ELT_APPLIED_PATCHES=
-		export ELT_LTMAIN_SH="${x}/ltmain.sh"
-
-		[[ -f ${x}/.elibtoolized ]] && continue
-
-		cd ${x}
-		einfo "Running elibtoolize in: $(echo "/${tmp}" | sed -e 's|//|/|g; s|^/||')"
-
-		for y in ${elt_patches} ; do
-			local ret=0
-
-			case "${y}" in
-				"rem-int-dep")
-					ELT_walk_patches "${x}/ltmain.sh" "${y}" "${deptoremove}"
-					ret=$?
-					;;
-				"fix-relink")
-					# Do not apply if we do not have the relink patch applied ...
-					if [[ -n $(grep 'inst_prefix_dir' "${x}/ltmain.sh") ]] ; then
-						ELT_walk_patches "${x}/ltmain.sh" "${y}"
-						ret=$?
-					fi
-					;;
-				"max_cmd_len")
-					# Do not apply if $max_cmd_len is not used ...
-					if [[ -n $(grep 'max_cmd_len' "${x}/ltmain.sh") ]] ; then
-						ELT_walk_patches "${x}/ltmain.sh" "${y}"
-						ret=$?
-					fi
-					;;
-				"uclibc-conf")
-					if [[ -e ${x}/configure && \
-					      -n $(grep 'Transform linux' "${x}/configure") ]] ; then
-						ELT_walk_patches "${x}/configure" "${y}"
-						ret=$?
-					# ltmain.sh and co might be in a subdirectory ...
-					elif [[ ! -e ${x}/configure && -e ${x}/../configure && \
-					        -n $(grep 'Transform linux' "${x}/../configure") ]] ; then
-						ELT_walk_patches "${x}/../configure" "${y}"
-						ret=$?
-					fi
-					;;
-				"uclibc-ltconf")
-					# Newer libtoolize clears ltconfig, as not used anymore
-					if [[ -s ${x}/ltconfig ]] ; then
-						ELT_walk_patches "${x}/ltconfig" "${y}"
-						ret=$?
-					fi
-					;;
-				"fbsd-conf")
-					if [[ -e ${x}/configure && \
-					      -n $(grep 'version_type=freebsd-' "${x}/configure") ]] ; then
-						ELT_walk_patches "${x}/configure" "${y}"
-						ret=$?
-					# ltmain.sh and co might be in a subdirectory ...
-					elif [[ ! -e ${x}/configure && -e ${x}/../configure && \
-					        -n $(grep 'version_type=freebsd-' "${x}/../configure") ]] ; then
-						ELT_walk_patches "${x}/../configure" "${y}"
-						ret=$?
-					fi
-					;;
-				"darwin-ltconf")
-					# Newer libtoolize clears ltconfig, as not used anymore
-					if [[ -s ${x}/ltconfig ]] ; then
-						ELT_walk_patches "${x}/ltconfig" "${y}"
-						ret=$?
-					fi
-					;;
-				*)
-					ELT_walk_patches "${x}/ltmain.sh" "${y}"
-					ret=$?
-					;;
-			esac
-
-			if [[ ${ret} -ne 0 ]] ; then
-				case ${y} in
-					"relink")
-						local version=$(ELT_libtool_version "${x}/ltmain.sh")
-						# Critical patch, but could be applied ...
-						# FIXME:  Still need a patch for ltmain.sh > 1.4.0
-						if [[ -z $(grep 'inst_prefix_dir' "${x}/ltmain.sh") && \
-						      $(VER_to_int "${version}") -ge $(VER_to_int "1.4.0") ]] ; then
-							ewarn "  Could not apply relink.patch!"
-						fi
-						;;
-					"portage")
-						# Critical patch - for this one we abort, as it can really
-						# cause breakage without it applied!
-						if [[ ${do_portage} == "yes" ]] ; then
-							# Stupid test to see if its already applied ...
-							if [[ -z $(grep 'We do not want portage' "${x}/ltmain.sh") ]] ; then
-								echo
-								eerror "Portage patch requested, but failed to apply!"
-								die "Portage patch requested, but failed to apply!"
-							fi
-						else
-							if [[ -n $(grep 'We do not want portage' "${x}/ltmain.sh") ]] ; then
-							#	ewarn "  Portage patch seems to be already applied."
-							#	ewarn "  Please verify that it is not needed."
-								:
-							else
-							    local version=$( \
-									eval $(grep -e '^[[:space:]]*VERSION=' "${x}/ltmain.sh"); \
-									echo "${VERSION}")
-
-								echo
-								eerror "Portage patch failed to apply (ltmain.sh version ${version})!"
-								die "Portage patch failed to apply!"
-							fi
-							# We do not want to run libtoolize ...
-							ELT_APPLIED_PATCHES="portage"
-						fi
-						;;
-					"uclibc-"*)
-						[[ ${CHOST} == *"-uclibc" ]] && \
-							ewarn "  uClibc patch set '${y}' failed to apply!"
-						;;
-					"fbsd-"*)
-						if [[ ${CHOST} == *"-freebsd"* ]] ; then
-							if [[ -z $(grep 'Handle Gentoo/FreeBSD as it was Linux' "${x}/configure") ]]; then
-								eerror "  FreeBSD patch set '${y}' failed to apply!"
-								die "FreeBSD patch set '${y}' failed to apply!"
-							fi
-						fi
-						;;
-					"darwin-"*)
-						useq ppc-macos && \
-							ewarn "  Darwin patch set '${y}' failed to apply!"
-						;;
-				esac
-			fi
-		done
-
-		if [[ -z ${ELT_APPLIED_PATCHES} ]] ; then
-			if [[ ${do_portage} == "no" && \
-				  ${do_reversedeps} == "no" && \
-				  ${do_only_patches} == "no" && \
-				  ${deptoremove} == "" ]]
-			then
-				ewarn "Cannot apply any patches, please file a bug about this"
-				break
-
-				# Sometimes ltmain.sh is in a subdirectory ...
-				if [[ ! -f ${x}/configure.in && ! -f ${x}/configure.ac ]] ; then
-					if [[ -f ${x}/../configure.in || -f ${x}/../configure.ac ]] ; then
-						cd "${x}"/../
-					fi
-				fi
-
-				if type -p libtoolize &> /dev/null ; then
-					ewarn "Cannot apply any patches, running libtoolize..."
-					libtoolize --copy --force
-				fi
-				cd "${x}"
-				break
-			fi
-		fi
-
-		[[ -f ${x}/libtool ]] && rm -f "${x}/libtool"
-
-		touch "${x}/.elibtoolized"
-	done
-
-	cd "${start_dir}"
+	return ${retval}
 }
 
-uclibctoolize() {
-	ewarn "uclibctoolize() is depreciated, please just use elibtoolize()!"
-	elibtoolize
-}
+test_patch() {
 
-darwintoolize() {
-	ewarn "darwintoolize() is depreciated, please just use elibtoolize()!"
-	elibtoolize
-}
+	local opts=""
 
-# char *VER_major(string)
-#
-#    Return the Major (X of X.Y.Z) version
-#
-VER_major() {
-	[[ -z $1 ]] && return 1
-
-	local VER=$@
-	echo "${VER%%[^[:digit:]]*}"
-}
-
-# char *VER_minor(string)
-#
-#    Return the Minor (Y of X.Y.Z) version
-#
-VER_minor() {
-	[[ -z $1 ]] && return 1
-
-	local VER=$@
-	VER=${VER#*.}
-	echo "${VER%%[^[:digit:]]*}"
-}
-
-# char *VER_micro(string)
-#
-#    Return the Micro (Z of X.Y.Z) version.
-#
-VER_micro() {
-	[[ -z $1 ]] && return 1
-
-	local VER=$@
-	VER=${VER#*.*.}
-	echo "${VER%%[^[:digit:]]*}"
-}
-
-# int VER_to_int(string)
-#
-#    Convert a string type version (2.4.0) to an int (132096)
-#    for easy compairing or versions ...
-#
-VER_to_int() {
-	[[ -z $1 ]] && return 1
-
-	local VER_MAJOR=$(VER_major "$1")
-	local VER_MINOR=$(VER_minor "$1")
-	local VER_MICRO=$(VER_micro "$1")
-	local VER_int=$(( VER_MAJOR * 65536 + VER_MINOR * 256 + VER_MICRO ))
-
-	# We make version 1.0.0 the minimum version we will handle as
-	# a sanity check ... if its less, we fail ...
-	if [[ ${VER_int} -ge 65536 ]] ; then
-		echo "${VER_int}"
-		return 0
+	if [ "${1}" = "--test" ]
+	then
+		opts="--force --dry-run"
 	fi
 
-	echo 1
-	return 1
+	patch ${opts} -p0 <<-"ENDPATCH"
+		--- ./ltmain.sh	Tue May 29 19:16:03 2001
+		+++ ./ltmain.sh	Tue May 29 21:26:50 2001
+		@@ -459,7 +459,7 @@
+		       pic_mode=default
+		       ;;
+		     esac
+		-    if test $pic_mode = no && test "$deplibs_check_method" != pass_all; then
+		+    if test "$pic_mode" = no && test "$deplibs_check_method" != pass_all; then
+		       # non-PIC code in shared libraries is not supported
+		       pic_mode=default
+		     fi
+		@@ -1343,7 +1343,7 @@
+		 	;;
+		     esac
+		     for pass in $passes; do
+		-      if test $linkmode = prog; then
+		+      if test "$linkmode" = prog; then
+		 	# Determine which files to process
+		 	case $pass in
+		 	dlopen)
+		@@ -1360,11 +1360,11 @@
+		 	found=no
+		 	case $deplib in
+		 	-l*)
+		-	  if test $linkmode = oldlib && test $linkmode = obj; then
+		+	  if test "$linkmode" = oldlib && test "$linkmode" = obj; then
+		 	    $echo "$modename: warning: \`-l' is ignored for archives/objects: $deplib" 1>&2
+		 	    continue
+		 	  fi
+		-	  if test $pass = conv; then
+		+	  if test "$pass" = conv; then
+		 	    deplibs="$deplib $deplibs"
+		 	    continue
+		 	  fi
+		@@ -1384,7 +1384,7 @@
+		 	      finalize_deplibs="$deplib $finalize_deplibs"
+		 	    else
+		 	      deplibs="$deplib $deplibs"
+		-	      test $linkmode = lib && newdependency_libs="$deplib $newdependency_libs"
+		+	      test "$linkmode" = lib && newdependency_libs="$deplib $newdependency_libs"
+		 	    fi
+		 	    continue
+		 	  fi
+		@@ -1393,16 +1393,16 @@
+		 	  case $linkmode in
+		 	  lib)
+		 	    deplibs="$deplib $deplibs"
+		-	    test $pass = conv && continue
+		+	    test "$pass" = conv && continue
+		 	    newdependency_libs="$deplib $newdependency_libs"
+		 	    newlib_search_path="$newlib_search_path "`$echo "X$deplib" | $Xsed -e 's/^-L//'`
+		 	    ;;
+		 	  prog)
+		-	    if test $pass = conv; then
+		+	    if test "$pass" = conv; then
+		 	      deplibs="$deplib $deplibs"
+		 	      continue
+		 	    fi
+		-	    if test $pass = scan; then
+		+	    if test "$pass" = scan; then
+		 	      deplibs="$deplib $deplibs"
+		 	      newlib_search_path="$newlib_search_path "`$echo "X$deplib" | $Xsed -e 's/^-L//'`
+		 	    else
+		@@ -1417,7 +1417,7 @@
+		 	  continue
+		 	  ;; # -L
+		 	-R*)
+		-	  if test $pass = link; then
+		+	  if test "$pass" = link; then
+		 	    dir=`$echo "X$deplib" | $Xsed -e 's/^-R//'`
+		 	    # Make sure the xrpath contains only unique directories.
+		 	    case "$xrpath " in
+		@@ -1430,7 +1430,7 @@
+		 	  ;;
+		 	*.la) lib="$deplib" ;;
+		 	*.$libext)
+		-	  if test $pass = conv; then
+		+	  if test "$pass" = conv; then
+		 	    deplibs="$deplib $deplibs"
+		 	    continue
+		 	  fi
+		@@ -1451,7 +1451,7 @@
+		 	    continue
+		 	    ;;
+		 	  prog)
+		-	    if test $pass != link; then
+		+	    if test "$pass" != link; then
+		 	      deplibs="$deplib $deplibs"
+		 	    else
+		 	      compile_deplibs="$deplib $compile_deplibs"
+		@@ -1462,7 +1462,7 @@
+		 	  esac # linkmode
+		 	  ;; # *.$libext
+		 	*.lo | *.$objext)
+		-	  if test $pass = dlpreopen || test "$dlopen_support" != yes || test "$build_libtool_libs" = no; then
+		+	  if test "$pass" = dlpreopen || test "$dlopen_support" != yes || test "$build_libtool_libs" = no; then
+		 	    # If there is no dlopen support or we're linking statically,
+		 	    # we need to preload.
+		 	    newdlprefiles="$newdlprefiles $deplib"
+		@@ -1512,13 +1512,13 @@
+		 
+		 	if test "$linkmode,$pass" = "lib,link" ||
+		 	   test "$linkmode,$pass" = "prog,scan" ||
+		-	   { test $linkmode = oldlib && test $linkmode = obj; }; then
+		+	   { test "$linkmode" = oldlib && test "$linkmode" = obj; }; then
+		 	   # Add dl[pre]opened files of deplib
+		 	  test -n "$dlopen" && dlfiles="$dlfiles $dlopen"
+		 	  test -n "$dlpreopen" && dlprefiles="$dlprefiles $dlpreopen"
+		 	fi
+		 
+		-	if test $pass = conv; then
+		+	if test "$pass" = conv; then
+		 	  # Only check for convenience libraries
+		 	  deplibs="$lib $deplibs"
+		 	  if test -z "$libdir"; then
+		@@ -1537,7 +1537,7 @@
+		 	      esac
+		 	      tmp_libs="$tmp_libs $deplib"
+		 	    done
+		-	  elif test $linkmode != prog && test $linkmode != lib; then
+		+	  elif test "$linkmode" != prog && test "$linkmode" != lib; then
+		 	    $echo "$modename: \`$lib' is not a convenience library" 1>&2
+		 	    exit 1
+		 	  fi
+		@@ -1555,7 +1555,7 @@
+		 	fi
+		 
+		 	# This library was specified with -dlopen.
+		-	if test $pass = dlopen; then
+		+	if test "$pass" = dlopen; then
+		 	  if test -z "$libdir"; then
+		 	    $echo "$modename: cannot -dlopen a convenience library: \`$lib'" 1>&2
+		 	    exit 1
+		@@ -1604,7 +1604,7 @@
+		 	name=`$echo "X$laname" | $Xsed -e 's/\.la$//' -e 's/^lib//'`
+		 
+		 	# This library was specified with -dlpreopen.
+		-	if test $pass = dlpreopen; then
+		+	if test "$pass" = dlpreopen; then
+		 	  if test -z "$libdir"; then
+		 	    $echo "$modename: cannot -dlpreopen a convenience library: \`$lib'" 1>&2
+		 	    exit 1
+		@@ -1623,7 +1623,7 @@
+		 
+		 	if test -z "$libdir"; then
+		 	  # Link the convenience library
+		-	  if test $linkmode = lib; then
+		+	  if test "$linkmode" = lib; then
+		 	    deplibs="$dir/$old_library $deplibs"
+		 	  elif test "$linkmode,$pass" = "prog,link"; then
+		 	    compile_deplibs="$dir/$old_library $compile_deplibs"
+		@@ -1634,7 +1634,7 @@
+		 	  continue
+		 	fi
+		 
+		-	if test $linkmode = prog && test $pass != link; then
+		+	if test "$linkmode" = prog && test "$pass" != link; then
+		 	  newlib_search_path="$newlib_search_path $ladir"
+		 	  deplibs="$lib $deplibs"
+		 
+		@@ -1671,7 +1671,7 @@
+		 	  # Link against this shared library
+		 
+		 	  if test "$linkmode,$pass" = "prog,link" ||
+		-	   { test $linkmode = lib && test $hardcode_into_libs = yes; }; then
+		+	   { test "$linkmode" = lib && test "$hardcode_into_libs" = yes; }; then
+		 	    # Hardcode the library path.
+		 	    # Skip directories that are in the system default run-time
+		 	    # search path.
+		@@ -1693,7 +1693,7 @@
+		 	      esac
+		 	      ;;
+		 	    esac
+		-	    if test $linkmode = prog; then
+		+	    if test "$linkmode" = prog; then
+		 	      # We need to hardcode the library path
+		 	      if test -n "$shlibpath_var"; then
+		 		# Make sure the rpath contains only unique directories.
+		@@ -1777,7 +1777,7 @@
+		 	    linklib=$newlib
+		 	  fi # test -n $old_archive_from_expsyms_cmds
+		 
+		-	  if test $linkmode = prog || test "$mode" != relink; then
+		+	  if test "$linkmode" = prog || test "$mode" != relink; then
+		 	    add_shlibpath=
+		 	    add_dir=
+		 	    add=
+		@@ -1826,7 +1826,7 @@
+		 	      *) compile_shlibpath="$compile_shlibpath$add_shlibpath:" ;;
+		 	      esac
+		 	    fi
+		-	    if test $linkmode = prog; then
+		+	    if test "$linkmode" = prog; then
+		 	      test -n "$add_dir" && compile_deplibs="$add_dir $compile_deplibs"
+		 	      test -n "$add" && compile_deplibs="$add $compile_deplibs"
+		 	    else
+		@@ -1843,7 +1843,7 @@
+		 	    fi
+		 	  fi
+		 
+		-	  if test $linkmode = prog || test "$mode" = relink; then
+		+	  if test "$linkmode" = prog || test "$mode" = relink; then
+		 	    add_shlibpath=
+		 	    add_dir=
+		 	    add=
+		@@ -1865,7 +1865,7 @@
+		 	      add="-l$name"
+		 	    fi
+		 
+		-	    if test $linkmode = prog; then
+		+	    if test "$linkmode" = prog; then
+		 	      test -n "$add_dir" && finalize_deplibs="$add_dir $finalize_deplibs"
+		 	      test -n "$add" && finalize_deplibs="$add $finalize_deplibs"
+		 	    else
+		@@ -1873,7 +1873,7 @@
+		 	      test -n "$add" && deplibs="$add $deplibs"
+		 	    fi
+		 	  fi
+		-	elif test $linkmode = prog; then
+		+	elif test "$linkmode" = prog; then
+		 	  if test "$alldeplibs" = yes &&
+		 	     { test "$deplibs_check_method" = pass_all ||
+		 	       { test "$build_libtool_libs" = yes &&
+		@@ -1932,9 +1932,9 @@
+		 	  fi
+		 	fi # link shared/static library?
+		 
+		-	if test $linkmode = lib; then
+		+	if test "$linkmode" = lib; then
+		 	  if test -n "$dependency_libs" &&
+		-	     { test $hardcode_into_libs != yes || test $build_old_libs = yes ||
+		+	     { test "$hardcode_into_libs" != yes || test $build_old_libs = yes ||
+		 	       test $link_static = yes; }; then
+		 	    # Extract -R from dependency_libs
+		 	    temp_deplibs=
+		@@ -1964,7 +1964,7 @@
+		 	    tmp_libs="$tmp_libs $deplib"
+		 	  done
+		 
+		-	  if test $link_all_deplibs != no; then
+		+	  if test "$link_all_deplibs" != no; then
+		 	    # Add the search paths of all dependency libraries
+		 	    for deplib in $dependency_libs; do
+		 	      case $deplib in
+		@@ -2007,15 +2007,15 @@
+		 	  fi # link_all_deplibs != no
+		 	fi # linkmode = lib
+		       done # for deplib in $libs
+		-      if test $pass = dlpreopen; then
+		+      if test "$pass" = dlpreopen; then
+		 	# Link the dlpreopened libraries before other libraries
+		 	for deplib in $save_deplibs; do
+		 	  deplibs="$deplib $deplibs"
+		 	done
+		       fi
+		-      if test $pass != dlopen; then
+		-	test $pass != scan && dependency_libs="$newdependency_libs"
+		-	if test $pass != conv; then
+		+      if test "$pass" != dlopen; then
+		+	test "$pass" != scan && dependency_libs="$newdependency_libs"
+		+	if test "$pass" != conv; then
+		 	  # Make sure lib_search_path contains only unique directories.
+		 	  lib_search_path=
+		 	  for dir in $newlib_search_path; do
+		@@ -2073,7 +2073,7 @@
+		 	deplibs=
+		       fi
+		     done # for pass
+		-    if test $linkmode = prog; then
+		+    if test "$linkmode" = prog; then
+		       dlfiles="$newdlfiles"
+		       dlprefiles="$newdlprefiles"
+		     fi
+		@@ -2410,7 +2410,7 @@
+		 	    ;;
+		 	  *)
+		 	    # Add libc to deplibs on all other systems if necessary.
+		-	    if test $build_libtool_need_lc = "yes"; then
+		+	    if test "$build_libtool_need_lc" = "yes"; then
+		 	      deplibs="$deplibs -lc"
+		 	    fi
+		 	    ;;
+		@@ -2683,7 +2683,7 @@
+		 
+		       # Test again, we may have decided not to build it any more
+		       if test "$build_libtool_libs" = yes; then
+		-	if test $hardcode_into_libs = yes; then
+		+	if test "$hardcode_into_libs" = yes; then
+		 	  # Hardcode the library paths
+		 	  hardcode_libdirs=
+		 	  dep_rpath=
+	ENDPATCH
 }
+

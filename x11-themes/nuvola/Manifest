@@ -1,4 +1,3 @@
-MD5 acc03a4b12bb0433a57e95bd253b9501 metadata.xml 156
-MD5 50b30c9bf69e467891dd1509143b479d ChangeLog 1670
-MD5 f0ca6fe15c38bf2afd8ea48e258a0e26 nuvola-1.0-r1.ebuild 699
-MD5 4803ed418dd56e0eed289f0c67722023 files/digest-nuvola-1.0-r1 64
+MD5 f0e909c7e56e6de1d9467738fd940abc nuvola-1.0_beta.ebuild 637
+MD5 c1dfaf5da7c9b1cf4f325158cbdd5fb3 files/digest-nuvola-0.2.5 69
+MD5 7f5dd7e940ba5f3c35ec92aa0df3b609 files/digest-nuvola-1.0_beta 64

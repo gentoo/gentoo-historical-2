@@ -1,38 +1,37 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/raptor2/raptor2-1.0.0-r1.ebuild,v 1.10 2005/08/25 18:57:07 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/raptor2/raptor2-1.0.0-r1.ebuild,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
 inherit eutils games
 
 MY_P="raptor-${PV}"
 DESCRIPTION="space shoot-em-up game"
-HOMEPAGE="http://raptorv2.sourceforge.net/"
 SRC_URI="mirror://sourceforge/raptorv2/${MY_P}.tar.gz"
+HOMEPAGE="http://raptorv2.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ia64 ppc x86"
-IUSE=""
+KEYWORDS="~x86"
+IUSE="oggvorbis nls"
 
 RDEPEND=">=media-libs/allegro-4.0.0
 	>=media-libs/aldumb-0.9.2"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
 
 S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	unpack ${A} && cd ${S}
 	epatch ${FILESDIR}/${PV}-chdir.patch
-	sed -i \
-		-e "s:GENTOO_DATADIR:${GAMES_DATADIR}/${PN}/:" src/raptor.cpp \
-			|| die "sed src/raptor.cpp failed"
+	cd src && cp raptor.cpp{,.orig}
+	sed -e "s:GENTOO_DATADIR:${GAMES_DATADIR}/${PN}/:" \
+		raptor.cpp.orig > raptor.cpp
 }
 
 src_install() {
-	dogamesbin src/raptor || die "dogamesbin failed"
-	insinto "${GAMES_DATADIR}/${PN}/data"
-	doins data/* || die "doins failed"
+	dogamesbin src/raptor
+	insinto ${GAMES_DATADIR}/${PN}/data
+	doins data/*
 	dodoc AUTHORS ChangeLog README NEWS
 	prepgamesdirs
 }
+

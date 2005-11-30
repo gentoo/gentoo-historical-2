@@ -1,15 +1,6 @@
 # ChangeLog for app-emacs/filladapt
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/filladapt/ChangeLog,v 1.5 2005/07/01 18:14:57 mkennedy Exp $
-
-  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> filladapt-2.12.ebuild:
-  Keywording ~amd64.
-
-  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> filladapt-2.12.ebuild:
-  Marked as stable.
-
-  03 Sep 2004; David Holm <dholm@gentoo.org> filladapt-2.12.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/filladapt/ChangeLog,v 1.1 2004/08/30 16:42:04 usata Exp $
 
 *filladapt-2.12 (31 Aug 2004)
 

@@ -1,73 +1,10 @@
 # ChangeLog for dev-python/pexpect
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pexpect/ChangeLog,v 1.23 2005/10/02 14:13:24 agriffis Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pexpect/ChangeLog,v 1.1 2002/10/27 20:51:04 phoenix Exp $
 
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> pexpect-0.999.ebuild:
-  Mark 0.999 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> pexpect-0.999.ebuild:
-  add ~ia64
-
-  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pexpect-0.999.ebuild:
-  Stable on ppc.
-
-  09 Jan 2005; Marcus Hanwell <cryos@gentoo.org> pexpect-0.999.ebuild:
-  Marked stable on amd64, bug 59045.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  12 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> pexpect-0.999.ebuild:
-  Stable on alpha.
-
-  28 Oct 2004; Jason Wever <weeve@gentoo.org> pexpect-0.999.ebuild:
-  Stable on sparc.
-
-  20 Oct 2004; Rob Cakebread <pythonhead@gentoo.org> pexpect-0.999.ebuild:
-  Marked stable x86
-
-  02 Oct 2004; Hasan Khalil <gongloo@gentoo.org> pexpect-0.999.ebuild:
-  Keyworded ~ppc-macos.
-
-  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> pexpect-0.97.ebuild:
-  Stable on alpha.
-
-*pexpect-0.999 (25 May 2004)
-
-  25 May 2004; Bryan Østergaard <kloeri@gentoo.org> +pexpect-0.999.ebuild:
-  Version bump.
-
-  13 May 2004; Jason Eric Huebel <jhuebel@gentoo.org> pexpect-0.97.ebuild:
-  ~amd64
-
-  15 Apr 2004; Michael McCabe <randy@gentoo.org> pexpect-0.97.ebuild:
-  adding s390 keywords
-
-  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> pexpect-0.97.ebuild:
-  Stable on sparc.
-
-*pexpect-0.97 (04 Apr 2003)
-
-  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> pexpect-0.97.ebuild:
-  version bump
-
-*pexpect-0.94 (27 Oct 2002)
-
-  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> pexpect-0.94.ebuild:
-  Add ~alpha to KEYWORDS
-
-  12 Mar 2003; Jason Wever <weeve@gentoo.org> pexpect-0.94.ebuild:
-  Added sparc to keywords.
-
-  10 Mar 2003; Aron Griffis <agriffis@gentoo.org> pexpect-0.94.ebuild:
-  Mark stable on alpha
-
-  20 Nov 2002; Jon Nall <nall@gentoo.org> pexpect-0.94.ebuild :
-  added ppc to KEYWORDS
-
-  18 Nov 2002; phoen][x <phoenix@gentoo.org> pexpect-0.94.ebuild :
-  Put this ebuild into the stable profile. 
+*pexpect-0.94.ebuild (27 Oct 2002)
 
   27 Oct 2002; phoen][x <phoenix@gentoo.org> pexpect-0.94.ebuild, 
   files/digest-pexpect-0.94, ChangeLog :
+
   Initial import. This is an expect-like interface for python.

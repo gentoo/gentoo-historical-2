@@ -3,17 +3,17 @@
 
 . /etc/rc.d/config/functions
 
-SERVICE=syslog
+SERVICE=svc-syslog
 opts="start stop"
 
 start() {
-    ebegin "Starting supervised ${SERVICE}"
+    ebegin "Starting ${SERVICE}"
 	ln -sf ../services/${SERVICE} ${SVCDIR}/control/${SERVICE}
-    eend $?
+    eend $retval
 }
 
 stop() {
-    ebegin "Stopping supervised ${SERVICE}"
+    ebegin "Stopping ${SERVICE}"
    	if [ -e ${SVCDIR}/control/${SERVICE} ]
 	then
 		/usr/bin/svc -dx ${SVCDIR}/control/${SERVICE}

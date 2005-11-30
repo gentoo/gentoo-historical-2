@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/selflinux/selflinux-0.10.0.ebuild,v 1.4 2005/01/01 13:20:30 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/selflinux/selflinux-0.10.0.ebuild,v 1.1 2004/04/25 22:25:12 mholzer Exp $
 
 IUSE=""
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://selflinux.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc amd64"
+KEYWORDS="x86 ppc sparc"
 
 src_install() {
 	dodir /usr/share/doc/selflinux

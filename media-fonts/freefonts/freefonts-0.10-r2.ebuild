@@ -1,37 +1,37 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/freefonts/freefonts-0.10-r2.ebuild,v 1.17 2005/09/13 15:59:54 agriffis Exp $
-
-DESCRIPTION="A Collection of Free Type1 Fonts"
-HOMEPAGE="http://www.gimp.org/"
-SRC_URI="mirror://gimp/fonts/${P}.tar.gz"
-
-LICENSE="freedist"
-SLOT="0"
-KEYWORDS="alpha amd64 arm ppc ppc64 s390 sparc x86"
-IUSE="X"
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/freefonts/freefonts-0.10-r2.ebuild,v 1.1 2003/06/02 13:59:11 seemant Exp $
 
 S=${WORKDIR}/freefont
+DESCRIPTION="A Collection of Free True Type Fonts"
+SRC_URI="ftp://ftp.gimp.org/pub/gimp/fonts/${P}.tar.gz"
+HOMEPAGE="http://www.gimp.org"
+KEYWORDS="~x86 ~sparc ~ppc"
+SLOT="0"
+LICENSE="freedist"
+IUSE="X"
 
-src_install() {
+src_install () {
 	insinto /usr/share/fonts/freefont
-	doins *.pfb || die "ins pfb"
+	doins *.pfb 
 
-	if use X ; then
-		mkfontscale || die "mkfontscale"
-		mkfontdir || die "mkfontdir"
-		doins fonts.* || die "doins fonts"
+	if [ -n "`use X`" ] ;
+	then
+		mkfontscale
+		mkfontdir
+		doins fonts.*
 	fi
 
 	dodoc README *.license
 }
 
 pkg_postinst() {
-	if [ "${ROOT}" = "/" ] &&  [ -x /usr/bin/fc-cache ] ; then
-		echo
-		einfo "Creating font cache..."
-		HOME="/root" /usr/bin/fc-cache -f
-	fi
+        if [ "${ROOT}" = "/" ] &&  [ -x /usr/bin/fc-cache ] 
+        then
+                echo
+                einfo "Creating font cache..."
+                HOME="/root" /usr/bin/fc-cache -f
+        fi
 
 	einfo "The freefonts dir has been moved from /usr/X11R6/lib/X11/fonts/freefont to /usr/share/fonts/freefont ."
 	einfo "Setting new fontpaths for X might be necessary in some cases."

@@ -1,33 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sweep/sweep-0.8.2-r1.ebuild,v 1.15 2005/07/09 19:13:46 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sweep/sweep-0.8.2-r1.ebuild,v 1.1 2003/07/17 21:57:15 raker Exp $
 
-inherit eutils
+IUSE="oggvorbis alsa nls"
 
-DESCRIPTION="audio editor and live playback tool"
+DESCRIPTION="Sweep is an audio editor and live playback tool"
 HOMEPAGE="http://www.metadecks.org/software/sweep/"
 SRC_URI="http://www.metadecks.org/software/sweep/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc ~alpha amd64"
-IUSE="vorbis alsa nls"
+KEYWORDS="~x86 ~ppc ~sparc ~hppa ~mips ~alpha"
 
-DEPEND=">=media-libs/libsndfile-1.0
-		>=x11-libs/gtk+-1.2
-		>=media-sound/madplay-0.14.2b
+DEPEND=">=media-libs/libsndfile-1.0*
+		>=x11-libs/gtk+-1.2*
 		dev-libs/tdb
 		media-libs/libsamplerate
+		media-libs/libmad
+		media-libs/libid3tag
 		media-libs/speex
-		vorbis? ( media-libs/libogg media-libs/libvorbis )
+		oggvorbis? ( media-libs/libogg media-libs/libvorbis )
 		alsa? ( media-libs/alsa-lib )
 		nls? ( sys-devel/gettext )"
+RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-alsa.patch
-}
+S="${WORKDIR}/${P}"
 
 src_compile() {
 	local myconf
@@ -35,11 +32,11 @@ src_compile() {
 
 	# --enable-experimental       Add to myconf if you want this stuff 
 
-	use vorbis || myconf="${myconf} --disable-oggvorbis"
+	use oggvorbis || myconf="${myconf} --disable-oggvorbis"
 	use alsa && myconf="${myconf} --enable-alsa"
 	use nls  || myconf="${myconf} --disable-nls"
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 	emake
 }
 
@@ -48,8 +45,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	einfo ""
 	einfo "Sweep can use ladspa plugins,"
 	einfo "emerge ladspa-sdk and ladspa-cmt if you want them."
-	einfo
+	einfo ""
 }

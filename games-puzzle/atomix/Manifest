@@ -1,14 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 217337920de56d05d2856aa4c4530371 ChangeLog 1012
-MD5 d1b422366baec3b320aa30cce1f3d4c2 atomix-1.0.1.ebuild 1320
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 856b6bd13d4c9efac37f882d6eef9425 files/digest-atomix-1.0.1 64
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQFBemQMRkyva5PS18kRAoIMAJ9LY/hE6QEh/0fqvzua77gIF4caCgCfbS8C
-EmmVxwEv+A+pfqRU/Cks6bg=
-=r7Et
------END PGP SIGNATURE-----
+MD5 2ad5687c000e6534f18a4da2e5045e7e ChangeLog 364
+MD5 490b55e29df04d7528416c38ca0d24fe atomix-0.9.4.ebuild 873
+MD5 25a117075cf5ade9a32803da4a32ff3e files/digest-atomix-0.9.4 64

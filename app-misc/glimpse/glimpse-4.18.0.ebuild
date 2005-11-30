@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/glimpse/glimpse-4.18.0.ebuild,v 1.3 2005/01/01 15:04:48 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/glimpse/glimpse-4.18.0.ebuild,v 1.1 2004/11/21 12:14:27 dragonheart Exp $
 
 inherit flag-o-matic eutils
 
@@ -8,7 +8,7 @@ DESCRIPTION="A index/query system to search a large set of files quickly"
 HOMEPAGE="http://webglimpse.net/"
 SRC_URI="http://webglimpse.net/trial/${P}.tar.gz"
 
-LICENSE="glimpse"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~amd64 ~ia64"
 IUSE="static"

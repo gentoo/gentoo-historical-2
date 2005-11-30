@@ -1,18 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/nas/nas-1.6c-r2.ebuild,v 1.7 2005/01/22 13:00:37 kloeri Exp $
-
-IUSE="static"
+# $Header: /var/cvsroot/gentoo-x86/media-libs/nas/nas-1.6c-r2.ebuild,v 1.1 2004/07/10 17:21:52 kugelfang Exp $
 
 inherit eutils
 
 DESCRIPTION="Network Audio System"
-HOMEPAGE="http://radscan.com/nas.html"
 SRC_URI="http://radscan.com/nas/${P}.src.tar.gz"
+HOMEPAGE="http://radscan.com/nas.html"
 
 SLOT="0"
 LICENSE="X11"
-KEYWORDS="alpha amd64 hppa ~ia64 ~mips ~ppc ppc64 ~sparc x86"
+KEYWORDS="x86 ~sparc ~ppc ~hppa ~alpha ~amd64 ~ia64 ~mips ~ppc64"
+
+IUSE="static"
 
 # This is ridculuous, we only need xmkmf, but no other package
 # provides it. 20020607 (Seemant): Actually, the homepage says it needs

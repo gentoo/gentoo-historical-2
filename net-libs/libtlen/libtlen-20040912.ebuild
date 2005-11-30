@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libtlen/libtlen-20040912.ebuild,v 1.2 2005/03/27 00:55:15 luckyduck Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libtlen/libtlen-20040912.ebuild,v 1.1 2004/09/26 22:48:51 sekretarz Exp $
 
 DESCRIPTION="Support library for Tlen IMS"
 HOMEPAGE="http://libtlen.eu.org/"
@@ -15,22 +13,10 @@ IUSE="doc"
 
 DEPEND="virtual/libc"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	if use amd64; then
-		epatch ${FILESDIR}/${PV}-fPIC.patch
-		aclocal
-		autoconf
-		libtoolize --force --copy
-	fi
-}
-
 src_compile() {
 	econf \
 		--enable-shared || die
-	emake all || die
+	emake CFLAGS="${CFLAGS}" all || die
 }
 
 src_install() {

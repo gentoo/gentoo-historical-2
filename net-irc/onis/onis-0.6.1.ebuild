@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/onis/onis-0.6.1.ebuild,v 1.4 2005/04/22 15:21:29 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/onis/onis-0.6.1.ebuild,v 1.1 2004/08/05 23:28:07 swegener Exp $
 
 inherit eutils
 
@@ -9,12 +9,11 @@ HOMEPAGE="http://verplant.org/onis/"
 SRC_URI="http://verplant.org/${PN}/${P}.tar.bz2"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 RDEPEND="dev-lang/perl"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+DEPEND=">=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
@@ -26,7 +25,7 @@ src_unpack() {
 }
 
 src_install () {
-	eval $(perl -V:installprivlib)
+	eval `perl -V:installprivlib`
 
 	dobin onis
 

@@ -1,11 +1,12 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/bonobo-python/bonobo-python-0.2.0-r4.ebuild,v 1.4 2004/06/25 01:26:26 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/bonobo-python/bonobo-python-0.2.0-r4.ebuild,v 1.1 2004/04/12 01:41:12 kloeri Exp $
 
 inherit virtualx
 
 IUSE=""
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Bonobo bindings for Python"
 SRC_URI="http://bonobo-python.lajnux.nu/download/${P}.tar.gz"
 HOMEPAGE="http://bonobo-python.lajnux.nu/"
@@ -17,7 +18,7 @@ DEPEND="=x11-libs/gtk+-1.2*
 	virtual/python"
 
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~alpha ~ppc"
+KEYWORDS="~x86 ~sparc ~alpha"
 LICENSE="GPL-2"
 
 src_unpack() {

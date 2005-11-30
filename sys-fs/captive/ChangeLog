@@ -1,48 +1,6 @@
 # ChangeLog for sys-fs/captive
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/captive/ChangeLog,v 1.7 2005/08/23 13:10:28 genstef Exp $
-
-  23 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
-  captive-1.1.5-r2.ebuild:
-  Fix enewuser for BSD, bug 103421
-
-  05 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
-  -captive-1.1.5-r1.ebuild:
-  Cleaning up old versions
-
-  15 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
-  captive-1.1.5-r2.ebuild:
-  Adding new depend on >=fuse-2.2 .. it does not work with old versions(1.4)
-  as I learned from Milbo in #gentoo-anfaenger in IRC, thanks. I also added a
-  dep on >=lufis-0.3 to make sure that people can take advantage of the uid=
-  and gid= options and because it is more likely then that lufis is rebuilt
-  when upgrading fuse from 1.4 to 2.2 .. rebuilding lufis is necessary when
-  upgrading fuse major versions.
-
-*captive-1.1.5-r2 (13 Feb 2005)
-
-  13 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
-  +files/add-extra-opts-for-user-access-to-mount-t-captive.patch,
-  +captive-1.1.5-r2.ebuild:
-  New ebuild with static tarball to solve =gnome-vfs-2.6* depend and
-  gnome-vfs-problems, reported in bug 77239 thanks to Dylan Wakefield
-  <dylanw@telpacific.com.au> and solve mount problems to allow other users to
-  umount the device as reported in bug 75825 thanks to Thomas Bettler
-  <bettlertho@sis.unibe.ch>, Alexander Schneider <A.Schneider@magicspace.de>,
-  Marc Gallagher <marcgallagher@gmail.com>, Lars Petersen <lpetersen@gmx.net>
-  and Alistair <alistair@stuffthatworks.com.au>
-
-*captive-1.1.5-r1 (05 Dec 2004)
-
-  05 Dec 2004; Stefan Schweizer <genstef@gentoo.org>
-  +files/use-lufis-for-mount-t-captive.patch, +captive-1.1.5-r1.ebuild,
-  -captive-1.1.5.ebuild:
-  Adding a patch to make "mount -t captive-ntfs" working, bumping the revision
-  to send it out.
-
-  03 Dec 2004; Stefan Schweizer <genstef@gentoo.org>
-  +files/do-not-check-for-lufsd.patch:
-  Adding missing patch
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/captive/ChangeLog,v 1.1 2004/12/02 19:46:38 genstef Exp $
 
 *captive-1.1.5 (02 Dec 2004)
 

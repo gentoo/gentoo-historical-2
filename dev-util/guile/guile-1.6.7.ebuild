@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/guile/guile-1.6.7.ebuild,v 1.16 2005/09/09 21:18:13 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/guile/guile-1.6.7.ebuild,v 1.1 2005/01/28 11:03:43 liquidx Exp $
 
 inherit flag-o-matic eutils libtool
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnu.org/software/guile/"
 SRC_URI="mirror://gnu/guile/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ~ppc64 s390 sh sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc-macos"
 IUSE=""
 
 # Problems with parallel builds (#34029), so I'm taking the safer route
@@ -34,16 +34,11 @@ src_unpack() {
 		epatch ${FILESDIR}/guile-amd64.patch
 	fi
 
-	if [ "${ARCH}" = "ppc" ]; then
-		replace-flags -O3 -O2
+	if use ppc-macos ; then
+		elibtoolize
+		epatch ${FILESDIR}/guile-macos-posix.patch
+		epatch ${FILESDIR}/guile-macos-relink.patch
 	fi
-
-	# fix for putenv on Darwin
-	epatch ${FILESDIR}/${P}-posix.patch
-	# fixes sleep/usleep errors on Darwin
-	epatch ${FILESDIR}/${P}-scmsigs.patch
-	# Fix for gcc-4.0
-	epatch ${FILESDIR}/${P}-gcc4.patch
 }
 
 src_compile() {
@@ -51,7 +46,7 @@ src_compile() {
 	# -g3, at least on some architectures.  (19 Aug 2003 agriffis)
 	filter-flags -g3
 
-	use userland_Darwin && append-flags -Dmacosx
+	use ppc-macos && append-flags -no-cpp-precomp -Dmacosx
 
 	econf \
 		--with-threads \
@@ -71,8 +66,8 @@ src_install() {
 	# texmacs needs this, closing bug #23493
 	dodir /etc/env.d
 
-	# We don't slot the env.d entry because /usr/bin/guile-config is
-	# there anyway, and will only match the last guile installed.
+	# We don't slot the env.d entry because /usr/bin/guile-config is 
+	# there anyway, and will only match the last guile installed. 
 	# so the GUILE_LOAD_PATH will match the data available from guile-config.
 	echo "GUILE_LOAD_PATH=\"/usr/share/guile/${MAJOR}\"" > ${D}/etc/env.d/50guile
 }

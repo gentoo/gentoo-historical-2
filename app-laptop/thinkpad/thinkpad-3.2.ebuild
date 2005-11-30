@@ -1,24 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/thinkpad/thinkpad-3.2.ebuild,v 1.5 2005/01/01 14:49:09 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/thinkpad/thinkpad-3.2.ebuild,v 1.1 2004/03/08 04:37:27 latexer Exp $
 
 #transform P to match tarball versioning
 MYPV=${PV/_beta/beta}
 MYP="${PN}_${MYPV}"
 KV=""
 DESCRIPTION="Thinkpad system control kernel modules"
-HOMEPAGE="http://tpctl.sourceforge.net/tpctlhome.htm"
 SRC_URI="mirror://sourceforge/tpctl/${MYP}.tar.gz"
-
-LICENSE="GPL-2"
+HOMEPAGE="http://tpctl.sourceforge.net/tpctlhome.htm"
+KEYWORDS="x86 amd64 -ppc -mips"
 SLOT="0"
-KEYWORDS="x86 amd64"
-IUSE=""
+LICENSE="GPL-2"
 
-DEPEND="virtual/libc"
+#virtual/glibc should depend on specific kernel headers
+DEPEND="virtual/glibc"
 
 pkg_setup() {
-	check_KV
+	#thinkpad will compile modules for the kernel pointed to by /usr/src/linux
+	KV=`readlink /usr/src/linux`
+	if [ $? -ne 0 ] ; then
+		echo
+		echo "/usr/src/linux symlink does not exist; cannot continue."
+		echo
+		die
+	else
+		KV=${KV/linux-/}
+	fi
 }
 
 src_compile() {
@@ -26,7 +34,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc AUTHORS ChangeLog README SUPPORTED-MODELS TECHNOTES
+	dodoc AUTHORS COPYING ChangeLog README SUPPORTED-MODELS TECHNOTES
 	dodir /lib/modules/${KV}/thinkpad
 	cp ${S}/drivers/{thinkpad,smapi,superio,rtcmosram,thinkpadpm}.o \
 		${D}/lib/modules/${KV}/thinkpad
@@ -38,5 +46,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	[ "${ROOT}" == "/" ] && /usr/sbin/update-modules
+	/usr/sbin/update-modules || return 0
+}
+
+pkg_prerm() {
+	/sbin/modprobe -r smapi superion rtcmosram thinkpadpm thinkpad
 }

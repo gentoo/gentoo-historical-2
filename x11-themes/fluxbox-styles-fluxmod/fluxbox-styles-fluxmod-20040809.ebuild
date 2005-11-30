@@ -1,14 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fluxbox-styles-fluxmod/fluxbox-styles-fluxmod-20040809.ebuild,v 1.5 2005/07/09 17:56:03 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fluxbox-styles-fluxmod/fluxbox-styles-fluxmod-20040809.ebuild,v 1.1 2004/08/12 13:37:14 ciaranm Exp $
 
 DESCRIPTION="A collection of FluxBox themes from FluxMod"
-HOMEPAGE="http://www.fluxmod.dk"
+HOMEPAGE="http://www.ikaro.dk"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 sparc mips ppc ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
+KEYWORDS="~x86 ~sparc ~mips ~ppc ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
 
 IUSE=""
 DEPEND=">=sys-apps/sed-4"
@@ -31,11 +31,11 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
-	einfo "These styles are installed into /usr/share/fluxbox, which will"
+	einfo " "
+	einfo "These styles are installed into /usr/share/fluxbox, which will "
 	einfo "show up in Fluxbox Menu > System Styles by default. You will have"
-	einfo "to either restart Fluxbox or use Fluxbox Menu > Reload config"
+	einfo "to either restart Fluxbox or use Fluxbox Menu > Reload config "
 	einfo "for changes to show up."
-	einfo
+	einfo " "
 }
 

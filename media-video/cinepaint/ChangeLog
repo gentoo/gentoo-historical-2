@@ -1,43 +1,6 @@
 # ChangeLog for media-video/cinepaint
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cinepaint/ChangeLog,v 1.10 2005/09/03 23:23:59 flameeyes Exp $
-
-  03 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> cinepaint-0.18.ebuild,
-  cinepaint-0.18.3.ebuild, cinepaint-0.19.0.ebuild:
-  Don't install COPYING file.
-
-  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
-  cinepaint-0.19.0.ebuild:
-  Added missing inherit flag-o-matic. Fixes bug #103924.
-
-  07 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
-  -files/cinepaint-lcms.patch, cinepaint-0.19.0.ebuild:
-  Don't apply a patch to use /usr/include/lcms path, just append a -I flag if
-  the file is there (nothing needed for newer version of media-libs/lcms that
-  don't install in /lcms path).
-
-  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
-  Remove retired developer from metadata.xml.
-
-*cinepaint-0.19.0 (19 Mar 2005)
-
-  19 Mar 2005; Chris White <chriswhite@gentoo.org>
-  +files/cinepaint-lcms.patch, +cinepaint-0.19.0.ebuild:
-  Bump to version 0.19. gcc3.4 patch no longer needed. Added a patch to fix
-  lcms header locations.
-
-  13 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  +files/cinepaint-0.18.3-gcc34.patch, cinepaint-0.18.3.ebuild:
-  added patch to fix compilation with gcc3.4, also added ~amd64 to KEYWORDS.
-  fixed #60753
-
-  13 Aug 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
-  Added missing metadata.xml.  Taking over as maintainer.
-
-*cinepaint-0.18.3 (03 Aug 2004)
-
-  03 Aug 2004; David Holm <dholm@gentoo.org> +cinepaint-0.18.3.ebuild:
-  Version bumped and added to ~ppc.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/cinepaint/ChangeLog,v 1.1 2003/07/31 18:36:55 vapier Exp $
 
 *cinepaint-0.18 (31 Jul 2003)
 

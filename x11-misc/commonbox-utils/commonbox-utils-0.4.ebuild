@@ -1,33 +1,42 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/commonbox-utils/commonbox-utils-0.4.ebuild,v 1.14 2005/02/06 18:47:36 corsair Exp $
+# $Header
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Common utilities for fluxbox, blackbox, and openbox"
-HOMEPAGE="http://mkeadle.org/"
 #SRC_URI="mirror://gentoo/${P}.tar.bz2"
 SRC_URI="http://mkeadle.org/distfiles/${P}.tar.bz2"
-IUSE=""
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa ~amd64 mips ia64 ppc64 ~ppc-macos"
+HOMEPAGE="http://mkeadle.org/"
 
-DEPEND="media-gfx/xv"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc alpha hppa"
+
+DEPENDS="media-gfx/xv"
+
 RDEPEND="virtual/x11"
 
 src_compile() {
+
+	cd ${S}
 	./compile.sh
+
 }
 
-src_install() {
-	dobin util/{bsetbg,commonbox-menugen,commonbox-imagebgmenugen}
-	dodoc README.commonbox-utils AUTHORS COPYING
-	doman bsetbg.1
+src_install () {
 
+	dobin ${S}/util/bsetbg ${S}/util/bsetroot ${S}/util/commonbox-menugen ${S}/util/commonbox-imagebgmenugen
+	dodoc README.commonbox-utils AUTHORS COPYING
+	doman bsetroot.1 bsetbg.1
+	
 	insinto /usr/share/commonbox
 	doins ${S}/solidbgmenu
 }
 
+
 pkg_postinst() {
-	${S}/util/commonbox-imagebgmenugen
-	${S}/util/commonbox-menugen -kg -o /usr/share/commonbox/menu
+
+	commonbox-imagebgmenugen
+	commonbox-menugen -kg -o /usr/share/commonbox/menu
+
 }

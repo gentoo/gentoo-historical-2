@@ -1,21 +1,6 @@
 # ChangeLog for x11-themes/fvwm_sounds
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm_sounds/ChangeLog,v 1.8 2005/10/02 19:36:56 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> fvwm_sounds-1.0.ebuild:
-  Mark 1.0 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> fvwm_sounds-1.0.ebuild:
-  add ~ia64
-
-  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fvwm_sounds-1.0.ebuild:
-  Added IUSE=
-
-  26 Oct 2003; Tavis Ormandy <taviso@gentoo.org> fvwm_sounds-1.0.ebuild:
-  stable on alpha
-
-  14 Sep 2003; Tavis Ormandy <taviso@gentoo.org> fvwm_sounds-1.0.ebuild:
-  stable on x86, testing on alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm_sounds/ChangeLog,v 1.1 2002/10/25 15:26:04 stubear Exp $
 
 *fvwm_sounds-1.0 (12 Sep 2002)
 

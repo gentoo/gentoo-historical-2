@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/lookup/lookup-1.4.ebuild,v 1.5 2005/07/01 19:49:37 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/lookup/lookup-1.4.ebuild,v 1.1 2004/02/13 18:17:28 usata Exp $
 
 inherit elisp
 
@@ -12,9 +12,11 @@ SRC_URI="http://openlab.jp/edict/lookup/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~x86"
 
 DEPEND="virtual/emacs"
+
+S="${WORKDIR}/${P}"
 
 src_compile() {
 

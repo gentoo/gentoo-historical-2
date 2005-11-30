@@ -1,19 +1,6 @@
 # ChangeLog for x11-themes/smooth-themes
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/smooth-themes/ChangeLog,v 1.4 2005/09/19 22:06:33 leonardop Exp $
-
-*smooth-themes-0.5.8-r1 (19 Sep 2005)
-
-  19 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
-  +smooth-themes-0.5.8-r1.ebuild:
-  Removed the gtk2 USE flag (bug #106560).
-
-  05 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
-  smooth-themes-0.5.8.ebuild:
-  Stable on x86.
-
-  04 Aug 2005; David Holm <dholm@gentoo.org> smooth-themes-0.5.8.ebuild:
-  Added to ~ppc.
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/smooth-themes/ChangeLog,v 1.1 2005/08/04 09:36:53 leonardop Exp $
 
 *smooth-themes-0.5.8 (04 Aug 2005)
 

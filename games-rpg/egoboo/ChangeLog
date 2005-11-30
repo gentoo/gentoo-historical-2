@@ -1,29 +1,6 @@
-# ChangeLog for games-rpg/egoboo
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/egoboo/ChangeLog,v 1.10 2005/05/17 18:47:39 wolf31o2 Exp $
-
-  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> egoboo-2.22.ebuild:
-  Cleanup for bug #92745.
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> egoboo-2.22.ebuild:
-  virtual/glibc -> virtual/libc
-
-  15 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.22.ebuild:
-  inherit eutils for epatch
-
-  15 Feb 2004; David Holm <dholm@gentoo.org> egoboo-2.22.ebuild,
-  files/2.22-endian.patch:
-  Added a patch to make egoboo compile on ppc. Keyworded ~ppc.
-
-  08 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.22.ebuild,
-  files/egoboo-2.22.sh:
-  try to make things actually work (bug 37474); use games eclass
-
-  01 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> egoboo-2.22.ebuild:
-  chown user.group -> chown user:group
+# ChangeLog for app-games/egoboo
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/egoboo/ChangeLog,v 1.1 2003/09/10 06:26:50 vapier Exp $
 
 *egoboo-2.22 (18 Sep 2002)
 
@@ -38,10 +15,10 @@
 
   Filter -march=pentium4 or -march=athlon*. Replace with i686.
     
-  20 Jul 2002: Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> egoboo-2.22.ebuild :
+  20 Jul 2002: Jose Alberto Suárez López <bass@gentoo.org> egoboo-2.22.ebuild :
   Fixed bug #5272. Only moving env variables to other section.
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> egoboo-2.22.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> egoboo-2.22.ebuild :
   Added KEYWORDS.
 
   20 June 2002; George Shapovalov <george@gentoo.org> all :

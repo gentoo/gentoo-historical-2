@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/build/build-1.10.ebuild,v 1.6 2005/01/01 16:58:04 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/build/build-1.10.ebuild,v 1.1 2003/02/22 12:46:39 rendhalver Exp $
 
 SLOT="0"
 IUSE=""
@@ -13,6 +13,7 @@ app-xemacs/dired
 app-xemacs/w3
 app-xemacs/prog-modes
 "
-KEYWORDS="x86 ~ppc alpha sparc amd64"
+KEYWORDS="x86 ~ppc ~alpha sparc"
 
 inherit xemacs-packages
+

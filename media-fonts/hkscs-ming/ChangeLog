@@ -1,27 +1,6 @@
 # ChangeLog for media-fonts/hkscs-ming
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/hkscs-ming/ChangeLog,v 1.7 2005/07/15 17:06:32 flameeyes Exp $
-
-  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> ChangeLog:
-  Stable on amd64.
-
-  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org>
-  hkscs-ming-1.0_pre20030919-r1.ebuild:
-  Stable on alpha and ppc.
-
-  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org>
-  hkscs-ming-1.0_pre20030919-r1.ebuild:
-  Marked ~amd64.
-
-*hkscs-ming-1.0_pre20030919-r1 (21 Jun 2004)
-
-  21 Jun 2004; Mamoru KOMACHI <usata@gentoo.org>
-  +hkscs-ming-1.0_pre20030919-r1.ebuild:
-  font.eclassify
-
-  28 Mar 2004; Alastair Tse <liquidx@gentoo.org>
-  hkscs-ming-1.0_pre20030919.ebuild:
-  added ppc keyword
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/hkscs-ming/ChangeLog,v 1.1 2004/02/07 09:32:49 liquidx Exp $
 
 *hkscs-ming-1.0_pre20030919 (07 Feb 2004)
 

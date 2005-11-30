@@ -1,10 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-dspectogram/xmms-dspectogram-1.2.1.ebuild,v 1.15 2005/09/04 10:31:50 flameeyes Exp $
-
-inherit eutils
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-dspectogram/xmms-dspectogram-1.2.1.ebuild,v 1.1 2003/03/29 03:40:04 seemant Exp $
 
 MY_P=${PN/xmms-/}-v${PV}
 S=${WORKDIR}/${MY_P}
@@ -14,7 +10,7 @@ SRC_URI="http://www.shell.linux.se/bm/f/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc amd64 sparc ~ppc64"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND=">=sys-apps/portage-2.0.47-r10
 	media-sound/xmms"
@@ -23,17 +19,17 @@ src_unpack() {
 	unpack ${A}
 	cd ${S} || die
 	# patch in DESTDIR support
-	epatch ${FILESDIR}/${MY_P}-destdir.patch
+	epatch ${FILESDIR}/${PN}-destdir.patch
 }
 
-src_compile() {
+src_compile() {     
 	# There is no configure script, but the
 	# Makefile does things (mostly) correctly.
-	make clean || die
+ 	make clean || die
 	emake OPT="$CFLAGS" || die
 }
 
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc README Changes
+	dodoc README COPYING Changes
 }

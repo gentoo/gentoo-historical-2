@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/tla.eclass,v 1.8 2005/07/11 15:08:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/tla.eclass,v 1.1 2003/11/21 17:39:58 rphillips Exp $
 #
 # Original Author:    Jeffrey Yasskin <jyasskin@mail.utexas.edu>
 #
@@ -17,12 +17,14 @@
 # TODO:
 # Make it support particular revisions.
 
+ECLASS=tla
+INHERITED="$INHERITED $ECLASS"
 
 # Don't download anything other than the tla archive
 SRC_URI=""
 
 # You shouldn't change these settings yourself! The ebuild/eclass inheriting
-# this eclass will take care of that.
+# this eclass will take care of that. 
 
 # --- begin ebuild-configurable settings
 
@@ -56,14 +58,14 @@ SRC_URI=""
 # --- end ebuild-configurable settings ---
 
 # add tla to deps
-DEPEND="dev-util/tla"
+newdepend "dev-util/tla"
 
 # registers archives mentioned in $ETLA_ARCHIVES
 tla_register_archives() {
 	debug-print-function $FUNCNAME $* $ETLA_ARCHIVES
 
 	for archive in $ETLA_ARCHIVES; do
-		$ETLA_TLA_CMD register-archive -f $archive || die "Could not register archive $archive"
+		$ETLA_TLA_CMD register-archive $archive || die "Could not register archive $archive"
 	done
 }
 
@@ -109,7 +111,7 @@ tla_fetch() {
 	local tla_archive=`$ETLA_TLA_CMD parse-package-name --arch $ETLA_VERSION`
 	local tla_version=`$ETLA_TLA_CMD parse-package-name --package-version $ETLA_VERSION`
 	#local tla_revision=`$ETLA_TLA_CMD parse-package-name --lvl $ETLA_VERSION`
-
+	
 	# determine checkout or update mode and change to the right directory.
 	if [ ! -d "$ETLA_TOP_DIR/$ETLA_CACHE_DIR/{arch}" ]; then
 		mode=get
@@ -139,7 +141,7 @@ tla_fetch() {
 	local cmdupdate="${ETLA_TLA_CMD} ${ETLA_UPDATE_CMD} ${ETLA_VERSION}"
 
 	if [ "${mode}" == "get" ]; then
-		einfo "Running $cmdget"
+		einfo "Running $cmdget" 
 		eval $cmdget || die "tla get command failed"
 	elif [ "${mode}" == "update" ]; then
 		einfo "Running $cmdupdate"
@@ -163,17 +165,17 @@ tla_src_unpack() {
 	ETLA_CACHE_DIR=$ETLA_CACHE_DIR
 	ETLA_CLEAN=$ETLA_CLEAN"
 
-	einfo "Registering Archives ..."
+	einfo "Registering Archives..."
 	tla_register_archives
 
-	einfo "Checking that passed-in variables are rational ..."
+	einfo "Checking that passed-in variables are rational..."
 	tla_check_vars
 
-	einfo "Fetching tla version $ETLA_VERSION into $ETLA_TOP_DIR ..."
+	einfo "Fetching tla version $ETLA_VERSION into $ETLA_TOP_DIR..."
 	tla_fetch
-
-	einfo "Copying $ETLA_CACHE_DIR from $ETLA_TOP_DIR ..."
-	debug-print "Copying $ETLA_CACHE_DIR from $ETLA_TOP_DIR ..."
+	
+	einfo "Copying $ETLA_CACHE_DIR from $ETLA_TOP_DIR..."
+	debug-print "Copying $ETLA_CACHE_DIR from $ETLA_TOP_DIR..."
 
 	# probably redundant, but best to make sure
 	# Use ${WORKDIR}/${P} rather than ${S} so user can point ${S} to something inside.
@@ -195,7 +197,7 @@ tla_src_unpack() {
 	#	# tla_src_unpack may be called several times
 	#	export PATCHES=""
 	#fi
-
+	
 	einfo "Version ${ETLA_VERSION} is now in ${WORKDIR}/${P}"
 
 }

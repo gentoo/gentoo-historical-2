@@ -1,28 +1,6 @@
-# ChangeLog for www-servers/webfs
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/webfs/ChangeLog,v 1.7 2005/02/16 15:58:36 ka0ttic Exp $
-
-*webfs-1.21 (16 Feb 2005)
-
-  16 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +files/webfs.confd,
-  +files/webfs.initd, webfs-1.20.ebuild, +webfs-1.21.ebuild:
-  Version bump; added threads support via USE=threads. Also added init/conf
-  scripts thanks to Adam Chodorowski in bug 59427.
-
-  23 Jan 2005; Simon Stelling <blubb@gentoo.org> webfs-1.20.ebuild:
-  added ~amd64
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> webfs-1.20.ebuild:
-  Masked webfs-1.20.ebuild stable for ppc
-
-  31 Aug 2004; David Holm <dholm@gentoo.org> webfs-1.20.ebuild:
-  Added to ~ppc.
+# ChangeLog for net-www/webfs
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/webfs/ChangeLog,v 1.1 2004/08/08 19:06:02 stuart Exp $
 
 *webfs-1.20 (08 Aug 2004)
 
@@ -33,7 +11,7 @@
   01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> webfs-1.20.ebuild:
   virtual/glibc -> virtual/libc
 
-  11 Jun 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> webfs-1.20.ebuild:
+  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> webfs-1.20.ebuild:
   Stable on alpha.
 
   16 Dec 2003; Martin Holzer <mholzer@gentoo.org> webfs-1.19.ebuild,

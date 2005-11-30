@@ -1,29 +1,18 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/powertweak/files/powertweakd.rc6,v 1.6 2004/07/14 21:16:01 agriffis Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/app-admin/powertweak/files/powertweakd.rc6,v 1.1 2002/08/05 15:33:59 aliz Exp $
 
 start() {
-        ebegin "Starting powertweakd"
-	if [ -f /proc/modules ]
-	then
-		if [ -z "`grep '^cpufreq_userspace ' /proc/modules`" ]
-		then
-			modprobe cpufreq_userspace
-			if [ $? -ne 0 ]
-			then
-				eerror "Could not insert module - cpufreq_userspace"
-				eend 1
-			fi
-		fi
-	fi
-
-        start-stop-daemon --start --quiet --exec /usr/sbin/powertweakd -- -p /var/run/powertweakd.pid 
+        checkconfig || return 1
+        ebegin "Starting proftpd"
+        start-stop-daemon --start --quiet --exec /usr/sbin/powertweakd -- -d -p  /var/run/powertweakd.pid 
         eend $?
 }
 
 stop() {
-        ebegin "Stopping powertweakd"
-        start-stop-daemon --stop --quiet --exec /usr/sbin/powertweakd
+        ebegin "Stopping proftpd"
+        start-stop-daemon --stop --quiet --pidfile /var/run/powertweakd.pid
         eend $?
 }
+

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/slashem/slashem-0.0.760.ebuild,v 1.5 2005/07/09 23:04:31 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/slashem/slashem-0.0.760.ebuild,v 1.1 2004/12/27 03:52:18 vapier Exp $
 
 inherit eutils flag-o-matic games
 
@@ -17,16 +17,18 @@ SRC_URI="mirror://sourceforge/slashem/${SE_PN}
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
-IUSE="X gnome sdl opengl"
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="X qt gnome sdl opengl"
 
-#	qt? ( =x11-libs/qt-2* ) this version has overflow bugs #79720
-RDEPEND=">=sys-libs/ncurses-5.2-r5
+RDEPEND="virtual/libc
+	>=sys-libs/ncurses-5.2-r5
 	X? ( virtual/x11 )
+	qt? ( =x11-libs/qt-2* )
 	gnome? ( >=gnome-base/gnome-libs-1.4.1.4-r2 )
 	opengl? ( virtual/opengl )
 	sdl? ( media-libs/libsdl )"
 DEPEND="${RDEPEND}
+	>=sys-apps/sed-4
 	dev-util/yacc"
 
 HACKDIR=${GAMES_STATEDIR}/${PN}
@@ -34,8 +36,9 @@ S=${WORKDIR}/slashem-${SE_FIXVER}
 
 src_unpack() {
 	unpack ${SE_PN}
-	cd "${S}"
-	epatch ${FILESDIR}/${SE_VER}/*.patch
+	cd ${S}
+	epatch ${FILESDIR}/${SE_VER}/makefile.patch
+	epatch ${FILESDIR}/${SE_VER}/gentoo-paths.patch
 	sed -i \
 		-e "s:GENTOO_STATEDIR:${GAMES_STATEDIR}/${PN}:" \
 		include/unixconf.h \
@@ -50,16 +53,18 @@ src_unpack() {
 
 	unpack ${SE_CONF}
 	cp -f ${FILESDIR}/${SE_VER}/*.configure . || die
-	for c in RedHat9 FHS20 Gentoo prepare-gui Proxy ; do
-		./config ${c} ../..
-	done
+	./config RedHat9 ../..
+	./config FHS20 ../..
+	./config prepare-gui ../..
+	./config Proxy ../..
 
 	if use X ; then
 		./config X11 ../.. || die "X config"
-		for v in gnome sdl opengl ; do #qt
+		for v in qt gnome sdl opengl ; do
 			use ${v} && { ./config ${v} ../.. || die "${v} config"; }
 		done
 	fi
+return 0
 
 	cd ${S}
 	sed -i \
@@ -91,9 +96,10 @@ src_install() {
 		FILE_AREA_UNSHARE=${D}/${GAMES_LIBDIR}/${PN} \
 		FILE_AREA_DOC=${D}/usr/share/doc/${PF} \
 		install || die "make install failed"
+
 	dodoc doc/*.txt
 	dodoc dat/license
-	doman doc/slashem.6
+	doman doc/*.6
 
 	# The final /usr/bin/slashem is a sh script.  This fixes the hard-coded
 	# HACKDIR directory so it doesn't point to ${D}/usr/share/slashemdir
@@ -130,7 +136,7 @@ src_install() {
 
 	local windowtypes="tty"
 	use gnome  && windowtypes="${windowtypes} gnome"
-	#use qt     && windowtypes="${windowtypes} qt"
+	use qt     && windowtypes="${windowtypes} qt"
 	use X      && windowtypes="${windowtypes} x11"
 	use sdl    && windowtypes="${windowtypes} sdl"
 	use opengl && windowtypes="${windowtypes} gl"

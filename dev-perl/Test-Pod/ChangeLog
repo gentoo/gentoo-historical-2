@@ -1,54 +1,6 @@
 # ChangeLog for dev-perl/Test-Pod
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Pod/ChangeLog,v 1.16 2005/10/02 13:18:37 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Test-Pod-1.20.ebuild:
-  Mark 1.20 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Test-Pod-1.20.ebuild:
-  add ~ia64
-
-  10 May 2005; Yuta SATOH <nigoro@gentoo.org> Test-Pod-1.20.ebuild:
-  Stable on ppc64
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -Test-Pod-1.08.ebuild, -Test-Pod-1.16.ebuild:
-  Cleaning for mirror syntax
-
-  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> Test-Pod-1.20.ebuild:
-  Stable on ppc.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Test-Pod-1.20.ebuild:
-  added ~ppc64
-
-  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> Test-Pod-1.20.ebuild:
-  Stable on alpha.
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> Test-Pod-1.20.ebuild:
-  Stable on amd64.
-
-  03 Oct 2004; Michael Cummings <mcummings@gentoo.org> Test-Pod-1.20.ebuild:
-  Marking stable on x86 and sparc
-
-*Test-Pod-1.20 (30 Jul 2004)
-
-  30 Jul 2004; Michael Cummings <mcummings@gentoo.org> +Test-Pod-1.20.ebuild:
-  New version on CPAN
-
-*Test-Pod-1.16 (06 Jun 2004)
-
-  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> Test-Pod-1.16.ebuild:
-  new version on cpan
-
-  06 Mar 2004; Michael Cummings <mcummings@gentoo.org> Test-Pod-1.08.ebuild:
-  Added missing dependancy on Test::Builder::Tester; closes 43617
-
-  16 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org>
-  Test-Pod-1.08.ebuild:
-  Forgot to include the dep on Pod-Simple
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Pod/ChangeLog,v 1.1 2004/02/16 16:12:37 mcummings Exp $
 
 *Test-Pod-1.08 (16 Feb 2004)
 

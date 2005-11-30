@@ -1,27 +1,6 @@
 # ChangeLog for net-zope/zphotoslides
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/zphotoslides/ChangeLog,v 1.7 2004/12/29 21:19:17 ciaranm Exp $
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*zphotoslides-2.0 (24 Oct 2004)
-
-  24 Oct 2004; Heinrich Wendel <lanius@gentoo.org> +zphotoslides-2.0.ebuild:
-  version bump
-
-  24 Oct 2004; Heinrich Wendel <lanius@gentoo.org> zphotoslides-1.1-r1.ebuild,
-  -zphotoslides-1.1.ebuild:
-  fix -py21 dependency
-
-  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
-  zphotoslides-1.1-r1.ebuild, zphotoslides-1.1.ebuild:
-  dev-python/Imaging renamed to dev-python/imaging.
-
-*zphotoslides-1.1-r1 (18 Jun 2003)
-
-  18 Jun 2003; <msterret@gentoo.org> zphotoslides-1.1-r1.ebuild:
-  update HOMEPAGE and SRC_URI (bug 20512)
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-zope/zphotoslides/ChangeLog,v 1.1 2003/04/11 07:07:47 kutsuya Exp $
 
 *zphotoslides-1.1 (11 Apr 2003)
 

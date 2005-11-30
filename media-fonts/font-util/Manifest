@@ -1,6 +1,2 @@
-MD5 d4d689943d3279d98aa1e6cfae875016 ChangeLog 1199
+MD5 cbf8d96fa64dc0221ec4d2662964298d font-util-0.99.0.ebuild 629
 MD5 12b2e88551d259944137ed634044de0e files/digest-font-util-0.99.0 68
-MD5 d7fafbd72ad0a484c0e5a37306d504e5 files/digest-font-util-0.99.1 68
-MD5 86bf020742bb548d9e85b63848b731ca font-util-0.99.0.ebuild 782
-MD5 0986697e9893c74915757d733a98cf10 font-util-0.99.1.ebuild 785
-MD5 a37bab73e2f24b213932c30997d3d360 metadata.xml 156

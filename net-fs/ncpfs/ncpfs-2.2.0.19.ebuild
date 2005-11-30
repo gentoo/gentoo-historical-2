@@ -1,26 +1,33 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.0.19.ebuild,v 1.10 2005/01/29 08:36:38 corsair Exp $
+#Copyright 2002 Gentoo Technologies, Inc.
+#Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.0.19.ebuild,v 1.1 2002/06/20 16:46:56 bass Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Provides Access to Netware services using the NCP protocol (Kernel support must be activated!)"
 SRC_URI="ftp://platan.vc.cvut.cz/pub/linux/ncpfs/latest/${P}.tar.gz"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/ncpfs/latest/"
-
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
-IUSE=""
-
+SLOT="0"
 DEPEND=""
+RDEPEND="${DEPEND}"
 
 src_compile() {
 
-	econf || die "./configure failed"
+	./configure \
+		--prefix=/usr \
+		--prefix=/usr \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man \
+		|| die "./configure failed"
 	emake || die
 }
 
 src_install () {
-	# directory ${D}/lib/security needs to be created or the install fails
+    # directory ${D}/lib/security needs to be created or the install fails
 	dodir /lib/security
 	make DESTDIR=${D} install || die
 }
+
+
+

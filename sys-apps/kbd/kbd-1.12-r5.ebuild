@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/kbd/kbd-1.12-r5.ebuild,v 1.8 2005/07/12 04:33:02 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/kbd/kbd-1.12-r5.ebuild,v 1.1 2005/05/19 14:30:38 azarah Exp $
 
 inherit eutils toolchain-funcs
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.cwi.nl/pub/aeb/kbd/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="nls"
 
 RDEPEND=""
@@ -30,11 +30,9 @@ src_unpack() {
 
 	cd "${S}"
 	sed -i \
-		-e "/^CFLAGS/ s:-O2:${CFLAGS}:g" \
-		-e "/^LDFLAGS/ s:-s:${LDFLAGS}:" \
-		-e "s:install -s:install:" \
-		src/Makefile.in \
-		openvt/Makefile
+		-e "s:-O2:${CFLAGS}:g" \
+		-e 's:install -s:install:' \
+		src/Makefile.in
 
 	# Other patches from RH
 	epatch "${FILESDIR}"/${PN}-1.08-terminal.patch
@@ -55,9 +53,6 @@ src_unpack() {
 
 	# The italian keymap is missing euro support #75970
 	epatch "${FILESDIR}"/${P}-it-euro-map.patch
-
-	# Fix jp map to recognize Ctrl-[ as Escape #71870
-	epatch "${FILESDIR}"/${P}-jp-escape.patch
 
 	# Patches from Fedora
 	epatch "${FILESDIR}"/${P}-Meta_utf8.patch

@@ -1,20 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-hitchhiker/fortune-mod-hitchhiker-0.1.ebuild,v 1.9 2005/08/27 18:03:09 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-hitchhiker/fortune-mod-hitchhiker-0.1.ebuild,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
 MY_P=${PN/-mod/}
+S=${WORKDIR}/${MY_P}
 DESCRIPTION="Quotes from Hitchhikers Guide to the Galaxy"
-HOMEPAGE="http://www.splitbrain.org/index.php?x=.%2FFortunes%2Fhitchhiker"
 SRC_URI="http://www.splitbrain.org/Fortunes/hitchhiker/${MY_P}.tgz"
+HOMEPAGE="http://www.splitbrain.org/index.php?x=.%2FFortunes%2Fhitchhiker"
 
-LICENSE="GPL-2"
+KEYWORDS="x86 ppc ~sparc ~mips"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa mips ppc ppc64 sparc x86"
-IUSE=""
+LICENSE="GPL-2"
 
-RDEPEND="games-misc/fortune-mod"
-
-S="${WORKDIR}/${MY_P}"
+DEPEND="app-games/fortune-mod"
 
 src_install() {
 	insinto /usr/share/fortune

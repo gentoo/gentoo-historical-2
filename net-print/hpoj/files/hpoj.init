@@ -1,7 +1,6 @@
 #!/sbin/runscript
 depend() {
 	before cupsd
-	after hotplug
 }
 
 start() {

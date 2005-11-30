@@ -1,73 +1,9 @@
 # ChangeLog for media-libs/ladspa-cmt
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ladspa-cmt/ChangeLog,v 1.20 2005/09/30 15:32:37 flameeyes Exp $
-
-  30 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> ladspa-cmt-1.15.ebuild:
-  Respect user-defined CXXFLAGS.
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
-  ladspa-cmt-1.15.ebuild:
-  Stable on ppc.
-
-  21 Apr 2005; Kito <kito@gentoo.org> ladspa-cmt-1.15.ebuild:
-  Stable on ppc-macos
-
-  28 Oct 2004; Kito <kito@gentoo.org> +files/ladspa-cmt-darwin.patch,
-  -files/ladspa-cmt-ppc-macos.patch, ladspa-cmt-1.15.ebuild:
-  updated macos/darwin patch
-
-  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  ladspa-cmt-1.15.ebuild:
-  get_libdir fixes.
-
-  22 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  ladspa-cmt-1.15.ebuild:
-  Using insopts instead of INSOPTIONS
-
-  22 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  ladspa-cmt-1.15.ebuild:
-  Removing || die which caused bug #64523.
-
-  01 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  ladspa-cmt-1.15.ebuild:
-  Stable amd64 sparc.
-
-  14 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  ladspa-cmt-1.15.ebuild:
-  ~sparc
-
-  16 Apr 2004; Travis Tilley <lv@gentoo.org> ladspa-cmt-1.15.ebuild:
-  added ~amd64 keyword
-
-  31 Mar 2004; David Holm <dholm@gentoo.org> ladspa-cmt-1.15.ebuild:
-  Added to ~ppc.
-
-  14 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  ladspa-cmt-1.14.ebuild, metadata.xml:
-  readonly bug fix for bug #44712.
-
-  17 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> ladspa-cmt-1.15.ebuild:
-  more Gentoo-like doc install (bug 38486); more error checking/messages; use
-  sed -i; leave $P alone; use $A in unpack
-
-  14 Jan 2004; <rphillips@gentoo.org> ladspa-cmt-1.14.ebuild,
-  ladspa-cmt-1.15.ebuild:
-  removed A variable
-
-  08 Jul 2003; Nick Hadaway <raker@gentoo.org> ladspa-cmt-1.15.ebuild:
-  Fixed a little error with P.
-
-*ladspa-cmt-1.15 (07 Jul 2003)
-
-  07 Jul 2003; Martin Holzer <mholzer@gentoo.org> ladspa-cmt-1.15.ebuild:
-  Version bumped. Closes #20656.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ladspa-cmt/ChangeLog,v 1.1 2002/08/19 00:21:39 rphillips Exp $
 
 *ladspa-cmt-1.14 (18 Aug 2002)
 
-  23 Sep 2002; Ryan Phillips <rphillips@gentoo.org> ladspa-cmt-1.14.ebuild :
-
-  Fixed SED statement.  Closes #8185
- 
   18 Aug 2002; Ryan Phillips <rphillips@gentoo.org> ladspa-cmt-1.14.ebuild
   files/digest-ladspa-cmt-1.14 :
 

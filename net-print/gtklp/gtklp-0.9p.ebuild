@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/gtklp/gtklp-0.9p.ebuild,v 1.8 2005/01/05 16:12:45 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/gtklp/gtklp-0.9p.ebuild,v 1.1 2003/10/04 20:11:16 lanius Exp $
 
 inherit libtool
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A GUI for cupsd"
 SRC_URI="mirror://sourceforge/gtklp/${P}.src.tar.gz"
 HOMEPAGE="http://gtklp.sourceforge.net"
 
 SLOT="0"
-KEYWORDS="x86 ppc ~sparc ~amd64"
+KEYWORDS="~x86 ~ppc"
 LICENSE="GPL-2"
-IUSE="nls ssl"
 
 DEPEND="=x11-libs/gtk+-1.2*
 	>=net-print/cups-1.1.7

@@ -1,62 +1,7 @@
-# ChangeLog for dev-perl/Net-Netmask
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Netmask/ChangeLog,v 1.20 2005/11/19 12:53:07 mcummings Exp $
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Netmask/ChangeLog,v 1.1 2002/12/02 16:46:24 mcummings Exp $
 
-*Net-Netmask-1.9012 (19 Nov 2005)
-
-  19 Nov 2005; <mcumming@gentoo.org> +Net-Netmask-1.9012.ebuild:
-  Version bump
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> Net-Netmask-1.9011.ebuild:
-  Mark 1.9011 stable on ia64
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Net-Netmask-1.9011.ebuild:
-  add ~ia64
-
-  01 Jul 2005; Joshua Kinard <kumba@gentoo.org> Net-Netmask-1.9011.ebuild:
-  Marked stable on mips.
-
-  01 May 2005; Tom Martin <slarti@gentoo.org> Net-Netmask-1.9011.ebuild:
-  Stable on amd64.
-
-  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
-  Net-Netmask-1.9011.ebuild:
-  Stable on alpha.
-
-  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -Net-Netmask-1.9002.ebuild, Net-Netmask-1.9004.ebuild,
-  Net-Netmask-1.9011.ebuild:
-  Cleaning
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*Net-Netmask-1.9011 (06 Jun 2004)
-
-  06 Jun 2004; Michael Cummings <mcummings@gentoo.org>
-  Net-Netmask-1.9011.ebuild:
-  new version on cpan
-
-  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Net-Netmask-1.9004.ebuild:
-  Stable on alpha.
-
-  07 May 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  Net-Netmask-1.9004.ebuild:
-  Stable on sparc
-
-  13 Nov 2003; <tuxus@gentoo.org> Net-Netmask-1.9004.ebuild:
-  added mips to KEYWORDS
-
-*Net-Netmask-1.9004 (21 Jun 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-
-  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> :
-  CPAN version bump; needs testing
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *Net-Netmask-1.9002 (02 Dec 2002)
 
   02 Dec 2002; Michael Cummings <mcummings@gentoo.org> 

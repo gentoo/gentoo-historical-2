@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.6-r3.ebuild,v 1.16 2005/10/05 00:34:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.6-r3.ebuild,v 1.1 2003/12/11 23:54:25 vapier Exp $
 
-inherit eutils flag-o-matic
+inherit eutils
 
 DESCRIPTION="Simple Direct Media Layer"
 HOMEPAGE="http://www.libsdl.org/"
@@ -10,16 +10,16 @@ SRC_URI="http://www.libsdl.org/release/SDL-${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64 mips"
+KEYWORDS="x86 ~alpha ~ppc ~sparc hppa ~amd64"
 IUSE="oss alsa esd arts nas X dga xv xinerama fbcon directfb ggi svga aalib opengl noaudio novideo nojoystick"
 # if you disable audio/video/joystick and something breaks, you pick up the pieces
 
-RDEPEND="!noaudio? ( >=media-libs/audiofile-0.1.9 )
+RDEPEND=">=media-libs/audiofile-0.1.9
 	alsa? ( media-libs/alsa-lib )
 	esd? ( >=media-sound/esound-0.2.19 )
 	arts? ( kde-base/arts )
 	nas? ( media-libs/nas virtual/x11 )
-	X? ( virtual/x11 )
+	X? ( >=x11-base/xfree-4.3.0 )
 	directfb? ( >=dev-libs/DirectFB-0.9.19 )
 	ggi? ( >=media-libs/libggi-2.0_beta3 )
 	svga? ( >=media-libs/svgalib-1.4.2 )
@@ -37,31 +37,20 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/${P}-fullscreen.patch #31235
 	epatch ${FILESDIR}/${PV}-alsa-1.0.0.patch #35049
-	epatch ${FILESDIR}/${PV}-nobuggy-X.patch #30089
 
 	sed -i \
-		-e 's:head -1:head -n 1:' configure \
-		|| die "sed configure failed"
-	if use nas && ! use X ; then #32447
-		sed -i \
-			-e 's:-DNAS_SUPPORT:-DNAS_SUPPORT -I/usr/X11R6/include:' \
-			-e 's:-laudio:-laudio -L/usr/X11R6/lib:' \
-			configure || die "nas sed hack failed"
-	fi
-
-	epunt_cxx
+		-e 's:head -1:head -n 1:' configure || \
+			die "sed configure failed"
 }
 
 src_compile() {
+
 	local myconf=""
-	use noaudio && myconf="${myconf} --disable-audio"
-	use novideo \
+	[ `use noaudio` ] && myconf="${myconf} --disable-audio"
+	[ `use novideo` ] \
 		&& myconf="${myconf} --disable-video" \
 		|| myconf="${myconf} --enable-video-dummy"
-	use nojoystick && myconf="${myconf} --disable-joystick"
-
-	# filtering -fomit-frame-pointer as per bug #82618
-	filter-flags -fomit-frame-pointer
+	[ `use nojoystick` ] && myconf="${myconf} --disable-joystick"
 
 	# asm is b0rken in 1.2.6
 	# http://www.libsdl.org/pipermail/sdl/2003-October/057304.html
@@ -97,8 +86,7 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
 	preplib
-	dosed "s:-pthread::g" /usr/$(get_libdir)/libSDL.la # Bug 34804
-	# $(get_libdir) fixed BUG #65495.
+	dosed "s:-pthread::g" /usr/lib/libSDL.la # Bug 34804
 	dodoc BUGS CREDITS README README-SDL.txt README.CVS TODO WhatsNew
 	dohtml -r ./
 }

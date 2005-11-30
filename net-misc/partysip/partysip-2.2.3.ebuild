@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/partysip/partysip-2.2.3.ebuild,v 1.4 2005/10/02 18:23:00 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/partysip/partysip-2.2.3.ebuild,v 1.1 2005/07/17 22:20:22 stkn Exp $
 
 IUSE="berkdb debug syslog"
 
@@ -12,27 +12,18 @@ SRC_URI="http://savannah.gnu.org/download/${PN}/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2" # not 100% about -2, but core is LGPL
-KEYWORDS="~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~sparc"
 
 DEPEND="virtual/libc
 	>=net-libs/libosip-2.2.1
 	berkdb? ( =sys-libs/db-3* )"
+#	gdbm? ( sys-libs/gdbm )"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
 	epatch ${FILESDIR}/${P}-configure.diff
-
-	# fix libresolv check in configure.in (#107885)
-	# instead of res_query, we search for the real (internal)
-	# function name __res_query, because res_query isn't in the symbol
-	# list of libresolv on amd64
-	epatch ${FILESDIR}/${P}-libresolv-check.diff
-
-	# remove unused check in auth plugin (#107886)
-	# breaks authentication otherwise
-	epatch ${FILESDIR}/${P}-fix_auth.diff
 
 	# put partysip  binary into /usr/sbin
 	sed -i -e "s:^bin_PROGRAMS:sbin_PROGRAMS:" \
@@ -51,8 +42,8 @@ src_compile() {
 		myconf="--with-db=susedb3"
 #	elif use gdbm; then
 #		myconf="--with-db=gdbm"
-#	else
-#		myconf="--with-db=no"
+	else
+		myconf="--with-db=no"
 	fi
 
 	econf \

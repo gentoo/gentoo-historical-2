@@ -1,12 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/cwtext/cwtext-0.94.ebuild,v 1.9 2005/10/15 19:28:38 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/cwtext/cwtext-0.94.ebuild,v 1.1 2004/02/21 17:48:01 usata Exp $
+
 
 DESCRIPTION="Text to Morse Code converter"
 HOMEPAGE="http://cwtext.sourceforge.net"
 SRC_URI="mirror://sourceforge/cwtext/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~mips ppc ~ppc-macos ~sparc x86"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

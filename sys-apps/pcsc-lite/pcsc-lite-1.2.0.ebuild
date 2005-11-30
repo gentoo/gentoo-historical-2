@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcsc-lite/pcsc-lite-1.2.0.ebuild,v 1.9 2005/01/30 21:02:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcsc-lite/pcsc-lite-1.2.0.ebuild,v 1.1 2004/03/22 08:33:20 dragonheart Exp $
 
 inherit eutils
 
@@ -9,12 +9,13 @@ HOMEPAGE="http://www.linuxnet.com/middle.html"
 SRC_URI="https://alioth.debian.org/download.php/419/pcsc-lite-${PV}.tar.gz"
 
 LICENSE="as-is"
+KEYWORDS="~x86 ~amd64"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
 IUSE="static"
 
-RDEPEND="!static? ( virtual/libc )
+RDEPEND="!static? ( virtual/glibc )
 	!static? ( dev-libs/libusb )"
+
 DEPEND="sys-devel/make
 	sys-devel/libtool
 	sys-apps/sed
@@ -23,12 +24,11 @@ DEPEND="sys-devel/make
 	dev-libs/libusb
 	dev-util/pkgconfig
 	sys-devel/gcc
-	virtual/libc
-	dev-libs/libusb"
+	${RDEPEND}"
 
 src_compile() {
 	econf \
-		--enable-usbdropdir=/usr/lib/readers/usb \
+		--enable-usbdropdir=/usr/share/pcsc/drivers \
 		--enable-muscledropdir=/usr/share/pcsc/services \
 		`use_enable static` || die "./configure failed"
 	emake || die

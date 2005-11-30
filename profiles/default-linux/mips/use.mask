@@ -1,113 +1,21 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/use.mask,v 1.40 2005/11/19 22:13:23 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/use.mask,v 1.1 2004/09/23 05:38:34 kumba Exp $
 
 # Stephen P. Becker <geoman@gentoo.org>
-# remasking hal because of numerous dependency issues
-hal
-
-# Aaron Walker <ka0ttic@gentoo.org>
-# Temporarily masking until net-nds/c-ares can be tested properly
-ares
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masking mono because it doesn't work on mips
-mono
-
-# Hardave Riar <hardave@gentoo.org>
-# Temporarily masking ieee1394 until it can be tested
-# Quick fix to my tree b0rkage
-ieee1394
-
-# Hardave Riar <hardave@gentoo.org>
-# No hardware support
-lm_sensors
-
-# Hardave Riar <hardave@gentoo.org>
-# Temporarily masking wifi until I can test it
-# Preventing kde from going stable
-wifi
-
-# Henrik Brix Andersen <brix@gentoo.org>
-# According to the mips herd, we currently have no way of testing
-# pcmcia on mips, bug #90359
-pcmcia
-
-# John N. Laliberte <allanonjl@gentoo.org>
-# mask scanner support
-scanner
-
-# Stephen P. Becker <geoman@gentoo.org>
-# mad just spits out static on mips (ip22)
-mad
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked until an alsa driver finally works on mips
-alsa
-
-# Armando Di Cianno <fafhrd@gentoo.org>
-# gnustep is currently unbuildable on mips - masking this to repair windowmaker
-#   broken mips keywording becuase of 'gnustep' USE flag
-gnustep
-
-# Hardave Riar <hardave@gentoo.org>
-# This should work, someone with a usb card and digital camera should test it
-gphoto2
-
-# Hardave Riar <hardave@gentoo.org>
-# This will probablly work, but no hardware to test with
-gnokii
-
-# Hardave Riar <hardave@gentoo.org>
-# x86 binary only package
-fdftk
-
-# Ciaran McCreesh <ciaranm@gentoo.org>
-# unresolved dep, bug #82428
-emboss
-
-# Joshua Kinard <kumba@gentoo.org>
-# dietlibc isn't known to work on mips
-diet
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because it hoses xchat on 64-bit machines
-xosd
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked for now until this can be properly tested with alsa
-jack
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because of silly java deps with gnome (we have no jre on mips)
-accessibility
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because mozilla doesn't work on mips
-mozilla
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because I say so, gnome--
-pda
-
-# Ciaran McCreesh <ciaranm@gentoo.org>
-# not even slightly reliable, bug #65216
-mzscheme
-
-# Stephen P. Becker <geoman@gentoo.org>
-# masked because gaim sucks
+# mask evolution use flag until it can be properly tested
 evo
 
 # Ilya A. Volynets-Evenbach
 # no nptl on mips yet
 nptl
 
+# Chris PeBenito <pebenito@gentoo.org>
+# must use a SELinux profile
+selinux
+
 # Paul de Vrieze <pauldv@gentoo.org>
 # There is no java in this profile (if there is it must be available). Without
 # this repoman will fail on apps like sys-libs/db
 java
-
-# Ciaran McCreesh <ciaranm@gentoo.org>
-# No java, no netbeans
-netbeans
 
 # Aron Griffis <agriffis@gentoo.org>
 # acl doesn't build on mips atm.  Mask it so that vim quits
@@ -117,6 +25,8 @@ acl
 
 # Flags which aren't applicable to mips (Mostly copied from sparc)
 3dfx
+3dnow
+accessibility
 acpi
 afs
 altivec
@@ -130,7 +40,9 @@ informix
 firebird
 ggi
 lirc
+mmx
 oci8
+sse
 svga
 tcc
 trusted
@@ -140,20 +52,18 @@ emacs
 
 # And arch keyword flags that don't work
 
-alpha
-amd64
-arm
-hppa
-ia64
-mips
-ppc
-ppc64
-ppc-macos
-s390
-sparc
 x86
+ppc
+alpha
+hppa
+arm
+amd64
+ia64
+ppc64
+s390
+uclibc
+macos
 x86-obsd
-x86-fbsd
 
 # see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
 # Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
@@ -179,12 +89,3 @@ pfpro
 solid
 sybase
 sybase-ct
-djbfft
-glitz
-pike
-ocaml
-timidity
-
-# Unmask our instruction sets
--n32
--n64

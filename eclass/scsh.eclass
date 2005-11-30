@@ -1,23 +1,28 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/scsh.eclass,v 1.5 2005/08/23 15:03:41 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/scsh.eclass,v 1.1 2005/08/09 17:59:50 mkennedy Exp $
 #
 
 inherit eutils
 
-LICENSE="as-is BSD"
+ECLASS=scsh
+INHERITED="$INHERITED $ECLASS"
+
+LICENSE="as-is | BSD"
 SLOT="0"
 KEYWORDS="~x86"
 
-IUSE="scsh"
+IUSE="fhs scsh"
 
 SCSH_SCSH_PATH=/usr/$(get_libdir)/scsh
 
 set_layout() {
-	if use scsh; then
+	if use fhs;	then
+		SCSH_LAYOUT=fhs
+	elif use scsh; then
 		SCSH_LAYOUT=scsh
 	else
-		ewarn "No layout was specified via USE, defaulting to FHS."
+		ewarn "No layout was specified via USE, defaulting to fhs."
 		SCSH_LAYOUT=fhs
 	fi
 	export SCSH_LAYOUT
@@ -29,14 +34,14 @@ set_path_variables() {
 	SCSH_MV="${SCSH_MV//app-shells\/scsh-}"
 	export SCSH_VERSION SCSH_MV
 
-	case ${SCSH_LAYOUT} in
+	case $SCSH_LAYOUT in
 		fhs)
 			SCSH_PREFIX=/usr
-			SCSH_MODULES_PATH=/usr/share/scsh-${SCSH_MV}/modules
+			SCSH_MODULES_PATH=/usr/share/scsh-$SCSH_MV/modules
 			;;
 		scsh)
 			SCSH_PREFIX=/usr/$(get_libdir)/scsh/modules
-			SCSH_MODULES_PATH=/usr/$(get_libdir)/scsh/modules/${SCSH_MV}
+			SCSH_MODULES_PATH=/usr/$(get_libdir)/scsh/modules/$SCSH_MV
 			;;
 	esac
 	export SCSH_PREFIX SCSH_MODULES_PATH
@@ -48,15 +53,15 @@ set_path_variables() {
 scsh_src_unpack() {
 	set_layout
 	set_path_variables
-	einfo "Using ${SCSH_LAYOUT} layout"
+	einfo "Using $SCSH_LAYOUT layout"
 	unpack ${A}
 }
 
 scsh_get_layout_conf() {
-	SCSH_LAYOUT_CONF=" --build ${CHOST}
+	SCSH_LAYOUT_CONF=" --build $CHOST
 		--force
-		--layout ${SCSH_LAYOUT}
-		--prefix ${SCSH_PREFIX}
+		--layout $SCSH_LAYOUT
+		--prefix $SCSH_PREFIX
 		--no-user-defaults
 		--dest-dir ${D}"
 	export SCSH_LAYOUT_CONF
@@ -67,7 +72,7 @@ scsh_src_compile() {
 }
 
 scsh_src_install() {
-	dodir ${SCSH_MODULES_PATH}
+	dodir $SCSH_MODULES_PATH
 	scsh-install-pkg ${SCSH_LAYOUT_CONF} || die "./scsh-install-pkg failed"
 }
 

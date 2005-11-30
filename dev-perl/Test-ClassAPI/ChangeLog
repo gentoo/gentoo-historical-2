@@ -1,20 +1,6 @@
 # ChangeLog for dev-perl/Test-ClassAPI
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-ClassAPI/ChangeLog,v 1.5 2005/08/26 00:21:00 agriffis Exp $
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Test-ClassAPI-1.02.ebuild:
-  add ~ia64
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  Test-ClassAPI-1.02.ebuild:
-  dev-perl/Test-Simple => perl-core/Test-Simple migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  Test-ClassAPI-1.02.ebuild:
-  dev-perl/File-Spec => perl-core/File-Spec migration
-
-  30 Nov 2004; Sven Wegener <swegener@gentoo.org> Test-ClassAPI-1.02.ebuild:
-  Fixed invalid atoms in *DEPEND.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-ClassAPI/ChangeLog,v 1.1 2004/10/17 02:55:55 mcummings Exp $
 
 *Test-ClassAPI-1.02 (16 Oct 2004)
 

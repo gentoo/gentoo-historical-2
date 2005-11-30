@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsound/wmsound-0.9.5.ebuild,v 1.4 2005/03/30 12:34:54 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsound/wmsound-0.9.5.ebuild,v 1.1 2004/07/22 01:12:31 s4t4n Exp $
 
 inherit eutils
 
@@ -18,7 +18,7 @@ DEPEND="virtual/x11
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 
 src_unpack()
 {
@@ -27,7 +27,7 @@ src_unpack()
 	cd ${S}
 	epatch ${FILESDIR}/wmsound-config.patch
 	epatch ${FILESDIR}/wmsound-ComplexProgramTargetNoMan.patch
-	use esd && epatch ${FILESDIR}/wmsound-esd.patch
+	epatch ${FILESDIR}/wmsound-esd.patch
 }
 
 src_compile()

@@ -1,29 +1,6 @@
 # ChangeLog for x11-libs/libXevie
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXevie/ChangeLog,v 1.7 2005/11/26 09:37:58 blubb Exp $
-
-  26 Nov 2005; Simon Stelling <blubb@gentoo.org> libXevie-0.99.2.ebuild:
-  added ~amd64 keyword
-
-  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  -libXevie-0.99.0.ebuild:
-  Drop old version.
-
-  30 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  libXevie-0.99.2.ebuild:
-  Move xproto dep to reflect compile-time requirements.
-
-*libXevie-0.99.2 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  +libXevie-0.99.2.ebuild:
-  Bump for 7.0 RC1.
-
-  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
-  Add metadata.
-
-  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXevie-0.99.0.ebuild:
-  Add ~sparc keyword (modular X testing).
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXevie/ChangeLog,v 1.1 2005/08/08 04:27:08 spyderous Exp $
 
 *libXevie-0.99.0 (08 Aug 2005)
 

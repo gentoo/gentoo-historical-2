@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircd-hybrid/ircd-hybrid-7.0.3.ebuild,v 1.5 2005/11/03 07:31:17 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircd-hybrid/ircd-hybrid-7.0.3.ebuild,v 1.1 2004/09/27 00:35:13 swegener Exp $
 
 inherit eutils fixheadtails
 
@@ -32,9 +32,9 @@ HOMEPAGE="http://ircd-hybrid.com/"
 SRC_URI="mirror://sourceforge/ircd-hybrid/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc"
+KEYWORDS="~x86 ~alpha"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	zlib? ( >=sys-libs/zlib-1.1.4-r2 )
 	ssl? ( >=dev-libs/openssl-0.9.7d )
 	|| ( >=dev-libs/libelf-0.8.2 >=dev-libs/elfutils-0.94-r1 )
@@ -242,7 +242,6 @@ src_install()
 		includedir=${D}/usr/include/ircd-hybrid-7 \
 		mandir=${D}/usr/share/man/man8/ \
 		install || die "ipv4 install failed"
-	mv ${D}/usr/sbin/{,ircd-}mkpasswd #6428
 
 	# Rename the binary according to config-ipv4.diff.
 	mv ${D}/usr/sbin/ircd ${D}/usr/sbin/ircd-ipv4
@@ -335,7 +334,7 @@ pkg_postinst() {
 	if use ssl
 	then
 		einfo "To create a rsa keypair for crypted links execute:"
-		einfo "emerge --config =${CATEGORY}/${PF}"
+		einfo "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
 	fi
 }
 

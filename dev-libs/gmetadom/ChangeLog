@@ -1,55 +1,8 @@
 # ChangeLog for dev-libs/gmetadom
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmetadom/ChangeLog,v 1.14 2005/10/31 19:51:16 ranger Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmetadom/ChangeLog,v 1.1 2003/04/18 06:37:42 george Exp $
 
-  31 Oct 2005; Brent Baude <ranger@gentoo.org> gmetadom-0.2.2-r1.ebuild:
-  marking gmetadom-0.2.2-r1 in support of bug 110858
-
-  31 Oct 2005; Jason Wever <weeve@gentoo.org> gmetadom-0.2.2-r1.ebuild:
-  Added ~sparc keyword wrt bug #110858.
-
-*gmetadom-0.2.2-r1 (12 Feb 2005)
-
-  12 Feb 2005; MATSUU Takuto <matsuu@gentoo.org>
-  +files/gmetadom-0.2.2-gentoo.patch, +gmetadom-0.2.2-r1.ebuild:
-  Fixed emerge fails with libtool mismatch. Bug 81569.
-
-  03 Jan 2005; MATSUU Takuto <matsuu@gentoo.org> -gmetadom-0.2.0.ebuild,
-  -gmetadom-0.2.1-r1.ebuild, -gmetadom-0.2.1.ebuild:
-  Version bumped.
-  Removed old versions.
-
-*gmetadom-0.2.1-r2 (30 Aug 2004)
-
-  30 Aug 2004; Guy Martin <gmsoft@gentoo.org> +gmetadom-0.2.1-r2.ebuild:
-  Unconditonal use of -fPIC (#55238).
-
-  03 Aug 2004; David Holm <dholm@gentoo.org> gmetadom-0.2.1-r1.ebuild:
-  Added to ~ppc.
-
-*gmetadom-0.2.1-r1 (30 Jul 2004)
-
-  30 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> +gmetadom-0.2.1-r1.ebuild:
-  Fixed ocaml bindings problem. Bug#56682.
-
-*gmetadom-0.2.1 (21 Jan 2004)
-
-  21 Jan 2004; MATSUU Takuto <matsuu@gentoo.org> gmetadom-0.2.1.ebuild:
-  Version bumped.
-  Added ocaml to IUSE.
-
-*gmetadom-0.2.0 (05 Oct 2003)
-
-  05 Oct 2003; MATSUU Takuto <matsuu@gentoo.org> gmetadom-0.2.0.ebuild:
-  Version bump.
-
-*gmetadom-0.1.8 (29 Aug 2003)
-
-  29 Aug 2003; George Shapovalov <george@gentoo.org> gmetadom-0.1.8.ebuild :
-  new (much improved) version, ebuild haks no longer necessary (#27418)
-  thanks to Matsuu Takuto <matsuu@gentoo.org> for the submission
-
-*gmetadom-0.0.3-r3 (17 Apr 2003)
+*gmetadom-0.0.3-r3.ebuild (17 Apr 2003)
 
   17 Apr 2003; George Shapovalov <george@gentoo.org> gmetadom-0.0.3-r3.ebuild, files/{digest-gmetadom-0.0.3-r3,gmetadom-0.0.3-gcc3.diff} :
   initial release (#11398)

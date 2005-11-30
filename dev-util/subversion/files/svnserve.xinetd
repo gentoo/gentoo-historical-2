@@ -1,4 +1,4 @@
-service svn
+service svnserve
 {
     socket_type     = stream
     wait            = no

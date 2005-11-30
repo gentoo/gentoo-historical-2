@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/qhacc/qhacc-3.4.ebuild,v 1.3 2005/07/18 20:52:15 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/qhacc/qhacc-3.4.ebuild,v 1.1 2005/07/03 21:06:13 carlo Exp $
 
 inherit libtool kde-functions eutils
 
@@ -62,9 +62,4 @@ pkg_postinst() {
 	echo ""
 	ewarn "To update from a previous version, please read /usr/share/doc/${PF}/UPGRADE.gz"
 	echo ""
-}
-
-pkg_postrm() {
-	# Portage doesn't eat stale symlinks...
-	[ -n "${PF}" ] && rm -rf /usr/share/doc/${PF}
 }

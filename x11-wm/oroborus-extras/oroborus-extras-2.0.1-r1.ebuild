@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/oroborus-extras/oroborus-extras-2.0.1-r1.ebuild,v 1.17 2005/03/07 15:21:24 gustavoz Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Ben Lutgens <lamer@gentoo.org>
 
 S=${WORKDIR}
 DESCRIPTION="Other stuff for oroborus"
@@ -8,13 +8,8 @@ SRC_URI="http://www.kensden.pwp.blueyonder.co.uk/Oroborus/files/deskmenu-1.3.0.t
 	 http://www.kensden.pwp.blueyonder.co.uk/Oroborus/files/keylaunch-1.3.0.tar.gz
 	 http://www.kensden.pwp.blueyonder.co.uk/Oroborus/files/desklaunch-1.1.0.tar.gz"
 HOMEPAGE="http://www.kensden.pwp.blueyonder.co.uk/Oroborus/"
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 sparc ppc"
-IUSE=""
 
-DEPEND="x11-wm/oroborus
-		=x11-libs/gtk+-1.2*"
+DEPEND="x11-wm/oroborus"
 
 
 src_unpack() {
@@ -43,20 +38,20 @@ src_compile() {
 src_install () {
 
 	dodir /usr/bin
-
+	
 # Deskmenu first
 	cd ${S}/deskmenu-1.3.0
 	make PREFIX=${D}/usr install || die
-
+	
 	newdoc README README.deskmenu
 	newdoc CHANGES CHANGES.deskmenu
 	newdoc example_rc example_rc.deskmenu
 	dodoc LICENSE
 
-# Keylaunch next
+# Keylaunch next 
 	cd ${S}/keylaunch
 	make PREFIX=${D}/usr install || die
-
+	
 	newdoc README README.keylaunch
 	newdoc LICENSE LICENSE.keylaunch
 	newdoc example_rc example_rc.keylaunch
@@ -64,6 +59,7 @@ src_install () {
 # Desklaunch last
 	cd ${S}/desklaunch
 	make PREFIX=${D}/usr install || die
-
+	
 	newdoc README README.desklaunch
 }
+

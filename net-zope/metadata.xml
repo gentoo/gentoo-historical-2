@@ -2,29 +2,7 @@
 <!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
-		The net-zope category contains all Zope (zope.org) related software including third party products and tools.
-	</longdescription>
-	<longdescription lang="de">
-		Die Kategorie net-zope enthält Software rund um Zope (zope.org), inklusive externerProdukte und Werkzeuge.
-	</longdescription>
-	<longdescription lang="es">
-		La categoría net-zope contiene todo el software relacionado con Zope
-		(zope.org) incluyendo herramientas y módulos de terceros.
-	</longdescription>
-	<longdescription lang="ja">
-		net-zopeカテゴリーにはサードパーティ製プロダクトとツールも含めたZope全般の
-		ソフトウェアが含まれています。
-	</longdescription>
-	<longdescription lang="nl">
-		De net-zope categorie bevat alle Zope (zope.org) gerelateerde applicaties.
-	</longdescription>
-	<longdescription lang="vi">
-		Nhóm net-zope chứa các phần mềm liên quan đến Zope (zope.org)
-		bao gồm các sản phẩm của bên thứ ba.
-	</longdescription>
-	<longdescription lang="it">
-		La categoria net-zope contiene tutto il software relativo a Zope (zope.org)
-		compreso il software sviluppato da terze parti.
+		The net-zope category contains Zope software.
 	</longdescription>
 </catmetadata>
 

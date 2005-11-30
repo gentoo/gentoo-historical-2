@@ -1,31 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/bwwhois/bwwhois-3.2.ebuild,v 1.9 2005/11/28 13:14:01 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bwwhois/bwwhois-3.2.ebuild,v 1.1 2002/12/22 16:58:17 mcummings Exp $
 
-inherit perl-app
+inherit perl-post
 
-MY_P=${P/bw/}
-
-S=${WORKDIR}/${MY_P}
+P=whois-3.2
+S=${WORKDIR}/${P}
+A=${P}.tgz
 DESCRIPTION="Perl-based whois client designed to work with the new Shared Registration System"
-SRC_URI="http://whois.bw.org/dist/${MY_P}.tgz"
+SRC_URI="http://whois.bw.org/dist/${A}"
 HOMEPAGE="http://whois.bw.org/"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
+LICENSE="Artistic | GPL-2"
 KEYWORDS="x86 ~ppc ~sparc ~alpha"
-IUSE=""
 
-DEPEND="dev-lang/perl"
+DEPEND="sys-devel/perl"
 
 src_unpack() {
 
 	unpack ${A}
 	cd ${S}
-}
-
-src_compile() {
-	einfo "no compilation necessary"
 }
 
 src_install () {
@@ -39,8 +34,8 @@ src_install () {
 	insinto etc/whois
 	doins whois.conf tld.conf sd.conf
 
-	perlinfo
+	perl-post_perlinfo
 	insinto ${SITE_LIB}
 	doins bwInclude.pm
-	updatepod
+	perl-post_updatepod
 }

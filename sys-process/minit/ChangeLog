@@ -1,12 +1,6 @@
-# ChangeLog for sys-process/minit
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/minit/ChangeLog,v 1.4 2005/08/28 06:04:12 vapier Exp $
-
-  28 Aug 2005; Mike Frysinger <vapier@gentoo.org> minit-0.9.1.ebuild:
-  Punt USE=diet.
-
-  16 Apr 2005; Mike Frysinger <vapier@gentoo.org> minit-0.9.1.ebuild:
-  Make dietlibc optional #89249 by James Rowe.
+# ChangeLog for sys-apps/minit
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/minit/ChangeLog,v 1.1 2005/03/03 16:02:26 ciaranm Exp $
 
 *minit-0.9.1 (03 Mar 2005)
 

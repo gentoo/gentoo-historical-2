@@ -1,41 +1,6 @@
 # ChangeLog for media-fonts/artwiz-fonts
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/artwiz-fonts/ChangeLog,v 1.10 2005/11/06 05:22:14 st_lim Exp $
-
-  06 Nov 2005; Lim Swee Tat <st_lim@gentoo.org> artwiz-fonts-2.4-r1.ebuild:
-  Removed cursor.pcf.gz
-
-  13 Sep 2005; Aron Griffis <agriffis@gentoo.org>
-  artwiz-fonts-2.4-r1.ebuild:
-  Mark 2.4-r1 stable on alpha
-
-  01 Nov 2004; Markus Rothe <corsair@gentoo.org>
-
-  artwiz-fonts-2.4-r1.ebuild:
-  Marked ~ppc64; bug #68103
-
-  03 Feb 2004; <augustus@gentoo.org> artwiz-fonts-2.4-r1.ebuild:
-  Added ~amd64 keyword.
-
-  03 Feb 2004; <augustus@gentoo.org> artwiz-fonts-2.4-r1.ebuild:
-  Added ~amd64 keyword.
-
-*artwiz-fonts-2.4-r1 (21 Sep 2003)
-
-  21 Sep 2003; Seemant Kulleen <seemant@gentoo.org>
-  artwiz-fonts-2.4-r1.ebuild:
-  a fonts.alias file is installed this time, which allows one to do, for
-  example: xterm -fn snap. This is thanks to: D. Curtis <dcurtis@cs.uiowa.edu>
-  in bug #29293
-
-  26 Aug 2003; Heinrich Wendel <lanius@gentoo.org> artwiz-fonts-2.4.ebuild:
-  marked sparc (only data package)
-
-  26 Aug 2003; Luca Barbato <lu_zero@gentoo.org> artwiz-fonts-2.4.ebuild:
-  Marked ppc 
-
-  04 Jul 2003; robh <robh@gentoo.org> artwiz-fonts-2.4.ebuild:
-  fixed font path entry in xfs config
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/artwiz-fonts/ChangeLog,v 1.1 2003/06/02 13:45:30 seemant Exp $
 
 *artwiz-fonts-2.4 (02 Jun 2003)
 

@@ -1,14 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/digitaldj/digitaldj-0.7.3-r1.ebuild,v 1.7 2005/09/14 07:19:56 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/digitaldj/digitaldj-0.7.3-r1.ebuild,v 1.1 2004/03/27 03:03:26 eradicator Exp $
 
 DESCRIPTION="A SQL-based mp3-player frontend designed to work with Grip"
 HOMEPAGE="http://www.nostatic.org/ddj/"
 SRC_URI="http://www.nostatic.org/ddj/${P}.tar.gz"
 LICENSE="GPL-1"
 SLOT="0"
-#-amd64: 0.7.3-r1: segfault when "attempt to configure database->yes"
-KEYWORDS="alpha -amd64 ~hppa sparc x86"
+KEYWORDS="~alpha ~hppa ~sparc ~x86"
 IUSE="lirc"
 DEPEND="dev-db/mysql
 	lirc? ( app-misc/lirc )

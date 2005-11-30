@@ -1,22 +1,6 @@
 # ChangeLog for dev-perl/Mail-ClamAV
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-ClamAV/ChangeLog,v 1.5 2005/07/18 18:01:14 gustavoz Exp $
-
-  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  Mail-ClamAV-0.13.ebuild, Mail-ClamAV-0.17.ebuild:
-  To ~sparc
-
-*Mail-ClamAV-0.17 (28 Apr 2005)
-
-  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  +Mail-ClamAV-0.17.ebuild:
-  Cleaning
-
-  20 Apr 2005; Christian Zoffoli <xmerlin@gentoo.org> Mail-ClamAV-0.13.ebuild:
-  Stable x86.
-
-  13 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org> metadata.xml:
-  added missing perl maintainer, better indentation
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Mail-ClamAV/ChangeLog,v 1.1 2005/01/11 01:13:15 xmerlin Exp $
 
 *Mail-ClamAV-0.13 (11 Jan 2005)
 

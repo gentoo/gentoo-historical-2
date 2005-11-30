@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-crystality/xmms-crystality-0.92.ebuild,v 1.8 2004/11/11 09:53:01 eradicator Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-crystality/xmms-crystality-0.92.ebuild,v 1.1 2004/04/09 05:41:12 eradicator Exp $
 
 inherit eutils
 
@@ -11,26 +9,24 @@ MY_P="${MY_PN}-${PV}"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="xmms plugin to patch some of the mp3 format flaws in realtime"
-HOMEPAGE="http://fanthom.math.put.poznan.pl/~gyver/crystality"
+HOMEPAGE="http://xmms.org/plugins_search.html?mode=search&query=crystality"
 SRC_URI="http://fanthom.math.put.poznan.pl/~gyver/crystality/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-# -sparc: 0.92: static noise when enabled
-# ~amd64: 0.92: distortions in the effects... 
-KEYWORDS="~amd64 ~ppc -sparc x86"
+KEYWORDS="~x86"
 
-DEPEND="media-sound/xmms"
+DEPEND="media-sound/xmms
+	>=sys-libs/glibc-2.1.3"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${P}-gcc3.patch
-	epatch ${FILESDIR}/${P}-PIC.patch
 }
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" || die
+	emake CFLAGS="${CFLAGS} `gtk-config --cflags`" || die
 }
 
 src_install() {

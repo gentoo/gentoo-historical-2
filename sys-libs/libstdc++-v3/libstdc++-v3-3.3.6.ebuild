@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstdc++-v3/libstdc++-v3-3.3.6.ebuild,v 1.4 2005/09/25 15:10:08 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libstdc++-v3/libstdc++-v3-3.3.6.ebuild,v 1.1 2005/07/23 07:34:55 eradicator Exp $
 
 inherit eutils flag-o-matic libtool gnuconfig versionator
 
@@ -87,7 +87,6 @@ do_filter_flags() {
 	filter-flags -funit-at-a-time
 	filter-flags -fweb
 	filter-flags -fno-web
-	filter-flags -mno-tls-direct-seg-refs
 
 	# xgcc isnt patched with propolice
 	filter-flags -fstack-protector-all
@@ -131,7 +130,7 @@ HOMEPAGE="http://gcc.gnu.org/libstdc++/"
 LICENSE="GPL-2 LGPL-2.1"
 
 KEYWORDS="~amd64 ~x86 ~mips ~ppc64 ~ppc ~sparc"
-IUSE="multilib nls nptl build"
+IUSE="multilib nls nptl"
 
 # 3.2.3 -> 3.3.x install .so.5, so lets slot to 5
 if [ "${CHOST}" == "${CCHOST}" ]
@@ -191,7 +190,7 @@ src_compile() {
 		myconf="${myconf} --enable-nls --without-included-gettext"
 	fi
 
-	(has_multilib_profile || use multilib) || myconf="${myconf} --disable-multilib"
+	(has_multlib_profile || use multilib) || myconf="${myconf} --disable-multilib"
 
 	do_filter_flags
 	einfo "CFLAGS=\"${CFLAGS}\""

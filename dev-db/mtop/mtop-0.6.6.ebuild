@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mtop/mtop-0.6.6.ebuild,v 1.6 2005/11/28 12:17:42 mcummings Exp $
+# $Header : $
 
-inherit perl-app
+inherit perl-module
 
 DESCRIPTION="Mysql top monitors a MySQL server"
 HOMEPAGE="http://mtop.sourceforge.net"
 SRC_URI="mirror://sourceforge/mtop/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND="dev-perl/Curses
 		dev-perl/DBI
@@ -17,8 +17,8 @@ DEPEND="dev-perl/Curses
 		dev-perl/libnet"
 
 src_compile() {
-	perl-app_src_prep || die "Perl module preparation failed."
-	perl-app_src_compile || die "Perl module compilation failed."
+	perl-module_src_prep || die "Perl module preparation failed."
+	perl-module_src_compile || die "Perl module compilation failed."
 	perl-module_src_test || die "Perl module tests failed."
 }
 

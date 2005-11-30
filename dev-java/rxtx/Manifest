@@ -1,14 +1,2 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 2737e7393831906dbc36061deca6bf0a ChangeLog 526
-MD5 a6ec7d7724fbd068ffb39b5be56134ed metadata.xml 157
-MD5 b8c9132db49f953bbfdb5b92717192bd rxtx-2.1.7_pre17.ebuild 829
+MD5 f39e5909d38fb1df5c56c9bde462a892 rxtx-2.1.7_pre17.ebuild 962
 MD5 3b9201b3a03e120d1bbe4376c3a0fbd6 files/digest-rxtx-2.1.7_pre17 67
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.0 (GNU/Linux)
-
-iD8DBQFCijTl06ebR+OMO78RAvgdAJ9eSmVSjRlag0gd8t8FKWudL/uvVACaAiHH
-8bXzDPjBnD29M2/7Rb7oFJU=
-=oyBT
------END PGP SIGNATURE-----

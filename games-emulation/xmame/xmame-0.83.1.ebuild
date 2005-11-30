@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/xmame/xmame-0.83.1.ebuild,v 1.6 2005/05/30 18:39:05 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/xmame/xmame-0.83.1.ebuild,v 1.1 2004/06/16 03:40:37 mr_bones_ Exp $
 
-inherit flag-o-matic toolchain-funcs eutils games
+inherit flag-o-matic gcc eutils games
 
 TARGET="${PN}"
 
@@ -73,18 +73,10 @@ src_unpack() {
 				|| die "sed Makefile (joystick) failed"
 		fi
 		;;
-	ppc)
+	ppc|sparc|hppa)
 		sed -i \
 			-e '/^MY_CPU/s:i386:risc:' Makefile \
-			|| die "sed Makefile (ppc) failed"
-		sed -i \
-			-e '/^LD\t= $(CC) -Wl,-s/s:$: -Wl,--relax:' Makefile \
-			|| die "sed Makefile (ppc) failed"
-		;;
-	sparc|hppa)
-		sed -i \
-			-e '/^MY_CPU/s:i386:risc:' Makefile \
-			|| die "sed Makefile (sparc|hppa) failed"
+			|| die "sed Makefile (ppc|sparc|hppa) failed"
 		;;
 	alpha)
 		sed -i \
@@ -141,13 +133,10 @@ src_unpack() {
 	fi
 
 	case ${ARCH} in
-		x86|ia64)	append-flags -Wno-unused -fomit-frame-pointer -fstrict-aliasing -fstrength-reduce -ffast-math
+		x86|ia64|amd64)	append-flags -Wno-unused -fomit-frame-pointer -fstrict-aliasing -fstrength-reduce -ffast-math
 			[ $(gcc-major-version) -eq 3 ] \
 				&& append-flags -falign-functions=2 -falign-jumps=2 -falign-loops=2 \
 				|| append-flags -malign-functions=2 -malign-jumps=2 -malign-loops=2
-			;;
-		# amd64 no likey the -ffast-math - bug #54270
-		amd64)	append-flags -Wno-unused -fomit-frame-pointer -fstrict-aliasing -fstrength-reduce
 			;;
 		ppc)	append-flags -Wno-unused -funroll-loops -fstrength-reduce -fomit-frame-pointer -ffast-math -fsigned-char
 			;;

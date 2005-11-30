@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>netmon</herd>
-<longdescription>Prelude-IDS Framework Library</longdescription>
+	<herd>hardened</herd>
+	<maintainer>
+		<email>solar@gentoo.org</email>
+		<description>Primary Maintainer</description>
+	</maintainer>
+	<longdescription></longdescription>
 </pkgmetadata>

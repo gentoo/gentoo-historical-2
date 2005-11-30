@@ -1,17 +1,6 @@
-# ChangeLog for app-laptop/toshiba-utils
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/toshiba-utils/ChangeLog,v 1.7 2005/04/21 19:50:45 wormo Exp $
-
-  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  toshiba-utils-2.0.1-r1.ebuild:
-  marked -ppc since toshiba does not make any ppc laptops
-
-  09 Oct 2004; Doug Goldstein <cardoe@gentoo.org> +metadata.xml:
-  Added missing metadata.xml
-
-  27 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org>
-  toshiba-utils-2.0.1-r1.ebuild:
-  Fix SRC_URI. Bug #63765
+# ChangeLog for app-misc/toshiba-utils
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/toshiba-utils/ChangeLog,v 1.1 2004/03/08 05:52:22 latexer Exp $
 
   06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
  

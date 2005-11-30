@@ -1,15 +1,6 @@
 # ChangeLog for app-text/pytextile
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pytextile/ChangeLog,v 1.4 2005/11/20 03:41:37 josejx Exp $
-
-  20 Nov 2005; Joseph Jezak <josejx@gentoo.org> pytextile-2.0.10.ebuild:
-  Marked ~ppc for bug #111069.
-
-  09 Nov 2005; Jason Wever <weeve@gentoo.org> pytextile-2.0.10.ebuild:
-  Added ~sparc keyword wrt bug #111069.
-
-  01 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> pytextile-2.0.10.ebuild:
-  Marked ~amd64, bug 111069.
+# $Header: /var/cvsroot/gentoo-x86/app-text/pytextile/ChangeLog,v 1.1 2005/10/31 23:22:47 dju Exp $
 
 *pytextile-2.0.10 (31 Oct 2005)
 

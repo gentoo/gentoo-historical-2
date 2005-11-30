@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/tunepimp/tunepimp-0.3.0-r1.ebuild,v 1.14 2005/11/28 13:04:10 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/tunepimp/tunepimp-0.3.0-r1.ebuild,v 1.1 2005/02/02 10:39:28 greg_g Exp $
 
-inherit eutils distutils perl-app
+inherit eutils distutils perl-module
 
 DESCRIPTION="Client library to create MusicBrainz enabled tagging applications"
 HOMEPAGE="http://www.musicbrainz.org/products/tunepimp"
@@ -10,38 +10,31 @@ SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/lib${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
-IUSE="flac mp3 readline perl python vorbis"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="flac mad oggvorbis readline python perl"
 
-RDEPEND=">=media-libs/musicbrainz-2.1.0
-	flac? ( media-libs/flac )
-	vorbis? ( media-libs/libvorbis )
-	readline? ( sys-libs/readline )
-	mp3? ( media-libs/libmad )
-	!media-sound/trm"
-
+RDEPEND="dev-libs/expat"
 DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+	flac? ( media-libs/flac )
+	oggvorbis? ( media-libs/libvorbis )
+	readline? ( sys-libs/readline )
+	mad? ( media-libs/libmad )
+	>=media-libs/musicbrainz-2.1.0
+	dev-util/pkgconfig
+	!media-sound/trm"
 
 S=${WORKDIR}/lib${P}
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/thread.patch
-
+src_compile() {
 	# do not try to link against obsolete libtermcap
 	sed -i -e 's,-ltermcap,-lncurses,' configure
-	sed -i -e 's:-lthr:-lpthread:g' ${S}/lib/threads/posix/Makefile.in
-}
 
-src_compile() {
+	epatch ${FILESDIR}/thread.patch
 	econf || die "configure failed"
 	emake || die "emake failed"
 	if use perl; then
 		cd ${S}/perl/tunepimp-perl
-		perl-app_src_compile || die "perl module failed to compile"
+		perl-module_src_compile || die "perl module failed to compile"
 	fi
 }
 

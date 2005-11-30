@@ -2,5 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>no-herd</herd>
-<longdescription>A steganography program that hides data within media files.</longdescription>
+<maintainer>
+  <email>zhen@gentoo.org</email>
+	<name>John Davis</name>
+	<description>Full time maintainer</description>
+</maintainer>
+	<longdescription>A steganography program that hides data within media files.</longdescription>
 </pkgmetadata>

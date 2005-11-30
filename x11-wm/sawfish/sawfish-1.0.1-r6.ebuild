@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.0.1-r6.ebuild,v 1.16 2005/06/23 13:14:46 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.0.1-r6.ebuild,v 1.1 2002/10/15 16:32:05 foser Exp $
 
 IUSE="gtk nls esd gnome"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
 SRC_URI="mirror://sourceforge/sawmill/${P}.tar.gz"
 HOMEPAGE="http://sawmill.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc -ppc alpha"
+KEYWORDS="x86 sparc sparc64"
 
 DEPEND="=x11-libs/rep-gtk-0.15*
 	>=dev-libs/librep-0.14
@@ -39,23 +40,23 @@ src_unpack() {
 
 src_compile() {
 
-	local myconf
-
-	use esd \
-		&& myconf="--with-esd" \
+  	local myconf
+	
+	use esd	\
+		&& myconf="--with-esd"	\
 		|| myconf="--without-esd"
-
-	use gnome \
-		&& myconf="${myconf} --with-gnome-prefix=/usr --enable-gnome-widgets --enable-capplet" \
+	
+	use gnome	\
+		&& myconf="${myconf} --with-gnome-prefix=/usr --enable-gnome-widgets --enable-capplet"	\
 		|| myconf="${myconf} --disable-gnome-widgets --disable-capplet"
-
+	
 	use nls || myconf="${myconf} --disable-linguas"
 
-	use gtk || use gnome \
-		&& myconf="${myconf} --with-gdk-pixbuf" \
+	use gtk || use gnome 	\
+		&& myconf="${myconf} --with-gdk-pixbuf"	\
 		|| myconf="${myconf} --without-gdk-pixbuf"
 
-	./configure \
+	./configure	\
 		--host=${CHOST} \
 		--prefix=/usr \
 		--infodir=/usr/share/info \
@@ -73,12 +74,12 @@ src_install() {
 		install || die
 
 	use nls || rmdir ${D}/usr/share/locale
-
+		
 	dodoc AUTHORS BUGS COPYING ChangeLog
 	dodoc DOC FAQ NEWS README THANKS TODO
 
 	# Add to Gnome CC's Window Manager list
-	if use gnome
+	if [ "`use gnome`" ]
 	then
 		insinto /usr/share/gnome/wm-properties
 		doins ${FILESDIR}/Sawfish.desktop

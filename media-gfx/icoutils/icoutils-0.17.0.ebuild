@@ -1,19 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/icoutils/icoutils-0.17.0.ebuild,v 1.7 2005/03/15 05:33:35 hparker Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/icoutils/icoutils-0.17.0.ebuild,v 1.1 2002/12/06 20:39:22 hanno Exp $
 
 DESCRIPTION="A set of programs for extracting and converting images in Microsoft Windows icon and cursor files (.ico, .cur)."
 HOMEPAGE="http://www.student.lu.se/~nbi98oli"
 SRC_URI="http://www.student.lu.se/~nbi98oli/src/${P}.tar.gz"
-
-KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~x86"
+DEPEND="virtual/glibc"
+S="${WORKDIR}/${P}"
 IUSE=""
 
-DEPEND="virtual/libc"
+src_compile() {
+	econf || die
+	emake || die
+}
 
 src_install() {
-	einstall || die
-	dodoc AUTHORS ChangeLog NEWS README TODO || die "dodoc failed"
+	make DESTDIR=${D} install || die
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/plucker/plucker-1.8.ebuild,v 1.5 2005/01/01 15:47:17 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/plucker/plucker-1.8.ebuild,v 1.1 2004/06/21 01:14:21 agriffis Exp $
 
 inherit python
 
@@ -15,7 +15,7 @@ DEPEND=">=dev-lang/python-1.5.2"
 RDEPEND=">=dev-lang/python-1.5.2
 		|| (
 			>=media-gfx/imagemagick-5.4.4
-			>=dev-python/imaging-1.1
+			>=dev-python/Imaging-1.1
 			>=media-libs/netpbm-9.15
 		)"
 
@@ -49,5 +49,5 @@ src_install() {
 		/usr/bin/plucker-dump
 
 	# Extra symlink
-	dosym /usr/lib/python${PYVER}/site-packages/PyPlucker/pluck-comics.py /usr/bin/pluck-comics
+	dosym /usr/lib/python${PYVER}/site-packages/PyPlucker/pluck-comics.py /usr/bin/pluck-comics	
 }

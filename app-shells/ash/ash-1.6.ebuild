@@ -1,47 +1,46 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/ash/ash-1.6.ebuild,v 1.22 2005/10/02 11:29:27 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/ash/ash-1.6.ebuild,v 1.1 2003/02/09 09:36:31 satai Exp $
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils
 
 DESCRIPTION="NetBSD's lightweight bourne shell"
 HOMEPAGE="http://cvsweb.netbsd.org/bsdweb.cgi/src/bin/sh/"
-SRC_URI="ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/tar_files/src/bin.tar.gz
-	mirror://gentoo/dash-ash-hetio-yacc.diff.bz2"
-
+SRC_URI="ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/tar_files/src/bin.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha ~amd64 arm ia64 ~mips ppc sparc x86"
-IUSE="static"
-
-DEPEND="sys-devel/pmake
-	sys-apps/sed
-	dev-util/yacc"
-
+KEYWORDS="~alpha ~x86"
+IUSE=""
+DEPEND="virtual/glibc
+		sys-devel/pmake
+		sys-apps/sed 
+		dev-util/yacc"
 S=${WORKDIR}/bin_NetBSD-1.6release/src/bin/sh
 
 src_unpack() {
 	mkdir ${WORKDIR}/bin_NetBSD-1.6release
 	(cd ${WORKDIR}/bin_NetBSD-1.6release; tar zxv --no-same-owner \
 	-f ${DISTDIR}/bin.tar.gz src/bin/sh)
-	epatch ${DISTDIR}/dash-ash-hetio-yacc.diff.bz2
-
-	cd ${S}
-	epatch ${FILESDIR}/${P}-gcc4.diff
+	epatch ${FILESDIR}/dash-ash-hetio-yacc.diff
 }
-
 src_compile() {
-	use static && append-ldflags -static
-	append-flags "-Wall -DBSD=1 -D_GNU_SOURCE -DGLOB_BROKEN \
-	-DHAVE_VASPRINTF=1 -DIFS_BROKEN -DGCC_BROKEN_NG -D__COPYRIGHT\(x\)=\
-	-D__RCSID\(x\)= -D_DIAGASSERT\(x\)= -fstrict-aliasing"
+	cd ${S}
 	# pmake name conflicts, use full path
-	/usr/bin/pmake CC="$(tc-getCC)" CFLAGS:="${CFLAGS}" \
-		YACC:="sh ${S}/yaccfe.sh" || die "pmake failed"
+	/usr/bin/pmake CFLAGS:="-Wall -DBSD=1 -D_GNU_SOURCE -DGLOB_BROKEN \
+	-DHAVE_VASPRINTF=1 -DIFS_BROKEN -DGCC_BROKEN_NG -D__COPYRIGHT\(x\)=\
+	-D__RCSID\(x\)= -D_DIAGASSERT\(x\)= -g -O2 -fstrict-aliasing ${CFLAGS}" \
+	YACC:="sh ${S}/yaccfe.sh" || die "pmake failed"
+	cd -
 }
 
 src_install() {
-	into /
-	newbin sh ash || die
-	newman sh.1 ash.1
+	install -D -g root -m 0755 -o root -s ${S}/sh ${D}/bin/ash || {
+		die "install failed."
+	}
+	install -D -g root -m 0644 -o root ${S}/sh.1 ${D}/usr/man/man1/ash.1 || {
+		die "install failed."
+	}
+	gzip ${D}/usr/man/man1/ash.1
+	dosym /usr/man/man1/ash.1.gz /usr/man/man1/sh.1.gz
 }
+

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/wm-icons/wm-icons-0.4.0_pre1-r1.ebuild,v 1.9 2005/10/02 20:09:10 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/wm-icons/wm-icons-0.4.0_pre1-r1.ebuild,v 1.1 2004/05/06 19:27:27 taviso Exp $
 
 inherit gnuconfig
 
@@ -11,11 +11,15 @@ SRC_URI="mirror://gentoo/wm-icons-${PV}-cvs-01092003.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc x86"
+KEYWORDS="x86 alpha ppc"
 
 IUSE=""
-RDEPEND="sys-apps/gawk dev-lang/perl"
-DEPEND="${RDEPEND} sys-devel/autoconf sys-devel/automake sys-apps/sed"
+RDEPEND=">=sys-apps/gawk-3
+	>=dev-lang/perl-5.8.0"
+DEPEND="${DEPEND}
+	sys-devel/autoconf
+	sys-devel/automake
+	sys-apps/sed"
 
 S=${WORKDIR}/wm-icons
 
@@ -23,11 +27,7 @@ src_unpack() {
 	unpack ${A}
 
 	sed -i 's#$(bindir)/wm-icons-config#true#g' ${S}/Makefile.am
-	# duplication of bin/Makefile in configure.in #91764
-	sed -i '132s/bin\/Makefile//' ${S}/configure.in
-	# non-portable comment bombs automake.
-	sed -i 's/\t#/#/' ${S}/Makefile.am
-	gnuconfig_update
+	use alpha && gnuconfig_update
 }
 
 src_compile() {

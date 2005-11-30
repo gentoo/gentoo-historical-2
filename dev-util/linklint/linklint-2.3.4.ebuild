@@ -1,21 +1,21 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/linklint/linklint-2.3.4.ebuild,v 1.3 2004/10/04 13:47:24 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/linklint/linklint-2.3.4.ebuild,v 1.1 2004/08/15 17:29:23 stuart Exp $
 
 DESCRIPTION="Linklint is a Perl program that checks links on web sites."
-HOMEPAGE="http://www.linklint.org/"
-SRC_URI="http://www.linklint.org/download/${P}.tar.gz"
+HOMEPAGE="http://www.mindspring.com/~bowlin/linklint/index.html"
+SRC_URI="http://www.mindspring.com/~bowlin/linklint/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"
 
 src_install() {
 	exeinto /usr/bin
-	newexe ${P} linklint || die
+	newexe ${P} linklint
 	dodoc INSTALL.unix INSTALL.windows LICENSE.txt READ_ME.txt CHANGES.txt
 	dohtml doc/*
 }

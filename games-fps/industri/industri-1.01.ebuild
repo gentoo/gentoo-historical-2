@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/industri/industri-1.01.ebuild,v 1.10 2005/11/05 22:35:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/industri/industri-1.01.ebuild,v 1.1 2003/10/30 07:27:52 vapier Exp $
 
-inherit toolchain-funcs games
+inherit games
 
 DESCRIPTION="Quake/Tenebrae based, single player game"
 HOMEPAGE="http://industri.sourceforge.net/"
@@ -12,59 +12,51 @@ SRC_URI="mirror://sourceforge/industri/industri_BIN-${PV}-src.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
 
-RDEPEND="virtual/opengl
+DEPEND="virtual/opengl
 	virtual/x11
+	sdl? ( media-libs/libsdl )
 	media-libs/libpng
 	sys-libs/zlib"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
 
 S=${WORKDIR}/industri_BIN
 
 src_unpack() {
 	unpack ${A}
 
-	cd "${S}"/linux
+	cd ${S}/linux
 	mv Makefile.i386linux Makefile
-	sed -i -e "s:-mpentiumpro.*:${CFLAGS} \\\\:" Makefile || die "sed failed"
+	local gl="`ls -al /usr/include/GL/gl.h  | awk '{print $NF}' | cut -d/ -f5`"
+	[ "${gl}" == "nvidia" ] && epatch ${FILESDIR}/${PV}-nvidia-opengl.patch
+	sed -i "s:-mpentiumpro.*:${CFLAGS} \\\\:" Makefile
 
-	# Remove duplicated typedefs #71841
-	cd "${S}"
-	for typ in PFNGLFLUSHVERTEXARRAYRANGEAPPLEPROC PFNGLVERTEXARRAYRANGEAPPLEPROC ; do
-		if echo '#include <GL/gl.h>' | $(tc-getCC) -E - 2>/dev/null | grep -sq ${typ} ; then
-			sed -i \
-				-e "/^typedef.*${typ}/d" \
-				glquake.h \
-				|| die "sed failed"
-		fi
-	done
+#	if [ `use sdl` ] ; then
+#		cd ${S}/sdl
+#		./autogen.sh || die "autogen failed"
+#	fi
 }
 
 src_compile() {
-	emake \
-		-C linux \
-		MASTER_DIR="${GAMES_DATADIR}"/quake1 \
-		build_release \
-		|| die "emake failed"
+	cd linux
+	emake MASTER_DIR=${GAMES_DATADIR}/quake-data build_release || die
+
+#	if [ `use sdl` ] ; then
+#		cd ${S}/sdl
+#		export GAMEDIR=${GAMES_DATADIR}/quake-data
+#		egamesconf || die
+#		emake || die "emake failed"
+#	fi
 }
 
 src_install() {
-	newgamesbin linux/release*/bin/industri.run industri || die
-	dogamesbin "${FILESDIR}"/industri.pretty || die
+	newgamesbin linux/release*/bin/industri.run industri
+	dogamesbin ${FILESDIR}/industri.pretty
 	insinto /usr/share/icons
 	doins industri.ico quake.ico
 	dodoc linux/README
-	cd "${WORKDIR}"/industri
+	cd ${WORKDIR}/industri
 	dodoc *.txt && rm *.txt
-	insinto "${GAMES_DATADIR}"/quake1/industri
+	insinto ${GAMES_DATADIR}/quake-data/industri
 	doins *
 	prepgamesdirs
-}
-
-pkg_postinst() {
-	games_pkg_postinst
-	einfo "Please setup your quake pak files before playing in"
-	einfo "${GAMES_DATADIR}/quake1"
 }

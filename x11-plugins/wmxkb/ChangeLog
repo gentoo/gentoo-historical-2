@@ -1,20 +1,6 @@
 # ChangeLog for x11-plugins/wmxkb
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmxkb/ChangeLog,v 1.6 2005/08/29 08:36:58 s4t4n Exp $
-
-  29 Aug 2005; Michele Noberasco <s4t4n@gentoo.org> wmxkb-1.2.2.ebuild:
-  Stable for x86.
-
-  16 Jun 2005; David Holm <dholm@gentoo.org> wmxkb-1.2.2.ebuild:
-  Added to ~ppc.
-
-*wmxkb-1.2.2 (15 Jun 2005)
-
-  15 Jun 2005; Markus Nigbur <pyrania@gentoo.org> +wmxkb-1.2.2.ebuild:
-  Version bump.
-
-  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org> wmxkb-1.2.0.ebuild:
-  Marked stable.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmxkb/ChangeLog,v 1.1 2004/01/04 05:05:07 port001 Exp $
 
 *wmxkb-1.2.0 (04 Jan 2004)
 

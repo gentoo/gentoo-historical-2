@@ -1,19 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.4.0-r2.ebuild,v 1.8 2005/10/29 22:16:12 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.4.0-r2.ebuild,v 1.1 2005/09/18 20:59:30 hollow Exp $
 
 IUSE="apache2"
 
-KEYWORDS="alpha amd64 ~arm hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 
 detectapache() {
-	# DO NOT REPLICATE THIS IN ANY OTHER PACKAGE WITHOUT PORTAGE DEVS PERMISSION
-	# IT IS BROKEN AND A TEMPORARY MEASURE!
-	# YOU'VE BEEN WARNED.
-	if [[ ${EBUILD_PHASE/depend} != ${EBUILD_PHASE} ]]; then
-		APACHEVER=1
-		return
-	fi
 	local domsg=
 	[ -n "$1" ] && domsg=1
 	HAVE_APACHE1=
@@ -71,7 +64,7 @@ PDEPEND=">=${PHP_PROVIDER_PKG}-4.4.0"
 PROVIDE="${PROVIDE} virtual/httpd-php"
 
 # fixed PCRE library for security issues, bug #102373
-SRC_URI="${SRC_URI} http://gentoo.longitekk.com/php-pcrelib-new-secpatch.tar.bz2"
+SRC_URI="${SRC_URI} http://dl.longitekk.com/php-pcrelib-new-secpatch.tar.bz2"
 
 # Add a 'return 0' as we DON'T want the return code checked
 pkg_setup() {
@@ -199,7 +192,7 @@ pkg_postinst() {
 		apache2msg
 	else
 		einfo "1. Execute the command:"
-		einfo " \"emerge --config =${PF}\""
+		einfo " \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 		einfo "2. Edit /etc/conf.d/apache and add \"-D PHP4\" to APACHE_OPTS"
 		einfo "That will include the php mime types in your configuration"
 		einfo "automagically and setup Apache to load php when it starts."

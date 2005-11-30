@@ -1,53 +1,6 @@
 # ChangeLog for app-cdr/nero
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/nero/ChangeLog,v 1.12 2005/11/27 16:30:44 wschlich Exp $
-
-*nero-2.0.0.3b-r2 (27 Nov 2005)
-
-  27 Nov 2005; Wolfram Schlich <wschlich@gentoo.org>
-  -nero-2.0.0.3b-r1.ebuild, +nero-2.0.0.3b-r2.ebuild:
-  fix broken lib installation
-
-  26 Nov 2005; Wolfram Schlich <wschlich@gentoo.org> -nero-2.0.0.2.ebuild:
-  remove outdated version (SRC_URI no longer valid)
-
-*nero-2.0.0.3b-r1 (26 Nov 2005)
-
-  26 Nov 2005; Wolfram Schlich <wschlich@gentoo.org>
-  +nero-2.0.0.3b-r1.ebuild:
-  add multilib support (bug #110867)
-
-  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org>
-  -nero-2.0.0.0_p6.ebuild:
-  remove outdated version
-
-  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.2.ebuild,
-  nero-2.0.0.3b.ebuild:
-  fix gtk+ RDEPEND
-
-*nero-2.0.0.3b (22 Sep 2005)
-
-  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.2.ebuild,
-  +nero-2.0.0.3b.ebuild:
-  mark 2.0.0.2 stable on x86, add 2.0.0.3b archmasked
-
-  28 Aug 2005; Luis Medinas <metalgod@gentoo.org> nero-2.0.0.2.ebuild:
-  Fix build for AMD64. Closes bug #103626.
-
-*nero-2.0.0.2 (18 Aug 2005)
-
-  18 Aug 2005; Wolfram Schlich <wschlich@gentoo.org> +nero-2.0.0.2.ebuild:
-  version bump
-
-  25 Mar 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.0_p6.ebuild:
-  fix desktop entry file name
-
-  25 Mar 2005; Wolfram Schlich <wschlich@gentoo.org> +files/nero.desktop,
-  nero-2.0.0.0_p6.ebuild:
-  add desktop entry
-
-  25 Mar 2005; Wolfram Schlich <wschlich@gentoo.org> nero-2.0.0.0_p6.ebuild:
-  add mp3, oggvorbis and shorten USE flags
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/nero/ChangeLog,v 1.1 2005/03/24 23:16:53 wschlich Exp $
 
 *nero-2.0.0.0_p6 (25 Mar 2005)
 

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/cutecom/cutecom-0.13.1.ebuild,v 1.3 2005/10/04 17:51:13 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/cutecom/cutecom-0.13.1.ebuild,v 1.1 2005/04/20 22:32:01 mrness Exp $
 
-inherit eutils qt3
+inherit eutils
 
 DESCRIPTION="CuteCom is a serial terminal, like minicom, written in qt"
 HOMEPAGE="http://cutecom.sourceforge.net"
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="x86 ~amd64"
 IUSE=""
 
-DEPEND="$(qt_min_version 3.2)"
+DEPEND=">=x11-libs/qt-3.2.0"
 RDEPEND="${DEPEND}
 	net-dialup/lrzsz"
 
@@ -25,7 +25,7 @@ src_compile() {
 
 src_install() {
 	dobin "cutecom"
-	dodoc README Changelog README
+	dodoc README Changelog COPYING README
 
 	make_desktop_entry cutecom "CuteCom" openterm
 }

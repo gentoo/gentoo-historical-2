@@ -1,26 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/gps/gps-1.1.0-r1.ebuild,v 1.9 2005/10/31 13:06:36 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/gps/gps-1.1.0-r1.ebuild,v 1.1 2004/12/30 20:06:17 seemant Exp $
 
 inherit eutils
 
 DESCRIPTION="Graphical (GTK+1.2) Process Statistics"
 HOMEPAGE="http://gps.seul.org/"
-SRC_URI="ftp://ftp.seul.org/pub/gps/${P}.tar.gz
-	mirror://gentoo/${P}-gentoo.bz2"
+SRC_URI="ftp://ftp.seul.org/pub/gps/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="x86 ~ppc ~amd64"
 IUSE=""
 
 DEPEND="=x11-libs/gtk+-1.2*"
 
-RESTRICT="nouserpriv"
-
 src_unpack() {
 	unpack ${A}
-	epatch ${WORKDIR}/${P}-gentoo
+	epatch ${FILESDIR}/${P}-gentoo.bz2
 }
 
 src_install() {
@@ -29,7 +26,7 @@ src_install() {
 	exeinto /etc/init.d
 	doexe ${FILESDIR}/rgpsp
 
-	dodoc TODO README* CHANGELOG
+	dodoc TODO README* CHANGELOG INSTALL
 
 	doman rgpsp/rgpsp.1
 	doman gps.1x

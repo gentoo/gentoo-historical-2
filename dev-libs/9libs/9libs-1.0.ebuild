@@ -1,27 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/9libs/9libs-1.0.ebuild,v 1.11 2005/09/25 10:17:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/9libs/9libs-1.0.ebuild,v 1.1 2003/03/11 08:30:30 absinthe Exp $
 
-DESCRIPTION="A package of Plan 9 compatibility libraries"
+DESCRIPTION="A package of Plan 9 compatability libraries."
 HOMEPAGE="http://www.netlib.org/research/9libs/9libs-1.0.README"
-SRC_URI="ftp://www.netlib.org/research/9libs/${P}.tar.bz2"
-
+SRC_URI="ftp://www.netlib.org/research/9libs/${P}.tar.gz"
 LICENSE="PLAN9"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
-IUSE=""
-
+KEYWORDS="~x86"
+IUSE="X"
 DEPEND="virtual/x11"
+RDEPEND="${DEPEND}"
 
 src_compile() {
-	econf \
-		--includedir=/usr/include/9libs \
-		--enable-shared \
-		|| die "econf failed"
+	econf --enable-shared --with-gnu-ld
 	make || die
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die
+	einstall
 	dodoc README
+
 }
+

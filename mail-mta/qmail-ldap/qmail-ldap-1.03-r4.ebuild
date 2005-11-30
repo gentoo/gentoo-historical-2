@@ -1,10 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-ldap/qmail-ldap-1.03-r4.ebuild,v 1.8 2005/10/24 11:45:35 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail-ldap/qmail-ldap-1.03-r4.ebuild,v 1.1 2004/05/30 10:52:45 robbat2 Exp $
 
 IUSE="ssl"
 
-inherit eutils fixheadtails toolchain-funcs
+inherit eutils fixheadtails
 
 S=${WORKDIR}/qmail-${PV}
 
@@ -18,7 +18,7 @@ SRC_URI="mirror://qmail/qmail-${PV}.tar.gz
 	http://www.nrg4u.com/qmail/qmail-ldap-1.03-20040401.patch.gz
 	mirror://gentoo/${P}-r2-tls.patch.bz2"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-libs/zlib
 	sys-apps/groff
 	>=net-nds/openldap-2.1.23
@@ -30,7 +30,7 @@ DEPEND="virtual/libc
 
 RDEPEND="!virtual/mta
 	${DEPEND}
-	>=sys-process/daemontools-0.76-r1
+	>=sys-apps/daemontools-0.76-r1
 	>=net-mail/dot-forward-0.71"
 
 PROVIDE="virtual/mta
@@ -76,8 +76,8 @@ src_unpack() {
 		epatch ${FILESDIR}/${PV}-${PR}/tls.patch.bz2 || die "tls+auth patch failed";
 	fi
 
-	echo -n "$(tc-getCC) ${CFLAGS}" >${S}/conf-cc
-	echo -n "$(tc-getCC) ${LDFLAGS}" > ${S}/conf-ld
+	echo -n "${CC} ${CFLAGS}" >${S}/conf-cc
+	echo -n "${CC} ${LDFLAGS}" > ${S}/conf-ld
 	echo "500" > conf-spawn
 
 }
@@ -315,7 +315,7 @@ pkg_postinst() {
 
 
 	einfo "Please do not forget to run, the following syntax :"
-	einfo "emerge --config =${PF} "
+	einfo "ebuild /var/db/pkg/${CATEGORY}/${PN}-${PV}-${PR}/${PN}-${PV}-${PR}.ebuild config "
 	einfo "This will setup qmail to run out-of-the-box on your system including SSL. "
 	echo
 	einfo "To start qmail at boot you have to enable the /etc/init.d/svscan rc file "
@@ -327,7 +327,7 @@ pkg_postinst() {
 	einfo "NOTE: Please check your /var/qmail/control/ldap* files to match your local "
 	einfo "ldap settings and add the qmail.schema along with \"allow bind_v2\" to your "
 	einfo "slapd.conf. For sample ldifs, please check "
-	einfo "/usr/share/doc/${PF}/samples.ldif.gz "
+	einfo "/usr/share/doc/${PN}-${PV}-${PR}/samples.ldif.gz "
 
 
 }

@@ -1,30 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-utils/gnome-utils-1.4.1.2.ebuild,v 1.17 2005/01/09 11:15:10 slarti Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-utils/gnome-utils-1.4.1.2.ebuild,v 1.1 2002/02/02 18:12:04 azarah Exp $
 
-IUSE="nls"
-
+S=${WORKDIR}/${P}
 DESCRIPTION="gnome-utils"
 SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.gnome.org/"
-KEYWORDS="x86 ppc sparc"
-LICENSE="GPL-2"
+
 RDEPEND=">=gnome-base/gnome-core-1.4.0.4-r1
 	 >=gnome-base/libgtop-1.0.12-r1
 	 >=gnome-base/libglade-0.17-r1
-	 >=sys-fs/e2fsprogs-1.19-r2"
+	 >=sys-apps/e2fsprogs-1.19-r2"
 
 DEPEND="${RDEPEND}
-	>=dev-util/guile-1.4
+	>=dev-util/guile-1.5
 	>=sys-apps/shadow-4
 	nls? ( sys-devel/gettext )"
 
-SLOT="0"
 
 src_unpack() {
 
 	unpack ${A}
-
+	
 	# Fix compile error with >=dev-util/guile-1.5
 	# NOTE: someone with guile coding experience should verify that
 	#       scm_num2dbl is used correctly!
@@ -39,7 +37,7 @@ src_compile() {
 	local myconf
 	use nls || myconf="--disable-nls"
 	CFLAGS="${CFLAGS} `gnome-config --cflags libglade`"
-
+	
 	./configure --host=${CHOST}  \
 		--prefix=/usr \
 		--mandir=/usr/share/man \
@@ -48,7 +46,7 @@ src_compile() {
 		--localstatedir=/var/lib \
 		--sysconfdir=/etc \
 		$myconf || die
-
+				
 	emake || die
 }
 

@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-utils/bluez-utils-2.10-r1.ebuild,v 1.5 2005/04/20 21:37:29 hansmi Exp $
-
-IUSE="gtk"
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-utils/bluez-utils-2.10-r1.ebuild,v 1.1 2004/09/21 23:09:54 liquidx Exp $
 
 inherit eutils
 
@@ -12,8 +10,8 @@ SRC_URI="http://bluez.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
-
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+IUSE="gtk"
 RDEPEND=">=net-wireless/bluez-libs-2.10
 	!net-wireless/bluez-pan
 	gtk? ( >=dev-python/pygtk-2.2 )
@@ -38,8 +36,6 @@ src_unpack() {
 	mv -f hcid/Makefile.in ${T}/Makefile.in
 	sed -e "s:\$(prefix)/etc/bluetooth:/etc/bluetooth:" \
 		${T}/Makefile.in > hcid/Makefile.in
-
-	epatch ${FILESDIR}/${P}-handsfree.patch
 
 	if ! use gtk; then
 		mv -f scripts/Makefile.in ${T}/Makefile.in
@@ -72,16 +68,13 @@ src_install() {
 	newexe ${FILESDIR}/2.10-r1/bluetooth.rc bluetooth
 
 	exeinto /etc/bluetooth
-	newexe ${FILESDIR}/2.10-r1/pin-helper.sh pin-helper
+	newexe ${FILESDIR}/2.10-r1/pin-helper pin-helper
 	insinto /etc/bluetooth
 	newins ${FILESDIR}/2.10-r1/pin pin
 	fperms 0600 /etc/bluetooth/pin
 
 	insinto /etc/conf.d
 	newins ${S}/scripts/bluetooth.default bluetooth
-	sed -i -e 's/^HIDD_ENABLE=.*/HIDD_ENABLE=false/' \
-		-e 's/^HID2HCI_ENABLE=.*/HID2HCI_ENABLE=false/' \
-		${D}/etc/conf.d/bluetooth
 }
 
 pkg_postinst() {

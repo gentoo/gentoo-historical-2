@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/xine-lib/xine-lib-1.1.1-r1.ebuild,v 1.12 2005/11/29 00:05:40 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/xine-lib/xine-lib-1.1.1-r1.ebuild,v 1.1 2005/11/20 20:06:45 flameeyes Exp $
 
 inherit eutils flag-o-matic toolchain-funcs libtool autotools
 
@@ -8,7 +8,7 @@ inherit eutils flag-o-matic toolchain-funcs libtool autotools
 MY_PKG_SUFFIX=""
 MY_P=${PN}-${PV/_/-}${MY_PKG_SUFFIX}
 
-PATCHLEVEL="19"
+PATCHLEVEL="17"
 
 DESCRIPTION="Core libraries for Xine movie player"
 HOMEPAGE="http://xine.sourceforge.net/"
@@ -17,11 +17,11 @@ SRC_URI="mirror://sourceforge/xine/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="-*"
 IUSE="aalib libcaca arts cle266 esd win32codecs nls dvd X directfb vorbis alsa
 gnome sdl speex theora ipv6 altivec opengl aac fbcon xv xvmc nvidia i8x0
 samba dxr3 vidix mng flac oss v4l xinerama vcd a52 mad imagemagick dts asf
-ffmpeg debug"
+ffmpeg"
 RESTRICT="nostrip"
 
 RDEPEND="vorbis? ( media-libs/libvorbis )
@@ -57,7 +57,6 @@ RDEPEND="vorbis? ( media-libs/libvorbis )
 	mad? ( media-libs/libmad )
 	imagemagick? ( media-gfx/imagemagick )
 	dts? ( media-libs/libdts )
-	ffmpeg? ( >=media-video/ffmpeg-0.4.9_p20051120 )
 	!=media-libs/xine-lib-0.9.13*"
 
 DEPEND="${RDEPEND}
@@ -84,11 +83,9 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# This is still experimental patch
-	EPATCH_EXCLUDE="050_all_novell--alsa-resume-fix.patch" \
 	EPATCH_SUFFIX="patch" epatch ${WORKDIR}/patches/
 
-	AT_M4DIR="m4" eautoreconf
+	# AT_M4DIR="m4" eautoreconf
 	elibtoolize
 }
 
@@ -122,11 +119,11 @@ src_compile() {
 		ewarn ""
 	fi
 
-	# debug useflag used to emulate debug make targets. See bug #112980 and the
-	# xine maintainers guide.
-	use debug && append-flags -DDEBUG
-
 	local myconf
+
+	# the win32 codec path should ignore $(get_libdir) and always use lib
+	use win32codecs \
+		&& myconf="${myconf} --with-w32-path=/usr/$(get_libdir)/win32"
 
 	# enable/disable appropiate optimizations on sparc
 	[[ "${PROFILE_ARCH}" == "sparc64" ]] && myconf="${myconf} --enable-vis"
@@ -212,12 +209,10 @@ src_compile() {
 		$(use_enable vcd) --without-internal-vcdlibs \
 		\
 		$(use_enable asf) \
-		$(use_enable win32codecs w32dll) \
 		$(use_with ffmpeg external-ffmpeg) \
 		--disable-polypaudio \
 		--disable-optimizations \
 		${myconf} \
-		--with-w32-path=/usr/lib/win32 \
 		--disable-dependency-tracking || die "econf failed"
 
 		#$(use_with dvdnav external-dvdnav) \

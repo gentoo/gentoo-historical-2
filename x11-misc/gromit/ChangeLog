@@ -1,27 +1,6 @@
 # ChangeLog for x11-misc/gromit
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gromit/ChangeLog,v 1.7 2005/05/08 01:59:54 wormo Exp $
-
-  07 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  gromit-20041213.ebuild:
-  mark ~ppc
-
-  12 Mar 2005; Henrik Brix Andersen <brix@gentoo.org> -gromit-20041014.ebuild:
-  Pruned old version.
-
-  11 Jan 2005; Henrik Brix Andersen <brix@gentoo.org> gromit-20041213.ebuild:
-  Stable on x86.
-
-  20 Dec 2004; Henrik Brix Andersen <brix@gentoo.org> gromit-20041014.ebuild:
-  Stable on x86.
-
-*gromit-20041213 (16 Dec 2004)
-
-  16 Dec 2004; Henrik Brix Andersen <brix@gentoo.org> +gromit-20041213.ebuild:
-  Version bump.
-
-  18 Nov 2004; Henrik Brix Andersen <brix@gentoo.org> gromit-20041014.ebuild:
-  Adhere to CFLAGS.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gromit/ChangeLog,v 1.1 2004/11/18 18:59:21 brix Exp $
 
 *gromit-20041014 (18 Nov 2004)
 

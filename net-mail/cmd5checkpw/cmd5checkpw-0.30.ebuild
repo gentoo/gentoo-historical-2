@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/cmd5checkpw/cmd5checkpw-0.30.ebuild,v 1.9 2005/10/30 08:40:21 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/cmd5checkpw/cmd5checkpw-0.30.ebuild,v 1.1 2005/08/06 20:09:37 hansmi Exp $
 
 inherit eutils toolchain-funcs fixheadtails
 
@@ -12,13 +12,13 @@ HOMEPAGE="http://www.fehcom.de/qmail/smtpauth.html"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm hppa ia64 m68k mips ppc s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND="virtual/libc"
 
 douser() {
-	enewuser cmd5checkpw 212 -1 /dev/null bin
+	enewuser cmd5checkpw 212 /bin/false /dev/null bin
 }
 
 pkg_preinst() {

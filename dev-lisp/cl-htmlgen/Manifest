@@ -1,16 +1,5 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 a7e92958a69bd6e4e24bdc72cbfd7f0c ChangeLog 2860
-MD5 9b65b0341efc8f4b29498aad23315229 metadata.xml 164
-MD5 66e420be89129a867644101424e99f49 cl-htmlgen-1.2.42.20050220.ebuild 946
-MD5 b8a3944d054c0849a2ffb296ba57484d cl-htmlgen-1.2.42.20050805.ebuild 956
-MD5 4647f20ceef5e201f48238231cc3810a files/digest-cl-htmlgen-1.2.42.20050805 97
-MD5 da9c8b6af57dbf3f2e1db4347b533f71 files/digest-cl-htmlgen-1.2.42.20050220 92
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFC/8WEyiNZaEAZA+ARAtQcAJ9hG/DlzreEJ5AlW6oo8X4yvxO5TgCeKWee
-pUBIykZ+BbhiDm8Bmwcc3As=
-=z5kX
------END PGP SIGNATURE-----
+MD5 f562c108cf7a4aefa490a43925fac76d ChangeLog 326
+MD5 cba83cc6bf692e6d7450e9fcc889dda5 cl-htmlgen-1.2.12c.ebuild 694
+MD5 7a2412a7997a16db85890d4bdd0876a7 cl-htmlgen-1.2.12c.ebuild~ 585
+MD5 6bb77e58feb4637639cc0c8df37a4ade files/digest-cl-lml-2.3.4 60
+MD5 15d5d16cbcbb9ba7405c40c985cfc2fb files/digest-cl-htmlgen-1.2.12c 92

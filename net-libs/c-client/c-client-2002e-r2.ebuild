@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/c-client/c-client-2002e-r2.ebuild,v 1.7 2005/02/01 15:33:05 cryos Exp $
-
-inherit flag-o-matic eutils
+# $Header: /var/cvsroot/gentoo-x86/net-libs/c-client/c-client-2002e-r2.ebuild,v 1.1 2004/02/06 05:53:12 robbat2 Exp $
 
 MY_PN=imap
 MY_P=${MY_PN}-${PV}
@@ -14,14 +12,16 @@ SRC_URI="ftp://ftp.cac.washington.edu/imap/${MY_P}.tar.Z"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha arm hppa amd64 ia64 s390 ppc64"
+KEYWORDS="x86 sparc ppc hppa alpha ia64 amd64"
 IUSE="ssl"
 
-RDEPEND="ssl? ( dev-libs/openssl )
-	 !virtual/imap-c-client"
-DEPEND="${RDEPEND}
-	>=sys-libs/pam-0.72"
 PROVIDE="virtual/imap-c-client"
+RDEPEND="ssl? ( dev-libs/openssl )
+		 !virtual/imap-c-client"
+DEPEND="${RDEPEND}
+		>=sys-libs/pam-0.72"
+
+inherit flag-o-matic eutils
 
 src_unpack() {
 	unpack ${A}
@@ -70,7 +70,7 @@ src_install() {
 	rm ${D}/usr/include/imap/os_*.h
 
 	# Docs
-	dodoc README docs/*.txt docs/CONFIG docs/RELNOTES
+	dodoc CPYRIGHT README docs/*.txt docs/CONFIG docs/RELNOTES
 
 	docinto rfc
 	dodoc docs/rfc/*.txt

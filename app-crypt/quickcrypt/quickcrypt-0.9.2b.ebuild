@@ -1,22 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/quickcrypt/quickcrypt-0.9.2b.ebuild,v 1.15 2005/05/24 15:32:22 mcummings Exp $
 
 MY_P=${P/-/_}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="gives you a quick MD5 Password from any string"
+DESCRIPTION="QuickCrypt - Gives you a quick MD5 Password from any string"
 HOMEPAGE="http://linux.netpimpz.com/quickcrypt/"
+DEPEND=">=dev-lang/perl-5.6*
+		dev-perl/Digest-MD5"
 SRC_URI="http://linux.netpimpz.com/quickcrypt/download/${MY_P}.tar.gz"
-
+IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ppc alpha amd64 ia64 hppa ~mips"
-IUSE=""
+KEYWORDS="~x86 ~sparc"
 
-DEPEND=">=dev-lang/perl-5.6
-	perl-core/Digest-MD5"
-
-src_install() {
-	dobin quickcrypt || die
-	dodoc README BUGS
+src_install () {
+	dobin quickcrypt
+	dodoc README BUGS LICENSE
 }

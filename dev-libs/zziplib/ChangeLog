@@ -1,59 +1,6 @@
 # ChangeLog for dev-libs/zziplib
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/zziplib/ChangeLog,v 1.16 2005/11/19 19:20:48 corsair Exp $
-
-  19 Nov 2005; Markus Rothe <corsair@gentoo.org> zziplib-0.13.38.ebuild:
-  Added ~ppc64; bug #102649
-
-  16 Aug 2005; Jason Wever <weeve@gentoo.org> zziplib-0.13.38.ebuild:
-  Added ~sparc keyword.
-
-*zziplib-0.13.38 (09 Feb 2005)
-
-  09 Feb 2005; Mike Frysinger <vapier@gentoo.org> +zziplib-0.13.38.ebuild:
-  Version bump.
-
-  28 Dec 2004; Joseph Jezak <josejx@gentoo.org> zziplib-0.13.36.ebuild:
-  Marked ppc stable.
-
-  22 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
-  zziplib-0.13.36.ebuild:
-  Added to ~amd64, bug #71227
-
-  05 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  -zziplib-0.10.82.ebuild, -zziplib-0.13.26.ebuild, -zziplib-0.13.33.ebuild:
-  clean older versions
-
-*zziplib-0.13.36 (23 Aug 2004)
-
-  23 Aug 2004; Mike Frysinger <vapier@gentoo.org> +zziplib-0.13.36.ebuild:
-  Version bump.
-
-  07 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> zziplib-0.13.33.ebuild:
-  Stablize for x86; tidy
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  zziplib-0.13.33.ebuild:
-  virtual/glibc -> virtual/libc
-
-  29 Apr 2004; Aron Griffis <agriffis@gentoo.org> zziplib-0.13.33.ebuild:
-  Add ~alpha
-
-  19 Mar 2004; David Holm <dholm@gentoo.org> zziplib-0.13.33.ebuild:
-  Added to ~ppc.
-
-*zziplib-0.13.33 (08 Mar 2004)
-
-  08 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> zziplib-0.13.33.ebuild:
-  version bump (bug #44032)
-
-*zziplib-0.13.26 (11 Feb 2004)
-
-  11 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> zziplib-0.13.26.ebuild:
-  version bump (bug #41223)
-
-  17 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> zziplib-0.10.82.ebuild:
-  mark stable
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/zziplib/ChangeLog,v 1.1 2003/11/22 03:22:36 mr_bones_ Exp $
 
 *zziplib-0.10.82 (21 Nov 2003)
 

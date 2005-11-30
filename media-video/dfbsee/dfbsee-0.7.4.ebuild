@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dfbsee/dfbsee-0.7.4.ebuild,v 1.5 2005/10/31 11:16:06 flameeyes Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/media-video/dfbsee/dfbsee-0.7.4.ebuild,v 1.1 2004/11/25 20:40:59 chriswhite Exp $
 
 MY_PN="DFBSee"
 MY_P=${MY_PN}-${PV}
@@ -16,19 +14,13 @@ LICENSE="GPL-2"
 KEYWORDS="x86 -sparc ~amd64"
 IUSE=""
 
-DEPEND="dev-libs/DirectFB
+DEPEND="virtual/x11
+	dev-libs/DirectFB
 	dev-util/pkgconfig"
 
-S=${WORKDIR}/${MY_P}
-
-src_compile() {
-	append-ldflags $(bindnow-flags)
-
-	econf || die "./configure failed"
-	emake || die "make failed"
-}
-
 src_install () {
+
 	make DESTDIR=${D} install || die
-	dodoc README AUTHORS
+	dodoc README INSTALL AUTHORS
+
 }

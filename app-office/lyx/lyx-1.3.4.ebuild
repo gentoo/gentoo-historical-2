@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.3.4.ebuild,v 1.14 2005/07/07 04:25:32 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.3.4.ebuild,v 1.1 2004/02/21 20:04:28 usata Exp $
 
-inherit kde-functions eutils libtool
+inherit kde-functions
 
 DESCRIPTION="WYSIWYM frontend for LaTeX"
 HOMEPAGE="http://www.lyx.org/"
@@ -10,10 +10,10 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/${P}.tar.bz2
 	http://movementarian.org/latex-xft-fonts-0.1.tar.gz
 	http://www.math.tau.ac.il/~dekelts/lyx/files/hebrew.bind
 	http://www.math.tau.ac.il/~dekelts/lyx/files/preferences"
-
 LICENSE="GPL-2"
+
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE="nls cups qt debug gnome"
 
 # these dependencies need looking at.
@@ -24,13 +24,13 @@ DEPEND="virtual/x11
 	>=dev-lang/perl-5
 	nls? ( sys-devel/gettext )
 	app-text/aiksaurus
-	qt? ( =x11-libs/qt-3* ) !qt? ( =x11-libs/xforms-1* )"
+	qt? ( >=x11-libs/qt-3 ) !qt? ( =x11-libs/xforms-1* )"
 
 RDEPEND="${DEPEND}
 	virtual/ghostscript
-	virtual/pdfviewer
-	virtual/psviewer
+	app-text/xpdf
 	virtual/aspell-dict
+	app-text/gv
 	dev-tex/latex2html
 	media-gfx/imagemagick
 	cups? ( virtual/lpr )
@@ -43,18 +43,15 @@ RDEPEND="${DEPEND}
 DEPEND="$DEPEND >=sys-devel/autoconf-2.58"
 
 src_unpack() {
-	unpack ${P}.tar.bz2
-	unpack latex-xft-fonts-0.1.tar.gz
+	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${PN}-1.3.2-nomktex.patch
 	epatch ${FILESDIR}/${PN}-1.3.3-configure-diff
-	epatch ${FILESDIR}/${P}-gcc34.patch
-	elibtoolize || die
 }
 
 src_compile() {
 	local myconf=""
-	if use qt ; then
+	if [ -n "`use qt`" ]; then
 		set-qtdir 3
 		myconf="$myconf --with-frontend=qt --with-qt-dir=${QTDIR}"
 	else
@@ -72,20 +69,18 @@ src_compile() {
 		${myconf} \
 		--enable-optimization="$flags" \
 		|| die
-	# bug 57479
-	emake -j1 || die "emake failed"
+	emake || die "emake failed"
 
 }
 
 src_install() {
-	einstall || die
-	dodoc README* UPGRADING INSTALL* ChangeLog NEWS COPYING \
-		ANNOUNCE ABOUT-NLS ${DISTDIR}/preferences
+	einstall
+	dodoc README* UPGRADING INSTALL* ChangeLog NEWS COPYING ANNOUNCE ABOUT-NLS $DISTDIR/preferences
 	insinto /usr/share/lyx/bind
-	doins ${DISTDIR}/hebrew.bind
+	doins $DISTDIR/hebrew.bind
 
 	# gnome menu entry
-	if use gnome; then
+	if [ -n "`use gnome`" ]; then
 		insinto /usr/share/applications
 		doins ${FILESDIR}/lyx.desktop
 	fi
@@ -103,7 +98,8 @@ pkg_postinst() {
 	einfo "Updating the font cache"
 	fc-cache -f --system-only
 
-	draw_line
+	einfo ""
+	einfo "================"
 	einfo ""
 	einfo "How to use Hebrew in LyX:"
 	einfo "1. emerge app-text/ivritex."
@@ -111,13 +107,4 @@ pkg_postinst() {
 	einfo "or, read http://www.math.tau.ac.il/~dekelts/lyx/instructions2.html"
 	einfo "for instructions on using lyx's own preferences dialog to equal effect."
 	einfo "3. use lyx's qt interface (compile with USE=qt) for maximum effect."
-	einfo ""
-
-	if ! useq qt ; then
-	draw_line
-	einfo ""
-	einfo "If you have a multi-head setup not using xinerama you can only use lyx"
-	einfo "on the 2nd head if not using qt (maybe due to a xforms bug). See bug #40392."
-	einfo ""
-	fi
 }

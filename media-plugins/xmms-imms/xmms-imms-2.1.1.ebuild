@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-imms/xmms-imms-2.1.1.ebuild,v 1.3 2005/09/09 12:30:25 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-imms/xmms-imms-2.1.1.ebuild,v 1.1 2005/05/21 21:31:00 luckyduck Exp $
 
 inherit eutils
 
@@ -23,8 +23,7 @@ RDEPEND="=dev-db/sqlite-3*
 	>=media-libs/taglib-1.1
 	>=dev-libs/libpcre-4.3
 	=sci-libs/fftw-3*
-	media-sound/sox
-	>=dev-libs/glib-2"
+	media-sound/sox"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.5
 	>=sys-apps/sed-4.0.7"
@@ -54,7 +53,7 @@ src_install () {
 		exeinto "$(beep-config --general-plugin-dir)"
 		doexe build/libbmpimms*.so || die
 	fi
-	dodoc README
+	dodoc INSTALL README
 }
 
 src_test() { :; }

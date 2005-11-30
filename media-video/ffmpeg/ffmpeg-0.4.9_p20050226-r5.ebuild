@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.4.9_p20050226-r5.ebuild,v 1.15 2005/09/15 20:55:57 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.4.9_p20050226-r5.ebuild,v 1.1 2005/04/26 01:21:53 eradicator Exp $
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic gcc multilib toolchain-funcs
 
 DESCRIPTION="Complete solution to record, convert and stream audio and video. Includes libavcodec."
 HOMEPAGE="http://ffmpeg.sourceforge.net/"
@@ -17,8 +17,8 @@ SRC_URI="mirror://sourceforge/ffmpeg/${MY_P}.tbz2"
 LICENSE="GPL-2"
 SLOT="0"
 # ~alpha need to test aac useflag
-# ~ia64 ~arm ~mips ~hppa
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+# ~ia64 ~arm ~mips ~hppa 
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="aac altivec debug doc ieee1394 a52 encode imlib mmx ogg vorbis oss threads truetype v4l xvid dts network zlib sdl"
 
 # Theora support has switch but there's no oggtheora.c sourcefile...
@@ -30,20 +30,17 @@ DEPEND="imlib? ( media-libs/imlib2 )
 	encode? ( media-sound/lame )
 	ogg? ( media-libs/libogg )
 	vorbis? ( media-libs/libvorbis )
-	aac? ( media-libs/faad2 media-libs/faac )
+	aac? (media-libs/faad2 media-libs/faac)
 	a52? ( >=media-libs/a52dec-0.7.4-r4 )
 	xvid? ( >=media-libs/xvid-1.0 )
 	zlib? ( sys-libs/zlib )
 	dts? ( media-libs/libdts )
-	ieee1394? ( =media-libs/libdc1394-1*
+	ieee1394? ( media-plugins/libdc1394
 	            sys-libs/libraw1394 )"
 
 src_unpack() {
 	unpack ${A} || die
 	cd ${S_BASE}
-
-	#Append -fomit-frame-pointer to avoid some common issues
-	use debug || append-flags "-fomit-frame-pointer"
 
 	# for some reason it tries to #include <X11/Xlib.h>, but doesn't use it
 	sed -i s:\#define\ HAVE_X11:\#define\ HAVE_LINUX: ffplay.c
@@ -81,10 +78,6 @@ src_compile() {
 		myconf="${myconf} --enable-mmx"
 	else
 		myconf="${myconf} --disable-mmx"
-	fi
-
-	if use elibc_FreeBSD; then
-		myconf="${myconf} --enable-memalign-hack"
 	fi
 
 	myconf="${myconf}

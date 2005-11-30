@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pinfo/pinfo-0.6.8.ebuild,v 1.13 2005/01/01 16:30:45 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/pinfo/pinfo-0.6.8.ebuild,v 1.1 2003/08/29 23:47:01 zul Exp $
 
 MY_P=${PN}-${PV/_/}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Hypertext info and man viewer based on (n)curses"
-HOMEPAGE="http://dione.ids.pl/~pborys/pinfo"
 SRC_URI="http://dione.ids.pl/~pborys/software/pinfo/pinfo-${PV}.tar.gz"
+HOMEPAGE="http://dione.ids.pl/~pborys/pinfo"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+LICENSE="GPL-2"
+KEYWORDS="x86 ~ppc sparc "
 IUSE="nls readline"
 
 DEPEND="sys-libs/ncurses
@@ -18,10 +18,17 @@ DEPEND="sys-libs/ncurses
 	nls? ( sys-devel/gettext )"
 
 src_compile() {
-	econf \
-		$(use_with readline) \
-		$(use_enable nls) \
-		|| die "econf failed"
+	local myconf
+
+	use readline \
+		&& myconf="${myconf} --with-readline" \
+		|| myconf="${myconf} --without-readline"
+
+	use nls \
+		&& myconf="${myconf} --enable-nls" \
+		|| myconf="${myconf} --disable-nls"
+
+	econf ${myconf}
 	emake || die
 }
 

@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.3.4-r1.ebuild,v 1.10 2005/08/16 22:00:31 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.3.4-r1.ebuild,v 1.1 2005/02/07 04:28:20 pythonhead Exp $
 
 # NOTE about python-portage interactions :
 # - Do not add a pkg_setup() check for a certain version of portage 
 #   in dev-lang/python. It _WILL_ stop people installing from
 #   Gentoo 1.4 images.
 
-inherit eutils flag-o-matic python versionator
+inherit eutils flag-o-matic python
 
-PYVER_MAJOR=$(get_major_version)
-PYVER_MINOR=$(get_version_component_range 2)
+PYVER_MAJOR="`echo ${PV%_*} | cut -d '.' -f 1`"
+PYVER_MINOR="`echo ${PV%_*} | cut -d '.' -f 2`"
 PYVER="${PYVER_MAJOR}.${PYVER_MINOR}"
 
 S="${WORKDIR}/Python-${PV}"
@@ -20,10 +20,11 @@ SRC_URI="http://www.python.org/ftp/python/${PV%_*}/Python-${PV}.tar.bz2"
 
 LICENSE="PSF-2.2"
 SLOT="2.3"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc s390 sh sparc x86 ppc64"
-IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X nocxx"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ~ppc s390 sh sparc x86"
+IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X"
 
-DEPEND=">=sys-libs/zlib-1.1.3
+DEPEND="virtual/libc
+	>=sys-libs/zlib-1.1.3
 	!build? (
 		X? ( tcltk? ( >=dev-lang/tk-8.0 ) )
 		ncurses? ( >=sys-libs/ncurses-5.2 readline? ( >=sys-libs/readline-4.1 ) )
@@ -34,9 +35,7 @@ DEPEND=">=sys-libs/zlib-1.1.3
 		dev-libs/expat
 	)"
 
-# NOTE: changed RDEPEND to PDEPEND to resolve bug 88777. - kloeri
-
-PDEPEND="${DEPEND} dev-python/python-fchksum"
+RDEPEND="${DEPEND} dev-python/python-fchksum"
 
 # The dev-python/python-fchksum RDEPEND is needed to that this python provides
 # the functionality expected from previous pythons.
@@ -104,7 +103,7 @@ src_compile() {
 
 	local myconf
 	#if we are creating a new build image, we remove the dependency on g++
-	if use build && ! use bootstrap || use nocxx ; then
+	if use build && ! use bootstrap; then
 		myconf="--with-cxx=no"
 	fi
 
@@ -123,7 +122,7 @@ src_compile() {
 		--infodir='${prefix}'/share/info \
 		--mandir='${prefix}'/share/man \
 		--with-threads \
-		--with-libc='' \
+		--with-cxx=no \
 		${myconf} || die
 	emake || die "Parallel make failed"
 }
@@ -164,7 +163,7 @@ src_install() {
 	if use build ; then
 		rm -rf ${D}/usr/lib/python2.3/{test,encodings,email,lib-tk,bsddb/test}
 	else
-		use elibc_uclibc && rm -rf ${D}/usr/lib/python2.3/{test,bsddb/test}
+		use uclibc && rm -rf ${D}/usr/lib/python2.3/{test,bsddb/test}
 		use berkdb || rm -rf ${D}/usr/lib/python2.3/bsddb
 		( use !X || use !tcltk ) && rm -rf ${D}/usr/lib/python2.3/lib-tk
 	fi

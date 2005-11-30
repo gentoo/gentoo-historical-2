@@ -1,42 +1,38 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/j/j-0.20.2.ebuild,v 1.8 2005/11/23 04:32:50 nichoj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/j/j-0.20.2.ebuild,v 1.1 2004/02/15 01:57:51 zx Exp $
 
-inherit java-pkg
+IUSE=""
+SRC_URI="mirror://sourceforge/armedbear-${PN}/${P}.tar.gz"
 
 DESCRIPTION="Programmer's text editor written in Java, includes Armed Bear Lisp."
 HOMEPAGE="http://armedbear-j.sourceforge.net/"
-SRC_URI="mirror://sourceforge/armedbear-${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
-IUSE=""
+KEYWORDS="~x86"
 
-RDEPEND=">=virtual/jre-1.4
-	dev-java/xerces"
-DEPEND=">=virtual/jdk-1.4
-	${RDEPEND}"
+DEPEND=">=virtual/jdk-1.4"
+
+S=${WORKDIR}/${P}
 
 src_compile() {
-	econf \
-		--with-jdk="$(java-config --jdk-home)" \
-		--with-extensions=$(java-pkg_getjar xerces-2 xercesImpl.jar) \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man \
-		|| die "./configure failed"
+	if [ -n "$(java-config --jdk-home)" ]; then
+		econf \
+			--with-jdk="$(java-config --jdk-home)" \
+			$(if [ -f "/usr/share/xerces/lib/xercesImpl.jar" ]; then echo "--with-extensions=/usr/share/xerces/lib/xercesImpl.jar"; fi) \
+			--prefix=/usr \
+			--infodir=/usr/share/info \
+			--mandir=/usr/share/man \
+			|| die "./configure failed"
+	else
+		eerror "You must have a system default JDK to compile this package !!!"
+		einfo "Use 'java-config --list-available-vms' to find the name of your installed JDK."
+		einfo "Then use 'java-config --set-system-vm=<JDK name>' to make it the system default."
+		die "./configure failed: No JDK"
+	fi
 	emake || die
-
-	# Fix the j script to use java-config, instead of hard-coded paths
-	sed -e 's/@JAVA@/$(java-config --java)/' \
-		-e 's/@JAVA_OPTIONS@//' \
-		-e 's/@CLASSPATH@/$(java-config -p xerces-2,j)/' j.in > j
-
 }
 
 src_install() {
 	einstall || die
-
-	java-pkg_dojar ${D}/usr/share/j/j.jar
-	rm ${D}/usr/share/j/j.jar
 }

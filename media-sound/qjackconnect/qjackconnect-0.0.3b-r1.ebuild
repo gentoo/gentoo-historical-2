@@ -1,23 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackconnect/qjackconnect-0.0.3b-r1.ebuild,v 1.16 2005/07/25 15:51:03 caleb Exp $
-
-inherit qt3
-
-IUSE=""
+# $Header: 
 
 DESCRIPTION="A QT based patchbay for the JACK Audio Connection Kit"
 HOMEPAGE="http://www.suse.de/~mana/jack.html"
 SRC_URI="ftp://ftp.suse.com/pub/people/mana/${P}.tar.bz2"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
-
-DEPEND="virtual/libc
-	$(qt_min_version 3.1)
-	media-libs/alsa-lib
-	media-sound/jack-audio-connection-kit"
+KEYWORDS="~x86"
+IUSE=""
+DEPEND="virtual/glibc
+	>=x11-libs/qt-3.0.5
+	virtual/jack"
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}

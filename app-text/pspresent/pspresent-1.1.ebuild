@@ -1,28 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pspresent/pspresent-1.1.ebuild,v 1.9 2005/01/01 16:31:11 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/pspresent/pspresent-1.1.ebuild,v 1.1 2003/09/18 17:53:02 usata Exp $
 
 IUSE="xinerama"
 
+S="${WORKDIR}/${P}"
 DESCRIPTION="A tool to display full-screen PostScript presentations."
 SRC_URI="http://www.cse.unsw.edu.au/~matthewc/pspresent/${P}.tar.gz"
 HOMEPAGE="http://www.cse.unsw.edu.au/~matthewc/pspresent/"
 
-RDEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/x11
-	virtual/ghostscript"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
-
-PROVIDE="virtual/psviewer"
+	>=sys-apps/sed-4
+	app-text/ghostscript"
+RDEPEND="virtual/glibc
+	virtual/x11
+	app-text/ghostscript"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 src_compile()
 {
-	if ! use xinerama ; then
+	if [ ! "`use xinerama`" ] ; then
 		sed -i -e "/^XINERAMA/s/^/#/g" Makefile
 	fi
 	make pspresent || die "make failed"

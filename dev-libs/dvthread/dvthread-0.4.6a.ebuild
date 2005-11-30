@@ -1,26 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvthread/dvthread-0.4.6a.ebuild,v 1.6 2005/06/09 11:40:22 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dvthread/dvthread-0.4.6a.ebuild,v 1.1 2003/07/14 20:23:49 pvdabeel Exp $
+
+inherit eutils
 
 DESCRIPTION="classes for threads and monitors, wrapped around the posix thread library"
 SRC_URI="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvthread/download/${P}.tar.gz"
 HOMEPAGE="http://tinf2.vub.ac.be/~dvermeir/software/dv/dvthread/html/"
 
+KEYWORDS="x86 ppc"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
-IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	# access violation - bug 95364
-	sed -i 's|[^)]\($(pkgdatadir)\)| $(DESTDIR)\1|' doc/Makefile.in || \
-		die "sed doc/Makefile.in failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make prefix=${D}/usr install || die
 }

@@ -1,18 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/musicbrainz/musicbrainz-2.1.1.ebuild,v 1.14 2005/07/02 00:13:46 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/musicbrainz/musicbrainz-2.1.1.ebuild,v 1.1 2004/05/31 08:10:00 eradicator Exp $
 
 IUSE=""
-
-inherit eutils
 
 DESCRIPTION="Client library to access metadata of mp3/vorbis/CD media"
 HOMEPAGE="http://www.musicbrainz.org/"
 SRC_URI="http://ftp.musicbrainz.org/pub/musicbrainz/lib${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="1"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+SLOT="0"
+KEYWORDS="~x86 ~ppc ~sparc hppa ~alpha"
 
 RDEPEND="dev-libs/expat"
 
@@ -21,29 +19,13 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/lib${P}
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-gcc2.patch
-}
-
 src_compile() {
 	econf --enable-cpp-headers || die "configure failed"
 	emake || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR=${D} install || die "make install failed"
 
 	dodoc AUTHORS ChangeLog INSTALL README TODO docs/mb_howto.txt
-}
-
-pkg_postinst() {
-	einfo "The name of the library has changed from libmusicbrainz.so.2 to libmusicbrainz.so.4."
-	einfo "If you are updating from musicbrainz-2.0.x and you want to use the new library with"
-	einfo "existing applications, you must re-emerge them by doing:"
-	einfo "revdep-rebuild --soname libmusicbrainz.so.2"
-	einfo
-	einfo "After doing that, you can safely unmerge your old version by doing:"
-	einfo "emerge unmerge \=media-libs/musicbrainz-<old version>"
 }

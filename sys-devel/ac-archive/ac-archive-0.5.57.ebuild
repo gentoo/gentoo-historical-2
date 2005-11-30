@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/ac-archive/ac-archive-0.5.57.ebuild,v 1.4 2005/04/23 11:35:08 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/ac-archive/ac-archive-0.5.57.ebuild,v 1.1 2004/07/18 06:32:40 vapier Exp $
 
 inherit fixheadtails
 
@@ -8,9 +8,9 @@ DESCRIPTION="The Autoconf Macro Archive"
 HOMEPAGE="http://ac-archive.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ac-archive/${P}.tar.bz2"
 
-LICENSE="|| ( BSD GPL-2 )"
+LICENSE="BSD | GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=""

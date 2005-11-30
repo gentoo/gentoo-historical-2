@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-sp-fortunes/fortune-mod-sp-fortunes-0.1.ebuild,v 1.10 2005/08/27 18:07:53 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-sp-fortunes/fortune-mod-sp-fortunes-0.1.ebuild,v 1.1 2003/09/10 18:14:05 vapier Exp $
 
 MY_P=${P/fortune-mod-sp-fortunes/SP}
 MY_PN=${PN/fortune-mod-sp-fortunes/SP}
@@ -10,10 +10,9 @@ SRC_URI="http://eol.init1.nl/img/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa mips ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="x86"
 
-RDEPEND="games-misc/fortune-mod"
+DEPEND="app-games/fortune-mod"
 
 S=${WORKDIR}/${MY_PN}
 

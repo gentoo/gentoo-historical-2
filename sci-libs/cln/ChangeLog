@@ -1,25 +1,6 @@
-# ChangeLog for sci-libs/cln
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/cln/ChangeLog,v 1.7 2005/11/16 02:20:04 ribosome Exp $
-
-*cln-1.1.10 (16 Nov 2005)
-
-  16 Nov 2005; Olivier Fisette <ribosome@gentoo.org> +cln-1.1.10.ebuild:
-  New version.
-
-  20 Sep 2005; <dang@gentoo.org> cln-1.1.9.ebuild:
-  Fix multilib-strict.  Bug #106634
-
-  25 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -cln-1.1.5.ebuild:
-  Removed obsolete version.
-
-*cln-1.1.9 (05 Jun 2005)
-
-  05 Jun 2005; Olivier Fisette <ribosome@gentoo.org> +cln-1.1.9.ebuild:
-  New version.
-
-  15 May 2005; Danny van Dyk <kugelfang@gentoo.org> cln-1.1.5.ebuild:
-  Inherits toolchain-funcs now instead of deprecated gcc eclass.
+# ChangeLog for dev-libs/cln
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/cln/ChangeLog,v 1.1 2004/12/28 20:05:29 ribosome Exp $
 
 *cln-1.1.6 (28 Dec 2004)
 

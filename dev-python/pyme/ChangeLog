@@ -1,42 +1,8 @@
 # ChangeLog for dev-python/pyme
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyme/ChangeLog,v 1.12 2005/06/04 15:53:48 fserb Exp $
-
-*pyme-0.7.0 (04 Jun 2005)
-
-  04 Jun 2005; Fernando Serboncini <fserb@gentoo.org> +pyme-0.7.0.ebuild:
-  Version bump.
-
-  10 May 2005; Alastair Tse <liquidx@gentoo.org> :
-  fixed SRC_URI for 0.5.1
-
-  07 Feb 2005; Fernando Serboncini <fserb@gentoo.org> pyme-0.5.1.ebuild:
-  stable on x86
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  16 Nov 2004; Rob Cakebread <pythonhead@gentoo.org> pyme-0.5.1.ebuild,
-  pyme-0.6.0.ebuild:
-  Moved inherit up top bug# 71466
-
-*pyme-0.6.0 (23 Sep 2004)
-
-  23 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> pyme-0.5.1.ebuild,
-  pyme-0.6.0.ebuild:
-  Keyworded ~sparc, related to #64485
-
-  07 Sep 2004; Rob Cakebread <pythonhead@gentoo.org> pyme-0.5.1.ebuild:
-  Version bump. Fixed 0.5.1 to compile against gpgme-0.9.0-r1. Added src_test().
-  Thanks Daniel Black <dragonheart@gentoo.org> Closes bug #59702.
-
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pyme-0.5.1.ebuild:
-  Remove default S.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyme/ChangeLog,v 1.1 2002/11/27 04:27:05 jrray Exp $
 
 *pyme-0.5.1 (26 Nov 2002)
-
-  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> pyme-0.5.1.ebuild:
-  bump to stable
 
   26 Nov 2002; J Robert Ray <jrray@gentoo.org> :
   New ebuild.

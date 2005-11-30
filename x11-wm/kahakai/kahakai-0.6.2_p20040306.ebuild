@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/kahakai/kahakai-0.6.2_p20040306.ebuild,v 1.6 2005/11/09 12:58:43 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/kahakai/kahakai-0.6.2_p20040306.ebuild,v 1.1 2004/05/09 16:29:15 usata Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${P/_p/-}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="-alpha ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc -alpha -sparc"
 
 RDEPEND="virtual/x11
 	truetype? ( virtual/xft )
@@ -25,8 +25,7 @@ RDEPEND="virtual/x11
 	dev-libs/boost"
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.57-r1
-	>=sys-devel/automake-1.7.2
-	sys-devel/libtool"
+	>=sys-devel/automake-1.7.2"
 
 S="${WORKDIR}/${PN}"
 
@@ -34,16 +33,14 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}/src
 	epatch ${FILESDIR}/${P}-rubyscript-gentoo.diff
-	epatch ${FILESDIR}/${P}-compilation_fix.patch
 }
 
 src_compile() {
-	libtoolize --copy --force || die
 	./autogen.sh || die
 	econf \
-		$(use_enable ruby) \
-		$(use_enable xinerama) \
-		$(use_enable truetype xft) || die
+		`use_enable ruby` \
+		`use_enable xinerama` \
+		`use_enable truetype xft` || die
 	emake || die
 }
 

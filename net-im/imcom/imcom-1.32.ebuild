@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/imcom/imcom-1.32.ebuild,v 1.5 2004/07/08 23:40:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/imcom/imcom-1.32.ebuild,v 1.1 2004/01/13 17:19:17 lordvan Exp $
 
 MYVER=${PV}
 S=${WORKDIR}/${PN}-${MYVER}
@@ -14,7 +14,7 @@ DEPEND=">=dev-lang/python-2.2
 RDEPEND="${DEPEND}"
 
 SLOT="0"
-LICENSE="BSD"
+LICENSE="as-is"
 KEYWORDS="x86 ~ppc"
 IUSE=""
 

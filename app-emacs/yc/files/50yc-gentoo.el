@@ -1,4 +1,4 @@
 
 ;;; YC site-lisp configuration
 
-(add-to-list 'load-path "@SITELISP@")
+(setq load-path (cons "@SITELISP@" load-path))

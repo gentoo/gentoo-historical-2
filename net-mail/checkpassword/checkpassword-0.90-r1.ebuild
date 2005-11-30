@@ -1,38 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/checkpassword/checkpassword-0.90-r1.ebuild,v 1.16 2005/10/30 05:51:13 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/checkpassword/checkpassword-0.90-r1.ebuild,v 1.1 2003/03/05 20:53:37 vapier Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
-DESCRIPTION="A uniform password checking interface for root applications"
-HOMEPAGE="http://cr.yp.to/checkpwd.html"
+DESCRIPTION="A modern replacement for sendmail which uses maildirs"
 SRC_URI="http://cr.yp.to/checkpwd/${P}.tar.gz"
+HOMEPAGE="http://www.qmail.org/"
 
-LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k mips ppc ~s390 ~sh sparc x86"
-IUSE="pic static"
+LICENSE="as-is"
+KEYWORDS="x86 ppc sparc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${PV}-errno.patch
-	epatch ${FILESDIR}/${PV}-head-1.patch
-
-	# the -s is from the original build
-	LDFLAGS="${LDFLAGS} -s"
-	use pic && CFLAGS="${CFLAGS} -fPIC"
-	use static && LDFLAGS="${LDFLAGS} -static"
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld
 }
 
 src_compile() {
-	make || die "Error in make"
+	echo "gcc ${CFLAGS}" > conf-cc
+	make || die
 }
 
-src_install() {
+src_install() {				 
 	into /
-	dobin checkpassword || die
-	dodoc CHANGES README TODO VERSION FILES SYSDEPS TARGETS
+	dobin checkpassword
+	dodoc CHANGES README TODO VERSION
 }

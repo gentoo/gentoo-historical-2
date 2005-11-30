@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/mythtv-themes/mythtv-themes-0.18.ebuild,v 1.4 2005/07/16 23:40:44 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/mythtv-themes/mythtv-themes-0.18.ebuild,v 1.1 2005/04/18 02:33:35 eradicator Exp $
 
 DESCRIPTION="A collection of themes for the MythTV project."
 HOMEPAGE="http://www.mythtv.org/"
@@ -15,10 +15,10 @@ SRC_URI="http://www.mythtv.org/mc/myththemes-${PV}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=media-tv/mythtv-${PV}"
+RDEPEND="|| ( >=media-tv/mythtv-${PV} >=media-tv/mythfrontend-${PV} )"
 
 S=${WORKDIR}
 

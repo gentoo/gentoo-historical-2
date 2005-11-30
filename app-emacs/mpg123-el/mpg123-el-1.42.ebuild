@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mpg123-el/mpg123-el-1.42.ebuild,v 1.7 2005/09/29 05:35:25 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mpg123-el/mpg123-el-1.42.ebuild,v 1.1 2004/06/04 20:16:24 usata Exp $
 
-inherit toolchain-funcs elisp
+inherit gcc elisp
 
 IUSE="oggvorbis"
 
@@ -19,14 +19,13 @@ RDEPEND="${DEPEND}
 
 SLOT="0"
 LICENSE="freedist"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86"
 
 SITEFILE="50mpg123-el-gentoo.el"
 
 src_compile(){
-	sed -i -e "s/\(mainloop:\)/\1 ;/" tagput.c || die
-	"$(tc-getCC)" ${CFLAGS} -o tagput tagput.c || die
-	"$(tc-getCC)" ${CFLAGS} -o id3put id3put.c || die
+	$(gcc-getCC) ${CFLAGS} -o tagput tagput.c || die
+	$(gcc-getCC) ${CFLAGS} -o id3put id3put.c || die
 	elisp-compile *.el
 }
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/lxr/lxr-0.3.1.ebuild,v 1.3 2005/05/24 14:48:49 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/lxr/lxr-0.3.1.ebuild,v 1.1 2004/08/15 15:08:21 stuart Exp $
 
 inherit webapp
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://sourceforge.net/projects/lxr"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ppc"
+KEYWORDS="~x86 ~ppc"
 
 RESTRICT="nomirror"
 IUSE=""
@@ -19,7 +19,7 @@ IUSE=""
 # Glimpse is actually optional, but since there is no USE flag, require it
 RDEPEND="app-misc/glimpse
 	     dev-lang/perl
-		 >=perl-core/DB_File-1.807"
+		 >=dev-perl/DB_File-1.807"
 DEPEND=${RDEPEND}
 
 src_compile() {

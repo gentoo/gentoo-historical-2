@@ -1,30 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/epic4/epic4-2.0-r1.ebuild,v 1.11 2005/09/11 14:01:00 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/epic4/epic4-2.0-r1.ebuild,v 1.1 2004/08/02 21:12:09 swegener Exp $
 
 inherit flag-o-matic eutils
 
 DESCRIPTION="Epic4 IRC Client"
 HOMEPAGE="http://epicsol.org/"
 SRC_URI="ftp://ftp.epicsol.org/pub/epic/EPIC4-PRODUCTION/${P}.tar.bz2
-	ftp://prbh.org/pub/epic/EPIC4-PRODUCTION/epic4-help-20040801.tar.gz"
+	 ftp://prbh.org/pub/epic/EPIC4-PRODUCTION/epic4-help-20040801.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ppc ~ia64 alpha hppa sparc amd64 ppc-macos"
+KEYWORDS="x86 ~ppc ~ia64 alpha hppa sparc ~amd64"
 IUSE="ipv6 perl ssl"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	perl? ( >=dev-lang/perl-5.6.1 )
 	ssl? ( >=dev-libs/openssl-0.9.5 )"
-
-pkg_setup() {
-	if use perl && built_with_use dev-lang/perl ithreads
-	then
-		error "You need perl compiled with USE=\"-ithreads\" to be able to compile epic4."
-		die "perl with USE=\"-ithreads\" needed"
-	fi
-}
 
 src_unpack() {
 	unpack ${A}

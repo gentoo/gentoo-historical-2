@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.6.00.0045-r1.ebuild,v 1.7 2005/11/20 17:58:35 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.6.00.0045-r1.ebuild,v 1.1 2004/11/09 20:24:13 wolf31o2 Exp $
 
-inherit eutils linux-info
+inherit eutils kernel-mod
 
 MY_PV=${PV}-k9
 DESCRIPTION="Cisco VPN Client (3DES)"
@@ -10,8 +10,8 @@ HOMEPAGE="http://cco.cisco.com/en/US/products/sw/secursw/ps2308/index.html"
 SRC_URI="vpnclient-linux-${MY_PV}.tar.gz"
 
 LICENSE="cisco-vpn-client"
-SLOT="0"
-KEYWORDS="-* x86"
+SLOT="${KV}"
+KEYWORDS="-* ~x86 ~amd64"
 IUSE=""
 RESTRICT="fetch"
 
@@ -37,7 +37,7 @@ src_unpack() {
 	# Jesse Becker <jbecker@speakeasy.net>
 	epatch ${FILESDIR}/driver_build_CC.patch
 	# Patch submitted to bug #69870 by James Ward <jennyandjamesward@yahoo.com>
-	epatch ${FILESDIR}/${PV}-supported_device.patch
+	epatch ${FILESDIR}/supported_device.patch
 }
 
 src_compile () {
@@ -67,7 +67,7 @@ src_install() {
 	dosym /opt/cisco-vpnclient/bin/vpnclient /usr/bin/vpnclient
 
 	insinto /lib/modules/${KV}/CiscoVPN
-	if kernel_is 2 6; then
+	if kernel-mod_is_2_6_kernel; then
 		doins cisco_ipsec.ko
 	else
 		doins cisco_ipsec

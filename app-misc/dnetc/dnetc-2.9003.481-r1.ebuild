@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9003.481-r1.ebuild,v 1.8 2004/07/11 02:19:06 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/dnetc/dnetc-2.9003.481-r1.ebuild,v 1.1 2003/06/23 12:21:30 aliz Exp $
 
 MAJ_PV=${PV:0:6}
 MIN_PV=${PV:7:9}
@@ -14,19 +14,19 @@ SRC_URI="ppc? ( http://http.distributed.net/pub/dcti/v${MAJ_PV}/dnetc${MIN_PV}-l
 	alpha? ( ftp://ftp.distributed.net/pub/dcti/v${MAJ_PV}/dnetc${MIN_PV}-linux-alpha5-static.tar.gz )"
 LICENSE="distributed.net"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha"
+KEYWORDS="x86 ppc ~arm ~sparc ~alpha"
 IUSE=""
 DEPEND=""
-RDEPEND="net-dns/bind-tools"
-if use x86; then
+RDEPEND="net-misc/host"
+if [ `use x86` ]; then
 	S="${WORKDIR}/dnetc${MIN_PV}-linux-x86-elf"
-elif use ppc; then
+elif [ `use ppc` ]; then
 	S="${WORKDIR}/dnetc${MIN_PV}-linux-ppc"
-elif use sparc; then
+elif [ `use sparc` ]; then
 	S="${WORKDIR}/dnetc${MIN_PV}-linux-sparc"
-elif use arm; then
+elif [ `use arm` ]; then
 	S="${WORKDIR}/dnetc${MIN_PV}-linux-arm-elf"
-elif use alpha; then
+elif [ `use alpha` ]; then 
 	S="${WORKDIR}/dnetc${MIN_PV}-linux-alpha5-static"
 fi
 
@@ -53,7 +53,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Either configure your email address in /etc/conf.d/dnetc"
+	einfo "Either configure your email adress in /etc/conf.d/dnetc"
 	einfo "or create the configuration file /opt/distributed.net/dnetc.ini"
 }
 

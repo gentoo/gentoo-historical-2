@@ -1,19 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/streamixer/streamixer-1.19.0.ebuild,v 1.8 2005/09/04 10:53:23 flameeyes Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-sound/streamixer/streamixer-1.19.0.ebuild,v 1.1 2004/03/18 15:45:12 eradicator Exp $
 
 DESCRIPTION="Various audio stream handling tools (non-interactive)"
 HOMEPAGE="http://bisqwit.iki.fi/source/streamixer.html"
 SRC_URI="http://bisqwit.iki.fi/src/arch/${P}.tar.bz2"
 
-#-sparc: 1.19.0: bad assembly
-KEYWORDS="x86 amd64 -sparc"
+KEYWORDS="~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-RDEPEND="virtual/libc"
+RDEPEND="virtual/glibc"
 DEPEND="sys-apps/sed"
 
 INSTALLPROGS="resample mixer mixwrite mixeridle ecat hum mixerscript"
@@ -45,6 +42,6 @@ src_compile() {
 src_install() {
 	dobin ${INSTALLPROGS}
 	dohard /usr/bin/mixwrite /usr/bin/mixmon
-	dodoc README
+	dodoc README COPYING
 	dohtml README.html
 }

@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ezbounce/ezbounce-1.04a.ebuild,v 1.7 2004/09/12 17:05:54 swegener Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ezbounce/ezbounce-1.04a.ebuild,v 1.1 2003/11/22 02:00:01 zul Exp $
 
 DESCRIPTION="ezbounce is a small IRC bouncer"
 HOMEPAGE="http://druglord.freelsd.org/ezbounce/"
@@ -10,7 +8,7 @@ SRC_URI="http://druglord.freelsd.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 
 IUSE="ssl"
 DEPEND=">=net-misc/mdidentd-1.04a
@@ -33,6 +31,6 @@ src_compile() {
 
 src_install() {
 	dobin ezbounce
-	dodoc CHANGES TODO README ezb.conf sample.*
+	dodoc README
 	doman misc/ezbounce.1
 }

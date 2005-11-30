@@ -1,62 +1,6 @@
 # ChangeLog for dev-ruby/sqlite-ruby
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sqlite-ruby/ChangeLog,v 1.17 2005/10/03 13:29:32 agriffis Exp $
-
-  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> sqlite-ruby-2.2.3.ebuild:
-  Mark 2.2.3 ~ia64
-
-*sqlite-ruby-2.2.3 (18 Feb 2005)
-
-  18 Feb 2005; Rob Cakebread <pythonhead@gentoo.org> sqlite-ruby-1.0.ebuild,
-  +sqlite-ruby-2.2.3.ebuild:
-  Version bump.
-
-  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
-  sqlite-ruby-2.2.2.ebuild:
-  Added to ~hppa.
-
-  07 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
-  sqlite-ruby-2.2.2.ebuild:
-  Stable on alpha.
-
-  03 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  sqlite-ruby-2.2.2.ebuild:
-  Stable on sparc
-
-  26 Jan 2005; Michael Kohl <citizen428@gentoo.org>
-  sqlite-ruby-2.2.2.ebuild:
-  Marked stable on x86.
-
-  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  06 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
-  sqlite-ruby-2.2.2.ebuild:
-  ~alpha keyword, bug 71769.
-
-  21 Nov 2004; Hardave Riar <hardave@gentoo.org> sqlite-ruby-2.2.2.ebuild:
-  Added ~mips, bug #71769
-
-  20 Nov 2004; Ferris McCormick <fmccor@gentoo.org> sqlite-ruby-2.2.2.ebuild:
-  Add ~sparc keyword, Bug 71769 --- runs internal tests and my test
-  application.
-
-  20 Nov 2004; Daniel Black <dragonheart@gentoo.org> sqlite-ruby-2.2.2.ebuild:
-  ppc keyworded as requested
-
-*sqlite-ruby-2.2.2 (20 Nov 2004)
-
-  20 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +sqlite-ruby-2.2.2.ebuild:
-  Version bumped. Thanks to Thomas Kirchner <gentoo@halffull.org>; bug #71769.
-
-  05 Aug 2004; Anders Rune Jensen <arj@gentoo.org> sqlite-ruby-1.0.ebuild:
-  Depend on version 2 of sqlite.
-
-  01 Jul 2004; Ferris McCormick <fmccor@gentoo.org> sqlite-ruby-1.0.ebuild:
-  Marked stable for sparc.
-
-  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> sqlite-ruby-1.0.ebuild:
-  Stable on alpha.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/sqlite-ruby/ChangeLog,v 1.1 2003/06/26 16:49:39 twp Exp $
 
 *sqlite-ruby-1.0 (26 Jun 2003)
 

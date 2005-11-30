@@ -1,31 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ypbind/ypbind-1.17.2-r1.ebuild,v 1.9 2005/08/11 18:22:34 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/ypbind/ypbind-1.17.2-r1.ebuild,v 1.1 2004/07/24 06:37:23 eradicator Exp $
 
 MY_P=${PN}-mt-${PV}
-S="${WORKDIR}/${MY_P}"
-
 DESCRIPTION="Multithreaded NIS bind service (ypbind-mt)"
 HOMEPAGE="http://www.linux-nis.org/nis/ypbind-mt/index.html"
-SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/net/NIS/OLD/${MY_P}.tar.bz2"
+SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/net/NIS/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
-IUSE="nls slp"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc ~amd64 ~ia64 ~ppc64"
+IUSE="nls"
 
-RDEPEND="slp? ( net-libs/openslp )
-	net-nds/yp-tools
+DEPEND="net-nds/yp-tools
 	net-nds/portmap"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-	>=sys-apps/portage-2.0.51"
+RDEPEND="nls? ( sys-devel/gettext )"
+
+S="${WORKDIR}/${MY_P}"
 
 src_compile() {
-	econf \
-		$(use_enable nls) \
-		$(use_enable slp) \
-		|| die
+	econf $(use_enable nls) || die
 	emake || die "emake failed"
 }
 
@@ -33,8 +27,8 @@ src_install() {
 	einstall || die
 	dodoc AUTHORS ChangeLog README THANKS TODO
 	insinto /etc ; doins etc/yp.conf
-	newconfd ${FILESDIR}/ypbind.confd-r1 ypbind
-	newinitd ${FILESDIR}/ypbind.initd ypbind
+	insinto /etc/conf.d ; newins ${FILESDIR}/ypbind.confd-r1 ypbind
+	exeinto /etc/init.d ; newexe ${FILESDIR}/ypbind.initd ypbind
 }
 
 pkg_postinst() {

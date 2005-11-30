@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>shell-tools</herd>
+<herd>no-herd</herd>
 <maintainer>
   <email>ciaranm@gentoo.org</email>
   <description>Please Cc: the original author (Emil Erlandsson &lt;emil@buglix.org&gt;) on any bugs.</description>

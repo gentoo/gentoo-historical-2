@@ -1,13 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/irda-utils-0.9.17_pre5.ebuild,v 1.4 2005/07/07 09:54:28 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/irda-utils-0.9.17_pre5.ebuild,v 1.1 2005/02/08 12:41:22 brix Exp $
 
 inherit eutils
 
 MY_P=${PN}-${PV/_/-}
 S=${WORKDIR}/${MY_P/-pre*/}
 
-DESCRIPTION="IrDA utilities for infrared communication"
+DESCRIPTION="IrDA utilities, tools for infrared communication"
+
 HOMEPAGE="http://irda.sourceforge.net"
 SRC_URI="http://www.hpl.hp.com/personal/Jean_Tourrilhes/IrDA/${MY_P}.tar.gz"
 
@@ -16,9 +17,9 @@ SLOT="0"
 KEYWORDS="~x86 ~ppc ~amd64"
 
 IUSE="gtk"
+DEPEND="sys-apps/sed"
 RDEPEND="=dev-libs/glib-2*
 		gtk? ( =x11-libs/gtk+-1.2* )"
-DEPEND="${RDEPEND} sys-apps/sed"
 
 src_unpack() {
 	unpack ${A}
@@ -47,7 +48,6 @@ src_install () {
 	dodir /usr/sbin
 
 	emake install RPM_OPT_FLAGS="${CFLAGS}" RPM_BUILD_ROOT="${D}" ROOT="${D}" PREFIX="${D}" \
-		MANDIR="${D}/usr/share/man" \
 		|| die "emake install failed"
 
 	into /usr

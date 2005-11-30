@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mpg123/mpg123-0.59s-r8.ebuild,v 1.8 2005/09/02 12:55:47 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mpg123/mpg123-0.59s-r8.ebuild,v 1.1 2004/12/19 02:01:14 eradicator Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.mpg123.de/mpg123/${PN}-pre${PV}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86"
 IUSE="mmx 3dnow esd nas oss"
 
 RDEPEND="virtual/libc
@@ -114,7 +114,7 @@ src_compile() {
 
 src_install() {
 	dodir /usr
-	cp -R gentoo-bin ${D}/usr/bin
+	cp -dR gentoo-bin ${D}/usr/bin
 	doman mpg123.1
 	dodoc BENCHMARKING BUGS CHANGES COPYING JUKEBOX README* TODO
 }

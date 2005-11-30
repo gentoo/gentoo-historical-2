@@ -1,44 +1,6 @@
 # ChangeLog for app-portage/g-cpan
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/g-cpan/ChangeLog,v 1.9 2005/07/05 10:09:35 mcummings Exp $
-
-  05 Jul 2005; Michael Cummings <mcummings@gentoo.org> g-cpan-0.13.02.ebuild:
-  Unmasking because the -l and -u functions were comopletely broken in the .01
-  version - sorry about that, meant to unmask sooner.
-
-*g-cpan-0.13.02 (05 Jun 2005)
-
-  05 Jun 2005; Michael Cummings <mcummings@gentoo.org>
-  +g-cpan-0.13.02.ebuild:
-  Bug 95146 - silly or vs and. Thanks Moshe
-
-*g-cpan-0.13.01 (01 Jun 2005)
-
-  01 Jun 2005; Michael Cummings <mcummings@gentoo.org>
-  +g-cpan-0.13.01.ebuild:
-  Actual version bump so people get last batch of fixes; a few minor code
-  tweaks, bug 94759
-
-*g-cpan-0.13-r1 (30 May 2005)
-
-  30 May 2005; Michael Cummings <mcummings@gentoo.org>
-  +g-cpan-0.13-r1.ebuild:
-  Fix for the perl-core split
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> g-cpan-0.13.ebuild:
-  BAH. Why isn't mirorr the same as mirror??? :)
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> g-cpan-0.13.ebuild:
-  Cleaning up weird spacing in keywords list
-
-*g-cpan-0.13 (23 May 2005)
-
-  23 May 2005; Michael Cummings <mcummings@gentoo.org> +g-cpan-0.13.ebuild:
-  New version of g-cpan.
-
-  01 May 2005; Michael Cummings <mcummings@gentoo.org> g-cpan-0.12.ebuild:
-  Resetting keywords to match that of portage since Digest::MD5 isn't really a
-  dep, just a short cut optional
+# $Header: /var/cvsroot/gentoo-x86/app-portage/g-cpan/ChangeLog,v 1.1 2005/04/30 22:19:39 mcummings Exp $
 
 *g-cpan-0.12 (30 Apr 2005)
 

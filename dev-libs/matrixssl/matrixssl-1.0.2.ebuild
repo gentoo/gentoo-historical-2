@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/matrixssl/matrixssl-1.0.2.ebuild,v 1.4 2005/03/18 15:15:19 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/matrixssl/matrixssl-1.0.2.ebuild,v 1.1 2004/05/21 23:14:00 vapier Exp $
 
 DESCRIPTION="embedded SSL implementation"
 HOMEPAGE="http://www.matrixssl.org/"
@@ -12,7 +12,7 @@ KEYWORDS="~x86"
 IUSE="doc"
 RESTRICT="fetch"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 S=${WORKDIR}/${PN}/src
 

@@ -1,17 +1,11 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 9a09f8d531c582e78977dbfd96edc1f2 metadata.xml 164
-MD5 9ebced9335ea25de7a28195193b14f53 xfsdump-2.2.30.ebuild 1135
-MD5 186037a24363b83facbae377556b33c4 xfsdump-2.2.25.ebuild 1174
-MD5 540e35916716b189549b5adef7a4376f ChangeLog 4827
-MD5 e6c3a4b8814bbbc2914e1a7c105d9de0 files/xfsdump-2.2.30-docs.patch 456
-MD5 7f8b8584bd4200d9e763433df9f2acb3 files/digest-xfsdump-2.2.30 70
-MD5 bd977825057d1743222d22dfc80b873c files/digest-xfsdump-2.2.25 70
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDGoNEgIKl8Uu19MoRAlo9AJ0frWmh3OftGGP4tV0G6OdUI8OO7gCfXmGd
-Dh9efFtWlaPOWl8E3E6WTiM=
-=pOSP
------END PGP SIGNATURE-----
+MD5 5ea75dcf7a8d7207f798ed238ec0dc9a ChangeLog 1955
+MD5 68d26f7194775eeb13827ccc355ca54d xfsdump-1.1.7.ebuild 1634
+MD5 19c6b521997ae0aff857fdbd6fc276d5 xfsdump-2.0.0_p20020330.ebuild 1729
+MD5 2a6f61a8c1c8d7a85b11d663b4e0c99a xfsdump-2.1.5.ebuild 1285
+MD5 212efbe1d2035ec7d8af8e5ebc6d6713 xfsdump-2.2.4-r1.ebuild 1274
+MD5 4878f9c5066c7d07af77e90fe21274ef xfsdump-2.2.4.ebuild 1285
+MD5 57a186df5f7a3c8a8c686975c14b3fb4 files/digest-xfsdump-1.1.7 69
+MD5 783702207886a893533fa92136ff2523 files/digest-xfsdump-2.0.0_p20020330 70
+MD5 d22ee5b1c305ef5940098d30b028fc02 files/digest-xfsdump-2.1.5 69
+MD5 2e7aca0d9699a54b2c9ff5857023d59f files/digest-xfsdump-2.2.4 69
+MD5 2e7aca0d9699a54b2c9ff5857023d59f files/digest-xfsdump-2.2.4-r1 69

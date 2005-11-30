@@ -1,45 +1,42 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/procmail/procmail-3.22-r6.ebuild,v 1.15 2005/08/13 11:01:01 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/procmail/procmail-3.22-r6.ebuild,v 1.1 2004/06/03 07:23:54 seemant Exp $
 
-inherit eutils flag-o-matic
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Mail delivery agent/filter"
-HOMEPAGE="http://www.procmail.org/"
 SRC_URI="http://www.procmail.org/${P}.tar.gz"
-
-LICENSE="|| ( Artistic GPL-2 )"
-SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 s390 sparc x86"
-IUSE="mbox selinux"
+HOMEPAGE="http://www.procmail.org/"
+IUSE=""
+DEPEND="virtual/glibc
+	virtual/mta"
+RDEPEND="virtual/glibc"
 PROVIDE="virtual/mda"
-
-DEPEND="virtual/libc virtual/mta"
-RDEPEND="virtual/libc
-	selinux? ( sec-policy/selinux-procmail )"
+SLOT="0"
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64 ~mips s390"
 
 src_compile() {
-	# -finline-functions (implied by -O3) leaves strstr() in an infinite loop.
-	# To work around this, we append -fno-inline-functions to CFLAGS
-	append-flags -fno-inline-functions
 
+# With gcc-3.1 and newer, there is a bug with aggressive optimization caused by
+# -finline-functions (implied by -O3) that leaves strstr() is an infinite loop.
+# To work around this, we append -fno-inline-functions to CFLAGS disable just
+# that optimization and avoid the bug.
+	CFLAGS="${CFLAGS} -fno-inline-functions"
 	sed -e "s:CFLAGS0 = -O:CFLAGS0 = ${CFLAGS}:" \
 		-e "s:LOCKINGTEST=__defaults__:#LOCKINGTEST=__defaults__:" \
 		-e "s:#LOCKINGTEST=/tmp:LOCKINGTEST=/tmp:" \
 		-i Makefile
 
-	if ! use mbox ; then
+	if [ -z "`use mbox`" ];
+	then
 		echo "# Use maildir-style mailbox in user's home directory" > ${S}/procmailrc
 		echo 'DEFAULT=$HOME/.maildir/' >> ${S}/procmailrc
 		cd ${S}
-		epatch ${FILESDIR}/gentoo-maildir2.diff
+		patch -p1 <${FILESDIR}/gentoo-maildir2.diff
 	else
-		echo '# Use mbox-style mailbox in /var/spool/mail' > ${S}/procmailrc
+		echo '# Use mbox-style mailbox in /var/spool/mail' > ${S}/procmail
 		echo 'DEFAULT=/var/spool/mail/$LOGNAME' >> ${S}/procmailrc
 	fi
-
-	# Do not use lazy bindings on lockfile and procmail
-	epatch "${FILESDIR}/${PN}-lazy-bindings.diff"
 
 	emake || die
 }
@@ -67,3 +64,4 @@ src_install () {
 	docinto examples
 	dodoc examples/*
 }
+

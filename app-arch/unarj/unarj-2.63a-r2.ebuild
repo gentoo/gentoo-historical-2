@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/unarj/unarj-2.63a-r2.ebuild,v 1.11 2005/11/29 03:00:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/unarj/unarj-2.63a-r2.ebuild,v 1.1 2004/11/15 03:34:39 solar Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://ibiblio.org/pub/Linux/utils/compress/${P}.tar.gz"
 
 LICENSE="arj"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~amd64"
 IUSE=""
 
 src_unpack() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xv/xv-3.10a-r12.ebuild,v 1.12 2005/11/11 23:05:20 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xv/xv-3.10a-r12.ebuild,v 1.1 2005/05/05 10:25:54 taviso Exp $
 
 inherit flag-o-matic eutils toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/png-mng/${P}-jumbo-patches-${JUMBOV}.tar.bz2 ftp:/
 
 LICENSE="xv"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ~ppc-macos ~ppc64 sparc x86"
+KEYWORDS="~amd64 ~x86 ~sparc ~ppc ~ppc64 ~alpha ~ia64"
 IUSE="jpeg tiff png"
 
 DEPEND="virtual/x11
@@ -22,18 +22,11 @@ DEPEND="virtual/x11
 src_unpack() {
 	unpack ${A}
 
-	# bug #109012
-	cd ${WORKDIR}; epatch ${FILESDIR}/jumbo-patch-nojpeg.diff || die
-
 	cd ${S}
 
 	# XXX: fix version on subsequent releases.
 	epatch ${WORKDIR}/${P}-jumbo-fix-patch-20050410.txt || die
 	epatch ${WORKDIR}/${P}-jumbo-enh-patch-${JUMBOV}.txt || die
-
-	# OSX malloc and define patches
-	epatch "${FILESDIR}/${P}"-r12-xv-osx.patch || die
-	epatch "${FILESDIR}/${P}"-vdcomp-osx.patch || die
 
 	sed -i	-e 's/\(^JPEG.*\)/#\1/g' \
 			-e 's/\(^PNG.*\)/#\1/g' \
@@ -45,6 +38,7 @@ src_unpack() {
 
 	# fix installation of ps docs.
 	sed -i -e 's#$(DESTDIR)$(LIBDIR)#$(LIBDIR)#g' Makefile
+
 }
 
 src_compile() {
@@ -83,5 +77,5 @@ src_install() {
 			MANDIR=/usr/share/man/man1 \
 			LIBDIR=${T} install || die
 
-	dodoc README{,.jumbo,.pcd} CHANGELOG BUGS IDEAS docs/*.ps docs/*.doc
+	dodoc README{,.jumbo,.pcd} INSTALL CHANGELOG BUGS IDEAS docs/*.ps docs/*.doc
 }

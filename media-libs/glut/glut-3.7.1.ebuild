@@ -1,47 +1,47 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/glut/glut-3.7.1.ebuild,v 1.24 2005/09/07 16:17:56 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/glut/glut-3.7.1.ebuild,v 1.1 2002/11/30 20:57:19 azarah Exp $
 
-inherit libtool eutils
+inherit libtool
 
 MESA_VER="5.0"
+S="${WORKDIR}/Mesa-${MESA_VER}"
 DESCRIPTION="The OpenGL Utility Toolkit (GLUT)"
-HOMEPAGE="http://www.opengl.org/resources/libraries/"
 SRC_URI="mirror://sourceforge/mesa3d/MesaLib-${MESA_VER}.tar.bz2
 	mirror://sourceforge/mesa3d/MesaDemos-${MESA_VER}.tar.bz2"
+HOMEPAGE="http://www.opengl.org/developers/documentation/glut/"
 
-LICENSE="glut"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE=""
+LICENSE="X11 | GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~sparc64 ~alpha"
 
 DEPEND="virtual/opengl
-	virtual/glu
-	!virtual/glut"
+	virtual/glu"
+
 PROVIDE="virtual/glut"
 
-S="${WORKDIR}/Mesa-${MESA_VER}"
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	elibtoolize
-}
-
 src_compile() {
+
+	elibtoolize
+
 	econf || die
-	cd "${S}"/src-glut
-	emake || die "emake failed"
+
+	cd ${S}/src-glut
+			
+	emake || die
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)
-	newins "${S}"/src-glut/.libs/libglut.lai libglut.la || die "libtools"
 
-	dolib.so "${S}"/src-glut/.libs/libglut.so.${PV}
-	dosym libglut.so.${PV} /usr/$(get_libdir)/libglut.so || die "libraries"
-	preplib
-
+	insinto /usr/lib
+	newins ${S}/src-glut/.libs/libglut.lai libglut.la
+	
+	dolib.so ${S}/src-glut/.libs/libglut.so.${PV}
+	dosym libglut.so.${PV} /usr/lib/libglut.so
+	
 	insinto /usr/include/GL
-	doins "${S}"/include/GL/glut* || die "headers"
+	doins ${S}/include/GL/glut*
+
+	dodoc ${S}/docs/COPY*
 }
+

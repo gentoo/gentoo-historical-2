@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/regina-rexx/regina-rexx-3.3.ebuild,v 1.5 2005/07/10 21:08:39 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/regina-rexx/regina-rexx-3.3.ebuild,v 1.1 2004/05/17 17:23:23 dholm Exp $
 
 S="${WORKDIR}/Regina-${PV}"
 HOMEPAGE="http://regina-rexx.sourceforge.net"
@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/regina-rexx/Regina-REXX-${PV}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~sparc ~ppc hppa ~amd64"
+KEYWORDS="~x86 ~sparc ~ppc"
 IUSE=""
 
 DEPEND=""
@@ -21,7 +21,7 @@ src_compile() {
 	sed <Makefile~ >Makefile \
 		-e 's|-$(INSTALL) -m 755 -c ./rxstack.init.d $(STARTUPDIR)/rxstack||' \
 		-e "s|/usr/share/regina|${D}/usr/share/regina|"
-	emake -j1 || die "make problem"
+	emake || make || die "make problem"
 }
 
 src_install() {
@@ -36,8 +36,8 @@ src_install() {
 
 pkg_postinst() {
 	einfo "You may want to run"
-	einfo
+	einfo ""
 	einfo "\trc-update add rxstack default"
-	einfo
+	einfo ""
 	einfo "to enable Rexx queues (optional)."
 }

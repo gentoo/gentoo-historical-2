@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/torcs/torcs-1.2.2.ebuild,v 1.6 2004/06/24 23:25:31 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-sports/torcs/torcs-1.2.2.ebuild,v 1.1 2004/02/26 10:36:53 mr_bones_ Exp $
 
 inherit games
 
@@ -38,18 +38,14 @@ RDEPEND=">=media-libs/plib-1.6
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
+HOME="${T}"
+
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	sed -i \
-		-e "/^datadir =/s:=.*:= ${GAMES_DATADIR}/${PN}:" \
-		Make-config.in \
-		|| die "sed Make-config.in failed"
-}
-
-src_compile() {
-	egamesconf || die
-	env HOME="${T}" emake -j1 || die
+		-e "/^datadir =/s:=.*:= ${GAMES_DATADIR}/${PN}:" Make-config.in \
+			|| die "sed Make-config.in failed"
 }
 
 src_install() {
@@ -57,7 +53,7 @@ src_install() {
 	dosed "s:DATADIR=.*:DATADIR=${GAMES_DATADIR}/${PN}:" ${GAMES_BINDIR}/torcs
 	cp -r ${WORKDIR}/{cars,categories,data,menu,tracks} \
 		"${D}/${GAMES_DATADIR}/${PN}/" \
-		|| die "cp failed"
+			|| die "cp failed"
 	dodoc README.linux
 	dohtml *.html *.png
 	prepgamesdirs

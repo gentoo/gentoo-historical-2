@@ -1,106 +1,6 @@
 # ChangeLog for media-gfx/xloadimage
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xloadimage/ChangeLog,v 1.31 2005/11/20 13:32:35 hardave Exp $
-
-  20 Nov 2005; Hardave Riar <hardave@gentoo.org> xloadimage-4.1-r4.ebuild:
-  Stable on mips, bug #108365.
-
-  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> ChangeLog:
-  Fix ChangeLog.
-
-  29 Oct 2005; Bryan Østergaard <kloeri@gentoo.org>
-  xloadimage-4.1-r4.ebuild:
-  Stable on ia64.
-
-  29 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xloadimage-4.1-r4.ebuild:
-  Stable on hppa, ppc. See bug #108365.
-
-  28 Oct 2005; Mark Loeser <halcy0n@gentoo.org> xloadimage-4.1-r4.ebuild:
-  Stable on x86; bug #108365
-
-  27 Oct 2005; Simon Stelling <blubb@gentoo.org> xloadimage-4.1-r4.ebuild:
-  stable on amd64 wrt bug 108365
-
-  27 Oct 2005; Brent Baude <ranger@gentoo.org> xloadimage-4.1-r4.ebuild:
-  Marking xloadimage-4.1-r4 ppc64 stable for bug 108635
-
-  27 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  xloadimage-4.1-r4.ebuild:
-  Stable on sparc wrt #108365
-
-  27 Oct 2005; Bryan Østergaard <kloeri@gentoo.org>
-  xloadimage-4.1-r4.ebuild:
-  Stable on alpha, bug 108365.
-
-  27 Oct 2005; Fabian Groffen <grobian@gentoo.org> xloadimage-4.1-r4.ebuild:
-  Marked ppc-macos for bug #108365
-
-*xloadimage-4.1-r4 (26 Oct 2005)
-
-  26 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org>
-  +files/xloadimage-gentoo.patch, +xloadimage-4.1-r4.ebuild:
-  Fix security bug 108365.
-
-*xloadimage-4.1-r3 (25 Aug 2005)
-
-  25 Aug 2005; Jonathan Smith <smithj@gentoo.org> ChangeLog:
-  pyrania forgot to add a changelog entry for 4.1-r3, so this is coppied from
-  the cvs log: Fixed b0rked endif. See bug #84072.
-
-  01 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
-  xloadimage-4.1-r2.ebuild:
-  Stable on alpha.
-
-  01 Mar 2005; Hardave Riar <hardave@gentoo.org> xloadimage-4.1-r2.ebuild:
-  Stable on mips, bug #79762.
-
-  28 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> xloadimage-4.1-r2.ebuild:
-  Stable ppc-macos
-
-  28 Feb 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xloadimage-4.1-r2.ebuild:
-  Stable on ppc.
-
-  28 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  xloadimage-4.1-r2.ebuild:
-  Stable on sparc wrt #79762
-
-  28 Feb 2005; Olivier CrÃªte <tester@gentoo.org> xloadimage-4.1-r2.ebuild:
-  Stable on x86 per security bug #79762
-
-  28 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> xloadimage-4.1-r2.ebuild:
-  stable on amd64. see #79762
-
-  28 Feb 2005; Markus Rothe <corsair@gentoo.org> xloadimage-4.1-r2.ebuild:
-  Stable on ppc64; bug #79762
-
-*xloadimage-4.1-r2 (28 Feb 2005)
-
-  28 Feb 2005; Tavis Ormandy <taviso@gentoo.org>
-  +files/xloadimage-4.1-zio-shell-meta-char.diff, +xloadimage-4.1-r2.ebuild:
-  security patch, escape shell meta chars when viewing compressed files.
-
-  02 Jan 2005; <gongloo@gentoo.org> xloadimage-4.1-r1.ebuild:
-  Stable on ppc-macos.
-
-  10 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> xloadimage-4.1-r1.ebuild:
-  Added to ~ppc-macos.
-
-  30 Sep 2004; Stephen P. Becker <geoman@gentoo.org> xloadimage-4.1-r1.ebuild:
-  stable on mips
-
-  22 Aug 2004; Tom Gall <tgall@gentoo.org> xloadimage-4.1-r1.ebuild:
-  stable on ppc64
-
-  13 Jul 2004; Tom Gall <tgall@gentoo.org> xloadimage-4.1-r1.ebuild:
-  added ~ppc64, bug #54814
-
-  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> xloadimage-4.1-r1.ebuild:
-  Add inherit eutils
-
-  24 Apr 2004; Bret Curtis <psi29a@gentoo.org> xloadimage-4.1-r1.ebuild:
-  Added to ~mips
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xloadimage/ChangeLog,v 1.1 2004/03/13 12:02:36 usata Exp $
 
 *xloadimage-4.1-r1 (13 Mar 2004)
 
@@ -118,7 +18,7 @@
   Added metadata.xml
 
   21 Sep 2003; Seemant Kulleen <seemant@gentoo.org> xloadimage-4.1-r1.ebuild:
-  SRC_URI update, thanks to: Péntek László <nembela@index.hu> in bug #29294
+  SRC_URI update, thanks to: P�ntek L�szl� <nembela@index.hu> in bug #29294
 
   07 Jun 2003; Paul de Vrieze <pauldv@gentoo.org> xloadimage-4.1-r1.ebuild:
   Make a fix so xloadimage compiles with gcc-3.3

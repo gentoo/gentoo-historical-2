@@ -1,10 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/dovecot-0.99.14-r1.ebuild,v 1.9 2005/11/10 13:05:16 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/dovecot/dovecot-0.99.14-r1.ebuild,v 1.1 2005/02/25 16:28:09 ticho Exp $
 
-# gnutls breaks
-#IUSE="debug ipv6 ldap mbox pam postgres sasl ssl gnutls vpopmail nopop3d mysql"
-IUSE="debug ipv6 ldap mbox pam postgres sasl ssl vpopmail nopop3d mysql"
+IUSE="debug ipv6 ldap mbox pam postgres sasl ssl gnutls vpopmail nopop3d mysql"
 inherit eutils
 
 DESCRIPTION="An IMAP and POP3 server written with security primarily in mind"
@@ -13,7 +11,7 @@ SRC_URI="http://dovecot.org/releases/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="alpha ~amd64 ppc sparc x86"
+KEYWORDS="~x86 ~amd64 ~sparc ~ppc"
 
 #PROVIDE="virtual/imapd"
 
@@ -37,7 +35,7 @@ RDEPEND="${DEPEND}
 pkg_setup() {
 	# Add user and group for login process (same as for fedora/redhat)
 	enewgroup dovecot 97
-	enewuser dovecot 97 -1 /dev/null dovecot
+	enewuser dovecot 97 /bin/false /dev/null dovecot
 }
 
 src_compile() {
@@ -53,13 +51,13 @@ src_compile() {
 	# gnutls support no longer working
 	# (http://www.dovecot.org/list/dovecot/2004-November/005169.html)
 	use ssl && myconf="${myconf} --with-ssl=openssl"
-	#if use gnutls; then
-	#	eerror 'GNUTLS support no longer available, see'
-	#	eerror 'http://www.dovecot.org/list/dovecot/2004-November/005169.html'
-	#	eerror
-	#	eerror 'Please set USE="-gnutls ssl" if you want TLS support.'
-	#	die
-	#fi
+	if use gnutls; then
+		eerror 'GNUTLS support no longer available, see'
+		eerror 'http://www.dovecot.org/list/dovecot/2004-November/005169.html'
+		eerror
+		eerror 'Please set USE="-gnutls ssl" if you want TLS support.'
+		die
+	fi
 	# prefer gnutls to ssl if both gnutls and ssl are defined
 	#use gnutls && myconf="${myconf} --with-ssl=gnutls"
 	#use ssl && ! use gnutls && myconf="${myconf} --with-ssl=openssl"
@@ -115,7 +113,7 @@ src_install () {
 	# per default dovecot wants it ssl cert called dovecot.pem
 	# fix this in mkcert.sh, which we use to generate the ssl certs
 	cd ${S}/doc
-	sed -i -e 's/imapd.pem/dovecot.pem/g' mkcert.sh
+	sed -ie 's/imapd.pem/dovecot.pem/g' mkcert.sh
 	dodoc mkcert.sh
 
 	# rc script
@@ -126,7 +124,7 @@ src_install () {
 	# We're using pam files (imap and pop3) provided by mailbase-0.00-r8
 	if use pam
 	then
-		sed -i -e 's/auth_passdb = pam/auth_passdb = pam */' ${D}/etc/dovecot.conf
+		sed -ie 's/auth_passdb = pam/auth_passdb = pam */' ${D}/etc/dovecot.conf
 	fi
 
 	# Create SSL certificates

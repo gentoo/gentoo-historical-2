@@ -1,38 +1,6 @@
 # ChangeLog for app-mobilephone/yaps
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/yaps/ChangeLog,v 1.10 2005/10/18 19:36:57 sbriesen Exp $
-
-  18 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org> yaps-0.96-r1.ebuild:
-  optimized 'use capi' handling. hopefully the last time. ;-)
-
-  17 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org> yaps-0.96-r1.ebuild:
-  removed 'use capi' from global scope.
-
-  16 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org> yaps-0.96-r1.ebuild:
-  reverted x86 to ~x86. Sorry, my fault. Forgot to reset keywords after fixing
-  ebuild.
-
-  16 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org>
-  files/yaps-0.96-gentoo.patch, metadata.xml, yaps-0.96-r1.ebuild:
-  fixing broken patch with USE flag 'capi', see #105676
-
-*yaps-0.96-r1 (15 Oct 2005)
-
-  15 Oct 2005; Alin Nastac <mrness@gentoo.org>
-  +files/yaps-0.96-gentoo.patch, +yaps-0.96-r1.ebuild:
-  Add Cityruf service to yaps.rc (#105676).
-
-  13 Oct 2005; Alin Nastac <mrness@gentoo.org> yaps-0.96.ebuild:
-  Remove COPYRIGHT and INSTALL from docs.
-
-  09 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org> yaps-0.96.ebuild:
-  stable on x86.
-
-  30 Jul 2005; Stefan Briesenick <sbriesen@gentoo.org> yaps-0.96.ebuild:
-  correcting depend/rdepend for pkgconfig
-
-  29 Jul 2005; David Holm <dholm@gentoo.org> yaps-0.96.ebuild:
-  Added to ~ppc.
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/yaps/ChangeLog,v 1.1 2005/07/28 20:29:04 sbriesen Exp $
 
 *yaps-0.96 (28 Jul 2005)
 

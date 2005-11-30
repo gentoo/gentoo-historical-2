@@ -1,44 +1,6 @@
-# ChangeLog for www-servers/orion
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/orion/ChangeLog,v 1.10 2005/08/26 13:50:48 flameeyes Exp $
-
-  26 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> orion-2.0.5.ebuild:
-  Don't specify root group as it doesn't exists on BSD-like userlands. Replace
-  cp -a to cp -pPR (where it makes sense). Use newinitd/newconfd instead of
-  copying and installing files around.
-
-  24 Jun 2005; Aron Griffis <agriffis@gentoo.org> orion-2.0.1.ebuild,
-  orion-2.0.2.ebuild, orion-2.0.5.ebuild:
-  Use $IMAGE instead of $D in pkg_*. Don't call fowners in pkg_*, use chown
-  instead. In 2.0.5, move the chown from pkg_postinst to pkg_preinst so it
-  happens prior to the merge. Move pkg_preinst below src_install in the ebuild
-  since the functions are called in that order
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> orion-2.0.5.ebuild:
-  applied parts of the patch which was suggested in #85032 by Marc Vilanova
-  Vilaseró <marc@noctambuls.net>
-
-  08 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> orion-2.0.5.ebuild:
-  added ~amd64 to keywords. fixes #76960.
-
-*orion-2.0.5 (08 Jan 2005)
-
-  08 Jan 2005; Karl Trygve Kalleberg <karltk@gentoo.org>
-  +files/2.0.5/2.0.5-gentoo.patch, +files/2.0.5/orion.conf,
-  +files/2.0.5/orion.init, +files/2.0.5/start_orion.sh,
-  +files/2.0.5/stop_orion.sh, +orion-2.0.5.ebuild:
-  New upstream version. Partial fix for #76906.
-
-  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> orion-2.0.1.ebuild,
-  orion-2.0.2.ebuild:
-  dojar --> java-pkg_dojar
-
-  08 Oct 2004; Thomas Matthijs <axxo@gentoo.org> files/2.0/orion.init,
-  files/2.0.1/orion.init, files/2.0.2/orion.init:
-  use net instead of need net in init.d script
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
+# ChangeLog for net-www/orion
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/www-servers/orion/ChangeLog,v 1.1 2004/08/08 17:51:02 stuart Exp $
 
 *orion-2.0.2 (08 Aug 2004)
 

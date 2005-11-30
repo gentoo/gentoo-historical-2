@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/zope-config/zope-config-0.4-r1.ebuild,v 1.3 2005/01/01 11:38:00 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/zope-config/zope-config-0.4-r1.ebuild,v 1.1 2004/07/24 20:52:20 batlogg Exp $
 
 DESCRIPTION="A Gentoo Zope multi-Instance configure tool"
 SRC_URI=""
 HOMEPAGE="http://www.gentoo.org/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64"
+KEYWORDS="~x86 ~sparc ~ppc ~alpha"
 IUSE=""
 DEPEND=""
 RDEPEND=">=dev-util/dialog-0.7

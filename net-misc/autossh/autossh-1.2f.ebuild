@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/autossh/autossh-1.2f.ebuild,v 1.9 2005/04/01 15:54:56 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/autossh/autossh-1.2f.ebuild,v 1.1 2004/05/30 20:30:14 aliz Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Automatically restart SSH sessions and tunnels"
 HOMEPAGE="http://www.harding.motd.ca/autossh/"
 LICENSE="BSD"
-KEYWORDS="x86 ~sparc alpha ~ia64 amd64 ~ppc"
+KEYWORDS="~x86 ~sparc ~alpha ~ia64 amd64"
 SRC_URI="http://www.harding.motd.ca/autossh/${P}.tgz"
 SLOT="0"
-IUSE=""
 
-DEPEND="virtual/libc sys-apps/sed"
-RDEPEND="virtual/libc net-misc/openssh"
+DEPEND="virtual/glibc sys-apps/sed"
+RDEPEND="virtual/glibc net-misc/openssh"
 
 src_unpack() {
 	unpack ${A} && cd ${S}
@@ -27,3 +27,4 @@ src_install() {
 	dodoc CHANGES README autossh.host rscreen
 	doman autossh.1
 }
+

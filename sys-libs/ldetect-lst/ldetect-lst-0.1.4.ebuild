@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 damien krotkine <dams@gentoo.org>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/ldetect-lst/ldetect-lst-0.1.4.ebuild,v 1.12 2005/01/03 00:19:45 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/ldetect-lst/ldetect-lst-0.1.4.ebuild,v 1.1 2002/12/07 18:30:54 dams Exp $
 
 ECVS_ANON="no"
 ECVS_USER="anoncvs"
@@ -17,13 +17,13 @@ HOMEPAGE="http://cvs.mandrakesoft.com/cgi-bin/cvsweb.cgi/soft/ldetect-lst/"
 SRC_URI=""
 
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc alpha"
+LICENSE="GPL"
+KEYWORDS="~x86 ~ppc ~sparc ~sparc64 ~alpha"
 
 src_compile() {
 	cd ../../ldetect-lst;
 	echo " ------- pwd : $PWD"
-	patch -p1 <${FILESDIR}/ldetect-lst-0.1.4.patch || die
+        patch -p1 <${FILESDIR}/ldetect-lst-0.1.4.patch || die
 	make prefix=${D}/usr clean;
 	make
 }
@@ -32,9 +32,4 @@ src_install() {
 	cd ../../ldetect-lst;
 	echo " ----------- install in ${PWD}"
 	make prefix=${D}/usr install
-	cd ${D}/usr/share/ldetect-lst/
-	ln -s pcitable.d/90default.lst ./pcitable
-	ln -s usbtable.d/90default.lst ./usbtable
-	ln -s pcmciatable.d/90default.lst ./pcmciatable
-	ln -s isatable.d/90default.lst ./isatable
 }

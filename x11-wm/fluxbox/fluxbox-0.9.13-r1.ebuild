@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/fluxbox/fluxbox-0.9.13-r1.ebuild,v 1.11 2005/08/23 22:01:55 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/fluxbox/fluxbox-0.9.13-r1.ebuild,v 1.1 2005/05/23 09:32:19 ciaranm Exp $
 
 inherit eutils
 
@@ -26,7 +26,7 @@ PROVIDE="virtual/blackbox"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ~ppc-macos ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
 
 src_unpack() {
 	unpack ${A}
@@ -109,17 +109,17 @@ pkg_postinst() {
 	einfo "As of fluxbox 0.9.10-r3, we are using an improved system for"
 	einfo "handling styles in the menu. To take advantage of this, use"
 	einfo "the following for your menu styles section:"
-	einfo
+	einfo " "
 	einfo "    [submenu] (Styles) {Select a Style}"
 	einfo "        [include] (/usr/share/fluxbox/menu.d/styles/)"
 	einfo "    [end]"
-	einfo
+	einfo " "
 	einfo "If you use fluxbox-generate_menu or the default global fluxbox"
 	einfo "menu file, this will already be present."
-	einfo
+	einfo " "
 	ewarn "Note that menumaker and similar utilities do *not* support"
 	ewarn "this out of the box."
-	einfo
+	einfo " "
 	einfo "If you experience font problems, or if fluxbox takes a very"
 	einfo "long time to start up, please try the 'disablexmb' USE flag."
 	einfo "If that fails, please report bugs upstream."

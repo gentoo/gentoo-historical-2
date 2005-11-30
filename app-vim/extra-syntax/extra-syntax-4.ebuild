@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/extra-syntax/extra-syntax-4.ebuild,v 1.7 2005/10/12 19:36:34 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/extra-syntax/extra-syntax-4.ebuild,v 1.1 2005/09/28 23:54:31 ciaranm Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: metapackage for all extra syntax packages"
 HOMEPAGE="http://www.vim.org/"
 LICENSE="as-is"
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~sparc ~mips"
 SRC_URI=""
 IUSE=""
 

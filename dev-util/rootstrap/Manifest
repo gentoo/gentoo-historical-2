@@ -1,4 +1,3 @@
-MD5 262b37d3d0ec5e3d849e5de3c89e0d1e ChangeLog 1644
+MD5 dece560221476b6aafef9e3aef1f480e rootstrap-0.3.13.ebuild 955
 MD5 503ccb1138f9c49f0855884d830988a6 metadata.xml 253
-MD5 dc51da4ef46bf54407c256b4bf0ccdba rootstrap-0.3.21.ebuild 974
-MD5 06ea6d5b0cd0737211645d207dce21b6 files/digest-rootstrap-0.3.21 139
+MD5 e83b9fb4793e8e1124f7657191dbffbc files/digest-rootstrap-0.3.13 140

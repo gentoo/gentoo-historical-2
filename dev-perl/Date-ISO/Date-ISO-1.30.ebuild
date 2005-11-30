@@ -1,23 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Date-ISO/Date-ISO-1.30.ebuild,v 1.14 2005/10/03 09:55:46 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Date-ISO/Date-ISO-1.30.ebuild,v 1.1 2003/06/08 02:58:40 mcummings Exp $
 
 inherit perl-module
 
 MY_P=Date-ISO-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Date::ICal subclass that handles ISO format dates"
-SRC_URI="mirror://cpan/authors/id/R/RB/RBOW/${P}.tar.gz"
+SRC_URI="http://www.cpan.org/modules/by-module/Date/${MY_P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Date/${MY_P}.readme"
 
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ~ppc ~sparc ~alpha"
 
-SRC_TEST="do"
-
-DEPEND="dev-perl/Date-Leapyear
-	perl-core/Test-Simple
+newdepend "dev-perl/Date-Leapyear
+	dev-perl/Test-Simple
 	dev-perl/Date-ICal
-	perl-core/Memoize"
+	dev-perl/Memoize"
+
+src_compile() {
+	perl-module_src_compile
+	perl-module_src_test || die "test failed"
+}

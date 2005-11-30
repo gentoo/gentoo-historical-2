@@ -1,19 +1,6 @@
 # ChangeLog for dev-tcltk/tclperl
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tclperl/ChangeLog,v 1.5 2004/11/06 15:39:28 pyrania Exp $
-
-  06 Nov 2004; <pyrania@gentoo.org> tclperl-3.1.ebuild:
-  Marked stable on x86.
-
-*tclperl-3.1 (22 Oct 2004)
-
-  22 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> +tclperl-2.5-r1.ebuild,
-  +tclperl-3.1.ebuild:
-  Fixed compile error. Bug 68281.
-  Version bumped.
-
-  17 Oct 2004; David Holm <dholm@gentoo.org> tclperl-2.5.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tclperl/ChangeLog,v 1.1 2004/05/16 23:14:49 matsuu Exp $
 
 *tclperl-2.5 (17 May 2004)
 

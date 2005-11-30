@@ -1,48 +1,60 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/bootstrap_cmds/bootstrap_cmds-44.ebuild,v 1.8 2005/03/04 05:16:16 kito Exp $
+# $Header:
 
-DESCRIPTION="Darwin bootstrap_cmds - config, decomment, mig, relpath"
-HOMEPAGE="http://darwinsource.opendarwin.org/10.3.5/"
+DESCRIPTION="Darwin bootstrap_cmds - config, decomment, mig, relpath,"
+WEBPAGE="http://darwinsource.opendarwin.org/10.3.5/"
 SRC_URI="http://darwinsource.opendarwin.org/tarballs/apsl/${P}.tar.gz"
 
 LICENSE="APSL-2"
 
 SLOT="0"
-KEYWORDS="ppc-macos"
-IUSE="build"
+KEYWORDS="~ppc-macos"
+IUSE=""
+
 DEPEND="virtual/libc"
 
-src_unpack() {
-	unpack ${A}
+##
+# Setup the Darwin build environment
+#=================================================================
+# requires fat build tools
+# use build && BUILDARCHS="ppc i386" || 
 
-	cd ${S}
-	sed -i -e 's:^NEXTSTEP_BUILD_OUTPUT_DIR = .*:NEXTSTEP_BUILD_OUTPUT_DIR = ${T}:' Makefile
+BUILDARCHS="ppc"
 
-	cd ${S}/config.tproj
-	sed -i -e '/raise/d' config.h
+mkdir -p ${WORKDIR}/build/obj ${WORKDIR}/build/sym ${S}/BUILD
 
-	cd ${S}/decomment.tproj
-	sed -i \
-		-e 's:^NEXTSTEP_INSTALLDIR = .*:NEXTSTEP_INSTALLDIR = /usr/bin:' \
-		-e 's:^NEXTSTEP_BUILD_OUTPUT_DIR = .*:NEXTSTEP_BUILD_OUTPUT_DIR = ${T}:' Makefile
-
-	cd ${S}/relpath.tproj
-	sed -i \
-		-e 's:^NEXTSTEP_INSTALLDIR = .*:NEXTSTEP_INSTALLDIR = /usr/bin:' \
-		-e 's:^NEXTSTEP_BUILD_OUTPUT_DIR = .*:NEXTSTEP_BUILD_OUTPUT_DIR = ${T}:' Makefile
-
-	rm ${S}/Makefile.postamble ${S}/config.tproj/Makefile.postamble \
-	${S}/decomment.tproj/Makefile.postamble ${S}/relpath.tproj/Makefile.postamble
-}
+export RC_OS=macos
+export RC_ARCHS=${BUILDARCHS}
+export TARGETS=${BUILDARCHS}
+export SRCROOT=${S}
+export OBJROOT=${WORKDIR}/build/obj
+export DSTROOT=${D}
+export SYMROOT=${WORKDIR}/build/sym
+export RC_CFLAGS="${CFLAGS}"
 
 src_compile() {
-	:
+	emake || die "make failed :("
 }
 
 src_install() {
-	make install DSTROOT=${D} || die "make install failed"
+	cd ${S}
+	rm ${S}/Makefile.postamble
+	rm ${S}/config.tproj/Makefile.postamble
+	rm ${S}/decomment.tproj/Makefile.postamble
+	rm ${S}/relpath.tproj/Makefile.postamble
 
-	newbin vers_string.sh vers_string
-	use build || doman *.1
+	make install DSTROOT=${S}/BUILD
+
+	dobin ${S}/BUILD/usr/bin/config
+	newbin ${S}/migcom.tproj/mig.sh mig
+	newbin ${S}/vers_string.sh vers_string
+	dobin ${S}/BUILD/usr/local/bin/decomment
+	dobin ${S}/BUILD/usr/local/bin/relpath
+
+	exeinto /usr/libexec
+	doexe ${S}/BUILD/usr/libexec/migcom
+
+	cd ${S}
+	doman ${S}/vers_string.1
 }

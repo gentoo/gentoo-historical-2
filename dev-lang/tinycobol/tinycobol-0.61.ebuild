@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tinycobol/tinycobol-0.61.ebuild,v 1.7 2005/04/24 12:35:36 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tinycobol/tinycobol-0.61.ebuild,v 1.1 2003/09/25 07:01:15 phosphan Exp $
 
 inherit eutils
 
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/tiny-cobol/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-IUSE=""
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86"
 
-DEPEND=">=dev-libs/glib-2.0
+DEPEND="virtual/glibc
+	>=dev-libs/glib-2.0
 	sys-libs/db"
 
 src_unpack() {
@@ -32,10 +32,6 @@ src_install() {
 	dodir /usr/man/man1
 	dodir /usr/lib
 	dodir /usr/share/htcobol
-	make prefix="${D}/usr" install
+	einstall
 	dodoc AUTHORS ChangeLog README STATUS
-	cd ${D}/usr/lib
-	rm libhtcobol.so libhtcobol.so.0
-	ln -s libhtcobol.so.0.* libhtcobol.so.0
-	ln -s libhtcobol.so.0 libhtcobol.so
 }

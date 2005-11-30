@@ -1,21 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/mini-qmail/mini-qmail-1.05.ebuild,v 1.5 2005/05/16 22:30:48 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/mini-qmail/mini-qmail-1.05.ebuild,v 1.1 2004/05/30 06:45:35 robbat2 Exp $
 
-inherit eutils toolchain-funcs fixheadtails
+inherit eutils gcc fixheadtails
 
 DESCRIPTION="a small null client that forwards mail via QMQP to a full qmail server"
 HOMEPAGE="http://www.qmail.org/ http://cr.yp.to/qmail/mini.html"
-SRC_URI="mirror://qmail/netqmail-${PV}.tar.gz
+SRC_URI="http://www.qmail.org/netqmail-${PV}.tar.gz
 	http://www.din.or.jp/~ushijima/mini-qmail-kit/mini-qmail-kit-0.52.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="arm hppa mips ppc sparc x86"
+KEYWORDS="x86 ppc sparc mips arm hppa"
 IUSE=""
 
-DEPEND="sys-apps/groff"
-RDEPEND="!virtual/mta"
+DEPEND="virtual/glibc
+	sys-apps/groff"
+RDEPEND="!virtual/mta
+	virtual/glibc"
 PROVIDE="virtual/mta
 	 virtual/mda"
 
@@ -27,12 +29,12 @@ src_unpack() {
 
 	cd netqmail-${PV}
 	./collate.sh || die "patching failed"
-	mv "${WORKDIR}"/mini-qmail-kit-0.52/* "${S}"/
+	mv ${WORKDIR}/mini-qmail-kit-0.52/* ${S}/
 
-	cd "${S}"
-	echo -n "$(tc-getCC) ${CFLAGS}" > "${S}"/conf-cc
-	echo -n "$(tc-getCC) ${LDFLAGS}" > "${S}"/conf-ld
-	ht_fix_file "${S}"/Makefile
+	cd ${S}
+	echo -n "$(gcc-getCC) ${CFLAGS}" >${S}/conf-cc
+	echo -n "$(gcc-getCC) ${LDFLAGS}" > ${S}/conf-ld
+	ht_fix_file ${S}/Makefile
 
 	epatch ${FILESDIR}/${PV}-config-mini-help.patch
 }
@@ -64,7 +66,9 @@ src_install() {
 		qmail.7
 
 	einfo "Adding env.d entry for qmail"
-	doenvd "${FILESDIR}"/99qmail
+	dodir /etc/env.d
+	insinto /etc/env.d
+	doins ${FILESDIR}/99qmail
 
 	einfo "Creating sendmail replacement ..."
 	diropts -m 755

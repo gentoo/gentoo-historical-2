@@ -1,23 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sox/sox-12.17.5-r1.ebuild,v 1.7 2005/05/28 16:08:31 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sox/sox-12.17.5-r1.ebuild,v 1.1 2004/09/11 17:17:32 cardoe Exp $
 
-inherit gnuconfig eutils flag-o-matic
+inherit gnuconfig eutils
 
 DESCRIPTION="The swiss army knife of sound processing programs"
 HOMEPAGE="http://sox.sourceforge.net"
 SRC_URI="mirror://sourceforge/sox/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
+IUSE="oggvorbis mad encode" # alsa oss
 SLOT="0"
-KEYWORDS="x86 ~ppc sparc amd64 ~mips alpha"
-IUSE="ogg mad encode" # alsa oss
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~mips ~alpha"
+LICENSE="LGPL-2.1"
 
 DEPEND="virtual/libc
 	encode? ( media-sound/lame )
-	ogg? ( media-libs/libvorbis )
+	alsa? ( media-libs/alsa-lib )
+	oggvorbis? ( media-libs/libvorbis )
 	mad? ( media-sound/madplay )"
-#	alsa? ( media-libs/alsa-lib )
 
 src_compile () {
 	# Needed on mips and probablly others
@@ -30,11 +30,7 @@ src_compile () {
 	epatch ${FILESDIR}/${PN}-soundcard.patch
 	epatch ${FILESDIR}/${PN}-install.patch
 
-	# Fixes wav segfaults. See Bug #35745.
-	append-flags -fsigned-char
-	use ppc && epatch ${FILESDIR}/${PN}-wav-segfault.patch
-
-	myconf="${myconf} `use_enable ogg ogg-vorbis`"
+	myconf="${myconf} `use_enable oggvorbis ogg-vorbis`"
 	myconf="${myconf} `use_enable mad`"
 	myconf="${myconf} `use_enable encode lame`"
 	myconf="${myconf} --enable-oss-dsp"

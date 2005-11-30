@@ -1,53 +1,6 @@
 # ChangeLog for media-radio/cwdaemon
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/cwdaemon/ChangeLog,v 1.8 2005/09/14 06:54:04 agriffis Exp $
-
-  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> cwdaemon-0.9.2.ebuild:
-  Mark 0.9.2 stable on alpha
-
-  30 Mar 2005; Robb Romans <killsoft@gentoo.org> :
-  New version 0.9.2
-  * Many patches by Jason L. Wright, AI4JW, which brings us OpenBSD
-    support and the following:
-  * Better command line parsing and error checking added.
-  * The 'none' sound device had been added in case you don't want a
-    sidetone.
-  * Free entry of portnames has been added, together with autodetection
-    of ports. This should give support for more platforms.
-  * A null device has been added in case you want sidetone but no keying,
-    see 'man cwdaemon'.
-  * Many minor bugfixes.
-
-*cwdaemon-0.9.1 (11 Jan 2005)
-
-  11 Jan 2005; Robb Romans <killsoft@gentoo.org> cwdaemon-0.8.ebuild,
-  +cwdaemon-0.9.1.ebuild, cwdaemon-0.9.ebuild:
-  New version fixes a possible security issue
-
-*cwdaemon-0.9 (08 Dec 2004)
-
-  08 Dec 2004; Robb Romans <killsoft@gentoo.org> +cwdaemon-0.9.ebuild:
-  cwdaemon (0.9)
-  
-  * ESCh will send echo to the program using cwdaemon when CW playing is done,
-    using the '^' character. Added by Lada, OK1ZIA. This is used by tucnak,
-    a VHF contest logging program, see http://tucnak.nagano.cz.
-  * Debian init.d bootscript added by Lada, together with /etc/default/cwdaemon,
-    which you can use to configure cwdaemon. Set START_CWDAEMON=no in
-    /etc/default/cwdaemon to disable start at boottime.
-  * Serial and parallel port now supported on FreeBSD. Parallel port and various
-    BSD fixes thanks to Diane Bruce, VA3DB.
-
-  04 Aug 2004; Robb Romans <killsoft@gentoo.org> cwdaemon-0.8.ebuild:
-  Mark stable on x86, add ~alpha.
-
-  29 Jun 2004; Robb Romans <killsoft@gentoo.org> cwdaemon-0.8.ebuild:
-  Move to virtual/libc
-
-*cwdaemon-0.8 (28 Jun 2004)
-
-  28 Jun 2004; David Holm <dholm@gentoo.org> cwdaemon-0.8.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-radio/cwdaemon/ChangeLog,v 1.1 2004/06/28 04:19:43 killsoft Exp $
 
   27 Jun 2004; Robb Romans <killsoft@gentoo.org> +metadata.xml:
   Initial import.

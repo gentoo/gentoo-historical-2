@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gpc/gpc-20040516.ebuild,v 1.6 2005/04/17 21:28:18 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gpc/gpc-20040516.ebuild,v 1.1 2004/06/13 01:01:55 george Exp $
 
 inherit eutils flag-o-matic
 
@@ -19,10 +19,10 @@ SRC_URI="http://gnu-pascal.de/beta/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~sparc"
+KEYWORDS="~x86 ~sparc ~amd64"
 IUSE="nls"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 		=sys-devel/gcc-${GCC_PV}*"
 
 S="${WORKDIR}/gcc-${GCC_PV}"
@@ -98,9 +98,12 @@ src_compile() {
 
 	touch ${S}/gcc/c-gperf.h
 
+	# Setup -j in MAKEOPTS
+	get_number_of_jobs
+
 	einfo "Building GPC..."
 	# Fix for our libtool-portage.patc
-	S="${WORKDIR}/build" emake -j1 LIBPATH="${LIBPATH}" || die "make failed"
+	S="${WORKDIR}/build" emake LIBPATH="${LIBPATH}" || die "make failed"
 
 #	P="${SAVEP}"
 }

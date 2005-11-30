@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-afpl/ghostscript-afpl-8.15.ebuild,v 1.7 2005/06/09 13:27:05 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-afpl/ghostscript-afpl-8.15.ebuild,v 1.1 2004/09/29 10:23:24 lanius Exp $
 
 inherit eutils
 
@@ -13,12 +13,12 @@ CUPS_PV=1.1.20
 
 SRC_URI="mirror://sourceforge/ghostscript/${MY_P}.tar.gz
 	cjk? ( http://www.matsusaka-u.ac.jp/mirror/gs-cjk/adobe-cmaps-200204.tar.gz
-		http://www.matsusaka-u.ac.jp/mirror/gs-cjk/acro5-cmaps-2001.tar.gz )
+		http://www.matsusaka-u.ac.jp/mirror/gs-cjk/acro5-cmaps-2001.tar.gz)
 	cups? ( mirror://gentoo/cups-${CUPS_PV}-source.tar.bz2 )"
 
 LICENSE="Aladdin"
 SLOT="0"
-KEYWORDS="x86 amd64 ppc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE="X cups cjk gtk"
 
 PROVIDE="virtual/ghostscript"
@@ -73,13 +73,13 @@ src_compile() {
 	if use cups; then
 		echo 'include pstoraster/cups.mak' >> Makefile
 		sed -i -e 's:DEVICE_DEVS17=:DEVICE_DEVS17=$(DD)cups.dev:' Makefile
-		sed -i -e 's:LDFLAGS=\(.*\)$(XLDFLAGS):LDFLAGS=\1-L/usr/include -lcups -lcupsimage $(XLDFLAGS):' Makefile
+		sed -i -e 's:LDFLAGS= $(XLDFLAGS):LDFLAGS=-L/usr/include -lcups -lcupsimage $(XLDFLAGS):' Makefile
 	fi
 
 	# search path fix
-	sed -i -e 's:$(gsdatadir)/lib:/usr/share/ghostscript/8.15/lib:' Makefile
+	sed -i -e 's:$(gsdatadir)/lib:/usr/share/ghostscript/8.14/lib:' Makefile
 	sed -i -e 's:$(gsdir)/fonts:/usr/share/fonts/default/ghostscript/:' Makefile
-	sed -i -e 's:$(gsdatadir)/Resource:/usr/share/ghostscript/8.15/Resource:' Makefile
+	sed -i -e 's:$(gsdatadir)/Resource:/usr/share/ghostscript/8.14/Resource:' Makefile
 
 	make || die "make failed"
 	make so || die "make so failed"

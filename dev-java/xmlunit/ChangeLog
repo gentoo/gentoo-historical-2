@@ -1,26 +1,6 @@
 # ChangeLog for dev-java/xmlunit
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/ChangeLog,v 1.6 2005/11/24 18:14:44 compnerd Exp $
-
-  24 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
-  xmlunit-1.0-r1.ebuild:
-  Restoring dropped junit tests.
-
-*xmlunit-1.0-r1 (24 Nov 2005)
-
-  24 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
-  +xmlunit-1.0-r1.ebuild:
-  Fixing a dep, changing to ant-core from ant.
-
-  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> xmlunit-1.0.ebuild:
-  added ~ppc to KEYWORDS
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  files/xmlunit-1.0-gentoo.patch, xmlunit-1.0.ebuild:
-  xmlunit now make use of java-pkg_dosrc
-
-  18 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> xmlunit-1.0.ebuild:
-  stable on amd64 and x86.
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/ChangeLog,v 1.1 2005/01/22 13:01:24 luckyduck Exp $
 
 *xmlunit-1.0 (22 Jan 2005)
 

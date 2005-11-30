@@ -1,20 +1,6 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 b563377cf7b1301fc1ec0fe443eddebd ChangeLog 5414
-MD5 d2b4b7b99f1a5c3a26d093cea53e85a0 files/digest-hddtemp-0.3_beta13 71
-MD5 4784b9ba9acebc638325e817d252b9b1 files/digest-hddtemp-0.3_beta14 71
-MD5 91e4b7762278d6c80f97ce6039442e8d files/hddtemp-0.3_beta13-setsid.patch 370
-MD5 92bf0d7e78de1bafcedee9c9042df8b2 files/hddtemp-conf.d 342
-MD5 52e2d71a98fe1eabc27e90f889796a6a files/hddtemp-init 538
-MD5 f816512c3feee3cc9a92a9a8d27e9cff files/hddtemp.db 11325
-MD5 18f827ae137a300c155ee91af047824d hddtemp-0.3_beta13.ebuild 1276
-MD5 13f53f00ca597daffc3378e38af2f03e hddtemp-0.3_beta14.ebuild 1213
-MD5 ac68604576ccfc58e653bc0982bef4d4 metadata.xml 281
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDcOo9chej4aZK9/cRAkRTAJ933OIS491A2u4UD6Dgkv2ruibaegCgh5nT
-vWl7z9rC3a1MSvhKFOYLrYE=
-=PtTc
------END PGP SIGNATURE-----
+MD5 867cea4c38ba6438bf2b7483991f087d ChangeLog 1236
+MD5 0482992424f22c086720a8b51a9f37ad hddtemp-0.2.ebuild 933
+MD5 7e529b08b34e35c75af24a26010cd565 hddtemp-0.3_beta6.ebuild 908
+MD5 06b275391f52469a2773a41b9ccc48d6 files/digest-hddtemp-0.2 115
+MD5 a4e0540c259f86b5ed2c4af2a7ead160 files/hddtemp-0.2-db_location.patch 593
+MD5 0441f48755331a54d70ab13db98b4117 files/digest-hddtemp-0.3_beta6 121

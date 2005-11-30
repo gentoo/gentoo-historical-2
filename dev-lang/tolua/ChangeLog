@@ -1,20 +1,6 @@
 # ChangeLog for dev-lang/tolua
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tolua/ChangeLog,v 1.6 2005/10/31 18:13:08 twp Exp $
-
-*tolua-5.0-r1 (31 Oct 2005)
-
-  31 Oct 2005; Tom Payne <twp@gentoo.org> +tolua-5.0-r1.ebuild:
-  Use portability eclass to conditionally link to dl. Bug # 106446.
-
-  18 May 2005; Tom Payne <twp@gentoo.org> tolua-5.0.ebuild:
-  Use toolchain-funcs eclass. Bug # 92745.
-
-  18 Apr 2004; Jason Wever <weeve@gentoo.org> tolua-5.0.ebuild:
-  Added ~sparc keyword.
-
-  12 Apr 2004; <twp@gentoo.org> tolua-5.0.ebuild:
-  Bug # 39205. Added IUSE.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tolua/ChangeLog,v 1.1 2003/08/28 12:48:44 msterret Exp $
 
 *tolua-5.0 (28 Aug 2003)
 

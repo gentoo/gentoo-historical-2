@@ -1,20 +1,7 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 98d4bb8028bfa273a1003170fb6b6176 ChangeLog 4087
-MD5 0dd97ad441e61b3374622f7fe4372cb0 files/chipcardd 498
-MD5 ec257807a12a9e2af2decfb68e6337e8 files/chipcardd2 494
-MD5 604d568a90ef59070dc8955956f898f7 files/digest-libchipcard-0.9.1-r1 69
-MD5 3d26fed59a35b9153a34b601f142c46d files/digest-libchipcard-1.9.15_beta 75
-MD5 e1a57ed198aacbdf15dd219ae64febd9 files/digest-libchipcard-1.9.17_beta 75
-MD5 67421dc98d1b41fc9f4ea296c2714e49 libchipcard-0.9.1-r1.ebuild 1022
-MD5 07cbc7fd243595c8158c6f01915556d3 libchipcard-1.9.15_beta.ebuild 1396
-MD5 4b0e0bdfaf55ce0d4276f15727549456 libchipcard-1.9.17_beta.ebuild 1404
-MD5 a72a06a37ca4e5905085ebff07fe9e9e metadata.xml 217
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDi5lpr2QksT29OyARAnDcAJ9rHVp6owCERoKKMUbYfnW7mw+MYQCgn1Qu
-XzUs5Q37hIn/8cG2+xJi8+8=
-=J3t1
------END PGP SIGNATURE-----
+MD5 0a38873d4cf849109a21864a3be2e44c ChangeLog 955
+MD5 4a81511b7cb4bccfece0f91b3d1e5fde libchipcard-0.6.ebuild 911
+MD5 92c15b63e0dcd0f784a255cd9e8ac5d5 libchipcard-0.8.ebuild 977
+MD5 3955d09b187ba119da550acbbf4f8a3c libchipcard-0.8.5.ebuild 831
+MD5 1c38820f0f82edc810497665e67c9784 files/digest-libchipcard-0.6 67
+MD5 153bb0640ed90550a33c0c842bfda300 files/digest-libchipcard-0.8 67
+MD5 2cea935f1f1af7a0b7feac476ee0816c files/digest-libchipcard-0.8.5 69

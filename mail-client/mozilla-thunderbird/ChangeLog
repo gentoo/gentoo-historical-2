@@ -1,396 +1,158 @@
-# ChangeLog for mail-client/mozilla-thunderbird
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mozilla-thunderbird/ChangeLog,v 1.95 2005/11/22 17:28:44 anarchy Exp $
-
-*mozilla-thunderbird-1.5_rc1-r1 (22 Nov 2005)
-
-  22 Nov 2005; <anarchy@gentoo.org> +files/firefox-1.1-uriloader.patch,
-  +files/firefox-1.1-visibility.patch, -files/thunderbird-visibility.patch,
-  -mozilla-thunderbird-1.5_rc1.ebuild,
-  +mozilla-thunderbird-1.5_rc1-r1.ebuild:
-  visibility fixed, uri patch added
-
-  16 Nov 2005; <anarchy@gentoo.org> mozilla-thunderbird-1.0.7-r2.ebuild,
-  mozilla-thunderbird-1.5_rc1.ebuild:
-  readded patch for rpath
-
-*mozilla-thunderbird-1.5_rc1 (15 Nov 2005)
-
-  15 Nov 2005; <anarchy@gentoo.org> +files/thunderbird-cairo-canvas.patch,
-  +files/thunderbird-nopangoxft.patch, +files/thunderbird-visibility.patch,
-  +mozilla-thunderbird-1.5_rc1.ebuild:
-  initial import for 1.5 testing and preparations, not intended for users
-
-  13 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
-  mozilla-thunderbird-1.0.7-r2.ebuild:
-  Fix a compilation issue using the 32-bit userland with 64-bit kernel on
-  PowerPC.
-
-*mozilla-thunderbird-1.0.7-r2 (26 Oct 2005)
-
-  26 Oct 2005; Jory A. Pratt <anarchy@gentoo.org>
-  +mozilla-thunderbird-1.0.7-r2.ebuild:
-  rpath reincluded, gcc-4 not updated as no issues arise with segfault on amd64
-
-*mozilla-thunderbird-1.0.7-r1 (23 Oct 2005)
-
-  23 Oct 2005; <anarchy@gentoo.org> -files/thunderbird-0.7-init.tar.bz2,
-  -files/mozilla-thunderbird-1.0.2-gcc4.patch,
-  +files/mozilla-thunderbird-1.0.7-gcc-4.0.2.patch,
-  -mozilla-thunderbird-1.0.5.ebuild, -mozilla-thunderbird-1.0.5-r1.ebuild,
-  -mozilla-thunderbird-1.0.6-r2.ebuild,
-  -mozilla-thunderbird-1.0.6-r3.ebuild,
-  -mozilla-thunderbird-1.0.6-r4.ebuild,
-  -mozilla-thunderbird-1.0.6-r5.ebuild,
-  +mozilla-thunderbird-1.0.7-r1.ebuild:
-  cleanup of old ebuild/files additional fix added to gcc-4 patch
-
-  15 Oct 2005; Joseph Jezak <josejx@gentoo.org>
-  mozilla-thunderbird-1.0.7.ebuild:
-  Marked ppc stable for bug #109094.
-
-  15 Oct 2005; Jose Luis Rivero <yoswink@gentoo.org>
-  mozilla-thunderbird-1.0.7.ebuild:
-  Stable on alpha wrt security bug #109094
-
-  14 Oct 2005; Homer Parker <hparker@gentoo.org>
-  mozilla-thunderbird-1.0.7.ebuild:
-  Stable on amd64.
-
-  13 Oct 2005; Paul Varner <fuzzyray@gentoo.org>
-  mozilla-thunderbird-1.0.7.ebuild:
-  Stable on x86. Bug #109094
-
-  13 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.7.ebuild:
-  Mark 1.0.7 stable on ia64
-
-  13 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  mozilla-thunderbird-1.0.7.ebuild:
-  Stable on sparc wrt #109094
-
-*mozilla-thunderbird-1.0.7 (01 Oct 2005)
-
-  01 Oct 2005; Brad Laue <brad@gentoo.org>
-  +mozilla-thunderbird-1.0.7.ebuild:
-  New version 1.0.7. Includes security fixes such as
-  http://secunia.com/advisories/16901/.
-
-*mozilla-thunderbird-1.0.6-r5 (15 Aug 2005)
-
-  15 Aug 2005; Jory A. Pratt <anarchy@gentoo.org>
-  +files/thunderbird-rpath-1.patch, +mozilla-thunderbird-1.0.6-r5.ebuild:
-  rpath applied, p.masked for further testing
-
-*mozilla-thunderbird-1.0.6-r4 (02 Aug 2005)
-
-  02 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  +mozilla-thunderbird-1.0.6-r4.ebuild:
-  Update to v2 of the nsplugins patch, which actually works (even on multilib
-  systems). Define GENTOO_NSPLUGINS_DIR and GENTOO_NSBROWSER_PLUGINS_DIR in
-  the ebuild prior to emake, rather than in the eclass prior to econf, since
-  ./configure chokes on the definitions
-
-*mozilla-thunderbird-1.0.6-r3 (31 Jul 2005)
-
-  31 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  +files/mozilla-thunderbird-1.0.6-gcc4.patch,
-  +mozilla-thunderbird-1.0.6-r3.ebuild:
-  Updated gcc4 patch
-
-  23 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  mozilla-thunderbird-1.0.6-r2.ebuild:
-  Stable on sparc wrt #99960
-
-  22 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  mozilla-thunderbird-1.0.6-r2.ebuild:
-  stable ppc wrt bug #99960
-
-  22 Jul 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.6-r2.ebuild:
-  Push to stable for security and extensions issues
-
-  22 Jul 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.6-r2.ebuild:
-  Port nsplugins patch from firefox ebuild. Do registration in pkg_postrm as
-  well as pkg_postinst. More synchronization goodness from mozilla and firefox
-  ebuilds
-
-*mozilla-thunderbird-1.0.6-r2 (21 Jul 2005)
-
-  21 Jul 2005; Aron Griffis <agriffis@gentoo.org>
-  -files/mozilla-thunderbird-0.9-4ft2.patch,
-  mozilla-thunderbird-1.0.5.ebuild, mozilla-thunderbird-1.0.5-r1.ebuild,
-  -mozilla-thunderbird-1.0.6-r1.ebuild,
-  +mozilla-thunderbird-1.0.6-r2.ebuild:
-  Fix major boo-boo in 1.0.6-r1: installed-chrome.txt had gone missing. Also
-  move 4ft2 patch to distfiles
-
-*mozilla-thunderbird-1.0.6-r1 (21 Jul 2005)
-
-  21 Jul 2005; Aron Griffis <agriffis@gentoo.org>
-  -mozilla-thunderbird-1.0.2-r10.ebuild, -mozilla-thunderbird-1.0.6.ebuild,
-  +mozilla-thunderbird-1.0.6-r1.ebuild:
-  Recent mozilla-thunderbird ebuilds were inadvertently based on my
-  experimental pmasked 1.0.2-r10, which included calling mozilla-launcher
-  -register, which was not ready for production. The result was that
-  thunderbird would be installed to /usr/lib/thunderbird and some stuff would
-  be moved to /var. This commit bumps the rev to -r1, which moves thunderbird
-  to /usr/lib/mozilla-thunderbird, requires the latest mozilla-launcher which
-  handles registration correctly, and doesn't put anything in /var
-
-*mozilla-thunderbird-1.0.6 (20 Jul 2005)
-
-  20 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  +mozilla-thunderbird-1.0.6.ebuild:
-  revision bump, fixes API for extentions
-
-*mozilla-thunderbird-1.0.5-r1 (18 Jul 2005)
-
-  18 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  +mozilla-thunderbird-1.0.5-r1.ebuild:
-  Add mozcalendar support
-
-  18 Jul 2005; Aron Griffis <agriffis@gentoo.org>
-  -mozilla-thunderbird-1.0.2.ebuild, -mozilla-thunderbird-1.0.2-r1.ebuild,
-  mozilla-thunderbird-1.0.5.ebuild:
-  Update dependency to mozilla-launcher-1.35 to help with #99084
-
-  17 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  mozilla-thunderbird-1.0.5.ebuild:
-  Marked stable wrt Security BUG #98855.
-
-  17 Jul 2005; Danny van Dyk <kugelfang@gentoo.org>
-  mozilla-thunderbird-1.0.5.ebuild:
-  Marked stable wrt Security BUG #98855.
-
-  16 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
-  mozilla-thunderbird-1.0.5.ebuild:
-  Stable on alpha + ia64, bug 98855.
-
-  15 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  mozilla-thunderbird-1.0.5.ebuild:
-  Stable on sparc wrt #98855
-
-  14 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  mozilla-thunderbird-1.0.5.ebuild:
-  Stable on PPC
-
-  14 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  mozilla-thunderbird-1.0.5.ebuild:
-  added ewarn about engimail being dropped
-
-*mozilla-thunderbird-1.0.5 (14 Jul 2005)
-
-  14 Jul 2005; Jory A. Pratt <anarchy@gentoo.org>
-  +mozilla-thunderbird-1.0.5.ebuild:
-  Security Bump Bug #98855
-
-  06 Jul 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild, mozilla-thunderbird-1.0.2-r1.ebuild,
-  mozilla-thunderbird-1.0.2-r10.ebuild:
-  Add ldap to IUSE
-
-*mozilla-thunderbird-1.0.2-r10 (29 Jun 2005)
-
-  29 Jun 2005; Aron Griffis <agriffis@gentoo.org>
-  +mozilla-thunderbird-1.0.2-r10.ebuild:
-  Add pmasked development ebuild which will break enigmail out into its own
-  ebuild. Additionally this ebuild changes MOZILLA_FIVE_HOME to
-  /usr/lib/thunderbird and moves chromes to /var/lib/thunderbird. It's no
-  longer necessary to use a snapshot of initialization files since
-  mozilla-launcher-1.33 has a -register mechanism which is called in
-  pkg_postinst
-
-  24 Jun 2005; Jonathan Smith <smithj@gentoo.org>
-  mozilla-thunderbird-1.0.2-r1.ebuild:
-  fixed sandboxing problem
-
-  23 Jun 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.2-r1.ebuild:
-  Use the thunderbird enigmail theme #45609
-
-*mozilla-thunderbird-1.0.2-r1 (22 Jun 2005)
-
-  22 Jun 2005; Jonathan Smith <smithj@gentoo.org>
-  +mozilla-thunderbird-1.0.2-r1.ebuild:
-  enigmail version bump for #94744 and silly ebuild comment fix
-
-  30 May 2005; Sven Wegener <swegener@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
-
-  15 May 2005; Mark Loeser <halcy0n@gentoo.org>
-  +files/mozilla-thunderbird-1.0.2-gcc4.patch,
-  mozilla-thunderbird-1.0.2.ebuild:
-  Added GCC4 patch ; fixes bug #87800
-
-  12 May 2005; Aron Griffis <agriffis@gentoo.org>
-  -files/ipc-1.0.6-nsPipeChannel.patch, -files/MozillaThunderbird,
-  -files/enigmail/Makefile-enigmail, -files/enigmail/Makefile-ipc,
-  -files/thunderbird, -mozilla-thunderbird-0.7.3-r1.ebuild,
-  -mozilla-thunderbird-0.8.ebuild, -mozilla-thunderbird-0.9.ebuild,
-  -mozilla-thunderbird-0.9-r2.ebuild, -mozilla-thunderbird-0.9-r3.ebuild,
-  -mozilla-thunderbird-1.0.ebuild:
-  trim old versions
-
-  15 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  fixing multilib-strict, see bug #87455
-
-  25 Mar 2005; Jason Wever <weeve@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  Stable on SPARC wrt security bug #84075.
-
-  24 Mar 2005; Brad Laue <brad@gentoo.org> mozilla-thunderbird-1.0.2.ebuild:
-  Adjust dep on gnupg to >=gnupg-1.4 per enigmail requirements.
-
-  24 Mar 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  Stable on alpha ia64
-
-  24 Mar 2005; Benjamin Schindler <config@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  Stable on amd64
-
-  24 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  Stable on ppc.
-
-  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  stable to x86 for brad
-
-  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  mozilla-launcher to www-client from net-www
-
-  23 Mar 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.ebuild:
-  Upstream enigmail tarball changed, md5sum broken. Copy new version to Gentoo
-  mirrors as -r1 #78585
-
-  23 Mar 2005; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-1.0.2.ebuild:
-  Use a stub script instead of symlink to mozilla-launcher. This in
-  combination with mozilla-launcher-1.28 should fix #78890
+# ChangeLog for net-mail/mozilla-thunderbird
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mozilla-thunderbird/ChangeLog,v 1.1 2004/05/30 19:41:09 seemant Exp $
 
-*mozilla-thunderbird-1.0.2 (23 Mar 2005)
-
-  23 Mar 2005; Brad Laue <brad@gentoo.org> +mozilla-thunderbird-1.0.2.ebuild:
-  Bump to 1.0.2. See bug #84074 for fix details.
-
-  29 Dec 2004; <SeJo@gentoo.org> :
-  stable on ppc glsa: 68976
+  07 May 2004; Aron Griffis <agriffis@gentoo.org>
+  mozilla-thunderbird-0.6-r1.ebuild:
+  Depend on mozilla-launcher-1.7-r1 which installs in /usr/libexec
 
-  29 Dec 2004; Joseph Jezak <josejx@gentoo.org>
-  mozilla-thunderbird-1.0.ebuild:
-  Tested and marked ppc stable for bug #68976.
+*mozilla-thunderbird-0.6-r1 (04 May 2004)
 
-  21 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
-  mozilla-thunderbird-1.0.ebuild:
-  Stable on alpha, bug 68976.
+  04 May 2004; Aron Griffis <agriffis@gentoo.org>
+  +mozilla-thunderbird-0.6-r1.ebuild:
+  Switch to mozilla-launcher since version 1.6 supports thunderbird
 
-  21 Dec 2004; Olivier Crete <tester@gentoo.org>
-  mozilla-thunderbird-1.0.ebuild:
-  Stable on x86 per security bug 68976
-
-  20 Dec 2004; Dylan Carlson <absinthe@gentoo.org>
-  mozilla-thunderbird-1.0.ebuild:
-  Stable on amd64.
-
-  20 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  mozilla-thunderbird-1.0.ebuild:
-  Stable on sparc wrt #68976
-
-*mozilla-thunderbird-1.0 (07 Dec 2004)
-
-  07 Dec 2004; Brad Laue <brad@gentoo.org> +mozilla-thunderbird-1.0.ebuild:
-  Mozilla Thunderbird 1.0. Reclaim your inbox. Based on mozconfig eclass.
-
-*mozilla-thunderbird-0.9-r3 (18 Nov 2004)
-
-  18 Nov 2004; Aron Griffis <agriffis@gentoo.org>
-  +files/mozilla-thunderbird-0.9-4ft2.patch,
-  +mozilla-thunderbird-0.9-r3.ebuild:
-  Update to enigmail 0.89.0 #64547. Add patch for freetype-2.1.8+ binary
-  compatibility #59849
-
-  16 Nov 2004; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-0.9-r2.ebuild:
-  Remove IUSE=gtk2 because we always depend on gtk2 now
-
-  14 Nov 2004; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-0.9-r2.ebuild:
-  Set HOME=~root when running regxpcom/regchrome in case this is being emerged
-  via sudo. Otherwise the commands will create ~/.mozilla owned by root and
-  700 perms, which makes subsequent execution of thunderbird by user
-  impossible.  #67031
-
-*mozilla-thunderbird-0.9-r2 (13 Nov 2004)
-
-  13 Nov 2004; Aron Griffis <agriffis@gentoo.org>
-  -mozilla-thunderbird-0.9-r1.ebuild, +mozilla-thunderbird-0.9-r2.ebuild:
-  Use mozconfig_final to resolve --enable-extensions to a single option
-
-*mozilla-thunderbird-0.9-r1 (13 Nov 2004)
-
-  13 Nov 2004; Aron Griffis <agriffis@gentoo.org>
-  +mozilla-thunderbird-0.9-r1.ebuild:
-  use mozconfig.eclass instead of mozilla.eclass for building
-
-*mozilla-thunderbird-0.9 (06 Nov 2004)
-
-  06 Nov 2004; Brad Laue <brad@gentoo.org> +mozilla-thunderbird-0.9.ebuild:
-  New version 0.9, featuring saved search folders, message grouping. See the
-  changelog for more details at
-  http://www.mozilla.org/products/thunderbird/releases/.
-
-  21 Oct 2004; Joseph Jezak <josejx@gentoo.org>
-  mozilla-thunderbird-0.8.ebuild:
-  Marked stable on ppc
-
-*mozilla-thunderbird-0.8 (15 Sep 2004)
-
-  15 Sep 2004; <agriffis@gentoo.org> +mozilla-thunderbird-0.8.ebuild:
-  Bump to 0.8 for security bug 63996
-
-*mozilla-thunderbird-0.7.3-r1 (11 Aug 2004)
-
-  11 Aug 2004; Aron Griffis <agriffis@gentoo.org>
-  +mozilla-thunderbird-0.7.3-r1.ebuild, -mozilla-thunderbird-0.7.3.ebuild:
-  Bump to 0.7.3-r1 for bug 60060 (cannot manage passwords due to missing wallet
-  extension)
-
-  08 Aug 2004; Aron Griffis <agriffis@gentoo.org>
-  mozilla-thunderbird-0.7.3.ebuild:
-  Move extensions configuration to mozilla.eclass. Use edit_makefiles to reduce
-  compilation RAM requirements
-
-  08 Aug 2004; <agriffis@gentoo.org> mozilla-thunderbird-0.7.3.ebuild:
-  stable on ia64
-
-  07 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  mozilla-thunderbird-0.7.3.ebuild:
-  Keyworded alpha, sparc and x86 back into the fold
-
-  06 Aug 2004; Tom Martin <slarti@gentoo.org>
-  mozilla-thunderbird-0.7.3.ebuild:
-  Mark stable on amd64 for bug #59419.
-
-  05 Aug 2004; <agriffis@gentoo.org>
-  +files/mozilla-alpha-xpcom-subs-fix.patch, mozilla-thunderbird-0.7.3.ebuild:
-  Fix compilation on alpha #57057.  Mark stable on x86 and alpha #59419.
-
-  05 Aug 2004; Josh Grebe <squash@gentoo.org>
-  mozilla-thunderbird-0.7.3.ebuild:
-  Sparcify, bug #59419
-
-*mozilla-thunderbird-0.7.3 (04 Aug 2004)
-
-  04 Aug 2004; Aron Griffis <agriffis@gentoo.org>
-  -files/mozilla-thunderbird-amd64.patch, +mozilla-thunderbird-0.7.3.ebuild:
-  Update to 0.7.3 for security meta-bug 59419. This is the first of the mozilla
-  ebuilds to use mozilla.eclass. Remove unused amd64 patch which exceeds
-  repoman's filesize limit.
+  04 May 2004; Aron Griffis <agriffis@gentoo.org>
+  mozilla-thunderbird-0.6.ebuild:
+  Clean up this ebuild, heading toward convergence with mozilla and
+  mozilla-firefox ebuilds.
+
+*mozilla-thunderbird-0.6 (04 May 2004)
+
+  04 May 2004; Brad Laue <brad@gentoo.org> +mozilla-thunderbird-0.6.ebuild:
+  Bump to 0.6. Clean up some dependency problems.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  mozilla-thunderbird-0.4.ebuild, mozilla-thunderbird-0.5-r1.ebuild,
+  mozilla-thunderbird-0.5.ebuild:
+  Add inherit eutils
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  mozilla-thunderbird-0.5-r1.ebuild:
+  Fix bug 48364 (QA/Ebuild Violations: net-mail/mozilla-thunderbird) by moving
+  sparc and ppc support into src_compile where they belong.
+
+  11 Apr 2004; Travis Tilley <lv@gentoo.org> mozilla-thunderbird-0.5.ebuild:
+  marked stable on amd64
+
+  25 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  mozilla-thunderbird-0.3-r1.ebuild, mozilla-thunderbird-0.4.ebuild,
+  mozilla-thunderbird-0.5-r1.ebuild, mozilla-thunderbird-0.5.ebuild:
+  don't use deprecated ? : use syntax
+
+*mozilla-thunderbird-0.5-r1 (07 Mar 2004)
+
+  07 Mar 2004; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.5-r1.ebuild:
+  New version of enigmail, add Xinerama support.
+
+  24 Feb 2004; Sven Blumenstein <bazik@gentoo.org>
+  mozilla-thunderbird-0.5.ebuild:
+  Gave it some sparc keyword love ;)
+
+  19 Feb 2004; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.5.ebuild:
+  Stable on x86, at long last.
+
+  19 Feb 2004; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.5.ebuild:
+  Add dependency on pkgconfig, as this is needed for GTK+2 building.
+
+*mozilla-thunderbird-0.5 (15 Feb 2004)
+
+  15 Feb 2004; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.5.ebuild,
+  files/thunderbird:
+  Bump to version 0.5.
+
+  25 Dec 2003; Sven Blumenstein <bazik@gentoo.org>
+  mozilla-thunderbird-0.4.ebuild:
+  Stable on sparc.
+
+  22 Dec 2003; Sven Blumenstein <bazik@gentoo.org>
+  mozilla-thunderbird-0.3.ebuild:
+  Marked stable on sparc.
+
+*mozilla-thunderbird-0.4 (07 Dec 2003)
+
+  07 Dec 2003; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.4.ebuild:
+  Bump to 0.4 - now supports URL handling under Linux, and other improvements.
+
+  18 Nov 2003; Luca Barbato <lu_zero@gentoo.org>
+  mozilla-thunderbird-0.3-r1.ebuild:
+  Filtered problematic cflags
+
+  17 Nov 2003; Brad Laue <brad@gentoo.org> :
+  Fix bad md5sum. Truncated file was in distfiles while I generated a digest.
+  D'oh!
+
+*mozilla-thunderbird-0.3-r1 (16 Nov 2003)
+
+  16 Nov 2003; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.3-r1.ebuild:
+  New enigmail version - now changing the filename of the upstream tarball so
+  that md5 errors are avoided.
+
+  20 Oct 2003; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.3.ebuild:
+  Add spellcheck support
+
+*mozilla-thunderbird-0.3 (17 Oct 2003)
+
+  17 Oct 2003; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.3.ebuild:
+  Update to 0.3
+
+  16 Oct 2003; Brad Laue <brad@gentoo.org> :
+  Update enigmail in preparation for the impending new Thunderbird
+
+  13 Sep 2003; Luca Barbato <lu_zero@gentoo.org> mozilla-thunderbird.ebuild:
+  Added a ppc related fix
+
+*mozilla-thunderbird-0.2 (04 Sep 2003)
+
+  04 Sep 2003; Brad Laue <brad@gentoo.org> mozilla-thunderbird-0.2.ebuild:
+  Introducing Mozilla Thunderbird 0.2, with enigmail support - since this is an
+  actual release and not a CVS snapshot, bugs filed will now be treated
+  officially.
+
+*mozilla-thunderbird-0.2_alpha20030826 (01 Sep 2003)
+
+  01 Sep 2003; Brad Laue <brad@gentoo.org>
+  mozilla-thunderbird-0.2_alpha20030826.ebuild,
+  files/enigmail/Makefile-enigmail, files/enigmail/Makefile-ipc:
+  New snapshot - now featuring enigmail support, at long last.
+
+*mozilla-thunderbird-0.2_alpha20030813 (17 Aug 2003)
+
+  17 Aug 2003; Brad Laue <brad@gentoo.org>
+  mozilla-thunderbird-0.2_alpha20030813.ebuild:
+  Add 2003/08/13 snapshot - purported to function more completely than the last
+  snapshot.
+
+*mozilla-thunderbird-0.2_alpha20030807 (09 Aug 2003)
+
+  09 Aug 2003; Brad Laue <brad@gentoo.org>
+  mozilla-thunderbird-0.2_alpha20030807.ebuild:
+  New snapshot release, now 0.2 alpha. Cosmetic as well as feature improvements
+  - refer to http://forums.mozillazine.org/viewtopic.php?p=143826#143826 for
+  details.
+
+  01 Aug 2003; Brad Laue <brad@gentoo.org> :
+  Mask 20030727, its broken.
+
+*mozilla-thunderbird-0.1_alpha20030727 (29 Jul 2003)
+
+  29 Jul 2003; Brad Laue <brad@gentoo.org>
+  mozilla-thunderbird-0.1_alpha20030727.ebuild:
+  Version bump. This is the same trunk date as the 0.1 release, so it should be
+  identical to that. Waiting on thunderbird developers to roll their own
+  tarball.
+
+*mozilla-thunderbird-0.1_alpha20030723 (26 Jul 2003)
+
+  26 Jul 2003; Brad Laue <brad@gentoo.org>
+  mozilla-thunderbird-0.1_alpha20030723.ebuild:
+  New snapshot of thunderbird. Introduces minor folder prefix bug with IMAP.
+  Specify trailing slash if specifying folder prefix.
+
+*mozilla-thunderbird-0.1_alpha20030708 (20 Jul 2003)
+
+  20 Jul 2003; Brad Laue <brad@gentoo.org>
+  mozilla-thunderbird-0.1_alpha20030708.ebuild, files/MozillaThunderbird:
+  Introducing Mozilla Thunderbird, Mozilla's freestanding mail client. 20030708
+  Trunk.
 

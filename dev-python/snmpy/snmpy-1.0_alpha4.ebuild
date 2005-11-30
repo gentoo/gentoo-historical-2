@@ -1,22 +1,25 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/snmpy/snmpy-1.0_alpha4.ebuild,v 1.17 2005/02/21 02:39:56 dragonheart Exp $
-
-inherit distutils
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author: gert@hobbiton.be (Gert)
+# Maintainer: Jon Nelson <jnelson@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-python/snmpy/snmpy-1.0_alpha4.ebuild,v 1.1 2002/04/28 16:18:41 jnelson Exp $
 
 TARNAME=snmpy-alpha-4
 S=${WORKDIR}/${TARNAME}
-
-DESCRIPTION="Python SNMP interface"
-SRC_URI="mirror://sourceforge/snmpy/${TARNAME}.tar.gz"
+DESCRIPTION="python SNMP interface"
+SRC_URI="http://prdownloads.sourceforge.net/snmpy/${TARNAME}.tar.gz"
 HOMEPAGE="http://sourceforge.net/projects/snmpy/"
 
-IUSE=""
-LICENSE="CNRI"
-SLOT="0"
-KEYWORDS="x86 sparc alpha"
-
 DEPEND="virtual/python
-	net-analyzer/net-snmp"
+	>=net-analyzer/ucd-snmp-4.2.0"
+RDEPEND="${DEPEND}"
 
-mydocs="RELEASE-NOTES docs/docs.html"
+src_compile() {
+	python setup.py build || die
+}
+
+src_install() {
+	python setup.py install --root=${D} --prefix=/usr || die
+	dodoc README ChangeLog RELEASE-NOTES docs/docs.html
+}
+

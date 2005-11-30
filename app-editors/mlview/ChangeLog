@@ -1,65 +1,12 @@
 # ChangeLog for app-editors/mlview
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/mlview/ChangeLog,v 1.14 2005/10/03 06:04:31 leonardop Exp $
-
-*mlview-0.8-r1 (03 Oct 2005)
-
-  03 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
-  +mlview-0.8-r1.ebuild:
-  Remove dbus support since it works with obsolete and incompatible versions.
-  Updated dependencies and dropped 'debug' (provided by gnome2.eclass) and
-  'static' (inaccurate) USE flags.
-
-  05 Sep 2005; Doug Goldstein <cardoe@gentoo.org> mlview-0.8.ebuild:
-  fixing dbus deps
-
-  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> mlview-0.8.ebuild:
-  Stable on ppc.
-
-  06 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> mlview-0.8.ebuild:
-  Stable on x86.
-
-*mlview-0.8 (06 Jul 2005)
-
-  06 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> mlview-0.8.ebuild,
-  files/mlview-0.8-dot_desktop.patch:
-  New release. Added 'dbus' and 'static' USE flags. Added patch to correct a
-  few small things in the .desktop file.
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> mlview-0.6.3.ebuild:
-  stable on amd64
-
-*mlview-0.7.1 (24 Nov 2004)
-
-  24 Nov 2004; Leonardo Boshell <leonardop@gentoo.org> mlview-0.7.1.ebuild:
-  Version bump. Adds support for the `debug' USE flag. Updated dependencies.
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  mlview-0.6.2.ebuild, mlview-0.6.3.ebuild:
-  Masked mlview-0.6.3.ebuild stable for ppc
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  mlview-0.6.2.ebuild:
-  Masked mlview-0.6.2.ebuild stable for ppc
-
-  16 Jun 2004; L. Boshell <leonardop@gentoo.org> mlview-0.6.3.ebuild:
-  Marked stable on x86.
-
-*mlview-0.6.3 (18 May 2004)
-
-  18 May 2004; L. Boshell <leonardop@gentoo.org> mlview-0.6.3.ebuild,
-  files/mlview-0.6.3-gcc2_fix.patch:
-  New release. Updated dependencies. Added patch to fix compilation under
-  gcc-2.
-
-  19 Apr 2004; David Holm <dholm@gentoo.org> mlview-0.6.2.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/mlview/ChangeLog,v 1.1 2004/04/19 03:25:26 leonardop Exp $
 
   18 Apr 2004; L. Boshell <leonardop@gentoo.org> mlview-0.6.2.ebuild,
   metadata.xml:
   Marked 0.6.2 stable on x86. Adding maintainer and description to the
   metadata file.
-
+  
 *mlview-0.6.2 (25 Jan 2004)
 
   25 Jan 2004; Mike Gardiner <obz@gentoo.org> mlview-0.0.3_rc1.ebuild,

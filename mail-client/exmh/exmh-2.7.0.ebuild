@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/exmh/exmh-2.7.0.ebuild,v 1.6 2005/11/23 00:43:22 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/exmh/exmh-2.7.0.ebuild,v 1.1 2004/09/22 23:37:06 ticho Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://beedub.com/exmh/"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc"
 IUSE="crypt"
 
 DEPEND="mail-client/nmh
@@ -27,7 +27,7 @@ src_unpack() {
 	cd ${S}
 	for i in *.MASTER; do cp $i ${i%%.MASTER}; done
 	mv exmh.l exmh.1
-	epatch ${FILESDIR}/${P}-conf.patch
+	epatch ${FILESDIR}/exmh-${PV}-conf.patch
 	cd misc
 	rm -rf RPM *tar* *gbuffy*
 	for i in *

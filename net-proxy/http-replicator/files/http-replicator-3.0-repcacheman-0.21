@@ -136,7 +136,7 @@ if newfiles:
 	for s in newfiles:
 		print s
 	print"\nChecking authenticity and integrity of new files..."
-	print "Searching for ebuilds..."
+	print "Searching for ebuilds's ...."
 
 	md5_list = {}
 
@@ -247,4 +247,3 @@ if newdir:
 	print"\n\nexecute:\n/usr/bin/repcacheman\nafter emerge's on the server to delete"
 	print"dup files and add new files to the cache"
 print "\n\nDone!\n\n"
-

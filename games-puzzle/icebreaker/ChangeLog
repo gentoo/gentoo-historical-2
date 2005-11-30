@@ -1,25 +1,6 @@
-# ChangeLog for games-puzzle/icebreaker
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/icebreaker/ChangeLog,v 1.8 2005/06/15 19:00:38 wolf31o2 Exp $
-
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  icebreaker-1.9.5.ebuild:
-  Removed INSTALL file.
-
-  05 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> icebreaker-1.9.5.ebuild:
-  stable on amd64
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  25 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org>
-  icebreaker-1.2.1.ebuild, icebreaker-1.9.2.ebuild:
-  tidy older versions of ebuild
-
-*icebreaker-1.9.5 (28 Sep 2003)
-
-  28 Sep 2003; Michael Sterrett <msterret@gentoo.org> icebreaker-1.9.5.ebuild:
-  version bump
+# ChangeLog for app-games/icebreaker
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/icebreaker/ChangeLog,v 1.1 2003/09/10 06:36:00 vapier Exp $
 
 *icebreaker-1.9.2 (21 May 2002)
 
@@ -28,7 +9,7 @@
   Make /var/lib/games the highscore directory instead of
   /var/local/lib/games
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> icebreaker-1.9.2.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> icebreaker-1.9.2.ebuild :
   Added KEYWORDS, SLOT.
 
   21 May 2002; Seemant Kulleen <seemant@gentoo.org> icebreaker-1.9.2.ebuild
@@ -38,7 +19,7 @@
 
 *icebreaker-1.2.1 (26 Apr 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> icebreaker-1.2.1.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> icebreaker-1.2.1.ebuild :
   Added KEYWORDS, SLOT.
 
   26 Apr 2002; Seemant Kulleen <seemant@gentoo.org> icebreaker-1.2.1.ebuild

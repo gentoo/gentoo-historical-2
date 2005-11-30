@@ -1,23 +1,6 @@
 # ChangeLog for app-misc/nomadii-utils
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/nomadii-utils/ChangeLog,v 1.7 2005/09/24 19:11:41 vanquirius Exp $
-
-*nomadii-utils-0.8-r1 (24 Sep 2005)
-
-  24 Sep 2005; Marcelo Goes <vanquirius@gentoo.org>
-  +files/nomadii-utils-0.8-struct.diff, +metadata.xml,
-  +nomadii-utils-0.8-r1.ebuild:
-  Use hacked usbdevfs_ctrltransfer struct to fix compilation issue. Attempting
-  to fix bug 107065, thanks to Marquez LaMaistres <lamaistres at wavecable dot
-  com>.
-
-  16 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
-  nomadii-utils-0.8.ebuild:
-  took out the groupadd stuff, since usb seems to be in /etc/group by default.
-  if there's a problem the maintainer can use eutils to add the group
-
-  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> nomadii-utils-0.8.ebuild:
-  Fix use invocation
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/nomadii-utils/ChangeLog,v 1.1 2002/07/04 18:37:07 nitro Exp $
 
 *nomadii-utils-0.8 (04 Jul 2002)
 

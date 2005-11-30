@@ -1,22 +1,6 @@
 # ChangeLog for app-emacs/httpd
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/httpd/ChangeLog,v 1.8 2005/10/24 14:14:08 josejx Exp $
-
-  24 Oct 2005; Joseph Jezak <josejx@gentoo.org> httpd-1.0.ebuild:
-  Marked ~ppc.
-
-  29 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org> -httpd-0.5.ebuild,
-  httpd-1.0.ebuild:
-  Keywording ~amd64; removed old ebuilds.
-
-  22 Jun 2005; Jason Wever <weeve@gentoo.org> httpd-1.0.ebuild:
-  Added ~sparc keyword.
-
-*httpd-1.0 (01 Feb 2005)
-
-  01 Feb 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  files/50httpd-gentoo.el, +httpd-1.0.ebuild:
-  New upstream version.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/httpd/ChangeLog,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
 *httpd-0.5 (31 Oct 2002)
 

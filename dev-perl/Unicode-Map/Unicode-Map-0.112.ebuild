@@ -1,16 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-Map/Unicode-Map-0.112.ebuild,v 1.7 2005/10/02 13:23:17 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-Map/Unicode-Map-0.112.ebuild,v 1.1 2004/06/06 15:43:10 mcummings Exp $
 
 inherit perl-module
 
 DESCRIPTION="map charsets from and to utf16 code"
-SRC_URI="mirror://cpan/authors/id/M/MS/MSCHWARTZ/${P}.tar.gz"
+SRC_URI="http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWARTZ/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/~mschwartz/${P}/"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha ~amd64 ia64 ~ppc sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
 
 SRC_TEST="do"

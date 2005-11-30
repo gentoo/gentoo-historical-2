@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/lilypond-2.0.3.ebuild,v 1.7 2005/02/21 04:24:45 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/lilypond-2.0.3.ebuild,v 1.1 2004/03/20 16:40:56 eradicator Exp $
 
 IUSE="doc"
 
@@ -12,11 +10,11 @@ SRC_URI="http://www.lilypond.org/ftp/${MY_PV}/${P}.tar.gz"
 HOMEPAGE="http://lilypond.org/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha x86 ~ppc"
+KEYWORDS="~alpha ~x86"
 
 RDEPEND=">=dev-util/guile-1.6.4
 	virtual/ghostscript
-	virtual/tetex
+	>=app-text/tetex-1.0.7-r12
 	>=dev-lang/python-2.2.3-r1"
 
 DEPEND="${RDEPEND}

@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_pam/mod_auth_pam-1.1.1.ebuild,v 1.6 2005/02/17 09:30:54 hollow Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_pam/mod_auth_pam-1.1.1.ebuild,v 1.1 2004/06/15 03:18:09 zul Exp $
 
 DESCRIPTION="PAM authentication module for Apache2"
 HOMEPAGE="http://pam.sourceforge.net/mod_auth_pam/"
@@ -11,13 +9,14 @@ S="${WORKDIR}/${PN}"
 SRC_URI="http://pam.sourceforge.net/mod_auth_pam/dist/${PN}-2.0-1.1.1.tar.gz"
 LICENSE="Apache-1.1"
 
-KEYWORDS="x86 ppc ~sparc"
+KEYWORDS="x86 ~ppc ~sparc"
 
 DEPEND="sys-libs/pam
 	=net-www/apache-2*"
+RDEPEND="${DEPEND}"
 IUSE=""
 SLOT="0"
-
+#
 src_unpack() {
 	unpack "${PN}-2.0-1.1.1.tar.gz"
 	cd "${S}"
@@ -31,7 +30,6 @@ src_compile() {
 src_install () {
 	exeinto /usr/lib/apache2-extramodules
 	doexe .libs/mod_auth_pam.so
-	doexe .libs/mod_auth_sys_group.so
 
 	insinto /etc/apache2/conf/modules.d
 	doins ${FILESDIR}/10_mod_auth_pam.conf

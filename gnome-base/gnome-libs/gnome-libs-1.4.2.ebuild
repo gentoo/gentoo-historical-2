@@ -1,52 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-libs/gnome-libs-1.4.2.ebuild,v 1.30 2005/05/29 22:47:14 halcy0n Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-libs/gnome-libs-1.4.2.ebuild,v 1.1 2002/08/18 22:55:49 spider Exp $
 
-inherit eutils libtool multilib
 
+inherit libtool
+
+S=${WORKDIR}/${P}
 DESCRIPTION="GNOME Core Libraries"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.bz2"
 HOMEPAGE="http://www.gnome.org/"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/${PN}/1.4/${P}.tar.bz2"
-
 LICENSE="GPL-2"
+KEYWORDS="x86"
+#  ppc sparc sparc64"
+
+DEPEND=">=media-libs/imlib-1.9.10
+		>=media-sound/esound-0.2.23
+		>=gnome-base/ORBit-0.5.12
+		=x11-libs/gtk+-1.2*
+		<sys-libs/db-2
+		doc? ( app-text/docbook-sgml 
+		       dev-util/gtk-doc )"
+
+RDEPEND="nls? ( >=sys-devel/gettext-0.10.40 >=dev-util/intltool-0.11 )"
+
 SLOT="1"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE="doc nls kde"
 
-RDEPEND=">=media-libs/imlib-1.9.10
-	>=media-sound/esound-0.2.23
-	=gnome-base/orbit-0*
-	=x11-libs/gtk+-1.2*
-	<=sys-libs/db-2
-	doc? ( app-text/docbook-sgml
-		dev-util/gtk-doc )"
-DEPEND="${RDEPEND}
-	nls? ( >=sys-devel/gettext-0.10.40
-		>=dev-util/intltool-0.11 )"
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-m4.patch
-	# Correct problems with documentation. See bug #44439.
-	epatch "${FILESDIR}"/${P}-gtkdoc_fixes.patch
-	# Fix compilation with GCC4 ; bug #94321
-	epatch "${FILESDIR}"/${P}-gcc4.patch
-}
-
-src_compile() {
+src_compile() {                           
 	CFLAGS="$CFLAGS -I/usr/include/db1"
-
-	# On alpha with 3.3.2 compilers we need to restrict options to
-	# make this actually build.  I don't know what the upper limit is
-	# but the following works (and who really cares about
-	# gnome-libs-1.4.x performance)
-	# (12 Nov 2003 agriffis)
-	if use alpha; then
-		# hopefully this overrides whatever is earlier on the line
-		# since working out the replacements would be a pain
-		CFLAGS="${CFLAGS} -O0 -mcpu=ev4"
-	fi
 
 	local myconf
 
@@ -55,11 +35,10 @@ src_compile() {
 	use doc || myconf="${myconf} --disable-gtk-doc"
 
 	# libtoolize
-	elibtoolize
+	elibtoolize 
 
 	./configure --host=${CHOST} \
 		--prefix=/usr \
-		--libdir=/usr/$(get_libdir) \
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--sysconfdir=/etc \
@@ -71,7 +50,7 @@ src_compile() {
 
 	#do the docs (maby add a use variable or put in seperate
 	#ebuild since it is mostly developer docs?)
-	if use doc
+	if [ -n "`use doc`" ]
 	then
 		cd ${S}/devel-docs
 		emake || die
@@ -81,16 +60,27 @@ src_compile() {
 
 src_install() {
 	make prefix=${D}/usr \
-		libdir=${D}/usr/$(get_libdir) \
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
 		sysconfdir=${D}/etc \
 		localstatedir=${D}/var/lib \
-		docdir=${D}/usr/share/doc/${P} \
+		docdir=${D}/usr/share/doc \
 		HTML_DIR=${D}/usr/share/gnome/html \
 		install || die
 
+	#do the docs
+	if [ -n "`use doc`" ]
+	then
+		cd ${S}/devel-docs
+		make prefix=${D}/usr \
+			mandir=${D}/usr/share/man \
+			docdir=${D}/usr/share/doc \
+			install || die
+		cd ${S}
+	fi
+
 	rm ${D}/usr/share/gtkrc*
 
-	dodoc AUTHORS ChangeLog README NEWS HACKING
+	dodoc AUTHORS COPYING* ChangeLog README NEWS HACKING
 }
+

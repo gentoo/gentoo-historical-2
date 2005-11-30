@@ -1,39 +1,6 @@
 # ChangeLog for dev-java/jdbc3-postgresql
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc3-postgresql/ChangeLog,v 1.9 2005/09/11 10:40:05 axxo Exp $
-
-*jdbc3-postgresql-8.0_p312 (11 Sep 2005)
-
-  11 Sep 2005; Thomas Matthijs <axxo@gentoo.org>
-  +jdbc3-postgresql-8.0_p312.ebuild:
-  version bump
-
-*jdbc3-postgresql-8.0_p311 (12 Apr 2005)
-
-  12 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  +jdbc3-postgresql-8.0_p311.ebuild:
-  new upstream version, fixes #88404. introduced support for the doc, examples,
-  jikes and the source useflag.
-
-*jdbc3-postgresql-7.4.5 (26 Sep 2004)
-
-  26 Sep 2004; Thomas Matthijs <axxo@gentoo.org>
-  +jdbc3-postgresql-7.4.5.ebuild:
-  Now builds from source, Ebuild submitted by Hendrik Sticher
-  <hendrik_sticher@gmx.de> Thanks, bug 63251
-
-  16 Aug 2004; <SeJo@gentoo.org> jdbc3-postgresql-7.3.ebuild:
-  7.3 stable added 7.4
-
-  13 Jul 2004; <SeJo@gentoo.org> jdbc3-postgresql-7.3.ebuild:
-  added ~ppc keyword
-
-  25 Feb 2004; Dylan Carlson <absinthe@gentoo.org>
-  jdbc3-postgresql-7.3.ebuild:
-  added amd64 keyword.
-
-  17 Jan 2004; Adrian Almenar <strider@gentoo.org> jdbc3-postgresql-7.3.ebuild:
-  Removed arch where >=jdk-1.4 its not available.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc3-postgresql/ChangeLog,v 1.1 2003/05/14 17:12:25 absinthe Exp $
 
 *jdbc3-postgresql-7.3 (14 May 2003)
 

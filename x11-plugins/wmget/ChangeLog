@@ -1,37 +1,6 @@
 # ChangeLog for x11-plugins/wmget
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmget/ChangeLog,v 1.10 2004/10/19 08:55:59 absinthe Exp $
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> wmget-0.6.0.ebuild:
-  Stable on amd64.
-
-  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmget-0.6.0.ebuild:
-  Stable for x86.
-
-  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmget-0.6.0.ebuild:
-  Masked wmget-0.6.0.ebuild stable for ppc
-
-*wmget-0.6.0 (22 Jul 2004)
-
-  22 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmget-0.6.0.ebuild:
-  Version bump.
-  wmget-0.5.0.ebuild:
-  Stable for x86.
-  wmget-0.4.4.ebuild:
-  Remove old ebuilds.
-
-  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> wmget-0.4.4.ebuild,
-  wmget-0.5.0.ebuild:
-  Adding IUSE=
-
-  19 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> wmget-0.4.4.ebuild,
-  wmget-0.5.0.ebuild:
-  Inherit eutils.
-
-*wmget-0.5.0 (09 Mar 2003)
-
-  09 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Version bump.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmget/ChangeLog,v 1.1 2002/10/03 15:58:00 raker Exp $
 
 *wmget-0.4.4 (04 Oct 2002)
 

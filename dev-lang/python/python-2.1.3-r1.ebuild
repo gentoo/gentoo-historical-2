@@ -1,32 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.1.3-r1.ebuild,v 1.22 2005/05/28 00:55:06 kloeri Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.1.3-r1.ebuild,v 1.1 2002/07/03 03:24:19 jnelson Exp $
 
-inherit versionator
-
-PYVER_MAJOR=$(get_major_version)
-PYVER_MINOR=$(get_version_component_range 2)
+PYVER_MAJOR="`echo ${PV} | cut -d '.' -f 1`"
+PYVER_MINOR="`echo ${PV} | cut -d '.' -f 2`"
 PYVER="${PYVER_MAJOR}.${PYVER_MINOR}"
 S=${WORKDIR}/Python-${PV}
-
 DESCRIPTION="A really great language"
-HOMEPAGE="http://www.python.org"
 SRC_URI="http://www.python.org/ftp/python/${PV}/Python-${PV}.tgz"
 
+HOMEPAGE="http://www.python.org"
 LICENSE="PSF-2.1.1"
-SLOT="2.1"
-KEYWORDS="x86 sparc alpha ia64 ppc"
-IUSE="readline tcltk berkdb"
 
-DEPEND=">=sys-libs/zlib-1.1.3
+DEPEND="virtual/glibc >=sys-libs/zlib-1.1.3
 	readline? ( >=sys-libs/readline-4.1 >=sys-libs/ncurses-5.2 )
 	berkdb? ( >=sys-libs/db-3 )
 	tcltk? ( >=dev-lang/tk-8.0 )"
+RDEPEND="$DEPEND"
 
 # The dev-python/python-fchksum RDEPEND is needed to that this python provides
 # the functionality expected from previous pythons.
 
-PROVIDE="virtual/python"
+PROVIDE="virtual/python-2.1"
+SLOT="2.1"
 
 src_compile() {
 	export OPT="$CFLAGS"
@@ -35,10 +31,10 @@ src_compile() {
 	t=${S}/Makefile.pre.in
 	cp $t $t.orig || die
 	sed 's:install-platlib.*:& --install-scripts=$(BINDIR):' $t.orig > $t
-
+        
 	local myopts
 	#if we are creating a new build image, we remove the dependency on g++
-
+	
 	econf --with-fpectl \
 		--with-threads \
 		--infodir='${prefix}'/share/info \
@@ -67,7 +63,7 @@ src_install() {
 	# If USE tcltk lets install idle
 	# Need to script the python version in the path
 	if use tcltk; then
-		dodir /usr/lib/python${PYVER}/tools
+		mkdir "${D}/usr/lib/python${PYVER}/tools"
 		mv "${S}/Tools/idle" "${D}/usr/lib/python${PYVER}/tools/"
 		dosym /usr/lib/python${PYVER}/tools/idle/idle.py /usr/bin/idle-${PV}.py
 	fi

@@ -1,25 +1,6 @@
-# ChangeLog for sci-biology/tree-puzzle
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/tree-puzzle/ChangeLog,v 1.8 2005/02/08 01:39:30 j4rg0n Exp $
-
-  07 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> tree-puzzle-5.1.ebuild,
-  tree-puzzle-5.2.ebuild:
-  Stripped -fast from CLAGS as it causes *too* accurate floating point arithmetic
-
-  03 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> tree-puzzle-5.2.ebuild:
-  Unstable ppc-macos
-
-  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org> tree-puzzle-5.2.ebuild:
-  Ebuild cleanup.
-
-  18 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> tree-puzzle-5.2.ebuild:
-  added ~amd64 to KEYWORDS. fixes bug #78237
-
-  14 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> tree-puzzle-5.1.ebuild:
-  Stable ppc-macos.
-
-  02 Jan 2005; Olivier Fisette <ribosome@gentoo.org> tree-puzzle-5.2.ebuild:
-  Use the toolchain-funcs rather than the gcc eclass.
+# ChangeLog for app-sci/tree-puzzle
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/tree-puzzle/ChangeLog,v 1.1 2004/12/23 18:14:07 ribosome Exp $
 
 *tree-puzzle-5.2 (23 Dec 2004)
 

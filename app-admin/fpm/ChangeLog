@@ -1,34 +1,6 @@
 # ChangeLog for app-admin/fpm
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fpm/ChangeLog,v 1.10 2005/01/01 10:59:43 eradicator Exp $
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> fpm-0.59.ebuild,
-  fpm-0.60.ebuild:
-  Masked fpm-0.60.ebuild stable for ppc
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> fpm-0.59.ebuild:
-  Masked fpm-0.59.ebuild stable for ppc
-
-  23 Jul 2004; Travis Tilley <lv@gentoo.org> fpm-0.60.ebuild:
-  stable on amd64
-
-  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fpm-0.60.ebuild:
-  Removed S=.
-
-  06 Mar 2004; Chuck Short <zul@gentoo.org> fpm-0.60.ebuild:
-  Marked stable for x86.
-
-*fpm-0.60 (29 Dec 2003)
-
-  29 Dec 2003; Chuck Short <zul@gentoo.org> fpm-0.60.ebuild:
-  Version bump.
-
-  29 Dec 2003; Chuck Short <zul@gentoo.org> fpm-0.59.ebuild:
-  Marked stable on x86.
-
-  08 Dec 2003; Chuck Short <zul@gentoo.org> fpm-0.59.ebuild:
-  Fixes cvs issue. Fixes #35207.
-  Ebuild improvements.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fpm/ChangeLog,v 1.1 2003/12/06 00:38:03 zul Exp $
 
 *fpm-0.59 (05 Dec 2003)
 

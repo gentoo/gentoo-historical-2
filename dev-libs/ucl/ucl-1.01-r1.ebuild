@@ -1,25 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ucl/ucl-1.01-r1.ebuild,v 1.14 2004/07/14 15:12:50 agriffis Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ucl/ucl-1.01-r1.ebuild,v 1.1 2003/03/28 19:24:43 gmsoft Exp $
 
 DESCRIPTION="UCL: The UCL Compression Library"
-HOMEPAGE="http://www.oberhumer.com/opensource/ucl/"
 SRC_URI="http://www.oberhumer.com/opensource/ucl/download/ucl-1.01.tar.gz"
+HOMEPAGE="http://www.oberhumer.com/opensource/ucl/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ppc64"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~sparc ~hppa"
 
 src_compile() {
-	# Doing this b/c UCL will be included in the kernel
-	# at some point, and will be fixed properly then
-	# besides, this is lu_zero's build
-	append-flags -fPIC
-
-	econf || die
+	econf
 	emake || die
 }
 

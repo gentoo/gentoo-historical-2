@@ -1,19 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/autotrace/autotrace-0.31.1.ebuild,v 1.8 2005/02/18 17:34:39 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/autotrace/autotrace-0.31.1.ebuild,v 1.1 2003/03/09 20:17:42 aliz Exp $
 
-DESCRIPTION="Converts Bitmaps to vector-graphics"
+DESCRIPTION="Converts Bitmaps to vector-grahics"
 SRC_URI="mirror://sourceforge/autotrace/${P}.tar.gz"
-RESTRICT="nomirror"
 HOMEPAGE="http://autotrace.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
 DEPEND=">=x11-libs/gtkDPS-0.3.3
-	media-libs/libexif
 	>=x11-libs/gtk+-1.2.10-r4"
 
 src_compile() {
@@ -23,6 +20,6 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-
-	dodoc AUTHORS COPYING ChangeLog NEWS README
+	
+	dodoc AUTHORS COPYING ChangeLog NEWS README 
 }

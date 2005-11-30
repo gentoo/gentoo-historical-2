@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/eblook/eblook-1.5.1.ebuild,v 1.10 2005/01/01 12:51:03 eradicator Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/eblook/eblook-1.5.1.ebuild,v 1.1 2003/10/27 12:59:07 usata Exp $
 
 IUSE=""
 
@@ -12,27 +10,21 @@ SRC_URI="http://openlab.ring.gr.jp/edict/eblook/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
-RDEPEND="!>=dev-libs/eb-4.1
-	>=dev-libs/eb-3.3.4"
-DEPEND="${RDEPEND}
-	>=sys-devel/autoconf-2.53"
+DEPEND=">=dev-libs/eb-3.3.4"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-eb4-gentoo.diff
-}
+S=${WORKDIR}/${P}
 
 src_compile() {
-	autoreconf || die
 
 	econf --with-eb-conf=/etc/eb.conf || die
 	emake || die
 }
 
-src_install() {
-	make DESTDIR=${D} install || die
+src_install () {
+
+	einstall || die
+
 	dodoc AUTHORS ChangeLog INSTALL NEWS README VERSION
 }

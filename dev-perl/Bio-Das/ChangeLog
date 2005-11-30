@@ -1,35 +1,6 @@
 # ChangeLog for dev-perl/Bio-Das
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Bio-Das/ChangeLog,v 1.10 2005/11/09 11:59:05 chriswhite Exp $
-
-*Bio-Das-1.02 (09 Nov 2005)
-
-  09 Nov 2005; Chris White <chriswhite@gentoo.org> -Bio-Das-1.00.ebuild,
-  +Bio-Das-1.02.ebuild:
-  Version bump to 1.02.  Removed old 1.00 ebuild.  Helps solve bug #111933.
-
-  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
-  Removed Stephen Diener (MIA) as maintainer.
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> Bio-Das-1.00.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
-
-  24 Apr 2005; Michael Cummings <mcummings@gentoo.org> -Bio-Das-0.93.ebuild:
-  cleaning
-
-  30 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> Bio-Das-1.00.ebuild:
-  Keyworded ~sparc
-
-*Bio-Das-1.00 (23 Mar 2005)
-
-  23 Mar 2005; Michael Cummings <mcummings@gentoo.org> +Bio-Das-1.00.ebuild:
-  new version on cpan; now deps bioperl
-
-  03 Aug 2004; David Holm <dholm@gentoo.org> Bio-Das-0.93.ebuild:
-  Added to ~ppc.
-
-  19 Mar 2004; Eric Sammer <esammer@gentoo.org> Bio-Das-0.93.ebuild:
-  Fixed category-less dependencies as per bug #45110
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Bio-Das/ChangeLog,v 1.1 2004/01/09 21:27:06 sediener Exp $
 
 *Bio-Das-0.93 (09 Jan 2004)
 

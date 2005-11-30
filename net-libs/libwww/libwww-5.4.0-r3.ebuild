@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libwww/libwww-5.4.0-r3.ebuild,v 1.3 2005/09/30 22:47:54 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libwww/libwww-5.4.0-r3.ebuild,v 1.1 2005/05/17 09:18:52 robbat2 Exp $
 
-inherit eutils multilib
+inherit eutils
 
 MY_P=w3c-${P}
 DESCRIPTION="A general-purpose client side WEB API"
@@ -12,7 +12,7 @@ SRC_URI="http://www.w3.org/Library/Distribution/${MY_P}.tgz
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sparc x86"
 IUSE="ssl mysql"
 
 RDEPEND="dev-lang/perl
@@ -48,20 +48,15 @@ src_unpack() {
 }
 
 src_compile() {
-	if use mysql ; then
-		myconf="--with-mysql=/usr/$(get_libdir)/mysql/libmysqlclient.a"
-	else
-		myconf="--without-mysql"
-	fi
-
 	econf \
 		--enable-shared \
 		--enable-static \
 		--with-zlib \
 		--with-md5 \
 		--with-expat \
+		$(use_with mysql) \
 		$(use_with ssl) \
-		${myconf} || die
+		|| die
 
 	emake check-am || die
 	use ppc-macos && echo "#undef HAVE_APPKIT_APPKIT_H" >> wwwconf.h

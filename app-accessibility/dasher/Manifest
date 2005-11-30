@@ -1,22 +1,8 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 76d666e6399f7768a17fe572e9a3096e metadata.xml 718
-MD5 069505ea9ef3b1c6713048f6a9df9d8d ChangeLog 6090
-MD5 993cd40f1be659a5450be19014171459 dasher-3.2.17.ebuild 1738
-MD5 b36aedb6555c20ac2d20f53dbeb30989 dasher-3.2.16.ebuild 1738
-MD5 adf4faf2c799e5174002772dc078f4e4 dasher-3.2.18.ebuild 1631
-MD5 266e95dffa745c00a8fa6f0d5c4ba811 dasher-3.2.15.ebuild 1512
-MD5 ec3cb701a9f3f224e16cc88cb09f810b files/digest-dasher-3.2.18 67
-MD5 8f98c5422486b58fc0d6850e20582140 files/digest-dasher-3.2.16 67
-MD5 5b4b3e17b421919e17bc182404ffa36c files/digest-dasher-3.2.15 67
-MD5 9fcdb2723451b2020f4736773717c62b files/digest-dasher-3.2.17 67
-MD5 497bed8a975cd29705cb0e9b41f45d76 files/dasher-3.2.11-xtst_fix.patch 872
-MD5 29b515c44bcfdd79db45f38f65879994 files/dasher-3.2.15-buildwindowtree.patch 499
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDSoyNFdQwWVoAgN4RAjGbAJ9KrLxy2a0izF94k04eVHHTBxITmwCgy+/N
-KofwDGCrlymyvt3gsGJx8PM=
-=VzRO
------END PGP SIGNATURE-----
+MD5 1fadf41dd5a7a11741089129c6cf36d6 dasher-3.2.4.ebuild 1187
+MD5 e205029e3f8e59acb738cef199c996b7 dasher-3.0.0.ebuild 697
+MD5 c9fef3a36dd194027b62fefc16dd24af dasher-3.2.1.ebuild 1381
+MD5 f6bfad91dce9a71270a7cf12a9a7ba7d ChangeLog 946
+MD5 5253659a4a0e45baa9f1788dcb705895 metadata.xml 172
+MD5 9f99ca4385c9221499f4ae4fc58b5098 files/digest-dasher-3.0.0 65
+MD5 285b3f363d0a78e7e23d0e1dd0fd8bc4 files/digest-dasher-3.2.1 65
+MD5 84d6408e59cd87707beebde6b25e4c1f files/digest-dasher-3.2.4 66

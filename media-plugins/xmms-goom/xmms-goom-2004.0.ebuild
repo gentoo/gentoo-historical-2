@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-goom/xmms-goom-2004.0.ebuild,v 1.3 2005/10/31 02:38:02 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-goom/xmms-goom-2004.0.ebuild,v 1.1 2005/05/28 23:12:25 luckyduck Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${MY_PN}/${MY_PN}-${MY_PV}-src.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~amd64 ~ppc64"
 IUSE=""
 
 DEPEND="media-sound/xmms
@@ -28,7 +28,7 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc README AUTHORS NEWS KNOWNBUGS ChangeLog
+	dodoc INSTALL README AUTHORS NEWS KNOWNBUGS ChangeLog
 }
 
 pkg_postinst() {

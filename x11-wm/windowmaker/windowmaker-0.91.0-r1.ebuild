@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/windowmaker-0.91.0-r1.ebuild,v 1.16 2005/07/12 04:21:11 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/windowmaker-0.91.0-r1.ebuild,v 1.1 2004/11/12 03:58:52 fafhrd Exp $
 
 inherit eutils gnustep-funcs
 
@@ -11,31 +11,24 @@ SRC_URI="ftp://ftp.windowmaker.org/pub/source/release/${P/windowm/WindowM}.tar.g
 	http://www.windowmaker.org/pub/source/release/WindowMaker-extra-0.1.tar.gz"
 HOMEPAGE="http://www.windowmaker.org/"
 
-IUSE="gif gnustep jpeg nls png tiff modelock xinerama"
+IUSE="gif gnustep jpeg nls png tiff modelock vdesktop xinerama"
 DEPEND="x11-base/xorg-x11
 	media-libs/fontconfig
 	gif? ( || ( >=media-libs/libungif-4.1.0
-			>=media-libs/giflib-4.1.0-r3 ) )
+			>=media-libs/giflib-4.1.0-r3))
 	png? ( >=media-libs/libpng-1.2.1 )
 	jpeg? ( >=media-libs/jpeg-6b-r2 )
 	tiff? ( >=media-libs/tiff-3.6.1-r2 )"
-RDEPEND="${DEPEND}
-	nls? ( >=sys-devel/gettext-0.10.39 )
+RDEPEND="nls? ( >=sys-devel/gettext-0.10.39 )
 	gnustep? ( gnustep-base/gnustep-env )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 mips ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 
 if use gnustep; then
 	egnustep_install_domain "System"
 fi
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PV}/menufocus.patch || die "menu focus patch failed"
-}
 
 src_compile() {
 	local myconf
@@ -46,7 +39,7 @@ src_compile() {
 	myconf="--enable-xpm $(use_enable png) $(use_enable jpeg) $(use_enable gif) $(use_enable tiff)"
 
 	# non required X capabilities
-	myconf="${myconf} $(use_enable modelock) $(use_enable xinerama)"
+	myconf="${myconf} $(use_enable modelock) $(use_enable vdesktop) $(use_enable xinerama)"
 
 	# integrate with GNUstep environment, or not
 	if use gnustep ; then
@@ -138,9 +131,6 @@ src_install() {
 	echo "/usr/bin/wmaker" >> wmaker
 	exeinto /etc/X11/Sessions/
 	doexe wmaker
-
-	insinto /etc/X11/dm/Sessions
-	doins ${FILESDIR}/wmaker.desktop
 }
 
 pkg_postinst() {
@@ -168,11 +158,18 @@ pkg_postinst() {
 		ewarn ""
 	else
 		einfo "Even though you are not using the GNUstep environment, wmaker.inst will"
-		einfo "  create a 'GNUstep' directory in your home -- it uses this directory"
+		einfo "  create a 'GNUstep' directory in your home -- it uses this dirctory"
 		einfo "  to store your WindowMaker configuration files."
 		einfo "WPrefs.app can be launched at /usr/lib/GNUstep/Applications/WPrefs.app/WPrefs"
 		einfo "  or by simply **clicking on it in the WindowMaker default dock.**"
 		einfo ""
+	fi
+
+	if use vdesktop ; then
+		ewarn "Note that enabling support for NETWM virtual desktops will make"
+		ewarn "  menus that should be autoscrolling seem to not scroll, as they"
+		ewarn "  are not off the screen, but rather in another virtual desktop."
+		ewarn ""
 	fi
 
 	ewarn "This package provides libwraster.so.3.  Packages depending on"

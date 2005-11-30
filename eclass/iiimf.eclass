@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/iiimf.eclass,v 1.12 2005/07/06 20:23:20 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/iiimf.eclass,v 1.1 2003/09/13 23:53:37 usata Exp $
 #
 # Author: Mamoru KOMACHI <usata@gentoo.org>
 #
@@ -8,40 +8,35 @@
 # libraries, servers, clients and modules within the Portage system.
 #
 
+ECLASS=iiimf
+INHERITED="$INHERITED $ECLASS"
 EXPORT_FUNCTIONS src_compile src_install
 
-IMSDK_PV="r${PV//./_}"
-MY_PV="${IMSDK_PV/_pre/-svn}"
-MY_PV="${MY_PV/_p/-svn}"
-IMSDK_P="im-sdk-src-${MY_PV}"
-IMSDK="${IMSDK_P/-src/}"
+IMSDK_PV="r${PV/./_}"
+IMSDK_PN="im-sdk"
+IMSDK_P="${IMSDK_PN}.${IMSDK_PV}"
+IMSDK="${IMSDK_P//./-}"
 
 DESCRIPTION="Based on the $ECLASS eclass"
 HOMEPAGE="http://www.openi18n.org/subgroups/im/IIIMF/"
-SRC_URI="mirror://gentoo/${IMSDK_P}.tgz
-	http://dev.gentoo.org/~usata/distfiles/${IMSDK_P}.tgz"
+SRC_URI="http://www.openi18n.org/download/docs/im-sdk/${IMSDK_P}.tar.bz2"
 
-LICENSE="MIT X11"
+LICENSE="MIT X"
+KEYWORDS=""		# set this!
 SLOT="0"
-KEYWORDS="~x86"
+
 IUSE="debug"
 
-DEPEND="virtual/libc"
+newdepend "virtual/glibc"
 
 S="${WORKDIR}/${IMSDK}/${PN}"
 
 iiimf_src_compile() {
 
-	if [ "${PV:0:2}" -eq 12 ] ; then
-		libtoolize --copy --force
-		./autogen.sh
-	fi
-
 	econf --enable-optimize \
-		--localstatedir=/var \
-		$(use_enable debug) || die
+		`use_enable debug` || die
 	# emake doesn't work on some libraries
-	emake -j1 || die
+	make || die
 }
 
 iiimf_src_install() {

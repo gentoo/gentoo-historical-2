@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/rrdtool-1.2.6.ebuild,v 1.8 2005/06/25 23:51:18 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/rrdtool-1.2.6.ebuild,v 1.1 2005/05/10 13:39:40 vanquirius Exp $
 
 inherit perl-module flag-o-matic gnuconfig eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://people.ee.ethz.ch/~oetiker/webtools/${PN}/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 hppa ~ia64 ppc sparc x86"
+KEYWORDS="~x86 ~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc"
 IUSE="perl tcltk"
 
 DEPEND="perl? ( dev-lang/perl )
@@ -30,10 +30,8 @@ src_unpack() {
 	cd ${S}
 	sed -i -e 's:<rrd_\(.*\)>:"../../src/rrd_\1":g' \
 		bindings/tcl/tclrrd.c || die "sed failed"
-	sed -i -e 's:-lrrd_private:-ltcl -lrrd:' \
+	sed -i -e 's:-lrrd_private::' \
 		bindings/tcl/Makefile.* || die "sed failed"
-	sed -i -e 's:^\(LIBDIRS\s*= .*-L\)\.\./src/.libs:\1../../src/.libs/:' \
-		bindings/tcl/Makefile.in || die "sed failed"
 }
 
 pkg_setup() {

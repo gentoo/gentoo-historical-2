@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dansguardian/dansguardian-2.8.0.4.ebuild,v 1.4 2005/10/04 20:48:47 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dansguardian/dansguardian-2.8.0.4.ebuild,v 1.1 2005/04/22 19:15:11 mrness Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://mirror.dansguardian.org/downloads/2/Stable/${P}.source.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="x86 ~sparc ~ppc ppc64 ~amd64"
 IUSE=""
 DEPEND="!net-proxy/dansguardian-dgav
 	virtual/libc"
@@ -44,5 +44,5 @@ src_install() {
 	#Fixing location of initscript
 	sed -i -e 's/rc.d\///' ${D}/etc/dansguardian/logrotation
 
-	dodoc README
+	dodoc INSTALL README LICENSE
 }

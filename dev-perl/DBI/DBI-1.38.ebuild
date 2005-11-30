@@ -1,18 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBI/DBI-1.38.ebuild,v 1.17 2005/01/24 23:59:25 mcummings Exp $
-
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBI/DBI-1.38.ebuild,v 1.1 2003/08/26 17:28:07 mcummings Exp $
 inherit perl-module
 
+S=${WORKDIR}/${P}
 DESCRIPTION="The Perl DBI Module"
-HOMEPAGE="http://www.cpan.org/modules/by-module/DBI/${P}.readme"
 SRC_URI="http://www.cpan.org/modules/by-module/DBI/${P}.tar.gz"
+HOMEPAGE="http://www.cpan.org/modules/by-module/DBI/${P}.readme"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="x86 ~ppc sparc mips alpha arm hppa amd64 ia64 s390 ppc64"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="~x86 ~amd64 ~ppc ~alpha ~sparc ~hppa ~arm"
 
-DEPEND=">=dev-perl/PlRPC-0.2"
+DEPEND="${DEPEND}
+	>=dev-perl/PlRPC-0.2"
 
 mydoc="ToDo"

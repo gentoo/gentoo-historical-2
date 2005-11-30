@@ -1,18 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 1f9afa2fd87dff2900f1625df0ab10a6 ChangeLog 3390
-MD5 47039ad327d653fb1c45d3dd840521bf jrockit-jdk-bin-1.5.0.03.ebuild 1743
-MD5 3e4decda624f04dea83a6586cf56265c jrockit-jdk-bin-1.4.2.05.ebuild 1813
-MD5 44f00b9f278d0941a4820ce56f0fefe1 metadata.xml 554
-MD5 c62764af82c4e66398b687fbce370879 files/digest-jrockit-jdk-bin-1.4.2.05 165
-MD5 0bcb602c489408770b8689a3b7541b18 files/jrockit-jdk-bin-1.4.2.05 282
-MD5 d65eb1cd5fac1963ac29f72ec296ae96 files/jrockit-jdk-bin-1.5.0.03 292
-MD5 b83bb4342a795e9aec196c175f96d863 files/digest-jrockit-jdk-bin-1.5.0.03 262
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDGEVxj5H05b2HAEkRAlVkAJ4mUbrvTKmnVuoZst8Ks4SpbXiXvACfeUKX
-UQ/VeVEvc5l5Q/C1p7vFoRk=
-=JBea
------END PGP SIGNATURE-----
+MD5 091c7613672cd87ed450dd1e590289bf ChangeLog 938
+MD5 66597c2c34458f5c93d50f61868af389 jrockit-sdk-bin-1.4.2.04.ebuild 1442
+MD5 6fcc930e7c2ac7225a7c57c32ea7510d files/digest-jrockit-sdk-bin-1.4.2.04 165

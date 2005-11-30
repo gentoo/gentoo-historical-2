@@ -1,15 +1,6 @@
 # ChangeLog for app-doc/jargon
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/jargon/ChangeLog,v 1.6 2005/06/27 19:40:48 mr_bones_ Exp $
-
-  27 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> jargon-4.4.7.ebuild:
-  fix up css path - patch from parafin-spobs@yandex.ru via bug #97134
-
-  23 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> jargon-4.4.7.ebuild:
-  Don't install twice the graphics (bug #44336)
-
-  22 Feb 2004; Grant Goodyear <g2boojum@gentoo.org> jargon-4.4.7.ebuild:
-  Removing spurious x86obsd keyword
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-doc/jargon/ChangeLog,v 1.1 2004/02/06 02:05:39 mr_bones_ Exp $
 
 *jargon-4.4.7 (05 Feb 2004)
 

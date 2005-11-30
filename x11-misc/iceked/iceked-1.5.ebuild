@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/iceked/iceked-1.5.ebuild,v 1.5 2005/07/07 05:20:29 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/iceked/iceked-1.5.ebuild,v 1.1 2004/08/27 06:52:42 phosphan Exp $
 
 DESCRIPTION="IceWM keys editor"
 SRC_URI="mirror://sourceforge/icecc/${P}.tar.bz2"
 HOMEPAGE="http://icecc.sourceforge.net/"
 LICENSE="GPL-2"
 IUSE=""
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86 ~ppc"
 
-DEPEND="=x11-libs/qt-3*"
+DEPEND=">=x11-libs/qt-3.0.0"
 
 SLOT="0"
 src_unpack() {
@@ -21,7 +21,7 @@ src_unpack() {
 
 src_compile () {
 	addwrite ${QTDIR}/etc/settings
-	${QTDIR}/bin/qmake ${PN}.pro
+	qmake ${PN}.pro
 	emake || die
 }
 

@@ -1,26 +1,26 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/sr/sr-2.3.2.ebuild,v 1.8 2004/07/14 13:53:52 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/sr/sr-2.3.2.ebuild,v 1.1 2002/11/08 23:05:18 george Exp $
 
-inherit eutils
+IUSE=""
 
-DESCRIPTION="SR (Synchronizing Resources) is a language for writing concurrent programs"
+DESCRIPTION="SR (Synchronizing Resources) is a language for writing concurrent programs."
 HOMEPAGE="http://www.cs.arizona.edu/sr"
+
 SRC_URI="ftp://ftp.cs.arizona.edu/sr/sr.tar.Z"
+
+S=${WORKDIR}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
-RDEPEND="virtual/ssh"
-
-S=${WORKDIR}
+DEPEND="net-misc/openssh"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}.patch
+	patch -p1 < ${FILESDIR}/sr-2.3.2.patch
 }
 
 src_compile() {
@@ -52,7 +52,23 @@ src_install() {
 	doins preproc/*2sr.h
 	doins sr-mode.el
 
-	doman man/*.[135]
+	# man pages
+	insinto /usr
+	doman man/sr.1
+	doman man/srl.1
+	doman man/srm.1
+	doman man/srprof.1
+	doman man/srtex.1
+	doman man/srlatex.1
+	doman man/srgrind.1
+	doman man/ccr2sr.1
+	doman man/m2sr.1
+	doman man/csp2sr.1
+	doman man/sranimator.3
+	doman man/srgetopt.3
+	doman man/srwin.3
+	doman man/srmap.5
+	doman man/srtrace.5
 }
 
 pkg_postinst() {

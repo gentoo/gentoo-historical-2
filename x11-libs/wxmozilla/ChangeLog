@@ -1,25 +1,6 @@
 # ChangeLog for x11-libs/wxmozilla
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxmozilla/ChangeLog,v 1.5 2005/06/04 13:43:22 fserb Exp $
-
-*wxmozilla-0.5.4 (04 Jun 2005)
-
-  04 Jun 2005; Fernando Serboncini <fserb@gentoo.org>
-  +files/wxmozilla-wxpy-2.4.patch, wxmozilla-0.5.3.ebuild,
-  +wxmozilla-0.5.4.ebuild:
-  Version bump.
-  Added wxGTK 2.4 dependency on 0.5.3
-  Applied multiversion patch for 0.5.4
-  Closes #92366
-
-  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> wxmozilla-0.5.3.ebuild:
-  change dep from net-www/mozilla to www-client/mozilla
-
-  16 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> wxmozilla-0.5.3.ebuild:
-  Fix doc installation.
-
-  12 Dec 2004; Sven Wegener <swegener@gentoo.org> wxmozilla-0.5.3.ebuild:
-  Fixed invalid atoms in *DEPEND.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/wxmozilla/ChangeLog,v 1.1 2004/12/11 17:32:21 kloeri Exp $
 
 *wxmozilla-0.5.3 (11 Dec 2004)
 

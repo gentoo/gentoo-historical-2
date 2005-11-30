@@ -1,6 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/vlnx/vlnx-416e.ebuild,v 1.5 2005/01/01 11:39:44 eradicator Exp $
+# Script Revised by Parag Mehta <pm@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/app-antivirus/vlnx/vlnx-416e.ebuild,v 1.1 2004/05/30 00:28:39 robbat2 Exp $
 
 DAT_VER=4228
 
@@ -14,7 +15,6 @@ HOMEPAGE="http://www.mcafeeb2b.com/"
 SLOT="0"
 LICENSE="VirusScan"
 KEYWORDS="-* x86"
-IUSE=""
 RESTRICT="nostrip"
 
 DEPEND=""

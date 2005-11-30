@@ -1,27 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irc-client/irc-client-2.10.3_p3.ebuild,v 1.9 2005/04/24 13:11:27 hansmi Exp $
-
-MY_P=irc${PV/_/}
-
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irc-client/irc-client-2.10.3_p3.ebuild,v 1.1 2003/09/10 23:56:26 zul Exp $
+			   
+MY_P=irc
+MY_PV=2.10.3p3
 DESCRIPTION="A simplistic RFC compliant IRC client"
 HOMEPAGE="http://www.irc.org"
-SRC_URI="ftp://ftp.irc.org/irc/server/${MY_P}.tgz"
+SRC_URI="ftp://ftp.irc.org/irc/server/${MY_P}${MY_PV}.tgz
+		 ftp://ftp.funet.fi/pub/unix/irc/server/${MY_P}${MY_PV}.tgz"
 LICENSE="GPL-1"
 SLOT="0"
 
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86"
 IUSE="ipv6"
 
-DEPEND="virtual/libc
-	sys-libs/ncurses
-	sys-libs/zlib"
+DEPEND="virtual/glibc
+		sys-libs/ncurses
+		sys-libs/zlib"
 
-S=${WORKDIR}/${MY_P}
+RDEPEND="${DEPEND}"
+
+S=${WORKDIR}/${MY_P}${MY_PV}
 
 src_compile () {
-	use ipv6 && myconf="--with-ip6" || myconf="--without-ip6"
 
+	use ipv6 && myconf="--with-ip6" || myconf="--without-ip6"
+	
 	./configure \
 		--prefix=/usr \
 		--host=${CHOST} \
@@ -30,13 +34,14 @@ src_compile () {
 		--localstatedir=/var/run/ircd \
 		$myconf || die "Configure failed"
 
-	# irc doesnt recognize the proper CHOST properly in some cases.
+	# irc doesnt recognize the proper CHOST properly in some cases. 
 	# Cheap hack to get it working properly. - zul
-	cd `support/config.guess`
+	cd `support/config.guess` 
 	emake client || die "client build failed"
 }
 
 src_install() {
+
 	# See note above.
 	cd `support/config.guess`
 	make \

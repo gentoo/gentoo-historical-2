@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/viewer/viewer-0.7.3.ebuild,v 1.4 2005/07/25 11:05:42 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/viewer/viewer-0.7.3.ebuild,v 1.1 2003/10/20 09:50:15 brandy Exp $
 
-DESCRIPTION="A stereo pair image viewer (supports ppm's only)"
+DESCRIPTION="A stero pair image viewer (supports ppm's only)"
 HOMEPAGE="http://www-users.cs.umn.edu/~wburdick/geowall/viewer.html"
 SRC_URI=ftp://ftp.cs.umn.edu/dept/users/wburdick/geowall/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND="virtual/opengl"
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/aunit/aunit-1.01.ebuild,v 1.4 2005/01/01 17:23:35 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/aunit/aunit-1.01.ebuild,v 1.1 2003/10/28 12:12:36 dholm Exp $
 
 IUSE=""
 
@@ -32,8 +32,8 @@ src_install () {
 
 	#set up environment
 	dodir /etc/env.d
-	echo "ADA_INCLUDE_PATH=/usr/lib/ada/adainclude/${PN}" \
-		> ${D}/etc/env.d/55aunit
+	echo "ADA_INCLUDE_PATH=\${ADA_INCLUDE_PATH}:/usr/lib/ada/adainclude/${PN}" \
+		>> ${D}/etc/env.d/55aunit
 }
 
 pkg_postinst(){

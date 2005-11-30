@@ -1,9 +1,8 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
-	before netmount
 	use net
 }
 
@@ -49,10 +48,4 @@ stop() {
 	ebegin "Stopping racoon"
 	kill `cat /var/run/racoon.pid`
 	eend $?
-	if [ -n "${RACOON_RESET_TABLES}" ]; then
-		ebegin "Flushing policy entries"
-		/usr/sbin/setkey -F
-		/usr/sbin/setkey -FP
-		eend $?
-	fi
 }

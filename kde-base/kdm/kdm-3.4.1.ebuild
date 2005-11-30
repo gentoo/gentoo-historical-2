@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-3.4.1.ebuild,v 1.7 2005/07/08 02:57:46 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdm/kdm-3.4.1.ebuild,v 1.1 2005/05/25 21:23:06 danarmak Exp $
 
 KMNAME=kdebase
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE login manager, similar to xdm and gdm"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="pam"
 
 KMEXTRA="kdmlib/"
@@ -16,7 +16,7 @@ KMEXTRACTONLY="libkonq/konq_defaults.h
 	    kioslave/thumbnail/configure.in.in" # for the HAVE_LIBART test
 KMCOMPILEONLY="kcontrol/background"
 DEPEND="$DEPEND
-	pam? ( kde-base/kdebase-pam )
+	pam? ( sys-libs/pam ~kde-base/kdebase-pam-4 )
 	$(deprange $PV $MAXKDEVER kde-base/kcontrol)"
 	# Requires the desktop background settings and kdm modules,
 	# so until we separate the kcontrol modules into separate ebuilds :-),

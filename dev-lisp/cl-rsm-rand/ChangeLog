@@ -1,15 +1,6 @@
 # ChangeLog for dev-lisp/cl-rsm-rand
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rsm-rand/ChangeLog,v 1.4 2005/05/24 18:48:35 mkennedy Exp $
-
-  24 May 2005; <mkennedy@gentoo.org> cl-rsm-rand-1.2.ebuild,
-  cl-rsm-rand-1.2-r1.ebuild:
-  Keywording ~sparc
-
-*cl-rsm-rand-1.2-r1 (12 Feb 2004)
-
-  12 Feb 2004; <mkennedy@gentoo.org> cl-rsm-rand-1.2-r1.ebuild:
-  Cleanup for eclass changes.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rsm-rand/ChangeLog,v 1.1 2003/10/26 22:27:01 mkennedy Exp $
 
 *cl-rsm-rand-1.2 (26 Oct 2003)
 

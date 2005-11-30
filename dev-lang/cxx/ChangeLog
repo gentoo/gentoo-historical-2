@@ -1,29 +1,6 @@
 # ChangeLog for dev-lang/cxx
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/cxx/ChangeLog,v 1.8 2004/11/18 00:36:08 kloeri Exp $
-
-  18 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> :
-  Fix digest, bug 70478.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  cxx-6.5.9.31-r1.ebuild, cxx-6.5.9.31.ebuild:
-  virtual/glibc -> virtual/libc
-
-  23 Jun 2003; Tavis Ormandy <taviso@gentoo.org> cxx-6.5.9.31-r1.ebuild:
-  stable on alpha
-
-  15 Jun 2003; Tavis Ormandy <taviso@gentoo.org> cxx-6.5.9.31-r1.ebuild:
-  ccc must be installed first.
-
-*cxx-6.5.9.31-r1 (16 Apr 2003)
-
-  18 Apr 2003; Tavis Ormandy <taviso@gentoo.org> cxx-6.5.9.31-r1.ebuild:
-  Integrating agriffis' gpg fixes from ccc.
-  Updating dependencies.
-
-  16 Apr 2003; Tavis Ormandy <taviso@gentoo.org> cxx-6.5.9.31-r1.ebuild:
-  Permissions on some of the cxx includes were not being updated, now explicitly
-  changed to root:root when unpacked. version bump.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/cxx/ChangeLog,v 1.1 2003/04/15 14:49:59 taviso Exp $
 
 *cxx-6.5.9.31 (15 Apr 2003)
 

@@ -1,26 +1,6 @@
-# ChangeLog for games-emulation/gngeo
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gngeo/ChangeLog,v 1.8 2005/07/08 22:28:22 mr_bones_ Exp $
-
-  08 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> -gngeo-0.5.9a.ebuild,
-  -gngeo-0.6.1.ebuild, gngeo-0.6.3.ebuild:
-  clean old ebuilds; tidy
-
-*gngeo-0.6.3 (31 Jul 2004)
-
-  31 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +gngeo-0.6.3.ebuild:
-  version bump (bug #58782)
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gngeo-0.6.1.ebuild:
-  virtual/glibc -> virtual/libc
-
-  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gngeo-0.5.9a.ebuild:
-  don't rdepend on nasm
-
-*gngeo-0.6.1 (30 Mar 2004)
-
-  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gngeo-0.6.1.ebuild:
-  version bump
+# ChangeLog for app-emulation/gngeo
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gngeo/ChangeLog,v 1.1 2003/09/09 16:26:50 vapier Exp $
 
 *gngeo-0.5.9a (29 Jul 2003)
 

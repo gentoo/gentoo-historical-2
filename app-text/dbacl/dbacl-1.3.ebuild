@@ -1,19 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dbacl/dbacl-1.3.ebuild,v 1.10 2005/01/01 16:08:02 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dbacl/dbacl-1.3.ebuild,v 1.1 2003/01/10 01:39:49 vapier Exp $
 
 inherit eutils
 
-DESCRIPTION="digramic Bayesian text classifier"
+DESCRIPTION="dbacl is a digramic Bayesian text classifier"
 HOMEPAGE="http://www.lbreyer.com/gpl.html"
 SRC_URI="http://www.lbreyer.com/gpl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 s390"
-IUSE=""
+KEYWORDS="~x86"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}

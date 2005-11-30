@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/silc-plugin/silc-plugin-1.0.1-r2.ebuild,v 1.4 2005/01/03 15:51:12 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/silc-plugin/silc-plugin-1.0.1-r2.ebuild,v 1.1 2004/11/28 12:59:33 ticho Exp $
 
 inherit eutils
 
@@ -14,15 +14,13 @@ SRC_URI="http://irssi.org/files/irssi-${IRSSI_PV}.tar.bz2
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="~x86 ~sparc ~ppc"
 IUSE="debug pic"
 
 # All necessary dependencies are pulled in by irssi.
 DEPEND="virtual/libc"
-RDEPEND=">=net-irc/irssi-0.8.9
-	>=dev-perl/MIME-tools-5.413
-	dev-perl/File-MMagic
-	dev-perl/MailTools"
+RDEPEND="~net-irc/irssi-0.8.9
+	>=dev-perl/MIME-tools-5.413"
 
 S_SILC="${S}/../silc-client-${PV}"
 S_IRSSI="${S}/../irssi-${IRSSI_PV}"
@@ -88,8 +86,7 @@ pkg_postinst() {
 	einfo "enter a passphrase for this keypair twice. If you leave the passphrase"
 	einfo "empty, your key will not be stored encrypted."
 	einfo
-	einfo "To make full use of silc-plugin, you should load the following perl scripts"
-	einfo "into irssi:"
+	einfo "You should also load the perl scripts:"
 	einfo
 	einfo "\t/SCRIPT LOAD silc"
 	einfo "\t/SCRIPT LOAD silc-mime"

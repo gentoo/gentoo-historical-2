@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/blop/blop-0.2.8.ebuild,v 1.4 2004/07/26 07:39:57 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/blop/blop-0.2.8.ebuild,v 1.1 2004/06/20 23:30:29 fvdpol Exp $
 
 IUSE=""
 DESCRIPTION="Bandlimited LADSPA Oscillator Plugins"
@@ -9,7 +9,7 @@ HOMEPAGE="http://blop.sf.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 
 DEPEND=">=media-libs/ladspa-sdk-1.12"
 

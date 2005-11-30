@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netperf/netperf-2.4.0_rc3.ebuild,v 1.3 2005/07/16 19:42:29 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netperf/netperf-2.4.0_rc3.ebuild,v 1.1 2005/04/19 21:24:46 agriffis Exp $
 
 inherit flag-o-matic
 
@@ -18,9 +18,14 @@ LICENSE="netperf"
 SLOT="0"
 KEYWORDS="~x86 ~sparc ~ia64 ~alpha ~amd64 ~ppc64 ~ppc ~ppc-macos"
 
-IUSE=""
+IUSE="ipv6"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/libc >=sys-apps/sed-4"
+
+src_compile() {
+	econf $(use_enable ipv6) || die
+	emake || die
+}
 
 src_install () {
 	einstall || die
@@ -31,11 +36,11 @@ src_install () {
 	mv ${D}/usr/{bin,sbin}/netserver || die
 
 	# init.d / conf.d
-	newinitd ${FILESDIR}/${PN}-2.2-init netperf
-	newconfd ${FILESDIR}/${PN}-2.2-conf netperf
+	exeinto /etc/init.d ; newexe ${FILESDIR}/${PN}-2.2-init netperf
+	insinto /etc/conf.d ; newins ${FILESDIR}/${PN}-2.2-conf netperf
 
 	# documentation and example scripts
 	dodoc AUTHORS ChangeLog COPYING NEWS README Release_Notes doc/netperf.pdf
-	dodir /usr/share/doc/${PF}/examples
-	mv ${D}/usr/bin/*_script ${D}/usr/share/doc/${PF}/examples
+	mkdir ${D}/usr/share/doc/${PF}/examples
+	mv ${D}/usr/bin/*_script ${D}//usr/share/doc/${PF}/examples
 }

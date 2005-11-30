@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwag/netwag-5.28.0.ebuild,v 1.3 2005/10/09 11:31:15 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwag/netwag-5.28.0.ebuild,v 1.1 2005/01/13 06:16:51 dragonheart Exp $
 
 DESCRIPTION="Tcl/tk interface to netwox (Toolbox of 212 utilities for testing Ethernet/IP networks)"
 HOMEPAGE="http://www.laurentconstantin.com/en/netw/netwag/"
@@ -8,11 +8,14 @@ SRC_URI="http://www.laurentconstantin.com/common/netw/${PN}/download/v${PV/.*}/$
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="~net-analyzer/netwox-${PV}
-	>=dev-lang/tk-8"
+DEPEND="~net-analyzer/netwox-${PV}"
+
+RDEPEND="~net-analyzer/netwox-${PV}
+	>=dev-lang/tk-8
+	>=dev-lang/tcl-8"
 
 S=${WORKDIR}/${P}-src
 

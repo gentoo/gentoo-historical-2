@@ -1,10 +1,11 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-pipeline/bioperl-pipeline-0.1.ebuild,v 1.6 2005/11/28 12:01:43 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-pipeline/bioperl-pipeline-0.1.ebuild,v 1.1 2004/12/23 22:12:12 ribosome Exp $
 
-inherit perl-app
+inherit perl-module
+CATEGORY="app-sci"
 
-DESCRIPTION="A collection of tools for bioinformatics, genomics and life science research: Biopipe"
+DESCRIPTION="Collection of tools for bioinformatics, genomics and life science research : Biopipe "
 HOMEPAGE="http://www.biopipe.org/"
 SRC_URI="mirror://gentoo/$P.tar.gz"
 
@@ -24,15 +25,20 @@ RDEPEND="
 
 DEPEND=""
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+}
+
 src_compile() {
 	# there's a test to run for BioGFFDB if using mysql
 	perl-module_src_compile || die "compile failed"
 	# make test
 	##	perl-module_src_test || die "src test failed"
-	ewarn
+	ewarn " "
 	ewarn "Tests skipped since they will fail unless"
 	ewarn "mysql root user has no password"
-	ewarn
+	ewarn " "
 }
 
 src_install() {
@@ -58,10 +64,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
-	einfo "You will need to modify Bio/Pipeline/PipeConf.pm"
+	einfo " "
+	einfo "You will need to modify Bio/Pipeline/PipeConf.pm "
 	einfo "with mysql user and batch job software information"
-	einfo "Read the docs in /usr/share/docs/${PF}"
+	einfo "Read the docs in /usr/share/docs/${PF} "
 	einfo "for more information"
-	einfo
+	einfo " "
 }

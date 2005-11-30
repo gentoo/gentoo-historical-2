@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jmax/jmax-4.1.0.ebuild,v 1.6 2005/07/25 12:40:14 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jmax/jmax-4.1.0.ebuild,v 1.1 2004/07/09 02:38:51 eradicator Exp $
 
 IUSE="alsa jack doc"
 
@@ -15,7 +15,7 @@ SLOT="0"
 LICENSE="GPL-2"
 #-amd64, -sparc: 4.1.0: fts/linux.c has only code for ppc and ix86
 
-KEYWORDS="-amd64 ~ppc -sparc x86"
+KEYWORDS="x86 -amd64 -sparc"
 
 RDEPEND=">=virtual/jre-1.4
 	jack? ( media-sound/jack-audio-connection-kit )
@@ -33,8 +33,6 @@ src_unpack() {
 	unpack jmax-m4-1.0.tar.bz2
 	epatch ${FILESDIR}/${P}-otherArch.patch
 	epatch ${FILESDIR}/${P}-gcc34.patch
-	# fixed 57691
-	epatch ${FILESDIR}/${P}-fix-java-check.patch
 
 	export WANT_AUTOMAKE=1.6
 	export WANT_AUTOCONF=2.5
@@ -43,14 +41,14 @@ src_unpack() {
 	automake # this will fail because of bad upstream Makefile.am
 	autoconf || die
 
-	libtoolize --copy --force
+	elibtoolize
 }
 
 src_compile() {
-	econf \
-		`use_enable jack` || die "econf failed"
+	econf
+
 	# -j2 fails.  See bug #47978
-	emake -j1 || die "emake failed"
+	emake -j1
 }
 
 src_install () {

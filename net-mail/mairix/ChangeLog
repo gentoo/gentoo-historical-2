@@ -1,55 +1,6 @@
 # ChangeLog for net-mail/mairix
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mairix/ChangeLog,v 1.16 2005/11/24 07:09:42 tove Exp $
-
-*mairix-0.17 (24 Nov 2005)
-
-  24 Nov 2005; Torsten Veller <tove@gentoo.org> -mairix-0.15.2.ebuild,
-  +mairix-0.17.ebuild:
-  Version bump.
-
-  05 Nov 2005; Jason Wever <weeve@gentoo.org> mairix-0.16.1.ebuild:
-  Added ~sparc keyword wrt bug #111603.
-
-  26 Jun 2005; Andrej Kacian <ticho@gentoo.org> mairix-0.16.1.ebuild:
-  Stable on x86.
-
-*mairix-0.16.1 (26 May 2005)
-
-  26 May 2005; Andrej Kacian <ticho@gentoo.org> +mairix-0.16.1.ebuild:
-  Version bump.
-
-  06 Mar 2005; Torsten Veller <tove@gentoo.org> mairix-0.15.2.ebuild:
-  Stable for x86.
-
-*mairix-0.15.2 (04 Feb 2005)
-
-  04 Feb 2005; Torsten Veller <tove@gentoo.org> +mairix-0.15.2.ebuild:
-  Version bump.
-
-  24 Nov 2004; Andrej Kacian <ticho@gentoo.org> mairix-0.15.ebuild:
-  Stable on x86.
-
-  24 Sep 2004; <blubb@gentoo.org> mairix-0.15.ebuild:
-  added ~amd64
-
-  05 Sep 2004; David Holm <dholm@gentoo.org> mairix-0.15.ebuild:
-  Added to ~ppc.
-
-  04 Sep 2004; Jon Hood <squinky86@gentoo.org> mairix-0.15.ebuild:
-  Change virtual/glibc --> virtual/libc.
-
-*mairix-0.15 (01 Sep 2004)
-
-  01 Sep 2004; Andrej Kacian <ticho@gentoo.org> +mairix-0.15.ebuild:
-  Version bump. Closes #50849, reported by Bardur Arantsson
-  <gentoo@scientician.net>.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mairix-0.10.ebuild:
-  virtual/glibc -> virtual/libc
-
-  16 Apr 2004; Michael McCabe <randy@gentoo.org> mairix-0.10.ebuild:
-  adding s390 keywords
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mairix/ChangeLog,v 1.1 2003/01/20 15:32:29 raker Exp $
 
 *mairix-0.10 (20 Jan 2003)
 

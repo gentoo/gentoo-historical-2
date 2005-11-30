@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-pipes/cl-pipes-1.2.1.ebuild,v 1.8 2005/09/05 05:47:20 ndimiduk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-pipes/cl-pipes-1.2.1.ebuild,v 1.1 2004/02/12 09:13:14 mkennedy Exp $
 
 inherit common-lisp
 
@@ -9,12 +9,13 @@ HOMEPAGE="http://packages.debian.org/unstable/devel/cl-pipes.html"
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/cl-pipes/${PN}_${PV}.orig.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc-macos ~sparc x86"
-IUSE=""
+KEYWORDS="~x86"
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp"
 
 CLPACKAGE=pipes
+
+S=${WORKDIR}/${P}
 
 src_install() {
 	common-lisp-install *.lisp *.asd

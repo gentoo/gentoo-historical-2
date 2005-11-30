@@ -1,34 +1,6 @@
 # ChangeLog for dev-perl/Unix-Syslog
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unix-Syslog/ChangeLog,v 1.14 2005/09/17 00:46:34 agriffis Exp $
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
-  Unix-Syslog-0.100-r1.ebuild:
-  Mark 0.100-r1 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  Unix-Syslog-0.100-r1.ebuild:
-  add ~ia64
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -Unix-Syslog-0.100.ebuild, Unix-Syslog-0.100-r1.ebuild:
-  Cleaning for mirror syntax
-
-  06 Feb 2005; Markus Rothe <corsair@gentoo.org> Unix-Syslog-0.100-r1.ebuild:
-  Stable on ppc64
-
-  29 Dec 2004; Markus Rothe <corsair@gentoo.org> Unix-Syslog-0.100-r1.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-*Unix-Syslog-0.100-r1 (21 Jun 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
-  forced version bump to install into correct locations
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unix-Syslog/ChangeLog,v 1.1 2002/10/23 15:11:28 raker Exp $
 
 *Unix-Syslog-0.100 (23 Oct 2002)
 

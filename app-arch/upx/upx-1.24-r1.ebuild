@@ -1,25 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/upx/upx-1.24-r1.ebuild,v 1.7 2005/01/01 12:01:46 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/upx/upx-1.24-r1.ebuild,v 1.1 2003/03/26 04:46:45 seemant Exp $
 
 S=${WORKDIR}/${P}-linux
-DESCRIPTION="Ultimate Packer for eXecutables"
-HOMEPAGE="http://upx.sourceforge.net/"
+DESCRIPTION="upx is the Ultimate Packer for eXecutables."
 SRC_URI="http://upx.sourceforge.net/download/${P}-linux.tar.gz"
+HOMEPAGE="http://upx.sourceforge.net/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 s390"
-IUSE=""
-RESTRICT="nostrip"
+LICENSE="GPL-2"
+KEYWORDS="x86"
 
-DEPEND="!app-arch/upx-ucl"
+RESTRICT="nostrip"
 
 src_install() {
 	#the pre-compiled version works on gcc-3.2 systems
 	# source version won't compile.
+
 	into /opt
-	dobin upx || die
+	dobin upx
 	doman upx.1
-	dodoc upx.doc upx.html BUGS NEWS README THANKS
+	dodoc upx.doc upx.html BUGS COPYING LICENSE NEWS README THANKS
 }

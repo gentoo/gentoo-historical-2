@@ -1,36 +1,6 @@
 # ChangeLog for kde-base/artsplugin-akode
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/artsplugin-akode/ChangeLog,v 1.10 2005/11/29 15:16:02 weeve Exp $
-
-  29 Nov 2005; Jason Wever <weeve@gentoo.org> artsplugin-akode-3.5.0.ebuild:
-  Added ~sparc keyword.
-
-  26 Nov 2005; Dan Armak <danarmak@gentoo.org> artsplugin-akode-3.5.0.ebuild:
-  Upstream (unreleased) tarball updated, updating digests.
-
-*artsplugin-akode-3.5.0 (22 Nov 2005)
-
-  22 Nov 2005; Dan Armak <danarmak@gentoo.org> +artsplugin-akode-3.5.0.ebuild:
-  Ebuilds for KDE 3.5.0 final. It is not yet released, and is package.masked.
-
-*artsplugin-akode-3.5.0_rc1 (12 Nov 2005)
-
-  12 Nov 2005; Dan Armak <danarmak@gentoo.org> +artsplugin-akode-3.5.0_rc1.ebuild:
-  Ebuild for new version 3.5.0_rc1.
-
-  22 Oct 2005; Mark Loeser <halcy0n@gentoo.org>
-  artsplugin-akode-3.5_beta1.ebuild, artsplugin-akode-3.5.0_beta2.ebuild:
-  Adding ~x86 to keywords
-
-  14 Oct 2005; Dan Armak <danarmak@gentoo.org>
-  artsplugin-akode-3.5.0_beta2.ebuild:
-  Fix compilation (missing KMCOPYLIB statement) and add corresponding dep on
-  kdemultimedia-arts.
-
-*artsplugin-akode-3.5.0_beta2 (14 Oct 2005)
-
-  14 Oct 2005; Dan Armak <danarmak@gentoo.org> +artsplugin-akode-3.5.0_beta2.ebuild:
-  New version.
+# $Header: /var/cvsroot/gentoo-x86/kde-base/artsplugin-akode/ChangeLog,v 1.1 2005/09/24 10:23:48 greg_g Exp $
 
 *artsplugin-akode-3.5_beta1 (24 Sep 2005)
 

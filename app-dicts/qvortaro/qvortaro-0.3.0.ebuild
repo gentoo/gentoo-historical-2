@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/qvortaro/qvortaro-0.3.0.ebuild,v 1.5 2005/07/25 18:00:21 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/qvortaro/qvortaro-0.3.0.ebuild,v 1.1 2005/03/19 22:13:45 pylon Exp $
 
 inherit eutils kde
 
@@ -14,13 +14,14 @@ KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="virtual/libc
-	$(qt_min_version 3.1)"
+	>=x11-libs/qt-3.0.5"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/qVortaro-${PV}
 
 src_compile() {
 	cd ${S}
-	${QTDIR}/bin/qmake || die "qmake failed"
+	qmake || die "qmake failed"
 	set-kdedir
 	kde_src_compile make || "make failed!"
 }

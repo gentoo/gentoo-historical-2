@@ -1,55 +1,6 @@
 # ChangeLog for media-video/mmsv2
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mmsv2/ChangeLog,v 1.12 2005/10/12 19:23:35 arj Exp $
-
-  12 Oct 2005; Anders Rune Jensen <arj@gentoo.org> -mmsv2-1.0.ebuild, 
-  -mmsv2-1.0.1.ebuild, -mmsv2-1.0.3.ebuild:
-  Remove old versions
-
-*mmsv2-1.0.4 (23 Sep 2005)
-
-  23 Sep 2005; Anders Rune Jensen <arj@gentoo.org> +mmsv2-1.0.4.ebuild:
-  New version.
-
-*mmsv2-1.0.3 (02 Sep 2005)
-
-  02 Sep 2005; Anders Rune Jensen <arj@gentoo.org> +mmsv2-1.0.3.ebuild:
-  New version.
-
-  02 Sep 2005; Anders Rune Jensen <arj@gentoo.org> mmsv2-1.0.2.2.ebuild:
-  Mark stable on x86 and amd64
-
-  05 Jul 2005; David Holm <dholm@gentoo.org> mmsv2-1.0.2.2.ebuild:
-  Added to ~ppc.
-
-*mmsv2-1.0.2.2 (05 Jul 2005)
-
-  05 Jul 2005; Anders Rune Jensen <arj@gentoo.org> +mmsv2-1.0.2.2.ebuild:
-  New version.
-
-  01 May 2005; Anders Rune Jensen <arj@gentoo.org> mmsv2-1.0.1.ebuild:
-  Marked stable on amd64 and x86.
-
-  21 Apr 2005; Anders Rune Jensen <arj@gentoo.org>
-  +files/fix-configure.diff,mmsv2-1.0.ebuild,mmsv2-1.0.1.ebuild:
-  Fix bug #89717
-	
-*mmsv2-1.0.1 (28 Mar 2005)
-
-  28 Mar 2005; Anders Rune Jensen <arj@gentoo.org> +mmsv2-1.0.1.ebuild:
-  New version.
-
-  01 Mar 2005; Anders Rune Jensen <arj@gentoo.org> mmsv2-1.0.ebuild:
-  Fix compilation with svga enabled. Found by Andreas.
-	
-*mmsv2-1.0.0 (24 Jan 2005)
-
-  24 Jan 2005; Anders Rune Jensen <arj@gentoo.org> +mmsv2-1.0.ebuild:
-  New version. Works on amd64.
-	
-  21 Jan 2005; Anders Rune Jensen <arj@gentoo.org> mmsv2-0.9.3.ebuild:
-  Wrong name in ebuild found by Lars T. Mikkelsen. Also fix
-  dependency to sqlite version 2.
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mmsv2/ChangeLog,v 1.1 2004/11/10 01:02:57 arj Exp $
 
 *mmsv2-0.9.3 (10 Nov 2004)
 

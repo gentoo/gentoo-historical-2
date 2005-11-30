@@ -1,34 +1,6 @@
 # ChangeLog for www-apps/dragonflycms
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/dragonflycms/ChangeLog,v 1.7 2005/07/04 18:25:53 sejo Exp $
-
-  04 Jul 2005; Jochen Maes <sejo@gentoo.org> files/postinstall-en.txt,
-  dragonflycms-9.0.3.0.ebuild, dragonflycms-9.0.4.0.ebuild,
-  dragonflycms-9.0.5.0.ebuild:
-  fixed permissions problems
-
-  03 Jul 2005; Sven Wegener <swegener@gentoo.org>
-  dragonflycms-9.0.3.0.ebuild, dragonflycms-9.0.4.0.ebuild,
-  dragonflycms-9.0.5.0.ebuild:
-  QA: Removed src_unpack because it was the default, exchanged RDEPEND and
-  DEPEND, removed unused digest entries.
-
-*dragonflycms-9.0.5.0 (03 Jul 2005)
-
-  03 Jul 2005; Jochen Maes <sejo@gentoo.org> dragonflycms-9.0.4.0.ebuild,
-  +dragonflycms-9.0.5.0.ebuild:
-  fixed bug in 9.0.4.0 and added 9.0.5.0
-
-*dragonflycms-9.0.4.0 (26 Jun 2005)
-
-  26 Jun 2005; Jochen Maes <sejo@gentoo.org> +dragonflycms-9.0.4.0.ebuild:
-  new version
-
-  25 Jun 2005; Jochen Maes <sejo@gentoo.org> dragonflycms-9.0.3.0.ebuild:
-  marked unstable x86 and changed description
-
-  16 May 2005; Jochen Maes <sejo@gentoo.org> dragonflycms-9.0.3.0.ebuild:
-  added my devspace for the tarball
+# $Header: /var/cvsroot/gentoo-x86/www-apps/dragonflycms/ChangeLog,v 1.1 2005/05/16 14:31:22 sejo Exp $
 
   16 May 2005; Jochen Maes <sejo@gentoo.org> :
   Initial ebuild

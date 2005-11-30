@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/mwavem/mwavem-2.0.ebuild,v 1.4 2005/10/04 19:27:04 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mwavem/mwavem-2.0.ebuild,v 1.1 2004/12/05 09:34:44 mrness Exp $
 
 inherit eutils
 
@@ -10,10 +10,11 @@ SRC_URI="ftp://www-126.ibm.com/pub/acpmodem/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE="X"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/libc
+	X? ( virtual/x11 )"
 
 src_compile() {
 	#Disable installing stuff outside sandbox
@@ -36,7 +37,7 @@ src_install() {
 	insinto /etc/modules.d
 	newins ${FILESDIR}/mwave.modules mwave
 
-	dodoc AUTHORS ChangeLog FAQ NEWS README README.devfs THANKS
+	dodoc AUTHORS ChangeLog FAQ INSTALL NEWS README README.devfs THANKS
 	docinto doc
 	dodoc doc/mwave.sgml doc/mwave.txt
 	dohtml doc/mwave.html

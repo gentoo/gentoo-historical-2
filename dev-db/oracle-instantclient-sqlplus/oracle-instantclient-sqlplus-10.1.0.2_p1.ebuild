@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-sqlplus/oracle-instantclient-sqlplus-10.1.0.2_p1.ebuild,v 1.4 2005/01/01 17:39:38 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/oracle-instantclient-sqlplus/oracle-instantclient-sqlplus-10.1.0.2_p1.ebuild,v 1.1 2004/06/21 18:27:18 rizzo Exp $
 
 inherit eutils
 
@@ -20,7 +20,7 @@ RESTRICT="fetch"
 IUSE=""
 
 DEPEND="app-arch/rpm2targz
-		>=dev-db/oracle-instantclient-basic-10.1.0.2_p1"
+		>=dev-db/oracle-instantclient-basic-10.1.0.2"
 
 pkg_nofetch() {
 	eerror "Please go to:"

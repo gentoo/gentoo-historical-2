@@ -3,25 +3,7 @@
 <catmetadata>
 	<longdescription lang="en">
 		The sys-auth category contains applications and libraries to support
-		authentication and authorization facilities.
+		authentication and authorization facilities for Gentoo systems.
 		Here belongs PAM modules, NSS modules and login apps.
-	</longdescription>
-	<longdescription lang="ja">
-		sys-authカテゴリには確認を採用するアプリケーションとライブラリが
-		含まれます。これはPAMとNSSモジュールとログインアプリケーションの場所です。
-	</longdescription>
-	<longdescription lang="vi">
-		Nhóm sys-auth chứa các ứng dụng và thư viện hỗ trợ xác thực và phân quyền.
-		Ở đây bao gồm các module PAM, NSS và các ứng dụng đăng nhập.
-	</longdescription>
-	<longdescription lang="de">
-		Die Kategorie sys-auth enthält Programme und Bibliotheken die Funktionen
-		zur Authentifizierung und Authorisierung zur Verfügung stellen. Module für PAM 
-		und NSS sowie Loginapplikationen finden sich hier.
-	</longdescription>
-	<longdescription lang="it">
-		La categoria sys-auth contiene applicazioni e librerie di supporto per
-		gli strumenti di autenticazione e autorizzazione. Appartengono a questa categoria
-		i moduli PAM, i moduli NSS e le applicazioni di login.
 	</longdescription>
 </catmetadata>

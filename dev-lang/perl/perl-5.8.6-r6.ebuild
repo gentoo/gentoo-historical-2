@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/perl-5.8.6-r6.ebuild,v 1.9 2005/11/14 21:39:25 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/perl-5.8.6-r6.ebuild,v 1.1 2005/09/20 09:19:05 azarah Exp $
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -17,7 +17,7 @@ LIBPERL="libperl.so.${PERLSLOT}.${SHORT_PV}"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 m68k mips ppc ~ppc64 s390 sh ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="berkdb debug doc gdbm ithreads perlsuid build minimal"
 PERL_OLDVERSEN="5.8.0 5.8.2 5.8.4 5.8.5"
 
@@ -153,8 +153,6 @@ src_configure() {
 
 	if [[ ${KERNEL} == "FreeBSD" && "${ELIBC}" = "FreeBSD" ]]; then
 		osname="freebsd"
-	elif [[ ${KERNEL} == "NetBSD" ]]; then
-		osname="netbsd"
 	else
 		# Default setting
 		osname="linux"
@@ -228,12 +226,6 @@ src_configure() {
 	[ -n "${ABI}" ] && myconf="${myconf} -Dusrinc=$(get_ml_incdir)"
 
 	[[ ${ELIBC} == "FreeBSD" ]] && myconf="${myconf} -Dlibc=/usr/lib/libc.a"
-
-	if [[ $(get_libdir) != "lib" ]] ; then
-		myconf="${myconf} -Dlibpth='/usr/local/$(get_libdir) /$(get_libdir) \
-		/usr/$(get_libdir)'"
-	fi
-
 
 	sh Configure -des \
 		-Darchname="${myarch}" \

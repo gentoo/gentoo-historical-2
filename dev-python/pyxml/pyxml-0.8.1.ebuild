@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.1.ebuild,v 1.6 2005/06/11 06:41:28 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.1.ebuild,v 1.1 2003/08/29 17:14:21 liquidx Exp $
 
 inherit distutils
 
@@ -10,11 +10,11 @@ DESCRIPTION="A collection of libraries to process XML with Python."
 SRC_URI="mirror://sourceforge/pyxml/${MY_P}.tar.gz"
 HOMEPAGE="http://pyxml.sourceforge.net/"
 
-DEPEND="<dev-lang/python-2.4"
+DEPEND="virtual/python"
 
 IUSE=""
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha amd64 ia64"
+KEYWORDS="x86 ppc sparc alpha amd64"
 LICENSE="PYTHON"
 
 S=${WORKDIR}/${MY_P}

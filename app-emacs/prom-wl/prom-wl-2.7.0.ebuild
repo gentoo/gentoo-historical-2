@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/prom-wl/prom-wl-2.7.0.ebuild,v 1.3 2005/08/28 02:20:50 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/prom-wl/prom-wl-2.7.0.ebuild,v 1.1 2004/10/22 10:23:02 usata Exp $
 
 inherit elisp
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.h6.dion.ne.jp/~nytheta/software/pub/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc-macos ~x86"
+KEYWORDS="~x86 ~ppc-macos"
 
 RDEPEND="|| ( app-emacs/wanderlust app-emacs/wanderlust-cvs )"
 

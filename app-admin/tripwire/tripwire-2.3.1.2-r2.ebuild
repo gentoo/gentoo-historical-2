@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/tripwire/tripwire-2.3.1.2-r2.ebuild,v 1.7 2005/08/22 18:08:01 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tripwire/tripwire-2.3.1.2-r2.ebuild,v 1.1 2004/12/13 18:36:20 taviso Exp $
 
 inherit eutils flag-o-matic
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/tripwire/tripwire-${TW_VER}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86"
 IUSE="ssl"
 
 DEPEND="virtual/libc
@@ -43,9 +43,10 @@ src_compile() {
 	# see #32613, #45823, and others.
 	# 	-taviso@gentoo.org
 	strip-flags
-	append-flags -DCONFIG_DIR='"\"/etc/tripwire\""' -fno-strict-aliasing
+	replace-flags -O2 -O1
+	append-flags -DCONFIG_DIR='"\"/etc/tripwire\""'
 
-	einfo "Preparing build..."
+	einfo "Preapring build..."
 		rm -f ${S}/configure
 		ebegin "	Running aclocal"
 			aclocal &> /dev/null || true
@@ -79,9 +80,9 @@ src_install() {
 	dodoc README Release_Notes ChangeLog policy/policyguide.txt TRADEMARK \
 		${FILESDIR}/tripwire.gif ${FILESDIR}/tripwire.txt
 
-	zcat ${FILESDIR}/twpol.txt > ${T}/twpol.txt || ewarn "twcfg.txt zcat error"
+	zcat ${FILESDIR}/twcfg.txt > ${T}/twcfg.txt || ewarn "twcfg.txt zcat error"
 	insinto /etc/tripwire
-	doins ${T}/twpol.txt ${FILESDIR}/twcfg.txt
+	doins ${T}/twcfg.txt ${FILESDIR}/twpol.txt
 
 	exeinto /etc/tripwire
 	doexe ${FILESDIR}/twinstall.sh

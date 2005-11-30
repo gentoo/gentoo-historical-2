@@ -1,5 +1,2 @@
-MD5 091db46e63e6129b4024bbe8aa73d365 ChangeLog 534
-MD5 007f64ab2ed57a1c312b36cc8c70e6d6 bitbake-0.ebuild 693
-MD5 8ef75eba39772bdd1a8facc7815dbebb metadata.xml 161
-MD5 79d7b48ffa627cafff89db0966e8d80e files/0-gentoo-paths.patch 590
+MD5 bf4ebb2208883e1938dbf90fc71c73ad bitbake-0.ebuild 427
 MD5 d41d8cd98f00b204e9800998ecf8427e files/digest-bitbake-0 0

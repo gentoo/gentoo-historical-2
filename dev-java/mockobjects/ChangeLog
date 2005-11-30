@@ -1,42 +1,6 @@
 # ChangeLog for dev-java/mockobjects
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mockobjects/ChangeLog,v 1.13 2005/11/13 20:59:15 hansmi Exp $
-
-  13 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
-  mockobjects-0.09-r1.ebuild:
-  Stable on ppc.
-
-*mockobjects-0.09-r1 (18 May 2005)
-
-  18 May 2005; Thomas Matthijs <axxo@gentoo.org>
-  +mockobjects-0.09-r1.ebuild:
-  fixes 92888, versioned jar, thanks too Josh Nichols <nichoj@alum.rpi.edu>
-
-  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mockobjects-0.09.ebuild:
-  stable on ppc
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> mockobjects-0.09.ebuild:
-  stable on amd64
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> mockobjects-0.09.ebuild:
-  mockobjects now makes use of java-pkg_dosrc
-
-  04 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> -files/build.xml-0.09,
-  +files/mockobjects-0.09-gentoo.patch, mockobjects-0.09.ebuild:
-  two manifest only jarfiles where generated. fixed.
-
-  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> mockobjects-0.09.ebuild:
-  keyword x86
-
-  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> mockobjects-0.09.ebuild:
-  keywords ~amd64; closes #67315.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> mockobjects-0.09.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  28 Apr 2004; David Holm <dholm@gentoo.org> mockobjects-0.09.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mockobjects/ChangeLog,v 1.1 2004/04/27 22:30:51 karltk Exp $
 
 *mockobjects-0.09 (27 Apr 2004)
 

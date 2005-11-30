@@ -1,20 +1,11 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_fastcgi/mod_fastcgi-2.4.2.ebuild,v 1.10 2005/10/03 03:49:10 vericgar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_fastcgi/mod_fastcgi-2.4.2.ebuild,v 1.1 2004/05/22 02:06:59 robbat2 Exp $
 
 DESCRIPTION="FastCGI  is a language independent, scalable, open extension to CGI that provides high performance without the limitations of server specific APIs."
-KEYWORDS="x86 ppc ~amd64"
-IUSE="apache2"
+KEYWORDS="~x86"
 
 detectapache() {
-	# DO NOT REPLICATE THIS IN ANY OTHER PACKAGE WITHOUT PORTAGE DEVS PERMISSION
-	# IT IS BROKEN AND A TEMPORARY MEASURE!
-	# YOU'VE BEEN WARNED.
-	if [[ ${EBUILD_PHASE/depend} != ${EBUILD_PHASE} ]]; then
-		APACHEVER=1
-		return
-	fi
-
 	local domsg=
 	[ -n "$1" ] && domsg=1
 	HAVE_APACHE1=
@@ -30,7 +21,7 @@ detectapache() {
 	1) [ -n "${domsg}" ] && einfo 'Apache1 only detected' ;;
 	2) [ -n "${domsg}" ] && einfo 'Apache2 only detected';;
 	both)
-		if use apache2; then
+		if [ "`use apache2`" ]; then
 			[ -n "${domsg}" ] && einfo "Multiple Apache versions detected, using Apache2 (USE=apache2)"
 			APACHEVER=2
 		else
@@ -53,6 +44,7 @@ SLOT="${APACHEVER}"
 HOMEPAGE="http://fastcgi.com/"
 SRC_URI="http://fastcgi.com/dist/${P}.tar.gz"
 LICENSE="Apache-1.1"
+IUSE="apache2"
 DEPEND="net-www/apache
 		apache2? ( >=net-www/apache-2 )"
 
@@ -82,7 +74,7 @@ src_install() {
 		doins ${FILESDIR}/20_mod_fastcgi.conf
 	else
 		exeinto /usr/lib/apache-extramodules
-		doexe ${PN}.so
+		doexe .libs/${PN}.so
 		insinto /etc/apache/conf/addon-modules
 		doins ${FILESDIR}/mod_fastcgi.conf
 	fi
@@ -93,7 +85,7 @@ pkg_postinst() {
 		einfo "Add '-D FASTCGI' to your APACHE2_OPTS in /etc/conf.d/apache2"
 	else
 		einfo "1. Execute the command:"
-		einfo " \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
+		einfo " \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 		einfo "2. Edit /etc/conf.d/apache and add \"-D FASTCGI\" to APACHE_OPTS"
 	fi
 }

@@ -1,21 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/beast-data/beast-data-0.3.ebuild,v 1.12 2005/09/04 10:55:52 flameeyes Exp $
+# /space/gentoo/cvsroot/gentoo-x86/skel.ebuild,v 1.8 2002/05/30 01:54:49 sandymac Exp
 
 DESCRIPTION="BEAST - the Bedevilled Sound Engine (datafiles)"
 HOMEPAGE="http://beast.gtk.org"
-LICENSE="GPL-2"
+LICENSE="GPL"
 
 DEPEND=">=media-sound/beast-0.4.1"
 
 SRC_URI="ftp://beast.gtk.org/pub/beast/v0.3/${P}.tar.gz"
-KEYWORDS="~amd64 ~ppc ~x86"
-
-IUSE=""
-
+KEYWORDS='x86'
 SLOT="0"
+S=${WORKDIR}/${P}
+
+src_compile() {
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die "./configure failed"
+	emake || die
+}
 
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS NEWS README TODO
+	dodoc AUTHORS COPYING INSTALL NEWS README TODO
 }

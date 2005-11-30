@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/emacspeak-20.ebuild,v 1.6 2005/01/01 10:46:46 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/emacspeak-20.ebuild,v 1.1 2004/05/15 22:22:03 williamh Exp $
 
 DESCRIPTION="the emacspeak audio desktop"
 HOMEPAGE="http://emacspeak.sourceforge.net/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 RESTRICT="nomirror"
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="virtual/emacs

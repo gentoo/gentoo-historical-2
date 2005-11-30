@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvdrip/dvdrip-0.52.3.ebuild,v 1.7 2005/07/13 13:45:54 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdrip/dvdrip-0.52.3.ebuild,v 1.1 2005/03/16 19:22:49 luckyduck Exp $
 
-inherit perl-module eutils
+inherit perl-module
 
 MY_P=${P/dvdr/Video-DVDR}
 # Next three lines are to handle PRE versions
@@ -17,31 +17,25 @@ SRC_URI="http://www.exit1.org/${PN}/${MY_URL}/${MY_P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
-IUSE="cdr gnome xvid rar mplayer ogg fping"
+KEYWORDS="~x86 ~amd64"
+IUSE="cdr gnome"
 
-DEPEND=" gnome? ( gnome-extra/libgtkhtml )
+DEPEND=" gnome? ( gnome-extra/gtkhtml )
 	cdr? ( >=media-video/vcdimager-0.7.19
 		>=app-cdr/cdrdao-1.1.7
-		virtual/cdrtools
-		>=media-video/mjpegtools-1.6.0 )
-	xvid? ( media-video/xvid4conf )
-	rar? ( app-arch/rar )
-	mplayer? ( media-video/mplayer )
+		virtual/cdrtools )
 	>=media-video/transcode-0.6.14
-	>=media-gfx/imagemagick-5.5.3
+	>=media-gfx/imagemagick-5.5.7
+	sys-process/procps
 	dev-perl/gtk-perl
-	perl-core/Storable
+	dev-perl/Storable
 	dev-perl/Event"
 RDEPEND="${DEPEND}
-	fping? ( >=net-analyzer/fping-2.3 )
-	ogg? ( >=media-sound/ogmtools-1.000 )
+	>=net-analyzer/fping-2.3
+	>=media-sound/ogmtools-1.000
+	>=media-video/mjpegtools-1.6.0
 	sys-apps/eject
 	dev-perl/libintl-perl"
-
-pkg_setup() {
-	built_with_use media-video/transcode dvdread || die "transcode needs dvdread support builtin.  Please re-emerge transcode with the dvdread USE flag."
-}
 
 src_unpack() {
 	unpack ${A}

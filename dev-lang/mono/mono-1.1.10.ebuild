@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-1.1.10.ebuild,v 1.3 2005/11/14 15:36:24 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-1.1.10.ebuild,v 1.1 2005/11/14 05:06:11 latexer Exp $
 
-inherit eutils mono flag-o-matic multilib
+inherit eutils mono flag-o-matic
 
 DESCRIPTION="Mono runtime and class libraries, a C# compiler/interpreter"
 HOMEPAGE="http://www.go-mono.com/"
@@ -36,15 +36,10 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-1.1.5-pathfix.diff
 
 	# Install all our .dlls under $(libdir), not $(prefix)/lib
-	if [ $(get_libdir) != "lib" ] ; then
-		sed -i -e 's:$(prefix)/lib:$(libdir):' \
-			-e 's:$(exec_prefix)/lib:$(libdir):' \
-			-e "s:'mono_libdir=\${exec_prefix}/lib':\"mono_libdir=\$libdir\":" \
-			${S}/{scripts,mono/metadata,mono/os/unix}/Makefile.am \
-			${S}/configure.in || die "sed failed"
-		sed -i -e 's:^libdir.*:libdir=@libdir@:' \
-			${S}/{scripts,}/*.pc.in || die "sed failed"
-	fi
+	sed -i -e 's:$(prefix)/lib:$(libdir):' \
+		-e 's:$(exec_prefix)/lib:$(libdir):' \
+		-e "s:'mono_libdir=\${exec_prefix}/lib':\"mono_libdir=\$libdir\":" \
+		${S}/{scripts,mono/metadata}/Makefile.am ${S}/configure.in || die
 
 	libtoolize --copy --force || die "libtoolize failed"
 	aclocal || die "aclocal failed"

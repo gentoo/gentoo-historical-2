@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/anjuta/anjuta-1.2.2.ebuild,v 1.11 2004/08/24 19:25:07 lisa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/anjuta/anjuta-1.2.2.ebuild,v 1.1 2004/04/18 06:44:04 lisa Exp $
 
 inherit eutils gnome2
 
@@ -12,11 +12,11 @@ IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
 # Future versions will work with 64-bit archs, but 1.2.0 doesn't
-KEYWORDS="x86 ~ppc sparc ~amd64"
+KEYWORDS="x86 ~ppc"
 
 RDEPEND=">=dev-libs/glib-2.0.6
 	>=x11-libs/gtk+-2.0.8
-	>=gnome-base/orbit-2.10.3
+	>=gnome-base/ORBit2-2.4
 	>=gnome-base/libglade-2
 	>=gnome-base/libgnome-2.0.2
 	>=gnome-base/libgnomeui-2.0.2
@@ -38,14 +38,13 @@ DOCS="AUTHORS COPYING ChangeLog FUTURE NEWS README THANKS TODO"
 
 MAKEOPTS="${MAKEOPTS} -j1"
 
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	#epatch ${FILESDIR}/xim_patch.patch
-
-	use amd64 && epatch ${FILESDIR}/${P}-64bit.patch
-}
+#lets see if this plays nice this version
+#src_unpack() {
+#	unpack ${A}
+#
+#	cd ${S}
+#	epatch ${FILESDIR}/${P}_xim.patch
+#}
 
 pkg_postinst() {
 

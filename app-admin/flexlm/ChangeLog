@@ -1,37 +1,8 @@
 # ChangeLog for app-admin/flexlm
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/flexlm/ChangeLog,v 1.9 2005/08/11 08:42:25 eradicator Exp $
-
-*flexlm-9.5-r1 (11 Aug 2005)
-
-  11 Aug 2005; Jeremy Huddleston <eradicator@gentoo.org> files/flexlm-conf,
-  files/flexlm-init, -flexlm-9.5.ebuild, +flexlm-9.5-r1.ebuild:
-  Revbump to add amd64 support, fix enewuser, cleanup init scripts and ebuild.
-
-  23 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  flexlm-9.2.1.ebuild, flexlm-9.5.ebuild:
-  marked -ppc because there are Linux binaries and powerpc binaries but no
-  powerpc-Linux binaries (ppc-macos should work though)
-
-  10 Mar 2005; Chris Bainbridge <chrb@gentoo.org> flexlm-9.5.ebuild:
-  use enewuser. bug #53064.
-
-  10 Mar 2005; Chris Bainbridge <chrb@gentoo.org> flexlm-9.5.ebuild:
-  Stable on x86
-
-*flexlm-9.5 (02 Jan 2005)
-
-  02 Jan 2005; Chris Bainbridge <chrb@gentoo.org> flexlm-9.2.1.ebuild,
-  +flexlm-9.5.ebuild:
-  Version bump and added RESTRICT=nomirror.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/flexlm/ChangeLog,v 1.1 2004/07/23 11:37:34 chrb Exp $
 
 *flexlm-9.2.1 (23 Jul 2004)
-	
-  28 Sep 2004; Sven Wegener <swegener@gentoo.org> files/flexlm-init:
-  Gentoo Technologies, Inc. -> Gentoo Foundation
-
-  23 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> flexlm-9.2.1.ebuild:
-  virtual/libc; add missing IUSE
 
   23 Jul 2004; Chris Bainbridge <chrb@gentoo.org> +metadata.xml,
   +files/90flexlm, +files/flexlm-conf, +files/flexlm-init,

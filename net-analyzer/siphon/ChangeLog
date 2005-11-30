@@ -1,33 +1,6 @@
 # ChangeLog for net-analyzer/siphon
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/siphon/ChangeLog,v 1.10 2005/08/11 10:02:55 r3pek Exp $
-
-  11 Aug 2005; Carlos Silva <r3pek@gentoo.org> siphon-666.ebuild:
-  marked ~amd64. closes bug #102047
-
-  19 Jul 2005; David Holm <dholm@gentoo.org> siphon-666.ebuild:
-  Added to ~ppc.
-
-  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> siphon-666.ebuild:
-  changed net-libs/libpcap depend to virtual/libcap
-
-  10 Jul 2004; Eldad Zack <eldad@gentoo.org> siphon-666.ebuild:
-  marked x86 stable
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> siphon-666.ebuild:
-  change virtual/glibc to virtual/libc
-
-  22 Mar 2004; Michael Boman <mboman@gentoo.org> metadata.xml,
-  siphon-666.ebuild:
-  QA: Propperly assigned DEPEND/RDEPEND, put virtual/glibc as a dependency.
-
-  21 Mar 2004; Jason Wever <weeve@gentoo.org> siphon-666.ebuild:
-  Added ~sparc keyword.
-
-*siphon-666 (30 Oct 2003)
-
-  30 Oct 2003; Ian Leitch <port001@gentoo.org> siphon-666.ebuild:
-  Use our own CFLAGS
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/siphon/ChangeLog,v 1.1 2003/10/20 18:40:10 port001 Exp $
 
   20 Oct 2003; Ian Leitch <port001@gentoo.org> :
   New package, thanks  Cory McWilliams <mcwilc@rpi.edu> #22181

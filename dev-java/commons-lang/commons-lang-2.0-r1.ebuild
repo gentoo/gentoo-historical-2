@@ -1,37 +1,40 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-lang/commons-lang-2.0-r1.ebuild,v 1.16 2005/10/01 08:24:41 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-lang/commons-lang-2.0-r1.ebuild,v 1.1 2004/03/01 04:53:48 zx Exp $
 
 inherit java-pkg
 
 DESCRIPTION="Jakarta components to manipulate core java classes"
-HOMEPAGE="http://jakarta.apache.org/commons/lang/"
+HOMEPAGE="http://jakarta.apache.org/commons/lang.html"
 SRC_URI="mirror://apache/jakarta/commons/lang/source/${P}-src.tar.gz"
 DEPEND=">=virtual/jdk-1.3
-	>=dev-java/ant-core-1.4
-	jikes? ( dev-java/jikes )"
+	>=dev-java/ant-1.4
+	junit? ( >=dev-java/junit-3.7 )"
 RDEPEND=">=virtual/jre-1.3"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64 ppc64"
-IUSE="doc jikes source"
+KEYWORDS="~x86 ~ppc ~sparc"
+IUSE="doc jikes junit"
 
-S="${WORKDIR}/${P}-src"
+S="${WORKDIR}/${PN}-${PV}-src"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	echo "junit.jar=`java-config -p junit`" >> build.properties
+}
 
 src_compile() {
 	local antflags="jar"
-	use doc && antflags="${antflags} javadoc"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
-	ant ${antflags} || die "compilation failed"
+	use doc && antflags="${antflags} javadoc"
+	use junit && antflags="${antflags} test"
+	ant ${antflags}
 }
 
 src_install() {
-	java-pkg_newjar dist/${P}.jar ${PN}.jar
-
-	if use doc; then
-		dodoc RELEASE-NOTES.txt
-		java-pkg_dohtml DEVELOPERS-GUIDE.html PROPOSAL.html STATUS.html
-		java-pkg_dohtml -r dist/docs/
-	fi
-	use source && java-pkg_dosrc src/java/*
+	mv dist/commons-lang-2.0.jar dist/${PN}.jar
+	java-pkg_dojar dist/*.jar
+	dohtml *.html
+	use doc && dohtml -r dist/docs/*
 }

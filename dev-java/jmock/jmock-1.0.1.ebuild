@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jmock/jmock-1.0.1.ebuild,v 1.5 2005/09/10 16:15:47 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jmock/jmock-1.0.1.ebuild,v 1.1 2005/01/04 21:34:43 luckyduck Exp $
 
 inherit eutils java-pkg
 
@@ -9,18 +9,16 @@ SRC_URI="http://dist.codehaus.org/${PN}/distributions/${P}-src.jar"
 HOMEPAGE="http://jmock.codehaus.org"
 LICENSE="BSD"
 SLOT="1.0"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc examples jikes"
-
-RDEPEND=">=virtual/jre-1.4
-	${RDEPEND}
-	=dev-java/cglib-2.0*"
 DEPEND=">=virtual/jdk-1.4
 	jikes? ( >=dev-java/jikes-1.21 )
-	dev-java/ant-core"
+	>=dev-java/ant-core-1.4"
+RDEPEND=">=virtual/jre-1.4
+	>=dev-java/cglib-2"
 
 src_unpack() {
-	jar xf ${DISTDIR}/${A} || die
+	jar xf ${DISTDIR}/${A}
 
 	cd ${S}
 	epatch ${FILESDIR}/jmock-1.0.1-buildxml.patch
@@ -32,16 +30,22 @@ src_unpack() {
 
 src_compile() {
 	local antflags="core.jar cglib.jar"
-	use doc && antflags="${antflags} javadoc"
-	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	if use doc; then
+		antflags="${antflags} javadoc"
+	fi
+	if use jikes; then
+		antflags="${antflags} -Dbuild.compiler=jikes"
+	fi
 	ant ${antflags} || die "failed to build"
 }
 
 src_install() {
-	java-pkg_dojar build/dist/jars/*.jar
-	dodoc CHANGELOG VERSION
+	java-pkg_dojar lib/*.jar
+	dodoc CHANGELOG VERSION LICENSE.txt
 
-	use doc && java-pkg_dohtml -r build/javadoc-${PV}/*
+	if use doc; then
+		java-pkg_dohtml -r build/javadoc-${PV}/*
+	fi
 	if use examples; then
 		dodir /usr/share/doc/${PF}/examples
 		cp -r examples/* ${D}/usr/share/doc/${PF}/examples

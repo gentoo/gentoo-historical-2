@@ -1,19 +1,17 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-MD5 0766bf195f5918cf2db4b3e9091c54c7 ChangeLog 1081
-MD5 ff12bfa45c5ee427fd06133e9afc81aa files/digest-redland-bindings-1.0.0.2 76
-MD5 d71dd83d67b824a928cd5e58e11d30c0 files/digest-redland-bindings-1.0.2.1 76
-MD5 0d01eb61aef3335fea495f4a8e23cb79 files/redland-bindings-1.0.0.2-DESTDIR.patch 421
-MD5 5e3b83c344a49513d7ab4194d905ccbd files/redland-bindings-1.0.0.2-configure.patch 287
-MD5 d5fa7c77bc2bf04a37cf23b801926245 files/redland-bindings-1.0.0.2-swig-update.patch 308
-MD5 1fb0cef8c20e31d8fee121ebb2205588 metadata.xml 221
-MD5 5da7b430ac5c74c7873d0e858717f179 redland-bindings-1.0.0.2.ebuild 1402
-MD5 1cf43fec89db6465d52f68a1dc564d47 redland-bindings-1.0.2.1.ebuild 1423
+MD5 2aeccb18c99270b11723f350258c60d6 redland-0.9.15.ebuild 1060
+MD5 adf5380711d29c365bc5832ae0e77e74 ChangeLog 651
+MD5 73f649eb9beaa682ba2ee966a5c8cb17 redland-0.9.16.ebuild 1238
+MD5 a130432340370670ba4d8c7b65f12eef redland-0.9.18.ebuild 694
+MD5 d1520e577d6322377950c0ca427ed8f1 files/digest-redland-0.9.15 67
+MD5 edc17952f8ecbcd3d5c7991a0ab06018 files/digest-redland-0.9.16 67
+MD5 d06c927d3c9397ea9b704f6a37be9c59 files/digest-redland-0.9.18 67
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
+Version: GnuPG v1.9.10 (GNU/Linux)
 
-iD8DBQFDVFbggIKl8Uu19MoRAkV9AJ95QFBKtUUPdxDsAiHN+odjMfpZNgCdFSHY
-mUpJ1wRgcNb1FsMdNDFkLUk=
-=nJu6
+iD8DBQFBICqJHTu7gpaalycRAiNrAKC6jjVBelVHohEN1+BNxLqtO6yu4wCdHzLz
+KEPgg+QkYg4tkKcrjzxB05E=
+=hrb1
 -----END PGP SIGNATURE-----

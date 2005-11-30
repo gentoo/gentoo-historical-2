@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/fam-2.7.0-r4.ebuild,v 1.3 2005/11/28 18:35:27 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/fam-2.7.0-r4.ebuild,v 1.1 2005/05/29 11:05:50 uberlord Exp $
 
 inherit libtool eutils gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://oss.sgi.com/projects/fam/download/stable/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
 DEPEND=">=net-nds/portmap-5b-r6
@@ -30,9 +30,6 @@ src_unpack() {
 
 	# Use limits correctly -#89478
 	epatch "${FILESDIR}/${P}-limits.patch"
-
-	# Fix gcc 4.1 problems
-	epatch ${FILESDIR}/${P}-gcc41.patch
 
 	# Fix permission problems with user* in FEATURES (#35307)
 	chmod u+w ${S}/configure

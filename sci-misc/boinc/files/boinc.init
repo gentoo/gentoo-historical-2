@@ -37,9 +37,8 @@ start() {
 		ARGS="${ARGS} -allow_remote_gui_rpc"
 	fi
 
-	setsid start-stop-daemon --quiet --start  --chdir ${RUNTIMEDIR} \
-		--exec ${BOINCBIN} --chuid ${USER}:${GROUP} \
-		--nicelevel ${NICELEVEL} -- ${ARGS} >> ${LOGFILE} 2>&1 &
+	start-stop-daemon --quiet --start --exec ${BOINCBIN} \
+		--chuid ${USER}:${GROUP} --nicelevel ${NICELEVEL} -- ${ARGS} > ${LOGFILE} 2>&1 &
 
 	eend $?
 }
@@ -51,15 +50,16 @@ attach() {
 	read key
 
 	RC_QUIET_STDOUT="yes" svc_status
-	if [ $? == 1 ]; then
-		svc_start
+	if [ $? == 0 ]; then
+		ebegin "Attaching to project"
+			# boinc cmd does not return 1 when it fails currently
+			boinc_cmd --project_attach ${url} ${key} &> /dev/null
+		eend $?
+	else
+		ARGS="${ARGS} -attach_project ${url} ${key}" svc_start
 	fi
-	ebegin "Attaching to project"
-		# boinc cmd does not return 1 when it fails currently
-		boinc_cmd --project_attach ${url} ${key} &> /dev/null
-	eend $?
 
-	sleep 10
+	sleep 9
 	tail ${LOGFILE}
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jre/blackdown-jre-1.4.2.02.ebuild,v 1.8 2005/10/18 20:20:51 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jre/blackdown-jre-1.4.2.02.ebuild,v 1.1 2005/06/16 09:29:10 axxo Exp $
 
 inherit java versionator
 
@@ -19,8 +19,8 @@ HOMEPAGE="http://www.blackdown.org"
 
 SLOT="1.4.2"
 LICENSE="sun-bcla-java-vm"
-KEYWORDS="-* amd64 x86"
-IUSE="browserplugin nsplugin mozilla"
+KEYWORDS="-* ~amd64 ~x86"
+IUSE="mozilla"
 DEPEND="virtual/libc
 	>=dev-java/java-config-1.2.11
 	>=sys-apps/sed-4"
@@ -83,20 +83,18 @@ unpack_jars() {
 	rm -f "$UNPACK_CMD"
 }
 
-src_install() {
+src_install () {
 	typeset platform
 
 	dodir /opt/${P}
 
-	cp -pPR ${S}/{bin,lib,man,plugin} ${D}/opt/${P} || die "failed to copy"
+	cp -a ${S}/{bin,lib,man,plugin} ${D}/opt/${P} || die "failed to copy"
 
 	dodoc COPYRIGHT LICENSE README INSTALL
 	dohtml README.html
 
 	# Install mozilla plugin
-	if use nsplugin ||       # global useflag for netscape-compat plugins
-	   use browserplugin ||  # deprecated but honor for now
-	   use mozilla; then     # wrong but used to honor it
+	if use mozilla; then
 		case ${ARCH} in
 			x86) platform="i386" ;;
 			ppc) platform="ppc" ;;
@@ -119,14 +117,4 @@ src_install() {
 	fi
 
 	unpack_jars
-}
-
-pkg_postinst() {
-	java_pkg_postinst
-	if ! use nsplugin && ( use browserplugin || use mozilla ); then
-		echo
-		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
-		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
-		ewarn "update your USE to include 'nsplugin'."
-	fi
 }

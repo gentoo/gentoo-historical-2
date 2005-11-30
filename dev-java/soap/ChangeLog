@@ -1,20 +1,6 @@
 # ChangeLog for dev-java/soap
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/soap/ChangeLog,v 1.5 2005/05/25 18:43:43 luckyduck Exp $
-
-  25 May 2005; Jan Brinkmann <luckyduck@gentoo.org> soap-2.3.1.ebuild:
-  removed problem with the classpath, fixes #93980
-
-  21 May 2005; Jan Brinkmann <luckyduck@gentoo.org> soap-2.3.1.ebuild:
-  stable on amd64 and x86, introduced support for the jikes and the source
-  useflag.
-
-  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> soap-2.3.1.ebuild:
-  Keywords ~amd64.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> soap-2.3.1.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/soap/ChangeLog,v 1.1 2004/09/12 19:32:36 axxo Exp $
 
 *soap-2.3.1 (12 Sep 2004)
 

@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/mii-diag/mii-diag-2.07.ebuild,v 1.10 2005/11/29 03:35:21 jer Exp $
-
-inherit eutils toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/mii-diag/mii-diag-2.07.ebuild,v 1.1 2002/11/23 13:31:17 agriffis Exp $
 
 MIIVER=${PV}
 LIBVER=2.04
@@ -11,32 +9,28 @@ DESCRIPTION="MII link status report and diagnostics"
 HOMEPAGE="http://www.scyld.com/diag/"
 # Files below are small and unversioned so I put them in the files dir
 # with version suffixes.
-SRC_URI=""	# ftp://ftp.scyld.com/pub/diag/mii-diag.c
-			# ftp://ftp.scyld.com/pub/diag/libmii.c
-
+SRC_URI="" # ftp://ftp.scyld.com/pub/diag/mii-diag.c
+           # ftp://ftp.scyld.com/pub/diag/libmii.c
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa x86"
+KEYWORDS="~x86 ~alpha"
 IUSE=""
-
 DEPEND=""
 
-S=${WORKDIR}
-
 src_unpack() {
-	cp ${FILESDIR}/mii-diag.c-${MIIVER} mii-diag.c || die "mii-diag.c"
-	cp ${FILESDIR}/libmii.c-${LIBVER} libmii.c || die "libmii.c"
-	epatch ${FILESDIR}/mii-diag.c-${PV}-gcc33.patch
+	mkdir -p ${S}
+	cp ${FILESDIR}/mii-diag.c-${MIIVER} ${S}/mii-diag.c
+	cp ${FILESDIR}/libmii.c-${LIBVER} ${S}/libmii.c
 }
 
 src_compile() {
 	# Don't change -O below, it is a requirement for building these
 	# programs.  See http://www.scyld.com/diag/#compiling
-	$(tc-getCC) -O -c libmii.c || die
-	$(tc-getCC) -O -DLIBMII mii-diag.c libmii.o -o mii-diag || die
+	${CC-gcc} -O -c libmii.c
+	${CC-gcc} -O -DLIBMII mii-diag.c libmii.o -o mii-diag
 }
 
 src_install() {
 	into /
-	dosbin mii-diag || die
+	dosbin mii-diag
 }

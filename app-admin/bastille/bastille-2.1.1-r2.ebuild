@@ -1,8 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/bastille/bastille-2.1.1-r2.ebuild,v 1.10 2005/11/28 12:07:22 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/bastille/bastille-2.1.1-r2.ebuild,v 1.1 2004/01/14 02:18:45 battousai Exp $
 
-inherit perl-app eutils
+inherit perl-module
+
+IUSE="X"
 
 PATCHVER=0.1
 MY_PN=${PN/b/B}
@@ -13,10 +15,9 @@ HOMEPAGE="http://bastille-linux.org/"
 SRC_URI="mirror://sourceforge/${PN}-linux/${MY_P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${PATCHVER}.patch.bz2"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~sparc alpha ~amd64"
-IUSE="X"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
 RDEPEND="net-firewall/iptables
 	app-admin/logrotate
@@ -27,8 +28,6 @@ RDEPEND="net-firewall/iptables
 src_unpack() {
 	unpack ${A}
 	epatch ${WORKDIR}/${P}-gentoo-${PATCHVER}.patch
-	epatch ${FILESDIR}/bastille-firewall-imap.patch
-	epatch ${FILESDIR}/${P}-hlist-fix.patch
 }
 
 src_compile() {
@@ -92,7 +91,7 @@ src_install() {
 
 	# Documentation
 	cd ${S}
-	dodoc *.txt BUGS Change* README*
+	dodoc *.txt COPYING BUGS Change* README*
 }
 
 pkg_postinst() {

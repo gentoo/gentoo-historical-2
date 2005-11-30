@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/libffi-3.4.3.ebuild,v 1.8 2005/07/14 21:49:14 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libffi/libffi-3.4.3.ebuild,v 1.1 2004/12/03 22:31:43 fafhrd Exp $
 
 inherit eutils flag-o-matic libtool gnuconfig
 
@@ -54,8 +54,8 @@ HOMEPAGE="http://gcc.gnu.org/"
 
 LICENSE="libffi"
 
-KEYWORDS="-* ppc ppc64 ~sparc"
-IUSE="nls nptl uclibc"
+KEYWORDS="-* ~ppc"
+IUSE="nls"
 
 SLOT="0"
 ## 3.2.3 -> 3.3.x install .so.5, so lets slot to 5
@@ -71,7 +71,7 @@ DEPEND="virtual/libc
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	>=sys-devel/bison-1.875
 	>=sys-devel/gcc-config-1.3.1
-	>=sys-devel/gcc-3.4.3
+	>=sys-devel/gcc-3.4.3*
 	!build? ( >=sys-libs/ncurses-5.2-r2
 	          nls? ( sys-devel/gettext ) )"
 
@@ -114,9 +114,6 @@ src_compile() {
 
 	use amd64 && myconf="${myconf} --disable-multilib"
 
-	# solves bug #72258: don't use multilib
-	use amd64 && myconf="${myconf} --disable-multilib"
-
 	do_filter_flags
 	einfo "CFLAGS=\"${CFLAGS}\""
 	einfo "CXXFLAGS=\"${CXXFLAGS}\""
@@ -149,6 +146,9 @@ src_compile() {
 		${myconf} || die
 
 	touch ${S}/gcc/c-gperf.h
+
+	# Setup -j in MAKEOPTS
+	get_number_of_jobs
 
 	einfo "Compiling libffi..."
 	S="${WORKDIR}/build" \

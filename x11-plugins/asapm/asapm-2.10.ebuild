@@ -1,30 +1,31 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asapm/asapm-2.10.ebuild,v 1.9 2004/06/28 20:32:48 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asapm/asapm-2.10.ebuild,v 1.1 2002/11/03 16:09:24 seemant Exp $
 
-inherit eutils
+S=${WORKDIR}/${P}
 
 DESCRIPTION="APM monitor for AfterStep"
+
 SRC_URI="http://www.tigr.net/afterstep/download/asapm/asapm-2.10.tar.gz"
 
 HOMEPAGE="http://www.tigr.net/afterstep/list.pl"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
-KEYWORDS="x86 sparc "
+KEYWORDS="x86 sparc sparc64"
 
-DEPEND="virtual/libc virtual/x11"
+DEPEND="virtual/glibc virtual/x11"
 
 src_compile() {
 	./configure --infodir=/usr/share/info --mandir=/usr/share/man --prefix=/usr --host=${CHOST} || die
-	epatch ${FILESDIR}/${PF}-gentoo.diff
+	patch -p0 < ${FILESDIR}/${PF}-gentoo.diff    
 	emake || die
 }
 
 src_install () {
+
 	dodir usr/bin
 	dodir usr/share/man/man1
-
+	
 	make prefix=${D} install || die
 }
 

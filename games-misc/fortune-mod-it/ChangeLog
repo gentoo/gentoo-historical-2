@@ -1,18 +1,6 @@
 # ChangeLog for games-misc/fortune-mod-it
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-it/ChangeLog,v 1.4 2005/08/27 18:04:49 corsair Exp $
-
-  27 Aug 2005; Markus Rothe <corsair@gentoo.org> fortune-mod-it-1.99.ebuild:
-  Stable on ppc64
-
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org> fortune-mod-it-1.99.ebuild:
-  Added ~ppc64 (bug #100217)
-
-*fortune-mod-it-1.99 (27 Dec 2004)
-
-  27 Dec 2004; Mike Frysinger <vapier@gentoo.org>
-  +fortune-mod-it-1.99.ebuild:
-  Version bump #73461 by Silian Della Ragione.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-it/ChangeLog,v 1.1 2004/09/25 11:23:58 mr_bones_ Exp $
 
 *fortune-mod-it-1.51 (25 Sep 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-3.0.1-r2.ebuild,v 1.8 2005/04/21 19:09:29 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-3.0.1-r2.ebuild,v 1.1 2004/11/16 19:03:18 karltk Exp $
 
 inherit eutils java-utils
 
@@ -12,7 +12,7 @@ SRC_URI="http://download2.eclipse.org/downloads/drops/R-3.0.1-200409161125/${MY_
 IUSE="gtk motif gnome kde mozilla"
 SLOT="3"
 LICENSE="CPL-1.0"
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="~x86 ~ppc ~amd64"
 
 RDEPEND="|| ( >=virtual/jdk-1.4.2 =dev-java/blackdown-jdk-1.4.2* )
 	gtk? ( >=x11-libs/gtk+-2.2.4 )
@@ -21,7 +21,7 @@ RDEPEND="|| ( >=virtual/jdk-1.4.2 =dev-java/blackdown-jdk-1.4.2* )
 			!motif? ( >=x11-libs/gtk+-2.2.4 )
 		      )
 	      )
-	mozilla? ( >=www-client/mozilla-1.5 )
+	mozilla? ( >=net-www/mozilla-1.5 )
 	gnome? ( =gnome-base/gnome-vfs-2* =gnome-base/libgnomeui-2* )
 	!media-fonts/unifont"
 
@@ -169,9 +169,6 @@ src_install() {
 
 	install-desktop-entry
 
-	install-link-files
-
-
 	doman ${FILESDIR}/eclipse.1
 }
 
@@ -182,10 +179,10 @@ src_install() {
 function detect-mozilla()
 {
 	if [ -f ${ROOT}/usr/lib/mozilla/libgtkembedmoz.so ] ; then
-		einfo "Compiling against www-client/mozilla"
+		einfo "Compiling against net-www/mozilla"
 		mozilla_dir=/usr/lib/mozilla
 	elif [ -f ${ROOT}/usr/lib/MozillaFirefox/libgtkembedmoz.so ] ; then
-		einfo "Compiling against www-client/mozilla-firefox"
+		einfo "Compiling against net-www/mozilla-firefox"
 		mozilla_dir=/usr/lib/MozillaFirefox
 	else
 		eerror "You need either Mozilla, compiled against gtk+ v2.0 or newer"
@@ -331,8 +328,10 @@ function install-desktop-entry() {
 
 	# Install KDE .desktop file
 	if use kde ; then
-		insinto /usr/share/applnk/Development
-		doins eclipse-${SLOT}.desktop
+		for x in /usr/kde/* ; do
+			insinto ${x}/share/applnk/Applications/
+			doins eclipse-${SLOT}.desktop
+		done
 	fi
 }
 
@@ -452,13 +451,5 @@ function check-ram() {
 		ewarn "Your machine has less RAM. Continuing anyway."
 		echo
 	)
-}
-
-function install-link-files() {
-	dodir /usr/lib/eclipse-${SLOT}/links
-
-	echo "path=/opt/eclipse-extensions-3" > ${D}/${eclipse_dir}/links/eclipse-binary-extensions-3.link
-
-	echo "path=/usr/lib/eclipse-extensions-3" > ${D}/${eclipse_dir}/links/eclipse-extensions-3.link
 }
 

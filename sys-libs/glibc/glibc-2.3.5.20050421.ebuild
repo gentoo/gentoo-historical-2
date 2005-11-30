@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.5.20050421.ebuild,v 1.39 2005/10/19 18:02:02 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.5.20050421.ebuild,v 1.1 2005/04/23 17:44:31 azarah Exp $
 
 # Here's how the cross-compile logic breaks down ...
 #  CTARGET - machine that will target the binaries
@@ -16,7 +16,7 @@
 #  CHOST = CTARGET  - install into /
 #  CHOST != CTARGET - install into /usr/CTARGET/
 
-KEYWORDS="-* ~ppc64"
+KEYWORDS="-*"
 
 # Versionator crap do not work here - not in the mood for hassle.
 BRANCH_UPDATE="20050421"
@@ -28,17 +28,17 @@ GLIBC_MANPAGE_VERSION="2.3.5"
 GLIBC_INFOPAGE_VERSION="2.3.5"
 
 # Gentoo patchset
-PATCH_VER="2.2"
+PATCH_VER="2.0"
 
 # C Stubbs addon (contained in fedora, so ignoring)
 #CSTUBS_VER="2.1.2"
 #CSTUBS_TARBALL="c_stubs-${CSTUBS_VER}.tar.bz2"
-#CSTUBS_URI="mirror://gentoo/${CSTUBS_TARBALL}"
+#CSTUBS_URI="http://dev.gentoo.org/~eradicator/glibc/${CSTUBS_TARBALL}"
 
 # Fedora addons (from RHEL's glibc-2.3.4-2.src.rpm)
 FEDORA_VER="20041219T2331"
 FEDORA_TARBALL="glibc-fedora-${FEDORA_VER}.tar.bz2"
-FEDORA_URI="mirror://gentoo/${FEDORA_TARBALL}"
+FEDORA_URI="http://dev.gentoo.org/~eradicator/glibc/${FEDORA_TARBALL}"
 
 GENTOO_TOOLCHAIN_BASE_URI="http://dev.gentoo.org/~azarah/glibc"
 
@@ -49,7 +49,7 @@ DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="http://www.gnu.org/software/libc/libc.html"
 LICENSE="LGPL-2"
 
-IUSE="nls pic build nptl nptlonly erandom hardened userlocales multilib selinux glibc-compat20 glibc-omitfp linuxthreads-tls profile"
+IUSE="nls pic build nptl nptlonly erandom hardened debug userlocales nomalloccheck multilib"
 
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
@@ -119,7 +119,7 @@ get_glibc_src_uri() {
 	# This variable should be set to the devspace of whoever is currently
 	# maintaining GLIBC. Please dont set this to mirror, that would just
 	# make the files unavailable until they get mirrored.
-	local devspace_uri="mirror://gentoo/"
+	local devspace_uri="http://dev.gentoo.org/~eradicator/glibc/"
 	GENTOO_TOOLCHAIN_BASE_URI=${GENTOO_TOOLCHAIN_BASE_URI:-${devspace_uri}}
 
 #	GLIBC_SRC_URI="http://ftp.gnu.org/gnu/glibc/${PN}-${GLIBC_RELEASE_VER}.tar.bz2
@@ -161,7 +161,7 @@ get_glibc_src_uri() {
 }
 
 SRC_URI=$(get_glibc_src_uri)
-S=${WORKDIR}/${PN}-${GLIBC_RELEASE_VER}
+S="${WORKDIR}/${PN}-${GLIBC_RELEASE_VER}"
 
 ### EXPORTED FUNCTIONS ###
 toolchain-glibc_src_unpack() {
@@ -170,60 +170,67 @@ toolchain-glibc_src_unpack() {
 
 	unpack ${PN}-${GLIBC_RELEASE_VER}.tar.bz2
 
-	cd "${S}"
+	cd ${S}
 	unpack ${PN}-linuxthreads-${GLIBC_RELEASE_VER}.tar.bz2
 	unpack ${PN}-libidn-${GLIBC_RELEASE_VER}.tar.bz2
 
-	[[ -n ${CSTUBS_TARBALL} ]] && unpack ${CSTUBS_TARBALL}
-	[[ -n ${FEDORA_TARBALL} ]] && unpack ${FEDORA_TARBALL}
+	if [[ -n ${CSTUBS_TARBALL} ]] ; then
+		unpack ${CSTUBS_TARBALL}
+	fi
+
+	if [[ -n ${FEDORA_TARBALL} ]] ; then
+		unpack ${FEDORA_TARBALL}
+	fi
 
 	if [[ -n ${PATCH_VER} ]] ; then
-		cd "${WORKDIR}"
+		cd ${WORKDIR}
 		unpack ${PN}-${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-patches-${PATCH_VER}.tar.bz2
 	fi
 
-	# XXX: We should do the branchupdate, before extracting the manpages and
-	# infopages else it does not help much (mtimes change if there is a change
-	# to them with branchupdate)
+	if [[ ${GLIBC_MANPAGE_VERSION} != "none" ]] ; then
+		cd ${WORKDIR}
+		unpack ${PN}-manpages-${GLIBC_MANPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
+	fi
+
+	if [[ ${GLIBC_INFOPAGE_VERSION} != "none" ]] ; then
+		cd ${S}
+		unpack ${PN}-infopages-${GLIBC_INFOPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
+	fi
+
 	if [[ -n ${BRANCH_UPDATE} ]] ; then
-		cd "${S}"
-		epatch "${DISTDIR}"/${PN}-${GLIBC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
+		cd ${WORKDIR}
+		unpack ${PN}-${GLIBC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
+	fi
+
+	cd ${S}
+
+	if [[ -n ${BRANCH_UPDATE} ]] ; then
+		epatch ${WORKDIR}/${PN}-${GLIBC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch
 
 		# Snapshot date patch
 		einfo "Patching version to display snapshot date ..."
 		sed -i -e "s:\(#define RELEASE\).*:\1 \"${BRANCH_UPDATE}\":" version.h
 	fi
 
-	if [[ ${GLIBC_MANPAGE_VERSION} != "none" ]] ; then
-		cd "${WORKDIR}"
-		unpack ${PN}-manpages-${GLIBC_MANPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
-	fi
-
-	if [[ ${GLIBC_INFOPAGE_VERSION} != "none" ]] ; then
-		cd "${S}"
-		unpack ${PN}-infopages-${GLIBC_INFOPAGE_VERSION:-${GLIBC_RELEASE_VER}}.tar.bz2
-	fi
-
 	if [[ -n ${PATCH_VER} ]] ; then
-		cd "${S}"
-		EPATCH_MULTI_MSG="Applying Gentoo Glibc Patchset ${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-${PATCH_VER} ..." \
-		EPATCH_EXCLUDE=${GLIBC_PATCH_EXCLUDE} \
-		EPATCH_SUFFIX="patch" \
-		ARCH=$(tc-arch) \
-		epatch "${WORKDIR}"/patches
+		EPATCH_EXCLUDE="${GLIBC_PATCH_EXCLUDE}"
+		EPATCH_SUFFIX="patch"
+		OLD_ARCH="${ARCH}"
+		ARCH="$(tc-arch)"
+
+		einfo "Applying Gentoo Glibc Patches: ${PATCH_GLIBC_VER:-${GLIBC_RELEASE_VER}}-${PATCH_VER}"
+		epatch ${WORKDIR}/patches
+
+		ARCH="${OLD_ARCH}"
+		unset EPATCH_EXCLUDE
+		unset EPATCH_SUFFIX
+		unset OLD_ARCH
 	fi
 }
 
 toolchain-glibc_src_compile() {
 	# Set gconvdir to /usr/$(get_libdir)/gconv on archs with multiple ABIs
-	local MAKEFLAGS=""
 	has_multilib_profile && MAKEFLAGS="gconvdir=$(alt_usrlibdir)/gconv"
-
-	echo
-	for v in ABI CBUILD CHOST CTARGET CBUILD_OPT CTARGET_OPT CC CFLAGS ; do
-		einfo " $(printf '%15s' ${v}:)   ${!v}"
-	done
-	echo
 
 	if want_linuxthreads ; then
 		glibc_do_configure linuxthreads
@@ -232,7 +239,7 @@ toolchain-glibc_src_compile() {
 	fi
 	if want_nptl ; then
 		# ... and then do the optional nptl build
-		unset LD_ASSUME_KERNEL
+		unset LD_ASSUME_KERNEL || :
 		glibc_do_configure nptl
 		einfo "Building GLIBC with NPTL..."
 		make PARALLELMFLAGS="${MAKEOPTS}" ${MAKEFLAGS} || die
@@ -246,12 +253,12 @@ toolchain-glibc_src_test() {
 
 	# do the linuxthreads build unless we're using nptlonly
 	if want_linuxthreads ; then
-		cd "${WORKDIR}"/build-${ABI}-${CTARGET}-linuxthreads
+		cd ${WORKDIR}/build-${ABI}-${CTARGET}-linuxthreads
 		einfo "Checking GLIBC with linuxthreads..."
 		make check || die "linuxthreads glibc did not pass make check"
 	fi
 	if want_nptl ; then
-		cd "${WORKDIR}"/build-${ABI}-${CTARGET}-nptl
+		cd ${WORKDIR}/build-${ABI}-${CTARGET}-nptl
 		unset LD_ASSUME_KERNEL || :
 		einfo "Checking GLIBC with NPTL..."
 		make check || die "nptl glibc did not pass make check"
@@ -268,18 +275,15 @@ toolchain-glibc_pkg_preinst() {
 	# 2005.0 is setup properly, and this is executed as part of the
 	# 2004.3 -> 2005.0 upgrade script.
 	# It can be removed after 2004.3 has been purged from portage.
-	{ use amd64 || use ppc64; } && [ "$(get_libdir)" == "lib64" ] && ! has_multilib_profile && fix_lib64_symlinks
+	use amd64 && [ "$(get_libdir)" == "lib64" ] && ! has_multilib_profile && fix_lib64_symlinks
 
 	# it appears that /lib/tls is sometimes not removed. See bug
 	# 69258 for more info.
-	if [[ -d ${ROOT}/$(alt_libdir)/tls ]] && ! { want_nptl && want_linuxthreads; }; then
-		addwrite "${ROOT}"/$(alt_libdir)/
+	if [ -d /${ROOT}$(alt_libdir)/tls ] && ! { want_nptl && want_linuxthreads; }; then
+		addwrite /${ROOT}$(alt_libdir)/
 		ewarn "nptlonly or -nptl in USE, removing /${ROOT}$(alt_libdir)/tls..."
-		rm -r "${ROOT}"/$(alt_libdir)/tls || die
+		rm -rf /${ROOT}$(alt_libdir)/tls || die
 	fi
-
-	# Shouldnt need to keep this updated
-	[[ -e ${ROOT}/etc/locales.build ]] && rm -f "${D}"/etc/locales.build
 }
 
 toolchain-glibc_src_install() {
@@ -293,16 +297,16 @@ toolchain-glibc_src_install() {
 	unset LANGUAGE LANG LC_ALL
 
 	if want_linuxthreads ; then
-		cd "${WORKDIR}"/build-${ABI}-${CTARGET}-linuxthreads
-		einfo "Installing GLIBC ${ABI} with linuxthreads ..."
+		cd ${WORKDIR}/build-${ABI}-${CTARGET}-linuxthreads
+		einfo "Installing GLIBC with linuxthreads..."
 		make PARALLELMFLAGS="${MAKEOPTS} -j1" \
-			install_root="${D}" \
+			install_root=${D} \
 			install || die
 	else # nptlonly
-		cd "${WORKDIR}"/build-${ABI}-${CTARGET}-nptl
-		einfo "Installing GLIBC ${ABI} with NPTL ..."
+		cd ${WORKDIR}/build-${ABI}-${CTARGET}-nptl
+		einfo "Installing GLIBC with NPTL..."
 		make PARALLELMFLAGS="${MAKEOPTS} -j1" \
-			install_root="${D}" \
+			install_root=${D} \
 			install || die
 	fi
 
@@ -312,7 +316,7 @@ toolchain-glibc_src_install() {
 		# crosscompile.
 		if [[ $(get_libdir) != "lib" && -d ${D}$(alt_prefix)/lib ]] ; then
 			dodir $(alt_libdir)
-			mv "${D}"$(alt_prefix)/lib/* "${D}"$(alt_libdir)
+			mv ${D}$(alt_prefix)/lib/* ${D}$(alt_libdir)
 		fi
 
 		# punt all the junk not needed by a cross-compiler
@@ -321,80 +325,72 @@ toolchain-glibc_src_install() {
 
 	if want_linuxthreads && want_nptl ; then
 		einfo "Installing NPTL to $(alt_libdir)/tls/..."
-		cd "${WORKDIR}"/build-${ABI}-${CTARGET}-nptl
-		mkdir -p "${D}"$(alt_libdir)/tls/
+		cd ${WORKDIR}/build-${ABI}-${CTARGET}-nptl
+		mkdir -p ${D}$(alt_libdir)/tls/
 
-		libcsofile=$(basename "${D}"$(alt_libdir)/libc-*.so)
-		cp -a libc.so "${D}"$(alt_libdir)/tls/${libcsofile} || die
+		libcsofile=$(basename ${D}$(alt_libdir)/libc-*.so)
+		cp -a libc.so ${D}$(alt_libdir)/tls/${libcsofile} || die
 		dosym ${libcsofile} $(alt_libdir)/tls/$(ls libc.so.*)
 
-		libmsofile=$(basename "${D}"$(alt_libdir)/libm-*.so)
+		libmsofile=$(basename ${D}$(alt_libdir)/libm-*.so)
 		pushd math > /dev/null
-		cp -a libm.so "${D}"$(alt_libdir)/tls/${libmsofile} || die
+		cp -a libm.so ${D}$(alt_libdir)/tls/${libmsofile} || die
 		dosym ${libmsofile} $(alt_libdir)/tls/$(ls libm.so.*)
 		popd > /dev/null
 
-		librtsofile=$(basename "${D}"$(alt_libdir)/librt-*.so)
+		librtsofile=$(basename ${D}$(alt_libdir)/librt-*.so)
 		pushd rt > /dev/null
-		cp -a librt.so "${D}"$(alt_libdir)/tls/${librtsofile} || die
+		cp -a librt.so ${D}$(alt_libdir)/tls/${librtsofile} || die
 		dosym ${librtsofile} $(alt_libdir)/tls/$(ls librt.so.*)
 		popd > /dev/null
 
-		libthreaddbsofile=$(basename "${D}"$(alt_libdir)/libthread_db-*.so)
+		libthreaddbsofile=$(basename ${D}$(alt_libdir)/libthread_db-*.so)
 		pushd nptl_db > /dev/null
-		cp -a libthread_db.so "${D}"$(alt_libdir)/tls/${libthreaddbsofile} || die
+		cp -a libthread_db.so ${D}$(alt_libdir)/tls/${libthreaddbsofile} || die
 		dosym ${libthreaddbsofile} $(alt_libdir)/tls/$(ls libthread_db.so.*)
 		popd > /dev/null
 
 		libpthreadsofile=libpthread-${GLIBC_RELEASE_VER}.so
-		cp -a nptl/libpthread.so "${D}"$(alt_libdir)/tls/${libpthreadsofile} || die
+		cp -a nptl/libpthread.so ${D}$(alt_libdir)/tls/${libpthreadsofile} || die
 		dosym ${libpthreadsofile} $(alt_libdir)/tls/libpthread.so.0
 
 		# and now for the static libs
-		mkdir -p "${D}"$(alt_usrlibdir)/nptl
+		mkdir -p ${D}$(alt_usrlibdir)/nptl
 		cp -a libc.a nptl/libpthread.a nptl/libpthread_nonshared.a rt/librt.a \
-			"${D}"$(alt_usrlibdir)/nptl
+			${D}$(alt_usrlibdir)/nptl
 
 		# linker script crap
 		for lib in libc libpthread; do
 			sed -e "s:$(alt_libdir)/${lib}.so:$(alt_libdir)/tls/${lib}.so:g" \
 			    -e "s:$(alt_usrlibdir)/${lib}_nonshared.a:$(alt_usrlibdir)/nptl/${lib}_nonshared.a:g" \
-			          "${D}"$(alt_usrlibdir)/${lib}.so \
-				> "${D}"$(alt_usrlibdir)/nptl/${lib}.so
+			          ${D}$(alt_usrlibdir)/${lib}.so \
+				> ${D}$(alt_usrlibdir)/nptl/${lib}.so
 
-			chmod 755 "${D}"$(alt_usrlibdir)/nptl/${lib}.so
+			chmod 755 ${D}$(alt_usrlibdir)/nptl/${lib}.so
 		done
 
 		dosym ../librt.so $(alt_usrlibdir)/nptl/librt.so
 
 		# last but not least... headers.
-		mkdir -p "${D}"/nptl "${D}"$(alt_headers)/nptl
-		make install_root="${D}"/nptl install-headers PARALLELMFLAGS="${MAKEOPTS} -j1"
-		pushd "${D}"/nptl/$(alt_headers) > /dev/null
-		for i in $(find . -type f) ; do
-			if ! [[ -f ${D}$(alt_headers)/$i ]] \
-			   || ! cmp -s $i ${D}$(alt_headers)/$i; then
+		mkdir -p ${D}/nptl ${D}$(alt_headers)/nptl
+		make install_root=${D}/nptl install-headers PARALLELMFLAGS="${MAKEOPTS} -j1"
+		pushd ${D}/nptl/$(alt_headers) > /dev/null
+			for i in `find . -type f`; do
+				if ! [ -f ${D}$(alt_headers)/$i ] \
+					|| ! cmp -s $i ${D}$(alt_headers)/$i; then
 				mkdir -p ${D}$(alt_headers)/nptl/`dirname $i`
 				cp -a $i ${D}$(alt_headers)/nptl/$i
 			fi
 		done
-		popd > /dev/null
 		rm -rf ${D}/nptl
 	fi
 
-	# Now, strip everything but the thread libs #46186, as well as the dynamic
-	# linker, else we cannot set breakpoints in shared libraries.
-	# Fix for ld-* by Lonnie Princehouse.
+	# now, strip everything but the thread libs #46186
 	mkdir -p ${T}/thread-backup
-	for x in ${D}$(alt_libdir)/lib{pthread,thread_db}* \
-	         ${D}$(alt_libdir)/ld-* ; do
-		[[ -f ${x} ]] && mv -f ${x} ${T}/thread-backup/
-	done
+	mv -f ${D}$(alt_libdir)/lib{pthread,thread_db}* ${T}/thread-backup/
 	if want_linuxthreads && want_nptl ; then
 		mkdir -p ${T}/thread-backup/tls
-		for x in ${D}$(alt_libdir)/tls/lib{pthread,thread_db}* ; do
-			[[ -f ${x} ]] && mv -f ${x} ${T}/thread-backup/tls
-		done
+		mv -f ${D}$(alt_libdir)/tls/lib{pthread,thread_db}* ${T}/thread-backup/tls
 	fi
 	env -uRESTRICT CHOST=${CTARGET} prepallstrip
 	cp -a -- ${T}/thread-backup/* ${D}$(alt_libdir)/ || die
@@ -426,7 +422,6 @@ toolchain-glibc_src_install() {
 	# system headers correctly.  See gcc/doc/gccinstall.info
 	if is_crosscompile ; then
 		dosym include $(alt_prefix)/sys-include
-		dosym . $(alt_prefix)/usr
 		return 0
 	fi
 
@@ -438,7 +433,7 @@ toolchain-glibc_src_install() {
 	else
 		MYMAINBUILDDIR=build-${ABI}-${CTARGET}-nptl
 	fi
-	cd "${WORKDIR}"/${MYMAINBUILDDIR}
+	cd ${WORKDIR}/${MYMAINBUILDDIR}
 	if ! use build ; then
 		if ! has noinfo ${FEATURES} && [[ ${GLIBC_INFOPAGE_VERSION} != "none" ]] ; then
 			einfo "Installing info pages..."
@@ -454,16 +449,16 @@ toolchain-glibc_src_install() {
 			einfo "Installing man pages..."
 
 			# Install linuxthreads man pages even if nptl is enabled
-			cd "${WORKDIR}"/man
+			cd ${WORKDIR}/man
 			doman *.3thr
 		fi
 
 		# Install nscd config file
 		insinto /etc
 		doins ${FILESDIR}/nscd.conf
-		doins "${FILESDIR}"/nsswitch.conf
 
-		doinitd "${FILESDIR}"/nscd
+		exeinto /etc/init.d
+		doexe ${FILESDIR}/nscd
 
 		cd ${S}
 		dodoc BUGS ChangeLog* CONFORMANCE FAQ INTERFACE NEWS NOTES PROJECTS README*
@@ -494,16 +489,11 @@ toolchain-glibc_src_install() {
 	doins ${FILESDIR}/2.3.4/host.conf
 
 	# simple test to make sure our new glibc isnt completely broken.
-	# for now, skip the multilib scenario.  also make sure we don't
-	# test with statically built binaries since they will fail.
-	[[ ${CBUILD} != ${CHOST} ]] && return 0
+	# for now, skip the multilib scenario.
 	[[ $(get_libdir) != "lib" ]] && return 0
 	for x in date env ls true uname ; do
 		x=$(type -p ${x})
 		[[ -z ${x} ]] && continue
-		striptest=$(file -L ${x} 2>/dev/null)
-		[[ -z ${striptest} ]] && continue
-		[[ ${striptest/statically linked} != "${striptest}" ]] && continue
 		"${D}"/$(get_libdir)/ld-*.so \
 			--library-path "${D}"/$(get_libdir) \
 			${x} > /dev/null \
@@ -540,7 +530,7 @@ toolchain-glibc_pkg_postinst() {
 		ln -s ../usr/share/zoneinfo/Factory ${ROOT}/etc/localtime
 	fi
 
-	if ! is_crosscompile && [ -x "${ROOT}/usr/sbin/iconvconfig" ] ; then
+	if [ -x "${ROOT}/usr/sbin/iconvconfig" ] ; then
 		# Generate fastloading iconv module configuration file.
 		${ROOT}/usr/sbin/iconvconfig --prefix=${ROOT}
 	fi
@@ -551,7 +541,7 @@ toolchain-glibc_pkg_postinst() {
 	fi
 
 	# Reload init ...
-	if ! is_crosscompile && [ "${ROOT}" = "/" ] ; then
+	if [ "${ROOT}" = "/" ] ; then
 		/sbin/init U &> /dev/null
 	fi
 
@@ -598,7 +588,7 @@ alt_prefix() {
 
 alt_libdir() {
 	if is_crosscompile ; then
-		echo /usr/${CTARGET}/$(get_libdir)
+		echo /usr/${CTARGET}/lib
 	else
 		echo /$(get_libdir)
 	fi
@@ -606,13 +596,17 @@ alt_libdir() {
 
 alt_usrlibdir() {
 	if is_crosscompile ; then
-		echo /usr/${CTARGET}/$(get_libdir)
+		echo /usr/${CTARGET}/lib
 	else
 		echo /usr/$(get_libdir)
 	fi
 }
 
 setup_flags() {
+	# If the user wants to use -fomit-frame-pointer, let the build system
+	# determine when it's safe
+	is-flag -fomit-frame-pointer && EXTRA_ECONF="--enable-omitfp ${EXTRA_ECONF}"
+
 	# Over-zealous CFLAGS can often cause problems.  What may work for one
 	# person may not work for another.  To avoid a large influx of bugs
 	# relating to failed builds, we strip most CFLAGS out to ensure as few
@@ -621,7 +615,7 @@ setup_flags() {
 	strip-unsupported-flags
 	filter-flags -m32 -m64 -mabi=*
 
-	has_multilib_profile && CTARGET_OPT=$(get_abi_CHOST)
+	has_multilib_profile && CTARGET_OPT="$(get_abi_CHOST)"
 
 	case $(tc-arch) in
 		ppc)
@@ -682,7 +676,6 @@ setup_flags() {
 
 	# Lock glibc at -O2 -- linuxthreads needs it and we want to be
 	# conservative here
-	filter-flags -O?
 	append-flags -O2
 }
 
@@ -752,7 +745,7 @@ want_nptl() {
 
 	# Archs that can use NPTL
 	case $(tc-arch) in
-		alpha|amd64|ia64|ppc|ppc64|s390|x86)
+		amd64|ia64|ppc|ppc64|s390|x86)
 			return 0;
 		;;
 		sparc)
@@ -786,8 +779,9 @@ want_tls() {
 			esac
 		;;
 		x86)
-			# requires i486 or better #106556
-			[[ ${CTARGET} == i[4567]86* ]] && return 0
+			case ${CTARGET/-*} in
+				i486|i586|i686)	return 0 ;;
+			esac
 		;;
 	esac
 
@@ -810,7 +804,7 @@ want__thread() {
 
 install_locales() {
 	unset LANGUAGE LANG LC_ALL
-	cd "${WORKDIR}"/${MYMAINBUILDDIR} || die "${WORKDIR}/${MYMAINBUILDDIR}"
+	cd ${WORKDIR}/${MYMAINBUILDDIR} || die "${WORKDIR}/${MYMAINBUILDDIR}"
 	make PARALLELMFLAGS="${MAKEOPTS} -j1" \
 		install_root=${D} localedata/install-locales || die
 }
@@ -853,19 +847,16 @@ glibc_do_configure() {
 	# set addons
 	pushd ${S} > /dev/null
 	ADDONS=$(echo */configure | sed -e 's!/configure!!g;s!\(linuxthreads\|nptl\|rtkaio\|glibc-compat\)\( \|$\)!!g;s! \+$!!;s! !,!g;s!^!,!;/^,\*$/d')
-	use glibc-compat20 && [[ -d glibc-compat ]] && ADDONS="${ADDONS},glibc-compat"
 	popd > /dev/null
 
 	use nls || myconf="${myconf} --disable-nls"
 	use erandom || myconf="${myconf} --disable-dev-erandom"
 
-	use glibc-omitfp && myconf="${myconf} --enable-omitfp"
-
 	if [ "$1" == "linuxthreads" ] ; then
 		if want_tls ; then
 			myconf="${myconf} --with-tls"
 
-			if want__thread && use linuxthreads-tls ; then
+			if want__thread ; then
 				myconf="${myconf} --with-__thread"
 			else
 				myconf="${myconf} --without-__thread"
@@ -884,32 +875,26 @@ glibc_do_configure() {
 		die "invalid pthread option"
 	fi
 
-	if ! use build && use selinux; then
-		myconf="${myconf} --with-selinux"
-	else
-		myconf="${myconf} --without-selinux"
-	fi
-
 	myconf="${myconf}
 		--without-cvs
 		--enable-bind-now
 		--build=${CBUILD_OPT:-${CBUILD}}
 		--host=${CTARGET_OPT:-${CTARGET}}
-		$(use_enable profile)
+		--disable-profile
 		--without-gd
-		--with-headers=${ROOT}$(alt_headers)
+		--with-headers=$(alt_headers)
 		--prefix=$(alt_prefix)
 		--mandir=$(alt_prefix)/share/man
 		--infodir=$(alt_prefix)/share/info
 		--libexecdir=$(alt_prefix)/lib/misc/glibc
 		${EXTRA_ECONF}"
 
-	has_version app-admin/eselect-compiler || export CC="$(tc-getCC ${CTARGET})"
+	export CC="$(tc-getCC ${CTARGET})"
 
-	GBUILDDIR=${WORKDIR}/build-${ABI}-${CTARGET}-$1
+	GBUILDDIR="${WORKDIR}/build-${ABI}-${CTARGET}-$1"
 	mkdir -p ${GBUILDDIR}
 	cd ${GBUILDDIR}
-	einfo "Configuring GLIBC for $1 with: ${myconf// /\n\t\t}"
+	einfo "Configuring GLIBC for $1 with: ${myconf}"
 	${S}/configure ${myconf} || die "failed to configure glibc"
 }
 
@@ -927,8 +912,7 @@ fix_lib64_symlinks() {
 		rm ${ROOT}/lib64
 		# now that lib64 is gone, nothing will run without calling ld.so
 		# directly. luckily the window of brokenness is almost non-existant
-		use amd64 && /lib/ld-linux-x86-64.so.2 /bin/mv ${ROOT}/lib ${ROOT}/lib64
-		use ppc64 && /lib/ld64.so.1 /bin/mv ${ROOT}/lib ${ROOT}/lib64
+		/lib/ld-linux-x86-64.so.2 /bin/mv ${ROOT}/lib ${ROOT}/lib64
 		# all better :)
 		ldconfig
 		ln -s lib64 ${ROOT}/lib
@@ -952,10 +936,33 @@ fix_lib64_symlinks() {
 }
 
 use_multilib() {
-	case ${CTARGET} in
-		sparc64*|mips64*|amd64|ppc64)
-			is_crosscompile || has_multilib_profile || use multilib ;;
-		*)  false ;;
+	case $(tc-arch) in
+		sparc)
+			case ${CHOST} in
+				sparc64*)
+					is_crosscompile || has_multilib_profile || use multilib
+					;;
+				*)
+					false
+					;;
+			esac
+		;;
+		mips)
+			case ${CHOST} in
+				mips64*)
+					is_crosscompile || has_multilib_profile || use multilib
+					;;
+				*)
+					false
+					;;
+			esac
+		;;
+		amd64|ppc64)
+			is_crosscompile || has_multilib_profile || use multilib
+		;;
+		*)
+			false
+		;;
 	esac
 }
 
@@ -968,13 +975,13 @@ crosscompile_setup() {
 
 		case ${CTARGET} in
 			x86_64*)
-				export CFLAGS_x86=${CFLAGS_x86--m32}
-				export CHOST_x86=${CTARGET/x86_64/i686}
+				export CFLAGS_x86="${CFLAGS_x86--m32}"
+				export CHOST_x86="i686-pc-linux-gnu"
 				export CDEFINE_x86="__i386__"
 				export LIBDIR_x86="lib"
 
-				export CFLAGS_amd64=${CFLAGS_amd64--m64}
-				export CHOST_amd64=${CTARGET}
+				export CFLAGS_amd64="${CFLAGS_amd64--m64}"
+				export CHOST_amd64="x86_64-pc-linux-gnu"
 				export CDEFINE_amd64="__x86_64__"
 				export LIBDIR_amd64="lib64"
 
@@ -982,18 +989,18 @@ crosscompile_setup() {
 				export DEFAULT_ABI="amd64"
 			;;
 			mips64*)
-				export CFLAGS_o32=${CFLAGS_o32--mabi=32}
-				export CHOST_o32=${CTARGET/mips64/mips}
+				export CFLAGS_o32="${CFLAGS_o32--mabi=32}"
+				export CHOST_o32="mips-unknown-linux-gnu"
 				export CDEFINE_o32="_ABIO32"
 				export LIBDIR_o32="lib"
 
-				export CFLAGS_n32=${CFLAGS_n32--mabi=n32}
-				export CHOST_n32=${CTARGET}
+				export CFLAGS_n32="${CFLAGS_n32--mabi=n32}"
+				export CHOST_n32="mips64-unknown-linux-gnu"
 				export CDEFINE_n32="_ABIN32"
 				export LIBDIR_n32="lib32"
 
-				export CFLAGS_n64=${CFLAGS_n64--mabi=64}
-				export CHOST_n64=${CTARGET}
+				export CFLAGS_n64="${CFLAGS_n64--mabi=64}"
+				export CHOST_n64="mips64-unknown-linux-gnu"
 				export CDEFINE_n64="_ABI64"
 				export LIBDIR_n64="lib64"
 
@@ -1001,27 +1008,29 @@ crosscompile_setup() {
 				export DEFAULT_ABI="n32"
 			;;
 			powerpc64*)
-				export CFLAGS_ppc=${CFLAGS_ppc--m32}
-				export CHOST_ppc=${CTARGET/powerpc64/powerpc}
-				export CDEFINE_ppc="!__powerpc64__"
+				export CFLAGS_ppc="${CFLAGS_ppc--m32}"
+				export CHOST_ppc="powerpc-unknown-linux-gnu"
+				export CDEFINE_ppc=""
 				export LIBDIR_ppc="lib"
 
-				export CFLAGS_ppc64=${CFLAGS_ppc64--m64}
-				export CHOST_ppc64=${CTARGET}
-				export CDEFINE_ppc64="__powerpc64__"
+				export CFLAGS_ppc64="${CFLAGS_ppc64--m64}"
+				export CHOST_ppc64="powerpc64-unknown-linux-gnu"
+				export CDEFINE_ppc64=""
 				export LIBDIR_ppc64="lib64"
 
 				export MULTILIB_ABIS="ppc64"
 				export DEFAULT_ABI="ppc64"
+
+				die "ppc64 crosscompile not yet supported.  Bug a ppc64 dev to fill in the CDEFINE values in the glibc ebuild."
 			;;
 			sparc64*)
-				export CFLAGS_sparc32=${CFLAGS_sparc--m32}
-				export CHOST_sparc32=${CTARGET/sparc64/sparc}
+				export CFLAGS_sparc32="${CFLAGS_sparc--m32}"
+				export CHOST_sparc32="sparc-unknown-linux-gnu"
 				export CDEFINE_sparc32="!__arch64__"
 				export LIBDIR_sparc32="lib"
 
-				export CFLAGS_sparc64=${CFLAGS_sparc64--m64}
-				export CHOST_sparc64=${CTARGET}
+				export CFLAGS_sparc64="${CFLAGS_sparc64--m64}"
+				export CHOST_sparc64="sparc64-unknown-linux-gnu"
 				export CDEFINE_sparc64="__arch64__"
 				export LIBDIR_sparc64="lib64"
 
@@ -1059,23 +1068,41 @@ DEPEND=">=sys-devel/gcc-3.4
 	>=sys-devel/binutils-2.15.90
 	>=sys-devel/gcc-config-1.3.9
 	virtual/os-headers
-	nls? ( sys-devel/gettext )
-	selinux? ( !build? ( sys-libs/libselinux ) )"
+	nls? ( sys-devel/gettext )"
+
 RDEPEND="virtual/os-headers
-	nls? ( sys-devel/gettext )
-	selinux? ( !build? ( sys-libs/libselinux ) )"
+	nls? ( sys-devel/gettext )"
 
 if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
-	DEPEND="${DEPEND} ${CATEGORY}/gcc"
+	DEPEND="${DEPEND}
+	        >=${CATEGORY}/gcc-3.4"
 
-	if [[ ${CATEGORY} == *-linux* ]] ; then
-		if [[ ${CATEGORY/mips} != ${CATEGORY} ]] ; then
-			DEPEND="${DEPEND} >=${CATEGORY}/mips-headers-2.6.10"
-		else
-			DEPEND="${DEPEND} ${CATEGORY}/linux-headers"
-		fi
+	if [[ ${CATEGORY/mips} != ${CATEGORY} ]] ; then
+		DEPEND="${DEPEND}
+		        >=${CATEGORY}/mips-headers-2.6.10"
+	else
+		DEPEND="${DEPEND}
+		        >=${CATEGORY}/linux-headers-2.6.8"
 	fi
+
+	case ${CTARGET} in
+		x86_64-pc-linux-gnu)
+			[[ ${CHOST/-*/} == "i686" ]] || RDEPEND="${RDEPEND} cross-i686-pc-linux-gnu/${PN}"
+		;;
+		sparc64-unknown-linux-gnu)
+			[[ ${CHOST/-*/} == "sparc" ]] || RDEPEND="${RDEPEND} cross-sparc-unknown-linux-gnu/${PN}"
+		;;
+		powerpc64-unknown-linux-gnu)
+			[[ ${CHOST/-*/} == "powerpc" ]] || RDEPEND="${RDEPEND} cross-powerpc-unknown-linux-gnu/${PN}"
+		;;
+		mips64-unknown-linux-gnu)
+			[[ ${CHOST/-*/} == "mips" ]] || RDEPEND="${RDEPEND} cross-mips-unknown-linux-gnu/${PN}"
+		;;
+	esac
 fi
+
+# until amd64's 2004.3 is purged out of existence
+PDEPEND="amd64? ( multilib? ( >=app-emulation/emul-linux-x86-glibc-2.3.4 ) )"
 
 pkg_setup() {
 	if use nptlonly && ! use nptl ; then
@@ -1131,14 +1158,9 @@ src_unpack() {
 		;;
 	esac
 
-	toolchain-glibc_src_unpack
+	use nomalloccheck || GLIBC_PATCH_EXCLUDE="${GLIBC_PATCH_EXCLUDE} 5020_all_nomalloccheck.patch"
 
-	# XXX: do not package ssp up into tarballs, leave it in FILESDIR
-	cd "${S}"
-	cp "${FILESDIR}"/2.3.5/ssp.c sysdeps/unix/sysv/linux/ || die "could not find ssp.c"
-	rm -f "${WORKDIR}"/patches/2*
-	epatch "${FILESDIR}"/2.3.5/glibc-2.3.5-propolice-guard-functions.patch
-	epatch "${FILESDIR}"/2.3.5/glibc-2.3.5-frandom-detect.patch
+	toolchain-glibc_src_unpack
 
 	case $(tc-arch) in
 		alpha)
@@ -1157,8 +1179,6 @@ src_unpack() {
 			has_multilib_profile || get_libdir_override lib64
 		;;
 	esac
-
-	GLIBC_PATCH_EXCLUDE="${GLIBC_PATCH_EXCLUDE} 5020_all_nomalloccheck.patch"
 
 	# disable binutils -as-needed
 	sed -e 's/^have-as-needed.*/have-as-needed = no/' -i ${S}/config.make.in
@@ -1190,22 +1210,20 @@ src_unpack() {
 src_compile() {
 	crosscompile_setup
 
-	if [[ -z ${OABI} ]] && has_multilib_profile ; then
-		# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
-		local MLTEST=$(type dyn_unpack)
-		if [[ ${MLTEST/set_abi} == "${MLTEST}" ]] ; then
-			OABI=${ABI}
-			einfo "Building multilib glibc for ABIs: $(get_install_abis)"
-			for ABI in $(get_install_abis) ; do
-				export ABI=${ABI}
-				src_compile
-			done
-			ABI=${OABI}
-			unset OABI
-			return 0
-		fi
-		unset MLTEST
+	# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
+	local MLTEST=$(type dyn_unpack)
+	if has_multilib_profile && [ -z "${OABI}" -a "${MLTEST/set_abi}" = "${MLTEST}" ] ; then
+		OABI="${ABI}"
+		for ABI in $(get_install_abis); do
+			export ABI
+			einfo "Compiling ${ABI} glibc"
+			src_compile
+		done
+		ABI="${OABI}"
+		unset OABI
+		return 0
 	fi
+	unset MLTEST
 
 	ABI=${ABI:-default}
 	toolchain-glibc_src_compile
@@ -1214,23 +1232,20 @@ src_compile() {
 src_test() {
 	crosscompile_setup
 
-	if [[ -z ${OABI} ]] && has_multilib_profile ; then
-		# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
-		local MLTEST=$(type dyn_unpack)
-		if [[ ${MLTEST/set_abi} == "${MLTEST}" ]] ; then
-			OABI=${ABI}
-			einfo "Testing multilib glibc for ABIs: $(get_install_abis)"
-			for ABI in $(get_install_abis) ; do
-				export ABI
-				einfo "   Testing ${ABI} glibc"
-				src_test
-			done
-			ABI=${OABI}
-			unset OABI
-			return 0
-		fi
-		unset MLTEST
+	# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
+	local MLTEST=$(type dyn_unpack)
+	if has_multilib_profile && [ -z "${OABI}" -a "${MLTEST/set_abi}" = "${MLTEST}" ] ; then
+		OABI="${ABI}"
+		for ABI in $(get_install_abis); do
+			export ABI
+			einfo "Testing ${ABI} glibc"
+			src_test
+		done
+		ABI="${OABI}"
+		unset OABI
+		return 0
 	fi
+	unset MLTEST
 
 	ABI=${ABI:-default}
 	toolchain-glibc_src_test
@@ -1239,63 +1254,52 @@ src_test() {
 src_install() {
 	crosscompile_setup
 
-	if [[ -z ${OABI} ]] && has_multilib_profile ; then
-		# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
-		local MLTEST=$(type dyn_unpack)
-		if [[ ${MLTEST/set_abi} == "${MLTEST}" ]] ; then
-			OABI=${ABI}
-			einfo "Installing multilib glibc for ABIs: $(get_install_abis)"
-			for ABI in $(get_install_abis) ; do
-				export ABI
-				src_install
-			done
-			ABI=${OABI}
-			unset OABI
-			return 0
-		fi
-		unset MLTEST
+	# MULTILIB-CLEANUP: Fix this when FEATURES=multilib-pkg is in portage
+	local MLTEST=$(type dyn_unpack)
+	if has_multilib_profile && [ -z "${OABI}" -a "${MLTEST/set_abi}" = "${MLTEST}" ] ; then
+		OABI="${ABI}"
+		for ABI in $(get_install_abis); do
+			export ABI
+			einfo "Installing ${ABI} glibc"
+			src_install
+		done
+		ABI="${OABI}"
+		unset OABI
+		return 0
 	fi
+	unset MLTEST
 
 	ABI=${ABI:-default}
 
 	# Handle stupid lib32 BS
 	unset OLD_LIBDIR
-	if ! is_crosscompile ; then
-		if [[ $(tc-arch) == "amd64" && ${ABI} == "x86" && $(get_libdir) != "lib" ]] ; then
-			OLD_LIBDIR=$(get_libdir)
-			LIBDIR_x86="lib"
-		fi
-
-		if [[ $(tc-arch) == "ppc64" && ${ABI} == "ppc" && $(get_libdir) != "lib" ]] ; then
-			OLD_LIBDIR=$(get_libdir)
-			LIBDIR_ppc="lib"
-		fi
+	if [[ $(tc-arch) == "amd64" && ${ABI} == "x86" && $(get_libdir) != "lib" ]] && ! is_crosscompile; then
+		OLD_LIBDIR="$(get_libdir)"
+		LIBDIR_x86="lib"
 	fi
 
 	toolchain-glibc_src_install
 
-	# Handle stupid lib32 BS on amd64 and ppc64
+	# Handle stupid lib32 BS on amd64
 	if [[ -n ${OLD_LIBDIR} ]] ; then
-		cd "${S}"
-		[[ $(tc-arch) == "amd64" ]] && LIBDIR_x86=${OLD_LIBDIR}
-		[[ $(tc-arch) == "ppc64" ]] && LIBDIR_ppc=${OLD_LIBDIR}
+		cd ${S}
+		LIBDIR_x86="${OLD_LIBDIR}"
 		unset OLD_LIBDIR
 
-		mv "${D}"/lib "${D}"/$(get_libdir)
-		mv "${D}"/usr/lib "${D}"/usr/$(get_libdir)
+		mv ${D}/lib ${D}/$(get_libdir)
+		mv ${D}/usr/lib ${D}/usr/$(get_libdir)
 		dodir /lib
 		dodir /usr/lib
-		mv "${D}"/usr/$(get_libdir)/locale "${D}"/usr/lib
-		[[ $(tc-arch) == "amd64" ]] && dosym ../$(get_libdir)/ld-linux.so.2 /lib/ld-linux.so.2
-		[[ $(tc-arch) == "ppc64" ]] && dosym ../$(get_libdir)/ld.so.1 /lib/ld.so.1
+		mv ${D}/usr/$(get_libdir)/locale ${D}/usr/lib
+		dosym ../$(get_libdir)/ld-linux.so.2 /lib/ld-linux.so.2
 
-		for f in "${D}"/usr/$(get_libdir)/*.so; do
-			local basef=$(basename "${f}")
-			if [[ -L ${f} ]] ; then
-				local target=$(readlink "${f}")
+		for f in ${D}/usr/$(get_libdir)/*.so; do
+			local basef=$(basename ${f})
+			if [ -L ${f} ] ; then
+				local target=$(readlink ${f})
 				target=${target/\/lib\//\/$(get_libdir)\/}
-				rm "${f}"
-				dosym "${target}" /usr/$(get_libdir)/"${basef}"
+				rm ${f}
+				dosym ${target} /usr/$(get_libdir)/${basef}
 			fi
 		done
 

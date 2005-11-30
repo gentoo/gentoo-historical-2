@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jacl/jacl-1.3.1.ebuild,v 1.10 2005/11/26 02:51:07 nichoj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jacl/jacl-1.3.1.ebuild,v 1.1 2004/02/14 19:44:30 zx Exp $
 
 inherit java-pkg
 
@@ -9,22 +9,20 @@ HOMEPAGE="http://tcljava.sourceforge.net"
 SRC_URI="mirror://sourceforge/tcljava/${P//-}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc amd64"
-IUSE="doc"
+KEYWORDS="~x86 ~ppc ~sparc"
+
+IUSE="jikes doc"
+
+DEPEND=">=virtual/jdk-1.1
+		jikes? ( >=dev-java/jikes-1.19 )"
 
 RDEPEND=">=dev-lang/tcl-8.4.5
-	>=virtual/jre-1.1"
-DEPEND=">=virtual/jdk-1.1
-	${RDEPEND}"
-
+		>=virtual/jdk-1.1"
 
 S=${WORKDIR}/${P//-}
 
-# jikes support disabled for now.
-# refer to bug #100020 and bug #89711
-
 src_compile() {
-	econf --enable-jacl --without-jikes || die
+	econf --enable-jacl `use_with jikes` || die
 	emake DESTDIR="/usr/share/${PN}" || die "emake failed"
 }
 
@@ -33,5 +31,5 @@ src_install() {
 	dobin jaclsh
 	dodoc README ChangeLog known_issues.txt new_features.txt
 
-	use doc && java-pkg_dohtml -r docs/*
+	[ `use doc` ] && dohtml -r docs/*
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/mac-robber/mac-robber-1.00.ebuild,v 1.3 2005/08/11 01:25:19 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/mac-robber/mac-robber-1.00.ebuild,v 1.1 2005/01/26 02:44:04 dragonheart Exp $
 
 inherit toolchain-funcs
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="x86"
 IUSE=""
 
 DEPEND="virtual/libc"

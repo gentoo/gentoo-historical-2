@@ -1,21 +1,6 @@
 # ChangeLog for dev-tex/lazylist
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/lazylist/ChangeLog,v 1.7 2004/12/28 21:10:03 absinthe Exp $
-
-  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> lazylist-1.0a.ebuild:
-  Keywords ~amd64.
-
-  21 Oct 2004; Andres Loeh <kosmikus@gentoo.org> lazylist-1.0a.ebuild:
-  Stable on x86.
-
-  20 May 2004; Ferris McCormick <fmccor@gentoo.org> lazylist-1.0a.ebuild:
-  Marked stable for sparc.
-
-  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> lazylist-1.0a.ebuild:
-  Added ~sparc, #50235
-
-  21 Mar 2004; David Holm <dholm@gentoo.org> lazylist-1.0a.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/lazylist/ChangeLog,v 1.1 2004/03/20 19:59:16 kosmikus Exp $
 
 *lazylist-1.0a (20 Mar 2004)
 

@@ -1,14 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template/HTML-Template-2.6-r1.ebuild,v 1.12 2005/07/09 22:45:59 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Template/HTML-Template-2.6-r1.ebuild,v 1.1 2002/10/30 07:20:37 seemant Exp $
 
 inherit perl-module
 
 DESCRIPTION="A Perl module to use HTML Templates"
 HOMEPAGE="http://cpan.org/modules/by-module/HTML/${P}.readme"
-SRC_URI="mirror://cpan/authors/id/S/SA/SAMTREGAR/${P}.tar.gz"
+SRC_URI="http://cpan.org/modules/by-module/HTML/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-1 GPL-2 )"
+LICENSE="Artistic | GPL-1 | GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 sparc ppc alpha"
-IUSE=""
+KEYWORDS="x86 sparc sparc64 ~ppc ~alpha"
+
+DEPEND="${DEPEND}"
+

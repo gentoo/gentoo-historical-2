@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.2.ebuild,v 1.8 2005/06/11 06:41:28 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyxml/pyxml-0.8.2.ebuild,v 1.1 2003/08/29 17:14:21 liquidx Exp $
 
 inherit distutils
 
@@ -10,24 +10,24 @@ DESCRIPTION="A collection of libraries to process XML with Python."
 SRC_URI="mirror://sourceforge/pyxml/${MY_P}.tar.gz"
 HOMEPAGE="http://pyxml.sourceforge.net/"
 
-DEPEND="<dev-lang/python-2.4
+DEPEND="virtual/python
 	>=dev-libs/expat-1.95.6"
 
 IUSE=""
 SLOT="0"
-KEYWORDS="x86 ~ppc sparc alpha hppa amd64 ia64"
+KEYWORDS="x86 ~ppc ~sparc ~alpha hppa amd64"
 LICENSE="PYTHON"
 S=${WORKDIR}/${MY_P}
 
 src_compile() {
 	local myconf
-
+	
 	# if you want to use 4Suite, then their XSLT/XPATH is
 	# better according to the docs
-	if has_version "dev-python/4suite"; then
+	if has_version "dev-python/4Suite"; then
 		myconf="--without-xslt --without-xpath"
 	fi
-
+	
 	distutils_src_compile ${myconf}
 }
 

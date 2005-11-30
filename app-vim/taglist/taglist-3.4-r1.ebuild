@@ -1,14 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/taglist/taglist-3.4-r1.ebuild,v 1.11 2005/06/27 17:04:13 killerfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/taglist/taglist-3.4-r1.ebuild,v 1.1 2004/10/02 00:10:35 ciaranm Exp $
 
 inherit vim-plugin eutils
 
 DESCRIPTION="vim plugin: ctags-based source code browser"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=273"
-
 LICENSE="vim"
-KEYWORDS="alpha amd64 ~hppa ia64 mips ppc sparc x86"
+KEYWORDS="~x86 ~alpha ~sparc ~ia64 ~ppc ~mips ~amd64"
 IUSE=""
 
 RDEPEND="dev-util/ctags"

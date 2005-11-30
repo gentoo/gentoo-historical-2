@@ -1,34 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netpipe/netpipe-1.0.0_beta2.ebuild,v 1.8 2005/04/24 03:04:30 hansmi Exp $
+# ebuild created by Matthias Schwarzott <zzam@gmx.de>
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netpipe/netpipe-1.0.0_beta2.ebuild,v 1.1 2003/02/11 22:27:50 zwelch Exp $
 
-DESCRIPTION="tool to reliably distribute binary data using UDP broadcasting techniques"
-HOMEPAGE="http://home.t-online.de/home/gerd.o/netpipe.html"
-SRC_URI="http://home.t-online.de/home/gerd.o/netpipe.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="ppc x86"
 IUSE=""
 
-DEPEND="virtual/libc"
+DESCRIPTION="tool to reliably distribute binary data using UDP broadcasting techniques"
+
+SRC_URI="http://home.t-online.de/home/gerd.o/netpipe.tar.gz"
+HOMEPAGE="http://home.t-online.de/home/gerd.o/netpipe.html"
+
+DEPEND="virtual/glibc"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~x86"
 
 S="${WORKDIR}/netpipe"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i \
-		-e "s:^OPT=.*:OPT = ${CFLAGS}:" \
-		-e "s:^#CC.*:CC = $(tc-getCC):" \
-		Makefile
+	unpack ${A} ; cd ${S}
+	mv Makefile Makefile.orig
+	sed -e "s:^OPT=.*:OPT = ${CFLAGS}:" \
+				-e "s:^#CC.*:CC = gcc:" \
+				Makefile.orig > Makefile
 }
 
 src_compile() {
 	make || die
 }
 
-src_install() {
-	dobin netpipe || die
+src_install () {
+	dobin netpipe
 	dodoc DOCUMENTATION INSTALL TECH-NOTES
 }

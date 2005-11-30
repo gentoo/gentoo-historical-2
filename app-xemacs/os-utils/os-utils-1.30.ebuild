@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/os-utils/os-utils-1.30.ebuild,v 1.7 2005/08/07 13:23:19 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/os-utils/os-utils-1.30.ebuild,v 1.1 2003/02/22 12:46:40 rendhalver Exp $
 
 SLOT="0"
 IUSE=""
@@ -9,7 +9,7 @@ PKG_CAT="standard"
 
 DEPEND="app-xemacs/xemacs-base
 "
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="x86 ~ppc ~alpha sparc"
 
 inherit xemacs-packages
 

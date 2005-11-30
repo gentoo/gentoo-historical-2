@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/weather/weather-2.2.ebuild,v 1.8 2005/10/24 15:07:09 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/weather/weather-2.2.ebuild,v 1.1 2002/11/01 02:52:02 mkennedy Exp $
 
-inherit elisp
+inherit elisp 
 
 IUSE=""
 
@@ -13,10 +13,12 @@ HOMEPAGE="ftp://ftp.cis.ohio-state.edu/pub/emacs-lisp/archive/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc x86"
+KEYWORDS="x86"
 
 DEPEND="virtual/emacs
 	app-emacs/w3"
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50weather-gentoo.el
 

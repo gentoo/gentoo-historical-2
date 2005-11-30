@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-8.0.4.ebuild,v 1.10 2005/11/21 18:45:01 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-8.0.4.ebuild,v 1.1 2005/10/08 23:06:23 nakano Exp $
 
 inherit eutils gnuconfig flag-o-matic multilib toolchain-funcs
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://postgresql/source/v${PV}/${PN}-base-${MY_PV}.tar.bz2
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="ssl nls python tcltk perl libg++ pam readline xml2 zlib doc selinux kerberos pg-intdatetime pg-hier"
 
 S=${WORKDIR}/${MY_P}
@@ -60,10 +60,6 @@ pkg_setup() {
 			exit 1
 		fi
 	fi
-	enewgroup postgres 70 \
-		|| die "problem adding group postgres"
-	enewuser postgres 70 /bin/bash /var/lib/postgresql postgres \
-		|| die "problem adding user postgres"
 }
 
 src_unpack() {
@@ -104,6 +100,7 @@ src_compile() {
 		--with-docdir=/usr/share/doc/${PF} \
 		--libdir=/usr/$(get_libdir) \
 		--enable-depend \
+		--with-gnu-ld \
 		$myconf || die
 
 	make LD="$(tc-getLD) $(get_abi_LDFLAGS)" || die
@@ -172,7 +169,7 @@ pkg_postinst() {
 	if [ ! -f ${PG_DIR}/data/PG_VERSION ] ; then
 		einfo ""
 		einfo "Execute the following command"
-		einfo "emerge --config =${PF}"
+		einfo "ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config"
 		einfo "to setup the initial database environment."
 		einfo ""
 	fi

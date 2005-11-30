@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/logrotate/logrotate-3.7.1-r1.ebuild,v 1.11 2005/07/09 13:51:53 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/logrotate/logrotate-3.7.1-r1.ebuild,v 1.1 2005/05/26 17:59:10 dang Exp $
 
 inherit eutils
 
 DESCRIPTION="Rotates, compresses, and mails system logs"
 HOMEPAGE="http://www.gentoo.org"
-SRC_URI="mirror://gentoo/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64 ~ppc64 ~s390 ~hppa"
 IUSE="selinux"
 
 RDEPEND="

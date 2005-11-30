@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/lutelwall/lutelwall-0.99.ebuild,v 1.3 2005/09/15 23:14:36 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/lutelwall/lutelwall-0.99.ebuild,v 1.1 2005/08/25 18:59:50 vanquirius Exp $
 
 DESCRIPTION="High-level tool for firewall configuration"
 HOMEPAGE="http://firewall.lutel.pl"
 SRC_URI="http://firewall.lutel.pl/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha"
 IUSE=""
 
 DEPEND=">=net-firewall/iptables-1.2.6

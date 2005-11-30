@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/rapidsvn/rapidsvn-0.8.0.ebuild,v 1.7 2005/11/27 20:23:12 nerdboy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/rapidsvn/rapidsvn-0.8.0.ebuild,v 1.1 2005/05/31 06:28:27 nerdboy Exp $
 
 inherit eutils libtool
 
@@ -10,11 +10,10 @@ SRC_URI="http://www.rapidsvn.org/download/${P}.tar.gz"
 LICENSE="Apache-1.1"
 SLOT="0"
 KEYWORDS="~x86 ~ppc ~sparc ~amd64"
-IUSE="doc static"
+IUSE="doc gtk2"
 
-DEPEND="~net-misc/neon-0.24.7
-	>=dev-util/subversion-1.0.0
-	~x11-libs/wxGTK-2.4.2
+DEPEND=">=dev-util/subversion-1.0.0
+	>=x11-libs/wxGTK-2.4.2-r2
 	doc? ( dev-libs/libxslt app-text/docbook-sgml-utils app-doc/doxygen app-text/docbook-xsl-stylesheets )"
 
 src_unpack() {
@@ -37,27 +36,21 @@ src_compile() {
 		myconf="--without-xsltproc --without-docbook-xsl --without-doxygen \
 			--without-dot"
 	fi
-	if use static; then
-		myconf="${myconf} --enable-static"
-	else
-		myconf="${myconf} --disable-static --enable-shared"
-	fi
-	# look for wxgtk config file
-	if test -x /usr/bin/wxgtk2-2.4-config; then
-		myconf="${myconf} --with-wx-config=/usr/bin/wxgtk2-2.4-config"
-	else
-		ewarn "wxgtk2-2.4-config not found. Compiling with default wxGTK."
-	fi
-	if test -x /usr/bin/wxgtk-2.4-config; then
+	if use gtk2; then
+		if test -x /usr/bin/wxgtk2-2.4-config; then
+			myconf="${myconf} --with-wx-config=/usr/bin/wxgtk2-2.4-config"
+		else
+			ewarn "wxgtk2-2.4-config not found. Compiling with default wxGTK."
+		fi
+	elif test -x /usr/bin/wxgtk-2.4-config; then
 		myconf="${myconf} --with-wx-config=/usr/bin/wxgtk-2.4-config"
 	else
 		ewarn "wxgtk-2.4-config not found. Compiling with default wxGTK."
 	fi
 	elibtoolize --portage
 
-	econf	--with-svn-lib=/usr/$(get_libdir) \
+	econf	--with-svn-lib=/usr/lib \
 		--with-svn-include=/usr/include \
-		--with-neon-config=/usr/bin/neon-config \
 		${myconf} || die "./configure failed"
 	emake  || die
 }

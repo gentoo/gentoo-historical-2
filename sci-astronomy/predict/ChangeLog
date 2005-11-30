@@ -1,19 +1,6 @@
-# ChangeLog for sci-astronomy/predict
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/predict/ChangeLog,v 1.5 2005/08/05 15:37:18 herbs Exp $
-
-  05 Aug 2005; Herbie Hopkins <herbs@gentoo.org> predict-2.2.2-r3.ebuild:
-  Marked ~amd64 wrt bug #101375.
-
-  23 Jun 2005; Olivier Fisette <ribosome@gentoo.org>
-  -predict-2.2.2-r2.ebuild, predict-2.2.2-r3.ebuild:
-  Removed obsolete version. Added to x86.
-
-*predict-2.2.2-r3 (05 Jan 2005)
-
-  05 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> -predict-2.2.1.ebuild,
-  +predict-2.2.2-r3.ebuild:
-  Putting data files in the right location now, removing old version.
+# ChangeLog for app-sci/predict
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/predict/ChangeLog,v 1.1 2004/12/24 04:03:03 ribosome Exp $
 
 *predict-2.2.2-r2 (23 Dec 2004)
 

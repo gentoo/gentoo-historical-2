@@ -1,19 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/metalog-0.8_pre20031130.ebuild,v 1.16 2005/10/03 14:27:25 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/metalog-0.8_pre20031130.ebuild,v 1.1 2003/11/30 20:44:30 lanius Exp $
 
 DESCRIPTION="A highly configurable replacement for syslogd/klogd"
-HOMEPAGE="http://metalog.sourceforge.net/"
 SRC_URI="mirror://sourceforge/metalog/${P}.tar.gz"
+HOMEPAGE="http://metalog.sourceforge.net/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64 ~ia64"
 
 DEPEND=">=dev-libs/libpcre-3.4
 	sys-devel/automake"
-RDEPEND=">=dev-libs/libpcre-3.4"
+
 PROVIDE="virtual/logger"
 
 src_unpack() {
@@ -29,17 +28,17 @@ src_unpack() {
 src_compile() {
 	aclocal
 	autoheader
-	automake --add-missing --gnu
+	automake --add-missing -gnu
 	autoconf
 
-	econf || die "econf failed"
+	econf
 	emake || die
 }
 
 src_install() {
 	make DESTDIR=${D} install || die
 
-	dodoc AUTHORS ChangeLog README NEWS
+	dodoc AUTHORS COPYING ChangeLog README NEWS
 	newdoc metalog.conf metalog.conf.sample
 
 	insinto /etc/metalog ; doins ${FILESDIR}/metalog.conf

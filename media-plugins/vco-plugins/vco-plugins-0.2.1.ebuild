@@ -1,17 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/vco-plugins/vco-plugins-0.2.1.ebuild,v 1.4 2004/06/24 23:36:00 agriffis Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/vco-plugins/vco-plugins-0.2.1.ebuild,v 1.1 2004/01/19 09:14:21 torbenh Exp $
 #
 MY_P=${P/vco/VCO}
 
-DESCRIPTION="SAW-VCO ladspa plugin package. Anti-aliased oscillator"
+DESCRIPTION="REV ladspa plugins package. Looks like a nive reverb"
 HOMEPAGE="http://alsamodular.sourceforge.net/"
 SRC_URI="http://alsamodular.sourceforge.net/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 
 DEPEND="media-libs/ladspa-sdk"
 

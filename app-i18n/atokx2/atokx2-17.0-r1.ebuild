@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/atokx2/atokx2-17.0-r1.ebuild,v 1.2 2005/06/19 05:08:28 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/atokx2/atokx2-17.0-r1.ebuild,v 1.1 2005/04/05 14:00:58 usata Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI=""
 LICENSE="ATOK X11"
 
 SLOT="0"
-KEYWORDS="-* x86"
+KEYWORDS="-* ~x86"
 IUSE="ext-iiimf"
 
 RESTRICT="nostrip"

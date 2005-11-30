@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.3.20040120-r1.ebuild,v 1.5 2005/09/02 19:16:53 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.3.20040120-r1.ebuild,v 1.1 2005/06/23 02:06:44 agriffis Exp $
 
 inherit eutils gnuconfig
 
-IUSE="gnome esd nls audiofile"
+IUSE="gnome readline esd nls audiofile"
 
 # detect cvs snapshots; fex. 1.3.20040120
 if [[ $PV == *.[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] ]]; then
@@ -17,7 +17,7 @@ DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
 HOMEPAGE="http://sawmill.sourceforge.net/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 if $sawfishsnapshot; then
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	S=${WORKDIR}/${PN}
@@ -30,8 +30,9 @@ DEPEND=">=dev-util/pkgconfig-0.12.0
 	>=x11-libs/rep-gtk-0.17
 	>=dev-libs/librep-0.16
 	>=x11-libs/gtk+-2.0.8
-	audiofile? ( >=media-libs/audiofile-0.2.3 )
-	esd? ( >=media-sound/esound-0.2.23 )
+	audiofile? ( media-libs/audiofile )
+	esd? ( >=media-sound/esound-0.2.22 )
+	readline? ( >=sys-libs/readline-4.1 )
 	nls? ( sys-devel/gettext )"
 
 # cvs snapshots require automake/autoconf
@@ -73,6 +74,7 @@ src_compile() {
 		$(useq nls || echo --disable-linguas) \
 		$(use_with audiofile) \
 		$(use_with esd) \
+		$(use_with readline) \
 		${myconf} || die
 
 	# The following two lines allow sawfish to compile with gcc 2.95

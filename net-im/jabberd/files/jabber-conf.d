@@ -1,12 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd/files/jabber-conf.d,v 1.4 2004/07/14 23:45:05 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/jabberd/files/jabber-conf.d,v 1.1 2004/04/08 02:00:51 humpback Exp $
 
-# Configure which is the default jabberd server. Any value that is not
-# jabberd14 and jabberd2 will be started
+# Configure which is the default jabberd server. Right now it only knows about
+# jabberd14 . In the future jabberd2 will also be available.
 
 JABBERD="jabberd14"
-
-#Right now this is only used by the init script, but i would like to find a way
-#for jabberd to include this in the conf
-JPIDFILE="/var/log/jabber/jabberd14.pid"

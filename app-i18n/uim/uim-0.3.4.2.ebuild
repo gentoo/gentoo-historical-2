@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-0.3.4.2.ebuild,v 1.7 2005/01/01 14:42:20 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-0.3.4.2.ebuild,v 1.1 2004/04/07 10:19:09 usata Exp $
 
 inherit eutils flag-o-matic
 
@@ -8,9 +8,9 @@ DESCRIPTION="a simple, secure and flexible input method library"
 HOMEPAGE="http://uim.freedesktop.org/"
 SRC_URI="http://freedesktop.org/Software/UimDownload/${P}.tar.gz"
 
-LICENSE="GPL-2 BSD"
+LICENSE="GPL-2 | BSD"
 SLOT="0"
-KEYWORDS="x86 alpha ppc"
+KEYWORDS="~x86 ~alpha"
 IUSE="gtk nls debug"
 
 RDEPEND="gtk? ( >=x11-libs/gtk+-2 )

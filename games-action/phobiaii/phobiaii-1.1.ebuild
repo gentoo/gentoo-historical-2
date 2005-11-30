@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/phobiaii/phobiaii-1.1.ebuild,v 1.8 2005/08/11 11:58:02 r3pek Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/phobiaii/phobiaii-1.1.ebuild,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
 inherit games
 
@@ -11,15 +11,24 @@ SRC_URI="http://www.lynxlabs.com/games/linuxphobia/${MY_P}-i386.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~amd64 x86"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND=""
 RDEPEND="media-libs/sdl-mixer
 	media-libs/libsdl
-	x86? ( sys-libs/lib-compat )
-	amd64? ( app-emulation/emul-linux-x86-compat )
-	virtual/libc"
+	media-libs/libvorbis
+	media-libs/libogg
+	media-libs/smpeg
+	dev-libs/DirectFB
+	media-libs/libggi
+	sys-libs/lib-compat
+	media-libs/libgii
+	media-sound/esound
+	media-libs/audiofile
+	virtual/x11
+	media-libs/svgalib
+	media-libs/aalib
+	sys-libs/ncurses"
 
 S=${WORKDIR}/${MY_P}
 
@@ -30,7 +39,7 @@ src_install() {
 	dodir ${GAMES_PREFIX_OPT}/${PN}
 	mv * ${D}/${GAMES_PREFIX_OPT}/${PN}/
 
-	dogamesbin ${FILESDIR}/phobiaII
+	dogamesbin ${FILESDIR}/playphobiaII
 
 	prepgamesdirs
 }

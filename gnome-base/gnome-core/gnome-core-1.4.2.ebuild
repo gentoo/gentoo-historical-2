@@ -1,25 +1,26 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-core/gnome-core-1.4.2.ebuild,v 1.9 2004/07/14 15:08:25 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-core/gnome-core-1.4.2.ebuild,v 1.1 2002/10/24 19:19:57 spider Exp $
 
 IUSE="kde nls cups"
 
 inherit libtool gnome.org
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Core components of the GNOME desktop environment"
 HOMEPAGE="http://www.gnome.org/"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="~x86 ~ppc ~sparc ~sparc64"
 LICENSE="GPL-2"
 SLOT="0"
 
 RDEPEND="=gnome-base/control-center-1.4*
-	=gnome-base/libglade-0.17*
-	>=gnome-base/gnome-libs-1.4.1.2-r1
-	>=media-libs/gdk-pixbuf-0.16.0-r1
-	cups? ( >=gnome-base/gnome-print-0.35 )
-	!gnome-base/gnome-session
-	!x11-terms/gnome-terminal
-	!gnome-base/gnome-desktop"
+	 =gnome-base/libglade-0.17*
+	 >=gnome-base/gnome-libs-1.4.1.2-r1
+	 >=media-libs/gdk-pixbuf-0.16.0-r1
+	 cups? ( >=gnome-base/gnome-print-0.35 )
+	 !gnome-base/gnome-session
+	 !x11-terms/gnome-terminal
+	 !gnome-base/gnome-desktop"
 # This should not be installed if the user is using Gnome2, as it
 # overwrite files from those packages.  If some app needs gnome-core
 # for the panel-applet, please fix it to use:
@@ -29,17 +30,17 @@ RDEPEND="=gnome-base/control-center-1.4*
 # instead.  Also, please check with Spider before you change this next time.
 
 DEPEND="${RDEPEND}
-	>=sys-apps/tcp-wrappers-7.6
-	>=app-text/scrollkeeper-0.2
-	nls? ( sys-devel/gettext
-	>=dev-util/intltool-0.11 )"
+        >=sys-apps/tcp-wrappers-7.6
+        >=app-text/scrollkeeper-0.2
+        nls? ( sys-devel/gettext
+		>=dev-util/intltool-0.11 )"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
 	# Fix build error
-# 	patch -p0 <${FILESDIR}/${P}-configure.in.patch  || die "failed patch"
+# 	patch -p0 <${FILESDIR}/${P}-configure.in.patch  || die "failed patch" 
 
 	# Libtoolize
 	elibtoolize
@@ -51,10 +52,10 @@ src_unpack() {
 src_compile() {
 	local myconf=""
 	local myldflags=""
-
+	
 	use nls || myconf="${myconf} --disable-nls"
 
-	if use kde
+	if [ "`use kde`" ]
 	then
 		myconf="${myconf} --with-kde-datadir=/usr/share"
 	fi
@@ -74,7 +75,7 @@ src_compile() {
 	cat gnome-panel-screenshot.c.orig | \
 		sed 's:\(^#include <errno.h>\):\1\n#include <locale.h>:' \
 		> gnome-panel-screenshot.c
-
+	
 	cd ${S}
 
 	emake || die
@@ -82,10 +83,10 @@ src_compile() {
 
 src_install() {
 	make prefix=${D}/usr \
-		mandir=${D}/usr/share/man \
-		sysconfdir=${D}/etc \
-		localstatedir=${D}/var/lib \
-		install || die
+	     mandir=${D}/usr/share/man \
+	     sysconfdir=${D}/etc \
+  	     localstatedir=${D}/var/lib \
+	     install || die
 
 	# Support for new X session management scheme
 	exeinto /etc/X11/Sessions
@@ -93,3 +94,4 @@ src_install() {
 
 	dodoc AUTHORS COPYING* ChangeLog README NEWS
 }
+

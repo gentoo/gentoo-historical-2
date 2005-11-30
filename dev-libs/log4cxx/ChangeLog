@@ -1,61 +1,6 @@
 # ChangeLog for dev-libs/log4cxx
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4cxx/ChangeLog,v 1.15 2005/09/19 22:30:31 halcy0n Exp $
-
-  19 Sep 2005; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
-  Adding to cpp herd
-
-  28 Jun 2005; Simon Stelling <blubb@gentoo.org> log4cxx-0.9.7-r2.ebuild:
-  added ~amd64 keyword
-
-  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> -log4cxx-0.9.7-r1.ebuild,
-  log4cxx-0.9.7-r2.ebuild:
-  Marked stable on x86.
-
-*log4cxx-0.9.7-r2 (16 Mar 2005)
-
-  16 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
-  files/log4cxx-0.9.7-gentoo.diff, +log4cxx-0.9.7-r2.ebuild:
-  Revision bump; updated patch with fixes from Juraj Hercek in bug 81247.
-
-  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> log4cxx-0.9.7-r1.ebuild:
-  Marked stable on x86.
-
-  12 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> log4cxx-0.9.5.ebuild:
-  Marked stable on x86.
-
-  07 Jan 2005; Aaron Walker <ka0ttic@gentoo.org>
-  files/log4cxx-0.9.7-gentoo.diff, +files/log4cxx-0.9.7-use-SQLWCHAR.diff,
-  log4cxx-0.9.7-r1.ebuild:
-  Fixed ./configire --with-ODBC invocation (bug 76532) in addition to the
-  compilation failures that ensued.
-
-  06 Jan 2005; Aaron Walker <ka0ttic@gentoo.org>
-  +files/log4cxx-0.9.5-fix-errno.diff, log4cxx-0.9.5.ebuild:
-  Fix compilation failure - bug 59743.
-
-*log4cxx-0.9.7-r1 (28 Dec 2004)
-
-  28 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> +log4cxx-0.9.7-r1.ebuild,
-  -log4cxx-0.9.7.ebuild:
-  Revbump; install html docs in correct location.
-
-  23 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> log4cxx-0.9.7.ebuild:
-  Don't use use_enable for unicode, as the configure.in doesn't respect
-  --disable-unicode; fixes bug 75448.
-
-*log4cxx-0.9.7 (22 Dec 2004)
-
-  22 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
-  +files/log4cxx-0.9.7-gentoo.diff, +log4cxx-0.9.7.ebuild:
-  Version bump; closes bugs 75260 and 72021. Also, added support for USE flags
-  doc, unicode, odbc, and smtp. Updated metadata.xml.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> log4cxx-0.9.5.ebuild:
-  virtual/glibc -> virtual/libc
-
-  03 Jun 2004; Chuck Short <zul@gentoo.org> log4cxx-0.9.5.ebuild:
-  Correct HOMEPAGE.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4cxx/ChangeLog,v 1.1 2004/06/03 14:08:01 zul Exp $
 
 *log4cxx-0.9.5 (03 Jun 2004)
 

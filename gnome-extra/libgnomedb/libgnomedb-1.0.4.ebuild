@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgnomedb/libgnomedb-1.0.4.ebuild,v 1.11 2005/06/14 05:23:51 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgnomedb/libgnomedb-1.0.4.ebuild,v 1.1 2004/08/05 13:37:46 liquidx Exp $
 
 inherit gnome2 eutils
 
@@ -9,10 +9,10 @@ HOMEPAGE="http://www.gnome-db.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64"
 IUSE="doc"
 
-RDEPEND="=gnome-extra/libgda-1.0*
+RDEPEND=">=gnome-extra/libgda-1.0.0
 	>=x11-libs/gtk+-2.0
 	>=gnome-base/libglade-2.0
 	>=gnome-base/libgnomeui-2.0
@@ -29,13 +29,11 @@ DEPEND=">=dev-util/pkgconfig-0.8
 src_unpack() {
 	unpack ${A}
 	gnome2_omf_fix ${S}/doc/Makefile.in
-	cd ${S}
+	cd ${S}; intltoolize --force || die
 	# Avoid documentation problems. See bug #46275.
 	epatch ${FILESDIR}/${PN}-1.0.3-gtkdoc_fix.patch
-	# Add extra selector. See bug #48611.
-	epatch ${FILESDIR}/${P}-selector.patch
-	# Fix GCC 3.4 compilation. See bug #49236.
-	epatch ${FILESDIR}/${PN}-1.0.3-gcc34.patch
+	# add extra selector #48611
+	epatch ${FILESDIR}/${PN}-1.0.4-selector.patch
 }
 
 src_install() {

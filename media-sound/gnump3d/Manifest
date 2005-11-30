@@ -1,23 +1,13 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 cb9bb8fdb84fc2146a4324aed5703bbb gnump3d-2.9.7.ebuild 2100
-MD5 9c542b70012885e88f1a63a5322b78f1 gnump3d-2.9.8.ebuild 2111
-MD5 eca6a561be42c7d6eaad53fd257495e1 ChangeLog 6558
-MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
-MD5 83ff000b1e4413fa245c1917f2322526 gnump3d-2.9.7-r1.ebuild 2235
-MD5 53ddcd88da020240ac2ec48f0100c4a9 files/gnump3d.conf.d 159
-MD5 27e1721a1708176c950425eeb3d4cfdd files/gnump3d.init.d 740
-MD5 fc8c45be4cb18a2b33cd0c321917b268 files/digest-gnump3d-2.9.7-r1 66
-MD5 fc8c45be4cb18a2b33cd0c321917b268 files/digest-gnump3d-2.9.7 66
-MD5 0bc04392e8eeeaff28091d69ab5e3b12 files/digest-gnump3d-2.9.8 66
-MD5 f82313fc517478141296f216e4e835d0 files/gnump3d-index.lok.diff 3249
-MD5 27b7feff197e10f51c5607f4bfccbcf4 files/gnump3d-tmpfile.diff 1197
-MD5 eef3ef350b208e39d1c1b99ac54b4b7e files/gnump3d-traversal.diff 702
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDfZqgViELBEf1JB0RArTNAJ9n6KrtaxBOdPzKqR5zfNMSPDbbQACfW692
-IhRsGYOIINI+3ZG+mskzrvI=
-=yTg9
------END PGP SIGNATURE-----
+MD5 189ebefd77e7bdae8e7cfe34238268b7 ChangeLog 1418
+MD5 b834a3556fab57689814993ff7d5c31e gnump3d-0.9.9.4.ebuild 1181
+MD5 8f41800bb8d64c16fbf86868ba070cd6 gnump3d-1.0.ebuild 1413
+MD5 4355369e2f282694d98e0e200c2ace74 gnump3d-2.2.ebuild 1142
+MD5 88a7d8bd4d3497fa0746c27a8028981f files/digest-gnump3d-0.9.9.4 67
+MD5 2a8a844e5947e1cbb8a977c47c259834 files/digest-gnump3d-1.0 64
+MD5 ed2b7457b2cfbdbc3f20a448938c725a files/digest-gnump3d-2.2 63
+MD5 4cd80c2edb14b3d0c90f74cd0a925c16 files/doc-Makefile-gentoo.patch 439
+MD5 22e31b3d4f3dcf42f9034102f5d980a8 files/gnump3d-1.0-gentoo.diff.bz2 359
+MD5 c44501012e6fe922cc2c7e06f1245614 files/gnump3d-1.0.rc6 405
+MD5 c44501012e6fe922cc2c7e06f1245614 files/gnump3d-2.2.rc6 405
+MD5 5322bda842b45879eacae850ac48caa2 files/gnump3d.rc6 388
+MD5 1cc59e977b80559a3ca4360188e824c7 files/mp3d.conf-gentoo.patch 581

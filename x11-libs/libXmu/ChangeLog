@@ -1,41 +1,6 @@
 # ChangeLog for x11-libs/libXmu
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXmu/ChangeLog,v 1.10 2005/11/04 17:06:35 joshuabaergen Exp $
-
-  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  -libXmu-0.99.0.ebuild, -libXmu-0.99.1.ebuild, libXmu-0.99.1-r1.ebuild:
-  Add missing xproto dep.  Drop old versions.
-
-*libXmu-0.99.1-r1 (27 Oct 2005)
-
-  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  +libXmu-0.99.1-r1.ebuild:
-  Rev-bump for new USE flag.
-
-  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  libXmu-0.99.1.ebuild:
-  Added ipv6 USE flag.
-
-*libXmu-0.99.1 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  +libXmu-0.99.1.ebuild:
-  Bump for 7.0 RC1.
-
-  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
-  Add metadata.
-
-  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> libXmu-0.99.0.ebuild:
-  Marked ~sh
-
-  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXmu-0.99.0.ebuild:
-  Marked ~ppc
-
-  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXmu-0.99.0.ebuild:
-  Marked ~amd64
-
-  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXmu-0.99.0.ebuild:
-  Add ~sparc keyword (modular X testing).
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXmu/ChangeLog,v 1.1 2005/08/08 04:31:58 spyderous Exp $
 
 *libXmu-0.99.0 (08 Aug 2005)
 

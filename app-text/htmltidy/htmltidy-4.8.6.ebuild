@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/htmltidy/htmltidy-4.8.6.ebuild,v 1.17 2005/03/12 19:27:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/htmltidy/htmltidy-4.8.6.ebuild,v 1.1 2004/08/18 00:01:21 usata Exp $
 
 inherit eutils
 
@@ -14,18 +14,18 @@ S=${WORKDIR}/tidy
 DESCRIPTION="Tidy the layout and correct errors in HTML and XML documents"
 HOMEPAGE="http://tidy.sourceforge.net/"
 SRC_URI="http://tidy.sourceforge.net/src/old/${MY_P}.tgz
-	http://tidy.sourceforge.net/docs/tidy_docs_040810.tgz
-	xml? ( http://www.cise.ufl.edu/~ppadala/tidy/html2db.tar.gz )"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ppc-macos s390 sparc x86"
-IUSE="debug doc xml"
+	 http://tidy.sourceforge.net/docs/tidy_docs.tgz
+	 xml? ( http://www.cise.ufl.edu/~ppadala/tidy/html2db.tar.gz )"
 
 DEPEND="virtual/libc
 	>=sys-devel/autoconf-2.5
 	>=sys-devel/automake-1.5"
 RDEPEND="virtual/libc"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~macos"
+IUSE="debug doc xml"
 
 src_unpack() {
 	unpack ${A}

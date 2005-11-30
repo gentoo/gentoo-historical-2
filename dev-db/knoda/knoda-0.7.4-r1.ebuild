@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/knoda/knoda-0.7.4-r1.ebuild,v 1.4 2005/11/20 08:02:48 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/knoda/knoda-0.7.4-r1.ebuild,v 1.1 2005/10/11 13:32:21 greg_g Exp $
 
 inherit kde eutils
 
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/knoda/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
-DEPEND="~dev-db/hk_classes-${PV}a"
+DEPEND=">=dev-db/hk_classes-${PV}"
 
 need-kde 3
 

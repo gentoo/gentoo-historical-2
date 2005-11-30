@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/powermanga/powermanga-0.79.ebuild,v 1.3 2004/11/12 20:46:06 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/powermanga/powermanga-0.79.ebuild,v 1.1 2004/08/04 01:41:46 mr_bones_ Exp $
 
 inherit games
 
@@ -10,7 +10,7 @@ SRC_URI="http://linux.tlk.fr/games/Powermanga/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="x86 ppc"
 IUSE=""
 
 DEPEND="virtual/libc
@@ -34,8 +34,6 @@ src_install() {
 
 	insinto "${GAMES_DATADIR}/powermanga/graphics"
 	doins graphics/*
-
-	find "${D}${GAMES_DATADIR}/powermanga/" -name "Makefile*" -exec rm -f \{\} \;
 
 	insinto /var/games
 	for f in powermanga.hi-easy powermanga.hi powermanga.hi-hard

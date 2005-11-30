@@ -1,24 +1,6 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 e92c92e2948dea9dc1a0a224028fc90b ChangeLog 3801
-MD5 c24e7e9b84fdb1e24f31ec2363262ea0 bastille-2.1.1-r1.ebuild 2533
-MD5 1806c99cadbd78b9b10f360054360716 bastille-2.1.1-r2.ebuild 2659
-MD5 bf0f40d878ca5dd27e3b8c89d69a90ef bastille-2.1.1-r3.ebuild 2657
-MD5 6363a9e08340d4aa454867fded6942a0 bastille-3.0.2.ebuild 1502
-MD5 d04d71a1248455115ddc73e14c8d8ddd files/bastille-2.1.1-firewall.init 1340
-MD5 bd6fc4e444132bd3bc1588a763b8e816 files/bastille-2.1.1-hlist-fix.patch 463
-MD5 7f9957e70f26f3f4525791a320d09d5b files/bastille-3.0.2-firewall.init 1450
-MD5 674111485907adeed35fee21192e18f8 files/bastille-firewall-imap.patch 8660
+MD5 9df2b3b973a7c6ce4f68981ae3f6e7fe bastille-2.1.1.ebuild 3097
+MD5 a0bd5892db7a3385854d3e8a3e15ac5b bastille-2.1.1-r1.ebuild 2404
+MD5 c465abd3840652bcd5cbc49c617dd479 ChangeLog 1289
+MD5 624441f5e21afa19251eedc583e0c4e7 metadata.xml 433
 MD5 5952693da32f1292a5b6013e8e755799 files/digest-bastille-2.1.1-r1 146
-MD5 5952693da32f1292a5b6013e8e755799 files/digest-bastille-2.1.1-r2 146
-MD5 5952693da32f1292a5b6013e8e755799 files/digest-bastille-2.1.1-r3 146
-MD5 2a0522007297b0621c99bf3e7eb2c318 files/digest-bastille-3.0.2 146
-MD5 6866ae7fe991fa80eed96fc6c6fbb339 metadata.xml 353
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDivMDtG5z4I8BtQoRApBGAJ4iD9PQKT5Uy4ipQyUUxRn5qfQabQCfUON+
-csqVQJh6do2V9B53PeTBBHA=
-=gm/e
------END PGP SIGNATURE-----
+MD5 5952693da32f1292a5b6013e8e755799 files/digest-bastille-2.1.1 146

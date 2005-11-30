@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-ssl/cl-ssl-0.2.2004.01.04.ebuild,v 1.6 2005/04/17 00:51:42 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-ssl/cl-ssl-0.2.2004.01.04.ebuild,v 1.1 2004/02/12 09:13:20 mkennedy Exp $
 
 inherit common-lisp
 
@@ -11,17 +11,19 @@ HOMEPAGE="http://packages.debian.org/unstable/devel/cl-ssl.html"
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/cl-ssl/cl-ssl_${PV/.2004/+cvs.2004}.tar.gz"
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
-IUSE=""
-DEPEND="dev-libs/openssl
-	dev-lisp/cl-uffi"
+KEYWORDS="~x86"
+DEPEND="dev-lisp/common-lisp-controller
+	dev-libs/openssl
+	cl-uffi
+	virtual/commonlisp"
 
 CLPACKAGE=cl-ssl
 
 S=${WORKDIR}/${PN}-${PV/.2004/+cvs.2004}
 
 src_compile() {
-	make -C cl-ssl linux || die
+	cd cl-ssl
+	make linux || die
 }
 
 src_install() {

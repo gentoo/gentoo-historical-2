@@ -1,13 +1,6 @@
-# ChangeLog for kde-misc/kgraphspace
+# ChangeLog for app-misc/kgraphspace
 # Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kgraphspace/ChangeLog,v 1.4 2004/11/23 15:46:33 carlo Exp $
-
-  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org>
-  kgraphspace-0.3.0_pre1.ebuild:
-  QA: missing "inherit eutils"
-
-  06 Nov 2004; Jason Wever <weeve@gentoo.org> kgraphspace-0.3.0_pre1.ebuild:
-  Added ~sparc keyword.
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kgraphspace/ChangeLog,v 1.1 2004/10/30 17:29:04 carlo Exp $
 
 *kgraphspace-0.3.0_pre1 (30 Oct 2004)
 

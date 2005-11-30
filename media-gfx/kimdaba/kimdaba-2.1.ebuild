@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/kimdaba/kimdaba-2.1.ebuild,v 1.4 2005/07/22 21:25:00 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/kimdaba/kimdaba-2.1.ebuild,v 1.1 2005/05/05 17:31:17 centic Exp $
 
 inherit kde
 
@@ -11,17 +11,9 @@ SRC_URI="http://ktown.kde.org/kimdaba/download/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~amd64 ~sparc"
 IUSE=""
 
-DEPEND="media-libs/libkipi
-	|| ( kde-base/kdegraphics-kfile-plugins kde-base/kdegraphics )"
-
+DEPEND="media-libs/libkipi"
 need-kde 3.2
 
-src_unpack()
-{
-	unpack ${A}
-	find ${S}/translations -name Makefile.in | xargs \
-		sed -i -e 's|LANG)/doc|LANG)/kimdaba|g'
-}

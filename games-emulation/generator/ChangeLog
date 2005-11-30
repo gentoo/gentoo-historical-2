@@ -1,38 +1,6 @@
-# ChangeLog for games-emulation/generator
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/generator/ChangeLog,v 1.11 2005/05/17 17:50:02 wolf31o2 Exp $
-
-  17 May 2005; Chris Gianelloni <wolf31o2@gentoo.org> generator-0.35.ebuild:
-  Cleanup for bug #92745.
-
-  11 Jul 2004; Tom Martin <slarti@gentoo.org> generator-0.35.ebuild:
-  Marked ~amd64, closing 53460.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  generator-0.35.ebuild:
-  virtual/glibc -> virtual/libc
-
-  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> generator-0.35.ebuild:
-  QA - fix use invocation
-
-  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> generator-0.35.ebuild:
-  don't rdepend on nasm; "use arch" instead of "ARCH == "
-
-  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> generator-0.35.ebuild,
-  files/logging.patch, files/netbsd-gcc-3.3.patch:
-  ripped off the patches from netbsd for generator to get the logging working
-  again.
-
-  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> generator-0.35.ebuild:
-  fix bug #44709 by turning off logging
-  fixed up old hard-coded gcc flags in configure
-  take out mention of allegro and tcltk - this package looks dead upstream so
-  it doesn't look like allegro and tcltk will ever be supported.
-  changed make to emake -j1 - don't even think about trying to use parallel
-  make with these makefiles - very broken
-
-  20 Dec 2003; David Holm <dholm@gentoo.org> generator-0.35.ebuild:
-  Added a small ppc fix and added to ~ppc.
+# ChangeLog for app-emulation/generator
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/generator/ChangeLog,v 1.1 2003/09/09 16:26:50 vapier Exp $
 
 *generator-0.35 (15 Jul 2003)
 

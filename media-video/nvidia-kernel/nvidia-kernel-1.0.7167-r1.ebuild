@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/nvidia-kernel/nvidia-kernel-1.0.7167-r1.ebuild,v 1.3 2005/10/28 07:19:45 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/nvidia-kernel/nvidia-kernel-1.0.7167-r1.ebuild,v 1.1 2005/03/11 23:41:10 azarah Exp $
 
 inherit eutils linux-mod
 
@@ -12,8 +12,8 @@ AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${NV_V}"
 
 DESCRIPTION="Linux kernel module for the NVIDIA X11 driver"
 HOMEPAGE="http://www.nvidia.com/"
-SRC_URI="x86? ( ftp://download.nvidia.com/XFree86/Linux-x86/${NV_V}/${X86_NV_PACKAGE}-${X86_PKG_V}.run )
-	amd64? ( http://download.nvidia.com/XFree86/Linux-x86_64/${NV_V}/${AMD64_NV_PACKAGE}-${AMD64_PKG_V}.run )"
+SRC_URI="x86? (ftp://download.nvidia.com/XFree86/Linux-x86/${NV_V}/${X86_NV_PACKAGE}-${X86_PKG_V}.run)
+	amd64? (http://download.nvidia.com/XFree86/Linux-x86_64/${NV_V}/${AMD64_NV_PACKAGE}-${AMD64_PKG_V}.run)"
 
 if use x86; then
 	PKG_V="${X86_PKG_V}"
@@ -31,7 +31,6 @@ KEYWORDS="-* ~x86 ~amd64"
 RESTRICT="nostrip"
 IUSE=""
 
-RDEPEND="virtual/modutils"
 DEPEND="virtual/linux-sources"
 export _POSIX2_VERSION="199209"
 

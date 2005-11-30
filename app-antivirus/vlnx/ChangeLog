@@ -1,42 +1,6 @@
-# ChangeLog for app-antivirus/vlnx
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/vlnx/ChangeLog,v 1.12 2005/08/13 19:30:29 ticho Exp $
-
-  13 Aug 2005; Andrej Kacian <ticho@gentoo.org> vlnx-432e-r2.ebuild:
-  Don't install crontab task by default, inform user about the possibility
-  instead. Bug #102401 by Adrian <adrian at planetcoding.net>.
-
-  10 Aug 2005; Simon Stelling <blubb@gentoo.org> vlnx-432e-r2.ebuild:
-  added ~amd64 keyword
-
-  30 Jan 2005; Andrej Kacian <ticho@gentoo.org> vlnx-432e-r2.ebuild:
-  Added a RDEPEND on libcompat. Closes #66858, reported by Arnaud Launay
-  <asl@launay.org>
-
-  30 Jan 2005; Andrej Kacian <ticho@gentoo.org> vlnx-432e-r2.ebuild:
-  Added a RDEPEND on app-arch/unzip. Closes #79362, reported by Johannes
-  Roettger <jr@0x42.com>.
-
-  06 Dec 2004; Andrej Kacian <ticho@gentoo.org> vlnx-432e-r2.ebuild:
-  Stable on x86.
-
-*vlnx-432e-r2 (26 Jul 2004)
-
-  26 Jul 2004; Cory Visi <merlin@gentoo.org> vlnx-432e-r1.ebuild,
-  vlnx-432e-r2.ebuild, files/uvscan.cron:
-  New check-updates.sh, fix path in cron script, and we need nomirror
-
-*vlnx-432e-r1 (29 Jun 2004)
-
-  29 Jun 2004; Cory Visi <merlin@gentoo.org> vlnx-432e-r1.ebuild,
-  vlnx-432e.ebuild:
-  Fix check-updates.sh doins
-
-*vlnx-432e (29 Jun 2004)
-
-  29 Jun 2004; Cory Visi <merlin@gentoo.org> vlnx-432e.ebuild,
-  files/uvscan.conf, files/uvscan.cron, files/uvscan.sh, files/vlnx-432e-envd:
-  Version bump to fix strange lockups, add auto-update script, fix Bug 35101
+# ChangeLog for net-mail/vlnx
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-antivirus/vlnx/ChangeLog,v 1.1 2004/05/30 00:28:39 robbat2 Exp $
 
 *vlnx-414e-r2 (29 May 2004)
 

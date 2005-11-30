@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-aim/cl-aim-1.1.ebuild,v 1.4 2005/05/24 18:48:32 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-aim/cl-aim-1.1.ebuild,v 1.1 2004/12/16 19:59:34 mkennedy Exp $
 
 inherit common-lisp eutils
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://claim.sourceforge.net/"
 SRC_URI="mirror://sourceforge/claim/claim_${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc x86"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="dev-lisp/cl-trivial-sockets"

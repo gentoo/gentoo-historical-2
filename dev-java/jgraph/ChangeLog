@@ -1,31 +1,6 @@
 # ChangeLog for dev-java/jgraph
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jgraph/ChangeLog,v 1.9 2005/04/22 08:37:54 blubb Exp $
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> jgraph-3.2.ebuild:
-  stable on amd64
-
-  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> jgraph-3.2.ebuild:
-  depend on app-arch/unzip
-
-  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> jgraph-3.2.ebuild:
-  Keywords ~amd64.
-
-  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jgraph-3.2.ebuild:
-  keyword x86
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jgraph-3.2.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  05 May 2004; <SeJo@gentoo.org> jgraph-3.2.ebuild:
-  added ~ppc keyword
-
-*jgraph-3.2 (01 Apr 2004)
-
-  01 Apr 2004; Chris Aniszczyk <zx@gentoo.org> jgraph-3.1.ebuild,
-  jgraph-3.2.ebuild:
-  Version bump and clean up. Closes #46006
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jgraph/ChangeLog,v 1.1 2004/02/15 20:47:42 zx Exp $
 
 *jgraph-3.1 (15 Feb 2004)
 

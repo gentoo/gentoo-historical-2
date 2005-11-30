@@ -1,58 +1,8 @@
-# ChangeLog for app-crypt/md5deep
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/md5deep/ChangeLog,v 1.16 2005/08/10 22:17:54 sbriesen Exp $
-
-  10 Aug 2005; Stefan Briesenick <sbriesen@gentoo.org> md5deep-1.8.ebuild:
-  adding ~amd64 to keywords
-
-  10 Aug 2005; Stefan Briesenick <sbriesen@gentoo.org> md5deep-1.8.ebuild:
-  fixed ebuild, now all the new files are installed also.
-
-*md5deep-1.8 (10 Aug 2005)
-
-  10 Aug 2005; Kito <kito@gentoo.org> md5deep-1.5-r1.ebuild,
-  +md5deep-1.8.ebuild:
-  version bump. closes bug #101950
-
-  24 Jun 2005; Alastair Tse <liquidx@gentoo.org> md5deep-1.5-r1.ebuild:
-  make more respectful of CFLAGS (#79072).  thanks Stefan Briesenick
-
-*md5deep-1.5-r1 (20 Apr 2005)
-
-  20 Apr 2005; Kito <kito@gentoo.org> +md5deep-1.5-r1.ebuild:
-  add conditional build target for darwin support, missing sh256deep binary
-  and manpage
-
-  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> md5deep-1.5.ebuild:
-  Stable on ppc.
-
-  21 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> md5deep-1.5.ebuild:
-  Stable on sparc
-
-  12 Dec 2004; Jason Wever <weeve@gentoo.org> md5deep-1.2.ebuild:
-  Stable on sparc.
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  md5deep-0.16.ebuild, md5deep-1.2.ebuild:
-  Masked md5deep-1.2.ebuild stable for ppc
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  md5deep-0.16.ebuild:
-  Masked md5deep-0.16.ebuild stable for ppc
-
-*md5deep-1.5 (26 Sep 2004)
-
-  26 Sep 2004; Alastair Tse <liquidx@gentoo.org> md5deep-1.2.ebuild,
-  +md5deep-1.5.ebuild:
-  version bump
-
-*md5deep-1.2 (17 Jun 2004)
-
-  17 Jun 2004; Alastair Tse <liquidx@gentoo.org> +md5deep-1.2.ebuild:
-  version bump (#49977)
+# ChangeLog for sys-apps/md5deep
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/md5deep/ChangeLog,v 1.1 2003/03/20 23:26:33 liquidx Exp $
 
 *md5deep-0.16 (20 Mar 2003)
-
   20 Mar 2003; Alastair Tse <liquidx@gentoo.org> md5deep-0.16.ebulid:
   Ebuild and patch thanks to Matt Klosterman <general@kolsterman.net>
   from bug #16773.

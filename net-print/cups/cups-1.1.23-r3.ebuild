@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-1.1.23-r3.ebuild,v 1.6 2005/07/29 15:54:28 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-1.1.23-r3.ebuild,v 1.1 2005/05/21 20:27:42 lanius Exp $
 
 inherit eutils flag-o-matic pam
 
@@ -63,13 +63,6 @@ src_compile() {
 	make || die "compile problem"
 }
 
-src_test() {
-	# upstream includes an interactive test which is a nono for gentoo.
-	# therefore, since the printing herd has bigger fish to fry, for now,
-	# we just leave it out, even if FEATURES=test
-	true
-	}
-
 src_install() {
 	dodir /var/spool /var/log/cups /etc/cups
 
@@ -118,7 +111,7 @@ src_install() {
 	insinto /etc/xinetd.d ; newins ${FILESDIR}/cups.xinetd cups-lpd
 
 	# allow raw printing
-	dosed "s:#application/octet-stream:application/octet-stream:" /etc/cups/mime.types /etc/cups/mime.convs
+	dosed "s:#application/octet-stream:application/octet-stream" /etc/cups/mime.types /etc/cups/mime.conv
 
 	# Let foreign charset PDF's print. (Bug: 67493)
 	dosym /etc/xpdfrc /etc/cups/pdftops.conf
@@ -127,11 +120,6 @@ src_install() {
 	exeinto /usr/lib/cups/filter/
 	newexe ${DISTDIR}/pdftops.pl pdftops
 	dosed "s:/usr/local:/usr:" /usr/lib/cups/filter/pdftops
-}
-
-pkg_postrm() {
-	# cleanups
-	rm -fR /usr/share/doc/${PF}
 }
 
 pkg_postinst() {

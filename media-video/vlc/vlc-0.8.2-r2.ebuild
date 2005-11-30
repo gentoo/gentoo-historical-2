@@ -1,14 +1,22 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-0.8.2-r2.ebuild,v 1.6 2005/11/24 17:36:02 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-0.8.2-r2.ebuild,v 1.1 2005/10/03 09:42:55 flameeyes Exp $
 
-inherit libtool eutils wxwidgets flag-o-matic nsplugins multilib autotools toolchain-funcs
+# Missing USE-flags due to missing deps:
+# media-vidoe/vlc:tremor - Enables Tremor decoder support
+# media-video/vlc:tarkin - Enables experimental tarkin codec
+# media-video/vlc:h264 - Enables H264 encoding support with libx264
+
+# Missing USE-flags due to needed testing
+# media-video/vlc:dirac - Enables experimental dirac codec
+
+inherit libtool eutils wxwidgets flag-o-matic nsplugins multilib autotools
 
 PATCHLEVEL="7"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2
-	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
+	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -17,7 +25,7 @@ KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="a52 3dfx nls unicode debug altivec httpd vlm gnutls live v4l cdda ogg matroska
 dvb dvd vcd ffmpeg aac dts flac mpeg vorbis theora X opengl freetype svg fbcon svga
 oss aalib ggi libcaca esd arts alsa wxwindows ncurses xosd lirc joystick stream
-mp3 xv bidi sdl png xml2 samba daap corba screen mod speex nsplugin"
+mp3 xv bidi gtk2 sdl png xml2 samba daap corba screen mod speex nsplugin"
 
 RDEPEND="cdda? ( >=dev-libs/libcdio-0.71
 			>=media-libs/libcddb-0.9.5 )
@@ -86,10 +94,14 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	if use wxwindows; then
 		WX_GTK_VER="2.6"
-		if use unicode; then
-			need-wxwidgets unicode || die "You need to install wxGTK with unicode support."
+		if use gtk2; then
+			if use unicode; then
+				need-wxwidgets unicode || die "You need to install wxGTK with unicode support."
+			else
+				need-wxwidgets gtk2 || die "You need to install wxGTK with gtk2 support."
+			fi
 		else
-			need-wxwidgets gtk2 || die "You need to install wxGTK with gtk support."
+			need-wxwidgets gtk || die "You need to install wxGTK with gtk support."
 		fi
 	fi
 }
@@ -202,12 +214,9 @@ src_compile () {
 		--disable-portaudio \
 		--disable-slp \
 		--disable-hal \
-		--disable-x264 \
 		${myconf} || die "configuration failed"
 
-	if [[ $(gcc-major-version) == 2 ]]; then
-		sed -i -e s:"-fomit-frame-pointer":: vlc-config || die "-fomit-frame-pointer patching failed"
-	fi
+	sed -i -e s:"-fomit-frame-pointer":: vlc-config || die "-fomit-frame-pointer patching failed"
 
 	emake -j1 || die "make of VLC failed"
 }

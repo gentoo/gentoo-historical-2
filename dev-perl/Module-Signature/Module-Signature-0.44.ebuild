@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Signature/Module-Signature-0.44.ebuild,v 1.4 2005/05/25 14:09:05 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Module-Signature/Module-Signature-0.44.ebuild,v 1.1 2005/04/11 17:02:29 mcummings Exp $
 
 inherit perl-module
 
@@ -10,12 +10,12 @@ SRC_URI="mirror://cpan/authors/id/A/AU/AUTRIJUS/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~sparc"
 IUSE=""
 
 SRC_TEST="do"
 
-DEPEND="perl-core/MIME-Base64
+DEPEND="dev-perl/MIME-Base64
 		dev-perl/Compress-Zlib
 		dev-perl/crypt-cbc
 		dev-perl/Crypt-DES
@@ -26,7 +26,7 @@ DEPEND="perl-core/MIME-Base64
 		dev-perl/convert-ascii-armour
 		dev-perl/data-buffer
 		dev-perl/digest-md2
-		>=dev-perl/math-pari-2.010603
+		>=dev-perl/math-pari-2.010603*
 		dev-perl/crypt-random
 		dev-perl/crypt-primes
 		dev-perl/Crypt-DES_EDE3

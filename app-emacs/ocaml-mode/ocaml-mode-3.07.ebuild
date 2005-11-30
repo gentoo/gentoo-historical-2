@@ -1,9 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ocaml-mode/ocaml-mode-3.07.ebuild,v 1.8 2005/07/10 19:58:23 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ocaml-mode/ocaml-mode-3.07.ebuild,v 1.1 2004/04/11 12:16:30 mattam Exp $
 
 inherit elisp
 
+IUSE=""
 MY_P=${P/-mode/}
 
 DESCRIPTION="Emacs mode for OCaml"
@@ -12,7 +13,8 @@ SRC_URI="http://caml.inria.fr/distrib/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~x86 ~ppc
+"
 IUSE=""
 
 DEPEND="virtual/emacs"

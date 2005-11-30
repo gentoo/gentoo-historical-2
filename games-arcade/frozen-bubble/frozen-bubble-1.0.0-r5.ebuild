@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/frozen-bubble/frozen-bubble-1.0.0-r5.ebuild,v 1.3 2005/05/20 03:31:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/frozen-bubble/frozen-bubble-1.0.0-r5.ebuild,v 1.1 2005/05/09 04:19:00 vapier Exp $
 
 inherit eutils perl-module games
 
@@ -30,7 +30,7 @@ src_unpack() {
 	# main package
 	epatch "${FILESDIR}"/${P}-makefile.patch
 	epatch "${FILESDIR}"/${PV}-no-chainreaction.patch
-	epatch "${FILESDIR}"/${P}-{editor-,}sdl-perl-2.patch
+	epatch "${FILESDIR}"/${P}-sdl-perl-2.patch
 	sed -i \
 		-e 's:INSTALLDIRS=.*:PREFIX=${D}/usr:' \
 		c_stuff/Makefile \
@@ -103,6 +103,5 @@ src_install() {
 	dodoc TODO
 	newdoc README README.server
 
-	fixlocalpod
 	prepgamesdirs
 }

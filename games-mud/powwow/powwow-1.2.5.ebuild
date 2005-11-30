@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/powwow/powwow-1.2.5.ebuild,v 1.5 2005/06/15 18:56:17 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/powwow/powwow-1.2.5.ebuild,v 1.1 2004/08/19 01:57:02 mr_bones_ Exp $
 
-inherit toolchain-funcs eutils games
+inherit gcc eutils games
 
 DESCRIPTION="PowWow Console MUD Client"
 HOMEPAGE="http://linuz.sns.it/~max/powwow/"
@@ -10,7 +10,7 @@ SRC_URI="http://linuz.sns.it/~max/powwow/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="x86"
 IUSE=""
 
 DEPEND=">=sys-libs/ncurses-5.2"
@@ -25,7 +25,7 @@ src_unpack() {
 
 src_compile() {
 	emake \
-		CC="$(tc-getCC)" \
+		CC="$(gcc-getCC)" \
 		CFLAGS="${CFLAGS} -DUSE_REGEXP -DPOWWOW_DIR=\"\\\"${POWWOWDIR}\\\"\"" \
 		LDFLAGS="-lncurses" \
 		powwow movie \
@@ -37,7 +37,7 @@ src_install () {
 	newgamesbin movie movie_play
 	dosym movie_play "${GAMES_BINDIR}/movie2ascii"
 	insinto "${POWWOWDIR}"
-	doins powwow.help || die "doins failed"
+	doins powwow.help COPYING || die "doins failed"
 	dodoc README.* powwow.doc powwow-1.2.5.lsm Compile.how \
 		Hacking Config.demo Changelog
 	prepgamesdirs

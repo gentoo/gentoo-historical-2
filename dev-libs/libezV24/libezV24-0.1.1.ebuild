@@ -1,20 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libezV24/libezV24-0.1.1.ebuild,v 1.4 2004/06/24 23:16:39 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libezV24/libezV24-0.1.1.ebuild,v 1.1 2003/11/19 20:12:23 weeve Exp $
 
-inherit eutils
-
-DESCRIPTION="library that provides an easy API to Linux serial ports"
-HOMEPAGE="http://ezv24.sourceforge.net/"
-SRC_URI="mirror://sourceforge/ezv24/${P}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="~x86 -ppc ~sparc alpha"
 IUSE=""
-
+S=${WORKDIR}/${P}
+DESCRIPTION="libezV24 - library that provides an easy API to Linux serial ports"
+HOMEPAGE="http://ezv24.sf.net"
+SRC_URI="mirror://sourceforge/ezv24/${P}.tar.gz"
 DEPEND=""
 RDEPEND=""
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~x86 -ppc ~sparc ~alpha"
 
 src_compile() {
 	epatch ${FILESDIR}/${P}-test-v24.c.diff
@@ -24,7 +21,7 @@ src_compile() {
 
 src_install() {
 	make install PREFIX=${D}usr || die "Make install failed"
-	dodoc AUTHORS BUGS ChangeLog HISTORY README
+	dodoc AUTHORS BUGS COPYING ChangeLog HISTORY README
 	dohtml api-html/*
 
 	# make install makes symlinks that don't exist when installed, so

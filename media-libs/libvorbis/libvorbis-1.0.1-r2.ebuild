@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libvorbis/libvorbis-1.0.1-r2.ebuild,v 1.17 2005/07/16 18:48:38 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libvorbis/libvorbis-1.0.1-r2.ebuild,v 1.1 2004/01/31 15:13:51 mholzer Exp $
 
-inherit libtool flag-o-matic toolchain-funcs
+inherit libtool flag-o-matic gcc
 
 DESCRIPTION="the Ogg Vorbis sound file format library"
 HOMEPAGE="http://www.xiph.org/ogg/vorbis/index.html"
@@ -10,12 +10,9 @@ SRC_URI="http://www.vorbis.com/files/${PV}/unix/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ~ppc-macos sparc x86"
-IUSE=""
+KEYWORDS="x86 ~amd64 ~mips sparc hppa alpha ia64"
 
-RDEPEND=">=media-libs/libogg-1.0"
-DEPEND="${RDEPEND}
-	sys-apps/sed"
+DEPEND=">=media-libs/libogg-1.0"
 
 src_unpack() {
 	unpack ${A}
@@ -26,13 +23,7 @@ src_unpack() {
 }
 
 src_compile() {
-	# Fixes some strange sed-, libtool- and ranlib-errors on
-	# Mac OS X
-	if use ppc-macos; then
-		glibtoolize
-	else
-		elibtoolize
-	fi
+	elibtoolize
 
 	# Cannot compile with sse2 support it would seem #36104
 	use x86 && [ $(gcc-major-version) -eq 3 ] && append-flags -mno-sse2
@@ -45,13 +36,6 @@ src_compile() {
 	# over optimization causes horrible audio artifacts #26463
 	filter-flags -march=pentium?
 
-	# gcc-3.4 and k6 with -ftracer causes code generation problems #49472
-	if [ $(gcc-major-version) -eq 3 -a $(gcc-minor-version) -eq 4 ];
-	then
-		is-flag -march=k6* && filter-flags -ftracer
-		is-flag -mtune=k6* && filter-flags -ftracer
-	fi
-
 	# gcc on hppa causes issues when assembling
 	use hppa && replace-flags -march=2.0 -march=1.0
 
@@ -60,22 +44,16 @@ src_compile() {
 	append-ldflags -fPIC
 
 	econf || die
-	use ppc-macos && cd ${S} && sed -i -e 's/examples//' Makefile
 	emake || die
 }
 
 src_install() {
 	make DESTDIR=${D} install || die
-	if use ppc-macos; then
-		dosym /usr/lib/libvorbisfile.3.1.0.dylib /usr/lib/libvorbisfile.0.dylib
-		dosym /usr/lib/libvorbisenc.2.0.0.dylib /usr/lib/libvorbisenc.0.dylib
-	else
-		dosym /usr/lib/libvorbisfile.so.3.1.0 /usr/lib/libvorbisfile.so.0
-		dosym /usr/lib/libvorbisenc.so.2.0.0 /usr/lib/libvorbisenc.so.0
-	fi
+	dosym /usr/lib/libvorbisfile.so.3.1.0 /usr/lib/libvorbisfile.so.0
+	dosym /usr/lib/libvorbisenc.so.2.0.0 /usr/lib/libvorbisenc.so.0
 
 	rm -rf ${D}/usr/share/doc
-	dodoc AUTHORS README todo.txt
+	dodoc AUTHORS COPYING README todo.txt
 	docinto txt
 	dodoc doc/*.txt
 	dohtml -r doc

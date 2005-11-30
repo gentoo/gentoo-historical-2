@@ -1,15 +1,6 @@
 # ChangeLog for app-crypt/cfs
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/cfs/ChangeLog,v 1.5 2005/01/01 12:27:00 eradicator Exp $
-
-  14 Oct 2004; David Holm <dholm@gentoo.org> cfs-1.4.1.14.ebuild:
-  Added to ~ppc.
-
-  28 Sep 2004; Sven Wegener <swegener@gentoo.org> files/cfsd.init:
-  Gentoo Technologies, Inc. -> Gentoo Foundation
-
-  17 Sep 2004; <mkennedy@gentoo.org> cfs-1.4.1.14.ebuild:
-  Minor typographical fix.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/cfs/ChangeLog,v 1.1 2004/09/17 21:48:30 mkennedy Exp $
 
 *cfs-1.4.1.14 (17 Sep 2004)
 

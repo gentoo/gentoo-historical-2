@@ -1,57 +1,6 @@
-# ChangeLog for app-forensics/aide
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/aide/ChangeLog,v 1.17 2005/11/07 18:50:22 dragonheart Exp $
-
-  02 Oct 2005; Benjamin Smee <strerror@gentoo.org>
-  +files/aide-0.10_p20040917-r1-fix-psql.diff:
-  Added file for postgres fix re BUG 107927
-
-*aide-0.10_p20040917-r1 (30 Sep 2005)
-
-  30 Sep 2005; Benjamin Smee <strerror@gentoo.org> +files/aide.conf,
-  +files/aide.cron, +files/aideinit, +aide-0.10_p20040917-r1.ebuild:
-  Added helper script and changed default config
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> aide-0.10_p20040917.ebuild:
-  stable on amd64
-
-  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
-  aide-0.10_p20040917.ebuild:
-  Stable on ppc.
-
-  06 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
-  aide-0.10_p20040917.ebuild:
-  Stable on alpha.
-
-  31 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  aide-0.10_p20040917.ebuild:
-  Stable on sparc
-
-  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> aide-0.10_p20040917.ebuild:
-  Marked stable on x86.
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  18 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  18 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> aide-0.10_p20040917.ebuild:
-  Fixed hasq/useq invocation
-
-*aide-0.10_p20040917 (18 Sep 2004)
-
-  18 Sep 2004; Aaron Walker <ka0ttic@gentoo.org>
-  +files/aide-0.10_p20040917-fix-psql.diff, +aide-0.10_p20040917.ebuild:
-  Version bump; fixes bugs 23764, 37007, and 62194. Thanks to Joshua
-  Schmidlkofer for the postgresql patch.
-
-  17 Sep 2004; Aaron Walker <ka0ttic@gentoo.org> aide-0.10.ebuild,
-  aide-0.9.ebuild:
-  Fixed deps (bug #44445)
-
-  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml:
-  metadata.xml update
+# ChangeLog for app-admin/aide
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/aide/ChangeLog,v 1.1 2004/09/12 06:44:02 dragonheart Exp $
 
 *aide-0.10 (12 Sep 2004)
 
@@ -64,7 +13,7 @@
   -aide-0.8.ebuild:
   Fix mhash segfault irt #62194, thanks Gianluca <g.insolvibile@cpr.it>.
 
-  03 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> aide-0.10.ebuild:
+  03 Jul 2004; Bryan �stergaard <kloeri@gentoo.org> aide-0.10.ebuild:
   Stable on alpha.
 
   06 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,

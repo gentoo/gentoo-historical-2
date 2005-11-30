@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircd-hybrid/ircd-hybrid-7.1.0.ebuild,v 1.3 2005/11/03 07:31:17 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircd-hybrid/ircd-hybrid-7.1.0.ebuild,v 1.1 2005/07/20 19:11:02 swegener Exp $
 
 inherit eutils toolchain-funcs
 
@@ -12,11 +12,12 @@ ENABLE_SMALL_NETWORK=1
 ENABLE_POLL=1
 ENABLE_SELECT=0
 ENABLE_EFNET=0
+ENABLE_RTSIGIO=0
 ENABLE_SHARED=1
 ENABLE_DEVPOLL=0
 ENABLE_KQUEUE=0
 
-IUSE="debug ssl static zlib"
+IUSE="debug ipv6 ssl static zlib"
 
 DESCRIPTION="IRCD-Hybrid - High Performance Internet Relay Chat"
 HOMEPAGE="http://ircd-hybrid.com/"
@@ -91,6 +92,13 @@ src_compile() {
 	else
 		myconf="${myconf} --disable-efnet"
 	fi
+	if [ ${ENABLE_RTSIGIO} -eq 1 ]
+	then
+		einfo "Configuring with Superior RTSIGIO."
+		myconf="${myconf} --enable-rtsigio"
+	else
+		myconf="${myconf} --disable-rtsigio"
+	fi
 	if [ ${ENABLE_SHARED} -eq 1 ]
 	then
 		einfo "Configuring with shared modules."
@@ -116,6 +124,7 @@ src_compile() {
 		--with-nicklen=${MAX_NICK_LENGTH} \
 		--with-topiclen=${MAX_TOPIC_LENGTH} \
 		--with-maxconn=${MAX_CLIENTS} \
+		$(use_enable ipv6) \
 		$(use_enable zlib) \
 		$(use_enable ssl openssl) \
 		$(use_enable !static shared-modules) \
@@ -163,7 +172,7 @@ pkg_postinst() {
 	if use ssl
 	then
 		einfo "To create an RSA keypair for crypted links execute:"
-		einfo "emerge --config =${CATEGORY}/${PF}"
+		einfo "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
 	fi
 }
 

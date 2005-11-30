@@ -1,59 +1,6 @@
 # ChangeLog for net-mail/vimap
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vimap/ChangeLog,v 1.17 2005/05/22 19:54:23 ferdy Exp $
-
-  22 May 2005; Fernando J. Pereda <ferdy@gentoo.org> vimap-2002c-r3.ebuild:
-  pseudo-depend on mailbase +pam
-
-  10 May 2005; Rene Nussbaumer <killerfox@gentoo.org> vimap-2002c-r3.ebuild:
-  stable on hppa
-
-  06 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> vimap-2002c-r3.ebuild:
-  Stable on alpha, bug 83797.
-
-  04 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> vimap-2002c-r3.ebuild:
-  Stable on sparc wrt #83797
-
-  03 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> vimap-2002c-r3.ebuild:
-  Stable on ppc.
-
-  03 Mar 2005; Andrej Kacian <ticho@gentoo.org> vimap-2002c-r3.ebuild:
-  Stable on x86, bug #83797.
-
-*vimap-2002c-r3 (03 Mar 2005)
-
-  03 Mar 2005; Andrej Kacian <ticho@gentoo.org> +vimap-2002c-r3.ebuild:
-  Disable plaintext login outside of SSL sessions, and add a USE flag to
-  toggle this behavior. Suggested by Tero Pelander <tpeland@tkukoulu.fi> in
-  bug #83979.
-
-*vimap-2002c-r2 (18 Feb 2005)
-
-  18 Feb 2005; Fernando J. Pereda <ferdy@gentoo.org> +vimap-2002c-r2.ebuild:
-  Make it conform bug #79240
-
-*vimap-2002c-r1 (11 Feb 2005)
-
-  11 Feb 2005; Konstantin Arkhipov <voxus@gentoo.org> +vimap-2002c-r1.ebuild:
-  Ported cryos' fixes for amd64 from net-mail/uw-imap-2004c-r1
-  Added ~amd64 keyword.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> vimap-2002c.ebuild:
-  virtual/glibc -> virtual/libc
-
-*vimap-2002c (28 May 2003)
-
-  21 Jun 2003; Robin Johnson <robbat2@gentoo.org> vimap-2003c.ebuild:
-  Missed adding !virtual/imap-c-client to DEPEND.
-
-  20 Jun 2003; Robin Johnson <robbat2@gentoo.org> vimap-2003c.ebuild:
-  Add PROVIDE virtual/imap-c-client.
-
-  11 Jun 2003; Brad Laue <brad@gentoo.org> vimap-2002c.ebuild:
-  Marking stable per bug 22648. Submitted by Stewart <bugsubmit@snerk.org>.
-
-  28 May 2003; Dean Bailey <alron@gentoo.org> vimap-2003c :
-  Version bump, new vimap patch for uw-imap 2002c1.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vimap/ChangeLog,v 1.1 2003/02/10 02:32:00 alron Exp $
 
 *vimap-2001a (09 Feb 2003)
 

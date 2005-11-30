@@ -1,30 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/bc-1.06-r5.ebuild,v 1.21 2005/03/09 00:31:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bc/bc-1.06-r5.ebuild,v 1.1 2003/02/20 01:20:43 gerk Exp $
 
-inherit eutils flag-o-matic toolchain-funcs
+IUSE="readline"
 
+inherit flag-o-matic
+
+S="${WORKDIR}/${P}"
 DESCRIPTION="Handy console-based calculator utility"
+SRC_URI="ftp://prep.ai.mit.edu/pub/gnu/bc/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/bc/bc.html"
-SRC_URI="mirror://gnu/bc/${P}.tar.gz"
 
-LICENSE="GPL-2 LGPL-2.1"
+LICENSE="GPL-2 & LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
-IUSE="readline static"
+KEYWORDS="x86 ppc sparc alpha hppa"
 
-RDEPEND="readline? ( >=sys-libs/readline-4.1
+RDEPEND="readline? ( >=sys-libs/readline-4.1 
 	>=sys-libs/ncurses-5.2 )"
-DEPEND="${RDEPEND}
-	sys-devel/flex"
+DEPEND="$RDEPEND sys-devel/flex"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
 
-	epatch ${FILESDIR}/bc-1.06-info-fix.diff
-	epatch ${FILESDIR}/bc-1.06-readline42.diff
-	sed -i -e '/^AR =/s:.*::' lib/Makefile.in
+	unpack ${A} ; cd ${S}
+
+	patch -p1 < ${FILESDIR}/bc-1.06-info-fix.diff || die
+	patch -p1 < ${FILESDIR}/bc-1.06-readline42.diff || die
 
 	# Command line arguments for flex changed from the old
 	# 2.5.4 to 2.5.22, so fix configure if we are using the
@@ -38,31 +38,31 @@ src_unpack() {
 	     "${flminor/flex* }" -ge 5 -a \
 	     "${flmicro/flex* }" -ge 22 ]
 	then
-		sed -i -e 's:flex -I8:flex -I:g' \
-			configure
+		cd ${S}; cp configure configure.orig
+		sed -e 's:flex -I8:flex -I:g' \
+			configure.orig > configure
 	fi
 }
 
 src_compile() {
-	case ${ARCH} in
-		ppc) filter-flags -O2;;
-		x86) replace-flags -Os -O2;;
-		amd64) replace-flags -O? -O0;;
-	esac
-	tc-export CC AR RANLIB
 
+	# -O2 causes segafults on ppc with zero backtrace :/
+	use ppc && filter-flags "-O2"
 	local myconf=""
-	use static && append-ldflags -static
 	use readline && myconf="--with-readline"
+
 	econf ${myconf} || die
+
 	emake || die
 }
 
 src_install() {
+
 	into /usr
-	dobin bc/bc dc/dc || die
+	dobin bc/bc dc/dc
 
 	doinfo doc/*.info
 	doman doc/*.1
-	dodoc AUTHORS FAQ NEWS README ChangeLog
+	dodoc AUTHORS COPYING* FAQ NEWS README ChangeLog
 }
+

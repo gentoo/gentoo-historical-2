@@ -1,49 +1,10 @@
 # ChangeLog for app-antivirus/bitdefender-console
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-antivirus/bitdefender-console/ChangeLog,v 1.11 2005/09/07 21:11:52 herbs Exp $
-
-  07 Sep 2005; Herbie Hopkins <herbs@gentoo.org>
-  bitdefender-console-7.0.1-r1.ebuild:
-  Correct amd64 depend, bug 105132. Mark stable on amd64.
-
-  05 Sep 2005; Andrej Kacian <ticho@gentoo.org>
-  bitdefender-console-7.0.1-r1.ebuild:
-  Stable on x86.
-
-*bitdefender-console-7.0.1-r1 (30 May 2005)
-
-  30 May 2005; Andrej Kacian <ticho@gentoo.org>
-  bitdefender-console-7.0.1.ebuild, +bitdefender-console-7.0.1-r1.ebuild:
-  Added PaX workaround as suggested in bug #83695. Keep dirs
-  /var/bdc/infected, /var/bdc/suspected.
-
-  24 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  bitdefender-console-7.0.1.ebuild:
-  added -* keyword to indicate this is x86 specific (missing keywords can
-  mean untried on other architectures -- but this is distributed as x86
-  binaries so we KNOW it won't work except on platforms with x86 instructions
-  (i.e. x86 and amd64 using 32-bit support)
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  bitdefender-console-7.0.1.ebuild:
-  stable on amd64
-
-  19 Jan 2005; Andrej Kacian <ticho@gentoo.org>
-  bitdefender-console-7.0.1.ebuild:
-  Stable on x86.
-
-  11 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  bitdefender-console-7.0.1.ebuild:
-  emul-linux-x86 update
-
-  21 Nov 2004; Simon Stelling <blubb@gentoo.org>
-  bitdefender-console-7.0.1.ebuild:
-  added ~amd64
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-antivirus/bitdefender-console/ChangeLog,v 1.1 2004/11/20 15:41:44 ticho Exp $
 
 *bitdefender-console-7.0.1 (20 Nov 2004)
 
   20 Nov 2004; Andrej Kacian <ticho@gentoo.org> +metadata.xml,
   +bitdefender-console-7.0.1.ebuild:
-  Initial import. Ebuild submitted by Alin Nastac <mrness@gentoo.org>. Closes
-  #62759.
+  Initial import.
 

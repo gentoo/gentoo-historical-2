@@ -1,25 +1,6 @@
 # ChangeLog for x11-libs/libgksuui
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libgksuui/ChangeLog,v 1.6 2005/09/05 23:30:46 metalgod Exp $
-
-  06 Sep 2005; Luis Medinas <metalgod@gentoo.org> libgksuui-1.0.6.ebuild:
-  Added ~amd64 keywords. Closes bug #104768.
-
-  04 Sep 2005; Daniel Black <dragonheart@gentoo.org>
-  -libgksuui-1.0.3.ebuild, libgksuui-1.0.6.ebuild:
-  cleanout and QA fixes. Hopefully fixes bug #92707
-
-*libgksuui-1.0.6 (16 Jul 2005)
-
-  16 Jul 2005; Daniel Black <dragonheart@gentoo.org>
-  +libgksuui-1.0.6.ebuild:
-  version bump
-
-  07 May 2005; Luca Barbato <lu_zero@gentoo.org> libgksuui-1.0.3.ebuild:
-  Deps fixed
-
-  04 May 2005; David Holm <dholm@gentoo.org> libgksuui-1.0.3.ebuild:
-  Added to ~ppc.
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libgksuui/ChangeLog,v 1.1 2005/05/01 05:01:44 dragonheart Exp $
 
 *libgksuui-1.0.3 (01 May 2005)
 

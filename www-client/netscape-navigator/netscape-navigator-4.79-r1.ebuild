@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/netscape-navigator/netscape-navigator-4.79-r1.ebuild,v 1.5 2005/03/15 21:33:21 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/netscape-navigator/netscape-navigator-4.79-r1.ebuild,v 1.1 2005/03/15 20:08:44 seemant Exp $
 
 S=${WORKDIR}/navigator-v479.x86-unknown-linux2.2
 DESCRIPTION="Netscape Navigator 4.79"

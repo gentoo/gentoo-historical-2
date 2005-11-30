@@ -2,5 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-<herd>dev-tools</herd>
+<herd>no-herd</herd>
+<maintainer>
+  <email>karltk@gentoo.org</email>
+  <description>Primary maintainer</description>
+</maintainer>
+
+<longdescription>
+
+</longdescription>
 </pkgmetadata>

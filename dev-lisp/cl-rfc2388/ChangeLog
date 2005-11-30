@@ -1,19 +1,6 @@
 # ChangeLog for dev-lisp/cl-rfc2388
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rfc2388/ChangeLog,v 1.4 2005/05/24 18:48:35 mkennedy Exp $
-
-  24 May 2005; <mkennedy@gentoo.org> cl-rfc2388-0.9.ebuild:
-  Keywording ~sparc
-
-  17 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org> -files/rfc2388.asd,
-  -cl-rfc2388-20041228.ebuild:
-  Removed old ebuilds
-
-*cl-rfc2388-0.9 (06 Apr 2005)
-
-  06 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org> metadata.xml,
-  +cl-rfc2388-0.9.ebuild, cl-rfc2388-20041228.ebuild:
-  New upstream version; Resolves Bug #88032; Expanded metadata.xml.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rfc2388/ChangeLog,v 1.1 2004/12/28 21:43:05 mkennedy Exp $
 
 *cl-rfc2388-20041228 (28 Dec 2004)
 

@@ -1,20 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/drbd/drbd-0.6.12-r1.ebuild,v 1.6 2005/02/03 09:51:51 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/drbd/drbd-0.6.12-r1.ebuild,v 1.1 2004/08/30 13:51:12 tantive Exp $
 
-inherit eutils linux-info
+inherit eutils
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 DESCRIPTION="mirror/replicate block-devices across a network-connection"
+#SRC_URI="http://www.linbit.com/en/filemanager/download/44/drbd-${PV}.tar.gz"
 SRC_URI="http://www.drbd.org/uploads/media/drbd-${PV}.tar.gz"
 HOMEPAGE="http://www.drbd.org"
 
 IUSE=""
 
 DEPEND="virtual/linux-sources"
-RDEPEND=">=sys-cluster/heartbeat-1.0.4"
+RDEPEND=">=sys-cluster/heartbeat-1.0*"
 SLOT="0"
 
 src_unpack() {
@@ -38,12 +39,12 @@ src_compile() {
 	einfo ""
 	cd ${S}
 	cp -R /usr/src/linux-${KV} ${WORKDIR}
-	emake KDIR=/${WORKDIR}/linux-${KV} || die "compile problem"
+	emake KDIR=/${WORKDIR}/linux-${KV} || die
 }
 
 src_install() {
 	cd ${S}
-	make PREFIX=${D} install "install problem"
+	make PREFIX=${D} install
 
 	# gentoo-ish init-script
 	dodir /etc
@@ -58,7 +59,7 @@ src_install() {
 
 	# needed by drbd startup script
 	dodir /var/lib/drbd
-	keepdir /var/lib/drbd
+	keepdir /var/lib/drbd 
 
 	# docs
 	dodoc README ChangeLog COPYING

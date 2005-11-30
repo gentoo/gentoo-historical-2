@@ -1,23 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sendfile/sendfile-2.1a.ebuild,v 1.9 2004/06/25 03:12:58 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/sendfile/sendfile-2.1a.ebuild,v 1.1 2002/10/29 18:29:07 aliz Exp $
 
-DESCRIPTION="SAFT implementation for UNIX and serves as a tool for asynchronous sending of files in the Internet"
-HOMEPAGE="http://www.belwue.de/projekte/saft/sendfile-us.html"
+S=${WORKDIR}/${P}
+DESCRIPTION="Sendfile is a SAFT implementation for UNIX and serves as a tool for asynchronous sending of files in the Internet"
 SRC_URI="ftp://ftp.belwue.de/pub/unix/sendfile/${P}.tar.gz"
-
-LICENSE="GPL-2"
+HOMEPAGE="http://www.belwue.de/projekte/saft/sendfile-us.html"
 SLOT="0"
-KEYWORDS="x86 ppc"
-IUSE=""
+LICENSE="GPL"
+KEYWORDS="~x86"
 
 src_compile() {
-	./makeconfig \
-		"CFLAGS=\"${CFLAGS}\" \
-		BINDIR=/usr/bin \
-		MANDIR=/usr/share/man \
-		CONFIG=/etc/sendfile \
-		SERVERDIR=/usr/sbin" || die
+	./makeconfig "CFLAGS=\"${CFLAGS}\" BINDIR=/usr/bin MANDIR=/usr/share/man \
+		CONFIG=/etc/sendfile SERVERDIR=/usr/sbin" || die
 
 	make all || die
 }
@@ -25,7 +20,7 @@ src_compile() {
 src_install() {
 	into /usr
 	dosbin src/sendfiled
-	dobin etc/check_sendfile src/sendfile src/sendmsg src/receive src/fetchfile
+	dobin etc/check_sendfile src/sendfile src/sendmsg src/receive src/fetchfile 
 	dobin src/utf7encode src/wlock etc/sfconf etc/sfdconf
 	dosym /usr/bin/utf7encode /usr/bin/utf7decode
 
@@ -38,12 +33,13 @@ src_install() {
 
 	insinto /etc/sendfile
 	doins etc/sendfile.deny etc/sendfile.cf
-
+	
 	doman doc/sendmsg.1 doc/sendfile.1 doc/receive.1 doc/fetchfile.1
 
-	dodoc doc/AUTHORS doc/ChangeLog doc/README* doc/THANKS
+	dodoc doc/AUTHORS doc/COPYING doc/ChangeLog doc/README* doc/THANKS
 }
 
 pkg_postinst() {
 	einfo "To start the sendfile daemon you have to start Inetd."
+	einfo
 }

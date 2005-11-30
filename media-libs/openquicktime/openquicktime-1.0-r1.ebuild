@@ -1,42 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openquicktime/openquicktime-1.0-r1.ebuild,v 1.12 2005/09/13 20:26:48 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openquicktime/openquicktime-1.0-r1.ebuild,v 1.1 2003/04/14 18:29:18 mholzer Exp $
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 replace-flags "-fprefetch-loop-arrays" " "
 
 MY_P=${P}-src
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="OpenQuicktime library for linux"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz
-	mirror://gentoo/openquicktime-1.0-gcc34-1.patch.bz2"
-HOMEPAGE="http://www.openquicktime.org/"
+SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
+HOMEPAGE="http://openquicktime.sourceforge.net/"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="alpha amd64 ppc sparc x86"
-IUSE=""
+KEYWORDS="x86 ppc sparc ~alpha"
 
 DEPEND="media-sound/lame
-	virtual/mpg123
-	=dev-libs/glib-1*
-	!virtual/quicktime
+	media-sound/mpg123
 	media-libs/jpeg"
 
-PROVIDE="virtual/quicktime"
-
-src_unpack () {
-	unpack ${MY_P}.tgz
-	cd ${S}
-	if has_version '>=sys-devel/gcc-3.4'; then
-		epatch ${DISTDIR}/${P}-gcc34-1.patch.bz2
-	fi
-}
-
 src_compile() {
-	# debug is enabled by default...
-	econf --enable-debug=no || die
-	emake || die
+	
+	./configure \
+		--enable-debug=no \
+		--prefix=/usr || die # Disable debug - enabled by default
+		
+	make || die
 }
 
 src_install() {
@@ -44,5 +33,11 @@ src_install() {
 	dolib.so libopenquicktime.so
 	dodoc README AUTHORS NEWS COPYING TODO
 	dodir /usr/bin
-	einstall || die
+	make \
+		prefix=${D}/usr \
+		mandir=${D}/usr/share/man \
+		infodir=${D}/usr/share/info \
+		docdir=${D}/usr/share/doc/${PF}/html \
+		sysconfdir=${D}/etc \
+		install || die
 }

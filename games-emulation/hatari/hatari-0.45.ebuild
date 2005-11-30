@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/hatari/hatari-0.45.ebuild,v 1.6 2004/06/24 22:29:36 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/hatari/hatari-0.45.ebuild,v 1.1 2003/11/08 01:09:14 mr_bones_ Exp $
 
 inherit games
 
 DESCRIPTION="Atari ST emulator"
-HOMEPAGE="http://hatari.sourceforge.net/"
 SRC_URI="mirror://sourceforge/hatari/${P}.tar.gz"
+HOMEPAGE="http://hatari.sourceforge.net/"
 
 LICENSE="GPL-2"
+KEYWORDS="x86 ~ppc"
 SLOT="0"
-KEYWORDS="x86 ppc"
-IUSE=""
 
 RDEPEND="games-emulation/emutos
 	media-libs/libsdl
@@ -25,8 +24,8 @@ src_unpack() {
 
 	sed -i \
 		-e "/^CFLAGS/ s:-O3.*:${CFLAGS}:" \
-		-e "/^DATADIR/ s:=.*:= ${GAMES_DATADIR}/${PN}:" Makefile.cnf \
-		|| die "sed Makefile.cnf failed"
+		-e "/^DATADIR/ s:=.*:= ${GAMES_DATADIR}/${PN}:" Makefile.cnf || \
+			die "sed Makefile.cnf failed"
 }
 
 src_compile() {
@@ -35,11 +34,11 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin "${S}/src/hatari" || die "dogamesbin failed"
-	insinto "${GAMES_DATADIR}/${PN}"
-	doins src/font8.bmp || die "doins font8.bmp failed"
-	dodoc readme.txt doc/*.txt
-	dohtml -r doc/
+	dogamesbin ${S}/src/hatari || die "dogamesbin failed"
+	insinto ${GAMES_DATADIR}/${PN}
+	doins src/font8.bmp        || die "doins failed"
+	dodoc readme.txt doc/*.txt || die "dodoc failed"
+	dohtml doc/                || die "dohtml failed"
 	prepgamesdirs
 }
 

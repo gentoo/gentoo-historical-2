@@ -1,26 +1,6 @@
 # ChangeLog for media-sound/qsampler
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qsampler/ChangeLog,v 1.8 2005/11/07 11:45:31 flameeyes Exp $
-
-  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> qsampler-0.1.0.ebuild,
-  qsampler-0.1.2.ebuild:
-  Don't install INSTALL files.
-
-  28 Jul 2005; Caleb Tennis <caleb@gentoo.org> qsampler-0.1.0.ebuild,
-  qsampler-0.1.2.ebuild:
-  Fix qt dep per bug #100235
-
-  13 Jul 2005; Frank van de Pol <fvdpol@gentoo.org> qsampler-0.1.2.ebuild:
-  Unmasked amd64
-
-  11 Jul 2005; Frank van de Pol <fvdpol@gentoo.org> qsampler-0.1.0.ebuild,
-  qsampler-0.1.2.ebuild:
-  masked amd64 architecture
-
-*qsampler-0.1.2 (10 Jul 2005)
-
-  10 Jul 2005; Frank van de Pol <fvdpol@gentoo.org> +qsampler-0.1.2.ebuild:
-  version bump
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qsampler/ChangeLog,v 1.1 2005/05/29 23:35:00 fvdpol Exp $
 
   30 May 2005; Frank van de Pol <fvdpol@gentoo.org> :
   New ebuild for qsampler, a graphical frontend to LinuxSampler

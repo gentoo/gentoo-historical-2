@@ -1,27 +1,6 @@
 # ChangeLog for net-misc/asterisk-app_rtxfax
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-app_rtxfax/ChangeLog,v 1.5 2005/09/08 00:41:30 stkn Exp $
-
-*asterisk-app_rtxfax-0.0.2_pre20 (08 Sep 2005)
-
-  08 Sep 2005; Stefan Knoblich <stkn@gentoo.org>
-  +files/app_rtxfax-0.0.2_pre20-gentoo.diff,
-  +asterisk-app_rtxfax-0.0.2_pre20.ebuild:
-  Version bump. Supports asterisk-1.0.x and 1.2.0.
-
-  27 Aug 2005; <stkn@gentoo.org> asterisk-app_rtxfax-0.0.2_pre10.ebuild,
-  asterisk-app_rtxfax-0.0.2_pre18.ebuild:
-  Added blocker for >=1.1.0 (does not work with 1.2.0 at the moment)
-
-  08 Jul 2005; David Holm <dholm@gentoo.org>
-  asterisk-app_rtxfax-0.0.2_pre18.ebuild:
-  Added to ~ppc.
-
-*asterisk-app_rtxfax-0.0.2_pre18 (07 Jun 2005)
-
-  07 Jun 2005; Stefan Knoblich <stkn@gentoo.org>
-  +asterisk-app_rtxfax-0.0.2_pre18.ebuild:
-  New version.
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-app_rtxfax/ChangeLog,v 1.1 2005/03/26 13:21:04 stkn Exp $
 
 *asterisk-app_rtxfax-0.0.2_pre10 (26 Mar 2005)
 

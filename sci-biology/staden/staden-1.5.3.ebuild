@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/staden/staden-1.5.3.ebuild,v 1.9 2005/08/26 19:12:57 r3pek Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/staden/staden-1.5.3.ebuild,v 1.1 2005/01/15 02:37:04 ribosome Exp $
 
 inherit eutils toolchain-funcs
 
@@ -13,11 +13,11 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV//./-}.tar.gz
 	mirror://gentoo/${PN}-1.4.1-missing-doc.tar.bz2
 	mirror://sourceforge/tcl/tcl${TCLV}-src.tar.gz
 	mirror://sourceforge/tcl/tk${TKV}-src.tar.gz
-	doc? ( mirror://sourceforge/${PN}/course-1.1.tar.gz )"
+	doc? mirror://sourceforge/${PN}/course-1.1.tar.gz"
 LICENSE="${PN}"
 
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~x86"
 IUSE="doc"
 
 DEPEND="${RDEPEND}
@@ -43,7 +43,7 @@ pkg_setup() {
 		echo
 		eerror "The Fortran compiler \"${F77:-g77}\" could not be found on your system."
 		if [ -z ${F77} ] || [ ${F77} = g77 ]; then
-			eerror 'Please reinstall "sys-devel/gcc" with the "fortran" "USE" flag enabled.'
+			eerror 'Please reinstall "sys-devel/gcc" with the "f77" "USE" flag enabled.'
 		else
 			eerror 'Please make sure the variable ${F77} is set to the name of a valid'
 			eerror 'Fortran compiler installed on your system. Make sure this executable'
@@ -70,13 +70,9 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-top.patch
 	epatch ${FILESDIR}/${P}-text_utils.patch
 	epatch ${FILESDIR}/${P}-tk_utils.patch
-	epatch ${FILESDIR}/${P}-prefinish.patch
-	epatch ${FILESDIR}/${P}-tracediff.patch
-	epatch ${FILESDIR}/${P}-mutscan.patch
-	epatch ${FILESDIR}/${P}-mutlib-gcc-3.4.patch
 	cd ${S}/src/mk
 	# Remove the "-fpic" flag. This will be replaced by "-fPIC".
-	sed -i -e 's/SHLIB_CFLAGS		= -fpic/SHLIB_CFLAGS		= /' linux.mk || die
+	sed -i -e 's/SHLIB_CFLAGS		= -fpic/SHLIB_CFLAGS		= /' linux.mk
 	cd ${S}
 
 	# "getopt" is incorrectly included as an extern (for Win32 compatibility).
@@ -84,13 +80,13 @@ src_unpack() {
 
 	# The original iwidgetsrc crashes...
 	einfo 'Replacing broken iwidgetsrc'
-	cp ${FILESDIR}/${P}-iwidgetsrc.new ${S}/tables/iwidgetsrc
+	cp ${FILESDIR}/${PN}-1.4.1-iwidgetsrc.new ${S}/tables/iwidgetsrc
 
 	# Netscape is not a good default browser (security masked in Portage).
 	# Use documentation.html rather than staden_home.html as the top-level
 	# hypertext documentation file.
 	einfo 'Replacing old staden_help script.'
-	cp ${FILESDIR}/${P}-staden_help.new ${S}/src/scripts/staden_help
+	cp ${FILESDIR}/${PN}-1.4.1-staden_help.new ${S}/src/scripts/staden_help
 	chmod +x ${S}/src/scripts/staden_help
 
 	# The documentation building process is broken on Gentoo, mainly because
@@ -99,15 +95,15 @@ src_unpack() {
 
 	# Documentation build process cannot find "update-nodes.el".
 	cd ${S}/doc/manual/tools
-	sed -i -e 's%emacs -batch $1 -l ${DOCDIR:-.}/tools/update-nodes.el%emacs -batch $1 -l ${DOCDIR:-..}/manual/tools/update-nodes.el%' update-nodes || die
+	sed -i -e 's%emacs -batch $1 -l ${DOCDIR:-.}/tools/update-nodes.el%emacs -batch $1 -l ${DOCDIR:-..}/manual/tools/update-nodes.el%' update-nodes
 
 	# Perl scripts search for "pearl" in "/usr/local".
 	for SCRIPT in *.pl texi2html; do
-		sed -i -e 's%/usr/local/bin/perl%/usr/bin/perl%' ${SCRIPT} || die
+		sed -i -e 's%/usr/local/bin/perl%/usr/bin/perl%' ${SCRIPT}
 	done
 
 	# The "convert" tool from Imagemagick is searched for in "/usr/X11R6".
-	sed -i -e 's%/usr/X11R6/bin/convert%/usr/bin/convert%' make_ps | die
+	sed -i -e 's%/usr/X11R6/bin/convert%/usr/bin/convert%' make_ps
 
 	# Solves issues with images in the exercise* texi files.
 	cd ${S}/course/texi
@@ -120,9 +116,8 @@ src_unpack() {
 	# system global Makefile. We also want only "-fPIC" shared libraries.
 	einfo "Applying user-defined compilation/linking flags:"
 	cd ${S}/src/mk
-	sed -e "s/COPT		= -O2 -g3 -DNDEBUG/COPT = ${CFLAGS:-"-O2 -g3 -DNDEBUG"} -fPIC/" \
-		-e "s/FOPT		= -O2 -g3 -DNDEBUG/FOPT = ${FFLAGS:-"-O2 -g3 -DNDEBUG"} -fPIC/" \
-		-i global.mk || die
+	sed -i -e "s/COPT		= -O2 -g3 -DNDEBUG/COPT = ${CFLAGS:-"-O2 -g3 -DNDEBUG"} -fPIC/" global.mk
+	sed -i -e "s/FOPT		= -O2 -g3 -DNDEBUG/FOPT = ${FFLAGS:-"-O2 -g3 -DNDEBUG"} -fPIC/" global.mk
 }
 
 src_compile() {
@@ -166,7 +161,7 @@ src_compile() {
 	rm ${S}/lib/linux-binaries
 	mkdir ${S}/lib/linux-binaries
 
-	# Moves executables in "${S}/linux-bin" and libraries to
+	# Moves executables in "${S}/linux-bin" and libraries to 
 	# ${S}/lib/linux-binaries.
 	cd ${S}
 	make \
@@ -234,7 +229,7 @@ src_install() {
 
 	# "env" file for setting paths to Staden Package root, libraries, tables...
 	insinto /etc/env.d
-	newins ${FILESDIR}/${P}-env 27${PN}
+	newins ${FILESDIR}/${PN}-1.4.1-env 27${PN}
 
 	# Basic documentation
 	insinto /opt/${PN}/doc

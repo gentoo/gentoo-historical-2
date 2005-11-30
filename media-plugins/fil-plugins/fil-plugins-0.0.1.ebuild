@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/fil-plugins/fil-plugins-0.0.1.ebuild,v 1.4 2004/09/01 17:35:46 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/fil-plugins/fil-plugins-0.0.1.ebuild,v 1.1 2004/06/15 23:55:09 fvdpol Exp $
 
 #
 MY_P=${P/fil/FIL}
@@ -10,7 +10,7 @@ HOMEPAGE="http://users.skynet.be/solaris/linuxaudio/"
 SRC_URI="http://users.skynet.be/solaris/linuxaudio/downloads/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="media-libs/ladspa-sdk"

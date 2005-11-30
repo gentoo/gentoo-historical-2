@@ -1,22 +1,21 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speech-tools/speech-tools-1.2.3-r2.ebuild,v 1.11 2005/09/09 13:44:03 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/speech-tools/speech-tools-1.2.3-r2.ebuild,v 1.1 2005/02/10 07:14:45 eradicator Exp $
 
 IUSE="doc"
 
-inherit eutils fixheadtails toolchain-funcs
+inherit eutils fixheadtails gcc
 
 MY_P=${P/-/_}
 
 DESCRIPTION="Speech tools for Festival Text to Speech engine"
 HOMEPAGE="http://www.cstr.ed.ac.uk/"
 SRC_URI="http://www.cstr.ed.ac.uk/download/festival/1.4.3/${MY_P}-release.tar.gz
-	 doc? ( http://www.cstr.ed.ac.uk/download/festival/1.4.3/festdoc-1.4.2.tar.gz )
-	 mirror://gentoo/speech-tools-1.2.3-gcc3.4.patch.bz2"
+	 doc? ( http://www.cstr.ed.ac.uk/download/festival/1.4.3/festdoc-1.4.2.tar.gz )"
 
 LICENSE="FESTIVAL BSD as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND="sys-libs/ncurses"
 DEPEND="${RDEPEND}
@@ -28,7 +27,6 @@ S="${WORKDIR}/speech_tools"
 
 src_unpack() {
 	unpack ${MY_P}-release.tar.gz
-	unpack speech-tools-1.2.3-gcc3.4.patch.bz2
 
 	cd ${S}
 	use doc && unpack festdoc-1.4.2.tar.gz && mv festdoc-1.4.2 festdoc
@@ -37,7 +35,7 @@ src_unpack() {
 		epatch ${FILESDIR}/${PN}-gcc3.3.diff
 	fi
 	if [ "$(gcc-version)" == "3.4" ]; then
-		epatch ${WORKDIR}/${P}-gcc3.4.patch
+		epatch ${FILESDIR}/${PV}-gcc3.4.patch
 	fi
 	ht_fix_file config.guess
 	sed -i 's:-O3:$(OPTIMISE_CXXFLAGS):' base_class/Makefile

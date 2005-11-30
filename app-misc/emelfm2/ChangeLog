@@ -1,28 +1,6 @@
 # ChangeLog for app-misc/emelfm2
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/ChangeLog,v 1.9 2005/09/03 19:49:38 vanquirius Exp $
-
-  03 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> -emelfm2-0.0.9.ebuild:
-  Remove old ebuild. Also fixes bug 80343.
-
-  03 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> emelfm2-0.0.9-r1.ebuild:
-  Use tc-getCC. Fixes bug 68986. Thanks to SpanKY <vapier@gentoo.org>.
-
-  12 Jun 2005; Sven Wegener <swegener@gentoo.org> emelfm2-0.0.9.ebuild,
-  emelfm2-0.0.9-r1.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  03 Dec 2004; Tom Martin <slarti@gentoo.org> emelfm2-0.0.9-r1.ebuild:
-  Marked ~amd64, resolves bug 72632.
-
-*emelfm2-0.0.9-r1 (07 Oct 2004)
-
-  07 Oct 2004; Brad Laue <brad@gentoo.org> +files/locale.patch,
-  +emelfm2-0.0.9-r1.ebuild:
-  Patch to remove the Locale check entirely, as it's spurious.
-
-  05 Sep 2004; David Holm <dholm@gentoo.org> emelfm2-0.0.9.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/ChangeLog,v 1.1 2004/09/02 13:52:33 brad Exp $
 
 *emelfm2-0.0.9 (02 Sep 2004)
 

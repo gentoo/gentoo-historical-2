@@ -1,18 +1,6 @@
 # ChangeLog for net-p2p/ldcc
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/ldcc/ChangeLog,v 1.7 2005/02/06 01:24:13 blubb Exp $
-
-  06 Feb 2005; Simon Stelling <blubb@gentoo.org> ldcc-2.0.7.ebuild:
-  added ~amd64
-
-  05 Jun 2004; David Holm <dholm@gentoo.org> ldcc-2.0.7.ebuild:
-  Added to ~ppc.
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> ldcc-2.0.7.ebuild:
-  Added IUSE.
-
-  05 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> ldcc-2.0.7.ebuild:
-  ppc needs dev-libs/tvision first
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/ldcc/ChangeLog,v 1.1 2003/04/24 14:41:58 vapier Exp $
 
 *ldcc-2.0.7 (24 Apr 2003)
 

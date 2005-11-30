@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/scid/scid-3.6.1.ebuild,v 1.4 2005/09/16 01:14:05 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/scid/scid-3.6.1.ebuild,v 1.1 2004/06/21 20:24:26 mr_bones_ Exp $
 
 inherit games
 
@@ -14,16 +14,15 @@ SRC_URI="mirror://sourceforge/scid/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="x86 alpha ppc sparc amd64"
 IUSE=""
 
-DEPEND="virtual/x11
+DEPEND="virtual/glibc
+	virtual/x11
 	>=dev-lang/tk-8.3
 	>=sys-libs/zlib-1.1.3"
 RDEPEND="${DEPEND}
 	>=dev-lang/python-2.1"
-DEPEND="${DEPEND}
-	app-arch/unzip"
 
 src_compile() {
 	./configure \

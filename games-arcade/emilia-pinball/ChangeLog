@@ -1,33 +1,8 @@
-# ChangeLog for games-arcade/emilia-pinball
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/emilia-pinball/ChangeLog,v 1.10 2005/06/15 18:07:23 wolf31o2 Exp $
-
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  emilia-pinball-0.3.0.ebuild, emilia-pinball-0.3.1.ebuild:
-  Removed INSTALL file.
-
-  17 Jan 2005; Jason Wever <weeve@gentoo.org> emilia-pinball-0.3.1.ebuild:
-  Added ~sparc keyword.
-
-  08 Nov 2004; Joseph Jezak <josejx@gentoo.org> emilia-pinball-0.3.1.ebuild:
-  Marked ppc stable.
-
-  03 Aug 2004; David Holm <dholm@gentoo.org> emilia-pinball-0.3.1.ebuild:
-  Added to ~ppc.
-
-  21 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  emilia-pinball-0.3.1.ebuild:
-  more error checking/messages
-
-*emilia-pinball-0.3.1 (03 Jan 2004)
-
-  03 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
-  Version bump #35900.
+# ChangeLog for app-games/emilia-pinball
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/emilia-pinball/ChangeLog,v 1.1 2003/09/10 19:29:21 vapier Exp $
 
 *emilia-pinball-0.3.0 (16 Jul 2003)
-
-  06 Oct 2003; Aron Griffis <agriffis@gentoo.org> emilia-pinball-0.3.0.ebuild:
-  Stable on alpha
 
   16 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
   Version bump + cleanup #20166.  Thanks to TGL for finishing it off.

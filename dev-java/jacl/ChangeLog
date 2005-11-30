@@ -1,28 +1,6 @@
 # ChangeLog for dev-java/jacl
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jacl/ChangeLog,v 1.9 2005/11/26 02:51:07 nichoj Exp $
-
-  26 Nov 2005; Joshua Nichols <nichoj@gentoo.org> jacl-1.3.1.ebuild:
-  Forgot to remove jikes DEPEND :-X
-
-  26 Nov 2005; Joshua Nichols <nichoj@gentoo.org> jacl-1.3.1.ebuild:
-  Disabling jikes support for now (bug #100020).
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> jacl-1.3.1.ebuild:
-  stable on amd64
-
-  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org> jacl-1.3.1.ebuild:
-  Keywords ~amd64.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jacl-1.3.1.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  24 Aug 2004; Chris Aniszczyk <zx@gentoo.org> jacl-1.3.1.ebuild:
-  Marking x86
-
-  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> jacl-1.3.1.ebuild:
-  Fix use invocation
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jacl/ChangeLog,v 1.1 2004/02/14 19:44:29 zx Exp $
 
 *jacl-1.3.1 (14 Feb 2004)
 

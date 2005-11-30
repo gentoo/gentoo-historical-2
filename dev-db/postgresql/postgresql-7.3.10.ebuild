@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.3.10.ebuild,v 1.5 2005/11/12 22:48:11 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.3.10.ebuild,v 1.1 2005/05/16 06:54:44 nakano Exp $
 
 inherit eutils gnuconfig flag-o-matic java-pkg
 
@@ -13,11 +13,11 @@ SRC_URI="mirror://postgresql/source/v${PV}/${PN}-base-${PV}.tar.bz2
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc ~alpha ~amd64 ~hppa ~ia64 ~mips"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~hppa ~ia64 ~mips"
 IUSE="doc java libg++ nls pam perl python readline ssl tcltk zlib threads selinux"
 
 DEPEND="virtual/libc
-	=dev-db/libpq-7.3.10*
+	=dev-db/libpq-7.3.10
 	sys-devel/autoconf
 	>=sys-libs/ncurses-5.2
 	zlib? ( >=sys-libs/zlib-1.1.3 )
@@ -32,7 +32,7 @@ DEPEND="virtual/libc
 # java dep workaround for portage bug
 # x86? ( java? ( =dev-java/sun-jdk-1.3* >=dev-java/ant-1.3 ) )
 RDEPEND="virtual/libc
-	=dev-db/libpq-7.3.10*
+	=dev-db/libpq-7.3.10
 	zlib? ( >=sys-libs/zlib-1.1.3 )
 	tcltk? ( >=dev-lang/tcl-8 )
 	perl? ( >=dev-lang/perl-5.6.1-r2 )
@@ -107,6 +107,7 @@ src_compile() {
 		--libdir=/usr/lib \
 		--includedir=/usr/include/postgresql/pgsql \
 		--enable-depend \
+		--with-gnu-ld \
 		--with-maxbackends=1024 \
 		$myconf || die
 
@@ -172,7 +173,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Execute the following command"
-	einfo "emerge --config =${PF}"
+	einfo "ebuild  /var/db/pkg/dev-db/${PF}/${PF}.ebuild config"
 	einfo "to setup the initial database environment."
 	einfo ""
 	einfo "Make sure the postgres user in /etc/passwd has an account setup with /bin/bash as the shell"

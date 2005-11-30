@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/spacehulk/spacehulk-1.4.99.ebuild,v 1.6 2005/07/07 04:38:44 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/spacehulk/spacehulk-1.4.99.ebuild,v 1.1 2003/11/09 03:13:16 mr_bones_ Exp $
 
-inherit games kde-functions
+inherit games
 
 DESCRIPTION="A boardgame in the world of Warhammer 40k"
 HOMEPAGE="http://r.vinot.free.fr/spacehulk/"
@@ -14,23 +14,20 @@ KEYWORDS="x86"
 SLOT="0"
 IUSE="xinerama"
 
-DEPEND="=x11-libs/qt-3*
+DEPEND=">=x11-libs/qt-3
 	sys-libs/zlib
 	media-libs/libpng
 	media-libs/jpeg
 	media-libs/nas"
 
 src_compile() {
-	set-qtdir 3
-	egamesconf \
-		`use_with xinerama` \
-		|| die
-	emake || die "emake failed"
+	egamesconf `use_with xinerama` || die
+	emake                          || die "emake failed"
 }
 
 src_install() {
-	egamesinstall || die
-	cp -R ../themes/* "${D}${GAMES_DATADIR}/${PN}/themes" || die "cp failed"
-	dodoc AUTHORS ChangeLog README TODO
+	egamesinstall                                       || die
+	cp -R ../themes/* ${D}${GAMES_DATADIR}/${PN}/themes || die "cp failed"
+	dodoc AUTHORS ChangeLog README TODO                 || die "dodoc failed"
 	prepgamesdirs
 }

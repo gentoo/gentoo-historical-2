@@ -1,31 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbi/fbi-1.31.ebuild,v 1.18 2005/05/17 16:06:24 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/fbi/fbi-1.31.ebuild,v 1.1 2004/03/01 22:16:59 spock Exp $
 
-inherit toolchain-funcs
+IUSE="png jpeg gif tiff curl lirc"
 
-DESCRIPTION="A image viewer for the Linux framebuffer console."
-HOMEPAGE="http://linux.bytesex.org/fbida/"
-SRC_URI="http://dl.bytesex.org/releases/fbida/${P/-/_}.tar.gz"
+S="${WORKDIR}/${P}"
+DESCRIPTION="fbi a framebuffer image viewer"
+SRC_URI="http://bytesex.org/misc/${P/-/_}.tar.gz"
+HOMEPAGE="http://bytesex.org/fbi.html"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc hppa ~amd64 ~sparc ppc64 alpha"
-IUSE="png jpeg gif tiff curl lirc X"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="jpeg? ( >=media-libs/jpeg-6b )
 	png? ( media-libs/libpng )
-	gif? ( media-libs/giflib media-libs/libungif )
+	gif? ( media-libs/libungif )
 	tiff? ( media-libs/tiff )
-	curl? ( net-misc/curl )
+	curl? ( net-ftp/curl )
 	lirc? ( app-misc/lirc )
-	X? ( virtual/x11 )
-	<media-libs/libexif-0.6.10
-	!media-gfx/fbida"
+	X? ( virtual/x11 )"
 
 src_compile() {
 	export CFLAGS="${CFLAGS}"
-	make CC="$(tc-getCC)" || die
+	make CC=gcc || die
 }
 
 src_install() {
@@ -33,5 +31,6 @@ src_install() {
 		prefix=${D}/usr \
 		mandir=${D}/usr/share/man \
 		install || die
-	dodoc README
+
+	dodoc COPYING README
 }

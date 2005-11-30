@@ -1,51 +1,44 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-cli/commons-cli-1.0-r4.ebuild,v 1.12 2005/10/01 08:19:33 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-cli/commons-cli-1.0-r4.ebuild,v 1.1 2004/05/14 02:54:19 zx Exp $
 
 inherit java-pkg eutils
 
 DESCRIPTION="The CLI library provides a simple and easy to use API for working with the command line arguments and options."
 HOMEPAGE="http://jakarta.apache.org/commons/cli/"
 SRC_URI="mirror://apache/jakarta/commons/cli/source/cli-${PV}-src.tar.gz"
-
+DEPEND=">=virtual/jdk-1.3
+	>=dev-java/ant-1.4
+	>=dev-java/commons-logging-1.0
+	>=dev-java/junit-3.7
+	>=dev-java/commons-lang-1.0"
+RDEPEND=">=virtual/jdk-1.3"
 LICENSE="Apache-1.1"
 SLOT="1"
-KEYWORDS="x86 sparc ppc amd64 ppc64"
-IUSE="doc jikes junit source"
-
-RDEPEND=">=virtual/jre-1.3
-	>=dev-java/commons-logging-1.0
-	=dev-java/commons-lang-2.0*"
-DEPEND=">=virtual/jdk-1.3
-	${RDEPEND}
-	junit? ( >=dev-java/junit-3.7  >=dev-java/ant-tasks-1.6.2 )
-	jikes? ( >=dev-java/jikes-1.21 )
-	source? ( app-arch/zip )
-	>=dev-java/ant-core-1.6.2"
+KEYWORDS="x86 sparc ppc ~amd64"
+IUSE="doc jikes junit"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-
-	epatch ${FILESDIR}/${P}-gentoo.diff
-	echo "commons-logging.jar=$(java-pkg_getjar commons-logging	commons-logging.jar)" >> build.properties
-	echo "commons-lang.jar=$(java-pkg_getjars commons-lang)" >> build.properties
-	use junit && echo "junit.jar=$(java-pkg_getjars junit)" >> build.properties
+	epatch ${FILESDIR}/${PN}-${PV}-gentoo.diff || die "patch failed"
+	echo "commons-logging.jar=`java-config -p commons-logging`" >> build.properties
+	echo "commons-lang.jar=`java-config -p commons-lang`" >> build.properties
+	use junit && echo "junit.jar=`java-config -p junit`" >> build.properties
 }
 
 src_compile() {
 	local antflags="jar"
-	use doc && antflags="${antflags} javadoc"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	use doc && antflags="${antflags} javadoc"
 	use junit && antflags="${antflags} test"
 	ant ${antflags} || die "compilation failed"
 }
 
 src_install() {
-	java-pkg_newjar target/${P}.jar ${PN}.jar
-
+	mv ${S}/target/${P}.jar ${S}/target/${PN}.jar
+	java-pkg_dojar target/${PN}.jar
+	use doc && dohtml -r target/docs/
 	dodoc README.txt
-	use doc && java-pkg_dohtml -r target/docs/
-	use source && java-pkg_dosrc src/java/*
 }
 

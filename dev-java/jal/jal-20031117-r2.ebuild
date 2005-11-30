@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jal/jal-20031117-r2.ebuild,v 1.3 2005/07/15 13:54:45 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jal/jal-20031117-r2.ebuild,v 1.1 2005/04/16 17:33:00 luckyduck Exp $
 
 inherit eutils java-pkg
 
@@ -13,14 +13,12 @@ SLOT="0"
 KEYWORDS="x86 ppc amd64"
 IUSE="doc jikes source"
 
+DEPEND=">=virtual/jdk-1.4
+	dev-java/ant-core
+	jikes?( >=dev-java/jikes-1.21 )
+	source? ( app-arch/zip )"
 RDEPEND=">=virtual/jre-1.4
 	>=dev-java/fastutil-3.1"
-
-DEPEND=">=virtual/jdk-1.4
-	${RDEPEND}
-	dev-java/ant-core
-	jikes? ( >=dev-java/jikes-1.21 )
-	source? ( app-arch/zip )"
 
 src_unpack() {
 	unpack ${A}
@@ -43,7 +41,7 @@ src_unpack() {
 
 }
 
-src_compile() {
+src_compile () {
 	local antflags="jar"
 	use doc && antflags="${antflags} javadoc"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"

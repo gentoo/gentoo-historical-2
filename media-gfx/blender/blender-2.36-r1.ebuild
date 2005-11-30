@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.36-r1.ebuild,v 1.9 2005/06/12 21:50:13 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/blender/blender-2.36-r1.ebuild,v 1.1 2005/01/03 12:41:13 lu_zero Exp $
 
-inherit flag-o-matic eutils python
+inherit flag-o-matic eutils
 
 #IUSE="sdl jpeg png mozilla truetype static fmod"
 IUSE="nls"  #blender-game" # blender-plugin"
@@ -13,7 +13,7 @@ SRC_URI="http://download.blender.org/source/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="|| (GPL-2 BL)"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~ppc ~x86"
 
 RDEPEND="virtual/x11
 	media-libs/libsdl
@@ -75,7 +75,7 @@ src_compile() {
 	sed -i -e "s:BUILD_GAMEENGINE.*$:BUILD_GAMEENGINE = 'true':" \
 	config.opts
 
-	if use nls ;
+	if [ "`use nls`" ];
 	then
 		einfo "enabling internationalization"
 		sed -i -e "s:USE_INTERNATIONAL.*$:USE_INTERNATIONAL = 'true':" \
@@ -122,11 +122,4 @@ src_install() {
 
 	dodoc COPYING INSTALL README
 
-}
-
-pkg_preinst(){
-	if [ -h "/usr/lib/blender/plugins/include" ];
-	then
-		rm -f /usr/lib/blender/plugins/include
-	fi
 }

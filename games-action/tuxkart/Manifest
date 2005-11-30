@@ -1,14 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 0c89751c5ef333f75e76e4f2605eae1e ChangeLog 1441
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 c0187882ade585d7b79f70dd178b9086 tuxkart-0.4.0.ebuild 1284
-MD5 2e394e321259b9169e46f2f9836582dc files/digest-tuxkart-0.4.0 66
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.9.10 (GNU/Linux)
-
-iD8DBQFBhHMQHTu7gpaalycRAt5oAJsHmsD8C5eclhX36SbBkqmMxchN8wCeMR6c
-9eY885hkHNYG9ACL8+Uze4w=
-=j9Pl
------END PGP SIGNATURE-----
+MD5 f05814ec72e9e7d255e2f01d607bed5a tuxkart-0.2.0.ebuild 853
+MD5 107f62c24987a3cc0e5eadf9b80249e6 ChangeLog 646
+MD5 380a5cbfb8e3d45e611b596d13e12d6e files/digest-tuxkart-0.2.0 66
+MD5 76092330956e7936fb1592369d1c50ca files/01tuxkart.patch 1511

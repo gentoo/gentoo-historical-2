@@ -1,7 +1,0 @@
-MD5 319e1f0b9448f19f7dc3ca625f8bfe67 ChangeLog 1177
-MD5 9aaf9fc9de75199bc7959bd72e723b83 files/0.4-swig.patch 423
-MD5 7f72dd0e8422b038631633864940cd56 files/digest-pylibpcap-0.4 64
-MD5 4465e8717c4517331dac28d6e80e775c files/digest-pylibpcap-0.5.1 66
-MD5 71c4638c9c88af75b58e5f5cb54fe008 metadata.xml 159
-MD5 c832a62d36b3094e1011db92885d4527 pylibpcap-0.4.ebuild 664
-MD5 355c17fac40817151545b22f7c5ce899 pylibpcap-0.5.1.ebuild 583

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/xmess/xmess-0.99-r1.ebuild,v 1.5 2005/09/11 05:14:51 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/xmess/xmess-0.99-r1.ebuild,v 1.1 2005/08/18 22:55:01 vapier Exp $
 
 inherit flag-o-matic toolchain-funcs eutils games
 
@@ -12,7 +12,7 @@ SRC_URI="http://x.mame.net/download/xmame-${PV}.tar.bz2"
 
 LICENSE="XMAME"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~hppa ia64 ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ppc ~sparc x86"
 IUSE="alsa arts dga esd expat ggi joystick lirc mmx net opengl sdl svga X xv"
 
 RDEPEND="sys-libs/zlib
@@ -107,7 +107,7 @@ src_unpack() {
 		x86|ia64|amd64)
 			append-flags -Wno-unused -fomit-frame-pointer -fstrict-aliasing -fstrength-reduce
 			use amd64 || append-flags -ffast-math #54270
-			[[ $(gcc-major-version) -ge 3 ]] \
+			[[ $(gcc-major-version) -eq 3 ]] \
 				&& append-flags -falign-functions=2 -falign-jumps=2 -falign-loops=2 \
 				|| append-flags -malign-functions=2 -malign-jumps=2 -malign-loops=2
 			;;

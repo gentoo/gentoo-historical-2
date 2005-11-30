@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/kbandwidth/kbandwidth-1.0.3.ebuild,v 1.3 2005/09/16 03:07:16 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/kbandwidth/kbandwidth-1.0.3.ebuild,v 1.1 2005/03/12 19:57:05 centic Exp $
 
 inherit kde
 need-kde 3
@@ -11,7 +11,7 @@ SRC_URI="http://people.freenet.de/stealth/kbandwidth/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc ~alpha"
 IUSE=""
 
 S=${WORKDIR}/${PN}

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.4.20041102-r1.ebuild,v 1.21 2005/09/16 10:18:37 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.4.20041102-r1.ebuild,v 1.1 2005/03/16 10:34:43 azarah Exp $
 
 inherit eutils multilib flag-o-matic toolchain-funcs versionator
 
@@ -50,8 +50,8 @@ LICENSE="LGPL-2"
 [[ ${CTARGET} != ${CHOST} ]] \
 	&& SLOT="${CTARGET}-2.2" \
 	|| SLOT="2.2"
-KEYWORDS="alpha amd64 -hppa ia64 ~mips ppc ppc64 ~sparc x86"
-IUSE="build erandom hardened multilib nls nomalloccheck nptl nptlonly pic userlocales selinux"
+KEYWORDS="amd64 ppc64 -hppa ia64 ppc x86 ~mips ~sparc"
+IUSE="nls pic build nptl nptlonly erandom hardened multilib debug userlocales nomalloccheck"
 RESTRICT="nostrip multilib-pkg-force" # we'll handle stripping ourself #46186
 
 # We need new cleanup attribute support from gcc for NPTL among things ...
@@ -62,16 +62,15 @@ DEPEND=">=sys-devel/gcc-3.2.3-r1
 	nptl? ( >=sys-devel/gcc-3.3.1-r1 )
 	>=sys-devel/binutils-2.14.90.0.6-r1
 	virtual/os-headers
-	nptl? ( >=sys-kernel/linux-headers-2.6.5 )
-	nls? ( sys-devel/gettext )
-	selinux? ( !build? ( sys-libs/libselinux ) )"
+	nptl? ( || ( >=sys-kernel/linux-headers-2.6.5 >=sys-kernel/linux26-headers-2.6.5 ) )
+	nls? ( sys-devel/gettext )"
 RDEPEND="virtual/os-headers
-	nls? ( sys-devel/gettext )
-	selinux? ( !build? ( sys-libs/libselinux ) )"
+	sys-apps/baselayout
+	nls? ( sys-devel/gettext )"
 # until amd64's 2004.3 is purged out of existence
-PDEPEND="amd64? ( multilib? ( ~app-emulation/emul-linux-x86-glibc-${PV} ) )"
+PDEPEND="amd64? ( multilib? ( app-emulation/emul-linux-x86-glibc ) )"
 
-PROVIDE="virtual/libc"
+PROVIDE="virtual/glibc virtual/libc"
 
 # We need to be able to set alternative headers for
 # compiling for non-native platform
@@ -266,7 +265,7 @@ check_nptl_support() {
 want_nptl() {
 	if use nptl || use nptlonly ; then
 		# Archs that can use NPTL
-		if use alpha || use amd64 || use ia64 || use ppc || \
+		if use amd64 || use ia64 || use ppc || \
 		   use ppc64 || use s390 || use sparc; then
 			return 0
 		fi
@@ -366,9 +365,6 @@ do_arch_alpha_patches() {
 	# <taviso@gentoo.org> (14 Jun 2003).
 	epatch ${FILESDIR}/2.3.2/${PN}-2.3.2-decc-compaq.patch
 
-	# Fix xstat stuff
-	epatch ${FILESDIR}/2.3.4/glibc234-alpha-xstat.patch
-
 	# Fix compilation with >=gcc-3.2.3 (01 Nov 2003 agriffis)
 #	epatch ${FILESDIR}/2.3.2/${LOCAL_P}-alpha-pwrite.patch
 }
@@ -401,7 +397,6 @@ do_arch_hppa_patches() {
 	cd ${T}
 	unpack glibc-hppa-patches-${HPPA_PATCHES}.tar.gz
 	cd ${S}
-	epatch "${FILESDIR}"/2.3.4/hppa-no-pie.patch
 	export EPATCH_OPTS=-p1
 	for i in ${T}/glibc-hppa-patches-${HPPA_PATCHES}/*.diff
 	do
@@ -690,12 +685,6 @@ glibc_do_configure() {
 		die "invalid pthread option"
 	fi
 
-	if ! use build && use selinux; then
-		myconf="${myconf} --with-selinux"
-	else
-		myconf="${myconf} --without-selinux"
-	fi
-
 	# Who knows if this works :)
 	[[ -n ${CBUILD} ]] && myconf="${myconf} --build=${CBUILD}"
 	myconf="${myconf} --without-cvs
@@ -741,11 +730,6 @@ src_compile() {
 	# and caused bug #80591... this might help someone...
 	if [ -d /usr/include/gentoo-multilib/default ]; then
 		export CPATH=/usr/include/gentoo-multilib/default
-	fi
-
-	# hardened ppc64 parallelization periodically fails so drop to -j1
-	if use ppc64 && use hardened; then
-		MAKEOPTS="${MAKEOPTS} -j1"
 	fi
 
 	# do the linuxthreads build unless we're using nptlonly
@@ -903,26 +887,25 @@ src_install() {
 		mkdir -p ${D}/nptl ${D}/usr/include/nptl
 		make install_root=${D}/nptl install-headers PARALLELMFLAGS="${MAKEOPTS}"
 		pushd ${D}/nptl/usr/include > /dev/null
-		for i in `find . -type f`; do
-			if ! [ -f ${D}/usr/include/$i ] \
-			   || ! cmp -s $i ${D}/usr/include/$i; then
+			for i in `find . -type f`; do
+				if ! [ -f ${D}/usr/include/$i ] \
+					|| ! cmp -s $i ${D}/usr/include/$i; then
 				mkdir -p ${D}/usr/include/nptl/`dirname $i`
 				cp -a $i ${D}/usr/include/nptl/$i
 			fi
 		done
-		popd > /dev/null
 		rm -rf ${D}/nptl
 	fi
 
 	# now, strip everything but the thread libs #46186
 	mkdir -p ${T}/thread-backup
-	mv -f ${D}/$(alt_libdir)/lib{pthread,thread_db}* ${T}/thread-backup/
+	mv ${D}/$(alt_libdir)/lib{pthread,thread_db}* ${T}/thread-backup/
 	if use !nptlonly && want_nptl ; then
 		mkdir -p ${T}/thread-backup/tls
-		mv -f ${D}/$(alt_libdir)/tls/lib{pthread,thread_db}* ${T}/thread-backup/tls
+		mv ${D}/$(alt_libdir)/tls/lib{pthread,thread_db}* ${T}/thread-backup/tls
 	fi
 	env -uRESTRICT CHOST=${CTARGET} prepallstrip
-	cp -a -- ${T}/thread-backup/* ${D}/$(alt_libdir)/ || die
+	cp -R -- ${T}/thread-backup/* ${D}/$(alt_libdir)/ || die
 
 	# If librt.so is a symlink, change it into linker script (Redhat)
 	if [ -L "${D}/usr/$(get_libdir)/librt.so" -a "${LIBRT_LINKERSCRIPT}" = "yes" ]; then
@@ -990,7 +973,6 @@ EOF
 		# Install nscd config file
 		insinto /etc ; doins ${FILESDIR}/nscd.conf
 		exeinto /etc/init.d ; doexe ${FILESDIR}/nscd
-		doins "${FILESDIR}"/nsswitch.conf
 
 		cd ${S}
 		dodoc BUGS ChangeLog* CONFORMANCE FAQ INTERFACE \
@@ -1020,23 +1002,6 @@ EOF
 	doins ${FILESDIR}/locales.build
 	# example host.conf with multicast dns disabled by default
 	doins ${FILESDIR}/2.3.4/host.conf
-
-	# simple test to make sure our new glibc isnt completely broken.
-	# for now, skip the multilib scenario.  also make sure we don't
-	# test with statically built binaries since they will fail.
-	[[ ${CBUILD} != ${CHOST} ]] && return 0
-	[[ $(get_libdir) != "lib" ]] && return 0
-	for x in date env ls true uname ; do
-		x=$(type -p ${x})
-		[[ -z ${x} ]] && continue
-		striptest=$(file -L ${x} 2>/dev/null)
-		[[ -z ${striptest} ]] && continue
-		[[ ${striptest/statically linked} != "${striptest}" ]] && continue
-		"${D}"/$(get_libdir)/ld-*.so \
-			--library-path "${D}"/$(get_libdir) \
-			${x} > /dev/null \
-			|| die "simple run test (${x}) failed"
-	done
 }
 
 must_exist() {
@@ -1094,14 +1059,11 @@ pkg_preinst() {
 
 	# it appears that /lib/tls is sometimes not removed. See bug
 	# 69258 for more info.
-	if [[ -d ${ROOT}/$(get_libdir)/tls ]] && use nptlonly ; then
-		addwrite "${ROOT}"/$(get_libdir)/
+	if [ -d /${ROOT}/$(get_libdir)/tls ] && use nptlonly ; then
+		addwrite /${ROOT}/$(get_libdir)/
 		ewarn "nptlonly in USE, removing /${ROOT}/$(get_libdir)/tls..."
-		rm -r "${ROOT}"/$(get_libdir)/tls || die
+		rm -rf /${ROOT}/$(get_libdir)/tls || die
 	fi
-
-	# Shouldnt need to keep this updated
-	[[ -e ${ROOT}/etc/locales.build ]] && rm -f "${D}"/etc/locales.build
 }
 
 pkg_postinst() {

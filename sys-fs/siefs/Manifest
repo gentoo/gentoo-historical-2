@@ -1,14 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 66ad67cac4690bca1a936644a20b10ba siefs-0.5.ebuild 777
-MD5 be65270725a42f9dd0f50f627947b319 metadata.xml 411
-MD5 36091489a992c925352c5327ba4b44d7 ChangeLog 958
-MD5 44e51931d6b3d43444ed2feb1488e010 files/digest-siefs-0.5 61
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDK2bgLLFUmVNQ7rkRAvQ4AJ0aYowdy1+xg/yHCqyePW6zMK7b0ACdEP79
-Shl5WGZVS5NsT87DWa0ygS4=
-=3mUa
------END PGP SIGNATURE-----
+MD5 a492def1d862928c4fa3bef8fe2f19ed siefs-0.4.ebuild 866
+MD5 8f399de613e4897c9f697d0512d4ac89 ChangeLog 363
+MD5 f5e6d1e12de48b3ebea1dd2558a8a840 metadata.xml 383
+MD5 53f4ab2b11cce5ee20ca9680d490bb60 files/digest-siefs-0.4 61

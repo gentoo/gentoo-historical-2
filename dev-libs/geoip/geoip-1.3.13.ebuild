@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/geoip/geoip-1.3.13.ebuild,v 1.2 2005/11/13 20:51:24 dragonheart Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/geoip/geoip-1.3.13.ebuild,v 1.1 2005/09/05 00:47:33 vanquirius Exp $
 
 MY_P=${P/geoip/GeoIP}
 S=${WORKDIR}/${MY_P}
@@ -20,7 +18,6 @@ DEPEND="virtual/libc
 	sys-libs/zlib"
 
 src_compile() {
-	append-flags -fPIC
 	econf --enable-shared || die "econf failed"
 	emake || die "emake failed"
 }

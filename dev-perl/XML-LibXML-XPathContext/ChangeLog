@@ -1,42 +1,6 @@
 # ChangeLog for dev-perl/XML-LibXML-XPathContext
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-LibXML-XPathContext/ChangeLog,v 1.10 2005/11/27 02:07:47 mcummings Exp $
-
-*XML-LibXML-XPathContext-0.07 (27 Nov 2005)
-
-  27 Nov 2005; Michael Cummings <mcummings@gentoo.org>
-  +XML-LibXML-XPathContext-0.07.ebuild:
-  Version bump
-
-  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org>
-  XML-LibXML-XPathContext-0.06.ebuild:
-  Stable on alpha.
-
-  01 May 2005; Tom Martin <slarti@gentoo.org>
-  XML-LibXML-XPathContext-0.06.ebuild:
-  Stable on amd64.
-
-  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
-  XML-LibXML-XPathContext-0.06.ebuild:
-  ~alpha keyword.
-
-  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  XML-LibXML-XPathContext-0.06.ebuild:
-  Cleaning
-
-  14 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  XML-LibXML-XPathContext-0.06.ebuild:
-  added ~amd64 to KEYWORDS, fixes #88637
-
-*XML-LibXML-XPathContext-0.06 (11 Jun 2004)
-
-  11 Jun 2004; Michael Cummings <mcummings@gentoo.org>
-  XML-LibXML-XPathContext-0.06.ebuild:
-  new version on cpan
-
-  30 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
-  XML-LibXML-XPathContext-0.05.ebuild:
-  Tested on sparc and x86, pod examples functioned
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-LibXML-XPathContext/ChangeLog,v 1.1 2003/10/03 11:14:22 mcummings Exp $
 
 *XML-LibXML-XPathContext-0.05 (03 Oct 2003)
 

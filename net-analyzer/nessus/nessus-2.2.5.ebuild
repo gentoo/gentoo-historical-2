@@ -1,7 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus/nessus-2.2.5.ebuild,v 1.5 2005/10/05 13:50:49 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nessus/nessus-2.2.5.ebuild,v 1.1 2005/07/24 03:31:24 vanquirius Exp $
 
+S=${WORKDIR}/${PN}
 DESCRIPTION="A remote security scanner for Linux"
 HOMEPAGE="http://www.nessus.org/"
 DEPEND="~net-analyzer/nessus-libraries-${PV}
@@ -10,13 +11,8 @@ DEPEND="~net-analyzer/nessus-libraries-${PV}
 	~net-analyzer/nessus-plugins-${PV}"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
-
-pkg_postinst() {
-	einfo "The following article may be useful to get started:"
-	einfo "http://www.securityfocus.com/infocus/1741"
-}
 
 pkg_postrm() {
 	einfo "Note: this is a META ebuild for ${P}."

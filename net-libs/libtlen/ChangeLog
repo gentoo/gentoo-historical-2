@@ -1,27 +1,6 @@
 # ChangeLog for net-libs/libtlen
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libtlen/ChangeLog,v 1.7 2005/03/27 00:55:15 luckyduck Exp $
-
-  27 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  +files/20040912-fPIC.patch, libtlen-20040912.ebuild:
-  added fPIC patch for amd64, fixes #77151
-
-*libtlen-20040912 (27 Sep 2004)
-
-  27 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org>
-  +libtlen-20040912.ebuild:
-  Version bump. Bug #65218
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  libtlen-20031114.ebuild:
-  virtual/glibc -> virtual/libc
-
-  23 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  libtlen-20031114.ebuild:
-  Don't assign default to S
-
-  28 Apr 2004; Michal Januszewski <spock@gentoo.org> libtlen-20031114.ebuild:
-  Stable on x86.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libtlen/ChangeLog,v 1.1 2003/11/15 07:18:55 seemant Exp $
 
 *libtlen-20031114 (14 Nov 2003)
 

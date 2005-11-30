@@ -1,4 +1,3 @@
-MD5 9eb26dd4bfe053efa5b7a17770e92fce qmamecat-0.44.46.ebuild 945
-MD5 ea04a7ce5618c2a8d40f4f908d1b2e38 ChangeLog 1098
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 41de3caebf2f058b49f70b241652d1bd files/digest-qmamecat-0.44.46 70
+MD5 0c0ea8ab07ff6e59d53e37e8e4fa77ba ChangeLog 390
+MD5 2c4b0c1dbf2fbe244ca14e1394c36299 qmamecat-0.44.45.ebuild 722
+MD5 f19653dfde85c58875212d0d8f44554a files/digest-qmamecat-0.44.45 70

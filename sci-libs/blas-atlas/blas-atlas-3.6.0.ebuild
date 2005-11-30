@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-atlas/blas-atlas-3.6.0.ebuild,v 1.5 2005/09/10 12:11:53 pbienst Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-atlas/blas-atlas-3.6.0.ebuild,v 1.1 2004/12/29 18:19:36 ribosome Exp $
 
 inherit eutils toolchain-funcs
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="x86 amd64 ppc ppc64 sparc alpha"
 IUSE="doc"
 
-DEPEND="sci-libs/blas-config
+DEPEND="app-sci/blas-config
 	>=sys-devel/libtool-1.5"
 
 RDEPEND=""
@@ -27,7 +27,7 @@ S=${WORKDIR}/ATLAS
 pkg_setup() {
 	if [ -z `which g77` ]; then
 		eerror "No fortran compiler found on the system!"
-		eerror "Please add fortran to your USE flags and reemerge gcc!"
+		eerror "Please add f77 to your USE flags and reemerge gcc!"
 		die
 	fi
 }
@@ -36,8 +36,6 @@ src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-
-	epatch ${FILESDIR}/unbuffered.patch
 	epatch ${DISTDIR}/atlas3.6.0-shared-libs.patch.bz2
 	sed -i -e "s:ASM:ASM VOLATILE:" include/contrib/camm_dpa.h || die "sed failed to fix clobbering"
 	cp ${FILESDIR}/war ${S}
@@ -138,8 +136,7 @@ src_install () {
 	fi
 
 	insinto ${DESTTREE}/include/atlas
-	doins ${S}/include/cblas.h ${S}/include/atlas_misc.h
-	doins ${S}/include/atlas_enum.h
+	doins ${S}/include/cblas.h
 
 	# These headers contain the architecture-specific optimizations determined
 	# by ATLAS. The atlas-lapack build is much shorter if they are available,

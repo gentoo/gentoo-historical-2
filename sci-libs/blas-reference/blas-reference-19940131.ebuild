@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/blas-reference-19940131.ebuild,v 1.4 2005/04/22 13:49:16 kugelfang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/blas-reference-19940131.ebuild,v 1.1 2004/12/29 18:21:54 ribosome Exp $
 
 inherit eutils
 
@@ -11,10 +11,10 @@ SRC_URI="http://www.netlib.org/blas/${Name}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86 amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="ifc"
 
-DEPEND="sci-libs/blas-config
+DEPEND="app-sci/blas-config
 	>=sys-devel/libtool-1.5
 	ifc? ( dev-lang/ifc )"
 

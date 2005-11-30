@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.6.ebuild,v 1.3 2005/05/30 05:03:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.6.ebuild,v 1.1 2005/03/22 06:22:30 vapier Exp $
 
 inherit eutils
 
@@ -16,7 +16,7 @@ IUSE="nls build spell justify debug slang ncurses nomac"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	nls? ( sys-devel/gettext )
-	!ncurses? ( slang? ( sys-libs/slang ) )"
+	slang? ( sys-libs/slang )"
 PROVIDE="virtual/editor"
 
 S=${WORKDIR}/${MY_P}
@@ -25,7 +25,6 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	use nomac && epatch "${FILESDIR}"/${P}-nomac.patch
-	epatch "${FILESDIR}"/${P}-debug-typo.patch
 }
 
 src_compile() {

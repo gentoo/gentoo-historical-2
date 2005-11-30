@@ -1,169 +1,6 @@
-# ChangeLog for www-apps/gallery
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/gallery/ChangeLog,v 1.40 2005/11/30 01:45:47 rl03 Exp $
-
-*gallery-2.0.2 (30 Nov 2005)
-
-  30 Nov 2005; Renat Lumpau <rl03@gentoo.org> -gallery-2.0.1.ebuild,
-  +gallery-2.0.2.ebuild:
-  Version bump wrt security bug #113903.
-
-  27 Nov 2005; Renat Lumpau <rl03@gentoo.org> gallery-1.5_p1.ebuild:
-  fixed bug #109573.
-
-  23 Oct 2005; Renat Lumpau <rl03@gentoo.org> -gallery-2.0.ebuild:
-  Removing vulnerable version
-
-*gallery-2.0.1 (23 Oct 2005)
-
-  23 Oct 2005; Renat Lumpau <rl03@gentoo.org> gallery-1.5.1.ebuild,
-  +gallery-2.0.1.ebuild:
-  Version bump wrt security bug #109255.
-
-*gallery-1.5.1 (22 Sep 2005)
-
-  22 Sep 2005; Renat Lumpau <rl03@gentoo.org> -gallery-1.5.1_rc3.ebuild,
-  +gallery-1.5.1.ebuild:
-  Version bump
-
-  13 Sep 2005; Renat Lumpau <rl03@gentoo.org> -gallery-2.0_rc1.ebuild,
-  -gallery-2.0_rc2.ebuild:
-  Cleaning old versions
-
-*gallery-2.0 (13 Sep 2005)
-
-  13 Sep 2005; Renat Lumpau <rl03@gentoo.org> +gallery-2.0.ebuild:
-  Version bump (bug #105784)
-
-  11 Sep 2005; Renat Lumpau <rl03@gentoo.org> -gallery-1.4.4_p6.ebuild:
-  Removing vulnerable version
-
-  05 Sep 2005; Simon Stelling <blubb@gentoo.org> gallery-1.5_p1.ebuild:
-  stable on amd64 wrt bug 104722
-
-  05 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> gallery-1.5_p1.ebuild:
-  Stable on hppa and ppc.
-
-  05 Sep 2005; Renat Lumpau <rl03@gentoo.org> gallery-1.5_p1.ebuild:
-  Stable on x86 wrt security bug #104722.
-
-  05 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org> gallery-1.5_p1.ebuild:
-  Stable on alpha due to security bug #104722.
-
-  04 Sep 2005; Jason Wever <weeve@gentoo.org> gallery-1.5_p1.ebuild:
-  Stable on SPARC wrt security bug #104722.
-
-  03 Sep 2005; Renat Lumpau <rl03@gentoo.org> gallery-2.0_rc2.ebuild:
-  Added ffmpeg support to gallery2
-
-*gallery-1.5_p1 (03 Sep 2005)
-
-  03 Sep 2005; Renat Lumpau <rl03@gentoo.org> -gallery-1.5.ebuild,
-  +gallery-1.5_p1.ebuild:
-  Version bump wrt security bug #104722.
-
-*gallery-1.5.1_rc3 (03 Sep 2005)
-
-  03 Sep 2005; Renat Lumpau <rl03@gentoo.org> -gallery-1.5.1_rc2.ebuild,
-  +gallery-1.5.1_rc3.ebuild:
-  Version bump
-
-*gallery-2.0_rc2 (24 Aug 2005)
-
-  24 Aug 2005; Renat Lumpau <rl03@gentoo.org> +gallery-2.0_rc2.ebuild:
-  Version bump
-
-  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> gallery-1.5.1_rc2.ebuild:
-  Housekeeping
-
-*gallery-2.0_rc1 (21 Aug 2005)
-*gallery-1.5.1_rc2 (21 Aug 2005)
-
-  21 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
-  +files/postinstall-en2.txt, +gallery-1.5.1_rc2.ebuild,
-  +gallery-2.0_rc1.ebuild:
-  Add unstable versions.
-
-  20 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
-  Fixed postinstall instructions wrt bug #103096.
-
-  30 Jun 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
-  gallery-1.5.ebuild:
-  Housekeeping. Fix #62405.
-
-*gallery-1.5 (01 May 2005)
-
-  01 May 2005; Elfyn McBratney <beu@gentoo.org> +gallery-1.5.ebuild:
-  Version bump, closes bug #89698.
-
-*gallery-1.4.4_p6 (07 Feb 2005)
-
-  07 Feb 2005; Scott W Taylor <swtaylor@gentoo.org>
-  +gallery-1.4.4_p6.ebuild:
-  version bump
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  06 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
-  gallery-1.4.4_p4.ebuild:
-  Stable on alpha, bug 69904.
-
-  05 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> gallery-1.4.4_p4.ebuild:
-  Stable on sparc wrt #69904
-
-  05 Nov 2004; <SeJo@gentoo.org> gallery-1.4.4_p4.ebuild:
-  stable on ppc bug: 69904
-
-*gallery-1.4.4_p4 (04 Nov 2004)
-
-  04 Nov 2004; Stuart Herbert <stuart@gentoo.org> +gallery-1.4.4_p4.ebuild:
-  Version bump; fix for bug #69904; thanks to Tom Hosiawa (tomek32@gmail.com)
-  for the ebuild
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  03 Sep 2004; Renat Lumpau <rl03@gentoo.org> -gallery-1.4.4_p1.ebuild:
-  Obsolete version; removed by eversionrm tool
-
-  03 Sep 2004; Renat Lumpau <rl03@gentoo.org> -gallery-1.4.4-r1.ebuild,
-  -gallery-1.4.4.ebuild:
-  Obsolete version; removed by eversionrm tool
-
-  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> gallery-1.4.4-r1.ebuild,
-  gallery-1.4.4_p1.ebuild, gallery-1.4.4_p2.ebuild:
-  Fixed DEPEND, removed unnecessary src_unpack and src_compile
-
-*gallery-1.4.4_p2 (27 Aug 2004)
-
-  27 Aug 2004; Martin Holzer <mholzer@gentoo.org> gallery-1.4.4_p2.ebuild:
-  Security Bump. See 60742
-
-*gallery-1.4.4_p1 (27 Aug 2004)
-
-  27 Aug 2004; Martin Holzer <mholzer@gentoo.org> +gallery-1.4.4_p1.ebuild:
-  Version bumped. Closes 61164
-
-  27 Aug 2004; Guy Martin <gmsoft@gentoo.org> gallery-1.4.4-r1.ebuild:
-  Marked stable on hppa.
-
-  23 Aug 2004; Stuart Herbert <stuart@gentoo.org> files/vuln-20040817.diff,
-  gallery-1.4.4-r1.ebuild:
-  Fix syntax error in the patch, and mark stable on x86
-
-  20 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> gallery-1.4.4-r1.ebuild:
-  Stable on alpha, bug 60742.
-
-  19 Aug 2004; Jason Wever <weeve@gentoo.org> gallery-1.4.4-r1.ebuild:
-  Stable on sparc wrt securit bug #60742.
-
-*gallery-1.4.4-r1 (19 Aug 2004)
-
-  19 Aug 2004; Renat Lumpau <rl03@gentoo.org> +files/vuln-20040817.diff,
-  +gallery-1.4.4-r1.ebuild:
-  Fix for possible PHP insertion (bug #60742). Updated for webapp.eclass (bug
-  #58375).
+# ChangeLog for app-misc/gallery
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/gallery/ChangeLog,v 1.1 2004/08/15 10:00:35 stuart Exp $
 
 *gallery-1.4.3_p2 (15 Aug 2004)
 
@@ -193,7 +30,7 @@
   08 Jun 2004; Jason Wever <weeve@gentoo.org> gallery-1.4.3_p2.ebuild:
   Marked stable on sparc wrt bug #52798.
 
-  09 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> gallery-1.4.3_p2.ebuild:
+  09 Jun 2004; Bryan �stergaard <kloeri@gentoo.org> gallery-1.4.3_p2.ebuild:
   Stable on alpha.
 
 *gallery-1.4.3_p2 (04 Jun 2004)
@@ -206,7 +43,7 @@
   06 May 2004; Scott W Taylor <swtaylor@gentoo.org> +gallery-1.4.3_p1.ebuild:
   version bump
 
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> gallery-1.4.1_p1.ebuild,
+  04 May 2004; Bryan �stergaard <kloeri@gentoo.org> gallery-1.4.1_p1.ebuild,
   gallery-1.4.2.ebuild:
   Stable on alpha.
 

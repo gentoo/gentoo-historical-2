@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrelltop/gkrelltop-2.2.2.ebuild,v 1.4 2005/03/25 16:53:51 kugelfang Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrelltop/gkrelltop-2.2.2.ebuild,v 1.1 2004/05/26 21:04:26 mholzer Exp $
 
 DESCRIPTION="a GKrellM2 plugin which displays the top three processes"
 SRC_URI="http://psychology.rutgers.edu/~zaimi/html/${PN}.${PV}.tgz"
@@ -8,7 +8,7 @@ HOMEPAGE="http://psychology.rutgers.edu/~zaimi/software.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~alpha ppc"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc"
 
 IUSE=""
 

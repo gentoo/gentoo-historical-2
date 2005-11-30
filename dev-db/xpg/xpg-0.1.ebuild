@@ -1,7 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/xpg/xpg-0.1.ebuild,v 1.8 2005/01/01 17:45:39 eradicator Exp $
-inherit java-pkg
+
+
 
 DESCRIPTION="GUI for PostgreSQL written in Java"
 HOMEPAGE="http://www.kazak.ws/xpg/"
@@ -10,22 +10,15 @@ SRC_URI="mirror://gentoo/xpg-current.tar.gz
 S="${WORKDIR}/xpg-current"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
-IUSE=""
+KEYWORDS="~ppc"
+IUSE="java"
+
 DEPEND=">=virtual/jdk-1.4"
 
 src_compile() {
 	make || die "make problems"
 }
 src_install () {
-	cd ${S}
-	java-pkg_dojar bin/*.jar
-	dodir /usr/share/xpg /usr/share/pixmaps/
-	cp -Rdp styles ${D}/usr/share/xpg/
-	cp -Rdp ${WORKDIR}/*.jpg ${D}/usr/share/pixmaps/
-	cp -Rdp ${WORKDIR}/*.xpm ${D}/usr/share/pixmaps/
-	dohtml -r doc/*
-
-	echo -e "#!/bin/bash\nexport XPG_HOME=/usr/share/xpg\njava -Dxpghome=\${XPG_HOME} -jar \${XPG_HOME}/lib/xpg.jar" > xpg
-	dobin xpg
+	make install || die "install problems"
+	cp -Rdp ${WORKDIR}/*.jpg ${WORKDIR}/*.xpm /usr/share/pixmaps
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/tap-plugins/tap-plugins-0.1.ebuild,v 1.5 2005/09/03 23:47:00 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/tap-plugins/tap-plugins-0.1.ebuild,v 1.1 2004/01/26 08:37:36 torbenh Exp $
 #
 
 DESCRIPTION="tap ladspa plugins package. Equalizer, Reverb, Stereo Echo, Tremolo"
@@ -8,9 +8,7 @@ HOMEPAGE="http://www.hszk.bme.hu/~st444/tap/tap.html"
 SRC_URI="http://www.hszk.bme.hu/~st444/tap/tap-0.1-1.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64"
-
-IUSE=""
+KEYWORDS="~x86"
 
 DEPEND="media-libs/ladspa-sdk"
 
@@ -21,7 +19,7 @@ src_compile() {
 }
 
 src_install() {
-	dodoc README
+	dodoc COPYING README
 	dohtml ${S}/doc/*
 	insinto /usr/lib/ladspa
 	insopts -m0755

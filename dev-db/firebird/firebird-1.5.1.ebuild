@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/firebird/firebird-1.5.1.ebuild,v 1.13 2005/08/25 19:25:04 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/firebird/firebird-1.5.1.ebuild,v 1.1 2004/08/01 21:00:47 carlo Exp $
 
 inherit flag-o-matic eutils
 
 extra_ver="4481"
-DESCRIPTION="A relational database offering many ANSI SQL-99 features"
+DESCRIPTION="A relational database offering many ANSI SQL-92 features"
 HOMEPAGE="http://firebird.sourceforge.net/"
 SRC_URI="mirror://sourceforge/firebird/${P}.${extra_ver}.tar.bz2"
 
 LICENSE="Interbase-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ia64 sparc x86"
+KEYWORDS="x86"
 IUSE="inetd"
 RESTRICT="nouserpriv"
 
@@ -19,13 +19,6 @@ DEPEND="virtual/libc
 	inetd? ( virtual/inetd )"
 
 S=${WORKDIR}/${P}.${extra_ver}
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/${P}-gcc34.patch
-}
 
 pkg_setup() {
 	enewgroup firebird 450
@@ -45,7 +38,7 @@ src_compile() {
 
 	NOCONFIGURE=1
 	./autogen.sh ${myconf} || die "couldn't run autogen.sh"
-	find . -type f -exec sed -i -e "s/-lcurses/-lncurses/g" {} \;
+	find . -exec sed -i -e "s/-lcurses/-lncurses/g" {} \;
 	econf ${myconf} || die "./configure failed"
 	emake -j 1 || die "error during make"
 }
@@ -66,13 +59,13 @@ src_install() {
 	rm -r ${D}/opt/firebird/examples
 
 	if use inetd ; then
-		insinto /etc/xinetd.d ; newins ${FILESDIR}/${PN}-1.5.0.xinetd firebird
+		insinto /etc/xinetd.d ; newins ${FILESDIR}/${P}.xinetd firebird
 	else
 		exeinto /etc/init.d ; newexe ${FILESDIR}/${PN}.init.d firebird
 		insinto /etc/conf.d ; newins ${FILESDIR}/firebird.conf.d firebird
 		fperms 640 /etc/conf.d/firebird
 	fi
-	insinto /etc/env.d ; newins ${FILESDIR}/70${PN} 70firebird
+	insinto /etc/env.d ; newins ${FILESDIR}/70${P} 70firebird
 
 	# Following is adapted from postinstall.sh
 
@@ -101,8 +94,6 @@ src_install() {
 	# create links for back compatibility
 	dosym /opt/firebird/lib/libfbclient.so /usr/lib/libgds.so
 	dosym /opt/firebird/lib/libfbclient.so /usr/lib/libgds.so.0
-	dosym /opt/firebird/lib/libfbclient.so /opt/firebird/lib/libgds.so
-	dosym /opt/firebird/lib/libfbclient.so /opt/firebird/lib/libgds.so.0
 
 	# move and link config files to /etc/firebird so they'll be protected
 	dodir /etc/firebird
@@ -201,7 +192,7 @@ pkg_config() {
 	if [ ! -f /etc/hosts.equiv ]
 	then
 		touch /etc/hosts.equiv
-		chown root:0 /etc/hosts.equiv
+		chown root.root /etc/hosts.equiv
 		chmod u=rw,go=r /etc/hosts.equiv
 	fi
 

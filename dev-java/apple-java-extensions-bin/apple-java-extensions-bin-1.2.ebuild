@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/apple-java-extensions-bin/apple-java-extensions-bin-1.2.ebuild,v 1.7 2005/07/11 20:19:16 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/apple-java-extensions-bin/apple-java-extensions-bin-1.2.ebuild,v 1.1 2004/07/30 05:14:41 axxo Exp $
 
 inherit java-pkg
 
@@ -9,12 +9,14 @@ HOMEPAGE="http://developer.apple.com/samplecode/AppleJavaExtensions/AppleJavaExt
 SRC_URI="http://developer.apple.com/samplecode/AppleJavaExtensions/AppleJavaExtensions.zip"
 LICENSE="Apple"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="~x86"
 IUSE=""
-DEPEND="app-arch/unzip"
-RDEPEND=">=virtual/jre-1.3"
+DEPEND=""
+RDEPEND="virtual/jre"
 
 S=${WORKDIR}/AppleJavaExtensions
+
+src_compile() { :; }
 
 src_install() {
 	dodoc README.txt

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ccache/ccache-2.4.ebuild,v 1.2 2005/08/06 21:07:53 gongloo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ccache/ccache-2.4.ebuild,v 1.1 2005/03/09 09:54:51 ferringb Exp $
 
 DESCRIPTION="fast compiler cache"
 HOMEPAGE="http://ccache.samba.org/"
@@ -30,13 +30,8 @@ src_install() {
 	doexe ${FILESDIR}/ccache-config
 
 	diropts -m0700
-	if use ppc-macos; then
-		dodir /var/root/.ccache
-		keepdir /var/root/.ccache
-	else
-		dodir /root/.ccache
-		keepdir /root/.ccache
-	fi
+	dodir /root/.ccache
+	keepdir /root/.ccache
 }
 
 pkg_preinst() {

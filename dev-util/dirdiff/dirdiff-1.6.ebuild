@@ -1,32 +1,35 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/dirdiff/dirdiff-1.6.ebuild,v 1.5 2005/06/09 17:08:22 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/dirdiff/dirdiff-1.6.ebuild,v 1.1 2004/05/11 15:23:30 tgall Exp $
 
-IUSE=""
+inherit eutils
+
+S=${WORKDIR}/${P}
 DESCRIPTION="Dirdiff is a graphical tool for displaying the differences between
 directory trees and for merging changes from one tree into another."
-SRC_URI="http://samba.org/ftp/paulus/${P}.tar.gz"
+SRC_URI="http://samba.org/ftp/paulus/${PN}-${PV}.tar.gz"
 HOMEPAGE="http://samba.org/ftp/paulus/"
+
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="x86 ppc"
 
 DEPEND="dev-lang/tk
-	dev-lang/tcl"
+		dev-lang/tcl"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-
-	sed -i "s:CFLAGS=-O3 \(.*\):CFLAGS=${CFLAGS} -fPIC \1:" Makefile
 }
 
 src_compile() {
-	emake || die
+	cd ${S}
+	make all
+
 }
 
 src_install() {
-	dobin dirdiff || die
-	dolib.so libfilecmp.so.0.0 || die
+	cd ${S}
+	make install
 	dodoc README
 }

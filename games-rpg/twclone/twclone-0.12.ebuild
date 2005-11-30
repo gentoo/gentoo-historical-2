@@ -1,19 +1,19 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/twclone/twclone-0.12.ebuild,v 1.3 2004/06/24 23:17:01 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/twclone/twclone-0.12.ebuild,v 1.1 2003/10/25 10:21:09 vapier Exp $
 
-inherit eutils games
+inherit games
 
-MY_P="${PN}-source-${PV}"
-S="${WORKDIR}/${MY_P}"
+MY_P=${PN}-source-${PV}
 DESCRIPTION="Clone of BBS Door game Trade Wars 2002"
 HOMEPAGE="http://twclone.sourceforge.net/"
 SRC_URI="mirror://sourceforge/twclone/${MY_P}.tar.gz"
 
-KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+KEYWORDS="x86"
+
+S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	unpack ${A}
@@ -22,7 +22,7 @@ src_unpack() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	emake install DESTDIR=${D} || die
 	dodoc AUTHORS ChangeLog NEWS PROTOCOL README TODO
 	cd ${D}/${GAMES_BINDIR}
 	for f in * ; do

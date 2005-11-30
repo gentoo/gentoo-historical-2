@@ -1,19 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 587063409e787b984bd6da5117410674 ChangeLog 4554
+MD5 00b58f6022951bc727c376830eaef918 gld-1.3.ebuild 945
 MD5 96d50f09283d0a87235b23ce0795499e files/Makefile.in 980
-MD5 63658f0d53451dbb79e4330fd997bfab files/digest-gld-1.5.2 57
-MD5 f91281c6461e403a77e5351e89e398be files/digest-gld-1.6 55
-MD5 27b82bb6cc99d52bb22a2e19b4d100c9 files/gld-1.5.2-mxgrey-fix.patch 1675
-MD5 4e2b779070d26c7675574fe2420541b8 files/gld.rc 544
-MD5 92553e000dd0a23d31042352b053cbdf gld-1.5.2.ebuild 1562
-MD5 9226a851bbb58ae1fa94bfb10a70b345 gld-1.6.ebuild 1553
-MD5 8a1c6c5f4c13a4109f6f4198fdd1874b metadata.xml 223
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDhxtvCHk4+ZoBpvsRAqryAJkBVKzHjNLP1pHXIMUHruZ/iLaG0gCcDVao
-WFjrYVMAGotDP4U9Yu2cy9A=
-=GGWC
------END PGP SIGNATURE-----
+MD5 fe1fdbfd3fa7ee4baa73b01634cd1255 files/gld.rc6 275
+MD5 a187f47f3f17cf43acfced1abb8f3dd8 files/digest-gld-1.3 55

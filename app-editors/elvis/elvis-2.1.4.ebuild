@@ -1,44 +1,42 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/elvis/elvis-2.1.4.ebuild,v 1.17 2005/01/01 13:23:44 eradicator Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Ryan Tolboom <ryan@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/app-editors/elvis/elvis-2.1.4.ebuild,v 1.1 2001/05/15 01:49:44 ryan Exp $
 
-MY_P="${PN}-2.1_4"
-S=${WORKDIR}/${MY_P}
+A=elvis-2.1_4.tar.gz
+S=${WORKDIR}/elvis-2.1_4
 DESCRIPTION="A vi/ex clone"
+SRC_URI="ftp://ftp.cs.pdx.edu/pub/elvis/${A}"
 HOMEPAGE="ftp://ftp.cs.pdx.edu/pub/elvis/"
-SRC_URI="ftp://ftp.cs.pdx.edu/pub/elvis/${MY_P}.tar.gz"
 
-LICENSE="Artistic"
-SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE="X"
-
-DEPEND=">=sys-libs/ncurses-5.2
+DEPEND="virtual/glibc
+        >=sys-libs/ncurses-5.2
 	X? ( virtual/x11 )"
-PROVIDE="virtual/editor"
 
 src_compile() {
-	local myconf
-	use X \
-		&& myconf="--with-x" \
-		|| myconf="--without-x"
-	./configure \
-		--bindir=${D}/usr/bin \
-		--datadir=${D}/usr/share/elvis \
-		${myconf} || die
 
-	sed -i -e "s:gcc -O2:gcc ${CFLAGS}:" Makefile
-	make || die
+    local myconf
+    if [ "`use X`" ]; then
+	mconf="--with-x"
+    else
+	mconf="--without-x"
+    fi
+    try ./configure --bindir=${D}/usr/bin --datadir=${D}/usr/share/elvis ${myconf}
+    cp Makefile Makefile.orig
+    cat Makefile.orig | sed -e "s:gcc -O2:gcc ${CFLAGS}:" > Makefile
+    try make
+
 }
 
-src_install() {
-	sed -i -e "s:/usr/man:${D}/usr/share/man:g" instman.sh
+src_install () {
 
-	sed -i -e "s:^xinc=.*$:xinc=${D}/usr/include:" \
-	 -e "s:^xlib=.*$:xlib=${D}/usr/lib:" \
-		insticon.sh
+    cp instman.sh instman.sh.orig
+    cat instman.sh.orig | sed -e "s:/usr/man:${D}/usr/share/man:g" > instman.sh
+    cp insticon.sh insticon.sh.orig
+    cat insticon.sh.orig | sed -e "s:^xinc=.*$:xinc=${D}/usr/include:" \
+	| sed -e "s:^xlib=.*$:xlib=${D}/usr/lib:" > insticon.sh
+    dodir /usr/bin
+    dodir /usr/share/man/man1
+    try make install
 
-	dodir /usr/bin
-	dodir /usr/share/man/man1
-	make install || die
 }

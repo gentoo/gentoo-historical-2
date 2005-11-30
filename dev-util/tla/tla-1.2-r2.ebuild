@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/tla/tla-1.2-r2.ebuild,v 1.7 2005/04/03 18:19:14 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/tla/tla-1.2-r2.ebuild,v 1.1 2004/06/02 06:22:03 rphillips Exp $
 
 inherit eutils
 
@@ -8,18 +8,12 @@ MY_P="${P/_/}"
 
 S="${WORKDIR}/${MY_P}/src/=build"
 DESCRIPTION="Revision control system ideal for widely distributed development"
+SRC_URI="http://arch.quackerhead.com/~lord/releases/tla/${MY_P}.tar.gz"
 HOMEPAGE="http://arch.quackerhead.com/~lord/"
-
-NEON_PATCH="mirror://gentoo/tla-1.2-4.diff.gz
-	http://dev.gentoo.org/~arj/files/tla-1.2-4.diff.gz"
-
-SRC_URI="http://arch.quackerhead.com/~lord/releases/tla/${MY_P}.tar.gz
-	${NEON_PATCH}"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 alpha ppc hppa sparc amd64"
-IUSE=""
+KEYWORDS="x86 alpha ppc mips hppa sparc ~amd64"
 
 DEPEND="sys-apps/coreutils
 	>=net-misc/neon-0.24.6
@@ -33,12 +27,12 @@ DEPEND="sys-apps/coreutils
 	sys-devel/make"
 
 src_unpack() {
-	unpack ${A}
+	unpack "${A}"
 	mkdir "${MY_P}/src/=build"
 
 	# rphillips 2004-06-01
 	# patch to build tla with the external libneon
-	epatch "${WORKDIR}/tla-1.2-4.diff"
+	epatch ${FILESDIR}/tla-1.2-4.diff.gz
 }
 
 src_compile() {

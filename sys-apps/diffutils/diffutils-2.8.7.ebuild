@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/diffutils/diffutils-2.8.7.ebuild,v 1.17 2005/01/23 22:02:26 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/diffutils/diffutils-2.8.7.ebuild,v 1.1 2004/05/10 14:42:04 lu_zero Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,38 +10,51 @@ SRC_URI="ftp://alpha.gnu.org/gnu/diffutils/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc64 s390 sh sparc x86"
-IUSE="nls static"
+KEYWORDS="-* ~ppc ~ppc64"
+IUSE="nls build static"
 
-RDEPEND="virtual/libc"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+DEPEND="virtual/glibc
+	>=sys-apps/portage-2.0.47-r10
+	>=sys-apps/sed-4
+	nls? ( sys-devel/gettext )
+	!build? ( sys-apps/texinfo sys-apps/help2man )"
+RDEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
+
 	cd ${S}
+	if use build ; then
+		#disable texinfo building so we can remove the dep
+		sed -i -e 's:SUBDIRS = doc:SUBDIRS =:' \
+			Makefile.in || die "Makefile.in sed"
+	fi
 
 	# Removes waitpid() call after pclose() on piped diff stream, closing
 	# bug #11728, thanks to D Wollmann <converter@dalnet-perl.org>
 	epatch ${FILESDIR}/diffutils-2.8.4-sdiff-no-waitpid.patch
 
-	# Make sure we don't try generating the manpages ... this requires 
-	# 'help2man' which is a perl app which is not available in a 
-	# stage2 / stage3 ... don't DEPEND on it or we get a DEPEND loop :(
-	# for more info, see #55479
-	touch man/*.1
+	# the manpage for diff is better provided by the man-pages package, so
+	# we disable it here
+	epatch ${FILESDIR}/${P}-no-manpage.patch
 }
 
 src_compile() {
-	econf $(use_enable nls) || die "econf"
-	use static && append-ldflags -static
-	emake LDFLAGS="${LDFLAGS}" || die "make"
+	econf --build=${CHOST} `use_enable nls` || die "econf"
+
+	if use static ; then
+		emake LDFLAGS=-static || die
+	else
+		emake || die
+	fi
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die
-	dodoc ChangeLog NEWS README
+	einstall || die
 
-	# use the manpage from 'sys-apps/man-pages'
-	rm -f "${D}"/usr/share/man/man1/diff.1*
+	if ! use build ; then
+		dodoc ChangeLog NEWS README
+	else
+		rm -rf ${D}/usr/share/info
+	fi
 }

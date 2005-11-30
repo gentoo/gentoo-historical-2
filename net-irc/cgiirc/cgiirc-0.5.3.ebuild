@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/cgiirc/cgiirc-0.5.3.ebuild,v 1.5 2004/06/24 23:02:12 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/cgiirc/cgiirc-0.5.3.ebuild,v 1.1 2004/01/29 15:45:27 mholzer Exp $
 
 inherit webapp-apache
 
@@ -10,11 +10,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 RESTRICT="nomirror"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
-IUSE=""
+KEYWORDS="~x86"
+
+webapp-detect || NO_SERVER=1
 
 pkg_setup() {
-	webapp-detect || NO_SERVER=1
 	webapp-pkg_setup "${NO_WEBSERVER}"
 	einfo "Installing for ${WEBAPP_SERVER}"
 }

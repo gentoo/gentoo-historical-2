@@ -1,54 +1,43 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/webalizer/webalizer-2.01.10-r5.ebuild,v 1.14 2005/09/10 14:10:14 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/webalizer/webalizer-2.01.10-r5.ebuild,v 1.1 2004/04/23 16:28:44 stuart Exp $
 
-inherit eutils
-
+IUSE="geoip"
 MY_PV=${PV/.10/-10}
 MY_P=${PN}-${MY_PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Webserver log file analyzer"
-HOMEPAGE="http://www.mrunix.net/webalizer/"
 SRC_URI="ftp://ftp.mrunix.net/pub/webalizer/${MY_P}-src.tar.bz2
 	geoip? ( http://sysd.org/proj/geolizer_${MY_PV}-patch.20040216.tar.bz2 )"
+HOMEPAGE="http://www.mrunix.net/webalizer/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~hppa ~ppc ppc64 ~sparc ~x86"
-IUSE="apache2 geoip"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~hppa ~amd64"
 
 DEPEND="=sys-libs/db-1*
 	>=sys-libs/zlib-1.1.4
 	>=media-libs/libpng-1.2
-	>=media-libs/gd-1.8.3
+	>=media-libs/libgd-1.8.3
 	geoip? ( dev-libs/geoip )"
 
 src_unpack() {
 	unpack ${A} ; cd ${S}
 	# fix --enable-dns; our db1 headers are in /usr/include/db1
-	#	mv dns_resolv.c dns_resolv.c.orig
-	#	sed -e 's%^\(#include \)\(<db.h>\)\(.*\)%\1<db1/db.h>\3%' \
-	#		dns_resolv.c.orig > dns_resolv.c
+#	mv dns_resolv.c dns_resolv.c.orig
+#	sed -e 's%^\(#include \)\(<db.h>\)\(.*\)%\1<db1/db.h>\3%' \
+#		dns_resolv.c.orig > dns_resolv.c
 	sed -i -e "s,db_185.h,db.h," configure
 
-	if use geoip; then
-		cd ${WORKDIR}
+	if use geoip ; then
+		( cd ${WORKDIR} && unpack geolizer_${MY_PV}-patch.20040216.tar.bz2 )
 		epatch ${WORKDIR}/geolizer_${MY_PV}-patch/geolizer.patch || die
-	else
-		# pretty printer for numbers
-		cd ${S} && epatch ${FILESDIR}/output.c.patch || die
 	fi
 }
 
 src_compile() {
-	if use geoip; then
-		myconf="`use_enable geoip`"
-	else
-		myconf="--enable-dns"
-	fi
-	myconf="${myconf} --with-db=/usr/include/db1/"
-	einfo "Configuration: ${myconf}"
-	econf ${myconf} || die
+	myconf="`use_enable geoip`"
+	econf ${myconf} --enable-dns --with-db=/usr/include/db1/ || die
 	make || die
 }
 
@@ -61,7 +50,7 @@ src_install() {
 	insinto /etc
 	newins ${FILESDIR}/${PV}/webalizer.conf webalizer.conf
 
-	if use apache2; then
+	if [ "`use apache2`" ]; then
 		# patch for apache2
 		sed -i -e "s/apache/apache2/g" ${D}/etc/webalizer.conf
 		insinto /etc/apache2/conf
@@ -77,12 +66,12 @@ src_install() {
 	use apache2 && insinto /etc/apache2/conf/modules.d
 	use apache2 && newins ${FILESDIR}/${PV}/apache.webalizer 55_webalizer.conf
 
-	dodoc README* CHANGES Copyright sample.conf
+	dodoc README* CHANGES COPYING Copyright sample.conf
 	dodir /var/www/webalizer
 }
 
 pkg_postinst(){
-	if use apache2; then
+	if [ -n "`use apache2`" ]; then
 	einfo "to update your apache.conf just type"
 	einfo "echo \"Include  conf/addon-modules/webalizer.conf\" \
 		>> /etc/apache/conf/apache.conf"

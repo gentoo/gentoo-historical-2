@@ -1,14 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/haddock-0.7.ebuild,v 1.3 2005/09/19 06:54:56 araujo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/haddock-0.7.ebuild,v 1.1 2005/08/05 12:48:21 kosmikus Exp $
 #
 # USE variable summary:
 #   doc    - Build extra documenation from DocBook sources,
 #               in HTML format.
-#   java   - Build the above docs as PostScript as well.
+#   tetex  - Build the above docs as PostScript as well.
 
 
-inherit ghc-package multilib
+inherit ghc-package
 IUSE="doc java"
 
 DESCRIPTION="A documentation tool for Haskell"
@@ -26,26 +26,6 @@ DEPEND="virtual/ghc
 		>=dev-haskell/haddock-0.6-r2
 		java? ( >=dev-java/fop-0.20.5 ) )"
 RDEPEND=""
-
-pkg_setup() {
-	if ! has_version virtual/ghc; then
-		eerror "Due to a bug in the portage dependency resolution, emerge"
-		eerror "sometimes tries to merge haddock before a version of ghc"
-		eerror "is available on the system. This is usually triggered when"
-		eerror "you try to bootstrap ghc on a system with USE=\"doc\" using"
-		eerror "the command"
-		eerror
-		eerror "   emerge ghc"
-		eerror
-		eerror "To resolve this problem, proceed in two steps. First, emerge"
-		eerror "haddock (which should first pull in ghc-bin). Second, emerge"
-		eerror "ghc again:"
-		eerror
-		eerror "   emerge haddock"
-		eerror "   emerge ghc"
-		die "portage dependency problem"
-	fi
-}
 
 src_compile() {
 	local myconf

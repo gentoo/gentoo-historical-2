@@ -1,12 +1,6 @@
 # ChangeLog for app-emacs/xrdb-mode
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/xrdb-mode/ChangeLog,v 1.5 2005/08/28 02:31:36 tester Exp $
-
-  28 Aug 2005; Olivier Crête <tester@gentoo.org> xrdb-mode-2.31.ebuild:
-  Marked ~amd64, thanks to AT AJ Armstrong <aja@gentoo.org> for testing
-
-  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> xrdb-mode-2.31.ebuild:
-  Stable on x86.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/xrdb-mode/ChangeLog,v 1.1 2003/09/10 07:42:50 mkennedy Exp $
 
 *xrdb-mode-2.31 (10 Sep 2003)
 

@@ -1,49 +1,6 @@
-# ChangeLog for app-laptop/omnibook
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/ChangeLog,v 1.10 2005/09/02 14:13:13 s4t4n Exp $
-
-*omnibook-20050217-r3 (02 Sep 2005)
-
-  02 Sep 2005; Michele Noberasco <s4t4n@gentoo.org>
-  +files/omnibook-toshiba-m30x.patch, +omnibook-20050217-r3.ebuild:
-  Revision bump, updating Toshiba M30X patch to also enable multimedia keys.
-  -omnibook-20050217-r2.ebuild,files/digest-omnibook-20050217-r2:
-  Removed previous revision.
-
-*omnibook-20050217-r2 (02 Sep 2005)
-
-  02 Sep 2005; Michele Noberasco <s4t4n@gentoo.org>
-  +files/omnibook-toshiba-m30x.patch, +omnibook-20050217-r2.ebuild:
-  Revision bump, with patch to add support for Toshiba Satellite
-  M30X series...
-
-*omnibook-20050217-r1 (12 Jun 2005)
-
-  12 Jun 2005; Stefan Schweizer <genstef@gentoo.org>
-  +files/omnibook-fix-obtest-segfault.patch, +omnibook-20050217-r1.ebuild:
-  Fix obtest segfault thanks to Andrew D. Keyser (aka Legoguy)
-  <andrewdk@sbcglobal.net> in bug 86335
-
-  10 May 2005; Stefan Schweizer <genstef@gentoo.org>
-  -omnibook-20040916.ebuild, omnibook-20050217.ebuild:
-  Fix portage-cvs-linux-mod-problem and remove old version
-
-  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  omnibook-20040916.ebuild, omnibook-20050217.ebuild:
-  marked -ppc since there are no powerpc omnibooks
-
-*omnibook-20050217 (04 Mar 2005)
-
-  04 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
-  +omnibook-20050217.ebuild:
-  Version bump.
-
-  02 Jan 2005; Stefan Schweizer <genstef@gentoo.org>
-  -omnibook-20021016.ebuild, -omnibook-20030403.ebuild,
-  -omnibook-20030828.ebuild, -omnibook-20040701.ebuild,
-  omnibook-20040916.ebuild:
-  Version 20040916 stable on x86. Conversion to linux-mod, pruned out old
-  versions
+# ChangeLog for app-misc/omnibook
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/omnibook/ChangeLog,v 1.1 2004/11/15 19:31:46 genstef Exp $
 
 *omnibook-20040916 (15 Nov 2004)
 

@@ -1,20 +1,6 @@
 # ChangeLog for app-emacs/sml-mode
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/sml-mode/ChangeLog,v 1.7 2005/09/09 16:08:02 agriffis Exp $
-
-  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> sml-mode-3.9.5.ebuild:
-  Mark 3.9.5 stable on alpha
-
-*sml-mode-4.0 (03 May 2005)
-
-  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> +sml-mode-4.0.ebuild:
-  Version bumped. This closes bug #91110.
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> sml-mode-3.9.5.ebuild:
-  stable on amd64
-
-  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> sml-mode-3.9.5.ebuild:
-  Stable on x86. Added to ~alpha and ~ppc-macos.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/sml-mode/ChangeLog,v 1.1 2003/08/28 02:13:14 mkennedy Exp $
 
 *sml-mode-3.9.5 (27 Aug 2003)
 

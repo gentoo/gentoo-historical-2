@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/crystalspace-cvs/crystalspace-cvs-0.99.ebuild,v 1.6 2005/09/06 13:03:34 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/crystalspace-cvs/crystalspace-cvs-0.99.ebuild,v 1.1 2004/12/25 15:36:47 vapier Exp $
 
 ECVS_SERVER="cvs.sourceforge.net:/cvsroot/crystal"
 ECVS_MODULE="CS"
@@ -8,13 +8,13 @@ ECVS_TOP_DIR="${DISTDIR}/cvs-src/${PN}"
 inherit cvs
 
 DESCRIPTION="portable 3D Game Development Kit written in C++"
-HOMEPAGE="http://www.crystalspace3d.org"
+HOMEPAGE="http://crystal.sourceforge.net/"
 SRC_URI=""
 
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="ppc x86"
-IUSE="vorbis mikmod openal truetype 3ds mng"
+IUSE="oggvorbis mikmod openal truetype 3ds mng"
 
 RDEPEND="sys-libs/zlib
 	>=media-libs/libpng-1.2.1
@@ -24,14 +24,14 @@ RDEPEND="sys-libs/zlib
 	3ds? ( media-libs/lib3ds )
 	truetype? ( >=media-libs/freetype-2.0 )
 	openal? ( media-libs/openal )
-	vorbis? (
+	oggvorbis? (
 		>=media-libs/libogg-1.0
 		>=media-libs/libvorbis-1.0 )
 	dev-games/ode
 	>=dev-lang/perl-5.6.1"
 DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.0.51
-	|| ( dev-util/jam dev-util/boost-jam )
+	dev-util/jam
 	x86? ( dev-lang/nasm )"
 
 S="${WORKDIR}/${ECVS_MODULE}"
@@ -60,5 +60,5 @@ src_install() {
 
 	dodir /etc/env.d
 	echo "CRYSTAL=\"${CRYSTAL_PREFIX}\"" > 90crystalspace
-	doenvd 90crystalspace
+	doconfd 90crystalspace
 }

@@ -1,14 +1,6 @@
-# ChangeLog for dev-perl/FileHandle-Deluxe
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/FileHandle-Deluxe/ChangeLog,v 1.5 2005/04/25 15:59:37 mcummings Exp $
-
-  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  FileHandle-Deluxe-0.92.ebuild:
-  cleaning
-
-  31 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org>
-  FileHandle-Deluxe-0.92.ebuild:
-  tested on sparc and x86 successfully
+# ChangeLog for dev-perl/FileHandle-rollback
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/FileHandle-Deluxe/ChangeLog,v 1.1 2003/07/25 14:27:32 aliz Exp $
 
 *FileHandle-Deluxe-0.92 (25 Jul 2003)
 

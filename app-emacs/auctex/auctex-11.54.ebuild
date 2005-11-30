@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/auctex/auctex-11.54.ebuild,v 1.5 2005/04/21 18:29:48 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/auctex/auctex-11.54.ebuild,v 1.1 2005/02/08 11:06:40 usata Exp $
 
-inherit elisp eutils
+inherit elisp
 
 DESCRIPTION="AUCTeX is an extensible package that supports writing and formatting TeX files"
 HOMEPAGE="http://www.gnu.org/software/auctex"
@@ -10,23 +10,13 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64 sparc ~ppc-macos"
+KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~ppc-macos"
 IUSE=""
 
 DEPEND="virtual/tetex"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	# skip XEmacs detection. this is a workaround for emacs23
-	epatch ${FILESDIR}/${P}-configure.diff
-}
-
 src_compile() {
-	econf \
-		--disable-build-dir-test \
-		--with-auto-dir=${D}/var/lib/auctex \
+	econf --with-auto-dir=${D}/var/lib/auctex \
 		--with-lispdir=${D}/usr/share/emacs/site-lisp \
 		--with-tex-input-dirs="/usr/share/texmf/tex/;/usr/share/texmf/bibtex/bst/" || die "econf failed"
 	emake || die

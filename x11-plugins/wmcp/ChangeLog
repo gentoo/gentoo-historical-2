@@ -1,27 +1,6 @@
 # ChangeLog for x11-plugins/wmcp
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcp/ChangeLog,v 1.9 2005/04/01 19:19:33 agriffis Exp $
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> wmcp-1.2.8.ebuild:
-  stable on ia64
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> wmcp-1.2.8.ebuild:
-  glibc -> libc
-
-  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> wmcp-1.2.8.ebuild:
-  Stable on alpha.
-
-  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> wmcp-1.2.8.ebuild:
-  Marking stable on hppa
-
-  24 Sep 2003; Seemant Kulleen <seemant@gentoo.org> wmcp-1.2.8.ebuild,
-  files/makefile.diff, files/wmcp-1.2.8-gcc33.patch,
-  files/wmcp-1.2.8-makefile.patch:
-  gcc-3.3 fixes by: Christopher Culver <crculver@users.sourceforge.net> in bug
-  #29157. Also, the patches are renamed to make more sense
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcp/ChangeLog,v 1.1 2002/10/04 14:49:33 raker Exp $
 
 *wmcp-1.2.8 (04 Oct 2002)
 

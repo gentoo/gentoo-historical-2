@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/excido/excido-0.1.5c.ebuild,v 1.5 2005/06/15 18:10:07 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/excido/excido-0.1.5c.ebuild,v 1.1 2004/08/13 11:23:27 mr_bones_ Exp $
 
-inherit games toolchain-funcs
+inherit gcc games
 
 DESCRIPTION="A fast paced action game"
 HOMEPAGE="http://icculus.org/excido/"
@@ -10,7 +10,7 @@ SRC_URI="http://icculus.org/excido/${P}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="x86 ~amd64"
 IUSE=""
 
 DEPEND="dev-games/physfs
@@ -22,7 +22,7 @@ DEPEND="dev-games/physfs
 
 src_compile() {
 	emake \
-		CC="$(tc-getCXX)" \
+		CC="$(gcc-getCXX)" \
 		PREFIX="/usr" \
 		BINDIR="${GAMES_BINDIR}/" \
 		DATADIR="${GAMES_DATADIR}/${PN}/" \
@@ -36,7 +36,7 @@ src_install() {
 		BINDIR="${D}${GAMES_BINDIR}/" \
 		DATADIR="${D}${GAMES_DATADIR}/${PN}/" \
 		install || die "make install failed"
-	dodoc BUGS CHANGELOG HACKING README TODO \
+	dodoc BUGS CHANGELOG HACKING INSTALL README TODO \
 		keyguide.txt data/CREDITS data/*.txt
 	prepgamesdirs
 }

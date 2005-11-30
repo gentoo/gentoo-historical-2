@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail/qmail-1.03-r16.ebuild,v 1.44 2005/10/30 08:43:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail/qmail-1.03-r16.ebuild,v 1.1 2005/01/02 22:16:06 hansmi Exp $
 
-inherit toolchain-funcs eutils fixheadtails flag-o-matic
+inherit toolchain-funcs eutils fixheadtails
 
-IUSE="ssl noauthcram notlsbeforeauth selinux logmail mailwrapper gencertdaily"
+IUSE="ssl noauthcram notlsbeforeauth"
 DESCRIPTION="A modern replacement for sendmail which uses maildirs and includes SSL/TLS, AUTH SMTP, and queue optimization"
 HOMEPAGE="http://www.qmail.org/
 	http://members.elysium.pl/brush/qmail-smtpd-auth/
@@ -12,6 +12,7 @@ HOMEPAGE="http://www.qmail.org/
 SRC_URI="mirror://qmail/${P}.tar.gz
 	mirror://qmail/qmailqueue-patch
 	http://qmail.null.dk/big-todo.103.patch
+	http://www.jedi.claranet.fr/qmail-link-sync.patch
 	mirror://qmail/big-concurrency.patch
 	http://www.suspectclass.com/~sgifford/qmail/qmail-1.03-0.0.0.0-0.2.patch
 	http://david.acz.org/software/sendmail-flagf.patch
@@ -22,9 +23,9 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 	ftp://ftp.pipeline.com.au/pipeint/sources/linux/WebMail/qmail-date-localtime.patch.txt
 	ftp://ftp.pipeline.com.au/pipeint/sources/linux/WebMail/qmail-limit-bounce-size.patch.txt
 	http://www.ckdhr.com/ckd/qmail-103.patch
-	http://www.arda.homeunix.net/store/qmail/qregex-starttls-2way-auth-20050523.patch
+	http://www.arda.homeunix.net/store/qmail/qregex-starttls-2way-auth.patch
 	http://www.soffian.org/downloads/qmail/qmail-remote-auth-patch-doc.txt
-	mirror://gentoo/qmail-gentoo-1.03-r16-badrcptto-morebadrcptto-accdias.diff.bz2
+	mirror://gentoo/qmail-gentoo-1.03-r12-badrcptto-morebadrcptto-accdias.diff.bz2
 	http://www.dataloss.nl/software/patches/qmail-popupnofd2close.patch
 	http://js.hu/package/qmail/qmail-1.03-reread-concurrency.2.patch
 	http://www.mcmilk.de/qmail/dl/djb-qmail/patches/08-capa.diff
@@ -32,17 +33,17 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 	mirror://qmail/netscape-progress.patch
 	http://www-dt.e-technik.uni-dortmund.de/~ma/djb/qmail/sendmail-ignore-N.patch
 	mirror://gentoo/qmail-1.03-moreipme-0.6pre1-gentoo.patch
-	http://hansmi.ch/download/qmail/qmail-relaymxlookup-0.4.diff
-	mirror://gentoo/qmail-1.03-r16-spp.diff
-	mirror://gentoo/qmail-1.03-r16-mfcheck.diff
-	mirror://gentoo/qmail-1.03-r16-logrelay.diff
-	http://www.finnie.org/software/qmail-bounce-encap/qmail-bounce-encap-20040210.patch
+	http://hansmi.ch/download/qmail/qmail-relaymxlookup-0.3.diff
+	mirror://gentoo/gentoo-qmail-1.03-r16-mfcheck.3.patch
+	mirror://gentoo/gentoo-qmail-1.03-r16-spp.034.patch
 	"
+# broken stuffs
+#http://www.qcc.ca/~charlesc/software/misc/nullenvsender-recipcount.patch
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 arm hppa ia64 ~m68k mips ppc ~s390 ~sh sparc x86"
-RESTRICT="userpriv usersandbox maketest"
+#KEYWORDS="~x86 ~ppc ~sparc mips alpha arm hppa amd64 ia64"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64"
 
 DEPEND="virtual/libc
 	sys-apps/groff
@@ -50,30 +51,21 @@ DEPEND="virtual/libc
 	>=net-mail/queue-fix-1.4-r1"
 RDEPEND="!virtual/mta
 	virtual/libc
-	app-shells/bash
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-process/daemontools-0.76-r1
-	!noauthcram? (
-		|| ( >=net-mail/checkpassword-0.90 >=net-mail/checkpassword-pam-0.99 )
-		>=net-mail/cmd5checkpw-0.30
-	)
+	>=sys-apps/daemontools-0.76-r1
+	>=net-mail/checkpassword-0.90
+	>=net-mail/cmd5checkpw-0.22
 	>=net-mail/dot-forward-0.71
 	>=net-mail/queue-fix-1.4-r1
-	selinux? ( sec-policy/selinux-qmail )
-	mailwrapper? ( net-mail/mailwrapper )"
+	selinux? ( sec-policy/selinux-qmail )"
 
 PROVIDE="virtual/mta
 	 virtual/mda"
 
+#MY_PVR=${PVR}
 MY_PVR=${PV}-r14
 
 TCPRULES_DIR=/etc/tcprules.d
-
-if use gencertdaily; then
-	CRON_FOLDER=cron.daily
-else
-	CRON_FOLDER=cron.hourly
-fi
 
 src_unpack() {
 	# unpack the initial stuff
@@ -82,13 +74,15 @@ src_unpack() {
 	# This makes life easy
 	EPATCH_OPTS="-d ${S}"
 
-	# Let the system decide how to define errno
-	epatch ${FILESDIR}/errno.patch
-
 	# this patch merges a few others already
 	EPATCH_SINGLE_MSG="Adding SMTP AUTH (2 way), Qregex and STARTTLS support" \
-	EPATCH_OPTS="${EPATCH_OPTS} -F 3" \
-	epatch ${DISTDIR}/qregex-starttls-2way-auth-20050523.patch
+	epatch ${DISTDIR}/qregex-starttls-2way-auth.patch
+	# bug #30570
+	EPATCH_SINGLE_MSG="Fixing a memory leak in Qregex support" \
+	epatch ${FILESDIR}/${MY_PVR}/qmail-1.03-qregex-memleak-fix.patch
+
+	# Fixes a problem when utilizing "morercpthosts"
+	epatch ${FILESDIR}/${MY_PVR}/smtp-auth-close3.patch
 
 	# patch so an alternate queue processor can be used
 	# i.e. - qmail-scanner
@@ -115,14 +109,16 @@ src_unpack() {
 	epatch ${DISTDIR}/qmail-local-tabs.patch
 
 	# Account for Linux filesystems lack of a synchronus link()
-	# hansmi, 2005-07-16: taken out because of bug 56124, see esp. comment 23
-	# epatch ${DISTDIR}/qmail-link-sync.patch
+	epatch ${DISTDIR}/qmail-link-sync.patch
 
 	# Increase limits for large mail systems
 	epatch ${DISTDIR}/big-concurrency.patch
 
 	# Treat 0.0.0.0 as a local address
 	epatch ${DISTDIR}/qmail-1.03-0.0.0.0-0.2.patch
+
+	# Let the system decide how to define errno
+	epatch ${FILESDIR}/errno.patch
 
 	# holdremote support
 	# pre-process to remove the header added upstream
@@ -135,6 +131,9 @@ src_unpack() {
 	# Apply patch to make qmail-local and qmail-pop3d compatible with the
 	# maildir++ quota system that is used by vpopmail and courier-imap
 	epatch ${DISTDIR}/qmail-maildir++.patch
+	# fix a typo in the patch
+	# upstream has changed the patch and this isn't needed anymore
+	#epatch ${FILESDIR}/${MY_PVR}/maildir-quota-fix.patch
 
 	# Apply patch for local timestamps.
 	# This will make the emails headers be written in localtime rather than GMT
@@ -145,24 +144,27 @@ src_unpack() {
 	# when multiple bounces occur (As in with spam)
 	epatch ${DISTDIR}/qmail-limit-bounce-size.patch.txt
 
+	# Apply patch to add ESMTP SIZE support to qmail-smtpd
+	# This helps your server to be able to reject excessively large messages
+	# "up front", rather than waiting the whole message to arrive and then
+	# bouncing it because it exceeded your databytes setting
+	epatch ${FILESDIR}/${MY_PVR}/qmail-smtpd-esmtp-size-gentoo.patch
+
 	#TODO TEST
 	# Reject some bad relaying attempts
 	# gentoo bug #18064
-	epatch ${FILESDIR}/${PVR}/qmail-smtpd-relay-reject.gentoo.patch
+	epatch ${FILESDIR}/${MY_PVR}/qmail-smtpd-relay-reject.gentoo.patch
 
 	#TODO TEST HEAVILY AS THIS PATCH WAS CUSTOM FIXED
 	# provide badrcptto support
 	# as per bug #17283
 	# patch re-diffed from original at http://sys.pro.br/files/badrcptto-morebadrcptto-accdias.diff.bz2
-	# TODO hansmi, 2005-01-06: rediffed for r16
-	epatch ${DISTDIR}/qmail-gentoo-1.03-r16-badrcptto-morebadrcptto-accdias.diff.bz2
+	epatch ${DISTDIR}/qmail-gentoo-1.03-r12-badrcptto-morebadrcptto-accdias.diff.bz2
 
 	# bug #31426
-	# original submission by shadow@ines.ro, cleaned up by robbat2@gentoo.org,
-	# redone for r16 by hansmi@gentoo.org
-	# only allows AUTH after STARTTLS when compiled with TLS and TLS_BEFORE_AUTH
-	# defined
-	epatch ${FILESDIR}/${PVR}/auth-after-tls-only.patch
+	# original submission by shadow@ines.ro, cleaned up by robbat2@gentoo.org
+	# only allows AUTH after STARTTLS, if compiled TLS && TLS_BEFORE_AUTH defines
+	epatch ${FILESDIR}/${MY_PVR}/auth-after-tls-only.patch
 
 	EPATCH_SINGLE_MSG="Enable stderr logging from checkpassword programs" \
 	epatch ${DISTDIR}/qmail-popupnofd2close.patch
@@ -179,138 +181,86 @@ src_unpack() {
 	epatch ${DISTDIR}/sendmail-ignore-N.patch
 
 	# rediff of original at http://www.qmail.org/accept-5xx.patch
-	epatch ${FILESDIR}/${PVR}/qmail-1.03-accept-5xx.tls.patch
+	epatch ${FILESDIR}/${MY_PVR}/qmail-1.03-accept-5xx.tls.patch
 
 	# rediffed from original at http://www.qcc.ca/~charlesc/software/misc/nullenvsender-recipcount.patch
 	# because of TLS
 	EPATCH_SINGLE_MSG="Refuse messages from the null envelope sender if they have more than one envelope recipient" \
-	epatch ${FILESDIR}/${PVR}/nullenvsender-recipcount.tls.patch
+	epatch ${FILESDIR}/${MY_PVR}/nullenvsender-recipcount.tls.patch
 
 	# rediffed from original at http://www.dataloss.nl/software/patches/qmail-pop3d-stat.patch
 	# because of TLS
 	EPATCH_SINGLE_MSG="qmail-pop3d reports erroneous figures on STAT after a DELE" \
 	epatch ${FILESDIR}/${MY_PVR}/qmail-pop3d-stat.tls.patch
 
-	# this can unintentionally leak information about your system!
-	#EPATCH_SINGLE_MSG="Branding qmail with Gentoo identifier 'Gentoo Linux ${PF}'" \
-	#epatch ${FILESDIR}/${MY_PVR}/qmail-gentoo-branding.patch
-	#sed -e "s/__PF__/${PF}/" -i ${S}/qmail-smtpd.c
+	EPATCH_SINGLE_MSG="Branding qmail with Gentoo identifier 'Gentoo Linux ${PF}'" \
+	epatch ${FILESDIR}/${MY_PVR}/qmail-gentoo-branding.patch
+	sed -e "s/__PF__/${PF}/" -i ${S}/qmail-smtpd.c
 
 	EPATCH_SINGLE_MSG="qmail-pop3d fix for top output so Evolution doesn't barf" \
 	epatch ${FILESDIR}/${PV}-r15/qmail-pop3d-top-outputfix.patch
 
 	# Fix a compilation-error on Mac OS X
 	# qmail doesn't run yet on Mac OS X, but this will help in the future
-	use ppc-macos && \
+	test "${ARCH}" = ppc-macos && \
 		epatch ${FILESDIR}/${PV}-r15/qmail-macos-dns-fix.patch
 
 	# add SPP framework for future extensions. Once this has been tested, most
 	# other patches may be rewritten to add a SPP module instead of patching
 	# qmail-smtpd
 	EPATCH_SINGLE_MSG="Adding SPP framework for qmail-smtpd" \
-	epatch ${DISTDIR}/qmail-1.03-r16-spp.diff
+	epatch ${DISTDIR}/gentoo-qmail-${PVR}-spp.034.patch
 
 	# add mail from DNS check
 	EPATCH_SINGLE_MSG="check envelope sender's domain for validity" \
-	epatch ${DISTDIR}/qmail-1.03-r16-mfcheck.diff
+	epatch ${DISTDIR}/gentoo-qmail-${PVR}-mfcheck.3.patch
 
 	# log relay attempts
 	EPATCH_SINGLE_MSG="log relay attempts" \
-	epatch ${DISTDIR}/qmail-1.03-r16-logrelay.diff
+	epatch ${FILESDIR}/${PVR}/gentoo-qmail-${PVR}-logrelay.patch
 
-	# Rediffed patch to prevent from the problem that qmail doesn't know
-	# that it is reachable under another IP address when using NAT.
+	# Rediffed patch to prevent from a problem which can
+	# happen when using NAT. Rediffed by hansmi@gentoo.org.
 	# See http://www.suspectclass.com/~sgifford/qmail/qmail-moreipme-0.6.README
-	# Rediffed by hansmi@gentoo.org.
-	EPATCH_SINGLE_MSG="Adding moreipme-patch" \
 	epatch ${DISTDIR}/qmail-1.03-moreipme-0.6pre1-gentoo.patch
 
-	# Patch to look up the MX before relaying
+	# Patch to look up the mx before relaying
 	# Look at http://hansmi.ch/software/qmail
-	EPATCH_SINGLE_MSG="Adding relaymxlookup-patch" \
-	epatch ${DISTDIR}/qmail-relaymxlookup-0.4.diff
+	epatch ${DISTDIR}/qmail-relaymxlookup-0.3.diff
 	epatch ${FILESDIR}/${PVR}/Makefile-relaymxlookup.patch
 
-	# Fix a bug on ia64, see bug 68173
-	# Doesn't affect other platforms
-	EPATCH_SINGLE_MSG="Patch for spawn.c to fix a bug on ia64" \
-	epatch ${FILESDIR}/${PV}-r15/spawn-alloc-h.patch
-
-	# Added due to bug 38849
-	EPATCH_SINGLE_MSG="Adding qmail-bounce-encap to encapsulate bounces in rfc822 messages" \
-	EPATCH_OPTS="${EPATCH_OPTS} -F 3" \
-	epatch ${DISTDIR}/qmail-bounce-encap-20040210.patch
-
-	# Add double-bounce-trim-patch from bug 67810
-	EPATCH_SINGLE_MSG="Adding double-bounce-trim-patch" \
-	epatch ${FILESDIR}/${PVR}/double-bounce-trim.patch
-
-	# Fix bug 49971
-	# hansmi, 2005-07-16: taken out because of bug 56124, see esp. comment 23
-	# (the code this patch modifies isn't anymore in qmail after taking out the
-	# link-sync patch)
-	# EPATCH_SINGLE_MSG="Applying fix for a special case with courier-imapd" \
-	# epatch ${FILESDIR}/${PVR}/famd-dnotify.patch
-
-	# See bug 94257
-	epatch ${FILESDIR}/${PVR}/qmail-1.03-env-servercert.patch
-
-	# Log invalid envelope senders (MAIL FROM:)
-	epatch ${FILESDIR}/${PVR}/invalid-envelope-sender-log.patch
-
-	# See bug 98961
-	# Sort-of rewritten by hansmi@g.o, because the old patch was heavily broken
-	# (caused qmail-remote to segfault)
-	epatch ${FILESDIR}/${PVR}/virtual-domain-outgoing-IP-address.patch
-
-	# Fixes bug 101532
-	epatch ${FILESDIR}/${PVR}/qmail-remote-auth-log-fix.patch
-
-	# Collision with mutt (bug 105454)
-	mv -f ${S}/mbox.5 ${S}/qmail-mbox.5
-
-	# Fix files
-	epatch ${FILESDIR}/${PVR}/fix-manpages.patch
-
-	# See bug #90631
-	if use logmail; then
-		EPATCH_SINGLE_MSG='Enabling logging of all mails via ~alias/.qmail-log' \
-		epatch ${FILESDIR}/${PVR}/qmail-logmail.patch
-	fi
-
-	MY_CFLAGS="${CFLAGS}"
+	echo -n "$(tc-getCC) ${CFLAGS}" >${S}/conf-cc
 	if use ssl; then
 		einfo "Enabling SSL/TLS functionality"
-		MY_CFLAGS="${MY_CFLAGS} -DTLS"
+		echo -n ' -DTLS ' >>${S}/conf-cc
 
 		# from bug #31426
 		if ! use notlsbeforeauth; then
 			einfo "Enabling STARTTLS before SMTP AUTH"
-			MY_CFLAGS="${MY_CFLAGS} -DTLS_BEFORE_AUTH"
+			echo -n '-DTLS_BEFORE_AUTH ' >>${S}/conf-cc
 		else
 			einfo "Disabling STARTTLS before SMTP AUTH"
 		fi
 
 	fi
 
-	echo -n "$(tc-getCC) ${MY_CFLAGS}" > ${S}/conf-cc
-
 	# fix bug #33818
 	if use noauthcram; then
-		einfo "Disabling CRAM_MD5 support"
-		sed -e 's,^#define CRAM_MD5$,//&,' -i ${S}/qmail-smtpd.c
+		einfo "Disabling AUTHCRAM support"
+		sed -e 's,^#define AUTHCRAM$,//&,' -i ${S}/qmail-smtpd.c
 	else
-		einfo "Enabling CRAM_MD5 support"
+		einfo "Enabling AUTHCRAM support"
 	fi
-
-	# Bug 92742
-	append-ldflags -Wl,-z,now
 
 	echo -n "$(tc-getCC) ${LDFLAGS}" > ${S}/conf-ld
 	echo -n "500" > ${S}/conf-spawn
 
 	# fix coreutils messup
 	ht_fix_file ${S}/Makefile
+
+	# fix bug #74124
+	EPATCH_SINGLE_MSG="fixing stderr logging for checkpassword to enable qmail-queue to continue logging" \
+	epatch ${FILESDIR}/${PVR}/gentoo-qmail-1.03-r16-logging-with-smtpauth.patch
 }
 
 src_compile() {
@@ -318,6 +268,7 @@ src_compile() {
 }
 
 src_install() {
+
 	einfo "Setting up directory hierarchy ..."
 
 	diropts -m 755 -o root -g qmail
@@ -369,7 +320,7 @@ src_install() {
 
 	# use the correct maildirmake
 	# the courier-imap one has some extensions that are nicer
-	[[ -e /usr/bin/maildirmake ]] && \
+	[ -e /usr/bin/maildirmake ] && \
 		MAILDIRMAKE="/usr/bin/maildirmake" || \
 		MAILDIRMAKE="${D}/var/qmail/bin/maildirmake"
 
@@ -381,15 +332,8 @@ src_install() {
 	einfo "Creating sendmail replacement ..."
 	diropts -m 755
 	dodir /usr/sbin /usr/lib
-
-	if useq mailwrapper; then
-		# make it compatible with mailwrapper, bug 48885
-		dosym /var/qmail/bin/sendmail /usr/sbin/sendmail.qmail
-		dosym /usr/sbin/sendmail /usr/lib/sendmail
-	else
-		dosym /var/qmail/bin/sendmail /usr/sbin/sendmail
-		dosym /var/qmail/bin/sendmail /usr/lib/sendmail
-	fi
+	dosym /var/qmail/bin/sendmail /usr/sbin/sendmail
+	dosym /var/qmail/bin/sendmail /usr/lib/sendmail
 
 	einfo "Setting up the default aliases ..."
 	diropts -m 700 -o alias -g qmail
@@ -399,7 +343,7 @@ src_install() {
 
 	for i in mailer-daemon postmaster root
 	do
-		if [[ ! -f ${ROOT}/var/qmail/alias/.qmail-${i} ]]; then
+		if [ ! -f ${ROOT}/var/qmail/alias/.qmail-${i} ]; then
 			touch ${D}/var/qmail/alias/.qmail-${i}
 			fowners alias:qmail /var/qmail/alias/.qmail-${i}
 		fi
@@ -423,13 +367,13 @@ src_install() {
 		insopts -o root -g root -m 755
 		diropts -m 755 -o root -g root
 		dodir /var/qmail/supervise/qmail-${i}{,/log}
+		diropts -m 755 -o qmaill
+		keepdir /var/log/qmail/qmail-${i}
 		fperms +t /var/qmail/supervise/qmail-${i}{,/log}
 		insinto /var/qmail/supervise/qmail-${i}
 		newins ${FILESDIR}/run-qmail${i} run
 		insinto /var/qmail/supervise/qmail-${i}/log
 		newins ${FILESDIR}/run-qmail${i}log run
-		diropts -m 755 -o qmaill
-		keepdir /var/log/qmail/qmail-${i}
 	done
 
 	dodir ${TCPRULES_DIR}
@@ -446,9 +390,7 @@ src_install() {
 	einfo "Insalling some stock configuration files"
 	insinto /var/qmail/control
 	insopts -o root -g root -m 644
-	doins ${FILESDIR}/conf-{common,send,qmtpd,qmqpd,pop3d}
-	newins ${FILESDIR}/conf-smtpd-${PR} conf-smtpd
-	doins ${FILESDIR}/${PVR}/smtpplugins
+	doins ${FILESDIR}/conf-* ${FILESDIR}/${PVR}/smtpplugins
 	newins ${FILESDIR}/dot_qmail defaultdelivery
 	use ssl && doins ${FILESDIR}/servercert.cnf
 
@@ -462,9 +404,9 @@ src_install() {
 		einfo "SSL Certificate creation script"
 		dobin ${FILESDIR}/mkservercert
 		einfo "RSA key generation cronjob"
-		insinto /etc/${CRON_FOLDER}
+		insinto /etc/cron.hourly
 		doins ${FILESDIR}/qmail-genrsacert.sh
-		chmod +x ${D}/etc/${CRON_FOLDER}/qmail-genrsacert.sh
+		chmod +x ${D}/etc/cron.hourly/qmail-genrsacert.sh
 
 		# for some files
 		keepdir /var/qmail/control/tlshosts/
@@ -477,7 +419,7 @@ src_install() {
 rootmailfixup() {
 	# so you can check mail as root easily
 	local TMPCMD="ln -sf /var/qmail/alias/.maildir/ ${ROOT}/root/.maildir"
-	if [[ -d "${ROOT}/root/.maildir" && ! -L "${ROOT}/root/.maildir" ]] ; then
+	if [ -d "${ROOT}/root/.maildir" ] && [ ! -L "${ROOT}/root/.maildir" ] ; then
 		einfo "Previously the qmail ebuilds created /root/.maildir/ but not"
 		einfo "every mail was delivered there. If the directory does not"
 		einfo "contain any mail, please delete it and run:"
@@ -496,17 +438,11 @@ buildtcprules() {
 		src=${ROOT}${TCPRULES_DIR}/${f}
 		cdb=${ROOT}${TCPRULES_DIR}/${f}.cdb
 		tmp=${ROOT}${TCPRULES_DIR}/.${f}.tmp
-		[[ -e ${src} ]] && tcprules ${cdb} ${tmp} < ${src}
+		cat ${src} 2>/dev/null | tcprules ${cdb} ${tmp}
 	done
 }
 
 pkg_postinst() {
-	if [[ ! -x /var/qmail/bin/queue-fix ]]; then
-		eerror "Can't find /var/qmail/bin/queue-fix -- have you rm -rf'd /var/qmail?"
-		einfo "Please remerge net-mail/queue-fix and don't do that again!"
-		die "Can't find /var/qmail/bin/queue-fix"
-	fi
-
 	einfo "Setting up the message queue hierarchy ..."
 	# queue-fix makes life easy!
 	/var/qmail/bin/queue-fix ${ROOT}/var/qmail/queue >/dev/null
@@ -518,7 +454,7 @@ pkg_postinst() {
 	env-update
 
 	einfo "To setup qmail to run out-of-the-box on your system, run:"
-	einfo "emerge --config =${PF}"
+	einfo "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
 	echo
 	einfo "To start qmail at boot you have to add svscan to your startup"
 	einfo "and create the following links:"
@@ -536,20 +472,6 @@ pkg_postinst() {
 	einfo "Additionally, if you wish to run qmail right now, you should "
 	einfo "run this before anything else:"
 	einfo "source /etc/profile"
-	echo
-	einfo "If you are looking for documentation, check those links:"
-	einfo "http://www.gentoo.org/doc/en/qmail-howto.xml"
-	einfo "  -- qmail/vpopmail Virtual Mail Hosting System Guide"
-	einfo "http://www.lifewithqmail.com/"
-	einfo "  -- Life with qmail"
-
-	if use logmail; then
-		echo
-		einfo "You've enabled the logmail USE flag. To really use it, please"
-		einfo "follow those URLs:"
-		einfo "http://cr.yp.to/qmail/faq/admin.html#copies"
-		einfo "http://www.cyber-sentry.com/index.php?id=35"
-	fi
 }
 
 pkg_preinst() {
@@ -559,13 +481,13 @@ pkg_preinst() {
 			old="/etc/tcp.${proto}${ext}"
 			new="${TCPRULES_DIR}/tcp.qmail-${proto}${ext}"
 			fail=0
-			if [[ -f "$old" && ! -f "$new" ]]; then
+			if [ -f "$old" -a ! -f "$new" ]; then
 				einfo "Moving $old to $new"
 				cp $old $new || fail=1
 			else
 				fail=1
 			fi
-			if [[ "${fail}" = 1 && -f ${old} ]]; then
+			if [ "${fail}" = "1" ]; then
 				eerror "Error moving $old to $new, be sure to check the"
 				eerror "configuration! You may have already moved the files,"
 				eerror "in which case you can delete $old"
@@ -574,25 +496,14 @@ pkg_preinst() {
 	done
 }
 
-pkg_setup() {
-	einfo "Creating groups and users"
-	enewgroup qmail 201
-	enewuser alias 200 -1 /var/qmail/alias 200
-	enewuser qmaild 201 -1 /var/qmail 200
-	enewuser qmaill 202 -1 /var/qmail 200
-	enewuser qmailp 203 -1 /var/qmail 200
-	enewuser qmailq 204 -1 /var/qmail 201
-	enewuser qmailr 205 -1 /var/qmail 201
-	enewuser qmails 206 -1 /var/qmail 201
-}
-
 pkg_config() {
+
 	# avoid some weird locale problems
 	export LC_ALL="C"
 
-	if [[ ${ROOT} = / ]] ; then
-		if [[ ! -f ${ROOT}var/qmail/control/me ]] ; then
-			export qhost=$(hostname --fqdn)
+	if [ ${ROOT} = "/" ] ; then
+		if [ ! -f ${ROOT}var/qmail/control/me ] ; then
+			export qhost=`hostname --fqdn`
 			${ROOT}var/qmail/bin/config-fast $qhost
 		fi
 	else
@@ -600,7 +511,7 @@ pkg_config() {
 	fi
 
 	einfo "Accepting relaying by default from all ips configured on this machine."
-	LOCALIPS=$(/sbin/ifconfig | grep inet | cut -d' ' -f 12 -s | cut -b 6-20)
+	LOCALIPS=`/sbin/ifconfig  | grep inet | cut -d' ' -f 12 -s | cut -b 6-20`
 	TCPSTRING=":allow,RELAYCLIENT=\"\",RBLSMTPD=\"\""
 	for ip in $LOCALIPS; do
 		myline="${ip}${TCPSTRING}"
@@ -612,27 +523,15 @@ pkg_config() {
 
 	buildtcprules
 
-	if use logmail; then
-		qmaillog=/var/qmail/alias/.qmail-log
-		if [[ ! -f ${qmaillog} ]]; then
-			einfo "Setting up sample file for logging (${qmaillog})"
-			cp ${FILESDIR}/dot_qmail-log ${qmaillog}
-		fi
-	fi
-
 	if use ssl; then
-		ebegin "Generating RSA keys for SSL/TLS, this can take some time"
-		${ROOT}etc/${CRON_FOLDER}/qmail-genrsacert.sh
-		eend $?
+		${ROOT}etc/cron.daily/qmail-genrsacert.sh
 		einfo "Creating a self-signed ssl-certificate:"
 		/var/qmail/bin/mkservercert
 		einfo "If you want to have a properly signed certificate "
 		einfo "instead, do the following:"
-		# space at the end of the string because of the current implementation
-		# of einfo
-		einfo "openssl req -new -nodes -out req.pem \\ "
-		einfo "  -config /var/qmail/control/servercert.cnf \\ "
-		einfo "  -keyout /var/qmail/control/servercert.pem"
+		einfo "openssl req -new -nodes -out req.pem \\"
+		einfo "-config /var/qmail/control/servercert.cnf \\"
+		einfo "-keyout /var/qmail/control/servercert.pem"
 		einfo "Send req.pem to your CA to obtain signed_req.pem, and do:"
 		einfo "cat signed_req.pem >> /var/qmail/control/servercert.pem"
 	fi

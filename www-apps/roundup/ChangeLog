@@ -1,34 +1,6 @@
-# ChangeLog for www-apps/roundup
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/roundup/ChangeLog,v 1.6 2005/11/25 18:38:55 vanquirius Exp $
-
-*roundup-0.8.5 (25 Nov 2005)
-
-  25 Nov 2005; Marcelo Goes <vanquirius@gentoo.org> +roundup-0.8.5.ebuild:
-  0.8.5 version bump for bug 107417. Thanks to David Remahl <chmod007 at mac
-  dot com>.
-
-  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml:
-  Remove retired developer from metadata.xml.
-
-  06 Nov 2004; Chris White <chriswhite@gentoo.org> files/roundup:
-  Fixed roundup script as per bug #69812.
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> roundup-0.5.6.ebuild,
-  roundup-0.5.8.ebuild, roundup-0.6.4.ebuild, roundup-0.7.6.ebuild:
-  Fixed ChangeLog header. Added IUSE and don't assign default to S.
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  roundup-0.5.8.ebuild, roundup-0.6.4.ebuild, roundup-0.7.6.ebuild:
-  Masked roundup-0.7.6.ebuild stable for ppc
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  roundup-0.5.8.ebuild, roundup-0.6.4.ebuild:
-  Masked roundup-0.6.4.ebuild stable for ppc
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  roundup-0.5.8.ebuild:
-  Masked roundup-0.5.8.ebuild stable for ppc
+# ChangeLog for net-www/roundup
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/roundup/ChangeLog,v 1.1 2004/08/15 15:36:30 stuart Exp $
 
 *roundup-0.6.4 (15 Aug 2004)
 

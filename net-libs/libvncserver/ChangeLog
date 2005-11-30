@@ -1,41 +1,6 @@
 # ChangeLog for net-libs/libvncserver
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libvncserver/ChangeLog,v 1.9 2005/10/27 23:59:41 vapier Exp $
-
-*libvncserver-0.8_pre (27 Oct 2005)
-
-  27 Oct 2005; Mike Frysinger <vapier@gentoo.org>
-  +libvncserver-0.8_pre.ebuild:
-  Version bump.
-
-*libvncserver-0.7.1 (17 Jul 2005)
-
-  17 Jul 2005; Mike Frysinger <vapier@gentoo.org>
-  +libvncserver-0.7.1.ebuild:
-  Version bump.
-
-*libvncserver-0.7 (29 Dec 2004)
-
-  29 Dec 2004; Mike Frysinger <vapier@gentoo.org>
-  -files/0.5-optional-configure.ac.patch, -libvncserver-0.6.ebuild,
-  +libvncserver-0.7.ebuild:
-  Version bump for security #76019.
-
-  11 Aug 2004; Tom Martin <slarti@gentoo.org> libvncserver-0.6.ebuild:
-  Marked ~amd64.
-
-  10 Jun 2004; Aron Griffis <agriffis@gentoo.org> libvncserver-0.6.ebuild:
-  Fix use invocation
-
-*libvncserver-0.6 (01 Jan 2003)
-
-  01 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bumpage #36975.
-
-*libvncserver-0.5-r1 (12 Aug 2003)
-
-  12 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
-  Make sure storepasswd binary is installed.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libvncserver/ChangeLog,v 1.1 2003/08/08 01:22:47 vapier Exp $
 
 *libvncserver-0.5 (07 Aug 2003)
 

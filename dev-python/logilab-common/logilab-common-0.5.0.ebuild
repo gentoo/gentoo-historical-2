@@ -1,19 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/logilab-common/logilab-common-0.5.0.ebuild,v 1.9 2005/04/24 09:25:59 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/logilab-common/logilab-common-0.5.0.ebuild,v 1.1 2004/05/12 08:58:42 kloeri Exp $
 
 inherit distutils
 
-DESCRIPTION="Several modules providing low level functionality shared among some python projects developed by logilab."
-HOMEPAGE="http://www.logilab.org/projects/common/"
+DESCRIPTION="Several modules providing low level functionnalities shared among some python projects developped by logilab."
 SRC_URI="ftp://ftp.logilab.org/pub/common/${P#logilab-}.tar.gz"
+HOMEPAGE="http://www.logilab.org/projects/common/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc s390 x86"
-IUSE=""
-
+KEYWORDS="~x86 ~s390"
+LICENSE="GPL-2"
 DEPEND=""
+IUSE=""
 
 S=${WORKDIR}/${P#logilab-}
 

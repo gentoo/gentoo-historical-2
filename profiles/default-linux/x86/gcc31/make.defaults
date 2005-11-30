@@ -1,5 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/x86/gcc31/make.defaults,v 1.16 2005/03/09 00:35:07 vapier Exp $
+# Copyright 2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header:
+# /home/cvsroot/gentoo-x86/profiles/default/x86/2004.0/make.defaults,v 1.3
+# 2004/03/18 00:16:43 seemant Exp $
 
-USE="oss apm arts avi berkdb bitmap=fonts crypt cups emboss encode fortran gdbm gif gpm gtk imlib java jpeg kde gnome libg++ libwww mikmod mmx motif mpeg ncurses nls oggvorbis opengl pam pdflib png python qt quicktime readline sdl slang spell ssl svga tcpd truetype X xml2 xmms xv zlib"
+# System-wide defaults for the gcc 3 Portage system (1.0)
+
+
+USE="x86 oss 3dnow apm arts avi berkdb crypt cups encode gdbm gif gpm gtk imlib
+java jpeg kde gnome libg++ libwww mikmod mmx motif mpeg ncurses nls oggvorbis
+opengl pam pdflib png python qt quicktime readline sdl slang spell ssl
+svga tcpd truetype X xml2 xmms xv zlib"
+
+ARCH="x86"
+COMPILER="gcc3"
+ACCEPT_KEYWORDS="x86"
+

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes/fvwm-themes-0.7.0.ebuild,v 1.11 2005/11/02 17:58:39 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes/fvwm-themes-0.7.0.ebuild,v 1.1 2004/03/25 02:14:56 pyrania Exp $
 
 IUSE="gnome"
 
@@ -10,10 +10,10 @@ DESCRIPTION="A configuration framework for the fvwm window manager"
 HOMEPAGE="http://fvwm-themes.sourceforge.net/"
 SRC_URI="mirror://sourceforge/fvwm-themes/${P}.tar.bz2"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~x86 ~alpha ~amd64"
 SLOT="0"
 
-DEPEND=">=x11-wm/fvwm-2.5.8
+DEPEND="x11-wm/fvwm
 	gnome? ( media-gfx/imagemagick )"
 RDEPEND="x11-wm/fvwm"
 

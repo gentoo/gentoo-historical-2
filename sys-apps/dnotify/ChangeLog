@@ -1,53 +1,8 @@
 # ChangeLog for sys-apps/dnotify
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dnotify/ChangeLog,v 1.16 2005/08/19 21:53:46 hansmi Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dnotify/ChangeLog,v 1.1 2002/06/14 19:41:07 rphillips Exp $
 
-  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> dnotify-0.17.1.ebuild:
-  Stable on ppc.
-
-*dnotify-0.18.0 (17 Jul 2005)
-
-  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +dnotify-0.18.0.ebuild:
-  Version bump.
-
-  03 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> dnotify-0.16.0.ebuild,
-  dnotify-0.17.1.ebuild, dnotify-0.5.0.ebuild:
-  Keyworded -sparc, they're b0rked
-
-  01 Nov 2004; Joshua Kinard <kumba@gentoo.org> dnotify-0.17.1.ebuild:
-  Marked stable on mips.
-
-  26 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> dnotify-0.16.0.ebuild:
-  Marked stable on amd64.
-
-*dnotify-0.17.1 (18 Sep 2004)
-
-  18 Sep 2004; Sven Wegener <swegener@gentoo.org> dnotify-0.16.0.ebuild,
-  +dnotify-0.17.1.ebuild, dnotify-0.5.0.ebuild:
-  Version bump. Marked 0.16.0 stable on x86. Updated HOMEPAGE in all ebuilds.
-
-*dnotify-0.16.0 (18 Jul 2004)
-
-  18 Jul 2004; Daniel Black <dragonheart@gentoo.org> +dnotify-0.16.0.ebuild,
-  dnotify-0.5.0.ebuild:
-  0.5.0 - QA fix S= is default, SRC_URI doesn't exist - changed to
-  mirror://gentoo/. 0.16.0 - version bump
-
-  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> dnotify-0.5.0.ebuild:
-  sync IUSE (missing)
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *dnotify-0.5.0 (14 June 2002)
-
-  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> dnotify-0.5.0.ebuild :
-  Marked as stable for mips.
-
-  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
-  updated keywords (ppc)
-
-  14 Jul 2002; phoen][x <phoenix@gentoo.org> dnotify-0.5.0.ebuild :
-  Added KEYWORDS, SLOT.
 
   14 June 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
   

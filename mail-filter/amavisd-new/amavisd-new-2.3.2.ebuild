@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/amavisd-new/amavisd-new-2.3.2.ebuild,v 1.10 2005/09/17 15:33:44 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/amavisd-new/amavisd-new-2.3.2.ebuild,v 1.1 2005/06/30 08:48:03 ticho Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.ijs.si/software/amavisd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~alpha ~ppc64"
 IUSE="ldap mysql postgres milter"
 
 DEPEND=">=sys-apps/sed-4
@@ -44,7 +44,7 @@ RDEPEND="${DEPEND}
 	dev-perl/BerkeleyDB
 	virtual/mta
 	virtual/antivirus
-	ldap? ( >=dev-perl/perl-ldap-0.33 )
+	ldap? ( dev-perl/perl-ldap )
 	mysql? ( dev-perl/DBD-mysql )
 	postgres? ( dev-perl/DBD-Pg )
 	milter? ( >=mail-mta/sendmail-8.12 )"
@@ -155,7 +155,8 @@ src_install() {
 		else
 			einfo "Copying existing razor config files..."
 			insinto ${AMAVIS_ROOT}/.razor
-			doins ${AMAVIS_ROOT}/.razor/*.{conf,lst}
+			doins ${AMAVIS_ROOT}/.razor/razor-agent.conf \
+				${AMAVIS_ROOT}/.razor/server*
 		fi
 	fi
 
@@ -166,7 +167,7 @@ src_install() {
 
 pkg_postinst() {
 	enewgroup amavis
-	enewuser amavis -1 -1 ${AMAVIS_ROOT} amavis
+	enewuser amavis -1 /bin/false ${AMAVIS_ROOT} amavis
 
 	if ! $(has_version mail-filter/spamassassin) ; then
 		echo
@@ -174,7 +175,7 @@ pkg_postinst() {
 		einfo "will be performed without it. Since you do not have SpamAssassin installed,"
 		einfo "all spam checks have been disabled. To enable them, install SpamAssassin"
 		einfo "and comment out the line containing: "
-		einfo "@bypass_spam_checks_maps = (1); in /etc/amavisd.conf."
+		einfo "@bypass_virus_checks_maps = (1); in /etc/amavisd.conf."
 	fi
 	echo
 	ewarn "Adjusting permissions for /etc/amavisd.conf (0 for world, owner root:amavis)"

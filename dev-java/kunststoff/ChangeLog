@@ -1,15 +1,6 @@
 # ChangeLog for dev-java/kunststoff
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/kunststoff/ChangeLog,v 1.4 2005/04/15 16:41:17 luckyduck Exp $
-
-  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> kunststoff-2.0.2.ebuild:
-  added ~ppc to KEYWORDS
-
-  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> kunststoff-2.0.2.ebuild:
-  stable on amd64 and x86
-
-  27 Dec 2004; Thomas Matthijs <axxo@gentoo.org> files/build.xml:
-  fix #75734
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/kunststoff/ChangeLog,v 1.1 2004/12/20 17:30:25 karltk Exp $
 
 *kunststoff-2.0.2 (20 Dec 2004)
 

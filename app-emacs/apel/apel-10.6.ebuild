@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/apel/apel-10.6.ebuild,v 1.14 2005/01/01 13:38:46 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/apel/apel-10.6.ebuild,v 1.1 2003/07/12 15:11:56 usata Exp $
 
 inherit elisp
 
@@ -12,9 +12,12 @@ SRC_URI="ftp://ftp.jpl.org/pub/elisp/apel/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha sparc ppc hppa amd64 ppc64 ppc-macos ia64"
+KEYWORDS="~x86 ~alpha ~sparc ~ppc"
 
 DEPEND="virtual/emacs"
+RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${P}"
 
 src_unpack() {
 	unpack ${A}
@@ -36,9 +39,9 @@ src_install() {
 		LISPDIR=${D}/${SITELISP} \
 		VERSION_SPECIFIC_LISPDIR=${D}/${SITELISP} install || die
 
-	elisp-site-file-install ${FILESDIR}/50apel-gentoo.el
+ 	elisp-site-file-install ${FILESDIR}/50apel-gentoo.el
 
-	dodoc ChangeLog README*
+ 	dodoc ChangeLog README*
 }
 
 pkg_postinst() {

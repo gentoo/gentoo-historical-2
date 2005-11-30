@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/heimdal/heimdal-0.6.5.ebuild,v 1.13 2005/11/08 18:53:06 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/heimdal/heimdal-0.6.5.ebuild,v 1.1 2005/06/21 21:25:37 seemant Exp $
 
-inherit autotools libtool eutils virtualx toolchain-funcs
+inherit libtool eutils virtualx toolchain-funcs
 
-PATCHVER=0.3
+PATCHVER=0.2
 PATCH_P=${P%.*}-gentoo-patches-${PATCHVER}
 
 DESCRIPTION="Kerberos 5 implementation from KTH"
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.pdc.kth.se/pub/heimdal/src/${P}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~sparc ~ppc ~x86"
 IUSE="ssl berkdb ipv6 krb4 ldap X"
 
 RDEPEND="ssl? ( dev-libs/openssl )
@@ -45,10 +45,12 @@ src_unpack() {
 }
 
 src_compile() {
-	ebegin "Running autoreconf"
-		AT_M4DIR="cf" eautoreconf
-	eend $?
 	elibtoolize
+
+	aclocal -I cf || die "configure problem"
+	autoheader || die "configure problem"
+	automake -a || die "configure problem"
+	autoconf || die "configure problem"
 
 	local myconf=""
 
@@ -56,6 +58,8 @@ src_compile() {
 		&& myconf="${myconf} --with-krb4-config=/usr/athena/bin/krb4-config"
 
 	use ldap && myconf="${myconf} --with-openldap=/usr"
+
+	libtoolize --copy --force
 
 	econf \
 		$(use_with ipv6) \
@@ -138,14 +142,4 @@ src_install() {
 
 	# default database dir
 	keepdir /var/heimdal
-}
-
-pkg_postinst() {
-	echo
-	einfo "This release of heimdal now depends on an external version"
-	einfo "of the com_err library.  Please make sure to run revdep-rebuild"
-	einfo "to ensure the integrity of the linking on your system"
-	echo
-	epause 10
-	ebeep
 }

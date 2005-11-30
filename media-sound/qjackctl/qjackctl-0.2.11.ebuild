@@ -1,20 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackctl/qjackctl-0.2.11.ebuild,v 1.5 2005/07/28 14:48:35 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/qjackctl/qjackctl-0.2.11.ebuild,v 1.1 2004/09/13 05:00:35 eradicator Exp $
 
 IUSE=""
 
 DESCRIPTION="A Qt application to control the JACK Audio Connection Kit and ALSA sequencer connections."
 HOMEPAGE="http://qjackctl.sf.net/"
 SRC_URI="mirror://sourceforge/qjackctl/${P}.tar.gz"
+RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="x86 amd64 ~ppc"
 
 DEPEND="virtual/libc
-	media-libs/alsa-lib
-	=x11-libs/qt-3*
+	>=x11-libs/qt-3.1.1
 	media-sound/jack-audio-connection-kit"
 
 src_compile() {

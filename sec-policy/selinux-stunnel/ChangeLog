@@ -1,36 +1,6 @@
 # ChangeLog for sec-policy/selinux-stunnel
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-stunnel/ChangeLog,v 1.7 2005/06/26 17:49:38 kaiowas Exp $
-
-  26 Jun 2005; petre rodan <kaiowas@gentoo.org>
-  selinux-stunnel-20050626.ebuild:
-  mark stable
-
-*selinux-stunnel-20050626 (26 Jun 2005)
-
-  26 Jun 2005; petre rodan <kaiowas@gentoo.org>
-  +selinux-stunnel-20050626.ebuild:
-  added name_connect rules
-
-  20 Jan 2005; petre rodan <kaiowas@gentoo.org>
-  -selinux-stunnel-20041119.ebuild, selinux-stunnel-20041128.ebuild:
-  mark stable
-
-*selinux-stunnel-20041128 (12 Dec 2004)
-
-  12 Dec 2004; petre rodan <kaiowas@gentoo.org>
-  -selinux-stunnel-20041112.ebuild, +selinux-stunnel-20041128.ebuild:
-  merge with upstream policy
-
-  23 Nov 2004; petre rodan <kaiowas@gentoo.org>
-  selinux-stunnel-20041119.ebuild:
-  mark stable
-
-*selinux-stunnel-20041119 (22 Nov 2004)
-
-  22 Nov 2004; petre rodan <kaiowas@gentoo.org>
-  +selinux-stunnel-20041119.ebuild:
-  trivial cleanup
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-stunnel/ChangeLog,v 1.1 2004/11/14 20:53:40 kaiowas Exp $
 
 *selinux-stunnel-20041112 (14 Nov 2004)
 

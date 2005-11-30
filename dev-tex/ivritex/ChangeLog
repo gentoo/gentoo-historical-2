@@ -1,29 +1,6 @@
-# ChangeLog for dev-tex/ivritex
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ChangeLog,v 1.9 2004/12/28 21:31:39 absinthe Exp $
-
-  28 Dec 2004; Dylan Carlson <absinthe@gentoo.org> ivritex-1.1.2.ebuild:
-  Stable on amd64.
-
-  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -ivritex-1.1.1.ebuild,
-  ivritex-1.1.2.ebuild:
-  Stable on x86.
-
-*ivritex-1.1.2 (18 May 2004)
-
-  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> ivritex-1.1.1.ebuild,
-  ivritex-1.1.2.ebuild:
-  Version bumepd. Changed app-text/tetex to virtual/tetex, see bug #50865
-
-  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> ivritex-1.1.1.ebuild:
-  Added IUSE=, removed S=.
-
-  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> ivritex-1.1.1.ebuild:
-  marked ~amd64
-
-  06 Oct 2003; Mike Gardiner <obz@gentoo.org> ivritex-1.1.1.ebuild,
-  metadata.xml:
-  Marked stable on x86
+# ChangeLog for app-text/ivritex
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/ivritex/ChangeLog,v 1.1 2003/06/11 09:25:42 danarmak Exp $
 
 *ivritex-1.1.1 (11 Jun 2003)
 

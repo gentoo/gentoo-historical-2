@@ -1,19 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/darkstat/darkstat-2.6.ebuild,v 1.5 2005/01/29 05:12:50 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/darkstat/darkstat-2.6.ebuild,v 1.1 2004/01/03 02:47:26 zul Exp $
 
 DESCRIPTION="darkstat is a network traffic analyzer"
 HOMEPAGE="http://dmr.ath.cx/net/darkstat/"
 SRC_URI="http://dmr.ath.cx/net/darkstat/${P}.tar.gz"
 
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="nls"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="virtual/libpcap
+DEPEND=">=net-libs/libpcap-0.7.1
 		nls? ( sys-devel/gettext ) "
 RDEPEND=""
+
+S="${WORKDIR}/${P}"
 
 src_compile() {
 	use nls && myconf="`use_with nls`"

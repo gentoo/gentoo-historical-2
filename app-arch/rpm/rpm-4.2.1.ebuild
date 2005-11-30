@@ -1,45 +1,42 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/rpm/rpm-4.2.1.ebuild,v 1.28 2005/08/25 21:26:16 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/rpm/rpm-4.2.1.ebuild,v 1.1 2003/10/21 17:33:18 cretin Exp $
 
-inherit python flag-o-matic libtool eutils
+inherit flag-o-matic libtool eutils
 
 DESCRIPTION="Red Hat Package Management Utils"
-HOMEPAGE="http://www.rpm.org/"
 SRC_URI="mirror://gentoo/rpm-4.2.1.tar.gz"
-
-LICENSE="GPL-2 LGPL-2"
+HOMEPAGE="http://www.rpm.org/"
 SLOT="0"
-KEYWORDS="alpha -amd64 arm hppa ia64 mips ppc -ppc64 s390 sparc -x86"
+LICENSE="GPL-2 LGPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 IUSE="nls python doc"
-
 RDEPEND="=sys-libs/db-3.2*
 	>=sys-libs/zlib-1.1.3
-	>=app-arch/bzip2-1.0.1
+	>=sys-apps/bzip2-1.0.1
 	>=dev-libs/popt-1.7
 	>=app-crypt/gnupg-1.2
 	dev-libs/elfutils
-	>=dev-libs/beecrypt-3.1.0-r1
+	dev-libs/beecrypt
 	nls? ( sys-devel/gettext )
-	python? ( >=dev-lang/python-2.2 )
+	python? ( =dev-lang/python-2.2* )
 	doc? ( app-doc/doxygen )"
+S=${WORKDIR}/rpm-4.2.1
+
+strip-flags
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/rpm-4.2.1-python2.3.diff
 }
 
 src_compile() {
-	strip-flags
 	elibtoolize
 
 	unset LD_ASSUME_KERNEL
 	local myconf
 	myconf="--enable-posixmutexes --without-javaglue"
-
-	python_version
 	use python \
-		&& myconf="${myconf} --with-python=${PYVER}" \
+		&& myconf="${myconf} --with-python=2.2" \
 		|| myconf="${myconf} --without-python"
 
 	econf ${myconf} `use_enable nls` || die
@@ -60,13 +57,13 @@ src_install() {
 	rm -f ${D}/usr/lib/libpopt*
 	rm -f ${D}/usr/include/popt.h
 	use nls && rm -f  ${D}/usr/share/locale/*/LC_MESSAGES/popt.mo
-	rm -f ${D}/usr/share/man/man3/popt*
+	rm -f /usr/share/man/man3/popt*
 
 	keepdir /var/lib/rpm
 	keepdir /usr/src/pc/{SRPMS,SPECS,SOURCES,RPMS,BUILD}
 	keepdir /usr/src/pc/RPMS/{noarch,i{3,4,5,6}86,athlon}
 	keepdir /usr/src/pc
-	dodoc CHANGES CREDITS GROUPS README* RPM* TODO
+	dodoc CHANGES COPYING CREDITS GROUPS README* RPM* TODO
 
 	use nls || rm -rf ${D}/usr/share/man/{ko,ja,fr,pl,ru,sk}
 
@@ -84,12 +81,4 @@ pkg_postinst() {
 		einfo "No RPM database found... Creating database..."
 		${ROOT}/usr/bin/rpm --initdb --root=${ROOT}
 	fi
-
-	python_version
-	python_mod_optimize /usr/lib/python${PYVER}/site-packages/rpmdb
-}
-
-pkg_postrm() {
-	python_version
-	python_mod_cleanup
 }

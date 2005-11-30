@@ -1,15 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/contest/contest-0.61.ebuild,v 1.6 2005/07/08 14:19:56 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/contest/contest-0.61.ebuild,v 1.1 2004/02/06 23:10:06 pyrania Exp $
 
 DESCRIPTION="Test system responsiveness for compare different kernels"
 HOMEPAGE="http://members.optusnet.com.au/ckolivas/contest/"
 SRC_URI="http://members.optusnet.com.au/ckolivas/contest/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
-IUSE=""
+KEYWORDS="~x86"
 
 RDEPEND=">=app-benchmarks/dbench-2.0"
 
@@ -25,7 +23,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin contest || die
+	into /usr
+	dobin contest
 	doman contest.1
-	dodoc README
+	dodoc COPYING README
 }

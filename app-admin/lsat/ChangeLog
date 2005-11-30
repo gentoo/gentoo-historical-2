@@ -1,59 +1,6 @@
 # ChangeLog for app-admin/lsat
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/lsat/ChangeLog,v 1.15 2005/06/18 08:31:52 hansmi Exp $
-
-  18 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> lsat-0.9.2.ebuild:
-  Stable on ppc.
-
-  14 Jun 2005; MATSUU Takuto <matsuu@gentoo.org> lsat-0.9.2.ebuild:
-  Stable for x86 and amd64.
-
-*lsat-0.9.2 (11 Jun 2005)
-
-  11 Jun 2005; MATSUU Takuto <matsuu@gentoo.org>
-  +files/lsat-0.9.2-gentoo.patch, +lsat-0.9.2.ebuild:
-  Version bumped. Fixed runtime error, Bug 92231.
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> lsat-0.8.8.ebuild,
-  lsat-0.9.0.ebuild:
-  Masked lsat-0.9.0.ebuild stable for ppc
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> lsat-0.8.8.ebuild:
-  Masked lsat-0.8.8.ebuild stable for ppc
-
-  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> lsat-0.9.0.ebuild :
-  Stable on AMD64.
-
-  29 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> lsat-0.8.8.ebuild,
-  lsat-0.9.0.ebuild:
-  don't assign default to S
-
-  29 Feb 2004; Markus Nigbur <pyrania@gentoo.org> lsat-0.8.1.ebuild:
-  Removing old version.
-
-  29 Feb 2004; Markus Nigbur <pyrania@gentoo.org> lsat-0.8.8.ebuild,
-  lsat-0.9.0.ebuild:
-  Stable on x86.
-
-*lsat-0.9.0 (11 Jan 2004)
-
-  11 Jan 2004; MATSUU Takuto <matsuu@gentoo.org> lsat-0.9.0.ebuild:
-  Version bumped. Added ~amd64 to KEYWORDS.
-
-*lsat-0.8.8 (02 Nov 2003)
-
-  02 Nov 2003; MATSUU Takuto <matsuu@gentoo.org> lsat-0.8.8.ebuild:
-  version bump.
-
-*lsat-0.8.7 (22 Oct 2003)
-
-  22 Oct 2003; MATSUU Takuto <matsuu@gentoo.org> lsat-0.8.7.ebuild:
-  version bump.
-
-*lsat-0.8.5 (05 Oct 2003)
-
-  05 Oct 2003; MATSUU Takuto <matsuu@gentoo.org> lsat-0.8.5.ebuild:
-  version bump.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/lsat/ChangeLog,v 1.1 2003/09/18 12:35:52 aliz Exp $
 
 *lsat-0.8.1 (18 Sep 2003)
 

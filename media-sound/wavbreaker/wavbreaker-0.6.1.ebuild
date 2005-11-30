@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wavbreaker/wavbreaker-0.6.1.ebuild,v 1.3 2005/09/09 13:16:12 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavbreaker/wavbreaker-0.6.1.ebuild,v 1.1 2005/06/05 20:10:01 luckyduck Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://huli.org/wavbreaker/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 -sparc"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="dev-libs/libxml2
@@ -19,5 +19,5 @@ DEPEND="dev-libs/libxml2
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc ChangeLog README NEWS
+	dodoc ChangeLog INSTALL README NEWS
 }

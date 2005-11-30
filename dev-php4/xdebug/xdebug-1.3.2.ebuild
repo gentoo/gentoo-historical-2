@@ -1,29 +1,25 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/xdebug/xdebug-1.3.2.ebuild,v 1.4 2005/11/25 16:19:41 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/xdebug/xdebug-1.3.2.ebuild,v 1.1 2005/09/04 16:13:51 stuart Exp $
 
-PHP_EXT_NAME="xdebug"
-PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="yes"
+PHP_EXT_NAME="xdebug"
 
 inherit php-ext-source-r1
 
-KEYWORDS="~ppc ~ppc64 ~sparc ~x86"
+IUSE=""
 DESCRIPTION="A PHP Debugging and Profiling extension."
 HOMEPAGE="http://www.xdebug.org/"
-LICENSE="Xdebug"
 SLOT="0"
-IUSE=""
-
 MY_P="${P/_/}"
-SRC_URI="http://pecl.php.net/get/${MY_P}.tgz"
+SRC_URI="http://www.xdebug.org/files/${MY_P}.tgz"
 S="${WORKDIR}/${MY_P}"
-
-RDEPEND="${RDEPEND} !dev-php4/ZendOptimizer"
+LICENSE="Xdebug"
+KEYWORDS="~ppc ~x86"
 
 need_php_by_category
 
 src_install() {
 	php-ext-source-r1_src_install
-	dodoc-php NEWS README Changelog CREDITS LICENSE
+	dodoc NEWS README Changelog CREDITS LICENSE
 }

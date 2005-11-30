@@ -1,8 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ckermit-8.0.209.ebuild,v 1.6 2005/01/01 14:56:21 eradicator Exp $
-
-inherit eutils
+# Michael Conrad Tilstra <tadpol@gentoo.org> <tadpol@tadpol.org>
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ckermit-8.0.209.ebuild,v 1.1 2003/08/22 16:01:20 phosphan Exp $
 
 MY_P=cku209
 S=${WORKDIR}
@@ -12,8 +11,7 @@ HOMEPAGE="http://www.kermit-project.org/"
 
 SLOT="0"
 LICENSE="Kermit"
-IUSE=""
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	net-dialup/xc"
@@ -22,7 +20,7 @@ src_unpack() {
 
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${PF}-gentoo.diff
+	patch -p0 < ${FILESDIR}/${PF}-gentoo.diff
 	cp makefile makefile.orig
 	sed -e "s:-O:$CFLAGS:" makefile.orig > makefile
 }

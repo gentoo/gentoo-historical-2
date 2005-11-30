@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.10.1.ebuild,v 1.13 2005/10/10 21:37:25 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.10.1.ebuild,v 1.1 2005/06/30 12:09:01 hanno Exp $
 
-inherit gnome2 eutils autotools
+inherit gnome2 eutils
 
 DESCRIPTION="Applets for the Gnome2 Desktop and Panel"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="2"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ~ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~hppa"
 IUSE="doc apm acpi ipv6 gstreamer"
 
 RDEPEND=">=x11-libs/gtk+-2.5
@@ -26,10 +26,8 @@ RDEPEND=">=x11-libs/gtk+-2.5
 	>=x11-libs/libwnck-2.9.3
 	>=app-admin/system-tools-backends-1.1.3
 	dev-libs/libxslt
-	kernel_linux? (
-		apm? ( sys-apps/apmd )
-		acpi? ( sys-power/acpid )
-	)
+	apm? ( sys-apps/apmd )
+	acpi? ( sys-power/acpid )
 	gstreamer? ( >=media-libs/gstreamer-0.8.2 )"
 
 DEPEND="${RDEPEND}
@@ -46,13 +44,10 @@ MAKEOPTS="${MAKEOPTS} -j1"
 USE_DESTDIR="1"
 
 src_unpack() {
+
 	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/${P}-fbsd.patch
-	AT_M4DIR="m4" eautoreconf
-
 	gnome2_omf_fix
+
 }
 
 src_install() {
@@ -66,7 +61,8 @@ src_install() {
 				  mini-commander mixer modemlights multiload \
 				  null_applet stickynotes trashapplet; do
 			docinto ${APPLET}
-			dodoc ${APPLET}/{ChangeLog,AUTHORS,NEWS,TODO} ${APPLET}/README*
+			dodoc ${APPLET}/[ChangeLog,AUTHORS,NEWS,TODO] ${APPLET}/README*
 	done
 
 }
+

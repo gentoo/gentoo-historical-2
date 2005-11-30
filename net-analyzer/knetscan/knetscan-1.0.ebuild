@@ -1,26 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/knetscan/knetscan-1.0.ebuild,v 1.12 2005/09/04 22:51:19 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/knetscan/knetscan-1.0.ebuild,v 1.1 2002/10/24 18:11:32 hannes Exp $
 
-inherit kde eutils
+inherit kde-base
+need-kde 3
 
-DESCRIPTION="KDE frontend for nmap, ping, whois and traceroute"
-HOMEPAGE="http://sourceforge.net/projects/knetscan"
-SRC_URI="mirror://sourceforge/knetscan/${P}.tar.gz"
-
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE=""
+LICENSE="GPL-2"
+DESCRIPTION="KDE frontend for nmap, ping, whois and traceroute"
+SRC_URI="mirror://sourceforge/knetscan/${P}.tar.gz"
+HOMEPAGE="http://sourceforge.net/projects/knetscan"
+KEYWORDS="~x86"
 
-DEPEND=">=net-analyzer/nmap-2.54_beta36
+newdepend ">=net-analyzer/nmap-2.54_beta36
 	>=net-analyzer/traceroute-1.4_p12
 	>=net-misc/whois-4.5.28-r1
 	>=sys-apps/netkit-base-0.17-r5"
-
-need-kde 3
-
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/${P}-desktop.diff
-}

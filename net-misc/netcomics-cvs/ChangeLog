@@ -1,9 +1,6 @@
 # ChangeLog for net-misc/netcomics-cvs
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netcomics-cvs/ChangeLog,v 1.3 2005/11/28 13:14:25 mcummings Exp $
-
-  28 Nov 2005; <mcumming@gentoo.org> netcomics-cvs-0.14.1.ebuild:
-  Switched from perl-module to perl-app eclass
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netcomics-cvs/ChangeLog,v 1.1 2003/10/06 10:44:56 pyrania Exp $
 
 *netcomics-cvs-0.14.1 (06 Oct 2003)
 

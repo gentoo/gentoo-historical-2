@@ -1,43 +1,6 @@
 # ChangeLog for media-libs/libopendaap
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libopendaap/ChangeLog,v 1.11 2005/11/10 04:05:34 weeve Exp $
-
-  10 Nov 2005; Jason Wever <weeve@gentoo.org> libopendaap-0.4.0.ebuild:
-  Added ~sparc keyword as it went missing in the version bump :(
-
-*libopendaap-0.4.0 (29 Sep 2005)
-
-  29 Sep 2005; Daniel Drake <dsd@gentoo.org> +libopendaap-0.4.0.ebuild:
-  Version bump thanks to Andrew D and Joshua Jackson in bug #103301
-
-  09 Jul 2005; Jason Wever <weeve@gentoo.org> libopendaap-0.3.0.ebuild:
-  Added ~sparc keyword.
-
-  23 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  +files/libopendaap-0.3.0-types.h, libopendaap-0.3.0.ebuild:
-  Correcting types in typedef to be int instead of long.
-
-*libopendaap-0.3.0 (22 Jan 2005)
-
-  22 Jan 2005; Daniel Drake <dsd@gentoo.org> +libopendaap-0.3.0.ebuild:
-  Version bump thanks to Matt Wolfzorn <mwolfzorn@gmail.com> in bug 79045
-
-  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  libopendaap-0.2.3.ebuild:
-  Stable amd64.
-
-  05 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  libopendaap-0.2.3.ebuild, +files/libopendaap-0.2.3-types.h:
-  Added to ~amd64.  Fixed typedefs to work crossplatform.
-
-  11 Sep 2004; Jon Hood <squinky86@gentoo.org> libopendaap-0.2.3.ebuild:
-  Stable on x86.
-
-  30 Aug 2004; David Holm <dholm@gentoo.org> libopendaap-0.2.3.ebuild:
-  Added to ~ppc.
-
-  11 Aug 2004; Jon Hood <squinky86@gentoo.org> libopendaap-0.2.3.ebuild:
-  Use crazney license.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libopendaap/ChangeLog,v 1.1 2004/08/11 17:46:57 squinky86 Exp $
 
 *libopendaap-0.2.3 (11 Aug 2004)
 

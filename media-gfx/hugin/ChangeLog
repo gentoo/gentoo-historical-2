@@ -1,38 +1,6 @@
 # ChangeLog for media-gfx/hugin
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/ChangeLog,v 1.8 2005/11/26 19:29:12 halcy0n Exp $
-
-  26 Nov 2005; Mark Loeser <halcy0n@gentoo.org>
-  files/hugin-0.5_rc2-gcc4.patch:
-  Fix gcc4 patch
-
-  19 Nov 2005; Mark Loeser <halcy0n@gentoo.org>
-  +files/hugin-0.5_rc2-gcc4.patch, hugin-0.5_rc2.ebuild:
-  Add patch to fix compilation with gcc4.
-
-*hugin-0.5_rc1-r2 (16 Oct 2005)
-
-  16 Oct 2005; Mark Loeser <halcy0n@gentoo.org> -hugin-0.5_rc1.ebuild,
-  -hugin-0.5_rc1-r1.ebuild, +hugin-0.5_rc1-r2.ebuild:
-  Fixing the default autopano executable.  This ebuild also gets rid of the gtk2
-  useflag
-
-*hugin-0.5_rc2 (01 Oct 2005)
-*hugin-0.5_rc1-r1 (01 Oct 2005)
-
-  01 Oct 2005; Mark Loeser <halcy0n@gentoo.org> +hugin-0.5_rc1-r1.ebuild,
-  +hugin-0.5_rc2.ebuild:
-  Remove gtk useflag, since gtk2 is the only available toolkit.  Bump to _rc2.
-  bug #107776
-
-  16 Sep 2005; Mark Loeser <halcy0n@gentoo.org> hugin-0.5_rc1.ebuild:
-  Stable on x86
-
-  21 Aug 2005; Luis Medinas <metalgod@gentoo.org> hugin-0.5_rc1.ebuild:
-  Added ~amd64 keywords. Closes bug #103254.
-
-  11 Aug 2005; David Holm <dholm@gentoo.org> hugin-0.5_rc1.ebuild:
-  Added to ~ppc.
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/hugin/ChangeLog,v 1.1 2005/08/10 22:56:50 halcy0n Exp $
 
 *hugin-0.5_rc1 (10 Aug 2005)
 

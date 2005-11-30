@@ -1,35 +1,43 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/giflib/giflib-4.1.3.ebuild,v 1.9 2005/07/19 23:44:45 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/giflib/giflib-4.1.3.ebuild,v 1.1 2004/09/30 09:44:52 usata Exp $
 
-inherit eutils
+inherit gnuconfig
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
-HOMEPAGE="http://sourceforge.net/projects/libungif/"
+HOMEPAGE="http://sourceforge.net/project/libungif/"
 SRC_URI="mirror://sourceforge/libungif/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc-macos ppc64 s390 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~ppc-macos"
 IUSE="X gif"
 
 DEPEND="X? ( virtual/x11 )"
 
 src_unpack() {
 	unpack ${A}
-	epunt_cxx
+	cd ${S}
+	gnuconfig_update
+	# The library it tries to create is like 12 bytes, which is obviously bogus,
+	# updating libtool/autoconf fixes this!
+	if [ "${ARCH}" = "ppc64" ] ; then
+		libtoolize -c -f
+		aclocal
+		autoconf
+	fi
 }
 
 src_compile() {
-	econf $(use_with X x) || die
+	econf `use_with X x` || die
 	emake || die "emake failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR=${D} install || die "make install failed"
 
 	# if gif is not in USE, then ungif is preferred
-	use gif || rm -r "${D}"/usr/bin "${D}"/usr/include/gif_lib.h
+	use gif || rm -rf "${D}/usr/bin" "${D}/usr/include/gif_lib.h"
 
 	dodoc AUTHORS BUGS ChangeLog NEWS ONEWS PATENT_PROBLEMS \
 		README TODO doc/*.txt || die "dodoc failed"

@@ -1,19 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/X500-DN/X500-DN-0.28.ebuild,v 1.12 2005/09/17 00:46:59 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/X500-DN/X500-DN-0.28.ebuild,v 1.1 2004/06/06 13:24:01 mcummings Exp $
 
 inherit perl-module
+S=${WORKDIR}/${P}
 DESCRIPTION="handle X.500 DNs (Distinguished Names), parse and format them"
-SRC_URI="mirror://cpan/authors/id/R/RJ/RJOOP/${P}.tar.gz"
+SRC_URI="http://www.cpan.org/authors/id/R/RJ/RJOOP/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/~rjoop/${P}/"
 
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ppc s390 sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
 
 SRC_TEST="do"
 
 export OPTIMIZE="${CFLAGS}"
-
-DEPEND="dev-perl/Parse-RecDescent"

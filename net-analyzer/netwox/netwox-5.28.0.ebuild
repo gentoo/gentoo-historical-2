@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwox/netwox-5.28.0.ebuild,v 1.5 2005/03/26 03:11:15 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwox/netwox-5.28.0.ebuild,v 1.1 2005/01/13 05:51:50 dragonheart Exp $
 
 inherit toolchain-funcs
 
-DESCRIPTION="Toolbox of 212 utilities for testing Ethernet/IP networks"
+DESCRIPTION="Toolbox of over 400 utilities for testing Ethernet/IP networks"
 HOMEPAGE="http://www.laurentconstantin.com/en/netw/netwox/"
 SRC_URI="http://www.laurentconstantin.com/common/netw/${PN}/download/v${PV/.*}/${P}-src.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="~net-libs/netwib-${PV}"
@@ -36,5 +36,5 @@ src_compile() {
 src_install() {
 	dodoc README.TXT doc/*.txt
 	cd src
-	make install CC=$(tc-getCC) INSTMAN1=${D}/usr/share/man/man1  DESTDIR=${D} || die
+	make install CC=$(tc-getCC) DESTDIR=${D} || die
 }

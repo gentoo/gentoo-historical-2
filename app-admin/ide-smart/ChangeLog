@@ -1,26 +1,9 @@
 # ChangeLog for app-admin/ide-smart
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/ide-smart/ChangeLog,v 1.12 2005/04/19 10:15:15 beu Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
 
-  19 Apr 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml:
-  Remove retired developer from metadata.xml.
-
-  31 Dec 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
-  I like this package so I choose to maintain it.
-
-  05 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> ide-smart-1.4.ebuild:
-  gcc eclass -> toolchain-funcs eclass
-
-  11 Aug 2004; Tavis Ormandy <taviso@gentoo.org> ide-smart-1.4.ebuild:
-  Makefile doesnt like parallel make, adding -j1.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *ide-smart-1.4 (17 Mar 2002)
 
-  29 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> ide-smart-1.4 :
-
-  Added ppc o KEYWORDS.
   17 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog :
 
   initial release ;-)

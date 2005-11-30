@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict/stardict-2.4.2.ebuild,v 1.13 2005/09/19 13:46:50 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict/stardict-2.4.2.ebuild,v 1.1 2004/01/07 16:53:15 liquidx Exp $
 
-inherit gnome2 eutils
+inherit gnome2
 
 # NOTE: Even though the *.dict.dz are the same as dictd/freedict's files,
 #       their indexes seem to be in a different format. So we'll keep them
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/stardict/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 # when adding keywords, remember to add to stardict.eclass
-KEYWORDS="x86 ppc sparc"
+KEYWORDS="~x86 ~ppc"
 
 
 RDEPEND=">=gnome-base/libbonobo-2.2.0
@@ -25,7 +25,7 @@ RDEPEND=">=gnome-base/libbonobo-2.2.0
 	>=sys-libs/zlib-1.1.4
 	>=gnome-base/gconf-1.2
 	>=dev-libs/popt-1.7
-	>=gnome-base/orbit-2.6
+	>=gnome-base/ORBit2-2.6
 	>=x11-libs/gtk+-2
 	app-text/scrollkeeper"
 
@@ -35,24 +35,21 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	gnome2_omf_fix
-
-	# Fix gtk-2.4 deprecation issues
-	epatch ${FILESDIR}/stardict-gtk24.patch
 }
 
 src_install() {
 	gnome2_src_install
 	# dictionary index generation files
-	exeinto /usr/share/stardict/tools
-	doexe ${S}/src/tools/{dictd2dic,directory2dict,olddic2newdic,oxford2dic,pydict2dict,wquick2dict,stardict_dict_update}
+	insinto /usr/share/stardict/tools
+	doins ${S}/src/tools/{dictd2dic,directory2dict,olddic2newdic,oxford2dic,pydict2dict,wquick2dict,stardict_dict_update}
 }
 
 pkg_postinst() {
 	einfo "You will now need to install stardict dictionary files. If"
 	einfo "you have not, execute the below to get a list of dictionaries:"
-	einfo
+	einfo " "
 	einfo "  emerge -s stardict-"
-	einfo
+	einfo " "
 	ewarn "If you upgraded from 2.4.1 or lower and use your own dictionary"
 	ewarn "files, you'll need to run: /usr/share/stardict/tools/stardict_dict_update"
 }

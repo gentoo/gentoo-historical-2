@@ -1,12 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebase/kdebase-3.3.2-r1.ebuild,v 1.13 2005/02/22 02:36:41 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebase/kdebase-3.3.2-r1.ebuild,v 1.1 2004/12/13 15:32:51 caleb Exp $
 
 inherit kde-dist eutils
 
 DESCRIPTION="KDE base packages: the desktop, panel, window manager, konqueror..."
 
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~alpha"
 IUSE="ldap pam cups ssl opengl samba java arts"
 
 DEPEND="arts? ( ~kde-base/arts-${PV//3.3/1.3} )
@@ -17,6 +17,7 @@ DEPEND="arts? ( ~kde-base/arts-${PV//3.3/1.3} )
 	opengl? ( virtual/opengl )
 	samba? ( >=net-fs/samba-3.0.1 )
 	java? ( || ( virtual/jdk virtual/jre ) )"
+
 RDEPEND="${DEPEND}
 	sys-apps/eject"
 
@@ -119,6 +120,11 @@ ${KDEDIR}/bin/startkde" > kde-${PV}
 	newins ${FILESDIR}/kde.desktop kde-${PV}.desktop
 	sed -i -e "s:_PREFIX_:${KDEDIR}:;s:_VERSION_:${PV}:" \
 		${D}/usr/share/xsessions/kde-${PV}.desktop
+
+	dodir ${D}/${KDEDIR}/share/services/searchprovider
+	insinto ${D}/${KDEDIR}/share/services/searchprovider
+	newins ${FILESDIR}/pgo.desktop
+
 }
 
 pkg_postinst() {

@@ -1,4 +1,2 @@
-MD5 6e74dc477ea12630b37ce9bfa549a137 metadata.xml 427
-MD5 b4629098bf7cb17ef6ddf74b84bae96e ChangeLog 1057
-MD5 4ef5addccc8560d2cab7c13c6aa89736 fwipsec-0.4.2-r1.ebuild 783
-MD5 d7fa6046a7b05c8c38efcd35b3b1b37a files/digest-fwipsec-0.4.2-r1 65
+MD5 14a139ba9dec26ffc08dfe51b6b96a44 fwipsec-0.4.2.ebuild 745
+MD5 d7fa6046a7b05c8c38efcd35b3b1b37a files/digest-fwipsec-0.4.2 65

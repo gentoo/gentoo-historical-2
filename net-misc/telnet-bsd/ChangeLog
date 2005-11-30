@@ -1,83 +1,8 @@
 # ChangeLog for net-misc/telnet-bsd
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/telnet-bsd/ChangeLog,v 1.25 2005/10/18 04:07:00 agriffis Exp $
-
-  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.2-r1.ebuild:
-  Mark 1.2-r1 stable on alpha
-
-  17 Oct 2005; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.2-r1.ebuild:
-  Mark 1.2-r1 stable on ia64
-
-  16 Oct 2005; Guy Martin <gmsoft@gentoo.org> telnet-bsd-1.2-r1.ebuild:
-  Disabled pie on hppa (#109119).
-
-*telnet-bsd-1.2-r1 (13 Aug 2005)
-
-  13 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
-  +files/telnet-bsd-1.2-fbsd.patch, +telnet-bsd-1.2-r1.ebuild:
-  Added patch to compile on Gentoo/FreeBSD.
-
-  29 Jun 2005; Simon Stelling <blubb@gentoo.org> telnet-bsd-1.2.ebuild:
-  stable on amd64 wrt bug 96156
-
-  28 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> telnet-bsd-1.2.ebuild:
-  Stable on alpha + ia64, bug 96156.
-
-  27 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> telnet-bsd-1.2.ebuild:
-  Stable on hppa.
-
-  26 Jun 2005; Jason Wever <weeve@gentoo.org> telnet-bsd-1.2.ebuild:
-  Stable on SPARC wrt bug #96156.
-
-  26 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> telnet-bsd-1.2.ebuild:
-  Stable on ppc.
-
-  26 Jun 2005; Markus Rothe <corsair@gentoo.org> telnet-bsd-1.2.ebuild:
-  Stable on ppc64 (bug #96156)
-
-*telnet-bsd-1.2 (26 Jun 2005)
-
-  26 Jun 2005; Mike Frysinger <vapier@gentoo.org> +telnet-bsd-1.2.ebuild:
-  Version bump #96156.
-
-  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.0-r1.ebuild:
-  stable on ia64
-
-*telnet-bsd-1.0-r1 (30 Mar 2005)
-
-  30 Mar 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/telnet-bsd-1.0-overflow.patch, +files/telnetd.xinetd,
-  +telnet-bsd-1.0-r1.ebuild:
-  Version bump for security #87019.
-
-  07 Mar 2005; Markus Rothe <corsair@gentoo.org> telnet-bsd-1.0.ebuild:
-  Stable on ppc64
-
-  26 Jan 2005; Markus Rothe <corsair@gentoo.org> telnet-bsd-1.0.ebuild:
-  Added ~ppc64 to KEYWORDS; bug #79567
-
-  09 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> telnet-bsd-1.0.ebuild:
-  fix sandbox violation on nls (bug #73910)
-
-  07 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> telnet-bsd-1.0.ebuild:
-  support nls for bug #73630; DESTDIR install; tidy
-
-  18 Apr 2004; Travis Tilley <lv@gentoo.org> telnet-bsd-1.0.ebuild:
-  stable on amd64
-
-  24 Nov 2003; Aron Griffis <agriffis@gentoo.org> telnet-bsd-1.0.ebuild:
-  Mark stable on alpha
-
-  12 Sep 2003; Jason Wever <weeve@gentoo.org> telnet-bsd-1.0.ebuild:
-  Marked stable for sparc.
-
-  28 Jun 2003; Jason Wever <weeve@gentoo.org> telnet-bsd-1.0.ebuild:
-  Added ~sparc to keywords.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-misc/telnet-bsd/ChangeLog,v 1.1 2002/12/12 00:20:58 bcowan Exp $
 
 *telnet-bsd-1.0 (11 Dec 2002)
-
-  03 Aug 2003; Guy Martin <gmsoft@gentoo.org> telnet-bsd-1.0.ebuild :
-  Added hppa to KEYWORDS.
 
   11 Dec 2002; Brad Cowan <bcowan@gentoo.org> telnet-bsd-1.0.ebuild,
   ChangeLog, files/digest-telnet-bsd-1.0, telnet-bsd_gentoo.diff.gz:

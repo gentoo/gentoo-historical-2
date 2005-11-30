@@ -1,18 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/dsh/dsh-0.24.0.ebuild,v 1.5 2005/01/01 15:58:10 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/dsh/dsh-0.24.0.ebuild,v 1.1 2003/08/14 03:49:02 vapier Exp $
 
 DESCRIPTION="DSH - Distributed Shell"
-HOMEPAGE="http://www.netfort.gr.jp/~dancer/software/downloads/"
 SRC_URI="http://www.netfort.gr.jp/~dancer/software/downloads/${P}.tar.gz"
+HOMEPAGE="http://www.netfort.gr.jp/~dancer/software/downloads/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86 ~ppc"
 IUSE="nls"
 
 DEPEND="dev-libs/libdshconfig"
-RDEPEND="virtual/ssh"
+RDEPEND="net-misc/openssh"
 
 src_compile() {
 	econf --sysconfdir=/etc/dsh `use_enable nls` || die

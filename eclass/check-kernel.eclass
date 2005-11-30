@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/check-kernel.eclass,v 1.8 2005/07/11 15:08:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/check-kernel.eclass,v 1.1 2003/08/02 20:48:24 seemant Exp $
 
 # Author: Martin Schlemmer <azarah@gentoo.org>
 # Eclass'd by: Seemant Kulleen <seemant@gentoo.org>
@@ -8,8 +8,13 @@
 # The check-kernel eclass is designed to detect the kernel sources and
 # report info on the versions
 
+ECLASS=check-kernel
+INHERITED="${INHERITED} ${ECLASS}"
 
-DEPEND="sys-apps/gawk"
+EXPORT_FUNCTIONS check_version_h get_KV_info \
+	is_2_4_kernel is_2_5_kernel is_2_6_kernel
+
+newdepend "sys-apps/gawk"
 
 check_version_h() {
 	if [ ! -f "${ROOT}/usr/src/linux/include/linux/version.h" ]
@@ -18,15 +23,13 @@ check_version_h() {
 		eerror "to your current kernel sources, and that you did run:"
 		eerror
 		eerror "  # make dep"
-		eerror
-		eerror "(${ROOT}/usr/src/linux/include/linux/version.h does not exist)"
 		die "/usr/src/linux symlink not setup!"
 	fi
 }
 
 get_KV_info() {
 	check_version_h
-
+	
 	# Get the kernel version of sources in /usr/src/linux ...
 	export KV_full="$(awk '/UTS_RELEASE/ { gsub("\"", "", $3); print $3 }' \
 		"${ROOT}/usr/src/linux/include/linux/version.h")"
@@ -37,7 +40,7 @@ get_KV_info() {
 
 is_2_4_kernel() {
 	get_KV_info
-
+	
 	if [ "${KV_major}" -eq 2 -a "${KV_minor}" -eq 4 ]
 	then
 		return 0
@@ -48,7 +51,7 @@ is_2_4_kernel() {
 
 is_2_5_kernel() {
 	get_KV_info
-
+	
 	if [ "${KV_major}" -eq 2 -a "${KV_minor}" -eq 5 ]
 	then
 		return 0
@@ -66,8 +69,4 @@ is_2_6_kernel() {
 	else
 		return 1
 	fi
-}
-
-kernel_supports_modules() {
-	grep '^CONFIG_MODULES=y$' ${ROOT}/usr/src/linux/include/linux/autoconf.h >& /dev/null
 }

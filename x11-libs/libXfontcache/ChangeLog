@@ -1,31 +1,6 @@
 # ChangeLog for x11-libs/libXfontcache
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXfontcache/ChangeLog,v 1.7 2005/11/26 09:38:13 blubb Exp $
-
-  26 Nov 2005; Simon Stelling <blubb@gentoo.org>
-  libXfontcache-0.99.1.ebuild:
-  added ~amd64 keyword
-
-  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  -libXfontcache-0.99.0.ebuild:
-  Drop old versions.
-
-*libXfontcache-0.99.1 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  +libXfontcache-0.99.1.ebuild:
-  Bump for 7.0 RC1.
-
-  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
-  Add metadata.
-
-  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org>
-  libXfontcache-0.99.0.ebuild:
-  Marked ~ppc
-
-  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
-  libXfontcache-0.99.0.ebuild:
-  Add ~sparc keyword (modular X testing).
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXfontcache/ChangeLog,v 1.1 2005/08/08 04:29:04 spyderous Exp $
 
 *libXfontcache-0.99.0 (08 Aug 2005)
 

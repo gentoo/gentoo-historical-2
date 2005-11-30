@@ -1,18 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_mp3/mod_mp3-0.35-r2.ebuild,v 1.12 2005/07/10 00:54:34 swegener Exp $
-
-IUSE="mysql"
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_mp3/mod_mp3-0.35-r2.ebuild,v 1.1 2002/08/27 16:15:55 achim Exp $
 
 DESCRIPTION="Module for turning Apache into an MP3 or Ogg streaming server"
 HOMEPAGE="http://media.tangent.org/"
 KEYWORDS="x86"
 
+S=${WORKDIR}/${P}
 SRC_URI="http://software.tangent.org/download/${P}.tar.gz"
 
-DEPEND="virtual/libc =net-www/apache-1* dev-lang/perl
+DEPEND="virtual/glibc >=net-www/apache-1.3.24 sys-devel/perl
 	mysql? ( >=dev-db/mysql-3.23.26 )"
-RDEPEND=""
 
 LICENSE="as-is"
 SLOT="0"
@@ -39,7 +37,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "Execute \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
+	einfo "Execute \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 	einfo "to have your apache.conf auto-updated for use with this module."
 	einfo "You should then edit your /etc/conf.d/apache file to suit."
 	einfo

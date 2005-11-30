@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/alephone/alephone-20040417.ebuild,v 1.3 2005/09/26 18:10:42 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/alephone/alephone-20040417.ebuild,v 1.1 2005/01/03 02:47:55 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="An enhanced version of the classic Mac game, Marathon"
 HOMEPAGE="http://source.bungie.org/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/marathon/aleph-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="x86"
 IUSE="opengl lua"
 
 DEPEND="opengl? ( virtual/opengl )

@@ -1,46 +1,8 @@
 # ChangeLog for dev-python/pyzor
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzor/ChangeLog,v 1.14 2005/11/25 21:50:58 tgall Exp $
-
-  25 Nov 2005; Tom Gall <tgall@gentoo.org> pyzor-0.4.0-r1.ebuild:
-  stable on ppc64
-
-  12 Nov 2005; Brent Baude <ranger@gentoo.org> pyzor-0.4.0-r1.ebuild:
-  Marking pyzor-0.4.0-r1 ~ppc64 for bug# 112220
-
-  12 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org> pyzor-0.4.0-r1.ebuild:
-  marked ~alpha as per bug #112220
-
-  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  23 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  pyzor-0.4.0-r1.ebuild:
-  Stable sparc and amd64.
-
-  22 Jul 2004; David Holm <dholm@gentoo.org> pyzor-0.4.0-r1.ebuild:
-  Added to ~ppc.
-
-  30 Jun 2004; Ferris McCormick <fmccor@gentoo.org> pyzor-0.4.0-r1.ebuild:
-  Add ~sparc keyword at user request, closing 53481. It passes its internal
-  tests.
-
-  04 May 2004; Bryan Ãstergaard <kloeri@gentoo.org> pyzor-0.4.0-r1.ebuild,
-  pyzor-0.4.0.ebuild:
-  Add missing IUSE.
-
-  02 Jan 2004; Bryan Ãstergaard,,, <kloeri@gentoo.org> pyzor-0.4.0-r1.ebuild:
-  Mark 0.4.0-r1 x86, fixing bug #36962
-
-*pyzor-0.4.0-r1 (28 Oct 2003)
-
-  28 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> pyzor-0.4.0-r1.ebuild:
-  fix permissions bug #31848
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzor/ChangeLog,v 1.1 2002/12/12 23:01:30 blauwers Exp $
 
 *pyzor-0.4.0 (12 Dec 2002)
-
-  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> pyzor-0.4.0.ebuild:
-  small touchups
 
   12 Dec 2002; B.Lauwers <blauwers@gentoo.org> pyzor-0.4.0.ebuild, Changelog :
   Initial import. Ebuild submitted by Marcelo Fontenele S Santos <msantos@pobox.com>.

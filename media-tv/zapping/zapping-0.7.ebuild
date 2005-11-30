@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/zapping/zapping-0.7.ebuild,v 1.5 2005/08/30 01:07:17 vanquirius Exp $
-
-inherit gnome2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/zapping/zapping-0.7.ebuild,v 1.1 2004/08/28 12:09:49 mholzer Exp $
 
 DESCRIPTION="TV- and VBI- viewer for the Gnome environment"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -13,32 +11,31 @@ LICENSE="GPL-2"
 KEYWORDS="~x86"
 IUSE="nls pam X"
 
-DEPEND=">=gnome-base/libgnomeui-2.0
-	>=gnome-base/libglade-2.0
-	>=gnome-base/gconf-2.4
-	>=x11-libs/gtk+-2.0.0
-	dev-libs/libxml2
+DEPEND=">=gnome-base/gnome-libs-1.4.1.2-r1
+	<gnome-base/libglade-0.99.0
+	=x11-libs/gtk+-1.2*
+	>=dev-libs/libunicode-0.4
+	>=dev-libs/libxml-1.4.0
 	>=sys-devel/gettext-0.10.36
+	>=media-libs/gdk-pixbuf-0.8
 	>=media-libs/zvbi-0.2
-	>=media-libs/rte-0.5.2
-	>=media-sound/esound-0.2.34
-	app-text/scrollkeeper
-	>=sys-apps/sed-4"
-
-src_unpack() {
-	unpack ${A}; cd ${S}
-	# fix scrollkeeper violations, bug 98968
-	gnome2_omf_fix {.,*,*/*}/Makefile.in
-}
+	>=media-libs/rte-0.5.2"
 
 src_compile() {
-	econf `use_enable nls` \
-		`use_enable pam` \
-		`use_with X x` || die "econf failed"
+	local myconf
 
-	sed -i -e "s:\(INCLUDES = \$(COMMON_INCLUDES)\):\1 -I/usr/include/libglade-1.0 -I/usr/include/gdk-pixbuf-1.0:" \
-		src/Makefile || die
-	emake || die "emake failed"
+	use nls || myconf="${myconf} --disable-nls"
+	use pam && myconf="${myconf} --enable-pam"
+	use X \
+		&& myconf="${myconf} --with-x" \
+		|| myconf="${myconf} --without-x"
+
+	econf ${myconf} || die "econf failed"
+
+	mv src/Makefile src/Makefile.orig
+	sed -e "s:\(INCLUDES = \$(COMMON_INCLUDES)\):\1 -I/usr/include/libglade-1.0 -I/usr/include/gdk-pixbuf-1.0:" \
+		src/Makefile.orig > src/Makefile
+	make || die "make failed"
 }
 
 src_install() {

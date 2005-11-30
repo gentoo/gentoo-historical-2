@@ -1,47 +1,59 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/recode/recode-3.6-r1.ebuild,v 1.23 2005/11/01 01:56:03 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/recode/recode-3.6-r1.ebuild,v 1.1 2003/06/28 23:32:13 pylon Exp $
 
-inherit flag-o-matic eutils toolchain-funcs libtool
-
-DESCRIPTION="Convert files between various character sets"
-HOMEPAGE="http://www.gnu.org/software/recode/"
-SRC_URI="ftp://ftp.gnu.org/pub/gnu/${PN}/${P}.tar.gz
-	mirror://gentoo/${P}-debian.diff.bz2"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 s390 sparc x86"
 IUSE="nls"
 
-DEPEND="nls? ( sys-devel/gettext )"
+inherit flag-o-matic base
+
+replace-flags "-march=pentium4" "-march=pentium3"
+
+S=${WORKDIR}/${P}
+DESCRIPTION="Convert files between various character sets."
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/${PN}/${P}.tar.gz
+	mirror://gentoo/${P}-debian.diff.bz2"
+HOMEPAGE="http://www.gnu.org/software/recode/"
+
+DEPEND="virtual/glibc
+	nls? ( sys-devel/gettext )"
+
+
+KEYWORDS="~x86 ~sparc ppc"
+SLOT="0"
+LICENSE="GPL-2"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${WORKDIR}/${P}-debian.diff"
-
-	if use ppc-macos; then
-		epatch ${FILESDIR}/${P}-ppc-macos.diff
-		cp ${S}/lib/error.c ${S}/lib/xstrdup.c ${S}/src/ || die "file copy failed"
-		elibtoolize
-		LDFLAGS="${LDFLAGS} -lgettextlib"
-	fi
+	cd ${S}
+	epatch ${WORKDIR}/${P}-debian.diff
 }
 
 src_compile() {
+
+	local myconf=""
+	use nls || myconf="--disable-nls"
+
 	# gcc-3.2 crashes if we don't remove any -O?
-	[[ ${ARCH} == "x86" && $(gcc-version) == "3.2" ]] && filter-flags -O?
+	if [ ! -z "`gcc --version | grep 3.2`" ] && [ ${ARCH} == "x86" ] ; then
+		CFLAGS=${CFLAGS/-O?/}
+	fi
+	./configure --host=${CHOST} \
+		--prefix=/usr \
+		--mandir=/usr/share/man \
+		--infodir=/usr/share/info \
+		$myconf || die
 
-	replace-cpu-flags pentium4 pentium3
-
-	econf $(use_enable nls) || die "econf failed"
-	emake || die "emake failed"
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS BACKLOG ChangeLog NEWS README THANKS TODO
 
-	use ppc-macos && rm ${D}/usr/lib/charset.alias
+	make prefix=${D}/usr \
+		mandir=${D}/usr/share/man \
+		infodir=${D}/usr/share/info \
+		install || die
+
+	dodoc AUTHORS BACKLOG COPYING* ChangeLog INSTALL
+	dodoc NEWS README THANKS TODO
 }
+

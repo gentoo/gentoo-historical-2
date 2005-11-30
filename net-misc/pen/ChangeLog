@@ -1,17 +1,6 @@
 # ChangeLog for net-misc/pen
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pen/ChangeLog,v 1.5 2005/06/27 08:14:06 dholm Exp $
-
-  27 Jun 2005; David Holm <dholm@gentoo.org> pen-0.15.0.ebuild:
-  Added to ~ppc.
-
-*pen-0.15.0 (26 Jun 2005)
-
-  26 Jun 2005; Daniel Black <dragonheart@gentoo.org> +pen-0.15.0.ebuild:
-  version bump
-
-  06 Nov 2004; <pyrania@gentoo.org> pen-0.12.1.ebuild:
-  Marked stable on x86.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pen/ChangeLog,v 1.1 2004/03/12 00:16:06 tantive Exp $
 
 *pen-0.12.1 (12 Mar 2004)
 

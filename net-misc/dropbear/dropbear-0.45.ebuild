@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.45.ebuild,v 1.8 2005/09/04 06:18:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.45.ebuild,v 1.1 2005/03/08 21:10:02 solar Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~sh ~x86"
 IUSE="minimal multicall pam static zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )
@@ -27,15 +27,9 @@ set_options() {
 	use static && makeopts="${makeopts} STATIC=1"
 }
 
-pkg_setup() {
-	enewgroup sshd 22
-	enewuser sshd 22 -1 /var/empty sshd
-}
-
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/dropbear-0.45-urandom.patch
+	epatch ${FILESDIR}/dropbear-0.45-urandom.patch || die
 }
 
 src_compile() {
@@ -50,9 +44,8 @@ src_compile() {
 src_install() {
 	set_options
 	make install DESTDIR="${D}" ${makeopts} PROGRAMS="${progs}" || die "make install failed"
-	doman *.8
-	newinitd "${FILESDIR}"/dropbear.init.d dropbear
-	newconfd "${FILESDIR}"/dropbear.conf.d dropbear
+	newinitd ${FILESDIR}/dropbear.init.d dropbear
+	newconfd ${FILESDIR}/dropbear.conf.d dropbear
 	dodoc CHANGES README TODO SMALL MULTI
 
 	# The multi install target does not install the links
@@ -67,6 +60,4 @@ src_install() {
 		dosym ../bin/dropbearmulti /usr/sbin/dropbear
 		cd "${S}"
 	fi
-
-	mv "${D}"/usr/bin/{,db}scp
 }

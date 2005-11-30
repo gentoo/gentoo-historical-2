@@ -1,66 +1,6 @@
 # ChangeLog for app-misc/rl
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/rl/ChangeLog,v 1.21 2005/10/02 15:59:35 swegener Exp $
-
-  02 Oct 2005; Sven Wegener <swegener@gentoo.org> rl-0.2.4.ebuild:
-  Update HOMEPAGE and SRC_URI.
-
-  16 Jul 2005; Sven Wegener <swegener@gentoo.org> -rl-0.2.2.ebuild,
-  -rl-0.2.3.ebuild:
-  Removed old ebuilds.
-
-  08 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> rl-0.2.4.ebuild:
-  Stable on sparc
-
-  07 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org> rl-0.2.4.ebuild:
-  ppc stable
-
-  07 Jul 2005; Sven Wegener <swegener@gentoo.org> rl-0.2.4.ebuild:
-  Marked stable on x86.
-
-*rl-0.2.4 (28 May 2005)
-
-  28 May 2005; Sven Wegener <swegener@gentoo.org> +rl-0.2.4.ebuild:
-  Version bump.
-
-  27 May 2005; Tobias Scherbaum <dertobi123@gentoo.org> rl-0.2.3.ebuild:
-  Stable on ppc.
-
-  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> rl-0.2.3.ebuild:
-  Stable on sparc
-
-  16 May 2005; Sven Wegener <swegener@gentoo.org> rl-0.2.3.ebuild:
-  Marked stable on x86.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> rl-0.2.2.ebuild:
-  Stable on ppc.
-
-*rl-0.2.3 (02 Apr 2005)
-
-  02 Apr 2005; Sven Wegener <swegener@gentoo.org> +rl-0.2.3.ebuild:
-  Version bump.
-
-  17 Dec 2004; Joseph Jezak <josejx@gentoo.org> rl-0.2.2.ebuild:
-  Marked ~ppc for bug #74719.
-
-  13 Dec 2004; Jason Wever <weeve@gentoo.org> rl-0.2.2.ebuild:
-  Stable on sparc.
-
-  13 Oct 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
-  Added to the shell-tools herd.
-
-  15 Jul 2004; Sven Wegener <swegener@gentoo.org> +metadata.xml,
-  rl-0.2.2.ebuild:
-  Added metadata.xml and marked stable on x86.
-
-  10 Jul 2004; Tom Martin <slarti@gentoo.org> rl-0.2.2.ebuild:
-  Marked ~amd64.
-
-  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> rl-0.2.2.ebuild:
-  Added ~sparc, ~mips
-
-  15 Apr 2004; Michael McCabe <randy@gentoo.org> rl-0.2.2.ebuild:
-  adding s390 keywords
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/rl/ChangeLog,v 1.1 2003/10/20 09:10:07 brandy Exp $
 
 *rl-0.2.2 (20 Oct 2003)
 

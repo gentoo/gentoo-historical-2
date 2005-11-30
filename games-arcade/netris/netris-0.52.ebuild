@@ -1,27 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/netris/netris-0.52.ebuild,v 1.10 2005/10/19 02:35:41 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/netris/netris-0.52.ebuild,v 1.1 2003/09/24 03:11:07 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="Classic networked version of T*tris"
 HOMEPAGE="http://www.netris.org/"
 SRC_URI="ftp://ftp.netris.org/pub/netris/${P}.tar.gz
-	mirror://debian/pool/main/n/netris/netris_${PV}-1.diff.gz"
+	http://ftp.debian.org/debian/pool/main/n/netris/netris_${PV}-1.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~mips ppc ~sparc x86"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND="sys-libs/ncurses"
 
 src_unpack() {
 	unpack ${A}
 	epatch netris_${PV}-1.diff
-
-	# Fixes segv on amd64
-	epatch ${FILESDIR}/${PN}-time.patch
 }
 
 src_compile() {
@@ -30,7 +26,7 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin netris sr || die
+	dogamesbin netris sr
 	dodoc FAQ README robot_desc
 	prepgamesdirs
 }

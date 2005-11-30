@@ -1,33 +1,7 @@
 # ChangeLog for x11-plugins/gkrellm-seti
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-seti/ChangeLog,v 1.10 2005/09/17 10:08:31 agriffis Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-seti/ChangeLog,v 1.1 2002/08/30 01:49:27 seemant Exp $
 
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
-  gkrellm-seti-0.7.0b-r1.ebuild:
-  Mark 0.7.0b-r1 stable on alpha
-
-  15 Aug 2004; Daniel Black <dragonheart@gentoo.org>
-  +files/gentoo-gkrellm-seti-path.patch, gkrellm-seti-0.7.0b-r1.ebuild:
-  Patch to change the default data path to /var/lib/setiathome where gentoo puts
-  it
-
-  28 Mar 2004; Markus Nigbur <pyrania@gentoo.org>
-  gkrellm-seti-0.7.0b-r1.ebuild:
-  Stable on sparc.
-
-  20 Jan 2004; Aron Griffis <agriffis@gentoo.org>
-  gkrellm-seti-0.7.0b-r1.ebuild:
-  add ~alpha
-
-*gkrellm-seti-0.7.0b-r1 (17 Jul 2003)
-
-  17 Jul 2003; Martin Holzer <mholzer@gentoo.org>
-  gkrellm-seti-0.7.0b-r1.ebuild:
-  Added support for gtk+2. Ebuild submitted by Abhishek Amit <andrd@gentoo.org>
-  in #15832.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *gkrellm-seti-0.7.0b (14 Jul 2002)
 
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :

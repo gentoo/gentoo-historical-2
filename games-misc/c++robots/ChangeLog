@@ -1,12 +1,6 @@
-# ChangeLog for games-misc/c++robots
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/c++robots/ChangeLog,v 1.5 2004/07/01 11:19:38 eradicator Exp $
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> c++robots-0.ebuild:
-  virtual/glibc -> virtual/libc
-
-  28 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> c++robots-0.ebuild:
-  use epatch; inherit eutils; error check/messages
+# ChangeLog for app-games/c++robots
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/c++robots/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
 *c++robots-0 (01 Jan 2002)
 

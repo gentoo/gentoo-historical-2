@@ -1,40 +1,6 @@
 # ChangeLog for dev-java/jmp
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jmp/ChangeLog,v 1.10 2005/11/11 23:20:21 axxo Exp $
-
-*jmp-0.48 (11 Nov 2005)
-
-  11 Nov 2005; Thomas Matthijs <axxo@gentoo.org> +jmp-0.48.ebuild:
-  version bump
-
-*jmp-0.47 (14 Jun 2005)
-
-  14 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> +jmp-0.47.ebuild:
-  New upstream version, fixes #95389.
-
-  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> jmp-0.46.ebuild:
-  stable on amd64, ppc and x86
-
-*jmp-0.46 (28 Mar 2005)
-
-  28 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
-  +jmp-0.46.ebuild:
-  new upstream version, fixes #86971
-
-  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> jmp-0.43.ebuild:
-  Keywords ~amd64.
-
-  05 Sep 2004; David Holm <dholm@gentoo.org> jmp-0.43.ebuild:
-  Added to ~ppc.
-
-*jmp-0.43 (31 Aug 2004)
-
-  31 Aug 2004; Chris Aniszczyk <zx@gentoo.org> -jmp-0.41.ebuild,
-  +jmp-0.43.ebuild:
-  Marking x86 and cleanup
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> jmp-0.41.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jmp/ChangeLog,v 1.1 2004/04/05 04:53:50 zx Exp $
 
 *jmp-0.41 (04 Apr 2004)
 

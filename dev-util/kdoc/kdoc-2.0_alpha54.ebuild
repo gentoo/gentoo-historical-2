@@ -1,27 +1,34 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdoc/kdoc-2.0_alpha54.ebuild,v 1.14 2004/06/25 02:38:23 agriffis Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Dan Armak <danarmak@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdoc/kdoc-2.0_alpha54.ebuild,v 1.1 2002/04/04 22:15:33 danarmak Exp $
 
-IUSE=""
-MY_P=${P/_alph/}
-S=${WORKDIR}/${MY_P}
 DESCRIPTION="KDE/QT documentation processing/generation tools"
 HOMEPAGE="http://www.ph.unimelb.edu.au/~ssk/kde/kdoc/"
-SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc amd64"
+SRC_PATH="kde/stable/3.0/src/kdoc-2.0a54.tar.bz2"
+SRC_URI="ftp://ftp.kde.org/pub/$SRC_PATH
+	ftp://download.us.kde.org/pub/kde/$SRC_PATH
+	ftp://download.uk.kde.org/pub/kde/$SRC_PATH
+	ftp://download.au.kde.org/pub/kde/$SRC_PATH
+	ftp://download.at.kde.org/pub/kde/$SRC_PATH
+	ftp://ftp.sourceforge.net/pub/mirrors/$SRC_PATH"
 
-DEPEND="dev-lang/perl"
+S=${WORKDIR}/kdoc-2.0a54
+
+DEPEND="sys-devel/perl sys-devel/gcc"
 
 src_compile() {
+
 	export KDEDIR=""
 	export QTDIR=""
-	econf || die "econf failed"
+	./configure --prefix=/usr || die
 	emake || die
+
 }
 
 src_install() {
-	einstall
+
+	make DESTDIR=${D} install || die
+	
 }

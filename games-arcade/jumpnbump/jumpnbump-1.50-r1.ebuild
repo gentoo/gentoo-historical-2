@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/jumpnbump/jumpnbump-1.50-r1.ebuild,v 1.4 2005/08/17 16:48:15 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/jumpnbump/jumpnbump-1.50-r1.ebuild,v 1.1 2004/09/22 07:04:27 mr_bones_ Exp $
 
 inherit eutils games
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.jumpbump.mine.nu/port/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="x86 ppc ~amd64"
 IUSE="X tcltk svga fbcon kde"
 
 DEPEND="virtual/libc
@@ -26,13 +26,9 @@ RDEPEND="${DEPEND}
 
 src_unpack() {
 	unpack ${P}.tar.gz
+	cd "${WORKDIR}"
 	epatch "${DISTDIR}/${P}-autotool.patch.bz2"
-	cd "${S}"
-	chmod +x configure
-	sed -i \
-		-e "/PREFIX/ s:PREFIX.*:\"${GAMES_DATADIR}/${PN}/jumpbump.dat\":" \
-		globals.h \
-		|| die "sed failed"
+	chmod +x "${S}/configure"
 }
 
 src_install() {
@@ -42,7 +38,5 @@ src_install() {
 	use kde || rm -f "${D}${GAMES_BINDIR}/jumpnbump-kdialog"
 	use svga || rm -f "${D}${GAMES_BINDIR}/jumpnbump.svgalib"
 	use tcltk || rm -f "${D}${GAMES_BINDIR}/jnbmenu.tcl"
-	newicon sdl/jumpnbump64.xpm ${PN}.xpm
-	make_desktop_entry jumpnbump "Jump n Bump" ${PN}.xpm
 	prepgamesdirs
 }

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.8-r1.ebuild,v 1.23 2005/10/29 02:47:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsdl/libsdl-1.2.8-r1.ebuild,v 1.1 2005/01/14 00:59:42 vapier Exp $
 
-inherit flag-o-matic toolchain-funcs eutils
+inherit flag-o-matic toolchain-funcs eutils gnuconfig
 
 DESCRIPTION="Simple Direct Media Layer"
 HOMEPAGE="http://www.libsdl.org/"
@@ -10,18 +10,16 @@ SRC_URI="http://www.libsdl.org/release/SDL-${PV}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 sparc x86"
-# WARNING:
-# if you have the noaudio, novideo, nojoystick, or noflagstrip use flags
-# in USE and something breaks, you pick up the pieces.  Be prepared for
-# bug reports to be marked INVALID.
-IUSE="oss alsa esd arts nas X dga xv xinerama fbcon directfb ggi svga aalib opengl libcaca pic noaudio novideo nojoystick noflagstrip"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="oss alsa esd arts nas X dga xv xinerama fbcon directfb ggi svga aalib opengl libcaca noaudio novideo nojoystick"
+# if you disable audio/video/joystick and something breaks, you pick up the pieces
 
-RDEPEND="!noaudio? ( >=media-libs/audiofile-0.1.9 )
+RDEPEND=">=media-libs/audiofile-0.1.9
 	alsa? ( media-libs/alsa-lib )
 	esd? ( >=media-sound/esound-0.2.19 )
 	arts? ( kde-base/arts )
-	nas? ( media-libs/nas virtual/x11 )
+	nas? ( media-libs/nas
+		virtual/x11 )
 	X? ( virtual/x11 )
 	directfb? ( >=dev-libs/DirectFB-0.9.19 )
 	ggi? ( >=media-libs/libggi-2.0_beta3 )
@@ -32,7 +30,7 @@ RDEPEND="!noaudio? ( >=media-libs/audiofile-0.1.9 )
 DEPEND="${RDEPEND}
 	x86? ( dev-lang/nasm )"
 
-S=${WORKDIR}/SDL-${PV}
+S="${WORKDIR}/SDL-${PV}"
 
 pkg_setup() {
 	if use noaudio || use novideo || use nojoystick ; then
@@ -42,12 +40,6 @@ pkg_setup() {
 		ewarn "you're doing to selectively turn off parts of libsdl."
 		epause 30
 	fi
-	if use noflagstrip ; then
-		ewarn "Since you've chosen to use possibly unsafe CFLAGS,"
-		ewarn "don't bother filing libsdl-related bugs until trying to remerge"
-		ewarn "libsdl without the noflagstrip use flag in USE."
-		epause 10
-	fi
 }
 
 src_unpack() {
@@ -55,37 +47,33 @@ src_unpack() {
 	cd "${S}"
 
 	epatch "${FILESDIR}"/${PV}-nobuggy-X.patch #30089
-	epatch "${FILESDIR}"/${P}-libcaca.patch #40224
+	epatch "${FILESDIR}"/${PV}-libcaca.patch #40224
 	epatch "${FILESDIR}"/${PV}-gcc2.patch #75392
-	epatch "${FILESDIR}"/${P}-sdl-config.patch
-	epatch "${FILESDIR}"/${P}-no-cxx.patch
-	epatch "${FILESDIR}"/libsdl-1.2.9-dlvsym-check.patch #105160
-
-	# This patch breaks compiling >-O0 on gcc4 ; bug #87809
-	[ "`gcc-major-version`" -lt "4" ] && epatch "${FILESDIR}"/${P}-gcc2.patch.bz2 #86481
 	epatch "${FILESDIR}"/${PV}-keyrepeat.patch #76448
 	epatch "${FILESDIR}"/${PV}-linux26.patch #74608
-	#epatch "${FILESDIR}"/${PV}-direct-8bit-color.patch #76946
+	epatch "${FILESDIR}"/${PV}-direct-8bit-color.patch #76946
 	epatch "${FILESDIR}"/${PV}-amd64-endian.patch #77300
-	#fix for building with gcc4 (within bounds - here I need to
-	#build with -O0 to get it done)
-	epatch "${FILESDIR}"/${PV}-gcc4.patch
-	epatch "${FILESDIR}"/${PN}-1.2.9-DirectFB-updates.patch
+	[[ $(gcc-major-version) -eq 2 ]] && \
+		epatch "${FILESDIR}"/${PV}-gcc2-asm.patch #75392
+
+	if use nas && ! use X ; then #32447
+		sed -i \
+			-e 's:-laudio:-laudio -L/usr/X11R6/lib:' \
+			configure.in || die "nas sed hack failed"
+	fi
 
 	./autogen.sh || die "autogen failed"
 	epunt_cxx
+	gnuconfig_update
 }
 
 src_compile() {
 	local myconf=
-	# silly bundled asm triggers TEXTREL ... maybe someday
-	# i'll fix this properly, but for now hide with USE=pic
-	if [[ $(tc-arch) != "x86" ]] || use pic ; then
-		myconf="${myconf} --disable-nasm"
-	else
-		myconf="${myconf} $(use_enable x86 nasm)"
+
+	if use amd64 ; then
+		replace-flags -O? -O1 # bug #74608
+		strip-flags -funroll-all-loops -fpeel-loops # more bug #74608
 	fi
-	use noflagstrip || strip-flags
 	use noaudio && myconf="${myconf} --disable-audio"
 	use novideo \
 		&& myconf="${myconf} --disable-video" \
@@ -102,15 +90,6 @@ src_compile() {
 			&& directfbconf="--enable-video-directfb" \
 			|| ewarn "Disabling DirectFB since libdirectfb.so is broken"
 	fi
-
-	if use ppc-macos ; then
-		append-flags -fno-common -undefined dynamic_lookup -framework OpenGL
-		# fix for gcc-apple >3.3
-		if [ -e libgcc_s.1.dylib ] ; then
-			append-ldflags -lgcc_s
-		fi
-	fi
-
 	myconf="${myconf} ${directfbconf}"
 
 	econf \
@@ -127,6 +106,7 @@ src_compile() {
 		$(use_enable esd) \
 		$(use_enable arts) \
 		$(use_enable nas) \
+		$(use_enable x86 nasm) \
 		$(use_enable X video-x11) \
 		$(use_enable dga) \
 		$(use_enable xv video-x11-xv) \

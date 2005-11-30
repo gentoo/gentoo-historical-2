@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/yacas/yacas-1.0.57.ebuild,v 1.2 2005/10/02 02:47:45 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/yacas/yacas-1.0.57.ebuild,v 1.1 2005/01/14 17:05:53 phosphan Exp $
 
 inherit eutils
 
@@ -16,13 +16,13 @@ KEYWORDS="~x86 ~ppc ~amd64"
 
 DEPEND="virtual/libc
 	>=sys-apps/sed-4
-	glut? ( media-libs/glut )
-	www-client/lynx"
+	glut? ( media-libs/glut )"
+
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PV}.patch
+	cd ${S}
+	epatch ${FILESDIR}/${PV}.patch
 	if ! use glut; then
 		sed -e 's:opengl::g' -i plugins/Makefile.in || die "sed (opengl) failed"
 		sed -e 's/\(^PLUGINDOCSCHAPTERS.*\)opengl.chapt\(.*\)/\1 \2/' -i \
@@ -39,10 +39,7 @@ src_install() {
 	make DESTDIR="${D}" install-strip || die
 
 	dodoc AUTHORS INSTALL NEWS README TODO
-	mv "${D}"/usr/share/${PN}/documentation "${D}"/usr/share/doc/${PF}/html
-	rmdir "${D}"/usr/include/
-	rm "${D}"/usr/share/${PN}/include/win32*
-	sed -e "s|\":FindFile(\"documentation/ref.html\"):\"|localhost/usr/share/doc/${PF}/html/ref.html|" \
-		-e "s|\":FindFile(\"documentation/books.html\"):\"|localhost/usr/share/doc/${PF}/html/books.html|" \
-		-i "${D}"/usr/share/${PN}/yacasinit.ys || die
+	mv ${D}/usr/share/${PN}/documentation ${D}/usr/share/doc/${PF}/html
+	rmdir ${D}/usr/include/
+	rm ${D}/usr/share/${PN}/include/win32*
 }

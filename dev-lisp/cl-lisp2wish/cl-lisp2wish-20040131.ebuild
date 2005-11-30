@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-lisp2wish/cl-lisp2wish-20040131.ebuild,v 1.7 2005/05/24 18:48:33 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-lisp2wish/cl-lisp2wish-20040131.ebuild,v 1.1 2004/05/19 14:57:35 mkennedy Exp $
 
-inherit common-lisp eutils
+inherit common-lisp
 
 MY_PV=${PV:0:4}-${PV:4:2}-${PV:6:2}
 
@@ -11,8 +11,7 @@ HOMEPAGE="http://www.cliki.net/lisp2wish"
 SRC_URI="http://www.riise-data.net/lisp2wish-${MY_PV}.tgz"
 LICENSE="lisp2wish"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
-IUSE=""
+KEYWORDS="~x86"
 DEPEND="virtual/commonlisp
 	dev-lisp/common-lisp-controller"
 RDEPEND="${DEPEND}
@@ -21,11 +20,6 @@ RDEPEND="${DEPEND}
 CLPACKAGE=lisp2wish
 
 S=${WORKDIR}/lisp2wish
-
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/${PV}-USER-package-gentoo.patch || die
-}
 
 src_install() {
 	common-lisp-install *.lisp *.asd

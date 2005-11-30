@@ -1,49 +1,8 @@
 # ChangeLog for app-text/mpage
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/mpage/ChangeLog,v 1.17 2005/11/12 14:06:31 vanquirius Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-text/mpage/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
 
-*mpage-2.5.4 (12 Nov 2005)
-
-  12 Nov 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
-  -mpage-2.5.1.ebuild, +mpage-2.5.4.ebuild:
-  2.5.4 version bump for bug 112080. Thanks to Chris Gentle <gentlec at hiwaay
-  dot net>.
-
-  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  mpage-2.5.3.ebuild:
-  mark ~ppc
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mpage-2.5.1.ebuild,
-  mpage-2.5.3.ebuild:
-  virtual/glibc -> virtual/libc
-
-  10 May 2004; Ferris McCormick <fmccor@gentoo.org> mpage-2.5.3.ebuild:
-  Marked stable on sparc.
-
-  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> mpage-2.5.3.ebuild :
-  Stable on x86 and AMD64.
-
-  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> mpage-2.5.3.ebuild:
-  Adding amd64 keyword. Closing #45660.
-
-  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> mpage-2.5.1.ebuild,
-  mpage-2.5.3.ebuild:
-  don't assign default to S; tidy; header fix
-
-*mpage-2.5.3 (24 Nov 2003)
-
-  24 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> mpage-2.5.3.ebuild:
-  version bump (bug 34239)
-
-  12 Jun 2003; <msterret@gentoo.org> mpage-2.5.1.ebuild:
-  add Header
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *mpage-2.5.1 (1 Feb 2002)
-
-  2 Aug 2002; phoen][x <phoenix@gentoo.org> mpage-2.5.1.ebuild :
-  Added LICENSE, KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>app-dicts</herd>
+<herd>dicts</herd>
 <maintainer>
   <email>mg_gentoo@yahoo.com</email>
   <name>Mark Gilbert</name>
@@ -11,5 +11,4 @@
   <email>seemant@gentoo.org</email>
   <name>Seemant Kulleen</name>
   <description>Proxy for Mark Gilbert</description>
-</maintainer>
 </pkgmetadata>

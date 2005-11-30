@@ -1,16 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox/fox-1.0.49.ebuild,v 1.13 2005/02/19 08:03:26 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fox/fox-1.0.49.ebuild,v 1.1 2004/02/07 01:36:55 pyrania Exp $
 
 IUSE="cups opengl"
+S=${WORKDIR}/${P}
 DESCRIPTION="C++ based Toolkit for developing Graphical User Interfaces easily and effectively"
 SRC_URI="http://www.fox-toolkit.org/ftp/${P}.tar.gz"
 HOMEPAGE="http://www.fox-toolkit.org"
+
 SLOT="0"
-KEYWORDS="x86 sparc alpha ia64 hppa amd64 ppc ppc64"
+KEYWORDS="~x86 ~sparc "
 LICENSE="GPL-2"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/x11
 	opengl? ( virtual/opengl )"
 

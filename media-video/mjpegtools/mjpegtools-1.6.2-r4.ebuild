@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mjpegtools/mjpegtools-1.6.2-r4.ebuild,v 1.10 2005/11/13 21:06:08 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mjpegtools/mjpegtools-1.6.2-r4.ebuild,v 1.1 2005/04/17 20:56:29 luckyduck Exp $
 
-inherit flag-o-matic toolchain-funcs eutils
+inherit flag-o-matic gcc eutils
 
 M4V="1"
 
@@ -14,15 +14,16 @@ SRC_URI="mirror://sourceforge/mjpeg/${P}.tar.gz
 
 LICENSE="as-is"
 SLOT="1"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
-IUSE="gtk dv quicktime sdl X yv12 3dnow mmx sse v4l dga"
+KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~ppc64"
+IUSE="gtk avi dv quicktime sdl X yv12 3dnow mmx sse v4l dga"
 
 RDEPEND="media-libs/jpeg
 	x86? ( media-libs/libmovtar
-		mmx? ( >=media-libs/jpeg-mmx-0.1.6 )
+		mmx? ( >=media-libs/jpeg-mmx-1.1.2-r1 )
 	)
 	gtk? ( =x11-libs/gtk+-1.2*
 		=dev-libs/glib-1.2* )
+	avi? ( media-video/avifile )
 	dv? ( >=media-libs/libdv-0.99 )
 	quicktime? ( virtual/quicktime )
 	sdl? ( >=media-libs/libsdl-1.2.7-r3 )

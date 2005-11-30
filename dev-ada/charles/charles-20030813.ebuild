@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/charles/charles-20030813.ebuild,v 1.4 2005/01/01 17:24:12 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/charles/charles-20030813.ebuild,v 1.1 2003/10/25 14:24:00 dholm Exp $
 
 IUSE=""
 
@@ -43,8 +43,8 @@ src_install () {
 
 	#set up environment
 	dodir /etc/env.d
-	echo "ADA_INCLUDE_PATH=/usr/lib/ada/adainclude/${PN}" \
-		> ${D}/etc/env.d/55charles
+	echo "ADA_INCLUDE_PATH=\${ADA_INCLUDE_PATH}:/usr/lib/ada/adainclude/${PN}" \
+		>> ${D}/etc/env.d/55charles
 }
 
 pkg_postinst(){

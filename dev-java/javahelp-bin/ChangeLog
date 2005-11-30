@@ -1,40 +1,6 @@
-# ChangeLog for dev-java/javahelp-bin
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javahelp-bin/ChangeLog,v 1.8 2005/05/04 22:22:39 luckyduck Exp $
-
-  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  -javahelp-bin-2.0.01.ebuild, -javahelp-bin-2.0.01-r1.ebuild,
-  -javahelp-bin-2.0.02.ebuild, javahelp-bin-2.0.02-r1.ebuild:
-  cleanup, marked 2.0.02-r1 stable on amd64, ppc and x86
-
-*javahelp-bin-2.0.02-r1 (16 Mar 2005)
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  +javahelp-bin-2.0.01-r1.ebuild, +javahelp-bin-2.0.02-r1.ebuild:
-  revision bump
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  javahelp-bin-2.0.01.ebuild, javahelp-bin-2.0.02.ebuild:
-  now all jars are accessible via java-config, jarfrom, etc. fixes #85544
-
-*javahelp-bin-2.0.02 (07 Dec 2004)
-
-  07 Dec 2004; Thomas Matthijs <axxo@gentoo.org> javahelp-bin-2.0.01.ebuild,
-  +javahelp-bin-2.0.02.ebuild:
-  version bump
-
-  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
-  javahelp-bin-2.0.01.ebuild:
-  Keywords ~amd64.
-
-*javahelp-bin-2.0.01 (16 Oct 2004)
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> javahelp-bin-2.0.01.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
+# ChangeLog for dev-java/javahelp
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/javahelp-bin/ChangeLog,v 1.1 2004/07/30 20:28:57 axxo Exp $
 
   30 Jul 2004; Thomas Matthijs <axxo@gentoo.org> :
   move dev-java/javahelp dev-java/javahelp-bin

@@ -1,23 +1,28 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/nettrom/nettrom-2.3.3.ebuild,v 1.9 2004/08/21 04:58:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/nettrom/nettrom-2.3.3.ebuild,v 1.1 2003/12/09 08:12:52 seemant Exp $
 
 DESCRIPTION="NetWinder ARM bootloader and utilities"
 HOMEPAGE="http://www.netwinder.org/"
 SRC_URI="http://gentoo.superlucidity.net/arm/netwinder/${P}.tar.gz"
-
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-* arm"
+
+# no one but arm wants this package - binaries included
+KEYWORDS="arm -x86 -amd64 -alpha -ppc -mips -hppa -sparc"
+
 IUSE=""
+DEPEND="virtual/glibc"
+#RDEPEND=""
 
-PROVIDE="virtual/bootloader"
+S=${WORKDIR}/${P}
 
-S=${WORKDIR}
+src_unpack() {
+	/bin/true
+}
 
 src_install() {
-	cp -r ${S}/* ${D}/ || die "install failed"
-	cd ${D}/usr
-	mkdir share
-	mv man share
+	cd ${D}
+	unpack ${P}.tar.gz
 }
+

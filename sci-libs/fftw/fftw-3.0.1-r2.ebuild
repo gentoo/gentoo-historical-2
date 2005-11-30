@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.0.1-r2.ebuild,v 1.10 2005/11/12 03:12:15 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-3.0.1-r2.ebuild,v 1.1 2005/08/10 14:00:53 phosphan Exp $
 
 inherit flag-o-matic eutils toolchain-funcs
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.fftw.org/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="3.0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ~ppc-macos ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc x86"
 IUSE="3dnow altivec mpi sse sse2"
 
 DEPEND="virtual/libc"
@@ -19,13 +19,10 @@ src_unpack() {
 	unpack "${P}.tar.gz"
 	cd "${WORKDIR}/${P}"
 	epatch ${FILESDIR}/3-tmpfile.patch
-	epatch ${FILESDIR}/${P}-altivec.patch
-	autoreconf
-	libtoolize --copy --force
 	cd "${WORKDIR}"
 	use ppc-macos && epatch ${FILESDIR}/${PN}-ppc-macos.patch
 	mv ${P} ${P}-single
-	cp -pPR ${P}-single ${P}-double
+	cp -a ${P}-single ${P}-double
 }
 
 src_compile() {

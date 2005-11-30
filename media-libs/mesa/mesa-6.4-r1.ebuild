@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/mesa-6.4-r1.ebuild,v 1.4 2005/11/30 04:17:24 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/mesa/mesa-6.4-r1.ebuild,v 1.1 2005/11/14 20:15:03 spyderous Exp $
 
 inherit eutils toolchain-funcs multilib
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://mesa3d.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mesa3d/${MY_SRC_P}.tar.bz2"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~mips ~ppc ~sh ~sparc ~x86"
+KEYWORDS="~amd64 ~mips ~ppc ~sh ~sparc ~x86"
 IUSE="motif"
 
 RDEPEND="dev-libs/expat
@@ -32,7 +32,7 @@ RDEPEND="dev-libs/expat
 	x11-libs/libICE
 	app-admin/eselect-opengl
 	motif? ( virtual/motif )
-	!<=x11-base/xorg-x11-6.9"
+	!<x11-base/xorg-x11-7.0.0_rc0"
 DEPEND="${RDEPEND}
 	x11-misc/makedepend
 	x11-proto/xf86vidmodeproto
@@ -46,9 +46,7 @@ S="${WORKDIR}/${MY_P}"
 # Think about: ggi, svga, fbcon, no-X configs
 
 pkg_setup() {
-	if [[ ${KERNEL} == "FreeBSD" ]]; then
-		CONFIG="freebsd"
-	elif use x86; then
+	if use x86; then
 		CONFIG="linux-dri-x86"
 	# amd64 people need to look at this file to deal with lib64 issues, unless
 	# they're fine with hardcoded lib64.

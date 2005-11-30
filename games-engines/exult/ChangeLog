@@ -1,45 +1,8 @@
-# ChangeLog for games-engines/exult
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/exult/ChangeLog,v 1.13 2005/10/07 03:49:18 mr_bones_ Exp $
-
-  06 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> exult-1.2.ebuild:
-  expand filename before passing to unpack (bug #107532); tidy
-
-  06 May 2005; Sven Wegener <swegener@gentoo.org> exult-1.2.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  17 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> exult-1.2.ebuild:
-  need app-arch/unzip to unpack
-
-  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> exult-1.2.ebuild:
-  Keywords ~amd64.
-
-  16 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> -exult-1.00.ebuild,
-  -exult-1.1.10_rc2.ebuild:
-  Clean older ebuilds
-
-*exult-1.2 (29 Jun 2004)
-
-  29 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> +exult-1.2.ebuild:
-  version bump
-
-  20 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  exult-1.1.10_rc2.ebuild:
-  add depend on >=media-libs/sdl-mixer-1.2.4 (bug #48469); tidy
-
-  09 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  exult-1.1.10_rc2.ebuild:
-  fix bug #44185 - fails on parallel make; spelling fixes
-
-*exult-1.1.10_rc2 (05 Mar 2004)
-
-  05 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
-  Version bump to try to fix #43608 and to fix compiling with gcc-3.3.
+# ChangeLog for app-games/exult
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/exult/ChangeLog,v 1.1 2003/09/09 17:34:21 vapier Exp $
 
 *exult-1.00 (12 Dec 2002)
-
-  26 Dec 2003; Jason Wever <weeve@gentoo.org> exult-1.00.ebuild:
-  Changed sparc keyword to ~sparc as timidity++ dependency had NO sparc keywords.
 
   22 Dec 2002; Christian Birchinger <joker@gentoo.org> :
   Removed sparc64 keyword.

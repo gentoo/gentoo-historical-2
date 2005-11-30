@@ -1,57 +1,9 @@
 # ChangeLog for net-analyzer/metasploit
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/metasploit/ChangeLog,v 1.12 2005/10/24 10:18:06 strerror Exp $
-
-*metasploit-2.5 (24 Oct 2005)
-
-  24 Oct 2005; Benjamin Smee <strerror@gentoo.org> +metasploit-2.5.ebuild:
-  version bump. bug #110303
-
-  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
-  metasploit-2.4-r1.ebuild:
-  FreeBSD fixes: cp -a -> cp -pPR; root:root -> root:0.
-
-  12 Aug 2005; Olivier Crête <tester@gentoo.org> metasploit-2.4-r1.ebuild:
-  Marked ~amd64, closes bug #102111, thanks to Mike Cvet for testing
-
-  04 Jun 2005; Marcelo Goes <vanquirius@gentoo.org>
-  metasploit-2.4-r1.ebuild:
-  Use normal file instead of snapshot, wrt bug 95048.
-
-*metasploit-2.4-r1 (04 Jun 2005)
-
-  04 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> -metasploit-2.4.ebuild,
-  +metasploit-2.4-r1.ebuild:
-  Revision bump. CA certificate changed, preventing use of msfupdate -u. Fixes
-  bug 95048. Thanks to H D Moore <gentoospam@digitaloffense.net>.
-
-*metasploit-2.4 (11 May 2005)
-
-  11 May 2005; Aaron Walker <ka0ttic@gentoo.org> +metasploit-2.4.ebuild:
-  Version bump.
-
-*metasploit-2.3-r2 (27 Apr 2005)
-
-  27 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +files/msfweb.confd,
-  files/msfweb.initd, -metasploit-2.3.ebuild, -metasploit-2.3-r1.ebuild,
-  +metasploit-2.3-r2.ebuild:
-  Revision bump; add conf.d file and init.d enhancements. Thanks once again to
-  soulse in bug 90543. Tidy old ebuilds.
-
-  13 Mar 2005; Luca Barbato <lu_zero@gentoo.org> :
-  Fixed ChangeLog as requersted by reporter in bug #75532
-
-*metasploit-2.3-r1 (25 Feb 2005)
-
-  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +files/msfweb.initd,
-  +metasploit-2.3-r1.ebuild:
-  Revision bump; added msfweb init.d script thanks to soulse in bug 83123.
-
-  15 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> metasploit-2.3.ebuild:
-  Added missing dev-perl/TermReadKey dep for bug 81936.
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/metasploit/ChangeLog,v 1.1 2005/02/13 13:59:49 dragonheart Exp $
 
 *metasploit-2.3 (13 Feb 2005)
 
   13 Feb 2005; Daniel Black <dragonheart@gentoo.org> +metasploit-2.3.ebuild:
-  Initial ebuild as per bug #75532 thanks to Stefano <raistlin@s0ftpj.org>
+  Initial ebuild as per bug #81826 thanks to Marco Morales <soulse@gmail.com>
 

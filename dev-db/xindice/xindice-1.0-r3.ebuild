@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/xindice/xindice-1.0-r3.ebuild,v 1.4 2005/09/05 13:05:43 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/xindice/xindice-1.0-r3.ebuild,v 1.1 2004/10/06 06:58:49 phosphan Exp $
 
 inherit eutils
 
@@ -31,7 +31,7 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${PF}.patch
+	epatch ${FILESDIR}/${PN}-${PVR}.patch
 }
 
 src_compile() {
@@ -46,9 +46,9 @@ src_install() {
 	chown xindice:xindice ${D}/var/run/xindice
 	dodir ${TARGET}
 	dodir ${TARGET}/java
-	cp -pPR bin config icons docs logs idl ${D}${TARGET}
+	cp -Rvdp bin config icons docs logs idl ${D}${TARGET}
 	cd java
-	cp -pPR lib tests examples ${D}${TARGET}/java
+	cp -Rvdp lib tests examples ${D}${TARGET}/java
 	cd ..
 	dodoc docs/LICENSE docs/README docs/FAQ docs/TODO docs/VERSIONS docs/AUTHORS
 	dohtml docs/AdministratorsGuide.html docs/DevelopersGuide.html docs/UsersGuide.html docs/ToolsReference.html docs/feather.gif docs/index.html docs/xindice.jpg

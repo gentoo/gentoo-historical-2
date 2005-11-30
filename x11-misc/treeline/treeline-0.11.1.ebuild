@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-0.11.1.ebuild,v 1.5 2005/07/28 14:33:47 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/treeline/treeline-0.11.1.ebuild,v 1.1 2005/04/21 15:11:57 taviso Exp $
 
-inherit python
+inherit eutils python
 
 DESCRIPTION="TreeLine is a structured information storage program."
 HOMEPAGE="http://www.bellz.org/treeline/"
@@ -11,13 +11,13 @@ SRC_URI="http://www.bellz.org/treeline/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="ppc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="spell"
 
 DEPEND="spell? ( || ( app-text/aspell app-text/ispell ) )
 	|| ( dev-python/pyxml dev-libs/expat )
 	virtual/python dev-python/PyQt
-	=x11-libs/qt-3*"
+	>=x11-libs/qt-3.3.0-r1"
 
 S=${WORKDIR}/TreeLine
 

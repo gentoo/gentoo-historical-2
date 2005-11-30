@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/mrxvt/mrxvt-0.4.1.ebuild,v 1.5 2005/10/19 02:11:48 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/mrxvt/mrxvt-0.4.1.ebuild,v 1.1 2005/05/03 17:16:40 usata Exp $
+
+inherit eutils
 
 IUSE="debug truetype xgetdefault menubar"
 #IUSE="${IUSE} utempter"
@@ -11,7 +13,7 @@ SRC_URI="mirror://sourceforge/materm/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~mips ppc ~ppc-macos x86"
+KEYWORDS="~x86 ~ppc-macos ~amd64 ~ppc ~alpha"
 
 DEPEND="virtual/libc
 	virtual/x11

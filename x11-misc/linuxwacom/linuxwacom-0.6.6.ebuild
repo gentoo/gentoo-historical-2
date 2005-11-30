@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/linuxwacom/linuxwacom-0.6.6.ebuild,v 1.8 2005/08/22 16:29:44 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/linuxwacom/linuxwacom-0.6.6.ebuild,v 1.1 2004/12/31 21:40:35 battousai Exp $
 
-IUSE="dlloader gtk gtk2 tcltk sdk"
+IUSE="gtk gtk2 tcltk sdk"
 
 inherit eutils
 
@@ -33,11 +33,23 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	if use sdk; then
-		if ! built_with_use x11-base/xorg-x11 sdk
+		if has_version ">=x11-base/xfree-4.3.0-r7"
 		then
-			eerror "This package builds against the X.Org SDK, and therefore requires"
-			eerror "that you have emerged xorg-x11 with the sdk USE flag enabled."
-			die "Please remerge xorg-x11 with the sdk USE flag enabled."
+			if [ ! "`grep sdk /var/db/pkg/x11-base/xfree-[0-9]*/USE`" ]
+			then
+				eerror "This package builds against the XFree86 SDK, and therefore requires"
+				eerror "that you have emerged xfree with the sdk USE flag enabled."
+				die "Please remerge xfree with the sdk USE flag enabled."
+			fi
+		elif has_version "x11-base/xorg-x11"
+		then
+			if [ ! "`grep sdk /var/db/pkg/x11-base/xorg-x11-[0-9]*/USE`" ]
+			then
+				eerror "This package builds against the X.Org SDK, and therefore requires"
+				eerror "that you have emerged xorg-x11 with the sdk USE flag enabled."
+				die "Please remerge xorg-x11 with the sdk USE flag enabled."
+			fi
+		else die "This build requires x11-base/xorg-x11 or x11-base/xfree to be installed to build against the SDK when USE=sdk."
 		fi
 		einfo "Building against the X11 SDK. This will install updated X drivers and userland tools."
 	else
@@ -57,7 +69,6 @@ src_unpack() {
 		export WANT_AUTOMAKE=1.6
 		export WANT_AUTOCONF=2.5
 
-		libtoolize -c -f
 		aclocal
 		autoheader
 		automake -a -c -f
@@ -74,58 +85,45 @@ src_unpack() {
 }
 
 src_compile() {
-	if use gtk; then
-		if use gtk2; then
-			myconf="${myconf} --with-gtk=2.0"
+	if use gtk;
+	then
+		if use gtk2;
+		then
+			withgtk="--with-gtk=2.0"
 		else
-			myconf="${myconf} --with-gtk=1.2"
+			withgtk="--with-gtk=1.2"
 		fi
 	else
-		myconf="${myconf} --with-gtk=no"
+		withgtk="--with-gtk=no"
 	fi
-
-	if use tcltk ; then
-		myconf="${myconf} --with-tcl --with-tk"
+	if use tcltk;
+	then
+		withtcltk="--with-tcl --with-tk"
 	else
-		myconf="${myconf} --without-tcl --without-tk"
+		withtcltk="--without-tcl --without-tk"
 	fi
-
-	if use amd64 ; then
-		myconf="${myconf} --enable-xserver64"
-	fi
-	myconf="${myconf} --with-xorg-sdk=/usr/$(get_libdir)/Server/ --with-xlib=/usr/$(get_libdir)"
 
 	if use sdk; then
-		myconf="${myconf} --enable-wacomdrv --enable-wacdump --enable-xsetwacom"
-		myconf="${myconf} --with-xf86=/usr/$(get_libdir)/Server --with-xorg-sdk=/usr/$(get_libdir)/Server"
-
+		myconf="--enable-wacomdrv --enable-wacdump --enable-xsetwacom --with-xf86=/usr/X11R6/$(get_libdir)/Server $withgtk $withtcltk"
 		econf ${myconf} || die "configure failed."
 
 		# Makefile fix for build against SDK
 		cd ${S}/src
+		cp Makefile Makefile.orig
+		sed -i -e "s:XF86_DIR = .*:XF86_DIR = /usr/X11R6/$(get_libdir)/Server:" Makefile
+		sed -i -e "s:XF86_V3_DIR = .*:XF86_V3_DIR = /usr/X11R6/$(get_libdir)/Server:" Makefile
 		sed -i -e "s:/include/extensions:/include:g" Makefile
 	else
-		myconf="${myconf} --disable-wacomdrv --enable-wacdump --enable-xsetwacom"
+		myconf="--disable-wacomdrv --enable-wacdump --enable-xsetwacom $withgtk $withtcltk"
 		econf ${myconf} || die "configure failed."
 	fi
 	cd ${S}
 	unset ARCH
 	emake || die "build failed."
-	if use dlloader || has_version ">=x11-base/xorg-x11-6.8.99.15"
-	then
-		cd ${S}/src
-		$(tc-getCC) -shared -nostdlib -o wacom_drv.so wacom_drv.o -Bstatic -lgcc
-	fi
 }
 
 src_install() {
 	emake DESTDIR="${D}" install || die "Install failed."
-	if use dlloader || has_version ">=x11-base/xorg-x11-6.8.99.15"
-	then
-		exeinto /usr/$(get_libdir)/modules/input
-		newexe src/wacom_drv.so wacom_drv.so
-		rm ${D}/usr/$(get_libdir)/modules/input/wacom_drv.o
-	fi
 	dohtml -r docs/*
 	dodoc AUTHORS ChangeLog NEWS README
 }

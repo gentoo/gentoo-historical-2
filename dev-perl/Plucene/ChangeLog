@@ -1,32 +1,6 @@
 # ChangeLog for dev-perl/Plucene
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Plucene/ChangeLog,v 1.9 2005/08/05 16:29:05 dholm Exp $
-
-  05 Aug 2005; David Holm <dholm@gentoo.org> Plucene-1.24.ebuild:
-  Added to ~ppc.
-
-*Plucene-1.24 (05 Aug 2005)
-
-  05 Aug 2005; Michael Cummings <mcummings@gentoo.org> +Plucene-1.24.ebuild:
-  Version bump upstream
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> Plucene-1.19.ebuild:
-  dev-perl/Test-Harness => perl-core/Test-Harness migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> Plucene-1.19.ebuild:
-  dev-perl/Memoize => perl-core/Memoize migration
-
-  17 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> Plucene-1.19.ebuild:
-  Stable on sparc
-
-  16 Mar 2005; Michael Cummings <mcummings@gentoo.org> Plucene-1.19.ebuild:
-  style cleanup
-
-  22 Jan 2005; Michael Cummings <mcummings@gentoo.org> Plucene-1.19.ebuild:
-  Unmasking for x86
-
-  18 Oct 2004; Michael Cummings <mcummings@gentoo.org> Plucene-1.19.ebuild:
-  Corrected deps - sorry about that folks
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Plucene/ChangeLog,v 1.1 2004/10/06 23:22:25 mcummings Exp $
 
 *Plucene-1.19 (06 Oct 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/exuserfolder/exuserfolder-0.20.0-r1.ebuild,v 1.2 2004/06/25 01:20:40 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/exuserfolder/exuserfolder-0.20.0-r1.ebuild,v 1.1 2004/01/19 14:26:44 lanius Exp $
 
 inherit zproduct
 

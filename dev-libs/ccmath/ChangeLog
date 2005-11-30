@@ -1,26 +1,10 @@
 # ChangeLog for dev-libs/ccmath
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ccmath/ChangeLog,v 1.9 2005/10/18 15:33:26 george Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ccmath/ChangeLog,v 1.1 2003/02/24 02:27:43 george Exp $
 
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> ccmath-2.2.1.ebuild:
-  stable on amd64
+*ccmath-2.2.1.ebuild (23 Feb 2003)
 
-  19 Oct 2004; Karol Wojtaszek,,, <sekretarz@gentoo.org>
-  +files/ccmath-2.2.1-fPIC.patch, ccmath-2.2.1.ebuild:
-  Added ~amd64 keyword and fPIC patch
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ccmath-2.2.1.ebuild:
-  virtual/glibc -> virtual/libc
-
-  27 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> ccmath-2.2.1.ebuild:
-  tidy; mark stable on ppc so rpc can use it.
-
-*ccmath-2.2.1 (23 Feb 2003)
-
-  30 Mar 2003; Christian Birchinger <joker@gentoo.org> ccmath-2.2.1.ebuild:
-  Added sparc stable keyword
-
-  23 Feb 2003; George Shapovalov <george@gentoo.org> ccmath-2.2.1.ebuild, files/digest-ccmath-2.2.1 :
+  23 æÅ× 2003; George Shapovalov <george@gentoo.org> ccmath-2.2.1.ebuild, files/digest-ccmath-2.2.1 :
   initial release (#13208)
   CCMATH is a mathematics library, coded in C, that contains functions for linear algebra, numerical integration, geometry and trigonometry, curve fitting, roots and optimization, Fourier analysis, simulation generation, statistics, special functions, sorts and searches, time series models, complex arithmetic, and high precision computations.
   ebuild submitted by Bernardo S. A. Silva <bsaslinux@globo.com>

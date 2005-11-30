@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bazaar/bazaar-1.1.1.ebuild,v 1.2 2005/03/02 19:47:45 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bazaar/bazaar-1.1.1.ebuild,v 1.1 2005/01/23 00:20:15 arj Exp $
 
 S="${WORKDIR}/${P}/src/=build"
 DESCRIPTION="Bazaar is a user-interface branch of tla"
@@ -9,7 +9,7 @@ HOMEPAGE="http://bazaar.canonical.com/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DIR="thelove@canonical.com---dists--bazaar--1.1"

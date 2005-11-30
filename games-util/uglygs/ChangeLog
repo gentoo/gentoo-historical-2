@@ -1,9 +1,6 @@
-# ChangeLog for games-util/uglygs
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/uglygs/ChangeLog,v 1.4 2005/06/15 19:24:46 wolf31o2 Exp $
-
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> uglygs-0_rc11.ebuild:
-  Removed INSTALL file.
+# ChangeLog for app-games/uglygs
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/uglygs/ChangeLog,v 1.1 2003/09/10 18:53:23 vapier Exp $
 
 *uglygs-0_rc11 (08 Sep 2003)
 

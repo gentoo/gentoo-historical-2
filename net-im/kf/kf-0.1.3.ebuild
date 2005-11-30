@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/kf/kf-0.1.3.ebuild,v 1.5 2004/06/24 22:54:58 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/kf/kf-0.1.3.ebuild,v 1.1 2004/04/08 14:36:27 rizzo Exp $
 
 DESCRIPTION="kf is a simple Jabber messenger."
-HOMEPAGE="http://www.habazie.rams.pl/kf/"
-SRC_URI="http://www.habazie.rams.pl/kf/files/${P}.tar.gz"
+HOMEPAGE="http://beta.jabberpl.org/komunikatory/kf/"
+SRC_URI="http://www.jabberpl.org/komunikatory/kf/download/${P}.tar.gz"
 LICENSE="GPL-2"
 DEPEND=">=x11-libs/gtk+-2
-	>=net-libs/loudmouth-0.15.1
+	net-libs/loudmouth
 	>=gnome-base/libglade-2"
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 
 src_install() {
 	make install DESTDIR=${D} || die 'make install failed'

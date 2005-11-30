@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-3.1.1.ebuild,v 1.4 2005/06/23 00:10:01 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-3.1.1.ebuild,v 1.1 2005/06/21 00:12:24 ribosome Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.scilab.org/"
 LICENSE="scilab"
 SLOT="0"
 KEYWORDS="~x86 ~ppc"
-IUSE="ifc ocaml tcltk atlas gtk gtk2 Xaw3d"
+IUSE="ifc tcltk atlas gtk gtk2 Xaw3d"
 
 RDEPEND="virtual/x11
 	sys-libs/ncurses
@@ -29,8 +29,7 @@ RDEPEND="virtual/x11
 	)
 	tcltk? ( >=dev-lang/tk-8.4
 		>=dev-lang/tcl-8.4 )
-	Xaw3d? ( x11-libs/Xaw3d )
-	ocaml? ( dev-lang/ocaml )"
+	Xaw3d? ( x11-libs/Xaw3d )"
 
 DEPEND="${RDEPEND}
 	ifc? ( dev-lang/ifc )
@@ -81,9 +80,6 @@ src_compile() {
 	if use gtk; then
 		use gtk2 && myopts="${myopts} --with-gtk2" || \
 			myopts="${myopts} --with-gtk"
-	fi
-	if ! use ocaml; then
-		myopts="${myopts} --without-ocaml"
 	fi
 
 	econf ${myopts} || die
@@ -176,23 +172,10 @@ src_install() {
 	dosym /usr/lib/${P}/bin/intersci-n /usr/bin/intersci-n
 
 	# The compile and install process causes the work folder to be registered
-	# as the runtime folder in many files. This is corrected here.
-	BAD_REF="${WORKDIR}/${P}"
-	FIXED_REF="/usr/lib/${P}"
-	BIN_TO_FIX="Blpr BEpsf Blatexpr2 Blatexprs Blatexpr scilab"
-	for i in ${BIN_TO_FIX}; do
-		sed -e "s%${BAD_REF}%${FIXED_REF}%" -i ${D}/usr/lib/${P}/bin/${i} || die
-	done
-	MAN_TO_FIX="eng fr"
-	for i in ${MAN_TO_FIX}; do
-		for j in ${D}/usr/lib/${P}/man/${i}/*.h*; do
-			sed -e "s%${BAD_REF}%${FIXED_REF}%" -i ${j} || die
-		done
-	done
-	MISC_TO_FIX="util/Blatdoc util/Blatdocs"
-	for i in ${MISC_TO_FIX}; do
-		sed -e "s%${BAD_REF}%${FIXED_REF}%" -i ${D}/usr/lib/${P}/${i} || die
-	done
+	# as the runtime folder in the launch script. This is corrected here.
+	BAD_LINE=SCI\=\"${WORKDIR}/${P}\"
+	FIXED_LINE=SCI\=\"/usr/lib/${P}\"
+	sed -i -e "s#${BAD_LINE}#${FIXED_LINE}#" ${D}/usr/lib/${P}/bin/scilab
 }
 
 pkg_postinst() {

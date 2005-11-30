@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/memtest86+-1.51.ebuild,v 1.5 2005/06/23 01:40:18 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/memtest86+-1.51.ebuild,v 1.1 2005/02/16 22:37:22 spock Exp $
 
 inherit mount-boot eutils
 
@@ -9,10 +9,9 @@ HOMEPAGE="http://www.memtest.org/"
 SRC_URI="http://www.memtest.org/download/${PV}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 -ppc"
+KEYWORDS="~x86 ~amd64"
 IUSE="serial"
 DEPEND="virtual/libc"
-RESTRICT="test"
 
 src_unpack() {
 	unpack ${A}

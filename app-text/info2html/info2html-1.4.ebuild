@@ -1,25 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/info2html/info2html-1.4.ebuild,v 1.10 2005/04/21 20:22:40 blubb Exp $
-
-inherit eutils webapp-apache
+# $Header: /var/cvsroot/gentoo-x86/app-text/info2html/info2html-1.4.ebuild,v 1.1 2003/09/28 01:05:46 twp Exp $
 
 DESCRIPTION="Converts GNU .info files to HTML"
 HOMEPAGE="http://info2html.sourceforge.net/"
 SRC_URI="mirror://sourceforge/info2html/${P}.tgz"
-
 LICENSE="freedist"
 SLOT="0"
-IUSE=""
-KEYWORDS="alpha hppa sparc x86 amd64"
-
+KEYWORDS="alpha arm hppa mips sparc x86"
 DEPEND="dev-lang/perl"
 
-pkg_setup() {
-	webapp-detect || NO_HTTPD=1
-	webapp-pkg_setup "${NO_HTTPD}"
-	einfo "Installing into ${ROOT}${HTTPD_ROOT}"
-}
+inherit eutils
+inherit webapp-apache
+
+webapp-detect || NO_HTTPD=1
 
 src_unpack() {
 	unpack ${A}
@@ -27,9 +21,12 @@ src_unpack() {
 	epatch ${FILESDIR}/info2html-gentoo.patch
 }
 
-src_install() {
-	webapp-mkdirs
+pkg_setup() {
+	webapp-pkg_setup "${NO_HTTPD}"
+	einfo "Installing into ${ROOT}${HTTPD_ROOT}"
+}
 
+src_install() {
 	exeinto ${HTTPD_CGIBIN}
 	doexe info2html infocat
 	insinto ${HTTPD_CGIBIN}

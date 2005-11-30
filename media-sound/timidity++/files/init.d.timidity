@@ -1,12 +1,12 @@
 #!/sbin/runscript
  
 depend() {
-	after alsasound esound
+	need alsasound
+	use esound
 }
  
 start() {
 	ebegin "Starting Timidity Virtual Midi Sequencer"
-	test -n "$TIMIDITY_PCM_NAME" && export TIMIDITY_PCM_NAME
 	start-stop-daemon --start --quiet --background \
 		--make-pidfile --pidfile /var/run/timidity.pid \
 		--exec /usr/bin/timidity -- -iA ${TIMIDITY_OPTS}
@@ -16,5 +16,4 @@ start() {
 stop() {
 	ebegin "Stopping Timidity"
 	start-stop-daemon --stop --quiet --pidfile /var/run/timidity.pid
-	eend $?
 }

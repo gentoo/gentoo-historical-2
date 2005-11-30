@@ -1,11 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-0.2.96-r2.ebuild,v 1.19 2005/06/03 06:20:25 leonardop Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgda/libgda-0.2.96-r2.ebuild,v 1.1 2002/07/29 22:22:37 stroke Exp $
 
-inherit eutils
-
-IUSE="odbc postgres mysql"
-
+S=${WORKDIR}/${P}
 DESCRIPTION="gda lib"
 SRC_URI="ftp://ftp.gnome-db.org/pub/gnome-db/sources/latest/${P}.tar.gz
 	 ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
@@ -13,10 +10,10 @@ HOMEPAGE="http://www.gnome.org/gnome-db"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
-KEYWORDS="x86 sparc ppc"
+KEYWORDS="x86"
 
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	 >=gnome-base/gconf-1.0.4-r2
 	 <gnome-base/gconf-1.1
 	 >=gnome-base/oaf-0.6.6-r1
@@ -25,10 +22,10 @@ RDEPEND="virtual/libc
 	 >=sys-libs/gdbm-1.8.0
 	 >=sys-libs/readline-4.1
 	 >=dev-perl/CORBA-ORBit-0.4.3
-	 =dev-db/sqlite-2*
+	 >=dev-db/sqlite-2.0.8
 	 mysql? ( >=dev-db/mysql-3.23.26 )
 	 postgres? ( >=dev-db/postgresql-7.1 )
-	 odbc? ( >=dev-db/unixODBC-2.0.6 )"
+	 odbc? ( >=dev-db/unixODBC-1.8.13 )"
 
 # ldap support is currently broken (this fixes bug #4019)
 #	 ldap? ( >=net-nds/openldap-1.2.11 )"
@@ -39,41 +36,41 @@ DEPEND="${RDEPEND}
 	sys-apps/which"
 
 src_unpack() {
+
 	unpack ${A}
 	cd ${S}
+	patch -p1 < ${FILESDIR}/${P}-gentoo.patch || die "Patch for gcc-3.1 failed"
 
-	epatch ${FILESDIR}/${P}-gentoo.patch
-	# Fix compilation issues. See bug #94768.
-	epatch ${FILESDIR}/${P}-gcc3.4.patch
 }
 
 src_compile() {
 
-	local myconf
+	local myconf 
 
-	if use mysql
+	if [ "`use mysql`" ]
 	then
 		myconf="--with-mysql=/usr"
 	fi
 
-#  	if use ldap
+#  	if [ "`use ldap`" ]
 #	then
 #    		myconf="$myconf --with-ldap=/usr"
 #  	fi
 #
 # LDAP support is currently broken
+	myconf="$myconf --without-ldap"
 
-	if use odbc
+  	if [ "`use odbc`" ]
 	then
-		myconf="$myconf --with-odbc"
-	fi
+    		myconf="$myconf --with-odbc"
+  	fi
 
-	if use postgres
+  	if [ "`use postgres`" ]
 	then
-		myconf="$myconf --with-postgres=/usr"
-	fi
-
-	# Wierd one, it dont detect bonobo. If someone could have a look
+    		myconf="$myconf --with-postgres=/usr"
+  	fi
+  
+  	# Wierd one, it dont detect bonobo. If someone could have a look
 	# and fix if i havent gotten to it yet.
 #	myconf="$myconf --disable-bonobotest"
 
@@ -137,3 +134,4 @@ pkg_postrm() {
 	echo ">>> Updating Scrollkeeper database..."
 	scrollkeeper-update >/dev/null 2>&1
 }
+

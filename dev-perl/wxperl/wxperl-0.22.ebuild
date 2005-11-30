@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2005-2005 Mattia Barbon 
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/wxperl/wxperl-0.22.ebuild,v 1.5 2005/07/14 23:28:00 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/wxperl/wxperl-0.22.ebuild,v 1.1 2005/05/02 23:33:36 mcummings Exp $
 
 inherit perl-module eutils wxwidgets
 
@@ -13,12 +13,12 @@ SRC_URI="mirror://cpan/authors/id/M/MB/MBARBON/${MY_P}.tar.gz"
 LICENSE="|| (Artistic GPL-2)"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="unicode"
+IUSE="gtk gtk2 unicode"
 
 DEPEND="x11-libs/wxGTK
 		>=dev-lang/perl-5.8.4
-		>=perl-core/File-Spec-0.82
-		!=perl-core/ExtUtils-MakeMaker-6.21"
+		>=dev-perl/File-Spec-0.82
+		!=dev-perl/ExtUtils-MakeMaker-6.21"
 
 src_compile() {
 	WX_GTK_VER="2.6"

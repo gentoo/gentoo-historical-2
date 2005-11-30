@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/wumpus/wumpus-1.4.ebuild,v 1.12 2005/09/20 16:53:33 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/wumpus/wumpus-1.4.ebuild,v 1.1 2003/09/10 18:14:05 vapier Exp $
 
-inherit toolchain-funcs games
+inherit games
 
 DESCRIPTION="Classic Hunt the Wumpus Adventure Game"
 HOMEPAGE="http://cvsweb.netbsd.org/bsdweb.cgi/src/games/wump/"
@@ -12,33 +12,32 @@ SRC_URI="ftp://ftp.netbsd.org/pub/NetBSD/NetBSD-release-1-6/src/games/wump/wump.
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~ppc-macos x86"
-IUSE=""
+KEYWORDS="x86"
 
-DEPEND="sys-apps/less"
+DEPEND="virtual/glibc
+	sys-apps/less"
 
-S="${WORKDIR}"
+S=${WORKDIR}
 
 src_unpack() {
-	local i
-
 	for i in wump.{info,c,6} ; do
-		cp "${DISTDIR}"/${i} "${S}/"
+		cp ${DISTDIR}/${i} ${S}/
 	done
 }
 
 src_compile() {
 	touch pathnames.h
 	[ -z "${PAGER}" ] && PAGER=/usr/bin/less
-	$(tc-getCC) -Dlint -D_PATH_PAGER=\"${PAGER}\" \
-		-D_PATH_WUMPINFO=\""${GAMES_DATADIR}"/${PN}/wump.info\" ${CFLAGS} \
-		-o wump wump.c || die "compile failed"
+	[ -z "${CC}" ] && CC=gcc
+	${CC} -Dlint -D_PATH_PAGER=\"${PAGER}\" \
+		-D_PATH_WUMPINFO=\"${GAMES_DATADIR}/${PN}/wump.info\" ${CFLAGS} \
+		-o wump wump.c
 }
 
 src_install() {
-	dogamesbin wump || die "dogamesbin failed"
+	dogamesbin wump
 	doman wump.6
-	insinto "${GAMES_DATADIR}/${PN}"
-	doins wump.info || die "doins failed"
+	insinto ${GAMES_DATADIR}/${PN}
+	doins wump.info
 	prepgamesdirs
 }

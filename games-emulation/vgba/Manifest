@@ -1,4 +1,3 @@
-MD5 c32a215eb4522a655365dc0b1bc885b5 vgba-2.1.ebuild 720
-MD5 7c40a3b295abf62caeaeffc4ad6c7ae0 ChangeLog 436
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 2c0c83ca8202d620be06f28ef499b598 files/digest-vgba-2.1 73
+MD5 d17c9a99f420e96a9bcefe0896777eb9 files/digest-vgba-2.0 73
+MD5 d540f5670a23f589e259ab1fcc2c010e vgba-2.0.ebuild 645
+MD5 d07ab9d1e67fc89595f19c885058605f ChangeLog 338

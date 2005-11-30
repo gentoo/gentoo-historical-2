@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmisc/wmmisc-0.9.ebuild,v 1.3 2005/04/28 20:55:51 wormo Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmisc/wmmisc-0.9.ebuild,v 1.1 2004/11/28 18:49:18 s4t4n Exp $
 
 IUSE=""
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.dockapps.org/download.php/id/460/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 
 DEPEND="virtual/x11"
 

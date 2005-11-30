@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/sdlsasteroids/sdlsasteroids-3.0.ebuild,v 1.8 2004/08/30 13:15:03 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/sdlsasteroids/sdlsasteroids-3.0.ebuild,v 1.1 2003/09/18 22:33:20 vapier Exp $
 
 inherit games
 
@@ -10,43 +10,27 @@ SRC_URI="mirror://sourceforge/sdlsas/sasteroids-${PV}.tar.gz"
 
 LICENSE="GPL-2 freedist"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
-IUSE=""
+KEYWORDS="x86"
 
-RDEPEND="virtual/libc
-	virtual/opengl
-	>=media-libs/sdl-mixer-1.2.0
-	media-libs/libsdl
-	media-libs/sdl-image
+DEPEND=">=media-libs/sdl-mixer-1.2.0
 	media-libs/sdl-ttf"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
 
-S="${WORKDIR}/SDLSasteroids-${PV}"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i \
-		-e '34 d' \
-		-e 's/make /$(MAKE) /' Makefile \
-			|| die "sed Makefile failed"
-}
+S=${WORKDIR}/SDLSasteroids-${PV}
 
 src_compile() {
-	emake \
-		GAMEDIR="${GAMES_DATADIR}/${PN}" \
-		OPTS="${CXXFLAGS}" \
-			|| die "emake failed"
+	make \
+		GAMEDIR=${GAMES_DATADIR}/${PN} \
+		OPTS="${CFLAGS}" \
+		|| die
 }
 
 src_install() {
 	dodir /usr/share/man/man6/
 	make \
-		GAMEDIR="${D}/${GAMES_DATADIR}/${PN}" \
-		BINDIR="${D}/${GAMES_BINDIR}" \
-		MANDIR="${D}/usr/share/man/" \
-		install || die "make install failed"
+		GAMEDIR=${D}/${GAMES_DATADIR}/${PN} \
+		BINDIR=${D}/${GAMES_BINDIR} \
+		MANDIR=${D}/usr/share/man/ \
+		install || die
 	dodoc ChangeLog README README.xast TODO description
 	prepgamesdirs
 }

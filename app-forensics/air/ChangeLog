@@ -1,60 +1,6 @@
-# ChangeLog for app-forensics/air
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/air/ChangeLog,v 1.14 2005/09/28 21:42:54 dragonheart Exp $
-
-*air-1.2.8 (28 Sep 2005)
-
-  28 Sep 2005; Daniel Black <dragonheart@gentoo.org>
-  -files/air-1.2.5-installfix.patch, -files/air-1.2.5-r1-installfix.patch,
-  -air-1.2.5-r1.ebuild, +air-1.2.8.ebuild:
-  version bump
-
-  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> air-1.2.7.ebuild:
-  Changed root:root -> root:0 permissions and made sharutils and coreutils
-  conditional to GNU userland.
-
-  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> air-1.2.7.ebuild:
-  Stable on ppc.
-
-  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> air-1.2.7.ebuild:
-  Marked stable on x86.
-
-*air-1.2.7 (04 Dec 2004)
-
-  04 Dec 2004; Daniel Black <dragonheart@gentoo.org>
-  -files/air-1.2.3_beta3-installfix.patch, -air-1.2.3_beta3.ebuild,
-  air-1.2.5-r1.ebuild, -air-1.2.5.ebuild, +air-1.2.7.ebuild:
-  version bump. keywords x86 and ppc to air-1.2.5-r1.
-
-  14 Oct 2004; David Holm <dholm@gentoo.org> air-1.2.5-r1.ebuild:
-  Added to ~ppc.
-
-  18 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  16 Sep 2004; Daniel Black <dragonheart@gentoo.org>
-  files/air-1.2.5-r1-installfix.patch, air-1.2.5-r1.ebuild:
-  Commented out automail line in install. Thanks to  
-  Daniel Webert <rockoo@rockoo.homelinux.org> in bug #64143.
-  also fixed permission on /usr/bin/air
-
-*air-1.2.5-r1 (13 Sep 2004)
-
-  13 Sep 2004; Daniel Black <dragonheart@gentoo.org>
-  +files/air-1.2.5-r1-installfix.patch, +air-1.2.5-r1.ebuild:
-  More flexable patch and a few more checks
-
-  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> air-1.2.5.ebuild:
-  changed to remove /usr/bin/split which is installed by coreutils
-
-*air-1.2.5 (12 Sep 2004)
-
-  12 Sep 2004; Daniel Black <dragonheart@gentoo.org>
-  +files/air-1.2.5-installfix.patch, +air-1.2.5.ebuild:
-  version bump
-
-  12 Sep 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml:
-  metadata.xml update
+# ChangeLog for sys-apps/air
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/air/ChangeLog,v 1.1 2004/09/12 06:53:08 dragonheart Exp $
 
 *air-1.2.3_beta3 (12 Sep 2004)
 

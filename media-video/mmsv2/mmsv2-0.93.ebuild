@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mmsv2/mmsv2-0.93.ebuild,v 1.3 2005/07/09 19:02:22 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mmsv2/mmsv2-0.93.ebuild,v 1.1 2004/11/10 01:02:57 arj Exp $
 
 inherit eutils
 
@@ -17,7 +17,7 @@ IUSE="debug lirc svga sdl xine"
 RDEPEND="media-libs/imlib2
 	media-libs/taglib
 	>=dev-libs/libpcre-4.3
-	=dev-db/sqlite-2*
+	>=dev-db/sqlite-2.8
 	media-tv/xmltv
 	lirc? ( app-misc/lirc )
 	svga? ( media-libs/svgalib )
@@ -80,7 +80,7 @@ src_install() {
 	     BINDIR=${D}/usr/bin \
 	     CONFIGDIR=${D}/etc/mms \
 	     DATADIR=${D}/usr/share/mms \
-	     install || die "Failed to install mmsv2!"
+	     install || die "Failed to install MPlayer!"
 
 	dodoc doc/BUGS doc/Changelog doc/LICENSE doc/README doc/TODO
 }
@@ -88,6 +88,6 @@ src_install() {
 pkg_postinst() {
 	einfo "Be sure to change /etc/mms/config and /etc/mms/input* to your needs"
 	einfo "You also need to place a TV.xml file in /etc/mms for epg to work"
-	einfo
+	einfo ""
 	einfo "Documentation is available online: http://mms.sunsite.dk/doc/index.html"
 }

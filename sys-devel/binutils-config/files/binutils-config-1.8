@@ -1,13 +1,11 @@
 #!/bin/bash
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/files/binutils-config-1.8,v 1.7 2005/11/20 17:48:48 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/files/binutils-config-1.8,v 1.1 2005/01/30 06:21:38 vapier Exp $
 
 # Format of /etc/env.d/binutils/:
 #  config-TARGET:	CURRENT=version for TARGET
 #  TARGET-VER:		has a TARGET and VER variable
-
-cd /
 
 trap ":" INT QUIT TSTP
 
@@ -121,18 +119,16 @@ switch_profile() {
 	# Generate include symlinks
 	#
 	INCPATH=${LIBPATH}/include
-	if [[ -d ${ROOT}/${INCPATH} ]] ; then
-		cd "${ROOT}/${INCPATH}" || exit 1
-		if [[ ${TARGET} == ${HOST} ]] ; then
-			dstinc=${ROOT}/usr/include
-		else
-			dstinc=${ROOT}/usr/${TARGET}/include
-		fi
-		mkdir -p "${dstinc}"
-		for x in * ; do
-			ln -sf "${INCPATH}/${x}" "${dstinc}/${x}"
-		done
+	cd "${ROOT}/${INCPATH}" || exit 1
+	if [[ ${TARGET} == ${HOST} ]] ; then
+		dstinc=${ROOT}/usr/include
+	else
+		dstinc=${ROOT}/usr/${TARGET}/include
 	fi
+	mkdir -p "${dstinc}"
+	for x in * ; do
+		ln -sf "${INCPATH}/${x}" "${dstinc}/${x}"
+	done
 
 	#
 	# Make sure proper paths get updated
@@ -178,14 +174,13 @@ uninstall_target() {
 		ewarn "Removing all signs of ${PROFILE##*/}"
 		rm -f "${ENV_D}"/${PROFILE}
 	done
-	if [[ -z ${PROFILE} ]] && [[ ! -e ${ENV_D}/config-${TARGET} ]] ; then
+	if [[ -z ${PROFILE} ]] ; then
 		eerror "$0: No profiles exist for '${TARGET}'"
 		exit 1
 	fi
 
 	rm -f "${ENV_D}"/config-${TARGET}
 
-	# XXX: we still leave behind FAKE_TARGETS in /usr/bin ...
 	for x in addr2line ar as c++filt ld nm objcopy \
 	         objdump ranlib readelf size strings strip ; do
 		rm -f "${ROOT}"/usr/bin/${TARGET}-${x}
@@ -194,13 +189,7 @@ uninstall_target() {
 	for x in ansidecl.h bfd.h bfdlink.h dis-asm.h symcat.h ; do
 		rm -f "${ROOT}"/usr/${TARGET}/include/${x}
 	done
-	for x in bfd iberty opcodes ; do
-		rm -f "${ROOT}"/usr/${HOST}/${TARGET}/lib/lib${x}{{-*,}.so,.a,.la}
-	done
-	rmdir "${ROOT}"/usr/${HOST}/${TARGET}/lib "${ROOT}"/usr/${HOST}/${TARGET} 2>/dev/null
 	rm -f "${ROOT}"/usr/${TARGET}/lib/ldscripts
-	rmdir "${ROOT}"/usr/${TARGET}/{bin,include,lib} "${ROOT}"/usr/${TARGET} 2>/dev/null
-	rmdir "${ROOT}"/var/db/pkg/cross-${TARGET} 2>/dev/null
 
 	rm -f "${ENV_D}"/${TARGET}-*
 }
@@ -244,19 +233,9 @@ list_profiles() {
 				[[ ${VER} == ${CURRENT} ]] && x="${x} ${GOOD}*${NORMAL}"
 			fi
 			echo " [${i}] ${x}"
-			((++i))
+			i=$((i + 1))
 		fi
 	done
-}
-
-set_HOST() {
-	[[ -n ${HOST} ]] && return 0
-
-	if [[ -z ${CHOST} ]] ; then
-		HOST=$(portageq envvar CHOST)
-	else
-		HOST=${CHOST}
-	fi
 }
 
 [[ -z ${ROOT} ]] && ROOT="/"
@@ -267,7 +246,6 @@ NEED_ACTION="yes"
 DOIT="switch_profile"
 PROFILE=""
 FAKE_TARGETS_USER=""
-HOST=""
 
 while [[ $# -gt 0 ]] ; do
 	x=$1
@@ -301,7 +279,7 @@ while [[ $# -gt 0 ]] ; do
 			exit 0
 			;;
 		-v|--version)
-			cvsver="$Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/files/binutils-config-1.8,v 1.7 2005/11/20 17:48:48 vapier Exp $"
+			cvsver="$Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-config/files/binutils-config-1.8,v 1.1 2005/01/30 06:21:38 vapier Exp $"
 			cvsver=${cvsver##*binutils-config-}
 			echo "binutils-config-${cvsver%%,v *}"
 			exit 0
@@ -340,20 +318,14 @@ while [[ $# -gt 0 ]] ; do
 						NEED_ACTION="no"
 						break
 					fi
-					((++i))
+					i=$((i + 1))
 				done
 			else
 				# User gave us a full HOST-ver
 				x=${x##*/}
 				if [[ ! -f ${ENV_D}/${x} ]] && [[ ! -f ${ENV_D}/config-${x} ]] ; then
-					# Maybe they just gave us a ver ...
-					set_HOST
-					if [[ -f ${ENV_D}/${HOST}-${x} ]] ; then
-						x=${HOST}-${x}
-					else
-						eerror "$0: Could not locate '$x' in '${ENV_D}/'!"
-						exit 1
-					fi
+					eerror "$0: Could not locate '$x' in '${ENV_D}/'!"
+					exit 1
 				fi
 				PROFILE=${x}
 				NEED_ACTION="no"
@@ -365,7 +337,13 @@ done
 [[ ${NEED_ACTION} == "yes" ]] && usage && exit 1
 [[ ${DEBUG} == "yes" ]] && set -x
 
-[[ ${DOIT} != "list_profiles" ]] && set_HOST
+if [[ ${DOIT} != "list_profiles" ]] ; then
+	if [[ -z ${CHOST} ]] ; then
+		HOST=$(portageq envvar CHOST)
+	else
+		HOST=${CHOST}
+	fi
+fi
 [[ -z ${PROFILE} ]] && PROFILE=${HOST}
 [[ ${PROFILE} == "current" ]] && PROFILE=$(PROFILE=${HOST} get_current_profile)
 eval ${DOIT}

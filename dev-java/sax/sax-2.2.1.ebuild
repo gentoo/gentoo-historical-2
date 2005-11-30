@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sax/sax-2.2.1.ebuild,v 1.7 2005/07/11 21:15:49 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sax/sax-2.2.1.ebuild,v 1.1 2004/09/21 19:35:16 axxo Exp $
 
 inherit java-pkg
 
@@ -10,12 +10,11 @@ HOMEPAGE="http://sax.sourceforge.net/"
 SRC_URI="mirror://sourceforge/sax/sax2r3.zip"
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~x86"
 IUSE="doc"
-DEPEND=">=virtual/jdk-1.3
-		app-arch/unzip
+DEPEND="virtual/jdk
 		dev-java/ant"
-RDEPEND=">=virtual/jre-1.3"
+RDEPEND="virtual/jre"
 
 S=${WORKDIR}/sax2r3
 
@@ -29,11 +28,12 @@ src_compile() {
 	local antflags="jar"
 	use doc && antflags="${antflags} javadoc"
 	ant ${antflags} || die "failed to compile"
+	mv sax2.jar sax.jar
 }
 
 src_install() {
-	java-pkg_newjar sax2.jar ${PN}.jar
+	java-pkg_dojar ${PN}.jar
 	dodoc ChangeLog CHANGES README
 
-	use doc && java-pkg_dohtml -r docs/javadoc/*
+	use doc && dohtml -r docs/javadoc/*
 }

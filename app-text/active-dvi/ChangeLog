@@ -1,36 +1,8 @@
 # ChangeLog for app-text/active-dvi
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/ChangeLog,v 1.11 2005/03/18 16:49:58 mattam Exp $
-
-  18 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> active-dvi-1.6.0.ebuild:
-  Add ~ppc keyword.
-
-  18 Feb 2005; Matthieu Sozeau <mattam@gentoo.org> active-dvi-1.6.0.ebuild:
-  Get the tex files location right.
-
-*active-dvi-1.6.0 (08 Feb 2005)
-
-  08 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> active-dvi-1.4.0.ebuild,
-  +active-dvi-1.6.0.ebuild:
-  Version bumped. Ebuild submitted by Johannes Bruegmann
-  <johannes@jottbee.org>; bug #76325.
-
-  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> active-dvi-1.4.0.ebuild:
-  Switch to use epause and ebeep, bug #62950
-
-  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> active-dvi-1.4.0.ebuild:
-  Fix use invocation
-
-  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> active-dvi-1.4.0.ebuild:
-  Marked stable on x86
-
-  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> active-dvi-1.4.0.ebuild:
-  changed app-text/ghostscript to virtual/ghostscript
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/active-dvi/ChangeLog,v 1.1 2003/11/06 15:43:35 obz Exp $
 
 *active-dvi-1.4.0 (06 Nov 2003)
-
-  07 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> active-dvi-1.4.0.ebuild:
-  RDEPENDs on kochi-substitute if cjk is enabled.
 
   06 Nov 2003; Mike Gardiner <obz@gentoo.org> active-dvi-1.4.0.ebuild,
   metadata.xml:

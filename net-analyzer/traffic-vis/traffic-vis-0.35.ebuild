@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/traffic-vis/traffic-vis-0.35.ebuild,v 1.11 2005/07/19 16:40:04 dholm Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/traffic-vis/traffic-vis-0.35.ebuild,v 1.1 2003/10/30 00:17:12 lisa Exp $
 
 DESCRIPTION="Generate traffic stats in html, ps, text and gif format"
 HOMEPAGE="http://www.mindrot.org/traffic-vis.html"
@@ -10,21 +8,21 @@ SRC_URI="http://www.mindrot.org/files/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86"
 
 IUSE="gif"
-DEPEND="virtual/libc
-	virtual/libpcap
+DEPEND="virtual/glibc
+	>=net-libs/libpcap-0.4
 	gif? ( media-libs/netpbm
-		virtual/ghostscript
+		app-text/ghostscript
 		dev-lang/perl )
-	=dev-libs/glib-1.2*"
+	>=dev-libs/glib-1.1.15"
 
 src_unpack() {
-	unpack ${A} ; cd ${S}
+	unpack ${A}
+	cd ${S}
 
 	epatch ${FILESDIR}/${P}-gentoo.patch
-	epatch ${FILESDIR}/${P}-libpcap-header-fix.patch
 }
 
 src_compile() {
@@ -35,7 +33,7 @@ src_install() {
 	dosbin collector/traffic-collector
 	doman collector/traffic-collector.8
 
-	for mybin in $(useq gif && echo frontends/traffic-togif) \
+	for mybin in 	`use gif >/dev/null && echo "frontends/traffic-togif"` \
 			frontends/traffic-tohtml \
 			frontends/traffic-tops \
 			frontends/traffic-totext \

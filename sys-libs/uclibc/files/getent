@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc/files/getent,v 1.2 2005/04/21 15:47:59 solar Exp $
 
 search_entry() {
   if [ -e "$1" ] ; then
@@ -16,16 +15,12 @@ string="dummy"
 
 #aliases|ethers|group|hosts|netgroup|networks|passwd|protocols|rpc|services|shadow)
 # dns based search is not supported for hosts|networks
-# ethers|netgroup (not done, needed)?
+# networks searches ^string
+# protocols|rpc|services searches string anywhere
+# ethers|netgroup ?
 # it returns only the first match
 case $1 in
-  passwd)
-    string="(^\<$2\>:|^.*:.*:\<$2\>:.*:.*:.*:.*)"
-    ;;
-  group)
-    string="(^|:)\<$2\>:"
-    ;;
-  shadow)
+  group|passwd|shadow)
     string="^\<$2\>:"
     ;;
   aliases)
@@ -39,7 +34,7 @@ case $1 in
   networks)
     string="^\<$2\>"
     ;;
-  hosts|protocols|rpc|services)
+  hosts|protocol|rpc|services)
     string="\<$2\>"
     ;;
   *)

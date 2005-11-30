@@ -1,17 +1,8 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 37f23fdcd9ac530a468c4507f0514685 ChangeLog 1941
+MD5 c97581b647bd224120e87585e64f75d7 ChangeLog 974
+MD5 ddb2f9969da571564c2444c85b23f828 xmms-status-plugin-0.9.ebuild 852
+MD5 e7b47f487acae2f7b760bd8766f6ee75 xmms-status-plugin-1.0_pre1.ebuild 867
+MD5 0147ded0177e086751246e89c7a0ad5a xmms-status-plugin-1.0.ebuild 869
 MD5 082c6bbe174adab5eb4abfd74bf3e27d files/README.Gentoo 496
+MD5 770f70fa53f74ade9c0d8fcfa0f80642 files/digest-xmms-status-plugin-0.9 74
+MD5 e53aeda0e474d739e2fa6bcb152c1ee1 files/digest-xmms-status-plugin-1.0_pre1 78
 MD5 63a80da40a1e22895c0b0267012d10fe files/digest-xmms-status-plugin-1.0 74
-MD5 63a80da40a1e22895c0b0267012d10fe files/digest-xmms-status-plugin-1.0-r1 74
-MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
-MD5 882a7c8a143e62ce8164fb565ebaf92b xmms-status-plugin-1.0-r1.ebuild 1047
-MD5 f39323d0c5905338da9ae96babbdb06d xmms-status-plugin-1.0.ebuild 850
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDfNNqwUpWvClEHQoRAubBAJ0feAXbuaWTzXa+wCK4HR4/FjhS/gCfXG6X
-wtU+LVaYs7FfmicfZFUYQE8=
-=KL7T
------END PGP SIGNATURE-----

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sodipodi/sodipodi-0.32.ebuild,v 1.7 2004/10/04 23:24:35 pvdabeel Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sodipodi/sodipodi-0.32.ebuild,v 1.1 2003/06/21 11:10:56 liquidx Exp $
 
 inherit gnome2
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc ~alpha ~amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 IUSE="gnome mmx"
 
 RDEPEND=">=x11-libs/gtk+-2.2.1
@@ -20,14 +20,18 @@ RDEPEND=">=x11-libs/gtk+-2.2.1
 	dev-libs/popt
 	sys-libs/zlib
 	media-libs/libpng
-	gnome? ( >=gnome-base/libgnomeprintui-2.2 )"
-
+	gnome? ( =gnome-base/libgnomeprintui-1.116* )"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	dev-util/pkgconfig
 	>=dev-util/intltool-0.22"
 
-G2CONF="${G2CONF} `use_enable mmx` `use_with gnome gnome-print`"
+G2CONF="${G2CONF} `use_enable mmx`"
+G2CONF="${G2CONF} `use_enable gnome gnome-print`"
+
+# FIXME : xft doesnt actually seem to work 
 G2CONF="${G2CONF} --with-xft --with-popt"
 
-DOCS="AUTHORS ChangeLog HACKING NEWS README TODO"
+DOCS="AUTHORS COPYING ChangeLog HACKING NEWS README TODO"
+
+SCROLLKEEPER_UPDATE="0"

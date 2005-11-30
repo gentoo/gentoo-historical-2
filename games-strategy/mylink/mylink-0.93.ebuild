@@ -1,26 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/mylink/mylink-0.93.ebuild,v 1.9 2005/05/24 15:52:57 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/mylink/mylink-0.93.ebuild,v 1.1 2003/12/29 04:46:08 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="a free Uplink clone"
-HOMEPAGE="http://home.as-netz.de/gblech/mylink/"
+HOMEPAGE="http://home.as-netz.de/gblech/klasse10/misc/mylink/mylink.html"
 SRC_URI="http://home.as-netz.de/gblech/klasse10/misc/mylink/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND=">=dev-lang/perl-5.8.0
 	>=dev-lang/tk-8.3.4
-	dev-perl/perl-tk
-	perl-core/Digest-MD5
+	dev-perl/Data-Dumper
+	dev-perl/Digest-MD5
 	dev-perl/libwww-perl
 	dev-perl/frontier-rpc"
 
-S="${WORKDIR}/MyLink"
+S=${WORKDIR}/MyLink
 
 src_unpack() {
 	unpack ${A}
@@ -39,11 +38,11 @@ src_unpack() {
 }
 
 src_install() {
-	local dir="${GAMES_DATADIR}/${PN}"
-	dodir "${dir}"
-	cp -r *.pm *.txt database.db data graphics "${D}/${dir}/"
+	local dir=${GAMES_DATADIR}/${PN}
+	dodir ${dir}
+	cp -r *.pm *.txt database.db data graphics ${D}/${dir}/
 	newgamesbin MyLinkd.pl MyLinkd
 	newgamesbin MyLinkTk.pl MyLinkTk
 	prepgamesdirs
-	fperms g+w "${GAMES_DATADIR}/${PN}/database.db"
+	fperms g+w ${GAMES_DATADIR}/${PN}/database.db
 }

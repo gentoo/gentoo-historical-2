@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/openjnlp/openjnlp-0.7.1-r1.ebuild,v 1.5 2005/07/11 21:40:01 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/openjnlp/openjnlp-0.7.1-r1.ebuild,v 1.1 2004/09/21 19:37:37 axxo Exp $
 
 inherit java-pkg
 
@@ -9,16 +9,14 @@ HOMEPAGE="http://openjnlp.nanode.org/"
 SRC_URI="mirror://sourceforge/openjnlp/OpenJNLP-src-rel_ver-${PV//./-}.zip"
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
-RDEPEND=">=virtual/jre-1.3
-		dev-java/sax
-		dev-java/jnlp-bin
-		dev-java/nanoxml"
-DEPEND=">=virtual/jdk-1.3
-		${RDEPEND}
-		app-arch/unzip
-		>=dev-java/ant-1.6"
+DEPEND="virtual/jdk
+	>=dev-java/ant-1.6
+	dev-java/sax
+	dev-java/jnlp-bin
+	dev-java/nanoxml"
+RDEPEND="virtual/jre"
 
 S=${WORKDIR}/OpenJNLP-src-rel_ver-${PV//./-}
 
@@ -41,7 +39,7 @@ src_install() {
 	java-pkg_dojar lib/*.jar
 
 	echo "#!/bin/sh" > ${PN}
-	echo "\${JAVA_HOME}/bin/java -cp \$(java-config --classpath=openjnlp) org.nanode.app.OpenJNLP \$*" >> ${PN}
+	echo '${JAVA_HOME}'/bin/java -cp $(java-config --classpath=openjnlp) org.nanode.app.OpenJNLP '$*' >> ${PN}
 
 	dodoc {History,ReadMe}.txt
 

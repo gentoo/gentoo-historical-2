@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xclip/xclip-0.08.ebuild,v 1.7 2005/10/31 16:32:58 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xclip/xclip-0.08.ebuild,v 1.1 2003/10/20 04:14:48 tseng Exp $
 
 S=${WORKDIR}/xclip
 DESCRIPTION="Command-line utility to read data from standard in and place it in an X selection for pasting into X applications."
@@ -9,8 +9,7 @@ HOMEPAGE="http://people.debian.org/~kims/xclip/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ia64 ppc x86"
-IUSE=""
+KEYWORDS="x86 ppc"
 
 DEPEND="virtual/x11"
 
@@ -22,5 +21,5 @@ src_compile() {
 src_install () {
 	make DESTDIR=${D} install || die
 	make DESTDIR=${D} install.man || die
-	dodoc README CHANGES
+	dodoc README INSTALL CHANGES
 }

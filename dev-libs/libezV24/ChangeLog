@@ -1,12 +1,6 @@
 # ChangeLog for dev-libs/libezV24
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libezV24/ChangeLog,v 1.4 2004/12/29 22:22:35 ciaranm Exp $
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  23 May 2004; Bryan Østergaard <kloeri@gentoo.org> libezV24-0.1.1.ebuild:
-  Stable on alpha.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libezV24/ChangeLog,v 1.1 2003/11/19 20:12:23 weeve Exp $
 
 *libezV24-0.1.1 (19 Nov 2003)
 

@@ -1,43 +1,38 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/xshipwars/xshipwars-1.34.0.ebuild,v 1.14 2005/08/07 12:49:31 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/xshipwars/xshipwars-1.34.0.ebuild,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
-inherit toolchain-funcs eutils games
+inherit gcc games eutils
 
 MY_P=xsw-${PV}
+S=${WORKDIR}/${MY_P}
 DESCRIPTION="massively multi-player, ultra graphical, space-oriented gaming system designed exclusively for network play"
-HOMEPAGE="http://wolfpack.twu.net/ShipWars/XShipWars/"
 SRC_URI="ftp://wolfpack.twu.net/users/wolfpack/${MY_P}.tar.bz2
 	ftp://wolfpack.twu.net/users/wolfpack/xswdata-1.33d.tar.bz2
-	ftp://wolfpack.twu.net/users/wolfpack/stimages1.7.tar.bz2
+	ftp://wolfpack.twu.net/users/wolfpack/stimages1.7.tar.bz
 	ftp://wolfpack.twu.net/users/wolfpack/babylon5images1.1.tar.bz2
 	ftp://wolfpack.twu.net/users/wolfpack/stsounds1.4.tgz"
+HOMEPAGE="http://wolfpack.twu.net/ShipWars/XShipWars/"
 
-LICENSE="GPL-2 xshipwars"
+KEYWORDS="x86"
 SLOT="0"
-KEYWORDS="ppc x86"
-IUSE=""
+LICENSE="GPL-2 xshipwars"
 
-DEPEND="virtual/x11
-	>=media-sound/esound-0.2.23"
-
-S=${WORKDIR}/${MY_P}
+DEPEND="virtual/glibc
+	>=media-sound/esound-0.2.23
+	>=x11-base/xfree-4.1.0"
 
 src_unpack() {
 	unpack ${MY_P}.tar.bz2
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-gcc33.patch
 }
 
 src_compile() {
-	local makefile
-
 	./configure.client Linux --prefix=/usr || die
 	./configure.monitor Linux --prefix=/usr || die
 	./configure.server Linux --prefix=${GAMES_PREFIX} || die
 	./configure.unvedit Linux --prefix=/usr || die
 
-	[ $(gcc-major-version) == 3 ] && epatch ${FILESDIR}/${P}-gcc3.patch
+	[ `gcc-major-version` == 3 ] && epatch ${FILESDIR}/${P}-gcc3.patch
 
 	for makefile in Makefile.* ; do
 		make \
@@ -55,7 +50,7 @@ src_install() {
 
 	dodir ${GAMES_DATADIR}/${PN}
 	tar -jxC ${D}/${GAMES_DATADIR}/${PN} -f ${DISTDIR}/xswdata-1.33d.tar.bz2
-	tar -jxC ${D}/${GAMES_DATADIR}/${PN} -f ${DISTDIR}/stimages1.7.tar.bz2
+	tar -jxC ${D}/${GAMES_DATADIR}/${PN} -f ${DISTDIR}/stimages1.7.tar.bz
 	tar -jxC ${D}/${GAMES_DATADIR}/${PN} -f ${DISTDIR}/babylon5images1.1.tar.bz2
 	tar -zxC ${D}/${GAMES_DATADIR}/${PN} -f ${DISTDIR}/stsounds1.4.tgz
 
@@ -67,18 +62,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	games_pkg_postinst
 	echo
 	einfo "Before playing, you should get a copy of the installed "
 	einfo "global XShipWars client configuration file and copy it to "
 	einfo "your home directory: "
 	echo
-	einfo "# mkdir ~/.shipwars/"
 	einfo "# cd /usr/share/games/xshipwars/etc/ "
 	einfo "# cp xshipwarsrc ~/.shipwars/xshipwarsrc "
 	einfo "# cp universes ~/.shipwars/universes "
-	echo
-	einfo "You will probably need to edit the xshipwarsrc to fit your needs."
 	echo
 	einfo "Then type 'xsw &' to start the game"
 	echo

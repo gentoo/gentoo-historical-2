@@ -1,30 +1,19 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/tdb/tdb-1.0.6.ebuild,v 1.20 2004/10/26 20:43:57 agriffis Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer Jon Nelson <jnelson@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/tdb/tdb-1.0.6.ebuild,v 1.1 2002/04/07 17:13:27 jnelson Exp $
 
-inherit gnuconfig eutils
-
-DESCRIPTION="A Trivial Database"
-SRC_URI="mirror://sourceforge/tdb/${P}.tar.gz"
+S=${WORKDIR}/${P}
+DESCRIPTION="tdb - Trivial Database"
+SRC_URI="http://prdownloads.sourceforge.net/tdb/${P}.tar.gz"
 HOMEPAGE="http://sourceforge.net/projects/tdb"
 
-KEYWORDS="x86 sparc alpha ppc amd64 ia64"
-LICENSE="GPL-2"
-SLOT="0"
-IUSE=""
-
-DEPEND="virtual/libc
-	sys-libs/gdbm"
-
-src_unpack() {
-	unpack ${A} || die
-	cd ${S}
-	epatch ${FILESDIR}/tdb-1.0.6-gcc3.patch || die
-
-	gnuconfig_update
+src_compile() {
+	./configure --prefix=/usr || die
+	make || die
 }
 
-src_install() {
-	einstall || die
-	dodoc AUTHORS NEWS README TODO
+src_install () {
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS COPYING INSTALL NEWS README TODO
 }

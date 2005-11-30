@@ -1,65 +1,6 @@
-# ChangeLog for games-simulation/simutrans
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/simutrans/ChangeLog,v 1.14 2005/10/13 20:30:42 mr_bones_ Exp $
-
-  13 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  -simutrans-0.84.8.4.ebuild, -simutrans-0.84.16.2.ebuild:
-  clean old ebuilds
-
-*simutrans-0.86.10.1 (09 Oct 2005)
-
-  09 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +simutrans-0.86.10.1.ebuild:
-  version bump (bug #108450) - ebuild from  Paul Dunwoody
-
-  19 Sep 2005; Luis Medinas <metalgod@gentoo.org>
-  simutrans-0.84.16.4.ebuild:
-  Marked Stable on amd64.
-
-*simutrans-0.84.16.4 (09 Mar 2005)
-
-  09 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +simutrans-0.84.16.4.ebuild:
-  version bump
-
-  19 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  -simutrans-0.82.10.ebuild, -simutrans-0.82.15.7.ebuild:
-  clean older versions
-
-*simutrans-0.84.16.2 (06 Oct 2004)
-
-  06 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +simutrans-0.84.16.2.ebuild:
-  version bump (bug #65588)
-
-*simutrans-0.84.8.4 (02 Jun 2004)
-
-  02 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  simutrans-0.84.8.4.ebuild:
-  version bump (bug #52236)
-
-*simutrans-0.82.15.7 (12 Jan 2004)
-
-  12 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  simutrans-0.82.15.7.ebuild:
-  version bump (bug 38022)
-
-  26 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
-  simutrans-0.82.10.ebuild:
-  fix save directory permissions so saving games is allowed (bug 33573)
-  more error checking/messages
-  use sed-4
-
-  18 Sep 2003; Michael Sterrett <msterret@gentoo.org> simutrans-0.81.0.ebuild,
-  simutrans-0.82.10.ebuild, simutrans-0.82.3.ebuild, simutrans-0.82.5.ebuild:
-  Mark simutrans-0.82.10 stable and clean out the old versions. All of these
-  are, according to the author, "beta versions", but "quite playable".
-
-*simutrans-0.82.10 (18 Sep 2003)
-
-  18 Sep 2003; Michael Sterrett <msterret@gentoo.org>
-  simutrans-0.82.10.ebuild:
-  version bump (bug 29054)
+# ChangeLog for app-games/simutrans
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/simutrans/ChangeLog,v 1.1 2003/09/11 12:22:49 vapier Exp $
 
 *simutrans-0.82.5 (04 Aug 2003)
 

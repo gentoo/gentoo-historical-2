@@ -1,33 +1,7 @@
 # ChangeLog for app-cdr/bchunk
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/bchunk/ChangeLog,v 1.13 2005/05/30 18:03:13 pylon Exp $
-
-  30 May 2005; Lars Weiler <pylon@gentoo.org> bchunk-1.1.1.ebuild,
-  bchunk-1.2.0.ebuild:
-  Changed to toolchain-funcs; bug #92745.
-
-  12 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> bchunk-1.2.0.ebuild:
-  Unstable ppc-macos
-
-*bchunk-1.2.0 (22 Oct 2004)
-
-  22 Oct 2004; Lars Weiler <pylon@gentoo.org> +metadata.xml,
-  +bchunk-1.2.0.ebuild:
-  New version.  See bug #56614.
-
-  05 Oct 2004; Malcolm Lashley <malc@gentoo.org> bchunk-1.1.1.ebuild:
-  ~amd64 - bug #66406
-
-  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> bchunk-1.1.1.ebuild:
-  Don't assign default to S; header fix
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
 
 *bchunk-1.1.1 (12 May 2002)
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-
-  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
-
-  Added ppc keyword
 
   12 May 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
   

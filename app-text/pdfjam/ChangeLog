@@ -1,27 +1,6 @@
 # ChangeLog for app-text/pdfjam
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pdfjam/ChangeLog,v 1.8 2005/04/24 11:41:43 hansmi Exp $
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pdfjam-1.10.ebuild:
-  Stable on ppc.
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> pdfjam-1.10.ebuild:
-  stable on amd64
-
-*pdfjam-1.20 (21 Feb 2005)
-
-  21 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +pdfjam-1.20.ebuild:
-  Version bumped; bug #82688. Thanks to Till Maas <opensource@gmx.net> for
-  fixing manpages.
-
-  27 Nov 2004; <pclouds@gentoo.org> pdfjam-1.10.ebuild,+metadata.xml:
-  Marked 1.10 stable on x86. Added missing metadata.xml
-
-  06 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> pdfjam-1.10.ebuild:
-  Marked ~amd64.
-
-  03 Aug 2004; David Holm <dholm@gentoo.org> pdfjam-1.10.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/pdfjam/ChangeLog,v 1.1 2004/07/29 17:54:31 pclouds Exp $
 
 *pdfjam-1.10 (30 Jul 2004)
 

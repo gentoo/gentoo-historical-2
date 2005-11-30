@@ -1,22 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak2-server-bin/teamspeak2-server-bin-2.0.20.1.ebuild,v 1.13 2005/04/01 19:13:13 kugelfang Exp $
-
-inherit eutils
+# $
 
 DESCRIPTION="The Teamspeak Voice Communication Server"
-HOMEPAGE="http://www.goteamspeak.com/"
+HOMEPAGE="http://www.teamspeak.org/"
 SRC_URI="ftp://webpost.teamspeak.org/releases/ts2_server_rc2_${PV//./}.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-* x86 amd64"
+KEYWORDS="~x86"
 IUSE="mysql"
 
 S=${WORKDIR}/tss2_rc2
-
-RDEPEND="amd64? ( >=sys-libs/glibc-2.3.4.20041102 )"
-DEPEND=""
 
 pkg_setup() {
 	enewuser teamspeak2
@@ -33,7 +28,7 @@ src_install() {
 
 	insinto /opt/teamspeak2-server/sql
 	doins sqlite_sql/*.sql
-	if use mysql; then
+	if [ `use mysql` ] ; then
 		insinto /opt/teamspeak2-server/mysql_sql
 		doins mysql_sql/*.sql
 	fi
@@ -55,14 +50,11 @@ src_install() {
 	fi
 
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/teamspeak2-server.rc6 teamspeak2-server
+	newexe ${FILESDIR}/teamspeak2-server.rc7 teamspeak2-server
 
 	keepdir /var/{lib,log,run}/teamspeak2-server
 	fowners teamspeak2 /var/{lib,log,run}/teamspeak2-server
 	fperms 700 /var/{lib,log,run}/teamspeak2-server
-
-	# Fix bug #66639
-	dosym sql /opt/teamspeak2-server/sqlite_sql
 }
 
 pkg_postinst() {

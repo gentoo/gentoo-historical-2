@@ -1,20 +1,21 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/korelib/korelib-1.0.ebuild,v 1.9 2004/07/02 04:43:18 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/korelib/korelib-1.0.ebuild,v 1.1 2002/08/20 01:36:25 george Exp $
 
-IUSE=""
+#A="korelib-1.0.tar.gz"
+S=${WORKDIR}/${P}
 DESCRIPTION="theKompany's cross-platform c++ library for developing modular applications"
 SRC_URI="ftp://ftp.rygannon.com/pub/Korelib/${P}.tar.gz"
 HOMEPAGE="http://www.thekompany.com/projects/korelib/"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+RDEPEND="${DEPEND}"
 
-LICENSE="GPL-2 QPL-1.0"
+LICENSE="GPL-2 | commercial"
 SLOT="1"
 KEYWORDS="x86"
 
 src_compile() {
-	patch -p0 < ${FILESDIR}/${P}-gentoo.diff
 	#this is really weird - lib developers did not run automake themselves
 	#leaving this to the "end users"
 	automake
@@ -27,8 +28,8 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install
-
-	#the lib installs one binary with by the name "demo" - bad choice
+	
+	#the lib installs one binary with by the name "demo" - baad choice
 	mv ${D}/usr/bin/demo ${D}/usr/bin/kore-demo
 
 	dodoc AUTHORS COPYING ChangeLog NEWS README THANKS TODO

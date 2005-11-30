@@ -1,31 +1,8 @@
-# ChangeLog for sys-apps/stat
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/stat/ChangeLog,v 1.11 2004/08/05 10:15:34 ciaranm Exp $
-
-  05 Aug 2004; Ciaran McCreesh <ciaranm@gentoo.org> stat-2.5.ebuild,
-  stat-3.3.ebuild:
-  Added ~sparc, bug #59467
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> stat-2.5.ebuild,
-  stat-3.3.ebuild:
-  virtual/glibc -> virtual/libc
-
-  13 Oct 2003; Chris PeBenito <pebenito@gentoo.org> stat-2.5.ebuild,
-  stat-3.3.ebuild:
-  Remove deprecated selinux patch
-
-*stat-3.3 (07 Sep 2003)
-
-  07 Sep 2003; Arcady Genkin <agenkin@gentoo.org> :
-  Version bump.  Closees #27803.
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
 
 *stat-2.5 (2002-02-08)
-
-  23 Mar 2003; Joshua Brindle <method@gentoo.org> stat-2.5.ebuild:
-  added selinux support, thanks pebenito
-
-  14 Jul 2002; phoen][x <phoenix@gentoo.org> stat-2.5.ebuild :
-  Added LICENSE, KEYWORDS, SLOT.
 
   8 Feb 2002; Arcady Genkin <agenkin@thpoon.com> stat-2.5.ebuild, ChangeLog:
   

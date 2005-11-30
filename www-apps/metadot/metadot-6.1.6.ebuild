@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/metadot/metadot-6.1.6.ebuild,v 1.10 2005/09/02 11:20:54 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/metadot/metadot-6.1.6.ebuild,v 1.1 2004/08/29 00:07:24 rl03 Exp $
 
 inherit webapp
 MY_P=${P/-/}
@@ -12,18 +12,20 @@ DESCRIPTION="Metadot is a CMS with file, page and link management, and collabora
 HOMEPAGE="http://www.metadot.com"
 SRC_URI="http://download.metadot.com/${MY_P}.tar.gz"
 
-KEYWORDS="~x86 ppc"
+KEYWORDS="~x86"
 
+DEPEND="$DEPEND"
 RDEPEND="
+	${DEPEND}
 	>=dev-db/mysql-3.23
 	>=net-www/apache-1.3.6
 	>=dev-lang/perl-5.005
-	>=www-apache/mod_perl-1.21
+	>=dev-perl/mod_perl-1.21
 	dev-perl/DBI
 	dev-perl/DBD-mysql
 	dev-perl/Apache-DBI
 	dev-perl/XML-RSS
-	perl-core/Storable
+	dev-perl/Storable
 	dev-perl/perl-ldap
 	dev-perl/Log-Agent
 	dev-perl/Mail-POP3Client
@@ -36,13 +38,12 @@ RDEPEND="
 	dev-perl/AppConfig
 	dev-perl/ImageSize
 	dev-perl/Template-Toolkit
-	perl-core/Time-HiRes
+	dev-perl/Time-HiRes
 	dev-perl/Lingua-EN-NameParse
 	dev-perl/Number-Format
 	dev-perl/XML-Simple
-	dev-perl/Text-CSV_XS
+	dev-perl/Text-CSV
 	dev-perl/Archive-Zip
-	dev-perl/DateManip
 "
 
 LICENSE="GPL-2"
@@ -53,7 +54,7 @@ src_install() {
 
 	dodoc CHANGELOG README
 	cp -R [[:lower:]][[:lower:]]* ${D}/${MY_HTDOCSDIR}
-	webapp_postinst_txt en ${FILESDIR}/postinstall-en-${PVR}.txt
-	webapp_hook_script ${FILESDIR}/reconfig-${PVR}
+	webapp_postinst_txt en ${FILESDIR}/postinstall-en.txt
+	webapp_hook_script ${FILESDIR}/reconfig
 	webapp_src_install
 }

@@ -1,33 +1,6 @@
 # ChangeLog for dev-lisp/cl-prevalence
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-prevalence/ChangeLog,v 1.8 2005/05/24 18:48:34 mkennedy Exp $
-
-  24 May 2005; <mkennedy@gentoo.org> cl-prevalence-20040709.ebuild:
-  Keywording ~sparc
-
-  17 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  -files/prevalence-1-close-shadow-gentoo.patch, -files/prevalence.asd,
-  -cl-prevalence-1.ebuild, -cl-prevalence-1-r1.ebuild,
-  cl-prevalence-20040709.ebuild:
-  Removed old ebuilds.
-
-  11 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  cl-prevalence-20040709.ebuild:
-  Keywording for ~amd64
-
-  16 Jul 2004; David Holm <dholm@gentoo.org> cl-prevalence-20040709.ebuild:
-  Added to ~ppc.
-
-*cl-prevalence-20040709 (11 Jul 2004)
-
-  11 Jul 2004; <mkennedy@gentoo.org> +files/20040709-gentoo.patch,
-  +cl-prevalence-20040709.ebuild:
-  New upstream version.
-
-*cl-prevalence-1-r1 (12 Feb 2004)
-
-  12 Feb 2004; <mkennedy@gentoo.org> cl-prevalence-1-r1.ebuild:
-  Cleanup for eclass changes.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-prevalence/ChangeLog,v 1.1 2004/01/10 05:58:51 mkennedy Exp $
 
 *cl-prevalence-1 (09 Jan 2004)
 

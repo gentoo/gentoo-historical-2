@@ -1,30 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/mips64/n32/2004.2/make.defaults,v 1.11 2005/04/26 18:50:02 kumba Exp $
+# copyright 2000 Daniel Robbins, Gentoo Foundation.
+# System-wide defaults for the Portage system
 
 ARCH="mips"
+ABI=n32
 
-# n32 is a type of 32bit userland that can only be built with
-# a 64bit compiler, thus we technically use a 64bit userland.
-CHOST="mips64-unknown-linux-gnu"
+# Host-type
 
-# Used in ebuilds for verifying mips64 profile
+CHOST=mips64-unknown-linux-gnu
+CCHOST=mips64-unknown-linux-gnu
+PLATFORM=${CHOST}
+
 PROFILE_ARCH="mips64"
 
-# Sandbox is broken on mips (Bug #45814)
-FEATURES="-sandbox ccache autoconfig"
+# Options passed to make during the build process
+MAKEOPTS="-j1"
 
-# Compiler flags
-# We build a *minimum* of mips3, because just about any mips64 box we theoretically
-# support should meet the mips3 standard.  This is also the n32 profile, so set
-# the default build ABI to n32
-CFLAGS="-O2 -pipe -march=mips3 -mabi=n32"
+# Fetching command (5 tries, passive ftp for firewall compatibility)
+FETCHCOMMAND="/usr/bin/wget -t 5 --passive-ftp \${URI} -P \${DISTDIR}"
+# Global configure options
+FEATURES="debug"
+# C Compiler flags (mips4 atm)
+CFLAGS="-O2 -pipe -mabi=n32 -mips4"
+# C++ Compiler flags
 CXXFLAGS=${CFLAGS}
 
-# There is no "stable" n32 support yet.  It's aaaalllll experimental
+USE="slang readline gpm berkdb gdbm tcpd pam crypt libwww ssl nls perl python sdl mips n32 -multilib"
+
 ACCEPT_KEYWORDS="mips ~mips"
 
-STAGE1_USE="n32"
-USE="${STAGE1_USE} readline fortran gpm berkdb gdbm tcpd pam crypt libwww ssl nls perl python sdl mips -multilib nomultilib"
-GRP_STAGE23_USE="${STAGE1_USE} readline gpm berkdb gdbm tcpd pam crypt libwww ssl nls perl python sdl mips -multilib nomultilib"
+COMPILER="gcc3"
 
+#Make sure everything is compiled as N32
+#export LDEMULATION=elf32btsmipn32
+#export GNUTARGET=elf32-ntradbigmips
+#EXTRA_ECONF="--libdir=/usr/lib32"

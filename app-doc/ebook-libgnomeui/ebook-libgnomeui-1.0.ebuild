@@ -1,17 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/ebook-libgnomeui/ebook-libgnomeui-1.0.ebuild,v 1.12 2005/01/01 13:11:02 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Francisco Gimeno <kikov@fco-gimeno.com>
+# Manteiner José Alberto Suárez López <bass@gentoo.org>
 
-DESCRIPTION="libgnomeui 1.0  EBook."
+DESCRIPTION="libgnomeui 1.0  EBook." 
 
-EBOOKNAME="libgnomeui"
+EBOOKNAME="gnomeui"
 EBOOKVERSION="1.0"
 NOVERSION="1"
+EBOOKDESTDIR="libgnomeui-1.0"
+. /usr/portage/eclass/inherit.eclass || die
+inherit ebook
 
-inherit eutils ebook
-
-src_unpack() {
-	unpack libgnomeui.tar.gz
-	cd ${S}
-	epatch ${FILESDIR}/ebook-libgnome-book.devhelp.patch
-}

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/eq-xmms/eq-xmms-0.6-r1.ebuild,v 1.6 2005/09/04 10:23:27 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/eq-xmms/eq-xmms-0.6-r1.ebuild,v 1.1 2004/07/14 11:07:48 voxus Exp $
 
 IUSE=""
 
@@ -9,10 +9,11 @@ inherit eutils
 DESCRIPTION="EQU is a realtime graphical equalizer effect plugin that will equalize almost everything that you play through XMMS, not just the MP3s"
 HOMEPAGE="http://equ.sourceforge.net/"
 SRC_URI="mirror://sourceforge/equ/${P}.tar.gz"
+RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 sparc ~ppc"
+KEYWORDS="~x86 ~amd64 ~sparc ~ppc"
 
 RDEPEND="media-sound/xmms"
 DEPEND="${RDEPEND}
@@ -30,12 +31,11 @@ src_unpack() {
 		WANT_AUTOMAKE=1.7 aclocal
 		WANT_AUTOMAKE=1.7 automake
 		WANT_AUTOCONF=2.5 autoconf
-		libtoolize --copy --force
 	fi
 }
 
 src_install() {
-	make DESTDIR="${D}" libdir=`xmms-config --effect-plugin-dir` install || die
+	make DESTDIR=${D} install || die
 
-	dodoc AUTHORS BUGS ChangeLog NEWS README README.BSD SKINS TODO
+	dodoc AUTHORS BUGS COPYING ChangeLog INSTALL NEWS README README.BSD SKINS TODO
 }

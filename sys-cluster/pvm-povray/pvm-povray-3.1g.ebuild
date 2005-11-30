@@ -1,14 +1,12 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/pvm-povray/pvm-povray-3.1g.ebuild,v 1.7 2004/10/01 23:55:42 pyrania Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/pvm-povray/pvm-povray-3.1g.ebuild,v 1.1 2003/09/09 19:45:09 tantive Exp $
 
 S=${WORKDIR}/povray31
-DESCRIPTION="The Persistence Of Vision Ray Tracer - PVM version"
+DESCRIPTION="The Persistance Of Vision Ray Tracer - PVM version"
 SRC_URI="http://www.ibiblio.org/gentoo/distfiles/povuni_s_3.1.tgz
 	http://www.ibiblio.org/gentoo/distfiles/povuni_d_3.1.tgz
-	mirror://sourceforge/pvmpov/pvmpov-3.1g2.tgz"
+	http://aleron.dl.sourceforge.net/sourceforge/pvmpov/pvmpov-3.1g2.tgz"
 HOMEPAGE="http://pvmpov.sourceforge.net/"
 
 SLOT="0"
@@ -32,7 +30,7 @@ src_unpack() {
 	cp -R ${WORKDIR}/pvmpov3_1g_2/povray31/source ${S}
 
 	# The PVM Patch
-	epatch ${WORKDIR}/pvmpov3_1g_2/pvmpov.patch || die "epatch failed."
+	patch -p1 < ${WORKDIR}/pvmpov3_1g_2/pvmpov.patch
 
 	cd ${S}/source/pvm
 
@@ -64,8 +62,8 @@ src_unpack() {
 
 src_compile() {
 	einfo 'Checking for $PVMROOT...'
-
-	if [ -z "${PVMROOT}" ]
+	
+	if [ -z "${PVMROOT}" ] 
 	then
 		eerror 'Please set your $PVMROOT correctly, it is now empty.'
 		eerror 'The $PVMROOT variable should point to your PVM '
@@ -90,12 +88,12 @@ src_compile() {
 	cd source/pvm
 	aimk newunix || die
 
-	if use X ; then
+	if [ "`use X`" ] ; then
 		einfo 'Building x-pvmpov'
 		aimk newxwin || die
 	fi
 
-	if use svga ; then
+	if [ "`use svga`" ] ; then
 		einfo 'Building s-pvmpov'
 		aimk newsvga || die
 	fi

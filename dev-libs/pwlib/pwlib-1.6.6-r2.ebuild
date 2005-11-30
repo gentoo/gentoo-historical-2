@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/pwlib/pwlib-1.6.6-r2.ebuild,v 1.4 2005/08/26 16:01:13 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/pwlib/pwlib-1.6.6-r2.ebuild,v 1.1 2005/02/03 19:57:59 stkn Exp $
 
 inherit eutils flag-o-matic multilib
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/openh323/${MY_P}-src.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~x86 ppc ~amd64 ~sparc ~alpha"
+KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~alpha"
 
 DEPEND=">=sys-devel/bison-1.28
 	>=sys-devel/flex-2.5.4a
@@ -26,7 +26,7 @@ DEPEND=">=sys-devel/bison-1.28
 	ieee1394? ( media-libs/libdv
 		sys-libs/libavc1394
 		sys-libs/libraw1394
-		media-libs/libdc1394 )
+		media-plugins/libdc1394 )
 	esd? ( media-sound/esound )"
 
 S=${WORKDIR}/${PN}
@@ -47,10 +47,6 @@ src_unpack() {
 
 	# dmix patch for alsa support (#68553)
 	epatch ${FILESDIR}/${P}-alsa_dmix.diff
-
-	# newer esound package doesn't install libesd.a anymore,
-	# use dynamic library instead (fixes #100432)
-	epatch ${FILESDIR}/pwlib-1.6.3-dyn-esd.patch
 }
 
 src_compile() {

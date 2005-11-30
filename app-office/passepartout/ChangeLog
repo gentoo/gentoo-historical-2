@@ -1,11 +1,6 @@
 # ChangeLog for app-office/passepartout
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/passepartout/ChangeLog,v 1.3 2005/04/02 04:31:48 usata Exp $
-
-*passepartout-0.6 (02 Apr 2005)
-
-  02 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> +passepartout-0.6.ebuild:
-  Version bumped. This closes bug #77652.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/passepartout/ChangeLog,v 1.1 2004/11/07 18:07:21 usata Exp $
 
 *passepartout-0.5 (08 Nov 2004)
 

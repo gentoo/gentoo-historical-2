@@ -1,10 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.4.1-r3.ebuild,v 1.20 2005/10/07 02:01:56 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.4.1-r3.ebuild,v 1.1 2004/09/19 21:20:02 tigger Exp $
 
-IUSE="static nls bootstrap build multilib gcj gtk fortran objc hardened n32 n64 emul-linux-x86"
+IUSE="static nls bootstrap build multilib gcj gtk f77 objc hardened uclibc n32 n64"
 
-inherit eutils flag-o-matic libtool gnuconfig versionator
+inherit eutils flag-o-matic libtool gnuconfig
 
 DESCRIPTION="The GNU Compiler Collection.  Includes C/C++, java compilers, pie and ssp extensions"
 HOMEPAGE="http://www.gnu.org/software/gcc/gcc.html"
@@ -12,7 +12,7 @@ LICENSE="GPL-2 LGPL-2.1"
 
 # previous release known to b0rk glibc on hppa... i dont know if this bug
 # still exists, so i'll keep in the -hppa...
-KEYWORDS="-* ~amd64 mips ppc64 ~x86 -hppa ppc s390"
+KEYWORDS="-* ~amd64 ~mips ~ppc64 ~x86 -hppa ppc"
 
 # we need a proper glibc version for the Scrt1.o provided to the pie-ssp specs
 # we also need at least glibc 2.3.3 20040420-r1 in order for gcc 3.4 not to nuke
@@ -22,29 +22,30 @@ KEYWORDS="-* ~amd64 mips ppc64 ~x86 -hppa ppc s390"
 # .eh_frame ld optimisation and symbol visibility support, but it hasnt been
 # well tested in gentoo on any arch other than amd64!!
 DEPEND="virtual/libc
-	!sys-devel/hardened-gcc
+	!uclibc? ( >=sys-libs/glibc-2.3.3_pre20040420-r1 )
+	!uclibc? ( hardened? ( >=sys-libs/glibc-2.3.3_pre20040529 ) )
+	( !sys-devel/hardened-gcc )
 	>=sys-devel/binutils-2.14.90.0.8-r1
 	amd64? ( >=sys-devel/binutils-2.15.90.0.1.1-r1 )
 	>=sys-devel/bison-1.875
-	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.1 )
+	>=sys-devel/gcc-config-1.3.1
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-baselibs-1.0 ) )
-	!build? (
-		gcj? (
-			gtk? ( >=x11-libs/gtk+-2.2 )
-			>=media-libs/libart_lgpl-2.1
-		)
-		>=sys-libs/ncurses-5.2-r2
-		nls? ( sys-devel/gettext )
-	)"
+	!build? ( gcj? ( gtk? ( >=x11-libs/gtk+-2.2 ) ) )
+	!build? ( gcj? ( >=media-libs/libart_lgpl-2.1 ) )
+	!build? ( >=sys-libs/ncurses-5.2-r2
+	          nls? ( sys-devel/gettext ) )"
+
 RDEPEND="virtual/libc
-	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.1 )
+	!uclibc? ( >=sys-libs/glibc-2.3.3_pre20040420-r1 )
+	!uclibc? ( hardened? ( >=sys-libs/glibc-2.3.3_pre20040529 ) )
+	>=sys-devel/gcc-config-1.3.1
 	>=sys-libs/zlib-1.1.4
 	>=sys-apps/texinfo-4.2-r4
 	!build? ( >=sys-libs/ncurses-5.2-r2 )"
 
-PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )"
+PDEPEND="sys-devel/gcc-config"
 [ "${ABI}" != "n32" ] && [ "${ABI}" != "n64" ] && PDEPEND="${PDEPEND}
-	!n32? ( !n64? ( !s390? ( !elibc_uclibc? ( sys-libs/libstdc++-v3 ) ) ) )"
+	!n32? ( !n64? ( !uclibc? ( sys-libs/libstdc++-v3 ) ) )"
 
 
 # <<--------------------SRC_URI variables-------------------->>
@@ -52,7 +53,7 @@ PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )"
 # would just make the files unavailable until they get mirrored. All files
 # in SRC_URI will eventually get mirrored and mirrors will be tried before
 # falling back on this location anyways.
-GENTOO_BASE_URI="http://dev.gentoo.org/~lv/GCC/"
+GENTOO_BASE_URI="http://dev.gentoo.org/~lv/"
 
 # Patch tarball support ...
 PATCH_VER="1.1"
@@ -67,7 +68,7 @@ if [ ${PV} != ${PV/_pre/-} ] ; then
 fi
 
 # Branch update support ...
-GCC_RELEASE_VER="${PV}"  # Tarball, etc used ...
+MAIN_BRANCH="${PV}"  # Tarball, etc used ...
 BRANCH_UPDATE=20040803
 
 # PIE support
@@ -87,12 +88,12 @@ elif [ -n "${SNAPSHOT}" ] ; then
 	S="${WORKDIR}/gcc-${SNAPSHOT//-}"
 	SRC_URI="ftp://sources.redhat.com/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT//-}.tar.bz2"
 else
-	S="${WORKDIR}/${PN}-${GCC_RELEASE_VER}"
-	SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${P}/${PN}-${GCC_RELEASE_VER}.tar.bz2"
+	S="${WORKDIR}/${PN}-${MAIN_BRANCH}"
+	SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${P}/${PN}-${MAIN_BRANCH}.tar.bz2"
 	if [ -n "${BRANCH_UPDATE}" ]
 	then
 		SRC_URI="${SRC_URI}
-		         ${GENTOO_BASE_URI}/${PN}-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2"
+		         ${GENTOO_BASE_URI}/${PN}-${MAIN_BRANCH}-branch-update-${BRANCH_UPDATE}.patch.bz2"
 	fi
 fi
 
@@ -104,7 +105,6 @@ fi
 if [ -n "${PP_VER}" ]
 then
 	SRC_URI="${SRC_URI}
-		mirror://gentoo/protector-${PP_FVER}.tar.gz
 		http://www.research.ibm.com/trl/projects/security/ssp/gcc${PP_VER}/protector-${PP_FVER}.tar.gz"
 fi
 
@@ -168,26 +168,29 @@ do_filter_flags() {
 [ ! -n "${CCHOST}" ] && export CCHOST="${CHOST}"
 
 LOC="/usr"
-#GCC_BRANCH_VER="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
-#GCC_RELEASE_VER="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
-GCC_BRANCH_VER="$(get_version_component_range 1-2)"
-GCC_RELEASE_VER="$(get_version_component_range 1-3)"
+MY_PV="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
+MY_PV_FULL="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
 
 # GCC 3.4 no longer uses gcc-lib. we'll rename this later for compatibility
 # reasons, as a few things would break without gcc-lib.
-LIBPATH="${LOC}/lib/gcc/${CCHOST}/${GCC_RELEASE_VER}"
-BINPATH="${LOC}/${CCHOST}/gcc-bin/${GCC_BRANCH_VER}"
-DATAPATH="${LOC}/share/gcc-data/${CCHOST}/${GCC_BRANCH_VER}"
+LIBPATH="${LOC}/lib/gcc/${CCHOST}/${MY_PV_FULL}"
+BINPATH="${LOC}/${CCHOST}/gcc-bin/${MY_PV}"
+DATAPATH="${LOC}/share/gcc-data/${CCHOST}/${MY_PV}"
 # Dont install in /usr/include/g++-v3/, but in gcc internal directory.
 # We will handle /usr/include/g++-v3/ with gcc-config ...
-STDCXX_INCDIR="${LIBPATH}/include/g++-v${GCC_BRANCH_VER/\.*/}"
+STDCXX_INCDIR="${LIBPATH}/include/g++-v${MY_PV/\.*/}"
 
 # Ok, this is a hairy one again, but lets assume that we
 # are not cross compiling, than we want SLOT to only contain
 # $PV, as people upgrading to new gcc layout will not have
 # their old gcc unmerged ...
 # GCC 3.4 introduces a new version of libstdc++
-SLOT="${GCC_BRANCH_VER}"
+if [ "${CHOST}" == "${CCHOST}" ]
+then
+	SLOT="${MY_PV}"
+else
+	SLOT="${CCHOST}-${MY_PV}"
+fi
 
 has_lib64() {
 	use amd64 && return 0
@@ -201,7 +204,7 @@ chk_gcc_version() {
 	local OLD_GCC_CHOST="$(gcc -v 2>&1 | egrep '^Reading specs' |\
 	                       sed -e 's:^.*/gcc[^/]*/\([^/]*\)/[0-9]\+.*$:\1:')"
 
-	if [ "${OLD_GCC_VERSION}" != "${GCC_RELEASE_VER}" ]
+	if [ "${OLD_GCC_VERSION}" != "${MY_PV_FULL}" ]
 	then
 		echo "${OLD_GCC_VERSION}" > "${WORKDIR}/.oldgccversion"
 	fi
@@ -253,7 +256,7 @@ glibc_have_ssp() {
 		&& local libc_prefix="/lib64/" \
 		|| local libc_prefix="/lib/"
 
-	use elibc_uclibc \
+	use uclibc \
 		&& local libc_file="libc.so.0" \
 		|| local libc_file="libc.so.6"
 
@@ -374,7 +377,7 @@ do_patch_tarball() {
 		# the uclibc patches need autoconf to be run
 		# for build stage we need the updated files though
 		use build || ( cd ${S}/libstdc++-v3; autoconf; cd ${S} )
-		#use build && use elibc_uclibc && ewarn "uclibc in build stage is not supported yet" && exit 1
+		#use build && use uclibc && ewarn "uclibc in build stage is not supported yet" && exit 1
 
 	elif use multilib && [ "${ARCH}" = "amd64" ]
 	then
@@ -398,7 +401,7 @@ do_piessp_patches() {
 		# adds default pie support (rs6000 too) if DEFAULT_PIE[_SSP] is defined
 		epatch ${WORKDIR}/piepatch/def
 		# disable relro/now
-		use elibc_uclibc && epatch ${FILESDIR}/3.3.3/gcc-3.3.3-norelro.patch
+		use uclibc && epatch ${FILESDIR}/3.3.3/gcc-3.3.3-norelro.patch
 	fi
 
 	# non-default SSP support.
@@ -461,7 +464,7 @@ src_unpack() {
 	elif [ -n "${SNAPSHOT}" ] ; then
 		unpack gcc-${SNAPSHOT//-}.tar.bz2
 	else
-		unpack ${PN}-${GCC_RELEASE_VER}.tar.bz2
+		unpack ${PN}-${MAIN_BRANCH}.tar.bz2
 	fi
 
 	if [ -n "${PATCH_VER}" ]
@@ -480,11 +483,13 @@ src_unpack() {
 	fi
 
 	cd ${S}
+	# Fixup libtool to correctly generate .la files with portage
+	elibtoolize --portage --shallow
 
 	# Branch update ...
 	if [ -n "${BRANCH_UPDATE}" ]
 	then
-		epatch ${DISTDIR}/${PN}-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
+		epatch ${DISTDIR}/${PN}-${MAIN_BRANCH}-branch-update-${BRANCH_UPDATE}.patch.bz2
 	fi
 
 	do_patch_tarball
@@ -495,7 +500,7 @@ src_unpack() {
 
 	# misc patches that havent made it into a patch tarball yet
 	epatch ${FILESDIR}/3.4.0/gcc34-reiser4-fix.patch
-	epatch ${FILESDIR}/gcc-spec-env.patch
+	epatch ${FILESDIR}/3.4.1/gcc-3.4.1-spec-env.patch
 
 	# MIPS is screwed screwed thing - but it's cool!
 	# I had to add ABI variable, because during bootstrap
@@ -530,9 +535,7 @@ src_unpack() {
 	# http://gcc.gnu.org/bugzilla/show_bug.cgi?id=14992 (May 3 2004)
 	sed -i -e s/HAVE_LD_AS_NEEDED/USE_LD_AS_NEEDED/g ${S}/gcc/config.in
 
-	gnuconfig_update
-	# Fixup libtool to correctly generate .la files with portage
-	elibtoolize --portage --shallow
+	use uclibc && gnuconfig_update
 
 	cd ${S}; ./contrib/gcc_update --touch &> /dev/null
 }
@@ -548,7 +551,7 @@ src_compile() {
 	then
 		myconf="${myconf} --enable-shared"
 		gcc_lang="c,c++"
-		use fortran && gcc_lang="${gcc_lang},f77"
+		use f77 && gcc_lang="${gcc_lang},f77"
 		use objc && gcc_lang="${gcc_lang},objc"
 		use gcj && gcc_lang="${gcc_lang},java"
 		# We do NOT want 'ADA support' in here!
@@ -595,7 +598,7 @@ src_compile() {
 	# uclibc uses --enable-clocale=uclibc (autodetected)
 	# --disable-libunwind-exceptions needed till unwind sections get fixed. see ps.m for details
 
-	if ! use elibc_uclibc
+	if ! use uclibc
 	then
 		# it's getting close to a time where we are going to need USE=glibc, uclibc, bsdlibc -solar
 		myconf="${myconf} --enable-__cxa_atexit --enable-clocale=gnu"
@@ -664,6 +667,9 @@ src_compile() {
 	then
 		find ${WORKDIR}/build -name '*.[17]' -exec touch {} \; || :
 	fi
+
+	# Setup -j in MAKEOPTS
+	get_number_of_jobs
 
 	einfo "Building GCC..."
 	# Only build it static if we are just building the C frontend, else
@@ -736,8 +742,8 @@ src_install() {
 
 	dodir /lib /usr/bin
 	dodir /etc/env.d/gcc
-	echo "PATH=\"${BINPATH}\"" > ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "ROOTPATH=\"${BINPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "PATH=\"${BINPATH}\"" > ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "ROOTPATH=\"${BINPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
 
 	# The LDPATH stuff is kinda iffy now that we need to provide compatibility
 	# with older versions of GCC for binary apps.
@@ -752,14 +758,14 @@ src_install() {
 	then
 		LDPATH="${LDPATH}:${LOC}/lib/gcc-lib/${CCHOST}/${BULIB}"
 	fi
-	echo "LDPATH=\"${LDPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "LDPATH=\"${LDPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
 
-	echo "MANPATH=\"${DATAPATH}/man\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "INFOPATH=\"${DATAPATH}/info\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "STDCXX_INCDIR=\"${STDCXX_INCDIR##*/}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "MANPATH=\"${DATAPATH}/man\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "INFOPATH=\"${DATAPATH}/info\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "STDCXX_INCDIR=\"${STDCXX_INCDIR##*/}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
 	# Also set CC and CXX
-	echo "CC=\"gcc\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "CXX=\"g++\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "CC=\"gcc\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "CXX=\"g++\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
 
 	# Make sure we do not check glibc for SSP again, as we did already
 	if glibc_have_ssp || \
@@ -818,7 +824,7 @@ src_install() {
 
 		# Rename jar because it could clash with Kaffe's jar if this gcc is
 		# primary compiler (aka don't have the -<version> extension)
-		cd ${D}${LOC}/${CCHOST}/gcc-bin/${GCC_BRANCH_VER}
+		cd ${D}${LOC}/${CCHOST}/gcc-bin/${MY_PV}
 		[ -f jar ] && mv -f jar gcj-jar
 
 		# Move <cxxabi.h> to compiler-specific directories
@@ -866,7 +872,7 @@ src_install() {
 		cd ${S}/gcc
 		docinto ${CCHOST}/gcc
 		dodoc ChangeLog* FSFChangeLog* LANGUAGES NEWS ONEWS README* SERVICE
-		if use fortran
+		if use f77
 		then
 			cd ${S}/libf2c
 			docinto ${CCHOST}/libf2c
@@ -960,7 +966,7 @@ pkg_postinst() {
 	fi
 	if [ "${ROOT}" = "/" -a "${CHOST}" = "${CCHOST}" ]
 	then
-		gcc-config --use-portage-chost ${CCHOST}-${GCC_RELEASE_VER}
+		gcc-config --use-portage-chost ${CCHOST}-${MY_PV_FULL}
 	fi
 
 	# Update libtool linker scripts to reference new gcc version ...
@@ -975,7 +981,7 @@ pkg_postinst() {
 		then
 			OLD_GCC_VERSION="$(cat "${WORKDIR}/.oldgccversion")"
 		else
-			OLD_GCC_VERSION="${GCC_RELEASE_VER}"
+			OLD_GCC_VERSION="${MY_PV_FULL}"
 		fi
 
 		if [ -f "${WORKDIR}/.oldgccchost" ] && \

@@ -1,31 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libemf/libemf-1.0.ebuild,v 1.16 2005/06/22 16:45:49 gustavoz Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libemf/libemf-1.0.ebuild,v 1.1 2003/07/17 10:33:47 phosphan Exp $
 
 MY_P="${P/emf/EMF}"
+
 DESCRIPTION="Library implementation of ECMA-234 API for the generation of enhanced metafiles."
 HOMEPAGE="http://libemf.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
-
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86"
 IUSE=""
-
 DEPEND=""
 
 S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/${MY_P}-gcc3.patch
-	epatch ${FILESDIR}/${MY_P}-amd64.patch
+	patch -p0 < ${FILESDIR}/${MY_P}-gcc3.patch || die "patch failed"
 }
 
 src_compile() {
-	econf --enable-editing || die
+	econf --enable-editing
 	emake || die
 }
 

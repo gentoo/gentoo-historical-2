@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/audiocompress/audiocompress-1.5.1.ebuild,v 1.6 2005/09/04 10:43:45 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/audiocompress/audiocompress-1.5.1.ebuild,v 1.1 2004/08/02 22:07:33 eradicator Exp $
 
 IUSE="xmms"
 
@@ -15,11 +15,9 @@ SRC_URI="http://trikuare.cx/code/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 #-amd64: 1.5.1 - Floating point exception when using xmms plugin
-#-sparc: 1.5.5 - Gdk-ERROR **: BadValue (integer parameter out of range for operation) serial 7 error_code 2 request_code 1 minor_code 0
-KEYWORDS="-amd64 ~ppc -sparc x86"
+KEYWORDS="~x86 -amd64"
 
-DEPEND="xmms? ( media-sound/xmms )
-	media-sound/esound"
+DEPEND="xmms? ( media-sound/xmms )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -46,5 +44,5 @@ src_install() {
 		exeinto "$(xmms-config --effect-plugin-dir)" || die
 		doexe libcompress.so || die
 	fi
-	dodoc ChangeLog README TODO
+	dodoc COPYING ChangeLog README TODO
 }

@@ -1,30 +1,27 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gluelog/gluelog-1.0-r2.ebuild,v 1.15 2004/06/30 02:35:50 vapier Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Daniel Robbins <drobbins@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gluelog/gluelog-1.0-r2.ebuild,v 1.1 2001/02/07 15:51:27 achim Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Pipe and socket fittings for the system and kernel logs"
-HOMEPAGE="http://www.linuxuser.co.za/projects.php3"
 SRC_URI=""
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
-IUSE=""
-
-DEPEND="virtual/libc"
-
-S=${WORKDIR}
-
-src_unpack() {
-	cp ${FILESDIR}/{gluelog,glueklog}.c . || die
-}
+DEPEND="virtual/glibc"
 
 src_compile() {
-	emake gluelog glueklog || die
+
+	mkdir ${S}
+
+	cd ${FILESDIR}
+	try gcc ${CFLAGS} gluelog.c -o ${S}/gluelog
+	try gcc ${CFLAGS} glueklog.c -o ${S}/glueklog
 }
 
 src_install() {
-	dosbin gluelog glueklog || die
+
+	dodir /usr/sbin
+	dosbin ${S}/gluelog ${S}/glueklog
 	exeopts -m0750 -g wheel
 	dodir /var/log
 	local x
@@ -37,5 +34,7 @@ src_install() {
 		doexe ${FILESDIR}/svc-${x}
 	done
 
-	dodoc ${FILESDIR}/README
+        dodoc ${FILESDIR}/README
+
 }
+

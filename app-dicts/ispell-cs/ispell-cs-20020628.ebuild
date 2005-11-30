@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-cs/ispell-cs-20020628.ebuild,v 1.12 2005/01/01 12:53:00 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-cs/ispell-cs-20020628.ebuild,v 1.1 2002/12/03 07:15:39 seemant Exp $
 
 MY_P=${PN/cs/czech}
 S=${WORKDIR}/${MY_P}
@@ -10,10 +10,9 @@ HOMEPAGE="ftp://ftp.vslib.cz/pub/unix/ispell/"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
-KEYWORDS="ppc x86 sparc alpha mips hppa"
+KEYWORDS="x86 ppc sparc sparc64 alpha"
 
-DEPEND="dev-lang/perl
+DEPEND="sys-devel/perl
 	app-text/ispell"
 
 src_compile() {

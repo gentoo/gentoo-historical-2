@@ -1,29 +1,6 @@
 # ChangeLog for net-zope/placelesstranslationservice-fork
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/placelesstranslationservice-fork/ChangeLog,v 1.7 2005/04/02 08:55:32 blubb Exp $
-
-  02 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  placelesstranslationservice-fork-1.0_rc7.ebuild:
-  added ~amd64
-
-  19 Mar 2005; Jason Wever <weeve@gentoo.org>
-  placelesstranslationservice-fork-1.0_rc7.ebuild:
-  Added ~sparc keyword wrt bug #84791.
-
-  24 Sep 2004; Jodok Batlogg <batlogg@gentoo.org>;
-  placelesstranslationservice-fork-1.0_rc7.ebuild:
-  marked stable
-
-*placelesstranslationservice-fork-1.0_rc7 (27 Jul 2004)
-
-  27 Jul 2004; Jodok Batlogg <batlogg@gentoo.org>;
-  placelesstranslationservice-fork-1.0_rc3.ebuild,
-  +placelesstranslationservice-fork-1.0_rc7.ebuild:
-  version bump, added IUSE
-
-  27 Mar 2004; Jodok Batlogg <batlogg@gentoo.org>;
-  placelesstranslationservice-fork-1.0_rc3.ebuild:
-  added to ~ppc
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-zope/placelesstranslationservice-fork/ChangeLog,v 1.1 2004/03/26 22:52:07 batlogg Exp $
 
 *placelesstranslationservice-fork-1.0_rc3 (26 Mar 2004)
 

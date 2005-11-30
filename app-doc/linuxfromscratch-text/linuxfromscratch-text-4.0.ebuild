@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/linuxfromscratch-text/linuxfromscratch-text-4.0.ebuild,v 1.7 2005/01/01 13:14:58 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/linuxfromscratch-text/linuxfromscratch-text-4.0.ebuild,v 1.1 2003/05/15 00:42:12 spider Exp $
 
 MY_P="LFS-BOOK-${PV}"
 S="${WORKDIR}/${MY_P}"
@@ -13,8 +13,7 @@ HOMEPAGE="http://www.linuxfromscratch.org/"
 
 SLOT="0"
 LICENSE="as-is"
-IUSE=""
-KEYWORDS="x86 ppc s390 amd64"
+KEYWORDS="x86 ppc"
 
 src_unpack() {
 	mkdir ${S} ; cd ${S}

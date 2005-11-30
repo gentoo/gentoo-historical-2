@@ -1,15 +1,6 @@
-# ChangeLog for sci-mathematics/calc
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/calc/ChangeLog,v 1.5 2005/11/20 13:20:50 corsair Exp $
-
-  20 Nov 2005; Markus Rothe <corsair@gentoo.org> calc-2.11.10.1.ebuild:
-  Added ~ppc64 keyword
-
-  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> calc-2.11.9.3.ebuild:
-  Mark 2.11.9.3 stable on alpha
+# ChangeLog for app-sci/calc
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/calc/ChangeLog,v 1.1 2004/12/28 05:00:44 ribosome Exp $
 
 *calc-2.11.10.1 (28 Dec 2004)
 
@@ -28,7 +19,7 @@
   Version bump, old version declared stable for x86, disabled check if sandbox
   is present.
 
-  12 Sep 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> calc-2.11.9.3.ebuild:
+  12 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> calc-2.11.9.3.ebuild:
   Add ~alpha keyword, bug 62067.
 
   08 Sep 2004; <blubb@gentoo.org> calc-2.11.9.3.ebuild:
@@ -40,5 +31,5 @@
 *calc-2.11.9.3 (11 Mar 2004)
 
   11 Mar 2004; Peter Bienstman <pbienst@gentoo.org> calc-2.11.9.3.ebuild:
-  New app, thanks to JosÃ© Romildo Malaquias <romildo@uber.com.br> (#38736)
+  New app, thanks to José Romildo Malaquias <romildo@uber.com.br> (#38736)
 

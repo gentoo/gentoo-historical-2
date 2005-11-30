@@ -1,18 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/knotes/knotes-3.4.1.ebuild,v 1.9 2005/10/18 19:02:27 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/knotes/knotes-3.4.1.ebuild,v 1.1 2005/05/25 21:23:08 danarmak Exp $
 
 KMNAME=kdepim
-MAXKDEVER=3.4.2
+MAXKDEVER=$PV
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KDE Notes"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
-DEPEND="$(deprange $PV 3.4.2 kde-base/libkcal)
-$(deprange $PV 3.4.2 kde-base/libkdepim)
-$(deprange $PV 3.4.2 kde-base/kontact)"
+DEPEND="$(deprange $PV $MAXKDEVER kde-base/libkcal)
+$(deprange $PV $MAXKDEVER kde-base/libkdepim)
+$(deprange $PV $MAXKDEVER kde-base/kontact)"
 KMCOPYLIB="
 	libkcal libkcal
 	libkdepim libkdepim

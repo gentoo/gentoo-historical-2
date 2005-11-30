@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/bnc/bnc-2.9.3-r2.ebuild,v 1.3 2005/10/08 12:11:50 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/bnc/bnc-2.9.3-r2.ebuild,v 1.1 2005/04/03 21:41:12 swegener Exp $
 
 inherit eutils
 
@@ -22,7 +22,6 @@ S=${WORKDIR}/${MY_P}
 src_unpack() {
 	unpack ${A}
 	sed -i -e s:./mkpasswd:/usr/bin/bncmkpasswd: ${S}/bncsetup || die
-	epatch ${FILESDIR}/${P}-64bit.patch
 }
 
 src_compile() {

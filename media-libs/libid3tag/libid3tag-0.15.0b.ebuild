@@ -1,31 +1,38 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libid3tag/libid3tag-0.15.0b.ebuild,v 1.18 2005/01/12 03:57:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libid3tag/libid3tag-0.15.0b.ebuild,v 1.1 2003/07/17 09:54:53 raker Exp $
+
+IUSE="debug"
 
 DESCRIPTION="The MAD id3tag library"
-HOMEPAGE="http://mad.sourceforge.net"
+HOMEPAGE="http://mad.sourceforge.net/
+	http://www.underbit.com/products/mad/"
 SRC_URI="mirror://sourceforge/mad/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc sparc x86"
-IUSE="debug"
+KEYWORDS="~x86"
 
-DEPEND="virtual/libc
-	>=sys-libs/zlib-1.1.3"
+DEPEND="virtual/glibc
+	sys-libs/zlib
+	!media-sound/mad"
+
+S=${WORKDIR}/${P}
 
 src_compile() {
-	econf $(use_enable debug debugging) || die "configure failed"
-	emake || die "make failed"
+	local myconf
+
+	myconf="--with-gnu-ld"
+
+	use debug && myconf="${myconf} --enable-debugging" \
+		|| myconf="${myconf} --disable-debugging"
+
+	econf ${myconf} || die
+	emake || die
 }
 
 src_install() {
-	einstall || die "make install failed"
+	einstall || die
 
-	dodoc CHANGES CREDITS README TODO VERSION
-
-	# This file must be updated with every version update
-	dodir /usr/lib/pkgconfig
-	insinto /usr/lib/pkgconfig
-	doins ${FILESDIR}/id3tag.pc
+	dodoc CHANGES COPYRIGHT CREDITS README TODO VERSION
 }

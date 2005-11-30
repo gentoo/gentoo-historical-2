@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/lucene/lucene-1.4.3.ebuild,v 1.3 2005/07/15 21:11:50 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/lucene/lucene-1.4.3.ebuild,v 1.1 2005/04/25 15:20:01 luckyduck Exp $
 
 inherit java-pkg
 
@@ -9,8 +9,8 @@ HOMEPAGE="http://jakarta.apache.org/lucene"
 SRC_URI="mirror://apache/jakarta/lucene/source/${P}-src.tar.gz"
 LICENSE="Apache-1.1"
 SLOT="1"
-KEYWORDS="~amd64 ~ppc x86"
-IUSE="doc jikes junit source"
+KEYWORDS="~x86 ~ppc ~amd64"
+IUSE="jikes doc junit"
 DEPEND=">=virtual/jdk-1.2
 	>=dev-java/ant-1.5
 	jikes? ( dev-java/jikes )
@@ -35,7 +35,8 @@ src_compile() {
 
 src_install() {
 	dodoc CHANGES.txt README.txt
-	java-pkg_newjar build/lucene-1.5-rc1-dev.jar ${PN}.jar
+	mv build/lucene-1.5-rc1-dev.jar ${PN}.jar
+	java-pkg_dojar ${PN}.jar
 
 	use doc && java-pkg_dohtml -r docs/*
 	use source && java-pkg_dosrc src/java/org

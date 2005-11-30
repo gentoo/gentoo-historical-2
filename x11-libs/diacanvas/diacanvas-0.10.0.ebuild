@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/diacanvas/diacanvas-0.10.0.ebuild,v 1.3 2004/09/03 15:35:19 pvdabeel Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/diacanvas/diacanvas-0.10.0.ebuild,v 1.1 2003/12/23 16:53:05 foser Exp $
 
 inherit gnome2
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/diacanvas/${MY_P}.tar.gz"
 
 IUSE="python gnome doc"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 LICENSE="LGPL-2.1"
 
 RDEPEND=">=dev-libs/glib-2

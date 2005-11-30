@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/milo/milo-2.4.18.ebuild,v 1.6 2005/07/10 20:34:28 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/milo/milo-2.4.18.ebuild,v 1.1 2003/12/09 08:12:43 seemant Exp $
 
 inherit flag-o-matic eutils ccc
 
@@ -10,7 +10,7 @@ inherit flag-o-matic eutils ccc
 #
 
 DESCRIPTION="The Alpha MIniLOader, for Alpha Machines without SRM"
-HOMEPAGE="http://milo.core-systems.de/"
+HOMEPAGE="http://www.suse.de/~stepan/"
 
 # ive tested this, and it seems to make little difference
 # which kernel version you use, so it makes sense to use the
@@ -26,10 +26,10 @@ ldmilo_patch="20010430"
 # linload.exe :- linload utility (ldmilo equivalent for non-ruffians).
 
 SRC_URI="http://www.suse.de/~stepan/source/milo-${milo_version}.tar.bz2
-	mirror://kernel/linux/kernel/v2.2/linux-${kernel_version}.tar.bz2
-	http://dev.gentoo.org/~taviso/milo/ldmilo-patched-${ldmilo_patch}
+	http://www.kernel.org/pub/linux/kernel/v2.2/linux-${kernel_version}.tar.bz2
+	http://cvs.gentoo.org/~taviso/milo/ldmilo-patched-${ldmilo_patch}
 	http://ftp.namesys.com/pub/reiserfs-for-2.2/linux-2.2.20-reiserfs-3.5.35.diff.bz2
-	http://dev.gentoo.org/~taviso/milo/linload.exe
+	http://cvs.gentoo.org/~taviso/milo/linload.exe
 	http://www.ibiblio.org/pub/Linux/docs/HOWTO/MILO-HOWTO"
 
 #
@@ -45,7 +45,7 @@ LICENSE="MILO"
 SLOT="0"
 
 KEYWORDS="-* ~alpha"
-IUSE=""
+IUSE="ev6"
 
 DEPEND="sys-apps/kbd
 	>=sys-apps/sed-4"
@@ -157,7 +157,7 @@ src_compile() {
 	for ((i=10;i>0;i--))
 	do
 		echo -en "${BAD}${i} " # removed \a, might annoy some users.
-		epause 1
+		sleep 1
 	done
 	echo ${NORMAL}
 

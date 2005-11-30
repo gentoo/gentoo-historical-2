@@ -1,59 +1,6 @@
 # ChangeLog for media-sound/gmpc
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmpc/ChangeLog,v 1.15 2005/11/11 23:26:32 hansmi Exp $
-
-  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> gmpc-0.12.0-r1.ebuild:
-  Stable on ppc.
-
-  25 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> gmpc-0.12.0-r1.ebuild:
-  Stable on sparc
-
-  25 Oct 2005; Andrej Kacian <ticho@gentoo.org> -gmpc-0.12.0.ebuild,
-  gmpc-0.12.0-r1.ebuild:
-  0.12.0-r1 stable on x86. Removed 0.12.0.
-
-  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> gmpc-0.12.0-r1.ebuild:
-  ~sparc wrt #103486
-
-  23 Aug 2005; Herbie Hopkins <herbs@gentoo.org> gmpc-0.12.0-r1.ebuild:
-  Marked ~amd64 wrt bug #103486.
-
-  23 Aug 2005; Lars Weiler <pylon@gentoo.org> gmpc-0.12.0.ebuild,
-  gmpc-0.12.0-r1.ebuild:
-  Added ~ppc-keyword as requested in Bug #103486.
-
-*gmpc-0.12.0-r1 (23 Aug 2005)
-
-  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> +gmpc-0.12.0-r1.ebuild:
-  Make gnome-vfs dependency optional.
-
-*gmpc-0.12.0 (23 Aug 2005)
-
-  23 Aug 2005; Andrej Kacian <ticho@gentoo.org> metadata.xml,
-  +gmpc-0.12.0.ebuild:
-  Version bump. Taking over the maintainership.
-
-  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> gmpc-0.11.2.ebuild:
-  Stable amd64, sparc, x86.
-
-  22 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> gmpc-0.11.2.ebuild:
-  Stable amd64, x86.  Added to ~sparc.
-
-  06 Nov 2004; Lars Weiler <pylon@gentoo.org> gmpc-0.11.2.ebuild:
-  Stable on ppc.
-
-*gmpc-0.11.2 (01 Nov 2004)
-
-  01 Nov 2004; Lars Weiler <pylon@gentoo.org> +gmpc-0.11.2.ebuild:
-  Version bump.
-
-  03 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> gmpc-0.11.1.ebuild:
-  Stable amd64, x86.
-
-*gmpc-0.11.1 (24 Jul 2004)
-
-  24 Jul 2004; Lars Weiler <pylon@gentoo.org> gmpc-0.11.1.ebuild:
-  Stable on ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmpc/ChangeLog,v 1.1 2004/07/23 20:17:44 axxo Exp $
 
   23 Jul 2004; Thomas Matthijs <axxo@gentoo.org> :
   ebuild submitted by Bert Geens <theblackdragon@linux.be>

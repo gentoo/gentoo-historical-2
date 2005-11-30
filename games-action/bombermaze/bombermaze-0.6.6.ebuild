@@ -1,16 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/bombermaze/bombermaze-0.6.6.ebuild,v 1.6 2005/05/24 00:59:06 vapier Exp $
-
-inherit flag-o-matic eutils
+# $Header: /var/cvsroot/gentoo-x86/games-action/bombermaze/bombermaze-0.6.6.ebuild,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
 DESCRIPTION="Bomberman clone for GNOME"
-HOMEPAGE="http://www.freesoftware.fsf.org/bombermaze/"
 SRC_URI="http://freesoftware.fsf.org/download/bombermaze/${P}.tar.gz"
+HOMEPAGE="http://www.freesoftware.fsf.org/bombermaze/"
 
-LICENSE="GPL-2"
+KEYWORDS="x86 ppc"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+LICENSE="GPL-2"
 IUSE="nls"
 
 RDEPEND=">=media-libs/gdk-pixbuf-0.8
@@ -18,24 +16,21 @@ RDEPEND=">=media-libs/gdk-pixbuf-0.8
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-gcc.patch
-	sed -i \
-		-e 's:destdir=:destdir=$(DESTDIR):' \
-		po/Makefile.in.in || die "sed po"
-}
-
 src_compile() {
 	# It normally fails to locate gdk-pixbuf.h
-	append-flags $(gdk-pixbuf-config --cflags)
+	CFLAGS="${CFLAGS} `gdk-pixbuf-config --cflags`"
+	CXXFLAGS="${CXXFLAGS} `gdk-pixbuf-config --cflags`"
 
-	econf $(use_enable nls) || die "./configure failed"
-	emake || die "emake failed"
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--with-included-gettext \
+		`use_enable nls` || die "./configure failed"
+
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog NEWS TODO
+	make prefix=${D}/usr install || die
+	dodoc ABOUT-NLS AUTHORS ChangeLog COPYING INSTALL NEWS TODO
 }

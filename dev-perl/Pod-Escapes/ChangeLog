@@ -1,45 +1,6 @@
 # ChangeLog for dev-perl/Pod-Escapes
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pod-Escapes/ChangeLog,v 1.13 2005/10/02 13:09:57 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Pod-Escapes-1.04.ebuild:
-  Mark 1.04 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Pod-Escapes-1.04.ebuild:
-  add ~ia64
-
-  10 May 2005; Yuta SATOH <nigoro@gentoo.org> Pod-Escapes-1.04.ebuild:
-  Stable on ppc64
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -Pod-Escapes-1.03.ebuild:
-  Cleaning for mirror
-
-  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  Pod-Escapes-1.04.ebuild:
-  Stable on ppc.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Pod-Escapes-1.04.ebuild:
-  added ~ppc64
-
-  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> Pod-Escapes-1.04.ebuild:
-  Stable on alpha.
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> Pod-Escapes-1.04.ebuild:
-  Stable on amd64.
-
-  03 Oct 2004; Michael Cummings <mcummings@gentoo.org>
-  Pod-Escapes-1.04.ebuild:
-  Marking stable on x86 and sparc
-
-*Pod-Escapes-1.04 (06 Jun 2004)
-
-  06 Jun 2004; Michael Cummings <mcummings@gentoo.org>
-  Pod-Escapes-1.04.ebuild:
-  new version on cpan
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Pod-Escapes/ChangeLog,v 1.1 2004/02/16 15:46:07 mcummings Exp $
 
 *Pod-Escapes-1.03 (16 Feb 2004)
 

@@ -1,17 +1,6 @@
 # ChangeLog for sci-biology/bioruby
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioruby/ChangeLog,v 1.4 2005/10/18 00:16:14 ribosome Exp $
-
-*bioruby-0.6.4 (18 Oct 2005)
-
-  18 Oct 2005; Olivier Fisette <ribosome@gentoo.org> +bioruby-0.6.4.ebuild:
-  New version.
-
-  30 Aug 2005; Olivier Fisette <ribosome@gentoo.org> bioruby-0.6.2.ebuild:
-  Added to x86.
-
-  20 Jun 2005; David Holm <dholm@gentoo.org> bioruby-0.6.2.ebuild:
-  Added to ~ppc.
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioruby/ChangeLog,v 1.1 2005/06/20 00:03:32 ribosome Exp $
 
 *bioruby-0.6.2 (20 Jun 2005)
 

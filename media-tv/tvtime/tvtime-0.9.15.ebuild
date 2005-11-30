@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/tvtime/tvtime-0.9.15.ebuild,v 1.3 2005/07/09 18:27:08 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/tvtime/tvtime-0.9.15.ebuild,v 1.1 2005/02/24 08:16:51 obz Exp $
 
 inherit eutils
 
 DESCRIPTION="High quality television application for use with video capture cards."
-HOMEPAGE="http://tvtime.sourceforge.net/"
+HOMEPAGE="http://tvtime.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="pic nls"
 
 RDEPEND="virtual/x11
@@ -30,8 +30,7 @@ src_unpack() {
 	sed -i -e "s/tvtime.png/tvtime/" ${S}/docs/net-tvtime.desktop
 	# patch to adapt to PIC or __PIC__ for pic support
 	# see bug #74227
-	cd ${S}
-	epatch ${FILESDIR}/${PN}-pic.patch
+	epatch ${FILESDIR}/${P}-pic.patch
 
 }
 

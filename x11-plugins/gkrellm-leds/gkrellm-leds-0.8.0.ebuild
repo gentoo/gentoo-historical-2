@@ -1,8 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-leds/gkrellm-leds-0.8.0.ebuild,v 1.7 2005/01/28 16:58:12 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-leds/gkrellm-leds-0.8.0.ebuild,v 1.1 2002/12/14 22:21:33 seemant Exp $
 
-IUSE=""
 MY_P=${P/rellm-/}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="GKrellM2 plugin for monitoring keyboard LEDs"
@@ -13,7 +12,7 @@ DEPEND="=app-admin/gkrellm-2*"
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ppc ~sparc alpha"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 src_compile() {
 	make || die

@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/clearsilver/clearsilver-0.9.14-r1.ebuild,v 1.5 2005/11/28 13:20:49 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/clearsilver/clearsilver-0.9.14-r1.ebuild,v 1.1 2005/08/04 21:10:21 herbs Exp $
 
 # Please note: apache, java, mono and ruby support disabled for now.
 # Fill a bug if you need it.
 #
 # dju@gentoo.org, 4th July 2005
 
-inherit eutils python perl-app
+inherit eutils python
 
 DESCRIPTION="Clearsilver is a fast, powerful, and language-neutral HTML template system."
 HOMEPAGE="http://www.clearsilver.net/"
@@ -15,8 +15,18 @@ SRC_URI="http://www.clearsilver.net/downloads/${P}.tar.gz"
 
 LICENSE="CS-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="perl python zlib"
+
+# Important:
+#
+# We don't redistribute clearsilver - we just provide a way to install it
+# By doing this, I believe we are compliant with the license without any
+# further actions.
+#
+# stuart@gentoo.org, 25th April 2004
+
+RESTRICT="nomirror"
 
 DEPEND="python? ( dev-lang/python )
 	perl? ( dev-lang/perl )
@@ -63,8 +73,4 @@ src_install () {
 	make DESTDIR=${D} install || die "make install failed"
 
 	dodoc ${DOCS}
-
-	if use perl ; then
-		fixlocalpod
-	fi
 }

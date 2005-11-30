@@ -1,42 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigc++/libsigc++-1.2.5.ebuild,v 1.21 2005/05/18 11:45:30 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsigc++/libsigc++-1.2.5.ebuild,v 1.1 2003/05/16 09:14:40 liquidx Exp $
 
-DESCRIPTION="Typesafe callback system for standard C++"
-HOMEPAGE="http://libsigc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/libsigc/${P}.tar.gz"
-
-LICENSE="GPL-2 LGPL-2.1"
-SLOT="1.2"
-KEYWORDS="x86 ppc sparc hppa amd64 alpha ia64 ppc64 ~ppc-macos"
+S=${WORKDIR}/${P}
 IUSE="debug"
+DESCRIPTION="The GLib library of C routines"
+SRC_URI="mirror://sourceforge/libsigc/${P}.tar.gz"
+HOMEPAGE="http://libsigc.sourceforge.net/"
+SLOT="1.2"
+LICENSE="GPL-2 LGPL-2.1"
+KEYWORDS="~x86 ~ppc ~sparc"
 
-RDEPEND="virtual/libc"
-
-DEPEND="${RDEPEND}
-	amd64? ( >=sys-devel/automake-1.7 )"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	if useq amd64 || useq ppc64; then
-		libtoolize -c -f --automake
-		WANT_AUTOMAKE=1.7 aclocal -I scripts ${ACLOCAL_FLAGS} || die "aclocal failed.  Are your \$ACLOCAL_FLAGS sane?"
-		WANT_AUTOMAKE=1.7 automake --add-missing --copy
-		WANT_AUTOCONF=2.5 autoconf
-	fi
-}
+DEPEND="virtual/glibc"
 
 src_compile() {
 	local myconf
-
-	use debug \
-		&& myconf="--enable-debug=yes" \
-		|| myconf="--enable-debug=no"
-
-	econf ${myconf} --enable-maintainer-mode --enable-threads || die
-
+    
+	if [ "${DEBUG}" -o -n "`use debug`" ]
+	then
+		myconf="--enable-debug=yes"
+	else
+		myconf="--enable-debug=no"
+	fi
+    
+	econf ${myconf} --enable-threads || die
 	emake || die "emake failure"
 }
 

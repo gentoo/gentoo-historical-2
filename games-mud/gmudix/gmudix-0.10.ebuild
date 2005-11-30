@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/gmudix/gmudix-0.10.ebuild,v 1.6 2005/06/15 18:54:16 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/gmudix/gmudix-0.10.ebuild,v 1.1 2003/09/10 19:03:12 vapier Exp $
 
 inherit games
 
@@ -8,11 +8,10 @@ DESCRIPTION="An improved version of MUDix, a MUD client for the Linux console.  
 SRC_URI="http://dw.nl.eu.org/gmudix/${P}.tar.gz"
 HOMEPAGE="http://dw.nl.eu.org/mudix.html"
 KEYWORDS="x86"
-IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=dev-libs/atk-1.0
 	>=dev-libs/glib-2.0
 	>=media-libs/freetype-2.1.4
@@ -22,6 +21,6 @@ DEPEND="virtual/libc
 
 src_install() {
 	dobin src/gmudix
-	dodoc AUTHORS ChangeLog README TODO doc/*
+	dodoc AUTHORS ChangeLog INSTALL README TODO doc/*
 	prepgamesdirs
 }

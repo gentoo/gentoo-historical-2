@@ -1,27 +1,6 @@
-# ChangeLog for games-simulation/corewars
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/corewars/ChangeLog,v 1.8 2005/10/13 20:33:49 mr_bones_ Exp $
-
-  13 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  -corewars-0.9.12.ebuild, -corewars-0.9.13.ebuild:
-  clean older ebuilds
-
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  corewars-0.9.12.ebuild, corewars-0.9.13.ebuild:
-  Removed COPYING file.
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  corewars-0.9.12.ebuild, corewars-0.9.13-r1.ebuild, corewars-0.9.13.ebuild:
-  virtual/glibc -> virtual/libc
-
-*corewars-0.9.13-r1 (02 Feb 2004)
-
-  02 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  corewars-0.9.13-r1.ebuild:
-  use games eclass
+# ChangeLog for app-games/corewars
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/corewars/ChangeLog,v 1.1 2003/09/11 12:22:49 vapier Exp $
 
   12 Jul 2003; Michael Sterrett <msterret@gentoo.org> corewars-0.9.12.ebuild,
   corewars-0.9.13.ebuild:
@@ -37,7 +16,7 @@
 
 *corewars-0.9.12 (14 April 2002)
 
-  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> corewars-0.9.12.ebuild :
+  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> corewars-0.9.12.ebuild :
   Added LICENSE, KEYWORDS, SLOT.
 
   14 April 2002; Bart Verwilst <verwilst@gentoo.org> Changelog :

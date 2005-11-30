@@ -1,59 +1,6 @@
-# ChangeLog for sci-electronics/pcb
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/pcb/ChangeLog,v 1.16 2005/11/14 20:10:39 plasmaroo Exp $
-
-*pcb-20050609 (14 Nov 2005)
-
-  14 Nov 2005; <plasmaroo@gentoo.org> +pcb-20050609.ebuild:
-  Version bump (#107945).
-
-  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> pcb-20050315.ebuild:
-  Stable on ppc.
-
-  29 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> pcb-20050315.ebuild:
-  Stable on sparc
-
-  29 Jun 2005; Peter Bienstman <pbienst@gentoo.org> pcb-20050315.ebuild:
-  Mark stable on x86.
-
-  25 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -pcb-20040215.ebuild,
-  -pcb-20040530.ebuild, -pcb-20040903.ebuild:
-  Removed obsolete versions.
-
-  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> pcb-20050127.ebuild:
-  Stable on ppc.
-
-  09 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> pcb-20050127.ebuild:
-  Stable on sparc
-
-*pcb-20050315 (07 May 2005)
-
-  07 May 2005; Peter Bienstman <pbienst@gentoo.org> +pcb-20050315.ebuild:
-  Versium bump (closes #90617). Thanks to Raphael Assenat for reporting.
-
-  07 May 2005; Peter Bienstman <pbienst@gentoo.org> pcb-20050127.ebuild,
-  Mark stable on x86.
-
-  04 May 2005; David Holm <dholm@gentoo.org> pcb-20050127.ebuild:
-  Readded to ~ppc. Please don't remove it without filing a proper bug report.
-
-  30 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> pcb-20040903.ebuild:
-  Stable on sparc
-
-  15 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> pcb-20050127.ebuild:
-  To ~sparc
-
-*pcb-20050127 (13 Mar 2005)
-
-  13 Mar 2005; Patrick Kursawe <phosphan@gentoo.org> pcb-20040903.ebuild,
-  +pcb-20050127.ebuild:
-  Version bump
-
-  28 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> pcb-20040530.ebuild,
-  pcb-20040903.ebuild:
-  Keyworded ~sparc wrt #83593
-
-  18 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> pcb-20040903.ebuild:
+# ChangeLog for app-sci/pcb
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/pcb/ChangeLog,v 1.1 2004/12/27 20:15:40 ribosome Exp $
 
 *pcb-20040530 (27 Dec 2004)
 

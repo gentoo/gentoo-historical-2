@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mplayerplug-in/mplayerplug-in-2.80.ebuild,v 1.10 2005/08/02 18:01:38 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mplayerplug-in/mplayerplug-in-2.80.ebuild,v 1.1 2005/02/19 07:06:04 josejx Exp $
 
-inherit nsplugins toolchain-funcs multilib
+inherit nsplugins toolchain-funcs
 
 DESCRIPTION="mplayer plug-in for Mozilla"
 HOMEPAGE="http://mplayerplug-in.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 -hppa ~ia64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gtk2"
 
 DEPEND="
@@ -29,7 +29,7 @@ S=${WORKDIR}/${PN}
 
 src_compile() {
 	local myconf
-	myconf="${myconf} --with-gecko-sdk=/usr/$(get_libdir)/gecko-sdk"
+	myconf="${myconf} --with-gecko-sdk=/usr/share/gecko-sdk"
 	if use gtk2; then
 		einfo Configuring to build using gtk2
 		myconf="${myconf} --enable-gtk2"
@@ -46,13 +46,8 @@ src_install() {
 	doexe mplayerplug-in.so || die "plugin failed"
 	inst_plugin /opt/netscape/plugins/mplayerplug-in.so
 
-	# Install .xpt, bug #83162
-	insinto /opt/netscape/plugins
-	doins mplayerplug-in.xpt
-	inst_plugin /opt/netscape/plugins/mplayerplug-in.xpt
-
 	insinto /etc
 	doins mplayerplug-in.conf
 
-	dodoc ChangeLog INSTALL README TODO DOCS/tech/*.txt
+	dodoc ChangeLog INSTALL README
 }

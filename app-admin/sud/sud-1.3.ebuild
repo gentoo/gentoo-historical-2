@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sud/sud-1.3.ebuild,v 1.3 2005/01/01 11:26:55 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sud/sud-1.3.ebuild,v 1.1 2004/10/26 23:49:03 lu_zero Exp $
 
 inherit eutils
 
@@ -19,18 +19,6 @@ KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="virtual/libc"
-src_unpack() {
-	unpack ${A}
-	sed -i -e \
-		's:chmod 500 $(sbindir)/ilogin:chmod 500 $(DESTDIR)$(sbindir)/ilogin:' \
-		${S}/login/Makefile.in
-	sed -i -e \
-		's:chmod 555 $(bindir)/suz:chmod 500 $(DESTDIR)$(bindir)/suz:' \
-		${S}/su/Makefile.in || die
-	sed -i -e \
-		's:chmod 500 $(sbindir)/sud:chmod 500 $(DESTDIR)$(sbindir)/sud:' \
-		${S}/sud/Makefile.in || die
-}
 
 src_compile() {
 
@@ -40,7 +28,7 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	einstall || die
 	dodoc AUTHORS COPYING ChangeLog* INSTALL README NEWS TODO
 	doman ilogin.1 sud.1 suz.1
 	insinto /etc

@@ -1,34 +1,20 @@
 #!/sbin/runscript
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/files/stunnel.rc6,v 1.7 2005/06/22 04:28:25 ramereth Exp $
-
-# Default pidfile location
-PIDFILE="/var/run/stunnel/stunnel.pid"
-
-checkconfig() {
-    # To ensure backwards compatibility
-    if [ ! -z "$(egrep '/etc/stunnel/stunnel.pid' /etc/stunnel/stunnel.conf)" ] ; then
-	ewarn "Please update your stunnel.conf!"
-	ewarn "pid should point to /var/run/stunnel/stunnel.pid"
-	PIDFILE="/etc/stunnel/stunnel.pid"
-    fi
-}
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-misc/stunnel/files/stunnel.rc6,v 1.1 2002/10/26 23:42:32 aliz Exp $
 
 depend() {
-    need net
+	need net
 }
 
 start() {
-    checkconfig
-    ebegin "Starting stunnel"
-    start-stop-daemon --start --pidfile ${PIDFILE} --quiet --exec /usr/sbin/stunnel -- /etc/stunnel/stunnel.conf  
-    eend $?
+	ebegin "Starting stunnel"
+	start-stop-daemon --start --quiet --exec /usr/sbin/stunnel
+	eend $?
 }
 
 stop() {
-    checkconfig
-    ebegin "Stopping stunnel"
-    start-stop-daemon --stop --quiet --pidfile ${PIDFILE}
-    eend $?
+	ebegin "Stopping net-snmpd"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/stunnel
+	eend $?
 }

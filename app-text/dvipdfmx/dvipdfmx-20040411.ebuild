@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dvipdfmx/dvipdfmx-20040411.ebuild,v 1.8 2005/04/26 18:19:23 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/dvipdfmx/dvipdfmx-20040411.ebuild,v 1.1 2004/08/26 11:35:33 usata Exp $
 
 inherit eutils
 
@@ -8,11 +8,11 @@ IUSE=""
 
 DESCRIPTION="DVI to PDF translator with multi-byte character support"
 HOMEPAGE="http://project.ktug.or.kr/dvipdfmx/"
-SRC_URI="http://project.ktug.or.kr/dvipdfmx/snapshot/release/${P}.tar.gz"
+SRC_URI="http://project.ktug.or.kr/dvipdfmx/snapshot/current/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha amd64 ppc sparc"
+KEYWORDS="~x86 ~alpha ~amd64"	# this is development branch
 
 RDEPEND="virtual/tetex
 	>=media-libs/libpng-1.2.1

@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca-tls/qca-tls-1.0-r2.ebuild,v 1.10 2005/07/09 13:54:17 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca-tls/qca-tls-1.0-r2.ebuild,v 1.1 2005/01/24 18:05:49 humpback Exp $
 
 inherit eutils
 
 DESCRIPTION="plugin to provide SSL/TLS capability to programs that utilize the Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="http://delta.affinix.com/qca/"
-SRC_URI="http://delta.affinix.com/qca/${P}.tar.bz2"
+SRC_URI="http://delta.affinix.com/qca/${PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 #alpha amd64 and ppc64 need testing
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc sparc x86 ~alpha"
 IUSE=""
 
 DEPEND=">=app-crypt/qca-1.0
@@ -20,7 +20,7 @@ DEPEND=">=app-crypt/qca-1.0
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/qca-pathfix.patch
+	epatch ${FILESDIR}/qca-pathfix.patch || die "bad patch"
 }
 
 src_compile() {

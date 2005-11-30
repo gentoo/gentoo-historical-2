@@ -1,24 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/hpoj/hpoj-0.91-r3.ebuild,v 1.11 2005/07/25 18:04:13 caleb Exp $
-
-inherit eutils qt3
+# $Header: /var/cvsroot/gentoo-x86/net-print/hpoj/hpoj-0.91-r3.ebuild,v 1.1 2004/04/08 10:26:37 lanius Exp $
 
 DESCRIPTION="HP OfficeJet Linux driver"
 HOMEPAGE="http://hpoj.sourceforge.net/"
 SRC_URI="mirror://sourceforge/hpoj/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
+KEYWORDS="x86 ~amd64"
 IUSE="ssl scanner qt X snmp cups usb"
 
-DEPEND="qt?      ( $(qt_min_version 3.1) )
+DEPEND="qt?      ( >=x11-libs/qt-3.1.0-r1 )
 	ssl?     ( >=dev-libs/openssl-0.9.6h )
 	scanner? ( >=media-gfx/sane-backends-1.0.9 )
 	scanner? ( || ( X? ( >=media-gfx/xsane-0.89 ) >=media-gfx/sane-frontends-1.0.9 ) )
-	snmp?    ( net-analyzer/net-snmp )
+	snmp?    ( virtual/snmp )
 	cups?    ( >=net-print/cups-1.1.18-r2 )
-	usb?     ( >=dev-libs/libusb-0.1.10a sys-apps/hotplug )"
+	usb?     ( dev-libs/libusb sys-apps/hotplug )"
 
 src_compile() {
 	epatch ${FILESDIR}/udev.patch
@@ -41,9 +39,7 @@ src_compile() {
 	&& myconf="${myconf} --with-sane-packend=/usr" \
 	|| myconf="${myconf} --without-sane"
 
-	libtoolize --copy --force
-
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 	emake || die "compilation failed"
 }
 
@@ -90,7 +86,7 @@ src_install() {
 
 pkg_postinst() {
 	echo
-	einfo "You might want to emerge sys-fs/mtools for photo-card support."
+	einfo "You might want to emerge app-admin/mtools for photo-card support."
 	echo
 	einfo "You might want to emerge net-print/hpijs for better printing quality."
 	echo
@@ -99,7 +95,5 @@ pkg_postinst() {
 	einfo "If you are upgrading from a previous version, re-run ptal-init setup"
 	einfo "as the format of	the connection has changed again and your previously"
 	einfo "installed hpoj-device will not be recognized."
-	echo
-	einfo "net-print/hpoj is deprecated, please use net-print/hplip"
 	echo
 }

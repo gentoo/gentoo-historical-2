@@ -1,50 +1,6 @@
 # ChangeLog for dev-java/picocontainer
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/picocontainer/ChangeLog,v 1.12 2005/05/06 09:55:23 swegener Exp $
-
-  06 May 2005; Sven Wegener <swegener@gentoo.org>
-  picocontainer-1.0_beta4.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  -files/build-1.0_beta3.xml, -picocontainer-1.0_beta3.ebuild,
-  picocontainer-1.0_beta4.ebuild:
-  stable on amd64, ppc and x86
-
-  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
-  picocontainer-1.0_beta4.ebuild:
-  Keywords ~amd64.
-
-  17 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
-  picocontainer-1.0_beta3.ebuild, picocontainer-1.0_beta4.ebuild:
-  dojar --> java-pkg_dojar
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
-  picocontainer-1.0_beta3.ebuild, picocontainer-1.0_beta4.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  11 Sep 2004; Thomas Matthijs <axxo@gentoo.org>
-  picocontainer-1.0_beta3.ebuild:
-  changed dependency
-
-  04 May 2004; David Holm <dholm@gentoo.org> picocontainer-1.0_beta4.ebuild:
-  Added to ~ppc.
-
-  10 Apr 2004; Chris Aniszczyk <zx@gentoo.org> picocontainer-1.0_beta3.ebuild,
-  picocontainer-1.0_beta4.ebuild:
-  Fixed $HOMEPAGE AND $DESCRIPTION, closes #47200
-
-*picocontainer-1.0_beta4 (09 Mar 2004)
-
-  09 Mar 2004; Chris Aniszczyk <zx@gentoo.org> picocontainer-1.0_beta4.ebuild,
-  files/build-1.0_beta4.xml:
-  Version bump :)
-
-  11 Jan 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
-  picocontainer-1.0_beta3.ebuild: 
-  Now installs picocontainer-1.0.jar instead of
-  picocontainer-1.0-SNAPSHOT.jar.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/picocontainer/ChangeLog,v 1.1 2004/01/11 04:46:47 karltk Exp $
 
 *picocontainer-1.0_beta3 (11 Jan 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-0.6.0.ebuild,v 1.8 2005/01/01 14:16:15 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/qemu/qemu-0.6.0.ebuild,v 1.1 2004/07/13 14:03:12 lu_zero Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://fabrice.bellard.free.fr/qemu/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ppc -alpha -sparc"
+KEYWORDS="~x86 ~ppc -alpha -sparc"
 IUSE="softmmu qemu-fast sdl"
 RESTRICT="nostrip"
 
@@ -30,9 +30,6 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${P}-typo.patch
-	epatch ${FILESDIR}/${P}-sigaction.patch
-	epatch ${FILESDIR}/qemu_gcc34.patch.gz
-	epatch ${FILESDIR}/${P}-configure.patch
 }
 
 src_compile() {
@@ -52,18 +49,11 @@ src_install() {
 		prefix=${D}/usr \
 		bindir=${D}/usr/bin \
 		datadir=${D}/usr/share/qemu \
-		docdir=${D}/usr/share/doc/${P}-${PR} \
+		docdir=${D}/usr/share/doc \
 		mandir=${D}/usr/share/man || die
-	chmod -x ${D}/usr/share/man/*/*
 }
 
 pkg_postinst() {
-	einfo "You will need the Universal TUN/TAP driver compiled into"
-	einfo "kernel or as a module to use the virtual network device."
-	use softmmu || \
-	(
-	ewarn "You have the softmmu useflag disabled."
-	ewarn "In order to have the full system emulator (qemu) you have"
-	ewarn "to emerge qemu again with the softmmu useflag enabled"
-	)
+	echo ">> You will need the Universal TUN/TAP driver compiled into"
+	echo ">> kernel or as a module to use the virtual network device."
 }

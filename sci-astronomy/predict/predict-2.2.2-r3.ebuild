@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/predict/predict-2.2.2-r3.ebuild,v 1.3 2005/08/05 15:37:18 herbs Exp $
-
-inherit multilib
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/predict/predict-2.2.2-r3.ebuild,v 1.1 2005/01/05 09:30:49 phosphan Exp $
 
 DESCRIPTION="Satellite tracking and orbital prediction."
 HOMEPAGE="http://www.qsl.net/kd2bd/predict.html"
@@ -11,7 +9,7 @@ SRC_URI="http://www.amsat.org/amsat/ftp/software/Linux/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="xforms gtk nls"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="sys-libs/ncurses
 	gtk? ( =x11-libs/gtk+-1.2* )
@@ -40,7 +38,7 @@ src_compile() {
 
 	# compile predict
 	einfo "compiling predict"
-	${COMPILER} -L/$(get_libdir) -lm -lncurses -lpthread predict.c -o predict
+	${COMPILER} -L/lib -lm -lncurses -lpthread predict.c -o predict
 
 	# write vocalizer.h
 	cd vocalizer
@@ -68,7 +66,7 @@ src_compile() {
 	if use xforms; then
 		einfo "compiling map"
 		cd ${S}/clients/map
-		TCOMP="${COMPILER} -I/usr/X11R6/include -L/usr/X11R6/$(get_libdir) -lforms -lX11 -lm map.c map_cb.c map_main.c -o map"
+		TCOMP="${COMPILER} -I/usr/X11R6/include -L/usr/X11R6/lib -lforms -lX11 -lm map.c map_cb.c map_main.c -o map"
 		${TCOMP}
 	fi
 
@@ -80,7 +78,7 @@ src_compile() {
 		cd ${S}/clients/gsat-*
 		./configure --prefix=/usr ${myconf}
 		cd src
-		sed -e "s:#define DEFAULTPLUGINSDIR .*:#define DEFAULTPLUGINSDIR \"/usr/$(get_libdir)/gsat/plugins/\":" -i globals.h
+		sed -e "s:#define DEFAULTPLUGINSDIR .*:#define DEFAULTPLUGINSDIR \"/usr/lib/gsat/plugins/\":" -i globals.h
 		sed -e 's:int errno;::' -i globals.h
 		cd ..
 		emake
@@ -144,8 +142,8 @@ src_install() {
 	if use gtk; then
 		# the install seems broken so do manually...
 		cd ${S}/clients/gsat-*
-		dodir /usr/$(get_libdir)/gsat/plugins
-		keepdir /usr/$(get_libdir)/gsat/plugins
+		dodir /usr/lib/gsat/plugins
+		keepdir /usr/lib/gsat/plugins
 		cd src
 		dobin gsat
 		cd ..

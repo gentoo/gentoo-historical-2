@@ -1,30 +1,6 @@
 # ChangeLog for x11-libs/libXft
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXft/ChangeLog,v 1.8 2005/11/04 16:45:29 joshuabaergen Exp $
-
-  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  -libXft-2.1.7.ebuild, libXft-2.1.8.ebuild:
-  Add missing xproto dep and drop old version.
-
-*libXft-2.1.8 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +libXft-2.1.8.ebuild:
-  Bump for 7.0 RC1.
-
-  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
-  Add metadata.
-
-  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXft-2.1.7.ebuild:
-  Marked ~ppc
-
-  15 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXft-2.1.7.ebuild:
-  Marked ~amd64.
-
-  13 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; libXft-2.1.7.ebuild:
-  Provide virtual/xft.
-
-  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXft-2.1.7.ebuild:
-  Add ~sparc keyword (X modular testing).
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXft/ChangeLog,v 1.1 2005/08/08 04:29:33 spyderous Exp $
 
 *libXft-2.1.7 (08 Aug 2005)
 

@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/t1utils/t1utils-1.32.ebuild,v 1.7 2005/08/01 18:35:12 j4rg0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/t1utils/t1utils-1.32.ebuild,v 1.1 2004/08/28 15:06:49 usata Exp $
 
 IUSE=""
 
 DESCRIPTION="Type 1 Font utilities"
 SRC_URI="http://www.lcdf.org/type/${P}.tar.gz"
 HOMEPAGE="http://www.lcdf.org/type/#t1utils"
-KEYWORDS="alpha amd64 ia64 ppc ppc-macos sparc x86"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc ~ia64 ~amd64"
 SLOT="0"
 LICENSE="BSD"
 

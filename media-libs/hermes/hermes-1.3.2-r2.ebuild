@@ -1,61 +1,46 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/hermes/hermes-1.3.2-r2.ebuild,v 1.28 2005/01/11 00:31:01 kloeri Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Seemant Kulleen <seemant@rocketmail.com>
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hermes/hermes-1.3.2-r2.ebuild,v 1.1 2002/04/14 07:44:54 seemant Exp $
 
-IUSE=""
-
-inherit eutils libtool gnuconfig
-
-MY_P=${P/h/H}
-S=${WORKDIR}/${MY_P}
-
+PN0=Hermes
+S=${WORKDIR}/${PN0}-${PV}
 DESCRIPTION="Library for fast colorspace conversion and other graphics routines"
-HOMEPAGE="http://hermes.terminal.at/"
-SRC_URI="http://dark.x.dtu.dk/~mbn/clanlib/download/download-sphair/${MY_P}.tar.gz"
+SRC_URI="http://dark.x.dtu.dk/~mbn/clanlib/download/download-sphair/${PN0}-${PV}.tar.gz"
+HOMEPAGE="http://hermes.terminal.at"
 
-LICENSE="LGPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc alpha ~mips amd64 ~hppa ppc64"
-
-DEPEND=">=sys-devel/autoconf-2.50
-	>=sys-devel/automake-1.8"
-
-RDEPEND="virtual/libc"
-
-src_unpack() {
-	unpack ${A} || die
-	cd ${S} || die
-	epatch ${FILESDIR}/${P}-amd64.patch
-	epatch ${FILESDIR}/${P}-destdir.patch
-
-	export WANT_AUTOMAKE=1.8
-	export WANT_AUTOCONF=2.5
-
-	libtoolize --force --copy || die
-	aclocal || die "aclocal failed"
-	automake -a -f -c || die "automake failed"
-	autoconf || die "autoconf failed"
-
-	gnuconfig_update
-	elibtoolize
-}
+DEPEND="sys-devel/libtool
+	sys-devel/automake 
+	sys-devel/autoconf" 
 
 src_compile() {
-	econf || die
-	sh ltconfig ltmain.sh || die "ltconfig failed"
-	emake || die "emake failed"
+
+	aclocal || die
+	automake -a
+	autoconf || die
+
+    ./configure \
+		--prefix=/usr \
+		|| die
+
+    sh ltconfig ltmain.sh || die
+    emake || die
+
 }
 
-src_install() {
-	make DESTDIR="${D}" install || die
+src_install () {
 
-	dodoc AUTHORS ChangeLog FAQ NEWS README TODO*
+    make \
+		prefix=${D}/usr \
+		install || die
 
-	dohtml docs/api/*.htm
-	docinto print
-	dodoc docs/api/*.ps
-	docinto txt
-	dodoc docs/api/*.txt
-	docinto sgml
-	dodoc docs/api/sgml/*.sgml
+    dodoc AUTHORS COPYING ChangeLog FAQ NEWS README TODO*
+
+    dohtml docs/api/*.htm
+    docinto print
+    dodoc docs/api/*.ps
+    docinto txt
+    dodoc docs/api/*.txt
+    docinto sgml
+    dodoc docs/api/sgml/*.sgml
 }

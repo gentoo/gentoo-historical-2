@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.10_rc3.ebuild,v 1.5 2005/11/15 19:00:50 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.10_rc3.ebuild,v 1.1 2005/11/08 12:17:18 flameeyes Exp $
 
 inherit linux-mod flag-o-matic eutils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://alsaproject/driver/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ppc ~ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="oss doc"
 
 RDEPEND="virtual/modutils
@@ -46,11 +46,7 @@ pkg_setup() {
 	PNP_ERROR="Some of the drivers you selected require PNP in your kernel (${PNP_DRIVERS}).  Either enable PNP in your kernel or trim which drivers get compiled using ALSA_CARDS in /etc/make.conf."
 
 	if [[ "${ALSA_CARDS}" == "all" ]]; then
-
-		# Ignore PNP checks for ppc architecture, as PNP can't be enabled there.
-		if [[ ${ARCH} != "ppc" ]]; then
-			CONFIG_CHECK="${CONFIG_CHECK} PNP"
-		fi
+		CONFIG_CHECK="${CONFIG_CHECK} PNP"
 	else
 		for pnpdriver in ${PNP_DRIVERS}; do
 			hasq ${pnpdriver} ${ALSA_CARDS} && CONFIG_CHECK="${CONFIG_CHECK} PNP"
@@ -71,8 +67,6 @@ src_unpack() {
 	cd ${S}
 
 	epatch "${FILESDIR}"/${PN}-1.0.10_rc1-include.patch
-	epatch "${FILESDIR}/${P}-ppc-unbreakage.patch"
-
 	convert_to_m ${S}/Makefile
 	sed -i -e 's:\(.*depmod\):#\1:' ${S}/Makefile
 }
@@ -80,7 +74,6 @@ src_unpack() {
 src_compile() {
 	# Should fix bug #46901
 	is-flag "-malign-double" && filter-flags "-fomit-frame-pointer"
-	append-flags "-I${KV_DIR}/arch/$(tc-arch-kernel)/include"
 
 	econf $(use_with oss) \
 		--with-kernel="${KV_DIR}" \
@@ -91,8 +84,8 @@ src_compile() {
 
 	# linux-mod_src_compile doesn't work well with alsa
 
-	ARCH=$(tc-arch-kernel)
 	# -j1 : see bug #71028
+	ARCH=$(tc-arch-kernel)
 	emake -j1 HOSTCC=$(tc-getBUILD_CC) CC=$(tc-getCC) || die "Make Failed"
 	ARCH=$(tc-arch)
 

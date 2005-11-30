@@ -1,20 +1,6 @@
 # ChangeLog for media-fonts/free-bangla-font
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/free-bangla-font/ChangeLog,v 1.5 2005/07/15 16:56:27 flameeyes Exp $
-
-  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
-  free-bangla-font-0.2.ebuild:
-  Stable on amd64.
-
-  29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> free-bangla-font-0.2.ebuild:
-  Stable on x86, alpha and ppc.
-
-  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org>
-  free-bangla-font-0.2.ebuild:
-  Marked ~amd64.
-
-  05 Jul 2004; David Holm <dholm@gentoo.org> free-bangla-font-0.2.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/free-bangla-font/ChangeLog,v 1.1 2004/07/05 05:54:58 usata Exp $
 
 *free-bangla-font-0.2 (05 Jul 2004)
 

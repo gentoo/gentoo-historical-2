@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jta/jta-1.0.1.ebuild,v 1.12 2005/07/12 13:27:26 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jta/jta-1.0.1.ebuild,v 1.1 2004/01/18 07:01:04 strider Exp $
 
 inherit java-pkg
 
@@ -10,37 +10,54 @@ HOMEPAGE="http://java.sun.com/products/jta/"
 SRC_URI="${At}"
 LICENSE="sun-bcla-jta"
 SLOT=0
-KEYWORDS="x86 sparc ppc amd64 ppc64"
+KEYWORDS="~x86 ~sparc"
 IUSE=""
 DEPEND=">=app-arch/unzip-5.50-r1
 	>=virtual/jdk-1.3"
-RDEPEND=">=virtual/jre-1.3"
+RDEPEND=">=virtual/jdk-1.3"
 RESTRICT="fetch"
 
-S=${WORKDIR}
-
 pkg_nofetch() {
-	einfo
+	einfo " "
 	einfo " Due to license restrictions, we cannot fetch the"
 	einfo " distributables automagically."
-	einfo
+	einfo " "
 	einfo " 1. Visit ${HOMEPAGE}"
 	einfo " 2. Select 'Java Transaction API Specification 1.0.1B Class Files 1.0.1B'"
 	einfo " 3. Download ${At}"
 	einfo " 4. Move file to ${DISTDIR}"
-	einfo " 5. Restart the emerge process"
-	einfo
+	einfo " "
 }
 
 src_unpack() {
-	unzip -qq ${DISTDIR}/${At} || die "failed too unpack"
+	if [ ! -f "${DISTDIR}/${At}" ] ; then
+		echo  " "
+		echo  "!!! Missing ${DISTDIR}/${At}"
+		echo  " "
+		einfo " "
+		einfo " Due to license restrictions, we cannot fetch the"
+		einfo " distributables automagically."
+		einfo " "
+		einfo " 1. Visit ${HOMEPAGE} and select 'Downloads'"
+		einfo " 2. Select 'Java Transaction API Specification 1.0.1B Class Files 1.0.1B'"
+		einfo " 3. Download ${At}"
+		einfo " 4. Move file to ${DISTDIR}"
+		einfo " 5. Run emerge on this package again to complete"
+		einfo " "
+		die "User must manually download distfile"
+	fi
+	unzip -qq ${DISTDIR}/${At}
 }
 
 src_compile() {
-	jar cvf jta.jar javax/ || die "failed to create jar"
+	einfo " This is a binary-only ebuild."
+	einfo "Adding class files to a jar file."
+	cd ${WORKDIR}
+	jar cvf jta.jar javax/
 }
 
 src_install() {
+	cd ${WORKDIR}
 	java-pkg_dojar jta.jar
 }
 

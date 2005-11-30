@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/noegnud-nethack/noegnud-nethack-0.7.1.ebuild,v 1.5 2004/06/24 23:13:41 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/noegnud-nethack/noegnud-nethack-0.7.1.ebuild,v 1.1 2003/09/10 04:59:58 vapier Exp $ 
 
 inherit games
 
@@ -14,14 +14,13 @@ SRC_URI="mirror://sourceforge/noegnud/noegnud-${PV}-src.tar.gz
 LICENSE="nethack"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
 
 DEPEND="media-libs/libsdl
 	dev-util/yacc"
 RDEPEND="media-libs/libsdl
 	media-libs/sdl-image
 	virtual/opengl
-	games-roguelike/noegnud-data"
+	app-games/noegnud-data"
 
 S=${WORKDIR}/noegnud-${PV}/variants
 

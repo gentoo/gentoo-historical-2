@@ -2,5 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <herd>java</herd>
-  <longdescription>Sun Java Development Kit Package. AKA.J2SE</longdescription>
+  <maintainer>
+    <email>strider@gentoo.org</email>
+    <description>Primary Maintainer</description>
+  </maintainer>
+  <longdescription/>
 </pkgmetadata>

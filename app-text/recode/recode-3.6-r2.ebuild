@@ -1,17 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/recode/recode-3.6-r2.ebuild,v 1.4 2005/11/01 01:56:03 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/recode/recode-3.6-r2.ebuild,v 1.1 2005/09/25 03:12:54 vapier Exp $
 
 inherit flag-o-matic eutils libtool
 
 DEB_VER=11
 DESCRIPTION="Convert files between various character sets"
-HOMEPAGE="http://recode.progiciels-bpi.ca/"
-SRC_URI="ftp://ftp.gnu.org/pub/gnu/${PN}/${P}.tar.gz"
+HOMEPAGE="http://www.gnu.org/software/recode/"
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/${PN}/${P}.tar.gz
+	mirror://debian/pool/main/r/recode/recode_${PV}-${DEB_VER}.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
 IUSE="nls"
 
 DEPEND="nls? ( sys-devel/gettext )"
@@ -19,7 +20,7 @@ DEPEND="nls? ( sys-devel/gettext )"
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/${P}-debian-${DEB_VER}.patch
+	epatch "${WORKDIR}"/recode_${PV}-${DEB_VER}.diff
 
 	if use ppc-macos; then
 		epatch "${FILESDIR}"/${P}-ppc-macos.diff

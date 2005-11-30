@@ -1,14 +1,6 @@
 # ChangeLog for net-misc/tulip-devel
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tulip-devel/ChangeLog,v 1.4 2004/11/10 21:43:28 mr_bones_ Exp $
-
-  10 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  tulip-devel-1.1.8-r1.ebuild:
-  virtual/kernel -> virtual/linux-sources
-
-  02 Oct 2004; Markus Nigbur <pyrania@gentoo.org>
-  tulip-devel-1.1.8-r1.ebuild:
-  hooray for epatch!
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tulip-devel/ChangeLog,v 1.1 2003/03/07 09:05:15 rajiv Exp $
 
 *tulip-devel-1.1.8-r1 (07 Mar 2003)
 

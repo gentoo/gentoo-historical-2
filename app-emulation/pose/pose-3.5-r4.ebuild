@@ -1,34 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/pose/pose-3.5-r4.ebuild,v 1.6 2005/09/30 21:26:05 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/pose/pose-3.5-r4.ebuild,v 1.1 2004/01/31 03:03:36 george Exp $
 
-inherit eutils
-
-S="${WORKDIR}/Emulator_Src_3.5"
+S=${WORKDIR}/Emulator_Src_3.5
 HOMEPAGE="http://www.palmos.com/dev/tools/emulator/"
-SRC_URI="http://www.palmos.com/dev/tools/emulator/sources/emulator_src_3.5.tar.gz
-	mirror://gentoo/${P}-genpatches.tar.bz2
-	http://dev.gentoo.org/~vanquirius/files/${P}-genpatches.tar.bz2"
+SRC_URI="http://www.palmos.com/dev/tools/emulator/sources/emulator_src_3.5.tar.gz"
 
 DESCRIPTION="Palm OS Emulator"
 
 DEPEND=">=x11-libs/fltk-1.1.4"
 
-KEYWORDS="x86 -ppc"
+KEYWORDS="~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
 src_unpack() {
-	unpack ${A}; cd "${S}"
+	unpack emulator_src_3.5.tar.gz
 
-	epatch "${WORKDIR}"/detect-fluid.diff
-	epatch "${WORKDIR}"/separate-builddir.diff
-	epatch "${WORKDIR}"/choose-gl.diff
-	epatch "${WORKDIR}"/init-clipwidget.diff
-	epatch "${WORKDIR}"/gcc-3.3_fix.diff.bz2
+	cd ${S}
+	patch -p1 < ${FILESDIR}/detect-fluid.diff || die "Patching failed"
+	patch -p1 < ${FILESDIR}/separate-builddir.diff || die "Patching failed"
+	patch -p1 < ${FILESDIR}/choose-gl.diff || die "Patching failed"
+	patch -p0 < ${FILESDIR}/init-clipwidget.diff || die "Patching failed"
+	bzcat ${FILESDIR}/gcc-3.3_fix.diff.bz2 | patch -p1 || die "Patching failed"
 
-	cd "${S}"/BuildUnix
+	cd ${S}/BuildUnix
 	aclocal
 	automake --foreign
 	autoconf
@@ -36,7 +33,7 @@ src_unpack() {
 	sed -i -e "s:-DPLATFORM_UNIX:-DFLTK_1_0_COMPAT -DPLATFORM_UNIX:" \
 		-e "s:-O2:-O2 -fno-strict-aliasing:" configure
 
-	cd "${S}"
+	cd ${S}
 	mkdir install-fltk
 	ln -s /usr/include/fltk-1.1 install-fltk/include
 	ln -s /usr/lib/fltk-1.1 install-fltk/lib
@@ -44,18 +41,18 @@ src_unpack() {
 	mkdir build-normal
 #	mkdir build-profile
 
-	cd "${S}"/static-libs
+	cd ${S}/static-libs
 	ln -sf `g++ -print-file-name=libstdc++.a` libstdc++.a
 }
 
 src_compile() {
-	cd "${S}"/build-normal
+	cd ${S}/build-normal
 #	cd ${S}/BuildUnix
-	LDFLAGS=-L"${S}"/static-libs ../BuildUnix/configure --prefix=/usr \
-		--with-fltk="${S}"/install-fltk \
+	LDFLAGS=-L${S}/static-libs ../BuildUnix/configure --prefix=/usr \
+		--with-fltk=${S}/install-fltk \
 		--disable-gl || die
 
-	emake || die
+	make || die
 
 #	cd ${S}/build-profile
 #	LDFLAGS=-L${S}/static-libs ../BuildUnix/configure --prefix=/usr \
@@ -66,13 +63,13 @@ src_compile() {
 }
 
 src_install() {
-	cd "${S}"/build-normal
+	cd ${S}/build-normal
 	dobin pose
 
 #	cd ${S}/build-profile
 #	newbin pose pose-profile
 
-	cd "${S}"/Docs
+	cd ${S}/Docs
 	dodoc *.txt *.rtf
 	dohtml *.html
 	insinto /usr/share/doc/${PF}
@@ -81,7 +78,7 @@ src_install() {
 	dodir /usr/share/pose/downloads
 	dodir /usr/share/pose/roms
 
-	cd "${S}"/ROMTransfer/Source
+	cd ${S}/ROMTransfer/Source
 	insinto /usr/share/pose/downloads
 	doins *.prc
 }

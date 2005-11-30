@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>www-servers</herd>
+<herd>web-apps</herd>
 <maintainer>
-  <email>s4t4n@gentoo.org</email>
   <name>Michele Noberasco</name>
+  <email>s4t4n@gentoo.org</email>
 </maintainer>
 <longdescription>
   bozohttpd is designed to be small, simple and relatively

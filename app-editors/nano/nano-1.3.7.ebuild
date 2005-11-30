@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.7.ebuild,v 1.10 2005/09/15 02:02:03 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.7.ebuild,v 1.1 2005/04/14 03:24:21 vapier Exp $
 
 inherit eutils
 
@@ -11,12 +11,12 @@ SRC_URI="http://www.nano-editor.org/dist/v1.3/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc-macos ppc64 s390 sh sparc x86"
-IUSE="nls build spell justify debug slang ncurses nomac unicode"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~ppc-macos ~s390 ~sh ~sparc ~x86"
+IUSE="nls build spell justify debug slang ncurses nomac"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	nls? ( sys-devel/gettext )
-	!ncurses? ( slang? ( sys-libs/slang ) )"
+	slang? ( sys-libs/slang )"
 PROVIDE="virtual/editor"
 
 S=${WORKDIR}/${MY_P}
@@ -41,7 +41,6 @@ src_compile() {
 		$(use_enable justify) \
 		$(use_enable debug) \
 		$(use_enable nls) \
-		$(use_enable unicode utf8) \
 		${myconf} \
 		|| die "configure failed"
 	emake || die

@@ -1,41 +1,61 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/pysol/pysol-4.82.ebuild,v 1.11 2005/06/24 00:22:30 vapier Exp $
-
-inherit python
+# $Header: /var/cvsroot/gentoo-x86/games-board/pysol/pysol-4.82.ebuild,v 1.1 2003/09/10 17:46:27 vapier Exp $
 
 DESCRIPTION="An exciting collection of more than 200 solitaire card games"
-HOMEPAGE="http://www.pysol.org/"
-SRC_URI="mirror://gentoo/${P}.tar.bz2"
+SRC_URI="http://www.oberhumer.com/opensource/pysol/download/${P}.tar.bz2"
+HOMEPAGE="http://www.oberhumer.com/opensource/pysol/"
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 ppc x86"
-IUSE=""
-
-DEPEND="virtual/python"
+DEPEND="virtual/python
+	>=sys-apps/sed-4"
 RDEPEND="virtual/python
-	>=games-board/pysol-sound-server-3.0
+	>=app-games/pysol-sound-server-3.0
 	>=dev-lang/tk-8.0"
 
+KEYWORDS="x86 ppc"
+LICENSE="GPL-2"
+SLOT="0"
+
 pkg_setup() {
-	python_tkinter_exists
+	if ! python -c "import Tkinter" >/dev/null 2>&1
+	then
+		eerror "You need to recompile python with Tkinter support."
+		eerror "That means: USE='tcltk' emerge python"
+		echo
+		die "missing tkinter support with installed python"
+	fi
 }
 
-src_install() {
-	local prefix="/usr"
-	local datadir="${prefix}/share"
-	local pkgdatadir=${datadir}/${PN}/${PV}
+src_install () {
+	local prefix
+	local datadir
+	local pkgdatadir
+
+	prefix="/usr"
+	datadir="${prefix}/share"
+	pkgdatadir=${datadir}/${PN}/${PV}
 
 	sed -i \
 		-e "s|@prefix@|${prefix}|" \
-		-e "s|@pkgdatadir@|${pkgdatadir}|" \
-		pysol || die "sed pysol failed"
+		-e "s|@pkgdatadir@|${pkgdatadir}|" pysol || \
+			die "sed pysol failed"
+	dobin pysol
 
-	dobin pysol || die "dobin failed"
-	make prefix="${D}/usr" install-data || die "install-data failed"
-	insinto /usr/include/X11/pixmaps
+	make prefix=${D}/usr install-data
+
+	insinto /usr/X11R6/include/X11/pixmaps
 	doins data/pysol.xpm
+
 	doman pysol.6
-	dodoc NEWS README
+
+#	cp -a ${WORKDIR}/pysol-cardsets-4.40/data/cardset-* ${D}/opt/${P}/data/
+#	cp -a ${WORKDIR}/pysol-music-4.40/data/music/* ${D}/opt/${P}/data/music/
+	dodoc COPYING INSTALL NEWS README
+}
+
+pkg_postinst() {
+	einfo "Please make sure that python was built with TK support:"
+	einfo "grep tcltk /var/db/pkg/dev-lang/python*/USE"
+	einfo "If the grep fails, then:"
+	einfo "USE='tcltk' emerge python"
 }

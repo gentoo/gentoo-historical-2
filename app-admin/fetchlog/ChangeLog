@@ -1,24 +1,6 @@
 # ChangeLog for app-admin/fetchlog
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fetchlog/ChangeLog,v 1.8 2005/08/02 18:28:25 blubb Exp $
-
-  02 Aug 2005; Simon Stelling <blubb@gentoo.org> fetchlog-1.0.ebuild:
-  added ~amd64 keyword
-
-  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> fetchlog-1.0.ebuild:
-  Stable on ppc.
-
-*fetchlog-1.0 (26 Dec 2004)
-
-  26 Dec 2004; Patrick Kursawe <phosphan@gentoo.org> +fetchlog-1.0.ebuild:
-  Version bump
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  fetchlog-0.94.ebuild:
-  Masked fetchlog-0.94.ebuild stable for ppc
-
-  24 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> fetchlog-0.94.ebuild:
-  Removing unnecessary S=...
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fetchlog/ChangeLog,v 1.1 2003/08/15 12:26:52 phosphan Exp $
 
 *fetchlog-0.94 (15 Aug 2003)
 

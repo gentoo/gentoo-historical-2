@@ -1,17 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/gq/gq-1.0_beta1.ebuild,v 1.7 2004/12/04 07:16:54 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/gq/gq-1.0_beta1.ebuild,v 1.1 2004/05/13 04:00:49 dragonheart Exp $
 
 S=${WORKDIR}/${PN}-${PV/_/}
 DESCRIPTION="GTK-based LDAP client"
 
 SRC_URI="mirror://sourceforge/gqclient/${PN}-${PV/_/}.tar.gz"
+RESTRICT="nomirror"
 HOMEPAGE="http://www.biot.com/gq/"
 IUSE="kerberos jpeg nls ssl"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
+KEYWORDS="~x86 ~sparc"
 
 RDEPEND=">=x11-libs/gtk+-2
 	>=net-nds/openldap-2
@@ -24,7 +25,7 @@ RDEPEND=">=x11-libs/gtk+-2
 	=dev-libs/atk-1*
 	x11-libs/pango
 	dev-libs/cyrus-sasl
-	virtual/libc"
+	virtual/glibc"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
@@ -37,11 +38,6 @@ src_unpack() {
 	cd ${S}  || die
 	# Fix timestamp skews
 	touch aclocal.m4 configure `find . -name Makefile.in`
-
-	if use amd64 ; then
-		rm config.sub config.guess
-		automake --add-missing --copy
-	fi
 }
 
 src_compile() {
@@ -59,7 +55,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die "Installation failed"
-	rm -f ${D}/usr/share/locale/locale.alias
+	einstall || die "Installation failed"
+
 	dodoc ABOUT-NLS AUTHORS ChangeLog COPYING NEWS README* TODO
 }

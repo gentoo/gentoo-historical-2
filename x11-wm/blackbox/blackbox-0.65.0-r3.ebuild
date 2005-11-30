@@ -1,18 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/blackbox/blackbox-0.65.0-r3.ebuild,v 1.12 2005/02/06 18:50:49 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/blackbox/blackbox-0.65.0-r3.ebuild,v 1.1 2003/12/08 01:22:39 tseng Exp $
 
-IUSE=""
+IUSE="nls"
 
-inherit commonbox eutils
+inherit commonbox
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A small, fast, full-featured window manager for X - with mousewheel patch"
 SRC_URI="mirror://sourceforge/blackboxwm/${P}.tar.gz"
 HOMEPAGE="http://blackboxwm.sf.net/"
 
-LICENSE="as-is"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc hppa alpha ia64 ~amd64"
+KEYWORDS="x86 ~ppc ~sparc"
 MYCONF="--disable-nls"
 
 mydoc="AUTHORS LICENSE README ChangeLog* TODO* data/README*"

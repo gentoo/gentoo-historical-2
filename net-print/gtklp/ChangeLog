@@ -1,79 +1,8 @@
 # ChangeLog for net-print/gtklp
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/gtklp/ChangeLog,v 1.20 2005/09/20 03:30:29 dang Exp $
-
-*gtklp-1.0g-r1 (20 Sep 2005)
-
-  20 Sep 2005; <dang@gentoo.org> +gtklp-1.0g-r1.ebuild:
-  Rev version without depricated gtk2 USE flag.  Bug #106560
-
-*gtklp-1.0g (02 Aug 2005)
-
-  02 Aug 2005; <metalgod@gentoo.org> +gtklp-1.0g.ebuild:
-  Version Bump. Fix Depends and docs.
-
-*gtklp-1.0f (10 Jul 2005)
-
-  10 Jul 2005; Heinrich Wendel <lanius@gentoo.org> +gtklp-1.0f.ebuild:
-  version bump
-
-*gtklp-1.0d (06 Jun 2005)
-
-  06 Jun 2005; Heinrich Wendel <lanius@gentoo.org> -gtklp-0.9m.ebuild,
-  +gtklp-1.0d.ebuild:
-  version bump
-
-  05 Jan 2005; Karol Wojtaszek <sekretarz@gentoo.org> gtklp-0.9p.ebuild:
-  Added to ~amd64, bug #76247
-
-  23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed digest.
-
-  15 May 2004; Jason Wever <weeve@gentoo.org> gtklp-0.9p.ebuild:
-  Added ~sparc keyword.
-
-  07 May 2004; Heinrich Wendel <lanius@gentoo.org> gtklp-0.9m.ebuild,
-  gtklp-0.9p.ebuild:
-  add IUSE=""
-
-  09 Apr 2004; Heinrich Wendel <lanius@gentoo.org> gtklp-0.9m.ebuild,
-  gtklp-0.9p.ebuild:
-  mark stable on x86, remove S=${WORKDIR}/${P}
-
-*gtklp-0.9p (04 Oct 2003)
-
-  04 Oct 2003; Heinrich Wendel <lanius@gentoo.org> :
-  version bump, fixed nls issue
-
-*gtklp-0.9m (22 Oct 2002) 
-
-  16 Jan 2003; Nick Hadaway <raker@gentoo.org> gtklp-0.9m.ebuild :
-  Finally fixed nls installation issues.
-
-  30 Oct 2002; Nick Hadaway <raker@gentoo.org> gtklp-0.9m.ebuild :
-  Marking 0.9m as stable.  Re-enabling the nls use variable support.
-  See bug #9404 for details.
-
-  22 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gtklp-0.9m.ebuild,
-  files/digest-gtklp-0.9m :
-  OK, the issue from bug #9404 is a gettext issue, and upstream has no idea
-  what to do about it yet.  I guess we wait for a fix or get someone to hack
-  us one.
-
-*gtklp-0.9k (25 Jul 2002)
-
-  20 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gtklp-0.9k.ebuild :
-
-  Cleaned up nasty spacing issues, and emake->make.  should fix bug #9404 by
-  jmf@gtcom.net (James Michael Fultz)
-
-  25 Jul 2002; Spider <spider@gentoo.org> gtklp-0.9k.ebuild:
-  thanks to  Luca Barbato <lu_zero@psxfanatics.com> for a new version ebuild
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-print/gtklp/ChangeLog,v 1.1 2002/02/01 21:53:36 gbevin Exp $
 
 *gtklp-0.6g-r1 (1 Feb 2002)
-
-  14 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> gtklp-0.6g-r1.ebuild :
-  Added LICENSE, KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

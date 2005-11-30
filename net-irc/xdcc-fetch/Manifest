@@ -1,14 +1,2 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 aea8fe0af36114e145e3d8533eca815f xdcc-fetch-1.409.ebuild 899
-MD5 b6f8aaa0047d3a35bac9d58d60e1cfb5 ChangeLog 495
-MD5 44c39c6ad372a8e5a5e7ee3311f703a7 metadata.xml 160
+MD5 be451168e33b2cdcb4dfbb03d7aba7f2 xdcc-fetch-1.409.ebuild 686
 MD5 d1669fd6cc6cbbc86ba2f794c6b5273d files/digest-xdcc-fetch-1.409 68
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFCiMDLI1lqEGTUzyQRAtafAJ911GQowvgUlw+cLRoQ/EBkF+n/gQCffj9a
-tmPNDrJRYJwt2RpFhbdKJUg=
-=njPG
------END PGP SIGNATURE-----

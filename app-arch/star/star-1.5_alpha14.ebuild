@@ -1,31 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/star/star-1.5_alpha14.ebuild,v 1.10 2005/01/01 11:58:24 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/star/star-1.5_alpha14.ebuild,v 1.1 2003/11/14 12:15:59 seemant Exp $
 
 S=${WORKDIR}/${P/_alpha[0-9][0-9]}
 
 DESCRIPTION="An enhanced (world's fastest) tar, as well as enhanced mt/rmt"
-HOMEPAGE="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/star.html"
+
 #This URI for alpha versions
 SRC_URI="ftp://ftp.berlios.de/pub/${PN}/alpha/${PN}-${PV/_alpha/a}.tar.bz2"
 #This URI for non-alpha versions
 #SRC_URI="ftp://ftp.berlios.de/pub/${PN}/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+HOMEPAGE="http://www.fokus.gmd.de/research/cc/glone/employees/joerg.schilling/private/star.html"
+KEYWORDS="x86 amd64 ~ppc ~sparc hppa alpha ia64"
 SLOT="0"
-KEYWORDS="x86 ppc sparc ~mips alpha hppa amd64 ia64"
-IUSE=""
-
-DEPEND="virtual/libc"
+LICENSE="GPL-2"
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}/DEFAULTS
-	sed -i \
-		-e 's:/opt/schily:/usr:g' \
-		-e 's:bin:root:g' \
-		-e 's:/usr/src/linux/include:/usr/include:' \
-		Defaults.linux
+	cp Defaults.linux Defaults.linux.orig
+	sed -e 's:/opt/schily:/usr:g' -e 's:bin:root:g' Defaults.linux.orig > Defaults.linux
 
 	if [ "${ARCH}" = "amd64" ]
 	then
@@ -48,7 +44,7 @@ src_install() {
 	# install mt as mt.star to not conflict with other packages
 	mv ${D}/usr/bin/mt ${D}/usr/bin/mt.star
 
-	dodoc BUILD Changelog AN-1.* README README.* PORTING TODO
+	dodoc BUILD COPYING Changelog AN-1.* README README.* PORTING TODO
 	rm ${D}/usr/man/man1/match*
 	dodir /usr/share/
 	mv ${D}/usr/man/ ${D}/usr/share

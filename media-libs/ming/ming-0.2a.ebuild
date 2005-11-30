@@ -1,41 +1,38 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ming/ming-0.2a.ebuild,v 1.22 2005/02/13 03:32:41 robbat2 Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-libs/ming/ming-0.2a.ebuild,v 1.1 2002/05/15 22:51:22 jnelson Exp $
 
-inherit eutils toolchain-funcs
-
+S=${WORKDIR}/${P}
 DESCRIPTION="A OpenSource library from flash movie generation"
+SRC_URI="http://www.opaque.net/ming/${PN}-${PV}.tgz"
 HOMEPAGE="http://www.opaque.net/ming/"
-SRC_URI="http://www.opaque.net/ming/${P}.tgz"
-
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
-IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-fpic.patch
-	epatch ${FILESDIR}/${PF}-gentoo.diff
+	cd ${S}/util
+	patch -p0 < ${FILESDIR}/${PF}-gentoo.diff || die
 }
 
 src_compile() {
-	make CC="$(tc-getCC) -Wall" all static || die
-	cd util
-	make CC="$(tc-getCC) -Wall" bindump hexdump listswf listfdb listmp3 listjpeg makefdb swftophp || die
+
+	make all static || die
+	cd util && make bindump hexdump listswf listfdb listmp3 listjpeg makefdb swftophp || die
 }
 
-src_install() {
-	dolib.so libming.so || die "lib.so"
-	dolib.a libming.a || die "lib.a"
+src_install () { 
+	dolib.so libming.so
+	dolib.a  libming.a
 	insinto /usr/include
-	doins ming.h || die "include"
-	exeinto /usr/$(get_libdir)/ming
-	doexe util/{bindump,hexdump,listswf,listfdb,listmp3,listjpeg,makefdb,swftophp} || die "utils"
-	dodoc CHANGES CREDITS README TODO
+	doins ming.h
+	exeinto /usr/lib/ming
+	doexe util/{bindump,hexdump,listswf,listfdb,listmp3,listjpeg,makefdb,swftophp}
+	dodoc CHANGES CREDITS LICENSE README TODO
 	newdoc util/README README.util
 	newdoc util/TODO TODO.util
 }
+

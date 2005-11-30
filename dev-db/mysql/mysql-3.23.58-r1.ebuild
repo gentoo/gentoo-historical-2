@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-3.23.58-r1.ebuild,v 1.18 2005/10/17 13:49:25 vivo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-3.23.58-r1.ebuild,v 1.1 2004/08/23 20:31:29 robbat2 Exp $
 
 inherit flag-o-matic eutils
 
@@ -13,62 +13,47 @@ SDIR=MySQL-${SVER}
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server."
 HOMEPAGE="http://www.mysql.com/"
 SRC_URI="ftp://ftp.sunet.se/pub/unix/databases/relational/mysql/Downloads/${SDIR}/${P}.tar.gz
-	ftp://mysql.valueclick.com/pub/mysql/Downloads/${SDIR}/${P}.tar.gz
-	mirror://gentoo/mysql-extras-20050920.tar.bz2"
+	ftp://mysql.valueclick.com/pub/mysql/Downloads/${SDIR}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa"
+KEYWORDS="~x86 ~sparc ~alpha ~hppa ~ppc"
 IUSE="berkdb debug innodb perl readline ssl static tcpd"
 
 DEPEND="readline? ( >=sys-libs/readline-4.1 )
-	bdb? ( sys-apps/ed )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	ssl? ( >=dev-libs/openssl-0.9.6d )
-	>=sys-libs/zlib-1.2.3
+	>=sys-libs/zlib-1.1.3
 	dev-lang/perl
-	sys-process/procps"
+	sys-apps/procps"
 PDEPEND="perl? ( dev-perl/DBI dev-perl/DBD-mysql )"
 
 src_unpack() {
-	use innodb || ewarn "InnoDB support is not selected to be compiled in."
 	unpack ${A} || die
 	cd ${S} || die
-
-	local MY_PATCH_SOURCE="${WORKDIR}/mysql-extras"
-
 	# required for qmail-mysql
-	epatch ${MY_PATCH_SOURCE}/mysql-3.23-nisam.h.diff || die
+	epatch ${FILESDIR}/mysql-3.23-nisam.h.diff
 	# zap startup script messages
-	epatch ${MY_PATCH_SOURCE}/mysql-3.23.52-install-db-sh.diff || die
+	epatch ${FILESDIR}/mysql-3.23.52-install-db-sh.diff
 	# zap binary distribution stuff
-	epatch ${MY_PATCH_SOURCE}/mysql-3.23-safe-mysqld-sh.diff || die
+	epatch ${FILESDIR}/mysql-3.23-safe-mysqld-sh.diff
 	# for correct hardcoded sysconf directory
-	epatch ${MY_PATCH_SOURCE}/mysql-3.23-my-print-defaults.diff || die
-	#patch -p1 < ${MY_PATCH_SOURCE}/mysql-3.23.51-tcpd.patch || die
-	#epatch ${MY_PATCH_SOURCE}/mysql-4.0.14-security-28394.patch
+	epatch ${FILESDIR}/mysql-3.23-my-print-defaults.diff
+	#patch -p1 < ${FILESDIR}/mysql-3.23.51-tcpd.patch || die
+	#epatch ${FILESDIR}/mysql-4.0.14-security-28394.patch
 
 	# security fix from http://lists.mysql.com/internals/15185
 	# gentoo bug #60744
-	EPATCH_OPTS="-p1 -d ${S}" \
-	epatch ${MY_PATCH_SOURCE}/${PN}-4.0-mysqlhotcopy-security.patch || die
-
-	# upstream bug http://bugs.mysql.com/bug.php?id=7971
-	# names conflict with stuff in 2.6.10 kernel headers
-	echo ${S}/client/mysqltest.c ${S}/extra/replace.c | xargs -n1 \
-	sed -i \
-		-e "s/set_bit/my__set_bit/g" \
-		-e "s/clear_bit/my__clear_bit/g" \
-		|| die "Failed to fix bitops"
+	EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/${PN}-4.0-mysqlhotcopy-security.patch
 
 }
 
 src_compile() {
 	# bug #11681; get b0rked code when using -march=k6 with this package.
-	replace-cpu-flags k6 k6-2 k6-3 i586
+	replace-cpu-flags i586 k6 k6-2 k6-3
 
 	local myconf
-	# The following fix is due to a bug with bdb on sparc's. See:
+	# The following fix is due to a bug with bdb on sparc's. See: 
 	# http://www.geocrawler.com/mail/msg.php3?msg_id=4754814&list=8
 	# same for alpha (see http://www.mysql.com/doc/en/BDB_portability.html)
 	# thanks to peter@icebear.net for noticing this.
@@ -184,7 +169,7 @@ pkg_preinst() {
 	fi
 
 	if ! id mysql; then
-		useradd -g mysql -s /bin/false -d /var/lib/mysql -c "mysql" mysql
+		useradd -g mysql -s /dev/null -d /var/lib/mysql -c "mysql" mysql
 		assert "problem adding user mysql"
 	fi
 }
@@ -203,8 +188,7 @@ pkg_postinst() {
 	# your friendly public service announcement...
 	einfo
 	einfo "You might want to run:"
-	einfo "\"emerge --config =${PF}\""
+	einfo "\"ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config\""
 	einfo "if this is a new install."
 	einfo
-	use innodb || ewarn "InnoDB support is not selected to be compiled in."
 }

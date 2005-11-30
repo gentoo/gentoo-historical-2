@@ -1,24 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-0.6.11-r1.ebuild,v 1.11 2005/04/16 23:31:08 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-0.6.11-r1.ebuild,v 1.1 2004/01/24 16:56:05 liquidx Exp $
 
 inherit python
 
 DESCRIPTION="GTK+ bindings for Python"
-HOMEPAGE="http://www.pygtk.org/"
+HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
 SRC_URI="ftp://ftp.gtk.org/pub/gtk/python/v1.2/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.2"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~ppc ~sparc x86"
-IUSE="opengl"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+IUSE=""
 
 DEPEND="virtual/python
 	>=gnome-base/libglade-0.17-r6
 	>=media-libs/imlib-1.8
 	>=media-libs/gdk-pixbuf-0.9.0
 	=x11-libs/gtk+-1.2*
-	opengl? ( virtual/opengl dev-python/pyopengl )"
+	opengl? ( virtual/opengl dev-python/PyOpenGL )"
 
 src_unpack() {
 	unpack ${A}
@@ -27,9 +27,14 @@ src_unpack() {
 	ln -s /bin/true ${S}/py-compile
 }
 
+src_compile() {
+	econf
+	emake || die "make failed"
+}
+
 src_install() {
 	einstall || die
-	dodoc AUTHORS ChangeLog INSTALL MAPPING NEWS README TODO
+	dodoc AUTHORS COPYING ChangeLog INSTALL MAPPING NEWS README TODO
 
 	python_version
 	mv ${D}/usr/lib/python${PYVER}/site-packages/pygtk.py \

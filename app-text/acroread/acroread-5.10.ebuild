@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/acroread/acroread-5.10.ebuild,v 1.8 2005/08/11 20:21:39 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/acroread/acroread-5.10.ebuild,v 1.1 2004/12/16 12:48:18 lanius Exp $
 
 inherit nsplugins eutils
 
@@ -11,25 +11,19 @@ SRC_URI="ftp://ftp.adobe.com/pub/adobe/acrobatreader/unix/5.x/${MY_P}.tar.gz"
 
 LICENSE="Adobe"
 SLOT="0"
-KEYWORDS="-* x86 amd64"
+KEYWORDS="-* x86 ~amd64"
 IUSE="cjk noplugin"
 RESTRICT="nostrip"
 
 DEPEND="virtual/libc
 	>=sys-apps/sed-4"
-RDEPEND="amd64? ( >=app-emulation/emul-linux-x86-xlibs-1.2-r1 )"
-PDEPEND="cjk? ( =media-fonts/acroread-asianfonts-5* )"
+RDEPEND="cjk? ( media-fonts/acroread-asianfonts )
+	amd64? ( >=app-emulation/emul-linux-x86-xlibs-1.2-r1 )"
 PROVIDE="virtual/pdfviewer"
 
 INSTALLDIR=/opt/Acrobat5
 
 S="${WORKDIR}/installers"
-
-pkg_setup() {
-	# x86 binary package, ABI=x86
-	# Danny van Dyk <kugelfang@gentoo.org> 2005/03/25
-	has_multilib_profile && ABI="x86"
-}
 
 pkg_setup() {
 	if ! use noplugin ; then

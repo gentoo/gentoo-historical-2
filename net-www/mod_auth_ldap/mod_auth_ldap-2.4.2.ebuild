@@ -1,21 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_ldap/mod_auth_ldap-2.4.2.ebuild,v 1.10 2005/07/10 00:53:32 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_ldap/mod_auth_ldap-2.4.2.ebuild,v 1.1 2003/07/13 03:42:15 woodchip Exp $
 
-DESCRIPTION="Apache module for LDAP authorization"
+DESCRIPTION="Apache module for LDAP authorizaion"
 HOMEPAGE="http://www.muquit.com/muquit/software/mod_auth_ldap/mod_auth_ldap.html"
-KEYWORDS="x86 ppc ~sparc"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 #watch out for this thing; no version number ...
 #SRC_URI="http://www.muquit.com/muquit/software/mod_auth_ldap/${PN}.tar.gz"
 #---> as of 2.4.2 still no version number, doing it the hard way, sigh.
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
+
 DEPEND="=net-www/apache-1* >=net-nds/openldap-2.0.25"
-RDEPEND=""
 LICENSE="as-is"
 SLOT="0"
 
-IUSE=""
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A} || die
@@ -41,7 +41,7 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo "Execute the command:"
-	einfo " \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
+	einfo " \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 	einfo " to auto-update apache.conf with supporting statements."
 	einfo " Then edit /etc/conf.d/apache accordingly."
 	einfo " You can find config examples here: ${HOMEPAGE}."

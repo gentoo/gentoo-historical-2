@@ -1,66 +1,8 @@
 # ChangeLog for dev-util/re2c
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/re2c/ChangeLog,v 1.16 2005/11/26 17:45:33 tgall Exp $
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/re2c/ChangeLog,v 1.1 2003/06/03 18:04:44 robbat2 Exp $
 
-  26 Nov 2005; Tom Gall <tgall@gentoo.org> re2c-0.9.9.ebuild,
-  re2c-0.9.10.ebuild:
-  added ~ppc64 and marked 0.9.9 stable on ppc64 
-
-  19 Nov 2005; Markus Rothe <corsair@gentoo.org> re2c-0.9.9.ebuild:
-  Added ~ppc64 keyword; bug #102649
-
-  16 Sep 2005; Christian Parpart <trapni@gentoo.org> re2c-0.9.9.ebuild:
-  added to ~amd64
-
-*re2c-0.9.10 (11 Sep 2005)
-
-  11 Sep 2005; Lisa Seelye <lisa@gentoo.org> re2c-0.9.9.ebuild,
-  +re2c-0.9.10.ebuild:
-  Version bump and bump 0.9.9 to stable on x86. Other arches should test.
-  Resolves bug #104991
-
-  09 Sep 2005; Jason Wever <weeve@gentoo.org> re2c-0.9.9.ebuild:
-  Added ~sparc keyword to help fix the broken dependencies of
-  dev-php/PEAR-Date-1.4.3-r1.
-
-*re2c-0.9.9 (01 Aug 2005)
-
-  01 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> +re2c-0.9.9.ebuild:
-  Bugs #100620 and #100914 fixed, version bump.
-
-*re2c-0.9.8 (19 Jul 2005)
-
-  19 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +re2c-0.9.8.ebuild:
-  Bug #98754. Version bump.
-
-*re2c-0.9.7 (03 Jul 2005)
-
-  03 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +metadata.xml,
-  re2c-0.9.3.ebuild, +re2c-0.9.7.ebuild:
-  Bug #95569, version bump. Stable 0.9.3. Add metadata with myself and lisa
-  (who submitted the original package).
-
-  17 Jul 2004; David Holm <dholm@gentoo.org> re2c-0.9.3.ebuild:
-  Added to ~ppc.
-
-*re2c-0.9.3 (10 Jul 2004)
-
-  10 Jul 2004; Lisa Seelye <lisa@gentoo.org> +re2c-0.9.3.ebuild:
-  changed homepage and src_uri from tildeslash to sourceforge. removed blocker
-  on gcc-3.3.2, removed 0.9.1 patch from being applied, removed nonexistant docs
-  from being added. basically a version bump
-
-  29 Mar 2004; Stuart Herbert <stuart@gentoo.org> re2c-0.9.1.ebuild:
-  Broken package, doesn't work with the later gcc compilers.  For now, I've
-  added a blocker on gcc-3.3.2 and above.  See bug #43449.
-
-  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> re2c-0.9.1.ebuild:
-  fix depend (bug #45110); tidy
-
-  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> re2c-0.9.1.ebuild:
-  Don't assign default to S; header fix
-
-*re2c-0.9.1 (03 June 2003)
+*re2c-0.91 (03 June 2003)
 
   03 June 2003; Robin Johnson <robbat2@gentoo.org> re2c-0.9.1.ebuild,
   files/digest-re2c-0.9.1, files/0.9.1-patch.gz:

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-3.9_p1-r3.ebuild,v 1.9 2005/10/19 03:32:26 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/openssh-3.9_p1-r3.ebuild,v 1.1 2005/07/15 12:30:14 lcars Exp $
 
 inherit eutils flag-o-matic ccc pam
 
@@ -9,7 +9,7 @@ inherit eutils flag-o-matic ccc pam
 PARCH=${P/_/}
 
 SFTPLOG_PATCH_VER="1.2"
-X509_PATCH="${PARCH}+x509-5.2.diff.gz"
+X509_PATCH="${PARCH}+x509h.diff.gz"
 SELINUX_PATCH="openssh-3.9_p1-selinux.diff"
 LDAP_PATCH="${PARCH/-/-lpk-}-0.3.6.patch"
 HPN_PATCH="${PARCH}-hpn11.diff"
@@ -18,13 +18,13 @@ DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	ldap? ( http://www.opendarwin.org/en/projects/openssh-lpk/files/${LDAP_PATCH} )
-	X509? ( http://roumenpetrov.info/openssh/x509-5.2/${X509_PATCH} )
+	X509? ( http://roumenpetrov.info/openssh/x509h/${X509_PATCH} )
 	hpn? ( http://www.psc.edu/networking/projects/hpn-ssh/${HPN_PATCH} )"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
-IUSE="ipv6 static pam tcpd kerberos skey selinux chroot X509 ldap smartcard sftplogging hpn"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="ipv6 static pam tcpd kerberos skey selinux chroot X509 ldap smartcard nocxx sftplogging hpn"
 
 RDEPEND="pam? ( >=sys-libs/pam-0.73 >=sys-apps/shadow-4.0.2-r2 )
 	kerberos? ( virtual/krb5 )
@@ -32,11 +32,12 @@ RDEPEND="pam? ( >=sys-libs/pam-0.73 >=sys-apps/shadow-4.0.2-r2 )
 	skey? ( >=app-admin/skey-1.1.5-r1 )
 	ldap? ( net-nds/openldap )
 	>=dev-libs/openssl-0.9.6d
-	>=sys-libs/zlib-1.2.3
+	>=sys-libs/zlib-1.1.4
 	smartcard? ( dev-libs/opensc )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )"
 DEPEND="${RDEPEND}
 	virtual/os-headers
+	!nocxx? ( sys-apps/groff )
 	sys-devel/autoconf"
 PROVIDE="virtual/ssh"
 
@@ -46,32 +47,29 @@ src_unpack() {
 	unpack ${PARCH}.tar.gz
 	cd "${S}"
 
-	sed -i \
-		-e '/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:/usr/bin/xauth:' \
-		pathnames.h || die
-
 	epatch "${FILESDIR}"/${P}-pamfix.patch.bz2
 	#epatch "${FILESDIR}"/${P}-largekey.patch.bz2
-	use X509 || epatch "${FILESDIR}"/${P}-fix_suid.patch
+	epatch "${FILESDIR}"/${P}-fix_suid.patch.bz2
 	epatch "${FILESDIR}"/${P}-infoleak.patch #59361
 	epatch "${FILESDIR}"/${P}-terminal_restore.patch.bz2
 	epatch "${FILESDIR}"/${P}-configure-openct.patch #78730
 	epatch "${FILESDIR}"/${P}-kerberos-detection.patch #80811
 
-	use sftplogging && epatch "${FILESDIR}"/${P}-sftplogging-1.2-gentoo.patch.bz2
-	use skey && epatch "${FILESDIR}"/${P}-skey.patch.bz2
-	use chroot && epatch "${FILESDIR}"/${P}-chroot.patch
-	use X509 && epatch "${DISTDIR}"/${X509_PATCH} && epatch "${FILESDIR}"/${P}-fix_suid-x509.patch
-	use selinux && epatch "${FILESDIR}"/${SELINUX_PATCH}.bz2
-	use smartcard && epatch "${FILESDIR}"/${P}-opensc.patch.bz2
+	use sftplogging && epatch ${FILESDIR}/${P}-sftplogging-1.2-gentoo.patch.bz2
+	use alpha && epatch ${FILESDIR}/${PN}-3.5_p1-gentoo-sshd-gcc3.patch.bz2
+	use skey && epatch ${FILESDIR}/${P}-skey.patch.bz2
+	use chroot && epatch ${FILESDIR}/${P}-chroot.patch
+	use X509 && epatch ${DISTDIR}/${X509_PATCH}
+	use selinux && epatch ${FILESDIR}/${SELINUX_PATCH}.bz2
+	use smartcard && epatch ${FILESDIR}/${P}-opensc.patch.bz2
 	if use ldap ; then
 		if use X509 || use sftplogging ; then
 			ewarn "Sorry, x509/sftplogging and ldap don't get along"
 		else
-			epatch "${DISTDIR}"/${LDAP_PATCH}
+			epatch ${DISTDIR}/${LDAP_PATCH}
 		fi
 	fi
-	use hpn && epatch "${DISTDIR}"/${HPN_PATCH}
+	use hpn && epatch ${DISTDIR}/${HPN_PATCH}
 
 	autoconf || die "autoconf failed"
 }
@@ -138,7 +136,7 @@ src_install() {
 
 pkg_postinst() {
 	enewgroup sshd 22
-	enewuser sshd 22 -1 /var/empty sshd
+	enewuser sshd 22 /bin/false /var/empty sshd
 
 	ewarn "Remember to merge your config files in /etc/ssh/ and then"
 	ewarn "restart sshd: '/etc/init.d/sshd restart'."

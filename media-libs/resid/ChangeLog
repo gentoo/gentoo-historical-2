@@ -1,29 +1,6 @@
 # ChangeLog for media-libs/resid
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/resid/ChangeLog,v 1.11 2005/08/07 13:07:10 hansmi Exp $
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> resid-0.13-r1.ebuild:
-  Stable on ppc.
-
-  11 Mar 2005; David Holm <dholm@gentoo.org> resid-0.13-r1.ebuild:
-  Added to ~ppc.
-
-  25 Aug 2004; Sven Wegener <swegener@gentoo.org> resid-0.13-r1.ebuild,
-  resid-0.13.ebuild:
-  Changed SRC_URI to use mirror:// syntax.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> resid-0.13-r1.ebuild:
-  virtual/glibc -> virtual/libc
-
-  14 Apr 2004; Jason Wever <weeve@gentoo.org> resid-0.13-r1.ebuild:
-  Stable on sparc.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*resid-0.13-r1 (11 Nov 2002)
-
-  11 Nov 2002; Hanno Boeck <hanno@gentoo.org> resid-0.13-r1.ebuild :
-  Version with patch needed for current sidplay.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-libs/resid/ChangeLog,v 1.1 2002/08/07 08:24:50 rphillips Exp $
 
 *resid-0.13 (7 Aug 2002)
 

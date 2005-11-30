@@ -1,16 +1,14 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-base.eclass,v 1.19 2005/07/11 15:08:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-base.eclass,v 1.1 2003/07/24 15:15:50 stuart Exp $
 #
 # Author: Tal Peer <coredumb@gentoo.org>
-# Author: Stuart Herbert <stuart@gentoo.org>
 #
-# The php-ext-base eclass provides a unified interface for adding standalone
-# PHP extensions ('modules') to the php.ini files on your system.
-#
-# Combined with php-ext-source, we have a standardised solution for supporting
-# PHP extensions
+# The php-ext eclass provides a unified interface for compiling and
+# installing standalone PHP extensions ('modules').
 
+ECLASS=php-ext-base
+INHERITED="$INHERITED $ECLASS"
 
 EXPORT_FUNCTIONS src_install
 
@@ -28,81 +26,66 @@ EXPORT_FUNCTIONS src_install
 [ -z "$PHP_EXT_INI" ] && PHP_EXT_INI="yes"
 
 # find out where to install extensions
-EXT_DIR="`php-config --extension-dir 2>/dev/null`"
+EXT_DIR="`php-config --extension-dir`"
 
 # ---end ebuild configurable settings
 
 DEPEND="${DEPEND}
-		dev-php/php
-		>=sys-devel/m4-1.4
+		virtual/php
+		=sys-devel/m4-1.4
 		>=sys-devel/libtool-1.4.3"
-
-RDEPEND="${RDEPEND}
-		virtual/php"
 
 php-ext-base_buildinilist () {
 	# work out the list of .ini files to edit/add to
 
 	if [ -z "${PHPSAPILIST}" ]; then
-		PHPSAPILIST="apache1 apache2 cli cgi"
+		PHPSAPILIST="apache1 apache2 cli"
 	fi
-
-	PHPINIFILELIST=
+	
+	PHPINIFILELIST=""
 
 	for x in ${PHPSAPILIST} ; do
 		if [ -f /etc/php/${x}-php4/php.ini ]; then
 			PHPINIFILELIST="${PHPINIFILELIST} etc/php/${x}-php4/php.ini"
 		fi
-
-		if [ -f /etc/php/${x}-php5/php.ini ]; then
-			PHPINIFILELIST="${PHPINIFILELIST} etc/php/${x}-php5/php.ini"
-		fi
 	done
-
-	if [ "${PHPINIFILELIST}+" = "+" ] ; then
-		# backwards support for the old location
-
-		if [ -f /etc/php4/php.ini ] ; then
-			PHPINIFILELIST="etc/php4/php.ini"
-		else
-			msg="No PHP ini files found for this extension"
-			eerror ${msg}
-			die ${msg}
-		fi
+	
+	if [[ ${PHPINIFILELIST} = "" ]]; then
+		msg="No PHP ini files found for this extension"
+		eerror ${msg}
+		die ${msg}
 	fi
 
 #	einfo "php.ini files found in $PHPINIFILELIST"
 }
 
 php-ext-base_src_install() {
-	addpredict /usr/share/snmp/mibs/.index
-	php-ext-base_buildinilist
 	if [ "$PHP_EXT_INI" = "yes" ] ; then
-		php-ext-base_addextension "${PHP_EXT_NAME}.so"
+		php-ext-base_buildinilist
+		php-ext-base_addextension "${EXT_DIR}/${PHP_EXT_NAME}.so"
 	fi
 }
 
 php-ext-base_addextension () {
 	if [ "${PHP_EXT_ZENDEXT}" = "yes" ]; then
-		ext_type="zend_extension"
-		ext_file="${EXT_DIR}/$1"
+		ext="zend_extension"
 	else
-		# we do *not* add the full path for the extension!
-		ext_type="extension"
-		ext_file="$1"
+		ext="extension"
 	fi
 
-	php-ext-base_addtoinifiles "$ext_type" "$ext_file" "Extension added"
+	php-ext-base_addtoinifiles "$ext" "$1" "Extension added"
 }
-
+	
 php-ext-base_setting_is_present () {
-	grep "^$1=$2" /$3 > /dev/null 2>&1
+	grep "^$1=" $2 > /dev/null 2>&1
 }
 
 php-ext-base_inifileinimage () {
 	if [ ! -f $1 ]; then
 		mkdir -p `dirname $1`
 		cp /$1 $1
+		insinto /`dirname $1`
+		doins $1
 	fi
 }
 
@@ -113,9 +96,7 @@ php-ext-base_inifileinimage () {
 
 php-ext-base_addtoinifile () {
 	if [ "$1" != "extension" ] && [ "$1" != "zend_extension" ]; then
-		php-ext-base_setting_is_present $1 "" $3 && return
-	else
-		php-ext-base_setting_is_present "$1" "$2" "$3" && return
+		php-ext-base_setting_is_present $1 $3 && return
 	fi
 
 	php-ext-base_inifileinimage $3
@@ -125,13 +106,8 @@ php-ext-base_addtoinifile () {
 	if [ -z "$4" ]; then
 		einfo "Added '$1=$2' to /$3"
 	else
-		einfo "$4 to /$3"
+		einfo "$4 to $3"
 	fi
-
-	# yes, this is inefficient - but it works every time ;-)
-
-	insinto /`dirname $3`
-	doins $3
 }
 
 php-ext-base_addtoinifiles () {
@@ -139,3 +115,5 @@ php-ext-base_addtoinifiles () {
 		php-ext-base_addtoinifile $1 $2 $x "$3"
 	done
 }
+	
+

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/lynx/lynx-2.8.5-r1.ebuild,v 1.3 2005/11/13 10:26:01 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/lynx/lynx-2.8.5-r1.ebuild,v 1.1 2005/10/17 11:58:37 seemant Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,6 +10,7 @@ MY_P=${P/-/}
 DESCRIPTION="An excellent console-based web browser with ssl support"
 HOMEPAGE="http://lynx.browser.org/"
 SRC_URI="ftp://lynx.isc.org/${MY_P}/${MY_P}.tar.bz2
+	http://dev.gentoo.org/~seemant/distfiles/${P}-CAN-${SEC_V}.patch.bz2
 	mirror://gentoo/${P}-CAN-${SEC_V}.patch.bz2"
 
 LICENSE="GPL-2"
@@ -28,7 +29,7 @@ S=${WORKDIR}/${PN}${PV//./-}
 src_unpack() {
 	unpack ${A}; cd ${S}
 	epatch ${WORKDIR}/${P}-CAN-${SEC_V}.patch
-	epatch "${FILESDIR}/${P}"-darwin.patch
+	use userland_Darwin && epatch ${FILESDIR}/${P}-darwin.patch
 }
 
 src_compile() {

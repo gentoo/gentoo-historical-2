@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mup/mup-4.4.ebuild,v 1.10 2005/07/09 19:18:40 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mup/mup-4.4.ebuild,v 1.1 2002/10/21 17:53:34 blizzy Exp $
 
 MY_P="${PN}44"
 
@@ -10,10 +10,9 @@ SRC_URI="ftp://ftp.arkkra.com/pub/unix/${MY_P}src.tar.gz
 HOMEPAGE="http://www.arkkra.com"
 LICENSE="Arkkra"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE="X svga"
 
-DEPEND=">=sys-apps/sed-4"
 RDEPEND="X? ( virtual/x11 )
 	svga? ( >=media-libs/svgalib-1.4.3 )"
 
@@ -21,9 +20,9 @@ S="${WORKDIR}"
 
 src_unpack() {
 	mkdir doc
-
+	
 	unpack ${MY_P}src.tar.gz
-
+	
 	cd doc
 	unpack ${MY_P}doc.tar.gz
 }
@@ -32,24 +31,26 @@ src_compile() {
 	local param
 
 	cd mup
-	cc -O2 -o mup *.c -lm || die "compile mup failed"
+	cc -O2 -o mup *.c -lm
 
 	cd ../mkmupfnt
-	cc -o mkmupfnt *.c || die "compile mkmupfnt failed"
+	cc -o mkmupfnt *.c
 
-	if use X || use svga; then
+	if [ -n "`use X`" -o -n "`use svga`" ] ; then
 		cd ../mupdisp
-		if use X ; then
+		if [ -n "`use X`" ] ; then
 			param="-lX11 -L/usr/X11R6/lib"
 		else
-			sed -i '/^#define XWINDOW/d' dispttyp.h || die "sed failed"
+			mv dispttyp.h dispttyp.h.orig
+			sed <dispttyp.h.orig >dispttyp.h \
+				-e '/^#define XWINDOW/ d'
 		fi
-		if use svga ; then
+		if [ -n "`use svga`" ] ; then
 			param="${param} -lvga"
 		else
 			param="${param} -DNO_VGA_LIB"
 		fi
-		cc -o mupdisp *.c -lm ${param} || die "compile mupdisp failed"
+		cc -o mupdisp *.c -lm ${param}
 	fi
 }
 
@@ -57,7 +58,7 @@ src_install () {
 	dobin mup/mup
 	dobin mkmupfnt/mkmupfnt
 	dobin mupprnt
-	if use X || use svga ; then
+	if [ -n "`use X`" -o -n "`use svga`" ] ; then
 		dobin mupdisp/mupdisp
 	fi
 
@@ -67,7 +68,7 @@ src_install () {
 		mkmupfnt.ps mupdisp.ps mupprnt.ps mup.ps mupqref.ps oddeven.ps uguide.ps
 
 	doman mup.1 mupprnt.1 mkmupfnt.1
-	if use X || use svga; then
+	if [ -n "`use X`" -o -n "`use svga`" ] ; then
 		doman mupdisp.1
 	fi
 
@@ -78,15 +79,15 @@ src_install () {
 }
 
 pkg_postinst() {
-	if use svga ; then
+	if [ "`use svga`" ] ; then
 		einfo "Please note that using mupdisp in SVGA mode on the console"
 		einfo "requires that it can write to the console device. To allow"
 		einfo "this, make mupdisp setuid to root, like this:"
-		einfo
+		einfo ""
 		einfo "\tchown root:root /usr/bin/mupdisp"
 		einfo "\tchmod u+s /usr/bin/mupdisp"
 	fi
-	if use X || use svga; then
+	if [ -n "`use X`" -o -n "`use svga`" ] ; then
 		echo
 		einfo "If you want to use mupdisp, make sure you also install ghostscript."
 	fi

@@ -1,39 +1,6 @@
 # ChangeLog for media-video/nemesi
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/nemesi/ChangeLog,v 1.8 2005/11/02 20:18:17 genstef Exp $
-
-  02 Nov 2005; Stefan Schweizer <genstef@gentoo.org> nemesi-0.5.0.ebuild,
-  nemesi-0.5.1.ebuild, nemesi-0.5.2.ebuild, nemesi-0.5.3.ebuild:
-  app-text/ghostscript -> virtual/ghostscript
-
-*nemesi-0.5.3 (03 Aug 2005)
-
-  03 Aug 2005; Luca Barbato <lu_zero@gentoo.org> +nemesi-0.5.3.ebuild:
-  New version
-
-  18 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> nemesi-0.5.0.ebuild,
-  nemesi-0.5.1.ebuild, nemesi-0.5.2.ebuild:
-  Use virtual/libc instead of sys-libs/glibc, it builds fine on fbsd at least.
-
-*nemesi-0.5.2 (04 Apr 2005)
-
-  04 Apr 2005; Luca Barbato <lu_zero@gentoo.org> nemesi-0.5.1.ebuild,
-  +nemesi-0.5.2.ebuild:
-  New version and fixed the configure
-
-*nemesi-0.5.1 (07 Mar 2005)
-
-  07 Mar 2005; Luca Barbato <lu_zero@gentoo.org> +nemesi-0.5.1.ebuild:
-  New version
-
-*nemesi-0.5.0 (08 Feb 2005)
-
-  08 Feb 2005; Luca Barbato <lu_zero@gentoo.org> metadata.xml,
-  +nemesi-0.5.0.ebuild:
-  New version
-
-  18 Dec 2004; Luca Barbato <lu_zero@gentoo.org> nemesi-0.4.0.ebuild:
-  Made sure it doesn't overwrite CFLAGS
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/nemesi/ChangeLog,v 1.1 2004/12/17 06:26:10 lu_zero Exp $
 
 *nemesi-0.4.0 (17 Dec 2004)
 

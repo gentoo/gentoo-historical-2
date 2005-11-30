@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/drac/drac-1.12.ebuild,v 1.7 2005/02/19 11:25:39 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/drac/drac-1.12.ebuild,v 1.1 2004/05/30 03:09:23 seemant Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
 DESCRIPTION="A robust implementation of POP-before-SMTP"
 HOMEPAGE="http://mail.cc.umanitoba.ca/drac/"
@@ -13,9 +13,9 @@ SLOT="0"
 KEYWORDS="x86"
 IUSE="debug"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-libs/db
-	>=mail-mta/sendmail-8.9"
+	>=net-mail/sendmail-8.9"
 
 S=${WORKDIR}
 
@@ -26,13 +26,13 @@ src_compile() {
 		-e "s:EBIN = /usr/local/sbin:EBIN = /usr/sbin:" \
 		-e "s:MAN = /usr/local/man/man:MAN = /usr/share/man/man:" \
 		-e "s:DEFS = -DTI_RPC -DFCNTL_LOCK -DSYSINFO:DEFS = -DSOCK_RPC -DFCNTL_LOCK -DGETHOST -DDASH_C:" \
-		-e "s:CC = cc:CC = $(tc-getCC):" \
+		-e "s:CC = cc:CC = gcc:" \
 		-e "s:LDLIBS = -L/usr/local/src/db/db-4.1.25/build_unix -lnsl -ldb-4.1:LDLIBS = -ldb:" \
 		-e "s:TSTLIBS = -L. -ldrac -lnsl:TSTLIBS = -L. -ldrac:" \
 		-e "s:RPCGENFLAGS =:RPCGENFLAGS = -C -I:" \
 		-e "s:MANADM = 1m:MANADM = 8:" \
 		< Makefile.orig > Makefile
-	if use debug; then
+	if [ `use debug` ]; then
 		cp Makefile Makefile.posthacked
 		sed -e "s:CFLAGS = \$(DEFS) -g -I/usr/local/src/db/db-4.1.25/build_unix:CFLAGS = \$(DEFS) -g ${CFLAGS}:" \
 			< Makefile.posthacked > Makefile

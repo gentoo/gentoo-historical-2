@@ -1,34 +1,6 @@
 # ChangeLog for www-apps/sitebar
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/sitebar/ChangeLog,v 1.8 2005/09/28 00:22:57 rl03 Exp $
-
-*sitebar-3.3.5 (28 Sep 2005)
-
-  28 Sep 2005; Renat Lumpau <rl03@gentoo.org> +sitebar-3.3.5.ebuild:
-  Version bump wrt bug #107445.
-
-  24 Aug 2005; Homer Parker <hparker@gentoo.org> sitebar-3.3.3.ebuild:
-  Marked ~amd64.
-
-  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
-  Housekeeping
-
-  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
-  sitebar-3.3.3.ebuild:
-  Housekeeping
-
-*sitebar-3.3.3 (03 Jul 2005)
-
-  03 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
-  +sitebar-3.3.3.ebuild:
-  Version bump, closes #94332
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  sitebar-3.2.6.ebuild:
-  Masked sitebar-3.2.6.ebuild stable for ppc
-
-  31 Aug 2004; David Holm <dholm@gentoo.org> sitebar-3.2.6.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/sitebar/ChangeLog,v 1.1 2004/08/18 20:30:22 rl03 Exp $
 
 *sitebar-3.2.6 (18 Aug 2004)
 

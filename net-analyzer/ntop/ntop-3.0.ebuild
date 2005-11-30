@@ -1,44 +1,37 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/ntop-3.0.ebuild,v 1.17 2005/09/15 11:47:42 r3pek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/ntop-3.0.ebuild,v 1.1 2004/03/31 09:34:38 mboman Exp $
 
-inherit gnuconfig
+IUSE="ssl readline tcpd ncurses"
 
-DESCRIPTION="tool that shows network usage like top"
-HOMEPAGE="http://www.ntop.org/ntop.html"
+DESCRIPTION="ntop is a unix tool that shows network usage like top"
 SRC_URI="mirror://sourceforge/ntop/${P}.tgz"
+HOMEPAGE="http://www.ntop.org/ntop.html"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ppc sparc hppa ~amd64 ~ppc64"
-IUSE="ssl readline tcpd"
+LICENSE="GPL-2"
+KEYWORDS="x86 ~ppc sparc hppa ~amd64"
 
 DEPEND=">=sys-libs/gdbm-1.8.0
-	virtual/libpcap
-	>=media-libs/gd-2.0.22
-	>=media-libs/libpng-1.2.5
+	>=net-libs/libpcap-0.5.2
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r4 )
 	ssl? ( >=dev-libs/openssl-0.9.6 )
-	readline? ( >=sys-libs/readline-4.1 )"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	gnuconfig_update
-}
+	readline? ( >=sys-libs/readline-4.1 )
+	ncurses? ( sys-libs/ncurses )"
 
 src_compile() {
 	local myconf
 
-	use readline || myconf="${myconf} --without-readline"
-	use tcpd || myconf="${myconf} --with-tcpwrap"
-	use ssl || myconf="${myconf} --without-ssl"
+	use readline	|| myconf="${myconf} --without-readline"
+	use tcpd	|| myconf="${myconf} --with-tcpwrap"
+	use ssl		|| myconf="${myconf} --without-ssl"
+	use ncurses	|| myconf="${myconf} --without-curses"
 
 	econf ${myconf} || die "configure problem"
 	make || die "compile problem"
 }
 
-src_install() {
+src_install () {
 	make DESTDIR=${D} install || die "install problem"
 
 	# fixme: bad handling of plugins (in /usr/lib with unsuggestive names)
@@ -46,21 +39,13 @@ src_install() {
 
 	doman ntop.8
 
-	dodoc AUTHORS CONTENTS ChangeLog MANIFESTO NEWS
+	dodoc AUTHORS CONTENTS COPYING ChangeLog MANIFESTO NEWS
 	dodoc PORTING README SUPPORT_NTOP.txt THANKS docs/*
 
 	dohtml ntop.html
 
 	keepdir /var/lib/ntop
-	chown -R nobody:nobody ${D}/var/lib/ntop
 
 	exeinto /etc/init.d ; newexe ${FILESDIR}/ntop-init ntop
 	insinto /etc/conf.d ; newins ${FILESDIR}/ntop-confd ntop
 }
-
-pkg_postinst() {
-
-	einfo "Notice that intop was removed upstream as of 3.0."
-
-}
-

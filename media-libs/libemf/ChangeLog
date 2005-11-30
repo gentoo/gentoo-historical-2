@@ -1,40 +1,6 @@
 # ChangeLog for media-libs/libemf
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libemf/ChangeLog,v 1.13 2005/06/22 16:45:49 gustavoz Exp $
-
-  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> libemf-1.0.ebuild:
-  Stable on sparc
-
-  09 Jun 2005; <sekretarz@gentoo.org> libemf-1.0.ebuild:
-  Stable on amd64
-
-  05 Jun 2005; Markus Rothe <corsair@gentoo.org> libemf-1.0.ebuild:
-  Stable on ppc64; dependency for bug #92995
-
-  21 May 2005; Markus Rothe <corsair@gentoo.org> libemf-1.0.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  17 May 2005; Patrick Kursawe <phosphan@gentoo.org> libemf-1.0.ebuild:
-  Removing unnecessary "inherit gcc".
-
-  26 Mar 2005; Jason Wever <weeve@gentoo.org> libemf-1.0.ebuild:
-  Added ~sparc keyword wrt bug #86280.
-
-  22 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> libemf-1.0.ebuild:
-  added ~amd64 to KEYWORDS. fixes #80338
-
-  01 Feb 2005; Patrick Kursawe <phosphan@gentoo.org>
-  +files/libEMF-1.0-amd64.patch, libemf-1.0.ebuild:
-  Adding patch for amd64, see bug #9167 (patch source: PLD)
-
-  24 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> libemf-1.0.ebuild:
-  Added missing "inherit eutils"
-
-  18 Feb 2004; Patrick Kursawe <phosphan@gentoo.org> libemf-1.0.ebuild:
-  Checking gcc version before applying the patch now.
-
-  15 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> libemf-1.0.ebuild:
-  set ~ppc in keywords
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libemf/ChangeLog,v 1.1 2003/07/17 10:33:47 phosphan Exp $
 
 *libemf-1.0 (17 Jul 2003)
 

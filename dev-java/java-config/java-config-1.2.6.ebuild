@@ -1,16 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config/java-config-1.2.6.ebuild,v 1.10 2005/01/03 22:15:52 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config/java-config-1.2.6.ebuild,v 1.1 2004/02/18 04:40:59 aether Exp $
 
 inherit distutils
 
-DESCRIPTION=" Java environment configuration tool"
+S=${WORKDIR}/${P}
+DESCRIPTION=" Java enviroment configuration tool"
 HOMEPAGE="http://www.gentoo.org/"
 SRC_URI="mirror://gentoo/java-config-${PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 RDEPEND="virtual/python"
-KEYWORDS="x86 alpha ia64 amd64 sparc ppc hppa ppc64"
+#DEPEND="$DEPEND"
+KEYWORDS="x86 ~alpha ~ia64 amd64 ~sparc"
 IUSE=""
 
 src_install() {

@@ -1,33 +1,6 @@
 # ChangeLog for net-www/mod_roaming
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_roaming/ChangeLog,v 1.9 2005/09/18 21:54:41 vericgar Exp $
-
-  18 Sep 2005; Michael Stewart <vericgar@gentoo.org>
-  mod_roaming-2.0.0-r1.ebuild:
-  Stable on x86
-
-*mod_roaming-1.0.2 (25 Feb 2005)
-
-  25 Feb 2005; Benedikt Boehm <hollow@gentoo.org> mod_roaming-1.0.2.ebuild,
-  mod_roaming-2.0.0-r1.ebuild:
-  added MOD_DEFINE
-
-  17 Feb 2005; Benedikt Boehm <hollow@gentoo.org>
-  files/2.0.0-r1/18_mod_roaming.conf, mod_roaming-2.0.0-r1.ebuild:
-  added support for apache 1.3 + cleanup
-
-*mod_roaming-2.0.0-r1 (09 Jan 2005)
-
-  09 Jan 2005; Benedikt Boehm <hollow@gentoo.org> metadata.xml,
-  +files/2.0.0-r1/18_mod_roaming.conf, +mod_roaming-2.0.0-r1.ebuild:
-  Apache herd package refresh
-
-  04 Apr 2004; Chuck Short <zul@gentoo.org> metadata.xml,
-  mod_roaming-2.0.0.ebuild:
-  Updated header, added metadata.
-
-  12 Jul 2003; Donny Davies <woodchip@gentoo.org> mod_roaming-2.0.0.ebuild:
-  Marked x86 stable.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_roaming/ChangeLog,v 1.1 2002/11/28 20:48:27 woodchip Exp $
 
 *mod_roaming-2.0.0 (28 Nov 2002)
 

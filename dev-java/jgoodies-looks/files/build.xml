@@ -63,10 +63,10 @@
    </target>
 
    <target name="javadoc" depends="compile">
-      <javadoc sourcepath="${basedir}"
+      <javadoc sourcepath="${clearlook.src}"
                destdir="${clearlook.javadoc}"
                packagenames="${clearlook.packages}"/>
-      <javadoc sourcepath="${basedir}"
+      <javadoc sourcepath="${plastic.src}"
                destdir="${plastic.javadoc}"
                packagenames="${plastic.packages}"/>
    </target>

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/unison/unison-2.9.1-r1.ebuild,v 1.5 2005/07/19 16:16:49 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/unison/unison-2.9.1-r1.ebuild,v 1.1 2004/08/09 10:40:37 mattam Exp $
 
 inherit eutils
 
@@ -10,14 +10,13 @@ DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="http://www.cis.upenn.edu/~bcpierce/unison/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ppc ~alpha ~amd64"
+KEYWORDS="x86 sparc ppc alpha ~amd64 macos"
 
 DEPEND=">=dev-lang/ocaml-3.04
 	gtk? ( =dev-ml/lablgtk-1.2* )"
-RDEPEND="gtk? ( =x11-libs/gtk+-1.2*
-|| ( net-misc/x11-ssh-askpass net-misc/gtk2-ssh-askpass ) )"
+RDEPEND="gtk? ( =x11-libs/gtk+-1.2* )"
 
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="mirror://${P}.tar.gz"
 
 src_unpack() {
 	unpack ${P}.tar.gz
@@ -33,6 +32,7 @@ src_unpack() {
 }
 
 src_compile() {
+
 	local myconf
 
 	if use gtk; then

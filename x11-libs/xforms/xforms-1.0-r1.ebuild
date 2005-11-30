@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/xforms/xforms-1.0-r1.ebuild,v 1.7 2005/07/31 04:22:27 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/xforms/xforms-1.0-r1.ebuild,v 1.1 2005/03/27 06:07:11 usata Exp $
 
 inherit eutils
 
@@ -12,14 +12,13 @@ SRC_URI="ftp://ncmir.ucsd.edu/pub/xforms/OpenSource/${P}-release.tgz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 
 DEPEND="virtual/x11
-	>=sys-apps/sed-4
-	media-libs/jpeg"
-RDEPEND="virtual/x11
-	media-libs/jpeg"
+	>=sys-apps/sed-4"
 IUSE="cjk"
+
+PROVIDE="virtual/xforms"
 
 src_unpack() {
 	unpack ${P}-release.tgz

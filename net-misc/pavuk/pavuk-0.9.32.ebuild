@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pavuk/pavuk-0.9.32.ebuild,v 1.6 2005/04/09 19:10:52 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pavuk/pavuk-0.9.32.ebuild,v 1.1 2005/04/05 21:09:36 dsd Exp $
 
 inherit eutils
 
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc sparc x86"
-IUSE="ssl X gnome mozilla nls"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+IUSE="ssl X gnome mozilla socks5 nls"
 
 DEPEND=">=sys-apps/sed-4
 	sys-devel/gettext
@@ -19,18 +19,19 @@ DEPEND=">=sys-apps/sed-4
 	ssl? ( dev-libs/openssl )
 	X? ( virtual/x11 )
 	gnome? ( gnome-base/gnome-libs )
-	mozilla? ( www-client/mozilla )"
+	mozilla? ( www-client/mozilla )
+	socks5? ( net-misc/tsocks )"
 
 src_compile() {
 	econf \
 		--enable-threads \
 		--with-regex=auto \
 		--disable-gtk \
-		--disable-socks \
 		$(use_with X x) \
 		$(use_enable ssl) \
 		$(use_enable gnome) \
 		$(use_enable mozilla js) \
+		$(use_enable socks5 socks) \
 		$(use_enable nls) \
 		|| die "econf failed"
 
@@ -46,7 +47,7 @@ src_install() {
 		sed -i 's:Type=Internet:Type=Application:' pavuk.desktop
 	fi
 
-	make install DESTDIR=${D}
+	einstall || die
 
 	dodoc README CREDITS FAQ NEWS AUTHORS BUGS \
 		TODO MAILINGLIST ChangeLog wget-pavuk.HOWTO jsbind.txt \

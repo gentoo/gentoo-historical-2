@@ -1,32 +1,6 @@
-# ChangeLog for sci-libs/lapack-atlas
-# Copyright 2004-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-atlas/ChangeLog,v 1.8 2005/11/13 05:44:04 ribosome Exp $
-
-*lapack-atlas-3.6.0-r1 (13 Nov 2005)
-
-  13 Nov 2005; Olivier Fisette <ribosome@gentoo.org>
-  +lapack-atlas-3.6.0-r1.ebuild:
-  Migrated to fortran.eclass (bug #65950).
-
-  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
-  lapack-atlas-3.6.0.ebuild:
-  Stable on ppc.
-
-  11 Sep 2005; Steve Arnold <nerdboy@gentoo.org> lapack-atlas-3.6.0.ebuild:
-  stable bump (sparc and x86) required for other sc-libs (besides, that
-  configure bug doesn't really count, and the other one is *old*...)
-
-  10 Sep 2005; Peter Bienstman <pbienst@gentoo.org>
-  lapack-atlas-3.6.0.ebuild:
-  Add extra header files (#51323).
-
-  10 Sep 2005; Peter Bienstman <pbienst@gentoo.org> +files/unbuffered.patch,
-  lapack-atlas-3.6.0.ebuild:
-  Fix #102088.
-
-  17 Feb 2005; Bryan Østergaard <kloeri@gentoo.org>
-  lapack-atlas-3.6.0.ebuild:
-  ~alpha keyword.
+# ChangeLog for app-sci/lapack-atlas
+# Copyright 2004-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-atlas/ChangeLog,v 1.1 2004/12/29 18:26:45 ribosome Exp $
 
 *lapack-atlas-3.6.0 (29 Dec 2004)
 

@@ -1,9 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.11.18.ebuild,v 1.10 2005/01/02 02:01:12 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.11.18.ebuild,v 1.1 2004/11/12 12:37:29 scandium Exp $
 
 DESCRIPTION="Concurrent Versions System - source code revision control tools"
 HOMEPAGE="http://www.cvshome.org/"
+
 SRC_URI="http://ccvs.cvshome.org/files/documents/19/534/${P}.tar.bz2
 	doc? ( http://ccvs.cvshome.org/files/documents/19/531/cederqvist-${PV}.html.tar.bz2
 		http://ccvs.cvshome.org/files/documents/19/532/cederqvist-${PV}.pdf
@@ -11,7 +12,8 @@ SRC_URI="http://ccvs.cvshome.org/files/documents/19/534/${P}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
+
 IUSE="doc emacs"
 
 DEPEND="virtual/libc
@@ -44,8 +46,4 @@ src_install() {
 		cd ${D}/usr/share/doc/${PF}/html/
 		ln -s cvs.html index.html
 	fi
-}
-
-src_test() {
-	einfo "FEATURES=\"maketest\" has been disabled for dev-util/cvs"
 }

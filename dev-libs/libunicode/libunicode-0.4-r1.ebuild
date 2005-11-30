@@ -1,27 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libunicode/libunicode-0.4-r1.ebuild,v 1.30 2005/10/02 11:56:37 agriffis Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header
 
-inherit gnuconfig
+A=${P}.gnome.tar.gz
+S=${WORKDIR}/${P}
+DESCRIPTION="The Gnome Application Libraries"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/unstable/sources/${PN}/${A}
+         ftp://gnome.eazel.com/pub/gnome/unstable/sources/${PN}/${A}"
 
-DESCRIPTION="Unicode library"
 HOMEPAGE="http://www.gnome.org/"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/${PN}/${PV}/${P}.gnome.tar.gz"
 
-LICENSE="GPL-2 LGPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc sparc x86"
-IUSE=""
+DEPEND="virtual/glibc"
 
-DEPEND="virtual/libc"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	gnuconfig_update
+src_compile() {                           
+  cd ${S}
+  try ./configure --host=${CHOST} --prefix=/opt/gnome
+  try make
 }
 
-src_install() {
-	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
+src_install() {                               
+  cd ${S}
+  try make prefix=${D}/opt/gnome install
+
+  dodoc AUTHORS COPYING.* ChangeLog NEWS README THANKS TODO
 }
+
+
+
+

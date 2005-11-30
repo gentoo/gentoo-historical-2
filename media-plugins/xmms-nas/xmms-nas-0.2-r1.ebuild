@@ -1,36 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-nas/xmms-nas-0.2-r1.ebuild,v 1.16 2005/04/24 03:00:51 hansmi Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-nas/xmms-nas-0.2-r1.ebuild,v 1.1 2002/08/30 08:35:31 seemant Exp $
 
-IUSE=""
-
-inherit gnuconfig
-
+S=${WORKDIR}/${P}
 DESCRIPTION="A xmms plugin for NAS"
 SRC_URI="ftp://mud.stack.nl/pub/OuterSpace/willem/${P}.tar.gz"
 HOMEPAGE="http://www.xmms.org/plugins_input.html"
 
+DEPEND="media-sound/xmms media-libs/nas"
+
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc -sparc x86"
-
-DEPEND="media-sound/xmms
-	media-libs/nas"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	gnuconfig_update
-}
+KEYWORDS="x86"
 
 src_compile() {
-	econf --disable-static || die
+	econf || die
 	touch config.h
 	make || die
 }
 
 src_install () {
-	exeinto `xmms-config --input-plugin-dir`
-	doexe .libs/libnas.so || die
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS COPYING ChangeLog NEWS README TODO
 }

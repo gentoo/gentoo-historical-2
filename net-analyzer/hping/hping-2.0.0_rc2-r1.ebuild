@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hping/hping-2.0.0_rc2-r1.ebuild,v 1.12 2005/01/29 05:12:51 dragonheart Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hping/hping-2.0.0_rc2-r1.ebuild,v 1.1 2003/12/03 21:30:28 avenj Exp $
 
 S=${WORKDIR}/hping2-rc2
 DESCRIPTION="A ping-like TCP/IP packet assembler/analyzer."
@@ -11,21 +9,20 @@ HOMEPAGE="http://www.hping.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc hppa ia64 amd64 alpha ppc"
+KEYWORDS="~x86 ~sparc ~hppa ~ia64 ~amd64 ~alpha"
 
-DEPEND="virtual/libpcap"
-IUSE="debug"
+DEPEND="net-libs/libpcap"
 
 src_compile() {
 	epatch ${FILESDIR}/wlan-header-fix.patch
 
 	./configure || die
 
-	if use debug
+	if [ `use debug` ]
 	then
 		make CCOPT="${CFLAGS}" || die
 	else
-		make CCOPT="${CFLAGS}" DEBUG="" || die
+		make CCOPT="${CFLAGS}" || die
 	fi
 }
 

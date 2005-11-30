@@ -4,7 +4,7 @@
  #define _(String) gettext (String)
  #else
  #define _(String) (String)
-+#define rpmatch(line) \
++#define rpmatch(x) \
 +	( (line == NULL) ? -1 : \
 +	  (*line == 'y' || *line == 'Y') ? 1 : \
 +	  (*line == 'n' || *line == 'N') ? 0 : \

@@ -1,20 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/wdiff/wdiff-0.5-r2.ebuild,v 1.8 2005/09/10 06:27:25 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/wdiff/wdiff-0.5-r2.ebuild,v 1.1 2004/09/05 11:50:44 malc Exp $
 
 inherit eutils
+
+IUSE="build"
 
 DESCRIPTION="Create a diff disregarding formatting"
 HOMEPAGE="http://www.gnu.org/software/wdiff/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 	mirror://gentoo/${P}-gentoo.diff.bz2"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ~mips ppc ~sparc x86"
-IUSE="build"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~sparc ~mips ~ppc ~amd64"
 
-DEPEND="sys-apps/diffutils
+DEPEND="sys-libs/libtermcap-compat
+	sys-apps/diffutils
 	sys-apps/less"
 
 src_unpack() {
@@ -23,7 +25,6 @@ src_unpack() {
 	epatch ${WORKDIR}/${P}-gentoo.diff
 	epatch ${FILESDIR}/${P}-segfault-fix.diff
 	epatch ${FILESDIR}/${P}-avoid-wraps.diff
-	sed -i 's:-ltermcap:-lncurses:' configure
 }
 
 src_compile() {
@@ -40,7 +41,7 @@ src_install() {
 
 	if ! use build
 	then
-		dodoc ChangeLog NEWS README
+		dodoc COPYING ChangeLog NEWS README
 		doman wdiff.1
 	else
 		rm -rf ${D}/usr/share/info

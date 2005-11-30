@@ -1,44 +1,45 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/flex/flex-2.5.31.ebuild,v 1.15 2005/09/15 05:33:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/flex/flex-2.5.31.ebuild,v 1.1 2003/04/17 22:53:29 mholzer Exp $
 
-inherit eutils flag-o-matic
-
-DEB_VER=34
+S=${WORKDIR}/${P}
 DESCRIPTION="GNU lexical analyser generator"
-HOMEPAGE="http://lex.sourceforge.net/"
-SRC_URI="mirror://sourceforge/lex/${P}.tar.bz2
-	mirror://debian/pool/main/f/flex/${PN}_${PV}-${DEB_VER}.diff.gz"
+SRC_URI="mirror://sourceforge/lex/${P}.tar.bz2"
+HOMEPAGE="http://www.gnu.org/software/flex/flex.html"
 
-LICENSE="FLEX"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="build nls static"
+LICENSE="FLEX"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
-DEPEND="nls? ( sys-devel/gettext )"
-RDEPEND=""
+DEPEND="virtual/glibc
+	nls? ( sys-devel/gettext )"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${WORKDIR}"/${PN}_${PV}-${DEB_VER}.diff
-	epatch "${FILESDIR}"/${P}-include.patch
-}
 
 src_compile() {
-	use static && append-ldflags -static
-	econf $(use_enable nls) || die
-	emake || die
+	myconf=""
+
+	use nls || myconf="--disable-nls"
+
+	econf ${myconf} || die
+
+	if [ -z "`use static`" ]
+	then
+		emake || make || die
+	else
+		emake LDFLAGS=-static || die
+	fi
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die "make install failed"
-
-	if use build ; then
-		rm -r "${D}"/usr/{include,lib,share}
+	einstall || die
+	
+	if [ -z "`use build`" ]
+	then
+		dodoc AUTHORS COPYING ChangeLog NEWS ONEWS README* RoadMap THANKS TODO
 	else
-		dodoc AUTHORS ChangeLog NEWS ONEWS README* RoadMap THANKS TODO
+		rm -rf ${D}/usr/share ${D}/usr/include ${D}/usr/lib
 	fi
 
 	dosym flex /usr/bin/lex
 }
+

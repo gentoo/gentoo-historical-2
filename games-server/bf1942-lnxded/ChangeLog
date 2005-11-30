@@ -1,35 +1,6 @@
 # ChangeLog for games-server/bf1942-lnxded
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/bf1942-lnxded/ChangeLog,v 1.8 2005/09/26 18:19:23 wolf31o2 Exp $
-
-  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  bf1942-lnxded-1.61.ebuild:
-  Making games last on inherit line.
-
-  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  -bf1942-lnxded-1.5.ebuild, -bf1942-lnxded-1.6_rc2.ebuild,
-  bf1942-lnxded-1.61.ebuild:
-  Marking 1.61 stable on x86 and removing old versions.
-
-  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  bf1942-lnxded-1.61.ebuild:
-  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
-
-*bf1942-lnxded-1.61 (26 Jul 2005)
-
-  26 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  +bf1942-lnxded-1.61.ebuild:
-  Version bumped to 1.61, removed fetch restriction, and closing bug #84292.
-
-*bf1942-lnxded-1.6_rc2 (30 Aug 2004)
-
-  30 Aug 2004; Mike Frysinger <vapier@gentoo.org>
-  +bf1942-lnxded-1.6_rc2.ebuild:
-  Version bump
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  bf1942-lnxded-1.5.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/bf1942-lnxded/ChangeLog,v 1.1 2003/12/28 20:48:20 vapier Exp $
 
 *bf1942-lnxded-1.5 (28 Dec 2003)
 

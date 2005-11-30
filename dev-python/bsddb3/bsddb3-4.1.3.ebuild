@@ -1,30 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/bsddb3/bsddb3-4.1.3.ebuild,v 1.13 2005/04/24 09:14:18 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/bsddb3/bsddb3-4.1.3.ebuild,v 1.1 2003/05/21 12:12:40 tantive Exp $
 
-inherit distutils eutils
+inherit distutils
 
-DESCRIPTION="Python bindings for BerkeleyDB"
+DESCRIPTION="Python bindings for BerkelyDB"
 HOMEPAGE="http://pybsddb.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pybsddb/${P}.tar.gz"
-
-LICENSE="BSD"
+LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc amd64"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="virtual/python
-	=sys-libs/db-4.1*"
+	=sys-libs/db-4*"
 
-DOCS="README.txt TODO.txt"
+S="${WORKDIR}/${P}"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-setup.py.patch
+mydoc="README.txt TODO.txt"
+
+src_compile() {
+	distutils_src_compile "--berkeley-db=/usr"
 }
 
 src_install() {
-	distutils_src_install
+	distutils_src_install "--berkeley-db=/usr"
 	dohtml docs/*
 }
+

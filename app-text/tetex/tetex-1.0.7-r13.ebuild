@@ -1,35 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tetex/tetex-1.0.7-r13.ebuild,v 1.13 2005/01/01 16:37:56 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tetex/tetex-1.0.7-r13.ebuild,v 1.1 2003/09/07 01:01:49 drobbins Exp $
 
-inherit eutils flag-o-matic
+inherit flag-o-matic
+filter-flags "-fstack-protector"
 
 TEXMFSRC="teTeX-texmf-gg-1.0.3.tar.bz2"
 S=${WORKDIR}/teTeX-1.0
 
 DESCRIPTION="a complete TeX distribution"
-HOMEPAGE="http://tug.org/teTeX/"
 SRC_URI="ftp://sunsite.informatik.rwth-aachen.de/pub/comp/tex/teTeX/1.0/distrib/sources/teTeX-src-${PV}.tar.gz
-	ftp://ftp.dante.de/pub/tex/systems/unix/teTeX/1.0/contrib/ghibo/${TEXMFSRC}
-	mirror://gentoo/ec-ready-mf-tfm.tar.gz
-	mirror://gentoo/teTeX-french.tar.gz
-	mirror://gentoo/${P}-gentoo.tar.gz"
+	 ftp://ftp.dante.de/pub/tex/systems/unix/teTeX/1.0/contrib/ghibo/${TEXMFSRC}
+	 mirror://gentoo/ec-ready-mf-tfm.tar.gz
+	 mirror://teTeX-french.tar.gz"
+HOMEPAGE="http://tug.org/teTeX/"
 
 KEYWORDS="x86 ppc sparc alpha hppa"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="X"
 
-DEPEND="!app-text/ptex
-	!app-text/cstetex
-	sys-apps/ed
+DEPEND="sys-apps/ed
 	X? ( virtual/x11 )
 	>=media-libs/libpng-1.2.1
-	sys-libs/ncurses
+	sys-libs/ncurses 
 	>=net-libs/libwww-5.3.2-r1
 	sys-libs/zlib"
-RDEPEND="${DEPEND}
-	>=dev-lang/perl-5.2
+RDEPEND="$DEPEND >=dev-lang/perl-5.2
 	dev-util/dialog"
 PROVIDE="virtual/tetex"
 
@@ -37,7 +34,8 @@ src_unpack() {
 	unpack teTeX-src-${PV}.tar.gz
 
 	cd ${S}
-
+	patch -p1 < ${FILESDIR}/${PF}-gentoo.diff
+	
 	mkdir ${S}/texmf
 	cd ${S}/texmf
 	umask 022
@@ -48,44 +46,36 @@ src_unpack() {
 	echo ">>> Unpacking teTeX-french.tar.gz"
 	tar --no-same-owner -xzf ${DISTDIR}/teTeX-french.tar.gz || die
 
-	cd ${S}
-	unpack ${P}-gentoo.tar.gz
-	epatch ${P}-dvips-secure.diff
-
 	# Fixes from way back ... not sure even Achim will
 	# still know why :/
-	epatch teTeX-1.0-gentoo.diff
-	epatch teTeX-1.0.diff
+	cd ${WORKDIR}
+	patch -p0 < ${FILESDIR}/teTeX-1.0-gentoo.diff || die
+	cd ${S}
+	patch -p0 < ${FILESDIR}/teTeX-1.0.dif || die
 
 	# Do not run config stuff
-	epatch ${P}-dont-run-config.diff
+	patch -p1 < ${FILESDIR}/${P}-dont-run-config.diff || die
 
 	# Fix for dvips to print directly.
-	epatch teTeX-1.0-dvips.diff
-
-	# Fix picins.sty 
-	epatch ${P}-picins.diff
-
-	# Prevent the silly readlink manpage from installing
-	epatch ${FILESDIR}/${PN}-no-readlink-manpage.diff
+	patch -p1 < ${FILESDIR}/teTeX-1.0-dvips.diff || die
 
 	# Fix problem where the *.fmt files are not generated due to the LaTeX
 	# source being older than a year.
-	local x
-	for x in `find ${S}/texmf/ -type f -name '*.ini'`
-	do
-		cp ${x} ${x}.orig
-		sed -e '1i \\scrollmode' ${x}.orig > ${x}
-		rm -f ${x}.orig
-	done
+        local x
+        for x in `find ${S}/texmf/ -type f -name '*.ini'`
+        do
+                cp ${x} ${x}.orig
+                sed -e '1i \\scrollmode' ${x}.orig > ${x}
+                rm -f ${x}.orig
+        done
 
 	# IMPORTANT!  If you're having *.fmt problems, do this:
 	# fmtutil --all
 	# after the merge.
+
 }
 
 src_compile() {
-	filter-flags -fstack-protector
 
 	local myconf=""
 	use X \
@@ -112,12 +102,13 @@ src_compile() {
 		${myconf} || die "econf failed"
 
 	# emake seems to not work (18 Jan 2003 agriffis)
-	make || die
+	make
 }
 
 src_install() {
+
 	dodir /usr/share/
-	# Install texmf files
+    # Install texmf files
 	einfo "Installing texmf..."
 	cp -Rv texmf ${D}/usr/share || die "cp -Rv texmf failed"
 
@@ -144,13 +135,13 @@ src_install() {
 	dodoc CONTRIB COPYING NEWS NOTES PORTING README
 	docinto ps2pkm
 	cd ${S}/texk/ps2pkm
-	dodoc ChangeLog CHANGES.type1 INSTALLATION README*
+	dodoc ChangeLog CHANGES.type1 INSTALLATION README* 
 	docinto web2c
 	cd ${S}/texk/web2c
 	dodoc AUTHORS ChangeLog NEWS PROJECTS README
 	docinto xdvik
 	cd ${S}/texk/xdvik
-	dodoc BUGS FAQ README*
+	dodoc BUGS FAQ README* 
 
 	#fix for conflicting readlink binary:
 	rm -f ${D}/bin/readlink
@@ -161,10 +152,11 @@ src_install() {
 	#fix for lousy upstream permisssions on /usr/share/texmf files
 	#NOTE: do not use fowners, as its not recursive ...
 	einfo "Fixing permissions..."
-	chown -R root:root ${D}/usr/share/texmf
+	chown -R root.root ${D}/usr/share/texmf
 }
 
 pkg_postinst() {
+
 	if [ $ROOT = "/" ]
 	then
 		einfo "Configuring teTeX..."
@@ -181,9 +173,10 @@ pkg_postinst() {
 
 		einfo "Generating format files..."
 		fmtutil --missing &>/dev/null # This should generate all missing fmt files.
-
+		
 		echo
 		einfo "Use 'texconfig font rw' to allow all users to generate fonts."
 		echo
 	fi
 }
+

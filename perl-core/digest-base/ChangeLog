@@ -1,41 +1,6 @@
-# ChangeLog for perl-core/digest-base
+# ChangeLog for dev-perl/digest-base
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/digest-base/ChangeLog,v 1.11 2005/11/13 14:24:23 mcummings Exp $
-
-*digest-base-1.13 (13 Nov 2005)
-
-  13 Nov 2005; Michael Cummings <mcummings@gentoo.org>
-  +digest-base-1.13.ebuild:
-  Version bump upstream
-
-  10 Oct 2005; Hardave Riar <hardave@gentoo.org> digest-base-1.10.ebuild:
-  Stable on mips.
-
-  17 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> digest-base-1.10.ebuild:
-  Stable on amd64.
-
-  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  digest-base-1.10.ebuild:
-  Stable on ppc.
-
-  07 Jul 2005; Markus Rothe <corsair@gentoo.org> digest-base-1.10.ebuild:
-  Stable on ppc64
-
-  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org>
-  digest-base-1.10.ebuild:
-  Stable on alpha.
-
-  29 Jun 2005; Michael Cummings <mcummings@gentoo.org>
-  digest-base-1.10.ebuild:
-  unmasking for x86 and sparc
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  digest-base-1.10.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  digest-base-1.08.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+# $Header: /var/cvsroot/gentoo-x86/perl-core/digest-base/ChangeLog,v 1.1 2005/05/24 14:56:40 mcummings Exp $
 
 *digest-base-1.10 (24 May 2005)
 

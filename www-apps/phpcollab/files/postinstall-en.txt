@@ -1,8 +1,7 @@
 You will need to create a new database. Consult your user manual.
 
-Browse to http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/installation/setup.php
+Browse to installation/setup.php
 
-When you are done, delete installation/setup.php, and login at 
-http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/index.php
+When you are done, delete installation/setup.php, and login at index.php
 
 Edit includes/settings.php to fine-tune the installation.

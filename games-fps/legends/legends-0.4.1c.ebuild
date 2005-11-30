@@ -1,18 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/legends/legends-0.4.1c.ebuild,v 1.6 2005/10/10 19:12:38 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/legends/legends-0.4.1c.ebuild,v 1.1 2005/05/16 01:52:40 mr_bones_ Exp $
 
 inherit games
 
 MY_P=${PN}_linux-${PV}
 DESCRIPTION="A fast-paced first-person-perspective online multiplayer game similar to Tribes"
 HOMEPAGE="http://legendsthegame.net/"
-SRC_URI="http://www.legendsthegame.net/files//${MY_P}.tar.gz
-	mirror://gentoo/${PN}.png
-	http://dev.gentoo.org/~wolf31o2/sources/dump/${PN}.png"
+SRC_URI="http://runcrash.com/legends/${MY_P}.tar.gz"
 
 RESTRICT="nomirror"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* x86"
 LICENSE="as-is"
 SLOT="0"
 IUSE="dedicated"
@@ -21,9 +19,7 @@ DEPEND=""
 RDEPEND=">=media-libs/libsdl-1.2
 	media-libs/libogg
 	media-libs/libvorbis
-	media-libs/openal
-	amd64? ( >=app-emulation/emul-linux-x86-sdl-2.1
-			>=app-emulation/emul-linux-x86-soundlibs-2.1 )"
+	media-libs/openal"
 
 S=${WORKDIR}/${MY_P}
 
@@ -35,7 +31,7 @@ src_unpack() {
 	# keep libSDL-1.3.so because legends requires it as of 0.4.0, and
 	# 1.2.6 is highest in portage
 	# rm libSDL-*.so*
-	rm runlegends libSDL-1.2.so.0 libopenal.so libogg.so.0 libvorbis.so.0 *.DLL
+	rm runlegends libSDL-1.2.so.0 libopenal.so libogg.so.0 libvorbis.so.0
 	find . -type f -exec chmod a-x '{}' \;
 	chmod a+x lindedicated LinLegends
 	cp "${FILESDIR}"/legends{,-ded} "${T}" || die "cp failed"
@@ -55,8 +51,6 @@ src_install() {
 	if use dedicated ; then
 		dogamesbin "${T}"/legends-ded || die "dogamesbin failed (2)"
 	fi
-	doicon "${DISTDIR}"/${PN}.png
-	make_desktop_entry legends "Legends"
 	prepgamesdirs
 }
 

@@ -1,19 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ptypes/ptypes-1.7.4.ebuild,v 1.8 2005/10/18 15:44:31 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ptypes/ptypes-1.7.4.ebuild,v 1.1 2003/01/05 06:59:26 george Exp $
 
 DESCRIPTION="PTypes (C++ Portable Types Library) is a simple alternative to the STL that includes multithreading and networking."
 
 HOMEPAGE="http://www.melikyan.com/ptypes/"
-SRC_URI="mirror://sourceforge/ptypes/${P}.tar.gz"
+SRC_URI="http://easynews.dl.sourceforge.net/sourceforge/ptypes/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_compile() {
 	make

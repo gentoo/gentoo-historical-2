@@ -1,24 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vtun/vtun-2.5.ebuild,v 1.16 2005/11/13 06:21:54 dragonheart Exp $
-
-IUSE="ssl"
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author: Bryce Allen <ballen@mum.edu>
+# Maintainer: Jon Nelson <jnelson@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vtun/vtun-2.5.ebuild,v 1.1 2002/04/28 19:42:50 jnelson Exp $
 
 S=${WORKDIR}/vtun
 DESCRIPTION="Create virtual tunnels over TCP/IP networks with traffic shaping, encryption, and compression"
-SRC_URI="mirror://sourceforge/vtun/${P}.tar.gz"
+SRC_URI="http://prdownloads.sourceforge.net/vtun/${P}.tar.gz"
 HOMEPAGE="http://vtun.sourceforge.net/"
-KEYWORDS="x86 sparc "
-LICENSE="GPL-2"
-SLOT="0"
 
 # NOTE: you also need the tun/tap driver compiled into your kernel
 #		to do tun/tap tunneling
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=sys-libs/zlib-1.1.3
-	=dev-libs/lzo-1*
+	>=dev-libs/lzo-1.07
 	sys-devel/bison
 	ssl? ( >=dev-libs/openssl-0.9.6c )"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	unpack ${A} && cd ${S} || die
@@ -29,11 +27,11 @@ src_unpack() {
 src_compile() {
 	local use_opts
 	use_opts=""
-	if ! use ssl
+	if [ -z "`use ssl`" ]
 	then
 		use_opts="--disable-ssl"
 	fi
-
+	
 	econf ${use_opts} --with-ssl-headers=/usr/include/openssl || die
 
 	make || die

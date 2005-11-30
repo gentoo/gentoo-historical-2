@@ -1,25 +1,6 @@
 # ChangeLog for kde-misc/pwmanager
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/pwmanager/ChangeLog,v 1.6 2005/11/10 15:27:33 greg_g Exp $
-
-*pwmanager-1.2.4 (10 Nov 2005)
-
-  10 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> +pwmanager-1.2.4.ebuild:
-  New version. Add support for i18n.
-
-  20 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> pwmanager-1.2.3.ebuild:
-  Stable on x86.
-
-  10 Aug 2005; Simon Stelling <blubb@gentoo.org> pwmanager-1.2.3.ebuild:
-  added ~amd64 keyword
-
-  16 Jul 2005; David Holm <dholm@gentoo.org> pwmanager-1.2.3.ebuild:
-  Added to ~ppc.
-
-*pwmanager-1.2.3 (16 Jul 2005)
-
-  16 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> +pwmanager-1.2.3.ebuild:
-  New version.
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/pwmanager/ChangeLog,v 1.1 2005/05/12 20:52:36 greg_g Exp $
 
 *pwmanager-1.2.1 (12 May 2005)
 

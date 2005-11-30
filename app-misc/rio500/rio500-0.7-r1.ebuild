@@ -1,30 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/rio500/rio500-0.7-r1.ebuild,v 1.16 2005/01/01 15:21:24 eradicator Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Michael Conrad Tilstra <michael@gentoo.org> <tadpol@tadpol.org>
+# $Header: /var/cvsroot/gentoo-x86/app-misc/rio500/rio500-0.7-r1.ebuild,v 1.1 2001/05/31 19:48:00 michael Exp $
 
+#P=
+A=${P}.tar.gz
+S=${WORKDIR}/${P}
 DESCRIPTION="Command line tools for transfering mp3s to and from a Rio500"
-HOMEPAGE="http://rio500.sourceforge.net/"
-SRC_URI="mirror://sourceforge/rio500/${P}.tar.gz"
+SRC_URI="http://download.sourceforge.net/rio500/${A}"
+HOMEPAGE="http://rio500.sourceforge.net"
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86"
-IUSE=""
-
-DEPEND="=dev-libs/glib-1.2*"
+DEPEND="virtual/glibc
+	>=dev-libs/glib-1.2.9"
 
 src_compile() {
-	econf \
-		--with-fontpath=/usr/share/rio500/ \
-		--with-id3support || die
-#		--with-usbdevfs
-	make || die
+    try ./configure --prefix=/usr --host=${CHOST} \
+         --with-fontpath=/usr/share/rio500/ --with-id3support
+#         --with-usbdevfs
+    try make
 }
 
-src_install() {
-	einstall \
-		datadir=${D}/usr/share/rio500 || die
+src_install () {
+    try make prefix=${D}/usr mandir=${D}/usr/share/man \
+             datadir=${D}/usr/share/rio500  install
 
-	dodoc AUTHORS ChangeLog NEWS README TODO
-	dodoc fonts/Readme.txt
+    dodoc AUTHORS COPYING ChangeLog NEWS README TODO 
+    dodoc fonts/Readme.txt
 }
+

@@ -1,11 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/ebook-make/ebook-make-3.71.ebuild,v 1.10 2005/01/01 13:11:15 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Francisco Gimeno <kikov@fco-gimeno.com>
+# Manteiner José Alberto Suárez López <bass@gentoo.org>
 
-DESCRIPTION="Make 3.71  EBook."
+DESCRIPTION="Make 3.71  EBook." 
 
 EBOOKNAME="make"
 EBOOKVERSION="2.13"
 NOVERSION="1"
-
+. /usr/portage/eclass/inherit.eclass || die
 inherit ebook
+

@@ -1,27 +1,27 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/chktex/chktex-1.5-r2.ebuild,v 1.5 2004/06/25 02:11:52 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/chktex/chktex-1.5-r2.ebuild,v 1.1 2003/06/09 13:11:26 satai Exp $
 
-DESCRIPTION="Checks latex source for common mistakes"
-HOMEPAGE="http://www.nongnu.org/chktex/"
 SRC_URI="http://www.ibiblio.org/pub/linux/distributions/gentoo/${P}.tar.gz"
+HOMEPAGE="http://www.nongnu.org/chktex/"
+DESCRIPTION="Checks latex source for common mistakes"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha amd64"
-IUSE="debug"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc alpha"
 
-DEPEND="virtual/tetex
+DEPEND="app-text/tetex
 	dev-lang/perl
 	sys-apps/groff
 	dev-tex/latex2html"
 
 src_compile() {
-	econf `use_enable debug debug-info` || die
+	[ -n "$DEBUG" ] && myconf="--enable-debug-info" || myconf="$myconf --disable-debug-info"
+	econf ${myconf}
 	emake || die
 }
 
 src_install() {
-	einstall || die
+	einstall
 	dodoc COPYING SCOPTIONS
 }

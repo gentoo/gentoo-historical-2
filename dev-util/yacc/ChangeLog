@@ -1,48 +1,8 @@
 # ChangeLog for dev-util/yacc
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/yacc/ChangeLog,v 1.16 2005/08/18 22:55:37 matsuu Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-util/yacc/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
 
-  18 Aug 2005; MATSUU Takuto <matsuu@gentoo.org> yacc-1.9.1-r2.ebuild:
-  Stable on sh.
-
-  07 May 2005; Elfyn McBratney <beu@gentoo.org> yacc-1.9.1-r2.ebuild:
-  Add a more descriptive, er, DESCRIPTION - bug #85712.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> yacc-1.9.1-r1.ebuild,
-  yacc-1.9.1-r2.ebuild:
-  virtual/glibc -> virtual/libc
-
-*yacc-1.9.1-r2 (05 Apr 2004)
-
-  05 Apr 2004; Aron Griffis <agriffis@gentoo.org> yacc-1.9.1-r2.ebuild:
-  I should have bumped the rev for the previous change... doing it now.
-
-  05 Apr 2004; Aron Griffis <agriffis@gentoo.org> yacc-1.9.1-r1.ebuild,
-  files/mkstemp.patch, files/yacc-1.9.1-ia64.patch:
-  Propogate CFLAGS to Makefile in a sed-safe way. Use 64-bit patch from bug
-  46233 (also applied to byacc)
-
-  05 Mar 2004; Tom Gall <tgall@gentoo.org> yacc-1.9.1-r1.ebuild:
-  Stable on ppc64
-
-  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> yacc-1.9.1-r1.ebuild:
-  Stable on alpha
-
-  23 Feb 2003; Guy Martin <gmsoft@gentoo.org> yacc-1.9.1-r1.ebuild :
-  Added hppa to keywords.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *yacc-1.9.1-r1 (1 Feb 2002)
-
-  25 Mar 2003; Aron Griffis <agriffis@gentoo.org> yacc-1.9.1-r1.ebuild:
-  Add ~alpha to KEYWORDS
-
-  15 Mar 2003; Jan Seidel <tuxus@gentoo.org> :
-  Added mips to KEYWORDS
-
-  05 Mar 2003; Will Woods <wwoods@gentoo.org> yacc-1.9.1-r1.ebuild:
-  Added alpha to KEYWORDS (skipped ~alpha, yacc is known-good on other distros)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

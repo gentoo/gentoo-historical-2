@@ -1,26 +1,6 @@
 # ChangeLog for sys-apps/tinylogin
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tinylogin/ChangeLog,v 1.8 2005/04/27 05:59:18 wormo Exp $
-
-  26 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  tinylogin-1.4.ebuild:
-  mark ~ppc
-
-  27 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org> tinylogin-1.4.ebuild:
-  closed bug #61251, added some dep., added possibility to compile tinylogic
-  static or shared
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tinylogin-1.2.ebuild,
-  tinylogin-1.4.ebuild:
-  virtual/glibc -> virtual/libc
-
-*tinylogin-1.4 (09 Jul 2003)
-
-  15 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
-  Add local use flag uclibc.
-
-  09 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bumpage.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tinylogin/ChangeLog,v 1.1 2002/12/30 20:05:24 vapier Exp $
 
 *tinylogin-1.2 (30 Dec 2002)
 

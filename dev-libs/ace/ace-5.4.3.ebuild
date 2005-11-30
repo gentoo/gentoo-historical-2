@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ace/ace-5.4.3.ebuild,v 1.2 2005/07/30 01:52:58 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ace/ace-5.4.3.ebuild,v 1.1 2005/01/02 04:45:19 dragonheart Exp $
 
 inherit eutils
 
@@ -19,6 +19,8 @@ DEPEND="virtual/libc
 
 src_unpack() {
 	unpack ${A}
+	cd ${S}
+	#epatch ${FILESDIR}/${P}-makefilefix.patch || die "patch failed"
 	cd ${S}/ace
 	use ipv6 && sed -e "s/#define ACE_HAS_PTHREADS$/#define ACE_HAS_PTHREADS\n#define ACE_HAS_IPV6/" config-linux.h >config.h \
 		|| cp config-linux.h config.h

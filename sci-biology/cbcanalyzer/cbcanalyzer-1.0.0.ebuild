@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/cbcanalyzer/cbcanalyzer-1.0.0.ebuild,v 1.2 2005/07/04 19:24:16 apokorny Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/cbcanalyzer/cbcanalyzer-1.0.0.ebuild,v 1.1 2005/04/25 19:46:25 apokorny Exp $
 
 DESCRIPTION="Creates phylogenetic trees measuring compensatory base changes"
-HOMEPAGE="http://www.biozentrum.uni-wuerzburg.de/index.php?id=524"
-SRC_URI="http://www.biozentrum.uni-wuerzburg.de/fileadmin/user_upload/bioinformatik/${P}.tar.gz"
+HOMEPAGE="http://cbcanalyzer.bioapps.biozentrum.uni-wuerzburg.de/"
+SRC_URI="http://cbcanalyzer.bioapps.biozentrum.uni-wuerzburg.de/${P}.tar.gz"
 LICENSE="GPL-2"
 
 KEYWORDS="~amd64 ~x86"

@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cipe/cipe-1.5.4.ebuild,v 1.6 2005/07/09 18:07:50 swegener Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cipe/cipe-1.5.4.ebuild,v 1.1 2003/11/28 04:43:23 pfeifer Exp $
 
 CIPE_TEXINFO="${PN}-1.5.1.texinfo"
 
@@ -16,11 +14,13 @@ SLOT="0"
 KEYWORDS="-* ~x86"
 IUSE="ssl"
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	ssl? ( >=dev-libs/openssl-0.9.6 )"
 
 DEPEND="${RDEPEND}
 	virtual/linux-sources"
+
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}
@@ -73,6 +73,6 @@ pkg_postinst() {
 	update-modules
 	depmod -a
 
-	echo
+	echo  " "
 	einfo "For info on configuring cipe, do 'info cipe'"
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nspr/nspr-4.4.1-r2.ebuild,v 1.14 2005/09/25 10:38:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nspr/nspr-4.4.1-r2.ebuild,v 1.1 2004/11/25 04:54:46 lv Exp $
 
-inherit eutils gnuconfig
+inherit eutils
 
 DESCRIPTION="Netscape Portable Runtime"
 HOMEPAGE="http://www.mozilla.org/projects/nspr/"
@@ -10,25 +10,27 @@ SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${PV}/src/${P}.tar
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	mkdir build inst
-	epatch "${FILESDIR}"/${PN}-4.3-amd64.patch
-	epatch "${FILESDIR}"/${PN}-${PV}-hppa.patch
-	epatch "${FILESDIR}"/${PN}-${PV}-ppc64.patch
-	gnuconfig_update
+	mkdir ${S}/build
+	mkdir ${S}/inst
+	if [ "${ARCH}" = "amd64" ]
+	then
+		cd ${S}; epatch ${FILESDIR}/${PN}-4.3-amd64.patch
+	elif [ "${ARCH}" = "hppa" ]
+	then
+		cd ${S}
+		epatch ${FILESDIR}/${PN}-${PV}-hppa.patch
+	fi
 }
-
 src_compile() {
-	cd build
+	cd ${S}/build
 	../mozilla/nsprpub/configure \
-		--build=${CBUILD:-${CHOST}} \
 		--host=${CHOST} \
 		--prefix=${S}/inst \
 		--infodir=/usr/share/info \
@@ -41,7 +43,7 @@ src_install () {
 	cd ${S}/build
 	make install
 	dodir /usr
-	cp -RfL dist/* ${D}/usr
+	cp -rfL dist/* ${D}/usr
 	rm -rf ${D}/usr/bin/lib*.so
 
 	# there have been /usr/lib/nspr changes (like the ldpath below), but never
@@ -61,3 +63,4 @@ src_install () {
 	dodir /etc/env.d
 	echo "LDPATH=/usr/$(get_libdir)/nspr" > ${D}/etc/env.d/50nspr
 }
+

@@ -1,21 +1,31 @@
-#!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vm-pop3d/files/vm-pop3d.rc3,v 1.6 2005/02/16 19:24:52 ferdy Exp $
+#!/bin/sh
+#RCUPDATE:2 3 4:75:This line is required for script management
 
-depend() {
-	need net
-	use logger
-}
+. /etc/rc.d/config/functions
+
+SERVICE=vm-pop3d
+opts="start stop restart"
+
+PIDFILE=/var/run/exim.pid
+EXE=/usr/sbin/vm-pop3d
 
 start() {
-	ebegin "Starting vm-pop3d"
-	start-stop-daemon --start --quiet --exec /usr/sbin/vm-pop3d -- ${OPTS}
-	eend ${?}
+		ebegin "Starting $SERVICE..."
+     		start-stop-daemon --start --quiet --exec ${VM-POP3D_OPTS:-d5 -t 600}
+		eend $? "Started $SERVICE." "Error Starting $SERVICE."
 }
 
 stop() {
-	ebegin "Stopping vm-pop3d"
-	killall vm-pop3d
-	eend ${?}
+		ebegin "Stopping $SERVICE..."
+		start-stop-daemon --stop --quiet --pidfile $PIDFILE --exec $EXE
+		eend $? "Stopped $SERVICE." "Error Stopping $SERVICE."
 }
+
+restart() {
+		stop
+		start
+}
+
+doservice ${@}
+
+

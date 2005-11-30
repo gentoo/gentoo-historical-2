@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/pears/pears-1.7.ebuild,v 1.3 2004/12/14 21:05:38 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/pears/pears-1.7.ebuild,v 1.1 2004/07/23 01:00:49 pythonhead Exp $
 
 inherit python
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/pears/${P}.tgz"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 
 IUSE=""
 DEPEND=">=dev-lang/python-2.2

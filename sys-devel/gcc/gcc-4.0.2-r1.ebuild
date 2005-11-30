@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-4.0.2-r1.ebuild,v 1.12 2005/11/29 03:04:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-4.0.2-r1.ebuild,v 1.1 2005/10/04 19:43:04 halcy0n Exp $
 
 PATCH_VER="1.2"
 PATCH_GCC_VER="4.0.2"
@@ -10,16 +10,13 @@ PIE_VER="8.7.8"
 PIE_GCC_VER="4.0.0"
 PP_VER=""
 HTB_VER="1.00"
+HTB_GCC_VER="4.0.1"
 
 ETYPE="gcc-compiler"
 
 # whether we should split out specs files for multiple {PIE,SSP}-by-default
 # and vanilla configurations.
-SPLIT_SPECS=no #${SPLIT_SPECS-true} hard disable until #106690 is fixed
-
-# this patch is broken and causes ICEs in a few packages.  I'll remove it on the
-# next revbump
-GENTOO_PATCH_EXCLUDE="28_all_gcc4-pr19520.patch"
+SPLIT_SPECS=${SPLIT_SPECS-true}
 
 inherit toolchain
 
@@ -29,43 +26,39 @@ HOMEPAGE="http://www.gnu.org/software/gcc/gcc.html"
 LICENSE="GPL-2 LGPL-2.1"
 KEYWORDS="-*"
 
-RDEPEND="!sys-devel/hardened-gcc
-	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.10 )
+RDEPEND="virtual/libc
+	>=sys-devel/gcc-config-1.3.1
 	>=sys-libs/zlib-1.1.4
+	!sys-devel/hardened-gcc
+	elibc_glibc? ( >=sys-libs/glibc-2.3.5 )
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-glibc-1.1 ) )
-	fortran? (
-	  dev-libs/gmp
-	  dev-libs/mpfr
-	)
+	fortran? ( dev-libs/gmp )
 	!build? (
 		gcj? (
-			gtk? (
-				|| ( ( x11-libs/libXt x11-libs/libX11 x11-libs/libXtst x11-proto/xproto x11-proto/xextproto ) virtual/x11 )
-				>=x11-libs/gtk+-2.2
-			)
+			gtk? ( >=x11-libs/gtk+-2.2 )
 			>=media-libs/libart_lgpl-2.1
 		)
 		>=sys-libs/ncurses-5.2-r2
 		nls? ( sys-devel/gettext )
 	)"
-if [[ ${CATEGORY} != cross-* ]] ; then
-	RDEPEND="${RDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.3.6 )"
+
+
+if [[ ${CATEGORY/cross-} != ${CATEGORY} ]]; then
+	RDEPEND="${RDEPEND} ${CATEGORY}/binutils"
 fi
+
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r4
 	>=sys-devel/bison-1.875
-	>=${CATEGORY}/binutils-2.16.1"
+	>=sys-devel/binutils-2.15.97"
 
-PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )
+PDEPEND="sys-devel/gcc-config
 	x86? ( !nocxx? ( !elibc_uclibc? ( !build? ( || ( sys-libs/libstdc++-v3 =sys-devel/gcc-3.3* ) ) ) ) )"
 
 src_unpack() {
 	gcc_src_unpack
 
 	[[ ${CHOST} == ${CTARGET} ]] && epatch "${FILESDIR}"/gcc-spec-env.patch
-
-	# Fix cross-compiling
-	epatch "${FILESDIR}"/4.0.2/gcc-4.0.2-cross-compile.patch
 }
 
 pkg_postinst() {

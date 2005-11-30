@@ -1,63 +1,50 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_pam/mod_auth_pam-1.1.1-r1.ebuild,v 1.8 2005/07/14 22:17:24 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_auth_pam/mod_auth_pam-1.1.1-r1.ebuild,v 1.1 2005/01/10 22:05:39 trapni Exp $
 
 inherit eutils apache-module
 
-RESTRICT="nomirror"
-
-DESCRIPTION="PAM authentication module for Apache"
+DESCRIPTION="PAM authentication module for Apache2"
 HOMEPAGE="http://pam.sourceforge.net/mod_auth_pam/"
 
-LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+SRC_URI="http://pam.sourceforge.net/mod_auth_pam/dist/${PN}-2.0-1.1.1.tar.gz"
+LICENSE="Apache-1.1"
+
+KEYWORDS="~x86 ~ppc ~sparc"
+
 DEPEND="sys-libs/pam"
 SLOT="0"
-IUSE="apache2"
+IUSE=""
 
-APXS1_ARGS="-c ${PN}.c -lpam -ldl"
-APXS2_ARGS="-c ${PN}.c -lpam"
+S="${WORKDIR}/${PN}"
 
-APACHE2_EXECFILES=".libs/mod_auth_sys_group.so"
+APXS2_S="${S}/.libs"
+APACHE2_MOD_CONF="${PVR}/10_mod_auth_pam"
+DOCFILES="INSTALL README"
 
-APACHE1_MOD_CONF="${PVR}-1/10_${PN}"
-APACHE1_MOD_DEFINE="AUTH_PAM"
-
-APACHE2_MOD_CONF="${PVR}/10_${PN}"
-APACHE2_MOD_DEFINE="AUTH_PAM"
-
-DOCFILES="INSTALL README doc/*"
-
-need_apache
-
-SRC_URI="apache2? ( http://pam.sourceforge.net/mod_auth_pam/dist/${PN}-2.0-${PV}.tar.gz )
-	 !apache2? ( http://pam.sourceforge.net/mod_auth_pam/dist/${PN}-${PV}.tar.gz )"
-
-useq apache2 && S=${WORKDIR}/${PN}
 
 src_unpack() {
-	unpack ${A} || die "unpack failed"
-	cd ${S} || "couldn't cd to \$S"
-	useq apache2 || epatch ${FILESDIR}/${P}-compile-fix.patch || die "patch failed"
-	useq apache2 && sed -i -e 's/servicename = "httpd"/servicename = "apache2"/' ${PN}.c
-	useq apache2 || sed -i -e 's/servicename = "httpd"/servicename = "apache"/' ${PN}.c
+	unpack "${PN}-2.0-1.1.1.tar.gz"
+	cd "${S}"
+	epatch ${FILESDIR}/${PF}-gentoo.diff || die
 }
 
 src_compile() {
-	apache-module_src_compile
-	useq apache2 && ${APXS2} -c mod_auth_sys_group.c
+	emake APXS=${APXS2} || die
 }
 
 src_install () {
-	apache-module_src_install
+	APACHE2_MOD_FILE='mod_auth_sys_group.so' apache2_src_install
+	unset DOCFILES APACHE2_MOD_CONF
+	APACHE2_MOD_FILE='mod_auth_pam.so' apache2_src_install
+
 	insinto /etc/pam.d
-	useq apache2 && newins ${FILESDIR}/apache2.pam apache2
-	useq apache2 || newins ${FILESDIR}/apache2.pam apache
+	newins ${FILESDIR}/apache2.pam apache2
+
+	dohtml doc/*
 }
 
 pkg_postinst() {
-	apache-module_pkg_postinst
-
 	local gid=`grep ^shadow: /etc/group | cut -d: -f3`
 	einfo
 	einfo "If the system is configured with the shadow authentication method"

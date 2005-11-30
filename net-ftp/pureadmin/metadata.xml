@@ -3,7 +3,6 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>humpback@gentoo.org</email>
+  <email>raker@gentoo.org</email>
 </maintainer>
-<longdescription>Graphical tool used to make the management of PureFTPd a little easier.</longdescription>
 </pkgmetadata>

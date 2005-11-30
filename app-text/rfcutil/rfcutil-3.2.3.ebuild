@@ -1,45 +1,41 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/rfcutil/rfcutil-3.2.3.ebuild,v 1.24 2005/10/07 08:38:28 dragonheart Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-text/rfcutil/rfcutil-3.2.3.ebuild,v 1.1 2002/07/28 13:23:51 aliz Exp $
 
 MY_PN="rfc"
 MY_P="${MY_PN}-${PV}"
 S="${WORKDIR}/${MY_P}"
 
-DESCRIPTION="return all related RFCs based upon a number or a search string"
+DESCRIPTION="RFC Util allows you to specify the number of an RFC, or a search
+string, and it returns all related RFCs. It features command line switches to
+spawn lynx or w3m to view the RFC, dump to file for offline viewing, or mail to
+an address. It also allows local and remote lookups of port, service, or proto
+numbers."
 HOMEPAGE="http://www.dewn.com/rfc/"
 SRC_URI="http://www.dewn.com/rfc/${MY_P}.tar.gz"
 
-LICENSE="as-is"
+KEYWORDS="x86"
 SLOT="0"
-KEYWORDS="alpha amd64 ~mips ppc ppc-macos ppc64 sparc x86"
-IUSE=""
+LICENSE="as-is"
 
-RDEPEND="dev-lang/perl
-	|| ( www-client/lynx virtual/w3m )"
-
-src_unpack() {
-	unpack ${A}
-	epatch "${FILESDIR}"/${MY_P}.diff
+src_compile() {
+	patch -l -p0 < ${FILESDIR}/${MY_P}.gaarde || die
 }
 
-src_install() {
-	newbin ${MY_P} ${MY_PN} || die
+src_install () {
+	newbin ${MY_P} ${MY_PN}
 	doman ${MY_PN}.1
-	dodoc CHANGELOG KNOWN_BUGS README
-	keepdir /var/cache/rfc
+	dodoc CHANGELOG INSTALL KNOWN_BUGS README
+	mkdir -p ${D}/var/cache/rfc/
 }
 
-pkg_postinst() {
-	[[ ${ROOT} != "/" ]] && return 0
+pkg_postinst () {
 	einfo "Generating rfc-index"
 	/usr/bin/rfc -i
 	einfo "Gaarde suggests you make a cron.monthly to run the following:"
 	einfo "   /usr/bin/rfc -i"
 }
 
-pkg_prerm() {
-	rm -f "${ROOT}"/var/cache/rfc/*
+pkg_prerm () {
+	rm /var/cache/rfc/* -f
 }

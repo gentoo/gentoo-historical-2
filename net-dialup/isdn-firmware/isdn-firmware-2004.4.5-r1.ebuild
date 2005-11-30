@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn-firmware/isdn-firmware-2004.4.5-r1.ebuild,v 1.4 2005/11/10 19:12:26 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn-firmware/isdn-firmware-2004.4.5-r1.ebuild,v 1.1 2004/12/12 17:38:13 mrness Exp $
 
 inherit rpm
 
@@ -11,13 +11,19 @@ SRC_URI="ftp://ftp.suse.com/pub/suse/i386/9.1/suse/i586/${MY_P}-0.i586.rpm"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc s390 x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc s390 sparc x86"
 
 IUSE=""
-S="${WORKDIR}/usr/lib/isdn"
+S=${WORKDIR}
 
 src_install() {
+	dodir /lib/firmware
 	insinto /lib/firmware
 	insopts -m 0644
-	doins *
+	cd ${S}/usr/lib/isdn || die "source firmware dir not found"
+	doins ${S}/usr/lib/isdn/* || die "source firmware files not found"
+
+	#Compatibility with <=net-dialup/isdn4k-utils-20041006-r3. 
+	#Please remove it when it becomes obsolete
+	dosym firmware /lib/isdn
 }

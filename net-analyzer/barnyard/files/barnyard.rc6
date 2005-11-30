@@ -1,15 +1,15 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/barnyard/files/barnyard.rc6,v 1.4 2005/11/26 13:10:49 strerror Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/barnyard/files/barnyard.rc6,v 1.1 2003/08/10 01:23:54 solar Exp $
 
 depend() {
 	need net
 }
 
 checkconfig() {
-	if [ ! -e $CONF ] ; then
-		eerror "You need a configuration file to run barnyard"
+	if [ ! -e /etc/snort/barnyard.conf ] ; then
+		eerror "You need an /etc/snort/barnyard.conf to run barnyard"
 		eerror "There is an example config in /etc/snort/barnyard.conf.distrib"
 		return 1
 	fi

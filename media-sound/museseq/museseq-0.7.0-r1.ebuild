@@ -1,8 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/museseq/museseq-0.7.0-r1.ebuild,v 1.6 2005/11/07 11:17:33 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/museseq/museseq-0.7.0-r1.ebuild,v 1.1 2004/09/25 06:00:22 chriswhite Exp $
 
-inherit kde-functions virtualx eutils
+inherit kde-functions gcc virtualx
+need-qt 3
 
 MY_P=${P/museseq/muse}
 DESCRIPTION="The Linux (midi) MUSic Editor (a sequencer)"
@@ -15,7 +16,7 @@ KEYWORDS="~x86"
 #IUSE="fluidsynth doc ladcca sdk debug"
 IUSE="fluidsynth doc ladcca debug"
 
-DEPEND="$(qt_min_version 3.2)
+DEPEND=">=x11-libs/qt-3.2.0
 	>=media-libs/alsa-lib-0.9.0
 	fluidsynth?	( media-sound/fluidsynth )
 	doc? ( app-text/openjade
@@ -41,7 +42,7 @@ src_compile() {
 	use ladcca		|| myconf="${myconf} --disable-ladcca"
 #	use sdk			&& myconf="${myconf} --enable-vst"
 	use debug		&& myconf="${myconf} --enable-debug"
-
+#	[ "`gcc-version`" == "3.4" ] && myconf="${myconf} --enable-pch"
 	Xeconf ${myconf} || die "configure failed"
 
 	emake || die
@@ -50,7 +51,7 @@ src_compile() {
 src_install() {
 	cd ${WORKDIR}/${MY_P}
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog NEWS README README.CVS README.de README.instruments README.ladspaguis README.shortcuts README.softsynth README.translate SECURITY
+	dodoc AUTHORS ChangeLog INSTALL NEWS README README.CVS README.de README.instruments README.ladspaguis README.shortcuts README.softsynth README.translate SECURITY
 	mv ${D}/usr/bin/muse ${D}/usr/bin/museseq
 }
 

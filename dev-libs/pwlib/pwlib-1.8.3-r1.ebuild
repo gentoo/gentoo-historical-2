@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/pwlib/pwlib-1.8.3-r1.ebuild,v 1.6 2005/08/26 16:01:13 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/pwlib/pwlib-1.8.3-r1.ebuild,v 1.1 2005/02/03 19:57:59 stkn Exp $
 
 inherit eutils flag-o-matic multilib
 
-IUSE="ssl sdl ieee1394 alsa esd v4l2"
+IUSE="ssl sdl ieee1394 alsa esd"
 
 MY_P="${PN}-v${PV//./_}"
 DESCRIPTION="Portable Multiplatform Class Libraries for OpenH323"
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/openh323/${MY_P}-src-tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~alpha ppc amd64"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc ~amd64"
 
 DEPEND=">=sys-devel/bison-1.28
 	>=sys-devel/flex-2.5.4a
@@ -26,7 +26,7 @@ DEPEND=">=sys-devel/bison-1.28
 	ieee1394? ( media-libs/libdv
 		sys-libs/libavc1394
 		sys-libs/libraw1394
-		media-libs/libdc1394 )
+		media-plugins/libdc1394 )
 	esd? ( media-sound/esound )"
 
 S=${WORKDIR}/${PN}
@@ -42,10 +42,6 @@ src_unpack() {
 		-e "s:-mcpu=\$(CPUTYPE)::" \
 		-e "s:-O3 -DNDEBUG:-DNDEBUG:" \
 		unix.mak
-
-	# newer esound package doesn't install libesd.a anymore,
-	# use dynamic library instead (fixes #100432)
-	epatch ${FILESDIR}/pwlib-1.6.3-dyn-esd.patch
 }
 
 src_compile() {
@@ -76,11 +72,6 @@ src_compile() {
 
 	use alsa \
 		&& plugins="${plugins} alsa"
-
-	if use v4l2; then
-		myconf="${myconf} --enable-v4l2"
-		plugins="${plugins} v4l2"
-	fi
 
 	if use esd; then
 		# fixes bug #45059

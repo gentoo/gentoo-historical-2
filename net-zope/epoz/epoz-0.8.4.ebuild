@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/epoz/epoz-0.8.4.ebuild,v 1.4 2005/04/02 08:53:10 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/epoz/epoz-0.8.4.ebuild,v 1.1 2004/09/11 21:53:59 lanius Exp $
 
 inherit zproduct
 
@@ -8,7 +8,7 @@ DESCRIPTION=" Epoz allows you to edit Zope- or Plone-objects with a wysiwyg-edit
 HOMEPAGE="http://mjablonski.zope.de/Epoz"
 SRC_URI="http://mjablonski.zope.de/Epoz/releases/Epoz-${PV}.tar.gz"
 LICENSE="ZPL"
-KEYWORDS="x86 ppc ~sparc ~amd64"
+KEYWORDS="~x86 ~ppc"
 
 ZPROD_LIST="Epoz"
 IUSE=""

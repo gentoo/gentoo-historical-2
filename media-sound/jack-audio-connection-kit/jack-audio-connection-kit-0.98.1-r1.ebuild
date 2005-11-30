@@ -1,31 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-audio-connection-kit/jack-audio-connection-kit-0.98.1-r1.ebuild,v 1.9 2005/02/17 12:16:25 hansmi Exp $
-
-IUSE="doc debug jack-tmpfs caps"
+# $Header: /var/cvsroot/gentoo-x86/media-sound/jack-audio-connection-kit/jack-audio-connection-kit-0.98.1-r1.ebuild,v 1.1 2004/05/23 03:05:55 squinky86 Exp $
 
 inherit flag-o-matic eutils
 
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://jackit.sourceforge.net/"
 SRC_URI="mirror://sourceforge/jackit/${P}.tar.gz"
+RESTRICT="nomirror"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-#-sparc: 0.98.1-r1: config/sysdeps/cycles.h:27:2: warning: #warning You are compiling JACK on a platform for which jack/cycles.h needs work
-KEYWORDS="x86 ~ppc amd64 ~alpha ~ia64 ppc64 -sparc"
+KEYWORDS="~x86 ~ppc ~amd64 ~alpha ~ia64"
+IUSE="doc debug jack-tmpfs caps"
 
-RDEPEND=">=media-libs/alsa-lib-0.9.1
+DEPEND=">=media-libs/alsa-lib-0.9.1
 	>=media-libs/libsndfile-1.0.0
 	dev-libs/glib
 	dev-util/pkgconfig
 	sys-libs/ncurses
 	caps? ( sys-libs/libcap )
-	!media-sound/jack-cvs"
-
-DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
-	sys-devel/autoconf"
+	sys-devel/autoconf
+	!media-sound/jack-cvs"
+PROVIDE="virtual/jack"
 
 src_unpack() {
 	unpack ${A}
@@ -46,12 +44,7 @@ src_compile() {
 		&& myconf="--enable-html-docs --with-html-dir=/usr/share/doc/${PF}" \
 		|| myconf="--disable-html-docs"
 
-	if use jack-tmpfs; then
-		myconf="${myconf} --with-default-tmpdir=/dev/shm"
-	else
-		myconf="${myconf} --with-default-tmpdir=/var/run/jack"
-	fi
-
+	use jack-tmpfs && myconf="${myconf} --with-default-tmpdir=/dev/shm" || myconf="${myconf} --with-default-tmpdir=/var/run/jack"
 	use caps && myconf="${myconf} --enable-capabilities --enable-stripped-jackd"
 	use debug && myconf="${myconf} --enable-debug"
 
@@ -66,15 +59,11 @@ src_install() {
 		datadir=${D}/usr/share \
 		install || die
 
-	if ! use jack-tmpfs; then
-		keepdir /var/run/jack
-		chmod 4777 ${D}/var/run/jack
-	fi
+	use jack-tmpfs || keepdir /var/run/jack && chmod 4777 ${D}/var/run/jack
 
 	if use doc; then
 		mv ${D}/usr/share/doc/${PF}/reference/html \
 		   ${D}/usr/share/doc/${PF}/
+		rm -rf ${D}/usr/share/doc/${PF}/reference
 	fi
-
-	rm -rf ${D}/usr/share/doc/${PF}/reference
 }

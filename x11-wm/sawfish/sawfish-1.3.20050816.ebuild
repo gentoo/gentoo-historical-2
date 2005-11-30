@@ -1,25 +1,30 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.3.20050816.ebuild,v 1.5 2005/09/19 21:27:30 truedfx Exp $
-
-# detect cvs snapshots; fex. 1.3.20040120
-[[ $PV == *.[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] ]]
-(( snapshot = !$? ))
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.3.20050816.ebuild,v 1.1 2005/08/16 22:57:43 truedfx Exp $
 
 inherit eutils gnuconfig
 
-DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
-HOMEPAGE="http://sawmill.sourceforge.net/"
-if (( snapshot )); then
-	SRC_URI="mirror://gentoo/${P}.tar.bz2"
+IUSE="gnome esd nls audiofile"
+
+# detect cvs snapshots; fex. 1.3.20040120
+if [[ $PV == *.[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9] ]]; then
+	sawfishsnapshot=true
 else
-	SRC_URI="mirror://sourceforge/sawmill/${P}.tar.gz"
+	sawfishsnapshot=false
 fi
 
-LICENSE="GPL-2"
+DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
+HOMEPAGE="http://sawmill.sourceforge.net/"
 SLOT="0"
+LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
-IUSE="gnome esd nls audiofile"
+if $sawfishsnapshot; then
+	SRC_URI="mirror://gentoo/${P}.tar.bz2"
+	S=${WORKDIR}/${PN}
+else
+	SRC_URI="mirror://sourceforge/sawmill/${P}.tar.gz"
+	S=${WORKDIR}/${P}
+fi
 
 DEPEND=">=dev-util/pkgconfig-0.12.0
 	>=x11-libs/rep-gtk-0.17
@@ -28,19 +33,16 @@ DEPEND=">=dev-util/pkgconfig-0.12.0
 	audiofile? ( >=media-libs/audiofile-0.2.3 )
 	esd? ( >=media-sound/esound-0.2.23 )
 	nls? ( sys-devel/gettext )"
-RDEPEND="${DEPEND}"
 
-if (( snapshot )); then
-	DEPEND="${DEPEND}
-		sys-devel/automake
-		sys-devel/autoconf"
-	S="${WORKDIR}/${PN}"
+# cvs snapshots require automake/autoconf
+if $sawfishsnapshot; then
+	DEPEND="${DEPEND} sys-devel/automake sys-devel/autoconf"
 fi
 
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/libtool.patch"
+	unpack ${A} || die "unpack failed"
+	cd ${S} || die "cd failed"
+
 	# This is for alpha, but there's no reason to restrict it
 	gnuconfig_update
 }
@@ -52,7 +54,7 @@ src_compile() {
 	export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:/usr/include/freetype2"
 
 	# If this is a snapshot then we need to create the autoconf stuff
-	if (( snapshot )); then
+	if $sawfishsnapshot; then
 		aclocal || die "aclocal failed"
 		autoconf || die "autoconf failed"
 	fi
@@ -84,7 +86,7 @@ src_compile() {
 		strip-linguas -i po
 		set -- "$@" --enable-linguas=" ${LINGUAS} "
 	else
-		set -- "$@" --enable-linguas=""
+		set -- "$@" --enable-linguas
 	fi
 
 	econf "$@" || die "configure failed"
@@ -98,6 +100,12 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR=${D} install || die "make install failed"
 	dodoc AUTHORS BUGS ChangeLog DOC FAQ NEWS README THANKS TODO OPTIONS
+
+	# Add to Gnome CC's Window Manager list
+	if use gnome; then
+		insinto /usr/share/gnome/wm-properties
+		doins ${S}/Sawfish.desktop
+	fi
 }

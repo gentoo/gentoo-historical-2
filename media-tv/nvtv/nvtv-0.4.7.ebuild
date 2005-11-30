@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/nvtv/nvtv-0.4.7.ebuild,v 1.3 2005/11/03 23:20:16 blauwers Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/nvtv/nvtv-0.4.7.ebuild,v 1.1 2004/06/06 16:15:08 blauwers Exp $
 
-IUSE="X gtk"
+IUSE="X gtk gtk2"
 
 DESCRIPTION="TV-Out for NVidia cards"
 HOMEPAGE="http://sourceforge.net/projects/nv-tv-out/"
@@ -13,7 +13,10 @@ LICENSE="GPL-2"
 KEYWORDS="~x86 ~amd64"
 
 DEPEND="sys-apps/pciutils
-	gtk? ( x11-libs/gtk+ )
+	gtk? (
+		gtk2? ( =x11-libs/gtk+-2* )
+		!gtk2? ( =x11-libs/gtk+-1.2* )
+	)
 	X? ( virtual/x11 )"
 
 src_compile() {
@@ -21,7 +24,12 @@ src_compile() {
 
 	if use gtk
 	then
-			myconf="${myconf} --with-gtk"
+		if use gtk2
+			then
+				myconf="${myconf} --with-gtk=gtk2"
+			else
+				myconf="${myconf} --with-gtk=gtk1"
+			fi
 	else
 		myconf="${myconf} --without-gtk"
 	fi

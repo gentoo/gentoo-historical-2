@@ -1,14 +1,6 @@
 # ChangeLog for dev-perl/Test-Differences
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Differences/ChangeLog,v 1.4 2005/07/18 18:14:34 gustavoz Exp $
-
-  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  Test-Differences-0.47.ebuild:
-  Stable on sparc
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  Test-Differences-0.47.ebuild:
-  Cleaning mirror syntax
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Differences/ChangeLog,v 1.1 2004/03/29 10:27:19 mcummings Exp $
 
 *Test-Differences-0.47 (29 Mar 2004)
 

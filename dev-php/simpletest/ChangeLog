@@ -1,20 +1,6 @@
 # ChangeLog for dev-php/simpletest
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/simpletest/ChangeLog,v 1.4 2005/11/24 12:02:04 chtekk Exp $
-
-*simpletest-1.0.0-r1 (24 Nov 2005)
-
-  24 Nov 2005; Luca Longinotti <chtekk@gentoo.org>
-  +simpletest-1.0.0-r1.ebuild:
-  Add simpletest for new-style PHP.
-
-  06 Nov 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  simpletest-1.0.0.ebuild:
-  Fix bug 111651.
-
-  17 Jun 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  simpletest-1.0.0.ebuild:
-  Stable on amd64 and x86.
+# $Header: /var/cvsroot/gentoo-x86/dev-php/simpletest/ChangeLog,v 1.1 2005/06/10 04:32:17 sebastian Exp $
 
 *simpletest-1.0.0 (10 Jun 2005)
 

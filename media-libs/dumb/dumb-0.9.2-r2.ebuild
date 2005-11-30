@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/dumb/dumb-0.9.2-r2.ebuild,v 1.6 2005/09/13 18:34:25 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/dumb/dumb-0.9.2-r2.ebuild,v 1.1 2004/07/06 22:32:24 eradicator Exp $
 
-IUSE="debug"
+IUSE=""
 
 inherit eutils
 
@@ -11,7 +11,7 @@ DESCRIPTION="IT/XM/S3M/MOD player library with click removal and IT filters"
 HOMEPAGE="http://dumb.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dumb/${P}-fixed.tar.gz"
 
-KEYWORDS="alpha amd64 ia64 ppc x86"
+KEYWORDS="x86 ~ppc ~alpha ~ia64 ~amd64"
 LICENSE="DUMB-0.9.2"
 SLOT="0"
 
@@ -34,14 +34,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin examples/dumbout
-	dolib.so lib/unix/libdumb.so
-
-	use debug && lib/unix/libdumbd.so
-
-	insinto /usr/include
-	doins include/dumb.h
-
+	dodir /usr/lib /usr/include /usr/bin
+	make PREFIX="${D}/usr" install || die "make install failed"
 	dodoc readme.txt release.txt docs/* || die "dodoc failed"
 }
 

@@ -1,38 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmtimer/wmtimer-2.4.ebuild,v 1.18 2005/03/14 15:20:03 s4t4n Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmtimer/wmtimer-2.4.ebuild,v 1.1 2002/09/16 16:14:04 raker Exp $
 
-IUSE=""
-
-S=${WORKDIR}/${P}/${PN}
-
+S=${WORKDIR}/${P}
+S2=${S}/wmtimer
 DESCRIPTION="Dockable clock which can run in alarm, countdown timer or chronograph mode"
-SRC_URI="http://www.darkops.net/wmtimer/${P}.tar.gz"
-HOMEPAGE="http://www.darkops.net/wmtimer/"
+SRC_URI="http://home.dwave.net/~jking/wmtimer/${P}.tar.gz"
+HOMEPAGE="http://home.dwave.net/~jking/wmtimer/"
 
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ppc64 ppc ~sparc"
+LICENSE="GPL"
+KEYWORDS="x86"
 
-RDEPEND="=x11-libs/gtk+-1.2*
-	virtual/x11"
-
-DEPEND="virtual/libc
-	${RDEPEND}
-	>=sys-apps/sed-4"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i -e "s:-O2 -Wall:${CFLAGS}:" Makefile
-}
+DEPEND="virtual/x11"
+RDEPEND="${DEPEND}"
 
 src_compile() {
+	cd ${S2}
 	emake || die
 }
 
 src_install () {
-	dobin wmtimer
-	cd ..
-	dodoc README CREDITS Changelog
+	exeinto /usr/bin
+	doexe ${S2}/wmtimer
+	cd ${S}
+	dodoc README COPYING INSTALL  CREDITS INSTALL Changelog 
 }

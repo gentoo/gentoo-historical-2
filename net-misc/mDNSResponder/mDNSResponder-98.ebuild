@@ -1,17 +1,19 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mDNSResponder/mDNSResponder-98.ebuild,v 1.17 2005/09/12 11:42:49 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mDNSResponder/mDNSResponder-98.ebuild,v 1.1 2005/02/06 18:22:01 motaboy Exp $
 
 inherit eutils
 
-DESCRIPTION="The mDNSResponder project is a component of Bonjour, Apple's initiative for zero-configuration networking."
-HOMEPAGE="http://developer.apple.com/networking/bonjour/index.html"
+DESCRIPTION="The mDNSResponder project is a component of Rendezvous, Apple's ease-of-use IP networking initiative."
+HOMEPAGE="http://developer.apple.com/macosx/rendezvous/"
 SRC_URI="http://helios.et.put.poznan.pl/~jstachow/pub/${P}.tar.gz"
-LICENSE="APSL-2"
 
+LICENSE="APSL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~x86"
 IUSE=""
+
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
@@ -37,5 +39,9 @@ src_install() {
 	make DESTDIR=${D} os=linux install
 
 	# Install init scripts
-	newinitd ${FILESDIR}/mdnsd.init.d mdnsd
+	insinto /etc/init.d
+	newins ${FILESDIR}/mdnsd.init.d mdnsd
+
+	# Fix the perms on the init scripts
+	fperms a+x /etc/init.d/mdnsd
 }

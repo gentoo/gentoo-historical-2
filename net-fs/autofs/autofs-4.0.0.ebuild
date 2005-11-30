@@ -1,11 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.0.0.ebuild,v 1.10 2005/03/23 01:09:02 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.0.0.ebuild,v 1.1 2003/10/28 00:33:08 rphillips Exp $
 
 IUSE="ldap"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
 SRC_URI="mirror://kernel/linux/daemons/${PN}/v4/${P}-1.tar.bz2"
@@ -14,7 +13,7 @@ DEPEND="ldap? ( >=net-nds/openldap-1.2 )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~alpha ~ppc ~sparc"
 
 src_unpack() {
 	unpack ${A}
@@ -39,7 +38,6 @@ src_compile() {
 	    --host=${HOST} \
 	    --prefix=/usr \
 	    ${myconf} || die
-	sed -i -e '/^\(CFLAGS\|CXXFLAGS\|LDFLAGS\)[[:space:]]*=/d' Makefile.rules
 	make || die "make failed"
 }
 
@@ -52,7 +50,6 @@ src_install() {
 
 	dodoc COPYING COPYRIGHT NEWS README* TODO
 	cd man
-	sed -i 's:\/etc\/:\/etc\/autofs\/:g' *.8 *.5 *.in
 	doman auto.master.5 autofs.5 autofs.8 automount.8
 
 	cd ../samples

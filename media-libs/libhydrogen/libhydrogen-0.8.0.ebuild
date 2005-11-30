@@ -1,40 +1,40 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libhydrogen/libhydrogen-0.8.0.ebuild,v 1.15 2005/03/20 20:44:42 luckyduck Exp $
+# $Header: 
 
 inherit libtool
 
-DESCRIPTION="Linux Drum Machine - Library"
+DESCRIPTION="Linux Drum Machine - Libary"
 HOMEPAGE="http://hydrogen.sourceforge.net"
-SRC_URI="mirror://sourceforge/hydrogen/${P}.tar.gz"
+SRC_URI="http://unc.dl.sourceforge.net/sourceforge/hydrogen/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
-IUSE="alsa"
+KEYWORDS="~x86"
 
-RDEPEND="virtual/x11 \
-	>=media-libs/audiofile-0.2.3 \
-	alsa? ( media-libs/alsa-lib ) \
-	media-sound/jack-audio-connection-kit"
+S="${WORKDIR}/${P}"
 
-DEPEND="$RDEPEND >=sys-devel/autoconf-2.58"
+DEPEND="virtual/x11 \
+        >=media-libs/audiofile-0.2.3 \
+        alsa? ( media-libs/alsa-lib ) \
+        virtual/jack"
 
 src_compile() {
-	einfo "Reconfiguring..."
-	export WANT_AUTOCONF=2.5
-	aclocal
-	autoconf
-	automake
+        einfo "Reconfiguring..."
+        export WANT_AUTOCONF_2_5=1
+        aclocal
+        autoconf
+        automake
 
-	elibtoolize
-	sed -i "s/driver = new JackDriver(audioEngine_process);/driver = new JackDriver((JackProcessCallback) audioEngine_process);/" ${S}/src/Hydrogen.cpp
+        elibtoolize
 
-	econf || die "econf failed"
+	econf
 	emake || die
 }
 
-src_install() {
+ src_install() {
 	make DESTDIR=${D} install || die
 	dodoc AUTHORS BUGS ChangeLog FAQ README TODO
 }
+
+

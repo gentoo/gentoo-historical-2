@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pam-login/pam-login-3.17.ebuild,v 1.13 2005/09/12 03:02:51 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pam-login/pam-login-3.17.ebuild,v 1.1 2005/02/25 15:05:16 azarah Exp $
 
-inherit gnuconfig eutils pam
+inherit gnuconfig eutils
 
 # Do we want to backup an old login.defs, and forcefully
 # install a new version?
@@ -16,7 +16,7 @@ SRC_URI="ftp://ftp.suse.com/pub/people/kukuk/pam/${MY_PN}/${MY_PN}-${PV}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="livecd nls selinux"
 
 DEPEND="virtual/libc
@@ -34,9 +34,9 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-3.11-gcc33.patch
 	epatch ${FILESDIR}/${PN}-3.11-lastlog-fix.patch
 
-	# Disable query_user_context selinux code (only affects selinux)
-	# if on the selinux livecd, since it can cause the login to timeout
-	# if the user isnt ready
+	# enable query_user_context selinux code (only affects selinux)
+	# but we dont want it on the selinux livecd, since it can
+	# cause the login to timeout if the user isnt ready
 	use livecd && epatch ${FILESDIR}/${PN}-3.17-query_user_context.patch
 
 	use ppc64 && epatch ${FILESDIR}/${PN/-/_}-Werror-off-ppc64.patch

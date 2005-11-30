@@ -1,33 +1,6 @@
 # ChangeLog for x11-plugins/wmhdplop
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmhdplop/ChangeLog,v 1.8 2005/11/10 10:08:33 s4t4n Exp $
-
-  10 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmhdplop-0.9.7.ebuild:
-  Make use of built_with_use() (from eutils eclass) to fail if imlib2
-  is not compiled with 'X' USE flag enabled.
-
-  08 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmhdplop-0.9.7.ebuild:
-  Warn the user if 'X' USE flag is not set, as this package needs imlib2
-  compiled with this USE flag set. Closes bug #92100.
-
-  07 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmhdplop-0.9.7.ebuild:
-  Stable for x86.
-  -wmhdplop-0.9.6.ebuild:
-  Wiped out older version.
-
-*wmhdplop-0.9.7 (04 Jul 2005)
-
-  04 Jul 2005; Michele Noberasco <s4t4n@gentoo.org> wmhdplop-0.9.7.ebuild:
-  Version bump.
-
-  22 May 2005; Simon Stelling <blubb@gentoo.org> wmhdplop-0.9.6.ebuild:
-  added ~amd64 keyword
-
-  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmhdplop-0.9.6.ebuild:
-  Stable for x86.
-
-  03 Sep 2004; David Holm <dholm@gentoo.org> wmhdplop-0.9.6.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmhdplop/ChangeLog,v 1.1 2004/08/26 22:03:42 s4t4n Exp $
 
 *wmhdplop-0.9.6 (26 Aug 2004)
 

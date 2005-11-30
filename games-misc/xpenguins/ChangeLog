@@ -1,18 +1,6 @@
-# ChangeLog for games-misc/xpenguins
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/xpenguins/ChangeLog,v 1.6 2004/12/28 23:06:52 ciaranm Exp $
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*xpenguins-2.2-r1 (03 Jun 2004)
-
-  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  xpenguins-2.2-r1.ebuild:
-  added more themes (bug #49647)
-
-  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> xpenguins-2.2.ebuild :
-  AMD64 keywords.
+# ChangeLog for app-games/xpenguins
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/xpenguins/ChangeLog,v 1.1 2003/09/10 18:14:05 vapier Exp $
 
   12 Jun 2003; Seemant Kulleen <seemant@gentoo.org> xpenguins-2.2.ebuild:
   xfree provides xpm
@@ -34,7 +22,7 @@
   03 Nov 2002; Jon Nall <nall@gentoo.org> xpenguins-2.2.ebuild :
   added ppc to KEYWORDS
 
-  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> xpenguins-2.2.ebuild :
+  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> xpenguins-2.2.ebuild :
   Added LICENSE, KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

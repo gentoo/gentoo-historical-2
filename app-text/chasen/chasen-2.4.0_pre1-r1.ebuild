@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/chasen/chasen-2.4.0_pre1-r1.ebuild,v 1.4 2005/11/28 12:11:09 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/chasen/chasen-2.4.0_pre1-r1.ebuild,v 1.1 2005/01/02 16:01:41 corsair Exp $
 
-inherit perl-app
+inherit perl-module flag-o-matic
 
 MY_P="${P/_pre/-preview}"
 S="${WORKDIR}/${MY_P}"
@@ -13,7 +13,7 @@ SRC_URI="http://chasen.aist-nara.ac.jp/stable/chasen/${MY_P}.tar.gz"
 
 LICENSE="chasen"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~sparc ~ppc ppc64"
+KEYWORDS="~x86 ~amd64 ~sparc ~ppc ~ppc64"
 IUSE="perl"
 
 DEPEND=">=dev-libs/darts-0.2"
@@ -31,6 +31,8 @@ src_unpack() {
 }
 
 src_compile() {
+	# Unconditional use of -fPIC (#55238)
+	append-flags -fPIC
 	econf || die
 	emake || die
 	if use perl ; then

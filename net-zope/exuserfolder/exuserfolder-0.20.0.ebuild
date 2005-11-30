@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/exuserfolder/exuserfolder-0.20.0.ebuild,v 1.3 2004/06/25 01:20:40 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/exuserfolder/exuserfolder-0.20.0.ebuild,v 1.1 2003/10/09 18:55:58 robbat2 Exp $
 
 inherit zproduct
 
@@ -23,7 +23,7 @@ src_install() {
 	zproduct_src_install
 	# fix permissions on files
 	DIR=${D}/usr/share/zproduct/${PF}
-	find ${DIR} -exec chown zope:root \{} \;
+	find ${DIR} -exec chown zope.root \{} \;
 	find ${DIR} -exec chmod 644 \{} \;
 	find ${DIR} -type d -exec chmod +x \{} \;
 }

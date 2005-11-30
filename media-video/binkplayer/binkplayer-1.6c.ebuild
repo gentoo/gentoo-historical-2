@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/binkplayer/binkplayer-1.6c.ebuild,v 1.3 2004/07/01 08:39:14 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/binkplayer/binkplayer-1.6c.ebuild,v 1.1 2004/03/28 06:48:42 mr_bones_ Exp $
 
 DESCRIPTION="Bink Video! Player"
 HOMEPAGE="http://www.radgametools.com/default.htm"
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.radgametools.com/default.htm"
 SRC_URI="mirror://gentoo/${P}.zip"
 
 DEPEND="app-arch/unzip"
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	media-libs/libsdl
 	media-libs/sdl-mixer"
 

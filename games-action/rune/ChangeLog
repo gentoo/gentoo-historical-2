@@ -1,19 +1,6 @@
 # ChangeLog for games-action/rune
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/rune/ChangeLog,v 1.4 2005/11/22 16:16:56 wolf31o2 Exp $
-
-  22 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07-r1.ebuild:
-  Changed 2->1 and 1->0.  Changed rune.bin->rune-bin.  Closing bug #113234.
-
-*rune-1.07-r1 (22 Nov 2005)
-
-  22 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org> +rune-1.07-r1.ebuild:
-  Updated ebuild to support both Linux and Windows media. Tested on Linux.
-  Ebuild submitted by Patrick Zimmermann <patrick@zakweb.de> and closing bug
-  #41732.
-
-  27 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> rune-1.07.ebuild:
-  Changed HOMEPAGE.
+# $Header: /var/cvsroot/gentoo-x86/games-action/rune/ChangeLog,v 1.1 2005/10/27 14:09:59 wolf31o2 Exp $
 
 *rune-1.07 (27 Oct 2005)
 

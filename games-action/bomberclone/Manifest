@@ -1,4 +1,3 @@
-MD5 ba1d360273b2fb0d722f2546b88a7140 bomberclone-0.11.6.2.ebuild 1200
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 947dd1abb6d4af3d313d7277fbd9b70b ChangeLog 2474
-MD5 a2e7f79d1bc6b86d7c48e712d469eba9 files/digest-bomberclone-0.11.6.2 73
+MD5 82cd62267cf559e9297fa5abb311b5e1 bomberclone-0.10.0.ebuild 921
+MD5 0d0fcd78799b1bf82b8c25a03cf02538 ChangeLog 453
+MD5 13caaaff1c021faa3e6cdb8152400940 files/digest-bomberclone-0.10.0 72

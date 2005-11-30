@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament/unreal-tournament-451.ebuild,v 1.16 2005/07/15 14:09:03 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament/unreal-tournament-451.ebuild,v 1.1 2003/09/09 18:10:15 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="Futuristic FPS"
 HOMEPAGE="http://www.unrealtournament.com/ http://utpg.org/"
@@ -11,24 +11,19 @@ SRC_URI="ftp://ftp.lokigames.com/pub/patches/ut/ut-install-436.run
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
-IUSE="3dfx opengl"
+KEYWORDS="-* x86"
+IUSE="3dfx X"
 
-RDEPEND="virtual/x11
-	=media-libs/libsdl-1.2*
-	opengl? ( virtual/opengl )
-	amd64? ( app-emulation/emul-linux-x86-sdl
-		app-emulation/emul-linux-x86-baselibs
-		app-emulation/emul-linux-x86-xlibs )"
+DEPEND="app-arch/unzip
+	!app-games/unreal-tournament-goty"
+DEPEND="X? ( virtual/x11 )
+	opengl? ( virtual/opengl )"
 
-DEPEND="${RDEPEND}
-	!games-fps/unreal-tournament-goty"
-
-S="${WORKDIR}"
+S=${WORKDIR}
 
 pkg_setup() {
-	check_license
-	cdrom_get_cds System/
+	games_get_cd System/
+	games_verify_cd ${PN}
 	games_pkg_setup
 }
 
@@ -45,22 +40,22 @@ src_install() {
 	dodir ${dir}
 
 	# Help, Logs, Music, Textures, Web
-	cp -rf ${CDROM_ROOT}/{Help,Logs,Music,Textures,Web} ${Ddir}/ || die "copy Help, Logs, Music, Textures, Web"
+	cp -rf ${GAMES_CD}/{Help,Logs,Music,Textures,Web} ${Ddir}/ || die "copy Help, Logs, Music, Textures, Web"
 	tar -zxf Credits.tar.gz -C ${Ddir} || die "extract credits texture"
 	# NetGamesUSA.com
 	tar -zxf NetGamesUSA.com.tar.gz -C ${Ddir}/ || die "extract NetGamesUSA.com"
 	# Sounds
 	dodir ${dir}/Sounds
-	cp -rf ${CDROM_ROOT}/Sounds/*.uax ${Ddir}/Sounds/ || die "copy Sounds"
+	cp -rf ${GAMES_CD}/Sounds/*.uax ${Ddir}/Sounds/ || die "copy Sounds"
 
 	# System
-	if use 3dfx ; then
+	if [ `use 3dfx` ] ; then
 		tar -zxf Glide.ini.tar.gz -C ${Ddir} || die "install Glide ini"
 	else
 		tar -zxf OpenGL.ini.tar.gz -C ${Ddir} || die "install OpenGL ini"
 	fi
 	tar -zxf data.tar.gz -C ${Ddir} || die "extract System data"
-	cp ${CDROM_ROOT}/System/*.u ${Ddir}/System/ || die "copy System data"
+	cp ${GAMES_CD}/System/*.u ${Ddir}/System/ || die "copy System data"
 
 	# the most important things, ucc & ut :)
 	exeinto ${dir}
@@ -92,11 +87,11 @@ src_install() {
 	cd ${Ddir}
 	export HOME=${T}
 	export UT_DATA_PATH=${Ddir}/System
-	for f in `find ${CDROM_ROOT}/Maps/ -name '*.uz' -printf '%f '` ; do
-		./ucc decompress ${CDROM_ROOT}/Maps/${f} -nohomedir || die "uncompressing map ${f}"
+	for f in `find ${GAMES_CD}/Maps/ -name '*.uz' -printf '%f '` ; do
+		./ucc decompress ${GAMES_CD}/Maps/${f} -nohomedir || die "uncompressing map ${f}"
 		mv System/${f:0:${#f}-3} Maps/ || die "copy map ${f}"
 	done
-	cp -rf ${CDROM_ROOT}/Maps/*.unr ${Ddir}/Maps/ # some cd's have uncompressed maps ??
+	cp -rf ${GAMES_CD}/Maps/*.unr ${Ddir}/Maps/ # some cd's have uncompressed maps ??
 
 	# now, since these files are coming off a cd, the times/sizes/md5sums wont
 	# be different ... that means portage will try to unmerge some files (!)
@@ -105,6 +100,7 @@ src_install() {
 
 	# export some symlinks so ppl can run
 	dodir ${GAMES_BINDIR}
+	dosym ${dir}/ucc ${GAMES_BINDIR}/ucc
 	dosym ${dir}/ut ${GAMES_BINDIR}/ut
 
 	prepgamesdirs

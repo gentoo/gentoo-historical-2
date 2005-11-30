@@ -1,92 +1,12 @@
 # ChangeLog for sys-fs/dosfstools
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/dosfstools/ChangeLog,v 1.23 2005/11/15 00:42:34 vapier Exp $
-
-*dosfstools-2.11-r1 (15 Nov 2005)
-
-  15 Nov 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/dosfstools-2.11-fat32size.patch, +dosfstools-2.11-r1.ebuild:
-  Fix by Ulrich Mueller for generation of filesystems on 256meg devices #112504.
-
-*dosfstools-2.11 (18 Jun 2005)
-
-  18 Jun 2005; Mike Frysinger <vapier@gentoo.org> +dosfstools-2.11.ebuild:
-  Version bump #96336 by Jesse Adelman.
-
-  14 Apr 2005; <plasmaroo@gentoo.org> files/dosfstools-2.10-2.6.headers.patch:
-  Fix #88812.
-
-  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  dosfstools-2.9.ebuild:
-  Masked dosfstools-2.9.ebuild stable for ppc
-
-  20 Aug 2004; Seemant Kulleen <seemant@gentoo.org> dosfstools-2.10-r1.ebuild,
-  dosfstools-2.10.ebuild, dosfstools-2.8-r3.ebuild, dosfstools-2.9.ebuild:
-  enhanced the DESCRIPTION at the request of: Mishta Wookey
-  <wookey@nakoma.co.uk> in bug #58871
-
-  09 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  dosfstools-2.10-r1.ebuild:
-  Stable on sparc
-
-  07 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> dosfstools-2.10-r1.ebuild:
-  Stable on alpha.
-
-  04 Jul 2004; Ian Leitch <port001@gentoo.org> dosfstools-2.10-r1.ebuild:
-  Stable on x86
-
-  03 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> dosfstools-2.10-r1.ebuild:
-  Marked stable on amd64.
-
-*dosfstools-2.10-r1 (03 Jul 2004)
-
-  03 Jul 2004; <solar@gentoo.org> dosfstools-2.10-r1.ebuild,
-  files/dosfstools-2.10-lseek64.patch:
-  added lseek64/PIC patch from bug 51962
-
-  12 May 2004; Alexander Gabert <pappy@gentoo.org> dosfstools-2.10.ebuild,
-  dosfstools-2.9.ebuild:
-  changed hardened-gcc logic to filter-flags
-
-  25 Mar 2004; <plasmaroo@gentoo.org> dosfstools-2.10.ebuild,
-  files/dosfstools-2.10-2.6.headers.patch:
-  Added a patch to solve compilation issues on 2.6 headers.
-  Closes bug #44888.
-
-  15 Feb 2004; Dylan Carlson <absinthe@gentoo.org> dosfstools-2.9.ebuild:
-  Added ~amd64 keyword.
-
-  23 Jan 2004; <gustavoz@gentoo.org> dosfstools-2.10.ebuild:
-  Stable on sparc.
-
-  23 Jan 2004; <agriffis@gentoo.org> dosfstools-2.10.ebuild:
-  Stable on ia64 for elilo.
-
-  09 Jan 2004; <gustavoz@gentoo.org> dosfstools-2.10.ebuild:
-  Stable for hppa.
-
-  07 Jan 2004; Jon Portnoy <avenj@gentoo.org> dosfstools-2.10.ebuild :
-  AMD64 keywords.
-
-  01 Jan 2004; Martin Holzer <mholzer@gentoo.org> dosfstools-2.10.ebuild:
-  X86 stable.
-
-*dosfstools-2.10 (21 Dec 2003)
-
-  21 Dec 2003; Martin Holzer <mholzer@gentoo.org> dosfstools-2.10.ebuild:
-  Version bumped.
-
-  30 Nov 2003; <solar@gentoo.org> dosfstools-2.9.ebuild:
-  Bug: 34785 hardened-gcc transparently adds -fPIC so we must filter that away
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/dosfstools/ChangeLog,v 1.1 2003/09/17 02:43:10 seemant Exp $
 
 *dosfstools-2.9 (16 Sep 2003)
 
   16 Sep 2003; Seemant Kulleen <seemant@gentoo.org> dosfstools-2.8-r3.ebuild,
   dosfstools-2.9.ebuild, files/errno.patch:
-  Moved to sys-fs.
+  move to sys-fs
 
 *dosfstools-2.9 (08 Sep 2003)
 
@@ -111,6 +31,7 @@
   Fixed HOMEPAGE
 
   3 May 2002; Donny Davies <woodchip@gentoo.org> :
+
   Add LICENSE, SLOT.
 
 *dosfstools-2.8-r1 (1 Feb 2002)

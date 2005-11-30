@@ -1,39 +1,9 @@
 # ChangeLog for app-arch/freeze
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/freeze/ChangeLog,v 1.14 2005/11/13 03:51:26 weeve Exp $
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/freeze/ChangeLog,v 1.1 2004/03/11 09:43:55 zypher Exp $
 
-  13 Nov 2005; Jason Wever <weeve@gentoo.org> freeze-2.5.0.ebuild:
-  Stable on SPARC.
+*freeze-2.5.0.ebuild (10 Mar 2004)
 
-  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> freeze-2.5.0.ebuild:
-  Mark 2.5.0 stable on alpha
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  18 Dec 2004; Simon Stelling <blubb@gentoo.org> freeze-2.5.0.ebuild:
-  was testing for a long time, marking stable on amd64
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  freeze-2.5.0.ebuild:
-  Masked freeze-2.5.0.ebuild stable for ppc
-
-  02 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> freeze-2.5.0.ebuild:
-  Keyword ~alpha.
-
-  28 Aug 2004; Tom Gall <tgall@gentoo.org> freeze-2.5.0.ebuild:
-  stable on ppc64, bug #60194
-
-  15 Aug 2004; Jason Wever <weeve@gentoo.org> freeze-2.5.0.ebuild:
-  Added ~sparc keyword wrt bug #59010.
-
-  27 Apr 2004; Max Kalika <max@gentoo.org> freeze-2.5.0.ebuild, metadata.xml:
-  Fix digest, and other cleanups.
-
-  18 Mar 2004; David Holm <dholm@gentoo.org> freeze-2.5.0.ebuild:
-  Added to ~ppc.
-
-*freeze-2.5.0 (10 Mar 2004)
-
-  10 Mar 2004; Marc Hildebrand <zypher@gentoo.org> freeze-2.5.0.ebuild:
-  Initial ebuild. Submitted by Cory Visi, bug #44301
+  10 Mar 2004; Marc Hildebrand <zypher@gentoo.org> :
+  Initial ebuild.
+  Submitted by Cory Visi, bug #44301

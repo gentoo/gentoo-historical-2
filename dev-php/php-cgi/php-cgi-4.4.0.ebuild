@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/php-cgi/php-cgi-4.4.0.ebuild,v 1.11 2005/10/29 22:16:13 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/php-cgi/php-cgi-4.4.0.ebuild,v 1.1 2005/07/11 14:49:06 sebastian Exp $
 
 PHPSAPI="cgi"
 inherit php-sapi eutils
 
 DESCRIPTION="PHP CGI"
 SLOT="0"
-IUSE="force-cgi-redirect"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc sparc x86"
+IUSE="${IUSE} force-cgi-redirect"
+KEYWORDS="~x86 ~sparc ~alpha ~hppa ~ppc ~ia64 ~amd64 ~mips"
 
 # for this revision only
-PDEPEND=">=${PHP_PROVIDER_PKG}-4.4.0"
+PDEPEND=">=${PHP_PROVIDER_PKG}-4.3.11"
 PROVIDE="${PROVIDE} virtual/httpd-php"
 
 src_unpack() {
@@ -36,9 +36,9 @@ src_install() {
 	PHP_INSTALLTARGETS="install"
 	php-sapi_src_install
 
-	rm -f "${D}/usr/bin/php"
+	rm -f ${D}/usr/bin/php
 	# rename binary
-	newbin "${S}/sapi/cgi/php" php-cgi
+	newbin ${S}/sapi/cgi/php php-cgi
 }
 
 pkg_postinst() {

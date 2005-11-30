@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/lib765/lib765-0.3.1.1.ebuild,v 1.8 2005/05/21 10:45:50 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/lib765/lib765-0.3.1.1.ebuild,v 1.1 2003/07/16 00:16:51 vapier Exp $
 
 DESCRIPTION="Floppy controller emulator"
 HOMEPAGE="http://www.seasip.demon.co.uk/Unix/LibDsk/"
@@ -8,8 +8,7 @@ SRC_URI="http://www.seasip.demon.co.uk/Unix/LibDsk/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="x86"
 
 DEPEND="app-emulation/libdsk"
 

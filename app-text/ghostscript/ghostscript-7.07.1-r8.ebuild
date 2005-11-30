@@ -1,39 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript/ghostscript-7.07.1-r8.ebuild,v 1.16 2005/05/22 15:36:33 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript/ghostscript-7.07.1-r8.ebuild,v 1.1 2004/12/05 17:23:53 lanius Exp $
 
-inherit flag-o-matic eutils toolchain-funcs libtool
+inherit flag-o-matic eutils gcc
 
 DESCRIPTION="ESP Ghostscript -- an enhanced version of GNU Ghostscript with better printer support"
 HOMEPAGE="http://www.cups.org/ghostscript.php"
 SRC_URI="mirror://sourceforge/espgs/espgs-${PV}-source.tar.bz2
 	cjk? ( http://www.matsusaka-u.ac.jp/mirror/gs-cjk/adobe-cmaps-200204.tar.gz
-		http://www.matsusaka-u.ac.jp/mirror/gs-cjk/acro5-cmaps-2001.tar.gz )"
+		http://www.matsusaka-u.ac.jp/mirror/gs-cjk/acro5-cmaps-2001.tar.gz)"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~ppc-macos s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="X cups cjk emacs gtk"
 
-DEP="virtual/libc
+RDEPEND="virtual/libc
 	>=media-libs/jpeg-6b
 	>=media-libs/libpng-1.2.1
 	>=sys-libs/zlib-1.1.4
 	X? ( virtual/x11 )
-	gtk? ( >=x11-libs/gtk+-2.0 )
-	cups? ( net-print/cups )
-	!virtual/ghostscript"
-
-RDEPEND="${DEP}
 	cjk? ( media-fonts/arphicfonts
 		media-fonts/kochi-substitute
 		media-fonts/baekmuk-fonts )
+	cups? ( net-print/cups )
+	gtk? ( >=x11-libs/gtk+-2.0 )
+	!virtual/ghostscript
 	media-fonts/gnu-gs-fonts-std"
-
-DEPEND="${DEP}
-	gtk? ( dev-util/pkgconfig )"
-
 #	media-libs/fontconfig"
+
+DEPEND="${RDEPEND}
+	dev-util/pkgconfig"
 
 S=${WORKDIR}/espgs-${PV}
 
@@ -43,15 +40,6 @@ src_unpack() {
 	unpack espgs-${PV}-source.tar.bz2
 
 	cd ${S}
-
-	if use ppc-macos; then
-		epatch ${FILESDIR}/gs-osx-unix-dll.patch
-		cp src/unix-gcc.mak Makefile.in
-		sed -i -e "s:SHARE_JPEG=0:SHARE_JPEG=1:" Makefile.in || die
-		sed -i -e "s:SHARE_ZLIB=0:SHARE_ZLIB=1:" Makefile.in || die
-		sed -i -e "s:SHARE_LIBPNG=0:SHARE_LIBPNG=1:" Makefile.in || die
-		sed -i -e "s:usr/local:usr:" Makefile.in || die
-	fi
 
 	if use cjk ; then
 		epatch ${FILESDIR}/gs7.07.1-cjk.diff.bz2
@@ -75,8 +63,6 @@ src_unpack() {
 	epatch ${FILESDIR}/gs${PV}-destdir.patch
 	epatch ${FILESDIR}/gs${PV}-ijsdestdir.patch
 
-	use ppc-macos && epatch ${FILESDIR}/gs-osx-ijs.patch
-
 	# search path fix
 	sed -i -e "s:\$\(gsdatadir\)/lib:/usr/share/ghostscript/7.07/$(get_libdir):"\
 	Makefile.in || die "sed failed"
@@ -92,27 +78,15 @@ src_unpack() {
 	# Fix the garbage collector on ia64 and ppc
 	epatch ${FILESDIR}/gs-fix-gc.patch
 
-	# bug #63435
-	epatch ${FILESDIR}/gs${PV}-ps2ps.patch
-
 	# fix dynamic build
 	echo '#include "png.h"' >> src/png_.h
-
-	# fix for building with gtk2 instead of gtk1
-	if use gtk; then
-		sed -i -e "s:gmodule:gmodule-2.0:" configure.ac
-		sed -i -e "s:glib-config:pkgconfig:" configure.ac
-		sed -i -e "s:gtk-config:pkg-config gtk+-2.0:g" src/unix-dll.mak
-		sed -i -e "s:CFLAGS_SO=-fPIC:CFLAGS_SO=-fPIC -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include:" Makefile.in
-	else
-		epatch ${FILESDIR}/gs${PV}-nogtk2.patch
-	fi
+	sed -i -e "s:CFLAGS_SO=-fPIC:CFLAGS_SO=-fPIC -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include:" Makefile.in
 }
 
 src_compile() {
 	local myconf
 	myconf="--with-ijs --without-gimp-print"
-	use gtk && myconf="${myconf} --with-omni" || myconf="${myconf} --without-omni"
+	use gtk && myconf="${myconf} --with-omni"
 
 	# bug #56998, only compiled-in fontpath is searched when running 
 	# gs -DPARANOIDSAFER out.ps
@@ -173,8 +147,4 @@ src_install() {
 	#einstall
 	#dosed "s:^prefix=.*:prefix=/usr:" /usr/bin/ijs-config
 	make DESTDIR="${D}" install || die
-
-	# bug #83876, collision with gcc
-	rm -f ${D}/usr/share/man/de/man1/ansi2knr.1
-	rm -f ${D}/usr/share/man/man1/ansi2knr.1
 }

@@ -1,20 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libglade/libglade-0.17-r6.ebuild,v 1.30 2005/07/24 15:49:26 herbs Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libglade/libglade-0.17-r6.ebuild,v 1.1 2002/04/25 07:48:25 spider Exp $
 
 #provide Xmake and Xemake
+. /usr/portage/eclass/inherit.eclass
+inherit virtualx
 
-inherit libtool virtualx gnome.org multilib
-
-DESCRIPTION="Allow programs to load their UIs from an XML description at runtime."
+S=${WORKDIR}/${P}
+DESCRIPTION="libglade allows programs to load their UIs from an XMLS description at tuntime."
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/${PN}/${P}.tar.gz"
 HOMEPAGE="http://developer.gnome.org/doc/API/libglade/libglade.html"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/${PN}/${PV}/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE="nls bonobo"
-
 #please dont add gnome-libs as an optional DEPEND, as
 #it causes too many problems.
 RDEPEND=">=dev-libs/libxml-1.8.15
@@ -25,8 +23,6 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 src_compile() {
-	elibtoolize
-
 	local myconf=""
 
 	use bonobo && myconf="${myconf} --enable-bonobo"
@@ -36,22 +32,21 @@ src_compile() {
 
 	./configure --host=${CHOST} \
 		--prefix=/usr \
-		--libdir=/usr/$(get_libdir) \
 		--sysconfdir=/etc \
 		--localstatedir=/var/lib \
 		--disable-gnomedb \
 		${myconf} || die
-
+		
 	Xemake || die
 }
 
 src_install() {
 	make prefix=${D}/usr \
-	     libdir=${D}/usr/$(get_libdir) \
 	     sysconfdir=${D}/etc \
 	     localstatedir=${D}/var/lib \
 	     install || die
-
+	
 	dodoc AUTHORS COPYING* ChangeLog NEWS
 	dodoc doc/*.txt
 }
+

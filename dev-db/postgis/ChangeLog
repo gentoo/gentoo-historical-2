@@ -1,61 +1,10 @@
 # ChangeLog for dev-db/postgis
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/ChangeLog,v 1.19 2005/08/27 22:28:27 nakano Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgis/ChangeLog,v 1.1 2002/12/16 21:13:29 george Exp $
 
-*postgis-1.0.1_p20050805 (27 Aug 2005)
+*postgis-0.7.3.ebuild (16 ‰≈À 2002)
 
-  27 Aug 2005; Masatomo Nakano <nakano@gentoo.org>
-  +postgis-1.0.1_p20050805.ebuild:
-  Version bump.
-
-*postgis-1.0.0_p20050512 (14 May 2005)
-
-  14 May 2005; Masatomo Nakano <nakano@gentoo.org>
-  +postgis-1.0.0_p20050512.ebuild:
-  Version bump.
-
-  06 May 2005; Sven Wegener <swegener@gentoo.org> postgis-0.7.5-r2.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org>
-  postgis-0.7.5-r2.ebuild:
-  Dependency update: dev-libs/proj -> sci-libs/proj.
-
-  17 Jun 2004; Masatomo Nakano <nakano@gentoo.org> postgis-0.7.5-r2.ebuild:
-  Marked as stable on x86.
-
-  04 May 2004; David Holm <dholm@gentoo.org> postgis-0.7.5-r2.ebuild:
-  Added to ~ppc.
-
-*postgis-0.7.5-r2 (03 May 2004)
-
-  03 May 2004; Masatomo Nakano <nakano@gentoo.org> +postgis-0.7.5-r2.ebuild:
-  Fixed dependency.
-
-  20 Apr 2004; Martin Holzer <mholzer@gentoo.org> postgis-0.7.5-r1.ebuild:
-  src_uri now uses mirror://postgresql
-
-  21 Mar 2004; Martin Holzer <mholzer@gentoo.org> postgis-0.7.5-r1.ebuild:
-  adding categorie. see 45110 for details
-
-  07 Dec 2003; Masatomo Nakano <nakano@gentoo.org> postgis-0.7.5.ebuild:
-  Clean up.
-
-*postgis-0.7.5-r1 (30 Sep 2003)
-  30 Sep 2003; Masatomo Nakano <nakano@gentoo.org> postgis-0.7.5-r1.ebuild :
-  Fixed library path and changed dependency to postgresql-7.3.4. #29226
-
-*postgis-0.7.5.ebuild (12 Jun 2003)
-
-  29 Sep 2003; Daniel Ahlberg <aliz@gentoo.org> postgis-0.7.5.ebuild :
-  Added IUSE.
-
-  12 Jun 2003; Daniel Ahlberg <aliz@gentoo.org> postgis-0.7.5.ebuild :
-  Version bump.
-
-*postgis-0.7.3.ebuild (16 Dec 2002)
-
-  16 Dec 2002; George Shapovalov <george@gentoo.org> ChangeLog, postgis-0.7.3.ebuild, files/\{postgis-0.7.3-gentoo.diff\} :
+  16 ‰≈À 2002; George Shapovalov <george@gentoo.org> ChangeLog, postgis-0.7.3.ebuild, files/\{postgis-0.7.3-gentoo.diff\} :
   initial release
   adds support for geographic objects to PostgreSQL
   ebuild submitted by Nathaniel C. Domingo <nathaniel.domingo@upd.edu.ph>

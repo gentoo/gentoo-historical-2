@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/abeni/abeni-0.0.21.ebuild,v 1.3 2005/01/01 15:50:50 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-portage/abeni/abeni-0.0.21.ebuild,v 1.1 2004/11/04 23:57:10 pythonhead Exp $
 
 inherit distutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/abeni/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE=""
 
 DEPEND="virtual/python

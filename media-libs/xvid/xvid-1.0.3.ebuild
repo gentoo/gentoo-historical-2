@@ -1,39 +1,37 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/xvid/xvid-1.0.3.ebuild,v 1.10 2005/10/06 03:40:58 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/xvid/xvid-1.0.3.ebuild,v 1.1 2005/01/09 07:04:18 luckyduck Exp $
 
 inherit eutils
 
 MY_P=${PN}core-${PV/_rc/-rc}
-DESCRIPTION="XviD, a high performance/quality MPEG-4 video de-/encoding solution"
+DESCRIPTION="XviD, a high performance/quality MPEG-4 video de-/encoding solution."
 HOMEPAGE="http://www.xvid.org/"
 SRC_URI="http://files.xvid.org/downloads/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ia64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc"
 
-DEPEND="x86? ( >=dev-lang/nasm-0.98.36 )"
-RDEPEND=""
+DEPEND="virtual/libc
+	x86? ( >=dev-lang/nasm-0.98.36 )"
 
-S=${WORKDIR}/${MY_P}/build/generic
+S="${WORKDIR}/${MY_P}/build/generic"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PV}-DESTDIR.patch
-	cd "${S}"/../..
-	epatch "${FILESDIR}"/${PN}-1.0-ia64.patch
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-DESTDIR.patch
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die
+	make install DESTDIR=${D} || die
 
-	cd "${S}"/../../
+	cd ${S}/../../
 	dodoc AUTHORS ChangeLog README TODO doc/*
 
-	local mylib=$(basename $(ls "${D}"/usr/$(get_libdir)/libxvidcore.so*))
+	local mylib="$(basename $(ls ${D}/usr/$(get_libdir)/libxvidcore.so*))"
 	dosym ${mylib} /usr/$(get_libdir)/libxvidcore.so
 	dosym ${mylib} /usr/$(get_libdir)/${mylib/.0}
 

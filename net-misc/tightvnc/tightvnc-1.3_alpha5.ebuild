@@ -1,17 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tightvnc/tightvnc-1.3_alpha5.ebuild,v 1.16 2005/07/27 07:38:15 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tightvnc/tightvnc-1.3_alpha5.ebuild,v 1.1 2004/09/20 02:05:13 morfic Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
 IUSE="java tcpd"
 
+DLFILE="`echo ${P} | sed s:_alpha:dev:`"
+
 S="${WORKDIR}/vnc_unixsrc"
 DESCRIPTION="A great client/server software package allowing remote network access to graphical desktops."
-SRC_URI="mirror://sourceforge/vnc-tight/${P/_alpha/dev}_unixsrc.tar.bz2"
+SRC_URI="mirror://sourceforge/vnc-tight/${DLFILE}_unixsrc.tar.bz2"
 HOMEPAGE="http://www.tightvnc.com/"
 
-KEYWORDS="x86 ppc sparc ~amd64 alpha"
+#can't test on anything but x86
+KEYWORDS="~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -31,12 +34,16 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-gentoo.security.patch
 	epatch ${FILESDIR}/${P}-imake-tmpdir.patch
 	epatch ${FILESDIR}/x86.patch
-
-	[ "$(gcc-version)" == "3.4" ] && epatch ${FILESDIR}/${P}-gcc34.patch
+	epatch ${FILESDIR}/${P}-gcc34.patch
 }
 
 src_compile() {
 	local CDEBUGFLAGS="${CFLAGS}"
+
+	use amd64 && CDEBUGFLAGS="${CDEBUGFLAGS} -m32 \
+		-L/emul/linux/x86/lib \
+		-L/emul/linux/x86/usr/lib/gcc-lib/i386-pc-linux-gnu/3.2.3 \
+		-L/emul/linux/x86/usr/lib -L/emul/linux/x86/usr/X11R6/lib"
 
 	xmkmf -a || die "xmkmf failed"
 
@@ -44,9 +51,9 @@ src_compile() {
 	cd Xvnc && ./configure || die "Configure failed."
 
 	if use tcpd; then
-		make EXTRA_LIBRARIES="-lwrap -lnss_nis" CDEBUGFLAGS="${CDEBUGFLAGS}" EXTRA_DEFINES="-DUSE_LIBWRAP=1" CC="$(tc-getCC)" || die
+		make EXTRA_LIBRARIES="-lwrap -lnss_nis" CDEBUGFLAGS="${CDEBUGFLAGS}" EXTRA_DEFINES="-DUSE_LIBWRAP=1" || die
 	else
-		make CDEBUGFLAGS="${CDEBUGFLAGS}" CC="$(tc-getCC)" || die
+		make CDEBUGFLAGS="${CDEBUGFLAGS}" || die
 	fi
 }
 

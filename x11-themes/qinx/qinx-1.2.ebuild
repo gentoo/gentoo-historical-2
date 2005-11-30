@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/qinx/qinx-1.2.ebuild,v 1.6 2005/09/20 02:28:57 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/qinx/qinx-1.2.ebuild,v 1.1 2004/11/15 13:43:10 motaboy Exp $
 
 inherit kde eutils
 
@@ -9,12 +9,12 @@ SRC_URI="http://www.usermode.org/code/${P}.tar.gz"
 HOMEPAGE="http://www.usermode.org/code.html"
 
 SLOT="0"
-LICENSE="MIT"
-KEYWORDS="x86 ~alpha -ppc ~sparc ~amd64"
-IUSE="arts"
+LICENSE="as-is"
+KEYWORDS="~x86 ~alpha -ppc ~sparc"
+IUSE=""
 
-DEPEND="|| ( kde-base/kdebase-meta kde-base/kdebase )"
-RDEPEND="|| ( kde-base/kdebase-meta kde-base/kdebase )"
+DEPEND="kde-base/kdebase"
+RDEPEND="kde-base/kdebase"
 need-kde 3.2
 
 src_unpack() {

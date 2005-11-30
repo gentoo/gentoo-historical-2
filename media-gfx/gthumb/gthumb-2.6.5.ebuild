@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-2.6.5.ebuild,v 1.6 2005/09/17 00:37:21 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gthumb/gthumb-2.6.5.ebuild,v 1.1 2005/04/24 23:45:18 allanonjl Exp $
 
 inherit gnome2
 
@@ -10,7 +10,7 @@ LICENSE="GPL-2"
 
 IUSE="jpeg tiff png gphoto2"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 
 # FIXME : configure switches, no autodetection
 
@@ -49,12 +49,5 @@ src_unpack() {
 	# testing for bug #78843
 	rm ${S}/components/catalog-view/*.server
 	rm ${S}/components/image-viewer/*.server
-
-}
-
-src_install() {
-
-	# workaround #92920 FIXME
-	gnome2_src_install scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/
 
 }

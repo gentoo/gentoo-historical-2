@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.2-r1.ebuild,v 1.17 2005/07/03 09:50:38 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.2-r1.ebuild,v 1.1 2005/03/23 12:23:13 caleb Exp $
 
 ONIGURUMA="onigd2_4_0"
 
@@ -14,14 +14,14 @@ SRC_URI="mirror://ruby/${PV%.*}/${P/_pre/-preview}.tar.gz
 LICENSE="Ruby"
 SLOT="1.8"
 # please keep sorted
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc-macos ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sparc ~x86"
 IUSE="socks5 tcltk cjk doc threads"
 
 RDEPEND="virtual/libc
 	>=sys-libs/gdbm-1.8.0
 	>=sys-libs/readline-4.1
 	>=sys-libs/ncurses-5.2
-	socks5? ( >=net-proxy/dante-1.1.13 )
+	socks5? ( >=net-misc/dante-1.1.13 )
 	tcltk? ( dev-lang/tk )
 	>=dev-ruby/ruby-config-0.3
 	!=dev-lang/ruby-cvs-1.8*"
@@ -51,10 +51,6 @@ src_unpack() {
 	epatch ${FILESDIR}/ruby-rdoc-gentoo.diff
 	epatch ${FILESDIR}/ruby-1.8.2-soap.diff
 	epatch ${FILESDIR}/ruby-1.8.2-unittest.diff
-
-	# Fix a hardcoded lib path in configure script
-	sed -i -e "s:\(RUBY_LIB_PREFIX=\"\${prefix}/\)lib:\1$(get_libdir):" \
-		configure.in || die "sed failed"
 }
 
 src_compile() {
@@ -88,8 +84,8 @@ src_compile() {
 }
 
 src_install() {
-	LD_LIBRARY_PATH=${D}/usr/$(get_libdir)
-	RUBYLIB="${S}:${D}/usr/$(get_libdir)/ruby/${SLOT}"
+	LD_LIBRARY_PATH=${D}/usr/lib
+	RUBYLIB="${S}:${D}/usr/lib/ruby/${SLOT}"
 	for d in $(find ${S}/ext -type d) ; do
 		RUBYLIB="${RUBYLIB}:$d"
 	done
@@ -101,8 +97,8 @@ src_install() {
 		dosym /usr/lib/libruby${SLOT/./}.${PV%_*}.dylib /usr/lib/libruby.${PV%.*}.dylib
 		dosym /usr/lib/libruby${SLOT/./}.${PV%_*}.dylib /usr/lib/libruby.${PV%_*}.dylib
 	else
-		dosym /usr/$(get_libdir)/libruby${SLOT/./}.so.${PV%_*} /usr/$(get_libdir)/libruby.so.${PV%.*}
-		dosym /usr/$(get_libdir)/libruby${SLOT/./}.so.${PV%_*} /usr/$(get_libdir)/libruby.so.${PV%_*}
+		dosym /usr/lib/libruby${SLOT/./}.so.${PV%_*} /usr/lib/libruby.so.${PV%.*}
+		dosym /usr/lib/libruby${SLOT/./}.so.${PV%_*} /usr/lib/libruby.so.${PV%_*}
 	fi
 
 	dodoc COPYING* ChangeLog MANIFEST README* ToDo

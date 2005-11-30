@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mailgraph/mailgraph-1.11.ebuild,v 1.4 2005/06/26 23:37:57 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mailgraph/mailgraph-1.11.ebuild,v 1.1 2005/06/25 04:06:26 halcy0n Exp $
 
 inherit eutils webapp
 
@@ -9,12 +9,12 @@ HOMEPAGE="http://people.ee.ethz.ch/~dws/software/mailgraph/"
 SRC_URI="http://people.ee.ethz.ch/~dws/software/${PN}/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~ppc ~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl
 	dev-perl/File-Tail
-	>=net-analyzer/rrdtool-1.2.2"
+	net-analyzer/rrdtool"
 DEPEND=">=sys-apps/sed-4"
 
 pkg_setup() {
@@ -44,6 +44,7 @@ src_install() {
 	# mailgraph CGI script
 	exeinto ${MY_CGIBINDIR}
 	doexe mailgraph.cgi
+	webapp_runbycgibin perl ${MY_CGIBINDIR}/mailgraph.cgi
 
 	# init/conf files for mailgraph daemon
 	newinitd ${FILESDIR}/mailgraph.initd mailgraph

@@ -1,13 +1,6 @@
 # ChangeLog for app-text/reed
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/reed/ChangeLog,v 1.5 2005/01/01 16:33:18 eradicator Exp $
-
-  04 Nov 2003; Brandy Westcott brandy@gentoo.org reed-5.4.ebuild:
-  Small fix to install docs.
-
-  21 Oct 2003; Brandy Westcott brandy@gentoo.org reed-5.4.ebuild:
-  Added sys-libs/ncurses as a dependency; Allow the compile process to use
-  CFLAGS.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/reed/ChangeLog,v 1.1 2003/10/01 20:42:32 pyrania Exp $
 
 *reed-5.4 (01 Oct 2003)
 

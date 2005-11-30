@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/poedit-1.3.0.ebuild,v 1.7 2005/01/25 14:54:08 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/poedit/poedit-1.3.0.ebuild,v 1.1 2004/09/07 03:40:42 pythonhead Exp $
 
 inherit eutils kde wxwidgets
 
@@ -10,10 +10,10 @@ HOMEPAGE="http://poedit.sourceforge.net/"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="~x86 ~sparc"
 IUSE="spell gtk2 unicode"
 
-DEPEND="<x11-libs/wxGTK-2.5
+DEPEND=">=x11-libs/wxGTK-2.4.2-r2
 	app-arch/zip
 	>=sys-libs/db-3
 	spell? ( >=app-text/gtkspell-2.0.0 )"
@@ -43,10 +43,11 @@ src_compile() {
 }
 
 src_install () {
-	make DESTDIR=${D} install \
-		datadir=/usr/share \
-		GNOME_DATA_DIR=/usr/share \
-		KDE_DATA_DIR=/usr/share || die
+
+	einstall \
+		datadir=${D}/usr/share \
+		GNOME_DATA_DIR=${D}/usr/share \
+		KDE_DATA_DIR=${D}/${KDEDIR-/usr}/share || die
 
 	dodoc AUTHORS LICENSE NEWS README TODO
 }

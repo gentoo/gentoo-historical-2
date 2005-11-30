@@ -1,37 +1,34 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/imp3sh/imp3sh-0.2.3.ebuild,v 1.12 2004/10/30 10:53:04 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header
 
-IUSE="oggvorbis"
-
-inherit gnuconfig toolchain-funcs
-
+S=${WORKDIR}/${P}
 DESCRIPTION="flexible playlist manipulation shell and song player/streamer"
-HOMEPAGE="http://www.geocities.com/kman_can/"
 SRC_URI="http://www.geocities.com/kman_can/${P}.tar.gz"
-
+HOMEPAGE="http://www.geocities.com/kman_can/"
 LICENSE="GPL-2"
+KEYWORDS="~x86"
 SLOT="0"
-KEYWORDS="x86"
+
+IUSE=""
 
 DEPEND="sys-libs/ncurses
-	oggvorbis? ( media-libs/libvorbis
-	             media-libs/libao )"
+		oggvorbis? ( media-libs/libvorbis
+					 media-libs/libogg
+					 media-libs/libao )"
+RDEPEND=""
 
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	gnuconfig_update
-}
 
 src_compile() {
+
 	econf || die
-	emake CCLD=$(tc-getCXX) || die
+	emake || die
+	
 }
 
-src_install() {
-	make DESTDIR="${D}" install || die
+src_install () {
+
+	make DESTDIR=${D} install || die
 	dodoc README* CHANGES web/README.imp3web web/imp3web.php EXAMPLE.imp3sh EXTERNAL.players
 	# Some docs are liner notes in the actual .c files. UHG.
 	dodoc piped-io/imp3sh*.c

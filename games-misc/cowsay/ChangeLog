@@ -1,32 +1,6 @@
-# ChangeLog for games-misc/cowsay
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/cowsay/ChangeLog,v 1.11 2005/07/13 20:03:32 spb Exp $
-
-  13 Jul 2005; Stephen Bennett <spb@gentoo.org> cowsay-3.03.ebuild:
-  mips stable
-
-  01 Jun 2005; Stephen Bennett <spb@gentoo.org> cowsay-3.03.ebuild:
-  ~mips keywords
-
-  06 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> +files/cowsay.bashcomp,
-  cowsay-3.03.ebuild:
-  Added cowsay command-line completion.
-
-  01 Feb 2005; Kito <kito@gentoo.org> cowsay-3.03.ebuild:
-  added ~ppc-macos
-
-  15 Apr 2004; Guy Martin <gmsoft@gentoo.org> cowsay-3.03.ebuild:
-  Marked stable on hppa.
-
-  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> cowsay-3.03.ebuild:
-  add STANDARD_HELP_VERSION=1 to the code to fix bug #45238; stop using the
-  provided install.sh script since it doesn't really make src_install cleaner.
-
-  07 Jan 2004; Jon Portnoy <avenj@gentoo.org> cowsay-3.03.ebuild :
-  AMD64 keywords.
-
-  23 Sep 2003; Todd Sunderlin <todd@gentoo.org> cowsay-3.03.ebuild:
-  marked stable for sparc
+# ChangeLog for app-games/cowsay
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/cowsay/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
   06 Jun 2003; <msterret@gentoo.org> cowsay-3.03.ebuild:
   DEPEND on sed >=4

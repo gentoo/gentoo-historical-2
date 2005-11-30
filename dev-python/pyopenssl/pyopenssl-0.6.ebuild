@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenssl/pyopenssl-0.6.ebuild,v 1.9 2005/10/03 10:11:46 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyopenssl/pyopenssl-0.6.ebuild,v 1.1 2004/08/18 17:31:47 kloeri Exp $
 
 inherit distutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/pyopenssl/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ~sparc x86"
+KEYWORDS="~x86 ~amd64 ~ppc ~alpha"
 IUSE="tetex"
 
 RDEPEND="virtual/python
@@ -25,8 +25,6 @@ src_compile() {
 	distutils_src_compile
 	if use tetex ; then
 		addwrite /var/cache/fonts
-		addwrite /usr/share/texmf/fonts/pk
-
 		cd ${S}/doc
 		make html ps dvi
 	fi

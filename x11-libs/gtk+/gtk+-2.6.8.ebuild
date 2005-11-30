@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.6.8.ebuild,v 1.13 2005/10/22 15:11:38 nigoro Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtk+/gtk+-2.6.8.ebuild,v 1.1 2005/06/22 16:05:59 foser Exp $
 
 inherit flag-o-matic eutils
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.gtk.org/pub/gtk/v2.6/${P}.tar.bz2
 
 LICENSE="LGPL-2"
 SLOT="2"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc tiff jpeg static"
 
 RDEPEND="virtual/x11
@@ -55,8 +55,8 @@ src_unpack() {
 	# easier, so even this should be amd64 specific.
 	use x86 && [ "$(get_libdir)" == "lib32" ] && epatch ${DISTDIR}/gtk+-2.6.1-lib64.patch.bz2
 
-	# patch for ppc64 (#64359,#109089)
-	use ppc64 && ! has_version '>=dev-libs/glib-2.8' && epatch ${FILESDIR}/${PN}-2.4.9-ppc64.patch
+	# patch for ppc64 (#64359)
+	use ppc64 && epatch ${FILESDIR}/${PN}-2.4.9-ppc64.patch
 	use ppc64 && append-flags -mminimal-toc
 
 	autoconf || die
@@ -82,7 +82,7 @@ src_compile() {
 		|| die
 
 	# gtk+ isn't multithread friendly due to some obscure code generation bug
-	emake -j1 || die
+	MAKEOPTS="${MAKEOPTS} -j1" emake || die
 
 }
 

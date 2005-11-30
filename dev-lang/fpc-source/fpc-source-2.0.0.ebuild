@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/fpc-source/fpc-source-2.0.0.ebuild,v 1.7 2005/11/17 10:13:37 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/fpc-source/fpc-source-2.0.0.ebuild,v 1.1 2005/06/25 22:52:56 agriffis Exp $
 
-# Needed for release candidates etc.
+# Needed to release candidates etc.
 MY_PV="2.0.0"
 
 SLOT="0" # Read src_install notes!
 LICENSE="GPL-2 LGPL-2.1 LGPL-2.1-FPC"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86"
 DESCRIPTION="Free Pascal Compiler Sources"
 HOMEPAGE="http://www.freepascal.org/"
 IUSE=""
@@ -41,6 +41,6 @@ src_install () {
 		--exclude="*.xvpics" \
 		--exclude="*.~*" \
 		--exclude="CVS" \
-		${WORKDIR}/fpc/ ${D}usr/lib/fpc/src
+		${WORKDIR}/fpc ${D}usr/lib/fpc/src 
 	eend $? || die
 }

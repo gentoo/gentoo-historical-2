@@ -1,29 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-2.1.3-r5.ebuild,v 1.11 2005/03/23 16:16:48 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-2.1.3-r5.ebuild,v 1.1 2004/07/27 21:56:04 karltk Exp $
 
 inherit eutils
 
-At="eclipse-sourceBuild-srcIncluded-2.1.3.zip"
-
 DESCRIPTION="Eclipse Tools Platform"
 HOMEPAGE="http://www.eclipse.org/"
-SRC_URI="http://download.eclipse.org/downloads/drops/R-2.1.3-200403101828/${At}
-	http://dev.gentoo.org/~karltk/projects/eclipse/distfiles/eclipse-sdk-2.1.3_00-refactor-rename.patch.gz"
+SRC_URI="http://download.eclipse.org/downloads/drops/R-2.1.3-200403101828/eclipse-sourceBuild-srcIncluded-2.1.3.zip"
 IUSE="gnome gtk jikes kde motif mozilla"
 SLOT="2"
 LICENSE="CPL-1.0"
-KEYWORDS="x86 ppc sparc"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 RDEPEND=">=virtual/jdk-1.3
-	gtk? ( >=x11-libs/gtk+-2.2.4 )
-	!gtk? ( kde? ( kde-base/kdelibs x11-libs/openmotif )
-		!kde? ( motif? ( x11-libs/openmotif )
-			!motif? ( >=x11-libs/gtk+-2.2.4 )
-		      )
-	      )
+	|| (
+		gtk? ( >=x11-libs/gtk+-2.2.4 )
+		kde? ( kde-base/kdelibs x11-libs/openmotif )
+		motif? ( x11-libs/openmotif )
+		>=x11-libs/gtk+-2.2.4
+		)
 	gnome? ( =gnome-base/gnome-vfs-2* )
-	mozilla? ( www-client/mozilla )
+	mozilla? ( net-www/mozilla )
 	jikes? ( >=dev-java/jikes-1.19 )
 	"
 
@@ -31,10 +28,10 @@ DEPEND="${RDEPEND}
 	>=dev-java/ant-1.5.3
 	>=sys-apps/findutils-4.1.7
 	>=app-shells/tcsh-6.11
-	app-arch/unzip
-	app-arch/zip"
+	app-arch/unzip"
 
 pkg_setup() {
+
 
 	set_dirs
 
@@ -84,24 +81,14 @@ set_dirs() {
 src_unpack() {
 	mkdir ${S}
 	cd ${S}
-	echo "foo: ${AA}"
-	echo "bar: ${A}"
-	unpack ${At}
+	unpack ${A}
 
-	epatch ${DISTDIR}/eclipse-sdk-2.1.3_00-refactor-rename.patch.gz
-#	epatch ${FILESDIR}/00-refactor_rename.patch
+	epatch ${FILESDIR}/00-refactor_rename.patch
 	epatch ${FILESDIR}/01-distribute_ant_target-2.1.patch
 
 	if use kde ; then
 		epatch ${FILESDIR}/02-konqueror_help_browser-2.1.patch
 	fi
-
-	# Turn off verbose mode and on errors in all build.xml files
-	for x in $(find . -type f -name "build.xml") ; do
-		sed -i -r \
-			-e 's/failonerror="[^"]+"/failonerror="true"/' \
-			-e 's/verbose="[^"]+"/verbose="false"/' $x
-	done
 
 	# Clean up all pre-built code
 	ant -q -Dws=gtk -Dos=linux clean
@@ -212,8 +199,7 @@ src_compile() {
 	if [ ! -z "`java-config --java-version | grep IBM`" ] ; then
 		# IBM JRE
 		einfo "Using the IBM JDK"
-		# We must _not_ add xml.jar, here, as that breaks the compilation!
-		ant_extra_opts="-Dbootclasspath=$(java-config --jdk-home)/jre/lib/core.jar:$(java-config --jdk-home)/jre/lib/graphics.jar"
+		ant_extra_opts="-Dbootclasspath=$(java-config --jdk-home)/jre/lib/core.jar"
 	else
 		# Sun derived JREs (Blackdown, Sun)
 		ant_extra_opts="-Dbootclasspath=$(java-config --jdk-home)/jre/lib/rt.jar"

@@ -1,19 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/crontab-mode/crontab-mode-1.11.ebuild,v 1.7 2005/04/12 13:47:02 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/crontab-mode/crontab-mode-1.11.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
 inherit elisp
 
 IUSE=""
 
 DESCRIPTION="Mode for editing crontab files"
-HOMEPAGE="http://www.mahalito.net/~harley/elisp/"
+HOMEPAGE="http://www.hgsc.bcm.tmc.edu/~harley/elisp/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
 
 DEPEND="virtual/emacs"
+
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50crontab-mode-gentoo.el
 

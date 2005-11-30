@@ -1,22 +1,6 @@
 # ChangeLog for net-im/mercury-bin
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/mercury-bin/ChangeLog,v 1.4 2005/03/17 18:41:20 axxo Exp $
-
-*mercury-bin-1709_rc1 (17 Mar 2005)
-
-  17 Mar 2005; Thomas Matthijs <axxo@gentoo.org>
-  +mercury-bin-1709_rc1.ebuild:
-  version bump
-
-  08 Mar 2005; Gustavo Felisberto <humpback@gentoo.org>; files/mercury.sh:
-  Axxo made a very nice job at traking down the deps. This is "almost" ready for
-  unmasking.
-
-*mercury-bin-1709_beta7 (01 Mar 2005)
-
-  01 Mar 2005; Gustavo Felisberto <humpback@gentoo.org>;
-  +mercury-bin-1709_beta7.ebuild:
-  New version :) Lots of fixes and some more new bugs.
+# $Header: /var/cvsroot/gentoo-x86/net-im/mercury-bin/ChangeLog,v 1.1 2005/02/04 18:27:21 humpback Exp $
 
 *mercury-bin-1708 (04 Feb 2005)
 

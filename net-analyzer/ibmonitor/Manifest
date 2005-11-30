@@ -1,4 +1,2 @@
-MD5 4a96aab8ebb576b8728ec5f42c513fa0 ChangeLog 1350
-MD5 ab14a077f2dacfaf58b0fb03a0472d0e files/digest-ibmonitor-1.3 64
-MD5 92a5d24e1eccc577409dc66add035c7b ibmonitor-1.3.ebuild 625
-MD5 6a7e4840daad04c507882a3eb886a299 metadata.xml 225
+MD5 a2f2ba193b70bfcc27f7ebd435ab601a ibmonitor-1.2.ebuild 582
+MD5 fb3fa1c176facc0f3e4043934da01e35 files/digest-ibmonitor-1.2 64

@@ -1,66 +1,10 @@
 # ChangeLog for www-apache/mod_fcgid
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_fcgid/ChangeLog,v 1.11 2005/11/20 03:40:19 ramereth Exp $
-
-*mod_fcgid-1.07-r1 (20 Nov 2005)
-*mod_fcgid-1.07 (20 Nov 2005)
-
-  20 Nov 2005; Lance Albertson <ramereth@gentoo.org>
-  -mod_fcgid-1.05-r2.ebuild, +mod_fcgid-1.07.ebuild,
-  +mod_fcgid-1.07-r1.ebuild:
-  * Version bump
-  * Clean out old ebuilds
-
-  19 Oct 2005; Lance Albertson <ramereth@gentoo.org>
-  mod_fcgid-1.06-r1.ebuild:
-  * Marked stable on x86 for new apache layout
-
-  25 Sep 2005; Tobias Scherbaum <dertobi123@gentoo.org>
-  mod_fcgid-1.06-r1.ebuild:
-  Added to ~ppc
-
-*mod_fcgid-1.06-r1 (23 Sep 2005)
-
-  23 Sep 2005; Lance Albertson <ramereth@gentoo.org>
-  +files/20_mod_fcgid.conf-oldlayout, files/20_mod_fcgid.conf,
-  mod_fcgid-1.05-r2.ebuild, mod_fcgid-1.06.ebuild,
-  +mod_fcgid-1.06-r1.ebuild:
-  * Added new ebuild for the new apache bug (resolves bug #79313)
-  * Fixed module config file for new module location
-  * Fixed older ebuilds to point to the older module location
-  * Made 1.06 stable on x86
-
-*mod_fcgid-1.06 (10 Jul 2005)
-
-  10 Jul 2005; Lance Albertson <ramereth@gentoo.org> +mod_fcgid-1.06.ebuild:
-  Version bump (bug #79313)
-
-  14 May 2005; Lance Albertson <ramereth@gentoo.org>
-  mod_fcgid-1.05-r2.ebuild:
-  Marked stable on x86
-
-  12 May 2005; Elfyn McBratney <beu@gentoo.org> mod_fcgid-1.05-r2.ebuild:
-  Update *DEPEND.
-
-  17 Apr 2005; Lance Albertson <ramereth@gentoo.org>
-  mod_fcgid-1.05-r2.ebuild:
-  minor fix on DEPEND to ensure blocking of non-stable apache installations
-
-*mod_fcgid-1.05-r2 (17 Apr 2005)
-
-  17 Apr 2005; Lance Albertson <ramereth@gentoo.org> -mod_fcgid-1.05.ebuild,
-  -mod_fcgid-1.05-r1.ebuild, +mod_fcgid-1.05-r2.ebuild:
-  Only install for current stable apache
-
-*mod_fcgid-1.05-r1 (15 Apr 2005)
-
-  15 Apr 2005; Lance Albertson <ramereth@gentoo.org>
-  files/20_mod_fcgid.conf, +mod_fcgid-1.05-r1.ebuild:
-  Fixed module path in config file from bug #89217
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_fcgid/ChangeLog,v 1.1 2005/04/14 17:54:54 ramereth Exp $
 
 *mod_fcgid-1.05 (14 Apr 2005)
 
   14 Apr 2005; Lance Albertson <ramereth@gentoo.org>
   +files/20_mod_fcgid.conf, +metadata.xml, +mod_fcgid-1.05.ebuild:
-  New ebuild from neysx, closes #79313
+  New ebuild from nesyx, closes #79313
 

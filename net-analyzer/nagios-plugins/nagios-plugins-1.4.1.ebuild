@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-1.4.1.ebuild,v 1.7 2005/11/20 02:37:54 ramereth Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-plugins/nagios-plugins-1.4.1.ebuild,v 1.1 2005/09/09 05:12:16 ramereth Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/nagiosplug/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 IUSE="ssl samba mysql postgres ldap snmp nagios-dns nagios-ntp nagios-ping
 nagios-ssh nagios-game ups ipv6 radius"
 
@@ -18,7 +18,10 @@ DEPEND="ldap? ( >=net-nds/openldap-2.0.25 )
 	mysql? ( >=dev-db/mysql-3.23.52-r1 )
 	postgres? ( >=dev-db/postgresql-7.2 )
 	ssl? ( >=dev-libs/openssl-0.9.6g )
-	radius? ( >=net-dialup/radiusclient-0.3.2 )"
+	!amd64? ( !sparc? ( !ppc? ( radius? ( >=net-dialup/radiusclient-0.3.2 ))))"
+
+	# Remove the arch blocks for radius once they get marked ~arch for those
+	# archs
 
 # test broken anyway	test? ( >=dev-perl/Cache-Cache-1.03 )"
 
@@ -41,24 +44,12 @@ pkg_setup() {
 	enewuser nagios -1 /bin/bash /dev/null nagios
 }
 
-src_unpack() {
-	unpack ${A}
-	if ! use radius; then
-		EPATCH_OPTS="-p0 -d ${S}" epatch ${FILESDIR}/nagios-plugins-1.4-noradius.patch
-	fi
-	if ! use radius; then
-		export WANT_AUTOCONF=2.58
-		export WANT_AUTMAKE=1.8
-		cd ${S}
-		aclocal -I m4 || die "Failed to run aclocal"
-		autoconf || die "Failed to run autoconf"
-		automake || die "Failed to run automake"
-	fi
-}
-
 src_compile() {
+	if ! use radius; then
+		epatch ${FILESDIR}/nagios-plugins-noradius-1.4.patch
+	fi
 
-	econf \
+	./configure \
 		$(use_with mysql) \
 		$(use_with postgres) \
 		$(use_with ssl openssl) \
@@ -68,12 +59,12 @@ src_compile() {
 		--with-nagios-user=nagios \
 		--sysconfdir=/etc/nagios \
 		--infodir=/usr/share/info \
-		--mandir=/usr/share/man || die "econf failed"
+		--mandir=/usr/share/man || die "./configure failed"
 
 	# fix problem with additional -
 	sed -i -e 's:/bin/ps -axwo:/bin/ps axwo:g' config.h || die "sed failed"
 
-	emake || die "emake failed"
+	make || die "make failed"
 }
 
 src_install() {
@@ -100,7 +91,7 @@ src_install() {
 
 	chown -R nagios:nagios ${D}/usr/nagios/libexec || die "Failed Chown of ${D}/usr/nagios/libexec"
 
-	chmod -R o-rwx ${D}/usr/nagios/libexec || "Failed Chmod of ${D}/usr/nagios/libexec"
+	chmod -R o-rwx ${D}/usr/nagios/libexec "Failed Chmod of ${D}/usr/nagios/libexec"
 }
 
 pkg_postinst() {

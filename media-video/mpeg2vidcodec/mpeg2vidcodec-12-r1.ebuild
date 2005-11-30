@@ -1,32 +1,39 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg2vidcodec/mpeg2vidcodec-12-r1.ebuild,v 1.26 2005/08/05 01:42:46 vapier Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg2vidcodec/mpeg2vidcodec-12-r1.ebuild,v 1.1 2001/10/06 15:30:16 danarmak Exp $
 
-MY_P="${PN}_v${PV}"
-DESCRIPTION="MPEG Library"
-HOMEPAGE="http://www.mpeg.org/"
-SRC_URI="ftp://ftp.mpeg.org/pub/mpeg/mssg/${MY_P}.tar.gz"
-
-LICENSE="as-is"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 sparc x86"
-IUSE=""
-
-RDEPEND=""
-DEPEND=">=sys-apps/sed-4"
-
+P=mpeg2vidcodec_v12
+A=${P}.tar.gz
 S=${WORKDIR}/mpeg2
+DESCRIPTION="MPEG Library"
+SRC_URI="ftp://ftp.mpeg.org/pub/mpeg/mssg/${A}"
+HOMEPAGE="http://www.mpeg.org"
 
-src_unpack() {
-	unpack ${A}
-	sed -i \
-		-e "s:-O2:${CFLAGS}:" \
-		"${S}"/Makefile \
-		|| die "sed Makefile failed"
+DEPEND=">=sys-libs/glibc-2.1.3"
+
+src_unpack () {
+
+  unpack ${A}
+  cd ${S}
+  cp Makefile Makefile.orig
+  sed -e "s:-O2:${CFLAGS}:" Makefile.orig > Makefile
+
+}
+src_compile() {
+
+    cd ${S}
+    try make
+
 }
 
-src_install() {
-	dobin src/mpeg2dec/mpeg2decode src/mpeg2enc/mpeg2encode \
-		|| die "dobin failed"
-	dodoc README doc/*
+src_install () {
+
+    cd ${S}
+    into /usr
+    dobin src/mpeg2dec/mpeg2decode
+    dobin src/mpeg2enc/mpeg2encode
+    dodoc README doc/*
+
 }
+

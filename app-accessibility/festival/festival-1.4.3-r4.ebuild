@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival/festival-1.4.3-r4.ebuild,v 1.6 2005/10/26 01:13:12 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/festival/festival-1.4.3-r4.ebuild,v 1.1 2005/07/24 01:59:17 eradicator Exp $
 
 inherit eutils toolchain-funcs
 
@@ -15,7 +15,7 @@ SRC_URI="${SITE}/${P}-release.tar.gz
 	${SITE}/festvox_kallpc16k.tar.gz
 	${SITE}/festvox_kedlpc16k.tar.gz
 	${SITE}/festvox_rablpc16k.tar.gz
-	linguas_es? ( ${SITE}/festvox_ellpc11k.tar.gz )
+	tts-es? ( ${SITE}/festvox_ellpc11k.tar.gz )
 	doc? ( ${SITE}/festdoc-1.4.2.tar.gz )
 	mbrola? (
 		${SITE}/festvox_us1.tar.gz
@@ -24,8 +24,8 @@ SRC_URI="${SITE}/${P}-release.tar.gz
 
 LICENSE="FESTIVAL BSD as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="asterisk doc mbrola"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="asterisk doc mbrola tts-es"
 
 RDEPEND=">=app-accessibility/speech-tools-1.2.3-r2
 	mbrola? ( >=app-accessibility/mbrola-3.0.1h-r2 )"
@@ -135,11 +135,9 @@ pkg_postinst() {
 # databases: as long as the target of a link exists, the link cannot be
 # removed by Portage.
 # So we do it by hand here...
-#
-# If we do this, it gets deleted during an upgrade.
-#pkg_prerm() {
-#	find /usr/share/festival/voices -type l -path "*_mbrola*" -exec rm -f {} \;
-#}
+pkg_prerm() {
+	find /usr/share/festival/voices -type l -path "*_mbrola*" -exec rm -f {} \;
+}
 
 # Fix mbrola databases: create symbolic links from festival voices
 # directories to MBROLA install dirs.

@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/xtraceroute/xtraceroute-0.9.1.ebuild,v 1.12 2005/09/03 22:44:33 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/xtraceroute/xtraceroute-0.9.1.ebuild,v 1.1 2004/06/04 20:40:58 squinky86 Exp $
 
 DESCRIPTION="neat graphical traceroute displaying route on the globe"
 SRC_URI="http://www.dtek.chalmers.se/~d3august/xt/dl/${P}.tar.gz
 	http://www.dtek.chalmers.se/~d3august/xt/dl/ndg_files.tar.gz"
 HOMEPAGE="http://www.dtek.chalmers.se/~d3august/xt/"
 
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
 
@@ -18,13 +18,9 @@ DEPEND="virtual/x11
 	net-analyzer/traceroute
 	<x11-libs/gtkglarea-1.99.0
 	media-libs/gdk-pixbuf
-	net-dns/host"
+	net-misc/host"
 
 src_compile() {
-
-	# Fix 'head' problem, Bug #63019 (21 Nov 2004 eldad)
-	sed -i -e 's/head -1/head -n 1/' share/xtraceroute-resolve-location.sh.in
-
 	# specify --from-code to fix bug 25395 (01 Aug 2003 agriffis)
 	XGETTEXT='/usr/bin/xgettext --from-code=ISO-8859-1' \
 	./configure \
@@ -33,17 +29,7 @@ src_compile() {
 		--prefix=/usr \
 		--with-host=/usr/bin/hostx \
 		--infodir=/usr/share/info \
-		--mandir=/usr/share/man
-
-	if [ $? != 0 ]; then
-		echo
-		eerror "If configure fails with 'Cannot find proper gtkgl version'"
-		eerror "try to 'eselect opengl' and then re-emerge =gtkglarea-1.2.3*."
-		eerror "# eselect opengl set <GL implementation>"
-		eerror "# emerge =gtkglarea-1.2.3*"
-		echo
-		die "configure failed."
-	fi
+		--mandir=/usr/share/man || die "./configure failed"
 
 	emake || die "emake failed"
 }

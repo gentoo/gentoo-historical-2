@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/SOAP-Lite/SOAP-Lite-0.60a-r1.ebuild,v 1.11 2005/10/03 12:29:46 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/SOAP-Lite/SOAP-Lite-0.60a-r1.ebuild,v 1.1 2004/10/29 15:29:31 mcummings Exp $
 
 IUSE="jabber ssl"
 
@@ -16,9 +16,7 @@ HOMEPAGE="http://search.cpan.org/~byrne/${P}"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-
-myconf="${myconf} --noprompt"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
 
 # TESTS ARE DISABLED ON PURPOSE
 # This module attempts to access an external website for validation
@@ -32,7 +30,7 @@ DEPEND="${DEPEND}
 	dev-perl/libwww-perl
 	dev-perl/libnet
 	dev-perl/MIME-Lite
-	perl-core/MIME-Base64
+	dev-perl/MIME-Base64
 	ssl? ( dev-perl/Crypt-SSLeay )
 	jabber? ( dev-perl/Net-Jabber )
 	ssl? ( dev-perl/IO-Socket-SSL )
@@ -47,4 +45,10 @@ src_unpack() {
 	# cpan. This patch alters the dependancy to the "real" stable version of
 	# MIME::Parser.
 	epatch ${FILESDIR}/SOAP-Lite-0.60.a.patch
+}
+
+
+src_compile() {
+	(echo yes) | perl-module_src_compile || perl-module_src_compile || die "compile failed"
+	perl-module_src_test || die "test failed"
 }

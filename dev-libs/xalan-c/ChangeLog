@@ -1,15 +1,6 @@
 # ChangeLog for dev-libs/xalan-c
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/ChangeLog,v 1.4 2005/05/30 18:28:55 swegener Exp $
-
-  30 May 2005; Sven Wegener <swegener@gentoo.org> xalan-c-1.7.0.ebuild:
-  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
-
-*xalan-c-1.8.0 (10 Nov 2004)
-
-  10 Nov 2004; Mike Frysinger <vapier@gentoo.org> +files/1.8.0-gcc34.patch,
-  xalan-c-1.7.0.ebuild, +xalan-c-1.8.0.ebuild:
-  Version bump #62196 by Sebastian Roth.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/ChangeLog,v 1.1 2004/02/21 09:18:51 vapier Exp $
 
 *xalan-c-1.7.0 (21 Feb 2004)
 

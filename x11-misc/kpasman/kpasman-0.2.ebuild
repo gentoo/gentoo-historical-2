@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/kpasman/kpasman-0.2.ebuild,v 1.8 2005/07/26 14:43:24 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/kpasman/kpasman-0.2.ebuild,v 1.1 2003/05/29 03:02:43 caleb Exp $
 
-inherit kde
+inherit kde-base 
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Kpasman is a small password manager for the K Desktop Environment"
 SRC_URI="mirror://sourceforge/kpasman/${P}.tar.gz"
 HOMEPAGE="http://kpasman.sourceforge.net/"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
+KEYWORDS="x86"
 
 need-kde 3
 

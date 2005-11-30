@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gtk-gnutella/gtk-gnutella-0.95.ebuild,v 1.3 2005/06/23 21:55:52 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gtk-gnutella/gtk-gnutella-0.95.ebuild,v 1.1 2004/11/28 22:01:50 squinky86 Exp $
 
 IUSE="gnome gtk2 xml2 nls"
 
@@ -14,7 +14,7 @@ LICENSE="GPL-2"
 KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 
 DEPEND="xml2? ( dev-libs/libxml2 )
-	gtk2? ( =dev-libs/glib-2* >=x11-libs/gtk+-2.6.4 )
+	gtk2? ( =dev-libs/glib-2* =x11-libs/gtk+-2* )
 	!gtk2? ( =dev-libs/glib-1.2* =x11-libs/gtk+-1.2* )
 	dev-util/yacc
 	nls? ( >=sys-devel/gettext-0.11.5 )"

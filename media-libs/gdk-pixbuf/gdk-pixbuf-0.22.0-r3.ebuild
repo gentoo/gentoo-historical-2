@@ -1,16 +1,12 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gdk-pixbuf/gdk-pixbuf-0.22.0-r3.ebuild,v 1.10 2004/11/08 15:49:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gdk-pixbuf/gdk-pixbuf-0.22.0-r3.ebuild,v 1.1 2004/09/19 23:01:26 foser Exp $
 
 inherit virtualx libtool gnome.org gnuconfig eutils
 
+IUSE="doc mmx"
 DESCRIPTION="GNOME Image Library"
 HOMEPAGE="http://www.gtk.org/"
-
-LICENSE="GPL-2 LGPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE="doc mmx"
 
 RDEPEND="media-libs/jpeg
 	media-libs/tiff
@@ -21,8 +17,13 @@ RDEPEND="media-libs/jpeg
 	>=gnome-base/gnome-libs-1.4.1.2-r1"
 # We need gnome-libs here, else gnome support do not get compiled into
 # gdk-pixbuf (the GnomeCanvasPixbuf library )
+
 DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )"
+
+SLOT="0"
+LICENSE="GPL-2 LGPL-2"
+KEYWORDS="x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips ~ppc64"
 
 src_unpack() {
 
@@ -59,8 +60,8 @@ src_install() {
 
 	dosed -e "s:${D}::g" /usr/bin/gdk-pixbuf-config
 	#fix permissions on the loaders
-	chmod a+rx ${D}/usr/$(get_libdir)/gdk-pixbuf/loaders
-	chmod a+r ${D}/usr/$(get_libdir)/gdk-pixbuf/loaders/*
+	chmod a+rx ${D}/usr/lib/gdk-pixbuf/loaders
+	chmod a+r ${D}/usr/lib/gdk-pixbuf/loaders/*
 
 	dodoc AUTHORS COPYING* ChangeLog INSTALL README NEWS TODO
 }

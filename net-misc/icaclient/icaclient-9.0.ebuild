@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/icaclient-9.0.ebuild,v 1.4 2005/08/26 03:13:46 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/icaclient-9.0.ebuild,v 1.1 2005/05/18 02:15:30 weeve Exp $
 
 inherit multilib
 
@@ -16,17 +16,14 @@ RESTRICT="fetch"
 
 RDEPEND="virtual/libc
 	virtual/x11
-	>=x11-libs/openmotif-2.2.2
 	amd64? ( >=app-emulation/emul-linux-x86-xlibs-1.0 )"
 DEPEND="${RDEPEND}
 	>=app-arch/rpm-3.0.6"
 
 S="${WORKDIR}/usr"
 
-pkg_setup() {
-	# Binary x86 package
-	has_multilib_profile && ABI="x86"
-}
+# Binary x86 package
+has_multilib_profile && ABI="x86"
 
 pkg_nofetch() {
 	einfo "Please download ${A} yourself from www.citrix.com"
@@ -81,7 +78,7 @@ src_install() {
 	insinto /usr/$(get_libdir)/nsbrowser/plugins
 	dosym /opt/ICAClient/npica.so /usr/$(get_libdir)/nsbrowser/plugins/npica.so
 
-	if use gnome; then
+	if [ `use gnome` ]; then
 		insinto /usr/share/applications
 		doins lib/ICAClient/desktop/*.desktop
 	fi

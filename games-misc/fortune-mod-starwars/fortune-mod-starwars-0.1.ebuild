@@ -1,19 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-starwars/fortune-mod-starwars-0.1.ebuild,v 1.9 2005/08/27 18:08:26 corsair Exp $
-
-DESCRIPTION="Quotes from StarWars, The Empire Strikes Back, and Return of the Jedi"
-HOMEPAGE="http://www.splitbrain.org/index.php?x=.%2FFortunes%2Fstarwars"
-SRC_URI="http://www.splitbrain.org/Fortunes/starwars/fortune-starwars.tgz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 hppa mips ppc ppc64 sparc x86"
-IUSE=""
-
-RDEPEND="games-misc/fortune-mod"
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-starwars/fortune-mod-starwars-0.1.ebuild,v 1.1 2003/09/10 18:14:05 vapier Exp $
 
 S=${WORKDIR}/${PN/mod-/}
+DESCRIPTION="Quotes from StarWars, The Empire Strikes Back, and Return of the Jedi"
+SRC_URI="http://www.splitbrain.org/Fortunes/starwars/fortune-starwars.tgz"
+HOMEPAGE="http://www.splitbrain.org/index.php?x=.%2FFortunes%2Fstarwars"
+
+SLOT="0"
+KEYWORDS="x86 ppc ~sparc ~mips"
+LICENSE="GPL-2"
+
+DEPEND="virtual/glibc"
+RDEPEND="app-games/fortune-mod"
 
 src_install() {
 	insinto /usr/share/fortune

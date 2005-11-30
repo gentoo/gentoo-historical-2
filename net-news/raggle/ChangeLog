@@ -1,20 +1,6 @@
-# ChangeLog for net-news/raggle
+# ChangeLog for www-client/raggle
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-news/raggle/ChangeLog,v 1.5 2005/10/06 13:05:36 caleb Exp $
-
-*raggle-0.4.3 (06 Oct 2005)
-
-  06 Oct 2005; Caleb Tennis <caleb@gentoo.org> raggle-0.4.0.ebuild,
-  -raggle-0.4.1.ebuild, +raggle-0.4.3.ebuild:
-  Version bump, remove old version, remove ruby 1.6 dep
-
-  08 Aug 2005; Michael Kohl <citizen428@gentoo.org> raggle-0.4.1.ebuild:
-  Changed USE_RUBY to ruby18 ruby19, see bug #97260.
-
-  07 Aug 2005; Michael Kohl <citizen428@gentoo.org>
-  -files/raggle-destdir-gentoo.diff, -raggle-0.3.2.ebuild,
-  raggle-0.4.1.ebuild:
-  Version bump and cleaning out an older version.
+# $Header: /var/cvsroot/gentoo-x86/net-news/raggle/ChangeLog,v 1.1 2005/08/07 22:45:35 citizen428 Exp $
 
 *raggle-0.4.1 (07 Aug 2005)
 *raggle-0.4.0 (07 Aug 2005)

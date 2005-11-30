@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-araneida/cl-araneida-0.9.ebuild,v 1.5 2005/05/24 18:48:32 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-araneida/cl-araneida-0.9.ebuild,v 1.1 2005/02/10 09:18:29 mkennedy Exp $
 
 inherit common-lisp eutils
 
@@ -9,21 +9,15 @@ HOMEPAGE="http://www.cliki.net/Araneida"
 SRC_URI="http://www-jcsu.jesus.cam.ac.uk/ftp/pub/cclan/araneida_${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86"
 IUSE=""
-DEPEND="dev-lisp/cl-split-sequence
+DEPEND="net-www/apache
+	dev-lisp/cl-split-sequence
 	dev-lisp/cl-net-telent-date"
-RDEPEND="${DEPEND}
-	|| ( net-www/apache www-servers/pound )"
 
 CLPACKAGE=araneida
 
 S=${WORKDIR}/araneida_${PV}
-
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/${PV}-gentoo.patch || die
-}
 
 src_install() {
 	insinto $CLSOURCEROOT/araneida
@@ -35,8 +29,8 @@ src_install() {
 	insinto $CLSOURCEROOT/araneida/doc
 	doins doc/*.html doc/*.css doc/*.lisp doc/PLAN
 	common-lisp-system-symlink
-	dodoc doc/*.txt INSTALL.asdf LICENCE* NEWS Notes README TODO
-	dosym $CLSOURCEROOT/araneida/doc/ \
-		/usr/share/doc/${PF}/html
-	dodoc ${FILESDIR}/README.Gentoo
+	dohtml doc/*.html doc/*.css
+	insinto /usr/share/doc/${PF}/examples/
+	doins doc/*.lisp
+	dodoc doc/*.txt new-dispatch-model
 }

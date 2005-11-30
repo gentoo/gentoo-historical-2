@@ -1,63 +1,6 @@
 # ChangeLog for www-apps/polarblog
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/polarblog/ChangeLog,v 1.14 2005/11/30 01:52:06 rl03 Exp $
-
-*polarblog-1.7.0 (30 Nov 2005)
-
-  30 Nov 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
-  +polarblog-1.7.0.ebuild:
-  Version bump
-
-*polarblog-1.6.2 (23 Oct 2005)
-
-  23 Oct 2005; Renat Lumpau <rl03@gentoo.org> -polarblog-1.6.1.ebuild,
-  +polarblog-1.6.2.ebuild:
-  Version bump
-
-*polarblog-1.6.1 (08 Sep 2005)
-
-  08 Sep 2005; Renat Lumpau <rl03@gentoo.org> -polarblog-1.6.0.ebuild,
-  +polarblog-1.6.1.ebuild:
-  Version bump
-
-*polarblog-1.6.0 (24 Aug 2005)
-
-  24 Aug 2005; Renat Lumpau <rl03@gentoo.org> +polarblog-1.6.0.ebuild,
-  -polarblog-1.52.ebuild:
-  Version bump. Removed old version (1.52), which was actually 1.5.2, so the new
-  1.6.0 is the most recent version. Apologies for the apparent downgrade.
-
-  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt:
-  Housekeeping
-
-  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
-  files/reconfig, polarblog-1.52.ebuild:
-  Housekeeping
-
-*polarblog-1.52 (07 Jul 2005)
-
-  07 Jul 2005; Renat Lumpau <rl03@gentoo.org> files/postinstall-en.txt,
-  files/reconfig, -polarblog-1.02.ebuild, +polarblog-1.52.ebuild:
-  Version bump (#80407), cleaning old versions.
-
-  13 Dec 2004; Jason Wever <weeve@gentoo.org> polarblog-1.02.ebuild:
-  Added ~sparc keyword.
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  polarblog-1.02.ebuild:
-  Masked polarblog-1.02.ebuild stable for ppc
-
-  03 Sep 2004; David Holm <dholm@gentoo.org> polarblog-1.02.ebuild:
-  Added to ~ppc.
-
-  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> polarblog-1.02.ebuild:
-  Fixed DEPEND/RDEPEND
-
-  28 Aug 2004; Renat Lumpau <rl03@gentoo.org> polarblog-1.02.ebuild:
-  Removed empty src_compile.
-
-  28 Aug 2004; Renat Lumpau <rl03@gentoo.org> polarblog-1.02.ebuild:
-  Don't rm docs, and cp -R selectively.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/polarblog/ChangeLog,v 1.1 2004/08/28 11:31:02 rl03 Exp $
 
 *polarblog-1.02 (28 Aug 2004)
 

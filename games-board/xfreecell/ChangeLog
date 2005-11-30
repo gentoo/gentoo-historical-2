@@ -1,18 +1,6 @@
 # ChangeLog for games-board/xfreecell
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/xfreecell/ChangeLog,v 1.6 2005/02/06 17:04:33 corsair Exp $
-
-  06 Feb 2005; Markus Rothe <corsair@gentoo.org> xfreecell-1.0.5b.ebuild:
-  Stable on ppc64
-
-  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> xfreecell-1.0.5b.ebuild:
-  keywords ~amd64.
-
-  17 Dec 2004; Joseph Jezak <josejx@gentoo.org> xfreecell-1.0.5b.ebuild:
-  Marked ~ppc for bug #74706.
-
-  15 Dec 2004; Markus Rothe <corsair@gentoo.org> xfreecell-1.0.5b.ebuild:
-  Added ~ppc64 to KEYWORDS; bug #74231
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/xfreecell/ChangeLog,v 1.1 2004/02/25 10:24:30 mr_bones_ Exp $
 
 *xfreecell-1.0.5b (25 Feb 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/amsn-skins/amsn-skins-20040223.ebuild,v 1.9 2005/09/17 10:12:30 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/amsn-skins/amsn-skins-20040223.ebuild,v 1.1 2004/02/23 15:09:05 rizzo Exp $
 
 S=${WORKDIR}
 DESCRIPTION="Collection of AMSN themes"
@@ -15,10 +15,10 @@ SRC_URI="${THEME_URI}/aMac.zip
 RESTRICT="nomirror"
 SLOT="0"
 LICENSE="freedist"
-KEYWORDS="alpha amd64 ppc ~x86"
-IUSE=""
+KEYWORDS="~x86 ~alpha"
 
-DEPEND="app-arch/unzip"
+DEPEND="net-misc/wget
+		app-arch/unzip"
 RDEPEND="net-im/amsn"
 
 src_install () {

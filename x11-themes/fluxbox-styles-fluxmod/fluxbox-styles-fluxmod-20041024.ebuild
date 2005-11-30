@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fluxbox-styles-fluxmod/fluxbox-styles-fluxmod-20041024.ebuild,v 1.6 2005/07/09 17:56:03 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fluxbox-styles-fluxmod/fluxbox-styles-fluxmod-20041024.ebuild,v 1.1 2004/10/31 21:48:49 ciaranm Exp $
 
 inherit eutils
 
 DESCRIPTION="A collection of FluxBox themes from FluxMod"
-HOMEPAGE="http://www.fluxmod.dk"
+HOMEPAGE="http://www.ikaro.dk"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 sparc ~mips ppc ~alpha ~hppa ~amd64 ~ia64 ppc64"
+KEYWORDS="~x86 ~sparc ~mips ~ppc ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
 
 IUSE=""
 DEPEND=">=sys-apps/sed-4"
@@ -35,19 +35,19 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	einfo " "
 	einfo "These styles are installed into /usr/share/fluxbox/fluxmod/. The"
 	einfo "best way to use these styles is to ensure that you are running"
 	einfo "fluxbox 0.9.10-r3 or later, and then to place the following in"
 	einfo "your menu file:"
-	einfo
+	einfo " "
 	einfo "    [submenu] (Styles) {Select a Style}"
 	einfo "        [include] (/usr/share/fluxbox/menu.d/styles/)"
 	einfo "    [end]"
-	einfo
+	einfo " "
 	einfo "If you use fluxbox-generate_menu or the default global fluxbox"
 	einfo "menu file, this will already be present."
-	einfo
+	einfo " "
 	epause
 }
 

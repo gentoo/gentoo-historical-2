@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/gtkada/gtkada-2.2.0-r1.ebuild,v 1.10 2005/01/01 17:25:06 eradicator Exp $
-
-inherit gnat eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/gtkada/gtkada-2.2.0-r1.ebuild,v 1.1 2003/08/14 01:01:32 dholm Exp $
 
 Name="GtkAda"
 DESCRIPTION="Gtk+ bindings to the Ada language"
@@ -11,20 +9,16 @@ SRC_URI="http://libre.act-europe.fr/${Name}/${Name}-${PV}.tgz"
 
 LICENSE="GMGPL"
 SLOT="1"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="nls opengl"
 
-DEPEND=">=dev-lang/gnat-3.14p
-	>=x11-libs/gtk+-2.2.0
-	>=sys-apps/sed-4"
+DEPEND="dev-lang/gnat
+	>=x11-libs/gtk+-2.2.0"
 RDEPEND=""
 
 S="${WORKDIR}/${Name}-${PV}"
 
-src_unpack() {
-	unpack ${A} ; cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.patch
-}
+inherit gnat
 
 src_compile() {
 	local myconf
@@ -33,6 +27,7 @@ src_compile() {
 	use nls    || myconf="${myconf} --disable-nls"
 	use opengl && myconf="${myconf} --with-GL=auto"
 
+	patch -p1 < ${FILESDIR}/${P}-gentoo.patch
 	sed -i -e "s|-I\$prefix/include|-I/usr/lib/ada/adainclude|" \
 		src/gtkada-config.in
 	sed -i -e "s|-L\$prefix/include|-L/usr/lib/ada/adalib|" \
@@ -65,20 +60,5 @@ src_install() {
 	mv doc/${Name}/* share/${PN}/examples/ share/doc/${PF}
 	rm -rf doc/ share/${PN}/
 	cd ${S} #in case need to add anything afterwards
-
-	#set up environment
-	dodir /etc/env.d
-	echo "ADA_OBJECTS_PATH=/usr/lib/ada/adalib/${PN}" \
-		> ${D}/etc/env.d/55gtkada
-	echo "ADA_INCLUDE_PATH=/usr/lib/ada/adainclude/${PN}" \
-		>> ${D}/etc/env.d/55gtkada
-}
-
-pkg_postinst() {
-	einfo "The environment has been set up to make gnat automatically find files for"
-	einfo "GtkAda. In order to immediately activate these settings please do:"
-	einfo "env-update"
-	einfo "source /etc/profile"
-	einfo "Otherwise the settings will become active next time you login"
 }
 

@@ -1,24 +1,22 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnl/libnl-0.5.0.ebuild,v 1.5 2005/11/05 21:27:30 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libnl/libnl-0.5.0.ebuild,v 1.1 2005/09/10 19:57:24 vanquirius Exp $
 
-inherit eutils multilib
+inherit eutils
 
 DESCRIPTION="A library for applications dealing with netlink socket"
 HOMEPAGE="http://people.suug.ch/~tgr/libnl/"
 SRC_URI="http://people.suug.ch/~tgr/libnl/files/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86"
 IUSE=""
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch "${FILESDIR}/${P}-include.diff"
-	epatch "${FILESDIR}/${P}-libdir.patch"
+	epatch ${FILESDIR}/${P}-include.diff
 }
 
 src_install() {
-	make DESTDIR="${D}" LIBDIR="/usr/$(get_libdir)" install || die
+	make DESTDIR=${D} install || die
 }

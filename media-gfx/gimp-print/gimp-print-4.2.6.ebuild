@@ -1,14 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp-print/gimp-print-4.2.6.ebuild,v 1.16 2005/02/21 18:21:19 lanius Exp $
-
-inherit libtool
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp-print/gimp-print-4.2.6.ebuild,v 1.1 2004/02/10 13:51:52 lanius Exp $
 
 IUSE="nls gtk readline cups foomaticdb ppds"
 
 DESCRIPTION="Gimp Print Drivers"
 HOMEPAGE="http://gimp-print.sourceforge.net"
-KEYWORDS="x86 ~ppc alpha sparc hppa amd64 mips ppc64"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64"
 SRC_URI="mirror://sourceforge/gimp-print/${P}.tar.gz"
 
 DEPEND="cups? ( >=net-print/cups-1.1.14 )
@@ -23,8 +21,6 @@ LICENSE="GPL-2"
 SLOT="0"
 
 src_compile() {
-	elibtoolize --reverse-deps
-
 	local myconf
 
 	use nls \
@@ -43,7 +39,7 @@ src_compile() {
 		&& myconf="${myconf} --with-gimp" \
 		|| myconf="${myconf} --without-gimp"
 
-	if use cups; then
+	if [ "`use cups`" ]; then
 		myconf="${myconf} --with-cups"
 	else
 		myconf="${myconf} --without-cups"
@@ -53,7 +49,7 @@ src_compile() {
 		&& myconf="${myconf} --with-foomatic3" \
 		|| myconf="${myconf} --without-foomatic"
 
-	GIMPTOOL=/usr/bin/gimptool-1.2 econf \
+	econf \
 		--enable-test \
 		--with-ghosts \
 		--with-user-guide \
@@ -63,15 +59,16 @@ src_compile() {
 		$myconf || die
 
 	# IJS Patch
-	sed -i -e "s/<ijs/<ijs\/ijs/g" src/ghost/ijsgimpprint.c
+	cp src/ghost/ijsgimpprint.c src/ghost/ijsgimpprint.c.org
+	sed -e "s/<ijs/<ijs\/ijs/g" src/ghost/ijsgimpprint.c.org > src/ghost/ijsgimpprint.c
 
-	emake -j1 || die "compile problem"
+	emake || die "compile problem"
 }
 
 src_install () {
 	make install DESTDIR=${D} || die
 
-	if ! use ppds; then
+	if [ ! "`use ppds`" ]; then
 		rm -fR ${D}/usr/share/cups/model/
 	fi
 

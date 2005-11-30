@@ -1,8 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/ppmd/ppmd-9.1_p8.ebuild,v 1.8 2005/09/14 18:24:02 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/ppmd/ppmd-9.1_p8.ebuild,v 1.1 2004/07/21 14:22:49 ferringb Exp $
 
 inherit eutils flag-o-matic
+
+IUSE=""
 
 PATCHV="${P##*_p}"
 MY_P="${P%%_*}"
@@ -14,16 +16,16 @@ HOMEPAGE="http://http.us.debian.org/debian/pool/main/p/ppmd/"
 SRC_URI="http://http.us.debian.org/debian/pool/main/p/ppmd/${MY_P}.orig.tar.gz
 	http://http.us.debian.org/debian/pool/main/p/ppmd/${MY_P}-${PATCHV}.diff.gz"
 
-LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ~ppc-macos sparc x86"
-IUSE=""
+LICENSE="public-domain"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips amd64 ~ia64"
 
 DEPEND=">=sys-apps/sed-4
 	app-arch/gzip
 	sys-devel/patch
 	sys-devel/autoconf
 	sys-devel/automake"
+
 RDEPEND=""
 
 src_unpack() {

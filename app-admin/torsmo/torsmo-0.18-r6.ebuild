@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/torsmo/torsmo-0.18-r6.ebuild,v 1.2 2005/11/28 07:07:56 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/torsmo/torsmo-0.18-r6.ebuild,v 1.1 2005/06/22 11:00:55 dragonheart Exp $
 
 inherit eutils
 
@@ -11,11 +11,12 @@ SRC_URI="mirror://sourceforge/torsmo/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="truetype"
+IUSE="truetype seti"
 
 RDEPEND="virtual/libc
 	virtual/x11
-	truetype? ( >=media-libs/freetype-2 )"
+	truetype? ( >=media-libs/freetype-2 )
+	seti? ( sci-astronomy/setiathome )"
 
 DEPEND="truetype? ( >=media-libs/freetype-2 )
 	virtual/x11
@@ -36,6 +37,7 @@ src_unpack() {
 src_compile() {
 	econf \
 	   `use_enable truetype xft` \
+	   `use_enable seti` \
 	   --x-libraries=/usr/X11R6/lib/ || die "econf failed"
 	emake || die "compile failed"
 }

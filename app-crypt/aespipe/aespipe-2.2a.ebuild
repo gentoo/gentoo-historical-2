@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/aespipe/aespipe-2.2a.ebuild,v 1.7 2005/01/01 12:24:00 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/aespipe/aespipe-2.2a.ebuild,v 1.1 2004/02/11 14:56:23 aliz Exp $
 
 DESCRIPTION="Encrypts data from stdin to stdout."
 HOMEPAGE="http://loop-aes.sourceforge.net"
 SRC_URI="http://loop-aes.sourceforge.net/aespipe/${PN}-v${PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 ppc ~sparc"
+KEYWORDS="~x86 ~amd64"
 IUSE="static"
 DEPEND=""
 S="${WORKDIR}/${PN}-v${PV}"

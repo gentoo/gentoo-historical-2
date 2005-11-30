@@ -1,37 +1,11 @@
 # ChangeLog for media-fonts/alee-fonts
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/alee-fonts/ChangeLog,v 1.10 2005/10/18 01:02:42 agriffis Exp $
-
-  18 Oct 2005; Aron Griffis <agriffis@gentoo.org> alee-fonts-4.1.ebuild:
-  Mark 4.1 stable on alpha
-
-  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> alee-fonts-4.1.ebuild:
-  Stable on sparc
-
-  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> alee-fonts-3.1.ebuild:
-  Mark 3.1 stable on alpha
-
-  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> alee-fonts-4.1.ebuild:
-  Keyworded ~sparc
-
-  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> alee-fonts-4.1.ebuild:
-  Marked ~amd64.
-
-*alee-fonts-4.1 (05 Feb 2005)
-
-  05 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +alee-fonts-4.1.ebuild:
-  Version bumped. This closes bug #80037.
-
-  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> alee-fonts-3.1.ebuild:
-  Stable on x86 and ppc, and keyworded on ~alpha and ~ppc-macos.
-
-  14 Oct 2004; David Holm <dholm@gentoo.org> alee-fonts-3.1.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/alee-fonts/ChangeLog,v 1.1 2004/09/29 08:32:38 usata Exp $
 
 *alee-fonts-3.1 (29 Sep 2004)
 
   29 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> +metadata.xml,
   +alee-fonts-3.1.ebuild:
-  Initial import. Ebuild submitted by Jung Tae-young <master@mytears.org>
-  and Hwang Joonhyung <envia@chol.com>, closing bug #60144.
+  Initial import. Ebuild submitted by Jung Tae-young <master@mytears.org>,
+  closing bug #60144.
 

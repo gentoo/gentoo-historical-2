@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libast/libast-0.5-r2.ebuild,v 1.12 2005/07/08 12:13:27 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libast/libast-0.5-r2.ebuild,v 1.1 2004/02/23 00:44:14 vapier Exp $
 
 DESCRIPTION="LIBrary of Assorted Spiffy Things"
 HOMEPAGE="http://www.eterm.org/download/"
@@ -10,29 +8,27 @@ SRC_URI="http://www.eterm.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
-IUSE="imlib mmx pcre truetype"
+KEYWORDS="x86 ppc alpha sparc alpha hppa ~amd64"
+IUSE="X imlib mmx perl"
 
 DEPEND="virtual/x11
-	truetype? ( =media-libs/freetype-1* )
-	imlib? ( media-libs/imlib2 )
-	pcre? ( dev-libs/libpcre )"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/libast-64bit.patch
-}
+	=media-libs/freetype-1*
+	X? ( imlib? ( media-libs/imlib2 ) )
+	perl? ( dev-libs/libpcre )"
 
 src_compile() {
+	local myconf
+	use X && use imlib \
+		&& myconf="--with-imlib" \
+		|| myconf="--without-imlib"
 	econf \
-		$(use_enable imlib) \
-		$(use_enable mmx) \
+		${myconf} \
+		`use_enable mmx` \
 		|| die
 	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	make DESTDIR=${D} install || die
 	dodoc README DESIGN ChangeLog
 }

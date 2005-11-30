@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcc/tcc-0.9.20.ebuild,v 1.8 2005/07/14 21:22:27 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcc/tcc-0.9.20.ebuild,v 1.1 2003/10/14 19:42:23 spider Exp $
 
 IUSE=""
 
@@ -12,16 +10,9 @@ SRC_URI="http://fabrice.bellard.free.fr/tcc/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="~x86 ~sparc"
 
-DEPEND="virtual/libc"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/${P}-gcc34.patch
-}
+DEPEND="virtual/glibc"
 
 src_compile() {
 	econf || die "configure failed"

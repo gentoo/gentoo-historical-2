@@ -1,83 +1,8 @@
 # ChangeLog for app-emacs/navi2ch
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/navi2ch/ChangeLog,v 1.22 2005/07/01 19:49:37 mkennedy Exp $
-
-  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> navi2ch-1.7.5.ebuild:
-  Keywording ~amd64.
-
-  19 Dec 2004; Yuta SATOH <nigoro@gentoo.org> navi2ch-1.7.4.ebuild:
-  Stable on ppc64
-
-  30 Oct 2004; Jason Wever <weeve@gentoo.org> navi2ch-1.7.4.ebuild:
-  Stable on sparc.
-
-*navi2ch-1.7.5 (14 Oct 2004)
-
-  14 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> +navi2ch-1.7.5.ebuild:
-  Version bumped.
-
-  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> -navi2ch-1.7.1.ebuild,
-  -navi2ch-1.7.2.ebuild, navi2ch-1.7.4.ebuild:
-  Stable on x86, alpha and ppc.
-
-  18 Sep 2004; Jason Wever <weeve@gentoo.org> navi2ch-1.7.3.ebuild:
-  Stable on sparc.
-
-  29 Aug 2004; Tom Gall <tgall@gentoo.org> navi2ch-1.7.3.ebuild,
-  navi2ch-1.7.4.ebuild:
-  add ~ppc64 (1.7.3), ppc64 (1.7.4), bug #61407
-
-*navi2ch-1.7.4 (20 Aug 2004)
-
-  20 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> +navi2ch-1.7.4.ebuild:
-  Version bumped. Added to macos.
-
-  23 May 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.2.ebuild,
-  navi2ch-1.7.3.ebuild:
-  Stable on x86, alpha and ppc
-
-*navi2ch-1.7.3 (05 May 2004)
-
-  05 May 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.3.ebuild:
-  Version bumped.
-
-  25 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild,
-  navi2ch-1.7.2.ebuild, navi2ch-1.7.ebuild:
-  Marked stable on x86 and alpha. Don't assign default to S.
-
-*navi2ch-1.7.2 (22 Mar 2004)
-
-  22 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.2.ebuild:
-  Version bumped.
-
-  15 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild,
-  navi2ch-1.7.ebuild:
-  Removed mule-ucs from DEPEND (Emacs 21 doesn't need it)
-
-*navi2ch-1.7.1 (29 Sep 2003)
-
-  10 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild,
-  navi2ch-1.7.1_beta1.ebuild:
-  Marked as stable on ppc and sparc. Removed beta version.
-
-  11 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild:
-  Considered as stable for x86 and alpha
-
-  29 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1.ebuild:
-  Version bumped
-
-*navi2ch-1.7.1_beta1 (22 Sep 2003)
-
-  22 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.1_beta1.ebuild:
-  Version bumped.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/navi2ch/ChangeLog,v 1.1 2003/07/24 16:06:12 usata Exp $
 
 *navi2ch-1.7 (25 Jul 2003)
-
-  30 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.ebuild:
-  Marked as stable for all arch
-
-  13 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.ebuild:
-  Marked stable on x86
 
   25 Jul 2003; Mamoru KOMACHI <usata@gentoo.org> navi2ch-1.7.ebuild,
   files/50navi2ch-gentoo.el:

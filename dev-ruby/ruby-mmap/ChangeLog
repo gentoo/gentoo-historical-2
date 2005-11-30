@@ -1,31 +1,8 @@
 # ChangeLog for dev-ruby/ruby-mmap
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-mmap/ChangeLog,v 1.8 2005/10/06 13:14:33 caleb Exp $
-
-  06 Oct 2005; Caleb Tennis <caleb@gentoo.org> ruby-mmap-0.2.2.ebuild,
-  ruby-mmap-0.2.4.ebuild:
-  Remove rdoc dep
-
-  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> ruby-mmap-0.2.4.ebuild:
-  Mark 0.2.4 ~ia64
-
-*ruby-mmap-0.2.4 (14 Mar 2004)
-
-  14 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-mmap-0.2.2.ebuild,
-  ruby-mmap-0.2.4.ebuild:
-  Version bumped.
-
-  24 Feb 2004; Lars Weiler <pylon@gentoo.org> ruby-mmap-0.2.2.ebuild:
-  The same what Weeve said about sparc is also true for ppc.  So it's ~ppc.
-
-  25 Dec 2003; Jason Wever <weeve@gentoo.org> ruby-mmap-0.2.2.ebuild:
-  Changed sparc keyword to ~sparc as rdoc dependency had NO sparc keywords.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-mmap/ChangeLog,v 1.1 2003/09/10 19:46:25 usata Exp $
 
 *ruby-mmap-0.2.2 (11 Sep 2003)
-
-  13 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> ruby-mmap-0.2.2.ebuild:
-  Fixed emake rdoc failure with SLOT'd ruby.
-  Marked as stable for x86, alpha, sparc and ppc.
 
   11 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> ruby-mmap-0.2.2.ebuild:
   Initial import

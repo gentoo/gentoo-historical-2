@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-office-bin/crossover-office-bin-4.1.ebuild,v 1.4 2005/10/28 23:07:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/crossover-office-bin/crossover-office-bin-4.1.ebuild,v 1.1 2004/12/23 22:22:18 vapier Exp $
 
 inherit eutils
 
@@ -15,18 +15,13 @@ IUSE=""
 RESTRICT="fetch nostrip"
 
 RDEPEND="virtual/x11
-	sys-libs/glibc"
+	virtual/libc"
 
 S=${WORKDIR}
 
 pkg_nofetch() {
 	einfo "Please visit ${HOMEPAGE}"
 	einfo "and place ${A} in ${DISTDIR}"
-}
-
-pkg_setup() {
-	! built_with_use dev-lang/perl ithreads \
-		&& die "you need to have perl built with USE=ithreads"
 }
 
 src_unpack() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-otr/gaim-otr-1.0.3.ebuild,v 1.4 2005/07/10 20:43:58 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-otr/gaim-otr-1.0.3.ebuild,v 1.1 2005/01/21 14:49:59 rizzo Exp $
 
 inherit flag-o-matic eutils debug
 
@@ -16,19 +16,11 @@ IUSE=""
 DEPEND="net-libs/libotr
 	>=net-im/gaim-1.1.0"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	#fix bug #80405
-	epatch ${FILESDIR}/gaim-otr-1.0.3-fPIC.patch
-}
-
 src_compile() {
 	strip-flags
 	replace-flags -O? -O2
 
-	emake -j1 || die "Make failed"
+	emake || MAKEOPTS="${MAKEOPTS} -j1" emake || die "Make failed"
 }
 
 src_install() {

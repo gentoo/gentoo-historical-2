@@ -1,32 +1,6 @@
-# ChangeLog for sci-calculators/galculator
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/galculator/ChangeLog,v 1.8 2005/09/16 07:22:16 agriffis Exp $
-
-  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> galculator-1.2.5.ebuild:
-  Mark 1.2.5 stable on alpha
-
-  24 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
-  galculator-1.2.5.ebuild:
-  Stable on x86.
-
-*galculator-1.2.5 (09 May 2005)
-
-  09 May 2005; John N. Laliberte <allanonjl@gentoo.org>
-  +galculator-1.2.5.ebuild:
-  version bump. Fixes #91992 and #74579
-
-  04 May 2005; David Holm <dholm@gentoo.org> galculator-1.2.4.ebuild:
-  Readded to ~ppc. Please don't remove it without filing a proper bug report.
-
-*galculator-1.2.4 (01 May 2005)
-
-  01 May 2005; John N. Laliberte <allanonjl@gentoo.org>
-  +galculator-1.2.4.ebuild:
-  Version bump, fixes bug #74579
-
-  30 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
-  galculator-1.2.3.ebuild:
-  Add ~alpha keyword, bug 86602.
+# ChangeLog for app-sci/galculator
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/galculator/ChangeLog,v 1.1 2004/12/24 14:54:42 ribosome Exp $
 
 *galculator-1.2.3 (24 Dec 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/bpmdj/bpmdj-2.7.ebuild,v 1.3 2005/08/23 17:17:38 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/bpmdj/bpmdj-2.7.ebuild,v 1.1 2005/07/17 19:24:46 fvdpol Exp $
 
 IUSE="mp3 oggvorbis"
 
@@ -15,7 +15,7 @@ SLOT="0"
 #-amd64: 2.6-2.7 - kbpm-play: common.cpp:42: void common_init(): Assertion `sizeof(signed4)==4' failed. - eradicator
 KEYWORDS="-amd64 ~x86 ~ppc"
 
-DEPEND="=x11-libs/qt-3*"
+DEPEND="x11-libs/qt"
 
 RDEPEND="${DEPEND}
 	 mp3? ( dev-perl/MP3-Tag )
@@ -47,5 +47,5 @@ src_install () {
 	use oggvorbis && doexe bpmdj-import-ogg.pl
 	dodoc authors changelog copyright readme todo || die "dodoc failed"
 	mkdir -p ${D}/usr/share/bpmdj
-	cp -pPR sequences ${D}/usr/share/bpmdj/ || die "cp failed"
+	cp -a sequences ${D}/usr/share/bpmdj/ || die "cp failed"
 }

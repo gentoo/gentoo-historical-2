@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-hyperobject/cl-hyperobject-2.8.8-r1.ebuild,v 1.6 2005/05/24 18:48:33 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-hyperobject/cl-hyperobject-2.8.8-r1.ebuild,v 1.1 2004/02/12 09:13:13 mkennedy Exp $
 
 inherit common-lisp
 
@@ -10,8 +10,7 @@ HOMEPAGE="http://hyperobject.b9.com/
 SRC_URI="http://files.b9.com/hyperobject/hyperobject-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
-IUSE=""
+KEYWORDS="~x86"
 DEPEND="dev-lisp/common-lisp-controller
 	dev-lisp/cl-kmrcl
 	dev-lisp/cl-rt

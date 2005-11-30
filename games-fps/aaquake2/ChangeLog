@@ -1,9 +1,6 @@
-# ChangeLog for games-fps/aaquake2
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/aaquake2/ChangeLog,v 1.4 2005/09/26 18:07:01 wolf31o2 Exp $
-
-  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> aaquake2-0.1.ebuild:
-  Making games last on inherit line.
+# ChangeLog for app-games/aaquake2
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/aaquake2/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
 
 *aaquake2-0.1 (17 Jul 2003)
 

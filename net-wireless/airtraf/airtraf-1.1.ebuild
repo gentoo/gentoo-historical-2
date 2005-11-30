@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/airtraf/airtraf-1.1.ebuild,v 1.5 2005/10/08 21:41:57 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/airtraf/airtraf-1.1.ebuild,v 1.1 2004/10/28 23:49:27 dragonheart Exp $
 
 inherit eutils  toolchain-funcs
 
@@ -12,14 +12,16 @@ IUSE=""
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 
-DEPEND="virtual/libpcap"
+DEPEND=">=net-libs/libpcap-0.7.1"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${PN}.patch
+	if use amd64 ; then
+		epatch ${FILESDIR}/${PN}-amd64.patch
+	fi
 }
 
 src_compile() {

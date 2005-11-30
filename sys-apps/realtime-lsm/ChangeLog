@@ -1,53 +1,6 @@
 # ChangeLog for sys-apps/realtime-lsm
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/realtime-lsm/ChangeLog,v 1.9 2005/06/24 04:43:11 fafhrd Exp $
-
-  24 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  -files/realtime-lsm-0.8.5-allcaps.patch, -realtime-lsm-0.8.5-r2.ebuild:
-  Yes, my additions to -r2 were indeed security concerns; a workaround for
-  jack has been discovered (use jackd instead of jackstart); removing this
-
-*realtime-lsm-0.8.5-r2 (24 Jun 2005)
-
-  24 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +files/realtime-lsm-0.8.5-allcaps.patch, +realtime-lsm-0.8.5-r2.ebuild:
-  added 0.8.5-r2 which re-adds the 'allcaps' module param; package masked for
-  now, until I can prove this isn't a security issue
-
-  14 Mar 2005; Eric Shattow <jnc@gentoo.org> metadata.xml,
-  realtime-lsm-0.8.5-r1.ebuild:
-  Reported stable on x86, ppc, and amd64. This is needed to effectively use the
-  now-stable qjackctl, jack-audio-connection-kit, etc. plus minor correction to
-  eerror output. Closes bugs #80994, #83220, #83364, #83364, #85201.
-
-*realtime-lsm-0.8.5-r1 (05 Jan 2005)
-
-  05 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +realtime-lsm-0.8.5-r1.ebuild:
-  Updated ebuild to support linux-mod eclass.
-
-*realtime-lsm-0.8.5 (05 Jan 2005)
-
-  05 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  realtime-lsm-0.8.3.ebuild, +realtime-lsm-0.8.5.ebuild:
-  Fixed removed keyword that was inadvertently removed in 0.8.3; version bump
-  to 0.8.5
-
-*realtime-lsm-0.8.3 (31 Oct 2004)
-
-  31 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  realtime-lsm-0.8.2_pre20041022.ebuild, +realtime-lsm-0.8.3.ebuild:
-  Kernel config depend on SELinux support =y removed; version bump as well
-
-  23 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
-  realtime-lsm-0.8.2_pre20041022.ebuild:
-  Made error output about kernel configuration much more informative; updated
-  metadata.xml for latest module features explanation.
-
-  23 Oct 2004; Chris White <chriswhite@gentoo.org>
-  realtime-lsm-0.8.2_pre20041022.ebuild:
-  Added ~x86 keywords as per testing with realtime module and jackd (with
-  realtime module setup for the audio group).
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/realtime-lsm/ChangeLog,v 1.1 2004/10/23 05:31:00 fafhrd Exp $
 
 *realtime-lsm-0.8.2_pre20041022 (23 Oct 2004)
 

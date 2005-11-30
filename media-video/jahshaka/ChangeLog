@@ -1,55 +1,6 @@
 # ChangeLog for media-video/jahshaka
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/jahshaka/ChangeLog,v 1.13 2005/08/23 18:13:26 flameeyes Exp $
-
-  23 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
-  jahshaka-2.0_rc1.ebuild:
-  Don't use cp -a.
-
-  10 Aug 2005; Markus Rothe <corsair@gentoo.org> jahshaka-2.0_rc1.ebuild:
-  added ~ppc64
-
-*jahshaka-2.0_rc1 (07 Aug 2005)
-
-  09 Aug 2005; Marc Hildebrand <zypher@gentoo.org> jahshaka-2.0_rc1.ebuild,
-  Version bump.
-
-  21 Jul 2005; Caleb Tennis <caleb@gentoo.org> files/configure:
-  Patching configure to follow bug #97535
-
-  17 Jul 2005; Danny van Dyk <kugelfang@gentoo.org>
-  jahshaka-1.9_alpha90-r1.ebuild:
-  Marked ~amd64.
-
-  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> jahshaka-1.9_alpha90.ebuild,
-  jahshaka-1.9_alpha90-r1.ebuild:
-  Fix qt dep
-
-  09 May 2005; Marc Hildebrand <zypher@gentoo.org> jahshaka-1.9_alpha90-r1.ebuild:
-  Fixed plugin installation, should close bug #91931.
-
-  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
-  -jahshaka-1.9_alpha5.ebuild, -jahshaka-1.9_alpha85.ebuild,
-  jahshaka-1.9_alpha90.ebuild:
-  added missing dep, fixes #74079. updated maintainer information, chriswhite is
-  retired. did some cleanup.
-
-  28 Nov 2004; Chris White <chriswhite@gentoo.org> +files/configure,
-  jahshaka-1.9_alpha90.ebuild:
-  Added a bash configure script instead of tcsh since bash is more avaliable.
-
-*jahshaka-1.9_alpha90 (28 Nov 2004)
-
-  28 Nov 2004; Chris White <chriswhite@gentoo.org>
-  +jahshaka-1.9_alpha90.ebuild:
-  Fixed some Manifest issues.  Bumped to version 1.9_alpha 9.
-
-* jahshaka-1.9_alpha8.5 (08 Nov 2004)
-  10 Nov 2004; Marc Hildebrand <zypher@gentoo.org> jahshaka-1.9_alpha85.ebuild:
-  Version bump.
-
-  03 Sep 2004; David Holm <dholm@gentoo.org> jahshaka-1.9_alpha5.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/jahshaka/ChangeLog,v 1.1 2004/08/26 02:43:44 chriswhite Exp $
 
 *jahshaka-1.9_alpha5 (26 Aug 2004)
 

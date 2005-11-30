@@ -1,7 +1,5 @@
-# /etc/init.d/in.tftpd
+# Config file for /etc/init.d/in.tftpd
+# Remove the -l if you use [x]inetd
 
-# Path to server files from
 INTFTPD_PATH="/tftproot"
-
-# For more options, see tftpd(8)
-INTFTPD_OPTS="-s ${INTFTPD_PATH}"
+INTFTPD_OPTS="-l -s ${INTFTPD_PATH}"

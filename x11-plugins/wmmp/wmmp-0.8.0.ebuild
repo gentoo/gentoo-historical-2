@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmp/wmmp-0.8.0.ebuild,v 1.6 2005/10/07 15:43:46 flameeyes Exp $
+# 
 
 IUSE=""
 
@@ -12,16 +12,25 @@ DEPEND="virtual/x11"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~alpha amd64"
+KEYWORDS="~x86 ~sparc ~alpha"
 
 S=${WORKDIR}/${P/wm/WM}
+
+src_compile() {
+	local myconf
+	myconf="--with-gnu-ld"
+
+	econf ${myconf} || die "configure failed"
+
+	emake || die "make failed"
+}
 
 src_install () {
 	dobin src/WMmp
 
 	doman doc/WMmp.1
 
-	dodoc AUTHORS README THANKS TODO
+	dodoc AUTHORS COPYING INSTALL README THANKS TODO
 }
 
 

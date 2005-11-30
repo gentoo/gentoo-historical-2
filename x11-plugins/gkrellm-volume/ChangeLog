@@ -1,81 +1,8 @@
 # ChangeLog for x11-plugins/gkrellm-volume
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-volume/ChangeLog,v 1.22 2005/04/27 20:22:33 herbs Exp $
-
-  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org>
-  gkrellm-volume-2.1.13.ebuild:
-  multilib fixes
-
-*gkrellm-volume-2.1.13 (22 Mar 2005)
-
-  22 Mar 2005; Karol Wojtaszek <sekretarz@gentoo.org>
-  +gkrellm-volume-2.1.13.ebuild:
-  Version bumped, bug #51473
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
-  gkrellm-volume-2.1.9.ebuild:
-  Stable on alpha.
-
-  22 Jan 2004; Lars Weiler <pylon@gentoo.org> gkrellm-volume-2.1.9.ebuild:
-  Add ~ppc to keywords
-
-  21 Jan 2004; Sven Blumenstein <bazik@gentoo.org>
-  gkrellm-volume-2.1.9.ebuild:
-  Stable on sparc.
-
-  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellm-volume-2.1.8.ebuild:
-  stable on alpha
-
-*gkrellm-volume-2.1.9 (21 Oct 2003)
-
-  21 Oct 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-volume-2.1.9.ebuild:
-  Version bumped.
-
-  04 Sep 2003; Aron Griffis <agriffis@gentoo.org> gkrellm-volume-2.1.8.ebuild:
-  add ~alpha to KEYWORDS
-
-  17 Jul 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-volume-2.1.8.ebuild:
-  Marked x86 stable.
-
-*gkrellm-volume-2.1.8 (25 Jun 2003)
-
-  25 Jun 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-volume-2.1.8.ebuild:
-  Version bumped.
-
-  12 Jun 2003; <msterret@gentoo.org> gkrellm-volume-0.8-r1.ebuild,
-  gkrellm-volume-2.1.4.ebuild, gkrellm-volume-2.1.6.ebuild,
-  gkrellm-volume-2.1.7.ebuild:
-  fix Header
-
-*gkrellm-volume-2.1.7 (23 Mar 2003)
-
-  23 Mar 2003; Martin Holzer <mholzer@gentoo.org> gkrellm-volume-2.1.7.ebuild:
-  Version bumped. Closes #14441.
-
-*gkrellm-volume-2.1.6 (14 Dec 2002)
-
-  14 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
-  gkrellm-volume-2.1.6.ebuild files/digest-gkrellm-volume-2.1.6 :
-
-  Version bump. Moved 2.1.4 to stable
-
-*gkrellm-volume-2.1.4 (16 Oct 2002)
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-  16 Oct 2002; Seemant Kulleen <seemant@gentoo.org>
-  gkrellm-volume-2.1.4.ebuild files/digest-gkrellm-volume-2.1.4 :
-
-  New version (SLOTified) for gkrellm2.  Thanks to
-  43fcmm6rz001@sneakemail.com (Tobias Quinn) in bug #7363
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-volume/ChangeLog,v 1.1 2002/08/30 01:49:27 seemant Exp $
 
 *gkrellm-volume-0.8-r1 (14 Apr 2002)
-
-  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
-  Added PPC to KEYWORDS.
 
   29 Aug 2002; Seemant Kulleen <seemant@gentool.org> * :
 

@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/imaging-1.1.3-r1.ebuild,v 1.4 2005/04/01 18:12:49 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/imaging-1.1.3-r1.ebuild,v 1.1 2004/07/19 21:50:44 kloeri Exp $
 
 inherit distutils
 
 MY_P=${P/imaging/Imaging}
 S=${WORKDIR}/${MY_P}
 
-IUSE="X tcltk"
+IUSE="tcltk"
 
 DESCRIPTION="Python Imaging Library (PIL)."
 SRC_URI="http://www.pythonware.net/storage/${MY_P}.tar.gz"
@@ -15,9 +15,7 @@ HOMEPAGE="http://www.pythonware.com/downloads/#pil"
 
 DEPEND=">=media-libs/jpeg-6a
 	>=sys-libs/zlib-0.95
-	>=media-libs/freetype-2.1.5
-	tcltk? ( dev-lang/tk )
-	X? ( media-gfx/xv )"
+	tcltk? ( dev-lang/tk )"
 
 SLOT="0"
 KEYWORDS="x86 ~sparc ~alpha ~ppc"

@@ -1,14 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Scalar-List-Utils/Scalar-List-Utils-1.14.ebuild,v 1.15 2005/09/23 16:33:25 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Scalar-List-Utils/Scalar-List-Utils-1.14.ebuild,v 1.1 2004/06/06 03:32:56 mcummings Exp $
 
 inherit perl-module
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Scalar-List-Utils module for perl"
+SRC_URI="http://cpan.org/modules/by-module/Scalar/${P}.tar.gz"
 HOMEPAGE="http://cpan.org/modules/by-module/Scalar/"
-SRC_URI="mirror://cpan/authors/id/G/GB/GBARR/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 s390 sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
+
+DEPEND="${DEPEND}"

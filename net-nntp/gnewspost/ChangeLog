@@ -1,18 +1,6 @@
-# ChangeLog for net-nntp/gnewspost
+# ChangeLog for net-news/gnewspost
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/gnewspost/ChangeLog,v 1.6 2005/09/13 20:14:46 metalgod Exp $
-
-  13 Sep 2005; Luis Medinas <metalgod@gentoo.org> gnewspost-0.6.ebuild:
-  Added ~amd64 keywords. Closes bug #104954.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> gnewspost-0.6.ebuild:
-  Stable on ppc.
-
-  01 Feb 2005; Sven Wegener <swegener@gentoo.org> gnewspost-0.6.ebuild:
-  Changed dependency on newspost from = to ~.
-
-  17 Jan 2005; Sven Wegener <swegener@gentoo.org> gnewspost-0.6.ebuild:
-  Dependency update. Moved net-news/newspost to net-nntp/newspost.
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/gnewspost/ChangeLog,v 1.1 2005/01/17 19:45:29 swegener Exp $
 
 *gnewspost-0.6 (17 Jan 2005)
 

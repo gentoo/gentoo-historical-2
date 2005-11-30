@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/jfbterm/jfbterm-0.4.7.ebuild,v 1.5 2005/04/09 20:33:09 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/jfbterm/jfbterm-0.4.7.ebuild,v 1.1 2005/02/25 03:41:55 usata Exp $
 
 inherit flag-o-matic
 
@@ -10,14 +10,13 @@ SRC_URI="mirror://sourceforge.jp/${PN}/13501/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ppc sparc ppc64"
+KEYWORDS="x86 ~ppc ~sparc ~ppc64"
 IUSE=""
 
 DEPEND="virtual/libc
 	>=sys-apps/sed-4
 	>=sys-devel/autoconf-2.58
 	sys-devel/automake
-	sys-devel/libtool
 	sys-libs/ncurses"
 RDEPEND="virtual/libc"
 
@@ -25,7 +24,6 @@ src_compile() {
 	replace-flags -march=pentium3 -mcpu=pentium3
 
 	export WANT_AUTOCONF=2.5
-	libtoolize --copy --force || die
 	econf || die "econf failed"
 	# jfbterm peculiarly needs to be compiled twice.
 	emake -j1 || die "make failed"

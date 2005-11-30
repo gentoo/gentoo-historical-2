@@ -1,7 +1,7 @@
 # default: off
 # description: The talk server accepts talk requests for chatting with users \
 #	on other systems.
-service ntalk
+service talk
 {
 #	flags			= IPv4
 	disable			= yes

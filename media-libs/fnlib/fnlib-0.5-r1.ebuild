@@ -1,29 +1,30 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/fnlib/fnlib-0.5-r1.ebuild,v 1.24 2004/07/01 07:55:36 eradicator Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/media-libs/fnlib/fnlib-0.5-r1.ebuild,v 1.1 2001/10/06 15:30:16 danarmak Exp $
 
-inherit gnuconfig
-
+P=fnlib-0.5
+A=${P}.tar.gz
+S=${WORKDIR}/${P}
 DESCRIPTION="Font Library"
-HOMEPAGE="http://www.enlightenment.org/"
-SRC_URI="mirror://sourceforge/enlightenment/${P}.tar.gz"
+SRC_URI="ftp://ftp.enlightenment.org/pub/enlightenment/enlightenment/libs/"${A}
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64"
-IUSE=""
-
-DEPEND="virtual/libc
-	media-libs/imlib"
+DEPEND="virtual/glibc >=media-libs/imlib-1.9.8.1"
 
 src_compile() {
-	gnuconfig_update
-	econf --sysconfdir=/etc/fnlib || die
-	make || die
+
+  try ./configure --host=${CHOST} --prefix=/usr --sysconfdir=/etc/fnlib
+  try make
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog HACKING NEWS README
-	dodoc doc/fontinfo.README
+  
+  try make prefix=${D}/usr sysconfdir=${D}/etc/fnlib install
+  dodoc AUTHORS ChangeLog COPYING* HACKING NEWS README
+  dodoc doc/fontinfo.README
+
 }
+
+
+
+

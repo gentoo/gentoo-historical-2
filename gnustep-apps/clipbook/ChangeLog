@@ -1,50 +1,6 @@
 # ChangeLog for gnustep-apps/clipbook
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/clipbook/ChangeLog,v 1.8 2005/06/06 07:12:21 fafhrd Exp $
-
-  06 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  clipbook-0.6.0.7.1.ebuild:
-  Stabilization for GNUstep GWorkspace related ebuilds
-
-*clipbook-0.6.0.7.1 (15 Apr 2005)
-
-  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +clipbook-0.6.0.7.1.ebuild:
-  General bumps of all GWorkspace related ebuilds
-
-*clipbook-0.6.0.7.0 (17 Mar 2005)
-
-  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +clipbook-0.6.0.7.0.ebuild, -clipbook-0.94_pre20041203.ebuild,
-  -clipbook-0.94_pre20050106.ebuild:
-  ebuild updates for GNUstep base, libs, and apps across the board; proper
-  versions (to be stabilized, in due time) added where apropos, cvs-pull
-  versions updated where needed
-
-*clipbook-0.94_pre20050106 (10 Jan 2005)
-
-  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  -clipbook-0.94_pre20040928.ebuild, +clipbook-0.94_pre20050106.ebuild:
-  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
-  date spec on ebuild headers as repoman was complaining
-
-*clipbook-0.94_pre20041203 (04 Dec 2004)
-
-  04 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +clipbook-0.94_pre20041203.ebuild:
-  General version bump
-
-  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  clipbook-0.94_pre20040928.ebuild:
-  Mass Update: gnustep.eclass revamped to allow configurable root install;
-  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
-  bumped where files would change); some KEYWORDS were accidentally dropped
-  between version bumps of packages -- this has been resolved; windowmaker
-  correctly supports gnustep now
-
-  14 Oct 2004; David Holm <dholm@gentoo.org>
-  clipbook-0.94_pre20040928.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/clipbook/ChangeLog,v 1.1 2004/10/04 23:56:37 fafhrd Exp $
 
 *clipbook-0.94_pre20040928 (04 Oct 2004)
 

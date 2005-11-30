@@ -1,12 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/inherit.eclass,v 1.21 2004/06/25 00:39:48 vapier Exp $
-#
-# Author Dan Armak <danarmak@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/eclass/inherit.eclass,v 1.1 2001/09/28 19:25:33 danarmak Exp $
+# This eclass provides the inherit() function. In the future it will be placed in ebuild.sh, but for now drobbins 
+# doesn't want to make a new portage just for my testing, so every eclass/ebuild will source this file manually and
+# then inherit(). This way whn the tmie comes for this to move into stable ebuild.sh, we can just delete the source lines.
 
-##########################################################################
-#
-# This is required to exitst as without it older installed packages using the older
-# inherit method cannot be uninstalled. However, it doesn't need to contain any code :-)
-#
-##########################################################################
+ECLASSDIR=${PORTDIR}/eclass
+
+inherit() {
+    
+    while [ "$1" ]; do
+	source ${ECLASSDIR}/${1}.eclass
+    shift
+    done
+
+}

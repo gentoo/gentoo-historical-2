@@ -1,41 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ffcall/ffcall-1.8d.ebuild,v 1.20 2005/04/24 02:50:19 hansmi Exp $
-
-inherit eutils flag-o-matic
+# Author Nick Hadaway <raker@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ffcall/ffcall-1.8d.ebuild,v 1.1 2002/07/04 04:20:11 raker Exp $
 
 DESCRIPTION="foreign function call libraries"
 HOMEPAGE="http://www.gnu.org/directory/ffcall.html"
+LICENSE="GPL-2"
+DEPEND="virtual/glibc"
+RDEPEND="virtual/glibc"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/libs/${P}.tar.gz"
 
-# "Ffcall is under GNU GPL. As a special exception, if used in GNUstep
-# or in derivate works of GNUstep, the included parts of ffcall are
-# under GNU LGPL." -ffcall author
-LICENSE="|| ( GPL-2 LGPL-2 )"
-SLOT="0"
-KEYWORDS="x86 sparc ~hppa alpha ppc"
-IUSE=""
-
-DEPEND="virtual/libc"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	use hppa && epatch ${FILESDIR}/ffcall_hppa_1.8-4.2.diff.gz
-}
-
 src_compile() {
-	# Because CHOST is set to (for example)
-	# alphaev67-unknown-linux-gnu, CPU gets set to alphaev67 which
-	# doesn't work in the Makefile (29 Jan 2004 agriffis)
-	local cpu_setting
-	[ "${ARCH}" == "alpha" ] && cpu_setting='CPU=alpha'
-
-	econf || die "./configure failed"
-	make ${cpu_setting} || die
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die "./configure failed"
+	emake || die
 }
 
-src_install() {
+src_install () {
 	dodoc ChangeLog NEWS README
 	dohtml avcall/avcall.html \
 		callback/callback.html \

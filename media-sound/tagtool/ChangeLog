@@ -1,67 +1,6 @@
 # ChangeLog for media-sound/tagtool
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/tagtool/ChangeLog,v 1.13 2005/08/07 13:34:32 hansmi Exp $
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> tagtool-0.11.1.ebuild:
-  Stable on ppc.
-
-*tagtool-0.12.2 (21 Jun 2005)
-
-  21 Jun 2005; John N. Laliberte <allanonjl@gentoo.org>
-  +files/tagtool-gmodule.patch, tagtool-0.11.1.ebuild,
-  +tagtool-0.12.2.ebuild:
-  apply patch to stable version to fix #93907, and version bump to new version
-  that already has the fix.
-
-*tagtool-0.12.1 (15 Apr 2005)
-
-  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
-  -tagtool-0.10.ebuild, tagtool-0.11.1.ebuild, +tagtool-0.12.1.ebuild:
-  new upstream version, fixes #68864. updated metadata.xml, chriswhite is
-  retired. changed oggvorbis useflag to vorbis, oggvorbis is deprecated. also
-  did some cleanup.
-
-  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  tagtool-0.11.1.ebuild:
-  Stable amd64, x86.
-
-*tagtool-0.11.1 (16 Nov 2004)
-
-  16 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  +tagtool-0.11.1.ebuild:
-  Version bump.
-
-  18 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  tagtool-0.10.ebuild:
-  Stable amd64, x86.
-
-  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  tagtool-0.10.ebuild:
-  -sparc.
-
-  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> -tagtool-0.9.ebuild:
-  Removed old version.
-
-*tagtool-0.10 (12 Sep 2004)
-
-  12 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> +tagtool-0.10.ebuild:
-  Version bump.  Added ~amd64.
-
-  03 Sep 2004; David Holm <dholm@gentoo.org> tagtool-0.9.ebuild:
-  Added to ~ppc.
-
-*tagtool-0.10 (12 Sep 2004)
-
-  12 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> +tagtool-0.10.ebuild:
-  Version bump.  Added ~amd64.
-
-  20 Aug 2004; Chris White <chriswhite@gentoo.org> tagtool-0.9.ebuild:
-  Removed uneeded src_unpack from the ebuild.
-
-*tagtool-0.9 (20 Aug 2004)
-
-  20 Aug 2004; Chris White <chriswhite@gentoo.org> tagtool-0.9.ebuild:
-  Fixed RDEPEND v. DEPEND logic.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/tagtool/ChangeLog,v 1.1 2004/08/19 21:38:25 chriswhite Exp $
 
   20 Aug 2004; Chris White <chriswhite@gentoo.org> +metadata.xml:
   Initial import into the tree. Thanks to Justin <yoosty69@netzero.net> for

@@ -1,40 +1,6 @@
 # ChangeLog for net-misc/ifenslave
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ifenslave/ChangeLog,v 1.9 2005/05/30 19:09:16 swegener Exp $
-
-  30 May 2005; Sven Wegener <swegener@gentoo.org> ifenslave-1.1.0.ebuild,
-  ifenslave-1.1.0-r1.ebuild, ifenslave-1.1.0-r2.ebuild:
-  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
-
-  03 May 2005; Robin H. Johnson <robbat2@gentoo.org>
-  ifenslave-1.1.0-r1.ebuild, ifenslave-1.1.0-r2.ebuild,
-  ifenslave-1.1.0.ebuild:
-  Bug #91336, virtual/libc.
-
-  18 Apr 2005; Robin H. Johnson <robbat2@gentoo.org>
-  ifenslave-1.1.0-r1.ebuild, ifenslave-1.1.0-r2.ebuild:
-  Bug #89550 - cleanup linux26-headers DEPEND.
-
-  22 Feb 2005; Simon Stelling <blubb@gentoo.org> ifenslave-1.1.0.ebuild:
-  added ~amd64
-
-*ifenslave-1.1.0-r2 (21 Nov 2004)
-
-  21 Nov 2004; Robin H. Johnson <robbat2@gentoo.org>
-  +ifenslave-1.1.0-r2.ebuild:
-  Revision bump for slight change, move to x86.
-
-*ifenslave-1.1.0-r1 (12 Jul 2004)
-
-  12 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
-  ifenslave-1.1.0-r1.ebuild:
-  bug #56824.
-
-  05 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> ifenslave-1.1.0.ebuild:
-  Correct build dependancies.
-
-  29 Jun 2004; David Holm <dholm@gentoo.org> ifenslave-1.1.0.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ifenslave/ChangeLog,v 1.1 2004/06/28 08:46:14 robbat2 Exp $
 
 *ifenslave-1.1.0 (28 Jun 2004)
 

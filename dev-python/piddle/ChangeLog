@@ -1,20 +1,8 @@
 # ChangeLog for dev-python/piddle
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/piddle/ChangeLog,v 1.7 2005/11/19 10:47:39 chriswhite Exp $
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/piddle/ChangeLog,v 1.1 2003/10/01 16:34:58 karltk Exp $
 
-  19 Nov 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
-  Added japanese metadata.xml translation thanks to Yoshino-san.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  22 Jul 2004; Rob Cakebread <pythonhead@gentoo.org> piddle-1.0.15.ebuild:
-  Stable on x86
-
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> piddle-1.0.15.ebuild:
-  Remove default S.
-
-*piddle-1.0.15 (30 Sep 2003)
+*piddle-1.0.5 (30 Sep 2003)
 
   30 Sep 2003; Karl Trygve Kalleberg <karltk@gentoo.org> piddle-1.0.5.ebuild:
   Initial import. 

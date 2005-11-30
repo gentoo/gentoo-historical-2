@@ -1,39 +1,6 @@
 # ChangeLog for dev-php/PEAR-Structures_DataGrid
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Structures_DataGrid/ChangeLog,v 1.8 2005/11/22 19:07:44 corsair Exp $
-
-  22 Nov 2005; Markus Rothe <corsair@gentoo.org>
-  PEAR-Structures_DataGrid-0.6.3.ebuild:
-  Added ~ppc64 keyword; bug #105385
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
-  PEAR-Structures_DataGrid-0.6.3.ebuild:
-  Marked ~ppc for bug #105385.
-
-*PEAR-Structures_DataGrid-0.6.3 (31 Oct 2005)
-
-  31 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  -PEAR-Structures_DataGrid-0.6.2-r1.ebuild,
-  +PEAR-Structures_DataGrid-0.6.3.ebuild:
-  Version bump.
-
-  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  PEAR-Structures_DataGrid-0.6.2-r1.ebuild:
-  Add ~amd64.
-
-  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  PEAR-Structures_DataGrid-0.6.2-r1.ebuild:
-  Fix RDEPEND.
-
-  11 Sep 2005; Jason Wever <weeve@gentoo.org>
-  PEAR-Structures_DataGrid-0.6.2-r1.ebuild:
-  Added ~sparc keyword.
-
-*PEAR-Structures_DataGrid-0.6.2-r1 (08 Sep 2005)
-
-  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  +PEAR-Structures_DataGrid-0.6.2-r1.ebuild:
-  Use new PEAR eclass.
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Structures_DataGrid/ChangeLog,v 1.1 2005/07/21 06:12:10 sebastian Exp $
 
 *PEAR-Structures_DataGrid-0.6.2 (21 Jul 2005)
 

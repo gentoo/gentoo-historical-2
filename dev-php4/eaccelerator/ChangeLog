@@ -1,17 +1,6 @@
 # ChangeLog for dev-php4/eaccelerator
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/eaccelerator/ChangeLog,v 1.4 2005/11/24 19:35:11 chtekk Exp $
-
-  24 Nov 2005; Luca Longinotti <chtekk@gentoo.org>
-  eaccelerator-0.9.3.ebuild:
-  Sync with PHP overlay.
-
-  19 Nov 2005; Markus Rothe <corsair@gentoo.org> eaccelerator-0.9.3.ebuild:
-  Added ~ppc64 keyword; bug #102649
-
-  15 Nov 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  eaccelerator-0.9.3.ebuild:
-  Fix bug 112495.
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/eaccelerator/ChangeLog,v 1.1 2005/09/04 14:46:29 stuart Exp $
 
   18 Aug 2005; <stuart@gentoo.org> ChangeLog:
   Initial version; replaces older dev-php/* packages

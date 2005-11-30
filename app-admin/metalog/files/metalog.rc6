@@ -1,24 +1,27 @@
 #!/sbin/runscript
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/metalog/files/metalog.rc6,v 1.12 2005/04/20 01:57:35 vapier Exp $
-
-# NB: Config is in /etc/conf.d/metalog
 
 depend() {
-	use clock hostname
-	provide logger
+    clock
+}
+
+checkconfig() {
+    if [ ! -e /etc/metalog/metalog.conf ] ; then
+	eerror "You need an /etc/metalog/metalog.conf file to run metalog"
+	eerror "There is a sample config  file in /usr/share/docs/metalog"
+	return 1
+    fi
 }
 
 start() {
-	ebegin "Starting metalog"
-	start-stop-daemon --start --quiet --exec /usr/sbin/metalog \
-		-- -p /var/run/metalog.pid --daemonize ${METALOG_OPTS}
-	eend $? "Failed to start metalog"
+    checkconfig || return 1
+    ebegin "Starting metalog"
+    start-stop-daemon --start --quiet --exec /usr/sbin/metalog -- -B
+    eend $?
 }
 
 stop() {
-	ebegin "Stopping metalog"
-	start-stop-daemon --stop --quiet --pidfile /var/run/metalog.pid
-	eend $? "Failed to stop metalog"
+    ebegin "Stopping metalog"
+    start-stop-daemon --stop --quiet --exec /usr/sbin/metalog
+    eend $?
+    # will look into cosmetic error message later..~dd
 }

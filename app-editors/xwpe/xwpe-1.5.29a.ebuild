@@ -1,19 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/xwpe/xwpe-1.5.29a.ebuild,v 1.11 2005/01/01 13:37:26 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/xwpe/xwpe-1.5.29a.ebuild,v 1.1 2002/07/14 20:42:14 stroke Exp $
 
 DESCRIPTION="An IDE to Develop in text and graphical mode"
 HOMEPAGE="http://www.identicalsoftware.com/xwpe/"
-SRC_URI="http://www.identicalsoftware.com/xwpe/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
 
 DEPEND=">=sys-libs/gpm-1.20.0 \
 	>=sys-libs/ncurses-5.2 \
 	>=sys-libs/zlib-1.1.4"
+
+RDEPEND="${DEPEND}"
+SLOT="0"
+KEYWORDS="*"
+
+SRC_URI="http://www.identicalsoftware.com/xwpe/${P}.tar.gz"
+
+S=${WORKDIR}/${P}
 
 src_compile() {
 	./configure \
@@ -25,6 +29,6 @@ src_compile() {
 }
 
 src_install () {
-	make prefix=${D}/usr install || die
-	dodoc INSTALL README CHANGELOG
+    make prefix=${D}/usr install || die
+    dodoc 	INSTALL README CHANGELOG										
 }

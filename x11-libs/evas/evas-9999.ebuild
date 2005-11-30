@@ -1,53 +1,54 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/evas/evas-9999.ebuild,v 1.10 2005/10/10 14:45:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/evas/evas-9999.ebuild,v 1.1 2004/10/21 20:12:24 vapier Exp $
 
+EHACKAUTOGEN="yes"
 inherit enlightenment flag-o-matic
 
 DESCRIPTION="hardware-accelerated canvas API"
+HOMEPAGE="http://www.enlightenment.org/pages/evas.html"
 
-IUSE="X directfb fbcon jpeg mmx opengl png sse cairo altivec"
+IUSE="X directfb fbcon jpeg mmx opengl png sse cairo"
 
-DEPEND="X? ( virtual/x11 )
-	opengl? ( virtual/opengl )
-	>=media-libs/imlib2-1.2.0
-	>=dev-libs/eet-0.9.9
-	>=dev-db/edb-1.0.5
+DEPEND="virtual/x11
+	>=media-libs/imlib2-1.1.2.20041016
+	>=dev-libs/eet-0.9.9.20041016
+	>=dev-db/edb-1.0.5.20041016
 	png? ( media-libs/libpng )
 	jpeg? ( media-libs/jpeg )
 	directfb? ( >=dev-libs/DirectFB-0.9.16 )
-	cairo? ( >=x11-libs/cairo-0.2.0 )
+	cairo? ( x11-libs/cairo )
 	dev-util/pkgconfig"
-#	X? ( xcb-util )
 
 src_compile() {
-#		$(use_enable X software-xcb)
+	# other *very* fun options:
+	#  --enable-cpu-p2-only            enable assumption of pentium2/amd cpu
+	#  --enable-cpu-p3-only            enable assumption of pentium3 and up cpu
+	#  --enable-cpu-mmx                enable mmx code
+	#  --enable-cpu-sse                enable sse code
+	#  --enable-scale-sample           enable sampling scaler code
+	#  --enable-scale-smooth           enable sampling scaler code
+	#  --enable-scale-trilinear        enable tri-linear scaler code
 	export MY_ECONF="
-		$(use_enable X software-x11) \
-		$(use_enable directfb) \
-		$(use_enable fbcon fb) \
-		--enable-buffer \
-		$(use_enable opengl gl-x11) \
-		$(use_enable X xrender-x11) \
-		$(use_enable png image-loader-png) \
-		$(use_enable jpeg image-loader-jpeg) \
+		`use_enable mmx cpu-mmx` \
+		`use_enable sse cpu-mmx` \
+		`use_enable sse cpu-sse` \
+		`use_enable X software-x11` \
+		`use_enable opengl gl-x11` \
+		`use_enable cairo cairo-x11` \
+		`use_enable directfb` \
+		`use_enable fbcon fb` \
 		--enable-image-loader-eet \
-		--enable-font-loader-eet \
 		--enable-image-loader-edb \
-		$(use_enable mmx cpu-mmx) \
-		$(use_enable sse cpu-mmx) \
-		$(use_enable sse cpu-sse) \
-		$(use_enable altivec cpu-altivec) \
-		$(use_enable cairo cairo-x11) \
+		--enable-fmemopen \
 		--enable-cpu-c \
-		--enable-scale-sample \
 		--enable-scale-smooth \
+		--enable-scale-sample \
 		--enable-convert-8-rgb-332 \
 		--enable-convert-8-rgb-666 \
 		--enable-convert-8-rgb-232 \
 		--enable-convert-8-rgb-222 \
 		--enable-convert-8-rgb-221 \
-		--enable-convert-8-rgb-121 \
 		--enable-convert-8-rgb-111 \
 		--enable-convert-16-rgb-565 \
 		--enable-convert-16-rgb-555 \
@@ -64,6 +65,8 @@ src_compile() {
 		--enable-convert-32-rgb-rot-0 \
 		--enable-convert-32-rgb-rot-270 \
 		--enable-convert-32-rgb-rot-90 \
+		`use_enable png image-loader-png` \
+		`use_enable jpeg image-loader-jpeg`
 	"
 	enlightenment_src_compile
 }

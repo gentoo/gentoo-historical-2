@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xse/xse-2.0.ebuild,v 1.4 2005/04/28 06:25:02 wormo Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xse/xse-2.0.ebuild,v 1.1 2005/01/21 21:49:10 taviso Exp $
 
 inherit eutils
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="X11"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 
 IUSE=""
 DEPEND="virtual/x11"
@@ -32,7 +32,7 @@ src_unpack() {
 		# this saves a dependency on sharutils
 		for i in 1992Jan31.{182036.26249,182224.26407,182450.26610}
 		do
-			ebegin "	${i}@cs.rochester.edu"
+			ebegin "	${i}"
 				set -o pipefail
 			sed '1,/^#!/d' ${i} | /bin/sh -s -- -c &> /dev/null || {
 					eend $?

@@ -1,38 +1,6 @@
 # ChangeLog for app-i18n/x-unikey
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/x-unikey/ChangeLog,v 1.11 2005/08/08 10:45:59 dholm Exp $
-
-  08 Aug 2005; David Holm <dholm@gentoo.org> x-unikey-1.0.2.ebuild:
-  Added to ~ppc.
-
-*x-unikey-1.0.2 (07 Aug 2005)
-
-  07 Aug 2005; <pclouds@gentoo.org> -x-unikey-0.9.1d.ebuild,
-  +x-unikey-1.0.2.ebuild:
-  Version bump
-
-*x-unikey-1.0 (18 Jul 2005)
-
-  18 Jul 2005; <pclouds@gentoo.org> x-unikey-0.9.2.ebuild,
-  +x-unikey-1.0.ebuild:
-  Stable 0.9.2 on x86, Bumped to 1.0
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  x-unikey-0.9.1d.ebuild:
-  Stable on ppc.
-
-*x-unikey-0.9.2 (22 Nov 2004)
-
-  22 Nov 2004; <pclouds@gentoo.org> +x-unikey-0.9.2.ebuild:
-  version bump
-
-  04 Sep 2004; <pclouds@gentoo.org> x-unikey-0.9.1d.ebuild:
-  Stable on x86
-
-  29 Jun 2004; David Holm <dholm@gentoo.org> x-unikey-0.9.1d.ebuild:
-  Added to ~ppc.
-
-*x-unikey-0.9.1d (28 Jun 2004)
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/x-unikey/ChangeLog,v 1.1 2004/06/28 07:42:07 pclouds Exp $
 
   28 Jun 2004; <pclouds@gentoo.org> x-unikey-0.9.1d.ebuild,
   files/01x-unikey:

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gqradio/gqradio-1.0.ebuild,v 1.3 2005/02/27 15:32:08 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gqradio/gqradio-1.0.ebuild,v 1.1 2004/03/18 05:27:33 weeve Exp $
 
 IUSE="nls gnome"
 

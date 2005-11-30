@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/apollo/apollo-1.4.2.ebuild,v 1.13 2005/07/28 20:56:30 caleb Exp $
-
-inherit eutils
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/apollo/apollo-1.4.2.ebuild,v 1.1 2002/10/30 20:20:48 hannes Exp $
 
 IUSE="qt"
 
@@ -16,16 +14,15 @@ HOMEPAGE="http://www.apolloplayer.org"
 
 SLOT="2"
 LICENSE="GPL-2"
-# -amd64: weird segfaults... try a later version...
-KEYWORDS="-amd64 ~ppc sparc x86"
+KEYWORDS="~x86"
 
-DEPEND="virtual/mpg123
+DEPEND="media-sound/mpg123
 	media-libs/id3lib
-	media-sound/madplay
-	qt?		( =x11-libs/qt-3* )"
+	media-sound/mad
+	qt?		( x11-libs/qt )"
 
 src_compile() {
-	epatch ${FILESDIR}/${P}-gentoo.diff
+	patch < ${FILESDIR}/${P}-gentoo.diff
 	myconf="--without-kde2 --with-mad=/usr/lib"
 	./configure.sh $myconf
 	make || die "Make failed"

@@ -1,25 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/pccts/pccts-1.33.32-r1.ebuild,v 1.17 2005/07/29 23:44:11 dragonheart Exp $
+# Copyright 2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author: Peter Kadau <peter.kadau@web.de>
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pccts/pccts-1.33.32-r1.ebuild,v 1.1 2002/03/17 11:32:44 gbevin Exp $
 
-inherit eutils
-
-S=${WORKDIR}/${PN}
-DESCRIPTION="Purdue Compiler Construction Tool Set is an embedded C/C++ parser generator"
+S=${WORKDIR}/pccts
+DESCRIPTION="An embedded C/C++ parser generator"
 SRC_URI="http://www.polhode.com/pccts133mr32.zip"
 HOMEPAGE="http://www.polhode.com/"
 
-SLOT="0"
-LICENSE="BSD"
-KEYWORDS="x86 ppc sparc alpha"
-IUSE=""
-
 DEPEND="app-arch/unzip"
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PF}-gentoo.diff
+
+	patch -p0 <${FILESDIR}/${PF}-gentoo.diff || die
 }
 
 src_compile() {
@@ -31,12 +26,12 @@ src_install() {
 	# main binaries
 	dobin bin/{antlr,dlg,genmk,sor}
 
-	# .c and .cpp files go into /usr/include/pccts also,
+	# .c and .cpp files go into /usr/include/pccts also, 
 	# because genmk looks for them for being included in output-files
 	# (which are c/c++) generated from grammar-files
 	# right now i include _everything_ just to make sure
 	# it doesn't break pccts-based projects
-	#
+	# 
 	# if i dive further into the details of genmk.c
 	# it should be possible to put that stuff into /usr/share/pccts
 	#
@@ -57,7 +52,7 @@ src_install() {
 	# documentation
 	# leaving out the M$ and MAC stuff
 	dodoc CHANGES* KNOWN_PROBLEMS* README RIGHTS history.txt history.ps
-	dodoc sorcerer/README sorcerer/UPDATES
+	dodoc sorcerer/README sorcerer/UPDATES	
 
 	# manual pages
 	doman dlg/dlg.1 antlr/antlr.1

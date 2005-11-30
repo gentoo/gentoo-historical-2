@@ -1,52 +1,7 @@
 # ChangeLog for app-text/pstotext
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/pstotext/ChangeLog,v 1.18 2005/10/08 21:12:10 vanquirius Exp $
-
-*pstotext-1.9 (08 Oct 2005)
-
-  08 Oct 2005; Marcelo Goes <vanquirius@gentoo.org> +metadata.xml,
-  +pstotext-1.9.ebuild:
-  1.9 version bump for bug 108084. Thanks to Thomas Fischer <fischer at
-  unix-ag dot uni-kl dot de>.
-
-  30 Jul 2005; <solar.@gentoo.org> pstotext-1.8g-r1.ebuild:
-  - bump to stable for bug #100245
-
-  27 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  pstotext-1.8g-r1.ebuild:
-  Stable on sparc wrt #100245
-
-  27 Jul 2005; Markus Rothe <corsair@gentoo.org> pstotext-1.8g-r1.ebuild:
-  Stable on ppc64 (bug #100245)
-
-  27 Jul 2005; Jory A. Pratt <anarchy@gentoo.org> pstotext-1.8g-r1.ebuild:
-  Stable on ppc wrt bug #100245
-
-*pstotext-1.8g-r1 (27 Jul 2005)
-
-  27 Jul 2005; <solar.@gentoo.org> +files/pstotext-1.8g-dsafer.patch,
-  +pstotext-1.8g-r1.ebuild:
-  - add patch from bug #100245 discovered by Max Vozeler to prevent arbitrary
-  code execution by pstotext
-
-  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> pstotext-1.8g.ebuild:
-  Marked ppc stable for bug #99218.
-
-  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  pstotext-1.8g.ebuild:
-  mark ~ppc
-
-  07 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> pstotext-1.8g.ebuild:
-  added ~amd64 to KEYWORDS. fixes #81023
-
-  11 Oct 2004; Tom Gall <tgall@gentoo.org> pstotext-1.8g.ebuild:
-  stable on ppc64, bug#64275
-
-  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> pstotext-1.8g.ebuild:
-  changed app-text/ghostscript to virtual/ghostscript
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# /space/gentoo/cvsroot/gentoo-x86/app-text/pstotext/ChangeLog,v 1.0
+2002/07/16 17:53:00 cybersystem
 
 *pstotext-1.8g (16 July 2002)
 

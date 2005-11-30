@@ -1,21 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/keylookup/keylookup-2.2.ebuild,v 1.10 2005/08/10 16:58:38 kito Exp $
+# Copyright 2002 Arcady Genkin <agenkin@gentoo.org>.
+# Distributed under the terms of the GNU General Public License v2.
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/keylookup/keylookup-2.2.ebuild,v 1.1 2002/12/21 03:23:36 agenkin Exp $
 
-DESCRIPTION="A tool to fetch PGP keys from keyservers"
+DESCRIPTION="A tool to fetch PGP keys from keyservers."
 HOMEPAGE="http://www.palfrader.org/keylookup/"
-SRC_URI="http://www.palfrader.org/keylookup/files/${P}.tar.gz"
-
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="ppc ~ppc-macos x86"
-IUSE=""
 
-RDEPEND="dev-lang/perl
+RDEPEND="sys-devel/perl
 	app-crypt/gnupg"
 
+SLOT="0"
+KEYWORDS="x86"
+IUSE=""
+
+SRC_URI="http://www.palfrader.org/keylookup/files/${P}.tar.gz"
+S=${WORKDIR}/${P}
+
+src_compile() {
+	true
+}
+
 src_install() {
-	dobin keylookup || die
+	dobin keylookup
 	doman keylookup.1
-	dodoc ChangeLog NEWS TODO
+	dodoc COPYING  ChangeLog  NEWS	TODO
 }

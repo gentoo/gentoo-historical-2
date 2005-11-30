@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/zip/zip-2.3-r4.ebuild,v 1.13 2005/03/13 06:59:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/zip/zip-2.3-r4.ebuild,v 1.1 2004/11/06 14:32:47 solar Exp $
 
 inherit toolchain-funcs eutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${PN}${PV/./}.tar.gz
 
 LICENSE="Info-ZIP"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="crypt"
 
 DEPEND="crypt? ( app-arch/unzip )"

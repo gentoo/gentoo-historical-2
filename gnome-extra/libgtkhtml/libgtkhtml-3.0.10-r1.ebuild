@@ -1,32 +1,34 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgtkhtml/libgtkhtml-3.0.10-r1.ebuild,v 1.15 2005/10/27 22:19:02 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/libgtkhtml/libgtkhtml-3.0.10-r1.ebuild,v 1.1 2004/06/19 16:10:12 usata Exp $
 
-inherit gnome2 eutils versionator
+inherit gnome2 eutils
 
 MY_P=${P/lib/}
 MY_PN=${PN/lib/}
-MY_MAJ_PV=$(get_version_component_range 1-2)
-
 DESCRIPTION="Lightweight HTML Rendering/Printing/Editing Engine"
 HOMEPAGE="http://www.gnome.org/"
-SRC_URI="mirror://gnome/sources/${MY_PN}/${MY_MAJ_PV}/${MY_P}.tar.bz2"
 
+# stolen from gnome.org eclass because it support this one-off name-mangling
+
+[ -z "${GNOME_TARBALL_SUFFIX}" ] && export GNOME_TARBALL_SUFFIX="bz2"
+PVP=($(echo " $PV " | sed 's:[-\._]: :g'))
+SRC_URI="mirror://gnome/sources/${MY_PN}/${PVP[0]}.${PVP[1]}/${MY_P}.tar.${GNOME_TARBALL_SUFFIX}"
 LICENSE="GPL-2"
 SLOT="3"
-KEYWORDS="alpha ~amd64 arm hppa ia64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc sparc ~hppa ~alpha ~ia64 ~amd64"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
 
-RDEPEND="=gnome-extra/gal-1.99.11*
+RDEPEND=">=gnome-extra/gal-1.99.11
 	>=net-libs/libsoup-1.99.28
 	>=gnome-base/libgnomeui-2.2
 	>=gnome-base/libgnomeprint-2.2
 	>=gnome-base/libgnomeprintui-2.2.1
 	>=gnome-base/libbonoboui-2.0
 	>=gnome-base/libbonobo-2.0
-	>=gnome-base/orbit-2.5.6
+	>=gnome-base/ORBit2-2.5.6
 	>=gnome-base/gnome-vfs-2.1
 	>=gnome-base/gail-1.1
 	>=dev-libs/libxml2-2.5"
@@ -40,11 +42,8 @@ ELTCONF="--reverse-deps"
 
 src_unpack() {
 	unpack ${A}
+
 	cd ${S}/src
-
-	# bug 101970
-	epatch ${FILESDIR}/${P}-no-extern-cluealigned.diff
-
 	# bug 54244, patch for cjk input methods
 	epatch ${FILESDIR}/${PN}-fix_preedit.patch
 }

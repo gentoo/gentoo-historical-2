@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/armagetronad/armagetronad-0.2.7.1.ebuild,v 1.5 2005/08/19 01:36:10 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/armagetronad/armagetronad-0.2.7.1.ebuild,v 1.1 2005/06/09 17:11:20 wolf31o2 Exp $
 
 
 inherit flag-o-matic eutils games
@@ -10,12 +10,11 @@ HOMEPAGE="http://armagetronad.sourceforge.net/"
 SRC_URI="mirror://sourceforge/armagetronad/${P}.tar.bz2
 	opengl? (
 		http://armagetron.sourceforge.net/addons/moviesounds_fq.zip
-		http://armagetron.sourceforge.net/addons/moviepack.zip
-	)"
+		http://armagetron.sourceforge.net/addons/moviepack.zip )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="dedicated opengl"
 
 RDEPEND="sys-libs/zlib
@@ -24,8 +23,7 @@ RDEPEND="sys-libs/zlib
 		virtual/opengl
 		media-libs/libsdl
 		media-libs/sdl-image
-		media-libs/libpng
-	)"
+		media-libs/libpng )"
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 
@@ -41,17 +39,18 @@ src_compile() {
 }
 
 src_install() {
+	dodoc COPYING.txt
 	dohtml doc/*.html
 	docinto html/net
 	dohtml doc/net/*.html
 	newicon tron.ico ${PN}.ico
-	exeinto "${GAMES_LIBDIR}/${PN}"
+	insinto "${GAMES_LIBDIR}/${PN}"
 	if use dedicated && ! use opengl; then
-		doexe src/tron/${PN}-dedicated || die "copying files"
+		doins src/tron/${PN}-dedicated || die "copying files"
 	else
-		doexe src/tron/${PN} || die "copying files"
+		doins src/tron/${PN} || die "copying files"
 	fi
-	doexe src/network/armagetronad-* || die "copying files"
+	doins src/network/armagetronad-* || die "copying files"
 	insinto "${GAMES_DATADIR}/${PN}"
 	if use dedicated && ! use opengl; then
 		doins -r log language || die "copying files"

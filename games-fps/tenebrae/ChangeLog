@@ -1,16 +1,6 @@
-# ChangeLog for games-fps/tenebrae
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/tenebrae/ChangeLog,v 1.6 2005/09/26 18:05:56 wolf31o2 Exp $
-
-  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> tenebrae-1.04.ebuild:
-  Making games last on inherit line.
-
-  25 Dec 2004; Mike Frysinger <vapier@gentoo.org> +files/1.04-glhax.patch,
-  -files/1.04-nvidia-opengl.patch, tenebrae-1.04.ebuild:
-  Update the opengl patch #75526.
-
-  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> tenebrae-1.04.ebuild:
-  Fix use invocation
+# ChangeLog for app-games/tenebrae
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/tenebrae/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
 
   02 Aug 2003; Chris Gianelloni <wolf31o2@gentoo.org> tenebrae-1.04.ebuild:
   Fixed to use mirror://sourceforge

@@ -15,7 +15,7 @@
   XCOMM the default paths and man page extension.
   XCOMM
 ! BINDIR = /usr/bin
-! MANDIR = /usr/share/man/man1
+! MANDIR = /usr/share/man
   XCOMM #undef ManSuffix
   XCOMM #define ManSuffix 1
   

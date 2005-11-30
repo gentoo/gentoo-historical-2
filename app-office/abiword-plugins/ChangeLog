@@ -1,39 +1,6 @@
 # ChangeLog for app-office/abiword-plugins
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/abiword-plugins/ChangeLog,v 1.7 2005/11/02 10:52:47 herbs Exp $
-
-  02 Nov 2005; Herbie Hopkins <herbs@gentoo.org>
-  abiword-plugins-2.4.1-r2.ebuild:
-  Marked ~amd64 wrt bug #110858.
-
-*abiword-plugins-2.4.1-r2 (31 Oct 2005)
-
-  31 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
-  +abiword-plugins-2.4.1-r2.ebuild:
-  Added 'bzip2', 'debug', 'pdf', 'readline' and 'wmf' USE flags. Added
-  libgsf dependency to enable some document filters by default. Removed
-  duplicated aiksaurus dependency. Added fribidi dependency. Fixed libgda
-  dependencies. Updated other dependencies version numbers. Don't install
-  COPYING. Misc.  clean-ups.
-
-  31 Oct 2005; Brent Baude <ranger@gentoo.org>
-  abiword-plugins-2.4.1-r1.ebuild:
-  Marking abiword-plugins-2.4.1-r1 ~ppc64 for bug 110858
-
-  31 Oct 2005; Jason Wever <weeve@gentoo.org>
-  abiword-plugins-2.4.1-r1.ebuild:
-  Added ~sparc keyword wrt bug #110858.
-
-*abiword-plugins-2.4.1-r1 (30 Oct 2005)
-
-  30 Oct 2005; Joe McCann <joem@gentoo.org>
-  +abiword-plugins-2.4.1-r1.ebuild:
-  Adding two new use flags for thesaurus and wordperfect support. Disabling
-  unsupported psiconv and libwmf.
-
-  30 Oct 2005; Luca Barbato <lu_zero@gentoo.org>
-  abiword-plugins-2.4.1.ebuild:
-  Marked ~ppc
+# $Header: /var/cvsroot/gentoo-x86/app-office/abiword-plugins/ChangeLog,v 1.1 2005/10/30 02:28:29 joem Exp $
 
 *abiword-plugins-2.4.1 (30 Oct 2005)
 

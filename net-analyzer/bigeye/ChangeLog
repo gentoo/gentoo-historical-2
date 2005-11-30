@@ -1,31 +1,8 @@
 # ChangeLog for net-analyzer/bigeye
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bigeye/ChangeLog,v 1.9 2005/09/08 18:49:53 vanquirius Exp $
-
-*bigeye-0.3-r1 (08 Sep 2005)
-
-  08 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> +bigeye-0.3-r1.ebuild:
-  Use my new patch to fix compilation warnings in gcc-3.4.
-
-  29 Aug 2005; <dang@gentoo.org> bigeye-0.3.ebuild:
-  Marked ~amd64
-
-  19 Jul 2005; David Holm <dholm@gentoo.org> bigeye-0.3.ebuild:
-  Added to ~ppc.
-
-  15 May 2005; Marcelo Goes <vanquirius@gentoo.org> bigeye-0.3.ebuild:
-  Use toolchain-funcs.eclass instead of gcc.eclass. See bug 92745.
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> bigeye-0.3.ebuild:
-  change virtual/glibc to virtual/libc, add IUSE
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> bigeye-0.3.ebuild:
-  change virtual/glibc to virtual/libc
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/bigeye/ChangeLog,v 1.1 2002/08/19 03:49:31 blocke Exp $
 
 *bigeye-0.3 (18 Aug 2002)
-
-  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
-  Add gcc3 patch by Sven Wegener #41692.
 
   18 Aug 2002; Bruce A. Locke <blocke@shivan.org> bigeye-0.3.ebuild:
   Initial import.

@@ -1,10 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/mini-xml/mini-xml-2.0.0.ebuild,v 1.4 2005/04/24 12:49:49 hansmi Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/mini-xml/mini-xml-2.0.0.ebuild,v 1.1 2004/09/28 23:04:33 fvdpol Exp $
 
 inherit libtool flag-o-matic gnuconfig
+
 
 MY_P=${P/mini-xml-2.0.0/mxml-2.0}
 
@@ -14,7 +13,9 @@ SRC_URI="http://www.easysw.com/~mike/mxml/swfiles/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~x86 ~amd64"
+
+IUSE=""
 
 DEPEND=""
 
@@ -24,7 +25,13 @@ src_unpack() {
 	unpack ${A}
 }
 
+src_compile() {
+	econf || die "configure failed"
+	emake || die "make failed"
+}
+
 src_install() {
-	make DSTROOT="${D}" install || die "install failed"
+	make DSTROOT=${D} install || die "install failed"
 	dodoc ANNOUNCEMENT CHANGES README TODO
 }
+

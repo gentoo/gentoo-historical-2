@@ -1,61 +1,50 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/jless-iso254/jless-iso254-358.ebuild,v 1.16 2005/11/29 04:29:10 jer Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/jless-iso254/jless-iso254-358.ebuild,v 1.1 2002/07/09 13:57:45 stubear Exp $
 
-inherit eutils
+KEYWORDS="x86"
+A=less-${PV}.tar.gz
+S=${WORKDIR}/less-${PV}
+DESCRIPTION="Japanese enabled pager -- less-iso254"
 
-LESS_P="less-${PV}"
-
-DESCRIPTION="Jam less is an enhancement of less which supports multibyte character"
-HOMEPAGE="http://www.flash.net/~marknu/less/ http://www.io.com/~kazushi/less/"
-SRC_URI="mirror://gnu/less/${LESS_P}.tar.gz
-	http://www.io.com/~kazushi/less/${LESS_P}-iso254.patch.gz"
-
-LICENSE="BSD"
-SLOT="0"
-KEYWORDS="alpha ~hppa ppc ppc64 sparc x86"
-IUSE=""
-
-DEPEND="virtual/libc
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/less/less-${PV}.tar.gz
+	http://www.io.com/~kazushi/less/less-358-iso254.patch.gz"
+HOMEPAGE="http://www.io.com/~kazushi/less/"
+DEPEND="virtual/glibc
 	>=sys-libs/ncurses-5.2"
+RDEPEND="${DEPEND}"
+LICENSE="GPL"
+SLOT="0"
 
-S=${WORKDIR}/${LESS_P}
 
 src_unpack() {
-	unpack ${LESS_P}.tar.gz
+	unpack ${A}
 	cd ${S}
-	epatch ${DISTDIR}/${LESS_P}-iso254.patch.gz
+	zcat ${DISTDIR}/less-${PV}-iso254.patch | \
+		patch -s -p1 || die "Patch failed"
 }
 
 src_compile() {
-	econf \
+	cd ${S}
+
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
 		--without-cs-regex \
-		--with-regex=auto \
 		--enable-msb \
 		--enable-jisx0213 \
-		--with-editor=${EDITOR} \
-		|| die
+		--with-regex=auto \
+		--with-editor=/usr/bin/nano || die "Configure failed"
 
-	emake || die
+	emake || die "Make failed"
 }
 
 src_install() {
-	einstall binprefix=j manprefix=j || die
-
-	newbin ${FILESDIR}/lesspipe.sh-r1 jlesspipe.sh
-	if [ ! -f ${ROOT}/usr/bin/lesspipe.sh ] ; then
-		dosym /usr/bin/jlesspipe.sh /usr/bin/lesspipe.sh
-	fi
-
-	insinto /etc/env.d
-	doins ${FILESDIR}/70jless
-
-	dodoc NEWS README*
-}
-
-pkg_postinst() {
-	# for backward compatibility
-	if [ ! -f ${ROOT}/usr/bin/lesspipe.sh ] ; then
-		ln -s /usr/bin/jlesspipe.sh ${ROOT}/usr/bin/lesspipe.sh
-	fi
+	make prefix=${D}/usr					\
+	     binprefix=j					\
+	     manprefix=j install			||	\
+	     die "Install failed"
+	dodoc COPYING LICENSE NEWS README README.iso README.iso.jp
+	exeinto /usr/bin
+	newexe ${FILESDIR}/lesspipe.sh-r1 lesspipe.sh
 }

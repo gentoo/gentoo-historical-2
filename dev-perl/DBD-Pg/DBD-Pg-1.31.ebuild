@@ -1,23 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-Pg/DBD-Pg-1.31.ebuild,v 1.11 2005/05/25 15:03:54 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-Pg/DBD-Pg-1.31.ebuild,v 1.1 2003/12/22 00:51:25 rac Exp $
 
-inherit perl-module eutils
+inherit perl-module
+inherit eutils
 
 DESCRIPTION="The Perl DBD::Pg Module"
-SRC_URI="mirror://cpan/authors/id/R/RU/RUDY/${P}.tar.gz"
-HOMEPAGE="http://search.cpan.org/~rudy/${P}.readme"
+SRC_URI="http://cpan.org/modules/by-module/DBD/${P}.tar.gz"
+HOMEPAGE="http://cpan.org/modules/by-module/DBD/${P}.readme"
 IUSE=""
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc alpha ~hppa"
+LICENSE="Artistic | GPL-2"
+KEYWORDS="~x86 amd64 ~ppc ~sparc ~alpha ~hppa"
 
-DEPEND="perl-core/Test-Simple
+newdepend "dev-perl/Test-Simple
 	dev-perl/DBI
 	dev-db/postgresql"
 
 # env variables for compilation:
-export POSTGRES_INCLUDE=/usr/include/postgresql/pgsql
+export POSTGRES_INCLUDE=/usr/include/postgresql/
 export POSTGRES_LIB=/usr/lib/postgresql/
 
 mydoc="Changes README"
@@ -27,3 +28,5 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/${P}-versparse.patch
 }
+
+

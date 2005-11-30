@@ -1,16 +1,6 @@
 # ChangeLog for x11-plugins/gkrellm-gamma
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-gamma/ChangeLog,v 1.5 2004/11/06 16:31:07 pyrania Exp $
-
-  06 Nov 2004; <pyrania@gentoo.org> gkrellm-gamma-2.03.ebuild:
-  Marked stable on x86.
-
-  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  gkrellm-gamma-2.03.ebuild:
-  Masked gkrellm-gamma-2.03.ebuild stable for ppc
-
-  13 Jun 2004; David Holm <dholm@gentoo.org> gkrellm-gamma-2.03.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-gamma/ChangeLog,v 1.1 2004/06/13 04:28:19 pyrania Exp $
 
 *gkrellm-gamma-2.03 (13 Jun 2004)
 

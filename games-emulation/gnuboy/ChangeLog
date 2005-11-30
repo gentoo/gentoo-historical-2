@@ -1,18 +1,5 @@
-# ChangeLog for games-emulation/gnuboy
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gnuboy/ChangeLog,v 1.8 2005/08/29 04:19:01 mr_bones_ Exp $
-
-  29 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> gnuboy-1.0.3.ebuild:
-  more choices for gui - patch from James Rowe via bug #99983
-
-  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> gnuboy-1.0.3.ebuild:
-  Added IUSE and marking stable on amd64 (no bugs in 415 days).
-
-  31 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> gnuboy-1.0.3.ebuild:
-  Adding amd64 keyword. Closing #46276.
-
-  02 Mar 2004; David Holm <dholm@gentoo.org> gnuboy-1.0.3.ebuild:
-  Added to ~ppc.
+# ChangeLog for app-emulation/gnuboy
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
 
 *gnuboy-1.0.3 (01 Mar 2003)
 

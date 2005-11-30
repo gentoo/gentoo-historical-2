@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gnomedb-sharp/gnomedb-sharp-1.0.8.ebuild,v 1.4 2005/05/22 14:40:22 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/gnomedb-sharp/gnomedb-sharp-1.0.8.ebuild,v 1.1 2005/03/15 17:57:26 latexer Exp $
 
 inherit gtk-sharp-component
 
 SLOT="1"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="${DEPEND}
-		=dev-dotnet/gtk-sharp-${PV}*
+		>=dev-dotnet/gtk-sharp-${PV}
 		=dev-dotnet/art-sharp-${PV}*
 		=dev-dotnet/gda-sharp-${PV}*
 		=dev-dotnet/gnome-sharp-${PV}*

@@ -1,25 +1,6 @@
 # ChangeLog for dev-java/jss
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jss/ChangeLog,v 1.7 2005/08/05 16:06:59 betelgeuse Exp $
-
-  05 Aug 2005; Petteri Räty <betelgeuse@gentoo.org> jss-3.4.ebuild:
-  the ebuild now inherits linux-info.eclass to fix bug 101427
-
-  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> jss-3.4.ebuild:
-  fix bug 98374
-
-  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> jss-3.4.ebuild:
-  Dep fix
-
-  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> jss-3.4.ebuild:
-  Stable on sparc
-
-  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> jss-3.4.ebuild:
-  Sparc workaround added, keyworded ~sparc wrt #84992
-
-  04 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> jss-3.4.ebuild:
-  the ebuild now also installs libjss3.so, marked stable on x86 and amd64.
-  fixing #79490
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jss/ChangeLog,v 1.1 2004/12/18 16:37:30 karltk Exp $
 
 *jss-3.4 (18 Dec 2004)
 

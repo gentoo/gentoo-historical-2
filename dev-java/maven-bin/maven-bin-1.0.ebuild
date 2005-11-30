@@ -1,14 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/maven-bin/maven-bin-1.0.ebuild,v 1.4 2005/11/22 01:04:23 nichoj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/maven-bin/maven-bin-1.0.ebuild,v 1.1 2004/07/30 21:14:11 axxo Exp $
 
-inherit base
-
-MY_PN=${PN/-bin}
-MY_PV=${PV/_/-}
-MY_P=${MY_PN}-${MY_PV}
 DESCRIPTION="Project Management and Comprehension Tool for Java"
-SRC_URI="mirror://apache/maven/binaries/${MY_P}.tar.gz"
+SRC_URI="mirror://apache/maven/binaries/${PN/-bin}-${PV/_/-}.tar.gz"
 HOMEPAGE="http://maven.apache.org/"
 LICENSE="Apache-2.0"
 SLOT="1.0"
@@ -16,10 +11,10 @@ KEYWORDS="~x86 ~ppc ~amd64"
 DEPEND=">=virtual/jdk-1.3"
 RDEPEND=">=virtual/jdk-1.3"
 IUSE=""
+RESTRICT="nomirror"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${PN/-bin}-${PV/_/-}"
 
-PATCHES="${FILESDIR}/${P}-script.patch"
 src_compile() { :; }
 
 src_install() {
@@ -29,5 +24,5 @@ src_install() {
 	doexe ${S}/bin/maven
 	insinto /etc/env.d
 	doins ${FILESDIR}/25maven
-	cp -Rp * ${D}/usr/share/maven
+	cp -Rdp * ${D}/usr/share/maven
 }

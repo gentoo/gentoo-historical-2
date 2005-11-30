@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/yafray/yafray-0.0.7.ebuild,v 1.9 2005/06/14 13:48:33 fmccor Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/yafray/yafray-0.0.7.ebuild,v 1.1 2004/08/08 14:35:15 lu_zero Exp $
 
-inherit eutils python
+inherit gcc eutils
 
 DESCRIPTION="Yet Another Free Raytracer"
 HOMEPAGE="http://www.yafray.org/"
@@ -10,22 +10,22 @@ SRC_URI="http://www.coala.uniovi.es/~jandro/noname/downloads/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE=""
 
 RDEPEND="media-libs/jpeg
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
-	>=sys-devel/gcc-3.3
+	>=sys-devel/gcc-3.3*
 	>=sys-apps/sed-4
 	dev-util/scons"
 
+export WANT_GCC_3="yes"
 export WANT_AUTOMAKE="1.7"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	libtoolize --copy --force
 	epatch ${FILESDIR}/${P}-scons.patch
 	sed -i -e "s:-O3:${CFLAGS}:" SConstruct
 }

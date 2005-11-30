@@ -1,58 +1,6 @@
 # ChangeLog for www-apps/metadot
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/metadot/ChangeLog,v 1.14 2005/09/02 11:20:54 rl03 Exp $
-
-  02 Sep 2005; Renat Lumpau <rl03@gentoo.org> metadot-6.1.6.ebuild:
-  Fix 6.1.6
-
-  02 Sep 2005; Renat Lumpau <rl03@gentoo.org> metadot-6.4_p3.ebuild:
-  Add missing dev-perl/DateManip dependency wrt bug #104403.
-
-  22 Aug 2005; Renat Lumpau <rl03@gentoo.org>
-  files/postinstall-en-6.4_p3.txt:
-  Housekeeping
-
-*metadot-6.4_p3 (22 Aug 2005)
-
-  22 Aug 2005; Renat Lumpau <rl03@gentoo.org> -files/reconfig-6.4_p1,
-  +files/reconfig-6.4_p3, -files/postinstall-en-6.4_p1.txt,
-  +files/postinstall-en-6.4_p3.txt, -metadot-6.4_p1.ebuild,
-  +metadot-6.4_p3.ebuild:
-  Version bump
-
-*metadot-6.4_p1 (03 Jul 2005)
-
-  03 Jul 2005; Renat Lumpau <rl03@gentoo.org> +files/reconfig-6.4_p1,
-  +files/postinstall-en-6.4_p1.txt, +files/metadot.conf,
-  +metadot-6.4_p1.ebuild:
-  Version bump. Fix #96959.
-
-  02 Jul 2005; Renat Lumpau <rl03@gentoo.org> +files/reconfig-6.1.6,
-  +files/postinstall-en-6.1.6.txt, -files/postinstall-en.txt,
-  -files/reconfig, metadot-6.1.6.ebuild:
-  Cleaning house
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> metadot-6.1.6.ebuild:
-  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> metadot-6.1.6.ebuild:
-  dev-perl/Storable => perl-core/Storable migration
-
-  09 May 2005; Elfyn McBratney <beu@gentoo.org> metadot-6.1.6.ebuild:
-  dev-perl/mod_perl -> www-apache/mod_perl
-
-  23 Apr 2005; Michael Cummings <mcummings@gentoo.org> metadot-6.1.6.ebuild:
-  Migration of names for text-csv to text-csv-xs
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  metadot-6.1.6.ebuild:
-  Masked metadot-6.1.6.ebuild stable for ppc
-
-  03 Sep 2004; David Holm <dholm@gentoo.org> metadot-6.1.6.ebuild:
-  Added to ~ppc.
-
-  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> metadot-6.1.6.ebuild:
-  Fixed DEPEND/RDEPEND
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/metadot/ChangeLog,v 1.1 2004/08/29 00:07:24 rl03 Exp $
 
 *metadot-6.1.6 (28 Aug 2004)
 

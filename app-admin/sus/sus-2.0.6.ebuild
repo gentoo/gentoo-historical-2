@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/sus/sus-2.0.6.ebuild,v 1.5 2005/06/05 11:27:39 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/sus/sus-2.0.6.ebuild,v 1.1 2004/09/15 03:54:43 kumba Exp $
 
-inherit toolchain-funcs
+inherit gcc
 
 DESCRIPTION="allows certain users to run commands as root or other users"
 HOMEPAGE="http://pdg.uow.edu.au/sus/"
@@ -10,7 +10,7 @@ SRC_URI="http://pdg.uow.edu.au/sus/${P}.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="mips ppc sparc x86"
+KEYWORDS="x86 sparc mips"
 IUSE="pam"
 
 DEPEND="virtual/libc
@@ -25,7 +25,7 @@ src_compile() {
 	myconf="${myconf} -DPROMISCUOUS -DUSE_SHADOW \
 		-DSUSERS=\\\"/etc/susers.cpp\\\""
 	make \
-		CC=$(tc-getCC) \
+		CC=$(gcc-getCC) \
 		CFLAGS="${CFLAGS} ${myconf}" \
 		LFLAGS="${lflags}" \
 		sus || die

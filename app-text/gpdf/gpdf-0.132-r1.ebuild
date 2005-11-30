@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gpdf/gpdf-0.132-r1.ebuild,v 1.7 2005/01/01 16:17:22 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gpdf/gpdf-0.132-r1.ebuild,v 1.1 2004/10/25 15:25:08 foser Exp $
 
 inherit gnome2 flag-o-matic eutils
 
 DESCRIPTION="Viewer for Portable Document Format (PDF) files"
 HOMEPAGE="http://www.gnome.org/"
-
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc alpha sparc hppa ~amd64 ia64 mips"
+
 IUSE=""
+SLOT="0"
+KEYWORDS="x86 ~ppc ~alpha ~sparc ~hppa ~amd64 ~ia64 ~mips"
 
 RDEPEND=">=x11-libs/gtk+-2.3
 	>=gnome-base/gconf-2

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ayttm/ayttm-0.4.6-r1.ebuild,v 1.3 2005/05/23 13:44:25 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ayttm/ayttm-0.4.6-r1.ebuild,v 1.1 2004/07/01 11:37:03 usata Exp $
 
 # arts causes segfault
 IUSE="truetype esd gnome nls"
@@ -11,7 +11,7 @@ HOMEPAGE="http://ayttm.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~sparc -alpha ~ppc"
+KEYWORDS="x86 ~sparc -alpha"
 
 DEPEND="virtual/x11
 	=x11-libs/gtk+-1.2*
@@ -22,12 +22,10 @@ DEPEND="virtual/x11
 	sys-devel/libtool
 	truetype? ( virtual/xft )
 	gnome? ( >=gnome-base/gnome-libs-1.4.1.7 )
-	esd? ( >=media-sound/esound-0.2.28 )
-	~app-crypt/gpgme-0.3.14"
+	esd? ( >=media-sound/esound-0.2.28 )"
 
 src_compile() {
 
-	export GPGME_CONFIG=/usr/bin/gpgme3-config
 	econf \
 		--enable-smtp \
 		--disable-arts \

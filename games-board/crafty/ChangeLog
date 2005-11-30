@@ -1,61 +1,8 @@
-# ChangeLog for games-board/crafty
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/crafty/ChangeLog,v 1.16 2005/09/26 17:43:45 wolf31o2 Exp $
+# ChangeLog for app-games/crafty
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/crafty/ChangeLog,v 1.1 2003/09/10 17:46:27 vapier Exp $
 
-  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> crafty-19.8.ebuild:
-  Making games last on inherit line.
-
-  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> crafty-19.20.ebuild:
-  Stable on ppc.
-
-*crafty-19.20 (25 Aug 2005)
-
-  25 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.20.ebuild:
-  version bump (bug #103567)
-
-  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> -crafty-19.1.ebuild,
-  -crafty-19.12.ebuild, -crafty-19.15.ebuild, -crafty-19.18.ebuild:
-  clean old ebuilds
-
-  24 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> crafty-19.19.ebuild:
-  stable on x86
-
-*crafty-19.19 (31 May 2005)
-
-  31 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.19.ebuild:
-  version bump (bug #94641)
-
-*crafty-19.18 (12 Apr 2005)
-
-  12 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.18.ebuild:
-  version bump
-
-*crafty-19.15 (20 Jul 2004)
-
-  20 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +crafty-19.15.ebuild:
-  version bump
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> crafty-19.1.ebuild,
-  crafty-19.12.ebuild, crafty-19.8.ebuild:
-  virtual/glibc -> virtual/libc
-
-  03 Jun 2004; Aron Griffis <agriffis@gentoo.org> crafty-19.8.ebuild:
-  Fix use invocation
-
-*crafty-19.12 (06 Apr 2004)
-
-  06 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> crafty-19.12.ebuild:
-  version bump
-
-*crafty-19.8 (31 Dec 2003)
-
-  31 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
-  Update to 19.8 and clean up #34789.
-
-*crafty-19.1 (25 Oct 2002)
-
-  13 Dec 2003; Brad House <brad_mssw@gentoo.org> crafty-19.1.ebuild:
-  mark stable on amd64
+*crafty-19.1.ebuild (25 Oct 2002)
 
   25 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
   Update to 19.1 per #9657.

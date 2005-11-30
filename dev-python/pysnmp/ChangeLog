@@ -1,39 +1,6 @@
 # ChangeLog for dev-python/pysnmp
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pysnmp/ChangeLog,v 1.11 2005/11/19 11:06:33 chriswhite Exp $
-
-  19 Nov 2005; Chris White <chriswhite@gentoo.org> metadata.xml:
-  Added japanese metadata.xml translation thanks to Yoshino-san.
-
-  15 Nov 2005; <dang@gentoo.org> pysnmp-3.4.2.ebuild:
-  Marked ~amd64
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> pysnmp-2.0.8.ebuild:
-  Stable on ppc.
-
-*pysnmp-4.0.1a (14 Apr 2005)
-
-  14 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> +pysnmp-4.0.1a.ebuild:
-  Version bump.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*pysnmp-3.4.2 (23 Jun 2004)
-
-  23 Jun 2004; Lukasz Strzygowski <lucass@gentoo.org> pysnmp-3.4.2.ebuild, metadata.xml:
-  Version bump. Thanks for info to Mike C. Fletcher in bug #54869. 
-  Marked testing on x86, sparc and ppc. Added commands to install 
-  whole documentation and examples. Added longdescription to metadata.xml.
-
-  19 Jun 2004; David Holm <dholm@gentoo.org> pysnmp-2.0.8.ebuild:
-  Added to ~ppc.
-
-  21 May 2004; Jason Wever <weeve@gentoo.org> pysnmp-2.0.8.ebuild:
-  Added ~sparc keyword.
-
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> pysnmp-2.0.8.ebuild:
-  Remove default S.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pysnmp/ChangeLog,v 1.1 2003/07/03 09:08:47 liquidx Exp $
 
 *pysnmp-2.0.8 (03 Jul 2003)
 

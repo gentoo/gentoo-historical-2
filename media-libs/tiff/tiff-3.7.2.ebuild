@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/tiff/tiff-3.7.2.ebuild,v 1.13 2005/08/02 12:32:47 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/tiff/tiff-3.7.2.ebuild,v 1.1 2005/05/08 18:20:12 nerdboy Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://dl.maptools.org/dl/libtiff/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc-macos ~ppc64"
 IUSE=""
 
 DEPEND=">=media-libs/jpeg-6b
@@ -23,14 +23,15 @@ src_unpack() {
 }
 
 src_compile() {
-	local myconf
-	myconf="--without-x"
-	use ppc-macos && myconf=" --disable-cxx"
-	econf ${myconf} || die "econf failed"
+	econf --without-x || die "econf failed"
 	emake || die "emake failed"
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die "make install failed"
+	make install DESTDIR=${D} || die "make install failed"
 	dodoc README TODO VERSION
+}
+
+pkg_postinst() {
+	einfo "Latest tiff with bug #91584 fixes."
 }

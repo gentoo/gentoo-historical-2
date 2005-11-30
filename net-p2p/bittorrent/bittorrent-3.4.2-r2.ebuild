@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/bittorrent/bittorrent-3.4.2-r2.ebuild,v 1.10 2005/09/25 22:30:09 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/bittorrent/bittorrent-3.4.2-r2.ebuild,v 1.1 2004/10/11 21:16:26 squinky86 Exp $
 
 inherit distutils
 
@@ -14,10 +14,10 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ppc sparc x86"
-IUSE="gtk"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~amd64"
+IUSE="X"
 
-RDEPEND="gtk? ( <dev-python/wxpython-2.5 )
+RDEPEND="X? ( >=dev-python/wxpython-2.2 )
 	>=dev-lang/python-2.1
 	!virtual/bittorrent"
 DEPEND="${RDEPEND}
@@ -26,20 +26,20 @@ DEPEND="${RDEPEND}
 PROVIDE="virtual/bittorrent"
 
 DOCS="credits.txt"
-PYTHON_MODNAME="BitTorrent"
+PYTHON_MODULE="BitTorrent"
 
 src_install() {
 	distutils_src_install
-	if ! use gtk; then
+	if ! use X; then
 		rm ${D}/usr/bin/*gui.py
 	fi
 	dohtml redirdonate.html
 	dodir etc
-	cp -pPR /etc/mailcap ${D}/etc/
+	cp -a /etc/mailcap ${D}/etc/
 
 	MAILCAP_STRING="application/x-bittorrent; /usr/bin/btdownloadgui.py '%s'; test=test -n \"\$DISPLAY\""
 
-	if use gtk; then
+	if use X; then
 		if [ -n "`grep 'application/x-bittorrent' ${D}/etc/mailcap`" ]; then
 			# replace bittorrent entry if it already exists
 			einfo "updating bittorrent mime info"

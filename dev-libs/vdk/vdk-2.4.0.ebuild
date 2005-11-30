@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/vdk/vdk-2.4.0.ebuild,v 1.9 2005/10/07 18:01:45 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vdk/vdk-2.4.0.ebuild,v 1.1 2004/10/14 00:46:04 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 
@@ -10,17 +10,14 @@ HOMEPAGE="http://vdk.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~hppa ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa"
 IUSE="doc debug"
 
-DEPEND=">x11-libs/gtk+-2.4
-	doc? ( app-doc/doxygen )"
+DEPEND=">x11-libs/gtk+-2.4*
+		doc? (app-doc/doxygen)"
 
 src_compile() {
-
 	cd ${S}
-
-	local myconf=""
 
 	if [ "$(gcc-major-version)" -ge "4" ] || [ "$(gcc-major-version)" -ge "3" -a "$(gcc-minor-version)" -ge "4" ]
 	then
@@ -33,17 +30,14 @@ src_compile() {
 	use doc && \
 		myconf="${myconf} --enable-doc-html=yes \
 						  --enable-doc-latex=yes \
-						  --enable-doc-man=yes" \
-		|| myconf="${myconf} --enable-doc-html=no \
-							 --enable-doc-latex=no \
-							 --enable-doc-man=no"
+						  --enable-doc-man=yes"
 
 	use debug && \
-		myconf="${myconf} --enable-debug=yes" \
-		|| myconf="${myconf} --enable-debug=no"
+		myconf="${myconf} --enable-debug=yes"
 
 	econf \
 		${myconf} \
+		--with-gnu-ld \
 		--enable-testvdk=no \
 		|| die "econf failed"
 

@@ -1,51 +1,6 @@
 # ChangeLog for app-editors/jove
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/jove/ChangeLog,v 1.10 2005/11/03 13:25:46 seemant Exp $
-
-*jove-4.16.0.65.4 (03 Nov 2005)
-
-  03 Nov 2005; Seemant Kulleen <seemant@gentoo.org>
-  -jove-4.16.0.65.3.ebuild, +jove-4.16.0.65.4.ebuild:
-  Version bump to newest stable release from debian -- this should go to
-  stable for us pretty soon
-
-  03 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  jove-4.16.0.65.3.ebuild:
-  mark ~ppc
-
-*jove-4.16.0.65.3 (25 Mar 2005)
-*jove-4.16.0.56.1 (25 Mar 2005)
-
-  25 Mar 2005; Seemant Kulleen <seemant@gentoo.org> -jove-4.16.0.56.ebuild,
-  +jove-4.16.0.56.1.ebuild, -jove-4.16.0.65.ebuild,
-  +jove-4.16.0.65.3.ebuild:
-  rename the versions to more closely track the debian patch levels
-
-*jove-4.16.0.65 (25 Mar 2005)
-*jove-4.16.0.56 (25 Mar 2005)
-
-  25 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +jove-4.16.0.56.ebuild,
-  -jove-4.16.0.64.ebuild, +jove-4.16.0.65.ebuild:
-  ok, since Debian is effectively the upstream, our stable versions will
-  follow their stable, hence the downgrade to 56. 65-3 is in unstable, so that
-  is the new unstable for us. Sorry if this inconveniences. If you can
-  convince me to do otherwise, please email me. This closes bug #86521 by
-  ian.colquhoun@sheridanc.on.ca
-
-*jove-4.16.0.64 (11 Mar 2005)
-
-  11 Mar 2005; Seemant Kulleen <seemant@gentoo.org> -jove-4.16.0.58.ebuild,
-  +jove-4.16.0.64.ebuild:
-  version bump -- going straight to x86 stable, because the upstream tarballs
-  for the 58 version no longer exist. This fixes bug #80047 by anselm helbig
-  <anselm@chemie.fu-berlin.de>
-
-  30 Dec 2004; Seemant Kulleen <seemant@gentoo.org> :
-  since I added this, I'll be the maintainer
-
-  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
-  jove-4.16.0.58.ebuild:
-  x86 stable. Added dependancy. QA fixed to mirror://debian/
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-editors/jove/ChangeLog,v 1.1 2004/02/26 03:16:01 seemant Exp $
 
 *jove-4.16.0.58 (25 Feb 2004)
 

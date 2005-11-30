@@ -1,33 +1,38 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/guitar/guitar-0.1.4.ebuild,v 1.28 2005/01/01 11:45:32 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author: José Alberto Suárez López <bass@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/app-arch/guitar/guitar-0.1.4.ebuild,v 1.1 2002/05/20 22:56:46 bass Exp $
+
 
 MY_P=guiTAR-${PV}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="Extraction tool, supports tar, tar.Z, tar.gz, tar.bz2, lha, lzh, rar, arj, zip, and slp formats"
+DESCRIPTION="Extraction tool, supports the tar, tar.Z, tar.gz, tar.bz2, lha,
+lzh, rar, arj, zip, and slp formats."
+SRC_URI="http://artemis.efes.net/disq/${PN}/${MY_P}.tar.gz"
 HOMEPAGE="http://artemis.efes.net/disq/guitar/"
-SRC_URI="http://artemis.efes.net/disq/guitar/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 ppc x86"
-IUSE="gnome"
 
-DEPEND="=x11-libs/gtk+-1.2*
-	app-arch/tar
-	app-arch/bzip2
-	x86? ( app-arch/rar )
+DEPEND="x11-libs/gtk+
+	sys-apps/tar
+	sys-apps/bzip2
+	app-arch/rar
 	app-arch/unrar
-	app-arch/gzip
+	sys-apps/gzip
 	app-arch/zip
 	app-arch/unzip"
 
 src_compile() {
-	econf $(use_enable gnome) || die
+
+	local myconf
+
+	use gnome || myconf="${myconf} --disable-gnome"
+
+	econf ${myconf} || die
 	emake || die
 }
 
 src_install() {
-	use gnome && cp ${FILESDIR}/install.gnome ${S}
-	make install DESTDIR="${D}" || die
+
+	einstall || die
 }

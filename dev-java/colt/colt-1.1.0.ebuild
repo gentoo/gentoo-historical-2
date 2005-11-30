@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/colt/colt-1.1.0.ebuild,v 1.10 2005/07/15 13:45:29 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/colt/colt-1.1.0.ebuild,v 1.1 2004/02/16 04:30:45 zx Exp $
 
 inherit java-pkg
 
@@ -10,14 +10,13 @@ HOMEPAGE="http://www-itg.lbl.gov/~hoschek/colt/"
 LICENSE="colt"
 IUSE="doc jikes"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc amd64"
+KEYWORDS="~x86 ~sparc"
 
 DEPEND=">=virtual/jdk-1.4
-		dev-java/ant-core
-		app-arch/unzip
+		dev-java/ant
 		jikes? ( dev-java/jikes )"
 
-RDEPEND=">=virtual/jre-1.4"
+RDEPEND=">=virtual/jdk-1.4"
 
 S=${WORKDIR}/${PN}
 
@@ -31,5 +30,5 @@ src_compile() {
 src_install() {
 	java-pkg_dojar lib/*.jar
 	dohtml README.html
-	use doc && java-pkg_dohtml -r doc/*
+	use doc && dohtml -r doc/*
 }

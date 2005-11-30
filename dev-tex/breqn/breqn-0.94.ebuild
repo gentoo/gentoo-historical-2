@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/breqn/breqn-0.94.ebuild,v 1.3 2004/12/28 20:58:16 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/breqn/breqn-0.94.ebuild,v 1.1 2004/10/09 10:24:50 usata Exp $
 
 inherit latex-package
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.ams.org/pub/tex/${MY_P}.tgz"
 LICENSE="as-is"
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86 ppc ~amd64"
+KEYWORDS="~x86"
 
 S=${WORKDIR}/${MY_P}
 

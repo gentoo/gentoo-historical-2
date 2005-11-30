@@ -1,61 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-2.4.0.ebuild,v 1.14 2005/09/10 22:13:42 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-2.4.0.ebuild,v 1.1 2004/08/08 07:46:48 mattam Exp $
 
-inherit eutils
-
-IUSE="debug doc glade gnome gnomecanvas opengl svg"
+IUSE="debug doc glade gnome opengl svg"
 
 DESCRIPTION="Objective CAML interface for Gtk+2"
 HOMEPAGE="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgtk.html"
 SRC_URI="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/${P}.tar.gz"
 LICENSE="LGPL-2.1 as-is"
 
-DEPEND=">=x11-libs/gtk+-2.4
+DEPEND=">=x11-libs/gtk+-2.4*
 	>=dev-lang/ocaml-3.07
-	svg? ( >=gnome-base/librsvg-2.2 )
+	svg? ( >=gnome-base/librsvg-2.2* )
 	glade? ( >=gnome-base/libglade-2.0.1 )
-	gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 )
-	gnome? ( >=gnome-base/gnome-panel-2.4.0
-		>=gnome-base/libgnomeui-2.4.0 )
+	gnome? ( >=gnome-base/libgnomecanvas-2.2
+		>=gnome-base/gnome-panel-2.4.0
+		>=gnome-base/libgnomeui-2.4.0
+		media-libs/gdk-pixbuf )
 	opengl? ( >=dev-ml/lablgl-0.98
-		>=x11-libs/gtkglarea-1.9 )"
+		>=x11-libs/gtkglarea-1.9* )"
 
 SLOT="2"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/${P}-gcc34.patch
-	aclocal
-	autoreconf
-}
+KEYWORDS="-amd64 ~x86 ~ppc ~alpha ~ia64"
 
 src_compile() {
-	local myconf
-
+	use gnome || myconf="$myconf
+				--without-gnomecanvas --without-gnomeui
+				--without-panel"
+	use opengl || myconf="$myconf --without-gl"
+	use svg || myconf="$myconf --without-rsvg"
+	use glade || myconf="$myconf --without-glade"
 	use debug && myconf="$myconf --enable-debug"
-
-	myconf="$myconf $(use_with svg rsvg)"
-
-	myconf="$myconf $(use_with glade)"
-
-	# libgnomeui already depends on libgnomecanvas
-	if use gnomecanvas || use gnome
-	then
-		myconf="$myconf --with-gnomecanvas"
-	else
-		myconf="$myconf --without-gnomecanvas"
-	fi
-
-	myconf="$myconf $(use_with gnome gnomeui)"
-	myconf="$myconf $(use_with gnome panel)"
-
-	myconf="$myconf $(use_with opengl gl)"
-
-	export PKG_CONFIG_PATH=/$(get_libdir)/pkgconfig
 
 	econf $myconf || die "configure failed"
 	make all opt || die "make failed"

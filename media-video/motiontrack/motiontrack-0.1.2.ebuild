@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/motiontrack/motiontrack-0.1.2.ebuild,v 1.2 2004/10/20 00:34:41 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/motiontrack/motiontrack-0.1.2.ebuild,v 1.1 2004/10/20 00:24:56 chriswhite Exp $
 
 
 DESCRIPTION="A set of tools that detect motion between two images"
@@ -11,15 +11,15 @@ SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~ppc ~ppc64 ~sparc ~mips ~alpha ~hppa ~amd64"
 
-IUSE="gd imagemagick debug"
+IUSE="libgd imagemagick debug"
 
 DEPEND="virtual/libc
 	debug? (
-		gd? (
+		libgd? (
 			imagemagick? ( >=media-gfx/imagemagick-5.5.7 )
 			!imagemagick? ( media-libs/gd )
 		)
-		!gd? ( >=media-gfx/imagemagick-5.5.7 )
+		!libgd? ( >=media-gfx/imagemagick-5.5.7 )
 	)
 	!debug? (
 		imagemagick? (
@@ -33,7 +33,7 @@ src_compile() {
 
 	local myconf
 
-	if use gd; then
+	if use libgd; then
 		if use imagemagick; then
 			einfo "motiontrack can only use one of libgd or imagemagick, not both."
 			einfo "default is libgd when debug is unset, imagemagick otherwise."
@@ -44,7 +44,7 @@ src_compile() {
 		#default to imagemagick for providing better features
 		#for debugging
 		myconf="--enable-debug"
-		if use gd; then
+		if use libgd; then
 			if use imagemagick; then
 				myconf="${myconf} --enable-magick --disable-gd";
 			else
@@ -57,7 +57,7 @@ src_compile() {
 		#default to libgd for being faster
 		myconf="--disable-debug"
 		if use imagemagick; then
-			if use gd; then
+			if use libgd; then
 				myconf="${myconf} --disable-magick --enable-gd";
 			else
 				myconf="${myconf} --enable-magick --disable-gd";

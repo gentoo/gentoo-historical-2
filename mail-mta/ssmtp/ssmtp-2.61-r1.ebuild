@@ -1,20 +1,22 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ssmtp-2.61-r1.ebuild,v 1.5 2005/10/06 22:56:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ssmtp-2.61-r1.ebuild,v 1.1 2005/04/25 20:36:38 ferdy Exp $
 
 inherit eutils mailer
 
 DESCRIPTION="Extremely simple MTA to get mail off the system to a Mailhub"
 HOMEPAGE="ftp://ftp.debian.org/debian/pool/main/s/ssmtp/"
-SRC_URI="mirror://debian/pool/main/s/ssmtp/${P/-/_}.orig.tar.gz"
+SRC_URI="ftp://ftp.debian.org/debian/pool/main/s/ssmtp/${P/-/_}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="ssl ipv6 md5sum"
 
 DEPEND="virtual/libc
 	ssl? ( dev-libs/openssl )"
+
+S=${WORKDIR}/ssmtp-2.61
 
 src_compile() {
 	econf \
@@ -53,11 +55,14 @@ src_install() {
 
 	if use mailwrapper ; then
 		dosym /usr/sbin/ssmtp /usr/bin/sendmail.ssmtp
+		dosym /usr/sbin/ssmtp /usr/bin/mailq.ssmtp
+		dosym /usr/sbin/ssmtp /usr/bin/newaliases.ssmtp
 		mailer_install_conf
 	else
+		dosym /usr/sbin/ssmtp /usr/sbin/sendmail
 		dosym /usr/sbin/ssmtp /usr/lib/sendmail
 		dosym /usr/sbin/ssmtp /usr/bin/sendmail
-		dosym /usr/sbin/ssmtp /usr/bin/mailq
-		dosym /usr/sbin/ssmtp /usr/bin/newaliases
+		dosym /usr/sbin/ssmtp /usr/sbin/mailq
+		dosym /usr/sbin/ssmtp /usr/sbin/newaliases
 	fi
 }

@@ -1,32 +1,6 @@
-# ChangeLog for kde-misc/ksensors
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/ksensors/ChangeLog,v 1.9 2005/10/09 18:02:46 metalgod Exp $
-
-  09 Oct 2005; Luis Medinas <metalgod@gentoo.org> ksensors-0.7.3.ebuild:
-  Marked Stable on amd64.
-
-  27 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
-  ksensors-0.7.2-r1.ebuild:
-  Dependency update: sys-apps/lm-sensors -> sys-apps/lm_sensors.
-
-  27 Feb 2005; Henrik Brix Andersen <brix@gentoo.org> ksensors-0.7.3.ebuild:
-  Dependency update: sys-apps/lm-sensors -> sys-apps/lm_sensors.
-
-  27 Feb 2005; Henrik Brix Andersen <brix@gentoo.org> ksensors-0.7.2.ebuild:
-  Dependency update: sys-apps/lm-sensors -> sys-apps/lm_sensors.
-
-  15 Jan 2005; Dan Armak <danarmak@gentoo.org> ksensors-0.7.2-r1.ebuild,
-  ksensors-0.7.2.ebuild, ksensors-0.7.3.ebuild:
-  Changed dep on kdebase to accept kdebase-meta, the split 'meta' package.
-  This dep will be narrowed down in the future to the precise split packages
-  required.
-
-  18 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
-  ksensors-0.7.2-r1.ebuild:
-  Removed from ppc, because lm-sensors no longer works on ppc.
-
-  07 Dec 2004; Carsten Lohrke <carlo@gentoo.org> ksensors-0.7.3.ebuild:
-  stable on x86
+# ChangeLog for app-misc/ksensors
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/ksensors/ChangeLog,v 1.1 2004/10/30 17:26:28 carlo Exp $
 
 *ksensors-0.7.3 (30 Oct 2004)
 

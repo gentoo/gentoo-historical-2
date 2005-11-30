@@ -1,23 +1,9 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 74a4f93a4a855ce5f78a87832ddfaa0f lam-mpi-7.0.4-r1.ebuild 1695
-MD5 861dcc1aa59b0e097079f547c7fe6b88 lam-mpi-7.0.6.ebuild 1616
-MD5 ae841b28d60b0120213eb738f4a05c73 lam-mpi-7.1.ebuild 1619
-MD5 09cdcdb1957de0316945e360f642c9f2 lam-mpi-7.0.4.ebuild 1442
-MD5 0930f78d3ab380350b56aa5005d31a16 ChangeLog 7875
-MD5 cde8b4e93c9339eb99fe3ad45941c99b metadata.xml 160
-MD5 2e517695db5f7c5e7eeffe2aae8d447a lam-mpi-7.1.1-r3.ebuild 2593
-MD5 8f2271274cdef6f58358e701c71663c9 files/digest-lam-mpi-7.1 61
-MD5 1d7b0bf28395a80f386bf8ea489c69b8 files/digest-lam-mpi-7.0.4-r1 63
-MD5 1d7b0bf28395a80f386bf8ea489c69b8 files/digest-lam-mpi-7.0.4 63
-MD5 38b6624ba4098ca823b9d317705ca44c files/digest-lam-mpi-7.0.6 63
-MD5 bcac54d719834a00296b9fdf7026d117 files/lam-mpi-7.1.1-shared-romio.patch 10522
-MD5 3af34eb73976278d39527a330bb6c7b2 files/digest-lam-mpi-7.1.1-r3 63
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDQZA8gMUyd/cdjWsRAhq8AJ90DOjzFnb6945P/cFjnJ09S0WK7QCfSsNw
-56U7DWAUITb/1lwiyecbhMI=
-=4eSt
------END PGP SIGNATURE-----
+MD5 34988679b07155ed51264b0ce7a1b937 lam-mpi-6.5.6-r1.ebuild 1432
+MD5 59286f923839d8cfabd95dc57ffed51d lam-mpi-6.5.7.ebuild 1346
+MD5 2d07200b24e39e4bfffa603c726336af lam-mpi-6.5.9-r1.ebuild 1514
+MD5 7ddd43f64462c213d1f3d3510767723b ChangeLog 2133
+MD5 0bdf7a839669542df4022074d51dfe12 lam-mpi-6.5.9.ebuild 1344
+MD5 742d2b0cd6347d7e8403628f0d56a5d1 files/digest-lam-mpi-6.5.7 63
+MD5 e897a667e2ca42d134950b2c85a4b4e3 files/digest-lam-mpi-6.5.9 63
+MD5 b2a92a68d13d42103750c61268d9ef19 files/digest-lam-mpi-6.5.6-r1 63
+MD5 e897a667e2ca42d134950b2c85a4b4e3 files/digest-lam-mpi-6.5.9-r1 63

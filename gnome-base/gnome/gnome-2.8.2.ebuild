@@ -1,18 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.8.2.ebuild,v 1.12 2005/10/21 11:58:41 leonardop Exp $
-
-DESCRIPTION="Meta package for the GNOME desktop"
-HOMEPAGE="http://www.gnome.org/"
-
-LICENSE="as-is"
-SLOT="2.0"
-# when unmasking for an arch
-# double check none of the deps are still masked !
-KEYWORDS="x86 ppc sparc amd64 mips hppa ia64 alpha"
-IUSE="accessibility cdr dvdr hal"
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome/gnome-2.8.2.ebuild,v 1.1 2005/01/20 10:06:44 obz Exp $
 
 S=${WORKDIR}
+DESCRIPTION="Meta package for the GNOME desktop"
+HOMEPAGE="http://www.gnome.org/"
+LICENSE="as-is"
+SLOT="2.0"
+
+IUSE="accessibility cdr dvdr hal"
+# when unmasking for an arch
+# double check none of the deps are still masked !
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~mips ~hppa ~ia64 ~alpha"
 
 RDEPEND="!gnome-base/gnome-core
 
@@ -21,7 +20,8 @@ RDEPEND="!gnome-base/gnome-core
 	>=x11-libs/gtk+-2.4.14
 	>=x11-libs/pango-1.6
 
-	>=dev-libs/libxml2-2.6.16
+	hppa? ( >=dev-libs/libxml2-2.6.9 )
+	!hppa? ( >=dev-libs/libxml2-2.6.16 )
 	>=dev-libs/libxslt-1.1.12
 
 	>=x11-libs/libxklavier-1.04-r1
@@ -50,12 +50,12 @@ RDEPEND="!gnome-base/gnome-core
 	>=gnome-base/eel-2.8.2
 	>=gnome-base/nautilus-2.8.2-r1
 
-	>=media-libs/gstreamer-0.8.8
+	>=media-libs/gstreamer-0.8.7
 	>=media-libs/gst-plugins-0.8.7
 	>=gnome-extra/gnome-media-2.8
 
 	>=media-gfx/eog-2.8.2
-	!mips? ( >=www-client/epiphany-1.4.6 )
+	!hppa? ( !mips? ( >=net-www/epiphany-1.4.6 ) )
 	>=app-arch/file-roller-2.8.3
 	>=gnome-extra/gcalctool-4.4.20
 	>=gnome-extra/gconf-editor-2.8.2
@@ -101,7 +101,7 @@ RDEPEND="!gnome-base/gnome-core
 	cdr? ( >=gnome-extra/nautilus-cd-burner-2.8.6 )
 	dvdr? ( >=gnome-extra/nautilus-cd-burner-2.8.6 )
 
-	!mips? ( hal? ( >=gnome-base/gnome-volume-manager-1.0.2-r1 ) )
+	hal? ( >=gnome-base/gnome-volume-manager-1.0.2-r1 )
 
 	>=gnome-extra/evolution-data-server-1.0.3
 	>=mail-client/evolution-2.0.3
@@ -130,7 +130,7 @@ RDEPEND="!gnome-base/gnome-core
 # intltool
 # gtk-doc
 
-pkg_postinst() {
+pkg_postinst () {
 
 	einfo "Note that to change windowmanager to metacity do: "
 	einfo " export WINDOW_MANAGER=\"/usr/bin/metacity\""

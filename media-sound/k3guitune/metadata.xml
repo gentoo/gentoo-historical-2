@@ -2,7 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>sound</herd>
-<herd>kde</herd>
 <maintainer>
   <email>pkdawson@gentoo.org</email>
 </maintainer>

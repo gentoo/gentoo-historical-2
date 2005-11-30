@@ -1,31 +1,10 @@
-# ChangeLog for sci-biology/mrbayes
+# ChangeLog for sci-biology/MrBayes
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/mrbayes/ChangeLog,v 1.9 2005/10/09 14:39:45 ribosome Exp $
-
-  09 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -mrbayes-3.0.ebuild:
-  Pruning old version.
-
-  08 Oct 2005; Lina Pezzella <j4rg0n@gentoo.org> mrbayes-3.1.1.ebuild:
-  Stable ppc-macos, Bug 108333
-
-  08 Oct 2005; Paul Varner <fuzzyray@gentoo.org> mrbayes-3.1.1.ebuild:
-  Stable on x86. Bug# 108333
-
-*mrbayes-3.1.1 (14 Aug 2005)
-
-  14 Aug 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml,
-  +mrbayes-3.1.1.ebuild:
-  New version. Added MPI support.
-
-  20 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> mrbayes-3.0.ebuild:
-  Stable x86 and ppc-macos
-
-  09 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> mrbayes-3.0.ebuild:
-  Restricted fetching because of the license. Verified with GNU lawyers
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/mrbayes/ChangeLog,v 1.1 2005/02/03 02:20:37 j4rg0n Exp $
 
 *mrbayes-3.0 (02 Feb 2005)
 
-  02 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> +metadata.xml, +mrbayes-3.0.ebuild:
+  02 Feb 2005; <burgundy@gentoo.org> +metadata.xml, +mrbayes-3.0.ebuild:
   Moved from sci-biology/MrBayes to sci-biology/mrbayes.
 
 *MrBayes-3.0 (30 Jan 2005)

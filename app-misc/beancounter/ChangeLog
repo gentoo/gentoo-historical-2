@@ -1,18 +1,6 @@
 # ChangeLog for app-misc/beancounter
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beancounter/ChangeLog,v 1.5 2005/11/28 12:09:58 mcummings Exp $
-
-  28 Nov 2005; <mcumming@gentoo.org> beancounter-0.8.1.ebuild:
-  Switched from perl-module to perl-app eclass
-
-  21 Jul 2005; David Holm <dholm@gentoo.org> beancounter-0.8.1.ebuild:
-  Added to ~ppc.
-
-  26 May 2005; Sven Wegener <swegener@gentoo.org> metadata.xml:
-  Herd name is 'no-herd' not 'noherd'
-
-  05 May 2005; Sven Wegener <swegener@gentoo.org> beancounter-0.8.1.ebuild:
-  Fixed DEPEND.
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beancounter/ChangeLog,v 1.1 2005/05/04 08:02:51 satya Exp $
 
 *beancounter-0.8.1 (04 May 2005)
 

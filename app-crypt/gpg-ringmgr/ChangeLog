@@ -1,29 +1,6 @@
 # ChangeLog for app-crypt/gpg-ringmgr
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpg-ringmgr/ChangeLog,v 1.10 2005/04/21 18:02:00 blubb Exp $
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gpg-ringmgr-1.12.ebuild:
-  stable on amd64
-
-  11 Dec 2004; Jason Wever <weeve@gentoo.org> gpg-ringmgr-1.12.ebuild:
-  Stable on sparc.
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  gpg-ringmgr-1.12.ebuild:
-  Masked gpg-ringmgr-1.12.ebuild stable for ppc
-
-  19 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
-  add metadata.xml
-
-  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
-  gpg-ringmgr-1.12.ebuild:
-  QA - IUSE fix
-
-  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> gpg-ringmgr-1.12.ebuild:
-  Marking stable on hppa
-
-  03 Oct 2003; Aron Griffis <agriffis@gentoo.org> gpg-ringmgr-1.12.ebuild:
-  Stable on alpha
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpg-ringmgr/ChangeLog,v 1.1 2003/05/06 06:51:56 robbat2 Exp $
 
 *gpg-ringmgr-1.12 (05 May 2003)
 

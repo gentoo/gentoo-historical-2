@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmon+smp/wmmon+smp-1.0-r1.ebuild,v 1.9 2005/03/07 16:47:06 corsair Exp $
-
-IUSE=""
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmon+smp/wmmon+smp-1.0-r1.ebuild,v 1.1 2002/09/16 16:02:05 raker Exp $
 
 S=${WORKDIR}/wmmon.app
 S2=${S}/wmmon
@@ -12,7 +10,7 @@ HOMEPAGE="http://www.ne.jp/asahi/linux/timecop/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ppc64"
+KEYWORDS="x86"
 
 DEPEND="virtual/x11"
 
@@ -23,7 +21,6 @@ src_compile() {
 
 src_install () {
 	exeinto /usr/bin
-	cp ${S2}/wmmon ${S2}/wmmon+smp
-	doexe ${S2}/wmmon+smp
+	doexe ${S2}/wmmon
 	dodoc ${S}/README ${S}/COPYING ${S}/INSTALL
 }

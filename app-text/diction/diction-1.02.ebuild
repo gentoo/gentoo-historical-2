@@ -1,23 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/diction/diction-1.02.ebuild,v 1.12 2005/01/01 16:08:30 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
 
-DESCRIPTION="Diction and style checkers for english and german texts"
+inherit eutils
+
+S=${WORKDIR}/${P}
+DESCRIPTION="Diction and style checkers for english and german texts."
+SRC_URI="http://ftp.gnu.org/gnu/diction/diction-1.02.tar.gz"
 HOMEPAGE="http://www.fsf.org/software/diction/diction.html"
-SRC_URI="http://ftp.gnu.org/gnu/diction/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~mips"
 IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86"
 
 DEPEND="sys-devel/gettext"
 
 src_compile() {
-	./configure --prefix=/usr ||die
-	emake || die
+    ./configure --prefix=${D}usr --mandir=${D}usr/share/man ||die
+    emake || die
+
 }
 
-src_install() {
-	make prefix=${D}/usr install
+src_install () {
+    make DESTDIR=${D} install
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-cpma/quake3-cpma-1.2.ebuild,v 1.3 2004/06/24 22:44:25 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake3-cpma/quake3-cpma-1.2.ebuild,v 1.1 2004/01/29 08:32:20 vapier Exp $
 
 MOD_DESC="CPMA"
 MOD_NAME=cpma

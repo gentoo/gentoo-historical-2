@@ -1,8 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/gaim-smileys/gaim-smileys-20031002.ebuild,v 1.6 2005/10/02 19:38:21 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/gaim-smileys/gaim-smileys-20031002.ebuild,v 1.1 2003/10/02 04:42:06 vapier Exp $
 
-IUSE=""
 DESCRIPTION="Snapshot of Available Gaim Smiley Themes"
 HOMEPAGE="http://gaim.sourceforge.net/themes.php"
 # use absolute links rather than php-redirects from gaim.sf.net
@@ -37,7 +36,7 @@ SRC_URI="http://www.kingant.net/oscar/gaim/icq.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="x86 ppc sparc alpha"
 
 DEPEND=">=net-im/gaim-0.59"
 

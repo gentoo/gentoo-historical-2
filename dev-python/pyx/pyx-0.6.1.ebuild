@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyx/pyx-0.6.1.ebuild,v 1.5 2004/09/11 22:30:56 lucass Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyx/pyx-0.6.1.ebuild,v 1.1 2004/04/06 22:03:36 liquidx Exp $
 
 IUSE=""
 
@@ -14,10 +14,10 @@ SRC_URI="mirror://sourceforge/pyx/${MY_P}.tar.gz"
 HOMEPAGE="http://pyx.sourceforge.net/"
 
 DEPEND=">=dev-lang/python-2.2
-	virtual/tetex"
+		>=app-text/tetex-1"
 
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 LICENSE="GPL-2"
 
 src_install() {

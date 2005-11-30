@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-1.00_beta2.ebuild,v 1.9 2005/07/13 04:14:41 psi29a Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-1.00_beta2.ebuild,v 1.1 2005/02/06 00:52:55 spock Exp $
 
 inherit eutils flag-o-matic
 
@@ -11,22 +11,15 @@ HOMEPAGE="http://aterm.sourceforge.net"
 SRC_URI="ftp://ftp.afterstep.org/apps/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86"
 IUSE="cjk xgetdefault"
 
 DEPEND="media-libs/jpeg
 		media-libs/libpng
-		>=x11-wm/afterstep-2
+		x11-wm/afterstep
 		virtual/x11"
 
 S="${WORKDIR}/${MY_P}"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/aterm-0.4.2-scroll-double-free.patch
-	epatch ${FILESDIR}/aterm-1.00-beta2-bgfix.patch
-}
 
 src_compile() {
 	local myconf
@@ -68,10 +61,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
+	echo ""
 	ewarn "The transparent background will only work if you have the 'real' root wallpaper"
 	ewarn "set. Use Esetroot (x11-terms/eterm) or fbsetbg (x11-wm/fluxbox) if you are"
 	ewarn "experiencing problems with transparency in aterm."
-	echo
+	echo ""
 }
 

@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/7plus/7plus-2.25.ebuild,v 1.6 2005/05/30 18:15:07 swegener Exp $
-
-inherit toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/app-text/7plus/7plus-2.25.ebuild,v 1.1 2003/11/19 02:05:50 mr_bones_ Exp $
 
 S="${WORKDIR}/7plsrc.${PV//./}"
 DESCRIPTION="An encoder for packet radio"
@@ -10,8 +8,8 @@ HOMEPAGE="http://home.t-online.de/home/dg1bbq/7plus.htm"
 SRC_URI="http://home.t-online.de/home/dg1bbq/7pl${PV//./}sr.tgz"
 
 LICENSE="7plus"
-SLOT="0"
 KEYWORDS="~x86"
+SLOT="0"
 IUSE=""
 
 DEPEND="sys-apps/sed"
@@ -20,9 +18,9 @@ RDEPEND=""
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -e "s:CC = gcc:CC = $(tc-getCC):" \
-		-e "s:-O2:${CFLAGS}:" linux.mak > Makefile \
-		|| die "sed Makefile failed"
+	sed -e "s:CC = gcc:CC = ${CC}:" \
+		-e "s:-O2:${CFLAGS}:" linux.mak > Makefile || \
+			die "sed Makefile failed"
 }
 
 src_compile() {
@@ -30,6 +28,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin 7plus || die "dobin failed"
-	dodoc 7pl_hist.nts 7plh_old.nts format.def
+	dobin 7plus                                || die "dobin failed"
+	dodoc 7pl_hist.nts 7plh_old.nts format.def || die "dodoc failed"
 }

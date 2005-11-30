@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.4.ebuild,v 1.11 2005/05/30 05:03:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/nano/nano-1.3.4.ebuild,v 1.1 2004/08/18 04:09:28 vapier Exp $
 
 inherit eutils
 
@@ -11,12 +11,12 @@ SRC_URI="http://www.nano-editor.org/dist/v1.3/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sh sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390 ~macos"
 IUSE="nls build spell justify debug slang ncurses nomac"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	nls? ( sys-devel/gettext )
-	!ncurses? ( slang? ( sys-libs/slang ) )"
+	slang? ( sys-libs/slang )"
 PROVIDE="virtual/editor"
 
 S=${WORKDIR}/${MY_P}
@@ -24,7 +24,6 @@ S=${WORKDIR}/${MY_P}
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${PV}-nanobrack.patch
 	use nomac && epatch ${FILESDIR}/${PV}-nomac.patch
 }
 

@@ -1,49 +1,17 @@
-# ChangeLog for dev-python/simpleparse
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/simpleparse/ChangeLog,v 1.12 2005/10/02 14:19:59 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> simpleparse-2.0.0.ebuild:
-  Mark 2.0.0 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> simpleparse-2.0.0.ebuild:
-  add ~ia64
-
-  24 Apr 2005; Simon Stelling <blubb@gentoo.org> simpleparse-2.0.0.ebuild:
-  stable on amd64
-
-  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  12 Dec 2004; Bryan Ã˜stergaard <kloeri@gentoo.org>
-  simpleparse-2.0.0.ebuild:
-  Stable on alpha.
-
-  07 Nov 2004; Jason Wever <weeve@gentoo.org> simpleparse-2.0.0.ebuild:
-  Stable on sparc.
-
-  04 Nov 2004; Rob Cakebread <pythonhead@gentoo.org> simpleparse-1.0.ebuild,
-  simpleparse-2.0.0.ebuild:
-  depend on app-arch/unzip bug# 69831, marked stable x86
-
-  23 Sep 2004; <blubb@gentoo.org> simpleparse-2.0.0.ebuild:
-  added ~amd64
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  23 Jun 2004; David Holm <dholm@gentoo.org> simpleparse-2.0.0.ebuild:
-  Added to ~ppc.
+# ChangeLog for dev-python/SimpleParse
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/simpleparse/ChangeLog,v 1.1 2004/06/21 23:58:02 kloeri Exp $
 
 *simpleparse-2.0.0 (22 Jun 2004)
 
-  22 Jun 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> +metadata.xml,
+  22 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
   +simpleparse-1.0.ebuild, +simpleparse-2.0.0.ebuild:
   Moved from dev-python/SimpleParse.
 
-  04 May 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> SimpleParse-1.0.ebuild:
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> SimpleParse-1.0.ebuild:
   Remove default S.
 
-  28 Mar 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> SimpleParse-1.0.ebuild:
+  28 Mar 2004; Bryan Østergaard <kloeri@gentoo.org> SimpleParse-1.0.ebuild:
   Update SRC_URI and HOMEPAGE.
 
 *SimpleParse-2.0.0 (10 Mar 2004)

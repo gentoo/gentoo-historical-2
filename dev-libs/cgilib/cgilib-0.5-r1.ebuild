@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cgilib/cgilib-0.5-r1.ebuild,v 1.4 2005/11/10 15:05:21 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cgilib/cgilib-0.5-r1.ebuild,v 1.1 2005/06/26 01:24:03 vanquirius Exp $
 
 inherit eutils toolchain-funcs
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.infodrom.org/projects/${PN}/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sparc ~x86"
 IUSE=""
 
 src_unpack(){
@@ -23,15 +23,13 @@ src_unpack(){
 
 src_compile(){
 	emake
-	# test is possibly broken on other arches
-	use x86 && $(tc-getCC) -o cgilib.test cgitest.c -lcgi
+	$(tc-getCC) -o cgilib.test cgitest.c -lcgi
 }
-
 src_install(){
 	insinto /usr/include
 	doins cgi.h
 	dolib.a libcgi.a
-	use x86 && dobin cgilib.test
+	dobin cgilib.test
 	doman *.[35]
 	dodoc CHANGES CREDITS readme cookies.txt
 }

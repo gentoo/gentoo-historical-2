@@ -1,42 +1,6 @@
-# ChangeLog for net-irc/ptlink-ircd
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ptlink-ircd/ChangeLog,v 1.9 2005/01/30 12:49:18 swegener Exp $
-
-*ptlink-ircd-6.19.3 (30 Jan 2005)
-
-  30 Jan 2005; Sven Wegener <swegener@gentoo.org>
-  +ptlink-ircd-6.19.3.ebuild:
-  Version bump.
-
-*ptlink-ircd-6.19.2 (12 Dec 2004)
-
-  12 Dec 2004; Sven Wegener <swegener@gentoo.org>
-  +ptlink-ircd-6.19.2.ebuild:
-  Version bump.
-
-  25 Nov 2004; Sven Wegener <swegener@gentoo.org>
-  -ptlink-ircd-6.18.2.ebuild, ptlink-ircd-6.19.1.ebuild:
-  Added support for the ssl USE flag. Removed old ebuild.
-
-  25 Nov 2004; Sven Wegener <swegener@gentoo.org> ptlink-ircd-6.18.2.ebuild,
-  ptlink-ircd-6.19.1.ebuild:
-  Disabled ipv6 support as upstream considers it unstable.
-
-*ptlink-ircd-6.19.1 (14 Nov 2004)
-
-  14 Nov 2004; Sven Wegener <swegener@gentoo.org>
-  -ptlink-ircd-6.18.1.ebuild, ptlink-ircd-6.18.2.ebuild,
-  +ptlink-ircd-6.19.1.ebuild:
-  Version bump. Removed old ebuild.
-
-*ptlink-ircd-6.18.2 (18 Oct 2004)
-
-  18 Oct 2004; Sven Wegener <swegener@gentoo.org>
-  +ptlink-ircd-6.18.2.ebuild:
-  Version bump.
-
-  11 Jul 2004; Sven Wegener <swegener@gentoo.org> files/ptlink-ircd.init.d:
-  Added provide ircd to init script.
+# ChangeLog for net-irc/ptlink
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ptlink-ircd/ChangeLog,v 1.1 2004/07/10 22:24:03 swegener Exp $
 
 *ptlink-ircd-6.18.1 (11 Jul 2004)
 

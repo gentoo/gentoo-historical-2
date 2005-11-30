@@ -1,50 +1,6 @@
 # ChangeLog for app-dicts/kasumi
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/kasumi/ChangeLog,v 1.11 2005/11/18 09:13:19 hansmi Exp $
-
-  18 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> kasumi-0.10.ebuild:
-  Added to ~ppc.
-
-*kasumi-0.10 (29 Sep 2005)
-
-  29 Sep 2005; Mamoru KOMACHI <usata@gentoo.org> -kasumi-0.3.ebuild,
-  -kasumi-0.6.ebuild, kasumi-0.8.ebuild, +kasumi-0.10.ebuild:
-  Version bumped.
-
-*kasumi-0.8 (12 Apr 2005)
-
-  12 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> +kasumi-0.8.ebuild:
-  Version bumped.
-
-  21 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> kasumi-0.7.ebuild:
-  Stable on x86.
-
-*kasumi-0.7 (05 Jan 2005)
-
-  05 Jan 2005; Mamoru KOMACHI <usata@gentoo.org>
-  -files/kasumi-0.5-store.diff, -kasumi-0.5-r1.ebuild, kasumi-0.6.ebuild,
-  +kasumi-0.7.ebuild:
-  Version bumped. Marked 0.6 stable on x86.
-
-*kasumi-0.6 (30 Nov 2004)
-
-  30 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> -kasumi-0.5.ebuild,
-  +kasumi-0.6.ebuild:
-  Version bumped.
-
-*kasumi-0.5-r1 (08 Nov 2004)
-
-  08 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
-  +files/kasumi-0.5-store.diff, +kasumi-0.5-r1.ebuild:
-  Fixed segfault after removing registered word.
-
-*kasumi-0.5 (06 Nov 2004)
-
-  06 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> +kasumi-0.5.ebuild:
-  Version bumped.
-
-  26 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> kasumi-0.3.ebuild:
-  Marked as stable.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/kasumi/ChangeLog,v 1.1 2004/07/10 07:49:35 usata Exp $
 
 *kasumi-0.3 (10 Jul 2004)
 

@@ -1,4 +1,2 @@
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 4768ef136c708360ff4e6617f683eeea ChangeLog 915
-MD5 6a17256e2f5e4989b0f3fd71502ed919 sdlvexed-0.6.ebuild 962
-MD5 aa58e718dbbe6b142d0fd182038fa609 files/digest-sdlvexed-0.6 65
+MD5 18a4447ced82537f5e461a824259c70d sdlvexed-0.5.ebuild 1037
+MD5 353af540f4fc6122ec089122a1bf5318 files/digest-sdlvexed-0.5 65

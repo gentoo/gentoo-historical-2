@@ -1,40 +1,6 @@
-# ChangeLog for games-action/slune
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/slune/ChangeLog,v 1.11 2005/09/07 04:48:30 mr_bones_ Exp $
-
-*slune-1.0.9 (06 Sep 2005)
-
-  06 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> +slune-1.0.9.ebuild:
-  version bump (bug #104946)
-
-  16 May 2005; Michael Sterrett <mr_bones_@gentoo.org> slune-1.0.7.ebuild:
-  stablize
-
-*slune-1.0.7 (08 May 2005)
-
-  08 May 2005; Mike Frysinger <vapier@gentoo.org> +slune-1.0.7.ebuild:
-  Version bump #61222 by Matija Suklje (hook).
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  01 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> slune-0.3.1.ebuild,
-  slune-0.5.ebuild, slune-0.6.1.ebuild:
-  fix HOMEPAGE and SRC_URI (bug #52576)
-
-  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> slune-0.3.1.ebuild,
-  slune-0.5.ebuild, slune-0.6.1.ebuild:
-  Added IUSE.
-
-*slune-0.6.1 (21 Dec 2003)
-
-  21 Dec 2003; Bryan Østergaard,,, <kloeri@gentoo.org> slune-0.6.1.ebuild:
-  Version bump
-
-*slune-0.5 (05 Dec 2003)
-
-  05 Dec 2003; Bryan Østergaard,,, <kloeri@gentoo.org> slune-0.5.ebuild:
-  Version bump. Also closes bug #34625.
+# ChangeLog for app-games/slune
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/slune/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
 *slune-0.3.1 (10 May 2003)
 

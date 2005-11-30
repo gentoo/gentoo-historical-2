@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/linux-igd/linux-igd-0.75.ebuild,v 1.12 2005/07/30 18:14:44 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/linux-igd/linux-igd-0.75.ebuild,v 1.1 2002/07/20 19:36:01 blizzy Exp $
 
 MY_PN="gateway"
 S="${WORKDIR}/${MY_PN}-${PV}"
@@ -8,14 +8,14 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 DESCRIPTION="Daemon that emulates Microsoft's Internet Connection Service (ICS)
 	for UPnP-aware clients"
 HOMEPAGE="http://linux-igd.sourceforge.net"
-SRC_URI="mirror://sourceforge/linux-igd/${MY_PN}-${PV}.tgz"
+SRC_URI="http://unc.dl.sourceforge.net/sourceforge/linux-igd/${MY_PN}-${PV}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ppc"
-IUSE=""
+KEYWORDS="x86"
 
-DEPEND="net-misc/upnp
-	net-firewall/iptables"
+RDEPEND="net-misc/upnp
+	sys-apps/iptables"
+DEPEND="${RDEPEND}"
 
 src_compile() {
 	mv Makefile Makefile.orig
@@ -29,11 +29,13 @@ src_compile() {
 }
 
 src_install () {
-	dobin upnpd
+	exeinto /usr/bin
+	doexe upnpd
 	insinto /etc/linuxigd
 	doins etc/*
 	doins ${FILESDIR}/upnpd.conf
-	newinitd ${FILESDIR}/rc_upnpd upnpd
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/rc_upnpd upnpd
 	dodoc CHANGELOG LICENSE README SECURITY TODO
 }
 

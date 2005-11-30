@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/selflinux/selflinux-0.8.1.ebuild,v 1.6 2005/01/01 13:20:30 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/selflinux/selflinux-0.8.1.ebuild,v 1.1 2003/07/29 20:26:12 mholzer Exp $
 
 IUSE=""
 

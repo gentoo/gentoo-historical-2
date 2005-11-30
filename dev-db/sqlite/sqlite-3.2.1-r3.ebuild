@@ -1,27 +1,31 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-3.2.1-r3.ebuild,v 1.10 2005/08/22 15:51:51 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-3.2.1-r3.ebuild,v 1.1 2005/04/24 20:53:44 arj Exp $
 
 inherit eutils
 
-DESCRIPTION="SQLite: An SQL Database Engine in a C Library"
-HOMEPAGE="http://www.sqlite.org/"
-SRC_URI="http://www.sqlite.org/${P}.tar.gz"
-
-LICENSE="as-is"
-SLOT="3"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ~ppc-macos ppc64 sparc x86"
 IUSE="nothreadsafe doc"
 
+DESCRIPTION="SQLite: An SQL Database Engine in a C Library."
+SRC_URI="http://www.sqlite.org/${P}.tar.gz"
+HOMEPAGE="http://www.sqlite.org"
+
+# Adding glibc as dependency for USE !nothreadsafe until someone can tell me
+#   if all virtual/libc's provide POSIX threads (pthread.h)
+#   - 20041203, Armando Di Cianno <fafhrd@gentoo.org>
 DEPEND="virtual/libc
-	doc? ( dev-lang/tcl )"
+	!nothreadsafe? ( !ppc-macos? ( sys-libs/glibc ) )
+	doc? (dev-lang/tcl)"
+SLOT="3"
+LICENSE="as-is"
+
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc-macos ~sparc ~x86 ~ppc64"
 
 src_unpack() {
 	unpack ${A}
 
 	epatch ${FILESDIR}/${P}-data-corruption.patch
 	epatch ${FILESDIR}/${P}-tcl-fix.patch
-	epunt_cxx
 }
 
 src_compile() {

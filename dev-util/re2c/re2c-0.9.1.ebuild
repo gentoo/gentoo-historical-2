@@ -1,20 +1,19 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/re2c/re2c-0.9.1.ebuild,v 1.6 2004/09/23 23:59:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/re2c/re2c-0.9.1.ebuild,v 1.1 2003/06/03 18:04:44 robbat2 Exp $
 
 inherit eutils
 
-DESCRIPTION="tool for generating C-based recognizers from regular expressions"
+DESCRIPTION="re2c is a tool for generating C-based recognizers from regular expressions."
 HOMEPAGE="http://www.tildeslash.org/re2c/"
 SRC_URI="http://www.tildeslash.org/re2c/${P}.tar.gz"
-
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="x86"
 IUSE=""
-
-DEPEND=">=dev-util/byacc-1.9
-	!>=sys-devel/gcc-3.3.2"
+DEPEND=">=byacc-1.9"
+#RDEPEND="" # Inherited from ${DEPEND}
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A} || die
@@ -24,11 +23,13 @@ src_unpack() {
 }
 
 src_compile() {
-	emake -e || die
+	# This gets our C(XX)FLAGS in
+	export EXTRA_EMAKE="-e"
+	emake || die
 }
 
 src_install() {
-	dobin re2c || die "dobin failed"
 	doman re2c.1
+	dobin re2c
 	dodoc CHANGELOG NO_WARRANTY README doc/*
 }

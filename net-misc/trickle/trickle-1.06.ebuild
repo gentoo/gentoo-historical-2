@@ -1,23 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/trickle/trickle-1.06.ebuild,v 1.7 2005/07/06 23:07:48 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/trickle/trickle-1.06.ebuild,v 1.1 2003/08/06 19:08:04 mholzer Exp $
 
 DESCRIPTION="a portable lightweight userspace bandwidth shaper"
 SRC_URI="http://www.monkey.org/~marius/${PN}/${P}.tar.gz"
 HOMEPAGE="http://www.monkey.org/~marius/trickle/"
 
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="BSD"
 IUSE=""
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	dev-libs/libevent
 	sys-apps/sed"
-RDEPEND="virtual/libc"
+RDEPEND="virtual/glibc"
 
 src_compile() {
-	econf || die "econf failed"
+	econf
 	make PREFIX=/usr || die
 }
 

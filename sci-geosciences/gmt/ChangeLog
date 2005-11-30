@@ -1,30 +1,6 @@
-# ChangeLog for sci-geosciences/gmt
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gmt/ChangeLog,v 1.8 2005/11/20 18:07:07 markusle Exp $
-
-  20 Nov 2005; Markus Dittrich <markusle@gentoo.org> gmt-4.0.ebuild:
-  Provided proper ftp address in SRC_URI. This fixes bug #113078.
-
-  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  29 May 2005; Marcus D. Hanwell <marcus@gentoo.org> gmt-4.0.ebuild:
-  Stable on amd64 and x86.
-
-  23 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> :
-  Updating digest for gmt-4.0 as GMT_share.tar.bz2 has been changed on their
-  server - closes bug 83084.
-
-*gmt-4.0 (23 Feb 2005)
-
-  23 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> +gmt-4.0.ebuild:
-  Version bump, thanks to Castelão <castelao@oceanologia.net>, bug 51887. Some
-  modifications by me before adding it to portage.
-
-  04 Feb 2005; Patrick Kursawe <phosphan@gentoo.org> gmt-3.4.4-r1.ebuild,
-  -gmt-3.4.3.ebuild:
-  When using gmtsuppl it needs autoconf-2.13 (see bug #79805)
-  Removed old version.
+# ChangeLog for app-sci/gmt
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-geosciences/gmt/ChangeLog,v 1.1 2004/12/29 01:29:52 ribosome Exp $
 
 *gmt-3.4.4-r1 (28 Dec 2004)
 

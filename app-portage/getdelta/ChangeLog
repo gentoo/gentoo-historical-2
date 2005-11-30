@@ -1,33 +1,6 @@
 # ChangeLog for app-portage/getdelta
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/getdelta/ChangeLog,v 1.7 2005/08/13 23:59:44 yoswink Exp $
-
-  13 Aug 2005; Jose Luis Rivero <yoswink@gentoo.org> getdelta-0.7.0.ebuild:
-  Keyworded ~alpha wrt #93379 getdelta-0.7.0.ebuild
-
-  10 May 2005; Stefan Schweizer <genstef@gentoo.org> -getdelta-0.6.9.ebuild,
-  getdelta-0.7.0.ebuild:
-  ~amd64 thanks to dang and cparrott in #gentoo-amd64-dev
-
-*getdelta-0.7.0 (09 May 2005)
-
-  09 May 2005; Stefan Schweizer <genstef@gentoo.org> +getdelta-0.7.0.ebuild:
-  New version using bdelta for smaller patches, "-amd64" removed since it
-  should work on amd64
-
-  09 May 2005; Stefan Schweizer <genstef@gentoo.org> -getdelta-0.6.7.ebuild,
-  getdelta-0.6.9.ebuild:
-  Add legacy xdelta DEPEND to avoid conflicts, thanks to blackpengui, and
-  remove old ebuildn
-
-  20 Mar 2005; Stefan Schweizer <genstef@gentoo.org> getdelta-0.6.9.ebuild:
-  ~sparc thanks to Frank Schmitt
-
-*getdelta-0.6.9 (13 Mar 2005)
-
-  13 Mar 2005; Stefan Schweizer <genstef@gentoo.org> +getdelta-0.6.9.ebuild:
-  version bump, it is now possible to disable getdelta for one emerge only:
-  "GETDELTA=0 emerge foobar"
+# $Header: /var/cvsroot/gentoo-x86/app-portage/getdelta/ChangeLog,v 1.1 2005/03/05 09:34:04 genstef Exp $
 
 *getdelta-0.6.7 (05 Mar 2005)
 

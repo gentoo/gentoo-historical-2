@@ -1,26 +1,8 @@
 # ChangeLog for app-arch/pdv
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/pdv/ChangeLog,v 1.8 2005/05/17 20:09:16 wormo Exp $
-
-*pdv-1.5.1-r1 (17 May 2005)
-
-  17 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  +files/pdv-1.5.1-x-config.patch, pdv-1.5.1-r1.ebuild:
-  fix configure script for X front-end, closes bug #90955
-
-  26 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  +files/pdv-1.5.1-early-free.patch, +files/pdv-1.5.1-opt.patch:
-  Fixed a bug in command line parsing: end of args overlooked due to type 
-  mismatch in the loop comparison
-  Fixed a bug in locating the pvm stub: re-use of a ptr after it was freed
-
-  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> pdv-1.5.1.ebuild:
-  Fix use invocation
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/pdv/ChangeLog,v 1.1 2003/07/07 13:39:01 vapier Exp $
 
 *pdv-1.5.1 (09 Jul 2003)
-
-  24 Sep 2003; Markus Nigbur <pyrania@gentoo.org> :
-  Emerge died when using -X (bug #29508)
 
   09 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by me.

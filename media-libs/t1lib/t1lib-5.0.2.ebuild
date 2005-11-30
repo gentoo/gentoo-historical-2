@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/t1lib/t1lib-5.0.2.ebuild,v 1.21 2005/11/08 07:15:28 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/t1lib/t1lib-5.0.2.ebuild,v 1.1 2004/04/28 04:38:55 vapier Exp $
 
-inherit eutils gnuconfig flag-o-matic libtool
+inherit gnuconfig flag-o-matic
 
 DESCRIPTION="A Type 1 Font Rasterizer Library for UNIX/X11"
 HOMEPAGE="ftp://metalab.unc.edu/pub/Linux/libs/graphics/"
@@ -10,34 +10,16 @@ SRC_URI="ftp://sunsite.unc.edu/pub/Linux/libs/graphics/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="5"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 s390 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64"
 IUSE="X doc"
 
-RDEPEND="X? ( || ( (
-		x11-libs/libX11
-		x11-libs/libXaw
-		x11-libs/libXt
-		x11-libs/libXmu
-		x11-libs/libSM
-		x11-libs/libICE
-		x11-libs/libXext )
-	virtual/x11 ) )"
-
-DEPEND="${RDEPEND}
-	X? ( || ( (
-		x11-libs/libXfont
-		x11-proto/xproto
-		x11-proto/fontsproto )
-	virtual/x11 ) )"
+DEPEND="X? ( virtual/x11 )"
 
 src_unpack() {
 	unpack ${A}
-	if use amd64 || use alpha || use ppc64 || use ppc-macos; then
+	if use amd64 || use alpha; then
 		gnuconfig_update || die "gnuconfig_update failed"
 	fi
-	use ppc-macos && darwintoolize
-	cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
 
 	cd ${S}/doc
 	mv Makefile.in Makefile.in-orig
@@ -53,8 +35,6 @@ src_compile() {
 
 	if [ ! -x /usr/bin/latex ] ; then
 		myopt="without_doc"
-	else
-		addwrite /var/cache/fonts
 	fi
 
 	econf \
@@ -65,8 +45,29 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	cd lib
+	insinto /usr/include
+	doins t1lib.h
 
+	use X && ( \
+		doins t1libx.h
+		ln -s -f libt1x.lai .libs/libt1x.la
+		dolib .libs/libt1x.{la,a,so.${PV}}
+		dosym libt1x.so.${PV} /usr/lib/libt1x.so.${PV%%.*}
+		dosym libt1x.so.${PV} /usr/lib/libt1x.so
+	)
+
+	ln -s -f libt1.lai .libs/libt1.la
+	dolib .libs/libt1.{la,a,so.${PV}}
+	dosym libt1.so.${PV} /usr/lib/libt1.so.${PV%%.*}
+	dosym libt1.so.${PV} /usr/lib/libt1.so
+	insinto /etc/t1lib
+	doins t1lib.config
+
+	use X && dobin xglyph/.libs/xglyph
+	dobin type1afm/.libs/type1afm
+
+	cd ..
 	dodoc Changes LGPL LICENSE README*
 	if use doc ; then
 		cd doc

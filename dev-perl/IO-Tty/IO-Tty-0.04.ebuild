@@ -1,16 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Tty/IO-Tty-0.04.ebuild,v 1.17 2005/03/14 11:21:19 mcummings Exp $
-
-inherit perl-module
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Per Wigren <wigren@home.se>
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IO-Tty/IO-Tty-0.04.ebuild,v 1.1 2002/05/11 17:40:00 agenkin Exp $
 
 DESCRIPTION="IO::Tty and IO::Pty modules for Perl"
-HOMEPAGE="http://search.cpan.org/~gbarr/${P}/"
-SRC_URI="mirror://cpan/authors/id/G/GB/GBARR/${P}.tar.gz"
+HOMEPAGE="http://cpan.valueclick.com/authors/id/G/GB/GBARR/${P}.readme"
 
-SLOT="0"
-LICENSE="Artistic"
-KEYWORDS="x86 amd64 ppc sparc alpha"
-IUSE=""
+S=${WORKDIR}/${P}
+SRC_URI="http://cpan.valueclick.com/authors/id/G/GB/GBARR/${P}.tar.gz"
+
+. /usr/portage/eclass/inherit.eclass || die
+inherit perl-module
 
 mymake="/usr"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/aalib/aalib-1.4_rc5.ebuild,v 1.5 2005/11/08 18:05:42 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/aalib/aalib-1.4_rc5.ebuild,v 1.1 2005/05/03 20:35:45 eradicator Exp $
 
 inherit eutils libtool toolchain-funcs
 
@@ -16,15 +16,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~ppc-macos ~s390 ~sparc ~x86"
 IUSE="X slang gpm"
 
-RDEPEND="X? ( || ( (
-		x11-libs/libX11 )
-		virtual/x11 ) )"
-
-DEPEND="${RDEPEND}
-	>=sys-libs/ncurses-5.1
-	X? ( || ( (
-		x11-proto/xproto )
-		virtual/x11 ) )
+DEPEND=">=sys-libs/ncurses-5.1
+	X? ( virtual/x11 )
 	gpm? ( sys-libs/gpm )
 	slang? ( >=sys-libs/slang-1.4.2 )"
 
@@ -35,7 +28,7 @@ src_unpack() {
 	epatch "${FILESDIR}"/${PN}-1.4_rc4-m4.patch
 	if use ppc-macos; then
 		cd src
-		epatch "${FILESDIR}"/${P}-osx.patch
+		epatch "${FILESDIR}"/${PN}-osx.patch
 	fi
 }
 
@@ -44,10 +37,6 @@ src_compile() {
 		$(use_with slang slang-driver) \
 		$(use_with X x11-driver) \
 		|| die
-	if use ppc-macos && use X; then
-		sed -i -e 's:aafire_LDFLAGS =:aafire_LDFLAGS = -undefined define_a_way:' \
-		${S}/src/Makefile || die "Failed to edit Makefile for X compatibility"
-	fi
 	emake CC="$(tc-getCC)" || die
 }
 

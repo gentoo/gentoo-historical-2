@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnus/gnus-5.10.3.ebuild,v 1.7 2005/01/01 13:46:39 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnus/gnus-5.10.3.ebuild,v 1.1 2003/12/30 06:36:49 jbms Exp $
 
 inherit elisp
 
@@ -16,9 +16,11 @@ KEYWORDS="~x86 ~ppc ~alpha ~sparc"
 DEPEND="virtual/emacs
 	emacs-w3? ( app-emacs/w3 )"
 
+S=${WORKDIR}/${P}
+
 src_compile() {
 	local myconf
-	if use emacs-w3 ; then
+	if [ $(use emacs-w3) ]; then
 		myconf="${myconf} --with-w3=/usr/share/emacs/site-lisp/w3"
 		myconf="${myconf} --with-url=/usr/share/emacs/site-lisp/w3"
 	else
@@ -28,7 +30,7 @@ src_compile() {
 		--with-emacs \
 		--with-lispdir=/usr/share/emacs/site-lisp/gnus-cvs \
 		--with-etcdir=/usr/share/emacs/etc \
-		${myconf} || die "econf failed"
+		${myconf}
 	emake || die
 }
 

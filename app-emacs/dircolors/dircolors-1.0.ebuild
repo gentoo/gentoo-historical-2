@@ -1,19 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/dircolors/dircolors-1.0.ebuild,v 1.8 2005/05/10 02:59:11 ferringb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/dircolors/dircolors-1.0.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
-inherit elisp
+inherit elisp 
 
 IUSE=""
 
 DESCRIPTION="Provide the same facility of ls --color inside Emacs"
 HOMEPAGE="ftp://ftp.cis.ohio-state.edu/pub/emacs-lisp/archive/"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
 
 DEPEND="virtual/emacs"
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50dircolors-gentoo.el
 

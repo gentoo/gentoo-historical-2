@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openntpd/openntpd-3.7_p1.ebuild,v 1.9 2005/10/29 01:02:35 vapier Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openntpd/openntpd-3.7_p1.ebuild,v 1.1 2005/06/10 00:06:11 vapier Exp $
 
 MY_P=${P/_/}
 DESCRIPTION="Lightweight NTP server ported from OpenBSD"
@@ -11,7 +9,7 @@ SRC_URI="mirror://openbsd/OpenNTPD/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="ssl selinux"
 
 RDEPEND="ssl? ( dev-libs/openssl )
@@ -24,11 +22,7 @@ S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
 	enewgroup ntp 123
-	enewuser ntp 123 -1 /var/empty ntp
-
-	if ! built_with_use net-misc/ntp openntpd ; then
-		die "you need to emerge ntp with USE=openntpd"
-	fi
+	enewuser ntp 123 /bin/false /var/empty ntp
 }
 
 src_unpack() {

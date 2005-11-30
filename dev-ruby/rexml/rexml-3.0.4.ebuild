@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rexml/rexml-3.0.4.ebuild,v 1.7 2005/11/26 17:11:05 tgall Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rexml/rexml-3.0.4.ebuild,v 1.1 2004/04/24 10:56:55 usata Exp $
 
 inherit ruby
 
@@ -10,8 +10,7 @@ HOMEPAGE="http://www.germane-software.com/software/rexml"
 SRC_URI="http://www.germane-software.com/archives/${MY_P}.tgz"
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ppc64 ~sparc ~x86"
-IUSE=""
+KEYWORDS="~alpha ~hppa ~mips ~sparc ~x86 ~ppc"
 USE_RUBY="any"
 DEPEND="virtual/ruby"
 S=${WORKDIR}/${MY_P}

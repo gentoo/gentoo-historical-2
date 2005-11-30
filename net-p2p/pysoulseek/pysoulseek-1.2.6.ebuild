@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/pysoulseek/pysoulseek-1.2.6.ebuild,v 1.6 2005/09/11 12:31:44 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/pysoulseek/pysoulseek-1.2.6.ebuild,v 1.1 2005/05/04 07:44:39 pythonhead Exp $
 
 inherit eutils distutils
 
-IUSE="vorbis"
+IUSE="oggvorbis"
 MY_PN="${PN/soulseek/slsk}"
 MY_PV="${PV/_/}"
 
@@ -17,11 +17,11 @@ SRC_URI="http://www.sensi.org/~ak/pyslsk/${MY_P}.tar.gz "
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~hppa ~amd64"
 
 DEPEND=">=dev-lang/python-2.1
 	=dev-python/wxpython-2.4*
-	vorbis? ( dev-python/pyvorbis dev-python/pyogg )"
+	oggvorbis? ( dev-python/pyvorbis dev-python/pyogg )"
 
 S="${WORKDIR}/${MY_P}"
 

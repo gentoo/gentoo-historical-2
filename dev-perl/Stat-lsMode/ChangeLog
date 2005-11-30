@@ -1,33 +1,6 @@
 # ChangeLog for dev-perl/Stat-lsMode
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Stat-lsMode/ChangeLog,v 1.10 2005/11/27 21:43:51 tgall Exp $
-
-  27 Nov 2005; Tom Gall <tgall@gentoo.org> Stat-lsMode-0.50.ebuild:
-  stable on ppc64
-
-  09 Jun 2005; <dang@gentoo.org> Stat-lsMode-0.50.ebuild:
-  Added ~amd64
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  Stat-lsMode-0.50.ebuild:
-  Cleaning
-
-  24 Dec 2004; Yuta SATOH <nigoro@gentoo.org> Stat-lsMode-0.50.ebuild:
-  added ~ppc64
-
-  12 Dec 2004; Jason Wever <weeve@gentoo.org> Stat-lsMode-0.50.ebuild:
-  Stable on sparc.
-
-  02 Sep 2004; David Holm <dholm@gentoo.org> Stat-lsMode-0.50.ebuild:
-  Added to ~ppc.
-
-  10 Aug 2004; Ferris McCormick <fmccor@gentoo.org> Stat-lsMode-0.50.ebuild:
-  Add ~sparc keyword (Bug 59942).
-  Builds and seems to work correctly for sparc.
-
-  31 Mar 2004; Michael Cummings <mcummings@gentoo.org>
-  Stat-lsMode-0.50.ebuild:
-  Marking stable
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Stat-lsMode/ChangeLog,v 1.1 2004/02/15 03:03:13 esammer Exp $
 
 *Stat-lsMode-0.50 (14 Feb 2004)
 

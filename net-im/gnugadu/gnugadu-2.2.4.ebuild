@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnugadu/gnugadu-2.2.4.ebuild,v 1.3 2005/01/13 14:56:50 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnugadu/gnugadu-2.2.4.ebuild,v 1.1 2005/01/08 12:53:06 spock Exp $
 
 IUSE="debug tlen esd oss xosd arts jabber perl spell"
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://gadu.gnu.pl/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="~x86 ~ppc ~amd64"
 
 DEPEND=">=x11-libs/gtk+-2.4.0
 	sys-devel/gettext
@@ -59,8 +59,6 @@ src_compile() {
 src_install () {
 
 	make DESTDIR=${D} install || die
-	insinto /usr/share/applications
-	doins gg2.desktop
 	dodoc AUTHORS ChangeLog NEWS README TODO
 }
 

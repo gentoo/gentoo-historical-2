@@ -1,29 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/paketto/paketto-1.10-r1.ebuild,v 1.10 2005/07/19 15:33:09 dholm Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/paketto/paketto-1.10-r1.ebuild,v 1.1 2003/03/20 14:37:48 agriffis Exp $
 
 DESCRIPTION="Paketto Keiretsu - experimental TCP/IP tools - scanrand, minewt, lc, phentropy, paratrace"
-HOMEPAGE="http://www.doxpara.com/paketto/"
+HOMEPAGE="http://www.doxpara.com/"
 SRC_URI="http://www.doxpara.com/paketto/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc x86"
+KEYWORDS="~x86"
 IUSE=""
 
 #paketto comes with local copies of these ...
-DEPEND="<net-libs/libnet-1.1
-	>=net-libs/libnet-1.0.2a-r3"
-#	virtual/libpcap
+#DEPEND="net-libs/libpcap
+#	net-libs/libnet
 #	dev-libs/libtomcrypt"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PV}-gcc3.patch
-	epatch ${FILESDIR}/${PV}-libnet-1.0.patch
+src_compile() {
+	# --with-libnet-bin=/usr --with-pcap-lib=/usr --with-pcap-inc=/usr --with-tm-inc=/usr"
+	econf --with-gnu-ld || die
+	emake || die
 }
 
 src_install() {

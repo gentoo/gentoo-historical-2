@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/jpeg/jpeg-6b-r4.ebuild,v 1.7 2005/05/24 20:29:36 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/jpeg/jpeg-6b-r4.ebuild,v 1.1 2004/11/11 00:06:08 vapier Exp $
 
-inherit flag-o-matic libtool eutils toolchain-funcs
+inherit gnuconfig flag-o-matic libtool eutils
 
 MY_P=${PN}src.v${PV}
 DESCRIPTION="Library to load, handle and manipulate images in the JPEG format"
@@ -11,13 +11,12 @@ SRC_URI="ftp://ftp.uu.net/graphics/jpeg/${MY_P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sh sparc x86"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc ppc64 ppc-macos s390 sparc x86"
 IUSE=""
 
 RDEPEND="virtual/libc"
 DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
-	>=sys-devel/libtool-1.5.10-r4"
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
@@ -25,30 +24,15 @@ src_unpack() {
 	# allow /etc/make.conf's HOST setting to apply
 	cd ${S}
 	sed -i 's/ltconfig.*/& $CHOST/' configure
+	gnuconfig_update
 	uclibctoolize
 	use ppc-macos && darwintoolize
-	epatch ${FILESDIR}/${P}-gentoo.patch
 }
 
 src_compile() {
 	replace-cpu-flags k6 k6-2 k6-3 i586
 	econf --enable-shared --enable-static || die "econf failed"
-
-	if use ppc-macos; then
-		cd ${S}
-		sed -i -e 's:LIBTOOL = libtool:LIBTOOL = /usr/bin/glibtool:' Makefile
-	fi
-
-	# The configure script seems to ignore the --libdir option..
-	# set this here to fix libdir path in libtool file
-	sed -i -e "s:^libdir.*:libdir = \$(exec_prefix)/$(get_libdir):" \
-		${S}/Makefile || die
-
-	emake \
-		CC="$(tc-getCC)" \
-		AR="$(tc-getAR) rc" \
-		AR2="$(tc-getRANLIB)" \
-		|| die "make failed"
+	emake || die
 }
 
 src_install() {

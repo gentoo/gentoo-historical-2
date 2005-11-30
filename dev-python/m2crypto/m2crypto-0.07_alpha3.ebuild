@@ -1,16 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/m2crypto/m2crypto-0.07_alpha3.ebuild,v 1.9 2005/10/16 21:18:37 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/m2crypto/m2crypto-0.07_alpha3.ebuild,v 1.1 2002/12/16 23:51:38 jrray Exp $
 
 DESCRIPTION="A python wrapper for the OpenSSL crypto library"
-HOMEPAGE="http://sandbox.rulemaker.net/ngps/m2/"
+HOMEPAGE="http://www.post1.com/home/ngps/m2/"
 MY_P=${P/_alpha/-snap}
-SRC_URI="http://sandbox.rulemaker.net/ngps/m2/${MY_P}.zip"
+SRC_URI="http://www.post1.com/home/ngps/m2/${MY_P}.zip"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86"
-DEPEND="dev-libs/openssl
-	app-arch/unzip"
+KEYWORDS="~x86"
+DEPEND="dev-libs/openssl"
 S=${WORKDIR}/${MY_P}
 IUSE=""
 
@@ -21,7 +20,7 @@ src_install () {
 	distutils_src_install
 	# can't dodoc, doesn't handle subdirs
 	dodir /usr/share/doc/${PF}/example
-	cp -pPR demo/* ${D}/usr/share/doc/${PF}/example
+	cp -a demo/* ${D}/usr/share/doc/${PF}/example
 	dodoc BUGS CHANGES STORIES
 	dohtml -r doc/*
 }

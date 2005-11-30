@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/opensc/opensc-0.9.4.ebuild,v 1.8 2005/09/17 00:59:18 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/opensc/opensc-0.9.4.ebuild,v 1.1 2004/11/02 14:34:49 vapier Exp $
 
-inherit eutils libtool
+inherit eutils
 
+MY_P=${P/_/-}
 DESCRIPTION="SmartCard library and applications"
 HOMEPAGE="http://www.opensc.org/"
-SRC_URI="http://www.opensc.org/files/${P}.tar.gz"
+SRC_URI="http://www.opensc.org/files/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha arm amd64 hppa ia64 ppc ppc64 s390 sparc x86"
+KEYWORDS="-*"
 IUSE="ldap pam pcsc-lite X"
 
 RDEPEND="ldap? ( net-nds/openldap )
@@ -20,14 +21,13 @@ RDEPEND="ldap? ( net-nds/openldap )
 	pcsc-lite? ( sys-apps/pcsc-lite )
 	!pcsc-lite? ( >=dev-libs/openct-0.5.0 )"
 
+S=${WORKDIR}/${MY_P}
+
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	use X || echo 'all:'$'\n''install:' > src/signer/Makefile.in
 	epatch ${FILESDIR}/0.8.1-64bit.patch
-	EPATCH_SINGLE_MSG="Applying libtool reverse deps patch ..." \
-		epatch ${ELT_PATCH_DIR}/fix-relink/1.5.0
-	epatch ${FILESDIR}/${P}-gcc4.patch
 }
 
 src_compile() {
@@ -37,15 +37,11 @@ src_compile() {
 		|| mycard="--with-openct=/usr"
 	econf \
 		--disable-usbtoken \
-		--with-plugin-dir=/usr/lib/mozilla/plugins \
+		--without-plugin-dir \
 		`use_enable ldap` \
 		`use_with pam` \
 		${mycard} \
-		|| die
-
-	# --without-plugin-dir generates a /no directory
-
-
+		|| die
 	emake -j1 || die
 }
 

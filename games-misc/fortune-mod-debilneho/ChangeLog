@@ -1,14 +1,6 @@
 # ChangeLog for games-misc/fortune-mod-debilneho
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-debilneho/ChangeLog,v 1.4 2005/08/27 17:59:38 corsair Exp $
-
-  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-debilneho-0.1.ebuild:
-  Stable on ppc64
-
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-debilneho-0.1.ebuild:
-  Added ~ppc64 (bug #100217)
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-debilneho/ChangeLog,v 1.1 2004/02/05 02:07:19 vapier Exp $
 
 *fortune-mod-debilneho-0.1 (04 Feb 2004)
 

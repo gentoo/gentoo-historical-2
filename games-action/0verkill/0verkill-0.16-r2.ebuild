@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/0verkill/0verkill-0.16-r2.ebuild,v 1.7 2005/09/26 19:23:07 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/0verkill/0verkill-0.16-r2.ebuild,v 1.1 2004/01/08 05:52:48 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="A bloody 2D action deathmatch-like game in ASCII-ART"
 HOMEPAGE="http://artax.karlin.mff.cuni.cz/~brain/0verkill/"
@@ -10,10 +10,10 @@ SRC_URI="http://artax.karlin.mff.cuni.cz/~brain/0verkill/release/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="x86 ppc ~amd64"
 IUSE="X"
 
-RDEPEND="X? ( virtual/x11 )"
+RDEPEND="X? ( x11-base/xfree )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
@@ -23,24 +23,19 @@ src_unpack() {
 	epatch ${FILESDIR}/${PV}-docs.patch
 	epatch ${FILESDIR}/${PV}-home-overflow.patch
 	epatch ${FILESDIR}/${PV}-gentoo-paths.patch
-	sed -i \
-		-e "s:data/:${GAMES_DATADIR}/${PN}/data/:" cfg.h \
-		|| die "sed failed"
-	sed -i \
-		-e "s:@CFLAGS@ -O3 :@CFLAGS@ :" Makefile.in \
-		|| die "sed failed"
+	sed -i "s:data/:${GAMES_DATADIR}/${PN}/data/:" cfg.h
 }
 
 src_compile() {
-	egamesconf $(use_with X x) || die
-	emake || die "emake failed"
+	egamesconf `use_with X x` || die
+	emake || die
 }
 
 src_install() {
 	dogamesbin 0verkill
 	newgamesbin avi 0verkill-avi
 	newgamesbin editor 0verkill-editor
-	if use X ; then
+	if [ `use X` ] ; then
 		dogamesbin x0verkill
 		newgamesbin xavi x0verkill-avi
 		newgamesbin xeditor x0verkill-editor
@@ -56,7 +51,7 @@ src_install() {
 	doins grx/*
 
 	dohtml doc/*.htm
-	rm doc/*.html doc/README.OS2 doc/Readme\ Win32.txt doc/COPYING
+	rm doc/*.html doc/README.OS2 doc/Readme\ Win32.txt
 	dodoc doc/*
 
 	prepgamesdirs

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/camorama/camorama-0.17.ebuild,v 1.3 2005/01/25 20:45:42 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/camorama/camorama-0.17.ebuild,v 1.1 2004/11/25 21:52:40 chriswhite Exp $
 
 inherit gnome2
 
@@ -11,7 +11,7 @@ SRC_URI="http://camorama.fixedgear.org/downloads/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~x86"
 DEPEND=">=x11-libs/gtk+-2.0
 	>=gnome-base/libgnomeui-2.0
 	>=gnome-base/gconf-2.0

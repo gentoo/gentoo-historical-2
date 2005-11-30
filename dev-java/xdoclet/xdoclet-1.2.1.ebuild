@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xdoclet/xdoclet-1.2.1.ebuild,v 1.8 2005/07/18 18:14:50 axxo Exp $
-
-inherit java-pkg
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xdoclet/xdoclet-1.2.1.ebuild,v 1.1 2004/07/23 05:57:29 mkennedy Exp $
 
 XJAVADOC_PV=1.0.3
 
@@ -12,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}-src-${PV}.tgz
 	mirror://gentoo/xjavadoc-${XJAVADOC_PV}-src.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="x86 ~amd64"
 IUSE="jikes"
 
 RDEPEND=">=virtual/jdk-1.3"
@@ -27,7 +25,9 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	if use jikes; then
-		sed -e 's/compiler = modern/compiler = jikes/' -i build.properties
+		einfo "Configuring build for Jikes"
+		cp build.properties build.properties~ \
+			&& sed -e 's/compiler = modern/compiler = jikes/' <build.properties~ >build.properties
 	fi
 }
 
@@ -41,13 +41,11 @@ src_compile() {
 	# http://bugs.gentoo.org/ which allows Maven to work without
 	# downloading sundry JARs from the Internet.
 
-	ANT_OPT=-Xmx128m ant \
-		-Domit.maven=true \
-		-Domit.docs=true \
-		-Dmaven.command=true || die
+	ant -Domit.maven=true -Domit.docs=true -Dmaven.command=true || die
 }
 
 src_install() {
-	java-pkg_dojar target/lib/*.jar
+	dojar target/lib/*.jar
+	dodoc LICENSE.txt
 	cp -r target/docs target/generated-xdocs samples ${D}/usr/share/doc/${P}
 }

@@ -1,34 +1,6 @@
 # ChangeLog for app-xemacs/text-modes
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/text-modes/ChangeLog,v 1.10 2005/08/07 13:19:19 hansmi Exp $
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  text-modes-1.58.ebuild:
-  Stable on ppc.
-
-  16 Dec 2004; Markus Rothe <corsair@gentoo.org> text-modes-1.58.ebuild:
-  Stable on ppc64
-
-  01 Nov 2004; Markus Rothe <corsair@gentoo.org> text-modes-1.58.ebuild:
-  Marked ~ppc64; bug #67093
-
-  15 Mar 2004; <rac@gentoo.org> metadata.xml, text-modes-1.58.ebuild:
-  keyword amd64
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> text-modes-1.58.ebuild:
-  Stable on alpha
-
-*text-modes-1.58 (22 Feb 2003)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> text-modes-1.55.ebuild text-modes-1.58.ebuild files/digest-text-modes-1.58 :
-  Add ~alpha to KEYWORDS
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  new stable ebuild
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  fix depend on ispell to point to xemacs-ispell
-  changed alpha to ~alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/text-modes/ChangeLog,v 1.1 2002/12/16 12:22:48 rendhalver Exp $
 
 *text-modes-1.55 (16 Dec 2002)
 

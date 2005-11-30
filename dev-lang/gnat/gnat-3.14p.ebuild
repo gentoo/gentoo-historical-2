@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnat/gnat-3.14p.ebuild,v 1.4 2005/02/23 09:41:19 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnat/gnat-3.14p.ebuild,v 1.1 2003/06/17 21:51:48 george Exp $
 #
 # Never replace this with the Ada compiler in the gcc tree. They are based
 # on the same source but this is the official validated compiler from ACT.
@@ -20,8 +20,8 @@
 DESCRIPTION="GNAT Ada Compiler"
 DEPEND="app-shells/tcsh"
 RDEPEND=""
-SRC_URI="mirror://gentoo/${P}-src.tgz
-	mirror://gentoo/${P}-i686-pc-linux-gnu-bin.tar.gz
+SRC_URI="http://gd.tuwien.ac.at/languages/ada/gnat/${PV}/${P}-src.tgz
+	http://gd.tuwien.ac.at/languages/ada/gnat/${PV}/${P}-i686-pc-linux-gnu-bin.tar.gz
 	ftp://gcc.gnu.org/pub/gcc/old-releases/gcc-2/gcc-2.8.1.tar.bz2"
 HOMEPAGE="http://www.gnat.com/"
 

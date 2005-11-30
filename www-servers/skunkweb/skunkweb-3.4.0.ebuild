@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/skunkweb-3.4.0.ebuild,v 1.5 2005/08/23 13:58:53 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/skunkweb-3.4.0.ebuild,v 1.1 2004/11/06 12:35:34 satya Exp $
 
 inherit eutils
 
@@ -20,7 +20,7 @@ DEPEND=">=dev-lang/python-2.2
 
 pkg_setup() {
 	enewgroup skunkweb
-	enewuser skunkweb -1 -1 /usr/share/skunkweb skunkweb
+	enewuser skunkweb -1 /bin/false /usr/share/skunkweb skunkweb
 }
 
 src_compile() {
@@ -71,15 +71,13 @@ src_install() {
 	mkdir -p ${D}/var/{lib,log}/${PN}
 	chown skunkweb:skunkweb ${D}/var/{lib,log}/${PN}
 	mkdir -p ${D}/var/lib/${PN}/run
-	# scripts------------------------------------------------------------
+	# init --------------------------------------------------------------
 	exeinto /etc/init.d; newexe ${FILESDIR}/skunkweb-init skunkweb
-	exeinto /etc/cron.daily
-		newexe ${FILESDIR}/skunkweb-cron-cache_cleaner skunkweb-cache_cleaner
 	# docs --------------------------------------------------------------
 	dodoc README ChangeLog NEWS HACKING ACKS INSTALL
 	if use doc; then
 		dodir /usr/share/doc/${PF}
 		cp docs/paper-letter/*.pdf ${D}/usr/share/doc/${PF}
-		ewarn "Some docs are still in upstream cvs (i.e.: formlib, pydo2)"
+
 	fi
 }

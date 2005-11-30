@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.97-r2.ebuild,v 1.3 2005/11/25 19:46:43 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.97-r2.ebuild,v 1.1 2005/11/10 02:37:12 vapier Exp $
 
 inherit mount-boot eutils flag-o-matic toolchain-funcs
 
 PATCHVER=1.1
-DESCRIPTION="GNU GRUB Legacy boot loader"
+DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="http://www.gnu.org/software/grub/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	ftp://alpha.gnu.org/gnu/${PN}/${P}.tar.gz
@@ -144,14 +144,13 @@ pkg_postinst() {
 	[[ -e /boot/grub/stage2 ]] && mv /boot/grub/stage2{,.old}
 
 	einfo "Copying files from /lib/grub and /usr/lib/grub to /boot"
-	for x in /lib*/grub/*/* /usr/lib*/grub/*/* ; do
-		[[ -f ${x} ]] && cp -p ${x} /boot/grub/
+	for x in /lib/grub/*/* /usr/lib/grub/*/* ; do
+		[[ -f ${x} ]] && cp -p ${x} /boot/grub
 	done
 
-	if [[ -e /boot/grub/grub.conf ]] ; then
-		egrep -v '^[[:space:]]*(#|$|default|fallback|splashimage|timeout|title)' /boot/grub/grub.conf | \
-		/sbin/grub --batch \
+	[[ -e /boot/grub/grub.conf ]] \
+		&& /sbin/grub \
+			--batch \
 			--device-map=/boot/grub/device.map \
-			> /dev/null
-	fi
+			< /boot/grub/grub.conf > /dev/null 2>&1
 }

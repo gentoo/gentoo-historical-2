@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/struts-legacy/struts-legacy-1.0-r1.ebuild,v 1.14 2005/10/08 11:24:09 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/struts-legacy/struts-legacy-1.0-r1.ebuild,v 1.1 2004/06/21 20:04:20 karltk Exp $
 
 inherit java-pkg
 
@@ -8,21 +8,22 @@ DESCRIPTION="Jakarta Struts Legacy Library"
 SRC_URI="mirror://apache/jakarta/struts/struts-legacy/${P}-src.tar.gz"
 HOMEPAGE="http://jakarta.apache.org/struts/"
 IUSE="doc jikes"
-RDEPEND=">=virtual/jre-1.4
-		dev-java/commons-logging"
 DEPEND=">=virtual/jdk-1.4
-		dev-java/ant-core
-		${RDEPEND}
-		jikes? ( dev-java/jikes )"
+	dev-java/ant
+	jikes? ( dev-java/jikes )"
+RDEPEND=">=virtual/jdk-1.4
+	>=dev-java/jdbc2-stdext-2.0
+	dev-java/commons-logging"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~x86"
 
 S=${WORKDIR}/${P}-src
 
 src_compile() {
 	sed -i 's:compile,docs:compile:' build.xml || die "sed failed"
-	echo "commons-logging.jar=$(java-pkg_getjar commons-logging commons-logging.jar)" > build.properties
+	echo "commons-logging.jar=`java-config -p commons-logging | sed 's/.*://'`" > build.properties
+	echo "jdbc20ext.jar=`java-config -p jdbc2-stdext`" >> build.properties
 	echo "jdk.version=1.4" >> build.properties
 
 	local antflags="dist"
@@ -31,8 +32,8 @@ src_compile() {
 	ant ${antflags} || die "compile problem"
 }
 
-src_install() {
-	java-pkg_dojar dist/${PN}.jar
+src_install () {
+	java-pkg_dojar dist/*.jar
 	dodoc STATUS.txt
-	use doc && java-pkg_dohtml -r dist/docs/
+	use doc && dohtml -r dist/docs/
 }

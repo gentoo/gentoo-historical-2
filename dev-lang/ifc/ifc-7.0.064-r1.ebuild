@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ifc/ifc-7.0.064-r1.ebuild,v 1.10 2005/10/01 16:19:57 ribosome Exp $
-
-inherit rpm
+# $Header: 
 
 S=${WORKDIR}
 DESCRIPTION="Intel Fortran Compiler - The Pentium optimized compiler for Linux"
@@ -14,31 +12,31 @@ SRC_URI="${SRC_URI1} ${SRC_URI2} ${SRC_URI3}"
 
 HOMEPAGE="http://developer.intel.com/software/products/compilers/flin/"
 
-# Effectively the same license as icc
+  # Effectively the same license as icc
 LICENSE="icc-7.0"
 SLOT="0"
 KEYWORDS="-* x86"
-IUSE=""
+
 
 DEPEND=">=virtual/linux-sources-2.4
-	>=sys-libs/glibc-2.2.4"
+	>=sys-libs/glibc-2.2.4
+	sys-apps/cpio
+	app-arch/rpm"
 
 RDEPEND=">=virtual/linux-sources-2.4
 	>=sys-libs/glibc-2.2.4"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_compile() {
 	# Keep disk space to a minimum
 	rm -f intel-*.ia64.rpm
 
+	mkdir opt
+
 	for x in intel-*.i386.rpm
 	do
-		rpm_unpack $x
+		einfo "Extracting: ${x}"
+		rpm2cpio ${x} | cpio --extract --make-directories --unconditional
 	done
-}
-
-src_compile() {
 
 	# From UNTAG_CFG_FILES in 'install'
 	SD=${S}/opt/intel # Build DESTINATION
@@ -62,15 +60,11 @@ src_compile() {
 	sed s@\<INSTALLTIMECOMBOPACKAGEID\>@$COMBOPACKAGEID@g $SUPPORTFILE > $SUPPORTFILE.abs
 	mv $SUPPORTFILE.abs $SUPPORTFILE
 	chmod 644 $SUPPORTFILE
-
-	# these should not be executable
-	find "${SD}/compiler70/"{docs,man,training,ia32/include} -type f -exec chmod -x "{}" ";"
-	find "${SD}/compiler70/ia32/lib" -name \*.a -exec chmod -x "{}" ";"
 }
 
 src_install () {
 	dodoc flicense
-	cp -pPR opt ${D}
+	cp -a opt ${D}
 
 	# ifc enviroment
 	insinto /etc/env.d

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/kannel/kannel-1.4.0.ebuild,v 1.6 2005/10/23 17:09:49 voxus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-mobilephone/kannel/kannel-1.4.0.ebuild,v 1.1 2005/05/16 22:05:25 mrness Exp $
 inherit eutils
 
 DESCRIPTION="Powerful SMS and WAP gateway"
@@ -9,7 +9,7 @@ SRC_URI="http://www.kannel.org/download/${PV}/gateway-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~x86"
 IUSE="ssl mysql sqlite postgres pcre doc debug pam"
 
 RDEPEND="virtual/libc
@@ -30,11 +30,6 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/gateway-${PV}
 
-pkg_setup() {
-	enewgroup kannel
-	enewuser kannel -1 -1 /var/log/kannel kannel
-}
-
 src_unpack() {
 	unpack ${A}
 
@@ -42,7 +37,7 @@ src_unpack() {
 	#by default, use current directory for logging
 	sed -i -e 's:/tmp/::' doc/examples/kannel.conf
 	#correct doc path
-	sed -i -e "s:share/doc/kannel:share/doc/${P}:" configure configure.in
+	sed -i -e "s:share/doc/kannel:share/doc/${PF}:" configure configure.in
 }
 
 src_compile() {
@@ -62,8 +57,9 @@ src_compile() {
 	emake || die "emake failed"
 }
 
-src_test() {
-	make check || die "make check failed"
+pkg_preinst() {
+	enewgroup kannel
+	enewuser kannel -1 /bin/false /var/log/kannel kannel
 }
 
 src_install() {
@@ -88,6 +84,6 @@ src_install() {
 	newins ${FILESDIR}/kannel-confd kannel
 }
 
-pkg_preinst() {
-	pkg_setup
+src_test() {
+	make check || die "make check failed"
 }

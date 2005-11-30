@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.0.1a-r1.ebuild,v 1.13 2005/11/20 17:58:35 wolf31o2 Exp $
-
-inherit eutils linux-info
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.0.1a-r1.ebuild,v 1.1 2003/11/19 20:18:47 vapier Exp $
 
 MY_PV=${PV/a/.A-k9}
 DESCRIPTION="Cisco VPN Client (3DES)"
@@ -10,12 +8,11 @@ HOMEPAGE="http://www.cisco.com/en/US/products/sw/secursw/ps2308/index.html"
 SRC_URI="vpnclient-linux-${MY_PV}.tar.gz"
 
 LICENSE="cisco-vpn-client"
-SLOT="0"
+SLOT="${KV}"
 KEYWORDS="-* x86"
 RESTRICT="fetch"
-IUSE=""
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/linux-sources
 	>=sys-apps/sed-4"
 
@@ -34,18 +31,11 @@ pkg_nofetch() {
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	if kernel_is 2 6; then
-		epatch ${FILESDIR}/${PV}-linux26-gentoo.patch
-	fi
-
-	# Patch to allow use of alternate CC.  Patch submitted to bug #33488 by
-	# Jesse Becker (jbecker@speakeasy.net)
-	epatch ${FILESDIR}/driver_build_CC.patch
-
+	[ "${KV:0:3}" == "2.6" ] && epatch ${FILESDIR}/${PV}-linux26.patch
 }
 
 src_compile () {
-	unset ARCH
+	check_KV
 	sh ./driver_build.sh /lib/modules/${KV}/build
 	[ ! -f ./cisco_ipsec ] && die "Failed to make module 'cisco_ipsec'"
 	sed -i "s#@VPNBINDIR@#/usr/bin#" vpnclient_init
@@ -76,4 +66,3 @@ src_install() {
 pkg_postinst() {
 	einfo  "You must run \`/etc/init.d/vpnclient start\` before using the client."
 }
-

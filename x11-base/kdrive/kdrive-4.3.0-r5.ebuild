@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/kdrive/kdrive-4.3.0-r5.ebuild,v 1.16 2005/07/06 03:38:26 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/kdrive/kdrive-4.3.0-r5.ebuild,v 1.1 2004/03/19 16:52:01 spyderous Exp $
 
 # If you don't want to build the Xvesa server, do this.
 # VESA="no" emerge kdrive
@@ -9,11 +9,9 @@
 # fonts (but support for built-in ``fixed'' and ``cursor'' fonts, and
 # normal support for bitmap fonts and font-server provided fonts).
 
-IUSE="ipv6 xinerama fbdev speedo type1 cjk truetype font-server xv debug"
+IUSE="ipv6 xinerama fbdev speedo type1 cjk truetype freetype fs xv"
 
-IUSE_VIDEO_CARDS="savage trident sis530 trio ts300 mach64 i810 igs"
-
-inherit eutils flag-o-matic toolchain-funcs x11 linux-info
+# VIDEO_CARDS="savage trident sis530 trio ts300 mach64 i810 igs"
 
 filter-flags "-funroll-loops"
 
@@ -50,6 +48,7 @@ BASE_PV="${PV}"
 MY_SV="${BASE_PV//\.}"
 S="${WORKDIR}/xc"
 SRC_PATH="mirror://xfree/${BASE_PV}/source"
+DESCRIPTION="Xfree86: famous and free X server. Tiny version (KDrive)"
 HOMEPAGE="http://www.xfree.org"
 SRC_URI="${SRC_PATH}/X${MY_SV}src-1.tgz
 	${SRC_PATH}/X${MY_SV}src-2.tgz
@@ -59,17 +58,19 @@ LICENSE="X11"
 SLOT="0"
 KEYWORDS="x86 amd64"
 # Need portage for USE_EXPAND
-DEPEND=">=sys-libs/ncurses-5.1
+DEPEND=">=sys-apps/baselayout-1.8.3
+	>=sys-libs/ncurses-5.1
 	>=sys-libs/zlib-1.1.3-r2
 	>=sys-devel/flex-2.5.4a-r5
 	>=dev-libs/expat-1.95.3
 	>=sys-apps/sed-4
 	dev-lang/perl
 	media-libs/libpng
-	>=sys-apps/portage-2.0.49-r13
-	truetype? ( media-libs/freetype )"
+	>=sys-apps/portage-2.0.49-r13"
 
-DESCRIPTION="Xfree86: famous and free X server. Tiny version (KDrive)"
+#inherit needs to happen *after* DEPEND has been defined to have "newdepend"
+#do the right thing. Otherwise RDEPEND doesn't get set properly.
+inherit eutils flag-o-matic gcc xfree
 
 src_unpack() {
 	unpack ${A}
@@ -95,7 +96,7 @@ src_unpack() {
 		# We dont really want to spend twice as long compiling libraries
 		# if they exist of the system allready, so we check and change
 		# respectively here.
-		if [ "`best_version virtual/x11`" ] ; then
+		if [ "`best_version x11-base/xfree`" ] ; then
 			echo "#define BuildScreenSaverExt NO" >> config/cf/host.def
 			echo "#define BuildScreenSaverLibrary NO" >> config/cf/host.def
 			echo "#define SharedLibXss NO" >> config/cf/host.def
@@ -133,11 +134,10 @@ src_unpack() {
 			fi
 		fi
 
-		get_version
-		if [ "${KV_MAJOR}" -ge "2" -a "${KV_MINOR}" -ge "4" ] || \
-		     (  [ -e "${ROOT}/usr/src/linux" ] && \
-			      [ ! $(kernel_is "2" "2") ] ) || \
-				  [ "$(uname -r | cut -d. -f1,2)" != "2.2" ]
+		# Safe if /usr/src/linux doesn't exist
+		if ( [ -e "/usr/src/linux" ] && \
+			[ ! `is_kernel "2" "2"` ] ) || \
+			[ "`uname -r | cut -d. -f1,2`" != "2.2" ]
 		then
 			echo "#define HasLinuxInput YES" >> config/cf/host.def
 		fi
@@ -185,9 +185,9 @@ src_unpack() {
 		use speedo && echo "#define BuildSpeedo YES" >> config/cf/host.def
 		use type1 && echo "#define BuildType1 YES" >> config/cf/host.def
 		use cjk && echo "#define BuildCID YES" >> config/cf/host.def
-		use truetype && echo "#define BuildXTrueType YES" >> config/cf/host.def \
-			&& echo "#define BuildFreeType YES" >> config/cf/host.def
-		use font-server && echo "#define FontServerAccess YES" >> config/cf/host.def
+		use truetype && echo "#define BuildXTrueType YES" >> config/cf/host.def
+		use freetype && echo "#define BuildFreeType YES" >> config/cf/host.def
+		use fs && echo "#define FontServerAccess YES" >> config/cf/host.def
 
 		# Video
 		use xv && echo "#define BuildXvExt YES" >> config/cf/host.def
@@ -199,7 +199,7 @@ src_unpack() {
 	EPATCH_SUFFIX="patch" epatch ${PATCH_DIR}
 
 	# We need to modify xmakefile after it has been created
-	if [ ! "`best_version virtual/x11`" ] ; then
+	if [ ! "`best_version x11-base/xfree`" ] ; then
 		ebegin "Creating fake X includes..."
 			MY_PROJROOT="${S}/usr/X11R6/include/"
 			MY_INCROOT="${S}/include"
@@ -223,15 +223,16 @@ src_unpack() {
 	    eend 0
 	fi
 
-	# Fixing bugs #68531 and #65758 -- this will disable toshiba dpms support
-	sed '/#ifndef TOSHIBA_SMM/,/#endif/d' -i ${S}/programs/Xserver/hw/kdrive/vesa/vesa.c
 }
 
 src_compile() {
 
+	# Set MAKEOPTS to have proper -j? option ..
+	get_number_of_jobs
+
 	# If a user defines the MAKE_OPTS variable in /etc/make.conf instead of
-	# MAKEOPTS, they'll redefine an internal X11 Makefile variable and the
-	# X11 build will silently die. This is tricky to track down, so I'm
+	# MAKEOPTS, they'll redefine an internal XFree86 Makefile variable and the
+	# xfree build will silently die. This is tricky to track down, so I'm
 	# adding a preemptive fix for this issue by making sure that MAKE_OPTS is
 	# unset. (drobbins, 08 Mar 2003)
 	unset MAKE_OPTS
@@ -289,10 +290,10 @@ src_install() {
 	doexe ${PATCH_DIR}/startxkd
 
 	# Install man pages
-	if [ "`best_version virtual/x11`" ] ; then
-		doman ${MANDIR}/usr/X11R6/man/man1/X{kdrive,vesa,fbdev}.1x
+	if [ "`best_version x11-base/xfree`" ] ; then
+		doman -x11 ${MANDIR}/usr/X11R6/man/man1/X{kdrive,vesa,fbdev}.1x
 	else
-		doman ${MANDIR}/${S}/usr/X11R6/man/man1/X{kdrive,vesa,fbdev}.1x
+		doman -x11 ${MANDIR}/${S}/usr/X11R6/man/man1/X{kdrive,vesa,fbdev}.1x
 	fi
 }
 

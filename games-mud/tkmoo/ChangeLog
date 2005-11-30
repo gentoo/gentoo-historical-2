@@ -1,34 +1,6 @@
-# ChangeLog for games-mud/tkmoo
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/tkmoo/ChangeLog,v 1.12 2005/06/15 18:57:58 wolf31o2 Exp $
-
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> tkmoo-0.3.32.ebuild:
-  Removed INSTALL.unix file.
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> tkmoo-0.3.32.ebuild:
-  Stable on ppc.
-
-  28 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +files/0.3.32-keys-workaround.patch, tkmoo-0.3.32.ebuild:
-  add workaround patch for keys - patch from Luke-Jr via bug #74140
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> tkmoo-0.3.32.ebuild:
-  Added ~ppc.
-
-  07 Jul 2004; Tom Martin <slarti@gentoo.org> tkmoo-0.3.32.ebuild:
-  Marked ~amd64.
-
-  07 Dec 2003; Luke-Jr <luke-jr@gentoo.org> tkmoo-0.3.32.ebuild:
-  tkmoo symlink
-
-  07 Dec 2003; Ian Leitch <port001@gentoo.org> tkmoo-0.3.32.ebuild:
-  Changed those ${PN} to ${MY_PN} (last fix, promise)
-
-  07 Dec 2003; Ian Leitch <port001@gentoo.org> tkmoo-0.3.32.ebuild:
-  We need to set  now that we have a name different than expected
+# ChangeLog for games-mud/tkMOO-light
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/tkmoo/ChangeLog,v 1.1 2003/12/07 00:32:53 port001 Exp $
 
 *tkmoo-0.3.32 (07 Dec 2003)
 
@@ -50,7 +22,7 @@
 
 *tkMOO-light-0.3.28 (1 Feb 2002)
 
-  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> tkMOO-light-0.3.28.ebuild :
+  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> tkMOO-light-0.3.28.ebuild :
   Added LICENSE, KEYWORDS.
 
   21 Feb 2002; Karl Trygve Kalleberg <karltk@gentoo.org> tkMOO-light-0.3.28:

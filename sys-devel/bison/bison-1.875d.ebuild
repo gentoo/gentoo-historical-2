@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/bison/bison-1.875d.ebuild,v 1.11 2005/03/09 02:12:08 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/bison/bison-1.875d.ebuild,v 1.1 2004/10/30 03:58:47 agriffis Exp $
 
-inherit toolchain-funcs flag-o-matic eutils
+inherit gcc flag-o-matic eutils gnuconfig
 
 DESCRIPTION="A yacc-compatible parser generator"
 HOMEPAGE="http://www.gnu.org/software/bison/bison.html"
@@ -10,7 +10,7 @@ SRC_URI="ftp://alpha.gnu.org/pub/gnu/bison/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 ppc-macos s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="nls static"
 
 DEPEND="sys-devel/m4
@@ -18,8 +18,9 @@ DEPEND="sys-devel/m4
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-1.32-extfix.patch
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-1.32-extfix.patch
+	gnuconfig_update
 }
 
 src_compile() {
@@ -43,23 +44,23 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" \
+	make DESTDIR=${D} \
 		datadir=/usr/share \
 		mandir=/usr/share/man \
 		infodir=/usr/share/info \
 		install || die
 
 	# This one is installed by dev-util/yacc
-	mv "${D}"/usr/bin/yacc "${D}"/usr/bin/yacc.bison || die
+	mv ${D}/usr/bin/yacc ${D}/usr/bin/yacc.bison || die
 
 	# We do not need this.
-	rm -f "${D}"/usr/lib/liby.a
+	rm -f ${D}/usr/lib/liby.a
 
 	dodoc AUTHORS NEWS ChangeLog README REFERENCES OChangeLog doc/FAQ
 }
 
 pkg_postinst() {
-	if [[ ! -e ${ROOT}/usr/bin/yacc ]] ; then
-		ln -s yacc.bison "${ROOT}"/usr/bin/yacc
+	if [ ! -e "${ROOT}/usr/bin/yacc" ] ; then
+		ln -s yacc.bison /usr/bin/yacc
 	fi
 }

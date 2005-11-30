@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gliv/gliv-1.8.2.ebuild,v 1.6 2005/03/05 19:47:48 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gliv/gliv-1.8.2.ebuild,v 1.1 2004/04/25 23:23:13 mr_bones_ Exp $
 
 DESCRIPTION="An image viewer that uses OpenGL"
 HOMEPAGE="http://guichaz.free.fr/gliv/"
@@ -8,7 +8,7 @@ SRC_URI="http://guichaz.free.fr/gliv/gliv-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86"
 IUSE="nls"
 
 DEPEND=">=x11-libs/gtk+-2.2
@@ -24,10 +24,6 @@ src_compile() {
 }
 
 src_install() {
-	# Needed if desktop-file-install is present, else we get
-	# sandbox violations.
-	export DESKTOP_FILE_INSTALL_DIR="${D}/usr/share/applications"
-
-	einstall || die "make install failed"
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc README NEWS THANKS
 }

@@ -1,20 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/GDGraph/GDGraph-1.43.ebuild,v 1.12 2005/07/09 23:14:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/GDGraph/GDGraph-1.43.ebuild,v 1.1 2003/12/25 20:02:43 mcummings Exp $
 
 inherit perl-module
 
+CATEGORY="dev-perl"
 DESCRIPTION="perl5 module to create charts using the GD module"
+SRC_URI="http://www.cpan.org/modules/by-module/GD/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/GD/${P}.readme"
-SRC_URI="mirror://cpan/authors/id/M/MV/MVERB/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 amd64 ~sparc"
 
 DEPEND="dev-perl/GDTextUtil
-	media-libs/gd"
+		media-libs/libgd"
 
 src_unpack() {
 	unpack ${A}

@@ -1,53 +1,39 @@
 #!/bin/bash
 # Copyright 2004 The Gentoo Foundation, Pieter Van den Abeele
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/scripts/bootstrap-macos.sh,v 1.9 2004/11/21 17:32:37 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/scripts/bootstrap-macos.sh,v 1.1 2004/07/13 00:14:34 pvdabeel Exp $
 
-# Make sure sudo passwd is asked for
+source /usr/lib/portage/bin/functions.sh
 
-sudo true
-
-# Source functions to have colors and nice output
+# This is currently a Mac OS only script. But it could easily be reused
+# for Operating systems such as Solaris, ... If your interested in doing
+# such a port, contact Pieter Van den Abeele at pvdabeel@gentoo.org 
 
 trap 'exit 1' TERM KILL INT QUIT ABRT
 
 echo
-echo -e "Gentoo for Mac OS X; http://www.gentoo.org/"
+echo -e "${GOOD}Gentoo Mac OS ; \e[34;01mhttp://www.gentoo.org/${NORMAL}"
 echo -e "Copyright 2004 The Gentoo Foundation ; Distributed under the GPL v2"
 echo
 
-NAME="Mac OS X"
-RELEASE="10"
+BEAST=`uname -r | grep 7 | echo "Panther" || echo "Tiger"`
+RELEASE=`uname -r | grep 7 | echo "10.3" || echo "10.4"`
 
-case "`uname -r`" in
-        6*)
-		# We don't really support this
-		NAME="Jaguar"
-		# We reuse the Panther profile
-		RELEASE="10.3"
-		;;
-		7*)
-		NAME="Panther"
-		RELEASE="10.3"
-		;;
-        8*)
-        NAME="Tiger"
-		RELEASE="10.4"
-		;;
-esac
+ebegin "Portage will attempt taming the ${BEAST} it found"
 
-sudo ln -sf /usr/portage/profiles/default-darwin/macos/${RELEASE} /etc/make.profile
-
-# ebegin "Portage will attempt taming your ${NAME}"
-
-function missing_devtools {
+function eaten {
 	ewend 1 
-	echo -e "Please install the ${NAME} developer tools (>1.1)"
+	echo -e "Please install the Mac OS X developer tools"
 	echo
 	exit 1
 }
 
-gcc -v 2> /dev/null || missing_devtools
+gcc -v 2> /dev/null || eaten
+echo 
+for package in `cat /usr/portage/profiles/default-macos-${RELEASE}/packages.build`; do
+	ebegin " >>> Injecting ${package} " && ewend $?
+	emerge inject ${package} > /dev/null 2> /dev/null 
+done
 
 echo
-echo -e "Portage successfully tamed your ${NAME}"
+echo -e "Portage successfully tamed your ${BEAST}"

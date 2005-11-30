@@ -1,65 +1,6 @@
 # ChangeLog for net-mail/dot-forward
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/dot-forward/ChangeLog,v 1.21 2005/10/18 03:30:24 agriffis Exp $
-
-  18 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  dot-forward-0.71-r2.ebuild:
-  Mark 0.71-r2 stable on alpha
-
-  17 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  dot-forward-0.71-r2.ebuild:
-  Mark 0.71-r2 stable on ia64
-
-  15 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
-  dot-forward-0.71-r2.ebuild:
-  Stable on hppa, mips, ppc, sparc, x86.
-
-*dot-forward-0.71-r2 (20 Sep 2005)
-
-  20 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
-  +dot-forward-0.71-r2.ebuild:
-  Fixed bug 105750.
-
-  06 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  dot-forward-0.71-r1.ebuild:
-  Disabled maketest, see bug 97850.
-
-  04 Jul 2005; Andrej Kacian <ticho@gentoo.org> metadata.xml:
-  Changed herd to qmail in metadata.
-
-  30 May 2005; Sven Wegener <swegener@gentoo.org>
-  dot-forward-0.71-r1.ebuild:
-  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  dot-forward-0.71-r1.ebuild:
-  virtual/glibc -> virtual/libc
-
-  10 Apr 2004; Joshua Kinard <kumba@gentoo.org> dot-forward-0.71-r1.ebuild:
-  Marked stable on mips.
-
-  25 Mar 2004; Joshua Kinard <kumba@gentoo.org> dot-forward-0.71-r1.ebuild:
-  Added ~mips to KEYWORDS.
-
-  08 Mar 2004; Jon Portnoy <avenj@gentoo.org> dot-forward-0.71-r1.ebuild :
-  Stable on AMD64.
-
-  18 Feb 2004; Aron Griffis <agriffis@gentoo.org> dot-forward-0.71-r1.ebuild:
-  stable on ia64
-
-  28 Jan 2004; Jon Portnoy <avenj@gentoo.org> dot-forward-0.71-r1.ebuild :
-  AMD64 keywords.
-
-*dot-forward-0.71-r1 (05 Mar 2003)
-
-  03 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
-  Add head -1 patch.
-
-  16 Mar 2003; Will Woods <wwoods@gentoo.org> dot-forward-0.71-r1.ebuild:
-  Added alpha to KEYWORDS
-
-  05 Mar 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bumped to fix glibc/errno issue #16798 (#16267).
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-mail/dot-forward/ChangeLog,v 1.1 2002/02/01 21:53:34 gbevin Exp $
 
 *dot-forward-0.71 (1 Feb 2002)
 

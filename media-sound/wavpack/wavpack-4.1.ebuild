@@ -1,23 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wavpack/wavpack-4.1.ebuild,v 1.4 2005/01/25 02:57:32 lostlogic Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavpack/wavpack-4.1.ebuild,v 1.1 2004/09/24 02:48:01 pkdawson Exp $
 
 DESCRIPTION="WavPack audio compression tools"
 HOMEPAGE="http://www.wavpack.com/"
 SRC_URI="http://www.wavpack.com/${P}.tar.bz2"
+LICENSE="BSD"
 
 SLOT="0"
-LICENSE="BSD"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~x86 ~ppc"
+IUSE=""
 
-RDEPEND="sys-libs/ncurses"
-DEPEND="${RDEPEND}
+DEPEND="sys-libs/ncurses
 	sys-devel/automake"
 
 src_compile() {
-	export WANT_AUTOMAKE=1.7
 	./autogen.sh || die
 	econf || die
 	emake || die

@@ -1,21 +1,6 @@
 # ChangeLog for dev-perl/Want
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Want/ChangeLog,v 1.6 2005/10/02 13:25:12 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Want-0.07.ebuild:
-  Mark 0.07 stable on ia64
-
-  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> Want-0.07.ebuild:
-  Mark 0.07 stable on alpha
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Want-0.07.ebuild:
-  add ~ia64
-
-  01 May 2005; Tom Martin <slarti@gentoo.org> Want-0.07.ebuild:
-  Stable on amd64.
-
-  28 Apr 2005; Michael Cummings <mcummings@gentoo.org> Want-0.07.ebuild:
-  Bumping for x86 and sparc
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Want/ChangeLog,v 1.1 2004/07/30 10:03:12 mcummings Exp $
 
 *Want-0.07 (30 Jul 2004)
 

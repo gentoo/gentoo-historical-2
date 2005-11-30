@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/tilp/tilp-6.76.ebuild,v 1.6 2005/03/11 11:49:37 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/tilp/tilp-6.76.ebuild,v 1.1 2004/12/24 15:08:13 ribosome Exp $
 
 inherit eutils
 
@@ -11,16 +11,16 @@ SRC_URI="mirror://sourceforge/tilp/${P}.tar.gz
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="x86 ppc"
 IUSE="nls"
 
-DEPEND=">=sci-libs/libticables-3.8.6
-		>=sci-libs/libticalcs-4.5.5
-		>=sci-libs/libtifiles-0.6.1
+DEPEND=">=dev-libs/libticables-3.8.6
+		>=dev-libs/libticalcs-4.5.5
+		>=dev-libs/libtifiles-0.6.1
 		app-text/dos2unix
 		>=x11-libs/gtk+-2
 		>=gnome-base/libglade-2
-		nls? ( sys-devel/gettext )"
+		nls? sys-devel/gettext"
 
 src_unpack() {
 	unpack ${A}

@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xcalendar/xcalendar-4.0.ebuild,v 1.15 2005/04/24 03:26:08 hansmi Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xcalendar/xcalendar-4.0.ebuild,v 1.1 2002/12/15 22:23:33 seemant Exp $
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="A simple interactive calendar program with a notebook capability"
@@ -11,27 +9,29 @@ SRC_URI="ftp://daemon.jp.FreeBSD.org/pub/FreeBSD-jp/ports-jp/LOCAL_PORTS/${P}+i1
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 alpha ~amd64 ppc64 ppc"
-IUSE="motif"
+KEYWORDS="~x86"
 
 DEPEND="virtual/x11
-		motif? ( x11-libs/openmotif )"
+		x11-libs/xaw
+		motif? ( >=x11-libs/openmotif-2.2.1 )"
 
 src_compile() {
+
 	if use motif
 	then
-		epatch ${FILESDIR}/${P}-motif-gentoo.diff
+		patch -p1 < ${FILESDIR}/${P}-motif-gentoo.diff || die
 	fi
 	xmkmf -a
 	emake || die
 }
 
-src_install() {
+src_install () {
+
 	dobin xcalendar
-	newman xcalendar.man xcalendar.1
+    newman xcalendar.man xcalendar.1
 
 	dodir /etc/X11/app-defaults
-	sed 's;%%XCALENDAR_LIBDIR%%;/usr/lib/xcalendar;
+	sed 's;%%XCALENDAR_LIBDIR%%;/usr/lib/xcalendar; 
 	     s;/usr/local/X11R5/lib/X11/;/usr/lib/;' \
 		< XCalendar.sed > ${D}/etc/X11/app-defaults/XCalendar || die
 

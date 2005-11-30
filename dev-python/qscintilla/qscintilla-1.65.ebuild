@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.65.ebuild,v 1.3 2005/11/25 21:43:41 tgall Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/qscintilla/qscintilla-1.65.ebuild,v 1.1 2005/09/26 15:24:07 chrb Exp $
 
-inherit eutils multilib
+inherit eutils
 
 MY_P=${P}-gpl-1.6
 S=${WORKDIR}/${MY_P}
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.riverbankcomputing.co.uk/qscintilla/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64 ppc64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64 ~ppc64"
 IUSE="doc"
 
 DEPEND="virtual/libc
@@ -36,12 +36,12 @@ src_compile() {
 
 src_install() {
 	dodoc ChangeLog LICENSE NEWS README
-	dodir ${QTDIR}/{include,translations,$(get_libdir)}
+	dodir ${QTDIR}/{include,translations,lib}
 	cd ${S}/qt
 	cp qextscintilla*.h ${D}/$QTDIR/include
 	cp qscintilla*.qm ${D}/$QTDIR/translations
-	cp libqscintilla.a* ${D}/$QTDIR/$(get_libdir)
-	cp -d libqscintilla.so.* ${D}/$QTDIR/$(get_libdir)
+	cp libqscintilla.a* ${D}/$QTDIR/lib
+	cp -d libqscintilla.so.* ${D}/$QTDIR/lib
 	if use doc ; then
 		dohtml ${S}/doc/html/*
 		insinto /usr/share/doc/${PF}/Scintilla

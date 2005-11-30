@@ -1,15 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 7b7b10f8578c6e322ac40dd2ea57286c ChangeLog 732
-MD5 ab7ea2a32438398900e968e5d9ae8cf8 adobesvg-3.01_beta3.ebuild 829
-MD5 5c4a6f86c7a80e48b76ecf3c52cc8cd7 adobesvg-3.01.ebuild 863
-MD5 af5b1ff7166abe507dc3c964995dc022 files/digest-adobesvg-3.01_beta3 80
-MD5 af5b1ff7166abe507dc3c964995dc022 files/digest-adobesvg-3.01 80
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFCvoS0mdTrptrqvGERAglNAKCGjuXhU1J7ypxxlV2yTakeLsAzqQCfeYGP
-FoV2+uQx0Bh8S6Rn51lXO9c=
-=/8B9
------END PGP SIGNATURE-----
+MD5 2fc0b57273e45f7084dbacde8ca5fe2d files/digest-adobesvg-3.0 76
+MD5 a106274e06e3ea76b014e51d21765eac adobesvg-3.0.ebuild 580
+MD5 151b1e675d3cc3b0f27f89c7ac055175 ChangeLog 338

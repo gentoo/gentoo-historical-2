@@ -1,31 +1,6 @@
-# ChangeLog for sys-process/daemontools-scripts
+# ChangeLog for sys-apps/daemontools-scripts
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools-scripts/ChangeLog,v 1.7 2005/08/23 07:13:01 kaiowas Exp $
-
-  23 Aug 2005; petre rodan <kaiowas@gentoo.org>
-  -daemontools-scripts-1.0.0.ebuild, -daemontools-scripts-1.0.1.ebuild,
-  daemontools-scripts-1.0.2.ebuild:
-  mark stable; remove old ebuilds
-
-*daemontools-scripts-1.0.2 (06 Aug 2005)
-
-  06 Aug 2005; petre rodan <kaiowas@gentoo.org>
-  +daemontools-scripts-1.0.2.ebuild:
-  added scripts from bug #28940 and #28945, usage script rewritten
-
-  16 May 2005; petre rodan <kaiowas@gentoo.org>
-  daemontools-scripts-1.0.1.ebuild:
-  mark stable
-
-*daemontools-scripts-1.0.1 (06 May 2005)
-
-  06 May 2005; petre rodan <kaiowas@gentoo.org>
-  +daemontools-scripts-1.0.1.ebuild:
-  added fix for bash >=3.0-r10
-
-  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
-  daemontools-scripts-1.0.0.ebuild:
-  Fix sys-apps -> sys-process deps
+# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools-scripts/ChangeLog,v 1.1 2005/03/03 18:05:46 ciaranm Exp $
 
 *daemontools-scripts-1.0.0 (03 Mar 2005)
 

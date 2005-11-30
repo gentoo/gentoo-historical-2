@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/slocate/slocate-2.7-r7.ebuild,v 1.3 2005/05/22 08:09:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/slocate/slocate-2.7-r7.ebuild,v 1.1 2004/10/20 16:55:35 swegener Exp $
 
 inherit flag-o-matic eutils
 
@@ -8,14 +8,15 @@ DESCRIPTION="Secure way to index and quickly search for files on your system (dr
 HOMEPAGE="http://www.geekreview.org/slocate/"
 SRC_URI="ftp://ftp.geekreview.org/slocate/src/slocate-${PV}.tar.gz
 	mirror://gentoo/${P}-debian.patch.bz2
-	elibc_uclibc? ( mirror://gentoo/${P}-uclibc-sl_fts.patch.bz2 )"
+	mirror://gentoo/${P}-uclibc-sl_fts.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="uclibc"
 
 DEPEND="sys-apps/shadow"
+RDEPEND="sys-apps/shadow"
 
 pkg_setup() {
 	enewgroup slocate
@@ -23,19 +24,17 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	use elibc_uclibc && epatch "${WORKDIR}"/${P}-uclibc-sl_fts.patch
-	epatch "${WORKDIR}"/${P}-debian.patch
-	epatch "${FILESDIR}"/${P}-bounds.patch
+	cd ${S}
+	use uclibc && epatch ${WORKDIR}/${P}-uclibc-sl_fts.patch
+	epatch ${WORKDIR}/${P}-debian.patch
 
-	filter-lfs-flags
-	# this is safe since slocate only has 1 binary
 	append-ldflags -Wl,-z,now
+	filter-lfs-flags
 
 	sed -i \
 		-e "/groupadd/s/^/#/" \
 		-e "/chown.*slocate/s/^/#/" \
-		-e '/^CFLAGS/d' \
+		-e "/^CFLAGS/s:-g3:${CFLAGS}:" \
 		Makefile.in || die
 }
 
@@ -55,7 +54,7 @@ src_install() {
 	dodoc AUTHORS README ChangeLog
 
 	# man page fixing
-	rm -f "${D}"/usr/share/man/man1/locate.1.gz
+	rm -f "${D}/usr/share/man/man1/locate.1.gz"
 	dosym slocate.1.gz /usr/share/man/man1/locate.1.gz
 
 	insinto /etc
@@ -72,10 +71,12 @@ src_install() {
 pkg_postinst() {
 	touch "${ROOT}/var/lib/slocate/slocate.db"
 
-	if [[ -f ${ROOT}/etc/cron.daily/slocate.cron ]]; then
+	if [[ -f "${ROOT}/etc/cron.daily/slocate.cron" ]]; then
+		ewarn
 		ewarn "If you merged slocate-2.7.ebuild, please remove"
 		ewarn "/etc/cron.daily/slocate.cron since .cron has been removed"
 		ewarn "from the filename"
+		ewarn
 		echo
 	fi
 	einfo "Note that the /etc/updatedb.conf file is generic"

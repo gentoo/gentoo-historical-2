@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/quota/quota-3.12-r1.ebuild,v 1.3 2005/08/17 00:27:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/quota/quota-3.12-r1.ebuild,v 1.1 2005/01/07 13:04:51 robbat2 Exp $
 
 inherit eutils
 
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
 IUSE="nls tcpd ldap rpc"
 
-RDEPEND="ldap? ( net-nds/openldap )
+RDEPEND="virtual/libc
+	ldap? ( net-nds/openldap )
 	tcpd? ( sys-apps/tcp-wrappers )
 	rpc? ( net-nds/portmap )"
 DEPEND="${RDEPEND}
@@ -23,30 +24,25 @@ S=${WORKDIR}/quota-tools
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 
 	# patch to prevent quotactl.2 manpage from being installed
 	# that page is provided by man-pages instead
-	epatch "${FILESDIR}"/${PN}-no-quotactl-manpage.patch
-
-	# Don't strip binaries (from Fedora)
-	epatch "${FILESDIR}"/quota-3.06-no-stripping.patch
+	epatch ${FILESDIR}/${PN}-no-quotactl-manpage.patch
 
 	sed -i -e "s:,LIBS=\"\$saved_LIBS=\":;LIBS=\"\$saved_LIBS\":" configure
 }
 
 src_compile() {
-	econf \
-		$(use_enable nls) \
-		$(use_enable ldap ldapmail) \
-		$(use_enable rpc) \
-		$(use_enable rpc rpcsetquota) \
-		|| die
+	local myconf
+	myconf="$(use_enable nls) $(use_enable ldap ldapmail)"
+	myconf="${myconf} $(use_enable rpc) $(use_enable rpc rpcsetquota)"
+	econf ${myconf} || die
 	emake || die
 }
 
 src_install() {
-	dodir /{sbin,etc,usr/sbin,usr/bin,usr/share/man/man{1,3,8}}
+	dodir {sbin,etc,usr/sbin,usr/bin,usr/share/man/man{1,3,8}}
 	make ROOTDIR="${D}" install || die
 	rm -r "${D}"/usr/include #70938
 
@@ -58,10 +54,10 @@ src_install() {
 	dodoc README.*
 	dodoc Changelog
 
-	newinitd "${FILESDIR}"/quota.rc6 quota
-	newconfd "${FILESDIR}"/quota.confd quota
+	newinitd ${FILESDIR}/quota.rc6 quota
 
-	if use ldap ; then
+	if use ldap
+	then
 		insinto /etc/openldap/schema
 		insopts -m0644
 		doins ldap-scripts/quota.schema

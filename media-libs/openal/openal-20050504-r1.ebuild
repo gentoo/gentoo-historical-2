@@ -1,23 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20050504-r1.ebuild,v 1.5 2005/11/29 14:18:37 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20050504-r1.ebuild,v 1.1 2005/06/24 06:57:26 eradicator Exp $
 
 inherit eutils gnuconfig
 
-IUSE="alsa arts esd sdl debug vorbis mpeg"
+IUSE="alsa arts esd sdl debug oggvorbis mpeg"
 DESCRIPTION="OpenAL, the Open Audio Library, is an open, vendor-neutral, cross-platform API for interactive, primarily spatialized audio"
 SRC_URI="http://dev.gentoo.org/~eradicator/openal/${P}.tar.bz2"
 HOMEPAGE="http://www.openal.org"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.2 )
 	arts? ( kde-base/arts )
 	esd? ( media-sound/esound )
 	sdl? ( media-libs/libsdl )
-	vorbis? ( media-libs/libvorbis )
+	oggvorbis? ( media-libs/libvorbis )
 	mpeg? ( media-libs/smpeg )"
 
 DEPEND="${RDEPEND}
@@ -43,18 +43,18 @@ src_unpack() {
 }
 
 src_compile() {
-	econf \
-		--enable-paranoid-locks \
-		--libdir=/usr/$(get_libdir) \
-		--enable-capture \
-		--enable-optimize \
-		$(use_enable esd) \
-		$(use_enable sdl) \
-		$(use_enable alsa) \
-		$(use_enable arts) \
-		$(use_enable mpeg smpeg) \
-		$(use_enable vorbis) \
-		$(use_enable debug debug-maximus) || die
+	local myconf
+
+	use esd && myconf="${myconf} --enable-esd"
+	use sdl && myconf="${myconf} --enable-sdl"
+	use alsa && myconf="${myconf} --enable-alsa"
+	use arts && myconf="${myconf} --enable-arts"
+	use mpeg && myconf="${myconf} --enable-smpeg"
+	use oggvorbis && myconf="${myconf} --enable-vorbis"
+	use debug && myconf="${myconf} --enable-debug-maximus"
+
+	econf ${myconf} --enable-paranoid-locks --libdir=/usr/$(get_libdir) \
+		--enable-capture --enable-optimize || die
 	emake all || die
 }
 

@@ -1,30 +1,23 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/hlfl/hlfl-0.60.1.ebuild,v 1.8 2004/07/01 21:07:43 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/hlfl/hlfl-0.60.1.ebuild,v 1.1 2003/10/11 15:52:04 lanius Exp $
 
-IUSE=""
+S=${WORKDIR}/${P}
 DESCRIPTION="High Level Firewall Language"
 SRC_URI="ftp://ftp.hlfl.org/pub/hlfl/${P}.tar.gz"
 HOMEPAGE="http://www.hlfl.org"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="~x86 ~sparc"
 SLOT="0"
 
-DEPEND="virtual/libc"
-
-src_compile() {
-	sed -i -e 's:${datadir}/hlfl:${datadir}:' configure
-	econf --datadir=/usr/share/doc/${P} || die "./configure failed"
-	emake || die
-}
+DEPEND="virtual/glibc"
 
 src_install () {
-	dobin src/hlfl
-	doman doc/hlfl.1
-	insinto /usr/share/doc/${P}
-	doins doc/services.hlfl
+	einstall
 
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS \
-	TODO doc/RoadMap doc/sample_1.hlfl doc/sample_2.hlfl \
-	doc/test.hlfl doc/syntax.txt doc/sample_3.hlfl doc/CodingStyle
+	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS TODO
+	cd doc
+	dodoc CodingStyle sample_1.hlfl sample_2.hlfl sample_3.hlfl \
+		services.hlfl syntax.txt test.hlfl RoadMap TODO
+	rm -f ${D}/usr/share/*
 }

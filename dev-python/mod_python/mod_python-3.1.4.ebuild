@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/mod_python/mod_python-3.1.4.ebuild,v 1.4 2005/02/27 11:18:51 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/mod_python/mod_python-3.1.4.ebuild,v 1.1 2005/02/26 12:27:02 kloeri Exp $
 
 inherit python eutils apache-module
 
@@ -10,11 +10,11 @@ SRC_URI="mirror://apache/httpd/modpython/${P}.tgz"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc ~sparc ~amd64"
+KEYWORDS="x86 alpha ppc ~sparc ~amd64"
 IUSE=""
 DEPEND="dev-lang/python"
 
-#APACHE2_MOD_CONF="2.7.11/16_${PN}"
+APACHE2_MOD_CONF="2.7.11/16_${PN}"
 APACHE2_MOD_DEFINE="PYTHON"
 
 DOCFILES="README NEWS CREDITS COPYRIGHT"
@@ -40,6 +40,8 @@ src_compile() {
 }
 
 src_install() {
+	#dodir ${APACHE2_MODULESDIR}
+	#make install DESTDIR=${D} LIBEXECDIR=/usr/lib/apache2-extramodules || die
 	emake DESTDIR=${D} install || die
 
 	dohtml doc-html/*
@@ -47,8 +49,6 @@ src_install() {
 	doins doc-html/icons/*
 
 	apache-module_src_install
-	insinto ${APACHE2_MODULES_CONFDIR}
-	newins ${FILESDIR}/16_${PN}-r1.conf 16_${PN}.conf
 }
 
 pkg_postinst() {

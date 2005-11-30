@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xli/xli-1.17.0-r2.ebuild,v 1.11 2005/11/20 13:33:54 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xli/xli-1.17.0-r2.ebuild,v 1.1 2005/10/26 15:09:15 taviso Exp $
 
 inherit alternatives eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://pantransit.reptiles.org/prog/xli/xli-${SNAPSHOT}.tar.gz"
 
 LICENSE="X11"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
 IUSE=""
 
 DEPEND="virtual/x11
@@ -27,7 +27,7 @@ src_unpack() {
 
 	cd ${S}
 
-	if use userland_Darwin ; then
+	if use ppc-macos ; then
 		for f in $(grep zopen * | cut -d':' -f1 | uniq); do
 			sed -i "s:zopen:xli_zopen:g" $f
 		done

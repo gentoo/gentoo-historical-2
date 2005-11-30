@@ -1,46 +1,6 @@
 # ChangeLog for media-tv/zapping
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/zapping/ChangeLog,v 1.12 2005/08/30 01:07:17 vanquirius Exp $
-
-*zapping-0.9.6 (30 Aug 2005)
-
-  30 Aug 2005; Marcelo Goes <vanquirius@gentoo.org> zapping-0.7.ebuild,
-  +zapping-0.9.6.ebuild:
-  Some ebuild fixes and a version bump for bug 64173. Thanks to everyone
-  participating in the bug.
-
-  30 Aug 2005; Marcelo Goes <vanquirius@gentoo.org> zapping-0.7.ebuild:
-  Add missing esound dependency and fix scrollkeeper violations for bug 98968.
-  Thanks to Adam Chodorowski <adam@chodorowski.com>.
-
-  30 Nov 2004; Sven Wegener <swegener@gentoo.org> zapping-0.7.ebuild:
-  Fixed invalid atoms in *DEPEND.
-
-  01 Sep 2004; Martin Holzer <mholzer@gentoo.org> zapping-0.7.ebuild:
-  correcting depend. closes 62404
-
-*zapping-0.7 (28 Aug 2004)
-
-  28 Aug 2004; Martin Holzer <mholzer@gentoo.org> +zapping-0.7.ebuild:
-  Version bumped. Closes 61640
-
-*zapping-0.6.8 (28 Aug 2004)
-
-  28 Aug 2004; Martin Holzer <mholzer@gentoo.org> +zapping-0.6.8.ebuild:
-  Version bumped.
-
-  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> zapping-0.6.6.ebuild,
-  zapping-0.6.7.ebuild:
-  Add die following econf for bug 48950
-
-  16 Jul 2003; Martin Holzer <mholzer@gentoo.org> zapping-0.6.6.ebuild,
-  zapping-0.6.7.ebuild:
-  Fixed issue with zapping_setup_fb. Closes #24142
-
-*zapping-0.6.7 (15 Jul 2003)
-
-  15 Jul 2003; Martin Holzer <mholzer@gentoo.org> zapping-0.6.7.ebuild:
-  Version bumped.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/zapping/ChangeLog,v 1.1 2003/06/18 12:21:49 seemant Exp $
 
 *zapping-0.6.6 (18 Jun 2003)
 

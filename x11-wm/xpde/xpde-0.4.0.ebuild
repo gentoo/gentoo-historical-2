@@ -1,23 +1,24 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/xpde/xpde-0.4.0.ebuild,v 1.4 2004/10/09 19:44:42 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/xpde/xpde-0.4.0.ebuild,v 1.1 2003/08/15 08:06:02 seemant Exp $
 
+IUSE=""
+S="${WORKDIR}/${P}"
 DESCRIPTION="A Desktop Environment modelled after the O/S from Redmond, WA"
 HOMEPAGE="http://www.xpde.com/"
 SRC_URI="http://www.xpde.com/releases/${P}-20030730.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 -ppc -sparc -alpha"
 
 DEPEND="virtual/x11"
 
 src_compile() {
-	einfo
+	einfo ""
 	einfo "This is a binary-only package (sadly)"
 	einfo "No files to compile."
-	einfo
+	einfo ""
 }
 
 src_install() {
@@ -57,10 +58,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	einfo ""
 	einfo "sh /opt/xpde/bin/install-config.sh"
-	einfo
+	einfo ""
 	einfo "This will install a default configuration into your"
 	einfo "home directory"
-	einfo
+	einfo ""
 }

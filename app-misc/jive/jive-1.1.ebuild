@@ -1,26 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/jive/jive-1.1.ebuild,v 1.11 2005/04/21 19:25:26 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/jive/jive-1.1.ebuild,v 1.1 2003/06/08 18:29:07 brad Exp $
 
 DESCRIPTION="Filter that converts English text to Jive, by Adam Douglas"
-HOMEPAGE="http://dev.gentoo.org/~brad/"
-SRC_URI="http://dev.gentoo.org/~brad/${P}.tar.gz"
-
+HOMEPAGE="http://cvs.gentoo.org/~brad/"
+SRC_URI="http://cvs.gentoo.org/~brad/${P}.tar.gz"
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
+KEYWORDS="~x86"
 IUSE=""
-
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+#RDEPEND=""
 
 S=${WORKDIR}/${PN}
 
 src_compile() {
-	emake || die
+	emake
 }
 
 src_install() {
-	dobin jive || die
+	dobin jive
 	doman jive.1
 	dodoc README POSTER
 }

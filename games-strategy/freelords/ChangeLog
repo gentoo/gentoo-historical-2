@@ -1,71 +1,8 @@
-# ChangeLog for games-strategy/freelords
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/freelords/ChangeLog,v 1.17 2005/11/14 03:20:21 mr_bones_ Exp $
-
-*freelords-0.3.6 (14 Nov 2005)
-
-  14 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +freelords-0.3.6.ebuild:
-  version bump
-
-  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
-  freelords-0.3.4.ebuild:
-  Stable on ppc.
-
-*freelords-0.3.5 (16 Apr 2005)
-
-  16 Apr 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +freelords-0.3.5.ebuild:
-  version bump
-
-  13 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  -files/freelords-0.3.3-gcc-3.4.patch, -freelords-0.3.3.ebuild,
-  freelords-0.3.4.ebuild:
-  clean older ebuild; fix dep (patch from Nathan Skillen via bug #74271)
-
-*freelords-0.3.4 (19 Nov 2004)
-
-  19 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +freelords-0.3.4.ebuild:
-  version bump - contributions from Bryan Duff via bug #69865
-
-  08 Nov 2004; Joseph Jezak <josejx@gentoo.org>
-  +files/freelords-0.3.3-gcc-3.4.patch, freelords-0.3.3.ebuild:
-  Fixed compiling with gcc 3.4 and added ~ppc.
-
-  24 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> freelords-0.3.3.ebuild:
-  tidy deps: doesn't like media-libs/paragui-1.1
-
-  24 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  -files/0.2.3-gcc3.patch, -freelords-0.3.1.ebuild:
-  clean older version
-
-*freelords-0.3.3 (07 Aug 2004)
-
-  07 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +freelords-0.3.3.ebuild:
-  version bump
-
-  05 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> freelords-0.3.ebuild:
-  clean older version
-
-  23 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> freelords-0.3.1.ebuild:
-  don't rdepend on pkgconfig and sed
-
-*freelords-0.3.1 (04 Jan 2004)
-
-  04 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> freelords-0.3.1.ebuild:
-  version bump
-
-*freelords-0.3 (25 Oct 2003)
-
-  25 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bumpage.
+# ChangeLog for app-games/freelords
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/freelords/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
 
 *freelords-0.2.3 (14 Jul 2003)
-
-  13 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
-  Added a gcc3 patch #28640.
 
   14 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
   Version bump.  This one installs w/Makefile since they updated the package.

@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_security/mod_security-1.7.6.ebuild,v 1.7 2005/01/09 00:17:26 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_security/mod_security-1.7.6.ebuild,v 1.1 2004/06/04 01:30:14 zul Exp $
 
 DESCRIPTION="Intrusion Detection System for apache"
 HOMEPAGE="http://www.modsecurity.org"
 SRC_URI="http://www.modsecurity.org/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~sparc"
+KEYWORDS="~x86"
 IUSE="apache2 doc"
 DEPEND="apache2? ( =net-www/apache-2* )
 	!apache2? ( =net-www/apache-1* )"

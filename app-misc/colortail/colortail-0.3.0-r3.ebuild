@@ -1,27 +1,50 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/colortail/colortail-0.3.0-r3.ebuild,v 1.14 2005/01/01 14:57:13 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/app-misc/colortail/colortail-0.3.0-r3.ebuild,v 1.1 2002/09/08 21:29:42 karltk Exp $
 
-inherit toolchain-funcs eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Colortail custom colors your log files and works like tail"
-# bug 73512 - package doesn't seem to have a valid home page
-HOMEPAGE="http://web.archive.org/web/20030411093805/www.student.hk-r.se/~pt98jan/colortail.html"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+SRC_URI="http://www.student.hk-r.se/~pt98jan/colortail-0.3.0.tar.gz"
+HOMEPAGE="http://www.student.hk-r.se/~pt98jan/colortail.html"
 
-LICENSE="GPL-2"
+DEPEND="virtual/glibc"
+
 SLOT="0"
-IUSE=""
-KEYWORDS="x86 ppc amd64"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	[ "`gcc-major-version`" == "3" ] && epatch ${FILESDIR}/${PV}/ansi-c++-gcc-3.2.diff
+	# 2002-09-08: karltk
+	# This bit of trickery conditionally applies the gcc-3.2 patch
+	# if the desired compiler is not the 2.95.x series. It is assumed
+	# that if it's not 2.95, it is 3.0.x or newer.
+	if [ -z "${CXX}" ] ; then
+		CXX=g++
+	fi
+	if [ "`${CXX} -dumpversion | cut -d. -f1,2`" != "2.95" ] ; then
+		# Both 3.1.x and 3.2 work with the patch.
+		patch -p1 < ${FILESDIR}/${PV}/ansi-c++-gcc-3.2.diff || die
+	fi
+	${CXX} -dumpversion > .gentoo-compiler-version
 }
 
-src_install() {
-	make DESTDIR=${D} install || die "make install failed"
+src_compile() {
+	if [ -z "${CXX}" ] ; then
+		CXX=g++
+	fi
+	if [ "`cat .gentoo-compiler-version`" != "`${CXX} -dumpversion`" ] ; then
+		eerror "You must unpack and compile with the same CXX setting"
+		die
+	fi
+	econf || die
+	make || die
+}
+ 
+src_install()  {
+	
+	make DESTDIR=${D} install || die
 	dodoc README example-conf/conf*
 	dodir /usr/bin/wrappers
 	dosym /usr/bin/colortail /usr/bin/wrappers/tail
@@ -29,7 +52,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	if grep /usr/bin/wrappers ${ROOT}/etc/profile > /dev/null
+	if grep /usr/bin/wrappers /etc/profile > /dev/null
 	then
 		einfo "/etc/profile already updated for wrappers"
 	else

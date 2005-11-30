@@ -1,15 +1,6 @@
 # ChangeLog for games-util/gamepick
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/gamepick/ChangeLog,v 1.4 2005/09/30 18:45:12 wolf31o2 Exp $
-
-  30 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> gamepick-0.30.ebuild:
-  Removed INSTALL.
-
-  24 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> gamepick-0.30.ebuild:
-  Add inherit eutils.
-
-  22 Jul 2005; David Holm <dholm@gentoo.org> gamepick-0.30.ebuild:
-  Added to ~ppc.
+# $Header: /var/cvsroot/gentoo-x86/games-util/gamepick/ChangeLog,v 1.1 2005/07/22 04:20:46 vapier Exp $
 
 *gamepick-0.30 (22 Jul 2005)
 

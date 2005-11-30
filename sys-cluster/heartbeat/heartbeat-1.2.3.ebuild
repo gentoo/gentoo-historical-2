@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/heartbeat/heartbeat-1.2.3.ebuild,v 1.7 2005/03/11 12:47:56 sekretarz Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/heartbeat/heartbeat-1.2.3.ebuild,v 1.1 2004/10/02 05:50:17 iggy Exp $
 
 DESCRIPTION="Heartbeat high availability cluster manager"
 HOMEPAGE="http://www.linux-ha.org"
@@ -10,11 +8,11 @@ SRC_URI="http://www.linux-ha.org/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 -mips ~ppc ~amd64"
+KEYWORDS="~x86 -mips ~ppc"
 IUSE="ldirectord"
 
 DEPEND="dev-libs/popt
-	=dev-libs/glib-1.2*
+	dev-libs/glib
 	net-libs/libnet
 	ldirectord? (	sys-cluster/ipvsadm
 			dev-perl/libwww-perl
@@ -24,8 +22,6 @@ DEPEND="dev-libs/popt
 # need to add dev-perl/Mail-IMAPClient inside ldirectord above
 
 src_compile() {
-	append-ldflags -Wl,-z,now
-
 	./configure --prefix=/usr \
 		--sysconfdir=/etc \
 		--localstatedir=/var \
@@ -49,11 +45,6 @@ pkg_preinst() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-
-	# heartbeat modules need these dirs
-	keepdir /var/lib/heartbeat/ckpt /var/lib/heartbeat/ccm /var/lib/heartbeat
-
-	keepdir /etc/ha.d/conf
 
 	# if ! USE="ldirectord" then don't install it
 	if ! use ldirectord ; then

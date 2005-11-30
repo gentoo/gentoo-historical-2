@@ -1,17 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/yodl/yodl-1.31.18.ebuild,v 1.11 2005/04/21 20:36:13 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/yodl/yodl-1.31.18.ebuild,v 1.1 2003/10/02 14:04:27 usata Exp $
 
 inherit eutils
+
+IUSE=""
 
 HOMEPAGE="http://www.xs4all.nl/~jantien/yodl/"
 SRC_URI="ftp://ftp.lilypond.org/pub/yodl/development/${P}.tar.gz"
 DESCRIPTION="Yet oneOther Document Language"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
-KEYWORDS="x86 ppc ~sparc alpha ~mips amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
 DEPEND="sys-devel/bison
 	sys-devel/flex
@@ -41,21 +42,9 @@ src_compile() {
 
 	cd Documentation
 	make info || die "make info failed"
-	ed out/yodl.info <<-EOM >/dev/null 2>&1
-	3a
-	INFO-DIR-SECTION Miscellaneous
-	START-INFO-DIR-ENTRY
-	* yodl: (yodl).         High level document preparation system.
-	END-INFO-DIR-ENTRY
-
-	.
-	wq
-	EOM
 }
 
 src_install() {
-	unset NAME
-
 	make prefix="${D}/usr" \
 		datadir="${D}/usr/share/yodl" \
 		mandir="${D}/usr/share/man" \

@@ -1,34 +1,14 @@
-#!/bin/sh
+#! /bin/sh
 
-if [ -r ./shared ] ; then . ./shared ; else . /etc/pcmcia/shared ; fi
+action=$1
+device=$2
 
-# Get device attributes
-get_info $DEVICE
-HWADDR=`/sbin/ifconfig $DEVICE | sed -ne 's/.*\(..:..:..:..:..:..\).*/\1/p'`
-
-# Load site-specific settings
-ADDRESS="$SCHEME,$SOCKET,$INSTANCE,$HWADDR"
-
-RESOLV=/etc/resolv.conf
-
-# Now, run the specific script for Wireless LAN interfaces
-# Note : we need the wireless parameters to be set up before IP parameters,
-# so that we can perform DHCP over the Wireless link if needed. Jean II
-O_INFO=$INFO ; INFO=
-if [ -x ./wireless ] ; then
-    . ./wireless
-else
-    . /etc/pcmcia/wireless
-fi
-INFO=$O_INFO
-
-
-case "${ACTION}" in
+case "${action:?}" in
 	"start" | "resume" )
-		/etc/init.d/net.$DEVICE start
+		/etc/init.d/net.$2 start
 		;;
 	"stop")
-		/etc/init.d/net.$DEVICE stop
+		/sbin/ifconfig $2 stop
 		;;
 	"check")
 		;;

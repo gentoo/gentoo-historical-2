@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/searchtool/searchtool-0.4.4.ebuild,v 1.5 2005/06/05 11:35:25 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-util/searchtool/searchtool-0.4.4.ebuild,v 1.1 2003/09/10 18:53:23 vapier Exp $
 
 inherit games
 
@@ -10,16 +10,15 @@ SRC_URI="mirror://sourceforge/searchtool/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND="dev-java/ant"
 RDEPEND="virtual/jre"
 
-S="${WORKDIR}/${PN}"
+S=${WORKDIR}/${PN}
 
 src_compile() {
-	ant || die "ant failed"
+	ant || die
 	sed \
 		-e "s:GENTOO_DATADIR:${GAMES_DATADIR}/${PN}:" \
 		-e "s:GENTOO_P:${P}:" \
@@ -27,9 +26,9 @@ src_compile() {
 }
 
 src_install() {
-	dogamesbin searchtool || die "dogamesbin failed"
-	insinto "${GAMES_DATADIR}/${PN}"
+	insinto ${GAMES_DATADIR}/${PN}
 	doins ${P}.jar
+	dogamesbin searchtool
 	dodoc README
 	prepgamesdirs
 }

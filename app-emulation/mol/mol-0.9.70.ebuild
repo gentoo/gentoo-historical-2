@@ -1,26 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/mol/mol-0.9.70.ebuild,v 1.15 2005/08/06 21:05:49 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/mol/mol-0.9.70.ebuild,v 1.1 2004/03/21 23:01:54 pylon Exp $
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
-DESCRIPTION="MOL (Mac-on-Linux) lets PPC users run MacOS (X) under Linux"
-HOMEPAGE="http://www.maconlinux.org/"
+S=${WORKDIR}/${P}
+DESCRIPTION="MOL (Mac-on-Linux) lets PPC users run MacOS (X) under Linux (rsync snapshot)"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="-* ppc"
-IUSE="vnc alsa oss fbcon X oldworld sheep debug"
-
-MAKEOPTS="${MAKEOPTS} -j1"
+HOMEPAGE="http://www.maconlinux.net/"
 
 DEPEND=""
 RDEPEND="net-misc/dhcp
 	net-firewall/iptables
 	alsa? ( virtual/alsa )
-	vnc? ( net-misc/vnc )
 	X? ( virtual/x11 )"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~ppc -x86 -sparc -alpha -mips"
+IUSE="alsa oss fbcon X oldworld sheep debug"
 
 pkg_setup() {
 	echo
@@ -39,26 +36,18 @@ src_unpack() {
 
 	sed -i "s:prefix		= /usr/local:prefix		= /usr:" Makefile.top || die
 	sed -i "s#VENDOR		:=#VENDOR		:= -gentoo#" Makefile.top || die
-	epatch ${FILESDIR}/${P}-makefile-fix.patch
-	epatch ${FILESDIR}/${PN}-module-fix.patch
+
 }
 
 src_compile() {
 	filter-flags -fsigned-char
-echo -- "$LDFLAGS"
-	# See bug #70367, remove -Wl,-O? from LDFLAGS as it causes
-	# the compilation to fail.
-	filter-ldflags "-Wl,-O?"
-echo -- "$LDFLAGS"
 
 	export KERNEL_SOURCE="/usr/src/${FK}"
-	export LDFLAGS=""
 
 	# initialize all needed build-files
 	./autogen.sh
-	#workaround
-	./configure --disable-png
-	make defconfig || die "This is a ppc-only package (time to buy that iBook, no?)"
+
+	emake defconfig || die "This is a ppc-only package (time to buy that iBook, no?)"
 
 	sed -i "s:CONFIG_XDGA=y:# CONFIG_XDGA is not set:" .config
 	sed -i "s:CONFIG_TAP=y:# CONFIG_TAP is not set:" .config
@@ -69,14 +58,13 @@ echo -- "$LDFLAGS"
 	use sheep    || sed -i "s:CONFIG_SHEEP=y:# CONFIG_SHEEP is not set:" .config
 	use X        || sed -i "s:CONFIG_X11=y:# CONFIG_X11 is not set:" .config
 	use fbcon    || sed -i "s:CONFIG_FBDEV=y:# CONFIG_FBDEV is not set:" .config
-	use vnc      || sed -i "s:CONFIG_VNC=y:# CONFIG_VNC is not set:" .config
 
 	einfo "The configuration has been altered according to your USE-flags."
 	# reinitialize our changed configuration
-	make oldconfig
+	emake oldconfig
 
 	addwrite "/usr/src/${FK}"
-	make || die "Build mol with: FEATURES=\"-userpriv -usersandbox\" emerge mol"
+	emake || die "Build mol with: FEATURES=\"-userpriv -strict\" emerge mol"
 }
 
 src_install() {
@@ -85,7 +73,7 @@ src_install() {
 	# sandboxing enabled this would result in an access violation.
 
 	addwrite "/usr/src/${FK}"
-	make DESTDIR=${D} install || die "Failed to install MOL."
+	emake DESTDIR=${D} install || die "Failed to install MOL."
 
 	dodoc 0README BUILDING COPYRIGHT CREDITS Doc/*
 }
@@ -95,7 +83,7 @@ pkg_postinst() {
 	einfo "Mac-on-Linux is now installed.  To run, use the command startmol."
 	einfo "You might want to configure video modes first with molvconfig."
 	einfo "Other configuration is in /etc/molrc.  For more info see:"
-	einfo "              http://www.maconlinux.org"
+	einfo "              http://www.maconlinux.net"
 	einfo "Also try man molrc, man molvconfig, man startmol"
 	echo
 	ewarn "For networking and sound you might install the drivers in the"
@@ -104,6 +92,7 @@ pkg_postinst() {
 	ewarn "If errors with networking occur, make sure you have the following"
 	ewarn "kernel functions enabled:"
 	einfo "For the dhcp server:"
+	einfo "    Socket Filtering (CONFIG_FILTER)"
 	einfo "    Packet Socket (CONFIG_PACKET)"
 	einfo "For NAT:"
 	einfo "    Network packet filtering (CONFIG_NETFILTER)"

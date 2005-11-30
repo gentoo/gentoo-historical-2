@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpiexec/mpiexec-0.75.ebuild,v 1.5 2004/07/01 21:48:05 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/mpiexec/mpiexec-0.75.ebuild,v 1.1 2004/03/25 13:02:41 tantive Exp $
 
 #S=${WORKDIR}/mpiexec-${PV}
 DESCRIPTION="replacement for mpirun, integrates MPI with PBS."
@@ -8,24 +8,22 @@ SRC_URI="http://www.osc.edu/~pw/mpiexec/${P}.tgz"
 HOMEPAGE="http://www.osc.edu/~pw/mpiexec/"
 IUSE=""
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-cluster/openpbs
 	sys-cluster/mpich"
 RDEPEND="net-misc/openssh"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
-pkg_setup() {
-	# Do we have a SMP enabled kernel?
-	if [ ! -z "`uname -v | grep SMP`" ]
-	then
-		export SMP=1
-	else
-		export SMP=0
-	fi
-}
+# Do we have a SMP enabled kernel?
+if [ ! -z "`uname -v | grep SMP`" ]
+then
+	export SMP=1
+else
+	export SMP=0
+fi
 
 src_compile() {
 	#for SMP machines, disable the use of mpich/p4 shared memory

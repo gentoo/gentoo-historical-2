@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.3.27.ebuild,v 1.4 2005/07/10 20:59:39 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.3.27.ebuild,v 1.1 2005/03/29 12:50:19 pauldv Exp $
 
 inherit eutils gnuconfig db
 
@@ -26,7 +26,7 @@ done
 
 LICENSE="DB"
 SLOT="4.3"
-KEYWORDS="~amd64 ~ia64 ~m68k ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="tcltk java doc nocxx bootstrap"
 
 DEPEND="tcltk? ( >=dev-lang/tcl-8.4 )
@@ -47,8 +47,6 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-4.3.27-fix-dep-link.patch
 
 	gnuconfig_update "${S}/../dist"
-
-	sed -i -e "s,\(ac_compiler\|\${MAKEFILE_CC}\|\${MAKEFILE_CXX}\|\$CC\)\( *--version\),\1 -dumpversion,g" ${S}/../dist/configure
 }
 
 src_compile() {
@@ -88,7 +86,7 @@ src_compile() {
 		--host=${CHOST} \
 		${myconf} || die "configure failed"
 
-	emake -j1 || die "make failed"
+	emake || make || die "make failed"
 }
 
 src_install() {

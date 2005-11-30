@@ -1,11 +1,11 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/wolfgl/wolfgl-0.93-r1.ebuild,v 1.5 2005/09/16 01:22:23 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/wolfgl/wolfgl-0.93-r1.ebuild,v 1.1 2003/09/12 06:42:54 vapier Exp $
 
 #ECVS_SERVER="cvs.sourceforge.net:/cvsroot/wolfgl"
 #ECVS_MODULE="wolfgl"
 #inherit cvs
-inherit eutils games
+inherit games
 
 DESCRIPTION="Wolfenstein and Spear of Destiny port using OpenGL"
 HOMEPAGE="http://wolfgl.sourceforge.net/"
@@ -17,34 +17,30 @@ SRC_URI="mirror://gentoo/${P}.tbz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc x86"
-IUSE=""
+KEYWORDS="x86"
 
-RDEPEND="virtual/opengl
+DEPEND="virtual/opengl
 	virtual/x11"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PV}-gcc.patch \
-		"${FILESDIR}"/${PV}-sample-rate.patch \
-		"${FILESDIR}"/${PV}-sprite.patch
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-gcc.patch
+	epatch ${FILESDIR}/${PV}-sample-rate.patch
+	epatch ${FILESDIR}/${PV}-sprite.patch
 }
 
 src_compile() {
-	emake -j1 CFLAGS="${CFLAGS}" DATADIR="${GAMES_DATADIR}"/${PN} \
-		|| die "emake failed"
+	make CFLAGS="${CFLAGS}" DATADIR=${GAMES_DATADIR}/${PN} || die
 }
 
 src_install() {
-	newgamesbin linux/SDM/wolfgl wolfgl-sdm || die
-	newgamesbin linux/SOD/wolfgl wolfgl-sod || die
-	newgamesbin linux/WL1/wolfgl wolfgl-wl1 || die
-	newgamesbin linux/WL6/wolfgl wolfgl-wl6 || die
-	insinto "${GAMES_DATADIR}"/${PN}
-	doins "${WORKDIR}"/*.{sdm,wl1} || die
+	newgamesbin linux/SDM/wolfgl wolfgl-sdm
+	newgamesbin linux/SOD/wolfgl wolfgl-sod
+	newgamesbin linux/WL1/wolfgl wolfgl-wl1
+	newgamesbin linux/WL6/wolfgl wolfgl-wl6
+	insinto ${GAMES_DATADIR}/${PN}
+	doins ${WORKDIR}/*.{sdm,wl1}
 	prepgamesdirs
 }
 

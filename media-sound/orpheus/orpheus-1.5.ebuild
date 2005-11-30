@@ -1,20 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/orpheus/orpheus-1.5.ebuild,v 1.12 2005/09/14 07:42:17 agriffis Exp $
-
-inherit eutils toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/media-sound/orpheus/orpheus-1.5.ebuild,v 1.1 2004/04/02 10:47:43 eradicator Exp $
 
 DESCRIPTION="Command line MP3 player."
 HOMEPAGE="http://konst.org.ua/en/orpheus"
 SRC_URI="http://konst.org.ua/download/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc sparc x86"
-IUSE="ogg"
+KEYWORDS="~x86 ~sparc"
+LICENSE="GPL-2"
+IUSE="oggvorbis"
 
 DEPEND=">=sys-libs/ncurses-5.2
-	ogg? ( >=media-libs/libvorbis-1.0_beta1 )
+	oggvorbis? ( >=media-libs/libvorbis-1.0_beta1 )
 	virtual/mpg123
 	media-sound/vorbis-tools
 	gnome-base/libghttp"
@@ -22,11 +20,8 @@ DEPEND=">=sys-libs/ncurses-5.2
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
 
-	epatch ${FILESDIR}/${PV}-gcc34.patch
-
-	#if use nas; then
+	#if [ "`use nas`" ]; then
 	#	cd src
 	#	sed -e "s:^INCLUDES =:INCLUDES = -I/usr/X11R6/include:" \
 	#		-e "s:^splay_LDADD =:splay_LDADD = \$(NAS_LIBS):" \
@@ -42,12 +37,11 @@ src_compile() {
 	#use nas || myconf="${myconf} --disable-nas"
 	myconf="${myconf}"
 
-	econf ${myconf} || die "configure failed"
-	make CC="$(tc-getCC) ${CFLAGS}" CXX="$(tc-getCXX) ${CXXFLAGS}" \
-		|| die "make failed"
+	econf ${myconf} || die
+	make CC="gcc ${CFLAGS}" CXX="c++ ${CXXFLAGS}" || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	make DESTDIR=${D} install || die
+	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 }

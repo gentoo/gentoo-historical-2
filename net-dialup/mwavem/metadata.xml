@@ -3,9 +3,9 @@
 <pkgmetadata>
 <herd>net-dialup</herd>
 <maintainer>
-  <email>mrness@gentoo.org</email>
-  <name>Alin Nastac</name>
+  <email>nerdboy@gentoo.org</email>
+  <name>Steve Arnold</name>
   <description>Primary Maintainer</description>
 </maintainer>
-<longdescription>User level application for IBM Mwave modem.</longdescription>
+<longdescription>User-space widget for displaying mwave modem parameters.</longdescription>
 </pkgmetadata>

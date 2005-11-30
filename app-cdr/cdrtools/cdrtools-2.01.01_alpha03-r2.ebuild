@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/cdrtools-2.01.01_alpha03-r2.ebuild,v 1.3 2005/10/12 06:04:47 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/cdrtools/cdrtools-2.01.01_alpha03-r2.ebuild,v 1.1 2005/08/22 04:27:59 metalgod Exp $
 
 inherit eutils gnuconfig toolchain-funcs flag-o-matic
 
@@ -18,7 +18,7 @@ IUSE="on-the-fly-crypt unicode"
 
 DEPEND="virtual/libc
 	!app-cdr/dvdrtools"
-RDEPEND="on-the-fly-crypt? ( || ( sys-fs/cryptsetup sys-fs/cryptsetup-luks ) )"
+RDEPEND="on-the-fly-crypt? ( sys-fs/cryptsetup )"
 PROVIDE="virtual/cdrtools"
 
 S=${WORKDIR}/${PN}-2.01.01
@@ -60,14 +60,10 @@ src_unpack() {
 src_compile() {
 	gnuconfig_update
 
-	if use unicode; then
-		local flags="$(test_flag -finput-charset=ISO-8859-1 -fexec-charset=UTF-8)"
-		if [[ -n ${flags} ]]; then
-			append-flags ${flags}
-		else
-			ewarn "Your compiler does not support the options required to build"
-			ewarn "cdrtools with unicode in USE. unicode flag will be ignored."
-		fi
+	use unicode && append-flags "-finput-charset=ISO-8859-1 -fexec-charset=UTF-8"
+	if use x86;
+		then
+		strip-flags
 	fi
 	emake CC="$(tc-getCC) -D__attribute_const__=const" COPTX="${CFLAGS}" CPPOPTX="${CPPFLAGS}" LDOPTX="${LDFLAGS}" || die
 }

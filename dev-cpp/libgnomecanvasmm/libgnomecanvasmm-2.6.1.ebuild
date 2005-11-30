@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libgnomecanvasmm/libgnomecanvasmm-2.6.1.ebuild,v 1.18 2005/07/22 12:34:18 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libgnomecanvasmm/libgnomecanvasmm-2.6.1.ebuild,v 1.1 2004/05/29 20:14:02 lv Exp $
 
 inherit gnome2
 
-DESCRIPTION="C++ bindings for libgnomecanvas"
+DESCRIPTION="C++ bindings for libgnomecanvasmm"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/libgnomecanvasmm/2.6/${P}.tar.bz2"
 HOMEPAGE="http://gtkmm.sourceforge.net/"
 
-LICENSE="LGPL-2.1"
-SLOT="2.6"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
 IUSE=""
+SLOT="2.6"
+LICENSE="LGPL-2.1"
+KEYWORDS="~x86 ~amd64"
 
 RDEPEND=">=gnome-base/libgnomecanvas-2.6
 	>=dev-cpp/gtkmm-2.4"
@@ -21,28 +22,8 @@ DEPEND=">=dev-util/pkgconfig-0.12.0
 DOCS="AUTHORS COPYING ChangeLog NEWS README TODO INSTALL"
 
 src_compile() {
-
-	if useq amd64; then
-		libtoolize --copy --force
-		aclocal -I scripts
-		autoconf
-		automake -c -f
-	fi
-
+	aclocal -I scripts
+	automake -c -f
+	autoconf
 	gnome2_src_compile
-
-	if use doc ; then
-		einfo "Building API documentation"
-		cd docs/reference
-		emake || die "failed to build API docs"
-	fi
-}
-
-src_install() {
-	gnome2_src_install
-
-	if use doc ; then
-		cd docs/reference
-		dohtml -r html/*
-	fi
 }

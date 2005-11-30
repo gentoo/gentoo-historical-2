@@ -1,82 +1,6 @@
 # ChangeLog for app-arch/star
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/star/ChangeLog,v 1.23 2005/11/25 16:54:56 tgall Exp $
-
-  25 Nov 2005; Tom Gall <tgall@gentoo.org> star-1.5_alpha62.ebuild:
-  stable on ppc64
-
-*star-1.5_alpha62 (02 Aug 2005)
-
-  02 Aug 2005; Tom Martin <slarti@gentoo.org> +star-1.5_alpha62.ebuild:
-  Version bump to 1.5_alpha62, resolves bug 66434.
-
-*star-1.5_alpha50-r1 (20 Jun 2005)
-
-  20 Jun 2005; Tom Martin <slarti@gentoo.org> +star-1.5_alpha50-r1.ebuild:
-  Really fix bug 33119 now: we needed to remove gnutar in order to avoid a
-  conflict with kdevelop.
-
-*star-1.5_alpha50 (16 Jun 2005)
-
-  16 Jun 2005; Tom Martin <slarti@gentoo.org> +metadata.xml,
-  +star-1.5_alpha50.ebuild:
-  Version bump, and take over as maintainer. Lots of cleanups.
-
-  13 Apr 2005; Tom Gall <tgall@gentoo.org> 
-  star-1.5_alpha46.ebuild:
-  add ~ppc64 support
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  star-1.5_alpha14.ebuild:
-  Masked star-1.5_alpha14.ebuild stable for ppc
-
-  06 Sep 2004; <plasmaroo@gentoo.org> star-1.5_alpha46.ebuild:
-  Marked stable on IA64, bug #61797.
-
-  02 Sep 2004; Travis Tilley <lv@gentoo.org> star-1.5_alpha46.ebuild:
-  stable on amd64
-
-  01 Sep 2004; <SeJo@gentoo.org> star-1.5_alpha46.ebuild:
-  marked stabe on ppc
-
-  01 Sep 2004; Bryan Ãstergaard <kloeri@gentoo.org>
-  star-1.5_alpha46.ebuild:
-  Stable on alpha, bug 61797.
-
-  31 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> star-1.5_alpha46.ebuild:
-  Stable on sparc wrt #61797
-
-*star-1.5_alpha46 (31 Aug 2004)
-
-  31 Aug 2004; <solar@gentoo.org> +star-1.5_alpha46.ebuild:
-  Version bump. security bug #61797
-
-*star-1.5_alpha43 (30 Jul 2004)
-
-  30 Jul 2004; Brandon Low <lostlogic@gentoo.org> +star-1.5_alpha43.ebuild:
-  Bump, bug #51094
-
-  09 May 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
-  star-1.5_alpha14.ebuild:
-  Keyword with ~mips
-
-  07 Mar 2004; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
-  star-1.4.3.ebuild:
-  mark as ~mips
-
-  11 Feb 2004; Bartosch Pixa <darkspecter@gentoo.org> star-1.4.3.ebuild:
-  set ppc in keywords
-
-  26 Dec 2003; <plasmaroo@gentoo.org> star-1.5_alpha14.ebuild:
-  Updated the ebuild, the Makefiles are now patched to use global linux 
-  headers - which are patched to support this - this should resolve bug 
-  #35225.
-
-  22 Nov 2003; Jason Wever <weeve@gentoo.org> star-1.5_alpha14.ebuild:
-  Marked stable on sparc.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-arch/star/ChangeLog,v 1.1 2003/11/14 12:15:59 seemant Exp $
 
 *star-1.4.3 (14 Nov 2003)
 
@@ -94,7 +18,6 @@
   Add ~alpha to KEYWORDS
 
 *star-1.4.3 (11 Jun 2003)
-*star-1.5_alpha14 (11 Jun 2003)
 
   11 Jun 2003; Brandon Low <lostlogic@gentoo.org> star-1.4.2.ebuild,
   star-1.4.3.ebuild, star-1.5_alpha06-r1.ebuild, star-1.5_alpha09.ebuild,

@@ -1,16 +1,6 @@
-# ChangeLog for media-plugins/xmms-xmmsd
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-xmmsd/ChangeLog,v 1.4 2005/07/25 11:50:59 dholm Exp $
-
-  25 Jul 2005; David Holm <dholm@gentoo.org> xmms-xmmsd-0.3.ebuild:
-  Added to ~ppc.
-
-  06 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  xmms-xmmsd-0.3.ebuild:
-  multilib fixes.
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
+# ChangeLog for media-sound/xmmsd
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-xmmsd/ChangeLog,v 1.1 2004/07/26 07:51:07 eradicator Exp $
 
 *xmmsd-0.3 (26 Jul 2004)
 

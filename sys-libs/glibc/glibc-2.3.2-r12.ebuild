@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.2-r12.ebuild,v 1.17 2005/07/29 16:26:13 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.2-r12.ebuild,v 1.1 2004/10/07 22:24:28 lv Exp $
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic gcc
 
 # Branch update support.  Following will disable:
 #  BRANCH_UPDATE=
@@ -16,14 +16,6 @@ export MIN_KV="2.4.1"
 #       you are doing !
 export MIN_NPTL_KV="2.6.0"
 
-# (very) Theoretical cross-compiler support
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} = ${CHOST} ]] ; then
-	if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
-		export CTARGET=${CATEGORY/cross-}
-	fi
-fi
-
 MY_PV="${PV/_}"
 S="${WORKDIR}/${P%_*}"
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
@@ -36,11 +28,9 @@ SRC_URI="http://ftp.gnu.org/gnu/glibc/glibc-${MY_PV}.tar.bz2
 	hppa? ( mirror://gentoo/${P}-hppa-patches-p1.tar.bz2 )"
 
 LICENSE="LGPL-2"
-[[ ${CTARGET} != ${CHOST} ]] \
-	&& SLOT="${CTARGET}-2.2" \
-	|| SLOT="2.2"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc s390 sh sparc x86"
-IUSE="build nls nptl pic userlocales"
+SLOT="2.2"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390"
+IUSE="nls pic build nptl debug"
 RESTRICT="nostrip" # we'll handle stripping ourself #46186
 
 # We need new cleanup attribute support from gcc for NPTL among things ...
@@ -50,9 +40,10 @@ DEPEND=">=sys-devel/gcc-3.2.3-r1
 	virtual/os-headers
 	nls? ( sys-devel/gettext )"
 RDEPEND="virtual/os-headers
+	sys-apps/baselayout
 	nls? ( sys-devel/gettext )"
 PDEPEND="ppc? ( >=sys-kernel/linux-headers-2.4.22 )"
-PROVIDE="virtual/libc"
+PROVIDE="virtual/glibc virtual/libc"
 
 # Try to get a kernel source tree with version equal or greater
 # than $1.  We basically just try a few default locations.  The
@@ -119,7 +110,7 @@ use_nptl() {
 		# - Or we have 'amd64' in USE
 		# - Or we have 'mips' in USE
 		# - Or we have 'ppc' in USE
-		case $(tc-arch ${CTARGET}) in
+		case ${ARCH} in
 			"x86")
 				if [ "${CHOST/-*}" = "i486" -o \
 				     "${CHOST/-*}" = "i586" -o \
@@ -128,7 +119,7 @@ use_nptl() {
 					return 0
 				fi
 				;;
-			"alpha"|"amd64"|"mips"|"ppc")
+			"alpha"|"amd64"|"mips"|"ppc"|"sparc")
 				return 0
 				;;
 			*)
@@ -138,35 +129,6 @@ use_nptl() {
 	fi
 
 	return 1
-}
-
-install_locales() {
-	einfo "Installing Locale data..."
-	make PARALLELMFLAGS="${MAKEOPTS}" \
-		install_root=${D} \
-		localedata/install-locales -C ${buildtarget} || die
-	keepdir /usr/lib/locale/ru_RU/LC_MESSAGES
-}
-
-setup_locales() {
-	if ! use userlocales ; then
-		einfo "userlocales not enabled, installing -ALL- locales..."
-	elif [[ -e ${ROOT}/etc/locales.build ]] ; then
-		einfo "Installing locales in /etc/locales.build..."
-		echo 'SUPPORTED-LOCALES=\' > SUPPORTED.locales
-		cat "${ROOT}"/etc/locales.build | grep -v -e ^$ -e ^\# | sed 's/$/\ \\/g' \
-			>> SUPPORTED.locales
-		cat SUPPORTED.locales > ${S}/localedata/SUPPORTED || die
-	elif [ -e ${FILESDIR}/locales.build ]; then
-		einfo "Installing locales in ${FILESDIR}/locales.build..."
-		echo 'SUPPORTED-LOCALES=\' > SUPPORTED.locales
-		cat ${FILESDIR}/locales.build | grep -v -e ^$ -e ^\# | sed 's/$/\ \\/g' \
-			>> SUPPORTED.locales
-		cat SUPPORTED.locales > ${S}/localedata/SUPPORTED || die
-	else
-		einfo "Installing -ALL- locales..."
-	fi
-	install_locales || die
 }
 
 glibc_setup() {
@@ -282,11 +244,6 @@ src_unpack() {
 
 	unpack glibc-${MY_PV}.tar.bz2
 
-	# Needed for s390/linux-2.6 headers
-	cp ${FILESDIR}/2.3.2/posix_fadvise64.c \
-		${S}/sysdeps/unix/sysv/linux/s390/s390-32/posix_fadvise64.c \
-		|| die
-
 	# we only need to check this one time. Bug #61856
 	glibc_setup
 
@@ -296,15 +253,18 @@ src_unpack() {
 
 	cd ${S}
 	# Extract our threads package ...
-	if (! use_nptl) && [[ -z ${BRANCH_UPDATE} ]] ; then
+	if (! use_nptl) && [ -z "${BRANCH_UPDATE}" ]
+	then
 		unpack glibc-linuxthreads-${MY_PV}.tar.bz2
 	fi
 
-	if [[ -n ${BRANCH_UPDATE} ]] ; then
+	if [ -n "${BRANCH_UPDATE}" ]
+	then
 		epatch ${DISTDIR}/${P}-branch-update-${BRANCH_UPDATE}.patch.bz2
 	fi
 
-	if use_nptl ; then
+	if use_nptl
+	then
 		epatch ${FILESDIR}/2.3.2/${P}-redhat-nptl-fixes.patch
 	else
 		epatch ${FILESDIR}/2.3.2/${P}-redhat-linuxthreads-fixes.patch
@@ -314,7 +274,8 @@ src_unpack() {
 	# __guard_setup__stack_smash_handler
 	#
 	#  http://www.gentoo.org/proj/en/hardened/etdyn-ssp.xml
-	if [[ $(tc-arch ${CTARGET}) != "hppa" ]] ; then
+	if [ "${ARCH}" != "hppa" -a "${ARCH}" != "hppa64" ]
+	then
 		cd ${S}; epatch ${FILESDIR}/${PV}/${P}-propolice-guard-functions-v2.patch
 	fi
 
@@ -327,9 +288,6 @@ src_unpack() {
 	# to make the stack executable due to some libraries not containing the
 	# PT_GNU_STACK section.  Bug #32960.  <azarah@gentoo.org> (12 Nov 2003).
 	epatch ${FILESDIR}/2.3.2/${PN}-2.3.2-dl_execstack-PaX-support.patch
-
-	# Upstream patch to fix assert.h
-	epatch ${FILESDIR}/2.3.2/${P}-assert.patch
 
 	# This next patch fixes a test that will timeout due to ReiserFS' slow handling of sparse files
 #	cd ${S}/io; epatch ${FILESDIR}/glibc-2.2.2-test-lfs-timeout.patch
@@ -382,7 +340,8 @@ src_unpack() {
 	# do can be found in the patch headers.
 	# <tuxus@gentoo.org> thx <dragon@gentoo.org> (11 Jan 2003)
 	# <kumba@gentoo.org> remove tst-rndseek-mips & ulps-mips patches
-	if [[ $(tc-arch ${CTARGET}) == "mips" ]] ; then
+	if [ "${ARCH}" = "mips" ]
+	then
 		cd ${S}
 		epatch ${FILESDIR}/2.3.1/${PN}-2.3.1-fpu-cw-mips.patch
 		epatch ${FILESDIR}/2.3.1/${PN}-2.3.1-libgcc-compat-mips.patch
@@ -393,7 +352,8 @@ src_unpack() {
 		epatch ${FILESDIR}/2.3.2/${P}-mips-fix-nested-entend-pairs.patch
 	fi
 
-	if [[ $(tc-arch ${CTARGET}) == "alpha" ]] ; then
+	if [ "${ARCH}" = "alpha" ]
+	then
 		cd ${S}
 		# Fix compatability with compaq compilers by ifdef'ing out some
 		# 2.3.2 additions.
@@ -403,16 +363,15 @@ src_unpack() {
 		# Fix compilation with >=gcc-3.2.3 (01 Nov 2003 agriffis)
 		epatch ${FILESDIR}/2.3.2/${P}-alpha-pwrite.patch
 		epatch ${FILESDIR}/2.3.2/${P}-alpha-crti.patch
-
-		# Fix building with 2.6 headers #52764
-		epatch ${FILESDIR}/2.3.2/${P}-alpha-sysdeps.patch
 	fi
 
-	if [[ $(tc-arch ${CTARGET}) == "amd64" ]] ; then
+	if [ "${ARCH}" = "amd64" ]
+	then
 		cd ${S}; epatch ${FILESDIR}/2.3.2/${P}-amd64-nomultilib.patch
 	fi
 
-	if [[ $(tc-arch ${CTARGET}) == "ia64" ]] ; then
+	if [ "${ARCH}" = "ia64" ]
+	then
 		# The basically problem is glibc doesn't store information about
 		# what the kernel interface is so that it can't efficiently set up
 		# parameters for system calls.  This patch from H.J. Lu fixes it:
@@ -422,11 +381,11 @@ src_unpack() {
 		cd ${S}; epatch ${FILESDIR}/2.3.2/${P}-ia64-LOAD_ARGS-fixup.patch
 	fi
 
-	if [[ $(tc-arch ${CTARGET}) == "hppa" ]] ; then
+	if [ "${ARCH}" = "hppa" ]
+	then
 		cd ${WORKDIR}
 		unpack ${P}-hppa-patches-p1.tar.bz2
 		cd ${S}
-		epatch "${FILESDIR}"/2.3.4/hppa-no-pie.patch
 		EPATCH_EXCLUDE="010* 020* 030* 040* 050* 055*"
 		for i in ${EPATCH_EXCLUDE}
 		do
@@ -441,7 +400,8 @@ src_unpack() {
 		patch -p 1 < ${FILESDIR}/2.3.1/glibc23-07-hppa-atomicity.dpatch
 	fi
 
-	if [[ $(tc-arch ${CTARGET}) == "s390" ]] ; then
+	if [ "${ARCH}" = "s390" ]
+	then
 		# The deprecated ustat.h causes problems on s390
 		#
 		#   http://sources.redhat.com/ml/bug-glibc/2003-08/msg00020.html
@@ -450,7 +410,8 @@ src_unpack() {
 		cd ${S}/sysdeps/unix/sysv/linux; epatch ${FILESDIR}/2.3.2/${P}-s390-deprecated-ustat-fixup.patch
 	fi
 
-	if [[ $(tc-arch ${CTARGET}) == "arm" ]] ; then
+	if [ "${ARCH}" == "arm" ]
+	then
 		cd ${S}
 		# sjlj exceptions causes undefined frame variables (ported from cvs)
 		epatch ${FILESDIR}/2.3.2/${P}-framestate-USING_SJLJ_EXCEPTIONS.patch
@@ -585,15 +546,6 @@ src_compile() {
 #	make check
 }
 
-src_test() {
-	# This is wrong, but glibc's tests fail bad when screwing 
-	# around with sandbox, so lets just punt it
-	unset LD_PRELOAD
-
-	cd ${S}/buildhere
-	make check || die "make check failed :("
-}
-
 src_install() {
 	local buildtarget="buildhere"
 
@@ -610,7 +562,7 @@ src_install() {
 	# now, strip everything but the thread libs #46186
 	mkdir ${T}/thread-backup
 	mv ${D}/lib/lib{pthread,thread_db}* ${T}/thread-backup/
-	env -uRESTRICT CHOST=${CTARGET} prepallstrip
+	env -uRESTRICT prepallstrip
 	mv ${T}/thread-backup/* ${D}/lib/
 
 	# If librt.so is a symlink, change it into linker script (Redhat)
@@ -644,7 +596,14 @@ EOF
 				info -C ${buildtarget} || die
 		fi
 
-		setup_locales
+		einfo "Installing Locale data..."
+		make PARALLELMFLAGS="${MAKEOPTS}" \
+			install_root=${D} \
+			localedata/install-locales -C ${buildtarget} || die
+
+		# Compatibility hack: this locale has vanished from glibc,
+		# but some other programs are still using it.
+		keepdir /usr/lib/locale/ru_RU/LC_MESSAGES
 
 		einfo "Installing man pages and docs..."
 		# Install linuxthreads man pages
@@ -656,7 +615,6 @@ EOF
 		# Install nscd config file
 		insinto /etc ; doins ${FILESDIR}/nscd.conf
 		exeinto /etc/init.d ; doexe ${FILESDIR}/nscd
-		doins "${FILESDIR}"/nsswitch.conf
 
 		dodoc BUGS ChangeLog* CONFORMANCE FAQ INTERFACE \
 			NEWS NOTES PROJECTS README*
@@ -668,9 +626,6 @@ EOF
 			install_root=${D} \
 			timezone/install-others -C ${buildtarget} || die
 	fi
-	insinto /etc
-	# This is our new config file for building locales
-	doins ${FILESDIR}/locales.build
 
 	if use pic
 	then
@@ -701,11 +656,6 @@ EOF
 
 	# Some things want this, notably ash.
 	dosym /usr/lib/libbsd-compat.a /usr/lib/libbsd.a
-}
-
-pkg_preinst() {
-	# Shouldnt need to keep this updated
-	[[ -e ${ROOT}/etc/locales.build ]] && rm -f "${D}"/etc/locales.build
 }
 
 pkg_postinst() {

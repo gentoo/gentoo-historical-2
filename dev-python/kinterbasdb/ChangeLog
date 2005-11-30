@@ -1,71 +1,7 @@
 # ChangeLog for dev-python/kinterbasdb
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/kinterbasdb/ChangeLog,v 1.18 2005/11/03 20:55:07 liquidx Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-python/kinterbasdb/ChangeLog,v 1.1 2002/07/29 09:48:10 danarmak Exp $
 
-  03 Nov 2005; Alastair Tse <liquidx@gentoo.org> kinterbasdb-3.1.2.ebuild:
-  fix docs installation (#107955)
-
-*kinterbasdb-3.1.2 (30 Sep 2005)
-
-  30 Sep 2005; Carsten Lohrke <carlo@gentoo.org> +kinterbasdb-3.1.2.ebuild:
-  version bump
-
-*kinterbasdb-3.1.1 (27 Jun 2005)
-
-  27 Jun 2005; Carsten Lohrke <carlo@gentoo.org> +kinterbasdb-3.1.1.ebuild:
-  version bump
-
-*kinterbasdb-3.1 (21 Jan 2005)
-
-  21 Jan 2005; Carsten Lohrke <carlo@gentoo.org> +kinterbasdb-3.1.ebuild,
-  -kinterbasdb-3.1_pre7.ebuild, -kinterbasdb-3.1_pre8.ebuild,
-  -kinterbasdb-3.1_pre9.ebuild:
-  version bump
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*kinterbasdb-3.1_pre9 (07 Dec 2004)
-
-  07 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +kinterbasdb-3.1_pre9.ebuild:
-  version bump
-
-*kinterbasdb-3.1_pre8 (11 Oct 2004)
-
-  11 Oct 2004; Carsten Lohrke <carlo@gentoo.org> +kinterbasdb-3.1_pre8.ebuild:
-  version bump
-
-  07 May 2004; Bryan Østergaard <kloeri@gentoo.org>
-  kinterbasdb-3.0.1_pre3.ebuild:
-  Clean up IUSE and S.
-
-*kinterbasdb-3.1_pre7 (17 Apr 2004)
-
-  17 Apr 2004; Bryan Østergaard <kloeri@gentoo.org>
-  +kinterbasdb-3.1_pre7.ebuild:
-  Bump version.
-
-  19 Feb 2004; Aron Griffis <agriffis@gentoo.org>
-  kinterbasdb-3.0.1_pre3.ebuild, kinterbasdb-3.0.2.ebuild:
-  Remove ~alpha since firebird isn't supported here
-
-  25 Dec 2003; Jason Wever <weeve@gentoo.org> kinterbasdb-3.0.1_pre3.ebuild,
-  kinterbasdb-3.0.2.ebuild:
-  As the dependency dev-db/firebird can only be emerged on x86, this is being
-  masked on sparc.
-
-  02 Oct 2003; Alastair Tse <liquidx@gentoo.org>
-  kinterbasdb-3.0.1_pre3.ebuild, kinterbasdb-3.0.2.ebuild,
-  files/kinterbasdb-3.0.2-py23.patch:
-  add patch for python2.3 support
-
-*kinterbasdb-3.0.2 (04 Apr 2003)
-
-  04 Apr 2003; Alastair Tse <liquidx@gentoo.org> kinterbasdb-3.0.2.ebuild:
-  version bump. about time we have a stable ver in portage.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *kinterbasdb-3.0.1_pre3 (29 Jul 2002)
 
   29 Jul 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :

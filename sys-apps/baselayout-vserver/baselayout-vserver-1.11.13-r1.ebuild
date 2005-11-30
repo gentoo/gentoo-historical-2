@@ -1,23 +1,20 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout-vserver/baselayout-vserver-1.11.13-r1.ebuild,v 1.5 2005/11/26 09:11:15 phreak Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout-vserver/baselayout-vserver-1.11.13-r1.ebuild,v 1.1 2005/09/27 13:36:23 hollow Exp $
 
 inherit flag-o-matic eutils toolchain-funcs multilib
 
 SV=1.6.13		# rc-scripts version
 SVREV=			# rc-scripts rev
 
-MY_P="rc-scripts-${SV}${SVREV}-vserver"
-
 S="${WORKDIR}/rc-scripts-${SV}${SVREV}-vserver"
 DESCRIPTION="Filesystem baselayout and init scripts for Linux-VServer"
 HOMEPAGE="http://dev.gentoo.org/~hollow/vserver"
-SRC_URI="http://dev.gentoo.org/~hollow/distfiles/${MY_P}.tar.bz2
-	http://dev.gentoo.org/~phreak/distfiles/${MY_P}.tar.bz2"
+SRC_URI="${HOMEPAGE}/baselayout/rc-scripts-${SV}${SVREV}-vserver.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64"
+KEYWORDS="~x86"
 IUSE="bootstrap build fakelog static"
 
 # This version of baselayout needs gawk in /bin, but as we do not have
@@ -28,16 +25,17 @@ RDEPEND=">=sys-apps/sysvinit-2.84
 		>=sys-libs/readline-5.0-r1
 		>=app-shells/bash-3.0-r10
 		>=sys-apps/coreutils-5.2.1
-	) )"
-DEPEND="virtual/os-headers
-	>=sys-apps/portage-2.0.51"
+	) )
+	!sys-apps/baselayout
+	!sys-apps/baselayout-lite"
+DEPEND="virtual/os-headers"
 PROVIDE="virtual/baselayout"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
-	epatch ${FILESDIR}/${P}-cleanup.patch
+	epatch ${FILESDIR}/${P}-init-timeout-fix.patch
 }
 
 src_compile() {
@@ -182,9 +180,9 @@ src_install() {
 	# Ugly compatibility with stupid ebuilds and old profiles symlinks
 	if [[ ${SYMLINK_LIB} == "yes" ]] ; then
 		rm -r "${D}"/{lib,usr/lib,usr/local/lib} &> /dev/null
-		ksym $(get_abi_LIBDIR ${DEFAULT_ABI}) /lib
-		ksym $(get_abi_LIBDIR ${DEFAULT_ABI}) /usr/lib
-		ksym $(get_abi_LIBDIR ${DEFAULT_ABI}) /usr/local/lib
+		dosym $(get_abi_LIBDIR ${DEFAULT_ABI}) /lib
+		dosym $(get_abi_LIBDIR ${DEFAULT_ABI}) /usr/lib
+		dosym $(get_abi_LIBDIR ${DEFAULT_ABI}) /usr/local/lib
 	fi
 
 	# FHS compatibility symlinks stuff
@@ -203,15 +201,16 @@ src_install() {
 	# attempting to merge files, (3) accidentally packaging up personal files
 	# with quickpkg
 	fperms 0600 /etc/shadow
-	mv "${D}"/etc/{passwd,shadow,group,hosts} "${D}"/usr/share/baselayout
+	mv "${D}"/etc/{passwd,shadow,group,hosts,issue.devfix} "${D}"/usr/share/baselayout
 
 	insopts -m0755
 	insinto /etc/init.d
 	doins ${S}/init.d/*
+	use fakelog && newins ${FILESDIR}/fakelog.initd fakelog
 
 	# link dummy init scripts
 	cd ${D}/etc/init.d
-	for i in checkfs checkroot clock consolefont keymaps localmount modules net netmount numlock urandom; do
+	for i in checkfs checkroot clock consolefont localmount modules net netmount; do
 		ln -sf dummy $i
 	done
 
@@ -311,7 +310,7 @@ src_install() {
 	#
 	# Install baselayout utilities
 	#
-	cd "${S}"/src
+	cd ${S}/src
 	make DESTDIR="${D}" install || die
 
 	# Normal baselayout generate devices in pkg_postinst(), but we keep
@@ -350,16 +349,16 @@ pkg_postinst() {
 	# Set up default runlevel symlinks
 	# This used to be done in src_install but required knowledge of ${ROOT},
 	# which meant that it was effectively broken for binary installs.
-	if [[ -z $(/bin/ls "${ROOT}"/etc/runlevels 2>/dev/null) ]]; then
+	if [[ -z $(/bin/ls ${ROOT}/etc/runlevels 2>/dev/null) ]]; then
 		for x in boot default; do
 			einfo "Creating default runlevel symlinks for ${x}"
-			mkdir -p "${ROOT}"/etc/runlevels/${x}
-			for y in $(<"${ROOT}"/usr/share/baselayout/rc-lists/${x}); do
+			mkdir -p ${ROOT}/etc/runlevels/${x}
+			for y in $(<${ROOT}/usr/share/baselayout/rc-lists/${x}); do
 				if [[ ! -e ${ROOT}/etc/init.d/${y} ]]; then
 					ewarn "init.d/${y} not found -- ignoring"
 				else
-					ln -sfn /etc/init.d/${y} \
-						"${ROOT}"/etc/runlevels/${x}/${y}
+					ln -sfn ${ROOT}/etc/init.d/${y} \
+						${ROOT}/etc/runlevels/${x}/${y}
 				fi
 			done
 		done

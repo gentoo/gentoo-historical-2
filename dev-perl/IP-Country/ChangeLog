@@ -1,29 +1,6 @@
 # ChangeLog for dev-perl/IP-Country
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/IP-Country/ChangeLog,v 1.6 2005/11/23 16:12:48 mcummings Exp $
-
-*IP-Country-2.20 (23 Nov 2005)
-
-  23 Nov 2005; Michael Cummings <mcummings@gentoo.org>
-  +IP-Country-2.20.ebuild:
-  Version bump
-
-*IP-Country-2.19 (28 Apr 2005)
-
-  28 Apr 2005; Elfyn McBratney <beu@gentoo.org> +IP-Country-2.19.ebuild:
-  Version bump.
-
-*IP-Country-2.18 (28 Oct 2004)
-
-  28 Oct 2004; Michael Cummings <mcummings@gentoo.org>
-  +IP-Country-2.18.ebuild:
-  New version on cpan; first update in a year
-
-  14 Oct 2004; David Holm <dholm@gentoo.org> IP-Country-2.17.ebuild:
-  Added to ~ppc.
-
-  23 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> IP-Country-2.17.ebuild:
-  Keyworded ~sparc
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/IP-Country/ChangeLog,v 1.1 2004/09/22 20:42:13 mcummings Exp $
 
 *IP-Country-2.17 (22 Sep 2004)
 

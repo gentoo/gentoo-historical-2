@@ -1,22 +1,6 @@
 # ChangeLog for x11-plugins/wmwave
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwave/ChangeLog,v 1.6 2005/11/11 11:36:29 s4t4n Exp $
-
-  11 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmwave-0.4.ebuild:
-  removed COPYING from dodoc.
-
-  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> wmwave-0.4.ebuild:
-  Masked wmwave-0.4.ebuild stable for ppc
-
-  02 Aug 2004; Michele Noberasco <s4t4n@gentoo.org> wmwave-0.4.ebuild:
-  Stable for x86.
-
-  17 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmwave-0.4.ebuild:
-  Gave ebuild a good clean up: updated HOMEPAGE and SRC_URI, make it
-  honour Gentoo USE flags, add "virtual/X11" dependency, update
-  DESCRIPTION.
-  metadata.xml:
-  Assign this to the desktop-dock herd.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwave/ChangeLog,v 1.1 2003/12/14 05:07:08 pylon Exp $
 
 *wmwave-0.4 (14 Dec 2003)
 

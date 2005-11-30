@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/psql/psql-1.10.ebuild,v 1.7 2005/01/01 13:57:29 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/psql/psql-1.10.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
-inherit elisp
+inherit elisp 
 
 IUSE=""
 
@@ -15,6 +15,8 @@ KEYWORDS="x86"
 
 DEPEND="virtual/emacs
 	dev-db/postgresql"
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50psql-gentoo.el
 

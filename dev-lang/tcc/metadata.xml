@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>lang-misc</herd>
+<herd>no-herd</herd>
+<maintainer>
+  <email>george@gentoo.org</email>
+  <description> He's the one in the ChangeLog, giving this to him </description>
+</maintainer>
+
 <maintainer>
   <email>spider@gentoo.org</email>
   <name>Spider</name>

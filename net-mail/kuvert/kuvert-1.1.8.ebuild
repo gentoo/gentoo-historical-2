@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/kuvert/kuvert-1.1.8.ebuild,v 1.5 2005/01/03 22:55:04 slarti Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-mail/kuvert/kuvert-1.1.8.ebuild,v 1.1 2004/09/03 20:47:12 slarti Exp $
 
 MY_P=${P/-/_}
 
@@ -12,18 +10,20 @@ HOMEPAGE="http://www.snafu.priv.at/mystuff/kuvert/"
 SRC_URI="http://www.snafu.priv.at/mystuff/kuvert/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc"
+KEYWORDS="~amd64"
 IUSE=""
 SLOT="0"
 
 DEPEND=">=app-crypt/gnupg-1.0.6
-	app-crypt/quintuple-agent
+	>=app-crypt/quintuple-agent
 	dev-perl/MailTools
 	dev-perl/MIME-tools
 	dev-perl/TermReadKey
 	dev-lang/perl
 	virtual/mta
 	virtual/libc"
+
+inherit eutils
 
 src_unpack() {
 	unpack ${A}

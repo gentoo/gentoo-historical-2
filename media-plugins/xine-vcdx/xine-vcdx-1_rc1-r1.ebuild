@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xine-vcdx/xine-vcdx-1_rc1-r1.ebuild,v 1.5 2005/09/03 23:49:19 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xine-vcdx/xine-vcdx-1_rc1-r1.ebuild,v 1.1 2004/05/12 11:20:42 phosphan Exp $
 
 inherit eutils
 
@@ -14,10 +14,10 @@ LICENSE="GPL-2"
 RESTRICT="nomirror"
 
 DEPEND=">=media-libs/xine-lib-1_rc1
-	>=media-video/vcdimager-0.7.19"
+	~media-video/vcdimager-0.7.19"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 
 S=${WORKDIR}/${MY_P}
 
@@ -38,5 +38,5 @@ src_install() {
 		docsdir=/usr/share/doc/${PF} \
 		install || die
 
-	dodoc AUTHORS ChangeLog NEWS README THANKS TODO
+	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS README THANKS TODO
 }

@@ -1,59 +1,6 @@
 # ChangeLog for dev-util/diffball
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/diffball/ChangeLog,v 1.18 2005/11/05 09:02:19 ferringb Exp $
-
-*diffball-0.7.1 (05 Nov 2005)
-
-  05 Nov 2005; <ferring@gentoo.org> +diffball-0.7.1.ebuild, -diffball-0.6.2.ebuild:
-  Version 0.7.1; actual lib interface, and bit of extension of cfile subsystem
-  Yoinking version 0.6.2 also, since it's a bit old.
-
-  30 May 2005; Lina Pezzella <j4rg0n@gentoo.org> diffball-0.6.2.ebuild,
-  diffball-0.6.5.ebuild:
-  Stable ppc-macos
-
-  17 Apr 2005; Brian Harring <ferringb@getnoo.org>; diffball-0.6.5.ebuild: 
-  pushing keywording from 0.6.2 forward to 0.6.5.
-
-*diffball-0.6.5 (13 Apr 2005)
-
-  13 Apr 2005; Brian Harring <ferringb@gentoo.org>; diffball-0.6.5.ebuild:
-  Version bump, bug fixes with the addition of the ability to collapse multiple 
-  patches down to a single patch.
-
-  06 Apr 2005; Joseph Jezak <josejx@gentoo.org> diffball-0.6.2.ebuild:
-  Marked ppc stable.
-
-  07 Apr 2005; Brian Harring <ferringb@gentoo.org> -diffball-0.6.ebuild:
-  Yanked 0.6 due to potential segfault issue, same keywording is on 0.6.2 which 
-  is same code, plus the fix.
-
-  07 Apr 2005; Brian Harring <ferringb@gentoo.org> diffball-0.6.2.ebuild:
-  Bumped up for maintenance release fixing a few segfaults.
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> diffball-0.6.ebuild:
-  stable on ia64
-
-  31 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> diffball-0.6.ebuild:
-  Testing ppc-macos
-
-  28 Mar 2005; Brian Harring <ferringb@gentoo.org> -diffball-0.6_pre2.ebuild, diffball-0.6.ebuild:
-  Yanked _pre2, transfered the alpha keywording to 0.6, and stabled 0.6 for x86.
-
-  09 Mar 2005; Brian Harring <ferringb@gentoo.org> diffball-0.6.ebuild, -diffball-0.4_pre4:
-  Version bump, and cleansing.
-
-  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  17 Sep 2004; Brian Harring <ferringb@gentoo.org> -diffball-0.6_pre1.ebuild:
-  removed 0.6_pre1, added 0.6_pre2.
-
-  29 Aug 2004; Brian Harring <ferringb@gentoo.org> :
-  Added diffball-0.6_pre1.
-
-  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> diffball-0.4_pre4.ebuild:
-  Stable on alpha.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/diffball/ChangeLog,v 1.1 2003/11/15 08:27:20 seemant Exp $
 
 *diffball-0.4_pre4 (15 Nov 2003)
 

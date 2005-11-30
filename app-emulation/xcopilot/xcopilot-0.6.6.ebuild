@@ -1,21 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/xcopilot/xcopilot-0.6.6.ebuild,v 1.6 2005/07/29 23:15:05 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/xcopilot/xcopilot-0.6.6.ebuild,v 1.1 2004/01/27 01:40:13 zul Exp $
 
 MY_P="xcopilot-0.6.6-uc0"
 
-DESCRIPTION="A pilot emulator"
-HOMEPAGE="http://www.uclinux.org/"
+DESCRIPTION="A pilot emulator."
 SRC_URI="http://www.uclinux.org/pub/uClinux/utilities/${MY_P}.tar.gz"
+HOMEPAGE="http://www.uclinux.org"
 
-LICENSE="GPL-2"
+KEYWORDS="~x86"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+LICENSE="GPL-2"
 IUSE=""
 
-DEPEND="virtual/libc
-	virtual/x11
-	app-arch/dpkg"
+DEPEND="virtual/glibc
+		virtual/x11
+		app-arch/dpkg"
 RDEPEND=""
 
 S="${WORKDIR}/${MY_P}"
@@ -26,10 +26,8 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	einstall || die
 	dodoc AUTHORS README NEWS README.uClinux
-}
 
-pkg_postinst() {
-	einfo "See /usr/share/doc/${PF}/README.uClinux for more info"
+	einfo "See ${D}/usr/share/${P}/README.uClinux for more info"
 }

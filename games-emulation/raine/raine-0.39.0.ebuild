@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/raine/raine-0.39.0.ebuild,v 1.8 2005/09/16 02:27:36 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/raine/raine-0.39.0.ebuild,v 1.1 2004/01/14 02:41:41 vapier Exp $
 
 inherit games
 
@@ -13,19 +13,17 @@ SRC_URI="http://www.rainemu.com/html/archive/raines-${PV}.tar.bz2
 LICENSE="Artistic"
 SLOT="0"
 KEYWORDS="x86"
-IUSE="static debug nls kde"
+IUSE="static debug nls"
 
-RDEPEND="media-libs/allegro
+DEPEND="virtual/glibc
 	sys-libs/zlib
 	media-libs/svgalib"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
 
 S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 	echo > detect-cpu
 	echo > cpuinfo
 }
@@ -42,23 +40,24 @@ src_compile() {
 		_MARCH="${CFLAGS}" \
 		OSTYPE=linux \
 		RAINE_LINUX=1 \
-		${myopts} || die "emake failed"
+		${myopts} || die
 }
 
 src_install() {
-	make prefix="${D}" install || die "make install failed"
-	dogamesbin "${D}"/usr/games/raine
-	rm "${D}"/usr/games/raine
+	make prefix=${D} install || die
+	dogamesbin ${D}/usr/games/raine
+	rm ${D}/usr/games/raine
 
-	use nls || rm -rf "${D}"/usr/share/raine/languages
+	use nls || rm -rf ${D}/usr/share/raine/languages
 
-	dodoc "${WORKDIR}"/raine.txt
+	dodoc ${WORKDIR}/raine.txt
 
 	insinto /usr/share/icons
-	doins "${WORKDIR}"/*.png
-	if use kde ; then
+	doins ${WORKDIR}/*.png
+	if [ `use kde` ] ; then
 		insinto /usr/share/applnk/Games
-		doins "${FILESDIR}"/Raine.desktop
+		doins ${FILESDIR}/Raine.desktop
 	fi
+
 	prepgamesdirs
 }

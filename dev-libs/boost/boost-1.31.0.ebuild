@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.31.0.ebuild,v 1.15 2005/11/25 18:46:45 morfic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/boost/boost-1.31.0.ebuild,v 1.1 2004/02/25 02:09:00 george Exp $
 
 MyPV=${PV//./_}
 
@@ -12,14 +12,14 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}_${MyPV}.tar.bz2"
 S=${WORKDIR}/${PN}_${MyPV}
 
 LICENSE="freedist"
-KEYWORDS="amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 SLOT="1"
 IUSE="icc"
 
 # This would be a good place for someone to figure out how to get
 # boost to build nicely with icc, as it's documented to be doable.
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 RDEPEND=">=dev-util/yacc-1.9.1-r1
 	>=dev-lang/python-2.2.1
 	icc? ( >=dev-lang/icc-7.1 )"
@@ -29,7 +29,7 @@ src_compile() {
 	local BOOST_TOOLSET
 	local arch
 
-	if use icc ; then
+	if [ "`use icc`" ] ; then
 		BOOST_TOOLSET="intel-linux"
 	else
 		BOOST_TOOLSET="gcc"
@@ -46,14 +46,7 @@ src_compile() {
 		arch=${ARCH}
 	fi
 
-	if [ "${ARCH}" == "ppc64" ]; then
-		pushd .
-		cd tools/build/jam_src
-		ln -sf bin.linuxppc bin.linuxppc64
-		popd
-	fi
-
-	if use icc ; then
+	if [ "`use icc`" ] ; then
 		./tools/build/jam_src/bin.linux${arch}/bjam -j2 \
 		-sBOOST_ROOT=${S} \
 		-sPYTHON_ROOT=/usr \
@@ -96,7 +89,7 @@ src_install () {
 	cd tools/build
 	#do_whatever is too limiting here, need to move bunch of different stuff recursively
 	dodir /usr/share/${PN}
-	cp -pPR b* c* index.html v1/ v2/ ${D}/usr/share/${PN}
+	cp -a b* c* index.html v1/ v2/ ${D}/usr/share/${PN}
 	cd ${S}
 
 	# install documentation

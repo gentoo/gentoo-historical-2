@@ -1,169 +1,21 @@
-# ChangeLog for gnustep-base/gnustep-base
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/ChangeLog,v 1.28 2005/08/14 10:07:27 hansmi Exp $
-
-  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  gnustep-base-1.10.3.ebuild:
-  Stable on ppc.
-
-*gnustep-base-1.10.3-r1 (22 Jun 2005)
-
-  22 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +gnustep-base-1.10.3-r1.ebuild:
-  Added optional dependency for ffcall -- prefer ffcall over libffi; gnustep
-  user of libffi is buggy
-
-  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  gnustep-base-1.10.3.ebuild:
-  Stable on sparc
-
-  06 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  gnustep-base-1.10.3.ebuild:
-  Stabilizations and bumps for core gnustep ebuilds.
-
-  05 May 2005; Sven Wegener <swegener@gentoo.org>
-  gnustep-base-1.10.1-r1.ebuild, gnustep-base-1.10.2_pre20050312.ebuild,
-  gnustep-base-1.10.2.ebuild, gnustep-base-1.10.2-r1.ebuild,
-  gnustep-base-1.10.3.ebuild:
-  Fixed [<>]=cat/pkg-ver* dependencies.
-
-*gnustep-base-1.10.3 (15 Apr 2005)
-*gnustep-base-1.10.2-r1 (15 Apr 2005)
-*gnustep-base-1.10.2 (15 Apr 2005)
-
-  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +files/base-path.patch-gsstartup-0.10.2, +gnustep-base-1.10.2.ebuild,
-  +gnustep-base-1.10.2-r1.ebuild, +gnustep-base-1.10.3.ebuild:
-  Core GNUstep ebuild bumps; cleaned up dependencies of ancestors of gnustep-env
-
-  04 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  gnustep-base-1.10.1-r1.ebuild:
-  Stable on sparc
-
-*gnustep-base-1.10.2_pre20050312 (17 Mar 2005)
-
-  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +files/base-user-defaults.patch-1.10.2_pre20050312,
-  -gnustep-base-1.10.2_pre20041203.ebuild,
-  -gnustep-base-1.10.2_pre20050106.ebuild,
-  +gnustep-base-1.10.2_pre20050312.ebuild:
-  ebuild updates for GNUstep base, libs, and apps across the board; proper
-  versions (to be stabilized, in due time) added where apropos, cvs-pull
-  versions updated where needed
-
-  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  gnustep-base-1.10.1-r1.ebuild:
-  Marking stable for x86
-
-*gnustep-base-1.10.2_pre20050106 (10 Jan 2005)
-
-  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  +gnustep-base-1.10.2_pre20050106.ebuild:
-  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
-  date spec on ebuild headers as repoman was complaining
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  13 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org> -files/tryffi.c,
-  -gnustep-base-1.10.0.ebuild, gnustep-base-1.10.1-r1.ebuild,
-  -gnustep-base-1.10.1.ebuild, -gnustep-base-1.10.1_pre20040928.ebuild,
-  -gnustep-base-1.10.2_pre20041116.ebuild,
-  gnustep-base-1.10.2_pre20041203.ebuild:
-  Cleaned up detection of objc and libff; general cleanups
-
-  05 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org> +files/tryffi.c,
-  gnustep-base-1.10.2_pre20041203.ebuild:
-  Added a test where if gcc-libffi is USE flag on, then a test program is
-  compiled and linked, verifying the use of libffi
-
-*gnustep-base-1.10.2_pre20041203 (03 Dec 2004)
-
-  03 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gnustep-base-1.10.2_pre20041203.ebuild:
-  General version bump
-
-*gnustep-base-1.10.2_pre20041116 (16 Nov 2004)
-
-  16 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gnustep-base-1.10.2_pre20041116.ebuild:
-  Version bump
-
-*gnustep-base-1.10.1-r1 (11 Nov 2004)
-
-  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> -files/gnustep,
-  +gnustep-base-1.10.1-r1.ebuild, gnustep-base-1.10.1.ebuild,
-  gnustep-base-1.10.1_pre20040928.ebuild, -gnustep-base-1.5.1.ebuild,
-  -gnustep-base-1.6.0-r1.ebuild, -gnustep-base-1.6.0.ebuild,
-  -gnustep-base-1.7.1.ebuild, -gnustep-base-1.7.2.ebuild:
-  Mass Update: gnustep.eclass revamped to allow configurable root install;
-  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
-  bumped where files would change); some KEYWORDS were accidentally dropped
-  between version bumps of packages -- this has been resolved; windowmaker
-  correctly supports gnustep now
-
-  02 Nov 2004; Simon Stelling <blubb@gentoo.org> gnustep-base-1.10.1.ebuild:
-  added ~amd64
-
-  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org>
-  gnustep-base-1.10.1_pre20040928.ebuild:
-  ~alpha keyword.
-
-*gnustep-base-1.10.1 (30 Oct 2004)
-
-  30 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gnustep-base-1.10.1.ebuild:
-  Version bump; keyworded for ~ppc
-
-  24 Oct 2004; Jason Wever <weeve@gentoo.org>
-  gnustep-base-1.10.1_pre20040928.ebuild:
-  Added ~sparc keyword wrt bug #68729.
-
-  09 Oct 2004; David Holm <dholm@gentoo.org> gnustep-base-1.10.0.ebuild,
-  gnustep-base-1.10.1_pre20040928.ebuild:
-  Added to ~ppc.
-
-*gnustep-base-1.10.1_pre20040927 (28 Sep 2004)
-
-  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gnustep-base-1.10.1_pre20040928.ebuild:
-  Version bump; pre release date specd live cvs pull.
-
-  28 Sep 2004; Sven Wegener <swegener@gentoo.org>
-  files/config-gnustep-base.sh:
-  Gentoo Technologies, Inc. -> Gentoo Foundation
-
-  25 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  gnustep-base-1.10.0.ebuild:
-  Made library depends less strict.
-
-*gnustep-base-1.10.0 (08 Sep 2004)
-
-  08 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
-  +files/base-user-defaults.patch-1.10.0, +files/config-gnustep-base.sh,
-  +gnustep-base-1.10.0.ebuild:
-  Version bump; key'd for ~x86.
-
-  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  gnustep-base-1.5.1.ebuild, gnustep-base-1.6.0-r1.ebuild,
-  gnustep-base-1.6.0.ebuild, gnustep-base-1.7.1.ebuild,
-  gnustep-base-1.7.2.ebuild:
-  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
+# ChangeLog for dev-util/gnustep-base
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/ChangeLog,v 1.1 2004/07/23 13:54:02 fafhrd Exp $
 
 *gnustep-base-1.7.2 (23 Jul 2004)
 
-  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  23 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org> +metadata.xml,
   +files/gnustep, +gnustep-base-1.5.1.ebuild, +gnustep-base-1.6.0-r1.ebuild,
   +gnustep-base-1.6.0.ebuild, +gnustep-base-1.7.1.ebuild,
   +gnustep-base-1.7.2.ebuild:
   Moved from dev-util/gnustep-base to gnustep-base/gnustep-base.
 
-  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
   gnustep-base-1.6.0-r1.ebuild, gnustep-base-1.7.1.ebuild,
   gnustep-base-1.7.2.ebuild:
   Changing the eclass to gnustep-old
 
-  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
   gnustep-base-1.6.0-r1.ebuild, gnustep-base-1.7.1.ebuild,
   gnustep-base-1.7.2.ebuild:
   Changing the eclass to gnustep-old
@@ -172,7 +24,7 @@
   gnustep-base-1.5.1.ebuild:
   virtual/glibc -> virtual/libc
 
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> gnustep-base-1.7.2.ebuild:
+  04 May 2004; Bryan �stergaard <kloeri@gentoo.org> gnustep-base-1.7.2.ebuild:
   Stable on alpha.
 
   29 Jan 2004; Aron Griffis <agriffis@gentoo.org> gnustep-base-1.7.2.ebuild:

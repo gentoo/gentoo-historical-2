@@ -3,6 +3,5 @@ Name=Mozilla Thunderbird
 Comment=Mail & News Reader
 Exec=/usr/bin/thunderbird
 Icon=thunderbird-icon.png
-Terminal=false
+Terminal=0
 Type=Application
-Categories=Application;Network;

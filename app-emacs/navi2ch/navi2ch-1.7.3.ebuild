@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/navi2ch/navi2ch-1.7.3.ebuild,v 1.7 2005/07/09 19:35:51 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/navi2ch/navi2ch-1.7.3.ebuild,v 1.1 2004/05/05 11:13:39 usata Exp $
 
-inherit elisp gnuconfig
+inherit elisp
 
 IUSE=""
 
@@ -12,17 +12,11 @@ SRC_URI="mirror://sourceforge/navi2ch/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha ppc sparc ppc64"
+KEYWORDS="~x86 ~alpha ~ppc ~sparc"
 
 DEPEND="virtual/emacs"
 
 SITEFILE=50navi2ch-gentoo.el
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	gnuconfig_update
-}
 
 src_compile() {
 	econf || die
@@ -38,7 +32,7 @@ src_install() {
 
 pkg_postinst() {
 	elisp-site-regen
-	einfo
+	einfo ""
 	einfo "Please add to your .emacs"
 	einfo "If you use mona-font,"
 	einfo "\t(setq navi2ch-mona-enable t)"
@@ -47,5 +41,5 @@ pkg_postinst() {
 	einfo "\t(add-hook 'navi2ch-bm-mode-hook      'izonmoji-mode-on)"
 	einfo "\t(add-hook 'navi2ch-article-mode-hook 'izonmoji-mode-on)"
 	einfo "\t(add-hook 'navi2ch-popup-article-mode-hook 'izonmoji-mode-on)"
-	einfo
+	einfo ""
 }

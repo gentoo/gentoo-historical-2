@@ -1,18 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-1.8.11-r1.ebuild,v 1.9 2005/09/11 14:01:00 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-1.8.11-r1.ebuild,v 1.1 2004/04/11 12:50:07 zul Exp $
 
 inherit eutils
 
-IUSE="gnome gtk ipv6 mmx nls perl python ssl"
+IUSE="ssl nls mmx gnome ipv6 python kde gtk perl"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="X-Chat is a graphical IRC client for UNIX operating systems."
 SRC_URI="http://www.xchat.org/files/source/1.8/${P}.tar.bz2"
 HOMEPAGE="http://www.xchat.org/"
 
 SLOT="1"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha"
+KEYWORDS="x86 ~ppc ~sparc alpha"
 
 RDEPEND="gtk? ( =x11-libs/gtk+-1.2* )
 	python? ( >=dev-lang/python-2.2-r7 )
@@ -45,10 +46,10 @@ src_compile() {
 
 	local myopts myflags
 
-	if ! use perl; then
+	if [ ! `use perl` ]; then
 		use gnome \
 			&& myopts="${myopts} --enable-gnome --enable-panel" \
-				CFLAGS="${CFLAGS} -I/usr/include/orbit-1.0" \
+			   CFLAGS="${CFLAGS} -I/usr/include/orbit-1.0" \
 			|| myopts="${myopts} --enable-gtkfe --disable-gnome --disable-zvt --disable-gdk-pixbuf"
 	else
 		myopts="${myopts} --disable-gnome"
@@ -79,7 +80,7 @@ src_compile() {
 
 	use python \
 		&& myflags="`python-config`" \
-		&& myopts="${myopts} --enable-python"
+	 	&& myopts="${myopts} --enable-python"
 
 
 	econf ${myopts} || die

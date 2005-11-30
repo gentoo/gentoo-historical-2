@@ -1,5 +1,2 @@
-MD5 76d3d1cf698ec9337fce239938cf8b57 ChangeLog 1296
-MD5 753ffd7bf6711cb5c626b19aafacc0d8 cm-2.4.2.ebuild 966
-MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
-MD5 96488265785c0bf4e9e394238f5b8e23 files/digest-cm-2.4.2 60
-MD5 39b2e2aa6a9ea57538cfaf1b1967f197 files/cm-2.4.0-exec 160
+MD5 1fba8e6627b29a9f473692227d97e57c cm-2.4.0.ebuild 1457
+MD5 606a027bb2fa39a2aec9c66ca394eaa8 files/digest-cm-2.4.0 60

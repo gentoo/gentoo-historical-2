@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.28-r1.ebuild,v 1.6 2005/10/03 07:13:58 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.28-r1.ebuild,v 1.1 2005/09/08 01:11:01 robbat2 Exp $
 
 inherit flag-o-matic toolchain-funcs eutils multilib
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://openldap/openldap-release/${P}.tgz
 LICENSE="OPENLDAP"
 SLOT="0"
 IUSE="berkdb crypt debug gdbm ipv6 kerberos minimal odbc perl readline samba sasl slp ssl tcpd"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND=">=sys-libs/ncurses-5.1
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
@@ -80,7 +80,7 @@ pkg_setup() {
 	fi
 	datafiles=""
 	for d in $openldap_datadirs; do
-		datafiles="${datafiles} $(ls $d/*db* 2>/dev/null)"
+		datafiles="${datafiles} $(ls $d/*db*} 2>/dev/null)"
 	done
 	# remove extra spaces
 	datafiles="$(echo ${datafiles// })"
@@ -120,7 +120,7 @@ pkg_setup() {
 pkg_preinst() {
 	openldap_upgrade_warning
 	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	enewuser ldap 439 /bin/false /usr/$(get_libdir)/openldap ldap
 }
 
 src_unpack() {
@@ -153,8 +153,7 @@ src_unpack() {
 	#sed -i -e 's,^AC_CONFIG_HEADER,AM_CONFIG_HEADER,' ${S}/configure.in
 
 	# ximian connector 1.4.7 ntlm patch
-	#EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/${PN}-2.2.28-ximian_connector.patch
-	EPATCH_OPTS="-p0 -d ${S}" epatch ${FILESDIR}/${PN}-2.2.6-ntlm.patch
+	EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/${PN}-2.2.28-ximian_connector.patch
 
 	# fix up stuff for newer autoconf that simulates autoconf-2.13, but doesn't
 	# do it perfectly.

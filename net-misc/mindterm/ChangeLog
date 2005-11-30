@@ -1,16 +1,6 @@
 # ChangeLog for net-misc/mindterm
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mindterm/ChangeLog,v 1.4 2005/11/27 17:52:11 compnerd Exp $
-
-  27 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
-  mindterm-2.4.2.ebuild:
-  Fixing javadoc location to follow Java Policy.  Resolves bug #96811
-
-  16 Sep 2005; Thomas Matthijs <axxo@gentoo.org> mindterm-2.4.2.ebuild:
-  Dep fix, dropped alpha keyword
-
-  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mindterm-2.4.2.ebuild:
-  stable on amd64, ppc and x86
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mindterm/ChangeLog,v 1.1 2005/01/27 18:39:52 luckyduck Exp $
 
 *mindterm-2.4.2 (27 Jan 2005)
 

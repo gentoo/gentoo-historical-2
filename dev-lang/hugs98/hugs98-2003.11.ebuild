@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/hugs98/hugs98-2003.11.ebuild,v 1.11 2005/03/18 18:06:34 kosmikus Exp $
-
-inherit base flag-o-matic eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/hugs98/hugs98-2003.11.ebuild,v 1.1 2003/12/01 16:52:55 kosmikus Exp $
 
 IUSE="opengl"
 
@@ -13,37 +11,17 @@ SRC_URI="http://cvs.haskell.org/Hugs/downloads/Nov2003/${MY_P}.tar.gz"
 HOMEPAGE="http://www.haskell.org/hugs/"
 
 SLOT="0"
-KEYWORDS="x86 ~sparc ~amd64 ~ppc"
+KEYWORDS="~x86 ~sparc"
 LICENSE="as-is"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	opengl? ( virtual/opengl virtual/glu virtual/glut )
-	~app-text/docbook-sgml-dtd-4.2"
-
-src_unpack() {
-	base_src_unpack
-	cd ${S}/src
-	epatch ${FILESDIR}/${P}-gcc34.patch
-}
+	=app-text/docbook-sgml-dtd-4.2"
 
 src_compile() {
 	local myconf
-
-	[ "${ARCH}" = "amd64" ] && append-flags -fPIC
-
-	# Strip -O? from CFLAGS because of bugs
-	# in the garbage collection of gcc on ppc.
-	# See bug #73611
-	[ "${ARCH}" = "ppc" ] && filter-flags "-O?"
-
-	if use opengl; then
+	if [ `use opengl` ]; then
 		myconf="--enable-hopengl"
-		# the nvidia drivers *seem* not to work together
-		# with pthreads
-		[ ! -f /etc/env.d/09opengl ] \
-			|| [ -z "`grep opengl/nvidia/lib /etc/env.d/09opengl`" ] \
-			&& myconf="$myconf --with-pthreads" \
-			|| myconf="--with-pthreads"
 	fi
 
 	# When timing is enabled, the build will fail at some
@@ -62,7 +40,7 @@ src_compile() {
 	# about how you need to give "--host --target --build",
 	# and sometimes it will refuse to run at all.
 
-	cd ${S}/src/unix || die "source directory not found"
+	cd ${S}/src/unix || die
 	./configure \
 		--host=${CHOST} \
 		--target=${CHOST} \
@@ -75,17 +53,17 @@ src_compile() {
 		--enable-profiling \
 		${myconf} || die "./configure failed"
 	cd ..
-	emake || die "make failed"
+	emake || die
 }
 
 src_install () {
-	cd ${S}/src || die "source directory not found"
+	cd ${S}/src || die
 	make \
 		HUGSDIR=${D}/usr/lib/hugs \
 		prefix=${D}/usr \
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
-		install || die "make install failed"
+		install || die
 
 	#somewhat clean-up installation of few docs
 	cd ${S}

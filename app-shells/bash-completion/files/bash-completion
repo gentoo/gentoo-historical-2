@@ -1,19 +1,13 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash-completion/files/bash-completion,v 1.7 2004/11/12 23:44:04 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash-completion/files/bash-completion,v 1.1 2002/06/20 18:57:59 bangert Exp $
 #
 # START bash completion -- do not remove this line
 bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
-# interactive shell
-if [ "$PS1" ]; then
-	if [ $bmajor -eq 2 -a $bminor '>' 04 ] || [ $bmajor -ge 3 ]; then
-		[ -f /etc/bash_completion ] && . /etc/bash_completion
-		if [ -d ~/.bash_completion.d ] ; then
-			for file in ~/.bash_completion.d/* ; do
-				[ -f $file ] && . $file
-			done
-		fi
-	fi
+if [ "$PS1" ] && [ $bmajor -eq 2 ] && [ $bminor '>' 04 ] \
+   && [ -f /etc/bash_completion ]; then # interactive shell
+        # Source completion code
+        . /etc/bash_completion
 fi
 unset bash bmajor bminor
 # END bash completion -- do not remove this line

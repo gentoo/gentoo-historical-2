@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/make/make-3.80-r1.ebuild,v 1.6 2005/05/03 03:10:38 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/make/make-3.80-r1.ebuild,v 1.1 2004/10/10 03:57:29 vapier Exp $
 
-inherit eutils flag-o-matic
+inherit gnuconfig eutils flag-o-matic
 
 DESCRIPTION="Standard tool to compile source trees"
 HOMEPAGE="http://www.gnu.org/software/make/make.html"
@@ -10,19 +10,19 @@ SRC_URI="ftp://ftp.gnu.org/gnu/make/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
-IUSE="nls static build hardened"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc s390 x86"
+IUSE="nls static build uclibc"
 
-DEPEND="nls? ( sys-devel/gettext )"
-RDEPEND=""
+DEPEND="virtual/libc
+	nls? ( sys-devel/gettext )"
+RDEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PV}-memory.patch
-	if use ppc64 && use hardened ; then
-		epatch "${FILESDIR}"/make-3.80-ppc64-hardened-clock_gettime.patch
-	fi
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-memory.patch
+	# Detect mips and uclibc systems properly
+	gnuconfig_update
 }
 
 src_compile() {
@@ -32,7 +32,8 @@ src_compile() {
 }
 
 src_install() {
-	if use build ; then
+	if use build
+	then
 		dobin make || die
 	else
 		make DESTDIR="${D}" install || die "make install failed"

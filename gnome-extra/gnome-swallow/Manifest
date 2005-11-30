@@ -1,4 +1,2 @@
-MD5 75fb5c2ccb0bada4a55e7d51f059e2e7 ChangeLog 1427
-MD5 6b2b53a45fcffba6e46fc9b886b5530a gnome-swallow-1.2.ebuild 812
-MD5 03ad2e6c4ab41244af1015a8bbb0b39f metadata.xml 158
-MD5 1bc1d0668cd5696f5a04307f1f84dc60 files/digest-gnome-swallow-1.2 68
+MD5 6cf97f6e7271f6ee7e4e92d949fc2006 gnome-swallow-1.1.ebuild 714
+MD5 457a15034a29e93b64548a12c2dd8a98 files/digest-gnome-swallow-1.1 68

@@ -1,23 +1,23 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asbutton/asbutton-0.3-r1.ebuild,v 1.11 2004/08/07 10:09:33 mr_bones_ Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2.
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/asbutton/asbutton-0.3-r1.ebuild,v 1.1 2003/06/18 12:15:25 robh Exp $
 
-inherit eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="A simple dockable application launcher for use in AfterStep."
-HOMEPAGE="http://www.tigr.net"
 SRC_URI="http://www.tigr.net/afterstep/download/asbutton/${P}.tar.gz"
+HOMEPAGE="http://www.tigr.net"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86"
 
 DEPEND="x11-wm/afterstep"
 
 src_unpack() {
-	unpack ${A} ; cd "${S}"
-	epatch "${FILESDIR}/${P}-gentoo.patch"
+	unpack ${A}
+
+	cd ${S}
+	patch -p0 < ${FILESDIR}/${P}-gentoo.patch || die "patch failed"
 }
 
 src_compile() {
@@ -25,9 +25,10 @@ src_compile() {
 }
 
 src_install () {
-	dodir /usr/bin /usr/share/afterstep/desktop/icons/16bpp
+	dodir /usr/bin
+	dodir /usr/share/afterstep/desktop/icons/16bpp
 
-	make DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR=${D} install || die 
 	dodoc README CHANGES
 	newdoc .asbuttonrc sample_asbuttonrc
 }

@@ -3,6 +3,7 @@
 <pkgmetadata>
 <herd>games</herd>
 <maintainer>
-  <email>spock@gentoo.org</email>
+<email>games@gentoo.org</email>
+<name>Games Team</name>
 </maintainer>
 </pkgmetadata>

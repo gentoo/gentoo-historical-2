@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/webapp.eclass,v 1.37 2005/11/20 12:26:22 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/webapp.eclass,v 1.1 2003/10/07 21:54:46 stuart Exp $
 #
 # eclass/webapp.eclass
 #				Eclass for installing applications to run under a web server
@@ -8,54 +8,30 @@
 #				Part of the implementation of GLEP #11
 #
 # Author(s)		Stuart Herbert <stuart@gentoo.org>
-#				Renat Lumpau <rl03@gentoo.org>
-#				Gunnar Wrobel <php@gunnarwrobel.org>
 #
 # ------------------------------------------------------------------------
 #
-# The master copy of this eclass is held in our subversion repository.
-# http://svn.gnqs.org/projects/vhost-tools/browser/
+# Please do not make modifications to this file without checking with a
+# member of the web-apps herd first!
 #
-# If you make changes to this file and don't tell us, chances are that
-# your changes will be overwritten the next time we release a new version
-# of webapp-config.
+# ------------------------------------------------------------------------
+#
+# THIS IS A BETA RELEASE ONLY.  ALL DETAILS ARE SUBJECT TO CHANGE BEFORE
+# WE ARE READY TO START PORTING EVERYTHING TO THIS ECLASS
 #
 # ------------------------------------------------------------------------
 
+ECLASS=webapp
+INHERITED="$INHERITED $ECLASS"
+#DEPEND="${DEPEND} net-www/apache"
 SLOT="${PVR}"
-IUSE="vhosts"
-DEPEND="app-admin/webapp-config"
-RDEPEND="${DEPEND}"
+IUSE="$IUSE vhosts"
 
-EXPORT_FUNCTIONS pkg_postinst pkg_setup src_install pkg_prerm
+if [ -f /usr/share/webapp-config/settings.sh ] ; then
+	. /usr/share/webapp-config/settings.sh
+fi
 
-INSTALL_DIR="/${PN}"
-IS_UPGRADE=0
-IS_REPLACE=0
-
-INSTALL_CHECK_FILE="installed_by_webapp_eclass"
-
-ETC_CONFIG="${ROOT}/etc/vhosts/webapp-config"
-WEBAPP_CONFIG="${ROOT}/usr/sbin/webapp-config"
-
-# ------------------------------------------------------------------------
-# INTERNAL FUNCTION - USED BY THIS ECLASS ONLY
-#
-# Load the config file /etc/vhosts/webapp-config
-#
-# Supports both the old bash version, and the new python version
-#
-# ------------------------------------------------------------------------
-
-function webapp_read_config ()
-{
-	if has_version '>=app-admin/webapp-config-1.50'; then
-		ENVVAR=$(${WEBAPP_CONFIG} --query ${PN} ${PVR}) || die "Could not read settings from webapp-config!"
-		eval ${ENVVAR}
-	else
-		. ${ETC_CONFIG} || die "Unable to read ${ETC_CONFIG}"
-	fi
-}
+EXPORT_FUNCTIONS pkg_setup src_install
 
 # ------------------------------------------------------------------------
 # INTERNAL FUNCTION - USED BY THIS ECLASS ONLY
@@ -64,126 +40,17 @@ function webapp_read_config ()
 # or not.
 #
 # @param 	$1 - file to look for
-# @param	$2 - prefix directory to use
 # @return	0 on success, never returns on an error
 # ------------------------------------------------------------------------
 
 function webapp_checkfileexists ()
 {
-	local my_prefix
-
-	[ -n "${2}" ] && my_prefix="${2}/" || my_prefix=
-
-	if [ ! -e "${my_prefix}${1}" ]; then
-		msg="ebuild fault: file '${1}' not found"
+	if [ ! -e ${D}/$1 ]; then
+		msg="ebuild fault: file $1 not found in ${D}"
 		eerror "$msg"
 		eerror "Please report this as a bug at http://bugs.gentoo.org/"
 		die "$msg"
 	fi
-}
-
-# ------------------------------------------------------------------------
-# INTERNAL FUNCTION - USED BY THIS ECLASS ONLY
-# ------------------------------------------------------------------------
-
-function webapp_check_installedat
-{
-	local my_output
-
-	${WEBAPP_CONFIG} --show-installed -h localhost -d "${INSTALL_DIR}" 2> /dev/null
-}
-
-# ------------------------------------------------------------------------
-# INTERNAL FUNCTION - USED BY THIS ECLASS ONLY
-#
-# ------------------------------------------------------------------------
-
-function webapp_strip_appdir ()
-{
-	local my_stripped="${1}"
-	echo "${1}" | sed -e "s|${MY_APPDIR}/||g;"
-}
-
-function webapp_strip_d ()
-{
-	echo "${1}" | sed -e "s|${D}||g;"
-}
-
-function webapp_strip_cwd ()
-{
-	local my_stripped="${1}"
-	echo "${1}" | sed -e 's|/./|/|g;'
-}
-
-# ------------------------------------------------------------------------
-# EXPORTED FUNCTION - FOR USE IN EBUILDS
-#
-# Identify a config file for a web-based application.
-#
-# @param	$1 - config file
-# ------------------------------------------------------------------------
-
-function webapp_configfile ()
-{
-	webapp_checkfileexists "${1}" "${D}"
-
-	local MY_FILE="$(webapp_strip_appdir ${1})"
-	MY_FILE="$(webapp_strip_cwd ${MY_FILE})"
-
-	einfo "(config) ${MY_FILE}"
-	echo "${MY_FILE}" >> ${D}/${WA_CONFIGLIST}
-}
-
-# ------------------------------------------------------------------------
-# EXPORTED FUNCTION - FOR USE IN EBUILDS
-#
-# Install a script that will run after a virtual copy is created, and
-# before a virtual copy has been removed
-#
-# @param	$1 - the script to run
-# ------------------------------------------------------------------------
-
-function webapp_hook_script ()
-{
-	webapp_checkfileexists "${1}"
-
-	einfo "(hook) ${1}"
-	cp "${1}" "${D}/${MY_HOOKSCRIPTSDIR}/$(basename ${1})" || die "Unable to install ${1} into ${D}/${MY_HOOKSCRIPTSDIR}/"
-	chmod 555 "${D}/${MY_HOOKSCRIPTSDIR}/$(basename ${1})"
-}
-
-# ------------------------------------------------------------------------
-# EXPORTED FUNCTION - FOR USE IN EBUILDS
-#
-# Install a text file containing post-installation instructions.
-#
-# @param	$1 - language code (use 'en' for now)
-# @param	$2 - the file to install
-# ------------------------------------------------------------------------
-
-function webapp_postinst_txt ()
-{
-	webapp_checkfileexists "${2}"
-
-	einfo "(info) ${2} (lang: ${1})"
-	cp "${2}" "${D}/${MY_APPDIR}/postinst-${1}.txt"
-}
-
-# ------------------------------------------------------------------------
-# EXPORTED FUNCTION - FOR USE IN EBUILDS
-#
-# Install a text file containing post-upgrade instructions.
-#
-# @param	$1 - language code (use 'en' for now)
-# @param	$2 - the file to install
-# ------------------------------------------------------------------------
-
-function webapp_postupgrade_txt ()
-{
-	webapp_checkfileexists "${2}"
-
-	einfo "(info) ${2} (lang: ${1})"
-	cp "${2}" "${D}/${MY_APPDIR}/postupgrade-${1}.txt"
 }
 
 # ------------------------------------------------------------------------
@@ -201,93 +68,41 @@ function webapp_postupgrade_txt ()
 
 function webapp_serverowned ()
 {
-	webapp_checkfileexists "${1}" "$D"
-	local MY_FILE="$(webapp_strip_appdir ${1})"
-	MY_FILE="$(webapp_strip_cwd ${MY_FILE})"
-	
-	einfo "(server owned) ${MY_FILE}"
-	echo "${MY_FILE}" >> "${D}/${WA_SOLIST}"
+	webapp_checkfileexists $1
+	echo "$1" >> $WA_SOLIST
 }
 
 # ------------------------------------------------------------------------
 # EXPORTED FUNCTION - FOR USE IN EBUILDS
 #
-# @param	$1 - the webserver to install the config file for
-#			     (one of apache1, apache2, cherokee)
-# @param	$2 - the config file to install
-# @param	$3 - new name for the config file (default is `basename $2`)
-#				 this is an optional parameter
+# Identify a config file for a web-based application.
 #
-# NOTE:
-#	this function will automagically prepend $1 to the front of your
-#	config file's name
+# @param	$1 - config file
 # ------------------------------------------------------------------------
 
-function webapp_server_configfile ()
+function webapp_configfile ()
 {
-	webapp_checkfileexists "${2}"
-
-	# sort out what the name will be of the config file
-
-	local my_file
-
-	if [ -z "${3}" ]; then
-		my_file="${1}-$(basename ${2})"
-	else
-		my_file="${1}-${3}"
-	fi
-
-	# warning:
-	#
-	# do NOT change the naming convention used here without changing all
-	# the other scripts that also rely upon these names
- 
-	einfo "(${1}) config file '${my_file}'"
-	cp "${2}" "${D}/${MY_SERVERCONFIGDIR}/${my_file}"
+	webapp_checkfileexists $1
+	echo "$1" >> $WA_CONFIGLIST
 }
 
 # ------------------------------------------------------------------------
 # EXPORTED FUNCTION - FOR USE IN EBUILDS
 #
-# @param	$1 - the db engine that the script is for
-#				 (one of: mysql|postgres)
-# @param	$2 - the sql script to be installed
-# @param	$3 - the older version of the app that this db script
-#				 will upgrade from
-#				 (do not pass this option if your SQL script only creates
-#				  a new db from scratch)
+# Identify a script file (usually, but not always PHP or Perl) which is
+#
+# Files in this list may be modified to #! the required CGI engine when
+# installed by webapp-config tool in the future.
+#
+# @param	$1 - the cgi engine to use
+# @param	$2 - the script file that could run under a cgi-bin
+#
 # ------------------------------------------------------------------------
 
-function webapp_sqlscript ()
+function webapp_runbycgibin ()
 {
-	webapp_checkfileexists "${2}"
-
-	# create the directory where this script will go
-	#
-	# scripts for specific database engines go into their own subdirectory
-	# just to keep things readable on the filesystem
-
-	if [ ! -d "${D}/${MY_SQLSCRIPTSDIR}/${1}" ]; then
-		mkdir -p "${D}/${MY_SQLSCRIPTSDIR}/${1}" || die "unable to create directory ${D}/${MY_SQLSCRIPTSDIR}/${1}"
-	fi
-
-	# warning:
-	#
-	# do NOT change the naming convention used here without changing all
-	# the other scripts that also rely upon these names
- 
-	# are we dealing with an 'upgrade'-type script?
-	if [ -n "${3}" ]; then
-		# yes we are
-		einfo "(${1}) upgrade script from ${PN}-${PVR} to ${3}"
-		cp "${2}" "${D}${MY_SQLSCRIPTSDIR}/${1}/${3}_to_${PVR}.sql"
-		chmod 600 "${D}${MY_SQLSCRIPTSDIR}/${1}/${3}_to_${PVR}.sql"
-	else
-		# no, we are not
-		einfo "(${1}) create script for ${PN}-${PVR}"
-		cp "${2}" "${D}/${MY_SQLSCRIPTSDIR}/${1}/${PVR}_create.sql"
-		chmod 600 "${D}/${MY_SQLSCRIPTSDIR}/${1}/${PVR}_create.sql"
-	fi
+	webapp_checkfileexists $2
+	echo "$1 $2" >> $WA_RUNBYCGIBINLIST
 }
 
 # ------------------------------------------------------------------------
@@ -295,31 +110,19 @@ function webapp_sqlscript ()
 # everything else has run
 #
 # For now, we just make sure that root owns everything, and that there
-# are no setuid files.
+# are no setuid files.  I'm sure this will change significantly before
+# the final version!
 # ------------------------------------------------------------------------
 
 function webapp_src_install ()
 {
-	chown -R "${VHOST_DEFAULT_UID}:${VHOST_DEFAULT_GID}" "${D}/"
-	chmod -R u-s "${D}/"
-	chmod -R g-s "${D}/"
-
-	keepdir "${MY_PERSISTDIR}"
-	fowners "root:root" "${MY_PERSISTDIR}"
-	fperms 755 "${MY_PERSISTDIR}"
-
-	# to test whether or not the ebuild has correctly called this function
-	# we add an empty file to the filesystem
-	#
-	# we used to just set a variable in the shell script, but we can
-	# no longer rely on Portage calling both webapp_src_install() and
-	# webapp_pkg_postinst() within the same shell process
-
-	touch "${D}/${MY_APPDIR}/${INSTALL_CHECK_FILE}"
+	chown -R root:root ${D}/
+	chmod -R u-s ${D}/
+	chmod -R g-s ${D}/
 }
 
 # ------------------------------------------------------------------------
-# EXPORTED FUNCTION - call from inside your ebuild's pkg_config AFTER
+# EXPORTED FUNCTION - call from inside your ebuild's pkg_setup AFTER
 # everything else has run
 #
 # If 'vhosts' USE flag is not set, auto-install this app
@@ -328,223 +131,4 @@ function webapp_src_install ()
 
 function webapp_pkg_setup ()
 {
-	# add sanity checks here
-
-	if [ "${SLOT}+" != "${PVR}+" ]; then
-		# special case - some ebuilds *do* need to overwride the SLOT
-		if [ "${WEBAPP_MANUAL_SLOT}" != "yes" ]; then
-			die "ebuild sets SLOT, overrides webapp.eclass"
-		else
-			ewarn
-			ewarn "This ebuild overrides the default SLOT behaviour for webapps"
-			ewarn "If this package installs files into the htdocs dir, this is"
-			ewarn "probably a bug in the ebuild."
-			ewarn
-		fi
-	fi
-
-	# pull in the shared configuration file
-
-	G_HOSTNAME="localhost"
-	webapp_read_config
-
-	# are we installing a webapp-config solution over the top of a
-	# non-webapp-config solution?
-
-	if ! use vhosts ; then
-		local my_dir="${ROOT}${VHOST_ROOT}/${MY_HTDOCSBASE}/${PN}"
-		local my_output
-
-		if [ -d "${my_dir}" ] ; then
-			einfo "You already have something installed in ${my_dir}"
-			einfo "Are you trying to install over the top of something I cannot upgrade?"
-
-			my_output="$(webapp_check_installedat)"
-
-			if [ "$?" != "0" ]; then
-
-				# okay, whatever is there, it isn't webapp-config-compatible
-				ewarn
-				ewarn "Whatever is in ${my_dir}, it's not"
-				ewarn "compatible with webapp-config."
-				ewarn
-				ewarn "This ebuild may be overwriting important files."
-				ewarn
-			elif [ "$(echo ${my_output} | awk '{ print $1 }')" != "${PN}" ]; then
-				eerror "${my_dir} contains ${my_output}"
-				eerror "I cannot upgrade that"
-				die "Cannot upgrade contents of ${my_dir}"
-			else
-				einfo
-				einfo "I can upgrade the contents of ${my_dir}"
-				einfo
-			fi
-		fi
-	fi
-}
-
-function webapp_getinstalltype ()
-{
-	# or are we upgrading?
-
-	if ! use vhosts ; then
-		# we only run webapp-config if vhosts USE flag is not set
-
-		local my_output
-
-		my_output="$(webapp_check_installedat)"
-
-		if [ "${?}" = "0" ] ; then
-			# something is already installed there
-			#
-			# make sure it isn't the same version
-
-			local my_pn="$(echo ${my_output} | awk '{ print $1 }')"
-			local my_pvr="$(echo ${my_output} | awk '{ print $2 }')"
-
-			REMOVE_PKG="${my_pn}-${my_pvr}"
-
-			if [ "${my_pn}" == "${PN}" ]; then
-				if [ "${my_pvr}" != "${PVR}" ]; then
-					einfo "This is an upgrade"
-					IS_UPGRADE=1
-				else
-					einfo "This is a re-installation"
-					IS_REPLACE=1
-				fi
-			else
-				einfo "${my_output} is installed there"
-			fi
-		else
-			einfo "This is an installation"
-		fi
-	fi
-}
-
-function webapp_src_preinst ()
-{
-	# create the directories that we need
-
-	dodir "${MY_HTDOCSDIR}"
-	dodir "${MY_HOSTROOTDIR}"
-	dodir "${MY_CGIBINDIR}"
-	dodir "${MY_ICONSDIR}"
-	dodir "${MY_ERRORSDIR}"
-	dodir "${MY_SQLSCRIPTSDIR}"
-	dodir "${MY_HOOKSCRIPTSDIR}"
-	dodir "${MY_SERVERCONFIGDIR}"
-}
-
-function webapp_pkg_postinst ()
-{
-	webapp_read_config
-
-	# sanity checks, to catch bugs in the ebuild
-
-	if [ ! -f "${ROOT}${MY_APPDIR}/${INSTALL_CHECK_FILE}" ]; then
-		eerror
-		eerror "This ebuild did not call webapp_src_install() at the end"
-		eerror "of the src_install() function"
-		eerror
-		eerror "Please log a bug on http://bugs.gentoo.org"
-		eerror
-		eerror "You should use emerge -C to remove this package, as the"
-		eerror "installation is incomplete"
-		eerror
-		die "Ebuild did not call webapp_src_install() - report to http://bugs.gentoo.org"
-	fi
-
-	# if 'vhosts' is not set in your USE flags, we install a copy of
-	# this application in ${ROOT}/var/www/localhost/htdocs/${PN}/ for you
-	
-	if ! use vhosts ; then
-		echo
-		einfo "vhosts USE flag not set - auto-installing using webapp-config"
-
-		webapp_getinstalltype
-
-		G_HOSTNAME="localhost"
-		local my_mode=-I
-		webapp_read_config
-
-		if [ "${IS_REPLACE}" = "1" ]; then
-			einfo "${PN}-${PVR} is already installed - replacing"
-			my_mode=-I
-		elif [ "${IS_UPGRADE}" = "1" ]; then
-			einfo "${REMOVE_PKG} is already installed - upgrading"
-			my_mode=-U
-		else
-			einfo "${PN}-${PVR} is not installed - using install mode"
-		fi
-	
-		my_cmd="${WEBAPP_CONFIG} ${my_mode} -h localhost -u root -d ${INSTALL_DIR} ${PN} ${PVR}"
-		einfo "Running ${my_cmd}"
-		${my_cmd}
-
-		# remove the old version
-		#
-		# why do we do this?  well ...
-		#
-		# normally, emerge -u installs a new version and then removes the
-		# old version.  however, if the new version goes into a different
-		# slot to the old version, then the old version gets left behind
-		#
-		# if USE=-vhosts, then we want to remove the old version, because
-		# the user is relying on portage to do the magical thing for it
-
-		if [ "${IS_UPGRADE}" = "1" ] ; then
-			einfo "Removing old version ${REMOVE_PKG}"
-
-			emerge -C "${REMOVE_PKG}"
-		fi
-	else
-		# vhosts flag is on
-		#
-		# let's tell the administrator what to do next
-
-		einfo
-		einfo "The 'vhosts' USE flag is switched ON"
-		einfo "This means that Portage will not automatically run webapp-config to"
-		einfo "complete the installation."
-		einfo
-		einfo "To install ${PN}-${PVR} into a virtual host, run the following command:"
-		einfo
-		einfo "    webapp-config -I -h <host> -d ${PN} ${PN} ${PVR}"
-		einfo
-		einfo "For more details, see the webapp-config(8) man page"
-	fi
-
-	return 0
-}
-
-function webapp_pkg_prerm ()
-{
-	# remove any virtual installs that there are
-
-	local my_output
-	local x
-
-	my_output="$(${WEBAPP_CONFIG} --list-installs ${PN} ${PVR})"
-
-	if [ "${?}" != "0" ]; then
-		return
-	fi
-
-	for x in ${my_output} ; do
-		[ -f ${x}/.webapp ] && . ${x}/.webapp || ewarn "Cannot find file ${x}/.webapp"
-
-		if [ -z "${WEB_HOSTNAME}" -o -z "${WEB_INSTALLDIR}" ]; then
-			ewarn "Don't forget to use webapp-config to remove the copy of"
-			ewarn "${PN}-${PVR} installed in"
-			ewarn
-			ewarn "    ${x}"
-			ewarn
-		else
-			# we have enough information to remove the virtual copy ourself
-
-			${WEBAPP_CONFIG} -C -h ${WEB_HOSTNAME} -d ${WEB_INSTALLDIR}
-
-			# if the removal fails - we carry on anyway!
-		fi
-	done
-}
+	use vhosts || webapp-config -u root -d /var/www/localhost/htdocs/${PN}/ ${PN}

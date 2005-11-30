@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/superkaramba/superkaramba-0.36.ebuild,v 1.5 2005/08/28 13:59:44 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/superkaramba/superkaramba-0.36.ebuild,v 1.1 2005/05/14 14:14:00 greg_g Exp $
 
 inherit kde
 
@@ -10,12 +10,11 @@ SRC_URI="mirror://sourceforge/netdragon/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE="doc xmms"
 
 DEPEND="dev-lang/python
-	xmms? ( media-sound/xmms )
-	!>=kde-base/kdeutils-3.5_alpha"
+	xmms? ( media-sound/xmms )"
 
 need-kde 3.2
 

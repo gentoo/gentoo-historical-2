@@ -1,30 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/chmlib/chmlib-0.31.ebuild,v 1.11 2005/01/01 13:05:16 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/chmlib/chmlib-0.31.ebuild,v 1.1 2003/09/10 07:33:04 sergey Exp $
 
 DESCRIPTION="Library for MS CHM (compressed html) file format plus extracting and http server utils"
 HOMEPAGE="http://66.93.236.84/~jedwin/projects/chmlib/"
 SRC_URI="http://66.93.236.84/~jedwin/projects/chmlib/${PF}.tgz"
-DEPEND=">=sys-apps/sed-4"
-
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ppc ~amd64"
-IUSE=""
+KEYWORDS="~x86"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -i "s:gcc-3.2:gcc:" Makefile
-	sed -i "s:/usr/local/:/${D}/usr/:" Makefile
-	if [ "${ARCH}" = "ppc" ]; then
-		# In this case it is safe to take this rather
-		# stupid action =)
-		sed -i "s:__i386__:__powerpc__:" chm_lib.c
-	fi
-	if [ "${ARCH}" = "amd64" ]; then
-		sed -i "s:__i386__:__x86_64__:" chm_lib.c
-	fi
+	mv Makefile Makefile.tmp
+	sed -e "s:gcc-3.2:gcc:" Makefile.tmp > Makefile
+	mv Makefile Makefile.tmp
+	sed -e "s:/usr/local/:/${D}/usr/:" Makefile.tmp > Makefile
 }
 
 src_compile() {
@@ -52,5 +43,5 @@ src_install() {
 	insinto /usr/share/doc/${PF}/examples/
 	doins test_chmLib.c enum_chmLib.c chm_http.c
 
-	dodoc AUTHORS NEWS README
+	dodoc AUTHORS COPYING NEWS README
 }

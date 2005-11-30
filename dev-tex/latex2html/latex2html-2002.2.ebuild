@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2html/latex2html-2002.2.ebuild,v 1.10 2005/06/04 08:58:25 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2html/latex2html-2002.2.ebuild,v 1.1 2003/06/09 13:11:26 satai Exp $
 
 MY_P=${P/./-}
 S=${WORKDIR}/${MY_P}
@@ -10,14 +10,15 @@ HOMEPAGE="http://www.latex2html.org/"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 ppc sparc alpha amd64 ppc64"
+KEYWORDS="x86 ppc sparc alpha"
 IUSE="gif png"
 
-DEPEND="virtual/ghostscript
-	virtual/tetex
+DEPEND="app-text/ghostscript
+	app-text/tetex
 	media-libs/netpbm
 	dev-lang/perl
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib
+		media-libs/libungif )
 	png? ( media-libs/libpng )"
 
 src_compile() {
@@ -38,25 +39,24 @@ src_compile() {
 		--enable-paths \
 		--enable-wrapper"
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 	make || die
 	make check || die
 }
 
 src_install() {
-	dodir /usr/bin /usr/lib/latex2html /usr/share/latex2html
+	dodir /usr/bin /usr/lib/latex2html /usr/share/latex2html 
 	dodir /usr/share/texmf/tex/latex/html
 	cp cfgcache.pm cfgcache.pm.bak
 
-	# mktexlsr is run later to avoid a sandbox violation
+	# mktexlsr is run later to avoid a sandbox violation 
 	sed \
 		-e "/BINDIR\|LIBDIR\|SHLIBDIR\|TEXPATH/s#q'/#q'"${D}"#" \
 		-e "/MKTEXLSR/s:q'.*':q'':" \
 		cfgcache.pm.bak > cfgcache.pm
 
 	make install || die
-	insinto /usr/lib/latex2html
-	newins cfgcache.pm.bak cfgcache.pm
+	cp cfgcache.pm.bak ${D}/usr/lib/latex2html/cfgcache.pm
 
 	dodoc BUGS Changes FAQ INSTALL LICENSE MANIFEST README TODO
 

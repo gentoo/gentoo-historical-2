@@ -1,24 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.46.ebuild,v 1.7 2005/11/28 13:36:35 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.46.ebuild,v 1.1 2005/07/17 11:19:00 solar Exp $
 
 inherit eutils
 
 DESCRIPTION="small SSH 2 client/server designed for small memory environments"
-HOMEPAGE="http://matt.ucc.asn.au/dropbear/dropbear.html"
+HOMEPAGE="http://matt.ucc.asn.au/dropbear/"
 SRC_URI="http://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2
 	http://matt.ucc.asn.au/dropbear/testing/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha ~amd64 arm hppa ia64 m68k ~mips ~ppc sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~sparc ~sh ~x86"
 IUSE="minimal multicall pam static zlib"
 
 RDEPEND="zlib? ( sys-libs/zlib )
 	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.0.51"
-PROVIDE="virtual/ssh"
 
 set_options() {
 	use minimal \
@@ -28,14 +27,9 @@ set_options() {
 	use static && makeopts="${makeopts} STATIC=1"
 }
 
-pkg_setup() {
-	enewgroup sshd 22
-	enewuser sshd 22 -1 /var/empty sshd
-}
-
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 	epatch "${FILESDIR}"/dropbear-0.45-urandom.patch
 	epatch "${FILESDIR}"/dropbear-0.46-dbscp.patch
 }

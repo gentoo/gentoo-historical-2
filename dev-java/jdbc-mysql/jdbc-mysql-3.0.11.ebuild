@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-mysql/jdbc-mysql-3.0.11.ebuild,v 1.6 2005/10/30 19:41:35 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-mysql/jdbc-mysql-3.0.11.ebuild,v 1.1 2004/03/22 23:17:16 zx Exp $
 
 inherit java-pkg
 
@@ -9,12 +9,12 @@ At=mysql-connector-java-${PV}-stable
 DESCRIPTION="MySQL JDBC driver"
 HOMEPAGE="http://www.mysql.com"
 SRC_URI="mirror://mysql/Downloads/Connector-J/${At}.tar.gz"
-LICENSE="GPL-2"
+RESTRICT="nomirror"
+LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="x86 ppc sparc amd64"
 IUSE=""
-DEPEND=""
-RDEPEND=">=virtual/jre-1.2"
+RDEPEND=">=virtual/jdk-1.2"
 
 S=${WORKDIR}/${At}
 
@@ -22,5 +22,5 @@ src_compile() { :; }
 
 src_install() {
 	java-pkg_dojar ${At}-bin.jar
-	dodoc README CHANGES
+	dodoc README CHANGES COPYING
 }

@@ -1,23 +1,15 @@
 #!/sbin/runscript
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/portmap/files/portmap.rc6,v 1.10 2005/03/03 23:24:07 vapier Exp $
+
+opts="start stop restart"
 
 depend() {
-	use net
-	before inetd
-	before xinetd
+	need net
 }
 
 start() {
 	ebegin "Starting portmap"
-	start-stop-daemon --start --quiet --exec /sbin/portmap -- ${PORTMAP_OPTS}
-	local ret=$?
-	eend ${ret}
-	# without, if a service depending on portmap is started too fast,
-	# connecting to portmap will fail -- azarah
-	sleep 1
-	return ${ret}
+	start-stop-daemon --start --quiet --exec /sbin/portmap
+	eend $?
 }
 
 stop() {
@@ -34,9 +26,8 @@ restart() {
 	eend $? "Error saving portmap table."
 
 	# Stop and restart portmapper
-	svc_stop
-	sleep 1
-	svc_start
+	stop
+	start
 
 	# Reload the portmapper's table
 	if [ -n "$tmpfile" ]; then

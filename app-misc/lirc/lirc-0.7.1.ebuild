@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.7.1.ebuild,v 1.7 2005/08/23 10:43:47 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lirc/lirc-0.7.1.ebuild,v 1.1 2005/04/22 17:37:34 lanius Exp $
 
 inherit eutils linux-mod flag-o-matic
 
@@ -51,11 +51,11 @@ HOMEPAGE="http://www.lirc.org"
 
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="debug doc X"
+IUSE="debug doc"
 KEYWORDS="~x86 ~ppc ~alpha ~ia64 ~amd64 ~ppc64"
 
 RDEPEND="virtual/libc
-	X? ( virtual/x11 )"
+	X11? ( virtual/x11 )"
 
 DEPEND="virtual/linux-sources
 	sys-devel/autoconf
@@ -66,13 +66,15 @@ SRC_URI="mirror://sourceforge/lirc/${P}.tar.bz2"
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	#epatch ${FILESDIR}/lirc-0.7.0-xbox.patch.bz2
+	if [ "${PROFILE_ARCH}" == "xbox" ]; then
+		epatch ${FILESDIR}/lirc-0.7.0-xbox.patch.bz2
+	fi
 
 	filter-flags -Wl,-O1
 	sed	-i -e "s:-O2 -g:${CFLAGS}:" configure configure.in
 
 	# fix bz878 compilation, bug #87505
-	sed -i -e "s:lircd.conf.pixelview_bt878:lircd.conf.playtv_bt878:" configure configure.in
+	sed -i -e "s:lircd.conf.pixelview_bt878:lircd.conf.playtv_bt878" configure configure.in
 }
 
 src_compile() {
@@ -105,7 +107,6 @@ src_compile() {
 		--with-syslog=LOG_DAEMON \
 		--enable-sandboxed \
 		`use_enable debug` \
-		`use_with X` \
 		${LIRC_OPTS} || die "./configure failed"
 
 	convert_to_m ${S}/Makefile
@@ -122,10 +123,6 @@ src_install() {
 
 	insinto /etc/conf.d
 	newins ${FILESDIR}/lircd.conf lircd
-
-	has_version sys-fs/udev && (
-		insinto /etc/udev/rules.d/;
-		newins ${S}/contrib/lirc.rules 10-lirc.rules )
 
 	if use doc ; then
 		dohtml doc/html/*.html

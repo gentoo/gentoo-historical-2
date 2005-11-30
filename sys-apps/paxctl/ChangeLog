@@ -1,44 +1,6 @@
 # ChangeLog for sys-apps/paxctl
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/paxctl/ChangeLog,v 1.13 2005/10/18 18:09:00 gustavoz Exp $
-
-  18 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> paxctl-0.3.ebuild:
-  Stable on sparc
-
-  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> paxctl-0.3.ebuild:
-  stable on ia64
-
-*paxctl-0.3-r1 (13 Jun 2005)
-
-  13 Jun 2005; Kevin F. Quinn <kevquinn@gentoo.org>
-  +files/paxctl-0.3-error-codes.patch, +paxctl-0.3-r1.ebuild:
-  - return EXIT_FAILURE when paxctl fails to do as requested
-
-  10 Jun 2005; <solar@gentoo.org> paxctl-0.3.ebuild:
-  - stable on x86/ppc/amd64
-
-*paxctl-0.3 (03 May 2005)
-
-  03 May 2005; <solar@gentoo.org> +paxctl-0.3.ebuild:
-  - new paxctl release. new version includes ability to reuse/rename existing
-  unneeded program header into PT_PAX_FLAGS
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> paxctl-0.2.ebuild:
-  stable on ia64
-
-  17 Mar 2005; Daniel Ostrow <dostrow@gentoo.org> paxctl-0.2.ebuild:
-  ~ppc64 for testing
-
-  22 Jul 2004; <solar@gentoo.org> paxctl-0.2.ebuild:
-  marked paxctl stable on x86 now that min-version binutils is in stable
-
-  21 Jul 2004; Travis Tilley <lv@gentoo.org> paxctl-0.2.ebuild:
-  stable on amd64
-
-  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> paxctl-0.2.ebuild:
-  sync IUSE (missing), glibc -> libc
-
-*paxctl-0.2 (18 Feb 2004)
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/paxctl/ChangeLog,v 1.1 2004/02/18 07:58:03 solar Exp $
 
   18 Feb 2004; <solar@gentoo.org> :
   This is paxctl for controlling PaX flags on a per binary basis. PaX

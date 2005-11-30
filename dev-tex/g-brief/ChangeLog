@@ -1,30 +1,6 @@
 # ChangeLog for dev-tex/g-brief
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/g-brief/ChangeLog,v 1.9 2005/10/14 02:07:31 agriffis Exp $
-
-  14 Oct 2005; Aron Griffis <agriffis@gentoo.org> g-brief-4.0.1.ebuild:
-  Mark 4.0.1 stable on alpha
-
-  03 Apr 2005; Lina Pezzella <j4rg0n@gentoo.org> g-brief-4.0.1.ebuild:
-  Testing ppc-macos. Bug #86077. Thanks to Benjamin Braatz for reporting
-
-  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> g-brief-4.0.1.ebuild:
-  stable on amd64.
-
-  17 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> g-brief-4.0.1.ebuild:
-  Blocks >=tetex-2.96.
-
-  06 May 2004; Ciaran McCreesh <ciaranm@gentoo.org> g-brief-4.0.1.ebuild:
-  Added ~sparc, #50249
-
-  09 Oct 2003; Lars Weiler <pylon@gentoo.org> g-brief-4.0.1.ebuild,
-  metadata.xml:
-  Changed Homepage URL.
-  Masked stable for x86 and ppc.
-
-  26 Sep 2003; Mike Gardiner <obz@gentoo.org> g-brief-4.0.1.ebuild,
-  metadata.xml:
-  Fixed a bug which was causing the ebuild to halt waiting for input, #28240.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/g-brief/ChangeLog,v 1.1 2003/07/24 04:48:38 pylon Exp $
 
 *g-brief-4.0.1 (24 Jul 2003)
 

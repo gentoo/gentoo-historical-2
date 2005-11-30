@@ -1,34 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-outpost/xmms-outpost-0.15.ebuild,v 1.10 2005/01/25 17:03:23 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-outpost/xmms-outpost-0.15.ebuild,v 1.1 2004/02/05 10:28:24 eradicator Exp $
 
-IUSE=""
-
-inherit kde eutils
+inherit kde
+need-kde 3
 
 MY_P=${P/xmms-/}
 S=${WORKDIR}/outpost
+
+DEPEND="media-sound/xmms"
 
 DESCRIPTION="XMMS Outpost is an KDE Application embedded into the KDE Systray for controlling XMMS."
 SRC_URI="http://axj.tuxipuxi.de/software/${MY_P}.tar.bz2"
 HOMEPAGE="http://axj.tuxipuxi.de/"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc amd64 sparc"
-
-DEPEND="media-sound/xmms"
-RDEPEND="${DEPEND}"
-need-kde 3
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-Makefile.patch
-}
+KEYWORDS="~x86"
+SLOT="0"
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" CXXFLAGS="${CXXFLAGS}" || die
+	make
 }
 
 src_install() {

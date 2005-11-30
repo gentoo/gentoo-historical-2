@@ -1,15 +1,14 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libofx/libofx-0.6.4-r1.ebuild,v 1.6 2004/10/05 13:57:25 pvdabeel Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libofx/libofx-0.6.4-r1.ebuild,v 1.1 2003/08/28 13:19:56 agenkin Exp $
 
 DESCRIPTION="Library to support the Open Financial eXchange XML Format"
 HOMEPAGE="http://libofx.sourceforge.net/"
 SRC_URI="mirror://sourceforge/libofx/${P}.tar.gz"
-RESTRICT="nomirror"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ppc"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND=">=app-text/opensp-1.5
 	>=sys-apps/sed-4"
@@ -28,7 +27,7 @@ src_unpack() {
 		Makefile.in
 }
 src_compile() {
-	econf || die "econf failed"
+	econf
 	emake || die
 }
 

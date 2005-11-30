@@ -1,35 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/fujiplay/fujiplay-1.33.ebuild,v 1.11 2005/01/08 13:57:42 griffon26 Exp $
-
-inherit eutils
+# $Header:
 
 DESCRIPTION="Utility for Fujifilm/Leica digital cameras (via serial port)"
-HOMEPAGE="http://topo.math.u-psud.fr/~bousch/fujiplay.html"
 SRC_URI="http://topo.math.u-psud.fr/~bousch/fujiplay.tgz"
+HOMEPAGE="http://topo.math.u-psud.fr/~bousch/fujiplay.html"
 
-LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
+LICENSE="public-domain"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 RDEPEND=""
 
 S=${WORKDIR}
 
-src_unpack() {
-	unpack ${PN}.tgz
-	cd ${S}
-	epatch ${FILESDIR}/${P}-unterminated-strings.patch
-}
-
 src_compile() {
-	emake || die
+#	bash
+	cd fujiplay-1.33
+	emake || die 
 }
 
 src_install() {
-	dobin fujiplay yycc2ppm || die
+        cd fujiplay-1.33
+	into /usr
+	dobin fujiplay yycc2ppm
 	dodoc README fujiplay.lsm mx700-commands.html
 	emake all clean
 }
@@ -48,3 +43,4 @@ pkg_postrm() {
 	einfo "The symbolic link /dev/fujifilm was removed."
 	echo
 }
+

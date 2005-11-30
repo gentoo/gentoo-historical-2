@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bazaar/bazaar-1.3.2.ebuild,v 1.4 2005/06/03 10:49:10 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bazaar/bazaar-1.3.2.ebuild,v 1.1 2005/04/17 20:00:37 arj Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://bazaar.canonical.com/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DIR="thelove@canonical.com---dists--bazaar--1.3"
@@ -35,10 +35,6 @@ src_unpack() {
 	mv ${DIR} ${P}
 	mkdir "${P}/src/=build"
 	cd ${P}
-
-	# baz annotate does the same thing as this binary
-	rm -rf src/baz/annotate
-
 	epatch ${FILESDIR}/baz-gpgme-fix.patch
 }
 

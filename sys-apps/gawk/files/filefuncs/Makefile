@@ -1,57 +1,32 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
 # Author:  Martin Schlemmer <azarah@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/files/filefuncs/Makefile,v 1.7 2005/09/03 20:31:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/files/filefuncs/Makefile,v 1.1 2003/03/25 15:27:34 azarah Exp $
 
-CC ?= gcc
-LD = $(CC)
-
+CC = gcc
+LD = gcc
 MAJORVER = 0
 MINORVER = 0.1
-
-AWKINCDIR = /usr/include/awk
 DESTDIR =
 
-TARGET = filefuncs
-TARGET_LIB = $(TARGET).so.$(MAJORVER).$(MINORVER)
+TARGET = filefuncs.so.$(MAJORVER).$(MINORVER)
 
-LIBDIR = lib
+all: $(TARGET)
 
-# Gentoo specific cruft, you like it dont ya idiot
-ifdef D
-DESTDIR = $(D)
-endif
-ifdef S
-AWKINCDIR = $(S)
-endif
+filefuncs.o: filefuncs.c
+	$(CC) -shared -Wall -DHAVE_CONFIG_H -c -O2 -fPIC -I/usr/include/awk $^
 
-DOIT = yes
-ifeq ($(USERLAND),Darwin)
-DOIT = no
-endif
+filefuncs.so.$(MAJORVER).$(MINORVER): filefuncs.o
+	$(LD) -o $@ -shared -Wl,-soname -Wl,filefuncs.so.$(MAJORVER) $^
 
-ifeq ($(DOIT),yes)
-
-all: $(TARGET_LIB)
-
-$(TARGET).o: $(TARGET).c
-	$(CC) -shared -Wall -DHAVE_CONFIG_H -c -O2 -fPIC -I$(AWKINCDIR) $^
-
-$(TARGET_LIB): $(TARGET).o
-	$(LD) -o $@ -shared -Wl,-soname -Wl,$(TARGET).so.$(MAJORVER) $^
-
-install: $(TARGET_LIB)
-	install -m 0755 -d $(DESTDIR)/$(LIBDIR)/rcscripts
-	install -m 0755 $(TARGET_LIB) $(DESTDIR)/$(LIBDIR)/rcscripts
-	ln -s $(TARGET_LIB) $(DESTDIR)/$(LIBDIR)/rcscripts/$(TARGET).so.$(MAJORVER)
-	ln -s $(TARGET_LIB) $(DESTDIR)/$(LIBDIR)/rcscripts/$(TARGET).so
+install: $(TARGET)
+	install -m 0755 -d $(DESTDIR)/lib/rcscripts
+	install -m 0755 $(TARGET) $(DESTDIR)/lib/rcscripts
+	ldconfig -l $(DESTDIR)/lib/rcscripts/$(TARGET)
+	rm -f $(DESTDIR)/lib/rcscripts/filefuncs.so
+	ln -s $(TARGET) $(DESTDIR)/lib/rcscripts/filefuncs.so
 
 clean:
 	rm -f $(TARGET)
 	rm -f *.o *~ core
 
-else
-
-all install clean:
-
-endif

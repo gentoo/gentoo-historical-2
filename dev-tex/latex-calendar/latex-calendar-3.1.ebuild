@@ -1,24 +1,24 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-calendar/latex-calendar-3.1.ebuild,v 1.7 2004/12/28 21:29:50 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex-calendar/latex-calendar-3.1.ebuild,v 1.1 2003/06/09 13:11:26 satai Exp $
 
 inherit latex-package
 
 MY_P="calendar"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="LaTeX package used to create Calendars.  Very flexible and robust."
-SRC_URI="mirror://gentoo/${P}.tar.gz"
-HOMEPAGE="http://www.ctan.org/tex-archive/macros/latex/contrib/calendar/"
+SRC_URI="http://www.ibiblio.org/gentoo/distfiles/${P}.tar.gz"
+HOMEPAGE="ftp://ibiblio.org/pub/packages/TeX/macros/latex/contrib/supported/"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 sparc ppc amd64"
-IUSE=""
+KEYWORDS="x86 sparc ppc"
 
 src_compile() {
-	debug-print function $FUNCNAME $*
-	cd ${S}
-	echo "Extracting from allcal.ins"
-	( yes | latex allcal.ins ) >/dev/null 2>&1
+    debug-print function $FUNCNAME $*
+    cd ${S}
+    echo "Extracting from allcal.ins"
+	echo "y
+	y" | latex allcal.ins > /dev/null
 }
 
 src_install() {

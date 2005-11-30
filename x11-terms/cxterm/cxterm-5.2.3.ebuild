@@ -1,25 +1,25 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/cxterm/cxterm-5.2.3.ebuild,v 1.6 2004/06/28 21:48:13 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/cxterm/cxterm-5.2.3.ebuild,v 1.1 2004/01/26 17:35:52 pyrania Exp $
 
+S="${WORKDIR}/${P}"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz"
 HOMEPAGE="http://cxterm.sourceforge.net/"
 DESCRIPTION="A Chinese/Japanese/Korean X-Terminal"
 
-DEPEND="virtual/x11
-	>=sys-apps/sed-4"
+DEPEND="virtual/x11"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
 # hyper-optimizations untested...
 #
 src_compile() {
 
 	cd ${S}
-	sed -i "s/genCxterm/\.\/genCxterm/g" ${S}/scripts/Makefile.in
+	sed "s/genCxterm/\.\/genCxterm/g" ${S}/scripts/Makefile.in > ${S}/scripts/Makefile.new
+	mv ${S}/scripts/Makefile.new ${S}/scripts/Makefile.in
 
 	./configure --prefix=/usr \
 				--mandir=/usr/share/man \

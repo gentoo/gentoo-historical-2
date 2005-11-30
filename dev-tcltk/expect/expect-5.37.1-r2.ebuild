@@ -1,67 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.37.1-r2.ebuild,v 1.10 2005/01/31 18:15:06 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/expect/expect-5.37.1-r2.ebuild,v 1.1 2002/10/26 04:02:49 george Exp $
 
-inherit gnuconfig
-
-#remove the trailing ".0" from the tarball version
-NON_MICRO_V=${P%.[0-9]}
-S=${WORKDIR}/${NON_MICRO_V}
-
-DESCRIPTION="tool for automating interactive applications"
-HOMEPAGE="http://expect.nist.gov/"
-SRC_URI="http://expect.nist.gov/src/${P}.tar.gz"
-
-LICENSE="BSD"
-SLOT="0"
-KEYWORDS="x86 ppc sparc alpha mips hppa amd64 ia64 s390 arm"
 IUSE="X doc"
 
+#remove the trailing ".0" from the tarball version
+S=${WORKDIR}/${P%.1}
+
+DESCRIPTION="Expect is a tool for automating interactive applications"
+SRC_URI="http://expect.nist.gov/src/${P}.tar.gz"
+HOMEPAGE="http://expect.nist.gov/"
+
+SLOT="0"
+KEYWORDS="x86 ppc sparc sparc64"
+LICENSE="BSD"
+
 DEPEND=">=dev-lang/tcl-8.2
-	X? ( >=dev-lang/tk-8.2 )"
+		X? ( >=dev-lang/tk-8.2 )"
 
-src_unpack() {
-	unpack ${A}
-	sed -i 's#/usr/local/bin#/usr/bin#' ${S}/expect.man
-	sed -i 's#/usr/local/bin#/usr/bin#' ${S}/expectk.man
-	#stops any example scripts being installed by default
-	sed -i 's/^SCRIPTS =/G_SCRIPTS =/' ${S}/Makefile.in
-	sed -i 's/^SCRIPTS_MANPAGES =/G_SCRIPTS_MANPAGES =/' ${S}/Makefile.in
-
-	cat >${WORKDIR}/sed.examples.gentoo <<HERE
-1s;#!\\.\\.;#!/usr/bin;
-1s;#!/depot/path;#!/usr/bin;
-HERE
-
-	cat >${WORKDIR}/Makefile.examples.gentoo <<HERE
-include Makefile
-
-gentoo_examples:
-	for i in \$(G_SCRIPTS) ; do \\
-		if [ -f \$(srcdir)/example/\$\$i ] ; then \\
-			\$(INSTALL_PROGRAM) \$(srcdir)/example/\$\$i \\
-				${D}/usr/share/doc/${PF}/examples/\$\$i ; \\
-			sed -i -f ${WORKDIR}/sed.examples.gentoo \\
-						${D}/usr/share/doc/${PF}/examples/\$\$i ; \\
-		fi ; \\
-	done
-
-	for i in \$(G_SCRIPTS_MANPAGES) ; do \\
-		if [ -f \$(srcdir)/example/\$\$i.man ] ; then \\
-			\$(INSTALL_DATA) \$(srcdir)/example/\$\$i.man \\
-				${D}/usr/share/doc/${PF}/examples/\$\$i.1 ; \\
-			gzip ${D}/usr/share/doc/${PF}/examples/\$\$i.1 ; \\
-		fi ; \\
-	done
-
-HERE
-}
 
 src_compile() {
-	if [ "${ARCH}" == "amd64" ]; then
-		gnuconfig_update
-	fi
-
+    
 	local myconf
 	local tclv
 	local tkv
@@ -74,7 +33,7 @@ src_compile() {
 
 	#configure needs to find the files tclConfig.sh and tclInt.h
 	myconf="--with-tcl=/usr/lib --with-tclinclude=/usr/lib/tcl$tclv/include/generic"
-
+	
 	if use X; then
 		#--with-x is enabled by default
 		#configure needs to find the file tkConfig.sh and tk.h
@@ -85,22 +44,22 @@ src_compile() {
 		myconf="$myconf --without-x"
 	fi
 
-	econf $myconf --enable-shared || die
+	econf $myconf --enable-shared || die	
 	emake || die
+
 }
 
 src_install () {
-	make install INSTALL_ROOT=${D} || die
+	
+	einstall || die
 
-	dodoc ChangeLog FAQ HISTORY NEWS README
-
-	local static_lib="lib${NON_MICRO_V/-/}.a"
-	rm ${D}/usr/lib/${NON_MICRO_V/-/}/${static_lib}
-
+	#docs
+	dodoc Changelog FAQ HISTORY NEWS README
+	
 	#install examples if 'doc' is set
 	if use doc; then
-		docinto examples
-		dodoc example/README
-		make -f ${WORKDIR}/Makefile.examples.gentoo gentoo_examples
+		dodir /usr/share/doc/${PF}/examples/
+		cp example/* /usr/share/doc/${PF}/examples/
 	fi
 }
+

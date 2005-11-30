@@ -1,43 +1,42 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/daaplib/daaplib-0.1.1a.ebuild,v 1.11 2005/09/03 23:39:17 flameeyes Exp $
-
-IUSE="static"
-
-inherit eutils
-
-S="${WORKDIR}/${PN}.${PV}/daaplib/src"
+# $Header: /var/cvsroot/gentoo-x86/media-libs/daaplib/daaplib-0.1.1a.ebuild,v 1.1 2004/03/25 06:29:04 eradicator Exp $
 
 DESCRIPTION="a tiny, portable C++ library to read and write low-level DAAP streams in memory"
 HOMEPAGE="http://www.deleet.de/projekte/daap/daaplib/"
 SRC_URI="http://deleet.de/projekte/daap/daaplib/${PN}.${PV}.zip"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~ppc sparc"
-
+KEYWORDS="~x86"
+IUSE="static"
 DEPEND="app-arch/unzip"
 RDEPEND=""
 
-src_unpack() {
-	unpack ${A}
-
-	# Use updated gentoo Makefile
-	ebegin "Updating Makefile"
-	cp ${FILESDIR}/${P}-Makefile ${S}/makefile
-	eend $?
-}
+S=${WORKDIR}/${PN}.${PV}/daaplib/src
 
 src_compile() {
+	# There is no configure step
 	emake || die
+
+	if use static; then
+		ranlib libdaaplib.a
+	else
+		c++ -shared --soname=libdaaplib.so -o libdaaplib.so taginput.o tagoutput.o registry.o
+	fi
 }
 
 src_install() {
-	make DESTDIR="${D}" \
-	     PREFIX="/usr" \
-	     LIBDEPLOY="/usr/$(get_libdir)" install || die
+	# Not an autoconf make file :(
 
-	use static || rm ${D}/usr/$(get_libdir)/libdaaplib.a
+	if use static; then
+		dolib.a libdaaplib.a
+	else
+		dolib.so libdaaplib.so
+	fi
 
-	dodoc ../../README
+	mkdir -p ${D}/usr/include/
+	cp -r ../include/daap ${D}/usr/include/
+	chmod -R a+r ${D}/usr/include/daap
+
+	dodoc ../../COPYING ../../README
 }

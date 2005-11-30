@@ -1,54 +1,9 @@
 # ChangeLog for app-doc/howto-html-single
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/howto-html-single/ChangeLog,v 1.14 2005/05/05 03:40:46 vapier Exp $
-
-*howto-html-single-20050504 (05 May 2005)
-
-  05 May 2005; Mike Frysinger <vapier@gentoo.org>
-  -howto-html-single-20040317.ebuild, +howto-html-single-20050504.ebuild:
-  Version bump #91368 by Josh Nichols.
-
-  29 Aug 2004; <blubb@gentoo.org> :
-  added amd64 keyword because it doesn't need any compilation
-
-  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
-  howto-html-single-20040317.ebuild:
-  QA - IUSE fix
-
-*howto-html-single-20040317 (17 Mar 2004)
-
-  17 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
-  Version bump #44240 by Jaco Kroon.
-
-*howto-html-single-20031006 (06 Oct 2003)
-
-  06 Oct 2003; Heinrich Wendel <lanius@gentoo.org>
-  howto-html-single-20020328.ebuild, howto-html-single-20031006.ebuild:
-  version bump
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*howto-html-single-20021121 (25 Nov 2002)
-
-  25 Nov 2002; Dan Armak <danarmak@gentoo.org> ChangeLog  :
-
-  A new version from this date.
-
-*howto-html-single-20020328 (5 Jul 2002)
-
-  20 Jul 2002; Doug Goldstein <cardoe@gentoo.org> howto-html-single-20020328.ebuild
-  Added missing KEYWORDS, SLOT
-
-  5 Jul 2002; Seemant Kulleen <seemant@gentoo.org>
-  howto-html-single-20020328.ebuild files/digest-howto-html-single-20020328 :
-
-  Version bump.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-doc/howto-html-single/ChangeLog,v 1.1 2002/02/01 21:53:00 gbevin Exp $
 
 *howto-html-single-20010823 (1 Feb 2002)
 
-  20 Jul 2002; Doug Goldstein <cardoe@gentoo.org> howto-html-single-20010823.ebuild
-  Added missing KEYWORDS, SLOT, LICENSE
- 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   
   Added initial ChangeLog which should be updated whenever the package is

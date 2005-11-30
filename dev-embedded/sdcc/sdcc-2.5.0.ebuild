@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/sdcc-2.5.0.ebuild,v 1.3 2005/09/03 06:42:37 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/sdcc/sdcc-2.5.0.ebuild,v 1.1 2005/05/23 11:09:58 dragonheart Exp $
 
 DESCRIPTION="Small device C compiler (for various microprocessors)"
 HOMEPAGE="http://sdcc.sourceforge.net/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/sdcc/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE="doc"
 
 DEPEND="virtual/libc
@@ -28,17 +28,13 @@ S=${WORKDIR}/${PN}
 src_compile() {
 	econf || die "Configure failed"
 	emake || die "Make failed"
-	if use doc
-	then
+	use doc && {
 		emake -C doc || die "Making documentation failed"
-	fi
+	}
 }
 
 src_install() {
 	emake DESTDIR=${D} install || die "Make install failed"
 	dodoc ChangeLog doc/README.txt doc/libdoc.txt doc/INSTALL.txt
-	if use doc
-	then
-		emake -C doc docdir=${D}/usr/share/doc/${P}/ install || die
-	fi
+	use doc && emake -C doc docdir=${D}/usr/share/doc/${P}/ install
 }

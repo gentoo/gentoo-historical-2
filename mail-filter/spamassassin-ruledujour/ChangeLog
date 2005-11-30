@@ -1,33 +1,6 @@
 # ChangeLog for mail-filter/spamassassin-ruledujour
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin-ruledujour/ChangeLog,v 1.7 2005/08/23 04:01:01 robbat2 Exp $
-
-*spamassassin-ruledujour-20050822 (23 Aug 2005)
-
-  23 Aug 2005; Robin H. Johnson <robbat2@gentoo.org>
-  +spamassassin-ruledujour-20050822.ebuild:
-  Version bump.
-
-  29 Apr 2005; Robin H. Johnson <robbat2@gentoo.org>
-  spamassassin-ruledujour-20050106.ebuild:
-  Stable on x86.
-
-  08 Jan 2005; Andrej Kacian <ticho@gentoo.org>
-  spamassassin-ruledujour-20040701.ebuild,
-  spamassassin-ruledujour-20050106.ebuild:
-  Changed mail-client/mailx to virtual/mailx.
-
-  06 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
-  +spamassassin-ruledujour-20050106.ebuild:
-  Bug #64574 solved in new version.
-
-  25 Sep 2004; Tom Martin <slarti@gentoo.org>
-  spamassassin-ruledujour-20040701.ebuild:
-  Marked ~amd64.
-
-  03 Jul 2004; David Holm <dholm@gentoo.org>
-  spamassassin-ruledujour-20040701.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/spamassassin-ruledujour/ChangeLog,v 1.1 2004/07/01 10:10:24 robbat2 Exp $
 
 *spamassassin-ruledujour-20040701 (01 Jul 2004)
 

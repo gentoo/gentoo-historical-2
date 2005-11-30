@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/i2c/i2c-2.9.0.ebuild,v 1.7 2005/11/21 19:59:52 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/i2c/i2c-2.9.0.ebuild,v 1.1 2005/01/01 22:12:04 plasmaroo Exp $
 
 inherit eutils toolchain-funcs
 
@@ -9,16 +9,11 @@ HOMEPAGE="http://www2.lm-sensors.nu/~lm78/"
 SRC_URI="http://www2.lm-sensors.nu/~lm78/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="-amd64 -ppc ~x86"
+SLOT="${KV}"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=""
-
-src_unpack () {
-	unpack ${A}
-	epatch ${FILESDIR}/${P}.fix.patch
-}
 
 src_compile ()  {
 	if [ "$LINUX" != "" ]; then

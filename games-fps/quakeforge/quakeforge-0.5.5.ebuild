@@ -1,33 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quakeforge/quakeforge-0.5.5.ebuild,v 1.8 2005/10/30 06:00:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quakeforge/quakeforge-0.5.5.ebuild,v 1.1 2004/05/16 08:57:54 vapier Exp $
 
 inherit eutils games
 
 DESCRIPTION="A new 3d engine based off of id Softwares's legendary Quake and QuakeWorld game engine"
-HOMEPAGE="http://www.quakeforge.net/"
+HOMEPAGE="http://www.quakeforge.org/"
 SRC_URI="mirror://sourceforge/quake/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
-IUSE="cdinstall debug 3dfx fbcon opengl sdl svga X ncurses vorbis zlib ipv6 xv dga xmms alsa oss"
+KEYWORDS="~x86 ~ppc ~amd64"
+IUSE="debug 3dfx fbcon opengl sdl svga X ncurses oggvorbis zlib ipv6 xv dga xmms alsa oss"
 RESTRICT="nouserpriv"
 
-RDEPEND="3dfx? ( media-libs/glide-v3 )
+RDEPEND="!amd64? ( 3dfx? ( media-libs/glide-v3 ) )
 	opengl? ( virtual/opengl )
 	sdl? ( media-libs/libsdl )
 	svga? ( media-libs/svgalib )
 	X? ( virtual/x11 )
 	ncurses? ( sys-libs/ncurses )
-	vorbis? ( media-libs/libogg media-libs/libvorbis )
+	oggvorbis? ( media-libs/libogg media-libs/libvorbis )
 	zlib? ( sys-libs/zlib )
 	xv? ( virtual/x11 )
 	dga? ( virtual/x11 )
 	xmms? ( media-sound/xmms )
 	alsa? ( media-libs/alsa-lib )"
 DEPEND="${RDEPEND}
-	cdinstall? ( games-fps/quake1-data )
 	sys-devel/bison
 	sys-devel/flex"
 
@@ -40,7 +39,7 @@ src_unpack() {
 src_compile() {
 	#i should do this at some point :x ... i guess if you disable all shared stuff
 	#and enable all the static options explicitly, static works ... (or so ive been told)
-	#if ! use static ; then
+	#if [ -z "`use static`" ] ; then
 	#	myconf="${myconf} --enable-shared=yes --enable-static=no"
 	#else
 	#	myconf="${myconf} --enable-shared=no --enable-static=yes"
@@ -73,24 +72,24 @@ src_compile() {
 
 	addpredict ${GAMES_LIBDIR}
 	egamesconf \
-		$(use_enable ncurses curses) \
-		$(use_enable vorbis) \
-		$(use_enable zlib) \
-		$(use_with ipv6) \
-		$(use_with fbcon fbdev) \
+		`use_enable ncurses curses` \
+		`use_enable oggvorbis vorbis` \
+		`use_enable zlib` \
+		`use_with ipv6` \
+		`use_with fbcon fbdev` \
 		${svgaconf} \
-		$(use_with X x) \
-		$(use_enable xv vidmode) \
-		$(use_enable dga) \
-		$(use_enable sdl) \
-		$(use_enable xmms) \
-		$(use_enable alsa) \
-		$(use_enable oss) \
+		`use_with X x` \
+		`use_enable xv vidmode` \
+		`use_enable dga` \
+		`use_enable sdl` \
+		`use_enable xmms` \
+		`use_enable alsa` \
+		`use_enable oss` \
 		--enable-sound \
 		--disable-optimize \
 		${debugopts} \
 		--with-global-cfg=${GAMES_SYSCONFDIR}/quakeforge.conf \
-		--with-sharepath=${GAMES_DATADIR}/quake1 \
+		--with-sharepath=${GAMES_DATADIR}/quake-data \
 		--with-clients=${clients} \
 		--with-servers=${servers} \
 		--with-tools=${tools} \
@@ -101,7 +100,7 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die "install failed"
 	mv ${D}/${GAMES_PREFIX}/include ${D}/usr/
-	dodoc ChangeLog NEWS TODO doc/*
+	dodoc ChangeLog INSTALL NEWS TODO doc/*
 	prepgamesdirs
 }
 
@@ -112,12 +111,12 @@ pkg_postinst() {
 	einfo "QuakeForge can find your Quake .pak files"
 	echo
 	einfo "You have 2 choices to do this"
-	einfo "1 Copy pak*.pak files to ${GAMES_DATADIR}/quake1/id1"
-	einfo "2 Symlink pak*.pak files in ${GAMES_DATADIR}/quake1/id1"
+	einfo "1 Copy pak*.pak files to ${GAMES_DATADIR}/quake-data/id1"
+	einfo "2 Symlink pak*.pak files in ${GAMES_DATADIR}/quake-data/id1"
 	echo
 	einfo "Example:"
 	einfo "my pak*.pak files are in /mnt/secondary/Games/Quake/Id1/"
-	einfo "ln -s /mnt/secondary/Games/Quake/Id1/pak0.pak ${GAMES_DATADIR}/quake1/id1/pak0.pak"
+	einfo "ln -s /mnt/secondary/Games/Quake/Id1/pak0.pak ${GAMES_DATADIR}/quake-data/id1/pak0.pak"
 	echo
 	einfo "You only need pak0.pak to play the demo version,"
 	einfo "the others are needed for registered version"

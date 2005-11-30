@@ -1,18 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 Kai Grossjohann <kai.grossjohann@uni-duisburg.de>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/unclutter/unclutter-8.ebuild,v 1.14 2005/11/26 19:12:52 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/unclutter/unclutter-8.ebuild,v 1.1 2003/03/16 19:43:53 seemant Exp $
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="Hides mouse pointer while not in use."
-HOMEPAGE="http://www.ibiblio.org/pub/X11/contrib/utilities/unclutter-8.README"
+HOMEPAGE="http://gopher.std.com/homepages/jimf/xloadimage.html"
 SRC_URI="ftp://ftp.x.org/contrib/utilities/${P}.tar.Z"
 
 SLOT="0"
 LICENSE="public-domain"
-KEYWORDS="alpha amd64 hppa ~mips ppc ppc64 ~sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa"
 
-DEPEND="virtual/x11"
+DEPEND="x11-base/xfree"
 
 
 src_compile() {

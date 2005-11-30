@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpio/gpio-1.3.2.ebuild,v 1.3 2005/01/01 17:52:45 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/gpio/gpio-1.3.2.ebuild,v 1.1 2004/11/22 01:22:23 solar Exp $
 
-inherit linux-mod
+inherit kernel-mod
 
 DESCRIPTION="Soekris net4501/4801 GPIO and error LED driver"
 HOMEPAGE="http://soekris.hejl.de/"
@@ -14,18 +14,23 @@ IUSE=""
 RDEPEND=""
 DEPEND="virtual/libc"
 
-MODULE_NAMES="gpio(kernel/drivers:) writelcd(kernel/drivers:)"
-BUILD_PARAMS="KERNELDIR=${KV_DIR}"
-BUILD_TARGETS="all"
+S=${WORKDIR}/${PN}-${PV}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S} || die
 	chmod -x *
+
+	check_KV
+}
+
+src_compile() {
+	emake KERNELDIR=${ROOT}/usr/src/linux || die "FAILED: make"
 }
 
 src_install() {
-	linux-mod_src_install
+	dodir /lib/modules/${KV}/kernel/drivers/
+	cp gpio.o writelcd.o ${D}/lib/modules/${KV}/kernel/drivers/ || die "installing modules failed"
 
 	# Setup gpio device nods.
 	#cat /proc/devices |sed -e "/\([0-9]*\).*gpio.*/!D;s/\([0-9]*\).*/\1/"

@@ -1,13 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/tkinfo/tkinfo-2.6.ebuild,v 1.8 2005/05/11 18:46:42 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/tkinfo/tkinfo-2.6.ebuild,v 1.1 2003/08/25 07:03:30 msterret Exp $
 
 DESCRIPTION="Info Browser in TK"
 SRC_URI="http://math-www.uni-paderborn.de/~axel/tkinfo/${P}.tar.gz"
 HOMEPAGE="http://math-www.uni-paderborn.de/~axel/tkinfo/"
 
-KEYWORDS="alpha amd64 hppa ppc sparc x86"
-IUSE=""
+KEYWORDS="x86 sparc ppc"
 LICENSE="freedist"
 SLOT="0"
 

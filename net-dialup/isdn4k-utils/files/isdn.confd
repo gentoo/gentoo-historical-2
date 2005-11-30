@@ -1,16 +1,6 @@
-# configuraton file for /etc/init.d/isdn
-
-# if you have CAPI based cards connected to I4L via 'capidrv'
-DEPEND_ON_CAPI="yes"
-
-# How many ISDN channels should be used. On UDEV this limit
-# will be used to create the device nodes in /dev.
-# chan = cards * 2 (max = 64)
-ISDN_MAX_CHANNELS=16
-
-# MODE/GROUP when creating ISDN devices
-ISDNDEV_MODE="660"
-ISDNDEV_GROUP="dialout"
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn4k-utils/files/isdn.confd,v 1.1 2005/03/29 08:40:14 mrness Exp $
 
 # Location where isdnctrl will save its configuration
 ISDNCTRL_CONFIG="/var/lib/isdn/isdnctrl.conf"

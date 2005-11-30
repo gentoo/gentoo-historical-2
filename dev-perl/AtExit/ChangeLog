@@ -1,21 +1,6 @@
 # ChangeLog for dev-perl/AtExit
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/AtExit/ChangeLog,v 1.7 2005/04/24 14:32:26 mcummings Exp $
-
-  24 Apr 2005; Michael Cummings <mcummings@gentoo.org> AtExit-2.01.ebuild:
-  cleaning mirror
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> AtExit-2.01.ebuild:
-  Stable on ppc.
-
-  06 Apr 2005; Joseph Jezak <josejx@gentoo.org> AtExit-2.01.ebuild:
-  Marked ~ppc.
-
-  14 Aug 2004; Sven Wegener <swegener@gentoo.org> AtExit-2.01.ebuild:
-  Trimmed trailing whitespace.
-
-  31 Dec 2003; Michael Cummings,,, <mcummings@gentoo.org> AtExit-2.01.ebuild:
-  Tested on sparc and x86
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/AtExit/ChangeLog,v 1.1 2003/08/19 00:45:29 robbat2 Exp $
 
 *AtExit-2.01 (18 Aug 2003)
 

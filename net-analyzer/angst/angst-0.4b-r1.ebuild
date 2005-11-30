@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/angst/angst-0.4b-r1.ebuild,v 1.7 2005/07/19 12:47:04 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/angst/angst-0.4b-r1.ebuild,v 1.1 2003/08/21 04:19:54 vapier Exp $
 
 inherit eutils
 
@@ -10,12 +10,11 @@ SRC_URI="http://angst.sourceforge.net/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc x86"
-IUSE=""
+KEYWORDS="~x86"
 
-DEPEND="virtual/libpcap
-	<net-libs/libnet-1.1
-	>=net-libs/libnet-1.0.2a-r3"
+DEPEND=">=net-libs/libpcap-0.7.1
+	>=net-libs/libnet-1.0.2a-r3
+	<net-libs/libnet-1.1*"
 
 src_unpack() {
 	unpack ${A}

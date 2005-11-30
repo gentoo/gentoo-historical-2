@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gcolor/gcolor-0.4.ebuild,v 1.10 2005/10/31 15:31:38 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gcolor/gcolor-0.4.ebuild,v 1.1 2004/01/02 19:13:34 port001 Exp $
 
 DESCRIPTION="A simple color selector."
 HOMEPAGE="http://gcolor.sourceforge.net/"
 LICENSE="GPL-2"
-DEPEND="=x11-libs/gtk+-1*"
+DEPEND="x11-libs/gtk+"
 
 SLOT="0"
-KEYWORDS="x86 ppc ppc64 amd64"
-IUSE=""
+KEYWORDS="x86"
 
 SRC_URI="mirror://sourceforge/gcolor/${P}.tar.gz"
+S=${WORKDIR}/${P}
 
 src_compile() {
 	./configure \
@@ -24,5 +24,5 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc ABOUT-NLS README AUTHORS NEWS ChangeLog
+	dodoc ABOUT-NLS INSTALL README AUTHORS COPYING NEWS ChangeLog
 }

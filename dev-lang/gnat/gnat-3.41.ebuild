@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnat/gnat-3.41.ebuild,v 1.4 2005/02/23 09:41:19 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnat/gnat-3.41.ebuild,v 1.1 2004/08/02 07:46:20 dholm Exp $
 
 inherit gnat
 
@@ -8,27 +8,19 @@ MY_PV=3.4.1
 DESCRIPTION="GNAT Ada Compiler"
 SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/gcc-${MY_PV}/gcc-core-${MY_PV}.tar.bz2
 	ftp://gcc.gnu.org/pub/gcc/releases/gcc-${MY_PV}/gcc-ada-${MY_PV}.tar.bz2
-	x86? ( http://gd.tuwien.ac.at/languages/ada/gnat/3.15p/gnat-3.15p-i686-pc-redhat71-gnu-bin.tar.gz )
-	ppc? ( mirror://gentoo/gnat-3.15p-powerpc-unknown-linux-gnu.tar.bz2 )"
+	x86? ( http://gd.tuwien.ac.at/languages/ada/gnat/3.15p/gnat-3.15p-i686-pc-redhat71-gnu-bin.tar.gz )"
 HOMEPAGE="http://www.gnat.com/"
 
 DEPEND="x86? ( >=app-shells/tcsh-6.0 )"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 LICENSE="GMGPL"
 IUSE=""
 
 S="${WORKDIR}/gcc-${MY_PV}"
 GNATBUILD="${WORKDIR}/build"
-case ${ARCH} in
-	x86)	GNATBOOT="${WORKDIR}/boot"
-			GNATBOOTINST="${WORKDIR}/gnat-3.15p-i686-pc-linux-gnu-bin"
-			;;
-	ppc)
-			GNATBOOT="${WORKDIR}/gnat-3.15p-powerpc-unknown-linux-gnu"
-			;;
-esac
-
+GNATBOOT="${WORKDIR}/boot"
+GNATBOOTINST="${WORKDIR}/gnat-3.15p-i686-pc-linux-gnu-bin"
 
 CFLAGS="-O -gnatpgn"
 
@@ -36,12 +28,10 @@ src_unpack() {
 	unpack ${A}
 
 	# Install the bootstrap compiler
-	if [ "${ARCH}" = "x86" ]; then
-		cd "${GNATBOOTINST}"
-		patch -p1 < ${FILESDIR}/gnat-3.15p-i686-pc-linux-gnu-bin.patch
-		echo $'\n'3$'\n'${GNATBOOT}$'\n' | ./doconfig > doconfig.log 2>&1
-		./doinstall
-	fi
+	cd "${GNATBOOTINST}"
+	patch -p1 < ${FILESDIR}/gnat-3.15p-i686-pc-linux-gnu-bin.patch
+	echo $'\n'3$'\n'${GNATBOOT}$'\n' | ./doconfig > doconfig.log 2>&1
+	./doinstall
 
 	# Prepare the gcc source directory
 	cd "${S}"

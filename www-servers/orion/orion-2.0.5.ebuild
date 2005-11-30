@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/orion/orion-2.0.5.ebuild,v 1.7 2005/08/26 13:50:48 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/orion/orion-2.0.5.ebuild,v 1.1 2005/01/08 01:59:21 karltk Exp $
 
 inherit eutils java-pkg
 
@@ -11,7 +11,7 @@ At=${PN}${PV}.zip
 DESCRIPTION="Orion EJB/J2EE application webserver"
 SRC_URI="http://www.orionserver.com/distributions/${At}"
 HOMEPAGE="http://www.orionserver.com/"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc"
 LICENSE="ORIONSERVER"
 SLOT="0"
 DEPEND=">=virtual/jdk-1.3
@@ -24,9 +24,14 @@ src_unpack() {
 	epatch ${FILESDIR}/${PV}/${PV}-gentoo.patch
 }
 
+pkg_preinst() {
+	enewgroup orion
+	enewuser orion -1 /bin/bash /opt/orion orion
+}
+
 src_install() {
 	# CREATE DIRECTORIES
-	diropts -m0755
+	diropts -m0775
 	dodir /opt/${PN}
 	dodir /opt/${PN}/config
 	dodir /opt/${PN}/sbin
@@ -40,8 +45,15 @@ src_install() {
 	doins ${FILESDIR}/${PV}/start_orion.sh
 	doins ${FILESDIR}/${PV}/stop_orion.sh
 
-	newinitd ${FILESDIR}/${PV}/orion.init orion
-	newconfd ${FILESDIR}/${PV}/orion.conf orion
+	cp -a ${FILESDIR}/${PV}/orion.init ${S}/orion
+	insinto /etc/init.d
+	insopts -m0750
+	doins ${S}/orion
+
+	cp -a ${FILESDIR}/${PV}/orion.conf ${S}/orion
+	insinto /etc/conf.d
+	insopts -m0750
+	doins ${S}/orion
 
 	# CREATE DUMMY LOG & PERSISTENCE DIR
 	dodir /var/log/${PN}
@@ -53,19 +65,19 @@ src_install() {
 	# INSTALL EXTRA FILES
 	local dirs="applications default-web-app demo lib persistence autoupdate.properties"
 	for i in $dirs ; do
-		cp -pPR ${i} ${D}/opt/${PN}/
+		cp -a ${i} ${D}/opt/${PN}/
 	done
 
 	# INSTALL APP CONFIG
 	cd ${S}/config
 	local dirs="application.xml data-sources.xml database-schemas default-web-site.xml global-web-application.xml jms.xml mime.types principals.xml rmi.xml server.xml"
 	for i in $dirs ; do
-		cp -pPR ${i} ${D}/opt/${PN}/config
+		cp -a ${i} ${D}/opt/${PN}/config
 	done
 
 	# INSTALL JARS
 	cd ${S}
-	for i in *.jar ; do
+	for i in `ls *.jar` ; do
 		java-pkg_dojar $i
 	done
 
@@ -76,22 +88,19 @@ src_install() {
 	dodoc Readme.txt changes.txt
 }
 
-pkg_preinst() {
-	enewgroup orion
-	enewuser orion -1 /bin/bash /opt/orion orion
-	chown -R orion:orion ${IMAGE}/opt/${PN}
-	chown -R orion:orion ${IMAGE}/var/log/${PN}
-	chown root:0 ${IMAGE}/etc/conf.d/orion
-}
-
 pkg_postinst() {
-	einfo
+
+	chown -R orion:orion /opt/${PN} || die "Failed to chown in /opt"
+	chown -R orion:orion /var/log/${PN} || die "Failed to chown in /var/log"
+	chown orion:orion /etc/conf.d/orion
+
+	einfo " "
 	einfo " NOTICE!"
 	einfo " User and group 'orion' have been added."
 	einfo " Please set a password for the user account 'orion'"
 	einfo " if you have not done so already."
-	einfo
-	einfo
+	einfo " "
+	einfo " "
 	einfo " FILE LOCATIONS:"
 	einfo " 1.  Orion home directory: /opt/orion"
 	einfo "     Contains application data, configuration files."
@@ -99,30 +108,30 @@ pkg_postinst() {
 	einfo "     Contains CLASSPATH and JDK settings."
 	einfo " 3.  Logs:  /var/log/orion/"
 	einfo " 4.  Executables, libraries:  /usr/share/${PN}/"
-	einfo
-	einfo
+	einfo " "
+	einfo " "
 	einfo " STARTING AND STOPPING ORION:"
 	einfo "   /etc/init.d/orion start"
 	einfo "   /etc/init.d/orion stop"
 	einfo "   /etc/init.d/orion restart"
-	einfo
-	einfo
+	einfo " "
+	einfo " "
 	einfo " NETWORK CONFIGURATION:"
 	einfo " By default, Orion runs on port 8080.  You can change this"
 	einfo " value by editing /opt/orion/config/default-web-site.xml."
-	einfo
+	einfo " "
 	einfo " To test Orion while it's running, point your web browser to:"
 	einfo " http://localhost:8080/"
-	einfo
-	einfo
+	einfo " "
+	einfo " "
 	einfo " APPLICATION DEPLOYMENT:"
 	einfo " To set an administrative password, execute the following"
 	einfo " commands as user 'orion':"
 	einfo " \$ java -jar /usr/share/${PN}/lib/orion.jar -install"
-	einfo
-	einfo
+	einfo " "
+	einfo " "
 	einfo " BUGS:"
 	einfo " Please file any bugs at http://bugs.gentoo.org/ or else it"
 	einfo " may not get seen.  Thank you."
-	einfo
+	einfo " "
 }

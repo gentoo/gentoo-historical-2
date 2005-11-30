@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/sysfsutils/sysfsutils-0.3.0.ebuild,v 1.6 2005/03/03 16:52:31 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/sysfsutils/sysfsutils-0.3.0.ebuild,v 1.1 2003/11/07 21:34:39 azarah Exp $
 
 inherit libtool
 
@@ -11,9 +11,10 @@ SRC_URI="mirror://sourceforge/linux-diag/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+
+S="${WORKDIR}/${P}"
 
 src_compile() {
 	elibtoolize

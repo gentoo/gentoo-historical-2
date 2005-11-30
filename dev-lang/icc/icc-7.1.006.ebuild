@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.1.006.ebuild,v 1.9 2004/06/24 22:50:29 agriffis Exp $
-
-inherit rpm
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.1.006.ebuild,v 1.1 2003/04/12 02:57:06 avenj Exp $
 
 S=${WORKDIR}
 
@@ -16,33 +14,29 @@ HOMEPAGE="http://www.intel.com/software/products/compilers/clin/"
 
 LICENSE="icc-7.0"
 
-DEPEND=">=sys-libs/glibc-2.2.5 \
-	x86? ( sys-libs/lib-compat )"
+DEPEND=">=virtual/linux-sources-2.4
+		>=sys-libs/glibc-2.2.5
+		sys-apps/cpio
+		app-arch/rpm"
+
+RDEPEND=">=virtual/linux-sources-2.4
+		>=sys-libs/glibc-2.2.4"
 
 SLOT="7"
-KEYWORDS="-* ia64 x86"
+KEYWORDS="-* x86"
 IUSE=""
 
-RESTRICT="nostrip"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	# Keep disk space to a minimum
-	if [ "$ARCH" = "x86" ]
-	then
-		rm -f intel-*.ia64.rpm
-	else
-		rm -f intel-*.i386.rpm
-	fi
-
-	for x in *.rpm
-	do
-		rpm_unpack $x
-	done
-}
 src_compile() {
+	# Keep disk space to a minimum
+	rm -f intel-*.ia64.rpm
+
+	mkdir opt
+
+	for x in intel-*.i386.rpm
+	do
+		einfo "Extracting: ${x}"
+		rpm2cpio ${x} | cpio --extract --make-directories --unconditional
+	done
 
 	# From UNTAG_CFG_FILES in 'install'
 	SD=${S}/opt/intel # Build DESTINATION
@@ -64,11 +58,6 @@ src_compile() {
 		mv $SUPPORTFILE.abs $SUPPORTFILE
 		chmod 644 $SUPPORTFILE
 	done
-
-	# these should not be executable
-	find "${SD}/compiler70/"{docs,man,training,ia32/include} -type f -exec chmod -x "{}" ";"
-	find "${SD}/compiler70/ia32/lib" -name \*.a -exec chmod -x "{}" ";"
-
 }
 
 src_install () {
@@ -76,26 +65,16 @@ src_install () {
 	dodoc clicense
 	cp -a opt ${D}
 
+	# icc enviroment
 	insinto /etc/env.d
-	if [ "$ARCH" = "x86" ]
-	then
-		newins ${FILESDIR}/${PVR}/05icc-ifc-ia32 05icc-ifc || die
-		# fix the processor name issue with the primary icc executable
-		exeinto /opt/intel/compiler70/ia32/bin
-		newexe ${FILESDIR}/${PVR}/icc-ia32 icc
-		newexe ${FILESDIR}/${PVR}/icpc-ia32 icc
-	else
-		newins ${FILESDIR}/${PVR}/05icc-ifc-ia64 05icc-ifc || die
-		dodir /usr/bin
-		dosym ../../opt/intel/compiler70/ia64/bin/eccbin /usr/bin/ecc
-		dosym ../../opt/intel/compiler70/ia64/bin/ecpcbin /usr/bin/ecpc
-	fi
-
-
+	doins ${FILESDIR}/${PVR}/05icc-ifc
+	# fix the issue with the primary icc executable
+	exeinto /opt/intel/compiler70/ia32/bin
+	doexe ${FILESDIR}/${PVR}/icc
 }
 
 pkg_postinst () {
-	einfo "The ICC compiler for Itanium systems is called \"ecc\"."
+	einfo
 	einfo "http://www.intel.com/software/products/compilers/clin/noncom.htm"
 	einfo "From the above url you can get a free, non-commercial"
 	einfo "license to use the Intel C++ Compiler emailed to you."

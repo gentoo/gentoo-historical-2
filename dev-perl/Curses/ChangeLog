@@ -1,82 +1,8 @@
 # ChangeLog for dev-perl/Curses
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Curses/ChangeLog,v 1.23 2005/11/12 16:07:49 mcummings Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Curses/ChangeLog,v 1.1 2002/05/11 17:28:04 agenkin Exp $
 
-*Curses-1.13 (12 Nov 2005)
-
-  12 Nov 2005; Michael Cummings <mcummings@gentoo.org> +Curses-1.13.ebuild:
-  Version bump upstream
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Curses-1.12.ebuild:
-  add ~ia64
-
-  19 Jul 2005; Michael Cummings <mcummings@gentoo.org> Curses-1.08.ebuild:
-  Bug 99489
-
-*Curses-1.12 (17 Jul 2005)
-
-  17 Jul 2005; Michael Cummings <mcummings@gentoo.org>
-  files/Curses-1.08-p5.8-fixes.diff, +Curses-1.12.ebuild:
-  Version bump upstream
-
-  03 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> Curses-1.08.ebuild:
-  Stable on alpha.
-
-  27 Jun 2005; Markus Rothe <corsair@gentoo.org> Curses-1.08.ebuild:
-  Stable on ppc64
-
-  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> Curses-1.08.ebuild:
-  Stable on ppc.
-
-  06 Jun 2005; Markus Rothe <corsair@gentoo.org> Curses-1.08.ebuild:
-  Added ~ppc64
-
-  22 May 2005; Michael Cummings <mcummings@gentoo.org> Curses-1.08.ebuild:
-  Unmasking for sparc
-
-  21 May 2005; Jan Brinkmann <luckyduck@gentoo.org> Curses-1.08.ebuild:
-  stable on amd64
-
-  20 May 2005; Michael Cummings <mcummings@gentoo.org> Curses-1.08.ebuild:
-  Marking stable x86
-
-*Curses-1.08 (06 Mar 2005)
-
-  06 Mar 2005; Michael Cummings <mcummings@gentoo.org>
-  +files/Curses-1.08-p5.8-fixes.diff, +Curses-1.08.ebuild:
-  New version of curses, dep for POE, still cant get FORMS working
-
-  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
-  Curses-1.06-r1.ebuild, Curses-1.06-r2.ebuild, Curses-1.06.ebuild:
-  bug 76590
-
-*Curses-1.07 (02 Oct 2004)
-
-  02 Oct 2004; Michael Cummings <mcummings@gentoo.org>
-  +files/Curses-1.07-p5.8-fixes.diff, +Curses-1.07.ebuild:
-  New version on CPAN. FORMS support is *still* broken;
-
-  17 Apr 2004; Michael McCabe <randy@gentoo.org> Curses-1.06-r2.ebuild:
-  Added s390 keywords
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*Curses-1.06-r2 (21 Jun 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-
-*Curses-1.06-r1 (29 Aug 2002)
-
-  29 Aug 2002; <mcummings@gentoo.org> Curses-1.06-r1.ebuild: This patched
-  version is courtesy the hard work of Nicholas Wourms and addresses changes
-  in the Curses package
-      
 *Curses-1.06 (6 May 2002)
-
-  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Curses-1.06.ebuild :
-
-  Added ppc to KEYWORDS.
 
   6 May 2002; Arcady Genkin <agenkin@thpoon.com> Curses-1.06.ebuild :
 

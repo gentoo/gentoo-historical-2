@@ -1,27 +1,6 @@
 # ChangeLog for app-xemacs/ilisp
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ilisp/ChangeLog,v 1.9 2005/09/29 06:33:48 josejx Exp $
-
-  29 Sep 2005; Joseph Jezak <josejx@gentoo.org> ilisp-1.29.ebuild:
-  Marked ppc stable.
-
-  02 Oct 2004; Robert Coie <rac@gentoo.org> +metadata.xml, ilisp-1.28.ebuild,
-  ilisp-1.29.ebuild:
-  eterm -> xemacs-eterm renaming
-
-  09 Aug 2004; Tom Gall <tgall@gentoo.org> ilisp-1.29.ebuild:
-  stable on ppc64, bug #57174
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> ilisp-1.29.ebuild:
-  Stable on alpha
-
-*ilisp-1.29 (22 Feb 2003)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> ilisp-1.28.ebuild ilisp-1.29.ebuild files/digest-ilisp-1.29 :
-  Add ~alpha to KEYWORDS
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  new stable ebuild
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/ilisp/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *ilisp-1.28 (16 Dec 2002)
 

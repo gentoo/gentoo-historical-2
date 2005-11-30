@@ -1,6 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/texi2html/texi2html-1.64-r1.ebuild,v 1.13 2005/01/01 16:38:25 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/texi2html/texi2html-1.64-r1.ebuild,v 1.1 2003/11/24 09:33:38 usata Exp $
+
+IUSE=""
 
 inherit alternatives
 
@@ -8,20 +10,24 @@ DESCRIPTION="Perl script that converts Texinfo to HTML"
 HOMEPAGE="http://www.mathematik.uni-kl.de/~obachman/Texi2html/"
 SRC_URI="http://www.mathematik.uni-kl.de/~obachman/Texi2html/Distrib/${P}.tar.gz"
 
-LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE=""
+LICENSE="GPL-2"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=dev-lang/perl-5.6.1"
 
+S=${WORKDIR}/${P}
+
 src_compile() {
+
 	econf --program-suffix=-${PV} || die "Configuration Failed"
 	emake || die "Parallel Make Failed"
+
 }
 
-src_install() {
+src_install () {
+
 	#yes, htmldir line is correct, no ${D}
 	make DESTDIR=${D} \
 		htmldir=/usr/share/doc/${PF}/html \
@@ -29,8 +35,10 @@ src_install() {
 
 	dodoc AUTHORS COPYING ChangeLog INSTALL INTRODUCTION NEWS \
 		README TODO
+
 }
 
 pkg_postinst() {
+
 	alternatives_auto_makesym "/usr/bin/texi2html" "/usr/bin/texi2html-*"
 }

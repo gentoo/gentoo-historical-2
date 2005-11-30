@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/cuyo/cuyo-1.8.5.ebuild,v 1.5 2005/07/07 04:37:21 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/cuyo/cuyo-1.8.5.ebuild,v 1.1 2004/11/06 10:05:15 mr_bones_ Exp $
 
-inherit kde-functions games
+inherit games
 
 DESCRIPTION="highly addictive and remotely related to tetris"
 HOMEPAGE="http://www.karimmi.de/cuyo/"
@@ -15,14 +15,14 @@ IUSE=""
 
 DEPEND="virtual/libc
 	virtual/x11
-	=x11-libs/qt-3*
-	sys-libs/zlib"
+	sys-libs/zlib
+	x11-libs/qt"
 
 S="${WORKDIR}/${P/_}"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 	sed -i \
 		-e '/^gamesdir.*=/ s:\$(prefix)/games:$(bindir):' \
 		-e 's:-O2:@CXXFLAGS@ -Wno-long-long:' src/Makefile.in \
@@ -30,8 +30,6 @@ src_unpack() {
 }
 
 src_compile() {
-	set-qtdir 3
-	export PATH="${QTDIR}/bin:${PATH}" # bug #70861
 	egamesconf \
 		--with-qt \
 		--with-x \
@@ -41,6 +39,6 @@ src_compile() {
 
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS NEWS README TODO ChangeLog
+	dodoc AUTHORS INSTALL NEWS README TODO ChangeLog
 	prepgamesdirs
 }

@@ -1,16 +1,2 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 0e5821c45f1f4efd6b6beabd4927c21f ptlink-opm-1.3.1.ebuild 1321
-MD5 924f4b0e0ae768c35b7887c8124a7c9f ChangeLog 1529
-MD5 44c39c6ad372a8e5a5e7ee3311f703a7 metadata.xml 160
-MD5 70ece3a2f3634a46cf1f6c6d07791b5f files/digest-ptlink-opm-1.3.1 67
-MD5 1cfbc36b60e8ae51e840e337eae1fe32 files/ptlink-opm.conf.d 283
-MD5 5239c77a2d0978ebdefdda450b1f13dd files/ptlink-opm.init.d 546
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.9.10 (GNU/Linux)
-
-iD8DBQFBplLWI1lqEGTUzyQRAgSLAKC3uTDlf38NG+Cr6xfUHdXzQQh9FgCdEBUH
-lWAGfaVNDyDJgc39e/I5QYg=
-=iZ0n
------END PGP SIGNATURE-----
+MD5 69ad8b25a6d3e01c30b8856f770eea64 ptlink-opm-1.1.1.ebuild 1746
+MD5 55de0a052638e8efbbcfbd39b00b699b files/digest-ptlink-opm-1.1.1 67

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/boa-constructor/boa-constructor-0.2.3_alpha.ebuild,v 1.10 2004/11/13 18:03:50 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/boa-constructor/boa-constructor-0.2.3_alpha.ebuild,v 1.1 2003/04/19 23:56:42 blauwers Exp $
 
 BOA=${P/_alpha/}
 S=${WORKDIR}/${BOA}
@@ -10,11 +10,10 @@ SRC_URI="mirror://sourceforge/boa-constructor/${BOA}.src.zip"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ~ppc"
-IUSE=""
+KEYWORDS="~x86 ~sparc"
 
 RDEPEND=">=dev-lang/python-2.0
-	=dev-python/wxpython-2.4*
+	>=dev-python/wxPython-2.3
 	dev-libs/expat"
 
 DEPEND="${RDEPEND}
@@ -45,8 +44,8 @@ src_install () {
 	doins *.cfg
 	insinto "${boadir}/Plug-ins"
 	doins Plug-ins/*
-
+	
 	dobin "${FILESDIR}/boa-constructor"
-
+	
 	dodoc Bugs.txt Changes.txt Credits.txt README.txt
 }

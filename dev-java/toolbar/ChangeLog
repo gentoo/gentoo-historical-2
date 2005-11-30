@@ -1,21 +1,6 @@
 # ChangeLog for dev-java/toolbar
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/toolbar/ChangeLog,v 1.6 2005/05/19 21:26:14 luckyduck Exp $
-
-  19 May 2005; Jan Brinkmann <luckyduck@gentoo.org> toolbar-0.4.ebuild:
-  stable on amd64 and x86
-
-  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> toolbar-0.4.ebuild:
-  introduced support for the source useflag, keyworded ~amd64
-
-  29 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> toolbar-0.4.ebuild:
-  Adding ant-core to depend
-
-  29 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> toolbar-0.4.ebuild:
-  Depend update, and QA fixes!
-
-  29 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> toolbar-0.4.ebuild:
-  Corrected license type
+# $Header: /var/cvsroot/gentoo-x86/dev-java/toolbar/ChangeLog,v 1.1 2005/03/29 05:19:01 compnerd Exp $
 
 *toolbar-0.4 (29 Mar 2005)
 

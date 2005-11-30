@@ -1,11 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-extprefs/gaim-extprefs-0.4-r1.ebuild,v 1.4 2005/07/19 20:06:09 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gaim-extprefs/gaim-extprefs-0.4-r1.ebuild,v 1.1 2005/06/04 07:42:46 tester Exp $
 
-inherit multilib eutils
+inherit eutils
 
-DESCRIPTION="A plugin that takes advantage of existing gaim functionality to
-provide preferences that are often desired but are not included in gaim."
+DESCRIPTION="Gaim Extended Preferences is a plugin that takes advantage of existing gaim functionality to provide preferences that are often desired but not are not considered worthy of inclusion in Gaim itself."
 
 HOMEPAGE="http://gaim-extprefs.sourceforge.net"
 
@@ -15,7 +14,7 @@ LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 
 IUSE=""
 
@@ -31,9 +30,6 @@ src_unpack() {
 
 	cd ${S}
 	epatch  ${FILESDIR}/${P}-64bitfix.patch
-
-	sed -i -e "s:\$(PREFIX)/lib/:\$(PREFIX)/$(get_libdir)/:" \
-		${S}/src/Makefile || die "sed failed"
 }
 
 src_compile() {

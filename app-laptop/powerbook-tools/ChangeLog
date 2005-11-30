@@ -1,10 +1,6 @@
-# ChangeLog for app-laptop/powerbook-tools
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/powerbook-tools/ChangeLog,v 1.5 2005/01/01 14:48:03 eradicator Exp $
-
-  13 Nov 2004; Michael Hanselmann <hansmi@gentoo.org>
-  powerbook-tools-0.1.ebuild:
-  Removed banners, see bug #70849.
+# ChangeLog for sys-apps/powerbook-tools
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/powerbook-tools/ChangeLog,v 1.1 2004/03/16 04:35:19 warpzero Exp $
 
   22 Jun 2003; <rac@gentoo.org> powerbook-tools-0.1.ebuild:
   emergency keyword fix

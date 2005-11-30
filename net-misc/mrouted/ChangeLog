@@ -1,19 +1,6 @@
 # ChangeLog for net-misc/mrouted
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mrouted/ChangeLog,v 1.6 2005/05/01 17:08:30 hansmi Exp $
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
-  mrouted-3.9_beta3.ebuild:
-  Stable on ppc.
-
-  06 Nov 2004; <pyrania@gentoo.org> mrouted-3.9_beta3.ebuild:
-  Marked stable on x86.
-
-  02 Oct 2004; Markus Nigbur <pyrania@gentoo.org> mrouted-3.9_beta3.ebuild:
-  yes, we do have debian in mirrors.
-
-  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> mrouted-3.9_beta3.ebuild:
-  Add inherit eutils
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mrouted/ChangeLog,v 1.1 2003/11/17 21:37:18 vapier Exp $
 
 *mrouted-3.9_beta3 (17 Nov 2003)
 

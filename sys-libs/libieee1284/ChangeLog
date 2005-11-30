@@ -1,41 +1,8 @@
 # ChangeLog for sys-libs/libieee1284
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libieee1284/ChangeLog,v 1.10 2005/01/27 03:51:45 josejx Exp $
-
-  27 Jan 2005; Joseph Jezak <josejx@gentoo.org> libieee1284-0.2.8.ebuild:
-  Marked ~ppc, as it seems to work now.
-
-*libieee1284-0.2.8 (16 Jan 2005)
-
-  16 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
-  +files/libieee1284-0.2.8-dbjh-v4.diff, +libieee1284-0.2.8.ebuild:
-  Bug #75119, #53971, a version bump finally.
-
-  18 May 2003; Seemant Kulleen <seemant@gentoo.org> libieee1284-0.2.1.ebuild:
-  wrapped the DEPENDS in the doc USE flag, closing bug #12704 by Aaron Stone
-  <aaron@engr.Paly.NET>
-
-*libieee1284-0.2.1 (29 Aug 2002)
-
-  29 Sep 2002; Martin Schlemmer <azarah@gentoo.org> :
-  Libtoolize to fix bug #5638.
-
-  29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> libieee1284-0.2.1.ebuild
-  files/digest-libieee1284-0.2.1 :
-
-  Version bump to bugfix release.
-
-*libieee1284-0.2.0 (04 Aug 2002)
-
-  04 Aug 2002; Seemant Kulleen <seemant@gentoo.org> libieee1284-0.2.0.ebuild :
-
-  Version bump, and dependency changed to be NOT version specific for
-  docbook-sgml-utils.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libieee1284/ChangeLog,v 1.1 2002/07/05 15:06:51 seemant Exp $
 
 *libieee1284-0.1.6 (03 Jul 2002)
-
-  20 Jul 2002; mark Guertin <gerk@gentoo.org> libieee1284-0.1.6.ebuild
-  Adjusted keywords (-ppc)
 
   03 Jul 2002; Seemant Kulleen <seemant@gentoo.org> libieee1284-0.1.6.ebuild
   ChangeLog files/digest-libieee1284-0.1.6 :

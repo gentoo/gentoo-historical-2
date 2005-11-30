@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnetlib/pnetlib-0.7.0.ebuild,v 1.3 2005/08/05 14:26:00 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/pnetlib/pnetlib-0.7.0.ebuild,v 1.1 2005/06/21 23:37:02 urilith Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.southern-storm.com.au/download/${P}.tar.gz"
 
 LICENSE="GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~x86 ~ppc ~ppc64 ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64"
 IUSE="truetype X"
 
 DEPEND="=dev-dotnet/pnet-${PV}*

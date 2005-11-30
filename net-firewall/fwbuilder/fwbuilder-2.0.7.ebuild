@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwbuilder/fwbuilder-2.0.7.ebuild,v 1.3 2005/07/11 10:57:31 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwbuilder/fwbuilder-2.0.7.ebuild,v 1.1 2005/05/12 23:36:37 carlo Exp $
 
 inherit eutils
 
@@ -19,7 +19,6 @@ DEPEND="~net-libs/libfwbuilder-${PV}
 
 src_compile() {
 	export QMAKESPEC="linux-g++"
-	export QMAKE="${QTDIR}/bin/qmake"
 
 	econf `use_enable nls` || die
 
@@ -35,8 +34,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo
+	echo ""
 	einfo "You need to emerge iproute2 on the machine that"
 	einfo "will run the firewall script."
-	echo
+	echo ""
 }

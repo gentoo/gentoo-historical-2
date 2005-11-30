@@ -1,47 +1,8 @@
 # ChangeLog for app-text/ghostview
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostview/ChangeLog,v 1.18 2005/04/18 16:55:26 hansmi Exp $
-
-  18 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  ghostview-1.5-r1.ebuild:
-  Stable on ppc.
-
-  25 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> ghostview-1.5-r1.ebuild,
-  ghostview-1.5.ebuild:
-  Provide virtual/pdfviewer and virtual/psviewer; bug #50423.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  ghostview-1.5-r1.ebuild, ghostview-1.5.ebuild:
-  virtual/glibc -> virtual/libc
-
-  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> ghostview-1.5-r1.ebuild :
-  Stable on AMD64.
-
-  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> ghostview-1.5-r1.ebuild:
-  Adding amd64 keyword. Closing #44902.
-
-  23 Feb 2004; Sven Blumenstein <bazik@gentoo.org> ghostview-1.5-r1.ebuild:
-  Stable on sparc.
-
-  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org> ghostview-1.5-r1.ebuild,
-  ghostview-1.5.ebuild:
-  changed app-text/ghostscript to virtual/ghostscript
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*ghostview-1.5-r1 (03 Nov 2002)
-
-  03 Nov 2002; Ryan Phillips <rphillips@gentoo.org> :
-
-  Added Bret Towe's sed statements for optimizing the package. Fixes #7038
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostview/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
 
 *ghostview-1.5 (1 Feb 2002)
-
-  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
-  correct header
-
-  2 Aug 2002; phoen][x <phoenix@gentoo.org> ghostview-1.5.ebuild :
-  Added LICENSE, KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

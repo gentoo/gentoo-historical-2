@@ -1,14 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Clean/HTML-Clean-0.8-r1.ebuild,v 1.15 2005/10/02 12:45:17 agriffis Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Clean/HTML-Clean-0.8-r1.ebuild,v 1.1 2002/10/30 07:20:36 seemant Exp $
 
 inherit perl-module
 
 DESCRIPTION="Cleans up HTML code for web browsers, not humans"
 HOMEPAGE="http://cpan.org/modules/by-module/HTML/${P}.readme"
-SRC_URI="mirror://cpan/authors/id/L/LI/LINDNER/${P}.tar.gz"
+SRC_URI="http://cpan.org/modules/by-module/HTML/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ~ppc64 s390 sparc x86"
-IUSE=""
+KEYWORDS="x86 sparc sparc64 ~alpha ~ppc"
+
+DEPEND="${DEPEND}"

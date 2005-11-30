@@ -1,72 +1,7 @@
 # ChangeLog for dev-perl/Apache-DBI
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-DBI/ChangeLog,v 1.23 2005/10/02 11:59:02 agriffis Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Apache-DBI/ChangeLog,v 1.1 2002/11/18 04:30:44 mkennedy Exp $
 
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Apache-DBI-0.94.ebuild:
-  Mark 0.94 stable on ia64
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Apache-DBI-0.94.ebuild:
-  add ~ia64
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.94.ebuild:
-  dev-perl/Test-Simple => perl-core/Test-Simple migration
-
-  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -Apache-DBI-0.89.ebuild, -Apache-DBI-0.91.ebuild, -Apache-DBI-0.92.ebuild:
-  Cleaning up. Nothing deps the older ones specifically, and they are gone
-  upstream
-
-  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  Apache-DBI-0.94.ebuild:
-  Stable on ppc.
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> Apache-DBI-0.94.ebuild:
-  Stable on amd64.
-
-  06 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> Apache-DBI-0.94.ebuild:
-  Stable on alpha.
-
-  27 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> Apache-DBI-0.94.ebuild:
-  Stable on sparc
-
-  27 Sep 2004; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.94.ebuild:
-  No bugs in 115 days, marking stable on x86
-
-  25 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> Apache-DBI-0.92.ebuild:
-  Marked stable on amd64.
-
-*Apache-DBI-0.94 (04 Jun 2004)
-
-  04 Jun 2004; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.94.ebuild:
-  New version on cpan
-
-  24 May 2004; Bryan Østergaard <kloeri@gentoo.org> Apache-DBI-0.92.ebuild:
-  Stable on alpha.
-
-  22 Mar 2004; Jason Wever <weeve@gentoo.org> Apache-DBI-0.92.ebuild:
-  Marked stable on sparc.
-
-  27 Feb 2004; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.92.ebuild:
-  Unmasking after 193 days
-
-  25 Jan 2004; <gustavoz@gentoo.org> Apache-DBI-0.91.ebuild:
-  stable on sprac
-
-*Apache-DBI-0.92 (18 Aug 2003)
-
-  18 Aug 2003; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.92.ebuild:
-  CPAN Version bump; minor bug fix
-
-*Apache-DBI-0.91 (05 Jun 2003)
-
-  05 Jun 2003; Michael Cummings <mcummings@gentoo.org> Apache-DBI-0.91.ebuild:
-  Version bump from CPAN
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *Apache-DBI-0.89 (15 Nov 2002)
 
   15 Nov 2002; Matthew Kennedy <mkennedy@gentoo.org>

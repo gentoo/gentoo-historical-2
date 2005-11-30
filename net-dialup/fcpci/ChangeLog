@@ -1,44 +1,7 @@
 # ChangeLog for net-dialup/fcpci
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/fcpci/ChangeLog,v 1.15 2005/03/09 12:59:42 genstef Exp $
-
-*fcpci-3.11.02-r2 (09 Mar 2005)
-
-  09 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
-  -fcpci-3.11.02-r1.ebuild, +fcpci-3.11.02-r2.ebuild:
-  Revision bump, removing 2.6 kernel support in favour of fritzcapi.
-
-  09 Mar 2005; Alin Nastac <mrness@gentoo.org> fcpci-3.11.02-r1.ebuild:
-  Replace kernel-mod inheritance with linux-mod.
-
-  06 Feb 2005; Alin Nastac <mrness@gentoo.org> -fcpci-03.11.02.ebuild:
-  Remove obsolete ebuild.
-
-  10 Jan 2005; Alin Nastac <mrness@gentoo.org> -files/tools.c.diff,
-  -fcpci-03.10.02.ebuild, fcpci-3.11.02-r1.ebuild:
-  Mark stable on x86 and remove old ebuild.
-
-  19 Nov 2004; Alin Nastac <mrness@gentoo.org> -fcpci-03.09.10.ebuild,
-  fcpci-03.11.02.ebuild:
-  Marked stable on x86. Removed old ebuild.
-
-*fcpci-3.11.02-r1 (13 Nov 2004)
-
-  13 Nov 2004; Alin Nastac <mrness@gentoo.org> +fcpci-3.11.02-r1.ebuild:
-  Add support for 2.6 kernels. See #55902
-
-*fcpci-03.11.02 (10 Apr 2004)
-
-  10 Apr 2004; Heinrich Wendel <lanius@gentoo.org> :
-  version bump, bug #45355, add kernel 2.6 warning bug #46769
-
-  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
-  metadata
-
-*fcpci-03.10.02 (25 Apr 2003)
-
-  25 Apr 2003; Martin Holzer <mholzer@gentoo.org> fcpci-03.10.02.ebuild:
-  Version bumped. Submitted by Georg Lippold <georg.lippold@gmx.de> in #12348.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# Maintainer Alexander Holler <holler@ahsoftware.de>
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/fcpci/ChangeLog,v 1.1 2002/08/09 13:02:49 verwilst Exp $
 
 *fcpci-03.09.10 (9 Aug 2002)
 

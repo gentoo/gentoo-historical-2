@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdc1394/libdc1394-2.0.0_pre4.ebuild,v 1.9 2005/10/19 18:38:02 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdc1394/libdc1394-2.0.0_pre4.ebuild,v 1.1 2005/08/29 12:33:46 seemant Exp $
 
 inherit eutils
 
@@ -11,11 +11,11 @@ DESCRIPTION="libdc1394 is a library that is intended to provide a high level pro
 HOMEPAGE="http://sourceforge.net/projects/libdc1394/"
 
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
+	http://dev.gentoo.org/~seemant/distfiles/${P}-svn-fixes.patch.bz2
 	mirror://gentoo/${P}-svn-fixes.patch.bz2"
-
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm ~hppa ia64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ppc sparc amd64 ~alpha ppc64 ~ia64"
 IUSE="X"
 
 DEPEND=">=sys-libs/libraw1394-0.9.0
@@ -27,7 +27,7 @@ src_unpack() {
 	epatch ${DISTDIR}/${P}-svn-fixes.patch.bz2
 
 	if ! use X; then
-		epatch ${FILESDIR}/nox11-2.patch
+		epatch ${FILESDIR}/nox11.patch
 	fi
 
 }
@@ -38,6 +38,6 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	einstall || die
 	dodoc NEWS README AUTHORS ChangeLog
 }

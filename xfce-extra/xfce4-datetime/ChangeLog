@@ -1,52 +1,6 @@
 # ChangeLog for xfce-extra/xfce4-datetime
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-datetime/ChangeLog,v 1.12 2005/10/18 15:18:41 agriffis Exp $
-
-  18 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  xfce4-datetime-0.3.1-r1.ebuild:
-  Mark 0.3.1-r1 stable on alpha
-
-*xfce4-datetime-0.3.1-r2 (06 Oct 2005)
-
-  06 Oct 2005; Brad Cowan <bcowan@gentoo.org>
-  +xfce4-datetime-0.3.1-r2.ebuild:
-  Xfce builds for new eclass and modular Xorg.
-
-  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  xfce4-datetime-0.3.1-r1.ebuild:
-  stable on ia64
-
-  22 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xfce4-datetime-0.3.1-r1.ebuild:
-  Stable on ppc.
-
-  06 Mar 2005; Heinrich Wendel <lanius@gentoo.org>
-  xfce4-datetime-0.3.1-r1.ebuild:
-  stable on amd64
-
-  08 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  xfce4-datetime-0.3.1-r1.ebuild:
-  Stable on sparc
-
-*xfce4-datetime-0.3.1-r1 (06 Jan 2005)
-
-  06 Jan 2005; Brad Cowan <bcowan@gentoo.org>
-  +xfce4-datetime-0.3.1-r1.ebuild:
-  Updated to use Xfce4 eclass.
-
-*xfce4-datetime-0.3.1 (19 Sep 2004)
-
-  19 Sep 2004; Brad Cowan <bcowan@gentoo.org> +xfce4-datetime-0.3.1.ebuild:
-  Version bump.
-
-  09 Mar 2004; Gustavo Zacarias <gustavoz@gentoo.org>
-  xfce4-datetime-0.3.0.ebuild:
-  stable on sparc
-
-*xfce4-datetime-0.3.0 (03 Mar 2004)
-
-  03 Mar 2004; Brad Cowan <bcowan@gentoo.org> xfce4-datetime-0.3.0.ebuild:
-  Version bump.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/xfce-extra/xfce4-datetime/ChangeLog,v 1.1 2003/11/11 06:28:29 bcowan Exp $
 
 *xfce4-datetime-0.2 (09 Nov 2003)
 

@@ -1,32 +1,7 @@
-# ChangeLog for net-analyzer/scanlogd
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanlogd/ChangeLog,v 1.14 2005/08/23 13:46:21 ka0ttic Exp $
+# ChangeLog for net-misc/scanlogd
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
 
-  23 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> scanlogd-2.2.5.ebuild:
-  Use -1 instead of /bin/false, bug #103421.
-
-  16 Jul 2005; Christian Parpart <trapni@gentoo.org> scanlogd-2.2.5.ebuild:
-  added to ~amd64
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> scanlogd-2.2.ebuild:
-  Stable on ppc.
-
-*scanlogd-2.2.5 (22 Mar 2005)
-
-  22 Mar 2005; Marcelo Goes <vanquirius@gentoo.org> +scanlogd-2.2.5.ebuild:
-  Version bump, use enewuser from eutils.
-
-  04 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> scanlogd-2.2.ebuild:
-  Added to ~ppc.
-
-  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml:
-  Added metadata
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> scanlogd-2.2.ebuild:
-  change virtual/glibc to virtual/libc, add IUSE
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *scanlogd-2.2 (27 Feb 2002)
 
   27  Feb 2002; F.Meyndert <m0rpheus@gentoo.org> scanlogd-2.2.ebuild

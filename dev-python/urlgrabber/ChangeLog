@@ -1,22 +1,6 @@
 # ChangeLog for dev-python/urlgrabber
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/urlgrabber/ChangeLog,v 1.5 2005/08/15 00:20:34 metalgod Exp $
-
-  15 Aug 2005; Luis Medinas <metalgod@gentoo.org> urlgrabber-2.9.6.ebuild:
-  Added ~amd64 keywords.
-
-*urlgrabber-2.9.6 (28 Jun 2005)
-
-  28 Jun 2005; Lukasz Strzygowski <lucass@gentoo.org>
-  +urlgrabber-2.9.6.ebuild:
-  Version bump. Closing bug #96420.
-
-  06 Mar 2005; Joseph Jezak <josejx@gentoo.org> urlgrabber-2.9.0.ebuild:
-  Marked ~ppc.
-
-  27 Feb 2005; Lukasz Strzygowski <lucass@gentoo.org> metadata.xml,
-  urlgrabber-2.9.0.ebuild:
-  Marked stable on x86. Added description to metadata.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/urlgrabber/ChangeLog,v 1.1 2004/12/09 23:15:07 kloeri Exp $
 
 *urlgrabber-2.9.0 (10 Dec 2004)
 

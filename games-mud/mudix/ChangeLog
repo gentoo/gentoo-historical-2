@@ -1,31 +1,10 @@
-# ChangeLog for games-mud/mudix
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/mudix/ChangeLog,v 1.9 2005/04/24 02:57:35 hansmi Exp $
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mudix-4.0.ebuild:
-  Stable on ppc.
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*mudix-4.3 (21 Dec 2004)
-
-  21 Dec 2004; Dylan Carlson <absinthe@gentoo.org> mudix-4.0.ebuild,
-  +mudix-4.3.ebuild:
-  Version bump. Fixed HOMEPAGE and SRC_URI. Added keywords ~amd64.
-
-  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> mudix-4.0.ebuild:
-  Added ~ppc.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mudix-4.0.ebuild:
-  virtual/glibc -> virtual/libc
-
-  24 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> mudix-4.0.ebuild:
-  header fix; tidy
+# ChangeLog for app-games/mudix
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-mud/mudix/ChangeLog,v 1.1 2003/09/10 19:03:12 vapier Exp $
 
 *mudix-4.0 (27 Feb 2002)
 
-  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> mudix-4.0.ebuild :
+  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> mudix-4.0.ebuild :
   Added LICENSE, KEYWORDS, SLOT.
 
   27 Feb 2002; Bruce A. Locke <blocke@shivan.org> mudix-4.0.ebuild :

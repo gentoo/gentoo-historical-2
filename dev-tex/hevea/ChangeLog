@@ -1,40 +1,6 @@
 # ChangeLog for dev-tex/hevea
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/hevea/ChangeLog,v 1.10 2005/08/05 16:17:35 mkennedy Exp $
-
-  05 Aug 2005; <mkennedy@gentoo.org> hevea-1.08.ebuild:
-  Keywording ~sparc.
-
-*hevea-1.08 (31 Jul 2005)
-
-  31 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> +hevea-1.08.ebuild:
-  Version bumped; bug #98872.
-
-  14 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> hevea-1.07-r1.ebuild:
-  Add ~amd64 to keywords.
-
-*hevea-1.07-r1 (08 Aug 2004)
-
-  08 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> -hevea-1.06.ebuild,
-  +hevea-1.07-r1.ebuild, -hevea-1.07.ebuild:
-  Move 1.07 to stable, remove old ebuilds and propagate fix for bug #52766.
-
-  05 Jun 2004; Matthieu Sozeau <mattam@gentoo.org> hevea-1.06.ebuild,
-  files/99hevea:
-  Move 1.06 to stable and fix bug #52766.
-
-  17 Feb 2004; Matthieu Sozeau <mattam@gentoo.org> hevea-1.07.ebuild:
-  Put back ~x86 keyword as ocaml-3.07 is unstable.
-
-  09 Feb 2004; Matthieu Sozeau <mattam@gentoo.org> hevea-1.07.ebuild,
-  metadata.xml:
-  Mark stable on x86 and testing on ppc. Add myself as maintainer in 
-  metadata.xml.
-
-*hevea-1.07 (22 Oct 2003)
-
-  22 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> hevea-1.07.ebuild:
-  Added new version
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/hevea/ChangeLog,v 1.1 2003/10/19 21:27:46 usata Exp $
 
 *hevea-1.06 (20 Oct 2003)
 

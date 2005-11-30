@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/e2fsprogs-1.37-r1.ebuild,v 1.16 2005/08/28 06:03:14 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/e2fsprogs/e2fsprogs-1.37-r1.ebuild,v 1.1 2005/03/24 03:59:58 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -10,17 +10,20 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
-IUSE="nls static"
+KEYWORDS="-*"
+#~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="nls static diet uclibc"
 
-RDEPEND=">=sys-libs/com_err-${PV}
+RDEPEND="diet? ( dev-libs/dietlibc )
+	>=sys-libs/com_err-${PV}
 	>=sys-libs/ss-${PV}"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	sys-apps/texinfo"
 
 src_unpack() {
-	unpack ${A}; cd "${S}"
+	unpack ${A}
+	cd "${S}"
 	# Fix a cosmetic error in mk_cmds's help output.
 	epatch "${FILESDIR}"/e2fsprogs-1.32-mk_cmds-cosmetic.patch
 	# Patch to make the configure and sed scripts more friendly to, 
@@ -29,8 +32,6 @@ src_unpack() {
 	chmod u+w po/*.po # Userpriv fix #27348
 	# Clean up makefile to suck less
 	epatch "${FILESDIR}"/e2fsprogs-1.36-makefile.patch
-	# Fix tests to work #88570
-	epatch "${FILESDIR}"/e2fsprogs-1.37-e2p-test.patch
 
 	# kernel headers use the same defines as e2fsprogs and can cause issues #48829
 	sed -i \
@@ -46,11 +47,11 @@ src_unpack() {
 		-e '/^LIB_SUBDIRS/s:lib/et::' \
 		-e '/^LIB_SUBDIRS/s:lib/ss::' \
 		Makefile.in || die "remove subdirs"
-	ln -s "${ROOT}"/usr/$(get_libdir)/libcom_err.a lib/libcom_err.a
-	ln -s "${ROOT}"/usr/$(get_libdir)/libcom_err.so lib/libcom_err.so
+	ln -s "${ROOT}"/usr/lib/libcom_err.a lib/libcom_err.a
+	ln -s "${ROOT}"/usr/lib/libcom_err.so lib/libcom_err.so
 	ln -s /usr/bin/mk_cmds lib/ss/mk_cmds
 	ln -s "${ROOT}"/usr/include/ss/ss_err.h lib/ss/
-	ln -s "${ROOT}"/usr/$(get_libdir)/libss.so lib/libss.so
+	ln -s "${ROOT}"/usr/lib/libss.so lib/libss.so
 
 	# Keep the package from doing silly things
 	export LDCONFIG=/bin/true
@@ -59,6 +60,8 @@ src_unpack() {
 }
 
 src_compile() {
+	local myconf
+	use diet && myconf="${myconf} --with-diet-libc"
 	econf \
 		--bindir=/bin \
 		--sbindir=/sbin \
@@ -67,8 +70,9 @@ src_compile() {
 		$(use_enable !static dynamic-e2fsck) \
 		--without-included-gettext \
 		$(use_enable nls) \
+		${myconf} \
 		|| die
-	if [[ ${CTARGET} != *-uclibc ]] && grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
+	if ! use uclibc && grep -qs 'USE_INCLUDED_LIBINTL.*yes' config.{log,status} ; then
 		eerror "INTL sanity check failed, aborting build."
 		eerror "Please post your ${S}/config.log file as an"
 		eerror "attachment to http://bugs.gentoo.org/show_bug.cgi?id=81096"

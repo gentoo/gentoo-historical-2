@@ -1,23 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Parser/XML-Parser-2.34.ebuild,v 1.15 2005/08/14 21:05:31 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Parser/XML-Parser-2.34.ebuild,v 1.1 2003/12/03 07:42:50 max Exp $
 
-inherit perl-module multilib
+inherit perl-module
 
-DESCRIPTION="A Perl extension interface to James Clark's XML parser, expat"
-SRC_URI="mirror://cpan/authors/id/M/MS/MSERGEANT/${P}.tar.gz"
-HOMEPAGE="http://search.cpan.org/~msergeant/${P}/"
+S=${WORKDIR}/${P}
+DESCRIPTION="A  Perl extension interface to James Clark's XML parser, expat."
+SRC_URI="http://cpan.valueclick.com/modules/by-category/11_String_Lang_Text_Proc/XML/${P}.tar.gz"
+HOMEPAGE="http://cpan.valueclick.com/modules/by-category/11_String_Lang_Text_Proc/XML/${P}.readme"
 
-LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 s390 sparc x86"
-IUSE=""
+LICENSE="Artistic"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~hppa"
 
-DEPEND=">=dev-libs/expat-1.95.1-r1"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i -e "s:^\$expat_libpath.*:\$expat_libpath = '/usr/$(get_libdir)';:" \
-		Makefile.PL || die "sed failed"
-}
+DEPEND="${DEPEND}
+	>=dev-libs/expat-1.95.1-r1"

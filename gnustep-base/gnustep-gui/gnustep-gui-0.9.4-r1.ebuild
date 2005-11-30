@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-gui/gnustep-gui-0.9.4-r1.ebuild,v 1.3 2005/07/16 15:49:54 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-gui/gnustep-gui-0.9.4-r1.ebuild,v 1.1 2005/03/17 20:53:20 fafhrd Exp $
 
 inherit gnustep
 
@@ -12,16 +12,16 @@ KEYWORDS="~ppc ~x86 ~amd64 ~sparc ~alpha"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
-IUSE="cups gif gsnd jpeg png"
+IUSE="${IUSE} jpeg gif png gsnd doc cups"
 DEPEND="${GNUSTEP_BASE_DEPEND}
 	~gnustep-base/gnustep-base-1.10.1
 	virtual/x11
-	>=media-libs/tiff-3
-	jpeg? ( >=media-libs/jpeg-6b )
-	gif? ( >=media-libs/libungif-4.1 )
-	png? ( >=media-libs/libpng-1.2 )
-	gsnd? ( >=media-libs/audiofile-0.2 )
-	cups? ( >=net-print/cups-1.1 )
+	>=media-libs/tiff-3*
+	jpeg? ( >=media-libs/jpeg-6b* )
+	gif? ( >=media-libs/libungif-4.1* )
+	png? ( >=media-libs/libpng-1.2* )
+	gsnd? ( >=media-libs/audiofile-0.2* )
+	cups? ( >=net-print/cups-1.1* )
 	app-text/aspell"
 RDEPEND="${DEPEND}
 	${DOC_RDEPEND}"

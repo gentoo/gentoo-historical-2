@@ -1,23 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/profxp/profxp-3_pre2.ebuild,v 1.9 2005/11/28 13:01:14 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/profxp/profxp-3_pre2.ebuild,v 1.1 2003/12/08 08:11:18 vapier Exp $
 
-inherit perl-app
+inherit perl-module
 
 DESCRIPTION="FXP (server-to-server FTP) commandline client written in Perl"
 HOMEPAGE="http://duncanthrax.net/profxp/"
 SRC_URI="http://duncanthrax.net/profxp/profxp-v${PV/_/-}-src.tar.gz
 	http://search.cpan.org/src/CLINTDW/SOCKS-0.03/lib/Net/SOCKS.pm"
 
-LICENSE="BSD"
+LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND="dev-lang/perl
-	perl-core/Time-HiRes
-	dev-perl/TermReadKey
-	dev-perl/Term-ReadLine-Perl"
+	dev-perl/Time-HiRes
+	dev-perl/TermReadKey"
 
 S=${WORKDIR}/${PN}
 

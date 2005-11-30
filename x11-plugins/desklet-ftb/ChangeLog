@@ -1,23 +1,6 @@
 # ChangeLog for x11-plugins/desklet-ftb
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-ftb/ChangeLog,v 1.5 2005/11/27 05:12:23 nixphoeni Exp $
-
-*desklet-ftb-0.3.2 (27 Nov 2005)
-
-  27 Nov 2005; Joe Sapp <nixphoeni@gentoo.org> +desklet-ftb-0.3.2.ebuild:
-  Version bump
-
-  21 Sep 2005; Homer Parker <hparker@gentoo.org> desklet-ftb-0.3.1.ebuild:
-  Marked ~amd64.
-
-*desklet-ftb-0.3.1 (30 Aug 2005)
-
-  30 Aug 2005; Joe Sapp <nixphoeni@gentoo.org> +desklet-ftb-0.3.1.ebuild:
-  Version bump, added a hack to adjust the downloaded filename to use a comma
-  for the build version (1)
-
-  31 Jul 2005; David Holm <dholm@gentoo.org> desklet-ftb-0.3.ebuild:
-  Added to ~ppc.
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/desklet-ftb/ChangeLog,v 1.1 2005/07/30 18:32:18 nixphoeni Exp $
 
 *desklet-ftb-0.3 (30 Jul 2005)
 

@@ -1,20 +1,20 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/pike/pike-7.6.6.ebuild,v 1.8 2004/12/29 02:37:04 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/pike/pike-7.6.6.ebuild,v 1.1 2004/06/20 17:50:22 scandium Exp $
 # Contributions by Emil Skoldberg, Fredrik Mellstrom (see ChangeLog)
 
 inherit fixheadtails
 
-IUSE="crypt debug doc fftw gdbm gif gtk java jpeg mysql oci8 odbc opengl pdflib postgres scanner sdl tiff truetype zlib"
+IUSE="debug doc fftw gdbm gif gtk java jpeg mysql oci8 odbc opengl pdflib postgres scanner sdl tiff truetype zlib"
 
 S="${WORKDIR}/Pike-v${PV}"
 HOMEPAGE="http://pike.ida.liu.se/"
 DESCRIPTION="Pike programming language and runtime"
-SRC_URI="http://pike.ida.liu.se/pub/pike/all/${PV}/Pike-v${PV}.tar.gz"
+SRC_URI="ftp://pike.ida.liu.se/pub/pike/all/${PV}/Pike-v${PV}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1 MPL-1.1"
 SLOT="0"
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="zlib?	( sys-libs/zlib )
 	pdflib? ( media-libs/pdflib )
@@ -31,9 +31,11 @@ DEPEND="zlib?	( sys-libs/zlib )
 		virtual/glut )
 	sdl?	( media-libs/libsdl )
 	gtk?	( =x11-libs/gtk+-1.2* )
-	fftw?	( sci-libs/fftw )
-	crypt?	( dev-libs/nettle )
-	dev-libs/gmp"
+	fftw?	( dev-libs/fftw )
+	dev-libs/gmp
+	sys-devel/gcc
+	sys-devel/make
+	sys-apps/sed"
 
 src_unpack() {
 	unpack ${A}
@@ -66,9 +68,9 @@ src_compile() {
 	use opengl	|| myconf="${myconf} --without-GL --without-GLUT"
 	use gtk		|| myconf="${myconf} --without-GTK"
 	use fftw	|| myconf="${myconf} --without-fftw"
-	use crypt	|| myconf="${myconf} --without-nettle"
 
-	emake CONFIGUREARGS="${myconf} --prefix=/usr --disable-make_conf" || die
+	# Using --without-nettle until the Nettle library is available in portage
+	emake CONFIGUREARGS="${myconf} --prefix=/usr --disable-make_conf --without-nettle" || die
 
 	if use doc; then
 		PATH="${S}/bin:${PATH}" make doc || die
@@ -81,9 +83,12 @@ src_install() {
 
 	if use doc; then
 		make INSTALLARGS="--traditional" buildroot="${D}" install || die
-		einfo "Installing 60MB of docs, this could take some time ..."
-		dohtml -r ${S}/refdoc/traditional_manual ${S}/refdoc/modref
 	else
 		make INSTALLARGS="--traditional" buildroot="${D}" install_nodoc || die
+	fi
+
+	if use doc; then
+		einfo "Installing 60MB of docs, this could take some time ..."
+		dohtml -r ${S}/refdoc/traditional_manual ${S}/refdoc/modref
 	fi
 }

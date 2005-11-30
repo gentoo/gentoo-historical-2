@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/files/5.0.28/tomcat.init,v 1.6 2005/11/14 20:17:58 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/files/5.0.28/tomcat.init,v 1.1 2004/10/09 09:59:14 axxo Exp $
 
 depend() {
 	use dns logger mysql postgresql net
@@ -9,18 +9,14 @@ depend() {
 
 start()	{
 	ebegin "Starting Tomcat"
-	cd ${CATALINA_BASE}/webapps
-	start-stop-daemon --start --quiet --chuid tomcat:tomcat \
-	          --make-pidfile --pidfile /var/run/tomcat.pid \
-			  --exec ${CATALINA_HOME}/bin/catalina.sh \
-			  --background -- ${TOMCAT_START}
+	start-stop-daemon --start --quiet --chuid tomcat:tomcat --exec ${CATALINA_HOME}/bin/catalina.sh -- ${TOMCAT_START}
+	sleep 5
 	eend $?
 }
 
 stop()	{
 	ebegin "Stopping Tomcat"
-	start-stop-daemon --start --quiet --chuid tomcat:tomcat \
-			  --exec ${CATALINA_HOME}/bin/catalina.sh \
-		 	  --background -- ${TOMCAT_STOP}
+	start-stop-daemon --start --quiet --chuid tomcat:tomcat --exec ${CATALINA_HOME}/bin/catalina.sh -- ${TOMCAT_STOP}
+	sleep 5
 	eend $?
 }

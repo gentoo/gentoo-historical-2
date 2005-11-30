@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/convertlit/convertlit-1.8.ebuild,v 1.8 2005/10/27 00:32:24 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/convertlit/convertlit-1.8.ebuild,v 1.1 2004/09/02 04:26:40 usata Exp $
 
 MY_P="clit${PV//./}"
 
@@ -10,22 +10,21 @@ SRC_URI="http://www.convertlit.com/${MY_P}src.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc-macos x86"
-IUSE=""
 
+KEYWORDS="~x86"
 DEPEND="dev-libs/libtommath
-	>=sys-apps/sed-4
-	app-arch/unzip"
-RDEPEND="!app-text/open_c-lit"	# link libtommath statically
+	>=sys-apps/sed-4"
+RDEPEND=""	# link libtommath statically
+IUSE=""
 
 S=${WORKDIR}
 
 src_compile() {
-	cd "${S}"/lib
+	cd ${S}/lib
 	sed -i -e "/^CFLAGS/s/-O3 -Wall/${CFLAGS}/" Makefile \
 		|| die "sed lib/Makefile failed."
 	emake || die "make lib failed"
-	cd "${S}"/${MY_P}
+	cd ${S}/${MY_P}
 	sed -i -e "/^CFLAGS/s:-Wall -O2:${CFLAGS}:" \
 		-e "s:../libtommath-0.30:/usr/lib:g" Makefile \
 		|| die "sed ${MY_P}/Makefile failed."
@@ -33,6 +32,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${MY_P}/clit || die
-	dodoc README
+	dobin ${S}/${MY_P}/clit
+	dodoc ${S}/README
 }

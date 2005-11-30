@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/hermes/hermes-1.3.3.ebuild,v 1.6 2005/04/21 19:19:48 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/hermes/hermes-1.3.3.ebuild,v 1.1 2004/11/24 09:03:59 eradicator Exp $
 
 IUSE=""
 
@@ -15,7 +15,7 @@ SRC_URI="http://distro.ibiblio.org/pub/linux/distributions/sorcerer/sources/Herm
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=">=sys-devel/autoconf-2.50
 	>=sys-devel/automake-1.8"
@@ -31,9 +31,8 @@ src_unpack() {
 	export WANT_AUTOMAKE=1.8
 	export WANT_AUTOCONF=2.5
 
-	libtoolize --force --copy || die
 	aclocal || die "aclocal failed"
-	automake -a -f -c || die "automake failed"
+	automake -a || die "automake failed"
 	autoconf || die "autoconf failed"
 
 	gnuconfig_update

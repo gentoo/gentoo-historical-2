@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmemload/wmmemload-0.1.6.ebuild,v 1.7 2005/09/17 10:10:30 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmmemload/wmmemload-0.1.6.ebuild,v 1.1 2004/07/03 02:36:40 s4t4n Exp $
 
 IUSE=""
 DESCRIPTION="dockapp that displays memory and swap space usage."
@@ -8,7 +8,7 @@ SRC_URI="http://www.markstaggs.net/wmmemload/${P}.tar.gz"
 HOMEPAGE="http://www.markstaggs.net/"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
 LICENSE="GPL-2"
 
 DEPEND="virtual/x11"

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver-app/xscreensaver-app-2.3.ebuild,v 1.7 2005/11/03 20:38:41 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver-app/xscreensaver-app-2.3.ebuild,v 1.1 2003/12/16 04:21:47 port001 Exp $
 
 IUSE=""
 
@@ -11,11 +11,11 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 DESCRIPTION="XScreenSaver dockapp for the Window Maker window manager."
 SRC_URI=" http://www.asleep.net/download/${MY_PN}-${PV}.tar.gz"
-HOMEPAGE="http://xscreensaverapp.sourceforge.net/"
+HOMEPAGE="http://www.asleep.net/hacking/XScreenSaver.App/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 x86"
+KEYWORDS="~x86"
 
 DEPEND="virtual/x11
 	x11-libs/libdockapp"
@@ -29,5 +29,5 @@ src_compile() {
 
 src_install () {
 	einstall || die "Install failed"
-	dodoc README NEWS ChangeLog TODO AUTHORS
+	dodoc README INSTALL COPYING NEWS ChangeLog TODO AUTHORS
 }

@@ -1,106 +1,42 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/use.mask,v 1.47 2005/10/24 21:49:57 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/use.mask,v 1.1 2004/03/19 21:58:52 seemant Exp $
 
 # This file contains a list of useflags that cannot be used on sparc.
 
 3dfx
+3dnow
 acpi
 afs
+alsa
+altivec
 apm
-cle266
-cmucl
 directfb
-djbfft
-dvb
-emboss
-fdftk
-glitz
-hal
-i8x0
 icc
 icc-pgo
-ifc
 informix
+firebird
 lirc
-lm_sensors
-mmxext
-mod
-mpm-peruser
+mmx
 oci8
-pbs
-pcmcia
 pic
-real
+sse
 svga
 tcc
 trusted
-uml
 voodoo3
 wavelan
-wifi
-xvmc
+
 
 # And arch keyword flags that don't work
-alpha
-amd64
-arm
-hppa
-ia64
-mips
-ppc
-ppc64
-ppc-macos
-s390
-sparc
+
 x86
-x86-obsd
-x86-fbsd
+ppc
+alpha
+mips
+hppa
+arm
 
-# Asterisk use flag masking
-bri
-florz
-resperl
-zaptel
-
-# Mono doesn't work on sparc
-# eradicator@gentoo.org
-mono
-
-# pyste has untested/unkeyworded deps on sparc
-pyste
-
-# They're borked <gustavoz> 
-dar32
-dar64
-
-# Seti@home is gone <gustavoz>
-seti
-
-# see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
-# Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
-# all of these are binary-only, and not presently available on this
-# architecture.
-adabas
-birdstep
-cpdflib
-db2
-dbmaker
-empress
-empress-bcs
-esoob
-filepro
-frontbase
-hyperwave-api
-ingres
-libedit
-oracle7
-pfpro
-solid
-sybase
-sybase-ct
-
-# Unmask ultra1
--ultra1
-
-pike
+# Chris PeBenito <pebenito@gentoo.org>
+# must use a SELinux profile
+selinux

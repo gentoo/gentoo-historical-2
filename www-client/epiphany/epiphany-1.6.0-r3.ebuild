@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-1.6.0-r3.ebuild,v 1.9 2005/06/23 09:47:19 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/epiphany-1.6.0-r3.ebuild,v 1.1 2005/03/28 02:54:09 obz Exp $
 
 inherit eutils gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnome.org/projects/epiphany/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ia64 ppc ~ppc64 sparc x86 hppa"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~ia64"
 IUSE="doc"
 
 RDEPEND=">=dev-libs/glib-2.6
@@ -22,8 +22,7 @@ RDEPEND=">=dev-libs/glib-2.6
 	>=gnome-base/libglade-2.3.1
 	>=gnome-base/libbonoboui-2.2
 	>=gnome-base/orbit-2
-	>=gnome-base/gnome-vfs-2.9.2
-	>=gnome-base/gnome-desktop-2.9.91
+	>=gnome-base/gnome-vfs-2.3.1
 	|| ( >=www-client/mozilla-1.7.3
 		 >=www-client/mozilla-firefox-1.0.2-r1 )
 	>=x11-themes/gnome-icon-theme-2.9.3
@@ -57,3 +56,4 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-view_source.patch
 
 }
+

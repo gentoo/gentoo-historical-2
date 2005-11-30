@@ -1,14 +1,2 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 8bbbd041b4b265f43972dde1ed1e388e ChangeLog 652
-MD5 dffd46174e78b327c834fc3e4b1cf848 metadata.xml 160
-MD5 1777c36eedc23bcdebefd34f949e4c60 tclperl-3.1.ebuild 959
-MD5 595db246634277484e07016371570132 files/digest-tclperl-3.1 62
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQFBjPA2I7fK2cqeyXkRAvhZAKDxVHpnB412lWnU0DZgMC8f+IkILACfVOhH
-L+0EMRCmKUl6pXBndbH7OG0=
-=ywXJ
------END PGP SIGNATURE-----
+MD5 4b6570940639e2db54fa421e2ffe4052 tclperl-2.5.ebuild 638
+MD5 24a01236fd1234ca39e6b3f4723606ee files/digest-tclperl-2.5 61

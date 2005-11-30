@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gwget/gwget-0.94.ebuild,v 1.3 2005/07/15 21:26:42 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gwget/gwget-0.94.ebuild,v 1.1 2005/04/23 11:49:11 allanonjl Exp $
 
 inherit eutils gnome2 libtool
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://gnome.org/projects/gwget/"
 SRC_URI="http://ftp.gnome.org/pub/GNOME/sources/${PN}/${PV}/${P}.tar.bz2"
 LICENSE="GPL-2"
 
-IUSE="epiphany"
+IUSE="doc epiphany"
 SLOT="0"
 KEYWORDS="~x86 ~ppc ~amd64"
 
@@ -36,7 +36,7 @@ USE_DESTDIR="1"
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	libtoolize --copy --force
+	elibtoolize
 	# Fix the Epiphany extension installation directory:
 	epatch ${FILESDIR}/gwget-0.94-epiphany-path-fix.patch
 }

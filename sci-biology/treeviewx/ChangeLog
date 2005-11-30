@@ -1,49 +1,6 @@
-# ChangeLog for sci-biology/treeviewx
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/treeviewx/ChangeLog,v 1.12 2005/11/19 16:28:48 ribosome Exp $
-
-  19 Nov 2005; Olivier Fisette <ribosome@gentoo.org> treeviewx-0.5.1.ebuild:
-  Added check for wxGTK built with X (fixes bug #112927).
-
-*treeviewx-0.5.1 (01 Oct 2005)
-
-  01 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
-  +files/treeviewx-wxt.patch, +treeviewx-0.5.1.ebuild:
-  New version, along with a patch to compile against wxGTK-2.6. The new
-  version has a configure check for wxGTK-svg (fixes bug #90181).
-
-  13 May 2005; Olivier Fisette <ribosome@gentoo.org>
-  -treeviewx-0.4-r1.ebuild, treeviewx-0.5.ebuild:
-  Removed obsolete version. Added 0.5 to x86.
-
-*treeviewx-0.5 (30 Mar 2005)
-
-  30 Mar 2005; Olivier Fisette <ribosome@gentoo.org> +treeviewx-0.5.ebuild:
-  New version.
-
-  01 Mar 2005; Olivier Fisette <ribosome@gentoo.org> -treeviewx-0.4.ebuild:
-  Keep only the patched version (solves bug #82455).
-
-*treeviewx-0.4-r1 (27 Feb 2005)
-
-  27 Feb 2005; Olivier Fisette <ribosome@gentoo.org>
-  +files/treeviewx-gcc-3.4.patch, +treeviewx-0.4-r1.ebuild:
-  GCC 3.4 fixes. This might fix bug #82455.
-
-  22 Feb 2005; Olivier Fisette <ribosome@gentoo.org>
-  -files/nodeiterator.h.patch, treeviewx-0.4.ebuild:
-  Removed useless patch.
-
-  20 Feb 2005; Olivier Fisette <ribosome@gentoo.org>
-  files/nodeiterator.h.patch:
-  Fixed dumb patch mistake.
-
-  19 Feb 2005; Olivier Fisette <ribosome@gentoo.org>
-  +files/nodeiterator.h.patch, treeviewx-0.4.ebuild:
-  Added a patch which might solve bug #82455.
-
-  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org> treeviewx-0.4.ebuild:
-  Ebuild cleanup.
+# ChangeLog for app-sci/treeviewx
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/treeviewx/ChangeLog,v 1.1 2004/12/23 18:11:05 ribosome Exp $
 
 *treeviewx-0.4 (23 Dec 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/wanpipe/wanpipe-2.3.2_p4.ebuild,v 1.3 2005/09/16 15:36:30 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/wanpipe/wanpipe-2.3.2_p4.ebuild,v 1.1 2005/08/31 23:57:04 stkn Exp $
 
 inherit eutils toolchain-funcs linux-mod
 
@@ -8,9 +8,11 @@ DESCRIPTION="Driver for Sangoma WAN cards"
 HOMEPAGE="http://www.sangoma.com/"
 SRC_URI="ftp://ftp.sangoma.com/linux/current_wanpipe/${P//_p/-}.tgz"
 
-LICENSE="WANPIPE"
+LICENSE=""
 SLOT="0"
 KEYWORDS="~x86"
+
+LICENSE="WANPIPE"
 
 IUSE="adsl"
 
@@ -35,8 +37,6 @@ S_BUILD=${WORKDIR}/build-tmp
 #			(zaptel-1.2.0_beta1)
 
 pkg_setup() {
-	linux-mod_pkg_setup
-
 	local n
 
 	ewarn "****************************** WARNING! ******************************"

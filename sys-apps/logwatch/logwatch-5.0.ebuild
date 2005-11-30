@@ -1,22 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/logwatch/logwatch-5.0.ebuild,v 1.9 2005/01/11 14:01:01 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/logwatch/logwatch-5.0.ebuild,v 1.1 2003/11/17 07:50:56 jhhudso Exp $
 
 DESCRIPTION="Analyzes and Reports on system logs"
-HOMEPAGE="http://www.logwatch.org/"
+HOMEPAGE="http://www.logwatch.org"
 SRC_URI="ftp://ftp.kaybee.org/pub/linux/${P}.tar.gz"
-
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~x86 ppc ~amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
-
-RDEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/cron
 	virtual/mta
 	dev-lang/perl
-	virtual/mailx"
-DEPEND=""
+	net-mail/mailx"
+RDEPEND=""
 
 src_install() {
 	dodir /etc/log.d/lib

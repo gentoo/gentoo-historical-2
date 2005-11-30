@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk-perl/gtk-perl-0.7008-r9.ebuild,v 1.12 2005/03/06 15:36:57 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk-perl/gtk-perl-0.7008-r9.ebuild,v 1.1 2002/11/29 18:35:34 mcummings Exp $
 
-inherit perl-module eutils
+inherit perl-module
 
 MY_P=Gtk-Perl-${PV}
 S=${WORKDIR}/${MY_P}
@@ -12,11 +12,10 @@ HOMEPAGE="http://www.perl.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ppc sparc alpha hppa"
-IUSE="gnome"
+KEYWORDS="x86 ppc sparc sparc64 alpha"
 
 DEPEND="${DEPEND}
-	media-libs/gdk-pixbuf
+	media-libs/gdk-pixbuf 
 	=x11-libs/gtk+-1.2*
 	dev-perl/XML-Writer
 	dev-perl/XML-Parser
@@ -29,20 +28,18 @@ use gnome || myconf="${myconf} --without-gnome --without-gnomeprint --without-ap
 src_unpack() {
 
 	unpack ${A}
-	cd ${S}
-
 	# Fix gdk-pixbuf-0.20.0 not detected, bug #10232.
-	epatch ${FILESDIR}/${P}-gdkpixbuf-detect-fix.patch
-
+	cd ${S}; patch -p1 < ${FILESDIR}/${P}-gdkpixbuf-detect-fix.patch || die 
+	cd ${S}
 	cp Makefile.PL Makefile.PL.bak
 	perl -pi -e '/CCMD/ && s|/m;|/mg;|' */Makefile.PL
-
-	perl Makefile.PL ${myconf} \
-		PREFIX=${D}/usr
+	cd ${S}
+        perl Makefile.PL ${myconf} \                                            
+        PREFIX=${D}/usr
 }
 
 
 src_compile() {
 
-	make ${mymake} || die "compilation failed"
+        make ${mymake} || die "compilation failed"
 }

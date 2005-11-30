@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3info/mp3info-0.8.4-r2.ebuild,v 1.3 2005/09/10 15:53:21 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mp3info/mp3info-0.8.4-r2.ebuild,v 1.1 2005/08/13 13:06:12 chainsaw Exp $
 
 inherit eutils
 
@@ -14,13 +14,13 @@ DEPEND="gtk? ( =x11-libs/gtk+-1.2* )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~ppc64"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-	sed -i -e "s:-O2:${CFLAGS}:" Makefile
+	sed -i "s:-O2:${CFLAGS}:" Makefile
 	epatch ${FILESDIR}/gcc.patch
 	epatch ${FILESDIR}/cast.patch
 	epatch ${FILESDIR}/sanity-checks.patch
@@ -37,6 +37,6 @@ src_install() {
 	dobin mp3info
 	use gtk && dobin gmp3info
 
-	dodoc ChangeLog README
+	dodoc ChangeLog INSTALL LICENSE README
 	doman mp3info.1
 }

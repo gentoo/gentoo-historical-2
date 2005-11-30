@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-DNS/Net-DNS-0.49.ebuild,v 1.14 2005/10/10 07:45:41 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-DNS/Net-DNS-0.49.ebuild,v 1.1 2005/04/29 00:33:10 mcummings Exp $
 
 inherit perl-module
 
@@ -10,15 +10,15 @@ HOMEPAGE="http://search.cpan.org/~crein/${P}/"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~ia64 ~hppa ~ppc64"
 IUSE=""
 
-#SRC_TEST="do"
+SRC_TEST="do"
 
 
-DEPEND="perl-core/Digest-MD5
+DEPEND="dev-perl/Digest-MD5
 		dev-perl/Digest-HMAC
-		perl-core/MIME-Base64 || ( perl-core/Test-Simple >=dev-lang/perl-5.8.0-r12 )"
+		dev-perl/MIME-Base64 || ( dev-perl/Test-Simple >=dev-lang/perl-5.8.0-r12 )"
 mydoc="TODO"
 
 src_compile() {

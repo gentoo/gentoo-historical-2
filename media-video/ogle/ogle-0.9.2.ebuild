@@ -1,33 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ogle/ogle-0.9.2.ebuild,v 1.15 2005/10/11 14:18:01 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ogle/ogle-0.9.2.ebuild,v 1.1 2003/11/09 03:13:45 seemant Exp $
 
-inherit eutils libtool
+inherit libtool
 
 DESCRIPTION="Full featured DVD player that supports DVD menus."
 HOMEPAGE="http://www.dtek.chalmers.se/groups/dvd/"
 SRC_URI="http://www.dtek.chalmers.se/groups/dvd/dist/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="x86 ppc amd64 alpha ia64 sparc"
+KEYWORDS="~x86 ~ppc"
 LICENSE="GPL-2"
 IUSE="oss mmx alsa xv"
 
 DEPEND=">=media-libs/libdvdcss-1.2.2
 	media-libs/jpeg
 	>=media-libs/libdvdread-0.9.4
-	media-sound/madplay
-	virtual/x11
+	media-sound/mad
+	x11-base/xfree
 	>=dev-libs/libxml2-2.4.19
 	>=media-libs/a52dec-0.7.3
 	alsa? ( media-libs/alsa-lib )"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/ogle-configure-alsa-fix.patch || die "applying alsa-fix failed"
-	epatch ${FILESDIR}/ogle-gcc34-fix.patch
-}
 
 src_compile() {
 	# STOP!  If you make any changes, make sure to unmerge all copies
@@ -57,16 +50,12 @@ src_compile() {
 	# configure needs access to the updated CFLAGS
 	CFLAGS="${CFLAGS} -I/usr/include/libxml2/libxml -I/usr/include/libxml2"
 
-	econf ${myconf} || die "./configure failed"
-	emake CFLAGS="${CFLAGS}" || die "make failed"
+	econf ${myconf} || die
+	emake CFLAGS="${CFLAGS}" || die
 }
 
 src_install() {
-	einstall || die "make install failed"
-
-	cd ${D}usr/bin/
-	mv ./ifo_dump ./ifo_dump_ogle
-
-	dodoc AUTHORS ChangeLog HISTORY NEWS README TODO
+	einstall || die
+	dodoc AUTHORS COPYING ChangeLog HISTORY INSTALL NEWS README TODO
 	dodoc doc/liba52.txt
 }

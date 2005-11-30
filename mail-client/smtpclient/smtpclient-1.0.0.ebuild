@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/smtpclient/smtpclient-1.0.0.ebuild,v 1.5 2005/06/05 11:53:15 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/smtpclient/smtpclient-1.0.0.ebuild,v 1.1 2004/05/30 02:59:55 seemant Exp $
 
 IUSE=""
 
@@ -10,9 +10,9 @@ SRC_URI="http://www.engelschall.com/sw/smtpclient/distrib/smtpclient-1.0.0.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="x86"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_compile() {
 

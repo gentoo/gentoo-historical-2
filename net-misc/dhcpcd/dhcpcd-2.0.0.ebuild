@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcpcd/dhcpcd-2.0.0.ebuild,v 1.14 2005/09/16 02:56:50 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dhcpcd/dhcpcd-2.0.0.ebuild,v 1.1 2005/07/28 11:40:09 uberlord Exp $
 
 inherit flag-o-matic eutils
 
@@ -10,22 +10,14 @@ SRC_URI="http://download.berlios.de/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="build debug static"
 
 DEPEND=""
 PROVIDE="virtual/dhcpc"
 
-pkg_setup() {
-	if use debug ; then
-		ewarn "WARNING: dhcpcd will provide good debugging output with the"
-		ewarn "debug USE flag enabled but will not actually configure the"
-		ewarn "interface or setup /etc/resolv.conf"
-	fi
-}
-
 src_unpack() {
-	unpack "${A}"
+	unpack ${A}
 	cd "${S}"
 
 	# Fix compiling on gcc2

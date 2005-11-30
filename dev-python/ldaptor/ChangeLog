@@ -1,48 +1,7 @@
 # ChangeLog for dev-python/ldaptor
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/ldaptor/ChangeLog,v 1.13 2005/11/28 12:45:31 marienz Exp $
-
-  28 Nov 2005; Marien Zwart <marienz@gentoo.org> ldaptor-0.0.6.ebuild:
-  Fix DEPEND: this version does not work with twisted-2.
-
-*ldaptor-0.0.42 (28 Nov 2005)
-
-  28 Nov 2005; Marien Zwart <marienz@gentoo.org>
-  +files/ldaptor-0.0.42-trial-2.1-compat.patch, -ldaptor-0.0.41.ebuild,
-  +ldaptor-0.0.42.ebuild:
-  Version bump to 0.0.42, add a patch to make the tests work with twisted
-  2.1.0, use mirror://debian/ in SRC_URI, add missing twisted-web dependency.
-  Remove 0.0.41.
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> ldaptor-0.0.6.ebuild:
-  add ~ia64
-
-*ldaptor-0.0.41 (04 Jul 2005)
-
-  04 Jul 2005; Thomas Raschbacher <lordvan@gentoo.org>
-  +ldaptor-0.0.41.ebuild:
-  Updated version for twisted-2.
-  Fixes Bug #83182; Thanks to Marien Zwart <m_zwart@123mail.org>
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ldaptor-0.0.6.ebuild:
-  Stable on ppc.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> ldaptor-0.0.6.ebuild:
-  Stable on alpha.
-
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> ldaptor-0.0.6.ebuild:
-  Add missing IUSE.
-
-  30 Apr 2004; David Holm <dholm@gentoo.org> ldaptor-0.0.6.ebuild:
-  Added to ~ppc.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/ldaptor/ChangeLog,v 1.1 2002/12/13 16:50:56 lordvan Exp $
 
 *ldaptor-0.0.6 (12 Dec 2002)
-
-  05 Apr 2003; Alastair Tse <liquidx@gentoo.org> ldaptor-0.0.6.ebuild:
-  bump to stable
-
-  12 Dec 2002; Thomas Raschbacher <lordvan@gentoo.org> :
-  initial ebuild
+	12 Dec 2002; Thomas Raschbacher <lordvan@gentoo.org>
+	initial ebuild

@@ -1,20 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-binary-types/cl-binary-types-0.90.ebuild,v 1.7 2005/05/24 18:48:32 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-binary-types/cl-binary-types-0.90.ebuild,v 1.1 2004/02/12 09:13:13 mkennedy Exp $
 
-inherit common-lisp eutils
-
-# binary-types moved to http://www.common-lisp.net/project/movitz recently
+inherit common-lisp
 
 DESCRIPTION="Binary-types is a Library for accessing binary files with fixed bit-length code-words."
-HOMEPAGE="http://www.cliki.net/Binary-types http://www.common-lisp.net/project/movitz/ http://www.cs.uit.no/~frodef/sw/binary-types/"
+HOMEPAGE="http://www.cliki.net/Binary-types
+	http://www.cs.uit.no/~frodef/sw/binary-types/"
 SRC_URI="http://www.cs.uit.no/~frodef/sw/binary-types/binary-types-0.90.tar.gz"
-
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
-IUSE=""
-
+KEYWORDS="~x86"
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp"
 

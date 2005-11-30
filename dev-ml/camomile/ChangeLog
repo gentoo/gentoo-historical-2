@@ -1,24 +1,6 @@
-# ChangeLog for dev-ml/camomile
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/camomile/ChangeLog,v 1.7 2004/09/30 00:23:26 swegener Exp $
-
-*camomile-0.6.0 (10 Sep 2004)
-
-  10 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> +camomile-0.5.3-r1.ebuild,
-  -camomile-0.5.3.ebuild, +camomile-0.6.0.ebuild:
-  Fix bug #63560 issues, add new version released yesterday.
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  25 Aug 2004; Sven Wegener <swegener@gentoo.org> camomile-0.5.3.ebuild:
-  Changed SRC_URI to use mirror:// syntax.
-
-  22 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> camomile-0.5.3.ebuild:
-  Adapt to findlib eclass, move to stable.
-
-  09 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> camomile-0.5.3.ebuild:
-  header fix; tidy
+# ChangeLog for dev-ml/ulex
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/camomile/ChangeLog,v 1.1 2004/08/08 08:51:41 mattam Exp $
 
 *camomile-0.5.3 (08 Aug 2004)
 

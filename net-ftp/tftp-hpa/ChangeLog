@@ -1,48 +1,6 @@
-# ChangeLog for net-ftp/tftp-hpa
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/tftp-hpa/ChangeLog,v 1.12 2005/11/10 16:35:01 ranger Exp $
-
-  10 Nov 2005; Brent Baude <ranger@gentoo.org> tftp-hpa-0.40.1.ebuild:
-  Marking tftp-hpa-0.40.1 ~ppc64 for bug 112068
-
-*tftp-hpa-0.40.1 (01 Oct 2005)
-
-  01 Oct 2005; Daniel Black <dragonheart@gentoo.org>
-  +tftp-hpa-0.40.1.ebuild:
-  version bump
-
-  18 Sep 2005; Mike Frysinger <vapier@gentoo.org> tftp-hpa-0.40-r1.ebuild:
-  Add support for USE=selinux #106354 by petre rodan and USE=tcpd/readline
-  #102867 by Francisco Javier.
-
-  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> tftp-hpa-0.40-r1.ebuild:
-  Mark 0.40-r1 stable on alpha
-
-  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  tftp-hpa-0.40-r1.ebuild:
-  Stable on ppc.
-
-  02 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  tftp-hpa-0.40-r1.ebuild:
-  Stable on sparc
-
-  30 Jul 2005; Mike Frysinger <vapier@gentoo.org> files/in.tftpd.confd,
-  files/in.tftpd.rc6, tftp-hpa-0.40-r1.ebuild:
-  Clean up init scripts and stabilize for #90784 by Daniel Webert.
-
-  29 Jul 2005; Marcelo Goes <vanquirius@gentoo.org> -tftp-hpa-0.33.ebuild,
-  -tftp-hpa-0.40.ebuild, tftp-hpa-0.40-r1.ebuild:
-  Really fix bug 83325. Thanks to Dan Eisenhut <daniel.eisenhut@med.ge.com>.
-
-*tftp-hpa-0.40-r1 (27 Feb 2005)
-
-  27 Feb 2005; Jon Hood <squinky86@gentoo.org> +metadata.xml,
-  +tftp-hpa-0.40-r1.ebuild:
-  Add sys-apps/tcp-wrappers to RDEPEND, #83325. Thanks Dan Eisenhut
-  <daniel.eisenhut@med.ge.com>.
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
+# ChangeLog for net-misc/tftp-hpa
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/tftp-hpa/ChangeLog,v 1.1 2004/12/09 20:56:37 squinky86 Exp $
 
 *tftp-hpa-0.40 (09 Dec 2004)
 
@@ -63,7 +21,7 @@
   15 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> tftp-hpa-0.34-r1.ebuild:
   Marked stable on amd64.
 
-  08 Jun 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> tftp-hpa-0.34-r1.ebuild:
+  08 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> tftp-hpa-0.34-r1.ebuild:
   Stable on alpha.
 
   15 Apr 2004; Michael McCabe <randy@gentoo.org> tftp-hpa-0.34-r1.ebuild:

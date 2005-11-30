@@ -1,22 +1,30 @@
-#!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/ypserv/files/ypserv,v 1.3 2004/07/24 06:26:28 eradicator Exp $
+#!/bin/sh
+#RCUPDATE:2 3 4:75:This line is required for script management
 
-depend() {
-	need net portmap domainname
-}
+. /etc/rc.d/config/functions
+
+SERVICE="NIS Server"
+opts="start stop restart"
+
+EXE=/usr/sbin/ypserv
 
 start() {
-	ebegin "Starting NIS Server"
-	YOPTS=""
-	if [ -n "${YPSERV_OPTS}" ]; then YOPTS="-- ${YPSERV_OPTS}"; fi
-	start-stop-daemon --start --quiet --exec /usr/sbin/ypserv ${YOPTS}
-	eend $?
+		ebegin "Starting $SERVICE..."
+     		start-stop-daemon --start --quiet --exec $EXE 
+		eend $? "Started $SERVICE." "Error Starting $SERVICE."
 }
 
 stop() {
-	ebegin "Stopping NIS Server"
-	start-stop-daemon --stop --quiet --exec /usr/sbin/ypserv
-	eend $?
+		ebegin "Stopping $SERVICE..."
+		start-stop-daemon --stop --quiet --exec $EXE
+		eend $? "Stopped $SERVICE." "Error Stopping $SERVICE."
 }
+
+restart() {
+		stop
+		start
+}
+
+doservice ${@}
+
+

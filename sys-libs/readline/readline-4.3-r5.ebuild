@@ -1,28 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/readline/readline-4.3-r5.ebuild,v 1.24 2005/08/24 00:36:03 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/readline/readline-4.3-r5.ebuild,v 1.1 2003/09/28 12:32:30 azarah Exp $
 
-inherit eutils gnuconfig
+inherit eutils
 
 # Official patches
 PLEVEL="x001 x002 x003 x004 x005"
 
+S="${WORKDIR}/${P}"
 DESCRIPTION="Another cute console display library"
+SRC_URI="ftp://ftp.gnu.org/gnu/readline/${P}.tar.gz
+	 ftp://gatekeeper.dec.com/pub/GNU/readline/${P}.tar.gz
+	 ${PLEVEL//x/ftp://ftp.gnu.org/gnu/${PN}/${PN}-${PV}-patches/${PN}${PV/\.}-}"
 HOMEPAGE="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
-SRC_URI="mirror://gnu/readline/${P}.tar.gz
-	${PLEVEL//x/mirror://gnu/${PN}/${PN}-${PV}-patches/${PN}${PV/\.}-}"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~amd64 ~x86 ~ppc ~sparc ~alpha ~hppa ~arm ~mips ~ia64"
 
-# We must be certain that we have a bash that is linked
+# We must be sertain that we have a bash that is linked
 # to its internal readline, else we may get problems.
 DEPEND=">=app-shells/bash-2.05b-r2
 	>=sys-libs/ncurses-5.2-r2"
 
 src_unpack() {
+
 	unpack ${P}.tar.gz
 
 	cd ${S}
@@ -30,18 +32,11 @@ src_unpack() {
 	do
 		epatch ${DISTDIR}/${PN}${PV/\.}-${x}
 	done
-
-	# force ncurses linking #71420
-	sed -i -e 's:^SHLIB_LIBS=:SHLIB_LIBS=-lncurses:' support/shobj-conf || die "sed"
-
-	gnuconfig_update
 }
 
 src_compile() {
-	# the --libdir= is needed because if lib64 is a directory, it will default
-	# to using that... even if CONF_LIBDIR isnt set or we're using a version
-	# of portage without CONF_LIBDIR support.
-	econf --with-curses --libdir=/usr/$(get_libdir) || die
+
+	econf --with-curses || die
 
 	emake || die
 	cd shlib
@@ -50,45 +45,32 @@ src_compile() {
 
 
 src_install() {
-	# portage 2.0.50's einstall causes sandbox violations if lib64 is a
-	# directory, since readline's configure automatically sets libdir for you.
-	make DESTDIR="${D}" install || die
+
+	make prefix=${D}/usr mandir=${D}/usr/share/man \
+		infodir=${D}/usr/share/info install || die
 	cd ${S}/shlib
-	make DESTDIR="${D}" install || die
+	make prefix=${D}/usr mandir=${D}/usr/share/man \
+		infodir=${D}/usr/share/info install || die
 
 	cd ${S}
 
-	dodir /$(get_libdir)
-	mv ${D}/usr/$(get_libdir)/*.so* ${D}/$(get_libdir)
-	rm -f ${D}/$(get_libdir)/*.old
+	dodir /lib
+	mv ${D}/usr/lib/*.so* ${D}/lib
+	rm -f ${D}/lib/*.old
 	# bug #4411
 	gen_usr_ldscript libreadline.so
 	gen_usr_ldscript libhistory.so
 	# end bug #4411
-	dosym libhistory.so.${PV/a/} /$(get_libdir)/libhistory.so
-	dosym libreadline.so.${PV/a/} /$(get_libdir)/libreadline.so
+	dosym libhistory.so.${PV/a/} /lib/libhistory.so
+	dosym libreadline.so.${PV/a/} /lib/libreadline.so
 	# Needed because make install uses ${D} for the link
-	dosym libhistory.so.${PV/a/} /$(get_libdir)/libhistory.so.4
-	dosym libreadline.so.${PV/a/} /$(get_libdir)/libreadline.so.4
-	chmod 755 ${D}/$(get_libdir)/*.${PV/a/}
+	dosym libhistory.so.${PV/a/} /lib/libhistory.so.4
+	dosym libreadline.so.${PV/a/} /lib/libreadline.so.4
+	chmod 755 ${D}/lib/*.${PV/a/}
 
-	dodoc CHANGELOG CHANGES README USAGE
+	dodoc CHANGELOG CHANGES COPYING MANIFEST README USAGE
 	docinto ps
 	dodoc doc/*.ps
 	dohtml -r doc
-
-	# Backwards compatibility #29865
-	if [ -e ${ROOT}/lib/libreadline.so.4.1 ] ; then
-		[ "$(get_libdir)" != "lib" ] && dodir /lib
-		cp -pPR ${ROOT}/lib/libreadline.so.4.1 ${D}/lib/
-		touch ${D}/lib/libreadline.so.4.1
-	fi
 }
 
-pkg_postinst() {
-	if [ -e ${ROOT}/lib/libreadline.so.4.1 ] ; then
-		ewarn "Your old readline libraries have been copied over."
-		ewarn "You should run 'revdep-rebuild --soname libreadline.so.4.1' asap."
-		ewarn "Once you have, you can safely delete /lib/libreadline.so.4.1"
-	fi
-}

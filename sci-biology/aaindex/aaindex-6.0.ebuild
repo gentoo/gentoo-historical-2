@@ -1,9 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/aaindex/aaindex-6.0.ebuild,v 1.10 2005/11/19 18:22:36 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/aaindex/aaindex-6.0.ebuild,v 1.1 2004/12/23 21:18:02 ribosome Exp $
 
 DESCRIPTION="Amino acid indices and similarity matrices"
-HOMEPAGE="http://www.genome.ad.jp/aaindex"
+HOMEPAGE="http://www.genome.ad.jp/${PN}/"
 SRC_URI="ftp://ftp.genome.ad.jp/pub/db/genomenet/${PN}/${PN}.doc
 	ftp://ftp.genome.ad.jp/pub/db/genomenet/${PN}/${PN}1
 	ftp://ftp.genome.ad.jp/pub/db/genomenet/${PN}/${PN}2
@@ -11,39 +11,33 @@ SRC_URI="ftp://ftp.genome.ad.jp/pub/db/genomenet/${PN}/${PN}.doc
 	ftp://ftp.genome.ad.jp/pub/db/genomenet/${PN}/list_of_indices"
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc-macos ppc64 x86"
-IUSE="emboss minimal"
-# Minimal build keeps only the indexed files (if applicable) and the documentation.
-# The non-indexed database is not installed.
-
-DEPEND="emboss? ( sci-biology/emboss )"
+KEYWORDS="x86 ~ppc ~ppc-macos"
+IUSE="no-emboss no-rawdb"
 
 S=${WORKDIR}
 
 src_unpack() {
-	echo
 	einfo "No archive to unpack."
-	echo
 }
 
 src_compile() {
-	if use emboss; then
+	# Index the database for use with emboss if emboss is installed and
+	# the user did not explicitly request not to index the database.
+	if [ -e /usr/bin/aaindexextract ] && ! use no-emboss; then
 		mkdir AAINDEX
-		echo
 		einfo "Indexing AAindex for usage with EMBOSS."
 		EMBOSS_DATA=. aaindexextract -auto -infile ${DISTDIR}/${PN}1 || die \
 			"Indexing AAindex failed."
-		echo
 	fi
 }
 
 src_install() {
-	if ! use minimal; then
+	if ! use no-rawdb; then
 		insinto /usr/share/${PN}
 		doins ${DISTDIR}/{${PN}{1,2},list_of_{matrices,indices}}
 	fi
 	dodoc ${DISTDIR}/${PN}.doc
-	if use emboss; then
+	if [ -e /usr/bin/aaindexextract ] && ! use no-emboss; then
 		insinto /usr/share/EMBOSS/data/AAINDEX
 		doins AAINDEX/*
 	fi

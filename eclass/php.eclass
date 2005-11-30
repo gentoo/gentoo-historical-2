@@ -1,155 +1,229 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php.eclass,v 1.104 2005/09/25 12:30:26 swegener Exp $
+# Copyright 2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
 # Author: Robin H. Johnson <robbat2@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/eclass/php.eclass,v 1.1 2003/04/23 09:50:02 robbat2 Exp $
+ECLASS=php
+INHERITED="$INHERITED $ECLASS"
 
-# This eclass is the old style of php, that was used before php-core was
-# introduced.
+import eutils flag-o-matic
 
-inherit eutils flag-o-matic
+EXPORT_FUNCTIONS src_unpack src_compile src_install 
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_preinst
-
-[ -z "${MY_PN}" ] && MY_PN=php
-if [ -z "${MY_PV}" ]; then
-	MY_PV=${PV/_rc/RC}
-	# maybe do stuff for beta/alpha/pre here too?
-fi
-
-# our major ver number
-PHPMAJORVER=${MY_PV//\.*}
-
-[ -z "${MY_P}" ] && MY_P=${MY_PN}-${MY_PV}
-[ -z "${MY_PF}" ] && MY_PF=${MY_P}-${PR}
-[ -z "${HOMEPAGE}" ] && HOMEPAGE="http://www.php.net/"
-[ -z "${LICENSE}" ]	&& LICENSE="PHP"
-[ -z "${PROVIDE}" ]	&& PROVIDE="virtual/php"
-# PHP.net does automatic mirroring from this URI
-[ -z "${SRC_URI_BASE}" ] && SRC_URI_BASE="http://www.php.net/distributions"
-if [ -z "${SRC_URI}" ]; then
-	SRC_URI="${SRC_URI_BASE}/${MY_P}.tar.bz2"
-fi
-# A patch for PHP for security
-SRC_URI="${SRC_URI} mirror://gentoo/php-4.3.2-fopen-url-secure.patch"
-[ "${MY_PV}" = "4.3.4" ] && SRC_URI="${SRC_URI} mirror://gentoo/php-4.3.4-phpizeexecfix.patch"
-
-# Where we work
+MY_P=php-${PV}
 S=${WORKDIR}/${MY_P}
+[ -z "$HOMEPAGE" ]	&& HOMEPAGE="http://www.php.net/"
+[ -z "$LICENSE" ]	&& LICENSE="PHP"
+[ -z "$SRC_URI" ] 	&& SRC_URI="http://us3.php.net/distributions/${MY_P}.tar.bz2"
+[ -z "$PROVIDE" ]	&& PROVIDE="virtual/php"
 
-IUSE="${IUSE} X crypt curl firebird flash freetds gd gd-external gdbm imap informix ipv6 java jpeg ldap mcal memlimit mysql nls oci8 odbc pam pdflib png postgres qt snmp spell ssl tiff truetype xml2"
+IUSE="${IUSE} X berkdb cjk crypt curl firebird flash freetds gd gdbm imap jpeg ldap libwww mysql nls oci8 odbc pam pdflib png postgres qt snmp spell ssl tiff truetype xml xml2"
+#removed: java gmp
+#both cause breakage
 
-# berkdb stuff is complicated
-# we need db-1.* for ndbm
-# and then either of db3 or db4
-IUSE="${IUSE} berkdb"
-RDEPEND="${RDEPEND} berkdb? ( =sys-libs/db-1.*
-							  || ( >=sys-libs/db-4.0.14-r2
-								   >=sys-libs/db-3.2.9-r9
-							     )
-							)"
+DEPEND="${DEPEND}
+    X? ( virtual/x11 )
+    berkdb? ( >=sys-libs/db-3 )
+    crypt? ( >=dev-libs/libmcrypt-2.4 >=app-crypt/mhash-0.8 )
+    curl? ( >=net-ftp/curl-7.10.2 )
+    firebird? ( >=dev-db/firebird-1.0 )
+    flash? ( media-libs/libswf >=media-libs/ming-0.2a )
+    freetds? ( >=dev-db/freetds-0.53 )
+    gd? ( media-libs/libgd )
+    gdbm? ( >=sys-libs/gdbm-1.8.0 )
+    imap? ( >=net-mail/uw-imap-2001a-r1 )
+    jpeg? ( >=media-libs/jpeg-6b )
+    ldap? ( >=net-nds/openldap-1.2.11 )
+    libwww? ( >=net-libs/libwww-5.3.2 )
+    mysql? ( >=dev-db/mysql-3.23.26 )
+    nls? ( sys-devel/gettext )
+    odbc? ( >=dev-db/unixODBC-1.8.13 )
+    pam? ( >=sys-libs/pam-0.75 )
+    pdflib? ( >=media-libs/pdflib-4.0.1-r2 )
+    png? ( >=media-libs/libpng-1.2.5 )
+    postgres? ( >=dev-db/postgresql-7.1 )
+    qt? ( x11-libs/qt )
+    snmp? ( >=net-analyzer/ucd-snmp-4.2.3 )
+    spell? ( app-text/aspell )
+    ssl? ( >=dev-libs/openssl-0.9.5 )
+    tiff? ( >=media-libs/tiff-3.5.5 )
+    truetype? ( ~media-libs/freetype-1.3.1 >=media-libs/t1lib-1.3.1 )
+    xml2? ( dev-libs/libxml2 )
+    xml? ( >=net-libs/libwww-5.3.2 >=app-text/sablotron-0.96 )
+	"
 
-# Everything is in this list is dynamically linked agaist or needed at runtime
-# in some other way
-RDEPEND="
-   >=sys-libs/cracklib-2.7-r7
-   app-arch/bzip2
-   X? ( virtual/x11 )
-   crypt? ( >=dev-libs/libmcrypt-2.4 >=app-crypt/mhash-0.8 )
-   curl? ( >=net-misc/curl-7.10.2 )
-   x86? ( firebird? ( >=dev-db/firebird-1.0 ) )
-   freetds? ( >=dev-db/freetds-0.53 )
-   gd-external? ( media-libs/gd >=media-libs/jpeg-6b
-                  >=media-libs/libpng-1.2.5 )
-   gd? ( >=media-libs/jpeg-6b >=media-libs/libpng-1.2.5 )
-   gdbm? ( >=sys-libs/gdbm-1.8.0 )
-   !alpha? ( java? ( =virtual/jdk-1.4* dev-java/java-config ) )
-   jpeg? ( >=media-libs/jpeg-6b )
-   ldap? ( >=net-nds/openldap-1.2.11 )
-   mysql? ( >=dev-db/mysql-3.23.26 )
-   nls? ( sys-devel/gettext )
-   odbc? ( >=dev-db/unixODBC-1.8.13 )
-   pam? ( >=sys-libs/pam-0.75 )
-   pdflib? ( >=media-libs/pdflib-4.0.3 >=media-libs/jpeg-6b
-             >=media-libs/libpng-1.2.5 >=media-libs/tiff-3.5.5 )
-   png? ( >=media-libs/libpng-1.2.5 )
-   postgres? ( >=dev-db/postgresql-7.1 )
-   qt? ( >=x11-libs/qt-2.3.0 )
-   snmp? ( net-analyzer/net-snmp )
-   spell? ( app-text/aspell )
-   ssl? ( >=dev-libs/openssl-0.9.5 )
-   tiff? ( >=media-libs/tiff-3.5.5 )
-   xml2? ( dev-libs/libxml2 >=dev-libs/libxslt-1.0.30 )
-   truetype? ( =media-libs/freetype-2* =media-libs/freetype-1*
-               media-libs/t1lib )
-   >=net-libs/libwww-5.3.2
-   >=app-text/sablotron-0.97
-   dev-libs/expat
-   sys-libs/zlib
-   virtual/mta
-   virtual/libc"
-# virtual/libc line added as a fix for an rsync issue regarding cache
-# regeneration. It's harmless, but it causes that particular issue to
-# disappear. (sys-apps -> app-arch move stuff)
 
-# libswf is ONLY available on x86
-RDEPEND="${RDEPEND} flash? (
-		x86? ( media-libs/libswf )
-		>=media-libs/ming-0.2a )"
+RDEPEND="${RDEPEND}
+	xml? ( >=app-text/sablotron-0.95-r1 >=net-libs/libwww-5.3.2 )
+	qt? ( >=x11-libs/qt-2.3.0 )"
 
-#The new XML extension in PHP5 requires libxml2-2.5.10
-if [ "${PHPMAJORVER}" -ge 5 ]; then
-	RDEPEND="${RDEPEND} >=dev-libs/libxml2-2.5.10"
-fi
 
-# These are extra bits we need only at compile time
-DEPEND="${RDEPEND} ${DEPEND}
-	imap? ( virtual/imap-c-client )
-	mcal? ( dev-libs/libmcal )"
-#9libs causes a configure error
-DEPEND="${DEPEND} !dev-libs/9libs"
-#dev-libs/libiconv causes a compile failure
-DEPEND="${DEPEND} !dev-libs/libiconv"
-
-#Waiting for somebody to want this:
-#cyrus? ( net-mail/cyrus-imapd net-mail/cyrus-imap-admin dev-libs/cyrus-imap-dev )
-
-#export this here so we can use it
-myconf="${myconf}"
-
-PHP_INSTALLTARGETS="${PHP_INSTALLTARGETS} install-modules install-pear install-build install-headers install-programs"
-
-# These are quick fixups for older ebuilds that didn't have PHPSAPI defined.
-[ -z "${PHPSAPI}" ] && [ "${PN}" = "php" ] && PHPSAPI="cli"
-if [ -z "${PHPSAPI}" ] && [ "${PN}" = "mod_php" ]; then
-	use apache2 && PHPSAPI="apache2" || PHPSAPI="apache1"
-fi
-
-# Now enforce existance of PHPSAPI
-if [ -z "${PHPSAPI}" ]; then
-	msg="The PHP eclass needs a PHPSAPI setting!"
-	eerror "${msg}"
-	die "${msg}"
-fi
-# build the destination and php.ini details
-PHPINIDIRECTORY="/etc/php/${PHPSAPI}-php${PHPMAJORVER}"
-PHPINIFILENAME="php.ini"
+#fixes bug #14067
+replace-flags "-march=k6*" "-march=i586"
 
 php_src_unpack() {
-	die "This eclass must NOT be used."
+    unpack ${MY_P}.tar.bz2
+    cd ${S}
+
+    # Configure Patch for wired uname -a
+    mv configure configure.old
+    cat configure.old | sed "s/PHP_UNAME=\`uname -a\`/PHP_UNAME=\`uname -s -n -r -v\`/g" > configure
+    chmod 755 configure
+
+    # fix PEAR installer
+    cp pear/PEAR/Registry.php pear/PEAR/Registry.old
+    sed "s:\$pear_install_dir\.:\'$D/usr/lib/php/\' . :g" pear/PEAR/Registry.old > pear/PEAR/Registry.php
+
+	#if [ "`use java`" ] ; then
+
+	#	cp configure configure.orig
+	#	cat configure.orig | \
+	#		sed -e 's/LIBS="-lttf $LIBS"/LIBS="-lttf $LIBS"/' \
+	#		> configure
+
+	#	cp ext/gd/gd.c ext/gd/gd.c.orig
+	#	cat ext/gd/gd.c.orig | \
+	#		sed -e "s/typedef FILE gdIOCtx;//" \
+	#		> ext/gd/gd.c
+	#	if [ "$JAVAC" ];
+	#	then
+	#              cp ext/java/Makefile.in ext/java/Makefile.in.orig
+	#              cat ext/java/Makefile.in.orig | \
+	#                      sed -e "s/^\tjavac/\t\$(JAVAC)/" \
+	#                      > ext/java/Makefile.in
+	#	fi
+	#fi
+
+	# pear's world writable files is a php issue fixed in their cvs tree.
+	# http://bugs.php.net/bug.php?id=20978
+	# http://bugs.php.net/bug.php?id=20974
+	epatch ${FILESDIR}/pear_config.diff || die "epatch failed"
+
 }
+
+myconf="${myconf}"
+
 php_src_compile() {
-	die "This eclass must NOT be used."
+	use berkdb && myconf="${myconf} --with-db3=/usr"
+	#---
+	use cjk && myconf="${myconf} --enable-mbstring --enable-mbregex"
+	#use cjk && myconf="${myconf} --enable-mbstring"
+	#---
+	use curl && myconf="${myconf} --with-curl"
+	use crypt && myconf="${myconf} --enable-mcrypt=/usr --with-mhash"
+	use firebird && myconf="${myconf} --with-interbase=/opt/interbase"
+	use flash && myconf="${myconf} --with-swf=/usr --with-ming=/usr"
+	use freetds && myconf="${myconf} --with-sybase=/usr"
+	use gd && myconf="${myconf} --with-gd=/usr"
+	use gdbm && myconf="${myconf} --with-gdbm=/usr"
+	#--- check out this weirdness
+	#use jpeg && myconf="${myconf} --with-jpeg-dir=/usr"
+	#use jpeg && myconf="${myconf} --with-jpeg-dir=/usr/lib" || myconf="${myconf} --without-jpeg"
+	use jpeg && myconf="${myconf} --with-jpeg-dir=/usr" || myconf="${myconf} --without-jpeg"
+	#---
+	use libwww && myconf="${myconf} --with-xml" || myconf="${myconf} --disable-xml"
+	use ldap &&  myconf="${myconf} --with-ldap"
+	use mysql && myconf="${myconf} --with-mysql=/usr" || myconf="${myconf} --without-mysql"
+	use nls && myconf="${myconf} --with-gettext" || myconf="${myconf} --without-gettext"
+	use odbc && myconf="${myconf} --with-unixODBC=/usr"
+	use pam && myconf="${myconf} --with-pam"
+	use pdflib && myconf="${myconf} --with-pdflib=/usr"
+	#---
+	use png && myconf="${myconf} --with-png-dir=/usr"
+	use png || myconf="${myconf} --without-png"
+	#---
+	use postgres && myconf="${myconf} --with-pgsql=/usr"
+	use qt && myconf="${myconf} --with-qtdom" 
+	use snmp && myconf="${myconf} --with-snmp --enable-ucd-snmp-hack"
+	use spell && myconf="${myconf} --with-pspell"
+	use ssl && myconf="${myconf} --with-openssl"
+	use tiff && myconf="${myconf} --with-tiff-dir=/usr" || myconf="${myconf} --without-tiff"
+	use truetype && myconf="${myconf} --with-ttf --with-t1lib"
+	use xml2 && myconf="${myconf} --with-dom"
+	use zlib && myconf="${myconf} --with-zlib --with-zlib-dir=/usr/lib"
+
+	# optional support for oracle oci8
+	use oci8 && [ -n "$ORACLE_HOME" ] && myconf="${myconf} --with-oci8=${ORACLE_HOME}"
+
+	use imap && use ssl && \
+	if [ "`strings ${ROOT}/usr/lib/c-client.a \ | grep ssl_onceonlyinit`" ] ; then
+		echo "Compiling imap with SSL support"
+		myconf="${myconf} --with-imap --with-imap-ssl"
+	else
+		echo "Compiling imap without SSL support"
+		myconf="${myconf} --with-imap"
+	fi
+
+	LDFLAGS="$LDFLAGS -ltiff -ljpeg"
+	if [ "`use X`" ] ; then
+		myconf="${myconf} --with-xpm-dir=/usr/X11R6"
+		LDFLAGS="$LDFLAGS -L/usr/X11R6/lib"
+	fi
+	
+	if [ "`use xml`" ] ; then
+		export LIBS="-lxmlparse -lxmltok"
+		myconf="${myconf} --with-sablot=/usr"
+		myconf="${myconf} --enable-xslt" 
+		myconf="${myconf} --with-xslt-sablot" 
+		myconf="${myconf} --with-xmlrpc"
+	fi
+	
+	#use java && myconf="${myconf} --with-java=${JAVA_HOME}"
+
+	myconf="${myconf} \
+		--enable-bcmath \
+		--enable-calendar \
+		--enable-dbase \
+		--enable-ftp \
+		--enable-exif \
+		--enable-inline-optimization \
+		--enable-sockets \
+		--enable-sysvsem \
+		--enable-sysvshm \
+		--enable-track-vars \
+		--enable-trans-sid \
+		--enable-versioning \
+		--with-config-file-path=/etc/php4 \
+		--with-bz2 \
+	"
+	#this is some stuff that MIGHT be questionable in some ebuilds
+	myconf="${myconf} \
+		--enable-wddx \
+		--host=${CHOST} \
+		--prefix=/usr"
+	#dev-php/php: wddx pear
+	#dev-php/mod_php: prefix host
+
+	econf \
+		${myconf} || die "bad ./configure"
+
+	emake || die "compile problem"
+
 }
+
+
 php_src_install() {
-	die "This eclass must NOT be used."
-}
+	addwrite /usr/share/snmp/mibs/.index
+	
+	# put make here
 
-php_pkg_preinst() {
-	eerror "Warning it is NOT safe to use this version of PHP anymore"
-	eerror "You MUST upgrade to a newer version of PHP."
-}
+	dodoc CODING_STANDARDS LICENSE EXTENSIONS 
+	dodoc RELEASE_PROCESS README.* TODO NEWS
+	dodoc ChangeLog* *.txt
 
-php_pkg_postinst() {
-	eerror "Warning it is NOT safe to use this version of PHP anymore"
-	eerror "You MUST upgrade to a newer version of PHP."
+	#install scripts
+	exeinto /usr/bin
+	doexe ${S}/pear/scripts/phpize
+	doexe ${S}/pear/scripts/php-config
+	doexe ${S}/pear/scripts/phpextdist
+	doexe ${S}/ext/ext_skel
+	
+	# PHP module building stuff
+	mkdir ${D}/usr/lib/php/build
+	insinto /usr/lib/php/build
+	doins build/* pear/pear.m4 acinclude.m4 configure.in Makefile.global scan_makefile_in.awk
+
+    #revert Pear patch
+    rm ${D}/usr/lib/php/PEAR/Registry.php
+    mv ${S}/pear/PEAR/Registry.old ${D}/usr/lib/php/PEAR/Registry.php
+	
 }

@@ -1,36 +1,26 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/pdns/pdns-2.9.18.ebuild,v 1.7 2005/07/30 00:02:40 swegener Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdns/pdns-2.9.18.ebuild,v 1.1 2005/07/17 04:50:51 swegener Exp $
 
 DESCRIPTION="The PowerDNS Daemon"
 SRC_URI="http://downloads.powerdns.com/releases/${P}.tar.gz"
 HOMEPAGE="http://www.powerdns.com/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="debug doc ldap mysql postgres recursor sqlite static tdb"
 
 DEPEND="mysql? ( >=dev-db/mysql-3.23.54a )
 	postgres? ( >=dev-cpp/libpqpp-4.0-r1 )
 	ldap? ( >=net-nds/openldap-2.0.27-r4 )
-	sqlite? ( =dev-db/sqlite-2.8* )
-	recursor? ( >=dev-libs/boost-1.31 )
+	sqlite? ( >=dev-db/sqlite-3 )
+	recursor? ( dev-libs/boost )
 	tdb? ( dev-libs/tdb )"
 
 RDEPEND="${DEPEND}"
 
 DEPEND="${DEPEND}
 	doc? ( app-doc/doxygen )"
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}"/${PV}-default-mysql-options.patch
-	epatch "${FILESDIR}"/${PV}-ldap-fix.patch
-}
 
 src_compile() {
 	local modules="pipe geo" myconf=""
@@ -45,7 +35,6 @@ src_compile() {
 	econf \
 		--with-modules= \
 		--with-dynmodules="${modules}" \
-		--with-pgsql-includes=/usr/include \
 		$(use_enable static static-binaries) \
 		$(use_enable recursor) \
 		${myconf} \

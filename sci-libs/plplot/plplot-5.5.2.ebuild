@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/plplot/plplot-5.5.2.ebuild,v 1.3 2005/08/20 20:06:46 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/plplot/plplot-5.5.2.ebuild,v 1.1 2005/05/03 15:59:00 cryos Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ LICENSE="LGPL-2"
 
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X debug doc fortran gnome ifc itcl java jpeg octave png python tcltk tetex truetype"
+IUSE="debug doc fortran gd-external gnome ifc java jpeg png python tcltk tetex truetype X itcl octave"
 
 DEPEND="dev-util/pkgconfig
 	ifc? ( dev-lang/ifc )
@@ -27,8 +27,7 @@ DEPEND="dev-util/pkgconfig
 	java? ( virtual/jre )
 	tetex? ( app-text/jadetex )
 	octave? ( sci-mathematics/octave )
-	jpeg? ( media-libs/gd )
-	png? ( media-libs/gd )
+	external-gd? ( media-libs/gd )
 	truetype? ( media-libs/freetype )
 	X? ( virtual/x11
 		tcltk? ( dev-lang/tcl
@@ -169,6 +168,6 @@ src_install() {
 		dohtml *.html
 		doinfo plplotdoc.info
 		insinto /usr/share/doc/${PF}
-		doins ${P}.pdf
+		doins plplot-5.3.1.pdf
 	fi
 }

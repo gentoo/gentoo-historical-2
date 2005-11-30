@@ -1,20 +1,6 @@
 # ChangeLog for app-crypt/rainbowcrack
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/rainbowcrack/ChangeLog,v 1.5 2005/07/29 22:59:06 dragonheart Exp $
-
-  29 Jul 2005; Daniel Black <dragonheart@gentoo.org>
-  rainbowcrack-1.2.ebuild:
-  removed die from epatch || die.
-
-  20 May 2005; Jan Brinkmann <luckyduck@gentoo.org> rainbowcrack-1.2.ebuild:
-  stable on amd64
-
-  22 Feb 2005; Simon Stelling <blubb@gentoo.org> rainbowcrack-1.2.ebuild:
-  added ~amd64
-
-  17 Feb 2005; Robin H. Johnson <robbat2@gentoo.org>
-  rainbowcrack-1.2.ebuild:
-  Bug #69831: Ensure unzip is in DEPEND.
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/rainbowcrack/ChangeLog,v 1.1 2005/01/01 13:06:51 dragonheart Exp $
 
 *rainbowcrack-1.2 (01 Jan 2005)
 

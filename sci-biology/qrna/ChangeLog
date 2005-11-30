@@ -1,33 +1,10 @@
-# ChangeLog for sci-biology/qrna
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/qrna/ChangeLog,v 1.9 2005/10/17 17:43:24 ribosome Exp $
-
-  17 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -qrna-2.0.3b.ebuild:
-  Pruning old version.
-
-  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> qrna-2.0.3c.ebuild:
-  Marked ppc stable for bug #108336.
-
-  11 Oct 2005; Luis Medinas <metalgod@gentoo.org> qrna-2.0.3c.ebuild:
-  Marked Stable on amd64.
-
-  09 Oct 2005; Mark Loeser <halcy0n@gentoo.org> qrna-2.0.3c.ebuild:
-  Stable on x86
-
-*qrna-2.0.3c (07 Aug 2005)
-
-  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -qrna-2.0.2c.ebuild,
-  qrna-2.0.3b.ebuild, +qrna-2.0.3c.ebuild:
-  New version. Added 2.0.3b to x86. Removed old version.
-
-*qrna-2.0.3b (13 May 2005)
-
-  13 May 2005; Olivier Fisette <ribosome@gentoo.org> +qrna-2.0.3b.ebuild:
-  New version.
+# ChangeLog for app-sci/qrna
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/qrna/ChangeLog,v 1.1 2004/12/23 15:28:29 ribosome Exp $
 
 *qrna-2.0.2c (23 Dec 2004)
 
-  23 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
+  23 Dec 2004; Olivier Fisette <olivier@gentoo.org> +metadata.xml,
   +files/26qrna, +qrna-2.0.2c.ebuild:
   Moved from app-sci/qrna to sci-biology/qrna.
 

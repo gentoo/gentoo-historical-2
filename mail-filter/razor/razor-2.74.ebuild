@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/razor-2.74.ebuild,v 1.8 2005/11/28 13:04:50 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/razor-2.74.ebuild,v 1.1 2005/06/29 02:53:19 ticho Exp $
 
-inherit perl-app
+inherit perl-module
 
 DESCRIPTION="Vipul's Razor is a distributed, collaborative spam detection and filtering network"
 HOMEPAGE="http://razor.sourceforge.net/"
 SRC_URI="mirror://sourceforge/razor/razor-agents-${PV}.tar.bz2"
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND="dev-lang/perl"
@@ -22,13 +22,6 @@ RDEPEND="dev-perl/Net-DNS
 	dev-perl/Digest-Nilsimsa"
 
 S=${WORKDIR}/razor-agents-${PV}
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i -e "s:^INSTALLMAN5DIR = :INSTALLMAN5DIR = \\\$(DESTDIR)/:" \
-		Makefile.PL || die "sed failed"
-}
 
 pkg_postinst() {
 	einfo ""

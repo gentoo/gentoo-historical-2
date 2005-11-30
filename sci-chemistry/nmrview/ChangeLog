@@ -1,26 +1,6 @@
-# ChangeLog for sci-chemistry/nmrview
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/nmrview/ChangeLog,v 1.6 2005/11/15 15:01:15 ribosome Exp $
-
-*nmrview-5.2.2-r3 (15 Nov 2005)
-
-  15 Nov 2005; Olivier Fisette <ribosome@gentoo.org> +files/README.Gentoo,
-  +files/nmrview.sh-r1, +nmrview-5.2.2-r3.ebuild:
-  Improved wrapper script to accept startup files and other parameters on the
-  command line.
-
-  12 May 2005; Olivier Fisette <ribosome@gentoo.org>
-  nmrview-5.2.2-r2.ebuild:
-  Added to x86.
-
-  04 Feb 2005; Olivier Fisette <ribosome@gentoo.org> files/nmrview.sh:
-  Fixed tcl and tk libraries paths. (See bug #80675.)
-
-*nmrview-5.2.2-r2 (03 Feb 2005)
-
-  03 Feb 2005; Olivier Fisette <ribosome@gentoo.org> files/nmrview.sh,
-  -nmrview-5.2.2-r1.ebuild, +nmrview-5.2.2-r2.ebuild:
-  Changed name and location of the executable. Fixes bug #80614.
+# ChangeLog for app-sci/nmrview
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/nmrview/ChangeLog,v 1.1 2004/12/24 16:52:49 ribosome Exp $
 
 *nmrview-5.2.2-r1 (24 Dec 2004)
 

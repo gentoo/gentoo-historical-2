@@ -1,10 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellweather/gkrellweather-2.0.6.ebuild,v 1.12 2005/04/27 16:53:32 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellweather/gkrellweather-2.0.6.ebuild,v 1.1 2003/08/18 19:03:10 mholzer Exp $
 
-inherit multilib
-
-IUSE=""
+S=${WORKDIR}/${P}
 DESCRIPTION="GKrellM2 Plugin that monitors a METAR station and displays weather
 info"
 SRC_URI="http://kmlinux.fjfi.cvut.cz/~makovick/gkrellm/${P}.tgz"
@@ -12,7 +10,7 @@ HOMEPAGE="http://kmlinux.fjfi.cvut.cz/~makovick/gkrellm/index.html"
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha amd64"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 DEPEND="=app-admin/gkrellm-2*
 	>=sys-apps/sed-4.0.5
@@ -26,20 +24,20 @@ src_unpack() {
 	cd ${S}
 
 	sed -i \
+		-e "s:/usr/local/bin:/usr/share/gkrellm:g" \
 		-e "s:GrabWeather:GrabWeather2:g" \
-		-e "s:/usr/share/gkrellm:/usr/bin:g" \
 		gkrellweather.c
 }
 
 src_compile() {
-	emake PREFIX=/usr || die
+	emake || die
 }
 
 src_install () {
-	exeinto /usr/bin
+	exeinto /usr/share/gkrellm
 	newexe GrabWeather GrabWeather2
 
-	insinto /usr/$(get_libdir)/gkrellm2/plugins
+	insinto /usr/lib/gkrellm2/plugins
 	doins gkrellweather.so
 	dodoc README ChangeLog COPYING
 }

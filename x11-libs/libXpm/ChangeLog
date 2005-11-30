@@ -1,35 +1,6 @@
 # ChangeLog for x11-libs/libXpm
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXpm/ChangeLog,v 1.9 2005/11/11 17:32:44 spyderous Exp $
-
-*libXpm-3.5.4 (11 Nov 2005)
-
-  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>; +libXpm-3.5.4.ebuild:
-  Bump for 7.0RC2.
-
-  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  -libXpm-3.5.2.ebuild:
-  Drop old version.
-
-*libXpm-3.5.3 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +libXpm-3.5.3.ebuild:
-  Bump for 7.0 RC1.
-
-  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
-  Add metadata.
-
-  04 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> libXpm-3.5.2.ebuild:
-  Added ~sh
-
-  23 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libXpm-3.5.2.ebuild:
-  Marked ~amd64.
-
-  20 Aug 2005; Luca Barbato <lu_zero@gentoo.org> libXpm-3.5.2.ebuild:
-  Marked ~ppc
-
-  09 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libXpm-3.5.2.ebuild:
-  Add ~sparc keyword (X modular testing).
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libXpm/ChangeLog,v 1.1 2005/08/08 04:39:00 spyderous Exp $
 
 *libXpm-3.5.2 (08 Aug 2005)
 

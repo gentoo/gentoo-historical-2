@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/keepalived/keepalived-1.1.11.ebuild,v 1.9 2005/11/10 20:13:02 markusle Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/keepalived/keepalived-1.1.11.ebuild,v 1.1 2005/04/15 18:54:30 xmerlin Exp $
 
 DESCRIPTION="add a strong & robust keepalive facility to the Linux Virtual Server project"
 HOMEPAGE="http://www.keepalived.org/"
@@ -10,7 +8,7 @@ SRC_URI="http://www.keepalived.org/software/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ia64 ppc ~ppc64 s390 ~sparc x86"
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
 IUSE="debug profile"
 
 DEPEND="dev-libs/popt
@@ -22,12 +20,7 @@ src_compile() {
 	myconf="--prefix=/"
 
 	use debug && myconf="${myconf} --enable-debug"
-
-	# disable -fomit-frame-pointer for profiling	
-	if use profile; then
-		filter-flags -fomit-frame-pointer
-		myconf="${myconf} --enable-profile"
-	fi
+	use profile && myconf="${myconf} --enable-profile"
 
 	./configure ${myconf} || die "configure failed"
 	emake || die "make failed (myconf=${myconf})"

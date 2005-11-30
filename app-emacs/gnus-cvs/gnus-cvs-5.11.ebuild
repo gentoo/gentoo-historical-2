@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnus-cvs/gnus-cvs-5.11.ebuild,v 1.8 2005/05/03 10:08:17 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/gnus-cvs/gnus-cvs-5.11.ebuild,v 1.1 2004/01/05 05:11:31 jbms Exp $
 
 ECVS_SERVER="cvs.gnus.org:/usr/local/cvsroot"
 ECVS_MODULE="gnus"
@@ -18,18 +18,18 @@ HOMEPAGE="http://www.gnus.org/"
 SRC_URI=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~amd64"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc"
 
 # Never use the sandbox, it causes Emacs to segfault on startup
 SANDBOX_DISABLED="1"
 RESTRICT="$RESTRICT nostrip"
 
 DEPEND="virtual/emacs
-	emacs-w3? ( app-emacs/w3 )"
+emacs-w3? app-emacs/w3"
 
 src_compile() {
 	local myconf
-	if use emacs-w3; then
+	if [ $(use emacs-w3) ]; then
 		myconf="${myconf} --with-w3=/usr/share/emacs/site-lisp/w3"
 		myconf="${myconf} --with-url=/usr/share/emacs/site-lisp/w3"
 	else
@@ -39,9 +39,8 @@ src_compile() {
 		--with-emacs \
 		--with-lispdir=/usr/share/emacs/site-lisp/gnus-cvs \
 		--with-etcdir=/usr/share/emacs/etc \
-		${myconf} || die "econf failed"
-	# bug #75325
-	emake -j1 || die
+		${myconf}
+	emake || die
 }
 
 src_install() {

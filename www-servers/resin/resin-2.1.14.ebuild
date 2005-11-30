@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/resin/resin-2.1.14.ebuild,v 1.5 2005/07/19 00:03:55 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/resin/resin-2.1.14.ebuild,v 1.1 2004/08/08 18:21:19 stuart Exp $
 
 inherit java-pkg eutils
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A fast Servlet 2.3 and JSP 1.2 engine with EJB and distributed session load balancing."
 SRC_URI="http://www.caucho.com/download/${P}.tar.gz"
 HOMEPAGE="http://www.caucho.com"
-KEYWORDS="x86 ~ppc ~sparc amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 LICENSE="CAUCHO"
 SLOT="0"
-DEPEND="!www-servers/resin-ee"
+DEPEND="!net-www/resin-ee"
 RDEPEND=">=virtual/jdk-1.2
 		dev-lang/perl"
 IUSE=""
@@ -74,10 +75,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	einfo " "
 	einfo " NOTICE!"
 	einfo " User and group 'resin' have been added."
-	einfo
+	einfo " "
 	einfo " FILE LOCATIONS:"
 	einfo " 1.  Resin home directory: ${RESIN_HOME}"
 	einfo "     Contains application data, configuration files."
@@ -85,29 +86,31 @@ pkg_postinst() {
 	einfo "     Contains CLASSPATH and JAVA_HOME settings."
 	einfo " 3.  Logs:  /var/log/resin/"
 	einfo " 4.  Executables, libraries:  /usr/share/resin/"
-	einfo
+	einfo " "
+	einfo " "
 	einfo " STARTING AND STOPPING RESIN:"
 	einfo "   /etc/init.d/resin start"
 	einfo "   /etc/init.d/resin stop"
 	einfo "   /etc/init.d/resin restart"
-	einfo
+	einfo " "
+	einfo " "
 	einfo " NETWORK CONFIGURATION:"
 	einfo " By default, Resin runs on port 8080.  You can change this"
 	einfo " value by editing ${RESIN_HOME}/conf/resin.conf."
-	einfo
+	einfo " "
 	einfo " To test Resin while it's running, point your web browser to:"
 	einfo " http://localhost:8080/"
-	einfo
+	einfo " "
 	einfo " Resin cannot run on port 80 as non-root (as of this time)."
 	einfo " The best way to get Resin to respond on port 80 is via port"
 	einfo " forwarding -- by installing a firewall on the machine running"
 	einfo " Resin or the network gateway.  Simply redirect port 80 to"
 	einfo " port 8080."
-	einfo
+	einfo " "
 	einfo " BUGS:"
 	einfo " Please file any bugs at http://bugs.gentoo.org/ or else it"
 	einfo " may not get seen.  Thank you."
-	einfo
+	einfo " "
 }
 
 pkg_postrm() {

@@ -1,24 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/glade-perl/glade-perl-0.61.ebuild,v 1.11 2005/10/03 13:26:17 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/glade-perl/glade-perl-0.61.ebuild,v 1.1 2003/07/29 15:31:48 mcummings Exp $
 
 inherit perl-module
 
 MY_P=Glade-Perl-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Perl bindings for Glade"
-SRC_URI="mirror://cpan/authors/id/D/DM/DMUSGR/${MY_P}.tar.gz"
-HOMEPAGE="http://search.cpan.org/~dmusgr/${MY_P}/"
+SRC_URI="ftp://ftp.cpan.org/pub/CPAN/modules/by-module/Glade/${MY_P}.tar.gz"
+HOMEPAGE="http://www.perl.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-IUSE=""
+KEYWORDS="x86 ~amd64 ~ppc ~sparc ~alpha"
 
 DEPEND="${DEPEND}
 	   dev-util/glade
-	   dev-perl/gtk-perl
+	   dev-perl/gtk-perl 
 	   dev-perl/XML-Parser
 	   >=dev-perl/Unicode-String-2.07"
 
 mydoc="Documentation/FAQ Documentation/INSTALL Documentation/NEWS Documentation/README Documentation/ROADMAP Documentation/TODO"
+

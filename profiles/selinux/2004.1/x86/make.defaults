@@ -1,15 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/selinux/2004.1/x86/make.defaults,v 1.10 2005/04/16 14:51:57 pebenito Exp $
+# Copyright 2002 Gentoo Technologies, Inc.
+# System-wide defaults for the gcc 3.2 Portage system
 
-USE="x86"
-GRP_STAGE23_USE="x86"
+USE="x86 berkdb crypt ncurses pam python readline selinux ssl tcpd zlib"
+GRP_STAGE23_USE="x86 berkdb crypt ncurses pam python readline selinux ssl tcpd zlib"
 
 ARCH="x86"
+COMPILER="gcc3"
 ACCEPT_KEYWORDS="x86"
-
-CHOST="i686-pc-linux-gnu"
-CFLAGS="-O2 -mcpu=i686 -pipe"
-CXXFLAGS="${CFLAGS}"
-
-#FEATURES="sandbox"
+FEATURES="strict sfperms"
+POLICYDIR="/etc/security/selinux/src/policy"

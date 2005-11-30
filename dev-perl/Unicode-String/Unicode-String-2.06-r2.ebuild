@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-String/Unicode-String-2.06-r2.ebuild,v 1.10 2005/05/25 14:16:00 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-String/Unicode-String-2.06-r2.ebuild,v 1.1 2002/10/30 07:20:40 seemant Exp $
 
 inherit perl-module
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A Unicode Perl Module"
-SRC_URI="mirror://cpan/authors/id/G/GA/GAAS/${P}.tar.gz"
-HOMEPAGE="http://search.cpan.org/~gaas/${P}/"
+SRC_URI="http://cpan.valueclick.com/modules/by-module/Unicode/${P}.tar.gz"
+HOMEPAGE="http://cpan.valueclick.com/modules/by-module/Unicode/${P}.readme"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="x86 amd64 ppc sparc alpha"
-IUSE=""
+KEYWORDS="x86 ppc sparc sparc64 alpha"
 
 DEPEND="${DEPEND}
-	>=perl-core/MIME-Base64-2.11"
+	>=dev-perl/MIME-Base64-2.11"

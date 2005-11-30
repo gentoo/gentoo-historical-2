@@ -1,336 +1,14 @@
-# ChangeLog for media-tv/mythtv
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/ChangeLog,v 1.77 2005/09/06 15:02:07 cardoe Exp $
-
-  06 Sep 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.18.1-r1.ebuild,
-  mythtv-0.18.1-r2.ebuild:
-  oggvorbis USE to vorbis USE, bug #94254
-
-  12 Aug 2005; Doug Goldstein <cardoe@gentoo.org>
-  +files/mythtv-0.18.1-cc-on-mute.patch, mythtv-0.18.1-r2.ebuild:
-  Fix up CPU types. bug #94696.
-
-  28 Jul 2005; Caleb Tennis <caleb@gentoo.org> mythtv-0.18.1-r1.ebuild,
-  mythtv-0.18.1-r2.ebuild:
-  Fix qt dep per bug #100235
-
-  27 Jul 2005; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  mythtv-0.18.1-r1.ebuild:
-  Stable mask for mythtv. -r2 needs some further testing.
-
-  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> mythtv-0.18.1-r1.ebuild,
-  mythtv-0.18.1-r2.ebuild:
-  Fix qmake dir per bug #97535
-
-  29 Jun 2005; Doug Goldstein <cardoe@gentoo.org>
-  -files/mythtv-0.17-qt334-dst-fix.patch, -files/mythbackend.conf,
-  -files/mythbackend.rc6, -mythtv-0.17-r1.ebuild:
-  remove the old version
-
-  21 Jun 2005; Herbie Hopkins <herbs@gentoo.org> mythtv-0.18.1-r1.ebuild:
-  Backport multilib fixes and amd64 configure patch from -r2. Mark stable on
-  amd64.
-
-  29 Jun 2005; Doug Goldstein <cardoe@gentoo.org> +files/runmythfe,
-  mythtv-0.18.1-r2.ebuild:
-  Add crontab script for keeping mythfrontend going
-
-  21 Jun 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.18.1-r2.ebuild:
-  fixed firewire deps
-
-  06 Jun 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.18.1-r1.ebuild,
-  mythtv-0.18.1-r2.ebuild:
-  clean the amd64 stank off. fix frontendonly. fix xv usage.
-
-  01 Jun 2005; Herbie Hopkins <herbs@gentoo.org>
-  +files/mythtv-0.18.1-x86_64-configure.patch, mythtv-0.18.1-r2.ebuild:
-  Fixed bug 94664, support amd64 --arch options. Fixed multilib-strict issue.
-
-  01 Jun 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.18.1-r1.ebuild:
-  explictly add --disable-firewire because the test fails for someone
-
-  31 May 2005; David Holm <dholm@gentoo.org> mythtv-0.18.1-r2.ebuild:
-  Added to ~ppc.
-
-  30 May 2005; Doug Goldstein <cardoe@gentoo.org>
-  -files/mythtv-0.16-cx88.patch, files/mythfilldatabase.cron,
-  -mythtv-0.16.ebuild:
-  remove 0.16 series
-
-*mythtv-0.18.1-r2 (30 May 2005)
-
-  30 May 2005; Doug Goldstein <cardoe@gentoo.org> -mythtv-0.18-r2.ebuild,
-  -mythtv-0.18.1.ebuild, mythtv-0.18.1-r1.ebuild, +mythtv-0.18.1-r2.ebuild:
-  remove old ebuilds.
-  move firewire stuff from mythtv-0.18.1-r1 to -r2.
-  mark -r1 stable on x86
-
-  30 May 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.18.1-r1.ebuild:
-  Firewire support!!! Hoorah!
-
-  29 May 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.18.1-r1.ebuild:
-  Changed build to use some of the user's CFLAGS, stripping out all the 
-  dangerous stuff.
-
-  28 May 2005; Carsten Lohrke <carlo@gentoo.org> mythtv-0.17-r1.ebuild:
-  stable on x86
-
-*mythtv-0.18.1-r1 (23 May 2005)
-
-  23 May 2005; Doug Goldstein <cardoe@gentoo.org>
-  +files/mythtv-0.18.1-opengl-fix.patch, +mythtv-0.18.1-r1.ebuild:
-  OpenGL compile fix.
-
-  22 May 2005; Doug Goldstein <cardoe@gentoo.org> files/0.18-mythbackend.rc:
-  Fix warning msg for users running MythTV as root.
-  Fix pidfile problem for non-root users
-
-*mythtv-0.18.1 (16 May 2005)
-
-  16 May 2005; Doug Goldstein <cardoe@gentoo.org> +mythtv-0.18.1.ebuild:
-  rev bump
-
-*mythtv-0.18-r2 (16 May 2005)
-
-  16 May 2005; Doug Goldstein <cardoe@gentoo.org> +mythtv-0.18-r2.ebuild:
-  force the new init script on the masses
-  clean up some bugs... close some more bugs
-  move closer to stable x86
-
-  14 May 2005; Doug Goldstein <cardoe@gentoo.org>
-  files/0.18-mythbackend.conf, files/0.18-mythbackend.rc:
-  Fixed up init scripts
-
-*mythtv-0.18-r1 (11 May 2005)
-
-  11 May 2005; <cardoe@gentoo.org> +files/0.18-mythbackend.conf,
-  +files/0.18-mythbackend.rc, +mythtv-0.18-r1.ebuild:
-  rewrite the ebuild to get rid of the breakage of distcc/ccache and other
-  breakage MMX support is back CFLAGS are now picked by mythtv everything
-  should be happy
-
-  10 May 2005; Herbie Hopkins <herbs@gentoo.org> mythtv-0.18.ebuild:
-  Fixed bug #90185.
-
-  06 May 2005; Jeremy Huddleston <eradicator@gentoo.org> mythtv-0.16.ebuild:
-  Update 0.16 ebuild to depend on <qt-3.3.4 since it breaks DST
-
-  27 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org> mythtv-0.18.ebuild:
-  PDEPEND on myththemes.
-
-  18 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  -mythtv-0.17.ebuild, mythtv-0.17-r1.ebuild:
-  Stable amd64.
-
-*mythtv-0.18 (18 Apr 2005)
-
-  18 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  +mythtv-0.18.ebuild:
-  Version bump.
-
-*mythtv-0.17-r1 (06 Apr 2005)
-
-  06 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  +files/mythtv-0.17-qt334-dst-fix.patch, mythtv-0.17.ebuild,
-  +mythtv-0.17-r1.ebuild:
-  Version bump for daylight savings time bugfix with qt-3.3.4. Use proper
-  toolchain compiler. Removed ieee1394 support since it requires a package not
-  yet in portage. This closes bugs #81767 and #87947.
-
-  26 Mar 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.17.ebuild:
-  remove install of depreciated mysql.txt. added msgs for ieee1394 and nvidia
-  USE flags (bug #81767)
-
-  02 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  files/mythbackend.conf, files/mythbackend.rc6:
-  Use bash builtins for testing.  Added MYTH_NICE option.
-
-  28 Feb 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.17.ebuild:
-  added some notices about ieee1394 and cle266 USE flags
-
-  12 Feb 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.17.ebuild:
-  filter some more problematic CFLAGS
-
-  11 Feb 2005; Doug Goldstein <cardoe@gentoo.org> mythtv-0.17.ebuild:
-  small fix
-
-*mythtv-0.17 (11 Feb 2005)
-
-  11 Feb 2005; Doug Goldstein <cardoe@gentoo.org>
-  -mythtv-0.16.20050115-r1.ebuild, -mythtv-0.16.20050115.ebuild,
-  +mythtv-0.17.ebuild:
-  revision bump
-  lots of fixes to ebuild to support new features, get rid of broken ones
-  deal with situations better..
-
-*mythtv-0.16.20050115-r1 (10 Feb 2005)
-
-  10 Feb 2005; Doug Goldstein <cardoe@gentoo.org>
-  +mythtv-0.16.20050115-r1.ebuild, mythtv-0.16.20050115.ebuild:
-  oss is required so make it manditory.
-  fixed bug #81372 as per suggestions from Mike Trowbridge
-
-*mythtv-0.16.20050115 (18 Jan 2005)
-
-  18 Jan 2005; Doug Goldstein <cardoe@gentoo.org> metadata.xml,
-  -files/gcc-3.4-fix.patch, -files/mythtv-0.15-directfb.patch,
-  -files/tvformat.fix.0.13.diff, -mythtv-0.13-r1.ebuild,
-  -mythtv-0.14-r1.ebuild, -mythtv-0.15.1-r1.ebuild, -mythtv-0.15.1.ebuild,
-  +mythtv-0.16.20050115.ebuild:
-  rev dump to CVS snapshot for bug fixes and feature updates since upstream
-  won't release and won't suppport current stable merge changes from eclass
-  remove old revs fix up ebuild add XrandX extension since Gentoo X.org always
-  has it
-
-  04 Dec 2004; Brian Jackson <iggy@gentoo.org> mythtv-0.16.ebuild:
-  I can't find any of the other media-tv guys, and it's been fairly bug free
-  (except 69251 which is fixed by this), so marrking as x86
-
-  18 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.16.ebuild:
-  Check if neither X or directfb are in USE, closing #64289.
-
-  18 Sep 2004; Doug Goldstein <cardoe@gentoo.org> mythtv-0.15.1-r1.ebuild,
-  mythtv-0.16.ebuild:
-  correct path of DVB headers
-
-  13 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.16.ebuild:
-  Added patch from CVS to fix cx88 related crashes.
-
-  12 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.16.ebuild:
-  Make compilation distcc friendly, closing #63672.
-
-  10 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> files/mythbackend.conf,
-  files/mythbackend.rc6:
-  Added option to specify verbose level for mythbackend. Closing #56114.
-
-*mythtv-0.16 (10 Sep 2004)
-
-  10 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.16.ebuild:
-  Version bump. I've re-done some of the ebuild layout and added a myth
-  eclass to save some code.
-
-  14 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.15.1-r1.ebuild:
-  Added debug support and missing use flags to IUSE.
-
-  13 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.15.1-r1.ebuild:
-  Added QMAKESPEC, closing #56426.
-
-  11 Jul 2004; Chris Bainbridge <chrb@gentoo.org> mythtv-0.15.1-r1.ebuild:
-  add inherit gcc
-
-  09 Jul 2004; Chris Bainbridge <chrb@gentoo.org> mythtv-0.15.1-r1.ebuild:
-  Add X to IUSE
-
-*mythtv-0.15.1-r1 (07 Jul 2004)
-
-  07 Jul 2004; Chris Bainbridge <chrb@gentoo.org> mythtv-0.15.1-r1.ebuild:
-  fix gcc 3.4 compile bug #56101
-
-  04 Jul 2004; Chris Bainbridge <chrb@gentoo.org> :
-  Support QT-embedded and fix typos (bug #53403)
-
-  28 Jun 2004; Daniel Goller <morfic@gentoo.org> mythtv-0.15.1.ebuild:
-  Added patch to allow compilation on gcc-3.4.0 conditionally
-  Patch thanks to Herbie Hopkins
-  Closes bug #52819
-
-  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> mythtv-0.13-r1.ebuild,
-  mythtv-0.14-r1.ebuild, mythtv-0.15.1.ebuild:
-  Fix use invocation
-
-  02 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.15.1.ebuild:
-  + Added check for OpenGL implementation, closing #52722.
-  + Added directfb patch by Scott Alfer <gentoo@salfter.dyndns.org> from #52154.
-  + Depend on either wget (for DataDirect) or xmltv.
-
-*mythtv-0.15.1 (01 Jun 2004)
-
-  01 Jun 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.11.ebuild,
-  mythtv-0.12.ebuild, mythtv-0.15.1.ebuild:
-  Version bump and ebuilds cleanup.
-
-  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> mythtv-0.13-r1.ebuild:
-  Add inherit eutils
-
-  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> mythtv-0.11.ebuild,
-  mythtv-0.14-r1.ebuild:
-  Add die following econf for bug 48950
-
-  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> mythtv-0.12.ebuild,
-  mythtv-0.13-r1.ebuild:
-  Add die following econf for bug 48950
-
-  10 Mar 2004; Max Kalika <max@gentoo.org> mythtv-0.14-r1.ebuild:
-  Fix bugs #40964 and #42943 by filtering -fPIC and -fforce-addr.
-
-  17 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.14-r1.ebuild:
-  Fix CFLAGS and defines so that it can be compiled on amd64. Closing #37578.
-
-*mythtv-0.14-r1 (06 Feb 2004)
-
-  06 Feb 2004; Max Kalika <max@gentoo.org> mythtv-0.14-r1.ebuild,
-  mythtv-0.14.ebuild:
-  Re-enable DVB support. Add DirectFB, artsc, and cle266 (via hardware MPEG
-  decoder) support.
-
-*mythtv-0.14 (02 Feb 2004)
-
-  02 Feb 2004; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.14.ebuild:
-  Version bump
-
-  15 Jan 2004; Max Kalika <max@gentoo.org> mythtv-0.13-r1.ebuild,
-  mythtv-0.13.ebuild:
-  Bump to stable x86.
-
-*mythtv-0.13-r1 (14 Dec 2003)
-
-  14 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.13-r1.ebuild:
-  Apply upstream patch to fix recordings on analog bttv cards.
-
-*mythtv-0.13 (11 Dec 2003)
-
-  11 Dec 2003; Daniel Ahlberg <aliz@gentoo.org> mythtv-0.13.ebuild:
-  Version bump.
-
-  04 Dec 2003; Michael Sterrett <mr_bones_@gentoo.org> mythtv-0.10.ebuild:
-  clean old version per max
-
-  28 Oct 2003; Max Kalika <max@gentoo.org> mythtv-0.12.ebuild:
-  Disable DVB for now. Extend CPU detection. Fix potential portage bug in
-  pkg_setup().
-
-*mythtv-0.12 (19 Oct 2003)
-
-  19 Oct 2003; Max Kalika <max@gentoo.org> mythtv-0.12.ebuild:
-  Bump to version 0.12. Add support for alsa, dvb, lcd, lirc, xvmc. Add Qt
-  mysql support check.
-
-  16 Sep 2003; Max Kalika <max@gentoo.org> mythtv-0.10.ebuild,
-  mythtv-0.11.ebuild:
-  Bump to stable.
-
-*mythtv-0.11 (18 Aug 2003)
-
-  18 Aug 2003; Max Kalika <max@gentoo.org> mythtv-0.11.ebuild:
-  Bump version to 0.11.
-
-  07 Aug 2003; Max Kalika <max@gentoo.org> mythtv-0.10.ebuild:
-  Block media-tv/mythfrontend.
-
-  21 Jul 2003; Max Kalika <max@gentoo.org> mythtv-0.10.ebuild:
-  Correct and simplify the compile process.
-
-  14 Jul 2003; Nick Hadaway <raker@gentoo.org> mythtv-0.10.ebuild:
-  Locked dependancy of xmltv to 0.5.14 as 0.5.15 is incompatible
-  with the 0.10 release as reported on the upstream homepage.
-
-  03 Jul 2003; Max Kalika <max@gentoo.org> mythtv-0.8.ebuild:
+# ChangeLog for media-video/mythtv
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/ChangeLog,v 1.1 2003/07/09 00:05:43 johnm Exp $
+
+  03 Jul 2003; Max Kalika <max@lsit.ucsb.edu> mythtv-0.8.ebuild:
   Set KEYWORDS to ~x86.
 
-  02 Jul 2003; Max Kalika <max@gentoo.org> files/mythfilldatabase.cron:
+  02 Jul 2003; Max Kalika <max@lsit.ucsb.edu> files/mythfilldatabase.cron:
   Remove --update and --no-delete from the sample cron file.
 
-  01 Jul 2003; Max Kalika <max@gentoo.org> files/mythbackend.conf,
+  01 Jul 2003; Max Kalika <max@lsit.ucsb.edu> files/mythbackend.conf,
   files/mythbackend.rc6:
   Fix up mythbackend start up script: reset permissions on pid and log
   directories, change MYTH_NOWARN to MYTH_WARN and reverse the functionality,
@@ -338,7 +16,7 @@
 
 *mythtv-0.10 (01 Jul 2003)
 
-  01 Jul 2003; Max Kalika <max@gentoo.org> mythtv-0.10.ebuild,
+  01 Jul 2003; Max Kalika <max@lsit.ucsb.edu> mythtv-0.10.ebuild,
   files/mythbackend.conf:
   Bump version to 0.10. Drop all patches -- just move config to /etc/mythtv and
   link to /usr/share/mythtv. Change xmltv depend to >= 0.5.14. Move
@@ -350,18 +28,18 @@
   on startup as reported on #10533. Add a note about the importance of upgrading
   the database.
 
-  22 Jun 2003; Max Kalika <max@gentoo.org> mythtv-0.9.1-r2.ebuild:
+  22 Jun 2003; Max Kalika <max@lsit.ucsb.edu> mythtv-0.9.1-r2.ebuild:
   Rename patch to mythtv-0.9-gentoo.patch. Depend on >=sys-apps/sed-4. Die
   if sed fails. Clean up some other dependencies.
 
 *mythtv-0.9.1-r2 (18 Jun 2003)
 
-  18 Jun 2003; Max Kalika <max@gentoo.org> mythtv-0.9.1-r2.ebuild,
+  18 Jun 2003; Max Kalika <max@lsit.ucsb.edu> mythtv-0.9.1-r2.ebuild,
   Move to media-tv. Drop the mysql dependency.
 
 *mythtv-0.9.1 (13 Jun 2003)
 
-  13 Jun 2003; Max Kalika <max@gentoo.org> mythtv-0.9.1.ebuild,
+  13 Jun 2003; Max Kalika <max@lsit.ucsb.edu> mythtv-0.9.1.ebuild,
   mythtv-gentoo.patch:
   Bump to 0.9.1. Drop the sed fix for config file in /etc/mythtv and use
   a patch instead which also fixes another file. This allows mythgallery
@@ -369,7 +47,7 @@
 
 *mythtv-0.9 (09 Jun 2003)
 
-  09 Jun 2003; Max Kalika <max@gentoo.org> mythtv-0.9.ebuild:
+  09 Jun 2003; Max Kalika <max@lsit.ucsb.edu> mythtv-0.9.ebuild:
   Bump to 0.9. Make all sed operations inline. Add a sed fix to use config
   file in /etc/mythtv instead of /usr/etc/mythtv. Run qmake as in all other
   Myth projects to generate a valid Makefile. Change emake to make because
@@ -378,5 +56,5 @@
 
 *mythtv-0.8 (28 Apr 2003)
 
-  28 Apr 2003; Max Kalika <max@gentoo.org> mythtv-0.8.ebuild:
+  28 Apr 2003; Max Kalika <max@lsit.ucsb.edu> mythtv-0.8.ebuild:
   Initial import.

@@ -1,14 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/vpopmail/vpopmail-5.4.9-r2.ebuild,v 1.8 2005/11/16 23:49:28 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/vpopmail/vpopmail-5.4.9-r2.ebuild,v 1.1 2005/05/10 02:03:17 anarchy Exp $
 
-inherit eutils gnuconfig fixheadtails
+inherit eutils gnuconfig fixheadtails flag-o-matic
 
 # TODO: all ldap, sybase support
 #MY_PV=${PV/_/-}
 #MY_P=${PN}-${MY_PV}
 HOMEPAGE="http://www.inter7.com/index.php?page=vpopmail"
-DESCRIPTION="A collection of programs to manage virtual email domains and accounts on your Qmail mail servers."
+DESCRIPTION="A collection of programs to manage virtual email domains and accounts on your Qmail or Postfix mail servers."
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -47,18 +47,16 @@ vpopmail_set_homedir() {
 
 pkg_setup() {
 	enewgroup vpopmail 89
-	enewuser vpopmail 89 -1 ${VPOP_DEFAULT_HOME} vpopmail
+	enewuser vpopmail 89 /bin/false ${VPOP_DEFAULT_HOME} vpopmail
 	upgradewarning
 }
 
 src_unpack() {
-	# cd ${WORKDIR}
-	# unpack ${MY_P}.tar.gz
+
 	unpack ${A}
 	cd ${S}
 
 	epatch ${FILESDIR}/${P}-access.violation.patch || die "failed to patch."
-	epatch ${FILESDIR}/${PN}-fPIC.patch || die "failed to patch Makefiles."
 	sed -i \
 		's|Maildir|.maildir|g' \
 		vchkpw.c vconvert.c vdelivermail.c \
@@ -73,7 +71,8 @@ src_unpack() {
 	gnuconfig_update
 	autoconf || die "reconfigure failed."
 	ht_fix_file ${S}/cdb/Makefile || die "failed to fix file"
-	epatch ${FILESDIR}/vpopmail-cdb-Makefile.patch || die "failed to patch Makefile"
+	epatch ${FILESDIR}/vpopmail-cdb-Makefile.patch || die "failed to patch cdb Makefile"
+	epatch ${FILESDIR}/${P}-Makefile.patch || die "failed to patch Makefile.am"
 }
 
 src_compile() {
@@ -123,11 +122,7 @@ src_compile() {
 	# TCPRULES for relaying is now considered obsolete, use relay-ctrl instead
 	#--enable-tcprules-prog=/usr/bin/tcprules --enable-tcpserver-file=/etc/tcp.smtp \
 	#--enable-roaming-users=y --enable-relay-clear-minutes=60 \
-	#--disable-rebuild-tcpserver-file \
-
-	# Copy compile from automake-1.6 
-	cp /usr/share/automake-1.6/compile ./ || die "failed to copy file"
-
+	#--disable-rebuild-tcpserver-file \	
 	emake || die "Make failed."
 }
 
@@ -185,7 +180,7 @@ src_install() {
 
 	einfo "Locking down vpopmail permissions"
 	# secure things more, i don't want the vpopmail user being able to write this stuff!
-	chown -R root:0 ${D}${VPOP_HOME}/{bin,etc,include}
+	chown -R root:root ${D}${VPOP_HOME}/{bin,etc,include}
 	chown root:vpopmail ${D}${VPOP_HOME}/bin/vchkpw
 	chmod 4711 ${D}${VPOP_HOME}/bin/vchkpw
 }

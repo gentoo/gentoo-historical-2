@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-2.0.54-r30.ebuild,v 1.4 2005/09/23 04:36:51 vericgar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-2.0.54-r30.ebuild,v 1.1 2005/09/10 19:58:24 vericgar Exp $
 
 inherit eutils gnuconfig
 
@@ -10,7 +10,7 @@ GENTOO_PATCHSTAMP="20050910"
 GENTOO_DEVSPACE="vericgar"
 GENTOO_PATCHDIR="${WORKDIR}/${GENTOO_PATCHNAME}"
 
-DESCRIPTION="The Apache Web Server"
+DESCRIPTION="The Apache Web Server, Version 2.0.x"
 HOMEPAGE="http://httpd.apache.org/"
 SRC_URI="mirror://apache/httpd/httpd-${PV}.tar.bz2
 	http://dev.gentoo.org/~${GENTOO_DEVSPACE}/dist/apache/${GENTOO_PATCHNAME}-${GENTOO_PATCHSTAMP}.tar.bz2"
@@ -36,14 +36,6 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/httpd-${PV}"
 
 big_fat_warnings() {
-
-	if use ldap && ! built_with_use 'dev-libs/apr-util' ldap; then
-		eerror "dev-libs/apr-util is missing LDAP support. For apache to have"
-		eerror "ldap support, apr-util must be built with the ldap USE-flag"
-		eerror "enabled."
-		die "ldap USE-flag enabled while not supported in apr-util"
-	fi
-
 	if use mpm-peruser; then
 		ewarn " -BIG- -FAT- -WARNING-"
 		ewarn ""
@@ -330,7 +322,7 @@ pkg_postinst() {
 	done
 	[ -n "${list}" ] && einfo "You should delete these old symlinks: ${list}"
 
-	if has_version '<net-www/apache-2.0.54-r30' && has_version '>=net-www/apache-2.0.0' ; then
+	if has_version '<net-www/apache-2.0.54-r10' && has_version '>=net-www/apache-2.0.0' ; then
 		einfo "Configuration locations have changed, you will need to migrate"
 		einfo "your configuration from /etc/apache2/conf/apache2.conf and"
 		einfo "/etc/apache2/conf/commonapache2.conf to /etc/apache2/httpd.conf."

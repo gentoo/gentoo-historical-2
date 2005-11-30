@@ -1,23 +1,6 @@
 # ChangeLog for net-dialup/qlcr
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/qlcr/ChangeLog,v 1.5 2005/10/04 20:02:44 mrness Exp $
-
-  04 Oct 2005; Alin Nastac <mrness@gentoo.org> -qlcr-0.4.0.ebuild,
-  qlcr-0.4.1.ebuild:
-  Remove obsolete version. Remove INSTALL from docs.
-
-  25 Jul 2005; Caleb Tennis <caleb@gentoo.org> qlcr-0.4.0.ebuild,
-  qlcr-0.4.1.ebuild:
-  Change qt dep per bug #100235
-
-  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> qlcr-0.4.0.ebuild,
-  qlcr-0.4.1.ebuild:
-  Fix qmake dir per bug #97535
-
-*qlcr-0.4.1 (14 Jun 2005)
-
-  14 Jun 2005; Stefan Schweizer <genstef@gentoo.org> +qlcr-0.4.1.ebuild:
-  Version Bump thanks to Andre Kloth <bugs-gentoo@blubbmon.de> in bug 96051
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/qlcr/ChangeLog,v 1.1 2005/02/26 11:32:04 genstef Exp $
 
 *qlcr-0.4.0 (26 Feb 2005)
 

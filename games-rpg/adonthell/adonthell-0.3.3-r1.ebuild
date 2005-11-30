@@ -1,50 +1,45 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/adonthell/adonthell-0.3.3-r1.ebuild,v 1.10 2005/06/15 19:02:21 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/adonthell/adonthell-0.3.3-r1.ebuild,v 1.1 2003/09/10 06:26:50 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="roleplaying game engine"
 HOMEPAGE="http://adonthell.linuxgames.com/"
-SRC_URI="http://savannah.nongnu.org/download/adonthell/${PN}-src-${PV}.tar.gz"
+SRC_URI="http://savannah.nongnu.org/download/adonthell/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
-IUSE="doc"
+KEYWORDS="x86"
+IUSE="oggvorbis gtk nls doc"
 
-RDEPEND="dev-lang/python
+DEPEND="dev-lang/python
 	media-libs/libsdl
-	media-libs/libvorbis
-	media-libs/libogg
-	sys-libs/zlib"
-DEPEND="${RDEPEND}
-	doc? (
-		media-gfx/graphviz
-		app-doc/doxygen )
-	sys-devel/autoconf"
+	oggvorbis? ( media-libs/libvorbis
+		media-libs/libogg )
+	sys-libs/zlib
+	gtk? ( =x11-libs/gtk+-1* )
+	doc? ( app-doc/doxygen )"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PV}-configure.in.patch"
-	aclocal && automake -a && autoconf || die "autotools failed"
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-configure.in.patch
+	autoconf || die
 }
 
 src_compile() {
 	egamesconf \
-		--disable-dependency-tracking \
-		--disable-py-debug \
-		--enable-nls \
-		$(use_enable doc) \
+		`use_enable nls` \
+		`use_enable doc` \
+		--with-gnu-ld \
 		|| die
 	touch doc/items/{footer,header}.html
-	emake || die "emake failed"
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	keepdir "${GAMES_DATADIR}/${PN}/games"
-	dodoc AUTHORS ChangeLog FULLSCREEN.howto NEWBIE NEWS README
+	emake install DESTDIR=${D} || die
+	dodoc README AUTHORS ChangeLog FULLSCREEN.howto NEWBIE NEWS
 	prepgamesdirs
 }

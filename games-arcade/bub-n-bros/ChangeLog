@@ -1,21 +1,6 @@
-# ChangeLog for games-arcade/bub-n-bros
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/bub-n-bros/ChangeLog,v 1.8 2005/08/11 23:54:26 tester Exp $
-
-  11 Aug 2005; Olivier Crête <tester@gentoo.org> bub-n-bros-1.1.ebuild:
-  Marked ~amd64, closes bug #102161, thanks to meetra for testing
-
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> bub-n-bros-1.1.ebuild:
-  Removed INSTALL.txt file.
-
-  06 May 2005; Sven Wegener <swegener@gentoo.org> bub-n-bros-1.1.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  17 Jan 2005; Jason Wever <weeve@gentoo.org> bub-n-bros-1.1.ebuild:
-  Added ~sparc keyword.
-
-  29 Apr 2004; Aron Griffis <agriffis@gentoo.org> bub-n-bros-1.1.ebuild:
-  Add ~alpha
+# ChangeLog for app-games/bub-n-bros
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/bub-n-bros/ChangeLog,v 1.1 2003/09/10 19:29:21 vapier Exp $
 
 *bub-n-bros-1.1 (12 Jul 2003)
 

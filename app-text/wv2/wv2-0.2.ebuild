@@ -1,14 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/wv2/wv2-0.2.ebuild,v 1.11 2005/01/01 16:42:37 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/wv2/wv2-0.2.ebuild,v 1.1 2003/11/05 18:27:21 caleb Exp $
 
+S=${WORKDIR}/${P}
 
 DESCRIPTION="Excellent MS Word filter lib, used in most Office suites"
 SRC_URI="mirror://sourceforge/wvware/${P}.tar.bz2"
-HOMEPAGE="http://wvware.sourceforge.net/"
+HOMEPAGE="http://www.wvware.com"
 
-KEYWORDS="x86 amd64 ~ppc sparc alpha"
-IUSE=""
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL-2"
 

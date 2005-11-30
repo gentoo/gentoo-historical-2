@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-0.98.5-r1.ebuild,v 1.6 2005/01/09 00:26:51 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-0.98.5-r1.ebuild,v 1.1 2004/02/03 22:17:47 spider Exp $
 
-inherit gnome2 eutils
+inherit gnome2
 
 DESCRIPTION="Gnome NetMeeting client"
 HOMEPAGE="http://www.gnomemeeting.org"
@@ -29,7 +29,7 @@ RDEPEND=">=dev-libs/pwlib-1.5.0
 	>=gnome-base/gconf-2.0
 	>=dev-libs/libxml2-2.6.1
 	>=media-sound/esound-0.2.28
-	>=gnome-base/orbit-2.5.0"
+	>=gnome-base/ORBit2-2.5.0"
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0
@@ -52,7 +52,7 @@ src_compile() {
 	myconf="${myconf} --with-openh323-includes=/usr/include/openh323"
 	myconf="${myconf} --with-openh323-libs=/usr/lib"
 
-	if use ssl; then
+	if [ -n "`use ssl`" ]; then
 		myconf="${myconf} --with-openssl-libs=/usr/lib"
 		myconf="${myconf} --with-openssl-includes=/usr/include/openssl"
 	fi

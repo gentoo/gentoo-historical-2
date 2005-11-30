@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libtermcap-compat/libtermcap-compat-2.0.8-r1.ebuild,v 1.12 2005/08/20 04:22:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libtermcap-compat/libtermcap-compat-2.0.8-r1.ebuild,v 1.1 2004/03/17 18:29:46 aliz Exp $
 
 inherit eutils
 
@@ -14,15 +14,16 @@ PATCHDIR="${WORKDIR}/patch"
 DESCRIPTION="Compatibility package for old termcap-based programs"
 HOMEPAGE="http://www.catb.org/~esr/terminfo/"
 SRC_URI="http://www.catb.org/~esr/terminfo/termtypes.tc.gz
+	http://dev.gentoo.org/~seemant/extras/${MY_P}.tar.bz2
+	http://dev.gentoo.org/~seemant/extras/${P}-gentoo-${PATCHVER}.tar.bz2
 	mirror://gentoo/${MY_P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${PATCHVER}.tar.bz2"
 
-LICENSE="freedist"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
-IUSE=""
+LICENSE="freedist"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~amd64 ~ia64 ~ppc64"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
@@ -52,8 +53,7 @@ src_install () {
 	# Make sure we link to /lib/libtermcap.so, not /usr/lib/libtermcap.a,
 	# bug #4411.
 	gen_usr_ldscript libtermcap.so
-	dosym libtermcap.so.2 /lib/libtermcap.so
-	dosym libtermcap.so.${PV} /lib/libtermcap.so.2
+	dosym libtermcap.so.${PV} /lib/libtermcap.so
 
 	insinto /etc
 	doins ${WORKDIR}/termcap
@@ -61,3 +61,4 @@ src_install () {
 	cd ${S}
 	dodoc ChangeLog README
 }
+

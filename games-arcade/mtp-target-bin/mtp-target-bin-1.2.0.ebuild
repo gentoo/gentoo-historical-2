@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/mtp-target-bin/mtp-target-bin-1.2.0.ebuild,v 1.4 2005/08/23 19:21:28 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/mtp-target-bin/mtp-target-bin-1.2.0.ebuild,v 1.1 2005/02/12 20:48:01 vapier Exp $
 
 inherit games
 
@@ -36,10 +36,10 @@ src_install() {
 	rm -f {client,server}/launch.sh
 
 	dodir "${GAMES_PREFIX_OPT}/${PN}"
-	cp -pPR "${S}/"* "${D}/${GAMES_PREFIX_OPT}"/${PN}/
+	cp -a "${S}/"* "${D}/${GAMES_PREFIX_OPT}"/${PN}/
 
-	games_make_wrapper ${PN}-client ./client "${GAMES_PREFIX_OPT}/${PN}/client" ../lib
-	games_make_wrapper ${PN}-server ./server "${GAMES_PREFIX_OPT}/${PN}/server" ../lib
+	games_make_wrapper ${PN}-client "${GAMES_PREFIX_OPT}/${PN}/client" ./client ../lib
+	games_make_wrapper ${PN}-server "${GAMES_PREFIX_OPT}/${PN}/server" ./server ../lib
 
 	dosym /usr/lib/liblualib.so "${GAMES_PREFIX_OPT}"/${PN}/lib/liblualib50.so.5.0
 	dosym /usr/lib/liblua.so "${GAMES_PREFIX_OPT}"/${PN}/lib/liblua50.so.5.0

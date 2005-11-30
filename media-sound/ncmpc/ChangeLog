@@ -1,62 +1,6 @@
 # ChangeLog for media-sound/ncmpc
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpc/ChangeLog,v 1.17 2005/11/21 11:45:19 gmsoft Exp $
-
-  21 Nov 2005; Guy Martin <gmsoft@gentoo.org> ncmpc-0.11.1-r1.ebuild:
-  Stable on hppa.
-
-  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
-  ncmpc-0.11.1-r1.ebuild:
-  Stable on ppc.
-
-  26 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  ncmpc-0.11.1-r1.ebuild:
-  Stable on sparc
-
-  25 Oct 2005; Andrej Kacian <ticho@gentoo.org> ncmpc-0.11.1-r1.ebuild:
-  Stable on x86.
-
-  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> ncmpc-0.11.1.ebuild:
-  Stable on ppc.
-
-  12 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> ncmpc-0.11.1.ebuild:
-  Stable on sparc
-
-*ncmpc-0.11.1-r1 (08 Sep 2005)
-
-  08 Sep 2005; Thomas Matthijs <axxo@gentoo.org> -ncmpc-0.10.1.ebuild,
-  ncmpc-0.11.1.ebuild, +ncmpc-0.11.1-r1.ebuild:
-  fix bug #61212
-
-  22 May 2005; Guy Martin <gmsoft@gentoo.org> ncmpc-0.11.1.ebuild:
-  Stable on hppa.
-
-*ncmpc-0.11.1 (11 Feb 2005)
-
-  11 Feb 2005; Thomas Matthijs <axxo@gentoo.org> metadata.xml,
-  +ncmpc-0.11.1.ebuild:
-  version bump
-
-  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> ncmpc-0.11.0.ebuild:
-  Stable amd64, sparc.
-
-  29 Jul 2004; Brian Harring <ferringb@gentoo.org> ncmpc-0.11.0.ebuild:
-  Stable on x86.
-
-  24 Jul 2004; Lars Weiler <pylon@gentoo.org> ncmpc-0.11.0.ebuild:
-  Stable on ppc.
-
-*ncmpc-0.11.0 (17 Jul 2004)
-
-  17 Jul 2004; Brian Harring <ferringb@gentoo.org> ncmpc-0.10.1.ebuild,
-  +ncmpc-0.11.0.ebuild:
-  stabling 0.10.1 for x86 and ppc, adding 0.11.0.
-
-  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ncmpc-0.10.1.ebuild:
-  ~amd64
-
-  09 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> ncmpc-0.10.1.ebuild:
-  Added ~sparc, bug #56543
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ncmpc/ChangeLog,v 1.1 2004/06/27 06:15:22 ferringb Exp $
 
 *ncmpc-0.10.1 (27 Jun 2004)
 

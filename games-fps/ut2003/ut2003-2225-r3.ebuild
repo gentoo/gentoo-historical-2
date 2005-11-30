@@ -1,13 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003/ut2003-2225-r3.ebuild,v 1.8 2005/10/21 17:47:39 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003/ut2003-2225-r3.ebuild,v 1.1 2004/07/08 13:51:49 wolf31o2 Exp $
 
-inherit eutils games
+inherit games
 
 DESCRIPTION="Unreal Tournament 2003 - Sequel to the 1999 Game of the Year multi-player first-person shooter"
 HOMEPAGE="http://www.unrealtournament2003.com/"
-SRC_URI="http://download.factoryunreal.com/mirror/UT2003CrashFix.zip
-	ftp://ftp.infogrames.net/misc/ut2003/ut2003lnx_patch2225.tar.tar"
+SRC_URI="http://unreal.epicgames.com/linux/ut2003/${PN}lnx_2107to${PV}.sh.bin
+	ftp://david.hedbor.org/ut2k3/updates/${PN}lnx_2107to${PV}.sh.bin
+	http://download.factoryunreal.com/mirror/UT2003CrashFix.zip"
 
 LICENSE="ut2003"
 SLOT="0"
@@ -17,8 +18,7 @@ RESTRICT="nostrip"
 
 DEPEND="virtual/libc
 	app-arch/unzip
-	games-util/uz2unpack
-	games-util/loki_patch"
+	games-util/uz2unpack"
 RDEPEND="dedicated? ( games-server/ut2003-ded )
 	!dedicated? ( virtual/opengl )"
 
@@ -27,7 +27,7 @@ S="${WORKDIR}"
 dir="${GAMES_PREFIX_OPT}/${PN}"
 
 pkg_setup() {
-	check_license ut2003
+	check_license || die "License check failed"
 	ewarn "The installed game takes about 2.7GB of space!"
 	cdrom_get_cds System/Packages.md5 StaticMeshes/AWHardware.usx.uz2 \
 		Extras/MayaPLE/Maya4PersonalLearningEditionEpic.exe
@@ -35,7 +35,7 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ut2003lnx_patch${PV}.tar.tar \
+	unpack_makeself ${DISTDIR}/${PN}lnx_2107to${PV}.sh.bin \
 		|| die "unpacking patch"
 	unzip ${DISTDIR}/UT2003CrashFix.zip \
 		|| die "unpacking crash-fix"
@@ -112,14 +112,17 @@ src_install() {
 
 	# installing documentation/icon
 	dodoc ${S}/README.linux || die "dodoc README.linux"
-	newicon Unreal.xpm ut2003.xpm || die "copying pixmap"
+	insinto /usr/share/pixmaps ; newins ${S}/Unreal.xpm UT2003.xpm || die "copying pixmap"
 	insinto ${dir}
 	doins ${S}/README.linux ${S}/Unreal.xpm || die "copying readme/icon"
 
-	games_make_wrapper ut2003 ./ut2003 "${dir}" "${dir}"
+	dogamesbin ${FILESDIR}/ut2003
+	sed -i "s:GENTOO_DIR:${dir}:" ${D}/${GAMES_BINDIR}/ut2003
 
 	# this brings our install up to the newest version
-	cp -r ${S}/ut2003-lnx-2225/* ${Ddir} || die
+	cd ${S}
+	bin/Linux/x86/loki_patch --verify patch.dat || die "verifying patch"
+	bin/Linux/x86/loki_patch patch.dat ${Ddir} >& /dev/null || die "patching"
 
 	# Here we apply DrSiN's crash patch
 	cp ${S}/CrashFix/System/crashfix.u ${Ddir}/System
@@ -156,7 +159,7 @@ pkg_postinst() {
 		einfo "A cdkey file is already present in ${dir}/System"
 	else
 		ewarn "You MUST run this before playing the game:"
-		ewarn "emerge --config =${CATEGORY}/${PF}"
+		ewarn "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
 		ewarn "That way you can [re]enter your cdkey."
 	fi
 	echo

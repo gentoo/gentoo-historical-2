@@ -1,21 +1,21 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dxr2-driver/dxr2-driver-1.0.4.ebuild,v 1.9 2004/06/25 00:39:40 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dxr2-driver/dxr2-driver-1.0.4.ebuild,v 1.1 2002/08/08 00:47:24 chouser Exp $
 
 DESCRIPTION="Driver and minimal DVD player(s) for the Creative Labs Dxr2 Card"
 HOMEPAGE="http://dxr2.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dxr2/${P}.tar.gz
-	http://dxr2.sourceforge.net/projects/dxr2-driver/firmware/DVD12.UX"
+	${HOMEPAGE}/projects/dxr2-driver/firmware/DVD12.UX"
 
-LICENSE="GPL-2"
+LICENSE="GPL"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
 
-DEPEND=">=media-libs/libdvdread-0.9.3"
+DEPEND=">=media-libs/libdvdread-0.9.3-r1"
+#RDEPEND=""
 
 # Non-standard source dir name for dxr2-driver
-S="${WORKDIR}/${PN}"
+S=${WORKDIR}/${PN}
 
 src_unpack() {
 	# Don't try to unpack the last item -- should be the .UX firmware file
@@ -42,7 +42,7 @@ src_compile() {
 
 src_install () {
 	# make install doesn't create standard dirs -- do that now
-	dodir /usr/bin /usr/lib /usr/src /etc/modules.d /dev
+	mkdir -p ${D}/usr/bin ${D}/usr/lib ${D}/usr/src ${D}/etc/modules.d || die
 
 	# no devfs support in dxr2 yet?
 	mknod ${D}/dev/dxr2 c 120 0 || die

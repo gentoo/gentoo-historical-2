@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tclx/tclx-8.3.5.ebuild,v 1.11 2005/05/04 11:28:35 fmccor Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tclx/tclx-8.3.5.ebuild,v 1.1 2004/08/07 16:49:30 cardoe Exp $
 
 inherit flag-o-matic eutils
 
@@ -14,18 +14,16 @@ SRC_URI="mirror://sourceforge/tclx/${PN}${PV}-src.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ppc alpha amd64 ~sparc"
+KEYWORDS="~x86"
 
 DEPEND=">=sys-apps/sed-4
 	>=dev-lang/tcl-8.4.6
-	X? ( >=dev-lang/tk-8.4.6 )"
+	X? >=dev-lang/tk-8.4.6"
 
 S=${WORKDIR}/${PN}${PV}
 
-# Not necessary ! see BUG #55238
-# Danny van Dyk <kugelfang@gentoo.org> 2004/08/30
-# [ $ARCH = alpha ] && append-flags -fPIC
-# [ "${ARCH}" = "amd64" ] && append-flags -fPIC
+[ $ARCH = alpha ] && append-flags -fPIC
+[ "${ARCH}" = "amd64" ] && append-flags -fPIC
 
 src_unpack() {
 	unpack ${A} ; cd ${S}

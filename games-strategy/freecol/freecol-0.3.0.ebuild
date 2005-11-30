@@ -1,14 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/freecol/freecol-0.3.0.ebuild,v 1.4 2005/07/09 02:51:29 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/freecol/freecol-0.3.0.ebuild,v 1.1 2004/12/09 08:30:06 mr_bones_ Exp $
 
 inherit games
 
 DESCRIPTION="An open source clone of the game Colonization"
 HOMEPAGE="http://freecol.sf.net"
-SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${PN}-${PV}-src.tar.gz"
 
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
@@ -20,14 +20,13 @@ DEPEND=">=virtual/jdk-1.4
 S="${WORKDIR}/${PN}"
 
 pkg_setup() {
-	if [ -z "${JAVA_HOME}" ]; then
+	if [ -z "$JAVA_HOME" ]; then
 		einfo
-		einfo "\${JAVA_HOME} not set!"
+		einfo "\$JAVA_HOME not set!"
 		einfo "Please use java-config to configure your JVM and try again."
 		einfo
-		die "\${JAVA_HOME} not set."
+		die "\$JAVA_HOME not set."
 	fi
-	games_pkg_setup
 }
 
 src_unpack() {

@@ -1,30 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/hesiod/hesiod-3.0.2-r1.ebuild,v 1.17 2005/08/13 17:18:14 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/hesiod/hesiod-3.0.2-r1.ebuild,v 1.1 2003/10/20 09:47:19 lanius Exp $
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
+filter-flags -fstack-protector
 
-DESCRIPTION="system which uses existing DNS functionality to provide access to databases of information that changes infrequently"
-HOMEPAGE="ftp://athena-dist.mit.edu/pub/ATHENA/hesiod"
+DESCRIPTION="Hesiod is a system which uses existing DNS functionality to provide access to databases of information that changes infrequently."
 SRC_URI="ftp://athena-dist.mit.edu/pub/ATHENA/${PN}/${P}.tar.gz"
+HOMEPAGE="ftp://athena-dist.mit.edu/pub/ATHENA/hesiod"
 
-LICENSE="ISC"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 mips ppc ppc64 s390 ~sparc ~x86"
-IUSE=""
+LICENSE="ISC"
+KEYWORDS="~x86 ~ppc ~sparc ~hppa"
 
-DEPEND=""
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-
-	filter-flags -fstack-protector
-
 	#Patches stolen from RH
 	epatch ${FILESDIR}/hesiod-${PV}-redhat.patch.gz
-	autoconf || die "autoconf failed"
-
+	cd ${S}
 	for manpage in *.3
 	do
 		if grep -q '^\.so man3/hesiod.3' ${manpage}
@@ -43,6 +38,6 @@ src_unpack() {
 	done
 }
 
-src_install() {
-	make DESTDIR="${D}" install || die
+src_install () {
+	make DESTDIR=${D} install || die
 }

@@ -1,5 +1,2 @@
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 91bbe245d594e75a485da760af46e4b2 monsterz-0.6.1.ebuild 1105
-MD5 d61042e9cebb671e505be5805acd19dd ChangeLog 1488
-MD5 aac74e93a724b1cfae4079bc553a37b6 files/monsterz-0.6.1-gentoo.patch 844
-MD5 0b43cdc8486ee7aa29fcb6b86f348186 files/digest-monsterz-0.6.1 67
+MD5 0eb0ccef7f72e64907ce4821d5736ea9 monsterz-0.4.1.ebuild 778
+MD5 48b4619fb74ecdcd08daf11d8bab2419 files/digest-monsterz-0.4.1 67

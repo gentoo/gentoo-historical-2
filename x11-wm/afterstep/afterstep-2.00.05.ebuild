@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/afterstep/afterstep-2.00.05.ebuild,v 1.6 2005/08/23 18:55:31 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/afterstep/afterstep-2.00.05.ebuild,v 1.1 2005/05/06 12:40:30 ka0ttic Exp $
 
 inherit flag-o-matic
 
@@ -10,8 +10,8 @@ SRC_URI="ftp://ftp.afterstep.org/stable/AfterStep-${PV}.tar.bz2"
 
 LICENSE="AFTERSTEP"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
-IUSE="debug gif jpeg mmx nls png tiff xinerama"
+KEYWORDS="~x86 ~ppc ~sparc"
+IUSE="debug gif jpeg mmx nls png tiff truetype xinerama"
 
 DEPEND="virtual/libc
 	virtual/x11
@@ -76,10 +76,10 @@ src_install() {
 
 	# This fixes a bug with shared libraries
 	rm ${D}/usr/lib/{libAfterImage.a,libAfterBase.a}
-	cp -pPR ${S}/libAfterImage/libAfterImage.so* ${D}/usr/lib
-	cp -pPR ${S}/libAfterBase/libAfterBase.so* ${D}/usr/lib
-	cp -pPR ${S}/libAfterConf/libAfterConf.so* ${D}/usr/lib
-	cp -pPR ${S}/libAfterStep/libAfterStep.so* ${D}/usr/lib
+	cp -a ${S}/libAfterImage/libAfterImage.so* ${D}/usr/lib
+	cp -a ${S}/libAfterBase/libAfterBase.so* ${D}/usr/lib
+	cp -a ${S}/libAfterConf/libAfterConf.so* ${D}/usr/lib
+	cp -a ${S}/libAfterStep/libAfterStep.so* ${D}/usr/lib
 
 	# Create a symlink from MonitorWharf to Wharf
 	rm ${D}/usr/bin/MonitorWharf
@@ -87,9 +87,9 @@ src_install() {
 
 	# Handle the documentation
 	dodoc COPYRIGHT ChangeLog INSTALL NEW* README* TEAM UPGRADE
-	cp -pPR ${S}/TODO ${D}/usr/share/doc/${PF}/
+	cp -a ${S}/TODO ${D}/usr/share/doc/${PF}/
 	dodir /usr/share/doc/${PF}/html
-	cp -pPR ${S}/doc/* ${D}/usr/share/doc/${PF}/html
+	cp -a ${S}/doc/* ${D}/usr/share/doc/${PF}/html
 	rm ${D}/usr/share/doc/${PF}/html/{Makefile*,afterstepdoc.in}
 
 	dodir /usr/share/xsessions

@@ -1,45 +1,8 @@
 # ChangeLog for net-analyzer/isic
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/isic/ChangeLog,v 1.11 2005/08/16 19:25:29 blubb Exp $
-
-  16 Aug 2005; Simon Stelling <blubb@gentoo.org> isic-0.06.ebuild:
-  added ~amd64 keyword
-
-  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> isic-0.06.ebuild:
-  removed die from epatch || die.
-
-  19 Jul 2005; David Holm <dholm@gentoo.org> isic-0.06.ebuild:
-  Added to ~ppc.
-
-  10 Apr 2005; Marcelo Goes <vanquirius@gentoo.org>
-  +files/isic-0.06-gcc4.patch, isic-0.06.ebuild:
-  Adding gcc-4 patch from Debian.
-
-  09 Jan 2005; Daniel Black <dragonheart@gentoo.org> metadata.xml,
-  -files/0.05-libnet-1.0.patch, -isic-0.05-r1.ebuild, -isic-0.05.ebuild,
-  isic-0.06.ebuild:
-  Removed old version as per bug #75193. Old versions had dependancy errors.
-  Vanquirius <marcelogoes@gmail.com> confirmed the new version is working.
-
-*isic-0.06 (08 Jan 2005)
-
-  08 Jan 2005; Daniel Black <dragonheart@gentoo.org>
-  +files/isic-0.06-makefile.patch, +isic-0.06.ebuild:
-  version bump as per bug #75193. Thanks to Vanquirius <marcelogoes@gmail.com>
-
-  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
-  isic-0.05-r1.ebuild, isic-0.05.ebuild:
-  Tidy
-
-*isic-0.05-r1 (21 Aug 2003)
-
-  21 Aug 2003; Mike Frysinger <vapier@gentoo.org> :
-  Patch to compile against SLOT-ed libnet-1.0.x #17772.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/isic/ChangeLog,v 1.1 2003/02/26 03:34:35 vapier Exp $
 
 *isic-0.05 (25 Feb 2003)
-
-  07 Mar 2003; Martin Holzer <mholzer@gentoo.org> isic-0.05.ebuild :
-  Fixed Depend to libnet-1.0*. Closes #17017.
 
   25 Feb 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by me for #11785.

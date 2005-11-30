@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.6.0.ebuild,v 1.4 2005/04/08 16:33:10 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.6.0.ebuild,v 1.1 2005/03/08 13:39:50 liquidx Exp $
 
 inherit gnome.org python flag-o-matic
 
@@ -11,13 +11,12 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~sparc ~x86 ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~sparc ~x86"
 IUSE="gnome opengl doc"
 
 RDEPEND=">=dev-lang/python-2.3
 	>=x11-libs/gtk+-2.6.0
 	>=dev-libs/glib-2.4.0
-	!arm? ( dev-python/numeric )
 	gnome? ( >=gnome-base/libglade-2.3.6 )
 	opengl? ( virtual/opengl
 		dev-python/pyopengl
@@ -67,7 +66,7 @@ src_test() {
 
 pkg_postinst() {
 	python_version
-	python_mod_optimize /usr/share/pygtk/2.0/codegen /usr/$(get_libdir)/python${PYVER}/site-packages/gtk-2.0
+	python_mod_optimize /usr/share/pygtk/2.0/codegen /usr/lib/python${PYVER}/site-packages/gtk-2.0
 	alternatives_auto_makesym /usr/$(get_libdir)/python${PYVER}/site-packages/pygtk.py pygtk.py-[0-9].[0-9]
 	alternatives_auto_makesym /usr/$(get_libdir)/python${PYVER}/site-packages/pygtk.pth pygtk.pth-[0-9].[0-9]
 	python_mod_compile /usr/$(get_libdir)/python${PYVER}/site-packages/pygtk.py
@@ -77,7 +76,7 @@ pkg_postrm() {
 	python_version
 	python_mod_cleanup /usr/share/pygtk/2.0/codegen
 	python_mod_cleanup
-	rm -f ${ROOT}/usr/$(get_libdir)/python${PYVER}/site-packages/pygtk.{py,pth}
-	alternatives_auto_makesym /usr/$(get_libdir)/python${PYVER}/site-packages/pygtk.py pygtk.py-[0-9].[0-9]
-	alternatives_auto_makesym /usr/$(get_libdir)/python${PYVER}/site-packages/pygtk.pth pygtk.pth-[0-9].[0-9]
+	rm -f ${ROOT}/usr/lib/python${PYVER}/site-packages/pygtk.{py,pth}
+	alternatives_auto_makesym /usr/lib/python${PYVER}/site-packages/pygtk.py pygtk.py-[0-9].[0-9]
+	alternatives_auto_makesym /usr/lib/python${PYVER}/site-packages/pygtk.pth pygtk.pth-[0-9].[0-9]
 }

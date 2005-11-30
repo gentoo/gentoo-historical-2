@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/queequeg/queequeg-0.91.ebuild,v 1.5 2005/11/20 21:12:59 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/queequeg/queequeg-0.91.ebuild,v 1.1 2004/10/17 10:27:37 hattya Exp $
 
 inherit distutils
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 RESTRICT="nomirror"
 LICENSE="GPL-2"
-KEYWORDS="~ppc-macos ~x86"
+KEYWORDS="~x86"
 SLOT="0"
 
 DEPEND=">=dev-lang/python-2.2

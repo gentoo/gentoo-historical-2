@@ -1,44 +1,6 @@
 # ChangeLog for media-video/streamdvd
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/streamdvd/ChangeLog,v 1.13 2005/10/30 23:24:02 flameeyes Exp $
-
-  30 Oct 2005; Diego Pettenò <flameeyes@gentoo.org>
-  streamdvd-0.4-r1.ebuild:
-  Added missing lsdvd dependency as per bug #104375.
-
-  03 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
-  streamdvd-0.4-r1.ebuild:
-  Don't install COPYING file.
-
-  23 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> streamdvd-0.4-r1.ebuild:
-  replaced gui useflag with X useflag.
-
-  22 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> streamdvd-0.4-r1.ebuild:
-  added missing dependency and missing gui in IUSE. fixes #69664
-
-  15 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> streamdvd-0.4-r1.ebuild:
-  changed app-cdr/cdrtools dependency to virtual/cdrtools. see bug #77817.
-
-  18 Oct 2004; Danny van Dyk <kugelfang@gentoo.org> streamdvd-0.4-r1.ebuild:
-  Marked ~amd64.
-
-  31 Jul 2004; Chris White <chriswhite@gentoo.org> streamdvd-0.4-r1.ebuild:
-  Missing IUSE.
-
-  26 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  streamdvd-0.4-r1.ebuild:
-  fix use invocation
-
-  23 Jul 2004; Michael Imhof <tantive@gentoo.org> streamdvd-0.4-r1.ebuild:
-  Version bumped. Closes #52452, #47807.
-
-  28 Mar 2004; David Holm <dholm@gentoo.org> streamdvd-0.4.ebuild:
-  Added to ~ppc.
-
-*streamdvd-0.4 (28 Mar 2004)
-
-  28 Mar 2004; Martin Holzer <mholzer@gentoo.org> streamdvd-0.4.ebuild:
-  Version bumped. Closes 45557
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/streamdvd/ChangeLog,v 1.1 2004/02/25 00:13:06 vapier Exp $
 
 *streamdvd-0.3 (24 Feb 2004)
 

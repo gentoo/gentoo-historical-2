@@ -1,26 +1,6 @@
 # ChangeLog for dev-tex/xkeyval
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/xkeyval/ChangeLog,v 1.5 2005/11/28 18:38:23 nattfodd Exp $
-
-*xkeyval-2.4-r1 (28 Nov 2005)
-*xkeyval-1.4-r1 (28 Nov 2005)
-
-  28 Nov 2005; Alexandre Buisse <nattfodd@gentoo.org> -xkeyval-1.4.ebuild,
-  +xkeyval-1.4-r1.ebuild, -xkeyval-2.4.ebuild, +xkeyval-2.4-r1.ebuild:
-  Added block of >=tetex-3.0 as this package is now part of tetex and the
-  block was previously not mutual (bug #94815).
-
-*xkeyval-2.4 (03 Apr 2005)
-
-  03 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> xkeyval-1.4.ebuild,
-  +xkeyval-2.4.ebuild:
-  Version bumped. Thanks to ash@tsi.lv. This closes bug #84326.
-
-  14 Oct 2004; David Holm <dholm@gentoo.org> xkeyval-1.4.ebuild:
-  Added to ~ppc.
-
-  30 Sep 2004; Simon Stelling <blubb@gentoo.org> xkeyval-1.4.ebuild:
-  added ~amd64
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/xkeyval/ChangeLog,v 1.1 2004/09/08 18:29:50 usata Exp $
 
 *xkeyval-1.4 (09 Sep 2004)
 

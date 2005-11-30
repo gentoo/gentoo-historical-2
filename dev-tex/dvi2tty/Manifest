@@ -1,5 +1,2 @@
-MD5 fbd02317b6e12367dcd49dc1c96c1fd4 ChangeLog 757
-MD5 6e6cc888e5a22bda6d28583c0f041519 dvi2tty-5.3.1.ebuild 631
-MD5 c472f5fd1646eb8bca71d8df5cb2bdcc metadata.xml 164
+MD5 79a075c444b80efe35c20da7fd47af70 dvi2tty-5.3.1.ebuild 445
 MD5 e0fb360ac06c81780254234af41ae1ae files/digest-dvi2tty-5.3.1 64
-MD5 b0e5354516b0ad484d6d3477424bd581 files/dvi2tty-gcc.patch 341

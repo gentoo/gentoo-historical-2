@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/lookup/lookup-1.3.ebuild,v 1.8 2005/01/01 13:52:26 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/lookup/lookup-1.3.ebuild,v 1.1 2003/09/01 12:34:22 usata Exp $
 
-inherit elisp
+inherit elisp 
 
 IUSE=""
 
@@ -12,9 +12,11 @@ SRC_URI="mirror://sourceforge/lookup/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 DEPEND="virtual/emacs"
+
+S="${WORKDIR}/${P}"
 
 src_compile() {
 
@@ -26,16 +28,12 @@ src_install() {
 
 	einstall lispdir=${D}${SITELISP}/${PN} || die
 
-	elisp-site-file-install ${FILESDIR}/50lookup-gentoo.el
+ 	elisp-site-file-install ${FILESDIR}/50lookup-gentoo.el
 
-	if ! $(grep 2010/tcp /etc/services >/dev/null 2>&1) ; then
-		cp /etc/services ${T}/services
-		cat >>${T}/services<<-EOF
-		ndtp		2010/tcp			# Network Dictionary Transfer Protocol
-		EOF
-		insinto /etc
-		doins ${T}/services
-	fi
+ 	dodoc AUTHORS ChangeLog NEWS README VERSION
+}
 
-	dodoc AUTHORS ChangeLog NEWS README VERSION
+prepall() {
+
+	einfo "Lookup info file should not be gzipped"
 }

@@ -1,26 +1,6 @@
-# ChangeLog for games-fps/unreal-tournament-goty
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-goty/ChangeLog,v 1.8 2005/09/26 18:08:44 wolf31o2 Exp $
-
-  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  unreal-tournament-goty-451.ebuild:
-  Making games last on inherit line.
-
-  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
-  needs app-arch/unzip; tidy
-
-  10 Aug 2005; Carlos Silva <r3pek@gentoo.org>
-  unreal-tournament-goty-451.ebuild:
-  marked ~amd64. closes bug #102037
-
-  12 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
-  Made X a hard dependency and closing bug #92255.
-
-  03 Jun 2004; Aron Griffis <agriffis@gentoo.org>
-  unreal-tournament-goty-436.ebuild, unreal-tournament-goty-451.ebuild:
-  Fix use invocation
+# ChangeLog for app-games/unreal-tournament-goty
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/unreal-tournament-goty/ChangeLog,v 1.1 2003/09/09 18:10:15 vapier Exp $
 
 *unreal-tournament-goty-451 (11 Jul 2003)
 

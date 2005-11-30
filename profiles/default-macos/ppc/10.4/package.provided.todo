@@ -10,7 +10,7 @@ app-editors/emacs-21.2.1
 app-editors/vim-6.2
 app-misc/screen-3.09.15
 app-misc/srm-1.2.6
-app-shells/bash-2.05b-r2
+app-shells/bash-2.05b
 app-shells/tcsh-6.12
 app-shells/zsh-4.1.1
 app-text/enscript-1.6.3
@@ -75,6 +75,7 @@ net-www/apache-2.0.49
 net-www/apache_mod_hfs_apple-5
 net-www/jboss-3.2.3
 net-www/mod_dav-1.0.3
+net-www/mod_perl-1.26
 net-www/mod_rendezvous_apple-8
 net-www/mod_ssl-2.8.16
 sys-apps/diffutils-2.5.7 
@@ -86,13 +87,13 @@ sys-apps/gawk-2.8
 sys-apps/grep-2.4.2
 sys-apps/groff-1.18.1
 sys-apps/less-378
-sys-process/lsof-4.68
+sys-apps/lsof-4.68
 sys-apps/miscfiles-1.3-r1
 sys-apps/sed-4.0.7
 sys-apps/sed-4.0.7
 sys-apps/tcp_wrappers-7.6
 sys-apps/texinfo-4.6
-sys-process/vixie-cron-3.0.1
+sys-apps/vixie-cron-3.0.1
 sys-apps/xinetd-2.0.0
 sys-devel/autoconf-2.57
 sys-devel/automake-1.6.3
@@ -107,7 +108,7 @@ sys-devel/libtool-2.4.4
 sys-devel/m4-1.4
 sys-devel/make-3.79
 sys-devel/patch-2.5.8
-sys-libs/db-1.85-r2
+sys-libs/db-1.85-r1
 sys-libs/db-6
 sys-libs/ncurses-8.1
 sys-libs/pam-1.9
@@ -115,4 +116,3 @@ sys-libs/pam-modules-13
 sys-libs/yacc-1.1.4
 sys-libs/zlib-1.1.4
 x11-base/apple-xfree-4.3
-www-apache/mod_perl-1.26

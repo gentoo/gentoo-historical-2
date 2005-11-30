@@ -1,17 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_ssl/mod_ssl-2.8.17.ebuild,v 1.12 2005/10/16 16:23:23 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_ssl/mod_ssl-2.8.17.ebuild,v 1.1 2004/05/12 04:34:49 zul Exp $
 
 MY_P=${P}-1.3.31
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="An SSL module for the Apache 1.3 Web server"
+DESCRIPTION="An SSL module for the Apache Web server"
 SRC_URI="http://www.modssl.org/source/${MY_P}.tar.gz"
 HOMEPAGE="http://www.modssl.org/"
 
-KEYWORDS="x86 ppc sparc alpha hppa mips"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa"
 LICENSE="as-is"
 SLOT="0"
-IUSE=""
 
 DEPEND="=net-www/apache-1.3.31*
 	>=dev-libs/openssl-0.9.6k"
@@ -40,7 +39,7 @@ src_install() {
 
 	dodoc ANNOUNCE CHANGES CREDITS LICENSE NEWS README*
 	dodir /usr/share/doc/${PF}/html
-	cp -pPR pkg.ssldoc/* ${D}/usr/share/doc/${PF}/html
+	cp -a pkg.ssldoc/* ${D}/usr/share/doc/${PF}/html
 
 	insinto /etc/apache/conf/vhosts
 	doins ${FILESDIR}/ssl.default-vhost.conf
@@ -53,7 +52,7 @@ pkg_postinst() {
 	install -d -o root -g root -m0755 ${ROOT}/etc/apache/conf/ssl
 
 	einfo
-	einfo "Execute \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
+	einfo "Execute \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 	einfo "to have your apache.conf auto-updated for use with this module."
 	einfo "You should then edit your /etc/conf.d/apache file to suit."
 	einfo

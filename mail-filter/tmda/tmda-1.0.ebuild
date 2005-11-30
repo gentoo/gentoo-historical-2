@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/tmda/tmda-1.0.ebuild,v 1.6 2004/09/25 19:25:26 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/tmda/tmda-1.0.ebuild,v 1.1 2004/06/03 07:34:23 seemant Exp $
 
 DESCRIPTION="Python-based SPAM reduction system"
 HOMEPAGE="http://www.tmda.net/"
@@ -9,10 +9,13 @@ LICENSE="GPL-2"
 DEPEND=">=dev-lang/python-2.2
 	virtual/mta"
 
-SRC_URI="http://www.tmda.net/releases/stable/${P}.tgz"
+SRC_URI="http://tmda.sf.net/releases/${P}.tgz
+	http://tmda.sf.net/releases/old/${P}.tgz"
+
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
-IUSE=""
+KEYWORDS="~x86 ~sparc"
+
+S="${WORKDIR}/${P}"
 
 src_compile () {
 	./compileall || die
@@ -45,7 +48,7 @@ src_install () {
 	cd ${S}/contrib
 
 	exeinto /usr/lib/tmda/contrib
-	doexe collectaddys def2html printcdb printdbm \
+	doexe collectaddys def2html getuserinfo-vpopmail.sh printcdb printdbm \
 	      sendit.sh smtp-check-sender update-internaldomains vadduser-tmda \
 	      vmailmgr-vdir.sh vpopmail-vdir.sh wrapfd3.sh
 

@@ -1,35 +1,34 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmcal/libmcal-0.7-r1.ebuild,v 1.12 2005/02/07 05:28:10 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmcal/libmcal-0.7-r1.ebuild,v 1.1 2003/07/24 11:23:54 gmsoft Exp $
 
-inherit eutils
-
-DESCRIPTION="Modular Calendar Access Library"
+DESCRIPTION="Modular Calendar Access Libary"
 HOMEPAGE="http://mcal.chek.com/"
 SRC_URI="mirror://sourceforge/libmcal/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~sparc alpha hppa ~mips amd64 ia64 s390"
-IUSE=""
 
+KEYWORDS="~x86 ~ppc ~sparc ~alpha hppa ~mips"
+
+IUSE=""
 DEPEND=""
 RDEPEND=""
 S=${WORKDIR}/${PN}
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-fpic.patch
-}
-
 src_compile() {
-	econf || die
-	emake CFLAGS="${CFLAGS}" || die
+	econf
+
+	[ "${ARCH}" = "hppa" ] && CFLAGS="${CFLAGS} -fPIC"
+
+	cd ${S}
+	cp Makefile Makefile.orig
+	sed -e "s/-O0 -Wall -g/-Wall ${CFLAGS}/" Makefile.orig > Makefile
+
+	emake || die
 }
 
 src_install() {
 	einstall DESTDIR=${D} || die
-	dodoc CHANGELOG FAQ-MCAL FEATURE-IMPLEMENTATION HOW-TO-MCAL README
+	dodoc CHANGELOG FAQ-MCAL FEATURE-IMPLEMENTATION HOW-TO-MCAL LICENSE README
 	dohtml FUNCTION-REF.html
 }

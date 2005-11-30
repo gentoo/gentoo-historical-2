@@ -1,19 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/strace/strace-4.5.1.ebuild,v 1.17 2005/02/05 10:37:35 hansmi Exp $
-
-inherit flag-o-matic eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-util/strace/strace-4.5.1.ebuild,v 1.1 2003/11/18 16:33:35 mholzer Exp $
 
 DESCRIPTION="A useful diagnostic, instructional, and debugging tool"
-HOMEPAGE="http://www.wi.leidenuniv.nl/~wichert/strace/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
+RESTRICT="nomirror"
+HOMEPAGE="http://www.wi.leidenuniv.nl/~wichert/strace/"
 
-LICENSE="as-is"
-SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64"
 IUSE=""
+SLOT="0"
+LICENSE="as-is"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~amd64 ~ia64"
+inherit flag-o-matic
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=sys-devel/autoconf-2.54"
 
 src_compile() {
@@ -21,10 +21,6 @@ src_compile() {
 	if [ "${ARCH}" == "sparc" -o "${ARCH}" == "" ]; then
 		replace-flags -O[3-9] -O2
 	fi
-	filter-lfs-flags
-
-	epatch ${FILESDIR}/${P}-2.6.patch
-
 	# configure is broken by default for sparc and possibly others, regen
 	# from configure.in
 	autoconf
@@ -39,6 +35,7 @@ src_install() {
 	# and /usr/man/man1 (at least).
 	# So, we do it by hand.
 	doman strace.1
-	dobin strace strace-graph || die
-	dodoc ChangeLog CREDITS NEWS PORTING README* TODO
+	dobin strace
+	dobin strace-graph
+	dodoc ChangeLog COPYRIGHT CREDITS NEWS PORTING README* TODO
 }

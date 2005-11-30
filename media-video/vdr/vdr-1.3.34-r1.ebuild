@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.3.34-r1.ebuild,v 1.3 2005/10/22 20:36:56 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.3.34-r1.ebuild,v 1.1 2005/10/12 10:18:24 zzam Exp $
 
 inherit eutils
 
@@ -153,9 +153,6 @@ src_install() {
 	doins *.h
 	doins Make.config
 
-	insinto ${VDR_INCLUDE_DIR}/libsi
-	doins libsi/*.h
-
 	diropts -m755 -ovdr -gvdr
 	keepdir ${CONF_DIR}
 	keepdir ${CONF_DIR}/plugins
@@ -178,9 +175,8 @@ src_install() {
 
 	if [[ -n "${VDRSOURCE_DIR}" ]]; then
 		einfo "Installing sources"
-		insinto ${VDRSOURCE_DIR}/${P}
-		doins -r ${T}/source-tree/*
-		keepdir ${VDRSOURCE_DIR}/${P}/PLUGINS/lib
+		insinto ${VDRSOURCE_DIR}
+		cp -rl ${T}/source-tree ${D}/${VDRSOURCE_DIR}/${P}
 	fi
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.1.3-r3.ebuild,v 1.3 2005/03/23 01:09:02 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-4.1.3-r3.ebuild,v 1.1 2005/02/05 10:39:42 robbat2 Exp $
 
 inherit eutils
 
@@ -20,7 +20,7 @@ DEPEND="virtual/libc
 		ldap? ( >=net-nds/openldap-2.0 )"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~alpha ~ppc ~sparc ~amd64 ~ia64 ~ppc64"
 
 src_unpack() {
 	unpack ${P}.tar.bz2
@@ -28,9 +28,6 @@ src_unpack() {
 	for i in ${PATCH_LIST}; do
 		EPATCH_OPTS="-p1 -d ${S}" epatch ${DISTDIR}/${i}
 	done
-
-	# Upstream version of this patch is incorrect
-	epatch ${FILESDIR}/${P}-signal-race-fix.patch
 
 	cd ${S}
 	autoconf || die "Autoconf failed"

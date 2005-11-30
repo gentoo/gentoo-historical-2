@@ -1,20 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc-bin/ghc-bin-6.4.ebuild,v 1.6 2005/08/31 18:21:03 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc-bin/ghc-bin-6.4.ebuild,v 1.1 2005/05/02 14:50:50 kosmikus Exp $
 
 IUSE="" # use the non-binary version if you want to have more choice
 
 DESCRIPTION="Glasgow Haskell Compiler"
 # list all arches for proper digest building:
-SRC_URI="x86?  ( mirror://gentoo/${P}-r1-x86.tbz2 )
-		 amd64? ( mirror://gentoo/${P}-r1-amd64.tbz2 )
-		 sparc? ( mirror://gentoo/${P}-r1-sparc.tbz2 )
-		 ppc? ( mirror://gentoo/${P}-r1-ppc.tbz2 )
-		 ppc64? ( mirror://gentoo/${P}-r1-ppc64.tbz2 )"
+SRC_URI="x86?  ( mirror://gentoo/${P}-x86.tbz2 )"
 HOMEPAGE="http://www.haskell.org"
 
 LICENSE="as-is"
-KEYWORDS="-alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 -amd64 -ppc -sparc -alpha"
 SLOT="0"
 
 RESTRICT="nostrip" # already stripped
@@ -24,7 +20,6 @@ LOC="/opt/ghc"
 DEPEND=""
 RDEPEND=">=dev-lang/perl-5.6.1
 	>=sys-devel/gcc-2.95.3
-	>=dev-libs/gmp-4.1
 	=sys-libs/readline-5*"
 
 PROVIDE="virtual/ghc"

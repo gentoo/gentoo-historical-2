@@ -1,15 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/ec-fonts-mftraced/ec-fonts-mftraced-1.0.8.ebuild,v 1.8 2005/08/23 20:36:31 gustavoz Exp $
+# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
 
 DESCRIPTION="EC Fonts for Lilypond"
 SRC_URI="http://lilypond.org/download/fonts/${P}.tar.gz"
 HOMEPAGE="http://lilypond.org/"
-LICENSE="public-domain"
 
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc amd64 ia64 alpha"
-IUSE=""
+LICENSE="public-domain"
+
+KEYWORDS="~x86"
 
 RDEPEND=">=dev-util/guile-1.6.4
 	virtual/ghostscript
@@ -28,8 +27,8 @@ src_unpack() {
 src_compile() {
 	addwrite /dev/stderr
 	addwrite /var/cache/fonts
-	addwrite /usr/share/texmf
-	addwrite /root/.PfaEdit
+	addwrite /usr/share/texmf/fonts
+	addwrite /usr/share/texmf/ls-R
 
 	# no need for econf.. this isn't an autoconf-generated configure
 	./configure
@@ -39,8 +38,8 @@ src_compile() {
 src_install () {
 	addwrite /dev/stderr
 	addwrite /var/cache/fonts
-	addwrite /usr/share/texmf
-	addwrite /root/.PfaEdit
+	addwrite /usr/share/texmf/fonts
+	addwrite /usr/share/texmf/ls-R
 
 	make install builddir=${S} prefix=${D}/usr/
 	mv ${D}/usr/share/doc/{${PN},${P}}

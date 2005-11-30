@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.8.1.ebuild,v 1.3 2005/09/16 23:32:20 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gift/gift-0.11.8.1.ebuild,v 1.1 2004/11/28 22:16:29 squinky86 Exp $
 
 inherit eutils libtool
 
 DESCRIPTION="A OpenFT, Gnutella and FastTrack p2p network daemon"
 HOMEPAGE="http://gift.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-IUSE="imagemagick vorbis"
+IUSE="imagemagick oggvorbis"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -16,7 +16,7 @@ KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64 ~ia64"
 DEPEND=">=sys-libs/zlib-1.1.4
 	sys-apps/file
 	imagemagick? ( >=media-gfx/imagemagick-5.5.7.15 )
-	vorbis? ( >=media-libs/libvorbis-1 )"
+	oggvorbis? ( >=media-libs/libvorbis-1 )"
 
 GIFTUSER="p2p"
 
@@ -28,7 +28,7 @@ pkg_preinst() {
 src_compile() {
 	econf --enable-libmagic \
 		`use_enable imagemagick` \
-		`use_enable vorbis libvorbis` || die
+		`use_enable oggvorbis libvorbis` || die
 	emake || die
 }
 
@@ -44,13 +44,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "Configure gift in /usr/share/giFT/ or run gift-setup"
-	einfo "as normal user and make:"
-	einfo 'cp -R $HOME/.giFT/* /usr/share/giFT/'
-	einfo "chown -R p2p:root /usr/share/giFT/*"
-	einfo "(be carefull while specyfing directories in gift-setup;"
-	einfo "keep in mind that giFT will run as process of user "
-	einfo 'specified in /etc/conf.d/gift with his $HOME directory)'
+	einfo "First, you need to run gift-setup with your normal"
+	einfo "user account to create the giFT configuration files."
 	echo
 	einfo "Also, if you will be using the giFT init script, you"
 	einfo "will need to create /usr/share/giFT/giftd.conf"

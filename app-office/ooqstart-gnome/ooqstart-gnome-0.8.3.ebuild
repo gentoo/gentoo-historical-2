@@ -1,17 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/ooqstart-gnome/ooqstart-gnome-0.8.3.ebuild,v 1.8 2005/07/22 17:12:12 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/ooqstart-gnome/ooqstart-gnome-0.8.3.ebuild,v 1.1 2005/01/16 15:05:34 suka Exp $
 
-inherit eutils
+inherit gnome2 eutils
 
 DESCRIPTION="OpenOffice.org Quickstarter Applet for Gnome 2.x"
 HOMEPAGE="http://ooqstart.sourceforge.net/"
-MY_P="ooqstart-${PV}"
-SRC_URI="mirror://sourceforge/ooqstart/${MY_P}.tgz"
-S="${WORKDIR}/${MY_P}"
+SRC_URI="mirror://sourceforge/ooqstart/ooqstart-${PV}.tgz"
+S=${WORKDIR}/ooqstart-${PV}
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86"
 IUSE=""
 SLOT="0"
 
@@ -27,8 +26,11 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/gnome2update.patch.bz2
-	epatch ${FILESDIR}/${P}-gcc4.patch
+	epatch ${FILESDIR}/gnome2update.patch
+}
+
+src_compile() {
+	make DESTDIR=${D} || die "make failed"
 }
 
 src_install() {

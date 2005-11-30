@@ -1,74 +1,7 @@
-# ChangeLog for media-libs/gd
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gd/ChangeLog,v 1.21 2005/08/20 03:51:09 vapier Exp $
+# ChangeLog for media-libs/libgd
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gd/ChangeLog,v 1.1 2004/06/30 15:51:26 vapier Exp $
 
-  20 Aug 2005; Mike Frysinger <vapier@gentoo.org> gd-2.0.32.ebuild:
-  Add support for USE=fontconfig #79375 by Jung Tae-young.
-
-  09 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> gd-2.0.28.ebuild,
-  gd-2.0.32.ebuild:
-  Stable ppc-macos
-
-  31 Dec 2004; Lina Pezzella <j4rg0n@gentoo.org> gd-2.0.32.ebuild:
-  Unstable ppc-macos.
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  05 Nov 2004; Hardave Riar <hardave@gentoo.org> gd-2.0.32.ebuild:
-  Stable on mips, bug #69070.
-
-*gd-2.0.32 (02 Nov 2004)
-
-  02 Nov 2004; Mike Frysinger <vapier@gentoo.org>
-  -files/1.8.4-dec-alpha-compiler.diff, -files/1.8.4-jpeg-inc.patch,
-  -files/1.8.4-png-overflows.patch, -gd-1.8.4-r2.ebuild, -gd-2.0.31.ebuild,
-  +gd-2.0.32.ebuild:
-  Version bump to fix png compiling.
-
-  02 Nov 2004; Markus Rothe <corsair@gentoo.org> gd-2.0.31.ebuild:
-  Stable on ppc64, bug #69070
-
-  02 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> gd-2.0.31.ebuild:
-  Stable amd64
-
-  31 Oct 2004; Mike Frysinger <vapier@gentoo.org>
-  +files/1.8.4-png-overflows.patch, gd-1.8.4-r2.ebuild:
-  Backwards port png overflow fix from gd-2.x #69070.
-
-*gd-2.0.31 (31 Oct 2004)
-
-  31 Oct 2004; Mike Frysinger <vapier@gentoo.org>
-  +files/2.0.31-png-check.patch, -gd-2.0.30.ebuild, +gd-2.0.31.ebuild:
-  Version bump to fix png building #69611 by Tomasz Sterna.
-
-  31 Oct 2004; Jason Wever <weeve@gentoo.org> gd-2.0.30.ebuild:
-  Stable on sparc wrt securit bug #69070.
-
-  31 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> gd-2.0.30.ebuild:
-  Stable on alpha, bug 69070.
-
-  31 Oct 2004; Michael Hanselmann <hansmi@gentoo.org> gd-1.8.4-r2.ebuild,
-  gd-2.0.28.ebuild, gd-2.0.30.ebuild:
-  Stable on ppc, updated to the new LICENSE-syntax.
-
-*gd-2.0.30 (30 Oct 2004)
-
-  30 Oct 2004; Mike Frysinger <vapier@gentoo.org> +gd-2.0.30.ebuild:
-  Version bump for security and stuff #69070.
-
-  08 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> gd-2.0.26.ebuild:
-  Stable on alpha.
-
-*gd-2.0.28 (22 Jul 2004)
-
-  22 Jul 2004; Mike Frysinger <vapier@gentoo.org> +gd-2.0.28.ebuild:
-  Version bump.
-
-  15 Jul 2004; Tom Gall <tgall@gentoo.org> gd-2.0.26.ebuild:
-  stable on ppc64, bug #55549
-
-*gd-2.0.26 (30 Jun 2004)
 *gd-1.8.4-r2 (30 Jun 2004)
 
   30 Jun 2004; Mike Frysinger <vapier@gentoo.org> +metadata.xml,
@@ -82,7 +15,7 @@
   11 May 2004; Michael McCabe <randy@gentoo.org> libgd-2.0.23.ebuild:
   Added s390 keywords
 
-*gd-2.0.23 (07 May 2004)
+*libgd-2.0.23 (07 May 2004)
 
   07 May 2004; Mike Frysinger <vapier@gentoo.org> +libgd-2.0.23.ebuild:
   Version bump #50302 by Daniel Webert

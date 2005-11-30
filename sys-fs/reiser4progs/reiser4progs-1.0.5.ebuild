@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/reiser4progs/reiser4progs-1.0.5.ebuild,v 1.4 2005/11/29 03:53:41 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/reiser4progs/reiser4progs-1.0.5.ebuild,v 1.1 2005/08/12 23:13:14 vapier Exp $
 
 inherit eutils
 
@@ -11,10 +11,10 @@ SRC_URI="ftp://ftp.namesys.com/pub/reiser4progs/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 -sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 -sparc ~x86"
 IUSE="static debug readline"
 
-DEPEND="~sys-libs/libaal-${PV}
+DEPEND=">=sys-libs/libaal-1.0.4
 	readline? ( sys-libs/readline )"
 
 S=${WORKDIR}/${MY_P}
@@ -25,8 +25,8 @@ src_unpack() {
 	# bundled libtool sucks, so rebuild autotools #74817
 	aclocal && libtoolize -c -f && autoconf && automake || die "autotools failed"
 	cat <<-EOF > run-ldconfig
-		#!/bin/sh
-		true
+	#!/bin/sh
+	true
 	EOF
 }
 
@@ -43,6 +43,7 @@ src_compile() {
 		$(use_with readline) \
 		--enable-libminimal \
 		--sbindir=/sbin \
+		--libdir=/$(get_libdir) \
 		|| die "configure failed"
 	emake || die "make failed"
 }
@@ -53,8 +54,12 @@ src_install() {
 	#resizefs binary doesnt exist in this release
 	rm -f "${D}"/usr/share/man/man8/resizefs*
 
-	# move shared libs to /
-	dodir /$(get_libdir)
-	mv "${D}"/usr/$(get_libdir)/lib*.so* "${D}"/$(get_libdir)/ || die
-	gen_usr_ldscript libreiser4-minimal.so libreiser4.so librepair.so
+	# move stupid .a out of root
+	dodir /usr/$(get_libdir)
+	local l=""
+	for l in libreiser4-minimal libreiser4 librepair ; do
+		mv "${D}"/$(get_libdir)/${l}.{a,la} "${D}"/usr/$(get_libdir)/
+		dosym ../usr/lib/${l}.a /lib/${l}.a
+		gen_usr_ldscript ${l}.so
+	done
 }

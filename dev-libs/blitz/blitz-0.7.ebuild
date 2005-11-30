@@ -1,20 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/blitz/blitz-0.7.ebuild,v 1.9 2005/01/13 20:57:02 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/blitz/blitz-0.7.ebuild,v 1.1 2004/03/02 18:28:56 pbienst Exp $
 
 inherit base
 
 S=${WORKDIR}/Blitz++-${PV}
 DESCRIPTION="High-performance C++ numeric library"
 SRC_URI="mirror://sourceforge/${PN/-/}/Blitz++-${PV}.tar.gz"
-RESTRICT="nomirror"
 HOMEPAGE="http://www.oonumerics.org/blitz"
-DEPEND="virtual/tetex
+DEPEND="app-text/tetex
 	icc? ( dev-lang/icc )"
 IUSE="icc"
 
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86"
 LICENSE="GPL-2"
 
 PATCHES1=${FILESDIR}/blitz-0.7.diff
@@ -24,13 +23,13 @@ src_compile() {
 	# ICC: if we've got it, use it
 	use icc && myconf="--with-cxx=icc" || myconf="--with-cxx=gcc"
 
-	econf ${myconf} || die "econf failed"
+	./configure ${myconf}
 	emake lib || die
 }
 
 src_install () {
 
-	einstall docdir=${D}/usr/share/doc/${P} || die
+	einstall || die
 	dodoc ChangeLog ChangeLog.1 LICENSE README README.binutils \
 	      TODO COPYING LEGAL AUTHORS NEWS
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/loudmouth/loudmouth-0.16.ebuild,v 1.4 2004/09/02 22:49:14 spider Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/loudmouth/loudmouth-0.16.ebuild,v 1.1 2004/04/07 10:53:16 foser Exp $
 
 inherit gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://loudmouth.imendio.org/"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc"
+KEYWORDS="~x86 ~sparc"
 
 IUSE="doc ssl"
 

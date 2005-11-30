@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmrack/wmrack-1.2.0.ebuild,v 1.4 2005/07/18 09:25:46 s4t4n Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmrack/wmrack-1.2.0.ebuild,v 1.1 2004/07/17 23:05:10 s4t4n Exp $
 
 IUSE=""
 MY_P=${P/2.0/2}
@@ -16,14 +14,14 @@ DEPEND="virtual/x11
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 
 S=${WORKDIR}/${MY_P}
 
 src_compile()
 {
 	cd ${S}
-	econf --with-x --prefix=/usr --sysconfdir=/etc --x-includes=/usr/include/ --x-libraries=$(get_libdir) || die "Configuration failed"
+	econf --with-x --prefix=/usr --sysconfdir=/etc || die "Configuration failed"
 	emake || die "Compilation failed"
 }
 

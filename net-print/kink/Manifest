@@ -1,5 +1,2 @@
-MD5 02039d51ca4a42817775fd436dfaa956 metadata.xml 157
-MD5 3437b7fc4093fa6bd9fe3e65165ac48d ChangeLog 648
-MD5 39bf42d6d92a00733f0e09431709a6ef kink-0.2.1.ebuild 574
-MD5 e42a0101174b97b644ed99bda4e4cceb files/kink-0.2.1-compilefix.diff 652
+MD5 d3cda847f6116feff5359ace6e620b4f kink-0.2.1.ebuild 635
 MD5 211d67758e5494b8b5b5b67c2eb6a6ad files/digest-kink-0.2.1 63

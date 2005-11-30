@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20050509.ebuild,v 1.3 2005/06/26 10:54:54 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20050509.ebuild,v 1.1 2005/05/16 08:49:33 genstef Exp $
 
-inherit multilib gnuconfig
+inherit multilib
 
 YEAR_PV=${PV:0:4}
 MON_PV=${PV:4:2}
@@ -17,13 +17,16 @@ SRC_URI="ftp://ftp.in-berlin.de/pub/capi4linux/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE=""
 
 DEPEND="virtual/linux-sources
 	dev-lang/perl
 	>=sys-apps/sed-4
-	virtual/os-headers"
+	virtual/os-headers
+	sys-devel/automake
+	>=sys-devel/autoconf-2.50
+	sys-devel/libtool"
 RDEPEND=""
 
 S=${WORKDIR}/${PN}
@@ -35,10 +38,10 @@ src_unpack() {
 	cp -f ${FILESDIR}/config .config
 	# patch includes of all *.c files
 	sed -i -e "s:linux/capi.h>$:linux/compiler.h>\n#include <linux/capi.h>:g" */*.c || die "sed failed"
-	# patch all Makefile.* and Rules.make to use our CFLAGS
-	sed -i -e "s:^\(CFLAGS.*\)-O2:\1${CFLAGS}:g" */Makefile.* */Rules.make || die "sed failed"
-	# patch capi20/Makefile.* to use -fPIC for shared library
-	sed -i -e "s:^\(CFLAGS.*\):\1 -fPIC:g" capi20/Makefile.* || die "sed failed"
+	# patch all Makefile.am and Rules.make to use our CFLAGS
+	sed -i -e "s:^CFLAGS\(.*\)-O2:CFLAGS\1${CFLAGS}:g" */Makefile.* */Rules.make || die "sed failed"
+	# patch capi20/Makefile.am to use -fPIC for shared library
+	sed -i -e "s:^\(libcapi20_la_CFLAGS = \):\1-fPIC :g" capi20/Makefile.* || die "sed failed"
 	# patch pppdcapiplugin/Makefile to use only the ppp versions we want
 	sed -i -e "s:^\(PPPVERSIONS = \).*$:\1${PPPVERSIONS}:g" pppdcapiplugin/Makefile || die "sed failed"
 	# patch capiinit/capiinit.c to look also in /lib/firmware
@@ -53,7 +56,16 @@ src_unpack() {
 }
 
 src_compile() {
-	gnuconfig_update
+	# required by fPIC patch
+	cd ${S}/capi20 || die "capi20 directory not found"
+	ebegin "Updating autotools-generated files"
+	aclocal -I . || die "aclocal failed"
+	automake -a || die "automake failed"
+	WANT_AUTOCONF=2.5 autoconf || die "autoconf failed"
+	libtoolize -f -c || die "libtoolize failed"
+	eend $?
+	cd ${S}
+
 	emake subconfig || die "make subconfig failed"
 	emake || die "make failed"
 }

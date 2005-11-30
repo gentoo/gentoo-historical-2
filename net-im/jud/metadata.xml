@@ -3,8 +3,9 @@
 <pkgmetadata>
 <herd>net-im</herd>
 <maintainer>
-  <email>humpback@gentoo.org</email>
-  <name>Gustavo Felisberto</name>
+  <email>rizzo@gentoo.org</email>
+  <name>Don Seiler</name>
+  <description>Holding this until Humpback (Gustavo Felisberto) graduates from Dev U.</description>
 </maintainer>
-  <longdescription>Jabber User Directory</longdescription>
+<!-- <longdescription>Long description of the package</longdescription> -->
 </pkgmetadata>

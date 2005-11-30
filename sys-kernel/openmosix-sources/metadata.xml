@@ -4,7 +4,8 @@
 <herd>cluster</herd>
 <maintainer>
   <email>tantive@gentoo.org</email>
-  <name>Michael Imhof</name>
-  <description>Release manager, patch manager</description>
+<!--  <name>Michael Imhof</name> -->
+<!--  <description>openmosix-sources</description> -->
 </maintainer>
+<!-- <longdescription>Long description of the package</longdescription> -->
 </pkgmetadata>

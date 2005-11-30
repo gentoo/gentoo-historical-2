@@ -1,54 +1,38 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openssh/files/sshd.rc6,v 1.16 2005/08/21 19:09:30 vapier Exp $
-
-depend() {
-	use logger dns
-	need net
-}
 
 checkconfig() {
-	if [ ! -d /var/empty ] ; then
-		mkdir -p /var/empty || return 1
-	fi
-
-	if [ ! -e /etc/ssh/sshd_config ] ; then
-		eerror "You need an /etc/ssh/sshd_config file to run sshd"
-		eerror "There is a sample file in  /usr/share/doc/openssh"
-		return 1
-	fi
-
-	gen_keys || return 1
-
-	/usr/sbin/sshd -t || return 1
+    if [ ! -e /etc/ssh/sshd_config ] ; then
+	eerror "You need an /etc/ssh/sshd_config file to run sshd"
+	eerror "There is a sample file in /usr/share/docs/openssh"
+	return 1
+    fi
 }
 
 gen_keys() {
-	if [ ! -e /etc/ssh/ssh_host_key ] ; then
-		einfo "Generating Hostkey..."
-		/usr/bin/ssh-keygen -t rsa1 -b 1024 -f /etc/ssh/ssh_host_key -N '' || return 1
-	fi
-	if [ ! -e /etc/ssh/ssh_host_dsa_key ] ; then
-		einfo "Generating DSA-Hostkey..."
-		/usr/bin/ssh-keygen -d -f /etc/ssh/ssh_host_dsa_key -N '' || return 1
-	fi
-	if [ ! -e /etc/ssh/ssh_host_rsa_key ] ; then
-		einfo "Generating RSA-Hostkey..."
-		/usr/bin/ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' || return 1
-	fi
-	return 0
+    if [ ! -e /etc/ssh/ssh_host_key ] ; then
+	einfo "Generating Hostkey..."
+	/usr/bin/ssh-keygen -b 1024 -f /etc/ssh/ssh_host_key -N ''
+    fi
+    if [ ! -e /etc/ssh/ssh_host_dsa_key ] ; then
+	einfo "Generating DSA-Hostkey..."
+	/usr/bin/ssh-keygen -d -f /etc/ssh/ssh_host_dsa_key -N ''
+    fi
+    if [ ! -e /etc/ssh/ssh_host_rsa_key ] ; then
+	einfo "Generating RSA-Hostkey..."
+	/usr/bin/ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+    fi
 }
 
 start() {
-	checkconfig || return 1
-	ebegin "Starting sshd"
-	/usr/sbin/sshd
-	eend $?
+    checkconfig || return 1
+    gen_keys
+    ebegin "Starting sshd"
+    start-stop-daemon --start --quiet --exec /usr/sbin/sshd
+    eend $?
 }
 
 stop() {
-	ebegin "Stopping sshd"
-	start-stop-daemon --stop --quiet --pidfile /var/run/sshd.pid
-	eend $?
+    ebegin "Stopping sshd"
+    start-stop-daemon --stop --quiet --pidfile /var/run/sshd.pid
+    eend $?
 }

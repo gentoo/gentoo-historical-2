@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/cwdaemon/cwdaemon-0.8.ebuild,v 1.5 2005/01/12 05:45:55 killsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-radio/cwdaemon/cwdaemon-0.8.ebuild,v 1.1 2004/06/28 04:19:43 killsoft Exp $
 
 inherit eutils
 
@@ -10,10 +10,10 @@ SRC_URI="http://www.qsl.net/pg4i/download/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 ~ppc ~alpha"
+KEYWORDS="~x86"
 IUSE=""
 
-RDEPEND="virtual/libc"
+RDEPEND="virtual/glibc"
 DEPEND="sys-apps/gawk"
 
 src_compile() {
@@ -24,4 +24,3 @@ src_compile() {
 src_install() {
 	einstall || die
 }
-

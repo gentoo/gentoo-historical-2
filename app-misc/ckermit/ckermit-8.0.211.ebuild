@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ckermit-8.0.211.ebuild,v 1.9 2005/06/27 07:38:39 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/ckermit/ckermit-8.0.211.ebuild,v 1.1 2004/06/07 05:40:42 dragonheart Exp $
 
 MY_P=cku209
 S=${WORKDIR}
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.kermit-project.org/"
 SLOT="0"
 LICENSE="Kermit"
 IUSE=""
-KEYWORDS="amd64 ppc ppc64 ~x86"
+KEYWORDS="~x86"
 
 DEPEND=">=sys-libs/ncurses-5.2"
 

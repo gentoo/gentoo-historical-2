@@ -1,30 +1,6 @@
 # ChangeLog for net-mail/altermime
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/altermime/ChangeLog,v 1.7 2005/06/04 09:29:36 tove Exp $
-
-*altermime-0.3.6 (04 Jun 2005)
-
-  04 Jun 2005; Torsten Veller <tove@gentoo.org> +altermime-0.3.6.ebuild:
-  New Version.
-  Thanks to Igor Golubev (#89657) and Sune Kloppenborg Jeppesen (#51299).
-
-  21 Dec 2004; Andrej Kacian <ticho@gentoo.org> :
-  Stable on x86.
-
-  15 Apr 2004; Michael McCabe <randy@gentoo.org> altermime-0.3.3.ebuild:
-  adding s390 keywords
-
-*altermime-0.3.3 (06 Feb 2004)
-
-  06 Feb 2004; Greg Fitzgerald <gregf@gentoo.org> altermime-0.3.1.ebuild,
-  altermime-0.3.3.ebuild:
-  Version Bump.
-
-  06 Feb 2004; Greg Fitzgerald <gregf@gentoo.org> altermime-0.3.1.ebuild:
-  Marked as stable on x86.
-
-  04 Sep 2003; Michael Sterrett <msterret@gentoo.org> altermime-0.3.1.ebuild:
-  add header; tidy
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/altermime/ChangeLog,v 1.1 2003/07/19 02:40:51 gregf Exp $
 
 *altermime-0.3.1 (18 Jul 2003)
 

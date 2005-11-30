@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/valgrind/valgrind-2.2.0-r2.ebuild,v 1.3 2005/03/24 20:32:32 griffon26 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/valgrind/valgrind-2.2.0-r2.ebuild,v 1.1 2005/02/13 15:55:25 griffon26 Exp $
 
 inherit flag-o-matic eutils
 
@@ -11,7 +11,7 @@ SRC_URI="x86? ( http://developer.kde.org/~sewardj/${P}.tar.bz2 )
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* x86 ~ppc"
+KEYWORDS="-* ~x86 ~ppc"
 IUSE="X"
 RESTRICT="nostrip"
 
@@ -32,9 +32,6 @@ src_unpack() {
 	fi
 
 	epatch "${FILESDIR}/${P}-no-exec-stack.patch"
-
-	# To prevent clash with current macro in /usr/include/asm/current.h
-	epatch "${FILESDIR}/${P}-current-macro-clash.patch"
 
 	# make sure our CFLAGS are respected
 	einfo "Changing configure to respect CFLAGS"

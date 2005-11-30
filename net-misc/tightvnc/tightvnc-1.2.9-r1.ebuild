@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tightvnc/tightvnc-1.2.9-r1.ebuild,v 1.14 2005/04/27 15:07:26 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tightvnc/tightvnc-1.2.9-r1.ebuild,v 1.1 2003/09/17 14:03:59 aliz Exp $
 
 inherit eutils
 
@@ -11,11 +11,11 @@ DESCRIPTION="A great client/server software package allowing remote network acce
 SRC_URI="mirror://sourceforge/vnc-tight/${P}_unixsrc.tar.bz2"
 HOMEPAGE="http://www.tightvnc.com/"
 
-KEYWORDS="x86 ppc sparc alpha amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="virtual/x11
+DEPEND=">=x11-base/xfree-4.2.1
 	~media-libs/jpeg-6b
 	sys-libs/zlib
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )
@@ -27,24 +27,21 @@ RDEPEND="${DEPEND}
 
 src_unpack() {
 	unpack ${A} && cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
+	epatch ${FILESDIR}/tightvnc-${PVR}-gentoo.diff
 	epatch ${FILESDIR}/${P}-gentoo.security.patch
 	epatch ${FILESDIR}/${P}-imake-tmpdir.patch
-	epatch ${FILESDIR}/x86.patch
 }
 
 src_compile() {
-	local CDEBUGFLAGS="${CFLAGS}"
-
 	xmkmf -a || die "xmkmf failed"
 
-	make CDEBUGFLAGS="${CDEBUGFLAGS}" World || die "make World failed"
+	make CDEBUGFLAGS="$CFLAGS" World || die "make World failed"
 	cd Xvnc && ./configure || die "Configure failed."
 
 	if use tcpd; then
-		make EXTRA_LIBRARIES="-lwrap -lnss_nis" CDEBUGFLAGS="${CDEBUGFLAGS}" EXTRA_DEFINES="-DUSE_LIBWRAP=1"
+		make EXTRA_LIBRARIES="-lwrap -lnss_nis" CDEBUGFLAGS="$CFLAGS" EXTRA_DEFINES="-DUSE_LIBWRAP=1"
 	else
-		make CDEBUGFLAGS="${CDEBUGFLAGS}"
+		make CDEBUGFLAGS="$CFLAGS"
 	fi
 }
 

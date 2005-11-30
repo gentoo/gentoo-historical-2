@@ -1,24 +1,6 @@
-# ChangeLog for dev-java/jad-bin
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jad-bin/ChangeLog,v 1.7 2005/04/22 08:33:22 blubb Exp $
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> jad-bin-1.5.8e.ebuild:
-  stable on amd64
-
-  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> jad-bin-1.5.8e.ebuild:
-  depend on app-arch/unzip
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  05 Aug 2004; Thomas Matthijs <axxo@gentoo.org> jad-bin-1.5.8e.ebuild:
-  fix homepage
-
-  05 Aug 2004; David Holm <dholm@gentoo.org> jad-bin-1.5.8e.ebuild:
-  Contains x86 binaries, -ppc (bug #59465).
-
-  03 Aug 2004; David Holm <dholm@gentoo.org> jad-bin-1.5.8e.ebuild:
-  Added to ~ppc.
+# ChangeLog for dev-java/jad
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jad-bin/ChangeLog,v 1.1 2004/07/30 19:58:00 axxo Exp $
 
 *jad-bin-1.5.8e (30 Jul 2004)
 

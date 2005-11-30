@@ -1,18 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gnbd-kernel/gnbd-kernel-1.00.00-r1.ebuild,v 1.4 2005/10/08 15:52:02 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gnbd-kernel/gnbd-kernel-1.00.00-r1.ebuild,v 1.1 2005/09/05 02:53:02 xmerlin Exp $
 
 inherit linux-mod
 
-MY_P="cluster-${PV}"
-
+CLUSTER_VERSION="1.00.00"
 DESCRIPTION="GFS Network Block Devices module"
 HOMEPAGE="http://sources.redhat.com/cluster/"
-SRC_URI="ftp://sources.redhat.com/pub/cluster/releases/${MY_P}.tar.gz"
+SRC_URI="ftp://sources.redhat.com/pub/cluster/releases/cluster-${CLUSTER_VERSION}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 
 DEPEND="|| (
@@ -21,7 +20,7 @@ DEPEND="|| (
 	)"
 RDEPEND=""
 
-S="${WORKDIR}/${MY_P}/${PN}"
+S="${WORKDIR}/cluster-${CLUSTER_VERSION}/${PN}"
 
 pkg_setup() {
 	if kernel_is 2 4; then
@@ -39,7 +38,7 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-	rm -f ${D}/usr/include/linux/gnbd.h || die
+	rm -f ${D}/usr/include/cluster/*
 }
 
 

@@ -1,41 +1,8 @@
-# ChangeLog for sys-apps/memtester
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtester/ChangeLog,v 1.14 2005/08/24 15:35:38 gustavoz Exp $
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtester/ChangeLog,v 1.1 2002/11/07 16:20:06 gerk Exp $
 
-  24 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  memtester-4.0.3.ebuild:
-  Stable on sparc
-
-*memtester-4.0.5 (24 Aug 2005)
-
-  24 Aug 2005; Mike Frysinger <vapier@gentoo.org> +memtester-4.0.5.ebuild:
-  Version bump #103467 by Kalin KOZHUHAROV.
-
-  26 Jun 2005; Markus Rothe <corsair@gentoo.org> memtester-4.0.3.ebuild:
-  Added ~ppc64
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  memtester-4.0.3.ebuild:
-  Masked memtester-4.0.3.ebuild stable for ppc
-
-  12 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> memtester-4.0.3.ebuild:
-  needs src_compile for portage 2.0.50-r9 (bug #60123)
-
-*memtester-4.0.3 (11 Aug 2004)
-
-  11 Aug 2004; Mike Frysinger <vapier@gentoo.org> +memtester-4.0.3.ebuild:
-  Version bump #60055 by erkan kaplan.
-
-  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> memtester-2.93.1.ebuild:
-  sync IUSE (missing)
-
-  13 May 2004; Josh Grebe <squash@gentoo.org> :
-  This memory testor works great on sparc
-
-  29 Mar 2004; Jon Portnoy <avenj@gentoo.org> memtester-2.93.1.ebuild :
-  x86 keywords.
-
-*memtester-2.93.1 (Nov 7 2002)
+*memtest-2.93.1.ebuild (Nov 7, 2002)
 
   07 Nov 2002, Mark Guertin <gerk@gentoo.org> memtest-2.93.1.ebuild :
   Added initial build, this works on ppc (there are no other mem testers

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.16.ebuild,v 1.6 2005/11/27 00:43:35 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gmime/gmime-2.1.16.ebuild,v 1.1 2005/08/20 21:37:12 dsd Exp $
 
 inherit gnome2 eutils mono
 
@@ -14,12 +14,13 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 RDEPEND=">=dev-libs/glib-2
-	doc? ( >=dev-util/gtk-doc-1.0 )
-	mono? ( dev-lang/mono
-			>=dev-dotnet/gtk-sharp-1.9.5 )"
+	doc? ( >=dev-util/gtk-doc-1.0 )"
 
 DEPEND="dev-util/pkgconfig
 	doc? ( app-text/docbook-sgml-utils )
+	mono? ( dev-lang/mono
+			=dev-dotnet/gtk-sharp-1.0*
+			>=dev-dotnet/gtk-sharp-1.0.6 )
 	${RDEPEND}"
 
 src_unpack() {
@@ -29,11 +30,10 @@ src_unpack() {
 	sed -i -e 's:db2html:docbook2html -o gmime-tut:g' \
 		docs/tutorial/Makefile.am docs/tutorial/Makefile.in \
 		|| die "sed failed (1)"
-	# Use correct libdir for mono assembly
+	# Use correct libdir in pkgconfig file
 	sed -i -e 's:^libdir.*:libdir=@libdir@:' \
 		-e 's:^prefix=:exec_prefix=:' \
-		-e 's:prefix)/lib:libdir):' \
-		mono/gmime-sharp.pc.in mono/Makefile.{am,in} || die "sed failed (2)"
+		mono/gmime-sharp.pc.in || die "sed failed (2)"
 	# Fix doc targets (bug #97154)
 	sed -i -e 's!\<\(tmpl-build.stamp\): !\1 $(srcdir)/tmpl/*.sgml: !' \
 		gtk-doc.make docs/reference/Makefile.in || die "sed failed (3)"
@@ -42,9 +42,9 @@ src_unpack() {
 src_compile() {
 	econf \
 	    `use_enable ipv6` \
-		`use_enable mono` \
+	    `use_enable mono` \
 	    `use_enable doc gtk-doc` || die "configure failed"
-	MONO_PATH=${S} emake -j1 || die
+	MAKEOPTS="-j1" MONO_PATH=${S} emake || die
 }
 
 src_install() {

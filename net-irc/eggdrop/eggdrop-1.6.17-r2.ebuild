@@ -1,42 +1,32 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/eggdrop/eggdrop-1.6.17-r2.ebuild,v 1.11 2005/09/27 22:51:24 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/eggdrop/eggdrop-1.6.17-r2.ebuild,v 1.1 2005/04/03 20:58:39 swegener Exp $
 
 inherit eutils
 
 MY_P="eggdrop${PV}"
-PATCHSET_V="1.4"
+PATCHSET_V="1.2"
 
 DESCRIPTION="An IRC bot extensible with C or Tcl."
 HOMEPAGE="http://www.eggheads.org/"
 SRC_URI="ftp://ftp.eggheads.org/pub/eggdrop/source/1.6/${MY_P}.tar.gz
 	mirror://gentoo/${P}-patches-${PATCHSET_V}.tar.bz2
-	http://dev.gentoo.org/~swegener/distfiles/${P}-patches-${PATCHSET_V}.tar.bz2"
-KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
+	mirror://dev.gentoo.org/~swegener/distfiles/${P}-patches-${PATCHSET_V}.tar.bz2"
+KEYWORDS="~x86 ~sparc ~mips ~ia64 ~amd64 ~ppc ~alpha"
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug static mysql postgres ssl vanilla"
+IUSE="debug static mysql postgres ssl"
 
 DEPEND="dev-lang/tcl
-	!vanilla? (
-		mysql? ( dev-db/mysql )
-		postgres? ( dev-db/postgresql )
-		ssl? ( dev-libs/openssl )
-	)"
+	mysql? ( dev-db/mysql )
+	postgres? ( dev-db/postgresql )
+	ssl? ( dev-libs/openssl )"
 
-S="${WORKDIR}"/${MY_P}
+S=${WORKDIR}/${MY_P}
 
 src_unpack()  {
 	unpack ${A}
-	cd "${S}"
-
-	if use vanilla
-	then
-		einfo "Excluding patches that install additional modules, this effectively"
-		einfo "disables the mysql, postgres and ssl USE flags."
-		echo
-		rm "${WORKDIR}"/patch/[12345678]*.patch
-	fi
+	cd ${S}
 
 	EPATCH_SUFFIX="patch" epatch || die "epatch failed"
 }
@@ -47,7 +37,7 @@ src_compile() {
 	use mysql    || ( echo mysql ; echo mystats ) >>disabled_modules
 	use postgres || echo pgstats >>disabled_modules
 
-	econf $(use_with ssl) || die "econf failed"
+	econf $(use_with ssl) || die "./configure failed"
 
 	make config || die "module config failed"
 
@@ -67,27 +57,24 @@ src_compile() {
 
 src_install() {
 	local a b
-	make DEST="${D}"/opt/eggdrop install || die "make install failed"
+	make DEST=${D}/opt/eggdrop install || die "make install failed"
 
 	for a in doc/*
 	do
 		[ -f ${a} ] && dodoc ${a}
 	done
 
-	cd "${S}"/src/mod
+	cd ${S}/src/mod
 	for a in *.mod
 	do
 		for b in README UPDATES INSTALL TODO CONTENTS
 		do
-			[[ -f ${a}/${b} ]] && newdoc ${a}/${b} ${b}.${a}
+			[ -f ${a}/${b} ] && newdoc ${a}/${b} ${b}.${a}
 		done
 	done
 
-	cd "${S}"
-
-	dodoc text/motd.*
-
-	use vanilla || dodoc \
+	cd ${S}
+	dodoc \
 		src/mod/botnetop.mod/botnetop.conf \
 		src/mod/gseen.mod/gseen.conf \
 		src/mod/mc_greet.mod/mc_greet.conf \
@@ -95,11 +82,12 @@ src_install() {
 		src/mod/away.mod/away.doc \
 		src/mod/rcon.mod/matchbot.tcl \
 		src/mod/mystats.mod/tools/mystats.{conf,sql} \
-		src/mod/pgstats.mod/tools/{pgstats.conf,setup.sql}
+		src/mod/pgstats.mod/tools/{pgstats.conf,setup.sql} \
+		text/motd.*
 
-	dohtml doc/html/*.html
+	dohtml ${S}/doc/html/*.html
 
-	dobin "${FILESDIR}"/eggdrop-installer
+	dobin ${FILESDIR}/eggdrop-installer
 	doman doc/man1/eggdrop.1
 }
 

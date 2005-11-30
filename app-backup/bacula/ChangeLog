@@ -1,42 +1,6 @@
-# ChangeLog for app-backup/bacula
+# ChangeLog for app-admin/bacula
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/ChangeLog,v 1.8 2005/10/11 19:36:24 dragonheart Exp $
-
-  11 Oct 2005; Daniel Black <dragonheart@gentoo.org> -files/bacula-init,
-  -bacula-1.34.4.ebuild:
-  remove vulnerable version
-
-  11 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  bacula-1.36.3-r2.ebuild:
-  Stable on sparc wrt #104986
-
-  09 Oct 2005; Mark Loeser <halcy0n@gentoo.org> bacula-1.36.3-r2.ebuild:
-  Stable on x86; bug #104986
-
-  07 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
-  bacula-1.36.3-r2.ebuild:
-  Stable on hppa, ppc.
-
-  07 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
-  bacula-1.36.3-r2.ebuild:
-  Stable on hppa, ppc.
-
-  06 Oct 2005; Daniel Black <dragonheart@gentoo.org>
-  +files/bacula-1.36.3-mtxtmpfile.patch, bacula-1.36.3-r2.ebuild:
-  opps last minute patch
-
-*bacula-1.36.3-r2 (06 Oct 2005)
-
-  06 Oct 2005; Daniel Black <dragonheart@gentoo.org>
-  -files/bacula-1.36.2-cdrecord-configure.patch,
-  -files/bacula-1.36.2-nocdrecord.patch,
-  -files/bacula-1.36.3-init-depends.patch,
-  -files/bacula-1.36.3-rescue-makefile.patch, +files/randpass-1.37.40,
-  -files/bacula-3.6.0-configure.diff, -files/bacula-init2,
-  -bacula-1.34.5.ebuild, -bacula-1.34.6.ebuild, -bacula-1.36.0.ebuild,
-  -bacula-1.36.3.ebuild, -bacula-1.36.3-r1.ebuild, +bacula-1.36.3-r2.ebuild:
-  randpass insecure file creation - bug #104986. Old version cleanout. Thanks
-  to Romang <zataz@zataz.net> for the bug report
+# $Header: /var/cvsroot/gentoo-x86/app-backup/bacula/ChangeLog,v 1.1 2005/07/04 01:52:06 robbat2 Exp $
 
   04 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
   +files/bacula-1.36.2-cdrecord-configure.patch,

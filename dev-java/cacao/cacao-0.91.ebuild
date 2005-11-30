@@ -1,25 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2005-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cacao/cacao-0.91.ebuild,v 1.7 2005/07/26 21:14:53 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cacao/cacao-0.91.ebuild,v 1.1 2005/02/20 00:56:06 karltk Exp $
 
-inherit eutils
+inherit eutils java-pkg
 
 DESCRIPTION="Cacao Java Virtual Machine"
 HOMEPAGE="http://www.cacaojvm.org/"
 SRC_URI="http://www.complang.tuwien.ac.at/cacaojvm/download/cacao-${PV}/cacao-${PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="gtk"
-DEPEND="
-	gtk? (
-		>=x11-libs/gtk+-2.0
-		>=dev-libs/atk-1.0
-		>=x11-libs/pango-1.0
-		>=dev-libs/glib-2.0
-		>=media-libs/libart_lgpl-2.0
-	)"
-RDEPEND="${DEPEND}"
+DEPEND=""
 
 src_unpack() {
 	unpack ${A}
@@ -37,7 +29,7 @@ src_unpack() {
 }
 
 src_compile() {
-	econf $(use_enable gtk gtk-peer) || die "Failed to configure"
+	econf `use_enable gtk` || die "Failed to configure"
 	emake || die "Failed to compile"
 }
 

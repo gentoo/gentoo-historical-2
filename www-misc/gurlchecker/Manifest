@@ -1,4 +1,4 @@
-MD5 b7d1f2d7f1c593c0c24e04af6b08ffd0 ChangeLog 4154
-MD5 50dfc20f3606de8bcb7d1387e4294c61 gurlchecker-0.8.2.ebuild 1018
 MD5 f2ffceb15194050aafbbdabb8b51507a metadata.xml 475
-MD5 d30809c4aac3349c7a451b5ac699c5cc files/digest-gurlchecker-0.8.2 69
+MD5 d91057bf4e308f4b6b55e88c958965ed gurlchecker-0.6.7.ebuild 703
+MD5 779b57cd85a3878382079b71f3954594 ChangeLog 1817
+MD5 5f2b15ae6811070d74f37a99129c4f85 files/digest-gurlchecker-0.6.7 69

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iftop/iftop-0.16.ebuild,v 1.15 2005/09/15 21:52:15 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/iftop/iftop-0.16.ebuild,v 1.1 2004/03/09 06:07:15 mboman Exp $
 
 IUSE=""
 
@@ -10,17 +10,26 @@ HOMEPAGE="http://www.ex-parrot.com/~pdw/iftop/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ia64 ~ppc sparc x86"
+KEYWORDS="~x86"
 
 DEPEND="sys-libs/ncurses
-		virtual/libpcap"
+		net-libs/libpcap"
+
+
+src_compile() {
+	local myconf
+	myconf="--prefix=/usr"
+	econf ${myconf} || die
+	emake
+}
 
 src_install() {
 	dosbin iftop
 	doman iftop.8
 
 	insinto /etc
-	doins "${FILESDIR}"/iftoprc
+	doins ${FILESDIR}/iftoprc
 
 	dodoc COPYING ChangeLog README
 }
+

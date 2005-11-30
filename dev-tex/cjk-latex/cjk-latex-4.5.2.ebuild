@@ -1,22 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/cjk-latex/cjk-latex-4.5.2.ebuild,v 1.12 2005/10/22 00:06:06 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/cjk-latex/cjk-latex-4.5.2.ebuild,v 1.1 2004/01/04 15:54:16 usata Exp $
 
-inherit latex-package elisp-common toolchain-funcs
+IUSE="doc emacs"
+
+inherit latex-package elisp-common
 
 MY_P="${P/-latex/}"
 
 DESCRIPTION="A LaTeX 2e macro package which enables the use of CJK scripts in various encodings"
 HOMEPAGE="http://cjk.ffii.org/"
-# fonts are taken from ftp://ftp.ctan.org/tex-archive/fonts/CJK.tar.gz
 SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
-	mirror://gentoo/${MY_P}-fonts.tar.gz
+	ftp://ftp.ctan.org/tex-archive/fonts/CJK.tar.gz
 	doc? ( ftp://ftp.ffii.org/pub/cjk/${MY_P}-doc.tar.gz )"
 
 LICENSE="GPL-2"
+
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
-IUSE="doc emacs"
+KEYWORDS="~x86"
 
 DEPEND="virtual/tetex
 	emacs? ( virtual/emacs )"
@@ -24,11 +25,12 @@ DEPEND="virtual/tetex
 S=${WORKDIR}/${MY_P}
 
 src_unpack() {
+
 	unpack ${MY_P}.tar.gz
 	use doc && unpack ${MY_P}-doc.tar.gz
 
 	cd ${S}
-	unpack ${MY_P}-fonts.tar.gz
+	unpack CJK.tar.gz
 	rm CJK/han*.300.tar.gz || die
 	for f in ${S}/CJK/*.tar.gz; do
 		tar --no-same-owner -xzf $f || die
@@ -40,14 +42,15 @@ src_unpack() {
 }
 
 src_compile() {
+
 	cd utils
 	for d in *conv; do
 		cd $d
 		local f=`echo $d | tr '[:upper:]' '[:lower:]'`
-		$(tc-getCC) ${CFLAGS} -o $f $f.c || die
+		${CC} ${CFLAGS} -o $f $f.c || die
 		if [ $d = CEFconv ] ; then
-			$(tc-getCC) ${CFLAGS} -o cef5conv cef5conv.c || die
-			$(tc-getCC) ${CFLAGS} -o cefsconv cefsconv.c || die
+			${CC} ${CFLAGS} -o cef5conv cef5conv.c || die
+			${CC} ${CFLAGS} -o cefsconv cefsconv.c || die
 		fi
 		cd -
 	done
@@ -57,7 +60,7 @@ src_compile() {
 	make || die
 	cd -
 
-	if use emacs ; then
+	if [ "`use emacs`" ] ; then
 		cd lisp
 		elisp-compile *.el
 		cd emacs-20.3
@@ -75,6 +78,7 @@ src_compile() {
 }
 
 src_install() {
+
 	cd utils
 	for d in *conv; do
 		cd $d
@@ -88,10 +92,10 @@ src_install() {
 
 	cd ${S}
 	dodir ${TEXMF}/tex/latex/${PN}
-	cp -pPR texinput/* ${D}/${TEXMF}/tex/latex/${PN} || die
-	cp -pPR contrib/wadalab ${D}/${TEXMF}/tex/latex/${PN} || die
+	cp -a texinput/* ${D}/${TEXMF}/tex/latex/${PN} || die
+	cp -a contrib/wadalab ${D}/${TEXMF}/tex/latex/${PN} || die
 
-	if use emacs ; then
+	if [ "`use emacs`" ] ; then
 		cd utils/lisp
 		elisp-install ${PN} *.el{,c} emacs-20.3/*.el{,c}
 		cd -
@@ -105,12 +109,12 @@ src_install() {
 				|| die "newins failed"
 		done
 	done
-	cp -pPR texmf/fonts/* ${D}/${TEXMF}/fonts || die "cp failed"
+	cp -a texmf/fonts/* ${D}/${TEXMF}/fonts || die "cp failed"
 
 	dodoc ChangeLog README doc/*
 	docinto chinese; dodoc doc/chinese/*
 	docinto japanese; dodoc doc/japanese/*
-	if use doc ; then
+	if [ "`use doc`" ] ; then
 		docinto cjk; dodoc doc/cjk/*
 		insinto /usr/share/doc/${P}/dvi
 		doins doc/dvi/*
@@ -119,7 +123,7 @@ src_install() {
 	fi
 
 	docinto examples; dodoc examples/*
-	if use doc ; then
+	if [ "`use doc`" ] ; then
 		docinto examples/cjk; dodoc examples/cjk/*
 		insinto /usr/share/doc/${P}/examples/dvi
 		doins examples/dvi/*

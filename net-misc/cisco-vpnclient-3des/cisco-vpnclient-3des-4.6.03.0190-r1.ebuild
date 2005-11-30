@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.6.03.0190-r1.ebuild,v 1.7 2005/11/20 17:58:35 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.6.03.0190-r1.ebuild,v 1.1 2005/11/13 22:08:35 wolf31o2 Exp $
 
 inherit eutils linux-info
 
@@ -10,8 +10,8 @@ HOMEPAGE="http://cco.cisco.com/en/US/products/sw/secursw/ps2308/index.html"
 SRC_URI="vpnclient-linux-x86_64-${MY_PV}.tar.gz"
 
 LICENSE="cisco-vpn-client"
-SLOT="0"
-KEYWORDS="amd64 x86"
+SLOT="${KV}"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 RESTRICT="fetch"
 
@@ -33,11 +33,8 @@ src_unpack () {
 	unpack ${A}
 	cd ${S}
 
-	#Fix problems with the linux >=2.6.14 kernel.
-	if kernel_is 2 6 && [ ${KV_PATCH} -ge 14 ]
-	then
-		epatch ${FILESDIR}/${PV}-2.6.14.patch
-	fi
+	#Fix problems with the linux 2.6.14 kernel.
+	kernel_is 2 6 14 && epatch ${FILESDIR}/${PV}-2.6.14.patch
 }
 
 src_compile () {

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xlhtml/xlhtml-0.5.ebuild,v 1.12 2005/10/29 15:50:26 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/xlhtml/xlhtml-0.5.ebuild,v 1.1 2003/04/17 21:00:32 chouser Exp $
 
 inherit gnuconfig
 
@@ -10,34 +10,21 @@ SRC_URI="mirror://sourceforge/chicago/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ppc ~ppc-macos ~sparc x86"
+KEYWORDS="~alpha"
 IUSE=""
 DEPEND=""
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}; gnuconfig_update config.sub config.guess
-
+src_compile() {
 	# This is needed specifically for depcomp, which is necessary for
 	# building xlhtml, but isn't included.
-	cd ${S}; aclocal; autoconf
-	cd ${S}; automake --add-missing
-}
+	touch depcomp || die "Failed to create depcomp"
+	gnuconfig_update config.sub config.guess depcomp
 
-src_compile() {
 	econf || die "econf failed for ${P}"
 	emake || die "emake failed for ${P}"
 }
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed for ${P}"
-	dodoc AUTHORS COPYING INSTALL README
-	docinto cole
-	dodoc cole/{AUTHORS,COPYING,NEWS,ChangeLog,THANKS,TODO}
-	docinto ppthtml
-	dodoc ppthtml/{ChangeLog,README,THANKS}
-	docinto xlhtml
-	dodoc xlhtml/{ChangeLog,README,THANKS,TODO}
-	rm -rf xlhtml/contrib/CVS
-	cp -pPR xlhtml/contrib ${D}/usr/share/doc/${PF}/xlhtml
+	dodoc AUTHORS
 }

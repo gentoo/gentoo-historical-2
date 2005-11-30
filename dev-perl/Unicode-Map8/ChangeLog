@@ -1,57 +1,6 @@
 # ChangeLog for dev-perl/Unicode-Map8
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-Map8/ChangeLog,v 1.19 2005/10/03 10:03:47 agriffis Exp $
-
-  03 Oct 2005; Aron Griffis <agriffis@gentoo.org> Unicode-Map8-0.12.ebuild:
-  Mark 0.12 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> Unicode-Map8-0.12.ebuild:
-  add ~ia64
-
-  19 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  Unicode-Map8-0.12.ebuild:
-  Stable on ppc.
-
-  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
-  Unicode-Map8-0.11-r1.ebuild, Unicode-Map8-0.11.ebuild,
-  Unicode-Map8-0.12.ebuild:
-  bug 76590
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> Unicode-Map8-0.12.ebuild:
-  Stable on alpha.
-
-  18 Jan 2004; <gustavoz@gentoo.org> Unicode-Map8-0.12.ebuild:
-  stable on sparc
-
-*Unicode-Map8-0.12 (16 Jun 2003)
-
-  16 Jun 2003; Michael Cummings <mcummings@gentoo.org>
-  Unicode-Map8-0.12.ebuild:
-  CPAN version bump; needs testing
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
-  forced version bump to install into correct locations
-
-*Unicode-Map8-0.11-r1 (21 Jun 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-
-*Unicode-Map8-0.11 (6 May 2002)
-
-  1 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> Unicode-Map8-0.11.ebuild :
-
-  Added ppc to KEYWORDS.
-
-  6 May 2002; Seemant Kulleen <seemant@gentoo.org> Unicode-Map8-0.11.ebuild
-  files/digest-Unicode-Map8-0.11 :
-
-  Version bump and using eclass
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Unicode-Map8/ChangeLog,v 1.1 2002/02/01 21:53:28 gbevin Exp $
 
 *Unicode-Map8-0.10 (1 Feb 2002)
 

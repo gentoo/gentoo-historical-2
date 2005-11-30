@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/maildrop-1.8.1-r2.ebuild,v 1.5 2005/10/19 16:56:29 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/maildrop-1.8.1-r2.ebuild,v 1.1 2005/09/10 22:42:16 ferdy Exp $
 
-inherit eutils gnuconfig flag-o-matic
+inherit eutils gnuconfig
 
 DESCRIPTION="Mail delivery agent/filter"
 [[ -z ${PV/?.?} ]] && SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
@@ -29,7 +29,7 @@ DEPEND="!mail-mta/courier
 	!gdbm? (
 		berkdb? (
 			>=sys-libs/db-3
-			~sys-devel/autoconf-2.59
+			~sys-devel/autoconf
 		)
 	)"
 
@@ -57,7 +57,6 @@ src_unpack() {
 	fi
 
 	if ! use fam ; then
-		cd ${S}
 		epatch ${FILESDIR}/${P}-disable-fam.patch
 		cd ${S}/maildir
 		WANT_AUTOCONF=2.59 autoconf || die "recreate configure failed (maildir)"
@@ -73,8 +72,6 @@ src_unpack() {
 
 src_compile() {
 	local myconf
-
-	replace-flags -Os -O2
 
 	if use gdbm ; then
 		myconf="${myconf} --with-db=gdbm"

@@ -1,4 +1,2 @@
-MD5 5b6aa9e1e4b865f3532457db8dc6a6f6 ChangeLog 1035
-MD5 ce7a2ed191c9458f49d48317c30536da files/digest-libXi-0.99.1 65
-MD5 b9006a7a9f3993f5728d4f662782739b libXi-0.99.1.ebuild 627
-MD5 a37bab73e2f24b213932c30997d3d360 metadata.xml 156
+MD5 b41f7a8c6c922d6997720d87a252989b libXi-0.99.0.ebuild 488
+MD5 42644609044d54f2deab0de444d56adf files/digest-libXi-0.99.0 65

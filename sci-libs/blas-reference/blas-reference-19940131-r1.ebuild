@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/blas-reference-19940131-r1.ebuild,v 1.4 2005/05/05 02:44:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/blas-reference/blas-reference-19940131-r1.ebuild,v 1.1 2004/12/29 18:21:54 ribosome Exp $
 
-inherit eutils fortran
+inherit eutils 64-bit fortran
 
 Name="blas"
 DESCRIPTION="FORTRAN reference implementation of the BLAS (linear algebra lib)"
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="-*"
 IUSE="ifc"
 
-DEPEND="sci-libs/blas-config
+DEPEND="app-sci/blas-config
 	>=sys-devel/libtool-1.5
 	ifc? ( dev-lang/ifc )"
 
@@ -25,8 +25,7 @@ PROVIDE="virtual/blas"
 
 S=${WORKDIR}
 
-#TODO: detect 64bit size from compiler, not eclass
-FORTRAN="g77 ifc" || FORTRAN="g77 f2c ifc" # No f2c on 64-bit systems yet :-/
+64-bit && FORTRAN="f77 ifc" || FORTRAN="f77 f2c ifc" # No f2c on 64-bit systems yet :-/
 
 ifc_info() {
 	if [ -z "${IFCFLAGS}" ]

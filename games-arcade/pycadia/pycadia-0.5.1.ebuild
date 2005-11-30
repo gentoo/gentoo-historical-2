@@ -1,49 +1,37 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/pycadia/pycadia-0.5.1.ebuild,v 1.7 2005/08/05 19:18:24 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/pycadia/pycadia-0.5.1.ebuild,v 1.1 2003/11/13 21:20:18 mr_bones_ Exp $
 
 inherit games
 
+S="${WORKDIR}/${PN}"
 DESCRIPTION="Pycadia. Home to vector gaming, python style."
 HOMEPAGE="http://www.anti-particle.com/pycadia.shtml"
 SRC_URI="http://www.anti-particle.com/downloads/${P}.tar.gz"
 
+KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
 IUSE=""
 
 DEPEND=">=dev-python/pygame-1.5.5
 	>=dev-python/pygtk-1.99.16"
 
-S=${WORKDIR}/${PN}
-
-pkg_setup() {
-	# bug #101464
-	if ! built_with_use dev-python/pygtk gnome ; then
-		einfo "${PN} needs gnome support in dev-python/pygtk"
-		die "Please emerge dev-python/pygtk with USE=gnome"
-	fi
-	games_pkg_setup
-}
-
-src_unpack() {
-	unpack ${A}
-	echo "#!/bin/sh" > "${T}/pycadia"
-	echo "cd ${GAMES_DATADIR}/${PN}" >> "${T}/pycadia"
-	echo "exec python ./pycadia.py \"\${@}\"" >> "${T}/pycadia"
-}
-
 src_install() {
-	dogamesbin "${T}/pycadia" || die "dogamesbin failed"
+	local dir="${GAMES_DATADIR}/${PN}"
 
-	insinto "${GAMES_DATADIR}/${PN}"
+	insinto "${dir}"
 	doins *.py pycadia.conf || die "doins failed"
-	doins -r {glade,pixmaps,sounds} || die "doins failed"
 
-	exeinto "${GAMES_DATADIR}/${PN}"
+	exeinto "${dir}"
 	doexe pycadia.py spacewarpy.py vektoroids.py || die "doexe failed"
 
-	dodoc doc/TODO doc/CHANGELOG doc/README
+	cp -R {glade,pixmaps,sounds} "${D}/${dir}" || die "cp failed"
+
+	echo "#!/bin/sh" > pycadia
+	echo "cd ${dir}" >> pycadia
+	echo "exec python ./pycadia.py \"\${@}\"" >> pycadia
+	dogamesbin pycadia || die "dogamesbin failed"
+	dodoc doc/TODO doc/CHANGELOG doc/README || die "dodoc failed"
 	prepgamesdirs
 }

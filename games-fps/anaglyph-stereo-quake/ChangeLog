@@ -1,25 +1,6 @@
-# ChangeLog for games-fps/anaglyph-stereo-quake
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/anaglyph-stereo-quake/ChangeLog,v 1.6 2005/09/26 18:02:10 wolf31o2 Exp $
-
-  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  anaglyph-stereo-quake-130100-r1.ebuild:
-  Making games last on inherit line.
-
-  13 Aug 2004; Danny van Dyk <kugelfang@gentoo.org>
-  +files/anaglyph-stereo-quake-130100-amd64.patch,
-  anaglyph-stereo-quake-130100-r1.ebuild:
-  Fixed BUG #53784.
-
-*anaglyph-stereo-quake-130100-r1 (06 Oct 2003)
-
-  06 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
-  A lot to see a lot to do here ...
-  First up, ported the SDL fixes found in NPRQuake to this
-  so that the game can be used with a mouse ;) #26147.
-  Next fixed cflags so that only user defined flags get in.
-  Finally, fixed data file finding so the user can be
-  anywhere and the game will search the quake-data dir.
+# ChangeLog for app-games/anaglyph-stereo-quake
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/anaglyph-stereo-quake/ChangeLog,v 1.1 2003/09/09 18:10:14 vapier Exp $
 
 *anaglyph-stereo-quake-130100 (03 Aug 2003)
 

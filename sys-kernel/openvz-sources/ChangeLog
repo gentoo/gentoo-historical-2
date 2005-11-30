@@ -1,52 +1,6 @@
 # ChangeLog for sys-kernel/openvz-sources
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.9 2005/11/28 14:23:39 hollow Exp $
-
-*openvz-sources-022.050 (28 Nov 2005)
-
-  28 Nov 2005; Benedikt Boehm <hollow@gentoo.org>
-  +openvz-sources-022.050.ebuild:
-  Version bump
-
-  26 Nov 2005; Benedikt Boehm <hollow@gentoo.org>
-  -files/linux-2.6.8.1.patch, -openvz-sources-022.034.ebuild,
-  -openvz-sources-022.038.ebuild, openvz-sources-022.044.ebuild,
-  -openvz-sources-022.045.ebuild, openvz-sources-022.045-r1.ebuild:
-  044 to stable x86, cleanup
-
-  26 Nov 2005; Christian Heim <phreak@gentoo.org>
-  openvz-sources-022.044.ebuild, openvz-sources-022.045.ebuild,
-  openvz-sources-022.045-r1.ebuild:
-  Fixing SRC_URI (again)
-
-  25 Nov 2005; Christian Heim <phreak@gentoo.org>
-  openvz-sources-022.045-r1.ebuild:
-  Fixing the tarball, since EPATCH is missing patches which miss the .patch
-  suffix. On a side-note the OVZ_* got dropped!
-
-*openvz-sources-022.045-r1 (25 Nov 2005)
-
-  25 Nov 2005; Christian Heim <phreak@gentoo.org>
-  +openvz-sources-022.045-r1.ebuild:
-  Version bump, fixing bug #113214 (thanks to Kir Kolyshkin)
-
-*openvz-sources-022.045 (05 Nov 2005)
-
-  05 Nov 2005; Benedikt Boehm <hollow@gentoo.org>
-  openvz-sources-022.038.ebuild, +openvz-sources-022.045.ebuild:
-  Version bump
-
-*openvz-sources-022.044 (21 Oct 2005)
-
-  21 Oct 2005; Benedikt Boehm <hollow@gentoo.org>
-  openvz-sources-022.034.ebuild, +openvz-sources-022.044.ebuild:
-  Version bump; 034 to stable x86
-
-*openvz-sources-022.038 (23 Sep 2005)
-
-  23 Sep 2005; Benedikt Boehm <hollow@gentoo.org>
-  +openvz-sources-022.038.ebuild:
-  Version bump
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openvz-sources/ChangeLog,v 1.1 2005/09/21 14:02:21 hollow Exp $
 
 *openvz-sources-022.034 (21 Sep 2005)
 

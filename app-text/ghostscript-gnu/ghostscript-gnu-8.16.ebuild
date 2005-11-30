@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gnu/ghostscript-gnu-8.16.ebuild,v 1.3 2005/08/04 20:09:28 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ghostscript-gnu/ghostscript-gnu-8.16.ebuild,v 1.1 2005/06/07 11:22:37 genstef Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ CUPS_PV=1.1.20
 
 SRC_URI="ftp://ftp.gnu.org/gnu/ghostscript/${MY_P}.tar.gz
 	cjk? ( http://www.matsusaka-u.ac.jp/mirror/gs-cjk/adobe-cmaps-200204.tar.gz
-		http://www.matsusaka-u.ac.jp/mirror/gs-cjk/acro5-cmaps-2001.tar.gz )
+		http://www.matsusaka-u.ac.jp/mirror/gs-cjk/acro5-cmaps-2001.tar.gz)
 	cups? ( mirror://gentoo/cups-${CUPS_PV}-source.tar.bz2 )"
 
 LICENSE="GPL-2"
@@ -73,7 +73,7 @@ src_compile() {
 	if use cups; then
 		echo 'include pstoraster/cups.mak' >> Makefile
 		sed -i -e 's:DEVICE_DEVS17=:DEVICE_DEVS17=$(DD)cups.dev:' Makefile
-		sed -i -e 's:EXTRALIBS=\(.*\):EXTRALIBS=\1 -lcups -lcupsimage:' Makefile
+		sed -i -e 's:LDFLAGS=\(.*\)$(XLDFLAGS):LDFLAGS=\1-L/usr/include -lcups -lcupsimage $(XLDFLAGS):' Makefile
 	fi
 
 	# search path fix

@@ -1,4 +1,3 @@
-MD5 0791c17e9a25686742f56db61dae9aba ChangeLog 619
-MD5 76512c9e2eb9252d2ff217c29b5f15be nis-utils-1.4.1-r1.ebuild 746
-MD5 93f9a0d1b967514d38052529dcf071ad files/digest-nis-utils-1.4.1-r1 68
-MD5 70c6536deab96c324497ded5385e6b75 files/keyserv.rc 472
+MD5 93f9a0d1b967514d38052529dcf071ad files/digest-nis-utils-1.4.1 68
+MD5 9b8405e96856719d2064ce1ebd61ac74 nis-utils-1.4.1.ebuild 701
+MD5 188005eb0dcf31bac71e28fa84718dbe ChangeLog 439

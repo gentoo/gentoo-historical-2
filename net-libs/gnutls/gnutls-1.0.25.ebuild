@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.0.25.ebuild,v 1.11 2005/11/27 15:55:07 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.0.25.ebuild,v 1.1 2005/04/28 22:14:53 dragonheart Exp $
 
 inherit eutils gnuconfig
 
@@ -13,7 +13,7 @@ LICENSE="LGPL-2.1 GPL-2"
 # GPL-2 for the gnutls-extras library and LGPL for the gnutls library.
 
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="x86 ~sparc ~ppc ~amd64 ~mips ~alpha ~ppc64 ~hppa ia64"
 
 # Removed keywords awaiting >=dev-libs/libtasn1-0.2.10 keywords (bug #61944)
 # ~ia64
@@ -56,7 +56,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR=${D} install || die
 
-	dodoc AUTHORS ChangeLog NEWS \
+	dodoc AUTHORS COPYING COPYING.LIB ChangeLog NEWS \
 		README THANKS doc/TODO
 
 	if use doc ; then

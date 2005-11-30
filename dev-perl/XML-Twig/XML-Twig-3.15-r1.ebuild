@@ -1,22 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Twig/XML-Twig-3.15-r1.ebuild,v 1.10 2005/07/30 12:44:33 pvdabeel Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-Twig/XML-Twig-3.15-r1.ebuild,v 1.1 2004/09/06 23:19:50 mcummings Exp $
 
 inherit perl-module
 
-DESCRIPTION="This module provides a way to process XML documents. It is build on top of XML::Parser"
-HOMEPAGE="http://www.cpan.org/modules/by-module/XML/${P}.readme"
-SRC_URI="mirror://cpan/authors/id/M/MI/MIROD/${P}.tar.gz"
+MY_P=XML-Twig-${PV}
+S=${WORKDIR}/${MY_P}
+CATEGORY="dev-perl"
 
-LICENSE="|| ( Artistic GPL-2 )"
+DESCRIPTION="This module provides a way to process XML documents. It is build on top of XML::Parser"
+HOMEPAGE="http://www.cpan.org/modules/by-module/XML/${MY_P}.readme"
+SRC_URI="http://www.cpan.org/modules/by-module/XML/${MY_P}.tar.gz"
+
+LICENSE="Artistic | GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha"
 IUSE="nls"
 
 SRC_TEST="do"
 
 # Twig ONLY works with expat 1.95.5
-DEPEND=">=dev-perl/XML-Parser-2.31
+DEPEND="${DEPEND}
+	>=dev-perl/XML-Parser-2.31
 	dev-perl/Scalar-List-Utils
 	>=dev-libs/expat-1.95.5
 	dev-perl/Tie-IxHash
@@ -27,4 +32,5 @@ DEPEND=">=dev-perl/XML-Parser-2.31
 
 src_compile() {
 	echo "" | perl-module_src_compile
+	perl-module_src_test || die "test failed"
 }

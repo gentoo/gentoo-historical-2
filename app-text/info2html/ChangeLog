@@ -1,48 +1,6 @@
 # ChangeLog for app-text/info2html
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/info2html/ChangeLog,v 1.13 2005/05/20 21:47:00 blubb Exp $
-
-  20 May 2005; Bryan Østergaard <kloeri@gentoo.org>
-  info2html-1.4-r1.ebuild:
-  Stable on alpha.
-
-  20 May 2005; Michael Hanselmann <hansmi@gentoo.org>
-  info2html-1.4-r1.ebuild:
-  Stable on hppa.
-
-  20 May 2005; Simon Stelling <blubb@gentoo.org> info2html-1.4-r1.ebuild:
-  stable on amd64 wrt bug 91354
-
-  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  info2html-1.4-r1.ebuild:
-  Stable on sparc
-
-*info2html-1.4-r1 (13 May 2005)
-
-  13 May 2005; Tom Payne <twp@gentoo.org> +files/info2html-xss.patch,
-  +info2html-1.4-r1.ebuild:
-  Security fix. Bug # 91354.
-
-*info2html-1.4-r1 (13 May 2005)
-
-  13 May 2005; Tom Payne <twp@gentoo.org> +files/info2html-xss.patch,
-  +info2html-1.4-r1.ebuild:
-  Security fix. Bug # 91354.
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> info2html-1.4.ebuild:
-  stable on amd64
-
-  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> info2html-1.4.ebuild:
-  Added to ~amd64, bug #71902
-
-  12 Apr 2004; <twp@gentoo.org> info2html-1.4.ebuild:
-  Added IUSE variable.
-
-  20 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> info2html-1.4.ebuild:
-  header fix; move webapp-detect into setup; mips needs deps first
-
-  15 Dec 2003; Stuart Herbert <stuart@gentoo.org> info2html-1.4.ebuild:
-  Fix for bug #32636
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/info2html/ChangeLog,v 1.1 2003/09/28 01:05:46 twp Exp $
 
 *info2html-1.4 (28 Sep 2003)
 

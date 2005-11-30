@@ -1,5 +1,2 @@
-MD5 a603b9f45612ca8c96d9cc3d1514c48d xbubble-0.5.8.ebuild 1079
-MD5 e17aa0aaf91dad641a172f2587292f94 ChangeLog 820
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 bf2900e2f8bd0d7939a152fddbd74481 xbubble-0.5.8.ebuild 530
 MD5 ad5c558fae56fa370b8e01d0d5656c04 files/digest-xbubble-0.5.8 66
-MD5 85d76fecc99f908fb5ae6d66a43b2332 files/xbubble-0.5.8-xpaths.patch 200

@@ -1,71 +1,47 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg4ip/mpeg4ip-1.1.ebuild,v 1.14 2005/11/10 06:15:21 tester Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg4ip/mpeg4ip-1.1.ebuild,v 1.1 2004/05/21 03:52:12 lv Exp $
 
 DESCRIPTION="MPEG 4 implementation library"
 
 HOMEPAGE="http://www.mpeg4ip.net/"
 
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+PV2=`echo $PV | sed s/_rc/RC/`
+
+SRC_URI="mirror://sourceforge/${PN}/${PN}-${PV2}.tar.gz"
 
 LICENSE="MPL-1.1 LGPL-2 GPL-2 LGPL-2.1 BSD UCL MPEG4"
 
 SLOT="0"
 
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
+# not 64 bit safe yet
 
-IUSE="ipv6 mmx gtk v4l2 xvid nas alsa esd arts"
+IUSE="ipv6 mmx gtk v4l2"
 
-RDEPEND=">=media-libs/faac-1.20.1
-	>=media-sound/lame-3.92
-	gtk? ( >=x11-libs/gtk+-2 )
-	media-libs/libid3tag
-	xvid? ( media-libs/xvid )
-	nas? ( media-libs/nas virtual/x11 )
-	alsa? ( media-libs/alsa-lib )
-	arts? ( kde-base/arts )
-	esd? ( media-sound/esound )
-	!media-libs/faad2"
+DEPEND="sys-devel/libtool
+		sys-devel/autoconf
+		sys-devel/automake
+		media-libs/faac
+		>=media-sound/lame-3.92
+		gtk? ( >=x11-libs/gtk+-2 )
+		x86? ( mmx? ( >=dev-lang/nasm-0.98.19 ) )
+		media-video/ffmpeg
+		media-libs/libid3tag"
 
-DEPEND="${RDEPEND}
-	sys-devel/libtool
-	sys-devel/autoconf
-	sys-devel/automake
-	x86? ( mmx? ( >=dev-lang/nasm-0.98.19 ) )"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i -e 's/-Wmissing-prototypes//g' -e 's/-Werror//g' configure
-
-	cd ${S}/lib/SDLAudio
-	sed -i -e 's:-laudio:-L/usr/X11R6/lib -laudio:' configure
-
-	cd ${S}
-	epatch ${FILESDIR}/mpeg4ip-1.1-gcc3.4.patch
-	epatch ${FILESDIR}/mpeg4ip-1.1-gentoo-fixes.patch
-
-	# ships with old version of libtool, causes problems (bug #98133)
-	libtoolize --copy --force
-}
+S="${WORKDIR}/${PN}-${PV2}"
 
 src_compile() {
 
 	cd ${S}
 
 	local myconf
-
-	# mp4live doesnt build, disable it..
-	myconf=" $(use_enable ipv6)
-			$(use_enable mmx)
-			$(use_enable ppc)
-			$(use_enable nas)
-			$(use_enable esd)
-			$(use_enable alsa)
-			$(use_enable arts)"
-	use v4l2 || myconf="${myconf} --disable-v4l2"
+	myconf=" `use_enable ipv6`
+			`use_enable mmx`
+			`use_enable v4l2`
+			` use_enable ppc`"
+	use amd64 && myconf="$myconf --disable-mp4live" && \
+		ewarn "mp4live disabled on amd64"
 
 	econf ${myconf} || die "configure failed"
 
@@ -77,6 +53,6 @@ src_compile() {
 src_install () {
 
 	cd ${S}
-	make install DESTDIR="${D}" || die "make install failed"
+	einstall || die "make install failed"
 
 }

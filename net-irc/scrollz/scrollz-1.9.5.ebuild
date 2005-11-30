@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/scrollz/scrollz-1.9.5.ebuild,v 1.5 2005/09/02 17:49:07 grobian Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-irc/scrollz/scrollz-1.9.5.ebuild,v 1.1 2005/05/14 17:50:56 swegener Exp $
 
 MY_P=ScrollZ-${PV}
 
@@ -12,19 +10,13 @@ HOMEPAGE="http://www.scrollz.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ia64 ~ppc ~ppc-macos x86"
+KEYWORDS="~x86 ~ia64 ~amd64 ~ppc"
 IUSE="ipv6 socks5 ssl"
 
 DEPEND="virtual/libc
 	ssl? ( dev-libs/openssl )"
 
-S="${WORKDIR}"/${MY_P}
-
-src_unpack() {
-	unpack ${A}
-	# Darwin/OSX has GCC4 and needs this
-	epatch ${FILESDIR}/${P}-gcc4.patch
-}
+S=${WORKDIR}/${MY_P}
 
 src_compile() {
 	econf \
@@ -39,8 +31,8 @@ src_compile() {
 src_install() {
 	dodir /usr/share/man/man1
 	einstall \
-		sharedir="${D}"/usr/share \
-		mandir="${D}"/usr/share/man/man1 \
+		sharedir=${D}/usr/share \
+		mandir=${D}/usr/share/man/man1 \
 		install \
 		|| die "einstall failed"
 	dodoc ChangeLog* README* || die "dodoc failed"

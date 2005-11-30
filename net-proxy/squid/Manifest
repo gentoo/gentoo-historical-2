@@ -1,26 +1,17 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 0d88b21235f137d51c78a948746d86d5 ChangeLog 23465
-MD5 cf398556bce540358644ce9a452abfba metadata.xml 241
-MD5 5a123cb8aa8308bf12130208cc3d171b squid-2.5.10-r2.ebuild 6351
-MD5 f3431002a02349e68cd89f7c1770e21e squid-2.5.10-r4.ebuild 6400
-MD5 af1fa843fab3e498b6181dacf8d033b1 squid-2.5.11.ebuild 6338
-MD5 5c835c09a3f045902907876f6330d64d squid-2.5.12.ebuild 6347
-MD5 208e20395de910fc529fcfb8031bfb13 files/squid.pam-include 326
-MD5 6f30a7f5c48ec35a7044acb189c858c5 files/squid.cron 133
-MD5 5cbc9bcecee98115731f5fc4b0f10907 files/squid.initd 1982
-MD5 9bc2547e30ed7f253626bd88246c0808 files/digest-squid-2.5.10-r2 157
-MD5 6b7e2f22e3d8d628b7f3c0a468f05933 files/digest-squid-2.5.10-r4 157
-MD5 9aae33d4872e127be17e8a1bc587c2a7 files/digest-squid-2.5.11 157
-MD5 dbfc7f65835aab95fd78a4afbae90048 files/digest-squid-2.5.12 157
+MD5 3a2538e403f25c33ed40b387976acfb9 squid-2.5.8-r1.ebuild 6107
+MD5 1bd2eb184daf3062dcfd24296417609d squid-2.5.9.ebuild 6021
+MD5 f2881ab9b7a08ed59e6f62d772193dfb squid-2.5.8.ebuild 5893
+MD5 4bd9d89aff5d6512b6a9c032f26337fa ChangeLog 17055
+MD5 c2a21a50fca07975a99242ebc54c2f88 metadata.xml 330
+MD5 f57ebd3d0f0c0ff8fd5a2309b744ac48 squid-2.5.9-r3.ebuild 5914
+MD5 c2d230465ceefe887175cb8121d0fbc8 files/digest-squid-2.5.8-r1 156
+MD5 5b59fde3a3fdf6140efd79a82120b5e3 files/digest-squid-2.5.9-r3 156
+MD5 e4e44e57aa7d93849649c3ceb67a3a65 files/squid.confd 437
+MD5 6f30a7f5c48ec35a7044acb189c858c5 files/squid-r1.cron 133
+MD5 c3048f19a1c725e2c53f86640b752382 files/squid-2.5.8-gentoo.diff 17233
+MD5 bea1d2ef8cb2f1590f89bf37f28b9268 files/squid.pam 505
+MD5 20bbd41f88ddbcbe57380697c2675862 files/squid.rc6 1980
 MD5 5286e7e73ca5687381fa09ff41dccbd1 files/squid-logrotate 101
-MD5 8e7207b10699502e573d9d60ff0e07a6 files/squid.confd 437
-MD5 40a3fdee0d8db88cb690a6eceb59e45a files/squid.pam 505
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDhHnkNSP4Vda7IdsRAol0AJ0dvMOz764bj4Ae6bcre5DYBjPDygCffj+d
-2Eir4RRhFBzP/5iWPeQ+oCc=
-=TvKl
------END PGP SIGNATURE-----
+MD5 89952d7cb51de1e4dbe9b5a1992aaf13 files/squid-2.5.9-gentoo.diff 17411
+MD5 b1028824f46381ebe326b5faf0e06d35 files/digest-squid-2.5.8 155
+MD5 7aec9f6b933e46cb25a72c56c0993e9e files/digest-squid-2.5.9 156

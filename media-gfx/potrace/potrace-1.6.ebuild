@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/potrace/potrace-1.6.ebuild,v 1.3 2005/05/09 00:30:13 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/potrace/potrace-1.6.ebuild,v 1.1 2005/03/01 09:05:15 usata Exp $
 
 DESCRIPTION="Transforming bitmaps into vector graphics"
 HOMEPAGE="http://potrace.sourceforge.net/"
@@ -9,7 +9,7 @@ SRC_URI="http://potrace.sourceforge.net/download/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ia64 ~ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha ~ia64"
 
 IUSE="zlib"
 

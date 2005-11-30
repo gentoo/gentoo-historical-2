@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-3.0.0-r3.ebuild,v 1.12 2005/03/23 16:16:48 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-3.0.0-r3.ebuild,v 1.1 2004/07/30 12:45:34 karltk Exp $
 
 inherit eutils java-utils
 
@@ -12,7 +12,7 @@ SRC_URI="http://download2.eclipse.org/downloads/drops/R-3.0-200406251208/${MY_A}
 IUSE="gtk motif gnome kde mozilla jikes"
 SLOT="3"
 LICENSE="CPL-1.0"
-KEYWORDS="~x86 ppc"
+KEYWORDS="~x86"
 
 RDEPEND="|| ( >=virtual/jdk-1.4.2 =dev-java/blackdown-jdk-1.4.2* )
 	gtk? ( >=x11-libs/gtk+-2.2.4 )
@@ -21,7 +21,7 @@ RDEPEND="|| ( >=virtual/jdk-1.4.2 =dev-java/blackdown-jdk-1.4.2* )
 			!motif? ( >=x11-libs/gtk+-2.2.4 )
 		      )
 	      )
-	mozilla? ( >=www-client/mozilla-1.5 )
+	mozilla? ( >=net-www/mozilla-1.5 )
 	gnome? ( =gnome-base/gnome-vfs-2* =gnome-base/libgnomeui-2* )
 	jikes? ( >=dev-java/jikes-1.19 )
 	!media-fonts/unifont"
@@ -30,16 +30,12 @@ DEPEND="${RDEPEND}
 	>=dev-java/ant-1.5.3
 	>=sys-apps/findutils-4.1.7
 	>=app-shells/tcsh-6.11
-	app-arch/unzip
-	app-arch/zip"
+	app-arch/unzip"
 
 pkg_setup() {
 	ewarn "This package is _highly_ experimental."
 	ewarn "If you are using Eclipse 2.1.x for any serious work, stop now."
 	ewarn "You cannot expect to be productive with this packaging of 3.0!"
-	if use ppc; then
-		ewarn "This package needs 1 gig Ram on PPC !"
-	fi
 
 	java-utils_setup-vm
 
@@ -61,10 +57,10 @@ pkg_setup() {
 
 	if ${use_gtk} && use mozilla ; then
 		if [ -f ${ROOT}/usr/lib/mozilla/libgtkembedmoz.so ] ; then
-			einfo "Compiling against www-client/mozilla"
+			einfo "Compiling against net-www/mozilla"
 			mozilla_dir=/usr/lib/mozilla
 		elif [ -f ${ROOT}/usr/lib/MozillaFirefox/libgtkembedmoz.so ] ; then
-			einfo "Compiling against www-client/mozilla-firefox"
+			einfo "Compiling against net-www/mozilla-firefox"
 			mozilla_dir=/usr/lib/MozillaFirefox
 		else
 			eerror "You need either Mozilla, compiled against gtk+ v2.0 or newer"
@@ -232,16 +228,9 @@ src_compile() {
 
 	addwrite "/proc/self/maps"
 	addwrite "/proc/cpuinfo"
-	addwrite "/dev/random"
 
 	# Figure out correct boot classpath
-	if [ ! -z "`java-config --java-version | grep IBM`" ] ; then
-		# IBM JRE
-		ant_extra_opts="-Dbootclasspath=$(java-config --jdk-home)/jre/lib/core.jar:$(java-config --jdk-home)/jre/lib/xml.jar:$(java-config --jdk-home)/jre/lib/graphics.jar"
-	else
-		# Sun derived JREs (Blackdown, Sun)
-		ant_extra_opts="-Dbootclasspath=$(java-config --jdk-home)/jre/lib/rt.jar"
-	fi
+	ant_extra_opts="-Dbootclasspath=$(java-config --classpath)"
 
 	# karltk: jikes doesn't work as a compiler for Eclipse currently.
 #	if use jikes ; then

@@ -2,16 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 
-	<herd>dev-embedded</herd>
+	<herd>embedded</herd>
 
 	<maintainer>
-		<email>dragonheart@gentoo.org</email>
-		<name>Daniel Black</name>
-	</maintainer>
-
-	<maintainer>
-		<email>brix@gentoo.org</email>
-		<name>Henrik Brix Andersen</name>
+		<email>pappy@gentoo.org</email>
+		<name>Alexander Gabert</name>
+		<description>Primary Maintainer</description>
 	</maintainer>
 
 	<longdescription>

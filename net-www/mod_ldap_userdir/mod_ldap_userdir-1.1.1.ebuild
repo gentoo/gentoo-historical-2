@@ -1,12 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_ldap_userdir/mod_ldap_userdir-1.1.1.ebuild,v 1.6 2005/07/14 22:48:04 agriffis Exp $
-IUSE="apache2 ssl"
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_ldap_userdir/mod_ldap_userdir-1.1.1.ebuild,v 1.1 2004/05/27 00:49:17 zul Exp $
+IUSE="apache2"
 
 DESCRIPTION="Apache module that enables ~/public_html from an LDAP directory."
 HOMEPAGE="http://horde.net/~jwm/software/mod_ldap_userdir/"
 KEYWORDS="x86"
 
+S=${WORKDIR}/${P}
 SRC_URI="http://horde.net/~jwm/software/mod_ldap_userdir/${P}.tar.gz"
 
 DEPEND="=net-www/apache-1*
@@ -48,7 +49,7 @@ pkg_postinst() {
 	if use apache2; then
 		einfo "Adjust /etc/apache2/conf/modules.d/47_mod_ldap_userdir.conf to match your setup and"
 		einfo "add '-D LDAPuserdir' to your APACHE2_OPTS in /etc/conf.d/apache2"
-		einfo "To configure the package run \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
+		einfo "To configure the package run \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 	fi
 }
 

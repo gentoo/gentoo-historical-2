@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg-tools/mpeg-tools-1.5b-r1.ebuild,v 1.5 2004/07/14 22:01:48 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg-tools/mpeg-tools-1.5b-r1.ebuild,v 1.1 2003/11/07 18:54:45 azarah Exp $
 
 MY_PN=mpeg_encode
 S=${WORKDIR}/${MY_PN}
@@ -14,22 +12,17 @@ DEPEND="virtual/x11"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="x86 ~amd64"
-IUSE=""
+KEYWORDS="x86"
 
 src_unpack () {
-	unpack ${A} ; cd ${S}
-
+	unpack ${A}
+	cd ${S}
 	cp ${FILESDIR}/${PV}/libpnmrw.c .
 	cp ${FILESDIR}/${PV}/libpnmrw.h headers/
 	epatch ${FILESDIR}/${PV}/${P}-gentoo.patch
 	cd ${S}/../convert
 	# Fix exit() being called without arguments
 	epatch ${FILESDIR}/${PV}/${P}-fix-exit-call.patch
-
-	if [ "${ARCH}" == "amd64" ]; then
-		cd ${S}/../.. ; epatch ${FILESDIR}/${P}-64bit_fixes.patch
-	fi
 }
 
 src_compile() {

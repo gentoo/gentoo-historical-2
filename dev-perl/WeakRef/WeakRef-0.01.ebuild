@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/WeakRef/WeakRef-0.01.ebuild,v 1.11 2005/10/02 13:25:54 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/WeakRef/WeakRef-0.01.ebuild,v 1.1 2004/06/05 19:38:26 mcummings Exp $
 
 inherit perl-module
+
+CATEGORY="dev-perl"
 
 DESCRIPTION="an API to the Perl weak references"
 
 HOMEPAGE="http://search.cpan.org/~lukka/${P}/"
-SRC_URI="mirror://cpan/authors/id/L/LU/LUKKA/${P}.tar.gz"
+SRC_URI="http://search.cpan.org/CPAN/authors/id/L/LU/LUKKA/${P}.tar.gz"
 SRC_TEST="do"
 
-LICENSE="|| ( Artistic GPL-2 )"
+LICENSE="Artistic | GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"

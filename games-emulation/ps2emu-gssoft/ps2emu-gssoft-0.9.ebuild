@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/ps2emu-gssoft/ps2emu-gssoft-0.9.ebuild,v 1.4 2005/08/23 19:41:58 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/ps2emu-gssoft/ps2emu-gssoft-0.9.ebuild,v 1.1 2005/08/07 07:13:45 vapier Exp $
 
-inherit eutils games
+inherit games
 
 DESCRIPTION="PSEmu2 GPU plugin"
 HOMEPAGE="http://www.pcsx2.net/"
@@ -23,11 +23,10 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/GSsoft${PV}
 
 src_unpack() {
-	unrar x -idq "${DISTDIR}"/${A} || die
+	unrar x -idq "${DISTDIR}"/${A}
 	cd "${S}"
 	sed -i 's:-O2 -fomit-frame-pointer -ffast-math:$(OPTFLAGS):' Src/Linux/Makefile || die
 	epatch "${FILESDIR}"/${P}-gentoo.patch
-	epatch "${FILESDIR}"/${P}-PIC.patch
 }
 
 src_compile() {

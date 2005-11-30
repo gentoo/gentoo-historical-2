@@ -1,22 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gtkspell/gtkspell-2.0.4-r1.ebuild,v 1.17 2005/01/01 16:18:02 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/gtkspell/gtkspell-2.0.4-r1.ebuild,v 1.1 2003/10/26 19:56:57 foser Exp $
 
-inherit libtool eutils
+inherit eutils
 
-DESCRIPTION="Spell checking widget for GTK2"
+DESCRIPTION="Spell chechking widget for GTK2"
 HOMEPAGE="http://gtkspell.sourceforge.net/"
 SRC_URI="http://${PN}.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc sparc x86 ppc64"
+KEYWORDS="~x86 ~sparc ~ppc ~alpha ~hppa"
 IUSE="doc"
 
-RDEPEND=">=x11-libs/gtk+-2
-	>=app-text/enchant-1"
-DEPEND="${RDEPEND}
-	sys-devel/autoconf
+DEPEND=">=x11-libs/gtk+-2
+	>=app-text/enchant-1
 	doc? ( >=dev-util/gtk-doc-0.6 )"
 
 src_unpack() {
@@ -25,7 +23,6 @@ src_unpack() {
 
 	# fix the config script's gtkdoc check (bug #16997)
 	cd ${S}
-	libtoolize --copy --force # See bug #73563, comment #9
 	sed -i "s:GTKDOC=true::" configure
 
 	# workaround missing docbook 4.2 xml dtd in /etc/xml/docbook
@@ -34,13 +31,17 @@ src_unpack() {
 	# use enchant as backend
 	epatch ${FILESDIR}/${P}-enchant.patch
 
-	autoconf || die
-
 }
 
 src_compile() {
 
-	econf $(use_enable doc gtk-doc) || die
+	local myconf
+
+	use doc \
+		&& myconf="--enable-gtk-doc" \
+		|| myconf="--disable-gtk-doc"
+
+	econf ${myconf} || die
 	emake || die "compile failure"
 
 }

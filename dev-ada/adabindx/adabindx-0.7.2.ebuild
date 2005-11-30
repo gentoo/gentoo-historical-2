@@ -1,28 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/adabindx/adabindx-0.7.2.ebuild,v 1.10 2005/01/01 17:22:18 eradicator Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/adabindx/adabindx-0.7.2.ebuild,v 1.1 2003/07/14 00:39:55 george Exp $
 #
-
-inherit gnat
 
 DESCRIPTION="An Ada-binding to the X Window System and *tif."
 SRC_URI="http://home.arcor.de/hfvogt/${P}.tar.bz2"
 HOMEPAGE="http://home.arcor.de/hfvogt/programming.html"
 
 LICENSE="GMGPL"
-DEPEND=">=dev-lang/gnat-3.14p
-	virtual/x11
-	>=sys-apps/sed-4"
+DEPEND="dev-lang/gnat
+	virtual/x11"
 RDEPEND=""
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 SLOT="0"
 IUSE=""
+
+inherit gnat
 
 src_unpack() {
 	unpack "${P}.tar.bz2"
 	cd "${S}"
-	bzip2 -cd ${FILESDIR}/${P}.diff.bz2 | patch -p1
-	sed -i -e "s/-O3.*/\${ADACFLAGS}/g" Local.conf
+	patch -p1 < ${FILESDIR}/${P}.diff
 }
 
 src_compile() {
@@ -50,20 +48,5 @@ src_install () {
 
 	#install examples
 	cp -r examples ${D}/usr/share/doc/${PF}/
-
-	#set up environment
-	dodir /etc/env.d
-	echo "ADA_OBJECTS_PATH=/usr/lib/ada/adalib/${PN}" \
-		> ${D}/etc/env.d/55adabindx
-	echo "ADA_INCLUDE_PATH=/usr/lib/ada/adainclude/${PN}" \
-		>> ${D}/etc/env.d/55adabindx
-}
-
-pkg_postinst() {
-	einfo "The envaironment has been set up to make gnat automatically find files for"
-	einfo "AdaBindX. In order to immediately activate these settings please do:"
-	einfo "env-update"
-	einfo "source /etc/profile"
-	einfo "Otherwise the settings will become active next time you login"
 }
 

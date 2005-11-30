@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/hk_classes/hk_classes-0.7.1.ebuild,v 1.6 2005/04/24 12:25:07 hansmi Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-db/hk_classes/hk_classes-0.7.1.ebuild,v 1.1 2004/09/20 02:50:28 caleb Exp $
 
 P_DOCS="hk_docs-0.7"
 
@@ -14,7 +12,7 @@ SRC_URI="mirror://sourceforge/hk-classes/${P}.tar.bz2
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~x86 ~ppc"
 IUSE="mysql postgres sqlite odbc doc"
 
 # At least one of the following is required
@@ -22,13 +20,6 @@ DEPEND="mysql? ( >=dev-db/mysql-3.23.54a )
 	postgres? ( >=dev-db/postgresql-7.3 )
 	sqlite? ( =dev-db/sqlite-2* )
 	odbc? ( >=dev-db/unixODBC-2.0.6 )"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/${PN}-amd64.patch
-}
 
 src_compile() {
 	econf || die "econf failed"

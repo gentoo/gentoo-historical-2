@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/libglade-java/libglade-java-2.10.1.ebuild,v 1.3 2005/07/19 11:59:49 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/libglade-java/libglade-java-2.10.1.ebuild,v 1.1 2005/05/01 16:39:10 karltk Exp $
 
 #
 # WARNING: Because java-gnome is a set of bindings to native GNOME libraries, 
@@ -24,8 +24,8 @@ RDEPEND=">=gnome-base/libglade-2.5.1
 	>=virtual/jre-1.2"
 
 
-DEPEND=">=virtual/jdk-1.2
-		${RDEPEND}
+DEPEND="${RDEPEND}
+		>=virtual/jdk-1.2
 		app-arch/zip"
 
 #
@@ -33,7 +33,7 @@ DEPEND=">=virtual/jdk-1.2
 #
 SLOT="2.10"
 LICENSE="LGPL-2.1"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="gcj gnome"
 
 src_unpack() {

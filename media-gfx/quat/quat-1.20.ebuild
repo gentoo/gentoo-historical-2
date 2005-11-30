@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/quat/quat-1.20.ebuild,v 1.5 2005/07/25 09:02:16 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/quat/quat-1.20.ebuild,v 1.1 2003/09/12 04:16:31 vapier Exp $
 
 DESCRIPTION="A 3D quaternionic fractal generator"
 HOMEPAGE="http://www.physcip.uni-stuttgart.de/phy11733/quat_e.html"
@@ -8,8 +8,7 @@ SRC_URI="http://www.physcip.uni-stuttgart.de/phy11733/download/quat-1.20.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc x86"
-IUSE="X debug"
+KEYWORDS="x86"
 
 DEPEND="X? ( >=x11-libs/fltk-1.1 virtual/x11 )
 	>=sys-libs/zlib-1.1.4"
@@ -21,7 +20,7 @@ src_compile() {
 		`use_enable X gui` \
 		`use_enable debug` \
 		`use_enable debug prof` \
-		|| die "configure failure"
+		|| die "configure failure" 
 	emake || die "make failure"
 }
 

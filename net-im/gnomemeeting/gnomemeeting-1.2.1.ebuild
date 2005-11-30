@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.2.1.ebuild,v 1.8 2005/09/17 00:57:26 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gnomemeeting/gnomemeeting-1.2.1.ebuild,v 1.1 2005/04/10 22:09:43 stkn Exp $
 
-inherit gnome2 eutils flag-o-matic
+inherit gnome2 eutils
 
 DESCRIPTION="H.323 videoconferencing and VoIP softphone"
 HOMEPAGE="http://www.gnomemeeting.org/"
@@ -11,11 +11,11 @@ SRC_URI="http://www.gnomemeeting.org/includes/clicks_counter.php?http://www.gnom
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~amd64 ppc ~sparc ~x86"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc ~amd64"
 IUSE="ipv6 sdl ssl howl gnome"
 
-RDEPEND="~dev-libs/pwlib-1.8.4
-	~net-libs/openh323-1.15.3
+RDEPEND=">=dev-libs/pwlib-1.8.3
+	>=net-libs/openh323-1.15.2
 	>=net-nds/openldap-2.0.0
 	>=x11-libs/gtk+-2.4.0
 	>=dev-libs/glib-2.0.0
@@ -32,40 +32,25 @@ RDEPEND="~dev-libs/pwlib-1.8.4
 		>=gnome-base/gconf-2.2.0
 		>=gnome-base/orbit-2.5.0
 		gnome-extra/evolution-data-server )"
-#	dbus? ( sys-apps/dbus )
 
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.12.0
 	>=dev-util/intltool-0.20
 	dev-lang/perl
-	dev-perl/XML-Parser
 	gnome? ( app-text/scrollkeeper )"
 
 MAKEOPTS="${MAKEOPTS} -j1"
 
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	# Fix configure to install schemafile into the proper directory
-	epatch ${FILESDIR}/gnomemeeting-1.2.1-configure.patch
-}
-
 src_compile() {
-	local myconf
 
-	# filter -O3, causes trouble with plugins (bug #88710)
-	replace-flags -O3 -O2
+	local myconf
 
 	myconf="${myconf} --with-ptlib-includes=/usr/include/ptlib"
 	myconf="${myconf} --with-ptlib-libs=/usr/lib"
 	myconf="${myconf} --with-openh323-includes=/usr/include/openh323"
 	myconf="${myconf} --with-openh323-libs=/usr/lib"
 
-	#
-	# i'm going to break your fingers if you touch these!
-	#
 	if use ssl; then
 		myconf="${myconf} --with-openssl-libs=/usr/lib"
 		myconf="${myconf} --with-openssl-includes=/usr/include/openssl"
@@ -75,21 +60,13 @@ src_compile() {
 		&& myconf="${myconf} --with-sdl-prefix=/usr" \
 		|| myconf="${myconf} --disable-sdltest"
 
-	use gnome \
-		|| myconf="${myconf} --disable-gnome"
-
-# not available on alpha atm
-#	use dbus \
-#		&& myconf="${myconf} --enable-dbus"
-
-	use howl \
-		|| myconf="${myconf} --disable-howl"
-
 	econf \
 		--prefix=/usr \
 		--host=${CHOST} \
 		${myconf} \
-		$(use_enable ipv6) || die "configure failed"
+		$(use_enable howl) \
+		$(use_enable ipv6) \
+		$(use_enable gnome) || die "configure failed"
 	emake || die
 }
 

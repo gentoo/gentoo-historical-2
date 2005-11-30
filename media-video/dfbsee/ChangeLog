@@ -1,19 +1,6 @@
-# ChangeLog for media-video/dfbsee
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dfbsee/ChangeLog,v 1.6 2005/10/31 11:16:06 flameeyes Exp $
-
-  31 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> dfbsee-0.7.4.ebuild:
-  Don't append -Wl,-z,now; use $(bindnow-flags) instead.
-
-  30 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> dfbsee-0.7.4.ebuild:
-  Remove unneeded virtual/x11 dependency as per bug #96481.
-
-  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> dfbsee-0.7.4.ebuild:
-  Don't install INSTALL file.
-
-  11 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> dfbsee-0.7.4.ebuild:
-  corrected path for S to fix #76211.also appended some ldflags to get rid of a
-  QA notice.
+# ChangeLog for media-video/DFBSee
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/dfbsee/ChangeLog,v 1.1 2004/11/25 20:40:59 chriswhite Exp $
 
 *dfbsee-0.7.4 (26 Nov 2004)
 

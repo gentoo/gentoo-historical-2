@@ -1,60 +1,12 @@
 ##
-# These packages will, or depend on packages that will overwrite
-# collision-protected files 
+# These packages overwrite collision-protected files
 ##
-app-arch/zip
-app-arch/unzip
-app-editors/nano
-app-editors/vim-core
-app-editors/vim
->=app-portage/esearch-0.7.1
-app-shells/bash
-app-shells/zsh
-app-vim/phpdocs
-app-vim/gentoo-syntax
-app-vim/taglist
-dev-lang/parrot
-dev-lang/perl
-dev-lang/python
-dev-libs/libprelude
-dev-libs/libxml2
-dev-perl/XML-Parser
-dev-util/intltool
-dev-util/guile
-dev-util/subversion
->=mail-client/mutt-1.5.11
-media-libs/a52dec
-net-misc/curl
-net-misc/rsync
-sys-apps/diffutils
-sys-apps/gawk
-sys-apps/grep
-sys-apps/texinfo
-sys-devel/gcc-apple
-sys-devel/autoconf
-sys-devel/autoconf-wrapper
-sys-devel/automake
-sys-devel/automake-wrapper
-sys-devel/bison
-sys-devel/flex
-sys-devel/libperl
-sys-libs/com_err
-sys-libs/ncurses
-x11-libs/gtk+
+
+
 ##
 # end collision-protect
 ##
 
-# Cpio is provided by Apple on 10.3.  The Gentoo binary is installed to
-# a separate location so the package does not cause a collision.
-# Nonetheless, cpio is part of System, and we don't want it pulled in
-# for users of this profile
-app-arch/cpio
 
-# libidn needs java-config.  This one is not yet ported, so as long as
-# thre is no solution for that it is masked
-net-dns/libidn
-
-# Ruby 1.8.2 compiles, but it contains a security bug.  We cannot
-# compile 1.8.3 because it needs autoconf 2.59 which we don't have
-dev-lang/ruby
+#masked until the save problem is fixed.
+app-editors/nano

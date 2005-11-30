@@ -1,55 +1,8 @@
 # ChangeLog for dev-perl/Net-Telnet
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Telnet/ChangeLog,v 1.18 2005/11/27 22:06:13 tgall Exp $
-
-  27 Nov 2005; Tom Gall <tgall@gentoo.org> Net-Telnet-3.03-r1.ebuild:
-  stable on ppc64
-
-  08 Nov 2005; Brent Baude <ranger@gentoo.org> Net-Telnet-3.03-r1.ebuild:
-  Marking Net-Telnet-3.03-r1 ~ppc64 for bug 111851
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Net-Telnet-3.03-r1.ebuild:
-  Mark 3.03-r1 stable on ia64
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Net-Telnet-3.03-r1.ebuild:
-  add ~ia64
-
-  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  Net-Telnet-3.03-r1.ebuild:
-  cleaning
-
-  24 Apr 2005; Donnie Berkholz <spyderous@gentoo.org>; :
-  s:04 Dev 2002:04 Dec 2002
-
-  20 Mar 2004; Joshua Kinard <kumba@gentoo.org> Net-Telnet-3.03-r1.ebuild:
-  Added ~mips to KEYWORDS.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-  04 Dec 2002; Michael Cummings <mcummings@gentoo.org>
-  Net-Telnet-3.03-r1
-
-  added sparc (tested)
-
-  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
-
-  forced version bump to install into correct locations
-# ChangeLog for dev-perl/Net-Telnet
-
-*Net-Telnet-3.03-r1 (21 Jun 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-
-*Net-Telnet-3.03 (8 Sep 2002)
-  8 Sep 2002: <mcummings@gentoo.org> Net-Telnet-3.03.ebuild:
-  Thanks to Nicholas Wourms for this ebuild. Version bump, bug correction.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Telnet/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
 
 *Net-Telnet-3.02-r1 (1 Feb 2002)
-
-  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Net-Telnet-3.02-r1.ebuild :
-
-  Added ppc to KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

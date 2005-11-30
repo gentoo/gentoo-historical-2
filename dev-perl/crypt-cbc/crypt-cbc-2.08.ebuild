@@ -1,18 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/crypt-cbc/crypt-cbc-2.08.ebuild,v 1.13 2005/06/05 13:32:48 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/crypt-cbc/crypt-cbc-2.08.ebuild,v 1.1 2003/06/24 00:45:24 mcummings Exp $
 
 inherit perl-module
 
 MY_P=Crypt-CBC-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Encrypt Data with Cipher Block Chaining Mode"
+SRC_URI="http://search.cpan.org/CPAN/authors/id/L/LD/LDS/${MY_P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/CPAN/authors/id/L/LD/LDS/${MY_P}.readme"
-SRC_URI="mirror://cpan/authors/id/L/LD/LDS/${MY_P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ~alpha ~ppc ~sparc"
 
-DEPEND="perl-core/Digest-MD5"
+DEPEND="dev-perl/Digest-MD5"

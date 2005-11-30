@@ -1,26 +1,7 @@
-# ChangeLog for games-emulation/grustibus
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/grustibus/ChangeLog,v 1.8 2005/06/15 18:34:10 wolf31o2 Exp $
+# ChangeLog for app-games/grustibus
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/grustibus/ChangeLog,v 1.1 2003/09/09 16:28:07 vapier Exp $
 
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  grustibus-0.43-r4.ebuild:
-  Removed INSTALL file.
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  18 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  grustibus-0.43-r4.ebuild:
-  patch from Roman 'gryf' Dobosz via bug #57004 to fix rom name after rebuild
-
-  22 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +files/0.43-crash.patch, grustibus-0.43-r4.ebuild:
-  Add patch from Roman 'gryf' Dobosz to fix crash with newer xmame command-line
-  arguments (bug #53216)
-
-  24 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  grustibus-0.43-r4.ebuild:
-  header fix; tidy
 
 *grustibus-0.43-r4 (18 Jul 2002)
 
@@ -33,7 +14,7 @@
   
 *grustibus-0.43-r3 (15 jun 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> grustibus-0.43-r3.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> grustibus-0.43-r3.ebuild :
   Added LICENSE, KEYWORDS.
   15 Jun 2002; Gabriele Giorgetti <stroke@gentoo.org> grustibus-0.43-r3.ebuild:
   fixes missing dep to gdk-pixbuf (bug #3591)
@@ -41,7 +22,7 @@
 
 *grustibus-0.43-r2 (7 May 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> grustibus-0.43-r2.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> grustibus-0.43-r2.ebuild :
   Added LICENSE, KEYWORDS.
   7 May 2002; Spider <spider@gentoo.org> grustibus-0.43-r2.ebuild:
   fix sourceforge mirroring.

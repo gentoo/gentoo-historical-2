@@ -1,25 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/linux-logo/linux-logo-4.07-r1.ebuild,v 1.10 2005/01/01 15:11:53 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/linux-logo/linux-logo-4.07-r1.ebuild,v 1.1 2003/08/30 00:33:51 seemant Exp $
 
 inherit eutils
 
 MY_P=${PN/-/_}-${PV}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="A utility that displays an ANSI/ASCII logo and some system information"
-HOMEPAGE="http://www.deater.net/weave/vmwprod/linux_logo/"
+DESCRIPTION="Displays an ansi or an ascii logo and some system information."
+HOMEPAGE="http://www.deater.net/weave/vmwprod/linux_logo/" 
 SRC_URI="http://www.deater.net/weave/vmwprod/linux_logo/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc hppa sparc"
+KEYWORDS="x86 ~ppc"
 IUSE="nls"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=sys-apps/sed-4"
 RDEPEND="nls? ( sys-devel/gettext )"
 
-src_unpack() {
+src_unpack() { 
 	unpack ${A}
 	cd ${S}
 	echo "./logos/gentoo.logo" >> logo_config
@@ -27,7 +27,7 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${P}-gentoo-logo.patch
 
-	if ! use nls
+	if [ -z "`use nls`" ]
 	then
 		sed -i 's:cd po && $(MAKE)::' Makefile
 	fi
@@ -40,8 +40,9 @@ src_compile() {
 src_install() {
 	dobin linux_logo
 	doman linux_logo.1.gz
-
-	dodoc BUGS CHANGES README README.CUSTOM_LOGOS TODO USAGE LINUX_LOGO.FAQ
+	
+	dodoc BUGS CHANGES COPYING README README.CUSTOM_LOGOS TODO USAGE
+	dodoc LINUX_LOGO.FAQ
 
 	if use nls
 	then

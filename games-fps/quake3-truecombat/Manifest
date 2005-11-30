@@ -1,14 +1,5 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 1f273878a016fe49403799ee1cb6072e ChangeLog 1174
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 a2b0204cc5e2f0556b9f3810f2d95529 quake3-truecombat-1.2.ebuild 810
-MD5 28f82d8d76dcd643efa417be5009ce8b files/digest-quake3-truecombat-1.2 260
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.4 (GNU/Linux)
-
-iD8DBQFBZXfYKSoOBZY9iUIRAr+vAJ4yCOMnSG3qVtMEgIxLwJ5zq8YqLwCdFZkn
-sTTqL6as3EKSJtmyJwBoZUM=
-=jaXu
------END PGP SIGNATURE-----
+MD5 9a2f580ae2685143088d1c31eed11ef7 files/digest-quake3-truecombat-1.0 64
+MD5 3bab3c958c654c8b8074544c7003dfff files/digest-quake3-truecombat-1.0a 134
+MD5 59322ca09b14ff26dd14e6ce0ec3f551 quake3-truecombat-1.0.ebuild 486
+MD5 662807e4eced1aac109599c77f8caff0 ChangeLog 523
+MD5 71301c91ba4a80b72c0e168e223f964d quake3-truecombat-1.0a.ebuild 544

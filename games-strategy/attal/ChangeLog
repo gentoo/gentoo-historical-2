@@ -1,65 +1,11 @@
-# ChangeLog for games-strategy/attal
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/attal/ChangeLog,v 1.15 2005/10/10 07:01:31 mr_bones_ Exp $
-
-*attal-0.9.4 (10 Oct 2005)
-
-  10 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org> +attal-0.9.4.ebuild:
-  version bump
-
-  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> attal-0.8.1.ebuild,
-  attal-0.9.2.ebuild:
-  Making games last on inherit line.
-
-  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> attal-0.8.1.ebuild,
-  attal-0.9.2.ebuild, attal-0.9.3.ebuild:
-  Fix qt dep
-
-  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> attal-0.8.1.ebuild,
-  attal-0.9.2.ebuild, attal-0.9.3.ebuild:
-  Fix qmake dir per bug #97535
-
-  12 Jun 2005; Sven Wegener <swegener@gentoo.org> attal-0.8.1.ebuild,
-  attal-0.9.2.ebuild, attal-0.9.3.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-*attal-0.9.3 (03 Jun 2005)
-
-  03 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> +attal-0.9.3.ebuild:
-  version bump
-
-*attal-0.9.3 (03 Jun 2005)
-
-  03 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> +attal-0.9.3.ebuild:
-  version bump
-
-*attal-0.9.2 (03 Jan 2005)
-
-  03 Jan 2005; Mike Frysinger <vapier@gentoo.org> +attal-0.9.2.ebuild:
-  Version bump #65237 by James Rose.
-
-  16 Jul 2004; David Holm <dholm@gentoo.org> attal-0.8.1.ebuild:
-  Added to ~ppc.
-
-*attal-0.8.1 (09 Jul 2004)
-
-  09 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +attal-0.8.1.ebuild:
-  version bump (bug #56495)
-
-*attal-0.7.2 (14 Jan 2004)
-
-  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
-  Version bump #37754 by Daniel Fullmer.
-
-*attal-0.7.1 (03 Dec 2003)
-
-  03 Dec 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bump to fix #34857.
-
-*attal-0.7.0 (19 Jul 2003)
+# ChangeLog for app-games/attal
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/attal/ChangeLog,v 1.1 2003/09/10 05:27:31 vapier Exp $
 
   26 Aug 2003; Michael Sterrett <msterret@gentoo.org> attal-0.7.0.ebuild:
-  Fix url #27378.
+  fix url. bug 27378
+
+*attal-0.7.0 (19 Jul 2003)
 
   19 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by me.

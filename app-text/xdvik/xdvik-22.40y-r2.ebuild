@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/xdvik-22.40y-r2.ebuild,v 1.13 2005/01/01 16:42:52 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/xdvik/xdvik-22.40y-r2.ebuild,v 1.1 2004/05/05 11:29:01 usata Exp $
 
 inherit eutils
 
@@ -15,25 +15,24 @@ SRC_URI="mirror://sourceforge/xdvi/${MY_P}.tar.gz
 	cjk? ( http://www.nn.iij4u.or.jp/~tutimura/tex/${XDVIK_JP}.patch.gz )"
 HOMEPAGE="http://sourceforge.net/projects/xdvi/"
 
-KEYWORDS="x86 alpha amd64 arm hppa ia64 ppc ppc64 -ppc-macos sparc"
+KEYWORDS="~x86 ~alpha ~ppc ~sparc ~amd64"
 SLOT="0"
 LICENSE="GPL-2"
 
 DEPEND=">=media-libs/t1lib-1.3
+	app-text/ptex
+	!app-text/tetex
 	virtual/x11
-	virtual/tetex
-	cjk? ( >=media-libs/freetype-2 )
+	cjk? ( media-fonts/kochi-substitute )
 	libwww? ( >=net-libs/libwww-5.3.2-r1 )"
 
 src_unpack () {
 
 	unpack ${MY_P}.tar.gz
-	if use cjk ; then
+	if [ -n "`use cjk`" ] ; then
 		epatch ${DISTDIR}/${XDVIK_JP}.patch.gz
-		sed -i -e "/\/usr\/local/s:^:%:g" \
-			-e "/kochi-.*-subst/s:%::g" \
-			-e "s:/usr/local:/usr:g" \
-			-e "s:/usr/X11R6/lib/X11/fonts/truetype:/usr/share/fonts/kochi-substitute:g" \
+		sed -i -e "/\/usr\/local/s/^/%/g" \
+			-e "/kochi-.*-subst/s/%//g" \
 			${S}/texk/xdvik/vfontmap.freetype || die
 	fi
 }
@@ -42,7 +41,7 @@ src_compile () {
 
 	local myconf
 
-	if use cjk ; then
+	if [ -n "`use cjk`" ] ; then
 		 export CPPFLAGS="${CPPFLAGS} -I/usr/include/freetype2"
 		 myconf="${myconf} --with-vflib=vf2ft"
 	fi
@@ -68,7 +67,7 @@ src_install () {
 		|| die "install failed"
 
 	dodoc ANNOUNCE BUGS FAQ README.*
-	if use cjk; then
+	if [ -n "`use cjk`" ]; then
 		dodoc CHANGES.xdvik-jp
 		docinto READMEs
 		dodoc READMEs/*

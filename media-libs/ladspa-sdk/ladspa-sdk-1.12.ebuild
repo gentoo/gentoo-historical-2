@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/ladspa-sdk/ladspa-sdk-1.12.ebuild,v 1.15 2005/01/02 08:30:12 vapier Exp $
+# $
 
 IUSE=""
 
@@ -14,22 +14,19 @@ HOMEPAGE="http://www.ladspa.org/"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="x86 ppc sparc alpha amd64"
+KEYWORDS="x86 ppc sparc "
 
-DEPEND="virtual/libc
-	>=sys-apps/sed-4"
-
+DEPEND="virtual/glibc
+		media-sound/alsa-driver"
 src_unpack() {
-	unpack ${A}
-	sed -i \
-		-e "/^CFLAGS/ s:-O3:${CFLAGS}:" ${S}/makefile || \
-			die "sed makefile failed (CFLAGS)"
-	sed -i s:-mkdirhier:mkdir\ -p:g ${S}/makefile || \
-			die "sed makefile failed (mkdirhier)"
+	unpack "${A}"
+	cd "${S}"
+	sed -e "/^CFLAGS/ s/-O3/${CFLAGS}/" < makefile > makefile.hacked
+	mv makefile.hacked makefile
 }
 
 src_compile() {
-	emake -j1 targets || die
+	make targets || die
 }
 
 src_install() {
@@ -37,8 +34,7 @@ src_install() {
 		INSTALL_PLUGINS_DIR=${D}/usr/lib/ladspa \
 		INSTALL_INCLUDE_DIR=${D}/usr/include \
 		INSTALL_BINARY_DIR=${D}/usr/bin \
-		install || die "make install failed"
+		install || die
 
-	cd ../doc && \
-		dohtml *.html || die "dohtml failed"
+	dodoc ../doc/*
 }

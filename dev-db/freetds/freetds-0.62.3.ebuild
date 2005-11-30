@@ -1,31 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/freetds/freetds-0.62.3.ebuild,v 1.15 2005/02/21 01:10:25 hardave Exp $
-
-inherit gnuconfig
+# $Header: /var/cvsroot/gentoo-x86/dev-db/freetds/freetds-0.62.3.ebuild,v 1.1 2004/04/24 18:56:02 robbat2 Exp $
 
 DESCRIPTION="Tabular Datastream Library"
-HOMEPAGE="http://www.freetds.org/"
 SRC_URI="http://ibiblio.org/pub/Linux/ALPHA/freetds/stable/${P}.tar.gz"
-
-LICENSE="GPL-2"
+HOMEPAGE="http://www.freetds.org/"
+IUSE="odbc"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 ppc64"
-IUSE="odbc mssql"
-
-DEPEND="virtual/libc"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	gnuconfig_update
-}
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~sparc ~ppc ~mips ~hppa ~alpha amd64 ia64"
+DEPEND="virtual/glibc"
 
 src_compile() {
 	local myconf
 	use odbc && myconf="--with-unixodbc=/usr"
-	use mssql && myconf="${myconf} --enable-msdblib"
-	econf --with-tdsver=7.0 ${myconf} --cache-file=${S}/config.cache || die "econf failed"
+	econf --with-tdsver=7.0 ${myconf} --cache-file=${S}/config.cache
 	emake || die
 }
 

@@ -1,26 +1,6 @@
 # ChangeLog for sys-libs/timezone-data
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/timezone-data/ChangeLog,v 1.7 2005/11/29 02:28:04 vapier Exp $
-
-*timezone-data-2005o (29 Nov 2005)
-
-  29 Nov 2005; Mike Frysinger <vapier@gentoo.org>
-  +timezone-data-2005o.ebuild:
-  Version bump #113816 by Rodrigo Severo.
-
-  25 Nov 2005; Markus Rothe <corsair@gentoo.org>
-  timezone-data-2005n-r1.ebuild:
-  Added ~ppc64 keyword
-
-  03 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  timezone-data-2005n-r1.ebuild:
-  ~sparc good
-
-*timezone-data-2005n-r1 (28 Oct 2005)
-
-  28 Oct 2005; Mike Frysinger <vapier@gentoo.org>
-  files/timezone-data-2005n-makefile.patch, +timezone-data-2005n-r1.ebuild:
-  Fix tzselect shell interpreter #110681 by Priit Laes.
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/timezone-data/ChangeLog,v 1.1 2005/10/27 01:00:08 vapier Exp $
 
 *timezone-data-2005n (19 Oct 2005)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-SQLite/DBD-SQLite-1.07.ebuild,v 1.8 2005/09/23 16:21:30 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/DBD-SQLite/DBD-SQLite-1.07.ebuild,v 1.1 2004/10/21 14:21:06 mcummings Exp $
 
 inherit perl-module eutils
 
@@ -10,9 +10,10 @@ SRC_URI="mirror://cpan/authors/id/M/MS/MSERGEANT/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc"
 IUSE=""
 SRC_TEST="do"
 
 DEPEND=">=dev-perl/DBI-1.42
-		!<dev-perl/DBD-SQLite-1"
+		!<dev-perl/DBD-SQLite-1*"
+

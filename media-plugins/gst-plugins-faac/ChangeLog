@@ -1,42 +1,6 @@
 # ChangeLog for media-plugins/gst-plugins-faac
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-faac/ChangeLog,v 1.8 2005/09/05 17:40:09 zaheerm Exp $
-
-*gst-plugins-faac-0.8.11 (05 Sep 2005)
-
-  05 Sep 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
-  +gst-plugins-faac-0.8.11.ebuild:
-  version bump
-
-  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org>
-  gst-plugins-faac-0.8.10.ebuild:
-  Stable on amd64.
-
-  30 Aug 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
-  gst-plugins-faac-0.8.10.ebuild:
-  stable on x86
-
-*gst-plugins-faac-0.8.10 (02 Jul 2005)
-
-  02 Jul 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
-  +gst-plugins-faac-0.8.10.ebuild:
-  version bump
-
-*gst-plugins-faac-0.8.9 (08 Jun 2005)
-
-  08 Jun 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
-  +gst-plugins-faac-0.8.9.ebuild:
-  version bump
-
-  27 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  gst-plugins-faac-0.8.8.ebuild:
-  stable on amd64
-
-*gst-plugins-faac-0.8.8 (25 Apr 2005)
-
-  25 Apr 2005; Zaheer Abbas Merali <zaheerm@gentoo.org>
-  gst-plugins-faac-0.8.8.ebuild:
-  stabilise on x86
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-faac/ChangeLog,v 1.1 2005/03/16 12:12:28 zaheerm Exp $
 
   16 Mar 2005; <zaheerm@gentoo.org> :
   Initial Commit

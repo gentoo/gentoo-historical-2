@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/devil/devil-1.6.7.ebuild,v 1.5 2005/09/30 18:46:56 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/devil/devil-1.6.7.ebuild,v 1.1 2004/10/11 04:45:37 vapier Exp $
 
 inherit eutils libtool
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/openil/DevIL-${PV}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="X gif png sdl jpeg tiff opengl"
 
 RDEPEND="X? ( virtual/x11 )
@@ -22,12 +22,6 @@ RDEPEND="X? ( virtual/x11 )
 	opengl? ( virtual/opengl )"
 
 S=${WORKDIR}/DevIL-${PV}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-png-types.patch
-}
 
 src_compile() {
 	econf \
@@ -47,5 +41,5 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc AUTHORS BUGS CREDITS ChangeLog* NEWS* README*
+	dodoc AUTHORS BUGS CREDITS ChangeLog* INSTALL NEWS* README*
 }

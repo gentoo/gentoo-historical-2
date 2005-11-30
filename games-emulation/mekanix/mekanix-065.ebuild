@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/mekanix/mekanix-065.ebuild,v 1.5 2004/11/03 00:16:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/mekanix/mekanix-065.ebuild,v 1.1 2003/09/09 16:26:50 vapier Exp $
 
 inherit games
 
@@ -11,20 +11,17 @@ SRC_URI="http://www.smspower.org/meka/${PN}${PV}.zip"
 LICENSE="mekanix"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
 
-RDEPEND="virtual/x11"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="virtual/x11"
 
-S="${WORKDIR}"
+S=${WORKDIR}
 
 src_install() {
-	local dir="${GAMES_PREFIX_OPT}/${PN}"
-
-	dodir "${dir}"
+	local dir=${GAMES_PREFIX_OPT}/${PN}
+	dodir ${dir}
 	chmod a+x meka.exe
-	cp * "${D}/${dir}/"
-	games_make_wrapper mekanix ./meka.exe "${dir}"
+	cp * ${D}/${dir}/
+	dogamesbin ${FILESDIR}/mekanix
+	dosed "s:GENTOO_DIR:${dir}:" ${GAMES_BINDIR}/mekanix
 	prepgamesdirs
 }

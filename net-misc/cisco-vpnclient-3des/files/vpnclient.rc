@@ -1,115 +1,113 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/files/vpnclient.rc,v 1.6 2004/08/25 00:04:32 vapier Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
 
 opts="start stop status"
 
 VPNCLIENT="/usr/bin/vpnclient"
 VPNDEV="cipsec0"
+VPNMOD="cisco_ipsec"
+if [ -x /usr/bin/id ]; then
+    ID="/usr/bin/id"
+elif [ -x /bin/id ]; then
+    ID="/bin/id"
+else
+    echo "Unable to determine access level"
+    exit 1
+fi
+WHOAMI=`$ID|sed -e 's/(.*//'`
 
 depend() {
 	need net
 }
 
-checkconfig() {
-	export KV="$(uname -r)"
-
-	export VPNMOD="cisco_ipsec"
-	case "${KV}" in
-		2.6.*|2.5.*)		VPNMOD_FILE="${VPNMOD}.ko";;
-		2.4.*|2.2.*|2.0.*)	VPNMOD_FILE="${VPNMOD}.o";;
-		*)
-			eerror "Kernel version '${KV}' is not supported"
-			return 1;;
-	esac
-	export VPNMOD_FILE
-	return 0
-}
-
 start() {
-	checkconfig || return 1
-
-	local PC=""
-
-	ebegin "Starting Cisco VPN Client"
+	ebegin "Starting Cisco VPN Client: "
 
 	if [ -f /etc/resolv.conf.vpnbackup ]; then
-		einfo "restoring /etc/resolv.conf"
+		echo "restoring /etc/resolv.conf"
 		mv /etc/resolv.conf.vpnbackup /etc/resolv.conf
 	fi
-
 	if [ -d /lib/modules/preferred ]; then
-		PC="/lib/modules/preferred/CiscoVPN"
+		PC=/lib/modules/preferred/CiscoVPN
 	else
-		PC="/lib/modules/${KV}/CiscoVPN"
+		PC=/lib/modules/`uname -r`/CiscoVPN
 	fi
-
-	if [ -d "${PC}" ] ; then
-		/sbin/insmod ${PC}/${VPNMOD_FILE} >/dev/null 2>&1
+	if [ -d $PC ] ; then
+		/sbin/modprobe -q ${PC}/${VPNMOD}
 		if [ "$?" != "0" ] ; then
-			eend 1 "Failed to load module '${VPNMOD}'"
-			return 1
-		fi
-	else
-		eend 1 "module directory '$PC' not found"
-		return 1
-	fi
-
-	if [ "${KV:0:3}" == "2.0" ] ; then
-		# This is only needed due to a bug in 2.0.x kernels that affects
-		# arp lookups.
-		ifconfig $VPNDEV 222.222.222.222 ;
-		if [ "$?" != "0" ] ; then
-			eerror "Failed (ifconfig)"
-			/sbin/rmmod ${VPNMOD}
+			echo "Failed to load module ${VPNMOD}"
 			exit 1
 		fi
+	else
+		echo "module directory $PC not found."
+		exit 1
 	fi
-
-	eend 0
+	case "`uname -r`" in
+		2.6.*)
+		;;
+		2.5.*)
+		;;
+		2.4.*)
+		;;
+		2.2.*)
+		;;
+		2.0.*)
+			#
+			# This is only needed due to a bug in 2.0.x kernels that affects
+			# arp lookups.
+			#
+			ifconfig $VPNDEV 222.222.222.222 ;
+			if [ "$?" != "0" ] ; then
+				echo "Failed (ifconfig)"
+				/sbin/modprobe -qr ${VPNMOD}
+				exit 1
+			fi
+		;;
+		*)
+			echo "Failed (unsupported Linux version)"
+			/sbin/modprobe -qr ${VPNMOD}
+			exit 1
+		;;
+	esac
+	eend $? 
 }
 
 stop() {
-	checkconfig || return 1
-
-	ebegin "Stopping Cisco VPN Client"
-
+	ebegin "Stopping Cisco VPN Client: "
 	if [ -x $VPNCLIENT ]; then
 		$VPNCLIENT disconnect > /dev/null 2>&1
 	fi
 	/sbin/lsmod | grep -q "${VPNMOD}"
 	if [ "$?" != "0" ] ; then 
-		eend 1 "Failed: module ${VPNMOD} is not running"
-		return 1
+		echo "module ${VPNMOD} is not running."
+		exit 1
 	fi
 	/sbin/ifconfig $VPNDEV down
 	if [ "$?" != "0" ] ; then
-		eend 1 "Failed (ifconfig)"
-		return 1
+		echo "Failed (ifconfig)"
+		exit 1
 	fi
-	/sbin/rmmod ${VPNMOD}
+	/sbin/modprobe -qr ${VPNMOD}
 	if [ "$?" != "0" ] ; then
-		eend 1 "Failed (rmmod)"
-		return 1
+		echo "Failed (rmmod)"
+		exit 1
 	fi
-
-	eend 0
+	eend $?
 }
 
 status() {
-	checkconfig || return 1
-
+	/sbin/lsmod | egrep 'Module'
 	/sbin/lsmod | egrep "${VPNMOD}"
 	if [ "$?" != "0" ] ; then
-		eerror "Failed (lsmod ${VPNMOD}): the VPN module is not loaded"
-		return 1
+		echo
+		echo "Status Failed (lsmod ${VPNMOD}) - The VPN module is not loaded."
 	fi
 	echo
 	/sbin/ifconfig $VPNDEV
 	if [ "$?" != "0" ] ; then
 		echo
-		eerror "Failed (ifconfig ${VPNDEV}): the virtual interface is not present"
-		return 1
+		echo "Status Failed (ifconfig ${VPNDEV}) - The virtual interface is not present."
+		exit 1
 	fi
 }

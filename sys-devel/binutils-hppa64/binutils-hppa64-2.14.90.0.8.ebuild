@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-hppa64/binutils-hppa64-2.14.90.0.8.ebuild,v 1.6 2004/11/08 08:50:31 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/binutils-hppa64/binutils-hppa64-2.14.90.0.8.ebuild,v 1.1 2004/03/27 23:04:54 gmsoft Exp $
 
 IUSE="nls bootstrap build"
 
@@ -19,11 +19,11 @@ SRC_URI="mirror://kernel/linux/devel/binutils/${MY_P}.tar.bz2
 	mirror://kernel/linux/devel/binutils/test/${MY_P}.tar.bz2"
 HOMEPAGE="http://sources.redhat.com/binutils/"
 
-LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
-KEYWORDS="-* hppa"
+LICENSE="GPL-2 | LGPL-2"
+KEYWORDS="-* ~hppa"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	nls? ( sys-devel/gettext )
 	!build? ( !bootstrap? ( dev-lang/perl ) )"
 
@@ -32,7 +32,7 @@ TARGET=hppa64-linux
 src_unpack() {
 
 	unpack ${A}
-
+	
 	cd ${S}
 	#epatch ${FILESDIR}/hppa64-fptr-reloc.diff
 

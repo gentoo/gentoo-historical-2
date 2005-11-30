@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-2.1.5-r1.ebuild,v 1.6 2005/05/29 16:16:49 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/fftw/fftw-2.1.5-r1.ebuild,v 1.1 2004/12/29 01:12:04 ribosome Exp $
 
-inherit flag-o-matic multilib
+inherit flag-o-matic
 
 IUSE="mpi"
 
@@ -14,7 +14,8 @@ DEPEND="mpi? ( >=sys-cluster/lam-mpi-6.5.6 )"
 SLOT="2.1"
 LICENSE="GPL-2"
 
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+#remove ~'s on ppc and sparc when removig on x86 (as per recent discussion on -core)
+KEYWORDS="x86 ppc sparc alpha amd64"
 
 #this one is reported to cause trouble on pentium4 m series
 filter-mfpmath "sse"
@@ -116,25 +117,25 @@ src_install () {
 		dosym srfftw.h /usr/include/rfftw.h
 		dosym sfftw_threads.h /usr/include/fftw_threads.h
 		dosym srfftw_threads.h /usr/include/rfftw_threads.h
-		cd ${D}usr/$(get_libdir)
-		dosym libsfftw.so /usr/$(get_libdir)/libfftw.so
-		dosym libsrfftw.so /usr/$(get_libdir)/librfftw.so
-		dosym libsfftw_threads.so /usr/$(get_libdir)/libfftw_threads.so
-		dosym libsrfftw_threads.so /usr/$(get_libdir)/librfftw_threads.so
+		cd ${D}usr/lib
+		dosym libsfftw.so /usr/lib/libfftw.so
+		dosym libsrfftw.so /usr/lib/librfftw.so
+		dosym libsfftw_threads.so /usr/lib/libfftw_threads.so
+		dosym libsrfftw_threads.so /usr/lib/librfftw_threads.so
 	else
 		cd ${D}usr/include
 		dosym dfftw.h /usr/include/fftw.h
 		dosym drfftw.h /usr/include/rfftw.h
 		dosym dfftw_threads.h /usr/include/fftw_threads.h
 		dosym drfftw_threads.h /usr/include/rfftw_threads.h
-		cd ${D}usr/$(get_libdir)
-		dosym libdfftw.so /usr/$(get_libdir)/libfftw.so
-		dosym libdrfftw.so /usr/$(get_libdir)/librfftw.so
-		dosym libdfftw_threads.so /usr/$(get_libdir)/libfftw_threads.so
-		dosym libdrfftw_threads.so /usr/$(get_libdir)/librfftw_threads.so
+		cd ${D}usr/lib
+		dosym libdfftw.so /usr/lib/libfftw.so
+		dosym libdrfftw.so /usr/lib/librfftw.so
+		dosym libdfftw_threads.so /usr/lib/libfftw_threads.so
+		dosym libdrfftw_threads.so /usr/lib/librfftw_threads.so
 	fi
 
 	cd "${S}-single/fortran"
-	insinto usr/include
+	insinto "${D}usr/include"
 	doins fftw_f77.i
 }

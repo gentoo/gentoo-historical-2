@@ -1,82 +1,19 @@
-# ChangeLog for dev-python/imaging
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/ChangeLog,v 1.18 2005/08/26 03:30:07 agriffis Exp $
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> imaging-1.1.5.ebuild:
-  add ~ia64
-
-  13 Jul 2005; Herbie Hopkins <herbs@gentoo.org> imaging-1.1.5.ebuild:
-  Multilib fix.
-
-*imaging-1.1.5 (11 Jun 2005)
-
-  11 Jun 2005; Fernando Serboncini <fserb@gentoo.org> +imaging-1.1.5.ebuild:
-  Version bump.
-  Added sane support.
-
-  05 Jun 2005; Markus Rothe <corsair@gentoo.org> imaging-1.1.4-r1.ebuild:
-  Stable on ppc64; dependency for bug #92995
-
-  21 May 2005; Markus Rothe <corsair@gentoo.org> imaging-1.1.4-r1.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  imaging-1.1.4-r1.ebuild:
-  Stable on ppc.
-
-  01 Apr 2005; Simon Stelling <blubb@gentoo.org> imaging-1.1.4-r1.ebuild:
-  stable on amd64
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  29 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> imaging-1.1.4.ebuild:
-  stable on amd64 again since media-sound/albumart needs it and xv had been
-  keyworded.
-
-  22 Nov 2004; Rob Cakebread <pythonhead@gentoo.org> imaging-1.1.4.ebuild:
-  Marked ~amd64 as xv is
-
-*imaging-1.1.4-r1 (22 Nov 2004)
-
-  22 Nov 2004; Rob Cakebread <pythonhead@gentoo.org>
-  imaging-1.1.2-r2.ebuild, imaging-1.1.3-r1.ebuild, imaging-1.1.3-r2.ebuild,
-  imaging-1.1.3.ebuild, imaging-1.1.4-r1.ebuild, imaging-1.1.4.ebuild:
-  Added X to IUSE. Closes bug# 72094
-
-  21 Nov 2004; Chris Bainbridge <chrb@gentoo.org> :
-  xv is required by Image.show(). marked ~amd64 as xv is.
-
-  01 Nov 2004; Joseph Jezak <josejx@gentoo.org> imaging-1.1.3-r2.ebuild:
-  Marked ppc stable.
-
-  04 Oct 2004; Bryan Ã˜stergaard <kloeri@gentoo.org>
-  +files/imaging-1.1.4-ft-2.1.9.patch, imaging-1.1.4.ebuild:
-  Fix bug 66040.
-
-  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> imaging-1.1.4.ebuild:
-  Stable amd64
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  20 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> imaging-1.1.2-r2.ebuild,
-  imaging-1.1.3-r1.ebuild, imaging-1.1.3-r2.ebuild, imaging-1.1.3.ebuild,
-  imaging-1.1.4.ebuild:
-  Added DEPEND on media-libs/freetype
+# ChangeLog for dev-python/Imaging
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/imaging/ChangeLog,v 1.1 2004/07/19 21:50:44 kloeri Exp $
 
 *imaging-1.1.4 (19 Jul 2004)
 
-  19 Jul 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> +metadata.xml,
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> +metadata.xml,
   +files/imaging-1.1.4-fPIC.patch, +files/imaging-1.1.4-setup.py.patch,
   +imaging-1.1.2-r2.ebuild, +imaging-1.1.3-r1.ebuild,
   +imaging-1.1.3-r2.ebuild, +imaging-1.1.3.ebuild, +imaging-1.1.4.ebuild:
   Renamed dev-python/Imaging to dev-python/imaging.
 
-  31 May 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> Imaging-1.1.4.ebuild:
+  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> Imaging-1.1.4.ebuild:
   Stable on alpha.
 
-  04 May 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> Imaging-1.1.2-r2.ebuild,
+  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> Imaging-1.1.2-r2.ebuild,
   Imaging-1.1.3.ebuild:
   Remove default S.
 
@@ -87,7 +24,7 @@
   18 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> Imaging-1.1.4.ebuild:
   Created -fPIC patch instead of adding fPIC to CFLAGS.
 
-  28 Mar 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> Imaging-1.1.2-r2.ebuild,
+  28 Mar 2004; Bryan Østergaard <kloeri@gentoo.org> Imaging-1.1.2-r2.ebuild,
   Imaging-1.1.3-r1.ebuild, Imaging-1.1.3-r2.ebuild, Imaging-1.1.3.ebuild:
   Update SRC_URI.
 

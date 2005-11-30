@@ -1,19 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/superadduser/superadduser-1.0.9.ebuild,v 1.12 2005/07/22 12:39:10 omkhar Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/superadduser/superadduser-1.0.9.ebuild,v 1.1 2004/06/09 08:43:51 seemant Exp $
 
 DESCRIPTION="Interactive adduser script from Slackware"
-HOMEPAGE="http://www.interlude.org.uk/unix/slackware/"
 SRC_URI=""
+HOMEPAGE="http://www.interlude.org.uk/unix/slackware/"
 
-LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE=""
+LICENSE="BSD"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~amd64 ~ia64 ~ppc64"
 
 RDEPEND="sys-apps/shadow"
 
 src_install() {
-	dosbin ${FILESDIR}/${PV}/superadduser || die
+	dosbin ${FILESDIR}/${PV}/superadduser
 	doman ${FILESDIR}/superadduser.8
 }

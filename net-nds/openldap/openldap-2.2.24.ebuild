@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.24.ebuild,v 1.4 2005/09/22 19:57:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.24.ebuild,v 1.1 2005/03/21 01:04:19 robbat2 Exp $
 
 inherit toolchain-funcs eutils
 
@@ -12,7 +12,7 @@ LICENSE="OPENLDAP"
 SLOT="0"
 IUSE="berkdb crypt debug gdbm ipv6 kerberos odbc perl readline samba sasl slp ssl tcpd"
 #In portage for testing only, hardmasked in package.mask
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~amd64 ~s390 ~hppa ~ppc64 ~ia64"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	>=sys-apps/sed-4
@@ -53,7 +53,7 @@ OPENLDAP_VERSIONTAG="/var/lib/openldap-data/.version-tag"
 #DEPEND="${DEPEND} !<net-nds/openldap-2.2"
 
 openldap_upgrade_warning() {
-	ewarn "If you are upgrading from OpenLDAP-2.1, and run slapd on this"
+	ewarn "If you are upgrading from OpenLDAP-2.1, and run slapd on this" 
 	ewarn "machine please see the ebuild for upgrade instructions, otherwise"
 	ewarn "you may corrupt your database!"
 	echo
@@ -102,7 +102,7 @@ pkg_setup() {
 pkg_preinst() {
 	openldap_upgrade_warning
 	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/lib/openldap ldap
+	enewuser ldap 439 /bin/false /usr/lib/openldap ldap
 }
 
 src_unpack() {

@@ -1,18 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/mew/mew-2.3-r1.ebuild,v 1.9 2005/01/01 13:53:58 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/mew/mew-2.3-r1.ebuild,v 1.1 2003/08/06 17:41:25 usata Exp $
 
 inherit elisp eutils
 
-IUSE="cjk"
+IUSE=""
 
 DESCRIPTION="great MIME mail reader for Emacs/XEmacs"
 HOMEPAGE="http://www.mew.org/"
 SRC_URI="ftp://ftp.mew.org/pub/Mew/release/${P}.tar.gz"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha sparc ppc"
+KEYWORDS="~x86 ~alpha ~sparc ~ppc"
+S="${WORKDIR}/${P}"
 
 DEPEND="virtual/emacs"
 
@@ -33,14 +34,10 @@ src_compile() {
 src_install() {
 
 	einstall elispdir=${D}/${SITELISP}/${PN} \
-		etcdir=${D}/usr/share/${PN} \
-		mandir=${D}/usr/share/man/man1 || die
+		etcdir=${D}/usr/share/${PN} || die
 
-	elisp-site-file-install ${FILESDIR}/${SITEFILE} || die
+ 	elisp-site-file-install ${FILESDIR}/${SITEFILE} || die
 
-	if use cjk ; then
-		doinfo info/mew.jis*
-	fi
 	dodoc 00*
 }
 
@@ -48,9 +45,9 @@ pkg_postinst() {
 
 	elisp-site-regen
 
-	einfo
+	einfo ""
 	einfo "Refer to the Info documentation on Mew for how to get started."
-	einfo
+	einfo ""
 }
 
 pkg_postrm() {

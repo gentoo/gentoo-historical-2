@@ -1,11 +1,11 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/files/2.0.49/apache2.initd,v 1.8 2004/07/15 00:24:42 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/files/2.0.49/apache2.initd,v 1.1 2004/03/22 21:17:57 stuart Exp $
 
 opts="${opts} reload"
 
-[ "x${SERVERROOT}" != "x" ] && APACHE2_OPTS="${APACHE2_OPTS} -d ${SERVERROOT}"
+[ "x${STARTUPERRORLOG}" != "x" ] && APACHE2_OPTS="${APACHE2_OPTS} -d ${STARTUPERRORLOG}"
 [ "x${CONFIGFILE}" != "x" ] && APACHE2_OPTS="${APACHE2_OPTS} -f ${CONFIGFILE}"
 [ "x${STARTUPERRORLOG}" != "x" ] && APACHE2_OPTS="${APACHE2_OPTS} -E ${STARTUPERRORLOG}"
 # set a default for PIDFILE/RESTARTSTYLE for those that FAILED to follow
@@ -20,7 +20,7 @@ checkconfig() {
 		if [ ${CONFIGFILE:0:1} = "/" ]; then
 			myconf="${CONFIGFILE}"
 		else
-			myconf="${SERVERROOT:-/usr/lib/apache2}/${CONFIGFILE}"
+			myconf="${STARTUPERRORLOG}/${CONFIGFILE}"
 		fi
 	fi
 	if [ ! -r "${myconf}" ]; then
@@ -48,7 +48,7 @@ checkconfig() {
 
 depend() {
 	need net
-	use mysql dns logger netmount postgres
+	use mysql dns logger netmount
 	after sshd
 }
 
@@ -56,7 +56,6 @@ start() {
 	checkconfig || return 1
 	ebegin "Starting apache2"
 	[ -f /var/log/apache2/ssl_scache ] && rm /var/log/apache2/ssl_scache
-	[ -f /usr/lib/apache2/build/envvars ] && . /usr/lib/apache2/build/envvars
 	env -i PATH=$PATH /sbin/start-stop-daemon --quiet \
 		--start --startas /usr/sbin/apache2 \
 		--pidfile ${PIDFILE} -- -k start ${APACHE2_OPTS}

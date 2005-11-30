@@ -1,21 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sparc-utils/sparc-utils-1.9-r2.ebuild,v 1.7 2005/11/23 20:42:16 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sparc-utils/sparc-utils-1.9-r2.ebuild,v 1.1 2003/11/01 12:01:36 weeve Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
-DESCRIPTION="Various sparc utilities from Debian GNU/Linux"
+DESCRIPTION="Various sparc utilites from Debian GNU/Linux"
 HOMEPAGE="http://www.debian.org/"
 SRC_URI=" http://http.us.debian.org/debian/pool/main/s/${PN}/${PN}_${PV}.orig.tar.gz
 	mirror://gentoo/${PN}_${PV}-2.diff.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="-* sparc"
+KEYWORDS="~sparc -x86 -ppc"
 IUSE=""
 
-DEPEND="virtual/os-headers"
-RDEPEND="virtual/libc
+DEPEND="sys-kernel/linux-headers"
+RDEPEND="virtual/glibc
 	sys-devel/sparc32"
 
 S="${WORKDIR}/${P}.orig"
@@ -28,10 +28,10 @@ src_unpack() {
 src_compile() {
 	local CFLAGS="-O3"
 
-	emake -C elftoaout-2.3 CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die
-	emake -C src piggyback piggyback64 CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die
-	emake -C prtconf-1.3 CC="$(tc-getCC)" all || die
-	emake -C audioctl-1.3 CC="$(tc-getCC)" || die
+	emake -C elftoaout-2.3 CFLAGS="${CFLAGS}" || die
+	emake -C src piggyback piggyback64 CFLAGS="${CFLAGS}" || die
+	emake -C prtconf-1.3 all || die
+	emake -C audioctl-1.3 || die
 
 	# sparc32 is in sys-devel/sparc32
 	# emake -C sparc32-1.1

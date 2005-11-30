@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.3.11.ebuild,v 1.7 2005/11/21 18:45:01 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.3.11.ebuild,v 1.1 2005/10/08 23:06:23 nakano Exp $
 
 inherit eutils gnuconfig flag-o-matic java-pkg
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://postgresql/source/v${PV}/${PN}-base-${PV}.tar.bz2
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~hppa ~ia64 ~mips"
 IUSE="doc java libg++ nls pam perl python readline ssl tcltk zlib threads selinux"
 
 DEPEND="virtual/libc
@@ -56,10 +56,6 @@ pkg_setup() {
 			exit 1
 		fi
 	fi
-	enewgroup postgres 70 \
-		|| die "problem adding group postgres"
-	enewuser postgres 70 /bin/bash /var/lib/postgresql postgres \
-		|| die "problem adding user postgres"
 }
 
 check_java_config() {
@@ -111,6 +107,7 @@ src_compile() {
 		--libdir=/usr/lib \
 		--includedir=/usr/include/postgresql/pgsql \
 		--enable-depend \
+		--with-gnu-ld \
 		--with-maxbackends=1024 \
 		$myconf || die
 
@@ -176,7 +173,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo "Execute the following command"
-	einfo "emerge --config =${PF}"
+	einfo "ebuild  /var/db/pkg/dev-db/${PF}/${PF}.ebuild config"
 	einfo "to setup the initial database environment."
 	einfo ""
 	einfo "Make sure the postgres user in /etc/passwd has an account setup with /bin/bash as the shell"

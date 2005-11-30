@@ -1,18 +1,6 @@
 # ChangeLog for media-libs/libiec61883
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libiec61883/ChangeLog,v 1.4 2005/09/03 07:37:15 chriswhite Exp $
-
-*libiec61883-1.0.0-r1 (03 Sep 2005)
-
-  03 Sep 2005; Chris White <chriswhite@gentoo.org>
-  +libiec61883-1.0.0-r1.ebuild:
-  Added an -r1 revbump for bug #94642.  Added examples use flag to IUSE.
-
-  31 May 2005; David Holm <dholm@gentoo.org> libiec61883-1.0.0.ebuild:
-  Added to ~ppc.
-
-  30 May 2005; Doug Goldstein <cardoe@gentoo.org> libiec61883-1.0.0.ebuild:
-  verified it comes on amd64... that's it... need it for QA/repoman
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libiec61883/ChangeLog,v 1.1 2005/05/30 05:58:00 chriswhite Exp $
 
 *libiec61883-1.0.0 (30 May 2005)
 

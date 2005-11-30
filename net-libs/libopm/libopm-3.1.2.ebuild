@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libopm/libopm-3.1.2.ebuild,v 1.4 2005/05/10 11:31:07 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libopm/libopm-3.1.2.ebuild,v 1.1 2004/02/18 00:16:50 zul Exp $
 
 DESCRIPTION="Blitzed Open Proxy Monitor Library"
 HOMEPAGE="http://www.blitzed.org/bopm/"
 SRC_URI="http://static.blitzed.org/www.blitzed.org/bopm/files/bopm-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="doc"
 
-RDEPEND="virtual/libc"
+RDEPEND="virtual/glibc"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 

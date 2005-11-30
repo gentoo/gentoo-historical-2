@@ -1,21 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-4.0.1.ebuild,v 1.10 2005/11/21 01:12:11 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-4.0.1.ebuild,v 1.1 2005/07/08 19:07:22 eradicator Exp $
 
 PATCH_VER="1.0"
-PATCH_GCC_VER="4.0.1"
-UCLIBC_VER="1.0"
-UCLIBC_GCC_VER="4.0.0"
-PIE_VER="8.7.8"
-PIE_GCC_VER="4.0.0"
-PP_VER=""
-HTB_VER="1.00"
-
+PATCH_GCC_VER=4.0.1_pre20050616
 ETYPE="gcc-compiler"
-
-# whether we should split out specs files for multiple {PIE,SSP}-by-default
-# and vanilla configurations.
-SPLIT_SPECS=no #${SPLIT_SPECS-true} hard disable until #106690 is fixed
 
 inherit toolchain
 
@@ -25,14 +14,13 @@ HOMEPAGE="http://www.gnu.org/software/gcc/gcc.html"
 LICENSE="GPL-2 LGPL-2.1"
 KEYWORDS="-*"
 
-RDEPEND="!sys-devel/hardened-gcc
-	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.10 )
+RDEPEND="virtual/libc
+	>=sys-devel/gcc-config-1.3.1
 	>=sys-libs/zlib-1.1.4
+	!sys-devel/hardened-gcc
+	elibc_glibc? ( >=sys-libs/glibc-2.3.5 )
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-glibc-1.1 ) )
-	fortran? (
-	  dev-libs/gmp
-	  dev-libs/mpfr
-	)
+	fortran? ( dev-libs/gmp )
 	!build? (
 		gcj? (
 			gtk? ( >=x11-libs/gtk+-2.2 )
@@ -41,16 +29,19 @@ RDEPEND="!sys-devel/hardened-gcc
 		>=sys-libs/ncurses-5.2-r2
 		nls? ( sys-devel/gettext )
 	)"
-if [[ ${CATEGORY} != cross-* ]] ; then
-	RDEPEND="${RDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.3.6 )"
+
+
+if [[ ${CATEGORY/cross-} != ${CATEGORY} ]]; then
+	RDEPEND="${RDEPEND} ${CATEGORY}/binutils"
 fi
+
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r4
 	>=sys-devel/bison-1.875
-	>=${CATEGORY}/binutils-2.16.1"
+	>=sys-devel/binutils-2.15.97"
 
-PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )
-	x86? ( !nocxx? ( !elibc_uclibc? ( !build? ( || ( sys-libs/libstdc++-v3 =sys-devel/gcc-3.3* ) ) ) ) )"
+PDEPEND="sys-devel/gcc-config
+	!nocxx? ( !n32? ( !n64? ( !elibc_uclibc? ( !build? ( sys-libs/libstdc++-v3 ) ) ) ) )"
 
 pkg_postinst() {
 	toolchain_pkg_postinst

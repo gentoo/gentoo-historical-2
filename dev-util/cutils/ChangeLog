@@ -1,38 +1,10 @@
 # ChangeLog for dev-util/cutils
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cutils/ChangeLog,v 1.12 2005/07/29 23:39:02 dragonheart Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cutils/ChangeLog,v 1.1 2002/08/03 04:19:45 george Exp $
 
-  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> -cutils-1.6.ebuild,
-  cutils-1.6-r1.ebuild:
-  removed die from epatch || die. old version cleanout
-
-  07 May 2005; David Holm <dholm@gentoo.org> cutils-1.6-r1.ebuild:
-  Added to ~ppc.
-
-  05 Dec 2004; Markus Nigbur <pyrania@gentoo.org> cutils-1.6-r1.ebuild:
-  Inherit eutils.
-
-  06 Nov 2004; <pyrania@gentoo.org> cutils-1.6-r1.ebuild:
-  Hooray for epatch.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> cutils-1.6-r1.ebuild,
-  cutils-1.6.ebuild:
-  virtual/glibc -> virtual/libc
-
-  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> cutils-1.6-r1.ebuild,
-  cutils-1.6.ebuild:
-  Don't assign default to S; header fix
-
-*cutils-1.6-r1 (09 Sep 2003)
-
-  09 Sep 2003; George Shapovalov <george@gentoo.org> cutils-1.6-r1.ebuild :
-  few cleanups + added MAKEOPTS=-j1 before emake, as per #27726
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *cutils-1.6 (01 Aug 2002)
 
-  1 Aug 2002; George Shapovalov <george@gentoo.org> cutils-1.6.ebuild, cutils-1.6-gentoo.diff :
+  1 Aug 2002; George Shapovalov <george@gentoo.org> cutils-1.6.ebuildi, cutils-1.6-gentoo.diff :
 
   initial release
   

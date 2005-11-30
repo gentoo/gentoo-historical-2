@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/winex-transgaming/winex-transgaming-3.3.ebuild,v 1.5 2005/01/01 14:21:00 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/winex-transgaming/winex-transgaming-3.3.ebuild,v 1.1 2004/02/20 05:33:27 vapier Exp $
 
 MY_P="winex3_${PV}-1.i386"
 DESCRIPTION="WineX is a distribution of Wine with enhanced DirectX for gaming"
@@ -27,7 +27,7 @@ pkg_nofetch() {
 	einfo "Then put the file in ${DISTDIR}"
 }
 
-src_install() {
+src_install () {
 	mv ${WORKDIR}/usr ${D}
 }
 

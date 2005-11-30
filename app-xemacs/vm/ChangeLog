@@ -1,20 +1,8 @@
 # ChangeLog for app-xemacs/vm
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/vm/ChangeLog,v 1.8 2005/08/07 13:11:21 hansmi Exp $
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> vm-7.07.ebuild:
-  Stable on ppc.
-
-  09 Aug 2004; Tom Gall <tgall@gentoo.org> vm-7.07.ebuild:
-  stable on ppc64, bug #57174
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> vm-7.07.ebuild:
-  Stable on alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/vm/ChangeLog,v 1.1 2002/12/16 12:22:48 rendhalver Exp $
 
 *vm-7.07 (16 Dec 2002)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> vm-7.07.ebuild :
-  Add ~alpha to KEYWORDS
 
   16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
   Initial import.

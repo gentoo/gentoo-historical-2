@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/realtime-lsm/realtime-lsm-0.8.2_pre20041022.ebuild,v 1.6 2005/07/09 22:33:05 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/realtime-lsm/realtime-lsm-0.8.2_pre20041022.ebuild,v 1.1 2004/10/23 05:31:00 fafhrd Exp $
 
 inherit kernel-mod eutils
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~ppc"
 
 IUSE=""
 DEPEND="virtual/linux-sources
@@ -24,8 +24,6 @@ src_unpack() {
 	then
 		eerror ""
 		eerror "${PN} requires support for modules in your kernel."
-		eerror "In your .config: CONFIG_MODULES=y"
-		eerror "Through 'make menuconfig': Loadable module support-> [*] Enable loadable module support"
 		eerror ""
 		die "Module support not detected."
 	fi
@@ -34,8 +32,6 @@ src_unpack() {
 	then
 		eerror ""
 		eerror "${PN} requires you to compile in the 'different security models option."
-		eerror "In your .config: CONFIG_SECURITY=y"
-		eerror "Through 'make menuconfig': Security options-> [*] Enable different security models"
 		eerror ""
 		die "Security support not detected."
 	fi
@@ -44,10 +40,16 @@ src_unpack() {
 	then
 		eerror ""
 		eerror "${PN} requires that 'Default Linux Capabilities' be compiled as a module."
-		eerror "In your .config: CONFIG_SECURITY_CAPABILITIES=m"
-		eerror "Through 'make menuconfig': Security options-> <M> Default Linux Capabilties"
 		eerror ""
 		die "Default Linux capabilities (security) not detected."
+	fi
+
+	if ! kernel-mod_configoption_present SECURITY_SELINUX
+	then
+		eerror ""
+		eerror "${PN} requires that 'NSA SELinux Support' be compiled into your kernel."
+		eerror ""
+		die "NSA SELinux support not detected."
 	fi
 
 	unpack ${A}
@@ -87,3 +89,4 @@ pkg_postinst() {
 	test -r "${ROOT}/usr/src/linux/System.map" && \
 		depmod -ae -F "${ROOT}/usr/src/linux/System.map" -b "${ROOT}" -r ${KV}
 }
+

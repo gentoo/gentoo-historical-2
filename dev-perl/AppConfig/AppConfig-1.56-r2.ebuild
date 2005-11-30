@@ -1,21 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/AppConfig/AppConfig-1.56-r2.ebuild,v 1.14 2005/10/02 12:00:39 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/AppConfig/AppConfig-1.56-r2.ebuild,v 1.1 2004/05/30 06:14:50 rac Exp $
 
 inherit perl-module eutils
 
-DESCRIPTION="Perl5 module for reading configuration files and parsing command line arguments."
-SRC_URI="mirror://cpan/authors/id/A/AB/ABW/${P}.tar.gz"
-HOMEPAGE="http://search.cpan.org/~abw/${P}/"
+DESCRIPTION="Application config (from ARGV, file, ...)"
+HOMEPAGE="http://search.cpan.org/author/ABW/AppConfig-1.55/"
+SRC_URI="http://www.cpan.org/authors/id/ABW/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
+LICENSE="Artistic | GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~amd64 ~sparc ~alpha ~ppc"
 
-SRC_TEST="do"
-
-DEPEND="perl-core/Test-Simple"
+DEPEND="dev-perl/Test-Simple"
 
 src_unpack() {
 	unpack ${A}

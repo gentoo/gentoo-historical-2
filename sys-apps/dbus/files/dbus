@@ -1,13 +1,13 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/files/dbus,v 1.7 2005/11/08 10:45:24 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/files/dbus,v 1.1 2004/04/07 14:26:19 foser Exp $
 
 start() {
 
 	ebegin "Starting D-BUS system messagebus"
 
-	start-stop-daemon --start --pidfile /var/run/dbus.pid --exec /usr/bin/dbus-daemon-1 -- --system
+	start-stop-daemon --start --exec /usr/bin/dbus-daemon-1 -- --system
 
 	eend $?
 
@@ -15,22 +15,11 @@ start() {
 
 stop() {
 
-	local retval
-
 	ebegin "Stopping D-BUS system messagebus"
 
-	start-stop-daemon --stop --pidfile /var/run/dbus.pid
-	retval=$?
+	start-stop-daemon --stop --pidfile /var/run/dbus.pid 
+	rm /var/run/dbus.pid
 
-	eend ${retval}
-
-	# This should vanish when baselayout-1.12.0 is marked stable.
-	[[ -f /var/run/dbus.pid ]] && rm -f /var/run/dbus.pid
-
-	# Changes to the system dbus socket run file force us to take care of both
-	[[ -S /var/lib/dbus/system_bus_socket ]] && rm -f /var/lib/dbus/system_bus_socket
-	[[ -S /var/run/dbus/system_bus_socket ]] && rm -f /var/run/dbus/system_bus_socket
-
-	return ${retval}
+	eend $?
 
 }

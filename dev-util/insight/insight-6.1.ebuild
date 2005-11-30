@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/insight/insight-6.1.ebuild,v 1.10 2005/04/24 12:55:05 hansmi Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-util/insight/insight-6.1.ebuild,v 1.1 2004/04/27 20:20:37 tester Exp $
 
 IUSE="nls"
 
@@ -15,16 +13,16 @@ RDEPEND="${DEPEND}
 	nls? ( sys-devel/gettext )"
 
 SLOT="0"
-KEYWORDS="x86 sparc alpha ppc ~amd64"
+KEYWORDS="~x86 ~sparc ~alpha"
 SRC_URI="ftp://sources.redhat.com/pub/gdb/releases/${P}.tar.bz2"
 
 INSIGHTDIR="/opt/insight"
 
-disabled_src_unpack() {
+src_unpack() {
 
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/insight-6.1-jimb-copy-section-addr-info.patch
+	cd ${S}/gdb
+	epatch ${FILESDIR}/gdb-6.x-crash.patch
 }
 
 src_compile() {

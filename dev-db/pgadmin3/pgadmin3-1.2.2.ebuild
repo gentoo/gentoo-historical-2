@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/pgadmin3/pgadmin3-1.2.2.ebuild,v 1.7 2005/10/13 22:05:53 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/pgadmin3/pgadmin3-1.2.2.ebuild,v 1.1 2005/06/19 09:13:15 nakano Exp $
 
 inherit eutils libtool wxwidgets
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://postgresql/pgadmin3/release/v${PV}/src/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 
 DEPEND=">=x11-libs/wxGTK-2.6.0
 	dev-db/libpq
@@ -25,11 +25,11 @@ pkg_setup() {
 	fi
 }
 
-src_unpack() {
-	unpack ${A}
-	cd ${S} || die "Couldn't cd to ${S}"
-	epatch ${FILESDIR}/${P}-configure.patch
-}
+#src_unpack() {
+#	unpack ${A}
+#	cd ${S} || die "Couldn't cd to ${S}"
+#	epatch ${FILESDIR}/${P}-configure.patch
+#}
 
 src_compile() {
 	export WX_GTK_VER=2.6

@@ -1,10 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/fbiterm/fbiterm-0.5.ebuild,v 1.7 2005/05/29 03:45:22 usata Exp $
-
-inherit eutils flag-o-matic
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/fbiterm/fbiterm-0.5.ebuild,v 1.1 2003/11/24 14:11:10 usata Exp $
 
 DESCRIPTION="Framebuffer internationalized terminal emulator"
 HOMEPAGE="http://www-124.ibm.com/linux/projects/iterm/"
@@ -13,9 +9,7 @@ SRC_URI="http://www-124.ibm.com/linux/projects/iterm/releases/iterm-${PV}.tar.gz
 LICENSE="CPL-0.5"
 SLOT="0"
 KEYWORDS="~x86"
-
 DEPEND="virtual/x11
-	>=media-libs/freetype-2
 	x11-libs/libiterm-mbt
 	sys-libs/zlib
 	media-fonts/unifont"
@@ -23,21 +17,22 @@ DEPEND="virtual/x11
 S=${WORKDIR}/iterm/unix/fbiterm
 
 src_unpack() {
+
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${P}-gentoo.diff
 }
 
 src_compile() {
-	append-ldflags -lfreetype
-	append-ldflags -Wl,-z,now
-	econf --x-includes=/usr/include \
-		--x-libraries=/usr/lib || die
+
+	econf || die
 	emake || die
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+
+	einstall || die
+
 	dodoc AUTHORS ChangeLog README*
 }
 

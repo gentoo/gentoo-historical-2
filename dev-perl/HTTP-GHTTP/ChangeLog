@@ -1,54 +1,6 @@
 # ChangeLog for dev-perl/HTTP-GHTTP
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTP-GHTTP/ChangeLog,v 1.20 2005/10/02 12:48:28 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> HTTP-GHTTP-1.07-r1.ebuild:
-  Mark 1.07-r1 stable on ia64
-
-  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> HTTP-GHTTP-1.07-r1.ebuild:
-  add ~ia64
-
-  29 May 2005; Markus Rothe <corsair@gentoo.org> HTTP-GHTTP-1.07-r1.ebuild:
-  Stable on ppc64
-
-  11 Apr 2005; Markus Rothe <corsair@gentoo.org> HTTP-GHTTP-1.07-r1.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  04 Jan 2005; Michael Cummings <mcummings@gentoo.org>
-  HTTP-GHTTP-1.07-r1.ebuild:
-  bug 76590
-
-  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
-  HTTP-GHTTP-1.07-r1.ebuild, HTTP-GHTTP-1.07.ebuild:
-  Syntax fix for newdepend, bug 29064
-
-  20 Mar 2004; Joshua Kinard <kumba@gentoo.org> HTTP-GHTTP-1.07-r1.ebuild:
-  Added ~mips to KEYWORDS.
-
-*HTTP-GHTTP-1.07-r1 (28 feb 2003)
-
-  28 Feb 2003; Seemant Kulleen <seemant@gentoo.org> HTTP-GHTTP-1.07-r1.ebuild:
-  removed gnome-libs dependency, thanks to: Paul Prince <princep@charter.net> in
-  bug #16434
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
-  forced version bump to install into correct locations
-
-*HTTP-GHTTP-1.07 (5 May 2002)
-
-  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> HTTP-GHTTP-1.07.ebuild :
-
-  Added ppc to KEYWORDS.
-
-  5 May 2002; Seemant Kulleen <seemant@gentoo.org> HTTP-GHTTP-1.07.ebuild
-  files/digest-HTTP-GHTTP-1.07 :
-
-  Version bump and conversion to eclasses.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTP-GHTTP/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
 
 *HTTP-GHTTP-1.06 (1 Feb 2002)
 

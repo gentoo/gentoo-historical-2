@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/guile/guile-1.6.4-r1.ebuild,v 1.22 2005/04/07 04:06:51 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/guile/guile-1.6.4-r1.ebuild,v 1.1 2003/09/06 21:28:37 drobbins Exp $
 
-inherit flag-o-matic eutils libtool
+inherit flag-o-matic
 
 DESCRIPTION="Scheme interpreter"
-HOMEPAGE="http://www.gnu.org/software/guile/"
 SRC_URI="mirror://gnu/guile/${P}.tar.gz"
+HOMEPAGE="http://www.gnu.org/software/guile/"
 
-LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 ~ppc-macos"
 IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="x86 ~ppc ~alpha hppa"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	>=sys-libs/readline-4.1"
@@ -18,8 +18,9 @@ DEPEND=">=sys-libs/ncurses-5.1
 # NOTE: in README-PACKAGERS, guile recommends different versions be installed
 #       in parallel. They're talking about LIBRARY MAJOR versions and not
 #       the actual guile version that was used in the past.
-#
+#     
 #       So I'm slotting this as 12 beacuse of the library major version
+
 SLOT="12"
 MAJOR="1.6"
 
@@ -28,26 +29,10 @@ src_compile() {
 	# -g3, at least on some architectures.  (19 Aug 2003 agriffis)
 	filter-flags -g3
 
-	if [ "${ARCH}" = "amd64" ]; then
-		epatch ${FILESDIR}/guile-amd64.patch
-	fi
-
-	if use ppc-macos ; then
-		elibtoolize
-		epatch ${FILESDIR}/guile-macos-posix.patch
-		epatch ${FILESDIR}/guile-macos-relink.patch
-		append-flags -no-cpp-precomp -Dmacosx
-	fi
-
-	if [ "${ARCH}" = "ppc" ]; then
-		replace-flags -O3 -O2
-	fi
-
 	econf \
 		--with-threads \
 		--with-modules || die
-	# Problems with parallel builds (#34029), so I'm taking the safer route
-	emake -j1 || die
+	emake || die
 }
 
 src_install() {

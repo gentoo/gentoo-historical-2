@@ -1,11 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/balsa-1.4.3.ebuild,v 1.7 2005/03/26 04:23:12 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/balsa/balsa-1.4.3.ebuild,v 1.1 2004/05/30 02:38:38 seemant Exp $
 
 inherit eutils
 
 IUSE="ssl nls cups gtkhtml spell perl"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Balsa: email client for GNOME"
 SRC_URI="http://www.theochem.kth.se/~pawsa/${PN}/${P}.tar.bz2"
 HOMEPAGE="http://www.balsa.net"
@@ -18,7 +19,7 @@ DEPEND="=dev-libs/glib-1.2*
 	=x11-libs/gtk+-1.2*
 	>=media-libs/imlib-1.9.10-r1
 	>=gnome-base/gnome-libs-1.4.1.4
-	=gnome-base/orbit-0*
+	>=gnome-base/ORBit-0.5.10-r1
 	>=media-libs/gdk-pixbuf-0.13.0
 	>=net-libs/libesmtp-0.8.11
 	nls? ( sys-devel/gettext )

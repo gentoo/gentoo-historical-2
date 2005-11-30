@@ -1,25 +1,22 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/wavplay/wavplay-1.4.ebuild,v 1.11 2004/12/19 07:51:03 eradicator Exp $
-
-IUSE=""
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-sound/wavplay/wavplay-1.4.ebuild,v 1.1 2003/04/02 15:35:08 phosphan Exp $
 
 inherit eutils
 
 DESCRIPTION="A command line player/recorder for wav files"
 SRC_URI="http://ibiblio.org/pub/linux/apps/sound/players/${P}.tar.gz"
 HOMEPAGE="http://orphan//"
-
 LICENSE="GPL-2"
+DEPEND="virtual/glibc"
 SLOT="0"
-KEYWORDS="-amd64 -sparc x86"
+KEYWORDS="~x86"
 
-DEPEND="virtual/libc"
+IUSE=""
 
 src_unpack() {
 	unpack ${A}
 	epatch ${FILESDIR}/${P}.patch
-	epatch ${FILESDIR}/${P}-gcc34.patch
 }
 
 src_compile() {
@@ -28,7 +25,7 @@ src_compile() {
 
 src_install () {
 	dodir /usr/bin
-	emake INSTDIR="${D}usr/bin" install_no_x || die
+	emake INSTDIR=${D}usr/bin install_no_x || die
 	# the motif frontend crashes and there are nicer player
 	# for X anyway
 	# no suid root install for old packages which use strcpy

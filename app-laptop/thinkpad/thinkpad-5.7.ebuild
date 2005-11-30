@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/thinkpad/thinkpad-5.7.ebuild,v 1.3 2005/01/01 14:49:09 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/thinkpad/thinkpad-5.7.ebuild,v 1.1 2004/10/01 08:33:58 swtaylor Exp $
 
 inherit eutils
 
@@ -45,7 +45,7 @@ src_install() {
 	dodir /etc/modules.d
 	sed 's/%KV%/'${KV}'/g' ${FILESDIR}/thinkpad > ${D}/etc/modules.d/thinkpad
 	dodir /etc/devfs.d
-	echo 'REGISTER ^thinkpad/.*$    PERMISSIONS root.thinkpad  0664' \
+	einfo 'REGISTER ^thinkpad/.*$    PERMISSIONS root.thinkpad  0664' \
 		> ${D}/etc/devfs.d/thinkpad
 	doman man/*.4
 }

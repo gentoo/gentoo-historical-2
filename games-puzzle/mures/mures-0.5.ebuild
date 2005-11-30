@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/mures/mures-0.5.ebuild,v 1.3 2005/06/10 15:54:10 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/mures/mures-0.5.ebuild,v 1.1 2005/05/05 11:40:51 wolf31o2 Exp $
 
 inherit eutils games
 
@@ -10,13 +10,13 @@ SRC_URI="mirror://sourceforge/mures/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="opengl"
 
-DEPEND="media-libs/libsdl
-	media-libs/sdl-image
-	media-libs/sdl-net
-	media-libs/sdl-ttf
+DEPEND=">=media-libs/libsdl-1.2.3
+	>=media-libs/sdl-image-1.2.3
+	>=media-libs/sdl-net-1.2.5
+	>=media-libs/sdl-ttf-2.0.6
 	opengl? ( virtual/opengl )"
 
 dir="${GAMES_DATADIR}/${PN}"
@@ -83,12 +83,14 @@ src_compile() {
 
 src_install() {
 	# Remove makefiles before installation
-	rm -f src/*/Makefile* src/*/*/Makefile* || die "removing makefiles"
+	rm -f src/*/Makefile* || die "removing makefiles"
 	insinto ${dir}
 	doins -r src/gui src/images src/sounds src/textures src/maps src/*.lua \
 		|| die "copying data files"
 	dodoc README TODO ChangeLog AUTHORS || die "dodoc failed"
-	dogamesbin src/mures || die "dogamesbin failed"
+	exeinto ${dir}
+	doexe src/mures || die "doexe failed"
+	games_make_wrapper mures ./mures ${dir}
 
 	prepgamesdirs
 }

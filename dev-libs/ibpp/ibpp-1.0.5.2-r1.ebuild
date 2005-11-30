@@ -1,37 +1,32 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/ibpp/ibpp-1.0.5.2-r1.ebuild,v 1.14 2004/06/24 23:12:43 agriffis Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Geert Bevin <gbevin@uwyn.com>
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/ibpp/ibpp-1.0.5.2-r1.ebuild,v 1.1 2002/03/22 09:39:35 gbevin Exp $
 
-inherit eutils
-
+S="${WORKDIR}/${P}"
 DESCRIPTION="IBPP, a C++ client API for firebird 1.0"
-HOMEPAGE="http://www.ibpp.org/"
-SRC_URI="mirror://sourceforge/ibpp/${P//./-}-src.zip"
+SRC_URI="http://prdownloads.sourceforge.net/ibpp/ibpp-1-0-5-2-src.zip"
 
-LICENSE="MPL-1.1"
-SLOT="0"
-KEYWORDS="x86 -sparc"
-IUSE=""
-
-DEPEND=">=sys-apps/portage-2.0.47-r10
+DEPEND=">=sys-devel/gcc-2.95.3-r5
 	>=dev-db/firebird-1.0"
 
 src_unpack() {
 	mkdir ${P}
 	cd ${P}
-	unpack ${A}
-	epatch ${FILESDIR}/${P}.patch
-	rm ibase.h iberror.h
+	unpack ibpp-1-0-5-2-src.zip
+	patch -p1 < ${FILESDIR}/ibpp-1.0.5.2.patch || die
+	rm ibase.h iberror.h 
 }
 
 src_compile() {
 	emake PLATFORM="linux" || die
 }
 
-src_install() {
+src_install () {
+	dodir /usr/include
 	insinto /usr/include
-	doins ibpp.h || die "doins failed"
+	doins ibpp.h
 	cd release/linux
-	dolib.so libibpp.so libibpp_core.so libibpp_helper.so || die "dolib.so failed"
-	dolib.a libibpp.a libibpp_core.a libibpp_helper.a || die "dolib.a failed"
+	dolib.so libibpp.so libibpp_core.so libibpp_helper.so
+	dolib.a libibpp.a libibpp_core.a libibpp_helper.a
 }

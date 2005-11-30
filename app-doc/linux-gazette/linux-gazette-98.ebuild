@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/linux-gazette/linux-gazette-98.ebuild,v 1.6 2005/01/01 13:16:36 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-doc/linux-gazette/linux-gazette-98.ebuild,v 1.1 2004/02/21 05:28:21 vapier Exp $
 
 DESCRIPTION="Sharing ideas and discoveries and Making Linux just a little more fun"
 HOMEPAGE="http://linuxgazette.net/"
@@ -8,8 +8,7 @@ SRC_URI="http://linuxgazette.net/ftpfiles/lg-issue${PV}.tar.gz"
 
 LICENSE="OPL"
 SLOT="${PV}"
-KEYWORDS="x86 ppc amd64"
-IUSE=""
+KEYWORDS="x86 ppc"
 
 DEPEND=">=app-doc/linux-gazette-base-${PV}"
 

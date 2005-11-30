@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/quota/quota-3.09.ebuild,v 1.3 2005/08/17 00:27:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/quota/quota-3.09.ebuild,v 1.1 2004/10/03 10:28:05 vapier Exp $
 
 inherit eutils
 
@@ -41,7 +41,6 @@ src_install() {
 
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/quota.rc6 quota
-	newconfd ${FILESDIR}/quota.confd quota
 
 	# NLS bloat reduction
 	use nls || rm -rf ${D}/usr/share/locale

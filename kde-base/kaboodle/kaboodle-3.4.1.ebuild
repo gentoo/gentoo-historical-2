@@ -1,14 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kaboodle/kaboodle-3.4.1.ebuild,v 1.9 2005/09/12 17:47:07 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kaboodle/kaboodle-3.4.1.ebuild,v 1.1 2005/05/25 21:23:00 danarmak Exp $
 
 KMNAME=kdemultimedia
-MAXKDEVER=3.4.2
+MAXKDEVER=$PV
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="The Lean KDE Media Player"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="xine audiofile"
 
 OLDRDEPEND="
@@ -17,11 +17,11 @@ OLDRDEPEND="
 	~kde-base/artsplugin-mpg123-$PV
 	xine? ( ~kde-base/artsplugin-xine-$PV )
 	audiofile? ( ~kde-base/artsplugin-audiofile-$PV )"
-RDEPEND="$(deprange $PV 3.4.2 kde-base/kdemultimedia-arts)
-	$(deprange $PV 3.4.2 kde-base/artsplugin-mpeglib)
-	$(deprange $PV 3.4.2 kde-base/artsplugin-mpg123)
-	xine? ( $(deprange $PV 3.4.2 kde-base/artsplugin-xine) )
-	audiofile? ( $(deprange $PV 3.4.2 kde-base/artsplugin-audiofile) )"
+RDEPEND="$(deprange $PV $MAXKDEVER kde-base/kdemultimedia-arts)
+	$(deprange $PV $MAXKDEVER kde-base/artsplugin-mpeglib)
+	$(deprange $PV $MAXKDEVER kde-base/artsplugin-mpg123)
+	xine? ( $(deprange $PV $MAXKDEVER kde-base/artsplugin-xine) )
+	audiofile? ( $(deprange $PV $MAXKDEVER kde-base/artsplugin-audiofile) )"
 
 KMEXTRACTONLY="arts/"
 

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools-scripts/daemontools-scripts-1.0.2.ebuild,v 1.3 2005/10/28 01:47:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools-scripts/daemontools-scripts-1.0.2.ebuild,v 1.1 2005/08/06 11:10:14 kaiowas Exp $
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic
 
 DESCRIPTION="gentoo specific daemontools wrapper scripts"
 HOMEPAGE="http://dev.gentoo.org/~kaiowas/"
@@ -10,16 +10,17 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="static selinux withsamplescripts"
 
-RDEPEND="selinux? ( sys-apps/policycoreutils )"
+RDEPEND="selinux? ( sys-apps/policycoreutils )
+		sys-process/daemontools"
 DEPEND=""
 
 src_compile() {
 	use static && append-ldflags -static
 
-	make -C ${S}/src CC="$(tc-getCC)" LD="$(tc-getCC) ${LDFLAGS}" \
+	make -C ${S}/src CC="${CC:-gcc}" LD="${CC:-gcc} ${LDFLAGS}" \
 		CFLAGS="${CFLAGS}" || die
 }
 
@@ -43,24 +44,25 @@ pkg_setup() {
 }
 
 src_install() {
+
 	into /
-	doenvd etc/env.d/50svcinit
-	dosbin sbin/* || die
-	dosbin src/svcinit || die
+	doenvd ${S}/etc/env.d/50svcinit
+	dosbin ${S}/sbin/*
+	dosbin ${S}/src/svcinit
 
 	# usage() script
 	exeinto /lib/rcscripts/sh
-	doexe lib/rcscripts/sh/* || die
+	doexe ${S}/lib/rcscripts/sh/*
 
 	# this directory is targeted by daemontools
 	keepdir /service
 
-	if use withsamplescripts ; then
+	use withsamplescripts && (
 
 		# fill up /var/service/*
 		keepdir /var/service
 
-		cd "${S}"/var/service
+		cd ${S}/var/service
 
 		services=`find ./ -type d`
 		for service in ${services}; do
@@ -73,7 +75,7 @@ src_install() {
 			exeinto /var/service/${path}
 			doexe ${file}
 		done
-	fi
+	)
 }
 
 

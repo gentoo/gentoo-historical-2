@@ -1,55 +1,6 @@
 # ChangeLog for media-libs/libgii
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libgii/ChangeLog,v 1.17 2005/05/09 05:01:30 agriffis Exp $
-
-  09 May 2005; Aron Griffis <agriffis@gentoo.org> libgii-0.9.0.ebuild:
-  On ia64, libgii-0.9.0 doesn't built with linux-headers-2.6.8.1-r2, so DEPEND
-  on >=linux-headers-2.6.11 (for ia64 only)
-
-  02 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> libgii-0.9.0.ebuild:
-  Fixes bug 87021, thanks to transient in #gentoo-bugs.
-
-  30 Mar 2005; Chris White <chriswhite@gentoo.org>
-  +files/libgii-0.9.0-gcc34.patch, libgii-0.9.0.ebuild:
-  Fix bug #86941.
-
-*libgii-0.9.0 (28 Mar 2005)
-
-  28 Mar 2005; Chris White <chriswhite@gentoo.org>
-  +files/libgii-0.9.0-linux26-headers.patch, +libgii-0.9.0.ebuild:
-  Fix bug #43609 for libgii update.
-
-  08 Aug 2004; <plasmaroo@gentoo.org> files/libgii-linux-headers-2.6.patch:
-  Compile fix for bug #57946.
-
-  28 Jul 2004; Tom Gall <tgall@gentoo.org> libgii-0.8.1.ebuild:
-  stable on ppc64, bug #55076
-
-  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> libgii-0.8.1.ebuild:
-  Add inherit eutils
-
-  17 Feb 2004; Aron Griffis <agriffis@gentoo.org> libgii-0.8.1.ebuild:
-  stable on ia64
-
-  28 Jan 2004; <plasmaroo@gentoo.org> libgii-0.8.1.ebuild,
-  files/libgii-linux-headers-2.6.patch:
-  Added a patch to get libgii to compile on 2.6 kernel headers. Thanks to James
-  Noble for filing bug #39580!
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*libgii-0.8.1 (14 Apr 2002)
-
-  10 Mar 2003; Aron Griffis <agriffis@gentoo.org> libgii-0.8.1.ebuild:
-  Mark stable on alpha
-
-  23 Jul 2002; Mark Guertin <gerk@gentoo.org> :
-  Added ppc to keywords
-
-  14 Apr 2002; Seemant Kulleen <seemant@gentoo.org> libgii-0.8.1.ebuild
-  files/digest-libgii-0.8.1
-
-  Version bump
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libgii/ChangeLog,v 1.1 2002/02/01 21:53:30 gbevin Exp $
 
 *libgii-20010313 (1 Feb 2002)
 

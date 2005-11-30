@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-rra/synce-rra-0.8.4.ebuild,v 1.7 2005/01/01 15:49:41 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-rra/synce-rra-0.8.4.ebuild,v 1.1 2003/09/08 14:24:00 tad Exp $
 
 DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync."
 HOMEPAGE="http://sourceforge.net/projects/synce/"
@@ -9,14 +9,14 @@ SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE=""
+IUSE="gnome"
 
-DEPEND="virtual/libc
-	>=dev-libs/check-0.8.2
-	>=app-pda/synce-libsynce-0.3"
+DEPEND="virtual/glibc
+	>=check-0.8.2
+	>=synce-libsynce-0.3"
 
 src_compile() {
-	econf || die "econf failed"
+	econf
 	emake || die
 }
 

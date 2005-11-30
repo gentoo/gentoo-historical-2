@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mac-fdisk/mac-fdisk-0.1-r4.ebuild,v 1.3 2005/09/11 02:10:13 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mac-fdisk/mac-fdisk-0.1-r4.ebuild,v 1.1 2005/02/05 21:41:08 hansmi Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI="http://http.us.debian.org/debian/pool/main/m/mac-fdisk/${PN}_${PV}.orig
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~ppc ~ppc64 ~x86"
+KEYWORDS="-* ~ppc64 ~ppc"
 IUSE=""
 
 DEPEND="virtual/libc"
@@ -21,11 +21,15 @@ src_unpack() {
 	unpack mac-fdisk_${PV}.orig.tar.gz
 	mv mac-fdisk-${PV}.orig ${P}
 	cd ${S}
-	epatch ${DISTDIR}/mac-fdisk_${PV}-${DEBRV}.diff.gz
+	cat ${DISTDIR}/mac-fdisk_${PV}-${DEBRV}.diff.gz | gzip -dc | patch -p1 || die
 
 	use ppc64 && epatch ${FILESDIR}/mac-fdisk-0.1-r3-ppc64.patch
 
 	epatch ${FILESDIR}/largerthan2gb.patch
+
+	cd ${WORKDIR}
+	chown -R 0:0 *
+	chmod -R a+r-w+X,u+w *
 }
 
 src_compile() {
@@ -33,10 +37,11 @@ src_compile() {
 }
 
 src_install() {
-	mv mac-fdisk.8.in mac-fdisk.8 || die
-	mv pmac-fdisk.8.in pmac-fdisk.8 || die
-	mv pdisk mac-fdisk || die
-	mv fdisk pmac-fdisk || die
+	mv pdisk.8 pdisk.8.in
+	ln mac-fdisk.8.in mac-fdisk.8 || die
+	ln pmac-fdisk.8.in pmac-fdisk.8 || die
+	ln pdisk mac-fdisk || die
+	ln fdisk pmac-fdisk || die
 
 	into /
 	dosbin mac-fdisk pmac-fdisk || die

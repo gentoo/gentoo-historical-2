@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.12.1-r2.ebuild,v 1.2 2005/10/20 11:07:43 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/gnome-applets/gnome-applets-2.12.1-r2.ebuild,v 1.1 2005/10/17 01:22:20 dang Exp $
 
-inherit eutils gnome2
+inherit gnome2 eutils
 
-DESCRIPTION="Applets for the GNOME Desktop and Panel"
+DESCRIPTION="Applets for the Gnome2 Desktop and Panel"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2 FDL-1.1 LGPL-2"
@@ -38,8 +38,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.9
 	>=dev-util/intltool-0.28
 	>=app-text/scrollkeeper-0.1.4
-	>=app-text/gnome-doc-utils-0.3.2
-	~app-text/docbook-xml-dtd-4.3"
+	>=app-text/gnome-doc-utils-0.3.2"
 
 DOCS="AUTHORS ChangeLog NEWS README"
 USE_DESTDIR="1"
@@ -59,15 +58,15 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack "${A}"
-	cd "${S}"
+	unpack ${A}
+	cd ${S}
 
 	# add hal configure switch
 	epatch ${FILESDIR}/${P}-hal-switch.patch
 	# Fix volume-applet sometimes mutes
 	epatch ${FILESDIR}/${P}-volume-mute.patch
 
-	autoconf || die "autoconf failed"
+	autoconf
 }
 
 src_install() {

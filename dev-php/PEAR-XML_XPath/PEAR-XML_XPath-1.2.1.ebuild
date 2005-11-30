@@ -1,13 +1,14 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-XML_XPath/PEAR-XML_XPath-1.2.1.ebuild,v 1.3 2004/10/03 21:22:08 swegener Exp $
+# Authore: Tom von Schwerdtner <tvon@etria.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-XML_XPath/PEAR-XML_XPath-1.2.1.ebuild,v 1.1 2004/07/30 15:13:58 coredumb Exp $
 
 inherit php-pear
 
 DESCRIPTION="The PEAR::XML_XPath class provided an XPath/DOM XML manipulation, maneuvering and query interface"
 LICENSE="PHP"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~alpha ~ppc ~ia64"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc"
 IUSE=""
 
 pkg_postinst () {

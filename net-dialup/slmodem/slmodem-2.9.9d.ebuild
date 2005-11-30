@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/slmodem/slmodem-2.9.9d.ebuild,v 1.7 2005/10/16 09:11:45 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/slmodem/slmodem-2.9.9d.ebuild,v 1.1 2005/05/14 13:02:55 genstef Exp $
 
 inherit eutils linux-mod
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://linmodems.technion.ac.il/packages/smartlink/"
 SRC_URI="http://linmodems.technion.ac.il/packages/smartlink/${P}.tar.gz"
 LICENSE="Smart-Link"
 SLOT="0"
-KEYWORDS="x86 -*"
+KEYWORDS="~x86 -*"
 IUSE="alsa usb"
 
 RDEPEND="virtual/libc
@@ -19,21 +19,20 @@ DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
 pkg_setup() {
+	linux-mod_pkg_setup
+
 	MODULE_NAMES="slamr(net:${S}/drivers)"
 	if useq usb; then
 		MODULE_NAMES="${MODULE_NAMES} slusb(net:${S}/drivers)"
 		CONFIG_CHECK="USB"
 	fi
-	BUILD_TARGETS="all"
-	linux-mod_pkg_setup
 	BUILD_PARAMS="KERNEL_DIR=${KV_DIR}"
+	BUILD_TARGETS="all"
 }
 
 src_unpack() {
 	unpack ${A}
-
 	cd ${S}
-	epatch ${FILESDIR}/${PN}-2.9.9b-gcc4.patch
 
 	convert_to_m drivers/Makefile
 }
@@ -90,7 +89,7 @@ src_install() {
 			 ${D}/etc/udev/rules.d/55-${PN}.rules
 	fi
 
-	dodoc Changes README
+	dodoc COPYING Changes README
 }
 
 pkg_postinst() {
@@ -124,7 +123,7 @@ pkg_postinst() {
 		einfo "otherwise type: rc-update add alsasound boot"
 		einfo
 		einfo "If you need to use snd-intel8x0m from the kernel"
-		einfo "compile it as a module and edit /etc/modules.d/alsa"
+		einfo "compile it as a module and edit /etc/module.d/alsa"
 		einfo 'to: "alias snd-card-(number) snd-intel8x0m"'
 	fi
 

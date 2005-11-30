@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/lcms/lcms-1.14-r1.ebuild,v 1.4 2005/09/24 07:55:48 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/lcms/lcms-1.14-r1.ebuild,v 1.1 2005/08/02 02:19:24 metalgod Exp $
 
-inherit libtool gnuconfig autotools
+inherit libtool gnuconfig
 
 DESCRIPTION="A lightweight, speed optimized color management engine"
 HOMEPAGE="http://www.littlecms.com/"
@@ -25,17 +25,16 @@ src_unpack() {
 
 	# an updated config.sub for the uclibc env
 	gnuconfig_update || die
+	elibtoolize  || die "elibtoolize failed"
 
+	# fix build on amd64
 	cd ${S}
-
-	# fixes bug #98547
-	epatch ${FILESDIR}/lcms.i.diff
-
-	# fix build on amd64, conditional for ppc-macos because it lacks the
-	# proper automake version (1.7)
-	use ppc-macos || eautoreconf || die "autoreconf failed"
-
-	elibtoolize
+	einfo "Running autoreconf..."
+	use ppc-macos || {
+		libtoolize --copy --force
+		aclocal || die "aclocal failed"
+		autoreconf || die "autoreconf failed"
+	}
 }
 
 src_compile() {

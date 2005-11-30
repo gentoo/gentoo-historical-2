@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-headers/alsa-headers-1.0.8.ebuild,v 1.9 2005/07/12 04:34:50 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-headers/alsa-headers-1.0.8.ebuild,v 1.1 2005/01/14 13:52:07 eradicator Exp $
+
+IUSE=""
 
 inherit eutils
 
@@ -17,8 +19,7 @@ SRC_URI="mirror://alsaproject/driver/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND=""
 
@@ -43,5 +44,5 @@ src_compile() {
 src_install() {
 	cd ${S}/alsa-kernel/include
 	insinto /usr/include/sound
-	doins *.h || die "include failed"
+	doins *.h
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/knemo/knemo-0.3.1-r1.ebuild,v 1.4 2005/09/02 03:27:28 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/knemo/knemo-0.3.1-r1.ebuild,v 1.1 2005/05/01 13:37:48 carlo Exp $
 
 inherit kde eutils
 
@@ -10,10 +10,10 @@ HOMEPAGE="http://kde-apps.org/content/show.php?content=12956"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE="wifi"
 
-RDEPEND="kernel_linux? ( sys-apps/net-tools )
+RDEPEND="sys-apps/net-tools
 	wifi? ( net-wireless/wireless-tools )"
 need-kde 3.2
 

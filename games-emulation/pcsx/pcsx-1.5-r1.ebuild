@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/pcsx/pcsx-1.5-r1.ebuild,v 1.7 2005/09/26 17:45:44 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/pcsx/pcsx-1.5-r1.ebuild,v 1.1 2003/09/09 16:26:50 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 S=${WORKDIR}/PcsxSrc-${PV}
 DESCRIPTION="Playstation emulator"
@@ -11,21 +11,22 @@ SRC_URI="http://www.pcsx.net/downloads/PcsxSrc-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 -ppc"
+KEYWORDS="x86"
 IUSE="opengl"
 
 DEPEND="sys-libs/zlib
+	>=sys-apps/sed-4
 	app-arch/unzip
 	x11-libs/gtk+
 	gnome-base/libglade"
-RDEPEND="games-emulation/psemu-cdr
-	games-emulation/psemu-cdriso
-	games-emulation/psemu-padxwin
-	games-emulation/psemu-padjoy
-	games-emulation/psemu-peopsspu
+RDEPEND="app-emulation/psemu-cdr
+	app-emulation/psemu-cdriso
+	app-emulation/psemu-padxwin
+	app-emulation/psemu-padjoy
+	app-emulation/psemu-peopsspu
 	|| (
-		opengl? ( x86? ( games-emulation/psemu-gpupetemesagl ) )
-		games-emulation/psemu-peopssoftgpu
+		opengl? ( app-emulation/psemu-gpupetemesagl )
+		app-emulation/psemu-peopssoftgpu
 	)"
 
 src_unpack() {
@@ -41,14 +42,6 @@ src_unpack() {
 		-e 's:Pcsx.cfg:~/.pcsx/config:' \
 		Linux/LnxMain.c \
 		|| die "sed LnxMain.c failed"
-	if [ "${ARCH}" = "ppc" ]; then
-		sed -i \
-			-e "s:^CPU\ =.*:CPU = powerpc:" Linux/Makefile \
-			|| die "sed Linux/Makefile failed"
-		sed -i \
-			-e "s:__LINUX__:__i386__:g" Gte.c \
-			|| die "sed Gte.c failed"
-	fi
 }
 
 src_compile() {

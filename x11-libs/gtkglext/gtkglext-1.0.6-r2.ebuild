@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/gtkglext-1.0.6-r2.ebuild,v 1.8 2005/07/13 14:35:35 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/gtkglext-1.0.6-r2.ebuild,v 1.1 2005/02/01 11:23:23 foser Exp $
 
 inherit gnome2
 
@@ -11,7 +11,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 SLOT="0"
 IUSE="doc"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~x86 ~sparc ~alpha ~ppc ~ia64 ~amd64"
 
 RDEPEND=">=dev-libs/glib-2
 	>=x11-libs/gtk+-2
@@ -33,7 +33,7 @@ DOCS="AUTHORS COPYING* ChangeLog* INSTALL NEWS README* TODO"
 pkg_setup () {
 
 	# Set up X11 implementation
-	X11_IMPLEM_P="$(best_version virtual/x11)"
+	X11_IMPLEM_P="$(portageq best_version "${ROOT}" virtual/x11)"
 	X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
 	X11_IMPLEM="${X11_IMPLEM##*\/}"
 	einfo "X11 implementation is ${X11_IMPLEM}."

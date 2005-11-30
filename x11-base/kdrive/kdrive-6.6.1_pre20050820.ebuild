@@ -1,12 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-base/kdrive/kdrive-6.6.1_pre20050820.ebuild,v 1.3 2005/08/21 07:25:00 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-base/kdrive/kdrive-6.6.1_pre20050820.ebuild,v 1.1 2005/08/21 02:55:13 spyderous Exp $
 
 SNAPSHOT="yes"
 
 inherit flag-o-matic x-modular
-
-PATCHES="${FILESDIR}/make-xv-configable.patch"
 
 MY_PN="xserver"
 MY_P="${MY_PN}-${PV##*pre}"
@@ -14,7 +12,7 @@ SRC_URI="http://dev.gentoo.org/~spyderous/overlay/distfiles/${MY_P}.tar.bz2"
 HOMEPAGE="http://xserver.freedesktop.org/wiki/Software/Xserver"
 DESCRIPTION="Experimental X11 implementations"
 KEYWORDS="~x86"
-IUSE="ipv6 static minimal"
+IUSE="ipv6 static"
 RDEPEND="x11-libs/libXdmcp
 	x11-libs/libX11
 	x11-libs/libXext
@@ -40,10 +38,6 @@ S="${WORKDIR}/${MY_P%%-[0-9]*}"
 
 pkg_setup() {
 	CONFIGURE_OPTIONS="$(use_enable ipv6)
-		$(use_enable !minimal xv)
-		$(use_enable !minimal composite)
-		$(use_enable !minimal xrecord)
-		$(use_enable !minimal xres)
 		--enable-xglserver
 		--enable-xglxserver
 		--disable-xeglserver
@@ -52,18 +46,9 @@ pkg_setup() {
 	#	--enable-xeglserver
 
 	append-ldflags -Wl,-z,now
-}
-
-src_compile() {
-	x-modular_src_configure
-
-	# Has to be after configure, or configure dies
 	if use static; then
-		append-ldflags -all-static
+		append-ldflags -static
 	fi
-
-	# Yes, we do need the LDFLAGS here in addition to the above append.
-	emake LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

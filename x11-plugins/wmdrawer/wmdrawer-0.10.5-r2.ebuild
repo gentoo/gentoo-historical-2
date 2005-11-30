@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmdrawer/wmdrawer-0.10.5-r2.ebuild,v 1.3 2005/11/14 14:33:47 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmdrawer/wmdrawer-0.10.5-r2.ebuild,v 1.1 2005/09/20 07:28:23 s4t4n Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://people.easter-eggs.org/~valos/wmdrawer/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ~sparc x86"
+KEYWORDS="~amd64 ppc ~sparc x86"
 
 DEPEND="virtual/x11
 	gtk? (	>=x11-libs/gtk+-2 )
@@ -39,7 +39,7 @@ src_compile()
 src_install()
 {
 	dobin wmdrawer
-	dodoc README TODO AUTHORS ChangeLog wmdrawerrc.example
+	dodoc COPYING INSTALL README TODO AUTHORS ChangeLog wmdrawerrc.example
 	gzip -cd doc/wmdrawer.1x.gz > wmdrawer.1
 	doman wmdrawer.1
 }

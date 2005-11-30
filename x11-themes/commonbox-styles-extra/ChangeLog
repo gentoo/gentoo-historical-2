@@ -1,58 +1,6 @@
 # ChangeLog for x11-themes/commonbox-styles-extra
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/commonbox-styles-extra/ChangeLog,v 1.16 2005/10/02 19:27:51 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  Mark 0.2-r1 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  add ~ia64
-
-  27 May 2005; Lina Pezzella <j4rg0n@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  Testing ppc-macos. Bug #93346
-
-  21 May 2005; Markus Rothe <corsair@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  Added ~ppc64 to KEYWORDS; bug #93346
-
-  21 May 2005; Simon Stelling <blubb@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  stable on amd64
-
-  20 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  Added ~hppa; bug #93346
-
-  04 Aug 2004; Tom Martin <slarti@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  Marked ~amd64, resolving 59213.
-
-  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
-  commonbox-styles-extra-0.2-r1.ebuild:
-  Added IUSE=, removed S=.
-
-  30 Oct 2003; Brandon Hale <tseng@gentoo.org> metadata.xml:
-  Added metadata.xml
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*commonbox-styles-extra-0.2-r1 (27 Nov 2002)
-
-  27 Nov 2002; Matt Keadle <mkeadle@gentoo.org> commonbox-styles-extra-0.2-r1.ebuild
-  files/digest-commonbox-styles-extra-0.2-r1
-
-  Adjusted S=${WORKDIR}/${PN} to S=${WORKDIR}/${P}. Fixes bug #11178.
-
-*commonbox-styles-extra-0.2 (14 Oct 2002)
-
-  14 Oct 2002; Matt Keadle <mkeadle@gentoo.org>
-  commonbox-styles-extra-0.2.ebuild files/digest-commonbox-styles-extra-0.2 :
-
-  Added wallpaper images taken from http://www.gentoo.org/index-graphics.html
-  Images created by Meir Kriheli of mksoft
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/commonbox-styles-extra/ChangeLog,v 1.1 2002/10/04 00:43:44 mkeadle Exp $
 
 *commonbox-styles-extra-0.1 (03 Oct 2002)
 

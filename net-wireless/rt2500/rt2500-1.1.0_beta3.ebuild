@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/rt2500/rt2500-1.1.0_beta3.ebuild,v 1.4 2005/10/09 16:48:12 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/rt2500/rt2500-1.1.0_beta3.ebuild,v 1.1 2005/08/05 16:53:50 genstef Exp $
 
 inherit eutils linux-mod kde-functions
 set-qtdir 3
@@ -18,8 +18,8 @@ DEPEND="net-wireless/wireless-tools
 
 S=${WORKDIR}/${MY_P}
 MODULE_NAMES="rt2500(net:${S}/Module)"
-CONFIG_CHECK="NET_RADIO BROKEN_ON_SMP"
-BROKEN_ON_SMP_ERROR="SMP Processors and Kernels are currently not supported"
+CONFIG_CHECK="NET_RADIO BROKEN_ON_SMP !4KSTACKS"
+SMP_ERROR="SMP Processors and Kernels are currently not supported"
 MODULESD_RT2500_ALIASES=('ra? rt2500')
 
 
@@ -63,7 +63,7 @@ pkg_postinst() {
 
 	einfo "to set up the card you can use:"
 	einfo "- iwconfig from wireless-tools"
-	einfo "- iwpriv, like described in \"/usr/share/doc/${PF}/iwpriv_usage.txt.gz"\"
-	einfo "- /etc/Wireless/RT2500STA/RT2500STA.dat, like described in \"/usr/share/doc/${PF}/README.gz\""
+	einfo "- iwpriv, like described in \"/usr/share/doc/${PF}/iwpriv_usage.txt"\"
+	einfo "- /etc/Wireless/RT2500STA/RT2500STA.dat, like described in \"/usr/share/doc/${PF}/README\""
 	einfo "- RT2500 provided qt API: RaConfig2500"
 }

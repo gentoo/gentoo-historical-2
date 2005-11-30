@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/pcmcia.eclass,v 1.10 2005/08/23 14:55:11 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/pcmcia.eclass,v 1.1 2004/02/07 21:22:49 latexer Exp $
 
-# pcmcia.eclass - This eclass facilities writing ebuilds for driver packages
+# pcmcia.eclass - This eclass facilities writing ebuilds for driver packages 
 # that may need to build against the pcmcia-cs drivers, depending on kernel
 # support, pcmcia-cs version installed, etc.
 
@@ -16,15 +16,16 @@
 # if this information is needed. These will be blank if kernel PCMCIA support
 # is detected.
 
-# Functions - pcmcia_src_unpack unpacks and patches as needed the pcmcia-cs
+# Functions - pcmcia_src_unpack unpacks and patches as needed the pcmcia-cs 
 # sources in ${WORKDIR}/${PCMCIA_SOURCE_DIR} and set the two variables.
 
 # pcmcia_configure will configure the pcmcia-cs sources if that is needed
 
-inherit eutils
+ECLASS="pcmcia"
+INHERITED="$INHERITED $ECLASS"
 
 DESCRIPTION="eclass for drivers that may build against pcmcia-cs"
-IUSE="pcmcia"
+IUSE="${IUSE} pcmcia"
 
 # Be VERY careful when pumping the PCMCIA_BASE_VERSION. May require remaking some patches, etc
 # Ugly, but portage doesn't like more dynamics SRC_URIs.
@@ -43,16 +44,15 @@ SRC_URI="pcmcia?	( mirror://sourceforge/pcmcia-cs/${PCMCIA_BASE_VERSION}.tar.gz 
 # kernel's, but it's here to remind me in case it does become an issue
 #ppc? ( http://dev.gentoo.org/~latexer/files/patches/${PCMCIA_BASE_VERSION}-ppc-fix.diff.gz ) )
 
-DEPEND="pcmcia? ( >=sys-apps/${PCMCIA_BASE_VERSION} )"
+newdepend "pcmcia?	( >=sys-apps/${PCMCIA_BASE_VERSION} )"
 
-pcmcia_src_unpack() {
-	# So while the two eclasses exist side-by-side and also the ebuilds inherit
-	# both we need to check for PCMCIA_SOURCE_DIR, and if we find it, then we
-	# bail out and assume pcmcia.eclass is working on it.
-	[[ -n ${PCMCIA_SOURCE_DIR} ]] && return 1
+PCMCIA_SOURCE_DIR="${WORKDIR}/${PCMCIA_BASE_VERSION}"
 
+pcmcia_src_unpack()
+{
 	cd ${WORKDIR}
-	if use pcmcia ; then
+
+	if [ -n "`use pcmcia`" ]; then
 		if egrep '^CONFIG_PCMCIA=[ym]' /usr/src/linux/.config >&/dev/null
 		then
 			# Sadly, we still need to download these sources in SRC_URI
@@ -61,8 +61,6 @@ pcmcia_src_unpack() {
 			PCMCIA_VERSION=""
 			PCMCIA_SOURCE_DIR=""
 		else
-			PCMCIA_SOURCE_DIR="${WORKDIR}/${PCMCIA_BASE_VERSION}"
-
 			# We unpack the base version, figure out what is installed, then
 			# patch up to that version. Ugly hack to avoid messy SRC_URIs
 			unpack ${PCMCIA_BASE_VERSION}.tar.gz
@@ -96,10 +94,10 @@ pcmcia_src_unpack() {
 # Call this if you need the package configured for building to work
 pcmcia_configure()
 {
-	if use pcmcia ; then
+	cd ${PCMCIA_SOURCE_DIR}
+	if [ -n "`use pcmcia`" ]; then
 		if ! egrep '^CONFIG_PCMCIA=[ym]' /usr/src/linux/.config >&/dev/null
 		then
-			cd ${PCMCIA_SOURCE_DIR}
 			local myarch
 
 			# pcmcia-cs expects "i386" not "x86"

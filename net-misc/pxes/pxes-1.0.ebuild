@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pxes/pxes-1.0.ebuild,v 1.4 2005/11/28 13:13:26 mcummings Exp $
-
-inherit eutils perl-app
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pxes/pxes-1.0.ebuild,v 1.1 2005/05/18 15:43:11 wolf31o2 Exp $
 
 IUSE="cdr"
 DESCRIPTION="PXES is a package for building thin clients using multiple types of clients"
@@ -21,6 +19,8 @@ RDEPEND="${DEPEND}
 	>=dev-perl/glade-perl-0.61
 	sys-fs/squashfs-tools
 	cdr? ( app-cdr/cdrtools )"
+
+inherit eutils perl-module
 
 dir=/opt/${P}
 Ddir=${D}/${dir}
@@ -43,13 +43,13 @@ src_compile() {
 	cd ${WORKDIR}/pxesconfig-${PV}
 	SRC_PREP="yes"
 	perl Makefile.PL PREFIX=${D}/usr INSTALLDIRS=vendor DESTDIR=${D}
-	perl-app_src_compile || die
+	perl-module_src_compile || die
 }
 
 src_install() {
 	dodir ${dir}
 	cp -r ${S}/stock ${Ddir} || die "Copying files"
-	cp -pPR ${S}/tftpboot ${D} || die "Copying tftpboot"
+	cp -a ${S}/tftpboot ${D} || die "Copying tftpboot"
 	dodir ${dir}/tools
 	dosym /usr/bin/mksquashfs ${dir}/tools/mksquashfs
 	dodoc Documentation/ChangeLog

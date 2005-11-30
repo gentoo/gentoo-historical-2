@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/vultureng/vultureng-0.6.ebuild,v 1.4 2005/08/18 14:17:53 dams Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/vultureng/vultureng-0.6.ebuild,v 1.1 2005/05/24 21:04:36 dams Exp $
 
 inherit flag-o-matic eutils
 
-DESCRIPTION="INTRINsec Reverse Proxy"
+DESCRIPTION="INTRINsec traffic control and advanced routing management console"
 HOMEPAGE="http://vulture.open-source.fr"
 SRC_URI="http://vulture.open-source.fr/download/VultureNG-${PV}.tar.gz"
 S=${WORKDIR}/VultureNG-${PV}
@@ -12,18 +12,19 @@ LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS="~x86"
-IUSE=""
+IUSE="apache2 sqlite"
 
 INTRINsec_HOME="/opt/INTRINsec"
 
-RDEPEND="dev-lang/perl
+RDEPEND="dev-php/sqlite-php
+dev-perl/CGI
 dev-perl/perl-ldap
 dev-perl/Apache-Session
 =dev-perl/DBD-SQLite-0.31
 dev-perl/DBD-Pg
 dev-perl/libwww-perl
 net-www/mod_security
->=www-apache/mod_perl-1.99
+>=mod_perl-1.99
 >=net-www/apache-2.0.52
 dev-php/mod_php
 dev-php/PECL-sqlite
@@ -32,16 +33,20 @@ net-www/mod_ssl
 dev-libs/openssl"
 
 DEPEND="dev-libs/openssl
-dev-db/sqlite
-dev-lang/perl"
+dev-db/sqlite"
+
+src_unpack() {
+	echo "$PWD"
+	unpack ${A} || die
+}
 
 src_compile() {
-	sed -i -e 's|/opt/INTRINsec/VultureNG|/opt/INTRINsec/vultureng|g'\
-		www/WEB-INF/phpmvc-config.xml sql/sqlite.dump
+	perl -pe 's|/opt/INTRINsec/VultureNG|/opt/INTRINsec/vultureng|g'\
+		-i www/WEB-INF/phpmvc-config.xml sql/sqlite.dump
+	echo "executing sqlite sql/db < sql/sqlite.dump"
 	sqlite sql/db < sql/sqlite.dump
 	rm -f lib/Vulture/Makefile
-	libpath=`perl -MConfig -e 'print $Config{sitelib}'`
-	make OPT=LIB=${D}/${libpath}
+	make OPT=LIB=${D}/usr/lib
 }
 
 src_install () {
@@ -54,10 +59,9 @@ src_install () {
 	doins ebuild/config.php
 	insinto ${INTRINsec_HOME}/${PN}/sql
 	doins sql/db
-#	insinto /etc/init.d
-#	insopts -m0750 -o root -g root
-#	newins ebuild/VultureNG.init vultureng
-	newinitd ebuild/VultureNG.init vultureng
+	insinto /etc/init.d
+	insopts -m0750 -o root -g root
+	newins ebuild/VultureNG.init vultureng
 }
 
 pkg_postinst() {

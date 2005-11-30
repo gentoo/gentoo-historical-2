@@ -1,18 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/noxmms/noxmms-1.2.7.ebuild,v 1.7 2005/04/18 15:40:49 luckyduck Exp $
-
+# $Header: /var/cvsroot/gentoo-x86/media-sound/noxmms/noxmms-1.2.7.ebuild,v 1.1 2004/01/25 04:33:51 eradicator Exp $
 
 DESCRIPTION="a stripped down (command line only) version of XMMS."
 HOMEPAGE="http://xmmsd.sourceforge.net/noxmms/"
 SRC_URI="http://xmmsd.sourceforge.net/noxmms/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 ~ppc sparc"
-IUSE="vorbis esd 3dnow nls"
-
-DEPEND="vorbis? ( media-libs/libvorbis )
+KEYWORDS="~x86 ~amd64 ~ppc ~ppc64 ~sparc"
+IUSE="oggvorbis esd 3dnow nls"
+DEPEND="oggvorbis? ( media-libs/libvorbis )
 	esd? ( media-sound/esound )"
 RDEPEND="${DEPEND}
 	nls? ( dev-util/intltool )"
@@ -21,22 +18,22 @@ src_compile() {
 	econf \
 		--with-dev-dsp=/dev/sound/dsp \
 		--with-dev-mixer=/dev/sound/mixer \
-		$(use_enable vorbis) \
-		$(use_enable esd) \
-		$(use_enable nls) \
-		$(use_enable 3dnow) \
-		|| die "configure failed"
-	emake || die "make failed"
+		`use_enable oggvorbis vorbis` \
+		`use_enable esd` \
+		`use_enable nls` \
+		`use_enable 3dnow` \
+		|| die
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	einstall || die
 
-	dodoc AUTHORS ChangeLog FAQ NEWS README README.noxmms TODO
+	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog FAQ NEWS README README.noxmms TODO
 }
 
 pkg_postinst() {
 	einfo "If you do not plan on installing xmms, you may want to setup the following symlink before"
 	einfo "installing xmms plugins."
-	einfo "/usr/bin/noxmms-config -> /usr/bin/xmms-config"
+	einfo "/usr/bin/xmms-config -> /usr/bin/xmms-config"
 }

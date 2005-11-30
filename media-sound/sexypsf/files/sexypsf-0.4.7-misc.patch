@@ -38,7 +38,7 @@
  
 --- sexypsf/Makefile
 +++ sexypsf/Makefile
-@@ -12,18 +12,14 @@
+@@ -12,8 +12,7 @@
  RM = rm -f
  
  LIBS = -shared -lz
@@ -48,19 +48,18 @@
  
  OBJS =	PsxBios.o PsxCounters.o PsxDma.o Spu.o PsxHw.o PsxMem.o Misc.o	\
  	R3000A.o PsxInterpreter.o PsxHLE.o spu/spu.o
- 
-+XMMSCONF = xmms-config
+@@ -21,10 +20,6 @@
  OBJS+=	xmms/xmms.o
--FLAGS+=	`gtk-config --cflags`
-+FLAGS+=	`${XMMSCONF} --cflags`
--
+ FLAGS+=	`gtk-config --cflags`
+ 
 -ifeq (${CPU}, ix86)
 -	OPTIMIZE += -fomit-frame-pointer -mcpu=i686 -fno-exceptions
 -endif
- 
+-
  ifeq (${CPU}, ppc)
  	FLAGS+=-DMSB_FIRST
-@@ -33,16 +30,16 @@
+ endif	
+@@ -33,10 +28,10 @@
  	FLAGS+=-DMSB_FIRST
  endif
  
@@ -73,13 +72,6 @@
  
  install: sexypsf
  	mv libsexypsf.so ${HOME}/.xmms/Plugins
- 
- installglobal: sexypsf
--	mv libsexypsf.so `xmms-config --input-plugin-dir`
-+	mv libsexypsf.so `${XMMSCONF} --input-plugin-dir`
- 
- .PHONY: clean sexypsf
- 
 --- sexypsf/PsxInterpreter.c
 +++ sexypsf/PsxInterpreter.c
 @@ -417,7 +417,7 @@
@@ -143,57 +135,29 @@
  	writeok=1;
  
 -	psxMemLUT = (u32*)malloc(0x10000 * 4);
-+	psxMemLUT = malloc(0x10000 * sizeof *psxMemLUT);
 -	memset(psxMemLUT, 0, 0x10000 * 4);
++	psxMemLUT = malloc(0x10000 * sizeof *psxMemLUT);
 +	memset(psxMemLUT, 0, 0x10000 * sizeof *psxMemLUT);
  
  	psxM = (char*)malloc(0x00200000);
  	psxP = (char*)malloc(0x00010000);
-@@ -67,16 +67,16 @@
+@@ -67,7 +67,7 @@
  		printf("Error allocating memory"); return -1;
  	}
  
 -	for (i=0; i<0x80; i++) psxMemLUT[i + 0x0000] = (u32)&psxM[(i & 0x1f) << 16];
 +	for (i=0; i<0x80; i++) psxMemLUT[i + 0x0000] = &psxM[(i & 0x1f) << 16];
  
--	memcpy(psxMemLUT + 0x8000, psxMemLUT, 0x80 * 4);
-+	memcpy(psxMemLUT + 0x8000, psxMemLUT, 0x80 * sizeof *psxMemLUT);
--	memcpy(psxMemLUT + 0xa000, psxMemLUT, 0x80 * 4);
-+	memcpy(psxMemLUT + 0xa000, psxMemLUT, 0x80 * sizeof *psxMemLUT);
- 
--	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f00] = (u32)&psxP[i << 16];
-+	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f00] = &psxP[i << 16];
- 
--	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f80] = (u32)&psxH[i << 16];
-+	for (i=0; i<0x01; i++) psxMemLUT[i + 0x1f80] = &psxH[i << 16];
- 
--	for (i=0; i<0x08; i++) psxMemLUT[i + 0xbfc0] = (u32)&psxR[i << 16];
-+	for (i=0; i<0x08; i++) psxMemLUT[i + 0xbfc0] = &psxR[i << 16];
- 
- 	return 0;
- }
-@@ -215,16 +215,16 @@
- 					case 0x800: case 0x804:
- 						if (writeok == 0) break;
- 						writeok = 0;
--						memset(psxMemLUT + 0x0000, 0, 0x80 * 4);
-+						memset(psxMemLUT + 0x0000, 0, 0x80 * sizeof *psxMemLUT);
--						memset(psxMemLUT + 0x8000, 0, 0x80 * 4);
-+						memset(psxMemLUT + 0x8000, 0, 0x80 * sizeof *psxMemLUT);
--						memset(psxMemLUT + 0xa000, 0, 0x80 * 4);
-+						memset(psxMemLUT + 0xa000, 0, 0x80 * sizeof *psxMemLUT);
- 						break;
+ 	memcpy(psxMemLUT + 0x8000, psxMemLUT, 0x80 * 4);
+ 	memcpy(psxMemLUT + 0xa000, psxMemLUT, 0x80 * 4);
+@@ -222,7 +222,7 @@
  					case 0x1e988:
  						if (writeok == 1) break;
  						writeok = 1;
 -						for (i=0; i<0x80; i++) psxMemLUT[i + 0x0000] = (u32)&psxM[(i & 0x1f) << 16];
 +						for (i=0; i<0x80; i++) psxMemLUT[i + 0x0000] = &psxM[(i & 0x1f) << 16];
--						memcpy(psxMemLUT + 0x8000, psxMemLUT, 0x80 * 4);
-+						memcpy(psxMemLUT + 0x8000, psxMemLUT, 0x80 * sizeof *psxMemLUT);
--						memcpy(psxMemLUT + 0xa000, psxMemLUT, 0x80 * 4);
-+						memcpy(psxMemLUT + 0xa000, psxMemLUT, 0x80 * sizeof *psxMemLUT);
- 						break;
- 					default:
+ 						memcpy(psxMemLUT + 0x8000, psxMemLUT, 0x80 * 4);
+ 						memcpy(psxMemLUT + 0xa000, psxMemLUT, 0x80 * 4);
  						break;
 --- sexypsf/PsxMem.h
 +++ sexypsf/PsxMem.h

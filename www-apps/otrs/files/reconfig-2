@@ -5,13 +5,12 @@ die() {
 	echo "******"
 	echo $1
 	echo "******"
-	exit 1
 }
 
 if [ $1 = "install" ]; then
 	# edit Apache configs
 	cd ${VHOST_ROOT}/${PF}/scripts
-	sed -e "s|/opt/otrs/var/httpd/htdocs/|${MY_INSTALLDIR}/|g" -i apache-httpd.include.conf apache2-httpd.include.conf || die "sed failed"
+	sed -e "s|/opt/otrs/var/httpd/htdocs/|${MY_INSTALLDIR}/|g" -i apache-httpd.include.conf apache2-httpd.include.conf || die "sed 1 failed"
 	
 	# set $HOME
 	grep -lR "/opt" * | xargs sed -i "s|/opt/otrs|${VHOST_ROOT}/${PF}|g" || die "sed failed"
@@ -25,7 +24,7 @@ if [ $1 = "install" ]; then
 elif [ $1 = "clean" ]; then
 	echo "Please examine the contents of the following directories"
 	echo "and delete anything that is no longer necessary"
-	echo
+	echo 
 	echo ${VHOST_ROOT}/${PF}
 	echo ${MY_INSTALLDIR}
 fi

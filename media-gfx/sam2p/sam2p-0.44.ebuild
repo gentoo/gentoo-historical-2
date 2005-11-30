@@ -1,28 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sam2p/sam2p-0.44.ebuild,v 1.8 2005/07/25 12:42:37 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sam2p/sam2p-0.44.ebuild,v 1.1 2004/04/25 14:02:28 twp Exp $
 
-inherit toolchain-funcs
-
-DESCRIPTION="Utility to convert raster images to EPS, PDF and many others"
+DESCRIPTION="A utility to convert raster images to PDF and others"
 HOMEPAGE="http://www.inf.bme.hu/~pts/sam2p/"
 # The author refuses to distribute 
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="~x86"
 IUSE="gif"
 DEPEND="dev-lang/perl
 	sys-devel/gcc-config"
-RDEPEND="virtual/libc"
-
 S=${WORKDIR}
 
 src_compile() {
 	local myconf="--enable-lzw `use_enable gif`"
 	# Makedep borks if distcc is used, so disable it for econf by
 	# overriding the path to g++
-	CXX="$(tc-getCXX)" econf ${myconf} || die
+	CXX="$(gcc-config -B)/g++" econf ${myconf} || die
 	make || die
 }
 

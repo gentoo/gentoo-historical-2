@@ -1,23 +1,6 @@
 # ChangeLog for dev-java/jdictrayapi
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdictrayapi/ChangeLog,v 1.5 2005/08/02 19:46:36 betelgeuse Exp $
-
-*jdictrayapi-0.9.1 (02 Aug 2005)
-
-  02 Aug 2005; Petteri Räty <betelgeuse@gentoo.org>
-  +jdictrayapi-0.9.1.ebuild:
-  Version bump, resolves bug 100539. Thanks to Derek Berube 
-  <derek.berube@wildstartech.com>.
-
-  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  jdictrayapi-0.8.7.ebuild:
-  stable on amd64 and x86, added ~ppc to KEYWORDS
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> jdictrayapi-0.8.7.ebuild:
-  jdictrayapi now makes use of java-pkg_dosrc
-
-  17 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> jdictrayapi-0.8.7.ebuild:
-  added missing unzip dependency. see #69831
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdictrayapi/ChangeLog,v 1.1 2005/01/19 19:43:52 luckyduck Exp $
 
 *jdictrayapi-0.8.7 (19 Jan 2005)
 

@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/irda-utils-0.9.16.ebuild,v 1.8 2005/06/30 18:47:23 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/irda-utils-0.9.16.ebuild,v 1.1 2004/10/04 19:12:48 brix Exp $
 
 inherit eutils
 
-DESCRIPTION="IrDA utilities for infrared communication"
+DESCRIPTION="IrDA Utilities, tools for IrDA communication"
 HOMEPAGE="http://irda.sourceforge.net/"
 SRC_URI="mirror://sourceforge/irda/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE="gtk"
 
 DEPEND="virtual/libc
@@ -23,7 +23,6 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/irda-utils-rh1.patch
 	epatch ${FILESDIR}/irda-utils-gcc3.4-fix.patch
-	epatch ${FILESDIR}/${P}-irkbd.patch
 }
 
 src_compile() {
@@ -45,8 +44,7 @@ src_install () {
 	dodir /usr/bin
 	dodir /usr/sbin
 
-	emake install PREFIX="${D}" ROOT="${D}" MANDIR="${D}/usr/share/man" \
-		|| die "Couldn't install from ${S}"
+	emake install PREFIX="${D}" ROOT="${D}" || die "Couldn't install from ${S}"
 
 	# irda-utils's install-etc installs files in /etc/sysconfig if
 	# that directory exists on the system, so clean up just in case.

@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/vimirc/vimirc-0.8.11.ebuild,v 1.3 2005/07/09 16:19:05 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimirc/vimirc-0.8.11.ebuild,v 1.1 2005/01/21 16:20:15 ciaranm Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: IRC Client"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=931"
 LICENSE="vim"
-KEYWORDS="~x86 ~sparc ~mips ~ppc ~amd64 ~alpha ~ia64"
+KEYWORDS="~x86 ~sparc ~mips ~ppc ~amd64"
 IUSE=""
 
 VIM_PLUGIN_HELPFILES="vimirc.txt"
@@ -27,8 +27,8 @@ src_unpack() {
 
 pkg_postinst() {
 	vim-plugin_pkg_postinst
-	einfo
+	einfo " "
 	einfo "This plugin requires a Vim with perl support enabled. This is"
 	einfo "controlled by the 'perl' USE flag."
-	einfo
+	einfo " "
 }

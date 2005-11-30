@@ -1,28 +1,6 @@
 # ChangeLog for dev-java/aterm-java
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/aterm-java/ChangeLog,v 1.10 2005/04/22 08:15:00 blubb Exp $
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> aterm-java-1.6.ebuild:
-  stable on amd64
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> aterm-java-1.6.ebuild:
-  Keywords ~amd64.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> aterm-java-1.6.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  28 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Gentoo Technologies, Inc. -> Gentoo Foundation
-
-  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> aterm-java-1.6.ebuild:
-  Marking x86
-
-  20 Jul 2004; David Holm <dholm@gentoo.org> aterm-java-1.6.ebuild:
-  Added to ~ppc.
-
-  20 Jul 2004; Karl Trygve Kalleberg <karltk@gentoo.org> aterm-java-1.6.ebuild:
-  Fixed Copyright header.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/aterm-java/ChangeLog,v 1.1 2004/07/20 00:30:23 karltk Exp $
 
 *aterm-java-1.6 (20 Jul 2004)
 

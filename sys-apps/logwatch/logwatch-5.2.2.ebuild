@@ -1,22 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/logwatch/logwatch-5.2.2.ebuild,v 1.9 2005/04/28 04:32:39 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/logwatch/logwatch-5.2.2.ebuild,v 1.1 2004/06/23 19:28:59 swegener Exp $
 
 DESCRIPTION="Analyzes and Reports on system logs"
 HOMEPAGE="http://www.logwatch.org/"
 SRC_URI="ftp://ftp.kaybee.org/pub/linux/${P}.tar.gz"
-
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE=""
-
-RDEPEND="virtual/cron
+RDEPEND="virtual/glibc
+	virtual/cron
 	virtual/mta
 	dev-lang/perl
-	dev-perl/Tie-IxHash
-	dev-perl/Date-Calc
-	virtual/mailx"
+	mail-client/mailx"
 DEPEND=""
 
 src_install() {
@@ -29,8 +26,10 @@ src_install() {
 	newsbin scripts/logwatch.pl logwatch.pl
 
 	for i in scripts/logfiles/* ; do
-		exeinto /etc/log.d/$i
-		doexe $i/* || die "doexe $i failed"
+		if [ $(ls $i | wc -l) -ne 0 ] ; then
+			exeinto /etc/log.d/$i
+			doexe $i/*
+		fi
 	done
 
 	exeinto /etc/log.d/lib
@@ -56,6 +55,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "you have to manually add ${PN} to cron ..."
+	einfo
+	einfo "you have to manually add ${PN} to cron..."
 	einfo "0 0 * * * /usr/sbin/logwatch.pl 2>&1 > /dev/null"
+	einfo
 }

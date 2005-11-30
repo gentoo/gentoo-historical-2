@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/regexp-common/regexp-common-2.113.ebuild,v 1.10 2005/05/01 18:15:03 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/regexp-common/regexp-common-2.113.ebuild,v 1.1 2003/07/29 14:32:58 mcummings Exp $
 
 inherit perl-module
 
@@ -8,10 +8,10 @@ MY_P=Regexp-Common-${PV}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="Provide commonly requested regular expressions"
+SRC_URI="http://www.cpan.org/authors/id/A/AB/ABIGAIL/${MY_P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/authors/id/A/AB/ABIGAIL/"
-SRC_URI="mirror://cpan/authors/id/A/AB/ABIGAIL/${MY_P}.tar.gz"
-
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~hppa"
+
+DEPEND="${DEPEND}"

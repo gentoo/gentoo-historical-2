@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/jpeg-mmx/jpeg-mmx-0.1.6-r1.ebuild,v 1.4 2005/09/02 17:24:10 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/jpeg-mmx/jpeg-mmx-0.1.6-r1.ebuild,v 1.1 2005/08/21 04:34:30 vapier Exp $
 
-inherit eutils flag-o-matic
+inherit eutils
 
 DESCRIPTION="JPEG library with mmx enhancements"
 HOMEPAGE="http://mjpeg.sourceforge.net/"
@@ -26,9 +26,6 @@ src_unpack() {
 }
 
 src_compile() {
-	# filter -fforce-addr because it breaks compile
-	filter-flags -fforce-addr
-
 	econf \
 		--includedir=/usr/include/jpeg-mmx \
 		--enable-shared \
@@ -39,14 +36,14 @@ src_compile() {
 
 src_install() {
 	dodir /usr/include/jpeg-mmx
-	make install-headers includedir="${D}"/usr/include/jpeg-mmx || die "headers"
+	make install-headers prefix="${D}"/usr || die "headers"
 
 	for x in cjpeg djpeg jpegtran ; do
 		newbin .libs/${x} ${x}-mmx || die "dobin ${x}"
 	done
 
 	dolib.a .libs/libjpeg-mmx.a || die "dolib.a"
-	cp -pPR .libs/libjpeg-mmx.so* libjpeg-mmx.la "${D}"/usr/lib/ || die "dolib.so"
+	cp -a .libs/libjpeg-mmx.so* libjpeg-mmx.la "${D}"/usr/lib/ || die "dolib.so"
 
 	dodoc README change.log structure.doc libjpeg.doc
 }

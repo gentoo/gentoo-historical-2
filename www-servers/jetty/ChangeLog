@@ -1,15 +1,6 @@
-# ChangeLog for www-servers/jetty
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/jetty/ChangeLog,v 1.4 2005/09/02 11:28:04 flameeyes Exp $
-
-  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> jetty-4.2.19.ebuild:
-  Don't use -d option in cp.
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  25 Aug 2004; Sven Wegener <swegener@gentoo.org> jetty-4.2.19.ebuild:
-  Changed SRC_URI to use mirror:// syntax.
+# ChangeLog for net-www/jetty
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/jetty/ChangeLog,v 1.1 2004/08/08 17:20:07 stuart Exp $
 
 *jetty-4.2.19 (08 Aug 2004)
 

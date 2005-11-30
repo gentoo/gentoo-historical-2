@@ -1,35 +1,8 @@
 # ChangeLog for dev-ruby/programming-ruby
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/programming-ruby/ChangeLog,v 1.10 2005/10/03 13:06:15 agriffis Exp $
-
-  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  programming-ruby-0.4.ebuild:
-  Mark 0.4 ~ia64
-
-  20 Aug 2005; Fabian Groffen <grobian@gentoo.org>
-  programming-ruby-0.4.ebuild:
-  Marked ~ppc-macos
-
-  24 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  programming-ruby-0.4.ebuild:
-  stable on amd64
-
-  16 Apr 2005; Yuta SATOH <nigoro@gentoo.org> programming-ruby-0.4.ebuild:
-  Stable on ppc64
-
-  09 Jan 2005; Yuta SATOH <nigoro@gentoo.org> programming-ruby-0.4.ebuild:
-  added ~ppc64
-
-  31 Jul 2004; <malc@gentoo.org> programming-ruby-0.4.ebuild:
-  ~amd64 - bug #57765
-
-  10 Apr 2004; David Holm <dholm@gentoo.org> programming-ruby-0.4.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/programming-ruby/ChangeLog,v 1.1 2003/05/20 10:40:39 twp Exp $
 
 *programming-ruby-0.4 (20 May 2003)
-
-  23 May 2003; Tom Payne <twp@gentoo.org> programming-ruby-0.4.ebuild :
-  Fixed DESCRIPTION. Bug # 21243.
 
   20 May 2003; Tom Payne <twp@gentoo.org> programming-ruby-0.4.ebuild :
   Initial version. Ebuild submitted by Farrel Lifson. Bug # 21243.

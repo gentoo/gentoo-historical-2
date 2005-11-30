@@ -1,25 +1,8 @@
 # ChangeLog for dev-java/qat
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/qat/ChangeLog,v 1.10 2005/05/16 22:26:23 luckyduck Exp $
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/qat/ChangeLog,v 1.1 2003/02/17 16:13:26 alain Exp $
 
-  16 May 2005; Jan Brinkmann <luckyduck@gentoo.org> qat-2.7.1-r1.ebuild:
-  stable on amd64, ppc and x86. introduced support for the examples and for
-  the jikes useflag
+*qat-2.7.0 (17 Feb 2003)
 
-  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> qat-2.7.1-r1.ebuild:
-  depend on app-arch/unzip
-
-  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> qat-2.7.1-r1.ebuild:
-  Keywords ~amd64.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> qat-2.7.1-r1.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-*qat-2.7.1-r1 (07 Oct 2004)
-
-  07 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +metadata.xml,
-  +qat-2.7.1-r1.ebuild:
-  now builds from source, ebuild submited by Arne Mejlholm <aaby@gentoo.org>
-  in 63298, some modifications by me
-
+  17 Feb 2003; Alain Penders <alain@gentoo.org> ChangeLog, qat-2.7.0.ebuild,
+  files/digest-qat-2.7.0: Added initial version.

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/uqm/uqm-0.4.0.ebuild,v 1.3 2005/09/23 15:45:07 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/uqm/uqm-0.4.0.ebuild,v 1.1 2005/05/27 04:12:25 mr_bones_ Exp $
 
 inherit games
 
@@ -16,10 +16,11 @@ SRC_URI="mirror://sourceforge/sc2/${P}-source.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
-IUSE="music opengl remix voice"
+KEYWORDS="x86 ppc"
+IUSE="opengl music voice remix"
 
-RDEPEND="virtual/x11
+RDEPEND="virtual/libc
+	virtual/x11
 	media-libs/libvorbis
 	media-libs/jpeg
 	media-libs/libpng
@@ -60,6 +61,7 @@ src_unpack() {
 	sed -i \
 		-e "s/-O3/${CFLAGS}/" build/unix/build.config \
 		|| die "sed build.config failed"
+EOF
 }
 
 src_compile() {
@@ -69,7 +71,7 @@ src_compile() {
 src_install() {
 	# Using the included install scripts seems quite painful.
 	# This manual install is totally fragile but maybe they'll
-	# use a sane build system for the next release.
+	# use a sane build system.
 	newgamesbin uqm-wrapper uqm || die "newgamesbin failed"
 	exeinto "${GAMES_LIBDIR}/${PN}"
 	doexe uqm || die "doexe failed"

@@ -1,21 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/kaconnect/kaconnect-1.1.1.ebuild,v 1.10 2005/07/25 15:55:24 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/kaconnect/kaconnect-1.1.1.ebuild,v 1.1 2004/03/06 12:48:41 eradicator Exp $
 
-inherit qt3
-
-IUSE=""
-
-DESCRIPTION="Part of Kalsatools - QT based frontend to aconnect"
+DESCRIPTION="a QT based aconnect frontend"
 HOMEPAGE="http://www.suse.de/~mana/kalsatools.html"
 SRC_URI="ftp://ftp.suse.com/pub/people/mana/kalsatools-current/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="x86"
+IUSE=""
 
 RDEPEND="media-sound/alsa-utils
-	$(qt_min_version 3.1)"
+	>=x11-libs/qt-3.0.5"
 
 DEPEND="${RDEPEND}
 	sys-apps/sed"
@@ -32,5 +29,5 @@ src_compile() {
 
 src_install () {
 	dobin kaconnect
-	dodoc README THANKS LICENSE kalsatools.changes
+	dodoc INSTALL README THANKS LICENSE kalsatools.changes
 }

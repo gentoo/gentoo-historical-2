@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/ion2/ion2-20040729.ebuild,v 1.8 2005/09/17 10:24:18 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/ion2/ion2-20040729.ebuild,v 1.1 2004/07/31 12:21:10 twp Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.iki.fi/tuomov/ion/"
 SRC_URI="http://modeemi.fi/~tuomov/ion/dl/ion-2-${PV}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="~alpha ~mips ~ppc ~sparc ~x86"
 IUSE="xinerama"
 DEPEND="virtual/x11
 	app-misc/run-mailcap
@@ -38,8 +38,6 @@ src_compile() {
 
 	autoreconf
 
-	use hppa && myconf="${myconf} --disable-shared"
-
 	econf \
 		--sysconfdir=/etc/X11 \
 		`use_enable xinerama` \
@@ -53,8 +51,6 @@ src_compile() {
 src_install() {
 
 	make \
-		MODULEDIR=${D}/usr/$(get_libdir)/ion2 \
-		LCDIR=${D}/usr/$(get_libdir)/ion2/lc \
 		prefix=${D}/usr \
 		ETCDIR=${D}/etc/X11/ion2 \
 		SHAREDIR=${D}/usr/share/ion2 \

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/djbdns-1.05-r14.ebuild,v 1.15 2005/08/07 13:26:21 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/djbdns/djbdns-1.05-r14.ebuild,v 1.1 2004/10/08 00:55:03 jhhudso Exp $
 
-IUSE="aliaschain cnamefix doc fwdzone ipv6 multipleip roundrobin semanticfix static selinux"
+IUSE="aliaschain cnamefix doc fwdzone ipv6 multipleip roundrobin semanticfix"
 
 inherit eutils
 
@@ -22,12 +22,11 @@ SRC_URI="http://cr.yp.to/djbdns/${P}.tar.gz
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="alpha amd64 ~hppa mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64 ppc64 ~sparc"
 
-RDEPEND=">=sys-process/daemontools-0.70
+RDEPEND=">=sys-apps/daemontools-0.70
 	doc? ( app-doc/djbdns-man )
-	sys-apps/ucspi-tcp
-	selinux? ( sec-policy/selinux-djbdns )"
+	sys-apps/ucspi-tcp"
 
 src_unpack() {
 	unpack ${A}
@@ -130,10 +129,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	enewgroup nofiles
-	enewuser dnscache -1 /bin/false /nonexistent nofiles
-	enewuser dnslog -1 /bin/false /nonexistent nofiles
-	enewuser tinydns -1 /bin/false /nonexistent nofiles
+	groupadd &>/dev/null nofiles
+	id &>/dev/null dnscache || \
+		useradd -g nofiles -d /nonexistent -s /bin/false dnscache
+	id &>/dev/null dnslog || \
+		useradd -g nofiles -d /nonexistent -s /bin/false dnslog
+	id &>/dev/null tinydns || \
+		useradd -g nofiles -d /nonexistent -s /bin/false tinydns
 
 	einfo "Use (dnscache-setup + tinydns-setup) or djbdns-setup" \
 	      "to configure djbdns."

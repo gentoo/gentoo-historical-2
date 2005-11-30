@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.0.0-r1.ebuild,v 1.13 2005/01/03 11:33:40 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.0.0-r1.ebuild,v 1.1 2004/01/24 16:56:05 liquidx Exp $
 
 inherit gnome.org python
 
 DESCRIPTION="GTK+2 bindings for Python"
-HOMEPAGE="http://www.pygtk.org/"
+HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="x86 ppc sparc alpha amd64 mips hppa"
+KEYWORDS="~x86 ppc ~sparc ~alpha"
 IUSE="gnome opengl"
 
 RDEPEND=">=dev-lang/python-2.2
@@ -19,14 +19,11 @@ RDEPEND=">=dev-lang/python-2.2
 	>=dev-libs/glib-2
 	gnome? ( >=gnome-base/libglade-2 )
 	opengl? ( virtual/opengl
-		dev-python/pyopengl
+		dev-python/PyOpenGL
 		>=x11-libs/gtkglarea-1.99 )"
 
 DEPEND="${RDEPEND}
 	>=dev-util/pkgconfig-0.9"
-
-# possible parallel build problems (#45776)
-MAKEOPTS="${MAKEOPTS} -j1"
 
 src_unpack() {
 	unpack ${A}

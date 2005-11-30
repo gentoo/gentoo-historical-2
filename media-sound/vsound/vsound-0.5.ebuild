@@ -1,20 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/vsound/vsound-0.5.ebuild,v 1.13 2005/11/07 12:14:36 flameeyes Exp $
+# Copyright 2000-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-sound/vsound/vsound-0.5.ebuild,v 1.1 2002/08/13 18:11:01 agenkin Exp $
 
-IUSE=""
-
-DESCRIPTION="A virtual audio loopback cable"
+DESCRIPTION="Sort a virtual audio loopback cable for RealAudio to wave convertions."
 HOMEPAGE="http://www.zip.com.au/~erikd/vsound/"
 LICENSE="GPL-2"
-DEPEND=">=media-sound/sox-12.17.1"
+DEPEND=">=media-sound/sox-12.17.1
+	>=media-video/realplayer-8-r1"
 
-KEYWORDS="x86 ~amd64 ~sparc"
-SLOT="0"
-SRC_URI="mirror://debian/pool/main/v/vsound/${P/-/_}.orig.tar.gz
-	mirror://debian/pool/main/v/vsound/${P/-/_}-3.diff.gz"
+SRC_URI="http://ftp.br.debian.org/debian/pool/main/v/vsound/${P/-/_}.orig.tar.gz
+	http://ftp.br.debian.org/debian/pool/main/v/vsound/${P/-/_}-3.diff.gz"
+S=${WORKDIR}/${P}
 
-RESTRICT="nomirror"
 
 src_unpack() {
 	cd ${WORKDIR}
@@ -32,7 +29,8 @@ src_compile() {
 	emake || die
 }
 
+
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS Changelog NEWS README README.original
+	dodoc AUTHORS COPYING Changelog INSTALL NEWS README README.original
 }

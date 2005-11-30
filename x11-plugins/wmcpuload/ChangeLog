@@ -1,64 +1,15 @@
 # ChangeLog for x11-plugins/wmcpuload
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcpuload/ChangeLog,v 1.19 2005/11/10 08:52:59 s4t4n Exp $
-
-  10 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmcpuload-1.0.1.ebuild:
-  Removed INSTALL from dodoc.
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> wmcpuload-1.0.1.ebuild:
-  Mark 1.0.1 stable on alpha
-
-  05 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> wmcpuload-1.0.1.ebuild:
-  ~alpha keyword, bug 78658.
-
-  04 Sep 2004; Michele Noberasco <s4t4n@gentoo.org> wmpcuload-1.0.0.ebuild:
-  Remove older ebuild.
-
-  02 Sep 2004; Tom Gall <tgall@gentoo.org> wmcpuload-1.0.1.ebuild:
-  stable on ppc64, bug #62252
-
-  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org> wmcpuload-1.0.1.ebuild:
-  Added ~mips keyword.
-
-  05 Jan 2004; Jason Wever <weeve@gentoo.org> wmcpuload-1.0.0.ebuild,
-  wmcpuload-1.0.1.ebuild:
-  Marked 1.0.1 stable on sparc and adjusted the copyright dates in all.
-
-  14 Dec 2003; Lars Weiler <pylon@gentoo.org> wmcpuload-1.0.1.ebuild:
-  Make stable on ppc
-  Thanks to Florian Daniel for the testing
-
-  04 Nov 2003; Brandy Westcott brandy@gentoo.org wmcpuload-1.0.1.ebuild:
-  Small fix to install docs.
-
-  16 Oct 2003; Nick Hadaway <raker@gentoo.org> wmcpuload-1.0.1.ebuild:
-  Marked stable for x86.
-
-  12 Jun 2003; Seemant Kulleen <seemant@gentoo.org> wmcpuload-1.0.1.ebuild:
-  xpm is provided by xfree
-
-*wmcpuload-1.0.1 (19 May 2003)
-
-  19 May 2003; Martin Holzer <mholzer@gentoo.org> wmcpuload-1.0.1.ebuild:
-  Version bumped. Closes #21285.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*wmcpuload-1.0.0 (04 Oct 2002)
-
-  29 Mar 2003; Seemant Kulleen <seemant@gentoo.org> wmcpuload-1.0.0.ebuild:
-  HOMEPAGE fix by Frantz Dhin <tragedy_rm@hotmail.com> in bug #18299
-
-  04 Oct 2002; Nick Hadaway <raker@gentoo.org> wmcpuload-1.0.0.ebuild,
-  files/digest-wmcpuload-1.0.0 :
-  Version bump.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmcpuload/ChangeLog,v 1.1 2002/08/30 07:51:31 seemant Exp $
 
 *WMCPULoad-0.8.1 (1 Feb 2002)
 
   30 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
   Relocated to x11-plugins, and renamed to wmcpuload from WMCPULoad
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
+  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

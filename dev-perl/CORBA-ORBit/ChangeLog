@@ -1,34 +1,6 @@
 # ChangeLog for dev-perl/CORBA-ORBit
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/CORBA-ORBit/ChangeLog,v 1.10 2005/08/26 02:12:07 agriffis Exp $
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> CORBA-ORBit-0.4.7.ebuild:
-  add ~ia64
-
-*CORBA-ORBit-0.4.7 (24 Apr 2005)
-
-  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -CORBA-ORBit-0.4.3-r3.ebuild, CORBA-ORBit-0.4.3-r4.ebuild,
-  +CORBA-ORBit-0.4.7.ebuild:
-  version bump; cleanup
-
-*CORBA-ORBit-0.4.3-r4 (21 Jun 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*CORBA-ORBit-0.4.3-r3 (23 May 2002)
-
-  30 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> CORBA-ORBit-0.4.3-r3.ebuild :
-
-  Added ppc to KEYWORDS. Added RDEPEND.
-
-  22 May 2002; Martin Schlemmer <azarah@gentoo.org> :
-
-  Fix compile problem (Makefile was patched in ebuild after actual makefile was
-  called ... problem that crept in with new perl eclasses).
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CORBA-ORBit/ChangeLog,v 1.1 2002/02/01 21:53:12 gbevin Exp $
 
 *CORBA-ORBit-0.4.3-r1 (1 Feb 2002)
 

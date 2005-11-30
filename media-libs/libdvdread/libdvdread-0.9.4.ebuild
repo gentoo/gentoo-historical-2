@@ -1,33 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/libdvdread-0.9.4.ebuild,v 1.20 2005/09/03 23:11:57 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdread/libdvdread-0.9.4.ebuild,v 1.1 2003/02/25 01:18:33 agenkin Exp $
 
-inherit gnuconfig
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Provides a simple foundation for reading DVD-Video images."
 SRC_URI="http://www.dtek.chalmers.se/groups/dvd/dist/${P}.tar.gz"
 HOMEPAGE="http://www.dtek.chalmers.se/groups/dvd/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc-macos ppc64 sparc x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 DEPEND=">=media-libs/libdvdcss-1.1.1"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	gnuconfig_update
-}
-
 src_compile() {
-	use ppc-macos && myconf="--with-libdvdcss=/usr"
-	econf ${myconf} || die
-	emake -j1 || die
+
+	econf || die
+	make || die
 }
 
 src_install() {
+	
 	einstall || die
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 }
+

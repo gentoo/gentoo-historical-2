@@ -1,44 +1,33 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/opmixer/opmixer-0.75.ebuild,v 1.17 2005/09/04 11:03:37 flameeyes Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-sound/opmixer/opmixer-0.75.ebuild,v 1.1 2002/07/11 22:05:13 stroke Exp $
 
-inherit eutils
-
-IUSE=""
-
-MY_P=${P/opm/opM}
-S=${WORKDIR}/${MY_P}
 DESCRIPTION="An oss mixer written in c++ using the gtkmm gui-toolkit. Supports saving, loading and muting of volumes for channels and autoloading via a consoleapp"
 HOMEPAGE="http://optronic.sourceforge.net/"
-SRC_URI="http://optronic.sourceforge.net/files/${MY_P}.tar.bz2"
-
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc ~amd64"
+SLOT="0"
+KEYWORDS="*"
+
+PKGVER=`echo ${P}|cut -d \- -f2`
+SRC_URI="http://optronic.sourceforge.net/files/opMixer-${PKGVER}.tar.bz2"
+
+S="${WORKDIR}/opMixer-${PKGVER}"
 
 DEPEND="=x11-libs/gtk+-1.2*
-	=dev-cpp/gtkmm-1.2*"
+	>=x11-libs/gtkmm-1.2.2"
 
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	epatch ${FILESDIR}/${PV}-gcc34.patch
-}
+RDEPEND="${DEPEND}"
 
 src_compile() {
-	econf || die "configure failed"
-
-	#gcc3.2 fix for #8760
-	cd ${S}/src
-	cp volset.cc volset.cc.old
-	sed -e 's/ endl/ std::endl/' \
-		volset.cc.old > volset.cc
-
-	emake || die "make failed"
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die "./configure failed"
+	emake || die
 }
 
 src_install() {
-	make DESTDIR=${D} install || die "make install failed"
-	dodoc AUTHORS ChangeLog NEWS README
+    make DESTDIR=${D} install || die
+    dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
 }

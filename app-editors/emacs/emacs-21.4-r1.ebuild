@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r1.ebuild,v 1.15 2005/08/23 03:12:54 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-21.4-r1.ebuild,v 1.1 2005/04/08 17:12:38 usata Exp $
 
 inherit flag-o-matic eutils alternatives toolchain-funcs
 
 DESCRIPTION="An incredibly powerful, extensible text editor"
 HOMEPAGE="http://www.gnu.org/software/emacs"
-SRC_URI="mirror://gnu/emacs/${P}a.tar.gz
-	leim? ( mirror://gnu/emacs/leim-${PV}.tar.gz )"
+SRC_URI="mirror://gnu/emacs/${P}.tar.gz
+	leim? ( mirror://gnu/emacs/leim-21.3.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="21"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="X Xaw3d gnome leim lesstif motif nls nosendmail"
 
 RDEPEND="sys-libs/ncurses
@@ -40,6 +40,8 @@ SANDBOX_DISABLED="1"
 DFILE=emacs-${SLOT}.desktop
 
 src_unpack() {
+	# Emacs 21.4 uses leim from 21.3
+	ln -s emacs-21.4 emacs-21.3
 
 	unpack ${A}
 
@@ -47,7 +49,6 @@ src_unpack() {
 	epatch ${FILESDIR}/emacs-21.3-xorg.patch
 	epatch ${FILESDIR}/emacs-21.3-amd64.patch
 	epatch ${FILESDIR}/emacs-21.3-hppa.patch
-	epatch ${FILESDIR}/emacs-21.2-sh.patch
 	use ppc64 && epatch ${FILESDIR}/emacs-21.3-ppc64.patch
 
 	epatch ${FILESDIR}/emacs-subdirs-el-gentoo.diff
@@ -64,16 +65,10 @@ src_compile() {
 	# -fstack-protector gets internal compiler error at xterm.c (bug 33265)
 	filter-flags -fstack-protector
 
-	# emacs doesn't handle LDFLAGS properly (bug #77430 and bug #65002)
-	unset LDFLAGS
-
 	# gcc 3.4 with -O3 or stronger flag spoils emacs
 	if [ "$(gcc-major-version)" -ge 3 -a "$(gcc-minor-version)" -ge 4 ] ; then
 		replace-flags -O[3-9] -O2
 	fi
-
-	# -march is known to cause signal 6 on some environment
-	filter-flags "-march=*"
 
 	export WANT_AUTOCONF=2.1
 	autoconf
@@ -104,7 +99,7 @@ src_compile() {
 		myconf="${myconf} --without-x"
 	fi
 	econf ${myconf} || die
-	emake CC="$(tc-getCC)" || die
+	emake || die
 }
 
 src_install() {
@@ -138,7 +133,6 @@ src_install() {
 	find ${D} -type d |xargs chmod 755
 
 	keepdir /usr/share/emacs/${PV}/leim
-	keepdir /usr/share/emacs/site-lisp
 
 	dodoc BUGS ChangeLog README
 

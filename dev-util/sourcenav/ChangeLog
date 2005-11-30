@@ -1,54 +1,8 @@
 # ChangeLog for dev-util/sourcenav
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/sourcenav/ChangeLog,v 1.15 2005/11/26 06:04:50 nerdboy Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-util/sourcenav/ChangeLog,v 1.1 2002/11/04 12:17:54 aliz Exp $
 
-  26 Nov 2005; Steve Arnold <nerdboy@gentoo.org> sourcenav-5.1.1.ebuild,
-  sourcenav-5.1.4.ebuild, sourcenav-5.2_beta2.ebuild:
-  Updated and tested for bug 112557; existing users without the problem
-  don't need to do anything.
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
-  sourcenav-5.1.4.ebuild:
-  Stable on ppc.
-
-  12 Nov 2004; Simon Stelling <blubb@gentoo.org> sourcenav-5.2_beta2.ebuild:
-  added ~amd64
-
-*sourcenav-5.2_beta2 (09 May 2004)
-
-  09 May 2004; Steve Arnold <nerdboy@gentoo.org> sourcenav-5.2_beta2.ebuild,
-  files/sourcenav_destdir.patch:
-  added nice sourcenav beta ebuild (very small patch now)
-
-  12 Jan 2004; <nerdboy@gentoo.org> metadata.xml:
-  updated metadata (again) please don't "fix" it...
-
-  22 Sep 2003; <paul@gentoo.org> metadata.xml:
-  Fix metadata.xml
-
-  14 Sep 2003; <nerdboy@gentoo.org> sourcenav-5.1.4.ebuild,
-  files/sourcenav-5.1.4-gentoo.diff:
-  bumped to x86 and moved patch to mirrors
-
-*sourcenav-5.1.4 (12 Jul 2003)
-
-  12 Jul 2003; <rac@gentoo.org> sourcenav-5.1.4.ebuild,
-  files/sourcenav-5.1.4-gentoo.diff:
-  On behalf of nerdboy@gentoo.org, who writes: updated ebuild for 5.1.4 and
-  fixed more sandbox violations. I changed the ebuild to more closely follow the
-  standard build procedures (but I guess I don't get a cookie, since my patch
-  file is bigger than the previous one).
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *sourcenav-5.1.1 (01 Nov 2002)
-
-  15 Feb 2003; Mark Guertin <gerk@gentoo.org> sourcenav-5.1.1.ebuild :
-  set ~ppc in keywords
-
-  11 Dec 2002; Stefan Jones	<cretin@gentoo.org> :
-  Updated the patch to fix the sandbox violation,
-  which caused itcl not to be installed.
 
   01 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
   New name and version bump. Found by Nicholas Wourms <nwourms@netscape.net> in #5863.

@@ -1,16 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 c3f3de397d2cee82401ffad794c7f92d ChangeLog 902
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 a7b00c6c7485a7d83fce0b1c9778a70b freedoom-0.3.ebuild 1104
-MD5 f0eb49c03c208bb21f273c586fe64846 freedoom-0.2.ebuild 968
-MD5 b581efa94825f9dbbf32c3ae8e342a82 files/digest-freedoom-0.2 496
-MD5 5b8cc8ef164123aafee6bb68ae721983 files/digest-freedoom-0.3 557
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.9.10 (GNU/Linux)
-
-iD8DBQFB2bvBroRuSHgZdywRApOpAJ9IoMxNp4bwH6eK+3TdfwCi6SI0uACfdp6a
-2dGaYCalZt+qidRT6qOtles=
-=9g1u
------END PGP SIGNATURE-----
+MD5 6c1c86dd2a690dcd43193b834fcac755 ChangeLog 482
+MD5 6affd0c12fd907ab29c0ce0faeebe9c8 freedoom-1.0.ebuild 908
+MD5 b180fd5dbdcacebeb2562c42d6973fbe files/digest-freedoom-1.0 462

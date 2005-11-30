@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-make/gnustep-make-1.10.0-r2.ebuild,v 1.4 2005/08/25 18:45:04 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-make/gnustep-make-1.10.0-r2.ebuild,v 1.1 2005/03/22 22:53:11 fafhrd Exp $
 
 inherit gnustep
 
@@ -8,13 +8,14 @@ DESCRIPTION="The makefile package is a simple, powerful and extensible way to wr
 
 HOMEPAGE="http://www.gnustep.org"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
-KEYWORDS="ppc x86 amd64 sparc ~alpha"
+KEYWORDS="ppc x86 amd64 ~sparc ~alpha"
 SLOT="0"
 LICENSE="GPL-2"
 
-IUSE="debug doc layout-from-conf-file layout-osx-like non-flattened verbose"
+IUSE="${IUSE} doc non-flattened layout-osx-like layout-from-conf-file"
 DEPEND="${GNUSTEP_CORE_DEPEND}
-	>=sys-devel/make-3.75"
+	>=sys-devel/make-3.75
+	${DOC_DEPEND}"
 RDEPEND="${DEPEND}
 	${DOC_RDEPEND}"
 

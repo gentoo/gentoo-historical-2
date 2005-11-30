@@ -1,46 +1,6 @@
 # ChangeLog for dev-cpp/sptk
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sptk/ChangeLog,v 1.11 2005/11/10 19:49:14 nelchael Exp $
-
-  11 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> sptk-2.3.28.ebuild:
-  Stable on x86.
-
-*sptk-3.0.6 (04 Nov 2005)
-
-  04 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> -sptk-2.2.ebuild,
-  -sptk-2.2.1.ebuild, -sptk-2.3.16.ebuild, +sptk-3.0.6.ebuild:
-  New version - 3.0.6, removed old versions.
-
-  04 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org> sptk-2.3.28.ebuild:
-  Fixed dodoc not to install COPYING and/or INSTALL.
-
-  30 Apr 2005; David Holm <dholm@gentoo.org> sptk-2.3.28.ebuild:
-  Readded to ~ppc
-
-*sptk-2.3.28 (18 Apr 2005)
-
-  18 Apr 2005; Ilya A. Volynets-Evenbakh <ilya@total-knowledge.com>
-  +sptk-2.3.28.ebuild:
-  Add an ebuild for 2.3.28
-
-*sptk-2.3.16 (28 Nov 2004)
-
-  28 Nov 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
-  +sptk-2.3.16.ebuild:
-  Add sptk 2.3.16 (By Alexey Parshin <alexeyp@tts-sf.com>)
-
-  08 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> sptk-2.2.1.ebuild,
-  sptk-2.2.ebuild:
-  ~alpha keyword, fix license syntax.
-
-  31 Aug 2004; David Holm <dholm@gentoo.org> sptk-2.2.1.ebuild:
-  Added to ~ppc.
-
-*sptk-2.2.1 (18 Aug 2004)
-
-  18 Aug 2004; Ilya A. Volynets-Evenbach <iluxa@gentoo.org>
-  +sptk-2.2.1.ebuild:
-  New version compiles propperly without FLTK.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/sptk/ChangeLog,v 1.1 2004/08/16 02:02:40 iluxa Exp $
 
 *sptk-2.2 (15 Aug 2004)
 

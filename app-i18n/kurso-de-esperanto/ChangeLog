@@ -1,22 +1,6 @@
 # ChangeLog for app-i18n/kurso-de-esperanto
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/kurso-de-esperanto/ChangeLog,v 1.7 2005/01/14 14:35:00 luckyduck Exp $
-
-  14 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  kurso-de-esperanto-3.0.ebuild:
-  back to amd64 from of emul-linux-x86
-
-  12 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  kurso-de-esperanto-3.0.ebuild:
-  migrated from amd64? to emul-linux-x86? dependency.
-
-  30 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> files/kurso,
-  kurso-de-esperanto-3.0.ebuild:
-  Fixed BUG #53733. Marked ~amd64.
-
-  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
-  kurso-de-esperanto-3.0.ebuild:
-  QA - IUSE fix
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/kurso-de-esperanto/ChangeLog,v 1.1 2004/02/03 01:59:34 vapier Exp $
 
 *kurso-de-esperanto-3.0 (02 Feb 2004)
 

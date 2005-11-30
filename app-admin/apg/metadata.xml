@@ -3,8 +3,8 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>voxus@gentoo.org</email>
-  <name>Konstantin Arkhipov</name>
+  <email>tad@gentoo.org</email>
+  <name>Troy Dack</name>
 </maintainer>
-<longdescription>Another Password Generator. Generates random, pronouncable passwords with a variety of algorithms</longdescription>
+ <longdescription>Another Password Generator. Generates random, pronouncable passwords with a variety of algorithms</longdescription>
 </pkgmetadata>

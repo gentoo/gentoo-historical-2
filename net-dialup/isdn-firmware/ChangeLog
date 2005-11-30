@@ -1,57 +1,6 @@
 # ChangeLog for net-dialup/isdn-firmware
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn-firmware/ChangeLog,v 1.11 2005/11/10 19:12:26 gustavoz Exp $
-
-  10 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  isdn-firmware-2004.4.5-r1.ebuild:
-  Removed sparc keyword, maybe it works, maybe it doesn't, it wasn't right in
-  the first place
-
-*isdn-firmware-2005.8.15.2 (11 Oct 2005)
-
-  11 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org> metadata.xml,
-  +isdn-firmware-2005.8.15.2.ebuild:
-  version bump. switched to opensuse mirrors.
-
-  11 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
-  isdn-firmware-2005.3.21.3.ebuild:
-  removed all archs other than x86, amd64 and ppc for the time being. needs
-  testing first.
-
-  11 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
-  isdn-firmware-2005.3.21.3.ebuild:
-  revert all archs other than x86 and amd64 to unstable.
-
-  09 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
-  isdn-firmware-2005.3.21.3.ebuild:
-  marking all other archs also stable, since this is no-arch stuff.
-
-  09 Sep 2005; Stefan Briesenick <sbriesen@gentoo.org>
-  isdn-firmware-2005.3.21.3.ebuild:
-  stable on x86 and amd64.
-
-*isdn-firmware-2005.3.21.3 (01 Jul 2005)
-
-  01 Jul 2005; Stefan Briesenick <sbriesen@gentoo.org>
-  +isdn-firmware-2005.3.21.3.ebuild:
-  Update to latest SuSE package, rpm-release is now included in the ebuild
-  version.
-
-  18 Feb 2005; Alin Nastac <mrness@gentoo.org>
-  isdn-firmware-2004.4.5-r1.ebuild:
-  Remove /lib/isdn symlink as is no longer required by the current version of
-  isdn4k-utils.
-
-  23 Dec 2004; Alin Nastac <mrness@gentoo.org>
-  isdn-firmware-2004.4.5-r1.ebuild:
-  Beautify ebuild code, thanks to Stefan Briesenick <sbriesen@gmx.de>.
-
-*isdn-firmware-2004.4.5-r1 (12 Dec 2004)
-
-  12 Dec 2004; Alin Nastac <mrness@gentoo.org>
-  +isdn-firmware-2004.4.5-r1.ebuild, -isdn-firmware-2004.4.5.ebuild:
-  Move firmware files to /lib/firmware, the new FHS standard location for
-  firmware files. See #73365.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn-firmware/ChangeLog,v 1.1 2004/11/21 22:10:52 mrness Exp $
 
 *isdn-firmware-2004.4.5 (22 Nov 2004)
 

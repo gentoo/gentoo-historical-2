@@ -1,4 +1,4 @@
-# Copyright 1999-2005 Gentoo Foundation  
+# Copyright 1999-2002 Gentoo Technologies, Inc.  
 # Distributed under the terms of the GNU General Public License v2  
 # 
 # /etc/screenrc
@@ -14,7 +14,8 @@
 # more windows at the beginning of your screen session.
 #
 # This is not a comprehensive list of options, look at the screen manual for
-# details on everything that you can put in this file.
+# details on everything that you can put in this file. Others examples:
+# http://www.math.fu-berlin.de/~guckes/screen/config.php3
 #
 #
 
@@ -42,8 +43,8 @@
 # VARIABLES
 # ===============================================================
 # No annoying audible bell, using "visual bell"
-# vbell on				# default: off
-# vbell_msg "   -- Bell,Bell!! --   "	# default: "Wuff,Wuff!!"
+  vbell on				# default: off
+  vbell_msg "   -- Bell,Bell!! --   "	# default: "Wuff,Wuff!!"
 
 # Automatically detach on hangup. 
   autodetach on				# default: on
@@ -64,7 +65,7 @@
   multiuser off				
 
 # Change default scrollback value for new windows
-  defscrollback 1000			# default: 100
+  defscrollback 10000			# default: 100
 
 # Define the time that all windows monitored for silence should 
 # wait before displaying a message. Default 30 seconds.
@@ -72,7 +73,7 @@
 
 # bufferfile:   The file to use for commands
 #               "readbuf" ('<') and  "writebuf" ('>'):
-  bufferfile            $HOME/.screen_exchange
+# bufferfile            $HOME/.screen_exchange
 #
 # hardcopydir:  The directory which contains all hardcopies.
 # hardcopydir           ~/.hardcopy
@@ -142,8 +143,6 @@
 # - uses background color for delete operations
   termcapinfo xterm* be
 
-# Do not use xterm's alternative window buffer, it breaks scrollback (see bug #61195)
-  termcapinfo xterm|xterms|xs ti@:te=\E[2J
 
 # WYSE TERMINALS
 # ===============================================================
@@ -327,8 +326,8 @@
 
 # Briefly show the version number of this starting
 # screen session - but only for *one* second:
-#  msgwait 1
-#  version
+  msgwait 1
+  version
 
 # Welcome the user:
 # echo "welcome :-)"

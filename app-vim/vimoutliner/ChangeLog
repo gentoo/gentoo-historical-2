@@ -1,42 +1,6 @@
 # ChangeLog for app-vim/vimoutliner
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/vimoutliner/ChangeLog,v 1.10 2005/06/02 07:05:57 wormo Exp $
-
-  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  vimoutliner-0.3.3a-r1.ebuild:
-  mark ~ppc
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  vimoutliner-0.3.3a-r1.ebuild:
-  stable on amd64
-
-  31 Mar 2005; Aron Griffis <agriffis@gentoo.org>
-  vimoutliner-0.3.3a-r1.ebuild:
-  stable on ia64
-
-  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
-  vimoutliner-0.3.3a-r1.ebuild:
-  Stable on alpha.
-
-  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
-  vimoutliner-0.3.3a-r1.ebuild:
-  x86 sparc mips stable
-
-*vimoutliner-0.3.3a-r1 (24 Feb 2005)
-
-  24 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org>
-  +vimoutliner-0.3.3a-r1.ebuild, -vimoutliner-0.3.3a.ebuild:
-  Fix permissions, bug #83200
-
-*vimoutliner-0.3.3a (22 Feb 2005)
-
-  22 Feb 2005; Ciaran McCreesh <ciaranm@gentoo.org>
-  +vimoutliner-0.3.3a.ebuild:
-  New version, bug #82883
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org>
-  vimoutliner-0.3.3.ebuild:
-  x86, sparc, mips stable
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-vim/vimoutliner/ChangeLog,v 1.1 2004/11/28 13:17:08 ciaranm Exp $
 
 *vimoutliner-0.3.3 (28 Nov 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/grabc/grabc-1.1.ebuild,v 1.8 2005/07/09 07:01:28 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/grabc/grabc-1.1.ebuild,v 1.1 2003/10/02 07:47:40 mr_bones_ Exp $
 
 S="${WORKDIR}/${PN}${PV}"
 DESCRIPTION="A simple but useful program to determine the color string in hex (or RGB components) by clicking on a pixel on the screen"
@@ -8,9 +8,8 @@ HOMEPAGE="http://www.muquit.com/muquit/software/grabc/grabc.html"
 SRC_URI="http://www.muquit.com/muquit/software/${PN}/${PN}${PV}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc ppc64 amd64"
+KEYWORDS="x86"
 SLOT="0"
-IUSE=""
 
 RDEPEND="virtual/x11"
 DEPEND="${RDEPEND}

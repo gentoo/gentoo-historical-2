@@ -1,4 +1,3 @@
-MD5 23bd613fffc5d27a01d6a35a05f178f0 ChangeLog 1173
-MD5 470b16899d6660efda858323e647133f kbudget-0.6.ebuild 488
-MD5 acc03a4b12bb0433a57e95bd253b9501 metadata.xml 156
-MD5 ec6f48d40d0d0c004eab129991d75c5d files/digest-kbudget-0.6 64
+MD5 fdffe76a400c9fead347945cc47932b3 kbudget-0.5.ebuild 506
+MD5 ac49835c1e3ebc7ae263d49782715b70 ChangeLog 240
+MD5 9ff15f9cd1a6b54aa2290c97200f1f9d files/digest-kbudget-0.5 64

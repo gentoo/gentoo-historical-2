@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gnomad/gnomad-2.5.0.ebuild,v 1.5 2005/02/11 00:31:53 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gnomad/gnomad-2.5.0.ebuild,v 1.1 2004/10/05 20:17:56 eradicator Exp $
 
 IUSE=""
 
@@ -20,11 +20,11 @@ SRC_URI="mirror://sourceforge/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 #-sparc: 2.4.4: Application crashes on startup (Gnome crash detection)
-KEYWORDS="amd64 ~ppc -sparc x86"
+KEYWORDS="~x86 ~ppc ~amd64 -sparc"
 
 DEPEND=">=gnome-base/libgnomeui-2
 	>=media-libs/libnjb-1.2
-	media-libs/libid3tag
+	media-libs/id3lib
 	>=gnome-base/gconf-1.2"
 
 RDEPEND="${DEPEND}
@@ -33,6 +33,9 @@ RDEPEND="${DEPEND}
 
 src_install() {
 	make DESTDIR="${D}" install || die
-
+	dodir /usr/share/gnome/apps/Multimedia
+	cp ${D}/usr/share/applications/${MY_PN}.desktop ${D}/usr/share/gnome/apps/Multimedia
+	dodir /usr/share/applnk/Multimedia
+	cp ${D}/usr/share/applications/${MY_PN}.desktop ${D}/usr/share/applnk/Multimedia
 	dodoc AUTHORS ChangeLog NEWS README TODO
 }

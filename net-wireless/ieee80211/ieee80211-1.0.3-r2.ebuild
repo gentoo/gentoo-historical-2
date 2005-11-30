@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ieee80211-1.0.3-r2.ebuild,v 1.6 2005/11/24 14:30:59 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ieee80211-1.0.3-r2.ebuild,v 1.1 2005/09/06 14:53:17 brix Exp $
 
 inherit eutils linux-mod
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 DEPEND="!<=net-wireless/ipw2100-1.1.0
 		!<=net-wireless/ipw2200-1.0.4"
@@ -28,12 +28,11 @@ MODULE_NAMES="ieee80211(net/ieee80211:)
 			ieee80211_crypt_ccmp(net/ieee80211:)
 			ieee80211_crypt_tkip(net/ieee80211:)"
 
-CONFIG_CHECK="NET_RADIO CRYPTO_ARC4 CRYPTO_MICHAEL_MIC CRC32 !IEEE80211"
+CONFIG_CHECK="NET_RADIO CRYPTO_ARC4 CRYPTO_MICHAEL_MIC CRC32"
 ERROR_NET_RADIO="${P} requires support for Wireless LAN drivers (non-hamradio) & Wireless Extensions (CONFIG_NET_RADIO)."
 ERROR_CRYPTO_ARC4="${P} requires support for ARC4 cipher algorithm (CONFIG_CRYPTO_ARC4)."
 ERROR_CRYPTO_MICHAEL_MIC="${P} requires support for Michael MIC keyed digest algorithm (CONFIG_CRYPTO_MICHAEL_MIC)."
 ERROR_CRC32="${P} requires support for CRC32 functions (CONFIG_CRC32)."
-ERROR_IEEE80211="${P} requires the in-kernel version of the IEEE802.11 subsystem to be disabled (CONFIG_IEEE80211)"
 
 pkg_setup() {
 	linux-mod_pkg_setup
@@ -42,14 +41,13 @@ pkg_setup() {
 		die "${P} does not support building against kernel 2.4.x"
 	fi
 
-	if [[ -f ${KV_DIR}/include/net/ieee80211.h ]] || \
-		[[ -f ${KV_DIR}/include/config/ieee80211.h ]]; then
+	if [[ -f ${KV_DIR}/include/net/ieee80211.h ]]; then
 		eerror
-		eerror "Your kernel source contains an incompatible version of the"
+		eerror "You kernel source contains an incomptible version of the"
 		eerror "ieee80211 subsystem, which needs to be removed before"
 		eerror "${P} can be installed. This can be accomplished by running:"
 		eerror
-		eerror "  # /bin/sh ${FILESDIR}/remove-old ${KV_DIR}"
+		eerror "  # rm -i ${KV_DIR}/include/net/ieee80211.h"
 		eerror
 		eerror "Please note that this will make it impossible to use some of the"
 		eerror "in-kernel IEEE 802.11 wireless LAN drivers (eg. orinoco)."
@@ -86,7 +84,7 @@ src_install() {
 	linux-mod_src_install
 
 	insinto /usr/include/net
-	doins net/*.h
+	doins net/*
 
 	dodoc CHANGES
 }

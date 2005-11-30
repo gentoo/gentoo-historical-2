@@ -1,21 +1,7 @@
 # ChangeLog for dev-util/weblint
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/weblint/ChangeLog,v 1.9 2005/08/07 13:06:00 hansmi Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/weblint/ChangeLog,v 1.1 2002/10/31 21:55:53 karltk Exp $
 
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> weblint-1.020.ebuild:
-  Stable on ppc.
-
-  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  04 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> weblint-1.020.ebuild:
-  Stable on alpha.
-
-  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> weblint-1.020.ebuild:
-  Adding amd64 keyword. Closing #44958.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *weblint-1.020 (31 Oct 2002)
 
   31 Oct 2002; Karl Trygve Kalleberg <karltk@gentoo.org> weblint-1.020.ebuild files/digest-weblint-1.020 :

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdesktop/kdesktop-3.4.1.ebuild,v 1.7 2005/07/08 03:14:01 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdesktop/kdesktop-3.4.1.ebuild,v 1.1 2005/05/25 21:23:05 danarmak Exp $
 
 KMNAME=kdebase
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="The KDE desktop"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND="$DEPEND
@@ -20,7 +20,7 @@ $(deprange $PV $MAXKDEVER kde-base/kcontrol)"
 	# there's a dep here
 RDEPEND="${DEPEND}
 $(deprange $PV $MAXKDEVER kde-base/kcheckpass)
-$(deprange $PV $MAXKDEVER kde-base/kdialog)"
+	sys-apps/eject"
 
 KMCOPYLIB="libkonq libkonq/"
 KMEXTRACTONLY="kcheckpass/kcheckpass.h
@@ -36,9 +36,6 @@ src_install() {
 	kde-meta_src_install
 
 	rmdir ${D}/${PREFIX}/share/templates/.source/emptydir
-
-	# we install this script with kdialog, will not be needed in >=kde-3.4.2 (bug 89867)
-	rm ${D}/${PREFIX}/bin/kdeeject
 }
 
 pkg_postinst() {

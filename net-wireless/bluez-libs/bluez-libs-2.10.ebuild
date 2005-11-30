@@ -1,26 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-libs/bluez-libs-2.10.ebuild,v 1.12 2005/01/25 00:26:40 vapier Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-libs/bluez-libs-2.10.ebuild,v 1.1 2004/08/21 01:27:00 puggy Exp $
 
 DESCRIPTION="Bluetooth Userspace Libraries"
 HOMEPAGE="http://bluez.sourceforge.net/"
 SRC_URI="http://bluez.sourceforge.net/download/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 IUSE=""
-
 DEPEND="!net-wireless/bluez-sdp"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-handsfree.patch
+src_compile() {
+	use amd64 && sed -i -e 's/CFLAGS\ =\ @CFLAGS@/CFLAGS\ =\ @CFLAGS@\ -fPIC/' src/Makefile.in
+	econf || die "econf failed"
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	make DESTDIR=${D} install || die
 }

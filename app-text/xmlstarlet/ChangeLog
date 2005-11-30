@@ -1,35 +1,6 @@
 # ChangeLog for app-text/xmlstarlet
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/xmlstarlet/ChangeLog,v 1.8 2005/06/02 06:27:36 wormo Exp $
-
-  02 Jun 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  xmlstarlet-1.0.1.ebuild:
-  mark ~ppc
-
-  16 Apr 2005; Mamoru KOMACHI <usata@gentoo.org> -xmlstarlet-0.9.3.ebuild,
-  -xmlstarlet-0.9.5.ebuild, xmlstarlet-1.0.1.ebuild:
-  Stable on x86. Removed old versions.
-
-*xmlstarlet-1.0.1 (22 Mar 2005)
-
-  22 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> xmlstarlet-1.0.0.ebuild,
-  +xmlstarlet-1.0.1.ebuild:
-  Version bumped.
-
-*xmlstarlet-1.0.0 (10 Feb 2005)
-
-  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> xmlstarlet-0.9.5.ebuild,
-  +xmlstarlet-1.0.0.ebuild:
-  Version bumped. Marked previous version stable on x86.
-
-  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> xmlstarlet-0.9.5.ebuild:
-  added ~amd64 to KEYWORDS. fixes #64762
-
-*xmlstarlet-0.9.5 (30 Nov 2004)
-
-  30 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> xmlstarlet-0.9.3.ebuild,
-  +xmlstarlet-0.9.5.ebuild:
-  Version bumped. Marked 0.9.3 stable on x86.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/xmlstarlet/ChangeLog,v 1.1 2004/09/03 14:33:13 usata Exp $
 
 *xmlstarlet-0.9.3 (03 Sep 2004)
 

@@ -1,20 +1,10 @@
-# ChangeLog for games-misc/fortune-mod-bofh-excuses
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-bofh-excuses/ChangeLog,v 1.7 2005/08/27 17:57:57 corsair Exp $
+# ChangeLog for app-games/fortune-mod-bofh-excuses
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-bofh-excuses/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
 # AUTHOR: Lim Swee Tat <st_lim@stlim.net>
 
-  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-bofh-excuses-1.2.ebuild:
-  Stable on ppc64
 
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-bofh-excuses-1.2.ebuild:
-  Added ~ppc64 (bug #100217)
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*fortune-mod-bofh-excuses-1.2 (16 Aug 2002)
+*fortune-mod-bofh-excuses-1.2.ebuild (16 Aug 2002)
 
   26 Aug 2003; Joshua Kinard <kumba@gentoo.org> fortune-mod-bofh-excuses-1.2.ebuild:
   Added ~mips & ~sparc to KEYWORDS
@@ -22,5 +12,5 @@
   03 Nov 2002; Jon Nall <nall@gentoo.org> fortune-mod-bofh-excuses-1.2.ebuild :
   changed PPC to ppc in KEYWORDS
 
-  16 Aug 2002; J. Alberto Su√°rez L√≥pez <bass@gentoo.org> fortune-mod-bofh-excuses-1.2.ebuild :
+  16 Aug 2002; J. Alberto Su·rez LÛpez <bass@gentoo.org> fortune-mod-bofh-excuses-1.2.ebuild :
   First relase.

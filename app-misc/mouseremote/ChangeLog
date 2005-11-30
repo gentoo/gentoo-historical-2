@@ -1,19 +1,8 @@
 # ChangeLog for app-misc/mouseremote
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/mouseremote/ChangeLog,v 1.8 2005/07/21 17:22:38 dholm Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-misc/mouseremote/ChangeLog,v 1.1 2002/07/09 12:16:05 aliz Exp $
 
-  21 Jul 2005; David Holm <dholm@gentoo.org> mouseremote-0.90.ebuild:
-  Added to ~ppc.
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  mouseremote-0.90.ebuild:
-  dev-perl/Time-HiRes => perl-core/Time-HiRes migration
-
-  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  mouseremote-0.90.ebuild:
-  don't set DEPEND="${RDEPEND}"; inherit eutils for epatch
-
-*mouseremote-0.90 (9 May 2002)
+*mouseremote-0.90-r0 (9 May 2002)
 
   9 May 2002; B.Lauwers <blauwers@gentoo.org> ChangeLog, mouseremote-0.90.ebuild :
   

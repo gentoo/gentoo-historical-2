@@ -1,32 +1,29 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dbunit/dbunit-2.1.ebuild,v 1.5 2005/07/16 14:21:10 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dbunit/dbunit-2.1.ebuild,v 1.1 2005/01/04 23:45:14 luckyduck Exp $
 
 inherit java-pkg
 
 DESCRIPTION="DBUnit is a JUnit extension targeted for database-driven projects that, puts your database into a known state between test runs."
-HOMEPAGE="http://www.dbunit.org"
 SRC_URI="mirror://sourceforge/${PN}/${P}-src.tar.gz"
-
+HOMEPAGE="http://www.dbunit.org"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 ppc"
-IUSE="doc jikes source"
-
+KEYWORDS="~x86 ~amd64"
+DEPEND=">=virtual/jdk-1.4
+	jikes? ( >=dev-java/jikes-1.21 )
+	>=dev-java/ant-core-1.6"
 RDEPEND=">=virtual/jre-1.4
-	=dev-java/crimson-1*
+	>=dev-java/crimson-1.1.3
 	>=dev-db/hsqldb-1.7.2.4
 	=dev-java/mockmaker-1.12.0*
 	>=dev-java/mockobjects-0.09
 	>=dev-java/poi-2.0"
-DEPEND=">=virtual/jdk-1.4
-	${RDEPEND}
-	>=dev-java/ant-core-1.6
-	jikes? ( >=dev-java/jikes-1.21 )
-	source? ( app-arch/zip )"
+IUSE="doc jikes"
 
 src_unpack() {
 	unpack ${A}
+
 	cd ${S}
 	cp ${FILESDIR}/build.xml build.xml
 
@@ -41,13 +38,20 @@ src_unpack() {
 
 src_compile() {
 	local antflags="jar"
-	use doc && antflags="${antflags} docs"
-	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	if use doc; then
+		antflags="${antflags} docs"
+	fi
+	if use jikes; then
+		antflags="${antflags} -Dbuild.compiler=jikes"
+	fi
 	ant ${antflags} || die "compile failed"
 }
 
 src_install() {
 	java-pkg_dojar dist/${PN}.jar
 
-	use doc && java-pkg_dohtml -r docs/*
+	dodoc LICENSE.txt
+	if use doc; then
+		java-pkg_dohtml -r docs/*
+	fi
 }

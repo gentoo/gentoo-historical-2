@@ -1,58 +1,6 @@
 # ChangeLog for net-print/pykota
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/pykota/ChangeLog,v 1.11 2005/11/15 20:47:02 dang Exp $
-
-  15 Nov 2005; <dang@gentoo.org> pykota-1.23_p1874.ebuild:
-  Marked ~amd64
-
-  10 Nov 2005; Christian Andreetta <satya@gentoo.org>
-  pykota-1.23_p1869.ebuild, pykota-1.23_p1869-r1.ebuild,
-  pykota-1.23_p1874.ebuild:
-  pysnmp version must be equal to 3.4.x
-
-*pykota-1.23_p1874 (10 Nov 2005)
-
-  10 Nov 2005; Christian Andreetta <satya@gentoo.org>
-  +pykota-1.23_p1874.ebuild:
-  version bump: v1.23HotFix1 (job lost on some types of printer errors)
-
-*pykota-1.23_p1869-r1 (08 Nov 2005)
-
-  08 Nov 2005; Christian Andreetta <satya@gentoo.org>
-  +pykota-1.23_p1869-r1.ebuild:
-  net-print/pkpgcounter dependency (bug #110679)
-
-*pykota-1.23_p1869 (13 Oct 2005)
-
-  13 Oct 2005; Christian Andreetta <satya@gentoo.org>
-  +pykota-1.23_p1869.ebuild:
-  version bump
-
-  24 Aug 2005; Christian Andreetta <satya@gentoo.org>
-  pykota-1.22_p1548.ebuild:
-  'cp -pPR' instead of 'cp -a' required by Darwin and BSD (bug #103487)
-
-*pykota-1.22_p1548 (10 May 2005)
-
-  10 May 2005; Christian Andreetta <satya@gentoo.org>
-  +pykota-1.22_p1548.ebuild, -pykota-20041105.ebuild,
-  -pykota-20041204.ebuild, -pykota-20050126.ebuild, -pykota-20050404.ebuild:
-  cvs snapshot of version 1.22 final. New ebuild versioning schema
-
-*pykota-20050404 (04 Apr 2005)
-
-  04 Apr 2005; Christian Andreetta <satya@gentoo.org> +pykota-20050404.ebuild:
-  cvs snapshot of version 1.22alpha3
-
-*pykota-20050126 (26 Jan 2005)
-
-  26 Jan 2005; Christian Andreetta <satya@gentoo.org> +pykota-20050126.ebuild:
-  cvs snapshot of version 1.21alpha23
-
-*pykota-20041204 (04 Dec 2004)
-
-  04 Dec 2004; Christian Andreetta <satya@gentoo.org> +pykota-20041204.ebuild:
-  new cvs snapshot
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/pykota/ChangeLog,v 1.1 2004/11/06 12:17:13 satya Exp $
 
   06 Nov 2004; Christian Andreetta <satya@gentoo.org> :
   version bump. CVS version of pykota 1.20

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/xmltv-0.5.39.ebuild,v 1.5 2005/05/29 20:35:49 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xmltv/xmltv-0.5.39.ebuild,v 1.1 2005/05/12 06:24:42 cardoe Exp $
 
 inherit perl-module
 
@@ -52,15 +52,14 @@ RDEPEND=">=dev-perl/libwww-perl-5.65
 	>=dev-perl/XML-Twig-3.10
 	>=dev-perl/DateManip-5.42
 	>=dev-perl/XML-Writer-0.4.6
-	perl-core/Memoize
-	perl-core/Storable
+	dev-perl/Memoize
+	dev-perl/Storable
 	dev-perl/Lingua-EN-Numbers-Ordinate
 	>=dev-perl/Lingua-Preferred-0.2.4
 	>=dev-perl/Term-ProgressBar-2.03
 	dev-perl/Compress-Zlib
 	dev-perl/Unicode-String
 	dev-perl/TermReadKey
-	<dev-perl/Class-MethodMaker-2
 	>=dev-lang/perl-5.6.1"
 
 DEPEND="${RDEPEND}
@@ -140,7 +139,7 @@ if [ -z "${XMLTV_OPTS}" ] || has tv_check ${XMLTV_OPTS} ; then
 fi
 
 if [ -z "${XMLTV_OPTS}" ] || has tv_pick_cgi ${XMLTV_OPTS} ; then
-	newdepend perl-core/CGI
+	newdepend dev-perl/CGI
 fi
 
 if [ -z "${XMLTV_OPTS}" ] || has tv_grab_se_swedb ${XMLTV_OPTS} ; then

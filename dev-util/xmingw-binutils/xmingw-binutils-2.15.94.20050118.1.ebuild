@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-binutils/xmingw-binutils-2.15.94.20050118.1.ebuild,v 1.2 2005/11/10 22:22:41 cretin Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/xmingw-binutils/xmingw-binutils-2.15.94.20050118.1.ebuild,v 1.1 2005/05/27 17:32:05 cretin Exp $
 
-inherit eutils base
+inherit eutils
 
 MY_P=binutils-2.15.94-20050118-1
 S=${WORKDIR}/${MY_P}
@@ -17,8 +17,6 @@ KEYWORDS="~x86 ~amd64"
 IUSE=""
 
 DEPEND=""
-
-PATCHES="${FILESDIR}/${P}-gcc4.patch"
 
 src_compile() {
 	./configure \

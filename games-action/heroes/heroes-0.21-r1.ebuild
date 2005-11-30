@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/heroes/heroes-0.21-r1.ebuild,v 1.3 2005/09/26 17:35:09 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/heroes/heroes-0.21-r1.ebuild,v 1.1 2004/07/21 01:31:45 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 data_ver=1.5
 snd_trk_ver=1.0
@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc ~amd64"
+KEYWORDS="x86 ppc sparc"
 IUSE="sdl nls ggi"
 
 DEPEND="virtual/x11

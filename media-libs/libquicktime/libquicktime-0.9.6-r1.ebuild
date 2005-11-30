@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libquicktime/libquicktime-0.9.6-r1.ebuild,v 1.5 2005/11/19 18:58:47 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libquicktime/libquicktime-0.9.6-r1.ebuild,v 1.1 2005/05/27 22:38:13 luckyduck Exp $
 
 inherit libtool eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE="gtk jpeg mmx oggvorbis png dv ieee1394"
 
@@ -28,7 +28,7 @@ DEPEND=">=sys-apps/sed-4.0.5
 PROVIDE="virtual/quicktime"
 
 pkg_setup() {
-	if has_version x11-base/xorg-x11 && ! built_with_use x11-base/xorg-x11 opengl; then
+	if has_version xorg-x11 && ! built_with_use xorg-x11 opengl; then
 		die "You need xv support to compile ${PN}."
 	fi
 }

@@ -1,15 +1,10 @@
-#!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/freenet6/files/tspc.rc,v 1.4 2004/07/14 23:58:39 agriffis Exp $
-
 depend() {
 	need net
 }
 
 start() {
 	ebegin "Starting Freenet6 IPv6 Client"
-	tspc -f /etc/freenet6/tspc.conf
+	tspc
 	eend $?
 }
 

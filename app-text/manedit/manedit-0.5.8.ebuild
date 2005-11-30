@@ -1,21 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/manedit/manedit-0.5.8.ebuild,v 1.12 2005/01/01 16:25:28 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/manedit/manedit-0.5.8.ebuild,v 1.1 2003/01/27 08:19:04 vapier Exp $
 
 DESCRIPTION="Man page editor using XML tags"
 SRC_URI="ftp://wolfpack.twu.net/users/wolfpack/${P}.tar.bz2"
-HOMEPAGE="http://wolfpack.twu.net/ManEdit/"
+HOMEPAGE="http://wolfpack.twu.net/ManEdit"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc"
-IUSE=""
+KEYWORDS="~x86 ~sparc"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	virtual/x11
 	=x11-libs/gtk+-1*
 	sys-libs/zlib
-	app-arch/bzip2"
+	sys-apps/bzip2"
 
 src_compile() {
 	# It autodetects x86 processors and adds the -march option itself
@@ -43,7 +42,6 @@ src_install() {
 	make \
 		PREFIX=${D}/usr \
 		MAN_DIR=${D}/usr/share/man/man1 \
-		ICONS_DIR=${D}/usr/share/pixmaps \
 		install || die "make install failed."
 
 	dodoc AUTHORS LICENSE README

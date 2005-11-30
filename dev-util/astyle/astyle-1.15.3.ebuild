@@ -1,35 +1,22 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/astyle/astyle-1.15.3.ebuild,v 1.14 2004/11/08 21:36:33 kloeri Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Eyez <eyez@infinite.fsw.leidenuniv.nl>
+# $Header: /var/cvsroot/gentoo-x86/dev-util/astyle/astyle-1.15.3.ebuild,v 1.1 2002/04/24 20:29:01 karltk Exp $
 
-inherit eutils
-
-DESCRIPTION="Artistic Style is a reindenter and reformatter of C++, C and Java source code"
-HOMEPAGE="http://astyle.sourceforge.net/"
-SRC_URI="mirror://sourceforge/astyle/astyle_${PV}.zip"
-
-LICENSE="|| ( Artistic GPL-2 )"
-SLOT="0"
-KEYWORDS="x86 sparc"
-IUSE=""
-
-DEPEND=">=app-arch/unzip-5.42"
-
+ZIP="astyle_${PV}.zip"
 S=${WORKDIR}
-
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/cmd-line-fix.diff
-
-	#gcc-3.4 fix
-	epatch ${FILESDIR}/${PN}-gcc34.patch
-}
+DESCRIPTION="Artistic Style is a reindenter and reformatter of C++, C and Java
+source code."
+SRC_URI="http://prdownloads.sourceforge.net/astyle/${ZIP}"
+HOMEPAGE="http://astyle.sourceforge.net"
+DEPEND=">=app-arch/unzip-5.42"
 
 src_compile() {
 	emake || die
 }
 
-src_install() {
+src_install () {
+	into /usr
 	dobin astyle
 	dohtml astyle.html astyle_release_notes.html license.html
 	dodoc INSTALL.TXT

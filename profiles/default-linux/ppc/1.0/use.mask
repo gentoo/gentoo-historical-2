@@ -37,6 +37,3 @@ rar
 
 # User Mode Linux isn't supported on ppc yet
 uml
-
-# Unmask pbbuttonsd
--pbbuttonsd

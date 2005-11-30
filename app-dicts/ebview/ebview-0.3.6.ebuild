@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ebview/ebview-0.3.6.ebuild,v 1.4 2005/01/01 12:51:15 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ebview/ebview-0.3.6.ebuild,v 1.1 2004/09/15 09:24:29 usata Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/ebview/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ppc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 
 DEPEND=">=dev-libs/eb-3.3.4
 	>=x11-libs/gtk+-2.2
@@ -22,7 +22,6 @@ src_unpack() {
 
 	unpack ${A}
 
-	epatch ${FILESDIR}/${P}-destdir.diff
 	if has_version '>=sys-devel/gettext-0.12' ; then
 		cd ${S}/po
 		epatch ${FILESDIR}/${PN}-gettext-0.12-gentoo.diff
@@ -37,7 +36,7 @@ src_compile() {
 
 src_install () {
 
-	make DESTDIR=${D} install || die
+	einstall || die
 
 	dodoc ABOUT-NLS AUTHORS ChangeLog INSTALL* NEWS README TODO
 }

@@ -1,47 +1,6 @@
-# ChangeLog for app-arch/upx
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/upx/ChangeLog,v 1.14 2005/11/05 07:56:20 matsuu Exp $
-
-*upx-1.93 (05 Nov 2005)
-
-  05 Nov 2005; MATSUU Takuto <matsuu@gentoo.org> +upx-1.93.ebuild:
-  Version bumped. Bug 103833.
-
-  03 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> upx-1.25.ebuild:
-  Stable on x86. Bug 103831.
-
-*upx-1.25 (09 Jul 2004)
-
-  09 Jul 2004; MATSUU Takuto <matsuu@gentoo.org> +upx-1.25.ebuild:
-  Version bump. bug #56143.
-
-  16 Apr 2004; Michael McCabe <randy@gentoo.org> upx-1.24-r1.ebuild:
-  adding s390 keywords
-
-  01 Nov 2003; Brandy Westcott brandy@gentoo.org upx-1.24-r1.ebuild,
-  upx-1.24.ebuild:
-  Add a block for app-arch/upx-ucl.
-
-*upx-1.24-r1 (25 Mar 2003)
-
-  25 Mar 2003; Seemant Kulleen <seemant@gentoo.org> upx-1.24-r1.ebuild:
-  moved binary into /opt, closing bug #17794 by robbat2
-  <robbat2@orbis-terrarum.net>
-
-*upx-1.24 (23 Dec 2002)
-
-  01 Jan 2003; Nick Hadaway <raker@gentoo.org> upx-1.24.ebuild :
-  Marked stable.
-
-  23 Dec 2002; Nick Hadaway <raker@gentoo.org> upx-1.24.ebuild,
-  files/digest-upx-1.24 :
-  Version bump.
-
-*upx-1.23-r1 (23 Dec 2002)
-
-  23 Dec 2002; Nick Hadaway <raker@gentoo.org> upx-1.23-r1.ebuild,
-  files/digest-upx-1.23-r1 :
-  emerge should no longer strip the upx binary.
+# ChangeLog for app-misc/upx
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-arch/upx/ChangeLog,v 1.1 2002/09/21 22:55:05 drobbins Exp $
 
 *upx-1.23 (21 Sep 2002)
 

@@ -1,23 +1,6 @@
 # ChangeLog for games-fps/ut2004-data
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-data/ChangeLog,v 1.5 2005/10/22 22:31:05 wolf31o2 Exp $
-
-  22 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ut2004-data-3186.ebuild:
-  Added space requirements for bug #110071.
-
-  16 May 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ut2004-data-3186.ebuild:
-  Marking stable on x86/amd64.
-
-  23 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ut2004-data-3186.ebuild:
-  Removing extranneous DISK[1-6] variables from second non-ECE checks.
-
-  23 Feb 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ut2004-data-3186.ebuild:
-  Added additional else statement for non-DVD builds (bad Wolfie...) and
-  closes bug #83093.
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2004-data/ChangeLog,v 1.1 2005/02/23 00:27:03 wolf31o2 Exp $
 
 *ut2004-data-3186 (22 Feb 2005)
 

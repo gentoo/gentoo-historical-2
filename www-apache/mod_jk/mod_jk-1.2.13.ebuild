@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_jk/mod_jk-1.2.13.ebuild,v 1.3 2005/10/17 18:15:11 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_jk/mod_jk-1.2.13.ebuild,v 1.1 2005/06/01 19:42:17 luckyduck Exp $
 
 inherit apache-module
 
@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="apache2"
 
-DEPEND=""
+DEPEND=">=virtual/jdk-1.4"
 S="${WORKDIR}/${MY_P}/jk/native"
 
 APACHE1_MOD_FILE="${S}/apache-1.3/mod_jk.so"
@@ -39,7 +39,7 @@ src_compile() {
 		--with-apxs=${apxs} \
 		--with-apr-config=/usr/bin/apr-config \
 		|| die "econf failed"
-	emake LIBTOOL="/bin/sh $(pwd)/libtool --silent" || die "make failed"
+	emake LIBTOOL="/bin/sh `pwd`/libtool --silent" || die "make failed"
 }
 
 src_install() {

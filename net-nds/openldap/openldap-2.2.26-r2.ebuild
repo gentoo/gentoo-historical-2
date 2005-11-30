@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.26-r2.ebuild,v 1.8 2005/09/22 19:57:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.26-r2.ebuild,v 1.1 2005/05/21 04:49:26 robbat2 Exp $
 
-inherit flag-o-matic toolchain-funcs eutils multilib
+inherit toolchain-funcs eutils
 
 OLD_PV="2.1.30"
 OLD_P="${PN}-${OLD_PV}"
@@ -63,7 +63,7 @@ openldap_upgrade_warning() {
 	echo
 	ewarn "Part of the configuration file syntax has changed:"
 	ewarn "'access to attribute=' is now 'access to attrs='"
-	echo
+	echo 
 	ewarn "You must also run revdep-rebuild after upgrading from 2.1 to 2.2:"
 	ewarn "# revdep-rebuild --soname liblber.so.2"
 	ewarn "# revdep-rebuild --soname libldap.so.2"
@@ -75,7 +75,7 @@ pkg_setup() {
 	openldap_datadirs="$(awk '{if($1 == "directory") print $2 }' /etc/openldap/slapd.conf)"
 	datafiles=""
 	for d in $openldap_datadirs; do
-		datafiles="${datafiles} $(ls $d/*db* 2>/dev/null)"
+		datafiles="${datafiles} $(ls $d/*db*} 2>/dev/null)"
 	done
 	# remove extra spaces
 	datafiles="$(echo ${datafiles// })"
@@ -111,7 +111,7 @@ pkg_setup() {
 pkg_preinst() {
 	openldap_upgrade_warning
 	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	enewuser ldap 439 /bin/false /usr/lib/openldap ldap
 }
 
 src_unpack() {
@@ -203,24 +203,19 @@ src_compile() {
 	myconf="${myconf} `use_enable tcpd wrappers`"
 	myconf="${myconf} `use_with ssl tls` `use_with samba lmpasswd`"
 
-	if [ $(get_libdir) != "lib" ] ; then
-		append-ldflags -L/usr/$(get_libdir)
-	fi
-
 	econf \
 		--enable-static \
 		--enable-shared \
-		--libexecdir=/usr/$(get_libdir)/openldap \
+		--libexecdir=/usr/lib/openldap \
 		${myconf} || die "configure failed"
 
 	make depend || die "make depend failed"
 	make || die "make failed"
 
-	# special kerberos stuff
 	tc-export CC
 	if useq kerberos ; then
 		cd ${S}/contrib/slapd-modules/passwd/ && \
-		${CC} -shared -I../../../include ${CFLAGS} -fPIC \
+		${CC} -shared -I../../../include ${CFLAGS} \
 		-DHAVE_KRB5 -o pw-kerberos.so kerberos.c || \
 		die "failed to compile kerberos module"
 	fi
@@ -229,7 +224,7 @@ src_compile() {
 	cd ${OLD_S} && \
 	econf \
 		--enable-static --enable-shared \
-		--libexecdir=/usr/$(get_libdir)/openldap \
+		--libexecdir=/usr/lib/openldap \
 		--disable-slapd --disable-aci --disable-cleartext --disable-crypt \
 		--disable-lmpasswd --disable-spasswd --enable-modules \
 		--disable-phonetic --disable-rewrite --disable-rlookups --disable-slp \
@@ -256,7 +251,7 @@ src_install() {
 
 	# openldap modules go here
 	# TODO: write some code to populate slapd.conf with moduleload statements
-	keepdir /usr/$(get_libdir)/openldap/openldap/
+	keepdir /usr/lib/openldap/openldap/
 
 	# make state directories
 	for x in data slurp ldbm; do
@@ -271,7 +266,7 @@ src_install() {
 
 	# manually remove /var/tmp references in .la
 	# because it is packaged with an ancient libtool
-	for x in ${D}/usr/$(get_libdir)/lib*.la; do
+	for x in ${D}/usr/lib/lib*.la; do
 		sed -i -e "s:-L${S}[/]*libraries::" ${x}
 	done
 
@@ -290,9 +285,6 @@ src_install() {
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/2.0/slapd slapd
 	newexe ${FILESDIR}/2.0/slurpd slurpd
-	if [ $(get_libdir) != lib ]; then
-		sed -e "s,/usr/lib/,/usr/$(get_libdir)/," -i ${D}/etc/init.d/{slapd,slurpd}
-	fi
 	insinto /etc/conf.d
 	newins ${FILESDIR}/2.0/slapd.conf slapd
 
@@ -304,7 +296,7 @@ src_install() {
 	fi
 
 	if useq kerberos ; then
-		insinto /usr/$(get_libdir)/openldap/openldap
+		insinto /usr/lib/openldap/openldap
 		doins ${S}/contrib/slapd-modules/passwd/pw-kerberos.so || \
 		die "failed to install kerberos passwd module"
 	fi

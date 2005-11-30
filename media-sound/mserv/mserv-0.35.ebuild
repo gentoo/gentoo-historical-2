@@ -1,28 +1,33 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mserv/mserv-0.35.ebuild,v 1.12 2005/08/24 16:52:27 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mserv/mserv-0.35.ebuild,v 1.1 2004/03/11 08:23:42 eradicator Exp $
 
 inherit webapp-apache eutils
 
 DESCRIPTION="Jukebox-style music server"
 HOMEPAGE="http://www.mserv.org"
 SRC_URI="mirror://sourceforge/mserv/${P}.tar.gz"
-
+RESTRICT="nomirror"
 LICENSE="mserv"
-SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
-IUSE="vorbis"
 
-DEPEND="virtual/libc"
+SLOT="0"
+KEYWORDS="~x86"
+IUSE="apache2 oggvorbis"
+
+DEPEND="virtual/glibc"
 RDEPEND=">=dev-lang/perl-5.6.1
 	 virtual/mpg123
 	 media-sound/sox
 	 net-www/apache
-	 vorbis? ( media-sound/vorbis-tools )"
+	 oggvorbis? ( media-sound/vorbis-tools )"
+
+S=${WORKDIR}/${P}
+
+webapp-detect
 
 pkg_setup() {
-	enewgroup mserv
-	enewuser mserv -1 -1 /dev/null mserv -G audio
+	enewgroup mserv > /dev/null || die
+	enewuser mserv -1 /bin/false /dev/null mserv -G audio > /dev/null || die
 }
 
 src_unpack() {
@@ -30,16 +35,14 @@ src_unpack() {
 	cd ${S}
 
 	# Adjust paths to match Gentoo
-	epatch ${FILESDIR}/${P}-paths.patch
+	epatch ${FILESDIR}/${P}-paths.patch || die
 	# Mservplay uses stricmp - should be strcasecmp
-	epatch ${FILESDIR}/${P}-mservplay.patch
+	epatch ${FILESDIR}/${P}-mservplay.patch || die
 }
 
 src_compile() {
-	webapp-detect
-
-	econf || die "configure failed"
-	emake || die "make failed"
+	econf || die
+	emake || die
 
 	# Optional suid wrapper
 	cd ${S}/support
@@ -47,12 +50,10 @@ src_compile() {
 }
 
 src_install() {
-	webapp-detect
-
-	make DESTDIR=${D} install || die "make install failed"
+	make DESTDIR=${D} install || die
 
 	dobin support/mservedit support/mservripcd support/mservplay
-	dodoc AUTHORS ChangeLog docs/quick-start.txt
+	dodoc AUTHORS COPYING ChangeLog docs/quick-start.txt
 
 	# Web client
 	exeinto ${HTTPD_CGIBIN}/mserv
@@ -69,8 +70,11 @@ src_install() {
 	newins ${FILESDIR}/${P}-acl acl
 	fperms 0600 /etc/mserv/acl
 
-	newinitd ${FILESDIR}/${P}-initd ${PN}
-	newconfd ${FILESDIR}/${P}-confd ${PN}
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/${P}-initd ${PN}
+
+	insinto /etc/conf.d
+	newins ${FILESDIR}/${P}-confd ${PN}
 
 	# Log file
 	dodir /var/log
@@ -78,8 +82,10 @@ src_install() {
 	fowners mserv:mserv /var/log/mserv.log
 
 	# Track and album info
-	keepdir /var/lib/mserv/trackinfo
+	dodir /var/lib/mserv/trackinfo
 	fowners mserv:mserv /var/lib/mserv/trackinfo
+	touch ${D}/var/lib/mserv/trackinfo/.keep
+	fowners mserv:mserv /var/lib/mserv/trackinfo/.keep
 
 	# Current track output
 	dodir /var/spool/mserv
@@ -88,8 +94,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	webapp-detect
-
 	einfo
 	einfo "The wrapper program 'mservplay' is disabled for"
 	einfo "security reasons.  If you wish to use mservplay"

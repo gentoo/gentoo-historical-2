@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc/uclibc-0.9.27-r1.ebuild,v 1.12 2005/11/18 03:44:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc/uclibc-0.9.27-r1.ebuild,v 1.1 2005/06/18 06:12:38 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -23,9 +23,9 @@ fi
 # diff -urN --exclude .svn uClibc-0.9.27 uClibc | bzip2 - > uClibc-0.9.27-svn-update-`date +%Y%m%d`.patch.bz2
 # rm -rf uClibc-0.9.27-svn-update-`date +%Y%m%d`.patch.bz2  uClibc uClibc-0.9.27
 
-MY_P=uClibc-${PV}
+MY_P=${P/ucl/uCl}
 SVN_VER="20050114"
-PATCH_VER="1.5"
+PATCH_VER="1.1"
 DESCRIPTION="C library for developing embedded Linux systems"
 HOMEPAGE="http://www.uclibc.org/"
 SRC_URI="http://www.kernel.org/pub/linux/libs/uclibc/${MY_P}.tar.bz2
@@ -40,7 +40,7 @@ LICENSE="LGPL-2"
 	&& SLOT="${CTARGET}" \
 	|| SLOT="0"
 KEYWORDS="-*" #~arm ~m68k ~mips ~ppc ~sh ~sparc ~x86"
-IUSE="build debug hardened ipv6 minimal nls pregen userlocales wordexp"
+IUSE="wordexp build debug hardened ipv6 static minimal nls pregen userlocales"
 RESTRICT="nostrip"
 
 DEPEND="virtual/os-headers"
@@ -72,24 +72,14 @@ alt_rprefix() {
 		echo /usr/${CTARGET}/
 	fi
 }
-just_headers() {
-	[[ -z ${_E_CROSS_HEADERS_ONLY} ]] && return 1
-	[[ ${CHOST} == ${CTARGET} ]] && return 1
-	return 0
-}
 
 pkg_setup() {
-	just_headers && return 0
-	has_version ${CATEGORY}/uclibc || return 0
-	[[ -n ${UCLIBC_AND_GLIBC} ]] && return 0
-	[[ ${ROOT} != "/" ]] && return 0
-
-	if ! built_with_use ${CATEGORY}/uclibc nls && use nls && ! use pregen ; then
+	if ! built_with_use sys-libs/uclibc nls && use nls && ! use pregen ; then
 		eerror "You previously built uclibc with USE=-nls."
 		eerror "You cannot generate locale data with this"
 		eerror "system.  Please rerun emerge with USE=pregen."
 		die "host cannot support locales"
-	elif built_with_use ${CATEGORY}/uclibc nls && ! use nls ; then
+	elif built_with_use sys-libs/uclibc nls && ! use nls ; then
 		eerror "You previously built uclibc with USE=nls."
 		eerror "Rebuilding uClibc with USE=-nls will prob"
 		eerror "destroy your system."
@@ -190,11 +180,6 @@ src_unpack() {
 	sed -i -e '/ARCH_.*_ENDIAN/d' .config
 	echo "ARCH_$(tc-endian | tr [a-z] [A-Z])_ENDIAN=y" >> .config
 
-	if [[ ${CTARGET} == *-softfloat-* ]] ; then
-		sed -i -e '/^HAS_FPU=y$/d' .config
-		echo 'HAS_FPU=n' >> .config
-	fi
-
 	for def in DO_C99_MATH UCLIBC_HAS_{RPC,CTYPE_CHECKED,WCHAR,HEXADECIMAL_FLOATS,GLIBC_CUSTOM_PRINTF,FOPEN_EXCLUSIVE_MODE,GLIBC_CUSTOM_STREAMS,PRINTF_M_SPEC,FTW} ; do
 		sed -i -e "s:# ${def} is not set:${def}=y:" .config
 	done
@@ -213,11 +198,11 @@ src_unpack() {
 			echo "UCLIBC_PREGENERATED_LOCALE_DATA=y" >> .config
 			echo "UCLIBC_DOWNLOAD_PREGENERATED_LOCALE_DATA=y" >> .config
 			if use userlocales ; then
-				cp "${DISTDIR}"/${MY_P}-user-locale.tar.gz \
+				cp "${DISTDIR}"/${P}-user-locale.tar.gz \
 					extra/locale/uClibc-locale-030818.tgz \
-					|| die "could not copy ${MY_P}-user-locale.tar.gz"
+					|| die "could not copy ${P}-user-locale.tar.gz"
 			else
-				cp "${DISTDIR}"/${MY_P}-$(tc-arch)-full-locale.tar.gz \
+				cp "${DISTDIR}"/${P}-$(tc-arch)-full-locale.tar.gz \
 					extra/locale/uClibc-locale-030818.tgz \
 					|| die "could not copy locale"
 			fi
@@ -312,8 +297,6 @@ src_compile() {
 	type -p ${CTARGET}-ar && export MAKEOPTS="${MAKEOPTS} CROSS=${CTARGET}-"
 
 	emake headers || die "make headers failed"
-	just_headers && return 0
-
 	if use nls && ! use pregen ; then
 		cd extra/locale
 		make clean || die "make locale clean failed"
@@ -328,11 +311,11 @@ src_compile() {
 	if [[ ${CHOST} == *-uclibc ]] ; then
 		emake utils || die "could not make utils"
 	fi
+
+	! use build && ! hasq test $RESTRICT && src_test
 }
 
 src_test() {
-	return 0
-
 	[[ ${CHOST} != ${CTARGET} ]] && return 0
 	[[ ${CBUILD} != ${CHOST} ]] && return 0
 
@@ -350,11 +333,10 @@ src_test() {
 }
 
 src_install() {
-	local target="install"
-	just_headers && target="install_dev"
-	make PREFIX="${D}" ${target} || die "install failed"
+	emake PREFIX="${D}" install || die "install failed"
 
 	# remove files coming from kernel-headers
+	# scsi is uclibc's own directory since cvs 20040212
 	rm -rf "${D}"$(alt_prefix)/include/{asm,linux,asm-generic}
 
 	# clean up misc cruft
@@ -366,7 +348,6 @@ src_install() {
 	# system headers correctly.  See gcc/doc/gccinstall.info
 	if [[ ${CTARGET} != ${CHOST} ]] ; then
 		dosym include $(alt_prefix)/sys-include
-		dosym . $(alt_prefix)/usr
 		return 0
 	fi
 

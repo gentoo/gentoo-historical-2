@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rsm-queue/cl-rsm-queue-1.1a.ebuild,v 1.5 2005/05/24 18:48:35 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-rsm-queue/cl-rsm-queue-1.1a.ebuild,v 1.1 2004/02/12 09:13:20 mkennedy Exp $
 
 inherit common-lisp
 
@@ -9,12 +9,13 @@ HOMEPAGE="http://packages.debian.org/unstable/devel/cl-rsm-queue.html"
 SRC_URI="http://ftp.debian.org/debian/pool/main/c/cl-rsm-queue/cl-rsm-queue_${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~ppc ~sparc ~x86"
-IUSE=""
+KEYWORDS="~x86"
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp "
 
 CLPACKAGE=rsm-queue
+
+S=${WORKDIR}/${P}
 
 src_install() {
 	common-lisp-install *.lisp *.asd

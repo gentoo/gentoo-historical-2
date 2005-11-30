@@ -1,27 +1,35 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/oggtst/oggtst-0.0.ebuild,v 1.15 2004/12/20 16:18:56 vapier Exp $
-
-DESCRIPTION="A tool for calculating ogg-vorbis playing time"
-HOMEPAGE="http://gnometoaster.rulez.org/"
-SRC_URI="http://gnometoaster.rulez.org/archive/${PN}.tgz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 hppa ppc ppc64 sparc x86"
-IUSE=""
-
-DEPEND=">=media-libs/libao-0.8.0
-	>=media-libs/libvorbis-1.0_rc2"
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Claes Nästen <pekdon@gmx.net>
+# $Header: /var/cvsroot/gentoo-x86/media-sound/oggtst/oggtst-0.0.ebuild,v 1.1 2001/11/02 22:59:10 azarah Exp $
 
 S=${WORKDIR}/${PN}
+DESCRIPTION="A tool for calculate ogg-vorbis playing time."
+SRC_URI="http://gnometoaster.rulez.org/archive//${PN}.tgz"
+HOMEPAGE="http://gnometoaster.rulez.org/"
+
+DEPEND="virtual/glibc
+	>=media-libs/libao-0.8.0
+	>=media-libs/libogg-1.0_rc2
+	>=media-libs/libvorbis-1.0_rc2"
+
 
 src_compile() {
-	econf || die
-	emake -j1 || die
+
+	./configure \
+		--host=${CHOST}				\
+		--prefix=/usr				\
+		--infodir=/usr/share/info		\
+		--mandir=/usr/share/man			\
+		|| die
+		
+	make || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+
+	make DESTDIR=${D}				\
+		install || die
+	
 	dodoc AUTHORS ChangeLog README
 }

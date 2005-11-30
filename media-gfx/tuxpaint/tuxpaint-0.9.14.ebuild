@@ -1,18 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/tuxpaint/tuxpaint-0.9.14.ebuild,v 1.5 2005/05/26 18:49:39 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/tuxpaint/tuxpaint-0.9.14.ebuild,v 1.1 2005/03/20 21:26:01 leonardop Exp $
 
 inherit eutils
 
 DESCRIPTION="Drawing program designed for young children"
 HOMEPAGE="http://www.newbreedsoftware.com/tuxpaint/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc amd64"
-
-IUSE="gnome kde nls"
 
 DEPEND="media-libs/libpng
 	media-libs/sdl-ttf
@@ -22,6 +15,13 @@ DEPEND="media-libs/libpng
 	>=media-libs/freetype-2
 	media-libs/netpbm
 	nls? ( sys-devel/gettext )"
+
+IUSE="gnome kde nls"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc"
 
 src_unpack() {
 	unpack ${A}

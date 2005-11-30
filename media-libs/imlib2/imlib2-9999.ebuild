@@ -1,43 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/imlib2/imlib2-9999.ebuild,v 1.13 2005/09/29 22:32:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/imlib2/imlib2-9999.ebuild,v 1.1 2004/10/21 20:08:52 vapier Exp $
 
-inherit enlightenment toolchain-funcs
+EHACKAUTOGEN=yes
+inherit enlightenment
 
 MY_P=${P/_/-}
 DESCRIPTION="Version 2 of an advanced replacement library for libraries like libXpm"
-HOMEPAGE="http://www.enlightenment.org/Libraries/Imlib2/"
+HOMEPAGE="http://www.enlightenment.org/pages/imlib2.html"
 
-IUSE="X bzip2 gif jpeg mmx mp3 png tiff zlib"
+KEYWORDS="-*"
+IUSE="X gif jpeg mmx png tiff"
 
 DEPEND="=media-libs/freetype-2*
-	bzip2? ( app-arch/bzip2 )
-	zlib? ( sys-libs/zlib )
-	gif? ( >=media-libs/giflib-4.1.0 )
+	gif? ( media-libs/libungif
+		>=media-libs/giflib-4.1.0 )
 	png? ( >=media-libs/libpng-1.2.1 )
 	jpeg? ( media-libs/jpeg )
 	tiff? ( >=media-libs/tiff-3.5.5 )
-	X? ( virtual/x11 )
-	mp3? ( media-libs/libid3tag )"
+	X? ( virtual/x11 )"
 
 src_compile() {
 	local mymmx=""
-#	if [[ $(tc-arch) == "amd64" ]] ; then
-#		mymmx="--enable-amd64 --disable-mmx"
-#	else
-		mymmx="--disable-amd64 $(use_enable mmx)"
-#	fi
+	if [ "${ARCH}" == "amd64" ] ; then
+		mymmx="--disable-mmx"
+	else
+		mymmx="`use_enable mmx`"
+	fi
 
 	export MY_ECONF="
-		$(use_with X x) \
-		$(use_with jpeg) \
-		$(use_with png) \
-		$(use_with tiff) \
-		$(use_with gif) \
-		$(use_with zlib) \
-		$(use_with bzip2) \
-		$(use_with mp3 id3) \
 		${mymmx} \
+		`use_with X x` \
 	"
 	enlightenment_src_compile
 }

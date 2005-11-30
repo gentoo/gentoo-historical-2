@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/directvnc/directvnc-0.7.5.ebuild,v 1.4 2005/01/16 02:00:48 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/directvnc/directvnc-0.7.5.ebuild,v 1.1 2004/06/01 05:43:53 vapier Exp $
 
 inherit eutils
 
@@ -10,11 +10,10 @@ SRC_URI="http://www.adam-lilienthal.de/directvnc/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="dev-libs/DirectFB
-	virtual/x11
 	dev-util/pkgconfig"
 
 src_compile() {

@@ -1,5 +1,2 @@
-MD5 48f5561b2d97332b939cc7a9cd3208b2 qct-0.7.ebuild 879
-MD5 4f069ffb3dfa24dd44eb699b4b3cd25a ChangeLog 839
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
+MD5 9f20ae7f40d6d7e026d48b59814f194f qct-0.7.ebuild 679
 MD5 987c0051916a2bfe70b434fcdaec006f files/digest-qct-0.7 58
-MD5 7daeff4db5ed966d68fe4d944aa247b1 files/qct-0.7-constant.patch 712

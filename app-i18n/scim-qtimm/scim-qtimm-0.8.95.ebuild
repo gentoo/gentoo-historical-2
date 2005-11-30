@@ -1,8 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-qtimm/scim-qtimm-0.8.95.ebuild,v 1.4 2005/07/31 08:48:53 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/scim-qtimm/scim-qtimm-0.8.95.ebuild,v 1.1 2005/05/29 05:15:51 usata Exp $
 
 inherit kde-functions
+
+need-qt 3.3.4
 
 DESCRIPTION="Qt immodules input method framework plugin for SCIM"
 HOMEPAGE="http://scim.freedesktop.org/"
@@ -11,15 +13,14 @@ SRC_URI="mirror://sourceforge/scim/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="nls arts"
 
 DEPEND="|| ( >=app-i18n/scim-1.2.2 >=app-i18n/scim-cvs-1.2.2 )
 	!>=app-i18n/scim-1.3
 	!>=app-i18n/scim-cvs-1.3
 	nls? ( sys-devel/gettext )
-	arts? ( kde-base/arts )
-	$(qt_min_version 3.3.4)"
+	arts? ( kde-base/arts )"
 
 pkg_setup() {
 	if [ ! -e /usr/qt/3/plugins/inputmethods/libqimsw-none.so ] ; then

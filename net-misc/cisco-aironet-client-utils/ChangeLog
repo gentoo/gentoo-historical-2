@@ -1,34 +1,6 @@
 # ChangeLog for net-misc/cisco-aironet-client-utils
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-aironet-client-utils/ChangeLog,v 1.8 2005/03/10 20:14:24 wolf31o2 Exp $
-
-  10 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  cisco-aironet-client-utils-2.0.ebuild,
-  cisco-aironet-client-utils-2.1.ebuild:
-  Added pcmcia to IUSE and closing bug #78714.
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org>
-  cisco-aironet-client-utils-2.0.ebuild,
-  cisco-aironet-client-utils-2.1.ebuild:
-  change virtual/glibc to virtual/libc
-
-  02 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
-  cisco-aironet-client-utils-2.1.ebuild:
-  Fixing broken uncompress/S location and closing bug #52731.
-
-  01 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
-  cisco-aironet-client-utils-2.1.ebuild:
-  Fixing problem with S and closing bug #52731.
-
-*cisco-aironet-client-utils-2.1 (01 Jun 2004)
-
-  01 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org>
-  +cisco-aironet-client-utils-2.1.ebuild:
-  Version bumping to 2.1 and closing bug #52214.
-
-  12 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org>
-  cisco-aironet-client-utils-2.0.ebuild:
-  Adding empty IUSE.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-aironet-client-utils/ChangeLog,v 1.1 2003/12/13 00:05:42 wolf31o2 Exp $
 
 *cisco-aironet-client-utils-2.0 (12 Dec 2003)
 

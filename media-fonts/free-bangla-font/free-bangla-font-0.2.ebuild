@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/free-bangla-font/free-bangla-font-0.2.ebuild,v 1.7 2005/07/15 16:56:27 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/free-bangla-font/free-bangla-font-0.2.ebuild,v 1.1 2004/07/05 05:54:58 usata Exp $
 
 inherit font
 
@@ -19,8 +19,7 @@ SRC_URI="${SRC_BASE}/${AKAASH_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
-IUSE=""
+KEYWORDS="~x86"
 
 FONT_SUFFIX="ttf TTF"
 

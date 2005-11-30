@@ -1,26 +1,6 @@
 # ChangeLog for media-sound/noxmms
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/noxmms/ChangeLog,v 1.8 2005/04/18 15:40:49 luckyduck Exp $
-
-  18 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> noxmms-1.2.7.ebuild:
-  modified message in pkg_postinst, fixes #89210. also moved oggvorbis useflag
-  to vorbis, oggvorbis is deprecated.
-
-  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  noxmms-1.2.7.ebuild:
-  multilib fixes.
-
-  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> noxmms-1.2.7.ebuild:
-  Stable amd64, sparc.
-
-  31 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> noxmms-1.2.7.ebuild:
-  Stable x86.
-
-  11 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> noxmms-1.2.7.ebuild:
-  ppc64 needs deps first
-
-  19 Feb 2004; Martin Holzer <mholzer@gentoo.org> :
-  adding digest. closes 42069
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/noxmms/ChangeLog,v 1.1 2004/01/25 04:33:51 eradicator Exp $
 
 *noxmms-1.2.7 (24 Jan 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/xslide/xslide-0.2.ebuild,v 1.7 2005/01/01 14:06:54 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/xslide/xslide-0.2.ebuild,v 1.1 2002/11/01 02:52:02 mkennedy Exp $
 
 inherit elisp
 
@@ -13,8 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+DEPEND="virtual/emacs"
 
 S="${WORKDIR}/"
 
@@ -25,8 +24,8 @@ src_compile() {
 }
 
 src_install() {
-	elisp-install ${PN} *.el *.elc
-	elisp-site-file-install ${FILESDIR}/${SITEFILE}
+ 	elisp-install ${PN} *.el *.elc
+ 	elisp-site-file-install ${FILESDIR}/${SITEFILE}
 
 	dodoc CHANGELOG.TXT README.TXT
 }

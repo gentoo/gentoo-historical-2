@@ -1,12 +1,6 @@
 # ChangeLog for games-emulation/qtvba
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/qtvba/ChangeLog,v 1.4 2005/02/14 09:34:56 mr_bones_ Exp $
-
-  14 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> qtvba-0.2.ebuild:
-  cleanup and keyword for x86 (bug #81859)
-
-  11 Nov 2004; Joseph Jezak <josejx@gentoo.org> qtvba-0.2.ebuild:
-  Marked ppc stable.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/qtvba/ChangeLog,v 1.1 2004/05/01 21:04:40 dholm Exp $
 
 *qtvba-0.2 (01 May 2004)
 

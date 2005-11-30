@@ -1,18 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-0.4.2-r7.ebuild,v 1.17 2005/02/14 21:35:42 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-0.4.2-r7.ebuild,v 1.1 2004/01/17 18:09:33 spock Exp $
 
-inherit eutils flag-o-matic
-
+IUSE="cjk"
+S=${WORKDIR}/${P}
 DESCRIPTION="A terminal emulator with transparency support as well as rxvt backwards compatibility"
-HOMEPAGE="http://aterm.sourceforge.net"
 SRC_URI="mirror://sourceforge/aterm/${P}.tar.bz2
-	cjk? ( http://dev.gentoo.org/~spock/portage/distfiles/aterm-0.4.2-ja.patch )"
-
+	cjk? (http://wakaba.com/~tsann/aterm/aterm-0.4.2-ja.patch)"
+HOMEPAGE="http://aterm.sourceforge.net"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 mips ppc ~sparc x86"
-IUSE="cjk"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 
 DEPEND="media-libs/jpeg
 	media-libs/libpng
@@ -30,7 +28,7 @@ src_unpack() {
 	epatch ${FILESDIR}/aterm-0.4.2-paste.patch
 	epatch ${FILESDIR}/aterm-0.4.2-paste_mouse_outside.patch
 
-	if use cjk ; then
+	if [ `use cjk` ] ; then
 		epatch ${DISTDIR}/aterm-0.4.2-ja.patch
 	else
 		epatch ${FILESDIR}/aterm-0.4.2-copynpaste.patch
@@ -39,11 +37,6 @@ src_unpack() {
 
 src_compile() {
 	local myconf
-
-	# macos doesn't suport -z flag
-	if ! use ppc-macos ; then
-		append-ldflags -Wl,-z,now
-	fi
 
 	# You can't --enable-big5 with aterm-0.4.2-ja.patch
 	# I think it's very bad thing but as nobody complains it
@@ -65,15 +58,14 @@ src_compile() {
 		--with-x \
 		${myconf} || die
 
-	sed -i -re 's#^XLIB = (.*)#XLIB = \1 -lXmu#' src/Makefile
 	emake || die
 }
 
 src_install () {
 	make DESTDIR=${D} install || die
 
-	fowners root:utmp /usr/bin/aterm
 	fperms g+s /usr/bin/aterm
+	fowners root:utmp /usr/bin/aterm
 
 	doman doc/aterm.1
 	dodoc ChangeLog INSTALL doc/BUGS doc/FAQ doc/README.*

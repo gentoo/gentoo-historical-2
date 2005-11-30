@@ -1,17 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/hilite/hilite-1.5.ebuild,v 1.12 2005/07/09 03:09:39 swegener Exp $
-
-inherit toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/app-misc/hilite/hilite-1.5.ebuild,v 1.1 2004/06/20 00:53:27 ciaranm Exp $
 
 HOMEPAGE="http://sourceforge.net/projects/hilite"
-SRC_URI="mirror://gentoo/${P}.c"
+SRC_URI="mirror://gentoo/${PN}-${PV}.c"
 DESCRIPTION="A utility which highlights stderr text in red"
 
 SLOT="0"
 
 LICENSE="GPL-2"
-KEYWORDS="sparc mips amd64 x86 ~hppa ppc ~ppc-macos"
+KEYWORDS="~sparc ~mips"
 S=${WORKDIR}
 
 IUSE=""
@@ -22,10 +20,11 @@ src_unpack() {
 }
 
 src_compile() {
-	$(tc-getCC ) ${CFLAGS} -o ${PN} ${P}.c \
+	${CC:-gcc} ${CFLAGS} -o ${PN} ${PN}-${PV}.c \
 		|| die "compile failed"
 }
 
 src_install() {
 	dobin ${WORKDIR}/hilite
 }
+

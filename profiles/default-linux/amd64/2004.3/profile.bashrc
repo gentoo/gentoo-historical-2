@@ -1,13 +1,8 @@
-# currently theoretical multilib stuff only available if using portage 2.0.51
-CHOST32="i686-pc-linux-gnu"
-CONF_MULTILIBDIR="${CONF_MULTILIBDIR:=lib32}"
-# until everything in the tree understands $(get_libdir), the only sane
-# default for this is lib.
-CONF_LIBDIR="${CONF_LIBDIR:=lib}"
-ARCH_WRAPPER="linux32"
-CC32="gcc32"
-CPP32="g++32"
-
+# fix for bug 60147, "configure causes sandbox violations when lib64
+# is a directory". currently only works with cvs portage.
+#SANDBOX_WRITE="${SANDBOX_WRITE}:/usr/lib64/conftest:/usr/lib64/cf"
+addwrite /usr/lib64/conftest
+addwrite /usr/lib64/cf
 
 setup_multilib_variables() {
 	# if run via linux32, uname -m will always return i686
@@ -32,15 +27,3 @@ setup_multilib_variables() {
 }
 
 [ "${CCHOST}" == "" -o "${CCHOST}" == "${CHOST}" -o "${CCHOST}" == "${CHOST32}" ] && setup_multilib_variables
-[ "${CONF_MULTILIBDIR}" == "lib" -a "${CONF_LIBDIR}" == "lib64" ] && SKIP_MULTILIB_HACK="YES"
-
-
-# spec switching support only available in gcc 3.4.2-r1 and later
-if [ -n "${USE_SPECS}" ] ; then
-	GCC_VER="$(${CC:=gcc} -dumpversion)"
-	SPECSLOC="/usr/lib/gcc-lib/${CHOST}/${GCC_VER}/"
-	if [ -f ${SPECSLOC}/${USE_SPECS}.specs ] ; then
-		export GCC_SPECS="${SPECSLOC}/${USE_SPECS}.specs"
-	fi
-fi
-

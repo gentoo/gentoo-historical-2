@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.2.26.ebuild,v 1.9 2005/07/21 17:14:04 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.2.26.ebuild,v 1.1 2004/04/10 06:42:19 kumba Exp $
 
 ETYPE="headers"
 inherit kernel
@@ -20,11 +20,8 @@ SRC_URI="mirror://kernel/linux/kernel/v2.2/linux-${OKV}.tar.bz2"
 HOMEPAGE="http://www.kernel.org/ http://www.gentoo.org/"
 LICENSE="GPL-2"
 SLOT="0"
-PROVIDE="virtual/os-headers"
-KEYWORDS="-* m68k"
-IUSE=""
-
-DEPEND="!virtual/os-headers"
+PROVIDE="virtual/kernel virtual/os-headers"
+KEYWORDS="-*"
 
 
 pkg_setup() {
@@ -50,7 +47,7 @@ pkg_setup() {
 
 	# Figure out what architecture we are, and set ARCH appropriately
 	ARCH="$(uname -m)"
-	ARCH="$(echo ${ARCH} | sed -e s/i.86/i386/)"
+	ARCH=`echo ${ARCH} | sed -e s/[i].86/i386/ -e s/x86/i386/`
 }
 
 src_unpack() {
@@ -66,7 +63,7 @@ src_compile() {
 	kernel_src_compile
 
 	# If this is sparc, then generate asm_offsets.h
-	if use sparc; then
+	if [ "`use sparc`" ]; then
 		make ARCH=${ARCH} dep || die "Failed to run 'make dep'"
 	fi
 }
@@ -77,7 +74,7 @@ src_install() {
 	kernel_src_install
 
 	# If sparc32, make a symlink from asm to asm-sparc
-	if use sparc; then
+	if [ "`use sparc`" ]; then
 		mv ${D}/usr/include/asm ${D}/usr/include/asm-sparc
 		ln -sf ${D}/usr/include/asm-sparc ${D}/usr/include/asm
 	fi

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxklavier/libxklavier-1.04.ebuild,v 1.4 2005/01/08 23:34:07 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxklavier/libxklavier-1.04.ebuild,v 1.1 2004/10/27 15:23:44 foser Exp $
 
 inherit eutils
 
@@ -10,11 +10,12 @@ SRC_URI="mirror://sourceforge/gswitchit/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~hppa ~alpha ~ia64 ~mips ~ppc64"
 IUSE="doc"
 
 RDEPEND="virtual/x11
 	dev-libs/libxml2"
+
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	doc? ( app-doc/doxygen )"
@@ -30,8 +31,7 @@ src_unpack() {
 
 src_compile() {
 
-	econf --with-xkb_base=/usr/X11R6/lib/X11/xkb \
-		$(use_enable doc doxygen) || die
+	econf $(use_enable doc doxygen) || die
 	emake || die "emake failed"
 
 }

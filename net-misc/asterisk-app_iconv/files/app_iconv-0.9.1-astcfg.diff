@@ -29,7 +29,7 @@
 -		install -m 755 $(NAME).so $(MODULES_DIR) ; \
 -	fi
 +install:
-+	install -D -m 755 $(NAME).so $(DESTDIR)$(MODULES_DIR)/$(NAME).so
++	install -D -m 755 $(NAME).so $(DESTDIR)$(MODULES_DIR)
  
  reload: install
  	asterisk -rx "unload ${RES}"

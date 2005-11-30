@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/krusader/krusader-1.60.0.ebuild,v 1.6 2005/08/14 10:18:05 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/krusader/krusader-1.60.0.ebuild,v 1.1 2005/04/13 17:14:26 greg_g Exp $
 
 inherit kde
 
@@ -10,13 +10,13 @@ SRC_URI="mirror://sourceforge/krusader/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 IUSE="javascript kde"
 # kde: adds support for Konqueror's right-click actions
 
 DEPEND="kde? ( || ( ( kde-base/libkonq kde-base/kdebase-kioslaves )
 		    >=kde-base/kdebase-3.3 ) )
-	javascript? ( kde-base/kjsembed )"
+	x86? ( javascript? ( kde-base/kjsembed ) )"
 
 need-kde 3.3
 
@@ -35,7 +35,7 @@ pkg_postinst() {
 	einfo "- KDiff3  (app-misc/kdiff3)"
 	einfo "- XXdiff  (dev-util/xxdiff)"
 	einfo "- KRename (app-misc/krename)"
-	einfo "- Eject   (virtual/eject)"
+	einfo "- Eject   (sys-apps/eject)"
 	einfo ""
 	einfo "It supports also quite a few archive formats, including:"
 	einfo "- app-arch/arj"

@@ -1,36 +1,8 @@
 # ChangeLog for x11-plugins/gkrellflynn
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellflynn/ChangeLog,v 1.11 2005/09/17 10:07:18 agriffis Exp $
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> gkrellflynn-0.7.ebuild:
-  Mark 0.7 stable on alpha
-
-  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellflynn-0.6.ebuild:
-  Stable on amd64.
-
-  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellflynn-0.7.ebuild:
-  multilib fixes closes bug #88539
-
-  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  gkrellflynn-0.7.ebuild:
-  Masked gkrellflynn-0.7.ebuild stable for ppc
-
-*gkrellflynn-0.7 (22 Jun 2004)
-
-  22 Jun 2004; Martin Holzer <mholzer@gentoo.org> gkrellflynn-0.7.ebuild,
-  metadata.xml:
-  Version bumped.
-
-  19 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> gkrellflynn-0.6.ebuild:
-  marked ~amd64
-
-  15 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellflynn-0.6.ebuild:
-  stable on alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellflynn/ChangeLog,v 1.1 2002/10/31 14:07:32 seemant Exp $
 
 *gkrellflynn-0.6 (31 Oct 2002)
-
-  14 Mar 2003; Jason Wever <weeve@gentoo.org> gkrellflynn-0.6.ebuild:
-  Added ~sparc to keywords.
 
   31 Oct 2002; Seemant Kulleen <seemant@gentoo.org> gkrellflynn-0.6.ebuild
   ChangeLog files/digest-gkrellflynn-0.6 :

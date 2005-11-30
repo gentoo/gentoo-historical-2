@@ -1,57 +1,6 @@
 # ChangeLog for net-analyzer/hyperic-hq-agent
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hyperic-hq-agent/ChangeLog,v 1.10 2005/11/22 04:29:13 mattm Exp $
-
-*hyperic-hq-agent-2.5.10 (22 Nov 2005)
-
-  22 Nov 2005; Matthew Marlowe <mattm@gentoo.org>
-  +files/hyperic-hq-agent.init-2.5.10, +hyperic-hq-agent-2.5.10.ebuild:
-  major upstream bump
-
-  01 Nov 2005; Matthew Marlowe <mattm@gentoo.org>
-  -files/hyperic-hq-agent.init-2.0.31, -files/hyperic-hq-agent.init-2.0.53,
-  -hyperic-hq-agent-2.0.31.ebuild, -hyperic-hq-agent-2.0.53.ebuild,
-  hyperic-hq-agent-2.1.30.ebuild:
-  mark 2.1.30 stable, remove obsolete releases (2.0.x).
-
-  15 Sep 2005; Matthew Marlowe <mattm@gentoo.org>
-  hyperic-hq-agent-2.1.30.ebuild:
-  Fixed mistaken download url provided by upstream.
-
-*hyperic-hq-agent-2.1.30 (09 Sep 2005)
-
-  09 Sep 2005; Matthew Marlowe <mattm@gentoo.org>
-  +files/hyperic-hq-agent.init-2.1.30, +hyperic-hq-agent-2.1.30.ebuild:
-  New upstream version.  Adds support for cisco router
-  monitoring and fixes various bugs.
-
-  30 Jun 2005; Matthew Marlowe <mattm@gentoo.org>
-  hyperic-hq-agent-2.1.20.ebuild:
-  Make 2.1.20 the new stable branch for x86 and amd64.
-
-*hyperic-hq-agent-2.1.20 (20 Jun 2005)
-
-  20 Jun 2005; Matthew Marlowe <mattm@gentoo.org>
-  +files/hyperic-hq-agent.init-2.1.20, +hyperic-hq-agent-2.1.20.ebuild:
-  Major new upstream version of server.
-  Old agents are no longer compatible.
-
-  18 May 2005; Matthew Marlowe <mattm@gentoo.org>
-  files/hyperic-hq-agent.init-2.0.53:
-  slight fix to init script to fix agent stop bug
-
-*hyperic-hq-agent-2.0.53 (18 May 2005)
-
-  18 May 2005; Matthew Marlowe <mattm@gentoo.org>
-  +files/hyperic-hq-agent.init-2.0.53, +hyperic-hq-agent-2.0.53.ebuild:
-  upstream version bump,updated init file to properly switch users,added amd64
-  arch
-
-*hyperic-hq-agent-2.0.31 (14 Feb 2005)
-
-  14 Feb 2005; Matthew Marlowe <mattm@gentoo.org>
-  +files/hyperic-hq-agent.init-2.0.31, +hyperic-hq-agent-2.0.31.ebuild:
-  new upstream version fixes several bugs
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/hyperic-hq-agent/ChangeLog,v 1.1 2005/01/12 22:00:19 mattm Exp $
 
   12 Jan 2005; Matthew Marlowe <mattm@gentoo.org> :
   Initial commit of hyperic-hq-agent using latest upstream version.

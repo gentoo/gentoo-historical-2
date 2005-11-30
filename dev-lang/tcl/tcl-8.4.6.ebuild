@@ -1,51 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcl/tcl-8.4.6.ebuild,v 1.17 2005/01/19 23:35:00 vapier Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tcl/tcl-8.4.6.ebuild,v 1.1 2004/03/04 18:17:42 mholzer Exp $
 
 DESCRIPTION="Tool Command Language"
 HOMEPAGE="http://dev.scriptics.com/software/tcltk/"
 SRC_URI="mirror://sourceforge/tcl/${PN}${PV}-src.tar.gz"
+RESTRICT="nomirror"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
-IUSE="threads"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64 ~ppc64 ~ia64 ~s390"
+RESTRICT="nomirror"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc
+	>=app-portage/gentoolkit-0.1.22"
+RDEPEND="virtual/glibc"
 
 S=${WORKDIR}/${PN}${PV}
 
-pkg_setup() {
-	if use threads
-	then
-		ewarn ""
-		ewarn "PLEASE NOTE: You are compiling ${P} with"
-		ewarn "threading enabled."
-		ewarn "Threading is not supported by all applications"
-		ewarn "that compile against tcl. You use threading at"
-		ewarn "your own discretion."
-		ewarn ""
-		epause 5
-	fi
-}
-
 src_compile() {
-	local local_config_use=""
-
-	if use threads
-	then
-		local_config_use="--enable-threads"
-	fi
-
 	cd ${S}/unix
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--mandir=/usr/share/man \
-		${local_config_use} \
-		|| die
+	./configure --host=${CHOST} \
+				--prefix=/usr \
+				--mandir=/usr/share/man \
+				|| die
+	# threading is not recommended as it breaks some packages
+	#			--enable-threads \
 
 	emake CFLAGS="${CFLAGS}" || die
 }
@@ -90,8 +70,7 @@ pkg_postinst() {
 	ewarn
 	ewarn "If you're upgrading from tcl-8.3, you must recompile the other"
 	ewarn "packages on your system that link with tcl after the upgrade"
-	ewarn "completes.  To perform this action, please run revdep-rebuild"
-	ewarn "in package app-portage/gentoolkit."
+	ewarn "completes.  To perform this action, please run revdep-rebuild."
 	ewarn "If you have dev-lang/tk and dev-tcltk/tclx installed you should"
 	ewarn "upgrade them before this recompilation, too,"
 	ewarn

@@ -1,6 +1,2 @@
-MD5 d3c6becace404991ed2008fb3f3ea39c ChangeLog 1291
-MD5 b72f5750da14a2befe6a1807db7d0220 extace-1.8.11.ebuild 636
-MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
-MD5 6a01680a55afb192aace5364e66030c4 extace-1.9.2.ebuild 638
+MD5 d114eecf1c559b46ab020ac27a4a74ac extace-1.8.11.ebuild 487
 MD5 d637bf3e0ef939bc46066ee0e1601827 files/digest-extace-1.8.11 65
-MD5 52b9310a8b82c68fcbe7a9bacc401b50 files/digest-extace-1.9.2 64

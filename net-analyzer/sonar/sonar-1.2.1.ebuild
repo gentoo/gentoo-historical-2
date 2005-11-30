@@ -1,10 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sonar/sonar-1.2.1.ebuild,v 1.5 2005/05/16 01:20:41 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sonar/sonar-1.2.1.ebuild,v 1.1 2003/12/12 00:31:29 vapier Exp $
 
-inherit toolchain-funcs eutils
+inherit gcc eutils
 
-IUSE=""
 DESCRIPTION="network reconnaissance utility"
 HOMEPAGE="http://autosec.sourceforge.net/"
 SRC_URI="mirror://sourceforge/autosec/${P}.tar.bz2"
@@ -12,9 +11,9 @@ RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc"
+KEYWORDS="x86"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=dev-libs/popt-1.7-r1
 	>=app-doc/doxygen-1.3"
 

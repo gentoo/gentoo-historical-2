@@ -1,84 +1,8 @@
 # ChangeLog for net-im/tkabber
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/tkabber/ChangeLog,v 1.23 2005/09/16 00:56:39 agriffis Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/tkabber/ChangeLog,v 1.1 2003/02/01 01:49:08 agenkin Exp $
 
-  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> tkabber-0.9.6_beta.ebuild:
-  Mark 0.9.6_beta stable on alpha
-
-  05 May 2005; Sven Wegener <swegener@gentoo.org> tkabber-0.9.5b.ebuild,
-  tkabber-0.9.6_beta.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  07 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> tkabber-0.9.7.ebuild:
-  added ~amd64 to KEYWORDS, fixes #88180
-
-  02 Apr 2005; Jason Wever <weeve@gentoo.org> tkabber-0.9.6_beta.ebuild:
-  Stable on SPARC.
-
-  26 Nov 2004; Olivier Crete <tester@gentoo.org> tkabber-0.9.5b.ebuild:
-  Remove sed in global scope
-
-*tkabber-0.9.7 (26 Nov 2004)
-
-  26 Nov 2004; Olivier Crete <tester@gentoo.org> -tkabber-0.9.3b-r1.ebuild,
-  -tkabber-0.9.4b.ebuild, +tkabber-0.9.7.ebuild:
-  Bumped to 0.9.7 (thanks to mikovits christian <gaelic@cargal.org>) 
-  Fixed compilation with portage 2.0.51 (thanks to Alexander Kreuzer
-  <a_kreuzer@gmx.de> and Rob Orlowsky <rob_is_not@hotmail.com>)
-  Marked 0.9.6_beta stable on x86 and cleaned up old versions
-
-  08 Aug 2004; Tom Martin <slarti@gentoo.org> tkabber-0.9.6_beta.ebuild:
-  Typo in DESCRIPTION: writen -> written. Bug 59717.
-
-  19 Jun 2004; Jason Wever <weeve@gentoo.org> tkabber-0.9.6_beta.ebuild:
-  Added ~sparc keyword.
-
-  23 May 2004; Don Seiler <rizzo@gentoo.org>; tkabber-0.9.3b-r1.ebuild,
-  tkabber-0.9.4b.ebuild, tkabber-0.9.5b.ebuild, tkabber-0.9.6_beta.ebuild:
-  Updating package homepage
-
-*tkabber-0.9.6_beta (06 Feb 2004)
-
-  06 Feb 2004; Don Seiler <rizzo@gentoo.org>; metadata.xml,
-  tkabber-0.9.6_beta.ebuild:
-  Version bump.  Thanks to Michael Kohl
-
-  14 Jan 2004; Aron Griffis <agriffis@gentoo.org> tkabber-0.9.5b.ebuild:
-  add ~alpha
-
-*tkabber-0.9.5b (08 Jul 2003)
-
-  08 Jul 2003; Arcady Genkin <agenkin@gentoo.org> :
-  Version update.  Thanks to Tobias Sager <moixa@gmx.ch>.
-
-*tkabber-0.9.4b (02 Mar 2003)
-
-  23 Apr 2003; Stanislav Brabec <utx@gentoo.org> tkabber-0.9.4b.ebuild:
-  Fixed DEPEND for tcl/tk 8.4 (#19558).
-
-  02 Mar 2003; Arcady Genkin <agenkin@gentoo.org> :
-  Version update.
-
-*tkabber-0.9.3b-r1 (31 Jan 2003)
-
-  23 Apr 2003; Stanislav Brabec <utx@gentoo.org> tkabber-0.9.3b-r1.ebuild:
-  Fixed DEPEND for tcl/tk 8.4 (#19558).
-
-  04 Feb 2003; Arcady Genkin <agenkin@gentoo.org> :
-  Wrapped SSL and GPG support in the corresponding USE flags.
-
-  02 Feb 2003; Arcady Genkin <agenkin@gentoo.org> :
-  Added dev-tcltk/tclxml-expat dependency.  This makes the ebuild utilize
-  all documented optional features of tkabber.
-	
 *tkabber-0.9.3b (31 Jan 2003)
 
-  01 Feb 2003; Arcady Genkin <agenkin@gentoo.org> :
-  Added dev-tcltk/tkTheme to dependencies.  This adds docking support for
-  KDE and WindowMaker, for example.
-  Added dev-tcltk/tkXwin to dependencies.  This adds auto-away feature.
-  Added dev-tcltk/tclgpgme to dependencies.  This adds GPG
-  encryption/signing of the messages.
-	
   31 Jan 2003; Arcady Genkin <agenkin@gentoo.org> :
   Initial version of the package.

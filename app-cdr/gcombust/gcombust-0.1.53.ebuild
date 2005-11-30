@@ -1,24 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/gcombust/gcombust-0.1.53.ebuild,v 1.9 2005/01/01 12:13:37 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/gcombust/gcombust-0.1.53.ebuild,v 1.1 2002/10/27 22:31:02 agenkin Exp $
 
+IUSE="nls"
+
+S=${WORKDIR}/${P}
 DESCRIPTION="A GUI for mkisofs/mkhybrid/cdda2wav/cdrecord/cdlabelgen"
 HOMEPAGE="http://www.abo.fi/~jmunsin/gcombust/"
 SRC_URI="http://www.abo.fi/~jmunsin/gcombust/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE="nls"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc sparc64"
 
 DEPEND="=x11-libs/gtk+-1.2*
 	nls? ( sys-devel/gettext )"
+
 RDEPEND="app-cdr/cdrtools"
 
 src_compile() {
 	local myconf
 
-	if ! use nls
+	if [ -z "`use nls`" ] 
 	then
 		myconf="${myconf} --disable-nls"
 		touch intl/libintl.h
@@ -36,6 +39,6 @@ src_compile() {
 
 src_install() {
 	make prefix=${D}/usr install || die
-	dodoc AUTHORS ChangeLog INSTALL NEWS README THANKS TODO
+	dodoc ABOUT-NLS AUTHORS ChangeLog COPYING INSTALL NEWS README THANKS TODO
 	dohtml -a shtml FAQ.shtml
 }

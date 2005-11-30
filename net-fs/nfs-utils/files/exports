@@ -1,1 +1,3 @@
-# /etc/exports: NFS file systems being exported.  See exports(5).
+#
+#nfsserver_home		eth0_net/eth0_mask(rw)
+		

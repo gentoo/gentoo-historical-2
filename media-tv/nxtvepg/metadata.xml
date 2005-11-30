@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>media-tv</herd>
+<herd>no-herd</herd>
 <maintainer>
   <email>phosphan@gentoo.org</email>
-</maintainer>
-<maintainer>
-  <email>pylon@gentoo.org</email>
-  <description>Follow-up maintainer for this package</description>
 </maintainer>
 </pkgmetadata>

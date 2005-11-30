@@ -1,23 +1,6 @@
-# ChangeLog for dev-lang/gprolog
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gprolog/ChangeLog,v 1.8 2005/10/30 21:31:38 grobian Exp $
-
-  30 Oct 2005; Fabian Groffen <grobian@gentoo.org>
-  +files/gprolog-1.2.16-gcc4.patch, gprolog-1.2.16.ebuild:
-  Adding patch to fix GCC4 compilation bugs.  Package doesn't compile due to
-  prolog bugs though.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  gprolog-1.2.13.ebuild, gprolog-1.2.16.ebuild:
-  virtual/glibc -> virtual/libc
-
-  20 Sep 2003; David Holm <dholm@gentoo.org> gprolog-1.2.16.ebuild:
-  Added to ~ppc.
-
-*gprolog-1.2.16 (15 Apr 2003)
-
-  15 Apr 2003; Tom Payne <twp@gentoo.org> gprolog-1.2.16.ebuild :
-  Version bump. Fixed homepage.
+# ChangeLog for dev-lang/gprologp
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gprolog/ChangeLog,v 1.1 2002/10/27 09:20:03 george Exp $
 
 *gprolog-1.2.13
 

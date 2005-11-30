@@ -1,10 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/freebirth/freebirth-0.3.2.ebuild,v 1.10 2005/09/09 13:07:04 flameeyes Exp $
-
-IUSE=""
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-sound/freebirth/freebirth-0.3.2.ebuild,v 1.1 2003/06/21 00:41:11 jje Exp $
 
 DESCRIPTION="Free software bass synthesizer step sequencer"
 HOMEPAGE="http://www.bitmechanic.com/projects/freebirth/"
@@ -12,10 +8,13 @@ SRC_URI="http://www.bitmechanic.com/projects/freebirth/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~x86"
+IUSE=""
 
 DEPEND="=x11-libs/gtk+-1.2*
 	=dev-libs/glib-1.2*"
+
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}
@@ -34,5 +33,6 @@ src_install() {
 	insinto /usr/lib/${PN}/raw
 	doins raw/*.raw
 
-	dodoc CHANGES NEXT_VERSION README
+	dodoc CHANGES INSTALL NEXT_VERSION README
 }
+

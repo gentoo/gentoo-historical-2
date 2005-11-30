@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/speedbar/speedbar-0.14_beta4.ebuild,v 1.8 2005/04/24 11:06:16 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/speedbar/speedbar-0.14_beta4.ebuild,v 1.1 2002/11/01 02:52:02 mkennedy Exp $
 
 inherit elisp
 
@@ -11,10 +11,9 @@ HOMEPAGE="http://cedet.sourceforge.net/speedbar.shtml"
 SRC_URI="mirror://sourceforge/cedet/${P/_/}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 ppc"
+KEYWORDS="x86"
 
-DEPEND="virtual/emacs
-	!app-emacs/cedet"
+DEPEND="virtual/emacs"
 
 S="${WORKDIR}/${P/_/}"
 

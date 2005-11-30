@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/freetts/freetts-1.2.ebuild,v 1.8 2005/07/26 07:50:25 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/freetts/freetts-1.2.ebuild,v 1.1 2005/03/03 00:31:37 leonardop Exp $
 
 inherit java-pkg eutils
 
@@ -10,17 +10,17 @@ HOMEPAGE="http://freetts.sourceforge.net/"
 
 DEPEND=">=virtual/jdk-1.3
 	>=dev-java/ant-1.6.0
-	app-arch/sharutils
 	app-arch/unzip
-	mbrola? ( =app-accessibility/mbrola-3.0.1h-r1 )
+	mbrola? ( app-accessibility/mbrola )
 	jikes? ( dev-java/jikes )"
-RDEPEND=">=virtual/jre-1.3
-	 mbrola? ( =app-accessibility/mbrola-3.0.1h-r1 )"
+RDEPEND=">=virtual/jdk-1.3"
 
 LICENSE="sun-bcla-jsapi freetts"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE="doc jikes mbrola"
+
+#S=${WORKDIR}
 
 src_unpack() {
 	unpack ${A}

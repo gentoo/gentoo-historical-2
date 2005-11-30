@@ -1,25 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/ion/ion-20020207-r1.ebuild,v 1.11 2005/07/10 15:19:56 twp Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/ion/ion-20020207-r1.ebuild,v 1.1 2002/09/11 14:29:55 seemant Exp $
 
-inherit eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="A keyboard-based window manager"
-HOMEPAGE="http://www.students.tut.fi/~tuomov/ion/"
 SRC_URI="http://www.students.tut.fi/~tuomov/dl/${P}.tar.gz"
+HOMEPAGE="http://www.students.tut.fi/~tuomov/ion/"
 
-LICENSE="Clarified-Artistic"
 SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
+LICENSE="Artistic"
+KEYWORDS="x86 sparc sparc64"
 
 DEPEND="virtual/x11"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
+	patch -p1 < ${FILESDIR}/${P}-gentoo.diff || die
 }
+	
 
 src_compile() {
 	# Edit system.mk
@@ -31,12 +30,10 @@ src_compile() {
 		-e 's:#HAS_SYSTEM_ASPRINTF=1:HAS_SYSTEM_ASPRINTF=1:' \
 		-e 's:#INSTALL=install -c:INSTALL=install -c:' \
 		-e 's:INSTALL=install *$:#INSTALL=install:' \
-		-e 's:-pedantic-errors ::g' \
 		system.mk.new > system.mk
 
 	cp Makefile Makefile.new
-	sed -e 's:$(DOCDIR)/ion:$(DOCDIR)/${P}:g' \
-		Makefile.new > Makefile
+	sed -e 's:$(DOCDIR)/ion:$(DOCDIR)/${P}:g' Makefile.new > Makefile
 
 	make depend || die
 	emake || die

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.11.ebuild,v 1.6 2004/07/01 21:28:39 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.11.ebuild,v 1.1 2004/02/17 15:15:43 dholm Exp $
 
 IUSE="ssl tcltk"
 
@@ -9,9 +9,9 @@ HOMEPAGE="http://www.mico.org/"
 SRC_URI="http://www.mico.org/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~ppc alpha ~amd64 ~sparc"
+KEYWORDS="~ppc ~alpha"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-devel/flex
 	sys-devel/bison
 	ssl? ( dev-libs/openssl )

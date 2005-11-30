@@ -1,23 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/vanessa-logger/vanessa-logger-0.0.6.ebuild,v 1.9 2005/07/31 21:34:24 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vanessa-logger/vanessa-logger-0.0.6.ebuild,v 1.1 2004/08/25 14:26:27 tantive Exp $
 
-MY_PN="${PN/-/_}"
-MY_P="${MY_PN}-${PV}"
 DESCRIPTION="Generic logging layer that may be used to log to one or more of syslog, an open file handle or a file name."
 HOMEPAGE="http://www.vergenet.net/linux/vanessa/"
-SRC_URI="http://www.vergenet.net/linux/vanessa/download/${MY_PN}/${PV}/${MY_P}.tar.gz"
+SRC_URI="http://www.vergenet.net/linux/vanessa/download/vanessa_logger/0.0.6/vanessa_logger-0.0.6.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha ia64 ~ppc"
+KEYWORDS="~x86 ~alpha ~ia64"
+
 IUSE=""
+DEPEND="virtual/glibc"
+S=${WORKDIR}/vanessa_logger-0.0.6
 
-DEPEND="virtual/libc"
+src_compile() {
+	econf || die "econf failed"
 
-S="${WORKDIR}/${MY_P}"
+	emake || die
+}
 
 src_install() {
-	make DESTDIR="${D}" install || die "error installing"
-	dodoc AUTHORS NEWS README TODO sample/*.c sample/*.h
+	einstall
+	dodoc AUTHORS COPYING NEWS README TODO sample/*.c sample/*.h
 }

@@ -30,7 +30,7 @@ guile		dev-util/guile
 ruby		dev-lang/ruby
 mysql		dev-db/mysql
 postgres	dev-db/postgresql
-X		x11-base/xorg-x11
+X		x11-base/xfree
 sdl		media-libs/libsdl
 gpm		sys-libs/gpm
 tcpd		sys-apps/tcp-wrappers
@@ -48,11 +48,9 @@ qt		x11-libs/qt
 kde		kde-base/kdebase
 motif		x11-libs/openmotif
 opengl		virtual/opengl
-mozilla		www-client/mozilla
+mozilla		net-www/mozilla
 gphoto2		media-gfx/gphoto2
 ldap		net-nds/openldap
-snmp		net-analyzer/net-snmp
+snmp		net-analyzer/ucd-snmp
 cdr		app-cdr/cdrtools
 scanner		media-gfx/sane-backends
-
-

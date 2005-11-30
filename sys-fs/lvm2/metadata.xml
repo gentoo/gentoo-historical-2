@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>base-system</herd>
+<herd>no-herd</herd>
 <maintainer>
-	<email>rocket@gentoo.org</email>
-	<name>Eric Edgar</name>
+	<email>max@gentoo.org</email>
+	<name>Max Kalika</name>
 </maintainer>
 </pkgmetadata>

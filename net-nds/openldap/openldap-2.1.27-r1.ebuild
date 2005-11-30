@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.27-r1.ebuild,v 1.7 2005/09/22 19:57:41 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.1.27-r1.ebuild,v 1.1 2004/03/29 05:11:39 robbat2 Exp $
 
 inherit eutils
 
 DESCRIPTION="LDAP suite of application and development tools"
 HOMEPAGE="http://www.OpenLDAP.org/"
-SRC_URI="mirror://openldap/openldap-release/${P}.tgz"
+SRC_URI="ftp://ftp.OpenLDAP.org/pub/OpenLDAP/openldap-release/${P}.tgz"
 
 LICENSE="OPENLDAP"
 SLOT="0"
-KEYWORDS="~x86 ppc ~sparc ~alpha ~amd64 ~mips"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~mips"
 IUSE="berkdb crypt debug gdbm ipv6 kerberos odbc perl readline samba sasl slp ssl tcpd"
 
 DEPEND=">=sys-libs/ncurses-5.1
@@ -45,7 +45,7 @@ DEPEND="${DEPEND}
 
 pkg_preinst() {
 	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/lib/openldap ldap
+	enewuser ldap 439 /dev/null /usr/lib/openldap ldap
 }
 
 src_unpack() {
@@ -180,7 +180,7 @@ src_install() {
 	newins ${FILESDIR}/2.0/slapd.conf slapd
 
 	# install MDK's ssl cert script
-	if use ssl || use samba; then
+	if [ "`use ssl`" -o "`use samba`" ]; then
 		dodir /etc/openldap/ssl
 		exeinto /etc/openldap/ssl
 		doexe ${FILESDIR}/gencert.sh

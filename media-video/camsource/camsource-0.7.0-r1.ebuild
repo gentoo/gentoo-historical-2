@@ -1,44 +1,40 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/camsource/camsource-0.7.0-r1.ebuild,v 1.12 2005/09/03 23:25:37 flameeyes Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-video/camsource/camsource-0.7.0-r1.ebuild,v 1.1 2003/06/09 04:24:55 zhen Exp $
 
 DESCRIPTION="Camsource grabs images from a video4linux webcam device."
 
 HOMEPAGE="http://camsource.sourceforge.net/"
-SRC_URI="mirror://sourceforge/camsource/${P}.tar.gz"
+SRC_URI="http://umn.dl.sourceforge.net/sourceforge/camsource/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="x86"
 IUSE=""
 
-DEPEND=">=dev-libs/libxml2-2.4.22
+DEPEND=">=dev-libs/libxml2-2.4.22 
 		>=media-libs/jpeg-6b"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/gcc34.patch
-}
+		
+RDEPEND=""
+S=${WORKDIR}/${P}
 
 src_compile() {
+	
 	econf || die
 	emake || die
 }
 
 src_install() {
-
+	
 	einstall
-	dodoc AUTHORS README NEWS
+	dodoc AUTHORS COPYING INSTALL README NEWS
 }
 
 pkg_postinst() {
 
-	einfo
-	einfo "Please edit the configuration file:"
+	einfo ""
+	einfo "Please edit the configuration file: "
 	einfo "/etc/camsource.conf.example"
 	einfo "to your liking."
-	einfo
+	einfo ""
 
 }

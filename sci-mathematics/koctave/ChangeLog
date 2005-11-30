@@ -1,40 +1,6 @@
-# ChangeLog for sci-mathematics/koctave
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/koctave/ChangeLog,v 1.10 2005/11/27 17:44:12 cryos Exp $
-
-  27 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org> koctave-0.65-r1.ebuild:
-  Added runtime dependency on konsole or kdebase, closes bug 112620.
-
-  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> koctave-0.65-r1.ebuild:
-  Stable on amd64.
-
-  20 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -koctave-0.65.ebuild,
-  koctave-0.65-r1.ebuild:
-  Changed dependency from kdebase to kdelibs (see bug #83058). Added to x86.
-  Removed old version.
-
-*koctave-0.65-r1 (05 Jun 2005)
-
-  05 Jun 2005; Olivier Fisette <ribosome@gentoo.org>
-  +koctave-0.65-r1.ebuild:
-  Workaround for bug #43843. Adds documentation.
-
-  31 May 2005; Marcus D. Hanwell <cryos@gentoo.org> koctave-0.65.ebuild:
-  Update homepage and download locations.
-
-  24 Apr 2005; Jason Wever <weeve@gentoo.org> koctave-0.65.ebuild:
-  Added ~sparc keyword.
-
-  24 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org>
-  +files/koctave-0.65-arts-configure.patch, koctave-0.65.ebuild:
-  Patched configure conditionally to allow compilation without arts. Fixes bug
-  80980.
-
-  15 Jan 2005; Dan Armak <danarmak@gentoo.org> koctave-0.65.ebuild:
-  Changed dep on a kde-base monolithic package to accept the equivalent split
-  or -meta package. KDE 3.4 has 'split' packages as well as monolithic, and
-  either alternative may provide the same files. This dep may have to be
-  narrowed down in the future to the precise split packages required.
+# ChangeLog for app-sci/koctave
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/koctave/ChangeLog,v 1.1 2004/12/28 14:26:18 ribosome Exp $
 
 *koctave-0.65 (28 Dec 2004)
 

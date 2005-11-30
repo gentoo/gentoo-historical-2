@@ -1,16 +1,6 @@
 # ChangeLog for net-firewall/gshield
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/gshield/ChangeLog,v 1.5 2005/08/23 18:14:56 flameeyes Exp $
-
-  23 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> gshield-2.8-r2.ebuild:
-  Don't use cp -a.
-
-  26 Jul 2005; David Holm <dholm@gentoo.org> gshield-2.8-r2.ebuild:
-  Added to ~ppc.
-
-  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gshield-2.8-r1.ebuild,
-  gshield-2.8.ebuild:
-  tidy older versions
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/gshield/ChangeLog,v 1.1 2003/03/31 17:08:46 mholzer Exp $
 
 *gshield-2.8 (31 Mar 2003)
 

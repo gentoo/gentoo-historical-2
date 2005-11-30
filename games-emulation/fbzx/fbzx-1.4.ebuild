@@ -1,41 +1,34 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/fbzx/fbzx-1.4.ebuild,v 1.8 2005/09/26 17:44:41 wolf31o2 Exp $
-
-inherit eutils toolchain-funcs games
-
-DESCRIPTION="A Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer"
-HOMEPAGE="http://www.rastersoft.com/fbzx.html"
-SRC_URI="http://www.rastersoft.com/programas/fbzx/${PN}14.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="~ppc x86"
-IUSE=""
-
-RDEPEND="media-libs/libsdl"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/fbzx/fbzx-1.4.ebuild,v 1.1 2004/03/21 20:17:28 dholm Exp $
 
 S="${WORKDIR}/${PN}"
+DESCRIPTION="FBZX is a Sinclair Spectrum emulator, designed to work at full screen using the FrameBuffer."
+SRC_URI="http://www.rastersoft.com/programas/fbzx/${PN}14.tar.gz"
+HOMEPAGE="http://www.rastersoft.com/fbzx.html"
+LICENSE="GPL-2"
+DEPEND="media-libs/libsdl"
+KEYWORDS="~ppc"
+SLOT="0"
+IUSE="sdl"
 
 src_unpack() {
 	unpack ${A}
+
 	cd ${S}
-	sed -i \
-		-e "s|/usr/share/spectrum|${GAMES_DATADIR}/${PN}|g" \
-		emulator.c || die "sed failed"
-	sed -i \
-		-e "s:gcc:$(tc-getCC):" \
-		-e "s:-O2:${CFLAGS}:" \
-		Makefile
-	epatch ${FILESDIR}/${PV}-endian.patch
+	sed -i -e "s|share/spectrum|share/fbzx|g" emulator.c
 }
 
-src_install() {
-	dogamesbin fbzx || die "dogamesbin failed"
-	insinto "${GAMES_DATADIR}/${PN}/roms"
-	doins roms/* || die "doins failed"
-	dodoc CAPABILITIES FAQ PORTS README* TODO VERSIONS
-	prepgamesdirs
+src_compile() {
+	emake || die
+}
+
+src_install () {
+	dobin fbzx
+
+	dodir /usr/share/fbzx
+	insinto /usr/share/fbzx/roms
+	doins roms/*
+
+	dodoc COPYING FAQ INSTALL README TODO
 }

@@ -8,4 +8,3 @@ virtual/os-headers
 sys-devel/binutils
 sys-devel/libtool
 dev-lang/python
-sys-apps/sandbox

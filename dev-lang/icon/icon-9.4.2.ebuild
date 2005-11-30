@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icon/icon-9.4.2.ebuild,v 1.3 2005/11/03 12:26:56 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icon/icon-9.4.2.ebuild,v 1.1 2004/07/31 01:20:54 george Exp $
 
 MY_PV=${PV//./}
 SRC_URI="http://www.cs.arizona.edu/icon/ftp/packages/unix/icon.v${MY_PV}src.tgz"
@@ -9,7 +9,7 @@ DESCRIPTION="very high level language"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc-macos ~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="X"
 
 S=${WORKDIR}/icon.v${MY_PV}src
@@ -25,20 +25,10 @@ src_unpack() {
 }
 
 src_compile() {
-	# select the right compile target.  Note there are many platforms
-	# available
-	local mytarget;
-	if use ppc-macos;
-	then
-		mytarget="ppc_macos"
-	else
-		mytarget="linux"
-	fi
-
 	if use X; then
-		emake X-Configure name=${mytarget} -j1 || die
+		emake X-Configure name=linux -j1 || die
 	else
-		emake Configure name=${mytarget} -j1 || die
+		emake Configure name=linux -j1 || die
 	fi
 
 	emake -j1 || die

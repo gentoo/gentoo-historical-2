@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/atitvout/atitvout-0.4.ebuild,v 1.3 2004/07/01 10:50:33 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/atitvout/atitvout-0.4.ebuild,v 1.1 2003/06/18 11:58:44 seemant Exp $
 
 DESCRIPTION="Linux ATI TV Out support program"
 HOMEPAGE="http://www.stud.uni-hamburg.de/users/lennart/projects/atitvout/"
@@ -10,7 +10,7 @@ KEYWORDS="x86"
 SLOT="0"
 LICENSE="GPL-2"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-libs/lrmi"
 
 S=${WORKDIR}/${PN}

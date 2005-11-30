@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/zapping/zapping-0.6.7.ebuild,v 1.6 2004/07/18 11:39:34 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/zapping/zapping-0.6.7.ebuild,v 1.1 2003/07/15 15:27:27 mholzer Exp $
 
 DESCRIPTION="TV- and VBI- viewer for the Gnome environment"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
@@ -30,7 +30,7 @@ src_compile() {
 		&& myconf="${myconf} --with-x" \
 		|| myconf="${myconf} --without-x"
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 
 	mv src/Makefile src/Makefile.orig
 	sed -e "s:\(INCLUDES = \$(COMMON_INCLUDES)\):\1 -I/usr/include/libglade-1.0 -I/usr/include/gdk-pixbuf-1.0:" \
@@ -48,6 +48,6 @@ src_install() {
 	dosym /usr/bin/zapping /usr/bin/zapzilla
 	# thx to Andreas Kotowicz <koto@mynetix.de> for mailing me this fix:
 	rm ${D}/usr/bin/zapping_setup_fb
-	dobin zapping_setup_fb/zapping_setup_fb
+	dosym /usr/sbin/zapping_setup_fb /usr/bin/zapping_setup_fb
 	dodoc AUTHORS COPYING ChangeLog NEWS README TODO
 }

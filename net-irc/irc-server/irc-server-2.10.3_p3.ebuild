@@ -1,45 +1,60 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irc-server/irc-server-2.10.3_p3.ebuild,v 1.10 2005/09/02 15:10:50 swegener Exp $
-
-inherit eutils versionator flag-o-matic
-
-MY_P=irc${PV/_/}
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irc-server/irc-server-2.10.3_p3.ebuild,v 1.1 2003/10/04 00:52:26 gregf Exp $
 
 DESCRIPTION="RFC compliant IRC server"
-HOMEPAGE="http://www.irc.org/"
-SRC_URI="ftp://ftp.irc.org/irc/server/${MY_P}.tgz
-	ftp://ftp.irc.org/irc/server/Old/irc$(get_version_component_range 1-2)/${MY_P}.tgz"
-
+HOMEPAGE="http://www.irc.org"
+SRC_URI="ftp://ftp.irc.org/irc/server/irc2.10.3p3.tgz
+	ftp://ftp.funet.fi/pub/unix/irc/server/irc2.10.3p3.tgz"
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+
+# The only architecture I can test
+KEYWORDS="x86"
 IUSE="zlib ipv6"
 
-RDEPEND="sys-libs/ncurses
+DEPEND="sys-libs/glibc
+	sys-libs/ncurses
 	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
-	sys-apps/sed
-	sys-apps/grep"
 
-S=${WORKDIR}/${MY_P}
+RDEPEND="sys-apps/sed
+	sys-apps/grep
+	sys-apps/textutils"
 
-pkg_setup() {
-	enewgroup ircd
-	enewuser ircd -1 -1 -1 ircd
-}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	epatch "${FILESDIR}"/${PV}-gentoo.patch
-}
+S=${WORKDIR}/irc2.10.3p3
 
 src_compile () {
-	append-ldflags -lm
 
-	sed -i \
+	IRCUID=`grep ^ircd: /etc/passwd | cut -d : -f 3`
+	IRCGID=`grep ^ircd: /etc/group | cut -d : -f 3`
+	if [ -z "$IRCGID" ]
+	then
+		IRCGID=`grep ^ircd: /etc/passwd | cut -d : -f 4`
+	fi
+
+	if [ -z "$IRCUID" ]
+	then
+		IRCUID=0
+		until [ -z "`cut -d : -f 3 /etc/passwd | grep $IRCUID`" ]
+		do
+			IRCUID=$RANDOM
+		done
+	fi
+
+	if [ -z "$IRCGID" ]
+	then
+		IRCGID=0
+		until [ -z "`cut -d : -f 3 /etc/group | grep $IRCGID`" ]
+		do
+			IRCGID=$RANDOM
+		done
+	fi
+
+	echo -n "$IRCUID" > ${T}/user
+	echo -n "$IRCGID" > ${T}/group
+
+	cd ${S}/support
+	sed \
 		-e "s/^#undef\tOPER_KILL$/#define\tOPER_KILL/" \
 		-e "s/^#undef\tOPER_RESTART$/#define\tOPER_RESTART/" \
 		-e "s/^#undef TIMEDKLINES$/#define\tTIMEDKLINES\t60/" \
@@ -49,54 +64,61 @@ src_compile () {
 		-e "s/^#undef\tIRC_UID$/#define\tIRC_UID\t$IRCUID/" \
 		-e "s/^#undef\tIRC_GID$/#define\tIRC_GID\t$IRCGID/" \
 		-e "s/^#undef USE_SERVICES$/#define\tUSE_SERVICES/" \
-		"${S}"/config.h.dist
+		config.h.dist > config.h.dist~
+	mv -f config.h.dist~ config.h.dist
 
-	use zlib && sed -i -e "s/^#undef\tZIP_LINKS$/#define\tZIP_LINKS/" ${S}/config.h.dist
+	use zlib && sed -e "s/^#undef\tZIP_LINKS$/#define\tZIP_LINKS/" config.h.dist > config.h.dist~
+	mv -f config.h.dist~ config.h.dist
 
-	econf \
+	cd ..
+
+	use zlib && myconf="--with-zlib" || myconf="--without-zlib"
+	use ipv6 && myconf="$myconf --with-ip6" || myconf="$myconf --without-ip6"
+
+	./configure \
+		--prefix=/usr \
+		--host=i686-pc-linux-gnu \
+		'--mandir=${prefix}/share/man' \
 		--sysconfdir=/etc/ircd \
 		--localstatedir=/var/run/ircd \
 		--logdir=/var/log \
-		--mandir='${prefix}/share/man' \
-		$(use_with zlib) \
-		$(use_with ipv6 ip6) \
-		|| die "econf failed"
+		$myconf || die
 
-	cd $(support/config.guess)
-	emake ircd iauth chkconf ircd-mkpasswd ircdwatch tkserv || die "emake failed"
+	cd `support/config.guess`
+	emake ircd iauth chkconf ircd-mkpasswd ircdwatch tkserv || die
 }
 
 src_install() {
-	cd $(support/config.guess)
 
+	cd `support/config.guess`
 	make \
-		prefix="${D}"/usr \
-		ircd_conf_dir="${D}"/etc/ircd \
-		ircd_var_dir="${D}"/var/run/ircd \
-		ircd_log_dir="${D}"/var/log \
-		install-server \
-		install-tkserv \
-		|| die "make install failed"
+		prefix=${D}/usr \
+		ircd_conf_dir=${D}/etc/ircd \
+		ircd_var_dir=${D}/var/run/ircd \
+		ircd_log_dir=${D}/var/log \
+		install-server install-tkserv || die
 
-	fowners ircd:ircd /var/run/ircd
+	fowners `cat ${T}/user`.`cat ${T}/group` /var/run/ircd
 
 	cd ../doc
-	dodoc \
-		*-New alt-irc-faq Authors BUGS ChangeLog Etiquette example.conf \
+	dodoc *-New alt-irc-faq Authors BUGS ChangeLog Etiquette example.conf \
 		iauth-internals.txt INSTALL.appendix INSTALL.* LICENSE \
 		m4macros README RELEASE* rfc* SERVICE*
-
 	docinto Juped
 	dodoc Juped/Advertisement Juped/ChangeLog.* Juped/INSTALL
-
 	docinto Juped/US-Admin
 	dodoc Juped/US-Admin/Networking
-
 	docinto Nets
 	dodoc Nets/IRCNet
-
 	docinto Nets/Europe
 	dodoc Nets/Europe/*
 
-	newinitd "${FILESDIR}"/ircd.rc ircd
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/ircd.rc ircd
+
+}
+
+pkg_postinst() {
+	groupadd -g `cat ${T}/group` -o ircd
+	useradd -c "IRCd server user" -d /etc/ircd -g `cat ${T}/group` -o -s /bin/false -u `cat ${T}/user` ircd
 }

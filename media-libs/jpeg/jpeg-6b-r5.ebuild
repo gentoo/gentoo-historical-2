@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/jpeg/jpeg-6b-r5.ebuild,v 1.9 2005/10/02 05:49:04 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/jpeg/jpeg-6b-r5.ebuild,v 1.1 2005/06/10 18:22:10 flameeyes Exp $
 
 inherit flag-o-matic libtool eutils toolchain-funcs
 
@@ -11,45 +11,58 @@ SRC_URI="ftp://ftp.uu.net/graphics/jpeg/${MY_P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="virtual/libc"
 DEPEND="${RDEPEND}
 	>=sys-devel/libtool-1.5.10-r4"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+
+	cd ${S}
+
+	# make shared libraries work on G/FBSD. Need to be before the sed
+	epatch "${FILESDIR}/${P}-freebsd.patch"
 
 	# allow /etc/make.conf's HOST setting to apply
 	sed -i 's/ltconfig.*/& $CHOST/' configure
-	elibtoolize
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	uclibctoolize
+	use ppc-macos && darwintoolize
+	epatch ${FILESDIR}/${P}-gentoo.patch
 }
 
 src_compile() {
-	tc-export CC RANLIB
+	replace-cpu-flags k6 k6-2 k6-3 i586
 	econf --enable-shared --enable-static || die "econf failed"
 
-	if use ppc-macos ; then
-		sed -i \
-			-e '/^LIBTOOL =/s:=.*:=/usr/bin/glibtool:' \
-			Makefile || die
+	if use ppc-macos; then
+		cd ${S}
+		sed -i -e 's:LIBTOOL = libtool:LIBTOOL = /usr/bin/glibtool:' Makefile
 	fi
 
-	emake AR="$(tc-getAR) rc" || die "make failed"
+	# The configure script seems to ignore the --libdir option..
+	# set this here to fix libdir path in libtool file
+	sed -i -e "s:^libdir.*:libdir = \$(exec_prefix)/$(get_libdir):" \
+		${S}/Makefile || die
+
+	emake \
+		CC="$(tc-getCC)" \
+		AR="$(tc-getAR) rc" \
+		AR2="$(tc-getRANLIB)" \
+		|| die "make failed"
 }
 
 src_install() {
 	dodir /usr/{include,$(get_libdir),bin,share/man/man1}
 	make \
-		prefix="${D}"/usr \
-		libdir="${D}"/usr/$(get_libdir) \
-		mandir="${D}"/usr/share/man/man1 \
-		install || die "make install"
+		prefix=${D}/usr \
+		libdir=${D}/usr/$(get_libdir) \
+		mandir=${D}/usr/share/man/man1 \
+		install || die
 	insinto /usr/include
-	doins jpegint.h || die "jpeg headers"
+	doins jpegint.h
 
 	dodoc README install.doc usage.doc wizard.doc change.log \
 		libjpeg.doc example.c structure.doc filelist.doc \

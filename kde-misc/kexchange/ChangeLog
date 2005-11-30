@@ -1,15 +1,6 @@
-# ChangeLog for kde-misc/kexchange
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kexchange/ChangeLog,v 1.5 2005/06/05 11:42:51 hansmi Exp $
-
-  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> kexchange-1.0.ebuild:
-  Stable on ppc.
-
-  10 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kexchange-1.0.ebuild:
-  Marked stable on amd64.
-
-  10 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> kexchange-1.0.ebuild:
-  Stable on x86.
+# ChangeLog for app-misc/kexchange
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kexchange/ChangeLog,v 1.1 2004/10/30 17:05:47 carlo Exp $
 
 *kexchange-1.0 (30 Oct 2004)
 

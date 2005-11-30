@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.12.12-r2.ebuild,v 1.12 2005/09/04 11:00:37 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/cvs/cvs-1.12.12-r2.ebuild,v 1.1 2005/08/25 06:21:03 robbat2 Exp $
 
 inherit eutils pam
 
@@ -14,7 +14,7 @@ SRC_URI="http://ccvs.cvshome.org/files/documents/19/872/${P}.tar.bz2
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
 
 IUSE="crypt doc emacs kerberos pam"
 
@@ -62,7 +62,7 @@ src_install() {
 		ln -s cvs.html index.html
 	fi
 
-	newpamd ${FILESDIR}/cvs.pam-include-1.12.12 cvs
+	newpamd ${FILESDIR}/cvs.pam-include cvs
 }
 
 src_test() {

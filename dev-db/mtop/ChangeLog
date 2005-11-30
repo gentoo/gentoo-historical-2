@@ -1,18 +1,6 @@
 # ChangeLog for dev-db/mtop
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mtop/ChangeLog,v 1.6 2005/11/28 12:17:42 mcummings Exp $
-
-  28 Nov 2005; <mcumming@gentoo.org> mtop-0.6.6.ebuild:
-  Switched from perl-module to perl-app eclass
-
-  17 Oct 2004; David Holm <dholm@gentoo.org> mtop-0.6.6.ebuild:
-  Added to ~ppc.
-
-  09 Oct 2004; Simon Stelling <blubb@gentoo.org> mtop-0.6.6.ebuild:
-  added ~amd64
-
-  15 Sep 2004; Thomas Matthijs <axxo@gentoo.org> mtop-0.6.6.ebuild:
-  fixed cvs header
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mtop/ChangeLog,v 1.1 2004/09/13 18:29:05 robbat2 Exp $
 
 *mtop-0.6.6 (13 Sep 2004)
 

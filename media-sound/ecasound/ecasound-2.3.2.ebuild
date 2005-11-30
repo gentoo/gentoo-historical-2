@@ -1,21 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/ecasound/ecasound-2.3.2.ebuild,v 1.8 2005/09/04 10:37:58 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/ecasound/ecasound-2.3.2.ebuild,v 1.1 2004/01/22 12:26:31 torbenh Exp $
 
-IUSE="ncurses arts alsa python oss mikmod oggvorbis jack audiofile"
+IUSE="ncurses arts alsa python oss mikmod oggvorbis jack"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A package for multitrack audio processing"
 SRC_URI="http://ecasound.seul.org/download/${P}.tar.gz"
 HOMEPAGE="http://eca.cx/"
 LICENSE="GPL-2"
 
 SLOT="1"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
-DEPEND="virtual/libc
-	jack?	( media-sound/jack-audio-connection-kit )
+DEPEND="virtual/glibc
+	jack?	( virtual/jack )
 	media-libs/ladspa-sdk
-	audiofile? ( media-libs/audiofile )
+	media-libs/audiofile
 	alsa?	( media-libs/alsa-lib )
 	oggvorbis?	( media-libs/libvorbis )
 	arts?	( kde-base/arts )
@@ -82,7 +83,7 @@ src_install () {
 		cd ..
 	fi
 
-	dodoc FAQ BUGS NEWS README TODO
+	dodoc INSTALL FAQ BUGS COPYING NEWS README TODO
 	dohtml `find Documentation -name "*.html"`
 	dodoc Documentation/edi-list.txt
 }

@@ -3,9 +3,9 @@
 <pkgmetadata>
 <herd>sound</herd>
 <maintainer>
-  <email>sound@gentoo.org</email>
+  <email>nerdboy@gentoo.org</email>
 </maintainer>
-<longdescription>
+<description>
   Edna is Greg Stein's http streaming audio server for mp3 and ogg files.
-</longdescription>
+</description>
 </pkgmetadata>

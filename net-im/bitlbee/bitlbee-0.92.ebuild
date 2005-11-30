@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/bitlbee/bitlbee-0.92.ebuild,v 1.6 2005/05/15 22:17:06 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/bitlbee/bitlbee-0.92.ebuild,v 1.1 2005/02/27 16:13:11 weeve Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils gcc
 
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"
 HOMEPAGE="http://www.bitlbee.org/"
@@ -10,7 +10,7 @@ SRC_URI="http://get.bitlbee.org/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha ia64 amd64"
+KEYWORDS="x86 ~ppc sparc ~alpha ~ia64 ~amd64"
 IUSE="debug jabber msn oscar yahoo flood ssl"
 
 DEPEND="virtual/libc
@@ -67,7 +67,7 @@ src_compile() {
 
 	# make bitlbeed forking server
 	cd utils
-	$(tc-getCC) ${CFLAGS} bitlbeed.c -o bitlbeed || die "bitlbeed failed to compile"
+	$(gcc-getCC) ${CFLAGS} bitlbeed.c -o bitlbeed || die "bitlbeed failed to compile"
 }
 
 src_install() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vim-spell.eclass,v 1.4 2005/09/28 23:19:10 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/vim-spell.eclass,v 1.1 2005/09/28 18:27:00 ciaranm Exp $
 
 #
 # Original Author: Ciaran McCreesh <ciaranm@gentoo.org>
@@ -24,10 +24,16 @@
 #   things. The vim herd will handle unmasking your spell packages when vim7
 #   comes out of package.mask.
 #
-# * Create the app-vim/vim-spell-${CODE} package. You should base your ebuild
-#   upon app-vim/vim-spell-en. You will need to change VIM_SPELL_LANGUAGE,
-#   KEYWORDS and LICENSE. Check the license carefully! The README will tell
-#   you what it is.
+# * Create the app-vim/vim-spell-${CODE} package. A sample ebuild will look
+#   something like (header removed):
+#
+#     VIM_SPELL_LANGUAGE="French"
+#
+#     inherit vim-spell
+#
+#     LICENSE="GPL-2"
+#     KEYWORDS="~sparc ~mips"
+#     IUSE=""
 #
 # * Don't forget metadata.xml. You should list vim as the herd, and yourself
 #   as the maintainer (there is no need to join the vim herd just for spell
@@ -55,9 +61,7 @@
 # spell files. It's best to let upstream know if you've generated spell files
 # for another language rather than keeping them Gentoo-specific.
 
-inherit eutils
-
-EXPORT_FUNCTIONS src_install pkg_postinst
+EXPORT_FUNCTIONS src_install
 
 IUSE=""
 DEPEND="|| ( >=app-editors/vim-7_alpha
@@ -70,7 +74,9 @@ if [[ -z "${VIM_SPELL_CODE}" ]] ; then
 	VIM_SPELL_CODE="${PN/vim-spell-/}"
 fi
 
-DESCRIPTION="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_CODE})"
+if [[ -z "${DESCRIPTION}" ]] ; then
+	DESCRIPTION="vim spell files: ${VIM_SPELL_LANGUAGE} (${VIM_SPELL_CODE})"
+fi
 
 if [[ -z "${HOMEPAGE}" ]] ; then
 	HOMEPAGE="http://www.vim.org/"
@@ -92,26 +98,5 @@ vim-spell_src_install() {
 	done
 
 	[[ -z "${had_spell_file}" ]] && die "Didn't install any spell files?"
-}
-
-vim-spell_pkg_postinst() {
-	target="/usr/share/vim/vimfiles/spell/"
-	echo
-	einfo "To enable ${VIM_SPELL_LANGUAGE} spell checking, use"
-	einfo "    :setlocal spell spelllang=${VIM_SPELL_CODE}"
-	echo
-	einfo "The following (Vim internal, not file) encodings are supported for"
-	einfo "this language:"
-	for f in "${ROOT}/${target}/${VIM_SPELL_CODE}".*.spl ; do
-		enc="${f##*/${VIM_SPELL_CODE}.}"
-		enc="${enc%.spl}"
-		[[ -z "${enc}" ]] && continue
-		einfo "    ${enc}"
-	done
-	echo
-	einfo "For further documentation, use:"
-	einfo "    :help spell"
-	echo
-	epause
 }
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/nco/nco-2.9.1.ebuild,v 1.4 2005/06/26 03:11:53 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/nco/nco-2.9.1.ebuild,v 1.1 2004/12/27 21:20:23 ribosome Exp $
 
 IUSE=""
 
@@ -10,9 +10,9 @@ HOMEPAGE="http://nco.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 
-DEPEND="sci-libs/netcdf"
+DEPEND="app-sci/netcdf"
 
 src_compile() {
 	econf || die "econf failed"

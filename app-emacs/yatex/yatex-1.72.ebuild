@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/yatex/yatex-1.72.ebuild,v 1.9 2005/08/28 02:33:01 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/yatex/yatex-1.72.ebuild,v 1.1 2003/12/26 19:30:41 usata Exp $
 
-inherit elisp eutils
+inherit elisp
 
 IUSE="cjk"
 
@@ -10,12 +10,13 @@ DESCRIPTION="YaTeX: Yet Another TeX mode for Emacs"
 HOMEPAGE="http://www.yatex.org/"
 SRC_URI="http://www.yatex.org/${P/-/}.tar.gz"
 
-KEYWORDS="alpha ~amd64 ppc ~ppc-macos sparc x86"
+KEYWORDS="~x86 ~alpha"
 SLOT="0"
-LICENSE="as-is"
+LICENSE="GPL-2"
 
-# virtual/emacs is from elisp.eclass
-#DEPEND="virtual/emacs"
+DEPEND="${RDEPEND}
+	cjk? ( app-i18n/nkf )"
+RDEPEND="virtual/emacs"
 
 S=${WORKDIR}/${P/-/}
 
@@ -34,9 +35,9 @@ src_compile() {
 	cd docs
 	mv yatexe yatex.info
 	mv yahtmle yahtml.info
-	if use cjk ; then
-		iconv -f ISO-2022-JP -t EUC-JP yatexj > yatex-ja.info
-		iconv -f ISO-2022-JP -t EUC-JP yahtmlj > yahtml-ja.info
+	if [ -n "`use cjk`" ] ; then
+		nkf -e yatexj > yatex-ja.info
+		nkf -e yahtmlj > yahtml-ja.info
 	fi
 }
 
@@ -47,7 +48,7 @@ src_install() {
 	elisp-install ${PN} help/YATEXHLP*
 
 	dodoc docs/*.eng
-	if use cjk ; then
+	if [ -n "`use cjk`" ] ; then
 		dodoc 00readme install
 		dodoc docs/{htmlqa,qanda} docs/*.doc
 	fi

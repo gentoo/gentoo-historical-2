@@ -1,52 +1,40 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/libpcap-0.8.3-r1.ebuild,v 1.21 2005/08/04 09:39:05 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libpcap/libpcap-0.8.3-r1.ebuild,v 1.1 2004/04/01 02:33:54 solar Exp $
 
-inherit eutils multilib toolchain-funcs
-
-DESCRIPTION="A system-independent library for user-level network packet capture"
-HOMEPAGE="http://www.tcpdump.org/"
+S=${WORKDIR}/${P}
+DESCRIPTION="pcap-Library"
 SRC_URI="http://www.tcpdump.org/release/${P}.tar.gz
 	http://www.jp.tcpdump.org/release/${P}.tar.gz"
-
-LICENSE="BSD"
+HOMEPAGE="http://www.tcpdump.org/"
+DEPEND="virtual/glibc"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
-IUSE="ipv6"
-
-DEPEND="virtual/libc
-	!virtual/libpcap"
-
-PROVIDE="virtual/libpcap"
+LICENSE="BSD"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64 ~ia64"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
+	unpack ${A} ; cd ${S}
+
 	epatch ${FILESDIR}/${PN}-0.8.1-fPIC.patch
 }
 
 src_compile() {
-	econf $(use_enable ipv6) || die "bad configure"
+	econf `use_enable ipv6` || die "bad configure"
 	emake || die "compile problem"
 
 	# no provision for this in the Makefile, so...
-	$(tc-getCC) -Wl,-soname,libpcap.so.0 -shared -fPIC -o libpcap.so.${PV:0:3} *.o \
-		|| die "couldn't make a shared lib"
+	gcc -Wl,-soname,libpcap.so.0 -shared -fPIC -o libpcap.so.${PV:0:3} *.o
+	read
+	assert "couldn't make a shared lib"
 }
 
 src_install() {
-	einstall || die "make install failed"
-
-	# We need this to build pppd on G/FBSD systems
-	if [[ "${USERLAND}" == "BSD" ]]; then
-		insinto /usr/include
-		doins pcap-int.h || die "failed to install pcap-int.h"
-	fi
+	einstall || die
 
 	insopts -m 755
-	insinto /usr/$(get_libdir) ; doins libpcap.so.${PV:0:3}
-	dosym libpcap.so.${PV:0:3} /usr/$(get_libdir)/libpcap.so.0
-	dosym libpcap.so.${PV:0:3} /usr/$(get_libdir)/libpcap.so
+	insinto /usr/lib ; doins libpcap.so.${PV:0:3}
+	dosym /usr/lib/libpcap.so.${PV:0:3} /usr/lib/libpcap.so.0
+	dosym /usr/lib/libpcap.so.${PV:0:3} /usr/lib/libpcap.so
 
-	dodoc CREDITS CHANGES FILES README* VERSION
+	dodoc CREDITS CHANGES FILES README* VERSION LICENSE
 }

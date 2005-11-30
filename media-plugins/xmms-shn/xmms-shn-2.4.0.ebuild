@@ -1,20 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-shn/xmms-shn-2.4.0.ebuild,v 1.5 2005/09/14 06:23:46 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-shn/xmms-shn-2.4.0.ebuild,v 1.1 2004/07/07 09:05:30 eradicator Exp $
+
+IUSE=""
 
 DESCRIPTION="This input plugin allows xmms to play .shn compressed (lossless) files"
-HOMEPAGE="http://www.etree.org/shnutils/xmms-shn/"
+HOMEPAGE="http://shnutils.etree.org/xmms-shn"
 SRC_URI="http://www.etree.org/shnutils/xmms-shn/source/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
+LICENSE="GPL-2"
 #-sparc: 2.4.0: Playing .shn causes xmms to segfault
-KEYWORDS="alpha amd64 ~hppa ~mips ~ppc -sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc -sparc ~alpha ~hppa ~mips ~amd64"
 
 DEPEND="media-sound/xmms"
 
 src_install() {
-	make DESTDIR=${D} libdir=$(xmms-config --input-plugin-dir) install || die
-	dodoc AUTHORS NEWS README
+	make DESTDIR=${D} libdir=/usr/lib/xmms/Input install || die
+	dodoc AUTHORS COPYING NEWS README
 }

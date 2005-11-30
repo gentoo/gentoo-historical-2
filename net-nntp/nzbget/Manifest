@@ -1,16 +1,14 @@
 -----BEGIN PGP SIGNED MESSAGE-----
 Hash: SHA1
 
-MD5 f2160c00931ea21b4d81ab937c34c233 ChangeLog 1851
-MD5 88d9ae003fdf33ff5833ef271200b209 files/digest-nzbget-0.2.2 64
-MD5 e86eaf9a520f4a6f90dc6532179407fd files/digest-nzbget-0.2.3 64
+MD5 fc91f99740f150d6491fa13e58c118a9 ChangeLog 999
 MD5 14594f19e320cd8f1735a5e2e9a00f88 metadata.xml 357
-MD5 3bbbb761681cfd123a998b646b2af197 nzbget-0.2.2.ebuild 816
-MD5 91cde3351dd19aea6c0302e4a0de8857 nzbget-0.2.3.ebuild 817
+MD5 7e25c231fa7b1bbe1117139b874bdb9d nzbget-0.1.2.ebuild 816
+MD5 1a637353d98b39791d0761ba1e777259 files/digest-nzbget-0.1.2 64
 -----BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
+Version: GnuPG v1.9.10 (GNU/Linux)
 
-iD8DBQFDJtWJI1lqEGTUzyQRAuV1AKDVAUHN4oFvroRQ9qfkFeqN+NC8vACeOH7H
-7a3eLTDKXWdZJTUR+Ohj5A0=
-=OJN7
+iD8DBQFBXLQCI1lqEGTUzyQRAplHAJ9pG+opMNRp8JUWJwUTV0S4qlzTfACfZaTp
+eytsfvH+dlcdNM5W3jOKHl8=
+=edoS
 -----END PGP SIGNATURE-----

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/shared-objects/shared-objects-1.4.ebuild,v 1.8 2005/10/30 19:35:42 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/shared-objects/shared-objects-1.4.ebuild,v 1.1 2004/07/20 00:08:20 karltk Exp $
 
 inherit java-pkg
 
@@ -9,10 +9,11 @@ HOMEPAGE="http://www.cwi.nl/htbin/sen1/twiki/bin/view/SEN1/ATermLibrary"
 SRC_URI="http://www.cwi.nl/projects/MetaEnv/shared-objects/shared-objects-1.4.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="1"
-KEYWORDS="x86 ~ppc amd64"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND=">=virtual/jdk-1.4"
 RDEPEND=">=virtual/jre-1.4"
+S=${WORKDIR}/${P}
 
 src_compile() {
 	econf || die "Failed to configure"
@@ -24,9 +25,11 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_newjar shared-objects-${PV}.jar ${PN}.jar
+	java-pkg_dojar shared-objects-1.4.jar
 
-	dobin shared-objects-config
+	exeinto /usr/bin
+	doexe shared-objects-config
 
-	dodoc AUTHORS ChangeLog
+	dodoc AUTHORS COPYING ChangeLog INSTALL
 }
+

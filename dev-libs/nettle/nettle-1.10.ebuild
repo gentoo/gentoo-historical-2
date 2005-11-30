@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/nettle-1.10.ebuild,v 1.9 2005/09/29 02:08:45 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/nettle-1.10.ebuild,v 1.1 2004/07/11 22:01:22 vapier Exp $
 
 DESCRIPTION="cryptographic library that is designed to fit easily in any context"
 HOMEPAGE="http://www.lysator.liu.se/~nisse/nettle/"
@@ -8,22 +8,14 @@ SRC_URI="http://www.lysator.liu.se/~nisse/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
+KEYWORDS="~x86 ~ppc ~sparc"
 IUSE=""
 
 DEPEND="virtual/libc
 	dev-libs/gmp
 	!<dev-libs/lsh-1.4.3-r1"
 
-src_compile() {
-	# BUG #55238 is valid. We need a shared library as well.
-	# Danny van Dyk <kugelfang@gentoo.org> 2004/10/01
-	econf --enable-shared || die
-	emake || die
-}
-
-
 src_install() {
 	einstall || die
-	dodoc AUTHORS ChangeLog NEWS README
+	dodoc AUTHORS ChangeLog INSTALL NEWS README
 }

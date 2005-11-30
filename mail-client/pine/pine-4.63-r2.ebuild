@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/pine/pine-4.63-r2.ebuild,v 1.7 2005/08/24 16:15:13 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/pine/pine-4.63-r2.ebuild,v 1.1 2005/05/20 10:56:49 ticho Exp $
 
 inherit eutils
 
@@ -20,7 +20,7 @@ SRC_URI="ftp://ftp.cac.washington.edu/pine/${P/-/}.tar.bz2
 
 LICENSE="PICO"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ~ppc-macos sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~ppc-macos ~ia64"
 IUSE="ssl ldap kerberos largeterminal pam passfile debug"
 
 DEPEND="virtual/libc
@@ -46,7 +46,7 @@ maildir_warn() {
 	einfo "To use /var/spool/mail INBOX again, set"
 	einfo "\"disable-these-drivers=md\" in your .pinerc file."
 	einfo
-	einfo "Alternately, you might want to read following webpage, which explains how to"
+	einfo "Alternately, you might want to read following webpage, which explains, how to"
 	einfo "use multiple mailboxes simultaneously:"
 	echo
 	echo "http://www.math.washington.edu/~chappa/pine/pine-info/collections/incoming-folders/"

@@ -1,14 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 eb377222673a3cf23e8b27802f433c02 ChangeLog 1439
-MD5 112f9247d2fc15468423044a8aabbe98 files/digest-gxmessage-2.4.4 66
-MD5 2c16e76e7e6dc15a92059c253552e6d4 gxmessage-2.4.4.ebuild 885
+MD5 27516302037a3e98a64486a25d72ec2e gxmessage-2.0.11.ebuild 786
+MD5 1f1c3a64a29ec2c3b8da3728bc897249 ChangeLog 295
 MD5 cdb11033a3fa6525334cecf938961c07 metadata.xml 166
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDaNQWwUpWvClEHQoRAjDmAJ4pu/tl/zunVs6Rbi2W4ZnhTQxsfwCeKCBB
-PoNIKAsZ174gHdKoCxh97rg=
-=zlWF
------END PGP SIGNATURE-----
+MD5 3fb333fda87a9d5b93be1d23fad79c74 files/digest-gxmessage-2.0.11 67

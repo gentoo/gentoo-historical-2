@@ -1,21 +1,22 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/fluxspace/fluxspace-0.0.3.ebuild,v 1.6 2005/07/09 16:30:55 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/fluxspace/fluxspace-0.0.3.ebuild,v 1.1 2003/10/16 21:43:53 pyrania Exp $
 
 IUSE=""
+S=${WORKDIR}/${P}
 DESCRIPTION="Enhancements for workspace management within Fluxbox."
 SRC_URI="http://www.isomedia.com/homes/stevencooper/files/${P}.tar.gz"
 HOMEPAGE="http://www.isomedia.com/homes/stevencooper/"
 DEPEND="x11-wm/fluxbox
 		x11-misc/idesk
-		rox-base/rox
+		app-misc/rox
 		media-libs/imlib2
 		dev-lang/python
 		dev-python/pyxml
 		dev-lang/swig"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc"
+KEYWORDS="x86 ~ppc"
 
 myconf="--prefix=/usr"
 
@@ -39,14 +40,14 @@ pkg_postinst() {
 	cp -f /tmp/fluxspace.xml /usr/share/fluxspace/examples/fluxspace.xml
 	rm -f /tmp/fluxspace.xml
 
-	einfo
+	einfo " "
 	einfo "  Copy /usr/share/fluxspace/examples/fluxspace.xml to your"
 	einfo "  ~/.fluxbox and edit it!"
 	einfo "  (just to make it work change all the \"no\" to \"yes\")"
-	einfo
+	einfo " "
 	einfo "  In your ~/.fluxbox/init change:"
 	einfo "                       session.screen0.rootCommand:"
 	einfo "  to:"
 	einfo "                       session.screen0.rootCommand:    fluxspace"
-	einfo
+	einfo " "
 }

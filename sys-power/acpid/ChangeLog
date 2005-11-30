@@ -1,53 +1,6 @@
-# ChangeLog for sys-power/acpid
+# ChangeLog for sys-apps/acpid
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/ChangeLog,v 1.14 2005/10/22 10:59:27 brix Exp $
-
-  22 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
-  -acpid-1.0.4-r1.ebuild:
-  Pruned old versions.
-
-  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> acpid-1.0.4-r2.ebuild:
-  Mark 1.0.4-r2 stable on alpha
-
-  08 Sep 2005; Henrik Brix Andersen <brix@gentoo.org> acpid-1.0.2-r2.ebuild,
-  acpid-1.0.4-r1.ebuild, acpid-1.0.4-r2.ebuild:
-  Fixed dependencies, bug #105224.
-
-  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> acpid-1.0.4-r2.ebuild:
-  stable on ia64
-
-  08 Aug 2005; Henrik Brix Andersen <brix@gentoo.org> acpid-1.0.4-r2.ebuild:
-  Stable on x86.
-
-*acpid-1.0.4-r2 (02 Jul 2005)
-
-  02 Jul 2005; <brix@gentoo.org> +files/acpid-1.0.4-init.d,
-  +files/acpid-1.0.4-logrotate, +acpid-1.0.4-r2.ebuild:
-  Added logrotate configuration file (bug #89350), added reload() function to
-  init script.
-
-  26 May 2005; <brix@gentoo.org> -acpid-1.0.1.ebuild,
-  -acpid-1.0.2-r1.ebuild, -acpid-1.0.4.ebuild:
-  Pruned old ebuilds.
-
-  23 May 2005; <brix@gentoo.org> acpid-1.0.4-r1.ebuild:
-  Stable on x86.
-
-  14 May 2005; <brix@gentoo.org> acpid-1.0.4-r1.ebuild:
-  Do not treat warnings as errors, bug #90873.
-
-  26 Apr 2005; <brix@gentoo.org> metadata.xml:
-  Updated metadata.xml
-
-  26 Apr 2005; Martin Schlemmer <azarah@gentoo.org>
-  +files/acpid-1.0.4-gcc4.patch, acpid-1.0.4-r1.ebuild:
-  Fix building with gcc4.  Use proper compiler.
-
-*acpid-1.0.4-r1 (24 Apr 2005)
-
-  24 Apr 2005; <brix@gentoo.org> files/acpid-1.0.4-default,
-  +acpid-1.0.4-r1.ebuild:
-  Fixed example regular expression, bug #89716.
+# $Header: /var/cvsroot/gentoo-x86/sys-power/acpid/ChangeLog,v 1.1 2005/03/15 19:15:53 ciaranm Exp $
 
 *acpid-1.0.4 (15 Mar 2005)
 *acpid-1.0.2-r2 (15 Mar 2005)

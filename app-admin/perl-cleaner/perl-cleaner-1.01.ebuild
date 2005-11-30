@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/perl-cleaner/perl-cleaner-1.01.ebuild,v 1.3 2005/09/24 04:12:48 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/perl-cleaner/perl-cleaner-1.01.ebuild,v 1.1 2005/06/05 17:33:17 mcummings Exp $
 
 DESCRIPTION="User land tool for cleaning up old perl installs"
 HOMEPAGE="http://dev.gentoo.org/~mcummings/"
@@ -8,12 +8,12 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390 sh"
 IUSE=""
 
 DEPEND="app-shells/bash"
 
-RDEPEND="dev-lang/perl"
+RDPEND="dev-lang/perl"
 
 src_unpack() {
 	unpack ${A}

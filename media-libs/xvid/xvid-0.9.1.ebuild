@@ -1,20 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/xvid/xvid-0.9.1.ebuild,v 1.14 2005/01/09 07:04:18 luckyduck Exp $
-
-DESCRIPTION="high performance/quality MPEG-4 video de-/encoding solution"
-HOMEPAGE="http://www.xvid.org/"
-SRC_URI="http://files.xvid.org/downloads/${PN}core-${PV}.tar.bz2"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64"
-IUSE="doc"
-
-DEPEND="virtual/libc
-	x86? ( >=dev-lang/nasm-0.98.30 )"
+# Author Georgi Georgiev <chutz@chubaka.net>
+# $Header: /var/cvsroot/gentoo-x86/media-libs/xvid/xvid-0.9.1.ebuild,v 1.1 2003/02/16 20:42:46 azarah Exp $
 
 S="${WORKDIR}/${PN}core-${PV}/build/generic"
+DESCRIPTION="XviD, a high performance/quality MPEG-4 video de-/encoding solution."
+SRC_URI="http://files.xvid.org/downloads/${PN}core-${PV}.tar.bz2"
+HOMEPAGE="http://www.xvid.org/"
+
+DEPEND="virtual/glibc
+	x86? ( >=dev-lang/nasm-0.98.30 )"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+
+src_compile() {
+	[ -z "${CC}" ] && export CC="gcc"
+
+	econf || die
+	emake || die
+}
 
 src_install() {
 	dodir /usr/{include,lib}
@@ -23,11 +29,11 @@ src_install() {
 	cd ${S}/../../
 
 	dodoc authors.txt changelog.txt LICENSE README.txt todo.txt
-
-	if use doc
+	
+	if [ "`use doc`" ]
 	then
 		dodoc CodingStyle doc/README doc/xvid-decoding.txt doc/xvid-encoder.txt
-
+		
 		dodoc doc/xvid-api-ref.pdf
 		dohtml -r doc/xvid-api-ref
 
@@ -38,3 +44,4 @@ src_install() {
 		#doins examples/ex1/*
 	fi
 }
+

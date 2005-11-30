@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-3.1-r1.ebuild,v 1.7 2005/08/15 18:56:16 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/eclipse-sdk/eclipse-sdk-3.1-r1.ebuild,v 1.1 2005/07/23 20:38:30 karltk Exp $
 
 inherit eutils java-utils
 
@@ -8,7 +8,7 @@ MY_A="eclipse-sourceBuild-srcIncluded-3.1.zip"
 DESCRIPTION="Eclipse Tools Platform"
 HOMEPAGE="http://www.eclipse.org/"
 SRC_URI="http://download.eclipse.org/eclipse/downloads/drops/R-3.1-200506271435/${MY_A}"
-IUSE="gnome mozilla firefox jikes nosrc nodoc atk"
+IUSE="gnome mozilla firefox nosrc nodoc atk"
 SLOT="3.1"
 LICENSE="CPL-1.0"
 KEYWORDS="~x86 ~ppc ~amd64"
@@ -21,10 +21,8 @@ RDEPEND=">=virtual/jre-1.4.2
 	gnome? ( =gnome-base/gnome-vfs-2* =gnome-base/libgnomeui-2* )"
 
 DEPEND="${RDEPEND}
-	>=virtual/jdk-1.4.2
-	jikes? ( >=dev-java/jikes-1.21 )
+	!jikes? ( >=virtual/jdk-1.4.2 )
 	>=dev-java/ant-1.6.2
-	>=dev-java/ant-core-1.6.2-r4
 	>=sys-apps/findutils-4.1.7
 	app-arch/unzip
 	app-arch/zip"
@@ -75,6 +73,12 @@ src_unpack() {
 	einfo "Cleaning out prebuilt code"
 	clean-prebuilt-code
 
+	einfo "Patching build"
+	process-build
+
+	einfo "Patching makefiles"
+	process-makefiles
+
 	einfo "Patching makefiles"
 	process-makefiles
 
@@ -94,31 +98,24 @@ src_compile() {
 
 	${use_gtk} && use mozilla && setup-mozilla-opts
 
-	use jikes && bootstrap_ant_opts="-Dbuild.compiler=jikes"
-
 	einfo "Bootstrapping bootstrap ecj"
-	ant ${bootstrap_ant_opts} -q -f jdtcoresrc/compilejdtcorewithjavac.xml || die "Failed to bootstrap ecj"
+	ant -q -f jdtcoresrc/compilejdtcorewithjavac.xml || die "Failed to bootstrap ecj"
 
 	einfo "Bootstrapping ecj"
 	ant -lib jdtcoresrc/ecj.jar -q -f jdtcoresrc/compilejdtcore.xml || die "Failed to bootstrap ecj"
 
+	einfo "Building launcher"
+	build-native
+	cp features/org.eclipse.platform.launchers/library/gtk/eclipse \
+		eclipse-gtk || die "Failed to copy launcher"
+
 	einfo "Compiling Eclipse -- see ${S}/compilelog.txt for details"
-	ANT_OPTS="-Xmx1024M -XX:CompileThreshold=1500" \
-		ant -lib jdtcoresrc/ecj.jar -q -f build.xml \
+	ant -lib jdtcoresrc/ecj.jar -q -f build.xml \
 		-DinstallOs=linux \
 		-DinstallWs=gtk \
-		-DinstallArch=${eclipsearch} \
+		-DinstallArch=x86 \
 		-Dbootclasspath=${bootclasspath} \
-		-Dlibsconfig=true \
-		-DjavacTarget=1.4 \
-		-DjavacSource=1.4 \
-		-DjavacVerbose=false \
-		-DjavacFailOnError=true \
-		-DjavacDebugInfo=true \
-		-DbuildId="Gentoo Linux ${PF}" \
 		|| die "Failed to compile Eclipse"
-
-	cp launchertmp/eclipse eclipse-gtk || die "Cannot find eclipse binary"
 
 	einfo "Creating .desktop entry"
 	create-desktop-entry
@@ -201,10 +198,41 @@ function setup-mozilla-opts()
 	export GECKO_LIBS="-L${GECKO_SDK} -lgtkembedmoz"
 }
 
+function process-build() {
+
+	local targetOptimization="1.4"
+	local ant_opts="-Xmx1024M"
+
+# Eclipse has ~10 classes that do not yet compile with java 5.0
+#	if (java-utils_is-vm-version-ge 1 5 0) ; then
+#		targetOptimization="1.5"
+#	fi
+
+	einfo "Optimizing for Java ${targetOptimization} VM"
+
+	# Some sun JVM's have only server VM and no client VM. To speed up things
+	# use a same compiler threshold that client VM defaults to
+	if [ ! -z "`java-config --java-version | fgrep "Server VM"`" ] ; then
+		ant_opts="${ant_opts} -XX:CompileThreshold=1500"
+	fi
+
+	# Eclipse has started to respect global flags so patching the main build is enough
+	local properties="-DjavacTarget=${targetOptimization} \
+	 -DjavacSource=${targetOptimization} \
+	 -DjavacVerbose=false \
+	 -DjavacFailOnError=true \
+	 -DjavacDebugInfo=true \
+	 -DbuildId=\"Gentoo Linux ${PF}\""
+
+	sed \
+		-e "s/ant -q /ant -q ${properties} /" \
+		-e "s/ANT_OPTS=-Xmx1000M/ANT_OPTS=\"${ant_opts}\"/" \
+		-i build || die "Failed to patch build script"
+}
+
 function build-native() {
 	sh features/org.eclipse.platform.launchers/library/gtk/build.sh \
-		-os linux -ws gtk \
-		-arch ${eclipsearch} || die "Failed to build launcher"
+		-os linux -ws gtk -arch x86 || die "Failed to build launcher"
 }
 
 function process-makefiles() {

@@ -1,21 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/BSD-Resource/BSD-Resource-1.24.ebuild,v 1.12 2005/10/02 12:17:22 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/BSD-Resource/BSD-Resource-1.24.ebuild,v 1.1 2004/06/05 14:29:39 mcummings Exp $
 
-inherit perl-module eutils
+inherit perl-module
 
+CATEGORY="dev-perl"
 DESCRIPTION="Perl module for BSD process resource limit and priority functions"
 HOMEPAGE="http://www.cpan.org/modules/by-module/BSD/${P}.readme"
-SRC_URI="mirror://cpan/authors/id/J/JH/JHI/${P}.tar.gz"
+SRC_URI="http://www.cpan.org/modules/by-module/BSD/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
+LICENSE="Artistic | GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ~ppc sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha"
 SRC_TEST="do"
-
-src_unpack(){
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/portage_niceness.patch
-}

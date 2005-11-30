@@ -1,16 +1,7 @@
 # ChangeLog for net-mail/qmail-vmailmgr
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/qmail-vmailmgr/ChangeLog,v 1.9 2004/08/08 00:18:37 slarti Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
 
-  08 Aug 2004; Tom Martin <slarti@gentoo.org> qmail-vmailmgr-0.0.1-r1.ebuild:
-  Typo in DESCRIPTION: enviroment -> environment, fullyfletched ->
-  fully-fledged. Bug 59717.
-
-  26 Dec 2003; Jason Wever <weeve@gentoo.org> qmail-vmailmgr-0.0.1-r1.ebuild:
-  Changed sparc keyword to ~sparc as not all dependencies could be met.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *qmail-vmailmgr-0.0.1-r1 (02 Apr 2002)
 
   02 Apr 2002; Thilo Bangert <bangert@gentoo.org> ChangeLog :

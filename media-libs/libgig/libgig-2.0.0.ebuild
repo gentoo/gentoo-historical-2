@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2005-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libgig/libgig-2.0.0.ebuild,v 1.3 2005/09/04 12:24:38 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libgig/libgig-2.0.0.ebuild,v 1.1 2005/05/29 23:17:51 fvdpol Exp $
 
 inherit eutils
 
@@ -30,7 +30,7 @@ src_compile() {
 
 src_install() {
 	einstall || die "einstall failed"
-	dodoc AUTHORS ChangeLog TODO README
+	dodoc AUTHORS ChangeLog INSTALL TODO README
 
 	if use doc; then
 		mv ${S}/doc/html ${D}/usr/share/doc/${PF}/

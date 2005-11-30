@@ -1,15 +1,6 @@
 # ChangeLog for dev-java/jexcelapi
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jexcelapi/ChangeLog,v 1.4 2005/05/16 00:26:05 luckyduck Exp $
-
-  16 May 2005; Jan Brinkmann <luckyduck@gentoo.org> jexcelapi-2.5.1.ebuild:
-  stable on amd64 and x86, added ~ppc
-
-  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> jexcelapi-2.5.1.ebuild:
-  jexcelapi now makes use of java-pkg_dosrc
-
-  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> jexcelapi-2.5.1.ebuild:
-  added support for the source useflag. fixes #79966
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jexcelapi/ChangeLog,v 1.1 2005/01/23 14:50:15 luckyduck Exp $
 
 *jexcelapi-2.5.1 (23 Jan 2005)
 

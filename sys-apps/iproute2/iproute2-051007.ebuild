@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-051007.ebuild,v 1.3 2005/10/31 11:06:54 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-051007.ebuild,v 1.1 2005/10/29 21:49:21 eradicator Exp $
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="kernel routing and traffic control utilities"
-HOMEPAGE="http://linux-net.osdl.org/index.php/Iproute2"
+HOMEPAGE="http://linux-net.osdl.org/index.php/Iproute2/"
 SRC_URI="http://developer.osdl.org/dev/iproute2/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -32,7 +32,7 @@ src_unpack() {
 	# Multilib fixes
 	sed -i 's:/usr/local:/usr:' tc/m_ipt.c
 	sed -i "s:/usr/lib:/usr/$(get_libdir):g" \
-		netem/Makefile tc/{Makefile,tc.c,q_netem.c,m_ipt.c} || die
+		netem/Makefile tc/tc.c tc/q_netem.c tc/m_ipt.c || die
 }
 
 src_compile() {

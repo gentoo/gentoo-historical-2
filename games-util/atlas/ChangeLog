@@ -1,24 +1,6 @@
-# ChangeLog for games-util/atlas
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/atlas/ChangeLog,v 1.8 2005/08/23 20:36:15 wolf31o2 Exp $
-
-  24 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> atlas-0.2.2-r1.ebuild:
-  Add inherit eutils.
-
-  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> atlas-0.2.2-r1.ebuild:
-  Stable on ppc.
-
-  13 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> atlas-0.2.2-r1.ebuild:
-  use games.eclass variables; stable for x86
-
-*atlas-0.2.2-r1 (14 Feb 2005)
-
-  14 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +files/0.2.2-fix.patch,
-  +atlas-0.2.2-r1.ebuild:
-  rev bump to include patch from David Holm (bug #81723)
-
-  12 Apr 2004; Jason Wever <weeve@gentoo.org> atlas-0.2.2.ebuild:
-  Added ~sparc keyword.
+# ChangeLog for app-games/atlas
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/atlas/ChangeLog,v 1.1 2003/09/10 18:53:23 vapier Exp $
 
   03 Sep 2003; Michael Sterrett <msterret@gentoo.org> atlas-0.2.2.ebuild:
   header fix

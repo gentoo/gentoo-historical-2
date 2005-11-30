@@ -1,20 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.13-r3.ebuild,v 1.7 2005/01/10 09:47:04 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/sane-backends/sane-backends-1.0.13-r3.ebuild,v 1.1 2004/02/27 09:35:02 phosphan Exp $
 
 inherit eutils
 
 IUSE="usb"
 
 DESCRIPTION="Scanner Access Now Easy - Backends"
-HOMEPAGE="http://www.sane-project.org/"
+HOMEPAGE="http://www.mostang.com/sane/"
 
 DEPEND=">=media-libs/jpeg-6b
 	x86? ( sys-libs/libieee1284 )
 	=sys-apps/sed-4*
 	usb? ( dev-libs/libusb )"
 
-BROTHERMFCDRIVER="sane-backends-1.0.13-brothermfc-r1.patch"
+BROTHERMFCDRIVER="sane-backends-1.0.13-brothermfc.patch"
 
 SRC_URI="ftp://ftp.mostang.com/pub/sane/${P}/${P}.tar.gz
 	ftp://ftp.mostang.com/pub/sane/old-versions/${P}/${P}.tar.gz

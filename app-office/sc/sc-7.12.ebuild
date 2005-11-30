@@ -1,42 +1,30 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/sc/sc-7.12.ebuild,v 1.20 2005/04/21 20:00:24 blubb Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Michael Conrad Tilstra <michael@gentoo.org> <tadpol@tadpol.org>
+# $Header: /var/cvsroot/gentoo-x86/app-office/sc/sc-7.12.ebuild,v 1.1 2001/05/16 14:51:39 achim Exp $
 
-inherit eutils
-
+#P=
+A=${P}.tar.gz
+S=${WORKDIR}/${P}
 DESCRIPTION="sc is a free curses-based spreadsheet program that uses key bindings similar to vi and less."
-SRC_URI="ftp://ibiblio.org/pub/Linux/apps/financial/spreadsheet/${P}.tar.gz"
-HOMEPAGE="http://ibiblio.org/pub/Linux/apps/financial/spreadsheet/"
+SRC_URI="ftp://ibiblio.org/pub/Linux/apps/financial/spreadsheet/${A}"
+HOMEPAGE=""
 
-SLOT="0"
-LICENSE="public-domain"
-KEYWORDS="x86 ppc sparc amd64"
-IUSE=""
-
-DEPEND=">=sys-apps/sed-4.0.5
-	>=sys-libs/ncurses-5.2"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-amd64.patch
-}
+DEPEND="virtual/glibc
+        >=sys-libs/ncurses-5.2"
 
 src_compile() {
-	make CFLAGS="-DSYSV3 $CFLAGS" prefix=/usr || die
+    try make CFLAGS=\"-DSYSV3 $CFLAGS\" prefix=/usr
 }
 
 src_install () {
-	dodir /usr/bin
-	dodir /usr/share/man/man1
-	dodir /usr/lib/sc
-	make prefix=${D}/usr MANDIR=${D}/usr/share/man/man1 install || die
-
-	sed -i "s:${D}::g" sc.1
-	doman sc.1 psc.1
-
-	dodoc CHANGES README sc.doc psc.doc tutorial.sc
-	dodoc VMS_NOTES ${P}.lsm TODO SC.MACROS
+    dodir /usr/bin
+    dodir /usr/share/man/man1
+    dodir /usr/lib/sc
+    try make prefix=${D}/usr MANDIR=${D}/usr/share/man/man1 install
+ 
+    dodoc CHANGES README sc.doc psc.doc tutorial.sc
+    dodoc VMS_NOTES ${P}.lsm TODO SC.MACROS
 }
 
 # vim: ai et sw=4 ts=4

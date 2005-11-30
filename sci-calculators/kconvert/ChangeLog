@@ -1,26 +1,6 @@
-# ChangeLog for sci-calculators/kconvert
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-calculators/kconvert/ChangeLog,v 1.6 2005/07/10 03:00:07 weeve Exp $
-
-  10 Jul 2005; Jason Wever <weeve@gentoo.org> kconvert-1.1-r1.ebuild:
-  Added ~sparc keyword.
-
-  29 May 2005; Marcus D. Hanwell <marcus@gentoo.org> -kconvert-1.1.ebuild,
-  kconvert-1.1-r1.ebuild:
-  Stable on amd64 and x86, removed old version.
-
-  24 Feb 2005; Simone Gotti <motaboy@gentoo.org> kconvert-1.1-r1.ebuild,
-  kconvert-1.1.ebuild:
-  Fix little typo in the package description.
-
-*kconvert-1.1-r1 (24 Feb 2005)
-
-  24 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org>
-  +files/kconvert-1.1-arts-configure.patch, +kconvert-1.1-r1.ebuild,
-  kconvert-1.1.ebuild:
-  Fixed up the ebuild to use kde.eclass, added a configure patch to build
-  without arts and changed to need-kde 3. This fixes bug 82095. Also updated the
-  description a little.
+# ChangeLog for app-sci/kconvert
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-calculators/kconvert/ChangeLog,v 1.1 2004/12/24 15:00:13 ribosome Exp $
 
 *kconvert-1.1 (24 Dec 2004)
 

@@ -1,24 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/aboot/aboot-0.9-r1.ebuild,v 1.6 2005/03/01 23:06:36 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/aboot/aboot-0.9-r1.ebuild,v 1.1 2003/12/09 08:11:32 seemant Exp $
 
-DESCRIPTION="Alpha Linux boot loader for SRM"
-HOMEPAGE="http://aboot.sourceforge.net/"
+S=${WORKDIR}/${P}
+DESCRIPTION="Alpha Linux boot loader for srm"
 SRC_URI="http://aboot.sourceforge.net/tarballs/aboot-0.9bpre.tar.bz2"
+HOMEPAGE="http://aboot.sourceforge.net/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* alpha"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="alpha -x86 -amd64 -ppc -sparc -mips"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+
 PROVIDE="virtual/bootloader"
 
 src_unpack() {
 	unpack ${A}
+
 	mv ${WORKDIR}/aboot-0.9bpre ${WORKDIR}/${P}
+
 	cd ${S}
-	sed -i "s:/usr/man:/usr/share/man:" Makefile || die
+	cp Makefile Makefile.orig
+	sed -e "s:/usr/man:/usr/share/man:" Makefile.orig > Makefile
 }
 
 src_compile() {
@@ -26,7 +30,7 @@ src_compile() {
 }
 
 src_install() {
-	dodir /boot /sbin /usr/share/man/man5
+	dodir /{boot,sbin,usr/share/man/man5}
 	make \
 		root=${D} \
 		bindir=${D}/sbin \
@@ -34,8 +38,9 @@ src_install() {
 		mandir=${D}/usr/share/man \
 		install
 
-	dodoc ChangeLog INSTALL README TODO aboot.conf
+	dodoc COPYING ChangeLog INSTALL README TODO aboot.conf
 
+	dodir /etc
 	insinto /etc
 	newins ${FILESDIR}/aboot.conf aboot.conf.example
 }

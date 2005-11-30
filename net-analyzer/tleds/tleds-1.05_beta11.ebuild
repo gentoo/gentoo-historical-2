@@ -1,47 +1,41 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tleds/tleds-1.05_beta11.ebuild,v 1.15 2005/07/19 16:38:14 dholm Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/tleds/tleds-1.05_beta11.ebuild,v 1.1 2002/07/02 09:51:21 seemant Exp $
 
 MY_P=${P/_/}
 S=${WORKDIR}/${MY_P/eta11/}
-DESCRIPTION="Blinks keyboard LEDs indicating outgoing and incoming network packets on selected network interface"
-HOMEPAGE="http://www.hut.fi/~jlohikos/tleds_orig.html"
+DESCRIPTION="Blinks keyboard LEDs (Light Emitting Diode) indicating outgoing
+and incoming network packets on selected network interface."
+
+HOMEPAGE="http://www.hut.fi/~jlohikos/tleds/"
 SRC_URI="http://www.hut.fi/~jlohikos/tleds/public/${MY_P/11/10}.tgz
 	http://www.hut.fi/~jlohikos/tleds/public/${MY_P}.patch.bz2"
-
-LICENSE="GPL-2"
+	 
 SLOT="0"
-KEYWORDS="~amd64 ~ppc sparc x86"
-IUSE="X"
+LICENSE="GPL-2"
 
-DEPEND="X? ( virtual/x11 )"
+DEPEND="virtual/glibc
+	X? ( virtual/x11 )"
+
 
 src_unpack() {
 	unpack tleds-1.05beta10.tgz
 	cd ${S}
-	epatch ${DISTDIR}/${MY_P}.patch.bz2
-	epatch ${FILESDIR}/${P}-gentoo.patch
+	bzcat ${DISTDIR}/${MY_P}.patch.bz2 | patch  || die
+	patch < ${FILESDIR}/${P}-gentoo.patch || die
 }
 
 src_compile() {
-	if use X ; then
-		emake all || die "make failed :("
-	else
-		emake tleds || die "make tleds failed :("
-	fi
+
+	emake all || die
 }
 
-src_install() {
-	dosbin tleds
-	use X && dosbin xtleds
+src_install () {
+	
+	dobin tleds
+
+	use X && dobin xtleds
 
 	doman tleds.1
 	dodoc README COPYING Changes
-
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/tleds.init.d tleds
-	insinto /etc/conf.d
-	newins ${FILESDIR}/tleds.conf.d tleds
 }

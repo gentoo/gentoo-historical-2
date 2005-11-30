@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/snns/snns-4.2-r6.ebuild,v 1.3 2005/08/24 16:42:03 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/snns/snns-4.2-r6.ebuild,v 1.1 2004/12/28 15:31:38 ribosome Exp $
 
 inherit eutils python
 
@@ -16,7 +16,7 @@ SRC_URI="http://www-ra.informatik.uni-tuebingen.de/downloads/SNNS/${MY_P}.tar.gz
 	python? ( http://download.berlios.de/snns-dev/${MYPYTHONEXT}.tar.gz )"
 
 LICENSE="SNNS-${PV}"
-KEYWORDS="x86 ~amd64"
+KEYWORDS="x86"
 SLOT="0"
 IUSE="X doc python"
 
@@ -31,12 +31,7 @@ src_unpack() {
 	unpack ${MY_P}.tar.gz
 	unpack ${MYPATCH}.patch.gz
 	epatch ${MYPATCH}.patch
-	if use python; then
-		unpack ${MYPYTHONEXT}.tar.gz
-
-		cd ${S}
-		epatch ${FILESDIR}/${PV}-fPIC-python.patch
-	fi
+	use python && unpack ${MYPYTHONEXT}.tar.gz
 }
 
 src_compile() {
@@ -77,7 +72,7 @@ src_install() {
 	if use python; then
 		cd python
 		python setup.py install --prefix=${D}/usr || die "could not install python module"
-		cp -pPR examples ${D}/usr/share/doc/${PF}/python-examples
+		cp -a examples ${D}/usr/share/doc/${PF}/python-examples
 		chmod +x ${D}/usr/share/doc/${PF}/python-examples/*.py
 		newdoc README README.python
 		cd ${S}

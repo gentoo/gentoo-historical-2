@@ -1,23 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-4.1.15-r30.ebuild,v 1.6 2005/11/24 21:00:54 vivo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-4.1.15-r30.ebuild,v 1.1 2005/10/28 15:42:56 vivo Exp $
 
-# helper function, version (integer) may have section separated by dots
-# for readbility
-stripdots() {
-	local dotver=${1:-"0"}
-	while [[ "${dotver/./}" != "${dotver}" ]] ; do dotver="${dotver/./}" ; done
-	echo "${dotver:-"0"}"
-}
-
-# major * 10e6 + minor * 10e4 + micro * 10e2 + gentoo magic number, all [0..99]
-MYSQL_VERSION_ID=$(stripdots "4.01.15.30")
+MYSQL_VERSION_ID=40115
 PROTOCOL_VERSION=10
 NDB_VERSION_ID=40115
-#major, minor only in the slot
-SLOT=$(( ${MYSQL_VERSION_ID} / 10000 ))
+SLOT="${MYSQL_VERSION_ID}"
 
-inherit eutils flag-o-matic gnuconfig
+inherit eutils gnuconfig flag-o-matic versionator
+
+SVER=${PV%.*}
+NEWP="${PN}-${PV}"
+#NEWP="${NEWP/_beta/-beta}"
+
 
 # shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -25,17 +20,17 @@ S="${WORKDIR}/${PN}"
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 HOMEPAGE="http://www.mysql.com/"
-NEWP="${PN}-${PV/_/-}"
-SRC_URI="mirror://mysql/Downloads/MySQL-${PV%.*}/${NEWP}.tar.gz
-	mirror://gentoo/mysql-extras-20051122.tar.bz2"
+SRC_URI="mirror://mysql/Downloads/MySQL-${SVER}/${NEWP}.tar.gz
+	mirror://gentoo/mysql-extras-20050920.tar.bz2"
 
 LICENSE="GPL-2"
 KEYWORDS="-*"
-IUSE="big-tables berkdb debug minimal perl selinux ssl static"
+IUSE="big-tables berkdb debug minimal perl selinux ssl static tcpd"
 RESTRICT="primaryuri"
 
 DEPEND=">=sys-libs/readline-4.1
 	bdb? ( sys-apps/ed )
+	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r6 )
 	ssl? ( >=dev-libs/openssl-0.9.6d )
 	userland_GNU? ( sys-process/procps )
 	>=sys-libs/zlib-1.2.3
@@ -45,97 +40,29 @@ RDEPEND="${DEPEND} selinux? ( sec-policy/selinux-mysql )"
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
-# Is $2 (defaults to $MYSQL_VERSION_ID) at least version $1?
-# (nice) idea from versionator.eclass
 mysql_version_is_at_least() {
-	local want_s=$(stripdots "$1") have_s=$( stripdots "${2:-${MYSQL_VERSION_ID}}")
+
+	local want_s="$1" have_s="${2:-${MYSQL_VERSION_ID}}"
 	[[ -z "${want_s}" ]] && die "mysql_version_is_at_least missing value"
-	[[ ${want_s} -le ${have_s} ]] && return 0 || return 1
+
+	[[ ${want_s} -le ${have_s} ]] \
+	&& return 0 \
+	|| return 1
 }
 
-if mysql_version_is_at_least "4.01.03.00" ; then
+if mysql_version_is_at_least 40103 ; then
+	# 2005-09-29
+	#   geometry has been removed due to repeated compile problems _without_ it.
+	#   From now on it will be *always* enabled
+	#   if you need to compile *without it* take a look at
+	#	http://lists.mysql.com/internals/29559
 	IUSE="${IUSE} cluster utf8 extraengine"
 fi
 
-# bool mysql_check_version_range(char * range, int ver=MYSQL_VERSION_ID, int die_on_err=MYSQL_DIE_ON_RANGE_ERROR)
-#
-# Check if a version number fall inside a range.
-# the range include the extremes and must be specified as
-# "low_version to hi_version" i.e. "4.00.00.00 to 5.01.99.99"
-# Return true if inside the range
-# 2005-11-19 <vivo at gentoo.org>
-mysql_check_version_range() {
-	local lbound="${1%% to *}" ; lbound=$(stripdots "${lbound}")
-	local rbound="${1#* to }"  ; rbound=$(stripdots "${rbound}")
-	local my_ver="${2:-"${MYSQL_VERSION_ID}"}"
-	[[ $lbound -le $my_ver && $my_ver -le $rbound ]] && return 0
-	return 1
+mysql_upgrade_error() {
+	: # TODO
 }
 
-# private bool _mysql_test_patch_easy( int flags, char * pname )
-#
-# true if found at least one appliable range
-# 2005-11-19 <vivo at gentoo.org>
-_mysql_test_patch_easy() {
-	local filesdir="${WORKDIR}/mysql-extras"
-	[[ -d "${filesdir}" ]] || die 'sourcedir must be a directory'
-	local flags=$1 pname=$2
-	if [[ $(( $flags & 5 )) -eq 5 ]] ; then
-		einfo "using \"${pname}\""
-		mv "${filesdir}/${pname}" "${EPATCH_SOURCE}" || die "cannot move ${pname}"
-		return 0
-	fi
-	return 1
-}
-
-# void mysql_mv_patches(char * index_file, char * filesdir, int my_ver)
-#
-# parse a "index_file" looking for patches to apply to current
-# version.
-# If the patch apply then print it's description
-# 2005-11-19 <vivo at gentoo.org>
-mysql_mv_patches() {
-	local index_file="${1:-"${WORKDIR}/mysql-extras/index.txt"}"
-	local my_ver="${2:-"${MYSQL_VERSION_ID}"}"
-	local my_test_fx=${3:-"_mysql_test_patch_easy"}
-	local dsc=(), ndsc=0 i
-
-	# values for flags are (2^x):
-	#  1 - one patch found
-	#  2 - at  least one version range is wrong
-	#  4 - at  least one version range is _good_
-	local flags=0 pname='' comments=''
-	while read row; do
-		case "${row}" in
-			@patch\ *)
-				${my_test_fx} $flags "${pname}" \
-				&& for (( i=0 ; $i < $ndsc ; i++ )) ; do einfo ">    ${dsc[$i]}" ; done
-				flags=1 ; ndsc=0 ; dsc=()
-				pname=${row#"@patch "}
-				;;
-			@ver\ *)
-				if mysql_check_version_range "${row#"@ver "}" "${my_ver}" ; then
-					flags=$(( $flags | 4 ))
-				else
-					flags=$(( $flags | 2 ))
-				fi
-				;;
-			# @use\ *) ;;
-			@@\ *)
-				dsc[$ndsc]="${row#"@@ "}"
-				(( ++ndsc ))
-				;;
-		esac
-	done < "${index_file}"
-	${my_test_fx} $flags "${pname}" \
-		&& for (( i=0 ; $i < $ndsc ; i++ )) ; do einfo ">    ${dsc[$i]}" ; done
-}
-
-
-# void mysql_init_vars()
-#
-# initialize global variables
-# 2005-11-19 <vivo at gentoo.org>
 mysql_init_vars() {
 
 	MY_SUFFIX=${MY_SUFFIX:-"-${SLOT}"}
@@ -145,6 +72,12 @@ mysql_init_vars() {
 	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="/var/lib/mysql${MY_SUFFIX}"}
 	MY_LOGDIR=${MY_LOGDIR="/var/log/mysql${MY_SUFFIX}"}
 	MY_INCLUDEDIR=${MY_INCLUDEDIR="/usr/include/mysql${MY_SUFFIX}"}
+
+	# source configure.in for this one
+	AVAILABLE_LANGUAGES="\
+czech danish dutch english estonian french german greek hungarian \
+italian japanese japanese-sjis korean norwegian norwegian-ny polish portuguese \
+romanian russian serbian slovak spanish swedish ukrainian"
 
 	if [ -z "${DATADIR}" ]; then
 		DATADIR=""
@@ -176,17 +109,7 @@ mysql_init_vars() {
 	export MY_SUFFIX MY_SHAREDSTATEDIR MY_SYSCONFDIR
 	export MY_LIBDIR MY_LOCALSTATEDIR MY_LOGDIR
 	export MY_INCLUDEDIR
-	export DATADIR
-}
-
-mysql_strip_double_slash() {
-	local path="${1}"
-	local newpath="${path/\/\///}"
-	while [[ ${path} != ${newpath} ]]; do
-		path=${newpath}
-		newpath="${path/\/\///}"
-	done
-	echo "${newpath}"
+	export DATADIR AVAILABLE_LANGUAGES
 }
 
 pkg_setup() {
@@ -198,15 +121,13 @@ pkg_setup() {
 
 src_unpack() {
 
-	mysql_init_vars
-
 	if useq static && useq ssl; then
 		local msg="MySQL does not support building statically with SSL support"
 		eerror "${msg}"
 		die "${msg}"
 	fi
 
-	if mysql_version_is_at_least "4.01.03.00" \
+	if mysql_version_is_at_least 40103 \
 	&& useq cluster \
 	|| useq extraengine \
 	&& useq minimal ; then
@@ -217,57 +138,30 @@ src_unpack() {
 
 	mv "${WORKDIR}/${NEWP}" "${S}"
 	cd "${S}"
-
-	EPATCH_SUFFIX="patch"
-	mkdir -p "${EPATCH_SOURCE}" || die "unable to create epatch directory"
-	mysql_mv_patches
-	epatch || die "failed to apply all patches"
-
-	# additional check, remove bundled zlib
-	rm -f "${S}/zlib/"*.[ch]
+	rm -rf "${S}/zlib/"*.[ch]
 	sed -i -e "s/zlib\/Makefile dnl/dnl zlib\/Makefile/" "${S}/configure.in"
-	rm -f scripts/mysqlbug
 
-	# Multilib issue with zlib detection
-	sed -i -e "s:zlib_dir/lib:zlib_dir/$(get_libdir):g" \
-		"${S}/config/ac-macros/zlib.m4"
+	local MY_PATCH_SOURCE="${WORKDIR}/mysql-extras"
 
-	# Make charsets install in the right place
-	find . -name 'Makefile.am' \
-		-exec sed --in-place -e 's!$(pkgdatadir)!'${MY_SHAREDSTATEDIR}'!g' {} \;
+	# TODO ensure we are using system libraries
 
-	# remove what need to be recreated, so we are sure it's actually done
-	find . -name Makefile -o -name Makefile.in -o -name configure -exec rm {} \;
-	rm ltmain.sh
+	epatch ${MY_PATCH_SOURCE}/010_all_my-print-defaults-r0.patch || die
+	epatch ${MY_PATCH_SOURCE}/030_all_thrssl-r1.patch || die
+	epatch ${MY_PATCH_SOURCE}/035_x86_asm-pic-fixes-r7.patch || die
+	epatch ${MY_PATCH_SOURCE}/040_all_tcpd-vars-fix.patch || die
 
-	local rebuilddirlist dl buildstep
-
-	if mysql_version_is_at_least "5.01.00.00" ; then
-		rebuilddirlist=( '.' 'storage/innobase' )
-	else
-		rebuilddirlist=( '.' 'innobase' )
-	fi
-
-	for dl in ${!rebuilddirlist[@]}; do
-		einfo "reconfiguring phase $(( ${dl} + 1 )) of ${#rebuilddirlist[@]}"
-		pushd "${rebuilddirlist[${dl}]}"
-		for buildstep in \
-			'libtoolize --copy --force' \
-			'aclocal --force' \
-			'autoheader --force -Wnone' \
-			'autoconf --force -Wnone' \
-			'automake --force --force-missing -Wnone' \
-			'gnuconfig_update'
-		do
-			einfo "performing ${buildstep}"
-			${buildstep} || die "failed ${buildstep/ */} ${rebuilddirlist[${dl}]}"
-		done
-		popd
+	for d in ${S} ${S}/innobase; do
+		cd ${d}
+		# WARNING, plain autoconf breaks it!
+		#autoconf
+		# must use this instead
+		WANT_AUTOCONF="2.59" autoreconf --force
+		# Fix the evil "libtool.m4 and ltmain.sh have a version mismatch!"
+		libtoolize --copy --force
+		# Saving this for a rainy day, in case we need it again
+		#WANT_AUTOMAKE=1.7 automake
+		gnuconfig_update
 	done
-
-	[[ -w bdb/dist/ltmain.sh ]] && cp ltmain.sh bdb/dist/ltmain.sh
-	pushd bdb/dist && sh s_all || die "failed bdb reconfigure"
-	popd
 
 	# Temporary workaround for bug in test suite, a correct solution
 	# should work inside the include files to enable/disable the tests
@@ -281,6 +175,7 @@ src_unpack() {
 			&> /dev/null
 		done
 	fi
+
 
 	if ! useq berkdb ; then
 		einfo "disabling unneded berkdb tests"
@@ -305,14 +200,13 @@ src_compile() {
 		myconf="${myconf} --enable-shared --enable-static"
 	fi
 
-	#myconf="${myconf} `use_with tcpd libwrap`"
-	myconf="${myconf} --without-libwrap"
+	myconf="${myconf} `use_with tcpd libwrap`"
 
 	if useq ssl ; then
 		# --with-vio is not needed anymore, it's on by default and
 		# has been removed from configure
-		mysql_version_is_at_least "5.00.04.00" || myconf="${myconf} --with-vio"
-		if mysql_version_is_at_least "5.00.06.00" ; then
+		mysql_version_is_at_least 50004 || myconf="${myconf} --with-vio"
+		if mysql_version_is_at_least 50006 ; then
 			# yassl-0.96 is young break with gcc-4.0 || amd64
 			#myconf="${myconf} --with-yassl"
 			myconf="${myconf} --with-openssl"
@@ -327,7 +221,7 @@ src_compile() {
 		myconf="${myconf} --with-debug=full"
 	else
 		myconf="${myconf} --without-debug"
-		mysql_version_is_at_least "4.01.03.00" && useq cluster && myconf="${myconf} --without-ndb-debug"
+		mysql_version_is_at_least 40103 && useq cluster && myconf="${myconf} --without-ndb-debug"
 	fi
 
 	# benchmarking stuff needs perl
@@ -354,8 +248,8 @@ src_compile() {
 			myconf="${myconf} --with-raid"
 		fi
 
-		if ! mysql_version_is_at_least "5.00.00.00" ; then
-			if mysql_version_is_at_least "4.01.00.00" && useq utf8; then
+		if ! mysql_version_is_at_least 50000 ; then
+			if mysql_version_is_at_least 40100 && useq utf8; then
 				myconf="${myconf} --with-charset=utf8"
 				myconf="${myconf} --with-collation=utf8_general_ci"
 			else
@@ -379,13 +273,13 @@ src_compile() {
 				|| myconf="${myconf} --without-berkeley-db"
 		fi
 
-		if mysql_version_is_at_least "4.01.03.00" ; then
-			#myconf="${myconf} $(use_with geometry)"
+		if mysql_version_is_at_least 40103 ; then
 			myconf="${myconf} --with-geometry"
+			#myconf="${myconf} $(use_with geometry)"
 			myconf="${myconf} $(use_with cluster ndbcluster)"
 		fi
 
-		mysql_version_is_at_least "4.01.11.00" &&  myconf="${myconf} `use_with big-tables`"
+		mysql_version_is_at_least 40111 &&  myconf="${myconf} --with-big-tables"
 	else
 		for i in ${minimal_exclude_list}; do
 			myconf="${myconf} --without-${i}"
@@ -394,22 +288,24 @@ src_compile() {
 		myconf="${myconf} --with-extra-charsets=none"
 	fi
 
-	if mysql_version_is_at_least "4.01.03.00" && useq extraengine; then
+	if mysql_version_is_at_least 40103 && useq extraengine; then
 		# http://dev.mysql.com/doc/mysql/en/archive-storage-engine.html
 		myconf="${myconf} --with-archive-storage-engine"
 		# http://dev.mysql.com/doc/mysql/en/csv-storage-engine.html
-		mysql_version_is_at_least "4.01.04.00" \
+		mysql_version_is_at_least 40104 \
 		&& myconf="${myconf} --with-csv-storage-engine"
 		# http://dev.mysql.com/doc/mysql/en/federated-description.html
 		# http://dev.mysql.com/doc/mysql/en/federated-limitations.html
-		if mysql_version_is_at_least "5.00.03.00" ; then
+		if mysql_version_is_at_least 50003 ; then
 			einfo "before to use federated engine be sure to read"
 			einfo "http://dev.mysql.com/doc/mysql/en/federated-limitations.html"
 			myconf="${myconf} --with-federated-storage-engine"
 		fi
-		mysql_version_is_at_least "4.01.11.00" \
+		mysql_version_is_at_least 40111 \
 		&&  myconf="${myconf} --with-blackhole-storage-engine"
 	fi
+
+	myconf="${myconf} `use_with big-tables`"
 
 	#glibc-2.3.2_pre fix; bug #16496
 	append-flags "-DHAVE_ERRNO_AS_DEFINE=1"
@@ -417,9 +313,8 @@ src_compile() {
 	#the compiler flags are as per their "official" spec ;)
 	#CFLAGS="${CFLAGS/-O?/} -O3" \
 	export CXXFLAGS="${CXXFLAGS} -felide-constructors -fno-exceptions -fno-rtti"
-	mysql_version_is_at_least "5.00.00.00" \
+	mysql_version_is_at_least 50000 \
 	&& export CXXFLAGS="${CXXFLAGS} -fno-implicit-templates"
-
 	econf \
 		--program-suffix="${MY_SUFFIX}" \
 		--libexecdir="/usr/sbin" \
@@ -438,6 +333,7 @@ src_compile() {
 		--with-unix-socket-path="/var/run/mysqld/mysqld${MY_SUFFIX}.sock" \
 		--with-zlib-dir=/usr \
 		--with-lib-ccflags="-fPIC" \
+		--program-suffix="${MY_SUFFIX}" \
 		--without-readline \
 		--without-docs \
 		${myconf} || die "bad ./configure"
@@ -461,7 +357,7 @@ src_test() {
 		local retstatus
 		addpredict /this-dir-does-not-exist/t9.MYI
 
-		mysql_version_is_at_least "5.00.15.00" \
+		mysql_version_is_at_least 50013 \
 		&& make test-force-pl \
 		|| make test-pl
 		retstatus=$?
@@ -480,23 +376,14 @@ src_install() {
 	mysql_init_vars
 	make install DESTDIR="${D}" benchdir_root="${MY_SHAREDSTATEDIR}" || die
 
-	# create globally visible symlinks
-	# TODO : what abaut ndb ?
-	local mylib mylibfullver mylibtmpver maxdots sonamelist
-	pushd "${D}/${MY_LIBDIR}"
-	for mylib in libmysqlclient_r libmysqlclient libndbclient; do
-		mylibfullver="$(ls "${mylib}.so"* | sort | tail -n 1)"
-		mylibtmpver="${mylibfullver}"
-		maxdots=0
-		while [[ ${mylibtmpver} != ${mylib} ]] && [[ ${maxdots} -lt 6 ]]; do
-			(( ++maxdots ))
-			dosym \
-				$(mysql_strip_double_slash "${MY_LIBDIR}/${mylibfullver}") \
-				$(mysql_strip_double_slash "${MY_LIBDIR}/../${mylibtmpver}")
-			mylibtmpver=${mylibtmpver%.*}
-		done
-	done
-	popd
+	# TODO : is this a work for eselect ?
+	# move client libs, install a couple of missing headers
+	dosym \
+		"${MY_LIBDIR}/libmysqlclient.so" \
+		"${MY_LIBDIR}/../libmysqlclient.so"
+	dosym \
+		"${MY_LIBDIR}/libmysqlclient_r.so" \
+		"${MY_LIBDIR}/../libmysqlclient_r.so"
 
 	insinto "${MY_INCLUDEDIR}"
 	doins "${MY_INCLUDEDIR}"/my_{config,dir}.h
@@ -506,34 +393,31 @@ src_install() {
 	dosym "/usr/bin/mysqlcheck${MY_SUFFIX}" "/usr/bin/mysqlrepair${MY_SUFFIX}"
 	dosym "/usr/bin/mysqlcheck${MY_SUFFIX}" "/usr/bin/mysqloptimize${MY_SUFFIX}"
 
-	# various junk (my-*.cnf moved elsewhere)
 	rm -rf "${D}/usr/share/info"
-	for removeme in  "mysql-log-rotate" mysql.server* \
-		binary-configure* my-*.cnf mi_test_all*
-	do
-		rm -f "${D}/usr/share/mysql/${removeme}"
+
+	# various junk
+	rm -f "${D}/usr/share/mysql"/mysql-log-rotate
+	rm -f "${D}/usr/share/mysql"/mysql.server*
+	rm -f "${D}/usr/share/mysql"/binary-configure*
+	rm -f "${D}/usr/share/mysql"/my-*.cnf # Put them elsewhere
+	rm -f "${D}/usr/share/mysql"/mi_test_all*
+	rm -f "${D}/usr/share/mysql"/mysql_fix_privilege_tables.sql
+	rm -f "${D}/usr/share/mysql"/fill_help_tables.sql
+	rm -f "${D}/usr/share/mysql"/ndb-config-2-node.ini
+
+	# mmh buggy install code || buggy ebuild (always true)?
+	# this should be in ${MY_SHAREDSTATEDIR}
+	for moveme in charsets $AVAILABLE_LANGUAGES	; do
+		mv "${D}/usr/share/mysql/${moveme}" "${D}${MY_SHAREDSTATEDIR}/"
 	done
 
-	# oops
-	mysql_check_version_range "5.00.16.00 to 5.00.16.99" \
-	&& cp "${WORKDIR}/mysql-extras/fill_help_tables.sql-5.0.15" "${D}/usr/share/mysql/"
-
-	# TODO change at Makefile-am level
-	for moveme in "mysql_fix_privilege_tables.sql" \
-		"fill_help_tables.sql" "ndb-config-2-node.ini"
-	do
-		mv "${D}/usr/share/mysql/${moveme}"/ "${D}/usr/share/mysql${MY_SUFFIX}/" 2>/dev/null
-	done
-
-	if [[ -n "${MY_SUFFIX}" ]] ; then
-		local notcatched=$(ls "${D}/usr/share/mysql"/*)
-		if [[ -n "${notcatched}" ]] ; then
-			ewarn "QA notice"
-			ewarn "${notcatched} files in /usr/share/mysql"
-			ewarn "bug mysql-herd to manage them"
-		fi
-		rm -rf "${D}/usr/share/mysql"
+	local notcatched=$(ls "${D}/usr/share/mysql"/*)
+	if [[ -n "${notcatched}" ]] ; then
+		ewarn "QA notice"
+		ewarn "${notcatched} files in /usr/share/mysql"
+		ewarn "bug mysql-herd to manage them"
 	fi
+	rm -rf "${D}/usr/share/mysql"
 
 	# clean up stuff for a minimal build
 	# this is anything server-specific
@@ -544,24 +428,22 @@ src_install() {
 		rm -f ${D}${MY_LIBDIR}/lib{heap,merge,nisam,my{sys,strings,sqld,isammrg,isam},vio,dbug}.a
 	fi
 
+	# TODO
 	# config stuff
 	insinto "${MY_SYSCONFDIR}"
 	doins scripts/mysqlaccess.conf
 	newins "${FILESDIR}/my.cnf-4.1" my.cnf
-	insinto "/etc/conf.d"
-	newins "${FILESDIR}/mysql-slot.conf.d" "mysql"
 
-	local charset='utf8'
-	! useq utf8 && local charset='latin1'
-	sed --in-place \
-		-e "s/@MY_SUFFIX@/${MY_SUFFIX}/" \
-		-e "s/@CHARSET@/${charset}/" \
-		"${D}/etc/mysql${MY_SUFFIX}/my.cnf"
+	if mysql_version_is_at_least 40103 && ! useq utf8; then
+		sed --in-place -e "s/utf8/latin1/" \
+			"${D}/etc/mysql${MY_SUFFIX}/my.cnf"
+	fi
 
 	# minimal builds don't have the server
 	if ! useq minimal; then
 		exeinto /etc/init.d
-		newexe "${FILESDIR}/mysql-slot.rc6" "mysql"
+		# TODO
+		newexe "${FILESDIR}/mysql-4.0.24-r2.rc6" "mysql"
 		insinto /etc/logrotate.d
 		# TODO
 		newins "${FILESDIR}/logrotate.mysql" "mysql${MY_SUFFIX}"
@@ -578,7 +460,7 @@ src_install() {
 		for folder in "${MY_LOGDIR}" "/var/run/mysqld" ; do
 			dodir "${folder}"
 			keepdir "${folder}"
-			chown -R mysql:mysql "${D}/${folder}"
+			chown -R mysql:mysql "${folder}"
 		done
 	fi
 
@@ -597,7 +479,8 @@ src_install() {
 
 		docinto "scripts"
 		for script in \
-			$(ls scripts/mysql* | grep -v '.sh$')
+			$(ls scripts/mysql* | grep -v '.sh$') \
+			scripts/*.sql
 		do
 			dodoc "${script}"
 		done
@@ -614,36 +497,6 @@ pkg_preinst() {
 pkg_postinst() {
 
 	mysql_init_vars
-
-	## TODO : make the check
-	## TODO : what abaut ndb ?
-	#local mylib mylibfullver mylibtmpver maxdots sonamelist prevlink
-	#pushd "${ROOT}/${MY_LIBDIR}"
-	#for mylib in libmysqlclient_r libmysqlclient libndbclient; do
-	#	mylibfullver="$(ls "${mylib}.so"* | sort | tail -n 1)"
-	#	mylibtmpver="${mylibfullver}"
-	#	maxdots=0
-	#	while [[ ${mylibtmpver} != ${mylib} ]] && [[ ${maxdots} -lt 6 ]]; do
-	#		(( ++maxdots ))
-	#		prevlink=$(readlink -f "../${mylibtmpver}")
-	#		if [[ -n "${prevlink}" ]] ; then
-	#			if [[ "${mylibtmpver}" != "${mylibfullver}" ]] \
-	#			&& [[ "${prevlink##*/}" != "${mylibfullver}" ]]
-	#			then
-	#				# gah this is not totally correct
-	#				einfo "found previous library, please run"
-	#				einfo "revdep-rebuild --soname=${mylibtmpver}"
-	#			fi
-	#			rm -f "../${mylibtmpver}"
-	#		fi
-	#		ln -snf \
-	#			$(mysql_strip_double_slash "${ROOT}/${MY_LIBDIR}/${mylibfullver}") \
-	#			$(mysql_strip_double_slash "${ROOT}/${MY_LIBDIR}/../${mylibtmpver}")
-	#		mylibtmpver=${mylibtmpver%.*}
-	#	done
-	#done
-	#popd
-
 	# mind at FEATURES=collision-protect before to remove this
 	[ -d "${ROOT}/var/log/mysql" ] \
 		|| install -d -m0750 -o mysql -g mysql "${ROOT}${MY_LOGDIR}"
@@ -657,133 +510,16 @@ pkg_postinst() {
 		# your friendly public service announcement...
 		einfo
 		einfo "You might want to run:"
-		einfo "\"emerge --config =${CATEGORY}/${PF}\""
+		einfo "\"emerge --config =${PF}\""
 		einfo "if this is a new install."
 		einfo
 	fi
 
+	mysql_upgrade_warning
 	einfo "InnoDB is not optional as of MySQL-4.0.24, at the request of upstream."
 }
 
 pkg_config() {
-	mysql_init_vars
-	[[ -z "${DATADIR}" ]] && die "sorry, unable to find DATADIR"
-
-	if built_with_use dev-db/mysql minimal; then
-		die "Minimal builds do NOT include the MySQL server"
-	fi
-
-	local menusel
-
-	cat <<-EOF
-	 ========
-	||
-	|| 1) Create system database
-	|| 2) [TODO] Copy needed file to chroot
-	|| 3) [TODO] Make the default server (symlink)
-
-	EOF
-
-	read menusel
-	echo
-	[[ -z "${menusel}" ]] || [[ "${menusel}" == 0 ]] && return 0
-	if [[ "${menusel}" == '1' ]]
-	then
-		local pwd1="a"
-		local pwd2="b"
-		local maxtry=5
-
-		if [[ -d "${ROOT}/${DATADIR}/mysql" ]] ; then
-			ewarn "You have already a MySQL database in place."
-			ewarn "(${ROOT}/${DATADIR}/*)"
-			ewarn "Please rename or delete it if you wish to replace it."
-			die "MySQL database already exists!"
-		fi
-
-		einfo "Creating the mysql database and setting proper"
-		einfo "permissions on it..."
-
-		einfo "Insert a password for the mysql 'root' user"
-		ewarn "Avoid [\"'\\_%] characters in the password"
-
-		read -rsp "    >" pwd1 ; echo
-		einfo "Check the password"
-		read -rsp "    >" pwd2 ; echo
-
-		if [[ "x$pwd1" != "x$pwd2" ]] ; then
-			die "Passwords are not the same"
-		fi
-
-		chown -R mysql:mysql ${ROOT}/${DATADIR}
-		chmod 0750 ${ROOT}/${DATADIR}
-
-		local options=""
-		local sqltmp="$(emktemp)"
-
-		local help_tables="${ROOT}/usr/share/doc/mysql-${PVR}/scripts/fill_help_tables.sql.gz"
-		[[ -r "${help_tables}" ]] \
-		&& zcat "${help_tables}" > "${TMPDIR}/fill_help_tables.sql" \
-		|| touch "${TMPDIR}/fill_help_tables.sql"
-		help_tables="${TMPDIR}/fill_help_tables.sql"
-
-		pushd "${TMPDIR}"
-		${ROOT}/usr/bin/mysql_install_db${MY_SUFFIX} || die "MySQL databases not installed"
-		popd
-
-		if mysql_version_is_at_least "4.01.03.00" ; then
-			options="--skip-ndbcluster"
-
-			# Filling timezones, see
-			# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
-			${ROOT}/usr/bin/mysql_tzinfo_to_sql${MY_SUFFIX} ${ROOT}/usr/share/zoneinfo \
-			> "${sqltmp}"
-
-			if [[ -r "${help_tables}" ]] ; then
-				cat "${help_tables}" >> "${sqltmp}"
-			fi
-		fi
-
-		local socket=${ROOT}/var/run/mysqld/mysqld${MY_SUFFIX}${RANDOM}.sock
-		local pidfile=${ROOT}/var/run/mysqld/mysqld${MY_SUFFIX}${RANDOM}.sock
-		local mysqld="${ROOT}/usr/sbin/mysqld${MY_SUFFIX} \
-			${options} \
-			--skip-grant-tables \
-			--basedir=${ROOT}/usr \
-			--datadir=${ROOT}/${DATADIR} \
-			--skip-innodb \
-			--skip-bdb \
-			--max_allowed_packet=8M \
-			--net_buffer_length=16K \
-			--socket=${socket} \
-			--pid-file=${pidfile}"
-
-		$mysqld &
-		while ! [[ -S "${socket}" || "${maxtry}" -lt 1 ]]
-		do
-			maxtry=$(($maxtry-1))
-			echo -n "."
-			sleep 1
-		done
-
-		# do this from memory we don't want clear text password in temp files
-		local sql="UPDATE mysql.user SET Password = PASSWORD('${pwd1}') WHERE USER='root'"
-		${ROOT}/usr/bin/mysql${MY_SUFFIX} \
-			--socket=${socket} \
-			-hlocalhost \
-			-e "${sql}"
-
-		einfo "Loading \"zoneinfo\" this step may require few seconds"
-
-		${ROOT}/usr/bin/mysql${MY_SUFFIX} \
-			--socket=${socket} \
-			-hlocalhost \
-			-uroot \
-			-p"${pwd1}" \
-			mysql < "${sqltmp}"
-
-		kill $(< "${pidfile}" )
-		rm  "${sqltmp}"
-		einfo "done"
-	fi # menusel
+	: # TODO
 }
 

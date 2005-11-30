@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<catmetadata>
-	<longdescription lang="en">
-		The net-print category contains network printing packages.
-	</longdescription>
-	<longdescription lang="de">
-		Die Kategorie net-print enthält Software für das Drucken in Netzwerken.
-	</longdescription>
-	<longdescription lang="es">
-		La categoría net-print contiene programas relacionadas con impresion.
-	</longdescription>
-	<longdescription lang="ja">
-		net-printカテゴリーにはネットワーク・プリンティングのパッケージが含まれています。
-	</longdescription>
-	<longdescription lang="nl">
-		De net-print categorie bevat applicaties voor netwerkprinten.
-	</longdescription>
-	<longdescription lang="vi">
-		Nhóm net-print chứa các phần mềm in ấn qua mạng.
-	</longdescription>
-	<longdescription lang="it">
-		La categoria net-print contiene programmi per la stampa via rete.
-	</longdescription>
-</catmetadata>
-
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>net-print</herd>
+</pkgmetadata>

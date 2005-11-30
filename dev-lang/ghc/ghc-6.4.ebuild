@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.4.ebuild,v 1.9 2005/08/31 17:41:05 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.4.ebuild,v 1.1 2005/03/11 16:30:24 kosmikus Exp $
 
 # Brief explanation of the bootstrap logic:
 #
@@ -32,8 +32,7 @@ SRC_URI="http://www.haskell.org/ghc/dist/${EXTRA_SRC_URI}/${MY_P}-src.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-# re-add ~ppc64 once dependencies are fulfilled
-KEYWORDS="-alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~ppc -alpha ~amd64 -sparc"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -50,8 +49,6 @@ DEPEND="virtual/ghc
 	>=sys-libs/readline-4.2
 	doc? (  ~app-text/docbook-xml-dtd-4.2
 		app-text/docbook-xsl-stylesheets
-		>=dev-libs/libxslt-1.1.2
-		>=dev-haskell/haddock-0.6-r2
 		java? ( >=dev-java/fop-0.20.5 ) )
 	opengl? ( virtual/opengl
 		virtual/glu
@@ -79,9 +76,6 @@ setup_cflags() {
 	check_cflags "-nopie -fno-stack-protector -fno-stack-protector-all"
 }
 
-# Portage's resolution of virtuals fails on virtual/ghc in some Portage releases,
-# the following function causes the build to fail with an informative error message
-# in such a case.
 pkg_setup() {
 	if ! has_version virtual/ghc; then
 		eerror "This ebuild needs a version of GHC to bootstrap from."
@@ -94,9 +88,6 @@ pkg_setup() {
 
 src_unpack() {
 	base_src_unpack
-
-	# This patch is needed for both ppc & ppc64
-	epatch ${FILESDIR}/ghc-6.4-powerpc.patch
 
 	# hardened-gcc needs to be disabled, because the
 	# mangler doesn't accept its output; yes, the 6.2 version
@@ -120,8 +111,6 @@ src_unpack() {
 
 src_compile() {
 	local myconf
-	local mydoc
-
 	if use opengl; then
 		myconf="--enable-hopengl"
 	fi
@@ -132,6 +121,7 @@ src_compile() {
 	# determine what to do with documentation
 	if use doc; then
 		mydoc="html"
+		insttarget="${insttarget} install-docs"
 		if use java; then
 			mydoc="${mydoc} ps"
 		fi
@@ -157,8 +147,8 @@ src_compile() {
 	echo "ArSupportsInput:=" >> mk/build.mk
 
 	# Required for some architectures, because they don't support ghc fully ...
-	use ppc || use ppc64 || use amd64 && echo "SplitObjs=NO" >> mk/build.mk
-	use amd64 || use ppc64 && echo "GhcWithInterpreter=NO" >> mk/build.mk
+	use ppc || use amd64 && echo "SplitObjs=NO" >> mk/build.mk
+	use amd64 && echo "GhcUnregisterised=YES" >> mk/build.mk
 
 	# (--enable-threaded-rts is no longer needed)
 	econf ${myconf} || die "econf failed"
@@ -178,6 +168,7 @@ src_compile() {
 }
 
 src_install () {
+	local mydoc
 	local insttarget
 
 	insttarget="install"
@@ -210,7 +201,7 @@ pkg_postinst () {
 	ghc-reregister
 	einfo "If you have dev-lang/ghc-bin installed, you might"
 	einfo "want to unmerge it. It is no longer needed."
-	einfo
+	einfo " "
 	ewarn "If you upgrade from another ghc version, please run"
 	ewarn "/usr/sbin/ghc-updater to re-merge all ghc-based"
 	ewarn "Haskell libraries."

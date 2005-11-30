@@ -1,29 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsndfile/libsndfile-1.0.5.ebuild,v 1.9 2005/03/02 19:44:42 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsndfile/libsndfile-1.0.5.ebuild,v 1.1 2003/05/08 08:50:21 jje Exp $
 
-inherit eutils
+S=${WORKDIR}/${P}
 
 DESCRIPTION="A C library for reading and writing files containing sampled sound"
-HOMEPAGE="http://www.mega-nerd.com/libsndfile/"
-SRC_URI="http://www.mega-nerd.com/libsndfile/${P}.tar.gz"
+HOMEPAGE="http://www.zipworld.com.au/~erikd/libsndfile/"
+SRC_URI="http://www.zipworld.com.au/~erikd/libsndfile/${P}.tar.gz"
 
-KEYWORDS="x86 sparc ppc"
-LICENSE="LGPL-2.1"
 SLOT="0"
-IUSE=""
+LICENSE="LGPL-2.1"
+KEYWORDS="~x86"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epunt_cxx
+src_compile () {
+
+	econf || die "configure failed"
+
+	make || die "make failed"
+
 }
 
 src_install () {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog NEWS README TODO || die "dodoc failed"
-}
 
-src_test() { :; }
+	einstall || die "make install failed"
+
+	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
+
+}

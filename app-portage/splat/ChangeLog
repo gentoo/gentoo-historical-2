@@ -1,66 +1,8 @@
-# ChangeLog for app-portage/splat
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/splat/ChangeLog,v 1.21 2005/10/20 15:55:54 fuzzyray Exp $
-
-  20 Oct 2005; Paul Varner <fuzzyray@gentoo.org> files/digest-splat-0.07,
-  files/digest-splat-0.08, Manifest:
-  Fix digest to match upstream. (Bug 103067)
-
-  07 Oct 2005; Simon Stelling <blubb@gentoo.org> splat-0.08.ebuild:
-  stable on amd64
-
-  27 Aug 2005; Guy Martin <gmsoft@gentoo.org> splat-0.08.ebuild:
-  Stable on hppa.
-
-  19 Aug 2005; Luis Medinas <metalgod@gentoo.org> splat-0.08.ebuild:
-  Added ~amd64 keywords.
-
-  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> splat-0.08.ebuild:
-  Stable on ppc.
-
-  16 Aug 2005; Ian Leitch <port001@gentoo.org> splat-0.08.ebuild:
-  Stable on x86
-
-  03 Apr 2005; Hardave Riar <hardave@gentoo.org> splat-0.08.ebuild:
-  Keyworded ~mips
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  30 Oct 2004; Joseph Jezak <josejx@gentoo.org> splat-0.07.ebuild,
-  splat-0.08.ebuild:
-  Keyworded stable ppc
-
-  17 Jul 2004; Tom Gall <tgall@gentoo.org> splat-0.08.ebuild:
-  stable on ppc64, bug #55518
-
-  12 Jul 2004; Jason Wever <weeve@gentoo.org> splat-0.08.ebuild:
-  Added the super spiffy ~sparc keyword.
-
-*splat-0.08 (30 Jun 2004)
-
-  30 Jun 2004; Ian Leitch <port001@gentoo.org> +splat-0.08.ebuild:
-  Version bump
-
-  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> splat-0.07.ebuild:
-  Stable on alpha.
-
-  03 May 2004; Bryan Østergaard <kloeri@gentoo.org> splat-0.07.ebuild:
-  Added ~alpha to keywords.
-
-*splat-0.07 (14 Dec 2003)
-
-  14 Dec 2003; Marius Mauch <genone@gentoo.org> splat-0.06.ebuild,
-  splat-0.07.ebuild:
-  version bump
-
-  19 Oct 2003; Martin Holzer <mholzer@gentoo.org> splat-0.06.ebuild:
-  Adding DEPEND="dev-lang/perl" Closes #31475.
+# ChangeLog for app-admin/splat
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/splat/ChangeLog,v 1.1 2003/08/15 13:13:21 lanius Exp $
 
 *splat-0.06 (15 Aug 2003)
-
-  01 Oct 2003; Marius Mauch <genone@gentoo.org> splat-0.06.ebuild:
-  added ~ppc as per bug 30040, marked stable on x86
 
   15 Aug 2003; Heinrich Wendel <lanius@gentoo.org> splat-0.06.ebuild:
   moved from app-admin to app-portage

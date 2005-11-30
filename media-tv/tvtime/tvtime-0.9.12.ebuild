@@ -1,15 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/tvtime/tvtime-0.9.12.ebuild,v 1.7 2005/02/24 08:16:51 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/tvtime/tvtime-0.9.12.ebuild,v 1.1 2003/12/03 07:38:58 max Exp $
 
 DESCRIPTION="High quality television application for use with video capture cards."
 HOMEPAGE="http://tvtime.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="directfb sdl"
 
 DEPEND="virtual/x11
@@ -25,7 +24,7 @@ src_compile() {
 	myconf="${myconf} `use_with directfb`"
 	myconf="${myconf} `use_with sdl` `use_enable sdl sdltest`"
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 	emake || die "compile problem"
 }
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/db4-fix.eclass,v 1.6 2005/07/06 20:23:20 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/db4-fix.eclass,v 1.1 2003/05/24 14:38:06 pauldv Exp $
 #
 # Author: Paul de Vrieze <pauldv@gentoo.org>
 #
@@ -9,8 +9,10 @@
 # the dodb4-fix script should be run from the directory where autoconf needs to
 # be run from
 
+ECLASS=db4-fix
+INHERITED="$INHERITED $ECLASS"
 
-DEPEND="sys-apps/sed"
+newdepend "sys-apps/sed"
 
 DESCRIPTION="Based on the ${ECLASS} eclass"
 
@@ -30,11 +32,9 @@ dodb4-fix () {
 			einfo "fixing $1 to work with db-4 by appending ${postfix}"
 			cp $1 ${1}.cpy
 			cat ${1}.cpy \
-				|sed -e "s;\( *AC_CHECK_LIB( *db-?4? *, db_[^ ,]*\);\1${postfix};" \
-				-e "s/\(-l\|[ \t]\)\(db3\)\([ \t]\)/\1db-3\3/g" \
+				|sed -e "s;\( *AC_CHECK_LIB( *db4? *, db_[^ ,]*\);\1${postfix};" \
+				-e "s/\( *AC_CHECK_LIB([^,]*, db_create\)\( *,\)/\1${postfix}\2/" \
 				>${1} || die "sed failed"
-#				-e "s/\( *AC_CHECK_LIB([^,]*, db_create\)\( *,\)/\1${postfix}\2/" \
-
 			autoconf
 		fi
 	else

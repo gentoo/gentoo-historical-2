@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2html/latex2html-2002.2.1_pre20041025.ebuild,v 1.11 2005/10/02 14:27:29 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/latex2html/latex2html-2002.2.1_pre20041025.ebuild,v 1.1 2004/11/19 09:59:58 usata Exp $
 
 inherit eutils
 
@@ -22,14 +22,15 @@ HOMEPAGE="http://www.latex2html.org/"
 
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~alpha ~amd64 ~sparc"
 IUSE="gif png"
 
 DEPEND="virtual/ghostscript
 	virtual/tetex
 	media-libs/netpbm
 	dev-lang/perl
-	gif? ( media-libs/giflib )
+	gif? ( media-libs/giflib
+		media-libs/libungif )
 	png? ( media-libs/libpng )"
 
 #src_unpack() {
@@ -39,8 +40,6 @@ DEPEND="virtual/ghostscript
 #}
 
 src_compile() {
-	sed -ie 's%@PERL@%/usr/bin/perl%g' wrapper/unix.pin || die
-
 	local myconf
 
 	use gif || use png || myconf="${myconf} --disable-images"

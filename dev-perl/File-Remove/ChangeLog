@@ -1,54 +1,6 @@
 # ChangeLog for dev-perl/File-Remove
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Remove/ChangeLog,v 1.14 2005/11/28 15:56:05 tgall Exp $
-
-  28 Nov 2005; Tom Gall <tgall@gentoo.org> File-Remove-0.21.ebuild:
-  stable on ppc64
-
-*File-Remove-0.30 (20 Nov 2005)
-
-  20 Nov 2005; Aaron Kulbe <superlag@gentoo.org> +File-Remove-0.30.ebuild:
-  Version bump upstream.
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> File-Remove-0.29.ebuild:
-  add ~ia64
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  File-Remove-0.29.ebuild:
-  dev-perl/File-Spec => perl-core/File-Spec migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  File-Remove-0.21.ebuild:
-  dev-perl/File-Spec => perl-core/File-Spec migration
-
-*File-Remove-0.29 (25 Apr 2005)
-
-  25 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  File-Remove-0.20.ebuild, +File-Remove-0.29.ebuild:
-  cleaning
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  File-Remove-0.20.ebuild:
-  Stable on ppc.
-
-  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  File-Remove-0.20.ebuild:
-  Stable on sparc
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  23 Dec 2004; Yuta SATOH <nigoro@gentoo.org> File-Remove-0.21.ebuild:
-  added ~ppc64
-
-*File-Remove-0.21 (16 Oct 2004)
-
-  16 Oct 2004; Michael Cummings <mcummings@gentoo.org>
-  +File-Remove-0.21.ebuild:
-  New version on cpan; dep for File-Flat
-
-  26 May 2004; Bryan Ãstergaard <kloeri@gentoo.org> File-Remove-0.20.ebuild:
-  Stable on alpha.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Remove/ChangeLog,v 1.1 2003/06/04 00:34:19 mcummings Exp $
 
 *File-Remove-0.20 (03 Jun 2003)
 

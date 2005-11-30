@@ -1,21 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/html401/html401-19991224-r2.ebuild,v 1.9 2005/10/15 14:30:16 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/html401/html401-19991224-r2.ebuild,v 1.1 2004/11/06 12:56:17 usata Exp $
 
 inherit sgml-catalog eutils
 
 DESCRIPTION="DTDs for the HyperText Markup Language 4.01"
-HOMEPAGE="http://www.w3.org/TR/html401/"
+HOMEPAGE="http://www.w3.org/TR/${PN}/"
 SRC_URI="http://www.w3.org/TR/html401/html40.tgz"
 S=${WORKDIR}
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="ppc ~ppc-macos s390 x86"
+KEYWORDS="~x86 ~s390"
 IUSE=""
 DEPEND="app-text/sgml-common"
-
-sgml-catalog_cat_include "/etc/sgml/${PN}.cat" \
-	"/usr/share/sgml/${PN}/HTML4.cat"
 
 src_unpack() {
 	unpack ${A}
@@ -29,3 +26,6 @@ src_install() {
 	insinto /etc/sgml
 	dohtml *.html */*
 }
+
+sgml-catalog_cat_include "/etc/sgml/${PN}.cat" \
+	"/usr/share/sgml/${PN}/HTML4.cat"

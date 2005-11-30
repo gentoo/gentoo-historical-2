@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/win4lin/win4lin-5.1.1.ebuild,v 1.7 2005/08/15 16:51:48 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/win4lin/win4lin-5.1.1.ebuild,v 1.1 2004/08/26 20:00:09 bass Exp $
 
 inherit eutils
 
@@ -16,10 +16,11 @@ SRC_URI="mirror://gentoo/${MY_P}.rpm"
 
 SLOT="0"
 LICENSE="NeTraverse"
-KEYWORDS="-* x86"
+KEYWORDS="x86"
 
 DEPEND="app-arch/rpm2targz
-	!app-emulation/win4lin"
+		virtual/winkernel
+		!app-emulation/win4lin"
 
 pkg_setup() {
 	if has_version '<=app-emulation/win4lin-5.1'; then
@@ -28,7 +29,7 @@ pkg_setup() {
 		ewarn "Is a good idea to backup your license code too."
 		echo
 		die "blocked by older version"
-		epause
+	sleep 5
 	fi
 }
 
@@ -38,8 +39,9 @@ src_unpack() {
 }
 
 src_compile() {
-	einfo "Nothing to compile; binary package."
-	einfo "Remember you need a patched kernel."
+	einfo "nothing to compile; binary package."
+	einfo "Remember you need a kernel patched like"
+	einfo "win4lin-sources or gs-sources."
 }
 
 src_install() {
@@ -62,10 +64,10 @@ pkg_postinst() {
 	einfo "ebuild  /var/db/pkg/app-emulation/${PF}/${PF}.ebuild config"
 	einfo "to install the windows setup files. You will need your Windows cdrom in the "
 	einfo "drive in order to complete this step."
-	einfo
+	einfo "============"
 	einfo "If this is an upgrade 4.x to 5.x the trial license code isn't valid,"
 	einfo "you need register it in NeTraverse, or unemerge ALL Win4Lin files."
-	einfo
+	einfo "============"
 	ewarn "Remeber: rc-update add Win4Lin default"
 	ewarn "you need to start de Win4Lin service."
 }
@@ -76,7 +78,6 @@ pkg_prerm() {
 }
 
 pkg_config() {
-	chown -R bin:bin /opt/win4lin
 	loadwindowsCD cddevice /dev/cdrom
 	cp /opt/win4lin/win4lin.initd.new /etc/init.d/Win4Lin
 	chmod +x /etc/init.d/Win4Lin

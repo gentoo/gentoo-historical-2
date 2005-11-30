@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/qmailadmin/qmailadmin-1.2.0_rc2-r1.ebuild,v 1.4 2004/07/15 01:52:32 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/qmailadmin/qmailadmin-1.2.0_rc2-r1.ebuild,v 1.1 2004/01/16 06:02:56 robbat2 Exp $
 
 inherit gnuconfig
 
@@ -13,11 +13,10 @@ RESTRICT="nomirror"
 S=${WORKDIR}/${MY_P}
 
 KEYWORDS="~x86"
-IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="mail-mta/qmail
+DEPEND="net-mail/qmail
 		>=net-mail/vpopmail-5.3
 		net-mail/autorespond"
 

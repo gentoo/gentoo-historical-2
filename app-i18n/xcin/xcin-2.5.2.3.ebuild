@@ -1,26 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/xcin/xcin-2.5.2.3.ebuild,v 1.10 2005/01/01 14:43:44 eradicator Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/xcin/xcin-2.5.2.3.ebuild,v 1.1 2002/07/31 17:43:52 stubear Exp $
 
 DESCRIPTION="Chinese X Input Method"
 HOMEPAGE="http://xcin.linux.org.tw/"
 SRC_URI="ftp://xcin.linux.org.tw/pub/xcin/xcin/${P}.tar.gz"
-
 LICENSE="XCIN"
 SLOT="0"
-KEYWORDS="x86 ppc"
-IUSE="nls"
-
+KEYWORDS="x86"
 DEPEND="nls? ( sys-devel/gettext )"
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}
 
-src_unpack() {
+src_unpack () {
 	unpack ${A}
 	cd ${S}/po
-	epatch ${FILESDIR}/${P}-gentoo.patch
+	patch -p0 < ${FILESDIR}/xcin-gentoo.patch || die
 }
 
 src_compile() {

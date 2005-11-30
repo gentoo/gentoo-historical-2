@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsmtp/libsmtp-0.8.ebuild,v 1.4 2005/06/28 08:24:11 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libsmtp/libsmtp-0.8.ebuild,v 1.1 2004/12/22 14:23:51 ka0ttic Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://download.berlios.de/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~x86"
 IUSE="doc"
 
 DEPEND="virtual/libc
@@ -23,9 +23,7 @@ src_unpack() {
 }
 
 src_install() {
-	insinto /usr/include
-	doins include/*.h
-	dolib.a {smtp,mime}/*.a
+	dolib.a smtp/libsmtp.a mime/libsmtp_mime.a || die "dolib.a failed"
 	dodoc AUTHORS CHANGES INSTALL README doc/API doc/BUGS doc/MIME doc/TODO \
 		|| die "dodoc failed"
 

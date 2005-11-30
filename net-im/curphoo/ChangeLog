@@ -1,54 +1,6 @@
-# ChangeLog for net-im/curphoo
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/curphoo/ChangeLog,v 1.15 2005/10/01 21:04:00 mkennedy Exp $
-
-  01 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  curphoo-0.3.12-r1.ebuild:
-  Keywording ~amd64.
-
-*curphoo-0.3.12-r1 (08 Aug 2005)
-
-  08 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  +files/0.3.12-session-server-gentoo.patch, -files/encodep.py-gentoo.patch,
-  -curphoo-0.3.11.ebuild, -curphoo-0.3.12.ebuild, +curphoo-0.3.12-r1.ebuild:
-  Added patch to follow recent changes in authentication server; Removed old
-  ebuilds; Added metadata.xml.
-
-  25 Sep 2004; <mkennedy@gentoo.org> curphoo-0.3.12.ebuild:
-  Added patch for 64-bit cleanliness.
-
-  03 Jul 2004; David Holm <dholm@gentoo.org> curphoo-0.3.12.ebuild:
-  Added to ~ppc.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  curphoo-0.3.11.ebuild, curphoo-0.3.12.ebuild:
-  virtual/glibc -> virtual/libc
-
-*curphoo-0.3.12 (01 Jul 2004)
-
-  01 Jul 2004; <mkennedy@gentoo.org> +curphoo-0.3.12.ebuild:
-  New upstream version
-
-  16 Apr 2004; <mkennedy@gentoo.org> +files/curphoo.1, curphoo-0.3.11.ebuild:
-  Use manpage from CVS
-
-  16 Apr 2004; <mkennedy@gentoo.org> files/curphoo.sh:
-  Fix wrapper script to proliferate command line options
-
-  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> curphoo-0.3.11.ebuild:
-  Added IUSE=, removed S=.
-
-  23 Mar 2004; Martin Holzer <mholzer@gentoo.org> curphoo-0.3.11.ebuild:
-  fixing depend qa issue. see 45343.
-
-*curphoo-0.3.11 (21 Jan 2004)
-
-  21 Jan 2004; <mkennedy@gentoo.org> curphoo-0.3.11.ebuild,
-  curphoo-0.3.9.ebuild:
-  new upstream
-
-  11 Dec 2003; <mkennedy@gentoo.org> curphoo-0.3.9.ebuild:
-  removed old, obsolete homepage url to avoid confusion
+# ChangeLog for net-misc/curphoo
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-im/curphoo/ChangeLog,v 1.1 2003/10/08 14:16:43 lanius Exp $
 
 *curphoo-0.3.7-r1 (08 Oct 2003)
 

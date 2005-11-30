@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-system-monitor/gnome-system-monitor-2.10.1.ebuild,v 1.12 2005/10/10 21:42:01 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-system-monitor/gnome-system-monitor-2.10.1.ebuild,v 1.1 2005/04/12 17:16:25 joem Exp $
 
-inherit gnome2 eutils
+inherit gnome2
 
 DESCRIPTION="The Gnome System Monitor"
 HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64 ~ia64 ~mips"
 IUSE=""
 
 RDEPEND=">=gnome-base/libgnome-2
@@ -27,13 +27,3 @@ DEPEND=">=dev-util/pkgconfig-0.12.0
 
 DOCS="AUTHORS ChangeLog HACKING README NEWS TODO"
 USE_DESTDIR="1"
-
-src_unpack() {
-
-	unpack ${A}
-
-	cd ${S}
-	# fix warnings, it upsets ppl (#84831)
-	epatch ${FILESDIR}/${P}-icon_warning.patch
-
-}

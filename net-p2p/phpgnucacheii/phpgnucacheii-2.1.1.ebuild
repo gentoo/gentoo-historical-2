@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/phpgnucacheii/phpgnucacheii-2.1.1.ebuild,v 1.5 2005/09/11 14:02:32 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/phpgnucacheii/phpgnucacheii-2.1.1.ebuild,v 1.1 2004/09/17 16:52:53 squinky86 Exp $
 
 inherit webapp
 
@@ -9,12 +9,12 @@ HOMEPAGE="http://gwcii.sourceforge.net/"
 SRC_URI="mirror://sourceforge/gwcii/${P}.tar.gz"
 LICENSE="GPL-2"
 IUSE=""
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86"
 
 S=${WORKDIR}/${PN}
 
 RDEPEND=">=net-www/apache-1.3.24-r1
-	virtual/httpd-php
+	>=dev-php/mod_php-4.3
 	>=dev-db/mysql-4"
 
 pkg_preinst() {
@@ -27,7 +27,7 @@ pkg_preinst() {
 
 src_install() {
 	webapp_src_preinst
-	cp -pPR gwcii.php expert.phpgnucacheii.schema phpgnucacheii.schema config "${D}/${MY_HTDOCSDIR}"
+	cp -a gwcii.php expert.phpgnucacheii.schema phpgnucacheii.schema config "${D}/${MY_HTDOCSDIR}"
 	cp ${FILESDIR}/confightaccess ${D}/${MY_HTDOCSDIR}/config/.htaccess
 	webapp_configfile ${MY_HTDOCSDIR}/config/.htaccess
 	dodoc README CHANGELOG

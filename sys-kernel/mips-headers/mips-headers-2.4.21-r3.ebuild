@@ -1,15 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-headers/mips-headers-2.4.21-r3.ebuild,v 1.10 2005/05/14 01:05:34 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-headers/mips-headers-2.4.21-r3.ebuild,v 1.1 2003/10/16 03:53:45 kumba Exp $
+
 
 ETYPE="headers"
 inherit kernel eutils
-IUSE=""
 OKV=${PV/_/-}
 CVSDATE=20030803
+S=${WORKDIR}/linux-${OKV}
 EXTRAVERSION=-mipscvs-${CVSDATE}
-KV="${OKV}${EXTRAVERSION}"
-S=${WORKDIR}/linux-${KV}
+PROVIDE="virtual/os-headers"
+
 
 # What's in this kernel?
 
@@ -23,13 +24,11 @@ DESCRIPTION="Linux-Mips CVS headers for MIPS-based machines, dated ${CVSDATE}"
 SRC_URI="mirror://kernel/linux/kernel/v2.4/linux-${OKV}.tar.bz2
 		mirror://gentoo/mipscvs-${OKV}-${CVSDATE}.diff.bz2"
 HOMEPAGE="http://www.linux-mips.org/"
-SLOT="0"
-PROVIDE="virtual/os-headers"
 KEYWORDS="-* mips"
+SLOT="${OKV}"
 
 src_unpack() {
 	unpack ${A}
-	mv ${WORKDIR}/linux-${OKV} ${S}
 	cd ${S}
 
 	# Update the vanilla sources with linux-mips CVS changes

@@ -1,7 +1,9 @@
 # Copyright 2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
 # Author Michael Tindal <urilith@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/eclass/apache-module.eclass,v 1.13 2005/08/02 23:26:14 vericgar Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/apache-module.eclass,v 1.1 2004/11/21 01:51:58 urilith Exp $
+ECLASS=apache-module
+INHERITED="$INHERITED $ECLASS"
 
 inherit depend.apache
 
@@ -145,7 +147,7 @@ apache_doc_magic() {
 ## ${APXS1_ARGS}.  If a module requires a different build setup
 ## than this, use ${APXS1} in your own src_compile routine.
 ####
-apache1_src_compile() {
+apache1_src_compile () {
 	debug-print-function apache1_src_compile
 
 	CD_DIR=$(apache_cd_dir)
@@ -162,9 +164,9 @@ apache1_src_compile() {
 ## this function can also set the executable permission on files listed in EXECFILES.
 ## The configuration file name is listed in APACHE1_MOD_CONF without the .conf extensions,
 ## so if you configuration is 55_mod_foo.conf, APACHE1_MOD_CONF would be 55_mod_foo.
-## DOCFILES contains the list of files you want filed as documentation. The name of the
+## DOCFILES contains the list of files you want filed as documentation. The name of the 
 ## module can also be specified using the APACHE1_MOD_FILE or defaults to
-## .libs/${PN}.so.
+## .libs/${PN}.so. 
 ####
 apache1_src_install() {
 	debug-print-function apache1_src_install
@@ -175,14 +177,19 @@ apache1_src_install() {
 	MOD_FILE=$(apache_mod_file)
 
 	exeinto ${APACHE1_MODULESDIR}
-	doexe ${MOD_FILE} || die "internal ebuild error: '${MOD_FILE}' not found"
+	doexe ${MOD_FILE} || die "internal ebuild error: \'${MOD_FILE}\' not found"
 	[ -n "${APACHE1_EXECFILES}" ] && doexe ${APACHE1_EXECFILES}
 
 	if [ -n "${APACHE1_MOD_CONF}" ] ; then
 		insinto ${APACHE1_MODULES_CONFDIR}
-		doins ${FILESDIR}/${APACHE1_MOD_CONF}.conf || die "internal ebuild error: '${FILESDIR}/${APACHE1_MOD_CONF}.conf' not found."
-	fi
+		doins ${FILESDIR}/${APACHE1_MOD_CONF}.conf || die "internal ebuild error: \'${APACHE2_MOD_CONF}.conf\' not found."
 
+		einfo
+		einfo "Configuration file installed as ${APACHE1_MODULES_CONFDIR}/${APACHE1_MOD_CONF}.conf"
+		einfo "You may want to edit it before turning the module on in /etc/conf.d/apache"
+		einfo
+	fi
+	
 	cd ${S}
 
 	if [ -n "${DOCFILES}" ] ; then
@@ -208,13 +215,6 @@ apache1_pkg_postinst() {
 		einfo "add '-D ${APACHE1_MOD_DEFINE}' to APACHE_OPTS."
 		einfo
 	fi
-	if [ -n "${APACHE1_MOD_CONF}" ] ; then
-		einfo
-		einfo "Configuration file installed as"
-		einfo "    ${APACHE1_MODULES_CONFDIR}/$(basename ${APACHE1_MOD_CONF}).conf"
-		einfo "You may want to edit it before turning the module on in /etc/conf.d/apache"
-		einfo
-	fi
 }
 
 ######
@@ -228,30 +228,29 @@ apache1_pkg_postinst() {
 ## we check what the MPM style used by Apache is, if it isnt prefork, we let the user
 ## know they need prefork, and then exit the build.
 ####
-apache2_pkg_setup() {
+apache2_pkg_setup () {
 	debug-print-function apache2_pkg_setup
 
-	if [ -n "${APACHE2_SAFE_MPMS}" ]; then
+	if [ -n "${APACHE2_MT_UNSAFEE}" ]; then
+		if [ "x${APACHE2_MT_UNSAFE}" != "no" ]; then
+			APACHE2_MPM_STYLE=`/usr/sbin/apxs2 -q MPM_NAME`
+			if [ "x$APACHE2_MPM_STYLE" != "xprefork" ]; then
+				eerror "You currently have Apache configured to use the."
+				eerror "$APACHE2_MPM_STYLE MPM style.  The module you are"
+				eerror "trying to install is not currently thread-safe,"
+				eerror "and will not work under your current configuraiton."
+				echo
+				eerror "If you still want to use the module, please reinstall"
+				eerror "Apache with mpm-prefork set."
 
-		INSTALLED_MPM="$(${ROOT}/usr/sbin/apxs2 -q MPM_NAME)"
-
-		if hasq ${INSTALLED_MPM} ${APACHE2_SAFE_MPMS} ; then
-			INSTALLED_MPM_SAFE="yes"
+				epause
+				ebeep
+				die Invalid Apache MPM style.
+			fi
 		fi
-
-		if [ -z "${INSTALLED_MPM_SAFE}" ] ; then
-			eerror "The module you are trying to install (${PN})"
-			eerror "will only work with one of the following MPMs:"
-			eerror "   ${APACHE2_SAFE_MPMS}"
-			eerror "You do not currently have any of these MPMs installed."
-			eerror "Please re-install apache with the correct mpm-* USE flag set."
-			die "No safe MPM installed."
-		fi
-
 	fi
-
 }
-
+				
 ####
 ## apache2_src_compile
 ##
@@ -259,7 +258,7 @@ apache2_pkg_setup() {
 ## ${APXS2_ARGS}.  If a module requires a different build setup
 ## than this, use ${APXS2} in your own src_compile routine.
 ####
-apache2_src_compile() {
+apache2_src_compile () {
 	debug-print-function apache2_src_compile
 
 	CD_DIR=$(apache_cd_dir)
@@ -287,16 +286,21 @@ apache2_src_install() {
 	MOD_FILE=$(apache_mod_file)
 
 	exeinto ${APACHE2_MODULESDIR}
-	doexe ${MOD_FILE} || die "internal ebuild error: '${MOD_FILE}' not found"
+	doexe ${MOD_FILE} || die "internal ebuild error: \'${MOD_FILE}\' not found"
 	[ -n "${APACHE2_EXECFILES}" ] && doexe ${APACHE2_EXECFILES}
 
 	if [ -n "${APACHE2_MOD_CONF}" ] ; then
 		insinto ${APACHE2_MODULES_CONFDIR}
-		doins ${FILESDIR}/${APACHE2_MOD_CONF}.conf || die "internal ebuild error: '${FILESDIR}/${APACHE2_MOD_CONF}.conf' not found."
+		doins ${FILESDIR}/${APACHE2_MOD_CONF}.conf || die "internal ebuild error: \'${APACHE2_MOD_CONF}.conf\' not found."
+
+		einfo
+		einfo "Configuration file installed as ${APACHE2_MODULES_CONFDIR}/${APACHE2_MOD_CONF}.conf"
+		einfo "You may want to edit it before turning the module on in /etc/conf.d/apache2"
+		einfo
 	fi
 
 	if [ -n "${APACHE2_VHOSTFILE}" ]; then
-		insinto ${APACHE2_VHOSTDIR}
+		insinto ${APACHE2_MODULES_VHOSTDIR}
 		doins ${FILESDIR}/${APACHE2_VHOSTFILE}.conf
 	fi
 
@@ -320,33 +324,6 @@ apache2_pkg_postinst() {
 		einfo "add '-D ${APACHE2_MOD_DEFINE}' to APACHE2_OPTS."
 		einfo
 	fi
-	if [ -n "${APACHE2_MOD_CONF}" ] ; then
-		einfo
-		einfo "Configuration file installed as"
-		einfo "    ${APACHE2_MODULES_CONFDIR}/$(basename ${APACHE2_MOD_CONF}).conf"
-		einfo "You may want to edit it before turning the module on in /etc/conf.d/apache2"
-		einfo
-	fi
-
-	if [ -n "${APACHE2_SAFE_MPMS}" ]; then
-
-		INSTALLED_MPM="$(${ROOT}/usr/sbin/apxs2 -q MPM_NAME)"
-
-		if ! hasq ${INSTALLED_MPM} ${APACHE2_SAFE_MPMS} ; then
-			INSTALLED_MPM_UNSAFE="${INSTALLED_MPM_UNSAFE} ${mpm}"
-		else
-			INSTALLED_MPM_SAFE="${INSTALLED_MPM_SAFE} ${mpm}"
-		fi
-
-		if [ -n "${INSTALLED_MPM_UNSAFE}" ] ; then
-			ewarn "You have one or more MPMs installed that will not work with"
-			ewarn "this module (${PN}). Please make sure that you only enable"
-			ewarn "this module if you are using one of the following MPMs:"
-			ewarn "     ${INSTALLED_MPM_SAFE}"
-		fi
-
-	fi
-
 }
 
 ######

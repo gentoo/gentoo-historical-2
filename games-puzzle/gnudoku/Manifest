@@ -1,4 +1,2 @@
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 43483b1dfd27fd154bbc62e81bf662c8 ChangeLog 775
-MD5 6ee5b406c6ac481bacf7caa43fcd3891 gnudoku-0.92.ebuild 729
-MD5 d4196dbc690d5b7882efa351cd6d5c62 files/digest-gnudoku-0.92 63
+MD5 34c00dd667299a38a315f8a27d77afdf gnudoku-0.9.ebuild 592
+MD5 cc85a018b42ae1815e95ffdf93c6c053 files/digest-gnudoku-0.9 62

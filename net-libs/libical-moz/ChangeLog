@@ -1,22 +1,7 @@
 # ChangeLog for net-libs/libical-moz
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libical-moz/ChangeLog,v 1.9 2004/12/29 03:19:15 ciaranm Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libical-moz/ChangeLog,v 1.1 2002/02/01 21:53:34 gbevin Exp $
 
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  libical-moz-0.23.ebuild:
-  virtual/glibc -> virtual/libc
-
-  05 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> libical-moz-0.23.ebuild:
-  Stable on alpha.
-
-  14 Jul 2003; Aron Griffis <agriffis@gentoo.org> libical-moz-0.23.ebuild:
-  Add ~alpha to KEYWORDS
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *libical-moz-0.23 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

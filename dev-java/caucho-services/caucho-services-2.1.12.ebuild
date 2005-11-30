@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/caucho-services/caucho-services-2.1.12.ebuild,v 1.3 2005/11/30 02:13:39 nichoj Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/caucho-services/caucho-services-2.1.12.ebuild,v 1.1 2005/10/22 20:25:27 betelgeuse Exp $
 
 inherit java-pkg
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="Apache-1.1"
 SLOT="2.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86"
 
 IUSE="doc jikes source"
 
@@ -19,8 +19,6 @@ RDEPEND=">=virtual/jre-1.4
 DEPEND=">=virtual/jdk-1.4
 		app-arch/unzip
 		dev-java/ant-core
-		jikes? ( dev-java/jikes )
-		source? ( app-arch/zip )
 		${RDEPEND}"
 
 src_compile() {

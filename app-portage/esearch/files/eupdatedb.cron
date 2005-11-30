@@ -1,32 +1,18 @@
-#! /bin/bash
-
-# The eupdatedb script _needs_ to be installed with the filename 'eupdatedb'
-# because it does things based on basename $0.
+#! /bin/sh
 
 # Run some script
 
-SCRIPT="/usr/sbin/eupdatedb"
-SCRIPTPREOPTS="nice -n 19"
-SCRIPTOPTS="--quiet"
-PRECOMMAND=""
-POSTCOMMAND=""
-DATE="`date +%Y%m%d`"
-LOG="/var/log/`basename ${SCRIPT}`"
+SCRIPT="eupdatedb"
 
-${PRECOMMAND}
+DATE="`date +%Y%m%d`"
+LOG="/var/log/${SCRIPT}"
 
 # Start logging
 echo "--- Starting ${SCRIPT} for ${DATE} ---" >> ${LOG}
 
-if [ "`${SCRIPTPREOPTS} ${SCRIPT} ${SCRIPTOPTS}`" ]
-then
-	 echo "${SCRIPT}: success." >> ${LOG}
-else
-	echo "ERROR: ${SCRIPT} failed." >> ${LOG}
-fi
-
-# Cleanup tasks
-${POSTCOMMAND}
+${SCRIPT} && \
+echo "${SCRIPT}: success." >> ${LOG} || \
+echo "ERROR: ${SCRIPT} failed." >> ${LOG}
 
 # End logging
 echo "--- Ending ${SCRIPT} for ${DATE} ---" >> ${LOG}

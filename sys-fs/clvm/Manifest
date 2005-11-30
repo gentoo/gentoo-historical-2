@@ -1,15 +1,7 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
+MD5 723cd27b19df89b9b9047bba1d170da9 clvm-2.00.33.ebuild 1469
 MD5 a64b9a1937a5cfc2fbaf373521f65d47 metadata.xml 223
-MD5 af7390c39470640594a2148d23f0ce36 ChangeLog 1443
-MD5 56d6d9cd7403c81b23cbcc410200bf65 clvm-2.01.09.ebuild 1156
-MD5 bf0fb4d67afee82ab80c68968c79009c files/clvmd.rc 3668
-MD5 540e8a304be1860275577f326c7bd0f0 files/digest-clvm-2.01.09 61
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDe+i9gMUyd/cdjWsRAuJXAJ0dVbO4fN7nYdzEcxTM/i7342KRdACeOcl+
-0Y9jqmpjOIhnLPBJNp2wMv0=
-=NnAO
------END PGP SIGNATURE-----
+MD5 a18162419a3c5edab248d12c9081a2da ChangeLog 314
+MD5 76be634e0ce42b128aaee3a610e7ecc8 files/clvmd.rc 1725
+MD5 5c0208edfc72c85c17a962ef6145e278 files/lvm2-start.sh 777
+MD5 a741bcff57d8fc8dcb98dc327c0b147f files/lvm2-stop.sh 1742
+MD5 f8399f304f8ba8257277f8e57b0c4687 files/digest-clvm-2.00.33 61

@@ -1,35 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gltt/gltt-2.5.2-r1.ebuild,v 1.15 2005/07/19 11:32:40 dholm Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Dan Armak <danarmak@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gltt/gltt-2.5.2-r1.ebuild,v 1.1 2002/04/26 07:36:33 seemant Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="GL truetype library"
-HOMEPAGE="http://gltt.sourceforge.net/"
 SRC_URI="http://gltt.sourceforge.net/download/${P}.tar.gz"
+HOMEPAGE="http://gltt.sourceforge.net/"
 
-LICENSE="LGPL-2"
-SLOT="0"
-KEYWORDS="~ppc sparc x86"
-IUSE=""
+DEPEND="virtual/glibc
+        virtual/opengl
+        virtual/glut
+        virtual/x11
+	>=media-libs/freetype-1.3.1"
 
-DEPEND="virtual/opengl
-	virtual/glut
-	=media-libs/freetype-1*"
+RDEPEND="$DEPEND"
 
 src_compile() {
-	#small gcc3.x fix for #9173
-	cp FTGlyphVectorizer.h FTGlyphVectorizer.h.old
-	sed -e 's:friend FTGlyphVectorizer:friend struct FTGlyphVectorizer:' \
-		FTGlyphVectorizer.h.old > FTGlyphVectorizer.h
 
 	./configure \
 		--with-x \
 		--prefix=/usr \
 		--with-ttf-dir=/usr || die
-
+		
 	make || die
+
 }
 
 src_install() {
+
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog NEWS README
+		
+	dodoc AUTHORS COPYING ChangeLog NEWS README
+
 }

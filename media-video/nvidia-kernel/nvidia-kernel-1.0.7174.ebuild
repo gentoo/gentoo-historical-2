@@ -1,19 +1,19 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/nvidia-kernel/nvidia-kernel-1.0.7174.ebuild,v 1.5 2005/10/28 07:19:45 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/nvidia-kernel/nvidia-kernel-1.0.7174.ebuild,v 1.1 2005/04/01 12:14:06 azarah Exp $
 
 inherit eutils linux-mod
 
 X86_PKG_V="pkg0"
-AMD64_PKG_V="pkg2"
+AMD64_PKG_V="pkg1"
 NV_V="${PV/1.0./1.0-}"
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${NV_V}"
 AMD64_NV_PACKAGE="NVIDIA-Linux-x86_64-${NV_V}"
 
 DESCRIPTION="Linux kernel module for the NVIDIA X11 driver"
 HOMEPAGE="http://www.nvidia.com/"
-SRC_URI="x86? ( ftp://download.nvidia.com/XFree86/Linux-x86/${NV_V}/${X86_NV_PACKAGE}-${X86_PKG_V}.run )
-	amd64? ( http://download.nvidia.com/XFree86/Linux-x86_64/${NV_V}/${AMD64_NV_PACKAGE}-${AMD64_PKG_V}.run )"
+SRC_URI="x86? (ftp://download.nvidia.com/XFree86/Linux-x86/${NV_V}/${X86_NV_PACKAGE}-${X86_PKG_V}.run)
+	amd64? (http://download.nvidia.com/XFree86/Linux-x86_64/${NV_V}/${AMD64_NV_PACKAGE}-${AMD64_PKG_V}.run)"
 
 if use x86; then
 	PKG_V="${X86_PKG_V}"
@@ -31,9 +31,11 @@ KEYWORDS="-* ~x86 ~amd64"
 RESTRICT="nostrip"
 IUSE=""
 
-RDEPEND="virtual/modutils"
 DEPEND="virtual/linux-sources"
 export _POSIX2_VERSION="199209"
+
+MODULE_NAMES="nvidia(video:${S})"
+BUILD_PARAMS="IGNORE_CC_MISMATCH=yes V=1 SYSSRC=${KV_DIR} SYSOUT=${KV_OUT_DIR}"
 
 mtrr_check() {
 	ebegin "Checking for MTRR support"
@@ -54,9 +56,7 @@ mtrr_check() {
 
 pkg_setup() {
 	linux-mod_pkg_setup
-	MODULE_NAMES="nvidia(video:${S})"
-	BUILD_PARAMS="IGNORE_CC_MISMATCH=yes V=1 SYSSRC=${KV_DIR} SYSOUT=${KV_OUT_DIR}"
-	mtrr_check
+	mtrr_check;
 }
 
 src_unpack() {

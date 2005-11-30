@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix-server/zabbix-server-1.1_alpha7.ebuild,v 1.3 2005/08/23 17:22:20 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/zabbix-server/zabbix-server-1.1_alpha7.ebuild,v 1.1 2005/04/26 22:06:07 iggy Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/zabbix/${MY_P}-${MY_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~sparc ~amd64"
 
 IUSE="snmp mysql postgres"
 
@@ -29,7 +29,7 @@ S=${WORKDIR}/${MY_P}-${MY_PV}
 
 pkg_setup() {
 	enewgroup zabbix
-	enewuser zabbix -1 -1 /dev/null zabbix
+	enewuser zabbix -1 /bin/false /dev/null zabbix
 }
 
 src_unpack() {

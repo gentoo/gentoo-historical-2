@@ -1,14 +1,6 @@
 # ChangeLog for games-misc/fortune-mod-zx-error
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-zx-error/ChangeLog,v 1.4 2005/08/27 18:10:11 corsair Exp $
-
-  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-zx-error-1.0.ebuild:
-  Stable on ppc64
-
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-zx-error-1.0.ebuild:
-  Added ~ppc64 (bug #100217)
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-zx-error/ChangeLog,v 1.1 2004/02/01 10:14:20 mr_bones_ Exp $
 
 *fortune-mod-zx-error-1.0 (01 Feb 2004)
 

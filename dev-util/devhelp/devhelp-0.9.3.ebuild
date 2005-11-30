@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/devhelp/devhelp-0.9.3.ebuild,v 1.6 2005/04/21 19:07:12 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/devhelp/devhelp-0.9.3.ebuild,v 1.1 2004/11/21 19:55:48 foser Exp $
 
 inherit gnome2 eutils
 
@@ -9,14 +9,14 @@ HOMEPAGE="http://www.imendio.com/projects/devhelp/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE="zlib"
 
 RDEPEND=">=x11-libs/gtk+-2.4
 	>=gnome-base/libgnomeui-2.2
 	>=gnome-base/gnome-vfs-2.2
 	>=gnome-base/libglade-2
-	www-client/mozilla
+	net-www/mozilla
 	zlib? ( sys-libs/zlib )"
 
 DEPEND="${RDEPEND}

@@ -1,12 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.1.25_p1-r3.ebuild,v 1.32 2005/07/10 20:59:39 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/db/db-4.1.25_p1-r3.ebuild,v 1.1 2003/11/02 12:21:01 pauldv Exp $
 
-inherit eutils gnuconfig db
+IUSE="tcltk java doc"
+
+inherit eutils
+inherit db
 
 #Number of official patches
-#PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
-PATCHNO=${PV/*.*.*_p}
+PATCHNO=`echo ${PV}|sed -e "s,\(.*_p\)\([0-9]*\),\2,"`
 if [ "${PATCHNO}" == "${PV}" ]; then
 	MY_PV=${PV}
 	MY_P=${P}
@@ -18,60 +20,50 @@ fi
 
 S=${WORKDIR}/${MY_P}/build_unix
 DESCRIPTION="Berkeley DB"
-HOMEPAGE="http://www.sleepycat.com"
-SRC_URI="ftp://ftp.sleepycat.com/releases/${MY_P}.tar.gz"
+SRC_URI="http://www.sleepycat.com/update/snapshot/${MY_P}.tar.gz"
+
 for (( i=1 ; i<=$PATCHNO ; i++ ))
 do
 	export SRC_URI="${SRC_URI} http://www.sleepycat.com/update/${MY_PV}/patch.${MY_PV}.${i}"
 done
 
-LICENSE="DB"
+HOMEPAGE="http://www.sleepycat.com"
 SLOT="4.1"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390 sh"
-IUSE="tcltk java doc"
+LICENSE="DB"
+KEYWORDS="ia64 ~x86 ~ppc ~alpha ~amd64"
 
 DEPEND="tcltk? ( dev-lang/tcl )
 	java? ( virtual/jdk )"
-
-RDEPEND="tcltk? ( dev-lang/tcl )
-	java? ( virtual/jre )"
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
 	cd ${WORKDIR}/${MY_P}
 	for (( i=1 ; i<=$PATCHNO ; i++ ))
 	do
-		epatch ${DISTDIR}/patch.${MY_PV}.${i}
+		patch -p0 <${DISTDIR}/patch.${MY_PV}.${i}
 	done
 	epatch ${FILESDIR}/${P}-jarlocation.patch
 
 	epatch ${FILESDIR}/${PN}-4.0.14-fix-dep-link.patch
-	epatch ${FILESDIR}/${PN}-4.1.25-uclibc.patch
-	epatch ${FILESDIR}/${PN}-4.1.25-java.patch
-	gnuconfig_update "${S}/../dist"
+
 }
 
 src_compile() {
-	addwrite /proc/self/maps
 
 	local myconf="--enable-rpc"
-
-	use amd64 && myconf="${myconf} --with-mutex=x86/gcc-assembly"
 
 	use java \
 		&& myconf="${myconf} --enable-java" \
 		|| myconf="${myconf} --disable-java"
 
 	use tcltk \
-		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/$(get_libdir)" \
+		&& myconf="${myconf} --enable-tcl --with-tcl=/usr/lib" \
 		|| myconf="${myconf} --disable-tcl"
 
 	if use java && [ -n "${JAVAC}" ]; then
 		export PATH=`dirname ${JAVAC}`:${PATH}
 		export JAVAC=`basename ${JAVAC}`
 	fi
-
-	[ -n "${CBUILD}" ] && myconf="${myconf} --build=${CBUILD}"
 
 	../dist/configure \
 		--prefix=/usr \
@@ -80,19 +72,17 @@ src_compile() {
 		--datadir=/usr/share \
 		--sysconfdir=/etc \
 		--localstatedir=/var/lib \
-		--libdir=/usr/$(get_libdir) \
 		--enable-compat185 \
 		--enable-cxx \
 		--with-uniquename \
-		--host=${CHOST} \
 		${myconf} || die
 
-	emake -j1 || die
+	emake || make || die
 }
 
 src_install () {
 
-	einstall libdir="${D}/usr/$(get_libdir)" || die
+	einstall || die
 
 	db_src_install_usrbinslot
 

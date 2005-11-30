@@ -1,30 +1,6 @@
-# ChangeLog for sci-biology/transfac
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/transfac/ChangeLog,v 1.10 2005/11/19 18:22:22 blubb Exp $
-
-  19 Nov 2005; Simon Stelling <blubb@gentoo.org> transfac-3.2.ebuild:
-  stable on amd64
-
-  04 Sep 2005; Simon Stelling <blubb@gentoo.org> transfac-3.2.ebuild:
-  added ~amd64 keyword
-
-  02 May 2005; Michael Hanselmann <hansmi@gentoo.org> transfac-3.2.ebuild:
-  Stable on ppc.
-
-  05 Mar 2005; Markus Rothe <corsair@gentoo.org> transfac-3.2.ebuild:
-  Stable on ppc64
-
-  22 Feb 2005; Olivier Fisette <ribosome@gentoo.org> transfac-3.2.ebuild:
-  Added support for the "emboss" and "minimal" "USE" flags.
-
-  14 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> transfac-3.2.ebuild:
-  Stable ppc-macos.
-
-  01 Jan 2005; Markus Rothe <corsair@gentoo.org> transfac-3.2.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  01 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> transface-3.2.ebuild:
-  Unstable ppc-macos.
+# ChangeLog for app-sci/transfac
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/transfac/ChangeLog,v 1.1 2004/12/23 21:28:10 ribosome Exp $
 
 *transfac-3.2 (23 Dec 2004)
 

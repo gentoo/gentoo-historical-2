@@ -1,71 +1,8 @@
 # ChangeLog for x11-plugins/gkrellweather
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellweather/ChangeLog,v 1.20 2005/04/27 16:53:32 herbs Exp $
-
-  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellweather-2.0.6.ebuild:
-  Stable on amd64.
-
-  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellweather-2.0.6.ebuild:
-  multilib fixes
-
-  10 Jul 2004; Tom Martin <slarti@gentoo.org> gkrellweather-2.0.6.ebuild:
-  Marked ~amd64.
-
-  07 Feb 2004; Lars Weiler <pylon@gentoo.org> gkrellweather-2.0.6.ebuild:
-  stable on ppc
-
-  20 Jan 2004; Aron Griffis <agriffis@gentoo.org> gkrellweather-2.0.6.ebuild:
-  stable on alpha
-
-  05 Jan 2004; Jason Wever <weeve@gentoo.org> gkrellweather-0.2.7-r2.ebuild,
-  gkrellweather-2.0.5.ebuild, gkrellweather-2.0.6.ebuild:
-  Marked 2.0.6 stable on sparc and adjusted the copyright dates in all.
-
-  13 Sep 2003; Seemant Kulleen <seemant@gentoo.org>
-  gkrellweather-2.0.6.ebuild:
-  put the GrabWeather2 script in /usr/bin, not /usr/share
-
-  03 Sep 2003; Martin Holzer <mholzer@gentoo.org> gkrellweather-2.0.6.ebuild:
-  Marking x86 stabl.e
-
-*gkrellweather-2.0.6 (18 Aug 2003)
-
-  18 Aug 2003; Martin Holzer <mholzer@gentoo.org> gkrellweather-2.0.6.ebuild:
-  Version bumped.
-
-  12 Jun 2003; <msterret@gentoo.org> gkrellweather-0.2.7-r1.ebuild,
-  gkrellweather-0.2.7-r2.ebuild, gkrellweather-2.0.3.ebuild,
-  gkrellweather-2.0.5.ebuild:
-  fix Header
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*gkrellweather-2.0.5 (01 Dec 2002)
-
-  01 Mar 2003; Brandon Low <lostlogic@gentoo.org> gkrellweather-2.0.5.ebuild:
-  Change dep on ssed to dep on >=sed-4.0.5
-
-  01 Dec 2002; Seemant Kulleen <seemant@gentoo.org>
-  gkrellweather-2.0.5.ebuild files/digest-gkrellweather-2.0.5 :
-
-  Version bump.  Thanks for the notification in bug #10835 by ejwahl@cox.net
-  (Erich Wahl)
-
-*gkrellweather-2.0.3 (10 Nov 2002)
-
-  22 Apr 2003; Brandon Low <lostlogic@gentoo.org> gkrellweather-2.0.3.ebuild:
-  Change supersed dependencies
-
-  10 Nov 2002; Seemant Kulleen <seemant@gentoo.org>
-  gkrellweather-2.0.3.ebuild files/digest-gkrellweather-2.0.3 :
-
-  GKrellM2 version. Submitted by: absinthe@pobox.com (Dylan Carlson) in bug
-  #10530
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellweather/ChangeLog,v 1.1 2002/08/30 01:49:27 seemant Exp $
 
 *gkrellweather-0.2.7-r2 (30 May 2002)
-
-  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
-  Added PPC to KEYWORDS.
 
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
 

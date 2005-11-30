@@ -1,12 +1,6 @@
 # ChangeLog for media-libs/vips
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/vips/ChangeLog,v 1.3 2005/04/07 15:43:17 lu_zero Exp $
-
-  07 Apr 2005; Luca Barbato <lu_zero@gentoo.org> vips-7.10.9.ebuild:
-  Full ebuild update
-
-  07 Apr 2005; Sven Wegener <swegener@gentoo.org> vips-7.10.9.ebuild:
-  Fixed invalid atoms in *DEPEND.
+# $Header: /var/cvsroot/gentoo-x86/media-libs/vips/ChangeLog,v 1.1 2005/04/06 20:59:22 lu_zero Exp $
 
 *vips-7.10.9 (06 Apr 2005)
 

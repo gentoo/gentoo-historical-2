@@ -1,6 +1,7 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-6.0.ebuild,v 1.14 2004/07/14 13:39:33 agriffis Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: William McArthur <sandymac@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-6.0.ebuild,v 1.1 2002/04/24 06:02:31 sandymac Exp $
 
 S=${WORKDIR}
 
@@ -13,21 +14,15 @@ SRC_URI2="ftp://download.intel.com/software/products/compilers/downloads/l_cc_p_
 SRC_URI3="ftp://download.intel.co.jp/software/products/compilers/downloads/l_cc_p_6.0.139.tar"
 SRC_URI="${SRC_URI1} ${SRC_URI2} ${SRC_URI3}"
 
-HOMEPAGE="http://www.intel.com/software/products/compilers/clin/"
+HOMEPAGE="http://www.intel.com/software/products/compilers/c60l/"
 
-LICENSE="icc-6.0"
-
-DEPEND="virtual/linux-sources
+DEPEND=">=sys-kernel/linux-sources-2.4
 		>=sys-libs/glibc-2.2.2
-		app-arch/cpio
+		sys-apps/cpio
 		app-arch/rpm"
 
-RDEPEND="virtual/linux-sources
+RDEPEND=">=sys-kernel/linux-sources-2.4
 		>=sys-libs/glibc-2.2.2"
-
-SLOT="0"
-KEYWORDS="-* x86"
-IUSE=""
 
 src_compile() {
 	# Keep disk space to a minimum

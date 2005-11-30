@@ -1,18 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/localizer/localizer-1.0.1.ebuild,v 1.5 2004/08/25 03:00:12 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/localizer/localizer-1.0.1.ebuild,v 1.1 2003/04/09 18:07:43 kutsuya Exp $
 
 inherit zproduct
 
 DESCRIPTION="Helps to build multilingual zope websites and zope products."
 HOMEPAGE="http://www.localizer.org"
-SRC_URI="mirror://sourceforge/lleu/Localizer-${PV}.tgz"
+SRC_URI="http://unc.dl.sourceforge.net/lleu/Localizer-${PV}.tgz"
 LICENSE="GPL-2"
-IUSE=""
-
-DEPEND=""
+KEYWORDS="~x86 ~ppc"
 
 ZPROD_LIST="Localizer"
-MYDOC="BUGS.txt old/CHANGES.txt old/UPGRADE.txt RELEASE-*txt* ${MYDOC}"
-
+DOTTXT_PROTECT="languages.txt charsets.txt ${DOTTXT_PROTECT}"
 

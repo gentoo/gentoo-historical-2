@@ -1,27 +1,6 @@
 # ChangeLog for net-print/ink
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/ink/ChangeLog,v 1.8 2005/02/04 23:37:11 cryos Exp $
-
-  04 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> ink-0.3.ebuild:
-  Marked stable on amd64.
-
-  02 Jan 2005; Marcus Hanwell <cryos@gentoo.org> ink-0.3.ebuild:
-  Marked ~amd64.
-
-  04 Jul 2004; Dominik Stadler <centic@gentoo.org> ink-0.3.ebuild:
-  Add IUSE and correct HOMEPAGE and SRC_URI to new location on sourceforge.net
-
-  15 Jan 2004; Heinrich Wendel <lanius@gentoo.org> ink-0.2.ebuild,
-  ink-0.3.ebuild:
-  mark x86, remove old version
-
-*ink-0.3 (03 Dec 2003)
-
-  03 Dec 2003; Heinrich Wendel <lanius@gentoo.org> ink-0.3.ebuild:
-  bump
-
-  31 Oct 2003; Heinrich Wendel <lanius@gentoo.org> ink-0.2.ebuild:
-  stable
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/ink/ChangeLog,v 1.1 2003/09/21 15:25:41 lanius Exp $
 
 *ink-0.2 (21 Sep 2003)
 

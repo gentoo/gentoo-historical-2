@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nethogs/nethogs-0.6.0.ebuild,v 1.5 2005/09/17 21:51:14 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nethogs/nethogs-0.6.0.ebuild,v 1.1 2005/04/03 17:20:23 vanquirius Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
 HOMEPAGE="http://nethogs.sf.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -10,22 +10,22 @@ DESCRIPTION="A small 'net top' tool, grouping bandwidth by process"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND="virtual/libpcap"
 
-S="${WORKDIR}/${PN}"
+S=${WORKDIR}/${PN}
 
 src_unpack() {
-	unpack ${A}; cd "${S}"
-	epatch "${FILESDIR}/${P}-gcc34.diff"
-	# fix hardcoded CFLAGS and CC
-	sed -i -e "s:-O2:${CFLAGS}:g" Makefile || die
-	sed -i -e "s:g++:$(tc-getCXX):g" Makefile || die
-	sed -i -e "s:gcc:$(tc-getCC):g" Makefile || die
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-gcc34.diff
 }
 
 src_compile() {
+	# There is currently no configure script within the nethogs package:
+	# econf || die
+
 	emake || die "emake failed"
 }
 

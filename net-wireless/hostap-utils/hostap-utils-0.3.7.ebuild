@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostap-utils/hostap-utils-0.3.7.ebuild,v 1.4 2005/07/24 12:44:57 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostap-utils/hostap-utils-0.3.7.ebuild,v 1.1 2005/02/13 11:51:22 brix Exp $
 
 inherit toolchain-funcs
 
-DESCRIPTION="Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products"
+DESCRIPTION="HostAP wireless utils"
 
 HOMEPAGE="http://hostap.epitest.fi/"
 SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="~x86 ~ppc"
 
 IUSE=""
 

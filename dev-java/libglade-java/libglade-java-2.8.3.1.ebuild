@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/libglade-java/libglade-java-2.8.3.1.ebuild,v 1.5 2005/07/19 11:59:49 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/libglade-java/libglade-java-2.8.3.1.ebuild,v 1.1 2005/03/12 19:21:25 luckyduck Exp $
 
 #
 # WARNING: Because java-gnome is a set of bindings to native GNOME libraries, 
@@ -19,12 +19,11 @@ HOMEPAGE="http://java-gnome.sourceforge.net/"
 RDEPEND=">=gnome-base/libglade-2.3.6
 	>=dev-java/libgtk-java-2.4.8.1
 	>=dev-java/libgnome-java-2.8.3.1
-	>=gnome-base/libgnomecanvas-2.8.0
 	>=virtual/jre-1.2"
 
 
-DEPEND=">=virtual/jdk-1.2
-		${RDEPEND}
+DEPEND="${RDEPEND}
+		>=virtual/jdk-1.2
 		app-arch/zip"
 
 #
@@ -32,7 +31,7 @@ DEPEND=">=virtual/jdk-1.2
 #
 SLOT="2.8"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE="gcj gnome"
 
 src_unpack() {
@@ -62,7 +61,7 @@ src_compile() {
 		--host=${CHOST} \
 		--prefix=/usr \
 			${conf} || die "./configure failed"
-	make INCLUDES="-I${JDK_HOME}/include -I${JDK_HOME}/include/linux/" || die
+	make || die
 }
 
 src_install() {

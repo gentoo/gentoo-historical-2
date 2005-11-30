@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/vsftpd-2.0.3-r1.ebuild,v 1.10 2005/10/02 23:02:59 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/vsftpd-2.0.3-r1.ebuild,v 1.1 2005/06/28 14:53:40 uberlord Exp $
 
 inherit flag-o-matic eutils
 
@@ -10,15 +10,14 @@ SRC_URI="ftp://vsftpd.beasts.org/users/cevans/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 s390 sh sparc x86"
-IUSE="pam tcpd ssl selinux xinetd"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+IUSE="pam tcpd ssl xinetd"
 
 DEPEND="pam? ( || ( virtual/pam sys-libs/pam ) )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
 	ssl? ( >=dev-libs/openssl-0.9.7d )"
 RDEPEND="${DEPEND}
 	net-ftp/ftpbase
-	selinux? ( sec-policy/selinux-ftpd )
 	xinetd? ( sys-apps/xinetd )"
 
 src_unpack() {
@@ -71,6 +70,6 @@ pkg_preinst() {
 	# so that our default config works under xinetd - fixes #78347
 	if use xinetd ; then
 		sed -i '/\(background=YES\|listen=YES\)/s/^/#/g' \
-			${IMAGE}/etc/vsftpd/vsftpd.conf.example
+			${IMAGE}/etc/vsftpd/vsftpd.conf.sample
 	fi
 }

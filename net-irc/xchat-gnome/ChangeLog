@@ -1,29 +1,6 @@
 # ChangeLog for net-irc/xchat-gnome
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat-gnome/ChangeLog,v 1.7 2005/11/03 07:33:46 swegener Exp $
-
-*xchat-gnome-0.6 (03 Nov 2005)
-
-  03 Nov 2005; Sven Wegener <swegener@gentoo.org> +xchat-gnome-0.6.ebuild:
-  Version bump, bug #110766
-
-*xchat-gnome-0.5 (28 Aug 2005)
-
-  28 Aug 2005; Tony Vroon <chainsaw@gentoo.org> +xchat-gnome-0.5.ebuild:
-  Version bump.
-
-  26 Jun 2005; Tony Vroon <chainsaw@gentoo.org> xchat-gnome-0.4.ebuild:
-  Mark ~ppc.
-
-  21 Jun 2005; Sven Wegener <swegener@gentoo.org> xchat-gnome-0.4.ebuild:
-  Additional dependencies for bug #96689.
-
-  18 May 2005; <dang@gentoo.org> xchat-gnome-0.4.ebuild:
-  Add ~amd64
-
-  15 May 2005; Sven Wegener <swegener@gentoo.org> xchat-gnome-0.4.ebuild:
-  Disabled the gtk and text frontends, if users want them they should use
-  plain net-irc/xchat instead.
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat-gnome/ChangeLog,v 1.1 2005/05/14 23:01:57 swegener Exp $
 
 *xchat-gnome-0.4 (14 May 2005)
 

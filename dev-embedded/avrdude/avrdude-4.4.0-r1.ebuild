@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/avrdude/avrdude-4.4.0-r1.ebuild,v 1.5 2005/07/24 10:23:55 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/avrdude/avrdude-4.4.0-r1.ebuild,v 1.1 2005/05/25 04:06:27 dragonheart Exp $
 
 
 inherit eutils
@@ -10,7 +10,7 @@ HOMEPAGE="http://savannah.nongnu.org/projects/avrdude"
 SRC_URI="http://savannah.nongnu.org/download/avrdude/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ppc64 x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="app-text/tetex

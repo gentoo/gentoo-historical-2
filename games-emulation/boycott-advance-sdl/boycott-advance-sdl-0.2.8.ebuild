@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/boycott-advance-sdl/boycott-advance-sdl-0.2.8.ebuild,v 1.2 2004/06/24 22:24:44 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/boycott-advance-sdl/boycott-advance-sdl-0.2.8.ebuild,v 1.1 2004/01/13 00:06:44 mr_bones_ Exp $
 
 inherit games
 

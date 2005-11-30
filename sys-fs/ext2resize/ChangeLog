@@ -1,41 +1,12 @@
 # ChangeLog for sys-fs/ext2resize
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/ext2resize/ChangeLog,v 1.9 2005/06/21 19:42:17 plasmaroo Exp $
-
-  21 Jun 2005; <plasmaroo@gentoo.org> ext2resize-1.1.19.ebuild,
-  +files/ext2resize-1.1.19-linux26.patch:
-  Fix #96699.
-
-*ext2resize-1.1.19 (21 Jun 2005)
-
-  21 Jun 2005; Mike Frysinger <vapier@gentoo.org> +ext2resize-1.1.19.ebuild:
-  Version bump #96615 by Daniel Webert.
-
-  03 Jun 2005; <plasmaroo@gentoo.org> ext2resize-1.1.17-r2.ebuild,
-  +files/ext2resize-1.1.17-linux26.patch:
-  Fix #94880.
-
-*ext2resize-1.1.17-r2 (05 Jun 2004)
-
-  05 Jun 2004; Mike Frysinger <vapier@gentoo.org>
-  +ext2resize-1.1.17-r2.ebuild:
-  Version bump to clean up the sources and make sure custom $CFLAGS are applied.
-
-  20 Mar 2004; <plasmaroo@gentoo.org> ext2resize-1.1.17-r1.ebuild,
-  files/ext2resize-1.1.17-gcc3.3.patch:
-  Added a patch to solve GCC3.3 compilation issues. Closes bug #45147.
-
-  23 Jan 2004; <gustavoz@gentoo.org> ext2resize-1.1.17-r1.ebuild:
-  Stable on sparc.
-
-  12 Jan 2004; Aron Griffis <agriffis@gentoo.org> ext2resize-1.1.17-r1.ebuild:
-  Stable on alpha.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/ext2resize/ChangeLog,v 1.1 2003/09/15 17:46:24 seemant Exp $
 
 *ext2resize-1.1.17 (15 Sep 2003)
 
   15 Sep 2003; Seemant Kulleen <seemant@gentoo.org>
   ext2resize-1.1.17-r1.ebuild, ext2resize-1.1.17.ebuild:
-  Moved to sys-fs.
+  moved to sys-fs
 
 *ext2resize-1.1.17-r1 (24 Apr 2003)
 

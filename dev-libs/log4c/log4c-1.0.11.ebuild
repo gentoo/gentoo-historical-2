@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4c/log4c-1.0.11.ebuild,v 1.10 2005/07/29 23:31:09 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4c/log4c-1.0.11.ebuild,v 1.1 2004/08/11 09:28:43 dragonheart Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://log4c.sourceforge.net/"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="~x86"
 IUSE="doc"
 
 DEPEND="doc? ( >=app-doc/doxygen-1.2.15
@@ -22,21 +22,17 @@ DEPEND="doc? ( >=app-doc/doxygen-1.2.15
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/makefile.doc.am.patch
-	epatch ${FILESDIR}/makefile.doc.in.patch
-	epatch ${FILESDIR}/configure.in.patch
-	epatch ${FILESDIR}/log4c_1.0.11_test.patch
-	epatch ${FILESDIR}/${P}-function.patch
+	epatch ${FILESDIR}/configure.in.patch || die "failed to patch"
 }
 
 src_compile() {
 
 
-	#local myconf
-	#if has maketest ${FEATURES} || use maketest;
-	#then
-	#	myconf="${myconf} --enable-test"
-	#fi
+	local myconf
+	if has maketest ${FEATURES} || use maketest;
+	then
+		myconf="${myconf} --enable-test"
+	fi
 
 	autoconf
 	econf --enable-test `use_enable doc` || die
@@ -45,10 +41,10 @@ src_compile() {
 }
 
 src_test() {
-	${S}/tests/log4c/test_category || die "test_rc failed"
+	einfo "Cannot get test working. patches welcome on bugs.gentoo.org"
 }
 
 src_install() {
-	emake DESTDIR=${D} install || die
+	emake DESTDIR=${D} install
 	prepalldocs.new || prepalldocs
 }

@@ -1,29 +1,6 @@
-# ChangeLog for app-admin/tmpreaper
+# ChangeLog for sys-apps/tmpreaper
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/tmpreaper/ChangeLog,v 1.8 2005/07/11 16:05:52 ka0ttic Exp $
-
-  11 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> -tmpreaper-1.5.1.ebuild:
-  Tidy old ebuild.
-
-  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> tmpreaper-1.6.5.ebuild:
-  Stable on amd64.
-
-  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  tmpreaper-1.6.5.ebuild:
-  Stable on sparc
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  tmpreaper-1.6.5.ebuild:
-  Stable on ppc.
-
-  23 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> tmpreaper-1.6.5.ebuild:
-  Marked stable on x86.
-
-*tmpreaper-1.6.5 (10 Mar 2005)
-
-  10 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
-  tmpreaper-1.5.1.ebuild, +tmpreaper-1.6.5.ebuild:
-  Version bump; changed both ebuilds to use make install instead of einstall.
+# $Header: /var/cvsroot/gentoo-x86/app-admin/tmpreaper/ChangeLog,v 1.1 2005/03/05 00:43:49 ciaranm Exp $
 
 *tmpreaper-1.5.1 (05 Mar 2005)
 

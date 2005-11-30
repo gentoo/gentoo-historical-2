@@ -1,16 +1,6 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 273718ad3a91623d0f6323f47b62426f drgeo-1.0.0.ebuild 1271
-MD5 44c3de441db451949ceb29087759fe21 ChangeLog 2082
-MD5 b7754813bc9622131031666d24ae5db7 metadata.xml 635
-MD5 e11f743e7c958399212196378285ef13 drgeo-1.1.0.ebuild 1273
-MD5 2517f39945f64a2eafa7c8cd288efbec files/digest-drgeo-1.0.0 130
-MD5 a1b6304f55623103659e59a8dfb286b2 files/digest-drgeo-1.1.0 130
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDEPsPntT9W3vfTuoRAl+KAJ9CvsZ+MZKFHsxGK2ul0+K/ebtVVgCfQ2ek
-eDB14ddfx/cJ40ELJUFhvKo=
-=eAyV
------END PGP SIGNATURE-----
+MD5 6e641e21b08e189bedb9dca934865c3a drgeo-0.9.12.ebuild 637
+MD5 96498aa1f1d8200ba88b2091c45cb7ef drgeo-0.9.14.ebuild 1143
+MD5 2a4377ef287925cac54322864b24afca ChangeLog 1131
+MD5 8c623e53daafa025137077c6b65815bd metadata.xml 156
+MD5 9ea30754ac7c2be75033142b679dcb0d files/digest-drgeo-0.9.12 65
+MD5 071a0455c3fec522e4561a64a2cdbf2f files/digest-drgeo-0.9.14 131

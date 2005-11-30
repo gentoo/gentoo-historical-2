@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/gtkradiant/gtkradiant-1.5.0_pre20041205.ebuild,v 1.4 2005/08/24 00:22:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/gtkradiant/gtkradiant-1.5.0_pre20041205.ebuild,v 1.1 2004/12/09 04:35:27 vapier Exp $
 
 inherit eutils games rpm
 
@@ -16,24 +16,22 @@ IUSE=""
 
 RDEPEND="media-libs/libpng
 	sys-libs/zlib
-	app-crypt/mhash
 	=dev-libs/glib-2*
 	=x11-libs/gtk+-2*
 	dev-libs/atk
 	x11-libs/pango
 	x11-libs/gtkglext
 	dev-libs/libxml2
-	sys-libs/glibc
 	virtual/x11
 	virtual/opengl"
 
-S=${WORKDIR}/opt/${PN}
+S="${WORKDIR}/opt/${PN}"
 
 src_install() {
 	local dir="${GAMES_PREFIX_OPT}/${PN}"
 	dodir "${dir}"
 
-	cp -pPR * "${D}/${dir}/"
+	cp -a * "${D}/${dir}/"
 	games_make_wrapper q3map2 ./q3map2.x86 "${dir}"
 	games_make_wrapper radiant ./radiant.x86 "${dir}"
 

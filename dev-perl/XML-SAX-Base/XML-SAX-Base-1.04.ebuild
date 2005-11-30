@@ -1,15 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-SAX-Base/XML-SAX-Base-1.04.ebuild,v 1.11 2005/09/17 00:48:01 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-SAX-Base/XML-SAX-Base-1.04.ebuild,v 1.1 2004/02/16 16:35:06 mcummings Exp $
 
 inherit perl-module
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Base class SAX Drivers and Filters"
-SRC_URI="mirror://cpan/authors/id/K/KH/KHAMPTON/${P}.tar.gz"
+SRC_URI="http://search.cpan.org/CPAN/authors/id/K/KH/KHAMPTON/${P}.tar.gz"
 HOMEPAGE="http://search.cpan.org/~khampton/${P}"
 
 SRC_TEST="do"
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
-IUSE=""
+KEYWORDS="x86 ~amd64 ~ppc ~sparc ~alpha ~mips"
+
+DEPEND="${DEPEND}"
+

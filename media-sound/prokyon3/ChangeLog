@@ -1,51 +1,6 @@
 # ChangeLog for media-sound/prokyon3
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/prokyon3/ChangeLog,v 1.14 2005/11/16 14:48:38 greg_g Exp $
-
-*prokyon3-0.9.4 (16 Nov 2005)
-
-  16 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> +prokyon3-0.9.4.ebuild:
-  New version, proving new options and supporting many external applications.
-
-  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> prokyon3-0.9.2.ebuild:
-  Don't install INSTALL file.
-
-  25 Jul 2005; David Holm <dholm@gentoo.org> prokyon3-0.9.2.ebuild:
-  Added to ~ppc.
-
-  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> prokyon3-0.9.2.ebuild:
-  Fix qt dep
-
-  28 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  -prokyon3-0.9.1_p1.ebuild, prokyon3-0.9.2.ebuild:
-  Dont make use of the deprecated oggvorbis useflag any longer, see #94254.
-
-  03 Apr 2005; Gregorio Guidi <greg_g@gentoo.org>
-  +files/prokyon3-0.9.2-configure.patch, prokyon3-0.9.2.ebuild:
-  Add patch to fix bug #80800.
-
-  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  prokyon3-0.9.2.ebuild:
-  Stable amd64, sparc.
-
-  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  prokyon3-0.9.2.ebuild:
-  ~amd64 ~sparc
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  prokyon3-0.9.2.ebuild:
-  Stable x86.
-
-*prokyon3-0.9.2 (19 Mar 2004)
-
-  19 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  prokyon3-0.9.1_p1.ebuild, prokyon3-0.9.2.ebuild, prokyon3-0.9.2_rc2.ebuild:
-  Version bump.
-
-*prokyon3-0.9.2_rc2 (26 Sep 2003)
-
-  26 Sep 2003; jje <jje@gentoo.org> prokyon3-0.9.2_rc2.ebuild:
-  Version bump. Fixes gcc 3.3 issue. Closes #29454.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/prokyon3/ChangeLog,v 1.1 2003/03/14 17:14:03 rac Exp $
 
 *prokyon3-0.9.1_p1 (14 Mar 2003)
 

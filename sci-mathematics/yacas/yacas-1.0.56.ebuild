@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/yacas/yacas-1.0.56.ebuild,v 1.3 2005/10/02 02:47:45 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/yacas/yacas-1.0.56.ebuild,v 1.1 2004/12/28 15:19:17 ribosome Exp $
 
 inherit eutils
 
@@ -23,9 +23,8 @@ DEPEND="virtual/libc
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${WORKDIR}"/${P}.patch
-	epatch "${FILESDIR}"/opengl-gcc3.4.patch
+	cd ${S}
+	epatch ${WORKDIR}/${P}.patch
 }
 
 src_compile() {
@@ -42,14 +41,11 @@ src_install() {
 	find -name Makefile |xargs sed -i -e "s:datadir = /usr/share:datadir = ${D}/usr/share:"
 	cd manmake
 	sed -i -e "s:htmldir = :htmldir = ${D}:" -e "s:psdir = :psdir = ${D}:" Makefile
-	cd "${S}"
+	cd ${S}
 
-	DESTDIR="${D}" make install-strip || die
+	DESTDIR=${D} make install-strip || die
 
 	dodoc AUTHORS INSTALL NEWS README TODO
-	mv "${D}"/usr/share/${PN}/documentation "${D}"/usr/share/doc/${PF}/html
-	rmdir "${D}"/usr/include/
-	sed -e "s|\":FindFile(\"documentation/ref.html\"):\"|localhost/usr/share/doc/${PF}/html/ref.html|" \
-		-e "s|\":FindFile(\"documentation/books.html\"):\"|localhost/usr/share/doc/${PF}/html/books.html|" \
-		-i "${D}"/usr/share/${PN}/yacasinit.ys || die
+	mv ${D}/usr/share/${PN}/documentation ${D}/usr/share/doc/${PF}/html
+	rmdir ${D}/usr/include/
 }

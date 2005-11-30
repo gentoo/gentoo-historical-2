@@ -1,15 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 f1f70a6183fb12a9dae05766528c8d69 ChangeLog 542
-MD5 1dd4422d9cd2041995daea4ed89c4403 files/20_mod_diagnostics.conf 100
-MD5 46a689950b3fa8221c4871d2a551f91e files/digest-mod_diagnostics-0.0.1 66
-MD5 7272d8b6d09e3e301b6a08aa9c912eb0 metadata.xml 226
-MD5 9b24e7360f81c8047540ee565608c29d mod_diagnostics-0.0.1.ebuild 641
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDSXlJKf2g/qXtneoRAiv4AJwJE+tNfT20/x5mEx3Fnyvn42mmLgCeObY4
-SFMDW0G3a76qUr0XhMIwkkU=
-=lNqY
------END PGP SIGNATURE-----
+MD5 6c0913657802dc56bf2f76bc3546eac9 mod_diagnostics-0.0.1.ebuild 572
+MD5 0d18f0fe5d603b41b988373892caf195 metadata.xml 226
+MD5 74239697bc07a6520411050f8ec5ba10 ChangeLog 307
+MD5 08094f9bc2cc68ebba1f4c7fa620383e files/digest-mod_diagnostics-0.0.1 60

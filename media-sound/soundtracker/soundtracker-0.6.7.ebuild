@@ -1,10 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/soundtracker/soundtracker-0.6.7.ebuild,v 1.11 2005/11/07 12:07:04 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/soundtracker/soundtracker-0.6.7.ebuild,v 1.1 2004/02/21 01:02:40 eradicator Exp $
 
 IUSE="nls esd gnome oss alsa jack"
-
-inherit eutils flag-o-matic
 
 S=${WORKDIR}/${P/_/-}
 
@@ -21,7 +19,7 @@ DEPEND="sys-libs/zlib
 	esd? ( media-sound/esound )
 	gnome? ( >=gnome-base/gnome-libs-1.4.1.7 )
 	nls? ( sys-devel/gettext )
-	jack? ( media-sound/jack-audio-connection-kit )"
+	jack? ( virtual/jack )"
 
 RDEPEND="${DEPEND}
 	app-arch/bzip2
@@ -30,7 +28,7 @@ RDEPEND="${DEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~x86"
 
 src_unpack() {
 	unpack ${A}
@@ -38,8 +36,6 @@ src_unpack() {
 }
 
 src_compile() {
-	replace-flags "-O3" "-O2"
-
 	local myconf
 
 	use oss || myconf="--disable-oss"
@@ -47,7 +43,6 @@ src_compile() {
 	use nls || myconf="${myconf} --disable-nls"
 	use alsa || myconf="${myconf} --disable-alsa"
 	use gnome || myconf="${myconf} --disable-gnome"
-	use x86 || myconf="${myconf} --disable-asm"
 
 	econf ${myconf} || die "configure failed"
 	emake || die "make failed"
@@ -61,7 +56,7 @@ src_install () {
 	chmod -s ${D}/usr/bin/soundtracker
 
 	# documentation
-	dodoc AUTHORS ChangeLog FAQ NEWS README TODO
+	dodoc AUTHORS COPYING ChangeLog FAQ INSTALL NEWS README TODO
 	dodoc doc/*.txt
 	dohtml -r doc
 }

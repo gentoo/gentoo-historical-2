@@ -1,11 +1,11 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/most/most-4.9.4.ebuild,v 1.5 2005/08/13 03:38:25 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/most/most-4.9.4.ebuild,v 1.1 2004/04/06 17:48:07 avenj Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="An extremely excellent text file reader"
 HOMEPAGE="http://freshmeat.net/projects/most/"
 KEYWORDS="~x86 ~amd64 -ppc"
-IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
 SRC_URI="ftp://space.mit.edu/pub/davis/most/${P}.tar.gz"

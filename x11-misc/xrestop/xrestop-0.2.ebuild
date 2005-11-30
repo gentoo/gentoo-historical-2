@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrestop/xrestop-0.2.ebuild,v 1.9 2005/11/01 00:01:09 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xrestop/xrestop-0.2.ebuild,v 1.1 2004/01/04 05:21:38 port001 Exp $
 
 IUSE=""
 
@@ -10,11 +10,11 @@ HOMEPAGE="http://www.freedesktop.org/Software/xrestop/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~x86"
 
-DEPEND="virtual/x11"
+RDEPEND="virtual/x11"
 
 src_install () {
 	einstall || die
-	dodoc AUTHORS ChangeLog NEWS README
+	dodoc AUTHORS ChangeLog INSTALL  NEWS README COPYING
 }

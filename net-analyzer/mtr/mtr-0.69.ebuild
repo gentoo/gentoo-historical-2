@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mtr/mtr-0.69.ebuild,v 1.11 2005/10/09 10:10:57 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mtr/mtr-0.69.ebuild,v 1.1 2005/02/02 11:18:13 ka0ttic Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,17 +10,20 @@ SRC_URI="ftp://ftp.bitwizard.nl/mtr/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ppc ~ppc-macos ~s390 sparc x86"
-IUSE="gtk ipv6"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~s390 ~sparc ~x86"
+IUSE="gtk gtk2 ipv6"
 
-DEPEND="dev-util/pkgconfig
-	>=sys-libs/ncurses-5.2
-	gtk? ( >=x11-libs/gtk+-2 )"
+DEPEND="dev-util/pkgconfig"
+RDEPEND=">=sys-libs/ncurses-5.2
+	gtk? (
+			!gtk2? ( =x11-libs/gtk+-1.2* )
+			gtk2? ( >=x11-libs/gtk+-2 )
+		)"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PN}-ac-res_mkquery.patch"
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-ac-res_mkquery.patch
 }
 
 src_compile() {
@@ -29,15 +32,10 @@ src_compile() {
 	local myconf
 	use gtk || myconf="${myconf} --without-gtk"
 
-	if use ppc-macos;
-	then
-		append-flags "-DBIND_8_COMPAT"
-	else
-		append-ldflags -Wl,-z,now
-	fi
+	append-ldflags -Wl,-z,now
 
 	econf ${myconf} \
-		$(use_enable gtk gtk2) \
+		$(use_enable gtk2) \
 		$(use_enable ipv6) \
 		|| die "econf failed"
 
@@ -46,12 +44,12 @@ src_compile() {
 
 src_install() {
 	# this binary is universal. ie: it does both console and gtk.
-	make DESTDIR="${D}" sbindir=/usr/bin install || die "make install failed"
+	make DESTDIR=${D} sbindir=/usr/bin install || die "make install failed"
 
 	insinto /usr/share/${PN} ; doins img/mtr_icon.xpm
 
 	fowners root:wheel /usr/bin/mtr
 	fperms 4710 /usr/bin/mtr
 
-	dodoc AUTHORS ChangeLog FORMATS NEWS README SECURITY TODO
+	dodoc AUTHORS COPYING ChangeLog FORMATS NEWS README SECURITY TODO
 }

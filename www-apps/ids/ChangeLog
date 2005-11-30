@@ -1,31 +1,6 @@
-# ChangeLog for www-apps/ids
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/ids/ChangeLog,v 1.8 2005/09/11 13:55:48 rl03 Exp $
-
-  11 Sep 2005; Renat Lumpau <rl03@gentoo.org> -ids-0.82.ebuild:
-  Removing old and broken version
-
-  11 Jul 2005; Renat Lumpau <rl03@gentoo.org> ids-0.83_beta2-r1.ebuild:
-  Added Archive-Zip per bug #98587, cleaned old versions
-
-  27 Apr 2005; Karol Wojtaszek <sekretarz@gentoo.org>
-  ids-0.83_beta2-r1.ebuild:
-  Perlmagick is now part of imagemagick ebuild and ids doesn't need special
-  depend on perlmagick
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  30 Aug 2004; Renat Lumpau <rl03@gentoo.org> ids-0.83_beta2-r1.ebuild:
-  Fixed DEPEND/RDEPEND, removed unneeded src_compile
-
-*ids-0.83_beta2-r1 (30 Aug 2004)
-
-  30 Aug 2004; David Holm <dholm@gentoo.org> ids-0.83_beta2-r1.ebuild:
-  Added to ~ppc.
-
-  18 Aug 2004; Renat Lumpau <rl03@gentoo.org> :
-  Converted to webapp.eclass (bug #58379).
+# ChangeLog for net-www/ids
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-apps/ids/ChangeLog,v 1.1 2004/08/15 15:03:59 stuart Exp $
 
 *ids-0.83_beta2 (15 Aug 2004)
 

@@ -1,10 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-bgchanger/gkrellm-bgchanger-0.1.2.ebuild,v 1.3 2005/09/17 10:07:43 agriffis Exp $
-
-inherit multilib
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-bgchanger/gkrellm-bgchanger-0.1.2.ebuild,v 1.1 2005/03/22 18:21:58 sekretarz Exp $
 
 IUSE=""
+
 MY_PN=gkrellmbgchg2
 MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_P}
@@ -14,7 +13,7 @@ SRC_URI="http://www.bender-suhl.de/stefan/comp/sources/old/${MY_P}.tar.gz"
 
 SLOT="2"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~amd64 ppc ~sparc ~x86"
+KEYWORDS="~x86 ppc ~sparc ~alpha ~amd64"
 
 DEPEND="=app-admin/gkrellm-2*"
 
@@ -23,7 +22,7 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/gkrellm2/plugins
+	insinto /usr/lib/gkrellm2/plugins
 	doins ${MY_PN/2/}.so
 
 	dodoc ChangeLog README TODO

@@ -1,43 +1,7 @@
 # ChangeLog for app-doc/djbdns-man
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/djbdns-man/ChangeLog,v 1.17 2005/05/13 09:39:04 kloeri Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
 
-  13 May 2005; Bryan Østergaard <kloeri@gentoo.org>
-  djbdns-man-20031023.ebuild:
-  Stable on alpha.
-
-  20 Mar 2005; Michael Hanselmann <hansmi@gentoo.org>
-  djbdns-man-20031023.ebuild:
-  Added to ~hppa.
-
-  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> djbdns-man-20031023.ebuild:
-  Marked stable on mips.
-
-  19 Dec 2004; Jason Huebel <jhuebel@gentoo.org> djbdns-man-20031023.ebuild:
-  amd64, just docs, no need for testing
-
-  01 Nov 2004; Bryan Østergaard <kloeri@gentoo.org>
-  djbdns-man-20031023.ebuild:
-  ~alpha keyword.
-
-  29 Aug 2004; Tom Gall <tgall@gentoo.org> djbdns-man-20031023.ebuild:
-  stable on ppc64, bug #61744
-
-  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> djbdns-man-20020130.ebuild,
-  djbdns-man-20031023.ebuild:
-  sync IUSE (missing)
-
-  06 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
-  djbdns-man-20031023.ebuild:
-  Marked ~amd64.
-
-*djbdns-man-20031023 (27 Mar 2004)
-
-  27 Mar 2004; Jared Hudson <jhhudso@gentoo.org> : Version bump thanks to
-  Kalin KOZHUHAROV <kalin@ThinRope.net> under bug #38419
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *djbdns-man-20020130 (26 Apr 2002)
 
   26 Apr 2002; Thilo Bangert <bangert@gentoo.org> ChangeLog :

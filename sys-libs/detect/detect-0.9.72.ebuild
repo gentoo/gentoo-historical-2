@@ -1,41 +1,37 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/detect/detect-0.9.72.ebuild,v 1.9 2004/10/10 02:31:27 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/detect/detect-0.9.72.ebuild,v 1.1 2002/09/15 15:37:45 verwilst Exp $
 
-inherit eutils
-
-DESCRIPTION="library for automatic hardware detection"
+DESCRIPTION="Detect is a library for automatic hardware detection."
 HOMEPAGE="http://www.mandrakelinux.com/harddrake/index.php"
-SRC_URI="mirror://debian/pool/main/d/detect/${P//-/_}.orig.tar.gz
-	mirror://debian/pool/main/d/detect/${P//-/_}-6.1.diff.gz"
-
+SRC_URI="http://ftp.debian.org/debian/pool/main/d/detect/${P//-/_}.orig.tar.gz 
+http://ftp.debian.org/debian/pool/main/d/detect/${P//-/_}-6.1.diff.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
-
-DEPEND="virtual/libc"
-
+DEPEND="virtual/glibc"
 S="${WORKDIR}/${PN}"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${WORKDIR}/${P//-/_}-6.1.diff
-	chmod a+rx configure config.sub config.guess
-	sed -i '/include.*genhd\.h/s:.*::' src/{detect.h,disk.c}
+        unpack ${P//-/_}.orig.tar.gz
+        cd $S
+        gunzip -c ${DISTDIR}/${P//-/_}-6.1.diff.gz | patch -p1
 }
 
 src_compile() {
-	econf --with-kernel-source="${ROOT}/usr" || die
-	emake || die
+        ./autogen.sh \
+                --prefix=/usr \
+                --infodir=/usr/share/info \
+                --mandir=/usr/share/man || die "./configure failed"
+        emake || die
 }
 
-src_install() {
-	make \
-		DESTDIR="${D}" \
-		localedir="${D}/usr/share/locale" \
-		gnulocaledir="${D}/usr/share/locale" \
-		install || die
+src_install () {
+        #make DESTDIR=${D} install || die
+        make \
+                prefix=${D}/usr \
+                mandir=${D}/usr/share/man \
+                infodir=${D}/usr/share/info \
+                install || die
 }
 

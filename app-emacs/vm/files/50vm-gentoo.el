@@ -1,7 +1,7 @@
 
 ;;; VM site-lisp configuration
 
-(add-to-list 'load-path "@SITELISP@")
+(setq load-path (cons "@SITELISP@" load-path))
 (setq vm-toolbar-pixmap-directory "@SITELISP@/../etc/vm")
 (setq vm-image-directory "@SITELISP@/../etc/vm")
 (autoload 'vm "vm" "Start VM on your primary inbox." t)

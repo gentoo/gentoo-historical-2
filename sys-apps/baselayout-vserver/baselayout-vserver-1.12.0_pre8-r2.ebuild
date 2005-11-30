@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout-vserver/baselayout-vserver-1.12.0_pre8-r2.ebuild,v 1.3 2005/11/26 09:11:15 phreak Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/baselayout-vserver/baselayout-vserver-1.12.0_pre8-r2.ebuild,v 1.1 2005/09/22 10:11:52 hollow Exp $
 
 inherit flag-o-matic eutils toolchain-funcs multilib
 
 DESCRIPTION="Filesystem baselayout and init scripts for Linux-VServer"
 HOMEPAGE="http://www.gentoo.org/"
-SRC_URI="http://dev.gentoo.org/~hollow/distfiles/${P}.tar.bz2
-	http://dev.gentoo.org/~phreak/distfiles/${P}.tar.bz2"
+SRC_URI="http://dev.gentoo.org/~hollow/vserver/baselayout/${P}.tar.bz2
+	http://dev.gentoo.org/~phreak/vserver/baselayout/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86"
 IUSE="bootstrap build static"
 
 # This version of baselayout needs gawk in /bin, but as we do not have

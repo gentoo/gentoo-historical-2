@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/ytin/ytin-1.83.5-r1.ebuild,v 1.6 2004/12/21 12:26:17 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/ytin/ytin-1.83.5-r1.ebuild,v 1.1 2004/03/24 05:17:37 mr_bones_ Exp $
 
 inherit games
 
@@ -10,10 +10,9 @@ SRC_URI="mirror://sourceforge/ytin/${PN}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
-IUSE=""
+KEYWORDS="x86"
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	sys-libs/ncurses"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"

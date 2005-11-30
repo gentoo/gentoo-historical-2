@@ -1,10 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.9-r2.ebuild,v 1.12 2005/07/07 23:58:53 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.9-r2.ebuild,v 1.1 2004/05/04 16:23:04 tseng Exp $
 
 inherit flag-o-matic eutils
 
-IUSE="hardened ipv6 ldap mysql pam postgres ssl tcpd"
+IUSE="ldap pam postgres mysql ssl tcpd ipv6"
 
 MY_P=${P/_/}
 S=${WORKDIR}/${MY_P}
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.proftpd.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc hppa alpha ppc ~mips amd64"
+KEYWORDS="~x86 ~sparc ~hppa ~alpha ~ppc ~mips ~amd64"
 
 DEPEND="pam? ( >=sys-libs/pam-0.75 )
 	mysql? ( >=dev-db/mysql-3.23.26 )
@@ -32,7 +32,6 @@ src_unpack() {
 }
 
 src_compile() {
-	addpredict /etc/krb5.conf
 	local modules myconf
 
 	modules="mod_ratio:mod_readme"
@@ -57,7 +56,7 @@ src_compile() {
 		ewarn "Presently this ebuild defaults to mysql. If you would like to"
 		ewarn "change the default behaviour, merge ProFTPD with;"
 		ewarn "USE=\"-mysql postgres\" emerge proftpd"
-		epause 5
+		sleep 5
 	fi
 
 	if use mysql; then
@@ -78,7 +77,7 @@ src_compile() {
 	# modules="${modules}:mod_rewrite"
 
 	# bug #30359
-	use hardened && echo > lib/libcap/cap_sys.c
+	has_version sys-devel/hardened-gcc && echo > lib/libcap/cap_sys.c
 	has_pic && echo > lib/libcap/cap_sys.c
 
 	econf \

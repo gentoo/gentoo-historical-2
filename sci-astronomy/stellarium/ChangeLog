@@ -1,37 +1,6 @@
-# ChangeLog for sci-astronomy/stellarium
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/stellarium/ChangeLog,v 1.9 2005/11/21 21:38:41 blubb Exp $
-
-  21 Nov 2005; Simon Stelling <blubb@gentoo.org> stellarium-0.7.1.ebuild:
-  stable on amd64
-
-  09 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  stellarium-0.7.1.ebuild:
-  stable for x86
-
-*stellarium-0.7.1 (17 Sep 2005)
-
-  17 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +stellarium-0.7.1.ebuild:
-  version bump
-
-*stellarium-0.7.0 (15 Sep 2005)
-
-  15 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +stellarium-0.7.0.ebuild:
-  version bump (bug #105522)
-
-  22 Apr 2005; Danny van Dyk <kugelfang@gentoo.org> stellarium-0.6.2.ebuild:
-  Marked stable on amd64.
-
-  11 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  -files/0.6.0-gcc3.4.patch, -stellarium-0.5.2.ebuild,
-  -stellarium-0.6.0.ebuild, -stellarium-0.6.1.ebuild:
-  clean old files
-
-  11 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  stellarium-0.6.2.ebuild:
-  stable on x86
+# ChangeLog for app-sci/stellarium
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/stellarium/ChangeLog,v 1.1 2004/12/24 04:23:30 ribosome Exp $
 
 *stellarium-0.5.2 (23 Dec 2004)
 

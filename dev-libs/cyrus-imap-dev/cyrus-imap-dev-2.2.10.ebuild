@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-imap-dev/cyrus-imap-dev-2.2.10.ebuild,v 1.6 2005/04/24 12:39:44 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-imap-dev/cyrus-imap-dev-2.2.10.ebuild,v 1.1 2004/11/24 17:30:00 langthang Exp $
 
 inherit eutils gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/cyrus-imapd-${PV}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 amd64 ppc ~sparc"
+KEYWORDS="x86 ~amd64 ~ppc"
 IUSE="afs kerberos snmp ssl tcpd"
 
 RDEPEND="virtual/libc
@@ -18,7 +18,7 @@ RDEPEND="virtual/libc
 	>=dev-libs/cyrus-sasl-2.1.12
 	afs? ( >=net-fs/openafs-1.2.2 )
 	kerberos? ( >=app-crypt/mit-krb5-1.2.6 )
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( virtual/snmp )
 	ssl? ( >=dev-libs/openssl-0.9.6 )
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )"
 

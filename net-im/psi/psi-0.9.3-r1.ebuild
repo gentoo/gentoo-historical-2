@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.9.3-r1.ebuild,v 1.12 2005/08/13 00:09:22 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.9.3-r1.ebuild,v 1.1 2005/01/24 18:39:42 humpback Exp $
 
-inherit eutils qt3
+inherit eutils
 
 VER="0.9.3"
 REV=""
@@ -48,13 +48,13 @@ SRC_URI="mirror://sourceforge/psi/${MY_P}.tar.bz2
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc hppa amd64 sparc"
+KEYWORDS="~x86 ~ppc ~hppa ~amd64 ~sparc"
 
 #After final relase we do not need this
 S="${WORKDIR}/${MY_P}"
 
 DEPEND=">=app-crypt/qca-1.0-r2
-	$(qt_min_version 3.3)"
+	>=x11-libs/qt-3.3.1"
 
 RDEPEND="ssl? ( >=app-crypt/qca-tls-1.0-r2 )
 		crypt? ( >=app-crypt/gnupg-1.2.2 )"
@@ -65,18 +65,18 @@ PATCHDIR="${PATCHBASE}/${VER}"
 
 src_unpack() {
 		unpack ${A}
-		if ! use extras ;
+		if !(use extras);
 			then
 			ewarn "You are going to install the original psi version. You might want to"
 			ewarn "try the version with extra unsuported patches by adding 'extras' to"
 			ewarn "your use flags."
 			else
+			ebeep
 			ewarn "You are about to build a version of Psi with extra unsuported patches."
 			ewarn "Patched psi versions will not be supported by the Gentoo devs or the psi"
 			ewarn "development team."
 			ewarn "If you do not want that please press Control-C now and add '-extras' to "
 			ewarn "your USE flags."
-			ebeep
 			epause 10
 			cd ${S}
 			# from http://www.cs.kuleuven.ac.be/~remko/psi/
@@ -188,7 +188,7 @@ src_compile() {
 	use kde || myconf="${myconf} --disable-kde"
 	./configure --prefix=/usr $myconf || die "Configure failed"
 	# for CXXFLAGS from make.conf
-	${QTDIR}/bin/qmake psi.pro \
+	qmake psi.pro \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		QMAKE_RPATH= \
 		|| die "Qmake failed"
@@ -199,7 +199,7 @@ src_compile() {
 	einfo "Building language packs"
 	cd ${WORKDIR}/langs
 	for i in `ls -c1 | grep "\.ts$"` ; do
-		${QTDIR}/bin/lrelease $i
+		lrelease $i
 	done;
 
 }
@@ -207,7 +207,7 @@ src_compile() {
 src_install() {
 	dodoc README TODO
 	make INSTALL_ROOT="${D}" install
-	#this way the docs will also be installed in the standard gentoo dir
+	#this away the docs will also be installed in the standard gentoo dir
 	for i in roster system emoticons; do
 		newdoc ${S}/iconsets/${i}/README README.${i}
 	done;

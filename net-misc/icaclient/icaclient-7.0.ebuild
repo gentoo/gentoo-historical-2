@@ -1,31 +1,32 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/icaclient-7.0.ebuild,v 1.6 2004/09/18 19:38:37 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/icaclient-7.0.ebuild,v 1.1 2003/10/10 18:16:27 mholzer Exp $
 
+S=${WORKDIR}/usr
 DESCRIPTION="ICA Client"
-HOMEPAGE="http://www.citrix.com/download/unix-downloads.asp"
 SRC_URI="ICAClient-7.00-1.i386.rpm"
-
+HOMEPAGE="http://www.citrix.com/download/unix-downloads.asp"
+RDEPEND="virtual/glibc virtual/x11"
+DEPEND="${RDEPEND} >=app-arch/rpm-3.0.6"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 -sparc"
-IUSE=""
 RESTRICT="fetch"
+KEYWORDS="~x86 ~sparc"
 
-RDEPEND="virtual/libc
-	virtual/x11"
-DEPEND="${RDEPEND}
-	>=app-arch/rpm-3.0.6"
-
-S="${WORKDIR}/usr"
-
-pkg_nofetch() {
-	einfo "Please download ${A} yourself from www.citrix.com"
-	einfo "and place it in ${DISTDIR}"
+dyn_fetch() {
+	for y in ${A}
+	do
+		digest_check ${y}
+			if [ $? -ne 0 ]; then
+				einfo "Please download this yourself from www.citrix.com"
+				einfo "and place it in ${DISTDIR}"
+				exit 1
+			fi
+	done
 }
 
 src_unpack() {
-	# You must download ICAClient-7.00-1.i386.rpm
+	# You must download ICAClient-6.30-1.i386.rpm
 	# from www.citrix.com and put it in ${DISTDIR}
 	rpm2cpio ${DISTDIR}/${A} | cpio -i --make-directories
 }

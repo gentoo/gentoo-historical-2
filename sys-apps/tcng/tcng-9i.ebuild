@@ -1,29 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tcng/tcng-9i.ebuild,v 1.9 2005/02/13 04:56:13 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tcng/tcng-9i.ebuild,v 1.1 2003/12/17 11:58:17 robbat2 Exp $
 
-inherit eutils
-
-DESCRIPTION="Traffic Control Next Generation"
+DESCRIPTION="tcng - Traffic Control Next Generation"
 HOMEPAGE="http://tcng.sourceforge.net/"
-
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="debug doc tcsim"
+IUSE="doc tcsim"
 
 # perl because stuff is written in it
 # iproute,linux-atm as the output needs that
 # os-headers as it compiles stuff with them
 # gcc/binutils as it compiles stuff
 DEPEND_COMMON="dev-lang/perl
-	sys-apps/iproute2
-	net-dialup/linux-atm
-	virtual/os-headers
-	sys-devel/gcc
-	sys-devel/binutils"
+				sys-apps/iproute
+				net-dialup/linux-atm
+				virtual/os-headers
+				sys-devel/gcc
+				sys-devel/binutils"
 
-DEPEND="doc? ( virtual/ghostscript virtual/tetex media-gfx/transfig )
+DEPEND="doc? ( virtual/ghostscript app-text/tetex media-gfx/transfig )
 	sys-devel/make
 	dev-util/yacc
 	sys-devel/flex
@@ -51,7 +48,7 @@ KERNEL_P=${KERNEL_PN}-${KERNEL_PV}
 # note this project does NOT use the SF mirroring system
 SRC_URI="http://tcng.sourceforge.net/dist/${P}.tar.gz
 	tcsim? ( ftp://ftp.inr.ac.ru/ip-routing/${IPROUTE_SRCFILE}
-	mirror://debian/pool/main/i/iproute/${IPROUTE_DEBIAN_PATCH}
+	http://ftp.debian.org/debian/pool/main/i/iproute/${IPROUTE_DEBIAN_PATCH}
 	mirror://kernel/linux/kernel/v2.4/${KERNEL_P}.tar.bz2 )"
 
 S=${WORKDIR}/tcng
@@ -86,8 +83,6 @@ src_compile() {
 		myconf="${myconf} --with-tcsim"
 		myconf="${myconf} --kernel ${KERNEL_S}"
 		myconf="${myconf} --iproute2 ${IPROUTE_S}"
-	else
-		myconf="${myconf} --no-tcsim"
 	fi
 
 	# i know this is before install stage, but the build needs it

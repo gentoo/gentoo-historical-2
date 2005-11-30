@@ -1,53 +1,10 @@
-# ChangeLog for net-analyzer/arpwatch
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arpwatch/ChangeLog,v 1.15 2005/11/26 18:43:47 strerror Exp $
-
-  26 Nov 2005; Benjamin Smee <strerror@gentoo.org> arpwatch-2.1.13.ebuild:
-  small change for cosmetics
-
-*arpwatch-2.1.13 (26 Nov 2005)
-
-  26 Nov 2005; Benjamin Smee <strerror@gentoo.org>
-  +files/arpwatch-2.1.13.diff.gz, files/arpwatch.confd, files/arpwatch.init,
-  +arpwatch-2.1.13.ebuild:
-  Almost a complete rewrite. Rewrote some patches. Changed some init scripts.
-  Addressed bug #111373
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
-  arpwatch-2.1.11-r1.ebuild:
-  Stable on ppc.
-
-  29 Jan 2005; Daniel Black <dragonheart@gentoo.org>
-  arpwatch-2.1.11-r1.ebuild:
-  changed net-libs/libpcap depend to virtual/libcap
-
-  26 Jan 2005; petre rodan <kaiowas@gentoo.org> arpwatch-2.1.11-r1.ebuild:
-  added selinux RDEPEND
-
-  12 Jan 2005; Jason Wever <weeve@gentoo.org> arpwatch-2.1.11-r1.ebuild:
-  Stable on sparc.
-
-  08 Jul 2004; Eldad Zack <eldad@gentoo.org> arpwatch-2.1.11-r1.ebuild:
-  Added missing IUSE
-
-  21 Mar 2004; Jason Wever <weeve@gentoo.org> arpwatch-2.1.11-r1.ebuild:
-  Added ~sparc keyword.
-
-*arpwatch-2.1.11-r1 (14 Nov 2003)
-
-  14 Nov 2003; Brad House <brad_mssw@gentoo.org> arpwatch-2.1.11-r1.ebuild:
-  mark stable amd64
-
-  06 Aug 2003; lanius <lanius@gentoo.org> files/arpwatch.confd,
-  files/arpwatch.init:
-  addded debian/redhat patches, added config file
+# ChangeLog for net-analyzer/nmap
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/arpwatch/ChangeLog,v 1.1 2003/01/08 12:45:50 mholzer Exp $
 
 *arpwatch-2.1.11 (08 Jan 2003)
 
-  15 Feb 2003; Mark Guertin <gerk@gentoo.org> arpwatch-2.1.11.ebuild :
-  set ~ppc in keywords
-
   08 Jan 2003; Martin Holzer <mholzer@gentoo.org> arpwatch-2.1.11.ebuild files/arpwatch-2.1.11-gentoo.diff files/arpwatch.init files/digest-arpwatch-2.1.11 ChangeLog :
 
-  Added initial version. Submitted by asen@warlock.ru in #13483. 
+  Added initial version. Submitted by asen@warlock.ru in #13484. 
 

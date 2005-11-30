@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/opendx/opendx-4.3.2.ebuild,v 1.7 2004/12/29 00:12:26 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/opendx/opendx-4.3.2.ebuild,v 1.1 2004/03/15 02:31:35 spyderous Exp $
 
 # Set SMP="no" to force disable of SMP compilation.
 # Set SMP="yes" to force enable of SMP compilation.
@@ -24,16 +24,15 @@ SRC_URI="http://opendx.npaci.edu/source/${P/open}.tar.gz"
 LICENSE="IPL-1"
 SLOT="0"
 # Should work on x86, ppc, alpha at least
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 
 IUSE="hdf cdf netcdf tiff imagemagick" # java doc"
 
 DEPEND="virtual/x11
 	x11-libs/openmotif
-	sci-libs/szip
-	hdf? ( sci-libs/hdf )
-	cdf? ( sci-libs/cdf )
-	netcdf? ( sci-libs/netcdf )
+	hdf? ( dev-libs/hdf )
+	cdf? ( app-sci/cdf )
+	netcdf? ( app-sci/netcdf )
 	tiff? ( media-libs/tiff )
 	imagemagick? ( >=media-gfx/imagemagick-5.3.4 )"
 # waiting on bug #36349 for media-libs/jasper in imagemagick

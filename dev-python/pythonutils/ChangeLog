@@ -1,18 +1,6 @@
 # ChangeLog for dev-python/pythonutils
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonutils/ChangeLog,v 1.3 2005/10/18 19:03:20 g2boojum Exp $
-
-*pythonutils-0.2.3 (18 Oct 2005)
-
-  18 Oct 2005; Grant Goodyear <g2boojum@gentoo.org>
-  +pythonutils-0.2.3.ebuild:
-  Version bump by request of author; added ~amd64 keyword.
-
-*pythonutils-0.2.2 (17 Sep 2005)
-
-  17 Sep 2005; Grant Goodyear <g2boojum@gentoo.org>
-  +pythonutils-0.2.2.ebuild:
-  Version bump requested from upstream.
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pythonutils/ChangeLog,v 1.1 2005/09/03 18:27:42 g2boojum Exp $
 
 *pythonutils-0.2.0 (03 Sep 2005)
 

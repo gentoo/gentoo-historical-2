@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/yafc/yafc-1.0.ebuild,v 1.4 2005/02/04 19:55:32 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/yafc/yafc-1.0.ebuild,v 1.1 2003/06/21 07:27:52 vapier Exp $
 
 inherit flag-o-matic
 
@@ -13,7 +13,7 @@ RDEPEND=">=net-misc/openssh-3.0"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc ~amd64"
+KEYWORDS="x86 ppc sparc"
 IUSE="readline"
 
 src_compile() {

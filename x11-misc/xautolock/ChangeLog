@@ -1,24 +1,7 @@
 # ChangeLog for x11-misc/xautolock
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xautolock/ChangeLog,v 1.10 2005/06/17 00:05:26 smithj Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xautolock/ChangeLog,v 1.1 2002/04/13 11:20:09 spider Exp $
 
-  17 Jun 2005; Jonathan Smith <smithj@gentoo.org> xautolock-2.1.ebuild:
-  fixed dependencies again
-
-  14 Jun 2005; Jonathan Smith <smithj@gentoo.org> xautolock-2.1.ebuild:
-  added xlockmore as a dependency for #95246
-
-  24 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org> xautolock-2.1.ebuild:
-  Added to ~amd64, bug #83053
-
-  01 Jun 2004; Brandon Hale <tseng@gentoo.org> xautolock-2.1.ebuild:
-  Add IUSE=
-
-  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
-  Added metadata.xml
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *xautolock-2.1 (13 Apr 2002)
   13 Apr 2002; Spider <spider@gentoo.org> xautolock-2.1.ebuild:
   initial ebuild.  for use with xlockmore

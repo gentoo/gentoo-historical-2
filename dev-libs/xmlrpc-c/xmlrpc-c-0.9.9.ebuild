@@ -1,27 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/xmlrpc-c-0.9.9.ebuild,v 1.10 2005/02/17 17:32:30 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlrpc-c/xmlrpc-c-0.9.9.ebuild,v 1.1 2003/03/08 20:56:57 pvdabeel Exp $
 
-inherit eutils
-
+A=xmlrpc-c-${PV}.tar.gz
+S=${WORKDIR}/xmlrpc-c-${PV}
 DESCRIPTION="A lightweigt RPC library based on XML and HTTP"
-SRC_URI="mirror://sourceforge/xmlrpc-c/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/xmlrpc-c/${A}"
 HOMEPAGE="http://xmlrpc-c.sourceforge.net/"
-
 KEYWORDS="x86 ppc"
-IUSE=""
-LICENSE="GPL-2"
+LICENSE="GPL2"
 SLOT="0"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	net-libs/libwww"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}/src
-	epatch ${FILESDIR}/gentoo-${PV}.patch
-}
-
 src_install() {
-	make prefix=${D}/usr install || die
+	make prefix=${D}/usr install
 }

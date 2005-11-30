@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/portfwd/portfwd-0.26_rc6.ebuild,v 1.8 2005/05/06 14:58:54 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/portfwd/portfwd-0.26_rc6.ebuild,v 1.1 2003/10/17 20:42:05 avenj Exp $
 
 DESCRIPTION="Port Forwarding Daemon"
 SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.gz"
@@ -8,11 +8,11 @@ HOMEPAGE="http://portfwd.sourceforge.net"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 ia64 ~amd64"
-IUSE=""
+KEYWORDS="~x86"
 
-DEPEND=">=sys-apps/sed-4"
-RDEPEND="${DEPEND}"
+DEPEND="virtual/glibc"
+RDEPEND="${DEPEND}
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
@@ -39,7 +39,7 @@ src_compile() {
 	cd ${WORKDIR}/${P/_/}
 
 	./bootstrap
-	econf || die "econf failed"
+	econf
 	emake
 }
 
@@ -54,13 +54,10 @@ src_install() {
 	insinto /etc/init.d
 	insopts -m0755
 	newins ${FILESDIR}/${PN}.init ${PN}
-
-	insinto /etc/conf.d
-	insopts -m0644
-	newins ${FILESDIR}/${PN}.confd ${PN}
 }
 
 pkg_postinst() {
 	einfo "Many configuration file (/etc/portfwd.cfg) samples are available in /usr/share/doc/${P}"
 	einfo
 }
+

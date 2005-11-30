@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/ntop-3.1.ebuild,v 1.8 2005/08/24 14:13:54 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ntop/ntop-3.1.ebuild,v 1.1 2005/01/16 04:23:21 dragonheart Exp $
 
 inherit gnuconfig eutils
 
@@ -17,7 +17,7 @@ DEPEND="virtual/libc
 	sys-apps/gawk
 	>=sys-devel/libtool-1.4
 	>=sys-libs/gdbm-1.8.0
-	virtual/libpcap
+	>=net-libs/libpcap-0.5.2
 	>=media-libs/gd-2.0.22
 	>=media-libs/libpng-1.2.5
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r4 )
@@ -30,7 +30,7 @@ DEPEND="virtual/libc
 
 pkg_setup() {
 	enewgroup ntop
-	enewuser ntop -1 -1 /var/lib/ntop ntop
+	enewuser ntop -1 /bin/false /var/lib/ntop ntop
 }
 
 src_unpack() {
@@ -38,7 +38,7 @@ src_unpack() {
 	mv ${WORKDIR}/ntop ${WORKDIR}/ntop-3.1
 	cd ${S}
 	gnuconfig_update
-	epatch ${FILESDIR}/globals-core.c.diff
+	epatch ${FILESDIR}/globals-core.c.diff || die "patch failed"
 }
 
 src_compile() {
@@ -63,7 +63,6 @@ src_compile() {
 }
 
 src_install() {
-	sed -i Makefile -e 's;mkdir -p $(CFG_DBFILE_DIR);mkdir -p $(DESTDIR)$(CFG_DBFILE_DIR);'
 	make DESTDIR=${D} install || die "install problem"
 
 	# fixme: bad handling of plugins (in /usr/lib with unsuggestive names)
@@ -74,7 +73,9 @@ src_install() {
 	dodoc AUTHORS CONTENTS ChangeLog MANIFESTO NEWS
 	dodoc PORTING README SUPPORT_NTOP.txt THANKS docs/*
 
-	chown -R root:0 ${D}/etc/ntop ${D}/usr/share/${PN}/html \
+	mv ${D}/usr/share/ntop/html ${D}/usr/share/doc/${PF}
+	rmdir ${D}/usr/share/ntop
+	chown -R root:root ${D}/etc/ntop ${D}/usr/share/doc/${PF}/html \
 		${D}/usr/lib/ntop
 
 	dohtml ntop.html
@@ -86,6 +87,6 @@ src_install() {
 	exeinto /etc/init.d ; newexe ${FILESDIR}/ntop-init ntop
 	insinto /etc/conf.d ; newins ${FILESDIR}/ntop-confd ntop
 
-	echo 'NTOP_OPTS="-u ntop -P /var/lib/ntop"' >> ${D}/etc/conf.d/ntop
+	echo NTOP_OPTS="-u ntop -P /var/lib/ntop" >> ${D}/etc/conf.d/ntop
 }
 

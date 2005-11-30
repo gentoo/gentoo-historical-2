@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.10-r3.ebuild,v 1.4 2005/07/07 23:58:53 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/proftpd/proftpd-1.2.10-r3.ebuild,v 1.1 2005/03/02 23:19:46 humpback Exp $
 
 inherit flag-o-matic eutils
 
@@ -18,7 +18,7 @@ HOMEPAGE="http://www.proftpd.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~sparc ~hppa ~alpha ~ppc ~mips ~amd64 ~ppc64"
 
 DEPEND="pam? ( >=sys-libs/pam-0.75 )
 	mysql? ( >=dev-db/mysql-3.23.26 )
@@ -39,7 +39,6 @@ src_unpack() {
 }
 
 src_compile() {
-	addpredict /etc/krb5.conf
 	local modules myconf
 
 	modules="mod_ratio:mod_readme"
@@ -126,7 +125,7 @@ src_install() {
 	keepdir /home/ftp
 	keepdir /var/run/proftpd
 
-	dodoc contrib/UPGRADE.mod_sql ${FILESDIR}/proftpd.conf \
+	dodoc contrib/README.mod_sql ${FILESDIR}/proftpd.conf \
 		COPYING CREDITS ChangeLog NEWS README* \
 		doc/{license.txt,GetConf}
 	dohtml doc/*.html

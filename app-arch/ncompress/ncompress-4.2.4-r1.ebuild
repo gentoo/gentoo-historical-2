@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/ncompress/ncompress-4.2.4-r1.ebuild,v 1.14 2005/11/26 09:18:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/ncompress/ncompress-4.2.4-r1.ebuild,v 1.1 2004/10/07 03:36:17 solar Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
 DESCRIPTION="Another uncompressor for compatibility"
 HOMEPAGE="ftp://ftp.leo.org/pub/comp/os/unix/linux/sunsite/utils/compress/"
@@ -11,27 +11,25 @@ SRC_URI="ftp://ftp.leo.org/pub/comp/os/unix/linux/sunsite/utils/compress/${P}.ta
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
+IUSE="build"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/ncompress-gcc34.patch
-	epatch "${DISTDIR}"/ncompress_4.2.4-15.diff.gz
+	cd ${S}
+	epatch ${FILESDIR}/ncompress-gcc34.patch
+	# Add bounds checking for bug 66251
+	epatch ${DISTDIR}/ncompress_4.2.4-15.diff.gz
 }
 
 src_compile() {
-	sed \
-		-e "s:options= :options= ${CFLAGS} :" \
-		-e "s:CC=cc:CC=$(tc-getCC):" \
-		Makefile.def > Makefile
+	sed -e "s:options= :options= ${CFLAGS} :" \
+		-e "s:CC=cc:CC=${CC:-gcc}:" Makefile.def > Makefile
 	make || die
 }
 
 src_install() {
 	dobin compress || die
 	dosym compress /usr/bin/uncompress
-	doman compress.1
-	dodoc Acknowleds Changes LZW.INFO README
+	use build || doman compress.1
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 Niek van der Maas
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/welcome2l/welcome2l-3.04.ebuild,v 1.12 2005/04/21 19:46:04 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/welcome2l/welcome2l-3.04.ebuild,v 1.1 2003/08/24 02:05:06 seemant Exp $
 
 inherit eutils
 
@@ -8,21 +8,19 @@ MY_PN=Welcome2L
 MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Welcome to Linux, ANSI login logo for Linux"
-HOMEPAGE="http://www.littleigloo.org/"
-SRC_URI="http://www.chez.com/littleigloo/files/${MY_P}.src.tar.gz
-	mirror://gentoo/${P}-gentoo.patch.bz2"
+HOMEPAGE="http://www.littleigloo.org/" 
+SRC_URI="http://www.chez.com/littleigloo/files/${MY_P}.src.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
-IUSE=""
+KEYWORDS="x86 ppc"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
-src_unpack() {
+src_unpack() { 
 	unpack ${A}
 	cd ${S}
-	epatch ${WORKDIR}/${P}-gentoo.patch
+	epatch ${FILESDIR}/${P}-gentoo.patch
 }
 
 src_compile() {
@@ -32,7 +30,7 @@ src_compile() {
 src_install() {
 	dobin ${MY_PN}
 	doman ${MY_PN}.1
-	dodoc AUTHORS README INSTALL ChangeLog BUGS TODO
+	dodoc AUTHORS README INSTALL COPYING ChangeLog BUGS TODO
 	exeinto /etc/init.d ; newexe ${FILESDIR}/${PN}.initscript ${MY_PN}
 }
 

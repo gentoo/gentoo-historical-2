@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbiff/wmbiff-0.4.25-r1.ebuild,v 1.4 2005/06/17 20:22:59 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmbiff/wmbiff-0.4.25-r1.ebuild,v 1.1 2005/05/10 08:34:04 s4t4n Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ DEPEND="virtual/x11
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
 IUSE="crypt"
 
 src_unpack()

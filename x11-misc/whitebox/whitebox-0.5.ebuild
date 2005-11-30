@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/whitebox/whitebox-0.5.ebuild,v 1.7 2005/07/11 22:49:20 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/whitebox/whitebox-0.5.ebuild,v 1.1 2003/06/20 15:02:29 mkeadle Exp $
 
 IUSE=""
 
@@ -13,15 +13,21 @@ HOMEPAGE="http://whitebox.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc ~amd64"
+KEYWORDS="~x86"
 
 DEPEND="=x11-libs/gtk+-1.2*
-	>=media-libs/gdk-pixbuf-0.22"
+	=media-libs/gdk-pixbuf-0.22*"
 
-RDEPEND="${DEPEND}
-	virtual/blackbox"
+RDEPEND="virtual/blackbox"
+
+src_compile () {
+
+	econf || die
+	emake || die
+}
 
 src_install () {
+
 	einstall || die
 	insinto /usr/share/whiteBOX/pixmaps
 	doins ${WORKDIR}/pixmaps/*.xpm

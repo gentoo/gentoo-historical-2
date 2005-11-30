@@ -1,25 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/calendar/calendar-0.9.1.ebuild,v 1.16 2005/01/01 14:54:25 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/calendar/calendar-0.9.1.ebuild,v 1.1 2003/06/08 06:31:39 seemant Exp $
 
-DESCRIPTION="Standard unix calendar program for Linux, ported from OpenBSD"
+S=${WORKDIR}/${P}
+DESCRIPTION="Standard unix calendar program for Linux, ported from OpenBSD."
 HOMEPAGE="http://bsdcalendar.sourceforge.net/"
 SRC_URI="http://bsdcalendar.sourceforge.net/${P}.tar.bz2"
 
-LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha ~hppa amd64 ppc64"
-IUSE=""
+LICENSE="BSD"
+KEYWORDS="~x86"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_compile() {
-	emake || die "emake failed"
+	emake || die
 }
-
 src_install() {
-	dodoc README
-	cp -R "${S}/calendars" "${D}/usr/share/calendar" || die "cp failed"
-	dobin calendar || die "dobin failed"
+	dodoc README TODO
+	cp -R ${S}/calendars ${D}/usr/share/calendar
+	exeinto /usr/bin
+	doexe calendar
 	doman calendar.1
 }

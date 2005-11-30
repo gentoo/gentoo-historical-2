@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvdrip/dvdrip-0.52.5.ebuild,v 1.6 2005/07/13 13:45:54 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdrip/dvdrip-0.52.5.ebuild,v 1.1 2005/05/19 20:38:09 luckyduck Exp $
 
 inherit perl-module eutils
 
@@ -32,29 +32,26 @@ DEPEND="gnome? ( gnome-extra/libgtkhtml )
 	>=media-video/transcode-0.6.14
 	>=media-gfx/imagemagick-5.5.3
 	dev-perl/gtk-perl
-	perl-core/Storable
+	dev-perl/Storable
 	dev-perl/Event"
 RDEPEND="${DEPEND}
 	fping? ( >=net-analyzer/fping-2.3 )
 	ogg? ( >=media-sound/ogmtools-1.000 )
 	subtitles? ( media-video/subtitleripper )
-	virtual/eject
+	sys-apps/eject
 	dev-perl/libintl-perl"
 
 pkg_setup() {
-	built_with_use media-video/transcode dvdread || die "transcode needs dvdread support builtin.  Please re-emerge transcode with the dvdread USE flag."
+	built_with_use transcode dvdread || die "transcode needs dvdread support builtin.  Please re-emerge transcode with the dvdread USE flag."
 }
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -i -e 's:cc :$(CC) :' src/Makefile || die "sed failed"
+	sed -i 's:cc :$(CC) :' src/Makefile || die "sed failed"
 }
 
 src_install() {
-	newicon lib/Video/DVDRip/icon.xpm dvdrip.xpm
-	make_desktop_entry dvdrip dvd::rip dvdrip.xpm Video
-
 	perl-module_src_install
 }
 
@@ -66,9 +63,4 @@ pkg_postinst() {
 	einfo "for bash: export PERLIO=stdio"
 	einfo "for csh:  setenv PERLIO stdio"
 	einfo "into your /.${shell}rc"
-	if ( use amd64 );
-	then
-		einfo "If you get messages about not finding the tools, go t preferences"
-		einfo "And deactivate the NPTL workaround"
-	fi
 }

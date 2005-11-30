@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/live-2004.09.30.ebuild,v 1.5 2005/01/30 17:02:13 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/live/live-2004.09.30.ebuild,v 1.1 2004/10/01 10:22:16 phosphan Exp $
 
 IUSE=""
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.live.com/liveMedia/public/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~mips ppc64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~mips"
 
 DEPEND="virtual/libc"
 
@@ -58,10 +58,10 @@ src_install() {
 		local dir
 		dir=$(basename $(dirname ${lib}))
 
-		insinto "/usr/$(get_libdir)/live/${dir}"
+		insinto "/usr/lib/live/${dir}"
 		doins "${lib}"
 
-		insinto "/usr/$(get_libdir)/live/${dir}/include"
+		insinto "/usr/lib/live/${dir}/include"
 		doins ${S}/${dir}/include/*h
 	done
 

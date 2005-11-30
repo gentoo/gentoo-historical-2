@@ -1,15 +1,6 @@
 # ChangeLog for dev-libs/asyncresolv
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/asyncresolv/ChangeLog,v 1.4 2005/10/29 04:18:00 halcy0n Exp $
-
-  29 Oct 2005; Mark Loeser <halcy0n@gentoo.org> asyncresolv-0.0.3.ebuild:
-  Stable on x86
-
-  19 Sep 2005; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
-  Adding to cpp herd
-
-  16 Jul 2004; David Holm <dholm@gentoo.org> asyncresolv-0.0.3.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/asyncresolv/ChangeLog,v 1.1 2004/07/14 09:04:39 jhhudso Exp $
 
 *asyncresolv-0.0.3 (14 Jul 2004)
 

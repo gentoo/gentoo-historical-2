@@ -9,13 +9,13 @@ depend() {
         provide firewall
 }
 
-start() {
+svc_start() {
         ebegin "Starting firewall"
         /usr/sbin/tuxfrw start
         eend $?
 }
 
-stop() {
+svc_stop() {
         ebegin "Stopping firewall"
         /usr/sbin/tuxfrw stop
         eend $?

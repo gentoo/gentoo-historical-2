@@ -1,6 +1,2 @@
-MD5 3c8cbbecd7c7992ef7367d7eef25420f ChangeLog 882
+MD5 791058a8240ede8510770d3e14a711b2 selinux-portmap-20030811.ebuild 369
 MD5 155a50b6ebb64dbce19f7b113544574d files/digest-selinux-portmap-20030811 74
-MD5 9ec09cff0f95c990285512b7b3a53420 files/digest-selinux-portmap-20050908 75
-MD5 b2b30c08468f19aeb7b0ded29eb9b358 metadata.xml 373
-MD5 71a824cb886482b8f87c85246205ac13 selinux-portmap-20030811.ebuild 393
-MD5 95abda348211dc6ae7df8a34a13662f0 selinux-portmap-20050908.ebuild 433

@@ -1,21 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/adjtimex/adjtimex-1.16.ebuild,v 1.7 2005/01/07 12:03:11 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/adjtimex/adjtimex-1.16.ebuild,v 1.1 2004/01/06 04:13:02 robbat2 Exp $
 
-inherit fixheadtails eutils
+inherit fixheadtails
 
 DEBIAN_PV="1"
-DESCRIPTION="display or set the kernel time variables"
+DESCRIPTION="adjtimex - display or set the kernel time variables"
 HOMEPAGE="http://www.ibiblio.org/linsearch/lsms/adjtimex.html"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}-${DEBIAN_PV}.diff.gz
-	mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
-
+		 mirror://debian/pool/main/${PN:0:1}/${PN}/${P/-/_}.orig.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+
+S="${WORKDIR}/${P}"
 
 src_unpack() {
 	unpack ${P/-/_}.orig.tar.gz
@@ -28,8 +29,13 @@ src_unpack() {
 	sed -e '/CFLAGS = -Wall -t/,/endif/d' -i Makefile.in
 }
 
+src_compile() {
+	econf || die
+	emake || die
+}
+
 src_install() {
-	dodoc README* ChangeLog
+	dodoc README* COPYING COPYRIGHT ChangeLog
 	doman adjtimex.8 debian/adjtimexconfig.8
 	dosbin adjtimex debian/adjtimexconfig
 	exeinto /etc/init.d

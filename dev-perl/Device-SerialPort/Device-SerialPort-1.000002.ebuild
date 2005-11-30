@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Device-SerialPort/Device-SerialPort-1.000002.ebuild,v 1.7 2005/10/02 12:37:16 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Device-SerialPort/Device-SerialPort-1.000002.ebuild,v 1.1 2004/06/13 21:03:56 mcummings Exp $
 
 inherit perl-module
 
@@ -10,5 +10,4 @@ SRC_URI="http://sendpage.org/device-serialport/download/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~hppa ia64 ~mips ~ppc sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~mips"

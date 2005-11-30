@@ -1,66 +1,6 @@
 # ChangeLog for app-laptop/acerhk
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/acerhk/ChangeLog,v 1.13 2005/08/27 18:25:26 genstef Exp $
-
-  27 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
-  -files/acerhk-0.5.18-redef-wireless.patch,
-  -files/acerhk-0.5.20-redef-wireless.patch, -acerhk-0.5.18.ebuild,
-  -acerhk-0.5.18-r1.ebuild, -acerhk-0.5.20.ebuild:
-  Cleaning out old ebuilds
-
-*acerhk-0.5.27 (24 Aug 2005)
-
-  24 Aug 2005; Stefan Schweizer <genstef@gentoo.org> +acerhk-0.5.27.ebuild:
-  version bump
-
-*acerhk-0.5.22-r1 (02 Jun 2005)
-
-  02 Jun 2005; Karol Wojtaszek <sekretarz@gentoo.org>
-  +acerhk-0.5.22-r1.ebuild:
-  acerhk-0.5.22 stable on x86. Added ebuild that is compliant with portage-cvs
-
-  21 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  acerhk-0.5.18-r1.ebuild, acerhk-0.5.18.ebuild, acerhk-0.5.20.ebuild,
-  acerhk-0.5.22.ebuild:
-  added -ppc since this applies only to non-ppc hardware
-
-*acerhk-0.5.22 (21 Mar 2005)
-
-  21 Mar 2005; Karol Wojtaszek <sekretarz@gentoo.org>
-  +files/acerhk-0.5.22-redef-wireless.patch, +acerhk-0.5.22.ebuild:
-  Version bump, bug #85751
-
-*acerhk-0.5.20 (27 Feb 2005)
-
-  27 Feb 2005; Karol Wojtaszek <sekretarz@gentoo.org>
-  -files/acerhk-0.5.18-redef-wireless.patch,
-  +files/acerhk-redef-wireless.patch, -acerhk-0.5.14.ebuild,
-  acerhk-0.5.18-r1.ebuild, +acerhk-0.5.20.ebuild:
-  Version bump, bug #77766
-
-  02 Jan 2005; Daniel Drake <dsd@gentoo.org> acerhk-0.5.14.ebuild,
-  acerhk-0.5.18.ebuild:
-  Change virtual/kernel to virtual/linux-sources
-
-  02 Jan 2005; Stefan Schweizer <genstef@gentoo.org>
-  acerhk-0.5.18-r1.ebuild:
-  Conversion to linux-mod, thanks to Daniel Drake <dsd@gentoo.org> in bug 74520
-
-  06 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org> acerhk-0.5.18.ebuild:
-  Stable on x86
-
-*acerhk-0.5.18-r1 (06 Dec 2004)
-
-  06 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org>
-  +files/acerhk-0.5.18-redef-wireless.patch, +acerhk-0.5.18-r1.ebuild:
-  Added patch, which redefines the key_wireless and key_wireless2 keys, bug
-  #73398
-
-*acerhk-0.5.18 (26 Nov 2004)
-
-  26 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org> acerhk-0.5.14.ebuild,
-  +acerhk-0.5.18.ebuild:
-  Version bump, acerhk-0.5.14 stable on x86
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/acerhk/ChangeLog,v 1.1 2004/08/26 08:12:23 sekretarz Exp $
 
   26 Aug 2004; Karol Wojtaszek <sekretarz@gentoo.org> :
   Initial add. Thanks to Sebastien ESTIENNE <sebest@ovibes.net> and Ronald van

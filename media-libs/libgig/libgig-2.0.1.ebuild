@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libgig/libgig-2.0.1.ebuild,v 1.3 2005/09/04 12:24:38 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libgig/libgig-2.0.1.ebuild,v 1.1 2005/07/10 21:07:16 fvdpol Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://stud.fh-heilbronn.de/~cschoene/projects/libgig/"
 SRC_URI="http://stud.fh-heilbronn.de/~cschoene/projects/libgig/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 RDEPEND="
 	>=media-libs/libsndfile-1.0.2
@@ -29,7 +29,7 @@ src_compile() {
 
 src_install() {
 	einstall || die "einstall failed"
-	dodoc AUTHORS ChangeLog TODO README
+	dodoc AUTHORS ChangeLog INSTALL TODO README
 
 	if use doc; then
 		mv ${S}/doc/html ${D}/usr/share/doc/${PF}/

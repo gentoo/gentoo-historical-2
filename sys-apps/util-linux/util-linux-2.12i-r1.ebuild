@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.12i-r1.ebuild,v 1.17 2005/09/13 23:56:28 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.12i-r1.ebuild,v 1.1 2004/11/14 08:46:54 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -16,18 +16,18 @@ SRC_URI="mirror://kernel/linux/utils/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="crypt nls static pam selinux perl"
 
-RDEPEND=">=sys-libs/ncurses-5.2-r2
+DEPEND="virtual/libc
+	>=sys-libs/ncurses-5.2-r2
 	>=sys-fs/e2fsprogs-1.34
 	selinux? ( sys-libs/libselinux )
 	pam? ( sys-apps/pam-login )
-	crypt? ( app-crypt/hashalot )
-	perl? ( dev-lang/perl )"
-DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
-	virtual/os-headers"
+	crypt? ( app-crypt/hashalot )"
+RDEPEND="${DEPEND}
+	perl? ( dev-lang/perl )
+	nls? ( sys-devel/gettext )"
 
 yesno() { useq $1 && echo yes || echo no; }
 
@@ -42,11 +42,8 @@ src_unpack() {
 	# Fix rare failures with -j4 or higher
 	epatch ${FILESDIR}/${PN}-2.11z-parallel-make.patch
 
-	# Disable the -r option for non-root users #105805
-	epatch "${FILESDIR}"/${PN}-2.12-only-root-can-remount.patch
-
 	# Fix unreadable df output
-	[[ -e /dev/.devfsd ]] && epatch ${FILESDIR}/no-symlink-resolve.patch
+	epatch ${FILESDIR}/no-symlink-resolve.patch
 
 	# Add the O option to agetty to display DNS domainname in the issue
 	# file, thanks to Marius Mauch <genone@genone.de>, bug #22275.
@@ -69,6 +66,9 @@ src_unpack() {
 	# Add support to read fat/fat32 labels, bug #36722
 	epatch ${FILESDIR}/${P}-fat-LABEL-support.patch
 	epatch ${S}/mount-2.12-fat.patch
+
+	# Install rdev on amd64 platform
+	epatch ${FILESDIR}/${PN}-2.12-amd64_rdev_installation.patch
 
 	# swapon gets confused by symlinks in /dev #69162
 	epatch ${FILESDIR}/${P}-swapon-check-symlinks.patch
@@ -103,20 +103,13 @@ src_compile() {
 	emake || die "emake failed"
 
 	cd partx
-	has_version '>=sys-kernel/linux-headers-2.6' && append-flags -include linux/compiler.h
-	emake CFLAGS="${CFLAGS}" || die "make partx failed"
+	emake CFLAGS="${CFLAGS} -include linux/compiler.h" || die "make partx failed"
 }
 
 src_install() {
 	make install DESTDIR="${D}" || die "install failed"
 	dosbin partx/{addpart,delpart,partx} || die "dosbin"
 	use perl || rm -f "${D}"/usr/bin/chkdupexe
-
-	newinitd "${FILESDIR}"/crypto-loop.initd crypto-loop
-	newconfd "${FILESDIR}"/crypto-loop.confd crypto-loop
-
-	# man-pages installs renice(1p) but util-linux does renice(8)
-	dosym ../man8/renice.8 /usr/share/man/man1/renice.1
 
 	dodoc HISTORY MAINTAINER README VERSION
 	docinto examples

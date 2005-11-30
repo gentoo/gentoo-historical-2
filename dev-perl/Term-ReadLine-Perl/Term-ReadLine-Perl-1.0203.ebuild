@@ -1,14 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Term-ReadLine-Perl/Term-ReadLine-Perl-1.0203.ebuild,v 1.19 2005/07/09 23:18:28 swegener Exp $
+# $Header $
+
+IUSE=""
 
 inherit perl-module
 
-DESCRIPTION="Quick implimentation of readline utilities."
-HOMEPAGE="http:/search.cpan.org/~ilyaz/${P}/"
-SRC_URI="mirror://cpan/authors/id/I/IL/ILYAZ/modules/${P}.tar.gz"
+S=${WORKDIR}/${P}
+CATEGORY="dev-perl"
+DESCRIPTION="Heap - Perl extensions for keeping data partially sorted." 
+SRC_URI="http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/${P}.tar.gz"
+HOMEPAGE="http:/search.cpan.org/src/ILYAZ/Term-ReadLine-Perl-1.0203/README"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ~ppc ~sparc ~alpha"
+
+DEPEND="${DEPEND}"

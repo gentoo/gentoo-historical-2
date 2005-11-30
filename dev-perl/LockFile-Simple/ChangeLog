@@ -1,45 +1,6 @@
 # ChangeLog for dev-perl/LockFile-Simple
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/LockFile-Simple/ChangeLog,v 1.16 2005/11/27 22:26:17 tgall Exp $
-
-  27 Nov 2005; Tom Gall <tgall@gentoo.org> LockFile-Simple-0.2.5-r1.ebuild:
-  stable on ppc64
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  LockFile-Simple-0.2.5-r1.ebuild:
-  Mark 0.2.5-r1 stable on ia64
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  LockFile-Simple-0.2.5-r1.ebuild:
-  add ~ia64
-
-  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -LockFile-Simple-0.2.5.ebuild, LockFile-Simple-0.2.5-r1.ebuild:
-  Just cleaning up
-
-  24 Dec 2004; Yuta SATOH <nigoro@gentoo.org> LockFile-Simple-0.2.5-r1.ebuild:
-  added ~ppc64
-
-  15 Apr 2004; Michael McCabe <randy@gentoo.org>
-  LockFile-Simple-0.2.5-r1.ebuild:
-  adding s390 keywords
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
-  forced version bump to install into correct locations
-
-*LockFile-Simple-0.2.5-r1 (5 May 2002)
-
-  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org>
-  LockFile-Simple-0.2.5-r1.ebuild :
-
-  Added ppc to KEYWORDS.
-
-  5 May 2002; Seemant Kulleen <seemant@gentoo.org>
-  LockFile-Simple-0.2.5-r1.ebuild files/digest-LockFile-Simple-0.2.5-r1 :
-
-  Conversion to eclasses.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/LockFile-Simple/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
 
 *LockFile-Simple-0.2.5 (1 Feb 2002)
 

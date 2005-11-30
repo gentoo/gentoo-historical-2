@@ -1,17 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/kylixlibs3-borqt/kylixlibs3-borqt-3.0.ebuild,v 1.6 2005/07/28 21:10:20 caleb Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/kylixlibs3-borqt/kylixlibs3-borqt-3.0.ebuild,v 1.1 2003/03/04 22:07:21 bass Exp $
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/kylixlibs3-borqt"
 DESCRIPTION="Kylix 3 OE libraries"
-HOMEPAGE="http://kylixlibs.sf.net"
-SRC_URI="mirror://sourceforge/kylixlibs/${P}-2.tar.gz"
-IUSE=""
-SLOT="0"
+SRC_URI="mirror://sourceforge/kylixlibs/kylixlibs3-borqt-3.0-2.tar.gz"
+HOMEPAGE="kylixlibs.sf.net"
 LICENSE="GPL-2"
+DEPEND="x11-libs/qt"
+RDEPEND="${RDEPEND}"
+SLOT="0"
 KEYWORDS="~x86"
-
-DEPEND="=x11-libs/qt-3*"
 
 src_compile() {
 	echo "Nothing to compile for ${P}."
@@ -27,11 +26,10 @@ src_install () {
 }
 
 pkg_postinst() {
-	einfo "If is the first install of ${P}"
-	einfo "you need to run:"
-	einfo "ebuild /var/db/pkg/x11-libs/${P}/${P}.ebuild config"
+	einfo "If is the first time that you install it"
+	einfo "you need run:"
+	einfo "ebuild /var/db/pkg/x11-libs/kylixlibs3-borqt-3.0/kylixlibs3-borqt-3.0.ebuild config"
 }
-
 pkg_config() {
 	grep -q "^/usr/lib/kylix3\$" /etc/ld.so.conf
 	if [ $? == 1 ]; then

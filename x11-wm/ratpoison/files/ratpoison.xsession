@@ -1,1 +1,2 @@
-/usr/bin/ratpoison
+#!/bin/bash
+exec /usr/bin/ratpoison

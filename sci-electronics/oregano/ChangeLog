@@ -1,55 +1,6 @@
-# ChangeLog for sci-electronics/oregano
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/oregano/ChangeLog,v 1.14 2005/09/14 20:39:22 gustavoz Exp $
-
-*oregano-0.40.5 (14 Sep 2005)
-
-  14 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  +oregano-0.40.5.ebuild:
-  New upstream version, p. masked since it requires p. masked stuff
-
-  30 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> oregano-0.40.3.ebuild:
-  cairo DEP fix to lock to 0.1
-
-  30 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> oregano-0.40.3.ebuild:
-  amd64 and ppc stable
-
-  27 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  -files/oregano-0.40.1-gtk2.6.patch, -oregano-0.40.2.ebuild:
-  Retiring old
-
-  22 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> oregano-0.40.3.ebuild:
-  Gnome 2.10 workaround
-
-  24 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> oregano-0.40.3.ebuild:
-  To stable on x86 and sparc
-
-*oregano-0.40.3 (02 Feb 2005)
-
-  02 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> -oregano-0.40.0.ebuild,
-  -oregano-0.40.1.ebuild, oregano-0.40.2.ebuild, +oregano-0.40.3.ebuild:
-  Removed older versions, added missing scrollkeeper dep wrt #80459, new
-  upstream version which works on amd64
-
-*oregano-0.40.2 (31 Jan 2005)
-
-  31 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> +oregano-0.40.2.ebuild:
-  Yet another new upstream version, hopefully going to stable soon
-
-  26 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  +files/oregano-0.40.1-gtk2.6.patch, oregano-0.40.1.ebuild:
-  GTK+ 2.6 fix wrt #79563
-
-  25 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> oregano-0.40.1.ebuild:
-  Keyworded ~ppc
-
-  10 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> -oregano-0.3.2.ebuild:
-  Removed 0.3.2 because it's deprecated and used bad versioning
-
-*oregano-0.40.1 (10 Jan 2005)
-
-  10 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> +oregano-0.40.1.ebuild:
-  Another new upstream release
+# ChangeLog for app-sci/oregano
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/oregano/ChangeLog,v 1.1 2004/12/27 20:13:35 ribosome Exp $
 
 *oregano-0.40.0 (27 Dec 2004)
 

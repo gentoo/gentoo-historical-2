@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/eject/eject-2.0.13-r2.ebuild,v 1.12 2005/10/03 12:26:40 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/eject/eject-2.0.13-r2.ebuild,v 1.1 2005/05/21 03:31:03 vapier Exp $
 
 inherit eutils
 
@@ -11,11 +11,10 @@ SRC_URI="http://www.ibiblio.org/pub/Linux/utils/disk-management/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86"
 IUSE="nls"
 
-DEPEND="!virtual/eject"
-PROVIDE="virtual/eject"
+DEPEND=""
 
 src_unpack() {
 	unpack ${A}
@@ -32,8 +31,6 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-no-umount.patch
 	epatch "${FILESDIR}"/${P}-toggle.patch
 	epatch "${FILESDIR}"/${P}-fstab-error.patch
-	epatch "${FILESDIR}"/${P}-pumount.patch
-	epatch "${FILESDIR}"/${P}-i18n-uclibc.patch
 
 	sed -i '/^AM_CFLAGS/s:-O3::' Makefile.in
 	if ! use nls ; then

@@ -1,23 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/xsu2/xsu2-0.2.5.ebuild,v 1.13 2005/01/01 11:36:55 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/xsu2/xsu2-0.2.5.ebuild,v 1.1 2002/11/05 18:39:38 bcowan Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Interface for 'su - username -c command' in GNOME2."
-HOMEPAGE="http://xsu.freax.eu.org/"
 SRC_URI="http://xsu.freax.eu.org/files/${P}.tar.gz"
+HOMEPAGE="http://xsu.freax.eu.org"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86"
 
-RDEPEND="=gnome-base/libgnome-2*
+DEPEND="=gnome-base/libgnome-2* 
 	=x11-libs/gtk+-2*
 	=dev-libs/glib-2*
 	=x11-libs/libzvt-2*
 	=gnome-base/libgnomeui-2*"
-DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
+
+RDEPEND=""
 
 src_compile() {
 	econf \
@@ -26,8 +26,8 @@ src_compile() {
 }
 
 src_install() {
-	dobin src/xsu || die
+	dobin src/xsu
 	doman doc/xsu.8
-	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
+	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 	dohtml -r doc/xsu_*
 }

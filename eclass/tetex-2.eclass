@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/tetex-2.eclass,v 1.4 2005/07/11 15:08:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/tetex-2.eclass,v 1.1 2005/04/05 17:07:45 usata Exp $
 #
 # Author: Jaromir Malenko <malenko@email.cz>
 # Author: Mamoru KOMACHI <usata@gentoo.org>
@@ -9,6 +9,8 @@
 
 inherit tetex
 
+ECLASS=tetex-2
+INHERITED="${INHERITED} ${ECLASS}"
 EXPORT_FUNCTIONS src_unpack src_install
 
 tetex-2_src_unpack() {
@@ -20,7 +22,7 @@ tetex-2_src_unpack() {
 	unpack ${TETEX_TEXMF_SRC}
 	sed -i -e "s/-sys//g" ${T}/texmf-update || die
 
-	# fix up misplaced listings.sty in the 2.0.2 archive.
+	# fix up misplaced listings.sty in the 2.0.2 archive. 
 	# this should be fixed in the next release <obz@gentoo.org>
 	mv source/latex/listings/listings.sty tex/latex/listings/ || die
 

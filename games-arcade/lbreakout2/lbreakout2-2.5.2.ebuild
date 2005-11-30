@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/lbreakout2/lbreakout2-2.5.2.ebuild,v 1.4 2005/09/11 02:50:59 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/lbreakout2/lbreakout2-2.5.2.ebuild,v 1.1 2005/01/25 01:35:59 vapier Exp $
 
-inherit flag-o-matic eutils games
+inherit flag-o-matic games
 
 DESCRIPTION="Breakout clone written with the SDL library"
 HOMEPAGE="http://lgames.sourceforge.net/index.php?project=LBreakout2"
@@ -11,10 +11,11 @@ SRC_URI="mirror://sourceforge/lgames/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
-DEPEND="media-libs/libpng
+DEPEND="virtual/libc
+	media-libs/libpng
 	sys-libs/zlib
 	>=media-libs/libsdl-1.1.5
 	media-libs/sdl-net
@@ -37,13 +38,14 @@ src_compile() {
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die "make install failed"
+	make install DESTDIR="${D}" || die
 
 	mv "${D}"/usr/share/doc/${PF}/{lbreakout2,html}
 	dodoc AUTHORS README TODO ChangeLog
 
-	newicon client/gfx/win_icon.png lbreakout2.png
-	make_desktop_entry lbreakout2 LBreakout2
+	cp lbreakout48.gif lbreakout2.gif
+	doicon lbreakout2.gif
+	make_desktop_entry lbreakout2 LBreakout2 lbreakout2.gif
 
 	prepgamesdirs
 }

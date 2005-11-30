@@ -1,96 +1,19 @@
 # ChangeLog for dev-python/numeric
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/numeric/ChangeLog,v 1.24 2005/08/22 22:34:17 lucass Exp $
-
-  22 Aug 2005; Lukasz Strzygowski <lucass@gentoo.org> numeric-22.0.ebuild,
-  numeric-23.1.ebuild, numeric-23.7.ebuild, numeric-23.8.ebuild:
-  Fixed homepage. Closing bug #103371.
-
-  21 Jul 2005; Markus Rothe <corsair@gentoo.org> numeric-23.7.ebuild:
-  Stable on ppc64
-
-  11 Jul 2005; Stephen P. Becker <geoman@gentoo.org> numeric-23.7.ebuild,
-  numeric-23.8.ebuild:
-  added mips keywords to satisfy gnome repoman deps
-
-  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> numeric-23.7.ebuild:
-  Stable on alpha.
-
-  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> numeric-23.7.ebuild:
-  Stable on ppc.
-
-  11 May 2005; Marcus D. Hanwell <cryos@gentoo.org> numeric-23.7.ebuild:
-  Stable on amd64.
-
-  08 May 2005; Aron Griffis <agriffis@gentoo.org> numeric-23.7.ebuild:
-  stable on ia64
-
-  01 May 2005; Guy Martin <gmsoft@gentoo.org> numeric-23.7.ebuild:
-  Stable on hppa.
-
-  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> numeric-23.7.ebuild:
-  Stable on sparc
-
-*numeric-23.8 (25 Apr 2005)
-
-  25 Apr 2005; Carsten Lohrke <carlo@gentoo.org> -files/numeric-23.3.patch,
-  -numeric-23.0.ebuild, -numeric-23.3.ebuild, -numeric-23.6.ebuild,
-  +numeric-23.8.ebuild:
-  version bump, clean up
-
-  25 Apr 2005; Carsten Lohrke <carlo@gentoo.org> numeric-23.7.ebuild:
-  stable on x86
-
-  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> numeric-23.1.ebuild:
-  Stable on ppc.
-
-  08 Apr 2005; Markus Rothe <corsair@gentoo.org> numeric-23.7.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-*numeric-23.7 (21 Jan 2005)
-
-  21 Jan 2005; Carsten Lohrke <carlo@gentoo.org> +files/numeric-23.7.patch,
-  +numeric-23.7.ebuild:
-  version bump
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*numeric-23.6 (07 Dec 2004)
-
-  07 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +numeric-23.6.ebuild:
-  version bump
-
-*numeric-23.3 (18 Aug 2004)
-
-  18 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> +files/numeric-23.3.patch,
-  +numeric-23.3.ebuild:
-  Version bump, ebuild by S.Caglar Onur <caglar.onur@tubitak.gov.tr>
-
-  31 May 2004; Bryan Østergaard <kloeri@gentoo.org> numeric-23.1.ebuild:
-  Stable on alpha.
-
-  04 May 2004; Bryan Østergaard <kloeri@gentoo.org> numeric-22.0.ebuild:
-  Add missing IUSE.
-
-  26 Feb 2004; Sven Blumenstein <bazik@gentoo.org> numeric-23.1.ebuild:
-  Stable on sparc.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/numeric/ChangeLog,v 1.1 2003/09/02 22:24:02 liquidx Exp $
 
 *numeric-23.1 (02 Sep 2003)
-
-  20 Jan 2004; Guy Martin <gmsoft@gentoo.org> numeric-23.1.ebuild :
-  Marked stable on hppa.
 
   02 Sep 2003; Alastair Tse <liquidx@gentoo.org> metadata.xml,
   numeric-22.0.ebuild, numeric-23.0.ebuild, numeric-23.1.ebuild:
   moved from dev-python/Numeric to dev-python/numeric
 
-*numeric-23.0 (03 Apr 2003)
+*Numeric-23.0 (03 Apr 2003)
 
   03 Apr 2003; Alastair Tse <liquidx@gentoo.org> Numeric-23.0.ebuild:
   version bump
 
-*numeric-22.0 (17 Dec 2002)
+*Numeric-22.0 (17 Dec 2002)
 
   17 Dec 2002; B.Lauwers <blauwers@gentoo.org> :
   Version bump.

@@ -1,19 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.3.20040420-r2.ebuild,v 1.13 2005/07/29 16:26:13 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/glibc/glibc-2.3.3.20040420-r2.ebuild,v 1.1 2004/10/07 22:24:28 lv Exp $
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic gcc
 
 # Branch update support.  Following will disable:
 #  BRANCH_UPDATE=
 BRANCH_UPDATE="20040420"
 
+
 # Minimum kernel version for --enable-kernel
-export MIN_KV=${LT_KERNEL_VERSION:-"2.4.1"}
+export MIN_KV="2.4.1"
 # Minimum kernel version for enabling TLS and NPTL ...
 # NOTE: do not change this if you do not know what
 #       you are doing !
-export MIN_NPTL_KV=${NPTL_KERNEL_VERSION:-"2.6.0"}
+export MIN_NPTL_KV="2.6.0"
 
 #MY_PV="${PV/_}"
 MY_PV="2.3.2"
@@ -32,7 +33,7 @@ LICENSE="LGPL-2"
 SLOT="2.2"
 #KEYWORDS="~x86 ~mips ~sparc ~amd64 -hppa ~ia64 ~ppc" # breaks on ~alpha
 KEYWORDS="x86 ppc sparc"
-IUSE="build erandom hardened nls nptl pic"
+IUSE="nls pic build nptl erandom debug hardened"
 
 # We need new cleanup attribute support from gcc for NPTL among things ...
 DEPEND=">=sys-devel/gcc-3.2.3-r1
@@ -41,8 +42,9 @@ DEPEND=">=sys-devel/gcc-3.2.3-r1
 	virtual/os-headers
 	nls? ( sys-devel/gettext )"
 RDEPEND="virtual/os-headers
+	sys-apps/baselayout
 	nls? ( sys-devel/gettext )"
-PROVIDE="virtual/libc"
+PROVIDE="virtual/glibc virtual/libc"
 
 
 # Try to get a kernel source tree with version equal or greater
@@ -119,7 +121,7 @@ use_nptl() {
 					return 0
 				fi
 				;;
-			"alpha"|"amd64"|"ia64"|"mips"|"ppc")
+			"alpha"|"amd64"|"ia64"|"mips"|"ppc"|"sparc")
 				return 0
 				;;
 			*)
@@ -285,6 +287,11 @@ src_unpack() {
 		epatch ${FILESDIR}/2.3.3/${LOCAL_P}-propolice-guard-functions-v3.patch
 		cp ${FILESDIR}/2.3.3/ssp.c ${S}/sysdeps/unix/sysv/linux || \
 			die "failed to copy ssp.c to ${S}/sysdeps/unix/sysv/linux/"
+		# gcc 3.4 nukes ssp without this patch
+		if [ "`gcc-major-version`" -ge "3" -a "`gcc-minor-version`" -ge "4" ]
+		then
+			epatch ${FILESDIR}/2.3.3/glibc-2.3.3-ssp-gcc34-after-frandom.patch
+		fi
 	fi
 
 	# sparc fails when building the components for the normal crt1.o
@@ -400,11 +407,11 @@ src_unpack() {
 		epatch ${FILESDIR}/2.3.2/${LOCAL_P}-mips-configure-for-n64-symver.patch
 		epatch ${FILESDIR}/2.3.3/${PN}-2.3.3_pre20040420-mips-dl-machine-calls.diff
 		epatch ${FILESDIR}/2.3.3/${PN}-2.3.3_pre20040420-mips-incl-sgidefs.diff
-		epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-addabi.diff
-		epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-syscall.h.diff
-		epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-semtimedop.diff
-		epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-sysify.diff
-#####		epatch ${FILESDIR}/2.3.3/${PN}-2.3.3-mips-n32n64regs.diff
+		epatch ${FILESDIR}/2.3.3/mips-addabi.diff
+		epatch ${FILESDIR}/2.3.3/mips-syscall.h.diff
+		epatch ${FILESDIR}/2.3.3/semtimedop.diff
+		epatch ${FILESDIR}/2.3.3/mips-sysify.diff
+#####		epatch ${FILESDIR}/2.3.3/mips-n32n64regs.diff
 	fi
 
 	if [ "${ARCH}" = "alpha" ]
@@ -443,7 +450,6 @@ src_unpack() {
 		cd ${WORKDIR}
 		unpack ${LOCAL_P}-hppa-patches-p1.tar.bz2
 		cd ${S}
-		epatch "${FILESDIR}"/2.3.4/hppa-no-pie.patch
 		EPATCH_EXCLUDE="0[123459]0* 055* 1[2379]0* 200* 230*"
 		for x in ${EPATCH_EXCLUDE}
 		do
@@ -650,7 +656,6 @@ EOF
 		# Install nscd config file
 		insinto /etc ; doins ${FILESDIR}/nscd.conf
 		exeinto /etc/init.d ; doexe ${FILESDIR}/nscd
-		doins "${FILESDIR}"/nsswitch.conf
 
 		dodoc BUGS ChangeLog* CONFORMANCE FAQ INTERFACE \
 			NEWS NOTES PROJECTS README*

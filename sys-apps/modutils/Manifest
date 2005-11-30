@@ -1,20 +1,18 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 9a09f8d531c582e78977dbfd96edc1f2 metadata.xml 164
-MD5 10767a4fc679685d49ae17cf44ba515b modutils-2.4.27.ebuild 1035
-MD5 f9c1fc6910a58e9d13b7ba8c657da022 ChangeLog 7847
-MD5 958a439e80de284a2aace67567bdffc8 modutils-2.4.27-r1.ebuild 1084
-MD5 5428d53f18b5fac287741b23634d84dc files/modutils-2.4.27-alias.patch 2246
-MD5 27a62130de1c51fc678efc0e9ad67ddd files/modutils-2.4.27-flex.patch 805
-MD5 4f6eb067ab56884adab12c53346dc793 files/modutils-2.4.27-no-nested-function.patch 1422
-MD5 8ecc5aa24faa96fe32a15688f3e023ac files/modutils-2.4.27-gcc.patch 6963
-MD5 123430bcca454dfee74acef6f3525a17 files/digest-modutils-2.4.27 68
-MD5 123430bcca454dfee74acef6f3525a17 files/digest-modutils-2.4.27-r1 68
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDP3rUgIKl8Uu19MoRAuZcAJ0V8yZwGIWu4JIj2UC5VEhX68zFYACfQYdp
-YV/Xsq6ErMWxFSxhWMdn8SU=
-=OEbf
------END PGP SIGNATURE-----
+MD5 fbcd19b84c6491fb2c3eb77a2460be47 ChangeLog 4346
+MD5 1dfba4ae6627431a1adcbd0579271064 modutils-2.4.16-r2.ebuild 1472
+MD5 51d2f42ff666784a8ae962ee87648fd3 modutils-2.4.16-r3.ebuild 1200
+MD5 6ea09218232ef8e94e55cffd3c9a2db0 modutils-2.4.19.ebuild 1118
+MD5 e11e3a9dae8bf1e3ff4bb29a09f6979e modutils-2.4.20.ebuild 1033
+MD5 b9ea9245cd3c462aadb4b2ca4ffdb908 modutils-2.4.22.ebuild 1367
+MD5 af4f2c5c8aa6933b39d06cd329ae32c8 modutils-2.4.23.ebuild 1379
+MD5 84533c75db621eeeda1dc7c59bdb3ff8 modutils-2.4.24.ebuild 1314
+MD5 30fd6dec53d7d0c820bdbf2937263b27 modutils-2.4.25.ebuild 1314
+MD5 15611447c25c4be74563a4808c96aa9e files/alias.h.diff 255
+MD5 2a538675787b2c0d36e17a54b7205ada files/digest-modutils-2.4.16-r2 68
+MD5 2a538675787b2c0d36e17a54b7205ada files/digest-modutils-2.4.16-r3 68
+MD5 367a98cfc9d6b4ad4b87dd1a40731082 files/digest-modutils-2.4.19 68
+MD5 93cde80b9a788050c8da89dd00438190 files/digest-modutils-2.4.20 68
+MD5 b6bb8c373b7dd0be26864cac80b0b11f files/digest-modutils-2.4.22 68
+MD5 e2f752d73846ca0f1a0c6bef4e6cea96 files/digest-modutils-2.4.23 68
+MD5 440c0a070f677ba12ecc3a8d59af57c8 files/digest-modutils-2.4.24 195
+MD5 bd23ddb87317bad29c6d70b7f0bfcede files/digest-modutils-2.4.25 68

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>sci</herd>
+<herd>sci-biology</herd>
 <maintainer>
-  <email>ribosome@gentoo.org</email>
-  <name>Olivier Fisette</name>
+  <email>j4rg0n@gentoo.org</email>
 </maintainer>
 <longdescription>
 MrBayes is a program for the Bayesian estimation of phylogeny.

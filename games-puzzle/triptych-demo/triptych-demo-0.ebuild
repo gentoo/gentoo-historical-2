@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/triptych-demo/triptych-demo-0.ebuild,v 1.6 2005/09/26 18:13:36 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/triptych-demo/triptych-demo-0.ebuild,v 1.1 2004/12/08 04:33:58 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="fast-paced tetris-like puzzler"
 HOMEPAGE="http://www.chroniclogic.com/triptych.htm"
@@ -24,22 +24,8 @@ src_install() {
 	local dir=${GAMES_PREFIX_OPT}/${PN}
 	dodir ${dir} ${GAMES_BINDIR}
 
-	cp -pPR * "${D}"/${dir}/
+	cp -a * "${D}"/${dir}/
 	games_make_wrapper triptych ./triptych ${dir}
 
 	prepgamesdirs
-}
-
-pkg_postinst() {
-	games_pkg_postinst
-	# Fix perms on status files #74217
-	local f
-	for f in triptych.{clr,cnt,scr} ; do
-		f="${ROOT}/${GAMES_PREFIX_OPT}/${PN}/${f}"
-		if [[ ! -e ${f} ]] ; then
-			touch "${f}"
-			chmod 660 "${f}"
-			chown ${GAMES_USER}:${GAMES_GROUP} "${f}"
-		fi
-	done
 }

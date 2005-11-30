@@ -1,44 +1,6 @@
 # ChangeLog for app-doc/kchmviewer
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/kchmviewer/ChangeLog,v 1.9 2005/11/29 16:57:12 greg_g Exp $
-
-*kchmviewer-1.3 (29 Nov 2005)
-
-  29 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> +kchmviewer-1.3.ebuild:
-  New version.
-
-*kchmviewer-1.2 (25 Nov 2005)
-
-  25 Nov 2005; Gregorio Guidi <greg_g@gentoo.org> +kchmviewer-1.2.ebuild:
-  New version (#113244).
-
-*kchmviewer-1.1 (30 Oct 2005)
-
-  30 Oct 2005; Carsten Lohrke <carlo@gentoo.org> -kchmviewer-1.0.ebuild,
-  +kchmviewer-1.1.ebuild:
-  version bump
-
-  11 Aug 2005; Luis Medinas <metalgod@gentoo.org> kchmviewer-1.0.ebuild:
-  Added ~amd64 keywords. Closes bug #100682.
-
-*kchmviewer-1.0 (01 Aug 2005)
-
-  01 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> +kchmviewer-1.0.ebuild:
-  New version.
-
-*kchmviewer-0.92 (09 Jul 2005)
-
-  09 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> +kchmviewer-0.92.ebuild:
-  New version (#97467).
-
-  11 Jun 2005; Dominik Stadler <centic@gentoo.org> kchmviewer-0.9.ebuild:
-  Adjust to make use of kde-ebuild-functionality, should fix Bug 91193 and others.
-
-*kchmviewer-0.9 (09 Jun 2005)
-
-  09 Jun 2005; Gregorio Guidi <greg_g@gentoo.org>
-  +files/kchmviewer-0.9-pic.patch, +kchmviewer-0.9.ebuild:
-  New version. Fixes access violations (#95459).
+# $Header: /var/cvsroot/gentoo-x86/app-doc/kchmviewer/ChangeLog,v 1.1 2005/06/06 06:16:31 centic Exp $
 
   06 Jun 2005; Dominik Stadler <centic@gentoo.org> ChangeLog:
   New package, fixes Bug 91193

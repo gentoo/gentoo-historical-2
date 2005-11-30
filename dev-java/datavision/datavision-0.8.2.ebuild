@@ -1,28 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/datavision/datavision-0.8.2.ebuild,v 1.9 2005/10/30 19:44:50 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/datavision/datavision-0.8.2.ebuild,v 1.1 2004/12/04 17:55:01 karltk Exp $
 
 inherit java-pkg
 
 DESCRIPTION="Open Source reporting tool similar to Crystal Reports"
 SRC_URI="mirror://sourceforge/datavision/${P}.tar.gz"
 HOMEPAGE="http://datavision.sourceforge.net/"
-IUSE="doc jikes junit mysql postgres"
+IUSE="doc jikes mysql postgres"
 SLOT="0.8"
 LICENSE="Apache-1.1"
 KEYWORDS="~x86" #karltk: missing some deps for ~amd64 ~ppc"
+DEPEND=">=virtual/jdk-1.4
+	junit?( >=dev-java/junit-3.7 )
+	jikes?( >=dev-java/jikes-1.21 )"
 RDEPEND=">=virtual/jre-1.4
-	>=dev-java/itext-1.02b
+	>=app-text/itext-1.02b
 	>=dev-java/jruby-0.7.0
 	=dev-java/gnu-regexp-1.1*
 	=dev-java/jcalendar-1.2*
 	=dev-java/minml2-0.3*
-	mysql? ( >=dev-java/jdbc-mysql-3.0 )
-	postgres? ( >=dev-java/jdbc2-postgresql-7.3 )"
-DEPEND=">=virtual/jdk-1.4
-	${RDEPEND}
-	junit? ( >=dev-java/junit-3.7 )
-	jikes? ( >=dev-java/jikes-1.21 )"
+	mysql? ( >=jdbc-mysql-3.0 )
+	postgres? ( >=jdbc2-postgresql-7.3 )"
 
 src_unpack() {
 	unpack ${A}
@@ -58,9 +57,13 @@ src_unpack() {
 
 src_compile() {
 	local antflags="jar"
-	use doc && antflags="${antflags} docs"
-	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
-	ant ${antflags} || die "failed too build"
+	if use doc; then
+		antflags="${antflags} docs"
+	fi
+	if use jikes; then
+		antflags="${antflags} -Dbuild.compiler=jikes"
+	fi
+	ant ${antflags}
 }
 
 src_install() {
@@ -68,7 +71,7 @@ src_install() {
 
 	newbin datavision.sh datavision
 
-	dodoc ChangeLog Credits README TODO
+	dodoc COPYING ChangeLog Credits INSTALL README TODO
 	if use doc; then
 		java-pkg_dohtml docs/DataVision/*
 	fi
@@ -76,25 +79,26 @@ src_install() {
 
 pkg_postinst() {
 	einfo "CONFIGURATION NOTES"
-	einfo
+	einfo " "
 	einfo "Make sure your CLASSPATH variable is updated via java-config(1)"
 	einfo "to use your desired JDBC driver."
-	einfo
+	einfo " "
 	einfo "You must then create a database. Run '/usr/bin/${PN}'"
 	einfo "and fill the connection dialog box with your database details."
 
 	if use mysql; then
-		einfo
+		einfo " "
 		einfo "MySQL example:"
 		einfo "Driver class name: com.mysql.jdbc.Driver"
 		einfo "Connection: jdbc:mysql://localhost/database"
 	fi
 
 	if use postgres; then
-		einfo
+		einfo " "
 		einfo "PostgreSQL example:"
 		einfo "Driver class name:org.postgresql.Driver"
 		einfo "Connection: jdbc:postgresql://localhost/database"
 	fi
-	einfo
+	einfo " "
+	einfo " "
 }

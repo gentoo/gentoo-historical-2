@@ -1,28 +1,6 @@
-# ChangeLog for www-servers/tux
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/ChangeLog,v 1.7 2005/03/20 18:47:35 tigger Exp $
-
-  20 Mar 2005; Rob Holland <tigger@gentoo.org> tux-3.2.16-r1.ebuild:
-  fix glib dep
-
-*tux-3.2.16-r1 (26 Sep 2004)
-
-  26 Sep 2004; Mike Frysinger <vapier@gentoo.org> +files/3.2.16-glibc.patch,
-  +tux-3.2.16-r1.ebuild:
-  Add patch to work with newer glibcs #65344 by Canal Vorfeed.
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> tux-2.2.7.ebuild:
-  Fixed ChangeLog header. Added missing IUSE.
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> tux-3.2.16.ebuild:
-  Masked tux-3.2.16.ebuild stable for ppc
-
-  30 Aug 2004; Mike Frysinger <vapier@gentoo.org> +files/3.2.16-gcc34.patch,
-  tux-3.2.16.ebuild:
-  Add a gcc-3.4.x patch #62175 by Andrew Kirilenko.
-
-  31 Aug 2004; David Holm <dholm@gentoo.org> tux-3.2.16.ebuild:
-  Added to ~ppc.
+# ChangeLog for net-www/tux
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/ChangeLog,v 1.1 2004/08/08 19:03:31 stuart Exp $
 
 *tux-2.2.7 (08 Aug 2004)
 

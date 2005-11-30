@@ -1,22 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/dictd-vera/dictd-vera-1.7-r1.ebuild,v 1.10 2005/01/01 12:50:10 eradicator Exp $
+# Michael Conrad Tilstra <michael@gentoo.org> <tadpol@tadpol.org>
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/dictd-vera/dictd-vera-1.7-r1.ebuild,v 1.1 2002/12/03 12:53:51 seemant Exp $
 
 MY_P=vera_${PV}
+S=${WORKDIR}
 DESCRIPTION="V.E.R.A. -- Virtual Entity of Relevant Acronyms for dict"
-HOMEPAGE="http://www.dict.org/"
 SRC_URI="ftp://ftp.dict.org/pub/dict/pre/${MY_P}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
+HOMEPAGE="http://www.dict.org"
 
 DEPEND=">=app-text/dictd-1.5.5"
 
-S=${WORKDIR}
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 sparc sparc64"
 
-src_install() {
+src_install () {
+	dodir /usr/lib/dict
 	insinto /usr/lib/dict
-	doins vera.dict vera.index || die
+	doins vera.dict
+	doins vera.index
 }
+
+# vim: ai et sw=4 ts=4

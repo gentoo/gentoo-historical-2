@@ -1,22 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/i8kutils/i8kutils-1.17-r1.ebuild,v 1.5 2005/04/21 07:13:52 wormo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/i8kutils/i8kutils-1.17-r1.ebuild,v 1.1 2004/03/08 05:28:47 latexer Exp $
 
+S=${WORKDIR}/${P}/
 DESCRIPTION="Dell Inspiron and Latitude utilities"
-HOMEPAGE="http://people.debian.org/~dz/i8k/"
 SRC_URI="http://people.debian.org/~dz/i8k/${P}.tar.bz2"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="-* ~x86 ~amd64"
-IUSE="tcltk"
-
-DEPEND="virtual/libc
+HOMEPAGE="http://people.debian.org/~dz/i8k/"
+DEPEND="virtual/glibc
 	virtual/x11
 	>=dev-lang/tk-8.3.3"
+LICENSE="GPL-2"
+SLOT="0"
+IUSE="tcltk"
+KEYWORDS="~x86 ~amd64 -mips"
+
 
 src_compile() {
-	make all || die
+	local target="all"
+	make ${target} || die
 }
 
 src_install() {
@@ -26,6 +27,7 @@ src_install() {
 	use tcltk && doman i8kmon.1
 	use tcltk && dosym /usr/bin/i8kctl /usr/bin/i8kfan
 	dodoc README.i8kutils
+	dodoc COPYING
 	dodoc i8kmon.conf
 	dodoc Configure.help.i8k
 	docinto examples/

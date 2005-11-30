@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jtds/jtds-0.9.1.ebuild,v 1.4 2005/05/14 21:55:53 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jtds/jtds-0.9.1.ebuild,v 1.1 2004/12/22 23:56:43 karltk Exp $
 
 inherit eutils java-pkg
 
@@ -10,15 +10,15 @@ SRC_URI="mirror://sourceforge/${PN}/${P}-src.zip"
 HOMEPAGE="http://jtds.sourceforge.net"
 LICENSE="LGPL-2.1"
 SLOT="0.9"
-KEYWORDS="x86 amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc jikes"
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip
 	jikes? ( >=dev-java/jikes-1.21 )"
 RDEPEND=">=virtual/jre-1.4
 	>=dev-java/ant-1.6.2
-	=dev-java/crimson-1.1*
-	=dev-java/jcifs-1.1*
+	>=dev-java/crimson-1.1.3
+	>=dev-java/jcifs-1.1.5
 	>=dev-java/jta-1.0.1
 	>=dev-java/junit-3.8"
 

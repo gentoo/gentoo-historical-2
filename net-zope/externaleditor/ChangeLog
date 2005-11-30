@@ -1,55 +1,8 @@
 # ChangeLog for net-zope/externaleditor
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/externaleditor/ChangeLog,v 1.13 2005/05/06 14:54:33 swegener Exp $
-
-  06 May 2005; Sven Wegener <swegener@gentoo.org> externaleditor-0.8.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  02 Apr 2005; Simon Stelling <blubb@gentoo.org> externaleditor-0.8.ebuild:
-  added ~amd64
-
-  19 Mar 2005; Jason Wever <weeve@gentoo.org> externaleditor-0.8.ebuild:
-  Added ~sparc keyword wrt bug #84791.
-
-  24 Sep 2004; Jodok Batlogg <batlogg@gentoo.org>; externaleditor-0.8.ebuild:
-  marked stable
-
-*externaleditor-0.7.2 (11 Sep 2004)
-
-  11 Sep 2004; Heinrich Wendel <lanius@gentoo.org>
-  externaleditor-0.7-r1.ebuild, +externaleditor-0.7.2.ebuild:
-  version bump; mark 0.7-r1 stable on x86
-
-*externaleditor-0.8 (27 Jul 2004)
-
-  27 Jul 2004; Jodok Batlogg <batlogg@gentoo.org>; -externaleditor-0.5.ebuild,
-  externaleditor-0.7-r1.ebuild, -externaleditor-0.7.ebuild,
-  +externaleditor-0.8.ebuild:
-  version bump, removed old ebuild, added IUSE
-
-*externaleditor-0.7-r1 (22 Jan 2004)
-
-  22 Jan 2004; Heinrich Wendel <lanius@gentoo.org>
-  externaleditor-0.7-r1.ebuild:
-  separate zopeedit as extra ebuild
-
-  10 Oct 2003; Robin H. Johnson <robbat2@gentoo.org>
-  externaleditor-0.7.ebuild:
-  fix RDEPEND
-
-*externaleditor-0.7 (10 Oct 2003)
-
-  10 Oct 2003; Robin H. Johnson <robbat2@gentoo.org>
-  externaleditor-0.7.ebuild:
-  version bump and major revision of ebuild
-
-  12 Jun 2003; <msterret@gentoo.org> externaleditor-0.5.ebuild:
-  fix Header
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-zope/externaleditor/ChangeLog,v 1.1 2003/03/29 23:28:07 kutsuya Exp $
 
 *externaleditor-0.5 (29 Mar 2003)
-
-  03 Apr 2003; Jason Shoemaker <kutsuya@gentoo.org> externaleditor-0.5.ebuild:
-  ~x86 -> x86
 
   29 Mar 2003; Jason Shoemaker <kutsuya@gentoo.org> externaleditor-0.5.ebuild:
   Initial import. #16307

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 Alexander Holler
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/nqc/nqc-2.5.1.ebuild,v 1.9 2005/06/05 12:22:47 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/nqc/nqc-2.5.1.ebuild,v 1.1 2003/06/21 07:03:06 george Exp $
 
 My_PV="`echo $PV|cut -d. -f1,2`.r`echo $PV|cut -d. -f3`"
 My_P="${PN}-${My_PV}"
@@ -11,10 +11,10 @@ HOMEPAGE="http://www.baumfamily.org/nqc/"
 
 SLOT="0"
 LICENSE="MPL-1.0"
-KEYWORDS="ppc x86"
+KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_compile() {
 	${#NQC_SERIAL} && NQC_SERIAL="/dev/ttyS0"
@@ -29,7 +29,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "To change the default serial name for nqc (/dev/ttyS0) set"
-	einfo "the environment variable NQC_SERIAL and reemerge nqc, e.g.:"
-	einfo " NQC_SERIAL='/dev/ttyS1' emerge nqc"
+	einfo "***************************************************************"
+	einfo "* To change the default serial name for nqc (/dev/ttyS0)set   *"
+	einfo "* the environment variable NQC_SERIAL and reemerge nqc, e.g.: *"
+	einfo "*  NQC_SERIAL='/dev/ttyS1' emerge nqc                         *"
+	einfo "***************************************************************"
 }

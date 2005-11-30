@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gtkwave/gtkwave-1.3.72.ebuild,v 1.3 2005/11/10 23:54:10 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-electronics/gtkwave/gtkwave-1.3.72.ebuild,v 1.1 2005/10/11 14:26:22 chrb Exp $
 
 inherit eutils
 
@@ -14,8 +14,8 @@ SLOT="0"
 KEYWORDS="~x86 ~sparc ~ppc"
 
 DEPEND="virtual/x11
-	>=x11-libs/gtk+-2
-	>=dev-libs/glib-2
+	>=x11-libs/gtk+-2*
+	>=dev-libs/glib-2*
 	app-arch/bzip2"
 
 #S=${WORKDIR}/${MY_P}
@@ -36,5 +36,4 @@ src_install() {
 	emake prefix=${D} install || die
 	dodoc AUTHORS ChangeLog README
 	dohtml -r doc/*
-	mv ${D}/bin ${D}/usr/bin
 }

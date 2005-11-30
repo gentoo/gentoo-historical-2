@@ -1,31 +1,6 @@
 # ChangeLog for net-irc/epic5
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/epic5/ChangeLog,v 1.7 2005/07/08 06:51:43 dholm Exp $
-
-  08 Jul 2005; David Holm <dholm@gentoo.org> epic5-0.0.5.ebuild:
-  Added to ~ppc.
-
-*epic5-0.0.5 (07 Jul 2005)
-
-  07 Jul 2005; Sven Wegener <swegener@gentoo.org> -epic5-0.0.4.ebuild,
-  +epic5-0.0.5.ebuild:
-  Version bump.
-
-  22 Apr 2005; Alin Nastac <mrness@gentoo.org> epic5-0.0.4.ebuild:
-  net-misc/dante -> net-proxy/dante
-
-*epic5-0.0.4 (10 Apr 2005)
-
-  10 Apr 2005; Sven Wegener <swegener@gentoo.org>
-  -files/0.0.3-ipv6-fix.patch, -epic5-0.0.3.ebuild, +epic5-0.0.4.ebuild:
-  Version bump.
-
-*epic5-0.0.3 (17 Feb 2005)
-
-  17 Feb 2005; Sven Wegener <swegener@gentoo.org>
-  -files/0.0.2-segfault-fix.patch, +files/0.0.3-ipv6-fix.patch,
-  -epic5-0.0.2.ebuild, +epic5-0.0.3.ebuild:
-  Version bump.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/epic5/ChangeLog,v 1.1 2004/06/20 02:30:19 swegener Exp $
 
 *epic5-0.0.2 (20 Jun 2004)
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/thinktanksdemo/thinktanksdemo-1.1.ebuild,v 1.6 2005/09/21 20:30:00 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/thinktanksdemo/thinktanksdemo-1.1.ebuild,v 1.1 2003/10/07 15:51:49 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="tank combat game with lighthearted, fast paced pandemonium"
 HOMEPAGE="http://garagegames.com/pg/product/view.php?id=12"
@@ -10,15 +10,14 @@ SRC_URI="ftp://ggdev-1.homelan.com/thinktanks/ThinkTanksDemo_v${PV}.sh.bin"
 
 LICENSE="THINKTANKS"
 SLOT="0"
-KEYWORDS="-* x86 ~amd64"
-IUSE=""
+KEYWORDS="-* x86"
 
 DEPEND=""
 
 S=${WORKDIR}
 
 pkg_setup() {
-	check_license THINKTANKS
+	check_license
 	games_pkg_setup
 }
 

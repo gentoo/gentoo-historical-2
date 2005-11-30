@@ -1,28 +1,6 @@
 # ChangeLog for app-emulation/emul-linux-x86-medialibs
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-medialibs/ChangeLog,v 1.5 2005/11/01 15:53:01 dang Exp $
-
-  01 Nov 2005; <dang@gentoo.org> +emul-linux-x86-medialibs-1.2.ebuild:
-  New rev of medialibs with lirc client lib
-
-*emul-linux-x86-medialibs-1.2 (01 Nov 2005)
-
-  01 Nov 2005; <dang@gentoo.org> +emul-linux-x86-medialibs-1.2.ebuild:
-  New rev of medialibs with lirc client lib
-
-  16 Oct 2005; <dang@gentoo.org> emul-linux-x86-medialibs-1.1-r1.ebuild:
-  Marked stable on amd64
-
-*emul-linux-x86-medialibs-1.1-r1 (06 Sep 2005)
-
-  06 Sep 2005; Herbie Hopkins <herbs@gentoo.org>
-  +emul-linux-x86-medialibs-1.1-r1.ebuild:
-  Don't install libesd so as not to confict with new soundlibs.
-
-*emul-linux-x86-medialibs-1.1 (31 Aug 2005)
-
-  31 Aug 2005; <dang@gentoo.org> +emul-linux-x86-medialibs-1.1.ebuild:
-  Bump to add new libs needed by mplayer-bin-1.0_pre7-r1
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/emul-linux-x86-medialibs/ChangeLog,v 1.1 2005/08/29 23:54:05 dang Exp $
 
 *emul-linux-x86-medialibs-1.0 (29 Aug 2005)
 

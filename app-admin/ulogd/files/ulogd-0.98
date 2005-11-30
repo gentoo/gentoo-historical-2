@@ -7,11 +7,10 @@
 # config:  /usr/local/etc/ulogd.conf
 
 
-opts="${opts} reload"
+#opts="start stop restart status"
 
 depend() {
 	need net
-    use mysql
 }
 
 initService() {
@@ -40,7 +39,9 @@ stop() {
 
 reload() {
 	initService
-	ebegin "Reloading ulogd.conf file"
-	killall -HUP ulogd
-	eend $?
+        ebegin "Reloading ulogd.conf file"
+	killproc ulogd -HUP
+	RETVAL=$?
+	echo
+	return $RETVAL
 }	

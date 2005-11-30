@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cgkit/cgkit-1.1.0.ebuild,v 1.3 2005/02/12 11:17:07 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cgkit/cgkit-1.1.0.ebuild,v 1.1 2004/07/30 08:55:49 chrb Exp $
 
 inherit distutils
 
@@ -12,7 +12,7 @@ DEPEND="dev-lang/python
 	dev-python/pyrex"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="doc"
 
 src_install () {

@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_gzip/mod_gzip-1.3.26.1a-r1.ebuild,v 1.11 2005/01/08 21:29:07 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_gzip/mod_gzip-1.3.26.1a-r1.ebuild,v 1.1 2003/10/08 00:57:51 woodchip Exp $
 
 DESCRIPTION="Apache module which acts as an Internet Content Accelerator"
 HOMEPAGE="http://sourceforge.net/projects/mod-gzip/"
-KEYWORDS="x86 sparc alpha ppc"
+KEYWORDS="x86 ~sparc ~alpha"
 
-SRC_URI="mirror://sourceforge/mod-gzip/mod_gzip-${PV}.tgz"
+S=${WORKDIR}/${P}
+SRC_URI="http://unc.dl.sourceforge.net/sourceforge/mod-gzip/mod_gzip-${PV}.tgz"
 
 DEPEND="=net-www/apache-1* >=sys-libs/zlib-1.1.4"
 LICENSE="Apache-1.1"
 SLOT="0"
-IUSE=""
 
 src_unpack() {
 	unpack ${A} || die
@@ -35,7 +35,7 @@ src_install() {
 
 pkg_postinst() {
 	einfo
-	einfo "Execute \"ebuild /var/db/pkg/net-www/${PF}/${PF}.ebuild config\""
+	einfo "Execute \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 	einfo "to have your apache.conf auto-updated for use with this module."
 	einfo "You should then edit your /etc/conf.d/apache file to suit."
 	einfo

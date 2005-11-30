@@ -1,10 +1,9 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/files/ntp-client.rc,v 1.8 2005/05/14 19:12:04 vapier Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License v2         
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/files/ntp-client.rc,v 1.1 2003/08/06 07:42:24 vapier Exp $
 
 depend() {
-	before cron portmap
 	need net
 	use dns logger
 }
@@ -26,10 +25,7 @@ checkconfig() {
 start() {
 	checkconfig || return $?
 
-	ebegin "Setting clock via the NTP client '${NTPCLIENT_CMD}'"
-	${NTPCLIENT_CMD} ${NTPCLIENT_OPTS} >/dev/null &
-	local pid=$!
-	(sleep ${NTPCLIENT_TIMEOUT:-30}; kill -9 ${pid} >&/dev/null) &
-	wait ${pid}
+	ebegin "Setting clock via the ntp client '${NTPCLIENT_CMD}'"
+	${NTPCLIENT_CMD} >/dev/null ${NTPCLIENT_OPTS}
 	eend $? "Failed to set clock"
 }

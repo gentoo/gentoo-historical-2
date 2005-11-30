@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libgphoto2/libgphoto2-2.1.6.ebuild,v 1.11 2005/09/03 20:54:05 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libgphoto2/libgphoto2-2.1.6.ebuild,v 1.1 2005/06/24 14:58:39 liquidx Exp $
 
 inherit libtool eutils
 
@@ -10,17 +10,15 @@ SRC_URI="mirror://sourceforge/gphoto/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
-IUSE="nls doc exif nousb jpeg"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~ia64 ~ppc64 ~alpha"
+IUSE="nls doc jpeg nousb"
 
 # needs >usbutils-0.11-r2 to avoid /usr/lib/libusb*
 # conflicts with dev-libs/libusb
-RDEPEND="!nousb? (
-		>=dev-libs/libusb-0.1.8
-		>=sys-apps/usbutils-0.11-r2
-		sys-apps/hotplug
-	)
-	exif? ( >=media-libs/libexif-0.5.9 )"
+RDEPEND="!nousb? (>=dev-libs/libusb-0.1.8
+	>=sys-apps/usbutils-0.11-r2
+	sys-apps/hotplug)
+	jpeg? ( >=media-libs/libexif-0.5.9 )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	doc? ( dev-util/gtk-doc )"
@@ -39,8 +37,6 @@ pkg_setup() {
 		ewarn "via the CAMERAS variable what camera you use."
 		einfo "libgphoto2 supports: all ${IUSE_CAMERAS}"
 	fi
-	echo
-	use jpeg && ewarn "For 'exif' support, you need to set USE=exif"
 }
 
 src_unpack() {
@@ -66,7 +62,7 @@ src_compile() {
 
 	myconf="--with-rpmbuild=/bin/false"
 	myconf="--with-drivers=${cameras}"
-	use exif \
+	use jpeg \
 		&& myconf="${myconf} --with-exif-prefix=/usr" \
 		|| myconf="${myconf} --without-exif"
 	myconf="${myconf} `use_enable nls`"

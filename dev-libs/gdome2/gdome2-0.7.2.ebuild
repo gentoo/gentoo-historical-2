@@ -1,22 +1,24 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/gdome2/gdome2-0.7.2.ebuild,v 1.13 2004/09/03 15:30:16 pvdabeel Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/gdome2/gdome2-0.7.2.ebuild,v 1.1 2002/07/09 21:33:12 blizzy Exp $
 
 DESCRIPTION="The DOM C library for the GNOME project"
 HOMEPAGE="http://phd.cs.unibo.it/gdome2/"
 SRC_URI="http://phd.cs.unibo.it/gdome2/tarball/${P}.tar.gz"
-
+LICENSE="LPGL-2.1"
 SLOT="0"
-LICENSE="LGPL-2.1"
-KEYWORDS="x86 sparc ppc"
-IUSE=""
+KEYWORDS="x86"
 
 RDEPEND=">=dev-libs/libxml2-2.4.21
 	>=dev-libs/glib-1.2.10"
+DEPEND="${RDEPEND}"
 
 src_compile() {
-	econf \
-		--with-html-dir=${D}/usr/share/doc || die "configure problem"
+	./configure --host=${CHOST} \
+		--prefix=/usr \
+		--with-html-dir=${D}/usr/doc \
+	|| die "configure problem"
+
 	emake || die "compile problem"
 }
 

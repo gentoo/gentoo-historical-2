@@ -1,23 +1,6 @@
-# ChangeLog for games-action/barrage
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/barrage/ChangeLog,v 1.8 2005/05/31 09:09:54 cryos Exp $
-
-  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> barrage-1.0.2.ebuild:
-  Stable on amd64.
-
-*barrage-1.0.2 (14 Feb 2005)
-
-  14 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> +barrage-1.0.2.ebuild:
-  version bump
-
-  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> barrage-1.0.1.ebuild:
-  Marked ~amd64.
-
-  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> barrage-1.0.1.ebuild:
-  Added IUSE.
-
-  25 Sep 2003; Chuck Short <zul@gentoo.org> barrage-1.0.1.ebuild:
-  Added sparc to keywords.
+# ChangeLog for app-games/barrage
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/barrage/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
 *barrage-1.0.1 (06 Aug 2003)
 

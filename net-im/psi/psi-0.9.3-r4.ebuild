@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.9.3-r4.ebuild,v 1.14 2005/11/11 13:54:57 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.9.3-r4.ebuild,v 1.1 2005/06/26 15:02:24 humpback Exp $
 
-inherit eutils qt3
+inherit eutils
 
 VER="${PV}"
 REV=""
@@ -48,15 +48,13 @@ SRC_URI="mirror://sourceforge/psi/${MY_P}.tar.bz2
 
 SLOT="0"
 LICENSE="GPL-2"
-#Amd64 devs: I now have a x86 and amd64 boxes so I can now test
-#and mark on both arches
-KEYWORDS="~alpha amd64 hppa ppc ~ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~hppa ~amd64 ~sparc"
 
 #After final relase we do not need this
 S="${WORKDIR}/${MY_P}"
 
 DEPEND=">=app-crypt/qca-1.0-r2
-	$(qt_min_version 3.3)"
+	>=x11-libs/qt-3.3.1"
 
 RDEPEND="ssl? ( >=app-crypt/qca-tls-1.0-r2 )
 		crypt? ( >=app-crypt/gnupg-1.2.2 )"
@@ -73,23 +71,23 @@ src_unpack() {
 		epatch ${FILESDIR}/psi-desktop_file_and_icons_directories.patch
 		epatch ${FILESDIR}/psi-reverse_trayicon.patch
 
-		if ! use extras ; then
+		if !(use extras); then
 			ewarn "You are going to install the original psi version. You might want to"
 			ewarn "try the version with extra unsuported patches by adding 'extras' to"
 			ewarn "your use flags."
 		else
+			ebeep
 			ewarn "You are about to build a version of Psi with extra unsuported patches."
 			ewarn "Patched psi versions will not be supported by the Gentoo devs or the psi"
 			ewarn "development team."
 			ewarn "If you do not want that please press Control-C now and add '-extras' to "
 			ewarn "your USE flags."
-			ebeep
 			epause 10
 
 			cd ${S}
 			# roster-nr
 			epatch ${PATCHDIR}/psi-roster-nr-0.7.patch
-			epatch ${FILESDIR}/psi-status_indicator++_add-on_roster-nr.patch
+			epatch ${PATCHDIR}/psi-status_indicator++_add-on_roster-nr.patch
 			# indicator icon
 			cp ${FILESDIR}/psi-indicator.png ${S}/iconsets/roster/default/indicator.png
 
@@ -160,7 +158,7 @@ src_unpack() {
 			epatch ${PATCHDIR}/hide-no-resource-from-contextmenu.diff
 
 			# from bugs.gentoo.org
-			epatch ${FILESDIR}/psi-add-status-history.patch
+			epatch ${PATCHDIR}/psi-add-status-history.patch
 
 			# from http://www.uni-bonn.de/~nieuwenh/
 			epatch ${PATCHDIR}/libTeXFormula.diff
@@ -176,7 +174,7 @@ src_unpack() {
 			epatch ${PATCHDIR}/checkboxes-sound-options.diff
 			epatch ${PATCHDIR}/psi-history_lug.patch
 			epatch ${PATCHDIR}/psi-cli-v2_gentoo.diff
-			epatch ${FILESDIR}/vcard-photo-interface.patch
+			epatch ${PATCHDIR}/vcard-photo-interface.patch
 			epatch ${PATCHDIR}/psi-history-deletion-bugfix.patch
 
 			# from http://tleilax.if.pw.edu.pl/~myak/
@@ -209,7 +207,7 @@ src_compile() {
 	use kde || myconf="${myconf} --disable-kde"
 	./configure --prefix=/usr $myconf || die "Configure failed"
 	# for CXXFLAGS from make.conf
-	${QTDIR}/bin/qmake psi.pro \
+	qmake psi.pro \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		QMAKE_RPATH= \
 		|| die "Qmake failed"
@@ -221,7 +219,7 @@ src_compile() {
 	einfo "Building language packs"
 	cd ${WORKDIR}/langs
 	for i in `ls -c1 | grep "\.ts$"` ; do
-		${QTDIR}/bin/lrelease $i
+		lrelease $i
 	done;
 }
 

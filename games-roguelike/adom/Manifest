@@ -1,4 +1,3 @@
-MD5 b4170d6d958e45f45d4684adeeccb952 adom-1.1.1-r1.ebuild 877
-MD5 ea59828fa76ae572475a01fa86108f45 ChangeLog 857
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 d070375db255e71a004c837e89f7969c files/digest-adom-1.1.1-r1 65
+MD5 34b564d4ab84239b6709486db40bba12 ChangeLog 370
+MD5 4ccf472dd16e31ac44de839cd815fb4e adom-1.1.1.ebuild 796
+MD5 d070375db255e71a004c837e89f7969c files/digest-adom-1.1.1 65

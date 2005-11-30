@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/culmus-0.100-r1.ebuild,v 1.7 2005/08/24 00:01:36 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/culmus/culmus-0.100-r1.ebuild,v 1.1 2004/06/14 10:41:32 coronalvr Exp $
 
 DESCRIPTION="Hebrew Type1 fonts"
 SRC_URI="mirror://sourceforge/culmus/${P}.tar.gz
@@ -11,17 +11,17 @@ SRC_URI="mirror://sourceforge/culmus/${P}.tar.gz
 	http://culmus.sourceforge.net/fancy/comix.tar.gz
 	http://culmus.sourceforge.net/fancy/ktav-yad.tar.gz"
 HOMEPAGE="http://culmus.sourceforge.net/"
-KEYWORDS="x86 ppc ~amd64 alpha"
+KEYWORDS="~x86 ~ppc"
 SLOT="0"
-LICENSE="|| ( GPL-2 LICENSE-BITSTREAM )"
+LICENSE="GPL-2 | LICENSE-BITSTREAM"
 IUSE=""
 
 FONTPATH="/usr/share/fonts/${PN}"
 
 src_install () {
 	dodir ${FONTPATH}
-	cp -pPR * ${D}${FONTPATH}
-	cp -pPR ${WORKDIR}/*.{afm,pfa}  ${D}${FONTPATH}
+	cp -a * ${D}${FONTPATH}
+	cp -a ${WORKDIR}/*.{afm,pfa}  ${D}${FONTPATH}
 	rm ${D}${FONTPATH}/{CHANGES,LICENSE,LICENSE-BITSTREAM,GNU-GPL,culmus.spec}
 	dodoc CHANGES LICENSE LICENSE-BITSTREAM
 }

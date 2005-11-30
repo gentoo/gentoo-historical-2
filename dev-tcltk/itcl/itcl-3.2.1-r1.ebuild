@@ -1,26 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itcl/itcl-3.2.1-r1.ebuild,v 1.12 2005/04/21 19:05:02 hansmi Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/itcl/itcl-3.2.1-r1.ebuild,v 1.1 2004/03/08 04:17:20 robbat2 Exp $
 
 MY_P=${PN}${PV}
 S=${WORKDIR}/${MY_P}
+
 DESCRIPTION="Object Oriented Enhancements for Tcl/Tk"
-HOMEPAGE="http://www.tcltk.com/${PN}/"
 SRC_URI="mirror://sourceforge/incrtcl/${MY_P}_src.tgz"
+HOMEPAGE="http://www.tcltk.com/${PN}/"
 
-LICENSE="as-is BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-IUSE=""
-
+LICENSE="as-is BSD"
+KEYWORDS="~x86 ~ppc ~sparc"
 DEPEND="dev-lang/tk"
 PDEPEND="dev-tcltk/iwidgets"
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/${P}-gentoo.diff
+	epatch ${FILESDIR}/${PF}-gentoo.diff
 	# fix an undefined const glitch for Tcl8.3
 	sed -i '1004h;1004d;1006G' ${S}/itcl/generic/itcl_class.c
 }

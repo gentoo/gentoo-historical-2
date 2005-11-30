@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/razor-2.67.ebuild,v 1.6 2005/11/28 13:04:50 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/razor/razor-2.67.ebuild,v 1.1 2004/12/16 01:13:53 superlag Exp $
 
-inherit perl-app eutils
+inherit perl-module eutils
 IUSE=""
 DESCRIPTION="Vipul's Razor is a distributed, collaborative spam detection and filtering network"
 HOMEPAGE="http://razor.sourceforge.net/"
@@ -14,8 +14,8 @@ S=${WORKDIR}/razor-agents-${PV}
 
 RDEPEND="dev-lang/perl
 	dev-perl/Net-DNS
-	perl-core/net-ping
-	perl-core/Time-HiRes
+	dev-perl/net-ping
+	dev-perl/Time-HiRes
 	dev-perl/Digest-SHA1
 	dev-perl/URI
 	dev-perl/Digest-Nilsimsa"
@@ -39,7 +39,7 @@ pkg_postinst() {
 	einfo "mechanism. Registration is done with razor-admin -register. It has to be"
 	einfo "manually invoked in either of the following ways:"
 	einfo ""
-	einfo "To register user foo with 's1kr3t' as password: "
+	einfo "To register user foo with 's1kret' as password: "
 	einfo ""
 	einfo "razor-admin -register -user=foo -pass=s1kr3t"
 	einfo ""

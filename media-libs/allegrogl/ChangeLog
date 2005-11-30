@@ -1,24 +1,6 @@
 # ChangeLog for media-libs/allegrogl
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/allegrogl/ChangeLog,v 1.6 2005/03/12 16:08:40 wolf31o2 Exp $
-
-*allegrogl-0.2.4-r1 (12 Mar 2005)
-
-  12 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  +files/allegrogl-0.2.4-noasm.patch, +allegrogl-0.2.4-r1.ebuild:
-  Added noasm patch from bug #79923 by darkepaw@users.sourceforge.net and
-  resolving the bug.
-
-  18 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  allegrogl-0.2.4.ebuild:
-  Added installation of examples based on doc USE flag and closing bug #76945.
-
-  18 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> allegrogl-0.2.4.ebuild:
-  amd64 needs stable allegro first; tidy
-
-  17 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  allegrogl-0.2.4.ebuild:
-  Stable amd64, x86.  Added to ~sparc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-libs/allegrogl/ChangeLog,v 1.1 2004/10/15 09:40:12 eradicator Exp $
 
 *allegrogl-0.2.4 (15 Oct 2004)
 

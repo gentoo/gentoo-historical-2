@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/alsa-utils-1.0.9a-r1.ebuild,v 1.5 2005/10/10 21:55:16 vapier Exp $
-
-inherit eutils flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-utils/alsa-utils-1.0.9a-r1.ebuild,v 1.1 2005/08/13 13:32:20 chainsaw Exp $
 
 DESCRIPTION="Advanced Linux Sound Architecture Utils (alsactl, alsamixer, etc.)"
 HOMEPAGE="http://www.alsa-project.org/"
 SRC_URI="mirror://alsaproject/utils/${P}.tar.bz2"
+
+inherit flag-o-matic
 
 LICENSE="GPL-2"
 SLOT="0.9"
@@ -18,12 +18,6 @@ DEPEND=">=sys-libs/ncurses-5.1
 	>=media-libs/alsa-lib-1.0.9"
 RDEPEND="${DEPEND}
 	sys-apps/pciutils"
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-strsignal.patch #103189
-}
 
 src_compile() {
 	# Largefile support, bug #91056
@@ -45,10 +39,12 @@ src_install() {
 	dodoc ${ALSA_UTILS_DOCS}
 	newdoc alsamixer/README README.alsamixer
 
-	newconfd ${FILESDIR}/alsasound.confd alsasound
+	insinto /etc/conf.d
+	newins ${FILESDIR}/alsasound.confd alsasound
 	insinto /etc/modules.d
 	newins ${FILESDIR}/alsa-modules.conf-rc alsa
-	doinitd ${FILESDIR}/alsasound
+	exeinto /etc/init.d
+	doexe ${FILESDIR}/alsasound
 }
 
 pkg_postinst() {

@@ -1,7 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/virtuals,v 1.7 2005/11/19 03:18:44 redhatter Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/virtuals,v 1.1 2004/09/23 05:38:34 kumba Exp $
 
-virtual/alsa				sys-kernel/mips-sources
+# Virtuals
+virtual/bootloader		sys-boot/dvhtool
+virtual/cron			sys-apps/vixie-cron
+virtual/kernel			sys-kernel/mips-headers
 virtual/linux-sources		sys-kernel/mips-sources
-virtual/os-headers			sys-kernel/mips-headers
+virtual/logger			app-admin/sysklogd
+virtual/modutils		sys-apps/module-init-tools
+virtual/os-headers		sys-kernel/mips-headers
+virtual/mailx			mail-client/mailx
+
+
+# Package Remapping
+sys-apps/reiserfs-utils		sys-fs/reiserfsprogs

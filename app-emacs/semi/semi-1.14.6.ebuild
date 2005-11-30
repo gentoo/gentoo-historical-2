@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/semi/semi-1.14.6.ebuild,v 1.11 2005/07/01 18:14:57 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/semi/semi-1.14.6.ebuild,v 1.1 2003/12/25 12:19:51 usata Exp $
 
-inherit elisp eutils
+inherit elisp
 
 IUSE=""
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.m17n.org/pub/mule/semi/semi-1.14-for-flim-1.14/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ppc ppc-macos sparc x86"
+KEYWORDS="~x86 ~alpha ~sparc ~ppc"
 
 DEPEND="virtual/emacs
 	>=app-emacs/apel-10.6
@@ -20,20 +20,12 @@ DEPEND="virtual/emacs
 	!virtual/semi"
 
 PROVIDE="virtual/semi"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PN}-info.patch
-}
+S="${WORKDIR}/${P}"
 
 src_compile() {
 	make PREFIX=${D}/usr \
 		LISPDIR=${D}/${SITELISP} \
 		VERSION_SPECIFIC_LISPDIR=${D}/${SITELISP} || die
-
-	emacs -batch -q --no-site-file -l ${FILESDIR}/comp.el \
-		|| die "compile info failed"
 }
 
 src_install() {
@@ -44,5 +36,17 @@ src_install() {
 	elisp-site-file-install ${FILESDIR}/65semi-gentoo.el
 
 	dodoc README* ChangeLog VERSION NEWS
-	doinfo *.info
+}
+
+pkg_postinst() {
+	elisp-site-regen
+
+	einfo
+	einfo "Please unmerge another versions or variants, if installed."
+	einfo "You need to rebuild packages depending on ${PN}."
+	einfo
+}
+
+pkg_postrm() {
+	elisp-site-regen
 }

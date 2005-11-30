@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6-r1.ebuild,v 1.3 2005/09/03 22:20:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6-r1.ebuild,v 1.1 2005/07/09 22:49:03 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -18,20 +18,12 @@ RDEPEND="sys-process/cronbase
 	>=sys-apps/groff-1.18
 	nls? ( sys-devel/gettext )"
 
-pkg_setup() {
-	enewgroup man 15
-	enewuser man 13 -1 /usr/share/man man
-}
-
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
 	# Make sure we can build with -j :)
 	epatch "${FILESDIR}"/man-1.6-parallel-make.patch
-
-	# We love to cross-compile
-	epatch "${FILESDIR}"/man-1.6-cross-compile.patch
 
 	# Fix message order in en lang file which triggers segv's for
 	# non-english users #97541

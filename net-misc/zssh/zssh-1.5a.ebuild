@@ -1,22 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/zssh/zssh-1.5a.ebuild,v 1.10 2005/04/20 22:09:25 mrness Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-misc/zssh/zssh-1.5a.ebuild,v 1.1 2002/12/12 16:39:58 phoenix Exp $
 
 inherit eutils
 
+IUSE=""
+S=${WORKDIR}/${P}
 DESCRIPTION="A ssh wrapper enabling zmodem up/download in ssh"
+SRC_URI="ftp://ftp.sourceforge.net/pub/sourceforge/zssh/zssh-1.5a.tgz"
 HOMEPAGE="http://zssh.sourceforge.net/"
-SRC_URI="mirror://sourceforge/zssh/${P}.tgz"
-
+KEYWORDS="~x86 sparc sparc64"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc"
-IUSE="readline nls"
 
-DEPEND="virtual/libc"
-RDEPEND="${DEPEND}
-	 net-misc/openssh
-	 net-dialup/lrzsz"
+DEPEND="virtual/glibc"
+RDEPEND="virtual/glibc 
+	 net-misc/openssh 
+	 net-misc/lrzsz"
 
 src_unpack() {
 	unpack ${A}
@@ -26,15 +26,26 @@ src_unpack() {
 }
 
 src_compile() {
-	econf \
-		`use_enable nls` \
-		`use_enable readline` || die
+	local options
 
+	use nls || options="${options} --disable-nls"
+	use readline || options="${options} --disable-readline"
+
+	./configure	\
+		--prefix=/usr	\
+		--host=${CHOST}	\
+		${options} || die
+	
 	emake || die
 }
 
 src_install() {
-	dobin zssh ztelnet
-	doman zssh.1 ztelnet.1
+	doman zssh.1
+	doman ztelnet.1
+
+	dobin zssh
+	dobin ztelnet
+
 	dodoc CHANGES FAQ README TODO
 }
+

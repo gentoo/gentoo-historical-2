@@ -1,18 +1,6 @@
 # ChangeLog for dev-tcltk/tcl-gtk
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tcl-gtk/ChangeLog,v 1.5 2005/08/29 19:45:38 dang Exp $
-
-  29 Aug 2005; <dang@gentoo.org> tcl-gtk-0.08.ebuild:
-  Marked ~amd64
-
-  15 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> tcl-gtk-0.08.ebuild:
-  tidy
-
-  26 Aug 2004; Doug Goldstein <cardoe@gentoo.org> tcl-gtk-0.08.ebuild:
-  Added depend on vte-0.11.11 to make it build properly on some systems
-
-  25 Aug 2004; Doug Goldstein <cardoe@gentoo.org> tcl-gtk-0.08.ebuild:
-  meant emake not make
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-tcltk/tcl-gtk/ChangeLog,v 1.1 2004/08/25 06:27:34 cardoe Exp $
 
 *tcl-gtk-0.08 (25 Aug 2004)
 

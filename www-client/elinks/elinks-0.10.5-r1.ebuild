@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/elinks/elinks-0.10.5-r1.ebuild,v 1.4 2005/10/23 14:41:23 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/elinks/elinks-0.10.5-r1.ebuild,v 1.1 2005/09/19 00:51:24 spock Exp $
 
 inherit eutils
 
@@ -19,7 +19,7 @@ KEYWORDS="~alpha ~amd64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
 
 DEPEND="virtual/libc
 	>=dev-libs/expat-1.95.4
-	bzip2? ( >=app-arch/bzip2-1.0.2 )
+	bzip2 ( >=app-arch/bzip2-1.0.2 )
 	ssl? ( >=dev-libs/openssl-0.9.6g )
 	X? ( virtual/x11 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
@@ -40,10 +40,6 @@ src_unpack() {
 	unpack ${A}
 	cd ${WORKDIR}
 	mv "${PN}-0.10.4.conf" "${PN}.conf"
-	if ! use ftp ; then
-		sed -i -e 's/\(.*protocol.ftp.*\)/# \1/' ${PN}.conf
-	fi
-
 	use ppc-macos && epatch ${FILESDIR}/${PN}-osx-configure.diff
 }
 
@@ -105,9 +101,8 @@ src_install() {
 	# are more or less the same.  -- Fabian Groffen (2005-06-30)
 	if use ppc-macos; then
 		rm -f ${D}/usr/lib/charset.alias
+		rm -f ${D}/usr/share/locale/locale.alias
 	fi
-
-	rm -f ${D}/usr/share/locale/locale.alias
 }
 
 # Disable it as the only test available is interactive..

@@ -1,19 +1,6 @@
 # ChangeLog for net-misc/smbc
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/smbc/ChangeLog,v 1.4 2005/03/11 14:20:34 dholm Exp $
-
-  11 Mar 2005; David Holm <dholm@gentoo.org> smbc-1.1.2.ebuild:
-  Added to ~ppc.
-
-*smbc-1.1.2 (03 Mar 2005)
-
-  03 Mar 2005; <mglauche@gentoo.org> +smbc-1.1.2.ebuild:
-  Version bump, thanks to Maciej Milewski <milu@data.pl> for the info.
-
-*smbc-1.0.0-r1 (20 Dec 2004)
-
-  20 Dec 2004; Christian Andreetta <satya@gentoo.org> +smbc-1.0.0-r1.ebuild:
-  two new iuse: debug and nls
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/smbc/ChangeLog,v 1.1 2004/12/20 10:34:06 satya Exp $
 
 *smbc-1.0.0 (20 Dec 2004)
 

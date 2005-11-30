@@ -1,23 +1,6 @@
 # ChangeLog for dev-util/mono-tools
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/mono-tools/ChangeLog,v 1.5 2005/11/27 22:52:34 compnerd Exp $
-
-  27 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
-  +files/mono-tools-1.1.10-fix-desktop-entry.patch,
-  mono-tools-1.1.10.ebuild:
-  Fixing desktop entry creation.
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org> mono-tools-1.1.10.ebuild:
-  Marked ~ppc for bug #109401.
-
-  14 Nov 2005; Herbie Hopkins <herbs@gentoo.org> mono-tools-1.1.10.ebuild:
-  Add multilib fixes and mark ~amd64 wrt bug 109401.
-
-*mono-tools-1.1.10 (14 Nov 2005)
-
-  14 Nov 2005; Peter Johanson <latexer@gentoo.org>
-  +mono-tools-1.1.10.ebuild:
-  Bump.
+# $Header: /var/cvsroot/gentoo-x86/dev-util/mono-tools/ChangeLog,v 1.1 2005/10/15 22:58:04 latexer Exp $
 
 *mono-tools-1.1.9 (15 Oct 2005)
 

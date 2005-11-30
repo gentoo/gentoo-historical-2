@@ -1,20 +1,6 @@
-# ChangeLog for net-proxy/oops
+# ChangeLog for www-proxy/oops
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/oops/ChangeLog,v 1.6 2005/06/04 14:38:03 mrness Exp $
-
-  04 Jun 2005; Alin Nastac <mrness@gentoo.org> -oops-1.5.23.ebuild:
-  Remove obsolete version.
-
-  04 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  oops-1.5.24_pre20050503.ebuild:
-  Stable on sparc wrt #91303
-
-*oops-1.5.24_pre20050503 (03 May 2005)
-
-  03 May 2005; Alin Nastac <mrness@gentoo.org> +files/oops.initd,
-  +oops-1.5.24_pre20050503.ebuild:
-  Version bumped to current 1.5.24 pre-release. This version fixes security
-  bug #91303 and have an init script.
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/oops/ChangeLog,v 1.1 2005/04/22 19:15:11 mrness Exp $
 
   22 Apr 2005; Alin Nastac <mrness@gentoo.org> :
   Rename category & herd www-proxy to net-proxy

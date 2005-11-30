@@ -1,36 +1,6 @@
 # ChangeLog for dev-java/cglib
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cglib/ChangeLog,v 1.9 2005/07/31 15:28:05 st_lim Exp $
-
-  31 Jul 2005; Lim Swee Tat <st_lim@gentoo.org> cglib-2.1.2.ebuild:
-  Minor mistake in where I had installed asm-1.5 from eons ago, and the jar
-  files were labelled with the version number.  Removed the linking.
-
-*cglib-2.1.2 (31 Jul 2005)
-
-  31 Jul 2005; Lim Swee Tat <st_lim@gentoo.org> +cglib-2.1.2.ebuild:
-  Version bumped to 2.1_2.  Required for hibernate-3.0
-
-  30 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> cglib-2.0.2-r1.ebuild:
-  added ~ppc to KEYWORDS, introduced support for the source useflag
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org> cglib-2.0.2.ebuild:
-  stable on amd64
-
-*cglib-2.0.2-r1 (20 Jan 2005)
-
-  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> +cglib-2.0.2-r1.ebuild,
-  cglib-2.0.2.ebuild:
-  readded old version with ~ppc, -r1 doesnt make use of packed jars.
-
-  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> cglib-2.0.2.ebuild:
-  readded ~ppc. sorry :/
-
-  05 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> cglib-2.0.2.ebuild:
-  Removed all packed jars. Fixes #76738.
-
-  27 Dec 2004; Lim Swee Tat <st_lim@gentoo.org> cglib-2.0.2.ebuild:
-  Removed the version number from the jar
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cglib/ChangeLog,v 1.1 2004/12/27 14:54:56 st_lim Exp $
 
 *cglib-2.0.2 (27 Dec 2004)
 

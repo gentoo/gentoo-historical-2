@@ -1,47 +1,37 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/lsdldoom/lsdldoom-1.4.4.4.ebuild,v 1.11 2005/09/26 18:07:29 wolf31o2 Exp $
-
-inherit eutils games
+# $Header: /var/cvsroot/gentoo-x86/games-fps/lsdldoom/lsdldoom-1.4.4.4.ebuild,v 1.1 2003/09/09 18:10:14 vapier Exp $
 
 DESCRIPTION="Port of ID's doom to SDL"
+SRC_URI="http://www.lbjhs.net/~jessh/lsdldoom/src/${P}.tar.gz
+	http://www.lbjhs.net/~jessh/lsdldoom/doom1.wad.gz"
 HOMEPAGE="http://firehead.org/~jessh/lsdldoom/"
-SRC_URI="http://www.lbjhs.net/~jessh/lsdldoom/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
-IUSE=""
+KEYWORDS="x86 ppc"
 
-DEPEND="media-libs/libsdl
-	media-libs/sdl-net
-	games-fps/doom-data"
+DEPEND=">=media-libs/sdl-mixer-1.2.0"
 
 src_unpack() {
-	unpack ${A}
-	cp -r ${S}{,.orig}
-	cd ${S}
-	epatch "${FILESDIR}"/${PV}-gentoo-paths.patch
-	epatch "${FILESDIR}"/${PV}-gcc34.patch #77846
+	unpack ${P}.tar.gz
+	cp ${DISTDIR}/doom1.wad.gz ${S}
+	chmod 0644 ${S}/doom1.wad.gz
+	gzip -d ${S}/*.gz
 }
 
 src_compile() {
-	# The SDL_mixer implementation is VERY broken ...
-	# it relies on internal function calls rather than 
-	# the exported API ... bad programmer !
-	# i386-asm -> build failure
-	# cpu-opt -> just adds -mcpu crap to CFLAGS
-	ac_cv_lib_SDL_mixer_Mix_LoadMUS=no \
-	egamesconf \
-		--disable-i386-asm \
-		--disable-cpu-opt \
-		|| die
-	emake || die
+	./configure --prefix=/usr --datadir=/usr/share/doom \
+	--bindir=/usr/bin --host=${CHOST} || die
+	make || die
 }
 
 src_install() {
-	make install DESTDIR="${D}" || die
-	prepalldocs
-	dodoc ChangeLog
-	prepgamesdirs
+	dobin ${FILESDIR}/lsdldoom
+	exeinto /usr/share/doom
+	doexe src/lsdldoom src/lxdoom-game-server
+	insinto /usr/share/doom/
+	doins doom1.wad data/*.wad
+	doman doc/boom.cfg.5 doc/lsdldoom.6 doc/lxdoom-game-server.6
+	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README doc/*.txt
 }

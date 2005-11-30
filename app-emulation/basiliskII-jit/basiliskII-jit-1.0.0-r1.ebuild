@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/basiliskII-jit/basiliskII-jit-1.0.0-r1.ebuild,v 1.5 2005/01/01 14:08:27 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/basiliskII-jit/basiliskII-jit-1.0.0-r1.ebuild,v 1.1 2004/09/02 15:47:46 dholm Exp $
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
 
 ### This package requires a Mac II/Classic ROM, A Mac OS Image
 ### Mac OS 7.5.3r2 is available freely from the Apple Homepage
@@ -13,7 +13,7 @@ DESCRIPTION="Basilisk II/JIT Macintosh Emulator"
 HOMEPAGE="http://gwenole.beauchesne.online.fr/basilisk2/"
 SRC_URI="http://hometown.aol.de/wimdk/files/BasiliskII-jit-1.0-mdk-src.tar.bz2"
 
-LICENSE="|| ( GPL-2 LGPL-2.1 )"
+LICENSE="GPL-2 | LGPL-2.1"
 KEYWORDS="x86 -ppc"
 SLOT="0"
 
@@ -23,13 +23,12 @@ IUSE="X gtk xv esd dga"
 ### gtk and esd support are compile time options, we'll check the usual
 ### use variables here and set ./configure options accordingly
 
-DEPEND="gtk? ( =x11-libs/gtk+-1.2* )
+DEPEND="gtk? ( x11-libs/gtk+ )
 	esd? ( media-sound/esound )
 	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/basiliskII-jit-gcc34.patch
 
 	# Fix up the vendor (bug 35352)
 	sed -i \
@@ -65,7 +64,7 @@ src_compile() {
 		-e 's:-o $(OBJ_DIR)/gencpu:-lstdc++ -o $(OBJ_DIR)/gencpu:' \
 		Makefile || die "sed Makefile failed"
 
-	emake -j1 || die "emake failed"
+	emake || die "emake failed"
 }
 
 src_install() {

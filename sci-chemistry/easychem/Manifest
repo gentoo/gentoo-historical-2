@@ -1,4 +1,3 @@
-MD5 3475b4d29f23d4c2a46d79881d60f649 ChangeLog 1277
-MD5 a707936efa0acaca38dc267e7a456563 easychem-0.6.ebuild 746
-MD5 76d915c577137894c2a53e45fc31963f files/digest-easychem-0.6 64
 MD5 afd70742f32372087e2db1cf363ca22b metadata.xml 640
+MD5 a86b62414c4f1734b1fd8551df01994e easychem-0.5.ebuild 651
+MD5 6423a5e6b02bf485764e8a004630d586 files/digest-easychem-0.5 64

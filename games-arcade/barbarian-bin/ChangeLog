@@ -1,16 +1,6 @@
 # ChangeLog for games-arcade/barbarian-bin
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/barbarian-bin/ChangeLog,v 1.4 2005/10/21 11:14:41 blubb Exp $
-
-  21 Oct 2005; Simon Stelling <blubb@gentoo.org> barbarian-bin-1.01.ebuild:
-  fix dependencies for amd64 and mark stable
-
-  11 Aug 2005; Olivier Crête <tester@gentoo.org> barbarian-bin-1.01.ebuild:
-  Marked ~amd64, closes bug #102160, thanks to meetra for testing
-
-  15 Apr 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  barbarian-bin-1.01.ebuild:
-  Changed HOMEPAGE and closing bug #89168.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/barbarian-bin/ChangeLog,v 1.1 2004/12/13 08:39:22 mr_bones_ Exp $
 
 *barbarian-bin-1.01 (13 Dec 2004)
 

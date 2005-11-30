@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config/java-config-1.2.11-r1.ebuild,v 1.4 2005/11/29 13:47:27 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/java-config/java-config-1.2.11-r1.ebuild,v 1.1 2005/06/18 13:48:31 axxo Exp $
 
 inherit distutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.gentoo.org/~karltk/projects/java/distfiles/java-config-${PV}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~alpha ~ia64 ~amd64 sparc ~ppc ~hppa ~ppc64"
+KEYWORDS="~x86 ~alpha ~ia64 ~amd64 ~sparc ~ppc ~hppa ~ppc64"
 IUSE=""
 
 RDEPEND="virtual/python"
@@ -21,7 +21,7 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/${P}-shebang.patch
 }
-
+	
 src_install() {
 	distutils_src_install
 	dobin ${S}/java-config

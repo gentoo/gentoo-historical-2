@@ -1,16 +1,13 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 c9bb624305757fbf878ecd1a5ef18cb4 ChangeLog 3605
-MD5 e266c776bf46f85ed27001b26e931732 epm-0.8.8.ebuild 620
-MD5 8f7c8d4f8bbb8215d2dcdf6a59bb5c19 epm-0.9.0.ebuild 619
-MD5 5bd675162d7c4eaccc3525a63234930d files/digest-epm-0.8.8 59
-MD5 00bcd2005272bc4bc226a78f7dc4f86e files/digest-epm-0.9.0 60
-MD5 fd734d385c097a936c63336d85f19beb metadata.xml 347
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDVmz6JrHF4yAQTrARAqlKAJ9EiwZu2S13ieJPaI1v7loblLoAEQCghCfP
-MpUNXX4Y641rbpFuHrElgNY=
-=8mN2
------END PGP SIGNATURE-----
+MD5 871bb4abf4ad8674b1f3656745bed5fe epm-0.8.3.ebuild 595
+MD5 cd0493fa8fc664faf47ecff336a85dbf epm-0.8.ebuild 517
+MD5 0512951c2db38ae2f0468bfc77573a47 epm-0.8.2.ebuild 595
+MD5 40afe60918b5d0538613de35daabb013 epm-0.7.ebuild 507
+MD5 c58480881fcb888fe4baedd58ab41d67 epm-0.8.4.ebuild 577
+MD5 58780c0a6a5004a207f52af0d8e3accc ChangeLog 1914
+MD5 c8f1e9b8ea5bcfb33564f9b313a12fc4 epm-0.8.1.ebuild 519
+MD5 a23df5cf6c7227f1b8c1bfb9d5fc0d81 files/digest-epm-0.7 57
+MD5 e07e63b6edc728a793bf5efcb4a3ea52 files/digest-epm-0.8 57
+MD5 d12f30127e28a76ffda9bfe2a4bef8a5 files/digest-epm-0.8.1 59
+MD5 a8f0dd58a2a4a0b63ab6179f8c9cd8e4 files/digest-epm-0.8.2 59
+MD5 752ec417deff468ff7fa0c200d078322 files/digest-epm-0.8.3 59
+MD5 cefcc5cc78624e2282e4ede509527014 files/digest-epm-0.8.4 59

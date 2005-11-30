@@ -1,9 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/mcl/mcl-0.52.99.ebuild,v 1.4 2004/07/14 14:48:10 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/mcl/mcl-0.52.99.ebuild,v 1.1 2003/09/10 19:03:12 vapier Exp $
 
 IUSE="python perl"
 
+S="${WORKDIR}/${P}"
 DESCRIPTION="A console MUD client scriptable in Perl and Python"
 SRC_URI="http://www.andreasen.org/mcl/dist/${P}-src.tar.gz"
 HOMEPAGE="http://www.andreasen.org/mcl/"

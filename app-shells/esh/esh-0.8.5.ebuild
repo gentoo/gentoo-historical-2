@@ -1,38 +1,33 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/esh/esh-0.8.5.ebuild,v 1.16 2005/04/24 02:54:34 hansmi Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/app-shells/esh/esh-0.8.5.ebuild,v 1.1 2002/04/27 08:09:26 seemant Exp $
 
+S=${WORKDIR}/esh
 DESCRIPTION="A UNIX Shell with a simplified Scheme syntax"
-HOMEPAGE="http://slon.ttk.ru/esh/"
 SRC_URI="http://slon.ttk.ru/esh/${P}.tar.gz"
+HOMEPAGE="http://slon.ttk.ru/esh/"
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
-
-DEPEND="virtual/libc
-	>=sys-libs/ncurses-5.1
-	>=sys-libs/readline-4.1"
-
-S=${WORKDIR}/${PN}
+DEPEND="virtual/glibc
+		>=sys-libs/ncurses-5.1
+		>=sys-libs/readline-4.1"
 
 src_compile() {
-	sed -i \
-		-e "s:^CFLAGS=:CFLAGS=${CFLAGS/-fomit-frame-pointer/} :" \
+
+	cp Makefile Makefile.orig
+	sed -e "s:^CFLAGS=:CFLAGS=${CFLAGS/-fomit-frame-pointer/} :" \
 		-e "s:^LIB=:LIB=-lncurses :" \
 		-e "s:-ltermcap::" \
-		Makefile
-	# For some reason, this tarball has binary files in it for x86.
-	# Make clean so we can rebuild for our arch and optimization.
-	make clean
+		Makefile.orig > Makefile
 	make || die
 }
 
 src_install() {
-	dobin esh || die
+
+	dobin esh
+	into /usr
 	doinfo doc/esh.info
-	dodoc CHANGELOG CREDITS GC_README HEADER READLNE-HACKS TODO
+	dodoc CHANGELOG CREDITS GC_README HEADER LICENSE READLNE-HACKS TODO
 	dohtml doc/*.html
 	docinto examples
 	dodoc examples/*

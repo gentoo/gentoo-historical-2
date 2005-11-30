@@ -1,16 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/pearpc/pearpc-0.3.1.ebuild,v 1.4 2005/02/24 18:17:29 port001 Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/pearpc/pearpc-0.3.1.ebuild,v 1.1 2004/09/18 18:42:57 eradicator Exp $
 
 IUSE="debug jit sdl"
 #IUSE="debug qt gtk jit sdl"
 
 DESCRIPTION="PowerPC Architecture Emulator"
 HOMEPAGE="http://pearpc.sourceforge.net/"
-SRC_URI="mirror://sourceforge/pearpc/${P}.tar.bz2
-	http://pearpc.sf.net/createdisk.py"
+SRC_URI="mirror://sourceforge/pearpc/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -30,17 +27,14 @@ RDEPEND="virtual/x11
 
 DEFAULT_TO_X11=0
 
-pkg_setup() {
-
-	append-ldflags -Wl,-z,now
-
+#pkg_setup() {
 #	if (use qt && use sdl) || (use qt && use gtk) || (use gtk && sdl) || (use gtk && use qt && use sdl); then
 #		ewarn
 #		ewarn "More than one frontend USE flags enabled, defaulting to X11 support."
 #		ewarn
 #		DEFAULT_TO_X11=1
 #	fi		
-}
+#}
 
 src_compile() {
 	local myconf
@@ -78,17 +72,12 @@ src_install() {
 
 	dodir /usr/share/${P}
 	insinto /usr/share/${P}
-	doins scripts/ifppc_down scripts/ifppc_up scripts/ifppc_up.setuid scripts/ifppc_down.setuid
+	doins scripts/ifppc_down scripts/ifppc_up
 	doins video.x
-	fperms u+s /usr/share/${P}/ifppc_up.setuid /usr/share/${P}/ifppc_down.setuid
 
 	insinto /usr/share/doc/${P}
 	sed -i -e "s:video.x:/usr/share/${P}/video.x:g" ppccfg.example
 	doins ppccfg.example
-
-	dodir /usr/share/${P}/scripts
-	insinto /usr/share/${P}/scripts
-	doins ${DISTDIR}/createdisk.py
 }
 
 pkg_postinst() {
@@ -96,10 +85,6 @@ pkg_postinst() {
 	einfo "You will need to update your configuration files to point"
 	einfo "to the new location of video.x, which is now"
 	einfo "/usr/share/${P}/video.x"
-	echo
-	einfo "To create disk images for PearPC, you can use the Python"
-	einfo "script located at: /usr/share/${P}/scripts/createdisk.py"
-	einfo "Usage: createdisk.py <image name> <image size>"
 	echo
 	einfo "Also, be sure to check /usr/share/doc/${P}/ppccfg.example"
 	einfo "for new configuration options."

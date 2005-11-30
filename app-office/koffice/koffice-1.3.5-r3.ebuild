@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/koffice/koffice-1.3.5-r3.ebuild,v 1.2 2005/10/11 15:11:17 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/koffice/koffice-1.3.5-r3.ebuild,v 1.1 2005/10/11 14:49:04 carlo Exp $
 
 inherit kde kde-functions eutils
 
@@ -9,8 +9,7 @@ inherit kde kde-functions eutils
 
 DESCRIPTION="A free, integrated office suite for KDE, the K Desktop Environment."
 HOMEPAGE="http://www.koffice.org/"
-SRC_URI="mirror://kde/stable/${P}/src/${P}.tar.bz2
-	mirror://kde/security_patches/post-koffice-1.3.5-rtfimport.diff"
+SRC_URI="mirror://kde/stable/${P}/src/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc x86"
@@ -33,7 +32,7 @@ need-kde 3.1
 
 PATCHES="${FILESDIR}/koffice_1_3_xpdf_buffer_overflow.diff
 	${FILESDIR}/CAN-2005-0064.patch
-	${DISTDIR}/post-koffice-1.3.5-rtfimport.diff"
+	${FILESDIR}/koffice-1.4.1-rtfimport.patch"
 
 src_compile() {
 	export LIBPYTHON="`python-config --libs`"

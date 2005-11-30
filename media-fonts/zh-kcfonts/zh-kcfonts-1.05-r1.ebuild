@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/zh-kcfonts/zh-kcfonts-1.05-r1.ebuild,v 1.8 2005/09/23 15:53:40 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/zh-kcfonts/zh-kcfonts-1.05-r1.ebuild,v 1.1 2004/05/15 17:27:26 usata Exp $
 
 KCFONTS="${P}.tgz"
 
@@ -10,8 +10,7 @@ HOMEPAGE=""	#No homepage exists that I am aware of or able to find
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc"
 
 DEPEND="virtual/x11"
 S=${WORKDIR}

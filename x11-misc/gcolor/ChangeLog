@@ -1,27 +1,6 @@
-# ChangeLog for x11-misc/gcolor
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/gcolor/ChangeLog,v 1.10 2005/10/31 15:31:38 nelchael Exp $
-
-  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> gcolor-0.4.ebuild:
-  Fixed dodoc not to install COPYING and INSTALL.
-
-  25 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org> gcolor-0.4.ebuild:
-  Fix bug 109228 - wrong GTK depend.
-
-  09 Jul 2005; Jonathan Smith <smithj@gentoo.org> gcolor-0.4.ebuild:
-  stable amd64
-
-  30 Aug 2004; Tom Martin <slarti@gentoo.org> gcolor-0.4.ebuild:
-  Marked ~amd64.
-
-  27 Aug 2004; Tom Gall <tgall@gentoo.org> gcolor-0.4.ebuild:
-  stable on ppc64, bug #59374
-
-  20 Jun 2004; Ian Leitch <port001@gentoo.org> gcolor-0.4.ebuild:
-  Fixed typo, ISUE -> IUSE. Added metadata.xml
-
-  19 Jun 2004; <pyrania@gentoo.org> gcolor-0.4.ebuild:
-  Removed default ${S}, added IUSE.
+# ChangeLog for app-misc/gcolor
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/gcolor/ChangeLog,v 1.1 2004/01/02 19:13:34 port001 Exp $
 
 *gcolor-0.4 (02 Jan 2004)
 

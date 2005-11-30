@@ -29,7 +29,6 @@
       <tstamp />
       <mkdir dir="${build}"/>
       <mkdir dir="${build}/doc"/>
-      <mkdir dir="${build}/doc/api"/>
    </target>
 
    <target name="manifest" depends="init">
@@ -67,7 +66,7 @@
    </target>
 
    <target name="javadoc" depends="compile">
-	   <javadoc sourcepath="${src}" packagenames="${packages}" destdir="${build}/docs/"/>
+      <javadoc sourcepath="${basedir}" destdir="${build}/docs/" packagenames="${packages}"/>
    </target>
 
    <target name="jar" depends="compile,manifest">

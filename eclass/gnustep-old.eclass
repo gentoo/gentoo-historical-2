@@ -1,12 +1,14 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep-old.eclass,v 1.9 2005/07/11 15:08:06 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep-old.eclass,v 1.1 2004/07/22 20:39:44 fafhrd Exp $
 
+ECLASS=gnustep
+INHERITED="$INHERITED $ECLASS"
 
 DESCRIPTION="Based on the gnustep eclass."
 
-DEPEND="gnustep-base/gnustep-make
-	gnustep-base/gnustep-base
+DEPEND="dev-util/gnustep-make
+	dev-util/gnustep-base
 	sys-devel/gcc
 	virtual/libc"
 RDEPEND="virtual/libc"
@@ -25,11 +27,11 @@ getsourcedir() {
 
 need-gnustep-gui() {
 	if [ "$1" ] ; then
-		DEPEND="${DEPEND} >=gnustep-base/gnustep-gui-$1"
-		RDEPEND="${RDEPEND} >=gnustep-base/gnustep-back-$1"
+		DEPEND="${DEPEND} >=dev-util/gnustep-gui-$1"
+		RDEPEND="${RDEPEND} >=dev-util/gnustep-back-$1"
 	else
-		DEPEND="${DEPEND} gnustep-base/gnustep-gui"
-		RDEPEND="${RDEPEND} gnustep-base/gnustep-back"
+		DEPEND="${DEPEND} dev-util/gnustep-gui"
+		RDEPEND="${RDEPEND} dev-util/gnustep-back"
 	fi
 }
 
@@ -37,9 +39,12 @@ egnustepmake() {
 	getsourcedir
 
 	addwrite /root/GNUstep/Defaults/.GNUstepDefaults.lck
-	addpredict /root/GNUstep
+	addpredict /root/GNUstep	
 
 	cd ${S}
+
+	unset CFLAGS
+	unset CC
 
 	if [ -f /usr/GNUstep/System/Makefiles/GNUstep.sh ] ; then
 		. /usr/GNUstep/System/Makefiles/GNUstep.sh
@@ -73,7 +78,7 @@ egnustepmake() {
 			fi
 		fi
 	fi
-
+	
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 		make \
 			HOME=$TMP/fakehome \
@@ -89,15 +94,15 @@ egnustepinstall() {
 	getsourcedir
 
 	addwrite /root/GNUstep/Defaults/.GNUstepDefaults.lck
-	addpredict /root/GNUstep
+	addpredict /root/GNUstep	
 
 	cd ${S}
-
+	
 	if [ -f /usr/GNUstep/System/Makefiles/GNUstep.sh ] ; then
-		source /usr/GNUstep/System/Makefiles/GNUstep.sh
-	else
-		die "gnustep-make not installed!"
-	fi
+                source /usr/GNUstep/System/Makefiles/GNUstep.sh
+        else
+                die "gnustep-make not installed!"
+        fi
 
 	mkdir -p $TMP/fakehome/GNUstep
 
@@ -106,7 +111,7 @@ egnustepinstall() {
 		# Should all the roots point at GNUSTEP_SYSTEM_ROOT to force
 		# install?
 		# GNUSTEP_USER_ROOT must be GNUSTEP_SYSTEM_ROOT, some malformed
-		# Makefiles install there.
+		# Makefiles install there. 
 		if [ "${PN}" = "gnustep-base" ] || [ "${PN}" = "gnustep-gui" ] || [ "${PN}" = "gnustep-back" ] ; then
 			# for some reason, they need less tending to...
 			make \
@@ -115,12 +120,12 @@ egnustepinstall() {
 				GNUSTEP_INSTALLATION_DIR=${D}${GNUSTEP_SYSTEM_ROOT} \
 				INSTALL_ROOT_DIR=${D} \
 				install || die "einstall failed"
-		else
+		else 
 			make \
 				GNUSTEP_USER_ROOT=$TMP/fakehome/GNUstep \
 				HOME=$TMP/fakehome \
-				GNUSTEP_INSTALLATION_DIR=${D}${GNUSTEP_SYSTEM_ROOT} \
-				INSTALL_ROOT_DIR=${D} \
+        	        	GNUSTEP_INSTALLATION_DIR=${D}${GNUSTEP_SYSTEM_ROOT} \
+                		INSTALL_ROOT_DIR=${D} \
 				GNUSTEP_LOCAL_ROOT=${D}${GNUSTEP_LOCAL_ROOT} \
 				GNUSTEP_NETWORK_ROOT=${D}${GNUSTEP_NETWORK_ROOT} \
 				GNUSTEP_SYSTEM_ROOT=${D}${GNUSTEP_SYSTEM_ROOT} \
@@ -128,16 +133,16 @@ egnustepinstall() {
 		 		install || die "einstall failed"
 		fi
 	else
-		die "no Makefile found"
+		die "no Makefile found" 
 	fi
 	return 0
 }
 
-gnustep-old_src_compile() {
+gnustep_src_compile() {
 	egnustepmake || die
 }
 
-gnustep-old_src_install() {
+gnustep_src_install() {
 	egnustepinstall || die
 }
 

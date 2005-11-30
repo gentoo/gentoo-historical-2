@@ -1,41 +1,6 @@
-# ChangeLog for perl-core/File-Spec
+# ChangeLog for dev-perl/File-Spec
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/File-Spec/ChangeLog,v 1.12 2005/11/11 02:06:46 mcummings Exp $
-
-*File-Spec-3.12 (11 Nov 2005)
-
-  11 Nov 2005; Michael Cummings <mcummings@gentoo.org>
-  +File-Spec-3.12.ebuild:
-  Version bump upstream
-
-  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> File-Spec-3.06.ebuild:
-  Stable on ppc.
-
-  29 Jul 2005; Danny van Dyk <kugelfang@gentoo.org> File-Spec-0.87.ebuild:
-  Marked stable on amd64.
-
-  07 Jul 2005; Markus Rothe <corsair@gentoo.org> File-Spec-3.06.ebuild:
-  Stable on ppc64
-
-  02 Jul 2005; Bryan Østergaard <kloeri@gentoo.org> File-Spec-3.06.ebuild:
-  Stable on alpha.
-
-  29 Jun 2005; Michael Cummings <mcummings@gentoo.org>
-  File-Spec-3.06.ebuild:
-  unmasking for x86 and sparc
-
-  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> File-Spec-0.87.ebuild:
-  Stable on ppc.
-
-  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> File-Spec-0.87.ebuild:
-  Stable on alpha.
-
-  04 Jun 2005; Michael Cummings <mcummings@gentoo.org>
-  File-Spec-0.87.ebuild:
-  Tested on raq2, bumping for mips
-
-  02 Jun 2005; Michael Cummings <mcummings@gentoo.org> File-Spec-0.87.ebuild:
-  Keywording to match min version with most perls
+# $Header: /var/cvsroot/gentoo-x86/perl-core/File-Spec/ChangeLog,v 1.1 2005/05/25 13:36:00 mcummings Exp $
 
 *File-Spec-3.06 (25 May 2005)
 

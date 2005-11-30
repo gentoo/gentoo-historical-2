@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-db/foomatic-db-20050910.ebuild,v 1.3 2005/09/11 07:13:27 genstef Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-db/foomatic-db-20050910.ebuild,v 1.1 2005/09/10 13:00:46 metalgod Exp $
 
 DESCRIPTION="Foomatic printer database"
 HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
@@ -22,9 +20,6 @@ DEPEND="dev-libs/libxml2
 
 src_unpack() {
 	unpack ${A}
-	cd ${WORKDIR}
-	use ppds && epatch ${FILESDIR}/fix-sandbox-${PV}.patch
-	cd ${S}
 }
 
 src_compile() {

@@ -1,20 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-kjofol/xmms-kjofol-0.95.ebuild,v 1.13 2005/09/04 10:26:52 flameeyes Exp $
+# Copyright 2002, Jens Schittenhelm
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-kjofol/xmms-kjofol-0.95.ebuild,v 1.1 2002/10/25 07:20:04 seemant Exp $
 
-IUSE=""
-
+S=${WORKDIR}/${PN/ofol}
 DESCRIPTION="A xmms remote that allows users to use K-Jofol skins"
-HOMEPAGE="http://www.csse.monash.edu.au/~timf/xmms.html"
 SRC_URI="http://www.dgs.monash.edu.au/~timf/kint_xmms-${PV}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+HOMEPAGE="http://www.csse.monash.edu.au/~timf/xmms.html"
 
 DEPEND="media-sound/xmms"
 
-S=${WORKDIR}/${PN/ofol}
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~x86"
 
 src_compile() {
 	emake || die
@@ -24,11 +21,11 @@ src_install() {
 	dobin kj
 	dodir /usr/share/xmms/kjofol
 	cp *.zip ${D}usr/share/xmms/kjofol
-	dodoc readme.txt
+	dodoc readme.txt COPYING
 }
 
 pkg_postinst() {
 	einfo "This plugin works as a remote for XMMS. Start XMMS before"
 	einfo "using this plugin with kj"
 	einfo "Place K-Jofol skins in ~/.xmms/kjofol/"
-}
+} 

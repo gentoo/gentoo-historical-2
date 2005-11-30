@@ -1,10 +1,5 @@
 #!/sbin/runscript
 
-depend() {
-	need net
-	use mta
-}
-
 checkconfig() {
         if [ ! -f /etc/fetchmailrc ]; then
                 eerror "Configuration file /etc/fetchmailrc not found"
@@ -17,7 +12,7 @@ start() {
 
         ebegin "Starting fetchmail"
         start-stop-daemon --start --quiet --exec /usr/bin/fetchmail \
-                -- -d ${polling_period} -f /etc/fetchmailrc
+                -- -f /etc/fetchmailrc
         eend ${?}
 }
 

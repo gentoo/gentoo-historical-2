@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ada/gps-bin/gps-bin-1.2.2.ebuild,v 1.7 2005/01/01 17:24:52 eradicator Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-ada/gps-bin/gps-bin-1.2.2.ebuild,v 1.1 2003/08/10 02:54:02 george Exp $
 
 IUSE=""
 
@@ -9,11 +9,11 @@ DESCRIPTION="GNAT Programming System"
 SRC_URI="http://libre.act-europe.fr/gps/gps-${PV}-academic-x86-linux.tgz"
 HOMEPAGE="http://libre.act-europe.fr/gps"
 
-KEYWORDS="x86"
+KEYWORDS="~x86"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 RDEPEND=">=dev-lang/gnat-3.15p
 	>=x11-libs/gtk+-2.2.0
 	>=dev-ada/gtkada-2.2.0
@@ -34,7 +34,7 @@ src_install () {
 	mv doc/gps/{examples,html,ps,txt} ${D}/usr/share/doc/${PF}
 
 	#gps was compiled against libpng.so.2 which in fact is libpng.so.3 on gentoo systems
-	dosym /usr/lib/libpng.so /opt/${PN}/lib/libpng.so.2
+	dosym /usr/lib/libpng.so.2 /opt/${PN}/lib/libpng.so.3
 
 	#now some env vars
 	insinto /etc/env.d

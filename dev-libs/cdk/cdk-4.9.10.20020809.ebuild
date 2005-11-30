@@ -1,8 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cdk/cdk-4.9.10.20020809.ebuild,v 1.16 2005/08/25 04:00:15 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cdk/cdk-4.9.10.20020809.ebuild,v 1.1 2003/02/05 20:03:02 raker Exp $
 
-inherit flag-o-matic
 
 MY_P=${P/.2002/-2002}
 
@@ -13,8 +12,7 @@ HOMEPAGE="http://dickey.his.com/cdk/cdk.html"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="alpha amd64 ppc ppc64 s390 sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~sparc"
 
 DEPEND=">=sys-libs/ncurses-5.2"
 
@@ -26,7 +24,7 @@ src_compile()
 
 	emake || die "make failed!"
 }
-
+ 
 
 src_install()
 {

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/mah-jong/mah-jong-1.6.ebuild,v 1.5 2004/06/24 22:19:21 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/mah-jong/mah-jong-1.6.ebuild,v 1.1 2003/11/05 10:04:50 mr_bones_ Exp $
 
 inherit games
 
@@ -10,9 +10,9 @@ DESCRIPTION="A networked Mah Jong program, together with a computer player"
 HOMEPAGE="http://www.stevens-bradfield.com/MahJong/"
 SRC_URI="http://www.stevens-bradfield.com/MahJong/Source/${MY_P}.tar.gz"
 
+KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64"
 IUSE=""
 
 RDEPEND="virtual/x11
@@ -34,17 +34,17 @@ src_unpack() {
 		-e "/^MANDIR =/ s:man/man1:/usr/share/man/man6:" \
 		-e "/^MANSUFFIX =/ s:1:6:" \
 		-e "/^CFLAGS =/ s:=:= ${CFLAGS}:" \
-		-e "/^TILESETPATH=/ s:NULL:\"${GAMES_DATADIR}/${PN}/\":" Makefile || \
+		-e "/^TILESETPATH=/ s:NULL:\"${GAMES_DATADIR}/${PN}\":" Makefile || \
 			die "sed Makefile failed"
 }
 
 src_install() {
 	make install install.man || die "make install failed"
-	dodir ${GAMES_DATADIR}/${PN}
+	dodir "${GAMES_DATADIR}/${PN}"
 	cp -R fallbacktiles/ \
 		tiles-numbered/ \
-		tiles-small/ "${D}${GAMES_DATADIR}/${PN}" \
-		|| die "cp failed"
-	dodoc CHANGES ChangeLog *.txt
+		tiles-small/ "${D}${GAMES_DATADIR}/${PN}" || \
+			die "cp failed"
+	dodoc CHANGES ChangeLog *.txt || die "dodoc failed"
 	prepgamesdirs
 }

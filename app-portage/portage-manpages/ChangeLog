@@ -1,15 +1,6 @@
 # ChangeLog for app-portage/portage-manpages
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-manpages/ChangeLog,v 1.5 2005/07/23 15:27:05 gongloo Exp $
-
-  23 Jul 2005; <gongloo@gentoo.org> portage-manpages-1.1.ebuild:
-  Keyworded ~ppc-macos.
-
-*portage-manpages-1.1 (01 Jan 2005)
-
-  01 Jan 2005; Mike Frysinger <vapier@gentoo.org>
-  -portage-manpages-1.0.ebuild, +portage-manpages-1.1.ebuild:
-  Version bump.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-portage/portage-manpages/ChangeLog,v 1.1 2004/12/05 23:13:06 vapier Exp $
 
 *portage-manpages-1.0 (05 Dec 2004)
 

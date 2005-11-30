@@ -1,32 +1,34 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-tclink/cl-tclink-3.3.1-r1.ebuild,v 1.8 2005/05/24 18:48:36 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-tclink/cl-tclink-3.3.1-r1.ebuild,v 1.1 2004/02/12 09:13:20 mkennedy Exp $
 
-inherit common-lisp eutils
+inherit common-lisp
 
 DEB_PV=3
 
-DESCRIPTION="Common Lisp TrustCommerce transaction authorization system."
-HOMEPAGE="http://www.cliki.net/CL-TCLink http://www.mapcar.org/~mrd/cl-tclink/"
+DESCRIPTION="A library of Common Lisp bindings to the TrustCommerce transaction authorization system. Now you have no excuse for not doing Business with Common Lisp!"
+HOMEPAGE="http://www.cliki.net/CL-TCLink
+	http://www.mapcar.org/~mrd/cl-tclink/"
 SRC_URI="http://www.mapcar.org/~mrd/debs/unstable/source/${PN}_${PV}.orig.tar.gz
 	http://www.mapcar.org/~mrd/debs/unstable/source/${PN}_${PV}-${DEB_PV}.diff.gz"
-
 LICENSE="LLGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86"
 IUSE="doc"
-
-DEPEND="dev-libs/openssl
-	dev-lisp/cl-split-sequence
-	dev-lisp/cl-uffi
-	doc? ( virtual/tetex )"
+DEPEND="dev-lisp/common-lisp-controller
+	dev-libs/openssl
+	cl-split-sequence
+	cl-uffi
+	doc? ( app-text/tetex )
+	virtual/commonlisp"
 
 CLPACKAGE=tclink
 
+S=${WORKDIR}/${P}
+
 src_unpack() {
 	unpack ${A}
-	epatch ${PN}_${PV}-${DEB_PV}.diff || die
-	epatch ${FILESDIR}/${PV}-gentoo.patch || die
+	epatch ${PN}_${PV}-${DEB_PV}.diff
 }
 
 src_compile() {

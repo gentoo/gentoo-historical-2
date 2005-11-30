@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/brutefir/brutefir-1.0c.ebuild,v 1.3 2005/07/09 19:12:58 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/brutefir/brutefir-1.0c.ebuild,v 1.1 2005/01/22 11:53:26 luckyduck Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.ludd.luth.se/~torger/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 
 DEPEND=">=media-libs/alsa-lib-0.9.1
 	media-sound/jack-audio-connection-kit
@@ -40,10 +40,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	einfo ""
 	einfo "Brutefir is a complicated piece of software. Please"
-	einfo "read the documentation first! You can find"
+	einfo "read the documentation first! You can find "
 	einfo "documentation here: http://www.ludd.luth.se/~torger/brutefir.html"
 	einfo "Example config files are in /usr/share/brutefir"
-	einfo
+	einfo ""
 }

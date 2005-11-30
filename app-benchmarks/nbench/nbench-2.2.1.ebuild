@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/nbench/nbench-2.2.1.ebuild,v 1.3 2005/01/01 12:05:21 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/nbench/nbench-2.2.1.ebuild,v 1.1 2004/11/07 23:32:37 morfic Exp $
 
 MY_P="${PN}-byte-${PV}"
 DESCRIPTION="Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark"
@@ -22,7 +22,7 @@ src_compile() {
 
 	sed -i -e 's:inpath="NNET.DAT":inpath="/usr/share/nbench/NNET.DAT":' nbench1.h || die
 
-	make LINKFLAGS="${LDFLAGS}" CFLAGS="${CFLAGS}" || die "make failed"
+	make CFLAGS="${CFLAGS}" || die
 }
 
 src_install() {

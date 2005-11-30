@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/dante-1.1.15-r2.ebuild,v 1.14 2005/08/28 15:04:57 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/dante-1.1.15-r2.ebuild,v 1.1 2005/06/04 12:30:59 mrness Exp $
 
 inherit fixheadtails eutils
 
@@ -10,17 +10,15 @@ SRC_URI="ftp://ftp.inet.no/pub/socks/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="tcpd debug selinux pam"
 
 RDEPEND="virtual/libc
 	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
-	selinux? ( sec-policy/selinux-dante )
-	userland_GNU? ( sys-apps/shadow )"
+	selinux? ( sec-policy/selinux-dante )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
-	sys-devel/libtool
 	>=sys-devel/automake-1.9"
 
 src_unpack() {
@@ -85,5 +83,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	enewuser sockd -1 -1 /etc/socks daemon
+	enewuser sockd -1 /bin/false /etc/socks daemon
 }

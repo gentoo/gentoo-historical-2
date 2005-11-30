@@ -1,31 +1,6 @@
 # ChangeLog for app-admin/procman
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/procman/ChangeLog,v 1.13 2005/05/11 03:47:03 halcy0n Exp $
-
-  11 May 2005; Mark Loeser <halcy0n@gentoo.org>
-  +files/procman-1.0-gcc34.patch, procman-1.0.ebuild:
-  Patch to fix compilation; bug #32263
-
-  17 Nov 2004; Mike Frysinger <vapier@gentoo.org> -procman-0.99.0.ebuild,
-  procman-1.0.ebuild:
-  Use make install DESTDIR.
-
-  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> procman-0.99.0.ebuild,
-  procman-1.0.ebuild:
-  Add die following econf for bug 48950
-
-  10 Jun 2003; Alastair Tse <liquidx@gentoo.org> procman-0.99.0.ebuild,
-  procman-1.0.ebuild:
-  fix gal and libgtop deps
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*procman-1.0 (17 Feb 2002)
-  19 Aug 2002; Spider <spider@gentoo.org> 
-  Fixed dependency on libgtop 
-
-  28 Mar 2003; Pieter Van den Abeele <pvdabeel@gentoo.org> procman-1.0.ebuild :
-  Moved to ~ppc
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-admin/procman/ChangeLog,v 1.1 2002/02/01 21:52:59 gbevin Exp $
 
 *procman-0.99.0 (1 Feb 2002)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-0.36.2.ebuild,v 1.5 2005/11/07 04:42:56 steev Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-0.36.2.ebuild,v 1.1 2005/09/10 06:42:54 cardoe Exp $
 
 inherit eutils mono python multilib debug
 
@@ -12,7 +12,7 @@ SRC_URI="http://dbus.freedesktop.org/releases/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="|| ( GPL-2 AFL-2.1 )"
-KEYWORDS="~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~amd64 ~ppc64 ~ia64 ~sparc"
 
 RDEPEND=">=dev-libs/glib-2.6
 	xml2? ( dev-libs/libxml2 )
@@ -23,7 +23,7 @@ RDEPEND=">=dev-libs/glib-2.6
 		x11-libs/libX11
 		)
 	virtual/x11 ) )
-	gtk? ( >=x11-libs/gtk+-2.6 )
+	gtk? ( >=x11-libs/gtk+-2 )
 	python? ( >=dev-lang/python-2.4
 		>=dev-python/pyrex-0.9.3-r2 )
 	qt? ( =x11-libs/qt-3* )
@@ -78,7 +78,7 @@ src_compile() {
 		--enable-checks \
 		--enable-asserts \
 		--with-system-pid-file=/var/run/dbus.pid \
-		--with-system-socket=/var/dbus/dbus/system_bus_socket \
+		--with-system-socket=/var/lib/dbus/system_bus_socket \
 		--with-session-socket-dir=/tmp \
 		--with-dbus-user=messagebus \
 		`use_enable doc doxygen-docs` \
@@ -117,7 +117,7 @@ src_install() {
 	doexe ${FILESDIR}/30-dbus
 
 	# needs to exist for the system socket
-	keepdir /var/run/dbus
+	keepdir /var/lib/dbus
 
 	keepdir /usr/lib/dbus-1.0/services
 	keepdir /usr/share/dbus-1/services

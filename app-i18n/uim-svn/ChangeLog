@@ -1,63 +1,6 @@
 # ChangeLog for app-i18n/uim-svn
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim-svn/ChangeLog,v 1.17 2005/06/04 15:03:37 hattya Exp $
-
-  04 Jun 2005; Akinori Hattori <hattya@gentoo.org>
-  -files/uim-svn-configure-fix.diff, uim-svn-20050505.ebuild:
-  remove a patch. this is fixed in the upstream repository.
-
-*uim-svn-20050505 (05 May 2005)
-
-  05 May 2005; Akinori Hattori <hattya@gentoo.org>
-  +files/uim-svn-configure-fix.diff,
-  -files/uim-svn-gtk-query-immodules-gentoo.diff,
-  -files/uim-svn-qtkde-helper.diff, -uim-svn-20040709.ebuild,
-  +uim-svn-20050505.ebuild:
-  change the repository location and merged the changes of app-i18n/uim.
-
-  29 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> uim-svn-20040709.ebuild:
-  Proper usage of kde eclasses, to make sure KDEDIR is defined (#33079).
-
-  15 Jan 2005; Dan Armak <danarmak@gentoo.org> uim-svn-20040709.ebuild:
-  Changed dep on kdebase to accept kdebase-meta, the split 'meta' package.
-  This dep will be narrowed down in the future to the precise split packages
-  required.
-
-  06 Nov 2004; Akinori Hattori <hattya@gentoo.org> uim-svn-20040709.ebuild:
-  s/qtkde-helper/uim-kdehelper/
-
-  04 Nov 2004; Akinori Hattori <hattya@gentoo.org>
-  files/uim-svn-qtkde-helper.diff, uim-svn-20040709.ebuild:
-  add dict and fep use flags. and some updates.
-
-  10 Aug 2004; Akinori Hattori <hattya@gentoo.org> uim-svn-20040709.ebuild:
-  fixed access violation of qtkde-helper.
-
-  10 Aug 2004; Akinori Hattori <hattya@gentoo.org> -uim-svn-20040124.ebuild:
-  cleaned out old ebuild.
-
-  17 Jul 2004; David Holm <dholm@gentoo.org> uim-svn-20040709.ebuild:
-  Added to ~ppc.
-
-*uim-svn-20040709 (09 Jul 2004)
-
-  09 Jul 2004; Akinori Hattori <hattya@gentoo.org>
-  +files/uim-svn-qtkde-helper.diff, +uim-svn-20040709.ebuild:
-  build qtkde-helper and merged the changes of app-i18n/uim.
-
-  07 Apr 2004; Akinori Hattori <hattya@gentoo.org> uim-svn-20040124.ebuild:
-  inherit flag-o-matic.
-
-  05 Apr 2004; Akinori Hattori <hattya@gentoo.org> uim-svn-20040124.ebuild,
-  files/uim-svn-gtk-query-immodules-gentoo.diff:
-  update patch from app-i18n/uim.
-
-  28 Jan 2004; Akinori Hattori <hattya@gentoo.org uim-svn-20040124.ebuild:
-  Blocks app-i18n/uim.
-
-  26 Jan 2004; Akinori Hattori <hattya@gentoo.org> uim-svn-20040124.ebuild,
-  files/uim-svn-gtk-query-immodules-gentoo.diff:
-  Added a necessary patch.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim-svn/ChangeLog,v 1.1 2004/01/25 13:07:18 hattya Exp $
 
 *uim-svn-20040124 (25 Jan 2004)
 

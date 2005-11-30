@@ -1,47 +1,8 @@
 # ChangeLog for dev-ml/pcre-ocaml
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/pcre-ocaml/ChangeLog,v 1.11 2005/04/30 19:22:01 hansmi Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/pcre-ocaml/ChangeLog,v 1.1 2002/06/29 05:34:05 george Exp $
 
-  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  pcre-ocaml-5.08.1.ebuild:
-  Stable on ppc.
-
-  27 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> pcre-ocaml-4.33.0.ebuild:
-  Add stable ppc keyword for old version.
-
-  30 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> -pcre-ocaml-5.03.3.ebuild,
-  pcre-ocaml-5.08.1.ebuild:
-  Stable move (fixes bug #65087 for amd64), remove old version.
-
-*pcre-ocaml-5.08.1 (21 Aug 2004)
-
-  21 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> -pcre-ocaml-4.26.3.ebuild,
-  pcre-ocaml-5.03.3.ebuild, +pcre-ocaml-5.08.1.ebuild:
-  Version bump, use findlib eclass, remove old, unused version.
-
-  23 Mar 2004; Matthieu Sozeau <mattam@gentoo.org> pcre-ocaml-5.03.3.ebuild,
-  metadata.xml:
-  Added ppc keyword and moved x86 to stable. Added metadata.xml.
-
-  13 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  pcre-ocaml-4.26.3.ebuild, pcre-ocaml-4.33.0.ebuild,
-  pcre-ocaml-5.03.3.ebuild:
-  Don't assign default to S; header fix
-
-*pcre-ocaml-5.03.3 (19 Jun 2003)
-
-  19 Jun 2003; George Shapovalov <george@gentoo.org> pcre-ocaml-5.03.3 :
-  new version (#22278), mirrored source on this one as well.
-
-*pcre-ocaml-4.33.0 (23 Feb 2003)
-
-  23 Feb 2003; George Shapovalov <george@gentoo.org> pcre-ocaml-4.33.0.ebuild :
-  
-  new version (#12318)
-  as author has a habit of removing old versions from his homepage, this one is mirrored
-  ebuild submitted by Bardur Arantsson <bardur-gta@odense.kollegienet.dk>
-
-*pcre-ocaml-4.26.3 (28 Jun 2002)
+*pcre-ocaml-4.26.3.ebuild (28 Jun 2002)
 
   28 Jun 2002; G Shapovalov <george@gentoo.org> all :
 

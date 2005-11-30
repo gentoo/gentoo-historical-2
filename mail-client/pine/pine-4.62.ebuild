@@ -1,18 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/pine/pine-4.62.ebuild,v 1.6 2005/03/05 07:05:25 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/pine/pine-4.62.ebuild,v 1.1 2005/01/22 20:12:26 ticho Exp $
 
 inherit eutils
 
-# Using this ugly hack, since we're making our own versioned copies of chappa
-# patch, as upstream doesn't version them. (see #59573)
+# Using this ugly hack, since we're using chappa patch revision 1 (see #59573)
 CHAPPA_PF="${P}"
 
 DESCRIPTION="A tool for reading, sending and managing electronic messages."
 HOMEPAGE="http://www.washington.edu/pine/
 	http://www.math.washington.edu/~chappa/pine/patches/"
 SRC_URI="ftp://ftp.cac.washington.edu/pine/${P/-/}.tar.bz2
-	mirror://gentoo/${CHAPPA_PF}-chappa-all.patch.gz
+	http://dev.gentoo.org/~ticho/portage/${CHAPPA_PF}-chappa-all.patch.gz
 	!maildir? ( http://dev.gentoo.org/~ticho/portage/pine-4.62-maildir.patch.gz )"
 # using my webspace until the patch gets fully distributed to mirrors  -Ticho
 #	mirror://gentoo/${CHAPPA_PF}-chappa-all.patch.gz"
@@ -24,7 +23,7 @@ SRC_URI="ftp://ftp.cac.washington.edu/pine/${P/-/}.tar.bz2
 
 LICENSE="PICO"
 SLOT="0"
-KEYWORDS="x86 ppc sparc ~alpha amd64 ~ppc-macos ia64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~ppc-macos"
 #IUSE="ipv6 maildir ssl ldap kerberos passfile"
 IUSE="ssl ldap kerberos largeterminal pam passfile debug maildir"
 

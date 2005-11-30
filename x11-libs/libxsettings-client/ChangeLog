@@ -1,24 +1,6 @@
 # ChangeLog for x11-libs/libxsettings-client
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxsettings-client/ChangeLog,v 1.8 2005/10/31 13:28:24 nelchael Exp $
-
-  31 Oct 2005; Krzysiek Pawlik <nelchael@gentoo.org>
-  libxsettings-client-0.10.ebuild:
-  Fixed dodoc not to install COPYING.
-
-  01 Jul 2005; Joseph Jezak <josejx@gentoo.org>
-  libxsettings-client-0.10.ebuild:
-  Marked ppc stable.
-
-  10 May 2005; David Holm <dholm@gentoo.org>
-  libxsettings-client-0.10.ebuild:
-  Added to ~ppc.
-
-  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org>
-  libxsettings-client-0.10.ebuild:
-  Marked stable.
-
-*libxsettings-client-0.10 (16 Dec 2003)
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libxsettings-client/ChangeLog,v 1.1 2003/12/16 01:21:17 port001 Exp $
 
   16 Dec 2003; Ian Leitch <port001@gentoo.org> : libxsettings-client-0.10.ebuild
   Initial commit, thanks to Rene Wagner <reenoo@gmx.de>. #29008

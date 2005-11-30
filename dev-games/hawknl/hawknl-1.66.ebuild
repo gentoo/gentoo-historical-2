@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation, 2004 Richard Garand <richard@garandnet.net>
+# Copyright 1999-2003 Gentoo Technologies, Inc., 2003 Richard Garand <richard@garandnet.net>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/hawknl-1.66.ebuild,v 1.7 2005/01/01 18:00:03 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-games/hawknl/hawknl-1.66.ebuild,v 1.1 2003/09/06 03:29:47 vapier Exp $
 
 DESCRIPTION="A cross-platform network library designed for games"
 HOMEPAGE="http://www.hawksoft.com/hawknl/"
@@ -11,7 +11,7 @@ SLOT="0"
 KEYWORDS="x86 ppc"
 IUSE="doc"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 S=${WORKDIR}/hawknl
 
@@ -21,14 +21,14 @@ src_unpack() {
 	ln -s makefile.linux makefile
 }
 
-src_compile() {
+src_compile () {
 	make OPTFLAGS="${CFLAGS} -D_GNU_SOURCE -D_REENTRANT" || die
 }
 
-src_install() {
+src_install () {
 	dodir /usr/{include,lib}
 	make install LIBDIR=${D}/usr/lib INCDIR=${D}/usr/include || die
-	if use doc ; then
+	if [ `use doc` ] ; then
 		docinto samples
 		dodoc samples/*
 	fi

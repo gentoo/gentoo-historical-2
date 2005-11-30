@@ -1,66 +1,46 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/driftnet/driftnet-0.1.6.ebuild,v 1.18 2005/06/03 17:30:25 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/driftnet/driftnet-0.1.6.ebuild,v 1.1 2002/07/19 04:23:43 spider Exp $
 
-inherit eutils flag-o-matic
-
-DESCRIPTION="A program which listens to network traffic and picks out images from TCP streams it observes"
+DESCRIPTION="Driftnet is a program which listens to network traffic and picks out images from TCP streams it observes."
 HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
-SRC_URI="http://www.ex-parrot.com/~chris/${PN}/${P}.tar.gz"
-
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ~amd64 ppc"
 SLOT="0"
-IUSE="gtk"
+KEYWORDS="x86"
+
 
 DEPEND="media-libs/jpeg
-	media-libs/giflib
-	virtual/libpcap
-	gtk? ( <x11-libs/gtk+-1.3.0 )
-	virtual/x11"
+		media-libs/libungif
+		net-libs/libpcap
+		gtk? ( <x11-libs/gtk+-1.3.0 )"
 
-# Note: x11 is necessary because of makedepend
+		
+RDEPEND="media-sound/mpg123"
+SRC_URI="http://www.ex-parrot.com/~chris/${PN}/${P}.tar.gz"
 
-RDEPEND="${DEPEND}
-	virtual/mpg123"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	# use giflib - bug 85720
-	sed -i 's/-lungif/-lgif/' Makefile || die "sed giflib failed"
-	# don't use gtk+ by default
-	sed -i 's:^\(.*gtk-config.*\)$:#\1:g' Makefile || die "sed disable gtk failed"
-
-	epatch ${FILESDIR}/${P}-tmpnam-is-bad.diff
-}
+S=${WORKDIR}/${P}
 
 src_compile() {
-	append-ldflags -Wl,-z,now
-
-	if use gtk; then
-		sed -i 's:^#\(.*gtk-config.*\)$:\1:g' Makefile || die "sed enable gtk failed"
+	if [ `use gtk` ] 
+	then
 		emake || die "gtk+ build failed"
 		mv driftnet driftnet-gtk
-		make clean || die
-	else
-		append-flags -DNO_DISPLAY_WINDOW
+		make clean
 	fi
-
-	emake || die "emake failed"
+	patch -p1 <${FILESDIR}/${P}-nogtk.patch
+	emake || die
 }
 
 src_install () {
-	dobin driftnet || die "dobin failed"
-	doman driftnet.1 || die "doman failed"
-
-	use gtk && { dobin driftnet-gtk || die "dobin failed (gtk)" ; }
-
-	dodoc CHANGES CREDITS README TODO || die "dodoc failed"
+	dobin driftnet
+	doman driftnet.1
+	use gtk && dobin driftnet-gtk
+	dodoc CHANGES COPYING CREDITS README TODO
 
 	einfo "marking the no-display driftnet as setuid root."
-	chown root:wheel "${D}/usr/bin/driftnet"
-	chmod 750 "${D}/usr/bin/driftnet"
-	chmod u+s "${D}/usr/bin/driftnet"
+	chown root.wheel ${D}/usr/bin/driftnet
+	chmod 750 ${D}/usr/bin/driftnet
+	chmod u+s ${D}/usr/bin/driftnet
+	
 }
+

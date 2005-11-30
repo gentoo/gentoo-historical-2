@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.1-r1.ebuild,v 1.4 2005/11/29 22:46:27 compnerd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.1-r1.ebuild,v 1.1 2005/08/06 18:03:31 compnerd Exp $
 
-inherit eutils java-pkg multilib
+inherit eutils java-pkg
 
 MY_DMF="R-3.1-200506271435"
 MY_VERSION="3.1"
@@ -19,7 +19,6 @@ KEYWORDS="~x86 ~amd64 ~ppc"
 
 IUSE="accessibility cairo firefox gnome mozilla"
 RDEPEND=">=virtual/jre-1.4
-		 >=x11-libs/gtk+-2.6.8
 		 mozilla? (
 		 			 firefox? ( >=www-client/mozilla-firefox-1.0.3 )
 					!firefox? ( >=www-client/mozilla-1.4 )
@@ -48,8 +47,14 @@ pkg_setup() {
 }
 
 src_unpack() {
-	# Portage should do this magically
-	unpack ${A} || die "Unable to unpack sources"
+	# Extract based on architecture
+	if [[ ${ARCH} == 'amd64' ]] ; then
+		unpack swt-${MY_VERSION}-gtk-linux-x86_64.zip || die "Unable to unpack sources"
+	elif [[ ${ARCH} == 'ppc' ]] ; then
+		unpack swt-${MY_VERSION}-gtk-linux-ppc.zip || die "Unable to unpack	sources"
+	else
+		unpack swt-${MY_VERSION}-gtk-linux-x86.zip || die "Unable to unpack	sources"
+	fi
 
 	# Clean up the directory structure
 	for f in $(ls); do
@@ -67,7 +72,7 @@ src_unpack() {
 	rm -f .classpath .project
 
 	# Replace the build.xml to allow compilation without Eclipse tasks
-	cp ${FILESDIR}/build.xml ${S}/build.xml || die "Unable to update build.xml"
+	cp ${FILESDIR}/build-${PV}.xml ${S}/build.xml || die "Unable to update build.xml"
 	mkdir ${S}/src && mv ${S}/org ${S}/src || die "Unable to restructure SWT sources"
 }
 
@@ -88,7 +93,7 @@ src_compile() {
 	fi
 
 	# Identity the XTEST library location
-	export XTEST_LIB_PATH=/usr/X11R6/$(get_libdir)
+	export XTEST_LIB_PATH=/usr/X11R6/lib
 
 	# Fix the pointer size for AMD64
 	[[ ${ARCH} == 'amd64' ]] && export SWT_PTR_CFLAGS=-DSWT_PTR_SIZE_64
@@ -149,7 +154,7 @@ src_compile() {
 src_install() {
 	java-pkg_dojar swt.jar
 
-	java-pkg_sointo /usr/$(get_libdir)
+	java-pkg_sointo /usr/lib
 	java-pkg_doso *.so
 
 	dohtml about.html
@@ -160,7 +165,7 @@ pkg_postinst() {
 		ewarn
 		ewarn "CAIRO Support is experimental! We are not responsible if"
 		ewarn "enabling support for CAIRO corrupts your Gentoo install,"
-		ewarn "if it blows up your computer, or if it becomes sentient"
+		ewarn "if it blows up your computer, or if it becoming sentient"
 		ewarn "and chases you down the street yelling random binary!"
 		ewarn
 		ebeep 5

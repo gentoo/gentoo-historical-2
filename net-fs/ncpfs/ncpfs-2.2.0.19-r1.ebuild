@@ -1,9 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.0.19-r1.ebuild,v 1.7 2005/01/29 08:36:38 corsair Exp $
+#Copyright 2002 Gentoo Technologies, Inc.
+#Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.0.19-r1.ebuild,v 1.1 2002/10/20 22:03:50 seemant Exp $
 
 IUSE="nls pam"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Provides Access to Netware services using the NCP protocol (Kernel support must be activated!)"
 SRC_URI="ftp://platan.vc.cvut.cz/pub/linux/ncpfs/latest/${P}.tar.gz"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/ncpfs/latest/"
@@ -24,7 +25,7 @@ src_compile() {
 		&& myconf="${myconf} --enable-pam" \
 		|| myconf="${myconf} --disable-pam"
 
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 	emake || die
 }
 

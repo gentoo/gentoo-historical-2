@@ -2,14 +2,11 @@
 <!DOCTYPE catmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <catmetadata>
 	<longdescription lang="en">
-		x11-apps contains applications distributed as part of X.Org X11.
+		x11-apps contain various non-core X11 related applications and utlities.
 	</longdescription>
 	<longdescription lang="ja">
-		x11-appsカテゴリにはX.Org X11のパッケージソフトが含まれます。
-	</longdescription>
-	<longdescription lang="de">
-		Die Kategorie x11-apps enthält Applikationen welche mit X.Org 
-		X11 ausgeliefert werden.
+		x11-appsカテゴリには様々なコアなしX11に関連したアプリケーションと
+		ユーティリティが含まれます。
 	</longdescription>
 </catmetadata>
 

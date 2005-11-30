@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/supercollider/supercollider-20040903.ebuild,v 1.6 2005/09/08 11:13:07 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/supercollider/supercollider-20040903.ebuild,v 1.1 2004/10/04 03:43:59 eradicator Exp $
 
 IUSE="emacs"
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="media-sound/jack-audio-connection-kit
 	 media-libs/alsa-lib
@@ -73,7 +73,7 @@ src_install() {
 	# Documentation
 	mv linux/README linux/README-linux
 	mv linux/scel/README linux/scel/README-scel
-	dodoc linux/README-linux linux/scel/README-scel
+	dodoc COPYING linux/README-linux linux/scel/README-scel
 
 	# Our documentation
 	sed -e "s:@DOCBASE@:/usr/share/doc/${PF}:" < ${FILESDIR}/README-gentoo.txt | gzip > ${D}/usr/share/doc/${PF}/README-gentoo.txt.gz

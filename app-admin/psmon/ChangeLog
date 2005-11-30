@@ -1,35 +1,6 @@
 # ChangeLog for app-admin/psmon
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/psmon/ChangeLog,v 1.11 2005/11/28 12:05:35 mcummings Exp $
-
-  28 Nov 2005; <mcumming@gentoo.org> psmon-1.29.ebuild:
-  Switched from perl-module to perl-app eclass
-
-  07 Sep 2005; Luis Medinas <metalgod@gentoo.org> psmon-1.29.ebuild:
-  Added ~amd64 keyword.
-
-  10 Aug 2005; Torsten Veller <tove@gentoo.org> psmon-1.0.4.ebuild,
-  psmon-1.29.ebuild:
-  Fixed HOMEPAGE. Thanks to Chris Rebert for bug #100782.
-
-*psmon-1.29 (30 Jul 2005)
-
-  30 Jul 2005; Daniel Black <dragonheart@gentoo.org> psmon-1.0.4.ebuild,
-  +psmon-1.29.ebuild:
-  version bump thanks to meatoo and bug #74390 thanks to Nicola Worthington
-  <nicolaw@lilacup.2x4b.com>
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> psmon-1.0.4.ebuild:
-  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> psmon-1.0.4.ebuild:
-  Masked psmon-1.0.4.ebuild stable for ppc
-
-  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> psmon-1.0.4.ebuild:
-  fix depend (bug #45110); tidy
-
-  01 Mar 2004; Markus Nigbur <pyrania@gentoo.org> psmon-1.0.4.ebuild:
-  Stable on x86.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/psmon/ChangeLog,v 1.1 2003/10/30 13:19:10 mholzer Exp $
 
 *psmon-1.0.4 (30 Oct 2003)
 

@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeedu-meta/kdeedu-meta-3.4.3.ebuild,v 1.8 2005/11/25 00:14:43 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdeedu-meta/kdeedu-meta-3.4.3.ebuild,v 1.1 2005/10/13 00:09:53 danarmak Exp $
 MAXKDEVER=$PV
 
 inherit kde-functions
-DESCRIPTION="kdeedu - merge this to pull in all kdeedu-derived packages"
+DESCRIPTION="kdeedu 3.3.0 - merge this to pull in all kdeedu-derived packages"
 HOMEPAGE="http://www.kde.org/"
 
 LICENSE="GPL-2"
 SLOT="3.4"
-KEYWORDS="~alpha amd64 ~ppc ppc64 sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="
@@ -30,8 +30,6 @@ $(deprange $PV $MAXKDEVER kde-base/kmplot)
 $(deprange $PV $MAXKDEVER kde-base/kstars)
 $(deprange $PV $MAXKDEVER kde-base/ktouch)
 $(deprange 3.4.2 $MAXKDEVER kde-base/klettres)
+$(deprange 3.4.2 $MAXKDEVER kde-base/kmathtool)
 $(deprange $PV $MAXKDEVER kde-base/kwordquiz)
 "
-
-# Not compiled by default.
-#$(deprange 3.4.2 $MAXKDEVER kde-base/kmathtool)

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.6_p3.ebuild,v 1.5 2004/07/02 04:31:41 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.6_p3.ebuild,v 1.1 2004/04/28 16:19:19 jhhudso Exp $
 
 inherit nsplugins libtool flag-o-matic eutils
 
@@ -11,11 +11,11 @@ SRC_URI="http://www-sor.inria.fr/~piumarta/squeak/unix/release/Squeak-${MY_PV}.s
 	mozilla? ( http://squeakland.org/installers/SqueakPlugin.image.zip )"
 LICENSE="Apple"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="X nas mmx mozilla"
 # a ffi flag would be nice
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	nas? ( media-libs/nas )
 	X? ( virtual/x11 )"
 RDEPEND="${DEPEND}
@@ -64,7 +64,7 @@ src_install() {
 	dosym /usr/lib/squeak/inisqueak /usr/bin/inisqueak
 
 	### the rest is all for the plugin
-	if use mozilla ; then
+	if [ "`use mozilla`" ] ; then
 		inst_plugin /usr/lib/squeak/${MY_PV}/npsqueak.so
 
 		dodoc nps/README.npsqueak

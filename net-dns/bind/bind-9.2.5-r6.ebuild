@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/bind-9.2.5-r6.ebuild,v 1.9 2005/10/30 01:36:11 voxus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/bind/bind-9.2.5-r6.ebuild,v 1.1 2005/09/02 09:15:45 voxus Exp $
 
 inherit eutils libtool
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.isc.org/isc/bind9/${PV}/${P}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="ssl ipv6 doc dlz postgres berkdb bind-mysql mysql odbc ldap selinux idn threads"
 
 DEPEND="sys-apps/groff
@@ -25,13 +25,6 @@ RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-bind )"
 
 src_unpack() {
-	use threads && {
-		echo
-		ewarn "If you're in vserver enviroment, you're probably want to"
-		ewarn "disable threads support because of linux capabilities dependency"
-		echo
-	}
-
 	unpack ${A} && cd ${S}
 
 	# Adjusting PATHs in manpages
@@ -203,7 +196,7 @@ pkg_postinst() {
 	einfo "The BIND ebuild now includes chroot support."
 	einfo "If you like to run bind in chroot AND this is a new install OR"
 	einfo "your bind doesn't already run in chroot, simply run:"
-	einfo "\`emerge --config '=${CATEGORY}/${PF}'\`"
+	einfo "\`ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\`"
 	einfo "Before running the above command you might want to change the chroot"
 	einfo "dir in /etc/conf.d/named. Otherwise /chroot/dns will be used."
 	echo

@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tiers/tiers-1.1.ebuild,v 1.4 2004/07/01 22:03:51 squinky86 Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tiers/tiers-1.1.ebuild,v 1.1 2004/01/11 12:47:12 robbat2 Exp $
 
 MY_P="${PN}${PV}"
 DESCRIPTION="Random network topography generator"
@@ -13,8 +11,8 @@ LICENSE="BSD as-is"
 SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
-DEPEND="sys-devel/gcc virtual/libc"
-RDEPEND="sys-apps/gawk media-gfx/gnuplot virtual/libc"
+DEPEND="sys-devel/gcc virtual/glibc"
+RDEPEND="sys-apps/gawk media-gfx/gnuplot virtual/glibc"
 S=${WORKDIR}/${PN}${PV}
 
 src_unpack() {

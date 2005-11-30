@@ -4,30 +4,43 @@
 afs
 acpi
 3dfx
+3dnow
+3dnowex
 directfb
 avi
 icc
 icc-pgo
 ifc
 krb4
-lm_sensors
+mmx
+mmx2
 mplayer
-pcmcia
 pda
 prelude
 ruby
 svga
+sse
+scanner
 firebird
 mzscheme
 chasen
 fdftk
 mono
 
+# Chris PeBenito <pebenito@gentoo.org>
+# must use a SELinux profile
+selinux
+
 # should be ok
 jikes
 junit
 
 guile
+uclibc
+caps
+
+# for now from xorg ... but likely not for long as this is desirable!
+dlloader
 
 # see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
 # Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
@@ -52,25 +65,9 @@ pfpro
 solid
 sybase
 sybase-ct
-glitz
-cairo
 
 # dietlibc
 diet
 
-#pyste has untested/unkeyworded deps on ppc64
-pyste
-
-# Unmask our instruction sets
--altivec
-
-# This one is needed because cryptsetup will not build on ppc64. This
-# useflag is used in cdrecord and can be removed once bug #90211 is fixed.
-on-the-fly-crypt
-
-# need to test libaio
-aio
-# needs some asm written
-ocaml
-# needs some research as to why it segfaults on build
-pike
+# aqua USE flag is only valid on Mac OS X
+aqua

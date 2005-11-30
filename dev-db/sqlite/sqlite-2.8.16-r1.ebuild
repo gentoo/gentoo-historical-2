@@ -1,31 +1,26 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-2.8.16-r1.ebuild,v 1.10 2005/11/19 13:18:25 killerfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/sqlite/sqlite-2.8.16-r1.ebuild,v 1.1 2005/04/02 20:11:34 arj Exp $
 
 inherit eutils toolchain-funcs
 
-DESCRIPTION="SQLite: An SQL Database Engine in a C Library"
-HOMEPAGE="http://www.sqlite.org/"
+IUSE="nls"
+
+DESCRIPTION="SQLite: An SQL Database Engine in a C Library."
 SRC_URI="http://www.sqlite.org/${P}.tar.gz"
-
-LICENSE="as-is"
+HOMEPAGE="http://www.sqlite.org"
+DEPEND="virtual/libc
+	dev-lang/tcl"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ~ppc-macos ppc64 sparc x86"
-IUSE="nls doc tcltk"
-
-DEPEND="doc? ( dev-lang/tcl )
-	tcltk? ( dev-lang/tcl )"
+LICENSE="as-is"
+KEYWORDS="x86 ~ppc ~sparc ~alpha ~arm ~mips ~hppa ~ppc64 amd64 ~ppc-macos"
 
 src_unpack() {
 	unpack ${A}
 
-	cd ${S}
-
 	use hppa && epatch ${FILESDIR}/${PN}-2.8.15-alignement-fix.patch
 
 	epatch ${FILESDIR}/${P}-multilib.patch
-
-	epunt_cxx
 
 	if use nls; then
 		ENCODING=${ENCODING-"UTF8"}
@@ -47,17 +42,11 @@ src_compile() {
 	myconf="--enable-incore-db --enable-tempdb-in-ram"
 	myconf="${myconf} `use_enable nls utf8`"
 	econf ${myconf} || die
-	emake all || die
+	emake all doc || die
 
-	if use doc; then
-	emake doc || die
-	fi
-
-	if use tcltk; then
 	cp -P ${FILESDIR}/maketcllib.sh ${S}
 	chmod +x ./maketcllib.sh
 	./maketcllib.sh
-	fi
 }
 
 src_install () {
@@ -68,15 +57,10 @@ src_install () {
 	dobin lemon
 	dodoc README VERSION
 	doman sqlite.1
-
-	if use doc; then
 	docinto html
 	dohtml doc/*.html doc/*.txt doc/*.png
-	fi
 
-	if use tcltk; then
 	mkdir ${D}/usr/lib/tclsqlite${PV}
 	cp ${S}/tclsqlite.so ${D}/usr/lib/tclsqlite${PV}/
 	cp ${S}/pkgIndex.tcl ${D}/usr/lib/tclsqlite${PV}/
-	fi
 }

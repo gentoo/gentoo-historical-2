@@ -1,36 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/gnofin/gnofin-0.8.4.ebuild,v 1.16 2005/01/01 14:38:54 weeve Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/app-office/gnofin/gnofin-0.8.4.ebuild,v 1.1 2001/06/04 10:34:15 achim Exp $
 
-inherit gnuconfig
-
+A=${P}.tar.gz
+S=${WORKDIR}/${P}
 DESCRIPTION="a personal finance application for GNOME"
+SRC_URI="ftp://gnofin.sourceforge.net/pub/gnofin/stable/source/${A}
+	 http://download.sourceforge.net/gnofin/${A}
+	 http://jagger.ME.Berkley.EDU/~dfisher/gnofin/stable/source/${A}"
+
 HOMEPAGE="http://gnofin.sourceforge.net"
-SRC_URI="ftp://gnofin.sourceforge.net/pub/gnofin/stable/source/${P}.tar.gz
-	 http://download.sourceforge.net/gnofin/${P}.tar.gz"
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 amd64 ~sparc"
-IUSE=""
+DEPEND=">=gnome-base/gnome-libs-1.2.4
+	>=gnome-base/libxml-1.8.10"
 
-DEPEND=">=gnome-base/gnome-libs-1.4.1.2-r1
-	>=dev-libs/libxml-1.8.10"
-
-src_compile() {
-	gnuconfig_update
-
-	./configure --host=${CHOST}					\
-		    --prefix=/usr					\
-		    --sysconfdir=/etc					\
-		    --localstatedir=/var/lib || die
-	emake || die
+src_compile() {                           
+  try ./configure --host=${CHOST} --prefix=/opt/gnome \
+  try make
 }
 
-src_install() {
-	make prefix=${D}/usr						\
-	     sysconfdir=${D}/etc					\
-	     localstatedir=${D}/var/lib install || die
-
-	dodoc AUTHORS COPYING* ChangeLog NEWS README*
+src_install() {                               
+  try make prefix=${D}/opt/gnome install
+  dodoc AUTHORS COPYING* ChangeLog NEWS
+  dodoc README*
 }
+
+
+
+
+

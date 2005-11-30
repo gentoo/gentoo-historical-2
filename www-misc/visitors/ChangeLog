@@ -1,25 +1,6 @@
-# ChangeLog for www-misc/visitors
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/visitors/ChangeLog,v 1.6 2005/09/12 23:02:45 hansmi Exp $
-
-  12 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> visitors-0.5.ebuild:
-  Stable on ppc.
-
-  08 Sep 2005; Elfyn McBratney <beu@gentoo.org> metadata.xml,
-  visitors-0.5.ebuild:
-  Update metadata.xml.  Stable on x86.
-
-*visitors-0.5 (11 May 2005)
-
-  11 May 2005; Elfyn McBratney <beu@gentoo.org> +visitors-0.5.ebuild:
-  Long awaited version bump.
-
-  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed ChangeLog header.
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  visitors-0.2a.ebuild:
-  Masked visitors-0.2a.ebuild stable for ppc
+# ChangeLog for net-www/visitors
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/visitors/ChangeLog,v 1.1 2004/08/15 18:16:21 stuart Exp $
 
 *visitors-0.2a (15 Aug 2004)
 

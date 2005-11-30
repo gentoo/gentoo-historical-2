@@ -1,9 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/biblestudy/biblestudy-1.0.ebuild,v 1.5 2005/04/30 16:40:42 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/biblestudy/biblestudy-1.0.ebuild,v 1.1 2004/05/03 20:27:51 squinky86 Exp $
 
 IUSE="unicode"
-DESCRIPTION="biblestudy software based on the sword library"
+DESCRIPTION="biblestudy software based on the "
 HOMEPAGE="http://www.whensdinner.com/"
 SRC_URI="mirror://sourceforge/christiangame/${P}.tar.bz2"
 RESTRICT="nomirror"
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="~x86"
 newdepend ">=app-text/sword-1.5.7
 	>=app-text/sword-modules-20040503
-	=x11-libs/wxGTK-2.4*"
+	>=x11-libs/wxGTK-2.4.2"
 
 src_install() {
 	make DESTDIR=${D} install || die "install failed"

@@ -1,43 +1,6 @@
 # ChangeLog for x11-libs/libFS
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libFS/ChangeLog,v 1.10 2005/11/11 17:27:47 spyderous Exp $
-
-*libFS-0.99.2 (11 Nov 2005)
-
-  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>; +libFS-0.99.2.ebuild:
-  Bump for 7.0RC2.
-
-  04 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  -libFS-0.99.0.ebuild, -libFS-0.99.1.ebuild:
-  Drop old versions.
-
-  31 Oct 2005; <dang@gentoo.org> libFS-0.99.1-r1.ebuild:
-  Marked ~amd64
-
-  30 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  libFS-0.99.1-r1.ebuild:
-  Move some proto deps to reflect compile-time requirements.
-
-*libFS-0.99.1-r1 (27 Oct 2005)
-
-  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  +libFS-0.99.1-r1.ebuild:
-  Rev-bump for new USE flag.
-
-  27 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
-  libFS-0.99.1.ebuild:
-  Added ipv6 USE flag.
-
-*libFS-0.99.1 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +libFS-0.99.1.ebuild:
-  Bump for 7.0 RC1.
-
-  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
-  Add metadata.
-
-  08 Aug 2005; Ferris McCormick <fmccor@gentoo.org> libFS-0.99.0.ebuild:
-  Add ~sparc keyword (modular X testing).
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libFS/ChangeLog,v 1.1 2005/08/08 04:21:20 spyderous Exp $
 
 *libFS-0.99.0 (08 Aug 2005)
 

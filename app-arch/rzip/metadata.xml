@@ -3,7 +3,8 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-	<email>ferringb@gentoo.org</email>
+  <email>seemant@gentoo.org</email>
+  <name>Seemant Kulleen</name>
 </maintainer>
 <maintainer>
 	<email>ben@stijlstek.nl</email>

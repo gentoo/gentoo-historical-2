@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ieee80211-1.1.5-r1.ebuild,v 1.5 2005/11/24 14:30:59 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ieee80211-1.1.5-r1.ebuild,v 1.1 2005/10/20 13:22:24 brix Exp $
 
 inherit eutils linux-mod
 
@@ -42,14 +42,13 @@ pkg_setup() {
 		die "${P} does not support building against kernel 2.4.x"
 	fi
 
-	if [[ -f ${KV_DIR}/include/net/ieee80211.h ]] || \
-		[[ -f ${KV_DIR}/include/config/ieee80211.h ]]; then
+	if [[ -f ${KV_DIR}/include/net/ieee80211.h ]]; then
 		eerror
-		eerror "Your kernel source contains an incompatible version of the"
+		eerror "You kernel source contains an incomptible version of the"
 		eerror "ieee80211 subsystem, which needs to be removed before"
 		eerror "${P} can be installed. This can be accomplished by running:"
 		eerror
-		eerror "  # /bin/sh ${FILESDIR}/remove-old ${KV_DIR}"
+		eerror "  # rm -i ${KV_DIR}/include/net/ieee80211.h"
 		eerror
 		eerror "Please note that this will make it impossible to use some of the"
 		eerror "in-kernel IEEE 802.11 wireless LAN drivers (eg. orinoco)."

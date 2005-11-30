@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation.
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/embedded/packages,v 1.2 2004/06/26 23:29:26 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/embedded/packages,v 1.1 2004/04/12 19:05:11 pebenito Exp $
 
 # base generic embedded profile
 

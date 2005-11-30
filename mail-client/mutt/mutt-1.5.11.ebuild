@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.11.ebuild,v 1.8 2005/11/25 12:48:37 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.11.ebuild,v 1.1 2005/09/19 10:52:09 ferdy Exp $
 
 inherit eutils flag-o-matic
 
@@ -30,7 +30,7 @@ SRC_URI="ftp://ftp.mutt.org/mutt/devel/${P}.tar.gz
 IUSE="berkdb buffysize cjk crypt debug gdbm gnutls gpgme idn imap mbox nls nntp pop sasl smime ssl vanilla"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc-macos ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 RDEPEND="nls? ( sys-devel/gettext )
 	>=sys-libs/ncurses-5.2
 	gdbm?    ( sys-libs/gdbm )
@@ -65,9 +65,6 @@ pkg_setup() {
 
 src_unpack() {
 	unpack ${P}.tar.gz && cd ${S} || die "unpack failed"
-
-	# Fix configure.in sasl checking
-	epatch "${FILESDIR}/${P}-sasl.patch"
 
 	if ! use vanilla ; then
 		for p in ${!patch_*} ; do
@@ -107,7 +104,8 @@ src_compile() {
 		--with-regex \
 		--disable-fcntl --enable-flock \
 		--enable-nfs-fix --enable-external-dotlock \
-		--with-mixmaster"
+		--with-mixmaster \
+		--without-sasl"
 
 	# See Bug #22787
 	unset WANT_AUTOCONF_2_5 WANT_AUTOCONF
@@ -132,9 +130,9 @@ src_compile() {
 			myconf="${myconf} --with-ssl"
 		fi
 		# not sure if this should be mutually exclusive with the other two
-		myconf="${myconf} $(use_with sasl)"
+		myconf="${myconf} $(use_with sasl sasl2)"
 	else
-		myconf="${myconf} --without-gnutls --without-ssl --without-sasl"
+		myconf="${myconf} --without-gnutls --without-ssl --without-sasl2"
 	fi
 
 	# See Bug #11170

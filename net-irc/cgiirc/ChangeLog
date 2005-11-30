@@ -1,29 +1,6 @@
 # ChangeLog for net-irc/cgiirc
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/cgiirc/ChangeLog,v 1.8 2005/07/03 18:54:39 rl03 Exp $
-
-*cgiirc-0.5.7 (03 Jul 2005)
-
-  03 Jul 2005; Renat Lumpau <rl03@gentoo.org> +cgiirc-0.5.7.ebuild:
-  Version bump per #80003. Install things into MY_CGIBINDIR.
-
-  18 Dec 2004; Simon Stelling <blubb@gentoo.org> cgiirc-0.5.4.ebuild:
-  added ~amd64
-
-  21 Jun 2004; Sven Wegener <swegener@gentoo.org> cgiirc-0.5.3.ebuild:
-  Added IUSE=""
-
-*cgiirc-0.5.4 (31 May 2004)
-
-  31 May 2004; Martin Holzer <mholzer@gentoo.org> cgiirc-0.5.4.ebuild:
-  Version bumped. closes 52392
-
-  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  cgiirc-0.5.3.ebuild:
-  Masked cgiirc-0.5.3.ebuild testing for ppc
-
-  19 Apr 2004; Martin Holzer <mholzer@gentoo.org> cgiirc-0.5.3.ebuild:
-  moving webapp-detect to pkg_setup
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/cgiirc/ChangeLog,v 1.1 2004/01/29 15:45:27 mholzer Exp $
 
 *cgiirc-0.5.3 (29 Jan 2004)
 

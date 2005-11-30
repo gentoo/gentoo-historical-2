@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mambo/mambo-4.5.2.3.ebuild,v 1.5 2005/10/23 15:04:30 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mambo/mambo-4.5.2.3.ebuild,v 1.1 2005/06/16 12:26:25 rl03 Exp $
 
 inherit webapp eutils
 
@@ -16,13 +16,13 @@ S=${WORKDIR}
 IUSE=""
 
 RDEPEND="dev-db/mysql
-	virtual/php
+	>=virtual/php-4.1
 	net-www/apache"
 DEPEND="app-arch/unzip"
 
 pkg_setup () {
 	webapp_pkg_setup
-	einfo "Please make sure that your PHP is compiled with XML and MySQL support"
+	einfo "Please make sure that your PHP is compiled with zlib, XML, and MySQL support"
 }
 
 src_install () {
@@ -46,7 +46,7 @@ src_install () {
 }
 
 pkg_postinst () {
-	einfo "Now run \"emerge --config =${PF}\""
+	einfo "Now run ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
 	einfo "to setup the database"
 	einfo "Note that db and dbuser need to be present prior to running db setup"
 	webapp_pkg_postinst
@@ -62,31 +62,36 @@ pkg_config() {
 	/etc/init.d/mysql restart || die "mysql needs to be running"
 
 	echo -n "mysql db name [${D_DB}]: "; read MY_DB
-	[[ -z ${MY_DB} ]] && MY_DB=${D_DB}
+	if (test -z ${MY_DB}) ; then MY_DB=${D_DB} ; fi
 
 	echo -n "mysql db host [${D_HOST}]: "; read MY_HOST
-	[[ -z ${MY_HOST} ]] && MY_HOST=${D_HOST}
+	if (test -z ${MY_HOST}) ; then MY_HOST=${D_HOST}; fi
 
 	echo -n "mysql dbuser name [${D_USER}]: "; read MY_USER
-	[[ -z ${MY_USER} ]] && MY_USER=${D_USER}
+	if (test -z ${MY_USER}) ; then MY_USER=${D_USER} ; fi
 
 	echo -n "mysql dbuser password: "; read mypwd
-	[[ -z ${mypwd} ]] && die "Error: no dbuser password"
+	if (test -z ${mypwd}) ; then die "Error: no dbuser password" ; fi
 
 	# privileges
 	echo -n "Please enter login info for user who has grant privileges on ${MY_HOST} [$USER]: "; read adminuser
-	[[ -z ${adminuser} ]] && adminuser="$USER"
+	if (test -z ${adminuser}) ; then adminuser="$USER" ; fi
 	if [ "${MY_HOST}" != "localhost" ]; then
 		echo -n "Client address (at db side) [$(hostname -f)]: "; read clientaddr
-		[[ -z ${clientaddr} ]] && clientaddr="$(hostname -f)"
+		if (test -z ${clientaddr}) ; then clientaddr="$(hostname -f)" ; fi
 	fi
 	# this will be default for localhost
-	[[ -z ${clientaddr} ]] && clientaddr="${MY_HOST}"
+	if (test -z ${clientaddr}) ; then clientaddr="${MY_HOST}" ; fi
 
 	# if $MY_HOST == localhost, don't specify -h argument, so local socket can be used.
 	host=${MY_HOST/localhost}
-	mysqladmin -u ${adminuser} ${host:+-h ${host}} -p create ${MY_DB} || die "Error creating database"
-	mysql -u "${adminuser}" "${host:+-h ${host}}" -p \
-		-e "GRANT SELECT,INSERT,UPDATE,DELETE,INDEX,ALTER,CREATE,DROP,REFERENCES
-		ON ${MY_DB}.* TO '${MY_USER}'@'${clientaddr}' IDENTIFIED BY '${mypwd}'; FLUSH PRIVILEGES;"  || die "Error initializing database. Please grant permissions manually."
+	mysqladmin -u ${MY_USER} ${host:+-h ${host}} -p create ${MY_DB} || die "Error creating database"
+	mysql -u ${adminuser} ${host:+-h ${host}} -p mysql --exec="GRANT SELECT,INSERT,UPDATE,DELETE,INDEX, ALTER,CREATE,DROP,REFERENCES ON ${MY_DB}.* TO ${MY_USER}@${clientaddr} IDENTIFIED BY '${mypwd}'; FLUSH PRIVILEGES;"  || {
+	echo "Error running query!"
+	echo
+	echo "Please run it manually on ${host}."
+	echo
+	echo "   \$ mysql -u ${adminuser} -p mysql --exec=\"GRANT SELECT,INSERT,UPDATE,DELETE,INDEX, ALTER,CREATE,DROP,REFERENCES ON ${MY_DB}.* TO ${MY_USER}@${clientaddr} IDENTIFIED BY '${mypwd}'; FLUSH PRIVILEGES;\""
+	echo
+	}
 }

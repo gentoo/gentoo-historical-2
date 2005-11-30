@@ -1,12 +1,6 @@
 # ChangeLog for app-cdr/pxlinux
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/pxlinux/ChangeLog,v 1.4 2005/09/10 07:33:48 vapier Exp $
-
-*pxlinux-0.0.4-r1 (10 Sep 2005)
-
-  10 Sep 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/pxlinux-0.0.4-cleanups.patch, +pxlinux-0.0.4-r1.ebuild:
-  Cleanup the code a bit and fix segfaults #105432 by Thomas Maguin.
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/pxlinux/ChangeLog,v 1.1 2005/06/06 22:35:06 vapier Exp $
 
 *pxlinux-0.0.4 (06 Jun 2005)
 

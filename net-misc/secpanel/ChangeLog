@@ -1,38 +1,6 @@
 # ChangeLog for net-misc/secpanel
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/secpanel/ChangeLog,v 1.12 2005/04/19 12:16:26 taviso Exp $
-
-  19 Apr 2005; Tavis Ormandy <taviso@gentoo.org> :
-  *bump*
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  22 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> secpanel-0.43.ebuild:
-  Stable on alpha.
-
-  11 May 2004; Jason Wever <weeve@gentoo.org> secpanel-0.43.ebuild:
-  Added ~sparc keyword.
-
-  29 Mar 2004; Tavis Ormandy <taviso@gentoo.org> secpanel-0.43.ebuild:
-  stable on x86
-
-  15 Mar 2004; Tavis Ormandy <taviso@gentoo.org> secpanel-0.43.ebuild:
-  fixing #44600
-
-*secpanel-0.43 (13 Mar 2004)
-
-  13 Mar 2004; Tavis Ormandy <taviso@gentoo.org> secpanel-0.43.ebuild:
-  new release, author changed directory name.
-
-  06 Nov 2003; Tavis Ormandy <taviso@gentoo.org> secpanel-0.41.ebuild:
-  stable
-
-  30 Oct 2003; Tavis Ormandy <taviso@gentoo.org> secpanel-0.41.ebuild:
-  updated description
-
-  30 Oct 2003; Tavis Ormandy <taviso@gentoo.org> secpanel-0.41.ebuild:
-  make gifs optional.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/secpanel/ChangeLog,v 1.1 2003/10/30 11:19:57 taviso Exp $
 
 *secpanel-0.41 (30 Oct 2003)
 

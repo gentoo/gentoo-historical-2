@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-radio/gmfsk/gmfsk-0.6.ebuild,v 1.6 2005/03/07 06:12:35 killsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-radio/gmfsk/gmfsk-0.6.ebuild,v 1.1 2004/07/24 04:39:21 killsoft Exp $
 
 inherit gnome2
 
@@ -10,8 +10,8 @@ SRC_URI="http://he.fi/pub/ham/unix/linux/hfmodems/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 ~ppc"
-IUSE="doc"
+KEYWORDS="~x86 ~ppc"
+IUSE=""
 
 RDEPEND="virtual/libc
 	virtual/x11
@@ -19,7 +19,7 @@ RDEPEND="virtual/libc
 	>=gnome-base/libgnomeui-2.0
 	gnome-extra/yelp
 	>=media-libs/hamlib-1.2.0
-	<sci-libs/fftw-3"
+	<dev-libs/fftw-3"
 
 DEPEND="${RDEPEND}
 	>=app-text/scrollkeeper-0.3.5
@@ -27,4 +27,4 @@ DEPEND="${RDEPEND}
 	>=gnome-base/gconf-2.6"
 
 G2CONF="${G2CONF} --enable-hamlib"
-DOCS="AUTHORS COPYING COPYING-DOCS ChangeLog INSTALL NEWS README"
+

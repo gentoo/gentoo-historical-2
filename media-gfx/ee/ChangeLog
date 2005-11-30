@@ -1,46 +1,7 @@
 # ChangeLog for media-gfx/ee
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/ee/ChangeLog,v 1.12 2005/10/18 04:22:27 vapier Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/ee/ChangeLog,v 1.1 2002/02/01 21:53:29 gbevin Exp $
 
-  18 Oct 2005; Mike Frysinger <vapier@gentoo.org> ee-0.3.12-r3.ebuild:
-  Cleanup ebuild and fix nls issues #99762.
-
-  11 Aug 2005; Mark Loeser <halcy0n@gentoo.org> +metadata.xml,
-  ee-0.3.12-r2.ebuild, ee-0.3.12-r3.ebuild:
-  Fixed description; bug #92145 and added metadata.xml
-
-  01 Jul 2005; Ferris McCormick <fmccor@gentoo.org> ee-0.3.12-r3.ebuild:
-  Add ~sparc keyword (after user query); builds without incident and appears
-  to run fine.
-
-  01 Jul 2005; Ferris McCormick <fmccor@gentoo.org> ee-0.3.12-r2.ebuild:
-  Add ~sparc keyword as a result of a user query; seems to work fine.
-
-*ee-0.3.12-r3 (07 Dec 2004)
-
-  07 Dec 2004; Akinori Hattori <hattya@gentoo.org> +ee-0.3.12-r3.ebuild:
-  fixes bug #73179.
-
-  01 Oct 2004; <pyrania@gentoo.org> ee-0.3.12-r2.ebuild:
-  Made epatch aware.
-
-  15 Dec 2003; Jon Portnoy <avenj@gentoo.org> ee-0.3.12-r2.ebuild :
-  AMD64 keywords. Also added gnuconfig_update.
-
-*ee-0.3.12-r2 (9 May 2002)
- 
-  30 Nov 2002; Jon Nall <nall@gentoo.org> ee-0.3.12-r2.ebuild :
-  added ~ppc to KEYWORDS
-
-  15 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ee-0.3.12-r2.ebuild :
-
-  Added db-1 as a dependency. Thanks to: bradh@frogmouth.net (Brad Hards) in
-  bug #9149.
-
-  9 May 2002; Spider <spider@gentoo.org> ee-0.3.12-r2.ebuild :
-  patch for -mo files
-  nls-update
-  
 *ee-0.3.12-r1 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

@@ -1,43 +1,35 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/waimea/waimea-0.4.0-r1.ebuild,v 1.16 2005/05/08 14:49:51 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/waimea/waimea-0.4.0-r1.ebuild,v 1.1 2003/06/22 23:23:50 vapier Exp $
 
 inherit eutils
-
+ 
 DESCRIPTION="Window manager based on BlackBox"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2
-	cjk? ( http://poincare.ikezoe.net/patch/${P}-japanese.patch )"
+SRC_URI="http://www.waimea.org/files/stable/source/${P}.tar.bz2
+	cjk? ( http://www.kasumi.sakura.ne.jp/~zoe/tdiary/patch/${P}-ja.patch )"
 HOMEPAGE="http://www.waimea.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
+KEYWORDS="x86 ~sparc ~ppc"
 IUSE="truetype xinerama cjk"
 
-DEPEND="virtual/x11
+DEPEND="virtual/x11 
 	media-libs/imlib2
 	virtual/xft"
 
 PROVIDE="virtual/blackbox"
 
-pkg_setup() {
-	if ! built_with_use 'media-libs/imlib2' X ; then
-		# bug #86496
-		eerror "imlib2 must be compiled with X USE flag enabled."
-		die "Please remerge imlib2 with X USE flag and try again."
-	fi
-}
-
 src_unpack() {
-	unpack ${P}.tar.bz2
+	unpack ${A}
 	cd ${S}
-	use cjk && epatch ${DISTDIR}/${P}-japanese.patch
+	use cjk && epatch ${DISTDIR}/${P}-ja.patch
 }
 
 src_compile() {
 	econf \
-		$(use_enable xinerama) \
-		$(use_enable truetype xft) \
+		`use_enable xinerama` \
+		`use_enable truetype xft` \
 		--enable-shape \
 		--enable-render \
 		--enable-randr \

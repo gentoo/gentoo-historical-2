@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/zprod-manager/zprod-manager-0.3.ebuild,v 1.6 2005/09/06 02:36:40 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/zprod-manager/zprod-manager-0.3.ebuild,v 1.1 2004/10/07 21:23:50 radek Exp $
 
 DESCRIPTION="Gentoo Zope Product selection tool"
 SRC_URI=""
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gentoo.org/"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
-KEYWORDS="~amd64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 DEPEND=""
 RDEPEND=">=dev-util/dialog-0.7

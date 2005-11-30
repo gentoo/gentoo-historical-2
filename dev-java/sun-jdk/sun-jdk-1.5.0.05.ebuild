@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/sun-jdk-1.5.0.05.ebuild,v 1.5 2005/11/11 11:21:07 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/sun-jdk-1.5.0.05.ebuild,v 1.1 2005/09/16 13:18:47 axxo Exp $
 
 inherit java eutils
 
@@ -27,7 +27,7 @@ SLOT="1.5"
 LICENSE="sun-bcla-java-vm"
 KEYWORDS="~x86 ~amd64 -*"
 RESTRICT="fetch nostrip"
-IUSE="doc browserplugin nsplugin jce mozilla examples"
+IUSE="doc browserplugin jce mozilla"
 
 #
 DEPEND=">=dev-java/java-config-1.2
@@ -51,17 +51,9 @@ FETCH_JCE="http://javashoplm.sun.com/ECom/docs/Welcome.jsp?StoreId=22&PartDetail
 
 
 pkg_nofetch() {
-	local archtext=""
-
-	if use x86; then
-		archtext="Linux"
-	elif use amd64; then
-		archtext="Linux AMD64"
-	fi
-
 	einfo "Please download ${At} from:"
-	einfo "${FETCH_SDK}"
-	einfo "Select the ${archtext} self-extracting file"
+	einfo ${FETCH_SDK}
+	einfo "(Select the Self-extracting (.bin) for Linux or Linux AMD64, depending on your arch)"
 	einfo "and move it to ${DISTDIR}"
 
 	if use jce; then
@@ -112,22 +104,18 @@ src_unpack() {
 }
 
 src_install() {
+	local dirs="bin include jre lib man"
 	dodir /opt/${P}
 
-	for i in bin include jre lib man; do
-		cp -pPR $i ${D}/opt/${P}/ || die "failed to copy ${i}"
+	for i in $dirs ; do
+		cp -pPR $i ${D}/opt/${P}/ || die "failed to copy"
 	done
 	dodoc COPYRIGHT LICENSE README.html
 	dohtml README.html
 	dodir /opt/${P}/share/
-
-	cp -pPR src.zip ${D}/opt/${P}/share/
-
-	if use examples; then
-		cp -pPR demo ${D}/opt/${P}/share/
-		if ( use x86 || use amd64 ); then
-			cp -pPR sample ${D}/opt/${P}/share/
-		fi
+	cp -pPR demo src.zip ${D}/opt/${P}/share/
+	if ( use x86 || use amd64 ); then
+		cp -pPR sample ${D}/opt/${P}/share/
 	fi
 
 	if use jce ; then
@@ -141,9 +129,7 @@ src_install() {
 		dosym /opt/${P}/jre/lib/security/unlimited-jce/local_policy.jar /opt/${P}/jre/lib/security/
 	fi
 
-	if use nsplugin ||       # global useflag for netscape-compat plugins
-	   use browserplugin ||  # deprecated but honor for now
-	   use mozilla; then     # wrong but used to honor it
+	if use browserplugin || use mozilla; then
 		local plugin_dir="ns7-gcc29"
 		if has_version '>=sys-devel/gcc-3' ; then
 			plugin_dir="ns7"
@@ -168,6 +154,10 @@ src_install() {
 	domenu ${T}/sun_java.desktop
 
 	set_java_env ${FILESDIR}/${VMHANDLE}
+
+	# TODO prepman "fixes" symlink ja -> ja__JP.eucJP in 'man' directory,
+	#      creating ja.gz -> ja_JP.eucJP.gz. This is broken as ja_JP.eucJP
+	#      is a directory and will not be gzipped ;)
 }
 
 pkg_postinst() {
@@ -228,10 +218,9 @@ pkg_postinst() {
 	einfo " are not valid identifiers any more in that mode,"
 	einfo " which can cause incompatibility with certain sources."
 
-	if ! use nsplugin && ( use browserplugin || use mozilla ); then
-		echo
-		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
-		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
-		ewarn "update your USE to include 'nsplugin'."
+	if ! use browserplugin && use mozilla; then
+		ewarn
+		ewarn "The 'mozilla' useflag to enable the java browser plugin for applets"
+		ewarn "has been renamed to 'browserplugin' please update your USE"
 	fi
 }

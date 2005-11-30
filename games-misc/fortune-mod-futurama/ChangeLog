@@ -1,19 +1,9 @@
-# ChangeLog for games-misc/fortune-mod-futurama
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-futurama/ChangeLog,v 1.7 2005/08/27 18:01:53 corsair Exp $
+# ChangeLog for app-games/fortune-mod-futurama
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-futurama/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
-  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-futurama-0.2.ebuild:
-  Stable on ppc64
 
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-futurama-0.2.ebuild:
-  Added ~ppc64 (bug #100217)
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*fortune-mod-futurama-0.2 (17 Jul 2002)
+*fortune-mod-futurama-0.2.ebuild (17 julio 2002)
 
   26 Aug 2003; Joshua Kinard <kumba@gentoo.org> fortune-mod-futurama-0.2.ebuild:
   Added ~mips & ~sparc to KEYWORDS
@@ -25,7 +15,7 @@
   03 Nov 2002; Jon Nall <nall@gentoo.org> fortune-mod-futurama-0.2.ebuild :
   added ppc to KEYWORDS
 
-  17 jul 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> fortune-mod-futurama-0.2.ebuild :
+  17 jul 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> fortune-mod-futurama-0.2.ebuild :
   Added KEYWORDS.
 
 *fortune-mod-futurama:$-0.1.1 (11 Jul 2002)

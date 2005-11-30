@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/supybot/supybot-0.77.2.ebuild,v 1.8 2005/05/29 15:43:33 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/supybot/supybot-0.77.2.ebuild,v 1.1 2004/06/26 19:49:29 liquidx Exp $
 
 inherit distutils eutils
 
@@ -8,16 +8,15 @@ MY_P=${P/s/S}
 
 DESCRIPTION="Python based extensible IRC infobot and channel bot"
 HOMEPAGE="http://supybot.sf.net/"
-SRC_URI="mirror://sourceforge/supybot/${MY_P}.tar.bz2
-	mirror://gentoo/${P}-cvsadditions-2004-06-10.patch.bz2"
+SRC_URI="mirror://sourceforge/supybot/${MY_P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ppc-macos"
-IUSE="sqlite"
+KEYWORDS="~x86 ~ppc"
+IUSE=""
 
 DEPEND=">=dev-lang/python-2.3
-	sqlite? ( >=dev-python/pysqlite-0.4.3 )"
+	>=dev-python/pysqlite-0.4.3"
 
 S=${WORKDIR}/${MY_P}
 
@@ -26,7 +25,7 @@ DOCS="ACKS BUGS LICENSE TODO"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}; epatch ${WORKDIR}/${P}-cvsadditions-2004-06-10.patch
+	cd ${S}; epatch ${FILESDIR}/${P}-cvsadditions-2004-06-10.patch
 }
 
 src_install() {

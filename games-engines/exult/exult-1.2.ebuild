@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/exult/exult-1.2.ebuild,v 1.5 2005/10/07 03:49:18 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-engines/exult/exult-1.2.ebuild,v 1.1 2004/06/29 11:49:57 mr_bones_ Exp $
 
 inherit games
 
@@ -12,18 +12,16 @@ SRC_URI="mirror://sourceforge/exult/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~sparc x86"
-IUSE="3dnow mmx timidity zlib"
+KEYWORDS="x86 ppc ~sparc"
+IUSE="timidity zlib mmx 3dnow"
 
-RDEPEND=">=media-libs/libsdl-1.2
+DEPEND=">=media-libs/libsdl-1.2*
 	>=media-libs/sdl-mixer-1.2.4
 	media-libs/smpeg
 	media-libs/libogg
 	media-libs/libvorbis
-	timidity? ( >=media-sound/timidity++-2 )
+	timidity? ( >=media-sound/timidity++-2* )
 	zlib? ( sys-libs/zlib )"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
 
 # upstream says... "the opengl renderer is very very experimental and
 # not recommended for actual use"
@@ -33,8 +31,8 @@ src_unpack() {
 	unpack ${P}.tar.gz
 	mkdir music/
 	cd music/
-	unpack U7MusicOGG_{1,2}of2.zip
-	cd "${S}"
+	unpack U7MusicOGG_[12]of2.zip
+	cd ${S}
 	sed -i \
 		-e "s/u7siinstrics.data/u7siintrinsics.data/" \
 		usecode/ucxt/data/Makefile.in \
@@ -51,18 +49,18 @@ src_compile() {
 		--disable-dependency-tracking \
 		--disable-tools \
 		--disable-opengl \
-		$(use_enable 3dnow) \
-		$(use_enable mmx) \
 		$(use_enable timidity) \
 		$(use_enable zlib zip-support) \
+		$(use_enable mmx) \
+		$(use_enable 3dnow) \
 		|| die
 	emake || die "emake failed"
 }
 
 src_install() {
 	make DESTDIR="${D}" \
-		desktopdir=/usr/share/applications/ \
-		icondir=/usr/share/icons \
+		desktopdir='/usr/share/applications/' \
+		icondir='/usr/share/icons' \
 		install || die "make install failed"
 	# no need for this directory for just playing the game
 	rm -rf "${D}${GAMES_DATADIR}/${PN}/estudio"

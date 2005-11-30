@@ -1,31 +1,25 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.96-r2.ebuild,v 1.9 2005/08/21 02:24:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.96-r2.ebuild,v 1.1 2005/05/08 02:55:53 swegener Exp $
 
 inherit mount-boot eutils flag-o-matic toolchain-funcs
 
-PATCHVER=0.1
 DESCRIPTION="GNU GRUB boot loader"
 HOMEPAGE="http://www.gnu.org/software/grub/"
 SRC_URI="mirror://gentoo/${P}.tar.gz
 	ftp://alpha.gnu.org/gnu/${PN}/${P}.tar.gz
-	http://dev.gentoo.org/~seemant/distfiles/${PF}-gentoo-${PATCHVER}.tar.bz2
-	http://dev.gentoo.org/~seemant/distfiles/splash.xpm.gz
-	mirror://gentoo/splash.xpm.gz
-	mirror://gentoo/${PF}-gentoo-${PATCHVER}.tar.bz2"
+	mirror://gentoo/${PN}-0.95.20040823-splash.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="static netboot custom-cflags"
+KEYWORDS="~amd64 ~x86"
+IUSE="static netboot"
 
 RDEPEND=">=sys-libs/ncurses-5.2-r5"
 DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.7
 	>=sys-devel/autoconf-2.5"
 PROVIDE="virtual/bootloader"
-
-PATCHDIR="${WORKDIR}/gentoo"
 
 pkg_setup() {
 	if use amd64; then
@@ -43,10 +37,32 @@ pkg_setup() {
 }
 
 src_unpack() {
-	unpack ${A} ; cd "${S}"
+	unpack ${A}
+	cd "${S}"
 
-	EPATCH_SUFFIX="patch"
-	epatch ${PATCHDIR}
+	epatch "${WORKDIR}"/${PN}-0.95.20040823-splash.patch
+
+	# PIC patch by psm & kevin f. quinn #80693
+	epatch "${FILESDIR}"/${P}-PIC.patch
+
+	# disable testing of FFS and UFS2 images that always fail (bug #71811)
+	epatch "${FILESDIR}"/${P}-bounced-checks.patch
+
+	# i2o RAID support #76143
+	epatch "${FILESDIR}"/${P}-i2o-raid.patch
+
+	# -fwritable-strings is deprecated; testing to see if we need it any more
+	epatch "${FILESDIR}"/${PN}-0.95.20040823-warnings.patch
+
+	# should fix NX segfaulting on amd64 and x86_64 by Peter Jones
+	# http://lists.gnu.org/archive/html/bug-grub/2005-03/msg00011.html
+	epatch "${FILESDIR}"/${P}-nxstack.patch
+
+	# Remove writable-string code from xfs support code (#90845)
+	epatch "${FILESDIR}"/${P}-xfs-writable-string.patch
+
+	# gcc4 patches; bug #85016
+	epatch ${FILESDIR}/${P}-r1-gcc4.patch
 
 	# a bunch of patches apply to raw autotool files
 	autoconf || die "autoconf failed"
@@ -69,7 +85,7 @@ src_compile() {
 	# CFLAGS has to be undefined running econf, else -fno-stack-protector detection fails.
 	# STAGE2_CFLAGS is not allowed to be used on emake command-line, it overwrites
 	# -fno-stack-protector detected by configure, removed from netboot's emake.
-	use custom-cflags || unset CFLAGS
+	unset CFLAGS
 
 	export grub_cv_prog_objcopy_absolute=yes #79734
 	use static && append-ldflags -static
@@ -113,18 +129,15 @@ src_test() {
 
 src_install() {
 	make DESTDIR="${D}" install || die
-	exeinto /usr/lib/grub/${CHOST}
+	exeinto /usr/lib/grub
 	use netboot && doexe nbgrub pxegrub stage2/stage2.netboot
 
 	insinto /boot/grub
-	doins ${DISTDIR}/splash.xpm.gz
+	doins "${FILESDIR}"/splash.xpm.gz
 	newins docs/menu.lst grub.conf.sample
 
 	dodoc AUTHORS BUGS COPYING ChangeLog NEWS README THANKS TODO
 	newdoc docs/menu.lst grub.conf.sample
-
-	docinto gentoo
-	dodoc ${PATCHDIR}/README*
 }
 
 pkg_postinst() {
@@ -142,10 +155,14 @@ pkg_postinst() {
 
 	[[ -e /boot/grub/stage2 ]] && mv /boot/grub/stage2{,.old}
 
-	einfo "Copying files from /lib/grub and /usr/lib/grub to /boot"
+	einfo "Copying files from /usr/lib/grub to /boot"
 	for x in /lib/grub/*/* /usr/lib/grub/*/* ; do
 		[[ -f ${x} ]] && cp -p ${x} /boot/grub
 	done
+
+	# hardened voodoo
+	[[ -x /sbin/chpax ]] && /sbin/chpax -spme /sbin/grub
+	[[ -x /sbin/paxctl ]] && /sbin/paxctl -spme /sbin/grub
 
 	[[ -e /boot/grub/grub.conf ]] \
 		&& /sbin/grub \

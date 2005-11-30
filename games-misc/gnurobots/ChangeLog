@@ -1,15 +1,6 @@
-# ChangeLog for games-misc/gnurobots
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/gnurobots/ChangeLog,v 1.6 2005/08/24 02:58:23 hparker Exp $
-
-  24 Aug 2005; Homer Parker <hparker@gentoo.org> gnurobots-1.0d.ebuild:
-  Marked ~amd64.
-
-  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> gnurobots-1.0d.ebuild:
-  Marked ppc stable.
-
-  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> gnurobots-1.0d.ebuild:
-  Added ~ppc.
+# ChangeLog for app-games/gnurobots
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/gnurobots/ChangeLog,v 1.1 2003/09/10 18:14:05 vapier Exp $
 
 *gnurobots-1.0d (22 Dec 2002)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.43.ebuild,v 1.6 2005/01/11 20:06:17 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/dropbear/dropbear-0.43.ebuild,v 1.1 2004/08/15 17:43:10 vapier Exp $
 
 inherit gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="http://matt.ucc.asn.au/dropbear/releases/${P}.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc sparc sh x86"
+KEYWORDS="x86 ppc mips arm amd64"
 IUSE="zlib multicall static"
 
 DEPEND="zlib? ( sys-libs/zlib )"
@@ -24,19 +24,19 @@ src_unpack() {
 src_compile() {
 	econf `use_enable zlib` || die
 
-	local maketarget=""
 	if use multicall ; then
 		sed -i \
 			-e '/define DROPBEAR_MULTI/s:/\* *::' \
 			-e '/define DROPBEAR_MULTI/s:\*/::' \
 			options.h
-		use static \
-			&& maketarget="dropbearmultistatic" \
-			|| maketarget="dropbearmulti"
+		if use static ; then
+			emake dropbearmultistatic || die "multi static failed"
+		else
+			emake dropbearmulti || die "multi failed"
+		fi
 	else
-		use static && maketarget="static"
+		emake || die "make failed"
 	fi
-	emake ${maketarget} || die "make ${maketarget} failed"
 }
 
 src_install() {
@@ -49,9 +49,7 @@ src_install() {
 		dosym ${multibin} /usr/bin/dropbearconvert || die
 		dosym ../bin/${multibin} /usr/sbin/dropbear || die
 	else
-		local maketarget="install"
-		use static && maketarget="install-static"
-		make ${maketarget} DESTDIR=${D} || die "make ${maketarget} failed"
+		make install DESTDIR=${D} || die
 	fi
 	exeinto /etc/init.d ; newexe ${FILESDIR}/dropbear.init.d dropbear
 	insinto /etc/conf.d ; newins ${FILESDIR}/dropbear.conf.d dropbear

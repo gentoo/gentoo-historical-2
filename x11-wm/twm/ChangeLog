@@ -1,21 +1,6 @@
-# ChangeLog for x11-wm/twm
+# ChangeLog for x11-apps/twm
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/twm/ChangeLog,v 1.6 2005/11/11 16:20:17 spyderous Exp $
-
-  11 Nov 2005; Donnie Berkholz <spyderous@gentoo.org>; -twm-0.99.0.ebuild:
-  Remove old version.
-
-  07 Nov 2005; Doug Goldstein <cardoe@gentoo.org> twm-0.99.0.ebuild,
-  twm-0.99.1.ebuild:
-  adding ~ppc keyword
-
-  30 Oct 2005; <dang@gentoo.org> twm-0.99.1.ebuild:
-  Marked ~amd64
-
-*twm-0.99.1 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +twm-0.99.1.ebuild:
-  Bump for 7.0 RC1.
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/twm/ChangeLog,v 1.1 2005/10/19 22:51:00 spyderous Exp $
 
   19 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml,
   +twm-0.99.0.ebuild:

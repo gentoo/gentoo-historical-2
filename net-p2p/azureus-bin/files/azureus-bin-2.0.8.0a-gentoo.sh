@@ -2,13 +2,13 @@
 
 PROGRAM_DIR=##PROGRAM_DIR##		# directory where all the files were extracted
 
-AZ_CONFIG="${HOME}/.Azureus/gentoo.config"
-if [ -f ~/.Azureus/gentoo.config ]; then
-	. ~/.Azureus/gentoo.config
+AZ_CONFIG="${HOME}/.azureus/gentoo.config"
+if [ -f ~/.azureus/gentoo.config ]; then
+	. ~/.azureus/gentoo.config
 else
-	if [ ! -e ~/.Azureus ]; then
-		mkdir ~/.Azureus
-		echo "Creating ~/.Azureus..."
+	if [ ! -e ~/.azureus ]; then
+		mkdir ~/.azureus
+		echo "Creating ~/.azureus..."
 	fi
 
 	# Setup defaults
@@ -45,19 +45,19 @@ cd ${AZDIR}
 echo $MSG1
 
 # This should work as long as your classpath is setup right...
-#JARS=`ls *.jar | grep -v Azureus2`
-#for FILE in $JARS; do CLASSPATH="${FILE}:${CLASSPATH}"; done
-#java -cp $CLASSPATH -Djava.library.path="/usr/lib:${AZDIR}" -jar Azureus2.jar ${UI_OPTIONS} "$1"
+JARS=`ls *.jar | grep -v Azureus2`
+for FILE in $JARS; do CLASSPATH="${FILE}:${CLASSPATH}"; done
+java -cp $CLASSPATH -Djava.library.path="/usr/lib:${AZDIR}" -jar Azureus2.jar ${UI_OPTIONS} "$1"
 
 # Try this if the above doesn't work
-for FILE in *.jar; do CLASSPATH="${FILE}:${CLASSPATH}"; done
-java -cp $CLASSPATH -Djava.library.path="${AZDIR}" org.gudy.azureus2.ui.swt.Main "$1"
+#for FILE in *.jar; do CLASSPATH="${FILE}:${CLASSPATH}"; done
+#java -cp $CLASSPATH -Djava.library.path="/usr/lib:${AZDIR}" org.gudy.azureus2.ui.swt.Main "$1"
 
 if [ $? -ne 0 ]; then
-	echo "If you recieved an error about a missing java class, you need to setup"
-	echo "your classpath correctly."
+	echo "If you recieved an error about missing log4j or cli, you "
+	echo "need to setup your classpath correctly."
 	echo "This should do the trick (as root):"
-	echo "java-config --add-system-classpath=junit,log4j,commons-cli,systray4j"
+	echo "java-config --add-system-classpath=junit,log4j,commons-cli"
 	echo "env-update && source /etc/profile"
 	echo
 	echo "Currently, your classpath (including azureus additions) is:"

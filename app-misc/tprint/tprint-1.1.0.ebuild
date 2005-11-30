@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/tprint/tprint-1.1.0.ebuild,v 1.3 2005/01/01 15:27:25 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/tprint/tprint-1.1.0.ebuild,v 1.1 2004/08/12 02:03:10 pfeifer Exp $
 
 DESCRIPTION="Transparent Print Utility for terminals"
 HOMEPAGE="http://sourceforge.net/projects/tprint/"
 SRC_URI="mirror://sourceforge/tprint/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
 RDEPEND="virtual/libc"
 DEPEND="${RDEPEND}

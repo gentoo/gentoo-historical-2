@@ -1,55 +1,8 @@
 # ChangeLog for dev-perl/MD5
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/MD5/ChangeLog,v 1.18 2005/09/17 00:41:35 agriffis Exp $
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> MD5-2.03.ebuild:
-  Mark 2.03 stable on ia64
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> MD5-2.03.ebuild:
-  add ~ia64
-
-  24 May 2005; Michael Cummings <mcummings@gentoo.org> MD5-2.03.ebuild:
-  dev-perl/Digest-MD5 => perl-core/Digest-MD5
-
-  28 Apr 2005; Michael Cummings <mcummings@gentoo.org> -MD5-2.02.ebuild,
-  -MD5-2.02-r1.ebuild, MD5-2.03.ebuild:
-  Cleaning
-
-  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> MD5-2.03.ebuild:
-  Stable on ppc.
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  09 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> MD5-2.03.ebuild:
-  Stable on alpha.
-
-  26 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> MD5-2.03.ebuild:
-  Marked stable on amd64.
-
-*MD5-2.03 (16 Feb 2004)
-
-  16 Feb 2004; Michael Cummings,,, <mcummings@gentoo.org> MD5-2.03.ebuild:
-  Current version of MD5 module. Tests are currently enabled in the ebuild.
-  Builds and runs on x86 and sparc, marking as such.
-
-*MD5-2.02-r1 (31 May 2003)
-
-  31 May 2003; Michael Cummings <mcummings@gentoo.org> MD5-2.02-r1.ebuild:
-  Added missing DEPEND for Digest::MD5
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog  :
-
-  forced version bump to install into correct locations
-# ChangeLog for dev-perl/MD5
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/MD5/ChangeLog,v 1.1 2002/06/27 09:51:22 seemant Exp $
 
 *MD5-2.02 (27 Jun 2002)
-
-  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> MD5-2.02.ebuild :
-
-  Added ppc to KEYWORDS.
 
   27 Jun 2002; Seemant Kulleen <seemant@gentoo.org> MD5-2.02.ebuild
   files/digest-MD5-2.02 :

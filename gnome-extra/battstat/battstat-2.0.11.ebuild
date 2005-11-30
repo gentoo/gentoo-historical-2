@@ -1,18 +1,13 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/battstat/battstat-2.0.11.ebuild,v 1.12 2004/07/01 19:46:56 eradicator Exp $
-
-IUSE="nls"
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/battstat/battstat-2.0.11.ebuild,v 1.1 2002/06/11 00:38:42 seemant Exp $
 
 S=${WORKDIR}/battstat_applet-${PV}
 DESCRIPTION="Battstat Applet, GNOME battery status applet."
 SRC_URI="http://download.sourceforge.net/battstat/battstat_applet-${PV}.tar.gz"
 HOMEPAGE="http://battstat.sourceforge.net"
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=gnome-base/gnome-libs-1.4.1.2-r1
 	>=gnome-base/gnome-core-1.4.0.4-r1
 	>=sys-apps/apmd-3.0.1
@@ -37,7 +32,7 @@ src_install () {
 		gnomedatadir=${D}/usr/share \
 		gnulocaledir=${D}/usr/share/locale \
 		install || die
-
+	
 	rm ${D}/topic.dat
 
 	dodoc AUTHORS COPYING ChangeLog NEWS README TODO

@@ -1,28 +1,31 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/libPropList/libPropList-0.10.1-r2.ebuild,v 1.14 2004/07/15 00:47:19 agriffis Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/libPropList/libPropList-0.10.1-r2.ebuild,v 1.1 2001/03/09 10:26:59 achim Exp $
 
+A=${P}.tar.gz
+S=${WORKDIR}/${P}
 DESCRIPTION="libPropList"
-SRC_URI="ftp://ftp.windowmaker.org/pub/release/srcs/current/${P}.tar.gz"
+SRC_URI="ftp://ftp.windowmaker.org/pub/release/srcs/current/${A}"
 HOMEPAGE="http://www.windowmaker.org/"
-LICENSE="LGPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc "
-IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
-src_compile() {
+src_compile() {                           
 
-	./configure --host=${CHOST} --prefix=/usr || die
-	make || die
+  try ./configure --host=${CHOST} --prefix=/usr
+  try make
 
 }
 
-src_install() {
+src_install() {                               
 
-	make prefix=${D}/usr install || die
+  try make prefix=${D}/usr install
 
-	dodoc AUTHORS COPYING* ChangeLog README TODO
+  dodoc AUTHORS COPYING* ChangeLog README TODO
 
 }
+
+
+
+

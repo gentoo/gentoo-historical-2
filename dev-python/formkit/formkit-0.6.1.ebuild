@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/formkit/formkit-0.6.1.ebuild,v 1.3 2004/11/01 20:10:25 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/formkit/formkit-0.6.1.ebuild,v 1.1 2004/10/23 12:16:02 satya Exp $
 
 inherit python distutils
 
@@ -11,13 +11,11 @@ HOMEPAGE="http://dalchemy.com/opensource/formkit/"
 
 DEPEND="dev-lang/python"
 
-RDEPEND="${DEPEND}
-	www-servers/webware" #TODO
-
 IUSE=""
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="-*" #"~x86"
+KEYWORDS="~x86"
+#DOCS="Docs/* Examples/*"
 
 src_compile() {
 	cp ${FILESDIR}/${PV}/setup.py . || die

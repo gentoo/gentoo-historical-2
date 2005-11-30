@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.19-r1.ebuild,v 1.10 2005/01/24 22:36:05 langthang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cyrus-sasl/cyrus-sasl-2.1.19-r1.ebuild,v 1.1 2004/08/30 04:46:26 langthang Exp $
 
 inherit eutils gnuconfig flag-o-matic java-pkg
 
@@ -10,8 +10,8 @@ SRC_URI="ftp://ftp.andrew.cmu.edu/pub/cyrus-mail/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="2"
-KEYWORDS="x86 ~ppc sparc mips ~alpha ~arm hppa amd64 ~ia64 ~s390 ~ppc64"
-IUSE="berkdb gdbm ldap mysql postgres kerberos static ssl java pam authdaemond"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+IUSE="berkdb gdbm ldap mysql postgres kerberos static ssl java pam"
 
 RDEPEND="virtual/libc
 	berkdb? ( >=sys-libs/db-3.2 )
@@ -22,7 +22,6 @@ RDEPEND="virtual/libc
 	pam? ( >=sys-libs/pam-0.75 )
 	ssl? ( >=dev-libs/openssl-0.9.6d )
 	kerberos? ( virtual/krb5 )
-	authdaemond? ( >=net-mail/courier-imap-3.0.7 )
 	java? ( virtual/jdk )"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4
@@ -47,7 +46,7 @@ pkg_setup() {
 		echo
 		ewarn "Waiting 10 seconds before starting..."
 		ewarn "(Control-C to abort)..."
-		epause 10
+		sleep 10
 	fi
 
 	echo
@@ -60,7 +59,7 @@ pkg_setup() {
 	einfo "Don't forget to restart the service: \`/etc/init.d/saslauthd restart\`."
 	echo
 	einfo "Pause 10 seconds before continuing."
-	epause 10
+	sleep 10
 }
 
 src_unpack() {
@@ -85,7 +84,7 @@ src_unpack() {
 
 	# Recreate configure.
 	export WANT_AUTOCONF="2.5"
-	rm -rf configure config.h.in autom4te.cache saslauthd/configure saslauthd/autom4te.cache
+	rm -f configure config.h.in saslauthd/configure
 	ebegin "Recreating configure"
 	aclocal -I cmulocal -I config && autoheader && autoconf || \
 		die "recreate configure failed"

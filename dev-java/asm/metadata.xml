@@ -2,7 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 
 <pkgmetadata>
-<herd>java</herd>
+<herd>no-herd</herd>
+<maintainer>
+  <email>karltk@gentoo.org</email>
+  <description>Primary maintainer</description>
+</maintainer>
 
 <longdescription>
 ASM is a Java bytecode manipulation framework. It can be used to

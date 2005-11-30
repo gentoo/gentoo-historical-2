@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/qmail-scanner/qmail-scanner-1.23-r3.ebuild,v 1.8 2005/08/23 13:25:24 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/qmail-scanner/qmail-scanner-1.23-r3.ebuild,v 1.1 2004/08/30 21:45:46 st_lim Exp $
 
-inherit fixheadtails toolchain-funcs eutils
+inherit fixheadtails gcc eutils
 
 Q_S_DATE=20040819
 DESCRIPTION="E-Mail virus scanner for qmail."
@@ -14,12 +14,12 @@ IUSE="spamassassin"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc"
+KEYWORDS="~x86 ~sparc ~ppc"
 
 DEPEND=">=dev-lang/perl-5.6.1-r1
-	>=perl-core/Time-HiRes-01.20-r2
+	>=dev-perl/Time-HiRes-01.20-r2
 	>=net-mail/tnef-1.1.1
-	>=perl-core/DB_File-1.803-r2
+	>=dev-perl/DB_File-1.803-r2
 	>=net-mail/ripmime-1.3.0.4
 	|| (
 	>=mail-mta/qmail-1.03-r8
@@ -32,7 +32,7 @@ DEPEND=">=dev-lang/perl-5.6.1-r1
 
 pkg_setup() {
 	enewgroup qscand 210
-	enewuser qscand 210 -1 /var/spool/qmailscan qscand
+	enewuser qscand 210 /bin/false /var/spool/qmailscan qscand
 }
 
 pkg_preinst() {
@@ -71,7 +71,7 @@ src_compile () {
 
 	# build for qmail-scanner-queue wrapper, so we don't need suidperl
 	cd contrib
-	`tc-getCC` ${CFLAGS} -o qmail-scanner-queue qmail-scanner-queue.c || die
+	`gcc-getCC` ${CFLAGS} -o qmail-scanner-queue qmail-scanner-queue.c || die
 }
 
 src_install () {

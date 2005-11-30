@@ -1,6 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmjsql/wmjsql-0.5.ebuild,v 1.7 2005/11/10 09:42:37 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmjsql/wmjsql-0.5.ebuild,v 1.1 2004/07/17 02:07:08 s4t4n Exp $
+
+inherit eutils
 
 IUSE=""
 
@@ -16,7 +18,7 @@ DEPEND="virtual/x11
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc ~sparc"
+KEYWORDS="~x86"
 
 src_compile() {
 	cd ${S}/src
@@ -30,7 +32,7 @@ src_install() {
 	newdoc conf sample.wmjsql
 
 	cd ${S}
-	dodoc CREDITS README TODO
+	dodoc CREDITS INSTALL README TODO
 
 	insinto /usr/share/applications
 	doins ${FILESDIR}/${PN}.desktop

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-firefox/mozilla-firefox-1.0.7-r3.ebuild,v 1.3 2005/10/07 18:54:48 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla-firefox/mozilla-firefox-1.0.7-r3.ebuild,v 1.1 2005/10/02 15:04:48 azarah Exp $
 
 unset ALLOWED_FLAGS  # stupid extra-functions.sh ... bug 49179
 MOZ_FREETYPE2="no"   # Need to disable for newer .. remove here and in mozconfig
@@ -74,16 +74,6 @@ src_unpack() {
 	sed -i -e '1s,usr/local/bin,usr/bin,' ${S}/security/nss/cmd/smimetools/smime
 	eend $? || die "sed failed"
 
-	# Fix a compilation issue using the 32-bit userland with 64-bit kernel on
-	# PowerPC, because with that configuration, mozilla detects a ppc64 system.
-	# -- hansmi, 2005-10-02
-	if use ppc && [[ "${PROFILE_ARCH}" == ppc64 ]]; then
-		sed -i -e "s#OS_TEST=\`uname -m\`\$#OS_TEST=${ARCH}#" \
-			${S}/configure.in
-		sed -i -e "s#OS_TEST :=.*uname -m.*\$#OS_TEST:=${ARCH}#" \
-			${S}/security/coreconf/arch.mk
-	fi
-
 	# Needed by some of the patches
 	WANT_AUTOCONF=2.1 autoconf || die "WANT_AUTOCONF failed"
 }
@@ -122,10 +112,10 @@ src_compile() {
 	# hardened GCC uses -fstack-protector-all by default, which breaks us
 	has_hardened && append-flags -fno-stack-protector-all
 	# remove -fstack-protector because now it borks firefox
-	CFLAGS=${CFLAGS/-fstack-protector-all/}
-	CFLAGS=${CFLAGS/-fstack-protector/}
-	CXXFLAGS=${CXXFLAGS/-fstack-protector-all/}
-	CXXFLAGS=${CXXFLAGS/-fstack-protector/}
+	CFLAGS=${CFLAGS/-fstack-protector-all//}
+	CFLAGS=${CFLAGS/-fstack-protector//}
+	CXXFLAGS=${CXXFLAGS/-fstack-protector-all//}
+	CXXFLAGS=${CXXFLAGS/-fstack-protector//}
 
 	####################################
 	#

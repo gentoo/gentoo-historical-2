@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coldplug/coldplug-20040920.ebuild,v 1.9 2005/10/16 15:51:52 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coldplug/coldplug-20040920.ebuild,v 1.1 2004/09/21 00:27:44 gregkh Exp $
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc alpha ~hppa amd64 ia64 mips ~ppc64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips"
 IUSE=""
 
 # hotplug needs pcimodules utility provided by pcitutils-2.1.9-r1
@@ -23,3 +23,4 @@ src_install() {
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/coldplug.rc coldplug
 }
+

@@ -1,29 +1,16 @@
-# ChangeLog for app-crypt/tinyca
+# ChangeLog for app-misc/tinyca
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/tinyca/ChangeLog,v 1.8 2005/06/16 13:23:43 tigger Exp $
-
-*tinyca-2.0.7.0 (16 Jun 2005)
-
-  16 Jun 2005; Rob Holland <tigger@gentoo.org> +tinyca-2.0.7.0.ebuild:
-  version bump. moved to gtk2
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> tinyca-0.6.7.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> tinyca-0.6.6.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> tinyca-0.5.4.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org> tinyca-0.5.4-r1.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/tinyca/ChangeLog,v 1.1 2005/02/02 10:13:54 dragonheart Exp $
 
 *tinyca-0.6.7 (02 Feb 2005)
 
-  02 Feb 2005; Daniel Black <dragonheart@gentoo.org> +tinyca-0.6.7.ebuild,
-  +metadata.xml:
-  Moved from app-misc/tinyca to app-crypt/tinyca. Added metadata.xml
+  02 Feb 2005; Daniel Black <dragonheart@gentoo.org> +tinyca-0.5.4-r1.ebuild,
+  +tinyca-0.5.4.ebuild, +tinyca-0.6.6.ebuild, +tinyca-0.6.7.ebuild:
+  Moved from app-misc/tinyca to app-crypt/tinyca.
+
+*tinyca-0.6.7 (02 Feb 2005)
+
+  02 Feb 2005; Daniel Black <dragonheart@gentoo.org> +tinyca-0.6.7.ebuild:
   Version bump as per bug #80122 thanks to Andreas Hinterland
   <ich@meister-rohrfix.de>
 

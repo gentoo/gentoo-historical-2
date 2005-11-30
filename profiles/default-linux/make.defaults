@@ -1,17 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/make.defaults,v 1.11 2005/04/23 16:25:07 jstubbs Exp $
-#
-# System-wide defaults for the Portage system
-# See portage(5) manpage
-#
+# Copyright 2004 Gentoo Foundation.
+# System-wide defaults for a basic linux system
+
 # Please avoid enabling things by default in here if possible. Understand any 
-# implications with core packages.  For example, if "java" is in USE and db 
+# implications with core packages. For example, if "java" is in USE and db 
 # has a conditional dependency on java (which it does,) then a JDK will be 
 # pulled in during *emerge system*!
 
-# build X in an expected way
-USE="bitmap-fonts truetype-fonts type1-fonts"
-
-# make sure toolchain has sane defaults
-USE="${USE} fortran"
+USE="bitmap-fonts xprint"

@@ -1,14 +1,13 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-ssl/ucspi-ssl-0.50.ebuild,v 1.5 2004/07/15 02:45:01 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-ssl/ucspi-ssl-0.50.ebuild,v 1.1 2004/01/04 00:29:11 aliz Exp $
 
 IUSE=""
+S=${WORKDIR}/${P}
 DESCRIPTION="Command-line tools for building SSL client-server applications."
 HOMEPAGE="http://www.superscript.com/ucspi-ssl/intro.html"
 SRC_URI="http://www.superscript.com/ucspi-ssl/${P}.tar.gz"
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=dev-libs/openssl-0.9.6g
 	sys-apps/ucspi-tcp"
 
@@ -37,3 +36,5 @@ src_install() {
 
 	dodoc CHANGES FILES README SYSDEPS TARGETS TODO UCSPI-SSL VERSION
 }
+
+

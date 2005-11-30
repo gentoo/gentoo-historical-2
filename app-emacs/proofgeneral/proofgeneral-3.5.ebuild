@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/proofgeneral/proofgeneral-3.5.ebuild,v 1.5 2005/08/28 02:21:25 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/proofgeneral/proofgeneral-3.5.ebuild,v 1.1 2004/06/20 13:15:13 mattam Exp $
 
 SIMPLE_ELISP='nil'
 inherit elisp
@@ -13,7 +13,7 @@ SRC_URI="http://proofgeneral.inf.ed.ac.uk/releases/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="virtual/emacs"

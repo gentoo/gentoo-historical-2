@@ -1,21 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/tinc-1.0.2.ebuild,v 1.5 2005/03/26 13:22:59 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/tinc-1.0.2.ebuild,v 1.1 2003/12/24 13:21:04 warpzero Exp $
 
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://tinc.nl.linux.org/"
 SRC_URI="http://tinc.nl.linux.org/packages/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~arm ~sparc ~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
-
 DEPEND=">=dev-libs/openssl-0.9.7c
-	virtual/linux-sources
-	>=dev-libs/lzo-1.08
-	>=sys-libs/zlib-1.1.4-r2"
+		virtual/linux-sources
+		>=dev-libs/lzo-1.08
+		>=sys-libs/zlib-1.1.4-r2"
 
 src_compile() {
 	econf --enable-jumbograms || die
@@ -24,8 +22,8 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS INSTALL NEWS README THANKS TODO
-	exeinto /etc/init.d ; newexe ${FILESDIR}/tincd tincd
+	dodoc ABOUT-NLS AUTHORS COPYING COPYING.README INSTALL NEWS README THANKS TODO
+	exeinto /etc/init.d ; newexe ${FILESDIR}/tinc tinc
 }
 
 pkg_postinst() {

@@ -1,18 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/ipcalc/ipcalc-0.37.ebuild,v 1.8 2005/02/22 13:13:33 malc Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/ipcalc/ipcalc-0.37.ebuild,v 1.1 2004/09/14 05:04:26 solar Exp $
 
-DESCRIPTION="calculates broadcast/network/etc... from an IP address and netmask"
+MY_PN="ipcalc"
+MY_P="${MY_PN}-${PV}"
+S="${WORKDIR}/${MY_P}"
+
+DESCRIPTION="ipcalc takes an IP address and netmask and calculates the resulting broadcast, network, Cisco wildcard mask, and host range."
 HOMEPAGE="http://jodies.de/ipcalc"
-SRC_URI="http://jodies.de/ipcalc-archive/${P}.tar.gz"
+SRC_URI="http://jodies.de/ipcalc-archive/${MY_P}.tar.gz"
 
-LICENSE="as-is"
-SLOT="0"
-KEYWORDS="alpha -amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sparc x86"
+DEPEND=">=dev-lang/perl-5.6.0"
+KEYWORDS="~x86 ~hppa ~amd64 ~sparc ~mips ~macos ~ppc64 ~alpha"
 IUSE=""
-
-RDEPEND=">=dev-lang/perl-5.6.0"
+SLOT="0"
+LICENSE="as-is"
 
 src_install () {
-	dobin ${PN} || die
+	newbin ${MY_PN} ${MY_PN}
 }

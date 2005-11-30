@@ -1,22 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/pax/pax-3.3.4.ebuild,v 1.12 2005/04/21 17:49:48 blubb Exp $
+# $Header: 
 
-inherit eutils rpm
+inherit rpm
 
 MY_PS=${P%.*}-${PV##*.}ras
 MY_P=${P%.*}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="pax (Portable Archive eXchange) is the POSIX standard archive tool"
+DESCRIPTION="pax (Portable Archive eXchange is the POSIX standard archive tool."
 HOMEPAGE="http://www.openbsd.org/cgi-bin/cvsweb/src/bin/pax/"
 SRC_URI="ftp://rpmfind.net/linux/contrib/libc6/SRPMS/${MY_PS}.src.rpm"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips alpha hppa amd64 ia64"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~arm ~amd64 ~ia64"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	app-arch/rpm2targz"
 
 src_unpack() {
@@ -28,8 +27,13 @@ src_unpack() {
 	epatch ${WORKDIR}/pax-3.3-bzip2.patch
 }
 
-src_install() {
-	dobin src/pax || die
+src_compile () {
+	econf || die "econf failed"
+	emake || die "emake failed"
+}
+
+src_install () {
+	dobin src/pax
 	doman src/pax.1
 	dodoc AUTHORS ChangeLog NEWS README THANKS
 }

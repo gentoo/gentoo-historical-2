@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.0.ebuild,v 1.4 2005/04/22 13:55:48 kugelfang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/lapack-reference/lapack-reference-3.0.ebuild,v 1.1 2004/12/29 18:28:46 ribosome Exp $
 
 inherit eutils
 
@@ -14,11 +14,11 @@ SRC_URI="http://www.netlib.org/lapack/${MyPN}.tgz
 
 LICENSE="lapack"
 SLOT="0"
-KEYWORDS="~x86 amd64"
+KEYWORDS="~x86 ~amd64"
 IUSE="ifc"
 
 DEPEND="sys-devel/libtool
-	sci-libs/lapack-config
+	app-sci/lapack-config
 	ifc? ( dev-lang/ifc )"
 
 RDEPEND="virtual/blas
@@ -51,7 +51,7 @@ pkg_setup() {
 	use ifc || \
 	if [ -z `which g77` ]; then
 		eerror "g77 not found on the system!"
-		eerror "Please add fortran to your USE flags and reemerge gcc!"
+		eerror "Please add f77 to your USE flags and reemerge gcc!"
 		die
 	fi
 }

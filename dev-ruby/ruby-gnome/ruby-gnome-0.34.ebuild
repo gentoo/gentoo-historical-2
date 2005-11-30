@@ -1,32 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gnome/ruby-gnome-0.34.ebuild,v 1.12 2005/10/03 13:49:56 agriffis Exp $
-
-inherit ruby
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gnome/ruby-gnome-0.34.ebuild,v 1.1 2003/08/06 01:57:20 agriffis Exp $
 
 S=${WORKDIR}/ruby-gnome-all-${PV}/gnome
 DESCRIPTION="Ruby Gnome bindings"
-HOMEPAGE="http://ruby-gnome.sourceforge.net/"
 SRC_URI="mirror://sourceforge/ruby-gnome/ruby-gnome-all-${PV}.tar.gz"
-
+HOMEPAGE="http://ruby-gnome.sourceforge.net/"
 LICENSE="Ruby"
+KEYWORDS="~x86 ~alpha"
 SLOT="0"
-KEYWORDS="alpha ~ia64 ppc ~sparc x86"
-IUSE=""
-USE_RUBY="ruby16 ruby18 ruby19"
 
-DEPEND="virtual/ruby
-	>=gnome-base/gnome-libs-1.4.1.3
-	>=dev-ruby/ruby-gdkimlib-${PV}
-	>=dev-ruby/ruby-gtk-${PV}"
+DEPEND=">=dev-lang/ruby-1.6.4-r1
+		>=gnome-base/gnome-libs-1.4.1.3
+		>=dev-ruby/ruby-gdkimlib-${PV}
+		>=dev-ruby/ruby-gtk-${PV}"
 
 src_compile() {
 	ruby extconf.rb || die "ruby extconf.rb failed"
 	emake || die "emake failed"
 }
 
-src_install() {
-	make site-install DESTDIR=${D} || die "make site-install failed"
+src_install () {
+	make site-install DESTDIR=${D}
 	dodoc [A-Z]*
-	cp -r sample doc ${D}/usr/share/doc/${PF}
+	cp -dr sample doc ${D}/usr/share/doc/${PF}
 }

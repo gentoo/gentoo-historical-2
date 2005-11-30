@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.12q-r3.ebuild,v 1.10 2005/09/27 23:03:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.12q-r3.ebuild,v 1.1 2005/09/14 13:45:56 azarah Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -17,7 +17,7 @@ SRC_URI="mirror://kernel/linux/utils/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="crypt old-crypt nls static pam selinux perl"
 
 RDEPEND=">=sys-libs/ncurses-5.2-r2
@@ -163,9 +163,8 @@ src_install() {
 	if use old-crypt ; then
 		cd "${OLD_CRYPT_P}"/mount
 		into /
-		newbin mount mount-old-crypt || die
-		newbin losetup losetup-old-crypt || die
-		fperms 4711 /bin/{mount,losetup}-old-crypt
+		newsbin mount mount-old-crypt || die
+		newsbin losetup losetup-old-crypt || die
 	fi
 }
 

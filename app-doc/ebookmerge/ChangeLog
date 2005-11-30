@@ -1,22 +1,8 @@
 # ChangeLog for app-doc/ebookmerge
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/ebookmerge/ChangeLog,v 1.4 2005/11/27 17:58:21 bass Exp $
-
-*ebookmerge-0.9 (27 Nov 2005)
-
-  27 Nov 2005; josé Alberto Suárez López <bass@gentoo.org>
-  -ebookmerge-0.6.ebuild, +ebookmerge-0.9.ebuild:
-  bump version
+# $Header: /var/cvsroot/gentoo-x86/app-doc/ebookmerge/ChangeLog,v 1.1 2005/07/04 21:54:16 bass Exp $
 
 *ebookmerge-0.6 (04 Jul 2005)
-
-  11 Jul 2005; josé Alberto Suárez López <bass@gentoo.org>
-  ebookmerge-0.6.ebuild:
-  masked again to follow the policy
-
-  11 Jul 2005; josé Alberto Suárez López <bass@gentoo.org>
-  ebookmerge-0.6.ebuild:
-  Added keyword "x86"
 
   04 Jul 2005; josé Alberto Suárez López <bass@gentoo.org> +metadata.xml,
   +ebookmerge-0.6.ebuild:

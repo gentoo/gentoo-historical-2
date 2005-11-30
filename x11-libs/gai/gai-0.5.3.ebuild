@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gai/gai-0.5.3.ebuild,v 1.3 2004/08/08 00:50:25 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gai/gai-0.5.3.ebuild,v 1.1 2004/05/09 18:37:38 lordvan Exp $
 
 IUSE="opengl gnome"
 
 MY_P=${P/_/}
-DESCRIPTION="GAI, The General Applet Interface library is a library that will help applet programmers a lot."
+DESCRIPTION="GAI, The General Applet Interface library is a library that will help applet programmers alot."
 HOMEPAGE="http://gai.sourceforge.net/"
 SRC_URI="mirror://sourceforge/gai/${MY_P}.tar.bz2"
 

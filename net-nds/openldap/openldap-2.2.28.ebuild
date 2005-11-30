@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.28.ebuild,v 1.14 2005/10/16 16:47:21 killerfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-nds/openldap/openldap-2.2.28.ebuild,v 1.1 2005/08/24 08:33:10 robbat2 Exp $
 
 inherit flag-o-matic toolchain-funcs eutils multilib
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://openldap/openldap-release/${P}.tgz
 LICENSE="OPENLDAP"
 SLOT="0"
 IUSE="berkdb crypt debug gdbm ipv6 kerberos minimal odbc perl readline samba sasl slp ssl tcpd"
-KEYWORDS="alpha ~amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND=">=sys-libs/ncurses-5.1
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
@@ -74,13 +74,10 @@ openldap_upgrade_warning() {
 
 pkg_setup() {
 	# grab lines
-	openldap_datadirs=""
-	if [ -f ${ROOT}/etc/openldap/slapd.conf ]; then
-		openldap_datadirs="$(awk '{if($1 == "directory") print $2 }' ${ROOT}/etc/openldap/slapd.conf)"
-	fi
+	openldap_datadirs="$(awk '{if($1 == "directory") print $2 }' /etc/openldap/slapd.conf)"
 	datafiles=""
 	for d in $openldap_datadirs; do
-		datafiles="${datafiles} $(ls $d/*db* 2>/dev/null)"
+		datafiles="${datafiles} $(ls $d/*db*} 2>/dev/null)"
 	done
 	# remove extra spaces
 	datafiles="$(echo ${datafiles// })"
@@ -108,8 +105,7 @@ pkg_setup() {
 		eerror ""
 		eerror "This install will not proceed until your old data directory"
 		eerror "is at least moved out of the way."
-		#exit 1
-		die "Warning direct upgrade unsafe!"
+		exit 1
 	fi
 	openldap_upgrade_warning
 	if built_with_use dev-lang/perl minimal ; then
@@ -120,7 +116,7 @@ pkg_setup() {
 pkg_preinst() {
 	openldap_upgrade_warning
 	enewgroup ldap 439
-	enewuser ldap 439 -1 /usr/$(get_libdir)/openldap ldap
+	enewuser ldap 439 /bin/false /usr/$(get_libdir)/openldap ldap
 }
 
 src_unpack() {

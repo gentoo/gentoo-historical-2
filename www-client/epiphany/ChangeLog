@@ -1,171 +1,6 @@
-# ChangeLog for www-client/epiphany
+# ChangeLog for net-www/epiphany
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.46 2005/11/28 06:39:02 leonardop Exp $
-
-*epiphany-1.8.3 (28 Nov 2005)
-
-  28 Nov 2005; Leonardo Boshell <leonardop@gentoo.org>
-  +epiphany-1.8.3.ebuild:
-  New version.
-
-  31 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> epiphany-1.8.2.ebuild:
-  ~ia64 keyword.
-
-  15 Oct 2005; Joseph Jezak <josejx@gentoo.org> epiphany-1.8.2.ebuild:
-  Marked ~ppc for bug #108785.
-
-  11 Oct 2005; John N. Laliberte <allanonjl@gentoo.org>
-  epiphany-1.8.2.ebuild:
-  remove support for ia64, ppc, hppa, filed bugs
-
-*epiphany-1.8.2 (06 Oct 2005)
-
-  06 Oct 2005; Leonardo Boshell <leonardop@gentoo.org>
-  -epiphany-1.8.0.ebuild, +epiphany-1.8.2.ebuild:
-  New version.
-
-  14 Sep 2005; Marinus Schraal <foser@gentoo.org> epiphany-1.8.0.ebuild :
-  Remove libgnomeprint dep because it caused trouble with portage -D option
-
-*epiphany-1.8.0 (12 Sep 2005)
-
-  12 Sep 2005; <allanon@gentoo.org> -epiphany-1.7.6.ebuild,
-  +epiphany-1.8.0.ebuild:
-  update pygtk/gtk/glib deps, remove pango as dep, 2.12 release vbump
-
-  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> epiphany-1.6.4.ebuild:
-  Stable on ppc.
-
-*epiphany-1.7.6 (01 Sep 2005)
-
-  01 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
-  -files/epiphany-1.7.4-includes.patch, -epiphany-1.7.5.ebuild,
-  +epiphany-1.7.6.ebuild:
-  New version.
-
-  31 Aug 2005; Herbie Hopkins <herbs@gentoo.org> epiphany-1.6.4.ebuild:
-  Stable on amd64.
-
-  29 Aug 2005; Guy Martin <gmsoft@gentoo.org> epiphany-1.6.4.ebuild:
-  Stable on hppa.
-
-  26 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> epiphany-1.6.4.ebuild:
-  Stable on sparc
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> epiphany-1.6.4.ebuild:
-  stable on ia64
-
-  26 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
-  epiphany-1.6.4.ebuild:
-  Stable on x86.
-
-*epiphany-1.7.5 (26 Aug 2005)
-
-  26 Aug 2005; Leonardo Boshell <leonardop@gentoo.org>
-  +epiphany-1.7.5.ebuild:
-  New version. Added 'python' USE flag. Re-added previous keywords.
-
-  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> epiphany-1.6.3.ebuild:
-  stable on ia64
-
-*epiphany-1.7.4 (18 Aug 2005)
-
-  18 Aug 2005; Joe McCann <joem@gentoo.org>
-  +files/epiphany-1.7.4-configure.patch,
-  +files/epiphany-1.7.4-includes.patch, +epiphany-1.7.4.ebuild:
-  New version with new patches
-
-  02 Aug 2005; Simon Stelling <blubb@gentoo.org> epiphany-1.6.3.ebuild:
-  stable on amd64
-
-  31 Jul 2005; Tobias Scherbaum <dertobi123@gentoo.org>
-  epiphany-1.6.3.ebuild:
-  ppc stable
-
-  27 Jul 2005; Guy Martin <gmsoft@gentoo.org> epiphany-1.6.4.ebuild:
-  Added ~hppa to KEYWORDS.
-
-  27 Jul 2005; Guy Martin <gmsoft@gentoo.org> epiphany-1.6.3.ebuild:
-  Stable on hppa.
-
-  27 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> epiphany-1.6.3.ebuild:
-  Stable on sparc
-
-  26 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> epiphany-1.6.3.ebuild:
-  Stable on x86.
-
-*epiphany-1.6.4 (05 Jul 2005)
-
-  05 Jul 2005; Leonardo Boshell <leonardop@gentoo.org> epiphany-1.6.4.ebuild:
-  New release. Added support for the 'dbus' and 'firefox' USE flags.
-  Resolves bug #88649.
-
-  23 Jun 2005; Guy Martin <gmsoft@gentoo.org> epiphany-1.6.0-r3.ebuild,
-  epiphany-1.6.3.ebuild:
-  Stable on hppa.
-
-  12 Jun 2005; Olivier CrÃªte <tester@gentoo.org> epiphany-1.6.0-r3.ebuild:
-  Stable on amd64
-
-  12 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
-  epiphany-1.6.0-r3.ebuild:
-  Stable on ppc.
-
-  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org>
-  epiphany-1.6.0-r3.ebuild:
-  Stable on alpha.
-
-  09 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  epiphany-1.6.0-r3.ebuild:
-  Stable on sparc
-
-  18 May 2005; Jason Wever <weeve@gentoo.org> epiphany-1.4.8.ebuild:
-  Stable on SPARC.
-
-  11 May 2005; Guy Martin <gmsoft@gentoo.org> epiphany-1.4.8.ebuild:
-  Stable on hppa.
-
-  08 May 2005; Aron Griffis <agriffis@gentoo.org> epiphany-1.4.8.ebuild:
-  stable on ia64
-
-  08 May 2005; Herbie Hopkins <herbs@gentoo.org> epiphany-1.4.8.ebuild:
-  Stable on amd64.
-
-  06 May 2005; Markus Rothe <corsair@gentoo.org> epiphany-1.6.0-r3.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  06 May 2005; Markus Rothe <corsair@gentoo.org> epiphany-1.6.3.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-*epiphany-1.6.3 (02 May 2005)
-
-  02 May 2005; Joe McCann <joem@gentoo.org>
-  +files/epiphany-1.6.3-fix_includes.patch, +epiphany-1.6.3.ebuild:
-  new version that incorporates several patches from previous release
-
-  27 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> epiphany-1.4.8.ebuild:
-  Stable on alpha.
-
-  25 Apr 2005; Mike Gardiner <obz@gentoo.org> epiphany-1.4.8.ebuild:
-  Keyworded ppc x86
-
-  08 Apr 2005; Joe McCann <joem@gentoo.org> epiphany-1.6.0-r3.ebuild:
-  fix some deps, thanks to bug 88382
-
-*epiphany-1.6.0-r3 (28 Mar 2005)
-
-  28 Mar 2005; Mike Gardiner <obz@gentoo.org>
-  files/epiphany-1.6.0-fix_includes.patch, +epiphany-1.6.0-r3.ebuild:
-  New revision, thanks to <brad@gentoo.org>'s work on mozilla-firefox, it's
-  possible to compile epiphany against firefox. This closes bug #85481 amongst
-  others
-
-  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org>
-  epiphany-1.2.9-r1.ebuild, epiphany-1.2.10.ebuild, epiphany-1.4.4.ebuild,
-  epiphany-1.4.5.ebuild, epiphany-1.4.6.ebuild, epiphany-1.4.7.ebuild,
-  epiphany-1.4.8.ebuild, epiphany-1.6.0.ebuild, epiphany-1.6.0-r1.ebuild,
-  epiphany-1.6.0-r2.ebuild:
-  change dep from net-www/mozilla to www-client/mozilla
+# $Header: /var/cvsroot/gentoo-x86/www-client/epiphany/ChangeLog,v 1.1 2005/03/23 14:12:18 seemant Exp $
 
 *epiphany-1.4.5 (23 Mar 2005)
 
@@ -183,7 +18,7 @@
   +epiphany-1.4.4.ebuild, +epiphany-1.4.5.ebuild, +epiphany-1.4.6.ebuild,
   +epiphany-1.4.7.ebuild, +epiphany-1.4.8.ebuild, +epiphany-1.6.0.ebuild,
   +epiphany-1.6.0-r1.ebuild, +epiphany-1.6.0-r2.ebuild:
-  moved from net-www to www-client
+  Moved from net-www/epiphany to www-client/epiphany.
 
   21 Mar 2005; Guy Martin <gmsoft@gentoo.org> epiphany-1.4.6.ebuild,
   epiphany-1.4.8.ebuild:
@@ -302,7 +137,7 @@
   Versionbump, patch unnecessary, this fixes some mozilla issues to be more
   futureproof
 
-  23 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> epiphany-1.2.7-r1.ebuild:
+  23 Aug 2004; Bryan �stergaard <kloeri@gentoo.org> epiphany-1.2.7-r1.ebuild:
   Stable on alpha.
 
   18 Aug 2004; Travis Tilley <lv@gentoo.org> epiphany-1.2.7-r1.ebuild:
@@ -319,7 +154,7 @@
   17 Aug 2004; Stuart Herbert <stuart@gentoo.org>
   +files/epiphany-1.2.6-moz-1.7.2.patch, +epiphany-1.2.6-r1.ebuild:
   Fix for epiphany not compiling against stable Mozilla; fix for bug # 60501;
-  thanks to Lorenzo Hernández García-Hierro <lorenzo@gnu.org> for the basis of
+  thanks to Lorenzo Hern�ndez Garc�a-Hierro <lorenzo@gnu.org> for the basis of
   the patch
 
   09 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> epiphany-1.2.7.ebuild:
@@ -342,7 +177,7 @@
   Marked 1.2.6 x86 as mozilla 1.7 has moved to x86. See bug #55005 or brad[] for
   more information
 
-  07 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> epiphany-1.2.2.ebuild:
+  07 Jul 2004; Bryan �stergaard <kloeri@gentoo.org> epiphany-1.2.2.ebuild:
   Stable on alpha.
 
 *epiphany-1.2.6 (19 Jun 2004)

@@ -1,83 +1,15 @@
-# ChangeLog for games-misc/fortune-mod-gentoo-dev
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-gentoo-dev/ChangeLog,v 1.18 2005/08/27 18:02:31 corsair Exp $
+# ChangeLog for app-games/fortune-mod-gentoo-dev
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-gentoo-dev/ChangeLog,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
-  27 Aug 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-gentoo-dev-20050503.ebuild:
-  Stable on ppc64
+*fortune-mod-gentoo-dev-20030903.ebuild (03 Sep 2003)
 
-  31 Jul 2005; Markus Rothe <corsair@gentoo.org>
-  fortune-mod-gentoo-dev-20050503.ebuild:
-  Added ~ppc64 (bug #100217)
-
-*fortune-mod-gentoo-dev-20050503 (03 May 2005)
-
-  03 May 2005; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20050503.ebuild :
-  Update.
-
-*fortune-mod-gentoo-dev-20050106 (06 Jan 2005)
-
-  06 Jan 2005; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20050106.ebuild :
-  Happy New Year's.
-
-*fortune-mod-gentoo-dev-20041019 (19 Oct 2004)
-
-  19 Oct 2004; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20041019.ebuild :
-  Update.
-
-*fortune-mod-gentoo-dev-20040907 (07 Sep 2004)
-
-  07 Sep 2004; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20040907.ebuild :
-  A handful of new quotes
-
-*fortune-mod-gentoo-dev-20040608 (08 Jun 2004)
-
-  08 Jun 2004; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20040608.ebuild :
-  ...
-
-*fortune-mod-gentoo-dev-20040401 (01 Apr 2004)
-
-  01 Apr 2004; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20040401.ebuild :
-  Slightly late release.
-
-*fortune-mod-gentoo-dev-20040210 (10 Feb 2004)
-
-  10 Feb 2004; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20040210.ebuild :
-  Update.
-
-*fortune-mod-gentoo-dev-20040118 (18 Jan 2004)
-
-  18 Jan 2004; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20040118.ebuild :
-  Fairly big update.
-
-*fortune-mod-gentoo-dev-20031217 (17 Dec 2003)
-
-  17 Dec 2003; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20031217.ebuild :
-  The usual monthly release.
-
-*fortune-mod-gentoo-dev-20031122 (22 Nov 2003)
-
-  22 Nov 2003; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20031122.ebuild :
-  New quotes plus cleanups.
-
-*fortune-mod-gentoo-dev-20031101 (01 Nov 2003)
-
-  01 Nov 2003; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20031101.ebuild :
-  Tasty.
-
-*fortune-mod-gentoo-dev-20030930 (30 Sep 2003)
-
-  30 Sep 2003; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20030930.ebuild :
-  More of the same.
-
-*fortune-mod-gentoo-dev-20030903 (03 Sep 2003)
-
-  03 Sep 2003; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20030903.ebuild :
+  03 Sept 2003; Jon Portnoy <avenj@gentoo.org> fortune-mod-gentoo-dev-20030903.ebuild :
   Version bump, added a few new quotes. Marked stable for all currently
   keyworded archs - because frankly, who cares about unstable keywording 
-  on a small fortunes file?
+  on a small fortunes file? Really, now, be reasonable.
 
-*fortune-mod-gentoo-dev-20030809 (09 Aug 2003)
+*fortune-mod-gentoo-dev-20030809.ebuild (09 Aug 2003)
 
   26 Aug 2003; Joshua Kinard <kumba@gentoo.org> fortune-mod-gentoo-dev-20030809.ebuild:
   Added ~mips to KEYWORDS

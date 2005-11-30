@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/librep/librep-0.17-r2.ebuild,v 1.5 2005/11/14 07:56:59 truedfx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/librep/librep-0.17-r2.ebuild,v 1.1 2005/09/01 19:20:34 truedfx Exp $
 
-inherit eutils libtool toolchain-funcs multilib
+inherit libtool toolchain-funcs multilib
 
 DESCRIPTION="Shared library implementing a Lisp dialect"
 HOMEPAGE="http://librep.sourceforge.net/"
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="readline"
 
-RDEPEND=">=sys-libs/gdbm-1.8.0
+RDEPEND="sys-devel/libtool
+	>=sys-libs/gdbm-1.8.0
 	readline? ( sys-libs/readline )"
 DEPEND="${RDEPEND}
 	sys-apps/texinfo"
@@ -21,11 +22,8 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/libtool.patch"
-	epatch "${FILESDIR}/rep_file_fdopen.patch"
 	sed -i -e '7s/AM_PATH_REP/[&]/' rep.m4 || die "sed failed"
 	elibtoolize || die "elibtoolize failed"
-	epunt_cxx
 }
 
 src_compile() {
@@ -43,7 +41,9 @@ src_compile() {
 
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS BUGS ChangeLog NEWS README THANKS TODO TREE
+	dosym ../../../bin/libtool /usr/$(get_libdir)/rep/${CHOST}/libtool
+	fowners -h root:0 /usr/$(get_libdir)/rep/${CHOST}/libtool
+	dodoc AUTHORS BUGS COPYING ChangeLog NEWS README THANKS TODO TREE
 	docinto doc
 	dodoc doc/*
 }

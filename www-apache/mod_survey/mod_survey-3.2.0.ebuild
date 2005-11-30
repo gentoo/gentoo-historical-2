@@ -1,12 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_survey/mod_survey-3.2.0.ebuild,v 1.6 2005/05/24 14:29:45 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_survey/mod_survey-3.2.0.ebuild,v 1.1 2004/08/18 21:34:40 rl03 Exp $
 
 inherit webapp
 
 DESCRIPTION="XML-defined web questionnaires as a plug-in module for Apache"
 HOMEPAGE="http://gathering.itm.mh.se/modsurvey/"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86"
 
 IUSE="apache2 postgres mysql"
 MY_P=${P/mod_survey/modsurvey}
@@ -15,11 +15,11 @@ SRC_URI="http://gathering.itm.mh.se/modsurvey/download/${MY_P}.tar.gz"
 
 DEPEND=">=dev-lang/perl-5.6.1"
 RDEPEND="${DEPEND}
-		apache2? ( >=net-www/apache-2 >=www-apache/mod_perl-1.99 )
-		!apache2? ( >=net-www/apache-1 >=www-apache/mod_perl-1.27 )
-		postgres? ( >=dev-perl/DBI-1.38	dev-perl/DBD-Pg )
-		mysql? ( >=dev-perl/DBI-1.38 dev-perl/DBD-mysql )
-		>=perl-core/CGI-3.0.0"
+		apache2? ( >=net-www/apache-2 >=dev-perl/mod_perl-1.99 )
+		!apache2? ( >=net-www/apache-1 >=dev-perl/mod_perl-1.27 )
+		postgres? ( >=dev-perl/DBI-1.38	>=dev-perl/DBD-Pg )
+		mysql? ( >=dev-perl/DBI-1.38 >=dev-perl/DBD-mysql )
+		>=dev-perl/CGI-3.0.0"
 LICENSE="GPL-2"
 
 src_unpack() {

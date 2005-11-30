@@ -1,54 +1,8 @@
 # ChangeLog for x11-misc/fbdesk
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/fbdesk/ChangeLog,v 1.15 2005/10/03 12:15:00 ka0ttic Exp $
-
-  03 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> fbdesk-1.2.1.ebuild:
-  Cleaned up ebuild: fixed LICENSE (its MIT not GPL-2), fixed DEPEND (libpng
-  was specified twice, one conditional on USE=png and one unconditional...);
-  also use make DESTDIR=${D} install over einstall.
-
-  16 May 2005; Aaron Walker <ka0ttic@gentoo.org> fbdesk-1.1.5.ebuild,
-  fbdesk-1.2.1.ebuild:
-  Remove gcc.eclass from inherit as it doesnt even use it.
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> fbdesk-1.2.1.ebuild:
-  stable on ia64
-
-  18 Oct 2004; Tom Martin <slarti@gentoo.org> fbdesk-1.2.1.ebuild:
-  Marked ~amd64, see bug 67894.
-
-*fbdesk-1.2.1 (27 Sep 2004)
-
-  27 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org> +fbdesk-1.2.1.ebuild:
-  Version bump, added debug and png USE flag, Bug #65558
-
-  09 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org>
-  +files/fbdesk-1.1.5-gcc34.patch, fbdesk-1.1.5.ebuild:
-  Fixed gcc-34 compile issues. Bug #53910
-
-  14 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> fbdesk-1.1.5.ebuild:
-  Added IUSE=
-
-  28 Oct 2003; Brandon Hale <tseng@gentoo.org> fbdesk-1.1.5.ebuild:
-  marking 1.1.5 stable on ppc
-
-  24 Oct 2003; Brandon Hale <tseng@gentoo.org> fbdesk-1.1.2.ebuild,
-  fbdesk-1.1.5.ebuild:
-  marking 1.1.5 stable on x86.
-
-  13 Oct 2003; ,,, <brandon@gentoo.org> fbdesk-1.1.2.ebuild,
-  fbdesk-1.1.5.ebuild:
-  Updated keywords, marked 1.1.2 stable on x86
-
-*fbdesk-1.1.5 (16 Sep 2003)
-
-  16 Sep 2003; Brandon Hale <tseng@gentoo.org> fbdesk-1.1.5.ebuild:
-  version bump.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/fbdesk/ChangeLog,v 1.1 2003/01/26 22:42:00 bcowan Exp $
 
 *fbdesk-1.1.2 (26 Jan 2003)
-
-  02 apr 2003; <spider@gentoo.org> fbdesk-1.1.2.ebuild:
-  Fixed xpm dep, bug 1446
 
   26 Jan 2003; Brad Cowan <bcowan@gentoo.org> fbdesk-1.1.2.ebuild,
   files/digest-fbdesk-1.1.2, ChangeLog:

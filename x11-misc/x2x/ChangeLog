@@ -1,40 +1,7 @@
 # ChangeLog for x11-misc/x2x
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/x2x/ChangeLog,v 1.14 2005/09/17 02:04:14 agriffis Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/x2x/ChangeLog,v 1.1 2002/06/14 20:49:55 rphillips Exp $
 
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> x2x-1.27-r1.ebuild:
-  Mark 1.27-r1 stable on alpha
-
-  08 Sep 2005; Tom Gall <tgall@gentoo.org> x2x-1.27-r1.ebuild:
-  stable on ppc Bug #105307
-
-  26 Jul 2005; David Holm <dholm@gentoo.org> x2x-1.27-r1.ebuild:
-  Added to ~ppc.
-
-*x2x-1.27-r1 (19 Apr 2005)
-
-  19 Apr 2005; Aron Griffis <agriffis@gentoo.org> -files/x2x-1.27.diff.gz,
-  x2x-1.27.ebuild, +x2x-1.27-r1.ebuild:
-  Add Debian patches for -north/-south #57301. Move license patch to distfiles
-  and clean up ebuilds
-
-  01 Jun 2004; Brandon Hale <tseng@gentoo.org> x2x-1.27.ebuild:
-  Ebuild QA fixes.
-
-  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org> x2x-1.27.ebuild:
-  Added ~mips keyword.
-
-  13 Dec 2003; Brad House <brad_mssw@gentoo.org> x2x-1.27.ebuild:
-  mark stable on amd64
-
-  03 Nov 2003; Abhishek Amit <abhishek@gentoo.org> metadata.xml:
-  Added metadata.xml
-
-  31 Oct 2003; Aron Griffis <agriffis@gentoo.org> x2x-1.27.ebuild:
-  Stable on alpha
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *x2x-1.27 (14 Jun 2002)
 
   14 Jun 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :

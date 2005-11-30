@@ -1,97 +1,10 @@
 # ChangeLog for net-misc/icaclient
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/ChangeLog,v 1.25 2005/09/16 23:28:12 ciaranm Exp $
-
-  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  26 Aug 2005; Jason Wever <weeve@gentoo.org> icaclient-9.0.ebuild:
-  Added fix for bug #103706.
-
-  11 Aug 2005; Diego Petten√≤ <flameeyes@gentoo.org>
-  icaclient-8.0-r3.ebuild, icaclient-9.0.ebuild:
-  Call has_multilib_profile from pkg_setup instead of global scope.
-
-  30 Jun 2005; Aron Griffis <agriffis@gentoo.org> icaclient-8.0-r3.ebuild:
-  Fix use invocation: [ use gnome ] will never work
-
-  28 Jun 2005; Aron Griffis <agriffis@gentoo.org> icaclient-9.0.ebuild:
-  Fix use invocation
-
-*icaclient-9.0 (18 May 2005)
-
-  18 May 2005; Jason Wever <weeve@gentoo.org> icaclient-8.0-r3.ebuild,
-  +icaclient-9.0.ebuild:
-  Marked 8.0-r3 stable on x86 and added a version bump (resolves bug #92538).
-
-  20 Apr 2005; Herbie Hopkins <herbs@gentoo.org> icaclient-8.0-r3.ebuild:
-  Multilib fixes, add ~amd64 keyword - Bug #89057
-
-*icaclient-8.0-r3 (12 Dec 2004)
-
-  12 Dec 2004; Jason Wever <weeve@gentoo.org> -icaclient-8.0-r1.ebuild,
-  +icaclient-8.0-r3.ebuild, -icaclient-8.0.ebuild:
-  Added fix for bug #70601 and cleaned up old versions of package.
-
-  24 Nov 2004; Sven Wegener <swegener@gentoo.org> icaclient-6.30-r1.ebuild:
-  Fixed SRC_URI to match real file name.
-
-*icaclient-8.0-r2 (30 Oct 2004)
-
-  30 Oct 2004; Jason Wever <weeve@gentoo.org> +icaclient-8.0-r2.ebuild:
-  Added NLS fixes wrt bug #69171, thanks to Rob Henderson
-  <robh@cs.indiana.edu> for the patch.
-
-*icaclient-8.0-r1 (04 Oct 2004)
-
-  04 Oct 2004; Jason Wever <weeve@gentoo.org> files/10ICAClient,
-  +icaclient-8.0-r1.ebuild:
-  Added fixes for bugs #65732 and #66036. Thanks to Andy Wang
-  <dopey@moonteeth.com> and Nico Baggus <mlspamcb@noci.xs4all.nl> for the
-  work.
-
-  18 Sep 2004; Jason Wever <weeve@gentoo.org> icaclient-7.0.ebuild,
-  icaclient-8.0.ebuild:
-  Cleaned up comments.
-
-*icaclient-8.0 (28 Aug 2004)
-
-  28 Aug 2004; Jason Wever <weeve@gentoo.org> +metadata.xml,
-  +icaclient-8.0.ebuild:
-  Added ebuild for version 8.0, take over ownership of package.
-
-  01 Aug 2004; Jason Wever <weeve@gentoo.org> icaclient-6.30-r1.ebuild,
-  icaclient-7.0.ebuild:
-  Masked on sparc as only Solaris/SPARC binaries exist.
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> icaclient-6.30-r1.ebuild,
-  icaclient-7.0.ebuild:
-  change virtual/glibc to virtual/libc
-
-  07 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  icaclient-6.30-r1.ebuild, icaclient-7.0.ebuild:
-  dyn_fetch() -> pkg_nofetch(); tidy
-
-  07 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> icaclient-6.30.ebuild:
-  clean older ebuild
-
-*icaclient-7.0 (11 Oct 2003)
-
-  11 Oct 2003; Martin Holzer <mholzer@gentoo.org> icaclient-7.0.ebuild:
-  Version bumped. Closes #26471
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*icaclient-6.30-r1 (04 Nov 2002)
-
-  04 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
-  Fixed installation issue per #10196
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/ChangeLog,v 1.1 2002/06/09 04:05:30 woodchip Exp $
 
 *icaclient-6.30 (8 Jun 2002)
 
-  07 Jun 2002; phoen][x <phoenix@gentoo.org> icaclient-6.30.ebuild:
-  Added KEYWORDS.
+  8 Jun 2002; Donny Davies <woodchip@gentoo.org> :
 
-  08 Jun 2002; Donny Davies <woodchip@gentoo.org> :
-  New port submitted bu Fr√©d√©ric Mangeant <frederic.mangeant@free.fr>.
+  New port submitted bu FrÈdÈric Mangeant <frederic.mangeant@free.fr>.
   Bug #2440.

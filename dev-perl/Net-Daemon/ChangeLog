@@ -1,89 +1,13 @@
 # ChangeLog for dev-perl/Net-Daemon
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Daemon/ChangeLog,v 1.29 2005/09/30 21:49:33 matsuu Exp $
-
-  30 Sep 2005; MATSUU Takuto <matsuu@gentoo.org> Net-Daemon-0.38.ebuild:
-  Stable on sh.
-
-  30 Jun 2005; Joshua Kinard <kumba@gentoo.org> Net-Daemon-0.38.ebuild:
-  Marked stable on mips.
-
-  06 Jun 2005; Markus Rothe <corsair@gentoo.org> Net-Daemon-0.38.ebuild:
-  Stable on ppc64
-
-  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  Net-Daemon-0.38.ebuild:
-  Stable on ppc.
-
-  27 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -Net-Daemon-0.36-r1.ebuild, -Net-Daemon-0.36.ebuild, Net-Daemon-0.38.ebuild:
-  Cleaning
-
-  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  Net-Daemon-0.38.ebuild:
-  Stable on sparc
-
-  25 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> Net-Daemon-0.38.ebuild:
-  Stable on alpha.
-
-  07 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  Net-Daemon-0.37.ebuild:
-  Stable on ppc.
-
-  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed digest.
-
-*Net-Daemon-0.38 (06 Jun 2004)
-
-  06 Jun 2004; Michael Cummings <mcummings@gentoo.org> Net-Daemon-0.38.ebuild:
-  new version on cpan
-
-  01 Jun 2004; Tom Gall <tgall@gentoo.org> Net-Daemon-0.37.ebuild:
-  stable on ppc64, bug #52701
-
-  26 May 2004; Bryan Østergaard <kloeri@gentoo.org> Net-Daemon-0.37.ebuild:
-  Stable on alpha.
-
-  02 Apr 2004; <randy@gentoo.org> Net-Daemon-0.37.ebuild:
-  adding s390 keywords
-
-  21 Mar 2004; Joshua Kinard <kumba@gentoo.org> Net-Daemon-0.36-r1.ebuild,
-  Net-Daemon-0.36.ebuild, Net-Daemon-0.37.ebuild:
-  Marked stable on mips.
-
-  22 Jun 2003; <rac@gentoo.org> Net-Daemon-0.37.ebuild:
-  Add ~mips, mark stable on sparc, clean cruft, fix license
-
-*Net-Daemon-0.37 (16 Jun 2003)
-
-  02 Jul 2003; Guy Martin <gmsoft@gentoo.org> Net-Daemon-0.37.ebuild :
-  Marked stable on hppa.
-
-  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> Net-Daemon-0.37.ebuild:
-  CPAN version bump; testing needed
-
-*Net-Daemon-0.36-r1 (29 Oct 2002)
-
-  06 Apr 2003; Zach Welch <zwelch@gentoo.org> Net-Daemon-0.36-r1.ebuild:
-  add arm keyword
-
-  20 Mar 2003; Guy Martin <gmsoft@gentoo.org> Net-Daemon-0.36-r1.ebuild :
-  Added hppa to KEYWORDS.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> :
-  changed sparc ~sparc keywords
-
-  29 Oct 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog :
-  forced version bump to install into correct locations
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Daemon/ChangeLog,v 1.1 2002/02/01 21:53:27 gbevin Exp $
 
 *Net-Daemon-0.34 (1 Feb 2002)
 
-  31 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> Net-Daemon-0.34.ebuild :
-  Added ppc to KEYWORDS.
-
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  First added
-
+  
+  Added initial ChangeLog which should be updated whenever the package is
+  updated in any way. This changelog is targetted to users. This means that the
+  comments should well explained and written in clean English. The details about
+  writing correct changelogs are explained in the skel.ChangeLog file which you
+  can find in the root directory of the portage repository.

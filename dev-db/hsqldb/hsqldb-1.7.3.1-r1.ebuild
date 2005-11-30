@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/hsqldb/hsqldb-1.7.3.1-r1.ebuild,v 1.4 2005/09/11 12:15:42 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/hsqldb/hsqldb-1.7.3.1-r1.ebuild,v 1.1 2005/06/04 16:02:23 luckyduck Exp $
 
 inherit java-pkg eutils
 
@@ -13,28 +13,22 @@ SLOT="0"
 KEYWORDS="x86 amd64 ppc64 sparc ppc"
 IUSE="doc jikes source"
 
-RDEPEND=">=virtual/jre-1.4
-	=dev-java/servletapi-2.3*"
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip
 	dev-java/ant-core
+	=dev-java/servletapi-2.3*
 	jikes? ( dev-java/jikes )
-	source? ( app-arch/zip )
-	${RDEPEND}"
+	source? ( app-arch/zip )"
+RDEPEND=">=virtual/jre-1.4"
 
 S=${WORKDIR}/${PN}
-
-pkg_setup() {
-	enewgroup hsqldb
-	enewuser hsqldb -1 /bin/sh /dev/null hsqldb
-}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}/lib
 		rm *.jar
 		java-pkg_jar-from servletapi-2.3
-	cd ${S}
+	cd ..
 	sed -i -r \
 		-e "s/etc\/sysconfig/etc\/conf.d/g" \
 			bin/hsqldb
@@ -43,8 +37,9 @@ src_unpack() {
 
 	einfo "Preparing configuration files..."
 	mkdir conf
+	JAVA_CMD=$(java-config -J)
 	HSQLDB_JAR=/usr/share/hsqldb/lib/hsqldb.jar
-	sed -e 's:^JAVA_EXECUTABLE=.*$:JAVA_EXECUTABLE=$(which java 2>/dev/null):g' \
+	sed -e "s/^JAVA_EXECUTABLE=.*$/JAVA_EXECUTABLE=${JAVA_CMD//\//\\/}/g" \
 		-e "s/^HSQLDB_JAR_PATH=.*$/HSQLDB_JAR_PATH=${HSQLDB_JAR//\//\\/}/g" \
 		-e "s/^SERVER_HOME=.*$/SERVER_HOME=\/var\/lib\/hsqldb/g" \
 		-e "s/^HSQLDB_OWNER=.*$/HSQLDB_OWNER=hsqldb/g" \
@@ -62,7 +57,7 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_dojar lib/hsql*.jar
+	dojar lib/hsql*.jar
 
 	if use doc; then
 		dodoc doc/*.txt
@@ -84,7 +79,14 @@ src_install() {
 	doexe bin/hsqldb
 	dosym /etc/hsqldb/server.properties /var/lib/hsqldb/server.properties
 	dosym /etc/hsqldb/sqltool.rc /var/lib/hsqldb/sqltool.rc
-	chown -R hsqldb:hsqldb ${D}/var/lib/hsqldb
-	chmod o-rwx ${D}/var/lib/hsqldb
+}
+
+pkg_postinst() {
+	if ! enewgroup hsqldb || ! enewuser hsqldb -1 /bin/sh /dev/null hsqldb; then
+		die "Unable to add hsqldb user and hsqldb group."
+	fi
+
+	chown -R hsqldb:hsqldb /var/lib/hsqldb
+	chmod o-rwx /var/lib/hsqldb
 }
 

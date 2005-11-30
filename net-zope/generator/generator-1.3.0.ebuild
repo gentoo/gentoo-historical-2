@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/generator/generator-1.3.0.ebuild,v 1.3 2004/10/14 20:34:04 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/generator/generator-1.3.0.ebuild,v 1.1 2004/10/07 21:32:59 radek Exp $
 
 inherit zproduct
 

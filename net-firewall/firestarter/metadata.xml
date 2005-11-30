@@ -2,7 +2,5 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>gnome</herd>
-<maintainer>
-<email>mr_bones_@gentoo.org</email>
-</maintainer>
+<maintainer><email>msterret@gentoo.org</email></maintainer>
 </pkgmetadata>

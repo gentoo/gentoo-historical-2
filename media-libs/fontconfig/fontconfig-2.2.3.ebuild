@@ -1,21 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/fontconfig/fontconfig-2.2.3.ebuild,v 1.12 2005/05/03 15:31:22 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/fontconfig/fontconfig-2.2.3.ebuild,v 1.1 2004/07/19 19:30:34 foser Exp $
 
 inherit eutils
 
 DESCRIPTION="A library for configuring and customizing font access"
 HOMEPAGE="http://freedesktop.org/Software/fontconfig"
 #SRC_URI="http://pdx.freedesktop.org/software/fontconfig/releases/${P}.tar.gz"
-SRC_URI="http://freedesktop.org/fontconfig/release/${P}.tar.gz"
+SRC_URI="http://freedesktop.org/~fontconfig/release/${P}.tar.gz"
 
 LICENSE="fontconfig"
 SLOT="1.0"
-KEYWORDS="x86 ppc sparc ~mips alpha arm hppa amd64 ia64 ppc64 s390 ppc-macos"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64"
 IUSE=""
 
 RDEPEND=">=media-libs/freetype-2.1.4
 	>=dev-libs/expat-1.95.3"
+
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
@@ -38,7 +39,6 @@ src_unpack() {
 	# The date can be troublesome
 	sed -i "s:\`date\`::" configure
 
-	epunt_cxx #74077
 }
 
 src_compile() {

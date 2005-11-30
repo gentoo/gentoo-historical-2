@@ -7,8 +7,5 @@
 	<longdescription lang="ja">
 		x11-driversカテゴリにはX11コアサーバとインタフェスするドライバが含まれます。
 	</longdescription>
-	<longdescription lang="de">
-		Die Kategorie x11-drivers enthält zusätzliche Treiber für den X-Server.
-	</longdescription>
 </catmetadata>
 

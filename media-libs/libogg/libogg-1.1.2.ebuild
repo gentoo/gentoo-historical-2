@@ -1,8 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libogg/libogg-1.1.2.ebuild,v 1.13 2005/10/03 22:39:35 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libogg/libogg-1.1.2.ebuild,v 1.1 2004/09/30 17:39:46 eradicator Exp $
 
-inherit eutils
+IUSE=""
+
+inherit gnuconfig
 
 DESCRIPTION="the Ogg media file format library"
 HOMEPAGE="http://www.xiph.org/ogg/vorbis/index.html"
@@ -10,17 +12,23 @@ SRC_URI="http://downloads.xiph.org/releases/ogg/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 sh sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~mips ~ia64 ~ppc64 ~macos ~ppc-macos"
 
 DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epunt_cxx
+	gnuconfig_update
 }
 
-src_install() {
+src_install () {
 	make DESTDIR="${D}" install || die "make install failed"
+
+	# remove the docs installed by make install, since I'll install
+	# them in portage package doc directory
+	rm -rf "${D}/usr/share/doc"
+
+	dodoc AUTHORS CHANGES README
+	dohtml doc/*.{html,png}
 }

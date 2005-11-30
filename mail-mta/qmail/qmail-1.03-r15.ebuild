@@ -1,10 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail/qmail-1.03-r15.ebuild,v 1.37 2005/10/24 11:43:35 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/qmail/qmail-1.03-r15.ebuild,v 1.1 2004/05/30 10:50:13 robbat2 Exp $
 
-inherit toolchain-funcs eutils fixheadtails flag-o-matic
+inherit gcc eutils fixheadtails
 
-IUSE="ssl noauthcram notlsbeforeauth selinux"
+IUSE="ssl noauthcram notlsbeforeauth"
 DESCRIPTION="A modern replacement for sendmail which uses maildirs and includes SSL/TLS, AUTH SMTP, and queue optimization"
 HOMEPAGE="http://www.qmail.org/
 	http://members.elysium.pl/brush/qmail-smtpd-auth/
@@ -17,13 +17,13 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 	http://www.suspectclass.com/~sgifford/qmail/qmail-1.03-0.0.0.0-0.2.patch
 	http://david.acz.org/software/sendmail-flagf.patch
 	mirror://qmail/qmail-1.03-qmtpc.patch
-	mirror://qmail/qmail-smtpd-relay-reject
+	http://qmail.goof.com/qmail-smtpd-relay-reject
 	mirror://gentoo/qmail-local-tabs.patch
 	http://www.shupp.org/patches/qmail-maildir++.patch
 	ftp://ftp.pipeline.com.au/pipeint/sources/linux/WebMail/qmail-date-localtime.patch.txt
 	ftp://ftp.pipeline.com.au/pipeint/sources/linux/WebMail/qmail-limit-bounce-size.patch.txt
 	http://www.ckdhr.com/ckd/qmail-103.patch
-	http://www.arda.homeunix.net/store/old_software/qregex-starttls-2way-auth.patch
+	http://www.arda.homeunix.net/store/qmail/qregex-starttls-2way-auth.patch
 	http://www.soffian.org/downloads/qmail/qmail-remote-auth-patch-doc.txt
 	mirror://gentoo/qmail-gentoo-1.03-r12-badrcptto-morebadrcptto-accdias.diff.bz2
 	http://www.dataloss.nl/software/patches/qmail-popupnofd2close.patch
@@ -32,35 +32,33 @@ SRC_URI="mirror://qmail/${P}.tar.gz
 	http://www.leverton.org/qmail-hold-1.03.pat.gz
 	mirror://qmail/netscape-progress.patch
 	http://www-dt.e-technik.uni-dortmund.de/~ma/djb/qmail/sendmail-ignore-N.patch
-	mirror://gentoo/qmail-1.03-moreipme-0.6pre1-gentoo.patch
-	http://hansmi.ch/download/qmail/qmail-relaymxlookup-0.3.diff
 	"
 # broken stuffs
 #http://www.qcc.ca/~charlesc/software/misc/nullenvsender-recipcount.patch
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc sparc x86"
-RESTRICT="userpriv usersandbox maketest"
+KEYWORDS="~x86 ~ppc ~sparc mips ~alpha arm hppa amd64 ia64"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-apps/groff
 	ssl? ( >=dev-libs/openssl-0.9.6g )
 	>=net-mail/queue-fix-1.4-r1"
 RDEPEND="!virtual/mta
-	virtual/libc
-	app-shells/bash
+	virtual/glibc
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-process/daemontools-0.76-r1
+	>=sys-apps/daemontools-0.76-r1
 	>=net-mail/checkpassword-0.90
-	<net-mail/cmd5checkpw-0.30
+	>=net-mail/cmd5checkpw-0.22
 	>=net-mail/dot-forward-0.71
-	>=net-mail/queue-fix-1.4-r1
-	selinux? ( sec-policy/selinux-qmail )"
+	>=net-mail/queue-fix-1.4-r1"
 
 PROVIDE="virtual/mta
 	 virtual/mda"
 
+S=${WORKDIR}/${P}
+
+#MY_PVR=${PVR}
 MY_PVR=${PV}-r14
 
 TCPRULES_DIR=/etc/tcprules.d
@@ -198,31 +196,7 @@ src_unpack() {
 	EPATCH_SINGLE_MSG="qmail-pop3d fix for top output so Evolution doesn't barf" \
 	epatch ${FILESDIR}/${PVR}/qmail-pop3d-top-outputfix.patch
 
-	# Fix a compilation-error on Mac OS X
-	# qmail doesn't run yet on Mac OS X, but this will help in the future
-	if useq ppc-macos; then
-		epatch ${FILESDIR}/${PVR}/qmail-macos-dns-fix.patch
-	fi
-
-	# Rediffed patch to prevent from a problem which can
-	# happen when using NAT. Rediffed by hansmi@gentoo.org.
-	# See http://www.suspectclass.com/~sgifford/qmail/qmail-moreipme-0.6.README
-	epatch ${DISTDIR}/qmail-1.03-moreipme-0.6pre1-gentoo.patch
-
-	# Patch to look up the mx before relaying
-	# Look at http://hansmi.ch/software/qmail
-	epatch ${DISTDIR}/qmail-relaymxlookup-0.3.diff
-	epatch ${FILESDIR}/${PVR}/Makefile-relaymxlookup.patch
-
-	# Fix a bug on ia64, see bug 68173
-	# Doesn't affect other platforms
-	epatch ${FILESDIR}/${PVR}/spawn-alloc-h.patch
-
-	# Fixes bug 40010
-	EPATCH_SINGLE_MSG="Fixing broken #ifdef's to #if (TLS && TLS_BEFORE_AUTH)" \
-	epatch ${FILESDIR}/${PVR}/tlsbeforeauth-fix.patch
-
-	echo -n "$(tc-getCC) ${CFLAGS}" >${S}/conf-cc
+	echo -n "$(gcc-getCC) ${CFLAGS}" >${S}/conf-cc
 	if use ssl; then
 		einfo "Enabling SSL/TLS functionality"
 		echo -n ' -DTLS ' >>${S}/conf-cc
@@ -245,10 +219,7 @@ src_unpack() {
 		einfo "Enabling AUTHCRAM support"
 	fi
 
-	# Bug 92742
-	append-ldflags -Wl,-z,now
-
-	echo -n "$(tc-getCC) ${LDFLAGS}" > ${S}/conf-ld
+	echo -n "$(gcc-getCC) ${LDFLAGS}" > ${S}/conf-ld
 	echo -n "500" > ${S}/conf-spawn
 
 	# fix coreutils messup
@@ -360,13 +331,13 @@ src_install() {
 		insopts -o root -g root -m 755
 		diropts -m 755 -o root -g root
 		dodir /var/qmail/supervise/qmail-${i}{,/log}
+		diropts -m 755 -o qmaill
+		keepdir /var/log/qmail/qmail-${i}
 		fperms +t /var/qmail/supervise/qmail-${i}{,/log}
 		insinto /var/qmail/supervise/qmail-${i}
 		newins ${FILESDIR}/run-qmail${i} run
 		insinto /var/qmail/supervise/qmail-${i}/log
 		newins ${FILESDIR}/run-qmail${i}log run
-		diropts -m 755 -o qmaill
-		keepdir /var/log/qmail/qmail-${i}
 	done
 
 	dodir ${TCPRULES_DIR}
@@ -411,7 +382,7 @@ rootmailfixup() {
 	local TMPCMD="ln -sf /var/qmail/alias/.maildir/ ${ROOT}/root/.maildir"
 	if [ -d "${ROOT}/root/.maildir" ] && [ ! -L "${ROOT}/root/.maildir" ] ; then
 		einfo "Previously the qmail ebuilds created /root/.maildir/ but not"
-		einfo "every mail was delivered there. If the directory does not"
+		einfo "mail was every delivered there. If the directory does not"
 		einfo "contain any mail, please delete it and run:"
 		einfo "${TMPCMD}"
 	else
@@ -433,11 +404,6 @@ buildtcprules() {
 }
 
 pkg_postinst() {
-	if [[ ! -x /var/qmail/bin/queue-fix ]]; then
-		eerror "Can't find /var/qmail/bin/queue-fix -- have you rm -rf'd /var/qmail?"
-		einfo "Please remerge net-mail/queue-fix and don't do that again!"
-		die "Can't find /var/qmail/bin/queue-fix"
-	fi
 
 	einfo "Setting up the message queue hierarchy ..."
 	# queue-fix makes life easy!
@@ -450,7 +416,7 @@ pkg_postinst() {
 	env-update
 
 	einfo "To setup qmail to run out-of-the-box on your system, run:"
-	einfo "emerge --config =${PF}"
+	einfo "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
 	echo
 	einfo "To start qmail at boot you have to add svscan to your startup"
 	einfo "and create the following links:"
@@ -468,12 +434,6 @@ pkg_postinst() {
 	einfo "Additionally, if you wish to run qmail right now, you should "
 	einfo "run this before anything else:"
 	einfo "source /etc/profile"
-	echo
-	einfo "If you are looking for documentation, check those links:"
-	einfo "http://www.gentoo.org/doc/en/qmail-howto.xml"
-	einfo "  -- qmail/vpopmail Virtual Mail Hosting System Guide"
-	einfo "http://www.lifewithqmail.com/"
-	einfo "  -- Life with qmail"
 }
 
 pkg_preinst() {
@@ -489,7 +449,7 @@ pkg_preinst() {
 			else
 				fail=1
 			fi
-			if [ "${fail}" = 1 -a -f ${old} ]; then
+			if [ "${fail}" = "1" ]; then
 				eerror "Error moving $old to $new, be sure to check the"
 				eerror "configuration! You may have already moved the files,"
 				eerror "in which case you can delete $old"
@@ -498,19 +458,8 @@ pkg_preinst() {
 	done
 }
 
-pkg_setup() {
-	einfo "Creating groups and users"
-	enewgroup qmail 201
-	enewuser alias 200 -1 /var/qmail/alias 200
-	enewuser qmaild 201 -1 /var/qmail 200
-	enewuser qmaill 202 -1 /var/qmail 200
-	enewuser qmailp 203 -1 /var/qmail 200
-	enewuser qmailq 204 -1 /var/qmail 201
-	enewuser qmailr 205 -1 /var/qmail 201
-	enewuser qmails 206 -1 /var/qmail 201
-}
-
 pkg_config() {
+
 	# avoid some weird locale problems
 	export LC_ALL="C"
 
@@ -537,16 +486,14 @@ pkg_config() {
 	buildtcprules
 
 	if use ssl; then
-		ebegin "Generating RSA keys for SSL/TLS, this can take some time"
-		${ROOT}etc/cron.hourly/qmail-genrsacert.sh
-		eend $?
+		${ROOT}etc/cron.daily/qmail-genrsacert.sh
 		einfo "Creating a self-signed ssl-certificate:"
 		/var/qmail/bin/mkservercert
 		einfo "If you want to have a properly signed certificate "
 		einfo "instead, do the following:"
 		einfo "openssl req -new -nodes -out req.pem \\"
-		einfo "  -config /var/qmail/control/servercert.cnf \\"
-		einfo "  -keyout /var/qmail/control/servercert.pem"
+		einfo "-config /var/qmail/control/servercert.cnf \\"
+		einfo "-keyout /var/qmail/control/servercert.pem"
 		einfo "Send req.pem to your CA to obtain signed_req.pem, and do:"
 		einfo "cat signed_req.pem >> /var/qmail/control/servercert.pem"
 	fi

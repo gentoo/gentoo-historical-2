@@ -1,28 +1,6 @@
 # ChangeLog for dev-php/PEAR-Console_Table
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Console_Table/ChangeLog,v 1.6 2005/11/22 13:39:00 corsair Exp $
-
-  22 Nov 2005; Markus Rothe <corsair@gentoo.org>
-  PEAR-Console_Table-1.0.2-r1.ebuild:
-  Added ~ppc64 keyword; bug #105385
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
-  PEAR-Console_Table-1.0.2-r1.ebuild:
-  Marked ~ppc for bug #105385.
-
-  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  PEAR-Console_Table-1.0.2-r1.ebuild:
-  Add ~amd64.
-
-  11 Sep 2005; Jason Wever <weeve@gentoo.org>
-  PEAR-Console_Table-1.0.2-r1.ebuild:
-  Added ~sparc keyword.
-
-*PEAR-Console_Table-1.0.2-r1 (08 Sep 2005)
-
-  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  +PEAR-Console_Table-1.0.2-r1.ebuild:
-  Use new PEAR eclass.
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Console_Table/ChangeLog,v 1.1 2005/07/21 06:12:10 sebastian Exp $
 
 *PEAR-Console_Table-1.0.2 (21 Jul 2005)
 

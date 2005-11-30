@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/djvu/djvu-3.5.14-r1.ebuild,v 1.3 2005/07/21 15:32:08 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/djvu/djvu-3.5.14-r1.ebuild,v 1.1 2005/04/09 04:36:31 usata Exp $
 
 inherit nsplugins flag-o-matic fdo-mime
 
@@ -13,11 +13,11 @@ SRC_URI="mirror://sourceforge/djvu/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
-IUSE="xml qt jpeg tiff debug threads nls nsplugin kde"
+IUSE="xml qt jpeg tiff debug threads nls pic nsplugin kde"
 
 DEPEND="jpeg? ( >=media-libs/jpeg-6b-r2 )
 	tiff? ( media-libs/tiff )
-	qt? ( <x11-libs/qt-4 )"
+	qt? ( >=x11-libs/qt-2.3 )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -47,6 +47,7 @@ src_compile() {
 		$(use_with qt) \
 		$(use_with jpeg) \
 		$(use_with tiff) \
+		$(use_with pic) \
 		$(use_enable threads) \
 		$(use_enable nls i18n) \
 		$(use_enable debug) \

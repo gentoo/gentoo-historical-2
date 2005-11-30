@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-vim/fluxbox-syntax/fluxbox-syntax-1.4.ebuild,v 1.4 2005/01/01 16:49:42 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-vim/fluxbox-syntax/fluxbox-syntax-1.4.ebuild,v 1.1 2004/09/09 18:03:10 ciaranm Exp $
 
 inherit vim-plugin
 
 DESCRIPTION="vim plugin: fluxbox files syntax and indent"
 HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=679"
 LICENSE="as-is"
-KEYWORDS="x86 sparc mips ~ppc"
+KEYWORDS="~x86 ~sparc ~mips"
 IUSE=""
 
 RDEPEND="${RDEPEND} >=app-vim/genindent-1.0"

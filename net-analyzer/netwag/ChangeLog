@@ -1,43 +1,6 @@
 # ChangeLog for net-analyzer/netwag
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwag/ChangeLog,v 1.9 2005/10/15 05:05:17 dragonheart Exp $
-
-  15 Oct 2005; Daniel Black <dragonheart@gentoo.org> -netwag-5.29.0.ebuild,
-  -netwag-5.30.0.ebuild, +netwag-5.31.0.ebuild:
-  version bump - old version removal
-
-*netwag-5.31.0 (15 Oct 2005)
-
-  15 Oct 2005; Daniel Black <dragonheart@gentoo.org> -netwag-5.29.0.ebuild,
-  -netwag-5.30.0.ebuild, +netwag-5.31.0.ebuild:
-  version bump and old version cleanout
-
-  09 Oct 2005; <mkay@gentoo.org> netwag-5.28.0.ebuild, netwag-5.29.0.ebuild,
-  netwag-5.30.0.ebuild:
-  dev-lang/tk moved from RDEPEND to DEPEND and dev-lang/tcl reomoved from
-  dependencies (tk depends on it anyway). closing bug #108114
-
-  19 Jul 2005; David Holm <dholm@gentoo.org> netwag-5.30.0.ebuild:
-  Added to ~ppc.
-
-*netwag-5.30.0 (17 Jun 2005)
-
-  17 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> +netwag-5.30.0.ebuild:
-  Version bump.
-
-  01 Apr 2005; Marcelo Goes <vanquirius@gentoo.org> netwag-5.29.0.ebuild:
-  Added NOTE in ebuild header about netwib, netwox and netwag.
-
-*netwag-5.29.0 (30 Mar 2005)
-
-  30 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +netwag-5.29.0.ebuild:
-  Version bump for bug 87208.
-
-  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> netwag-5.28.0.ebuild:
-  Marked stable on x86.
-
-  13 Jan 2005; Sven Wegener <swegener@gentoo.org> :
-  Added missing digest entries.
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netwag/ChangeLog,v 1.1 2005/01/13 06:16:51 dragonheart Exp $
 
 *netwag-5.28.0 (13 Jan 2005)
 

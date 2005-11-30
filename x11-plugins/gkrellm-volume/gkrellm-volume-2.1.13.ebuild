@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-volume/gkrellm-volume-2.1.13.ebuild,v 1.2 2005/04/27 20:22:33 herbs Exp $
-
-inherit multilib
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-volume/gkrellm-volume-2.1.13.ebuild,v 1.1 2005/03/22 18:04:18 sekretarz Exp $
 
 IUSE="alsa"
 DESCRIPTION="A mixer control plugin for gkrellm"
@@ -28,7 +26,7 @@ src_compile() {
 }
 
 src_install() {
-	insinto /usr/$(get_libdir)/gkrellm2/plugins
+	insinto /usr/lib/gkrellm2/plugins
 	doins volume.so
 	dodoc README Changelog
 }

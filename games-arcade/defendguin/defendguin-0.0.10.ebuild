@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/defendguin/defendguin-0.0.10.ebuild,v 1.5 2005/10/30 02:22:55 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/defendguin/defendguin-0.0.10.ebuild,v 1.1 2004/09/16 06:58:20 mr_bones_ Exp $
 
 inherit eutils games
 DESCRIPTION="A clone of the arcade game Defender, but with a Linux theme"
@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.sonic.net/pub/users/nbs/unix/x/defendguin/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~sparc x86"
+KEYWORDS="x86"
 IUSE=""
 
 DEPEND="virtual/x11

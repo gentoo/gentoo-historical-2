@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/cowsay/cowsay-3.03.ebuild,v 1.11 2005/07/13 20:03:32 spb Exp $
-
-inherit bash-completion
+# $Header: /var/cvsroot/gentoo-x86/games-misc/cowsay/cowsay-3.03.ebuild,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
 DESCRIPTION="configurable talking ASCII cow (and other characters)"
 HOMEPAGE="http://www.nog.net/~tony/warez/cowsay.shtml"
@@ -10,32 +8,29 @@ SRC_URI="http://www.nog.net/~tony/warez/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa mips ppc ~ppc-macos sparc x86"
-IUSE=""
+KEYWORDS="x86 ppc"
 
 DEPEND=">=sys-apps/sed-4"
 RDEPEND=">=dev-lang/perl-5"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed	-i \
-		-e '1 c\#!/usr/bin/perl'\
-		-e 's/\$version/\$VERSION/g'\
-		-e "s:%PREFIX%/share/cows:/usr/share/${P}/cows:" \
-		-e '/getopts/ i\$Getopt::Std::STANDARD_HELP_VERSION=1;' cowsay \
-			|| die "sed cowsay failed"
-	sed -i \
-		-e "s|%PREFIX%/share/cows|/usr/share/${P}/cows|" cowsay.1 \
-			|| die "sed cowsay.1 failed"
-}
-
 src_install() {
-	dobin cowsay || die "dobin failed"
+	./install.sh ${D}/usr || "install problem"
+
+	dodir /usr/share/${P}
+	mv ${D}/usr/share/cows ${D}/usr/share/${P}
+
+	cd ${D}/usr/bin
+	sed	-i "s|${D}/usr/share/cows|/usr/share/${P}/cows|g" cowsay || \
+		die "sed cowsay failed"
+	chmod 755 cowsay
+
+	# Oh what an ugly hack.  install.sh installs into /usr/man so just
+	# "use that energy" and kill it off after doman is done with it.
+	cd ${D}/usr/man/man1
+	sed -i "s|${D}/usr/share/cows|/usr/share/${P}/cows|g" cowsay.1
 	doman cowsay.1
-	dosym cowsay /usr/bin/cowthink
-	dosym cowsay.1.gz /usr/share/man/man1/cowthink.1.gz
-	dodir "/usr/share/${P}/cows"
-	cp -r cows "${D}/usr/share/${P}/" || die "cp failed"
-	dobashcompletion ${FILESDIR}/${PN}.bashcomp
+	cd ${D}/usr/share/man/man1
+	ln -s cowsay.1.gz cowthink.1.gz
+	rm -rf ${D}/usr/man
+
 }

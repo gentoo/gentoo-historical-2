@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnunet/gnunet-0.6.6b.ebuild,v 1.5 2005/08/26 14:52:44 sekretarz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/gnunet/gnunet-0.6.6b.ebuild,v 1.1 2005/04/01 16:10:24 augustus Exp $
 
 inherit eutils libtool
 
@@ -18,7 +18,7 @@ SLOT="0"
 DEPEND=">=sys-libs/gdbm-1.8.0
 	>=dev-libs/libgcrypt-1.2.0
 	gtk? ( >=x11-libs/gtk+-2.4.0 )
-	mysql? ( >=dev-db/mysql-3.23.56 )
+	mysql? ( >=dev-db/mysql-3.23-56 )
 	sqlite? ( >=dev-db/sqlite-3.0.8 )
 	sys-devel/gettext
 	>=media-libs/libextractor-0.3.1
@@ -26,15 +26,7 @@ DEPEND=">=sys-libs/gdbm-1.8.0
 
 pkg_preinst() {
 	enewgroup gnunet || die "Problem adding gnunet group"
-	enewuser gnunet -1 -1 /dev/null gnunet || die "Problem adding gnunet user"
-}
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/${P}-autotools.patch
-	libtoolize --copy --force
+	enewuser gnunet -1 /bin/false /dev/null gnunet || die "Problem adding gnunet user"
 }
 
 src_compile() {
@@ -55,7 +47,7 @@ src_compile() {
 
 	econf ${myconf} || die "econf failed"
 
-	emake -j1 || die "emake failed"
+	emake || MAKEOPTS="${MAKEOPTS} -j1" emake || die "emake failed"
 }
 
 src_install() {
@@ -67,8 +59,6 @@ src_install() {
 	dodoc contrib/*
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/gnunet-0.6.6b gnunet
-	dodir /var/lib/GNUnet
-	chown gnunet:gnunet ${D}/var/lib/GNUnet
 }
 
 pkg_postinst() {

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/php-mode/php-mode-1.1.0.ebuild,v 1.7 2005/11/08 19:02:37 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/php-mode/php-mode-1.1.0.ebuild,v 1.1 2004/05/22 16:17:50 usata Exp $
 
 inherit elisp
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://php-mode.sourceforge.net"
 SRC_URI="mirror://sourceforge/php-mode/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~x86 ~ppc ~amd64"
 
 DEPEND="virtual/emacs"
 

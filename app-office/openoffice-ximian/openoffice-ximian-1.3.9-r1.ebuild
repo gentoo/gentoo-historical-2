@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-ximian/openoffice-ximian-1.3.9-r1.ebuild,v 1.9 2005/11/20 19:48:26 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-ximian/openoffice-ximian-1.3.9-r1.ebuild,v 1.1 2005/04/12 17:51:35 suka Exp $
 
 # Notes:
 #
@@ -51,7 +51,7 @@ HOMEPAGE="http://go-oo.org"
 
 LICENSE="|| ( LGPL-2  SISSL-1.1 )"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 RDEPEND="!app-office/openoffice-ximian-bin
 	virtual/x11
@@ -79,7 +79,7 @@ RDEPEND="!app-office/openoffice-ximian-bin
 	linguas_zh_TW? ( >=media-fonts/arphicfonts-0.1-r2 )"
 
 DEPEND="${RDEPEND}
-	net-print/cups
+	virtual/lpr
 	>=sys-apps/findutils-4.1.20-r1
 	app-shells/tcsh
 	dev-util/pkgconfig
@@ -268,11 +268,8 @@ src_unpack() {
 	# fix for bug #82385
 	epatch ${FILESDIR}/${OO_VER}/getcompver.awk.patch
 
-	#Allow building with libxslt >= 1.1.15
-	use java || epatch ${FILESDIR}/${OO_VER}/build-new-xslt.diff
-
 	# Security fix, bug #88863
-	epatch ${FILESDIR}/${OO_VER}/cws-heapbug_CAN-2005-0941.diff
+	epatch ${FILESDIR}/${OO_VER}/crash-objstream.diff
 
 	# Workaround for bug #73940, may break debug use flag on ppc
 	if use ppc; then
@@ -319,14 +316,14 @@ src_unpack() {
 
 	einfo "Installing / Scaling Icons"
 	${PATCHDIR}/bin/scale-icons ${S} || die
-	cp -pPRf ${ICONDIR}/* ${S} || die
+	cp -af ${ICONDIR}/* ${S} || die
 
 	einfo "Copying splash screens in place"
-	cp -pPRf ${WORKDIR}/gentoo-splash/open*.bmp ${S}/offmgr/res/ || die
+	cp -af ${WORKDIR}/gentoo-splash/open*.bmp ${S}/offmgr/res/ || die
 
 	einfo "Copying libpwd tarball in build dir"
 	mkdir -p ${S}/libwpd/download/ || die
-	cp -pPRf ${DISTDIR}/libwpd-0.8.0.tar.gz ${S}/libwpd/download/ || die
+	cp -af ${DISTDIR}/libwpd-0.8.0.tar.gz ${S}/libwpd/download/ || die
 
 	einfo "Munging font mappings ..."
 	${PATCHDIR}/bin/font-munge ${S}/officecfg/registry/data/org/openoffice/VCL.xcu || die
@@ -347,7 +344,6 @@ get_EnvSet() {
 
 src_compile() {
 
-	unset LIBC
 	addpredict "/bin"
 	addpredict "/root/.gconfd"
 	addpredict "/root/.gnome"

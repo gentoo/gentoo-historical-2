@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/battalion/battalion-1.4b.ebuild,v 1.9 2005/09/26 19:40:00 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-action/battalion/battalion-1.4b.ebuild,v 1.1 2004/06/03 13:43:56 wolf31o2 Exp $
 
 inherit games
 
@@ -10,7 +10,7 @@ SRC_URI="http://evlweb.eecs.uic.edu/aej/BATTALION/${PN}${PV}.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="virtual/x11
@@ -24,7 +24,7 @@ dir="${GAMES_DATADIR}/${PN}"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 
 	# Modify data paths
 	sed -i \
@@ -43,26 +43,36 @@ src_unpack() {
 	sed -i \
 		-e "s:-O2:${CFLAGS}:" \
 		Makefile || die "sed Makefile failed"
-	# Only .raw sound files are used on Linux. The .au files are not needed.
-	rm {SOUNDS,MUSIC}/*.au
+}
+
+src_compile() {
+	emake || die "emake failed"
 }
 
 src_install() {
-	dogamesbin battalion || die "dogamesbin failed"
-	dodir "${dir}"
-	cp -r DATA MUSIC SOUNDS TEXTURES "${D}${dir}" || die "cp failed"
-	dodoc README
+	local f
 
-	dodir "${GAMES_STATEDIR}"
-	touch "${D}${GAMES_STATEDIR}/battalion_hiscore"
-	fperms 660 "${GAMES_STATEDIR}/battalion_hiscore"
+	# Only .raw sound files are used on Linux. The .au files are not needed.
+	rm {SOUNDS,MUSIC}/*.au
+
+	# Install game data
+	for f in DATA MUSIC SOUNDS TEXTURES
+	do
+		insinto ${dir}/${f}
+		doins ${f}/*
+	done
+
+	dodoc README
+	dogamesbin battalion
+
+	insinto ${GAMES_STATEDIR}
+	touch ${D}${GAMES_STATEDIR}/battalion_hiscore
+	fperms 660 ${GAMES_STATEDIR}/battalion_hiscore
 
 	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-	echo
 	einfo "Sound and music are not enabled by default."
 	einfo "Use the S and M keys to enable them in-game, or start the game with"
 	einfo "the -s and -m switches: battalion -s -m"

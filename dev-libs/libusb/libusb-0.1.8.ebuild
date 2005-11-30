@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libusb/libusb-0.1.8.ebuild,v 1.21 2005/05/17 12:18:45 liquidx Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libusb/libusb-0.1.8.ebuild,v 1.1 2004/02/29 01:03:43 liquidx Exp $
 
 DESCRIPTION="Userspace access to USB devices"
 HOMEPAGE="http://libusb.sourceforge.net/"
@@ -10,34 +8,18 @@ SRC_URI="mirror://sourceforge/libusb/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sparc x86"
-IUSE="debug doc"
-
-RDEPEND=""
+KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64 ~ia64"
+IUSE=""
 
 DEPEND="sys-devel/libtool
 	doc? ( app-text/openjade
-		~app-text/docbook-sgml-dtd-3.1 )"
-
-src_unpack(){
-	unpack ${A}
-	# needed by libgphoto2, see bug #45889
-	cd ${S}; epatch ${FILESDIR}/libusb-0.1.8-amd64-fPIC.patch
-
-	if use ppc || use ppc-macos ; then
-		aclocal || die
-		autoconf || die
-		automake --add-missing || die
-	fi
-}
+		=app-text/docbook-sgml-dtd-3.1-r1 )"
 
 src_compile() {
 	local myconf
 
 	# keep this otherwise libraries will not have .so extensions
-	use ppc-macos \
-	  && glibtoolize --force \
-	  || elibtoolize --force
+	libtoolize --force
 
 	use doc \
 		&& myconf="--enable-build-docs" \

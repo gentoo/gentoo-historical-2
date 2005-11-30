@@ -1,19 +1,22 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/docklib/docklib-0.2.ebuild,v 1.12 2004/06/24 21:59:32 agriffis Exp $
+# Copyright (c) Vitaly Kushneriuk
+# Distributed under the terms of the GNU General Public License, v2.
+# Maintainer: Vitaly Kushneriuk<vitaly@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/docklib/docklib-0.2.ebuild,v 1.1 2002/01/30 20:50:43 vitaly Exp $
+
+S=${WORKDIR}/${P}
 
 DESCRIPTION="Library for Window Maker dock applications."
-SRC_URI="http://linuxberg.surfnet.nl/files/x11/dev/${P}.tar.gz"
+SRC_URI="http://linuxberg.surfnet.nl/files/x11/dev/docklib-0.2.tar.gz"
 HOMEPAGE="http://www.windowmaker.org"
-DEPEND="virtual/x11"
+DEPEND="x11-base/xfree"
 #RDEPEND=""
-LICENSE="as-is"
-SLOT="0"
-KEYWORDS="x86 sparc amd64 ppc"
-IUSE=""
 
 src_compile() {
-	econf || die
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die "./configure failed"
 	emake || die
 }
 

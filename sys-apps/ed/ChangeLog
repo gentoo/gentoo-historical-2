@@ -1,74 +1,8 @@
 # ChangeLog for sys-apps/ed
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ed/ChangeLog,v 1.24 2005/01/10 17:08:45 vapier Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ed/ChangeLog,v 1.1 2002/02/01 21:53:36 gbevin Exp $
 
-*ed-0.2-r6 (10 Jan 2005)
-
-  10 Jan 2005; Mike Frysinger <vapier@gentoo.org> files/0.2-mkstemp.patch,
-  -ed-0.2-r5.ebuild, +ed-0.2-r6.ebuild:
-  Really fix the mktemp patch #77367.
-
-  09 Jan 2005; Mike Frysinger <vapier@gentoo.org> files/0.2-mkstemp.patch,
-  -files/0.2-r5-mkstemp.patch, -ed-0.2-r4.ebuild, ed-0.2-r5.ebuild:
-  Push to stable.  Only run make the autoconf stuff when cross-compiling #76038.
-
-*ed-0.2-r5 (09 Jan 2005)
-
-  09 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
-  +files/0.2-r5-mkstemp.patch, +ed-0.2-r5.ebuild:
-  Bug #73858 - patch from bug #66400 produced incorrect output in some cases.
-
-  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  06 Dec 2004; Mike Frysinger <vapier@gentoo.org> ed-0.2-r4.ebuild:
-  cross-compile fixes
-
-  09 Oct 2004; Tom Gall <tgall@gentoo.org> ed-0.2-r4.ebuild:
-  stable on ppc64, bug #66400
-
-  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> ed-0.2-r4.ebuild:
-  Stable amd64.
-
-  06 Oct 2004; <SeJo@gentoo.org> ed-0.2-r4.ebuild:
-  stable masking for gsla: 66400
-
-  05 Oct 2004; Gustavo Zacarias <gustavoz@gentoo.org> ed-0.2-r4.ebuild:
-  Stable on sparc wrt #66400
-
-  05 Oct 2004; Olivier Crete <tester@gentoo.org> ed-0.2-r4.ebuild:
-  Marking stable on x86 wrt bug #66400
-
-  05 Oct 2004; Bryan Østergaard,,, <kloeri@gentoo.org> ed-0.2-r4.ebuild:
-  Stable on alpha, bug 66400.
-
-*ed-0.2-r4 (05 Oct 2004)
-
-  05 Oct 2004; Mike Frysinger <vapier@gentoo.org> +files/0.2-info-dir.patch,
-  +files/0.2-mkstemp.patch, +ed-0.2-r4.ebuild:
-  Security fix #66400.
-
-  02 Mar 2004; Brian Jackson <iggy@gentoo.org> ed-0.2-r3.ebuild:
-  adding initial s390 support
-
-  20 Feb 2003; Zach Welch <gmsoft@gentoo.org> ed-0.2-r3.ebuild :
-  Added arm to keywords.
-
-  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> ed-0.2-r3.ebuild :
-  Added hppa to keywords.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *ed-0.2-r3 (1 Feb 2002)
-
-  15 Feb 2003; Jan Seidel <tuxus@gentoo.org> ed-0.2-r3.ebuild :
-  Added mips to keywords
-
-  23 Oct 2002; Mike Frysinger <vapier@gentoo.org> :
-  Removed bootcd USE flag
-
-  14 Jul 2002; phoen][x <phoenix@gentoo.org> ed-0.2-r3.ebuild :
-  Added KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

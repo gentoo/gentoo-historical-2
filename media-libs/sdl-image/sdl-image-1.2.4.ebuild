@@ -1,6 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-image/sdl-image-1.2.4.ebuild,v 1.3 2005/08/26 15:45:25 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/sdl-image/sdl-image-1.2.4.ebuild,v 1.1 2004/12/16 08:26:20 mr_bones_ Exp $
+
+inherit gnuconfig
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="image file loading library"
@@ -9,16 +11,23 @@ SRC_URI="http://www.libsdl.org/projects/SDL_image/release/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gif jpeg tiff png"
 
 DEPEND="sys-libs/zlib
 	>=media-libs/libsdl-1.2.4
 	png? ( >=media-libs/libpng-1.2.1 )
 	jpeg? ( >=media-libs/jpeg-6b )
-	tiff? ( media-libs/tiff )"
+	tiff? ( media-libs/tiff )
+	gif? ( media-libs/giflib )"
 
 S="${WORKDIR}/${MY_P}"
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	gnuconfig_update
+}
 
 src_compile() {
 	econf \

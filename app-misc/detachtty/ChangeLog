@@ -1,31 +1,6 @@
 # ChangeLog for app-misc/detachtty
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/detachtty/ChangeLog,v 1.10 2005/07/22 20:27:48 mkennedy Exp $
-
-  22 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> detachtty-9.ebuild:
-  Keywording ~amd64, ~sparc; Removed old ebuilds; Added common-lisp herd; 
-  Expanded metadata.xml longdescription.
-
-  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> detachtty-9.ebuild:
-  Stable on ppc.
-
-  24 Nov 2004; Aaron Walker <ka0ttic@gentoo.org> detachtty-9.ebuild:
-  Marked stable on x86.
-
-  26 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> detachtty-9.ebuild:
-  Use tc-getCC() - bug #68980
-
-*detachtty-9 (25 Oct 2004)
-
-  25 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml,
-  +detachtty-9.ebuild:
-  Version bump; cleaned up ebuild and added metadata info.
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> detachtty-6.ebuild:
-  Masked detachtty-6.ebuild stable for ppc
-
-  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> detachtty-6.ebuild:
-  Don't assign default to S; header fix
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/detachtty/ChangeLog,v 1.1 2003/06/12 08:12:11 mkennedy Exp $
 
 *detachtty-6 (09 Jul 2003)
 

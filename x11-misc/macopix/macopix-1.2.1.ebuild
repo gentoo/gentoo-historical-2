@@ -1,13 +1,11 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/macopix/macopix-1.2.1.ebuild,v 1.4 2004/12/09 11:15:20 usata Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/macopix/macopix-1.2.1.ebuild,v 1.1 2004/10/17 16:45:34 usata Exp $
 
 DESCRIPTION="MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application on UNIX / X Window system."
-HOMEPAGE="http://rosegray.sakura.ne.jp/macopix/index-e.html"
+HOMEPAGE="http://kurumi.sakura.ne.jp/~chimari/macopix/index-e.html"
 
-BASE_URI="http://rosegray.sakura.ne.jp/macopix"
+BASE_URI="http://kurumi.sakura.ne.jp/~chimari/macopix"
 SRC_URI="${BASE_URI}/${P}.tar.bz2"
 
 # NOTE: These mascots are not redistributable on commercial CD-ROM.
@@ -22,7 +20,7 @@ SRC_URI="${SRC_URI} ${BASE_URI}/${PN}-mascot-marimite-euc-ja-2.10.tar.gz"
 # programme itself is GPL-2, and mascots are free-noncomm
 LICENSE="GPL-2 free-noncomm"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86 ~ppc"
 
 IUSE="gtk2 nls"
 
@@ -33,12 +31,6 @@ DEPEND="gtk2? ( >=x11-libs/gtk+-2.0.0
 		>=media-libs/gdk-pixbuf-0.7 )
 	nls? ( >=sys-devel/gettext-0.10 )
 	media-libs/libpng"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
-}
 
 src_compile() {
 	econf $(use_with gtk2) \

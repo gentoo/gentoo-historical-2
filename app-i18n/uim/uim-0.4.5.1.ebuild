@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-0.4.5.1.ebuild,v 1.7 2005/02/27 12:43:50 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-0.4.5.1.ebuild,v 1.1 2005/02/20 14:04:27 usata Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
 MY_P="${P/_/-}"
 S="${WORKDIR}/${MY_P}"
@@ -13,8 +13,8 @@ SRC_URI="http://uim.freedesktop.org/releases/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
-IUSE="gtk nls X m17n-lib"
+KEYWORDS="x86 ~alpha ~ppc ~amd64 ~ppc64 ~sparc"
+IUSE="gtk nls debug X m17n-lib"
 
 RDEPEND="X? ( virtual/x11 )
 	gtk? ( >=x11-libs/gtk+-2 )
@@ -29,14 +29,15 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-gtk-query-immodules-gentoo.diff
+	cd ${S}
+	epatch ${FILESDIR}/${PN}-gtk-query-immodules-gentoo.diff
 	use X || sed -i -e '/^SUBDIRS/s/xim//' Makefile.in || die
 }
 
 src_compile() {
-	econf \
-		$(use_enable nls) \
+
+	use debug && append-flags -g
+	econf $(use_enable nls) \
 		$(use_with X x) \
 		$(use_with gtk gtk2) \
 		$(use_with m17n-lib m17nlib) \
@@ -45,7 +46,7 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make DESTDIR=${D} install || die "make install failed"
 	dodoc AUTHORS ChangeLog INSTALL* NEWS README*
 	dodoc doc/{HELPER-CANDWIN,KEY,UIM-SH}
 	use X && dodoc doc/XIM-SERVER

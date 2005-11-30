@@ -1,21 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gconf/ruby-gconf-0.2.ebuild,v 1.14 2005/04/24 02:54:58 hansmi Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Jerry Alexandratos <jerry@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-gconf/ruby-gconf-0.2.ebuild,v 1.1 2002/04/22 01:07:15 agriffis Exp $
 
-inherit ruby
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Ruby Gconf bindings"
-SRC_URI="mirror://sourceforge/ruby-gnome/${P}.tar.gz"
+SRC_URI="http://prdownloads.sourceforge.net/ruby-gnome/${P}.tar.gz"
 HOMEPAGE="http://ruby-gnome.sourceforge.net/"
-LICENSE="Ruby"
-KEYWORDS="x86 ppc"
-IUSE=""
-USE_RUBY="ruby16 ruby18 ruby19"
-SLOT="0"
 
-DEPEND="virtual/ruby
-	=x11-libs/gtk+-1.2*
-	>=gnome-base/gconf-1.0.7-r2"
+DEPEND=">=dev-lang/ruby-1.6.4-r1
+		>=x11-libs/gtk+-1.2.10-r4
+		>=gnome-base/gconf-1.0.7-r2"
 
 src_compile() {
 	ruby extconf.rb || die "ruby extconf.rb failed"
@@ -23,6 +18,6 @@ src_compile() {
 }
 
 src_install () {
-	make -C src install DESTDIR=${D}
+	make install DESTDIR=${D}
 	dodoc [A-Z]*
 }

@@ -1,7 +1,0 @@
-MD5 d13bd02ebdf6a534043d85a2bb9573b0 ChangeLog 3066
-MD5 40e76c87eefb26dab5341ea9dd3eb913 endeavour-2.3.6.ebuild 1320
-MD5 1652522405f5936eb29776ef8d5ffa5b metadata.xml 310
-MD5 8f680f37b3440e871fa464b3a3aae648 endeavour-2.4.6.ebuild 1401
-MD5 8bad28a83ee1a70fcbc5bf58e1aefc18 files/digest-endeavour-2.3.6 136
-MD5 a2f4fc1ce0559ff8c155d69ae4e5b8f7 files/digest-endeavour-2.4.6 136
-MD5 78d7303ccc10e5d6c76b68047c56e03e files/endeavour-2.4.6-gcc33.patch 897

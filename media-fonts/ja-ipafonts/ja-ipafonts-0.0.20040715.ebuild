@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/ja-ipafonts/ja-ipafonts-0.0.20040715.ebuild,v 1.6 2005/07/15 17:09:31 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/ja-ipafonts/ja-ipafonts-0.0.20040715.ebuild,v 1.1 2004/08/11 21:11:30 usata Exp $
 
 inherit font
 
@@ -12,7 +12,7 @@ LICENSE="grass-ipafonts"
 RESTRICT="nomirror"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ~ppc-macos ppc64 x86"
+KEYWORDS="~x86"
 IUSE=""
 
 S="${WORKDIR}"

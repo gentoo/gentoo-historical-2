@@ -1,39 +1,6 @@
 # ChangeLog for app-admin/otpcalc
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/otpcalc/ChangeLog,v 1.13 2005/07/20 14:38:15 gustavoz Exp $
-
-  20 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> otpcalc-0.97.ebuild:
-  Stable on sparc
-
-  03 Jul 2005; Michael Hanselmann <hansmi@gentoo.org> otpcalc-0.97.ebuild:
-  Stable on ppc.
-
-  22 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> otpcalc-0.97.ebuild:
-  To ~sparc
-
-*otpcalc-0.97 (06 Jun 2005)
-
-  06 Jun 2005; Tavis Ormandy <taviso@gentoo.org> otpcalc-0.97.ebuild:
-  stable on x86
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> otpcalc-0.96.ebuild:
-  Stable on ppc.
-
-  29 Apr 2005; Tavis Ormandy <taviso@gentoo.org> :
-  fixing #90900, bump new version
-
-  24 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  otpcalc-0.96.ebuild:
-  mark ~ppc
-
-  25 Mar 2004; Martin Holzer <mholzer@gentoo.org> otpcalc-0.96.ebuild:
-  fixing depend. see 45343
-
-  15 Sep 2003; Tavis Ormandy <taviso@gentoo.org> otpcalc-0.96.ebuild:
-  stable
-
-  05 Sep 2003; Tavis Ormandy <taviso@gentoo.org> otpcalc-0.96.ebuild:
-  package has odd capitalisation, fixing a typo.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-admin/otpcalc/ChangeLog,v 1.1 2003/09/05 13:10:29 taviso Exp $
 
 *otpcalc-0.96 (05 Sep 2003)
 

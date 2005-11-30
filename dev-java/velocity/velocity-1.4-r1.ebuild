@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/velocity/velocity-1.4-r1.ebuild,v 1.4 2005/07/15 11:43:07 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/velocity/velocity-1.4-r1.ebuild,v 1.1 2005/03/29 16:00:43 luckyduck Exp $
 
 inherit java-pkg
 
@@ -10,17 +10,16 @@ SRC_URI="mirror://apache/jakarta/velocity/binaries/velocity-${PV}/velocity-${PV}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE="doc j2ee jikes junit"
 
-RDEPEND=">=virtual/jre-1.3.1
+DEPEND=">=virtual/jdk-1.3.1"
+RDEPEND=">=virtual/jdk-1.3.1
+	>=dev-java/ant-1.5.1
 	>=dev-java/avalon-logkit-bin-1.2
 	=dev-java/jakarta-oro-2.0*
 	j2ee? ( =dev-java/sun-j2ee-1.3.1* )
 	jikes? ( >=dev-java/jikes-1.17 )"
-DEPEND=">=virtual/jdk-1.3.1
-	${RDEPEND}
-	>=dev-java/ant-1.5.1"
 
 src_compile () {
 	cd ${S}/build
@@ -37,12 +36,13 @@ src_compile () {
 }
 
 
-src_install() {
+src_install () {
+	cd ${S}
 	if use j2ee ; then
 		java-pkg_dojar bin/${PN}-J2EE-${PV}.jar
 	else
-		java-pkg_dojar bin/${P}.jar
+		java-pkg_dojar bin/${PN}-${PV}.jar
 	fi
-	dodoc NOTICE README.txt
+	dodoc LICENSE NOTICE README.txt
 	use doc && java-pkg_dohtml -r docs/*
 }

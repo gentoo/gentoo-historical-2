@@ -1,10 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libsoundtouch/libsoundtouch-1.2.1.ebuild,v 1.6 2004/11/17 06:31:00 eradicator Exp $
-
-IUSE=""
-
-S="${WORKDIR}/SoundTouch-${PV}"
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libsoundtouch/libsoundtouch-1.2.1.ebuild,v 1.1 2004/08/13 22:30:18 fvdpol Exp $
 
 DESCRIPTION="Audio processing library for changing the tempo, pitch and playback rates."
 HOMEPAGE="http://sky.prohosting.com/oparviai/soundtouch/"
@@ -12,10 +8,18 @@ SRC_URI="http://sky.prohosting.com/oparviai/soundtouch/soundtouch_v${PV}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~ppc-macos"
+KEYWORDS="~x86 ~amd64"
+IUSE=""
 
-RDEPEND="virtual/libc"
-DEPEND="app-arch/unzip"
+# FIXME:
+#
+# I wanted to use 'static' and 'pic' USE flags, but anything
+# other than a static lib produces segfaults in soundstretch. :-(
+# So I let alone the '$myconf' option, so one can test options
+# easily with: myconf="--enable-foo" emerge libsoundtouch
+
+DEPEND=""
+S="${WORKDIR}/SoundTouch-${PV}"
 
 src_unpack() {
 	unpack ${A} || die "unpack failed"
@@ -33,6 +37,6 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR="${D}" pkgdocdir="/usr/share/doc/${PF}" install || die
-	rm -f ${D}/usr/share/doc/${PF}/COPYING.TXT  # remove obsolete LICENCE file
+	make DESTDIR=${D} pkgdocdir=/usr/share/doc/${P} install || die
+	rm -f ${D}/usr/share/doc/${P}/COPYING.TXT  # remove obsolete LICENCE file
 }

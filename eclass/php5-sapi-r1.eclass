@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php5-sapi-r1.eclass,v 1.20 2005/08/23 14:55:11 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php5-sapi-r1.eclass,v 1.1 2005/03/13 22:05:03 stuart Exp $
 #
-# eclass/php5-sapi-r1.eclass
+# eclass/php5-sapi.eclass
 #               Eclass for building different php5 SAPI instances
 #
 #               Based on robbat2's work on the php4 sapi eclass
@@ -12,8 +12,10 @@
 #
 # ========================================================================
 
-inherit eutils confutils libtool
+inherit eutils confutils libtool 
 
+ECLASS=php5-sapi
+INHERITED="$INHERITED $ECLASS"
 
 # set MY_P in the ebuild
 
@@ -21,19 +23,18 @@ HOMEPAGE="http://www.php.net/"
 LICENSE="PHP-3"
 SRC_URI="http://www.php.net/distributions/${MY_P}.tar.bz2"
 S="${WORKDIR}/${MY_P}"
-IUSE="adabas bcmath berkdb birdstep bzip2 calendar cdb cpdflib crypt ctype curl curlwrappers db2 dba dbase dbm dbmaker dbx debug dio empress empress-bcs esoob exif fam frontbase fdftk flatfile filepro firebird ftp gd gd-external gdbm gmp hyperwave-api imap inifile iconv informix ingres iodbc jpeg kerberos ldap libedit mcve memlimit mhash mime ming mnogosearch msession msql mssql mysql mysqli ncurses nls nis oci8 odbc oracle7 ovrimos pcntl pcre pfpro png postgres posix qdbm readline recode sapdb sasl session sharedext sharedmem simplexml snmp soap sockets solid spell spl sqlite ssl sybase sybase-ct sysvipc threads tidy tiff tokenizer truetype wddx xsl xml2 xmlrpc xpm zlib"
+IUSE="${IUSE} adabas bcmath berkdb birdstep bzlib calendar cdb cpdflib crypt ctype curl curlwrappers db2 dba dbase dbm dbmaker dbx debug dio empress empress-bcs esoob exif fam frontbase fdftk flatfile filepro ftp gd gd-external gdbm gmp hyperwave-api imap inifile iconv informix ingres interbase iodbc jpeg kerberos ldap libedit mcve memlimit mhash mime ming mnogosearch msession msql mssql mysql mysqli ncurses nls nis oci8 odbc oracle7 ovrimos pcntl pcre pfpro png postgres posix qdbm readline recode sapdb sasl session sharedext sharedmem simplexml snmp soap sockets solid spell spl sqlite ssl sybase sybase-ct sysvipc threads tidy tiff tokenizer truetype wddx xsl xml2 xmlrpc xpm zlib"
 
 # these USE flags should have the correct dependencies
 DEPEND="$DEPEND
 	!<=dev-php/php-4.99.99
 	berkdb? ( =sys-libs/db-4* )
-	bzip2? ( app-arch/bzip2 )
-	cpdflib? ( >=media-libs/clibpdf-2 )
+	bzlib? ( app-arch/bzip2 )
+	cpdflib? ( >=media-libs/clibpdf-2* )
 	crypt? ( >=dev-libs/libmcrypt-2.4 )
-	curl? ( >=net-misc/curl-7.10.5 )
+	curl? ( >=net-misc/curl-7.10.2 )
 	fam? ( virtual/fam )
 	fdftk? ( app-text/fdftk )
-	firebird? ( dev-db/firebird  )
 	gd-external? ( media-libs/gd )
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
 	gmp? ( dev-libs/gmp )
@@ -70,7 +71,7 @@ DEPEND="$DEPEND
 	wddx? ( dev-libs/expat )
 	xpm? ( virtual/x11 )
 	xsl? ( dev-libs/libxslt )
-	zlib? ( sys-libs/zlib )"
+	zlib? ( sys-libs/zlib ) "
 
 # this would be xml2?, but PEAR requires XML support
 # and we always want to build PEAR.
@@ -95,7 +96,7 @@ EXPORT_FUNCTIONS pkg_setup src_compile src_install src_unpack pkg_postinst
 # INTERNAL FUNCTIONS
 # ========================================================================
 
-php5-sapi-r1_check_awkward_uses() {
+php5-sapi_check_awkward_uses() {
 
 	# snmp support seems broken, haven't looked into a fix for it yet
 
@@ -131,7 +132,7 @@ php5-sapi-r1_check_awkward_uses() {
 		eerror
 		eerror "We have not been able to add iodbc support to Gentoo yet, as we"
 		eerror "have experienced difficulties in reaching www.iodbc.org."
-		eerror
+		eerror 
 		eerror "For now, please use the 'odbc' USE flag instead."
 		eerror
 		die "iodbc support incomplete; gentoo bug"
@@ -190,7 +191,6 @@ php5-sapi-r1_check_awkward_uses() {
 	confutils_use_depend_any "png"  "gd" "gd-external"
 	confutils_use_depend_any "tiff" "gd" "gd-external"
 	confutils_use_depend_any "xpm"  "gd" "gd-external"
-	confutils_use_depend_all "png"  "zlib"
 
 	if useq imap ; then
 		enable_extension_with 	"imap" 			"imap" 		1
@@ -214,7 +214,7 @@ php5-sapi-r1_check_awkward_uses() {
 	fi
 
 	if useq odbc ; then
-		enable_extension_with		"unixODBC"		"odbc"			1 "/usr"
+		enable_extension_with		"unixODBC"		"odbc"			1
 
 		enable_extension_with		"adabas"		"adabas"		1
 		enable_extension_with		"birdstep"		"birdstep"		1
@@ -225,13 +225,13 @@ php5-sapi-r1_check_awkward_uses() {
 		fi
 		enable_extension_with		"esoob"			"esoob"			1
 		enable_extension_with		"ibm-db2"		"db2"			1
-		enable_extension_with		"iodbc"			"iodbc"			1 "/usr"
+		enable_extension_with		"iodbc"			"iodbc"			1
 		enable_extension_with		"sapdb"			"sapdb"			1
 		enable_extension_with		"solid"			"solid"			1
 	fi
 
 	if useq mysql; then
-		enable_extension_with		"mysql"			"mysql"			1
+		enable_extension_with		"mysql"			"mysql"			1 
 		enable_extension_with		"mysql-sock"	"mysql"			0 "/var/run/mysqld/mysqld.sock"
 	fi
 	if useq mysqli; then
@@ -273,7 +273,7 @@ php5-sapi-r1_check_awkward_uses() {
 
 	# GD library support
 	confutils_use_depend_any "truetype" "gd" "gd-external"
-
+	
 	# ldap support
 	confutils_use_depend_all "sasl" "ldap"
 
@@ -302,16 +302,16 @@ php5-sapi-r1_check_awkward_uses() {
 # EXPORTED FUNCTIONS
 # ========================================================================
 
-php5-sapi-r1_pkg_setup() {
+php5-sapi_pkg_setup() {
 	# let's do all the USE flag testing before we do anything else
 	# this way saves a lot of time
 
-	php5-sapi-r1_check_awkward_uses
+	php5-sapi_check_awkward_uses
 }
 
-php5-sapi-r1_src_unpack() {
+php5-sapi_src_unpack() {
 	unpack ${A}
-	# Fix for HTTP auth bug, #59755
+	# Fix for HTTP auth bug, #59755 
 	[ "x${PV}" == "x5.0.0" ] && epatch ${FILESDIR}/php-5.0.0-httpauthfix.patch
 
 	cd ${S}
@@ -339,7 +339,7 @@ php5-sapi-r1_src_unpack() {
 	epatch ${FILESDIR}/${P}-missing-arches.patch
 }
 
-php5-sapi-r1_src_compile() {
+php5-sapi_src_compile() {
 	confutils_init
 
 	my_conf="${my_conf} --with-config-file-path=${PHP_INI_DIR}"
@@ -347,7 +347,7 @@ php5-sapi-r1_src_compile() {
 
 	#							extension		USE flag		shared support?
 	enable_extension_enable		"bcmath"		"bcmath"		1
-	enable_extension_with		"bz2"			"bzip2"			1
+	enable_extension_with		"bz2"			"bzlib"			1
 	enable_extension_enable		"calendar"		"calendar"		1
 	enable_extension_with		"cpdflib"		"cpdflib"		1 # depends on jpeg
 	enable_extension_disable	"ctype"			"ctype"			0
@@ -368,9 +368,9 @@ php5-sapi-r1_src_compile() {
 	enable_extension_with		"iconv"			"iconv"			1
 	enable_extension_with		"informix"		"informix"		1
 	enable_extension_with		"ingres"		"ingres"		1
-	enable_extension_with		"interbase"		"firebird"		1
+	enable_extension_with		"interbase"		"interbase"		1
 	# ircg extension not supported on Gentoo at this time
-	enable_extension_with		"kerberos"		"kerberos"		0
+	enable_extension_with		"kerberos"		"kerberos"		0 "/usr"
 	enable_extension_disable	"libxml"		"xml2"			0
 	enable_extension_enable		"mbstring"		"nls"			1
 	enable_extension_with		"mcrypt"		"crypt"			1
@@ -416,7 +416,7 @@ php5-sapi-r1_src_compile() {
 	enable_extension_with		"zlib"			"zlib"			1
 	enable_extension_enable		"debug"			"debug"			0
 
-	php5-sapi-r1_check_awkward_uses
+	php5-sapi_check_awkward_uses
 
 	# DBA support
 	enable_extension_enable		"dba"		"dba" 1
@@ -428,14 +428,7 @@ php5-sapi-r1_src_compile() {
 	enable_extension_with		"libedit"		"libedit"		1
 
 	# optimization/setting stuff
-	my_conf="${my_conf} --enable-versioning"
-
-	if [ "${PHPSAPI}" != "cli" ]; then
-		my_conf="${my_conf} --disable-cli"
-	fi
-
-	# Bug 98694
-	addpredict /etc/krb5.conf
+	myconf="${myconf} --enable-versioning"
 
 	# all done
 
@@ -443,9 +436,9 @@ php5-sapi-r1_src_compile() {
 	emake || die "make failed"
 }
 
-php5-sapi-r1_src_install() {
+php5-sapi_src_install() {
 	addpredict /usr/share/snmp/mibs/.index
-
+	
 	useq sharedext && PHP_INSTALLTARGETS="${PHP_INSTALLTARGETS} install-modules"
 	make INSTALL_ROOT=${D} $PHP_INSTALLTARGETS || die "install failed"
 
@@ -461,7 +454,7 @@ php5-sapi-r1_src_install() {
 	local phpinisrc=php.ini-dist
 	einfo "Setting extension_dir in php.ini"
 	sed -e "s|^extension_dir .*$|extension_dir = ${PHPEXTDIR}|g" -i ${phpinisrc}
-
+	
 	# A patch for PHP for security. PHP-CLI interface is exempt, as it cannot be
 	# fed bad data from outside.
 	if [ "${PHPSAPI}" != "cli" ]; then
@@ -470,10 +463,10 @@ php5-sapi-r1_src_install() {
 	fi
 
 	einfo "Setting correct include_path"
-	sed -e 's|^;include_path .*|include_path = ".:/usr/share/php"|' -i ${phpinisrc}
+	sed -e 's|^;include_path .*|include_path = ".:/usr/lib/php"|' -i ${phpinisrc}
 
 	if useq sharedext; then
-		for x in `ls ${D}${PHPEXTDIR}/*.so | sort`; do
+		for x in `ls ${D}${PHPEXTDIR}/*.so | sort`; do 
 			echo "extension=`basename ${x}`" >> ${phpinisrc}
 		done;
 	fi
@@ -497,7 +490,7 @@ php5-sapi-r1_src_install() {
 	fi
 }
 
-php5-sapi-r1_pkg_postinst() {
+php5-sapi_pkg_postinst() {
 	ewarn "If you have additional third party PHP extensions (such as"
 	ewarn "dev-php/eaccelerator) you may need to recompile them now."
 

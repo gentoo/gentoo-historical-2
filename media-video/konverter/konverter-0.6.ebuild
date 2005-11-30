@@ -1,24 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/konverter/konverter-0.6.ebuild,v 1.5 2005/04/19 20:12:05 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/konverter/konverter-0.6.ebuild,v 1.1 2004/04/04 20:51:41 centic Exp $
 
 inherit kde
+need-kde 3
 
 DESCRIPTION="A KDE MEncoder frontend for video-conversion."
 HOMEPAGE="http://www.libsdl.de/projects/konverter/"
 SRC_URI="http://p15108941.pureserver.info/libsdl/projects/${PN}/sources/${P}.tar.gz"
-
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~amd64"
+SLOT="0"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 
 DEPEND="media-video/mplayer"
-need-kde 3
 
 src_install() {
 	einstall || die
-	dodoc ChangeLog TODO README NEWS INSTALL COPYING AUTHORS
+	dodoc ChangeLog TODO README NEWS INSTALL COPYING AUTHORS || die
 }
 

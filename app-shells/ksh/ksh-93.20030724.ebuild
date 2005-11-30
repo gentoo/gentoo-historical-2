@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/ksh/ksh-93.20030724.ebuild,v 1.12 2004/12/31 13:58:07 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/ksh/ksh-93.20030724.ebuild,v 1.1 2003/09/06 11:11:05 taviso Exp $
 
-inherit ccc eutils flag-o-matic
+inherit ccc eutils
 
 RELEASE="2003-07-24"
 DESCRIPTION="The Original Korn Shell, 1993 revision (ksh93)"
@@ -13,10 +13,12 @@ SRC_URI="http://www.research.att.com/~gsf/download/tgz/INIT.${RELEASE}.tgz
 
 LICENSE="ATT"
 SLOT="0"
-KEYWORDS="x86 sparc alpha"
+KEYWORDS="~x86 ~alpha"
 IUSE="static nls"
 
-DEPEND="virtual/libc !app-shells/pdksh"
+DEPEND="virtual/glibc
+	>=sys-apps/sed-4"
+RDEPEND="virtual/glibc"
 
 S=${WORKDIR}
 
@@ -50,7 +52,7 @@ src_compile() {
 
 	# set the optimisations for the build process
 	export CCFLAGS="${CFLAGS}"
-	cd ${S}; ./bin/package only make ast-ksh CC=${CC:-gcc} || die
+	cd ${S}; ./bin/package only make ast-ksh CC=${CC:-gcc} || true
 
 	# install the optional locale data.
 	# heh, check out locale fudd, or piglatin :)
@@ -68,11 +70,11 @@ src_install() {
 	local my_arch="${S}/arch/$(${S}/bin/package)"
 
 	exeinto /bin
-	doexe ${my_arch}/bin/ok/ksh
+	newexe ${my_arch}/bin/ok/ksh ksh93
 
 	# FIXME: talk to pdksh maintainer about making this nicer,
 	# 		how can we co-exist nicely without blocking?
-	dosym /bin/ksh /bin/ksh93
+	[ ! -f /bin/ksh ] && dosym /bin/ksh93 /bin/ksh
 
 	newman ${my_arch}/man/man1/sh.1 ksh.1
 	dodoc lib/package/LICENSES/ast lib/package/gen/ast-ksh.txt

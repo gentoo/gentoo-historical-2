@@ -1,16 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-base-r1.eclass,v 1.4 2005/11/20 01:35:05 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-base-r1.eclass,v 1.1 2005/09/04 10:54:53 stuart Exp $
 #
 # Author: Tal Peer <coredumb@gentoo.org>
 # Author: Stuart Herbert <stuart@gentoo.org>
-# Maintained by the PHP Herd <php-bugs@gentoo.org>
 #
-# The php-ext-base-r1 eclass provides a unified interface for adding standalone
+# The php-ext-base eclass provides a unified interface for adding standalone
 # PHP extensions ('modules') to the php.ini files on your system.
 #
-# Combined with php-ext-source-r1, we have a standardised solution for supporting
-# PHP extensions.
+# Combined with php-ext-source, we have a standardised solution for supporting
+# PHP extensions
 
 inherit depend.php
 
@@ -35,12 +34,8 @@ EXT_DIR="`${PHPCONFIG} --extension-dir 2>/dev/null`"
 # ---end ebuild configurable settings
 
 DEPEND="${DEPEND}
-		>=sys-devel/m4-1.4.3
-		>=sys-devel/libtool-1.5.18
-		>=sys-devel/automake-1.9.6
-		sys-devel/automake-wrapper
-		>=sys-devel/autoconf-2.59
-		sys-devel/autoconf-wrapper"
+		>=sys-devel/m4-1.4
+		>=sys-devel/libtool-1.4.3"
 
 php-ext-base-r1_buildinilist() {
 	# work out the list of .ini files to edit/add to
@@ -64,19 +59,13 @@ php-ext-base-r1_src_install() {
 	if [ "${PHP_EXT_INI}" = "yes" ] ; then
 		php-ext-base-r1_addextension "${PHP_EXT_NAME}.so"
 	fi
-	for inifile in ${PHPINIFILELIST} ; do
-		inidir=${inifile/${PHP_EXT_NAME}.ini/}
-		inidir=${inidir/ext/ext-active}
-		dodir "/${inidir}"
-		dosym "/${inifile}" "/${inifile/ext/ext-active}"
-	done
 	# add support for installing php files into a version dependant directory
 	PHP_EXT_SHARED_DIR="/usr/share/${PHP_SHARED_CAT}/${PHP_EXT_NAME}"
 }
 
 php-ext-base-r1_addextension() {
 	if [ "${PHP_EXT_ZENDEXT}" = "yes" ] ; then
-		if has_zts ; then
+		if built_with_use =${PHP_PKG} apache2 threads ; then
 			ext_type="zend_extension_ts"
 			ext_file="${EXT_DIR}/$1"
 		else

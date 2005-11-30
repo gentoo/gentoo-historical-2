@@ -1,12 +1,8 @@
-# ChangeLog for sci-chemistry/moldy
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/moldy/ChangeLog,v 1.5 2005/07/08 05:19:20 spyderous Exp $
+# ChangeLog for app-sci/moldy
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-chemistry/moldy/ChangeLog,v 1.1 2004/12/24 16:47:56 ribosome Exp $
 
-  25 May 2005; Donnie Berkholz <spyderous@gentoo.org>; moldy-2.16e.ebuild:
-  Fix HOMEPAGE.
-
-  23 Jan 2005; <gongloo@gentoo.org> moldy-2.16e.ebuild:
-  Stable on ppc-macos.
+*moldy-2.16e (24 Dec 2004)
 
   24 Dec 2004; Olivier Fisette <ribosome@gentoo.org> +metadata.xml,
   +moldy-2.16e.ebuild:

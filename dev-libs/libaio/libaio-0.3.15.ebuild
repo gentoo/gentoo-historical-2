@@ -1,36 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libaio/libaio-0.3.15.ebuild,v 1.13 2005/10/02 19:54:46 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libaio/libaio-0.3.15.ebuild,v 1.1 2003/11/30 19:58:07 brad_mssw Exp $
 
-inherit eutils
-
-DESCRIPTION="Asynchronous input/output library that uses the kernels native interface"
-HOMEPAGE="http://www.kernel.org/pub/linux/kernel/people/andrea/libaio/"
+DESCRIPTION="Asynchronous input/output library maintained by RedHat, required by Oracle9i AMD64 edition"
 #SRC_URI="mirror://gentoo/${P}.tar.bz2"
 SRC_URI="http://www.kernel.org/pub/linux/kernel/people/andrea/libaio/${P}-2.5-2.tar.bz2"
+HOMEPAGE="http://www.kernel.org/pub/linux/kernel/people/andrea/libaio/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~s390 ~sh ~sparc ~x86"
-IUSE=""
+KEYWORDS="amd64"
+IUSE="nls"
 
 DEPEND=""
 
-S=${WORKDIR}/${P}-2.5-2
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-2.5-2-Makefile.patch
-	epatch "${FILESDIR}"/${P}-more-arches.patch
-}
+S="${S}-2.5-2"
 
 src_compile() {
+	cd ${S}
+	epatch ${FILESDIR}/${P}-2.5-2-Makefile.patch
 	make || die
 }
 
 src_install() {
 	make \
-		prefix="${D}"/usr \
+		prefix=${D}/usr \
 		install || die
 }

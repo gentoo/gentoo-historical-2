@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mrtg/mrtg-2.11.1.ebuild,v 1.9 2005/06/19 18:24:49 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/mrtg/mrtg-2.11.1.ebuild,v 1.1 2005/01/05 23:25:01 swtaylor Exp $
 
 DESCRIPTION="A tool to monitor the traffic load on network-links"
 HOMEPAGE="http://ee-staff.ethz.ch/~oetiker/webtools/mrtg/"
@@ -8,34 +8,27 @@ SRC_URI="http://ee-staff.ethz.ch/~oetiker/webtools/mrtg/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
-IUSE="doc"
+KEYWORDS="~x86 ~ppc ~sparc ~ppc64 ~amd64 ~alpha"
+IUSE=""
 
 DEPEND="virtual/libc
 	dev-lang/perl
 	>=media-libs/gd-1.8.4"
 
-src_install () {
-	keepdir /var/lib/mrtg
-
-	make DESTDIR="${D}" install || die "make install failed"
-	rm -fr ${D}/usr/share/doc/mrtg2
-
-	newinitd ${FILESDIR}/mrtg.rc ${PN}
-	newconfd ${FILESDIR}/mrtg.confd ${PN}
-
-	dodoc ANNOUNCE COPYING CHANGES COPYRIGHT MANIFEST README THANKS
-
-	if use doc ; then
-		docinto txt ; dodoc doc/*.txt
-		cp -a contrib ${D}/usr/share/doc/${PF}/contrib
-		prepalldocs
-		dohtml -r doc/*.html images/*
-	fi
+src_compile() {
+	./configure --prefix=/usr --host=${CHOST} || die
+	emake || die
 }
 
-pkg_postinst(){
-	einfo "You must configure mrtg before being able to run it. Try cfgmaker."
-	einfo "The following thread may be useful:"
-	einfo "http://forums.gentoo.org/viewtopic-t-105862.html"
+src_install () {
+	make prefix=${D}/usr install || die
+	dodir /usr/share/man
+	mv ${D}/usr/man/man1 ${D}/usr/share/man
+	rm -rf ${D}/usr/{man,doc}
+	dodoc ANNOUNCE COPYING CHANGES COPYRIGHT MANIFEST README THANKS
+	docinto txt ; dodoc doc/*.txt
+	cp -a contrib ${D}/usr/share/doc/${PF}/contrib
+	prepalldocs
+	docinto html ; dohtml -r doc/*.html images/*
+	exeinto /etc/init.d ; newexe ${FILESDIR}/mrtg.rc mrtg
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ifenslave/ifenslave-1.1.0.ebuild,v 1.6 2005/05/30 19:09:16 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ifenslave/ifenslave-1.1.0.ebuild,v 1.1 2004/06/28 08:46:14 robbat2 Exp $
 
-inherit toolchain-funcs eutils
+inherit gcc eutils
 
 DESCRIPTION="Attach and detach slave interfaces to a bonding device"
 HOMEPAGE="http://sf.net/projects/bonding/"
@@ -15,12 +15,10 @@ SRC_URI="${DEBIANPKG_BASE}/${DEBIANPKG_TARBALL}
 		 ${DEBIANPKG_BASE}/${DEBIANPKG_PATCH}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86"
 IUSE=""
-RDEPEND="virtual/libc"
-DEPEND="sys-devel/gcc
-		>=sys-kernel/linux-headers-2.4.22
-		${RDEPEND}"
+RDEPEND="sys-libs/glibc"
+DEPEND="sys-devel/gcc ${RDEPEND}"
 
 src_unpack() {
 	unpack ${DEBIANPKG_TARBALL}
@@ -28,7 +26,7 @@ src_unpack() {
 }
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} ${PN}.c -o ${PN} || die "Failed to compile!"
+	$(gcc-getCC) ${CFLAGS} ${PN}.c -o ${PN}
 }
 
 src_install() {

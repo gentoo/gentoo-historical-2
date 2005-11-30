@@ -1,17 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/koffice/koffice-1.4.1-r1.ebuild,v 1.8 2005/10/13 19:17:59 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/koffice/koffice-1.4.1-r1.ebuild,v 1.1 2005/10/10 22:06:00 greg_g Exp $
 
 inherit kde
 
 DESCRIPTION="An integrated office suite for KDE, the K Desktop Environment."
 HOMEPAGE="http://www.koffice.org/"
-SRC_URI="mirror://kde/stable/koffice-${PV}/src/${P}.tar.bz2
-	mirror://kde/security_patches/post-koffice-1.4.1-rtfimport.diff"
+SRC_URI="mirror://kde/stable/koffice-${PV}/src/${P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc javascript mysql postgres"
 
 RDEPEND=">=media-gfx/imagemagick-5.5.2
@@ -49,7 +48,7 @@ src_unpack() {
 	kde_src_unpack
 
 	# Fix RTF import buffer overflow. Applied in 1.4.2.
-	epatch "${DISTDIR}/post-koffice-1.4.1-rtfimport.diff"
+	epatch "${FILESDIR}/koffice-1.4.1-rtfimport.patch"
 }
 
 src_compile() {

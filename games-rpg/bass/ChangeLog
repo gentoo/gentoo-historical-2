@@ -1,25 +1,6 @@
 # ChangeLog for games-rpg/bass
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/bass/ChangeLog,v 1.7 2005/11/01 21:51:14 mr_bones_ Exp $
-
-*bass-1.2 (01 Nov 2005)
-
-  01 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> +bass-1.2.ebuild:
-  version bump
-
-*bass-0-r1 (01 Nov 2005)
-
-  01 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> +bass-0-r1.ebuild:
-  add file needed by new scummvm version (bug #111063)
-
-  11 Apr 2004; Jason Wever <weeve@gentoo.org> bass-0.ebuild:
-  Added ~sparc keyword.
-
-  28 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> bass-0.ebuild:
-  use games_make_wrapper; error check
-
-  13 Jan 2003; Spider <spider@gentoo.org> :
-  Fixed dependency so it doesn't break with new portage. 
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/bass/ChangeLog,v 1.1 2003/10/13 21:38:34 vapier Exp $
 
 *bass-0 (13 Oct 2003)
 

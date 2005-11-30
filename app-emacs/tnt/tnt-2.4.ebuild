@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/tnt/tnt-2.4.ebuild,v 1.8 2005/08/28 02:27:40 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/tnt/tnt-2.4.ebuild,v 1.1 2002/11/01 02:52:02 mkennedy Exp $
 
-inherit elisp
+inherit elisp 
 
 IUSE=""
 
@@ -11,9 +11,11 @@ HOMEPAGE="http://tnt.sourceforge.net/"
 SRC_URI="mirror://sourceforge/tnt/${P}.tar.gz"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="x86"
 
 DEPEND="virtual/emacs"
+
+S="${WORKDIR}/${P}"
 
 src_compile() {
 	make clean && make || die

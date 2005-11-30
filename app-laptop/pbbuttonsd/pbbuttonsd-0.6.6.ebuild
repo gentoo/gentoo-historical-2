@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/pbbuttonsd/pbbuttonsd-0.6.6.ebuild,v 1.5 2005/09/09 04:48:54 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/pbbuttonsd/pbbuttonsd-0.6.6.ebuild,v 1.1 2004/11/17 14:16:01 sejo Exp $
 
 inherit eutils
 
@@ -10,16 +10,20 @@ SRC_URI="mirror://sourceforge/pbbuttons/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc"
-IUSE="debug"
+KEYWORDS="~ppc"
+IUSE=""
 
 DEPEND="virtual/libc
 	>=sys-apps/baselayout-1.8.6.12-r1"
 RDEPEND=""
 
+src_unpack() {
+	unpack ${A}
+}
+
 src_compile() {
-	econf $(use_enable debug) || die "sorry, failed to configure pbbuttonsd"
-	emake || die "sorry, failed to compile pbbuttonsd"
+	econf || die "sorry, failed to configure pbbuttonsd"
+	make || die "sorry, failed to compile pbbuttonsd"
 }
 
 src_install() {

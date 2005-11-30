@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jcalendar/jcalendar-1.2.2.ebuild,v 1.4 2005/07/16 10:36:59 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jcalendar/jcalendar-1.2.2.ebuild,v 1.1 2004/12/04 17:34:09 karltk Exp $
 
 inherit eutils java-pkg
 
@@ -9,15 +9,14 @@ SRC_URI="http://www.toedter.com/download/${PN}.zip"
 HOMEPAGE="http://www.toedter.com/en/jcalendar/"
 LICENSE="LGPL-2.1"
 SLOT="1.2"
-KEYWORDS="x86 amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 IUSE="doc jikes"
-RDEPEND=">=virtual/jdk-1.4
-	=dev-java/jgoodies-looks-1.2*"
 DEPEND=">=virtual/jdk-1.4
-	${RDEPEND}
 	jikes? ( >=dev-java/jikes-1.21 )
 	>=dev-java/ant-core-1.4
+	=dev-java/jgoodies-looks-bin-1.2*
 	>=app-arch/unzip-5.50-r1"
+RDEPEND=">=virtual/jdk-1.4"
 
 S=${WORKDIR}
 
@@ -25,22 +24,28 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}/lib
 
-	rm -f *.jar
-	java-pkg_jar-from jgoodies-looks-1.2 looks.jar looks-1.2.2.jar
+	rm -f looks-1.2.2.jar
+	java-pkg_jar-from jgoodies-looks-bin jgoodies-looks-bin.jar looks-1.2.2.jar
 }
 
 src_compile() {
 	cd src/
 
 	local antflags="jar"
-	use doc && antflags="${antflags} javadocs"
-	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	if use doc; then
+		antflags="${antflags} javadocs"
+	fi
+	if use jikes; then
+		antflags="${antflags} -Dbuild.compiler=jikes"
+	fi
 	ant ${antflags} || die "failed to build"
 }
 
 src_install() {
 	java-pkg_dojar lib/jcalendar.jar
 
-	dodoc readme.txt
-	use doc && java-pkg_dohtml -r doc/*
+	dodoc jcalendar-license.txt readme.txt
+	if use doc; then
+		java-pkg_dohtml -r doc/*
+	fi
 }

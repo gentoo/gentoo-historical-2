@@ -1,7 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cppvm/cppvm-1.5.0-r1.ebuild,v 1.5 2004/07/15 02:53:19 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/cppvm/cppvm-1.5.0-r1.ebuild,v 1.1 2003/08/01 23:16:33 tantive Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="CPPVM: A C++ Interface to PVM"
 SRC_URI="ftp://ftp.informatik.uni-stuttgart.de/pub/cppvm/cppvm.tar.gz"
 HOMEPAGE="http://www.informatik.uni-stuttgart.de/ipvr/bv/cppvm/index.html"
@@ -13,7 +14,7 @@ RDEPEND=""
 SLOT="0"
 LICENSE="LGPL-2"
 
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 src_unpack() {
 	unpack ${A}
@@ -25,8 +26,7 @@ src_compile() {
 #	export PVM_ROOT="/usr/local/pvm3"
 #	export PVM_ARCH="LINUX"
 
-	# Doesn't build in parallel (#47556)
-	emake -j1 || die
+	emake || die
 }
 
 src_install() {
@@ -52,3 +52,4 @@ pkg_postinst() {
 	ewarn "Do not forget do copy the /root/pvm3 dir to the homedirs of all users"
 	ewarn "that should be allowed access to cppvm!"
 }
+

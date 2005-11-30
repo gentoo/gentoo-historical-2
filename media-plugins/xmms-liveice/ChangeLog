@@ -1,28 +1,6 @@
 # ChangeLog for media-plugins/xmms-liveice
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-liveice/ChangeLog,v 1.8 2005/09/14 06:11:57 agriffis Exp $
-
-  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> xmms-liveice-1.0.0.ebuild:
-  Mark 1.0.0 stable on alpha
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xmms-liveice-1.0.0.ebuild:
-  Stable on ppc.
-
-  22 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> xmms-liveice-1.0.0.ebuild:
-  removed bogus icecast dependency. fixes #81132
-
-  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  xmms-liveice-1.0.0.ebuild:
-  Stable amd64, sparc.
-
-  17 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  xmms-liveice-1.0.0.ebuild:
-  gnuconfig update for ~amd64 addition.
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  xmms-liveice-1.0.0.ebuild:
-  Added IUSE.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-liveice/ChangeLog,v 1.1 2003/02/12 12:50:37 seemant Exp $
 
 *xmms-liveice-1.0.0 (12 Feb 2003)
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>video</herd>
-<maintainer>
-<email>flameeyes@gentoo.org</email>
-<name>Diego Pettenò</name>
-</maintainer>
+  <herd>no-herd</herd>
+  <maintainer>
+    <email>raker@gentoo.org</email>
+    <name>Nick Hadaway</name>
+  </maintainer>
 </pkgmetadata>

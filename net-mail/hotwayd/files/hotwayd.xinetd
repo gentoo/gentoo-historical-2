@@ -1,7 +1,9 @@
 # default: off
 # description: hotway daemon
-#   - By default it listens to port 1100, so please adjust settings in your
-#     clients
+#   - By default it listens to port 110 (default for pop3)
+#     If you already have a pop3 server running, or you want it to listen
+#     to another port change the value of "port = 110" below.
+#     Change the value in your email client accordingly.
 #   - By default it only allows access from localhost.
 #   - Also all xinetd entries do not start by default.
 #     One should manually enable the entries that one wants by
@@ -15,11 +17,10 @@ service hotwayd
 	socket_type		= stream
 	wait			= no
 	user			= nobody
-	port			= 1100
+	port			= 110
 	server			= /usr/sbin/hotwayd
-	#server_args		= -p http://proxy:8080 -u proxy_user -q proxy_password
+	server_args		= -s
 	log_on_success		+= USERID
 	log_on_failure		+= USERID
 	disable			= yes
-	type			= unlisted
 }

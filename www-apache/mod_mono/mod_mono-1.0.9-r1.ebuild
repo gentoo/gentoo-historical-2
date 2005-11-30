@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_mono/mod_mono-1.0.9-r1.ebuild,v 1.3 2005/07/10 00:15:18 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_mono/mod_mono-1.0.9-r1.ebuild,v 1.1 2005/05/17 18:41:34 ramereth Exp $
 
 inherit apache-module
 
@@ -9,8 +9,8 @@ HOMEPAGE="http://www.go-mono.com/"
 SRC_URI="http://www.go-mono.com/sources/${PN}/${P}.tar.gz"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
-IUSE="apache2"
+KEYWORDS="~x86 ~ppc"
+IUSE=""
 DEPEND=">=dev-lang/mono-1.0
 		>=dev-dotnet/xsp-${PV}"
 

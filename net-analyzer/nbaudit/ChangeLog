@@ -1,37 +1,6 @@
 # ChangeLog for net-analyzer/nbaudit
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nbaudit/ChangeLog,v 1.11 2005/10/09 13:55:26 mkay Exp $
-
-*nbaudit-1.0-r1 (09 Oct 2005)
-
-  09 Oct 2005; <mkay@gentoo.org> +nbaudit-1.0-r1.ebuild:
-  Removing -lshadow from Makeile
-
-  19 Jul 2005; David Holm <dholm@gentoo.org> nbaudit-1.0.ebuild:
-  Added to ~ppc.
-
-  08 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
-  +files/nbaudit-1.0-gentoo.diff, nbaudit-1.0.ebuild:
-  Cleaned up ebuild; Added a patch with some gcc-3.4 fixes as well replacing
-  all occurrences of 'nat' with 'nbaudit' in the manual page.
-
-  24 Aug 2004; Eldad Zack <eldad@gentoo.org> nbaudit-1.0.ebuild:
-  Fixed -lshadow linking problem. Thanks to wernfried haas
-  <w.haas@xover.htu.tuwien.ac.at> for pointing it out. Closes bug #61437.
-
-  10 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
-  nbaudit-1.0.ebuild:
-  Added missing IUSE
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*nbaudit-1.0 (14 Feb 2002)
-
-  14 Feb 2002; Bruce A. Locke <blocke@shivan.org> ChangeLog:
-
-  Now does something besides segfaulting...
-
-  NOTE: I left out CFLAGS for a reason... ;)
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nbaudit/ChangeLog,v 1.1 2002/02/01 21:53:31 gbevin Exp $
 
 *nbaudit-1.0 (1 Feb 2002)
 

@@ -1,57 +1,8 @@
 # ChangeLog for x11-plugins/gkrellsun
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellsun/ChangeLog,v 1.16 2005/09/17 10:09:19 agriffis Exp $
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org> gkrellsun-0.12.1.ebuild:
-  Mark 0.12.1 stable on alpha
-
-  27 Apr 2005; Herbie Hopkins <herbs@gentoo.org> gkrellsun-0.12.2.ebuild:
-  multilib fixes
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> gkrellsun-0.12.1.ebuild:
-  stable on ia64
-
-*gkrellsun-0.12.2 (22 Jan 2005)
-
-  22 Jan 2005; Lars Weiler <pylon@gentoo.org> +gkrellsun-0.12.2.ebuild:
-  Version bump.
-
-  02 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  gkrellsun-0.12.1.ebuild:
-  Masked gkrellsun-0.12.1.ebuild stable for ppc
-
-*gkrellsun-0.12.1 (20 Jul 2004)
-
-  20 Jul 2004; Martin Holzer <mholzer@gentoo.org> +gkrellsun-0.12.1.ebuild:
-  Version bumped. Closes 51481
-
-  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> gkrellsun-0.9.1.ebuild:
-  Marking stable on hppa
-
-  04 Sep 2003; Aron Griffis <agriffis@gentoo.org> gkrellsun-0.9.1.ebuild:
-  stable on alpha
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*gkrellsun-0.9.1 (01 Dec 2002)
-
-  01 Dec 2002; Seemant Kulleen <seemant@gentoo.org> gkrellsun-0.9.1.ebuild
-  files/digest-gkrellsun-0.9.1 :
-
-  Version bump, which now works with gkrellmoon-0.5 for gkrellm2.  Thanks
-  to: ejwahl@cox.net (Erich Wahl) in bug #10837.
-
-*gkrellsun-0.9 (09 Nov 2002)
-
-  09 Nov 2002; Seemant Kulleen <seemant@gentoo.org> gkrellsun-0.9.ebuild
-  files/digest-gkrellsun-0.9 :
-
-  Version bump -- works with both versions of gkrellm.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellsun/ChangeLog,v 1.1 2002/08/30 01:49:27 seemant Exp $
 
 *gkrellsun-0.2 (19 Feb 2002)
-
-  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
-  Added PPC to KEYWORDS.
 
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
 

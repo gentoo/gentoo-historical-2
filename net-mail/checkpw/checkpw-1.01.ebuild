@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/checkpw/checkpw-1.01.ebuild,v 1.4 2005/05/16 16:25:46 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/checkpw/checkpw-1.01.ebuild,v 1.1 2004/03/11 15:33:14 matsuu Exp $
 
-inherit toolchain-funcs
+inherit gcc
 
 DESCRIPTION="an implementation of the checkpassword interface that checks a password"
 HOMEPAGE="http://checkpw.sourceforge.net/checkpw/"
@@ -14,7 +14,7 @@ IUSE="static"
 
 KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64 ~ia64"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
@@ -23,8 +23,8 @@ src_unpack() {
 	# the -s is from the original build
 	LDFLAGS="${LDFLAGS} -s"
 	use static && LDFLAGS="${LDFLAGS} -static"
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc || die
-	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld || die
+	echo "$(gcc-getCC) ${CFLAGS}" > conf-cc || die
+	echo "$(gcc-getCC) ${LDFLAGS}" > conf-ld || die
 	echo ".maildir" > conf-maildir || die
 
 	if [ -z "$QMAIL_HOME" ]; then

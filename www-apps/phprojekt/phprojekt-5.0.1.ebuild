@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/phprojekt/phprojekt-5.0.1.ebuild,v 1.3 2005/10/31 14:03:42 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/phprojekt/phprojekt-5.0.1.ebuild,v 1.1 2005/10/23 19:38:38 rl03 Exp $
 
 inherit webapp
 
 DESCRIPTION="Project management and coordination system"
 HOMEPAGE="http://www.phprojekt.com/"
-SRC_URI="http://phprojekt.com/releases/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~ppc ~x86"
@@ -29,7 +29,7 @@ src_install() {
 	local file
 
 	cp -R . ${D}/${MY_HTDOCSDIR}
-	for file in attach chat; do
+	for file in attach chat upload; do
 		webapp_serverowned ${MY_HTDOCSDIR}/${file}
 	done
 	webapp_postinst_txt en ${FILESDIR}/postinstall-en.txt

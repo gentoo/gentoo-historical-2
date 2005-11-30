@@ -1,19 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.3.11.ebuild,v 1.20 2005/10/29 22:16:12 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.3.11.ebuild,v 1.1 2005/04/10 21:11:44 stuart Exp $
 
-IUSE="apache2"
+IUSE="${IUSE} apache2"
 
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc64 s390 sparc x86"
+KEYWORDS="x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~s390 ~ppc64 ~mips"
 
 detectapache() {
-	# DO NOT REPLICATE THIS IN ANY OTHER PACKAGE WITHOUT PORTAGE DEVS PERMISSION
-	# IT IS BROKEN AND A TEMPORARY MEASURE!
-	# YOU'VE BEEN WARNED.
-	if [[ ${EBUILD_PHASE/depend} != ${EBUILD_PHASE} ]]; then
-		APACHEVER=1
-		return
-	fi
 	local domsg=
 	[ -n "$1" ] && domsg=1
 	HAVE_APACHE1=
@@ -62,13 +55,13 @@ DESCRIPTION="Apache module for PHP"
 
 DEPEND_EXTRA=">=net-www/apache-1.3.26-r2
 			  apache2? ( >=net-www/apache-2.0.43-r1
-			            !>=net-www/apache-2.0.54-r30 )"
+			            !>=net-www/apache-2.0.52-r3 )"
 DEPEND="${DEPEND} ${DEPEND_EXTRA}"
 RDEPEND="${RDEPEND} ${DEPEND_EXTRA}"
 IUSE="${IUSE} debug"
 # for this revision only
 PDEPEND=">=${PHP_PROVIDER_PKG}-4.3.11"
-PROVIDE="${PROVIDE} virtual/httpd-php"
+PROVIDE="${PROVIDE} virtual/httpd-php-${PV}"
 
 # Add a 'return 0' as we DON'T want the return code checked
 pkg_setup() {
@@ -83,16 +76,11 @@ src_unpack() {
 	if [ "${ARCH}" == "amd64" ] ; then
 		epatch ${FILESDIR}/mod_php-4.3.4-amd64hack.diff
 	fi
+	[ "${ARCH}" == "sparc" ] && epatch ${FILESDIR}/stdint.diff
 
 	# bug fix for security problem - bug #39952
 	# second revision as the apache2 stuff was resolved upstream
 	epatch ${FILESDIR}/mod_php-4.3.5-apache1security.diff
-
-	# Bug 88756
-	use flash && epatch ${FILESDIR}/php-4.3.11-flash.patch
-
-	# Bug 88795
-	use gmp && epatch ${FILESDIR}/php-4.3.11-gmp.patch
 
 	# stop php from activing the apache config, as we will do that ourselves
 	for i in configure sapi/apache/config.m4 sapi/apache2filter/config.m4 sapi/apache2handler/config.m4; do
@@ -184,7 +172,7 @@ pkg_postinst() {
 		apache2msg
 	else
 		einfo "1. Execute the command:"
-		einfo " \"emerge --config =${PF}\""
+		einfo " \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 		einfo "2. Edit /etc/conf.d/apache and add \"-D PHP4\" to APACHE_OPTS"
 		einfo "That will include the php mime types in your configuration"
 		einfo "automagically and setup Apache to load php when it starts."

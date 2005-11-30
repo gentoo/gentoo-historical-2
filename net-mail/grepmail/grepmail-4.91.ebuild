@@ -1,28 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/grepmail/grepmail-4.91.ebuild,v 1.10 2005/11/28 13:05:52 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/grepmail/grepmail-4.91.ebuild,v 1.1 2003/03/08 23:15:46 aliz Exp $
 
-inherit perl-app
+inherit perl-module
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Search normal or compressed mailbox using a regular expression or dates."
 HOMEPAGE="http://grepmail.sourceforge.net/"
 SRC_URI="mirror://sourceforge/grepmail/${P}.tar.gz"
-RESTRICT="nomirror"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc"
 
 DEPEND="${DEPEND}
 	dev-perl/Inline
 	dev-perl/TimeDate
 	dev-perl/DateManip
-	perl-core/Digest-MD5
+	dev-perl/Digest-MD5
 	dev-perl/Parse-RecDescent"
 
 RDEPEND=""
-
+	
 src_compile () {
-	echo "" | perl-app_src_compile
+	echo "" | perl-module_src_compile
 }

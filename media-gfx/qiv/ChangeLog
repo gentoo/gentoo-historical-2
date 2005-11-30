@@ -1,53 +1,6 @@
 # ChangeLog for media-gfx/qiv
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/qiv/ChangeLog,v 1.15 2005/09/13 17:04:16 agriffis Exp $
-
-  13 Sep 2005; Aron Griffis <agriffis@gentoo.org> qiv-1.9.ebuild:
-  Mark 1.9 stable on alpha
-
-  29 Jul 2005; Chris White <chriswhite@gentoo.org> qiv-2.0.ebuild:
-  Marked ~ppc.
-
-*qiv-2.0 (28 Jul 2005)
-
-  28 Jul 2005; <sekretarz@gentoo.org> +qiv-2.0.ebuild:
-  Version bump, bug #51789
-
-  03 Jun 2005; Luca Barbato <lu_zero@gentoo.org> metadata.xml:
-  Metadata fix
-
-  23 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> qiv-1.9.ebuild:
-  ~alpha keyword.
-
-  22 Jul 2004; Tom Gall <tgall@gentoo.org> qiv-1.9.ebuild:
-  stable on ppc64, bug #57623
-
-  17 Mar 2004; Seemant Kulleen <seemant@gentoo.org> qiv-1.9_pre10.ebuild:
-  fix for bug #44712 by Michael Sterret <mr_bones_@gentoo.org>
-
-*qiv-1.9 (03 Jan 2004)
-
-  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> qiv-1.9.ebuild:
-  Version bumped. Closes 37098
-
-  25 Aug 2003; Jason Wever <weeve@gentoo.org> qiv-1.7-r3.ebuild,
-  qiv-1.9_pre10.ebuild:
-  Marked stable for sparc to fix bug #27312.
-
-*qiv-1.9_pre10 (09 Feb 2003)
-
-  09 Feb 2003; Matthew Turk <satai@gentoo.org> :
-  Version bump to a pre-release.  Masked.
-
-*qiv-1.7-r3 (12 Apr 2002)
-
-  26 Aug 2002; Calum Selkirk <cselkirk@gentoo.org>  qiv-1.7-r3.ebuild :
-
-  Added ppc to KEYWORDS.
-
-  12 Apr 2002; Seemant Kulleen <seemant@gentoo.org> qiv-1.7-r3.ebuild :
-
-  Compile against newest libpng
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/qiv/ChangeLog,v 1.1 2002/02/01 21:53:30 gbevin Exp $
 
 *qiv-1.7-r2 (1 Feb 2002)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-gl/gauche-gl-0.3.1.ebuild,v 1.3 2004/07/16 09:42:10 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-gl/gauche-gl-0.3.1.ebuild,v 1.1 2004/07/11 08:03:58 hattya Exp $
 
 inherit eutils flag-o-matic
 
@@ -14,13 +14,13 @@ SRC_URI="mirror://sourceforge/gauche/${MY_P}.tgz"
 
 RESTRICT="nomirror"
 LICENSE="BSD"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86"
 SLOT="0"
 S="${WORKDIR}/${MY_P}"
 
 DEPEND="virtual/opengl
 	>=media-libs/glut-3.7
-	>=dev-lang/gauche-0.7.3"
+	>=dev-lisp/gauche-0.7.3"
 
 src_compile() {
 

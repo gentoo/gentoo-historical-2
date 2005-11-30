@@ -1,27 +1,7 @@
 # ChangeLog for dev-util/diasce
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/diasce/ChangeLog,v 1.10 2005/05/06 22:31:22 dholm Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/diasce/ChangeLog,v 1.1 2002/11/07 18:55:50 foser Exp $
 
-  06 May 2005; David Holm <dholm@gentoo.org> diasce-1.4.ebuild:
-  Added to ~ppc.
-
-  13 Aug 2004; Tom Martin <slarti@gentoo.org> diasce-1.4.ebuild:
-  Marked ~amd64; resolves bug 59240. Thanks to James Couzens
-  <jcouzens@codeshare.ca> for reporting.
-
-  30 Oct 2003; Brandy Westcott brandy@gentoo.org diasce-1.4.ebuild:
-  Removed checks for linc libraries if >=ORBit2-2.8.0 is installed.
-
-*diasce-1.4 (01 Oct 2003)
-
-  01 Oct 2003; Markus Nigbur <pyrania@gentoo.org> diasce-1.4.ebuild:
-  Bump.
-
-  12 Sep 2003; Alastair Tse <liquidx@gentoo.org> diasce-1.2.ebuild:
-  removing bonobo-activation dep
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *diasce-1.2 (07 Nov 2002)
 
   07 Nov 2002; foser <foser@gentoo.org> diasce-1.2.ebuild ChangeLog :

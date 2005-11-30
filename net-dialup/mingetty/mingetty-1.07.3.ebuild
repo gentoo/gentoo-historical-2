@@ -1,22 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/mingetty/mingetty-1.07.3.ebuild,v 1.11 2005/10/04 19:01:50 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mingetty/mingetty-1.07.3.ebuild,v 1.1 2004/11/20 08:31:58 mrness Exp $
 
-inherit rpm eutils toolchain-funcs
+inherit rpm eutils
 
 MY_WORK=${PN}-${PV%.*}
 S=${WORKDIR}/${MY_WORK}
 MY_P=${MY_WORK}-${PV##*.}
 DESCRIPTION="A compact getty program for virtual consoles only."
-HOMEPAGE="ftp://rpmfind.net/linux/fedora/core/3/SRPMS"
-SRC_URI="mirror://fedora/3/SRPMS/${MY_P}.src.rpm"
+SRC_URI="ftp://rpmfind.net/linux/fedora/core/3/SRPMS/${MY_P}.src.rpm"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~hppa ~amd64 ~alpha ~sparc ~ia64 ~mips ~ppc64 ~s390"
 IUSE=""
 
-RDEPEND=""
+RDEPEND="virtual/libc"
 
 src_unpack() {
 	rpm_src_unpack
@@ -26,7 +25,7 @@ src_unpack() {
 }
 
 src_compile() {
-	emake RPM_OPTS="${CFLAGS}" CC="$(tc-getCC)" || die "compile failed"
+	emake RPM_OPTS="${CFLAGS}" || die "compile failed"
 }
 
 src_install () {

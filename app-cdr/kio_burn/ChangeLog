@@ -1,39 +1,6 @@
 # ChangeLog for app-cdr/kio_burn
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/kio_burn/ChangeLog,v 1.11 2005/07/08 11:12:28 danarmak Exp $
-
-*kio_burn-0.7 (08 Jul 2005)
-
-  08 Jul 2005; Dan Armak <danarmak@gentoo.org> +kio_burn-0.7.ebuild:
-  Version bump. Added ~amd64 keyword. Added missing deps on k3b and taglib.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> kio_burn-0.6.2.ebuild:
-  Stable on ppc.
-
-  09 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> kio_burn-0.6.2.ebuild:
-  Stable on x86.
-
-*kio_burn-0.6.2 (30 Jan 2005)
-
-  30 Jan 2005; Simone Gotti <motaboy@gentoo.org> +kio_burn-0.6.2.ebuild:
-  Version Bump. Closes bug #77690.
-
-  15 Jan 2005; Dan Armak <danarmak@gentoo.org> kio_burn-0.4.ebuild:
-  Changed dep on kdebase to accept kdebase-meta, the split 'meta' package.
-  This dep will be narrowed down in the future to the precise split packages
-  required.
-
-  05 Dec 2004; Simone Gotti <motaboy@gentoo.org> kio_burn-0.4.ebuild:
-  Stable on x86.
-
-  29 Nov 2004; Simone Gotti <motaboy@gentoo.org> kio_burn-0.4.ebuild:
-  QA: added missing IUSE.
-
-  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org> kio_burn-0.4.ebuild:
-  QA: missing "inherit eutils"
-
-  13 Nov 2004; Michael Hanselmann <hansmi@gentoo.org> kio_burn-0.4.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/kio_burn/ChangeLog,v 1.1 2004/11/03 22:32:42 motaboy Exp $
 
 *kio_burn-0.4 (03 Nov 2004)
 

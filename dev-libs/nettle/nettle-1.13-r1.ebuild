@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/nettle-1.13-r1.ebuild,v 1.4 2005/10/17 23:51:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/nettle/nettle-1.13-r1.ebuild,v 1.1 2005/10/13 05:28:41 vapier Exp $
 
 inherit eutils
 
@@ -10,11 +10,10 @@ SRC_URI="http://www.lysator.liu.se/~nisse/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~s390 ~sparc ~x86"
-IUSE="gmp ssl"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+IUSE=""
 
-DEPEND="gmp? ( dev-libs/gmp )
-	ssl? ( dev-libs/openssl )
+DEPEND="dev-libs/gmp
 	!<dev-libs/lsh-1.4.3-r1"
 
 src_unpack() {
@@ -29,11 +28,7 @@ src_unpack() {
 }
 
 src_compile() {
-	econf \
-		--enable-shared \
-		$(use_enable ssl openssl) \
-		$(use_enable gmp public-key) \
-		|| die
+	econf --enable-shared || die
 	emake || die
 }
 

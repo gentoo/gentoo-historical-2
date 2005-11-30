@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.2.ebuild,v 1.14 2005/11/24 18:22:12 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.2.ebuild,v 1.1 2005/09/28 18:13:31 kloeri Exp $
 
 # NOTE about python-portage interactions :
 # - Do not add a pkg_setup() check for a certain version of portage
@@ -22,7 +22,7 @@ SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="PSF-2.2"
 SLOT="2.4"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X nocxx"
 
 DEPEND=">=sys-libs/zlib-1.1.3
@@ -54,6 +54,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
+	echo "her er vi.. $(pwd)"
 	# unnecessary termcap dep in readline (#79013)
 	epatch ${FILESDIR}/${PN}-2.4.2-readline.patch
 	# db4.2 support
@@ -80,11 +81,6 @@ src_unpack() {
 
 	# add support for struct stat st_flags attribute (bug 94637)
 	epatch ${FILESDIR}/python-2.4.1-st_flags.patch
-
-	# fix os.utime() on hppa. utimes it not supported but unfortunately reported as working - gmsoft (22 May 04)
-	# PLEASE LEAVE THIS FIX FOR NEXT VERSIONS AS IT'S A CRITICAL FIX !!!
-	[ "${ARCH}" = "hppa" ] && sed -e 's/utimes //' -i ${S}/configure
-
 
 	if tc-is-cross-compiler ; then
 		epatch "${FILESDIR}"/python-2.4.1-bindir-libdir.patch
@@ -263,7 +259,7 @@ src_test() {
 
 	#skip all tests that fail during emerge but pass without emerge:
 	#(See bug# 67970)
-	local skip_tests="distutils global mimetools minidom mmap strptime subprocess tcl time urllib urllib2"
+	local skip_tests="subprocess tcl urllib urllib2"
 
 	for test in ${skip_tests} ; do
 		mv ${S}/Lib/test/test_${test}.py ${T}

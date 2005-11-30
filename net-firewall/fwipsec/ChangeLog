@@ -1,22 +1,6 @@
 # ChangeLog for net-firewall/fwipsec
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwipsec/ChangeLog,v 1.6 2005/09/15 22:58:12 agriffis Exp $
-
-  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> fwipsec-0.4.2-r1.ebuild:
-  Mark 0.4.2-r1 stable on alpha
-
-  21 Jul 2005; Seemant Kulleen <seemant@gentoo.org> fwipsec-0.4.2-r1.ebuild:
-  use newinitd for the initscript
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> fwipsec-0.4.2-r1.ebuild:
-  stable on ia64
-
-*fwipsec-0.4.2-r1 (07 Feb 2005)
-
-  07 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> +fwipsec-0.4.2-r1.ebuild,
-  -fwipsec-0.4.2.ebuild:
-  Corrected installation location of man page, marked stable on x86 and amd64
-  for Seemant.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/fwipsec/ChangeLog,v 1.1 2004/06/04 19:51:08 seemant Exp $
 
 *fwipsec-0.4.2 (04 Jun 2004)
 

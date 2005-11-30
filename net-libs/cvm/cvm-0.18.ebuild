@@ -1,21 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/cvm/cvm-0.18.ebuild,v 1.7 2005/05/30 19:00:11 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/cvm/cvm-0.18.ebuild,v 1.1 2004/01/06 00:07:56 robbat2 Exp $
 
-inherit fixheadtails toolchain-funcs
+inherit fixheadtails
 
+S=${WORKDIR}/${P}
 DESCRIPTION="CVM modules for unix and pwfile, plus testclient"
-HOMEPAGE="http://untroubled.org/cvm/"
 SRC_URI="http://untroubled.org/cvm/${P}.tar.gz"
-
-LICENSE="GPL-2"
+HOMEPAGE="http://untroubled.org/cvm"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc"
-IUSE=""
-
-DEPEND="virtual/libc
+LICENSE="GPL-2"
+KEYWORDS="x86 ~sparc"
+DEPEND="virtual/glibc
 	>=dev-libs/bglibs-1.009"
-RDEPEND="virtual/libc"
+RDEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}
@@ -24,19 +22,20 @@ src_unpack() {
 }
 
 src_compile() {
+	cd ${S}
 	echo "/usr/lib/bglibs/include" > conf-bgincs
 	echo "/usr/lib/bglibs/lib" > conf-bglibs
-	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
-	echo "$(tc-getCC) -s" > conf-ld
+	echo "${CC} ${CFLAGS}" > conf-cc
+	echo "${CC} -s" > conf-ld
 	make || die
 }
 
-src_install() {
-	dobin cvm-benchclient cvm-checkpassword cvm-pwfile cvm-testclient cvm-unix || die "dobin failed"
+src_install () {
+	into /usr
+	dobin cvm-benchclient cvm-checkpassword cvm-pwfile cvm-testclient cvm-unix
 
 	insinto /usr/include/cvm
 	doins *.h
-	dosym /usr/include/cvm/sasl.h /usr/include/cvm-sasl.h
 
 	newlib.a client.a libcvm-client.a
 	newlib.a udp.a libcvm-udp.a
@@ -45,6 +44,8 @@ src_install() {
 	newlib.a module.a libcvm-module.a
 	newlib.a sasl.a libcvm-sasl.a
 
-	dodoc ANNOUNCEMENT FILES NEWS README TARGETS TODO VERSION
+	dosym /usr/include/cvm/sasl.h /usr/include/cvm-sasl.h
+
+	dodoc ANNOUNCEMENT COPYING FILES NEWS README TARGETS TODO VERSION
 	dohtml *.html
 }

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.9.3-r3.ebuild,v 1.8 2005/08/13 00:09:22 humpback Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/psi/psi-0.9.3-r3.ebuild,v 1.1 2005/04/17 19:07:18 humpback Exp $
 
-inherit eutils qt3
+inherit eutils
 
 VER="0.9.3"
 REV=""
@@ -19,7 +19,7 @@ HOMEPAGE="http://psi.affinix.com"
 SRC_URI="mirror://sourceforge/psi/${MY_P}.tar.bz2
 		extras?	( http://gentoo-pt.org/~humpback/${PN}-${VER}-gentoo-extras-0.1.tar.bz2
 		http://gentoo-pt.org/~humpback/${PN}-${VER}-gentoo-extras-0.2.tar.bz2
-		http://gentoo-pt.org/~humpback/${PN}-${VER}-gentoo-extras-0.3.tar.bz2
+		http://gentoo-pt.org/~humpback/${PN}-${VER}-gentoo-extras-0.3.tar.bz2 
 		http://gentoo-pt.org/~humpback/${PN}-${VER}-gentoo-extras-0.4.tar.bz2 )
 		linguas_ar? ( ${HTTPMIRR}/psi_ar-0.9.3.tar.bz2 )
 		linguas_ca? ( ${HTTPMIRR}/psi_ca-0.9.3.tar.bz2 )
@@ -52,13 +52,13 @@ SRC_URI="mirror://sourceforge/psi/${MY_P}.tar.bz2
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~hppa ~amd64 ~sparc ~ppc64"
+KEYWORDS="~x86 ~ppc ~hppa ~amd64 ~sparc"
 
 #After final relase we do not need this
 S="${WORKDIR}/${MY_P}"
 
 DEPEND=">=app-crypt/qca-1.0-r2
-	$(qt_min_version 3.3)"
+	>=x11-libs/qt-3.3.1"
 
 RDEPEND="ssl? ( >=app-crypt/qca-tls-1.0-r2 )
 		crypt? ( >=app-crypt/gnupg-1.2.2 )"
@@ -74,18 +74,18 @@ src_unpack() {
 		epatch ${FILESDIR}/psi-desktop.patch
 		epatch ${FILESDIR}/psi-desktop_file_and_icons_directories.patch
 
-		if ! use extras ; then
+		if !(use extras); then
 			ewarn "You are going to install the original psi version. You might want to"
 			ewarn "try the version with extra unsuported patches by adding 'extras' to"
 			ewarn "your use flags."
 		else
+			ebeep
 			ewarn "You are about to build a version of Psi with extra unsuported patches."
 			ewarn "Patched psi versions will not be supported by the Gentoo devs or the psi"
 			ewarn "development team."
 			ewarn "If you do not want that please press Control-C now and add '-extras' to "
 			ewarn "your USE flags."
-			ebeep
-			epause 10
+		#	epause 10
 
 			cd ${S}
 			# from http://www.cs.kuleuven.ac.be/~remko/psi/
@@ -224,7 +224,7 @@ src_compile() {
 	use kde || myconf="${myconf} --disable-kde"
 	./configure --prefix=/usr $myconf || die "Configure failed"
 	# for CXXFLAGS from make.conf
-	${QTDIR}/bin/qmake psi.pro \
+	qmake psi.pro \
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" \
 		QMAKE_RPATH= \
 		|| die "Qmake failed"
@@ -236,7 +236,7 @@ src_compile() {
 	einfo "Building language packs"
 	cd ${WORKDIR}/langs
 	for i in `ls -c1 | grep "\.ts$"` ; do
-		${QTDIR}/bin/lrelease $i
+		lrelease $i
 	done;
 }
 
@@ -253,3 +253,4 @@ src_install() {
 	#Install language packs
 	cp ${WORKDIR}/langs/psi_*.qm ${D}/usr/share/psi/
 }
+

@@ -1,25 +1,6 @@
 # ChangeLog for kde-misc/kadslwatch
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kadslwatch/ChangeLog,v 1.6 2005/09/22 14:14:26 greg_g Exp $
-
-  22 Sep 2005; Gregorio Guidi <greg_g@gentoo.org>
-  kadslwatch-01.00.06.ebuild:
-  Stable on x86.
-
-*kadslwatch-01.00.06 (17 Aug 2005)
-
-  17 Aug 2005; Gregorio Guidi <greg_g@gentoo.org>
-  +files/kadslwatch-01.00.06-configure.patch, +kadslwatch-01.00.06.ebuild:
-  New version (#102686).
-
-  05 Dec 2004; Simone Gotti <motaboy@gentoo.org> kadslwatch-01.00.05.ebuild:
-  Stable on x86.
-
-  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org> kadslwatch-01.00.05.ebuild:
-  QA: missing "inherit eutils"
-
-  30 Oct 2004; Simone Gotti <motaboy@gentoo.org> kadslwatch-01.00.05.ebuild:
-  Don't install README.html 2 times in the doc dir.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kadslwatch/ChangeLog,v 1.1 2004/10/29 14:12:24 motaboy Exp $
 
 *kadslwatch-01.00.05 (29 Oct 2004)
 

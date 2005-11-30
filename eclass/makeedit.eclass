@@ -1,28 +1,24 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/makeedit.eclass,v 1.11 2005/09/26 22:22:08 azarah Exp $
-#
+# $Header: /var/cvsroot/gentoo-x86/eclass/makeedit.eclass,v 1.1 2002/07/24 23:57:00 spider Exp $
+
 # Author: Spider
-#
-# To use this eclass, do 2 things:
-#   1. append-flags "$MAKEEDIT_FLAGS".  If you filter-flags, make sure to do
-#      the append-flags afterward, otherwise you'll lose them.
-#   2. after running configure or econf, call edit_makefiles to remove
-#      extraneous CFLAGS from your Makefiles.
-#
-# This combination should reduce the RAM requirements of your build, and maybe
-# even speed it up a bit.
+# makeedit eclass, will remove -Wreturn-type and -Wall from compiling, this will reduce the RAM requirements.
 
+# Debug ECLASS
+ECLASS="makeedit"
 
-MAKEEDIT_FLAGS="-Wno-return-type -w"
+INHERITED="$INHERITED $ECLASS"
+export CFLAGS="${CFLAGS} -Wno-return-type"
+export CXXFLAGS="${CXXFLAGS} -Wno-return-type"
 
-edit_makefiles() {
-	# We already add "-Wno-return-type -w" to compiler flags, so
-	# no need to replace "-Wall" and "-Wreturn-type" with them.
-	einfo "Parsing Makefiles ..."
-	find . \( -iname makefile -o -name \*.mk -o -name GNUmakefile \) -print0 | \
-		xargs -0 sed -i \
-		-e 's:-Wall::g' \
-		-e 's:-Wreturn-type::g' \
-		-e 's:-pedantic::g'
+edit_makefiles () {
+	find . -iname makefile |while read MAKEFILE
+		do einfo "parsing ${MAKEFILE}"
+		cp ${MAKEFILE}  ${MAKEFILE}.old
+		sed -e "s:-Wall:-Wall -Wno-return-type:g" \
+			-e "s:-Wreturn-type:-Wno-return-type:g" \
+			-e "s:-pedantic::g" ${MAKEFILE}.old > ${MAKEFILE}
+	done
+		
 }

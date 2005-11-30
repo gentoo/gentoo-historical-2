@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ssmtp-2.60.7-r1.ebuild,v 1.9 2005/01/24 21:32:35 ferdy Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/ssmtp/ssmtp-2.60.7-r1.ebuild,v 1.1 2004/05/30 22:15:10 g2boojum Exp $
 
 inherit eutils
 
@@ -13,10 +13,9 @@ SLOT="0"
 KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64 s390"
 IUSE="ssl ipv6 md5sum mailwrapper"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	ssl? ( dev-libs/openssl )"
-RDEPEND="mailwrapper? ( >=net-mail/mailwrapper-0.2 )
-	!mailwrapper? ( !virtual/mta )
+RDEPEND="mailwrapper? ( =net-mail/mailwrapper-0.1 )
 	net-mail/mailbase
 	ssl? ( dev-libs/openssl )"
 PROVIDE="virtual/mta"
@@ -52,7 +51,7 @@ src_install() {
 	# See bug #7448
 	#dosym /usr/sbin/ssmtp /usr/bin/mail
 	#The sendmail symlink is now handled by mailwrapper if used
-	use mailwrapper || \
+	! use mailwrapper && \
 		dosym /usr/sbin/ssmtp /usr/sbin/sendmail
 	dosym /usr/sbin/sendmail /usr/lib/sendmail
 	doman ssmtp.8
@@ -63,11 +62,8 @@ src_install() {
 	newdoc ssmtp.lsm DESC
 	insinto /etc/ssmtp
 	doins ssmtp.conf revaliases
-	if use mailwrapper
-	then
-		insinto /etc/mail
-		doins ${FILESDIR}/mailer.conf
-	fi
+	insinto /etc
+	use mailwrapper && doins ${FILESDIR}/mailer.conf
 
 	# Set up config file
 	# See bug #22658
@@ -79,7 +75,7 @@ src_install() {
 	#        -e "s:_HOSTNAME_:${hostname}:" \
 	#        -e "s:^mailhub=mail:mailhub=mail.${domainname}:g" \
 	#        ${conffile}.orig > ${conffile}.pre
-	#if use ssl;
+	#if [ `use ssl` ];
 	#then
 	#        sed -e "s:^#UseTLS=YES:UseTLS=YES:g" \
 	#                ${conffile}.pre > ${conffile}
@@ -87,14 +83,4 @@ src_install() {
 	#else
 	#        mv ${conffile}.pre ${conffile}
 	#fi
-}
-
-pkg_postinst() {
-	if ! use mailwrapper && [[ -e /etc/mailer.conf ]]
-	then
-		einfo
-		einfo "Since you emerged ssmtp w/o mailwrapper in USE,"
-		einfo "you probably want to 'emerge -C mailwrapper' now."
-		einfo
-	fi
 }

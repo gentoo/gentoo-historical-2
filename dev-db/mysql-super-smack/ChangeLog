@@ -1,10 +1,6 @@
 # ChangeLog for dev-db/mysql-super-smack
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-super-smack/ChangeLog,v 1.4 2005/01/01 17:38:29 eradicator Exp $
-
-  19 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
-  mysql-super-smack-1.2.ebuild:
-  stable, ebuild cleanup.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-super-smack/ChangeLog,v 1.1 2004/02/24 04:04:37 robbat2 Exp $
 
 *mysql-super-smack-1.2 (23 Feb 2004)
 

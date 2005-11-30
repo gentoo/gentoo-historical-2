@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xawtv/xawtv-3.94-r2.ebuild,v 1.5 2005/10/09 12:29:17 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xawtv/xawtv-3.94-r2.ebuild,v 1.1 2005/05/30 00:33:11 cardoe Exp $
 
-inherit virtualx eutils font
+inherit eutils font
 
 IUSE="aalib alsa dv lirc mmx motif nls opengl quicktime X xv zvbi"
 
@@ -11,7 +11,7 @@ MY_FONT=tv-fonts-1.0
 DESCRIPTION="TV application for the bttv driver"
 HOMEPAGE="http://bytesex.org/xawtv/"
 SRC_URI="http://dl.bytesex.org/releases/xawtv/${P}.tar.gz
-	X? ( http://dl.bytesex.org/releases/tv-fonts/${MY_FONT}.tar.bz2 )
+	http://dl.bytesex.org/releases/tv-fonts/${MY_FONT}.tar.bz2
 	mirror://gentoo/${MY_PATCH}"
 
 SLOT="0"
@@ -37,17 +37,9 @@ DEPEND=">=sys-libs/ncurses-5.1
 	sys-devel/automake
 	sys-devel/libtool"
 
-pkg_setup() {
-	if use X; then
-		font_pkg_setup
-	fi
-}
-
 src_unpack() {
 	unpack ${A}
 	epatch ${FILESDIR}/${P}-allow-xlibs-in-normal-search-path.patch
-	epatch ${FILESDIR}/${P}-gcc4.patch
-	epatch ${FILESDIR}/${P}-no-x11.patch
 	cd ${S}
 	autoreconf || "reconf failed"
 }
@@ -70,10 +62,8 @@ src_compile() {
 
 	emake || die "Make failed"
 
-	if use X; then
-		cd ${WORKDIR}/${MY_FONT}
-		DISPLAY="" Xmake || die "tvfonts failed"
-	fi
+	cd ${WORKDIR}/${MY_FONT}
+	emake || die "tvfonts failed"
 }
 
 src_install() {
@@ -81,12 +71,12 @@ src_install() {
 	make install DESTDIR=${D} resdir=${D}/etc/X11 || die "make install failed"
 
 	dodoc COPYING Changes README* TODO ${FILESDIR}/webcamrc
-	insinto cgi-bin
+	dointo cgi-bin
 	dodoc scripts/webcam.cgi
 
 	use X || use xv || \
 		rm -f ${D}/usr/share/man/man1/{pia,propwatch}.1 \
-			${D}/usr/share/{man,man/fr,man/es}/man1/xawtv.1 \
+			${D}/usr/share/man,man/fr,man/es}/man1/xawtv.1 \
 			${D}/usr/share/{man,man/es}/man1/{rootv,v4lctl,xawtv-remote}.1
 
 	use motif || \
@@ -105,21 +95,17 @@ src_install() {
 	mv ${D}/usr/share/*.list ${D}/usr/share/${PN}
 	mv ${D}/usr/share/Index* ${D}/usr/share/${PN}
 
-	if use X; then
-		cd ${WORKDIR}/${MY_FONT}
-		insinto /usr/share/fonts/xawtv
-		doins *.gz fonts.alias
+	cd ${WORKDIR}/${MY_FONT}
+	insinto /usr/share/fonts/xawtv
+	doins *.gz fonts.alias
 
-		font_xfont_config
-		font_xft_config
-	fi
+	font_xfont_config
+	font_xft_config
 }
 
 pkg_postinst() {
-	if use X; then
-		ebegin "installing teletype fonts into /usr/share/fonts/xawtv"
-		cd /usr/share/fonts/xawtv
-		mkfontdir
-		eend
-	fi
+	ebegin "installing teletype fonts into /usr/share/fonts/xawtv"
+	cd /usr/share/fonts/xawtv
+	mkfontdir
+	eend
 }

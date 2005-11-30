@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/uw-imap-2004c-r3.ebuild,v 1.13 2005/06/27 07:41:49 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/uw-imap/uw-imap-2004c-r3.ebuild,v 1.1 2005/03/03 02:39:53 ticho Exp $
 
 inherit eutils flag-o-matic
 
@@ -13,7 +13,7 @@ HOMEPAGE="http://www.washington.edu/imap/"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc ~hppa ~alpha ~amd64"
 IUSE="ipv6 ssl pic kerberos clearpasswd"
 
 PROVIDE="virtual/imapd"
@@ -27,30 +27,26 @@ DEPEND="!net-mail/vimap
 	kerberos? ( virtual/krb5 )"
 
 pkg_setup() {
-	echo
 	if use clearpasswd; then
+		echo
 		ewarn "Building uw-imap with cleartext LOGIN allowed. Disable \"clearpasswd\" USE"
 		ewarn "flag to restrict cleartext LOGIN to SSL/TLS sessions only."
-	else
-		if use ssl; then
-			ewarn "Building uw-imap with cleartext LOGIN restricted to SSL/TLS sessions only."
-			ewarn "Enable \"clearpasswd\" flag to allow unrestricted cleartext LOGIN."
-		else
-			ewarn "You have disabled SSL for uw-imap, but want cleartext passwords restricted to"
-			ewarn "SSL/TLS sessions only. Either enable \"ssl\" USE flag, or \"clearpasswd\""
-			ewarn "USE flag."
-			die "Impossible USE flag combination, see above message"
-		fi
-	fi
-	echo
-	# ewarn people not using pam with this file
-	if ! built_with_use net-mail/mailbase pam ; then
 		echo
-		ewarn "It is needed to have the net-mail/mailbase package"
+	else
+		echo
+		ewarn "Building uw-imap with cleartext LOGIN restricted to SSL/TLS sessions only."
+		ewarn "Enable \"clearpasswd\" flag to allow unrestricted cleartext LOGIN."
+		echo
+	fi
+	# ewarn people not using pam with this file
+	if ! built_with_use net-mail/mailbase pam;
+	then
+		echo
+		ewarn "It is recommended to have the net-mail/mailbase package"
 		ewarn "  built with the pam use flag activated. Please rebuild"
 		ewarn "  net-mail/mailbase with pam activated."
 		echo
-		die "mailbase has to be built with pam use flag"
+		epause 3
 	fi
 }
 
@@ -152,10 +148,10 @@ src_install() {
 	fi
 
 	if use amd64; then
-		dolib.so c-client/libc-client.so.1.0.0
+		dolib.so c-client/libc-client.so*
 		cd ${D}/usr/$(get_libdir)
 		ln -s libc-client.so.1.0.0 libc-client.so.1
-		ln -s libc-client.so.1.0.0 libc-client.so
+		ln -s libc-client.so.1 libc-client.so
 	fi
 
 	cd ${S}
@@ -175,6 +171,16 @@ src_install() {
 	dodoc docs/rfc/*.txt
 
 	# gentoo config stuff
+
+	## Those are now provided by mailbase
+	#   but if mailbase didn't provide them, install needed files
+	if ! built_with_use net-mail/mailbase pam;
+	then
+		insinto /etc/pam.d
+		newins ${FILESDIR}/uw-imap.pam-system-auth imap
+		newins ${FILESDIR}/uw-imap.pam-system-auth pop
+	fi
+
 	insinto /etc/xinetd.d
 	newins ${FILESDIR}/uw-imap.xinetd  imap
 	newins ${FILESDIR}/uw-ipop2.xinetd ipop2

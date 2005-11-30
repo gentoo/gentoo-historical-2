@@ -1,43 +1,34 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/jbigkit/jbigkit-1.4.ebuild,v 1.25 2005/08/05 00:53:40 vapier Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-libs/jbigkit/jbigkit-1.4.ebuild,v 1.1 2002/11/01 22:34:04 raker Exp $
 
-inherit flag-o-matic
-
-DESCRIPTION="JBIG-KIT implements a highly effective data compression algorithm for bi-level high-resolution images such as fax pages or scanned documents"
-HOMEPAGE="http://www.cl.cam.ac.uk/~mgk25/jbigkit/"
+S="${WORKDIR}/${PN}"
+DESCRIPTION="JBIG-KIT implements a highly effective data compression algorithm for bi-level high-resolution images such as fax pages or scanned documents."
 SRC_URI="http://www.cl.cam.ac.uk/~mgk25/download/${P}.tar.gz"
-
+HOMEPAGE="http://www.cl.cam.ac.uk/~mgk25/jbigkit/"
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 sparc x86"
-IUSE=""
-
-DEPEND=">=sys-apps/sed-4"
-RDEPEND=""
-
-S=${WORKDIR}/${PN}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	[[ ${ARCH} == "hppa" ]] && append-flags -fPIC
-	[[ ${ARCH} == "amd64" ]] && append-flags -fPIC
-	sed -i \
-		-e "s:-O2 -W:${CFLAGS}:" Makefile \
-		|| die "sed Makefile failed"
-}
+DEPEND="virtual/glibc"
 
 src_compile() {
+
+	cp Makefile Makefile.orig
+	sed -e "s:-O2 -W:${CFLAGS}:" \
+		< Makefile.orig > Makefile
+
 	make || die "make failed"
+
+	make test || die "tests failed"
+
 }
 
-src_install() {
-	dolib libjbig/libjbig.a || die "dolib"
+src_install () {
+
+	dolib libjbig/libjbig.a
 
 	insinto /usr/include
-	newins libjbig/jbig.h jbig.h || die "doins include"
+	newins libjbig/jbig.h jbig.h
 
-	dodoc ANNOUNCE CHANGES INSTALL TODO
+	# Install documentation.
+	dodoc ANNOUNCE CHANGES COPYING INSTALL TODO
+
 }

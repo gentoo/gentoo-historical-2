@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdegames-meta/kdegames-meta-3.4.1.ebuild,v 1.7 2005/07/11 21:24:00 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdegames-meta/kdegames-meta-3.4.1.ebuild,v 1.1 2005/05/25 21:23:04 danarmak Exp $
 MAXKDEVER=$PV
 
 inherit kde-functions
@@ -9,8 +9,8 @@ HOMEPAGE="http://www.kde.org/"
 
 LICENSE="GPL-2"
 SLOT="3.4"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
-IUSE="arts"
+KEYWORDS="~x86 ~amd64"
+IUSE=""
 
 RDEPEND="
 arts? ( $(deprange $PV $MAXKDEVER kde-base/kasteroids)

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/fam-2.7.0-r2.ebuild,v 1.14 2005/10/02 11:34:24 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/fam/fam-2.7.0-r2.ebuild,v 1.1 2004/10/28 12:35:55 foser Exp $
 
 inherit libtool eutils gnuconfig
 
@@ -10,11 +10,12 @@ SRC_URI="ftp://oss.sgi.com/projects/fam/download/stable/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="x86 ~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc"
 IUSE=""
 
 DEPEND=">=net-nds/portmap-5b-r6
 	!app-admin/gamin"
+
 PROVIDE="virtual/fam"
 
 src_unpack() {
@@ -30,14 +31,20 @@ src_unpack() {
 	# Please do not remove this again - fixes $S and $D in libtool linker
 	# scripts (.la files)
 	cd ${S}; elibtoolize
+}
+
+src_compile() {
 
 	gnuconfig_update
-	libtoolize --copy --force
+
+	econf || die "econf failed"
+	emake || die "emake failed"
+
 }
 
 src_install() {
 
-	make install DESTDIR="${D}" || die
+	einstall || die
 
 	dosed "s:local_only = false:local_only = true:g" /etc/fam.conf
 

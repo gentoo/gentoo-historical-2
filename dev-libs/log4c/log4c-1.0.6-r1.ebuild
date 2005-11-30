@@ -1,24 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4c/log4c-1.0.6-r1.ebuild,v 1.18 2005/01/02 02:52:22 dragonheart Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/log4c/log4c-1.0.6-r1.ebuild,v 1.1 2002/06/20 16:59:37 mkennedy Exp $
 
-DESCRIPTION="Log4c is a library of C for flexible logging to files, syslog and other destinations. It is modeled after the Log for Java library (http://jakarta.apache.org/log4j/), staying as close to their API as is reasonable."
-SRC_URI="mirror://sourceforge/log4c/${P}.tar.gz"
-HOMEPAGE="http://log4c.sourceforge.net"
-
-SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="x86 sparc ppc"
-IUSE=""
 
-DEPEND=">=dev-libs/expat-1.95.2
+S=${WORKDIR}/${P}
+DESCRIPTION="Log4c is a library of C for flexible logging to files, syslog and other destinations. It is modeled after the Log for Java library (http://jakarta.apache.org/log4j/), staying as close to their API as is reasonable."
+SRC_URI="http://unc.dl.sourceforge.net/sourceforge/log4c/${P}.tar.gz"
+HOMEPAGE="http://www.cimai.com/opensource/log4c/index.html"
+SLOT="0"
+
+DEPEND="virtual/glibc
+	>=dev-libs/expat-1.95.2
 	>=app-doc/doxygen-1.2.15
 	>=media-gfx/graphviz-1.7.15-r2
-	virtual/tetex"
+	>=app-text/tetex-1.0.7-r9"
+
+RDEPEND="virtual/glibc
+	>=dev-libs/expat-1.95.2"
 
 src_compile() {
-
-	econf || die
+	./configure	--host=${CHOST} \
+		--prefix=/usr \
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die 
 
 	addwrite "/var/lib/texmf"
 	addwrite "/usr/share/texmf"
@@ -28,8 +33,6 @@ src_compile() {
 }
 
 src_install () {
-	make prefix=${D}/usr \
-		mandir=${D}/usr/share/man \
-		sysconfdir=${D}/etc install || die
-	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README
+	make prefix=${D}/usr mandir=${D}/usr/share/man install || die
+	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README 
 }

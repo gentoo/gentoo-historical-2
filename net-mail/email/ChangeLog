@@ -1,57 +1,6 @@
 # ChangeLog for net-mail/email
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/email/ChangeLog,v 1.13 2005/05/30 17:25:10 ferdy Exp $
-
-  30 May 2005; Fernando J. Pereda <ferdy@gentoo.org> email-2.3.4.ebuild:
-  Stable on alpha
-
-  14 May 2005; Fernando J. Pereda <ferdy@gentoo.org> email-2.3.4.ebuild:
-  keyworded ~alpha
-
-  01 May 2005; Tom Martin <slarti@gentoo.org> email-2.3.4.ebuild:
-  Stable on amd64.
-
-  27 Apr 2005; Andrej Kacian <ticho@gentoo.org> email-2.3.3.ebuild,
-  email-2.3.4.ebuild:
-  Stable on x86.
-
-*email-2.3.4 (20 Apr 2005)
-
-  20 Apr 2005; Andrej Kacian <ticho@gentoo.org> email-2.3.3.ebuild,
-  +email-2.3.4.ebuild:
-  Version bump. Added check for CLOCK="UTC" in /etc/rc.conf, in which case we
-  turn on UTC timestamps (--with-utc). Introduced this to 2.3.3 as well, since
-  that's the release this feature has been added in.
-
-  10 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> email-2.3.2.ebuild:
-  Stable on amd64, closes bug 87257.
-
-*email-2.3.3 (06 Apr 2005)
-
-  06 Apr 2005; Andrej Kacian <ticho@gentoo.org> +email-2.3.3.ebuild:
-  Version bump.
-
-  30 Mar 2005; Andrej Kacian <ticho@gentoo.org> email-2.3.2.ebuild:
-  Stable on x86. Bug #87257.
-
-  31 Jan 2005; Simon Stelling <blubb@gentoo.org> email-2.3.2.ebuild:
-  added ~amd64
-
-*email-2.3.2 (15 Jan 2005)
-
-  15 Jan 2005; Andrej Kacian <ticho@gentoo.org> -files/2.3.1-Makefile.patch,
-  -email-2.3.1.ebuild, +email-2.3.2.ebuild:
-  Version bump. Removed faulty 2.3.1 (upstream bug).
-
-*email-2.3.1 (15 Jan 2005)
-
-  15 Jan 2005; Andrej Kacian <ticho@gentoo.org> +files/2.3.1-Makefile.patch,
-  +email-2.3.1.ebuild:
-  Version bump. Added a patch to use DESTDIR in Makefile, since upstream
-  removed it.
-
-  14 Dec 2004; Andrej Kacian <ticho@gentoo.org> email-2.3.0.ebuild:
-  Stable on x86.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/email/ChangeLog,v 1.1 2004/11/12 20:16:22 ticho Exp $
 
 *email-2.3.0 (12 Nov 2004)
 

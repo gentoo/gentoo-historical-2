@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/wise/wise-2.2.0.ebuild,v 1.3 2005/05/21 23:31:50 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/wise/wise-2.2.0.ebuild,v 1.1 2005/03/06 17:11:21 ribosome Exp $
 
 inherit eutils toolchain-funcs
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.ebi.ac.uk/pub/software/unix/${PN}2/${PN}${PV}.tar.gz"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~sparc x86"
+KEYWORDS="~x86"
 
 RDEPEND="=sci-biology/hmmer-2.3.2-r1"
 

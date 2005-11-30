@@ -1,45 +1,6 @@
 # ChangeLog for app-misc/detox
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/ChangeLog,v 1.11 2005/08/06 15:21:27 ciaranm Exp $
-
-  06 Aug 2005; Ciaran McCreesh <ciaranm@gentoo.org> detox-1.1.1-r1.ebuild:
-  Don't install .sample files into /etc
-
-  30 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> detox-1.1.1-r1.ebuild:
-  Stable on mips.
-
-  11 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> detox-1.1.1-r1.ebuild:
-  Stable on sparc
-
-  10 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> detox-1.1.1-r1.ebuild:
-  Stable on x86.
-
-  11 Jun 2005; David Holm <dholm@gentoo.org> detox-1.1.1-r1.ebuild:
-  Added to ~ppc.
-
-*detox-1.1.1-r1 (10 Jun 2005)
-
-  10 Jun 2005; Aaron Walker <ka0ttic@gentoo.org>
-  +files/detox-1.1.1-use-correct-type.diff, +detox-1.1.1-r1.ebuild:
-  Revision bump; upstream uses a char (and assumes it's unsigned on top of it)
-  where they should've used an int - bug 95628.
-
-  03 May 2005; Herbie Hopkins <herbs@gentoo.org> detox-1.1.1.ebuild:
-  Marked ~amd64 wrt bug #91274.
-
-  19 Apr 2005; Ciaran McCreesh <ciaranm@gentoo.org> detox-1.1.1.ebuild:
-  x86 sparc mips stable
-
-*detox-1.1.1 (14 Mar 2005)
-
-  14 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> +detox-1.1.1.ebuild:
-  New version. Patches no longer necessary as they have been merged by upstream.
-
-  06 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
-  +files/detox-1.1.0-destdir.patch, +files/detox-1.1.0-parallel_build.patch,
-  detox-1.1.0.ebuild:
-  Switch to using patches rather than scary sed voodoo after discussion with
-  upstream.
+# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/ChangeLog,v 1.1 2005/03/05 21:55:55 ciaranm Exp $
 
 *detox-1.1.0 (05 Mar 2005)
 

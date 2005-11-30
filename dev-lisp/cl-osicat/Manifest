@@ -1,17 +1,5 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 ca9f03d89f33d295720aafbd555b67f9 ChangeLog 1832
-MD5 b79ac9522540632b5d7681ea925ed7d9 cl-osicat-0.4.0.ebuild 735
-MD5 d668464c34849085a1160e699f3f55f6 cl-osicat-0.5.0.ebuild 813
-MD5 635097cd4774e7bbbb3896c868023e13 files/0.5.0-gentoo.patch 1803
-MD5 c7403348c7014319c283f0f98675605a files/digest-cl-osicat-0.4.0 63
-MD5 af7463de182fe2e489b8d5a77a7e5c6c files/digest-cl-osicat-0.5.0 63
 MD5 9b65b0341efc8f4b29498aad23315229 metadata.xml 164
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDhJ6OyiNZaEAZA+ARAhN6AJ4g9KTImU4Jz4FzyZy0ZGA6J+jyiwCeKHH6
-0Gevu/HygSZinG9mWjMfx1M=
-=zqLt
------END PGP SIGNATURE-----
+MD5 f789dc17fe2ef17fc65a615780c04953 cl-osicat-0.3.3.ebuild 946
+MD5 c46d9bad90c5dce02d94607963072d84 cl-osicat-0.3.3.ebuild~ 1130
+MD5 a9cbe5a594d83304c4c33f56e0873e35 files/osicat.asd 2039
+MD5 7b28c1177cc5af2ac7d425868c14616b files/digest-cl-osicat-0.3.3 62

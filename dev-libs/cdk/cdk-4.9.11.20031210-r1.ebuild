@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/cdk/cdk-4.9.11.20031210-r1.ebuild,v 1.5 2005/08/25 04:00:15 agriffis Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/cdk/cdk-4.9.11.20031210-r1.ebuild,v 1.1 2004/11/04 14:59:53 voxus Exp $
 
 MY_P=${P/.2003/-2003}
 DESCRIPTION="A library of curses widgets"
@@ -11,17 +9,14 @@ SRC_URI="ftp://invisible-island.net/cdk/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~ppc ~x86 ~sparc ~amd64 ~alpha ~ia64 ~s390 ~ppc64"
 IUSE=""
 
-DEPEND=">=sys-libs/ncurses-5.2
-		sys-devel/libtool"
+DEPEND=">=sys-libs/ncurses-5.2"
 
 S="${WORKDIR}/${MY_P}"
 
 src_compile() {
-	use ia64 && append-flags -fPIC
-
 	econf \
 		--with-ncurses --with-libtool \
 		|| die "configure failed"

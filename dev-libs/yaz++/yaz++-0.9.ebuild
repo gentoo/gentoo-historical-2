@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/yaz++/yaz++-0.9.ebuild,v 1.3 2005/07/20 11:04:41 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/yaz++/yaz++-0.9.ebuild,v 1.1 2005/07/19 20:48:38 robbat2 Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://ftp.indexdata.dk/pub/${PN}/${P}.tar.gz"
 
 LICENSE="YAZ"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~x86"
 IUSE=""
 RDEPEND="dev-libs/yaz"
 DEPEND="${RDEPEND}
@@ -28,8 +28,6 @@ src_compile() {
 }
 
 src_install() {
-	docdir="/usr/share/doc/${PF}"
-	make DESTDIR="${D}" docdir="${docdir}" install || die "einstall failed"
-	docinto html
-	mv -f ${D}${docdir}/*.{html,css,png} ${D}${docdir}/html/ || die "Failed to move HTML docs"
+	#einstall || die "einstall failed"
+	make DESTDIR="${D}" docdir="/usr/share/doc/${PF}" install || die "make install failed"
 }

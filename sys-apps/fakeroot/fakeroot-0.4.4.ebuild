@@ -1,20 +1,26 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/fakeroot/fakeroot-0.4.4.ebuild,v 1.8 2004/08/24 03:00:42 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fakeroot/fakeroot-0.4.4.ebuild,v 1.1 2002/08/13 14:20:36 blizzy Exp $
 
 MY_P="${PN}_${PV}-4.1"
 
 DESCRIPTION="Run commands in an environment faking root privileges"
 HOMEPAGE="http://joostje.op.het.net/fakeroot/index.html"
-SRC_URI="mirror://debian/dists/potato/main/source/utils/${MY_P}.tar.gz"
-
+SRC_URI="http://ftp.debian.org/debian/dists/potato/main/source/utils/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~hppa amd64"
-IUSE=""
+KEYWORDS="x86"
 
-RDEPEND="virtual/libc"
+RDEPEND=">=virtual/glibc-2.2.2"
+DEPEND="${RDEPEND}"
 
-src_install() {
+S="${WORKDIR}/${P}"
+
+src_compile() {
+	econf || die "configure problem"
+	emake || die "compile problem"
+}
+
+src_install () {
 	make DESTDIR=${D} install || die "install problem"
 }

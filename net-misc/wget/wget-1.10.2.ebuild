@@ -1,19 +1,21 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/wget/wget-1.10.2.ebuild,v 1.11 2005/11/20 14:13:51 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/wget/wget-1.10.2.ebuild,v 1.1 2005/10/13 13:34:14 seemant Exp $
 
 inherit eutils flag-o-matic
 
-PATCHVER=0.2
+PATCHVER=0.1
 DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="http://wget.sunsite.dk/"
-SRC_URI="mirror://gentoo/${P}.tar.gz
+SRC_URI="http://dev.gentoo.org/~seemant/distfiles/${P}.tar.gz
+	http://dev.gentoo.org/~seemant/distfiles/${P}-gentoo-${PATCHVER}.tar.bz2
+	mirror://gentoo/${P}.tar.gz
 	mirror://gnu/wget/${P}.tar.gz
 	mirror://gentoo/${P}-gentoo-${PATCHVER}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 m68k mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="build debug ipv6 nls socks5 ssl static"
 
 RDEPEND="ssl? ( >=dev-libs/openssl-0.9.6b )

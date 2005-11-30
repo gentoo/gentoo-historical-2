@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/bugzilla/bugzilla-2.18.4.ebuild,v 1.9 2005/11/09 18:42:01 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/bugzilla/bugzilla-2.18.4.ebuild,v 1.1 2005/10/01 16:00:59 rl03 Exp $
 
 inherit webapp
 
@@ -9,7 +9,7 @@ SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/webtools/${P}.tar.gz"
 HOMEPAGE="http://www.bugzilla.org"
 
 LICENSE="MPL-1.1 NPL-1.1"
-KEYWORDS="~alpha amd64 ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="apache2"
 
@@ -22,7 +22,7 @@ RDEPEND=">=dev-db/mysql-3.23.41
 	>=perl-core/CGI-2.93
 	>=dev-perl/TimeDate-1.16
 	>=dev-perl/DBI-1.36
-	<dev-perl/DBD-mysql-3.0000
+	>=dev-perl/DBD-mysql-2.1010
 	>=perl-core/File-Spec-0.8.2
 	>=dev-perl/Template-Toolkit-2.08
 	>=dev-perl/Text-Tabs+Wrap-2001.0131
@@ -59,8 +59,8 @@ src_install () {
 	cd ${FILESDIR}/2.18
 	cp ${FILE} ${D}/${MY_HTDOCSDIR}
 
+	# add the reconfigure hook
 	webapp_hook_script ${FILESDIR}/2.18/reconfig
-	webapp_postinst_txt en ${FILESDIR}/2.18/postinstall-en.txt
 
 	webapp_src_install
 }

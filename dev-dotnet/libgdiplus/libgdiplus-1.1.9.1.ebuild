@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/libgdiplus/libgdiplus-1.1.9.1.ebuild,v 1.3 2005/10/15 21:01:31 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/libgdiplus/libgdiplus-1.1.9.1.ebuild,v 1.1 2005/09/22 22:38:16 latexer Exp $
 
 inherit libtool eutils flag-o-matic toolchain-funcs
 

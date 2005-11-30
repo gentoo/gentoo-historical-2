@@ -1,20 +1,8 @@
 # ChangeLog for dev-python/twisted-words
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-words/ChangeLog,v 1.4 2005/11/27 22:03:20 marienz Exp $
+# Copyright 1999-20.1 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/twisted-words/ChangeLog,v 1.1 2005/04/08 19:22:12 lordvan Exp $
 
-*twisted-words-0.3.0 (27 Nov 2005)
-*twisted-words-0.1.0-r1 (27 Nov 2005)
-
-  27 Nov 2005; Marien Zwart <marienz@gentoo.org> metadata.xml,
-  +twisted-words-0.1.0-r1.ebuild, +twisted-words-0.3.0.ebuild:
-  Version bump (0.3.) and revbump (0.1.0-r) to use the new eclass (bug
-  #80639). Set myself as maintainer.
-
-  27 Aug 2005; Gustavo Felisberto <humpback@gentoo.org>;
-  twisted-words-0.1.0.ebuild:
-  Marked ~amd64
-
-  08 Apr 2005; Thomas Raschbacher <lordvan@gentoo.org> twisted-words-0.1.0:
+  08 Apr 20.1; Thomas Raschbacher <lordvan@gentoo.org> twisted-words-0.1.0:
   initial import
   twisted-words was part of the main twisted release
 

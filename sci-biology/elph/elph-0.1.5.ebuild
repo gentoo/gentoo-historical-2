@@ -1,37 +1,36 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/elph/elph-0.1.5.ebuild,v 1.7 2005/10/18 01:05:39 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/elph/elph-0.1.5.ebuild,v 1.1 2005/01/28 00:47:21 ribosome Exp $
 
 inherit eutils toolchain-funcs
 
 DESCRIPTION="Estimated Locations of Pattern Hits - Motif finder program"
+HOMEPAGE="http://www.tigr.org/software/ELPH/index.shtml"
+SRC_URI="ftp://ftp.tigr.org/pub/software/ELPH/ELPH-${PV}.tar.gz"
 LICENSE="Artistic"
-HOMEPAGE="http://cbcb.umd.edu/software/ELPH/"
-SRC_URI="ftp://ftp.cbcb.umd.edu/pub/software/elph/ELPH-${PV}.tar.gz"
 
 SLOT="0"
+KEYWORDS="~x86"
 IUSE=""
-KEYWORDS="x86 ppc-macos"
 
 S="${WORKDIR}/ELPH/sources"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-usage.patch
-	sed -i -e "s/CC      := g++/CC      := $(tc-getCXX)/" \
-		-e "s/-fno-exceptions -fno-rtti -D_REENTRANT -g/${CXXFLAGS}/" \
-		-e "s/LINKER    := g++/LINKER    := $(tc-getCXX)/" \
-		Makefile || die "Failed to patch Makefile."
+	cd ${S}
+	epatch ${FILESDIR}/${P}-usage.patch
+	sed -i -e "s/CC      := g++/CC      := $(tc-getCXX)/" Makefile
+	sed -i -e "s/-fno-exceptions -fno-rtti -D_REENTRANT -g/${CXXFLAGS}/" Makefile
+	sed -i -e "s/LINKER    := g++/LINKER    := $(tc-getCXX)/" Makefile
 }
 
 src_compile() {
-	make || die "Compilation failed."
+	make || die
 }
 
 src_install() {
-	dobin elph || "Failed to install program."
-	cd "${WORKDIR}"/ELPH
-	dodoc VERSION || die "Documentation installation failed."
-	newdoc Readme.ELPH README || die "Readme installation failed."
+	dobin elph
+	cd ${WORKDIR}/ELPH
+	dodoc VERSION
+	newdoc Readme.ELPH README
 }

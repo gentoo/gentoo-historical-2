@@ -1,15 +1,2 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 c5189561026364a3591167aa10762042 jcmdline-1.0.2.ebuild 1165
-MD5 dfaef70501a7389d3f7325935d355fbd ChangeLog 541
-MD5 a6ec7d7724fbd068ffb39b5be56134ed metadata.xml 157
-MD5 4eb850619e69f835d9d26b6685ee3579 files/jcmdline-1.0.2-gentoo.patch 934
+MD5 94c2386f58a6da49f1dec8866deea071 jcmdline-1.0.2.ebuild 1062
 MD5 3383b9141420431bb690ac39ce8f2a1f files/digest-jcmdline-1.0.2 63
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.0 (GNU/Linux)
-
-iD8DBQFCdRaX06ebR+OMO78RAlFyAJsEMu7jFuqoIcjsuB0XhhVSZ19mIwCfX2Xy
-dDbWLHUGNbr00hD5qaFBT7w=
-=/r/g
------END PGP SIGNATURE-----

@@ -1,20 +1,6 @@
 # ChangeLog for x11-plugins/wmfortune
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfortune/ChangeLog,v 1.6 2004/11/24 05:39:48 weeve Exp $
-
-  23 Nov 2004; Jason Wever <weeve@gentoo.org> wmfortune-0.241.ebuild:
-  Added ~sparc keyword.
-
-  08 Aug 2004; Tom Martin <slarti@gentoo.org> wmfortune-0.241.ebuild:
-  Typo in DESCRIPTION: forune -> fortune. Bug 59717.
-
-  22 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmfortune-0.241.ebuild:
-  Update HOMEPAGE and SRC_URI to the www.dockapps.org ones as the original
-  give me a 404. Stable for x86.
-
-  10 Sep 2003; Michael Sterrett <msterret@gentoo.org> wmfortune-0.241.ebuild:
-  DEPEND on games-misc/fortune-mod (games reorg); also removed RDEPEND="" since
-  I bet it actually needs fortune-mod to run, not just to build.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmfortune/ChangeLog,v 1.1 2003/06/26 12:46:33 vapier Exp $
 
 *wmfortune-0.241 (26 Jun 2003)
 

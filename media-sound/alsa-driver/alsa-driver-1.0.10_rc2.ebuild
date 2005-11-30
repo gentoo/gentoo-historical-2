@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.10_rc2.ebuild,v 1.7 2005/11/15 11:22:45 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.10_rc2.ebuild,v 1.1 2005/10/11 15:34:31 flameeyes Exp $
 
 inherit linux-mod flag-o-matic eutils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://alsaproject/driver/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="oss doc"
 
 RDEPEND="virtual/modutils
@@ -54,11 +54,6 @@ pkg_setup() {
 	fi
 
 	linux-mod_pkg_setup
-
-	if [[ ${PROFILE_ARCH} == "sparc64" ]] ; then
-		CBUILD=${CBUILD-${CHOST}}
-		CHOST="sparc64-unknown-linux-gnu"
-	fi
 }
 
 src_unpack() {
@@ -66,16 +61,18 @@ src_unpack() {
 
 	cd ${S}
 
-	epatch "${FILESDIR}"/${PN}-1.0.10_rc1-include.patch
-	epatch "${FILESDIR}"/${P}-audigy2zs.patch
+	if use sparc ; then
+		epatch ${FILESDIR}/alsa-driver-1.0.9b-sparc64-ioctl-detect.patch
+		WANT_AUTOCONF=2.5 autoconf || die
+	fi
+
+	epatch ${FILESDIR}/${P}-include.patch
 	convert_to_m ${S}/Makefile
-	sed -i -e 's:\(.*depmod\):#\1:' ${S}/Makefile
 }
 
 src_compile() {
 	# Should fix bug #46901
 	is-flag "-malign-double" && filter-flags "-fomit-frame-pointer"
-	append-flags "-I${KV_DIR}/arch/$(tc-arch-kernel)/include"
 
 	econf $(use_with oss) \
 		--with-kernel="${KV_DIR}" \
@@ -88,7 +85,7 @@ src_compile() {
 
 	# -j1 : see bug #71028
 	ARCH=$(tc-arch-kernel)
-	emake -j1 HOSTCC=$(tc-getBUILD_CC) CC=$(tc-getCC) || die "Make Failed"
+	emake -j1 || die "Make Failed"
 	ARCH=$(tc-arch)
 
 	if use doc;
@@ -105,7 +102,15 @@ src_compile() {
 
 
 src_install() {
-	make DESTDIR=${D} install-modules || die "make install failed"
+	dodir /usr/include/sound
+
+	make DESTDIR=${D} install || die "make install failed"
+
+	# Provided by alsa-headers now
+	rm -rf ${D}/usr/include/sound
+
+	# We have our own scripts in alsa-utils
+	rm -f ${D}/etc/init.d/alsasound ${D}/etc/rc.d/init.d/alsasound
 
 	dodoc CARDS-STATUS FAQ README WARNING TODO
 
@@ -139,6 +144,7 @@ pkg_postinst() {
 	einfo "Version 1.0.3 and above should work with version 2.6 kernels."
 	einfo "If you experience problems, please report bugs to http://bugs.gentoo.org."
 	einfo
+
 
 	linux-mod_pkg_postinst
 

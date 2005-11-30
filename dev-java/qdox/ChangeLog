@@ -1,16 +1,6 @@
 # ChangeLog for dev-java/qdox
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/qdox/ChangeLog,v 1.4 2005/05/04 20:05:58 luckyduck Exp $
-
-  04 May 2005; Jan Brinkmann <luckyduck@gentoo.org> qdox-20050104.ebuild:
-  stable on amd64, ppc and x86
-
-  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> qdox-20050104.ebuild:
-  added ~ppc to KEYWORDS
-
-  24 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> qdox-20050104.ebuild:
-  generall cleanup, added support for the source useflag and removed unnecessary
-  jmock dependency, fixes #85317
+# $Header: /var/cvsroot/gentoo-x86/dev-java/qdox/ChangeLog,v 1.1 2005/01/04 22:35:32 luckyduck Exp $
 
 *qdox-20050104 (04 Jan 2005)
 

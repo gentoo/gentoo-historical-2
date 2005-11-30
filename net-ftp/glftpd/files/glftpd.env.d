@@ -1,1 +1,1 @@
-CONFIG_PROTECT="GLROOT/etc GLROOT/ftp-data"
+CONFIG_PROTECT="/opt/glftpd/etc"

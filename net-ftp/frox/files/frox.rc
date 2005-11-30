@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/frox/files/frox.rc,v 1.4 2005/09/17 13:45:12 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/frox/files/frox.rc,v 1.1 2005/01/24 14:05:34 dragonheart Exp $
 
 PROGNAME=`basename $1`
 
@@ -12,8 +12,8 @@ depend() {
 }
 
 checkconfig() {
-	if [ ! -f /etc/frox.conf ] ; then
-		eerror "missing /etc/frox.conf"
+	if [ -f /etc/frox.config ] ; then
+		eerror "missing /etc/frox.config"
 		return 1
 	fi
 

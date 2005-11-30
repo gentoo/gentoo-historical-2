@@ -1,12 +1,6 @@
 # ChangeLog for games-fps/ut2003-bonuspack-cm
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-bonuspack-cm/ChangeLog,v 1.4 2004/09/29 05:22:58 wolf31o2 Exp $
-
-  29 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> :
-  Fixing Manifest/digest and closing bug #51807.
-
-  26 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> :
-  Fixed digest and closing bug #51807.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/ut2003-bonuspack-cm/ChangeLog,v 1.1 2004/04/09 22:14:21 wolf31o2 Exp $
 
 *ut2003-bonuspack-cm-1 (09 Apr 2004)
 

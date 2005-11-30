@@ -1,36 +1,6 @@
-# ChangeLog for games-rpg/planeshift
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/planeshift/ChangeLog,v 1.9 2005/08/31 19:34:16 malverian Exp $
-
-*planeshift-0.3.011 (31 Aug 2005)
-
-  31 Aug 2005; Philip Walls <malverian@gentoo.org>
-  -files/planeshift-0.2.010-fix-cast.diff, files/planeshift,
-  files/planeshift-setup, files/planeshift-updater,
-  -planeshift-0.2.010-r1.ebuild, -planeshift-0.3.010.ebuild,
-  +planeshift-0.3.011.ebuild:
-  Version bump
-
-  22 May 2005; Philip Walls <malverian@gentoo.org> files/planeshift
-  files/planeshift-updater +files/planeshift-setup:
-  Added environment variables to wrappers for CEL and CRYSTAL
-  Added script for running planeshift setup utility
-
-*planeshift-0.3.010 (21 May 2005)
-
-  21 May 2005; Philip Walls <malverian@gentoo.org>  planeshift-0.3.010.ebuild:
-  Version bump. Revamped build process some.
-
-  20 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  planeshift-0.2.010-r1.ebuild:
-  fix curl include - bug #75104
-
-  21 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  planeshift-0.2.010-r1.ebuild:
-  Doesn't like the new cs-config (bug #54659); use sed not dosed
-
-  27 Oct 2003; David Holm <dholm@gentoo.org> planeshift-0.2.010-r1.ebuild:
-  Added to ~ppc.
+# ChangeLog for app-games/planeshift
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/planeshift/ChangeLog,v 1.1 2003/09/10 06:26:50 vapier Exp $
 
 *planeshift-0.2.010-r1 (10 Jul 2003)
 

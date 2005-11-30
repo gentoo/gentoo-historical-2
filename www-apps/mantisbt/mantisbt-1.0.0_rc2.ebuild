@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/mantisbt/mantisbt-1.0.0_rc2.ebuild,v 1.2 2005/10/25 15:31:40 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/mantisbt/mantisbt-1.0.0_rc2.ebuild,v 1.1 2005/09/14 10:36:38 rl03 Exp $
 
 inherit webapp
 
-IUSE="mysql postgres"
+IUSE=""
 MY_PV=${PV/_rc/rc}
 
 DESCRIPTION="PHP/MySQL/Web based bugtracking system"
@@ -16,8 +16,7 @@ S=${WORKDIR}/mantis-${MY_PV}
 KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="
-	mysql? ( >=dev-db/mysql-3.23.32 )
-	postgres? ( >=dev-db/postgresql-7 )
+	>=dev-db/mysql-3.23.32
 	net-www/apache
 	virtual/httpd-php
 "

@@ -1,12 +1,6 @@
-# ChangeLog for sci-libs/io_lib
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-libs/io_lib/ChangeLog,v 1.4 2005/06/20 18:33:48 blubb Exp $
-
-  20 Jun 2005; Simon Stelling <blubb@gentoo.org> io_lib-1.8.12b.ebuild:
-  added ~amd64 keyword
-
-  02 Jan 2005; Olivier Fisette <ribosome@gentoo.org> io_lib-1.8.12b.ebuild:
-  Added to x86.
+# ChangeLog for dev-libs/io_lib
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-libs/io_lib/ChangeLog,v 1.1 2004/12/28 21:15:03 ribosome Exp $
 
 *io_lib-1.8.12b (28 Dec 2004)
 

@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysutils/sysutils-0.1.0.ebuild,v 1.7 2005/06/02 16:45:48 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysutils/sysutils-0.1.0.ebuild,v 1.1 2003/11/23 23:29:42 plasmaroo Exp $
 
 DESCRIPTION="A small program and library to access the sysfs interface in 2.5+ kernels."
-SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${P}.tar.gz"
+SRC_URI="http://www.kernel.org/pub/linux/utils/kernel/hotplug/${P}.tar.gz"
 HOMEPAGE="http://www.kernel.org"
 
-KEYWORDS="~amd64 ppc s390 ~x86"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_compile() {
 

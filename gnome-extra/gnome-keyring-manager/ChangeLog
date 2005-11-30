@@ -1,37 +1,6 @@
 # ChangeLog for gnome-extra/gnome-keyring-manager
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-keyring-manager/ChangeLog,v 1.7 2005/11/19 17:51:45 josejx Exp $
-
-  19 Nov 2005; Joseph Jezak <josejx@gentoo.org>
-  gnome-keyring-manager-2.12.0.ebuild:
-  Marked ~ppc.
-
-  20 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  gnome-keyring-manager-2.12.0.ebuild:
-  Keyworded ~sparc
-
-*gnome-keyring-manager-2.12.0 (10 Sep 2005)
-
-  10 Sep 2005; John N. Laliberte <allanonjl@gentoo.org>
-  -gnome-keyring-manager-2.11.92.ebuild,
-  +gnome-keyring-manager-2.12.0.ebuild:
-  2.12 release vbump
-
-  04 Sep 2005; Leonardo Boshell <leonardop@gentoo.org>
-  gnome-keyring-manager-2.11.92.ebuild:
-  Specify the version number in the gnome-doc-utils dependency (bug #104785).
-  Pass --disable-scrollkeeper instead of calling gnome2_omf_fix.
-
-*gnome-keyring-manager-2.11.92 (28 Aug 2005)
-
-  28 Aug 2005; John N. Laliberte <allanonjl@gentoo.org>
-  -gnome-keyring-manager-2.11.1.ebuild,
-  +gnome-keyring-manager-2.11.92.ebuild:
-  new version, add gnome-doc-utils as a dep
-
-  18 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
-  gnome-keyring-manager-2.11.1.ebuild:
-  keyworded for amd64 testing
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/gnome-keyring-manager/ChangeLog,v 1.1 2005/08/17 15:31:23 leonardop Exp $
 
 *gnome-keyring-manager-2.11.1 (17 Aug 2005)
 

@@ -1,60 +1,8 @@
 # ChangeLog for net-misc/axel
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/axel/ChangeLog,v 1.21 2005/07/10 17:07:18 j4rg0n Exp $
-
-  10 Jul 2005; Lina Pezzella <j4rg0n@gentoo.org> axel-1.0b.ebuild:
-  Stable ppc-macos. Bug #88264. Submitted on behalf of Fabian Groffen.
-
-  10 May 2005; Tavis Ormandy <taviso@gentoo.org> axel-1.0b.ebuild:
-  portage should handle the stripping so as not to override nostrip.
-
-  11 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> axel-1.0b.ebuild:
-  Stable on sparc wrt #88264
-
-  11 Apr 2005; Markus Rothe <corsair@gentoo.org> axel-1.0b.ebuild:
-  Stable on ppc64; bug #88264
-
-  11 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> axel-1.0b.ebuild:
-  Stable on ppc.
-
-*axel-1.0b (11 Apr 2005)
-
-  11 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> +axel-1.0b.ebuild:
-  Version bump for security bug 88264.
-
-  06 Mar 2005; Daniel Black <dragonheart@gentoo.org> axel-1.0a.ebuild:
-  Homepage update as per bug #84123 thanks to Nicholas McGovern
-  <hydroxides@yahoo.co.uk>
-
-  17 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> axel-1.0a.ebuild:
-  fix typo (bug #82319); tidy
-
-  16 Feb 2005; Marcus D. Hanwell <cryos@gentoo.org> axel-1.0a.ebuild:
-  Marked ~amd64, closes bug 82236.
-
-  29 Aug 2004; Tom Gall <tgall@gentoo.org> axel-1.0a.ebuild:
-  stable on ppc64, bug #61409
-
-  14 Aug 2004; Sven Wegener <swegener@gentoo.org> :
-  Fixed CVS Header.
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> axel-1.0a.ebuild:
-  change virtual/glibc to virtual/libc
-
-  26 Jun 2004; David Holm <dholm@gentoo.org> axel-1.0a.ebuild:
-  Added to ~ppc.
-
-  11 Jun 2004; Aron Griffis <agriffis@gentoo.org> axel-1.0a.ebuild:
-  Fix use invocation
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/axel/ChangeLog,v 1.1 2002/06/01 02:24:09 stroke Exp $
 
 *axel-1.0a (1 June 2002)
-  6 Jul 2002; phoen][x <phoenix@gentoo.org> axel-1.0a.ebuild :
-
-  Added KEYWORDS.
-
   13 May 2002; Gabriele Giorgetti <stroke@gentoo.org> ChangeLog :
 
   Added initial ChangeLog which should be updated whenever the package is

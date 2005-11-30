@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libwww/libwww-5.4.0-r4.ebuild,v 1.14 2005/11/20 13:21:05 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libwww/libwww-5.4.0-r4.ebuild,v 1.1 2005/10/27 23:31:46 leonardop Exp $
 
 inherit eutils multilib
 
@@ -12,17 +12,17 @@ SRC_URI="http://www.w3.org/Library/Distribution/${MY_P}.tgz
 
 LICENSE="W3C"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc-macos ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="mysql ssl"
 
-RDEPEND=">=sys-libs/zlib-1.1.4
+RDEPEND="dev-lang/perl
+	>=sys-libs/zlib-1.1.4
 	mysql? ( >=dev-db/mysql-3.23.26 )
 	ssl? ( >=dev-libs/openssl-0.9.6 )"
 
-DEPEND="${RDEPEND}
-	!dev-libs/9libs
+DEPEND="!dev-libs/9libs
 	>=sys-devel/autoconf-2.13
-	dev-lang/perl"
+	${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
@@ -45,9 +45,8 @@ src_unpack() {
 	export WANT_AUTOMAKE=1.4
 	aclocal || die "aclocal failed"
 
-	if use ppc-macos;
-	then
-		glibtoolize -c -f || die "glibtoolize failed"
+	if use ppc-macos ; then
+		glibtoolize -c -f || die "libtoolize failed"
 	else
 		libtoolize -c -f || die "libtoolize failed"
 	fi

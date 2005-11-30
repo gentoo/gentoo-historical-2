@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/docbook2X/docbook2X-0.6.1-r2.ebuild,v 1.7 2005/01/01 16:09:11 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/docbook2X/docbook2X-0.6.1-r2.ebuild,v 1.1 2003/07/07 14:00:41 ykoehler Exp $
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="Tools to convert docbook to man and info"
@@ -8,8 +8,7 @@ SRC_URI="mirror://sourceforge/docbook2x/${P}.tar.gz"
 HOMEPAGE="http://docbook2x.sourceforge.net"
 
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
-IUSE=""
+KEYWORDS="x86 ppc sparc "
 LICENSE="GPL-2"
 
 DEPEND=""
@@ -21,7 +20,6 @@ RDEPEND=">=dev-perl/XML-Writer-0.4
 
 src_install () {
 
-	# Get current install Perl site arch directory.
 	eval `perl '-V:installsitearch'`
 	SITE_ARCH=${installsitearch}
 

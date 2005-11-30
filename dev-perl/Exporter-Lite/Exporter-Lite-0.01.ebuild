@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exporter-Lite/Exporter-Lite-0.01.ebuild,v 1.11 2005/06/17 20:40:02 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Exporter-Lite/Exporter-Lite-0.01.ebuild,v 1.1 2004/06/06 03:23:54 mcummings Exp $
 
 inherit perl-module
 
 DESCRIPTION="Lightweight exporting of variables"
 HOMEPAGE="http://search.cpan.org/~mschwern/${P}/"
-SRC_URI="mirror://cpan/authors/id/M/MS/MSCHWERN/${P}.tar.gz"
+SRC_URI="http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/${P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
+LICENSE="Artistic | GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc ~alpha  ~amd64"
 
 SRC_TEST="do"
+

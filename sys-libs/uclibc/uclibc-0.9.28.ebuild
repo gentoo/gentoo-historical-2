@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc/uclibc-0.9.28.ebuild,v 1.13 2005/11/25 22:20:41 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc/uclibc-0.9.28.ebuild,v 1.1 2005/08/18 03:53:03 vapier Exp $
 
 #ESVN_REPO_URI="svn://uclibc.org/trunk/uClibc"
 #inherit subversion
@@ -19,29 +19,25 @@ if [[ ${CTARGET} == ${CHOST} ]] && [[ ${CHOST} != *-uclibc ]] ; then
 	export CTARGET=${CHOST%%-*}-pc-linux-uclibc
 fi
 
-MY_P=uClibc-${PV}
+MY_P=${P/ucl/uCl}
 SVN_VER=""
-PATCH_VER="1.1"
+PATCH_VER=""
 DESCRIPTION="C library for developing embedded Linux systems"
 HOMEPAGE="http://www.uclibc.org/"
 SRC_URI="http://www.kernel.org/pub/linux/libs/uclibc/${MY_P}.tar.bz2
 	nls? ( !userlocales? ( pregen? (
 		x86? ( http://www.uclibc.org/downloads/uClibc-locale-030818.tgz )
 	) ) )"
-[[ -z ${SVN_VER} ]] || \
-	SRC_URI="${SRC_URI} mirror://gentoo/${MY_P}-svn-update-${SVN_VER}.patch.bz2"
-[[ -z ${PATCH_VER} ]] || \
-	SRC_URI="${SRC_URI} mirror://gentoo/${MY_P}-patches-${PATCH_VER}.tar.bz2"
 
 LICENSE="LGPL-2"
 [[ ${CTARGET} != ${CHOST} ]] \
 	&& SLOT="${CTARGET}" \
 	|| SLOT="0"
-KEYWORDS="-* ~arm ~m68k ~mips ~ppc sh ~sparc ~x86"
-IUSE="build uclibc-compat debug hardened iconv ipv6 minimal nls pregen userlocales wordexp"
+KEYWORDS="-* ~sh" #~amd64 ~arm ~m68k ~mips ~ppc ~sh ~sparc ~x86"
+IUSE="build debug hardened ipv6 minimal nls pregen userlocales wordexp"
 RESTRICT="nostrip"
 
-DEPEND="virtual/os-headers app-misc/pax-utils"
+DEPEND="virtual/os-headers"
 RDEPEND=""
 [[ ${CTARGET} == ${CHOST} ]] && PROVIDE="virtual/libc"
 
@@ -70,17 +66,9 @@ alt_rprefix() {
 		echo /usr/${CTARGET}/
 	fi
 }
-just_headers() {
-	[[ -z ${_E_CROSS_HEADERS_ONLY} ]] && return 1
-	[[ ${CHOST} == ${CTARGET} ]] && return 1
-	return 0
-}
 
 pkg_setup() {
-	just_headers && return 0
-	has_version ${CATEGORY}/uclibc || return 0
-	[[ -n ${UCLIBC_AND_GLIBC} ]] && return 0
-	[[ ${ROOT} != "/" ]] && return 0
+	[[ -z $(best_version ${CATEGORY}/uclibc) ]] && return 0
 
 	if ! built_with_use ${CATEGORY}/uclibc nls && use nls && ! use pregen ; then
 		eerror "You previously built uclibc with USE=-nls."
@@ -94,8 +82,6 @@ pkg_setup() {
 		die "switching from nls is baaaad"
 	fi
 }
-
-PIE_STABLE="arm mips ppc x86"
 
 CPU_AMD64=""
 CPU_ARM="GENERIC_ARM ARM{610,710,720T,920T,922T,926T,_{SA110,SA1100,XSCALE}}"
@@ -117,12 +103,7 @@ check_cpu_opts() {
 		ewarn "Available CPU options:"
 		UCLIBC_CPU=$(eval echo ${!cpu_var})
 		echo ${UCLIBC_CPU}
-		case ${CTARGET} in
-			mips[1234]*) export UCLIBC_CPU="MIPS_ISA_${CTARGET:4:1}";;
-			sh[2345]*)   export UCLIBC_CPU="SH${CTARGET:2:1}";;
-			i[456]86*)   export UCLIBC_CPU="${CTARGET:1:1}86";;
-			*)           export UCLIBC_CPU=${UCLIBC_CPU%% *};;
-		esac
+		export UCLIBC_CPU=${UCLIBC_CPU%% *}
 	else
 		local cpu found=0
 		for cpu in $(eval echo ${!cpu_var}) ; do
@@ -142,7 +123,6 @@ src_unpack() {
 		&& subversion_src_unpack \
 		|| unpack ${A}
 	cd "${S}"
-
 	check_cpu_opts
 
 	echo
@@ -166,8 +146,7 @@ src_unpack() {
 		EPATCH_SUFFIX="patch"
 		epatch "${WORKDIR}"/patch
 		# math functions (sinf,cosf,tanf,atan2f,powf,fabsf,copysignf,scalbnf,rem_pio2f)
-		cp "${WORKDIR}"/patch/math/libm/* "${S}"/libm/ || die
-		epatch "${WORKDIR}"/patch/math
+		use build || epatch "${WORKDIR}"/patch/math
 	fi
 
 	########## CPU SELECTION ##########
@@ -180,7 +159,6 @@ src_unpack() {
 		mips)  target="mips";    config_target="MIPS_ISA_1";;
 		ppc)   target="powerpc"; config_target="no cpu-specific options";;
 		sh)    target="sh";      config_target="SH4";;
-		sparc) target="sparc";   config_target="no cpu-specific options";;
 		x86)   target="i386";    config_target="GENERIC_386";;
 		*)     die "$(tc-arch) lists no defaults :/";;
 	esac
@@ -193,14 +171,12 @@ src_unpack() {
 
 	make defconfig >/dev/null || die "could not config"
 
-	for def in DO{DEBUG{,_PT},ASSERTS} SUPPORT_LD_DEBUG{,_EARLY} ; do
+	for def in UCLIBC_PROFILING DO{DEBUG,ASSERTS} SUPPORT_LD_DEBUG{,_EARLY} ; do
 		sed -i -e "s:${def}=y:# ${def} is not set:" .config
 	done
 	if use debug ; then
-		#echo "SUPPORT_LD_DEBUG_EARLY=y" >> .config
 		echo "SUPPORT_LD_DEBUG=y" >> .config
 		echo "DODEBUG=y" >> .config
-		#echo "DODEBUG_PT=y" >> .config
 	fi
 
 	sed -i -e '/ARCH_.*_ENDIAN/d' .config
@@ -211,51 +187,29 @@ src_unpack() {
 		echo 'HAS_FPU=n' >> .config
 	fi
 
-	local moredefs="DL_FINI_CRT_COMPAT"
-	# We need todo this for a few months. .28 is a major upgrade.
-	if ! use uclibc-compat && [[ "$UCLIBC_SCANED_COMPAT" == "" ]]; then
-		local fnames=""
-		einfo "Doing a scanelf in paths for bins containing the __uClibc_start_main symbol"
-		fnames="$(scanelf -pyqs__uClibc_start_main -F%F#s)"
-		if [ "$fnames" == ""  ]; then
-			einfo "This system is clean."
-			einfo "To prevent the scanning of files again in the future you can export UCLIBC_SCANED_COMPAT=1"
-			moredefs=""
-		else
-			ewarn "You need to remerge the packages that contain the following files before you can remerge ${P} without USE=uclibc-compat enabled."
-			ewarn "qfile ${fnames}"
-			echo
-			ewarn "Leaving on ${moredefs}"
-		fi
-	fi
-	for def in ${moredefs} MALLOC_GLIBC_COMPAT DO_C99_MATH UCLIBC_HAS_{RPC,CTYPE_CHECKED,WCHAR,HEXADECIMAL_FLOATS,GLIBC_CUSTOM_PRINTF,FOPEN_EXCLUSIVE_MODE,GLIBC_CUSTOM_STREAMS,PRINTF_M_SPEC,FTW} ; do
+	for def in DO_C99_MATH UCLIBC_HAS_{RPC,CTYPE_CHECKED,WCHAR,HEXADECIMAL_FLOATS,GLIBC_CUSTOM_PRINTF,FOPEN_EXCLUSIVE_MODE,GLIBC_CUSTOM_STREAMS,PRINTF_M_SPEC,FTW} ; do
 		sed -i -e "s:# ${def} is not set:${def}=y:" .config
 	done
 	echo "UCLIBC_HAS_FULL_RPC=y" >> .config
 	echo "PTHREADS_DEBUG_SUPPORT=y" >> .config
 	echo "UCLIBC_HAS_TZ_FILE_READ_MANY=n" >> .config
 
-	if use iconv ; then
+	if use nls ; then
 		sed -i -e "s:# UCLIBC_HAS_LOCALE is not set:UCLIBC_HAS_LOCALE=y:" .config
 		echo "UCLIBC_HAS_XLOCALE=n" >> .config
 		echo "UCLIBC_HAS_GLIBC_DIGIT_GROUPING=y" >> .config
 		echo "UCLIBC_HAS_SCANF_LENIENT_DIGIT_GROUPING=y" >> .config
-
-		if use nls ; then
-			echo "UCLIBC_HAS_GETTEXT_AWARENESS=y" >> .config
-		else
-			echo "UCLIBC_HAS_GETTEXT_AWARENESS=n" >> .config
-		fi
+		echo "UCLIBC_HAS_GETTEXT_AWARENESS=y" >> .config
 
 		if use pregen ; then
 			echo "UCLIBC_PREGENERATED_LOCALE_DATA=y" >> .config
 			echo "UCLIBC_DOWNLOAD_PREGENERATED_LOCALE_DATA=y" >> .config
 			if use userlocales ; then
-				cp "${DISTDIR}"/${MY_P}-user-locale.tar.gz \
+				cp "${DISTDIR}"/${P}-user-locale.tar.gz \
 					extra/locale/uClibc-locale-030818.tgz \
-					|| die "could not copy ${MY_P}-user-locale.tar.gz"
+					|| die "could not copy ${P}-user-locale.tar.gz"
 			else
-				cp "${DISTDIR}"/${MY_P}-$(tc-arch)-full-locale.tar.gz \
+				cp "${DISTDIR}"/${P}-$(tc-arch)-full-locale.tar.gz \
 					extra/locale/uClibc-locale-030818.tgz \
 					|| die "could not copy locale"
 			fi
@@ -274,7 +228,6 @@ src_unpack() {
 	# we need to do it independently of hardened to get ssp.c built into libc
 	sed -i -e "s:# UCLIBC_SECURITY.*:UCLIBC_SECURITY=y:" .config
 	echo "UCLIBC_HAS_SSP=y" >> .config
-	echo "SSP_USE_ERANDOM=n" >> .config
 	echo "PROPOLICE_BLOCK_ABRT=n" >> .config
 	if use debug ; then
 		echo "PROPOLICE_BLOCK_SEGV=y" >> .config
@@ -284,33 +237,23 @@ src_unpack() {
 		echo "PROPOLICE_BLOCK_KILL=y" >> .config
 	fi
 
-	# arm/mips do not emit PT_GNU_STACK, but if we enable this here
-	# it will be emitted as RWE, ppc has to be checked, x86 needs it
-	# this option should be used independently of hardened
-	# relro could be also moved out of hardened
-	if has $(tc-arch) x86 ; then
-		echo "UCLIBC_BUILD_NOEXECSTACK=y" >> .config
-	else
-		echo "UCLIBC_BUILD_NOEXECSTACK=n" >> .config
-	fi
-	echo "UCLIBC_BUILD_RELRO=y" >> .config
 	if use hardened ; then
-		if has $(tc-arch) ${PIE_STABLE} ; then
-			echo "UCLIBC_BUILD_PIE=y" >> .config
-		else
-			echo "UCLIBC_BUILD_PIE=n" >> .config
-		fi
+		echo "UCLIBC_BUILD_PIE=y" >> .config
 		echo "SSP_QUICK_CANARY=n" >> .config
 		echo "UCLIBC_BUILD_SSP=y" >> .config
+		echo "UCLIBC_BUILD_RELRO=y" >> .config
 		echo "UCLIBC_BUILD_NOW=y" >> .config
+		echo "UCLIBC_BUILD_NOEXECSTACK=y" >> .config
 	else
 		echo "UCLIBC_BUILD_PIE=n" >> .config
 		echo "SSP_QUICK_CANARY=y" >> .config
 		echo "UCLIBC_BUILD_SSP=n" >> .config
+		echo "UCLIBC_BUILD_RELRO=n" >> .config
 		echo "UCLIBC_BUILD_NOW=n" >> .config
+		echo "UCLIBC_BUILD_NOEXECSTACK=n" >> .config
 	fi
 
-	# setup build and run paths
+	# we are building against system installed kernel headers
 	local cross=${CTARGET}-
 	type -p ${cross}ar > /dev/null || cross=""
 	sed -i \
@@ -322,6 +265,8 @@ src_unpack() {
 		.config || die
 
 	yes "" 2> /dev/null | make -s oldconfig > /dev/null || die "could not make oldconfig"
+
+	chmod +x extra/scripts/relative_path.sh
 
 	cp .config myconfig
 
@@ -353,9 +298,7 @@ src_compile() {
 	cp myconfig .config
 
 	emake headers || die "make headers failed"
-	just_headers && return 0
-
-	if use iconv && ! use pregen ; then
+	if use nls && ! use pregen ; then
 		cd extra/locale
 		make clean || die "make locale clean failed"
 		setup_locales
@@ -375,18 +318,20 @@ src_test() {
 	[[ ${CHOST} != ${CTARGET} ]] && return 0
 	[[ ${CBUILD} != ${CHOST} ]] && return 0
 
+	# This is wrong, but uclibc's tests fail bad when screwing 
+	# around with sandbox, so lets just punt it
+	unset LD_PRELOAD
+
 	# assert test fails on pax/grsec enabled kernels - normal
 	# vfork test fails in sandbox (both glibc/uclibc)
 	make check || die "test failed"
 }
 
 src_install() {
-	local target="install"
-	just_headers && target="install_dev"
-	make PREFIX="${D}" ${target} || die "install failed"
+	make PREFIX="${D}" install || die "install failed"
 
 	# remove files coming from kernel-headers
-	rm -rf "${D}"$(alt_prefix)/include/{linux,asm*}
+	rm -rf "${D}"$(alt_prefix)/include/{asm,linux,asm-generic}
 
 	# Make sure we install the sys-include symlink so that when 
 	# we build a 2nd stage cross-compiler, gcc finds the target 
@@ -404,7 +349,7 @@ src_install() {
 
 	if ! use build ; then
 		dodoc Changelog* README TODO docs/*.txt DEDICATION.mjn3
-		doman docs/man/*.[1-9]
+		doman docs/man/*.1
 	fi
 }
 

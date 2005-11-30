@@ -1,33 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/pwgen/pwgen-2.03-r1.ebuild,v 1.20 2005/07/05 16:01:05 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/pwgen/pwgen-2.03-r1.ebuild,v 1.1 2003/09/22 02:48:45 seemant Exp $
 
 inherit eutils
 
 DESCRIPTION="Password Generator"
-HOMEPAGE="http://sourceforge.net/projects/pwgen/"
 SRC_URI="mirror://sourceforge/pwgen/${P}.tar.gz"
+HOMEPAGE="http://sourceforge.net/projects/pwgen/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc-macos ppc64 sparc x86"
-IUSE="livecd"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~hppa ~amd64 ~alpha"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
+	unpack ${A} ; cd ${S}
+
 	sed -i -e 's:$(prefix)/man/man1:$(mandir)/man1:g' Makefile.in
+
 	epatch ${FILESDIR}/${P}-addl_pw_chars.patch
 }
 
 src_compile() {
-	econf --sysconfdir=/etc/pwgen || die "econf failed"
+	econf --sysconfdir=/etc/pwgen
 	make || die
 }
 
 src_install() {
 	make DESTDIR=${D} install || die
-	use livecd && exeinto /etc/init.d && newexe ${FILESDIR}/pwgen.rc pwgen
 }

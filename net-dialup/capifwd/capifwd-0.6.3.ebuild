@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capifwd/capifwd-0.6.3.ebuild,v 1.3 2005/06/26 08:44:09 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capifwd/capifwd-0.6.3.ebuild,v 1.1 2004/11/24 06:04:45 mrness Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/capi20proxy/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND="net-dialup/capi4k-utils"
 

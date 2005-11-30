@@ -1,14 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-sparc64/gcc-sparc64-3.4.3.ebuild,v 1.4 2005/07/10 00:47:40 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-sparc64/gcc-sparc64-3.4.3.ebuild,v 1.1 2004/11/11 09:19:04 kumba Exp $
 
-inherit eutils flag-o-matic
 
 # Variables 
+inherit eutils flag-o-matic
 MYARCH="$(echo ${PN} | cut -d- -f2)"
 TMP_P="${P/-${MYARCH}/}"
 TMP_PN="${PN/-${MYARCH}/}"
 I="/usr"
+S="${WORKDIR}/${P}"
 BRANCH_UPDATE=""
 
 DESCRIPTION="Sparc64 Kernel Compiler"
@@ -111,14 +112,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	einfo ""
 	einfo "To facilitate an easier kernel build, you may wish to add the following line to your profile:"
-	einfo
+	einfo ""
 	einfo "alias ${MYARCH}make=\"make ARCH=${MYARCH} CROSS_COMPILE=${MYARCH}-unknown-linux-gnu-\""
-	einfo
+	einfo ""
 	einfo "Then to compile a kernel, simply goto the kernel source directory, and issue:"
 	einfo "${MYARCH}make <target>"
 	einfo "Where <target> is one of the usual kernel targets"
-	einfo
+	einfo ""
 	epause 10
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmusepack/libmusepack-1.0.3.ebuild,v 1.3 2005/01/29 21:29:50 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmusepack/libmusepack-1.0.3.ebuild,v 1.1 2004/11/29 19:43:42 eradicator Exp $
 
 IUSE=""
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.saunalahti.fi/grimmel/musepack.net/source/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 DEPEND="virtual/libc"
 

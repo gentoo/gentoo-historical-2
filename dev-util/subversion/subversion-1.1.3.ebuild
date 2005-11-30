@@ -1,21 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/subversion/subversion-1.1.3.ebuild,v 1.20 2005/10/10 11:11:46 pauldv Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/subversion/subversion-1.1.3.ebuild,v 1.1 2005/01/18 19:29:13 pauldv Exp $
 
 inherit elisp-common libtool python eutils bash-completion
 
 DESCRIPTION="A compelling replacement for CVS"
-HOMEPAGE="http://subversion.tigris.org/"
 SRC_URI="http://subversion.tigris.org/tarballs/${P/_rc/-rc}.tar.bz2"
+HOMEPAGE="http://subversion.tigris.org/"
 
-LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
-IUSE="ssl apache2 berkdb python emacs perl java nls"
+LICENSE="Apache-1.1"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64 ~alpha ~hppa ~ppc64 ~ia64"
+IUSE="ssl apache2 berkdb python emacs perl java"
+
+S=${WORKDIR}/${P/_rc/-rc}
 
 # Presently subversion doesn't build with swig-1.3.22, bug 65424
-RDEPEND="apache2? ( >=net-www/apache-2.0.48 !>=net-www/apache-2.0.54-r30 )
-	!apache2? ( !>=net-www/apache-2 )
+RDEPEND="apache2? ( >=net-www/apache-2.0.49 )
+	!apache2? ( !>=net-www/apache-2* )
 	!dev-libs/apr
 	python? ( =dev-lang/swig-1.3.21 >=dev-lang/python-2.0 )
 	perl? ( =dev-lang/swig-1.3.21 >=dev-lang/perl-5.8 )
@@ -23,12 +25,11 @@ RDEPEND="apache2? ( >=net-www/apache-2.0.48 !>=net-www/apache-2.0.54-r30 )
 	berkdb? ( =sys-libs/db-4* )
 	java? ( virtual/jdk )
 	emacs? ( virtual/emacs )"
+
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.59"
 # Does not work because jikes is broken
-#	jikes? ( dev-java/jikes )"
-
-S=${WORKDIR}/${P/_rc/-rc}
+#	jikes? (dev-java/jikes)"
 
 # Allow for custion repository locations.
 # This can't be in pkg_setup because the variable needs to be available to
@@ -106,7 +107,6 @@ src_compile() {
 		$(use_with ssl) \
 		$(use_with berkdb berkeley-db) \
 		$(use_with python) \
-		$(use_enable nls) \
 		--with-neon=/usr \
 		--disable-experimental-libtool \
 		--disable-mod-activation || die "econf failed"
@@ -116,7 +116,7 @@ src_compile() {
 	# So not specifying it at all when not building apache modules and only
 	# specify it for internal parts otherwise.
 	if use apache2; then
-		( emake LT_LDFLAGS="-L${D}/usr/lib" external-all && emake LT_LDFLAGS="-L${D}/usr/lib" local-all ) || die "make of subversion failed"
+		( emake external-all && emake LT_LDFLAGS="-L${D}/usr/lib" local-all ) || die "make of subversion failed"
 	else
 		( emake external-all && emake local-all ) || die "make of subversion failed"
 	fi
@@ -241,9 +241,8 @@ EOF
 	dodoc CHANGES
 	dodoc tools/xslt/svnindex.css tools/xslt/svnindex.xsl
 	find contrib tools -name \*.in -print0 | xargs -0 rm -f
-	mkdir -p ${D}/usr/share/doc/${PF}/
-	cp -r tools/{client-side,examples,hook-scripts} ${D}/usr/share/doc/${PF}/
-	cp -r contrib/hook-scripts ${D}/usr/share/doc/${PF}/
+	cp -r --parents tools/{client-side,examples,hook-scripts} ${D}/usr/share/doc/${PF}/
+	cp -r --parents contrib/hook-scripts ${D}/usr/share/doc/${PF}/
 
 	# Install documentation
 	docinto notes
@@ -302,13 +301,7 @@ pkg_postinst() {
 	einfo "   2. restart xinetd.d: /etc/init.d/xinetd restart"
 	einfo
 	einfo " - svn over ssh:"
-	einfo "   1. Fix the repository permissions:"
-	einfo "        groupadd svnusers"
-	einfo "        chown -R root:svnusers /var/svn/repos/"
-	einfo "        chmod -R g-w /var/svn/repos"
-	einfo "        chmod -R g+rw /var/svn/repos/db"
-	einfo "        chmod -R g+rw /var/svn/repos/locks"
-	einfo "   2. create an svnserve wrapper in /usr/local/bin to set the umask you"
+	einfo "   1. create an svnserve wrapper in /usr/local/bin to set the umask you"
 	einfo "      want, for example:"
 	einfo "         #!/bin/bash"
 	einfo "         umask 002"

@@ -1,43 +1,6 @@
 # ChangeLog for app-pda/p3nfs
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/p3nfs/ChangeLog,v 1.10 2005/10/07 13:45:35 s4t4n Exp $
-
-  07 Oct 2005; Michele Noberasco <s4t4n@gentoo.org> p3nfs-5.18-r1.ebuild:
-  Stable for x86.
-  -p3nfs-5.18.ebuild:
-  Wiped out older release.
-
-*p3nfs-5.18-r1 (29 Sep 2005)
-
-  29 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> +p3nfs-5.18-r1.ebuild:
-  Revision bump, with patch to fix bug #89537. Also added some magic
-  to make it honour Gentoo CFLAGS. Assigned to mobile-phone herd.
-
-  08 Jul 2005; <brix@gentoo.org> metadata.xml:
-  Removed myself from metadata.xml as I no longer have a supported Symbian
-  device.
-
-  02 Jul 2005; <brix@gentoo.org> -p3nfs-5.16.ebuild, -p3nfs-5.17a.ebuild:
-  Pruned old ebuilds.
-
-  27 Jun 2005; <brix@gentoo.org> p3nfs-5.18.ebuild:
-  Stable on x86.
-
-  09 Jun 2005; <brix@gentoo.org> p3nfs-5.17a.ebuild:
-  Stable on x86.
-
-*p3nfs-5.18 (01 Jun 2005)
-
-  01 Jun 2005; <brix@gentoo.org> +p3nfs-5.18.ebuild:
-  Version bump, fixes bug #94520.
-
-  15 May 2005; <brix@gentoo.org> p3nfs-5.16.ebuild:
-  Stable on x86.
-
-*p3nfs-5.17a (03 May 2005)
-
-  03 May 2005; <brix@gentoo.org> +p3nfs-5.17a.ebuild:
-  Version bump.
+# $Header: /var/cvsroot/gentoo-x86/app-pda/p3nfs/ChangeLog,v 1.1 2005/04/15 11:56:31 brix Exp $
 
 *p3nfs-5.16 (15 Apr 2005)
 

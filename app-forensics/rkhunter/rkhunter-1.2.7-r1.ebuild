@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/rkhunter/rkhunter-1.2.7-r1.ebuild,v 1.2 2005/09/04 11:13:45 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/rkhunter/rkhunter-1.2.7-r1.ebuild,v 1.1 2005/09/02 09:58:35 ka0ttic Exp $
 
 inherit eutils bash-completion
 
@@ -13,10 +13,11 @@ SLOT="0"
 KEYWORDS="alpha amd64 mips ppc sparc x86"
 IUSE=""
 
-RDEPEND="virtual/mta
-	app-shells/bash
-	dev-lang/perl
-	sys-process/lsof"
+DEPEND="app-arch/tar
+	app-arch/gzip
+	virtual/mta"
+RDEPEND="app-shells/bash
+	dev-lang/perl"
 
 S="${WORKDIR}/${PN}/files"
 
@@ -41,7 +42,7 @@ src_install() {
 	dosed 's:^#\(DBDIR=.*\)local\(.*\)$:\1lib\2\nINSTALLDIR=/usr:' \
 		/etc/rkhunter.conf || die "sed rkhunter.conf failed"
 
-	doman development/rkhunter.8 || die "doman failed"
+	doman development/rkhunter.8
 	dodoc CHANGELOG LICENSE README WISHLIST || die "dodoc failed"
 
 	exeinto /etc/cron.daily

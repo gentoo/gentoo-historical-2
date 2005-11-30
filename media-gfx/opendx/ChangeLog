@@ -1,54 +1,6 @@
 # ChangeLog for media-gfx/opendx
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/opendx/ChangeLog,v 1.16 2005/08/28 14:05:12 blubb Exp $
-
-  28 Aug 2005; Simon Stelling <blubb@gentoo.org> ChangeLog:
-  added ~amd64 keyword
-
-  20 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  opendx-4.3.2-r1.ebuild:
-  Stable on ppc (bug #101923).
-
-  25 Jul 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  opendx-4.3.2-r1.ebuild:
-  Stable on x86.
-
-  25 Jul 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  opendx-4.3.2-r1.ebuild:
-  Update to use linux-info.eclass and to check for SMP properly.
-
-  24 May 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  opendx-4.3.2-r1.ebuild:
-  (#82672) Filter -finline-functions and -O3.
-
-  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> :
-  Dependency update: dev-libs/szip -> sci-libs/szip.
-
-  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> :
-  Dependency update: dev-libs/szip -> sci-libs/szip.
-
-  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> opendx-4.3.2-r1.ebuild:
-  Dependency update: dev-libs/szip -> sci-libs/szip.
-
-  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> opendx-4.3.2.ebuild:
-  Dependency update: dev-libs/szip -> sci-libs/szip.
-
-  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> opendx-4.3.2-r1.ebuild:
-  Dependency update: dev-libs/hdf -> sci-libs/hdf.
-
-  28 Dec 2004; Olivier Fisette <ribosome@gentoo.org> opendx-4.3.2.ebuild:
-  Dependency update: dev-libs/hdf -> sci-libs/hdf.
-
-*opendx-4.3.2-r1 (24 May 2004)
-
-  24 May 2004; Patrick Kursawe <phosphan@gentoo.org> opendx-4.3.2-r1.ebuild:
-  Making szip dependency optional
-
-  16 Mar 2004; Patrick Kursawe <phosphan@gentoo.org> opendx-4.3.2.ebuild:
-  Fixing bug #44727 by adding szip as dependency.
-
-  15 Mar 2004; David Holm <dholm@gentoo.org> opendx-4.3.2.ebuild:
-  Added to ~ppc.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/opendx/ChangeLog,v 1.1 2004/03/15 02:31:35 spyderous Exp $
 
 *opendx-4.3.2 (14 Mar 2004)
 

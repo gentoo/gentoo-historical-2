@@ -1,26 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/gabber/gabber-0.8.7-r3.ebuild,v 1.15 2005/03/30 07:23:45 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/gabber/gabber-0.8.7-r3.ebuild,v 1.1 2002/08/30 20:44:45 mkennedy Exp $
 
-inherit eutils
-
-IUSE="xmms ssl nls crypt"
-
+S=${WORKDIR}/${P}
 DESCRIPTION="The GNOME Jabber Client"
 SRC_URI="mirror://sourceforge/gabber/${P}.tar.gz"
 HOMEPAGE="http://gabber.sourceforge.net"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~alpha ppc"
+KEYWORDS="*"
 
 DEPEND=">=gnome-base/gnome-libs-1.4.1.7
 	>=gnome-base/libglade-0.17-r1
-	<gnome-base/libglade-2.0.0
-	<gnome-extra/gal-1.99
-	>=dev-cpp/gnomemm-1.2.2
-	>=dev-cpp/gtkmm-1.2.5
-	<dev-cpp/gtkmm-1.3.0
+	<gnome-base/libglade-2.0.0 
+	>=gnome-extra/gal-0.19
+	>=gnome-extra/gnomemm-1.2.2
+	>=x11-libs/gtkmm-1.2.5
+	<x11-libs/gtkmm-1.3.0
 	ssl? ( >=dev-libs/openssl-0.9.6 )
 	crypt? ( >=app-crypt/gnupg-1.0.5 )
 	xmms? ( >=media-sound/xmms-1.2.7-r11 )"
@@ -32,7 +29,7 @@ src_unpack() {
 	# patch for minor C++ coding error. sent upstream
 	# (mkennedy@gentoo.org).
 	cd ${S}
-	epatch ${FILESDIR}/TCPtransmitter.cc-gcc3-gentoo.patch
+	patch -p1 <${FILESDIR}/TCPtransmitter.cc-gcc3-gentoo.patch || die
 }
 
 src_compile() {
@@ -60,3 +57,4 @@ src_compile() {
 src_install() {
 	einstall || die
 }
+

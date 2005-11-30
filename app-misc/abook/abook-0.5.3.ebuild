@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/abook/abook-0.5.3.ebuild,v 1.10 2005/10/03 12:02:11 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/abook/abook-0.5.3.ebuild,v 1.1 2004/10/07 15:59:49 rizzo Exp $
 
 inherit eutils gnuconfig
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/abook/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ppc ~ppc-macos ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~ppc64"
 IUSE=""
 
 DEPEND="sys-libs/ncurses
@@ -24,6 +24,6 @@ src_unpack() {
 
 src_install() {
 	make install DESTDIR=${D} || die "install died"
-	dodoc ANNOUNCE AUTHORS BUGS ChangeLog FAQ NEWS README THANKS TODO
+	dodoc ANNOUNCE AUTHORS BUGS ChangeLog FAQ INSTALL NEWS README THANKS TODO
 	dodoc sample.abookrc
 }

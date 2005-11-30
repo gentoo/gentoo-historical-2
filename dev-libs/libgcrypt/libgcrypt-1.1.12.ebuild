@@ -1,20 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.1.12.ebuild,v 1.16 2005/08/07 10:15:10 dragonheart Exp $
+# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgcrypt/libgcrypt-1.1.12.ebuild,v 1.1 2003/02/08 16:27:11 jrray Exp $
 
-DESCRIPTION="general purpose crypto library based on the code used in GnuPG"
-HOMEPAGE="http://www.gnupg.org/"
-SRC_URI="mirror://gnupg/alpha/${PN}/${P}.tar.gz"
+S=${WORKDIR}/${P}
+DESCRIPTION="libgcrypt is a general purpose crypto library based on the code used in GnuPG."
+SRC_URI="ftp://ftp.gnupg.org/gcrypt/alpha/${PN}/${P}.tar.gz"
+HOMEPAGE="http://www.gnupg.org"
 
-LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha ia64 amd64 hppa"
-IUSE="doc nls"
+LICENSE="LGPL-2.1"
+KEYWORDS="~x86 ~ppc ~sparc"
 
-DEPEND="doc? ( app-text/jadetex
+DEPEND="app-text/jadetex
 	app-text/docbook-sgml-utils
-	>=app-text/docbook-dsssl-stylesheets-1.77-r2 )"
+	>=app-text/docbook-dsssl-stylesheets-1.77-r2"
+
 RDEPEND="nls? ( sys-devel/gettext )"
+IUSE="nls"
 
 src_unpack() {
 	unpack ${A}
@@ -30,10 +32,10 @@ src_unpack() {
 
 src_compile() {
 	econf $(use_enable nls) --disable-dependency-tracking || die
-	emake || die
+	emake  || die
 }
 
-src_install() {
+src_install () {	
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS BUGS ChangeLog COPYING* NEWS README* THANKS TODO VERSION
+	dodoc AUTHORS BUGS ChangeLog COPYING* NEWS README* THANKS TODO VERSION 
 }

@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/multisort/multisort-1.1.ebuild,v 1.2 2005/07/10 01:23:03 swegener Exp $
-
-inherit toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/www-misc/multisort/multisort-1.1.ebuild,v 1.1 2005/01/22 09:06:35 hollow Exp $
 
 DESCRIPTION="multisort takes any number of httpd logfiles in the Common Log Format and merges them together"
 HOMEPAGE="http://www.xach.com/multisort/"
@@ -15,10 +13,12 @@ IUSE=""
 
 DEPEND=""
 
+S=${WORKDIR}/${P}
+
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "emake failed"
+		make || die "make failed"
 }
 
 src_install() {
-	dosbin ${S}/multisort
+		dosbin ${S}/multisort
 }

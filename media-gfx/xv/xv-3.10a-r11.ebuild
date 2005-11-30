@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xv/xv-3.10a-r11.ebuild,v 1.13 2005/07/12 04:31:46 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xv/xv-3.10a-r11.ebuild,v 1.1 2005/04/15 09:26:21 taviso Exp $
 
 inherit flag-o-matic eutils toolchain-funcs
 
 JUMBOV=20050410
 DESCRIPTION="An interactive image manipulation program for X which can deal with a wide variety of image formats"
-HOMEPAGE="http://www.trilon.com/xv/index.html http://www.sonic.net/~roelofs/greg_xv.html"
-SRC_URI="mirror://sourceforge/png-mng/${P}-jumbo-patches-${JUMBOV}.tar.bz2 ftp://ftp.cis.upenn.edu/pub/xv/${P}.tar.gz"
+HOMEPAGE="http://www.trilon.com/xv/index.html"
+SRC_URI="http://www.sonic.net/~roelofs/code/${P}-jumbo-patches-${JUMBOV}.tar.bz2	ftp://ftp.cis.upenn.edu/pub/xv/${P}.tar.gz"
 
 LICENSE="xv"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc ppc-macos ppc64 sparc x86"
+KEYWORDS="~x86"
 IUSE="jpeg tiff png"
 
 DEPEND="virtual/x11
@@ -31,11 +31,6 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-bmpfix.patch.bz2 || die
 	epatch ${FILESDIR}/${P}-yaos.dif.bz2 || die
 
-	if use ppc-macos; then
-		epatch ${FILESDIR}/${PF}-xv-osx.patch
-		epatch ${FILESDIR}/${P}-vdcomp-osx.patch
-	fi
-
 	sed -i	-e 's/\(^JPEG.*\)/#\1/g' \
 			-e 's/\(^PNG.*\)/#\1/g' \
 			-e 's/\(^TIFF.*\)/#\1/g' \
@@ -47,11 +42,7 @@ src_unpack() {
 }
 
 src_compile() {
-	if use ppc-macos; then
-		append-flags -DUSE_GETCWD -DUSLEEP
-	else
-		append-flags -DUSE_GETCWD -DLINUX -DUSLEEP
-	fi
+	append-flags -DUSE_GETCWD -DLINUX -DUSLEEP
 
 	einfo "Enabling Optional Features..."
 	if use jpeg; then

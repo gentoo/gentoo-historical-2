@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/modlogan/modlogan-0.8.13.ebuild,v 1.12 2005/09/03 19:51:07 blubb Exp $
-
-inherit multilib
+# $Header: /var/cvsroot/gentoo-x86/app-admin/modlogan/modlogan-0.8.13.ebuild,v 1.1 2004/10/17 17:14:12 liquidx Exp $
 
 MY_FILESDIR="${FILESDIR}/${PV}"
 THEMES_VERSION="0.0.7"
@@ -14,8 +12,8 @@ SRC_URI="http://jan.kneschke.de/projects/modlogan/download/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
-IUSE="X mysql nls"
+KEYWORDS="~x86 ~ia64 ~amd64 ~ppc ~sparc ~alpha ~hppa"
+IUSE="nls mysql"
 
 RDEPEND="dev-libs/libxml
 	dev-libs/libxml2
@@ -41,21 +39,21 @@ src_compile() {
 		|| myconf="--without-mysql"
 
 	use nls || myconf="${myconf} --disable-nls"
-
+	
 	econf \
 		--enable-plugins \
 		--sysconfdir=/etc \
-		--libdir=/usr/$(get_libdir)/modlogan \
+		--libdir=/usr/lib/modlogan \
 		--disable-check-dynamic \
 		${myconf} || die
-
+	
 	emake || die
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
-#		sysconfdir=${D}/etc \
-#		libdir=${D}/usr/lib/modlogan || die
+	einstall \
+		sysconfdir=${D}/etc \
+		libdir=${D}/usr/lib/modlogan || die
 
 	insinto /etc/modlogan
 

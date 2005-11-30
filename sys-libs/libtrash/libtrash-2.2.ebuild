@@ -1,33 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libtrash/libtrash-2.2.ebuild,v 1.7 2005/05/16 16:21:18 matsuu Exp $
-
-inherit eutils toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libtrash/libtrash-2.2.ebuild,v 1.1 2004/03/27 00:27:27 matsuu Exp $
 
 DESCRIPTION="provides a trash can by intercepting certain calls to glibc"
 HOMEPAGE="http://www.m-arriaga.net/software/libtrash/"
 SRC_URI="http://www.m-arriaga.net/software/libtrash/${P}.tgz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ppc"
+KEYWORDS="~x86 ~amd64"
+LICENSE="GPL-2"
 IUSE=""
 
-DEPEND=">=virtual/libc-2.3.2
+DEPEND=">=virtual/glibc-2.3.2
 	dev-lang/perl"
 
 src_unpack() {
 	unpack ${A}
+
 	epatch ${FILESDIR}/${P}-gentoo.patch
-	sed -i -e "/^INSTLIBDIR/s/lib/$(get_libdir)/" ${S}/src/Makefile || die
 }
 
 src_compile() {
-	make CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die
+	make CC="${CC}" CFLAGS="${CFLAGS}" || die
 }
 
 src_install() {
-	dodir /etc /usr/$(get_libdir)
+	dodir /etc /usr/lib
 	make DESTDIR=${D} install || die
 
 	dosbin cleanTrash/ct2.pl
@@ -45,7 +43,7 @@ pkg_postinst() {
 	einfo "To use this you have to put the trash library as one"
 	einfo "of the variables in LD_PRELOAD."
 	einfo "Example in bash:"
-	einfo "export LD_PRELOAD=/usr/$(get_libdir)/libtrash.so"
+	einfo "export LD_PRELOAD=/usr/lib/libtrash.so"
 	einfo
 	einfo "Also, see /etc/cron.daily/cleanTrash.cron if you'd like to turn on"
 	einfo "daily trash cleanup."

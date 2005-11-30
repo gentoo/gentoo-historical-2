@@ -1,46 +1,8 @@
 # ChangeLog for app-misc/splitvt
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/splitvt/ChangeLog,v 1.15 2005/05/17 11:27:51 ka0ttic Exp $
-
-  17 May 2005; Aaron Walker <ka0ttic@gentoo.org>
-  +files/splitvt-1.6.5-gcc4.diff, splitvt-1.6.5-r1.ebuild:
-  Added patch so splitvt will build with gcc-4.
-
-  26 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> splitvt-1.6.5-r1.ebuild:
-  Stable on ppc.
-
-  28 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> splitvt-1.6.5-r1.ebuild:
-  Stable on sparc
-
-  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> splitvt-1.6.5-r1.ebuild:
-  Marked stable on x86.
-
-*splitvt-1.6.5-r1 (29 Jan 2005)
-
-  29 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +splitvt-1.6.5-r1.ebuild:
-  Revision bump; apply debian patch to fix many critters - bug 79372.
-
-  29 Jan 2005; Tom Martin <slarti@gentoo.org> metadata.xml,
-  splitvt-1.6.5.ebuild:
-  Removing amd64 keyword -- will not run on amd64. Removing myself as maintainer.
-
-  13 Oct 2004; Tom Martin <slarti@gentoo.org> metadata.xml:
-  Taking over as maintainer, previously unmaintained. Added shell-tools as herd.
-
-  23 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> splitvt-1.6.5.ebuild:
-  Unmask on amd64.
-
-  17 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> splitvt-1.6.5.ebuild:
-  Adding amd64 keyword. Closing #44305.
-
-  14 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> splitvt-1.6.5.ebuild:
-  Don't assign default to S; header fix
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-misc/splitvt/ChangeLog,v 1.1 2002/02/01 21:53:08 gbevin Exp $
 
 *splitvt-1.6.5 (1 Feb 2002)
-  
-  07 Aug 2002; Calum Selkirk <cselkirk@gentoo.org> splitvt-1.6.5.ebuild :
-
-  Added ppc to KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

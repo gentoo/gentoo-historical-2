@@ -1,8 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/apollo/apollo-1.4.1.ebuild,v 1.9 2005/07/28 20:56:30 caleb Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-sound/apollo/apollo-1.4.1.ebuild,v 1.1 2002/10/04 20:25:59 hannes Exp $
 
-IUSE="kde qt"
+#inherit kde-base
+#use kde && inherit kde-base
+#need-kde 3
 
 S=${WORKDIR}/${P}-1
 DESCRIPTION="A Qt-based front-end to mpg123"
@@ -13,11 +15,11 @@ SLOT="2"
 LICENSE="GPL-2"
 KEYWORDS="x86"
 
-DEPEND="virtual/mpg123
+DEPEND="media-sound/mpg123
 	media-libs/id3lib
-	media-sound/madplay
-	qt?	( =x11-libs/qt-3* )
-	kde?	( =kde-base/kdelibs-3* )"
+	media-sound/mad
+	qt?		( x11-libs/qt )
+	kde?	( kde-base/kdelibs )"
 #	dev-libs/STLport
 
 src_unpack() {
@@ -32,13 +34,11 @@ src_unpack() {
 
 src_compile() {
 	local myconf
-	myconf="--without-kde --without-stl"
+	myconf="--without-kde"
 #	use kde && kdeconf="--with-kde=$KDEDIR" || kdeconf="--without-kde"
-#kde support currently does not work
-#	myconf="$myconf $kdeconf"
+	myconf="$myconf $kdeconf"
 	use qt && myconf="$myconf --with-qt-dir=$QTDIR --with-qmake" || myconf="$myconf --with-tmake"
 #	use stl && myconf="$myconf --with-stl" || myconf="$myconf --without-stl"
-#stl support is broken
 #	use buffer && myconf="$myconf --enable-buffer" || myconf="$myconf --disable-buffer"
 #	use mad && myconf="$myconf --with-mad=/usr/lib"
 	myconf="$myconf --with-mad=/usr/lib"

@@ -1,38 +1,41 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/procman/procman-1.0.ebuild,v 1.24 2005/05/11 03:47:03 halcy0n Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Mikael Hallendal <hallski@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/app-admin/procman/procman-1.0.ebuild,v 1.1 2002/02/17 01:41:28 azarah Exp $
 
-inherit flag-o-matic eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Process viewer for GNOME"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/stable/sources/procman/${P}.tar.gz"
 HOMEPAGE="http://www.personal.psu.edu/kfv101/procman"
-SRC_URI="mirror://gnome/sources/procman/${PV}/${P}.tar.gz"
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="ppc sparc x86"
-IUSE="nls"
-
-DEPEND="<gnome-extra/gal-1.99
-	=gnome-base/libgtop-1.0*"
-RDEPEND="nls? ( sys-devel/gettext )"
-
-src_unpack() {
-	unpack ${A}
-
-	epatch ${FILESDIR}/${P}-gcc34.patch
-}
+DEPEND="nls? ( sys-devel/gettext )
+        >=gnome-extra/gal-0.13-r1
+	>=gnome-base/libgtop-1.0.12-r1"
 
 src_compile() {
-	append-flags $(gdk-pixbuf-config --cflags)
-	econf \
-		--disable-more-warnings \
-		$(use_enable nls) \
-		|| die "econf failed"
+	local myconf
+
+	if [ -z "`use nls`" ] ; then
+		myconf="--disable-nls"
+	fi
+
+	CFLAGS="$CFLAGS `gdk-pixbuf-config --cflags`"
+
+	./configure --host=${CHOST} 					\
+		    --prefix=/usr					\
+		    --sysconfdir=/etc					\
+		    --localstatedir=/var/lib				\
+		    --disable-more-warnings				\
+		    $myconf || die
+
 	emake || die
 }
 
-src_install() {
-	make install DESTDIR="${D}" || die
-	dodoc AUTHORS ChangeLog README NEWS TODO
+src_install () {
+	make prefix=${D}/usr						\
+	     sysconfdir=${D}/etc					\
+	     localstatedir=${D}/var/lib					\
+	     install || die
+
+	dodoc AUTHORS COPYING ChangeLog README NEWS TODO
 }

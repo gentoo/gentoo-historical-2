@@ -1,34 +1,8 @@
 # ChangeLog for media-plugins/xmms-libvisual
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-libvisual/ChangeLog,v 1.6 2005/03/02 16:42:22 greg_g Exp $
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-libvisual/ChangeLog,v 1.1 2004/10/02 17:57:13 eradicator Exp $
 
-*xmms-libvisual-0.2.0 (02 Mar 2005)
-
-  02 Mar 2005; Gregorio Guidi <greg_g@gentoo.org>
-  +xmms-libvisual-0.2.0.ebuild:
-  New version (#81432).
-
-  09 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  xmms-libvisual-0.1.7.ebuild:
-  Removing xmms-plugin eclass.
-
-*xmms-libvisual-0.1.7 (20 Oct 2004)
-
-  20 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  +xmms-libvisual-0.1.7.ebuild:
-  Version bump. xmms-plugin.eclass support.  Added bmp plugin to package.
-
-  18 Oct 2004; David Holm <dholm@gentoo.org> xmms-libvisual-0.1.6.ebuild:
-  Added to ~ppc.
-
-  02 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  xmms-libvisual-0.1.6.ebuild:
-  get_libdir fixin.
-
-*xmms-libvisual-0.1.6 (02 Oct 2004)
-
-  02 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  +xmms-libvisual-0.1.6.ebuild:
+  02 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org> :
   Initial ebuild provided by Gustavo Sverzut Barbieri
   <gsbarbieri@yahoo.com.br> in bug #52476.
 

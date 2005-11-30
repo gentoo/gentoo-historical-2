@@ -1,11 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r6.ebuild,v 1.6 2005/03/23 01:09:02 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r6.ebuild,v 1.1 2003/09/24 17:16:28 mholzer Exp $
 
 IUSE="ldap"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
 SRC_URI="mirror://kernel/linux/daemons/${PN}/${P}.tar.bz2"
@@ -14,7 +13,7 @@ DEPEND="ldap? ( >=net-nds/openldap-1.2 )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~alpha ~ppc ~sparc"
 
 src_unpack() {
 	unpack ${A}

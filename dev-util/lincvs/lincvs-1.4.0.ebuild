@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/lincvs/lincvs-1.4.0.ebuild,v 1.4 2005/07/01 15:00:23 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/lincvs/lincvs-1.4.0.ebuild,v 1.1 2005/03/01 15:04:59 carlo Exp $
 
 inherit kde-functions
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.lincvs.com/download/${MY_P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~sparc ppc ~amd64"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 IUSE="kde"
 
 DEPEND="kde? ( >=kde-base/kdelibs-3 )"
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 need-qt 3
 
 src_compile() {
-	${QTDIR}/bin/qmake -o Makefile lincvs.pro
+	qmake -o Makefile lincvs.pro
 	sed -i -e "s/^\tstrip/#\tstrip/" \
 		-e "s/CFLAGS   = -pipe -Wall -W -O2/CFLAGS   = ${CFLAGS} -Wall -W/" \
 		-e "s/CXXFLAGS = -pipe -Wall -W -O2/CXXFLAGS = ${CXXFLAGS} -Wall -W/" Makefile \

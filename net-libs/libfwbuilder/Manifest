@@ -1,23 +1,12 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 f3ec80a11a8b755aa603285aaf303172 libfwbuilder-2.0.8.ebuild 804
-MD5 4968e44d4179ddba6e7ad31bb6fb2215 libfwbuilder-2.0.7.ebuild 804
-MD5 7b940aa96bd322bd7f08ec693cb72b1b libfwbuilder-2.0.9.ebuild 811
-MD5 79f3fbdc4294417deabd422ed8ec6a4f libfwbuilder-1.0.2-r2.ebuild 958
-MD5 6002f9ad27ae1f1bedf7e3283ccb9d3e ChangeLog 7927
-MD5 37236013e0d26d43c6bff35a8a48e8ec metadata.xml 220
-MD5 990394895c89adcecd264ca76a39f1bd libfwbuilder-2.0.6.ebuild 799
-MD5 18d017187b228dd614d7ae00283f788a files/digest-libfwbuilder-1.0.2-r2 72
-MD5 bd7f345d52b044e87b5cea9d1017f4bf files/libfwbuilder-1.0.2-libxml2.patch 2166
-MD5 318eed1dc99e8153d2dfdfd9cca6923e files/digest-libfwbuilder-2.0.6 70
-MD5 5814377092615185560afd95d6514ffe files/digest-libfwbuilder-2.0.7 70
-MD5 d41e02a2b604af59172850a3c1a4d60f files/digest-libfwbuilder-2.0.8 70
-MD5 385e4e0f1c7c8636e0f9b213785ff7c4 files/digest-libfwbuilder-2.0.9 70
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDRZSmViELBEf1JB0RAs7gAJ9IQ76VWSfz2lDS0g6h0xBP/J21mQCfbWTc
-nEoA6vvaPO8IoW5OpgzvjB8=
-=eFjs
------END PGP SIGNATURE-----
+MD5 918f5d58cb6c7fa65880e379095e5c40 ChangeLog 2581
+MD5 fa455bf9cf875a603c20e7fd70f77d83 libfwbuilder-0.10.10.ebuild 1025
+MD5 8f4bf513691818ff7d7f33f61a321ebe libfwbuilder-0.10.11.ebuild 1025
+MD5 212073f2b48c7b3525365882c9df2895 libfwbuilder-0.10.12.ebuild 1018
+MD5 212073f2b48c7b3525365882c9df2895 libfwbuilder-0.10.13.ebuild 1018
+MD5 212073f2b48c7b3525365882c9df2895 libfwbuilder-1.0.0.ebuild 1018
+MD5 5daac120d2120d841c2fae98f236e6a1 files/FWReference.cc-gcc3-gentoo.patch 240
+MD5 608e23e9cf5c678692e850954088ab06 files/digest-libfwbuilder-0.10.10 72
+MD5 c0dd1aa7a50e79514abd40c73fe8c85c files/digest-libfwbuilder-0.10.11 72
+MD5 cbd2384867d6471fe70ad380109763df files/digest-libfwbuilder-0.10.12 72
+MD5 b577ad51988393a1bd1907e923dd1ca7 files/digest-libfwbuilder-1.0.0 70
+MD5 0707dda492023be2d94d15b9879af77c files/digest-libfwbuilder-0.10.13 72

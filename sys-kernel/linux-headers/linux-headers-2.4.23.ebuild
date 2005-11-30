@@ -1,10 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.4.23.ebuild,v 1.22 2005/07/21 17:14:04 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.4.23.ebuild,v 1.1 2003/11/29 04:45:52 kumba Exp $
 
 ETYPE="headers"
-inherit eutils kernel
-IUSE=""
+inherit kernel
+
 OKV="${PV/_/-}"
 KV="${OKV}"
 S=${WORKDIR}/linux-${OKV}
@@ -14,35 +14,32 @@ EXTRAVERSION=""
 
 # INCLUDED:
 # 1) linux sources from kernel.org
+# 2) patch for big-endian machines to fix header issue (currently sparc only)
 
 DESCRIPTION="Linux ${OKV} headers from kernel.org"
 SRC_URI="mirror://kernel/linux/kernel/v2.4/linux-${OKV}.tar.bz2"
 HOMEPAGE="http://www.kernel.org/ http://www.gentoo.org/"
 LICENSE="GPL-2"
 SLOT="0"
-PROVIDE="virtual/os-headers"
-KEYWORDS="-* ia64 alpha sparc"
-
-DEPEND="!virtual/os-headers
-	sparc? ( gcc64? ( sys-devel/gcc-sparc64 ) )"
-
-pkg_setup() {
-	# Figure out what architecture we are, and set ARCH appropriately
-	ARCH="$(uname -m)"
-	ARCH="$(echo ${ARCH} | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ -e s/arm.*/arm/ -e s/sa110/arm/)"
-	[ "$ARCH" == "sparc" -a "$PROFILE_ARCH" == "sparc64" ] && ARCH=sparc64
+PROVIDE="virtual/kernel virtual/os-headers"
+KEYWORDS="-*"
 
 
-	# Archs which have their own separate header packages, add a check here
-	# and redirect the user to them
-	case "${ARCH}" in
-		mips|mips64|hppa)
-			eerror "These headers are not appropriate for your architecture."
-			eerror "Please use sys-kernel/${ARCH/64/}-headers instead."
-			die
-		;;
-	esac
-}
+# Figure out what architecture we are, and set ARCH appropriately
+ARCH="$(uname -m)"
+ARCH=`echo $ARCH | sed -e s/[i].86/i386/ -e s/x86/i386/ -e s/sun4u/sparc64/ -e s/arm.*/arm/ -e s/sa110/arm/ -e s/amd64/x86_64/`
+[ "$ARCH" == "sparc" -a "$PROFILE_ARCH" == "sparc64" ] && ARCH=sparc64
+
+
+# Archs which have their own separate header packages, add a check here
+# and redirect the user to them
+if [ "${ARCH}" = "mips" ] || [ "${ARCH}" = "mips64" ]; then
+	eerror "These headers are not appropriate for your architecture."
+	eerror "Please use sys-kernel/${ARCH/64/}-headers instead."
+	die
+fi
+
+
 
 src_unpack() {
 	unpack ${A}
@@ -51,7 +48,7 @@ src_unpack() {
 	# This patch fixes an issue involving the use of gcc's -ansi flag and the __u64 datatype.
 	# It only patches asm-i386, so we only apply it if x86.  Unknown if this is needed for other archs.
 	# Closes Bug #32246
-	if use x86; then
+	if [ -n "`use x86`" ]; then
 		epatch ${FILESDIR}/${PN}-strict-ansi-fix.patch
 	fi
 
@@ -66,8 +63,8 @@ src_compile() {
 	kernel_src_compile
 
 	# If this is sparc, then generate asm_offsets.h
-	if use sparc; then
-		make ARCH=${ARCH} dep || die "Failed to run 'make dep'"
+	if [ -n "`use sparc`" ]; then
+		make dep ARCH=${ARCH} || die "Failed to run 'make dep'"
 	fi
 }
 
@@ -77,7 +74,7 @@ src_install() {
 	kernel_src_install
 
 	# If this is sparc, then we need to place asm_offsets.h in the proper location(s)
-	if [ "${PROFILE_ARCH}" = "sparc64" ]; then
+	if [ -n "`use sparc`" ]; then
 
 		# We don't need /usr/include/asm, generate-asm-sparc will take care of this
 		rm -Rf ${D}/usr/include/asm
@@ -85,25 +82,26 @@ src_install() {
 		# We do need empty directories, though...
 		dodir /usr/include/asm
 		dodir /usr/include/asm-sparc
-		dodir /usr/include/asm-sparc64
 
-		# Copy asm-sparc and asm-sparc64
+		# Copy asm-sparc
 		cp -ax ${S}/include/asm-sparc/* ${D}/usr/include/asm-sparc
-		cp -ax ${S}/include/asm-sparc64/* ${D}/usr/include/asm-sparc64
+
+		# If this is sparc64, then we need asm-sparc64 stuff too
+		if [ "${PROFILE_ARCH}" = "sparc64" ]; then
+			dodir /usr/include/asm-sparc64
+			cp -ax ${S}/include/asm-sparc64/* ${D}/usr/include/asm-sparc64
+		fi
 
 		# Check if generate-asm-sparc exists
 		if [ -a "${FILESDIR}/generate-asm-sparc" ]; then
 
-			# Copy generate-asm-sparc into the sandox
-			cp ${FILESDIR}/generate-asm-sparc ${WORKDIR}/generate-asm-sparc
-
-			# Just in case generate-asm-sparc isn't executable, make it so
-			if [ ! -x "${WORKDIR}/generate-asm-sparc" ]; then
-				chmod +x ${WORKDIR}/generate-asm-sparc
+			# Just incase generate-asm-sparc isn't executable, make it so
+			if [ ! -x "${FILESDIR}/generate-asm-sparc" ]; then
+				chmod +x ${FILESDIR}/generate-asm-sparc
 			fi
 
 			# Generate /usr/include/asm for sparc systems
-			${WORKDIR}/generate-asm-sparc ${D}/usr/include
+			${FILESDIR}/generate-asm-sparc ${D}/usr/include
 		else
 			eerror "${FILESDIR}/generate-asm-sparc doesn't exist!"
 			die

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/mldonkey-2.6.4-r1.ebuild,v 1.4 2005/10/02 14:29:02 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/mldonkey-2.6.4-r1.ebuild,v 1.1 2005/09/14 21:22:31 mkay Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ SRC_URI="http://savannah.nongnu.org/download/mldonkey/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~alpha ~ia64 ~amd64"
+KEYWORDS="~x86 ~ppc ~alpha ~ia64 ~amd64"
 
 RDEPEND="dev-lang/perl
 	gtk? ( gtk2? ( >=gnome-base/librsvg-2.4.0
@@ -52,12 +52,6 @@ pkg_setup() {
 	if use gtk && use gtk2 && !(built_with_use dev-ml/lablgtk svg); then
 		eerror "dev-ml/lablgtk must be built with the 'svg' USE flag to use the gtk2 gui"
 		die "Recompile dev-ml/lablgtk with enabled svg USE flag"
-	fi
-
-	if use gd && !(built_with_use media-libs/gd truetype); then
-		eerror "media-libs/gd must be built with the 'truetype' to compile"
-		eerror "mldonkey with gd support"
-		die "Recompile media-libs/gd with enabled truetype USE flag"
 	fi
 }
 
@@ -176,9 +170,8 @@ pkg_postinst() {
 	if use mozilla; then
 		echo
 		einfo "xpi handler was placed in /usr/share/${PN} directory."
-		einfo "Open it in your favorite web browser (mozilla / firefox)"
-		einfo "to install extension"
-		echo
+		einfo "Run it as root user and you can use ed2k links in your"
+		einfo "favorite web browser (mozilla / firefox)."
 	fi;
 }
 

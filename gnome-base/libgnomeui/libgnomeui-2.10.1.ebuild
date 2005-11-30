@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnomeui/libgnomeui-2.10.1.ebuild,v 1.13 2005/10/10 06:47:51 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-base/libgnomeui/libgnomeui-2.10.1.ebuild,v 1.1 2005/07/19 11:26:11 leonardop Exp $
 
 inherit eutils gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc jpeg static"
 
 RDEPEND=">=x11-libs/gtk+-2.4.1
@@ -43,16 +43,14 @@ src_unpack() {
 	# cleanliness is ... (#68698)
 	epatch ${FILESDIR}/${PN}-2.8.0-ditch_ancient_pics.patch
 
-	# Remove unnecessary esound/audofile checks and implement the
+	# Remove unnecessary esaund/audofile checks and implement the
 	# --without-jpeg switch
 	epatch ${FILESDIR}/${P}-gentoo.patch
 
-	export WANT_AUTOMAKE=1.7
-	cp aclocal.m4 old_macros.m4
 	einfo "Running aclocal"
-	aclocal -I . || die "Aclocal failed"
+	aclocal || die "Aclocal failed"
 	einfo "Running autoconf"
 	autoconf || die "Autoconf failed"
 	einfo "Running automake"
-	automake || die "Automake failed"
+	WANT_AUTOMAKE=1.7 automake || die "Automake failed"
 }

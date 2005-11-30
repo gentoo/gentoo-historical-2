@@ -1,18 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-freedb/ruby-freedb-0.5.ebuild,v 1.8 2005/10/03 13:09:25 agriffis Exp $
-
-inherit ruby
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-freedb/ruby-freedb-0.5.ebuild,v 1.1 2003/07/31 14:02:21 twp Exp $
 
 DESCRIPTION="A Ruby library to access cddb/freedb servers"
-HOMEPAGE="http://ruby-freedb.rubyforge.org/"
-SRC_URI="http://rubyforge.org/download.php/69/${P}.tar.gz"
+HOMEPAGE="http://davedd.free.fr/ruby-freedb/"
+SRC_URI="http://davedd.free.fr/ruby-freedb/download/${P}.tar.gz"
 LICENSE="GPL-2 Artistic"
 SLOT="0"
-KEYWORDS="alpha ~hppa ~ia64 ~mips ppc ~sparc x86"
-USE_RUBY="ruby16 ruby18 ruby19"
+KEYWORDS="~alpha ~arm ~hppa ~mips ~sparc ~x86"
 IUSE=""
-DEPEND="virtual/ruby"
+DEPEND=">=dev-lang/ruby-1.6.8"
 
 src_compile() {
 	ruby extconf.rb || die

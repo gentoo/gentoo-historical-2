@@ -1,15 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/ksymoops/ksymoops-2.4.9.ebuild,v 1.12 2005/03/17 00:59:38 r3pek Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/ksymoops/ksymoops-2.4.9.ebuild,v 1.1 2003/06/01 07:50:31 kumba Exp $
 
 DESCRIPTION="Utility to decode a kernel oops, or other kernel call traces."
 SRC_URI="ftp://ftp.kernel.org/pub/linux/utils/kernel/ksymoops/v2.4/${P}.tar.gz"
 HOMEPAGE="http://www.kernel.org/pub/linux/utils/kernel/ksymoops/"
-DEPEND="virtual/libc >=sys-devel/binutils-2.9.1.0.25"
+DEPEND="virtual/glibc >=sys-devel/binutils-2.9.1.0.25"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc alpha mips sparc amd64 ia64 s390"
-IUSE=""
+KEYWORDS="x86 ppc alpha ~mips"
 
 src_unpack() {
 	unpack ${A}
@@ -31,8 +30,8 @@ src_compile() {
 }
 
 src_install() {
-	exeinto /usr/bin
-	doexe ksymoops
+	into /
+	dosbin ksymoops
 	doman ksymoops.8
 	dodoc Changelog README README.XFree86
 }

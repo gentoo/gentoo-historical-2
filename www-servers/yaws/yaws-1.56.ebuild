@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/yaws/yaws-1.56.ebuild,v 1.3 2005/08/07 12:09:07 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/yaws/yaws-1.56.ebuild,v 1.1 2005/08/06 23:45:35 mkennedy Exp $
 
 inherit eutils
 
@@ -9,16 +9,23 @@ HOMEPAGE="http://yaws.hyber.org/"
 SRC_URI="http://yaws.hyber.org/download/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="dev-lang/erlang"
+
+S=${WORKDIR}/${P}
 
 # see http://bugs.gentoo.org/show_bug.cgi?id=97707
 
 src_unpack() {
 	unpack ${A}
 	find ${S} -depth -type d -name .xvpics -exec rm -rf '{}' \;
+}
+
+src_compile() {
+	econf || die
+	emake || die
 }
 
 src_install() {

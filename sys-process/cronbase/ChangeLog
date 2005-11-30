@@ -1,52 +1,6 @@
 # ChangeLog for sys-process/cronbase
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/ChangeLog,v 1.16 2005/08/24 18:15:26 flameeyes Exp $
-
-  24 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> cronbase-0.3.2.ebuild:
-  Create cron user with cron group, without hardcoding the gid to work when
-  cron group exists already with a different gid.
-
-  29 Jun 2005; Joshua Kinard <kumba@gentoo.org> cronbase-0.3.2.ebuild:
-  Marked stable on mips.
-
-  22 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> cronbase-0.3.2.ebuild:
-  Don't use /bin/false.
-
-  20 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> cronbase-0.3.2.ebuild:
-  Ensure that cron group exists, bug 96557.
-
-  18 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> Manifest:
-  Fix Manifest.
-
-  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> cronbase-0.3.2.ebuild:
-  Stable on ppc.
-
-  12 Jun 2005; Bryan Østergaard <kloeri@gentoo.org> cronbase-0.3.2.ebuild:
-  Stable on alpha.
-
-  06 Jun 2005; Markus Rothe <corsair@gentoo.org> cronbase-0.3.2.ebuild:
-  Stable on ppc64
-
-  14 May 2005; Guy Martin <gmsoft@gentoo.org> cronbase-0.3.2.ebuild:
-  Stable on hppa.
-
-  11 May 2005; Marcus D. Hanwell <cryos@gentoo.org> cronbase-0.3.2.ebuild:
-  Stable on amd64.
-
-  09 May 2005; Aron Griffis <agriffis@gentoo.org> cronbase-0.3.2.ebuild:
-  stable on ia64
-
-  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> cronbase-0.3.2.ebuild:
-  Stable on sparc
-
-  06 May 2005; Aaron Walker <ka0ttic@gentoo.org> cronbase-0.3.2.ebuild:
-  Stable on x86.
-
-*cronbase-0.3.2 (09 Mar 2005)
-
-  09 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> +files/run-crons-0.3.2,
-  +cronbase-0.3.2.ebuild:
-  Version bump; hopefully fixes bug 8506 (again).
+# $Header: /var/cvsroot/gentoo-x86/sys-process/cronbase/ChangeLog,v 1.1 2005/03/04 23:24:54 ciaranm Exp $
 
 *cronbase-0.2.1-r3 (04 Mar 2005)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/gcube/gcube-0.3.ebuild,v 1.2 2005/05/03 10:10:08 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/gcube/gcube-0.3.ebuild,v 1.1 2004/12/26 22:37:27 vapier Exp $
 
 inherit games
 
@@ -10,7 +10,7 @@ SRC_URI="http://gcube.exemu.net/downloads/${P}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="x86"
 IUSE=""
 
 DEPEND="virtual/opengl

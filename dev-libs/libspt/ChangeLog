@@ -1,12 +1,6 @@
 # ChangeLog for dev-libs/libspt
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libspt/ChangeLog,v 1.4 2004/08/14 15:27:07 usata Exp $
-
-  15 Aug 2004; Mamoru KOMACHI <usata@gentoo.org> libspt-1.1.ebuild:
-  Stable on x86. Added to alpha and ppc.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> libspt-1.1.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libspt/ChangeLog,v 1.1 2004/05/18 22:39:09 usata Exp $
 
 *libspt-1.1 (19 May 2004)
 

@@ -1,14 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/emacspeak-18.ebuild,v 1.7 2005/01/01 10:46:46 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/emacspeak/emacspeak-18.ebuild,v 1.1 2004/04/21 22:12:01 squinky86 Exp $
 
 DESCRIPTION="the emacspeak audio desktop"
 HOMEPAGE="http://emacspeak.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 RESTRICT="nomirror"
-LICENSE="BSD GPL-2"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="virtual/emacs
@@ -27,9 +27,7 @@ src_install() {
 	make \
 		prefix=${D}/usr \
 		install || die
-
-	sed -i -e "s@/.*image/@@" ${D}/usr/bin/emacspeak
-
-	dodoc README etc/NEWS* etc/FAQ etc/COPYRIGHT
-	dohtml -r install-guide user-guide
+		sed -i -e "s@/.*image/@@" ${D}/usr/bin/emacspeak
+		dodoc README etc/NEWS* etc/FAQ etc/COPYRIGHT
+		dohtml -r install-guide user-guide
 }

@@ -1,34 +1,6 @@
-# ChangeLog for sci-astronomy/xephem
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/xephem/ChangeLog,v 1.9 2005/08/13 23:33:08 hansmi Exp $
-
-  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> xephem-3.6.4.ebuild:
-  Stable on ppc.
-
-  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> xephem-3.6.4.ebuild:
-  Marked Stable on AMD64.
-
-*xephem-3.7 (09 Aug 2005)
-
-  09 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> xephem-3.6.4.ebuild,
-  +xephem-3.7.ebuild:
-  Version bump, 3.6.4 stable for x86
-
-  20 Jul 2005; Herbie Hopkins <herbs@gentoo.org> xephem-3.6.2-r1.ebuild:
-  Stable on amd64.
-
-  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xephem-3.6.2-r1.ebuild:
-  Stable on ppc.
-
-  02 Jun 2005; Olivier Fisette <ribosome@gentoo.org> xephem-3.6.2.ebuild,
-  xephem-3.6.2-r1.ebuild, xephem-3.6.4.ebuild:
-  Use "virtual/motif" instead of "x11-libs/openmotif".
-
-*xephem-3.6.4 (21 Apr 2005)
-
-  21 Apr 2005; Patrick Kursawe <phosphan@gentoo.org> +xephem-3.6.4.ebuild:
-  Version bump (bug #86762) - only little changes (a Makefile was renamed).
+# ChangeLog for app-sci/xephem
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-astronomy/xephem/ChangeLog,v 1.1 2004/12/24 04:27:39 ribosome Exp $
 
 *xephem-3.6.2 (23 Dec 2004)
 

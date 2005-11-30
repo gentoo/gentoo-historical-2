@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/xalan-c-1.8.0.ebuild,v 1.4 2005/09/22 03:01:56 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xalan-c/xalan-c-1.8.0.ebuild,v 1.1 2004/11/11 01:17:27 vapier Exp $
 
 inherit toolchain-funcs eutils flag-o-matic
 
@@ -13,7 +13,7 @@ SRC_URI="ftp://apache.mirrors.pair.com/xml/xalan-c/Xalan-C_${MY_PV}-src.tar.gz
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86"
 IUSE="doc"
 
 DEPEND=">=dev-libs/xerces-c-2.4.0"
@@ -22,10 +22,8 @@ S=${WORKDIR}/xml-xalan/c
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PV}-gcc34.patch
-	chmod a+r $(find . -type f)
-	chmod a+rx $(find . -type d)
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-gcc34.patch
 }
 
 src_compile() {
@@ -38,7 +36,7 @@ src_compile() {
 
 src_install() {
 	export XALANCROOT=${S}
-	make DESTDIR="${D}" install || die
+	make DESTDIR=${D} install || die
 
 	dodoc README version.incl
 	dohtml readme.html

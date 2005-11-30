@@ -1,14 +1,2 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 64b96a2c4aebefeb0e5035ecd75fe0a4 ChangeLog 3823
-MD5 e92a48548554c80cf90e18df17ff6a82 metadata.xml 156
-MD5 6bbcb225949f560f4076557bde6a37f3 scim-chinese-0.4.2.ebuild 659
-MD5 39d6e4d5b7c41ccc15c51caa55a36e55 files/digest-scim-chinese-0.4.2 71
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQFCDFilVWNWqTUmv+0RAkdVAKCU2S5jlxnggWfzHPeDS6KpReuUnACfZg39
-4a+EXZ6xYdsba91MnsJ9uCU=
-=iI3c
------END PGP SIGNATURE-----
+MD5 ec89113f717253683f6b15185c8df93d scim-chinese-0.2.1.ebuild 625
+MD5 711ddeffc04e00fc58aae25eb1f6e5d5 files/digest-scim-chinese-0.2.1 75

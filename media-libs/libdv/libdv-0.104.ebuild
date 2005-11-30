@@ -1,46 +1,44 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdv/libdv-0.104.ebuild,v 1.6 2005/10/05 01:15:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdv/libdv-0.104.ebuild,v 1.1 2005/01/11 02:44:46 malc Exp $
 
 inherit eutils flag-o-matic
 
-DESCRIPTION="Software codec for dv-format video (camcorders etc)"
-HOMEPAGE="http://libdv.sourceforge.net/"
+DESCRIPTION="Software codec for dv-format video (camcorders etc)."
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+RESTRICT="nomirror"
+HOMEPAGE="http://libdv.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug gtk sdl xv"
 
 RDEPEND="dev-libs/popt
 	gtk? ( =x11-libs/gtk+-1.2* )
-	sdl? ( >=media-libs/libsdl-1.2.5 )
+	sdl? ( >=media-libs/libsdl-1.2.4.20020601 )
 	xv? ( virtual/x11 )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PN}-0.99-2.6.patch
-	epatch "${FILESDIR}"/${PN}-0.104-amd64reloc.patch
-	epatch "${FILESDIR}"/${PN}-0.104-no-exec-stack.patch
-	epunt_cxx #74497
+	unpack ${A} && cd "${S}"
+	epatch "${FILESDIR}/${PN}-0.99-2.6.patch"
+	epatch "${FILESDIR}/${PN}-0.104-amd64reloc.patch"
 }
 
 src_compile() {
-	econf \
-		$((use x86 && has_pic) && echo --disable-asm) \
-		$(use_with debug) \
-		$(use_enable gtk) $(use_enable gtk gtktest) \
-		$(use_enable sdl) \
-		$(use_enable xv) \
-		|| die "econf failed"
+	local myconf
+	myconf="${myconf} `use_with debug`"
+	myconf="${myconf} `use_enable gtk` `use_enable gtk gtktest`"
+	myconf="${myconf} `use_enable sdl`"
+	myconf="${myconf} `use_enable xv`"
+
+	econf ${myconf} || die "econf failed"
 	make || die "compile problem"
 }
 
-src_install() {
-	make install DESTDIR="${D}" || die
-	dodoc AUTHORS ChangeLog INSTALL NEWS README* TODO
+src_install () {
+	einstall
+	dodoc AUTHORS COPYING COPYRIGHT ChangeLog INSTALL NEWS README* TODO
 }

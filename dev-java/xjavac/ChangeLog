@@ -1,32 +1,6 @@
 # ChangeLog for dev-java/xjavac
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xjavac/ChangeLog,v 1.8 2005/11/13 21:00:22 hansmi Exp $
-
-  13 Nov 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xjavac-20041208-r1.ebuild:
-  Stable on ppc.
-
-*xjavac-20041208-r1 (09 Jul 2005)
-
-  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org> -xjavac-20041208.ebuild,
-  +xjavac-20041208-r1.ebuild:
-  add ant symlink
-
-  18 May 2005; Markus Rothe <corsair@gentoo.org> xjavac-20041208.ebuild:
-  Stable on ppc64
-
-  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  xjavac-20041208.ebuild:
-  Stable on sparc
-
-  01 May 2005; Jan Brinkmann <luckyduck@gentoo.org> xjavac-20041208.ebuild:
-  added ~ppc to KEYWORDS, marked stable on amd64 and x86
-
-  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> xjavac-20041208.ebuild:
-  Keyworded ~sparc wrt #84992
-
-  13 Mar 2005; Markus Rothe <corsair@gentoo.org> xjavac-20041208.ebuild:
-  Added ~ppc64 to KEYWORDS
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xjavac/ChangeLog,v 1.1 2005/01/08 21:11:01 luckyduck Exp $
 
 *xjavac-20041208 (08 Jan 2005)
 

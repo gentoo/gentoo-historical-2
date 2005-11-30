@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.4.6.ebuild,v 1.14 2005/03/19 05:53:01 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.4.6.ebuild,v 1.1 2004/03/04 19:21:26 mholzer Exp $
 
 inherit eutils
 
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/tcl/${PN}${PV}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc sparc mips alpha arm ~hppa amd64 ia64"
-IUSE="threads"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa ~amd64 ~ppc64 ~ia64"
+RESTRICT="nomirror"
 
 DEPEND=">=sys-apps/sed-4.0.5
 	>=sys-apps/portage-2.0.47-r10
@@ -19,20 +19,6 @@ DEPEND=">=sys-apps/sed-4.0.5
 	=dev-lang/tcl-${PV}*"
 
 S=${WORKDIR}/${PN}${PV}
-
-pkg_setup() {
-	if use threads
-	then
-		ewarn ""
-		ewarn "PLEASE NOTE: You are compiling ${P} with"
-		ewarn "threading enabled."
-		ewarn "Threading is not supported by all applications"
-		ewarn "that compile against tcl. You use threading at"
-		ewarn "your own discretion."
-		ewarn ""
-		epause 5
-	fi
-}
 
 src_unpack() {
 	unpack ${A}
@@ -42,18 +28,9 @@ src_unpack() {
 
 src_compile() {
 	cd ${S}/unix
-
-	local local_config_use=""
-
-	if use threads
-	then
-		local_config_use="--enable-threads"
-	fi
-
 	econf \
 		--with-tcl=/usr/lib \
-		${local_config_use} || die
-
+		--enable-threads || die
 	emake CFLAGS="${CFLAGS}" || die
 }
 

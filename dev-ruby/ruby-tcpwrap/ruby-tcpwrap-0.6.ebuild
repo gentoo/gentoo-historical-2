@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-tcpwrap/ruby-tcpwrap-0.6.ebuild,v 1.11 2005/10/03 13:26:53 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-tcpwrap/ruby-tcpwrap-0.6.ebuild,v 1.1 2003/09/20 09:17:05 usata Exp $
 
 inherit ruby
 
@@ -12,10 +12,9 @@ SRC_URI="http://shugo.net/archive/ruby-tcpwrap/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-USE_RUBY="ruby16 ruby18 ruby19"
-KEYWORDS="alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86"
+KEYWORDS="~alpha ~arm ~hppa ~mips ~sparc ~x86"
 
-DEPEND="virtual/ruby
+DEPEND="dev-lang/ruby
 	net-libs/libident
 	sys-apps/tcp-wrappers"
 

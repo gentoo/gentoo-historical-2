@@ -1,13 +1,11 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.1.7.ebuild,v 1.14 2005/03/21 07:29:04 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.1.7.ebuild,v 1.1 2003/08/13 01:24:41 lu_zero Exp $
 
-inherit gcc eutils flag-o-matic
+inherit gcc eutils
 export WANT_GCC_3="yes"
 
-#export CFLAGS=${CFLAGS/-O?/-O2}
-
-filter-flags "-fPIC -fforce-addr"
+export CFLAGS=${CFLAGS/-O?/-O2}
 
 DESCRIPTION="Cinelerra - Professional Video Editor"
 HOMEPAGE="http://heroinewarrior.com/cinelerra.php3"
@@ -16,22 +14,16 @@ SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86 -ppc"
-IUSE=""
 
 DEPEND="virtual/x11
-	virtual/libc
-	=sys-devel/gcc-3*
-	dev-lang/nasm"
+	virtual/glibc
+	=sys-devel/gcc-3*"
 #	>=media-libs/a52dec-0.7.3"
 
-RDEPEND="virtual/libc
-		virtual/x11"
-
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/gcc-3.3.1-collate.patch
-	epatch ${FILESDIR}/pthread_t_not_int.patch
-}
+#src_unpack() {
+#	unpack ${A}
+	#epatch ${FILESDIR}/compile-${PV}.diff	
+#}
 
 src_compile() {
 	export CFLAGS=${CFLAGS}
@@ -46,14 +38,14 @@ src_compile() {
 
 src_install() {
 	local myarch
-	if use x86; then
-	myarch="${CHOST/-*/}" #should solve the i586/i686 problem
+	if [ -n "`use x86`" ]; then
+	myarch="i686"
 	fi
-	if use ppc; then
-	myarch="ppc"
+	if [ -n "`use ppc`" ]; then
+	myarch="ppc"	
 	fi
 	cd ${S}/${PN}/${myarch}
-	dobin ${PN} || die "cinelerra not built"
+	dobin ${PN}
 
 	cd ${S}/plugins
 	insinto /usr/lib/${PN}
@@ -62,7 +54,7 @@ src_install() {
 	doins titler/fonts/*
 
 	cd ${S}/libmpeg3/${myarch}
-	dobin mpeg3dump mpeg3cat mpeg3toc
+	dobin mpeg3dump mpeg3cat mpeg3toc 
 
 #	cd ${S}/mix/i686
 #	dobin mix2000
@@ -76,7 +68,7 @@ src_install() {
 	cd ${S}/mplexlo/${myarch}
 	dobin mplexlo
 
-	cd ${S}
-#	dodoc CVS COPYING
+	cd ${S} 
+#	dodoc CVS COPYING 
 	dohtml -a png,html,texi,sdw -r doc/*
 }

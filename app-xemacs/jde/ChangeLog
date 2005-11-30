@@ -1,21 +1,6 @@
 # ChangeLog for app-xemacs/jde
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/jde/ChangeLog,v 1.7 2005/01/01 17:07:19 eradicator Exp $
-
-  02 Oct 2004; Robert Coie <rac@gentoo.org> +metadata.xml, jde-1.38.ebuild,
-  jde-1.43.ebuild:
-  eterm -> xemacs-eterm renaming
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> jde-1.43.ebuild:
-  Stable on alpha
-
-*jde-1.43 (22 Feb 2003)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> jde-1.38.ebuild jde-1.43.ebuild files/digest-jde-1.43 :
-  Add ~alpha to KEYWORDS
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  new stable ebuild
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/jde/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *jde-1.38 (16 Dec 2002)
 

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.2.5.4.ebuild,v 1.3 2005/11/28 12:54:00 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.2.5.4.ebuild,v 1.1 2005/11/05 07:18:38 vapier Exp $
 
-inherit eutils perl-app multilib
+inherit eutils perl-module multilib
 
 MY_PN=ImageMagick
 MY_P=${MY_PN}-${PV%.*}
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/imagemagick/${MY_P2}.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="-*" #~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bzip2 doc fpx graphviz gs jbig jpeg lcms mpeg nocxx perl png tiff truetype X wmf xml2 zlib"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )
@@ -76,8 +76,8 @@ src_compile() {
 
 	if use perl ; then
 		cd PerlMagick
-		perl-app_src_prep
-		perl-app_src_compile
+		perl-module_src_prep
+		perl-module_src_compile
 	fi
 }
 

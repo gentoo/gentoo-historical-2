@@ -1,57 +1,8 @@
 # ChangeLog for dev-libs/libmoe
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmoe/ChangeLog,v 1.13 2005/10/15 08:56:26 matsuu Exp $
-
-*libmoe-1.5.8-r1 (15 Oct 2005)
-
-  15 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +libmoe-1.5.8-r1.ebuild:
-  Fixed amd64 compile issue.
-  Clean up ebuild.
-
-  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> libmoe-1.5.8.ebuild:
-  Stable on ppc.
-
-  07 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> libmoe-1.5.8.ebuild:
-  Stable on sparc
-
-  05 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.8.ebuild:
-  Stable on x86.
-
-*libmoe-1.5.8 (13 Feb 2005)
-
-  13 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> -libmoe-1.5.5.ebuild,
-  +libmoe-1.5.8.ebuild:
-  Version bumped. Removed old ebuild.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> libmoe-1.5.5.ebuild,
-  libmoe-1.5.6.ebuild:
-  virtual/glibc -> virtual/libc
-
-*libmoe-1.5.6 (20 Sep 2003)
-
-  13 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild,
-  libmoe-1.5.6.ebuild:
-  Marked as stable; removed old ebuild
-
-  20 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.6.ebuild:
-  Version bumped
-
-*libmoe-1.5.5 (15 Aug 2003)
-
-  03 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild,
-  libmoe-1.5.5.ebuild:
-  Considered for stable
-
-  20 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.5.ebuild:
-  Marked stable on x86
-
-  15 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.5.ebuild:
-  Version bump
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libmoe/ChangeLog,v 1.1 2003/08/07 18:51:21 usata Exp $
 
 *libmoe-1.5.4 (08 Aug 2003)
-
-  22 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild:
-  Marked stable on x86 and ppc
 
   08 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> libmoe-1.5.4.ebuild:
   Initial import

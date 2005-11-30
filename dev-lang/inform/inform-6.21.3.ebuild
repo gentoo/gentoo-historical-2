@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/inform/inform-6.21.3.ebuild,v 1.7 2004/07/02 04:27:47 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/inform/inform-6.21.3.ebuild,v 1.1 2003/03/02 06:43:48 vapier Exp $
 
 MY_PV=6.21
 LIB_V=610
-DESCRIPTION="design system for interactive fiction"
+DESCRIPTION="Inform is a design system for interactive fiction"
 HOMEPAGE="http://www.inform-fiction.org/"
 SRC_URI="http://mirror.ifarchive.org/if-archive/unprocessed/${P}.tar.gz
 	http://mirror.ifarchive.org/if-archive/infocom/compilers/inform6/source/${P}.tar.gz
@@ -13,10 +13,9 @@ SRC_URI="http://mirror.ifarchive.org/if-archive/unprocessed/${P}.tar.gz
 
 LICENSE="Inform"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 src_unpack() {
 	unpack ${A}

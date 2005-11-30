@@ -1,20 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/bio2jack/bio2jack-0.3-r1.ebuild,v 1.11 2005/01/30 23:50:55 mr_bones_ Exp $
-
-IUSE="static"
+# $Header: /var/cvsroot/gentoo-x86/media-libs/bio2jack/bio2jack-0.3-r1.ebuild,v 1.1 2004/09/28 06:45:47 eradicator Exp $
 
 inherit libtool
 
-DESCRIPTION="A library for porting blocked I/O OSS/ALSA audio applications to JACK"
+DESCRIPTION="A library for porting blocked I/O OSS/ALSA audio applications to JACK."
 HOMEPAGE="http://bio2jack.sourceforge.net/"
 SRC_URI="mirror://sourceforge/bio2jack/${P}.tar.gz"
-
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="~alpha amd64 ~ia64 ppc sparc x86 ppc64"
 
+SLOT="0"
+KEYWORDS="~x86 ~ppc ~amd64"
+IUSE=""
 RDEPEND=">=media-sound/jack-audio-connection-kit-0.80"
+
 DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.50"
 
@@ -28,13 +27,7 @@ src_unpack() {
 	aclocal || die
 	automake || die
 	autoconf || die
-	libtoolize --copy --force ||die
 	elibtoolize || die
-}
-
-src_compile() {
-	econf `use_enable static` || die
-	emake || die
 }
 
 src_install() {

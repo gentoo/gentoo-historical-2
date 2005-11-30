@@ -1,38 +1,6 @@
-# ChangeLog for media-libs/libexif-gtk
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libexif-gtk/ChangeLog,v 1.14 2005/10/13 19:42:52 agriffis Exp $
-
-  13 Oct 2005; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.5.ebuild:
-  Mark 0.3.5 stable on alpha/ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.5.ebuild:
-  add ~ia64
-
-*libexif-gtk-0.3.5 (19 Jun 2005)
-
-  19 Jun 2005; Jeremy Huddleston <eradicator@gentoo.org>
-  +libexif-gtk-0.3.5.ebuild:
-  Version bump to fix bug #84985.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  libexif-gtk-0.3.3.ebuild:
-  Stable on ppc.
-
-  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.3.ebuild:
-  Add inherit eutils
-
-  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> libexif-gtk-0.3.3.ebuild:
-  Add die following econf for bug 48950
-
-  28 Mar 2004; Alastair Tse <liquidx@gentoo.org> libexif-gtk-0.3.3.ebuild,
-  files/libexif-gtk-0.3.3-gtk24.patch:
-  patch for gtk2.4 compatibility (#45510)
-
-  16 Feb 2004; Dylan Carlson <absinthe@gentoo.org> libexif-gtk-0.3.3.ebuild:
-  added ~amd64 keyword.
-
-  10 Jun 2003; Alastair Tse <liquidx@gentoo.org> libexif-gtk-0.3.3.ebuild:
-  bumped to stable
+# ChangeLog for media-libs/libexif
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libexif-gtk/ChangeLog,v 1.1 2003/01/08 13:23:01 mholzer Exp $
 
 *libexif-gtk-0.3.3 (08 Jan 2003)
 

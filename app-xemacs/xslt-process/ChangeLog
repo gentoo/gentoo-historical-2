@@ -1,18 +1,8 @@
 # ChangeLog for app-xemacs/xslt-process
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xslt-process/ChangeLog,v 1.7 2005/01/01 17:21:52 eradicator Exp $
-
-  02 Oct 2004; Robert Coie <rac@gentoo.org> +metadata.xml,
-  xslt-process-1.11.ebuild:
-  eterm -> xemacs-eterm renaming
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> xslt-process-1.11.ebuild:
-  Stable on alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xslt-process/ChangeLog,v 1.1 2002/12/16 12:22:48 rendhalver Exp $
 
 *xslt-process-1.11 (16 Dec 2002)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> xslt-process-1.11.ebuild :
-  Add ~alpha to KEYWORDS
 
   16 Dec 2002; Rendhalver [Peter Brown] <rendhalver@gentoo.org> :
   Initial import.

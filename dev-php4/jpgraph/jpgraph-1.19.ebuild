@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/jpgraph/jpgraph-1.19.ebuild,v 1.5 2005/11/24 21:50:53 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/jpgraph/jpgraph-1.19.ebuild,v 1.1 2005/09/18 14:23:30 hollow Exp $
 
 inherit php-lib-r1
 
-KEYWORDS="~amd64 ~x86"
-DESCRIPTION="Fully OO graph drawing library for PHP."
+DESCRIPTION="fully OO graph drawing library for PHP"
 HOMEPAGE="http://www.aditus.nu/jpgraph/"
 SRC_URI="http://members.chello.se/jpgraph/jpgdownloads/${P}.tar.gz"
 LICENSE="QPL-1.0"
 SLOT="0"
+KEYWORDS="~x86"
 IUSE="truetype"
 
 RDEPEND="${RDEPEND}
@@ -21,19 +21,17 @@ JPGRAPH_CACHE_DIR="/var/cache/jpgraph"
 COREFONTS_DIR="/usr/share/fonts/corefonts"
 
 pkg_setup() {
-	has_php
-
 	# we need the GD functionality of PHP
 	require_gd
 
 	# check to wich user:group the cache dir will go
 	if has_version "net-www/apache" ; then
-		HTTPD_USER="apache"
-		HTTPD_GROUP="apache"
+		HTTPD_USER=apache
+		HTTPD_GROUP=apache
 		einfo "Configuring cache dir ${JPGRAPH_CACHE_DIR} for Apache."
 	else
-		HTTPD_USER="root"
-		HTTPD_GROUP="root"
+		HTTPD_USER=root
+		HTTPD_GROUP=root
 		ewarn "No Apache webserver detected - ${JPGRAPH_CACHE_DIR} will be"
 		ewarn "owned by ${HTTPD_USER}:${HTTPD_GROUP} instead."
 	fi
@@ -71,7 +69,7 @@ src_install() {
 
 	# install documentation
 	einfo "Installing documentation"
-	dodoc-php README QPL.txt
+	dodoc README QPL.txt
 	dohtml -r docs/*
 
 	# setup the cache dir

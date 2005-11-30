@@ -1,26 +1,6 @@
 # ChangeLog for x11-plugins/wmwifi
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwifi/ChangeLog,v 1.7 2005/11/07 13:05:46 s4t4n Exp $
-
-  07 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmwifi-0.5.ebuild,
-  wmwifi-0.3.ebuild:
-  Removed RDEPEND as it was equal to DEPEND.
-
-*wmwifi-0.5 (04 Nov 2005)
-
-  04 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmwifi-0.5.ebuild:
-  Version bump.
-  metdata.xml:
-  Assigned to desktop-dock herd.
-
-  02 Oct 2005; Tom Martin <slarti@gentoo.org> wmwifi-0.3.ebuild:
-  Marked ~amd64.
-
-  30 Jun 2005; Joseph Jezak <josejx@gentoo.org> wmwifi-0.3.ebuild:
-  Marked ppc stable for bug #97516.
-
-  28 Apr 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> wmwifi-0.3.ebuild:
-  mark ~ppc
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmwifi/ChangeLog,v 1.1 2004/02/01 02:10:37 rphillips Exp $
 
 *wmwifi-0.3 (31 Jan 2004)
 

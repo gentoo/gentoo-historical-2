@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/solfege/solfege-2.0.6.ebuild,v 1.3 2005/09/04 10:47:10 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/solfege/solfege-2.0.6.ebuild,v 1.1 2004/11/19 22:55:30 eradicator Exp $
 
 IUSE="gtkhtml gnome oss"
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-amd64 -sparc x86"
+KEYWORDS="-amd64 -sparc ~x86"
 
 RDEPEND=">=dev-lang/python-2.3
 	>=x11-libs/gtk+-2.0
@@ -71,6 +71,6 @@ src_install() {
 #	make DESTDIR=${D} install || die "Installation failed."
 	einstall || die "Installation failed."
 	rm -f ${D}usr/bin/${PN}${PV}
-	dodoc AUTHORS changelog FAQ README TODO
+	dodoc AUTHORS changelog COPYING FAQ INSTALL README TODO
 }
 

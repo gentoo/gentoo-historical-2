@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.2.3.ebuild,v 1.12 2005/11/27 15:55:07 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/gnutls/gnutls-1.2.3.ebuild,v 1.1 2005/04/28 22:14:53 dragonheart Exp $
 
 inherit eutils gnuconfig
 
@@ -14,21 +14,18 @@ LICENSE="LGPL-2.1 GPL-2"
 # GPL-2 for the gnutls-extras library and LGPL for the gnutls library.
 
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 mips ppc ppc64 s390 sparc x86"
+KEYWORDS="x86 ~sparc ~ppc ~amd64 ~mips ~alpha ~ppc64"
 
 # Removed keywords awaiting >=dev-libs/libtasn1-0.2.10 keywords (bug #61944)
-#  ~ia64 ~hppa
+# ~ppc64  ~ia64 ~hppa
 
 RDEPEND=">=dev-libs/libgcrypt-1.2.0
-	>=app-crypt/opencdk-0.5.5
+	crypt? ( >=app-crypt/opencdk-0.5.5 )
 	zlib? ( >=sys-libs/zlib-1.1 )
 	virtual/libc
 	>=dev-libs/lzo-1.0
-	>=dev-libs/libtasn1-0.2.11
+	>=dev-libs/libtasn1-0.2.10
 	dev-libs/libgpg-error"
-
-
-#	crypt? ( >=app-crypt/opencdk-0.5.5 )
 
 DEPEND="${RDEPEND}
 	sys-apps/gawk
@@ -46,7 +43,7 @@ src_compile() {
 	gnuconfig_update
 
 	local myconf=""
-	# use crypt || myconf="${myconf} --disable-extra-pki --disable-openpgp-authentication"
+	use crypt || myconf="${myconf} --disable-extra-pki --disable-openpgp-authentication"
 
 	econf  \
 		`use_with zlib` \
@@ -63,7 +60,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR=${D} install || die
 
-	dodoc AUTHORS ChangeLog NEWS \
+	dodoc AUTHORS COPYING COPYING.LIB ChangeLog NEWS \
 		README THANKS doc/TODO
 
 	if use doc ; then
@@ -79,10 +76,10 @@ pkg_postinst() {
 	ewarn
 	ewarn "What is required is a revdep-rebuild."
 	ewarn "To show you what is needed to rebuild"
-	ewarn 'revdep-rebuild --soname-regexp libgnutls.so.1[0-1] -- -p'
+	ewarn "revdep-rebuild --soname-regexp libgnutls.so.1[0-1] -- -p"
 	ewarn ""
 	ewarn "Then do:"
-	ewarn 'revdep-rebuild --soname-regexp libgnutls.so.1[0-1]'
+	ewarn "revdep-rebuild --soname-regexp libgnutls.so.1[0-1]"
 	einfo ""
 	einfo "Afterward just try:"
 	einfo "revdep-rebuild -- -p"

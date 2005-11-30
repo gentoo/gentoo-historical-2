@@ -1,46 +1,6 @@
 # ChangeLog for net-analyzer/darkstat
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/darkstat/ChangeLog,v 1.12 2005/05/10 21:32:37 herbs Exp $
-
-  10 May 2005; Herbie Hopkins <herbs@gentoo.org> darkstat-2.6-r1.ebuild:
-  Marked ~amd64 wrt bug #92148.
-
-  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> darkstat-2.6-r1.ebuild,
-  darkstat-2.6.ebuild:
-  changed net-libs/libpcap depend to virtual/libcap
-
-  23 Aug 2004; Eldad Zack <eldad@gentoo.org> metadata.xml,
-  darkstat-2.6-r1.ebuild:
-  x86 stable
-
-  14 Aug 2004; Sven Wegener <swegener@gentoo.org> files/darkstat-init:
-  Fixed CVS Header.
-
-  22 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> darkstat-2.6-r1.ebuild:
-  Added to macos. This closes bug #57817
-
-*darkstat-2.6-r1 (21 Jul 2004)
-
-  21 Jul 2004; Marius Mauch <genone@gentoo.org> +files/ipcheck.patch,
-  +darkstat-2.6-r1.ebuild:
-  Addeing a patch to make it more reliable when the host has a dynamic IP.
-
-  13 Jul 2004; Michael Hanselmann <hansmi@gentoo.org> darkstat-2.6.ebuild:
-  Added to ~ppc.
-
-  09 Jul 2004; Eldad Zack <eldad@gentoo.org> darkstat-2.5.ebuild,
-  darkstat-2.6.ebuild:
-  Tidy up. Marked x86 stable.
-
-*darkstat-2.6 (02 Jan 2004)
-
-  02 Jan 2004; Chuck Short <zul@gentoo.org> darkstat-2.6.ebuild:
-  New version, closes #37059.
-  Updated homepage and src_uri
-  added nls support.
-
-  02 Jan 2004; Chuck Short <zul@gentoo.org> darkstat-2.5.ebuild:
-  Marked stable.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/darkstat/ChangeLog,v 1.1 2003/10/18 16:59:12 zul Exp $
 
 *darkstat-2.5 (18 Oct 2003)
 

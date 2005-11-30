@@ -1,27 +1,6 @@
 # ChangeLog for app-text/catdoc
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/catdoc/ChangeLog,v 1.9 2005/07/16 19:17:35 josejx Exp $
-
-  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> catdoc-0.93.3.ebuild:
-  Accidently marked ppc instead of ~ppc.
-
-  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> catdoc-0.93.3.ebuild:
-  Marked ppc stable for bug #99211.
-
-  13 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org>
-  catdoc-0.93.4.ebuild:
-  mark ~ppc
-
-*catdoc-0.93.4 (08 Feb 2005)
-
-  08 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> +catdoc-0.93.4.ebuild:
-  Version bumped. This closes bug #76316.
-
-  05 Sep 2004; Malcolm Lashley <malc@gentoo.org> catdoc-0.93.3.ebuild:
-  ~amd64 - closes bug #62247
-
-  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> catdoc-0.93.3.ebuild:
-  Stable on x86
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/catdoc/ChangeLog,v 1.1 2003/12/30 14:52:01 obz Exp $
 
 *catdoc-0.93.3 (30 Dec 2003)
 

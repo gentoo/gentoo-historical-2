@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jswat/jswat-2.21-r1.ebuild,v 1.5 2005/07/15 22:10:03 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jswat/jswat-2.21-r1.ebuild,v 1.1 2004/08/27 10:16:26 axxo Exp $
 
 inherit java-pkg eutils
 
@@ -13,12 +13,9 @@ SLOT="2"
 KEYWORDS="x86 sparc -ppc amd64"
 IUSE="doc jikes" #junit"
 
-DEPEND=">=virtual/jdk-1.4
-	>=dev-java/ant-1.5
-	app-arch/unzip
-	jikes? ( dev-java/jikes )"
+DEPEND=">=dev-java/ant-1.5"
 	#junit? ( dev-java/junit )"
-RDEPEND=">=virtual/jre-1.4"
+RDEPEND=">=virtual/jdk-1.4"
 
 src_unpack() {
 	unpack ${A}
@@ -40,11 +37,14 @@ src_compile() {
 }
 
 src_install() {
+	# install jswat classes
 	java-pkg_dojar build/dist/*/*.jar
 
+	# prepare and install jswat script
 	dobin ${FILESDIR}/jswat2
 
-	dodoc BUGS.txt HISTORY.txt OLD_HISTORY.txt TODO.txt
+	# install documents
+	dodoc BUGS.txt HISTORY.txt LICENSE.txt OLD_HISTORY.txt TODO.txt
 	dohtml README.html
-	use doc && java-pkg_dohtml -r docs
+	use doc && dohtml -r docs
 }

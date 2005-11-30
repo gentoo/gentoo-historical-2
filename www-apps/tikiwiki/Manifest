@@ -1,19 +1,9 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 0634ebc8d268c8fa6cbe516573e12b3d tikiwiki-1.9.1.1.ebuild 2416
-MD5 5a784470ea77c05d6eaeae69d28eeffe tikiwiki-1.9.2.ebuild 2415
-MD5 a1719a8cde06741a7a437cafe9e090a8 tikiwiki-1.8.6.ebuild 2069
-MD5 b60adbf9d43c16b975be552a859e0a70 ChangeLog 5781
+MD5 10e700f5e72d5bd98db8aed8aa037f99 tikiwiki-1.8.2.ebuild 1635
 MD5 c339473e0ff43da76eb2f2607c441921 metadata.xml 280
-MD5 250716051f339a0b1315218e13485039 files/postinstall-en.txt 1396
-MD5 179db1005cef09973bc3ffda69a7bb11 files/digest-tikiwiki-1.8.6 68
-MD5 eaed663821be60f11ff2e161e56b7a45 files/digest-tikiwiki-1.9.2 68
-MD5 7d874ec5f99ae67c3ae819a0d6aec572 files/digest-tikiwiki-1.9.1.1 70
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDb449EzitwsaoONoRAs+3AKDDsbCZBWiA6tM3+mTqthkvvyw+/wCgv0vs
-g3BfFT0NqOwrWo+7aa+9esk=
-=jaKk
------END PGP SIGNATURE-----
+MD5 0bbd5547d7480794de55335296ba3768 ChangeLog 1467
+MD5 d4b710d3f2d93edbaea90bfbc3342031 tikiwiki-1.8.2-r1.ebuild 1978
+MD5 18e65d6c028b0b174d1836e2044345e2 tikiwiki-1.8.3.ebuild 1950
+MD5 02710bef8251c7989bb55efc5628bcc6 files/digest-tikiwiki-1.8.2 68
+MD5 bd86652016f6c4480eda7199fa25ebd9 files/postinstall-en.txt 1407
+MD5 02710bef8251c7989bb55efc5628bcc6 files/digest-tikiwiki-1.8.2-r1 68
+MD5 a0ee80f78f566fc992524890c3222b78 files/digest-tikiwiki-1.8.3 68

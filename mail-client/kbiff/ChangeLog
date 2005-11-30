@@ -1,58 +1,6 @@
-# ChangeLog for mail-client/kbiff
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/kbiff/ChangeLog,v 1.17 2005/08/01 21:46:26 ticho Exp $
-
-  01 Aug 2005; Andrej Kacian <ticho@gentoo.org> kbiff-3.7.1.ebuild:
-  Depend on kdelibs instead of kdebase-meta. Bug #83058.
-
-  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> kbiff-3.7.1.ebuild:
-  Stable on ppc.
-
-  31 May 2005; Marcus D. Hanwell <marcus@gentoo.org> kbiff-3.7.1.ebuild:
-  Stable on amd64.
-
-  28 May 2005; Jason Wever <weeve@gentoo.org> kbiff-3.7.1.ebuild:
-  Stable on SPARC.
-
-  15 Jan 2005; Dan Armak <danarmak@gentoo.org> kbiff-3.6.3.ebuild,
-  kbiff-3.7.1.ebuild, kbiff-3.7.ebuild:
-  Changed dep on kdebase to accept kdebase-meta, the split 'meta' package.
-  This dep will be narrowed down in the future to the precise split packages
-  required.
-
-  16 Dec 2004; Simone Gotti <motaboy@gentoo.org> kbiff-3.7.1.ebuild:
-  Stable on x86.
-
-  06 Dec 2004; Andrej Kacian <ticho@gentoo.org> kbiff-3.7.1.ebuild,
-  kbiff-3.7.ebuild:
-  Inherit eutils
-
-*kbiff-3.7.1 (19 Nov 2004)
-
-  19 Nov 2004; Simone Gotti <motaboy@gentoo.org> metadata.xml,
-  +files/kbiff-3.7.1-configure-arts.patch, +kbiff-3.7.1.ebuild:
-  Version Bump. Added kde-other herd to metadata.xml
-
-  19 Nov 2004; Simone Gotti <motaboy@gentoo.org>
-  +files/kbiff-3.7-configure-arts.patch, kbiff-3.7.ebuild:
-  Added a patch to the configure script to honor the "arts" USE flag. Fixes
-  bug #69532.
-
-  25 Sep 2004; Jason Wever <weeve@gentoo.org> kbiff-3.7.ebuild:
-  Stable on sparc.
-
-  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> kbiff-3.7.ebuild:
-  Stable on x86
-
-  18 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> kbiff-3.7.ebuild:
-  Added amd64 keyword. Closing #52424.
-
-  29 Jun 2004; Carsten Lohrke <carlo@gentoo.org> kbiff-3.6.3.ebuild,
-  kbiff-3.7.ebuild:
-  QA: kde-base -> kde, need-kde after R/DEPEND, newdepend -> DEPEND
-
-  03 Jun 2004; David Holm <dholm@gentoo.org> kbiff-3.7.ebuild:
-  Added to ~ppc.
+# ChangeLog for net-mail/kbiff
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/kbiff/ChangeLog,v 1.1 2004/05/30 02:44:46 seemant Exp $
 
 *kbiff-3.6.3 (29 May 2004)
 

@@ -1,25 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snmpmon/snmpmon-0.5.ebuild,v 1.6 2005/08/17 13:21:48 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/snmpmon/snmpmon-0.5.ebuild,v 1.1 2004/07/24 12:33:06 eldad Exp $
 
-inherit qt3
+IUSE=""
+
+inherit kde-functions
+
+need-qt 3.2
 
 DESCRIPTION="SNMPMonitor is a tool to monitor SNMP devices"
 HOMEPAGE="http://snmpmon.sourceforge.net/"
 SRC_URI="mirror://sourceforge/snmpmon/${P}.tar.bz2"
-LICENSE="GPL-2"
-
+RESTRICT="nomirror"
 SLOT="0"
-KEYWORDS="~ppc ~sparc x86"
-IUSE=""
 
-DEPEND="$(qt_min_version 3.2)
-	>=net-analyzer/net-snmp-5.0.9-r1"
+LICENSE="GPL-2"
+KEYWORDS="~x86"
+
+DEPEND=">=net-analyzer/net-snmp-5.0.9-r1"
 
 src_compile() {
-	${QTDIR}/bin/qmake -o Makefile snmpmon.pro
+	qmake -o Makefile snmpmon.pro
 	sed -i -e "s/CFLAGS   = -pipe -w -O2/CFLAGS   = ${CFLAGS} -w/" Makefile
 	sed -i -e "s/CXXFLAGS = -pipe -w -O2/CXXFLAGS = ${CXXFLAGS} -w/" Makefile
+	addpredict ${QTDIR}/etc/settings
 	emake || die "make failed"
 }
 

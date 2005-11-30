@@ -1,36 +1,29 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/groundhog/groundhog-1.4.ebuild,v 1.12 2005/10/31 08:54:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/groundhog/groundhog-1.4.ebuild,v 1.1 2003/09/10 06:36:00 vapier Exp $
 
-inherit eutils gnuconfig games
+inherit games
 
 DESCRIPTION="Kids card/puzzle game"
 HOMEPAGE="http://home-2.consunet.nl/~cb007736/groundhog.html"
 SRC_URI="http://home-2.consunet.nl/~cb007736/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+LICENSE="GPL-2"
+KEYWORDS="x86"
 IUSE="nls"
 
 DEPEND="virtual/x11
 	=x11-libs/gtk+-2*
 	=dev-libs/glib-2*"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PV}-gcc3.patch
-}
-
 src_compile() {
-	gnuconfig_update
-	egamesconf $(use_enable nls) || die
-	emake CXXFLAGS="${CXXFLAGS}" || die "emake failed"
+	egamesconf `use_enable nls` || die
+	emake CXXFLAGS="${CXXFLAGS}" || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make install DESTDIR=${D} || die
 	dodoc README NEWS AUTHORS TODO Changelog
 	prepgamesdirs
 }

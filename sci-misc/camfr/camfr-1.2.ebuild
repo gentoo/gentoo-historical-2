@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/camfr/camfr-1.2.ebuild,v 1.3 2005/11/02 20:24:21 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/camfr/camfr-1.2.ebuild,v 1.1 2005/04/05 07:52:12 pbienst Exp $
 
-inherit eutils distutils fortran
+inherit eutils distutils
 
 S=${WORKDIR}/camfr_${PV}
 IUSE="ifc"
@@ -20,11 +20,17 @@ DEPEND="dev-lang/python
 	>=dev-libs/blitz-0.7
 	virtual/lapack
 	virtual/tetex
-	virtual/ghostscript
+	app-text/ghostscript
 	>=app-text/texi2html-1.64"
-FORTAN="g77"
 
 src_unpack() {
+	use ifc || if [ -z `which g77` ]; then
+		#if ifc is defined then the dep was already checked
+		eerror "No fortran compiler found on the system!"
+		eerror "Please add fortran to your USE flags and reemerge gcc!"
+		die
+	fi
+
 	python -c "import ImageTk" 2>/dev/null
 	if [ $? -ne 0 ]; then
 		eerror "Python and imaging don't have Tk support enabled."

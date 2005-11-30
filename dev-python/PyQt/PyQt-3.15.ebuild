@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt/PyQt-3.15.ebuild,v 1.3 2005/10/11 12:29:21 chrb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/PyQt/PyQt-3.15.ebuild,v 1.1 2005/09/26 15:26:47 chrb Exp $
 
 inherit distutils
 
@@ -22,7 +22,7 @@ RDEPEND="virtual/libc
 	x11-libs/qt
 	dev-lang/python
 	>=dev-python/sip-4.2
-	dev-python/qscintilla"
+	<dev-python/qscintilla-1.6"
 DEPEND="${RDEPEND}
 	sys-devel/libtool"
 
@@ -37,7 +37,7 @@ src_compile() {
 	addpredict ${QTDIR}/etc/settings
 
 	local myconf="-d /usr/$(get_libdir)/python${PYVER}/site-packages -b /usr/bin \
-			-v /usr/share/sip"
+			-v /usr/share/sip -n /usr/include -o /usr/$(get_libdir)"
 	use debug && myconf="${myconf} -u"
 	has distcc ${FEATURES} || myconf="${myconf} -c"
 

@@ -1,29 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/htag/htag-0.0.22.ebuild,v 1.10 2005/01/01 16:19:23 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/app-text/htag/htag-0.0.22.ebuild,v 1.1 2002/08/16 10:48:49 cybersystem Exp $
 
-DESCRIPTION="random signature maker"
+S="${WORKDIR}/htag-${PV}"
+
+DESCRIPTION="HTag is a random signature maker for linux"
 HOMEPAGE="http://www.earth.li/projectpurple/progs/htag.html"
-SRC_URI="http://www.earth.li/projectpurple/files/${P}.tar.gz"
-
+SRC_URI="http://www.earth.li/projectpurple/files/htag-${PV}.tar.gz"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~mips"
-IUSE=""
+KEYWORDS="x86"
+
+RDEPEND="sys-devel/perl"
 LICENSE="GPL-2"
 
-RDEPEND="dev-lang/perl"
-
-src_install() {
-	newbin htag.pl htag || die
-
-	dodir /usr/share/doc/${PF}/
-	mv docs/sample-config ${D}/usr/share/doc/${PF}/
-	dodoc docs/*
-	prepalldocs
-
-	insinto /usr/share/htag/plugins
-	doins plugins/* || die
-
-	insinto /usr/lib/perl5/site_perl
-	doins HtagPlugin/HtagPlugin.pm || die
+src_install () {
+	mkdir -p $D/usr/{bin,lib/perl5/site_perl,share/htag/plugins,share/doc/htag-${PV},man/man1} || die
+	install -o root -g root -m 755 htag.pl $D/usr/bin/htag || die
+	cp -a docs/* $D/usr/share/doc/htag-${PV}/  || die
+	find $D/usr/share/doc -type f ! -path '$D/usr/share/doc/htag-${PV}/sample-config/' | xargs gzip || die
+	cp -a plugins/* $D/usr/share/htag/plugins/ || die
+	install -o root -g root -m 644 HtagPlugin/HtagPlugin.pm $D/usr/lib/perl5/site_perl || die
 }

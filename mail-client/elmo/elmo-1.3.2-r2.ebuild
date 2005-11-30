@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/elmo/elmo-1.3.2-r2.ebuild,v 1.5 2005/10/03 12:09:00 ticho Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/elmo/elmo-1.3.2-r2.ebuild,v 1.1 2005/07/21 14:38:12 ticho Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://elmo.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 
-KEYWORDS="alpha ~ppc x86"
+KEYWORDS="~alpha ~x86"
 SLOT="0"
 
 RDEPEND="ssl? ( dev-libs/openssl )
@@ -39,7 +39,8 @@ src_compile() {
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc ABOUT-NLS ADVOCACY AUTHORS BUGS ChangeLog NEWS THANKS TODO
+	dodoc ABOUT-NLS ADVOCACY AUTHORS BUGS ChangeLog INSTALL NEWS \
+		THANKS TODO
 	cd doc
 	dodoc README.txt sample.{,pl.}elmorc tutorial{,.gpg}
 }

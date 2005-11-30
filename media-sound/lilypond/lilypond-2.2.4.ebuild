@@ -1,15 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/lilypond-2.2.4.ebuild,v 1.4 2005/02/21 04:24:45 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/lilypond/lilypond-2.2.4.ebuild,v 1.1 2004/07/19 09:39:15 eradicator Exp $
 
 IUSE="doc"
 
 MY_PV="v$(echo ${PV} | cut -d. -f1,2)"
-
 DESCRIPTION="GNU Music Typesetter"
 SRC_URI="http://www.lilypond.org/ftp/${MY_PV}/${P}.tar.gz"
 HOMEPAGE="http://lilypond.org/"
-
 SLOT="0"
 LICENSE="GPL-2"
 #-amd64: 2.2.4: lilypond-bin exits error code 139 ... upstream needs to fix it...
@@ -17,11 +15,10 @@ KEYWORDS="~alpha ~x86 ~ppc ~sparc -amd64"
 
 RDEPEND=">=dev-util/guile-1.6.4
 	virtual/ghostscript
-	virtual/tetex
+	>=app-text/tetex-2.0.2
 	>=dev-lang/python-2.2.3-r1"
 
 DEPEND="${RDEPEND}
-	>=app-text/t1utils-1.32
 	>=dev-lang/perl-5.8.0-r12
 	>=sys-apps/texinfo-4.6
 	>=sys-devel/flex-2.5.4a-r5

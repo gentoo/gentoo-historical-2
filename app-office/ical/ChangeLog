@@ -1,37 +1,8 @@
-# ChangeLog for app-office/ical
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/ical/ChangeLog,v 1.13 2005/07/10 21:07:12 swegener Exp $
-
-  10 Jul 2005; Sven Wegener <swegener@gentoo.org> ical-2.2.1.ebuild:
-  QA: Removed 'emake || make || die' and variants. Either a package is
-  parallel build safe or it is not. There's nothing like trying and falling
-  back.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> ical-2.2.1.ebuild:
-  Stable on ppc.
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> ical-2.2.1.ebuild:
-  Masked ical-2.2.1.ebuild testing for ppc
-
-  18 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> ical-2.2.1.ebuild:
-  IUSE; error check sed; tidy
-
-  06 Jun 2004; Seemant Kulleen <seemant@gentoo.org> ical-2.2.1.ebuild:
-  Fix compile error reported by Daniel Webert <daniel_webert@web.de> in bug
-  #52883, which was caused by the sed statement not actually acting on any
-  files. The fix was found by stan <stan@saticed.me.uk>. Additionally, man pages
-  were going into /usr/man not /usr/share/man, so fixed that too.
-
-  14 Mar 2004; Seemant Kulleen <seemant@gentoo.org> ical-2.2.1.ebuild:
-  clean ups for bug #44712 by Michael Sterret <mr_bones_@gentoo.org>
-
-  15 Nov 2003; Brandy Westcott brandy@gentoo.org ical-2.2.1.ebuild:
-  Fixed up ebuild to play nice with tcl. Added patch for tcl-8.4. Closes bug
-  #22924.
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/ical/ChangeLog,v 1.1 2002/08/01 03:14:35 chadh Exp $
 
 *ical-2.2.1 (31 Jul 2002)
-  03 Aug 2002; Chad Huneycutt <chadh@gentoo.org> ical-2.2.1.ebuild: added die
-  clause to patch commands to catch errors.
 
   31 Jul 2002; Chad Huneycutt <chadh@gentoo.org> ical-2.2.1.ebuild: Initial
   import. Most of the patches to get this to compile were taken from the srpm

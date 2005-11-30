@@ -1,17 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/fmod/fmod-3.74.ebuild,v 1.4 2005/09/13 15:16:40 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/fmod/fmod-3.74.ebuild,v 1.1 2004/10/31 14:38:47 chainsaw Exp $
+
+IUSE=""
 
 MY_P="fmodapi${PV/.}linux"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="music and sound effects library, and a sound processing system"
-HOMEPAGE="http://www.fmod.org/"
 SRC_URI="http://www.fmod.org/files/${MY_P}.tar.gz"
+HOMEPAGE="http://www.fmod.org/"
 
-LICENSE="fmod"
 SLOT="0"
-KEYWORDS="-* x86"
-IUSE=""
+LICENSE="fmod"
+KEYWORDS="-* ~x86 ~amd64"
 
 DEPEND="virtual/libc"
 RDEPEND="${DEPEND}
@@ -25,8 +26,8 @@ src_install() {
 	doins api/inc/*
 
 	insinto /usr/share/${PN}/media
-	doins media/* || die "doins failed"
-	cp -r samples "${D}/usr/share/${PN}/" || die "cp failed"
+	doins media/*
+	cp -r samples ${D}/usr/share/${PN}/
 
 	dohtml -r documentation/*
 	dodoc README.TXT documentation/Revision.txt

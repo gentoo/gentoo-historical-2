@@ -1,20 +1,6 @@
 # ChangeLog for app-misc/gwine
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gwine/ChangeLog,v 1.7 2005/11/28 12:10:12 mcummings Exp $
-
-  28 Nov 2005; <mcumming@gentoo.org> gwine-0.10.1.ebuild, gwine-0.7.1.ebuild:
-  Switched from perl-module to perl-app eclass
-
-  18 Jul 2005; David Holm <dholm@gentoo.org> gwine-0.10.1.ebuild:
-  Added to ~ppc.
-
-*gwine-0.10.1 (17 Jul 2005)
-
-  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +gwine-0.10.1.ebuild:
-  Version bump.
-
-  06 Mar 2004; Michael Cummings <mcummings@gentoo.org> gwine-0.7.1.ebuild:
-  All clear, closing bug 27301
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/gwine/ChangeLog,v 1.1 2004/03/04 18:51:38 mcummings Exp $
 
 *gwine-0.7.1 (04 Mar 2004)
 

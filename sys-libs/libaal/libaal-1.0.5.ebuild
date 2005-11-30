@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libaal/libaal-1.0.5.ebuild,v 1.3 2005/11/29 03:53:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libaal/libaal-1.0.5.ebuild,v 1.1 2005/08/12 23:12:49 vapier Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.namesys.com/pub/reiser4progs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 -sparc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 -sparc ~x86"
 IUSE=""
 
 DEPEND=""
@@ -23,26 +23,30 @@ src_unpack() {
 		-e "/GENERIC_CFLAGS/s:-O3::" \
 		-e "/^CFLAGS=/s:\"\":\"${CFLAGS}\":" \
 		configure || die "sed"
-	cat <<-EOF > run-ldconfig
-		#!/bin/sh
-		true
-	EOF
+	cat << EOF > run-ldconfig
+#!/bin/sh
+true
+EOF
 }
 
 src_compile() {
 	econf \
 		--enable-libminimal \
 		--enable-memory-manager \
-		|| die "configure failed"
+		--libdir=/$(get_libdir) || die "configure failed"
 	emake || die "make failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
+	make DESTDIR=${D} install || die
 	dodoc AUTHORS BUGS CREDITS ChangeLog NEWS README THANKS TODO
 
-	# move shared libs to /
-	dodir /$(get_libdir)
-	mv "${D}"/usr/$(get_libdir)/lib*.so* "${D}"/$(get_libdir)/ || die
-	gen_usr_ldscript libaal.so libaal-minimal.so
+	# move silly .a libs out of /
+	dodir /usr/$(get_libdir)
+	local l=""
+	for l in libaal libaal-minimal ; do
+		mv ${D}/$(get_libdir)/${l}.{a,la} ${D}/usr/$(get_libdir)/
+		dosym /usr/$(get_libdir)/${l}.a /$(get_libdir)/${l}.a
+		gen_usr_ldscript ${l}.so
+	done
 }

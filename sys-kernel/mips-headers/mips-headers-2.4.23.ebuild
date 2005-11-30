@@ -1,9 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-headers/mips-headers-2.4.23.ebuild,v 1.7 2005/05/14 01:05:34 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/mips-headers/mips-headers-2.4.23.ebuild,v 1.1 2004/04/06 05:49:55 kumba Exp $
 
 ETYPE="headers"
-inherit kernel eutils
+inherit kernel
 
 OKV=${PV/_/-}
 CVSDATE=20031128
@@ -25,7 +25,6 @@ HOMEPAGE="http://www.linux-mips.org/"
 SLOT="0"
 PROVIDE="virtual/os-headers"
 KEYWORDS="-* ~mips"
-IUSE=""
 
 src_unpack() {
 	unpack ${A}
@@ -33,7 +32,7 @@ src_unpack() {
 	cd ${S}
 
 	# Update the vanilla sources with linux-mips CVS changes
-	epatch ${WORKDIR}/mipscvs-${OKV}-${CVSDATE}.diff
+	cat ${WORKDIR}/mipscvs-${OKV}-${CVSDATE}.diff | patch -p1
 
 	kernel_universal_unpack
 }
@@ -59,3 +58,4 @@ pkg_postinst() {
 	einfo "Failure to do so will cause glibc to not make use of newer features present in the updated kernel"
 	einfo "headers."
 }
+

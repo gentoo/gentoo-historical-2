@@ -1,33 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.31-r1.ebuild,v 1.17 2005/07/05 22:59:08 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/apache/apache-1.3.31-r1.ebuild,v 1.1 2004/05/29 16:28:37 zul Exp $
 
 inherit eutils fixheadtails
 
-IUSE="pam selinux"
+IUSE="pam"
 
 mod_ssl_ver=2.8.18
 
 S=${WORKDIR}/${PN}_${PV}
 DESCRIPTION="The Apache Web Server"
 HOMEPAGE="http://www.apache.org http://www.modssl.org"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64 mips"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips"
 SRC_URI="http://www.apache.org/dist/httpd/apache_${PV}.tar.gz
 	ftp://ftp.modssl.org/source/mod_ssl-${mod_ssl_ver}-${PV}.tar.gz"
 
 # The mod_ssl archive is only for providing the EAPI patch in here.
 # You should install the net-www/mod_ssl package for the actual DSO.
 
-DEPEND="dev-lang/perl
-	<=sys-libs/db-4.1
+DEPEND="dev-lang/perl <=sys-libs/db-4.1
 	>=dev-libs/mm-1.1.3
 	>=sys-libs/gdbm-1.8
 	>=dev-libs/expat-1.95.2
-	=sys-libs/db-1*
-	selinux? ( sec-policy/selinux-apache )
-	!dev-libs/apr
-	!dev-libs/apr-util"
-
+	>=sys-apps/sed-4
+	sys-libs/db"
 LICENSE="Apache-2.0"
 SLOT="1"
 
@@ -48,8 +44,7 @@ src_unpack() {
 	fi
 
 	#Obsolete 'head -1' and 'tail -1' calls.
-	ht_fix_file src/Configure src/helpers/getuid.sh \
-		src/helpers/fmn.sh src/helpers/buildinfo.sh
+	ht_fix_file src/Configure src/helpers/getuid.sh
 
 	# setup eapi...
 	myssl=${WORKDIR}/mod_ssl-${mod_ssl_ver}-${PV}

@@ -5,4 +5,3 @@ Exec=simplecdrx
 Icon=simplecdrx.png
 Terminal=0
 Type=Application
-Categories=GTK;AudioVideo;DiscBurning

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/coreblog/coreblog-0.6.ebuild,v 1.3 2004/10/08 10:01:50 radek Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/coreblog/coreblog-0.6.ebuild,v 1.1 2004/04/18 20:40:55 batlogg Exp $
 
 inherit zproduct
 
@@ -11,6 +11,5 @@ HOMEPAGE="http://coreblog.org/"
 SRC_URI="${HOMEPAGE}/junk/COREBlog06b.tgz"
 LICENSE="GPL-2"
 KEYWORDS="~x86 ~ppc"
-IUSE=""
 
 ZPROD_LIST="COREBlog"

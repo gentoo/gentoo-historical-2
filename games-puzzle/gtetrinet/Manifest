@@ -1,16 +1,8 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 ced740229799575e35487154e4bc3c7b metadata.xml 652
-MD5 bc4130eed8a21a2c7d091f524f1866c4 gtetrinet-0.7.9.ebuild 1407
-MD5 7a58a6e8fbfabfeb04d651f2c311126b gtetrinet-0.7.7.ebuild 1527
-MD5 94c19ff591c14e0db1dc19b0f1393940 ChangeLog 4015
-MD5 28baac0d4fdcd05afefc657e27785734 files/digest-gtetrinet-0.7.7 143
-MD5 cc4bb567009396c6013ba18cb4d79307 files/digest-gtetrinet-0.7.9 143
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDKhw3gIKl8Uu19MoRAg3/AJ91/gvL5fvDoA9e9PlzCLYpVuQOqQCeIipP
-Tp3RRQOL0s601yQLmOYeTU0=
-=RG9h
------END PGP SIGNATURE-----
+MD5 836c84aca2fd1f5886962ff676ecec53 ChangeLog 2905
+MD5 66661824a634644e0966ec87b23ce223 gtetrinet-0.7.4.ebuild 1281
+MD5 8a8eedffec9c2afcb586be2dfd9802cb metadata.xml 177
+MD5 eea3e25dc73166ddadd88a7b410443aa gtetrinet-0.7.1.ebuild 1080
+MD5 1f7353d1d44960fceb8327f477f4f332 gtetrinet-0.7.3-r1.ebuild 1218
+MD5 d5a144db7025d8257058d843f69c394b files/digest-gtetrinet-0.7.1 67
+MD5 88ef6ba6a576273aea3967c2fe47ae5e files/digest-gtetrinet-0.7.3-r1 68
+MD5 55322435e6834dd42550a20c3c45b6c8 files/digest-gtetrinet-0.7.4 68

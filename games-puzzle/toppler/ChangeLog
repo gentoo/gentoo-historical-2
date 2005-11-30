@@ -1,44 +1,6 @@
-# ChangeLog for games-puzzle/toppler
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/toppler/ChangeLog,v 1.11 2005/10/31 08:36:44 mr_bones_ Exp $
-
-  31 Oct 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  -toppler-1.0.6.ebuild, -toppler-1.1.0.ebuild:
-  clean old files
-
-*toppler-1.1.1 (18 Dec 2004)
-
-  18 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +toppler-1.1.1.ebuild:
-  version bump
-
-*toppler-1.1.0 (13 Dec 2004)
-
-  13 Dec 2004; Mike Frysinger <vapier@gentoo.org> +toppler-1.1.0.ebuild:
-  Version bump.
-
-  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> toppler-1.0.6.ebuild:
-  Added ~ppc.
-
-*toppler-1.0.6 (09 Feb 2004)
-
-  09 Feb 2004; Michael Sterrett <mr_bones_@gentoo.org> toppler-1.0.3.ebuild,
-  toppler-1.0.6.ebuild:
-  version bump
-
-*toppler-1.0.5 (25 Jan 2004)
-
-  25 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> toppler-1.0.5.ebuild:
-  version bump
-
-*toppler-1.0.4 (18 Jan 2004)
-
-  18 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> toppler-1.0.4.ebuild:
-  version bump
-
-*toppler-1.0.3 (09 Oct 2003)
-
-  09 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> toppler-1.0.3.ebuild:
-  version bump
+# ChangeLog for app-games/toppler
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/toppler/ChangeLog,v 1.1 2003/09/10 06:36:00 vapier Exp $
 
 *toppler-1.0.2 (09 Jun 2003)
 

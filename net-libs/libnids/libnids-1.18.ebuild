@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnids/libnids-1.18.ebuild,v 1.10 2005/09/16 01:14:10 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnids/libnids-1.18.ebuild,v 1.1 2003/11/04 18:14:17 solar Exp $
 
 inherit eutils
 
@@ -10,24 +10,29 @@ SRC_URI="http://www.packetfactory.net/Projects/libnids/dist/${P/_}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.1"
-KEYWORDS="alpha ppc ~sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
-DEPEND="virtual/libpcap
+DEPEND="net-libs/libpcap
 	>=net-libs/libnet-1.1.0-r3"
+
+S=${WORKDIR}/${P/_rc1}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-chksum.c-ebx.patch
+	# patch no longer patches clean >=libnids-1.18
+	# epatch ${FILESDIR}/libnids_gcc33_fix
 }
 
 src_compile() {
-	econf --enable-shared || die "econf failed"
-	make || die "emake failed"
+	econf --enable-shared || die
+	make || die
 }
 
 src_install() {
-	make install_prefix="${D}" install || die "make install failed"
+	einstall install_prefix=${D} || die
+	mkdir -p ${D}/usr/include/ ${D}/usr/share/man/man3/
+	cp -dpR ${D}/${D}/* ${D}/
+	rm -rf ${D}/${D} ${D}/var
 	dodoc CHANGES COPYING CREDITS MISC README
 }

@@ -1,39 +1,6 @@
 # ChangeLog for dev-perl/GnuPG-Interface
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/GnuPG-Interface/ChangeLog,v 1.11 2005/07/19 13:40:06 mcummings Exp $
-
-  19 Jul 2005; Michael Cummings <mcummings@gentoo.org>
-  GnuPG-Interface-0.34.ebuild:
-  Disabling tests
-
-  08 May 2005; Aron Griffis <agriffis@gentoo.org>
-  GnuPG-Interface-0.34.ebuild:
-  stable on ia64
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org>
-  GnuPG-Interface-0.34.ebuild:
-  Stable on ppc.
-
-  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  GnuPG-Interface-0.34.ebuild:
-  stable on amd64
-
-  21 Jan 2005; Michael Cummings <mcummings@gentoo.org>
-  GnuPG-Interface-0.34.ebuild:
-  Unmasking for x86
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  26 May 2004; Bryan Østergaard <kloeri@gentoo.org>
-  GnuPG-Interface-0.34.ebuild:
-  Stable on alpha.
-
-  16 Apr 2004; Michael Cummings <mcummings@gentoo.org>
-  GnuPG-Interface-0.34.ebuild:
-  Syntax fix for newdepend, bug 29064
-
-*GnuPG-Interface-0.34 (16 Dec 2003)
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/GnuPG-Interface/ChangeLog,v 1.1 2003/12/16 23:13:37 rac Exp $
 
   16 Dec 2003; <rac@gentoo.org> metadata.xml:
   Initial import based on bug 16995

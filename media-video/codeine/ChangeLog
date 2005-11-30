@@ -1,40 +1,6 @@
 # ChangeLog for media-video/codeine
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/codeine/ChangeLog,v 1.7 2005/09/06 02:20:56 cryos Exp $
-
-*codeine-1.0 (06 Sep 2005)
-
-  06 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org> +codeine-1.0.ebuild:
-  Version bump, fixed multilib issues, closes bug 104500.
-
-*codeine-1.0_rc1 (21 Jul 2005)
-
-  21 Jul 2005; Gregorio Guidi <greg_g@gentoo.org> +codeine-1.0_rc1.ebuild:
-  New version (#99741).
-
-*codeine-1.0_beta3 (14 Apr 2005)
-
-  14 Apr 2005; Gregorio Guidi <greg_g@gentoo.org> metadata.xml,
-  +codeine-1.0_beta3.ebuild:
-  New version (#89014). Add kde herd to metadata.xml.
-
-*codeine-1.0_beta2 (11 Apr 2005)
-
-  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
-  -files/codeine-1.0_beta1-xine-lib-1.0.patch,
-  +files/codeine-xine-lib-1.0.patch, codeine-1.0_beta1.ebuild,
-  +codeine-1.0_beta2.ebuild:
-  new upstream version, fixes #70658. generalised patchname, it also works for
-  the new version. updated maintainer information, chriswhite is retired. marked
-  older version stable on amd64 and x86.
-
-  09 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  +files/codeine-1.0_beta1-xine-lib-1.0.patch, codeine-1.0_beta1.ebuild:
-  added a configure patch to let codeine compile again xine-1.0. fixes bug
-  #76252.
-
-  30 Nov 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
-  Fixed herd in metadata.xml.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/codeine/ChangeLog,v 1.1 2004/10/24 05:40:28 chriswhite Exp $
 
 *codeine-1.0_beta1 (24 Oct 2004)
 

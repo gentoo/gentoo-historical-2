@@ -4,6 +4,10 @@
 svga
 icc
 icc-pgo
+mmx
+sse
+x86
+3dnow
 
 # These are debatable, since technically an ia64 could support this hardware
 pcmcia
@@ -13,8 +17,17 @@ pcmcia
 # No hardware to test
 pda
 
+# Chris PeBenito <pebenito@gentoo.org>
+# must use a SELinux profile
+selinux
+
 # No apm support on ia64
 apm
+
+# Paul de Vrieze <pauldv@gentoo.org>
+# There is no java in this profile (if there is it must be available). Without
+# this repoman will fail on apps like sys-libs/db
+java
 
 # tcc is x86-only
 tcc
@@ -22,6 +35,7 @@ tcc
 # I don't think that openafs really works on other architectures,
 # despite some internal Gentoo efforts (mine) to port it
 afs
+uclibc
 
 # see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
 # Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
@@ -42,41 +56,5 @@ pfpro
 solid
 sybase
 sybase-ct
-fdftk
-cpdflib
-qdbm
 
 hardened
-djbfft
-mzscheme
-
-# dietlibc
-diet
-
-jack
-
-freetts
-
-lirc
-
-# mono compiler doesn't build on ia64 (20 Jan 2005 agriffis)
-mono
-
-# need to wait for it jrockit to go stable
-java
-java-internal
-java-external
-
-emboss
-
-# lm_sensors not supported on ia64 hw, afaik
-lm_sensors
-
-# we can't test wifi currently
-wifi
-
-pike
-
-timidity
-
-firebird

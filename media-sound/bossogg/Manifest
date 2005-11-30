@@ -1,23 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 c3ae78fc66e214142614e5d050490e21 ChangeLog 2708
-MD5 ac9153525f6e57cb0b23cbb51ea677c0 bossogg-0.13.5.ebuild 1468
-MD5 99b3537223e28eee0f2f9b0c4887dcbd bossogg-0.13.6-r2.ebuild 1749
-MD5 9ba7855ea78c0f05c792b402f1108a3c bossogg-0.13.6-r3.ebuild 1670
-MD5 09d56222eddb522af24f43b7846bb58e bossogg-0.13.6.ebuild 1710
-MD5 1258e23a47f430724dd4a6b18798641c files/bossogg-0.13.6-Makefile.patch 1673
-MD5 986dd155135ce535ebc1b77485b6bd40 files/bossogg-0.13.6-gcc4.patch 1099
-MD5 3089685b6a78e3a1a57cd7315f1245b4 files/bossogg.initd 609
+MD5 5f1f6ba2e032e122f424f707df1a35d7 bossogg-0.13.5.ebuild 1074
 MD5 5744dec050eb39224fe02fcdd1e74bed files/digest-bossogg-0.13.5 66
-MD5 ba402f47f5f8d4052e2c61b26b6ba547 files/digest-bossogg-0.13.6 66
-MD5 ba402f47f5f8d4052e2c61b26b6ba547 files/digest-bossogg-0.13.6-r2 66
-MD5 ba402f47f5f8d4052e2c61b26b6ba547 files/digest-bossogg-0.13.6-r3 66
-MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD4DBQFDby/Ij5H05b2HAEkRAu6uAJsFo0Vz0EPi7zuaZ3zLca1EGgJz1ACXepcP
-s8CBmKxDCtLEbuNKMab7cw==
-=/NnS
------END PGP SIGNATURE-----
+MD5 8a9d691f2fa54f64626613d8e88804f4 files/bossogg.initd 554

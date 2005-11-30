@@ -1,58 +1,7 @@
 # ChangeLog for net-mail/serialmail
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/ChangeLog,v 1.16 2005/05/04 09:03:55 ferdy Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/ChangeLog,v 1.1 2002/11/03 07:46:39 raker Exp $
 
-  04 May 2005; Fernando J. Pereda <ferdy@gentoo.org>
-  serialmail-0.75-r2.ebuild:
-  fix #62337
-
-  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
-  serialmail-0.75-r1.ebuild:
-  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
-
-  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org>
-  serialmail-0.75-r2.ebuild:
-  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
-
-  21 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
-  serialmail-0.75-r2.ebuild:
-  Added to ~amd64, bug #69809
-
-  23 Oct 2004; Jason Wever <weeve@gentoo.org> serialmail-0.75-r2.ebuild:
-  Stable on sparc.
-
-  29 Sep 2004; Tuan Van <langthang@gentoo.org> serialmail-0.75-r2.ebuild:
-  stable on x86.
-
-  30 Jul 2004; Jon Hood <squinky86@gentoo.org> serialmail-0.75-r2.ebuild:
-  change virtual/glibc to virtual/libc
-
-  29 Jul 2004; Tuan Van <langthang@gentoo.org>
-  -files/serialmail-0.75-gentoo.patch, -files/serialmail-0.75-smtpauth.patch,
-  -files/serialmail-0.75-smtpauth_comp.patch, serialmail-0.75-r2.ebuild:
-  Move patches to $DISTDIR.
-
-*serialmail-0.75-r2 (28 Jul 2004)
-
-  28 Jul 2004; Tuan Van <langthang@gentoo.org>
-  +files/serialmail-0.75-gentoo.patch, +files/serialmail-0.75-smtpauth.patch,
-  +files/serialmail-0.75-smtpauth_comp.patch, +serialmail-0.75-r2.ebuild:
-  Revision bump. Ebuild submitted by: Petre Rodan <petre.rodan@avira.com>.
-  This should resolve bug #36937, #36542, and #29004.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  serialmail-0.75-r1.ebuild, serialmail-0.75.ebuild:
-  virtual/glibc -> virtual/libc
-
-*serialmail-0.75-r1 (10 Sep 2003)
-
-  10 Sep 2003; Patrick Kursawe <phosphan@gentoo.org>
-  serialmail-0.75-r1.ebuild, files/errno.patch:
-  The old errno beast again, reported and fixed in bug 28290.
-  Declaring stable immediately since this should not break anything.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *serialmail-0.75 (03 Nov 2002)
 
   03 Nov 2002; Nick Hadaway <raker@gentoo.org> serialmail-0.75.ebuild,

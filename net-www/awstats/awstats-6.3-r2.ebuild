@@ -1,14 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/awstats/awstats-6.3-r2.ebuild,v 1.5 2005/05/25 15:37:30 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/awstats/awstats-6.3-r2.ebuild,v 1.1 2005/02/13 19:32:50 ka0ttic Exp $
 
-inherit eutils webapp versionator
+inherit eutils webapp
 
 DESCRIPTION="AWStats is a short for Advanced Web Statistics."
 HOMEPAGE="http://awstats.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tgz
 	mirror://gentoo/${P}-6.4-bugfixes.diff.gz"
-RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 KEYWORDS="~alpha ppc ~mips ~sparc x86 ~amd64"
@@ -16,7 +15,7 @@ IUSE=""
 
 RDEPEND=">=dev-lang/perl-5.6.1
 	>=media-libs/libpng-1.2
-	perl-core/Time-Local
+	dev-perl/Time-Local
 	net-www/apache"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
@@ -43,16 +42,16 @@ src_unpack() {
 	    fi
 	done
 
-	local apachever=$(best_version net-www/apache)
-	apachever="$(get_major_version ${apachever#*/*-})"
-	[[ ${apachever} == "1" ]] && apachever=""
+	# Remove .cvs* files and CVS directories
+	find ${S} -name .cvs\* -or \( -type d -name CVS -prune \) | xargs rm -rf
 
 	# set default values for directories
-	sed -i -e "s|^\(LogFile=\).*$|\1\"/var/log/apache${apachever}/access_log\"|" \
-	    -e "s|^\(SiteDomain=\).*$|\1\"localhost\"|" \
-	    -e "s|^\(DirIcons=\).*$|\1\"/awstats/icons\"|" \
-	    -e "s|^\(DirCgi=\).*$|\1\"/cgi-bin/awstats\"|" \
-		${S}/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
+	sed -i -e "s#LogFile=.*#LogFile=\"/var/log/apache${APACHEVER}/access_log\"#" \
+	    -e "s#SiteDomain=.*#SiteDomain=\"localhost\"#" \
+	    -e "s#DirIcons=.*#DirIcons=\"/awstats/icons\"#" \
+	    -e "s#DirCgi=.*#DirCgi=\"/cgi-bin/awstats\"#" \
+	    -e "s#DataDir=.*#DataDir=\"${MY_HOSTROOTDIR}/awstats/datadir\"#" \
+	${S}/wwwroot/cgi-bin/awstats.model.conf || die "sed failed"
 
 	# set version in postinst-en.txt
 	sed -e "s/PVR/${PVR}/g" \

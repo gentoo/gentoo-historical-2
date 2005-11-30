@@ -1,49 +1,6 @@
 # ChangeLog for net-fs/am-utils
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/am-utils/ChangeLog,v 1.13 2005/10/06 12:28:28 agriffis Exp $
-
-  06 Oct 2005; Aron Griffis <agriffis@gentoo.org> am-utils-6.0.10.ebuild:
-  Mark 6.0.10 ~alpha
-
-*am-utils-6.0.10 (07 Jun 2005)
-
-  07 Jun 2005; Maurice van der Pot <griffon26@gentoo.org>
-  +files/am-utils-6.0.10-parallel-build.patch, +am-utils-6.0.10.ebuild:
-  Added new version 6.0.10 with a patch that enables parallel build.
-  Closes bug #89334 submitted by Daniel Webert <rockoo@gmail.com>
-
-  06 Jun 2005; Mike Frysinger <vapier@gentoo.org> am-utils-6.0.9-r1.ebuild:
-  Disable parallel build since it doesnt work #67136.
-
-  05 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  am-utils-6.0.9-r1.ebuild:
-  inherit eutils for epatch; tidy
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  am-utils-6.0.9-r1.ebuild, am-utils-6.0.9.ebuild:
-  virtual/glibc -> virtual/libc
-
-  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
-  manifest fix
-
-  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org>
-  am-utils-6.0.9-r1.ebuild:
-  set ppc in keywords
-
-  05 Jan 2004; zhen <zhen@gentoo.org> metadata.xml:
-  added to net-fs herd
-
-  21 Oct 2003; Luca Barbato <lu_zero@gentoo.org> am-utils-6.0.9-r1.ebuild:
-  Marked ~ppc
-
-*am-utils-6.0.9-r1 (16 Oct 2003)
-
-  16 Oct 2003; Daniel Robbins <drobbins@gentoo.org> am-utils-6.0.9-r1.ebuild:
-  Added gdbm compile fix patch from Red Hat to get this thing to compile on
-  AMD64, likely other systems.
-
-  03 Jun 2003; Dylan Carlson <absinthe@gentoo.org> am-utils-6.0.9.ebuild:
-  Unmasking x86.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/am-utils/ChangeLog,v 1.1 2003/04/10 22:06:42 liquidx Exp $
 
 *am-utils-6.0.9 (10 Apr 2003)
 

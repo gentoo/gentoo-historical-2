@@ -1,4 +1,2 @@
-MD5 e852914dc1ac40b0a78539a19c5ae188 ChangeLog 1044
-MD5 426e4653a793e35c7aadf72b387827c7 files/digest-libdmx-0.99.1 66
-MD5 3ee2515da4a3010db603f8ec88d3fa90 libdmx-0.99.1.ebuild 607
-MD5 a37bab73e2f24b213932c30997d3d360 metadata.xml 156
+MD5 36b1b8f8f6b907c0c7a95bfbf60e5352 libdmx-0.99.0.ebuild 469
+MD5 2b04b4f78e84eca94cd37487792a36df files/digest-libdmx-0.99.0 66

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.5-r3.ebuild,v 1.12 2005/08/24 00:33:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.5-r3.ebuild,v 1.1 2004/11/07 19:56:30 azarah Exp $
 
-inherit eutils libtool toolchain-funcs flag-o-matic
+inherit eutils libtool gnuconfig flag-o-matic
 
 FORCE_SYSTEMAUTH_UPDATE="no"
 SELINUX_PATCH="shadow-4.0.4.1-selinux.diff"
@@ -13,17 +13,19 @@ SRC_URI="ftp://ftp.pld.org.pl/software/shadow/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="pam selinux nls skey"
 
 RDEPEND=">=sys-libs/cracklib-2.7-r3
-	pam? ( >=sys-libs/pam-0.75-r4 sys-apps/pam-login )
-	!pam? ( !sys-apps/pam-login )
+	pam? ( >=sys-libs/pam-0.75-r4 )
+	!pam? ( !virtual/login )
 	skey? ( app-admin/skey )
 	selinux? ( sys-libs/libselinux )"
-DEPEND="${RDEPEND}
+DEPEND="${DEPEND}
 	>=sys-apps/portage-2.0.51-r2
 	nls? ( sys-devel/gettext )"
+#this requires a newer portage (>2.0.51-r2)
+#PROVIDE="!pam? ( virtual/login )"
 
 pkg_preinst() {
 	rm -f ${ROOT}/etc/pam.d/system-auth.new
@@ -64,8 +66,9 @@ src_unpack() {
 	# actually end up in the environment
 	epatch ${FILESDIR}/shadow-${PV}-fix-adding-of-pam_env-set-env-vars.patch
 
+	# Allows shadow configure detect newer systems properly
+	gnuconfig_update
 	elibtoolize
-	epunt_cxx
 }
 
 src_compile() {
@@ -110,11 +113,6 @@ src_install() {
 	insopts -m0600 ; doins ${FILESDIR}/securetty
 	insopts -m0600 ; doins etc/login.access
 	insopts -m0644 ; doins etc/limits
-	# Only output hvc ibm cruft for ppc64 machines
-	if [[ $(tc-arch) == "ppc64" ]] ; then
-		echo "hvc0" >> "${D}"/etc/securetty
-		echo "hvsi0" >> "${D}"/etc/securetty
-	fi
 
 	# needed for 'adduser -D'
 	insinto /etc/default
@@ -182,7 +180,7 @@ pkg_postinst() {
 		ewarn "  ${ROOT}etc/pam.d/system-auth.bak"
 		echo
 
-		cp -pPR ${ROOT}/etc/pam.d/system-auth \
+		cp -a ${ROOT}/etc/pam.d/system-auth \
 			${ROOT}/etc/pam.d/system-auth.bak;
 		mv -f ${ROOT}/etc/pam.d/system-auth.new \
 			${ROOT}/etc/pam.d/system-auth

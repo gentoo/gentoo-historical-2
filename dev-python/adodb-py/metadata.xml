@@ -3,7 +3,4 @@
 <pkgmetadata>
 <herd>python</herd>
 <longdescription>Database abstraction library for Python</longdescription>
-<longdescription lang="ja">
-Python言語用データベース抽象化ライブラリです。
-</longdescription>
 </pkgmetadata>

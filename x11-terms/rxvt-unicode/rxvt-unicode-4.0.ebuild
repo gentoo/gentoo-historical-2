@@ -1,20 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-4.0.ebuild,v 1.10 2005/05/05 02:53:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-4.0.ebuild,v 1.1 2004/09/28 22:10:47 latexer Exp $
 
-inherit eutils 64-bit
+inherit 64-bit eutils
+
+IUSE="xgetdefault"
 
 DESCRIPTION="rxvt clone with XFT and Unicode support"
-HOMEPAGE="http://software.schmorp.de/"
+HOMEPAGE="http://www.sourceforge.net/projects/rxvt-unicode/"
 SRC_URI="http://rxvt-unicode-dist.plan9.de/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ~mips amd64 ~ppc ~hppa ppc64"
-IUSE="xgetdefault"
+KEYWORDS="~x86 ~sparc ~mips ~amd64 ~ppc"
 
-DEPEND="dev-util/pkgconfig
-	sys-devel/libtool
+DEPEND="virtual/libc
 	virtual/x11
 	dev-lang/perl"
 

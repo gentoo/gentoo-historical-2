@@ -1,31 +1,6 @@
 # ChangeLog for net-misc/proxychains
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/proxychains/ChangeLog,v 1.7 2005/10/29 09:31:40 vapier Exp $
-
-  29 Oct 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/proxychains-2.1-autotools.patch, proxychains-2.1-r2.ebuild:
-  Cleanup autotools #91677.
-
-*proxychains-2.1-r2 (19 Apr 2005)
-
-  19 Apr 2005; Mike Frysinger <vapier@gentoo.org>
-  files/proxychains-2.1-libc-connect.patch, +proxychains-2.1-r2.ebuild:
-  Unbreak proxychains #89464 by Cliff Barnes.
-
-*proxychains-2.1-r1 (12 Mar 2005)
-
-  12 Mar 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/proxychains-2.1-libc-connect.patch, +proxychains-2.1-r1.ebuild:
-  Fix ugly connect() hacks.
-
-  06 Nov 2004; <pyrania@gentoo.org> proxychains-1.8.2.ebuild,
-  proxychains-2.1.ebuild:
-  Marked stable on x86.
-
-*proxychains-2.1 (30 Aug 2004)
-
-  30 Aug 2004; Mike Frysinger <vapier@gentoo.org> +proxychains-2.1.ebuild:
-  Version bump #61768 by Vasiliev Michael.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/proxychains/ChangeLog,v 1.1 2004/03/13 00:51:47 vapier Exp $
 
 *proxychains-1.8.2 (12 Mar 2004)
 

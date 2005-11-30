@@ -1,31 +1,13 @@
-# ChangeLog for games-kids/stickers
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/stickers/ChangeLog,v 1.8 2005/08/07 12:51:58 hansmi Exp $
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  stickers-0.1.3-r1.ebuild:
-  Stable on ppc.
-
-  10 Jun 2005; David Holm <dholm@gentoo.org> stickers-0.1.3-r1.ebuild:
-  Added to ~ppc.
-
-  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  03 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  stickers-0.1.3-r1.ebuild:
-  gcc34 fix? (bug #72734); tidy
-
-  24 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  stickers-0.1.3-r1.ebuild:
-  header fix; tidy
+# ChangeLog for app-games/stickers
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-kids/stickers/ChangeLog,v 1.1 2003/09/10 04:51:18 vapier Exp $
 
 *stickers-0.1.3-r1 (12 Mar 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> stickers-0.1.3.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> stickers-0.1.3.ebuild :
   Added LICENSE, KEYWORDS.
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> stickers-0.1.3-r1.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> stickers-0.1.3-r1.ebuild :
   Added LICENSE, KEYWORDS.
 
   12 Mar 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog :

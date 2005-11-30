@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/lynx/lynx-2.8.5-r2.ebuild,v 1.11 2005/11/20 09:40:01 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/lynx/lynx-2.8.5-r2.ebuild,v 1.1 2005/11/13 01:45:16 seemant Exp $
 
 inherit eutils flag-o-matic
 
@@ -15,7 +15,7 @@ SRC_URI="ftp://lynx.isc.org/${MY_P}/${MY_P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ~ia64 mips ppc ppc-macos ppc64 s390 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sparc x86"
 IUSE="ssl nls ipv6"
 
 DEPEND="sys-libs/ncurses
@@ -30,7 +30,7 @@ PATCHDIR=${WORKDIR}/gentoo/patches
 src_unpack() {
 	unpack ${A}; cd ${S}
 	EPATCH_SUFFIX="patch" epatch ${PATCHDIR}
-	epatch "${FILESDIR}/${P}"-darwin.patch
+	use userland_Darwin && epatch ${FILESDIR}/${P}-darwin.patch
 }
 
 src_compile() {

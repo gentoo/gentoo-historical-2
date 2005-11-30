@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/bochs/bochs-2.1.1.ebuild,v 1.25 2005/11/17 13:17:00 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/bochs/bochs-2.1.1.ebuild,v 1.1 2004/02/29 03:31:13 lu_zero Exp $
 
-inherit eutils wxwidgets
+inherit eutils
 
 DESCRIPTION="a LGPL-ed pc emulator"
 HOMEPAGE="http://bochs.sourceforge.net/"
@@ -11,17 +11,15 @@ SRC_URI="mirror://sourceforge/bochs/${P}.tar.gz
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ppc alpha sparc amd64"
-IUSE="debugger readline sdl wxwindows"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc"
+IUSE="sdl gtk readline"
 
-RDEPEND="virtual/libc
-	virtual/x11
-	sdl? ( media-libs/libsdl )
-	wxwindows? ( =x11-libs/wxGTK-2.4* )
-	readline? ( sys-libs/readline )"
-DEPEND="${RDEPEND}
+DEPEND=">=sys-libs/glibc-2.1.3
+	>=x11-base/xfree-4.0.1
 	>=sys-apps/sed-4
-	>=app-text/opensp-1.5"
+	sdl? media-libs/libsdl
+	gtk?  x11-libs/wxGTK
+	readline? sys-libs/readline"
 
 src_unpack() {
 #	unpack ${A}
@@ -34,32 +32,21 @@ src_unpack() {
 		-e 's: $(BOCHSDIR): $(DESTDIR)$(BOCHSDIR):g' Makefile.in || \
 			die "sed Makefile.in failed"
 #	epatch ${FILESDIR}/${P}-gcc3.patch || die
-	#Quick fix for a typo
-	epatch ${FILESDIR}/${P}-regparm-typo.patch ||die
 }
 
 src_compile() {
-	use wxwindows && \
-		need-wxwidgets gtk2
-
 	[ "$ARCH" == "x86" ] \
 		&& myconf="--enable-idle-hack --enable-fast-function-calls"
 	myconf="${myconf} `use_with sdl`"
+	myconf="${myconf} `use_with gtk wx`"
 	myconf="${myconf} `use_enable readline`"
-	use wxwindows && \
-		myconf="${myconf} --with-gtk --with-wx"
-	use wxwindows || \
-		myconf="${myconf} --without-gtk --without-wx"
-	use debugger && \
-		myconf="$myconf --enable-debugger --enable-disasm --enable-x86-debugger"
 
 	./configure \
 		--enable-fpu --enable-cdrom --enable-control-panel \
 		--enable-usb --enable-pci --enable-mmx --enable-sse\
-		--enable-cpu-level=6 --enable-vbe\
+		--enable-cpu-level=6 \
 		--enable-repeat-speedups --enable-guest2host-tlb \
-		--enable-plugins \
-		--enable-ignore-bad-msr \
+		--enable-plugins --enable-debugger \
 		--enable-ne2000 --enable-sb16=linux --enable-slowdown --prefix=/usr \
 		--infodir=/usr/share/info --mandir=/usr/share/man --host=${CHOST} \
 		--with-x11 $myconf || \

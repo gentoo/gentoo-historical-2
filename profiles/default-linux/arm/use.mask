@@ -1,15 +1,20 @@
+
+# Chris PeBenito <pebenito@gentoo.org>
+# must use a SELinux profile
+selinux
 hardened
 
 # Paul de Vrieze <pauldv@gentoo.org>
 # There is no java in this profile (if there is it must be available). Without
 # this repoman will fail on apps like sys-libs/db
 java
-java-internal
-java-external
 
+3dnow
 icc
 icc-pgo
+mmx
 svga
+sse
 uclibc
 
 # see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
@@ -26,7 +31,6 @@ empress
 empress-bcs
 esoob
 filepro
-firebird
 frontbase
 hyperwave
 informix
@@ -38,34 +42,3 @@ solid
 sybase
 sybase-ct
 fdftk
-djbfft
-qdbm
-mzscheme
-
-directfb
-qt
-arts
-kde
-alsa
-nas
-
-hal
-howl
-
-lirc
-jack
-afs
-
-emboss
-neXt
-lesstif
-
-mozilla
-
-dbus
-
-3dfx
-mono
-pike
-
-timidity

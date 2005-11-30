@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/gst-plugins-ffmpeg-0.8.4.ebuild,v 1.9 2005/07/02 13:47:35 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/gst-plugins-ffmpeg-0.8.4.ebuild,v 1.1 2005/03/11 19:06:37 lanius Exp $
 
 inherit flag-o-matic
 
@@ -12,11 +12,11 @@ PVP=(${PV//[-\._]/ })
 SLOT=${PVP[0]}.${PVP[1]}
 
 DESCRIPTION="FFmpeg based gstreamer plugin"
-HOMEPAGE="http://gstreamer.freedesktop.org/modules/gst-ffmpeg.html"
-SRC_URI="http://gstreamer.freedesktop.org/src/${MY_PN}/${MY_P}.tar.bz2"
-
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
+SRC_URI="http://gstreamer.freedesktop.org/src/${MY_PN}/${MY_P}.tar.bz2"
+HOMEPAGE="http://gstreamer.freedesktop.org/modules/gst-ffmpeg.html"
+
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}

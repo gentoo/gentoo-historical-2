@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/multiskkserv/multiskkserv-20020201.ebuild,v 1.10 2005/01/01 14:36:11 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/multiskkserv/multiskkserv-20020201.ebuild,v 1.1 2003/07/16 18:59:43 usata Exp $
 
-inherit eutils fixheadtails
+IUSE=""
 
 CDB_PV=0.75
 CDB_PN=cdb
@@ -15,33 +15,32 @@ SRC_URI="http://www3.big.or.jp/~sian/linux/products/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha"
-IUSE=""
+KEYWORDS="~x86 ~alpha ~sparc ~ppc"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	app-i18n/skk-jisyo-cdb"
 PROVIDE="virtual/skkserv"
 
+S=${WORKDIR}/${P}
+
 pkg_setup() {
+
 	einfo "If you want to add some extra SKK dictionaries,"
 	einfo "please emerge app-i18n/skk-jisyo-extra first."
 }
 
 src_unpack() {
+
 	unpack ${A}
 
 	cd ${WORKDIR}/${CDB_P}
 	epatch ${FILESDIR}/${CDB_P}-errno.diff
-	ht_fix_all
 
-	cd ${S}
-	ht_fix_all
-
-	cd ${S}/src
-	epatch ${FILESDIR}/${P}-gcc34.diff
+	cp ${FILESDIR}/multiskkserv.conf ${S}
 }
 
 src_compile() {
+
 	cd ${WORKDIR}/${CDB_P}
 	make || die
 	cd -
@@ -58,18 +57,20 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+
+	einstall || die
 
 	insinto /etc/conf.d
-	newins ${FILESDIR}/multiskkserv.conf multiskkserv
+	newins multiskkserv.conf multiskkserv
 
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/multiskkserv.initd multiskkserv
 
-	dodoc AUTHORS ChangeLog INSTALL NEWS README*
+	dodoc AUTHORS COPYING* ChangeLog INSTALL NEWS README*
 }
 
 pkg_postinst() {
+
 	einfo "By default, multiskkserv will look up only SKK-JISYO.L."
 	einfo "If you want to use more dictionaries,"
 	einfo "edit /etc/conf.d/multiskkserv manually."

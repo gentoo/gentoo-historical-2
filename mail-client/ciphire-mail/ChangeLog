@@ -1,40 +1,6 @@
 # ChangeLog for mail-client/ciphire-mail
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/ciphire-mail/ChangeLog,v 1.8 2005/09/22 14:53:34 wolf31o2 Exp $
-
-  22 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ciphire-mail-1.0.0.ebuild, ciphire-mail-1.1.009.ebuild,
-  ciphire-mail-1.1.015.ebuild:
-  Revert last change.
-
-  22 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ciphire-mail-1.0.0.ebuild, ciphire-mail-1.1.009.ebuild,
-  ciphire-mail-1.1.015.ebuild:
-  Removed explicit license information from check_license due to bug in eclass.
-
-  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ciphire-mail-1.0.0.ebuild, ciphire-mail-1.1.009.ebuild,
-  ciphire-mail-1.1.015.ebuild:
-  Changed check_license to explicitly list license to check.
-
-*ciphire-mail-1.1.015 (16 Sep 2005)
-
-  16 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
-  +ciphire-mail-1.1.015.ebuild:
-  New release.
-
-  07 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
-  ciphire-mail-1.0.0.ebuild:
-  Stable on x86.
-
-*ciphire-mail-1.1.009 (07 Sep 2005)
-
-  07 Sep 2005; Martin Schlemmer <azarah@gentoo.org>
-  +ciphire-mail-1.1.009.ebuild:
-  Update version. Add amd64 support.
-
-  25 Jul 2005; Caleb Tennis <caleb@gentoo.org> ciphire-mail-1.0.0.ebuild:
-  Fix qt dep per bug #100235
+# $Header: /var/cvsroot/gentoo-x86/mail-client/ciphire-mail/ChangeLog,v 1.1 2005/07/13 18:53:57 azarah Exp $
 
 *ciphire-mail-1.0.0 (13 Jul 2005)
 

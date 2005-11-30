@@ -3,13 +3,7 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-	<email>swegener@gentoo.org</email>
-	<name>Sven Wegener</name>
-	<description>Primary Maintainer</description>
+  <email>jhhudso@gentoo.org</email>
+  <name>Jared Hudson</name>
 </maintainer>
-<longdescription>
-The PowerDNS Nameserver is a modern, advanced and high performance authoritative-
-only nameserver. It is written from scratch and conforms to all relevant DNS
-standards documents. Furthermore, PowerDNS interfaces with almost any database.
-</longdescription>
 </pkgmetadata>

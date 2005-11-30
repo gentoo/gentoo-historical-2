@@ -1,34 +1,33 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mcdp/mcdp-0.3j.ebuild,v 1.15 2005/09/10 15:51:53 flameeyes Exp $
-
-inherit eutils toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mcdp/mcdp-0.3j.ebuild,v 1.1 2003/07/11 09:36:25 jje Exp $
 
 DESCRIPTION="A very small console cd player"
 HOMEPAGE="http://www.mcmilk.de/projects/mcdp/"
 SRC_URI="http://www.mcmilk.de/projects/mcdp/dl/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
-IUSE=""
+KEYWORDS="~x86"
+LICENSE="GPL-2"
 
-DEPEND=""
-RDEPEND=""
+DEPEND="dev-libs/dietlibc"
 
-src_unpack() {
-	unpack ${A}
-	epatch "${FILESDIR}"/${P}-dietlibc-fix.patch
+src_unpack()
+{
+	unpack ${P}.tar.gz
 }
 
-src_compile() {
-	emake CC="$(tc-getCC)" || die
+src_compile()
+{
+	cd ${P}
+	make || die
 }
 
-src_install() {
+src_install() 
+{
+	DESTDIR=${D}	
 	dobin mcdp || die
 	doman mcdp.1 || die
-
-	cd doc
-	dodoc CHANGES README THANKS profile.sh
 }
+
+

@@ -1,58 +1,6 @@
 # ChangeLog for dev-ruby/ruby-dbi
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-dbi/ChangeLog,v 1.13 2005/04/30 19:08:27 fmccor Exp $
-
-  30 Apr 2005; Ferris McCormick <fmccor@gentoo.org>
-  ruby-dbi-0.0.21-r1.ebuild:
-  Add ~sparc keyword --- works fine on sparc.
-
-  05 Aug 2004; Anders Rune Jensen <arj@gentoo.org> ruby-dbi-0.0.21-r1.ebuild:
-  Depend on version 2 of sqlite.
-
-*ruby-dbi-0.0.21-r1 (23 May 2004)
-
-  23 May 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-dbi-0.0.16-r1.ebuild,
-  ruby-dbi-0.0.18-r1.ebuild, ruby-dbi-0.0.21-r1.ebuild, ruby-dbi-0.0.21.ebuild:
-  Added sqlite IUSE flag. Thanks to Andreas Schwarz <gentoo@andreas-s.net>,
-  closing bug #47494. Removed old ebuilds.
-
-  17 Apr 2004; David Holm <dholm@gentoo.org> ruby-dbi-0.0.21.ebuild:
-  Added to ~ppc.
-
-  10 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-dbi-0.0.16-r1.ebuild,
-  ruby-dbi-0.0.18-r1.ebuild, ruby-dbi-0.0.21.ebuild:
-  virtual/ruby fix
-
-*ruby-dbi-0.0.21 (01 Apr 2004)
-*ruby-dbi-0.0.18-r1 (01 Apr 2004)
-*ruby-dbi-0.0.16-r1 (01 Apr 2004)
-
-  01 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> ruby-dbi-0.0.16-r1.ebuild,
-  ruby-dbi-0.0.16.ebuild, ruby-dbi-0.0.18-r1.ebuild, ruby-dbi-0.0.18.ebuild,
-  ruby-dbi-0.0.21.ebuild, files/ruby-dbi-destdir-gentoo.diff:
-  Version bumped. Fixed hardcoded rubydir, closing bug #46237
-
-*ruby-dbi-0.0.18 (27 Jul 2002)
-
-  27 Oct 2002; Ryan Phillips <rphillips@gentoo.org> ruby-dbi-0.0.17.ebuild :
-
-  New version
-
-*ruby-dbi-0.0.16 (10 Jul 2002)
-
-  10 Jul 2002; Ryan Phillips <rphillips@gentoo.org> ruby-dbi-0.0.16.ebuild :
-
-  New version
-
-*ruby-dbi-0.0.15 (21 Jun 2002)
-
-  21 Jun 2002; Ryan Phillips <rphillips@gentoo.org> ruby-dbi-0.0.15.ebuild :
-
-  New version
-
-  07 Jul 2002; Aron Griffis <agriffis@gentoo.org> ruby-dbi-0.0.15.ebuild:
-
-  Added LICENSE, KEYWORDS, SLOT.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/ruby-dbi/ChangeLog,v 1.1 2002/04/24 19:27:56 karltk Exp $
 
 *ruby-dbi-0.0.13 (24 Apr 2002)
 
@@ -62,7 +10,3 @@
   similar to Perl's DBI.
 
   Ebuild submitted by Geert Bevin <gbevin@uwyn.com>.
-
-  07 Jul 2002; Aron Griffis <agriffis@gentoo.org> ruby-dbi-0.0.13.ebuild:
-
-  Added LICENSE, KEYWORDS, SLOT.

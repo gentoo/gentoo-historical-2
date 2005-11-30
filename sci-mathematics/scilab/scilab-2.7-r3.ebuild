@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-2.7-r3.ebuild,v 1.3 2005/06/21 00:12:24 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/scilab/scilab-2.7-r3.ebuild,v 1.1 2004/12/28 15:14:40 ribosome Exp $
 
 inherit virtualx eutils
 
@@ -38,7 +38,7 @@ pkg_setup() {
 	if ! use ifc && [ -z `which g77` ]; then
 		#if ifc is defined then the dep was already checked
 		eerror "No fortran compiler found on the system!"
-		eerror "Please add fortran to your USE flags and reemerge gcc!"
+		eerror "Please add f77 to your USE flags and reemerge gcc!"
 		die
 	fi
 }

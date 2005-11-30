@@ -1,20 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/arj/arj-3.10.20.ebuild,v 1.4 2005/01/01 11:41:07 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/arj/arj-3.10.20.ebuild,v 1.1 2004/04/27 15:52:47 aliz Exp $
 
 inherit gnuconfig eutils
 
-DESCRIPTION="Utility for opening arj archives"
+DESCRIPTION="Utility for opening arj archives."
 HOMEPAGE="http://arj.sourceforge.net/"
 SRC_URI="mirror://sourceforge/arj/${P}.tar.gz"
 
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 IUSE=""
-RESTRICT="nostrip"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+
+RESTRICT=nostrip
 
 src_compile() {
 	gnuconfig_update
@@ -30,6 +31,6 @@ src_compile() {
 
 src_install() {
 	cd ${S}/linux-gnu/en/rs/u
-	dobin bin/* || die
+	dobin bin/*
 	dodoc doc/arj/* ${S}/ChangeLog
 }

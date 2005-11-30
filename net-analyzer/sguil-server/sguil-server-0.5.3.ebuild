@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sguil-server/sguil-server-0.5.3.ebuild,v 1.3 2005/10/13 15:22:15 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sguil-server/sguil-server-0.5.3.ebuild,v 1.1 2005/10/08 14:01:29 strerror Exp $
 
 inherit eutils ssl-cert
 
@@ -16,7 +16,7 @@ DEPEND=">=dev-lang/tcl-8.3
 	>=dev-tcltk/tclx-8.3
 	dev-tcltk/tcllib
 	dev-tcltk/mysqltcl
-	ssl? ( >=dev-tcltk/tls-1.4.1 )"
+	ssl? >=dev-tcltk/tls-1.4.1"
 RDEPEND="${DEPEND}
 	net-analyzer/p0f
 	net-analyzer/tcpflow
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}/sguil-${PV}
 
 pkg_setup() {
-	if built_with_use dev-lang/tcl threads ; then
+	if built_with_use tcl threads ; then
 		eerror
 		eerror "Sguil does not run when tcl was built with threading enabled."
 		eerror "Please rebuild tcl without threads and reemerge this ebuild."

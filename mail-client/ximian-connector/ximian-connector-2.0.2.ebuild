@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/ximian-connector/ximian-connector-2.0.2.ebuild,v 1.5 2005/02/14 08:39:28 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/ximian-connector/ximian-connector-2.0.2.ebuild,v 1.1 2004/10/16 20:48:01 liquidx Exp $
 
 inherit gnome2 eutils
 
 DESCRIPTION="Evolution module for connecting to Microsoft Exchange"
-HOMEPAGE="http://www.novell.com/products/desktop/features/evolution.html"
+HOMEPAGE="http://www.novell.com/products/connector/"
 LICENSE="GPL-2"
 
 SLOT="2.0"
-KEYWORDS="x86 ~sparc"
+KEYWORDS="~x86 ~sparc"
 IUSE="debug doc"
 
 RDEPEND=">=mail-client/evolution-2.0.2
@@ -21,7 +21,7 @@ RDEPEND=">=mail-client/evolution-2.0.2
 		>=gnome-base/libgnomeui-2.0
 		>=gnome-base/libbonobo-2.0
 		>=net-nds/openldap-2.1.30-r2
-		virtual/krb5"
+		>=app-crypt/mit-krb5-1.3.0"
 
 DEPEND="${RDEPEND}
 		dev-util/intltool

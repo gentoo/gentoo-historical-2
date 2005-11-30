@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/mnet/mnet-0.6.2.340.ebuild,v 1.5 2004/07/03 12:14:54 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mnet/mnet-0.6.2.340.ebuild,v 1.1 2004/02/11 21:29:47 mholzer Exp $
 
 IUSE="gtk"
 S=${WORKDIR}/${PN}
@@ -10,11 +10,11 @@ RESTRICT="nomirror"
 HOMEPAGE="http://mnet.sourceforge.net/"
 
 DEPEND="dev-lang/python"
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	dev-lang/python
-	gtk? ( dev-python/wxpython  )"
+	gtk? ( dev-python/wxPython  )"
 LICENSE="LGPL-2.1"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 SLOT="0"
 
 src_compile() {

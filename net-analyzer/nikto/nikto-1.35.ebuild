@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nikto/nikto-1.35.ebuild,v 1.2 2005/08/13 02:29:40 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nikto/nikto-1.35.ebuild,v 1.1 2005/05/30 14:24:07 mcummings Exp $
 
 DESCRIPTION="Web Server vulnerability scanner."
 HOMEPAGE="http://www.cirt.net/code/nikto.shtml"
@@ -8,7 +8,7 @@ SRC_URI="http://www.cirt.net/source/nikto/ARCHIVE/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc"
 RDEPEND="dev-lang/perl
 		>=net-analyzer/nmap-3.00
 		ssl? ( dev-libs/openssl )"

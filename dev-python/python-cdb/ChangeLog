@@ -1,28 +1,6 @@
 # ChangeLog for dev-python/python-cdb
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cdb/ChangeLog,v 1.9 2005/08/28 20:05:47 grobian Exp $
-
-  28 Aug 2005; Fabian Groffen <grobian@gentoo.org> python-cdb-0.32.ebuild:
-  Marking ~ppc-macos (bug #87701)
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  python-cdb-0.32.ebuild:
-  Stable on ppc.
-
-  01 Apr 2005; Joseph Jezak <josejx@gentoo.org> python-cdb-0.32.ebuild:
-  Marked ~ppc for bug #87349.
-
-  27 Mar 2005; Tom Martin <slarti@gentoo.org> python-cdb-0.32.ebuild:
-  Stable on amd64, testing on sparc.
-
-  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  07 Dec 2004; Dylan Carlson <absinthe@gentoo.org> python-cdb-0.32.ebuild:
-  Keywords ~amd64.
-
-  11 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> python-cdb-0.32.ebuild:
-  Fix header.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-cdb/ChangeLog,v 1.1 2003/07/12 15:54:44 liquidx Exp $
 
 *python-cdb-0.32 (12 Jul 2003)
 

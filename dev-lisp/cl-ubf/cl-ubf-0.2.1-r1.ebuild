@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-ubf/cl-ubf-0.2.1-r1.ebuild,v 1.4 2005/05/24 18:48:36 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-ubf/cl-ubf-0.2.1-r1.ebuild,v 1.1 2004/02/12 09:13:20 mkennedy Exp $
 
 inherit common-lisp
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://common-lisp.net/project/ubf/
 SRC_URI="http://common-lisp.net/project/ubf/releases/ubf-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND="dev-lisp/common-lisp-controller
 	virtual/commonlisp"

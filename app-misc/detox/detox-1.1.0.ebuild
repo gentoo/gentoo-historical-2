@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/detox-1.1.0.ebuild,v 1.2 2005/03/06 13:57:51 ciaranm Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-misc/detox/detox-1.1.0.ebuild,v 1.1 2005/03/05 21:55:55 ciaranm Exp $
 
 DESCRIPTION="detox safely removes spaces and strange characters from filenames"
 HOMEPAGE="http://detox.sourceforge.net/"
@@ -23,12 +21,17 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	epatch ${FILESDIR}/${P}-destdir.patch
-	epatch ${FILESDIR}/${P}-parallel_build.patch
+	# make DESTDIR installs work
+	sed -i -e '/\${INSTALL}/s,\(^.*\)\$,\1${DESTDIR}/$,g' Makefile.in \
+		|| die "Makefile.in fix 1 failed. That isn't supposed to happen."
 }
 
 src_compile() {
 	econf --with-popt || die "econf failed"
+
+	# The lengths I go to to get parallel make to work. Ain't I kind?
+	emake -j 1 config_file_l.c
+	emake -j 1 config_file_y.h
 	emake || die "emake failed"
 }
 

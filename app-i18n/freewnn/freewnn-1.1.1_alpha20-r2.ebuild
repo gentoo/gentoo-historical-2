@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/freewnn/freewnn-1.1.1_alpha20-r2.ebuild,v 1.4 2005/11/29 03:31:45 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/freewnn/freewnn-1.1.1_alpha20-r2.ebuild,v 1.1 2004/07/22 15:35:41 matsuu Exp $
 
-inherit eutils
+inherit eutils gnuconfig
 
 MY_P="FreeWnn-${PV/_alpha/-a0}"
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.freewnn.org/pub/FreeWnn/alpha/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~ia64"
 IUSE="X ipv6"
 
 DEPEND="virtual/libc
@@ -30,14 +30,16 @@ src_unpack() {
 }
 
 src_compile() {
+	gnuconfig_update
+	get_number_of_jobs
+
 	econf \
 		--disable-cWnn \
 		--disable-kWnn \
 		--without-termcap \
-		$(use_with X x) \
-		$(use_with ipv6) \
-		|| die "./configure failed"
-	emake -j1 || die
+		`use_with X x` \
+		`use_with ipv6` || die "./configure failed"
+	emake || die
 }
 
 src_install() {

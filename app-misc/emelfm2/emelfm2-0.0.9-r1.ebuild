@@ -1,19 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/emelfm2-0.0.9-r1.ebuild,v 1.6 2005/09/03 03:03:33 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/emelfm2/emelfm2-0.0.9-r1.ebuild,v 1.1 2004/10/07 05:22:19 brad Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
 DESCRIPTION="A file manager that implements the popular two-pane design based on gtk+-2"
-HOMEPAGE="http://emelfm2.org/"
-SRC_URI="http://emelfm2.org/rel/${P}.tar.gz"
+HOMEPAGE="http://dasui.prima.de/e2wiki/"
+SRC_URI="http://dasui.prima.de/~tooar/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86 ~ppc"
 IUSE="nls"
 
-DEPEND=">=x11-libs/gtk+-2.4"
+DEPEND=">=x11-libs/gtk+-2.4*"
 
 src_unpack() {
 	unpack ${A}
@@ -23,10 +23,9 @@ src_unpack() {
 src_compile() {
 	local myconf
 
-	# bug 68986
-	export CC="$(tc-getCC) ${CFLAGS}"
 	use nls && myconf="-DENABLE_NLS"
 	emake PREFIX=/usr \
+		CC="gcc ${CFLAGS}" \
 		NLS=${myconf} || die "emake failed"
 }
 

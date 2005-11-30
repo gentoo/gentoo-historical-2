@@ -1,21 +1,23 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/palo/palo-1.3_pre20040303.ebuild,v 1.4 2004/07/01 21:46:25 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/palo/palo-1.3_pre20040303.ebuild,v 1.1 2004/03/26 19:08:53 gmsoft Exp $
 
 MY_V=${PV/_pre/-CVS}
 DESCRIPTION="PALO : PArisc Linux Loader"
 HOMEPAGE="http://parisc-linux.org/"
 SRC_URI="http://ftp.parisc-linux.org/cvs/palo-${MY_V}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~hppa"
-IUSE=""
-
-DEPEND="virtual/libc"
-PROVIDE="virtual/bootloader"
 
 S=${WORKDIR}/palo
+
+#Compile only on hppa stations
+KEYWORDS="~hppa -*"
+IUSE=""
+
+PROVIDE="virtual/bootloader"
+
+DEPEND=">=glibc-2.2.4"
 
 src_compile() {
 	emake -C palo CFLAGS="${CFLAGS} -I../include -I../lib" || die
@@ -25,10 +27,11 @@ src_compile() {
 }
 
 src_install() {
-	dosbin palo/palo || die
+	dosbin palo/palo
 	doman palo.8
 	dohtml README.html
-	dodoc README palo.conf
+	dodoc README
+	dodoc palo.conf
 
 	insinto /etc
 	doins ${FILESDIR}/palo.conf

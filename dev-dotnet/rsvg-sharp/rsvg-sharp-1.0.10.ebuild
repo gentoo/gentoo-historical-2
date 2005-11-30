@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/rsvg-sharp/rsvg-sharp-1.0.10.ebuild,v 1.3 2005/10/16 00:31:45 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-dotnet/rsvg-sharp/rsvg-sharp-1.0.10.ebuild,v 1.1 2005/05/24 17:40:18 latexer Exp $
 
 inherit gtk-sharp-component
 
 SLOT="1"
-KEYWORDS="ppc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 DEPEND="${DEPEND}

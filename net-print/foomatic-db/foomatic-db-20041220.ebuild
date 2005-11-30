@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-db/foomatic-db-20041220.ebuild,v 1.5 2005/08/16 05:21:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-db/foomatic-db-20041220.ebuild,v 1.1 2004/12/20 21:28:04 lanius Exp $
 
 DESCRIPTION="Foomatic printer database"
-HOMEPAGE="http://www.linuxprinting.org/foomatic.html"
+HOMEPAGE="http://www.linuxprinting.org/foomatic"
 SRC_URI="http://www.linuxprinting.org/download/foomatic/${P}.tar.gz
 	ppds? ( http://www.linuxprinting.org/download/foomatic/foomatic-filters-ppds-${PV}.tar.gz )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips"
 IUSE="cups ppds"
 
 DEPEND="dev-libs/libxml2

@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/pmk/pmk-0.8.1.ebuild,v 1.4 2004/07/02 05:12:13 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/pmk/pmk-0.8.1.ebuild,v 1.1 2004/03/16 15:29:52 dholm Exp $
 
 DESCRIPTION="Aims to be an alternative to GNU autoconf"
-HOMEPAGE="http://pmk.sourceforge.net/"
 SRC_URI="mirror://sourceforge/pmk/${P}.tar.gz"
+HOMEPAGE="http://pmk.sourceforge.net/"
+LICENSE="GPL-2"
 
-LICENSE="BSD"
+DEPEND="virtual/glibc"
+IUSE=""
 SLOT="0"
 KEYWORDS="~x86 ~ppc"
-IUSE=""
-
-DEPEND="virtual/libc"
 
 src_compile() {
 	./pmkcfg.sh -p /usr

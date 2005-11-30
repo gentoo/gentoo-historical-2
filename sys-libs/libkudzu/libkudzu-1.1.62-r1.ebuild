@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libkudzu/libkudzu-1.1.62-r1.ebuild,v 1.10 2005/11/18 15:36:36 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libkudzu/libkudzu-1.1.62-r1.ebuild,v 1.1 2005/09/06 21:51:33 wolf31o2 Exp $
 
 inherit eutils
 
@@ -11,21 +11,23 @@ HOMEPAGE="http://fedora.redhat.com/projects/additional-projects/kudzu/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 -mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 -mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="dev-libs/popt
-	|| ( sys-apps/hwdata-gentoo
+	|| (
 		sys-apps/hwdata-knoppix
 		sys-apps/hwdata )"
 DEPEND="dev-libs/popt
-	sys-apps/pciutils"
+	sys-apps/pciutils
+	!sys-apps/kudzu
+	!sys-apps/kudzu-knoppix
+	!sys-libs/libkudzu-knoppix"
 
 src_unpack() {
 	unpack ${A}
 	epatch ${FILESDIR}/sunlance.patch
 	epatch ${FILESDIR}/ppc.patch
-	epatch ${FILESDIR}/typedef_byte.patch
 }
 
 src_compile() {

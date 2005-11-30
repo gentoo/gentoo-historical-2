@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/otpcalc/otpcalc-0.97.ebuild,v 1.5 2005/07/20 14:38:15 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/otpcalc/otpcalc-0.97.ebuild,v 1.1 2005/04/29 22:28:55 taviso Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://killa.net/infosec/otpCalc/otpCalc-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ppc sparc x86"
+KEYWORDS="~x86 ~alpha ~ppc"
 IUSE=""
 
 DEPEND="=x11-libs/gtk+-1.2*

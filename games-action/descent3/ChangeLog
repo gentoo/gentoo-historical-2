@@ -1,48 +1,6 @@
-# ChangeLog for games-action/descent3
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-action/descent3/ChangeLog,v 1.14 2005/11/12 16:11:19 wolf31o2 Exp $
-
-*descent3-1.4.0b-r1 (12 Nov 2005)
-
-  12 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  +descent3-1.4.0b-r1.ebuild:
-  Added initial support for amd64.
-
-  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  descent3-1.4.0b.ebuild:
-  Added addition dir variable to games_make_wrapper for bug #109793.
-
-  06 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  descent3-1.4.0b.ebuild:
-  Updated to use lokigames mirrors.
-
-  24 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  descent3-1.4.0b.ebuild:
-  Changed descent3 in SRC_URI to PN variable.
-
-  09 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  descent3-1.4.0b.ebuild:
-  Added eutils to inherit.
-
-  09 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> -files/descent3,
-  descent3-1.4.0b.ebuild:
-  Updated to use newer functions added since this ebuild was created.
-
-  05 Mar 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  descent3-1.4.0b.ebuild:
-  Changing /opt/descent3 to dir variable and closing bug #84157.
-
-  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> descent3-1.4.0b.ebuild:
-  fix use invocation
-
-  04 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> descent3-1.4.0b.ebuild:
-  Fixed crash with 2.6 and closing bug #38862.
-
-  19 Mar 2004; Chris Gianelloni <wolf31o2@gentoo.org> descent3-1.4.0b.ebuild:
-  Added -p to mkdir.  Closing bug #43427.
-
-  15 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> descent3-1.4.0b.ebuild:
-  Updated to use new cdrom_get_cds routine in eutils.eclass.
+# ChangeLog for app-games/descent3
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-action/descent3/ChangeLog,v 1.1 2003/09/10 19:29:16 vapier Exp $
 
 *descent3-1.4.0b (28 Jul 2003)
 

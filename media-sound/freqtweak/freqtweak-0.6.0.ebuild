@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/freqtweak/freqtweak-0.6.0.ebuild,v 1.7 2005/01/16 21:33:01 luckyduck Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-sound/freqtweak/freqtweak-0.6.0.ebuild,v 1.1 2004/07/04 22:22:31 fvdpol Exp $
 
 inherit eutils
 
@@ -12,11 +10,13 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~x86 ~amd64"
+
+IUSE=""
 
 DEPEND="x11-libs/wxGTK
-	>=sci-libs/fftw-3.0
-	=dev-libs/libsigc++-1.2*
+	>=dev-libs/fftw-3.0
+	>=dev-libs/libsigc++-0.14
 	dev-libs/libxml2
 	media-sound/jack-audio-connection-kit"
 
@@ -36,6 +36,6 @@ pkg_setup() {
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README THANKS
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS COPYING ChangeLog NEWS README THANKS
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/zipper/zipper-0.9.ebuild,v 1.4 2005/11/04 18:11:35 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/zipper/zipper-0.9.ebuild,v 1.1 2004/11/14 20:33:38 fafhrd Exp $
 
 inherit gnustep
 
@@ -11,11 +11,10 @@ HOMEPAGE="http://xanthippe.dyndns.org/Zipper/"
 SRC_URI="http://xanthippe.dyndns.org/Zipper/${P/z/Z}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~ppc"
 
-IUSE=""
+IUSE="${IUSE}"
 DEPEND="${GS_DEPEND}
-	gnustep-libs/renaissance
 	gnustep-libs/objcunit"
 RDEPEND="${GS_RDEPEND}
 	app-arch/tar
@@ -25,3 +24,4 @@ RDEPEND="${GS_RDEPEND}
 # what to do about rar? unrar doesn't seem to work right, and rar is intel only
 
 egnustep_install_domain "System"
+

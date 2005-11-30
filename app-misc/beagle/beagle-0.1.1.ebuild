@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.1.1.ebuild,v 1.6 2005/11/06 18:16:47 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.1.1.ebuild,v 1.1 2005/10/24 14:02:17 dsd Exp $
 
-inherit gnome.org eutils mono
+inherit gnome.org gnome2 eutils mono
 
 DESCRIPTION="Beagle is a search tool that ransacks your personal information space to find whatever you're looking for."
 HOMEPAGE="http://www.beagle-project.org/"
@@ -30,11 +30,11 @@ RDEPEND=">=dev-lang/mono-1.1.9.1
 	>=dev-libs/atk-1.2.4
 	>=media-libs/libexif-0.6.0
 	>=dev-libs/libxml2-2.6.19
-	wv? ( =app-text/wv-1.0.3-r1 )
-	chm? ( app-doc/chmlib )
+	wv? (>=app-text/wv-1.0.3-r1)
+	chm? (app-doc/chmlib)
 	pdf? ( app-text/xpdf )
 	spreadsheet? ( >=app-office/gnumeric-1.4.3-r3 )
-	|| ( (
+	||( (
 		x11-libs/libX11
 		x11-libs/libXScrnSaver
 		x11-libs/libXt
@@ -44,12 +44,21 @@ RDEPEND=">=dev-lang/mono-1.1.9.1
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
-	|| ( (
+	||( (
 		x11-proto/xproto
 		x11-proto/scrnsaverproto )
 	virtual/x11 )"
 
+USE_DESTDIR="1"
+
 pkg_setup() {
+	DOCS="AUTHORS ChangeLog INSTALL NEWS README"
+
+	G2CONF="${G2CONF} \
+	$(use_enable webservices) \
+	--enable-libbeagle \
+	--disable-evolution-sharp"
+
 	if built_with_use dev-libs/gmime mono
 	then
 		einfo "Mono support enabled in dev-libs/gmime, I will continue..."
@@ -80,30 +89,19 @@ src_unpack() {
 
 	# Fix handling of filenames
 	epatch ${FILESDIR}/${P}-uri-serialization.patch
-
-	# We aren't compatible with wv-1.2.0 yet
-	sed -i -e 's/wv-1.0/wv-1.0 < 1.2.0/g' configure
-}
-
-src_compile() {
-	econf $(use_enable webservices) \
-		--enable-libbeagle \
-		--disable-evolution-sharp \
-		|| die "configure failed"
-	emake -j1 || die "Make failed"
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "Install failed!"
+	gnome2_src_install
 
 	dodir /usr/share/beagle
 	insinto /usr/share/beagle
 	doins mozilla-extension/beagle.xpi
-
-	dodoc AUTHORS ChangeLog INSTALL NEWS README
 }
 
 pkg_postinst () {
+	gnome2_pkg_postinst
+
 	einfo "If available, Beagle greatly benefits from using certain operating"
 	einfo "system features such as Extended Attributes and inotify."
 	echo

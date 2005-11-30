@@ -1,15 +1,6 @@
 # ChangeLog for x11-plugins/mountapp
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/mountapp/ChangeLog,v 1.6 2005/05/10 14:27:33 s4t4n Exp $
-
-  10 May 2005; Michele Noberasco <s4t4n@gentoo.org> mountapp-3.0.ebuild:
-  Added gtk+ dependancy, closing bug #91578...
-
-  07 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> mountapp-3.0.ebuild:
-  Marked ~amd64, closes bug 83853.
-
-  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> mountapp-3.0.ebuild:
-  glibc -> libc
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/mountapp/ChangeLog,v 1.1 2002/12/09 08:08:19 raker Exp $
 
 *mountapp-3.0 (10 Dec 2002)
 

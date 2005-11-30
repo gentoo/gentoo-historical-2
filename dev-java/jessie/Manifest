@@ -1,14 +1,5 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 6814ec0b093926d9b8957619607bff0f jessie-1.0.0.ebuild 1159
-MD5 6d7cb45c73e988f904905bf4db05f2dc ChangeLog 1208
-MD5 d7a22352b39820b369e6e067dcac7fff metadata.xml 2204
-MD5 c614b4d53c89c67391b2d7e5c0d06fcf files/digest-jessie-1.0.0 64
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFC27KS/rLF9B432nYRAug9AJ9zRnx3K0L6dK1OMDQZjbfKtyIehQCgssXM
-XMrEWkGCFSc+izuw+WCFKSI=
-=/mw6
------END PGP SIGNATURE-----
+MD5 b3dca1f63c16f020e20f28f0014a5d3b jessie-0.9.7.ebuild 399
+MD5 fa07f4f928f052451b08f7b95756e9b2 ChangeLog 276
+MD5 0637a933ecb6e8cedfc4ddfcf3491728 metadata.xml 310
+MD5 0e40b19ea20da9af7ad722a4c857cd93 jessie-0.9.7.ebuild~ 390
+MD5 59b4fef8154b01c51687fb80620b62f2 files/digest-jessie-0.9.7 64

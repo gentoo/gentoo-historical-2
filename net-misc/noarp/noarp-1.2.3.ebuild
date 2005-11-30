@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/noarp/noarp-1.2.3.ebuild,v 1.5 2005/02/25 17:03:05 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/noarp/noarp-1.2.3.ebuild,v 1.1 2003/11/04 03:04:07 vapier Exp $
 
 DESCRIPTION="a kernel module and userspace tool for hiding network interfaces"
 HOMEPAGE="http://www.masarlabs.com/noarp/"
@@ -8,8 +8,7 @@ SRC_URI="http://www.masarlabs.com/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
 DEPEND=""
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-tex/dvipost/dvipost-1.0.ebuild,v 1.4 2004/12/28 20:59:46 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-tex/dvipost/dvipost-1.0.ebuild,v 1.1 2004/09/02 05:06:18 usata Exp $
 
 inherit latex-package eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://efeu.cybertec.at/${PN}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="virtual/tetex"

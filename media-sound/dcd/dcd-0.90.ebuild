@@ -1,41 +1,34 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/dcd/dcd-0.90.ebuild,v 1.16 2004/07/01 07:50:33 eradicator Exp $
-
-IUSE=""
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Ryan Tolboom <ryan@intphsys.com>
 
 S=${WORKDIR}/dcd-0.90
-DESCRIPTION="A simple command-line based CD Player"
-HOMEPAGE="http://www.technopagan.org/dcd"
 SRC_URI="http://www.technopagan.org/dcd/dcd-0.90.tar.bz2"
 
-DEPEND="virtual/libc"
+HOMEPAGE="http://www.technopagan.org/dcd"
 
-SLOT="0"
-LICENSE="GPL-2 LGPL-2"
-KEYWORDS="x86"
+DESCRIPTION="A simple command-line based CD Player"
+
+DEPEND=">=sys-libs/glibc-2.1.3"
 
 src_unpack() {
 
-	unpack ${A}
-	cd ${S}
-	cp Makefile Makefile.orig
-	sed -e "s:PREFIX = .*$:PREFIX = \"${D}/usr\":" \
-		-e "s:/man/:/share/man/:" \
-		-e "s:# CDROM = /dev/cdroms/cdrom0:CDROM = \"/dev/cdroms/cdrom0\":"\
-		Makefile.orig > Makefile
-
+    unpack ${A}
+    cd ${S}
+    cat Makefile | sed "s:PREFIX = .*$:PREFIX = \"${D}/usr\":" |\
+    sed "s:# CDROM = /dev/cdroms/cdrom0:CDROM = \"/dev/cdroms/cdrom0\":"\
+    > Makefile
+   
 }
-
+ 
 src_compile() {
 
-	make EXTRA_CFLAGS="$CFLAGS" || die
+    try make
 
 }
 
 src_install() {
 
-	make PREFIX=${D}/usr install || die
-	dodoc README BUGS ChangeLog
+    try make PREFIX=${D}/usr install
+    dodoc README BUGS
 
 }

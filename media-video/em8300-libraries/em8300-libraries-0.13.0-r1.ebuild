@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/em8300-libraries/em8300-libraries-0.13.0-r1.ebuild,v 1.6 2004/07/14 21:33:42 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/em8300-libraries/em8300-libraries-0.13.0-r1.ebuild,v 1.1 2003/01/06 04:03:32 agenkin Exp $
 
 DESCRIPTION="em8300 (RealMagic Hollywood+/Creative DXR3) video decoder card libraries"
 HOMEPAGE="http://dxr3.sourceforge.net"
@@ -10,9 +10,10 @@ DEPEND="media-video/em8300-modules
 	gtk? ( x11-libs/gtk+ )"
 
 SRC_URI="mirror://sourceforge/dxr3/${P/-libraries/}.tar.gz"
+S="${WORKDIR}/${P}"
 
 IUSE="gtk"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 SLOT="0"
 
 src_unpack () {
@@ -46,7 +47,7 @@ src_compile ()	{
 		--sysconfdir=/etc \
 		--datadir=/usr/share || die
 	make all || die
-
+	
 }
 
 src_install () {
@@ -74,7 +75,7 @@ src_install () {
 
 pkg_postinst() {
 
-	einfo
+	einfo 
 	einfo "The em8300 libraries and modules have now beein installed,"
 	einfo "you will probably want to add /usr/bin/em8300setup to your"
 	einfo "/etc/conf.d/local.start so that your em8300 card is "
@@ -82,6 +83,6 @@ pkg_postinst() {
 	einfo
 	einfo "If you still need a microcode other than the one included"
 	einfo "with the package, you can simply use em8300setup <microcode.ux>"
-	einfo
+	einfo 
 
 }

@@ -1,15 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/binclock/binclock-1.5.ebuild,v 1.12 2005/09/09 16:48:59 agriffis Exp $
-
-inherit toolchain-funcs
+# $Header: /var/cvsroot/gentoo-x86/app-misc/binclock/binclock-1.5.ebuild,v 1.1 2004/07/25 15:54:35 swegener Exp $
 
 DESCRIPTION="Displays a binary clock in your terminal"
 HOMEPAGE="http://www.ngolde.de/binclock/"
 SRC_URI="http://www.ngolde.de/download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 RDEPEND=""
@@ -19,11 +17,11 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	sed -i -e s/strip/true/ Makefile
+	sed -i -e s/strip/echo/ Makefile
 }
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "emake failed"
+	emake CFLAGS="${CFLAGS}" || die "emake failed"
 }
 
 src_install() {

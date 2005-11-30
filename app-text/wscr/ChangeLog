@@ -1,24 +1,6 @@
 # ChangeLog for app-text/wscr
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/wscr/ChangeLog,v 1.10 2005/08/13 01:21:59 ka0ttic Exp $
-
-  13 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> wscr-1.2.ebuild:
-  Stable on mips.
-
-  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> wscr-1.2.ebuild:
-  Marked ppc stable for bug #99222.
-
-  31 May 2005; Stephanie Lockwood-Childs <wormo@gentoo.org> wscr-1.2.ebuild:
-  mark ~ppc
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> wscr-1.2.ebuild:
-  virtual/glibc -> virtual/libc
-
-  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> wscr-1.2.ebuild:
-  Added ~sparc, ~mips
-
-  25 Jul 2003; Tavis Ormandy <taviso@gentoo.org> wscr-1.2.ebuild:
-  stable on alpha and x86
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/wscr/ChangeLog,v 1.1 2003/05/06 09:16:44 taviso Exp $
 
 *wscr-1.2 (06 May 2003)
 

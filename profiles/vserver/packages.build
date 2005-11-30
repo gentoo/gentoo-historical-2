@@ -1,14 +1,15 @@
 # Copyright 2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/vserver/packages.build,v 1.4 2005/09/26 10:34:24 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/vserver/packages.build,v 1.1 2005/04/20 17:44:59 hollow Exp $
 
 # This file describes the packages needed to build a stage 1 based on this
-# profile.  Packages in this file are built in order.
+# profile
 
 app-arch/bzip2
+app-arch/gzip
 app-arch/tar
+app-editors/nano
 app-shells/bash
-dev-lang/perl
 dev-lang/python
 net-misc/rsync
 net-misc/wget
@@ -30,10 +31,6 @@ sys-devel/bison
 sys-devel/flex
 sys-devel/gcc
 sys-devel/gettext
-sys-devel/gnuconfig
 sys-devel/make
 sys-devel/patch
-virtual/editor
-virtual/gzip
-virtual/libc
-virtual/os-headers
+sys-libs/glibc

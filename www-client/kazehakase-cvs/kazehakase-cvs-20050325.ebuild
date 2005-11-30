@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/kazehakase-cvs/kazehakase-cvs-20050325.ebuild,v 1.4 2005/07/09 19:26:37 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/kazehakase-cvs/kazehakase-cvs-20050325.ebuild,v 1.1 2005/03/25 16:32:09 nakano Exp $
 
 inherit cvs eutils
 
@@ -51,7 +51,7 @@ pkg_setup(){
 src_unpack(){
 	cvs_src_unpack || die
 	cd ${S}
-	# epatch ${FILESDIR}/${PN}-gentoo.patch
+	epatch ${FILESDIR}/${PN}-gentoo.patch
 
 	mv configure.in configure.in.org
 	sed -e "s/\(AC_INIT(kazehakase\|GETTEXT_PACKAGE=kazehakase\)/\1-cvs/" \
@@ -60,8 +60,7 @@ src_unpack(){
 	mv data/Makefile.am data/Makefile.am.org
 	sed -e "s/^desktop_DATA = kazehakase.desktop/desktop_DATA = kazehakase-cvs.desktop/" \
 		data/Makefile.am.org > data/Makefile.am
-
-	sed -e "s/kazehakase/kazehakase-cvs/" data/kazehakase.desktop > data/kazehakase-cvs.desktop
+	mv data/kazehakase.desktop data/kazehakase-cvs.desktop
 }
 
 src_compile(){
@@ -80,7 +79,7 @@ src_install(){
 
 pkg_postinst(){
 	if use thumbnail; then
-		einfo "To enable thumbnail,"
+		einfo "To enable thumbnail, "
 		einfo "   1. Go to Preference."
 		einfo "   2. Check \"Create thumbnail\"."
 		einfo
@@ -94,18 +93,4 @@ pkg_postinst(){
 		ewarn "   4. Print the page to a file."
 		ewarn
 	fi
-
-	einfo
-	einfo "Many files/directories have been installed with -cvs postfix since kazehakase-cvs-20050325"
-	einfo "so that you can install kazehakase/kazehakase-cvs in the same box."
-	einfo
-	einfo "Renamed files/directories which you should know."
-	einfo " /usr/bin/kazehakase-cvs"
-	einfo " /etc/kazehakase-cvs"
-	einfo " <your home directory>/.kazehakase-cvs"
-	einfo
-	einfo "You might want to create symbolic link .kazehakase-cvs which points to .kazehakase in your home directory."
-	einfo "i.e. ln -s .kazehakase <your home directory>/.kazehakase-cvs"
-	einfo
 }
-

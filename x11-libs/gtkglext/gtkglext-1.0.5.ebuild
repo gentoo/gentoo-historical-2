@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/gtkglext-1.0.5.ebuild,v 1.9 2005/07/13 14:35:35 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkglext/gtkglext-1.0.5.ebuild,v 1.1 2003/11/25 19:32:59 foser Exp $
 
 inherit gnome2
 
-DESCRIPTION="GL extensions for Gtk+ 2.0"
+DESCRIPTION="GL extentions for Gtk+ 2.0"
 HOMEPAGE="http://gtkglext.sourceforge.net/"
 LICENSE="GPL-2 LGPL-2.1"
 
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 SLOT="0"
 IUSE="doc"
-KEYWORDS="x86 ~sparc alpha ppc ia64"
+KEYWORDS="~x86 ~sparc ~alpha"
 
 RDEPEND=">=dev-libs/glib-2
 	>=x11-libs/gtk+-2
@@ -30,31 +30,20 @@ DOCS="AUTHORS COPYING* ChangeLog* INSTALL NEWS README* TODO"
 # foser <foser@gentoo.org>
 
 pkg_setup () {
-	if [ -e /etc/env.d/09opengl ]
+	VOID=`cat /etc/env.d/09opengl | grep xfree`
+
+	USING_NVIDIA=$?
+
+	if [ ${USING_NVIDIA} -eq 1 ]
 	then
-		# Set up X11 implementation
-		X11_IMPLEM_P="$(best_version virtual/x11)"
-		X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
-		X11_IMPLEM="${X11_IMPLEM##*\/}"
-		einfo "X11 implementation is ${X11_IMPLEM}."
-
-		VOID=$(cat /etc/env.d/09opengl | grep ${X11_IMPLEM})
-
-		USING_X11=$?
-		if [ ${USING_X11} -eq 1 ]
-		then
-			GL_IMPLEM=$(cat /etc/env.d/09opengl | cut -f5 -d/)
-			opengl-update ${X11_IMPLEM}
-		fi
-	else
-		die "Could not find /etc/env.d/09opengl. Please run opengl-update."
+		opengl-update xfree
 	fi
 }
 
 pkg_postinst () {
-	if [ ${USING_X11} -eq 1 ]
+	if [ ${USING_NVIDIA} -eq 1 ]
 	then
-		opengl-update ${GL_IMPLEM}
+		opengl-update nvidia
 	fi
 }
 

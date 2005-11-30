@@ -1,24 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.1.24.ebuild,v 1.8 2005/09/29 09:27:23 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/ess/ess-5.1.24.ebuild,v 1.1 2004/03/14 09:06:06 usata Exp $
 
 inherit elisp
 
 IUSE=""
 
 DESCRIPTION="Emacs Speaks Statistics"
-HOMEPAGE="http://stat.ethz.ch/ESS/"
-SRC_URI="http://stat.ethz.ch/ESS/downloads/ess/OLD/${P}.tar.gz"
+HOMEPAGE="http://www.analytics.washington.edu/statcomp/projects/ess/"
+SRC_URI="http://www.analytics.washington.edu/downloads/ess/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~alpha sparc"
+KEYWORDS="~x86"
 
 DEPEND="virtual/emacs
 	app-text/texi2html
+	sys-apps/debianutils
 	sys-apps/sed
 	virtual/tetex"
-RDEPEND="virtual/emacs"
 
 SITEFILE=50ess-gentoo.el
 
@@ -27,9 +27,10 @@ src_compile() {
 	pushd ${S}/lisp && make;
 	popd;
 	einfo "Making documentation..."
+	tmpfile=`mktemp`;
 	# The -glossary option doesn't work with Gentoo texi2html.
-	sed "s:-glossary::g" ${S}/doc/Makefile > ${T}/Makefile;
-	mv -f ${T}/Makefile ${S}/doc/Makefile;
+	sed "s:-glossary::g" ${S}/doc/Makefile > ${tmpfile};
+	mv -f ${tmpfile} ${S}/doc/Makefile;
 	pushd ${S}/doc && make;
 	popd;
 }
@@ -45,7 +46,7 @@ src_install() {
 	doins ${S}/doc/ess-intro.pdf
 	insinto /usr/share/doc/${P}/examples
 	doins ${S}/etc/function-outline.S
-	cp -pPR ${S}/etc/other/S-spread ${D}/usr/share/doc/${P}/examples
+	cp -Rf ${S}/etc/other/S-spread ${D}/usr/share/doc/${P}/examples
 }
 
 pkg_postinst() {

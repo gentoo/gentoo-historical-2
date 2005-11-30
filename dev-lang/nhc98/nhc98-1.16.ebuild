@@ -1,30 +1,35 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/nhc98/nhc98-1.16.ebuild,v 1.9 2004/07/12 01:19:38 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/nhc98/nhc98-1.16.ebuild,v 1.1 2003/04/10 08:59:59 george Exp $
 
-inherit eutils
-
-DESCRIPTION="Haskell 98 compiler"
-HOMEPAGE="http://www.cs.york.ac.uk/fp/nhc98/"
-SRC_URI="ftp://ftp.cs.york.ac.uk/pub/haskell/nhc98/nhc98src-${PV}.tar.gz
-	ftp://ftp.cs.york.ac.uk/pub/haskell/nhc98/patch-1.16-typesyn"
-
-LICENSE="nhc98"
-SLOT="0"
-KEYWORDS="x86 ~sparc"
 IUSE="readline"
 
-DEPEND="virtual/libc
-	readline? ( >=sys-libs/readline-4.1 )"
+TARBALL="nhc98src-${PV}.tar.gz"
+
+DESCRIPTION="Haskell 98 compiler"
+SRC_URI="ftp://ftp.cs.york.ac.uk/pub/haskell/nhc98/${TARBALL}
+	ftp://ftp.cs.york.ac.uk/pub/haskell/nhc98/patch-1.16-typesyn"
+HOMEPAGE="http://www.cs.york.ac.uk/fp/nhc98/"
+
+SLOT="0"
+LICENSE="nhc98"
+KEYWORDS="~x86 ~sparc "
+
+DEPEND="virtual/glibc
+	readline? ( >=readline-4.1 )"
 
 src_unpack() {
-	unpack nhc98src-${PV}.tar.gz
+	# unpack the source
+	unpack "${TARBALL}"
 	# type synoym patch
 	cd ${S}
 	epatch ${DISTDIR}/patch-1.16-typesyn
+#	cd ${P}
+#	patch -p0 < ${FILESDIR}/patch-1.16-typesyn
 }
 
 src_compile() {
+
 	./configure --buildwith=gcc \
 		--prefix=/usr --installdir=/usr \
 		-man -docs \
@@ -34,10 +39,29 @@ src_compile() {
 	make || die
 }
 
-src_install() {
+src_install () {
 	# The install location is taken care of by the
 	# configure script.
 	make DESTDIR=${D} install || die
+
+	#nhc's build system does not update hmakerc when using DESTDIR;
+	#therefore, we do it manually here
+
+	einfo "Adjusting... hmakerc"
+	cd ${S}
+	MACHINE=`script/harch`
+        ${D}/usr/bin/hmake-config \
+		${D}/usr/lib/hmake/${MACHINE}/hmakerc add /usr/bin/nhc98
+	${D}/usr/bin/hmake-config \
+		${D}/usr/lib/hmake/${MACHINE}/hmakerc add nhc98 ||\
+          	einfo "(This error message is harmless)"
+	${D}/usr/bin/hmake-config \
+		${D}/usr/lib/hmake/${MACHINE}/hmakerc \
+			default /usr/bin/nhc98
+	# remove temporary build version of nhc98 from config
+        ${D}/usr/bin/hmake-config \
+		${D}/usr/lib/hmake/${MACHINE}/hmakerc \
+			delete ${S}/script/nhc98
 
 	#install docs and man pages manually
 	dodoc README INSTALL COPYRIGHT
@@ -47,24 +71,4 @@ src_install() {
 	dohtml -A hs -r *
 	docinto html/bugs
 	dodoc bugs/README
-}
-
-pkg_postinst() {
-	#nhc's build system does not update hmakerc when using DESTDIR;
-	#therefore, we do it manually here
-
-	einfo "Adjusting... hmakerc"
-	MACHINE=`/usr/bin/harch`
-	/usr/bin/hmake-config \
-		/usr/lib/hmake/${MACHINE}/hmakerc add /usr/bin/nhc98
-	/usr/bin/hmake-config \
-		/usr/lib/hmake/${MACHINE}/hmakerc add nhc98 ||\
-		einfo "(This error message is harmless)"
-	/usr/bin/hmake-config \
-		/usr/lib/hmake/${MACHINE}/hmakerc \
-			default /usr/bin/nhc98
-	# remove temporary build version of nhc98 from config
-	/usr/bin/hmake-config \
-		/usr/lib/hmake/${MACHINE}/hmakerc \
-			delete ${S}/script/nhc98
 }

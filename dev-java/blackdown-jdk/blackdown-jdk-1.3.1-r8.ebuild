@@ -1,43 +1,46 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jdk/blackdown-jdk-1.3.1-r8.ebuild,v 1.25 2005/10/30 19:43:56 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jdk/blackdown-jdk-1.3.1-r8.ebuild,v 1.1 2002/11/21 20:25:19 phoenix Exp $
 
-inherit java
+IUSE="doc"
+
+. /usr/portage/eclass/inherit.eclass
+inherit java nsplugins
 
 S=${WORKDIR}/j2sdk1.3.1
 DESCRIPTION="Blackdown Java Development Kit 1.3.1"
+SRC_URI="x86? ftp://metalab.unc.edu/pub/linux/devel/lang/java/blackdown.org/JDK-1.3.1/i386/FCS/j2sdk-1.3.1-FCS-linux-i386.tar.bz2
+	ppc? ftp://metalab.unc.edu/pub/linux/devel/lang/java/blackdown.org/JDK-1.3.1/ppc/FCS-02b/j2sdk-1.3.1-02b-FCS-linux-ppc.bin
+	sparc? ftp://metalab.unc.edu/pub/linux/devel/lang/java/blackdown.org/JDK-1.3.1/sparc/FCS-02b/j2sdk-1.3.1-02b-FCS-linux-sparc.bin
+	sparc64? ftp://metalab.unc.edu/pub/linux/devel/lang/java/blackdown.org/JDK-1.3.1/sparc/FCS-02b/j2sdk-1.3.1-02b-FCS-linux-sparc.bin"
+
 HOMEPAGE="http://www.blackdown.org"
-SRC_URI="x86? ( mirror://blackdown.org/JDK-${PV}/i386/FCS/j2sdk-${PV}-FCS-linux-i386.tar.bz2 )
-	ppc? ( mirror://blackdown.org/JDK-${PV}/ppc/FCS-02b/j2sdk-${PV}-02b-FCS-linux-ppc.bin )
-	sparc? ( mirror://blackdown.org/JDK-${PV}/sparc/FCS-02b/j2sdk-${PV}-02b-FCS-linux-sparc.bin )"
-
-LICENSE="sun-bcla-java-vm"
-SLOT="1.3"
-KEYWORDS="x86 ~ppc sparc -*"
-IUSE="doc browserplugin nsplugin mozilla"
-
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	>=dev-java/java-config-0.2.5
 	doc? ( =dev-java/java-sdk-docs-1.3.1* )"
+RDEPEND="$DEPEND"
+PROVIDE="virtual/jdk-1.3.1
+	virtual/jre-1.3.1
+	virtual/java-scheme-2"
+SLOT="1.3"
+LICENSE="sun-bcla"
+KEYWORDS="~x86 ~ppc ~sparc ~sparc64"
 
-PROVIDE="virtual/jdk
-	virtual/jre"
-
-src_unpack() {
-	if use ppc || use sparc ; then
-		tail -n +400 ${DISTDIR}/${A} | tar jxpf -
+src_unpack () {
+	if (use ppc) || (use sparc) || (use sparc64) ; then
+		tail +400 ${DISTDIR}/${A} | tar xjf -
 	else
 		unpack ${A}
 	fi
 
-	if use sparc ; then
+	if (use sparc) || (use sparc64) ; then
 		# Everything is owned by 1000.100, for some reason..
-		chown -R root:root .
+		chown -R root.root .
 	fi
 }
 
 
-src_install() {
+src_install () {
 
 	dodir /opt/${P}
 
@@ -45,23 +48,20 @@ src_install() {
 
 	dodir /opt/${P}/share/java
 	cp -R ${S}/{demo,src.jar} ${D}/opt/${P}/share
-
-	dodoc README
+	
+	dodoc COPYRIGHT LICENSE README INSTALL
 	dohtml README.html
 
-	if use nsplugin ||       # global useflag for netscape-compat plugins
-	   use browserplugin ||  # deprecated but honor for now
-	   use mozilla; then     # wrong but used to honor it
-		if [ "${ARCH}" == "x86" ] ; then
-			PLATFORM="i386"
-		elif [ "${ARCH}" == "ppc" ] ; then
-			PLATFORM="ppc"
-		elif [ "${ARCH}" == "sparc" ] ; then
-			PLATFORM="sparc"
-		fi
-
-		install_mozilla_plugin /opt/${P}/jre/plugin/${PLATFORM}/mozilla/javaplugin_oji.so
+	# Install ns plugin
+	if [ "${ARCH}" == "x86" ] ; then
+		PLATFORM="i386"
+	elif [ "${ARCH}" == "ppc" ] ; then
+		PLATFORM="ppc"
+	elif [ "${ARCH}" == "sparc" ] || [ "${ARCH}" == "sparc64" ] ; then
+		PLATFORM="sparc"
 	fi
+
+	inst_plugin /opt/${P}/jre/plugin/${PLATFORM}/mozilla/javaplugin_oji.so 
 
 	find ${D}/opt/${P} -type f -name "*.so" -exec chmod +x \{\} \;
 
@@ -70,24 +70,13 @@ src_install() {
 		< ${D}/opt/${P}/jre/lib/font.properties.orig \
 		> ${D}/opt/${P}/jre/lib/font.properties
 	rm ${D}/opt/${P}/jre/lib/font.properties.orig
-
+	
 	# install env into /etc/env.d
 	set_java_env ${FILESDIR}/${VMHANDLE} || die
 }
 
-pkg_postinst() {
+pkg_postinst () {
 	# Set as default system VM if none exists
 	java_pkg_postinst
-
-	if use nsplugin || use browserplugin || use mozilla; then
-		einfo "The java mozilla plugin supplied by this package does not"
-		einfo "work with newer version mozilla/firefox."
-		einfo "You need >=${PN}-1.4 for them."
-	fi
-	if ! use nsplugin && ( use browserplugin || use mozilla ); then
-		echo
-		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
-		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
-		ewarn "update your USE to include 'nsplugin'."
-	fi
 }
+

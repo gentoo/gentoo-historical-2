@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.17.ebuild,v 1.4 2005/08/17 03:12:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.17.ebuild,v 1.1 2005/08/15 02:32:49 mr_bones_ Exp $
 
 inherit eutils games
 
@@ -24,18 +24,18 @@ DEPEND="${RDEPEND}
 	sys-devel/bison"
 
 # Set GAMES_TO_BUILD variable to whatever you want
-export GAMES_TO_BUILD=${GAMES_TO_BUILD:=adventure arithmetic atc
+export GAMES_TO_BUILD=${GAMES_TO_BUILD:="adventure arithmetic atc
 backgammon banner battlestar bcd boggle caesar canfield countmail cribbage
-dab dm factor fish gomoku hack hangman hunt mille monop morse
+dab dm factor fish fortune gomoku hack hangman hunt mille monop morse
 number phantasia pig pom ppt primes quiz rain random robots sail snake
-tetris trek wargames worm worms wtf wump}
+tetris trek wargames worm worms wtf wump"}
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch \
 		"${DISTDIR}/bsdgames_${PV}-2.diff.gz" \
-		"${FILESDIR}"/${P}-64bit.patch \
+		"${FILESDIR}"/${PV}-64bit.patch \
 		"${FILESDIR}"/${P}-gcc4.patch
 
 	sed -i \
@@ -84,7 +84,6 @@ src_install() {
 	build_game battlestar && do_statefile battlestar.log
 	build_game canfield && do_statefile cfscores
 	build_game cribbage && do_statefile criblog
-	build_game hack && keepdir "${GAMES_STATEDIR}"/hack
 	build_game robots && do_statefile robots_roll
 	build_game sail && do_statefile saillog
 	build_game snake && do_statefile snake.log && do_statefile snakerawscores
@@ -95,7 +94,6 @@ src_install() {
 	# extra docs
 	build_game atc && { docinto atc ; dodoc atc/BUGS; }
 	build_game boggle && { docinto boggle ; dodoc boggle/README{,.linux}; }
-	build_game hack && { docinto hack ; dodoc hack/{OWNER,Original_READ_ME,READ_ME,help}; }
 	build_game hunt && { docinto hunt ; dodoc hunt/README{,.linux}; }
 	build_game phantasia && { docinto phantasia ; dodoc phantasia/{OWNER,README}; }
 	build_game trek && { docinto trek ; dodoc trek/USD.doc/trek.me; }

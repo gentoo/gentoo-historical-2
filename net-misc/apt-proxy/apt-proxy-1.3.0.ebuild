@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/apt-proxy/apt-proxy-1.3.0.ebuild,v 1.5 2005/08/23 13:15:37 flameeyes Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-misc/apt-proxy/apt-proxy-1.3.0.ebuild,v 1.1 2004/04/22 18:12:31 mholzer Exp $
 
 
 DESCRIPTION="Caching proxy for the Debian package system"
@@ -20,9 +18,11 @@ RDEPEND="sys-apps/xinetd
 	net-misc/rsync
 	net-misc/wget"
 
+S=${WORKDIR}/${P}
+
 pkg_setup () {
 	enewgroup apt-proxy
-	enewuser apt-proxy -1 -1 /dev/null apt-proxy
+	enewuser apt-proxy -1 /bin/false /dev/null apt-proxy
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/transset/transset-0.1_pre20040821.ebuild,v 1.7 2005/10/24 04:51:18 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/transset/transset-0.1_pre20040821.ebuild,v 1.1 2004/08/21 22:50:22 seemant Exp $
 
 IUSE=""
 
@@ -11,15 +11,9 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~x86"
 
-RDEPEND="!<=x11-base/xorg-x11-6.7.99.902"
-DEPEND="${RDEPEND}
-	|| ( (
-		x11-libs/libX11
-		x11-proto/xproto
-		)
-		virtual/x11 )"
+DEPEND=">=x11-base/xorg-x11-6.7.99.902"
 
 src_compile() {
 	emake || die "emake failed"

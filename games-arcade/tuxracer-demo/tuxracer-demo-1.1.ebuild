@@ -1,18 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/tuxracer-demo/tuxracer-demo-1.1.ebuild,v 1.7 2005/09/26 17:38:43 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/tuxracer-demo/tuxracer-demo-1.1.ebuild,v 1.1 2003/10/30 08:20:59 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
-DESCRIPTION="race downhill as different arctic characters (including Tux!)"
+DESCRIPTION="race downhill as different artic characters (including Tux!)"
 HOMEPAGE="http://www.tuxracer.com/"
 SRC_URI="tuxracer-demo-${PV}-linux-i386.sh"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* x86"
-RESTRICT="fetch"
-IUSE=""
+RESTRICT="nofetch"
 
 DEPEND="virtual/opengl
 	virtual/glu

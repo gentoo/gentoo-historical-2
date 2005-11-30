@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/qc-usb/qc-usb-0.6.3.ebuild,v 1.3 2005/05/09 00:06:56 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/qc-usb/qc-usb-0.6.3.ebuild,v 1.1 2005/04/18 09:08:46 liquidx Exp $
 
 inherit linux-mod eutils
 
@@ -11,12 +11,12 @@ SRC_URI="mirror://sourceforge/qce-ga/${P}.tar.gz"
 IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="x86 ~ppc"
 
 DEPEND="virtual/linux-sources"
 
 src_compile() {
-	emake LINUX_DIR=${KERNEL_DIR} all || die
+	emake KERNEL_DIR=${KERNEL_DIR} all || die
 }
 
 src_install() {

@@ -1,20 +1,19 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-cells/cl-cells-20050511.ebuild,v 1.3 2005/05/24 18:48:32 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-cells/cl-cells-20050511.ebuild,v 1.1 2005/05/11 10:58:26 mkennedy Exp $
 
 inherit common-lisp eutils
 
 DESCRIPTION="Cells is a Common Lisp library providing a data flow extension to CLOS."
 HOMEPAGE="http://common-lisp.net/project/cells/
 	http://www.tilton-technology.com/cells_top.html"
-SRC_URI="mirror://gentoo/cells-${PV}.tar.gz"
+SRC_URI="mirrors://gentoo/cells-${PV}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc x86"
+KEYWORDS="x86 ~amd64 ~ppc"
 IUSE=""
 
-DEPEND="dev-lisp/cl-utils-kt
-	dev-lisp/cl-plus"
+DEPEND="dev-lisp/cl-utils-kt"
 
 CLPACKAGE="cells cells-test"
 

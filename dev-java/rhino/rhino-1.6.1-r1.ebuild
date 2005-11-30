@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/rhino/rhino-1.6.1-r1.ebuild,v 1.5 2005/08/22 19:03:30 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/rhino/rhino-1.6.1-r1.ebuild,v 1.1 2005/01/29 21:16:24 luckyduck Exp $
 
 inherit java-pkg eutils
 
@@ -10,17 +10,15 @@ SRC_URI="ftp://ftp.mozilla.org/pub/mozilla.org/js/${MY_P}.zip http://dev.gentoo.
 HOMEPAGE="http://www.mozilla.org/rhino/"
 LICENSE="NPL-1.1"
 SLOT="1.6"
-KEYWORDS="~amd64 x86 sparc"
-IUSE="jikes doc source"
+KEYWORDS="~x86 ~amd64"
+IUSE="jikes doc"
 S="${WORKDIR}/${MY_P}"
-RDEPEND=">=virtual/jre-1.4
-	>=dev-java/xml-xmlbeans-20041217"
 DEPEND="dev-java/ant-core
 	>=virtual/jdk-1.4
 	app-arch/unzip
-	source? ( app-arch/zip )
-	jikes? ( dev-java/jikes )
-	${RDEPEND}"
+	jikes? ( dev-java/jikes )"
+RDEPEND=">=virtual/jre-1.4
+	>=dev-java/xml-xmlbeans-20041217"
 
 src_unpack() {
 	unpack ${MY_P}.zip
@@ -36,13 +34,16 @@ src_unpack() {
 
 src_compile() {
 	local antflags="jar"
-	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	if use jikes; then
+		antflags="${antflags} -Dbuild.compiler=jikes"
+	fi
 	ant ${antflags} || die "compilation error"
 }
 
 src_install() {
 	dobin ${FILESDIR}/jsscript
 	java-pkg_dojar build/*/js.jar
-	use source && java-pkg_dosrc {src,toolsrc}/org
-	use doc && java-pkg_dohtml -r docs/*
+	if use doc; then
+		java-pkg_dohtml -r docs/*
+	fi
 }

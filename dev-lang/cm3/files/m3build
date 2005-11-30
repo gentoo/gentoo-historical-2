@@ -1,2 +1,2 @@
 #!/bin/bash
-exec cm3 -build "$@"
+cm3 -build $@

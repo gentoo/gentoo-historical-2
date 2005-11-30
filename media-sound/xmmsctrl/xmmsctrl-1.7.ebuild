@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/xmmsctrl/xmmsctrl-1.7.ebuild,v 1.8 2004/09/15 19:42:29 eradicator Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-sound/xmmsctrl/xmmsctrl-1.7.ebuild,v 1.1 2004/03/27 03:47:02 eradicator Exp $
 
 inherit eutils
 
@@ -12,7 +10,9 @@ HOMEPAGE="http://user.it.uu.se/~adavid/utils/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc ~alpha ~hppa amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa"
+
+USE=""
 
 RDEPEND=">=media-sound/xmms-1.2.7-r16"
 

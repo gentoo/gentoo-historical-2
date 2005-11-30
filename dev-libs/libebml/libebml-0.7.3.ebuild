@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libebml/libebml-0.7.3.ebuild,v 1.11 2005/07/09 01:31:27 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libebml/libebml-0.7.3.ebuild,v 1.1 2005/02/27 14:35:58 mholzer Exp $
 
 IUSE=""
 
@@ -10,9 +10,9 @@ DESCRIPTION="Extensible binary format library (kinda like XML)"
 HOMEPAGE="http://www.matroska.org/"
 SRC_URI="http://www.bunkus.org/videotools/mkvtoolnix/sources/${P}.tar.bz2"
 
-LICENSE="LGPL-2.1"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ~ppc-macos ppc64 sparc x86"
+KEYWORDS="~x86 ~sparc ppc64 ~alpha ~ppc"
 
 DEPEND="virtual/libc"
 
@@ -21,15 +21,6 @@ src_unpack() {
 
 	cd ${S}
 	epatch ${FILESDIR}/libebml-shared2.patch
-
-	if use ppc-macos; then
-		sed -i \
-			-e 's/\.so/\.dylib/g' \
-			-e 's/\.dylib.0/\.0.dylib/g' \
-			-e 's/$(CXX) -shared -Wl,-soname,$(LIBRARY_SO_VER)/$(LD)/' \
-			-e 's/LD=$(CXX)/LD=libtool/' ${S}/make/linux/Makefile \
-				|| die "sed Makefile failed"
-	fi
 }
 
 src_compile() {

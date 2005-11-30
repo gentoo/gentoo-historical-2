@@ -1,42 +1,6 @@
 # ChangeLog for dev-perl/Convert-TNEF
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-TNEF/ChangeLog,v 1.13 2005/10/03 12:27:32 agriffis Exp $
-
-  03 Oct 2005; Aron Griffis <agriffis@gentoo.org>
-  Convert-TNEF-0.17-r2.ebuild:
-  Mark 0.17-r2 stable on ia64
-
-  26 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  Convert-TNEF-0.17-r2.ebuild:
-  add ~ia64
-
-  25 Apr 2005; Elfyn McBratney <beu@gentoo.org> :
-  Digest fix.
-
-  24 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -Convert-TNEF-0.17.ebuild, -Convert-TNEF-0.17-r1.ebuild,
-  Convert-TNEF-0.17-r2.ebuild:
-  cleaning
-
-  06 Feb 2005; Markus Rothe <corsair@gentoo.org> Convert-TNEF-0.17-r2.ebuild:
-  Stable on ppc64
-
-  29 Dec 2004; Markus Rothe <corsair@gentoo.org> Convert-TNEF-0.17-r2.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*Convert-TNEF-0.17-r2 (26 Nov 2002)
-
-  26 Nov 2002; Michael Cummings <mcummings@gentoo.org> \
-  Convert-TNEF-0.17-r2.ebuild:
-  
-  Was missing module deps. Thanks to Alexander Holler in bug 10355.
-  
-*Convert-TNEF-0.17-r1 (21 Jun 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Convert-TNEF/ChangeLog,v 1.1 2002/10/23 15:30:21 raker Exp $
 
 *Convert-TNEF-0.17 (23 Oct 2002)
 

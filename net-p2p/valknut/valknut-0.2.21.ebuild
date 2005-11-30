@@ -1,8 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/valknut/valknut-0.2.21.ebuild,v 1.3 2005/07/28 21:09:05 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/valknut/valknut-0.2.21.ebuild,v 1.1 2004/08/23 02:04:40 squinky86 Exp $
 
 inherit kde-functions
+need-qt 3
 
 MY_P=dcgui-qt-${PV}
 S=${WORKDIR}/${MY_P}
@@ -19,7 +20,7 @@ IUSE="ssl"
 DEPEND=">=dev-libs/libxml2-2.4.22
 	~net-p2p/dclib-${PV}
 	ssl? ( dev-libs/openssl )
-	=x11-libs/qt-3*"
+	x11-libs/qt"
 
 src_compile() {
 	econf \

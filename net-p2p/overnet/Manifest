@@ -1,16 +1,6 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 d3481a3c25f7f68e7a1409630b2915ab overnet-1.3.0.ebuild 817
-MD5 8aefbc0e49db723ca1ad02d0c409cd49 metadata.xml 160
-MD5 eab1f54322af609747a3b1b9aa04418f ChangeLog 2137
-MD5 d3042547ef3c8c6fd4e0af69534f37ca overnet-1.0.1.ebuild 813
-MD5 08738fc868891d6b76e52b76916af358 files/digest-overnet-1.3.0 73
-MD5 bd6addb676c6267e4983ae94068058dd files/digest-overnet-1.0.1 70
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFDK1ehLLFUmVNQ7rkRAvfNAKCHlqz/uTqiLGjbwRj6e7y9vioICACfW5E5
-KabTxG/z7jVE4lMR1CmvTK8=
-=rVct
------END PGP SIGNATURE-----
+MD5 dff2891c07e26b5407f8a9d7afe5e91a log.txt 44
+MD5 c36685fdc1b9a56002040854db2d653e known.met 5
+MD5 08859f651896007cd19d9d9d2d129f08 share.dat 48
+MD5 87fddc213c427f30bbf1f776006fd32f overnet-0.48.2.ebuild 490
+MD5 aaf226e8e63e0267cf4b84c98e85391c files/digest-overnet-0.29.1 61
+MD5 415d74128e7b5d106da1e490f0622b0d files/digest-overnet-0.48.2 65

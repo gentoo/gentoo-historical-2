@@ -1,12 +1,6 @@
 # ChangeLog for net-misc/blinkperl
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/blinkperl/ChangeLog,v 1.4 2004/06/24 23:36:52 agriffis Exp $
-
-  07 Jun 2003; <rac@gentoo.org> blinkperl-20030301.ebuild:
-  Add IUSE
-
-  06 Jun 2003; <rac@gentoo.org> blinkperl-20030301.ebuild:
-  Add sed-4 dependency
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/blinkperl/ChangeLog,v 1.1 2003/05/09 00:31:37 rac Exp $
 
 *blinkperl-20030301 (08 May 2003)
 

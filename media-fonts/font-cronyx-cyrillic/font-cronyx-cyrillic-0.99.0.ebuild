@@ -1,15 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-cronyx-cyrillic/font-cronyx-cyrillic-0.99.0.ebuild,v 1.7 2005/11/17 12:25:38 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-cronyx-cyrillic/font-cronyx-cyrillic-0.99.0.ebuild,v 1.1 2005/08/08 07:42:20 spyderous Exp $
 
 # Must be before x-modular eclass is inherited
 SNAPSHOT="yes"
 
 inherit x-modular
 
-
 DESCRIPTION="BigReqs prototype headers"
-KEYWORDS="~amd64 ~arm ~ia64 ~s390 ~sparc ~x86"
+KEYWORDS="~x86"
 RDEPEND=""
 DEPEND="${RDEPEND}
 	x11-apps/mkfontdir

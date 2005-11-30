@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/w3m/w3m-0.5.1-r1.ebuild,v 1.7 2005/07/09 15:03:19 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/w3m/w3m-0.5.1-r1.ebuild,v 1.1 2004/09/08 14:16:49 usata Exp $
 
 inherit eutils
 
@@ -20,8 +20,8 @@ SRC_URI="mirror://sourceforge/w3m/${P}.tar.gz
 
 LICENSE="w3m"
 SLOT="0"
-KEYWORDS="x86 alpha ppc sparc amd64 ppc64 ia64"
-IUSE="X async cjk gpm gtk imlib2 lynxkeymap migemo nls ssl xface"
+KEYWORDS="x86 alpha ppc ~sparc ~amd64 ppc64"
+IUSE="X gtk imlib imlib2 xface ssl migemo gpm cjk nls lynxkeymap async"
 #IUSE="canna unicode"
 
 # canna? ( app-i18n/canna )
@@ -35,6 +35,7 @@ DEPEND=">=sys-libs/ncurses-5.2-r3
 		!gtk? ( imlib2? ( >=media-libs/imlib2-1.1.0 )
 			!imlib2? ( >=media-libs/imlib-1.9.8 ) )
 	)
+	!X? ( imlib2? ( >=media-libs/imlib2-1.1.0 ) )
 	xface? ( media-libs/compface )
 	gpm? ( >=sys-libs/gpm-1.19.3-r5 )
 	migemo? ( >=app-text/migemo-0.40 )
@@ -48,6 +49,7 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-w3mman-gentoo.diff
 	if use async ; then
 		epatch ${DISTDIR}/${P}-async-1.diff.gz
+	#	epatch ${FILESDIR}/${PN}-0.4.2-async-m17n-gentoo.diff
 	fi
 	#epatch ${DISTDIR}/${P}_256-005.patch.gz
 	#use canna && epatch ${DISTDIR}/w3m-cvs-1.914-canna.patch
@@ -58,7 +60,7 @@ src_compile() {
 	local myconf migemo_command imagelib
 
 	if use X ; then
-		myconf="${myconf} --enable-image=x11,fb $(use_enable xface)"
+		myconf="${myconf} --enable-image=x11,fb `use_enable xface`"
 		if use gtk ; then
 			imagelib="gdk-pixbuf"
 		elif use imlib2 ; then
@@ -67,8 +69,13 @@ src_compile() {
 			imagelib="imlib"
 		fi
 	else	# no X
-		myconf="${myconf} --enable-image=no"
-		imagelib="no"
+		if use imlib2 ; then
+			myconf="${myconf} --enable-image=fb"
+			imagelib="imlib2"
+		else
+			myconf="${myconf} --enable-image=no"
+			imagelib="no"
+		fi
 	fi
 
 	if use migemo ; then
@@ -105,12 +112,12 @@ src_compile() {
 		--with-migemo="${migemo_command}" \
 		--enable-m17n \
 		--enable-unicode \
-		$(use_enable gpm mouse) \
-		$(use_enable ssl digest-auth) \
-		$(use_with ssl) \
-		$(use_enable nls) \
+		`use_enable gpm mouse` \
+		`use_enable ssl digest-auth` \
+		`use_with ssl` \
+		`use_enable nls` \
 		${myconf} "$@" || die
-		# $(use_with canna)
+		# `use_with canna`
 
 	# emake borked
 	emake -j1 all || die "make failed"

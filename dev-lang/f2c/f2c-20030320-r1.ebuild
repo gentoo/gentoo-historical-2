@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/f2c/f2c-20030320-r1.ebuild,v 1.5 2005/09/10 20:27:11 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/f2c/f2c-20030320-r1.ebuild,v 1.1 2005/01/27 16:23:26 kugelfang Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="libf2c"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="x86 amd64 ppc ~ppc64 ~sparc"
 
 IUSE=""
 DEPEND="dev-libs/libf2c"

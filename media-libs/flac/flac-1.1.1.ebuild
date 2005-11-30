@@ -1,17 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/flac/flac-1.1.1.ebuild,v 1.21 2005/07/12 04:39:17 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/flac/flac-1.1.1.ebuild,v 1.1 2004/10/02 09:53:39 eradicator Exp $
 
-inherit libtool eutils flag-o-matic toolchain-funcs
+IUSE="sse xmms"
+
+inherit libtool eutils flag-o-matic gcc
 
 DESCRIPTION="free lossless audio encoder which includes an XMMS plugin"
 HOMEPAGE="http://flac.sourceforge.net/"
 SRC_URI="mirror://sourceforge/flac/${P}.tar.gz"
 
-LICENSE="GPL-2 LGPL-2"
+LICENSE="GPL-2 LGPL-2 "
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 sparc x86"
-IUSE="sse xmms"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
 
 RDEPEND=">=media-libs/libogg-1.0_rc2
 	xmms? ( media-sound/xmms )"
@@ -29,7 +30,6 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${P}-m4.patch
 	epatch ${FILESDIR}/${P}-libtool.patch
-	epatch ${FILESDIR}/${P}-altivec.patch.gz
 
 	elibtoolize --reverse-deps
 }
@@ -50,18 +50,32 @@ src_compile() {
 }
 
 src_install() {
+	# Keep around old lib
+	if [ -f /usr/$(get_libdir)/libFLAC.so.4 ]; then
+		cp /usr/$(get_libdir)/libFLAC.so.4 ${D}/usr/$(get_libdir)
+		touch ${D}/usr/$(get_libdir)/libFLAC.so.4
+		fperms 755 /usr/$(get_libdir)/libFLAC.so.4
+	fi
+	if [ -f /usr/$(get_libdir)/libFLAC++.so.2 ]; then
+		cp /usr/$(get_libdir)/libFLAC++.so.2 ${D}/usr/$(get_libdir)
+		touch ${D}/usr/$(get_libdir)/libFLAC++.so.2
+		fperms 755 /usr/$(get_libdir)/libFLAC++.so.2
+	fi
+
 	make DESTDIR="${D}" install || die
 	dodoc AUTHORS README
-
-	# Keep around old lib
-	preserve_old_lib /usr/$(get_libdir)/libFLAC.so.4
-	preserve_old_lib /usr/$(get_libdir)/libFLAC++.so.2
 }
 
 pkg_postinst() {
-	preserve_old_lib_notify /usr/$(get_libdir)/libFLAC.so.4
-	preserve_old_lib_notify /usr/$(get_libdir)/libFLAC++.so.2
+	if [ -f /usr/$(get_libdir)/libFLAC.so.4 ]; then
+		einfo "An old version of libFLAC was detected on your system."
+		einfo "In order to avoid conflicts, we've kept the old lib"
+		einfo "around.  In order to make full use of the new version"
+		einfo "of libexif, you will need to do the following:"
+		einfo "  revdep-rebuild --soname libFLAC.so.4"
+		einfo "  revdep-rebuild --soname libFLAC++.so.2"
+		einfo
+		einfo "After doing that, you can safely remove /usr/$(get_libdir)/libFLAC.so.4 and libFLAC++.so.2"
+	fi
 }
 
-# see #59482
-src_test() { :; }

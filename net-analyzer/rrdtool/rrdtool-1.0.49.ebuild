@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/rrdtool-1.0.49.ebuild,v 1.8 2005/05/26 13:17:43 killerfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/rrdtool/rrdtool-1.0.49.ebuild,v 1.1 2004/08/10 02:05:02 squinky86 Exp $
 
 inherit perl-module flag-o-matic gnuconfig eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://people.ee.ethz.ch/%7Eoetiker/webtools/${PN}/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64"
 IUSE="perl tcltk"
 
 DEPEND="perl? ( dev-lang/perl )
@@ -29,11 +29,7 @@ pkg_setup() {
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -e 's/^LTCOMPILE = $(LIBTOOL) --mode=compile $(CC)/& -prefer-pic/' -i src/Makefile.in
-
-	if [[ ! $(grep '^LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) -prefer-pic' src/Makefile.in) ]]; then
-		die "Makefile.in sed failed"
-	fi
+	epatch ${FILESDIR}/${P}-fPIC.patch
 }
 
 src_compile() {

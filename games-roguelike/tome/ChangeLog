@@ -1,79 +1,6 @@
-# ChangeLog for games-roguelike/tome
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-roguelike/tome/ChangeLog,v 1.20 2005/09/20 17:10:23 kito Exp $
-
-  20 Sep 2005; Kito <kito@gentoo.org> tome-2.3.1.ebuild:
-  ~ppc-macos. Closes Bug 106571
-
-  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> tome-2.3.1.ebuild:
-  Stable on ppc.
-
-*tome-2.3.1 (20 Jan 2005)
-
-  20 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +files/2.3.1-gentoo-paths.patch, -tome-2.2.5-r1.ebuild, -tome-2.2.6.ebuild,
-  -tome-2.2.7.ebuild, +tome-2.3.1.ebuild:
-  version bump; clean older versions
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  17 Dec 2004; Joseph Jezak <josejx@gentoo.org> tome-2.2.7-r1.ebuild:
-  Marked ppc stable.
-
-*tome-2.3.0 (10 Dec 2004)
-
-  10 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +files/2.3.0-gentoo-paths.patch, +tome-2.3.0.ebuild:
-  version bump (bug #73849)
-
-  25 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.7-r1.ebuild:
-  Enable text mode again - #bug #53640
-
-*tome-2.2.7-r1 (25 Jun 2004)
-
-  25 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> +tome-2.2.7-r1.ebuild:
-  rev bump for the upgrade
-
-  25 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +files/2.2.7-gentoo-paths.patch, tome-2.2.7.ebuild:
-  Restore the patching of the source (bug #53636)
-
-  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.3.ebuild,
-  tome-2.2.5.ebuild:
-  clean older ebuilds
-
-*tome-2.2.7 (03 Jun 2004)
-
-  03 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.7.ebuild:
-  version bump (bug #52560)
-
-*tome-2.2.6 (14 Apr 2004)
-
-  14 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-2.2.6.ebuild,
-  files/2.2.6-gentoo-paths.patch:
-  version bump (bug #47185)
-
-  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> tome-1.0.0.ebuild:
-  remove version 1
-
-  10 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> tome-2.2.5-r1.ebuild:
-  Adding amd64 keyword. Closing #44154.
-
-*tome-2.2.5-r1 (14 Jan 2004)
-
-  14 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
-  Move scores file out of /usr/share and into /var/games #37594.
-
-*tome-2.2.5 (01 Jan 2004)
-
-  01 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
-  Version bumpage #36798.
-
-*tome-2.2.3 (13 Oct 2003)
-
-  13 Oct 2003; Mike Frysinger <vapier@gentoo.org> :
-  Version bumpage #30817 to also fix permissions #26334.
+# ChangeLog for app-games/tome
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-roguelike/tome/ChangeLog,v 1.1 2003/09/10 04:59:58 vapier Exp $
 
 *tome-2.2.2 (28 Jul 2003)
 
@@ -120,5 +47,5 @@
 
 *tome-1.0.0 (1 Aug 2002)
 
-  1 Aug 2002; Jose Alberto Su√°rez L√≥pez <bass@gentoo.org> tome-1.0.0.ebuild:
+  1 Aug 2002; Jose Alberto Su·rez LÛpez <bass@gentoo.org> tome-1.0.0.ebuild:
   First release.

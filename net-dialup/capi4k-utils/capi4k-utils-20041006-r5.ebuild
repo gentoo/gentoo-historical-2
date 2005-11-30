@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20041006-r5.ebuild,v 1.4 2005/07/09 18:47:20 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20041006-r5.ebuild,v 1.1 2005/01/06 18:17:56 mrness Exp $
 
 inherit eutils
 
@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.in-berlin.de/pub/capi4linux/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE=""
 
 DEPEND="virtual/linux-sources
@@ -93,7 +93,7 @@ src_install() {
 	# example config
 	insinto /etc
 	insopts -m 0600
-	doins ${FILESDIR}/capi.conf
+	doins capiinit/capi.conf
 
 	# rcapid config for xinetd
 	insinto /etc/xinetd.d
@@ -107,12 +107,12 @@ src_install() {
 pkg_postinst() {
 	einfo "Please read the instructions in:"
 	einfo "/usr/share/doc/${PF}/README.gentoo.gz"
-	einfo
+	einfo ""
 	einfo "Annotation for active AVM ISDN boards (B1 ISA/PCI, ...):"
 	einfo "If you run"
 	einfo "  emerge isdn-firmware"
 	einfo "you will probably find your board's firmware in /lib/firmware."
-	einfo
+	einfo ""
 	einfo "If you have another active ISDN board, you should create"
 	einfo "/lib/firmware and copy there your board's firmware."
 }

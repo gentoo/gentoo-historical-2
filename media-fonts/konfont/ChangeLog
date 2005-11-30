@@ -1,15 +1,6 @@
 # ChangeLog for media-fonts/konfont
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/konfont/ChangeLog,v 1.5 2005/04/21 18:54:57 blubb Exp $
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> konfont-0.1.ebuild:
-  stable on amd64
-
-  29 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> konfont-0.1.ebuild:
-  Marked ~amd64.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> konfont-0.1.ebuild:
-  virtual/glibc -> virtual/libc
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/konfont/ChangeLog,v 1.1 2003/12/28 19:36:22 usata Exp $
 
   29 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> konfont-0.1.ebuild:
   Moved from app-i18n

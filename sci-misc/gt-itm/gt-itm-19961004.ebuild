@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/gt-itm/gt-itm-19961004.ebuild,v 1.2 2005/08/24 16:45:23 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/gt-itm/gt-itm-19961004.ebuild,v 1.1 2004/12/27 21:03:43 ribosome Exp $
 
 DESCRIPTION="A collection of routines to generate and analyze graphs using a wide variety of models for internetwork topology"
 HOMEPAGE="http://www.cc.gatech.edu/fac/Ellen.Zegura/graphs.html
@@ -47,7 +47,7 @@ src_compile() {
 src_install() {
 	dobin ${S}/bin/*
 	dodoc ${S}/README ${S}/docs/*
-	cp -pPR ${S}/sample-graphs ${D}/usr/share/doc/${PF}
+	cp -ra ${S}/sample-graphs ${D}/usr/share/doc/${PF}
 
 	cd ${S2}
 	dodoc *.tcl *.gb

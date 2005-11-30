@@ -1,48 +1,8 @@
 # ChangeLog for app-benchmarks/dbench
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/dbench/ChangeLog,v 1.15 2005/11/29 04:32:10 jer Exp $
-
-  29 Nov 2005; Jeroen Roovers <jer@gentoo.org> dbench-2.0.ebuild:
-  Marked ~hppa wrt bug 109188.
-
-  18 Dec 2004; Simon Stelling <blubb@gentoo.org> dbench-2.0.ebuild:
-  was testing for a long time, marking stable on amd64
-
-  12 Dec 2004; Jason Wever <weeve@gentoo.org> dbench-2.0.ebuild:
-  Stable on sparc.
-
-  28 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org> dbench-2.0.ebuild:
-  Added to ~sparc.
-
-  24 Sep 2004; Sven Wegener <swegener@gentoo.org> -dbench-1.3.ebuild:
-  Removed old ebuild.
-
-  12 Apr 2004; Chris Aniszczyk <zx@gentoo.org> dbench-2.0.ebuild,
-  metadata.xml:
-  Add missing IUSE
-
-  12 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> dbench-1.3.ebuild,
-  dbench-2.0.ebuild:
-  Don't assign default to S; header fix
-
-  02 Oct 2003; Brad House <brad_mssw@gentoo.org> dbench-2.0.ebuild:
-  add ~amd64 flag
-
-*dbench-2.0 (25 Jul 2002)
-
-  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
-
-  Added ppc keyword
-
-  25 Jul 2002; Achim Gottinger <achim@gentoo.org> :
-
-  New Version added man page and results.txt to the docs.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-benchmarks/dbench/ChangeLog,v 1.1 2002/07/09 13:15:06 aliz Exp $
 
 *dbench-1.3 (09 Jul 2002)
-
-  15 Jul 2002; Owen Stampflee <owen@gentoo.org> :
-
-  Added PPC to KEYWORDS and fixed a syntax error.
 
   09 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> ChangeLog :
 

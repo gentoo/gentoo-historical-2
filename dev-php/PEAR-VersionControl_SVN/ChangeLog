@@ -1,32 +1,6 @@
 # ChangeLog for dev-php/PEAR-VersionControl_SVN
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-VersionControl_SVN/ChangeLog,v 1.7 2005/11/22 19:14:26 corsair Exp $
-
-  22 Nov 2005; Markus Rothe <corsair@gentoo.org>
-  PEAR-VersionControl_SVN-0.3.0_alpha1-r1.ebuild:
-  Added ~ppc64 keyword; bug #105385
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
-  PEAR-VersionControl_SVN-0.3.0_alpha1-r1.ebuild:
-  Marked ~ppc for bug #105385.
-
-  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  PEAR-VersionControl_SVN-0.3.0_alpha1-r1.ebuild:
-  Add ~amd64.
-
-  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  PEAR-VersionControl_SVN-0.3.0_alpha1-r1.ebuild:
-  Fix RDEPEND.
-
-  19 Sep 2005; Jason Wever <weeve@gentoo.org>
-  PEAR-VersionControl_SVN-0.3.0_alpha1-r1.ebuild:
-  Added ~sparc keyword.
-
-*PEAR-VersionControl_SVN-0.3.0_alpha1-r1 (08 Sep 2005)
-
-  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
-  +PEAR-VersionControl_SVN-0.3.0_alpha1-r1.ebuild:
-  Use new PEAR eclass.
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-VersionControl_SVN/ChangeLog,v 1.1 2005/07/04 04:45:54 sebastian Exp $
 
 *PEAR-VersionControl_SVN-0.3.0_alpha1 (04 Jul 2005)
 

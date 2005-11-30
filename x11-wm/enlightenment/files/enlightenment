@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/enlightenment
+/usr/X11R6/enlightenment/bin/enlightenment

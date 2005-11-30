@@ -1,19 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-homer/fortune-mod-homer-0.1.ebuild,v 1.9 2005/08/27 18:03:43 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-homer/fortune-mod-homer-0.1.ebuild,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
+S=${WORKDIR}/${PN/mod-/}
 DESCRIPTION="Quotes from Homer Simpson"
-HOMEPAGE="http://www.cs.indiana.edu/~crcarter/homer/homer.html"
 SRC_URI="http://www.cs.indiana.edu/~crcarter/homer/homer-quotes.tar.gz"
+HOMEPAGE="http://www.cs.indiana.edu/~crcarter/homer/homer.html"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa mips ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="x86 ppc ~sparc ~mips"
+LICENSE="GPL-2"
 
-RDEPEND="games-misc/fortune-mod"
-
-S="${WORKDIR}/${PN/mod-/}"
+DEPEND="virtual/glibc"
+RDEPEND="app-games/fortune-mod"
 
 src_install() {
 	insinto /usr/share/fortune

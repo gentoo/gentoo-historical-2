@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/vultureng/vultureng-0.8.ebuild,v 1.3 2005/09/06 18:05:38 dams Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/vultureng/vultureng-0.8.ebuild,v 1.1 2005/06/21 14:46:33 dams Exp $
 
-inherit flag-o-matic eutils depend.php
+inherit flag-o-matic eutils
 
 DESCRIPTION="INTRINsec Reverse Proxy"
 HOMEPAGE="http://vulture.open-source.fr"
@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 KEYWORDS="~x86"
-IUSE=""
+#IUSE="apache2 sqlite"
 
 INTRINsec_HOME="/opt/INTRINsec"
 
@@ -25,7 +25,8 @@ dev-perl/libwww-perl
 net-www/mod_security
 >=www-apache/mod_perl-1.99
 >=net-www/apache-2.0.52
-virtual/httpd-php
+dev-php/mod_php
+dev-php/PECL-sqlite
 app-admin/sudo
 net-www/mod_ssl
 dev-libs/openssl"
@@ -33,10 +34,6 @@ dev-libs/openssl"
 DEPEND="dev-libs/openssl
 dev-db/sqlite
 dev-lang/perl"
-
-pkg_setup() {
-	require_sqlite;
-}
 
 src_compile() {
 	sed -i -e 's|/opt/INTRINsec/VultureNG|/opt/INTRINsec/vultureng|g'\

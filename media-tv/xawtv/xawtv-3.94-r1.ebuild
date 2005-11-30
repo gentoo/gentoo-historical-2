@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/xawtv/xawtv-3.94-r1.ebuild,v 1.5 2005/09/15 20:10:18 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/xawtv/xawtv-3.94-r1.ebuild,v 1.1 2005/01/25 15:25:35 cardoe Exp $
 
-inherit virtualx eutils multilib
+inherit virtualx eutils
 
 IUSE="aalib alsa lirc mmx motif nls opengl quicktime zvbi"
 
@@ -16,7 +16,7 @@ SRC_URI="http://dl.bytesex.org/releases/xawtv/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~amd64 ia64 ~ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~ia64 ~amd64"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	>=media-libs/jpeg-6b
@@ -42,14 +42,19 @@ src_unpack() {
 
 src_compile() {
 
-	myconf=""
+#	mmx enables 32bit assembly which is not valid when compiling 64bit on amd64
+	if [ "${ARCH}" = "x86" ]
+	then
+		myconf="`use_enable mmx`"
+	else
+		myconf=""
+	fi
 
 	econf \
 		--with-x \
 		--enable-xfree-ext \
 		--enable-xvideo \
 		--enable-dv \
-		`use_enable mmx` \
 		`use_enable motif` \
 		`use_enable quicktime` \
 		`use_enable alsa` \
@@ -68,7 +73,7 @@ src_compile() {
 src_install() {
 	cd ${S}
 	einstall \
-		libdir=${D}/usr/$(get_libdir)/xawtv \
+		libdir=${D}/usr/lib/xawtv \
 		resdir=${D}/etc/X11 || die
 
 	dodoc COPYING Changes README* TODO

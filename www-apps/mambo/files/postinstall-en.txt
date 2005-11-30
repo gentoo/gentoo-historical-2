@@ -1,11 +1,9 @@
 You are almost done!
 
-  0. Setup the db.
 
   1. Restart Apache
 
-  2. Login on http://${VHOST_HOSTNAME}/${VHOST_APPDIR} 
-  and finish the installation. IMPORTANT: the web
+  2. Login on http://YOURHOST and finish the installation. IMPORTANT: the web
   installer will complain that configuration.php is not writeable. When you
   are done, create configuration.php in ${MY_INSTALLDIR} and copy the generated
   configuration into it. Then execute the following:
@@ -21,8 +19,8 @@ You are almost done!
 
   You can now launch your browser and point it to your MOS site e.g.
 
-  http://${VHOST_HOSTNAME}/${VHOST_APPDIR} -> Main Site
-  http://${VHOST_HOSTNAME}/${VHOST_APPDIR}/administrator -> Admin
+  http://www.mysite.com -> Main Site
+  http://www.mysite.com/administrator -> Admin
 
   You can log into Admin using the username 'admin' along with the
   password that was generated or you chose during the web based install.

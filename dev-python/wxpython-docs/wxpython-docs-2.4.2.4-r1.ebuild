@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wxpython-docs/wxpython-docs-2.4.2.4-r1.ebuild,v 1.3 2005/11/13 02:32:45 wormo Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wxpython-docs/wxpython-docs-2.4.2.4-r1.ebuild,v 1.1 2005/05/02 19:02:13 pythonhead Exp $
 
 MY_P="${P/wxpython-docs/wxPythonDocs}"
 
@@ -13,17 +11,11 @@ SRC_URI="mirror://sourceforge/wxpython/${MY_P}.tar.gz
 
 LICENSE="wxWinFDL-3 LGPL-2.1"
 SLOT="2.4"
-KEYWORDS="x86 ~sparc amd64 ~ppc"
+KEYWORDS="x86 ~sparc amd64"
 IUSE=""
 
-S="${WORKDIR}/wxPython-${PV}"
-DOCDIR="wxPython-${PV}"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S} || die "Couldn't cd to ${S}"
-	epatch ${FILESDIR}/viewdocs-2.4.2.4.patch
-}
+S="${WORKDIR}/wxPython-${PVR}"
+DOCDIR="wxpython-${PVR}"
 
 src_install() {
 	dodir /usr/share/doc/${DOCDIR}/docs

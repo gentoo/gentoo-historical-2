@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/boost-jam/boost-jam-3.1.9.ebuild,v 1.4 2004/06/25 02:21:05 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/boost-jam/boost-jam-3.1.9.ebuild,v 1.1 2004/04/15 17:44:09 eradicator Exp $
 
 DESCRIPTION="Boost.Jam - an alternative to make based on Jam."
 HOMEPAGE="http://www.boost.org/tools/build/jam_src/index.html"
@@ -13,8 +13,7 @@ SLOT="0"
 KEYWORDS="~x86 ~ppc"
 IUSE=""
 
-DEPEND="dev-libs/boost
-	!dev-util/jam"
+DEPEND=""
 
 src_compile() {
 	./build.sh

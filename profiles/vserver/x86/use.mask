@@ -1,6 +1,6 @@
 # Copyright 2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/vserver/x86/use.mask,v 1.7 2005/10/31 13:58:44 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/vserver/x86/use.mask,v 1.1 2005/04/20 17:44:59 hollow Exp $
 
 # This file masks out USE flags that are simply NOT allowed in the default
 # x86 profile.  This works, for example, if another architecture's
@@ -13,12 +13,7 @@
 -sse
 -sse2
 -3dnow
--3dnowext
+-3dnowex
 -win32codecs
--kqemu
+-divx4linux
 
-# Unmask nvidia XvMC support
--nvidia
-
-# Unmask dev-db/oracle-instantclient-basic support
--oci8-instant-client

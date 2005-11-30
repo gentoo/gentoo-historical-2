@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/hardware-monitor/hardware-monitor-1.2.ebuild,v 1.5 2005/01/31 15:10:57 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/hardware-monitor/hardware-monitor-1.2.ebuild,v 1.1 2004/12/21 13:16:31 joem Exp $
 
 inherit gnome2
 
 DESCRIPTION="Gnome2 Hardware Monitor Applet"
 HOMEPAGE="http://www.cs.auc.dk/~olau/hardware-monitor/"
-SRC_URI="http://www.cs.auc.dk/~olau/hardware-monitor/source/${P}.tar.bz2"
+SRC_URI="http://julien.rennard.free.fr/hardware-monitor/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
+KEYWORDS="~x86"
 # can add lmsensor stuff
 IUSE=""
 

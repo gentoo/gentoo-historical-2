@@ -1,28 +1,6 @@
 # ChangeLog for x11-themes/fvwm-themes-extra
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes-extra/ChangeLog,v 1.8 2005/11/02 17:59:33 gustavoz Exp $
-
-  02 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  fvwm-themes-extra-0.7.0.ebuild:
-  Stable on sparc wrt #111102
-
-  02 Nov 2005; Luis Medinas <metalgod@gentoo.org>
-  fvwm-themes-extra-0.7.0.ebuild:
-  Marked Stable on amd64. Bug #111102.
-
-  14 Aug 2005; Luis Medinas <metalgod@gentoo.org>
-  fvwm-themes-extra-0.7.0.ebuild:
-  Added ~amd64 keywords.
-
-  03 Jul 2004; Jason Wever <weeve@gentoo.org> fvwm-themes-extra-0.7.0.ebuild:
-  Added ~sparc keyword.
-
-  11 Apr 2004; Markus Nigbur <pyrania@gentoo.org>
-  fvwm-themes-extra-0.7.0.ebuild:
-  Marked stable on x86.
-
-  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> fvwm-themes-extra-0.7.0.ebuild :
-  AMD64 keywords.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/fvwm-themes-extra/ChangeLog,v 1.1 2003/12/26 00:33:25 pyrania Exp $
 
 *fvwm-themes-extra-0.7.0 (26 Dec 2003)
 

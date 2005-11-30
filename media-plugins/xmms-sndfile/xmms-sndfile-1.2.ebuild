@@ -1,25 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-sndfile/xmms-sndfile-1.2.ebuild,v 1.15 2005/07/12 05:05:24 geoman Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-sndfile/xmms-sndfile-1.2.ebuild,v 1.1 2004/02/01 07:10:32 eradicator Exp $
 
 MY_PN=${PN/-/_}
 MY_P=${MY_PN}-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="Xmms_sndfile is a libsndfile plugin for XMMS"
-HOMEPAGE="http://www.mega-nerd.com/xmms_sndfile/"
-SRC_URI="http://www.mega-nerd.com/xmms_sndfile/${MY_P}.tar.gz"
+HOMEPAGE="http://www.zipworld.com.au/~erikd/XMMS/"
+SRC_URI="http://www.zipworld.com.au/~erikd/XMMS/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
 
-RDEPEND="media-libs/libsndfile
+DEPEND="media-libs/libsndfile
 	media-sound/xmms"
-DEPEND="${RDEPEND}
-	dev-util/pkgconfig"
 
 src_install() {
-	make DESTDIR="${D}" libdir="$(xmms-config --input-plugin-dir)" install || die
+	make DESTDIR=${D} libdir=/usr/lib/xmms/Input install || die
 	dodoc AUTHORS NEWS README ChangeLog TODO
 }

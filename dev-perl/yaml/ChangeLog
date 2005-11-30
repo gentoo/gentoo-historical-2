@@ -1,64 +1,6 @@
 # ChangeLog for dev-perl/yaml
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/yaml/ChangeLog,v 1.19 2005/09/08 21:38:46 agriffis Exp $
-
-  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> yaml-0.36.ebuild:
-  Mark 0.36 stable on alpha
-
-  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> yaml-0.36.ebuild:
-  Stable on ppc.
-
-  06 Jun 2005; Markus Rothe <corsair@gentoo.org> yaml-0.36.ebuild:
-  Stable on ppc64
-
-  27 May 2005; Michael Cummings <mcummings@gentoo.org> yaml-0.39.ebuild:
-  -m Fixing dep for yaml-0.39
-
-  22 May 2005; Simon Stelling <blubb@gentoo.org> yaml-0.36.ebuild:
-  stable on amd64
-
-  16 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> yaml-0.36.ebuild:
-  Stable on sparc
-
-  15 May 2005; Rene Nussbaumer <killerfox@gentoo.org> yaml-0.36.ebuild:
-  Stable on hppa
-
-*yaml-0.39 (14 May 2005)
-
-  14 May 2005; Michael Cummings <mcummings@gentoo.org> yaml-0.36.ebuild,
-  +yaml-0.39.ebuild:
-  Version bump
-
-  18 Mar 2005; Aron Griffis <agriffis@gentoo.org> yaml-0.35.ebuild,
-  yaml-0.36.ebuild:
-  Add ia64 and ~ia64 keywords
-
-*yaml-0.36 (13 Mar 2005)
-
-  13 Mar 2005; Michael Cummings <mcummings@gentoo.org> yaml-0.35.ebuild,
-  +yaml-0.36.ebuild:
-  Version bump, bug 84989
-
-  12 Mar 2005; Markus Rothe <corsair@gentoo.org> yaml-0.35.ebuild:
-  Stable on ppc64
-
-  22 Dec 2004; Yuta SATOH <nigoro@gentoo.org> yaml-0.35.ebuild:
-  added ~ppc64
-
-  21 Nov 2004; Hardave Riar <hardave@gentoo.org> yaml-0.35.ebuild:
-  Stable on mips, dep for bug #68570
-
-  20 Nov 2004; Daniel Black <dragonheart@gentoo.org> yaml-0.35.ebuild:
-  ppc stable to support bug #68570
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> yaml-0.35.ebuild:
-  Stable on amd64.
-
-  05 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org> yaml-0.35.ebuild:
-  Stable on sparc
-
-  19 Jan 2004; Eric Sammer <esammer@gentoo.org> yaml-0.35.ebuild:
-  Added ~amd64 to keywords to fix dependencies. Added metadata.xml
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/yaml/ChangeLog,v 1.1 2003/06/26 16:11:30 mcummings Exp $
 
 *yaml-0.35 (26 Jun 2003)
 

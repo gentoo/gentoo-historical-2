@@ -1,48 +1,31 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/taylor-uucp/taylor-uucp-1.06.2.ebuild,v 1.15 2004/07/01 22:02:04 squinky86 Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Stéphane Dupille <sdupille@teaser.fr>
+# $Header: /var/cvsroot/gentoo-x86/net-misc/taylor-uucp/taylor-uucp-1.06.2.ebuild,v 1.1 2002/06/21 21:28:37 rphillips Exp $
 
-inherit eutils
-
+A="uucp-${PV}.tar.gz"
 S=${WORKDIR}/uucp-1.06.1	# This should be a .2 bug the package is messed
-IUSE=""
 DESCRIPTION="Taylor UUCP"
-SRC_URI="ftp://ftp.gnu.org/pub/gnu/uucp/uucp-${PV}.tar.gz"
+SRC_URI="ftp://ftp.gnu.org/pub/gnu/uucp/${A}"
 HOMEPAGE="http://www.airs.com/ian/uucp.html"
 
-KEYWORDS="x86 sparc "
-LICENSE="GPL-2"
-SLOT="0"
+DEPEND="virtual/glibc"
 
-DEPEND="virtual/libc"
-
-src_compile() {
-	epatch ${FILESDIR}/gentoo-uucp.diff
-
-	sh configure
-	make || die
+src_compile ()
+{
+	./configure --prefix=/usr --host=${CHOST}
+	make sbindir=/usr/sbin bindir=/usr/bin man1dir=/usr/share/man/man1 man8dir=/usr/share/man/man8 newconfigdir=/etc/uucp infodir=/usr/share/info || die
 }
 
-src_install() {
-	dodir /usr/share/man/man1
-	dodir /usr/share/man/man8
-	dodir /usr/share/info
-	dodir /etc/uucp
-	dodir /usr/bin
-	dodir /usr/sbin
-	make \
-		prefix=${D}/usr \
-		sbindir=${D}/usr/sbin \
-		bindir=${D}/usr/bin \
-		man1dir=${D}/usr/share/man/man1 \
-		man8dir=${D}/usr/share/man/man8 \
-		newconfigdir=${D}/etc/uucp \
-		infodir=${D}/usr/share/info \
-		install install-info || die
-	cp sample/* ${D}/etc/uucp
+src_install ()
+{
+	mkdir -p ${D}/usr/share/man/man1
+	mkdir -p ${D}/usr/share/man/man8
+	mkdir -p ${D}/usr/share/info
+	mkdir -p ${D}/etc/uucp
+	mkdir -p ${D}/usr/bin
+	mkdir -p ${D}/usr/sbin
+	make prefix=${D}/usr sbindir=${D}/usr/sbin bindir=${D}/usr/bin man1dir=${D}/usr/share/man/man1 man8dir=${D}/usr/share/man/man8 newconfigdir=${D}/etc/uucp infodir=${D}/usr/share/info install || die
+	make prefix=${D}/usr sbindir=${D}/usr/sbin bindir=${D}/usr/bin man1dir=${D}/usr/share/man/man1 man8dir=${D}/usr/share/man/man8 newconfigdir=${D}/etc/uucp infodir=${D}/usr/share/info install-info || die
 	dodoc COPYING ChangeLog MANIFEST NEWS README TODO
-}
-
-pkg_preinst() {
-	usermod -s /bin/bash uucp
 }

@@ -1,18 +1,7 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 7300a7b361fa9f48e37722c6952bd432 metadata.xml 158
-MD5 49cd2504885325b2b4a648aad0d74cc2 tuxzap-programs-0.2.3.ebuild 1165
-MD5 fc7e8d5c9300e902b995f921fd5973c0 tuxzap-programs-0.5.4.ebuild 1052
-MD5 9dc3571201aa71fcd6485baec9849fad tuxzap-programs-0.2.5.ebuild 1157
-MD5 ca1868066473f6edba331105e7d3e1e4 ChangeLog 1832
+MD5 424a2eb341d6e42465d397fb50f9e5c9 tuxzap-programs-0.2.3.ebuild 1156
+MD5 e6444be4de3fe20af79e0e3617d49c1a tuxzap-programs-0.2.5.ebuild 1166
+MD5 319c85ca35bb953f92858daa299d91bc ChangeLog 959
 MD5 0891de6f156d6359fa93b062689f68b0 files/digest-tuxzap-programs-0.2.3 73
-MD5 696157bae4b75290c36601559e107ce8 files/digest-tuxzap-programs-0.5.4 73
 MD5 275c443eecaafa17b2d4750320d45e26 files/digest-tuxzap-programs-0.2.5 73
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDNolBgIKl8Uu19MoRAng3AJ4rx3SVVXnG1NjHTsL9qiI1dItmPQCePXdX
-f03trESS95xkblEgNTsbSbY=
-=T0Or
------END PGP SIGNATURE-----
+MD5 24c91fab0747b986bfc8d8da04564377 files/digest-tuxzap_programs-0.2.3 145
+MD5 abb9d0ee7a4fad195cd1567738549e39 files/digest-tuxzap_programs-0.2.5 145

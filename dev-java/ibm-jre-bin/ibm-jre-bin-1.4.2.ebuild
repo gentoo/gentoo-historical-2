@@ -1,25 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jre-bin/ibm-jre-bin-1.4.2.ebuild,v 1.15 2005/10/18 20:21:36 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ibm-jre-bin/ibm-jre-bin-1.4.2.ebuild,v 1.1 2004/08/04 15:04:00 sejo Exp $
 
-inherit java
+inherit java nsplugins
 
 S="${WORKDIR}/j2sdk${PV}"
 DESCRIPTION="IBM Java Development Kit ${PV}"
-HOMEPAGE="http://www-106.ibm.com/developerworks/java/jdk/"
-SRC_URI="ppc? ( IBMJava2-JRE-142.ppc.tgz )
-	ppc64? ( IBMJava2-JRE-142.ppc64.tgz )
-	x86? ( IBMJava2-JRE-142.tgz )"
-PROVIDE="virtual/jre"
-IUSE="browserplugin nsplugin mozilla"
+SRC_URI="ppc?(mirror://IBMJava2-JRE-142.ppc.tgz)
+	ppc64?(mirror://IBMJava2-JRE-142.ppc64.tgz)
+	x86?(mirror://IBMJava2-JRE-142.tgz)"
+PROVIDE="virtual/jre-1.4.2
+	virtual/java-scheme-2"
+IUSE=""
 SLOT="1.4"
 LICENSE="IBM-J1.4"
-KEYWORDS="ppc ~x86 ppc64 -*"
-RESTRICT=fetch
-
+KEYWORDS="ppc ~x86 ppc64"
 DEPEND="virtual/libc
 	>=dev-java/java-config-0.2.5"
-RDEPEND=""
+RDEPEND="${DEPEND}"
+
 
 if use ppc; then
 	S=${WORKDIR}/IBMJava2-ppc-142
@@ -29,23 +28,14 @@ else
 	S=${WORKDIR}/IBMJava2-142
 fi;
 
-pkg_nofetch() {
-	einfo "Due to license restrictions, we cannot redistribute or fetch the distfiles"
-	einfo "Please visit: ${HOMEPAGE}"
-	einfo "Download: ${A}"
-	einfo "Place the file in: ${DISTDIR}"
-	einfo "Rerun emerge"
-}
-
-
 src_compile() {
 	einfo "${PF} is a binary package, no compilation required"
 }
 
 src_install() {
-	# Copy all the files to the designated directory
+	# Copy all the files to the designated directory 
 	dodir /opt/${P}
-	cp -pR ${S}/jre/* ${D}/opt/${P}/
+	cp -dpR ${S}/jre/* ${D}/opt/${P}/
 
 	dohtml -a html,htm,HTML -r docs
 	dodoc ${S}/docs/COPYRIGHT
@@ -58,25 +48,16 @@ src_install() {
 		< ${FILESDIR}/${P} \
 		> ${D}/etc/env.d/java/20${P} \
 		|| die "unable to install environment file"
-
-	if ! use ppc && ! use ppc64; then
-		if use nsplugin ||       # global useflag for netscape-compat plugins
-		   use browserplugin ||  # deprecated but honor for now
-		   use mozilla; then     # wrong but used to honor it
-			local plugin="libjavaplugin_oji.so"
-			if has_version '>=sys-devel/gcc-3' ; then
-				plugin="libjavaplugin_ojigcc3.so"
-			fi
-			install_mozilla_plugin /opt/${P}/bin/${plugin}
-		fi
-	fi
 }
 
-pkg_postinst() {
-	if ! use nsplugin && ( use browserplugin || use mozilla ); then
-		echo
-		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
-		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
-		ewarn "update your USE to include 'nsplugin'."
+pkg_postinst(){
+	inst_plugin /opt/${P}/bin/javaplugin.so
+	true
+}
+
+pkg_prerm() {
+	if [ ! -z "$(java-config -J | grep ${P})" ] ; then
+		ewarn "It appears you are removing your default system VM!"
+		ewarn "Please run java-config -L then java-config-S to set a new system VM!"
 	fi
 }

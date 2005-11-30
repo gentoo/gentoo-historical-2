@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-find/xmms-find-0.5.2.ebuild,v 1.3 2004/12/08 21:27:12 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-find/xmms-find-0.5.2.ebuild,v 1.1 2004/11/08 21:33:00 eradicator Exp $
 
 IUSE=""
 
@@ -15,9 +15,13 @@ SRC_URI="mirror://sourceforge/xmmsfind/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 sparc ppc x86"
+KEYWORDS="~amd64 ~sparc ~ppc ~x86"
 
 DEPEND=">=media-sound/xmms-1.2.8"
+
+src_unpack() {
+	unpack ${A}
+}
 
 src_compile() {
 	emake || die "emake failed"
@@ -29,5 +33,5 @@ src_install() {
 		PLUGIN_INSTALL_DIR=${plugin_install_dir} \
 		REMOTE_INSTALL_DIR=${D}/usr/bin install || die "install failed"
 
-	dodoc BUGS README TODO VERSION
+	dodoc BUGS COPYING INSTALL README TODO VERSION
 }

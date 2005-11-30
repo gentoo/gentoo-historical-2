@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-2.1.69.ebuild,v 1.8 2005/09/17 01:00:55 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-2.1.69.ebuild,v 1.1 2005/04/21 21:05:41 cryos Exp $
 
 inherit flag-o-matic
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.octave.org/pub/octave/bleeding-edge/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ~sparc x86"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc ~amd64"
 IUSE="emacs static readline zlib tetex hdf5 mpi ifc blas"
 
 DEPEND="virtual/libc
@@ -24,7 +24,6 @@ DEPEND="virtual/libc
 	tetex? ( virtual/tetex )
 	x86? ( ifc? ( dev-lang/ifc ) )
 	blas? ( virtual/blas )
-	mpi? ( sys-cluster/lam-mpi )
 	!=app-text/texi2html-1.70"
 
 # NOTE: octave supports blas/lapack from intel but this is not open
@@ -52,14 +51,9 @@ src_compile() {
 	# Danny van Dyk 2004/08/26
 	use zlib && LDFLAGS="${LDFLAGS} -lz"
 
-	if use mpi; then
-		myconf="${myconf} --with-mpi=lammpi++"
-	else
-		myconf="${myconf} --without-mpi"
-	fi
-
 	econf \
 		$(use_with hdf5) \
+		$(use_with mpi) \
 		$(use_enable readline) \
 		${myconf} \
 		LDFLAGS="${LDFLAGS}" || die "econf failed"
@@ -81,30 +75,6 @@ src_install() {
 		done
 		cd ..
 	fi
-	dodir /etc/env.d
-	echo "LDPATH=/usr/lib/octave-${PV}" > ${D}/etc/env.d/99octave
-
-	# Fixes ls-R files to remove /var/tmp/portage references.
-	sed -i -e "s:${D}::g" ${D}/usr/libexec/${PN}/ls-R || die
-	sed -i -e "s:${D}::g" ${D}/usr/share/${PN}/ls-R || die
-}
-
-pkg_postinst() {
-	echo
-	einfo "Some users have reported failures at running simple tests if"
-	einfo "octave was built with agressive optimisations. You can check if"
-	einfo "your setup is affected by this bug by running the following test"
-	einfo "(inside the octave interpreter):"
-	einfo
-	einfo "octave:1> y = [1 3 4 2 1 5 3 5 6 7 4 5 7 10 11 3];"
-	einfo "octave:2> g = [1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3];"
-	einfo "octave:3> anova(y, g)"
-	einfo
-	einfo "If these commands complete successfully with no error message,"
-	einfo "your installation should be ok. Otherwise, try recompiling"
-	einfo "octave using less agressive \"CFLAGS\" (combining \"-O3\" and"
-	einfo "\"-march=pentium4\" is known to cause problems)."
-	echo
 }
 
 octave-install-doc() {

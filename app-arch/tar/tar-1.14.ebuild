@@ -1,28 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/tar/tar-1.14.ebuild,v 1.17 2005/05/26 22:06:21 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/tar/tar-1.14.ebuild,v 1.1 2004/05/26 17:50:26 mr_bones_ Exp $
 
-inherit flag-o-matic eutils gnuconfig
+inherit eutils gnuconfig
 
-DESCRIPTION="Use this to make tarballs :)"
+DESCRIPTION="Use this to try make tarballs :)"
 HOMEPAGE="http://www.gnu.org/software/tar/"
 SRC_URI="http://ftp.gnu.org/gnu/tar/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
-IUSE="nls static build bzip2"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
+IUSE="nls static build"
 
-RDEPEND="app-arch/gzip
-	bzip2? ( app-arch/bzip2 )"
-DEPEND="${RDEPEND}
+DEPEND="virtual/glibc
+	app-arch/gzip
+	app-arch/bzip2
+	app-arch/ncompress"
+RDEPEND="${DEPEND}
 	nls? ( >=sys-devel/gettext-0.10.35 )"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	gnuconfig_update
-	use static && append-ldflags -static
 }
 
 src_compile() {
@@ -31,7 +32,12 @@ src_compile() {
 		--bindir=/bin \
 		--libexecdir=/usr/sbin \
 		$(use_enable nls) || die
-	emake || die "emake failed"
+
+	if use static ; then
+		emake LDFLAGS=-static || die "emake failed"
+	else
+		emake || die "emake failed"
+	fi
 }
 
 src_install() {
@@ -46,7 +52,6 @@ src_install() {
 	cd "${S}"
 	if use build ; then
 		rm -rf "${D}/usr/share"
-		rm -rf ${D}/usr/sbin/rmt ${D}/etc/rmt
 	else
 		dodoc AUTHORS ChangeLog* NEWS README* PORTS THANKS
 		doman "${FILESDIR}/tar.1"

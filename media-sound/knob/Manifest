@@ -1,5 +1,2 @@
-MD5 dbad4c0791d33b8066a7500c811ea12a knob-1.2-r1.ebuild 584
-MD5 8d09f07e1b75dd42f55d859acfb8ab99 ChangeLog 1004
-MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
-MD5 a56cfa065796d6825807406e890476e5 files/digest-knob-1.2-r1 60
-MD5 e19a414c89ffe94dfd4cae80e1da4248 files/knob-1.2-fPIC.patch 375
+MD5 5434d41252cc63ff62d1381b219f3ef7 knob-1.2.ebuild 488
+MD5 a56cfa065796d6825807406e890476e5 files/digest-knob-1.2 60

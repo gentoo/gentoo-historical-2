@@ -1,17 +1,23 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/shc/shc-3.4.ebuild,v 1.8 2004/07/15 00:08:02 agriffis Exp $
+# Copyright 2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-util/shc/shc-3.4.ebuild,v 1.1 2003/01/06 05:26:09 george Exp $
 
-DESCRIPTION="A (shell-) script compiler/scrambler"
-HOMEPAGE="http://www.datsi.fi.upm.es/~frosal"
-SRC_URI="http://www.datsi.fi.upm.es/~frosal/sources/${P}.tgz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc ~alpha"
 IUSE=""
 
-DEPEND="virtual/libc"
+DESCRIPTION="A (shell-) script compiler/scrambler."
+SRC_URI="http://www.datsi.fi.upm.es/~frosal/sources/${P}.tgz"
+HOMEPAGE="http://www.datsi.fi.upm.es/~frosal"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ~ppc ~sparc ~sparc64 ~alpha"
+
+DEPEND="virtual/glibc"
+
+src_unpack() {
+	unpack ${P}.tgz
+	cd ${S}
+}
 
 src_compile() {
 	## the "test"-target leads to an access-violation -> so we skip it
@@ -19,8 +25,9 @@ src_compile() {
 	make shc || die
 }
 
-src_install() {
-	dobin shc
+src_install () {
+	exeinto /usr/bin
+	doexe shc
 	doman shc.1
 	dodoc shc.README CHANGES
 }

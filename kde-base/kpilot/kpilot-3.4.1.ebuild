@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kpilot/kpilot-3.4.1.ebuild,v 1.6 2005/07/08 04:40:50 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kpilot/kpilot-3.4.1.ebuild,v 1.1 2005/05/25 21:23:10 danarmak Exp $
 
 KMNAME=kdepim
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="KPilot - HotSync software for KDE"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 DEPEND="app-pda/pilot-link
 	dev-libs/libmal
@@ -28,9 +28,6 @@ KMEXTRACTONLY="
 KMEXTRA="
 	kfile-plugins/palm-databases
 	kontact/plugins/kpilot/" # We add here the kontact's plugin instead of compiling it with kontact because it needs a lot of this programs deps.
-
-# Last minute fix. Applied for 3.4.2.
-PATCHES1="${FILESDIR}/kdepim-3.4.1-kpilot-fix.patch"
 
 src_compile() {
 	# needed to detect pi-notepad.h, used by the kpilot notepad conduit.

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/sylpheed-iconset/sylpheed-iconset-20040525.ebuild,v 1.5 2004/11/12 08:51:24 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/sylpheed-iconset/sylpheed-iconset-20040525.ebuild,v 1.1 2004/08/25 20:30:13 genone Exp $
 
 DESCRIPTION="Iconset for sylpheed-claws"
 HOMEPAGE="http://sylpheed-claws.sourceforge.net/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/sylpheed-claws/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 alpha ~ppc amd64"
+KEYWORDS="~x86 ~alpha ~ppc"
 IUSE=""
 
 DEPEND="virtual/sylpheed"
@@ -16,7 +16,7 @@ DEPEND="virtual/sylpheed"
 src_install() {
 	dodir /usr/share/sylpheed-claws/themes
 	dodoc README
-	rm -f README INSTALL
+	rm README INSTALL
 	chmod 644 */*
 	cp -r * ${D}/usr/share/sylpheed-claws/themes
 	dodir /usr/share/sylpheed

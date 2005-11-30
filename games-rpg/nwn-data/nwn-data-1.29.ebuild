@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn-data/nwn-data-1.29.ebuild,v 1.7 2005/11/02 22:53:22 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-rpg/nwn-data/nwn-data-1.29.ebuild,v 1.1 2005/09/21 00:11:30 wolf31o2 Exp $
 
 inherit eutils games
 
@@ -33,42 +33,35 @@ RDEPEND="virtual/x11
 	>=media-libs/libsdl-1.2.5
 	amd64? ( app-emulation/emul-linux-x86-baselibs )"
 
-S=${WORKDIR}/nwn
-
-GAMES_LICENSE_CHECK="yes"
-dir=${GAMES_PREFIX_OPT}/nwn
-Ddir=${D}/${dir}
+S="${WORKDIR}/nwn"
+dir="${GAMES_PREFIX_OPT}/${PN/-data}"
+Ddir="${D}/${dir}"
 
 pkg_setup() {
-	games_pkg_setup
 	if use sou && use hou
 	then
-		echo "You will need the SoU and HoU CDs for this installation."
 		cdrom_get_cds NWNSoUInstallGuide.rtf \
 			ArcadeInstallNWNXP213f.EXE
 	elif use sou
 	then
-		 echo "You will need the SoU CD for this installation."
 		cdrom_get_cds NWNSoUInstallGuide.rtf
 	elif use hou
 	then
-		 echo "You will need the HoU CD for this installation."
 		cdrom_get_cds ArcadeInstallNWNXP213f.EXE
 	fi
 }
 
 src_unpack() {
-	mkdir "${S}"
-	cd "${S}"
+	mkdir ${S}
+	cd ${S}
 	unpack nwclient129.tar.gz
-	cd "${WORKDIR}"
+	cd ${WORKDIR}
 	use nowin && unpack nwresources129.tar.gz
-	cd "${S}"
+	cd ${S}
 	rm -rf override/*
 	# the following is so ugly, please pretend it doesnt exist
 	declare -a Aarray=(${A})
-	use nowin && if [ "${#Aarray[*]}" == "3" ]
-	then
+	use nowin && if [ "${#Aarray[*]}" == "3" ]; then
 		unpack ${Aarray[1]}
 	fi
 	if use sou
@@ -91,23 +84,16 @@ src_unpack() {
 		unzip -o ${CDROM_ROOT}/Language_data.zip
 		unzip -o ${CDROM_ROOT}/Language_update.zip
 	fi
-	sed -i -e '\:^./nwmain .*:i \
-if [[ -f ./nwmouse.so ]]; then \
-	export XCURSOR_PATH="$(pwd)" \
-	export XCURSOR_THEME=nwmouse \
-	export LD_PRELOAD=./nwmouse.so:$LD_PRELOAD \
-fi \
-	' "${S}/nwn"
 }
 
 src_install() {
-	dodir "${dir}"
+	dodir ${dir}
 	# Since the movies don't play anyway, we'll remove them
-	rm -rf "${S}"/movies
-	mkdir -p "${S}"/dmvault "${S}"/hak "${S}"/portraits "${S}"/localvault
-	rm -rf "${S}"/dialog.tlk "${S}"/dialog.TLK "${S}"/dmclient "${S}"/nwmain \
-		"${S}"/nwserver  "${S}"/nwm/* "${S}"/SDL-1.2.5 "${S}"/fixinstall
-	mv "${S}"/* "${Ddir}"
+	rm -rf ${S}/movies
+	mkdir -p ${S}/dmvault ${S}/hak ${S}/portraits
+	rm -rf ${S}/dialog.tlk ${S}/dialog.TLK ${S}/dmclient ${S}/nwmain \
+		${S}/nwserver  ${S}/nwm/* ${S}/SDL-1.2.5 ${S}/fixinstall
+	mv ${S}/* ${Ddir}
 	keepdir ${dir}/servervault
 	keepdir ${dir}/scripttemplates
 	keepdir ${dir}/saves
@@ -116,27 +102,24 @@ src_install() {
 	cd ${Ddir}
 	for d in ambient data dmvault hak localvault music override portraits
 	do
-		if [ -d ${d} ]
-		then
-			cd ${d}
-			for f in $(find . -name '*.*') ; do
-				lcf=$(echo ${f} | tr [:upper:] [:lower:])
-				if [ ${f} != ${lcf} ] && [ -f ${f} ]
-				then
-					mv ${f} $(echo ${f} | tr [:upper:] [:lower:])
-				fi
-			done
-			cd ${Ddir}
-		fi
+		cd ${d}
+		for f in $(find . -name '*.*') ; do
+			lcf=$(echo ${f} | tr [:upper:] [:lower:])
+			if [ ${f} != ${lcf} ] && [ -f ${f} ]
+			then
+				mv ${f} $(echo ${f} | tr [:upper:] [:lower:])
+			fi
+		done
+		cd ${Ddir}
 	done
-	if ! use sou && ! use hou && use nowin
+	if ! use sou && ! use hou
 	then
-		chmod a-x ${Ddir}/data/patch.bif ${Ddir}/patch.key
+		chmod a-x ${Ddir}/data/patch.bif chmod a-x${Ddir}/patch.key
 	fi
-	doicon "${FILESDIR}"/nwn.png
+	doicon ${FILESDIR}/nwn.png
 	prepgamesdirs
 	chmod -R g+rwX ${Ddir}/saves ${Ddir}/localvault ${Ddir}/dmvault \
-		2>&1 > /dev/null || die "could not chmod"
+		|| die "could not chmod"
 	chmod g+rwX ${Ddir} || die "could not chmod"
 }
 
@@ -146,34 +129,25 @@ pkg_postinst() {
 		einfo "The NWN linux client data is now installed."
 		einfo "Proceed with the following steps in order to get it working:"
 		einfo "1) Copy the following directories/files from your installed and"
-		einfo "   patched (1.66) Neverwinter Nights to ${dir}:"
+		einfo "   patched (${PV}) Neverwinter Nights to ${GAMES_PREFIX_OPT}/nwn:"
 		einfo "    ambient/"
-		einfo "    data/"
+		einfo "    data/ (all files except for patch.bif)"
 		einfo "    dmvault/"
 		einfo "    hak/"
 		einfo "    localvault/"
 		einfo "    modules/"
 		einfo "    music/"
+		einfo "    override/"
 		einfo "    portraits/"
 		einfo "    saves/"
 		einfo "    servervault/"
 		einfo "    texturepacks/"
 		einfo "    chitin.key"
-		einfo "2) Remove some files to make way for the patch"
-		einfo "    rm ${dir}/music/mus_dd_{kingmaker,shadowgua,witchwake}.bmu"
-		einfo "    rm ${dir}/override/iit_medkit_001.tga"
-		einfo "    rm ${dir}/data/patch.bif"
-		if use sou
-		then
-			einfo "    rm ${dir}/xp1patch.key ${dir}/data/xp1patch.bif"
-		fi
-		if use hou
-		then
-			einfo "    rm ${dir}/xp2patch.key ${dir}/data/xp2patch.bif"
-		fi
-		einfo "3) Chown and chmod the files with the following commands"
+		einfo "2) Chown and chmod the files with the following commands"
 		einfo "    chown -R ${GAMES_USER}:${GAMES_GROUP} ${dir}"
 		einfo "    chmod -R g+rwX ${dir}"
+		einfo "3) Run ${dir}/fixinstall as root"
+		einfo "4) Make sure that you are in group ${GAMES_GROUP}"
 		echo
 		einfo "Or try emerging with USE=nowin"
 	else

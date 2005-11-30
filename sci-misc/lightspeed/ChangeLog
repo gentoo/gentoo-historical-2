@@ -1,12 +1,6 @@
-# ChangeLog for sci-misc/lightspeed
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/lightspeed/ChangeLog,v 1.4 2005/06/15 22:27:45 malc Exp $
-
-  15 Jun 2005; Malcolm Lashley <malc@gentoo.org> lightspeed-1.2a.ebuild:
-  Stable on amd64 - closes bug #95914
-
-  06 May 2005; David Holm <dholm@gentoo.org> lightspeed-1.2a.ebuild:
-  Added to ~ppc.
+# ChangeLog for app-sci/lightspeed
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/lightspeed/ChangeLog,v 1.1 2004/12/27 21:05:12 ribosome Exp $
 
 *lightspeed-1.2a (27 Dec 2004)
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/win4lin/win4lin-5.1.ebuild,v 1.10 2005/08/15 16:51:48 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/win4lin/win4lin-5.1.ebuild,v 1.1 2004/03/18 18:47:57 bass Exp $
 
-IUSE=""
+IUSE="doc"
 
 MY_P=Win4Lin-5.5.16c-d.i386
 
@@ -15,9 +15,10 @@ SRC_URI="mirror://gentoo/${MY_P}.rpm"
 
 SLOT="0"
 LICENSE="NeTraverse"
-KEYWORDS="-* ~x86"
+KEYWORDS="~x86"
 
-DEPEND="app-arch/rpm2targz"
+DEPEND="app-arch/rpm2targz
+		virtual/winkernel"
 RDEPEND="!<=app-emulation/win4lin-4.0.22"
 
 src_unpack() {
@@ -26,8 +27,9 @@ src_unpack() {
 }
 
 src_compile() {
-	einfo "Nothing to compile; binary package."
-	einfo "Remember you need a patched kernel."
+	einfo "nothing to compile; binary package."
+	einfo "Remember you need a kernel patched like"
+	einfo "win4lin-sources or gs-sources."
 }
 
 src_install() {
@@ -36,7 +38,7 @@ src_install() {
 	cp ${FILESDIR}/registerme.sh ${D}/opt/win4lin/
 	cp ${FILESDIR}/win4lin.initd.new ${D}/opt/win4lin/
 
-#    if use doc
+#    if [ -n "`use doc`" ]
 #    then
 #        dodoc ${DISTDIR}/Win4Lin-4.0.0-manual.pdf
 #    fi
@@ -50,7 +52,7 @@ pkg_postinst() {
 	einfo "ebuild  /var/db/pkg/app-emulation/${PF}/${PF}.ebuild config"
 	einfo "to install the windows setup files. You will need your Windows cdrom in the "
 	einfo "drive in order to complete this step."
-	einfo
+	einfo "============"
 	einfo "If this is an upgrade 4.x to 5.x the trial license code isn't valid,"
 	einfo "you need register it in NeTraverse, or unemerge ALL Win4Lin files."
 }
@@ -61,7 +63,6 @@ pkg_prerm() {
 }
 
 pkg_config() {
-	chown -R bin:bin /opt/win4lin
 	loadwindowsCD cddevice /dev/cdrom
 	cp /opt/win4lin/win4lin.initd.new /etc/init.d/Win4Lin
 	chmod +x /etc/init.d/Win4Lin

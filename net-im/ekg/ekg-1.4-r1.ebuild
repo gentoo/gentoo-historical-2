@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ekg/ekg-1.4-r1.ebuild,v 1.6 2005/04/01 15:11:15 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ekg/ekg-1.4-r1.ebuild,v 1.1 2004/01/16 10:24:10 spock Exp $
 
 IUSE="ssl ncurses zlib python"
 
@@ -10,7 +10,7 @@ SRC_URI="http://dev.null.pl/ekg/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~sparc ~alpha hppa ~mips ~ia64 ~amd64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~arm ~ia64 ~amd64"
 
 DEPEND="ssl? ( >=dev-libs/openssl-0.9.6 )
 	ncurses? ( sys-libs/ncurses )

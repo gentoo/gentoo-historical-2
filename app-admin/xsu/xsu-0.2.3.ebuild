@@ -1,35 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/xsu/xsu-0.2.3.ebuild,v 1.14 2005/09/14 10:17:59 obz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/xsu/xsu-0.2.3.ebuild,v 1.1 2002/07/14 19:46:43 blocke Exp $
 
-inherit toolchain-funcs
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Interface for 'su - username -c command' in GNOME."
-HOMEPAGE="http://xsu.freax.eu.org/"
 SRC_URI="http://xsu.freax.eu.org/files/${P}.tar.gz"
-
-LICENSE="GPL-2"
+HOMEPAGE="http://xsu.freax.eu.org"
 SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
-
-DEPEND="=gnome-base/gnome-libs-1.4*
-	=x11-libs/gtk+-1.2*
-	=dev-libs/glib-1.2*"
-RDEPEND=""
+KEYWORDS="*"
+DEPEND="=gnome-base/gnome-libs-1.4* 
+		=x11-libs/gtk+-1.2*
+		=dev-libs/glib-1.2*"
 
 src_compile() {
+
 	# xsu uses its own custom configure script with unflexible Makefiles
-	./configure \
-		--prefix=/usr \
-		--man-base=/usr/share/man \
-		--doc-path=/usr/share/doc || die
-	make CC="$(tc-getCC) ${CFLAGS}" || die
+	./configure --prefix=/usr -man-base=/usr/share/man --doc-path=/usr/share/doc || die
+
+	make CC="gcc ${CFLAGS}" || die
+
 }
 
 src_install() {
-	dobin bin/xsu || die
+	dobin bin/xsu
 	doman doc/man/xsu.8
-	dodoc AUTHORS CHANGELOG INSTALL README
-	dohtml -r doc
+	dodoc AUTHORS CHANGELOG COPYING INSTALL README
+	dohtml doc/html/xsu_doc.html doc/html/xsu_example.jpg \
+		doc/html/xsu_example2.png doc/html/xsu_example3.png \
+		doc/html/xsu_in_gmenu.jpg
 }
+

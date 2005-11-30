@@ -1,11 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-themes/xmms-themes/xmms-themes-0.0.3.ebuild,v 1.14 2005/11/29 03:21:12 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-themes/xmms-themes/xmms-themes-0.0.3.ebuild,v 1.1 2003/05/05 20:20:43 mholzer Exp $
 
-IUSE=""
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Collection of XMMS themes"
-HOMEPAGE="http://www.xmms.org/skins.php"
+HOMEPAGE="http://www.xmms.org"
 THEME_URI="http://www.xmms.org/files/Skins"
 SRC_URI="${THEME_URI}/AbsoluteE_Xmms.zip
 	${THEME_URI}/Absolute_Blue-XMMS.zip
@@ -89,7 +88,6 @@ SRC_URI="${THEME_URI}/AbsoluteE_Xmms.zip
 	${THEME_URI}/nixamp2.tar.gz
 	${THEME_URI}/sword.tar.gz
 	${THEME_URI}/xmmearth.tar.gz
-	http://www.kde-look.org/content/files/7947-plastik.zip
 	http://mrb.tagclan.com/files/Raj._I.O._Amp_in_2000.wsz
 	http://mrb.tagclan.com/files/bluemetal.wsz
 	http://mrb.tagclan.com/files/atlantis_-_meridian.wsz
@@ -103,11 +101,11 @@ SRC_URI="${THEME_URI}/AbsoluteE_Xmms.zip
 
 SLOT="0"
 LICENSE="freedist"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
-DEPEND=""
-RDEPEND="|| ( media-sound/xmms media-sound/beep-media-player )
-	 app-arch/unzip"
+DEPEND="net-misc/wget"
+RDEPEND="media-sound/xmms
+	app-arch/unzip"
 
 src_unpack() {
 	local bn
@@ -125,17 +123,11 @@ src_unpack() {
 			fi
 		fi
 	done
-
-	mv 7947-plastik.zip Plastik.zip
-}
-
-src_compile() {
-	einfo "Nothing to compile"
 }
 
 src_install () {
 	dodir /usr/share/xmms/Skins
-	cp -pPR * ${D}/usr/share/xmms/Skins/
-	chown -R root:0 ${D}/usr/share/xmms/Skins/
+	cp -dpR * ${D}/usr/share/xmms/Skins/
+	chown -R root.root ${D}/usr/share/xmms/Skins/
 	chmod -R o-w ${D}/usr/share/xmms/Skins/
 }

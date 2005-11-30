@@ -30,7 +30,7 @@ diff -ur netbsd-cvs/Makefile libedit-20031222/Makefile
  
  AHDR=vi.h emacs.h common.h 
  ASRC=${LIBEDITDIR}/vi.c ${LIBEDITDIR}/emacs.c ${LIBEDITDIR}/common.c
-@@ -46,46 +49,56 @@
+@@ -46,46 +49,54 @@
  CLEANFILES+=	${AHDR} fcns.h help.h fcns.c help.c
  
  SUBDIR=	readline
@@ -98,14 +98,12 @@ diff -ur netbsd-cvs/Makefile libedit-20031222/Makefile
 -.include <bsd.lib.mk>
 -.include <bsd.subdir.mk>
 +.depend: vi.h emacs.h common.h fcns.h help.h help.c
-+	-mkdir .a .so
 +.c.o:
-+	${CC} ${CFLAGS} -c $< -o .a/$*
-+	${CC} ${CFLAGS} -fPIC -c $< -o .so/$*
++	${CC} ${CFLAGS} -c $<
 +libedit.a: ${OOBJS}
-+	ar -r $@ .a/*
++	ar -r $@ ${OOBJS}
 +libedit.so: ${OOBJS}
-+	${CC} --shared -o $@ .so/* ${LIBS}
++	${CC} --shared -o $@ ${OOBJS} ${LIBS}
 diff -ur netbsd-cvs/el.c libedit-20031222/el.c
 --- netbsd-cvs/el.c	2003-12-22 13:44:25.474909848 -0500
 +++ libedit-20031222/el.c	2003-12-22 15:00:15.545194024 -0500

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircii/ircii-20040820.ebuild,v 1.6 2005/03/10 01:41:56 j4rg0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircii/ircii-20040820.ebuild,v 1.1 2004/08/24 02:05:14 swegener Exp $
 
 IUSE="ipv6"
 
@@ -14,17 +14,17 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64 ~sparc ~ppc ppc-macos"
+KEYWORDS="~x86 ~amd64 ~sparc ~ppc"
 
 src_compile() {
-	econf $(use_enable ipv6) || die "econf failed"
-	emake || die "emake failed"
+	# `use_with socks socks5` <- isn't socks5 working?
+	econf `use_enable ipv6` || die "econf failed"
+	emake || die "make failed"
 }
 
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
 
 	dodoc ChangeLog INSTALL NEWS README \
-		doc/Copyright doc/crypto doc/VERSIONS doc/ctcp \
-		|| die "dodoc failed"
+		doc/Copyright doc/crypto doc/VERSIONS doc/ctcp
 }

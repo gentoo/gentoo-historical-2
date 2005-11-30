@@ -1,87 +1,9 @@
-# ChangeLog for dev-libs/xmlwrapp
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlwrapp/ChangeLog,v 1.24 2005/09/19 22:35:43 halcy0n Exp $
+# ChangeLog for app-admin/addpatches
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/xmlwrapp/ChangeLog,v 1.1 2003/03/28 13:40:56 pvdabeel Exp $
 
-  19 Sep 2005; Mark Loeser <halcy0n@gentoo.org> metadata.xml:
-  Adding to cpp herd
+*dvutil-0.13.3 (06 Mar 2003)
 
-  07 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> xmlwrapp-0.5.0-r1.ebuild:
-  Stable on mips.
+  06 Mar 2002; Pieter Van den Abeele<pvdabeel@gentoo.org> :
 
-  02 Aug 2005; Simon Stelling <blubb@gentoo.org> xmlwrapp-0.5.0-r1.ebuild:
-  stable on amd64
-
-  28 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> xmlwrapp-0.5.0-r1.ebuild:
-  Added ~mips.
-
-  15 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> -xmlwrapp-0.4.4.ebuild,
-  -xmlwrapp-0.5.0.ebuild:
-  Tidy old ebuilds.
-
-  12 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> xmlwrapp-0.5.0-r1.ebuild:
-  Added ~sparc.
-
-  13 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
-  xmlwrapp-0.5.0-r1.ebuild:
-  alpha stable (herdstat depend)
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xmlwrapp-0.5.0-r1.ebuild:
-  Added to ~hppa.
-
-  21 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xmlwrapp-0.5.0-r1.ebuild:
-  Stable on ppc.
-
-  18 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
-  xmlwrapp-0.5.0-r1.ebuild:
-  Fixed compilation on amd64 multilib-strict.
-
-  07 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> xmlwrapp-0.5.0-r1.ebuild:
-  Marked stable on x86.
-
-  22 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
-  xmlwrapp-0.5.0-r1.ebuild:
-  Add ~alpha keyword.
-
-  11 Mar 2005; Tom Martin <slarti@gentoo.org> xmlwrapp-0.5.0-r1.ebuild:
-  Marked ~amd64.
-
-*xmlwrapp-0.5.0-r1 (02 Mar 2005)
-
-  02 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
-  +xmlwrapp-0.5.0-r1.ebuild:
-  Fix deps; added doc and test to IUSE. Dont hardcode -O2 in CXXFLAGS. Don't
-  build the examples. See bug 83795.
-
-  12 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> xmlwrapp-0.4.4.ebuild:
-  Fixed bug #79503.
-
-  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> -xmlwrapp-0.4.0.ebuild,
-  -xmlwrapp-0.4.1.ebuild, xmlwrapp-0.5.0.ebuild:
-  Marked 0.5.0 stable on x86 and ppc. Removed old versions.
-
-*xmlwrapp-0.5.0 (21 Sep 2004)
-
-  21 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> xmlwrapp-0.4.1.ebuild,
-  xmlwrapp-0.4.4.ebuild, +xmlwrapp-0.5.0.ebuild:
-  Version bumped. Marked previous versions stable.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  xmlwrapp-0.4.0.ebuild, xmlwrapp-0.4.1.ebuild, xmlwrapp-0.4.4.ebuild:
-  virtual/glibc -> virtual/libc
-
-*xmlwrapp-0.4.4 (21 Feb 2004)
-*xmlwrapp-0.4.1 (21 Feb 2004)
-
-  21 Feb 2004; Mamoru KOMACHI <usata@gentoo.org> xmlwrapp-0.4.0.ebuild,
-  xmlwrapp-0.4.1.ebuild, xmlwrapp-0.4.4.ebuild, files/gentoo-0.4.0.patch,
-  files/gentoo-0.4.1.patch, files/mkmf, files/xmlwrapp-gentoo.diff:
-  Version bumped. Updated SRC_URI and HOMEPAGE. Corrected LICENSE (It is not
-  GPL-2 but BSD). Tidy up ebuilds. Seems to fix bug #40153
-
-*xmlwrapp-0.4.0 (25 Apr 2003)
- 
-  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
-  Added missing changelog entry.
-
+  Created an ebuild - also tested on ppc

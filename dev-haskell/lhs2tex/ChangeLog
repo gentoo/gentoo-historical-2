@@ -1,18 +1,6 @@
 # ChangeLog for dev-haskell/lhs2tex
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lhs2tex/ChangeLog,v 1.6 2005/01/01 18:05:45 eradicator Exp $
-
-  21 Oct 2004; Andres Loeh <kosmikus@gentoo.org> lhs2tex-1.10_pre.ebuild:
-  Stable on x86.
-
-  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> lhs2tex-1.10_pre.ebuild,
-  lhs2tex-1.9.ebuild:
-  Add die following econf for bug 48950
-
-*lhs2tex-1.10_pre (13 Apr 2004)
-
-  13 Apr 2004; Andres Loeh <kosmikus@gentoo.org> lhs2tex-1.10_pre.ebuild:
-  New version.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lhs2tex/ChangeLog,v 1.1 2004/03/20 20:07:34 kosmikus Exp $
 
 *lhs2tex-1.9 (20 Mar 2004)
 

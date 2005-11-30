@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/xsv/xsv-2.7.ebuild,v 1.4 2005/05/15 20:56:59 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/xsv/xsv-2.7.ebuild,v 1.1 2004/07/15 06:35:30 lucass Exp $
 
 inherit distutils
 
@@ -11,7 +11,7 @@ DESCRIPTION="Python XML Schema Validator"
 SRC_URI="ftp://ftp.cogsci.ed.ac.uk/pub/XSV/${MY_P}.tar.gz"
 HOMEPAGE="http://www.ltg.ed.ac.uk/~ht/xsv-status.html"
 
-KEYWORDS="~ppc x86"
+KEYWORDS="~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

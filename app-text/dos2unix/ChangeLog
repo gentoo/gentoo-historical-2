@@ -1,48 +1,8 @@
 # ChangeLog for app-text/dos2unix
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.15 2005/11/05 02:39:23 vapier Exp $
-
-*dos2unix-3.1-r1 (05 Nov 2005)
-
-  05 Nov 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/dos2unix-3.1-includes.patch,
-  +files/dos2unix-3.1-manpage-update.patch,
-  +files/dos2unix-3.1-preserve-file-modes.patch,
-  +files/dos2unix-3.1-safeconv.patch, files/dos2unix-3.1-segfault.patch,
-  files/dos2unix-3.1.patch, +dos2unix-3.1-r1.ebuild:
-  Clean up patches, grab some more from Fedora, and cleanup the ebuild.
-
-  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  21 Oct 2004; Aaron Walker <ka0ttic@gentoo.org> +metadata.xml:
-  Add metadata (shell-tools)
-
-  23 Jul 2004; Erik Swanson <erik_swanson@gentoo.org> dos2unix-3.1.ebuild:
-  Added macos to KEYWORDS re bug #58101
-
-  15 Jul 2004; Tom Gall <tgall@gentoo.org> dos2unix-3.1.ebuild:
-  stable on ppc64, bug #55545
-
-  28 Jun 2004; Ciaran McCreesh <ciaranm@gentoo.org> dos2unix-3.1.ebuild:
-  Added ~mips
-
-  23 Jun 2004; Guy Martin <gmsoft@gentoo.org> dos2unix-3.1.ebuild:
-  Marked stable on hppa.
-
-  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> dos2unix-3.1.ebuild :
-  Stable on AMD64.
-
-  20 Jan 2004; Jon Portnoy <avenj@gentoo.org> dos2unix-3.1.ebuild :
-  AMD64 keywords.
-
-  24 Jun 2003; Tavis Ormandy <taviso@gentoo.org> dos2unix-3.1.ebuild:
-  marking alpha
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-text/dos2unix/ChangeLog,v 1.1 2002/12/01 05:54:20 vapier Exp $
 
 *dos2unix-3.1 (01 Dec 2002)
 
-  22 Dec 2002; Christian Birchinger <joker@gentoo.org>:
-  Added "sparc" keyword.
-
   01 Dec 2002; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by JosÃ© Fonseca <j_r_fonseca@yahoo.co.uk>.
+  Initial import.  Ebuild submitted by José Fonseca <j_r_fonseca@yahoo.co.uk>.

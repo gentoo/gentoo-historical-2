@@ -1,11 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/drbd/drbd-0.7.10.ebuild,v 1.5 2005/06/14 09:34:21 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/drbd/drbd-0.7.10.ebuild,v 1.1 2005/01/31 13:42:35 xmerlin Exp $
 
 inherit eutils versionator linux-mod
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 MY_MAJ_PV="$(get_version_component_range 1-2 ${PV})"
 DESCRIPTION="mirror/replicate block-devices across a network-connection"
@@ -15,7 +15,7 @@ HOMEPAGE="http://www.drbd.org"
 IUSE=""
 
 DEPEND="virtual/linux-sources"
-RDEPEND=""
+RDEPEND=">=sys-cluster/heartbeat-1.0.4"
 SLOT="0"
 
 src_unpack() {
@@ -36,12 +36,7 @@ src_compile() {
 	einfo "Please don't use XFS with drbd (see drbd mailing list archives)"
 	einfo ""
 
-	if kernel_is 2 6; then
-		emake KDIR=${KERNEL_DIR} || die "compile problem"
-	else
-		cp -R /usr/src/linux-${KV} ${WORKDIR}
-		emake KDIR=/${WORKDIR}/linux-${KV} || die "compile problem"
-	fi
+	emake KDIR=${KERNEL_DIR} || die "compile problem"
 }
 
 src_install() {

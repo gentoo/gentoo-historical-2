@@ -1,13 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-4.1.14.ebuild,v 1.28 2005/11/24 18:42:48 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql/mysql-4.1.14.ebuild,v 1.1 2005/08/29 12:55:19 vivo Exp $
 
 inherit eutils gnuconfig flag-o-matic versionator
 
 SVER=${PV%.*}
-NEWP="${PN}-${PV}"
-#NEWP="${NEWP/_beta/-beta}"
-
+PLV=""
+NEWP="${PN}-${SVER}.$( get_version_component_range 3-3 )${PLV}"
 
 # shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -15,71 +14,59 @@ S="${WORKDIR}/${PN}"
 
 DESCRIPTION="A fast, multi-threaded, multi-user SQL database server"
 HOMEPAGE="http://www.mysql.com/"
-SRC_URI="mirror://mysql/Downloads/MySQL-${SVER}/${NEWP}.tar.gz
-	mirror://gentoo/mysql-extras-20050920.tar.bz2"
+SRC_URI="mirror://mysql/Downloads/MySQL-${SVER}/${NEWP}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ~ia64 ppc ppc64 s390 sparc x86"
-IUSE="big-tables berkdb debug doc minimal perl readline selinux ssl static tcpd"
+KEYWORDS="~x86 ~amd64 ~sparc ~ia64 ~ppc ~ppc64"
+IUSE="berkdb debug doc minimal perl readline selinux ssl static tcpd cluster utf8 geometry extraengine big-tables"
 RESTRICT="primaryuri"
 
 DEPEND="readline? ( >=sys-libs/readline-4.1 )
-	bdb? ( sys-apps/ed )
-	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r6 )
-	ssl? ( >=dev-libs/openssl-0.9.6d )
-	perl? ( dev-lang/perl )
-	userland_GNU? ( sys-process/procps )
-	>=sys-libs/zlib-1.2.3
-	>=sys-apps/texinfo-4.7-r1
-	>=sys-apps/sed-4"
+		bdb? ( sys-apps/ed )
+		tcpd? ( >=sys-apps/tcp-wrappers-7.6-r6 )
+		ssl? ( >=dev-libs/openssl-0.9.6d )
+		perl? ( dev-lang/perl )
+		>=sys-libs/zlib-1.2.3
+		>=sys-apps/texinfo-4.7-r1
+		sys-process/procps
+		>=sys-apps/sed-4"
 RDEPEND="${DEPEND} selinux? ( sec-policy/selinux-mysql )"
 # dev-perl/DBD-mysql is needed by some scripts installed by MySQL
 PDEPEND="perl? ( >=dev-perl/DBD-mysql-2.9004 )"
 
-if version_is_at_least "4.1.3" ; then
-	IUSE="${IUSE} cluster utf8 geometry extraengine"
-fi
-
 mysql_upgrade_error() {
-	ewarn "Sorry, plain up/downgrade between different version of MySQL is (still)"
-	ewarn "un-supported."
-	ewarn "Some gentoo documentation on how to do it:"
-	ewarn "http://www.gentoo.org/doc/en/mysql-upgrading.xml"
-	ewarn "Also on the MySQL website:"
-	ewarn "http://dev.mysql.com/doc/refman/4.1/en/upgrading-from-4-0.html"
+	mysql_get_datadir
+	ewarn "Sorry plain upgrade from version of MySQL before 4.1.4 is NOT supported."
+	ewarn "Be sure to read \"Upgrading from version 4.0 to 4.1\" section"
+	ewarn "http://dev.mysql.com/doc/mysql/en/upgrading-from-4-0.html"
+	ewarn "then unmerge previous version of MySQL with"
+	ewarn "#emerge -C dev-db/mysql"
+	ewarn "move your data out of \"${DATADIR}\""
+	ewarn "#emerge =dev-db/${P}"
+	ewarn "reload data you dumped with \"mysqldump\" Because you have read "
+	ewarn "the documentation on how to upgrade"
 	ewarn ""
 	ewarn "You can also choose to preview some new MySQL 4.1 behaviour"
 	ewarn "adding a section \"[mysqld-4.0]\" followed by the word \"new\""
 	ewarn "into /etc/mysql/my.cnf (you need a recent MySQL version)"
-	ewarn ""
-
 }
 
 mysql_upgrade_warning() {
 	ewarn "If you're upgrading from MySQL-3.x to 4.0, or 4.0.x to 4.1.x, you"
 	ewarn "must recompile the other packages on your system that link with"
 	ewarn "libmysqlclient after the upgrade completes.  To obtain such a list"
-	ewarn "of packages for your system, you may use:"
-	ewarn "revdep-rebuild --soname=libmysqlclient.so.12"
-	ewarn "from app-portage/gentoolkit."
-	ewarn ""
-	ewarn "the value of \"innodb_log_file_size\" into /etc/mysql/my.cnf file "
-	ewarn "has changed size from \"8M\" to \"5M\"."
-	ewarn "To start mysql either revert the value back to \"8M\" or backup and"
-	ewarn "remove the old ib_logfile* from the datadir"
+	ewarn "of packages for your system, you may use 'revdep-rebuild' from"
+	ewarn "app-portage/gentoolkit."
 }
 
 mysql_get_datadir() {
 	DATADIR=""
 	if [ -f '/etc/mysql/my.cnf' ] ; then
+		#DATADIR=`grep ^datadir /etc/mysql/my.cnf | sed -e 's/.*= //'`
 		#DATADIR=`/usr/sbin/mysqld  --help |grep '^datadir' | awk '{print $2}'`
 		#DATADIR=`my_print_defaults mysqld | grep -- '^--datadir' | tail -n1 | sed -e 's|^--datadir=||'`
 		DATADIR=`my_print_defaults mysqld 2>/dev/null | sed -ne '/datadir/s|^--datadir=||p' | tail -n1`
-		if [ -z "${DATADIR}" ]; then
-			DATADIR=`grep ^datadir /etc/mysql/my.cnf | sed -e 's/.*= //'`
-			einfo "Using default DATADIR"
-		fi
 	fi
 	if [ -z "${DATADIR}" ]; then
 		DATADIR="/var/lib/mysql/"
@@ -103,47 +90,26 @@ mysql_get_datadir() {
 }
 
 pkg_setup() {
-
-	if [[ -z $MYSQL_STRAIGHT_UPGRADE ]] ; then
-		mysql_get_datadir
-		local curversion="dev-db/${PN}-${PV%.*}"
-		local oldversion="$(best_version dev-db/mysql)"
-		oldversion=${oldversion%.*}
-
-		# permit upgrade from old version if it's safe
-		useq minimal && oldversion=""
-		built_with_use dev-db/mysql minimal && oldversion=""
-		[[ -d "${DATADIR}/mysql" ]] || oldversion=""
-
-		if [[ -n "${oldversion}" ]] && [[ "${oldversion}" != "${curversion}" ]]
-		then
+	mysql_get_datadir
+	if ! useq minimal ; then
+		if has_version "<=dev-db/mysql-4.1.4" \
+		&& ! built_with_use dev-db/mysql minimal \
+		&& [ -d "${DATADIR}/mysql" ]; then
 			mysql_upgrade_error
-			eerror "MySQL-${oldversion} found, up/downgrade to \"${curversion}\" is unsupported"
-			eerror "export MYSQL_STRAIGHT_UPGRADE=1 to force"
 			die
 		fi
 	fi
-
 	mysql_upgrade_warning
-
-	enewgroup mysql 60 || die "problem adding group mysql"
-	enewuser mysql 60 -1 /dev/null mysql \
-	|| die "problem adding user mysql"
-
 }
 
 src_unpack() {
-	if useq static && useq ssl; then
+	if use static && use ssl; then
 		local msg="MySQL does not support building statically with SSL support"
 		eerror "${msg}"
 		die "${msg}"
 	fi
 
-	if version_is_at_least "4.1.3" \
-	&& useq cluster \
-	|| useq geometry \
-	|| useq extraengine \
-	&& useq minimal ; then
+	if useq cluster || useq geometry || useq extraengine && useq minimal; then
 		die "USEs cluster, geometry, extraengine conflicts with \"minimal\""
 	fi
 
@@ -151,15 +117,27 @@ src_unpack() {
 
 	mv "${WORKDIR}/${NEWP}" "${S}"
 	cd "${S}"
-	rm -rf "${S}/zlib/"*.[ch]
-	sed -i -e "s/zlib\/Makefile dnl/dnl zlib\/Makefile/" "${S}/configure.in"
 
-	local MY_PATCH_SOURCE="${WORKDIR}/mysql-extras"
+	# for correct hardcoded sysconf directory
+	epatch "${FILESDIR}/${PN}-4.0-my-print-defaults.diff"
 
-	epatch ${MY_PATCH_SOURCE}/010_all_my-print-defaults-r0.patch || die
-	epatch ${MY_PATCH_SOURCE}/030_all_thrssl-r1.patch || die
-	epatch ${MY_PATCH_SOURCE}/035_x86_asm-pic-fixes-r7.patch || die
-	epatch ${MY_PATCH_SOURCE}/040_all_tcpd-vars-fix.patch || die
+	# attempt to get libmysqlclient_r linked against ssl if USE="ssl" enabled
+	# i would really prefer to fix this at the Makefile.am level, but can't
+	# get the software to autoreconf as distributed - too many missing files
+	epatch "${FILESDIR}/${PN}-4.1.9-thrssl.patch"
+
+	# FIXED upstrem in 4.1.14
+	# PIC fixes
+	# bug #42968
+	#epatch "${FILESDIR}/035_x86_asm-pic-fixes-r3.patch"
+
+	if use tcpd; then
+		epatch "${FILESDIR}/${PN}-4.0.14-r1-tcpd-vars-fix.diff"
+	fi
+
+	# FIXED upstrem in 4.1.14
+	# avoid error running src_test and not enabling geometry USE flag
+	#useq geometry || epatch "${FILESDIR}/${PN}-test-myisam-geometry.patch"
 
 	for d in ${S} ${S}/innobase; do
 		cd ${d}
@@ -174,28 +152,14 @@ src_unpack() {
 		gnuconfig_update
 	done
 
-	# Temporary workaround for bug in test suite, a correct solution
-	# should work inside the include files to enable/disable the tests
-	# for the current configuration
+	## Should be fixed in 4.1.12
+	# upstream bug http://bugs.mysql.com/bug.php?id=7971
+	# names conflict with stuff in 2.6.10 kernel headers
+	#sed -i.orig \
+	#	-e "s/\<set_bit\>/my__set_bit/g" \
+	#	-e "s/\<clear_bit\>/my__clear_bit/g" \
+	#	${S}/client/mysqltest.c || die "Failed to fix bitops"
 
-	if ! useq extraengine ; then
-		einfo "disabling unneded extraengine tests"
-		local disable_test="archive bdb blackhole federated view csv"
-		for i in $disable_test ; do
-			mv "${S}/mysql-test/t/${i}.test" "${S}/mysql-test/t/${i}.disabled" \
-			&> /dev/null
-		done
-	fi
-
-
-	if ! useq berkdb ; then
-		einfo "disabling unneded berkdb tests"
-		local disable_test="auto_increment bdb-alter-table-1 bdb-alter-table-2 bdb-crash bdb-deadlock bdb bdb_cache binlog ctype_sjis ctype_utf8 heap_auto_increment index_merge_bdb multi_update mysqldump ps_1general ps_6bdb rowid_order_bdb"
-		for i in $disable_test ; do
-			mv "${S}/mysql-test/t/${i}.test" "${S}/mysql-test/t/${i}.disabled" \
-			&> /dev/null
-		done
-	fi
 }
 
 src_compile() {
@@ -204,39 +168,24 @@ src_compile() {
 	# readline pair reads backwards on purpose, DONT change it around, Ok?
 	# this is because it refers to the building of a bundled readline
 	# versus the system copy
-	useq readline && myconf="${myconf} --without-readline"
-	useq readline || myconf="${myconf} --with-readline"
+	use readline && myconf="${myconf} --without-readline"
+	use readline || myconf="${myconf} --with-readline"
 
-	if useq static ; then
-		myconf="${myconf} --with-mysqld-ldflags=-all-static"
-		myconf="${myconf} --with-client-ldflags=-all-static"
-		myconf="${myconf} --disable-shared"
-	else
-		myconf="${myconf} --enable-shared --enable-static"
-	fi
+	use static \
+		&& myconf="${myconf} --with-mysqld-ldflags=-all-static --disable-shared" \
+		|| myconf="${myconf} --enable-shared --enable-static"
 
 	myconf="${myconf} `use_with tcpd libwrap`"
 
-	if useq ssl ; then
-		# --with-vio is not needed anymore, it's on by default and
-		# has been removed from configure
-		version_is_at_least "5.0.4_beta" || myconf="${myconf} --with-vio"
-		if version_is_at_least "5.0.6_beta" ; then
-			# yassl-0.96 is young break with gcc-4.0 || amd64
-			#myconf="${myconf} --with-yassl"
-			myconf="${myconf} --with-openssl"
-		else
-			myconf="${myconf} --with-openssl"
-		fi
-	else
-		myconf="${myconf} --without-openssl"
-	fi
+	use ssl \
+		&& myconf="${myconf} --with-vio --with-openssl" \
+		|| myconf="${myconf} --without-openssl"
 
-	if useq debug; then
+	if use debug; then
 		myconf="${myconf} --with-debug=full"
 	else
 		myconf="${myconf} --without-debug"
-		version_is_at_least "4.1.3" && useq cluster && myconf="${myconf} --without-ndb-debug"
+		use cluster && myconf="${myconf} --without-ndb-debug"
 	fi
 
 	# benchmarking stuff needs perl
@@ -250,27 +199,16 @@ src_compile() {
 	# these are things we exclude from a minimal build
 	# note that the server actually does get built and installed
 	# but we then delete it before packaging.
-	local minimal_exclude_list="server embedded-server extra-tools innodb"
+	local minimal_exclude_list="server embedded-server extra-tools innodb raid"
 	if ! useq minimal; then
 		for i in ${minimal_exclude_list}; do
 			myconf="${myconf} --with-${i}"
 		done
 
-		if useq static ; then
-			myconf="${myconf} --without-raid"
-			ewarn "disabling raid support, has problem with static"
+		if useq utf8; then
+			myconf="${myconf} --with-charset=utf8 --with-collation=utf8_general_ci"
 		else
-			myconf="${myconf} --with-raid"
-		fi
-
-		if ! version_is_at_least "5.0_alpha" ; then
-			if version_is_at_least "4.1_alpha" && useq utf8; then
-				myconf="${myconf} --with-charset=utf8"
-				myconf="${myconf} --with-collation=utf8_general_ci"
-			else
-				myconf="${myconf} --with-charset=latin1"
-				myconf="${myconf} --with-collation=latin1_swedish_ci"
-			fi
+			myconf="${myconf} --with-charset=latin1 --with-collation=latin1_swedish_ci"
 		fi
 
 		# lots of chars
@@ -283,17 +221,12 @@ src_compile() {
 		then
 			myconf="${myconf} --without-berkeley-db"
 		else
-			useq berkdb \
+			use berkdb \
 				&& myconf="${myconf} --with-berkeley-db=./bdb" \
 				|| myconf="${myconf} --without-berkeley-db"
 		fi
-
-		if version_is_at_least "4.1.3" ; then
-			myconf="${myconf} $(use_with geometry)"
-			myconf="${myconf} $(use_with cluster ndbcluster)"
-		fi
-
-		version_is_at_least "4.1.11_alpha20050403" &&  myconf="${myconf} --with-big-tables"
+		myconf="${myconf} $(use_with geometry) $(use_with cluster ndbcluster)"
+		myconf="${myconf} $(use_with big-tables)"
 	else
 		for i in ${minimal_exclude_list}; do
 			myconf="${myconf} --without-${i}"
@@ -305,24 +238,20 @@ src_compile() {
 	# documentation
 	myconf="${myconf} `use_with doc docs`"
 
-	if version_is_at_least "4.1.3" && useq extraengine; then
+	if useq extraengine; then
 		# http://dev.mysql.com/doc/mysql/en/archive-storage-engine.html
 		myconf="${myconf} --with-archive-storage-engine"
 		# http://dev.mysql.com/doc/mysql/en/csv-storage-engine.html
-		version_is_at_least "4.1.4" \
-		&& myconf="${myconf} --with-csv-storage-engine"
+		myconf="${myconf} --with-csv-storage-engine"
 		# http://dev.mysql.com/doc/mysql/en/federated-description.html
 		# http://dev.mysql.com/doc/mysql/en/federated-limitations.html
-		if version_is_at_least "5.0.3" ; then
-			einfo "before to use federated engine be sure to read"
-			einfo "http://dev.mysql.com/doc/mysql/en/federated-limitations.html"
-			myconf="${myconf} --with-federated-storage-engine"
-		fi
-		version_is_at_least "4.1.11_alpha20050403" \
-		&&  myconf="${myconf} --with-blackhole-storage-engine"
+		#if  version_is_at_least "5.1.3" ; then
+		#	einfo "before to use federated engine be sure to read"
+		#	einfo "http://dev.mysql.com/doc/mysql/en/federated-limitations.html"
+		#	myconf="${myconf} --with-federated-storage-engine"
+		#fi
+		myconf="${myconf} --with-blackhole-storage-engine"
 	fi
-
-	myconf="${myconf} `use_with big-tables`"
 
 	#glibc-2.3.2_pre fix; bug #16496
 	append-flags "-DHAVE_ERRNO_AS_DEFINE=1"
@@ -330,8 +259,6 @@ src_compile() {
 	#the compiler flags are as per their "official" spec ;)
 	#CFLAGS="${CFLAGS/-O?/} -O3" \
 	export CXXFLAGS="${CXXFLAGS} -felide-constructors -fno-exceptions -fno-rtti"
-	version_is_at_least "5.0_alpha" \
-	&& export CXXFLAGS="${CXXFLAGS} -fno-implicit-templates"
 
 	econf \
 		--libexecdir=/usr/sbin \
@@ -352,40 +279,29 @@ src_compile() {
 	emake || die "compile problem"
 }
 
-src_test() {
-	cd ${S}
-	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
-	make check || die "make check failed"
-	if ! useq minimal; then
-		einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
-		local retstatus
-		addpredict /this-dir-does-not-exist/t9.MYI
-
-		# Temporary removed, 4.1.14 use mysql-test-run.pl instead
-		# of mysql-test-run, thus failing on test that should be
-		# skipped.
-		#version_is_at_least "5.0.6_beta" \
-		#&& make test-force \
-		#|| make test
-
-		# <replace me whenever possible>
-		cd mysql-test; ./mysql-test-run && ./mysql-test-run --ps-protocol
-		retstatus=$?
-		cd ..
-		# </replace me whenever possible>
-
-		# to be sure ;)
-		pkill -9 -f "${S}/ndb" 2>/dev/null
-		pkill -9 -f "${S}/sql" 2>/dev/null
-		[[ $retstatus -eq 0 ]] || die "make test failed"
-	else
-		einfo "Skipping server tests due to minimal build."
-	fi
-}
-
 src_install() {
-	mysql_get_datadir
 	make install DESTDIR="${D}" benchdir_root="/usr/share/mysql" || die
+
+	enewgroup mysql 60 || die "problem adding group mysql"
+	enewuser mysql 60 -1 /dev/null mysql \
+	|| die "problem adding user mysql"
+
+	diropts "-m0750"
+	if [[ "${PREVIOUS_DATADIR}" != "yes" ]] ; then
+		dodir "${DATADIR}"
+		keepdir "${DATADIR}"
+		chown -R mysql:mysql "${D}/${DATADIR}"
+	fi
+
+	dodir /var/log/mysql
+
+	diropts "-m0755"
+	dodir /var/run/mysqld
+
+	keepdir /var/run/mysqld /var/log/mysql
+	chown -R mysql:mysql \
+		${D}/var/run/mysqld \
+		${D}/var/log/mysql
 
 	# move client libs, install a couple of missing headers
 	local lib=$(get_libdir)
@@ -412,7 +328,7 @@ src_install() {
 	rm -f ${D}/usr/share/mysql/my-*.cnf # Put them elsewhere
 
 	# All of these (ab)use Perl.
-	if ! useq perl; then
+	if ! use perl; then
 		rm -f ${D}/usr/bin/{mysqlhotcopy,mysql_find_rows,mysql_convert_table_format,mysqld_multi,mysqlaccess,mysql_fix_extensions,mysqldumpslow,mysql_zap,mysql_explain_log,mysql_tableinfo,mysql_setpermission}
 		rm -f ${D}/usr/bin/mysqlhotcopy
 		rm -rf ${D}/usr/share/mysql/sql-bench
@@ -433,9 +349,8 @@ src_install() {
 
 	newins "${FILESDIR}/my.cnf-4.1" my.cnf
 
-	if version_is_at_least "4.1.3" && ! useq utf8; then
-		sed --in-place -e "s/utf8/latin1/" \
-			${D}/etc/mysql/my.cnf
+	if ! use utf8; then
+		sed -i -e "s/utf8/latin1/" ${D}/etc/mysql/my.cnf
 	fi
 
 	# minimal builds don't have the server
@@ -444,28 +359,6 @@ src_install() {
 		newexe "${FILESDIR}/mysql-4.0.24-r2.rc6" mysql
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}/logrotate.mysql" mysql
-
-		#empty dirs...
-		diropts "-m0750"
-		if [[ "${PREVIOUS_DATADIR}" != "yes" ]] ; then
-	        dodir "${DATADIR}"
-	        keepdir "${DATADIR}"
-	        chown -R mysql:mysql "${D}/${DATADIR}"
-		fi
-
-		diropts "-m0755"
-		dodir "/var/log/mysql"
-		#touch ${D}/var/log/mysql/mysql.{log,err}
-		#chmod 0660 ${D}/var/log/mysql/mysql.{log,err}
-		keepdir "/var/log/mysql"
-		chown -R mysql:mysql "${D}/var/log/mysql"
-
-		diropts "-m0755"
-		dodir "/var/run/mysqld"
-
-		keepdir "/var/run/mysqld"
-		chown -R mysql:mysql \
-	        "${D}/var/run/mysqld"
 	fi
 
 	# docs
@@ -479,38 +372,26 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	enewgroup mysql 60 || die "problem adding group mysql"
-	enewuser mysql 60 -1 /dev/null mysql \
-	|| die "problem adding user mysql"
-}
-
-pkg_postinst() {
-	mysql_get_datadir
-
-	# mind at FEATURES=collision-protect before to remove this
-	#empty dirs...
-	[ -d "${ROOT}/var/log/mysql" ] \
-		|| install -d -m0755 -o mysql -g mysql ${ROOT}/var/log/mysql
-
-	#secure the logfiles... does this bother anybody?
-	touch ${ROOT}/var/log/mysql/mysql.{log,err}
-	chown mysql:mysql ${ROOT}/var/log/mysql/mysql*
-	chmod 0660 ${ROOT}/var/log/mysql/mysql*
-	# secure some directories
-	chmod 0750 ${ROOT}/var/log/mysql
-
+src_test() {
+	cd ${S}
+	einfo ">>> Test phase [check]: ${CATEGORY}/${PF}"
+	make check || die "make check failed"
 	if ! useq minimal; then
-		# your friendly public service announcement...
-		einfo
-		einfo "You might want to run:"
-		einfo "\"emerge --config =${PF}\""
-		einfo "if this is a new install."
-		einfo
-	fi
+		einfo ">>> Test phase [test]: ${CATEGORY}/${PF}"
+		local retstatus
+		addpredict /this-dir-does-not-exist/t9.MYI
+		make test
+		retstatus=$?
 
-	mysql_upgrade_warning
-	einfo "InnoDB is not optional as of MySQL-4.0.24, at the request of upstream."
+		# to be sure ;)
+		pkill -9 -f ${S}/ndb/src/kernel/ndbd 2>/dev/null
+		pkill -9 -f ${S}/ndb/src/mgmsrv/ndb_mgmd 2>/dev/null
+		pkill -9 -f ${S}/ndb/src/mgmclient/ndb_mgm 2>/dev/null
+		pkill -9 -f ${S}/sql/mysqld 2>/dev/null
+		[[ $retstatus == 0 ]] || die "make test failed"
+	else
+		einfo "Skipping server tests due to minimal build."
+	fi
 }
 
 pkg_config() {
@@ -528,7 +409,7 @@ pkg_config() {
 	local pwd2="b"
 	local maxtry=5
 
-	if [[ -d "${ROOT}/${DATADIR}/mysql" ]] ; then
+	if [[ -d "${DATADIR}/mysql" ]] ; then
 		ewarn "You have already a MySQL database in place."
 		ewarn "Please rename it or delete it if you wish to replace it."
 		die "MySQL database already exists!"
@@ -538,47 +419,40 @@ pkg_config() {
 	einfo "permissions on it..."
 
 	einfo "Insert a password for the mysql 'root' user"
-	ewarn "Avoid [\"'\\_%] characters in the password"
+	ewarn "the password will be visible on the screen"
 
-	read -rsp "    >" pwd1 ; echo
+	echo -n "    >" && read -r pwd1
 	einfo "Check the password"
-	read -rsp "    >" pwd2 ; echo
+	echo -n "    >" && read -r pwd2
 
-	if [[ "x$pwd1" != "x$pwd2" ]] ; then
+	if ((  pwd1 != pwd2 )) ; then
 		die "Passwords are not the same"
 	fi
 
 	${ROOT}/usr/bin/mysql_install_db || die "MySQL databases not installed"
 
 	# MySQL 5.0 don't need this
-	chown -R mysql:mysql ${ROOT}/${DATADIR}
+	chown -R mysql:mysql ${DATADIR}
 	chmod 0750 ${ROOT}/${DATADIR}
 
-	local options=""
 	local sqltmp="$(emktemp)"
 	local help_tables="${ROOT}/usr/share/mysql/fill_help_tables.sql"
+	# Filling timezones, see
+	# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
+	${ROOT}/usr/bin/mysql_tzinfo_to_sql ${ROOT}/usr/share/zoneinfo > "${sqltmp}"
 
-	if version_is_at_least "4.1.3" ; then
-		options="--skip-ndbcluster"
-
-		# Filling timezones, see
-		# http://dev.mysql.com/doc/mysql/en/time-zone-support.html
-		${ROOT}/usr/bin/mysql_tzinfo_to_sql ${ROOT}/usr/share/zoneinfo \
-		> "${sqltmp}"
-
-		if [[ -r "${help_tables}" ]] ; then
-			cat "${help_tables}" >> "${sqltmp}"
-		fi
+	if [[ -r "${help_tables}" ]] ; then
+		cat "${help_tables}" >> "${sqltmp}"
 	fi
 
 	local socket=${ROOT}/var/run/mysqld/mysqld.sock
 	local mysqld="${ROOT}/usr/sbin/mysqld \
-		${options} \
 		--skip-grant-tables \
 		--basedir=${ROOT}/usr \
-		--datadir=${ROOT}/${DATADIR} \
+		--datadir=${ROOT}/var/lib/mysql \
 		--skip-innodb \
 		--skip-bdb \
+		--skip-ndbcluster \
 		--max_allowed_packet=8M \
 		--net_buffer_length=16K \
 		--socket=${socket} \
@@ -611,4 +485,37 @@ pkg_config() {
 	kill $( cat ${ROOT}/var/run/mysqld/mysqld.pid )
 	rm  "${sqltmp}"
 	einfo "done"
+}
+
+pkg_postinst() {
+	mysql_get_datadir
+
+	if ! useq minimal; then
+		#empty dirs...
+		[[ "${PREVIOUS_DATADIR}" != "yes" ]] \
+		&& [ -d "${ROOT}/${DATADIR}" ] || install -d -m0750 -o mysql -g mysql ${ROOT}/var/lib/mysql
+		[ -d "${ROOT}/var/run/mysqld" ] || install -d -m0755 -o mysql -g mysql ${ROOT}/var/run/mysqld
+		[ -d "${ROOT}/var/log/mysql" ] || install -d -m0755 -o mysql -g mysql ${ROOT}/var/log/mysql
+
+		# secure the logfiles... does this bother anybody?
+		touch ${ROOT}/var/log/mysql/mysql.{log,err}
+		chown mysql:mysql ${ROOT}/var/log/mysql/mysql*
+		chmod 0660 ${ROOT}/var/log/mysql/mysql*
+		# secure some directories
+		chmod 0750 ${ROOT}/var/log/mysql ${ROOT}/${DATADIR}
+
+		# your friendly public service announcement...
+		einfo
+		einfo "You might want to run:"
+		einfo "\"ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config\""
+		einfo "if this is a new install."
+		einfo
+		if [[ "${PREVIOUS_DATADIR}" == "yes" ]] ; then
+			ewarn "Previous datadir found, it's YOUR job to change"
+			ewarn "ownership and have care of it"
+		fi
+	fi
+
+	mysql_upgrade_warning
+	einfo "InnoDB is not optional as of MySQL-4.0.24, at the request of upstream."
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk-perl/gtk-perl-0.7008-r11.ebuild,v 1.10 2005/10/03 13:23:36 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/gtk-perl/gtk-perl-0.7008-r11.ebuild,v 1.1 2004/02/27 14:58:52 mcummings Exp $
 
 inherit perl-module eutils
 
@@ -9,10 +9,10 @@ S=${WORKDIR}/${MY_P}
 DESCRIPTION="Perl bindings for GTK"
 SRC_URI="http://www.gtkperl.org/${MY_P}.tar.gz"
 HOMEPAGE="http://www.perl.org/"
-IUSE="gnome opengl"
+IUSE="gnome"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
+KEYWORDS="x86 ppc sparc alpha"
 
 DEPEND="${DEPEND}
 	media-libs/gdk-pixbuf
@@ -25,7 +25,7 @@ DEPEND="${DEPEND}
 mydoc="VERSIONS WARNING NOTES"
 
 use gnome || myconf="${myconf} --without-gnome --without-gnomeprint --without-applets"
-use opengl || myconf="${myconf} --without-gtkglarea"
+use opengl || mycong="${myconf} --without-gtkglarea"
 
 src_unpack() {
 

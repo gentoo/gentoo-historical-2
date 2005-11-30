@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xlockmore/xlockmore-5.12.ebuild,v 1.14 2005/07/18 23:36:38 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xlockmore/xlockmore-5.12.ebuild,v 1.1 2004/05/01 00:59:16 cyfred Exp $
 
-inherit gnuconfig eutils
+inherit gnuconfig
 
 IUSE="nas esd motif opengl truetype gtk pam"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.tux.org/~bagleyd/xlockmore.html"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86"
 
 DEPEND="virtual/x11
 	media-libs/freetype
@@ -37,8 +37,6 @@ src_compile() {
 
 	use motif || myconf="${myconf} --without-motif"
 	use gtk || myconf="${myconf} --without-gtk"
-
-	epatch ${FILESDIR}/XLock.ad.patch || die "epatch failed"
 
 	./configure \
 		--prefix=/usr \

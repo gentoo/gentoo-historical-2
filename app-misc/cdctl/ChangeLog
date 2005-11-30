@@ -1,18 +1,6 @@
 # ChangeLog for app-misc/cdctl
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdctl/ChangeLog,v 1.7 2005/04/21 19:05:12 blubb Exp $
-
-  21 Apr 2005; Simon Stelling <blubb@gentoo.org> cdctl-0.15.ebuild:
-  stable on amd64
-
-  18 Oct 2004; Tom Gall <tgall@gentoo.org> cdctl-0.15.ebuild:
-  stable on ppc64, bug #64543
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> cdctl-0.15.ebuild:
-  Masked cdctl-0.15.ebuild stable for ppc
-
-  13 Apr 2004; Danny van Dyk <kugelfang@gentoo.org> cdctl-0.15.ebuild:
-  marked ~amd64
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cdctl/ChangeLog,v 1.1 2003/03/04 23:57:27 agenkin Exp $
 
 *cdctl-0.15 (04 Mar 2003)
 

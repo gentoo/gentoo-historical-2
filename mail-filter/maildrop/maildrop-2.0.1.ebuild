@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/maildrop-2.0.1.ebuild,v 1.7 2005/11/24 19:11:55 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-filter/maildrop/maildrop-2.0.1.ebuild,v 1.1 2005/10/12 18:38:38 ferdy Exp $
 
 inherit eutils gnuconfig flag-o-matic
 
@@ -14,7 +14,7 @@ S="${WORKDIR}/${P%%_pre}"
 SLOT="0"
 LICENSE="GPL-2"
 
-KEYWORDS="alpha ~amd64 ~ia64 ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE="berkdb debug fam gdbm ldap mysql postgres"
 
 PROVIDE="virtual/mda"
@@ -59,7 +59,6 @@ src_unpack() {
 	fi
 
 	if ! use fam ; then
-		cd ${S}
 		epatch ${FILESDIR}/${PN}-1.8.1-disable-fam.patch
 		cd ${S}/maildir
 		WANT_AUTOCONF=2.59 autoconf || die "recreate configure failed (maildir)"
@@ -78,8 +77,6 @@ src_compile() {
 	local myconf
 	local mytrustedusers="apache dspam root mail \
 		daemon postmaster qmaild mmdf vmail alias"
-
-	replace-flags -Os -O2
 
 	if use gdbm ; then
 		myconf="${myconf} --with-db=gdbm"

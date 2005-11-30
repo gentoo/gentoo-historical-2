@@ -1,53 +1,6 @@
 # ChangeLog for dev-util/bsdiff
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/bsdiff/ChangeLog,v 1.15 2005/09/17 07:47:38 ferringb Exp $
-
-*bsdiff-4.3 (17 Sep 2005)
-
-  17 Sep 2005: Brian Harring <ferringb@gentoo.org>: +bsdiff-4.3.ebuild
-  -bsdiff-4.1.ebuild.
-  Version bump, something of a maintenance release it seems. 
-  Changes between 4.2 and 4.3 come down to using libbz2 rather then piping to
-  bzip2.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> bsdiff-4.2.ebuild:
-  Stable on ppc.
-
-  01 Apr 2005; Simon Stelling <blubb@gentoo.org> bsdiff-4.2.ebuild:
-  stable on amd64
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> bsdiff-4.2.ebuild:
-  stable on ia64
-
-  22 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> bsdiff-4.2.ebuild:
-  Stable on alpha.
-
-  15 Mar 2005; Christian Birchinger <joker@gentoo.org> bsdiff-4.2.ebuild:
-  Added sparc stable keyword
-
-  14 Mar 2005; Brian Harring <ferringb@gentoo.org> :
-  keyworded bsdiff-4.2 x86.
-
-*bsdiff-4.2 (15 Mar 2005)
-
-  31 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  10 Nov 2004; Brian Harring <ferringb@gentoo.org> bsdiff-4.1.ebuild,
-  bsdiff-4.2.ebuild: Version bump, and a correction of the HOMEPAGE.
-  Thanks to David Morgan for the notice- bug #70714.
-
-  18 Jul 2004; Ciaran McCreesh <ciaranm@gentoo.org> bsdiff-4.1.ebuild:
-  Stable on sparc at ferringb's request
-
-  03 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> bsdiff-4.1.ebuild:
-  Stable on alpha.
-
-  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> bsdiff-4.1.ebuild :
-  Stable on AMD64.
-
-  25 Nov 2003; Brian Jackson <iggy@gentoo.org> bsdiff-4.1.ebuild:
-  changing license to BSD-protection, also bumping it to x86
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-util/bsdiff/ChangeLog,v 1.1 2003/11/15 08:34:11 seemant Exp $
 
 *bsdiff-4.1 (15 Nov 2003)
 

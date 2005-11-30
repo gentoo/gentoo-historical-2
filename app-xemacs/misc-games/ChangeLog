@@ -1,27 +1,6 @@
 # ChangeLog for app-xemacs/misc-games
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/misc-games/ChangeLog,v 1.9 2005/08/07 13:24:10 hansmi Exp $
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  misc-games-1.16.ebuild:
-  Stable on ppc.
-
-  16 Dec 2004; Markus Rothe <corsair@gentoo.org> misc-games-1.16.ebuild:
-  Stable on ppc64
-
-  01 Nov 2004; Markus Rothe <corsair@gentoo.org> misc-games-1.16.ebuild:
-  Marked ~ppc64; bug #67092
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> misc-games-1.16.ebuild:
-  Stable on alpha
-
-*misc-games-1.16 (22 Feb 2003)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> misc-games-1.15.ebuild misc-games-1.16.ebuild files/digest-misc-games-1.16 :
-  Add ~alpha to KEYWORDS
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  new stable ebuild
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/misc-games/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *misc-games-1.15 (16 Dec 2002)
 

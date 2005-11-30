@@ -1,36 +1,6 @@
 # ChangeLog for x11-libs/gtkscintilla2
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkscintilla2/ChangeLog,v 1.10 2005/11/06 10:53:13 blubb Exp $
-
-  06 Nov 2005; Simon Stelling <blubb@gentoo.org> gtkscintilla2-0.1.0.ebuild:
-  fix bug 95603 and a multilib-strict issue
-
-  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
-  gtkscintilla2-0.1.0.ebuild:
-  Stable on amd64.
-
-  17 Oct 2004; Alastair Tse <liquidx@gentoo.org> gtkscintilla2-0.1.0.ebuild:
-  stable bump, plus link to gthread-2.0 (#38279)
-
-  13 Mar 2004; David Holm <dholm@gentoo.org> gtkscintilla2-0.1.0.ebuild:
-  Added to ~ppc.
-
-*gtkscintilla2-0.1.0 (18 Feb 2004)
-
-  18 Feb 2004; Alastair Tse <liquidx@gentoo.org> gtkscintilla2-0.1.0.ebuild:
-  version bump
-
-  13 Dec 2003; Chuck Short <zul@gentoo.org> gtkscintilla2-0.0.8.ebuild:
-  Added amd64 support.
-  Added -fPIC so that gtkscintilla2 doesnt bomb on amd64.
-  Closes #35246.
-
-  08 Oct 2003; Alastair Tse <liquidx@gentoo.org> gtkscintilla2-0.0.8.ebuild,
-  metadata.xml:
-  added metadata.xml
-
-  20 Aug 2003; Mike Gardiner <obz@gentoo.org> gtkscintilla2-0.0.8.ebuild:
-  fixed sed characters ',' to remove problems with commas in CFLAGS
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/gtkscintilla2/ChangeLog,v 1.1 2003/07/20 15:00:39 liquidx Exp $
 
 *gtkscintilla2-0.0.8 (20 Jul 2003)
 

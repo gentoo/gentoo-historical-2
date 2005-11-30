@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mplay/mplay-0.68.ebuild,v 1.6 2005/05/25 16:32:14 mcummings Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mplay/mplay-0.68.ebuild,v 1.1 2004/09/02 22:42:35 chriswhite Exp $
 
 inherit perl-module
 
@@ -18,13 +16,15 @@ SRC_URI="mirror://sourceforge/mplay/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~ppc x86"
+KEYWORDS="~x86"
+
+IUSE=""
 
 DEPEND="dev-lang/perl
 	dev-perl/TermReadKey
 	dev-perl/MP3-Info
 	dev-perl/Term-ANSIScreen
-	perl-core/Time-HiRes
+	dev-perl/Time-HiRes
 	media-video/mplayer"
 
 src_unpack() {
@@ -54,13 +54,10 @@ src_install() {
 
 	dobin mplay
 
-	dodoc README
-
-	cd ${S}/help
 	insinto /usr/share/mplay
-	doins help_en help_de mplayconf
-	doman mplay.1
+	doins help_en help_de
 
+	dodoc README
 
 	cd ${AMIX_D}
 	#make install

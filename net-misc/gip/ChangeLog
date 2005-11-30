@@ -1,27 +1,6 @@
 # ChangeLog for net-misc/gip
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gip/ChangeLog,v 1.6 2005/09/03 20:55:24 vanquirius Exp $
-
-*gip-1.6.0.1 (03 Sep 2005)
-
-  03 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> gip-1.0.0.1.ebuild,
-  gip-1.1.0.1.ebuild, gip-1.2.0.1.ebuild, +gip-1.6.0.1.ebuild:
-  Update HOMEPAGE, use versionator eclass and other misc fixes. Version bump.
-  Also fix dependencies for bug 80540. Thanks to Yaakov S
-  <yselkowitz@hotmail.com>.
-
-*gip-1.2.0.1 (20 Jul 2004)
-
-  20 Jul 2004; Josh Glover <jmglov@gentoo.org> gip-1.2.0.1.ebuild:
-  Version bump
-
-*gip-1.1.0.1 (08 Jul 2004)
-
-  08 Jul 2004; Josh Glover <jmglov@gentoo.org> gip-1.1.0.1.ebuild:
-  Version bump; submitted by Josh Glover in bug #55055
-
-  26 Jun 2004; Josh Glover <jmglov@gentoo.org> gip-1.0.0.1.ebuild:
-  Incorporates fix to Bug #55186 submitted solar@gentoo.org
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gip/ChangeLog,v 1.1 2004/06/25 02:15:51 jmglov Exp $
 
 *gip-1.0.0.1 (24 Jun 2004)
 

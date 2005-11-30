@@ -1,5 +1,4 @@
-MD5 ff13e1dfee5a91fc47d85bd1401ae823 ccid-0.9.3.1.ebuild 916
-MD5 9afde306cc0b541cb639aedafa085427 ChangeLog 835
+MD5 b20979acad9dc5d8943cafb4ab6c787b ccid-0.9.3.1.ebuild 786
 MD5 2603eeeb20b24caddac3e9ce6996f357 metadata.xml 251
-MD5 cc258875774b1cd3232c3cf8c2f1fca8 files/ccid-0.9.3.1-ifdhandler.diff 313
+MD5 63d004e5c085b48846b676c82edc63f8 ChangeLog 308
 MD5 06a8f4904fd90c58d089cb643924216d files/digest-ccid-0.9.3.1 130

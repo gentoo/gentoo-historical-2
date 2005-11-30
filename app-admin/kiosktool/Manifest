@@ -1,4 +1,2 @@
-MD5 2834f1cb97eea873f19ab95ccad6bc6d metadata.xml 216
-MD5 13ab5afc6c5c408382d0686a1d13711b ChangeLog 2017
-MD5 52c8503f0045164c1726b8d5e45eeeb5 kiosktool-1.0.ebuild 468
-MD5 028aa8a783ec025d6900e199f5849456 files/digest-kiosktool-1.0 66
+MD5 069dc9371985af2f0ed8195fcd2790a7 kiosktool-0.7.ebuild 625
+MD5 5d41bd5573b1baee0c941e773b567ef7 files/digest-kiosktool-0.7 66

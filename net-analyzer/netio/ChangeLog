@@ -1,29 +1,6 @@
 # ChangeLog for net-analyzer/netio
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netio/ChangeLog,v 1.9 2005/01/28 10:39:51 ka0ttic Exp $
-
-  28 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> netio-1.23.ebuild:
-  Minor ebuild cleansing; respect CFLAGS. Also added pkg_postinst for messages
-  regarding the license.
-
-  19 Nov 2004; Jason Wever <weeve@gentoo.org> netio-1.23.ebuild:
-  Stable on sparc.
-
-  29 Jul 2004; Hasan Khalil <gongloo@gentoo.org> netio-1.23.ebuild:
-  Added macos keyword, resolves bug #57820.
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> +metadata.xml,
-  netio-1.23.ebuild:
-  change virtual/glibc to virtual/libc, add metadata.xml
-
-  28 Feb 2004; Jason Wever <weeve@gentoo.org> netio-1.23.ebuild:
-  Added ~sparc keyword, resolves bug #43209.
-
-  02 Nov 2003; Martin Holzer <mholzer@gentoo.org> netio-1.23.ebuild:
-  adding unzip. Closes #32485
-
-  24 Oct 2003; Michael Imhof <tantive@gentoo.org> netio-1.23.ebuild:
-  Marked stable for x86 and ppc.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/netio/ChangeLog,v 1.1 2003/10/19 09:15:04 tantive Exp $
 
 *netio-1.23 (19 Oct 2003)
 

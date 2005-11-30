@@ -1,26 +1,6 @@
 # ChangeLog for app-dicts/opendict
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/opendict/ChangeLog,v 1.7 2005/05/18 14:11:21 swegener Exp $
-
-  18 May 2005; Sven Wegener <swegener@gentoo.org> opendict-0.5.7.ebuild:
-  Removed * postfix from >= dependency.
-
-*opendict-0.5.7 (18 May 2005)
-
-  18 May 2005; Rob Cakebread <pythonhead@gentoo.org>
-  +files/opendict-0.5.7-gentoo-wxversion.patch, +opendict-0.5.7.ebuild:
-  Version bump.
-
-  31 Aug 2004; David Holm <dholm@gentoo.org> opendict-0.5.4.ebuild:
-  Added to ~ppc.
-
-  14 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> opendict-0.5.4.ebuild:
-  Added einfo for plugin downloads
-
-*opendict-0.5.4 (14 Aug 2004)
-
-  14 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> opendict-0.5.4.ebuild:
-  Fixed symlink. bug# 60339
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/opendict/ChangeLog,v 1.1 2004/08/13 21:15:02 pythonhead Exp $
 
   13 Aug 2004; Rob Cakebread <pythonhead@gentoo.org> :
   Initial commit. Thanks <roma1390@uosis.mif.vu.lt> for the ebuild. bug #32120

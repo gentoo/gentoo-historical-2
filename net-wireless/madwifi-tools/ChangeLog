@@ -1,62 +1,6 @@
 # ChangeLog for net-wireless/madwifi-tools
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/madwifi-tools/ChangeLog,v 1.12 2005/11/18 20:59:58 cryos Exp $
-
-  18 Nov 2005; Marcus D. Hanwell <cryos@gentoo.org>
-  madwifi-tools-0.1_pre20051111.ebuild:
-  Marked -amd64 too, upstream ticket 74.
-
-*madwifi-tools-0.1_pre20051111 (13 Nov 2005)
-
-  13 Nov 2005; Stefan Schweizer <genstef@gentoo.org>
-  -madwifi-tools-0.1_pre20050106.ebuild,
-  -madwifi-tools-0.1_pre20050107.ebuild,
-  -madwifi-tools-0.1_pre20051031.ebuild,
-  +madwifi-tools-0.1_pre20051111.ebuild:
-  Version bump, remove old ebuilds
-
-  12 Nov 2005; Stefan Schweizer <genstef@gentoo.org>
-  madwifi-tools-0.1_pre20051031.ebuild:
-  Use userspecified LDFLAGS,CFLAGS, use make install
-
-  12 Nov 2005; Peter Johanson <latexer@gentoo.org>
-  madwifi-tools-0.1_pre20051031.ebuild:
-  Fix problem with not installing new wlanconfig tool.
-
-*madwifi-tools-0.1_pre20051031 (09 Nov 2005)
-
-  09 Nov 2005; Peter Johanson <latexer@gentoo.org>
-  +madwifi-tools-0.1_pre20051031.ebuild:
-  Bump with new CVS snapshot.
-
-  29 Apr 2005; <solar@gentoo.org> madwifi-tools-0.1_pre20050420.ebuild:
-  - bug 90880 - fix sed expression on athstats.c
-
-*madwifi-tools-0.1_pre20050420 (26 Apr 2005)
-
-  26 Apr 2005; <solar@gentoo.org> +madwifi-tools-0.1_pre20050420.ebuild:
-  - version bump
-
-  19 Jan 2005; <solar@gentoo.org> madwifi-tools-0.1_pre20050106.ebuild,
-  madwifi-tools-0.1_pre20050107.ebuild:
-  - added a sed expression to a src_unpack as per bug #78586
-
-*madwifi-tools-0.1_pre20050107 (07 Jan 2005)
-
-  07 Jan 2005; <solar@gentoo.org> +madwifi-tools-0.1_pre20050107.ebuild:
-  - update from Stefan Schweizer. uses the snapshot from the mirrors now
-
-*madwifi-tools-0.1_pre20050106 (06 Jan 2005)
-
-  06 Jan 2005; <solar@gentoo.org> -madwifi-tools-0.1_pre20040906.ebuild,
-  -madwifi-tools-0.1_pre20041019.ebuild,
-  +madwifi-tools-0.1_pre20050106.ebuild:
-  version bump for 2005 and small format string fixes
-
-*madwifi-tools-0.1_pre20041019 (19 Oct 2004)
-
-  19 Oct 2004; <solar@gentoo.org> +madwifi-tools-0.1_pre20041019.ebuild:
-  updated snap of madwifi-tools for 2.6.9 kernels
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/madwifi-tools/ChangeLog,v 1.1 2004/09/06 19:28:42 solar Exp $
 
 *madwifi-tools-0.1_pre20040906 (06 Sep 2004)
 

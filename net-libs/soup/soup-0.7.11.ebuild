@@ -1,9 +1,12 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/soup/soup-0.7.11.ebuild,v 1.12 2005/04/17 21:42:18 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/soup/soup-0.7.11.ebuild,v 1.1 2003/03/04 18:35:19 liquidx Exp $
 
-inherit gnome.org libtool eutils
+IUSE="ssl doc"
 
+inherit gnome.org libtool
+
+S="${WORKDIR}/${P}"
 DESCRIPTION="Soup is a SOAP implementation"
 HOMEPAGE="http://www.gnome.org/"
 
@@ -14,21 +17,9 @@ DEPEND=">=dev-util/pkgconfig-0.12.0
 	ssl? ( dev-libs/openssl )
 	doc? ( >=dev-util/gtk-doc-0.9-r2 )"
 
-IUSE="ssl doc"
-
-LICENSE="|| ( GPL-2 LGPL-2 )"
+LICENSE="GPL-2 | LGPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ppc ~alpha hppa"
-
-src_unpack() {
-
-	unpack ${A}
-
-	cd ${S}
-	# fix gcc bailing (#68047)
-	epatch ${FILESDIR}/${P}-gcc3.patch
-
-}
+KEYWORDS="~x86 ~sparc  ~ppc ~alpha"
 
 src_compile() {
 	elibtoolize
@@ -42,14 +33,12 @@ src_compile() {
 		&& myconf="${myconf} --enable-gtk-doc" \
 		|| myconf="${myconf} --disable-gtk-doc"
 
-	# disable apache support. too much trouble than
-	# it is worth. it only works with apache1.
-	export ac_cv_path_APXS=no
+	# there is a --enable-apache here.....
+
 	econf \
 		${myconf} \
 		--with-libxml=1 || die
 	# Evolution 1.1 and 1.2 need it with libxml1
-	unset ac_cv_path_APXS
 
 	# dont always work with -j4 -- <azarah@gentoo.org> 9 Nov 2002
 	make || die
@@ -57,6 +46,6 @@ src_compile() {
 
 src_install() {
 	einstall || die
-
-	dodoc AUTHORS ABOUT-NLS COPYING* ChangeLog README* INSTALL NEWS TODO
+    
+ 	dodoc AUTHORS ABOUT-NLS COPYING* ChangeLog README* INSTALL NEWS TODO
 }

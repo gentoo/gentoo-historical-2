@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbattbar/xbattbar-1.4.2.ebuild,v 1.7 2005/11/20 02:05:28 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xbattbar/xbattbar-1.4.2.ebuild,v 1.1 2003/06/19 19:58:29 mkeadle Exp $
 
 IUSE=""
 
@@ -9,19 +9,21 @@ HOMEPAGE="http://iplab.aist-nara.ac.jp/member/suguru/xbattbar.html"
 SRC_URI="http://iplab.aist-nara.ac.jp/member/suguru/${P/-/_}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86"
+KEYWORDS="~x86"
 DEPEND="virtual/x11"
+RDEPEND="${DEPEND}"
 
 src_compile() {
 
 	xmkmf -a || die "xmkmf failed"
-	emake || die
+	emake
+	mv xbattbar.{man,1}
 }
 
 src_install() {
 
 	dobin xbattbar
 
-	newman xbattbar.man xbattbar.1
-	dodoc README copyright
+	doman xbattbar.1
+	dodoc COPYING README copyright
 }

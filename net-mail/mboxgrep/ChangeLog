@@ -1,32 +1,8 @@
 # ChangeLog for net-mail/mboxgrep
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/mboxgrep/ChangeLog,v 1.11 2004/10/03 15:32:10 weeve Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-mail/mboxgrep/ChangeLog,v 1.1 2002/02/10 22:01:59 karltk Exp $
 
-  03 Oct 2004; Jason Wever <weeve@gentoo.org> mboxgrep-0.7.9.ebuild:
-  Stable on sparc.
-
-  22 Sep 2004; Andrej Kacian <ticho@gentoo.org> mboxgrep-0.7.9.ebuild:
-  Stable on x86.
-
-  23 Jul 2004; <tomk@gentoo.org> mboxgrep-0.7.3.ebuild:
-  Removed redundant RDEPEND variable
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  mboxgrep-0.7.3.ebuild, mboxgrep-0.7.9.ebuild:
-  virtual/glibc -> virtual/libc
-
-*mboxgrep-0.7.9 (19 Oct 2003)
-
-  19 Oct 2003; Heinrich Wendel <lanius@gentoo.org> mboxgrep-0.7.9.ebuild:
-  version bump, some cleanups
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *mboxgrep-0.7.3 ( 10 Feb 2002 )
-
-  26 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> mboxgrep-0.7.3.ebuild :
-
-  Added ppc to KEYWORDS
 
   10 Feb 2002; Karl Trygve Kalleberg <karltk@gentoo.org> ChangeLog mboxgrep-0.7.3 files/digest-mboxgrep-0.7.3:
   

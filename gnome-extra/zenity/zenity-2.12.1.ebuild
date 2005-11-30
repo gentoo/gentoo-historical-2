@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zenity/zenity-2.12.1.ebuild,v 1.3 2005/10/13 05:59:26 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnome-extra/zenity/zenity-2.12.1.ebuild,v 1.1 2005/10/09 07:11:34 joem Exp $
 
 inherit gnome2
 
@@ -20,7 +20,6 @@ RDEPEND=">=x11-libs/gtk+-2.3.1
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.29
 	app-text/scrollkeeper
-	>=app-text/gnome-doc-utils-0.3.2
 	>=dev-util/pkgconfig-0.9"
 
 DOCS="AUTHORS ChangeLog HACKING NEWS README THANKS TODO"

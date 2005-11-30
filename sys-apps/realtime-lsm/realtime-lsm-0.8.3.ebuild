@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/realtime-lsm/realtime-lsm-0.8.3.ebuild,v 1.3 2005/07/09 22:33:05 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/realtime-lsm/realtime-lsm-0.8.3.ebuild,v 1.1 2004/11/01 04:30:51 fafhrd Exp $
 
 inherit kernel-mod eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.joq.us/realtime/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~ppc"
 
 IUSE=""
 DEPEND="virtual/linux-sources
@@ -87,3 +87,4 @@ pkg_postinst() {
 	test -r "${ROOT}/usr/src/linux/System.map" && \
 		depmod -ae -F "${ROOT}/usr/src/linux/System.map" -b "${ROOT}" -r ${KV}
 }
+

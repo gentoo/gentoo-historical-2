@@ -1,10 +1,10 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sg3_utils/sg3_utils-1.08.ebuild,v 1.4 2004/11/07 20:31:42 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sg3_utils/sg3_utils-1.08.ebuild,v 1.1 2004/08/14 22:48:41 plasmaroo Exp $
 
 inherit eutils
 
-DESCRIPTION="Sg3_utils provide a collection of programs that use the sg SCSI interface. Contains rescan_scsi_bus.sh."
+DESCRIPTION="Sg3_utils provide a collection of programs that use the sg SCSI interface"
 HOMEPAGE="http://www.torque.net/sg/"
 SRC_URI="http://www.torque.net/sg/p/${P}.tgz
 	http://www.garloff.de/kurt/linux/rescan-scsi-bus.sh"
@@ -12,7 +12,7 @@ SRC_URI="http://www.torque.net/sg/p/${P}.tgz
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="x86 ~sparc ~amd64 ~ppc"
+KEYWORDS="~x86 ~sparc ~amd64"
 IUSE=""
 
 DEPEND=""

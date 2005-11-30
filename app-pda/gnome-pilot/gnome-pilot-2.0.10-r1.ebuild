@@ -1,21 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/gnome-pilot-2.0.10-r1.ebuild,v 1.15 2005/11/19 18:29:15 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/gnome-pilot/gnome-pilot-2.0.10-r1.ebuild,v 1.1 2003/09/20 14:44:30 liquidx Exp $
 
 inherit gnome2 eutils
 
 DESCRIPTION="Gnome Pilot apps"
-HOMEPAGE="http://live.gnome.org/GnomePilot"
+HOMEPAGE="http://www.gnome.org/gnome-pilot/"
 
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="amd64 ia64 ppc sparc x86"
 IUSE=""
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~sparc"
 
 RDEPEND=">=gnome-base/libgnome-2.0.0
 	>=gnome-base/libgnomeui-2.0.0
 	>=gnome-base/libglade-2.0.0
-	>=gnome-base/orbit-2.6.0
+	>=gnome-base/ORBit2-2.6.0
 	>=gnome-base/libbonobo-2.0.0
 	>=gnome-base/gnome-panel-2.0
 	>=gnome-base/gconf-2.0
@@ -36,16 +36,4 @@ src_unpack() {
 	# patch to fix crashes with memo file syncing
 	# http://bugzilla.gnome.org/show_bug.cgi?id=114361
 	epatch ${FILESDIR}/${P}-memofile.patch
-	# add treo600 support
-	# http://bugzilla.gnome.org/show_bug.cgi?id=124254
-	epatch ${FILESDIR}/${P}-treo600.patch
-	# prevent segv if /proc/bus/usb/devices is missing
-	# http://mail.gnome.org/archives/gnome-pilot-list/2004-February/msg00013.html
-	cd ${S}; epatch ${FILESDIR}/${P}-missing_proc.patch
-
-	# http://bugs.gentoo.org/show_bug.cgi?id=52550 -- add new clie model
-	epatch ${FILESDIR}/${P}-clie.patch
-
-	# gcc-3.4 patches
-	epatch ${FILESDIR}/${P}-gcc34.patch
 }

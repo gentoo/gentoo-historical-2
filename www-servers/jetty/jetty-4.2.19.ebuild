@@ -1,11 +1,11 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/jetty/jetty-4.2.19.ebuild,v 1.4 2005/09/02 11:28:04 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/jetty/jetty-4.2.19.ebuild,v 1.1 2004/08/08 17:20:07 stuart Exp $
 
 inherit eutils
 
 DESCRIPTION="A Lightweight Servlet Engine"
-SRC_URI="mirror://sourceforge/jetty/${PN/j/J}-${PV}-all.tar.gz"
+SRC_URI="http://dl.sourceforge.net/sourceforge/jetty/${PN/j/J}-${PV}-all.tar.gz"
 HOMEPAGE="http://www.mortbay.org/"
 KEYWORDS="~x86 ~ppc ~sparc"
 LICENSE="Apache-1.1"
@@ -58,7 +58,7 @@ src_install() {
 	chmod u+x ${S}/bin/jetty.sh
 
 	ant
-	cp -Rp * ${D}/${JETTY_HOME}
+	cp -Rdp * ${D}/${JETTY_HOME}
 	dosym ${JETTY_HOME}/etc /etc/jetty
 	ln -sf /var/log/jetty ${D}/opt/jetty/logs
 }
@@ -67,7 +67,7 @@ pkg_postinst() {
 	einfo
 	einfo " NOTICE!"
 	einfo " User and group 'jetty' have been added."
-	einfo
+	einfo " "
 	einfo " FILE LOCATIONS:"
 	einfo " 1.  Jetty home directory: ${JETTY_HOME}"
 	einfo "     Contains application data, configuration files."
@@ -84,12 +84,12 @@ pkg_postinst() {
 	einfo "   /etc/init.d/jetty start"
 	einfo "   /etc/init.d/jetty stop"
 	einfo "   /etc/init.d/jetty restart"
-	einfo
-	einfo
+	einfo " "
+	einfo " "
 	einfo " NETWORK CONFIGURATION:"
 	einfo " By default, Jetty runs on port 8080.  You can change this"
 	einfo " value by setting JETTY_PORT in /etc/conf.d/jetty ."
-	einfo
+	einfo " "
 	einfo " To test Jetty while it's running, point your web browser to:"
 	einfo " http://localhost:8080/"
 	einfo

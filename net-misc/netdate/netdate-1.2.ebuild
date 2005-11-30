@@ -1,26 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netdate/netdate-1.2.ebuild,v 1.7 2005/06/26 09:03:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netdate/netdate-1.2.ebuild,v 1.1 2004/05/21 16:28:07 jhhudso Exp $
 
 DESCRIPTION="A Utility to synchronize the time with ntp-servers"
-HOMEPAGE="ftp://ftp.suse.com/pub/people/kukuk/ipv6/"
-SRC_URI="ftp://ftp.suse.com/pub/people/kukuk/ipv6/${P}.tar.bz2"
+SRC_URI="mirror://netdate-${PV}.tar.bz2"
 
-LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="amd64 mips sparc x86"
+LICENSE="public-domain"
+KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=""
-
-S=${WORKDIR}/${PN}
+DEPEND="virtual/glibc"
 
 src_compile() {
+	cd ${WORKDIR}/netdate
 	emake || die "make failed"
 }
 
 src_install() {
-	dobin netdate || die
+	cd ${WORKDIR}/netdate
+	dobin netdate
 	doman netdate.8
-	dodoc README
+	dodoc README COPYRIGHT
 }

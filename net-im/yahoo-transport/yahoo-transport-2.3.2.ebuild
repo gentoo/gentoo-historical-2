@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/yahoo-transport/yahoo-transport-2.3.2.ebuild,v 1.3 2005/03/25 10:41:15 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/yahoo-transport/yahoo-transport-2.3.2.ebuild,v 1.1 2004/07/06 11:32:45 humpback Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://yahoo-transport-2.jabberstudio.org/"
 SRC_URI="http://www.jabberstudio.org/files/yahoo-transport-2/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~hppa ~sparc ~amd64 ~alpha"
+KEYWORDS="~x86 ~ppc ~hppa ~sparc"
 SLOT="0"
 IUSE=""
 DEPEND="=net-im/jabberd-1.4*"

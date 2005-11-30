@@ -1,19 +1,19 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/matroxset/matroxset-0.3.ebuild,v 1.8 2004/09/11 15:11:26 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/matroxset/matroxset-0.3.ebuild,v 1.1 2003/03/25 06:24:36 george Exp $
 
 IUSE=""
 
 S=${WORKDIR}/${PN}
-DESCRIPTION="Matrox utility to switch output modes (activate tvout)"
+DESCRIPTION="Matrox Utility"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/"
 SRC_URI="ftp://platan.vc.cvut.cz/pub/linux/matrox-latest/${P}.tar.gz"
 
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="~x86"
 
 src_compile() {
 	cd ${S}

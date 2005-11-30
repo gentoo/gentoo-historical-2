@@ -1,45 +1,6 @@
-# ChangeLog for dev-java/groovy
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/groovy/ChangeLog,v 1.12 2005/10/18 08:28:01 axxo Exp $
-
-  18 Oct 2005; Thomas Matthijs <axxo@gentoo.org> files/basescript-1.0_beta4,
-  groovy-1.0_beta4-r1.ebuild:
-  Actualy build without previous groovy install, and fixes #55870. Thanks too
-  Eivind Tagseth <eivindt-gentoo@multinet.no>
-
-  06 May 2005; Sven Wegener <swegener@gentoo.org>
-  groovy-1.0_beta4-r1.ebuild:
-  Removed * postfix from <, <=, >= and > dependencies.
-
-  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  groovy-1.0_beta4-r1.ebuild:
-  added missing jikes dependency. see #78819.
-
-  05 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  groovy-1.0_beta4-r1.ebuild, groovy-1.0_beta4.ebuild:
-  Updated jar-from asm calls to satisfy the new asm-1.4 slot.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> groovy-1.0_beta4-r1.ebuild,
-  groovy-1.0_beta4.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  08 Aug 2004; Stuart Herbert <stuart@gentoo.org> groovy-1.0_beta4-r1.ebuild,
-  groovy-1.0_beta4.ebuild:
-  Changed dep to www-servers/tomcat because of the net-www split
-
-  05 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
-  groovy-1.0_beta4-r1.ebuild: Silly oversight, now the groovyConsole
-  loads, but there are still some issued about activation, probably
-  a dep I forgot.
-
-*groovy-1.0_beta4-r1 (05 May 2004)
-
-  05 May 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
-  groovy-1.0_beta4-r1.ebuild files/basescript-1.0_beta4-r1
-  files/build.xml-1.0_beta4-r1 files/digest-groovy-1.0_beta4-r1:
-  A slew of fixes. Added CLI scripts. groovyConsole does not work 
-  yet, dunno exactly why.
+# ChangeLog for dev-java/xmojo-bin
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/groovy/ChangeLog,v 1.1 2004/05/03 18:16:35 karltk Exp $
 
 *groovy-1.0_beta4 (03 May 2004)
 

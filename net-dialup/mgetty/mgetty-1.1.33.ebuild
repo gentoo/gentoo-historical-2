@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.33.ebuild,v 1.4 2005/07/20 05:49:00 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.33.ebuild,v 1.1 2005/04/19 20:43:50 mrness Exp $
 
 inherit toolchain-funcs flag-o-matic eutils
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://alpha.greenie.net/mgetty/"
 RDEPEND="virtual/libc"
 
 DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
+	>=sys-apps/sed-4*
 	doc? ( virtual/tetex )
 	sys-apps/gawk
 	sys-apps/groff
@@ -25,7 +25,7 @@ IUSE="doc"
 
 pkg_setup() {
 	enewgroup fax
-	enewuser fax -1 -1 /dev/null fax
+	enewuser fax -1 /bin/false /dev/null fax
 }
 
 src_unpack() {
@@ -124,9 +124,9 @@ src_install () {
 	docinto samples/new_fax
 	dodoc samples_new_fax.all/*
 
-	insinto /usr/share/${PN}
+	insinto /usr/share/"${PN}"
 	doins -r patches frontends
-	insinto /usr/share/${PN}/voice
+	insinto /usr/share/"${PN}"/voice
 	doins -r voice/{contrib,Perl,scripts}
 
 	diropts -m 0750 -o fax -g fax
@@ -140,12 +140,6 @@ src_install () {
 }
 
 pkg_postinst() {
-	einfo "Users who wish to use the fax or voicemail capabilities must be members"
-	einfo "of the group fax in order to access files"
-	echo
-	einfo "If you want to grab voice messages from a remote location, you must save"
-	einfo "the password in ${ROOT}var/spool/voice/.code file"
-	echo
-	ewarn "${ROOT}var/spool/voice/.code and ${ROOT}var/spool/voice/messages/Index"
-	ewarn "are not longer created by this automatically!"
+	einfo "${ROOT}/var/spool/voice/.code and ${ROOT}/var/spool/voice/messages/Index"
+	einfo "are not longer created by this automatically!"
 }

@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-packages-sumo/xemacs-packages-sumo-2003.11.13.ebuild,v 1.5 2005/10/10 19:54:23 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/xemacs-packages-sumo/xemacs-packages-sumo-2003.11.13.ebuild,v 1.1 2004/08/29 04:50:08 rac Exp $
 
 DESCRIPTION="The SUMO bundle of ELISP packages for Xemacs"
 HOMEPAGE="http://www.xemacs.org"
@@ -9,14 +9,14 @@ SRC_URI="http://ftp.xemacs.org/pub/packages/xemacs-sumo-${PV//./-}.tar.bz2
 	mule? ( http://ftp.xemacs.org/pub/packages/xemacs-mule-sumo-${PV//./-}.tar.bz2
 		http://ftp.xemacs.org/pub/Attic/packages/oldsumo/xemacs-mule-sumo-${PV//./-}.tar.bz2 )"
 
-DEPEND="app-arch/tar app-arch/bzip2 virtual/xemacs"
+DEPEND="app-arch/tar app-arch/bzip2"
 RDEPEND=""
 S="${WORKDIR}"
 
 IUSE="mule"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha ~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~sparc alpha"
 
 src_compile() {
 	true

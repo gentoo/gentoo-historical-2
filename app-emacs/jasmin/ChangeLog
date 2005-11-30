@@ -1,18 +1,6 @@
 # ChangeLog for app-emacs/jasmin
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/jasmin/ChangeLog,v 1.7 2005/09/09 16:01:50 agriffis Exp $
-
-  09 Sep 2005; Aron Griffis <agriffis@gentoo.org> jasmin-1.2.ebuild:
-  Mark 1.2 stable on alpha
-
-  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org> jasmin-1.2.ebuild:
-  Keywording ~amd64.
-
-  01 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> jasmin-1.2.ebuild:
-  Stable on x86. Added to ~alpha and ~ppc-macos.
-
-  16 Apr 2004; Michael McCabe <randy@gentoo.org> jasmin-1.2.ebuild:
-  added s390 keywords
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/jasmin/ChangeLog,v 1.1 2003/10/31 22:36:00 mkennedy Exp $
 
 *jasmin-1.2 (31 Oct 2003)
 

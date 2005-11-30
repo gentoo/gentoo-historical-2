@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-1.0.10_rc2.ebuild,v 1.5 2005/11/13 15:06:34 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/alsa-lib/alsa-lib-1.0.10_rc2.ebuild,v 1.1 2005/10/11 15:36:58 flameeyes Exp $
 
-inherit eutils autotools
+inherit eutils
 
 MY_P="${P/_rc/rc}"
 S="${WORKDIR}/${MY_P}"
@@ -15,7 +15,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
 # -sparc: http://bugtrack.alsa-project.org/alsa-bug/view.php?id=1268
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 -sparc ~x86"
 IUSE="doc jack"
 
 RDEPEND="virtual/alsa
@@ -23,15 +23,7 @@ RDEPEND="virtual/alsa
 DEPEND="${RDEPEND}
 	doc? ( >=app-doc/doxygen-1.2.6 )"
 
-PDEPEND="jack? ( =media-plugins/alsa-jack-${PV/rc2/rc1}* )"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch "${FILESDIR}/${PN}-1.0.10_rc3-test.patch"
-	eautoreconf
-}
+PDEPEND="jack? ( =media-plugins/alsa-jack-${PV}* )"
 
 src_compile() {
 	# needed to avoid gcc looping internaly

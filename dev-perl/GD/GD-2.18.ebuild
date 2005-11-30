@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/GD/GD-2.18.ebuild,v 1.3 2005/04/25 16:40:24 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/GD/GD-2.18.ebuild,v 1.1 2004/11/14 08:25:54 vapier Exp $
 
 inherit eutils perl-module
 
 DESCRIPTION="interface to Thomas Boutell's gd library"
 HOMEPAGE="http://www.cpan.org/modules/by-module/GD/${P}.readme"
-SRC_URI="mirror://cpan/authors/id/L/LD/LDS/${P}.tar.gz"
+SRC_URI="http://www.cpan.org/modules/by-module/GD/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 mips ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
 IUSE="jpeg truetype X gif png"
 
 DEPEND=">=media-libs/gd-2.0.12

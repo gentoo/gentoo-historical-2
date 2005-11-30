@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_capi/asterisk-chan_capi-0.3.5.ebuild,v 1.3 2005/08/16 16:30:33 stkn Exp $
-
-IUSE="fax"
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_capi/asterisk-chan_capi-0.3.5.ebuild,v 1.1 2005/02/21 01:32:39 stkn Exp $
 
 inherit eutils
 
@@ -10,15 +8,15 @@ MY_PN="chan_capi"
 
 DESCRIPTION="CAPI2.0 channel module for Asterisk"
 HOMEPAGE="http://www.junghanns.net/asterisk/"
-SRC_URI="http://www.junghanns.net/asterisk/downloads/${MY_PN}.${PV}.tar.gz
-	 fax? ( http://mlkj.net/asterisk/${MY_PN}-${PV}-patch.tar.bz2 )"
+SRC_URI="http://www.junghanns.net/asterisk/downloads/${MY_PN}.${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86"
 
+IUSE=""
+
 DEPEND=">=net-misc/asterisk-1.0.5-r1
-	!>=net-misc/asterisk-1.1.0
 	net-dialup/capi4k-utils"
 
 S=${WORKDIR}/${MY_PN}-${PV}
@@ -28,12 +26,6 @@ src_unpack() {
 
 	cd ${S}
 	epatch ${FILESDIR}/${MY_PN}-${PV}-gentoo.diff
-
-	if use fax; then
-		einfo "Enabling fax support"
-		epatch ${WORKDIR}/chan_capi.diff
-		cp ${WORKDIR}/app_capiFax.c ${S}
-	fi
 }
 
 src_compile() {

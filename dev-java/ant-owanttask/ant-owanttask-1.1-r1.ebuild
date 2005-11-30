@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-owanttask/ant-owanttask-1.1-r1.ebuild,v 1.7 2005/10/07 21:01:51 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-owanttask/ant-owanttask-1.1-r1.ebuild,v 1.1 2004/09/10 19:45:43 axxo Exp $
 
 inherit java-pkg
 
@@ -9,11 +9,11 @@ HOMEPAGE="http://monolog.objectweb.org"
 SRC_URI="http://www.gentoo.org/~karltk/java/distfiles/owanttask-${PV}-gentoo.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="x86 ~ppc"
 IUSE=""
-DEPEND=">=virtual/jdk-1.4"
-RDEPEND=">=virtual/jre-1.4
-	dev-java/ant-core"
+DEPEND="virtual/jdk"
+RDEPEND="virtual/jre
+	dev-java/ant"
 S=${WORKDIR}/owanttask-${PV}
 
 src_compile() {

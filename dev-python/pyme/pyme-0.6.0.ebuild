@@ -1,17 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyme/pyme-0.6.0.ebuild,v 1.6 2005/05/10 17:24:14 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyme/pyme-0.6.0.ebuild,v 1.1 2004/09/07 22:04:29 pythonhead Exp $
 
-inherit distutils
+IUSE=""
 
 DESCRIPTION="GPGME Interface for Python"
 SRC_URI="mirror://sourceforge/pyme/${P}.tar.gz"
 HOMEPAGE="http://pyme.sourceforge.net"
+
 DEPEND=">=app-crypt/gpgme-0.9.0"
+
 SLOT="0"
-KEYWORDS="x86 ~sparc ppc"
+KEYWORDS="~x86"
 LICENSE="GPL-2"
-IUSE=""
+
+inherit distutils
 
 src_unpack() {
 	unpack ${A}

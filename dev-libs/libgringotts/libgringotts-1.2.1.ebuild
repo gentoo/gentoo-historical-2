@@ -1,24 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgringotts/libgringotts-1.2.1.ebuild,v 1.10 2005/04/21 18:03:50 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/libgringotts/libgringotts-1.2.1.ebuild,v 1.1 2003/04/28 23:13:55 liquidx Exp $
 
-DESCRIPTION="Needed by Gringotts"
-HOMEPAGE="http://devel.pluto.linux.it/projects/libGringotts/index.php"
+DESCRIPTION="libgringotts - Needed by Gringotts"
 SRC_URI="http://devel.pluto.linux.it/projects/libGringotts/current/${P}.tar.bz2"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc amd64"
+HOMEPAGE="http://devel.pluto.linux.it/projects/libGringotts/index.php"
+S=${WORKDIR}/${P}
 IUSE=""
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc"
 
 DEPEND=">=dev-libs/libmcrypt-2.4.21
 	>=app-crypt/mhash-0.8.13
-	app-arch/bzip2
-	sys-apps/coreutils
+	sys-apps/bzip2
+	sys-apps/textutils
 	sys-libs/zlib
 	>=dev-util/pkgconfig-0.12.0"
 
 src_install() {
-	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog README TODO
+	einstall || die "Installation failed"
+	dodoc AUTHORS ChangeLog COPYING README TODO
 }

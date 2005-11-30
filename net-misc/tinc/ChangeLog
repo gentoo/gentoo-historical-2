@@ -1,18 +1,6 @@
 # ChangeLog for net-misc/tinc
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/ChangeLog,v 1.5 2005/04/29 18:39:06 warpzero Exp $
-
-*tinc-1.0.3 (29 Apr 2005)
-
-  29 Apr 2005: Joshua Charles Campbell <warpzero@gentoo.org> tinc-1.0.3.ebuild:
-   Bumpity bump bump.
-
-  26 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> tinc-1.0.2.ebuild:
-  Added to ~ppc.
-
-  24 Dec 2003; Sven Blumenstein <bazik@gentoo.org> tinc-1.0.2.ebuild,
-  files/tincd:
-  Fixed init script and added ~sparc keyword.
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/tinc/ChangeLog,v 1.1 2003/12/24 13:21:04 warpzero Exp $
 
 *tinc-1.0.2 (03 Aug 2003)
 

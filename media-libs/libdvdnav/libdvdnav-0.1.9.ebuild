@@ -1,34 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/libdvdnav-0.1.9.ebuild,v 1.15 2005/09/10 13:10:36 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libdvdnav/libdvdnav-0.1.9.ebuild,v 1.1 2003/06/10 23:27:47 agenkin Exp $
 
-inherit eutils flag-o-matic
-
-DESCRIPTION="Library for DVD navigation tools"
+S=${WORKDIR}/${P}
+DESCRIPTION="Library for DVD navigation tools."
 HOMEPAGE="http://sourceforge.net/projects/dvd/"
 SRC_URI="mirror://sourceforge/dvd/${P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~ppc-macos sparc x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
 DEPEND="media-libs/libdvdread"
 
-src_unpack() {
-	unpack ${A}
-	use ppc-macos && epatch ${FILESDIR}/${P}-darwin.diff
-}
-
 src_compile() {
-	use ppc-macos && append-flags -D__DARWIN__
 	econf || die "./configure failed"
-	emake || die "make failed"
+	emake || die
 }
 
 src_install () {
-	make DESTDIR="${D}" install || die
-	dodoc AUTHORS NEWS README
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS COPYING INSTALL NEWS README
 }
 
 pkg_postinst() {

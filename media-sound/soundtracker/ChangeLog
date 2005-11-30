@@ -1,65 +1,6 @@
 # ChangeLog for media-sound/soundtracker
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/soundtracker/ChangeLog,v 1.16 2005/11/07 12:07:04 flameeyes Exp $
-
-  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
-  soundtracker-0.6.6.ebuild, soundtracker-0.6.7.ebuild:
-  Don't install INSTALL or COPYING files.
-
-  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  soundtracker-0.6.7.ebuild:
-  Stable sparc.
-
-  07 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  soundtracker-0.6.7.ebuild:
-  Added to ~sparc.
-
-  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  soundtracker-0.6.7.ebuild:
-  Stable amd64.
-
-  21 Jun 2004; David Holm <dholm@gentoo.org> soundtracker-0.6.7.ebuild:
-  Added to ~ppc.
-
-  13 Jun 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  soundtracker-0.6.7.ebuild:
-  Getting rid of virtual/jack.
-
-  10 May 2004; Travis Tilley <lv@gentoo.org> soundtracker-0.6.7.ebuild:
-  added --disable-asm when not on x86 and added ~amd64 keyword
-
-  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  soundtracker-0.6.7.ebuild:
-  inherit flag-o-matic.
-
-  22 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  soundtracker-0.6.7.ebuild, soundtracker-0.6.7_pre5.ebuild:
-  -O3 to -O2 for bug #45252.  Marking stable.
-
-*soundtracker-0.6.7 (20 Feb 2004)
-
-  20 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org> metadata.xml,
-  soundtracker-0.6.6.ebuild, soundtracker-0.6.7.ebuild,
-  soundtracker-0.6.7_pre5.ebuild:
-  Version bump closes bug #42251.  Header fix.  metadata.xml added.
-
-*soundtracker-0.6.7_pre5 (23 Jul 2003)
-
-  23 Jul 2003; Nick Hadaway <raker@gentoo.org> soundtracker-0.6.7_pre5.ebuild:
-  New pre-release.  Adds support for virtual/jack.  Other minor ebuild
-  updates.  May crash with Kernel 2.6 but seems to work great in 2.4
-
-*soundtracker-0.6.6 (01 Jul 2002)
-
-  01 Jul 2002; Bruce A. Locke <blocke@shivan.org> soundtracker-0.6.6.ebuild:
-
-  Version bump and gnome-core dep removal
-
-*soundtracker-0.6.4-r2 (27 Mar 2002)
-
-  27 Mar 2002; Seemant Kulleen <seemant@gentoo.org> soundtracker-0.6.4-r2.ebuild :
-
-  Ungzipped HTML documentation.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-sound/soundtracker/ChangeLog,v 1.1 2002/02/01 21:53:31 gbevin Exp $
 
 *soundtracker-0.6.4-r1 (1 Feb 2002)
 

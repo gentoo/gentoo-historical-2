@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/boo/boo-0.7.0.1921.ebuild,v 1.4 2005/11/25 22:37:59 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/boo/boo-0.7.0.1921.ebuild,v 1.1 2005/10/06 22:52:39 latexer Exp $
 
 inherit mono fdo-mime eutils
 
@@ -20,29 +20,18 @@ DEPEND=">=dev-lang/mono-1.1.4
 		x11-misc/shared-mime-info
 		>=x11-libs/gtksourceview-1.0.1"
 
-src_unpack() {
-	if has_version "dev-lang/boo"; then
-		if ! has_version "=dev-lang/boo-${PV}"; then
-			eerror "This version of boo has a problem compiling when any other"
-			eerror "version of boo is present on the system. Please unmerge boo"
-			eerror "and then try emerging this version of boo. See bug #108520"
-			eerror "at https://bugs.gentoo.org/show_bug.cgi?id=108520 for more"
-			eerror "details."
-			die "Version of boo installed will cause compilation errors."
-		fi
-	fi
 
+src_unpack() {
 	unpack ${A}
 	cd ${S}
 }
 
 src_compile() {
-	LC_ALL="C" LANG="C" nant -D:install.prefix=/usr || die
+	nant -D:install.prefix=/usr || die
 }
 
 src_install() {
-	LC_ALL="C" LANG="C" nant install \
-		-D:install.destdir=${D} -D:install.prefix=/usr || die
+	nant install -D:install.destdir=${D} -D:install.prefix=/usr || die
 }
 
 pkg_postinst() {

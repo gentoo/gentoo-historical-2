@@ -3,7 +3,8 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>pyrania@gentoo.org</email>
+  <email>buckminst@inconnu.isu.edu</email>
+  <name>Curtis Hogg</name>
 </maintainer>
 <longdescription></longdescription>
 </pkgmetadata>

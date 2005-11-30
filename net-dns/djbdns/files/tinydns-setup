@@ -41,7 +41,7 @@ setup() {
 		mkdir $mypath
 	fi
 
-	# check for existance of users tinydns and dnslog:
+	# check for existance of users dnscache and dnslog:
 	echo
 	echo
 	einfo "Checking for tinydns and dnslog user accts ..."
@@ -56,9 +56,9 @@ setup() {
 	/usr/bin/grep tinydns /etc/passwd &> /dev/null
 	if [ $? -ne 0 ]
 	then
-		echo ">>> Adding user tinydns ..."
+		echo ">>> Adding user dnscache ..."
 		/usr/sbin/useradd -d /dev/null -s /bin/false -g nofiles \
-			tinydns &> /dev/null
+			dnscache &> /dev/null
 	fi
 
 	/usr/bin/grep dnslog /etc/passwd &> /dev/null
@@ -124,13 +124,8 @@ setup() {
 	echo '(press control-C to abort)'
 	read
 
-	# Don't make symbolic links to / !
-	# use ../ instead as it gives trouble in chrooted environments
-	# By Kalin KOZHUHAROV <kalin@ThinRope.net>
-	local fixedroot_path=`echo ${mypath} | sed -e 's#^/#../#'`
-	cd /service
-	ln -sf ${fixedroot_path}/tinydns .
-	ln -sf ${fixedroot_path}/axfrdns .
+	ln -sf ${mypath}/tinydns /service/
+	ln -sf ${mypath}/axfrdns /service/
 
 	echo
 	echo

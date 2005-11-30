@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kcontrol/kcontrol-3.4.1.ebuild,v 1.3 2005/05/27 09:33:26 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kcontrol/kcontrol-3.4.1.ebuild,v 1.1 2005/05/25 21:23:02 danarmak Exp $
 
 KMNAME=kdebase
 MAXKDEVER=$PV
@@ -8,7 +8,7 @@ KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta eutils
 
 DESCRIPTION="The KDE Control Center"
-KEYWORDS="~x86 ~amd64 ~ppc64 ~ppc ~sparc"
+KEYWORDS="~x86 ~amd64"
 IUSE="ssl arts ieee1394 logitech-mouse opengl"
 PATCHES="$FILESDIR/configure.in.in-kdm-settings.diff"
 
@@ -20,8 +20,7 @@ DEPEND="ssl? ( dev-libs/openssl )
 
 RDEPEND="${DEPEND}
 $(deprange $PV $MAXKDEVER kde-base/kcminit)
-$(deprange $PV $MAXKDEVER kde-base/kdebase-data)
-$(deprange $PV $MAXKDEVER kde-base/khelpcenter)"
+$(deprange $PV $MAXKDEVER kde-base/kdebase-data)"
 
 KMEXTRACTONLY="kicker/core/kicker.h
 	    kwin/kwinbindings.cpp

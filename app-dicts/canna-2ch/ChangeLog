@@ -1,28 +1,8 @@
 # ChangeLog for app-dicts/canna-2ch
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/canna-2ch/ChangeLog,v 1.9 2005/01/01 12:47:25 eradicator Exp $
-
-  01 Sep 2004; Tom Gall <tgall@gentoo.org> canna-2ch-20030827.ebuild:
-  stable on ppc64, bug #61777
-
-  13 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> canna-2ch-20030827.ebuild:
-  stable on ppc and sparc
-
-  04 Oct 2003; Aron Griffis <agriffis@gentoo.org> canna-2ch-20030827.ebuild:
-  Stable on alpha
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/canna-2ch/ChangeLog,v 1.1 2003/09/11 06:26:49 usata Exp $
 
 *canna-2ch-20030827 (11 Sep 2003)
-
-  27 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> canna-2ch-20030827.ebuild:
-  Marked as stable on x86
-
-  23 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> canna-2ch-20030827.ebuild,
-  files/canna-2ch-20030827-canna36p4-gentoo.patch:
-  Added a patch for Canna 3.6p4
-
-  12 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> canna-2ch-20030827.ebuild,
-  files/20nichan.dics.dir:
-  Fixed notification of ~/.canna
 
   11 Sep 2003; Mamoru KOMACHI <usata@gentoo.org>
   canna-2ch-20030827.ebuild, files/20nichan.dics.dir:

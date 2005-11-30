@@ -1,31 +1,6 @@
 # ChangeLog for net-misc/gofish
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gofish/ChangeLog,v 1.9 2005/09/16 23:27:28 ciaranm Exp $
-
-  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-*gofish-1.0 (03 Sep 2005)
-
-  03 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> gofish-0.29.ebuild,
-  +gofish-1.0.ebuild:
-  Fix enewuser for bug 103421. Version bump for bug 89593, thanks to Emil
-  Sköldberg <emil@math.su.se>.
-
-  12 Nov 2004; Simon Stelling <blubb@gentoo.org> gofish-0.29.ebuild:
-  added ~amd64
-
-  17 Sep 2004; David Holm <dholm@gentoo.org> gofish-0.29.ebuild:
-  Added to ~ppc.
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> gofish-0.29.ebuild:
-  change virtual/glibc to virtual/libc
-
-  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> gofish-0.29.ebuild:
-  Add inherit eutils
-
-  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> gofish-0.29.ebuild:
-  Add die following econf for bug 48950
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gofish/ChangeLog,v 1.1 2003/12/22 13:22:10 zul Exp $
 
 *gofish-0.29 (22 Dec 2003)
 

@@ -1,36 +1,6 @@
 # ChangeLog for games-arcade/briquolo
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/briquolo/ChangeLog,v 1.8 2005/11/07 18:58:58 mr_bones_ Exp $
-
-*briquolo-0.5.4 (07 Nov 2005)
-
-  07 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +briquolo-0.5.4.ebuild:
-  version bump
-
-*briquolo-0.5.3 (04 May 2005)
-
-  04 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  -briquolo-0.5.1.ebuild, +briquolo-0.5.3.ebuild:
-  version bump; tidy old ebuild
-
-*briquolo-0.5.2 (01 Mar 2005)
-
-  01 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org> +briquolo-0.5.2.ebuild:
-  version bump
-
-*briquolo-0.5 (12 Dec 2004)
-
-  12 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> +briquolo-0.5.ebuild:
-  version bump
-
-  08 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> briquolo-0.4.1.ebuild:
-  clean older ebuild
-
-*briquolo-0.4.2 (05 Nov 2003)
-
-  05 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> briquolo-0.4.2.ebuild:
-  version bump
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/briquolo/ChangeLog,v 1.1 2003/10/22 17:13:32 mr_bones_ Exp $
 
 *briquolo-0.4.1 (22 Oct 2003)
 

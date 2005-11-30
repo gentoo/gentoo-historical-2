@@ -1,30 +1,38 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/pth/pth-1.4.0.ebuild,v 1.24 2005/06/18 00:42:06 vapier Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author: Mikael Hallendal <hallski@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/pth/pth-1.4.0.ebuild,v 1.1 2001/11/06 00:17:14 hallski Exp $
 
-inherit gnuconfig libtool
-
+S=${WORKDIR}/${P}
 DESCRIPTION="GNU Portable Threads"
+SRC_URI="ftp://ftp.gnu.org/gnu/pth/pth-1.4.0.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/pth/"
-SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
-LICENSE="LGPL-2.1"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc-macos ppc64 s390 sparc x86"
-IUSE=""
+DEPEND="virtual/glibc"
 
-DEPEND="virtual/libc"
+src_compile() {
+	./configure --prefix=/usr					\
+		    --sysconfdir=/etc					\
+		    --mandir=/usr/share/man				\
+		    --infodir=/usr/share/info
+	assert
 
-src_unpack() {
-	unpack ${A}
-	gnuconfig_update
-	use ppc-macos && darwintoolize
-	#fix warnings
-	sed -i "s:pow10:math_pow10:g" ${S}/pth_string.c
-	sed -i "s:round:math_round:g" ${S}/pth_string.c
+	emake || die
 }
 
 src_install() {
-	einstall || die
-	dodoc ANNOUNCE AUTHORS ChangeLog NEWS README THANKS USERS
+	make prefix=${D}/usr						\
+	     sysconfdir=${D}/etc					\
+	     mandir=${D}/usr/share/man					\
+	     infodir=${D}/usr/share/info				\
+	     install || die
+
+	dodoc ANNOUNCE AUTHORS COPYING ChangeLog NEWS README THANKS USERS
 }
+
+
+
+
+
+
+

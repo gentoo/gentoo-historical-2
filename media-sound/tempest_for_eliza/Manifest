@@ -1,4 +1,3 @@
-MD5 7350df2982892ac32a641d5eabc31d18 ChangeLog 792
-MD5 a1eaeb2ae801daeb712c90c060e922dc metadata.xml 158
-MD5 f72ff8228842f4446625c8eff125059e tempest_for_eliza-1.0.5.ebuild 661
 MD5 264134b313be124050515ae40a5d36ae files/digest-tempest_for_eliza-1.0.5 74
+MD5 ba51e8466d49eeb8cf7e5fd9e5c79828 tempest_for_eliza-1.0.5.ebuild 592
+MD5 3efd093b3a8de7c91475bd0646768906 ChangeLog 375

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/erlang-9c-r2.ebuild,v 1.6 2005/05/30 18:19:43 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/erlang-9c-r2.ebuild,v 1.1 2004/02/21 12:37:03 vapier Exp $
 
-inherit eutils toolchain-funcs flag-o-matic
+inherit eutils gcc flag-o-matic
 
 MY_P=otp_src_R9C-0
 DESCRIPTION="Erlang programming language, runtime environment, and large collection of libraries"
@@ -11,11 +11,11 @@ SRC_URI="http://www.erlang.org/download/${MY_P}.tar.gz"
 
 LICENSE="EPL"
 SLOT="0"
-KEYWORDS="x86 ppc sparc"
+KEYWORDS="~x86 ~ppc ~sparc"
 IUSE="X ssl"
 
 DEPEND=">=dev-lang/perl-5.6.1
-	X? ( virtual/x11 )
+	X? ( >=x11-base/xfree-4.2.0-r12 )
 	ssl? ( >=dev-libs/openssl-0.9.6d )"
 
 S=${WORKDIR}/${MY_P}
@@ -28,7 +28,6 @@ src_unpack(){
 }
 
 src_compile() {
-	[ "`gcc-fullversion`" == "3.3.2" ] && filter-mfpmath sse
 	[ "`gcc-fullversion`" == "3.3.3" ] && filter-mfpmath sse
 	addpredict /dev/pty # Bug #25366
 	econf --enable-threads || die

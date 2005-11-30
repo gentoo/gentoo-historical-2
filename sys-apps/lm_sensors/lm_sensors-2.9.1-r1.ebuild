@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/lm_sensors-2.9.1-r1.ebuild,v 1.5 2005/10/23 12:48:46 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/lm_sensors-2.9.1-r1.ebuild,v 1.1 2005/08/24 14:44:01 brix Exp $
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib
 
@@ -11,13 +11,12 @@ SRC_URI="http://secure.netroedge.com/~lm78/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE="sensord"
 DEPEND="sys-apps/sed
 		ppc? ( >=virtual/linux-sources-2.5 )
-		amd64? ( >=virtual/linux-sources-2.5 )
-		x86? ( || (  >=virtual/linux-sources-2.5 sys-apps/lm_sensors-modules ) )"
+		!ppc? ( || (  >=virtual/linux-sources-2.5 sys-apps/lm_sensors-modules ) )"
 RDEPEND="dev-lang/perl
 		sensord? ( net-analyzer/rrdtool )"
 
@@ -25,11 +24,11 @@ pkg_setup() {
 	linux-info_pkg_setup
 
 	if kernel_is 2 4; then
-		if use ppc || use amd64; then
+		if use ppc; then
 			eerror
-			eerror "${P} does not support kernel 2.4.x under PPC and AMD64."
+			eerror "${P} does not support kernel 2.4.x under PPC."
 			eerror
-			die "${P} does not support kernel 2.4.x under PPC and AMD64."
+			die "${P} does not support kernel 2.4.x under PPC."
 		elif ! has_version =sys-apps/lm_sensors-modules-${PV}; then
 			eerror
 			eerror "${P} needs sys-apps/lm_sensors-modules-${PV} to be installed"

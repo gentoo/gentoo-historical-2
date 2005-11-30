@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-OpenPGP/Crypt-OpenPGP-1.03.ebuild,v 1.8 2005/07/07 01:19:03 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-OpenPGP/Crypt-OpenPGP-1.03.ebuild,v 1.1 2005/04/11 17:00:08 mcummings Exp $
 
 inherit perl-module
 
@@ -11,7 +11,7 @@ SRC_URI="mirror://cpan/authors/id/B/BT/BTROTT/${P}.tar.gz"
 LICENSE="Artistic"
 #LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~sparc"
 IUSE=""
 
 SRC_TEST="do"
@@ -24,16 +24,16 @@ SRC_TEST="do"
 # LWP-UserAgent
 # URI-Escape
 
-DEPEND=">=dev-perl/data-buffer-0.04
-		perl-core/MIME-Base64
-		>=dev-perl/math-pari-2.010603
+RDEPEND=">=dev-perl/data-buffer-0.04
+		dev-perl/MIME-Base64
+		>=dev-perl/math-pari-2.010603*
 		dev-perl/Compress-Zlib
 		dev-perl/libwww-perl
 		dev-perl/URI
-		dev-perl/crypt-dsa
+		dev-perl/crypt-dsa 
 		dev-perl/crypt-rsa
 		dev-perl/crypt-idea
-		perl-core/Digest-MD5
+		dev-perl/Digest-MD5
 		dev-perl/Crypt-DES_EDE3
 		dev-perl/Digest-SHA1
 		dev-perl/Crypt-Rijndael
@@ -42,4 +42,3 @@ DEPEND=">=dev-perl/data-buffer-0.04
 		dev-perl/Crypt-Blowfish
 		>=dev-perl/Crypt-Twofish-2.00
 		dev-perl/ExtUtils-AutoInstall"
-RDEPEND="${DEPEND}"

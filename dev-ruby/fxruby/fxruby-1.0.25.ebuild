@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fxruby/fxruby-1.0.25.ebuild,v 1.7 2005/09/02 12:48:05 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/fxruby/fxruby-1.0.25.ebuild,v 1.1 2003/08/10 11:14:25 twp Exp $
 
 MY_P=FXRuby-${PV}
 DESCRIPTION="Ruby language binding to the FOX GUI toolkit"
@@ -8,10 +8,10 @@ HOMEPAGE="http://www.fxruby.org/"
 SRC_URI="mirror://sourceforge/fxruby/${MY_P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha hppa sparc x86"
+KEYWORDS="alpha arm hppa mips sparc x86"
 IUSE=""
-DEPEND="virtual/ruby
-	>=x11-libs/fox-1.0 <x11-libs/fox-1.2"
+DEPEND=">=dev-lang/ruby-1.6
+	>=x11-libs/fox-1.0"
 S=${WORKDIR}/${MY_P}
 
 src_compile() {
@@ -24,6 +24,6 @@ src_install() {
 	ruby install.rb install || die
 
 	dodoc ANNOUNCE ChangeLog README*
-	cp -r examples ${D}/usr/share/doc/${PF}
+	cp -dr examples ${D}/usr/share/doc/${PF}
 	dohtml -r doc/*
 }

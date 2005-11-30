@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Authen-SASL/Authen-SASL-2.04.ebuild,v 1.18 2005/08/15 09:52:02 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Authen-SASL/Authen-SASL-2.04.ebuild,v 1.1 2003/08/14 02:25:48 robbat2 Exp $
 
 inherit perl-module
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A Perl SASL interface"
+AUTHOR="GBARR"
 HOMEPAGE="http://search.cpan.org/CPAN/authors/id/${AUTHOR:0:1}/${AUTHOR:0:2}/${AUTHOR}/"
-SRC_URI="mirror://cpan/authors/id/${AUTHOR:0:1}/${AUTHOR:0:2}/${AUTHOR}/${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/${P}.tar.gz"
 
-LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm amd64 ia64 s390 hppa ppc64"
-IUSE=""
+LICENSE="Artistic"
+KEYWORDS="~x86"
 
 export OPTIMIZE="$CFLAGS"
-AUTHOR="GBARR"

@@ -4,7 +4,7 @@
  	ALBUMFILE=$(mungefilename "$DALBUM")
  	ARTISTFILE=$(mungefilename "$TRACKARTIST")
  	TRACKFILE=$(mungefilename "$TRACKNAME")
-+	TRACKNUM=$(printf %0.${TRACKNUMPADDING}d ${UTRACKNUM})
+++	TRACKNUM=$(printf %0.${TRACKNUMPADDING}d ${UTRACKNUM})
  	# Supported variables for OUTPUTFORMAT are ALBUMFILE, ARTISTFILE, TRACKFILE, and TRACKNUM.
  	if [ "$VARIOUSARTISTS" = "y" ]; then
  		OUTPUTFILE=$(eval echo $VAOUTPUTFORMAT)
@@ -24,7 +24,7 @@
 @@ -1,12 +1,12 @@
  VERSION = 2.0.3
 -INSTALL = /usr/bin/install -c
-+INSTALL = /usr/bin/install -c
++INSTALL = /bin/install -c
  
  # Installation directories
  prefix = ${DESTDIR}/usr

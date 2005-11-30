@@ -1,28 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/disc-cover/disc-cover-1.3.1.ebuild,v 1.19 2005/01/01 12:12:07 eradicator Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Felix Kurth <felix@fkurth.de>
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/disc-cover/disc-cover-1.3.1.ebuild,v 1.1 2002/06/19 00:26:57 agenkin Exp $
 
 DESCRIPTION="Creates CD-Covers via Latex by fetching cd-info from freedb.org or local file"
 HOMEPAGE="http://www.liacs.nl/~jvhemert/disc-cover/"
-SRC_URI="http://www.liacs.nl/~jvhemert/disc-cover/download/unstable/${P}.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
 
 DEPEND=">=dev-perl/Audio-CD-disc-cover-0.04
-	virtual/tetex"
+	>=app-text/tetex-1.0.7-r7"
+	
+SRC_URI="http://www.liacs.nl/~jvhemert/disc-cover/download/unstable/${P}.tar.gz"
 
-src_compile() {
-	pod2man disc-cover > disc-cover.1 || die
-}
-
-src_install() {
-	dobin disc-cover || die
+src_install () {
+	into /usr
+	dobin disc-cover
 	doman disc-cover.1
 
-	dodoc AUTHORS CHANGELOG TODO
+	dodoc AUTHORS CHANGELOG COPYING TODO
 	docinto freedb
 	dodoc freedb/*
 	docinto docs

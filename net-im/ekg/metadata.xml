@@ -3,7 +3,9 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-  <email>spock@gentoo.org</email>
-  <name>Michal Januszewski</name>
+  <email>spock@o2.pl</email>
+  <name>Michal 'Spock' Januszewski</name>
+  <description>He's the third party maintainer through
+  seemant@gentoo.org</description>
 </maintainer>
 </pkgmetadata>

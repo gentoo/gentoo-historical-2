@@ -10,6 +10,6 @@ service ftp
        user		= root
        server		= /usr/sbin/proftpd
        log_on_success	= HOST PID
-       log_on_failure	= HOST
+       log_on_failure	= HOST RECORD
        disable		= yes
 }

@@ -1,6 +1,7 @@
-# /etc/conf.d/ntpd
+# Config file for /etc/init.d/ntpd
 
-# Options to pass to the ntpd process
-# Most people should leave this line alone ...
-# however, if you know what you're doing, feel free to tweak
-NTPD_OPTS="-u ntp:ntp"
+
+# Name of the server ntpd should sync with
+
+#NTPDATESERVER=ntp.ctr.columbia.edu
+

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-data/quake2-data-3.20.ebuild,v 1.16 2005/11/08 03:32:07 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-data/quake2-data-3.20.ebuild,v 1.1 2003/09/09 18:10:14 vapier Exp $
 
-inherit eutils games
+inherit games
 
 DESCRIPTION="iD Software's Quake 2 ... the data files"
 HOMEPAGE="http://www.idsoftware.com/"
@@ -10,74 +10,67 @@ SRC_URI="ftp://ftp.idsoftware.com/idstuff/quake2/q2-${PV}-x86-full-ctf.exe"
 
 LICENSE="Q2EULA"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="x86"
 IUSE="videos"
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+DEPEND="app-arch/unzip
+	virtual/x11"
 
 S=${WORKDIR}
 
-pkg_setup() {
-	export CDROM_SET_NAMES=("Existing Install" "Ultimate Quake Edition" "Quake2 CD" "Quake4 Bonus DVD")
-	cdrom_get_cds baseq2:Install/patch:Install:Movies
-	games_pkg_setup
-}
-
 src_unpack() {
-	# The .exe is just a self-extracting .zip
-	echo ">>> Unpacking ${A} to ${PWD}"
-	unzip -qo "${DISTDIR}/${A}" || die "Failed to unpack ${A}"
+	unzip -L -q ${DISTDIR}/q2-${PV}-x86-full-ctf.exe
 }
 
 src_install() {
-	dodoc DOCS/* 3.20_Changes.txt
-	newdoc ctf/readme.txt ctf-readme.txt
-	case ${CDROM_SET} in
-		0) dohtml -r "${CDROM_ROOT}"/Install/DOCS/quake2_manual/* ;;
-		1) dohtml -r "${CDROM_ROOT}"/Install/Docs/quake2_manual/* ;;
-		2) dohtml -r "${CDROM_ROOT}"/Install/DOCS/quake2_manual/* ;;
-		3) dodoc "${CDROM_ROOT}"/Docs/* ;;
-	esac
-
-	local baseq2_cdpath
-	case ${CDROM_SET} in
-		0) baseq2_cdpath=${CDROM_ROOT}/baseq2;;
-		1) baseq2_cdpath=${CDROM_ROOT}/Install/Data/baseq2;;
-		2) baseq2_cdpath=${CDROM_ROOT}/Install/Data/baseq2;;
-		3) baseq2_cdpath=${CDROM_ROOT}/setup/Data/baseq2;;
-	esac
-
-	dodir ${GAMES_DATADIR}/quake2/baseq2
-
-	if use videos ; then
-		insinto ${GAMES_DATADIR}/quake2/baseq2/video
-		doins "${baseq2_cdpath}"/video/* || die "doins videos"
+	games_get_cd Install
+	games_verify_cd Quake 2
+	if [ -e ${GAMES_CD}/Install/Data ] ; then
+		GAMES_CD=${GAMES_CD}/Install/Data
+		einfo "Source is the CD"
+	elif [ -e ${GAMES_CD}/baseq2 ] ; then
+		GAMES_CD=${GAMES_CD}
+		einfo "Source is an installed copy"
+	else
+		die "Could not determine what ${GAMES_CD} points at"
 	fi
 
-	insinto ${GAMES_DATADIR}/quake2/baseq2
-	doins "${baseq2_cdpath}"/pak0.pak || die "couldnt grab pak0.pak"
+	dodoc DOCS/* 3.20_Changes.txt
+	newdoc ctf/readme.txt ctf-readme.txt
+	dohtml -r ${GAMES_CD}/DOCS/quake2_manual/*
+
+	dodir ${GAMES_DATADIR}/${PN}/baseq2
+
+	if [ `use videos` ] ; then
+		insinto ${GAMES_DATADIR}/${PN}/baseq2/video
+		doins ${GAMES_CD}/baseq2/video/*
+	fi
+
+	insinto ${GAMES_DATADIR}/${PN}/baseq2
+	doins ${GAMES_CD}/baseq2/pak0.pak || die "couldnt grab pak0.pak"
 	doins baseq2/*.pak || die "couldnt grab release paks"
 	doins baseq2/maps.lst || die "couldnt grab maps.lst"
-	dodir "${GAMES_DATADIR}"/quake2/baseq2/players
-	cp -R "${baseq2_cdpath}"/players/* baseq2/players/* \
-		"${D}/${GAMES_DATADIR}"/quake2/baseq2/players/ || die "couldnt grab player models"
+	cp -R baseq2/players ${D}/${GAMES_DATADIR}/${PN}/baseq2/ || die "couldnt grab player models"
 
-	for mod in ctf rogue xatrix ; do
-		if [[ -d ${baseq2_cdpath}/../${mod} ]] ; then
-			if use videos && [[ -d ${baseq2_cdpath}/../${mod}/video ]] ; then
-				insinto ${GAMES_DATADIR}/quake2/${mod}/video
-				doins "${baseq2_cdpath}"/../${mod}/video/* 2>/dev/null
-			fi
-			if [[ -n $(ls "${baseq2_cdpath}"/../${mod}/*.pak 2>/dev/null) ]] ; then
-				insinto ${GAMES_DATADIR}/quake2/${mod}
-				doins "${baseq2_cdpath}"/../${mod}/*.pak || die "doins ${mod} pak"
-			fi
-		fi
-	done
-
-	insinto "${GAMES_DATADIR}"/quake2/ctf
+	insinto ${GAMES_DATADIR}/${PN}/ctf
 	doins ctf/*.{cfg,ico,pak} || die "couldnt grab ctf"
+
+	# install symlinks for all the packages that may utilize this ebuild
+	if has_version app-games/quake2-relnev ; then
+		einfo "Creating symlinks for quake2-relnev"
+		for qdir in "" -qmax ; do
+			basedir=${GAMES_LIBDIR}/quake2-relnev${qdir}/baseq2
+			ctfdir=${GAMES_LIBDIR}/quake2-relnev${qdir}/ctf
+			dodir ${basedir}
+			for f in pak{0,1,2}.pak players ; do
+				[ -e ${basedir}/${f} ] && continue
+				dosym ${GAMES_DATADIR}/${PN}/baseq2/${f} ${basedir}/${f}
+			done
+			dodir ${ctfdir}
+			[ -e ${ctfdir}/pak0.pak ] || \
+			dosym ${GAMES_DATADIR}/${PN}/ctf/pak0.pak ${ctfdir}/pak0.pak
+		done
+	fi
 
 	prepgamesdirs
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg4ip/mpeg4ip-1.3.ebuild,v 1.4 2005/11/10 06:15:21 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mpeg4ip/mpeg4ip-1.3.ebuild,v 1.1 2005/05/19 01:53:03 tester Exp $
 
 inherit eutils multilib
 
@@ -36,14 +36,13 @@ RDEPEND=" media-libs/libsdl
 	nas? ( media-libs/nas virtual/x11 )
 	alsa? ( media-libs/alsa-lib )
 	arts? ( kde-base/arts )
-	esd? ( media-sound/esound )
-	!media-libs/faad2"
+	esd? ( media-sound/esound )"
 
 DEPEND="${RDEPEND}
 	sys-devel/libtool
 	sys-devel/autoconf
 	sys-devel/automake
-	player? ( x86? ( mmx? ( >=dev-lang/nasm-0.98.19 ) ) )"
+	player?( x86? ( mmx? ( >=dev-lang/nasm-0.98.19 ) ) )"
 
 
 pkg_setup() {
@@ -111,7 +110,6 @@ src_compile() {
 		${EXTRA_ECONF} \
 		${myconf} || die "configure failed"
 
-	sed -i -e 's:-Werror::' common/video/iso-mpeg4/src/Makefile || die "sed failed"
 
 	emake || die "make failed"
 }
@@ -120,7 +118,7 @@ src_install () {
 	cd ${S}
 	make install DESTDIR="${D}" || die "make install failed"
 
-	dodoc doc/MPEG4IP_Guide.pdf doc/*txt AUTHORS TODO
+	dodoc doc/MPEG4IP_Guide.pdf doc/*txt AUTHORS COPYING TODO
 
 	dohtml doc/*.html FEATURES.html || die
 

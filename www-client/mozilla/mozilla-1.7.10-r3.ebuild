@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla/mozilla-1.7.10-r3.ebuild,v 1.8 2005/08/10 02:14:39 hardave Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/mozilla/mozilla-1.7.10-r3.ebuild,v 1.1 2005/08/02 03:15:28 agriffis Exp $
 
 unset ALLOWED_FLAGS  # stupid extra-functions.sh ... bug 49179
 inherit flag-o-matic toolchain-funcs eutils mozconfig mozilla-launcher makeedit multilib
@@ -22,12 +22,13 @@ SRC_URI="http://ftp.mozilla.org/pub/mozilla.org/mozilla/releases/${PN}${MY_PV}/s
 	) )
 	mirror://gentoo/mozilla-jslibmath-alpha.patch
 	mirror://gentoo/mozilla-firefox-1.0-4ft2.patch.bz2
+	mirror://gentoo/mozilla-1.7.10-nsplugins-v2.patch
 	http://dev.gentoo.org/~agriffis/dist/mozilla-1.7.10-nsplugins-v2.patch"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
 SLOT="0"
 LICENSE="MPL-1.1 NPL-1.1"
-IUSE="crypt gnome java ldap mozcalendar mozdevelop moznocompose moznoirc moznomail mozsvg postgres ssl"
+IUSE="crypt gnome java ldap mozcalendar mozdevelop moznocompose moznoirc moznomail mozsvg mozxmlterm postgres ssl"
 
 # xrender.pc appeared for the first time in xorg-x11-6.7.0-r2
 # and is required to build with support for cairo.  #71504
@@ -139,7 +140,7 @@ src_unpack() {
 	eend $? || die "sed failed"
 
 	# look in /usr/lib/nsplugins for plugins, in addition to the usual places
-	epatch ${DISTDIR}/mozilla-1.7.10-nsplugins-v2.patch
+	epatch ${DISTDIR}/mozilla-firefox-1.0.6-nsplugins.patch
 
 	WANT_AUTOCONF=2.1 autoconf || die "WANT_AUTOCONF failed"
 }
@@ -167,6 +168,7 @@ src_compile() {
 	mozconfig_use_enable gnome gnomevfs
 	mozconfig_use_extension gnome gnomevfs
 	mozconfig_use_extension !moznoirc irc
+	mozconfig_use_extension mozxmlterm xmlterm
 	mozconfig_use_extension postgres sql
 	if use postgres ; then
 		export MOZ_ENABLE_PGSQL=1
@@ -201,14 +203,8 @@ src_compile() {
 	#
 	####################################
 
-	CPPFLAGS="${CPPFLAGS} -DARON_WAS_HERE" \
 	CC="$(tc-getCC)" CXX="$(tc-getCXX)" LD="$(tc-getLD)" \
 	econf || die
-
-	# It would be great if we could pass these in via CPPFLAGS or CFLAGS prior
-	# to econf, but the quotes cause configure to fail.
-	grep -Flre -DARON_WAS_HERE --exclude=config.\* . | xargs sed -i -e \
-	's|-DARON_WAS_HERE|-DGENTOO_NSPLUGINS_DIR=\\\"/usr/'"$(get_libdir)"'/nsplugins\\\" -DGENTOO_NSBROWSER_PLUGINS_DIR=\\\"/usr/'"$(get_libdir)"'/nsbrowser/plugins\\\"|'
 
 	# This removes extraneous CFLAGS from the Makefiles to reduce RAM
 	# requirements while compiling
@@ -255,7 +251,7 @@ src_install() {
 
 	# Most of the installation happens here
 	dodir ${MOZILLA_FIVE_HOME}
-	cp -RL ${S}/dist/bin/* ${D}${MOZILLA_FIVE_HOME}
+	cp -RL --no-preserve=links ${S}/dist/bin/* ${D}${MOZILLA_FIVE_HOME}
 
 	# Create directory structure to support portage-installed extensions.
 	# See update_chrome() in mozilla-launcher

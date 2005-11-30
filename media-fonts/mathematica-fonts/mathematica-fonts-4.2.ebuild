@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/mathematica-fonts/mathematica-fonts-4.2.ebuild,v 1.4 2005/07/26 08:50:47 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/mathematica-fonts/mathematica-fonts-4.2.ebuild,v 1.1 2005/05/03 15:13:23 usata Exp $
 
 inherit font
 
@@ -16,7 +16,7 @@ SRC_URI="truetype? ( $TRUETYPE_FILE )
 LICENSE="WRI-EULA"
 
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~x86"
 IUSE="truetype"
 DEPEND="app-arch/unzip"
 RDEPEND=""
@@ -30,7 +30,7 @@ pkg_nofetch() {
 	einfo "and download "
 	if use truetype; then
 		einfo ${DOWNLOAD_URI}${TRUETYPE_FILE}
-	else
+	else 
 		einfo ${DOWNLOAD_URI}${TYPE1_FILE}
 	fi
 	einfo "Then just put the file in ${DISTDIR}"
@@ -49,14 +49,4 @@ src_install() {
 	fi
 
 	font_src_install
-}
-
-pkg_postinst() {
-	einfo "To make Mozilla happy, you should change font.mathfont-family:"
-	einfo "1. Enter the URL about:config"
-	einfo "2. First, check to see if the pref exists"
-	einfo "   If not, right-click and select New > String"
-	einfo "   The name of the preference is font.mathfont-family"
-	einfo "3. You should set the value to (right-click to modify):"
-	einfo "   CMSY10, CMEX10, Mathematica1, Mathematica2, Mathematica4, MT Extra, Standard Symbols L"
 }

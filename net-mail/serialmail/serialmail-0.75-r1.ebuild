@@ -1,22 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/serialmail-0.75-r1.ebuild,v 1.5 2005/03/03 18:32:40 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/serialmail/serialmail-0.75-r1.ebuild,v 1.1 2003/09/10 15:58:40 phosphan Exp $
 
 IUSE=""
+
+S=${WORKDIR}/${P}
 
 DESCRIPTION="A serialmail is a collection of tools for passing mail
 across serial links."
 HOMEPAGE="http://cr.yp.to/serialmail.html"
 SRC_URI="http://cr.yp.to/software/${P}.tar.gz"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88"
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	sys-apps/groff
 	>=sys-apps/ucspi-tcp-0.88
-	>=sys-process/daemontools-0.76-r1"
+	>=sys-apps/daemontools-0.76-r1"
 
 SLOT="0"
 LICENSE="as-is"
@@ -58,3 +60,6 @@ src_install() {
 	doman maildirqmtp.1 maildirserial.1 maildirsmtp.1 \
 		serialqmtp.1 serialsmtp.1 setlock.1
 }
+
+
+

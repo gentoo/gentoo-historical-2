@@ -1,53 +1,48 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/johntheripper-1.6.ebuild,v 1.24 2005/01/01 06:53:20 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/johntheripper-1.6.ebuild,v 1.1 2002/05/22 21:03:14 g2boojum Exp $
 
-inherit eutils
 
-MY_P=${P/theripper/}
-S=${WORKDIR}/${MY_P}
-DEBPATCH=${MY_P/-/_}-17.diff
-DESCRIPTION="fast password cracker"
-HOMEPAGE="http://www.openwall.com/${PN/theripper/}/"
-SRC_URI="http://www.openwall.com/john/dl/${MY_P}.tar.gz
-	 mirror://debian/pool/main/j/john/${DEBPATCH}.gz"
-
-SLOT="0"
+PN0="john"
+DEBPATCH=${PN0}_${PV}-17.diff.gz
+DESCRIPTION="John the Ripper is a fast password cracker."
+HOMEPAGE="http://www.openwall.com/${PN0}/"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc alpha ~mips hppa"
-IUSE="mmx"
+DEPEND="virtual/glibc
+		>=sys-devel/binutils-2.8.1.0.15"
+#RDEPEND=""
+SRC_URI="${HOMEPAGE}/${PN0}-${PV}.tar.gz
+		 http://ftp.debian.org/debian/pool/main/j/${PN0}/${DEBPATCH}"
 
-DEPEND=">=sys-devel/binutils-2.8.1.0.15
-	>=sys-apps/sed-4"
+S=${WORKDIR}/${PN0}-${PV}
 
 src_unpack() {
-	unpack ${A}
-	epatch ${WORKDIR}/${DEBPATCH}
+	unpack ${PN0}-${PV}.tar.gz
+	zcat ${DISTDIR}/${DEBPATCH} | patch -d ${PN0}-${PV} -p1
 }
 
 src_compile() {
 	cd src
-	sed -i -e "s:-m486::" -e "s:-Wall -O2:${CFLAGS}:" \
-		Makefile
-	if use mmx ; then
-		emake linux-x86-mmx-elf || die
+	mv Makefile Makefile.orig
+	sed -e "s/-m486//" -e "s/-Wall -O2/${CFLAGS}/" \
+		Makefile.orig > Makefile
+	if [ -z "`use mmx`" ]
+	then
+		emake generic
 	else
-		emake generic || die
+		emake linux-x86-mmx-elf
 	fi
 }
 
-src_install() {
+src_install () {
+	dodir /usr/share/${PN0} /etc
 	insinto /etc
 	doins run/john.ini debian/john-mail.msg debian/john-mail.conf
-	insinto /usr/share/${PN/theripper/}
+	insinto /usr/share/${PN0}
 	doins run/{all.chr,alpha.chr,digits.chr,lanman.chr,password.lst} \
 		debian/john-dailyscript
-	doman debian/*.1
+	dodoc debian/{CONFIG.mailer,copyright} doc/* 
+	doman debian/{john.1,mailer.1,unafs.1,unique.1,unshadow.1,john-cronjob.1}
 	dosbin run/john debian/mailer debian/john-cronjob
-
-	dosym john /usr/sbin/unafs
-	dosym john /usr/sbin/unique
-	dosym john /usr/sbin/unshadow
-
-	dodoc debian/{CONFIG.mailer,copyright} doc/*
+	(cd ${D}/usr/sbin; ln -s john unafs; ln -s john unique; ln -s john unshadow)
 }

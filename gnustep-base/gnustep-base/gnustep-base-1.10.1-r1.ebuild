@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/gnustep-base-1.10.1-r1.ebuild,v 1.8 2005/07/16 19:25:38 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/gnustep-base-1.10.1-r1.ebuild,v 1.1 2004/11/12 03:47:20 fafhrd Exp $
 
 inherit gnustep
 
@@ -8,37 +8,27 @@ DESCRIPTION="The GNUstep Base Library is a library of general-purpose, non-graph
 
 HOMEPAGE="http://www.gnustep.org"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
-KEYWORDS="ppc x86 amd64 sparc ~alpha"
+KEYWORDS="~ppc ~x86 ~amd64 ~sparc ~alpha"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1"
 
-IUSE="doc gcc-libffi"
+IUSE="${IUSE} doc"
 DEPEND="${GNUSTEP_CORE_DEPEND}
-	~gnustep-base/gnustep-make-1.10.0
 	|| (
-		gcc-libffi? ( >=sys-devel/gcc-3.3.2 )
-		>=dev-libs/libffi-3
+		>=gnustep-base/gnustep-make-1.10.1_pre20041030-r1
+		~gnustep-base/gnustep-make-1.10.0
 	)
-	>=dev-libs/libxml2-2.6
-	>=dev-libs/libxslt-1.1
-	>=dev-libs/gmp-4.1
-	>=dev-libs/openssl-0.9.7
-	>=sys-libs/zlib-1.2
-	sys-apps/sed
+	>=dev-libs/libxml2-2.6*
+	>=dev-libs/libxslt-1.1*
+	>=dev-libs/gmp-4.1*
+	>=dev-libs/openssl-0.9.7*
+	>=dev-libs/libffi-3*
+	>=sys-libs/zlib-1.2*
 	${DOC_DEPEND}"
 RDEPEND="${DEPEND}
 	${DOC_RDEPEND}"
 
 egnustep_install_domain "System"
-
-pkg_setup() {
-	if use gcc-libffi; then
-		if [ "$(ffi_available)" == "no" ]; then
-			ffi_not_available_info
-			die "libffi is not available"
-		fi
-	fi
-}
 
 src_unpack() {
 	unpack ${A}
@@ -51,13 +41,7 @@ src_compile() {
 	# - libffi is known to work with 32 and 64 bit platforms
 	# - libffi does not use trampolines
 	local myconf
-	myconf="--enable-libffi --disable-ffcall"
-	if use gcc-libffi; then
-		myconf="${myconf} --with-ffi-library=$(gcc-config -L) --with-ffi-include=$(gcc-config -L | sed 's/:.*//')/include"
-	else
-		myconf="${myconf} --with-ffi-library=/usr/lib/libffi --with-ffi-include=/usr/include/libffi"
-	fi
-
+	myconf="--enable-libffi --with-ffi-library=/usr/lib/libffi --with-ffi-include=/usr/include/libffi --disable-ffcall"
 	myconf="$myconf --with-xml-prefix=/usr"
 	myconf="$myconf --with-gmp-include=/usr/include --with-gmp-library=/usr/lib"
 	econf $myconf || die "configure failed"
@@ -101,3 +85,4 @@ src_install() {
 	fi
 	egnustep_package_config
 }
+

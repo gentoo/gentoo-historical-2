@@ -1,22 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-nrpe/nagios-nrpe-1.8-r1.ebuild,v 1.9 2005/05/03 16:35:38 eldad Exp $
-inherit eutils
-
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-nrpe/nagios-nrpe-1.8-r1.ebuild,v 1.1 2003/06/18 00:01:38 alron Exp $
 DESCRIPTION="Nagios $PV NRPE - Nagios Remote Plugin Executor"
 HOMEPAGE="http://www.nagios.org/"
 SRC_URI="mirror://sourceforge/nagios/nrpe-1.8.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc ~amd64"
+KEYWORDS="x86 ~ppc ~sparc"
 IUSE=""
 DEPEND=">=net-analyzer/nagios-plugins-1.3.0"
 S="${WORKDIR}/nrpe-1.8"
-
-pkg_setup() {
-	enewgroup nagios
-	enewuser nagios -1 /bin/bash /dev/null nagios
-}
 
 src_compile() {
 	./configure \
@@ -33,12 +26,8 @@ src_compile() {
 
 src_install() {
 	dodoc LEGAL Changelog README
-
 	insinto /etc/nagios
 	newins ${FILESDIR}/nrpe-1.8.cfg nrpe.cfg
-	fowners root:nagios /etc/nagios/nrpe.cfg
-	fperms 0640 /etc/nagios/nrpe.cfg
-
 	exeinto /usr/nagios/bin
 	doexe src/nrpe
 	fowners nagios:nagios /usr/nagios/bin/nrpe
@@ -47,11 +36,9 @@ src_install() {
 	fowners nagios:nagios /usr/nagios/libexec/check_nrpe
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/nrpe-1.8 nrpe
-
-	fperms 0750 /usr/nagios/libexec/check_nrpe /usr/nagios/bin/nrpe
 }
 pkg_postinst() {
-	einfo
+	einfo 
 	einfo "If you are using the nrpe daemon, remember to edit"
 	einfo "the config file /etc/nagios/nrpe.cfg"
 	einfo

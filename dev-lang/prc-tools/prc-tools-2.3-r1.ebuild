@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/prc-tools/prc-tools-2.3-r1.ebuild,v 1.4 2005/01/28 23:55:01 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/prc-tools/prc-tools-2.3-r1.ebuild,v 1.1 2005/01/04 17:47:14 plasmaroo Exp $
 
 inherit flag-o-matic eutils
 
@@ -24,8 +24,7 @@ SLOT="0"
 KEYWORDS="~x86"
 
 IUSE=""
-DEPEND=">=app-text/texi2html-1.70
-	>=sys-apps/texinfo-4.8"
+DEPEND=">=app-text/texi2html-1.64-r1"
 RDEPEND=""
 
 src_unpack() {
@@ -43,7 +42,7 @@ src_unpack() {
 	echo -n " "; epatch ${P}/${GCC_V_ARM}.palmos.diff || die
 	echo -n " "; epatch ${P}/${GCC_V_M68K}.palmos.diff || die
 	echo -n " "; epatch ${P}/${GDB_V}.palmos.diff || die
-	echo -n " "; EPATCH_OPTS="-l" epatch ${P}/../MsectGdb2.3-1.diff || die
+	echo -n " "; EPATCH_OPTS="-l" epatch ${P}/../MsectGdb2.3-1.diff || die	
 	echo -n " "; epatch ${FILESDIR}/${P}-compilefix.patch || die
 
 		# This last patch disables dummy headers being copied.

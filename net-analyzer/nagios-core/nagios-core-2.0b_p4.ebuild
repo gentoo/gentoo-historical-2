@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-core/nagios-core-2.0b_p4.ebuild,v 1.3 2005/10/15 23:22:12 soulse Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/nagios-core/nagios-core-2.0b_p4.ebuild,v 1.1 2005/09/28 18:22:32 ramereth Exp $
 
-inherit eutils apache-module toolchain-funcs
+inherit eutils depend.apache toolchain-funcs
 
 MY_P=${PN/-core}-${PV/_p}
 DESCRIPTION="Nagios Core - Check daemon, CGIs, docs"
@@ -19,7 +19,7 @@ DEPEND="virtual/mailx
 		>=media-libs/jpeg-6b-r3
 		>=media-libs/libpng-1.2.5-r4
 		>=media-libs/gd-1.8.3-r5
-		${NEED_APACHE_DEPEND}
+		${APACHE_DEPEND}
 		perl? ( net-analyzer/traceroute )
 	)
 	perl? ( >=dev-lang/perl-5.6.1-r7 )"
@@ -52,7 +52,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/2.x-series-nsca.patch
-	gunzip -c ${FILESDIR}/nagios-2.0b.cfg-sample.gz > ./nagios.cfg-sample
+	gunzip -c ${FILESDIR}/nagios.cfg-sample.gz > ./nagios.cfg-sample
 }
 
 src_compile() {

@@ -1,36 +1,33 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/boxes/boxes-1.0.1.ebuild,v 1.24 2005/04/21 19:03:36 blubb Exp $
+# Copyright 1999-2001 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Michael Conrad Tilstra <michael@gentoo.org> <tadpol@tadpol.org>
+# $Header: /var/cvsroot/gentoo-x86/app-misc/boxes/boxes-1.0.1.ebuild,v 1.1 2001/05/20 21:44:39 michael Exp $
 
-inherit eutils
-
-DESCRIPTION="draw any kind of boxes around your text!"
-HOMEPAGE="http://boxes.thomasjensen.com/"
-SRC_URI="http://boxes.thomasjensen.com/download/${P}.src.tar.gz"
-
-LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha amd64 ppc64"
-IUSE=""
-
-DEPEND="virtual/libc"
+A=${P}.src.tar.gz
+S=${WORKDIR}/${P}
+DESCRIPTION="boxes draws any kind of boxes around your text!"
+SRC_URI="ftp://metalab.unc.edu/pub/Linux/utils/text/${A}"
+HOMEPAGE="http://www6.informatik.uni-erlangen.de/~tsjensen/boxes/"
+DEPEND="virtual/glibc"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${P}-gentoo.diff
+   unpack ${A}
+   cd ${S}
+   try patch -p1 < ${FILESDIR}/${P}-gentoo.diff
 }
 
 
 src_compile() {
-	make clean || die
-	make CFLAGS="$CFLAGS -I. -Iregexp" || die
+   try make clean
+   try make
 }
 
 src_install() {
-	dobin src/boxes || die
-	doman doc/boxes.1
-	dodoc README*
-	insinto /usr/share/boxes
-	doins boxes-config
+   dodir /usr/bin /usr/share/man/man1 /usr/share/boxes
+   dobin src/boxes
+   doman doc/boxes.1
+   dodoc README COPYING 
+   insinto /usr/share/boxes
+   doins boxes-config
 }
+

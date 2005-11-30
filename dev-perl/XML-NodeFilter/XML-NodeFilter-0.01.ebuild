@@ -1,14 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-NodeFilter/XML-NodeFilter-0.01.ebuild,v 1.10 2005/09/17 03:01:40 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/XML-NodeFilter/XML-NodeFilter-0.01.ebuild,v 1.1 2003/06/17 11:57:16 mcummings Exp $
 
 inherit perl-module
 
-DESCRIPTION="Generic XML::NodeFilter Class"
-SRC_URI="mirror://cpan/authors/id/P/PH/PHISH/${P}.tar.gz"
+S=${WORKDIR}/${P}
+DESCRIPTION="No description available."
+SRC_URI="http://www.cpan.org/modules/by-authors/id/P/PH/PHISH/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-authors/id/P/PH/PHISH/${P}.readme"
 
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ~ppc sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ~alpha ~ppc ~sparc"
+

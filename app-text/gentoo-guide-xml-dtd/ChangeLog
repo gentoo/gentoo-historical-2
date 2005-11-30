@@ -1,36 +1,8 @@
 # ChangeLog for app-text/gentoo-guide-xml-dtd
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/gentoo-guide-xml-dtd/ChangeLog,v 1.12 2005/07/17 18:54:11 kugelfang Exp $
-
-  17 Jul 2005; Danny van Dyk <kugelfang@gentoo.org>
-  gentoo-guide-xml-dtd-2.1-r1.ebuild:
-  Marked stable on amd64.
-
-  20 Jun 2005; Leonardo Boshell <leonardop@gentoo.org>
-  gentoo-guide-xml-dtd-2.1-r1.ebuild, metadata.xml:
-  Added dummy src_unpack() function to resolve bug #92685. Added metadata
-  file.
-
-  12 May 2004; Michael McCabe <randy@gentoo.org>
-  gentoo-guide-xml-dtd-2.1-r1.ebuild:
-  Added s390 keywords
-
-*gentoo-guide-xml-dtd-2.1-r1 (30 Dec 2002)
-
-  30 Dec 2002; Matthew Turk <satai@gentoo.org> : 
-  changed to inherit sgml-catalog and better deal with catalogs. 
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*gentoo-guide-xml-dtd-2.1 (12 Sep 2002)
-
-  12 Sep 2002; satai <satai@gentoo.org> gentoo-guide-xml-dtd-2.1.ebuild:
-  Added more robust file checking.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-text/gentoo-guide-xml-dtd/ChangeLog,v 1.1 2002/02/01 21:53:10 gbevin Exp $
 
 *gentoo-guide-xml-dtd-2.1 (1 Feb 2002)
-
-  2 Aug 2002; phoen][x <phoenix@gentoo.org> gentoo-guide-xml-dtd-2.1.ebuild :
-  Added KEYWORDS, SLOT, HOMEPAGE.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

@@ -1,15 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.0.0.ebuild,v 1.13 2005/01/03 11:33:40 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pygtk/pygtk-2.0.0.ebuild,v 1.1 2003/09/03 12:39:01 liquidx Exp $
 
-inherit gnome.org
+# since its a development version
+inherit debug gnome.org
 
 DESCRIPTION="GTK+2 bindings for Python"
-HOMEPAGE="http://www.pygtk.org/"
+HOMEPAGE="http://www.daa.com.au/~james/pygtk/"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="x86 ppc sparc alpha hppa amd64 ia64"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 IUSE="gnome opengl"
 
 RDEPEND=">=dev-lang/python-2.2
@@ -34,5 +35,5 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo 'If you built pygtk with OpenGL support you still need to emerge pyopengl to use it. '
+	einfo 'If you built pygtk with OpenGL support you still need to emerge PyOpenGL to use it. '
 }

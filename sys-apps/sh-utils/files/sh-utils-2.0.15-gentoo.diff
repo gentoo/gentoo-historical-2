@@ -1,120 +1,104 @@
---- sh-utils-2.0.15/src/uname.c	Thu Jul 18 15:32:33 2002
-+++ sh-utils-2.0.15-carlos/src/uname.c	Wed Sep  4 15:02:01 2002
-@@ -44,6 +44,11 @@
- # endif
- #endif
+diff -Naurb sh-utils-2.0.15/src/uname.c sh-utils-2.0.15-fixed/src/uname.c
+--- sh-utils-2.0.15/src/uname.c	Thu Jul 18 20:32:33 2002
++++ sh-utils-2.0.15-fixed/src/uname.c	Sat Aug 24 18:47:00 2002
+@@ -81,6 +81,9 @@
+ /* The name this program was run with, for error messages. */
+ char *program_name;
  
-+#if defined (__linux__)
-+#define USE_PROCINFO	
-+#define UNAME_HARDWARE_PLATFORM
-+#endif
++/* Prototype for __sysinfo_processor_type */
++void __sysinfo_processor_type (char *proc_info);
 +
- #include "system.h"
- #include "error.h"
- #include "closeout.h"
-@@ -130,6 +135,65 @@
-   exit (status);
- }
+ static struct option const long_options[] =
+ {
+   {"all", no_argument, NULL, 'a'},
+@@ -120,7 +123,6 @@
+   -v, --kernel-version     print the kernel version\n\
+   -m, --machine            print the machine hardware name\n\
+   -p, --processor          print the processor type\n\
+-  -i, --hardware-platform  print the hardware platform\n\
+   -o, --operating-system   print the operating system\n\
+ "), stdout);
+       fputs (HELP_OPTION_DESCRIPTION, stdout);
+@@ -193,10 +195,6 @@
+ 	  toprint |= PRINT_PROCESSOR;
+ 	  break;
  
-+/* Carlos E. Gorges <carlos@techlinux.com.br> - return vendor_id from proc cpuinfo */
-+#if defined(USE_PROCINFO)
-+/* x==0, processor type | x==1, hardware-platform */
-+int
-+__linux_procinfo (int x, char *fstr) 
-+{
-+	FILE *ffd;
-+	char 	*cstr=calloc(64,sizeof(char)),
-+		*dstr=calloc(257,sizeof(char)),
-+		*retr=NULL;
-+
-+	if ( ffd=fopen("/proc/cpuinfo", "r") )
-+	{
-+		while ( fscanf(ffd, "%[^:\t]\t: %[^\n]\n", cstr, dstr) != EOF )
-+		{
-+			char *sdata[] = 
-+			{
-+				#if defined(__i386__)
-+					"model name", "vendor_id"
-+				#endif
-+				#if defined(__ia64__) || defined(__x86_64__)
-+					"model", "vendor"
-+				#endif
-+				#if defined(__alpha__)
-+					"cpu model", "???"
-+				#endif
-+				#if defined(sparc) || defined(__sparc__)
-+					"type", "cpu"
-+				#endif
-+				#if defined(__mips__)
-+					"cpu model", "system type"
-+				#endif
-+				#if defined(PPC)
-+					"processor", "cpu"
-+				#endif
-+			};
-+				
-+			if(!retr)
-+			{
-+				if (!strcmp(cstr, sdata[x])) 
-+						retr = strdup(dstr);
-+			} else
-+				break;
-+			
-+		}
-+		fclose(ffd);
-+
-+		if(retr)
-+		{
-+			strncpy(fstr,retr,257);
-+			return 1;
-+		}
-+	}
-+	return 0;
-+}
-+
-+#endif
-+
-+
- /* Print ELEMENT, preceded by a space if something has already been
-    printed.  */
- 
-@@ -240,13 +304,19 @@
+-	case 'i':
+-	  toprint |= PRINT_HARDWARE_PLATFORM;
+-	  break;
+-
+ 	case 'o':
+ 	  toprint |= PRINT_OPERATING_SYSTEM;
+ 	  break;
+@@ -240,15 +238,13 @@
    if (toprint & PRINT_PROCESSOR)
      {
        char const *element = unknown;
 -#if HAVE_SYSINFO && defined SI_ARCHITECTURE
-+#if ( HAVE_SYSINFO && defined SI_ARCHITECTURE ) || defined(USE_PROCINFO)
        {
- 	static char processor[257];
-+#if HAVE_SYSINFO && defined SI_ARCHITECTURE
- 	if (0 <= sysinfo (SI_ARCHITECTURE, processor, sizeof processor))
-+#endif
-+#if defined(USE_PROCINFO)
-+	if( 0 <= __linux_procinfo(0, processor))
-+#endif
+-	static char processor[257];
+-	if (0 <= sysinfo (SI_ARCHITECTURE, processor, sizeof processor))
++		static char processor[BUFSIZ];
++		__sysinfo_processor_type(processor);
  	  element = processor;
        }
- #endif
-+
+-#endif
  #ifdef UNAME_PROCESSOR
-       if (element == unknown)
+-      if (element == unknown)
++      if (element == "unknown")
  	{
-@@ -275,9 +345,13 @@
-       if (element == unknown)
- 	{
- 	  static char hardware_platform[257];
-+#if ! defined (USE_PROCINFO)
- 	  size_t s = sizeof hardware_platform;
- 	  static int mib[] = { CTL_HW, UNAME_HARDWARE_PLATFORM };
- 	  if (sysctl (mib, 2, hardware_platform, &s, 0, 0) >= 0)
-+#else
-+	  if( 0 <= __linux_procinfo(1, hardware_platform))
-+#endif
- 	    element = hardware_platform;
- 	}
- #endif
-@@ -291,3 +365,4 @@
+ 	  static char processor[257];
+ 	  size_t s = sizeof processor;
+@@ -260,30 +256,6 @@
+       print_element (element);
+     }
+ 
+-  if (toprint & PRINT_HARDWARE_PLATFORM)
+-    {
+-      char const *element = unknown;
+-#if HAVE_SYSINFO && defined SI_PLATFORM
+-      {
+-	static char hardware_platform[257];
+-	if (0 <= sysinfo (SI_PLATFORM,
+-			  hardware_platform, sizeof hardware_platform))
+-	  element = hardware_platform;
+-      }
+-#endif
+-#ifdef UNAME_HARDWARE_PLATFORM
+-      if (element == unknown)
+-	{
+-	  static char hardware_platform[257];
+-	  size_t s = sizeof hardware_platform;
+-	  static int mib[] = { CTL_HW, UNAME_HARDWARE_PLATFORM };
+-	  if (sysctl (mib, 2, hardware_platform, &s, 0, 0) >= 0)
+-	    element = hardware_platform;
+-	}
+-#endif
+-      print_element (element);
+-    }
+-
+   if (toprint & PRINT_OPERATING_SYSTEM)
+     print_element (HOST_OPERATING_SYSTEM);
+ 
+@@ -291,3 +263,21 @@
  
    exit (0);
  }
 +
++/* Originally written by Carlos Gorges, ported to 2.0.15 by <styx@gentoo.org>
++ * Return return vendor_id from proc cpuinfo */
++void __sysinfo_processor_type (char *proc_info) {
++	FILE *ffd;
++	char temp_string[BUFSIZ], final_string[BUFSIZ] = "unknown";
++
++	if((ffd=fopen("/proc/cpuinfo", "r")) != NULL) {
++		while(fscanf(ffd, "%s :", temp_string) != EOF)
++			if((!(strcmp(temp_string, "vendor_id"))) ||
++				(!(strcmp(temp_string, "machine" )))) {
++					fscanf(ffd, "%s", final_string);
++					break;
++			}
++		fclose(ffd);
++	}
++	strncpy(proc_info, final_string, BUFSIZ);
++}

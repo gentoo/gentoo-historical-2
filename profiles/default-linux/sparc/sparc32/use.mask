@@ -1,23 +1,38 @@
-# nptl on sparc requires the v9 ABI which requires sun4u
-nptl
+# This file contains a list of useflags that cannot be used on sparc.
 
-# Jeremy Huddleston <eradicator@gentoo.org>
-# Don't allow alsa in sparc32 because of missing drivers
+3dfx
+3dnow
+acpi
+afs
 alsa
-ladcca
+altivec
+apm
+directfb
+icc
+icc-pgo
+informix
+firebird
+lirc
+mmx
+oci8
+pic
+sse
+svga
+tcc
+trusted
+voodoo3
+wavelan
 
-# Jason Wever <weeve@gentoo.org>
-# Don't allow for some video and dvd use flags since sparc32 is too slow
-dvd
-dvdr
-mpeg
 
-# Gustavo Zacarias <gustavoz@gentoo.org>
-# For now, until we check it's status wrt build b0rkage and toolchain
-xine
+# And arch keyword flags that don't work
 
-# clisp is seriously b0rked
-clisp
+x86
+ppc
+alpha
+mips
+hppa
+arm
 
-# No one can use one on a sparc32 (no usb)
-ipod
+# Chris PeBenito <pebenito@gentoo.org>
+# must use a SELinux profile
+selinux

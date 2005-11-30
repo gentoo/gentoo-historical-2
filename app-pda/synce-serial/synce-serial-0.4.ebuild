@@ -1,23 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-serial/synce-serial-0.4.ebuild,v 1.10 2005/01/01 15:49:57 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/synce-serial/synce-serial-0.4.ebuild,v 1.1 2002/11/28 10:10:51 zwelch Exp $
 
-DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync."
+DESCRIPTION="Synchronize Windows CE devices with computers running GNU/Linux, like MS ActiveSync." 
 HOMEPAGE="http://sourceforge.net/projects/synce/"
-SRC_URI="mirror://sourceforge/synce/${P}.tar.gz"
-
+SRC_URI="http://belnet.dl.sourceforge.net/sourceforge/synce/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
-
-DEPEND="virtual/libc"
+KEYWORDS="~x86"
+IUSE="gnome"
+DEPEND="virtual/glibc"
 
 src_compile() {
-	econf || die "econf failed"
-	emake || die
+	econf || die
+	emake || die 
 }
 
 src_install() {
 	make DESTDIR="${D%/}" install || die
 }
+

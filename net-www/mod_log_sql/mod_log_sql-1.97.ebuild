@@ -1,21 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_log_sql/mod_log_sql-1.97.ebuild,v 1.12 2005/07/14 22:50:50 agriffis Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_log_sql/mod_log_sql-1.97.ebuild,v 1.1 2004/05/03 12:48:24 zul Exp $
 
 DESCRIPTION="An Apache module for logging to an SQL (MySQL) database"
 HOMEPAGE="http://www.outoforder.cc/projects/apache/mod_log_sql/"
+
+S=${WORKDIR}/${P}
 SRC_URI="http://www.outoforder.cc/downloads/mod_log_sql/${P}.tar.gz"
-
-LICENSE="Apache-1.1"
-SLOT="0"
-KEYWORDS="x86 ppc"
-IUSE="apache2 ssl"
-
 DEPEND=">=dev-db/mysql-3.23.15
-	apache2? ( =net-www/apache-2* )
-	!apache2? ( =net-www/apache-1* )"
+	apache2? ( =net-www/apache-2* ) : ( >=net-www/apache-1* )"
+LICENSE="Apache-1.1"
+KEYWORDS="~x86 ~ppc"
+IUSE=""
+SLOT="0"
+
+
 
 detectapache() {
 	local domsg=
@@ -33,7 +32,7 @@ detectapache() {
 		1) [ -n "${domsg}" ] && einfo 'Apache1 only detected' ;;
 		2) [ -n "${domsg}" ] && einfo 'Apache2 only detected' ;;
 	both)
-		if use apache2; then
+		if [ "`use apache2`" ]; then
 		[ -n "${domsg}" ] && einfo "Multiple Apache versions detected, using Apache2 (USE=apache2)"
 		APACHEVER=2
 			else
@@ -60,11 +59,12 @@ detectapache() {
 	fi
 }
 
+
+
 src_compile() {
 	detectapache
 	myconf="--with-apxs=${APXS}"
 
-	epatch ${FILESDIR}/mod_log_sql-1.97-gentoo.patch || die "Patch failed."
 	use ssl && myconf="${myconf} --enable-ssl"
 	./configure ${myconf}
 	emake || die
@@ -73,7 +73,7 @@ src_compile() {
 src_install() {
 	detectapache
 	exeinto ${APACHE_MODULES_DIR}
-	doexe .libs/${PN}.so .libs/mod_log_sql_mysql.so
+	doexe .libs/${PN}.so
 
 	use ssl && doexe .libs/mod_log_sql_ssl.so
 

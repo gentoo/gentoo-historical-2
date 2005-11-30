@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzor/pyzor-0.4.0-r1.ebuild,v 1.11 2005/11/25 21:50:58 tgall Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/pyzor/pyzor-0.4.0-r1.ebuild,v 1.1 2003/10/28 18:52:14 robbat2 Exp $
 
 inherit distutils
 
@@ -10,8 +10,7 @@ SRC_URI="mirror://sourceforge/pyzor/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="~x86"
 
 DEPEND="virtual/python
 	sys-libs/gdbm"

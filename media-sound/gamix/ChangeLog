@@ -1,76 +1,8 @@
 # ChangeLog for media-sound/gamix
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gamix/ChangeLog,v 1.20 2005/11/07 10:44:48 flameeyes Exp $
-
-  07 Nov 2005; Diego Pettenò <flameeyes@gentoo.org>
-  gamix-1.99_p14-r1.ebuild:
-  Don't install COPYING, ABOUT-NLS and INSTALL files.
-
-*gamix-1.99_p14-r2 (23 Oct 2005)
-
-  23 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +gamix-1.99_p14-r2.ebuild:
-  Removed gtk2 use flag, Bug 106560.
-
-  14 Sep 2005; Aron Griffis <agriffis@gentoo.org> gamix-1.99_p14-r1.ebuild:
-  Mark 1.99_p14-r1 stable on alpha
-
-  24 Aug 2005; Aron Griffis <agriffis@gentoo.org> gamix-1.99_p14-r1.ebuild:
-  stable on ia64
-
-  16 Dec 2004; Markus Rothe <corsair@gentoo.org> gamix-1.99_p14-r1.ebuild:
-  Stable on ppc64
-
-  01 Nov 2004; Markus Rothe <corsair@gentoo.org> gamix-1.99_p14-r1.ebuild:
-  Marked ~ppc64; bug #64631
-
-  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  gamix-1.99_p14-r1.ebuild:
-  Stable amd64.
-
-  26 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  gamix-1.99_p14-r1.ebuild:
-  Stable x86.
-
-  24 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  gamix-1.99_p14-r1.ebuild:
-  don't use deprecated ? : use syntax
-
-  14 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  gamix-1.99_p14-r1.ebuild:
-  readonly bug fix for bug #44712.
-
-  29 Feb 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  gamix-1.99_p13-r1.ebuild, gamix-1.99_p14-r1.ebuild, metadata.xml:
-  Removing ~mips because it can't satisfy DEPEND.
-
-  17 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org> gamix-1.99_p13-r1.ebuild,
-  gamix-1.99_p14-r1.ebuild:
-  Changing to -sparc as we don't have ALSA support
-
-*gamix-1.99_p13-r1 (04 Dec 2003)
-*gamix-1.99_p14-r1 (04 Dec 2003)
-
-  04 Dec 2003; Seemant Kulleen <seemant@gentoo.org> gamix-1.99_p13-r1.ebuild,
-  gamix-1.99_p14-r1.ebuild:
-  fixed dependency information. This sorts out virtual/alsa and the gtk/gtk2 use
-  flag situation. Spider opened bug #34564, but Jonathan Kraut
-  <krautj@earthlink.net> did the excellent work to fix them up
-
-*gamix-1.99_p14 (20 Sep 2003)
-
-  20 Sep 2003; jje <jje@gentoo.org> gamix-1.99_p14.ebuild:
-  Version bump.
-  
-  Submitted by: Jonathan Kraut <krautj@earthlink.net>
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gamix/ChangeLog,v 1.1 2002/05/24 02:57:19 rphillips Exp $
 
 *gamix-1.99_p13 (19 May 2002)
-
-  26 Jan 2003; Jon Nall <nall@gentoo.org> gamix-1.99_p13.ebuild :
-  added ~ppc
-
-  08 Aug 2002; Seemant Kulleen <seemant@gentoo.org> gamix-1.99_p13.ebuild :
-
-  nls bloat reduction.
 
   19 May 2002; Ryan Phillips <rphillips@gentoo.org> ChangeLog :
   

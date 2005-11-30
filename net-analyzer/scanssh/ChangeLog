@@ -1,57 +1,8 @@
 # ChangeLog for net-analyzer/scanssh
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanssh/ChangeLog,v 1.16 2005/08/04 09:20:06 dragonheart Exp $
-
-  04 Aug 2005; Daniel Black <dragonheart@gentoo.org> -scanssh-1.6b.ebuild,
-  -scanssh-2.0.ebuild, scanssh-2.1.ebuild:
-  fixes bug #99384. Thanks to Thomas Heinz for the solution. old version cleanout
-
-  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> scanssh-2.1.ebuild:
-  Stable on ppc.
-
-  20 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> scanssh-2.1.ebuild:
-  Stable on sparc
-
-  19 Apr 2005; Aaron Walker <ka0ttic@gentoo.org> scanssh-2.1.ebuild:
-  Marked stable on x86.
-
-*scanssh-2.1 (09 Mar 2005)
-
-  09 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
-  +files/scanssh-2.0-fix-warnings.diff, scanssh-2.0.ebuild,
-  +scanssh-2.1.ebuild:
-  Version bump for bug 84536; added patch for both 2.0 and 2.1 to fix some
-  compiler warnings. Also fixed deps.
-
-  07 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> scanssh-2.0.ebuild:
-  Stable on sparc
-
-  31 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> scanssh-2.0.ebuild:
-  Marked stable on x86.
-
-  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> scanssh-1.6b.ebuild,
-  scanssh-2.0.ebuild:
-  changed net-libs/libpcap depend to virtual/libcap
-
-  19 Nov 2004; Jason Wever <weeve@gentoo.org> scanssh-1.6b.ebuild:
-  Stable on sparc.
-
-*scanssh-2.0 (16 Jul 2004)
-
-  16 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> scanssh-2.0.ebuild:
-  Version bump, ebuild contributed by Justin Guyett <justin@soze.net>.
-
-  13 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
-  scanssh-1.6b.ebuild:
-  Added metadata
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/scanssh/ChangeLog,v 1.1 2002/12/02 14:04:36 aliz Exp $
 
 *scanssh-1.6b (1 Dec 2002)
-
-  17 Mar 2003; Jason Wever <weeve@gentoo.org> scanssh-1.6b.ebuild:
-  Added ~sparc to keywords.
-
-  15 Feb 2003; Mark Guertin <gerk@gentoo.org> scanssh-1.6b.ebuild :
-  set ~ppc in keywords
 
   1 Dec 2002; Thilo Bangert <bangert@gentoo.org> :
   initial import

@@ -1,45 +1,8 @@
 # ChangeLog for dev-perl/Net-RawIP
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-RawIP/ChangeLog,v 1.13 2005/10/02 13:01:22 agriffis Exp $
-
-  02 Oct 2005; Aron Griffis <agriffis@gentoo.org> Net-RawIP-0.2.ebuild:
-  Mark 0.2 stable on ia64
-
-  08 Sep 2005; Aron Griffis <agriffis@gentoo.org> Net-RawIP-0.2.ebuild:
-  Mark 0.2 stable on alpha
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> Net-RawIP-0.2.ebuild:
-  add ~ia64
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org> Net-RawIP-0.1.ebuild,
-  Net-RawIP-0.2.ebuild, -Net-RawIP-0.09d.ebuild:
-  Cleaning for mirror
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> Net-RawIP-0.2.ebuild:
-  Stable on ppc.
-
-*Net-RawIP-0.2 (16 Mar 2005)
-
-  16 Mar 2005; Michael Cummings <mcummings@gentoo.org> +Net-RawIP-0.2.ebuild:
-  Version bump from cpan. bug me if it works for you so we can unmask
-
-  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> Net-RawIP-0.09d.ebuild,
-  Net-RawIP-0.1.ebuild:
-  Transition dependancy from net-libs/libpcap to virtual/libpcap
-
-*Net-RawIP-0.1 (16 Jun 2003)
-
-  16 Jun 2003; Michael Cummings <mcummings@gentoo.org> Net-RawIP-0.1.ebuild:
-  CPAN version bump; needs testing; have asked rac to check if patch is still
-  needed
-
-  06 Jun 2003; <rac@gentoo.org> Net-RawIP-0.09d.ebuild:
-  Add IUSE, sed-4 dependency.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-RawIP/ChangeLog,v 1.1 2003/01/30 21:09:21 jhhudso Exp $
 
 *Net-RawIP-0.09d (30 Jan 2003)
-
-  08 May 2003; <rac@gentoo.org> Net-RawIP-0.09d.ebuild:
-  Add header to ebuild, address bug 16388
 
   30 Jan 2003; Jared Hudson <jhhudso@gentoo.org> : Initial import. Credit goes
   to Andrea Barisani <lcars@infis.univ.trieste.it>.

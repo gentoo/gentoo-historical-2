@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/qdbm/qdbm-1.8.16.ebuild,v 1.5 2005/01/01 17:42:35 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/qdbm/qdbm-1.8.16.ebuild,v 1.1 2004/08/23 10:38:37 hattya Exp $
 
 inherit java-pkg
 
@@ -10,8 +10,9 @@ DESCRIPTION="Quick Database Manager"
 HOMEPAGE="http://qdbm.sf.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
+RESTRICT="nomirror"
 LICENSE="LGPL-2.1"
-KEYWORDS="~amd64 ~ppc ~s390 x86"
+KEYWORDS="~x86 ~amd64 ~ppc"
 SLOT="0"
 
 DEPEND="java? ( virtual/jdk )

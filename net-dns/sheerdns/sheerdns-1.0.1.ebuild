@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/sheerdns/sheerdns-1.0.1.ebuild,v 1.3 2004/12/23 01:43:00 iggy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/sheerdns/sheerdns-1.0.1.ebuild,v 1.1 2004/09/20 05:55:33 iggy Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://threading.2038bug.com/sheerdns/${P}.tar.gz
 	http://dev.gentoo.org/~iggy/${P}-${PR}.patch"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND=""
 
@@ -28,5 +28,6 @@ src_compile() {
 src_install() {
 	dodoc ChangeLog
 	doman sheerdns.8
-	dosbin sheerdns sheerdnshash
+	exeinto /usr/sbin
+	newexe sheerdns sheerdnshash
 }

@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/twmoefonts/twmoefonts-0.1.ebuild,v 1.9 2004/08/07 23:12:15 slarti Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/twmoefonts/twmoefonts-0.1.ebuild,v 1.1 2003/06/02 13:47:47 seemant Exp $
 
 IUSE=""
-DESCRIPTION="Standard traditional Chinese fonts made by Minister of Education (MOE), Republic of China."
+DESCRIPTION="Standard tranditional Chinese fonts made by Minister of Education (MOE), Republic of China."
 SRC_URI="ftp://ftp.ncu.edu.tw/FreeBSD/distfiles/zh-moettf/moe_kai.ttf
 	ftp://ftp.ncu.edu.tw/FreeBSD/distfiles/zh-moettf/moe_sung.ttf"
 HOMEPAGE=""	# Unable to find homepage
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="x86 ~sparc ~ppc"
+KEYWORDS="~x86 ~sparc "
 DEPEND="x11-misc/ttmkfdir"
-RDEPEND="virtual/libc"
+RDEPEND="virtual/glibc"
 
 src_unpack() {
 	mkdir ${WORKDIR}/${P}
@@ -24,13 +24,13 @@ src_install() {
 	insinto /usr/share/fonts/ttf/zh_TW
 	doins *.ttf
 	if test -r /usr/share/fonts/ttf/zh_TW/fonts.scale; then
-		tail -n +2 /usr/share/fonts/ttf/zh_TW/fonts.scale >> tmp
-		tail -n +2 ${FILESDIR}/TW-fonts.scale >> tmp
+		tail +2 /usr/share/fonts/ttf/zh_TW/fonts.scale >> tmp
+		tail +2 ${FILESDIR}/TW-fonts.scale >> tmp
 		echo $(sort -u tmp | wc -l) > newfont.scale
 		sort -u tmp >> newfont.scale
 		newins newfont.scale fonts.scale
 	else
-		newins ${FILESDIR}/TW-fonts.scale fonts.scale
+		newins ${FILESDIR}/TW-fonts.scale fonts.scale	
 	fi
 }
 

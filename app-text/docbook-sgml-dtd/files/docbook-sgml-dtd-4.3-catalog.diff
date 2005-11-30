@@ -4,7 +4,7 @@
    -- ...................................................................... --
    -- DocBook driver file .................................................. --
  
-+DTDDECL "-//OASIS//DTD DocBook V4.3//EN" "docbook.dcl"
++SGMLDECL "docbook.dcl"
 +
  PUBLIC "-//OASIS//DTD DocBook V4.3//EN"
         "docbook.dtd"

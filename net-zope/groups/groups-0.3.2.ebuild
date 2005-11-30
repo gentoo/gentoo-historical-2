@@ -1,6 +1,7 @@
-# Copyright 1999-2004 Gentoo Foundation
+ 
+# Copyright 2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/groups/groups-0.3.2.ebuild,v 1.3 2004/06/25 01:21:30 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/groups/groups-0.3.2.ebuild,v 1.1 2003/06/22 21:26:51 kutsuya Exp $
 
 inherit zproduct
 

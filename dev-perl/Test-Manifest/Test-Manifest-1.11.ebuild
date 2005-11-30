@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Manifest/Test-Manifest-1.11.ebuild,v 1.6 2005/09/08 19:12:15 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-Manifest/Test-Manifest-1.11.ebuild,v 1.1 2004/10/17 21:06:52 mcummings Exp $
 
 inherit perl-module
 
@@ -11,6 +11,6 @@ HOMEPAGE="http://search.cpan.org/~bdfoy/${P}/"
 IUSE=""
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha ~amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~sparc ~alpha ppc"
 
 SRC_TEST="do"

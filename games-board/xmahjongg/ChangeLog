@@ -1,17 +1,6 @@
-# ChangeLog for games-board/xmahjongg
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/xmahjongg/ChangeLog,v 1.6 2005/10/29 08:44:03 grobian Exp $
-
-  29 Oct 2005; Fabian Groffen <grobian@gentoo.org> xmahjongg-3.6.1.ebuild:
-  Marked ~ppc-macos (bug #106115)
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xmahjongg-3.6.1.ebuild:
-  Stable on ppc.
-
-  18 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  xmahjongg-3.6.1.ebuild:
-  Added to ~ppc.
+# ChangeLog for app-games/xmahjongg
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-board/xmahjongg/ChangeLog,v 1.1 2003/09/10 17:46:27 vapier Exp $
 
 *xmahjongg-3.6.1 (30 Nov 2002)
 

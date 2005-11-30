@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/cacti-0.8.6g_p20051023.ebuild,v 1.3 2005/11/29 03:49:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cacti/cacti-0.8.6g_p20051023.ebuild,v 1.1 2005/10/23 22:22:32 ramereth Exp $
 
-inherit eutils webapp depend.apache
+inherit eutils webapp
 
 MY_P=${P/_p*/}
 
@@ -17,18 +17,16 @@ for i in $UPSTREAM_PATCHES ; do
 done
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86"
 IUSE="snmp"
 
 DEPEND=""
 
-want_apache
+# TODO: RDEPEND Not just apache... but there's no virtual/webserver (yet)
 
-# alpha doesn't have lighttpd keyworded yet
-RDEPEND="!alpha? ( !apache? ( !apache2? ( www-servers/lighttpd ) ) )
+RDEPEND="net-www/apache
 	snmp? ( net-analyzer/net-snmp )
 	net-analyzer/rrdtool
-	!>=dev-db/mysql-5
 	dev-db/mysql
 	virtual/cron
 	virtual/php

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.2-r1.ebuild,v 1.5 2005/09/29 01:59:06 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.2-r1.ebuild,v 1.1 2005/08/06 00:03:19 dragonheart Exp $
 
 inherit eutils flag-o-matic
 
@@ -25,7 +25,7 @@ IUSE="bzip2 caps curl ecc idea ldap nls readline selinux smartcard usb zlib X"
 #			zlib? ( sys-libs/zlib )
 #		)
 
-COMMON_DEPEND="
+RDEPEND="
 	ldap? ( net-nds/openldap )
 	bzip2? ( app-arch/bzip2 )
 	zlib? ( sys-libs/zlib )
@@ -35,13 +35,13 @@ COMMON_DEPEND="
 	virtual/mta
 	readline? ( sys-libs/readline )
 	smartcard? ( dev-libs/libusb )
+	selinux? ( sec-policy/selinux-gnupg )
 	usb? ( dev-libs/libusb )"
+# waiting on arm arch - bug #76234
+RDEPEND="${RDEPEND}
+	!arm? ( X? ( || ( media-gfx/xloadimage media-gfx/xli ) ) )"
 
-RDEPEND="${COMMON_DEPEND}
-	X? ( || ( media-gfx/xloadimage media-gfx/xli ) )
-	selinux? ( sec-policy/selinux-gnupg )"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	dev-lang/perl"
 
 src_unpack() {
@@ -70,9 +70,6 @@ src_unpack() {
 	cd ${S}
 	sed -i -e 's:PIC:__PIC__:' mpi/i386/mpih-{add,sub}1.S intl/relocatable.c
 	sed -i -e 's:if PIC:ifdef __PIC__:' mpi/sparc32v8/mpih-mul{1,2}.S
-
-	# Fix ldap helper
-	epatch ${FILESDIR}/${P}-keyserver.patch
 }
 
 src_compile() {
@@ -83,7 +80,7 @@ src_compile() {
 		filter-flags -mcpu=supersparc -mcpu=v8 -mcpu=v7
 	fi
 
-	# 'USE=static' support was requested in #29299
+	# `USE=static` support was requested in #29299
 	# use static && append-ldflags -static
 
 	# Still needed?
@@ -95,24 +92,26 @@ src_compile() {
 	# configure doesn't trean --disable-asm correctly
 	use x86 && myconf="${myconf} --enable-asm"
 
+	# waiting on arm bug #76234
+	use arm || myconf="${myconf} `use_enable X photo-viewers`"
+
 	# fix compile problem on ppc64
 	use ppc64 && myconf="${myconf} --disable-asm"
 
 	econf \
-		$(use_enable ldap) \
+		`use_enable ldap` \
 		--enable-mailto \
 		--enable-hkp \
 		--enable-finger \
-		$(use_with !zlib included-zlib) \
-		$(use_with curl libcurl /usr) \
-		$(use_enable nls) \
-		$(use_enable bzip2) \
-		$(use_enable smartcard card-support) \
-		$(use_enable selinux selinux-support) \
-		$(use_with caps capabilities) \
-		$(use_with readline) \
-		$(use_with usb libusb /usr) \
-		$(use_enable X photo-viewers) \
+		`use_with !zlib included-zlib` \
+		`use_with curl libcurl /usr` \
+		`use_enable nls` \
+		`use_enable bzip2` \
+		`use_enable smartcard card-support` \
+		`use_enable selinux selinux-support` \
+		`use_with caps capabilities` \
+		`use_with readline` \
+		`use_with usb libusb /usr` \
 		--enable-static-rnd=linux \
 		--libexecdir=/usr/libexec \
 		--enable-sha512 \
@@ -124,7 +123,7 @@ src_compile() {
 
 src_install() {
 	gnupg_fixcheckperms
-	make DESTDIR=${D} install || die
+	emake DESTDIR=${D} install || die
 
 	# caps support makes life easier
 	use caps || fperms u+s,go-r /usr/bin/gpg
@@ -132,7 +131,7 @@ src_install() {
 	# keep the documentation in /usr/share/doc/...
 	rm -rf "${D}/usr/share/gnupg/FAQ" "${D}/usr/share/gnupg/faq.html"
 
-	dodoc AUTHORS BUGS ChangeLog NEWS PROJECTS README THANKS \
+	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS PROJECTS README THANKS \
 		TODO VERSION doc/{FAQ,HACKING,DETAILS,ChangeLog,OpenPGP,faq.raw}
 
 	docinto sgml

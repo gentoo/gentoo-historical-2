@@ -1,18 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/libmnote/libmnote-0.5.6.ebuild,v 1.10 2005/09/13 19:55:47 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/libmnote/libmnote-0.5.6.ebuild,v 1.1 2003/01/08 18:41:25 mholzer Exp $
 
 inherit flag-o-matic
 
 IUSE="nls"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="libmnote is a library for parsing, editing, and saving MakerNote-EXIF-tags."
 SRC_URI="mirror://sourceforge/libexif/${P}.tar.gz"
 HOMEPAGE="http://libexif.sf.net/"
 
 SLOT="0"
-LICENSE="LGPL-2.1"
-KEYWORDS="alpha ppc ~sparc x86"
+LICENSE="LGPL"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 
 DEPEND="dev-util/pkgconfig
 	>=media-libs/libexif-0.5.9"
@@ -20,7 +21,7 @@ DEPEND="dev-util/pkgconfig
 src_compile() {
 	local myconf
 	use nls || myconf="${myconf} --disable-nls"
-	econf ${myconf} || die "econf failed"
+	econf ${myconf}
 	emake || die
 }
 

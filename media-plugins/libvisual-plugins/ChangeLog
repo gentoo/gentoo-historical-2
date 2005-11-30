@@ -1,34 +1,6 @@
 # ChangeLog for media-plugins/libvisual-plugins
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/libvisual-plugins/ChangeLog,v 1.7 2005/06/17 16:33:07 josejx Exp $
-
-  17 Jun 2005; Joseph Jezak <josejx@gentoo.org>
-  libvisual-plugins-0.2.0.ebuild:
-  Marked ppc stable.
-
-  14 May 2005; Heinrich Wendel <lanius@gentoo.org>
-  libvisual-plugins-0.2.0.ebuild:
-  stable on amd64 and x86
-
-*libvisual-plugins-0.2.0 (02 Mar 2005)
-
-  02 Mar 2005; Gregorio Guidi <greg_g@gentoo.org>
-  +files/libvisual-plugins-0.2.0-configure.patch,
-  +libvisual-plugins-0.2.0.ebuild:
-  New version (#81432).
-
-  29 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  libvisual-plugins-0.1.7.ebuild:
-  Versioning DEPEND per bug #72772.
-
-*libvisual-plugins-0.1.7 (20 Oct 2004)
-
-  20 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  +libvisual-plugins-0.1.7.ebuild:
-  Version bump.
-
-  17 Oct 2004; David Holm <dholm@gentoo.org> libvisual-plugins-0.1.6.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/libvisual-plugins/ChangeLog,v 1.1 2004/10/02 21:34:05 eradicator Exp $
 
 *libvisual-plugins-0.1.6 (02 Oct 2004)
 

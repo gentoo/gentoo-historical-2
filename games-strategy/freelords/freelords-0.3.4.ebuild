@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/freelords/freelords-0.3.4.ebuild,v 1.3 2005/06/05 11:27:06 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/freelords/freelords-0.3.4.ebuild,v 1.1 2004/11/19 21:55:33 mr_bones_ Exp $
 
 inherit eutils games
 
@@ -8,7 +8,7 @@ DESCRIPTION="Free Warlords clone"
 HOMEPAGE="http://www.freelords.org/"
 SRC_URI="mirror://sourceforge/freelords/${P}.tar.bz2"
 
-KEYWORDS="ppc x86"
+KEYWORDS="x86 ~ppc"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls"
@@ -18,7 +18,7 @@ RDEPEND="dev-libs/expat
 	>=media-libs/sdl-image-1.2
 	>=media-libs/freetype-2
 	=media-libs/paragui-1.0*
-	=dev-libs/libsigc++-1.2*"
+	>=dev-libs/libsigc++-1.2"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )
 	dev-util/pkgconfig

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-1.0.1_p6.ebuild,v 1.4 2005/09/05 13:21:54 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/torque/torque-1.0.1_p6.ebuild,v 1.1 2005/03/15 21:59:03 seemant Exp $
 
 MY_P=${P/_/}
 S=${WORKDIR}/${MY_P}
@@ -10,11 +10,10 @@ SRC_URI="http://supercluster.org/downloads/torque/${MY_P}.tar.gz"
 LICENSE="openpbs"
 
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE="X tcltk"
 
-DEPEND="sys-apps/ed
-		virtual/libc
+DEPEND="virtual/libc
 		X? ( virtual/x11 )
 		tcltk? ( dev-lang/tcl )"
 RDEPEND="net-misc/openssh"
@@ -32,9 +31,6 @@ src_unpack() {
 
 	# Is this one needed??
 	#	-e "s|\(PBS_DEFAULT_SERVER=\)\(@PBS_DEFAULT_SERVER@\)|\1\${D}\2|" \
-
-	# Tries to use absolute /tmp/ for tempfiles which fails miserably.
-	sed -i -e "s|/tmp/|\${TMPDIR}/|g" makedepend-sh || die "Failed TMPDIR change"
 }
 
 src_compile() {

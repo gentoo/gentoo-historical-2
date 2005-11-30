@@ -1,20 +1,20 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/links/links-2.1_pre17-r1.ebuild,v 1.18 2005/09/19 19:08:30 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/links/links-2.1_pre17-r1.ebuild,v 1.1 2005/05/04 18:22:46 vanquirius Exp $
 
 inherit eutils
 
-DESCRIPTION="links is a fast lightweight text and graphic web-browser"
-HOMEPAGE="http://links.twibright.com/"
+DESCRIPTION="links is a fast lightweight text tand graphic web-browser"
+HOMEPAGE="http://atrey.karlin.mff.cuni.cz/~clock/twibright/links/"
 # To handle pre-version ...
 MY_P="${P/_/}"
 S="${WORKDIR}/${MY_P}"
-SRC_URI="ftp://atrey.karlin.mff.cuni.cz/pub/local/clock/links/${MY_P}.tar.bz2
+SRC_URI="${HOMEPAGE}/download/${MY_P}.tar.bz2
 	mirror://gentoo/${MY_P}-utf8.diff.bz2"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc-macos ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 ~arm ~hppa ~ia64 ~mips ppc ~ppc64 ~s390 sparc x86"
 IUSE="directfb ssl javascript png X gpm tiff fbcon svga jpeg unicode livecd"
 
 # Note: if X or fbcon usegflag are enabled, links will be built in graphic
@@ -36,10 +36,9 @@ RDEPEND="ssl? ( >=dev-libs/openssl-0.9.6c )
 	directfb? ( dev-libs/DirectFB )
 	fbcon? ( >=media-libs/libpng-1.2.1
 		sys-libs/gpm )
-	!ppc-macos? ( livecd?
-		( >=media-libs/jpeg-6b
+	livecd? ( >=media-libs/jpeg-6b
 		>=media-libs/libpng-1.2.1
-		sys-libs/gpm ) )
+		sys-libs/gpm )
 	sys-libs/zlib
 	virtual/libc
 	sys-libs/ncurses"
@@ -88,23 +87,16 @@ src_compile (){
 
 	export LANG=C
 
-	if use fbcon || use livecd; then
-		myconf="${myconf} --with-fb"
-	else
-		myconf="${myconf} --without-fb"
-	fi
-
-	if use livecd; then
-		myconf="${myconf} --with-libjpeg"
-	fi
-
 	econf \
 		$(use_with X x) \
 		$(use_with png libpng) \
 		$(use_with jpeg libjpeg) \
 		$(use_with tiff libtiff) \
 		$(use_with svga svgalib) \
+		$(use_with fbcon fb) \
 		$(use_with directfb) \
+		$(use_with livecd libjpeg) \
+		$(use_with livecd fb) \
 		$(use_with ssl) \
 		$(use_enable javascript) \
 		${myconf} || die "configure failed"

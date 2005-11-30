@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/prboom/prboom-2.2.4-r1.ebuild,v 1.7 2005/05/30 19:44:27 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/prboom/prboom-2.2.4-r1.ebuild,v 1.1 2004/07/21 02:44:37 vapier Exp $
 
-inherit eutils toolchain-funcs games
+inherit games eutils gcc
 
 DESCRIPTION="Port of ID's doom to SDL and OpenGL"
 HOMEPAGE="http://prboom.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/prboom/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64 ~ppc sparc"
+KEYWORDS="x86 amd64"
 IUSE="opengl"
 
 DEPEND="virtual/x11
@@ -22,13 +22,13 @@ DEPEND="virtual/x11
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${PV}-gcc34.patch
+	cd ${S}
+	epatch ${FILESDIR}/${PV}-gcc34.patch
 	ebegin "Detecting NVidia GL/prboom bug"
-	$(tc-getCC) "${FILESDIR}"/${PV}-nvidia-test.c 2> /dev/null
+	$(gcc-getCC) ${FILESDIR}/${PV}-nvidia-test.c 2> /dev/null
 	local ret=$?
 	eend ${ret} "NVidia GL/prboom bug found ;("
-	[ ${ret} -eq 0 ] || epatch "${FILESDIR}"/${PV}-nvidia.patch
+	[ ${ret} -eq 0 ] || epatch ${FILESDIR}/${PV}-nvidia.patch
 }
 
 src_compile() {
@@ -36,27 +36,21 @@ src_compile() {
 	# will append -march=i686 and crap ... let the user's CFLAGS
 	# handle this ...
 	egamesconf \
-		$(use_enable opengl gl) \
-		$(use_enable x86 i386-asm) \
+		`use_enable opengl gl` \
+		`use_enable x86 i386-asm` \
 		--disable-cpu-opt \
 		|| die
 	# configure script screws up a few things
-	sed -i \
-		-e "/DOOMWADDIR/s:\".*\":\"${GAMES_DATADIR}/doom-data\":" config.h \
-		|| die "sed failed"
-	if ! use opengl ; then
-		sed -i \
-			-e '/GL_DOOM/s:.*::' config.h \
-			|| die "sed failed"
-	fi
-	emake || die "emake failed"
+	sed -i "/DOOMWADDIR/s:\".*\":\"${GAMES_DATADIR}/doom-data\":" config.h
+	use opengl || sed -i '/GL_DOOM/s:.*::' config.h
+	emake || die
 }
 
 src_install() {
-	dogamesbin src/prboom{,-game-server} || die "dogamesbin failed"
+	dogamesbin src/prboom{,-game-server} || die
 
-	insinto "${GAMES_DATADIR}/doom-data"
-	doins data/*.wad || die "doins failed"
+	insinto ${GAMES_DATADIR}/doom-data
+	doins data/*.wad || die
 
 	doman doc/*.{5,6}
 	dodoc AUTHORS ChangeLog NEWS README TODO doc/README.* doc/*.txt

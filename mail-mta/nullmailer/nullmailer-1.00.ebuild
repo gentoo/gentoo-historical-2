@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/nullmailer/nullmailer-1.00.ebuild,v 1.4 2005/11/29 20:30:19 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/nullmailer/nullmailer-1.00.ebuild,v 1.1 2005/06/02 04:58:37 robbat2 Exp $
 
 inherit eutils flag-o-matic
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://untroubled.org/${PN}/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc"
+KEYWORDS="~x86 ~ppc"
 IUSE="mailwrapper"
 
 DEPEND="virtual/libc
@@ -65,6 +65,7 @@ src_install () {
 	if use mailwrapper; then
 		mv ${D}/usr/sbin/sendmail ${D}/usr/sbin/sendmail.nullmailer
 		mv ${D}/usr/bin/mailq ${D}/usr/bin/mailq.nullmailer
+		dosym /usr/sbin/sendmail /usr/bin/mailq
 		insinto /etc/mail
 		doins ${FILESDIR}/mailer.conf
 	fi
@@ -119,10 +120,10 @@ pkg_postinst() {
 	chmod 770 /var/log/nullmailer /var/nullmailer/{tmp,queue}
 	chmod 660 /var/nullmailer/trigger
 
-	use mailwrapper && dosym /usr/sbin/sendmail /usr/bin/mailq
-
+	TMP_P="${PN}-${PV}"
+	[ "${PR}" != "r0" ] && TMP_P="${TMP_P}-${PR}"
 	einfo "To create an initial setup, please do:"
-	einfo "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
+	einfo "ebuild /var/db/pkg/${CATEGORY}/${TMP_P}/${TMP_P}.ebuild config"
 	msg_svscan
 	msg_mailerconf
 }

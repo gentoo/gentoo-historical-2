@@ -1,41 +1,37 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/glame/glame-1.0.2.ebuild,v 1.14 2005/09/10 15:54:02 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/glame/glame-1.0.2.ebuild,v 1.1 2004/01/21 18:42:53 raker Exp $
 
 IUSE="nls gnome oggvorbis debug alsa"
 
-inherit eutils
-
-DESCRIPTION="an audio file editing utility"
-HOMEPAGE="http://glame.sourceforge.net/"
+S=${WORKDIR}/${P}
+DESCRIPTION="Glame is an audio file editing utility"
 SRC_URI="mirror://sourceforge/glame/${P}.tar.gz"
-RESTRICT="nomirror"
+HOMEPAGE="http://glame.sourceforge.net/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc amd64 ~ppc"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~sparc"
 
-RDEPEND=">=dev-util/guile-1.4-r3
+DEPEND=">=dev-util/guile-1.4-r3
 	>=dev-libs/libxml-1.8.0
 	>=dev-libs/libxml2-2.0.0
 	>=media-sound/esound-0.2
 	>=media-libs/audiofile-0.2.2
-	=sci-libs/fftw-2*
-	media-sound/madplay
+	=dev-libs/fftw-2*
+	media-sound/mad
 	media-libs/ladspa-sdk
 	oggvorbis? ( >=media-libs/libvorbis-1.0 )
 	gnome? ( <gnome-base/libglade-2 gnome-base/gnome-libs )
 	alsa? ( media-libs/alsa-lib )"
 
-DEPEND="${RDEPEND}
-	>=sys-devel/autoconf-2.58
-	nls? ( >=sys-devel/gettext-0.11.3 )"
+RDEPEND="nls? ( >=sys-devel/gettext-0.11.3 )"
 
 src_unpack() {
 	unpack ${A}
 
 	# fix NLS problem (bug #7587)
-	if ! use nls
+	if [ ! "`use nls`" ]
 	then
 		cd ${S}/src/gui
 		mv swapfilegui.c swapfilegui.c.bad
@@ -43,19 +39,18 @@ src_unpack() {
 	fi
 
 	# fix makefile problem
-	export WANT_AUTOCONF=2.5
+	export WANT_AUTOCONF_2_5=1
 	cd ${S}/libltdl
 	autoconf -f
 
 	cd ${S}
 	epatch ${FILESDIR}/gentoo.patch
-	epatch ${FILESDIR}/${P}-cflags.patch
 }
 
 src_compile() {
 	local myconf="--enable-ladspa"
 
-	if use gnome
+	if [ "`use gnome`" ]
 	then
 		# Use a valid icon for the GNOME menu entry
 		cp src/gui/glame.desktop src/gui/glame.desktop.old
@@ -83,13 +78,14 @@ src_compile() {
 src_install () {
 	einstall || die "Installation failed"
 
-	if use gnome
+	if [ "`use gnome`" ]
 	then
 		dodir /usr/share/pixmaps
 		dosym ../glame/pixmaps/glame-logo.jpg \
 		      /usr/share/pixmaps/glame-logo.jpg
 	fi
 
-	dodoc AUTHORS BUGS CREDITS ChangeLog MAINTAINERS \
+	dodoc ABOUT-NLS AUTHORS BUGS COPYING CREDITS ChangeLog MAINTAINERS \
 		NEWS README TODO
 }
+

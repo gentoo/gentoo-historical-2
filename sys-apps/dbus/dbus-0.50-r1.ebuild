@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-0.50-r1.ebuild,v 1.3 2005/11/27 16:43:33 compnerd Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-0.50-r1.ebuild,v 1.1 2005/11/08 04:46:00 compnerd Exp $
 
-inherit eutils mono python multilib autotools debug qt3
+inherit eutils mono python multilib autotools debug
 
 IUSE="X gtk qt python mono doc xml2"
 
@@ -26,7 +26,7 @@ RDEPEND=">=dev-libs/glib-2.6
 	gtk? ( >=x11-libs/gtk+-2 )
 	python? ( >=dev-lang/python-2.4
 		>=dev-python/pyrex-0.9.3-r2 )
-	qt? ( $(qt_min_version 3.3) )
+	qt? ( =x11-libs/qt-3* )
 	mono? ( >=dev-lang/mono-0.95 )"
 
 
@@ -34,8 +34,7 @@ DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	doc? ( app-doc/doxygen
 		app-text/xmlto )
-	doc? ( mono? ( >=dev-util/monodoc-1.1.9
-				   >=dev-util/mono-tools-1.1.9 ) )"
+	doc? ( mono? ( >=dev-util/monodoc-0.16 ) )"
 
 # needs gcj, we have no neat way of knowing if it was enabled
 # Can we just depend on the java virtual and use javac?
@@ -70,16 +69,11 @@ src_compile() {
 		myconf="${myconf} --disable-mono-docs"
 	fi
 
-	if use qt; then
-		myconf="${myconf} --enable-qt=${QTDIR} QT_MOC=${QTDIR}/bin/moc"
-	else
-		myconf="${myconf} --disable-qt"
-	fi
-
 	# NOTE: I have disabled the xml docs because they are rather pointless
 	econf \
 		`use_with X x` \
 		`use_enable gtk` \
+		`use_enable qt` \
 		`use_enable python` \
 		`use_enable mono` \
 		`use_enable kernel_linux dnotify` \

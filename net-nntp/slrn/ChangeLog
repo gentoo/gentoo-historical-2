@@ -1,27 +1,6 @@
-# ChangeLog for net-nntp/slrn
+# ChangeLog for net-news/slrn
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-nntp/slrn/ChangeLog,v 1.7 2005/07/14 20:34:28 swegener Exp $
-
-  14 Jul 2005; Sven Wegener <swegener@gentoo.org>
-  -files/0.9.8.0/slrn-0.9.8.0-mime.diff,
-  -files/0.9.8.0/slrn-0.9.8.0-post.diff,
-  -files/0.9.8.0/slrn-0.9.8.0-ranges.diff,
-  -files/0.9.8.0/slrn-0.9.8.0-ranges2.diff,
-  -files/0.9.8.0/slrn-0.9.8.0-utf8.patch, -slrn-0.9.8.0.ebuild,
-  -slrn-0.9.8.0-r1.ebuild:
-  Removed old ebuilds and files.
-
-  20 Jun 2005; Simon Stelling <blubb@gentoo.org> slrn-0.9.8.1.ebuild:
-  stable on amd64
-
-  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> slrn-0.9.8.1.ebuild:
-  Stable on ppc.
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> slrn-0.9.8.1.ebuild:
-  stable on ia64
-
-  19 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> slrn-0.9.8.1.ebuild:
-  Stable on alpha.
+# $Header: /var/cvsroot/gentoo-x86/net-nntp/slrn/ChangeLog,v 1.1 2005/01/17 20:11:08 swegener Exp $
 
 *slrn-0.9.8.1 (17 Jan 2005)
 

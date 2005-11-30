@@ -1,106 +1,18 @@
-# ChangeLog for gnustep-apps/gworkspace
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gworkspace/ChangeLog,v 1.17 2005/06/06 07:12:07 fafhrd Exp $
-
-  06 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  gworkspace-0.7.1.ebuild:
-  Stabilization for GNUstep GWorkspace related ebuilds
-
-*gworkspace-0.7.1 (15 Apr 2005)
-
-  15 Apr 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  -gworkspace-0.6.6_pre20050106.ebuild, +gworkspace-0.7.1.ebuild:
-  General bumps of all GWorkspace related ebuilds
-
-*gworkspace-0.7.0 (17 Mar 2005)
-
-  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  -gworkspace-0.6.6_pre20041203.ebuild, +gworkspace-0.7.0.ebuild:
-  ebuild updates for GNUstep base, libs, and apps across the board; proper
-  versions (to be stabilized, in due time) added where apropos, cvs-pull
-  versions updated where needed
-
-*gworkspace-0.6.6_pre20050106 (10 Jan 2005)
-
-  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
-  -gworkspace-0.6.6_pre20040928-r1.ebuild,
-  -gworkspace-0.6.6_pre20040928-r2.ebuild,
-  -gworkspace-0.6.6_pre20040928-r3.ebuild,
-  -gworkspace-0.6.6_pre20040928.ebuild,
-  +gworkspace-0.6.6_pre20050106.ebuild:
-  cvs snapshot version bumps; cleaned out old cvs versioned ebuilds; fixed
-  date spec on ebuild headers as repoman was complaining
-
-  09 Jan 2005; Sven Wegener <swegener@gentoo.org>
-  gworkspace-0.6.6_pre20040928-r1.ebuild:
-  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
-
-*gworkspace-0.6.6_pre20041203 (04 Dec 2004)
-
-  04 Dec 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gworkspace-0.6.6_pre20041203.ebuild:
-  General version bump
-
-  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org> -gworkspace-0.5.3.ebuild,
-  gworkspace-0.6.6_pre20040928-r3.ebuild:
-  Mass Update: gnustep.eclass revamped to allow configurable root install;
-  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
-  bumped where files would change); some KEYWORDS were accidentally dropped
-  between version bumps of packages -- this has been resolved; windowmaker
-  correctly supports gnustep now
-
-*gworkspace-0.6.6_pre20040928-r3 (22 Oct 2004)
-
-  22 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gworkspace-0.6.6_pre20040928-r3.ebuild:
-  Depend on imagekits has moved to seperate libraries - now depend on pdfkit
-
-  10 Oct 2004; David Holm <dholm@gentoo.org>
-  gworkspace-0.6.6_pre20040928-r2.ebuild:
-  Added to ~ppc.
-
-  05 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  gworkspace-0.6.6_pre20040928-r2.ebuild:
-  Removed trailing whitespace
-
-*gworkspace-0.6.6_pre20040928-r2 (05 Oct 2004)
-
-  05 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +files/seperate-desktop-recycler.patch,
-  -gworkspace-0.6.6_pre20040908.ebuild,
-  +gworkspace-0.6.6_pre20040928-r2.ebuild:
-  Removed old package revision; removed desktop and recycler support (moved to
-  seperate packages)
-
-*gworkspace-0.6.6_pre20040928-r1 (04 Oct 2004)
-
-  04 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gworkspace-0.6.6_pre20040928-r1.ebuild:
-  Added optional support for gnustep-libs/smbkit
-
-*gworkspace-0.6.6_pre20040927 (28 Sep 2004)
-
-  28 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  +gworkspace-0.6.6_pre20040928.ebuild:
-  Version bump; pre release date specd live cvs pull.
-
-*gworkspace-0.6.6_pre20040908 (10 Sep 2004)
-
-  10 Sep 2004; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
-  +gworkspace-0.6.6_pre20040908.ebuild:
-  Version bump; keyworded for ~x86.
-
-  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org>
-  gworkspace-0.5.3.ebuild:
-  Changed referenced categories in ebuilds to reflect recent epkgmove changes.
+# ChangeLog for app-gnustep/gworkspace
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/gnustep-apps/gworkspace/ChangeLog,v 1.1 2004/07/23 13:18:07 fafhrd Exp $
 
 *gworkspace-0.5.3 (23 Jul 2004)
 
-  23 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org> +metadata.xml,
+  23 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org> +metadata.xml,
   +gworkspace-0.5.3.ebuild:
   Moved from app-gnustep/gworkspace to gnustep-apps/gworkspace.
 
-  22 Jul 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
+  gworkspace-0.5.3.ebuild:
+  Changing the eclass to gnustep-old
+
+  22 Jul 2004; Armando Di Cianno,,, <armando@gentoo.org>
   gworkspace-0.5.3.ebuild:
   Changing the eclass to gnustep-old
 

@@ -1,21 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Xmms-Perl/Xmms-Perl-0.12.ebuild,v 1.12 2005/09/17 00:48:54 agriffis Exp $
-
 inherit perl-module eutils
 
-DESCRIPTION="A Perl extension interface to XMMS"
+S=${WORKDIR}/${P}
+DESCRIPTION="A  Perl extension interface to XMMS."
 HOMEPAGE="http://www.cpan.org/modules/by-module/Xmms/${P}.readme"
-SRC_URI="mirror://cpan/authors/id/D/DO/DOUGM/${P}.tar.gz"
+SRC_URI="http://www.cpan.org/modules/by-module/Xmms/${P}.tar.gz"
 
-LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
-IUSE=""
+LICENSE="Artistic"
+KEYWORDS="x86 ~ppc ~sparc ~alpha"
 
-DEPEND="media-sound/xmms
-	dev-perl/MP3-Info
-	dev-perl/Term-ReadLine-Perl"
+DEPEND="media-sound/xmms 
+		dev-perl/MP3-Info
+		dev-perl/Term-ReadLine-Perl"
 
 src_unpack() {
 	unpack ${P}.tar.gz

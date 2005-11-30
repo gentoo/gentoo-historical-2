@@ -1,69 +1,11 @@
 # ChangeLog for media-sound/gtick
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gtick/ChangeLog,v 1.17 2005/09/04 11:02:21 flameeyes Exp $
-
-  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> gtick-0.2.4.ebuild,
-  gtick-0.2.13.ebuild, gtick-0.3.0.ebuild, gtick-0.3.4.ebuild:
-  Don't install COPYING and ABOUT-NLS files.
-
-  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
-  Remove retired developer from metadata.xml.
-
-*gtick-0.3.4 (18 Dec 2004)
-
-  18 Dec 2004; Tony Vroon <chainsaw@gentoo.org> +gtick-0.3.4.ebuild:
-  Version bump, closes bug #73416.
-
-  14 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> gtick-0.3.0.ebuild:
-  Stable amd64, sparc.
-
-  13 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gtick-0.3.0.ebuild:
-  Added ~sparc ~amd64
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gtick-0.2.4.ebuild:
-  virtual/glibc -> virtual/libc
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> gtick-0.2.13.ebuild,
-  gtick-0.2.4.ebuild, gtick-0.3.0.ebuild:
-  Added IUSE.
-
-  14 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> gtick-0.3.0.ebuild:
-  Stable x86.
-
-  07 Mar 2004; David Holm <dholm@gentoo.org> gtick-0.3.0.ebuild:
-  Added to ~ppc.
-
-*gtick-0.3.0 (07 Mar 2004)
-
-  07 Mar 2004; Jeremy Huddleston <eradicator@gentoo.org> gtick-0.3.0.ebuild,
-  gtick-0.2.13.ebuild:
-  Version bump.  Closes bug #43810.
-  0.2.13 to stable
-
-*gtick-0.2.13 (23 Jan 2004)
-
-  23 Jan 2004; <torbenh@gentoo.org> gtick-0.2.13.ebuild, gtick-0.2.2.ebuild,
-  gtick-0.2.4.ebuild, metadata.xml:
-  version bump
-  made 0.2.4 stable
-  removed 0.2.2
-
-*gtick-0.2.4 (20 Sep 2003)
-
-  20 Sep 2003; root <root@gentoo.org> gtick-0.2.4.ebuild:
-  Version bump.
-  
-  Sumbitted by: Nicolas GRANDCLAUDE <ngclaude@visitmail.com>
-
-  09 Aug 2003; jje <jje@gentoo.org> gtick-0.2.1.ebuild:
-  Version bump and remove hardcoded version number.
-
-  Submitted by: Nicolas GRANDCLAUDE <ngclaude@visitmail.com>
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gtick/ChangeLog,v 1.1 2003/08/06 11:31:55 jje Exp $
 
 *gtick-0.2.1 (06 Aug 2003)
 
   06 Aug 2003; jje <jje@gentoo.org> gtick-0.2.1.ebuild:
   Initial revision.
   
-  Submitted by: Nicolas GRANDCLAUDE <ngclaude@visitmail.com>
+  Submitted by Nicolas GRANDCLAUDE <ngclaude@visitmail.com>
 

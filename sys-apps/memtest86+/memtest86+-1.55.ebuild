@@ -1,24 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/memtest86+-1.55.ebuild,v 1.6 2005/08/03 22:12:08 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86+/memtest86+-1.55.ebuild,v 1.1 2005/03/29 12:40:52 spock Exp $
 
 inherit mount-boot eutils
 
 DESCRIPTION="Memory tester based on memtest86"
 HOMEPAGE="http://www.memtest.org/"
 SRC_URI="http://www.memtest.org/download/${PV}/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="serial"
-RESTRICT="test"
-
-DEPEND=""
+DEPEND="virtual/libc"
+RESTRICT="maketest"
+S="${S}.1"
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 
 	# send the DOS newlines where they belong - /dev/null ;>
 	sed -e 's/\x0d//g' -i Makefile || die
@@ -33,8 +32,8 @@ src_compile() {
 }
 
 src_install() {
-	insinto /boot/memtest86plus
-	doins memtest.bin || die
+	dodir /boot/memtest86plus
+	cp memtest.bin ${D}/boot/memtest86plus/memtest.bin || die
 	dodoc README README.build-process
 }
 
@@ -47,14 +46,13 @@ pkg_postinst() {
 	einfo "    > title=Memtest86Plus"
 
 	# a little magic to make users' life as easy as possible ;)
-	local fstab=${ROOT}/etc/fstab
 	bootpart=0
 	root="(hd0,0)"
-	res=$(awk '$2 == "/boot" {print $1}' "${fstab}")
+	res=`grep /boot /etc/fstab | grep -v "^#" | awk '{print $1}' | grep '/dev/hd[a-z0-9]\+'`
 	if [ -n "${res}" ] ; then
 		bootpart=1
 	else
-		res=`grep -v '^#' "${fstab}" | grep -e '/dev/hd[a-z0-9]\+[[:space:]]\+\/[[:space:]]\+' | \
+		res=`grep -v '^#' /etc/fstab | grep -e '/dev/hd[a-z0-9]\+[[:space:]]\+\/[[:space:]]\+' | \
 			awk '{print $1}'`
 	fi
 

@@ -1,29 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/qkc/qkc-1.00.ebuild,v 1.12 2005/05/15 18:31:35 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/qkc/qkc-1.00.ebuild,v 1.1 2002/11/27 19:40:21 nakano Exp $
 
-inherit toolchain-funcs
-
-MY_P="${PN}c${PV/./}"
+MY_P=qkcc100
 DESCRIPTION="Quick KANJI code Converter"
-HOMEPAGE="http://hp.vector.co.jp/authors/VA000501/"
 SRC_URI="http://hp.vector.co.jp/authors/VA000501/${MY_P}.zip"
-
-LICENSE="freedist"
+HOMEPAGE="http://hp.vector.co.jp/authors/VA000501/"
 SLOT="0"
-KEYWORDS="x86 alpha ppc sparc amd64 ppc64"
+LICENSE="freedist"
+KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="app-arch/unzip"
-
+DEPEND="virtual/glibc
+app-arch/unzip"
 S=${WORKDIR}
 
-src_compile() {
-	make CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die
+src_unpack() {
+	unpack ${A}
 }
 
-src_install() {
-	dobin qkc || die
+src_compile() {
+
+	make CC=gcc CFLAGS="${CFLAGS}" || die
+}
+
+src_install () {
+	dobin qkc
 	dodoc qkc.doc
 	doman qkc.1
 }

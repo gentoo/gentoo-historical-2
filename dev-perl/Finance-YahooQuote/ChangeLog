@@ -1,23 +1,6 @@
 # ChangeLog for dev-perl/Finance-YahooQuote
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Finance-YahooQuote/ChangeLog,v 1.5 2005/11/26 01:41:39 superlag Exp $
-
-*Finance-YahooQuote-0.21 (26 Nov 2005)
-
-  26 Nov 2005; Aaron Kulbe <superlag@gentoo.org>
-  +Finance-YahooQuote-0.21.ebuild:
-  Cleaning up outdated dev-perl ebuilds.  Version bump.
-
-  21 Jul 2005; David Holm <dholm@gentoo.org> Finance-YahooQuote-0.20.ebuild:
-  Added to ~ppc.
-
-  20 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  Finance-YahooQuote-0.20.ebuild:
-  Stable on sparc
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  Finance-YahooQuote-0.20.ebuild:
-  dev-perl/MIME-Base64 => perl-core/MIME-Base64 migration
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Finance-YahooQuote/ChangeLog,v 1.1 2005/02/07 11:00:11 mcummings Exp $
 
 *Finance-YahooQuote-0.20 (07 Feb 2005)
 

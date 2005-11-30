@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/clustalw/clustalw-1.83-r1.ebuild,v 1.7 2005/10/11 15:04:33 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/clustalw/clustalw-1.83-r1.ebuild,v 1.1 2004/12/23 18:55:17 ribosome Exp $
 
-inherit toolchain-funcs
+inherit gcc
 
 DESCRIPTION="General purpose multiple alignment program for DNA and proteins"
 HOMEPAGE="http://www.embl-heidelberg.de/~seqanal/"
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.ebi.ac.uk/pub/software/unix/clustalw/${PN}${PV}.UNIX.tar.gz"
 
 LICENSE="clustalw"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc-macos ppc64 sparc x86"
+KEYWORDS="alpha ppc sparc x86 ~ppc-macos ~amd64"
 IUSE=""
 
 DEPEND="virtual/libc"
@@ -20,10 +20,10 @@ S=${WORKDIR}/${PN}${PV}
 src_unpack(){
 	unpack ${A}
 	cd ${S}
-	sed -i -e "s/CC	= cc/CC	= $(tc-getCC)/" \
-		-e "s/CFLAGS  = -c -O/CFLAGS  = -c ${CFLAGS}/" \
-		-e "s/LFLAGS	= -O -lm/LFLAGS	= -lm ${CFLAGS}/" makefile || die
-	sed -i -e "s%clustalw_help%/usr/share/doc/${PF}/clustalw_help%" clustalw.c || die
+	sed -i -e "s/CC	= cc/CC	= $(gcc-getCC)/" makefile
+	sed -i -e "s/CFLAGS  = -c -O/CFLAGS  = -c ${CFLAGS}/" makefile
+	sed -i -e "s/LFLAGS	= -O -lm/LFLAGS	= -lm ${CFLAGS}/" makefile
+	sed -i -e "s%clustalw_help%/usr/share/doc/${PF}/clustalw_help%" clustalw.c
 }
 
 src_compile() {

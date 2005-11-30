@@ -1,28 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cheesetracker/cheesetracker-0.9.9.ebuild,v 1.12 2005/10/22 14:00:04 yoswink Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cheesetracker/cheesetracker-0.9.9.ebuild,v 1.1 2004/05/22 21:29:28 squinky86 Exp $
 
 DESCRIPTION="A clone of Impulse Tracker with some extensions and a built-in sample editor; uses QT"
 HOMEPAGE="http://cheesetronic.sf.net/"
 SRC_URI="mirror://sourceforge/cheesetronic/${P}.tar.gz"
-
+RESTRICT="nomirror"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~amd64"
+
 IUSE="jack"
 
-RDEPEND="jack? ( media-sound/jack-audio-connection-kit )
+RDEPEND="jack? ( virtual/jack )
 	=dev-libs/libsigc++-1.2*
-	=x11-libs/qt-3*"
+	>=x11-libs/qt-3.0"
+
 DEPEND="${RDEPEND}
 	>=dev-util/scons-0.94-r2"
-
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/${P}-64bit-clean.diff
-}
 
 src_compile() {
 	scons || die
@@ -31,5 +26,5 @@ src_compile() {
 src_install() {
 	dodir /usr/bin
 	scons prefix=${D}/usr install || die
-	dodoc AUTHORS ChangeLog NEWS README TODO docs/*.txt
+	dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO docs/*.txt
 }

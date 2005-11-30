@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDDB-File/CDDB-File-1.03-r1.ebuild,v 1.11 2005/10/02 12:19:12 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/CDDB-File/CDDB-File-1.03-r1.ebuild,v 1.1 2002/10/30 07:20:34 seemant Exp $
 
 inherit perl-module
 
+S="${WORKDIR}/${P}"
 DESCRIPTION="Parse a CDDB/freedb data file"
-SRC_URI="mirror://cpan/authors/id/T/TM/TMTM/${P}.tar.gz"
+SRC_URI="http://search.cpan.org/CPAN/authors/id/T/TM/TMTM/${P}.tar.gz"
 SLOT="0"
-HOMEPAGE="http://search.cpan.org/~tmtm/${P}/"
+HOMEPAGE="http://search.cpan.org/author/TMTM/CDDB-File-${PV}/"
 DEPEND="${DEPEND}
-	perl-core/Test-Simple"
+	dev-perl/Test-Simple"
 
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ia64 ppc x86"
-IUSE=""
+SLOT="2"
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ppc alpha"

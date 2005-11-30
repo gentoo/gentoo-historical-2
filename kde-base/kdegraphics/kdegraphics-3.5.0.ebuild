@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdegraphics/kdegraphics-3.5.0.ebuild,v 1.4 2005/11/30 07:56:44 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdegraphics/kdegraphics-3.5.0.ebuild,v 1.1 2005/11/22 22:14:02 danarmak Exp $
 
-inherit kde-dist eutils
+inherit kde-dist
 
 DESCRIPTION="KDE graphics-related apps"
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
 IUSE="gphoto2 imlib openexr opengl pdflib povray scanner tetex"
 
 DEPEND="~kde-base/kdebase-${PV}
@@ -34,19 +34,6 @@ RDEPEND="${DEPEND}
 
 DEPEND="${DEPEND}
 	dev-util/pkgconfig"
-
-pkg_setup() {
-	if ! built_with_use virtual/ghostscript X; then
-		eerror "This package requires virtual/ghostscript compiled with X11 support."
-		eerror "Please reemerge virtual/ghostscript with USE=\"X\"."
-		die "Please reemerge virtual/ghostscript with USE=\"X\"."
-	fi
-	if use pdflib && ! built_with_use app-text/poppler qt; then
-		eerror "This package requires app-text/poppler compiled with Qt support."
-		eerror "Please reemerge app-text/poppler with USE=\"qt\"."
-		die "Please reemerge app-text/poppler with USE=\"qt\"."
-	fi
-}
 
 src_compile() {
 	local myconf="$(use_with openexr) $(use_with pdflib poppler)

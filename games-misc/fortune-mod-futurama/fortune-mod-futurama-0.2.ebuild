@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-futurama/fortune-mod-futurama-0.2.ebuild,v 1.9 2005/08/27 18:01:53 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/fortune-mod-futurama/fortune-mod-futurama-0.2.ebuild,v 1.1 2003/09/10 18:14:04 vapier Exp $
 
 DESCRIPTION="Quotes from the TV-Series -Futurama-"
-HOMEPAGE="http://www.netmeister.org/misc.html"
 SRC_URI="http://www.netmeister.org/apps/${P}.tar.gz"
+HOMEPAGE="http://www.netmeister.org/misc.html"
 
-LICENSE="as-is"
+KEYWORDS="x86 ppc alpha ~sparc ~mips"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa mips ppc ppc64 sparc x86"
-IUSE=""
+LICENSE="as-is"
 
-RDEPEND="games-misc/fortune-mod"
+DEPEND="virtual/glibc"
+RDEPEND="app-games/fortune-mod"
 
 src_install() {
 	insinto /usr/share/fortune

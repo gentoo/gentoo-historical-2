@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/filer/filer-0.0.8.ebuild,v 1.3 2005/06/09 18:40:56 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/filer/filer-0.0.8.ebuild,v 1.1 2005/03/14 21:16:31 swegener Exp $
 
 DESCRIPTION="Small file-manager written in perl"
 HOMEPAGE="http://blog.perldude.de/projects/filer/"
@@ -8,14 +8,14 @@ SRC_URI="http://perldude.de/projects/${PN}/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~x86 ~sparc ~ppc"
 IUSE=""
 
 RDEPEND="dev-lang/perl
 	dev-perl/gtk2-perl
 	dev-perl/gtk2-gladexml
 	dev-perl/File-MimeInfo
-	perl-core/File-Temp
+	dev-perl/File-Temp
 	dev-perl/TimeDate
 	dev-perl/Stat-lsMode"
 DEPEND="sys-apps/findutils"

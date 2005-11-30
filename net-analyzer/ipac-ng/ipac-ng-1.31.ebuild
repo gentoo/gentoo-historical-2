@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ipac-ng/ipac-ng-1.31.ebuild,v 1.4 2005/07/29 23:49:18 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/ipac-ng/ipac-ng-1.31.ebuild,v 1.1 2005/01/09 07:24:00 dragonheart Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/ipac-ng/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE="gd sqlite"
 
 DEPEND="sys-devel/bison
@@ -32,7 +32,7 @@ RDEPEND="net-firewall/iptables
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${P}-iptables.patch
+	epatch ${FILESDIR}/${P}-iptables.patch || die "patch failed"
 }
 
 src_compile() {
@@ -76,13 +76,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	ewarn
+	ewarn ""
 	ewarn "                         W A R N I N G !"
 	ewarn "do not use \"/etc/init.d/iptables save\" when ipac-ng is running!"
 	ewarn "this WILL save ipac rules and can cause problems!"
 	ewarn "ipac-ng should be started AFTER iptables and shut down BEFORE iptables"
 	ewarn "use /etc/init.d/iptables save only when ipac rules are removed!"
-	ewarn
+	ewarn ""
 	einfo "the accounting database is at /var/lib/ipac"
 	einfo "use /usr/sbin/ipacsum to get your ip acounting data"
 	einfo "use /usr/sbin/fetchipac to update the accounting at any time"

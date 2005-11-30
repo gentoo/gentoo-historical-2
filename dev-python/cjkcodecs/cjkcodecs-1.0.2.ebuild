@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/cjkcodecs/cjkcodecs-1.0.2.ebuild,v 1.4 2005/01/31 02:25:23 fserb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/cjkcodecs/cjkcodecs-1.0.2.ebuild,v 1.1 2003/12/05 00:56:20 liquidx Exp $
 
 inherit distutils
 
@@ -10,8 +10,8 @@ HOMEPAGE="http://cjkpython.i18n.org/"
 
 IUSE=""
 SLOT="0"
-LICENSE="BSD"
-KEYWORDS="x86"
+LICENSE="LGPL-2.1"
+KEYWORDS="~x86"
 
 DEPEND=">=dev-lang/python-2.1"
 DOCS="doc/*"

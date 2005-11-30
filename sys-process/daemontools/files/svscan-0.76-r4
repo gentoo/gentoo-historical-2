@@ -1,14 +1,15 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/files/svscan-0.76-r4,v 1.2 2005/04/27 23:41:30 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/daemontools/files/svscan-0.76-r4,v 1.1 2005/03/03 18:11:26 ciaranm Exp $
 
 depend() {
 	need net
 	after net
-	before ntpd ntp-client
+	before ntpd
 	before spamd
-	before apache apache2
+	before apache
+	before apache2
 }
 
 start() {

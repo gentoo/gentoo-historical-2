@@ -1,8 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.4.1-r2.ebuild,v 1.9 2004/07/02 04:31:41 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.4.1-r2.ebuild,v 1.1 2003/12/03 16:55:39 jhhudso Exp $
 
 inherit libtool flag-o-matic eutils
+strip-flags
+filter-mfpmath sse
+filter-flags "-fPIC" "-maltivec" "-mabi=altivec" "-fstack-protector" "-pipe" "-g" "-mtune" "-march" "-mcpu" "-O" "-O1" "-O2" "-Os" "-O3" "-freorder-blocks" "-fprefetch-loop-array" "-fforce-addr"
 
 #Simply change these numbers for different versions
 MV=3.4
@@ -14,15 +17,15 @@ HOMEPAGE="http://www.squeak.org/"
 SRC_URI="ftp://st.cs.uiuc.edu/Smalltalk/Squeak/${MV}/unix-linux/Squeak-${NV}.src.tar.gz"
 LICENSE="Apple"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 IUSE="X oss mmx mozilla"
 # a ffi flag would be nice
 
-DEPEND="virtual/libc
-	X? ( virtual/x11 )"
-RDEPEND="virtual/squeak-image
-		virtual/libc
-		X? ( virtual/x11 )"
+DEPEND="virtual/glibc
+	X? ( x11-base/xfree )"
+RDEPEND="dev-lang/squeak-vm
+		virtual/glibc
+		X? ( x11-base/xfree )"
 
 S="${WORKDIR}/Squeak-${NV}"
 
@@ -40,20 +43,7 @@ src_compile() {
 	use oss && myconf="${myconf} --with-audio=oss"
 	use mmx && myconf="${myconf} --enable-mpg-mmx"
 
-	strip-flags
-	filter-mfpmath sse
-	filter-flags "-fPIC" "-maltivec" "-mabi=altivec" "-fstack-protector" "-pipe" "-g" "-mtune" "-march" "-mcpu" "-O" "-O1" "-O2" "-Os" "-O3" "-freorder-blocks" "-fprefetch-loop-array" "-fforce-addr"
-
-	# fix tail problems
-	cd ${S}/platforms/unix/config
-	mv mkconfig.in mkconfig.in.$$
-	cat mkconfig.in.$$|sed 's/tail -1/tail -n 1/g' > mkconfig.in
-	mv verstamp verstamp.$$
-	cat verstamp.$$|sed 's/tail -1/tail -n 1/g' > verstamp
-	chmod +x verstamp
-
 	cd ${S}
-
 	mkdir build
 	cd build
 	../platforms/unix/config/configure \
@@ -114,7 +104,7 @@ src_install() {
 	dodir /opt/netscape/plugins
 	dosym /usr/lib/squeak/${NV}/npsqueak.so /opt/netscape/plugins
 
-	if use mozilla ; then
+	if [ "`use mozilla`" ] ; then
 		dodir /usr/lib/mozilla/plugins
 		dosym /opt/netscape/plugins/npsqueak.so \
 		/usr/lib/mozilla/plugins/npsqueak.so

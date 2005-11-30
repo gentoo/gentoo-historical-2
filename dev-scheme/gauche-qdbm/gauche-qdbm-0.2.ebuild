@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-qdbm/gauche-qdbm-0.2.ebuild,v 1.3 2004/12/06 03:33:11 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-qdbm/gauche-qdbm-0.2.ebuild,v 1.1 2004/07/26 14:13:19 hattya Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge.jp/gauche/6988/${MY_P}.tar.gz"
 
 RESTRICT="nomirror"
 LICENSE="BSD"
-KEYWORDS="x86 ~sparc"
+KEYWORDS="~x86"
 SLOT="0"
 S="${WORKDIR}/${MY_P}"
 
@@ -54,4 +54,4 @@ src_install() {
 
 }
 
-# $Id: gauche-qdbm-0.2.ebuild,v 1.3 2004/12/06 03:33:11 weeve Exp $
+# $Id: gauche-qdbm-0.2.ebuild,v 1.1 2004/07/26 14:13:19 hattya Exp $

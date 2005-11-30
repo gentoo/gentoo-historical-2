@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-gtk/gauche-gtk-0.4.ebuild,v 1.3 2005/06/12 14:28:34 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-scheme/gauche-gtk/gauche-gtk-0.4.ebuild,v 1.1 2004/07/10 09:15:59 hattya Exp $
 
 inherit eutils flag-o-matic
 
@@ -20,8 +20,8 @@ S="${WORKDIR}/${MY_P}"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
-RDEPEND=">=x11-libs/gtk+-2
-	>=dev-lang/gauche-0.7.4.1
+RDEPEND=">=x11-libs/gtk+-2*
+	>=dev-lisp/gauche-0.7.4.1
 	opengl? ( >=x11-libs/gtkglext-0.6.0 )"
 
 src_compile() {

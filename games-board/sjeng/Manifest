@@ -1,4 +1,3 @@
-MD5 f17b9b8fa07a38914fe1c03268f51678 metadata.xml 158
-MD5 e0b23d21b370da984469f5a9308abe40 sjeng-11.2-r1.ebuild 638
-MD5 d71d760c8c51db4e066c57a1195ebc35 ChangeLog 1508
-MD5 642c55324abefa7826ee7985ceb5d3ec files/digest-sjeng-11.2-r1 67
+MD5 4a53b312c28e9f5d064f3877001f903f ChangeLog 902
+MD5 a61546dd26451f93ad3655d931689cd4 sjeng-11.2.ebuild 643
+MD5 642c55324abefa7826ee7985ceb5d3ec files/digest-sjeng-11.2 67

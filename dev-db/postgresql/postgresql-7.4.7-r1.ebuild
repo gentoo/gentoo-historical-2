@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+## Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.4.7-r1.ebuild,v 1.15 2005/11/12 22:48:12 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/postgresql/postgresql-7.4.7-r1.ebuild,v 1.1 2005/02/11 21:41:45 nakano Exp $
 
-inherit eutils gnuconfig flag-o-matic java-pkg multilib toolchain-funcs
+inherit eutils gnuconfig flag-o-matic java-pkg multilib
 
 DESCRIPTION="sophisticated Object-Relational DBMS."
 HOMEPAGE="http://www.postgresql.org/"
@@ -14,8 +14,8 @@ SRC_URI="mirror://postgresql/source/v${PV}/${PN}-base-${PV}.tar.bz2
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 ppc64"
-IUSE="ssl nls java python tcltk perl libg++ pam readline zlib doc pg-hier pg-vacuumdelay pg-intdatetime threads xml2 selinux"
+KEYWORDS="x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+IUSE="ssl nls java python tcltk perl libg++ pam readline zlib doc pg-hier pg-vacuumdelay pg-intdatetime threads xml2"
 
 DEPEND="virtual/libc
 	sys-devel/autoconf
@@ -26,7 +26,7 @@ DEPEND="virtual/libc
 	tcltk? ( >=dev-lang/tcl-8 >=dev-lang/tk-8.3.3-r1 )
 	perl? ( >=dev-lang/perl-5.6.1-r2 )
 	python? ( >=dev-lang/python-2.2 dev-python/egenix-mx-base )
-	java? ( >=virtual/jdk-1.3 >=dev-java/ant-1.3
+	java? ( >=virtual/jdk-1.3* >=dev-java/ant-1.3
 		dev-java/java-config )
 	ssl? ( >=dev-libs/openssl-0.9.6-r1 )
 	nls? ( sys-devel/gettext )
@@ -38,8 +38,7 @@ RDEPEND="virtual/libc
 	tcltk? ( >=dev-lang/tcl-8 )
 	perl? ( >=dev-lang/perl-5.6.1-r2 )
 	python? ( >=dev-lang/python-2.2 )
-	java? ( >=virtual/jdk-1.3 )
-	selinux? ( sec-policy/selinux-postgresql )
+	java? ( >=virtual/jdk-1.3* )
 	ssl? ( >=dev-libs/openssl-0.9.6-r1 )
 	xml2? ( dev-libs/libxml2 dev-libs/libxslt )"
 
@@ -131,14 +130,15 @@ src_compile() {
 		--libdir=/usr/$(get_libdir) \
 		--includedir=/usr/include/postgresql/pgsql \
 		--enable-depend \
+		--with-gnu-ld \
 		--with-maxbackends=${MAX_CONNECTIONS} \
 		$myconf || die
 
-	make LD="$(tc-getLD) $(get_abi_LDFLAGS)" || die
+	make || die
 	cd contrib
-	make LD="$(tc-getLD) $(get_abi_LDFLAGS)" || die
+	make || die
 	if use xml2; then
-		make -C xml LD="$(tc-getLD) $(get_abi_LDFLAGS)" || die
+		make -C xml || die
 	fi
 }
 
@@ -237,7 +237,7 @@ pkg_postinst() {
 	else
 		einfo ""
 		einfo "Execute the following command"
-		einfo "emerge --config =${PF}"
+		einfo "ebuild /var/db/pkg/dev-db/${PF}/${PF}.ebuild config"
 		einfo "to setup the initial database environment."
 		einfo ""
 	fi

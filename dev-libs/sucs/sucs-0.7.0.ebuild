@@ -1,20 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/sucs/sucs-0.7.0.ebuild,v 1.8 2005/02/11 11:46:06 ka0ttic Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/sucs/sucs-0.7.0.ebuild,v 1.1 2002/10/23 16:03:30 jrray Exp $
 
-DESCRIPTION="The Simple Utility Classes are C++ libraries of common C-based algorithms and libraries"
-HOMEPAGE="http://sucs.sourceforge.net/"
+S=${WORKDIR}/${P}
+DESCRIPTION="The Simple Utility Classes are C++ libraries of common C-based algorithms and libraries."
 SRC_URI="mirror://sourceforge/sucs/${P}.tar.bz2"
+HOMEPAGE="http://sucs.sf.net/"
 
-LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+LICENSE="LGPL-2"
+KEYWORDS="~x86"
 
 DEPEND=">=dev-libs/libpcre-3.9
 	>=dev-libs/expat-1.95.4"
+IUSE=""
 
-src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog README COPYING
+src_install()
+{
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS ChangeLog README TODO COPYING
 }

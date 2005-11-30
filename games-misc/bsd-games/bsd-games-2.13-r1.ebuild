@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.13-r1.ebuild,v 1.4 2005/08/13 04:04:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-misc/bsd-games/bsd-games-2.13-r1.ebuild,v 1.1 2005/01/10 05:19:06 vapier Exp $
 
 inherit eutils games
 
@@ -13,11 +13,11 @@ SLOT="0"
 KEYWORDS="amd64 ppc ~sparc x86"
 IUSE=""
 
-RDEPEND="!games-misc/wtf
-	sys-libs/ncurses
+RDEPEND="sys-libs/ncurses
 	sys-apps/miscfiles
 	sys-apps/less
-	sys-devel/flex"
+	sys-devel/flex
+	>=sys-apps/sed-4"
 DEPEND="${RDEPEND}
 	sys-devel/bison"
 
@@ -30,18 +30,17 @@ worms wtf wump"}
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
+	cd ${S}
 	epatch "${FILESDIR}"/${PV}-debian-11.patch
 	epatch "${FILESDIR}"/${PV}-gentoo.patch
 	epatch "${FILESDIR}"/${PV}-64bit.patch
-	epatch "${FILESDIR}"/${P}-gcc4.patch
 
 	sed -i \
 		-e "s:/usr/games:${GAMES_BINDIR}:" \
 		wargames/wargames \
 		|| die "sed wargames failed"
 
-	cp "${FILESDIR}"/config.params-gentoo config.params
+	cp ${FILESDIR}/config.params-gentoo config.params
 	echo bsd_games_cfg_build_dirs=\"${GAMES_TO_BUILD}\" >> ./config.params
 }
 
@@ -59,7 +58,7 @@ src_install() {
 	dodir ${GAMES_BINDIR} ${GAMES_STATEDIR} /usr/share/man/man{1,6}
 	make DESTDIR=${D} install-strip || die "make install-strip failed"
 
-	dodoc AUTHORS BUGS ChangeLog ChangeLog.0 \
+	dodoc AUTHORS BUGS ChangeLog ChangeLog.0 INSTALL \
 		README PACKAGING SECURITY THANKS TODO YEAR2000
 
 	# special subdirs

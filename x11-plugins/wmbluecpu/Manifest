@@ -1,4 +1,2 @@
-MD5 61f3d07c9dce90996b5e53b41339470d wmbluecpu-0.6.ebuild 638
-MD5 badf3ae7b1de1bad426f8a16bf812276 ChangeLog 1325
-MD5 62ba71d3b2fa785a4cbd5d47fdbd0eb6 metadata.xml 165
-MD5 2069f18aba8443c997c7a2adc513b549 files/digest-wmbluecpu-0.6 65
+MD5 b40e1172144bf2b3e71d4c9f2096baf1 wmbluecpu-0.4.ebuild 492
+MD5 1513671a066fd5641485c38c12d75a8a files/digest-wmbluecpu-0.4 65

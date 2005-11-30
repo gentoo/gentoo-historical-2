@@ -1,40 +1,8 @@
 # ChangeLog for media-sound/cvoicecontrol
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/cvoicecontrol/ChangeLog,v 1.12 2005/08/07 12:55:38 hansmi Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/cvoicecontrol/ChangeLog,v 1.1 2002/06/22 01:07:04 george Exp $
 
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  cvoicecontrol-0.9_alpha.ebuild:
-  Stable on ppc.
-
-  15 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
-  cvoicecontrol-0.9_alpha.ebuild:
-  Fixed URL for cvoicecontrol. Thanks to Benjie Gillam in bug #98015.
-
-  10 May 2005; David Holm <dholm@gentoo.org> cvoicecontrol-0.9_alpha.ebuild:
-  Added to ~ppc.
-
-  12 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  cvoicecontrol-0.9_alpha.ebuild:
-  Stable amd64, sparc.
-
-  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  cvoicecontrol-0.9_alpha.ebuild:
-  Added to ~amd64 ~sparc.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  cvoicecontrol-0.9_alpha.ebuild:
-  virtual/glibc -> virtual/libc
-
-  17 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  cvoicecontrol-0.9_alpha.ebuild:
-  inline sed.  epatch.  IUSE.
-
-  05 Feb 2003; George Shapovalov <george@gentoo.org> files/digest-cvoicecontrol-0.9_alpha :
-
-  Upstream has silently made some changes to the source, updated digest accordingly.
-  See #15064 for more details on source change
-
-*cvoicecontrol-0.9_alpha (20 Jun 2002)
+*cvoicecontrol-0.9_alpha.ebuild (20 Jun 2002)
   
   20 Jun 2002; George Shapovalov <george@gentoo.org> all :
   

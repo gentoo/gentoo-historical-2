@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsensormon/wmsensormon-1.2.1.ebuild,v 1.5 2005/11/11 10:35:04 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmsensormon/wmsensormon-1.2.1.ebuild,v 1.1 2004/12/24 08:28:58 s4t4n Exp $
 
 IUSE=""
 S=${WORKDIR}/${P/_/-}/${PN}
@@ -9,9 +9,9 @@ SRC_URI="mirror://sourceforge/wmsensormon/${P/_/-}.tar.gz"
 HOMEPAGE="http://wmsensormon.sourceforge.net"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 DEPEND="virtual/x11
-	>=sys-apps/lm_sensors-2.8.7"
+	>=sys-apps/lm-sensors-2.8.7"
 
 src_compile() {
 	cd ${S}
@@ -27,5 +27,5 @@ src_install () {
 	#unbzip manpage - Will be updated in 1.2 release
 	doman wmsensormon.1
 	cd ..
-	dodoc CHANGELOG README TODO
+	dodoc CHANGELOG COPYING INSTALL README TODO
 }

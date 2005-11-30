@@ -1,25 +1,6 @@
 # ChangeLog for media-sound/imp3sh
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/imp3sh/ChangeLog,v 1.8 2004/10/30 10:53:04 eradicator Exp $
-
-  30 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  imp3sh-0.2.3.ebuild:
-  toolchain love for bug #69009.
-
-  06 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> imp3sh-0.2.3.ebuild:
-  gnuconfig_update
-
-  21 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> imp3sh-0.2.3.ebuild:
-  oggvorbis added to IUSE.
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> imp3sh-0.2.3.ebuild:
-  Added IUSE.
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> imp3sh-0.2.3.ebuild:
-  gcc 3.3 fixen for bug #47914.
-
-  12 Jun 2003; <msterret@gentoo.org> imp3sh-0.2.3.ebuild:
-  fix Header
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/imp3sh/ChangeLog,v 1.1 2003/03/27 10:13:31 mkeadle Exp $
 
 *imp3sh-0.2.3 (16 Mar 2003)
   

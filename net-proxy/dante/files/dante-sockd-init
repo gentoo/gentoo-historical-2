@@ -1,13 +1,12 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/files/dante-sockd-init,v 1.2 2005/06/04 12:30:59 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/dante/files/dante-sockd-init,v 1.1 2005/04/22 20:47:27 mrness Exp $
 
 SOCKD_OPT="-D"
 [ "${SOCKD_FORKDEPTH}" -gt 1 ] && SOCKD_OPT="${SOCKD_OPT} -N ${SOCKD_FORKDEPTH}"
 [ "${SOCKD_DEBUG}" -eq 1 ] && SOCKD_OPT="${SOCKD_OPT} -d"
 [ "${SOCKD_DISABLE_KEEPALIVE}" -eq 1 ] && SOCKD_OPT="${SOCKD_OPT} -n"
-PIDFILE=/var/run/sockd.pid
 
 depend() {
 	need net
@@ -18,41 +17,29 @@ checkconfig() {
 	if [ ! -f /etc/socks/sockd.conf ] ; then
 		eerror "You need to setup /etc/socks/sockd.conf first"
 		eerror "Examples are in /usr/share/doc/dante[version]/example"
-		eerror "for more info, see: man sockd.conf"
+		eerror "for info: info sockd.conf"
 		return 1
 	fi
-	
-	/usr/sbin/sockd -V &> /tmp/dante-sockd.checkconf
-	if [ $? -ne 0 ]; then
-		cat /tmp/dante-sockd.checkconf
+	/usr/sbin/sockd -V
+	ret=$?
+	if [ $ret -ne 0 ]; then
 		eerror "Something is wrong with your configuration file"
-		eerror "for more info, see: man sockd.conf"
 		return 1
 	fi
-	rm /tmp/dante-sockd.checkconf
-	
-	#Create pidfile with owner set to daemon's uid
-	DAEMON_UID=`sed -e '/^[ \t]*user[.]notprivileged[ \t]*:/{s/.*:[ \t]*//;q};d' /etc/socks/sockd.conf`
-	if [ -n "$DAEMON_UID" ]; then
-		touch $PIDFILE && chown $DAEMON_UID $PIDFILE 
-	fi
-	
-	return 0
 }
 
 start() {
 	checkconfig || return 1
 	ebegin "Starting dante sockd"
-	start-stop-daemon --start --quiet --pidfile $PIDFILE \
-		--make-pidfile --exec /usr/sbin/sockd -- ${SOCKD_OPT} &> /dev/null
+	start-stop-daemon --start --quiet --pidfile /var/run/sockd.pid \
+		--make-pidfile --exec /usr/sbin/sockd -- ${SOCKD_OPT}
 	eend $? "Failed to start sockd"
 }
 
 stop() {
 	ebegin "Stopping dante sockd"
-	start-stop-daemon --stop --quiet --pidfile $PIDFILE
-	eend $? "Failed to stop sockd" || return 1
-	
+	start-stop-daemon --stop --quiet --pidfile /var/run/sockd.pid
+	eend $? "Failed to stop sockd"
 	# clean stale pidfile
-	[ -f "$PIDFILE" ] && rm -f $PIDFILE
+	[ -f /var/run/sockd.pid ] && rm -f /var/run/sockd.pid
 }

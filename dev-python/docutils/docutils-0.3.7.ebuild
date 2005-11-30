@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3.7.ebuild,v 1.12 2005/11/25 21:56:16 tgall Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/docutils/docutils-0.3.7.ebuild,v 1.1 2005/03/14 19:38:08 pythonhead Exp $
 
-inherit distutils eutils elisp-common
+inherit distutils eutils
 
 DESCRIPTION="Set of python tools for processing plaintext docs into HTML, XML, etc."
 HOMEPAGE="http://docutils.sourceforge.net/"
@@ -11,12 +11,9 @@ SRC_URI="mirror://sourceforge/docutils/${P}.tar.gz
 
 LICENSE="public-domain PYTHON BSD"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm hppa ia64 ~m68k mips ppc ~ppc-macos ppc64 ~s390 ~sh sparc x86"
-IUSE="glep emacs"
-DEPEND=">=dev-lang/python-2.2
-	emacs? ( virtual/emacs )"
-
-SITEFILE=50docutils-gentoo.el
+KEYWORDS="~x86 ~ppc ~alpha ~sparc ~ppc-macos"
+IUSE="glep"
+DEPEND=">=dev-lang/python-2.2"
 
 GLEP_SRC=${WORKDIR}/glep-${PV}
 
@@ -32,9 +29,6 @@ src_compile() {
 	# Generate html docs from reStructured text sources
 	PYTHONPATH=${S}/build/lib ${python} \
 		tools/buildhtml.py --config=tools/docutils.conf
-	if use emacs; then
-		pushd tools/editors/emacs; elisp-compile *.el; popd
-	fi
 }
 
 
@@ -47,7 +41,7 @@ install_txt_doc() {
 
 src_test() {
 	cd ${S}/test
-	PYTHONPATH="${S}" ./alltests.py || die "alltests.py failed"
+	./alltests.py || die "alltests.py failed"
 }
 
 src_install() {
@@ -80,17 +74,4 @@ src_install() {
 		insinto /usr/lib/python${PYVER}/site-packages/docutils/writers
 		newins ${GLEP_SRC}/glep_htmlwrite.py glep_html.py || die "newins writer failed"
 	fi
-
-	if use emacs; then
-		elisp-install ${PN} tools/editors/emacs/*.{elc,el}
-		elisp-site-file-install ${FILESDIR}/${SITEFILE}
-	fi
-}
-
-pkg_postinst() {
-	use emacs && elisp-site-regen
-}
-
-pkg_postrm() {
-	use emacs && elisp-site-regen
 }

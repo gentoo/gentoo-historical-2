@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-mail/popick/popick-0.1.ebuild,v 1.3 2005/05/25 14:04:12 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-mail/popick/popick-0.1.ebuild,v 1.1 2004/12/15 09:47:36 ticho Exp $
 
 inherit eutils
 
@@ -9,13 +9,13 @@ HOMEPAGE="http://www.topfx.com"
 SRC_URI="http://www.topfx.com/dist/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND=""
 RDEPEND="dev-lang/perl
 	dev-perl/Curses-UI
-	perl-core/Getopt-Long"
+	dev-perl/Getopt-Long"
 
 
 src_unpack() {

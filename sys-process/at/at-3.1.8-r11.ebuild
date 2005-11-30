@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/at/at-3.1.8-r11.ebuild,v 1.3 2005/11/29 06:21:43 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/at/at-3.1.8-r11.ebuild,v 1.1 2005/03/03 17:40:23 ciaranm Exp $
 
 inherit eutils flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="http://ftp.debian.org/debian/pool/main/a/at/at_${PV}-11.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="virtual/libc
@@ -18,11 +18,6 @@ DEPEND="virtual/libc
 	>=sys-apps/portage-2.0.51"
 RDEPEND="virtual/libc
 	virtual/mta"
-
-pkg_setup() {
-	enewgroup at 25
-	enewuser at 25 -1 /var/spool/cron/atjobs at
-}
 
 src_unpack() {
 	unpack ${A}

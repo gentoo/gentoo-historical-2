@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/sim/sim-0.9.3-r1.ebuild,v 1.4 2005/01/15 00:07:07 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/sim/sim-0.9.3-r1.ebuild,v 1.1 2004/04/02 19:51:56 aliz Exp $
 
-if use kde; then
+if [ $( use kde ) ]; then
 	inherit kde-base eutils
 	need-kde 3
 else
@@ -34,7 +34,7 @@ src_compile() {
 	myconf="$myconf --without-gkrellm_plugin"
 	myconf="$myconf --prefix=/usr"
 
-	if use kde; then
+	if [ $( use kde ) ]; then
 		need-kde 3
 	else
 		need-qt 3

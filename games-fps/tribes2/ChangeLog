@@ -1,30 +1,6 @@
 # ChangeLog for games-fps/tribes2
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/tribes2/ChangeLog,v 1.10 2005/10/21 17:42:39 wolf31o2 Exp $
-
-  21 Oct 2005; Chris Gianelloni <wolf31o2@gentoo.org> tribes2-25034.ebuild:
-  Added addition dir variable to games_make_wrapper for bug #109793.
-
-  21 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> tribes2-25034.ebuild:
-  Changed check_license to explicitly list license to check.
-
-  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org> tribes2-25034.ebuild:
-  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
-
-  28 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> tribes2-25034.ebuild:
-  QA cleanup and more error checking.
-
-  28 Sep 2004; Chris Gianelloni <wolf31o2@gentoo.org> tribes2-25034.ebuild:
-  Added DEPEND on loki_patch and closing bug #53924.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> tribes2-25034.ebuild:
-  virtual/glibc -> virtual/libc
-
-  16 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> tribes2-25034.ebuild:
-  Added die if license check is failed.
-
-  11 Feb 2004; Chris Gianelloni <wolf31o2@gentoo.org> tribes2-25034.ebuild:
-  Added RESTRICT=nomirror.
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-fps/tribes2/ChangeLog,v 1.1 2004/02/11 22:19:29 wolf31o2 Exp $
 
 *tribes2-25034 (11 Feb 2004)
 

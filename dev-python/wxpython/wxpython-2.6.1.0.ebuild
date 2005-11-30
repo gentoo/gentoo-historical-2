@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/wxpython/wxpython-2.6.1.0.ebuild,v 1.9 2005/11/29 04:11:50 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-python/wxpython/wxpython-2.6.1.0.ebuild,v 1.1 2005/07/12 18:48:03 pythonhead Exp $
 
-inherit python wxwidgets eutils multilib
+inherit python wxwidgets eutils
 
 MY_P="${P/wxpython-/wxPython-src-}"
 DESCRIPTION="A blending of the wxWindows C++ class library with Python"
@@ -11,11 +11,11 @@ SRC_URI="mirror://sourceforge/wxpython/${MY_P}.tar.gz"
 
 LICENSE="wxWinLL-3"
 SLOT="2.6"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ~ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~arm ~amd64 ~ia64 ~hppa"
 IUSE="gtk gtk2 unicode opengl"
 
 RDEPEND=">=dev-lang/python-2.1
-	=x11-libs/wxGTK-2.6*
+	=x11-libs/wxGTK-2.6.1*
 	!<dev-python/wxpython-2.4.2.4-r1
 	gtk2? ( >=x11-libs/gtk+-2.0
 		>=x11-libs/pango-1.2
@@ -79,7 +79,7 @@ src_compile() {
 src_install() {
 	python_version
 	local mypyconf
-	local site_pkgs=/usr/$(get_libdir)/python${PYVER}/site-packages
+	local site_pkgs=/usr/lib/python${PYVER}/site-packages
 	dodir ${site_pkgs}
 
 	if ! use gtk2; then

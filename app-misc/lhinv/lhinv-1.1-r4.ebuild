@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/lhinv/lhinv-1.1-r4.ebuild,v 1.5 2005/04/21 19:27:29 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/lhinv/lhinv-1.1-r4.ebuild,v 1.1 2004/07/11 18:23:15 slarti Exp $
 
 inherit eutils
 
@@ -10,16 +10,15 @@ SRC_URI="mirror://sourceforge/lhinv/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="x86 ~ppc ~amd64"
 IUSE=""
 
 DEPEND=">=sys-apps/sed-4"
 RDEPEND="dev-lang/perl"
 
 src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/${PN}-1.1-r4-vmnet_sit.patch || die "epatch failed."
+	unpack ${A} && cd ${S} || die
+	epatch ${FILESDIR}/lhinv-1.1-r4-vmnet_sit.patch || die "epatch failed."
 }
 
 src_compile() {

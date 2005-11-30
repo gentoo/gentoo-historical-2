@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-8.01.ebuild,v 1.5 2005/07/12 19:53:39 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera/opera-8.01.ebuild,v 1.1 2005/06/16 14:36:27 lanius Exp $
 
 inherit eutils
 
@@ -33,17 +33,17 @@ DEPEND=">=sys-apps/sed-4
 
 RDEPEND="virtual/x11
 	>=media-libs/fontconfig-2.1.94-r1
+	media-libs/libexif
+	x11-libs/openmotif
+	spell? ( app-text/aspell )
 	amd64? ( static? ( app-emulation/emul-linux-x86-xlibs )
 	         !static? ( app-emulation/emul-linux-x86-qtlibs ) )
-	!amd64? ( media-libs/libexif
-	          x11-libs/openmotif
-	          spell? ( app-text/aspell )
-	          x86? ( !static? ( =x11-libs/qt-3* ) )
-	          media-libs/jpeg )"
+	x86? ( !static? ( =x11-libs/qt-3* ) )
+	media-libs/jpeg"
 
 SLOT="0"
 LICENSE="OPERA"
-KEYWORDS="~amd64 ~ppc sparc ~x86"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 src_unpack() {
 	unpack ${A}

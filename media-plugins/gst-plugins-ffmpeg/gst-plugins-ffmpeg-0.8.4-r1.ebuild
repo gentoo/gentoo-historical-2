@@ -1,8 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/gst-plugins-ffmpeg-0.8.4-r1.ebuild,v 1.8 2005/08/24 18:08:37 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ffmpeg/gst-plugins-ffmpeg-0.8.4-r1.ebuild,v 1.1 2005/04/28 23:47:08 zaheerm Exp $
 
-inherit flag-o-matic eutils
+inherit flag-o-matic
+inherit eutils
 
 MY_PN=${PN/-plugins/}
 MY_P=${MY_PN}-${PV}
@@ -16,7 +17,7 @@ HOMEPAGE="http://gstreamer.freedesktop.org/modules/gst-ffmpeg.html"
 SRC_URI="http://gstreamer.freedesktop.org/src/${MY_PN}/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~hppa ia64 ~ppc ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ia64 ~ppc ~sparc ~x86"
 IUSE=""
 
 S=${WORKDIR}/${MY_P}
@@ -26,8 +27,6 @@ DEPEND=">=media-libs/gstreamer-0.8.4
 
 src_unpack() {
 	unpack ${A}
-
-	epatch ${FILESDIR}/gst-ffmpeg-gcc4.patch.gz
 
 	# fixes hang on eos (bug #86042)
 	cd ${S}/ext/ffmpeg
@@ -39,7 +38,7 @@ src_compile() {
 	# Restrictions taken from the mplayer ebuild
 	# See bug #64262 for more info
 	# let's play the filtration game!
-	filter-flags -fPIE -fPIC -fstack-protector -fforce-addr -momit-leaf-frame-pointer -msse2 -msse3 -falign-functions -fweb
+	filter-flags -fPIE -fPIC -fstack-protector -fforce-addr -momit-leaf-frame-pointer -msse2 -msse3 -falign-functions
 	# ugly optimizations cause MPlayer to cry on x86 systems!
 	if use x86 ; then
 		replace-flags -O0 -O2

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.7.ebuild,v 1.6 2004/07/01 21:28:39 squinky86 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.7.ebuild,v 1.1 2002/12/11 10:52:18 mkennedy Exp $
 
 IUSE="ssl tcltk"
 
@@ -11,7 +11,7 @@ LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="x86 ~alpha"
 
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	sys-devel/flex
 	sys-devel/bison
 	ssl? ( dev-libs/openssl )
@@ -20,8 +20,8 @@ DEPEND="virtual/libc
 S="${WORKDIR}/${PN}"
 
 src_compile() {
-	local myopts="--enable-final
-		--disable-mini-stl
+	local myopts="--enable-final 
+		--disable-mini-stl 
 		--enable-except
 		--enable-dynamic
 		--enable-repo

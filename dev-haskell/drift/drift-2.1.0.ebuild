@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/drift/drift-2.1.0.ebuild,v 1.3 2005/09/23 13:40:22 dcoutts Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/drift/drift-2.1.0.ebuild,v 1.1 2005/03/09 08:44:53 araujo Exp $
 
 inherit ghc-package
 
@@ -8,12 +8,12 @@ MY_PN="DrIFT"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Preprocessor for automatic derivation of Haskell class instances"
-HOMEPAGE="http://repetae.net/john/computer/haskell/DrIFT/"
-SRC_URI="http://repetae.net/john/computer/haskell/DrIFT/drop/${MY_P}.tar.gz"
+HOMEPAGE="http://repetae.net/john/computer/haskell/${MY_PN}/"
+SRC_URI="http://repetae.net/john/computer/haskell/${MY_PN}/drop/${MY_P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 
 IUSE=""
 

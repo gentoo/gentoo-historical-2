@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_perl/mod_perl-1.29.ebuild,v 1.3 2005/11/12 16:25:09 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_perl/mod_perl-1.29.ebuild,v 1.1 2005/05/09 10:20:52 beu Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://perl.apache.org"
 
 SLOT="0"
 LICENSE="Apache-1.1 as-is"
-KEYWORDS="alpha ~amd64 ia64 ~ppc ppc64 sparc ~x86"
+KEYWORDS="~x86 ~amd64 ~ppc sparc alpha ia64 ~ppc64"
 
 DEPEND="dev-lang/perl dev-perl/libwww-perl =net-www/apache-1*"
 
@@ -66,7 +66,7 @@ src_install () {
 
 pkg_postinst() {
 	einfo
-	einfo "Execute emerge --config =${PF}"
+	einfo "Execute \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
 	einfo "to have your apache.conf auto-updated for use with this module."
 	einfo "You should then edit your /etc/conf.d/apache file to suit."
 	einfo

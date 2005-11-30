@@ -1,8 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/asuka/asuka-1.0.6.ebuild,v 1.11 2005/09/11 14:01:00 swegener Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/net-irc/asuka/asuka-1.0.6.ebuild,v 1.1 2003/10/27 19:55:17 zul Exp $
 
 DESCRIPTION="The QuakeNet IRC Server"
 HOMEPAGE="http://dev-com.quakenet.org/"
@@ -10,19 +8,22 @@ SRC_URI="http://dev-com.quakenet.org/releases/${PN}/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-1"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc"
+KEYWORDS="~x86"
 
 IUSE="debug"
-DEPEND="virtual/libc"
+DEPEND="virtual/glibc"
+RDEPEND=""
 
 src_compile() {
-	econf \
-		--with-symlink=asuka-ircd \
+	local myconf=""
+
+	use debug && myconf="${myconf} --enable-debug"
+
+	econf 	--with-symlink=asuka-ircd \
 		--with-dpath=/etc/asuka \
 		--with-cpath=/etc/asuka/ircd.conf \
 		--with-lpath=/var/log/asuka/asuka.log \
-		$(use_enable debug) \
-		|| die "econf failed"
+		${myconf} || die "econf failed"
 	emake || die "emake failed"
 }
 
@@ -31,6 +32,7 @@ src_install() {
 
 	newman doc/ircd.8 asuka-ircd.8
 
+	dodir /etc/asuka
 	insinto /etc/asuka
 	doins doc/ircd.conf.sample
 
@@ -40,15 +42,16 @@ src_install() {
 	insinto /etc/conf.d
 	newins ${FILESDIR}/asuka.conf.d asuka
 
-	keepdir /var/log/asuka
+	dodoc INSTALL* LICENSE README* RELEASE.NOTES TODO*
+	dodoc doc/readme.* doc/p10.html doc/features.txt doc/Authors
+}
 
-	dodoc INSTALL* LICENSE README* RELEASE.NOTES TODO* \
-		doc/readme.* doc/p10.html doc/features.txt doc/Authors
+pkg_setup() {
+	enewuser asuka
 }
 
 pkg_postinst() {
-	enewuser asuka
-	chown asuka ${ROOT}/var/log/asuka
+	install -d -m 0700 -o asuka -g root ${ROOT}/var/log/asuka
 
 	einfo
 	einfo "A sample config file can be found at /etc/asuka/ircd.conf.sample"

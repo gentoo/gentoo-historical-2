@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.0.065.ebuild,v 1.8 2004/06/24 22:50:29 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.0.065.ebuild,v 1.1 2002/12/10 19:52:58 avenj Exp $
 
 S=${WORKDIR}
 
@@ -14,16 +14,16 @@ HOMEPAGE="http://www.intel.com/software/products/compilers/clin/"
 
 LICENSE="icc-7.0"
 
-DEPEND="virtual/linux-sources
+DEPEND=">=virtual/linux-sources-2.4
 		>=sys-libs/glibc-2.2.4
-		app-arch/cpio
+		sys-apps/cpio
 		app-arch/rpm"
 
-RDEPEND="virtual/linux-sources
+RDEPEND=">=virtual/linux-sources-2.4
 		>=sys-libs/glibc-2.2.4"
 
 SLOT="7"
-KEYWORDS="-* x86"
+KEYWORDS="~x86 -ppc -sparc -alpha"
 IUSE=""
 
 src_compile() {

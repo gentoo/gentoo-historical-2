@@ -1,40 +1,6 @@
 # ChangeLog for x11-plugins/wmCalClock
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmCalClock/ChangeLog,v 1.12 2005/11/10 08:48:03 s4t4n Exp $
-
-  10 Nov 2005; Michele Noberasco <s4t4n@gentoo.org> wmCalClock-1.25-r1.ebuild:
-  Removed COPYING and INSTALL from dodoc.
-
-  13 Sep 2005; Michele Noberasco <s4t4n@gentoo.org> wmCalClock-1.25-r1.ebuild:
-  Added some magic sed to remove unneeded SYSTEM variable from Makefile,
-  fixing bug #105730.
-
-  31 Aug 2004; Tom Gall <tgall@gentoo.org> wmCalClock-1.25-r1.ebuild:
-  stable on ppc64, bug #61761
-
-  20 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> wmCalClock-1.25-r1.ebuild:
-  Fixed the ebuild so that it does actually produce a working binary.
-  How on Earth is possible that this ebuild is stable for lots of arches
-  while not even producing a binary?!? Closes #57123.
-  wmCalClock-1.25-r1.ebuild:
-  Wipe out old ebuilds...
-
-  07 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
-  wmCalClock-1.25-r1.ebuild:
-  Added ~mips keyword.
-
-  17 Jun 2003; Will Woods <wwoods@gentoo.org> wmCalClock-1.25-r1.ebuild:
-  Added alpha to KEYWORDS
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-
-*wmCalClock-1.25-r1 (03 Nov 2002)
-
-  03 Nov 2002; Seemant Kulleen <seemant@gentoo.org> wmCalClock-1.25-r1.ebuild
-  files/digest-wmCalClock-1.25-r1 :
-
-  Made FHS compliant and installed documentation
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/wmCalClock/ChangeLog,v 1.1 2002/08/30 07:44:13 seemant Exp $
 
 *wmCalClock-1.25 (1 Feb 2002)
 

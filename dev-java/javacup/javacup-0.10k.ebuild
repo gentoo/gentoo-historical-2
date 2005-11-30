@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javacup/javacup-0.10k.ebuild,v 1.10 2005/08/07 12:51:39 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/javacup/javacup-0.10k.ebuild,v 1.1 2004/09/19 21:48:49 axxo Exp $
 
 inherit java-pkg
 
@@ -10,11 +10,10 @@ HOMEPAGE="http://www.cs.princeton.edu/~appel/modern/java/CUP/"
 SRC_URI="http://www.cs.princeton.edu/~appel/modern/java/CUP/java_cup_v10k.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
-IUSE="source"
-DEPEND=">=virtual/jdk-1.3
-	source? ( app-arch/zip )"
-RDEPEND=">=virtual/jre-1.3"
+KEYWORDS="~x86"
+IUSE=""
+DEPEND="virtual/jdk"
+RDEPEND="virtual/jre"
 
 S=${WORKDIR}
 
@@ -33,5 +32,4 @@ src_install() {
 	java-pkg_dojar ${PN}.jar
 	dodoc CHANGELOG README LICENSE
 	dohtml manual.html
-	use source && java-pkg_dosrc java_cup
 }

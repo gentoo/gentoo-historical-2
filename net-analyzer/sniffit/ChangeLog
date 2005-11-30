@@ -1,31 +1,8 @@
 # ChangeLog for net-analyzer/sniffit
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sniffit/ChangeLog,v 1.10 2005/06/13 23:25:02 ticho Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/sniffit/ChangeLog,v 1.1 2002/02/01 21:53:32 gbevin Exp $
 
-  13 Jun 2005; Andrej Kacian <ticho@gentoo.org> sniffit-0.3.7-r1.ebuild:
-  Added ~amd64 keyword.
-
-  29 Jan 2005; Daniel Black <dragonheart@gentoo.org> sniffit-0.3.7-r1.ebuild,
-  sniffit-0.3.7.ebuild:
-  changed net-libs/libpcap depend to virtual/libcap
-
-  09 Jul 2004; Eldad Zack <eldad@gentoo.org> +metadata.xml,
-  sniffit-0.3.7-r1.ebuild, sniffit-0.3.7.ebuild:
-  Tidy up. added IUSE.
-
-*sniffit-0.3.7-r1 (28 Jul 2003)
-
-  28 Jul 2003; Martin Schlemmer <azarah@gentoo.org> sniffit-0.3.7-r1.ebuild,
-  files/sniffit-0.3.7-gcc33.patch:
-  Fix gcc-3.3 related issues (bug #25328), thanks to Chandler Carruth
-  <carrbc1@wfu.edu>.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *sniffit-0.3.7 (1 Feb 2002)
-
-  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> :
-  Added ppc keyword
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

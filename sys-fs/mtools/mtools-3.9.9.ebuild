@@ -1,26 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtools/mtools-3.9.9.ebuild,v 1.14 2005/07/17 13:23:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-fs/mtools/mtools-3.9.9.ebuild,v 1.1 2004/01/03 14:27:31 mholzer Exp $
 
 DESCRIPTION="utilities to access MS-DOS disks from Unix without mounting them"
-HOMEPAGE="http://mtools.linux.lu/"
 SRC_URI="http://mtools.linux.lu/${P}.tar.gz"
+HOMEPAGE="http://mtools.linux.lu/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
 
 DEPEND="sys-apps/texinfo"
 
 src_compile() {
-	econf --sysconfdir=/etc/mtools || die
-	emake || die "emake failed"
+	econf --sysconfdir=/etc/mtools
+	make || die
 }
 
 src_install() {
-	einstall sysconfdir=${D}/etc/mtools || die
+	einstall sysconfdir=${D}/etc/mtools
 	insinto /etc/mtools
 	newins mtools.conf mtools.conf.example
-	dodoc Changelog NEWPARAMS README* Release.notes
+	dodoc COPYING ChangeLog NEWPARAMS README* Release.notes
 }

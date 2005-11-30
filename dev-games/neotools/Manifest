@@ -1,4 +1,4 @@
-MD5 7495bf417b3ad192e05a59e7fd5581e5 neotools-0.8.1.ebuild 957
-MD5 da9a7d4ac04b24fba400366896c0b6ea ChangeLog 980
 MD5 2bea91bd3c0cec937ef3019b5dae161b metadata.xml 473
-MD5 5b830b64facde8a5b6569e9372495ea6 files/digest-neotools-0.8.1 70
+MD5 b3e7e4290d4762097f29434932327c2d neotools-0.7.0.ebuild 731
+MD5 da3e839a2a0932b38e58a2315c9ec979 ChangeLog 261
+MD5 d11cc8463ef6e6d26ca3aaccb25a1a23 files/digest-neotools-0.7.0 67

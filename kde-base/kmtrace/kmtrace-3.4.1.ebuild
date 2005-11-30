@@ -1,14 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kmtrace/kmtrace-3.4.1.ebuild,v 1.7 2005/10/13 00:10:02 danarmak Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kmtrace/kmtrace-3.4.1.ebuild,v 1.1 2005/05/25 21:23:08 danarmak Exp $
 
 KMNAME=kdesdk
-MAXKDEVER=3.4.3
+MAXKDEVER=$PV
 KM_DEPRANGE="$PV $MAXKDEVER"
 inherit kde-meta
 
 DESCRIPTION="kmtrace - A KDE tool to assist with malloc debugging using glibc's \"mtrace\" functionality"
-KEYWORDS="amd64 ~ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 DEPEND="sys-libs/glibc" # any other libc won't work, says the README file
 

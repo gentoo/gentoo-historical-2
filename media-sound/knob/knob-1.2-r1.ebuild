@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/knob/knob-1.2-r1.ebuild,v 1.5 2005/10/05 13:09:52 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/knob/knob-1.2-r1.ebuild,v 1.1 2004/07/04 23:33:37 fvdpol Exp $
 
 inherit kde eutils
 
@@ -10,10 +10,8 @@ SRC_URI="http://lichota.net/~krzysiek/projects/knob/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc alpha ~ppc amd64"
+KEYWORDS="x86 sparc alpha ~ppc ~amd64"
 IUSE=""
-
-DEPEND="kde-base/arts"
 
 need-kde 3
 

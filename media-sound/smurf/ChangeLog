@@ -1,24 +1,6 @@
 # ChangeLog for media-sound/smurf
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/smurf/ChangeLog,v 1.9 2005/09/04 10:55:22 flameeyes Exp $
-
-  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> smurf-0.52.6.ebuild:
-  Don't install COPYING, INSTALL and ABOUT-NLS files.
-
-  25 Jul 2005; David Holm <dholm@gentoo.org> smurf-0.52.6.ebuild:
-  Added to ~ppc.
-
-  15 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org> smurf-0.52.6.ebuild:
-  Stable amd64, sparc.
-
-  19 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> smurf-0.52.6.ebuild:
-  ~sparc and ~amd64
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> smurf-0.52.6.ebuild:
-  Removed explicit S=
-
-  01 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org> smurf-0.52.6.ebuild:
-  Stable on x86.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/smurf/ChangeLog,v 1.1 2003/06/25 09:40:10 torbenh Exp $
 
 *smurf-0.52.6 (25 Jun 2003)
 

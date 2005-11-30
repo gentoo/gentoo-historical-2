@@ -1,17 +1,6 @@
-# ChangeLog for net-proxy/3proxy
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/3proxy/ChangeLog,v 1.5 2005/07/30 07:18:34 mrness Exp $
-
-  30 Jul 2005; Alin Nastac <mrness@gentoo.org> -3proxy-0.5b.ebuild:
-  Remove obsolete version.
-
-*3proxy-0.5.1b (28 May 2005)
-
-  28 May 2005; Mike Frysinger <vapier@gentoo.org> +3proxy-0.5.1b.ebuild:
-  Version bump.
-
-  15 May 2005; Konstantin Arkhipov <voxus@gentoo.org> 3proxy-0.5b.ebuild:
-  Added ~amd64 keyword, closing bug #92702.
+# ChangeLog for net-misc/3proxy
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/3proxy/ChangeLog,v 1.1 2005/04/22 21:40:29 mrness Exp $
 
 *3proxy-0.5b (22 Apr 2005)
 

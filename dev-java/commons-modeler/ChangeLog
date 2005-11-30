@@ -1,40 +1,6 @@
 # ChangeLog for dev-java/commons-modeler
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-modeler/ChangeLog,v 1.13 2005/10/15 11:42:40 axxo Exp $
-
-  15 Oct 2005; Thomas Matthijs <axxo@gentoo.org> commons-modeler-1.1.ebuild:
-  move dev-java/jmx dev-java/sun-jmx
-
-  10 Jul 2005; Thomas Matthijs <axxo@gentoo.org> commons-modeler-1.1.ebuild:
-  dep fixes, add source useflag, cleanup
-
-  29 May 2005; Markus Rothe <corsair@gentoo.org> commons-modeler-1.1.ebuild:
-  Stable on ppc64
-
-  07 May 2005; Jason Wever <weeve@gentoo.org> commons-modeler-1.1.ebuild:
-  Added ~sparc keyword.
-
-  09 Apr 2005; Markus Rothe <corsair@gentoo.org> commons-modeler-1.1.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  14 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  commons-modeler-1.1.ebuild:
-  stable on amd64
-
-  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  commons-modeler-1.1.ebuild:
-  added missing jikes dependency. see #78819.
-
-  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
-  commons-modeler-1.1.ebuild:
-  keywords ~amd64; closes #67332.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> commons-modeler-1.1.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-modeler-1.1.ebuild:
-  Stable on x86. Fixes according to #45398
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-modeler/ChangeLog,v 1.1 2004/02/26 03:50:59 zx Exp $
 
 *commons-modeler-1.1 (28 Feb 2004)
 

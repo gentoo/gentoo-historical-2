@@ -1,64 +1,6 @@
 # ChangeLog for dev-perl/X11-Protocol
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/X11-Protocol/ChangeLog,v 1.17 2005/05/01 18:23:17 slarti Exp $
-
-  01 May 2005; Tom Martin <slarti@gentoo.org> X11-Protocol-0.53.ebuild:
-  Stable on amd64.
-
-  30 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
-  X11-Protocol-0.53.ebuild:
-  Stable on ppc.
-
-  30 Apr 2005; Bryan Østergaard <kloeri@gentoo.org>
-  X11-Protocol-0.53.ebuild:
-  Stable on alpha.
-
-  29 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  X11-Protocol-0.53.ebuild:
-  Stable on sparc
-
-  28 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  -X11-Protocol-0.51-r1.ebuild, -X11-Protocol-0.51-r2.ebuild,
-  X11-Protocol-0.53.ebuild:
-  Cleaning
-
-  01 Apr 2005; Aron Griffis <agriffis@gentoo.org> X11-Protocol-0.53.ebuild:
-  stable on ia64
-
-  26 Jan 2005; Markus Rothe <corsair@gentoo.org> X11-Protocol-0.53.ebuild:
-  Stable on ppc64
-
-*X11-Protocol-0.53 (30 Jul 2004)
-
-  30 Jul 2004; Michael Cummings <mcummings@gentoo.org>
-  +X11-Protocol-0.53.ebuild:
-  New version on CPAN
-
-  01 Feb 2004; Jon Portnoy <avenj@gentoo.org> X11-Protocol-0.52.ebuild :
-  AMD64 keywords.
-
-  17 Nov 2003; Tavis Ormandy <taviso@gentoo.org> X11-Protocol-0.52.ebuild:
-  stable.
-
-*X11-Protocol-0.52 (13 Nov 2003)
-
-  13 Nov 2003; Tavis Ormandy <taviso@gentoo.org> X11-Protocol-0.52.ebuild:
-  version bump.
-
-  21 Oct 2003; Tavis Ormandy <taviso@gentoo.org> X11-Protocol-0.51.ebuild:
-  updated patch.
-
-  13 Oct 2003; Tavis Ormandy <taviso@gentoo.org> X11-Protocol-0.51-r1.ebuild:
-  stable.
-
-*X11-Protocol-0.51-r1 (11 Oct 2003)
-
-  11 Oct 2003; Tavis Ormandy <taviso@gentoo.org> X11-Protocol-0.51-r1.ebuild,
-  files/X11-Protocol-0.51.s2.patch:
-  Applying patch required for newer verions of FvwmTabs
-
-  07 Oct 2003; Tavis Ormandy <taviso@gentoo.org> X11-Protocol-0.51.ebuild:
-  stable on alpha/x86
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/X11-Protocol/ChangeLog,v 1.1 2003/08/05 17:24:16 taviso Exp $
 
 *X11-Protocol-0.51 (05 Aug 2003)
 

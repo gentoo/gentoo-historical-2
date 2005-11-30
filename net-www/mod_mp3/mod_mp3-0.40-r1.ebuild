@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_mp3/mod_mp3-0.40-r1.ebuild,v 1.5 2005/11/01 18:59:54 dertobi123 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_mp3/mod_mp3-0.40-r1.ebuild,v 1.1 2005/01/07 19:26:00 vericgar Exp $
 
 inherit apache-module
 
 # test target in Makefile isn't sane
-RESTRICT="test"
+RESTRICT="maketest"
 
 IUSE="mysql postgres"
 
 DESCRIPTION="Module for turning Apache into an MP3 or Ogg streaming server"
 HOMEPAGE="http://software.tangent.org/"
-KEYWORDS="ppc ~sparc x86"
+KEYWORDS="~x86 ~sparc ~ppc"
 
 SRC_URI="http://download.tangent.org/${P}.tar.gz"
 
@@ -22,6 +22,9 @@ DEPEND="dev-lang/perl
 LICENSE="as-is"
 SLOT="0"
 
+APXS1_S="${S}"
+
+APACHE1_MOD_FILE="src/${PN}.so"
 APACHE1_MOD_CONF="50_mod_mp3"
 APACHE1_MOD_DEFINE="MP3"
 

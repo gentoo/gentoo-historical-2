@@ -1,16 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 9294d8339340e3c6be476277b49ab6c7 ChangeLog 1363
-MD5 aa6d984e07948948541226ca047188cc ecletex-0.0.3.ebuild 1742
-MD5 a019ed743e7db3b8bcf517a492f1ed03 metadata.xml 496
-MD5 e6f8663a52b0283c846324a27681fbb8 files/digest-ecletex-0.0.3 63
-MD5 b094a7dfce36d273c8f310f0fc83af06 files/build.properties-0.0.3 1456
-MD5 3fcc2a7a525e2ab6e359462c4bf050a4 files/build.xml-0.0.3 5789
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDGEqPj5H05b2HAEkRAnzrAJ9xkA0tx2GohJBSYeKqYq9rMLgq/wCgmcLc
-k77BiCCf2c0MuCpo7GA5dtU=
-=gc72
------END PGP SIGNATURE-----
+MD5 9fe2f85dd832c02f9c8467a8c0ad627c ecletex-0.0.2.ebuild 444
+MD5 d9f5180f14916eb0cfae5c6d311a7712 ChangeLog 279
+MD5 0862008d1df67410c9366c7bcb8b9880 metadata.xml 197
+MD5 7802436384014c919e4e2d4b632dfa4b files/digest-ecletex-0.0.2 70

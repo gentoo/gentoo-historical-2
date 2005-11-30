@@ -1,10 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/sonic-rainbow/sonic-rainbow-0.5.1.ebuild,v 1.6 2005/09/10 15:45:29 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/sonic-rainbow/sonic-rainbow-0.5.1.ebuild,v 1.1 2004/04/06 18:26:27 eradicator Exp $
 
 IUSE=""
-
-inherit eutils
 
 S=${WORKDIR}/${PN}
 DESCRIPTION="a Linux GUI multimedia player"
@@ -26,18 +24,18 @@ DEPEND="app-cdr/cdrtools
 	>=x11-libs/gtk+-1.2"
 
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~sparc"
+KEYWORDS="~x86"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	epatch ${FILESDIR}/${P}-Makefile.patch
+	epatch ${FILESDIR}/${PN}-Makefile.patch
 }
 
 src_install() {
 	make DESTDIR=${D} localedir=${D}/usr/share/locale install || die
 
-	dodoc AUTHORS README
+	dodoc AUTHORS INSTALL README
 	dohtml doc/Sonic-Rainbow.html
 }

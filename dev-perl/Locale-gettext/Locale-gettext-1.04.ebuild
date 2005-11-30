@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Locale-gettext/Locale-gettext-1.04.ebuild,v 1.3 2005/05/25 15:09:59 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Locale-gettext/Locale-gettext-1.04.ebuild,v 1.1 2005/04/28 16:39:31 mcummings Exp $
 
 inherit perl-module
 
@@ -17,7 +17,6 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 
 DEPEND="sys-devel/gettext
-		>=perl-core/Test-Simple-0.54"
+		>=dev-perl/Test-Simple-0.54"
 
-# Disabling the tests - not ready for prime time - mcummings
-#SRC_TEST="do"
+SRC_TEST="do"

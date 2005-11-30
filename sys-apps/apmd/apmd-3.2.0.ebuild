@@ -1,19 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/apmd-3.2.0.ebuild,v 1.12 2005/07/09 16:00:13 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/apmd-3.2.0.ebuild,v 1.1 2003/12/30 23:12:19 warpzero Exp $
 
 inherit eutils
 
-IUSE="X nls"
+IUSE="X"
 
-S="${WORKDIR}/${P}.orig"
+S=${WORKDIR}/${PN}
 DESCRIPTION="Advanced Power Management Daemon"
 HOMEPAGE="http://www.worldvisions.ca/~apenwarr/apmd/"
-SRC_URI="mirror://debian/pool/main/a/apmd/${PN}_${PV}.orig.tar.gz"
+SRC_URI="ftp://ftp.debian.org/debian/pool/main/a/apmd/${PN}_${PV}.orig.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64 ~ppc ~ppc64"
 
 
 DEPEND=">=sys-apps/debianutils-1.16
@@ -29,7 +29,7 @@ src_unpack() {
 		-e "s:\(MANDIR\=\${PREFIX}\)\(/man\):\1/share\2:" \
 		Makefile.orig > Makefile
 
-	if use X ; then
+	if [ `use X` ] ; then
 		echo -e "xinstall:\n\tinstall\txapm\t\${PREFIX}/bin" >> Makefile
 	else
 		cp Makefile Makefile.orig
@@ -42,30 +42,33 @@ src_unpack() {
 	epatch ${FILESDIR}/apmsleep.c.diff.3.2.0
 
 	# This closes bug #29636: needs 2.6 patching [plasmaroo@gentoo.org]
-	# If this does not compile with newer versions, rediff the patch
-	# and DO NOT just ignore it.
-	epatch ${FILESDIR}/apmd-3.2.0.kernel26x.patch
+	#epatch ${FILESDIR}/apmd.kernel26x.patch
+	#this doesn't seem to be needed anymore [warpzero@gentoo.org]
 }
 
-src_install() {
-	dodir /usr/sbin
+src_compile() {
+	#make CFLAGS="${CFLAGS}" || die "compile problem"
+	emake || die
+}
 
-	make DESTDIR=${D} PREFIX=/usr install || die "install failed"
+S="${WORKDIR}/${PN}-${PV}.orig"
+
+src_install() {
+	make DESTDIR=${D} install || die "install failed"
 
 	dodir /etc/apm/{event.d,suspend.d,resume.d}
-	exeinto /etc/apm ; doexe apmd_proxy
+	exeinto /etc/apm ; doexe debian/apmd_proxy
 	dodoc ANNOUNCE BUGS.apmsleep COPYING* README* ChangeLog LSM
 
 	insinto /etc/conf.d ; newins ${FILESDIR}/apmd.confd apmd
 	exeinto /etc/init.d ; newexe ${FILESDIR}/apmd.rc6 apmd
 
-	if use X ; then
+	if [ `use X` ] ; then
 		make DESTDIR=${D} xinstall || die "xinstall failed"
 	fi
 
-	if ! use nls
+	if [ ! `use nls` ]
 	then
 		rm -rf ${D}/usr/share/man/fr
 	fi
-
 }

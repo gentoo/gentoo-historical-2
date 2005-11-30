@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-business/nxserver-business-1.3.2.ebuild,v 1.3 2005/05/23 19:01:02 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nxserver-business/nxserver-business-1.3.2.ebuild,v 1.1 2004/05/13 22:33:49 stuart Exp $
 
 inherit nxserver
 

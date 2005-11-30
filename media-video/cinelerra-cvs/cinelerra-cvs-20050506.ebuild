@@ -1,8 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra-cvs/cinelerra-cvs-20050506.ebuild,v 1.3 2005/05/18 10:59:44 zypher Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra-cvs/cinelerra-cvs-20050506.ebuild,v 1.1 2005/05/08 11:09:47 zypher Exp $
 
-inherit toolchain-funcs eutils flag-o-matic
+inherit gcc eutils flag-o-matic
+
+export WANT_GCC_3="yes"
 
 #filter-flags "-fPIC -fforce-addr"
 
@@ -14,11 +16,13 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 IUSE="alsa ffmpeg oss static"
 
-RDEPEND="!media-video/cinelerra
+DEPEND="!media-video/cinelerra
 	virtual/x11
+	virtual/libc
+	=sys-devel/gcc-3*
 	media-libs/libpng
 	media-libs/libdv
 	media-libs/faad2
@@ -27,15 +31,11 @@ RDEPEND="!media-video/cinelerra
 	>=sys-libs/libraw1394-0.9.0
 	>=media-sound/esound-0.2.34
 	>=media-libs/openexr-1.2.1
-	!media-video/cinelerra"
-
-DEPEND="${RDEPEND}
+	!media-video/cinelerra
 	x86? ( dev-lang/nasm )"
 
-pkg_setup() {
-	if [[ "$(gcc-major-version)" -lt "3" ]]; then
-		die "You must use gcc 3 or better."
-	fi
+src_unpack() {
+	unpack ${A}
 }
 
 src_compile() {

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake1-movies/quake1-movies-0.ebuild,v 1.5 2005/11/05 22:48:57 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake1-movies/quake1-movies-0.ebuild,v 1.1 2005/01/17 02:15:08 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="a collection of all the greatest Quake movies"
 HOMEPAGE="http://www.planetquake.com/cineplex/history.html"
@@ -13,8 +13,9 @@ SRC_URI="http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/camper
 	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/ta2.zip
 	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/op_bays.zip
 	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/cineplex/artifact.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/blah/blahmov.zip
-	http://ftp.se.kde.org/pub/pc/games/idgames2/planetquake/blah/blahouts.zip"
+	mirror://gentoo/blahmov.zip
+	mirror://gentoo/blahouts.zip
+	"
 
 LICENSE="as-is"
 SLOT="0"
@@ -32,14 +33,14 @@ myunpack() {
 }
 
 src_unpack() {
-	cd "${S}"
+	cd ${S}
 	einfo "Diary of a Camper ..."
 	mkdir id1
 	cd id1
 	myunpack camper.zip
 	mv movies.txt movies-camper.txt
 
-	cd "${S}"
+	cd ${S}
 	einfo "Ranger Gone Bad ..."
 	cd id1
 	myunpack rgb.zip
@@ -53,31 +54,33 @@ src_unpack() {
 	cd ta2
 	myunpack ta2.zip
 
-	cd "${S}"
+	cd ${S}
 	einfo "Operation Bayshield ..."
 	mkdir op_bays
 	cd op_bays
 	myunpack op_bays.zip
 
-	cd "${S}"
+	cd ${S}
 	einfo "The Artifact ..."
 	mkdir artifact
 	cd artifact
 	myunpack artifact.zip
 
-	cd "${S}"
+	cd ${S}
 	einfo "Blahbalicious ..."
 	myunpack blahmov.zip
 	rm *.bat
 	cd blah
 	myunpack blahouts.zip
 
-	cd "${S}"
+	cd ${S}
 	edos2unix $(find . -name '*.txt' -o -name '*.cfg')
 }
 
 src_install() {
-	insinto "${GAMES_DATADIR}/quake1"
+	local dir=${GAMES_DATADIR}/quake-data
+	dodir "${dir}"
+	insinto "${dir}"
 	doins -r * || die "doins"
 	prepgamesdirs
 }

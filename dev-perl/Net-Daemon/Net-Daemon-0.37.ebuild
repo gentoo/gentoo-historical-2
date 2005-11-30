@@ -1,14 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Daemon/Net-Daemon-0.37.ebuild,v 1.15 2005/04/07 20:41:25 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Daemon/Net-Daemon-0.37.ebuild,v 1.1 2003/06/16 13:57:23 mcummings Exp $
 
 inherit perl-module
 
+S=${WORKDIR}/${P}
+CATEGORY="dev-perl"
 DESCRIPTION="Abstract base class for portable servers"
-HOMEPAGE="http://www.cpan.org/modules/by-module/Net/${P}.readme"
 SRC_URI="http://www.cpan.org/modules/by-module/Net/${P}.tar.gz"
+HOMEPAGE="http://www.cpan.org/modules/by-module/Net/${P}.readme"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 ppc64"
-IUSE=""
+LICENSE="Artistic"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~arm"

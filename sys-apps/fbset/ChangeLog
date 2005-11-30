@@ -1,25 +1,8 @@
 # ChangeLog for sys-apps/fbset
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/fbset/ChangeLog,v 1.10 2005/08/17 19:56:48 pauldv Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fbset/ChangeLog,v 1.1 2002/02/01 21:53:36 gbevin Exp $
 
-  17 Aug 2005; Paul de Vrieze <pauldv@gentoo.org> fbset-2.1.ebuild:
-  Change the homepage to a actually working url
-
-  16 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> fbset-2.1.ebuild:
-  make parallel-safe; use emake; error messages
-
-  02 Mar 2004; Brian Jackson <iggy@gentoo.org> fbset-2.1.ebuild:
-  adding initial s390 support
-
-  09 Feb 2003; Guy Martin <gmsoft@gentoo.org> fbset-2.1.ebuild :
-  Added hppa to keywords.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *fbset-2.1 (1 Feb 2002)
-
-  14 Jul 2002; phoen][x <phoenix@gentoo.org> fbset-2.1.ebuild :
-  Added KEYWORDS, SLOT.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

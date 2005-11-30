@@ -1,10 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl/bioperl-1.2.ebuild,v 1.7 2005/11/28 12:03:14 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl/bioperl-1.2.ebuild,v 1.1 2004/12/23 22:05:32 ribosome Exp $
 
-inherit perl-app debug
+inherit perl-module debug
 
-DESCRIPTION="A collection of tools for bioinformatics, genomics and life science research"
+DESCRIPTION="collection of tools for bioinformatics, genomics and life science research"
 HOMEPAGE="http://www.bioperl.org/"
 SRC_URI="http://bioperl.org/ftp/DIST/${P}.tar.gz"
 
@@ -13,14 +13,14 @@ SLOT="0"
 KEYWORDS="x86 ~ppc ~sparc alpha"
 IUSE="mysql gd"
 
-DEPEND="perl-core/File-Temp
+DEPEND="dev-perl/File-Temp
 	dev-perl/Graph
 	dev-perl/HTML-Parser
 	dev-perl/IO-String
 	dev-perl/IO-stringy
 	dev-perl/Parse-RecDescent
 	dev-perl/SOAP-Lite
-	perl-core/Storable
+	dev-perl/Storable
 	dev-perl/XML-DOM
 	dev-perl/XML-Parser
 	dev-perl/XML-Writer

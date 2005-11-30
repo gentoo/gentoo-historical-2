@@ -1,15 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-javamail-bin/sun-javamail-bin-1.3.1.ebuild,v 1.9 2005/07/12 23:37:10 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-javamail-bin/sun-javamail-bin-1.3.1.ebuild,v 1.1 2004/05/02 01:06:11 karltk Exp $
 
 inherit java-pkg
 
-At="javamail-${PV//./_}-upd.zip"
+At="javamail-${PV//./_}.zip"
 S=${WORKDIR}/javamail-${PV}
 DESCRIPTION="A Java-based framework to build multiplatform mail and messaging applications."
 SRC_URI="${At}"
 HOMEPAGE="http://java.sun.com/products/javamail/index.html"
-KEYWORDS="x86 ppc sparc amd64 ppc64"
+KEYWORDS="x86 ppc sparc amd64"
 LICENSE="sun-bcla-javamail"
 SLOT="0"
 DEPEND=">=app-arch/unzip-5.50-r1"
@@ -19,26 +19,42 @@ IUSE="doc"
 DEP_APPEND="sun-jaf-bin"
 RESTRICT="fetch"
 
-DOWNLOAD_URL="http://javashoplm.sun.com/ECom/docs/Welcome.jsp?StoreId=22&PartDetailId=7515-java_mail-1.3.1-oth-JPR&SiteId=JSC&TransactionId=noreg"
-
 pkg_nofetch() {
-	einfo
+	einfo " "
 	einfo " Due to license restrictions, we cannot fetch the"
 	einfo " distributables automagically."
-	einfo
+	einfo " "
 	einfo " 1. Visit ${HOMEPAGE}"
-	einfo "   Direct link: ${DOWNLOAD_URL}"
 	einfo " 2. Download ${At}"
 	einfo " 3. Move file to ${DISTDIR}"
-	einfo
+	einfo " "
 }
 
 src_unpack() {
-	unzip -qq ${DISTDIR}/${At} || die "failed too unpack"
+	if [ ! -f "${DISTDIR}/${At}" ] ; then
+		echo  " "
+		echo  "!!! Missing ${DISTDIR}/${At}"
+		echo  " "
+		einfo " "
+		einfo " Due to license restrictions, we cannot fetch the"
+		einfo " distributables automagically."
+		einfo " "
+		einfo " 1. Visit ${HOMEPAGE}"
+		einfo " 2. Download ${At}"
+		einfo " 3. Move file to ${DISTDIR}"
+		einfo " 4. Run emerge on this package again to complete"
+		einfo " "
+		die "User must manually download distfile"
+	fi
+	unzip -qq ${DISTDIR}/${At}
+}
+
+src_compile() {
+	einfo " This is a binary-only ebuild."
 }
 
 src_install() {
-	dodoc CHANGES.txt README.txt NOTES.txt
-	use doc && java-pkg_dohtml -r docs/
+	dodoc CHANGES.txt README.txt LICENSE.txt NOTES.txt
+	use doc && dohtml -r docs/
 	java-pkg_dojar mail.jar lib/*.jar
 }

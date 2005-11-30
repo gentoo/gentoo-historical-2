@@ -1,38 +1,41 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/pdnsd-1.1.10.ebuild,v 1.23 2005/10/04 20:29:20 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/pdnsd/pdnsd-1.1.10.ebuild,v 1.1 2004/02/22 08:20:03 dragonheart Exp $
 
-inherit eutils
-
-MY_P=${P}-par
 DESCRIPTION="Proxy DNS server with permanent caching"
-HOMEPAGE="http://www.phys.uu.nl/%7Erombouts/pdnsd.html http://home.t-online.de/home/Moestl"
+
+MY_P=${PN}-${PV}-par
+
 SRC_URI="http://www.phys.uu.nl/%7Erombouts/pdnsd/${MY_P}.tar.gz"
 
-LICENSE="|| ( BSD GPL-2 )"
-SLOT="0"
-KEYWORDS="alpha amd64 arm ppc s390 sparc x86"
+HOMEPAGE="http://www.phys.uu.nl/%7Erombouts/pdnsd.html http://home.t-online.de/home/Moestl"
+
 IUSE="ipv6 debug isdn"
 
-DEPEND="virtual/libc
-	sys-apps/sed
-	sys-apps/gawk
-	sys-devel/libtool
-	sys-devel/gcc
-	sys-devel/automake
-	sys-devel/autoconf"
-RDEPEND="virtual/libc"
+DEPEND="virtual/glibc
+	>=sys-apps/sed-4"
 
-pkg_setup() {
-	enewgroup pdnsd
-	enewuser pdnsd -1 -1 /var/lib/pdnsd pdnsd
-}
+RDEPEND="virtual/glibc"
+
+SLOT="0"
+LICENSE="BSD | GPL-2"
+
+# Should work on  alpha arm hppa i386 ia64 m68k mips mipsel powerpc s390 sparc 
+# REF http://packages.debian.org/cgi-bin/search_packages.pl?searchon=names&version=all&exact=1&keywords=pdnsd
+
+KEYWORDS="~x86 ~ppc ~sparc"
+
+S=${WORKDIR}/${PN}-${PV}
+
+
+# for debugging use
+use debug && RESTRICT="${RESTRICT} nostrip"
 
 src_compile() {
 	cd ${S} || die
 	local myconf
 
-	if use debug; then
+	if [ `use debug` ]; then
 	 	myconf="${myconf} --with-debug=3"
 		CFLAGS="${CFLAGS} -g"
 	fi
@@ -42,7 +45,6 @@ src_compile() {
 		--sysconfdir=/etc/pdnsd \
 		--with-cachedir=/var/cache/pdnsd \
 		--infodir=/usr/share/info --mandir=/usr/share/man \
-		--with-default-id=pdnsd \
 		`use_enable ipv6` `use_enable isdn` \
 		${myconf} \
 		|| die "bad configure"
@@ -50,34 +52,29 @@ src_compile() {
 	emake all || die "compile problem"
 }
 
-pkg_preinst() {
-	enewgroup pdnsd
-	enewuser pdnsd -1 -1 /var/lib/pdnsd pdnsd
-}
-
 src_install() {
+	make DESTDIR=${D} install || die
 
-	emake DESTDIR=${D} install || die
+	enewgroup pdnsd
+	enewuser pdnsd -1 /bin/false /var/lib/pdnsd pdnsd
 
 	# Copy cache from prev versions
-	[ -f ${ROOT}/var/lib/pdnsd/pdnsd.cache ] && \
-		cp ${ROOT}/var/lib/pdnsd/pdnsd.cache ${D}/var/cache/pdnsd/pdnsd.cache
+	[ -f /var/lib/pdnsd/pdnsd.cache ] && cp /var/lib/pdnsd/pdnsd.cache ${D}/var/cache/pdnsd/pdnsd.cache
 
-	# Don't clobber existing cache - copy prev cache so unmerging prev version
-	# doesn't remove the cache.
-	[ -f ${ROOT}/var/cache/pdnsd/pdnsd.cache ] && \
-		cp ${ROOT}/var/cache/pdnsd/pdnsd.cache ${D}/var/cache/pdnsd/pdnsd.cache
+	# Don't clobber existing cache
+	[ -f /var/cache/pdnsd/pdnsd.cache ] && rm ${D}/var/cache/pdnsd/pdnsd.cache
 
-	dodoc AUTHORS ChangeLog* NEWS README THANKS TODO README.par
+	fowners pdnsd:pdnsd /var/cache/pdnsd
+
+	[ -f ${D}/var/cache/pdnsd/pdnsd.cache ] fowners pdnsd:pdnsd /var/cache/pdnsd/pdnsd.cache
+
+	sed -i 's/run_as=.*/run_as="pdnsd";/' ${D}/etc/pdnsd/pdnsd.conf.sample
+
+	dodoc AUTHORS COPYING* ChangeLog* NEWS README THANKS TODO README.par
 	docinto contrib ; dodoc contrib/{README,dhcp2pdnsd,pdnsd_dhcp.pl}
 	docinto html ; dohtml doc/html/*
 	docinto txt ; dodoc doc/txt/*
 	newdoc doc/pdnsd.conf pdnsd.conf.sample
-
-	# Remind users that the cachedir has moved to /var/cache
-	#[ -f ${ROOT}/etc/pdnsd/pdnsd.conf ] && \
-	#	sed -e "s#/var/lib#/var/cache#g" ${ROOT}/etc/pdnsd/pdnsd.conf \
-	#	> ${D}/etc/pdnsd/pdnsd.conf
 
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/pdnsd.rc6 pdnsd
@@ -88,25 +85,16 @@ src_install() {
 
 	keepdir /etc/conf.d
 	local config=${D}/etc/conf.d/pdnsd-online
-
-	${D}/usr/sbin/pdnsd --help | sed "s/^/# /g" > ${config}
-	echo -e "\n\n# Enter the interface that connects you to the dns servers" >> ${config}
+	echo "# Enter the interface that connects you to the dns servers" > ${config}
 	echo "# This will correspond to /etc/init.d/net.${IFACE}" >> ${config}
-	echo -e "\n# IMPORTANT: Be sure to run depscan.sh after modifiying IFACE" >>  ${config}
 	echo "IFACE=ppp0" >> ${config}
-	echo "# Command line options" >> ${config}
 	use ipv6 && echo PDNSDCONFIG="-6" >> ${config} \
 		|| echo PDNSDCONFIG="" >> ${config}
 
-}
+	${D}/usr/sbin/pdnsd --help | sed "s/^/# /g" >> ${config}
 
-pkg_postinst() {
-	einfo
-	einfo "Add pdnsd to your default runlevel - rc-update add pdnsd default"
+	einfo "Add pdnsd to your default runlevel."
 	einfo ""
 	einfo "Add pdnsd-online to your online runlevel."
 	einfo "The online interface will be listed in /etc/conf.d/pdnsd-online"
-	einfo ""
-	einfo "Sample config file in /etc/pdnsd/pdnsd.conf.sample"
-
 }

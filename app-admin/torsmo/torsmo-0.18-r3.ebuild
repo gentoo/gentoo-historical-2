@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/torsmo/torsmo-0.18-r3.ebuild,v 1.9 2005/11/28 07:07:56 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/torsmo/torsmo-0.18-r3.ebuild,v 1.1 2005/02/28 07:46:36 dragonheart Exp $
 
 inherit eutils
 
@@ -10,15 +10,13 @@ SRC_URI="mirror://sourceforge/torsmo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
 IUSE="truetype"
 
 RDEPEND="virtual/libc
 	virtual/x11
-	truetype? ( >=media-libs/freetype-2 )"
-
-DEPEND="truetype? ( >=media-libs/freetype-2 )
-	virtual/x11
+	truetype? ( >=media-libs/freetype-2*)"
+DEPEND="${RDEPEND}
 	>=sys-devel/automake-1.4
 	sys-devel/autoconf
 	sys-apps/grep
@@ -34,7 +32,7 @@ src_unpack() {
 
 src_compile() {
 	econf \
-	   $(use_enable truetype xft) \
+	   `use_enable truetype xft` \
 	   --x-libraries=/usr/X11R6/lib/ || die "econf failed"
 	emake || die "compile failed"
 }

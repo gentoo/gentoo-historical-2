@@ -1,22 +1,8 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 b95ed7cc3019d2080dee7286cf1a1993 ChangeLog 4268
-MD5 09b1c23023110b96371fbec1a52110e1 files/0.7.0-nokde.patch 1998
-MD5 1a26818529b8ff279331f5015cba38df files/digest-qtella-0.6.4 64
-MD5 4ec767658f5e03d7787315714ac2d2b8 files/digest-qtella-0.6.5 64
-MD5 ce9afdcf9321154c1866cfb82d47fa0b files/digest-qtella-0.7.0 64
-MD5 ce9afdcf9321154c1866cfb82d47fa0b files/digest-qtella-0.7.0-r1 64
-MD5 ba43248761d83c1286b6f69467492d89 files/qtella-0.7.0-errno.patch 439
-MD5 8aefbc0e49db723ca1ad02d0c409cd49 metadata.xml 160
-MD5 a070dc2437a3867b732a8f5dba279075 qtella-0.6.4.ebuild 631
-MD5 0dc528f6960571b17589de24a429ad17 qtella-0.6.5.ebuild 632
-MD5 b6fb9a698b418575116dc0f1d13abf31 qtella-0.7.0-r1.ebuild 919
-MD5 14092af108c80379a2a532567473e95a qtella-0.7.0.ebuild 872
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDKsXnI1lqEGTUzyQRArvvAKCG83wNqDaJN4PVlhgh3J6J3DxeBgCeIELJ
-+mt2QU1+Vtfhz6cPFxpe5TY=
-=XeCe
------END PGP SIGNATURE-----
+MD5 5f7f09ce7c7e71b5f39b2ed8bdadfd35 qtella-0.6.1.ebuild 683
+MD5 2207bbfb317f331e9c08cbc4ec2b8426 qtella-0.5.3-r2.ebuild 848
+MD5 be9125ce54d5dd92f8a8f73e20576c3a ChangeLog 2291
+MD5 19140f5cb1aad7c6ceb8aea89f6bad98 qtella-0.5.4.ebuild 847
+MD5 0dc754116e9199631f34f70563f2c20f files/digest-qtella-0.5.4 64
+MD5 3af75c40652ea5cd9a7a79f4e14a8c21 files/digest-qtella-0.6.1 64
+MD5 10498ea48fb6500d9dc739862a260ac5 files/digest-qtella-0.5.3-r2 64
+MD5 2dc37ee576745d4f0436756a030e76f6 files/qtella-0.6.1-nokde.diff 371

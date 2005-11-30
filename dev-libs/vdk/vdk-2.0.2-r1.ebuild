@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/vdk/vdk-2.0.2-r1.ebuild,v 1.5 2005/10/07 18:01:45 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/vdk/vdk-2.0.2-r1.ebuild,v 1.1 2003/03/20 13:32:44 vladimir Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://vdkbuilder.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~ppc alpha ~sparc ~hppa"
+KEYWORDS="x86 ~ppc ~alpha ~sparc ~hppa ~mips ~arm"
 IUSE="nls gnome"
 
 DEPEND="dev-libs/atk
@@ -25,6 +25,7 @@ src_compile() {
 	epatch ${FILESDIR}/${P}-makefile.in.patch
 
 	econf \
+		--with-gnu-ld \
 		`use_enable nls` \
 		`use_enable gnome` \
 		|| die "econf failed"

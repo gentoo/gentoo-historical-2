@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/happy-1.15.ebuild,v 1.7 2005/10/04 15:12:34 dcoutts Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/happy-1.15.ebuild,v 1.1 2005/01/19 10:35:11 kosmikus Exp $
 
-inherit base eutils ghc-package
+inherit base eutils
 
 DESCRIPTION="A yacc-like parser generator for Haskell"
 HOMEPAGE="http://haskell.org/happy/"
 SRC_URI="http://haskell.cs.yale.edu/happy/dist/${PV}/${P}-src.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ~ppc ~sparc"
+KEYWORDS="~x86"
 IUSE="doc java"
 
 DEPEND=">=virtual/ghc-5.04
@@ -24,9 +24,6 @@ src_unpack() {
 
 src_compile() {
 	econf || die "configure failed"
-	if $(ghc-cabal); then
-		echo "SRC_HC_OPTS += -ignore-package util" >> mk/build.mk
-	fi
 	emake -j1 || die "make failed"
 	if use doc; then
 		emake -j1 html || die "make html failed"

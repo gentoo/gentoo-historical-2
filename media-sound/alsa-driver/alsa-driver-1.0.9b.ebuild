@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.9b.ebuild,v 1.10 2005/11/07 10:29:31 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/alsa-driver/alsa-driver-1.0.9b.ebuild,v 1.1 2005/06/13 18:45:34 luckyduck Exp $
 
 inherit linux-mod flag-o-matic eutils
 
@@ -10,15 +10,15 @@ SRC_URI="mirror://alsaproject/driver/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-
-KEYWORDS="alpha amd64 ~ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ia64 ~mips ~ppc ~sparc ~x86"
 IUSE="oss doc"
 
 RDEPEND="virtual/modutils
-	 ~media-sound/alsa-headers-${PV}"
+	 ~media-sound/alsa-headers-${PV/b/}"
 DEPEND="${RDEPEND}
+	sys-devel/patch
 	virtual/linux-sources
-	sparc? ( >=sys-devel/autoconf-2.50 )
+	>=sys-devel/autoconf-2.50
 	sys-apps/debianutils"
 
 PROVIDE="virtual/alsa"
@@ -58,11 +58,6 @@ src_unpack() {
 
 	cd ${S}
 
-	if use sparc ; then
-		epatch ${FILESDIR}/alsa-driver-1.0.9b-sparc64-ioctl-detect.patch
-		WANT_AUTOCONF=2.5 autoconf || die
-	fi
-
 	convert_to_m ${S}/Makefile
 }
 
@@ -80,9 +75,9 @@ src_compile() {
 	# linux-mod_src_compile doesn't work well with alsa
 
 	# -j1 : see bug #71028
-	ARCH=$(tc-arch-kernel)
+	set_arch_to_kernel
 	emake -j1 || die "Make Failed"
-	ARCH=$(tc-arch)
+	set_arch_to_portage
 
 	if use doc;
 	then
@@ -109,7 +104,7 @@ src_install() {
 	test -e ${D}/etc/init.d/alsasound && rm ${D}/etc/init.d/alsasound
 	test -e ${D}/etc/rc.d/init.d/alsasound && rm ${D}/etc/rc.d/init.d/alsasound
 
-	dodoc CARDS-STATUS FAQ README WARNING TODO
+	dodoc CARDS-STATUS INSTALL FAQ README WARNING TODO
 
 	if use doc; then
 		docinto doc
@@ -148,7 +143,7 @@ pkg_postinst() {
 	einfo "Check out the ALSA installation guide availible at the following URL:"
 	einfo "http://www.gentoo.org/doc/en/alsa-guide.xml"
 
-	if kernel_is 2 6 && [ -e  ${ROOT}/lib/modules/${KV_FULL}/kernel/sound ]; then
+	if kernel_is 2 6; then
 		# Cleanup if they had older alsa installed
 		for file in $(find ${ROOT}/lib/modules/${KV_FULL}/${PN} -type f); do
 			rm -f ${file//${KV_FULL}\/${PN}/${KV_FULL}\/kernel\/sound}

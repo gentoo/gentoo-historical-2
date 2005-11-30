@@ -1,27 +1,6 @@
 # ChangeLog for games-kids/pytraffic
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/pytraffic/ChangeLog,v 1.6 2005/11/25 20:15:30 metalgod Exp $
-
-  25 Nov 2005; Luis Medinas <metalgod@gentoo.org> pytraffic-2.5.ebuild:
-  Stable on amd64.
-
-  12 Nov 2005; Michael Sterrett <mr_bones_@gentoo.org> pytraffic-2.5.ebuild:
-  stable for x86
-
-*pytraffic-2.5 (26 Aug 2005)
-
-  26 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org>
-  +files/2.5-gentoo-dirs.patch, +pytraffic-2.5.ebuild:
-  version bump - patch from Algardas Pelakauskas via bug #103716
-
-*pytraffic-2.0 (11 Jun 2005)
-
-  11 Jun 2005; Fernando Serboncini <fserb@gentoo.org>
-  +files/2.0-gentoo-dirs.patch, +pytraffic-2.0.ebuild:
-  Version bump.
-
-  22 Feb 2005; David Holm <dholm@gentoo.org> pytraffic-1.2.1.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-kids/pytraffic/ChangeLog,v 1.1 2004/12/30 11:06:00 vapier Exp $
 
 *pytraffic-1.2.1 (30 Dec 2004)
 

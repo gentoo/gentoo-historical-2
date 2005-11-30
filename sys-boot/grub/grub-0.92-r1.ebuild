@@ -1,48 +1,49 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.92-r1.ebuild,v 1.13 2005/07/28 17:53:38 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/grub/grub-0.92-r1.ebuild,v 1.1 2003/12/09 08:12:07 seemant Exp $
 
-inherit mount-boot eutils flag-o-matic toolchain-funcs
+inherit mount-boot eutils flag-o-matic
 
-PATCHVER=0.2
+filter-flags "-fstack-protector"
+
+S=${WORKDIR}/${P}
 DESCRIPTION="GNU GRUB boot loader"
+SRC_URI="ftp://alpha.gnu.org/gnu/grub/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/software/grub/"
-SRC_URI="ftp://alpha.gnu.org/gnu/grub/${P}.tar.gz
-	http://dev.gentoo.org/~seemant/distfiles/${P}-gentoo-${PATCHVER}.tar.bz2
-	http://dev.gentoo.org/~seemant/distfiles/splash.xpm.gz
-	mirror://gentoo/splash.xpm.gz
-	mirror://gentoo/${P}-gentoo-${PATCHVER}.tar.bz2"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* x86"
-IUSE=""
+LICENSE="GPL-2"
+KEYWORDS="x86 -amd64 -ppc -sparc -alpha -mips"
 
 DEPEND=">=sys-libs/ncurses-5.2-r5"
+
 PROVIDE="virtual/bootloader"
 
-PATCHDIR=${WORKDIR}/gentoo
-
 src_unpack() {
-	unpack ${A} ; cd ${S}
-
-	EPATCH_SUFFIX="patch"
-
-	epatch ${PATCHDIR}
-
-	if [ "`gcc-version`" = "3.3" ]
-	then
-		epatch ${PATCHDIR}/gcc-3.3
-	fi
+	unpack ${A} || die
+	cd ${S} || die
+	epatch ${FILESDIR}/${P}/grub-0.92-vga16.patch
+	epatch ${FILESDIR}/${P}/grub-0.5.96.1-special-raid-devices.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-configfile.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-vga16-keypressclear.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-passwordprompt.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-install.in.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-installcopyonly.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-staticcurses.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-symlinkmenulst.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-append.patch
+	epatch ${FILESDIR}/${P}/grub-0.90-addsyncs.patch
+	epatch ${FILESDIR}/${P}/grub-0.91-splashimagehelp.patch
+	epatch ${FILESDIR}/${P}/grub-0.91-bootonce.patch
+	epatch ${FILESDIR}/${P}/grub-0.92-automake16.patch
+	epatch ${FILESDIR}/${P}/grub-0.92-nodeprecatedflags.patch
+	epatch ${FILESDIR}/${P}/grub-0.91-vga16-serial.patch
+	epatch ${FILESDIR}/${P}/grub-0.92-usbfix.patch
 }
 
 src_compile() {
-	filter-flags "-fstack-protector"
-
-	unset BLOCK_SIZE #73499
-
-	#i686-specific code in the boot loader is a bad idea; disabling to ensure
-	#at least some compatibility if the hard drive is moved to an older or
+	#i686-specific code in the boot loader is a bad idea; disabling to ensure 
+	#at least some compatibility if the hard drive is moved to an older or 
 	#incompatible system.
 	unset CFLAGS
 	./configure --prefix=/usr \
@@ -60,15 +61,14 @@ src_compile() {
 }
 
 src_install() {
-	make \
-		prefix=${D}/usr \
+	make prefix=${D}/usr \
 		sbindir=${D}/sbin \
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
 		install || die "Installation failed."
 
-	insinto /boot/grub
-	doins ${DISTDIR}/splash.xpm.gz
+	dodir /boot/grub
+	cp ${FILESDIR}/splash.xpm.gz ${D}/boot/grub
 	dodoc AUTHORS BUGS COPYING ChangeLog NEWS README THANKS TODO
 }
 

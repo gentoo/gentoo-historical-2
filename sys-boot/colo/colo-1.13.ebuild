@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-boot/colo/colo-1.13.ebuild,v 1.3 2005/03/21 03:00:33 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-boot/colo/colo-1.13.ebuild,v 1.1 2004/09/03 06:19:03 kumba Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.colonel-panic.org/cobalt-mips/"
 SRC_URI="http://www.colonel-panic.org/cobalt-mips/colo/colo-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* mips"
+KEYWORDS="-* ~mips"
 IUSE=""
 DEPEND=""
 RESTRICT="nostrip"
@@ -35,7 +35,7 @@ src_unpack() {
 	epatch ${FILESDIR}/colo-linker-overlap-fix.patch
 
 	# cp the bootscripts to WORKDIR
-	cp ${FILESDIR}/menu-linux.colo ${WORKDIR}
+	cp ${FILESDIR}/menu-linux.colo ${FILESDIR}/menu-linuxold.colo ${WORKDIR}
 
 	# sed the primary boot script and stick the current colo version in there
 	sed "s:@COLOVER@:${PV}:g" ${FILESDIR}/default.colo > ${WORKDIR}/default.colo

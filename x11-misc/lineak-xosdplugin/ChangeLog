@@ -1,43 +1,6 @@
 # ChangeLog for x11-misc/lineak-xosdplugin
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-xosdplugin/ChangeLog,v 1.10 2005/11/24 20:05:39 blubb Exp $
-
-  24 Nov 2005; Simon Stelling <blubb@gentoo.org>
-  lineak-xosdplugin-0.8.3.ebuild:
-  stable on amd64
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
-  lineak-xosdplugin-0.8.3.ebuild:
-  Marked ppc stable for bug #111284.
-
-  20 Nov 2005; Simon Stelling <blubb@gentoo.org>
-  lineak-xosdplugin-0.8.3.ebuild:
-  fix multilib-strict issues
-
-  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
-  lineak-xosdplugin-0.8.2.ebuild, lineak-xosdplugin-0.8.3.ebuild:
-  Fixed dodoc not to install COPYING and/or INSTALL.
-
-  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  17 Jul 2005; Stefan Schweizer <genstef@gentoo.org>
-  lineak-xosdplugin-0.8.3.ebuild:
-  Fix depend
-
-  19 Jun 2005; Jonathan Smith <smithj@gentoo.org>
-  lineak-xosdplugin-0.8.3.ebuild:
-  stable x86
-
-  10 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  lineak-xosdplugin-0.8.3.ebuild:
-  added ~amd64
-
-*lineak-xosdplugin-0.8.3 (12 Mar 2005)
-
-  12 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
-  +lineak-xosdplugin-0.8.3.ebuild:
-  Version bump thanks to Alexander Brüning <ab277@gmx.de> in bug 84964
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-xosdplugin/ChangeLog,v 1.1 2004/11/22 19:11:37 genstef Exp $
 
 *lineak-xosdplugin-0.8.2 (22 Nov 2004)
 

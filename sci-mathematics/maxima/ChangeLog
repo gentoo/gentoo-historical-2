@@ -1,56 +1,6 @@
-# ChangeLog for sci-mathematics/maxima
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/maxima/ChangeLog,v 1.12 2005/10/04 19:52:21 gustavoz Exp $
-
-  04 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  maxima-5.9.1-r5.ebuild:
-  Keyworded ~sparc
-
-*maxima-5.9.1-r5 (01 Oct 2005)
-
-  01 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
-  +maxima-5.9.1-r5.ebuild:
-  Install info files in "/usr/share/info", not "/usr/info" (fixes bug #105705).
-
-*maxima-5.9.1-r4 (19 Sep 2005)
-
-  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org>
-  -files/5.9.1-sbcl-gentoo.patch, -maxima-5.9.1-r2.ebuild,
-  -maxima-5.9.1-r3.ebuild, +maxima-5.9.1-r4.ebuild:
-  New ebuild with improved support for LISP compilers, thanks to Lucas Chiesa
-  <lucas.chiesa@gmail.com> (fixes bug #98763). Removed obsolete versions.
-
-  29 Aug 2005; Olivier Fisette <ribosome@gentoo.org> maxima-5.9.1-r3.ebuild:
-  Readded ~amd64 support, thanks to a patch by Matthew Kennedy
-  <mkennedy@gentoo.org>. Partially fixes bug #98763.
-
-*maxima-5.9.1-r3 (20 Aug 2005)
-
-  20 Aug 2005; Olivier Fisette <ribosome@gentoo.org>
-  +files/maxima-5.9.1-unicode-fix.patch, +maxima-5.9.1-r3.ebuild:
-  New revision incorporating a Unicode patch, thanks to Thomas Weidner
-  <3.14159@gmx.net> (fixes bug #92644).
-
-  20 Aug 2005; Olivier Fisette <ribosome@gentoo.org> maxima-5.9.1-r2.ebuild:
-  Depend on >=gcl-2.6.7 (fixes bug #81869). Removed ~amd64 previously added by
-  Matthew Kennedy since AMD64 support is obviously broken (see bug #98763).
-
-  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> maxima-5.9.1.ebuild:
-  Stable on ppc.
-
-  01 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  +files/5.9.1-sbcl-gentoo.patch, maxima-5.9.1-r2.ebuild:
-  Patch for SBCL support; Keywording ~mad64.
-
-  17 Apr 2005; Olivier Fisette <ribosome@gentoo.org> -maxima-5.9.0.ebuild,
-  -maxima-5.9.0-r2.ebuild, -maxima-5.9.0-r3.ebuild, -maxima-5.9.1-r1.ebuild:
-  Removed obsolete versions.
-
-*maxima-5.9.1-r2 (17 Apr 2005)
-
-  17 Apr 2005; Olivier Fisette <ribosome@gentoo.org>
-  +maxima-5.9.1-r2.ebuild:
-  Fixed documentation location problem (#82000).
+# ChangeLog for app-sci/maxima
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/maxima/ChangeLog,v 1.1 2004/12/28 14:38:51 ribosome Exp $
 
 *maxima-5.9.1-r1 (28 Dec 2004)
 

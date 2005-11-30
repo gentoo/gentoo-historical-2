@@ -1,36 +1,36 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/php/php-4.4.0-r1.ebuild,v 1.9 2005/10/29 22:16:13 chtekk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/php/php-4.4.0-r1.ebuild,v 1.1 2005/09/18 20:56:51 hollow Exp $
 
 PHPSAPI="cli"
 inherit php-sapi eutils
 
 DESCRIPTION="PHP Shell Interpreter"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
 IUSE=""
 
 # fixed PCRE library for security issues, bug #102373
-SRC_URI="${SRC_URI} http://gentoo.longitekk.com/php-pcrelib-new-secpatch.tar.bz2"
+SRC_URI="${SRC_URI} http://dl.longitekk.com/php-pcrelib-new-secpatch.tar.bz2"
 
 src_unpack() {
 	php-sapi_src_unpack
-	[ "${ARCH}" == "amd64" ] && epatch "${FILESDIR}/php-4.3.4-amd64hack.diff"
+	[ "${ARCH}" == "amd64" ] && epatch ${FILESDIR}/php-4.3.4-amd64hack.diff
 
 	# fix imap symlink creation, bug #105351
-	use imap && epatch "${FILESDIR}/php4.4.0-imap-symlink.diff"
+	use imap && epatch ${FILESDIR}/php4.4.0-imap-symlink.diff
 
 	# we need to unpack the files here, the eclass doesn't handle this
-	cd "${WORKDIR}"
+	cd ${WORKDIR}
 	unpack php-pcrelib-new-secpatch.tar.bz2
-	cd "${S}"
+	cd ${S}
 
 	# patch to fix PCRE library security issues, bug #102373
-	epatch "${FILESDIR}/php4.4.0-pcre-security.patch"
+	epatch ${FILESDIR}/php4.4.0-pcre-security.patch
 
 	# sobstitute the bundled PCRE library with a fixed version for bug #102373
 	einfo "Updating bundled PCRE library"
-	rm -rf "${S}/ext/pcre/pcrelib" && mv -f "${WORKDIR}/pcrelib-new" "${S}/ext/pcre/pcrelib" || die "Unable to update the bundled PCRE library"
+	rm -rf ${S}/ext/pcre/pcrelib && mv -f ${WORKDIR}/pcrelib-new ${S}/ext/pcre/pcrelib || die "Unable to update the bundled PCRE library"
 }
 
 src_compile() {

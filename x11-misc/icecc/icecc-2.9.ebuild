@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/icecc/icecc-2.9.ebuild,v 1.6 2005/09/05 13:08:01 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/icecc/icecc-2.9.ebuild,v 1.1 2004/08/27 06:28:50 phosphan Exp $
 
 inherit eutils
 
@@ -9,11 +9,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 HOMEPAGE="http://icecc.sourceforge.net/"
 
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 SLOT="0"
 
-DEPEND="=x11-libs/qt-3*"
+DEPEND=">=x11-libs/qt-3.0.0"
 
 src_unpack() {
 	unpack ${A}
@@ -23,7 +23,7 @@ src_unpack() {
 }
 
 src_compile() {
-	${QTDIR}/bin/qmake || die
+	qmake || die
 	emake || die
 }
 
@@ -34,7 +34,7 @@ src_install() {
 	dohtml ${PN}/docs/en/*.{html,sgml}
 	dodoc AUTHORS ChangeLog README TODO
 	dodir /usr/share/${PN}/themes
-	cp -pPR theme/* ${D}/usr/share/${PN}/themes/
+	cp -a theme/* ${D}/usr/share/${PN}/themes/
 	chmod go-w ${D}/usr/share/${PN}/themes/
 }
 

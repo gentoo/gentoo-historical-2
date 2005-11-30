@@ -1,206 +1,203 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.24 2005/10/09 12:00:34 flameeyes Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author: Martin Schlemmer <azarah@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.1 2001/12/31 23:43:41 azarah Exp $
+# The autotools eclass enables building of the apps that needs the latest autconf/automake.
 #
-# Author: Diego Pettenò <flameeyes@gentoo.org>
-# Enhancements: Martin Schlemmer <azarah@gentoo.org>
+# NOTES:
 #
-# This eclass is for handling autotooled software packages that
-# needs to regenerate their build scripts.
+#    This eclass was made to bridge the incompadibility problem of autoconf-2.13,
+#    autoconf-2.5x and automake-1.4x, automake-1.5x.  Most packages needs
+#    autoconf-2.13 and automake-1.4x, but cannot work with the latest versions
+#    of these packages due to incompadibility, thus when we have a package that
+#    needs the latest versions of automake and autoconf, it begins to get a
+#    problem.
 #
-# NB:  If you add anything, please comment it!
-
-inherit eutils gnuconfig
-
-#DEPEND="sys-devel/automake
-#	sys-devel/autoconf
-#	sys-devel/libtool"
 #
-# Ebuilds should rather depend on the proper version of the tool.
-
-# Variables:
+# Commented Example:
 #
-#   AT_M4DIR          - Additional director(y|ies) aclocal should search
-#   AT_GNUCONF_UPDATE - Should gnuconfig_update() be run (normally handled by
-#                       econf()) [yes|no]
-#   AM_OPTS           - Additional options to pass to automake during
-#                       eautoreconf call.
-
-# Functions:
+#    The following is a commented template for how to use this eclass:
 #
-#   eautoreconf()  - Should do a full autoreconf - normally what most people
-#                    will be interested in.  Also should handle additional
-#                    directories specified by AC_CONFIG_SUBDIRS.
-#   eaclocal()     - Runs aclocal.  Respects AT_M4DIR for additional directories
-#                    to search for macro's.
-#   _elibtoolize() - Runs libtoolize.  Note the '_' prefix .. to not collide
-#                    with elibtoolize() from libtool.eclass
-#   eautoconf      - Runs autoconf.
-#   eautoheader    - Runs autoheader.
-#   eautomake      - Runs automake
+#    #<cut here>
+#    # Copyright 1999-2002 Gentoo Technologies, Inc.
+#    # Distributed under the terms of the GNU General Public License, v2 or later
+#    # Maintainer:  John Doe <john@foo.com>
+#    # $Header: /var/cvsroot/gentoo-x86/eclass/autotools.eclass,v 1.1 2001/12/31 23:43:41 azarah Exp $
+#
+#    # If you need to set the versions different from in here, it *must*
+#    # be done before inherit.eclass is sourced
+#    #ACONFVER=2.52f
+#    #AMAKEVER=1.5b
+#
+#    # Source inherit.eclass and inherit AutoTools
+#    . /usr/portage/eclass/inherit.eclass || die
+#    inherit autotools || die
+#
+#    # This is pretty standard.
+#    S=${WORKDIR}/${P}
+#    DESCRIPTION="My Application"
+#
+#    # Here you *NEED* to have $SRC_URI as a source url to include the automake
+#    # and autoconf source tarballs
+#    SRC_URI="${SRC_URI}
+#             http://download.foo.com/files/${P}.tar.gz"
+#
+#    HOMEPAGE="http://www.foo.com/"
+#
+#    # Here you *NEED* to have "$DEPEND" as an depend to include the dependancies
+#    # of automake and autoconf.
+#    DEPEND="${DEPEND}
+#            foo-libs/libfoo"
+#
+#    src_compile() {
+#
+#        # This will install automake and autoconf in a tempory directory and
+#        # setup the environment. Do not forget!!!!!!!
+#        install_autotools
+#
+#        # Now like normal
+#        ./configure --host=${CHOST} \
+#                    --prefix=/usr || die
+#        emake || die
+#    }
+#
+#    src_install() {
+#
+#        # Still pretty standard to how you would normally do it
+#        make DESTDIR=${D} install || die
+#        dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
+#    }
+#    #<cut here>
 #
 
-# XXX: M4DIR should be depreciated
-AT_M4DIR=${AT_M4DIR:-${M4DIR}}
-AT_GNUCONF_UPDATE="no"
+
+ECLASS=AutoTools
+
+#[ -z "$ACONFVER" ] && ACONFVER=2.52f
+#[ -z "$AMAKEVER" ] && AMAKEVER=1.5b
+[ -z "$ACONFVER" ] && die "!!! You need to set \$ACONFVER *before* inheriting the eclass !!!"
+[ -z "$AMAKEVER" ] && die "!!! You need to set \$AMAKEVER *before* inheriting the eclass !!!"
+
+DESCRIPTION="Based on the $ECLASS eclass"
+#ASRC_URI="ftp://ftp.gnu.org/gnu/autoconf/autoconf-${ACONFVER}.tar.bz2
+#	ftp://alpha.gnu.org/gnu/autoconf/autoconf-${ACONFVER}.tar.bz2
+#	ftp://ftp.gnu.org/gnu/automake/automake-${AMAKEVER}.tar.bz2
+#	ftp://alpha.gnu.org/gnu/automake/automake-${AMAKEVER}.tar.bz2"
+SRC_URI="ftp://ftp.gnu.org/gnu/autoconf/autoconf-${ACONFVER}.tar.bz2
+	ftp://alpha.gnu.org/gnu/autoconf/autoconf-${ACONFVER}.tar.bz2
+	ftp://ftp.gnu.org/gnu/automake/automake-${AMAKEVER}.tar.bz2
+	ftp://alpha.gnu.org/gnu/automake/automake-${AMAKEVER}.tar.bz2"
+	
+DEPEND="sys-devel/make
+	sys-devel/perl
+	>=sys-devel/m4-1.4o-r2"
 
 
-# This function mimes the behavior of autoreconf, but uses the different
-# eauto* functions to run the tools. It doesn't accept parameters, but
-# the directory with include files can be specified with AT_M4DIR variable.
-#
-# Note: doesn't run autopoint right now, but runs gnuconfig_update.
-eautoreconf() {
-	local pwd=$(pwd) x
+AUTO_S="${WORKDIR}"
+AUTO_D="${T}/autotools"
 
-	# Take care of subdirs
-	for x in $(autotools_get_subdirs); do
-		if [[ -d ${x} ]] ; then
-			cd "${x}"
-			eautoreconf
-			cd "${pwd}"
-		fi
+fetch_autotools() {
+
+	local y
+	for y in ${ASRC_URI} 
+	do
+		if [ ! -e ${DISTDIR}/${y##*/} ]
+		then
+			echo ">>> Fetching ${y##*/}..."
+			echo
+			local x
+			local _SRC_URI
+			for x in ${GENTOO_MIRRORS}
+			do
+				_SRC_URI="${_SRC_URI} ${x}/distfiles/${y##*/}"
+			done
+			_SRC_URI="${_SRC_URI} `queryhost.sh "${SRC_URI}"`"
+			for x in ${_SRC_URI}
+			do
+				if [ ! -e ${DISTDIR}/${y##*/} ] 
+				then
+					if [ "${y##*/}" = "${x##*/}" ]
+					then
+						echo ">>> Trying site ${x}..."
+						eval "${FETCHCOMMAND}"
+					fi
+				fi
+			done
+			if [ ! -e ${DISTDIR}/${y##*/} ]
+			then
+				echo '!!!'" Couldn't download ${y##*/} needed by autotools.eclass.  Aborting."
+				exit 1
+			fi
+			echo
+		fi      
 	done
-
-	eaclocal
-	_elibtoolize --copy --force
-	eautoconf
-	eautoheader
-	eautomake ${AM_OPTS}
-
-	# Normally run by econf()
-	[[ ${AT_GNUCONF_UPDATE} == "yes" ]] && gnuconfig_update
-
-	return 0
 }
 
-# These functions runs the autotools using autotools_run_tool with the
-# specified parametes. The name of the tool run is the same of the function
-# without e prefix.
-# They also force installing the support files for safety.
-eaclocal() {
-	local aclocal_opts
+unpack_autotools() {
 
-	# XXX: M4DIR should be depreciated
-	AT_M4DIR=${AT_M4DIR:-${M4DIR}}
+	cd ${AUTO_S}
 
-	if [[ -n ${AT_M4DIR} ]] ; then
-		for x in ${AT_M4DIR} ; do
-			case "${x}" in
-			"-I")
-				# We handle it below
-				;;
-			"-I"*)
-				# Invalid syntax, but maybe we should help out ...
-				ewarn "eaclocal: Proper syntax is (note the space after '-I'): aclocal -I <dir>"
-				aclocal_opts="${aclocal_opts} -I ${x}"
-				;;
-			*)
-				[[ ! -d ${x} ]] && ewarn "eaclocal: '${x}' does not exist"
-				aclocal_opts="${aclocal_opts} -I ${x}"
-				;;
-			esac
-		done
+	local x
+	for x in ${ASRC_URI}
+	do
+		unpack ${x##*/} || die "!!! Could not unpack ${x##*/} needed by autotools !!!"
+	done
+}
+
+install_autoconf() {
+
+	cd ${AUTO_S}/autoconf-${ACONFVER} || die "!!! Failed to build autoconf !!!"
+
+	 ./configure --prefix=${AUTO_D} \
+	 	--infodir=${AUTO_D}/share/info \
+		--mandir=${AUTO_D}/share/man \
+		--target=${CHOST} || die "!!! Failed to configure autoconf !!!"
+
+	emake || die "!!! Failed to build autoconf !!!"
+
+	make install || die "!!! Failed to install autoconf !!!"
+}
+
+install_automake() {
+
+	cd ${AUTO_S}/automake-${AMAKEVER} || die "!!! Failed to build automake !!!"
+
+         ./configure --prefix=${AUTO_D} \
+                --infodir=${AUTO_D}/share/info \
+                --mandir=${AUTO_D}/share/man \
+                --target=${CHOST} || die "!!! Failed to configure automake !!!"
+
+        emake || die "!!! Failed to build automake !!!"
+
+        make install || die "!!! Failed to install automake !!!"
+}
+
+install_autotools() {
+
+	if [ "${SRC_URI/autoconf/}" = "$SRC_URI" ] || [ "${SRC_URI/automake/}" = "$SRC_URI" ]
+	then
+		echo "!!! \$SRC_URI was not set properly !!!  It needs to include \${SRC_URI}"
+		exit 1
 	fi
 
-	[[ ! -f aclocal.m4 || -n $(grep -e 'generated.*by aclocal' aclocal.m4) ]] && \
-		autotools_run_tool aclocal "$@" ${aclocal_opts}
-}
-
-_elibtoolize() {
-	local opts
-
-	# Check if we should run libtoolize
-	[[ -n $(autotools_check_macro "AC_PROG_LIBTOOL") ]] || return 0
-
-	[[ -f Makefile.am ]] && opts="--automake"
-
-	[[ "${USERLAND}" == "Darwin" ]] && LIBTOOLIZE="glibtoolize"
-	autotools_run_tool ${LIBTOOLIZE:-libtoolize} "$@" ${opts}
-
-	# Need to rerun aclocal
-	eaclocal
-}
-
-eautoheader() {
-	# Check if we should run autoheader
-	[[ -n $(autotools_check_macro "AC_CONFIG_HEADERS") ]] || return 0
-	autotools_run_tool autoheader "$@"
-}
-
-eautoconf() {
-	if [[ ! -f configure.ac && ! -f configure.in ]] ; then
-		echo
-		eerror "No configure.{ac,in} present in '$(pwd | sed -e 's:.*/::')'!"
-		echo
-		die "No configure.{ac,in} present!"
+	if [ "${DEPEND/make/}" = "$DEPEND" ] || [ "${DEPEND/perl/}" = "$DEPEND" ] || \
+		[ "${DEPEND/m4/}" = "$DEPEND" ]
+	then
+		echo "!!! \$DEPEND was not set properly !!!  It needs to include \${DEPEND}"
+		exit 1
 	fi
 
-	autotools_run_tool autoconf "$@"
-}
+	mkdir -p ${AUTO_S}
+	mkdir -p ${AUTO_D}/{bin,etc,lib,include,share} \
+		|| die "!!! Could not create needed directories for autotools !!!"
 
-eautomake() {
-	local extra_opts
+#	fetch_autotools
+#	unpack_autotools
+	install_autoconf
+	install_automake
 
-	[[ -f Makefile.am ]] || return 0
-
-	[[ -f INSTALL && -f AUTHORS && -f ChangeLog ]] \
-		|| extra_opts="${extra_opts} --foreign"
-
-	# --force-missing seems not to be recognized by some flavours of automake
-	autotools_run_tool automake --add-missing --copy ${extra_opts} "$@"
-}
-
-
-
-# Internal function to run an autotools' tool
-autotools_run_tool() {
-	local STDERR_TARGET="${T}/$$.out"
-	local PATCH_TARGET="${T}/$$.patch"
-	local ris
-
-	echo "***** $1 *****" > ${STDERR_TARGET%/*}/$1-${STDERR_TARGET##*/}
-	echo >> ${STDERR_TARGET%/*}/$1-${STDERR_TARGET##*/}
-
-	ebegin "Running $1"
-	$@ >> ${STDERR_TARGET%/*}/$1-${STDERR_TARGET##*/} 2>&1
-	ris=$?
-	eend ${ris}
-
-	if [[ ${ris} != 0 ]]; then
-		echo
-		eerror "Failed Running $1 !"
-		eerror
-		eerror "Include in your bugreport the contents of:"
-		eerror
-		eerror "  ${STDERR_TARGET%/*}/$1-${STDERR_TARGET##*/}"
-		echo
-		die "Failed Running $1 !"
-	fi
-}
-
-# Internal function to check for support
-autotools_check_macro() {
-	[[ -f configure.ac || -f configure.in ]] && \
-		autoconf --trace=$1 2>/dev/null
-	return 0
-}
-
-# Internal function to get additional subdirs to configure
-autotools_get_subdirs() {
-	local subdirs_scan_out
-
-	subdirs_scan_out=$(autotools_check_macro "AC_CONFIG_SUBDIRS")
-	[[ -n ${subdirs_scan_out} ]] || return 0
-
-	echo "${subdirs_scan_out}" | gawk \
-	'($0 !~ /^[[:space:]]*(#|dnl)/) {
-		if (match($0, "AC_CONFIG_SUBDIRS\\(\\[?([^\\])]*)", res)) {
-			split(res[1], DIRS, /[\])]/)
-			print DIRS[1]
-		}
-	}' | uniq
-
-	return 0
+	export PATH=${AUTO_D}/bin:${PATH}
+	cd ${S}
+	ln -sf ${AUTO_D}/share/automake/depcomp ${S}/depcomp
 }
 

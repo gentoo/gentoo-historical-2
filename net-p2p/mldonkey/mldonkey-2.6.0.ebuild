@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/mldonkey-2.6.0.ebuild,v 1.5 2005/10/15 10:14:10 mkay Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-p2p/mldonkey/mldonkey-2.6.0.ebuild,v 1.1 2005/07/23 20:07:48 sekretarz Exp $
 
 inherit eutils
 
-IUSE="gtk2 gd gtk"
+IUSE="X gtk2 gd"
 
 DESCRIPTION="mldonkey is a new client to access the eDonkey network. It is written in Objective-Caml, and comes with its own GTK GUI, an HTTP interface and a telnet interface."
 HOMEPAGE="http://www.nongnu.org/mldonkey/"
@@ -16,10 +16,10 @@ KEYWORDS="~x86 ~ppc ~alpha ~ia64 ~amd64"
 
 RDEPEND="dev-lang/perl
 		net-misc/wget
-		=dev-lang/ocaml-3.08.3
+		>=dev-lang/ocaml-3.08.3
 		gtk2? ( >=gnome-base/librsvg-2.4.0
 				>=dev-ml/lablgtk-2.4 )
-		gtk? ( !gtk2? ( =dev-ml/lablgtk-1.2.7* ) )
+		X? ( !gtk2? ( =dev-ml/lablgtk-1.2.7* ) )
 		gd? ( >=media-libs/gd-2.0.28 )"
 
 DEPEND="${RDEPEND}
@@ -47,24 +47,20 @@ src_unpack() {
 	cd ${S}
 	export WANT_AUTOCONF=2.5
 	cd config; autoconf; cd ..
-	use gtk2 && epatch ${FILESDIR}/${P}-gtk2-gentoo.patch
 }
 
 src_compile() {
-	myconf="";
-	if use gtk || use gtk2; then
-		myconf="--enable-gui"
-	fi;
+
 	econf \
 		--sysconfdir=/etc/mldonkey \
 		--sharedstatedir=/var/mldonkey \
 		--localstatedir=/var/mldonkey \
 		--enable-checks \
-		--disable-batch \
+		--enable-batch \
 		--enable-pthread \
 		`use_enable gtk2` \
-		`use_enable gd` \
-		${myconf} || die "Configure Failed!"
+		`use_enable X gui` \
+		`use_enable gd` || die "Configure Failed!"
 
 	export OCAMLRUNPARAM="l=256M"
 	emake || die "Make Failed"
@@ -72,9 +68,7 @@ src_compile() {
 
 src_install() {
 	dobin mlnet
-	if use gtk || use gtk2; then
-		dobin mlchat mlgui mlguistarter mlim mlnet+gui
-	fi
+	use gtk && dobin mlchat mlgui mlguistarter mlim mlnet+gui
 	dobin ${FILESDIR}/mldonkey
 
 	dodoc ChangeLog Copying.txt Developers.txt Install.txt

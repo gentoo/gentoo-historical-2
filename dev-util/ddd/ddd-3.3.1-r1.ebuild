@@ -1,32 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/ddd/ddd-3.3.1-r1.ebuild,v 1.15 2005/03/14 19:32:21 gustavoz Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Geert Bevin <gbevin@theleaf.be>
+# $Header: /var/cvsroot/gentoo-x86/dev-util/ddd/ddd-3.3.1-r1.ebuild,v 1.1 2002/07/01 00:18:40 naz Exp $
 
-DESCRIPTION="graphical front-end for command-line debuggers"
-HOMEPAGE="http://www.gnu.org/software/ddd"
-SRC_URI="ftp://ftp.easynet.be/gnu/ddd/${P}.tar.gz
+S=${WORKDIR}/${P}
+DESCRIPTION="GNU DDD is a graphical front-end for command-line debuggers"
+SRC_URI="ftp://ftp.easynet.be/gnu/ddd/${P}.tar.gz \
 	ftp://ftp.easynet.be/gnu/ddd/${P}-html-manual.tar.gz"
+HOMEPAGE="http://www.gnu.org/software/ddd"
 
-SLOT="0"
-LICENSE="GPL-2 LGPL-2.1 FDL-1.1"
-KEYWORDS="x86 sparc ppc"
-IUSE=""
-
-DEPEND="virtual/x11
+DEPEND="virtual/glibc
+	virtual/x11
 	>=sys-devel/gdb-4.16
-	x11-libs/openmotif"
-
+	>=x11-libs/openmotif-2.1.30"
+	
 src_compile() {
-	econf || die
-	emake || die
+	try ./configure	--host=${CHOST} \
+				--prefix=/usr \
+				--mandir=/usr/share/man \
+				--infodir=/usr/share/info
+	
+	try emake
 }
 
-src_install() {
-	make DESTDIR=${D} install || die
-
+src_install () {
+	try make DESTDIR=${D} install
+	
 	mv ${S}/doc/README ${S}/doc/README-DOC
 	dodoc ANNOUNCE AUTHORS BUGS COPYING* CREDITS INSTALL NEWS* NICKNAMES \
-		OPENBUGS PROBLEMS README* TIPS TODO
-
+		OPENBUGS PROBLEMS README* TIPS TODO doc/README-DOC
+	
+	rm ${S}/doc/README-DOC
 	mv ${S}/doc/* ${D}/usr/share/doc/${PF}
 }
+

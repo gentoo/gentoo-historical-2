@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/dybase/dybase-0.19.ebuild,v 1.4 2005/01/01 17:31:08 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/dybase/dybase-0.19.ebuild,v 1.1 2004/06/08 06:01:04 raker Exp $
 
 DESCRIPTION="DyBASE is very simple object oriented embedded database for languages with dynamic type checking."
 HOMEPAGE="http://www.garret.ru/~knizhnik/dybase.html"
@@ -8,7 +8,7 @@ SRC_URI="http://www.garret.ru/~knizhnik/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86"
 
 IUSE=""
 

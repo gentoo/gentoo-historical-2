@@ -1,21 +1,6 @@
 # ChangeLog for dev-lisp/cl-xptest
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-xptest/ChangeLog,v 1.6 2005/05/24 18:48:37 mkennedy Exp $
-
-  24 May 2005; <mkennedy@gentoo.org> cl-xptest-1.2.3-r1.ebuild:
-  Keywording ~sparc
-
-  17 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  -cl-xptest-1.2.3.ebuild, cl-xptest-1.2.3-r1.ebuild:
-  Keywording.
-
-*cl-xptest-1.2.3-r1 (12 Feb 2004)
-
-  12 Feb 2004; <mkennedy@gentoo.org> cl-xptest-1.2.3-r1.ebuild:
-  Cleanup for eclass changes.
-
-  17 Oct 2003; Matthew Kennedy <mkennedy@gentoo.org> cl-xptest-1.2.3.ebuild:
-  preinst, postrm
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lisp/cl-xptest/ChangeLog,v 1.1 2003/10/06 11:48:31 mkennedy Exp $
 
 *cl-xptest-1.2.3 (05 Oct 2003)
 

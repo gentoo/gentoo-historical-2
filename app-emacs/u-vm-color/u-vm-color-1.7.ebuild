@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/u-vm-color/u-vm-color-1.7.ebuild,v 1.10 2005/08/28 02:28:49 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/u-vm-color/u-vm-color-1.7.ebuild,v 1.1 2002/11/01 02:52:02 mkennedy Exp $
 
-inherit elisp
+inherit elisp 
 
 IUSE=""
 
@@ -11,10 +11,12 @@ HOMEPAGE="ftp://ftp.cis.ohio-state.edu/pub/emacs-lisp/archive/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ppc x86"
+KEYWORDS="x86"
 
 DEPEND="virtual/emacs
 	app-emacs/vm"
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50u-vm-color-gentoo.el
 

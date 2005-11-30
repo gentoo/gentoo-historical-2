@@ -1,14 +1,2 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 6e82401e8575a7a3caf1c3c4f491c60a ChangeLog 1557
-MD5 2392df312106fb80deeab38f25e94c3d namazu-2.0.14.ebuild 1225
-MD5 382a25f7a6abf0020285f37f74158690 metadata.xml 226
-MD5 257b92fc7fffeb47787ee62399496b3c files/digest-namazu-2.0.14 66
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.1 (GNU/Linux)
-
-iD8DBQFCdO7FCHk4+ZoBpvsRAnYkAJ0WVeP05yJ0rDgz/J6MSBfhcIkWRwCfUVMG
-5sJKFeaKbnWBeUu+jQp3qY0=
-=0smT
------END PGP SIGNATURE-----
+MD5 d5bdb1d06bf753c253a8ef7073279835 namazu-2.0.12.ebuild 1344
+MD5 6ab3a5de7af205d9e981a2362a776aba files/digest-namazu-2.0.12 65

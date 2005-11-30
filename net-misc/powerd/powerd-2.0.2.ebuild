@@ -1,18 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/powerd/powerd-2.0.2.ebuild,v 1.7 2005/07/30 18:19:50 swegener Exp $
+inherit eutils
 
 IUSE=""
 
 DESCRIPTION="Generic UPS daemon"
 HOMEPAGE="http://power.sourceforge.net/"
 
-SRC_URI="mirror://sourceforge/power/${P}.tar.gz"
-KEYWORDS="x86 ~amd64"
+S=${WORKDIR}/${P}
+SRC_URI="http://belnet.dl.sourceforge.net/sourceforge/power/${P}.tar.gz"
+KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
 
+src_unpack() {
+	unpack ${A} || die
+}
+
 src_compile() {
+	cd ${S}
 	./configure --prefix=${D}
 	emake || die
 }
@@ -20,10 +26,10 @@ src_compile() {
 src_install() {
 	dosbin powerd
 	dobin detectups
-	dodoc powerd.conf.monitor powerd.conf.peer README FAQ INSTALL SUPPORTED TODO Changelog
-	doman powerd.8 detectups.8
-
-	newinitd ${FILESDIR}/powerd-init powerd
+	dodoc powerd.conf.monitor powerd.conf.peer README FAQ INSTALL
+	
+	exeinto /etc/init.d
+	newexe ${FILESDIR}/powerd-init powerd
 }
 
 pkg_postinst() {

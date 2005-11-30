@@ -1,28 +1,39 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/mscompress/mscompress-0.3.ebuild,v 1.9 2005/11/29 02:58:37 vapier Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-arch/mscompress/mscompress-0.3.ebuild,v 1.1 2004/04/14 07:46:15 aliz Exp $
 
 DESCRIPTION="Microsoft compress.exe/expand.exe compatible (de)compressor"
-HOMEPAGE="http://www.penguin.cz/~mhi/ftp/mscompress/"
 SRC_URI="http://www.penguin.cz/~mhi/ftp/mscompress/${P}.tar.bz2"
+HOMEPAGE="http://www.penguin.cz/~mhi/ftp/mscompress/"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc-macos ~x86"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~amd64"
 IUSE=""
 
-DEPEND=""
+DEPEND="virtual/glibc"
+RDEPEND="${DEPEND}
+	>=sys-apps/sed-4"
 
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/${P}-makefile.patch
+	unpack ${A} ; cd ${S}
+
+	sed -i.orig -e "s/\$(CC)/\$(CC) \$(CFLAGS)/g" Makefile.in
+}
+
+src_compile() {
+	econf || die
+	emake || die
 }
 
 src_install() {
-	dobin mscompress msexpand || die
-	doman mscompress.1 msexpand.1
+	make BUILDROOT=${D} install
+
 	dodoc README ChangeLog
+
+	# taken from magic.add, modified for gentoo
+	if [ -z "`grep END_OF_MSCOMPRESS ${ROOT}/usr/share/misc/file/magic`" ] ; then
+		dodir /usr/share/misc/file
+		cat ${ROOT}/usr/share/misc/file/magic magic.mscompress > ${D}/usr/share/misc/file/magic
+	fi
 }

@@ -1,23 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cnet/cnet-2.0.5.ebuild,v 1.7 2004/11/21 11:41:12 eldad Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/cnet/cnet-2.0.5.ebuild,v 1.1 2003/08/01 19:48:23 rizzo Exp $
 
-inherit eutils
-
+S=${WORKDIR}/${P}
 DESCRIPTION="Network simulation tool"
 SRC_URI="http://www.csse.uwa.edu.au/cnet/${P}.tgz"
 HOMEPAGE="http://www.csse.uwa.edu.au/cnet"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
-# cnet will NOT work against elfutils (but it will compile!) Bug #67375. (21 Nov 2004 eldad)
-DEPEND=">=dev-lang/tk-8.3.4
-	dev-libs/libelf"
-
-#RDEPEND=""
+DEPEND=">=dev-lang/tk-8.3.4"
+RDEPEND=""
 
 # unpacking the source
 src_unpack() {
@@ -25,7 +20,6 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/cnet-2.0.5-gentoo.patch
-	sed -i.orig -e "s/^CFLAGS.*/CFLAGS=${CFLAGS}/" ${S}/src/Makefile.linux
 }
 
 src_install() {
@@ -35,10 +29,5 @@ src_install() {
 	mkdir -p ${D}/usr/{bin,lib,share}
 	mkdir -p ${D}/usr/share/man/man1
 	# install with make now
-	emake PREFIX=${D}/usr install || die
-
-	#install examples
-	DOCDESTTREE=EXAMPLES
-	dodir /usr/share/doc/${PF}/${DOCDESTTREE}
-	dodoc EXAMPLES/*
+	make PREFIX=${D}/usr install
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.18.1-r1.ebuild,v 1.11 2005/09/06 15:02:07 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-tv/mythtv/mythtv-0.18.1-r1.ebuild,v 1.1 2005/05/23 06:50:30 cardoe Exp $
 
 inherit flag-o-matic eutils debug
 
@@ -10,13 +10,13 @@ SRC_URI="http://www.mythtv.org/mc/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
-IUSE="alsa altivec arts debug dvb frontendonly jack joystick lcd lirc mmx nvidia vorbis opengl oss unichrome"
+KEYWORDS="~x86 ~amd64"
+IUSE="alsa altivec arts debug dvb frontendonly ieee1394 jack joystick lcd lirc mmx nvidia oggvorbis opengl oss unichrome xv"
 
 DEPEND=">=media-libs/freetype-2.0
 	>=media-sound/lame-3.93.1
 	virtual/x11
-	=x11-libs/qt-3*
+	>=x11-libs/qt-3.1.1
 	dev-db/mysql
 	alsa? ( >=media-libs/alsa-lib-0.9 )
 	arts? ( kde-base/arts )
@@ -25,11 +25,17 @@ DEPEND=">=media-libs/freetype-2.0
 	lcd? ( app-misc/lcdproc )
 	lirc? ( app-misc/lirc )
 	nvidia? ( media-video/nvidia-glx )
-	vorbis? ( media-libs/libvorbis )
+	oggvorbis? ( media-libs/libvorbis )
 	opengl? ( virtual/opengl )
+	ieee1394? ( >=sys-libs/libraw1394-1.2.0 )
 	|| ( >=net-misc/wget-1.9.1 >=media-tv/xmltv-0.5.34 )
 	!x11-base/xfree
 	!<x11-base/xorg-x11-6.8"
+
+# ieee1394 also needs >=sys-libs/libiec61883-1.0.0
+
+RDEPEND="${DEPEND}
+	!media-tv/mythfrontend"
 
 pkg_setup() {
 
@@ -37,12 +43,6 @@ pkg_setup() {
 		eerror "Qt is missing MySQL support. Please add"
 		eerror "'mysql' to your USE flags, and re-emerge Qt."
 		die "Qt needs MySQL support"
-	fi
-
-	if ! built_with_use x11-base/xorg-x11 xv; then
-		eerror "xorg-x11 is missing XV support. Please add"
-		eerror "'xv' to your USE flags, and re-emerge xorg-x11."
-		die "xorg-x11 needs XV support"
 	fi
 
 	if use nvidia; then
@@ -53,12 +53,9 @@ pkg_setup() {
 	fi
 
 	einfo
-	einfo "This ebuild now uses a heavily stripped down version of your CFLAGS"
-	einfo "Don't complain because your -momfg-fast-speed CFLAG is being stripped"
-	einfo "Only additional CFLAG issues that will be addressed are for binary"
-	einfo "package building."
+	einfo "Please note, this ebuild does not use your CFLAGS and CXXFLAGS. It determines"
+	einfo "a sane set and uses those. Please do not attempt to override this behavior."
 	einfo
-	einfo "To get ieee1394 support (firewire) you must use mythtv-0.18.1-r2"
 }
 
 src_unpack() {
@@ -66,17 +63,6 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/${P}-opengl-fix.patch
-
-	# Add support for amd64 --arch options, bug 94664
-	epatch ${FILESDIR}/${P}-x86_64-configure.patch
-
-	if [ $(get_libdir) != "lib" ] ; then
-		sed -i -e "s:\$\${PREFIX}/lib/:\$\${PREFIX}/$(get_libdir)/:g" \
-			-e "s:\$\${PREFIX}/lib$:\$\${PREFIX}/$(get_libdir):g" \
-			${S}/{filters,libs}/*/*.pro || die
-		sed -i -e "s:/lib/mythtv/:/$(get_libdir)/mythtv/:" \
-			${S}/libs/libmyth/mythcontext.cpp || die
-	fi
 
 #	# Fix bugs 40964 and 42943.
 #	filter-flags -fforce-addr -fPIC -momit-leaf-frame-pointer
@@ -97,10 +83,9 @@ src_compile() {
 		$(use_enable dvb dvb-eit)
 		--dvb-path=/usr/include
 		$(use_enable opengl opengl-vsync)
-		$(use_enable vorbis vorbis)
+		$(use_enable oggvorbis vorbis)
 		$(use_enable nvidia xvmc)
-		--enable-xv
-		--disable-firewire
+		$(use_enable xv)
 		--disable-directfb
 		--enable-x11
 		--enable-proc-opt"
@@ -117,34 +102,17 @@ src_compile() {
 		myconf="${myconf} --compile-type=release"
 	fi
 
-	## CFLAG cleaning so it compiles
-	MARCH=$(get-flag "march")
-	MTUNE=$(get-flag "mtune")
-	MCPU=$(get-flag "mcpu")
-	strip-flags
-	filter-flags "-march=*" "-mtune=*" "-mcpu=*"
-	filter-flags "-O" "-O?"
-
-	if [[ -n "${MARCH}" ]]; then
-		myconf="${myconf} --arch=${MARCH}"
-	fi
-	if [[ -n "${MTUNE}" ]]; then
-		myconf="${myconf} --tune=${MTUNE}"
-	fi
-	if [[ -n "${MCPU}" ]]; then
-		myconf="${myconf} --cpu=${MCPU}"
-	fi
-
-	myconf="${myconf} --extra-cflags=${CFLAGS}"
-
 	hasq distcc ${FEATURES} || myconf="${myconf} --disable-distcc"
 	hasq ccache ${FEATURES} || myconf="${myconf} --disable-ccache"
+
+	# depends on bug # 89799
+	# $(use_enable ieee1394 firewire)
 
 	if use frontendonly; then
 		##Backend Removal
 		cd ${S}
-		sed -e "s:CCONFIG linux backend:CCONFIG linux:" \
-			-i 'configure' || die "Removal of mythbackend failed"
+		sed -e "s:CONFIG  += linux backend:CONFIG  += linux:" \
+			-i 'settings.pro' || die "Removal of mythbackend failed"
 	fi
 
 	# let MythTV come up with our CFLAGS. Upstream will support this
@@ -152,7 +120,7 @@ src_compile() {
 	CXXFLAGS=""
 	econf ${myconf} || die "configure died"
 
-	${QTDIR}/bin/qmake -o "Makefile" mythtv.pro || die "qmake failed"
+	qmake -o "Makefile" mythtv.pro || die "qmake failed"
 	emake || die "emake failed"
 
 }

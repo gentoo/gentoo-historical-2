@@ -1,18 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/xwgui2/xwgui2-2.08.ebuild,v 1.5 2005/07/25 11:17:58 dholm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/xwgui2/xwgui2-2.08.ebuild,v 1.1 2003/10/29 23:45:17 plasmaroo Exp $
 
-DESCRIPTION="xwGUI2 is an image and photo layout application aimed for printing"
+DESCRIPTION="xwGUI2 is an image and photo layout software for printing"
 HOMEPAGE="http://xwgui.automatix.de/"
 SRC_URI="http://xwgui.automatix.de/daten/xwgui-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~x86"
 
 IUSE=""
 DEPEND="virtual/x11
 	>=x11-libs/xforms-1.0
-	=media-libs/t1lib-1*"
+	>=media-libs/t1lib-1.0"
 
 S="${WORKDIR}/xwGUI"
 
@@ -25,12 +25,7 @@ src_compile() {
 
 	patch -p0 -s < ${FILESDIR}/xwgui2-${PV}-makefilediff.patch || die
 
-	# This sorts out "invisible" input boxes due to a known
-	# XForms bug...
-	sed -e 's/20,xwGR/23,xwGR/' -i xwGUI/*.c || die
-
 	cd xwGUI || die
-	sed -e 's:/usr/X11R6/lib/libforms.so.1.0:/usr/lib/libforms.so.1:' -i Makefile || die
 	emake || die
 	echo
 	echo
@@ -46,6 +41,7 @@ src_compile() {
 src_install() {
 
 	einstall || die
+
 	if [ -x /usr/bin/gimp-1.2 ]; then
 		cd xwprint2 || die
 

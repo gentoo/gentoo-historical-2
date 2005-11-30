@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/eperiodic/eperiodic-1.26.ebuild,v 1.8 2005/09/29 05:26:49 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/eperiodic/eperiodic-1.26.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
 inherit elisp
 
@@ -11,6 +11,28 @@ HOMEPAGE="http://www.emacswiki.org/cgi-bin/wiki.pl?action=browse&id=MattHodges&o
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="x86"
+
+DEPEND="virtual/emacs"
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50eperiodic-gentoo.el
+
+src_compile() {
+	emacs --batch -f batch-byte-compile --no-site-file --no-init-file *.el
+}
+
+src_install() {
+	elisp-install ${PN} *.el *.elc
+	elisp-site-file-install ${FILESDIR}/${SITEFILE}
+}
+
+pkg_postinst() {
+	elisp-site-regen
+	einfo "Please see ${SITELISP}/${PN}/eperiodic.el for the complete documentation."
+}
+
+pkg_postrm() {
+	elisp-site-regen
+}

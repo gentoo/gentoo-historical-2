@@ -1,38 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/wsdl4j/wsdl4j-1.4.ebuild,v 1.11 2005/07/19 18:31:29 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/wsdl4j/wsdl4j-1.4.ebuild,v 1.1 2004/04/19 19:56:36 robbat2 Exp $
 
 inherit java-pkg
 
 DESCRIPTION="Web Services Description Language for Java Toolkit (WSDL4J)"
+MY_PN="wsdl4j-bin"
+MY_P="${MY_PN}-${PV}"
+SRC_URI="ftp://www-126.ibm.com/pub/${PN}/WSDL4J/${PV}/${MY_P}.zip"
 HOMEPAGE="http://www-124.ibm.com/developerworks/projects/wsdl4j"
-SRC_URI="mirror://gentoo/${P}-gentoo.tar.gz"
-
+KEYWORDS="~x86"
 LICENSE="CPL-1.0"
 SLOT="0"
-KEYWORDS="x86 amd64 ~ppc"
-IUSE="doc jikes junit source"
-
-DEPEND=">=virtual/jdk-1.4
-	>=dev-java/ant-core-1.4
-	junit? ( dev-java/junit )
-	jikes? ( >=dev-java/jikes-1.21 )
-	source? ( app-arch/zip )"
-RDEPEND=">=virtual/jre-1.4"
-
-S="${WORKDIR}/${PN}"
+DEPEND=""
+RDEPEND=">=virtual/jdk-1.4"
+IUSE="doc"
+S="${WORKDIR}/${PN}-${PV//./_}"
 
 src_compile() {
-	local antflags="compile"
-	use doc && antflags="${antflags} javadocs"
-	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
-	ant ${antflags} || die "failed to build"
+	einfo " This is a binary-only ebuild."
 }
 
 src_install() {
-	java-pkg_dojar build/lib/*.jar
-
-	dodoc doc/fab/JSR110_final_approval_ballot.pdf doc/fab/final-questions.txt
-	use doc && java-pkg_dohtml -r build/javadocs/*
-	use source && java-pkg_dosrc src/*
+	dohtml -r docs/
+	java-pkg_dojar lib/qname.jar lib/wsdl4j.jar
 }
+

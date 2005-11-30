@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueproxy/blueproxy-1.1.ebuild,v 1.2 2005/02/01 15:26:31 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/blueproxy/blueproxy-1.1.ebuild,v 1.1 2004/10/09 19:22:15 liquidx Exp $
 
 inherit eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://anil.recoil.org/projects/blueproxy.html"
 SRC_URI="http://anil.recoil.org/projects/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 DEPEND=">=net-wireless/bluez-libs-2.10"
 

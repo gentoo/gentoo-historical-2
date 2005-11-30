@@ -1,14 +1,5 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 51bbf4623bb7c9c6bd6dc47324eeec74 ChangeLog 1128
-MD5 a1eb8f15fa0c18dac5c6c8e475f0658d ant-owanttask-1.1-r1.ebuild 799
-MD5 b01a96648b0649822b0012af93c8681e files/digest-ant-owanttask-1.1-r1 71
-MD5 0cc53bfb30a3ec902aabe97af1698512 metadata.xml 158
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDRuJrQiJ/wx066S4RAkJ3AJ0Tobdtn/LrGhHZVdhcOc+uXQX3pwCfbowq
-OAlCRm830iqujfFKDzjI3M4=
-=17/v
------END PGP SIGNATURE-----
+MD5 3a9cb20f74edb43ee31e72710b6e5cdf ant-owanttask-1.1.ebuild 449
+MD5 c4406818be42334b5b49fdc33eb77ff2 ChangeLog 259
+MD5 1aa5f9fd31f0d1e32e247f2d083f2ba9 metdata.xml 309
+MD5 e01084ba76ed767c6c75a7aa308aa349 ant-owanttask-1.1.ebuild~ 482
+MD5 b01a96648b0649822b0012af93c8681e files/digest-ant-owanttask-1.1 71

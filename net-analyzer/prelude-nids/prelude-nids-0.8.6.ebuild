@@ -1,32 +1,32 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/prelude-nids/prelude-nids-0.8.6.ebuild,v 1.11 2005/06/20 21:00:38 vanquirius Exp $
-
-inherit flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/prelude-nids/prelude-nids-0.8.6.ebuild,v 1.1 2003/12/17 07:30:35 mboman Exp $
 
 DESCRIPTION="Prelude-IDS NIDS"
-HOMEPAGE="http://www.prelude-ids.org/"
+HOMEPAGE="http://www.prelude-ids.org"
 SRC_URI="http://www.prelude-ids.org/download/releases/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc ppc"
+KEYWORDS="~x86 ~sparc"
 IUSE="doc debug"
-
-DEPEND="virtual/libc
+DEPEND="virtual/glibc
 	!dev-libs/libprelude-cvs
 	!net-analyzer/prelude-nids-cvs
-	<dev-libs/libprelude-0.9.0_rc1
+	dev-libs/libprelude
 	doc? ( dev-util/gtk-doc )"
+
+RDEPEND="${DEPEND}"
+S=${WORKDIR}/${P}
 
 src_compile() {
 	local myconf
+	export MAKEOPTS=""	# Doesn't compile if you using make -j
 
 	use doc && myconf="${myconf} --enable-gtk-doc" || myconf="${myconf} --enable-gtk-doc=no"
-	use debug && append-flags -O -ggdb
+	use debug && CFLAGS="$CFLAGS -O0 -ggdb"
 
 	econf ${myconf} || die "econf failed"
-	emake -j1 || die "emake failed"
+	emake || die "emake failed"
 }
 
 src_install() {
@@ -43,12 +43,4 @@ src_install() {
 	into /usr/share/prelude/ruleset
 	mv ${D}/etc/prelude-nids/ruleset ${D}/usr/share/prelude/ruleset/nids
 	dosym /usr/share/prelude/ruleset/nids /etc/prelude-nids/ruleset
-}
-
-pkg_postinst(){
-	ewarn "Please note that net-analyzer/prelude-nids is no longer"
-	ewarn "maintained as net-analyzer/snort replaces it in the developing"
-	ewarn "branch. If you want to use unstable prelude, please unmerge"
-	ewarn "net-analyzer/prelude-nids to avoid undesired downgrades of"
-	ewarn "dev-libs/libprelude."
 }

@@ -1,17 +1,6 @@
-# ChangeLog for games-sports/billardgl
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-sports/billardgl/ChangeLog,v 1.6 2004/12/28 23:37:05 ciaranm Exp $
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  20 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  billardgl-1.75-r1.ebuild:
-  don't rdepend on sed; sed in unpack; error check; IUSE; header fix
-
-  28 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org>
-  billardgl-1.75-r1.ebuild:
-  added amd64 per bug 34520
+# ChangeLog for app-games/billardgl
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-sports/billardgl/ChangeLog,v 1.1 2003/09/11 12:26:35 vapier Exp $
 
   03 Sep 2003; Michael Sterrett <msterret@gentoo.org>
   billardgl-1.75-r1.ebuild:
@@ -26,7 +15,7 @@
   29 Nov 2002; Mike Frysinger <vapier@gentoo.org> :
   Added games eclass support
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> billardgl-1.75.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> billardgl-1.75.ebuild :
   Added LICENSE, KEYWORDS, SLOT.
   Fixed install problem
 
@@ -37,7 +26,7 @@
 
 *billardgl-1.7.0 (20 Apr 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> billardgl-1.70.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> billardgl-1.70.ebuild :
   Added LICENSE, KEYWORDS, SLOT.
   Typo in ebuild.  Homepage would not display
 

@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver/xscreensaver-4.22-r4.ebuild,v 1.13 2005/11/19 11:33:46 killerfox Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver/xscreensaver-4.22-r4.ebuild,v 1.1 2005/07/30 02:58:32 smithj Exp $
 
 inherit eutils flag-o-matic pam fixheadtails
 
-IUSE="gnome jpeg kerberos krb4 insecure-savers new-login nls offensive opengl pam xinerama"
+IUSE="gnome jpeg kde kerberos krb4 insecure-savers new-login nls offensive opengl pam xinerama"
 
 DESCRIPTION="A modular screen saver and locker for the X Window System"
 SRC_URI="http://www.jwz.org/xscreensaver/${P}.tar.gz"
 HOMEPAGE="http://www.jwz.org/xscreensaver/"
 
 LICENSE="BSD"
-KEYWORDS="alpha amd64 ~arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 SLOT="0"
 
 # NOTE: ignore app-games/fortune-mod as a dep. it is pluggable and won't
@@ -85,7 +85,6 @@ src_unpack() {
 
 	# disable not-safe-for-work xscreensavers
 	use offensive || epatch ${FILESDIR}/${PN}-4.16-nsfw.patch
-	use offensive || epatch ${FILESDIR}/${PN}-4.22-nsfw-webcollage.patch
 
 	# change old head/tail to POSIX ones
 	#cd hacks
@@ -98,7 +97,6 @@ src_compile() {
 		&& myconf="${myconf} --with-kerberos" \
 		|| myconf="${myconf} --without-kerberos"
 
-	unset BC_ENV_ARGS
 	econf \
 		--with-hackdir=/usr/lib/misc/xscreensaver \
 		--with-configdir=/usr/share/xscreensaver/config \
@@ -149,6 +147,9 @@ src_install() {
 		insinto /usr/share/control-center-2.0/capplets
 		newins ${FILESDIR}/desktop_entries/screensaver-properties.desktop
 	fi
+
+	# install symlink to satisfy kde
+	use kde && dosym /usr/share/xscreensaver/config /usr/$(get_libdir)/xscreensaver/config
 
 	# Remove "extra" capplet
 	rm -f ${D}/usr/share/applications/gnome-screensaver-properties.desktop

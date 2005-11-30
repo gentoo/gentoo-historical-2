@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-3.2.1-r1.ebuild,v 1.6 2005/09/19 11:11:41 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/kdevelop/kdevelop-3.2.1-r1.ebuild,v 1.1 2005/07/16 07:58:37 greg_g Exp $
 
 inherit kde eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://kde/stable/${PV/#3.2/3.4}/src/${P}.tar.bz2"
 LICENSE="GPL-2"
 
 SLOT="3"
-KEYWORDS="amd64 ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="ada clearcase fortran haskell java pascal perforce perl php python ruby sql subversion"
 
 DEPEND="dev-lang/perl
@@ -67,7 +67,7 @@ pkg_postinst() {
 	einfo "dev-java/ant:                   support projects using the ant build tool"
 	einfo "dev-util/ctags:                 faster and more powerful code browsing logic"
 	einfo "app-doc/doxygen:                generate KDE-style documentation for your project"
-	einfo "www-misc/htdig:                  index and search your project's documentation"
+	einfo "net-www/htdig:                  index and search your project's documentation"
 	einfo "app-arch/rpm:                   support creating RPMs of your project"
 	einfo "app-emulation/visualboyadvance: create and run projects for this gameboy"
 	einfo

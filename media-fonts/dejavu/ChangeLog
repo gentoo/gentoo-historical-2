@@ -1,54 +1,6 @@
 # ChangeLog for media-fonts/dejavu
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/dejavu/ChangeLog,v 1.11 2005/10/29 03:48:58 usata Exp $
-
-*dejavu-1.15 (29 Oct 2005)
-
-  29 Oct 2005; Mamoru KOMACHI <usata@gentoo.org> -dejavu-1.8.ebuild,
-  -dejavu-1.9.ebuild, dejavu-1.11.ebuild, +dejavu-1.15.ebuild:
-  Version bumped. This closes bug #103507.
-
-  23 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> dejavu-1.11.ebuild:
-  Stable on sparc
-
-  23 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> dejavu-1.11.ebuild:
-  Keyworded ~sparc
-
-  03 Jul 2005; David Holm <dholm@gentoo.org> dejavu-1.11.ebuild:
-  Added to ~ppc.
-
-*dejavu-1.11 (02 Jul 2005)
-
-  02 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> dejavu-1.10.ebuild,
-  +dejavu-1.11.ebuild:
-  Version bumped; bug #97689.
-
-*dejavu-1.10 (28 May 2005)
-
-  28 May 2005; Mamoru KOMACHI <usata@gentoo.org> -dejavu-1.4.ebuild,
-  -dejavu-1.7.ebuild, dejavu-1.9.ebuild, +dejavu-1.10.ebuild:
-  Version bumped.
-
-*dejavu-1.9 (03 May 2005)
-
-  03 May 2005; Mamoru KOMACHI <usata@gentoo.org> dejavu-1.8.ebuild,
-  +dejavu-1.9.ebuild:
-  Version bumped. This closes bug #90559.
-
-  24 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> dejavu-1.8.ebuild:
-  Marked ~amd64.
-
-*dejavu-1.8 (22 Mar 2005)
-
-  22 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> dejavu-1.7.ebuild,
-  +dejavu-1.8.ebuild:
-  Version bumped.
-
-*dejavu-1.7 (14 Feb 2005)
-
-  14 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> dejavu-1.4.ebuild,
-  +dejavu-1.7.ebuild:
-  Version bumped; bug #77569. Marked 1.4 stable.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/dejavu/ChangeLog,v 1.1 2004/10/17 07:16:22 usata Exp $
 
 *dejavu-1.4 (17 Oct 2004)
 

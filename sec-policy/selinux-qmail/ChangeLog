@@ -1,45 +1,6 @@
 # ChangeLog for sec-policy/selinux-qmail
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-qmail/ChangeLog,v 1.9 2005/10/18 10:33:26 kaiowas Exp $
-
-  18 Oct 2005; petre rodan <kaiowas@gentoo.org>
-  selinux-qmail-20050917.ebuild:
-  mark stable
-
-*selinux-qmail-20050917 (18 Sep 2005)
-
-  18 Sep 2005; petre rodan <kaiowas@gentoo.org>
-  +selinux-qmail-20050917.ebuild:
-  added rule needed by kernels >= 2.6.13, added mips arch
-
-*selinux-qmail-20041128 (12 Dec 2004)
-
-  12 Dec 2004; petre rodan <kaiowas@gentoo.org>
-  -selinux-qmail-20040426.ebuild, -selinux-qmail-20041018.ebuild,
-  -selinux-qmail-20041120.ebuild, +selinux-qmail-20041128.ebuild:
-  removed old builds, added ssl-related fix from Andy Dustman
-
-  23 Nov 2004; petre rodan <kaiowas@gentoo.org>
-  selinux-qmail-20041120.ebuild:
-  mark stable
-
-*selinux-qmail-20041120 (22 Nov 2004)
-
-  22 Nov 2004; petre rodan <kaiowas@gentoo.org>
-  +selinux-qmail-20041120.ebuild:
-  added arpwatch-related block
-
-*selinux-qmail-20041018 (23 Oct 2004)
-
-  23 Oct 2004; petre rodan <kaiowas@gentoo.org> metadata.xml,
-  +selinux-qmail-20041018.ebuild:
-  major update based on #49275. added correct labels for /var/qmail/supervise/*
-
-*selinux-qmail-20040426 (26 Apr 2004)
-
-  26 Apr 2004; Chris PeBenito <pebenito@gentoo.org>
-  +selinux-qmail-20040426.ebuild:
-  Fix for 2004.1
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sec-policy/selinux-qmail/ChangeLog,v 1.1 2004/02/05 20:59:20 pebenito Exp $
 
 *selinux-qmail-20040205 (05 Feb 2004)
 

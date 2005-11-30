@@ -1,28 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/expat-1.95.7.ebuild,v 1.26 2005/10/06 22:48:18 vapier Exp $
-
-inherit libtool
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/expat/expat-1.95.7.ebuild,v 1.1 2003/11/09 09:31:24 mr_bones_ Exp $
 
 DESCRIPTION="XML parsing libraries"
 HOMEPAGE="http://expat.sourceforge.net/"
 SRC_URI="mirror://sourceforge/expat/${P}.tar.gz"
 
-LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ppc-macos s390 sh sparc x86"
-IUSE=""
+LICENSE="as-is"
+KEYWORDS="~amd64 ~x86 ~ppc ~sparc ~alpha ~hppa ~arm ~ia64"
 
-DEPEND="virtual/libc"
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	elibtoolize
-}
+DEPEND="virtual/glibc"
 
 src_install() {
-	einstall mandir="${D}/usr/share/man/man1" || die
-	dodoc Changes README
-	dohtml doc/
+	einstall mandir=${D}/usr/share/man/man1 || die
+	dodoc Changes README                    || die "dodoc failed"
+	dohtml doc/*                            || die "dohtml failed"
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-0.5.0.1.ebuild,v 1.8 2005/10/01 20:29:37 halcy0n Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/uim/uim-0.5.0.1.ebuild,v 1.1 2005/09/29 08:48:19 usata Exp $
 
 inherit eutils kde-functions flag-o-matic multilib
 
@@ -13,7 +13,7 @@ SRC_URI="http://uim.freedesktop.org/releases/${MY_P}.tar.gz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="gtk qt immqt immqt-bc nls X m17n-lib canna"
 #IUSE="${IUSE} scim"
 
@@ -75,8 +75,7 @@ src_compile() {
 	libtoolize --copy --force
 
 	# --with-scim is not stable enough
-	# --with-libedit should be fixed in SVN trunk, but not well tested
-	econf ${myconf} --without-scim --without-libedit || die "econf failed"
+	econf ${myconf} --without-scim || die "econf failed"
 	emake -j1 || die "emake failed"
 }
 

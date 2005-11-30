@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvdrip/dvdrip-0.52.3-r1.ebuild,v 1.4 2005/07/13 13:45:54 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdrip/dvdrip-0.52.3-r1.ebuild,v 1.1 2005/04/25 02:57:14 flameeyes Exp $
 
 inherit perl-module eutils
 
@@ -18,7 +18,7 @@ SRC_URI="http://www.exit1.org/${PN}/${MY_URL}/${MY_P}.tar.gz"
 LICENSE="Artistic GPL-2"
 SLOT="0"
 # ~ppc needs subtitleripper
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~x86 ~amd64"
 IUSE="cdr gnome xvid rar mplayer ogg fping subtitles"
 
 DEPEND="gnome? ( gnome-extra/libgtkhtml )
@@ -32,7 +32,7 @@ DEPEND="gnome? ( gnome-extra/libgtkhtml )
 	>=media-video/transcode-0.6.14
 	>=media-gfx/imagemagick-5.5.3
 	dev-perl/gtk-perl
-	perl-core/Storable
+	dev-perl/Storable
 	dev-perl/Event"
 RDEPEND="${DEPEND}
 	fping? ( >=net-analyzer/fping-2.3 )
@@ -42,7 +42,7 @@ RDEPEND="${DEPEND}
 	dev-perl/libintl-perl"
 
 pkg_setup() {
-	built_with_use media-video/transcode dvdread || die "transcode needs dvdread support builtin.  Please re-emerge transcode with the dvdread USE flag."
+	built_with_use transcode dvdread || die "transcode needs dvdread support builtin.  Please re-emerge transcode with the dvdread USE flag."
 }
 
 src_unpack() {

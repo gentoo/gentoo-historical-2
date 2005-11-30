@@ -1,83 +1,8 @@
-# ChangeLog for games-puzzle/enigma
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/enigma/ChangeLog,v 1.23 2005/09/16 22:19:10 ciaranm Exp $
-
-  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  11 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> -enigma-0.81.ebuild,
-  -enigma-0.91.ebuild:
-  clean old
-
-*enigma-0.92 (17 Jun 2005)
-
-  17 Jun 2005; Michael Sterrett <mr_bones_@gentoo.org> +enigma-0.92.ebuild:
-  version bump
-
-  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> enigma-0.81.ebuild,
-  enigma-0.91.ebuild:
-  Removed INSTALL file.
-
-  30 May 2005; Michael Sterrett <mr_bones_@gentoo.org> enigma-0.91.ebuild:
-  fix nls support (bug #94502) - patch from ockham@gmx.net
-
-*enigma-0.91 (02 May 2005)
-
-  02 May 2005; Michael Sterrett <mr_bones_@gentoo.org> +enigma-0.91.ebuild:
-  version bump (bug #91090)
-
-  29 Dec 2004; Joseph Jezak <josejx@gentoo.org> enigma-0.81.ebuild:
-  Marked ppc stable.
-
-  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> enigma-0.81.ebuild:
-  Added ~ppc.
-
-  15 Oct 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  +files/enigma-0.81-gcc34.patch, enigma-0.81.ebuild:
-  Add gcc34 patch from Mandrakesoft (bug #66904)
-
-  24 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> enigma-0.81.ebuild:
-  update HOMEPAGE (bug #65260)
-
-  29 Mar 2004; Jason Wever <weeve@gentoo.org> enigma-0.81.ebuild:
-  Added ~sparc keyword.
-
-  19 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org>
-  enigma-0.80_beta1.ebuild:
-  remove old beta
-
-  13 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> enigma-0.81.ebuild:
-  mark stable
-
-  13 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> enigma-0.81.ebuild:
-  fix the DESTDIR support (Thanks Spanky!)
-
-*enigma-0.81 (13 Oct 2003)
-
-  13 Oct 2003; Michael Sterrett <mr_bones_@gentoo.org> enigma-0.81.ebuild:
-  version bump
-
-  25 Sep 2003; Michael Sterrett <msterret@gentoo.org>
-  files/enigma-0.80-beta.patch:
-  Fix patch file so it actually applies.  Doh. (bug 29581)
-
-  24 Sep 2003; Michael Sterrett <msterret@gentoo.org>
-  enigma-0.80_beta1.ebuild, files/enigma-0.80-beta.patch:
-  Added enigma-0.80-beta.patch to files/; more specific DEPENDs
-
-*enigma-0.80_beta1 (16 Sep 2003)
-
-  16 Sep 2003; Michael Sterrett <msterret@gentoo.org>
-  enigma-0.80_beta1.ebuild:
-  Added a beta release per bug 28874
+# ChangeLog for app-games/enigma
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/enigma/ChangeLog,v 1.1 2003/09/10 06:36:00 vapier Exp $
 
 *enigma-0.70 (17 Feb 2003)
-
-  11 Sep 2003; Mike Frysinger <vapier@gentoo.org> :
-  Added gcc3 patch #28332.
-
-  10 Sep 2003; Michael Sterrett <msterret@gentoo.org> enigma-0.70.ebuild:
-  Tried it with lua-5.0 and it worked great.  No need to lock in lua-4.0 then.
 
   17 Feb 2003; Phil Bordelon <sunflare@gentoo.org> enigma-0.70.ebuild :
   Version bump.  Enigma now also uses the games eclass.  Deleted old,
@@ -95,16 +20,16 @@
 
 *enigma-0.40a (21 Jun 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> enigma-0.40a.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> enigma-0.40a.ebuild :
   Added KEYWORDS.
 
-  21 Jun 2002; J.Alberto SuÃ¡rez L. <bass@gentoo.org> enigma-0.40a.ebuild:
+  21 Jun 2002; J.Alberto Suárez L. <bass@gentoo.org> enigma-0.40a.ebuild:
 
   Bumped version of Larry Cow,fixed problems with gcc3.
 
 *enigma-0.39a (28 Apr 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> enigma-0.39a.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> enigma-0.39a.ebuild :
   Added LICENSE, KEYWORDS, SLOT.
 
   28 Apr 2002; Ryan Phillips <rphillips@gentoo.org> enigma-0.39a.ebuild :

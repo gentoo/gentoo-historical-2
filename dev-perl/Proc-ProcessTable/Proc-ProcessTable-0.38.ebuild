@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Proc-ProcessTable/Proc-ProcessTable-0.38.ebuild,v 1.10 2005/05/25 14:41:29 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Proc-ProcessTable/Proc-ProcessTable-0.38.ebuild,v 1.1 2003/06/02 20:33:38 mcummings Exp $
 
 inherit perl-module
 
-DESCRIPTION="UNIX PROCESS TABLE INFORMATION"
-HOMEPAGE="http://search.cpan.org/~durist/${P}/"
-SRC_URI="mirror://cpan/authors/id/D/DU/DURIST/${P}.tar.gz"
+S=${WORKDIR}/Proc-ProcessTable-0.38
+DESCRIPTION="Unix process table information"
+SRC_URI="http://www.cpan.org/modules/by-authors/id/D/DU/DURIST/Proc-ProcessTable-0.38.tar.gz"
+HOMEPAGE="http://www.cpan.org/modules/by-authors/id/D/DU/DURIST/${P}.readme"
 
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="x86 amd64 alpha ~hppa ~mips ppc ~sparc"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ~alpha ~arm ~hppa ~mips ~ppc ~sparc"
 
-DEPEND="perl-core/Storable"
+DEPEND="dev-perl/Storable"
+

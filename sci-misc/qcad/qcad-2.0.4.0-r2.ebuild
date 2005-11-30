@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-misc/qcad/qcad-2.0.4.0-r2.ebuild,v 1.2 2005/11/27 17:31:45 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-misc/qcad/qcad-2.0.4.0-r2.ebuild,v 1.1 2005/08/30 00:29:35 ribosome Exp $
 
 inherit kde-functions eutils
 
@@ -25,8 +25,7 @@ DEPEND="${DEPEND}
 
 src_unpack() {
 	unpack ${A}
-	# Bug 112864 - fix dir unpack bug
-	touch ${WORKDIR}
+#	mv doc ${S}/qcad/
 	cd ${S}
 	echo >> defs.pro "DEFINES += _REENTRANT QT_THREAD_SUPPORT"
 	echo >> defs.pro "CONFIG += thread release"

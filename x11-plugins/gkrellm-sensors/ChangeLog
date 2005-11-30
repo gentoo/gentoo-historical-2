@@ -1,26 +1,8 @@
 # ChangeLog for x11-plugins/gkrellm-sensors
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-sensors/ChangeLog,v 1.9 2005/02/27 12:24:52 brix Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-sensors/ChangeLog,v 1.1 2002/08/30 09:11:26 seemant Exp $
 
-  27 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
-  gkrellm-sensors-0.1.ebuild:
-  Dependency update: sys-apps/lm-sensors -> sys-apps/lm_sensors.
-
-  18 Dec 2004; Michael Hanselmann <hansmi@gentoo.org>
-  gkrellm-sensors-0.1.ebuild:
-  Removed ppc from keywords, as we no longer have kernel 2.4.
-
-*gkrellm-sensors-0.1 (26 Dec 2003)
-
-  26 Dec 2003; Jason Wever <weeve@gentoo.org> gkrellm-sensors-0.1.ebuild:
-  Masked on sparc as lm_sensors doesn't work.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *gklmsensors-0.1 (21 May 2002)
-
-  11 Sep 2002; Owen Stampflee <owen@gentoo.org> :
-  Added PPC to KEYWORDS.
 
   29 Aug 2002; Seemant Kulleen <seemant@gentoo.org> * :
 

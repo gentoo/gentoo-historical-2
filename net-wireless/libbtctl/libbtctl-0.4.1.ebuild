@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/libbtctl/libbtctl-0.4.1.ebuild,v 1.11 2005/07/17 13:45:43 dertobi123 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/libbtctl/libbtctl-0.4.1.ebuild,v 1.1 2004/06/27 03:57:00 liquidx Exp $
 
-inherit gnome2 mono
+inherit gnome2
 
 DESCRIPTION="A GObject wrapper for Bluetooth functionality"
 HOMEPAGE="http://usefulinc.com/software/gnome-bluetooth/"
@@ -10,19 +10,16 @@ SRC_URI="http://downloads.usefulinc.com/libbtctl/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~sparc ppc"
-IUSE="doc"
+KEYWORDS="~x86 ~sparc"
+IUSE="mono"
 
 RDEPEND=">=dev-libs/glib-2
 	>=net-wireless/bluez-utils-2.7
 	>=net-wireless/bluez-libs-2.7
 	>=dev-libs/openobex-1
 	>=dev-lang/python-2.3
-	>=dev-python/pygtk-2.0"
-
-# none of the mono versions we want are stable,
-# so we are masking mono support for now.
-#	!sparc? ( mono? ( >=dev-lang/mono-0.96 ) )"
+	>=dev-python/pygtk-2.0
+	!sparc? ( mono? ( >=dev-dotnet/mono-0.96 ) )"
 
 DEPEND="${RDEPEND}
 	dev-util/intltool
@@ -31,14 +28,8 @@ DEPEND="${RDEPEND}
 
 MAKEOPTS="${MAKEOPTS} -j1"
 DOCS="README NEWS ChangeLog AUTHORS COPYING"
-USE_DESTDIR="yes"
 
 src_compile() {
-# no stable mono versions available. we'll re-enable once
-# one of the mono's has been marked stable.
-#	use sparc || G2CONF="`use_enable mono`"
-	G2CONF="--disable-mono"
-	gnome2_src_configure
-	sed -i -e "s/libext=\"a/& la/" libtool
-	emake || die "make failed"
+	use sparc || G2CONF="`use_enable mono`"
+	gnome2_src_compile
 }

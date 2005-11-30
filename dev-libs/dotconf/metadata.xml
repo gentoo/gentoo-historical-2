@@ -5,5 +5,6 @@
 <herd>accessibility</herd>
 <maintainer>
   <email>dmwaters@gentoo.org</email>
+<!--  <description>This is a dependency for speech-dispatcher</description> -->
 </maintainer>
 </pkgmetadata>

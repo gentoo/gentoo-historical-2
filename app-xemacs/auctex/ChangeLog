@@ -1,20 +1,6 @@
 # ChangeLog for app-xemacs/auctex
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-xemacs/auctex/ChangeLog,v 1.7 2005/04/24 12:24:13 hansmi Exp $
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> auctex-1.33.ebuild:
-  Stable on ppc.
-
-  02 Oct 2003; Aron Griffis <agriffis@gentoo.org> auctex-1.33.ebuild:
-  Stable on alpha
-
-*auctex-1.33 (22 Feb 2003)
-
-  22 Feb 2003;  <rendhalver@gentoo.org> auctex-1.32.ebuild auctex-1.33.ebuild files/digest-auctex-1.33 :
-  Add ~alpha to KEYWORDS
-
-  22 Feb 2003; Rendhalver <rendhalver@gentoo.org> :
-  new stable ebuild
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-xemacs/auctex/ChangeLog,v 1.1 2002/12/16 12:22:47 rendhalver Exp $
 
 *auctex-1.32 (16 Dec 2002)
 

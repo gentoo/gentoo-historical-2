@@ -1,26 +1,8 @@
 # ChangeLog for app-emacs/dictionary
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/dictionary/ChangeLog,v 1.9 2005/07/16 15:49:37 josejx Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/dictionary/ChangeLog,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
-  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> dictionary-1.8.7.ebuild:
-  Marked ppc stable for bug #99186.
-
-  01 Jul 2005; David Holm <dholm@gentoo.org> dictionary-1.8.7.ebuild:
-  Added to ~ppc.
-
-*dictionary-1.8.7 (29 Jun 2005)
-
-  29 Jun 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  -dictionary-1.8.3.ebuild, -dictionary-1.8.5.ebuild,
-  +dictionary-1.8.7.ebuild:
-  Keywording ~amd64; New upstream version; Removed old ebuilds.
-
-*dictionary-1.8.5 (28 Dec 2003)
-
-  28 Dec 2003; Jeremy Maitin-Shepard <jbms@gentoo.org>
-  dictionary-1.8.5.ebuild :
-
-  Version bump.  Resolves bug 36573.
+*dictionary-1.8.3 (31 Oct 2002)
 
   31 Oct 2002; Matthew Kennedy <mkennedy@gentoo.org> ChangeLog,
   dictionary-1.8.3.ebuild, files/50dictionary-gentoo.el, 

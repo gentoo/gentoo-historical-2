@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/vixie-cron-4.1-r8.ebuild,v 1.9 2005/09/16 11:57:20 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/vixie-cron-4.1-r8.ebuild,v 1.1 2005/05/14 16:58:07 ka0ttic Exp $
 
-inherit cron toolchain-funcs debug pam
+inherit cron toolchain-funcs debug
 
 # no useful homepage, bug #65898
 HOMEPAGE="ftp://ftp.isc.org/isc/cron/"
@@ -15,7 +15,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 	mirror://gentoo/${P}-gentoo-${GENTOO_PATCH_REV}.patch.bz2"
 
 LICENSE="as-is"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="selinux pam debug"
 
 DEPEND=">=sys-apps/portage-2.0.47-r10

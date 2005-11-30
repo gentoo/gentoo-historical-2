@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6a.ebuild,v 1.4 2005/09/05 21:28:53 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/man/man-1.6a.ebuild,v 1.1 2005/08/22 23:40:25 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -17,11 +17,6 @@ DEPEND=""
 RDEPEND="sys-process/cronbase
 	>=sys-apps/groff-1.18
 	nls? ( sys-devel/gettext )"
-
-pkg_setup() {
-	enewgroup man 15
-	enewuser man 13 -1 /usr/share/man man
-}
 
 src_unpack() {
 	unpack ${A}
@@ -51,7 +46,7 @@ src_unpack() {
 		src/Makefile.in \
 		|| die "failed to edit default LDLFAGS"
 
-	strip-linguas $(eval $(grep ^LANGUAGES= configure) ; echo ${LANGUAGES//,/ })
+cp -a ${S}{,.orig}
 }
 
 src_compile() {
@@ -59,6 +54,7 @@ src_compile() {
 
 	local myconf=
 	if use nls ; then
+		strip-linguas $(cd man; echo ??)
 		if [[ -z ${LINGUAS} ]] ; then
 			myconf="+lang all"
 		else

@@ -1,40 +1,6 @@
 # ChangeLog for app-misc/chesstask
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/chesstask/ChangeLog,v 1.11 2005/09/03 16:04:44 dang Exp $
-
-  03 Sep 2005; <dang@gentoo.org> chesstask-2.0.ebuild:
-  Marked ~amd64
-
-  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> chesstask-1.3.ebuild,
-  chesstask-2.0.ebuild:
-  Fix qt dep
-
-  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> chesstask-2.0.ebuild:
-  Change qmake dir per bug #97535
-
-  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> chesstask-1.3.ebuild,
-  chesstask-2.0.ebuild:
-  depend on app-arch/unzip
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  chesstask-1.3.ebuild, chesstask-2.0.ebuild:
-  Masked chesstask-2.0.ebuild stable for ppc
-
-  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
-  chesstask-1.3.ebuild:
-  Masked chesstask-1.3.ebuild stable for ppc
-
-*chesstask-2.0 (28 Jun 2004)
-
-  28 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +chesstask-2.0.ebuild:
-  Version bumped. Thanks to Jeff Ames <jca@cwru.edu>, closing bug #43911
-
-  07 Jun 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
-  chesstask-1.3.ebuild:
-  QA - IUSE fix
-
-  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> chesstask-1.3.ebuild:
-  Changed app-text/tetex to virutal/tetex.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-misc/chesstask/ChangeLog,v 1.1 2003/03/01 00:57:08 liquidx Exp $
 
 *chesstask-1.3 (01 Mar 2003)
 

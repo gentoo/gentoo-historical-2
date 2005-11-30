@@ -1,61 +1,6 @@
 # ChangeLog for app-shells/scsh
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/scsh/ChangeLog,v 1.18 2005/09/03 21:06:46 hansmi Exp $
-
-  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> scsh-0.6.6.ebuild:
-  Stable on ppc.
-
-  31 Aug 2005; Christian Birchinger <joker@gentoo.org> scsh-0.6.6.ebuild:
-  Added sparc stable keyword
-
-  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> scsh-0.6.6.ebuild:
-  Readded ~ppc. Don't drop keywords, please.
-
-  11 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> scsh-0.6.6.ebuild:
-  Back to ~sparc since the maintainer dropped it
-
-*scsh-0.6.6 (09 Aug 2005)
-
-  09 Aug 2005; Matthew Kennedy <mkennedy@gentoo.org>
-  +files/0.6.6-Makefile.in-doc-dir-gentoo.patch, +scsh-0.6.6.ebuild:
-  New upstream; First SCSH port to use the SCSH eclass; Resolves Bug #58564;
-  Ebuild and eclass (scsh.eclass) contibuted by Johannes Brügmann and Dominik
-  Brugger
-
-*scsh-0.6.5 (26 Feb 2004)
-
-  26 Feb 2004; <mkennedy@gentoo.org> metadata.xml, scsh-0.6.5.ebuild:
-  New upstream; new metadata.xml; use new DESTDIR support
-
-*scsh-0.6.4 (15 Apr 2003)
-
-  15 Apr 2003; Matthew Kennedy <mkennedy@gentoo.org> scsh-0.6.4.ebuild:
-  minor version bump
-
-*scsh-0.6.3 (15 Mar 2003)
-
-  15 Mar 2003; Matthew Kennedy <mkennedy@gentoo.org> scsh-0.6.3.ebuild:
-  Minor version bump. Moved from /bin to /usr/bin. Documentation fix.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*scsh-0.6.1-r1 (12 Jul 2002)
-
-  28 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> scsh-0.6.1-r1 :
-
-  Added ppc to KEYWORDS.
-
-  12 Jul 2002; Seemant Kulleen <seemant@gentoo.org> scsh-0.6.1-r1 :
-
-  Man page edited to remove ${D} and repoman fixes. Also, the license is
-  just as-is or BSD.
-
-*scsh-0.6.1-r1 ( 6 Mar 2002 )
-
-  6 Mar 2002; Karl Trygve Kalleberg <karltk@gentoo.org> ChangeLog scsh-0.6.1-r1 files/digest-scsh-0.6.1-r1:
-
-  Fixed a bug where scsh.1 was installed in /usr/share/man instead of 
-  /usr/share/man/man1.
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-shells/scsh/ChangeLog,v 1.1 2002/02/24 22:31:38 karltk Exp $
 
 *scsh-0.6.0 ( 25 Feb 2002 )
 

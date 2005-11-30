@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/tsocks/tsocks-1.8_beta5.ebuild,v 1.7 2005/10/04 21:29:51 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/tsocks/tsocks-1.8_beta5.ebuild,v 1.1 2005/04/22 22:37:14 mrness Exp $
 
 inherit multilib
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/tsocks/${PN}-${PV/_}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc alpha ~amd64 ~ppc64"
 IUSE=""
 
 S=${WORKDIR}/tsocks-1.8
@@ -34,6 +34,7 @@ src_install() {
 	dobin validateconf inspectsocks saveme
 	insinto /etc/socks
 	doins tsocks.conf.*.example
+	dodoc INSTALL
 	# tsocks script is buggy so we need this symlink
 	dodir /usr/$(get_libdir)
 	dosym /$(get_libdir)/libtsocks.so /usr/$(get_libdir)/libtsocks.so

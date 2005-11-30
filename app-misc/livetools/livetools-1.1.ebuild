@@ -1,13 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/livetools/livetools-1.1.ebuild,v 1.6 2005/01/01 15:12:43 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/livetools/livetools-1.1.ebuild,v 1.1 2002/12/12 01:22:17 mkeadle Exp $
 
 DESCRIPTION="A small set of utilities to allow easy access to Creative's SoundBlaster Live!Drive IR's remote control."
 HOMEPAGE="http://www.clarkson.edu/~evanchsa/software/livetools/"
 SRC_URI="http://www.clarkson.edu/~evanchsa/software/livetools/1.1/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 
 # Currently, this is only functional as a XMMS plugin

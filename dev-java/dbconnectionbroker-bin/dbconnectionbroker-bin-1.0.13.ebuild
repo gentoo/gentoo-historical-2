@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dbconnectionbroker-bin/dbconnectionbroker-bin-1.0.13.ebuild,v 1.6 2005/07/16 14:22:45 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dbconnectionbroker-bin/dbconnectionbroker-bin-1.0.13.ebuild,v 1.1 2004/07/30 19:35:50 axxo Exp $
 
 inherit java-pkg
 
@@ -10,8 +10,8 @@ SRC_URI="ftp://www.javaexchange.com/javaexchange/DbConnectionBroker${PV}.tar"
 IUSE="doc"
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 ppc sparc amd64"
-RDEPEND=">=virtual/jre-1.2"
+KEYWORDS="x86 ppc sparc"
+RDEPEND=">=virtual/jdk-1.2"
 DEPEND=">=virtual/jdk-1.2"
 
 S=${WORKDIR}
@@ -22,5 +22,5 @@ src_compile() {
 
 src_install() {
 	java-pkg_dojar DbConnectionBroker.jar
-	use doc && java-pkg_dohtml -r doc/*
+	use doc && dohtml -r doc/*
 }

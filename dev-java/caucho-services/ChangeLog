@@ -1,16 +1,6 @@
 # ChangeLog for dev-java/caucho-services
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/caucho-services/ChangeLog,v 1.3 2005/11/30 02:13:39 nichoj Exp $
-
-  30 Nov 2005; <nichoj@gentoo.org> caucho-services-2.1.12.ebuild,
-  caucho-services-3.0.8.ebuild:
-  Added ~amd64 keyword (bug #110369)
-
-*caucho-services-3.0.8 (22 Oct 2005)
-
-  22 Oct 2005; Petteri Räty <betelgeuse@gentoo.org>
-  +caucho-services-3.0.8.ebuild:
-  Added caucho-services from hessian-3.0.8.
+# $Header: /var/cvsroot/gentoo-x86/dev-java/caucho-services/ChangeLog,v 1.1 2005/10/22 20:25:27 betelgeuse Exp $
 
 *caucho-services-2.1.12 (22 Oct 2005)
 

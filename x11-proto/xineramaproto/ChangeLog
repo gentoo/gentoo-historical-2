@@ -1,37 +1,6 @@
-# ChangeLog for x11-proto/xineramaproto
+# ChangeLog for x11-proto/panoramixproto
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/xineramaproto/ChangeLog,v 1.9 2005/10/20 03:26:14 spyderous Exp $
-
-*xineramaproto-1.1.1 (20 Oct 2005)
-
-  20 Oct 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  +xineramaproto-1.1.1.ebuild:
-  Bump for 7.0 RC1.
-
-  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
-  Add metadata.
-
-  28 Aug 2005; MATSUU Takuto <matsuu@gentoo.org>
-  xineramaproto-1.1-r1.ebuild:
-  Marked ~sh
-
-  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  -xineramaproto-1.1.ebuild:
-  Get rid of older ebuild.
-
-  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  files/digest-xineramaproto-1.1-r1:
-  New upstream tarball.
-
-  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  xineramaproto-1.1-r1.ebuild:
-  Fix SRC_URI, copy ~ppc over from panoramixproto.
-
-*xineramaproto-1.1-r1 (20 Aug 2005)
-
-  20 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
-  +xineramaproto-1.1-r1.ebuild:
-  Make sure this is seen as an upgrade.
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/xineramaproto/ChangeLog,v 1.1 2005/08/20 22:46:23 spyderous Exp $
 
 *xineramaproto-1.1 (20 Aug 2005)
 

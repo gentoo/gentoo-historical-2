@@ -1,22 +1,6 @@
 # ChangeLog for media-sound/playspc_gtk
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/playspc_gtk/ChangeLog,v 1.7 2005/09/04 10:33:04 flameeyes Exp $
-
-  04 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
-  playspc_gtk-0.2.7.3.ebuild:
-  Don't install COPYING file.
-
-  12 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  playspc_gtk-0.2.7.3.ebuild:
-  -* for x86 assembly.
-
-  20 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  playspc_gtk-0.2.7.3.ebuild:
-  Added IUSE.
-
-  08 Apr 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  playspc_gtk-0.2.7.3.ebuild:
-  nomirror and stable on x86.
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/playspc_gtk/ChangeLog,v 1.1 2003/07/19 03:53:01 jje Exp $
 
 *playspc_gtk-0.2.7.3 (19 Jul 2003)
 

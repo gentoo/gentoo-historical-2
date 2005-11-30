@@ -1,36 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-emulation/dgen-sdl/dgen-sdl-1.23.ebuild,v 1.8 2005/01/09 10:50:14 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-emulation/dgen-sdl/dgen-sdl-1.23.ebuild,v 1.1 2003/09/09 16:26:49 vapier Exp $
 
-inherit games gnuconfig
-
-DESCRIPTION="A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator"
+DESCRIPTION="DGen/SDL is a Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator"
 HOMEPAGE="http://www.pknet.com/~joe/dgen-sdl.html"
 SRC_URI="http://www.pknet.com/~joe/${P}.tar.gz"
 
-LICENSE="dgen-sdl"
-KEYWORDS="x86"
 SLOT="0"
+KEYWORDS="x86"
+LICENSE="dgen-sdl"
 IUSE="X mmx opengl"
 
-RDEPEND="media-libs/libsdl
-	X? ( virtual/x11 )
-	opengl? ( virtual/opengl )"
-DEPEND="${DEPEND}
-	dev-lang/nasm"
+DEPEND="media-libs/libsdl X? virtual/x11 opengl? virtual/opengl"
+RDEPEND="${DEPEND} dev-lang/nasm"
 
 src_compile() {
-	gnuconfig_update
+	local myconf=""
+	use opengl || myconf="${myconf} --without-opengl"
+	use X && myconf="${myconf} --with-x"
+	use mmx || myconf="${myconf} --without-mmx"
 
-	egamesconf \
-		$(use_with opengl) \
-		$(use_with X x) \
-		$(use_with mmx) || die
-	emake || die "emake failed"
+	econf ${myconf}
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
-	dodoc AUTHORS ChangeLog README sample.dgenrc
-	prepgamesdirs
+	make DESTDIR=${D} install || die
 }

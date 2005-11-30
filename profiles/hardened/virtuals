@@ -1,7 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation.
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/virtuals,v 1.12 2005/10/06 03:25:58 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/virtuals,v 1.1 2004/03/16 21:19:20 zhen Exp $
 
-virtual/os-headers	sys-kernel/linux-headers
-virtual/modutils	sys-apps/module-init-tools
-virtual/linux-sources	sys-kernel/hardened-sources
+virtual/kernel				sys-kernel/linux
+virtual/os-headers			sys-kernel/linux-headers
+virtual/modutils			sys-apps/modutils

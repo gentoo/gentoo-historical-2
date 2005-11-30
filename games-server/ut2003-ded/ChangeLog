@@ -1,32 +1,6 @@
-# ChangeLog for games-server/ut2003-ded
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/ut2003-ded/ChangeLog,v 1.8 2005/11/23 16:19:13 wolf31o2 Exp $
-
-  23 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ut2003-ded-2225-r2.ebuild:
-  Added amd64 support.
-
-  30 Aug 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  ut2003-ded-2225-r2.ebuild:
-  Changed to match new 3dgamers mirrors structure in thirdpartymirrors.
-
-  17 Nov 2004; Chris Gianelloni <wolf31o2@gentoo.org>
-  ut2003-ded-2225-r2.ebuild:
-  Removed calls to specific 3dgamers mirrors and changed to use
-  mirror://3dgamers instead.
-
-*ut2003-ded-2225-r2 (08 Jul 2004)
-
-  08 Jul 2004; Chris Gianelloni <wolf31o2@gentoo.org>
-  -ut2003-ded-2225-r1.ebuild, +ut2003-ded-2225-r2.ebuild:
-  Updated to close bug #54726.
-
-*ut2003-ded-2225-r1 (01 Apr 2004)
-
-  01 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> metadata.xml,
-  ut2003-ded-2225-r1.ebuild, ut2003-ded-2225.ebuild:
-  Updated with patches to fix recent DoS in Unreal engine based games. See bug
-  #44351 for more information.
+# ChangeLog for app-games/ut2003-ded
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/ut2003-ded/ChangeLog,v 1.1 2003/09/10 05:51:11 vapier Exp $
 
 *ut2003-ded-2225 (27 Jun 2003)
 

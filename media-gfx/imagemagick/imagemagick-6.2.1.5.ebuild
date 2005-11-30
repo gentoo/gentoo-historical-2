@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.2.1.5.ebuild,v 1.3 2005/11/28 12:54:00 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imagemagick/imagemagick-6.2.1.5.ebuild,v 1.1 2005/04/20 14:47:43 sekretarz Exp $
 
-inherit libtool flag-o-matic eutils perl-app
+inherit libtool flag-o-matic eutils perl-module
 
 MY_PN=ImageMagick
 MY_P=${MY_PN}-${PV%.*}
@@ -39,8 +39,12 @@ DEPEND=">=sys-apps/sed-4
 RDEPEND="${DEPEND}
 		>=sys-devel/libtool-1.5.2-r6"
 pkg_setup() {
-		ewarn "Please, remember that dev-perl/perlmagick is now"
-		ewarn "part of media-gfx/imagemagick"
+	if has_version 'dev-perl/perlmagick'; then
+		eerror "dev-perl/perlmagick is now part of imagemagick,"
+		eerror "please uninstall perlmagick, enable perl USE flag"
+		eerror "and emerge imagemagick again"
+		die "Please, uninstall perlmagick"
+	fi
 }
 
 src_unpack() {
@@ -85,8 +89,8 @@ src_install() {
 
 	if use perl ; then
 		cd ${S}/PerlMagick
-		perl-app_src_prep
-		perl-app_src_compile
+		perl-module_src_prep
+		perl-module_src_compile
 		perl-module_src_install
 		cd ${S}
 	fi

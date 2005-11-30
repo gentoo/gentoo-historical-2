@@ -1,29 +1,6 @@
 # ChangeLog for dev-java/commons-jxpath
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-jxpath/ChangeLog,v 1.9 2005/05/14 16:10:09 luckyduck Exp $
-
-*commons-jxpath-1.1-r1 (14 May 2005)
-
-  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  -commons-jxpath-1.1.ebuild, +commons-jxpath-1.1-r1.ebuild:
-  updated commons-beanutils dependency to reflect new slotting. see #71952
-
-  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-jxpath-1.1.ebuild:
-  stable on amd64
-
-  03 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-jxpath-1.1.ebuild:
-  updated to reflect the new jdom slots
-
-  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
-  commons-jxpath-1.1.ebuild:
-  Keywords ~amd64.
-
-  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> commons-jxpath-1.1.ebuild:
-  use java-pkg_dohtml instead of dohtml to also install the package-list in
-  case of api docs: #50740
-
-  30 Aug 2004; Chris Aniszczyk <zx@gentoo.org> commons-jxpath-1.1.ebuild:
-  Marking x86
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-jxpath/ChangeLog,v 1.1 2004/05/14 01:45:25 zx Exp $
 
 *commons-jxpath-1.1 (13 May 2004)
 

@@ -1,26 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc++/uclibc++-0.1.8.ebuild,v 1.3 2005/01/12 04:26:57 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/uclibc++/uclibc++-0.1.8.ebuild,v 1.1 2005/01/09 23:21:20 vapier Exp $
 
-inherit eutils toolchain-funcs
-
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
-		export CTARGET=${CATEGORY/cross-}
-	fi
-fi
+inherit eutils
 
 DESCRIPTION="embedded C++ library"
 HOMEPAGE="http://cxx.uclibc.org/"
 SRC_URI="http://cxx.uclibc.org/src/uClibc++-${PV}.tbz2"
 
 LICENSE="GPL-2"
-[[ ${CTARGET} != ${CHOST} ]] \
-	&& SLOT="${CTARGET}" \
-	|| SLOT="0"
+SLOT="0"
 KEYWORDS="~arm ~ppc ~x86"
-IUSE="debug static"
+IUSE=""
 
 DEPEND=""
 
@@ -31,42 +22,35 @@ src_unpack() {
 	cd ${S}
 	make defconfig || die "defconfig failed"
 
+	export CTARGET="${CTARGET:-${CHOST}}"
 	local target
-	case $(tc-arch ${CTARGET}) in
-		arm)	target="arm";;
-		mips)	target="mips";;
-		ppc)	target="powerpc";;
-		x86)	target="i386";;
-		*)		die "$(tc-arch ${CTARGET}) lists no defaults :/";;
+	case ${CTARGET} in
+		arm*)		target="arm";;
+		mips*)		target="mips";;
+		powerpc*)	target="powerpc";;
+		i?86*)		target="i386";;
+		*)			die "${CTARGET} lists no defaults :/";;
 	esac
 
 	sed -i \
-		-e '/^UCLIBCXX_RUNTIME_PREFIX=/d' \
+		-e '/^UCLIBCXX_RUNTIME_PREFIX=/d'
 		-e '/^TARGET_'${target}'/d' \
 		.config
 
-	echo "UCLIBCXX_RUNTIME_PREFIX=\"/usr/${CTARGET}\"" >> .config
+	cat << EOF >> .config
+TARGET_${target}=y
+UCLIBCXX_RUNTIME_PREFIX="/usr/${CTARGET}"
+EOF
 	echo "TARGET_${target}=y" >> .config
-	use debug && echo "CONFIG_DODEBUG=y" >> .config
 
 	yes "" | make oldconfig || die "oldconfig failed"
-
-	# has to come after make oldconfig, else it will be disabled
-	echo "BUILD_STATIC_LIB=y" >> .config
-	if use static ; then
-		echo "BUILD_ONLY_STATIC_LIB=y" >> .config
-	fi
 
 	# Patches!
 	epatch "${FILESDIR}"/${PV}-pop_back.patch
 }
 
 src_compile() {
-	emake -j1 ARCH_CFLAGS="${CFLAGS}" CROSS=${CTARGET}- || die "make failed"
-}
-
-src_test() {
-	make test || die "test failed"
+	emake -j1 CROSS=${CTARGET}- || die "make failed"
 }
 
 src_install() {

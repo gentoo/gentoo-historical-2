@@ -1,22 +1,6 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 ea0fce87ef3c06457bf33e3768b487ca ChangeLog 3400
-MD5 fbce6372edfc21a2f0b3b324cd20b5e8 baselayout-vserver-1.11.13-r1.ebuild 13276
-MD5 b0c9631a23f9b94e86916fe7c48b8040 baselayout-vserver-1.12.0_pre8-r2.ebuild 12588
-MD5 cf693ea87e77c1dc6f72cf58c32b7143 files/baselayout-vserver-1.11.13-cleanup.patch 18552
-MD5 cd1ba3815d5592a3c65f185cc7585107 files/baselayout-vserver-1.12.0_pre8-init-timeout-fix.patch 339
-MD5 645ee27aa823d5fb836b8f160326201e files/baselayout-vserver-1.12.0_pre8-whitelist-fixes.patch 1236
+MD5 9af9e1f91af7165192aa76a4f509337c baselayout-vserver-1.0.ebuild 12849
+MD5 74c5aadf8e3e9d642a20e64d1afefec8 metadata.xml 239
+MD5 e15d4ac9b7888933dcfdf1ce3335fa4f ChangeLog 374
 MD5 7c0cd50e4ac1dc062f5e6ab578e95659 files/copyright 2099
-MD5 a551ddae4bfb1b2bd7cbc16c57f481d3 files/digest-baselayout-vserver-1.11.13-r1 78
-MD5 d1b600f26f783320972a6692720df0d3 files/digest-baselayout-vserver-1.12.0_pre8-r2 83
-MD5 51a97031d54d767b45fb247d60727e9d files/fakelog.initd 449
 MD5 76a9437d29bd77c416f76fbcf0cf2af2 files/vserver-changes 1642
-MD5 e5ba31c20aa49371e645a8950abd1054 metadata.xml 231
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDiCbEflZ8QqxhrsMRAgrRAKDJ15tvQIjUwbVI6RnNEvYMDHiEIwCfeJwe
-/FH9z9AFsatjdL1rf4lLUeo=
-=ov1U
------END PGP SIGNATURE-----
+MD5 8a0d41f3187138a032d55869caedf650 files/digest-baselayout-vserver-1.0 144

@@ -1,24 +1,25 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.2.3-r6.ebuild,v 1.4 2005/05/28 00:55:06 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.2.3-r6.ebuild,v 1.1 2005/02/07 04:28:20 pythonhead Exp $
 
-inherit flag-o-matic eutils python versionator
+inherit flag-o-matic eutils python
 
-PYVER_MAJOR=$(get_major_version)
-PYVER_MINOR=$(get_version_component_range 2)
+IUSE="berkdb bootstrap build doc gdbm ncurses readline ssl tcltk"
+
+PYVER_MAJOR="`echo ${PV%_*} | cut -d '.' -f 1`"
+PYVER_MINOR="`echo ${PV%_*} | cut -d '.' -f 2`"
 PYVER="${PYVER_MAJOR}.${PYVER_MINOR}"
 
 S="${WORKDIR}/Python-${PV}"
 DESCRIPTION="A really great language"
-HOMEPAGE="http://www.python.org"
 SRC_URI="http://www.python.org/ftp/python/${PV%_*}/Python-${PV}.tgz"
 
+HOMEPAGE="http://www.python.org"
 LICENSE="PSF-2.2"
-SLOT="2.2"
 KEYWORDS="amd64 x86 ppc sparc alpha mips hppa ia64 ppc64"
-IUSE="berkdb bootstrap build doc gdbm ncurses readline ssl tcltk nocxx"
 
-DEPEND=">=sys-libs/zlib-1.1.3
+DEPEND="virtual/libc
+	>=sys-libs/zlib-1.1.3
 	!build? ( 	tcltk? ( >=dev-lang/tk-8.0 )
 				ncurses? ( >=sys-libs/ncurses-5.2 readline? ( >=sys-libs/readline-4.1 ) )
 				berkdb? ( >=sys-libs/db-3 )
@@ -34,6 +35,8 @@ RDEPEND="${DEPEND} dev-python/python-fchksum"
 # the functionality expected from previous pythons.
 
 PROVIDE="virtual/python"
+
+SLOT="2.2"
 
 src_unpack() {
 	unpack ${A}
@@ -82,7 +85,7 @@ src_compile() {
 
 	local myopts
 	#if we are creating a new build image, we remove the dependency on g++
-	if use build && ! use bootstrap || use nocxx
+	if use build && ! use bootstrap
 	then
 		myopts="--with-cxx=no"
 	fi

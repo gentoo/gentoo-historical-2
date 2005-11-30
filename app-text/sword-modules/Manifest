@@ -1,16 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 8bb0753f3240aec1cbe4955f8dc89121 sword-modules-20040503.ebuild 3446
-MD5 2777fbe810af3a4bf524101216a263c0 ChangeLog 2040
-MD5 e06d7f4244adad68e75e4bb971ad41a3 metadata.xml 320
-MD5 f680ea515114e9cf5c719216d13b0289 sword-modules-20041209.ebuild 2926
-MD5 00040b9f01af53ea1931334b6b94f9ac files/digest-sword-modules-20040503 1124
-MD5 d7110219d400db21bb885c37f49cc75b files/digest-sword-modules-20041209 1407
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDIMOrV3J2n04EauwRAj6/AJ97/jdJs37MYbsldmGdIZRYSlNArwCfRTnb
-kzMgpVmVsrSeuyizS8Gk3pI=
-=C75y
------END PGP SIGNATURE-----
+MD5 704d7c1d05288af6ff48951964001f54 ChangeLog 170
+MD5 630fb90ac8cee1a2b4888a326c673549 metadata.xml 486
+MD5 451499f40fa80644ecf1ceabc54eba03 sword-modules-20040406.ebuild 3226
+MD5 260752d5670ebbda973bd036923213de files/digest-sword-modules-20040406 1062

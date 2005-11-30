@@ -1,30 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/rep-gtk/rep-gtk-0.15-r3.ebuild,v 1.21 2005/06/23 13:13:18 agriffis Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Achim Gottinger <achim@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/rep-gtk/rep-gtk-0.15-r3.ebuild,v 1.1 2002/06/24 01:50:36 azarah Exp $
 
-IUSE="gnome"
-
+S=${WORKDIR}/${P}
 DESCRIPTION="GTK/GDK bindings for the librep Lisp environment"
 SRC_URI="mirror://sourceforge/rep-gtk/${P}.tar.gz"
 HOMEPAGE="http://rep-gtk.sourceforge.net/"
-
-SLOT="1.2"
-LICENSE="GPL-2"
-KEYWORDS="x86 sparc -ppc alpha"
+SLOT="gtk-1.2"
 
 DEPEND="=x11-libs/gtk+-1.2*
 	>=dev-libs/librep-0.13.4
-	gnome? ( <gnome-base/libglade-2
-		>=media-libs/gdk-pixbuf-0.11.0-r1 )"
+	gnome? ( >=gnome-base/libglade-0.17-r1
+		 >=media-libs/gdk-pixbuf-0.11.0-r1 )"
 
 RDEPEND="=x11-libs/gtk+-1.2*
-	gnome? ( <gnome-base/libglade-2
-		>=media-libs/gdk-pixbuf-0.11.0-r1 )"
+	gnome? ( >=gnome-base/libglade-0.17-r1
+		 >=media-libs/gdk-pixbuf-0.11.0-r1 )"
 
 src_compile() {
 	local myconf=""
 
-	if use gnome
+	if [ -n "`use gnome`" ]
 	then
 		myconf="--with-gnome --with-libglade"
 	else
@@ -34,14 +31,18 @@ src_compile() {
 			--without-gnome-canvas-pixbuf"
 	fi
 
-	econf ${myconf} || die
+	./configure --host=${CHOST} \
+		    --prefix=/usr \
+		    ${myconf} || die
+
 	make || die
 }
 
-src_install() {
+src_install() {                               
 	make DESTDIR=${D} install || die
 
 	dodoc AUTHORS BUGS COPYING ChangeLog README* TODO
 	docinto examples
 	dodoc examples/*
 }
+

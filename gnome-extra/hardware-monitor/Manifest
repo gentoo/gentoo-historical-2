@@ -1,17 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 03ad2e6c4ab41244af1015a8bbb0b39f metadata.xml 158
-MD5 81fe2b5d44bccf4611f97e25d4266935 ChangeLog 1986
-MD5 59222103e6c4b3035978cfefeff2c6e7 hardware-monitor-1.2.ebuild 806
-MD5 efa17895f9cd5d7e59dbbe68d4c557f5 hardware-monitor-0.7.ebuild 895
-MD5 69f28c9c654ffb19d15530c3ba141973 files/digest-hardware-monitor-1.2 73
-MD5 03811bc4c3b3cb53501f99ce14bbcad7 files/digest-hardware-monitor-0.7 72
-MD5 c7706e923220aca13c729c09652b53d2 files/hardware-monitor-0.7-emptyconstructors.patch 634
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.2.6 (GNU/Linux)
-
-iD8DBQFB/kp7KRy60XGEcJIRAmqKAJ0eh+Zywv4BmKhHcNPBuehxj25sEACgh2T6
-7Tmp7bsttigAfVBt5nZNAk0=
-=ckip
------END PGP SIGNATURE-----
+MD5 6f6cdee407dee0f71cd2c911c52f6621 hardware-monitor-0.5.ebuild 781
+MD5 4196480012266927f9375166dcfbf62d ChangeLog 393
+MD5 477ab5b60e6506e214a358754e2b0c1d files/digest-hardware-monitor-0.5 72

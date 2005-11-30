@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/qingy/qingy-0.6.0.ebuild,v 1.3 2005/11/04 18:50:51 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/qingy/qingy-0.6.0.ebuild,v 1.1 2005/05/30 08:15:28 s4t4n Exp $
 
 DESCRIPTION="a DirectFB getty replacement"
 HOMEPAGE="http://qingy.sourceforge.net/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE="crypt emacs gpm pam static"
 
 DEPEND=">=dev-libs/DirectFB-0.9.18
@@ -44,8 +44,8 @@ src_install() {
 
 pkg_postinst() {
 	einfo "In order to use qingy you must first edit your /etc/inittab"
-	einfo "Check the documentation at ${HOMEPAGE}"
-	einfo "for instructions on how to do that."
+	einfo "Check files INSTALL and README in /usr/share/doc/${P}"
+	einfo "for instructions on how to do that. Or issue an 'info qingy'."
 	echo
 	ewarn "Also note that qingy doesn't seem to work realiably with"
 	ewarn "2.6.7 kernels due to problems with the DirectFB library."

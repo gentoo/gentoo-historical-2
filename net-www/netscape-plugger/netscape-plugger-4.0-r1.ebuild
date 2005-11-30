@@ -1,20 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/netscape-plugger/netscape-plugger-4.0-r1.ebuild,v 1.17 2005/07/14 23:09:05 agriffis Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Daniel Robbins <drobbins@gentoo.org>
 
 MYP=${P#netscape-}-linux-x86-glibc
 S=${WORKDIR}/plugger-4.0
 DESCRIPTION="Plugger 4.0 streaming media plugin"
 SRC_URI="http://fredrik.hubbe.net/plugger/"${MYP}.tar.gz
 HOMEPAGE="http://fredrik.hubbe.net/plugger.html"
-SLOT="0"
-KEYWORDS="x86 -ppc -sparc"
-LICENSE="GPL-2"
-IUSE="mozilla"
 
-src_install() {
+src_install() {                               
 	cd ${S}
-	dodir /opt/netscape/plugins /etc
+	dodir /opt/netscape/plugins /etc /usr/local/bin
 	insinto /opt/netscape/plugins
 	doins plugger.so
 	insinto /etc
@@ -25,11 +21,8 @@ src_install() {
 	dobin plugger-4.0
 	dosym plugger-4.0 /usr/bin/plugger
 
-	if use mozilla; then
-		into /usr/lib/mozilla/plugins
-		dosym /opt/netscape/plugins/plugger.so \
-			/usr/lib/mozilla/plugins/plugger.so
-	fi
-
-	dodoc README
+	use mozilla && \
+		into /usr/lib/mozilla/plugins;
+		dosym /opt/netscape/plugins/plugger.so /usr/lib/mozilla/plugins/plugger.so
+  
 }

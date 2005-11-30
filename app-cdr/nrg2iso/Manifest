@@ -1,6 +1,2 @@
-MD5 31223f79b4b658bf08f9e298a0fd9516 metadata.xml 534
-MD5 fd2785cf285704f3d17eb8c8b7aed139 ChangeLog 1928
-MD5 243afa0efacbaaf9d7ec621f90a88648 nrg2iso-0.1.ebuild 672
-MD5 aa60487543367d00ce3f5e49457ffa7f nrg2iso-0.4-r1.ebuild 677
-MD5 0c5c964d812711a66fe191bc1dbf6ebb files/digest-nrg2iso-0.4-r1 61
+MD5 88456bd119b33f772497ded20f1c1b93 nrg2iso-0.1.ebuild 522
 MD5 77b18cdbb3edf82609d713940ddf7507 files/digest-nrg2iso-0.1 54

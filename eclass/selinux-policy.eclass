@@ -1,24 +1,25 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/selinux-policy.eclass,v 1.15 2005/07/06 20:23:20 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/selinux-policy.eclass,v 1.1 2003/07/29 02:55:56 pebenito Exp $
 
 # Eclass for installing SELinux policy, and optionally
 # reloading the policy
 
-inherit eutils
+ECLASS="selinux-policy"
+INHERITED="$INHERITED $ECLASS"
 
-HOMEPAGE="http://www.gentoo.org/proj/en/hardened/selinux/"
+HOMEPAGE="http://www.gentoo.org/proj/en/hardened/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-S="${WORKDIR}/${PN/selinux-}"
+S="${WORKDIR}/policy"
 
-IUSE=""
+IUSE="loadpolicy"
 
-RDEPEND=">=sec-policy/selinux-base-policy-20030729"
+newrdepend sys-apps/selinux-small sec-policy/selinux-base-policy
 
-[ -z "${POLICYDIR}" ] && POLICYDIR="/etc/security/selinux/src/policy"
+[ -z ${POLICYDIR} ] && POLICYDIR="/etc/security/selinux/src/policy"
 
 SAVENAME="`date +%Y%m%d%H%M`-${PN}.tar.bz2"
 SAVEDIR="`echo "${POLICYDIR}" | cut -d/ -f6`"
@@ -44,54 +45,38 @@ selinux-policy_src_install() {
 	if [ -n "${TEFILES}" ]; then
 		debug-print "TEFILES is \"${TEFILES}\""
 		insinto ${POLICYDIR}/domains/program
-		doins ${TEFILES} || die
-	fi
-
-	if [ -n "${TEMISC}" ]; then
-		debug-print "TEMISC is \"${TEMISC}\""
-		insinto ${POLICYDIR}/domains/misc
-		doins ${TEMISC} || die
+		doins ${TEFILES}
 	fi
 
 	if [ -n "${FCFILES}" ]; then
 		debug-print "FCFILES is \"${FCFILES}\""
 		insinto ${POLICYDIR}/file_contexts/program
-		doins ${FCFILES} || die
-	fi
-
-	if [ -n "${FCMISC}" ]; then
-		debug-print "FCMISC is \"${FCMISC}\""
-		insinto ${POLICYDIR}/file_contexts/misc
-		doins ${FCMISC} || die
+		doins ${FCFILES}
 	fi
 
 	if [ -n "${MACROS}" ]; then
 		debug-print "MACROS is \"${MACROS}\""
 		insinto ${POLICYDIR}/macros/program
-		doins ${MACROS} || die
+		doins ${MACROS}
 	fi
 }
 
 selinux-policy_pkg_postinst() {
-	if has "loadpolicy" $FEATURES ; then
-		if [ -x /usr/bin/checkpolicy -a -x /usr/sbin/load_policy -a -x /usr/sbin/setfiles ]; then
-			# only do this if all tools are installed
+	if [ "`use loadpolicy`" ]; then
+		ebegin "Automatically loading policy"
+		make -C ${POLICYDIR} load
+		eend $?
 
-			ebegin "Automatically loading policy"
-			make -C ${POLICYDIR} load
-			eend $?
+		ebegin "Regenerating file contexts"
+		[ -f ${POLICYDIR}/file_contexts/file_contexts ] && \
+			rm -f ${POLICYDIR}/file_contexts/file_contexts
+		make -C ${POLICYDIR} file_contexts/file_contexts &> /dev/null
 
-			ebegin "Regenerating file contexts"
-			[ -f ${POLICYDIR}/file_contexts/file_contexts ] && \
-				rm -f ${POLICYDIR}/file_contexts/file_contexts
-			make -C ${POLICYDIR} file_contexts/file_contexts &> /dev/null
-
-			# do a test relabel to make sure file
-			# contexts work (doesnt change any labels)
-			echo "/etc/passwd" | /usr/sbin/setfiles \
-				${POLICYDIR}/file_contexts/file_contexts -sqn
-			eend $?
-		fi
+		# do a test relabel to make sure file
+		# contexts work (doesnt change any labels)
+		echo "/etc/passwd" | /usr/sbin/setfiles \
+			${POLICYDIR}/file_contexts/file_contexts -sqn
+		eend $?
 	else
 		echo
 		echo
@@ -99,11 +84,18 @@ selinux-policy_pkg_postinst() {
 		eerror "that the policy be loaded before continuing!!"
 		echo
 		einfo "Automatic policy loading can be enabled by adding"
-		einfo "\"loadpolicy\" to the FEATURES in make.conf."
+		einfo "\"loadpolicy\" to the USE flags."
 		echo
 		echo
-		ebeep 4
-		epause 4
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		echo -ne "\a" ; sleep 0.1 ; echo -ne "\a" ; sleep 1
+		sleep 4
 	fi
 }
 

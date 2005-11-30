@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.7-r1.ebuild,v 1.5 2005/08/24 00:33:34 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.7-r1.ebuild,v 1.1 2005/02/25 15:04:09 azarah Exp $
 
 inherit eutils libtool flag-o-matic
 
@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.pld.org.pl/software/shadow/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="pam selinux nls skey"
 
 RDEPEND=">=sys-libs/cracklib-2.7-r3
@@ -61,9 +61,6 @@ src_unpack() {
 	# Fix SU_WHEEL_ONLY behavior #80345
 	epatch ${FILESDIR}/${P}-iswheel.patch
 
-	# Fix lastlog not logged for tty's
-	epatch ${FILESDIR}/${P}-lastlog.patch
-
 	# Make user/group names more flexible #3485 / #22920
 	epatch "${FILESDIR}"/shadow-4.0.6-dots-in-usernames.patch
 	epatch "${FILESDIR}"/shadow-4.0.6-long-groupnames.patch
@@ -79,7 +76,8 @@ src_unpack() {
 
 src_compile() {
 	append-ldflags -Wl,-z,now
-	tc-is-cross-compiler && export ac_cv_func_setpgrp_void=yes
+	[[ ${CTARGET:-${CHOST}} != ${CHOST} ]] \
+		&& export ac_cv_func_setpgrp_void=yes
 	econf \
 		--disable-desrpc \
 		--with-libcrypt \
@@ -216,7 +214,7 @@ pkg_postinst() {
 			ewarn "  ${ROOT}etc/pam.d/system-auth.bak"
 			echo
 
-			cp -pPR ${ROOT}/etc/pam.d/system-auth \
+			cp -a ${ROOT}/etc/pam.d/system-auth \
 				${ROOT}/etc/pam.d/system-auth.bak;
 			mv -f ${ROOT}/etc/pam.d/system-auth.new \
 				${ROOT}/etc/pam.d/system-auth

@@ -1,16 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-util/qtunit/qtunit-0.9.8.ebuild,v 1.8 2005/09/13 22:18:59 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-util/qtunit/qtunit-0.9.8.ebuild,v 1.1 2004/03/20 19:16:54 centic Exp $
 
 DESCRIPTION="Unit testing framework for c++"
 SRC_URI="http://www.uwyn.com/download/qtunit/${P}.tar.bz2"
 HOMEPAGE="http://www.uwyn.com/projects/qtunit/"
 
 SLOT="0"
-IUSE=""
-
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~ppc sparc x86"
+KEYWORDS="~x86 ~sparc"
 
 DEPEND="=x11-libs/qt-3*"
 
@@ -27,7 +25,7 @@ src_compile() {
 	export HOME="$T/fakehome"
 	addwrite "${QTDIR}/etc/settings"
 
-	${QTDIR}/bin/qmake qtunit.pro || die
+	qmake qtunit.pro || die
 	make || die	# emake doesn't work
 }
 

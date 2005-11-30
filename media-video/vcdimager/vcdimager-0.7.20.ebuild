@@ -1,22 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vcdimager/vcdimager-0.7.20.ebuild,v 1.10 2005/04/20 12:14:03 flameeyes Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-video/vcdimager/vcdimager-0.7.20.ebuild,v 1.1 2004/02/24 15:41:57 phosphan Exp $
 
 DESCRIPTION="GNU VCDimager"
 HOMEPAGE="http://www.vcdimager.org/"
-SRC_URI="http://www.vcdimager.org/pub/vcdimager/vcdimager-0.7/${P}.tar.gz"
+SRC_URI="http://www.vcdimager.org/pub/vcdimager/vcdimager-0.7_UNSTABLE/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64 ~alpha ~ia64 ~sparc"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE="xml2"
 
 DEPEND=">=dev-libs/libcdio-0.66
-	<=dev-libs/libcdio-0.70
-	dev-libs/popt
 	xml2? ( >=dev-libs/libxml2-2.5.11 )"
+
+S=${WORKDIR}/${P}
 
 src_compile() {
 	local myopts
@@ -33,7 +31,6 @@ src_compile() {
 src_install() {
 	make \
 		prefix=${D}/usr \
-		libdir=${D}/usr/$(get_libdir) \
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
 		install || die
@@ -41,5 +38,3 @@ src_install() {
 	dodoc AUTHORS BUGS COPYING ChangeLog FAQ HACKING INSTALL
 	dodoc NEWS README THANKS TODO
 }
-
-src_test() { :; }

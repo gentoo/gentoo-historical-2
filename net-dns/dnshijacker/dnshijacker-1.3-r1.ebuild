@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dns/dnshijacker/dnshijacker-1.3-r1.ebuild,v 1.5 2005/01/29 21:18:40 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dns/dnshijacker/dnshijacker-1.3-r1.ebuild,v 1.1 2003/08/21 05:04:32 vapier Exp $
 
 inherit eutils
 
@@ -10,10 +10,9 @@ SRC_URI="http://pedram.redhive.com/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
-IUSE=""
+KEYWORDS="~x86"
 
-DEPEND="virtual/libpcap
+DEPEND=">=net-libs/libpcap-0.7.1
 	>=net-libs/libnet-1.0.2a-r3
 	<net-libs/libnet-1.1"
 

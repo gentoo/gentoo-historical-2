@@ -1,30 +1,27 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/gkrellm-newsticker/gkrellm-newsticker-0.3.5.ebuild,v 1.14 2005/04/27 20:36:29 herbs Exp $
-
-inherit multilib
-
-DESCRIPTION="A news headlines scroller for GKrellM2"
-HOMEPAGE="http://gk-newsticker.sourceforge.net/"
-SRC_URI="mirror://gentoo/${P}.tar.bz2"
-
-LICENSE="GPL-2"
-SLOT="2"
-KEYWORDS="x86 ppc ~sparc alpha hppa amd64"
-IUSE=""
-
-DEPEND="=app-admin/gkrellm-2*
-		net-misc/curl"
+# $Header: /home/cvsroot/gentoo-x86/app-misc/gkrellm-volume-0.8.ebuild,v 1.0 
+# 26 Apr 2001 21:30 CST blutgens Exp $
 
 S=${WORKDIR}/${PN}
+DESCRIPTION="A news headlines scroller for GKrellM2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
+HOMEPAGE="http://gkrellm-newsticker.sourceforge.net/"
+
+DEPEND="=app-admin/gkrellm-2*
+	net-ftp/curl"
+
+SLOT="2"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hppa"
 
 src_compile() {
 	make || die
 }
 
-src_install() {
-	insinto /usr/$(get_libdir)/gkrellm2/plugins
-	doins newsticker.so || die
+src_install () {
+	insinto /usr/lib/gkrellm2/plugins
+	doins newsticker.so
 	dodoc README Changelog AUTHORS FAQ THEMES
 
 	dodoc ${FILESDIR}/rdf-sources

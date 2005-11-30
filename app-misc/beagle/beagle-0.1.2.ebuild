@@ -1,15 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.1.2.ebuild,v 1.4 2005/11/27 01:00:32 herbs Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.1.2.ebuild,v 1.1 2005/11/14 17:33:39 dsd Exp $
 
 inherit gnome.org eutils mono
 
-DESCRIPTION="search tool that ransacks your personal information space to find whatever you're looking for"
+DESCRIPTION="Beagle is a search tool that ransacks your personal information space to find whatever you're looking for."
 HOMEPAGE="http://www.beagle-project.org/"
-
 LICENSE="MIT Apache-1.1"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~x86"
 IUSE="spreadsheet pdf webservices chm debug"
 
 RDEPEND=">=dev-lang/mono-1.1.10
@@ -73,10 +72,6 @@ src_unpack() {
 	# soversion 10 for now.
 	sed -i -e 's/EXIF_SOVERSION=12/EXIF_SOVERSION=10/' configure.in
 
-	# Multilib fix
-	sed -i -e 's:prefix mono`/lib:libdir mono`:' \
-		${S}/{configure.in,configure} || die "sed failed"
-
 	# Don't log so much
 	! use debug && sed -i -e \
 		's/defaultLevel = LogLevel.Debug/defaultLevel = LogLevel.Info/' \
@@ -101,7 +96,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog INSTALL NEWS README
 }
 
-pkg_postinst() {
+pkg_postinst () {
 	einfo "If available, Beagle greatly benefits from using certain operating"
 	einfo "system features such as Extended Attributes and inotify."
 	echo
@@ -109,3 +104,4 @@ pkg_postinst() {
 	einfo "basic usage info, see the Gentoo page of the Beagle website:"
 	einfo " http://www.beagle-project.org/Gentoo_Installation"
 }
+

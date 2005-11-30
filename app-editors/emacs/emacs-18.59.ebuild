@@ -1,20 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-18.59.ebuild,v 1.5 2005/01/01 13:24:23 eradicator Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/app-editors/emacs/emacs-18.59.ebuild,v 1.1 2004/05/13 15:27:43 mkennedy Exp $
 
 DESCRIPTION="The extensible self-documenting text editor"
-HOMEPAGE="http://www.gnu.org/software/emacs/"
 SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
-	ftp://ftp.splode.com/pub/users/friedman/patches/${P}-linux22x-elf-glibc2.diff.gz
-	mirror://gentoo/${P}-gentoo.tar.gz"
+	ftp://ftp.splode.com/pub/users/friedman/patches/${P}-linux22x-elf-glibc2.diff.gz"
+HOMEPAGE="http://www.gnu.org/software/emacs/"
 
-LICENSE="GPL-1"
 SLOT="1"
 KEYWORDS="~x86"
+LICENSE="GPL-1"
 IUSE="X"
-
 DEPEND="sys-libs/ncurses
 	X? ( virtual/x11 )"
 PROVIDE="virtual/editor"
@@ -28,9 +24,9 @@ SANDBOX_DISABLED="1"
 src_unpack() {
 	unpack ${A}
 	epatch ${P}-linux22x-elf-glibc2.diff
-	epatch ${P}-unexelf.patch
-	epatch ${P}-gentoo.patch
-	epatch ${P}-gcc-gentoo.patch
+	epatch ${FILESDIR}/${P}-unexelf.patch
+	epatch ${FILESDIR}/${P}-gentoo.patch
+	epatch ${FILESDIR}/${P}-gcc-gentoo.patch
 }
 
 src_compile() {

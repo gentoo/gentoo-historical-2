@@ -1,26 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/elib/elib-1.0.ebuild,v 1.10 2005/01/01 13:43:36 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/elib/elib-1.0.ebuild,v 1.1 2002/11/01 02:52:01 mkennedy Exp $
 
 inherit elisp
+
+IUSE=""
 
 DESCRIPTION="The Emacs Lisp Library"
 HOMEPAGE="http://jdee.sunsite.dk"
 SRC_URI="http://jdee.sunsite.dk/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND="virtual/emacs"
+
+S="${WORKDIR}/${P}"
 
 SITEFILE=50elib-gentoo.el
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -i 's:--infodir:--info-dir:g' Makefile
+	D=${S}/ dosed 's:--infodir:--info-dir:g' Makefile
 }
 
 src_compile() {
@@ -32,9 +34,9 @@ src_install() {
 	dodir /usr/share/info
 	make prefix=${D}/usr infodir=${D}/usr/share/info install || die
 
-	elisp-site-file-install ${FILESDIR}/${SITEFILE}
+ 	elisp-site-file-install ${FILESDIR}/${SITEFILE}
 
-	dodoc ChangeLog INSTALL NEWS README RELEASING TODO
+	dodoc COPYING ChangeLog INSTALL NEWS README RELEASING TODO
 }
 
 pkg_postinst() {

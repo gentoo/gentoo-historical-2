@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/imgseek/imgseek-0.8.2.ebuild,v 1.6 2005/02/22 21:05:17 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/imgseek/imgseek-0.8.2.ebuild,v 1.1 2003/09/23 02:04:28 avenj Exp $
 
 S=${WORKDIR}/imgSeek-${PV}
 DESCRIPTION="Photo collection manager with content-based search."
@@ -8,12 +8,12 @@ HOMEPAGE="http://imgseek.sourceforge.net/"
 SRC_URI="mirror://sourceforge/imgseek/imgSeek-${PV}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
-IUSE=""
+KEYWORDS="~x86"
+IUSE="qt"
 
 DEPEND=">=dev-lang/python-2.2
 	>=dev-python/PyQt-3.5
-	dev-python/imaging"
+	dev-python/Imaging"
 
 src_compile() {
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/net2ftp/net2ftp-0.82.ebuild,v 1.4 2005/11/04 11:05:08 uberlord Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/net2ftp/net2ftp-0.82.ebuild,v 1.1 2005/02/28 12:33:07 uberlord Exp $
 
 inherit eutils webapp
 
@@ -14,21 +14,22 @@ SRC_URI="http://www.net2ftp.com/download/${MY_P}.zip"
 HOMEPAGE="http://www.net2ftp.com/"
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
-DEPEND="app-arch/unzip"
-RDEPEND="virtual/php"
+DEPEND=">=dev-php/mod_php-4.2.3
+	app-arch/unzip"
+RDEPEND=">=dev-php/mod_php-4.2.3"
 
 src_unpack() {
-	unzip "${DISTDIR}/${MY_P}.zip" >/dev/null \
+	unzip ${DISTDIR}/${MY_P}.zip >/dev/null \
 		|| die "failed to unpack ${MY_P}.zip"
 
 	# We rename these files as it looks like Windows was
 	# development platform
 	# We also rename the version number as the doc dir is
 	# versioned anyway
-	cd "${S}"
-	rename "_v${PV}" "" *.txt
+	cd ${S}
+	rename _v${PV} "" *.txt
 	rename _ "" *.txt
 	rename .txt "" *.txt
 
@@ -43,18 +44,19 @@ src_install() {
 
 	dodoc ${docs} LICENSE
 	for doc in ${docs}; do
-		rm -f "${doc}"
+		rm -f ${doc}
 	done
 
 	rm -f temp/chmod_this_dir_to_777.txt
 
-	cp -pPR * "${D}/${MY_HTDOCSDIR}"
+	insinto ${MY_HTDOCSDIR}
+	doins -r *
 
-	webapp_serverowned "${MY_HTDOCSDIR}/temp"
+	webapp_serverowned ${MY_HTDOCSDIR}/temp
 
-	webapp_configfile "${MY_HTDOCSDIR}/settings.inc.php"
-	webapp_configfile "${MY_HTDOCSDIR}/settings_authorizations.inc.php"
-	webapp_configfile "${MY_HTDOCSDIR}/settings_screens.inc.php"
+	webapp_configfile ${MY_HTDOCSDIR}/settings.inc.php
+	webapp_configfile ${MY_HTDOCSDIR}/settings_authorizations.inc.php
+	webapp_configfile ${MY_HTDOCSDIR}/settings_screens.inc.php
 
 	webapp_sqlscript mysql create_tables.sql
 

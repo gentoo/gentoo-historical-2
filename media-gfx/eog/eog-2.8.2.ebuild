@@ -1,16 +1,16 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/eog/eog-2.8.2.ebuild,v 1.12 2005/06/06 13:01:47 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/eog/eog-2.8.2.ebuild,v 1.1 2004/12/06 06:40:03 obz Exp $
 
 inherit gnome2 eutils
 
 DESCRIPTION="Eye Of Gnome, an image viewer"
 HOMEPAGE="http://www.gnome.org/"
-
 LICENSE="GPL-2"
+
 SLOT="1"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="jpeg"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64 ~ia64 ~mips ~ppc64"
 
 RDEPEND=">=x11-libs/gtk+-2.4
 	>=gnome-base/gconf-2.6
@@ -39,11 +39,5 @@ src_unpack() {
 	cd ${S}
 	# build fix without jpeg support
 	epatch ${FILESDIR}/${PN}-2.8.0-jpeg_build.patch
-
-}
-
-src_install() {
-
-	gnome2_src_install scrollkeeper_localstate_dir=${D}/var/lib/scrollkeeper/
 
 }

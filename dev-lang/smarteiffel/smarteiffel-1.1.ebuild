@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/smarteiffel/smarteiffel-1.1.ebuild,v 1.6 2004/07/02 04:31:03 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/smarteiffel/smarteiffel-1.1.ebuild,v 1.1 2003/10/17 03:18:36 george Exp $
 
 #IUSE="doc"
 IUSE="doc tcc"
@@ -12,10 +12,10 @@ SRC_URI="ftp://ftp.loria.fr/pub/loria/SmartEiffel/se-${PV}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc alpha ~sparc"
+KEYWORDS="~x86 ~ppc ~alpha ~sparc"
 
 DEPEND="tcc? ( >=dev-lang/tcc-0.9.14 )"
-#DEPEND="virtual/libc"
+#DEPEND="virtual/glibc"
 
 S="${WORKDIR}/SmartEiffel"
 # Destination directory to hold most of the SmartEiffel distribution.
@@ -71,7 +71,7 @@ src_install () {
 	done
 
 	# Install documentation.
-	if use doc; then
+	if [ -n `use doc` ]; then
 		einfo "Installing documentation"
 		dodir /usr/share/doc/${PF}
 		cp -a ${S}/{man,misc,tutorial,READ_ME} ${D}/usr/share/doc/${PF} || die

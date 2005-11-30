@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-forensics/aide/aide-0.9.ebuild,v 1.3 2005/01/01 14:21:52 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-forensics/aide/aide-0.9.ebuild,v 1.1 2004/09/12 06:44:02 dragonheart Exp $
 
 inherit eutils
 
@@ -20,7 +20,7 @@ DEPEND="app-arch/gzip
 	crypt? ( dev-libs/libgcrypt )
 	postgres? ( dev-db/postgresql )
 	zlib? ( sys-libs/zlib )"
-RDEPEND="nls? ( sys-devel/gettext )"
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}

@@ -1,43 +1,45 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ickle/ickle-0.3.1.ebuild,v 1.12 2004/07/15 00:13:52 agriffis Exp $
+# Maintainer: Spider <spider@gentoo.org>, Author Bart Verwilst <verwilst@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/net-im/ickle/ickle-0.3.1.ebuild,v 1.1 2002/04/27 07:16:49 spider Exp $
 
-IUSE="spell gnome"
-
+S=${WORKDIR}/${P}
 DESCRIPTION="ICQ 200x compatible ICQ client. limited featureset."
-SRC_URI="mirror://sourceforge/ickle/${P}.tar.gz"
+SRC_URI="http://prdownloads.sourceforge.net/ickle/${P}.tar.gz"
 HOMEPAGE="http://ickle.sf.net"
-
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="x86"
 
 
-DEPEND="=x11-libs/gtk+-1.2*
-	=dev-cpp/gtkmm-1.2*
-	=dev-libs/libsigc++-1.0*
-	>=sys-libs/lib-compat-1.0
-	=net-libs/libicq2000-0.3.1
-	spell? ( app-text/ispell )
-	gnome? ( =gnome-base/gnome-applets-1.4*
-		=gnome-base/gnome-libs-1.4* )"
+DEPEND=">=x11-libs/gtk+-1.2.10
+		>=x11-libs/gtkmm-1.2.5
+		>=dev-libs/libsigc++-1.0.4
+		>=sys-libs/lib-compat-1.0
+		=net-libs/libicq2000-0.3.1
+		spell? ( app-text/ispell )
+		gnome? ( >= gnome-base/gnome-applets-1.4.0 
+			 >= gnome-base/gnome-libs-1.4.1 )"
 
 src_compile() {
-
-	local myconf
-	myconf=""
-	use gnome \
-		&& myconf="--with-gnome" \
-		|| myconf="--without-gnome"
-
-	econf \
+	local myflags
+	myflags=""
+	if [ -z "`use gnome`" ]
+	then
+		myflags="--without-gnome"
+	else
+		myflags="--with-gnome"
+	fi
+	./configure ${myflags} \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--infodir=/usr/share/info \
 		--localstatedir=/var/lib \
-		${myconf} || die "./configure failed"
+		--mandir=/usr/share/man || die "./configure failed"
 	emake || die
 
 }
 
 src_install () {
 	make DESTDIR=${D} install || die
-	dodoc AUTHORS  COPYING ChangeLog  INSTALL NEWS README THANKS TODO
+	dodoc AUTHORS  COPYING ChangeLog  INSTALL NEWS README THANKS TODO 
 }

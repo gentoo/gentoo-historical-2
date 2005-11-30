@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Flat/File-Flat-0.94.ebuild,v 1.6 2005/05/25 13:50:07 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/File-Flat/File-Flat-0.94.ebuild,v 1.1 2004/10/17 03:11:10 mcummings Exp $
 
 inherit perl-module
 
@@ -14,13 +14,14 @@ KEYWORDS="~x86 ~amd64 ~alpha ~ppc ~sparc"
 IUSE=""
 SRC_TEST="do"
 
-DEPEND=">=dev-perl/Class-Autouse-1
+style="build"
+
+DEPEND=">=dev-perl/Class-Autouse-1*
 	dev-perl/module-build
 	dev-perl/File-Remove
-	perl-core/File-Spec
-	>=perl-core/File-Temp-0.14
+	dev-perl/File-Spec
+	>=dev-perl/File-Temp-0.14
 	dev-perl/File-NCopy
 	>=dev-perl/File-Remove-0.21
 	dev-perl/Test-ClassAPI
-	dev-perl/File-Slurp
 	dev-perl/Class-Inspector"

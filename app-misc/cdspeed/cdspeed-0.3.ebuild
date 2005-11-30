@@ -1,35 +1,34 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/cdspeed/cdspeed-0.3.ebuild,v 1.13 2005/04/21 19:05:52 blubb Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/cdspeed/cdspeed-0.3.ebuild,v 1.1 2003/09/14 16:32:49 iggy Exp $
 
-DESCRIPTION="Change the speed of your CD drive"
+DESCRIPTION="Change the speed of your CD drive."
 HOMEPAGE="http://linuxfocus.org/~guido/"
-SRC_URI="http://linuxfocus.org/~guido/${P}.tar.gz"
-
 LICENSE="GPL-2"
-SLOT="0"
-KEYWORDS="x86 ppc sparc ~mips alpha ~hppa amd64"
-IUSE=""
 
-RDEPEND="virtual/libc"
-DEPEND="${RDEPEND}
-	>=sys-apps/sed-4"
+DEPEND="virtual/glibc"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~arm"
+
+SLOT="0"
+SRC_URI="http://linuxfocus.org/~guido/${P}.tar.gz"
+S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -i \
-		-e 's:^CFLAGS=.*:CFLAGS=$(E_CFLAGS):' \
-		Makefile || die "sed Makefile failed"
+	mv Makefile Makefile.orig
+	sed -e "s:^CFLAGS=-O.*:CFLAGS=${CFLAGS}:" \
+		Makefile.orig > Makefile
 }
 
 src_compile() {
-	emake E_CFLAGS="${CFLAGS}" || die "emake failed"
+	emake || die
 }
 
 src_install() {
-	dobin cdspeed || die "dobin failed"
+	exeinto /usr/bin
+	doexe cdspeed
 	exeinto /usr/lib/cdspeed
-	doexe cdmount || die "doexe failed"
+	doexe cdmount
 	dodoc README
 }

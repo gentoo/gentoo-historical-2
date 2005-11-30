@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/asc/asc-1.15.0.0.ebuild,v 1.7 2005/02/15 00:54:50 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/asc/asc-1.15.0.0.ebuild,v 1.1 2004/06/24 00:09:32 mr_bones_ Exp $
 
 inherit games
 
@@ -16,13 +16,14 @@ SLOT="0"
 KEYWORDS="x86"
 IUSE=""
 
-RDEPEND="virtual/libc
+RDEPEND="virtual/glibc
 	app-arch/bzip2
 	>=media-libs/libsdl-1.2
 	media-libs/sdl-image
 	media-libs/sdl-mixer
 	>=media-libs/sdlmm-0.1.8
-	=dev-libs/libsigc++-1.2*"
+	>=dev-libs/libsigc++-1.2
+	>=media-libs/paragui-1.0.1"
 DEPEND="${RDEPEND}
 	app-arch/zip"
 
@@ -33,14 +34,11 @@ src_unpack() {
 
 src_compile() {
 	# Added --disable-paraguitest for bugs 26402 and 4488
-	# Added --disable-paragui for bug 61154 since it's not really used much
-	# and the case is well documented at http://www.asc-hq.org/
 	egamesconf \
+		--datadir="${GAMES_DATADIR_BASE}" \
 		--disable-dependency-tracking \
 		--disable-paraguitest \
-		--disable-paragui \
-		--datadir="${GAMES_DATADIR_BASE}" \
-		|| die
+			|| die
 	emake || die "emake failed"
 }
 

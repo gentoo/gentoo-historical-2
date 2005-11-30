@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvdbackup/dvdbackup-0.1.1-r1.ebuild,v 1.8 2005/10/03 19:46:32 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdbackup/dvdbackup-0.1.1-r1.ebuild,v 1.1 2004/04/09 06:22:46 vapier Exp $
 
-inherit toolchain-funcs eutils
+inherit gcc eutils
 
 DESCRIPTION="Backup content from DVD to hard disk"
 HOMEPAGE="http://dvd-create.sourceforge.net/"
@@ -10,7 +10,7 @@ SRC_URI="http://dvd-create.sourceforge.net/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc ppc-macos ppc64 sparc x86"
+KEYWORDS="x86 sparc amd64"
 IUSE=""
 
 DEPEND="media-libs/libdvdread"
@@ -24,7 +24,7 @@ src_unpack() {
 }
 
 src_compile() {
-	$(tc-getCC) ${CFLAGS} -I/usr/include/dvdread \
+	$(gcc-getCC) ${CFLAGS} -I/usr/include/dvdread \
 		-ldvdread -o dvdbackup src/dvdbackup.c \
 		|| die "compile failed"
 }

@@ -1,17 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/PlRPC/PlRPC-0.2016-r1.ebuild,v 1.17 2005/09/30 21:50:54 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/PlRPC/PlRPC-0.2016-r1.ebuild,v 1.1 2002/10/30 07:20:40 seemant Exp $
 
 inherit perl-module
 
+S=${WORKDIR}/${P}
 DESCRIPTION="The Perl RPC Module"
 SRC_URI="http://www.cpan.org/modules/by-module/RPC/${P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/RPC/${P}.readme"
 
-LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 sh ppc64"
-IUSE=""
+LICENSE="Artistic"
+KEYWORDS="x86 ppc alpha"
 
-DEPEND=">=perl-core/Storable-1.0.7
+DEPEND="${DEPEND}
+	>=dev-perl/Storable-1.0.7
 	>=dev-perl/Net-Daemon-0.34"

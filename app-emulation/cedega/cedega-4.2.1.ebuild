@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emulation/cedega/cedega-4.2.1.ebuild,v 1.3 2005/09/03 22:07:11 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emulation/cedega/cedega-4.2.1.ebuild,v 1.1 2005/01/12 00:05:32 vapier Exp $
 
 MY_P="cedega_${PV}-1.i386"
 DESCRIPTION="Cedega replaces WineX, a distribution of Wine with enhanced DirectX for gaming"
@@ -9,7 +9,7 @@ SRC_URI="${MY_P}.tgz"
 
 LICENSE="Aladdin"
 SLOT="3"
-KEYWORDS="-* amd64 x86"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="cups opengl"
 RESTRICT="fetch"
 
@@ -17,8 +17,7 @@ RDEPEND="virtual/x11
 	opengl? ( virtual/opengl )
 	>=sys-libs/ncurses-5.2
 	cups? ( net-print/cups )
-	>=media-libs/freetype-2.0.0
-	amd64? ( app-emulation/emul-linux-x86-xlibs )"
+	>=media-libs/freetype-2.0.0"
 
 pkg_nofetch() {
 	einfo "Please download the appropriate Cedega archive (${MY_P}.tgz)"

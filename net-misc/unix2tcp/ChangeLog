@@ -1,28 +1,6 @@
 # ChangeLog for net-misc/unix2tcp
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/unix2tcp/ChangeLog,v 1.8 2004/07/31 11:38:51 kugelfang Exp $
-
-  31 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> unix2tcp-0.8.2.ebuild:
-  Marked ~amd64.
-
-  01 Jul 2004; Jon Hood <squinky86@gentoo.org> unix2tcp-0.8.2.ebuild:
-  change virtual/glibc to virtual/libc
-
-  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> unix2tcp-0.7.2.ebuild,
-  unix2tcp-0.8.2.ebuild:
-  x86 keyworded and QA - IUSE on both
-
-  08 May 2004; David Holm <dholm@gentoo.org> unix2tcp-0.8.2.ebuild:
-  Added to ~ppc.
-
-*unix2tcp-0.8.2 (08 May 2004)
-
-  08 May 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
-  +unix2tcp-0.8.2.ebuild:
-  version bump thanks to Mihai RUSU <dizzy@roedu.net> in bug #50328
-
-  16 Apr 2004; Michael McCabe <randy@gentoo.org> unix2tcp-0.7.2.ebuild:
-  adding s390 to keywords
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/unix2tcp/ChangeLog,v 1.1 2003/09/22 20:45:04 vapier Exp $
 
 *unix2tcp-0.7.2 (22 Sep 2003)
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/kasablanca/kasablanca-0.4.0.1.ebuild,v 1.7 2005/07/28 21:08:08 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/kasablanca/kasablanca-0.4.0.1.ebuild,v 1.1 2004/08/19 11:18:32 voxus Exp $
 
-inherit kde eutils
+inherit kde
 
 DESCRIPTION="a graphical ftp client for kde. among its features are support for ssl/tls encryption (both commands and data using auth tls, not sftp), fxp (direct ftp to ftp transfer) bookmarks, and queues."
 HOMEPAGE="http://kasablanca.berlios.de/"
@@ -10,7 +10,7 @@ SRC_URI="http://download.berlios.de/kasablanca/kasablanca-${PV}.tar.gz"
 LICENSE="GPL-2"
 RESTRICT="nomirror"
 SLOT="0"
-KEYWORDS="x86 ~ppc amd64"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 
 # commondpends based on (ldd /usr/bin/kasablanca ; ldd /usr/bin/kbftp ) |\
@@ -28,7 +28,7 @@ COMMONDEPENDS="dev-libs/expat
 	sys-libs/glibc
 	sys-libs/zlib
 	virtual/x11
-	=x11-libs/qt-3*"
+	x11-libs/qt"
 
 DEPEND="${DEPEND}
 	sys-apps/gawk
@@ -47,10 +47,6 @@ RDEPEND="${RDEPEND}
 
 need-kde 3.1
 
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/${P}-64bit.patch
-}
 
 src_install() {
 	kde_src_install all

@@ -1,6 +1,7 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Tree/HTML-Tree-3.17.ebuild,v 1.6 2005/06/04 04:18:12 mcummings Exp $
+# Maintainer: José Alberto Suárez López <bass@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Tree/HTML-Tree-3.17.ebuild,v 1.1 2003/03/25 04:53:49 rac Exp $ 
 
 inherit perl-module
 
@@ -12,8 +13,7 @@ HOMEPAGE="http://www.perl.com/CPAN/authors/id/S/SB/SBURKE/"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="x86 amd64 ppc sparc alpha mips"
-IUSE=""
+KEYWORDS="x86 ppc sparc alpha"
 
 mydoc="Changes MANIFEST README"
 DEPEND=">=dev-perl/HTML-Tagset-3.03 >=dev-perl/HTML-Parser-2.19"

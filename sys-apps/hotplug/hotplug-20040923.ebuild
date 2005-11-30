@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hotplug/hotplug-20040923.ebuild,v 1.13 2005/02/05 17:20:25 corsair Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hotplug/hotplug-20040923.ebuild,v 1.1 2004/09/23 19:13:35 gregkh Exp $
 
 inherit eutils
 
@@ -11,9 +11,9 @@ DESCRIPTION="USB and PCI hotplug scripts"
 HOMEPAGE="http://linux-hotplug.sourceforge.net"
 SRC_URI="mirror://kernel/linux/utils/kernel/hotplug/${MY_P}.tar.gz"
 
-LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
+LICENSE="GPL-2"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~mips"
 IUSE=""
 
 # hotplug needs pcimodules utility provided by pcitutils-2.1.9-r1
@@ -61,13 +61,12 @@ pkg_postinst() {
 	ewarn "WARNING: The hotplug init script is now gone (dead and burried.)"
 	ewarn "WARNING: If you want to load modules for hardware that was already"
 	ewarn "WARNING: discovered at boot time, like the old hotplug init script"
-	ewarn "WARNING: did, then emerge the coldplug package, and add coldplug to"
-	ewarn "WARNING: a runlevel, e.g. # rc-update add coldplug boot"
-	echo
+	ewarn "WARNING: did, then emerge the coldplug package."
+	ewarn ""
 	ewarn "WARNING: All firmware loaded by the hotplug scripts needs to be"
 	ewarn "WARNING: moved to the /lib/firmware directory, as the scripts now"
 	ewarn "WARNING: expect it to be in that location."
-	echo
+	ewarn ""
 	ewarn "If you still have the file /etc/hotplug/isapnp.rc on your system,"
 	ewarn "please delete it by hand, the file /etc/hotplug/pnp.rc superseeds it."
 }

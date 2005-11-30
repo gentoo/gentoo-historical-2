@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/icesndcfg/icesndcfg-1.1.ebuild,v 1.11 2005/07/07 05:21:02 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/icesndcfg/icesndcfg-1.1.ebuild,v 1.1 2003/07/08 13:53:46 phosphan Exp $
 
 IUSE=""
 
@@ -9,15 +9,15 @@ SRC_URI="mirror://sourceforge/icecc/${P}.tar.bz2"
 HOMEPAGE="http://icecc.sourceforge.net/"
 
 DEPEND="virtual/x11
-	=x11-libs/qt-3*"
+	>=x11-libs/qt-3.0.0"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc ppc"
+KEYWORDS="~x86 ~sparc "
 
 src_compile () {
-	addwrite ${QTDIR}/etc/settings
-	econf || die "econf failed"
+
+	econf 
 	emake || die
 }
 

@@ -1,20 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/libsoup-1.99.28.ebuild,v 1.13 2005/05/30 06:31:59 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libsoup/libsoup-1.99.28.ebuild,v 1.1 2004/03/22 09:55:30 liquidx Exp $
 
-inherit gnome.org libtool eutils
+inherit gnome.org libtool
 
 DESCRIPTION="Soup is a SOAP implementation"
 HOMEPAGE="http://www.gnome.org/"
 
-LICENSE="LGPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc sparc x86"
 IUSE="gnutls"
+SLOT="0"
+LICENSE="LGPL-2"
+KEYWORDS="~x86 ~sparc ~ppc ~alpha ~hppa ~ia64 ~amd64"
 
 RDEPEND=">=dev-libs/glib-2.0
 	!gnutls? ( dev-libs/openssl )
-	gnutls?  ( >=net-libs/gnutls-1 )"
+	gnutls?  ( net-libs/gnutls )"
+
 DEPEND=">=dev-util/pkgconfig-0.12.0
 	dev-libs/popt
 	sys-devel/automake
@@ -24,7 +25,7 @@ DEPEND=">=dev-util/pkgconfig-0.12.0
 src_unpack() {
 	unpack ${A}
 	EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/${PN}-1.99.26-msn.patch
-	EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/${P}-gnutls.patch
+	EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/${PN}-1.99.26-gnutls_1.0.patch
 	# added --with-ssl=openssl|gnutls to choose between the two.
 	export WANT_AUTOCONF=1.4
 	EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/${PN}-1.99.26-with_ssl.patch
@@ -47,5 +48,5 @@ src_compile() {
 
 src_install() {
 	einstall || die "install failed"
-	dodoc AUTHORS ChangeLog README* TODO
+	dodoc AUTHORS COPYING* ChangeLog README* TODO
 }

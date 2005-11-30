@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/bins/bins-1.1.27.ebuild,v 1.5 2005/05/25 14:35:29 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/bins/bins-1.1.27.ebuild,v 1.1 2004/12/21 15:24:18 mcummings Exp $
 
 inherit eutils
 
@@ -14,7 +14,8 @@ KEYWORDS="~x86 ~sparc ~alpha ~ppc ~amd64"
 IUSE="gtk"
 
 DEPEND=">=dev-lang/perl-5.6.1-r6
-	>=media-gfx/imagemagick-6.2.2.0
+	>=media-gfx/imagemagick-5.5.5.3
+	>=dev-perl/perlmagick-5.5.5.3
 	>=dev-perl/ImageSize-2.99
 	>=dev-perl/ImageInfo-1.04-r1
 	>=dev-perl/IO-String-1.01-r1
@@ -22,7 +23,7 @@ DEPEND=">=dev-lang/perl-5.6.1-r6
 	>=dev-perl/HTML-Parser-3.26-r1
 	>=dev-perl/HTML-Template-2.6
 	>=dev-perl/Locale-gettext-1.01
-	>=perl-core/Storable-2.04
+	>=dev-perl/Storable-2.04
 	>=dev-perl/Text-Iconv-1.2
 	>=dev-perl/URI-1.18
 	>=dev-perl/libxml-perl-0.07-r1

@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.4.4-r1.ebuild,v 1.8 2005/11/29 03:04:52 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.4.4-r1.ebuild,v 1.1 2005/08/27 04:29:54 vapier Exp $
 
 MAN_VER=""
-PATCH_VER="1.7"
-UCLIBC_VER="1.2"
+PATCH_VER="1.5"
+UCLIBC_VER="1.1"
 PIE_VER="8.7.8"
 PP_VER="1.0"
 HTB_VER="1.00"
@@ -40,13 +40,13 @@ inherit toolchain eutils
 DESCRIPTION="The GNU Compiler Collection.  Includes C/C++, java compilers, pie+ssp extensions, Haj Ten Brugge runtime bounds checking"
 
 # Stuff to test before adding ~arch
-KEYWORDS="-* alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~s390 sh ~sparc ~x86"
+KEYWORDS="-* ~alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 ~sparc ~x86"
 
 # we need a proper glibc version for the Scrt1.o provided to the pie-ssp specs
 # NOTE: we SHOULD be using at least binutils 2.15.90.0.1 everywhere for proper
 # .eh_frame ld optimisation and symbol visibility support, but it hasnt been
 # well tested in gentoo on any arch other than amd64!!
-RDEPEND="|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.10 )
+RDEPEND=">=sys-devel/gcc-config-1.3.10
 	>=sys-libs/zlib-1.1.4
 	!sys-devel/hardened-gcc
 	elibc_glibc? (
@@ -56,10 +56,7 @@ RDEPEND="|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.10 )
 	amd64? ( multilib? ( >=app-emulation/emul-linux-x86-glibc-1.1 ) )
 	!build? (
 		gcj? (
-			gtk? (
-				|| ( ( x11-libs/libXt x11-libs/libX11 x11-libs/libXtst x11-proto/xproto x11-proto/xextproto ) virtual/x11 )
-				>=x11-libs/gtk+-2.2
-			)
+			gtk? ( >=x11-libs/gtk+-2.2 )
 			>=media-libs/libart_lgpl-2.1
 		)
 		>=sys-libs/ncurses-5.2-r2
@@ -75,7 +72,7 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-1.875
 	>=sys-devel/binutils-2.14.90.0.8-r1
 	amd64? ( >=sys-devel/binutils-2.15.90.0.1.1-r1 )"
-PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )
+PDEPEND="sys-devel/gcc-config
 	x86? ( !nocxx? ( !elibc_uclibc? ( !build? ( || ( sys-libs/libstdc++-v3 =sys-devel/gcc-3.3* ) ) ) ) )"
 
 src_unpack() {

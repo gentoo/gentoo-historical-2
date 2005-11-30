@@ -1,19 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/vm/vm-7.18.ebuild,v 1.9 2005/01/01 14:05:21 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/vm/vm-7.18.ebuild,v 1.1 2004/03/13 18:16:07 usata Exp $
 
-inherit elisp eutils
+inherit elisp
 
-DESCRIPTION="An emacs major mode for reading and writing e-mail with support for GPG and MIME."
-HOMEPAGE="http://www.wonderworks.com/vm/"
-SRC_URI="ftp://ftp.uni-mainz.de/pub/software/gnu/${PN}/${P}.tar.gz"
-
-LICENSE="GPL-1"
-SLOT="0"
-KEYWORDS="x86 sparc"
 IUSE=""
 
-DEPEND="virtual/libc
+DESCRIPTION="An emacs major mode for reading and writing e-mail with support for GPG and MIME."
+SRC_URI="ftp://ftp.uni-mainz.de/pub/software/gnu/${PN}/${P}.tar.gz"
+HOMEPAGE="http://www.wonderworks.com/vm"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~x86"
+
+DEPEND="virtual/glibc
 	virtual/emacs"
 
 SITEFILE=50vm-gentoo.el
@@ -40,7 +40,7 @@ src_install() {
 		install || die
 	elisp-install ${PN} *.el
 	elisp-site-file-install ${FILESDIR}/50vm-gentoo.el
-	dodoc README
+	dodoc COPYING README
 }
 
 pkg_postinst() {

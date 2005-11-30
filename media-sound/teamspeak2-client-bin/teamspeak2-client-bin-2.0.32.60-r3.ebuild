@@ -1,26 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak2-client-bin/teamspeak2-client-bin-2.0.32.60-r3.ebuild,v 1.10 2005/01/29 15:32:17 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak2-client-bin/teamspeak2-client-bin-2.0.32.60-r3.ebuild,v 1.1 2004/04/25 00:07:44 eradicator Exp $
 
 MY_PV=rc2_2032
 DESCRIPTION="The TeamSpeak voice communication tool"
-HOMEPAGE="http://www.goteamspeak.com"
+HOMEPAGE="http://www.teamspeak.org"
 SRC_URI="ftp://teamspeak.krawall.de/releases/ts2_client_${MY_PV}.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-* x86 amd64"
+KEYWORDS="x86 ~amd64"
 
 IUSE="kde imagemagick"
 
-DEPEND=""
+RDEPEND="virtual/x11"
 
-RDEPEND="${DEPEND}
-	virtual/x11
+DEPEND="${DEPEND}
 	kde? ( >=kde-base/kdelibs-3.1.0 )
 	imagemagick? ( media-gfx/imagemagick )
-	amd64? ( >=app-emulation/emul-linux-x86-baselibs-1.0
-	         >=app-emulation/emul-linux-x86-xlibs-1.0 )"
+	amd64? ( app-emulation/emul-linux-x86-baselibs
+		app-emulation/emul-linux-x86-xlibs )"
 
 S="${WORKDIR}/ts2_client_${MY_PV}/setup.data/image"
 
@@ -59,10 +58,10 @@ src_install() {
 	fi
 	newins icon.xpm teamspeak.xpm
 
-	if use kde ; then
+	if [ `use kde` ] ; then
 		# Install a teamspeak.protocol file for kde/konqueror to accept
 		# teamspeak:// links
-		insinto /usr/share/services/
+		insinto $(kde-config --prefix)/share/services/
 		doins ${FILESDIR}/teamspeak.protocol
 	fi
 

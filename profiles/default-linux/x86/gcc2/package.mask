@@ -1,8 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/x86/gcc2/package.mask,v 1.4 2005/11/11 22:35:08 azarah Exp $
+# Copyright 2001-2004 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /home/cvsroot/gentoo-x86/profiles/default/x86/2004.0/packages,v
+# 1.2 2004/03/18 00:16:43 seemant Exp $
 
->=sys-kernel/linux-headers-2.5
+# This mask affects only THIS profile!
+
 
 sys-fs/ntfsprogs
 media-video/cinelerra

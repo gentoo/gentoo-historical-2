@@ -1,13 +1,9 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-volnorm/xmms-volnorm-0.4.1-r1.ebuild,v 1.14 2005/09/04 09:54:17 flameeyes Exp $
-
-inherit gnuconfig eutils
-
-IUSE=""
+# Copyright 2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-volnorm/xmms-volnorm-0.4.1-r1.ebuild,v 1.1 2002/08/30 08:35:31 seemant Exp $ 
 
 MY_P=${P/xmms-/}
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/${MY_P} 
 DESCRIPTION="Plugin for XMMS, music will be played at the same volume even if it
 is recorded at a different volume level"
 SRC_URI="mirror://sourceforge/volnorm/${MY_P}.tar.gz"
@@ -15,19 +11,18 @@ HOMEPAGE="http://volnorm.sourceforge.net"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc alpha amd64 sparc"
+KEYWORDS="x86"
 
 DEPEND="media-sound/xmms"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	gnuconfig_update
+src_compile() {
+	econf || die
+	emake || die
 }
 
 src_install() {
 	einstall \
 		libdir=${D}/usr/lib/xmms/Effect || die
 
-	dodoc AUTHORS BUGS ChangeLog NEWS README RELEASE TODO
+	dodoc AUTHORS BUGS COPYING ChangeLog NEWS INSTALL README RELEASE TODO
 }

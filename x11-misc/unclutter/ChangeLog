@@ -1,43 +1,6 @@
 # ChangeLog for x11-misc/unclutter
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/unclutter/ChangeLog,v 1.14 2005/11/26 19:12:52 slarti Exp $
-
-  26 Nov 2005; Tom Martin <slarti@gentoo.org> unclutter-8.ebuild:
-  Stable on amd64, resolving bug #113642.
-
-  02 Jul 2005; Markus Rothe <corsair@gentoo.org> unclutter-8.ebuild:
-  Stable on ppc64
-
-  04 May 2005; Markus Rothe <corsair@gentoo.org> unclutter-8.ebuild:
-  Added ~ppc64 to KEYWORDS
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> unclutter-8.ebuild:
-  Masked unclutter-8.ebuild stable for ppc
-
-  29 Jun 2004; Danny van Dyk <kugelfang@gentoo.org> unclutter-8.ebuild:
-  Marked ~amd64.
-
-  13 Jun 2004; Donnie Berkholz <spyderous@gentoo.org>; unclutter-8.ebuild:
-  Change x11-base/xfree dependency to virtual/x11 (#52153).
-
-  12 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> unclutter-8.ebuild:
-  Stable on alpha.
-
-  01 Jun 2004; Brandon Hale <tseng@gentoo.org> unclutter-8.ebuild:
-  Add IUSE=
-
-  05 Apr 2004; Chris Aniszczyk <zx@gentoo.org> unclutter-8.ebuild:
-  Stable on hppa
-
-  24 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> unclutter-8.ebuild :
-  marked as stable for x86
-
-  10 Apr 2003; Patrick Kursawe <phosphan@gentoo.org> unclutter-8.ebuild:
-  entered a link to the README as Homepage since it has none
-  Closes bug #19068
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/unclutter/ChangeLog,v 1.1 2003/03/16 19:43:53 seemant Exp $
 
 *unclutter-8 (16 Mar 2003)
 

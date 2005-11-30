@@ -1,24 +1,20 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/yard/yard-2.2.ebuild,v 1.9 2004/07/15 02:48:57 agriffis Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/yard/yard-2.2.ebuild,v 1.1 2002/08/25 20:17:19 aliz Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Yard is a suite of Perl scripts for creating rescue disks (also
 called bootdisks) for Linux."
-SRC_URI="http://www.linuxlots.com/~fawcett/yard/${P}.tar.gz
-	http://www.ibiblio.org/pub/Linux/distributions/gentoo/distfiles/${P}-extra.tar.bz2
-	http://www.ibiblio.org/pub/Linux/distributions/gentoo/distfiles/diet-utils.tar.bz2"
+SRC_URI="http://www.linuxlots.com/~fawcett/yard/${P}.tar.gz"
 HOMEPAGE="http://www.linuxlots.com/~fawcett/yard/"
 SLOT="0"
 LICENSE="GPL-2 Artistic"
-KEYWORDS="x86 amd64 -ppc"
-IUSE=""
-DEPEND="dev-lang/perl"
+KEYWORDS="x86 -ppc"
+DEPEND="sys-devel/perl"
 RDEPEND=""
 
 src_unpack() {
-	unpack ${P}-extra.tar.bz2
-	mv ${S} ${S}-extra
-	unpack ${P}.tar.gz
+	unpack ${A}
 	cd ${S}
 	patch -p0 -l < ${FILESDIR}/${P}-gentoo.patch
 }
@@ -34,7 +30,7 @@ src_install() {
 	dodoc 0_* README VERSION
 	dohtml doc/*.html
 
-	cd ${S}-extra
+	cd ${FILESDIR}/${P}
 	insinto /etc/yard
 	doins etc/Bootdisk* etc/Config.pl
 	insinto /etc/yard/Replacements/etc
@@ -45,12 +41,12 @@ src_install() {
 	insinto /etc/yard/Replacements/root
 	doins etc/Replacements/root/profile
 
-	# modified scripts
+        # modified scripts
 
 	exeinto /usr/sbin
 	doexe sbin/{*_root_fs,mklibs.sh,write_rescue_disk,reduce_libs_root_fs}
 
-	# devices
+        # devices
 
 	dodir /etc/yard/Replacements/dev
 	cd ${D}/etc/yard/Replacements/dev
@@ -62,5 +58,5 @@ src_install() {
 	# diet-utils
 	dodir /etc/yard/Replacements/bin
 	cd ${D}/etc/yard/Replacements/bin
-	tar xjpf ${DISTDIR}/diet-utils.tar.bz2
+	tar xjpf ${FILESDIR}/diet-utils.tar.bz2
 }

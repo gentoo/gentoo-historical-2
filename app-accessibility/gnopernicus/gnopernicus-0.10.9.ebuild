@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gnopernicus/gnopernicus-0.10.9.ebuild,v 1.11 2005/08/23 02:19:22 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-accessibility/gnopernicus/gnopernicus-0.10.9.ebuild,v 1.1 2005/05/13 21:34:39 leonardop Exp $
 
 inherit gnome2
 
@@ -9,8 +9,8 @@ HOMEPAGE="http://www.baum.ro/gnopernicus.html"
 
 LICENSE="LGPL-2"
 SLOT="1"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
-IUSE="brltty doc ipv6 static"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
+IUSE="brltty debug doc ipv6 static"
 
 RDEPEND=">=gnome-base/gconf-2.6.1
 	>=dev-libs/popt-1.5
@@ -25,7 +25,7 @@ RDEPEND=">=gnome-base/gconf-2.6.1
 	>=app-accessibility/gnome-mag-0.11.7
 	>=gnome-extra/libgail-gnome-1.0
 	virtual/x11
-	brltty? ( >=app-accessibility/brltty-3.6 )"
+	brltty? ( app-accessibility/brltty )"
 
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.29

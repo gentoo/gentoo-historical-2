@@ -1,44 +1,6 @@
-# ChangeLog for games-server/nwn-ded
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/nwn-ded/ChangeLog,v 1.11 2005/11/28 23:27:15 wolf31o2 Exp $
-
-*nwn-ded-1.66 (28 Nov 2005)
-
-  28 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
-  nwn-ded-1.65-r1.ebuild, +nwn-ded-1.66.ebuild:
-  Added 1.66 ebuild, updated depedencies for x86/amd64, and closing bugs
-  #78059 and #113221.
-
-  28 Jun 2005; Simon Stelling <blubb@gentoo.org> nwn-ded-1.65-r1.ebuild:
-  added ~amd64 keyword
-
-*nwn-ded-1.65-r1 (02 Jan 2005)
-
-  02 Jan 2005; Mike Frysinger <vapier@gentoo.org> +nwn-ded-1.65-r1.ebuild,
-  -nwn-ded-1.65.ebuild:
-  Fix array usage with $A so it actually works #76428 by Francois Guimond.
-
-  30 Dec 2004; Mike Frysinger <vapier@gentoo.org> nwn-ded-1.65.ebuild:
-  Add localization support #61260 by dju.
-
-*nwn-ded-1.65 (30 Dec 2004)
-
-  30 Dec 2004; Mike Frysinger <vapier@gentoo.org> -nwn-ded-1.30.ebuild,
-  -nwn-ded-1.61.ebuild, +nwn-ded-1.65.ebuild:
-  Version bump #75457.
-
-  05 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-ded-1.30.ebuild,
-  nwn-ded-1.61.ebuild:
-  Changed license to NWN-EULA and closing bug #52507.
-
-  24 May 2004; Chris Gianelloni <wolf31o2@gentoo.org> nwn-ded-1.30.ebuild,
-  nwn-ded-1.61.ebuild:
-  Added app-arch/unzip to DEPEND and closing bug #51779.
-
-*nwn-ded-1.61 (29 Jan 2004)
-
-  29 Jan 2004; Mike Frysinger <vapier@gentoo.org> :
-  Version bump #38365 by Adam.
+# ChangeLog for app-games/nwn-ded
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-server/nwn-ded/ChangeLog,v 1.1 2003/09/10 05:51:11 vapier Exp $
 
 *nwn-ded-1.30 (11 Jul 2003)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/heroes3/heroes3-1.3.1a-r1.ebuild,v 1.7 2005/10/21 18:15:48 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/heroes3/heroes3-1.3.1a-r1.ebuild,v 1.1 2005/02/23 02:54:50 wolf31o2 Exp $
 
 # 	[x] Base Install Required (+4 MB) 
 #	[x] Scenarios (+7 MB)
@@ -14,13 +14,15 @@ inherit games
 IUSE="nocd maps music sounds videos"
 DESCRIPTION="Heroes of Might and Magic III : The Restoration of Erathia - turn-based 2-D medieval combat"
 HOMEPAGE="http://www.lokigames.com/products/heroes3/"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 
 # Since I do not have a PPC machine to test with, I will leave the PPC stuff in
 # here so someone else can stabilize loki_setupdb and loki_patch for PPC and
 # then KEYWORD this appropriately.
-SRC_URI="x86? ( mirror://lokigames/${PN}/${P}-cdrom-x86.run )
-	ppc? ( mirror://lokigames/${PN}/${P}-ppc.run )"
+SRC_URI="x86? ( ftp://ftp.planetmirror.com/pub/lokigames/updates/${PN}/${P}-cdrom-x86.run
+		ftp://snuffleupagus.animearchive.org/loki/updates/${PN}/${P}-cdrom-x86.run )
+	ppc? ( ftp://ftp.planetmirror.com/pub/lokigames/updates/${PN}/${P}-ppc.run
+		ftp://snuffleupagus.animearchive.org/loki/updates/${PN}/${P}-ppc.run )"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
@@ -36,7 +38,7 @@ dir=${GAMES_PREFIX_OPT}/${PN}
 Ddir=${D}/${dir}
 
 pkg_setup() {
-	check_license LOKI-EULA
+	check_license || die "License check failed"
 	use nocd && ewarn "The full installation takes about 341 MB of space!"
 	games_pkg_setup
 }
@@ -65,25 +67,26 @@ src_install() {
 	fi
 
 	cd ${Ddir}
-	tar -zxf ${CDROM_ROOT}/hiscore.tar.gz || die "unpacking hiscore"
+	tar xf ${CDROM_ROOT}/hiscore.tar.gz || die "unpacking hiscore"
 
 	cd ${S}
 	loki_patch --verify patch.dat
 	loki_patch patch.dat ${Ddir} >& /dev/null || die "patching"
 
-	games_make_wrapper heroes3 ./heroes3 "${dir}" "${dir}"
+	games_make_wrapper heroes3 ./heroes3 ${dir}
 
 	# now, since these files are coming off a cd, the times/sizes/md5sums wont
 	# be different ... that means portage will try to unmerge some files (!)
 	# we run touch on ${D} so as to make sure portage doesnt do any such thing
 	find ${Ddir} -exec touch '{}' \;
 
-	newicon ${CDROM_ROOT}/icon.xpm heroes3.xpm
+	cp ${CDROM_ROOT}/icon.xpm ${S}/heroes3.xpm
+	doicon ${S}/heroes3.xpm
 
 	prepgamesdirs
 	make_desktop_entry heroes3 "Heroes of Might and Magic III" "heroes3.xpm"
 
-	if use x86; then
+	if [ "${ARCH}" = "x86" ]; then
 		einfo "Linking libs provided by 'sys-libs/lib-compat-loki' to '${dir}'."
 		dosym /lib/loki_ld-linux.so.2 ${dir}/ld-linux.so.2 && \
 		dosym /usr/lib/loki_libc.so.6 ${dir}/libc.so.6 && \
@@ -91,7 +94,7 @@ src_install() {
 	fi
 
 	einfo "Changing 'hiscore.dat' to be writeable for group 'games'."
-	fperms g+w "${dir}/data/hiscore.dat" || die "fperms failed"
+	fperms g+w ${Ddir}/data/hiscore.dat || die "fperms failed"
 }
 
 pkg_postinst() {

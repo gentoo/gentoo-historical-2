@@ -1,34 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/mgv/mgv-3.1.5.ebuild,v 1.22 2005/07/16 16:26:51 josejx Exp $
+# Copyright 1999-2000 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Your Name <your email>
+# /home/cvsroot/gentoo-x86/skel.build,v 1.2 2001/02/15 18:17:31 achim Exp
 
-inherit eutils
-
-IUSE=""
-
-DESCRIPTION="Motif PostScript viewer loosely based on Ghostview"
-SRC_URI="http://www.trends.net/~mu/srcs/${P}.tar.gz"
+#P=
+A=${P}.tar.gz
+S=${WORKDIR}/${P}
+DESCRIPTION="Gv is a Motif PostScript viewer loosely based on Ghostview"
+SRC_URI="http://www.trends.net/~mu/srcs/${A}"
 HOMEPAGE="http://www.trends.net/~mu/mgv.html"
 
-KEYWORDS="~ppc sparc x86"
-LICENSE="GPL-2"
-SLOT="0"
-
-DEPEND="virtual/ghostscript
-	x11-libs/openmotif"
-
-src_unpack() {
-	unpack ${A}
-	epatch ${FILESDIR}/${P}-stderr.patch || die
-}
+DEPEND=">=app-text/ghostscript-3.33
+        x11-libs/openmotif"
 
 src_compile() {
-	econf || die
-	make || die
+
+    try ./configure --prefix=/usr --host=${CHOST}
+    try make
+
 }
 
-src_install() {
-	make DESTDIR=${D} install || die
-	dodoc AUTHORS COPYING ChangeLog NEWS README
-	dohtml doc/*.sgml
+src_install () {
+
+    try make DESTDIR=${D} install
+
 }
+

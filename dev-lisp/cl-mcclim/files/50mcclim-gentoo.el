@@ -3,3 +3,4 @@
 
 (add-to-list 'load-path "@SITELISP@")
 (load-library "indent-clim")
+(load-library "climbols")

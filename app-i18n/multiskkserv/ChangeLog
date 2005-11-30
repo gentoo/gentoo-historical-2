@@ -1,22 +1,6 @@
 # ChangeLog for app-i18n/multiskkserv
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/multiskkserv/ChangeLog,v 1.7 2005/01/01 14:36:11 eradicator Exp $
-
-  23 Nov 2004; Mamoru KOMACHI <usata@gentoo.org>
-  +files/multiskkserv-20020201-gcc34.diff,
-  -files/multiskkserv-20020201-gentoo.diff, multiskkserv-20020201.ebuild:
-  Changed einstall to make DESTDIR=${D} install; bug #72173.
-  Fixed compilation with >=gcc-3.4.
-
-  27 Dec 2003; Masatomo Nakano <nakano@gentoo.org>
-  multiskkserv-20020201.ebuild:
-  Fixed head command issue.
-
-  09 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> multiskkserv-20020201.ebuild:
-  Marked stable on ppc and sparc
-
-  05 Aug 2003; Mamoru KOMACHI <usata@gentoo.org> multiskkserv-20020201.ebuild:
-  Marked x86 and alpha stable
+# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/multiskkserv/ChangeLog,v 1.1 2003/07/16 18:59:43 usata Exp $
 
 *multiskkserv-20020201 (17 Jul 2003)
 

@@ -1,53 +1,6 @@
-# ChangeLog for games-util/qstat
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-util/qstat/ChangeLog,v 1.15 2005/11/23 12:31:33 vapier Exp $
-
-*qstat-2.10 (23 Nov 2005)
-
-  23 Nov 2005; Mike Frysinger <vapier@gentoo.org> +qstat-2.10.ebuild:
-  Version bump #110126 by Mark <Line72> Dillavou.
-
-  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> qstat-2.8.ebuild:
-  Stable on ppc.
-
-  17 Aug 2005; Michael Sterrett <mr_bones_@gentoo.org> qstat-2.8.ebuild:
-  stable for x86
-
-*qstat-2.8 (06 Apr 2005)
-
-  06 Apr 2005; Mike Frysinger <vapier@gentoo.org> +qstat-2.8.ebuild:
-  Version bump.
-
-  20 Feb 2005; <gongloo@gentoo.org> qstat-2.7.ebuild:
-  Stable on ppc-macos.
-
-  20 Jan 2005; <gongloo@gentoo.org> qstat-2.7.ebuild:
-  Keyworded ~ppc-macos.
-
-  28 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*qstat-2.7 (24 Dec 2004)
-
-  24 Dec 2004; Mike Frysinger <vapier@gentoo.org> +qstat-2.7.ebuild:
-  Version bump for new xqf.
-
-  08 Dec 2004; Michael Sterrett <mr_bones_@gentoo.org> qstat-2.6.ebuild:
-  sysconfdir patch from vi@sh.nu via bug #73830
-
-*qstat-2.5c (16 Aug 2004)
-
-  16 Aug 2004; Mike Frysinger <vapier@gentoo.org> -files/qstat-25b.gcc3-fix,
-  +qstat-2.5c.ebuild, +qstat-2.6.ebuild, -qstat-25b-r1.ebuild,
-  -qstat-25c.ebuild:
-  Version bump and version renaming #60622 by Keith Constable.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> qstat-25b-r1.ebuild,
-  qstat-25c.ebuild:
-  virtual/glibc -> virtual/libc
-
-  05 Jan 2004; Jon Portnoy <avenj@gentoo.org> qstat-25c.ebuild :
-  AMD64 keywords.
+# ChangeLog for app-games/qstat
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-util/qstat/ChangeLog,v 1.1 2003/09/10 18:53:23 vapier Exp $
 
 *qstat-25c (13 Nov 2002)
 
@@ -66,13 +19,13 @@
 
 *qstat-25b (07 Sep 2002)
 
-  07 Sep 2002; J.Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org>
+  07 Sep 2002; J.Alberto Suárez López <bass@gentoo.org>
   qstat-25b.ebuild:
   Bumped version and fix LICENSE. Thanks vapier@netzero.com (SpanKY). 
 
 *qstat-24e (29 Mar 2002)
 
-  17 jul 2002; Jose Alberto SuÃ¡rez LÃ³pez <bass@gentoo.org> qstat-24e.ebuild :
+  17 jul 2002; Jose Alberto Suárez López <bass@gentoo.org> qstat-24e.ebuild :
   Added LICENSE, KEYWORDS.
 
   13 April 2002; Bart Verwilst <verwilst@gentoo.org> Changelog: removed 

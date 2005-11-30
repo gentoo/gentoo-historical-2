@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/analog/analog-6.0.ebuild,v 1.5 2005/11/29 03:07:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/analog/analog-6.0.ebuild,v 1.1 2004/12/30 23:36:46 chriswhite Exp $
 
 inherit eutils
 
@@ -8,44 +8,49 @@ DESCRIPTION="A webserver log analyzer"
 HOMEPAGE="http://www.analog.cx/"
 SRC_URI="http://www.analog.cx/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
-DEPEND=">=dev-libs/libpcre-3.4
+RDEPEND=">=dev-libs/libpcre-3.4
 	>=media-libs/gd-1.8.4-r2
 	sys-libs/zlib
 	media-libs/jpeg
 	media-libs/libpng"
+DEPEND="${RDEPEND}
+	>=sys-apps/sed-4"
 
 pkg_setup() {
-	if ! built_with_use media-libs/gd jpeg ; then
+	local gd_use="$( cat /var/db/pkg/`best_version media-libs/gd`/USE | grep jpeg )"
+
+	if [ -z "${gd_use}" ] ; then
 		eerror "libgd is missing jpeg support. Please add"
 		eerror "'jpeg' to your USE flags, and re-emerge libgd."
 		die "libgd needs jpeg support"
 	fi
+
+	return 0
 }
 
 src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PN}-5.1-gentoo.diff"
-	sed -i \
-		-e "s:^CFLAGS.*:CFLAGS = ${CFLAGS}:" \
-		-e 's:^DEFS.*:DEFS = -DHAVE_GD -DHAVE_PCRE -DHAVE_ZLIB:' \
-		-e "s:^LIBS.*:LIBS = -lgd -lz -lpcre -lm -lpng -ljpeg:" \
-		src/Makefile \
-		|| die "sed failed"
+	unpack ${A} ; cd ${S}
+	epatch ${FILESDIR}/${PN}-5.1-gentoo.diff
 }
 
 src_compile() {
+	ebegin "Configuring"
+	sed -i -e "s:^CFLAGS.*:CFLAGS = ${CFLAGS}:" \
+		-e 's:^DEFS.*:DEFS = -DHAVE_GD -DHAVE_PCRE -DHAVE_ZLIB:' \
+		-e "s:^LIBS.*:LIBS = -lgd -lz -lpcre -lm -lpng -ljpeg:" \
+		src/Makefile
+	eend $?
+
 	make -C src || die "make failed"
 }
 
 src_install() {
-	dobin analog || die "dobin failed"
-	newman analog.man analog.1
+	dobin analog ; newman analog.man analog.1
 
 	dodoc README.txt Licence.txt analog.cfg
 	dohtml -a html,gif,css,ico docs/*
@@ -57,5 +62,5 @@ src_install() {
 	insinto /usr/share/analog/lang ; doins lang/*
 	dodir /var/log/analog
 	dosym /usr/share/analog/images /var/log/analog/images
-	insinto /etc/analog ; doins "${FILESDIR}/analog.cfg"
+	insinto /etc/analog ; doins ${FILESDIR}/analog.cfg
 }

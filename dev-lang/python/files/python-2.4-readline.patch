@@ -1,3 +1,19 @@
+Common subdirectories: Python-2.4/Demo and Python-2.4.new/Demo
+Common subdirectories: Python-2.4/Doc and Python-2.4.new/Doc
+Common subdirectories: Python-2.4/Grammar and Python-2.4.new/Grammar
+Common subdirectories: Python-2.4/Include and Python-2.4.new/Include
+Common subdirectories: Python-2.4/Lib and Python-2.4.new/Lib
+Common subdirectories: Python-2.4/Mac and Python-2.4.new/Mac
+Common subdirectories: Python-2.4/Misc and Python-2.4.new/Misc
+Common subdirectories: Python-2.4/Modules and Python-2.4.new/Modules
+Common subdirectories: Python-2.4/Objects and Python-2.4.new/Objects
+Common subdirectories: Python-2.4/PC and Python-2.4.new/PC
+Common subdirectories: Python-2.4/PCbuild and Python-2.4.new/PCbuild
+Common subdirectories: Python-2.4/Parser and Python-2.4.new/Parser
+Common subdirectories: Python-2.4/Python and Python-2.4.new/Python
+Common subdirectories: Python-2.4/RISCOS and Python-2.4.new/RISCOS
+Common subdirectories: Python-2.4/Tools and Python-2.4.new/Tools
+Only in Python-2.4.new: autom4te.cache
 diff -up Python-2.4/configure Python-2.4.new/configure
 --- Python-2.4/configure	2004-11-07 01:24:12.000000000 +0000
 +++ Python-2.4.new/configure	2005-04-20 17:35:32.380494843 +0100

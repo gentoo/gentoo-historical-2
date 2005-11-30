@@ -1,24 +1,21 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tcng/tcng-9h.ebuild,v 1.11 2005/02/13 04:56:13 robbat2 Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tcng/tcng-9h.ebuild,v 1.1 2003/11/15 06:53:43 robbat2 Exp $
 
 DESCRIPTION="tcng - Traffic Control Next Generation"
 HOMEPAGE="http://tcng.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
-# block this to phase it out very shortly
-KEYWORDS="-*"
-IUSE="doc tcsim"
-DEPEND="doc? ( virtual/ghostscript virtual/tetex media-gfx/transfig )
+KEYWORDS="~x86"
+IUSE=""
+DEPEND="doc? ( app-text/ghostscript app-text/tetex media-gfx/transfig )
 	dev-lang/perl
 	virtual/os-headers
-	sys-apps/iproute2"
+	sys-apps/iproute"
 RDEPEND="sys-devel/gcc
-	tcsim? ( media-gfx/gnuplot )
+	tcng-tcsim? ( media-gfx/gnuplot )
 	dev-lang/perl
-	sys-apps/iproute2"
+	sys-apps/iproute"
 
 IPROUTE_PN="iproute"
 IPROUTE_PV="20010824"
@@ -29,8 +26,8 @@ IPROUTE_SRCFILE="iproute2-2.4.7-now-ss${IPROUTE_PV/20}.tar.gz"
 
 # note this project does NOT use the SF mirroring system
 SRC_URI="http://tcng.sourceforge.net/dist/${P}.tar.gz
-	tcsim? ( ftp://ftp.inr.ac.ru/ip-routing/${IPROUTE_SRCFILE}
-	mirror://debian/pool/main/i/iproute/${IPROUTE_DEBIAN_PATCH} )"
+	tcng-tcsim? ( ftp://ftp.inr.ac.ru/ip-routing/${IPROUTE_SRCFILE}
+	http://ftp.debian.org/debian/pool/main/i/iproute/${IPROUTE_DEBIAN_PATCH} )"
 
 S=${WORKDIR}/tcng
 IPROUTE_S=${WORKDIR}/${IPROUTE_P}
@@ -39,7 +36,7 @@ src_unpack() {
 	#unpack tcng
 	unpack ${P}.tar.gz
 
-	if use tcsim; then
+	if use tcng-tcsim; then
 		#unpack iproute
 		unpack ${IPROUTE_SRCFILE}
 		mv iproute2 iproute-20010824
@@ -53,11 +50,9 @@ src_unpack() {
 
 src_compile() {
 	local myconf
-	use tcsim && myconf="${myconf} --with-tcsim" || myconf="${myconf} --no-tcsim"
-	dodir /usr/bin
-	# configure is NONSTANDARD
+	use tcng-tcsim && myconf="${myconf} --with-tcsim" || myconf="${myconf} --no-tcsim"
 	./configure \
-		--install-directory ${D}/usr \
+		--install-directory /usr \
 		--no-manual \
 		${myconf} \
 		|| die "configure failed"
@@ -74,9 +69,9 @@ src_install() {
 	dodir /usr
 	dodir /usr/bin
 	# fix the install location
-	export TCNG_INSTALL_CWD="/usr"
-	einstall install-tcc || die "make install-tcc failed"
-	if use tcsim; then
+	sed 's;INSTALL_DIR=\(.*\);INSTALL_DIR=${D}\1;g' -i config
+	make install-tcc || die "make install-tcc failed"
+	if use tcng-tcsim; then
 		make install-tcsim install-tests || die "make install-tcsim install-tests failed"
 	fi
 

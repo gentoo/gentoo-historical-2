@@ -1,11 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-itouch/xmms-itouch-0.1.2-r1.ebuild,v 1.12 2005/11/29 03:28:00 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/xmms-itouch/xmms-itouch-0.1.2-r1.ebuild,v 1.1 2002/12/15 22:04:19 seemant Exp $
 
-IUSE="nls"
-
-inherit gnuconfig
-
+S=${WORKDIR}/${P}
 DESCRIPTION="XMMS plugin for multimedia keys on Logitech keyboards and others alike"
 HOMEPAGE="http://www.saunalahti.fi/~syrjala/xmms-itouch/"
 SRC_URI="http://www.saunalahti.fi/~syrjala/xmms-itouch/${P}.tar.gz
@@ -13,28 +10,29 @@ SRC_URI="http://www.saunalahti.fi/~syrjala/xmms-itouch/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~hppa ppc sparc x86"
+KEYWORDS="~x86"
 
 DEPEND="media-sound/xmms"
 
 src_unpack() {
 	unpack ${P}.tar.gz
-
-	cd ${S}
-	gnuconfig_update
-
 	ebegin "Applying latest keyboard-models file"
 	cp -f ${DISTDIR}/xmms-itouch.config ${P}
 	eend
-}
 
-src_compile() {
-	econf `use_enable nls` || die
-	emake || die
 }
 
 src_install () {
 	make DESTDIR=${D} install || die
+}
+
+src_compile() {
+	local myconf
+
+	use nls || myconf="${myconf} --disable-nls"
+
+	econf ${myconf}
+	emake || die
 }
 
 pkg_postinst() {

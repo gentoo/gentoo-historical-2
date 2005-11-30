@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-server/pvpgn/pvpgn-1.6.6.ebuild,v 1.3 2005/08/29 17:19:07 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-server/pvpgn/pvpgn-1.6.6.ebuild,v 1.1 2005/05/26 04:58:01 mr_bones_ Exp $
 
 inherit eutils games
 
@@ -12,7 +12,7 @@ SRC_URI="http://pvpgn-files.ath.cx/releases/linux/1.6/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc x86"
+KEYWORDS="~ppc ~x86"
 IUSE="mysql postgres"
 
 DEPEND="sys-libs/zlib
@@ -64,8 +64,8 @@ src_install() {
 	prepgamesdirs
 	keepdir "${GAMES_STATEDIR}/pvpgn/log"
 	chown -R ${GAMES_USER_DED}:${GAMES_GROUP} "${D}${GAMES_STATEDIR}/pvpgn"
-	fperms 0775 "${GAMES_STATEDIR}/pvpgn/log"
-	fperms 0770 "${GAMES_STATEDIR}/pvpgn"
+	fperms 0755 "${GAMES_STATEDIR}/pvpgn/log"
+	fperms 0750 "${GAMES_STATEDIR}/pvpgn"
 }
 
 pkg_postinst() {

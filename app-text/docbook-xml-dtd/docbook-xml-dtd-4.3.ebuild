@@ -1,21 +1,22 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-xml-dtd/docbook-xml-dtd-4.3.ebuild,v 1.10 2005/01/01 16:10:41 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-text/docbook-xml-dtd/docbook-xml-dtd-4.3.ebuild,v 1.1 2004/07/22 04:44:35 obz Exp $
 
 MY_P=${P/-dtd/}
-DESCRIPTION="Docbook DTD for XML"
-HOMEPAGE="http://www.docbook.org/"
-SRC_URI="http://www.docbook.org/xml/${PV}/${MY_P}.zip"
 
+DESCRIPTION="Docbook DTD for XML"
+HOMEPAGE="http://www.docbook.org"
+SRC_URI="http://www.docbook.org/xml/${PV}/${MY_P}.zip"
 LICENSE="X11"
+
 SLOT="4.3"
-KEYWORDS="alpha arm amd64 hppa ia64 mips ppc s390 sparc x86 ppc64"
+KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~amd64 ~ia64"
 IUSE=""
 
 DEPEND=">=app-arch/unzip-5.41
 	>=dev-libs/libxml2-2.4
-	>=app-text/docbook-xsl-stylesheets-1.65
-	>=app-text/build-docbook-catalog-1.2"
+	>=app-text/docbook-xsl-stylesheets-1.45
+	>=app-text/build-docbook-catalog-1.1"
 
 src_unpack() {
 

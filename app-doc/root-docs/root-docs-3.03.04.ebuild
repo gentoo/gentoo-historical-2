@@ -1,16 +1,13 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-doc/root-docs/root-docs-3.03.04.ebuild,v 1.12 2005/01/01 13:20:04 eradicator Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Author Geert Bevin <gbevin@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/app-doc/root-docs/root-docs-3.03.04.ebuild,v 1.1 2002/04/11 10:03:14 gbevin Exp $
 
 S=${WORKDIR}/htmldoc
+
 DESCRIPTION="An Object-Oriented Data Analysis Framework"
 SRC_URI="ftp://root.cern.ch/root/html303.tar.gz"
 HOMEPAGE="http://root.cern.ch/"
-
-SLOT="0"
-LICENSE="as-is"
-IUSE=""
-KEYWORDS="x86 ppc amd64"
 
 src_compile() {
 
@@ -19,7 +16,13 @@ src_compile() {
 }
 
 src_install() {
-	dohtml *
+
+    cd ${S}
+    
+    dohtml *
 	docinto postscript
 	dodoc *.ps
+
 }
+
+

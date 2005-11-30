@@ -1,18 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gtkam/gtkam-0.1.10-r1.ebuild,v 1.10 2005/05/01 17:27:01 hansmi Exp $
-
-inherit eutils
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gtkam/gtkam-0.1.10-r1.ebuild,v 1.1 2003/09/12 09:36:08 spider Exp $
 
 IUSE="nls gnome jpeg"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="A frontend for gPhoto 2"
-HOMEPAGE="http://gphoto.org/proj/gtkam"
+HOMEPAGE="http://gphoto.org/gphoto2/gtk.html"
 SRC_URI="mirror://sourceforge/gphoto/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~x86 ~ppc"
 
 RDEPEND=">=x11-libs/gtk+-2
 	>=media-libs/libgphoto2-2.1.1-r2
@@ -30,8 +29,7 @@ src_unpack() {
 
 	cd ${S}
 	epatch ${FILESDIR}/${P}-norpm.patch
-	epatch ${FILESDIR}/gtkam-0.1.10-gtk24.patch
-	}
+}
 
 src_compile() {
 

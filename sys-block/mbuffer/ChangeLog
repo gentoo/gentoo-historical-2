@@ -1,38 +1,6 @@
-# ChangeLog for sys-block/mbuffer
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/mbuffer/ChangeLog,v 1.8 2005/08/13 23:21:52 hansmi Exp $
-
-  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
-  mbuffer-20050321.ebuild:
-  Stable on ppc.
-
-*mbuffer-20050730 (03 Aug 2005)
-
-  03 Aug 2005; Mike Frysinger <vapier@gentoo.org> +mbuffer-20050730.ebuild:
-  Version bump.
-
-*mbuffer-20050726 (28 Jul 2005)
-
-  28 Jul 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/mbuffer-20050726-DESTDIR.patch, +mbuffer-20050726.ebuild:
-  Version bump.
-
-*mbuffer-20050510 (17 Jul 2005)
-
-  17 Jul 2005; Mike Frysinger <vapier@gentoo.org> +mbuffer-20050510.ebuild:
-  Version bump.
-
-*mbuffer-20050321 (24 Mar 2005)
-
-  24 Mar 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/mbuffer-20050321-configure.patch, +mbuffer-20050321.ebuild:
-  Version bump.
-
-*mbuffer-20050125 (20 Mar 2005)
-
-  20 Mar 2005; Mike Frysinger <vapier@gentoo.org>
-  +files/mbuffer-20050125-configure.patch, +mbuffer-20050125.ebuild:
-  Version bump #86048 by Nuno Alexandre.
+# ChangeLog for sys-apps/mbuffer
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-block/mbuffer/ChangeLog,v 1.1 2005/03/05 22:56:40 ciaranm Exp $
 
 *mbuffer-20011008 (05 Mar 2005)
 

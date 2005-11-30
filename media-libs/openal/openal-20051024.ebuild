@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20051024.ebuild,v 1.6 2005/11/29 14:18:37 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-libs/openal/openal-20051024.ebuild,v 1.1 2005/10/24 16:53:14 wolf31o2 Exp $
 
 inherit eutils gnuconfig
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.openal.org"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-1.0.2 )
 	arts? ( kde-base/arts )
@@ -29,11 +29,10 @@ DEPEND="${RDEPEND}
 S="${S}/linux"
 
 src_unpack() {
-	unpack "${A}"
-	cd "${S}"
+	unpack ${A}
+	cd ${S}
 
 	use alsa && epatch ${FILESDIR}/${P}-alsa_dmix.patch
-	epatch ${FILESDIR}/${P}-amd64-configure.patch
 
 	gnuconfig_update
 
@@ -43,23 +42,19 @@ src_unpack() {
 }
 
 src_compile() {
-	econf \
-		--enable-paranoid-locks \
-		--libdir=/usr/$(get_libdir) \
-		--enable-capture \
-		--enable-optimization \
-		$(use_enable esd) \
-		$(use_enable sdl) \
-		$(use_enable alsa) \
-		$(use_enable arts) \
-		$(use_enable mpeg smpeg) \
-		$(use_enable vorbis) \
-		$(use_enable debug debug-maximus) || die
-	emake all || die
-}
+	local myconf
 
-src_test() {
-	einfo "Testing is broken, so we're going to skip it."
+	use esd && myconf="${myconf} --enable-esd"
+	use sdl && myconf="${myconf} --enable-sdl"
+	use alsa && myconf="${myconf} --enable-alsa"
+	use arts && myconf="${myconf} --enable-arts"
+	use mpeg && myconf="${myconf} --enable-smpeg"
+	use vorbis && myconf="${myconf} --enable-vorbis"
+	use debug && myconf="${myconf} --enable-debug-maximus"
+
+	econf ${myconf} --enable-paranoid-locks --libdir=/usr/$(get_libdir) \
+		--enable-capture --enable-optimize || die
+	emake all || die
 }
 
 src_install() {
@@ -67,12 +62,13 @@ src_install() {
 
 	make install DESTDIR="${D}" || die
 
-	dodoc ChangeLog INSTALL NOTES PLATFORM TODO
+	dodoc CREDITS ChangeLog INSTALL NOTES PLATFORM TODO
 	dodoc ${FILESDIR}/openalrc
 	makeinfo doc/openal.texi
 	doinfo doc/openal.info
 
 	cd ${S}
+	dodoc CHANGES COPYING CREDITS
 	dohtml docs/*.html
 }
 

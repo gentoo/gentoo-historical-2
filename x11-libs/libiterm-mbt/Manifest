@@ -1,14 +1,4 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 9da442b7ab851e7ae2401286554e1770 libiterm-mbt-0.5.ebuild 683
-MD5 2b0869bb0b69eca997b91b18ab27f4cf ChangeLog 623
-MD5 2bb6cb578c19f2b1124b5e34565c15d6 metadata.xml 234
+MD5 c284f1ed9fefbd9728d0a6363900559a libiterm-mbt-0.5.ebuild 545
+MD5 e6a75b415731633713d5cb624506bd6b ChangeLog 357
+MD5 a71e4d8e77d7769d31edb2286051f1fd metadata.xml 336
 MD5 502e7c227d4a415112ebfa0fea2cd411 files/digest-libiterm-mbt-0.5 65
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDMIIUV3J2n04EauwRAnt6AJ9nLyen/wimBh8eFOZq3lz0hLoIMACfalp2
-Pu6uhFrYmaPKc6UF7vNiIWs=
-=LWvr
------END PGP SIGNATURE-----

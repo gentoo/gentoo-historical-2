@@ -1,8 +1,10 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/monafont/monafont-2.90-r1.ebuild,v 1.9 2005/01/27 06:53:09 nigoro Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/monafont/monafont-2.90-r1.ebuild,v 1.1 2004/06/21 16:07:00 usata Exp $
 
 inherit font
+
+IUSE="X truetype"
 
 MY_P=${P/_/}
 
@@ -10,16 +12,13 @@ DESCRIPTION="Japanese bitmap and TrueType fonts suitable for browsing 2ch"
 HOMEPAGE="http://monafont.sourceforge.net"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2
 	truetype? ( mirror://sourceforge/${PN}/${PN}-ttf-${PV}.zip )"
-
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
-IUSE="X truetype"
-
+KEYWORDS="~x86 ~alpha ~ppc ~sparc ~amd64"
+IUSE=""
 DEPEND="virtual/x11
 	dev-lang/perl
-	>=sys-apps/sed-4
-	app-arch/unzip"
+	>=sys-apps/sed-4"
 RDEPEND="X? ( virtual/x11 )"
 
 S="${WORKDIR}/${MY_P}"
@@ -28,17 +27,20 @@ FONT_SUFFIX="ttf"
 FONTDIR=/usr/share/fonts/${PN}
 
 src_unpack() {
+
 	unpack ${A}
 	sed -i -e 's:$(X11BINDIR)/mkdirhier:/bin/mkdir -p:' ${S}/Makefile
 }
 
-src_compile() {
+src_compile(){
+
 	PERL_BADLANG=0 ; LC_CTYPE=C
 	export PERL_BADLANG LC_CTYPE
 	emake || die
 }
 
-src_install() {
+src_install(){
+
 	make install X11FONTDIR=${D}/${FONTDIR} || die
 	mkfontdir ${D}/${FONTDIR}
 	insinto ${FONTDIR}
@@ -51,7 +53,8 @@ src_install() {
 	fi
 }
 
-pkg_postinst() {
+pkg_postinst(){
+
 	einfo
 	einfo "You need to add following line into 'Section \"Files\"' in"
 	einfo "XF86Config and reboot X Window System, to use these fonts."
@@ -60,7 +63,8 @@ pkg_postinst() {
 	einfo
 }
 
-pkg_postrm() {
+pkg_postrm(){
+
 	einfo
 	einfo "You need to remove following line in 'Section \"Files\"' in"
 	einfo "XF86Config, to unmerge this package completely."

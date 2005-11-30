@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.2-r2.ebuild,v 1.12 2005/11/28 22:31:08 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.2-r2.ebuild,v 1.1 2005/08/31 11:20:27 dragonheart Exp $
 
-inherit eutils flag-o-matic linux-info
+inherit eutils flag-o-matic
 
 ECCVER=0.1.6
 ECCVER_GNUPG=1.4.0
@@ -15,7 +15,7 @@ SRC_URI="mirror://gnupg/gnupg/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc-macos ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sparc ~x86"
 IUSE="bzip2 caps curl ecc idea ldap nls readline selinux smartcard static usb zlib X"
 
 COMMON_DEPEND="
@@ -39,17 +39,11 @@ RDEPEND="!static? (
 DEPEND="${COMMON_DEPEND}
 	dev-lang/perl"
 
-pkg_setup() {
-	# fix bug #113474 - no compiled kernel needed now
-	get_running_version
-
-}
-
 src_unpack() {
 	unpack ${A}
 
 	# Jari's patch to boost iterated key setup by factor of 128
-	EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/${P}-jari.patch
+	# EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/gnupg-1.4.1.diff	
 
 	if use idea; then
 		ewarn "Please read http://www.gnupg.org/why-not-idea.html"
@@ -70,9 +64,6 @@ src_unpack() {
 
 	# maketest fix
 	epatch ${FILESDIR}/${P}-selftest.patch
-
-	# install RU man page in right location
-	epatch ${FILESDIR}/${P}-badruman.patch
 
 	cd ${S}
 	# keyserver fix
@@ -136,29 +127,18 @@ src_install() {
 	make DESTDIR=${D} install || die
 
 	# caps support makes life easier
-	if ! use caps && kernel_is lt 2 6 9
-	then
-		ewarn "installing gpg suid for memory space protection"
-		fperms u+s,go-r /usr/bin/gpg
-	fi
+	use caps || fperms u+s,go-r /usr/bin/gpg
 
 	# keep the documentation in /usr/share/doc/...
 	rm -rf "${D}/usr/share/gnupg/FAQ" "${D}/usr/share/gnupg/faq.html"
 
-	dodoc AUTHORS BUGS ChangeLog NEWS PROJECTS README THANKS \
+	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS PROJECTS README THANKS \
 		TODO VERSION doc/{FAQ,HACKING,DETAILS,ChangeLog,OpenPGP,faq.raw}
 
 	docinto sgml
 	dodoc doc/*.sgml
 
 	dohtml doc/faq.html
-
-	# install RU documentation in right location
-	if use linguas_ru
-	then
-		cp doc/gpg.ru.1 ${T}/gpg.1
-		doman -i18n=ru ${T}/gpg.1
-	fi
 
 	# Remove collissions
 	if use ppc-macos; then
@@ -189,14 +169,10 @@ src_test() {
 }
 
 pkg_postinst() {
-	if ! use caps && kernel_is lt 2 6 9
-	then
-		chmod u+s,go-r ${ROOT}/usr/bin/gpg
+	if ! use caps; then
 		einfo "gpg is installed suid root to make use of protected memory space"
 		einfo "This is needed in order to have a secure place to store your"
 		einfo "passphrases, etc. at runtime but may make some sysadmins nervous."
-	else
-		chmod u-s,go-r ${ROOT}/usr/bin/gpg
 	fi
 	echo
 	if use idea; then

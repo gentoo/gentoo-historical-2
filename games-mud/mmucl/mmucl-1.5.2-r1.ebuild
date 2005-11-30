@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-mud/mmucl/mmucl-1.5.2-r1.ebuild,v 1.3 2005/08/29 19:51:05 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-mud/mmucl/mmucl-1.5.2-r1.ebuild,v 1.1 2005/06/05 04:59:13 mr_bones_ Exp $
 
 inherit games
 
@@ -8,7 +8,7 @@ DESCRIPTION="Marks MUd CLient - A mud client written completely in tcl/tk"
 HOMEPAGE="http://mmucl.sourceforge.net/"
 SRC_URI="mirror://sourceforge/mmucl/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="readline mccp gtk"
@@ -46,7 +46,7 @@ src_install () {
 	insinto ${LIBDIR}/test
 	doins test/*.test                 || die "doins failed (test)"
 	doinfo mmucl.info                 || die "doinfo failed"
-	dodoc CHANGES TODO README || die "dodoc failed"
+	dodoc CHANGES TODO INSTALL README || die "dodoc failed"
 	dohtml mmucl.html                 || die "dohtml failed"
 	prepgamesdirs
 }

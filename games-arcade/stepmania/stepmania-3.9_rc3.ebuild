@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/stepmania/stepmania-3.9_rc3.ebuild,v 1.3 2005/09/06 12:55:39 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/stepmania/stepmania-3.9_rc3.ebuild,v 1.1 2005/05/21 05:39:10 warpzero Exp $
 
 inherit eutils games
 
-IUSE="debug gtk jpeg mad mpeg vorbis"
+IUSE="debug gtk jpeg mad mpeg oggvorbis"
 
 MY_PV="${PV/_/-}"
 S="${WORKDIR}/StepMania-${MY_PV}-src"
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/stepmania/StepMania-${MY_PV}-src.tar.gz
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="x86 ~ppc"
 
 DEPEND="gtk? ( >=x11-libs/gtk+-2.0 )
 	mad? ( media-libs/libmad )
@@ -26,7 +26,7 @@ DEPEND="gtk? ( >=x11-libs/gtk+-2.0 )
 	media-libs/libpng
 	sys-libs/zlib
 	mpeg? ( media-video/ffmpeg )
-	vorbis? ( media-libs/libvorbis )
+	oggvorbis? ( media-libs/libvorbis )
 	virtual/opengl"
 
 pkg_setup() {
@@ -43,7 +43,7 @@ src_compile() {
 	local myconf
 	use debug && myconf="${myconf} --with-debug"
 	use jpeg || myconf="${myconf} --without-jpeg"
-	use vorbis || myconf="${myconf} --without-vorbis"
+	use oggvorbis || myconf="${myconf} --without-vorbis"
 	use mad || myconf="${myconf} --without-mp3"
 	use gtk || myconf="${myconf} --disable-gtk2"
 

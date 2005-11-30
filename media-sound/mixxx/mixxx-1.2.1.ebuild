@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/mixxx/mixxx-1.2.1.ebuild,v 1.9 2005/07/25 15:50:15 caleb Exp $
-
-inherit qt3
+# $Header: /var/cvsroot/gentoo-x86/media-sound/mixxx/mixxx-1.2.1.ebuild,v 1.1 2004/01/28 04:30:19 raker Exp $
 
 IUSE="jack"
 
@@ -12,18 +10,18 @@ SRC_URI="mirror://sourceforge/mixxx/${P}.tar.gz"
 RESTRICT="nomirror"
 
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 SLOT="0"
 
-DEPEND="virtual/libc
-	$(qt_min_version 3.1)
-	media-sound/madplay
-	=sci-libs/fftw-2*
+DEPEND="virtual/glibc
+	>=x11-libs/qt-3.1.0
+	media-sound/mad
+	=dev-libs/fftw-2*
 	media-libs/libogg
 	media-libs/libvorbis
 	dev-lang/perl
 	media-libs/audiofile
-	jack? ( media-sound/jack-audio-connection-kit )"
+	jack? ( virtual/jack )"
 
 src_compile() {
 	cd ${S}/src
@@ -37,7 +35,7 @@ INSTALL_ROOT=${D}
 " Makefile
 	sed -i -e 's/COPY_FILE= \$\(COPY\) -p/COPY_FILE= $(COPY) -pr/' Makefile
 
-	addpredict  ${QTDIR}/etc/settings
+	addpredict  /usr/qt/3/etc/settings
 
 	make || die
 }
@@ -47,9 +45,9 @@ src_install() {
 
 	make install || die
 
-	einfo
+	einfo ""
 	einfo "Fixing permissions..."
-	einfo
+	einfo ""
 
 	chmod 644 ${D}/usr/share/doc/${PF}/*
 	chmod 644 ${D}/usr/share/mixxx/midi/*

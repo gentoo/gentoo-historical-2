@@ -1,29 +1,28 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/gnucash/gnucash-1.8.9.ebuild,v 1.17 2005/08/05 12:13:16 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/gnucash/gnucash-1.8.9.ebuild,v 1.1 2004/05/11 09:38:27 seemant Exp $
 
-inherit flag-o-matic libtool eutils
+inherit flag-o-matic libtool
 
 # won't configure with this
 filter-flags -fomit-frame-pointer
 # gnucash uses GLIB_INLINE, this will break it
 filter-flags -fno-inline
 
-DOC_VER="1.8.5"
-IUSE="nls postgres ofx hbci quotes"
+DOC_VER="1.8.4"
+IUSE="nls postgres ofx hbci"
 
 DESCRIPTION="A personal finance manager"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://sourceforge/${PN}/${PN}-docs-${DOC_VER}.tar.gz"
 HOMEPAGE="http://www.gnucash.org/"
 
+KEYWORDS="x86 alpha ~ppc ~sparc"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 alpha ppc sparc ~amd64"
 
 RDEPEND=">=gnome-base/gnome-libs-1.4.1.2-r1
 	>=dev-util/guile-1.6
-	amd64? ( >=dev-util/guile-1.6.4-r2 )
 	>=dev-libs/slib-2.3.8
 	>=media-libs/libpng-1.0.9
 	>=media-libs/jpeg-6b
@@ -40,12 +39,8 @@ RDEPEND=">=gnome-base/gnome-libs-1.4.1.2-r1
 	app-text/docbook-xsl-stylesheets
 	=app-text/docbook-xml-dtd-4.1.2*
 	=sys-libs/db-1*
-	ofx? ( >=dev-libs/libofx-0.6.4
-		<dev-libs/libofx-0.7.0 )
 	hbci? ( >=net-libs/openhbci-0.9.13 )
-	quotes? ( dev-perl/DateManip
-		dev-perl/Finance-Quote
-		dev-perl/HTML-TableExtract )
+	ofx? ( >=dev-libs/libofx-0.6.4 )
 	postgres? ( dev-db/postgresql )"
 
 DEPEND="${RDEPEND}
@@ -59,23 +54,9 @@ DEPEND="${RDEPEND}
 
 MAKEOPTS="${MAKEOPTS} -j1"
 
-pkg_setup() {
-	if built_with_use virtual/x11 bitmap-fonts
-	then
-		einfo "bitmap-fonts support is enabled in virtual/x11, continuing..."
-	else
-		eerror "Please rebuild virtual/x11 with bitmap font support!"
-		eerror "To do so: USE=\"bitmap-fonts\" emerge virtual/x11"
-		eerror "Or, add \"bitmap-fonts\" to your USE string in"
-		eerror "/etc/make.conf"
-		die "Will not build gnucash without bitmap-fonts support in virtual/x11"
-	fi
-}
-
 src_compile() {
 	elibtoolize
 
-	append-ldflags -L/usr/X11R6/$(get_libdir)
 	econf \
 		--enable-etags \
 		--enable-ctags \
@@ -89,9 +70,6 @@ src_compile() {
 
 	emake || die "make failed"
 
-	cd ${WORKDIR}/${P}/src/doc/design
-	emake gnucash-design || die "make gnucash-design failed"
-
 	cd ${WORKDIR}/${PN}-docs-${DOC_VER}
 	econf --localstatedir=/var/lib || die "doc configure failed"
 	emake || die "doc make failed"
@@ -99,7 +77,7 @@ src_compile() {
 
 src_install() {
 	einstall pkgdatadir=${D}/usr/share/gnucash || die "install failed"
-	dodoc ABOUT-NLS AUTHORS ChangeLog HACKING NEWS README* TODO
+	dodoc ABOUT-NLS AUTHORS COPYING ChangeLog HACKING NEWS README* TODO
 	dodoc docs/README*
 
 	cd ${WORKDIR}/${PN}-docs-${DOC_VER}
@@ -113,13 +91,6 @@ pkg_postinst() {
 	if [ -x ${ROOT}/usr/bin/scrollkeeper-update ]; then
 		echo ">>> Updating Scrollkeeper"
 		scrollkeeper-update -q -p ${ROOT}/var/lib/scrollkeeper
-	fi
-
-	if ! use quotes; then
-		ewarn
-		einfo "If you wish to enable Online Stock Quotes Retrieval,"
-		einfo "Please re-emerge gnucash with USE=\"quotes\""
-		ewarn
 	fi
 }
 

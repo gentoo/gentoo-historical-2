@@ -1,18 +1,12 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 971e2f7af1def7a8f44830d3f6ca45d1 ChangeLog 17208
-MD5 761d617849c91c951713a1411f3c1cff files/digest-libxml2-2.6.19 68
-MD5 4afb7240de6f033dc7cd147c38d2b06f files/digest-libxml2-2.6.20-r2 68
-MD5 185f99db7f8b720eb02aa1fb59bd57b9 files/digest-libxml2-2.6.22 68
-MD5 261427afd62b7a24ac717eb4483cd668 libxml2-2.6.19.ebuild 2039
-MD5 f0c57d3000da7a65966ef827bc3243fc libxml2-2.6.20-r2.ebuild 2357
-MD5 db7d41474bc048bb2d3fd6731cd7621b libxml2-2.6.22.ebuild 2609
-MD5 03ad2e6c4ab41244af1015a8bbb0b39f metadata.xml 158
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFDeYPCgIKl8Uu19MoRAgk8AJ9OWk7MTAwdn+SET5hVXCkSJlvWxACbBDM5
-+dN3Y+e2KMh1g/ti40vUFoY=
-=osKZ
------END PGP SIGNATURE-----
+MD5 554dfd3b21f08d0213979339f49ad11c ChangeLog 4763
+MD5 e1925e4f28e8545b4569ce90d9f3c2d1 libxml2-2.5.7.ebuild 1430
+MD5 6bdab410dba3b0014cd180dc88be5785 libxml2-2.4.30.ebuild 1475
+MD5 6df59c99c938420129eef2dcc98f8105 libxml2-2.5.2.ebuild 1419
+MD5 b0005f3dab015b2850f0b99b9fbd48e3 libxml2-2.5.6.ebuild 1430
+MD5 dc05b7a430081f801e0fd95e20dc2203 libxml2-2.5.4.ebuild 1426
+MD5 421cf0ab43b03457dc6825a0bc6bc6ad files/Makefile-py.patch 778
+MD5 46b436e9d358547dbee7e9101d5eed45 files/digest-libxml2-2.5.7 67
+MD5 b801216abd319718b49a660f0b272264 files/digest-libxml2-2.5.2 67
+MD5 49743757cf83cdff77f25886c42592e2 files/digest-libxml2-2.5.4 67
+MD5 49e8e12f736e50285cf5cb086dec88d3 files/parser.c.diff 455
+MD5 f6fb445d11c7e880836c8dda60649bcb files/digest-libxml2-2.5.6 67

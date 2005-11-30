@@ -1,24 +1,6 @@
 # ChangeLog for media-video/tcvp
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/tcvp/ChangeLog,v 1.8 2005/09/03 23:19:41 flameeyes Exp $
-
-  03 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> tcvp-0.2.0.ebuild:
-  Don't install COPYING file.
-
-  27 May 2005; Luca Barbato <lu_zero@gentoo.org> ChangeLog:
-  oggvorbis -> vorbis useflag change
-
-  14 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org> tcvp-0.2.0.ebuild:
-  Changed USE flag to aac.
-
-  10 Jun 2004; David Holm <dholm@gentoo.org> tcvp-0.2.0.ebuild:
-  New ebuild submitted by author.
-
-  09 Jun 2004; David Holm <dholm@gentoo.org> tcvp-0.2.0.ebuild:
-  Fixed incorrect license as per authors request.
-
-  05 Jun 2004; David Holm <dholm@gentoo.org> tcvp-0.2.0.ebuild:
-  Added to ~ppc.
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/tcvp/ChangeLog,v 1.1 2004/06/04 10:39:12 zypher Exp $
 
 *tcvp-0.2.0 (31 May 2004)
 

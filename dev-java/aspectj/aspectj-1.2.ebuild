@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/aspectj/aspectj-1.2.ebuild,v 1.8 2005/10/08 10:55:35 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/aspectj/aspectj-1.2.ebuild,v 1.1 2004/07/14 20:45:23 axxo Exp $
 
 inherit java-pkg eutils
 
@@ -8,11 +8,10 @@ DESCRIPTION="AspectJ is a seemless extension to the Java programming language fo
 SRC_URI="mirror://gentoo/aspectj-CVS-V1_2_0.tar.bz2"
 HOMEPAGE="http://www.eclipse.org/aspectj/"
 DEPEND=">=virtual/jdk-1.3
-	dev-java/ant-core"
-RDEPEND=">=virtual/jre-1.3"
+	dev-java/ant"
 SLOT="0"
 LICENSE="CPL-1.0 Apache-1.1"
-KEYWORDS="x86 ~ppc amd64"
+KEYWORDS="~x86"
 IUSE="doc"
 
 # Welcome to the AspectJ ebuild.  An upstream source archive is not
@@ -51,7 +50,7 @@ src_compile() {
 	ant -f build.xml || die "build failed"
 }
 
-src_install() {
+src_install () {
 	mkdir aspectj-unpack
 	java -jar aj-build/dist/aspectj-${PV}.jar -to aspectj-unpack
 	cd aspectj-unpack
@@ -59,7 +58,7 @@ src_install() {
 	dobin ${FILESDIR}/{ajc,ajbrowser}
 
 	dohtml doc/*.html
-	dohtml README-AspectJ.html
+	cp *.html ${D}/usr/share/doc/${PF}/
 	if use doc; then
 		cp -R doc/{devguide,api,progguide} ${D}/usr/share/doc/${PF}/html
 		cp -R doc/examples ${D}/usr/share/doc/${PF}

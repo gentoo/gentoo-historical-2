@@ -1,22 +1,6 @@
-# ChangeLog for games-arcade/xtux
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/xtux/ChangeLog,v 1.8 2005/02/21 20:38:43 mr_bones_ Exp $
-
-  21 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> xtux-20030306.ebuild:
-  fix to be able to start tux_serv from the menu
-
-  17 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> xtux-20030306.ebuild:
-  sed in unpack; tidy
-
-  31 Aug 2004; David Holm <dholm@gentoo.org> xtux-20030306.ebuild:
-  Added to ~ppc.
-
-  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> xtux-20030306.ebuild:
-  Marking stable on amd64 (no bugs in 330 days).
-
-  16 Apr 2004; Jon Portnoy <avenj@gentoo.org> xtux-20030306.ebuild :
-  Update copyright statements. Add ~amd64 keywords. Remove
-  RESTRICT=nomirror.
+# ChangeLog for app-games/xtux
+# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xtux/ChangeLog,v 1.1 2003/09/10 19:29:22 vapier Exp $
 
   28 Jun 2003; <msterret@gentoo.org> xtux-20030306.ebuild:
   use sed -i and emake
@@ -30,4 +14,5 @@
   xfree provides xpm
 
   25 May 2003; Jon Portnoy <avenj@gentoo.org> xtux-20030306.ebuild :
-  Initial import.
+  Initial import. Ebuild by me, myself, and I, working in full
+  cooperation with each other.

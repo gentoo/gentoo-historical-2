@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs/openafs-1.4.0_rc8.ebuild,v 1.2 2005/11/13 15:14:19 stefaan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs/openafs-1.4.0_rc8.ebuild,v 1.1 2005/10/30 14:18:24 stefaan Exp $
 
 inherit flag-o-matic eutils toolchain-funcs versionator
 
@@ -282,7 +282,7 @@ pkg_preinst() {
 	# (should be safe for about any root partition, the user can increase
 	# the size as required)
 	if [ ! -e ${ROOT}etc/openafs/cacheinfo ]; then
-		echo "/afs:/var/cache/openafs:200000" > ${IMAGE}etc/openafs/cacheinfo
+		echo "/afs:/var/cache/openafs:50000" > ${IMAGE}etc/openafs/cacheinfo
 	fi
 	# ThisCell: default to "openafs.org"
 	if [ ! -e ${ROOT}etc/openafs/ThisCell ]; then

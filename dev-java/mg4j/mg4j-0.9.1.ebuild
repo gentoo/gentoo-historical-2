@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mg4j/mg4j-0.9.1.ebuild,v 1.6 2005/07/15 14:11:44 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mg4j/mg4j-0.9.1.ebuild,v 1.1 2004/12/04 13:19:02 karltk Exp $
 
 inherit eutils java-pkg
 
@@ -9,30 +9,28 @@ SRC_URI="http://mg4j.dsi.unimi.it/${P}-src.tar.gz"
 HOMEPAGE="http://mg4j.dsi.unimi.it"
 LICENSE="LGPL-2.1"
 SLOT="0.9"
-KEYWORDS="x86 ~ppc amd64"
-IUSE="doc jikes source"
+KEYWORDS="~x86 ~ppc ~amd64"
+IUSE="doc jikes"
 
-RDEPEND=">=virtual/jre-1.4
+DEPEND=">=virtual/jdk-1.4
+	>=dev-java/javacc-3"
+
+RDEPEND=">=virtual/jdk-1.4
 	=dev-java/fastutil-4.3*
 	>=dev-java/jal-20031117
 	=dev-java/colt-1.1*
 	=dev-java/java-getopt-1.0*
 	=dev-java/libreadline-java-0.8*"
 
-DEPEND=">=virtual/jdk-1.4
-	${RDEPEND}
-	>=dev-java/javacc-3
-	jikes? ( dev-java/jikes )
-	source? ( app-arch/zip )"
-
-
 src_unpack() {
 	unpack ${A}
-
 	cd ${S}
+
 	epatch ${FILESDIR}/mg4j-build.patch
 
-	mkdir lib/ && cd lib/
+	mkdir lib/
+	cd lib/
+
 	java-pkg_jar-from colt
 	java-pkg_jar-from fastutil-4.3
 	java-pkg_jar-from jal
@@ -48,7 +46,8 @@ src_compile () {
 }
 
 src_install() {
-	java-pkg_newjar ${P}.jar ${PN}.jar
+	mv ${P}.jar ${PN}.jar
+	java-pkg_dojar ${PN}.jar
 	use doc && java-pkg_dohtml -r docs/*
-	use source && java-pkg_dosrc java/it
 }
+

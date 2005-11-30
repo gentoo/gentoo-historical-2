@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-icculus/quake2-icculus-0.16.1.ebuild,v 1.10 2005/11/05 22:51:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-fps/quake2-icculus/quake2-icculus-0.16.1.ebuild,v 1.1 2005/03/11 01:47:50 vapier Exp $
 
 inherit eutils games
 
@@ -15,14 +15,14 @@ SRC_URI="http://icculus.org/quake2/files/${MY_P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ppc sparc x86"
-IUSE="aalib alsa arts dedicated ipv6 joystick noqmax opengl rogue sdl svga X xatrix"
+IUSE="arts svga sdl aalib dedicated opengl noqmax rogue xatrix ipv6 joystick"
 
+# default to X11 if svga/opengl/sdl/aalib/dedicated are not in USE
 RDEPEND="opengl? ( virtual/opengl )
 	svga? ( media-libs/svgalib )
 	sdl? ( media-libs/libsdl )
 	aalib? ( media-libs/aalib )
-	X? ( virtual/x11 )
-	alsa? ( media-libs/alsa-lib )
+	!svga? ( !opengl? ( !sdl? ( !aalib? ( !dedicated? ( virtual/x11 ) ) ) ) )
 	arts? ( kde-base/arts )"
 DEPEND="${RDEPEND}
 	rogue? ( app-arch/sharutils )
@@ -33,9 +33,16 @@ S=${WORKDIR}/${MY_P}
 src_unpack() {
 	unpack ${MY_P}.tar.gz
 	cd "${S}"
-	sed -i -e 's:BUILD_SOFTX:BUILD_X11:' Makefile
-	epatch "${FILESDIR}"/${P}-amd64.patch # make sure this is still needed in future versions
-	epatch "${FILESDIR}"/${P}-gentoo-paths.patch
+	epatch "${FILESDIR}"/0.16-Makefile-gentoo-opts.patch
+	epatch "${FILESDIR}"/0.16-gentoo-path.patch
+	cat << EOF > src/linux/gentoo-paths.h
+#define GENTOO_DATADIR "${GAMES_DATADIR}/quake2-data"
+#ifdef QMAX
+#define GENTOO_LIBDIR "${GAMES_LIBDIR}/${PN}-qmax"
+#else
+#define GENTOO_LIBDIR "${GAMES_LIBDIR}/${PN}"
+#endif
+EOF
 
 	# Now we deal with the silly rogue / xatrix addons ... this is ugly :/
 	ln -s $(which echo) "${T}"/more
@@ -70,19 +77,18 @@ yesno() {
 }
 
 src_compile() {
+	BUILD_X11=$(yesno X)
+	use sdl || use opengl || use svga || use aalib || BUILD_X11=YES
+
 	# xatrix fails to build
 	# rogue fails to build
-	local libsuffix
 	for BUILD_QMAX in YES NO ; do
 		use noqmax && [[ ${BUILD_QMAX} == "YES" ]] && continue
-		[[ ${BUILD_QMAX} == "YES" ]] \
-			&& libsuffix=-qmax \
-			|| libsuffix=
 		make clean || die "cleaning failed"
 		emake -j1 build_release \
 			BUILD_SDLQUAKE2=$(yesno sdl) \
 			BUILD_SVGA=$(yesno svga) \
-			BUILD_X11=$(yesno X) \
+			BUILD_X11=${BUILD_X11} \
 			BUILD_GLX=$(yesno opengl) \
 			BUILD_SDL=$(yesno sdl) \
 			BUILD_SDLGL=$(yesno sdl opengl) \
@@ -90,16 +96,13 @@ src_compile() {
 			BUILD_XATRIX=$(yesno xatrix) \
 			BUILD_ROGUE=$(yesno rogue) \
 			BUILD_JOYSTICK=$(yesno joystick) \
-			BUILD_DEDICATED=$(yesno dedicated) \
+			BUILD_DEDICATED=YES \
 			BUILD_AA=$(yesno aalib) \
 			BUILD_QMAX=${BUILD_QMAX} \
 			HAVE_IPV6=$(yesno ipv6) \
 			BUILD_ARTS=$(yesno arts) \
-			BUILD_ALSA=$(yesno alsa) \
 			SDLDIR=/usr/lib \
-			DEFAULT_BASEDIR="${GAMES_DATADIR}/quake2" \
-			DEFAULT_LIBDIR="${GAMES_LIBDIR}/${PN}${libsuffix}" \
-			OPT_CFLAGS="${CFLAGS}" \
+			OPTCFLAGS="${CFLAGS}" \
 			|| die "make failed"
 		# now we save the build dir ... except for the object files ...
 		rm release*/*/*.o
@@ -127,9 +130,6 @@ src_install() {
 		&& dogamesbin "${D}/${q2dir}"/sdlquake2 \
 		&& rm "${D}/${q2dir}"/sdlquake2
 
-	doicon "${FILESDIR}"/quake2.xpm
-	make_desktop_entry quake2 Quake2 quake2.xpm
-
 	# q2max files
 	if ! use noqmax ; then
 		dodir "${q2maxdir}"
@@ -143,10 +143,7 @@ src_install() {
 
 		insinto "${q2maxdir}"/baseq2
 		doins "${DISTDIR}"/maxpak.pak
-
-		make_desktop_entry quake2-qmax Quake2-qmax quake2.xpm
 	fi
-
 	prepgamesdirs
 }
 

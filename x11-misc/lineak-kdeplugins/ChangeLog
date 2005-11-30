@@ -1,53 +1,11 @@
 # ChangeLog for x11-misc/lineak-kdeplugins
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-kdeplugins/ChangeLog,v 1.11 2005/11/24 20:07:39 blubb Exp $
-
-  24 Nov 2005; Simon Stelling <blubb@gentoo.org>
-  lineak-kdeplugins-0.8.3.ebuild:
-  stable on amd64
-
-  21 Nov 2005; Joseph Jezak <josejx@gentoo.org>
-  lineak-kdeplugins-0.8.3.ebuild:
-  Marked ppc stable for bug #111285.
-
-  20 Nov 2005; Simon Stelling <blubb@gentoo.org>
-  lineak-kdeplugins-0.8.3.ebuild:
-  fix multilib-strict issues
-
-  02 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
-  lineak-kdeplugins-0.8.2.ebuild, lineak-kdeplugins-0.8.3.ebuild:
-  Added missing IUSE.
-
-  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
-  Converted to UTF-8, fixed encoding screwups
-
-  19 Jun 2005; Jonathan Smith <smithj@gentoo.org>
-  lineak-kdeplugins-0.8.3.ebuild:
-  stable x86
-
-  10 Apr 2005; Simon Stelling <blubb@gentoo.org>
-  lineak-kdeplugins-0.8.3.ebuild:
-  added ~amd64
-
-*lineak-kdeplugins-0.8.3 (12 Mar 2005)
-
-  12 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
-  +lineak-kdeplugins-0.8.3.ebuild:
-  Version bump thanks to Alexander Brüning <ab277@gmx.de> in bug 84964
-
-  19 Feb 2005; Gregorio Guidi <greg_g@gentoo.org>
-  lineak-kdeplugins-0.8.2.ebuild:
-  Fix usage of kde eclasses.
-
-  03 Jan 2005; Stefan Schweizer <genstef@gentoo.org>
-  lineak-kdeplugins-0.8.2.ebuild:
-  Adding needed "need-kde 3.2" line to install in /usr/share/man instead of
-  /man, thanks to Daniel Drake <dsd@gentoo.org> for helping!
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/lineak-kdeplugins/ChangeLog,v 1.1 2004/11/29 20:09:08 genstef Exp $
 
 *lineak-kdeplugins-0.8.2 (29 Nov 2004)
 
   29 Nov 2004; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
   +lineak-kdeplugins-0.8.2.ebuild:
   Adding ebuild from bug 72659 thanks to Bernd Westermann
-  <Bernd.Westermann@it-west.de> and Petteri Räty <petteri.raty@welho.com>
+  <Bernd.Westermann@it-west.de> and Petteri R�ty <petteri.raty@welho.com>
 

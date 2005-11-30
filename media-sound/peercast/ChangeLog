@@ -1,33 +1,6 @@
 # ChangeLog for media-sound/peercast
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/peercast/ChangeLog,v 1.7 2005/06/20 18:15:08 chainsaw Exp $
-
-  20 Jun 2005; Tony Vroon <chainsaw@gentoo.org> peercast-0.1212.ebuild:
-  Change to Gentoo mirrors now that the distfile has propagated.
-
-*peercast-0.1212 (19 Jun 2005)
-
-  19 Jun 2005; Tony Vroon <chainsaw@gentoo.org> -peercast-0.1211.ebuild,
-  +peercast-0.1212.ebuild:
-  Security bump for format string vulnerability; see
-  http://www.peercast.org/forum/viewtopic.php?p=11596 for more information.
-
-  18 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  peercast-0.1211.ebuild:
-  Stable amd64, x86
-
-  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
-  peercast-0.1211.ebuild:
-  Added to ~amd64.
-
-  08 Oct 2004; Sven Wegener <swegener@gentoo.org> :
-  Removed stray digest.
-
-*peercast-0.1211 (07 Oct 2004)
-
-  07 Oct 2004; Christian Parpart <trapni@gentoo.org>
-  -peercast-0.1210.ebuild, +peercast-0.1211.ebuild:
-  fixed *ugly* versioning scheme by peercast.org and though
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-sound/peercast/ChangeLog,v 1.1 2004/10/07 10:04:49 trapni Exp $
 
   07 Oct 2004; Christian Parpart <trapni@gentoo.org> :
   Initial ebuild submitted and improved via BUG#45501 by

@@ -1,10 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_scgi/mod_scgi-1.2_alpha1.ebuild,v 1.7 2005/01/09 00:20:51 hollow Exp $
-
-apachedir='1'
-apache=''
-use apache2 && apache=2 apachedir=2
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_scgi/mod_scgi-1.2_alpha1.ebuild,v 1.1 2003/08/12 04:40:48 g2boojum Exp $
 
 P0=${P/mod_/}
 MY_P=${P0/_alpha/a}
@@ -13,25 +9,39 @@ DESCRIPTION="Apache module for a Replacement for the CGI protocol that is simila
 HOMEPAGE="http://www.mems-exchange.org/software/scgi/"
 SRC_URI="http://www.mems-exchange.org/software/files/${PN}/${MY_P}.tar.gz"
 LICENSE="CNRI"
-SLOT="${apachedir}"
+SLOT="0"
 KEYWORDS="~x86"
 IUSE="apache2"
-DEPEND="${DEPEND}
-		www-apps/scgi
+DEPEND="net-www/scgi
 		net-www/apache
 		apache2? ( >=net-www/apache-2 )"
 
 src_compile() {
-	cd apache${apachedir}
-	make || die "apache${apachedir} mod_scgi make failed"
+	if [ -z "`use apache2`" ]
+	then
+		cd apache1
+		make || die "apache1 mod_scgi make failed"
+	else
+		cd apache2
+		make || die "apache2 mod_scgi make failed"
+	fi
 }
 
 src_install() {
-	newdoc apache1/README README.apache1
-	newdoc apache2/README README.apache2
-	dodoc README PKG-INFO LICENSE.txt CHANGES
-	exeinto /usr/lib/apache${apache}-extramodules
-	doexe apache${apachedir}/.libs/${PN}.so
-	insinto /etc/apache${apache}/conf/modules.d
-	doins ${FILESDIR}/20_mod_scgi.conf
+	if [ -z "`use apache2`" ]
+	then
+		cd apache1
+		exeinto /usr/lib/apache-extramodules
+		doexe .libs/${PN}.so
+		dodoc README
+		insinto /etc/apache/conf/modules.d
+		doins ${FILESDIR}/20_mod_scgi.conf
+	else
+		cd apache2
+		exeinto /usr/lib/apache2-extramodules
+		doexe .libs/${PN}.so
+		dodoc README
+		insinto /etc/apache2/conf/modules.d
+		doins ${FILESDIR}/20_mod_scgi.conf
+	fi
 }

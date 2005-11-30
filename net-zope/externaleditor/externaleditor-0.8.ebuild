@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-zope/externaleditor/externaleditor-0.8.ebuild,v 1.5 2005/05/06 14:54:33 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-zope/externaleditor/externaleditor-0.8.ebuild,v 1.1 2004/07/27 20:22:17 batlogg Exp $
 
 inherit zproduct
 
@@ -13,13 +13,13 @@ SRC_URI_BASE="${HOMEPAGE}/${PV}"
 SRC_URI="${SRC_URI_BASE}/${MY_P}.tgz
 	${SRC_URI_BASE}/${MY_P2}.tgz"
 LICENSE="ZPL"
-KEYWORDS="x86 ppc ~sparc ~amd64"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
 ZPROD_LIST="${MY_PN}"
 
 # the base of teh application is in Python2.1, but zopeedit.py wants Python2.2
 RDEPEND="${RDEPEND}
-		>=dev-lang/python-2.2"
+		>=dev-lang/python-2.2*"
 
 S_ZPROD=${WORKDIR}/${MY_PN}
 S_SRC=${WORKDIR}/${MY_P2}

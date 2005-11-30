@@ -1,57 +1,9 @@
 # ChangeLog for dev-libs/libowfat
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/libowfat/ChangeLog,v 1.16 2005/09/04 15:30:05 hansmi Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
 
-*libowfat-0.24 (04 Sep 2005)
+*libowfat-0.10-<PACKAGE_RELEASE> (29 Mar 2002)
 
-  04 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> +libowfat-0.24.ebuild:
-  Bumped version, added to ~ppc64.
+  29 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog :
 
-  12 Jul 2005; Andrej Kacian <ticho@gentoo.org> libowfat-0.22.ebuild:
-  Added ~amd64 keyword.
-
-  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> libowfat-0.16.ebuild:
-  Stable on ppc.
-
-*libowfat-0.22 (04 Apr 2005)
-
-  04 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> +libowfat-0.22.ebuild:
-  New version of libowfat
-
-*libowfat-0.19.2 (08 May 2004)
-
-  08 May 2004; Daniel Black <dragonheart@gentoo.org> +libowfat-0.19.2.ebuild
-  -libowfat-0.10.ebuild:
-  version bump and removed old version
-
-  24 Mar 2004; Daniel Black <dragonheart@gentoo.org> libowfat-0.10.ebuild,
-  libowfat-0.14.ebuild, libowfat-0.15.ebuild, libowfat-0.16.ebuild:
-  QA - removed surperflous S assignment. Added missing IUSE. Marked stable on
-  x86 and sparc (0.15,0.16). ppc still marked due to dietlib being masked
-
-  03 Feb 2004; Daniel Black <dragonheart@gentoo.org> libowfat-0.16.ebuild:
-  Added ~sparc and ~ppc as they were included previously and this is just a
-  version bump
-
-*libowfat-0.16 (03 Feb 2004)
-
-  03 Feb 2004; Daniel Black <dragonheart@gentoo.org> libowfat-0.16.ebuild,
-  metadata.xml:
-  Version bump. bug #34177 refers. Thanks to Stephane LOEUILLET
-  <bug-gentoo@leroutier.net> and Thilo Bangert <fizzelpark-lists@gmx.net>
-
-*libowfat-0.15 (02 Jul 2003)
-
-  02 Jul 2003; Martin Holzer <mholzer@gentoo.org> libowfat-0.15.ebuild:
-  Version bumped. Ebuild submitted by Nicolas Kaiser <nikai@nikai.net> in #23800.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*libowfat-0.14 (02 Dec 2002)
-
-  02 Dec 2002; Daniel Robbins <drobbins@gentoo.org>: New libowfat release.
-
-*libowfat-0.10 (29 Mar 2002)
-
-  29 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog : initial
-  release ;-)
+  initial release ;-)

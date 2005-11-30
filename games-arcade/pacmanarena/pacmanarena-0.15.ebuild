@@ -1,37 +1,36 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/pacmanarena/pacmanarena-0.15.ebuild,v 1.10 2005/09/16 01:11:23 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/pacmanarena/pacmanarena-0.15.ebuild,v 1.1 2004/01/29 01:14:21 mr_bones_ Exp $
 
 inherit games
 
+S="${WORKDIR}/pacman"
 DESCRIPTION="a Pacman clone in full 3D with a few surprises. Rockets, bombs and explosions abound."
 HOMEPAGE="http://sourceforge.net/projects/pacmanarena/"
 SRC_URI="mirror://sourceforge/pacmanarena/pacman-arena-${PV}.tar.bz2
-	mirror://sourceforge/pacmanarena/pacman-data-0.0.zip"
+		mirror://sourceforge/pacmanarena/pacman-data-0.0.zip"
 
+KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
-IUSE="vorbis"
+IUSE=""
 
 RDEPEND="virtual/x11
 	virtual/opengl
 	>=media-libs/sdl-mixer-1.2.4
 	>=media-libs/sdl-net-1.2.4
-	vorbis? ( media-libs/libvorbis )"
+	oggvorbis? ( media-libs/libvorbis )"
 DEPEND="${RDEPEND}
-	app-arch/unzip"
-
-S=${WORKDIR}/pacman
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack pacman-arena-${PV}.tar.bz2
-	cd "${S}"
+	cd ${S}
 	unpack pacman-data-0.0.zip
 
 	sed -i \
-		-e "/^CFLAGS/ s:pacman:${PN}:" \
-		Makefile.in || die "sed file.h failed"
+		-e "/^CFLAGS/ s:pacman:${PN}:" Makefile.in \
+			|| die "sed file.h failed"
 }
 
 src_install() {
@@ -42,12 +41,10 @@ src_install() {
 	prepgamesdirs
 }
 
-pkg_postinst() {
+pkg_postins() {
 	games_pkg_postinst
-	if ! use vorbis ; then
-		echo
-		ewarn "You need vorbis in your USE var and sdl components build"
-		ewarn "with vorbis to have sound."
-		echo
-	fi
+	echo
+	ewarn "You need oggvorbis in your USE var and sdl components build"
+	ewarn "with oggvorbis to have sound."
+	echo
 }

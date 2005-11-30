@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.0-r12.ebuild,v 1.6 2005/09/03 19:49:58 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-shells/bash/bash-3.0-r12.ebuild,v 1.1 2005/07/05 22:52:33 vapier Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -23,7 +23,7 @@ SRC_URI="mirror://gnu/bash/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="nls build bashlogger"
 
 # we link statically with ncurses
@@ -52,19 +52,13 @@ src_unpack() {
 	# Fix network tests on Darwin #79124
 	epatch "${FILESDIR}"/${P}-darwin-conn.patch
 	# A bunch of fixes from fedora
-	for i in afs crash jobs manpage pwd read-e-segfault ulimit ; do
-		epatch "${FILESDIR}"/${P}-${i}.patch
-	done
+	epatch "${FILESDIR}"/${P}-{afs,crash,jobs,manpage,pwd,read-e-segfault,ulimit}.patch
 	# Fix read-builtin and the -u pipe option #87093
 	epatch "${FILESDIR}"/${P}-read-builtin-pipe.patch
 	# Don't barf on handled signals in scripts
 	epatch "${FILESDIR}"/${P}-trap-fg-signals.patch
 	# Fix a problem when using pipes and PGRP_PIPE #92349
 	epatch "${FILESDIR}"/${P}-pgrp-pipe-fix.patch
-	# Make sure static linking always works #100138
-	epatch "${FILESDIR}"/${P}-force-static-linking.patch
-	# Fix parallel builds #87247
-	epatch "${FILESDIR}"/${P}-parallel.patch
 	# Log bash commands to syslog #91327
 	if use bashlogger ; then
 		echo
@@ -127,7 +121,7 @@ src_compile() {
 		${myconf} || die
 	# Make sure we always link statically with ncurses
 	sed -i "/^TERMCAP_LIB/s:-lncurses:-Wl,-Bstatic -lncurses -Wl,-Bdynamic:" Makefile || die "sed failed"
-	emake -j1 || die "make failed"  # see bug 102426
+	emake || die "make failed"
 }
 
 src_install() {

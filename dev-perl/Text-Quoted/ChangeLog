@@ -1,22 +1,6 @@
 # ChangeLog for dev-perl/Text-Quoted
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Quoted/ChangeLog,v 1.5 2005/04/29 15:14:24 mcummings Exp $
-
-*Text-Quoted-1.8 (29 Apr 2005)
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  Text-Quoted-1.7.ebuild, +Text-Quoted-1.8.ebuild:
-  Cleaning for mirror
-
-  12 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  Text-Quoted-1.7.ebuild:
-  Keyworded ~sparc
-
-  02 Sep 2004; David Holm <dholm@gentoo.org> Text-Quoted-1.7.ebuild:
-  Added to ~ppc.
-
-  28 Aug 2004; Renat Lumpau <rl03@gentoo.org> Text-Quoted-1.7.ebuild:
-  Added missing IUSE.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Quoted/ChangeLog,v 1.1 2004/08/25 12:10:16 rl03 Exp $
 
 *Text-Quoted-1.7 (25 Aug 2004)
 

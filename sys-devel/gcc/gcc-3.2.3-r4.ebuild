@@ -1,8 +1,14 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.2.3-r4.ebuild,v 1.18 2005/10/07 02:01:56 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc/gcc-3.2.3-r4.ebuild,v 1.1 2004/01/27 10:04:46 lu_zero Exp $
 
-inherit eutils flag-o-matic libtool versionator
+IUSE="static nls bootstrap java build"
+
+inherit eutils flag-o-matic libtool
+
+# Compile problems with these (bug #6641 among others)...
+# We don't need these since we strip-flags below -- Joshua
+#filter-flags "-fno-exceptions -fomit-frame-pointer"
 
 # Recently there has been a lot of stability problem in Gentoo-land.  Many
 # things can be the cause to this, but I believe that it is due to gcc3
@@ -24,29 +30,21 @@ inherit eutils flag-o-matic libtool versionator
 # problems.
 #
 # <azarah@gentoo.org> (13 Oct 2002)
-do_filter_flags() {
-	strip-flags
-
-	# In general gcc does not like optimization, and add -O2 where
-	# it is safe.
-	filter-flags -O?
-}
+strip-flags
 
 # Theoretical cross compiler support
 [ ! -n "${CCHOST}" ] && export CCHOST="${CHOST}"
 
 LOC="/usr"
-#GCC_BRANCH_VER="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
-#GCC_RELEASE_VER="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
-GCC_BRANCH_VER="$(get_version_component_range 1-2)"
-GCC_RELEASE_VER="$(get_version_component_range 1-3)"
+MY_PV="`echo ${PV} | awk -F. '{ gsub(/_pre.*|_alpha.*/, ""); print $1 "." $2 }'`"
+MY_PV_FULL="`echo ${PV} | awk '{ gsub(/_pre.*|_alpha.*/, ""); print $0 }'`"
 
-LIBPATH="${LOC}/lib/gcc-lib/${CCHOST}/${GCC_RELEASE_VER}"
-BINPATH="${LOC}/${CCHOST}/gcc-bin/${GCC_BRANCH_VER}"
-DATAPATH="${LOC}/share/gcc-data/${CCHOST}/${GCC_BRANCH_VER}"
+LIBPATH="${LOC}/lib/gcc-lib/${CCHOST}/${MY_PV_FULL}"
+BINPATH="${LOC}/${CCHOST}/gcc-bin/${MY_PV}"
+DATAPATH="${LOC}/share/gcc-data/${CCHOST}/${MY_PV}"
 # Don't install in /usr/include/g++-v3/, but in gcc internal directory.
 # We will handle /usr/include/g++-v3/ with gcc-config ...
-STDCXX_INCDIR="${LIBPATH}/include/g++-v${GCC_BRANCH_VER/\.*/}"
+STDCXX_INCDIR="${LIBPATH}/include/g++-v${MY_PV/\.*/}"
 
 # ProPolice version
 PP_VER1="3_2_2"
@@ -61,15 +59,15 @@ PATCH_VER=""
 SNAPSHOT=""
 
 # Branch update support ...
-GCC_RELEASE_VER="${PV}"  # Tarball, etc used ...
+MAIN_BRANCH="${PV}"  # Tarball, etc used ...
 
 #BRANCH_UPDATE="20021208"
 BRANCH_UPDATE=""
 
 if [ -z "${SNAPSHOT}" ]
 then
-	S="${WORKDIR}/${PN}-${GCC_RELEASE_VER}"
-	SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${P}/${PN}-${GCC_RELEASE_VER}.tar.bz2"
+	S="${WORKDIR}/${PN}-${MAIN_BRANCH}"
+	SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${P}/${PN}-${MAIN_BRANCH}.tar.bz2"
 
 	if [ -n "${PATCH_VER}" ]
 	then
@@ -80,14 +78,13 @@ then
 	if [ -n "${BRANCH_UPDATE}" ]
 	then
 		SRC_URI="${SRC_URI}
-		         mirror://gentoo/${PN}-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2"
+		         mirror://gentoo/${PN}-${MAIN_BRANCH}-branch-update-${BRANCH_UPDATE}.patch.bz2"
 	fi
 else
 	S="${WORKDIR}/gcc-${SNAPSHOT//-}"
 	SRC_URI="ftp://sources.redhat.com/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT//-}.tar.bz2"
 fi
 SRC_URI="${SRC_URI}
-	mirror://gentoo/protector-${PP_VER2}.tar.gz
 	http://www.research.ibm.com/trl/projects/security/ssp/gcc${PP_VER1}/protector-${PP_VER2}.tar.gz
 	mirror://gentoo/${P}-manpages.tar.bz2
 	mirror://gentoo/${P}-tls-update.patch.bz2"
@@ -96,34 +93,38 @@ DESCRIPTION="The GNU Compiler Collection.  Includes C/C++ and java compilers"
 HOMEPAGE="http://www.gnu.org/software/gcc/gcc.html"
 
 LICENSE="GPL-2 LGPL-2.1"
+
 # this is a glibc-propolice forced bump to a gcc without guard 
 # when no binary on the system has references to guard@@libgcc
 # hppa has no dependency on propolice for gcc - skip this arch
-KEYWORDS="x86 ppc sparc mips alpha -hppa ia64 s390"
-IUSE="static nls bootstrap java build"
+KEYWORDS="~ppc" #x86 ppc sparc alpha arm mips -hppa"
 
 # Ok, this is a hairy one again, but lets assume that we
 # are not cross compiling, than we want SLOT to only contain
 # $PV, as people upgrading to new gcc layout will not have
 # their old gcc unmerged ...
-SLOT="${GCC_BRANCH_VER}"
+if [ "${CHOST}" == "${CCHOST}" ]
+then
+	SLOT="${MY_PV}"
+else
+	SLOT="${CCHOST}-${MY_PV}"
+fi
 
-DEPEND=">=sys-libs/glibc-2.3.2-r3
-	mips? ( >=sys-devel/binutils-2.13.90.0.16 )
-	!mips? ( >=sys-devel/binutils-2.13.90.0.18 )
-	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.1 )
-	!build? ( >=sys-libs/ncurses-5.2-r2
+DEPEND="!arm? ( >=sys-libs/glibc-2.3.2-r3 )
+	mips? >=sys-devel/binutils-2.13.90.0.16 : >=sys-devel/binutils-2.13.90.0.18
+	>=sys-devel/gcc-config-1.3.1
+	!build? ( !arm? ( >=sys-libs/ncurses-5.2-r2 )
 	          nls? ( sys-devel/gettext ) )"
 
 # this glibc has the glibc guard symbols which are needed for the propolice functions to get moved to glibc
 # out of the libgcc in this gcc release, however, the propolice patch itself is not defused by this removal
-RDEPEND=">=sys-libs/glibc-2.3.2-r3
-	|| ( app-admin/eselect-compiler >=sys-devel/gcc-config-1.3.1 )
+RDEPEND="!arm? ( >=sys-libs/glibc-2.3.2-r3 )
+	>=sys-devel/gcc-config-1.3.1
 	>=sys-libs/zlib-1.1.4
 	>=sys-apps/texinfo-4.2-r4
-	!build? ( >=sys-libs/ncurses-5.2-r2 )"
+	!build? ( !arm? ( >=sys-libs/ncurses-5.2-r2 ) )"
 
-PDEPEND="|| ( app-admin/eselect-compiler sys-devel/gcc-config )"
+PDEPEND="sys-devel/gcc-config"
 
 
 # Hack used to patch Makefiles to install into the build dir
@@ -135,7 +136,7 @@ chk_gcc_version() {
 	local OLD_GCC_CHOST="$(gcc -v 2>&1 | egrep '^Reading specs' |\
 	                       sed -e 's:^.*/gcc-lib/\([^/]*\)/[0-9]\+.*$:\1:')"
 
-	if [ "${OLD_GCC_VERSION}" != "${GCC_RELEASE_VER}" ]
+	if [ "${OLD_GCC_VERSION}" != "${MY_PV_FULL}" ]
 	then
 		echo "${OLD_GCC_VERSION}" > "${WORKDIR}/.oldgccversion"
 	fi
@@ -162,7 +163,7 @@ version_patch() {
 src_unpack() {
 	if [ -z "${SNAPSHOT}" ]
 	then
-		unpack ${PN}-${GCC_RELEASE_VER}.tar.bz2
+		unpack ${PN}-${MAIN_BRANCH}.tar.bz2
 
 		if [ -n "${PATCH_VER}" ]
 		then
@@ -183,7 +184,7 @@ src_unpack() {
 	# Branch update ...
 	if [ -n "${BRANCH_UPDATE}" ]
 	then
-		epatch ${DISTDIR}/${PN}-${GCC_RELEASE_VER}-branch-update-${BRANCH_UPDATE}.patch.bz2
+		epatch ${DISTDIR}/${PN}-${MAIN_BRANCH}-branch-update-${BRANCH_UPDATE}.patch.bz2
 	fi
 
 	# Do bulk patches included in ${P}-patches-${PATCH_VER}.tar.bz2
@@ -327,25 +328,29 @@ src_compile() {
 	local myconf=""
 	local gcc_lang=""
 
-	if ! use build
+	if [ -z "`use build`" ]
 	then
 		myconf="${myconf} --enable-shared"
 		gcc_lang="c,c++,f77,objc"
 	else
 		gcc_lang="c"
 	fi
-	if ! use nls || use build
+	if [ -z "`use nls`" ] || [ "`use build`" ]
 	then
 		myconf="${myconf} --disable-nls"
 	else
 		myconf="${myconf} --enable-nls --without-included-gettext"
 	fi
-	if use java && ! use build
+	if [ -n "`use java`" ] && [ -z "`use build`" ]
 	then
 		gcc_lang="${gcc_lang},java"
 	fi
 
-	do_filter_flags
+	# In general gcc does not like optimization, and add -O2 where
+	# it is safe.
+	# These aren't needed since we strip-flags above -- Joshua
+	#export CFLAGS="${CFLAGS//-O?}"
+	#export CXXFLAGS="${CXXFLAGS//-O?}"
 
 	# Build in a separate build tree
 	mkdir -p ${WORKDIR}/build
@@ -383,10 +388,13 @@ src_compile() {
 		find ${S} -name '*.[17]' -exec touch {} \; || :
 	fi
 
+	# Setup -j in MAKEOPTS
+	get_number_of_jobs
+
 	einfo "Building GCC..."
 	# Only build it static if we are just building the C frontend, else
 	# a lot of things break because there are not libstdc++.so ....
-	if use static && [ "${gcc_lang}" = "c" ]
+	if [ -n "`use static`" -a "${gcc_lang}" = "c" ]
 	then
 		# Fix for our libtool-portage.patch
 		S="${WORKDIR}/build" \
@@ -442,15 +450,15 @@ src_install() {
 
 	dodir /lib /usr/bin
 	dodir /etc/env.d/gcc
-	echo "PATH=\"${BINPATH}\"" > ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "ROOTPATH=\"${BINPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "LDPATH=\"${LIBPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "MANPATH=\"${DATAPATH}/man\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "INFOPATH=\"${DATAPATH}/info\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "STDCXX_INCDIR=\"${STDCXX_INCDIR##*/}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "PATH=\"${BINPATH}\"" > ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "ROOTPATH=\"${BINPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "LDPATH=\"${LIBPATH}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "MANPATH=\"${DATAPATH}/man\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "INFOPATH=\"${DATAPATH}/info\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "STDCXX_INCDIR=\"${STDCXX_INCDIR##*/}\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
 	# Also set CC and CXX
-	echo "CC=\"gcc\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
-	echo "CXX=\"g++\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${GCC_RELEASE_VER}
+	echo "CC=\"gcc\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
+	echo "CXX=\"g++\"" >> ${D}/etc/env.d/gcc/${CCHOST}-${MY_PV_FULL}
 
 	# Install wrappers
 # Handled by gcc-config now ...
@@ -461,7 +469,7 @@ src_install() {
 
 	# Make sure we dont have stuff lying around that
 	# can nuke multiple versions of gcc
-	if ! use build
+	if [ -z "`use build`" ]
 	then
 		cd ${D}${LIBPATH}
 
@@ -503,7 +511,7 @@ src_install() {
 
 		# Rename jar because it could clash with Kaffe's jar if this gcc is
 		# primary compiler (aka don't have the -<version> extension)
-		cd ${D}${LOC}/${CCHOST}/gcc-bin/${GCC_BRANCH_VER}
+		cd ${D}${LOC}/${CCHOST}/gcc-bin/${MY_PV}
 		[ -f jar ] && mv -f jar gcj-jar
 
 		# Move <cxxabi.h> to compiler-specific directories
@@ -526,11 +534,11 @@ src_install() {
 	fi
 
 	cd ${S}
-	if ! use build
+	if [ -z "`use build`" ]
 	then
 		cd ${S}
 		docinto /${CCHOST}
-		dodoc ChangeLog FAQ GNATS MAINTAINERS README
+		dodoc COPYING COPYING.LIB ChangeLog FAQ GNATS MAINTAINERS README
 		docinto ${CCHOST}/html
 		dohtml *.html
 		cd ${S}/boehm-gc
@@ -546,10 +554,10 @@ src_install() {
 		dodoc ChangeLog README TODO *.netlib
 		cd ${S}/libffi
 		docinto ${CCHOST}/libffi
-		dodoc ChangeLog* README
+		dodoc ChangeLog* LICENSE README
 		cd ${S}/libiberty
 		docinto ${CCHOST}/libiberty
-		dodoc ChangeLog README
+		dodoc ChangeLog COPYING.LIB README
 		cd ${S}/libobjc
 		docinto ${CCHOST}/libobjc
 		dodoc ChangeLog README* THREADS*
@@ -561,14 +569,14 @@ src_install() {
 		cp -f docs/html/17_intro/[A-Z]* \
 			${D}/usr/share/doc/${PF}/${DOCDESTTREE}/17_intro/
 
-		if use java
+		if [ -n "`use java`" ]
 		then
 			cd ${S}/fastjar
 			docinto ${CCHOST}/fastjar
-			dodoc AUTHORS CHANGES ChangeLog NEWS README
+			dodoc AUTHORS CHANGES COPYING ChangeLog NEWS README
 			cd ${S}/libjava
 			docinto ${CCHOST}/libjava
-			dodoc ChangeLog* HACKING LIBGCJ_LICENSE NEWS README THANKS
+			dodoc ChangeLog* COPYING HACKING LIBGCJ_LICENSE NEWS README THANKS
 		fi
 
 		prepman ${DATAPATH}
@@ -590,6 +598,7 @@ src_install() {
 }
 
 pkg_preinst() {
+
 	if [ ! -f "${WORKDIR}/.chkgccversion" ]
 	then
 		chk_gcc_version
@@ -602,11 +611,12 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
+
 	export LD_LIBRARY_PATH="${LIBPATH}:${LD_LIBRARY_PATH}"
 
-	if [ "${ROOT}" = "/" -a "${CHOST}" = "${CCHOST}" ]
+	if [ "${ROOT}" = "/" -a "${COMPILER}" = "gcc3" -a "${CHOST}" = "${CCHOST}" ]
 	then
-		gcc-config --use-portage-chost ${CCHOST}-${GCC_RELEASE_VER}
+		gcc-config --use-portage-chost ${CCHOST}-${MY_PV_FULL}
 	fi
 
 	# Update libtool linker scripts to reference new gcc version ...
@@ -621,7 +631,7 @@ pkg_postinst() {
 		then
 			OLD_GCC_VERSION="$(cat "${WORKDIR}/.oldgccversion")"
 		else
-			OLD_GCC_VERSION="${GCC_RELEASE_VER}"
+			OLD_GCC_VERSION="${MY_PV_FULL}"
 		fi
 
 		if [ -f "${WORKDIR}/.oldgccchost" ] && \
@@ -642,3 +652,4 @@ pkg_postinst() {
 		[ "${ROOT}" = "/" ] && hardened-gcc -A
 	fi
 }
+

@@ -1,50 +1,6 @@
 # ChangeLog for dev-lang/gpc
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gpc/ChangeLog,v 1.15 2005/04/17 21:28:18 george Exp $
-
-*gpc-20050331 (17 Apr 2005)
-
-  17 Apr 2005; George Shapovalov <george@gentoo.org> gpc-20050331.ebuild :
-  new version, works with gcc-3.4.3 (#74887, #87619)
-  will remove 20040516 when this one is tested
-
-  11 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> -gpc-20030209.ebuild:
-  removed - old and with QA issues.
-
-  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> gpc-20030209.ebuild,
-  gpc-20040516.ebuild:
-  virtual/glibc -> virtual/libc
-
-  14 Jun 2004; George Shapovalov <george@gentoo.org> gpc-20040516.ebuild :
-  parallel build fails, fixed to use "emake -j1"
-
-  12 Jun 2004; George Shapovalov <george@gentoo.org> gpc-20040516.ebuild :
-  new beta out (this package does not have releases at all :), even betas are one a few years)
-  much cleaned and improved ebuild (#48377);
-  removed gpc-2.1
-
-  07 Jun 2004; Aron Griffis <agriffis@gentoo.org> gpc-20030209.ebuild:
-  Fix use invocation
-
-*gpc-20030209 (14 Feb 2003)
-
-  14 Feb 2003; George Shapovalov <george@gentoo.org> gpc-20030209.ebuild, files/digest-gpc-20030209 :
-
-  new version, now works with gcc-3.x
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
-*gpc-2.1 (10 May 2002)
-
-  gpc-2.1 has been released. Updated ebuild and removed pre-release versions
-  (otherwise naming conflict is developed - 2.1 is seen as older version 
-  than daily builds)
-
-*gpc-20020410,  (13 Apr 2002)
-
-  10 Apr 2002; G Shapovalov <george@gentoo.org> ChangeLog :
-
-  gpc-r6 has been released. Updated ebuild to use this version (ebuild rename sufficed).
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gpc/ChangeLog,v 1.1 2002/04/11 05:35:39 george Exp $
 
 *gpc-20020402,  (10 Apr 2002)
 

@@ -1,6 +1,7 @@
-# Copyright 2001-2004 Gentoo Foundation.
+# Copyright 2001-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/x86/gcc31/packages,v 1.11 2005/05/10 02:14:21 swegener Exp $
+# $Header: /home/cvsroot/gentoo-x86/profiles/default/x86/2004.0/packages,v
+# 1.2 2004/03/18 00:16:43 seemant Exp $
 
 # For instructions on how this file works (as an inclusion mask, primarily),
 # please refer to ${PORTDIR}/profiles/base/packages
@@ -20,7 +21,7 @@
 
 !dev-lang/gpc
 
-*sys-libs/gdbm
+*sys-libs/gdbm  
 
 ~sys-devel/binutils-2.12.90.0.7
 <sys-devel/gcc-3.2_pre
@@ -28,26 +29,27 @@
 <sys-libs/db-3.2.10
 
 >=sys-libs/pam-0.75-r9
+>=sys-devel/automake-1.6.1-r5
 
 >=sys-libs/gpm-1.19.3-r5
 >=sys-apps/isapnptools-1.23-r6
->=sys-process/dcron-2.7-r6
+>=sys-apps/dcron-2.7-r6
 >=sys-apps/xinetd-2.3.3-r6
 >=net-fs/samba-2.2.2-r6
->=sys-process/at-3.1.8-r6
+>=sys-apps/at-3.1.8-r6
 >=app-admin/fcron-1.1.1-r6
 >=app-admin/metalog-0.6-r6
 >=app-admin/mon-0.38.20-r6
 >=app-admin/syslog-ng-1.4.12-r6
 >=net-www/apache-1.3.20-r6
->=net-analyzer/net-snmp-5.1.1
+>=net-analyzer/ucd-snmp-4.1.2-r6
 >=net-ftp/oftpd-0.3.6-r6
 >=net-ftp/proftpd-1.2.4-r6
 >=net-misc/dhcp-3.0_rc12-r6
 >=net-misc/bind-9.1.3-r6
 >=net-misc/netkit-timed-0.17-r6
 >=net-misc/pdnsd-1.1.6-r6
->=mail-mta/exim-3.32-r6
+>=net-mail/exim-3.32-r6
 >=net-misc/fakeidentd-1.4-r6
 >=net-nds/openldap-1.2.12-r6
 >=net-nds/portmap-5b-r6
@@ -62,9 +64,9 @@
 <net-misc/ntp-4.1.71-r6
 >=sys-apps/apmd-3.0.1-r6
 
-#>=mail-mta/postfix-20010228.5-r6
+#>=net-mail/postfix-20010228.5-r6
 >=net-misc/portsentry-1.1-r6
->=sys-block/noflushd-2.4-r6
+>=sys-apps/noflushd-2.4-r6
 >=app-text/dictd-1.5.5-r6
 >=net-fs/samba-winbind-20010329-r6
 >=net-www/wwwoffle-2.6d-r6
@@ -74,4 +76,4 @@
 
 # ickle 0.2.2 breaks with gcc3. lost history, permissions and dates.
 >=net-im/ickle-0.3.0
->=sci-mathematics/octave-2.1
+>=app-sci/octave-2.1

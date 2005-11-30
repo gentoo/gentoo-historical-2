@@ -1,17 +1,17 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver/xscreensaver-4.20.ebuild,v 1.16 2005/07/09 19:25:42 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xscreensaver/xscreensaver-4.20.ebuild,v 1.1 2005/02/24 21:22:29 rizzo Exp $
 
 inherit eutils flag-o-matic
 
-IUSE="gnome gtk jpeg kde kerberos krb4 motif nls offensive opengl pam xinerama"
+IUSE="pam kerberos krb4 gtk2 gnome opengl jpeg xinerama offensive motif"
 
 DESCRIPTION="a modular screensaver for X11"
 SRC_URI="http://www.jwz.org/xscreensaver/${P}.tar.gz"
 HOMEPAGE="http://www.jwz.org/xscreensaver/"
 
 LICENSE="BSD"
-KEYWORDS="alpha amd64 ~arm hppa ia64 mips ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~ia64 ~hppa ~ppc64"
 SLOT="0"
 
 # NOTE: ignore app-games/fortune-mod as a dep. it is pluggable and won't
@@ -21,7 +21,7 @@ SLOT="0"
 RDEPEND="virtual/x11
 	media-libs/netpbm
 	>=sys-libs/zlib-1.1.4
-	gtk? (
+	gtk2? (
 		>=dev-libs/libxml2-2.5
 		>=x11-libs/gtk+-2
 		>=gnome-base/libglade-1.99
@@ -38,7 +38,7 @@ RDEPEND="virtual/x11
 DEPEND="${RDEPEND}
 	sys-devel/bc
 	dev-lang/perl
-	gtk? ( dev-util/pkgconfig )
+	gtk2? ( dev-util/pkgconfig )
 	nls? ( sys-devel/gettext )"
 
 # simple workaround for the flurry screensaver
@@ -47,7 +47,7 @@ filter-flags -maltivec
 append-flags -U__VEC__
 
 pkg_setup() {
-	if ! use gtk ; then
+	if ! use gtk2 ; then
 		if use motif ; then
 			ewarn 'From the configure script:'
 			ewarn '  Though the Motif front-end to xscreensaver is still'
@@ -55,9 +55,9 @@ pkg_setup() {
 			ewarn '  features: all new development on the xscreensaver-demo'
 			ewarn '  program is happening in the GTK version, and not in the'
 			ewarn '  Motif version.'
-			ewarn 'It is recommended that you use the "gtk" USE flag.'
+			ewarn 'It is recommended that you use the "gtk2" USE flag.'
 		else
-			ewarn "You have enabled neither gtk nor motif USE flags.  xscreensaver-demo"
+			ewarn "You have enabled neither gtk2 nor motif USE flags.  xscreensaver-demo"
 			ewarn "requires either GTK+ 2 or Motif (GTK+ 2 is recommended, as the Motif"
 			ewarn "version is no longer being maintained), so xscreensaver-demo will not"
 			ewarn "be built.  This is most likely NOT what you want."
@@ -69,7 +69,7 @@ pkg_setup() {
 		ewarn "You have enabled kerberos without krb4 support. Kerberos will be"
 		ewarn "disabled unless kerberos 4 support has been compiled with your"
 		ewarn "kerberos libraries. To do that, you should abort now and do:"
-		ewarn
+		ewarn ""
 		ewarn " USE=\"krb4\" emerge mit-krb5"
 		ewarn
 		epause
@@ -84,6 +84,8 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-4.20-norpm.patch
 	# set default fortune to /usr/bin/fortune even if one can't be found
 	epatch ${FILESDIR}/${PN}-4.14-fortune.patch
+	# disabled because it is out of date - liquidx (15/06/2004)
+	# use icc && EPATCH_OPTS="-d ${S}" epatch ${FILESDIR}/${PN}-4.14-icc.patch
 	# disable not-safe-for-work xscreensavers
 	use offensive || epatch ${FILESDIR}/${PN}-4.16-nsfw.patch
 }
@@ -93,7 +95,7 @@ src_compile() {
 
 	myconf="--with-fortune=/usr/bin/fortune"
 
-	if use gtk ; then
+	if use gtk2 ; then
 		myconf="${myconf} --without-motif --with-gtk --with-xml"
 	elif use motif; then
 		myconf="${myconf} --with-motif --without-gtk --without-pixbuf"
@@ -125,6 +127,11 @@ src_compile() {
 		&& myconf="${myconf} --enable-nls" \
 		|| myconf="${myconf} --disable-nls"
 
+
+	if use icc ; then
+		export CC=icc
+		autoconf
+	fi
 
 	econf \
 		--enable-hackdir=/usr/lib/xscreensaver \

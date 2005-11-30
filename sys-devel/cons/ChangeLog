@@ -1,21 +1,7 @@
-# ChangeLog for sys-devel/cons
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/cons/ChangeLog,v 1.10 2005/05/24 16:01:05 mcummings Exp $
+# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/cons/ChangeLog,v 1.1 2002/10/24 15:20:09 mcummings Exp $
 
-  24 May 2005; Michael Cummings <mcummings@gentoo.org> cons-2.2.0.ebuild:
-  dev-perl/Digest-MD5 => perl-core/Digest-MD5
-
-  03 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> cons-2.2.0.ebuild:
-  Masked cons-2.2.0.ebuild stable for ppc
-
-  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> cons-2.2.0.ebuild:
-  Stable on alpha.
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *cons-2.2.0 (24 Oct 2002)
 
   24 Oct 2002; <mcummings@gentoo.org> cons-2.2.0.ebuild, ChangeLog: Initial

@@ -1,6 +1,5 @@
 # /etc/securetty: list of terminals on which root is allowed to login.
 # See securetty(5) and login(1).
-vc/0
 vc/1
 vc/2
 vc/3
@@ -13,7 +12,6 @@ vc/9
 vc/10
 vc/11
 vc/12
-tty0
 tty1
 tty2
 tty3
@@ -26,6 +24,3 @@ tty9
 tty10
 tty11
 tty12
-
-tts/0
-ttyS0

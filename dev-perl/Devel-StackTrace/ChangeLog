@@ -1,63 +1,7 @@
 # ChangeLog for dev-perl/Devel-StackTrace
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-StackTrace/ChangeLog,v 1.17 2005/11/19 08:32:44 mcummings Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Devel-StackTrace/ChangeLog,v 1.1 2002/11/17 05:42:59 mkennedy Exp $
 
-*Devel-StackTrace-1.12 (19 Nov 2005)
-
-  19 Nov 2005; Michael Cummings <mcummings@gentoo.org>
-  +Devel-StackTrace-1.12.ebuild:
-  Version bump
-
-  17 Sep 2005; Aron Griffis <agriffis@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  Mark 1.11 stable on ia64
-
-  08 Sep 2005; Aron Griffis <agriffis@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  Mark 1.11 stable on alpha
-
-  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  add ~ia64
-
-  21 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  Stable on hppa.
-
-  12 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  Stable on sparc
-
-  12 Aug 2005; Michael Cummings <mcummings@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  Marking stable on x86
-
-  25 May 2005; Michael Cummings <mcummings@gentoo.org>
-  Devel-StackTrace-1.03.ebuild:
-  dev-perl/Test-Simple => perl-core/Test-Simple migration
-
-  16 Mar 2005; Michael Cummings <mcummings@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  module-build dep
-
-*Devel-StackTrace-1.11 (05 Jun 2004)
-
-  05 Jun 2004; Michael Cummings <mcummings@gentoo.org>
-  Devel-StackTrace-1.11.ebuild:
-  new version on cpan
-
-  07 Jun 2003; <rac@gentoo.org> Devel-StackTrace-1.03.ebuild:
-  Add IUSE, shift URL to by-modules
-
-*Devel-StackTrace-1.03 (22 Apr 2003)
-
-  22 Apr 2003; <rac@gentoo.org> Devel-StackTrace-1.02.ebuild,
-  Devel-StackTrace-1.02.ebuild, Devel-StackTrace-1.03.ebuild:
-  Version bump, thanks to Joshua J. Berry <condor-gentoo@condordes.net> in bug
-  #18200
-
-  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
- 
 *Devel-StackTrace-1.02 (13 Nov 2002)
 
   13 Nov 2002; Matthew Kennedy <mkennedy@gentoo.org>

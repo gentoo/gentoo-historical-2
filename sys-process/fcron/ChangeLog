@@ -1,52 +1,6 @@
-# ChangeLog for sys-process/fcron
+# ChangeLog for sys-apps/fcron
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/ChangeLog,v 1.10 2005/10/27 23:53:50 ka0ttic Exp $
-
-  27 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> files/fcron.rc6,
-  fcron-3.0.0.ebuild:
-  Add various use statements to the init for bug #25250; add a better
-  explanation for when the pkg_setup EDITOR check fails, bug #108699.
-
-  27 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> fcron-3.0.0.ebuild:
-  Use egetent to set --with-root{name,group} configure options, bug #107374.
-
-  25 Sep 2005; Aaron Walker <ka0ttic@gentoo.org>
-  files/fcron-2.0.0-configure.diff, fcron-3.0.0.ebuild:
-  Added debug to IUSE for --with-debug configure option; also updated
-  fcron-2.0.0-configure.diff so configure doesn't override CFLAGS.
-
-*fcron-3.0.0 (12 Sep 2005)
-
-  12 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> -fcron-2.9.5.1-r3.ebuild,
-  -fcron-2.9.6.ebuild, +fcron-3.0.0.ebuild:
-  Version bump; tidy old ebuilds.
-
-*fcron-2.9.7 (28 Jul 2005)
-
-  28 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> +fcron-2.9.7.ebuild:
-  Version bump.
-
-  20 May 2005; Diego Pettenò <flameeyes@gentoo.org> fcron-2.9.5.1.ebuild,
-  fcron-2.9.5.1-r3.ebuild, fcron-2.9.6.ebuild:
-  Inherit pam for newpamd.
-
-*fcron-2.9.6 (16 Mar 2005)
-
-  16 Mar 2005; Aaron Walker <ka0ttic@gentoo.org> -files/fcron.conf-2.9.5.1,
-  files/fcron-2.9.5.1-fix-mail-output.diff, -files/fcron.allow,
-  -files/fcron.conf, -files/fcron.deny, -files/fcron.pam,
-  -files/fcrontab.pam, fcron-2.0.2.ebuild, fcron-2.9.5.1.ebuild,
-  fcron-2.9.5.1-r3.ebuild, +fcron-2.9.6.ebuild:
-  Version bump for bug 85371; also cleaned up all the unnecessary crap in
-  ${FILESDIR} since they're all included in ${S}/files.
-
-*fcron-2.9.5.1-r3 (08 Mar 2005)
-
-  08 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
-  +files/fcron-2.9.5.1-fix-mail-output.diff, -fcron-2.9.5.1-r2.ebuild,
-  +fcron-2.9.5.1-r3.ebuild:
-  Revision bump; added patch to fix mail output. Thanks to Dmitry Karasik for
-  the patch in bug 83648.
+# $Header: /var/cvsroot/gentoo-x86/sys-process/fcron/ChangeLog,v 1.1 2005/03/04 23:50:36 ciaranm Exp $
 
 *fcron-2.9.5.1-r2 (04 Mar 2005)
 

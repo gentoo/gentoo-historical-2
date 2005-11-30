@@ -1,26 +1,6 @@
-# ChangeLog for app-laptop/thinkpad
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-laptop/thinkpad/ChangeLog,v 1.9 2005/01/08 21:38:39 brix Exp $
-
-*thinkpad-5.8 (08 Jan 2005)
-
-  08 Jan 2005; Henrik Brix Andersen <brix@gentoo.org>
-  +files/thinkpad-5.8-cpu_ptr.patch, +thinkpad-5.8.ebuild:
-  Version bump, ported to use linux-mod.eclass. Fixes bug #39943 and bug #69669.
-
-  01 Oct 2004; Scott W Taylor <swtaylor@gentoo.org> thinkpad-5.7.ebuild:
-  fix typo
-
-*thinkpad-5.7 (01 Oct 2004)
-
-  01 Oct 2004; Scott W Taylor <swtaylor@gentoo.org> +thinkpad-5.7.ebuild:
-  new source, plays nicely with 2.6 kernel
-
-  18 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> thinkpad-4.8.ebuild:
-  stable on x86.
-
-  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> thinkpad-4.8.ebuild:
-  glibc -> libc
+# ChangeLog for sys-apps/thinkpad
+# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-laptop/thinkpad/ChangeLog,v 1.1 2004/03/08 04:37:27 latexer Exp $
 
 *thinkpad-3.2 (07 Mar 2004)
 

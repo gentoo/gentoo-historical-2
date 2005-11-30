@@ -1,39 +1,35 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/ncsa-httpd/ncsa-httpd-1.5.2a.ebuild,v 1.4 2005/08/24 11:26:20 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/ncsa-httpd/ncsa-httpd-1.5.2a.ebuild,v 1.1 2004/08/08 17:46:54 stuart Exp $
 
-inherit eutils toolchain-funcs
+inherit eutils
 
-MY_P="httpd_${PV}-export"
-S="${WORKDIR}/${MY_P}"
+# httpd_1.5.2a-export
+MY_P=httpd_${PV}-export
+S=${WORKDIR}/${MY_P}
 DESCRIPTION="NCSA HTTPd, a classic web server"
 HOMEPAGE="http://hoohoo.ncsa.uiuc.edu"
+KEYWORDS="~x86"
 SRC_URI="ftp://ftp.ncsa.uiuc.edu/Web/httpd/Unix/ncsa_httpd/current/${MY_P}_source.tar.Z"
-
+DEPEND=""
 LICENSE="ncsa-1.3"
 SLOT="1"
-KEYWORDS="~x86"
-IUSE=""
-
-DEPEND=">=sys-libs/gdbm-1.8.3"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
 	epatch ${FILESDIR}/${P}.patch
-	epatch ${FILESDIR}/${P}-gdbm_compat.patch
 }
 
 src_compile() {
-	chown -R root:0 *
-	make CFLAGS="${CFLAGS}" linux || die "make linux failed"
+	chown -R root:root *
+	make linux || die
 	cd support/auth
-	$(tc-getCC) -Wall ${CFLAGS} uuencode.c -o uuencode || \
-		die "failed to build uuencode"
+	gcc -o uudecode uudecode.c
+	gcc -o uuencode uuencode.c
 }
 
 src_install() {
-	local INSDIR=/usr/local/etc/httpd
+	INSDIR=/usr/local/etc/httpd/
 	exeinto $INSDIR
 	doexe httpd
 
@@ -51,17 +47,31 @@ src_install() {
 	cp -rf conf ${D}/usr/local/etc/httpd/
 	cp -rf icons ${D}/usr/local/etc/httpd/
 
-	cd support
+	cd src
+	cp httpd.man httpd.1
+	cd ..
+
 	exeinto $INSDIR/support
-	doexe dbm{2std,digest,group,passwd} ht{digest,passwd} inc2shtml std2dbm \
-		unescape webgrab
+	doexe support/dbm2std
+	doexe support/dbmdigest
+	doexe support/dbmgroup
+	doexe support/dbmpasswd
+	doexe support/htdigest
+	doexe support/htpasswd
+	doexe support/inc2shtml
+	doexe support/std2dbm
+	doexe support/unescape
+	doexe support/webgrab
 
-	cd auth
 	exeinto $INSDIR/support/auth
-	doexe pgp-{dec,enc} ripem-{dec,enc} uu{de,en}code
+	doexe support/auth/pgp-dec
+	doexe support/auth/pgp-enc
+	doexe support/auth/ripem-dec
+	doexe support/auth/ripem-enc
+	doexe support/auth/uudecode
+	doexe support/auth/uuencode
 
-	cd ${S}
-	newman src/httpd.man src/httpd.1
+	doman src/httpd.1
 	mv support/README README-SUPPORT
 	dodoc COPYRIGHT BUGS CHANGES CREDITS README README-SUPPORT \
 		support/README.change-passwd

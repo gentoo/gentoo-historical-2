@@ -1,18 +1,6 @@
 # ChangeLog for dev-perl/Test-SimpleUnit
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-SimpleUnit/ChangeLog,v 1.5 2005/07/18 18:15:52 gustavoz Exp $
-
-  18 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
-  Test-SimpleUnit-1.21.ebuild:
-  Stable on sparc
-
-  20 May 2005; Michael Cummings <mcummings@gentoo.org>
-  Test-SimpleUnit-1.21.ebuild:
-  Keywording ~sparc
-
-  29 Apr 2005; Michael Cummings <mcummings@gentoo.org>
-  Test-SimpleUnit-1.21.ebuild:
-  Cleaning mirror syntax
+# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Test-SimpleUnit/ChangeLog,v 1.1 2004/03/29 11:11:48 mcummings Exp $
 
 *Test-SimpleUnit-1.21 (29 Mar 2004)
 

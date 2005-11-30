@@ -1,27 +1,25 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apps/viewcvs/viewcvs-0.9.3.ebuild,v 1.8 2005/10/18 18:04:20 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apps/viewcvs/viewcvs-0.9.3.ebuild,v 1.1 2005/05/24 02:34:59 ramereth Exp $
 
 inherit webapp
 
 DESCRIPTION="Viewcvs, a web interface to cvs and subversion"
 HOMEPAGE="http://viewcvs.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+SRC_URI="mirror://mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="viewcvs"
-KEYWORDS="ppc sparc x86"
+KEYWORDS="~x86 ~ppc"
 IUSE="cvsgraph enscript"
 
-RDEPEND="|| (
-		>=dev-util/cvs-1.11
-		dev-util/subversion
-	)
-	dev-lang/python
-	>=app-text/rcs-5.7
-	sys-apps/diffutils
-	cvsgraph? ( dev-util/cvsgraph )
-	enscript? ( app-text/enscript )
-	net-www/apache"
+RDEPEND="|| ( ( >=app-text/rcs-5.7
+				>=dev-util/cvs-1.11 )
+				dev-util/subversion )
+			dev-lang/python
+			sys-apps/diffutils
+			cvsgraph? dev-util/cvsgraph
+			enscript? app-text/enscript
+			net-www/apache"
 
 src_install() {
 	webapp_src_preinst

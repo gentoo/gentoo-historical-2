@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.4-r1.ebuild,v 1.7 2005/08/24 08:16:52 lcars Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-mta/sendmail/sendmail-8.13.4-r1.ebuild,v 1.1 2005/06/23 10:30:37 lcars Exp $
 
 inherit eutils mailer
 
@@ -104,6 +104,7 @@ src_install () {
 	fowners smmsp:smmsp /var/spool/clientmqueue
 	fperms 770 /var/spool/clientmqueue
 	fperms 700 /var/spool/mqueue
+	dosym /usr/sbin/sendmail /usr/lib/sendmail
 	dosym /usr/sbin/makemap /usr/bin/makemap
 	dodoc FAQ LICENSE KNOWNBUGS README RELEASE_NOTES doc/op/op.ps
 	newdoc sendmail/README README.sendmail
@@ -114,7 +115,7 @@ src_install () {
 
 	newdoc cf/README README.cf
 	newdoc cf/cf/README README.install-cf
-	cp -pPR cf/* ${D}/usr/share/sendmail-cf
+	cp -a cf/* ${D}/usr/share/sendmail-cf
 	insinto /etc/mail
 	if use mbox
 	then
@@ -124,9 +125,6 @@ src_install () {
 	fi
 	m4 ${D}/usr/share/sendmail-cf/m4/cf.m4 ${D}/etc/mail/sendmail.mc \
 		> ${D}/etc/mail/sendmail.cf
-	echo "include(\`/usr/share/sendmail-cf/m4/cf.m4')dnl" \
-		> ${D}/etc/mail/submit.mc
-	cat ${D}/usr/share/sendmail-cf/cf/submit.mc >> ${D}/etc/mail/submit.mc
 	echo "# local-host-names - include all aliases for your machine here" \
 		> ${D}/etc/mail/local-host-names
 	cat <<- EOF > ${D}/etc/mail/trusted-users
@@ -158,14 +156,6 @@ src_install () {
 		mv ${D}/usr/sbin/sendmail ${D}/usr/sbin/sendmail.sendmail
 		rm ${D}/usr/bin/mailq
 		rm ${D}/usr/bin/newaliases
-		mv ${D}/usr/share/man/man8/sendmail.8 \
-			${D}/usr/share/man/man8/sendmail-sendmail.8
-		mv ${D}/usr/share/man/man1/mailq.1 \
-			${D}/usr/share/man/man1/mailq-sendmail.1
-		mv ${D}/usr/share/man/man1/newaliases.1 \
-			${D}/usr/share/man/man1/newaliases-sendmail.1
-		mv ${D}/usr/share/man/man5/aliases.5 \
-			${D}/usr/share/man/man5/aliases-sendmail.5
 		dosed 's/} sendmail/} sendmail.sendmail/' /etc/init.d/sendmail
 		dosed 's/sbin\/sendmail/sbin\/sendmail.sendmail/' /etc/init.d/sendmail
 		mailer_install_conf
@@ -173,10 +163,8 @@ src_install () {
 
 }
 
-pkg_setup() {
-	einfo "checking for smmsp group...    create if missing."
-	enewgroup smmsp 209 || die "problem adding group smmsp"
-	einfo "checking for smmsp user...     create if missing."
-	enewuser smmsp 209 -1 /var/spool/mqueue smmsp \
-		|| die "problem adding user smmsp"
+pkg_preinst() {
+	if ! groupmod smmsp; then
+		groupadd smmsp || die "problem adding group smmsp"
+	fi
 }

@@ -1,24 +1,24 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-sparc64/gcc-sparc64-3.3.5.ebuild,v 1.7 2005/07/10 00:47:40 swegener Exp $
-
-inherit eutils flag-o-matic
+# $Header: /var/cvsroot/gentoo-x86/sys-devel/gcc-sparc64/gcc-sparc64-3.3.5.ebuild,v 1.1 2004/11/27 01:26:36 kumba Exp $
 
 # Variables 
+inherit eutils flag-o-matic
 MYARCH="$(echo ${PN} | cut -d- -f2)"
 TMP_P="${P/-${MYARCH}/}"
 TMP_PN="${PN/-${MYARCH}/}"
 I="/usr"
+S="${WORKDIR}/${P}"
 BRANCH_UPDATE=""
 
-DESCRIPTION="Sparc64 Kernel Compiler"
+DESCRIPTION="Sparc64 Kernel Compiler (Experimental)"
 HOMEPAGE="http://www.gnu.org/software/gcc/gcc.html"
 SRC_URI="ftp://gcc.gnu.org/pub/gcc/releases/${TMP_P}/${TMP_P}.tar.bz2"
 #	mirror://gentoo/${TMP_P}-branch-update-${BRANCH_UPDATE}.patch.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 
-KEYWORDS="sparc"
+KEYWORDS="~sparc"
 
 DEPEND="virtual/libc
 	>=sys-devel/binutils-2.14.90.0.7
@@ -111,14 +111,14 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
+	einfo ""
 	einfo "To facilitate an easier kernel build, you may wish to add the following line to your profile:"
-	einfo
+	einfo ""
 	einfo "alias ${MYARCH}make=\"make ARCH=${MYARCH} CROSS_COMPILE=${MYARCH}-unknown-linux-gnu-\""
-	einfo
+	einfo ""
 	einfo "Then to compile a kernel, simply goto the kernel source directory, and issue:"
 	einfo "${MYARCH}make <target>"
 	einfo "Where <target> is one of the usual kernel targets"
-	einfo
+	einfo ""
 	epause 10
 }

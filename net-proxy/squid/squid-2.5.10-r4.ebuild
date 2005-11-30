@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/squid-2.5.10-r4.ebuild,v 1.8 2005/10/04 21:19:45 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-proxy/squid/squid-2.5.10-r4.ebuild,v 1.1 2005/09/16 18:15:34 mrness Exp $
 
 inherit eutils pam toolchain-funcs
 
@@ -20,7 +20,7 @@ S=${WORKDIR}/${S_PP}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="pam ldap ssl sasl snmp debug selinux underscores logrotate customlog zero-penalty-hit follow-xff"
 
 RDEPEND="pam? ( virtual/pam )
@@ -165,7 +165,8 @@ src_install() {
 	#simply switch this symlink to choose the desired language..
 	dosym /usr/lib/squid/errors/English /etc/squid/errors
 
-	dodoc CONTRIBUTORS CREDITS ChangeLog QUICKSTART SPONSORS doc/*.txt \
+	dodoc CONTRIBUTORS COPYING COPYRIGHT CREDITS \
+		ChangeLog QUICKSTART SPONSORS doc/*.txt \
 		helpers/ntlm_auth/no_check/README.no_check_ntlm_auth
 	newdoc helpers/basic_auth/SMB/README README.auth_smb
 	dohtml helpers/basic_auth/MSNT/README.html RELEASENOTES.html

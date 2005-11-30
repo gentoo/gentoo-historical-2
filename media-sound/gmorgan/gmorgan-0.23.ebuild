@@ -1,8 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gmorgan/gmorgan-0.23.ebuild,v 1.4 2004/12/19 05:42:47 eradicator Exp $
-
-IUSE="nls"
+# $Header: /var/cvsroot/gentoo-x86/media-sound/gmorgan/gmorgan-0.23.ebuild,v 1.1 2004/07/02 23:08:25 fvdpol Exp $
 
 DESCRIPTION="gmorgan is an opensource software rhythm station."
 HOMEPAGE="http://personal.telefonica.terra.es/web/soudfontcombi/"
@@ -10,7 +8,9 @@ SRC_URI="http://personal.telefonica.terra.es/web/soudfontcombi/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 sparc x86"
+KEYWORDS="~x86 ~amd64"
+
+IUSE="nls"
 
 RDEPEND=">=x11-libs/fltk-1.1.2
 	>=media-libs/alsa-lib-0.9.0"
@@ -26,5 +26,5 @@ src_unpack() {
 
 src_install() {
 	make prefix=${D}/usr localedir=${D}/usr/share/locale install || die
-	dodoc AUTHORS NEWS README
+	dodoc AUTHORS COPYING INSTALL NEWS README
 }

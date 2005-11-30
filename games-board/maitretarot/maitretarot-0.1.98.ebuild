@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/maitretarot/maitretarot-0.1.98.ebuild,v 1.4 2004/06/24 22:19:44 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/maitretarot/maitretarot-0.1.98.ebuild,v 1.1 2003/09/10 17:46:27 vapier Exp $
 
 inherit games
 
@@ -11,7 +11,6 @@ SRC_URI="http://savannah.nongnu.org/download/maitretarot/${PN}.pkg/${PV}/${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
-IUSE=""
 
 DEPEND="=dev-libs/glib-2*
 	dev-libs/libxml2
@@ -21,11 +20,11 @@ src_compile() {
 	egamesconf \
 		--with-default-config-file=${GAMES_SYSCONFDIR}/maitretarotrc.xml \
 		|| die
-	emake || die "emake failed"
+	emake || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die "make install failed"
+	make install DESTDIR=${D} || die
 	dodoc AUTHORS BUGS ChangeLog NEWS README TODO
 	prepgamesdirs
 }

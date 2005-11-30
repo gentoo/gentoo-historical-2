@@ -1,21 +1,29 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-arch/par2cmdline/par2cmdline-0.4.ebuild,v 1.10 2005/01/01 11:51:08 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-arch/par2cmdline/par2cmdline-0.4.ebuild,v 1.1 2004/05/17 06:39:32 robbat2 Exp $
 
 DESCRIPTION="A PAR-2.0 file verification and repair tool"
 HOMEPAGE="http://parchive.sourceforge.net/"
 SRC_URI="mirror://sourceforge/parchive/${P}.tar.gz"
-
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc-macos x86"
-IUSE=""
-
+KEYWORDS="~x86 ~amd64"
 DEPEND=""
 
+src_compile() {
+	econf || die
+	emake || die
+}
+
 src_install() {
-	make install DESTDIR="${D}" || die
-	local DOCLIST="AUTHORS INSTALL ChangeLog NEWS PORTING README ROADMAP"
+	einstall || die
+	local DOCLIST="AUTHORS INSTALL COPYING ChangeLog NEWS PORTING README ROADMAP"
 	chmod -x ${DOCLIST}
 	dodoc ${DOCLIST}
+}
+
+pkg_postinst() {
+	einfo "Use (<par2create|par2 c> archive) to create PAR2 archive"
+	einfo "Use (<par2verify|par2 v> archive) to verify PAR2 archive"
+	einfo "Use (<par2repair|par2 r> archive) to repair PAR2 archive"
 }

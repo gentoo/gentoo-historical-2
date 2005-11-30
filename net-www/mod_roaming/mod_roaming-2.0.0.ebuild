@@ -1,16 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-www/mod_roaming/mod_roaming-2.0.0.ebuild,v 1.7 2005/07/10 00:53:51 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-www/mod_roaming/mod_roaming-2.0.0.ebuild,v 1.1 2002/11/28 20:48:27 woodchip Exp $
 
 inherit eutils
 
 DESCRIPTION="Apache2 DSO enabling Netscape Communicator roaming profiles"
 HOMEPAGE="http://www.klomp.org/mod_roaming/"
 
+S=${WORKDIR}/${P}
 SRC_URI="http://www.klomp.org/${PN}/${P}.tar.gz"
 DEPEND="=net-www/apache-2*"
 LICENSE="BSD"
-KEYWORDS="x86"
+KEYWORDS="~x86"
 IUSE=""
 SLOT="0"
 

@@ -1,20 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/yaml/yaml-0.35.ebuild,v 1.18 2005/03/18 23:48:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/yaml/yaml-0.35.ebuild,v 1.1 2003/06/26 16:11:30 mcummings Exp $
 
 inherit perl-module
 
 MY_P="YAML-${PV}"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="YAML Ain't Markup Language (tm)"
+SRC_URI="http://www.cpan.org/modules/by-authors/id/I/IN/INGY/${MY_P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-authors/id/I/IN/INGY/${MY_P}.readme"
-SRC_URI="mirror://cpan/authors/id/I/IN/INGY/${MY_P}.tar.gz"
 
-LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
-IUSE=""
+LICENSE="Artistic | GPL-2"
+KEYWORDS="x86 ~alpha ~arm ~hppa ~mips ~ppc ~sparc"
 
 src_compile() {
-	echo "" | perl-module_src_compile
+	echo "" | perl-module_src_compile 
 }

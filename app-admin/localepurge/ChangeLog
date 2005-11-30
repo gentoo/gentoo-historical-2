@@ -1,36 +1,10 @@
 # ChangeLog for app-admin/localepurge
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/localepurge/ChangeLog,v 1.11 2005/11/01 15:20:49 nelchael Exp $
+# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
+# $Header: /var/cvsroot/gentoo-x86/app-admin/localepurge/ChangeLog,v 1.1 2002/08/17 18:01:38 bass Exp $
 
-  01 Nov 2005; Krzysiek Pawlik <nelchael@gentoo.org>
-  localepurge-0.2-r2.ebuild:
-  Stable on x86. Bug 111147.
+*gkrellm-1.2.5 (1 Feb 2002)
 
-  12 Sep 2005; Fabian Groffen <grobian@gentoo.org>
-  localepurge-0.2-r2.ebuild:
-  Marking ~ppc-macos (bug #105667)
+  17 Aug 2002; J.Alberto Su�rez L�pez <bass@gentoo.org> localepurge-0..2.ebuild:
+  First relase.
+  Only testing.
 
-*localepurge-0.2-r2 (13 Jun 2005)
-
-  13 Jun 2005; J. Alberto Suárez López <bass@gentoo.org> localepurge-0.2-r2.ebuild:
-  More locales added. Thanks Mr Bones :)
-
-  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
-  Change encoding to UTF-8 for GLEP 31 compliance
-
-*localepurge-0.2-r1 (13 Jul 2004)
-
-  13 Jul 2004; J. Alberto Suárez López <bass@gentoo.org> localepurge-0.2-r1.ebuild:
-  New locale-list, support more locales and removed duplicates.
-  Configuration file fixed. close bug #56431 
-
-*localepurge-0.2 (17 Aug 2002)
-
-  17 Apr 2003; Aron Griffis <agriffis@gentoo.org> localepurge-0.2.ebuild:
-  Mark stable on alpha
-
-  7 Sept 2002; Owen Stampflee <owen@gentoo.org> localepurge-0.2.ebuild:
-  Changed PPC to ppc in keywords.
-
-  17 Aug 2002; J.Alberto Suárez López <bass@gentoo.org> localepurge-0.2.ebuild:
-  First release.  Only testing.

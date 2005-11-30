@@ -1,17 +1,17 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gconfmm/gconfmm-2.6.1.ebuild,v 1.20 2005/07/29 16:34:04 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gconfmm/gconfmm-2.6.1.ebuild,v 1.1 2004/05/09 16:06:05 khai Exp $
 
-IUSE=""
-
-inherit gnome2 eutils
+inherit gnome2
 
 DESCRIPTION="C++ bindings for GConf"
+SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/gconfmm/2.6/${P}.tar.bz2"
 HOMEPAGE="http://gtkmm.sourceforge.net/"
 
-SLOT="0"
+IUSE=""
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 ppc ppc64 sparc x86 hppa"
+KEYWORDS="~x86"
+SLOT="0"
 
 RDEPEND=">=gnome-base/gconf-2.4
 	>=dev-cpp/glibmm-2.4
@@ -20,24 +20,8 @@ RDEPEND=">=gnome-base/gconf-2.4
 DEPEND=">=dev-util/pkgconfig-0.12.0
 	${RDEPEND}"
 
-
-
 DOCS="AUTHORS COPYING* ChangeLog NEWS README INSTALL"
 
-src_unpack() {
-	unpack ${A}
-
-	cd ${S}
-	epatch ${FILESDIR}/${P}-amd64-gcc4.patch
-}
-
 src_compile() {
-	if useq amd64 || useq ppc64; then
-		aclocal -I scripts
-		libtoolize --force --copy
-		automake -c -f
-		autoconf
-	fi
-
-	gnome2_src_compile
+		gnome2_src_compile
 }

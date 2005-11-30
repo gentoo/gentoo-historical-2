@@ -1,21 +1,20 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/bootsplash/bootsplash-0.6-r16.ebuild,v 1.6 2005/01/12 00:06:53 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/bootsplash/bootsplash-0.6-r16.ebuild,v 1.1 2004/05/19 20:24:02 wolf31o2 Exp $
 
 IUSE=""
 S=${WORKDIR}/${PF}
 DESCRIPTION="Graphical backgrounds for frame buffer consoles"
 HOMEPAGE="http://www.bootsplash.org/ http://linux.tkdack.com/"
 SRC_URI="mirror://gentoo/${PF}.tar.bz2
-	http://dev.gentoo.org/~wolf31o2/livecd/${PF}.tar.bz2"
+	http://dev.gentoo.org/~wolf31o2/${PF}.tar.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 amd64"
+KEYWORDS="~x86 ~amd64"
 
 DEPEND=">=media-libs/freetype-2
-	media-libs/libmng
-	media-libs/lcms"
+	media-libs/libmng"
 
 src_compile() {
 	# compile utils

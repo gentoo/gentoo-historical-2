@@ -1,23 +1,7 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
-MD5 e69b72dc2cb57ef5aab79bc1f53a09b8 lilypond-2.5.2.ebuild 3191
-MD5 e56175709d41910021947125161f06ca lilypond-2.0.3.ebuild 2825
-MD5 adacedd1390222f66e9fe3b618cb6fb0 lilypond-2.2.4.ebuild 3019
-MD5 34c4dc6ccfca3fe894500789f7358960 lilypond-2.2.6.ebuild 3019
-MD5 32fb9d4eaa870b862af5a62928f7d40f ChangeLog 5931
-MD5 43019364cb417a83e797b197dcda4b82 lilypond-2.4.2.ebuild 3183
-MD5 50117cfdeb267d9181cf9cacac87d8a6 metadata.xml 256
-MD5 d3708d2873d08b1272e434098fd1ad85 files/lilypond-2.0.0-coreutils-compat.patch 5638
-MD5 0c696acd218d39a22a32db326ac9d5b0 files/digest-lilypond-2.0.3 67
-MD5 be315c1b4040c4985ede01deff60d51a files/digest-lilypond-2.2.4 67
-MD5 529bea6c58e6c0407e9eab6ab8f5ecbe files/digest-lilypond-2.2.6 67
-MD5 f21b6776d2f09f88b6dba504afa8ed29 files/digest-lilypond-2.4.2 67
-MD5 16a923371e2af6d883c782b974b6d32f files/digest-lilypond-2.5.2 67
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.0 (GNU/Linux)
-
-iD8DBQFCSWBv06ebR+OMO78RApnXAJ9B0mc6+stfiVQnc/OCM/CKZI/4PACbBerY
-DeykSHEt1BmS0XK3h4RdEAU=
-=JX5r
------END PGP SIGNATURE-----
+MD5 ea919e44e30c68c99cb19a93bc8f4d6c ChangeLog 1745
+MD5 3ff192bc173c8ccb0d20ac4bf9a41a53 lilypond-1.5.15.ebuild 778
+MD5 77426c96564993e8e9d2a8563b16e218 lilypond-1.6.9.ebuild 2764
+MD5 e6eb2f63459d9809c9c749f2bd0cf56f lilypond-1.6.6.ebuild 3062
+MD5 598b545eba349fc6f14f888818c1a8f7 files/digest-lilypond-1.5.15 68
+MD5 42dc732527fc9a940a950f3a498a8b48 files/digest-lilypond-1.6.6 67
+MD5 be5450deeb374c228e7584c880fd8c08 files/digest-lilypond-1.6.9 67

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-misc/xlockmore/xlockmore-5.17-r1.ebuild,v 1.8 2005/08/13 23:27:07 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-misc/xlockmore/xlockmore-5.17-r1.ebuild,v 1.1 2005/06/22 22:03:57 smithj Exp $
 
-inherit gnuconfig eutils pam flag-o-matic
+inherit gnuconfig eutils pam
 
 IUSE="nas esd motif opengl truetype gtk pam xlockrc"
 
@@ -12,7 +12,7 @@ HOMEPAGE="http://www.tux.org/~bagleyd/xlockmore.html"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ppc ppc64 sparc x86"
+KEYWORDS="~x86 ~sparc ~amd64 ~ppc ~ppc64"
 
 DEPEND="virtual/x11
 	media-libs/freetype
@@ -33,7 +33,6 @@ src_compile() {
 	econf \
 		--sharedstatedir=${D}/usr/share/xlockmore \
 		--enable-vtlock \
-		--without-ftgl \
 		$(use_enable pam) \
 		$(use_with truetype ttf) \
 		$(use_with gtk) \
@@ -42,9 +41,6 @@ src_compile() {
 		$(use_with nas) \
 		${myconf} \
 		|| die "econf failed"
-
-	# fixes suid-with-lazy-bindings problem
-	append-flags '-Wl,-z,now'
 
 	emake || die "Make failed"
 

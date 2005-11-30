@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.0.065-r1.ebuild,v 1.8 2004/06/24 22:50:29 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.0.065-r1.ebuild,v 1.1 2002/12/11 23:24:16 avenj Exp $
 
 S=${WORKDIR}
 
@@ -14,16 +14,16 @@ HOMEPAGE="http://www.intel.com/software/products/compilers/clin/"
 
 LICENSE="icc-7.0"
 
-DEPEND="virtual/linux-sources
+DEPEND=">=virtual/linux-sources-2.4
 		>=sys-libs/glibc-2.2.4
-		app-arch/cpio
+		sys-apps/cpio
 		app-arch/rpm"
 
-RDEPEND="virtual/linux-sources
+RDEPEND=">=virtual/linux-sources-2.4
 		>=sys-libs/glibc-2.2.4"
 
 SLOT="7"
-KEYWORDS="-* x86"
+KEYWORDS="~x86 -ppc -sparc -alpha"
 IUSE=""
 
 src_compile() {
@@ -85,6 +85,8 @@ pkg_postinst () {
 	einfo
 	einfo "You will need to place your license in /opt/intel/licenses/"
 	einfo
+	if [ -d /opt/intel/compiler?0 ]
+	then
 		ewarn
 		ewarn "Packages compiled with older versions of icc will need"
 		ewarn "to be recompiled. Until you do that, old packages will"
@@ -92,11 +94,10 @@ pkg_postinst () {
 		ewarn "to 'compiler60' and run 'ldconfig.' Note that this edit"
 		ewarn "won't persist and will require you to re-edit after each"
 		ewarn "package you re-install."
+	fi
 	ewarn "If 'icc' breaks, use 'iccbin' instead and report a bug."
 	ewarn "NOTE: Before compiling important applications that your system"
 	ewarn "depends on, read the warning above. This could potentially"
 	ewarn "render your system unusable. This is a problem with Intel's"
 	ewarn "software, _not_ with Gentoo."
-	ewarn "Please use 'source /etc/profile' prior to merging any icc-enabled"
-	ewarn "ebuilds."
 }

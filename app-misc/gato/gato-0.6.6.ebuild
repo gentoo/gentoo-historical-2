@@ -1,6 +1,5 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/gato/gato-0.6.6.ebuild,v 1.4 2005/07/21 17:18:32 dholm Exp $
 
 DESCRIPTION="An interface to the at UNIX command"
 HOMEPAGE="http://www.arquired.es/users/aldelgado/proy/gato/"
@@ -8,8 +7,7 @@ SRC_URI="http://www.arquired.es/users/aldelgado/proy/gato/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
-IUSE=""
+KEYWORDS="~x86"
 
 RDEPEND="=x11-libs/gtk+-1*"
 DEPEND="${RDEPEND}
@@ -18,14 +16,14 @@ DEPEND="${RDEPEND}
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}/src"
+	cd ${S}/src
 	aclocal && autoheader && automake -a --foreign && autoconf || die "autotools failed"
 }
 
 src_compile() {
 	cd src
 	econf || die
-	emake || die "emake failed"
+	emake || die
 }
 
 src_install() {

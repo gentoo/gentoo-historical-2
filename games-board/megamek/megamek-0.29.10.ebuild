@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-board/megamek/megamek-0.29.10.ebuild,v 1.3 2005/09/15 20:33:59 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-board/megamek/megamek-0.29.10.ebuild,v 1.1 2005/06/08 21:17:52 wolf31o2 Exp $
 # Nonofficial ebuild by Ycarus. For new version look here : http://gentoo.zugaina.org/
 
 inherit eutils games
@@ -12,15 +12,14 @@ HOMEPAGE="http://megamek.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~x86"
 IUSE=""
 RESTRICT="nomirror"
 
-DEPEND=">=virtual/jdk-1.4
-	app-arch/unzip"
+DEPEND=">=virtual/jdk-1.4"
 RDEPEND=">=virtual/jre-1.4"
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_install() {
 	insinto "${GAMES_DATADIR}/${PN}"

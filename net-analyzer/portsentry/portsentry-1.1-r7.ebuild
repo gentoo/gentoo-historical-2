@@ -1,38 +1,34 @@
-# Copyright 1999-2004 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/portsentry/portsentry-1.1-r7.ebuild,v 1.11 2004/10/04 22:56:31 pvdabeel Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/portsentry/portsentry-1.1-r7.ebuild,v 1.1 2002/09/27 17:53:16 g2boojum Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="Automated port scan detector and response tool"
-# Seems like CISCO took the site down?
-HOMEPAGE="http://sourceforge.net/projects/sentrytools/"
-SRC_URI="mirror://gentoo/${P}.tar.gz"
+HOMEPAGE="http://www.psionic.com/abacus/portsentry/"
+SRC_URI="http://www.psionic.com/tools/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc"
-IUSE=""
+KEYWORDS="x86 ppc sparc sparc64"
 
-DEPEND=">=sys-apps/sed-4"
+DEPEND="sys-apps/supersed"
 
 src_unpack() {
 
 	unpack ${A} ; cd ${S}
 
 	# Setting the portsentry.conf file location
-	sed -i \
-		-e 's:/usr/local/psionic/portsentry/portsentry.conf:/etc/portsentry/portsentry.conf:' \
-		portsentry_config.h || die "sed portsentry_config.h failed"
+	ssed -i -e 's:/usr/local/psionic/portsentry/portsentry.conf:/etc/portsentry/portsentry.conf:' \
+		portsentry_config.h
 
 	# presetting the other file locations in portsentry.conf
-	sed -i \
-		-e 's:\(^IGNORE_FILE\).*:\1="/etc/portsentry/portsentry.ignore":g' \
+	ssed -i -e 's:\(^IGNORE_FILE\).*:\1="/etc/portsentry/portsentry.ignore":g' \
 	    -e 's:^\(HISTORY_FILE\).*:\1="/etc/portsentry/portsentry.history":g' \
 	    -e 's:^\(BLOCKED_FILE\).*:\1="/etc/portsentry/portsentry.blocked":g' \
-		portsentry.conf || die "sed portsentry.conf failed"
+		portsentry.conf
 
-	sed -i \
-		-e "s:^set SENTRYDIR.*:set SENTRYDIR=/etc/portsentry:g" \
-		ignore.csh || die "sed ignore.csh failed"
+	ssed -i "s:^set SENTRYDIR.*:set SENTRYDIR=/etc/portsentry:g" \
+		ignore.csh
 }
 
 src_compile() {
@@ -40,7 +36,7 @@ src_compile() {
 	make CFLAGS="${CFLAGS}" linux || die
 }
 
-src_install() {
+src_install () {
 
 	dobin portsentry ignore.csh
 	dodoc README* CHANGES LICENSE CREDITS

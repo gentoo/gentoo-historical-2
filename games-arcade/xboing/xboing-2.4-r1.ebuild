@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-arcade/xboing/xboing-2.4-r1.ebuild,v 1.8 2005/09/26 17:39:14 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-arcade/xboing/xboing-2.4-r1.ebuild,v 1.1 2003/09/10 19:29:22 vapier Exp $
 
-inherit eutils games
+inherit games eutils
 
 DESCRIPTION="blockout type game where you bounce a proton ball trying to destroy blocks"
 HOMEPAGE="http://www.techrescue.org/xboing/"
@@ -11,8 +11,7 @@ SRC_URI="http://www.techrescue.org/xboing/${PN}${PV}.tar.gz
 
 LICENSE="xboing"
 SLOT="0"
-KEYWORDS="ppc sparc x86"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND="virtual/x11"
 
@@ -20,16 +19,15 @@ S=${WORKDIR}/${PN}
 
 src_unpack() {
 	unpack ${A}
-	cd "${S}"
-	epatch "${WORKDIR}"/xboing-${PV}-debian.patch
-	sed -i '/^#include/s:xpm\.h:X11/xpm.h:' *.c
+	cd ${S}
+	epatch ${WORKDIR}/xboing-${PV}-debian.patch
 }
 
 src_compile() {
 	xmkmf -a || die
-	sed -i \
-		-e "s:GENTOO_VER:${PF/${PN}-/}:" \
-		Imakefile
+	cp Imakefile{,.orig}
+	sed -e "s:GENTOO_VER:${PF/${PN}-/}:" \
+		Imakefile.orig > Imakefile
 	emake \
 		CXXOPTIONS="${CXXFLAGS}" \
 		CDEBUGFLAGS="${CFLAGS}" \
@@ -43,8 +41,8 @@ src_install() {
 		XBOING_DIR=${GAMES_DATADIR}/${PN} \
 		install \
 		|| die
+	fperms 660 ${GAMES_STATEDIR}/xboing.score
 	newman xboing.man xboing.6
 	dodoc README docs/*.doc
 	prepgamesdirs
-	fperms 660 ${GAMES_STATEDIR}/xboing.score
 }

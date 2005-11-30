@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/toxine/toxine-0.6.3.ebuild,v 1.4 2005/11/03 12:22:45 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/toxine/toxine-0.6.3.ebuild,v 1.1 2005/08/18 22:12:16 flameeyes Exp $
 
-inherit eutils autotools
+inherit eutils
 
 DESCRIPTION="Text user interface to xine media player"
 HOMEPAGE="http://toxine.sourceforge.net/"
@@ -13,16 +13,15 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="X ncurses aalib libcaca"
 
-RDEPEND="sys-libs/readline
+DEPEND="sys-libs/readline
 	>=media-libs/xine-lib-1_rc3
 	aalib? ( media-libs/aalib )
 	libcaca? ( media-libs/libcaca )
 	ncurses? ( sys-libs/ncurses )
 	X? ( virtual/x11 )"
-DEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	sys-devel/autoconf
-	sys-devel/automake
-	sys-devel/libtool"
+	sys-devel/automake"
 
 src_unpack() {
 	unpack ${A}
@@ -30,9 +29,11 @@ src_unpack() {
 
 	epatch ${FILESDIR}/${P}-configure.patch
 	epatch ${FILESDIR}/${P}-gcc4.patch
-	epatch ${FILESDIR}/${P}-nox.patch
 
-	AT_M4DIR="m4" eautoreconf
+	aclocal -I m4 || die "aclocal failed"
+	autoconf || die "autoconf failed"
+	automake || die "automake failed"
+	libtoolize --copy --force || die "libtoolize failed"
 }
 
 src_compile() {

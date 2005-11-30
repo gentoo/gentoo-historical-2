@@ -1,11 +1,4 @@
 #!/sbin/runscript
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/files/acct.rc6,v 1.2 2005/03/21 03:47:19 robbat2 Exp $
-
-depend() {
-    need localmount
-}
 
 start() {
 	ebegin "Starting accounting"
@@ -20,5 +13,3 @@ stop() {
 	/usr/sbin/accton
 	eend $?
 }
-
-# vim:ts=4 sw=4:

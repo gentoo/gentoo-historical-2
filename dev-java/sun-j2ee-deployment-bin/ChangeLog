@@ -1,21 +1,6 @@
-# ChangeLog for dev-java/sun-j2ee-deployment-bin
+# ChangeLog for dev-java/jsr088-bin
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-j2ee-deployment-bin/ChangeLog,v 1.5 2005/08/12 14:09:46 betelgeuse Exp $
-
-  12 Aug 2005; Petteri Räty <betelgeuse@gentoo.org>
-  sun-j2ee-deployment-bin-1.1-r1.ebuild:
-  Marked stable on x86.
-
-*sun-j2ee-deployment-bin-1.1-r1 (19 Jul 2005)
-
-  19 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
-  -sun-j2ee-deployment-bin-1.1.ebuild,
-  +sun-j2ee-deployment-bin-1.1-r1.ebuild:
-  rev bump to fix slot
-
-  23 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
-  sun-j2ee-deployment-bin-1.1.ebuild:
-  added ~amd64 to KEYWORDS
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-j2ee-deployment-bin/ChangeLog,v 1.1 2005/04/30 15:42:35 karltk Exp $
 
 *jsr088-bin-1.1 (30 Apr 2005)
 

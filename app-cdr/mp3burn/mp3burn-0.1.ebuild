@@ -1,8 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/mp3burn/mp3burn-0.1.ebuild,v 1.12 2005/01/01 12:19:11 eradicator Exp $
-
-IUSE=""
+# $Header: /var/cvsroot/gentoo-x86/app-cdr/mp3burn/mp3burn-0.1.ebuild,v 1.1 2002/11/18 12:55:36 vapier Exp $
 
 DESCRIPTION="Burn mp3s without filling up your disk with .wav files"
 HOMEPAGE="http://mp3burn.sourceforge.net/"
@@ -10,10 +8,10 @@ SRC_URI="mirror://sourceforge/mp3burn/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc ~amd64"
+KEYWORDS="~x86"
 
-DEPEND="dev-lang/perl
-	virtual/mpg123
+DEPEND="sys-devel/perl
+	media-sound/mpg123
 	app-cdr/cdrtools
 	dev-perl/MP3-Info"
 

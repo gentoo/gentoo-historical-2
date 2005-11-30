@@ -1,31 +1,26 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.4.ebuild,v 1.19 2005/10/31 13:22:21 nelchael Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-libs/fltk/fltk-1.1.4.ebuild,v 1.1 2003/10/12 18:42:32 lanius Exp $
 
 IUSE="opengl debug nptl"
 
-inherit eutils toolchain-funcs multilib
+inherit eutils
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL."
 HOMEPAGE="http://www.fltk.org"
-SRC_URI="ftp://ftp.easysw.com/pub/fltk/${PV}/${P}-source.tar.bz2"
+SRC_URI="ftp://ftp.easysw.com/pub/fltk/${PV/_/}/${P/_/}-source.tar.bz2"
 
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
-LICENSE="FLTK LGPL-2"
-
-PV_MAJOR=${PV/.*/}
-PV_MINOR=${PV#${PV_MAJOR}.}
-PV_MINOR=${PV_MINOR/.*}
-SLOT="${PV_MAJOR}.${PV_MINOR}"
-
-INCDIR=/usr/include/fltk-${SLOT}
-LIBDIR=/usr/$(get_libdir)/fltk-${SLOT}
+SLOT="1.1"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+LICENSE="FLTK | GPL-2"
 
 DEPEND="virtual/x11
 	virtual/xft
 	media-libs/libpng
 	media-libs/jpeg
 	opengl? ( virtual/opengl )"
+
+S=${WORKDIR}/${P/_/}
 
 src_unpack() {
 	unpack ${A}
@@ -49,16 +44,16 @@ src_compile() {
 	# needed for glibc-2.3.1 (as far as i can test)
 	# otherwise libstdc++ won't be linked. #17894 and #15572
 	# doesn't happen for glibc-2.3.2 - <liquidx@gentoo.org>
-	export CXX=$(tc-getCXX)
-	export CC=$(tc-getCC)
+	export CXX="g++"
+	export CC="g++"
 
 	# bug #19894
 	export C_INCLUDE_PATH="${C_INCLUDE_PATH}:/usr/include/freetype2"
 	export CPLUS_INCLUDE_PATH="${CPLUS_INCLUDE_PATH}:/usr/include/freetype2"
 
 	econf \
-		--includedir=${INCDIR}\
-		--libdir=${LIBDIR} \
+		--includedir=/usr/include/fltk-1.1 \
+		--libdir=/usr/lib/fltk-1.1 \
 		${myconf} || die "Configuration Failed"
 
 	emake || die "Parallel Make Failed"
@@ -66,20 +61,18 @@ src_compile() {
 
 src_install() {
 	einstall \
-		includedir=${D}${INCDIR} \
-		libdir=${D}${LIBDIR} || die "Installation Failed"
+		includedir=${D}/usr/include/fltk-1.1 \
+		libdir=${D}/usr/lib/fltk-1.1 || die "Installation Failed"
 
-	ranlib ${D}${LIBDIR}/*.a
+	ranlib ${D}/usr/lib/fltk-1.1/*.a
 
-	dodoc CHANGES README
+	dodoc CHANGES COPYING README
 
-	echo "LDPATH=${LIBDIR}" > 99fltk-${SLOT}
+	echo "LDPATH=/usr/lib/fltk-1.1" > 99fltk-1.1
 
 	insinto /etc/env.d
-	doins 99fltk-${SLOT}
+	doins 99fltk-1.1
 
 	dodir /usr/share/doc/${P}/html
-	mv ${D}/usr/share/doc/fltk/* ${D}/usr/share/doc/${PF}/html
-	rmdir ${D}/usr/share/doc/fltk
-	rm -rf ${D}/usr/share/man/cat{1,3}
+	mv ${D}/usr/share/doc/fltk/* ${D}/usr/share/doc/${P}/html
 }

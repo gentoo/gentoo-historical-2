@@ -1,17 +1,18 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-1.2.5.ebuild,v 1.22 2005/07/16 02:18:13 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/gimp/gimp-1.2.5.ebuild,v 1.1 2003/06/17 22:57:21 foser Exp $
 
 inherit eutils flag-o-matic
 
-IUSE="python nls gnome aalib perl doc jpeg png tiff"
+IUSE="python nls gnome aalib perl doc jpeg png tiff doc"
 
+S=${WORKDIR}/${P}
 DESCRIPTION="The GIMP"
-SRC_URI="mirror://gimp/v1.2/v${PV}/${P}.tar.bz2"
+SRC_URI="ftp://ftp.gimp.org/pub/gimp/v1.2/v${PV}/${P}.tar.bz2"
 HOMEPAGE="http://www.gimp.org/"
 
 SLOT="1.2"
-KEYWORDS="x86 ppc sparc alpha amd64 hppa mips"
+KEYWORDS="~x86 ~ppc ~sparc ~alpha"
 LICENSE="GPL-2"
 
 RDEPEND="=x11-libs/gtk+-1.2*
@@ -22,7 +23,7 @@ RDEPEND="=x11-libs/gtk+-1.2*
 	python? ( >=dev-lang/python-2.0 )
 	gnome? ( >=gnome-base/gnome-libs-1.4.1.2-r1 )
 	tiff? ( media-libs/tiff )
-	jpeg? ( media-libs/jpeg )
+	jpeg ( media-libs/jpeg )
 	png? ( media-libs/libpng )"
 
 DEPEND="nls? ( sys-devel/gettext )
@@ -37,15 +38,9 @@ src_unpack() {
 }
 
 src_compile() {
+
 	# fix problem with k6's (#22115)
-	replace-flags -march=k6-2 -march=i586
-	replace-flags -march=k6-3 -march=i586
-	replace-flags -march=k6 -march=i586
-	# over-optimisations (#21787)
-	replace-flags -Os -O2
-	# gimp has inline functions (plug-ins/common/grid.c) (#23078)
-	# gimp uses floating point math, needs accuracy (#98685)
-	filter-flags "-fno-inline" "-ffast-math"
+	replace-flags "-march=k6*" "-march=i586"
 
 	local mymake=""
 	local AA
@@ -68,7 +63,7 @@ src_compile() {
 		`use_enable doc gtk-doc` \
 		${myconf} || die
 
-	if ! use aalib ; then
+	if [ -z "`use aalib`" ] ; then 
 		# Horrible automake brokenness
 		cp plug-ins/common/Makefile plug-ins/common/Makefile.orig
 		cat plug-ins/common/Makefile.orig | \
@@ -77,22 +72,19 @@ src_compile() {
 	fi
 
 	MAKEOPTS="${MAKEOPTS} -j1"
-	# see bug #21924
-	CFLAGS="${CFLAGS} /usr/lib/libmpeg.a"
-
 	emake ${mymake} || die
 }
 
 src_install() {
 
-	local mymake=""
+	local mymake="" 
 	local AA
 
 	use aalib || mymake="LIBAA= AA="
 	use gnome || mymake="${mymake} HELPBROWSER="
-
+  
 	dodir /usr/lib/gimp/1.2/plug-ins
-
+	
 	einstall \
 		gimpdatadir=${D}/usr/share/gimp/1.2 \
 		gimpsysconfdir=${D}/etc/gimp/1.2 \
@@ -117,9 +109,9 @@ src_install() {
 		insinto /usr/share/applications
 		doins ${FILESDIR}/gimp.desktop
 	)
-
+	
 	preplib /usr
-
+	
 	dodoc AUTHORS COPYING ChangeLog* *MAINTAINERS README* TODO
 	dodoc docs/*.txt docs/*.ps docs/Wilber* docs/quick_reference.tar.gz
 }

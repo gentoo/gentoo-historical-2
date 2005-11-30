@@ -1,132 +1,62 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain-binutils.eclass,v 1.49 2005/11/06 07:56:29 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/toolchain-binutils.eclass,v 1.1 2004/11/14 09:05:53 vapier Exp $
 
-# We install binutils into CTARGET-VERSION specific directories.  This lets
-# us easily merge multiple versions for multiple targets (if we wish) and
-# then switch the versions on the fly (with `binutils-config`).
-#
-# binutils-9999           -> live cvs
-# binutils-9999_preYYMMDD -> nightly snapshot date YYMMDD
-# binutils-#              -> normal release
+inherit eutils libtool flag-o-matic gnuconfig
+ECLASS=toolchain
+INHERITED="$INHERITED $ECLASS"
+EXPORT_FUNCTIONS src_unpack src_compile src_install
 
-extra_eclass=""
-if [[ ${PV} == "9999" ]] ; then
-	extra_eclass="cvs"
-	ECVS_SERVER="sourceware.org:/cvs/src"
-	ECVS_MODULE="binutils"
-	ECVS_USER="anoncvs"
-	ECVS_PASS="anoncvs"
-	BTYPE="cvs"
-	BVER="cvs"
-elif [[ ${PV} == 9999_pre* ]] ; then
-	BTYPE="snap"
-	BVER=${PV/9999_pre}
-else
-	BTYPE="rel"
-	BVER=${PV}
-fi
-
-inherit eutils libtool flag-o-matic gnuconfig multilib ${extra_eclass}
-EXPORT_FUNCTIONS src_unpack src_compile src_test src_install pkg_postinst pkg_postrm
-
-export CTARGET=${CTARGET:-${CHOST}}
-if [[ ${CTARGET} == ${CHOST} ]] ; then
-	if [[ ${CATEGORY/cross-} != ${CATEGORY} ]] ; then
-		export CTARGET=${CATEGORY/cross-}
-	fi
-fi
+export CTARGET="${CTARGET:-${CHOST}}"
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="http://sources.redhat.com/binutils/"
+SRC_URI="mirror://kernel/linux/devel/binutils/${P}.tar.bz2
+	mirror://kernel/linux/devel/binutils/test/${P}.tar.bz2"
+[ -n "${PATCHVER}" ] && \
+	SRC_URI="${SRC_URI} mirror://gentoo/${P}-patches-${PATCHVER}.tar.bz2"
+[ -n "${UCLIBC_PATCHVER}" ] && \
+	SRC_URI="${SRC_URI} mirror://gentoo/${PN}-${PV:0:4}-uclibc-patches-${UCLIBC_PATCHVER}.tar.bz2"
 
-case ${BTYPE} in
-	cvs)  SRC_URI="";;
-	snap) SRC_URI="ftp://gcc.gnu.org/pub/binutils/snapshots/binutils-${BVER}.tar.bz2";;
-	rel)
-		SRC_URI="mirror://kernel/linux/devel/binutils/binutils-${PV}.tar.bz2
-			mirror://kernel/linux/devel/binutils/test/binutils-${PV}.tar.bz2
-			mirror://gnu/binutils/binutils-${PV}.tar.bz2"
-esac
-[[ -n ${PATCHVER} ]] && \
-	SRC_URI="${SRC_URI} mirror://gentoo/binutils-${PV}-patches-${PATCHVER}.tar.bz2"
-[[ -n ${UCLIBC_PATCHVER} ]] && \
-	SRC_URI="${SRC_URI} mirror://gentoo/binutils-${PV}-uclibc-patches-${UCLIBC_PATCHVER}.tar.bz2"
+LICENSE="GPL-2 | LGPL-2"
+use cross \
+	&& SLOT="${CTARGET}-${PV}" \
+	|| SLOT="${CTARGET}"
+IUSE="nls bootstrap build multitarget uclibc cross"
 
-LICENSE="|| ( GPL-2 LGPL-2 )"
-IUSE="nls multitarget multislot test"
-if use multislot ; then
-	SLOT="${CTARGET}-${BVER}"
-elif [[ ${CTARGET} != ${CHOST} ]] ; then
-	SLOT="${CTARGET}"
-else
-	SLOT="0"
-fi
+DEPEND="virtual/libc
+	nls? ( sys-devel/gettext )
+	sys-devel/binutils-config
+	!build? ( !bootstrap? ( dev-lang/perl ) )"
 
-RDEPEND=">=sys-devel/binutils-config-1.8"
-DEPEND="${RDEPEND}
-	test? ( dev-util/dejagnu )
-	nls? ( sys-devel/gettext )"
+LIBPATH="/usr/lib/${PN}/${CTARGET}/${PV}"
+INCPATH="${LIBPATH}/include"
+BINPATH="/usr/${CTARGET}/binutils-bin/${PV}"
+DATAPATH="/usr/share/${PN}-data/${CTARGET}/${PV}"
+MY_BUILDDIR="${WORKDIR}/build"
 
-S=${WORKDIR}/binutils
-[[ ${BVER} != "cvs" ]] && S=${S}-${BVER}
+is_cross() { [ "${CHOST}" != "${CTARGET}" ] ; }
 
-LIBPATH=/usr/$(get_libdir)/binutils/${CTARGET}/${BVER}
-INCPATH=${LIBPATH}/include
-BINPATH=/usr/${CTARGET}/binutils-bin/${BVER}
-DATAPATH=/usr/share/binutils-data/${CTARGET}/${BVER}
-MY_BUILDDIR=${WORKDIR}/build
-
-is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
-
-tc-binutils_unpack() {
+src_unpack() {
 	unpack ${A}
 	mkdir -p "${MY_BUILDDIR}"
-	[[ -d ${WORKDIR}/patch ]] && mkdir "${WORKDIR}"/patch/skip
 }
 
-tc-binutils_apply_patches() {
-	cd "${S}"
+apply_binutils_updates() {
+	cd ${S}
 
-	if [[ -n ${PATCHVER} ]] ; then
-		EPATCH_SOURCE=${WORKDIR}/patch
-		[[ -n $(ls "${EPATCH_SOURCE}"/*.bz2 2>/dev/null) ]] \
-			&& EPATCH_SUFFIX="patch.bz2" \
-			|| EPATCH_SUFFIX="patch"
-		epatch
-	fi
-	if [[ -n ${UCLIBC_PATCHVER} ]] ; then
-		EPATCH_SOURCE=${WORKDIR}/uclibc-patches
-		[[ -n $(ls "${EPATCH_SOURCE}"/*.bz2 2>/dev/null) ]] \
-			&& EPATCH_SUFFIX="patch.bz2" \
-			|| EPATCH_SUFFIX="patch"
-		EPATCH_MULTI_MSG="Applying uClibc fixes ..." \
-		epatch
-	elif [[ ${CTARGET} == *-uclibc ]] ; then
-		die "sorry, but this binutils doesn't yet support uClibc :("
-	fi
-
-	# Fix po Makefile generators
-	sed -i \
-		-e '/^datadir = /s:$(prefix)/@DATADIRNAME@:@datadir@:' \
-		-e '/^gnulocaledir = /s:$(prefix)/share:$(datadir):' \
-		*/po/Make-in || die "sed po's failed"
+	[ -n "${PATCHVER}" ] && epatch ${WORKDIR}/patch
+	[ -n "${UCLIBC_PATCHVER}" ] && epatch ${WORKDIR}/uclibc-patches
 
 	# Run misc portage update scripts
 	gnuconfig_update
 	elibtoolize --portage --no-uclibc
 
-	# make sure we filter $LINGUAS so that only ones that
-	# actually work with all the subdirs make it through
 	strip-linguas -i */po
 }
 
-toolchain-binutils_src_unpack() {
-	tc-binutils_unpack
-	tc-binutils_apply_patches
-}
-
-toolchain-binutils_src_compile() {
+src_compile() {
+	filter-flags -fomit-frame-pointer -fssa #6730
 	strip-flags && replace-flags -O3 -O2 #47581
 
 	cd "${MY_BUILDDIR}"
@@ -135,8 +65,9 @@ toolchain-binutils_src_compile() {
 		&& myconf="${myconf} --without-included-gettext" \
 		|| myconf="${myconf} --disable-nls"
 	use multitarget && myconf="${myconf} --enable-targets=all"
-	[[ -n ${CBUILD} ]] && myconf="${myconf} --build=${CBUILD}"
-	myconf="--prefix=/usr \
+	[ -n "${CBUILD}" ] && myconf="${myconf} --build=${CBUILD}"
+	${S}/configure \
+		--prefix=/usr \
 		--host=${CHOST} \
 		--target=${CTARGET} \
 		--datadir=${DATAPATH} \
@@ -146,101 +77,74 @@ toolchain-binutils_src_compile() {
 		--libdir=${LIBPATH} \
 		--libexecdir=${LIBPATH} \
 		--includedir=${INCPATH} \
-		--enable-64-bit-bfd \
 		--enable-shared \
-		--disable-werror \
-		${myconf} ${EXTRA_ECONF}"
-	echo ./configure ${myconf}
-	"${S}"/configure ${myconf} || die "configure failed"
+		--enable-64-bit-bfd \
+		${myconf} ${EXTRA_ECONF} || die
 
-	# binutils' build system is a bit broken with internal
-	# dependencies, so we manually run these first two bfd
-	# targets so that we can than use -j# and have it work
-	emake -j1 configure-bfd || die "make configure-bfd failed"
-	emake -j1 headers -C bfd || die "make headers-bfd failed"
-	emake all || die "emake failed"
+	make configure-bfd || die "configure-bfd"
+	make headers -C bfd || die "headers-bfd"
+	emake all || die "emake"
 
-	# only build info pages if we user wants them, and if
-	# we have makeinfo (may not exist when we bootstrap)
-	if ! has noinfo ${FEATURES} ; then
-		if type -p makeinfo ; then
-			make info || die "make info failed"
+	if ! use build ; then
+		if ! has noinfo ${FEATURES} ; then
+			# Make the info pages (makeinfo included with gcc is used)
+			make info || die "info"
+		fi
+		if ! use bootstrap && ! has noman ${FEATURES} ; then
+			cd "${S}"
+			# Nuke the manpages to recreate them (only use this if we have perl)
+			find . -name '*.1' -exec rm -f {} \; || :
 		fi
 	fi
-	# we nuke the manpages when we're left with junk
-	# (like when we bootstrap, no perl -> no manpages)
-	find . -name '*.1' -a -size 0 | xargs rm -f
 }
 
-toolchain-binutils_src_test() {
-	cd "${MY_BUILDDIR}"
-	make check || die "check failed :("
+src_test() {
+	emake check
 }
 
-toolchain-binutils_src_install() {
+# TODO: COMMENT THIS CRAP :)
+src_install() {
 	local x d
 
 	cd "${MY_BUILDDIR}"
 	make DESTDIR="${D}" tooldir="${LIBPATH}" install || die
 	rm -rf "${D}"/${LIBPATH}/bin
 
-	# Now we collect everything intp the proper SLOT-ed dirs
-	# When something is built to cross-compile, it installs into
-	# /usr/$CHOST/ by default ... we have to 'fix' that :)
+	# Now we collect everything in /usr
 	if is_cross ; then
 		cd "${D}"/${BINPATH}
 		for x in * ; do
 			mv ${x} ${x/${CTARGET}-}
 		done
 
-		if [[ -d ${D}/usr/${CHOST}/${CTARGET} ]] ; then
-			mv "${D}"/usr/${CHOST}/${CTARGET}/include "${D}"/${INCPATH}
-			mv "${D}"/usr/${CHOST}/${CTARGET}/lib/* "${D}"/${LIBPATH}/
-			rm -r "${D}"/usr/${CHOST}
-		fi
+		mv "${D}"/usr/${CHOST}/${CTARGET}/include "${D}"/${INCPATH}
+		mv "${D}"/usr/${CHOST}/${CTARGET}/lib/* "${D}"/${LIBPATH}/
+		rm -r "${D}"/usr/${CHOST}
 	else
 		insinto ${INCPATH}
 		doins "${S}/include/libiberty.h"
 	fi
-	if [[ -d ${D}/${LIBPATH}/lib ]] ; then
-		mv "${D}"/${LIBPATH}/lib/* "${D}"/${LIBPATH}/
-		rm -r "${D}"/${LIBPATH}/lib
-	fi
-	dodir /usr/${CTARGET}/{bin,include,lib}
-	prepman ${DATAPATH}
+	mv "${D}"/${LIBPATH}/lib/* "${D}"/${LIBPATH}/
+	rm -r "${D}"/${LIBPATH}/lib
 
-	# Now, some binutils are tricky and actually provide
-	# for multiple TARGETS.  Really, we're talking just
-	# 32bit/64bit support (like mips/ppc/sparc).  Here
-	# we want to tell binutils-config that it's cool if
-	# it generates multiple sets of binutil symlinks.
-	# e.g. sparc gets {sparc,sparc64}-unknown-linux-gnu
-	local targ=${CTARGET/-*} src="" dst=""
-	local FAKE_TARGETS=${CTARGET}
-	case ${targ} in
-		mips*)    src="mips"    dst="mips64";;
-		powerpc*) src="powerpc" dst="powerpc64";;
-		s390*)    src="s390"    dst="s390x";;
-		sparc*)   src="sparc"   dst="sparc64";;
-	esac
-	case ${targ} in
-		mips64*|powerpc64*|s390x*|sparc64*) targ=${src} src=${dst} dst=${targ};;
-	esac
-	[[ -n ${src}${dst} ]] && FAKE_TARGETS="${FAKE_TARGETS} ${CTARGET/${src}/${dst}}"
+	cd "${D}"/${BINPATH}
+	dodir /usr/bin
+	for x in * ; do
+		dosym ../${CTARGET}/bin/${x} /usr/bin/${CTARGET}-${x}
+		is_cross || dosym ${CTARGET}-${x} /usr/bin/${x}
+	done
 
 	# Generate an env.d entry for this binutils
-	cd "${S}"
+	cd ${S}
 	insinto /etc/env.d/binutils
-	cat <<-EOF > env.d
-		TARGET="${CTARGET}"
-		VER="${BVER}"
-		LIBPATH="${LIBPATH}"
-		FAKE_TARGETS="${FAKE_TARGETS}"
-	EOF
-	newins env.d ${CTARGET}-${BVER}
+	cat << EOF > env.d
+TARGET="${CTARGET}"
+VER="${PV}"
+EOF
+	newins env.d ${CTARGET}-${PV}
 
 	# Handle documentation
-	if ! is_cross ; then
+	if ! use build && ! is_cross ; then
 		cd "${S}"
 		dodoc README
 		docinto bfd
@@ -258,38 +162,8 @@ toolchain-binutils_src_install() {
 		docinto opcodes
 		dodoc opcodes/ChangeLog*
 	fi
-	# Punt all the fun stuff if user doesn't want it :)
-	has noinfo ${FEATURES} && rm -r "${D}"/${DATAPATH}/info
-	has noman ${FEATURES} && rm -r "${D}"/${DATAPATH}/man
-	# Remove shared info pages
-	rm -f "${D}"/${DATAPATH}/info/{dir,configure.info,standards.info}
 }
 
-toolchain-binutils_pkg_postinst() {
-	# Make sure this ${CTARGET} has a binutils version selected
-	[[ -e ${ROOT}/etc/env.d/binutils/config-${CTARGET} ]] && return 0
-	binutils-config ${CTARGET}-${BVER}
-}
-
-toolchain-binutils_pkg_postrm() {
-	local current_profile=$(binutils-config -c ${CTARGET})
-
-	# If no other versions exist, then uninstall for this
-	# target ... otherwise, switch to the newest version
-	# Note: only do this if this version is unmerged.  We
-	#       rerun binutils-config if this is a remerge, as
-	#       we want the mtimes on the symlinks updated (if
-	#       it is the same as the current selected profile)
-	if [[ ! -e ${BINPATH}/ld ]] && [[ ${current_profile} == ${CTARGET}-${BVER} ]] ; then
-		local choice=$(binutils-config -l | grep ${CTARGET} | awk '{print $2}')
-		choice=${choice//$'\n'/ }
-		choice=${choice/* }
-		if [[ -z ${choice} ]] ; then
-			binutils-config -u ${CTARGET}
-		else
-			binutils-config ${choice}
-		fi
-	elif [[ $(CHOST=${CTARGET} binutils-config -c) == ${CTARGET}-${BVER} ]] ; then
-		binutils-config ${CTARGET}-${BVER}
-	fi
+pkg_postinst() {
+	binutils-config ${CTARGET}-${PV}
 }

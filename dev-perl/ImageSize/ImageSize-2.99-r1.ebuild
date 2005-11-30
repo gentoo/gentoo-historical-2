@@ -1,18 +1,19 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ImageSize/ImageSize-2.99-r1.ebuild,v 1.13 2005/11/27 22:35:02 tgall Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ImageSize/ImageSize-2.99-r1.ebuild,v 1.1 2002/10/30 07:20:39 seemant Exp $
 
 inherit perl-module
 
 MY_P=Image-Size-${PV}
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="The Perl Image-Size Module"
+SRC_URI="http://www.cpan.org/modules/by-module/Image/${MY_P}.tar.gz"
 HOMEPAGE="http://www.cpan.org/modules/by-module/Image/${MY_P}.readme"
-SRC_URI="mirror://cpan/authors/id/R/RJ/RJRAY/${MY_P}.tar.gz"
 
-LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="x86 amd64 sparc alpha ppc ppc64"
-IUSE=""
+LICENSE="Artistic"
+KEYWORDS="x86 sparc sparc64 ~alpha ~ppc"
+
+DEPEND="${DEPEND}"
 
 mydoc="ToDo"

@@ -2,7 +2,6 @@
 # Gentoo Zope Instance configure tool.
 # Copyright 2003 Jason Shoemaker <kutsuya@gentoo.org>
 # Distributed under GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/zope-config/files/0.1/zope-config,v 1.5 2004/07/18 02:26:33 dragonheart Exp $
 
 VERSION="0.1"
 ZUID=zope
@@ -125,7 +124,7 @@ zinst_dir_set()
     while : ; do
 	ZINST_DIR=$(dialog --stdout \
 	    --backtitle "Need a uniqe name for zinstance directory.(Also the name of the rcscript.)" \
-	    --inputbox "Enter a new zinstance name:" 0 0 zope- )
+	    --inputbox "Enter a new zinstance name:" 0 0 )
 	RESULT=$?
 	if [ ${RESULT} -ne 0 ] ; then
 	    break
@@ -239,7 +238,7 @@ zinst_zpasswd_set()
     fi
 
     echo ">>> Create Zope inituser for \"$(basename ${ZINST_DIR})\"..."
-    /usr/bin/python ${ZSERV_DIR}/zpasswd.py ${ZINST_DIR}/inituser
+    /usr/bin/python2.1 ${ZSERV_DIR}/zpasswd.py ${ZINST_DIR}/inituser
     # If zpasswd is aborted it creates a blank inituser
     chown ${ZUID} ${ZINST_DIR}/inituser
 }
@@ -301,5 +300,5 @@ groupadd ${ZGID_NAME}
 zinst_security_setup ${ZINST_DIR} ${ZGID_NAME}
 
 # TODO: see about adding interactive configuration of ZOPE_OPTS
-echo "Note: Don't forget to edit ZOPE_OPTS in /etc/conf.d/${ZIRC_NAME}"
+echo "Note: Don\'t forget to edit ZOPE_OPTS in /etc/init.d/${ZIRC_NAME}"
 

@@ -1,19 +1,20 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php4/php-java-bridge/php-java-bridge-2.0.8.ebuild,v 1.4 2005/11/29 01:48:35 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php4/php-java-bridge/php-java-bridge-2.0.8.ebuild,v 1.1 2005/11/19 18:39:03 chtekk Exp $
 
+PHP_EXT_ZENDEXT="no"
 PHP_EXT_NAME="java"
 PHP_EXT_INI="yes"
-PHP_EXT_ZENDEXT="no"
 
 inherit php-ext-source-r1
 
-KEYWORDS="~ppc64 ~sparc ~x86"
-DESCRIPTION="The PHP/Java bridge is a PHP module wich connects the PHP object system with the Java or ECMA 335 object system."
-HOMEPAGE="http://php-java-bridge.sourceforge.net/"
 SRC_URI="mirror://sourceforge/php-java-bridge/${PN}_${PV}.tar.bz2"
+HOMEPAGE="http://php-java-bridge.sourceforge.net/"
+
+DESCRIPTION="The PHP/Java bridge is a PHP module wich connects the PHP object system with the Java or ECMA 335 object system."
 LICENSE="PHP-3"
 SLOT="0"
+KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="${DEPEND}
@@ -30,14 +31,14 @@ pkg_setup() {
 	require_php_with_use session
 
 	# if the user has compiled the internal Java extension, he can't use this package
-	if built_with_use =${PHP_PKG} java-internal ; then
-		eerror
-		eerror "You have built ${PHP_PKG} to use the internal Java extension."
-		eerror "If you want to use the php-java-bridge package, you must rebuild"
-		eerror "your PHP with the 'java-external' USE flag instead."
-		eerror
-		die "PHP built to use internal Java extension"
-	fi
+		if built_with_use =${PHP_PKG} java-internal ; then
+			eerror
+			eerror "You have built ${PHP_PKG} to use the internal Java extension."
+			eerror "If you want to use the php-java-bridge package, you must rebuild"
+			eerror "your PHP with the 'java-external' USE flag instead."
+			eerror
+			die "PHP built to use internal Java extension"
+		fi
 }
 
 src_compile() {
@@ -48,8 +49,7 @@ src_compile() {
 
 src_install() {
 	php-ext-source-r1_src_install
-
-	insinto "${EXT_DIR}"
+	insinto ${EXT_DIR}
 	doins modules/JavaBridge.jar
 	doins modules/RunJavaBridge
 	doins modules/libnatcJavaBridge.a

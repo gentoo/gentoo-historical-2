@@ -1,27 +1,37 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-libs/gle/gle-3.0.1-r2.ebuild,v 1.28 2005/07/02 01:09:07 hardave Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Daniel Robbins <drobbins@gentoo.org>
+# $Header: /var/cvsroot/gentoo-x86/media-libs/gle/gle-3.0.1-r2.ebuild,v 1.1 2002/01/24 18:26:18 azarah Exp $
 
+S=${WORKDIR}/${P}
 DESCRIPTION="GL extrusion library"
+SRC_URI="http://www.linas.org/gle/gle-3.0.1.tar.gz"
 HOMEPAGE="http://www.linas.org/gle"
-SRC_URI="http://www.linas.org/gle/pub/gle-3.0.1.tar.gz"
 
-LICENSE="Artistic GPL-2"
-SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-IUSE=""
-
-DEPEND="virtual/opengl
+DEPEND="virtual/glibc
+        virtual/opengl
 	virtual/glu
-	virtual/glut"
+        virtual/glut
+        virtual/x11"
 
 src_compile() {
-	econf --with-x || die
-	emake || die
+
+	./configure --with-x \
+		--prefix=/usr \
+		--mandir=/usr/share/man || die
+		
+	make || die
 }
 
 src_install() {
-	make DESTDIR="${D}" install || die
-	dodoc AUTHORS ChangeLog NEWS README
-	dohtml -r public_html
+
+	make prefix=${D}/usr \
+		mandir=${D}/usr/share/man \
+		install || die
+		
+	dodoc AUTHORS COPYING ChangeLog NEWS README
+	docinto html
+	dodoc public_html/*.{gif,jpg,html}
 }
+
+

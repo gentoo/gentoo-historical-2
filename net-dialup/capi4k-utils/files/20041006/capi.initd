@@ -1,12 +1,12 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/files/20041006/capi.initd,v 1.3 2005/01/06 18:17:57 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/files/20041006/capi.initd,v 1.1 2004/12/23 20:57:46 mrness Exp $
 
 opts="start stop info"
 
 depend() {
-	after coldplug isapnp
+	after isapnp
 }
 
 get_modules() {
@@ -22,15 +22,9 @@ start() {
 
 	ebegin "Loading CAPI"
 
-	/sbin/modprobe -s kernelcapi
-	/sbin/modprobe -s capi
+	/usr/sbin/capiinit 2>/dev/null -c /dev/null prepare
 	/sbin/modprobe -s capidrv
-
-	CNT=0  # wait for udev
-	while [ ! -e /dev/capi20 -a $CNT -lt 10 ]; do
-		sleep 1; : $((CNT++))
-	done
-
+	
 	if /usr/sbin/capiinit activate ; then
 		while read INFO; do einfo "  $INFO"; done < /proc/capi/controller
 	fi
@@ -43,9 +37,9 @@ stop() {
 
 	ebegin "Unloading CAPI"
 
-	/sbin/modprobe -sr capidrv
+	/sbin/modprobe -sqr capidrv	
 	/usr/sbin/capiinit 2>/dev/null stop
-	for DRV in $DRIVERS; do	/sbin/modprobe -sr $DRV; done
+	for DRV in $DRIVERS; do	/sbin/modprobe -sqr $DRV; done
 	
 	eend $?
 }

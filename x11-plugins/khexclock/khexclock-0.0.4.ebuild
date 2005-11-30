@@ -1,15 +1,23 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-plugins/khexclock/khexclock-0.0.4.ebuild,v 1.7 2005/07/27 17:23:36 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-plugins/khexclock/khexclock-0.0.4.ebuild,v 1.1 2004/07/15 01:38:08 squinky86 Exp $
 
 inherit kde
+need-kde 3
 
 IUSE=""
 DESCRIPTION="KHexClock shows the current hexadecimal time and date."
-HOMEPAGE="http://utopios.org/~luke-jr/programs/khexclock/"
-SRC_URI="http://mystery.ryalth.com/~luke-jr/programs/khexclock/${P}.tbz2"
+HOMEPAGE=""
+SRC_URI="http://mystery.ryalth.com/~luke-jr/${P}.tbz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~amd64 ppc"
+KEYWORDS="~x86 ~amd64"
 
-need-kde 3
+src_compile() {
+	econf || die
+	emake || die
+}
+
+src_install() {
+	make DESTDIR=${D} install || die
+}

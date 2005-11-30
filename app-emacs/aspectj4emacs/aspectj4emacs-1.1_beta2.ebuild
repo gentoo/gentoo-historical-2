@@ -1,34 +1,31 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-emacs/aspectj4emacs/aspectj4emacs-1.1_beta2.ebuild,v 1.8 2005/07/01 18:14:57 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-emacs/aspectj4emacs/aspectj4emacs-1.1_beta2.ebuild,v 1.1 2004/04/20 15:30:57 mkennedy Exp $
 
-inherit elisp eutils
+inherit elisp
 
 IUSE=""
 
-MY_P="AspectJForEmacs-${PV/_beta/b}"
+MYPV="1.1b2"
 
 DESCRIPTION="AspectJ support for GNU Emacs java-mode and JDEE"
 HOMEPAGE="http://aspectj4emacs.sourceforge.net/"
-SRC_URI="http://aspectj4emacs.sourceforge.net/${MY_P}.zip"
+SRC_URI="http://aspectj4emacs.sourceforge.net/AspectJForEmacs-${MYPV}.zip"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~x86"
 
-RDEPEND="app-emacs/jde
+DEPEND="virtual/emacs
+	app-emacs/jde
 	=dev-java/aspectj-1.1*"
-DEPEND="${RDEPEND}
-	app-arch/unzip
-	>=sys-apps/sed-4"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/AspectJForEmacs-${MYPV}"
 
 SITEFILE=80aspectj4emacs-gentoo.el
 
 src_unpack() {
 	unpack ${A}
 	epatch ${FILESDIR}/${PF}-compile-log-gentoo.patch
-	epatch ${FILESDIR}/${PF}-browse-url-new-window-gentoo.patch
 	cd ${S}
 	cp */*.el .
 	sed -i "s,@build.version.short@,${PV},g" *.el

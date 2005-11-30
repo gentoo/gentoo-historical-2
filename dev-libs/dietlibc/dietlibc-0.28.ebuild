@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-libs/dietlibc/dietlibc-0.28.ebuild,v 1.8 2005/08/07 19:57:41 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-libs/dietlibc/dietlibc-0.28.ebuild,v 1.1 2005/03/09 01:51:23 vapier Exp $
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic gcc
 
 DESCRIPTION="A minimal libc"
 HOMEPAGE="http://www.fefe.de/dietlibc/"
@@ -10,7 +10,7 @@ SRC_URI="mirror://kernel/linux/libs/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~arm hppa ~mips ppc ppc64 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug"
 
 DEPEND=""
@@ -31,8 +31,7 @@ src_unpack() {
 
 	replace-sparc64-flags #45716
 
-	# Fix for not available gcc option on hppa (20 Jul 2005) KillerFox
-	test_flag -fno-stack-protector && append-flags -D__dietlibc__ -fno-stack-protector-all -fno-stack-protector
+	append-flags -D__dietlibc__ -fno-stack-protector-all -fno-stack-protector
 	epatch "${FILESDIR}"/dietlibc-0.28-Makefile.patch
 }
 

@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebase/kdebase-3.5.0.ebuild,v 1.5 2005/11/30 07:53:22 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-base/kdebase/kdebase-3.5.0.ebuild,v 1.1 2005/11/22 22:14:01 danarmak Exp $
 
 inherit kde-dist eutils
 
 DESCRIPTION="KDE base packages: the desktop, panel, window manager, konqueror..."
 
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~sparc ~x86"
 IUSE="arts cups java ldap ieee1394 hal lm_sensors logitech-mouse openexr opengl pam samba ssl zeroconf"
 # hal: enables hal backend for 'media:' ioslave
 
@@ -25,8 +25,7 @@ DEPEND="arts? ( ~kde-base/arts-${PV} )
 	logitech-mouse? ( >=dev-libs/libusb-0.1.10a )
 	ieee1394? ( sys-libs/libraw1394 )
 	hal? ( >=sys-apps/dbus-0.33
-	       =sys-apps/hal-0.5*
-	       sys-apps/pmount )
+	       =sys-apps/hal-0.5* )
 	zeroconf? ( net-misc/mDNSResponder )"
 
 RDEPEND="${DEPEND}
@@ -43,6 +42,10 @@ src_unpack() {
 
 	# Avoid using imake (kde bug 114466).
 	epatch "${FILESDIR}/kdebase-3.5.0_beta2-noimake.patch"
+
+	# Let kxkb search in Xorg 7.0 default path (kde rev 481658, applied for
+	# final).
+	epatch "${FILESDIR}/kxkb-${PV}-modularx.patch"
 
 	# For the noimake patch.
 	make -f admin/Makefile.common || die

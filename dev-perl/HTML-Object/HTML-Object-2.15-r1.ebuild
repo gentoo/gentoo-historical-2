@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2002 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Object/HTML-Object-2.15-r1.ebuild,v 1.11 2005/11/27 22:50:45 tgall Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTML-Object/HTML-Object-2.15-r1.ebuild,v 1.1 2002/10/30 07:20:36 seemant Exp $
 
 inherit perl-module
 
@@ -12,7 +12,6 @@ HOMEPAGE="http://htmlobject.sourceforge.net"
 
 SLOT="0"
 LICENSE="Artistic"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
-IUSE=""
+KEYWORDS="x86 ppc sparc sparc64 alpha"
 
 mydoc="LICENSE TODO"

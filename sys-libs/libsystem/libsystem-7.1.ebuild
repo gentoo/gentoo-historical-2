@@ -1,34 +1,35 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2004 Gentoo Foundation, Pieter Van den Abeele <pvdabeel@gentoo.org>
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-libs/libsystem/libsystem-7.1.ebuild,v 1.11 2005/07/30 18:37:03 kito Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-libs/libsystem/libsystem-7.1.ebuild,v 1.1 2004/07/11 00:34:43 pvdabeel Exp $
 
 DESCRIPTION="Darwin Libsystem, a collection of core libs similar to glibc on linux"
 
-HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
+HOMEPAGE="http://www.opendarwin.org/"
 SRC_URI=""
-LICENSE="APSL-2"
+LICENSE="BSD"
 SLOT="0"
-KEYWORDS="-* ppc-macos"
+KEYWORDS="-* macos"
 IUSE=""
-PROVIDE="virtual/libc"
+
 
 # I haven't listed any deps here, we're currently not building Darwin from scratch yet.
-# For now, this is a dummy package provided upstream. The version provided by the
-# distributor is pinpointed in the users profile. I am not going to be injecting this 
-# because its the root of the dependency tree. I'm not comfortable with portage
-# having an injected, non-existant package as the root of its tree.
+# For now, this is a dummy package provided upstream. The version provided by the 
+# distributor is pinpointed in the users profile
 
 DEPEND=""
 RDEPEND=""
 
 src_unpack() {
-	mkdir -p ${S}
+	mkdir -p ${S} # You have to do something in ${S}, otherwise ${S} doesn't exist and
+                      # portage craps its pants
 }
 
 src_compile() {
-	true
+	# This is not an empty function
+	sleep 0	
 }
 
 src_install() {
-	true
+	# This is not an empty function
+	sleep 0
 }

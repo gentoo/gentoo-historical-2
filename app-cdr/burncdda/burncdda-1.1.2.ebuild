@@ -1,25 +1,25 @@
-# Copyright 1999-2005 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-cdr/burncdda/burncdda-1.1.2.ebuild,v 1.15 2005/08/28 17:17:00 metalgod Exp $
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+# Maintainer: Matt Keadle <mkeadle@mkeadle.org>
+# $Header:
 
 DESCRIPTION="Console app for copying burning audio cds"
 SLOT="0"
 SRC_URI="http://freshmeat.net/redir/burncdda/20268/url_tgz/${P}.tar.gz"
 LICENSE="GPL-2"
 HOMEPAGE="http://freshmeat.net/projects/burncdda/"
-IUSE=""
-KEYWORDS="~amd64 ppc ~sparc x86"
+KEYWORDS="x86"
 
 DEPEND="dev-util/dialog
 	app-cdr/cdrdao
 	app-cdr/cdrtools
-	virtual/mpg123
+	media-sound/mpg123
 	media-sound/mp3_check
 	media-sound/normalize
 	media-sound/sox
 	media-sound/vorbis-tools"
 
-src_install() {
+src_install () {
 	dodoc README CHANGELOG INSTALL LICENSE
 	insinto /etc
 	doins burncdda.conf
@@ -27,3 +27,4 @@ src_install() {
 	insinto /usr/share/man/man1
 	doins burncdda.1.gz
 }
+

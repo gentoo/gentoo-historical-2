@@ -1,19 +1,6 @@
 # ChangeLog for dev-python/python-bibtex
-# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-python/python-bibtex/ChangeLog,v 1.5 2005/07/16 15:25:23 josejx Exp $
-
-  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> python-bibtex-1.2.1.ebuild:
-  Marked ppc stable.
-
-  02 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> python-bibtex-1.2.1.ebuild:
-  Stable on x86.
-
-  11 Apr 2005; Simon Stelling <blubb@gentoo.org> python-bibtex-1.2.1.ebuild:
-  added ~amd64
-
-  13 Nov 2004; Michael Hanselmann <hansmi@gentoo.org>
-  python-bibtex-1.2.1.ebuild:
-  Added to ~ppc.
+# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-python/python-bibtex/ChangeLog,v 1.1 2004/10/17 10:36:44 usata Exp $
 
 *python-bibtex-1.2.1 (17 Oct 2004)
 

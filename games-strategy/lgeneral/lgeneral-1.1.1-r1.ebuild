@@ -1,8 +1,8 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2003 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-strategy/lgeneral/lgeneral-1.1.1-r1.ebuild,v 1.7 2005/06/15 19:12:45 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-strategy/lgeneral/lgeneral-1.1.1-r1.ebuild,v 1.1 2003/09/10 05:27:31 vapier Exp $
 
-inherit eutils games
+inherit games
 
 DATA=lgeneral-data-1.1.3
 
@@ -13,31 +13,26 @@ SRC_URI="mirror://sourceforge/lgeneral/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc"
-IUSE=""
+KEYWORDS="x86"
 
 DEPEND=">=media-libs/libsdl-1.2.4
 	>=media-libs/sdl-mixer-1.2.3"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-	epatch "${FILESDIR}/${PV}-netbsd-audio.patch"
-}
-
 src_compile() {
 	egamesconf --datadir=${GAMES_DATADIR}/../
-	emake || die "emake failed"
+	emake || die
 
 	cd ${WORKDIR}/${DATA}
 	egamesconf --datadir=${GAMES_DATADIR}/../
-	emake || die "emake failed (data)"
+	emake || die
 }
 
 src_install() {
-	make DESTDIR=${D} install || die "make install failed"
-	dodoc AUTHORS ChangeLog README TODO
+	make DESTDIR=${D} install || die
+	dodoc AUTHORS COPYING ChangeLog INSTALL README TODO
+
 	cd ${WORKDIR}/${DATA}
-	make DESTDIR=${D} install || die "make install failed (data)"
+	make DESTDIR=${D} install || die
+
 	prepgamesdirs
 }
