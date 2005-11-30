@@ -1,36 +1,37 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: /var/cvsroot/gentoo-x86/eclass/nxserver-1.3.2.eclass,v 1.1.1.1 2005/11/30 09:59:29 chriswhite Exp $
 #
 # eclass for handling the different nxserver binaries available
 # from nomachine's website
 
-inherit rpm
+inherit rpm eutils
 
-ECLASS="nxserver"
-INHERITED="$INHERITED $ECLASS"
 
 HOMEPAGE="http://www.nomachine.com/"
 IUSE=""
 LICENSE="nomachine"
 SLOT="0"
-KEYWORDS="~x86 -ppc -sparc -alpha -mips"
+KEYWORDS="x86 -ppc -sparc -alpha -mips"
 RESTRICT="nomirror strip"
 
 SRC_URI="nxserver-${MY_PV}.i386.rpm"
+DEPEND="$DEPEND
+	>=net-misc/nxclient-1.3.2"
+
 RDEPEND="$RDEPEND
-	     >=media-libs/jpeg-6b-r3
-         >=sys-libs/glibc-2.3.2-r1
-		 >=sys-libs/zlib-1.1.4-r1
-		 >=x11-base/xfree-4.3.0-r2
-		 >=net-misc/openssh-3.6.1_p2
-		 >=dev-lang/perl-5.8.0-r12"
+	>=media-libs/jpeg-6b-r3
+	>=sys-libs/glibc-2.3.2-r1
+	>=sys-libs/zlib-1.1.4-r1
+	virtual/x11
+	>=net-misc/openssh-3.6.1_p2
+	>=dev-lang/perl-5.8.0-r12"
 
 DEPEND="$DEPEND
-        >=sys-apps/shadow-4.0.3-r6
-		>=net-misc/openssh-3.6.1_p2
-		>=net-misc/nxssh-1.3.2
-		>=net-misc/nxproxy-1.3.2"
+	>=sys-apps/shadow-4.0.3-r6
+	>=net-misc/openssh-3.6.1_p2
+	>=net-misc/nxssh-1.3.2
+	>=net-misc/nxproxy-1.3.2"
 
 S="${WORKDIR}"
 
@@ -101,10 +102,10 @@ nxserver_pkg_postinst() {
 
 	einfo "Adding user 'nx' for the NX server"
 	enewuser nx -1 /usr/NX/bin/nxserver /usr/NX/home/nx
-	
+
 	# we do this to move the home directory of older installs
 
-	einfo "Setting home directory of user 'nx' to /usr/NX/home"
+	einfo "Setting home directory of user 'nx' to /usr/NX/home/nx"
 	usermod -d /usr/NX/home/nx nx
 
 	einfo "Changing permissions for files under /usr/NX"
@@ -145,4 +146,7 @@ nxserver_pkg_postinst() {
 		ewarn "be found in /usr/NX/etc"
 		ewarn
 	fi
+
+	# regen the ld.so cache, because Portage sometimes doesn't
+	ldconfig -v > /dev/null
 }

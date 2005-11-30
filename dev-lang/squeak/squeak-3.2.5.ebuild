@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.2.5.ebuild,v 1.1 2002/12/30 01:56:14 jhhudso Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.2.5.ebuild,v 1.1.1.1 2005/11/30 09:58:33 chriswhite Exp $
 
 DESCRIPTION="Highly-portable Smalltalk-80 implementation"
 HOMEPAGE="http://www.squeak.org/"
@@ -11,21 +11,21 @@ KEYWORDS="~x86"
 IUSE="X oss mmx mozilla"
 # a ffi flag would be nice
 
-DEPEND="virtual/glibc
-	X? ( x11-base/xfree )"
-RDEPEND="=dev-lang/squeak-vm-3.2*
-         virtual/glibc
-	 X? ( x11-base/xfree )"
+DEPEND="virtual/libc
+	X? ( virtual/x11 )"
+RDEPEND="=virtual/squeak-image-3.2*
+	virtual/libc
+	 X? ( virtual/x11 )"
 
 S="${WORKDIR}/Squeak-3.2-5"
 
-src_compile() {	      
-        local myconf=""
-	
+src_compile() {
+	local myconf=""
+
 	use X || myconf="--without-x"
 	use oss && myconf="${myconf} --with-audio=oss"
 	use mmx && myconf="${myconf} --enable-mpg-mmx"
-	
+
 	cd ${S}
 	mkdir build
 	cd build
@@ -47,9 +47,9 @@ src_compile() {
 	emake || die
 }
 
-src_install() {	      
-	cd ${S}/build	
-		
+src_install() {
+	cd ${S}/build
+
 	make DESTDIR=${D} ROOT=${D} install || die
 
 	exeinto /usr/bin
@@ -58,9 +58,9 @@ src_install() {
 	### the rest is all for the plugin
 
 	cd nps
-		
+
 	# plugin sample, must be served to work, file:// doesnt work.
-	
+
 	insinto /usr/share/doc/squeak-3.2.5
 	doins test/plugintest.html
 	doins test/plugintest.sts
@@ -69,35 +69,35 @@ src_install() {
 
 	SQ_DIR=/usr/lib/squeak
 	VM_VERSION=3.2-5
-	NPSQUEAK_SO=${SQ_DIR}/${VM_VERSION}/npsqueak.so	
+	NPSQUEAK_SO=${SQ_DIR}/${VM_VERSION}/npsqueak.so
 	sed "s|@SQ_DIR@|${SQ_DIR}|;s|@VM_VERSION@|${VM_VERSION}|;s|@NPSQUEAK_SO@|${NPSQUEAK_SO}|" \
 		npsqueakrun.in > npsqueakrun.in.2
 	sed "s|@SQ_DIR@|${SQ_DIR}|;s|@VM_VERSION@|${VM_VERSION}|;s|@NPSQUEAK_SO@|${NPSQUEAK_SO}|" \
 		npsqueakregister.in > npsqueakregister
 	sed 's|^ensurefile|ensurefile "${HOME}/.npsqueak/SqueakPlugin.changes" "${SQ_DIR}/npsqueak.changes"\nensurefile|' npsqueakrun.in.2 > npsqueakrun
 
-        exeinto /usr/lib/squeak	
-	doexe npsqueakregister	
+	exeinto /usr/lib/squeak
+	doexe npsqueakregister
 	exeinto /usr/lib/squeak/3.2-5
 	doexe npsqueakrun
 
 
 	# install in browsers  (no opera use flags?)
 
-	dodir /opt/netscape/plugins	
-	dosym /usr/lib/squeak/3.2-5/npsqueak.so /opt/netscape/plugins	
-	
-	if [ "`use mozilla`" ] ; then
+	dodir /opt/netscape/plugins
+	dosym /usr/lib/squeak/3.2-5/npsqueak.so /opt/netscape/plugins
+
+	if use mozilla ; then
 		dodir /usr/lib/mozilla/plugins
 		dosym /opt/netscape/plugins/npsqueak.so \
 		/usr/lib/mozilla/plugins/npsqueak.so
 	fi
-	
+
 	# maybe we should install the image here..
-	
+
 	# dosym /usr/lib/squeak/SqueakV3.sources /usr/lib/squeak/3.2-5/SqueakV3.sources
 	# doins npsqueak.image
-	# doins npsqueak.changes       
+	# doins npsqueak.changes
 }
 
 pkg_postinst() {

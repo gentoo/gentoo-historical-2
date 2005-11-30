@@ -1,6 +1,6 @@
-# Copyright 1999-2005 Gentoo Foundation, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/portage-2.1.0_alpha20050718.ebuild,v 1.1 2005/08/11 17:06:07 genone Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/portage/portage-2.1.0_alpha20050718.ebuild,v 1.1.1.1 2005/11/30 09:56:41 chriswhite Exp $
 
 inherit eutils
 
@@ -14,9 +14,10 @@ DESCRIPTION="Portage ports system"
 SRC_URI="mirror://gentoo/${P}.tar.bz2 http://dev.gentoo.org/~genone/distfiles/${P}.tar.bz2"
 HOMEPAGE="http://www.gentoo.org"
 RESTRICT=""
+PROVIDE="virtual/portage"
 
 #KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ia64 ~mips ~x86"
 
 LICENSE="GPL-2"
 RDEPEND="!build? ( >=sys-apps/sed-4.0.5

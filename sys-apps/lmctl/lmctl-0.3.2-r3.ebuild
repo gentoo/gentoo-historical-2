@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lmctl/lmctl-0.3.2-r3.ebuild,v 1.1 2005/09/08 13:39:56 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lmctl/lmctl-0.3.2-r3.ebuild,v 1.1.1.1 2005/11/30 09:57:06 chriswhite Exp $
 
 inherit fixheadtails eutils
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnat/gnat-3.15p.ebuild,v 1.1 2003/06/17 21:51:48 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnat/gnat-3.15p.ebuild,v 1.1.1.1 2005/11/30 09:58:15 chriswhite Exp $
 #
 # Never replace this with the Ada compiler in the gcc tree. They are based
 # on the same source but this is the official validated compiler from ACT.
@@ -126,7 +126,7 @@ src_install() {
 	cp "${GNATBOOTINST}/gnathtml.pl" "${D}/usr/bin"
 	chmod +x "${D}/usr/bin"
 
-    # Make native threads the default
+	# Make native threads the default
 	dosym /usr/lib/gcc-lib/${CHOST}/2.8.1/rts-native/adalib \
 		/usr/lib/gcc-lib/${CHOST}/2.8.1/
 	dosym /usr/lib/gcc-lib/${CHOST}/2.8.1/rts-native/adainclude \

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/lives/lives-0.7.1.ebuild,v 1.1 2003/09/03 22:13:24 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/lives/lives-0.7.1.ebuild,v 1.1.1.1 2005/11/30 09:57:56 chriswhite Exp $
 
 DESCRIPTION="Linux Video Editing System"
 
@@ -27,7 +27,7 @@ DEPEND=">=media-video/mplayer-0.90-r2
 		>=media-libs/jpeg-6b-r3
 		>=media-sound/sox-12.17.3-r3
 		xmms? ( >=media-sound/xmms-1.2.7-r20 )
-		>=app-cdr/cdrtools-2.01_alpha14"
+		virtual/cdrtools"
 
 RDEPEND=""
 

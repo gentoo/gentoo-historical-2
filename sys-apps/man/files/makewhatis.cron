@@ -1,10 +1,5 @@
 #!/bin/sh
-#
-# Uncomment the following if you want 
-# your whatis database rebuilt regularly
-#
 # this is part of the man package
-#
-#
+# it updates the search database for manpages
 
-#/usr/sbin/makewhatis
+exec /bin/nice /usr/sbin/makewhatis -u

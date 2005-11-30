@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/wput/wput-0.4.ebuild,v 1.1 2004/05/02 18:47:48 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/wput/wput-0.4.ebuild,v 1.1.1.1 2005/11/30 09:55:38 chriswhite Exp $
 
 S="${WORKDIR}/${PN}"
 
@@ -10,20 +10,20 @@ SRC_URI="http://itooktheredpill.dyndns.org/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc ~sparc ~amd64"
 IUSE=""
 
 DEPEND=""
 
 src_compile() {
-	econf --prefix=${D}usr || die "configure failed"
+	econf --prefix=/usr || die "configure failed"
 	emake || die "make failed"
 }
 
 src_install() {
 	dodir /usr/bin
 	dodir /usr/share/man/man1
-	einstall || die "install failed"
+	einstall mandir=${D}/usr/share/man/man1 || die "install failed"
 
 	# Documentation
 	dodoc COPYING ChangeLog INSTALL TODO

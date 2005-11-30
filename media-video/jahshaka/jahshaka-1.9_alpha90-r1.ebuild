@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/jahshaka/jahshaka-1.9_alpha90-r1.ebuild,v 1.1 2005/05/09 09:46:26 zypher Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/jahshaka/jahshaka-1.9_alpha90-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:48 chriswhite Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ SRC_URI="http://www.jahshaka.com/downloads/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE=""
 
@@ -19,7 +19,7 @@ DEPEND="virtual/x11
 	media-video/avifile
 	>=media-libs/glut-3.7.1
 	>=media-libs/freetype-2.1.4
-	>=x11-libs/qt-3"
+	=x11-libs/qt-3*"
 
 RDEPEND=${DEPEND}
 

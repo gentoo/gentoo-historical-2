@@ -16,7 +16,7 @@ diff -Naur cipe-1.5.4.orig/conf/Makefile-obj.in cipe-1.5.4/conf/Makefile-obj.in
 +++ cipe-1.5.4/conf/Makefile-obj.in	2003-08-13 13:30:14.000000000 +0900
 @@ -9,7 +9,9 @@
  
- # $Id: cipe-1.5.4-gentoo.patch,v 1.1 2003/11/28 04:43:23 pfeifer Exp $
+ # $Id: cipe-1.5.4-gentoo.patch,v 1.1.1.1 2005/11/30 09:54:55 chriswhite Exp $
  
 -BINDIR:=/usr/local/sbin
 +DESTDIR:=
@@ -44,7 +44,7 @@ diff -Naur cipe-1.5.4.orig/conf/Makefile-top.in cipe-1.5.4/conf/Makefile-top.in
 +++ cipe-1.5.4/conf/Makefile-top.in	2003-08-13 13:30:14.000000000 +0900
 @@ -9,7 +9,9 @@
  
- # $Id: cipe-1.5.4-gentoo.patch,v 1.1 2003/11/28 04:43:23 pfeifer Exp $
+ # $Id: cipe-1.5.4-gentoo.patch,v 1.1.1.1 2005/11/30 09:54:55 chriswhite Exp $
  
 -INFODIR:=/usr/local/info
 +DESTDIR:=

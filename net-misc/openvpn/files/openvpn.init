@@ -1,4 +1,6 @@
 #!/sbin/runscript
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
 
 VPNDIR="/etc/openvpn"
 VPN="${myservice##*.}"
@@ -14,6 +16,12 @@ depend() {
 }
 
 checktundevice() {
+	if [[ ! -e /dev/net/tun ]]; then
+		if ! modprobe tun ; then
+			eerror "TUN/TAP support is not available in this kernel"
+			return 1
+		fi
+	fi
 	if [[ -h /dev/net/tun && -c /dev/misc/net/tun ]]; then
 		ebegin "Detected broken /dev/net/tun symlink, fixing..."
 		rm -f /dev/net/tun
@@ -23,24 +31,30 @@ checktundevice() {
 }
 
 start() {
+	ebegin "Starting ${myservice}"
+
 	checktundevice || return 1
 
-	ebegin "Starting ${myservice}"
-	
 	if [[ ! -e "${VPNCONF}" ]]; then
 		eend 1 "${VPNCONF} does not exist"
 		return 1
 	fi
-		
+
+	local args=""
+	# If the config file does not specify the cd option, we do
+	# But if we specify it, we override the config option which we do not want
+	if ! grep -q "^[ \t]*cd[ \t].*" "${VPNCONF}" ; then
+		args="${args} --cd ${VPNDIR}"
+	fi
+
 	start-stop-daemon --start --exec /usr/sbin/openvpn --pidfile "${VPNPID}" \
-		-- --config "${VPNCONF}" --writepid "${VPNPID}"	\
-		--daemon --cd "${VPNDIR}"
+		-- --config "${VPNCONF}" --writepid "${VPNPID}" --daemon ${args}
 	eend $? "Check your logs to see why startup failed"
 }
 
 stop() {
 	ebegin "Stopping ${myservice}"
-	start-stop-daemon --stop -exec /usr/sbin/openvpn --pidfile "${VPNPID}"
+	start-stop-daemon --stop --exec /usr/sbin/openvpn --pidfile "${VPNPID}"
 	eend $?
 }
 

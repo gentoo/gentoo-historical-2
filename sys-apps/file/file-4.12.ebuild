@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/file/file-4.12.ebuild,v 1.1 2004/11/26 00:24:08 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/file/file-4.12.ebuild,v 1.1.1.1 2005/11/30 09:56:58 chriswhite Exp $
 
-inherit flag-o-matic gnuconfig eutils distutils libtool
+inherit flag-o-matic gnuconfig eutils distutils libtool toolchain-funcs
 
 DESCRIPTION="Program to identify a file's format by scanning binary data for patterns"
 HOMEPAGE="ftp://ftp.astron.com/pub/file/"
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.gw.com/mirrors/pub/unix/file/${P}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="python build"
 
 DEPEND="virtual/libc
@@ -25,11 +25,15 @@ src_unpack() {
 	# This patch is for MIPS only.  It slightly changes the 'file' output
 	# on MIPS machines to a specific format so that other programs can
 	# recognize things.
-	use mips && epatch ${FILESDIR}/${PN}-4.xx-mips-gentoo.diff
+	epatch ${FILESDIR}/${PN}-4.xx-mips-gentoo.patch
 
-	# GNU updates
+	# The build process tries to run the compiled file ... not a good
+	# thing if file was cross compiled ;)
+	tc-is-cross-compiler && epatch ${FILESDIR}/${PN}-4.13-cross-compile.patch
+
+	# misc updates
+	cat "${FILESDIR}"/*.magic >> magic/magic.mime
 	uclibctoolize
-	gnuconfig_update
 
 	# make sure python links against the current libmagic #54401
 	sed -i "/library_dirs/s:'\.\./src':'../src/.libs':" python/setup.py
@@ -40,7 +44,7 @@ src_unpack() {
 
 src_compile() {
 	# file command segfaults on hppa -  reported by gustavo@zacarias.com.ar
-	[ ${ARCH} = "hppa" ] && filter-flags "-mschedule=8000"
+	[[ ${ARCH} == hppa ]] && filter-flags "-mschedule=8000"
 
 	econf --datadir=/usr/share/misc || die
 

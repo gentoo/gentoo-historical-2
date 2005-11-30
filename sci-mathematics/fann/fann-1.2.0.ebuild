@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/fann/fann-1.2.0.ebuild,v 1.1 2004/12/28 21:57:36 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/fann/fann-1.2.0.ebuild,v 1.1.1.1 2005/11/30 09:55:51 chriswhite Exp $
 
 inherit eutils
 #-----------------------------------------------------------------------------
@@ -49,11 +49,11 @@ src_install() {
 		einfo "doc ---------------------------------"
 		dodoc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 		insinto /usr/share/doc/${PF}/benchmarks
-		cp -a ${S}/benchmarks/* ${D}/usr/share/doc/${PF}/benchmarks
+		cp -pPR ${S}/benchmarks/* ${D}/usr/share/doc/${PF}/benchmarks
 		insinto /usr/share/doc/${PF}/examples/c
 		doins ${S}/examples/*
 		insinto /usr/share/doc/${PF}/html
-		cp -a doc/html/* ${D}/usr/share/doc/${PF}/html
+		cp -pPR doc/html/* ${D}/usr/share/doc/${PF}/html
 		insinto /usr/share/doc/${PF}/pdf
 		doins doc/*pdf
 	fi

@@ -1,6 +1,90 @@
 # ChangeLog for media-video/em8300-libraries
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-video/em8300-libraries/ChangeLog,v 1.1 2002/04/23 02:54:25 agenkin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/em8300-libraries/ChangeLog,v 1.1.1.1 2005/11/30 09:57:39 chriswhite Exp $
+
+*em8300-libraries-0.15.1 (18 Oct 2005)
+  18 Oct 2005; Anders Rune Jensen <arj@gentoo.org>
+  +em8300-libraries-0.15.1.ebuild:
+  new version
+
+  18 Oct 2005; Anders Rune Jensen <arj@gentoo.org> 
+  -em8300-libraries-0.12.0-r1.ebuild, -em8300-libraries-0.13.0.ebuild,
+  -em8300-libraries-0.14.0.ebuild,
+  -em8300-libraries-0.15.0_pre20040525.ebuild,
+  -em8300-libraries-0.15.0_pre20040906.ebuild, 
+  -em8300-libraries-0.15.0_pre20050310.ebuild:
+  Removed old versions.
+
+  15 Jun 2005; David Holm <dholm@gentoo.org> em8300-libraries-0.15.0.ebuild:
+  Readded to ~ppc. Please don't remove it without filing a proper bug report.
+
+*em8300-libraries-0.15.0 (03 Jun 2005)
+  03 Jun 2005; Anders Rune Jensen <arj@gentoo.org>
+  +em8300-libraries-0.15.0.ebuild:
+  new version
+	
+*em8300-libraries-0.15.0_pre20050310 (10 Mar 2005)
+  10 Mar 2005; Anders Rune Jensen <arj@gentoo.org>
+  +em8300-libraries-0.15.0_pre20050310:
+  Sync library with modules.
+
+  14 Jan 2005; Anders Rune Jensen <arj@gentoo.org>
+  em8300-libraries-0.15.0_pre20040906.ebuild:
+  works on amd64 with fpic
+	
+  07 Oct 2004; Brandon Low <lostlogic@gentoo.org>
+  em8300-libraries-0.15.0_pre20040906.ebuild:
+  make depend more specific
+
+*em8300-libraries-0.15.0_pre20040609 (06 Sep 2004)
+  06 Sep 2004; Anders Rune Jensen <arj@gentoo.org> +em8300-libraries-0.15.0_pre20040906:
+
+  01 Sep 2004; Anders Rune Jensen <arj@gentoo.org>
+  em8300-libraries-0.15.0_pre20040525.ebuild:
+  Move the tarball to the mirrors also.
+
+  29 Aug 2004; David Holm <dholm@gentoo.org>
+  em8300-libraries-0.15.0_pre20040525.ebuild:
+  Added to ~ppc.
+
+*em8300-libraries-0.15.0_pre20040525 (11 Aug 2004)
+ 
+  11 Aug 2004; Anders Rune Jensen <arj@gentoo.org> em8300-libraries-0.15.0_pre20040525 :
+  New pre-release which works with kernel 2.6.
+	
+*em8300-libraries-0.14.0 (11 Aug 2003)
+ 
+  11 Aug 2004; Anders Rune Jensen <arj@gentoo.org> em8300-libraries-0.14.0:
+  New official version (fixes #52623). Add myself as maintainer.
+
+*em8300-libraries-0.13.0-r1 (13 Feb 2003)
+ 
+  12 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*em8300-libraries-0.13.0 (12 Dec 2002)
+
+  05 Jan 2003; Arcady Genkin <agenkin@gentoo.org> em8300-libraries-0.13.0-r1 :
+  Disabled GTK dependency for users without gtk in their USE flags.
+  The patch came from Steven Brookes <stevenjb@mda.co.uk>.
+  Closes bug #10339.
+	
+  15 Dec 2002; Brandon Low <lostlogic@gentoo.org> em8300-libraries-0.13.0 :
+  oops, info wrong, and extra line in ebuild.
+
+  12 Dec 2002; Brandon Low <lostlogic@gentoo.org> em8300-libraries-0.13.0 :
+  Bump
+
+*em8300-libraries-0.12.0-r1 (April 29, 2002)
+
+  11 May 2002; Arcady Genkin <agenkin@thpoon.com> em8300-libraries-0.12.0-r1 :
+  
+  More updates by Brandon Low.  No user-visible changes.
+
+  29 April 2002; Arcady Genkin <agenkin@thpoon.com> em8300-libraries-0.12.0-r1 :
+  
+  Further updates by Brandon Low.  Fixed some issues in microcode upload
+  script.
 
 *em8300-libraries-0.12.0 (April 22, 2002)
 

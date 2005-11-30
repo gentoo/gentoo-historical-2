@@ -1,6 +1,27 @@
 # ChangeLog for sys-apps/rlocate
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rlocate/ChangeLog,v 1.1 2005/05/27 22:56:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rlocate/ChangeLog,v 1.1.1.1 2005/11/30 09:56:41 chriswhite Exp $
+
+  23 Oct 2005; Malcolm Lashley <malc@gentoo.org> rlocate-0.3.2.ebuild:
+  Added to ~amd64 per bug #109312
+
+  29 Jul 2005; David Holm <dholm@gentoo.org> rlocate-0.3.2.ebuild:
+  Added to ~ppc.
+
+*rlocate-0.3.2 (29 Jul 2005)
+
+  29 Jul 2005; Chris White <chriswhite@gentoo.org> +rlocate-0.3.2.ebuild:
+  Version bump.  Upstream bug fixes mainly.  Released to work with kernel 2.6.13.
+
+*rlocate-0.3.1-r1 (10 Jul 2005)
+
+  10 Jul 2005; Daniel Drake <dsd@gentoo.org> +rlocate-0.3.1-r1.ebuild:
+  Convert to linux-mod, closes bug #98563
+
+*rlocate-0.3.1 (09 Jul 2005)
+
+  09 Jul 2005; Mike Frysinger <vapier@gentoo.org> +rlocate-0.3.1.ebuild:
+  Version bump #97055 by Daniel Webert.
 
 *rlocate-0.3.0 (27 May 2005)
 

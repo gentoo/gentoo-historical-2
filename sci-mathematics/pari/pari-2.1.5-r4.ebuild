@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/pari/pari-2.1.5-r4.ebuild,v 1.1 2005/01/07 09:40:26 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/pari/pari-2.1.5-r4.ebuild,v 1.1.1.1 2005/11/30 09:55:50 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
 DESCRIPTION="pari (or pari-gp) : a software package for computer-aided number theory"
 HOMEPAGE="http://www.parigp-home.de/"
@@ -10,7 +10,7 @@ SRC_URI="http://www.gn-50uma.de/ftp/pari-2.1/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~sparc alpha ~mips ~hppa amd64"
+KEYWORDS="x86 ~ppc ~sparc alpha ~mips hppa amd64"
 
 IUSE="doc emacs"
 
@@ -21,9 +21,20 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/docs.patch
 	epatch ${FILESDIR}/wrong_functype.patch
+
 }
 
 src_compile() {
+	#need to force optimization here, as it breaks without
+	if   is-flag -O0; then
+		replace-flags -O0 -O2
+	elif ! is-flag -O?; then
+		append-flags -O2
+	fi
+
+	#we also need to force -fPIC
+	if ! is-flag -fPIC; then append-flags -fPIC; fi
+
 	./Configure \
 		--host="$(echo ${CHOST} | cut -f "1 3" -d '-')" \
 		--prefix=/usr \
@@ -44,6 +55,13 @@ src_compile() {
 		einfo "Building shared library..."
 		cd Olinux-alpha
 		emake CFLAGS="${CFLAGS} -DGCC_INLINE -fPIC" lib-dyn || die "Building shared library failed!"
+		einfo "Building executables..."
+		emake CFLAGS="${CFLAGS} -DGCC_INLINE" gp ../gp || die "Building exec  tu  ables failed!"
+	elif use hppa; then
+		einfo "Building shared library..."
+		cd Olinux-hppa*
+		mymake=DLLD\=/usr/bin/gcc\ DLLDFLAGS\=-shared\ -Wl,-soname=\$\(LIBPARI_SONAME\)\ -lm
+		emake CFLAGS="${CFLAGS} -DGCC_INLINE -fPIC" ${mymake} lib-dyn || die "Building shared library failed!"
 		einfo "Building executables..."
 		emake CFLAGS="${CFLAGS} -DGCC_INLINE" gp ../gp || die "Building exec  tu  ables failed!"
 	else

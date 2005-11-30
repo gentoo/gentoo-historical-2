@@ -1,6 +1,21 @@
 # ChangeLog for net-misc/trickle
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/trickle/ChangeLog,v 1.1 2003/08/06 19:08:04 mholzer Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/trickle/ChangeLog,v 1.1.1.1 2005/11/30 09:55:08 chriswhite Exp $
+
+  06 Jul 2005; Herbie Hopkins <herbs@gentoo.org> trickle-1.06.ebuild:
+  Marked ~amd64 wrt bug #97758.
+
+  04 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> trickle-1.06.ebuild:
+  Added to ~ppc.
+
+  20 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> trickle-1.06.ebuild:
+  Added to ~sparc.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> trickle-1.06.ebuild:
+  change virtual/glibc to virtual/libc
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> trickle-1.06.ebuild:
+  Add die following econf for bug 48950
 
 *trickle-1.06 (06 Aug 2003)
 

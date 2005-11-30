@@ -1,6 +1,87 @@
 # ChangeLog for dev-lang/gauche
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gauche/ChangeLog,v 1.1 2004/07/11 08:56:12 hattya Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gauche/ChangeLog,v 1.1.1.1 2005/11/30 09:58:13 chriswhite Exp $
+
+  16 Nov 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  gauche-0.8.6-r1.ebuild:
+  Marking stable on x86 wrt bug #112577.
+
+*gauche-0.8.6-r1 (16 Nov 2005)
+
+  16 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-runpath.diff, -gauche-0.8.6.ebuild, +gauche-0.8.6-r1.ebuild:
+  fixes bug #112577.
+
+*gauche-0.8.6 (13 Nov 2005)
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-gauche.m4-cc.diff, +gauche-0.8.6.ebuild:
+  new upstream release.
+
+  13 Nov 2005; Akinori Hattori <hattya@gentoo.org> gauche-0.8.5.ebuild:
+  stable on x86.
+
+  13 Oct 2005; Luis Medinas <metalgod@gentoo.org> gauche-0.8.5.ebuild:
+  Added ~amd64 keyword. Bug #108735.
+
+  24 Jul 2005; Akinori Hattori <hattya@gentoo.org> -gauche-0.8.4.ebuild:
+  0.8.5 is the bug fix release of this.
+
+*gauche-0.8.5 (24 Jul 2005)
+
+  24 Jul 2005; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.5.ebuild:
+  new upstream release.
+
+*gauche-0.8.4 (04 Jun 2005)
+
+  04 Jun 2005; Akinori Hattori <hattya@gentoo.org>
+  -files/gauche-extract-1.13.diff, +files/gauche-aclocal.m4-cc.diff,
+  -gauche-0.8.ebuild, -gauche-0.8.1.ebuild, +gauche-0.8.4.ebuild:
+  new upstream release.
+
+  04 May 2005; Akinori Hattori <hattya@gentoo.org>
+  files/gauche-aclocal.m4-1.31.diff:
+  remove Id. fixes bug #89136.
+
+  23 Apr 2005; Akinori Hattori <hattya@gentoo.org>
+  +files/gauche-aclocal.m4-1.31.diff, gauche-0.8.3.ebuild:
+  fixes bug #89136.
+
+  31 Mar 2005; Aron Griffis <agriffis@gentoo.org> gauche-0.8.3.ebuild:
+  stable on ia64
+
+  26 Jan 2005; Akinori Hattori <hattya@gentoo.org> gauche-0.8.3.ebuild:
+  stable on x86.
+
+  14 Dec 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild,
+  gauche-0.8.ebuild:
+  remove RESTRICT=nomirror.
+
+*gauche-0.8.3 (14 Dec 2004)
+
+  14 Dec 2004; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.3.ebuild:
+  new upstream release.
+
+  05 Dec 2004; Jason Wever <weeve@gentoo.org> gauche-0.8.1.ebuild:
+  Added ~sparc keyword.
+
+  17 Oct 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild:
+  stable on ia64.
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild:
+  add ~ia64
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> -gauche-0.7.3.ebuild,
+  -gauche-0.7.4.1.ebuild, -gauche-0.7.4.2.ebuild, gauche-0.8.1.ebuild:
+  cleaned out old ebuilds.
+
+  07 Sep 2004; Akinori Hattori <hattya@gentoo.org> gauche-0.8.1.ebuild:
+  stable on x86.
+
+*gauche-0.8.1 (06 Aug 2004)
+
+  06 Aug 2004; Akinori Hattori <hattya@gentoo.org> +gauche-0.8.1.ebuild:
+  new upstream release.
 
 *gauche-0.8 (11 Jul 2004)
 

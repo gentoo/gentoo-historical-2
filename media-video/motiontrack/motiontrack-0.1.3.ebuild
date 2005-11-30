@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/motiontrack/motiontrack-0.1.3.ebuild,v 1.1 2004/12/09 01:24:42 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/motiontrack/motiontrack-0.1.3.ebuild,v 1.1.1.1 2005/11/30 09:57:57 chriswhite Exp $
 
 
 DESCRIPTION="A set of tools that detect motion between two images"

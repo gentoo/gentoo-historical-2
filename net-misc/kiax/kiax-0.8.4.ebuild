@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/kiax/kiax-0.8.4.ebuild,v 1.1 2005/04/26 22:13:54 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/kiax/kiax-0.8.4.ebuild,v 1.1.1.1 2005/11/30 09:55:03 chriswhite Exp $
 
 inherit eutils kde-functions
 
@@ -10,11 +10,11 @@ DESCRIPTION="QT based IAX (Inter Asterisk eXchange) client"
 HOMEPAGE="http://kiax.sourceforge.net/"
 SRC_URI="mirror://sourceforge/kiax/${P}.tar.bz2"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=x11-libs/qt-3.2"
+DEPEND="$(qt_min_version 3.2)"
 
 src_unpack() {
 	unpack ${A}
@@ -28,10 +28,8 @@ src_unpack() {
 }
 
 src_compile() {
-	set-qtdir 3
-
 	econf || die "configure failed"
-	emake || die "make failed"
+	emake -j1 || die "make failed"
 }
 
 src_install() {

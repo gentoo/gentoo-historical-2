@@ -3,9 +3,9 @@
 <pkgmetadata>
 <herd>no-herd</herd>
 <maintainer>
-<name>Jon Portnoy</name>
-<email>avenj@gentoo.org</email>
-<description>Eventually passing on to garen@garen.net</description>
+<email>karltk@gentoo.org</email>
+<name>Karl Trygve Kalleberg</name>
+<description>Also, bug Kugelfang.</description>
 </maintainer>
 </pkgmetadata>
 

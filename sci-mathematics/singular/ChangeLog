@@ -1,6 +1,10 @@
-# ChangeLog for app-sci/singular
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/ChangeLog,v 1.1 2004/12/28 15:17:37 ribosome Exp $
+# ChangeLog for sci-mathematics/singular
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/singular/ChangeLog,v 1.1.1.1 2005/11/30 09:55:52 chriswhite Exp $
+
+  26 Jun 2005; Olivier Fisette <ribosome@gentoo.org>
+  -singular-2.0.4-r1.ebuild, singular-2.0.5-r4.ebuild:
+  Fixed typo in description. Removed old version.
 
 *singular-2.0.4-r1 (28 Dec 2004)
 

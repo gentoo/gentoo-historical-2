@@ -1,6 +1,55 @@
 # ChangeLog for media-video/vobcopy
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vobcopy/ChangeLog,v 1.1 2003/04/16 19:53:04 mholzer Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/vobcopy/ChangeLog,v 1.1.1.1 2005/11/30 09:57:31 chriswhite Exp $
+
+  27 Jun 2005; Markus Rothe <corsair@gentoo.org> vobcopy-0.5.14.ebuild:
+  Stable on ppc64
+
+  24 May 2005; Markus Rothe <corsair@gentoo.org> vobcopy-0.5.14.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+*vobcopy-0.5.14 (21 Nov 2004)
+
+  21 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  vobcopy-0.5.13.ebuild, +vobcopy-0.5.14.ebuild:
+  Version bump.  0.5.13 stabld amd64.
+
+  02 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> vobcopy-0.5.13.ebuild:
+  Marked ~amd64.
+
+  14 Apr 2004; Jason Wever <weeve@gentoo.org> vobcopy-0.5.13.ebuild:
+  Added ~sparc keyword.
+
+  10 Apr 2004; Martin Holzer <mholzer@gentoo.org> vobcopy-0.5.13.ebuild:
+  x86 stable
+
+  28 Mar 2004; David Holm <dholm@gentoo.org> vobcopy-0.5.13.ebuild:
+  Added to ~ppc.
+
+*vobcopy-0.5.13 (28 Mar 2004)
+
+  28 Mar 2004; Martin Holzer <mholzer@gentoo.org> vobcopy-0.5.13.ebuild:
+  Version bumped.
+
+*vobcopy-0.5.11 (26 Feb 2004)
+
+  26 Feb 2004; Martin Holzer <mholzer@gentoo.org> vobcopy-0.5.11.ebuild:
+  Version bumped.
+
+*vobcopy-0.5.10 (26 Jan 2004)
+
+  26 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> vobcopy-0.5.10.ebuild:
+  version bump
+
+*vobcopy-0.5.9 (25 Jan 2004)
+
+  25 Jan 2004; Martin Holzer <mholzer@gentoo.org> vobcopy-0.5.9.ebuild:
+  Version bumped.
+
+*vobcopy-0.5.8 (06 Sep 2003)
+
+  06 Sep 2003; Martin Holzer <mholzer@gentoo.org> vobcopy-0.5.8.ebuild:
+  Version bumped.
 
 *vobcopy-0.5.7 (16 Apr 2003)
 

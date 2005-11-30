@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwsetup/hwsetup-1.0-r3.ebuild,v 1.1 2005/06/14 16:27:12 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hwsetup/hwsetup-1.0-r3.ebuild,v 1.1.1.1 2005/11/30 09:56:37 chriswhite Exp $
 
 inherit eutils
 
@@ -11,13 +11,14 @@ SRC_URI="http://developer.linuxtag.net/knoppix/sources/${PN}_${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc -sparc -mips ~alpha ~amd64 ~ppc64"
+KEYWORDS="alpha amd64 ia64 -mips ppc ppc64 sparc x86"
 IUSE=""
 
-DEPEND="|| (
-	sys-apps/kudzu-knoppix
-	sys-apps/kudzu )"
-RDEPEND="virtual/libc"
+DEPEND="sys-libs/libkudzu"
+RDEPEND="sys-libs/libkudzu
+	|| ( sys-apps/hwdata-gentoo
+		sys-apps/hwdata
+		sys-apps/hwdata-knoppix )"
 
 src_unpack() {
 	unpack ${A}

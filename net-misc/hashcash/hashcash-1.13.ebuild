@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/hashcash/hashcash-1.13.ebuild,v 1.1 2004/11/30 04:55:51 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/hashcash/hashcash-1.13.ebuild,v 1.1.1.1 2005/11/30 09:55:40 chriswhite Exp $
 
 IUSE=""
 DESCRIPTION="Utility to generate hashcash tokens"

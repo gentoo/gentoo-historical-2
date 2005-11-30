@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/hashcash/hashcash-1.16-r1.ebuild,v 1.1 2005/03/02 19:37:10 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/hashcash/hashcash-1.16-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:40 chriswhite Exp $
 
 inherit eutils
 

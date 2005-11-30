@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.41.20041001-r1.ebuild,v 1.1 2004/11/12 10:57:59 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.41.20041001-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:45 chriswhite Exp $
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic qt3
 
 MAJ_PV=${PV:0:3}
 MIN_PV=${PV:0:6}
@@ -17,12 +17,11 @@ LICENSE="GPL-2"
 SLOT="0.7"
 
 #-sparc: 0.7.41 - dsputil_init_vis undefined - eradicator
-KEYWORDS="~alpha ~amd64 ~ia64 -sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~ia64 -mips -sparc x86"
 IUSE="3dnow X alsa avi debug dvd esd mmx oggvorbis qt sdl sse static truetype xv zlib"
 
 DEPEND=">=media-libs/jpeg-6b
-	x86? ( >=media-libs/divx4linux-20030428
-		>=media-libs/win32codecs-0.90 )
+	x86? ( >=media-libs/win32codecs-0.90 )
 	>=media-video/ffmpeg-0.4
 	=media-libs/xvid-1*
 	>=media-sound/lame-3.90
@@ -37,7 +36,7 @@ DEPEND=">=media-libs/jpeg-6b
 	zlib? ( >=sys-libs/zlib-1.1.3 )
 	oggvorbis? ( >=media-libs/libvorbis-1.0 )
 	X? ( virtual/x11 virtual/xft )
-	qt? ( >=x11-libs/qt-3.0.3 )
+	qt? ( $(qt_min_version 3.1) )
 	alsa? ( >=media-libs/alsa-lib-0.9.0_rc2 )
 	esd? ( >=media-sound/esound-0.2.28 )"
 
@@ -63,7 +62,11 @@ src_unpack() {
 		sed -e 's/-lXrender//g' -i lib/video/Makefile.* \
 		|| die "sed failed (Xrender)"
 	fi
-
+	# adding CFLAGS by default which exists only for x86 is no good idea
+	# but I can't get it through gcc 3.4.3 without omit-frame-pointer
+	find . -name "Makefile.in" | while read file; do
+		sed -e "s/^AM_CFLAGS = .*/AM_CFLAGS = -fomit-frame-pointer/" -i $file
+	done
 }
 
 src_compile() {

@@ -1,11 +1,195 @@
 # ChangeLog for media-video/realplayer
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/media-video/realplayer/ChangeLog,v 1.1 2002/02/01 21:53:31 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/realplayer/ChangeLog,v 1.1.1.1 2005/11/30 09:57:57 chriswhite Exp $
+
+  20 Nov 2005; Diego Pettenò <flameeyes@gentoo.org> -files/mimeinfo,
+  -files/realplayer.desktop, -realplayer-8-r6.ebuild,
+  -realplayer-8-r7.ebuild, -realplayer-10.0.2.ebuild,
+  -realplayer-10.0.3.ebuild, -realplayer-10.0.3-r1.ebuild,
+  -realplayer-10.0.4.ebuild, -realplayer-10.0.5.ebuild:
+  Remove old versions.
+
+  07 Oct 2005; Simon Stelling <blubb@gentoo.org> realplayer-10.0.6.ebuild:
+  stable on amd64 wrt bug 107309
+
+  04 Oct 2005; Paul Varner <fuzzyray@gentoo.org> realplayer-10.0.6.ebuild:
+  stable on x86. Bug# 107309
+
+  02 Oct 2005; Marc Hildebrand <zypher@gentoo.org> realplayer-10.0.6.ebuild:
+  Version bump.
+
+  25 Sep 2005; Carsten Lohrke <carlo@gentoo.org> realplayer-10.0.5.ebuild:
+  Fixed url.
+
+  11 Aug 2005; Diego Pettenò <flameeyes@gentoo.org>
+  realplayer-10.0.3.ebuild, realplayer-10.0.3-r1.ebuild,
+  realplayer-10.0.4.ebuild, realplayer-10.0.5.ebuild:
+  Call has_multilib_profile from pkg_setup instead of global scope.
+
+  12 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
+  realplayer-10.0.2.ebuild, realplayer-10.0.3.ebuild,
+  realplayer-10.0.3-r1.ebuild, realplayer-10.0.4.ebuild,
+  realplayer-10.0.5.ebuild:
+  Rename mozilla useflag into nsplugin.
+
+  11 Jul 2005; Herbie Hopkins <herbs@gentoo.org> realplayer-10.0.5.ebuild:
+  Stable on amd64 wrt bug #89951.
+
+  06 Jul 2005; <brix@gentoo.org> realplayer-10.0.5.ebuild:
+  Stable on x86, bug #96923.
+
+*realplayer-10.0.5 (24 Jun 2005)
+
+  24 Jun 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +realplayer-10.0.5.ebuild:
+  New upstream version, fixes installation of icons to hicolor theme.
+
+  26 May 2005; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Herd name is 'video' not 'media-video'
+
+  21 Apr 2005; Olivier Crête <tester@gentoo.org> realplayer-10.0.4.ebuild:
+  Stable on x86 per security bug #89862
+
+*realplayer-10.0.4 (21 Apr 2005)
+
+  21 Apr 2005; Diego Pettenò <flameeyes@gentoo.org>
+  +realplayer-10.0.4.ebuild:
+  Added new upstream version.
+
+  11 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> metadata.xml,
+  realplayer-10.0.2.ebuild, realplayer-10.0.3-r1.ebuild,
+  realplayer-10.0.3.ebuild:
+  updated maintainer information in metadata.xml according to comment #1 in bug
+  #86285, chriswhite is retired. also fixed the depend.
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> realplayer-10.0.3.ebuild:
+  digest fixes
+
+*realplayer-10.0.3-r1 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +realplayer-10.0.3-r1.ebuild:
+  corrected src_uri, fixes #86564
+
+  19 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> realplayer-10.0.3.ebuild:
+  added ~amd64 to KEYWORDS, fixes #85080
+
+  15 Mar 2005; Chris White <chriswhite@gentoo.org> realplayer-10.0.3.ebuild:
+  Fixed bug #85246.
+
+*realplayer-10.0.3 (13 Mar 2005)
+
+  13 Mar 2005; Chris White <chriswhite@gentoo.org> +realplayer-10.0.3.ebuild:
+  Fixing bug #40469, which also fixes an (unreported?) security bug. Stable on
+  x86.
+
+  08 Feb 2005; Chris White <chriswhite@gentoo.org> realplayer-10.0.2.ebuild:
+  Fixing all the 'bump realplayer' bugs.  Also added the language pack logic.
+
+*realplayer-10.0.2 (09 Jan 2005)
+
+  09 Jan 2005; Chris White <chriswhite@gentoo.org> +realplayer-10.0.2.ebuild:
+  Putting this out finally. This fixes so many bugs and forum posts, I'm not
+  going to list them all :).
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  realplayer-8-r6.ebuild, realplayer-8-r7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  15 Mar 2004; Seemant Kulleen <seemant@gentoo.org> realplayer-8-r5.ebuild:
+  remove -r5 as it was unstable on all arches, which -r7 will be, plus it
+  violated bug 44712 by Michael Sterret <mr_bones_@gentoo.org>
+
+  28 Feb 2004; Alastair Tse <liquidx@gentoo.org> realplayer-8-r7.ebuild:
+  add mention about artsdsp (#30699)
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> realplayer-8-r6.ebuild:
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> realplayer-8-r6.ebuild:
+  set ppc in keywords
+
+*realplayer-8-r7 (02 Nov 2003)
+
+  02 Nov 2003; Alastair Tse <liquidx@gentoo.org> realplayer-8-r6.ebuild,
+  realplayer-8-r7.ebuild:
+  split rv9 codecs to media-plugins/realvideo-codecs, switched to pkg_nofetch()
+  and cleaned up src_unpack()
+
+  09 Sep 2003; Alastair Tse <liquidx@gentoo.org> realplayer-8-r2.ebuild,
+  realplayer-8-r3.ebuild, realplayer-8-r4.ebuild, realplayer-8-r6.ebuild:
+  cleanup and bumping -r6 to stable x86
+
+  07 Sep 2003; Jason Wever <weeve@gentoo.org> realplayer-8-r6.ebuild:
+  Added fix for bug #15314.
+
+  05 Sep 2003; Alastair Tse <liquidx@gentoo.org> realplayer-8-r6.ebuild:
+  un-redefine ${A}
+
+*realplayer-8-r6 (19 Jul 2003)
+
+  19 Jul 2003; lanius@gentoo.org realplayer-8-r6.ebuild:
+  fixed bug #24801 use /usr/share/applnk instead of ${KDEDIR/share/applnnk to
+  remove dep on kde-env
+
+  13 Jul 2003; Seemant Kulleen <seemant@gentoo.org> realplayer-8-r5.ebuild:
+  CJ Kucera's patch to add the digests for the different realplayers.  See
+  bug #24391.
+
+*realplayer-8-r5 (09 Feb 2003)
+
+  16 Mar 2003; Alastair Tse <liquidx@gentoo.org> realplayer-8-r5.ebuild,
+  files/realplayer.desktop:
+  tested and gnome2-ified menu entry. changed pixmap installation dir
+  and fixed icon in menu entry.
+
+  09 Feb 2003; Seemant Kulleen <seemant@gentoo.org> realplayer-8-r5.ebuild
+  files/digest-realplayer-8-r5 :
+
+  Inherits kde eclass so that kde menu entries go into the right place, and
+  also fixes for gnome menu entries (needs a bit of verification). Thanks
+  to: Matt Caesar <deegle2003@yahoo.com> and Alastair Tse
+  <gentoo@liquidx.net> in bug #15295
+
+*realplayer-8-r4 (08 Jan 2003)
+
+  14 Jan 2003; Martin Holzer <mholzer@gentoo.org> realplayer-8-r4.ebuild :
+  Latest update, this should fix all problems.
+
+  12 Jan 2003; Seemant Kulleen <seemant@gentoo.org> realplayer-8-r4.ebuild :
+
+  Removed ${MY_P} from SRC_URI, so the ebuild doesn't break after it tries
+  to fetch the fetch restricted stuffs.  Thanks to: moixa@gmx.ch <Tobias
+  Sager> in bug #10066.
+
+  12 Jan 2003; Martin Holzer <mholzer@gentoo.org> realplayer-8-r4.ebuild :
+  Fixed script, now display's how it should do 
+
+  08 Jan 2003; Seemant Kulleen <seemant@gentoo.org> realplayer-8-r4.ebuild
+  files/realplayer.desktop files/mimeinfo files/digest-realplayer-8-r4 :
+
+  This is a new multi-architecture capable ebuild.  Currently, it will
+  install for ppc, sparc, alpha and x86 .  This ebuild
+  courtesy of the brilliance of: danny@ricin.com (Danny Pansters) in bug
+  #10066
+
+*realplayer-8-r3 (21 Nov 2002)
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+  21 Nov 2002; phoen][x <phoenix@gentoo.org> realplayer-8-r3.ebuild,
+  files/digest-realplayer-8-r3 :
+  Switched to the new nsplugins layout.
+
+*realplayer-8-r2 (2 Mar 2002)
+
+  2 Mar 2002; William McArthur <sandymac@gentoo.org> realplayer-8-r2.ebuild :
+  Updated ebuild for Mozilla and added LICENSE. I also changed the files in
+  /opt/netscape/plugins/* to be symlinks.
 
 *realplayer-8-r1 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

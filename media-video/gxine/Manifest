@@ -1,13 +1,21 @@
-MD5 2acd18e820ee2a4121d89dfdf1873b0c ChangeLog 1075
-MD5 b8b9c1120a55107b7accdee8e35d6d93 gxine-0.2.1.ebuild 1453
-MD5 6979e2f29ec552f192e4785f7ca19054 gxine-0.2.ebuild 1451
-MD5 ca8337004212bcf48988959830e448bf gxine-0.3.1.ebuild 1057
-MD5 bb3ef693bb1d5fca408916ecf068ff4c gxine-0.3.ebuild 1055
-MD5 92a44294f69be536d408201e3e344ca8 gxine-0.3.2.ebuild 1072
-MD5 2d156d118e75d833753301386a5bc65b gxine-0.3.3.ebuild 1072
-MD5 b0c77f31ba79fd3b332464f35af28dfe files/digest-gxine-0.2 61
-MD5 c8e240a8d79cd5f26441ad6a7b08cdde files/digest-gxine-0.2.1 63
-MD5 540f72974fd027a6a6347ad564efed2f files/digest-gxine-0.3 61
-MD5 a707be76407f7c11e20a3cae221827a2 files/digest-gxine-0.3.1 63
-MD5 83d8480689e2cf6ed9f343654294424f files/digest-gxine-0.3.2 64
-MD5 a0134d60cfc89d88f7f76826e3728379 files/digest-gxine-0.3.3 64
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 589e5001f8c0368ca01620c41c9c323d ChangeLog 7483
+MD5 fb579db8b42db43fb5c027ca8c78e951 files/digest-gxine-0.4.5 64
+MD5 d3f2297a49721a0558f863ba3f8ba2f0 files/digest-gxine-0.4.8 64
+MD5 541e4a5a4b8747eeee6782cb6cd5e53d files/digest-gxine-0.4.9 64
+MD5 d4d21433f6ba3db5176cc5d994c4ce19 files/digest-gxine-0.5.0 63
+MD5 0b50a3889d71fe54fb9249c53257d9d6 files/gxine-0.4.1-menu-fix.patch 873
+MD5 79d0920e2fdab22f9ef6792340afbdd8 gxine-0.4.5.ebuild 1512
+MD5 a53419425249e78a98a55debf6e5c088 gxine-0.4.8.ebuild 1538
+MD5 f354b1289fdbf406c700b5620398b6b3 gxine-0.4.9.ebuild 1538
+MD5 964d303551ff5f2e77882d55b08ffbd4 gxine-0.5.0.ebuild 1551
+MD5 7300a7b361fa9f48e37722c6952bd432 metadata.xml 158
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDZOp8j5H05b2HAEkRAvisAKCKCOQv7qMT2E2T0U3oNMRiOMeMYQCgh3GX
+wcnKkRUWQZCj//ms05yG0Hs=
+=BR2P
+-----END PGP SIGNATURE-----

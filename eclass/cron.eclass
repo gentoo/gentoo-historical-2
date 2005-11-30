@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/cron.eclass,v 1.1 2005/01/15 12:37:53 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/cron.eclass,v 1.1.1.1 2005/11/30 09:59:18 chriswhite Exp $
 
 # Original Author: Aaron Walker <ka0ttic@gentoo.org>
 #
@@ -16,20 +16,15 @@
 
 inherit eutils flag-o-matic
 
-ECLASS="cron"
-INHERITED="$INHERITED $ECLASS"
 EXPORT_FUNCTIONS pkg_postinst
 
 SLOT="0"
 
-DEPEND="${DEPEND}
-	virtual/libc
-	>=sys-apps/sed-4.0.5"
+DEPEND=">=sys-apps/sed-4.0.5"
 
-RDEPEND="${RDEPEND}
-	!virtual/cron
+RDEPEND="!virtual/cron
 	virtual/mta
-	>=sys-apps/cronbase-0.2.1-r3"
+	>=sys-process/cronbase-0.2.1-r3"
 
 PROVIDE="virtual/cron"
 
@@ -47,13 +42,13 @@ PROVIDE="virtual/cron"
 docrondir() {
 	# defaults
 	local perms="-m0750 -o root -g cron" dir="/var/spool/cron/crontabs"
-	
-	if [[ -n "$1" ]] ; then
+
+	if [[ -n $1 ]] ; then
 		case "$1" in
 			*/*)
-				dir="$1"
+				dir=$1
 				shift
-				[[ -n "$1" ]] && perms="$@"
+				[[ -n $1 ]] && perms="$@"
 				;;
 			*)
 				perms="$@"
@@ -78,17 +73,17 @@ docrondir() {
 #     docron crond -m 0110
 
 docron() {
-	local cron="cron" perms="-m 0750 -o root -g root"
+	local cron="cron" perms="-m 0750 -o root -g wheel"
 
-	if [[ -n "$1" ]] ; then
+	if [[ -n $1 ]] ; then
 		case "$1" in
 			-*)
 				perms="$@"
 				;;
 			 *)
-				cron="$1"
+				cron=$1
 				shift
-				[[ -n "$1" ]] && perms="$@"
+				[[ -n $1 ]] && perms="$@"
 				;;
 		esac
 	fi
@@ -110,15 +105,15 @@ docron() {
 docrontab() {
 	local crontab="crontab" perms="-m 4750 -o root -g cron"
 
-	if [[ -n "$1" ]] ; then
+	if [[ -n $1 ]] ; then
 		case "$1" in
 			-*)
 				perms="$@"
 				;;
 			 *)
-				crontab="$1"
+				crontab=$1
 				shift
-				[[ -n "$1" ]] && perms="$@"
+				[[ -n $1 ]] && perms="$@"
 				;;
 		esac
 	fi
@@ -137,26 +132,7 @@ docrontab() {
 	fi
 }
 
-# dopamd [ file ] [ new file ]
-#
-# Install pam auth config file in /etc/pam.d
-#
-# NOTE: this would make much more sense as a portage script (eg. doenvd)
-#
-#   The first argument, 'file' is required.  Install as 'new file', if
-#   specified.
-
-dopamd() {
-	local pamd="${1}" newpamd="${2:-${1}}"
-	[[ -z "${1}" ]] && die "dopamd requires at least one argument."
-	
-	insinto /etc/pam.d
-	# these are the default doins options, but be explicit just in case
-	insopts -m 0644 -o root -g root
-	newins ${pamd} ${newpamd} || die "failed to install ${newpamd}"
-}
-
-cron-pkg_postinst() {
+cron_pkg_postinst() {
 	echo
 	# vixie is the only daemon that has a true system crontab
 	if [[ "${PN}" != "vixie-cron" ]] ; then
@@ -166,7 +142,7 @@ cron-pkg_postinst() {
 		einfo "!!! That will replace root's current crontab !!!"
 		einfo
 	fi
-	
+
 	einfo "You may wish to read the Gentoo Linux Cron Guide, which can be"
 	einfo "found online at:"
 	einfo "    http://www.gentoo.org/doc/en/cron-guide.xml"

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/whois/whois-4.7.2.ebuild,v 1.1 2005/04/19 00:04:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/whois/whois-4.7.2.ebuild,v 1.1.1.1 2005/11/30 09:55:32 chriswhite Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 MY_P=${P/-/_}
 DESCRIPTION="improved Whois Client"
@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 sparc x86"
 IUSE="nls"
-RESTRICT="maketest" #59327
+RESTRICT="test" #59327
 
 RDEPEND="net-dns/libidn"
 DEPEND="${RDEPEND}
@@ -35,6 +35,7 @@ src_unpack() {
 }
 
 src_compile() {
+	tc-export CC
 	emake OPTS="${CFLAGS}" HAVE_LIBIDN=1 || die
 }
 
@@ -44,4 +45,9 @@ src_install() {
 	insinto /etc
 	doins whois.conf
 	dodoc README
+
+	if [[ "${USERLAND}" != "GNU" ]]; then
+		mv ${D}/usr/share/man/man1/{whois,mdwhois}.1
+		mv ${D}/usr/bin/{whois,mdwhois}
+	fi
 }

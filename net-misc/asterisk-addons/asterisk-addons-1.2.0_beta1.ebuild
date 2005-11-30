@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-addons/asterisk-addons-1.2.0_beta1.ebuild,v 1.1 2005/08/27 18:19:39 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-addons/asterisk-addons-1.2.0_beta1.ebuild,v 1.1.1.1 2005/11/30 09:55:42 chriswhite Exp $
 
 IUSE="mysql sqlite h323"
 

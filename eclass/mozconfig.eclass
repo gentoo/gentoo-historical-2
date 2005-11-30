@@ -1,20 +1,15 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig.eclass,v 1.1 2004/11/13 23:23:08 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/mozconfig.eclass,v 1.1.1.1 2005/11/30 09:59:16 chriswhite Exp $
 #
 # mozconfig.eclass: the new mozilla.eclass
 
-ECLASS=mozconfig
-INHERITED="$INHERITED $ECLASS"
+inherit multilib flag-o-matic
 
-IUSE="java gnome gtk2 ldap debug xinerama xprint moznoxft"
-case ${PN} in
-	mozilla)	IUSE="${IUSE} mozdevelop mozxmlterm mozsvg" ;;
-	*firefox)	IUSE="${IUSE} mozdevelop mozxmlterm" ;;
-esac
+IUSE="debug gnome ipv6 moznoxft truetype xinerama xprint"
 
 RDEPEND="virtual/x11
-	!moznoxft ( virtual/xft )
+	!moznoxft? ( virtual/xft )
 	>=media-libs/fontconfig-2.1
 	>=sys-libs/zlib-1.1.4
 	>=media-libs/jpeg-6b
@@ -24,10 +19,10 @@ RDEPEND="virtual/x11
 	dev-libs/expat
 	app-arch/zip
 	app-arch/unzip
-	>=net-www/mozilla-launcher-1.22
+	>=www-client/mozilla-launcher-1.22
 	>=x11-libs/gtk+-2.2.0
 	>=dev-libs/glib-2.2.0
-	>=x11-libs/pango-1.2.1
+	>=x11-libs/pango-1.5.0
 	>=dev-libs/libIDL-0.8.0
 	gnome? ( >=gnome-base/gnome-vfs-2.3.5 )"
 
@@ -42,7 +37,7 @@ export USE_PTHREADS=1
 
 mozconfig_init() {
 	declare enable_optimize pango_version myext x
-	declare MOZ=$([[ ${PN} == mozilla ]] && echo true || echo false)
+	declare MOZ=$([[ ${PN} == mozilla || ${PN} == gecko-sdk ]] && echo true || echo false)
 	declare FF=$([[ ${PN} == *firefox ]] && echo true || echo false)
 	declare TB=$([[ ${PN} == *thunderbird ]] && echo true || echo false)
 	declare SB=$([[ ${PN} == *sunbird ]] && echo true || echo false)
@@ -55,11 +50,11 @@ mozconfig_init() {
 	####################################
 
 	case ${PN} in
-		mozilla) 
+		mozilla|gecko-sdk)
 			# The other builds have an initial --enable-extensions in their
 			# .mozconfig.  The "default" set in configure applies to mozilla
 			# specifically.
-			: >.mozconfig || die "initial mozconfig creation failed" 
+			: >.mozconfig || die "initial mozconfig creation failed"
 			mozconfig_annotate "" --enable-extensions=default ;;
 		*firefox)
 			cp browser/config/mozconfig .mozconfig \
@@ -81,7 +76,9 @@ mozconfig_init() {
 	# Set optimization level based on CFLAGS
 	if is-flag -O0; then
 		mozconfig_annotate "from CFLAGS" --enable-optimize=-O0
-	elif [[ ${ARCH} == alpha || ${ARCH} == amd64 || ${ARCH} == ia64 ]]; then
+	elif [[ ${ARCH} == hppa ]]; then
+		mozconfig_annotate "more than -O0 causes segfaults on hppa" --enable-optimize=-O0
+	elif [[ ${ARCH} == alpha || ${ARCH} == amd64 || ${ARCH} == ia64 || ${ARCH} == ppc64 ]]; then
 		mozconfig_annotate "more than -O1 causes segfaults on 64-bit (bug 33767)" \
 			--enable-optimize=-O1
 	elif is-flag -O1; then
@@ -100,11 +97,25 @@ mozconfig_init() {
 	# -O -O1 and -O2
 	strip-flags
 
+	# -fstack-protector is in ALLOWED_FLAGS but breaks moz #83511
+	#filter-flags -fstack-protector ; # commented out by solar
+
 	# Additional ARCH support
 	case "${ARCH}" in
-	alpha|amd64|ia64)
+	alpha)
+		# Historically we have needed to add -fPIC manually for 64-bit.
+		# Additionally, alpha should *always* build with -mieee for correct math
+		# operation
+		append-flags -fPIC -mieee
+		;;
+
+	amd64|ia64)
 		# Historically we have needed to add this manually for 64-bit
 		append-flags -fPIC
+		;;
+
+	ppc64)
+		append-flags -fPIC -mminimal-toc
 		;;
 
 	ppc)
@@ -141,6 +152,18 @@ mozconfig_init() {
 		CXXFLAGS="${CXXFLAGS} -Wno-deprecated"
 	fi
 
+	# Go a little faster; use less RAM
+	append-flags "$MAKEEDIT_FLAGS"
+
+	# Define our plugin dirs for nsplugins-v2.patch
+	#
+	# This is the way we would *like* to do things.  However ./configure chokes
+	# on these definitions, so the real definitions happen in the ebuilds, just
+	# before emake.
+	#
+	#append-flags "-DGENTOO_NSPLUGINS_DIR=\\\"/usr/$(get_libdir)/nsplugins\\\""
+	#append-flags "-DGENTOO_NSBROWSER_PLUGINS_DIR=\\\"/usr/$(get_libdir)/nsbrowser/plugins\\\""
+
 	####################################
 	#
 	# mozconfig setup
@@ -159,8 +182,21 @@ mozconfig_init() {
 	mozconfig_use_enable ipv6
 	mozconfig_use_enable xinerama
 	mozconfig_use_enable xprint
-	mozconfig_use_enable truetype freetype2
-	mozconfig_use_enable truetype freetypetest
+
+	if [[ ${MOZ_FREETYPE2} == "no" ]] ; then
+		# Newer mozilla/firefox builds should use xft and not freetype.
+		# Should be default for mozilla-1.7.12 and mozilla-firefox-1.0.7.
+		# Not sure if we should enable xft in this case, but might clash
+		# with USE=moznoxft ...
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=234035#c139
+		# https://bugzilla.mozilla.org/show_bug.cgi?id=215219i
+		#mozconfig_use_enable truetype freetype2
+		#mozconfig_use_enable truetype freetypetest
+		mozconfig_annotate gentoo --disable-freetype2
+	else
+		mozconfig_use_enable truetype freetype2
+		mozconfig_use_enable truetype freetypetest
+	fi
 
 	if use debug; then
 		mozconfig_annotate +debug \
@@ -186,7 +222,7 @@ mozconfig_init() {
 	fi
 
 	# Here is a strange one...
-	if is-flag '-mcpu=ultrasparc*'; then
+	if is-flag '-mcpu=ultrasparc*' || is-flag '-mtune=ultrasparc*'; then
 		mozconfig_annotate "building on ultrasparc" --enable-js-ultrasparc
 	fi
 
@@ -194,15 +230,11 @@ mozconfig_init() {
 	if use moznoxft; then
 		mozconfig_annotate "disabling xft2 by request (+moznoxft)" --disable-xft
 	else
-		# We need Xft2.0 locally installed
 		if [[ -x /usr/bin/pkg-config ]] && pkg-config xft; then
-			# We also need pango-1.1, else Mozilla links to both
-			# Xft1.1 *and* Xft2.0, and segfault...
-			pango_version=$(pkg-config --modversion pango | cut -d. -f1,2)
-			if [[ ${pango_version//.} -gt 10 ]]; then
-				mozconfig_annotate "-moznoxft" --enable-xft
+			if [[ ${MOZ_PANGO} == "yes" ]]; then
+				mozconfig_annotate "-moznoxft" --enable-xft --enable-pango
 			else
-				mozconfig_annotate "bad pango version <1.1" --disable-xft
+				mozconfig_annotate "-moznoxft" --enable-xft
 			fi
 		else
 			mozconfig_annotate "no pkg-config xft" --disable-xft
@@ -230,7 +262,7 @@ makemake() {
 # mozconfig_annotate "building on ultrasparc" --enable-js-ultrasparc
 # => ac_add_options --enable-js-ultrasparc # building on ultrasparc
 mozconfig_annotate() {
-	declare reason=${1} x ; shift
+	declare reason=$1 x ; shift
 	[[ $# -gt 0 ]] || die "mozconfig_annotate missing flags for ${reason}\!"
 	for x in ${*}; do
 		echo "ac_add_options ${x} # ${reason}" >>.mozconfig
@@ -244,7 +276,17 @@ mozconfig_annotate() {
 # => ac_add_options --enable-freetype2 # +truetype
 mozconfig_use_enable() {
 	declare flag=$(use_enable "$@")
-	mozconfig_annotate "$(useq ${1} && echo +${1} || echo -${1})" "${flag}"
+	mozconfig_annotate "$(useq $1 && echo +$1 || echo -$1)" "${flag}"
+}
+
+# mozconfig_use_with: add a line to .mozconfig based on a USE-flag
+#
+# Example:
+# mozconfig_use_with kerberos gss-api /usr/$(get_libdir)
+# => ac_add_options --with-gss-api=/usr/lib # +kerberos
+mozconfig_use_with() {
+	declare flag=$(use_with "$@")
+	mozconfig_annotate "$(useq $1 && echo +$1 || echo -$1)" "${flag}"
 }
 
 # mozconfig_use_extension: enable or disable an extension based on a USE-flag
@@ -253,13 +295,13 @@ mozconfig_use_enable() {
 # mozconfig_use_extension gnome gnomevfs
 # => ac_add_options --enable-extensions=gnomevfs
 mozconfig_use_extension() {
-	declare minus=$(useq ${1} || echo -)
-	mozconfig_annotate "${minus:-+}${1}" --enable-extensions=${minus}${2}
+	declare minus=$(useq $1 || echo -)
+	mozconfig_annotate "${minus:-+}$1" --enable-extensions=${minus}${2}
 }
 
-# mozconfig_explain: display a table describing all configuration options paired
-# with reasons
-mozconfig_explain() {
+# mozconfig_final: display a table describing all configuration options paired
+# with reasons, then clean up extensions list
+mozconfig_final() {
 	declare ac opt hash reason
 	echo
 	echo "=========================================================="
@@ -271,4 +313,10 @@ mozconfig_explain() {
 	done
 	echo "=========================================================="
 	echo
+
+	# Resolve multiple --enable-extensions down to one
+	declare exts=$(sed -n 's/^ac_add_options --enable-extensions=\([^ ]*\).*/\1/p' \
+		.mozconfig | xargs)
+	sed -i '/^ac_add_options --enable-extensions/d' .mozconfig
+	echo "ac_add_options --enable-extensions=${exts// /,}" >> .mozconfig
 }

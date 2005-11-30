@@ -1,8 +1,87 @@
 # ChangeLog for net-misc/drivel
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/drivel/ChangeLog,v 1.1 2002/11/30 14:23:41 nall Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/drivel/ChangeLog,v 1.1.1.1 2005/11/30 09:54:42 chriswhite Exp $
 
-*net-misc/drivel-0.8.0 (30 Nov 2002)
+*drivel-2.0.2 (14 Sep 2005)
+
+  14 Sep 2005; Mike Gardiner <obz@gentoo.org> +drivel-2.0.2.ebuild:
+  New major version, including support for more than just LiveJournal. Thanks
+  to Sourav and Peter on bug #95737
+
+*drivel-1.2.4-r1 (29 Jun 2005)
+
+  29 Jun 2005; John N. Laliberte <allanonjl@gentoo.org>
+  -drivel-1.2.3.ebuild, -drivel-1.2.4.ebuild, +drivel-1.2.4-r1.ebuild:
+  fix for access violation due to gnome2 eclass change, see bug #92920,
+  cleanup old builds
+
+  18 May 2005; Jason Wever <weeve@gentoo.org> drivel-1.2.4.ebuild:
+  Added ~sparc keyword.
+
+  26 Mar 2005; Mike Gardiner <obz@gentoo.org> drivel-1.2.1.ebuild,
+  drivel-1.2.3.ebuild, drivel-1.2.4.ebuild:
+  Added scrollkeeper DEPEND, see bug #86643
+
+*drivel-1.2.4 (02 Feb 2005)
+
+  02 Feb 2005; Joe McCann <joem@gentoo.org> +drivel-1.2.4.ebuild:
+  Version bump. I have added the local useflag rhythmbox, which lets drivel
+  grab the currently playing song from rhythmbox.
+
+  06 Dec 2004; Joe McCann <joem@gentoo.org> drivel-1.0.2.ebuild,
+  drivel-1.2.1.ebuild, drivel-1.2.3.ebuild:
+  Changing to real homepage instead of sourceforge project page. Thanks to
+  spyderous for the correct link
+
+  06 Dec 2004; Joe McCann <joem@gentoo.org> drivel-1.2.1.ebuild:
+  marking x86 stable
+
+*drivel-1.2.3 (06 Dec 2004)
+
+  06 Dec 2004; Joe McCann <joem@gentoo.org> +drivel-1.2.3.ebuild:
+  Bugfix release. Added spell useflag for optional gtkspell support
+
+  23 Oct 2004; Alastair Tse <liquidx@gentoo.org> drivel-1.0.2.ebuild,
+  drivel-1.2.1.ebuild:
+  remove intltool (#68514)
+
+  18 Oct 2004; Alastair Tse <liquidx@gentoo.org> drivel-1.2.1.ebuild:
+  updated curl dep
+
+  17 Oct 2004; Alastair Tse <liquidx@gentoo.org> drivel-1.2.1.ebuild:
+  add missing deps like libxml and gtksourceview
+
+*drivel-1.2.1 (16 Oct 2004)
+
+  16 Oct 2004; Alastair Tse <liquidx@gentoo.org> +drivel-1.2.1.ebuild:
+  version bump (#62287)
+
+*drivel-1.0.2 (13 Jul 2004)
+
+  13 Jul 2004; Mike Gardiner <obz@gentoo.org> +drivel-1.0.2.ebuild:
+  New version, as requested in bug #53265. Updated dependencies inline with
+  GTK/Glib 2.4
+
+  10 May 2004; Yi Qiang <khai@gentoo.org> drivel-0.9.3.ebuild:
+  Removed -DGTK_DISABLE_DEPRECATED and -DGNOME_DISABLE_DEPRECATED
+
+*drivel-0.9.3 (25 Jan 2004)
+
+  25 Jan 2004; Jeremy Huddleston <eradicator@gentoo.org> drivel-0.9.3.ebuild:
+  version bump. We depend on intltool so we can re-intltoolize since this
+  package was created with a bad version of intltool.  Closes bug #37911.
+
+*drivel-0.9.1 (20 May 2003)
+
+  20 May 2003; Alastair Tse <liquidx@gentoo.org> drivel-0.9.1.ebuild:
+  version bump and ebuild cleanup
+
+*drivel-0.9.0 (28 Jan 2003)
+
+  28 Jan 2003; Jon Nall <nall@gentoo.org> drivel-0.9.0.ebuild :
+  new version
+
+*drivel-0.8.0 (30 Nov 2002)
 
   30 Nov 2002; Jon Nall <nall@gentoo.org> drivel-0.8.0.ebuild,
   ChangeLog, files/digest-drivel-0.8.0 :

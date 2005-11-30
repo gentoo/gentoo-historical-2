@@ -107,7 +107,7 @@ diff -Nrup mkinitrd-3.5.7.orig/nash/ssp.c mkinitrd-3.5.7/nash/ssp.c
 @@ -0,0 +1,168 @@
 +/*
 + * Distributed under the terms of the GNU General Public License v2
-+ * $Header: /var/cvsroot/gentoo-x86/sys-apps/mkinitrd/files/mkinitrd-3.5.7-dietssp.patch,v 1.1 2004/10/10 22:44:47 solar Exp $
++ * $Header: /var/cvsroot/gentoo-x86/sys-apps/mkinitrd/files/mkinitrd-3.5.7-dietssp.patch,v 1.1.1.1 2005/11/30 09:56:04 chriswhite Exp $
 + *
 + * This is a modified version of Hiroaki Etoh's stack smashing routines
 + * implemented for glibc.

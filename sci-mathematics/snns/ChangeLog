@@ -1,6 +1,26 @@
-# ChangeLog for app-sci/snns
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/snns/ChangeLog,v 1.1 2004/12/28 15:31:38 ribosome Exp $
+# ChangeLog for sci-mathematics/snns
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/snns/ChangeLog,v 1.1.1.1 2005/11/30 09:55:53 chriswhite Exp $
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> snns-4.2-r7.ebuild:
+  Stable on ppc.
+
+  24 Aug 2005; Patrick Kursawe <phosphan@gentoo.org> snns-4.2-r6.ebuild,
+  snns-4.2-r7.ebuild:
+  No longer using cp -a (bug #103487), marking -r7 stable for x86.
+
+  20 Feb 2005; Joseph Jezak <josejx@gentoo.org> snns-4.2-r7.ebuild:
+  Marked ~ppc for bug #81482. Python bindings may not function correctly,
+  ensure that it's working before marking ppc.
+
+*snns-4.2-r7 (10 Feb 2005)
+
+  10 Feb 2005; Patrick Kursawe <phosphan@gentoo.org> +snns-4.2-r7.ebuild:
+  New patch for python function calls from the SNNS kernel
+
+  30 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/4.2-fPIC-python.patch, snns-4.2-r6.ebuild:
+  added ~amd64 to -r6 and a patch which is required if USE=python. fixes #79773
 
 *snns-4.2-r4 (28 Dec 2004)
 

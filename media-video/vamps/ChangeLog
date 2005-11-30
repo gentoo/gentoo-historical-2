@@ -1,6 +1,29 @@
 # ChangeLog for media-video/vamps
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vamps/ChangeLog,v 1.1 2004/07/23 15:08:02 tantive Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/vamps/ChangeLog,v 1.1.1.1 2005/11/30 09:57:20 chriswhite Exp $
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> vamps-0.95.ebuild,
+  vamps-0.97.ebuild:
+  Don't install INSTALL file.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> vamps-0.95.ebuild:
+  dev-perl/Getopt-Long => perl-core/Getopt-Long migration
+
+  22 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> vamps-0.95.ebuild,
+  vamps-0.97.ebuild:
+  0.95 stable on amd64 and x86
+
+*vamps-0.97 (28 Mar 2005)
+
+  28 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/vamps-0.97-amd64.patch, +vamps-0.97.ebuild:
+  new upstream version. fixes #83059
+
+  26 Oct 2004; Chris White <chriswhite@gentoo.org> vamps-0.95.ebuild:
+  Switch over to toolchain getCC from CC.
+
+  05 Sep 2004; Daniel Ahlberg <aliz@gentoo.org> vamps-0.95.ebuild:
+  Added amd64 keyword, closing #58517.
 
 *vamps-0.95 (23 Jul 2004)
 

@@ -1,4 +1,7 @@
 #!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/files/apmd.rc6,v 1.1.1.1 2005/11/30 09:56:00 chriswhite Exp $
 
 depend() {
 	need localmount
@@ -14,7 +17,8 @@ checkconfig() {
 start() {
 	checkconfig || return 1
 	ebegin "Starting apmd"
-	start-stop-daemon --start --quiet --exec /usr/sbin/apmd -- -P /etc/apm/apmd_proxy
+	start-stop-daemon --start --quiet --pidfile /var/run/apmd.pid \
+		--startas /usr/sbin/apmd -- ${APMD_OPTS}
 	eend $?
 }
 

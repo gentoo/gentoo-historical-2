@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/spca5xx/spca5xx-20041224.ebuild,v 1.1 2004/12/26 01:05:07 kingtaco Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/spca5xx/spca5xx-20041224.ebuild,v 1.1.1.1 2005/11/30 09:57:29 chriswhite Exp $
 
 inherit linux-mod
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://spca50x.sourceforge.net/spca50x.php"
 SRC_URI="http://mxhaard.free.fr/spca50x/Download/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 IUSE=""
 RESTRICT=""
 DEPEND=""

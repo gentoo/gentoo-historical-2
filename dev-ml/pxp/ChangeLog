@@ -1,8 +1,39 @@
 # ChangeLog for dev-ml/pxp
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/pxp/ChangeLog,v 1.1 2003/03/10 04:53:15 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/pxp/ChangeLog,v 1.1.1.1 2005/11/30 09:55:48 chriswhite Exp $
 
-*pxp-1.1.5.ebuild (09 Mar 2003)
+*pxp-1.1.95 (10 Nov 2005)
+
+  10 Nov 2005; Matthieu Sozeau <mattam@gentoo.org> +pxp-1.1.96.ebuild:
+  Version bump, compatible with ocaml 3.09.
+
+*pxp-1.1.95 (09 Mar 2005)
+
+  09 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> -pxp-1.1.94.2.ebuild,
+  +pxp-1.1.95.ebuild:
+  Really latest dev. version.
+
+*pxp-1.1.94.2 (09 Mar 2005)
+
+  09 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> +pxp-1.1.94.2.ebuild:
+  Latest dev version.
+
+  30 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> pxp-1.1.6.ebuild:
+  Mark stable on amd64, fixes bug #65902
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> pxp-1.1.6.ebuild:
+  Added to ~ppc.
+
+  25 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> -pxp-1.1.5.ebuild,
+  pxp-1.1.6.ebuild:
+  Move to findlib eclass, add doc USE flag.
+
+*pxp-1.1.6 (18 Aug 2004)
+
+  18 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> pxp-1.1.6.ebuild:
+  Version bump
+
+*pxp-1.1.5 (09 Mar 2003)
 
   09 Mar 2003; George Shapovalov <george@gentoo.org> ChangeLog, pxp-1.1.5.ebuild, files/digest-pxp-1.1.5 :
   initial release (#15903)

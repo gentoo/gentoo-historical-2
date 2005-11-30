@@ -1,32 +1,40 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/iperf-1.7.0.ebuild,v 1.1 2003/07/29 19:31:34 mholzer Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/iperf-1.7.0.ebuild,v 1.1.1.1 2005/11/30 09:55:09 chriswhite Exp $
 
-
-S=${WORKDIR}/${P}
-DESCRIPTION="Iperf is a tool to measure IP bandwidth using UDP or TCP. It allows for tuning various parameters, and reports bandwidth, delay jitter, and packet loss. It supports IPv6 and multicast."
-SRC_URI="http://dast.nlanr.net/Projects/Iperf/${P}-source.tar.gz"
+IUSE=""
+DESCRIPTION="tool to measure IP bandwidth using UDP or TCP"
 HOMEPAGE="http://dast.nlanr.net/Projects/Iperf"
-DEPEND="virtual/glibc"
+SRC_URI="http://dast.nlanr.net/Projects/Iperf/${P}-source.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="~ppc ~ppc64 x86"
+
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	sed -i 's:@read  INSTALL_DIR;::' Makefile
+	sed -i 's:@read  INSTALL_DIR;::' Makefile || die "sed Makefile failed"
 }
 
 src_compile() {
 	cd cfg
-	econf || die
+	econf || die "econf failed"
 	cd ..
-	emake || die
+	emake || die "emake failed"
 }
 
-src_install () {
-	make INSTALL_DIR=${D}/usr/bin install || die
+src_install() {
+	make INSTALL_DIR=${D}/usr/bin install || die "make install failed"
 	dodoc INSTALL README VERSION
+	newinitd ${FILESDIR}/${PN}.initd ${PN}
+}
+
+pkg_postinst() {
+	echo
+	einfo "To run iperf in server mode, run:"
+	einfo "  /etc/init.d/iperf start"
+	echo
 }

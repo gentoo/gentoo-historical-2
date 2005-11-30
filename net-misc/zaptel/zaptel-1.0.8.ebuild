@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/zaptel/zaptel-1.0.8.ebuild,v 1.1 2005/06/25 08:56:54 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/zaptel/zaptel-1.0.8.ebuild,v 1.1.1.1 2005/11/30 09:55:14 chriswhite Exp $
 
 IUSE="devfs26 bri florz"
 
@@ -11,13 +11,13 @@ FLORZ_VERSION="0.2.0-RC8a_florz-6"
 
 DESCRIPTION="Drivers for Digium and ZapataTelephony cards"
 HOMEPAGE="http://www.asterisk.org"
-SRC_URI="ftp://ftp.asterisk.org/pub/telephony/zaptel/zaptel-${PV}.tar.gz
-	 bri? ( http://www.junghanns.net/asterisk/downloads/bristuff-${BRI_VERSION}.tar.gz )
+SRC_URI="ftp://ftp.digium.com/pub/telephony/zaptel/old/zaptel-${PV}.tar.gz
+	 bri? ( http://www.junghanns.net/downloads/bristuff-${BRI_VERSION}.tar.gz )
 	 florz? ( http://zaphfc.florz.dyndns.org/zaphfc_${FLORZ_VERSION}.diff.gz )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="x86 ~ppc ~amd64"
 
 DEPEND="virtual/libc
 	virtual/linux-sources
@@ -116,16 +116,14 @@ src_unpack() {
 src_compile() {
 	# TODO: bristuff modules
 
-	set_arch_to_kernel
-	make KERNEL_SOURCE=/usr/src/linux || die
+	make ARCH=$(tc-arch-kernel) KERNEL_SOURCE=/usr/src/linux || die
 
 	if use bri; then
 		cd ${WORKDIR}/bristuff-${BRI_VERSION}
-		make -C qozap  || die
-		make -C zaphfc || die
-		make -C cwain  || die
+		make ARCH=$(tc-arch-kernel) -C qozap  || die
+		make ARCH=$(tc-arch-kernel) -C zaphfc || die
+		make ARCH=$(tc-arch-kernel) -C cwain  || die
 	fi
-	set_arch_to_portage
 }
 
 src_install() {

@@ -1,6 +1,43 @@
 # ChangeLog for kde-misc/kooldock
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kooldock/ChangeLog,v 1.1 2004/10/31 18:29:52 motaboy Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kooldock/ChangeLog,v 1.1.1.1 2005/11/30 09:57:11 chriswhite Exp $
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kooldock-0.3-r1.ebuild:
+  Stable on ppc.
+
+  22 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  kooldock-0.3-r1.ebuild:
+  Stable on sparc
+
+  20 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> kooldock-0.3-r1.ebuild:
+  Stable on x86.
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> kooldock-0.3.ebuild:
+  Stable on ppc.
+
+*kooldock-0.3-r1 (31 Mar 2005)
+
+  31 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/kooldock-0.3-fix-left-segfault.patch, +kooldock-0.3-r1.ebuild:
+  Patched to stop the segfault on exit left, thanks to David Leaver
+  <danzel@localhost.geek.nz> for the patch. Also marked ~amd64 as it now works
+  properly. Closes bug 85071.
+
+  12 Jan 2005; Jason Wever <weeve@gentoo.org> kooldock-0.3.ebuild:
+  Stable on sparc.
+
+  08 Dec 2004; Marc Hildebrand <zypher@gentoo.org> kooldock-0.3.ebuild:
+  Added ~ppc keyword.
+
+  05 Dec 2004; Simone Gotti <motaboy@gentoo.org> kooldock-0.3.ebuild:
+  Stable on x86.
+
+  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org> kooldock-0.3.ebuild:
+  QA: missing "inherit eutils"
+
+  16 Nov 2004; Jason Wever <weeve@gentoo.org> kooldock-0.3.ebuild:
+  Added ~sparc keyword.
 
 *kooldock-0.3 (31 Oct 2004)
 

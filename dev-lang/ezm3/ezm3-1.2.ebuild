@@ -1,24 +1,20 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ezm3/ezm3-1.2.ebuild,v 1.1 2004/07/11 15:50:22 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ezm3/ezm3-1.2.ebuild,v 1.1.1.1 2005/11/30 09:58:12 chriswhite Exp $
 
 inherit eutils
-
-MY_P="${P/-/-snap-}"
-EZM3="ezm3-1.1"
-EZM3_TARGET="LINUXLIBC6"
 
 DESCRIPTION="stripped down m3 compiler for building cvsup"
 HOMEPAGE="http://www.polstra.com/projects/freeware/ezm3/"
 SRC_URI="ftp://ftp.freebsd.org/pub/FreeBSD/development/CVSup/ezm3/${P}-src.tar.bz2
 	x86? ( ftp://ftp.freebsd.org/pub/FreeBSD/development/CVSup/ezm3/${P}-LINUXLIBC6-boot.tar.bz2 )
+	ppc? ( mirror://gentoo/${P}-PPC_LINUX-boot.tar.bz2 )
 	mirror://gentoo/${P}-PPC_LINUX.patch.bz2"
-#	ppc? ( mirror://gentoo/${P}-PPC_LINUX-boot.tar.bz2 )"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-* x86 ppc"
-IUSE="X opengl static"
+IUSE="X opengl"
 
 DEPEND="virtual/libc
 	dev-util/yacc
@@ -29,6 +25,13 @@ PROVIDE="virtual/m3"
 
 seduse() {
 	useq !${1} && echo "${2}" || echo ":"
+}
+
+ezm3target() {
+	case ${ARCH} in
+		x86)	echo LINUXLIBC6;;
+		ppc)	echo PPC_LINUX;;
+	esac
 }
 
 src_unpack() {
@@ -43,9 +46,9 @@ src_compile() {
 	# (to not violate sandbox)
 	sed -i \
 		-e "s:/usr/local:/usr:" \
-		m3config/src/${EZM3_TARGET} \
-		|| die "sed ${EZM3_TARGET} failed"
-	echo "M3CC_MAKE = [\"make\", \"BISON=yacc\"]" >> m3config/src/${EZM3_TARGET}
+		m3config/src/$(ezm3target) \
+		|| die "sed $(ezm3target) failed"
+	echo "M3CC_MAKE = [\"make\", \"BISON=yacc\"]" >> m3config/src/$(ezm3target)
 
 	# now we disable X and OpenGL if the user doesnt have them in their USE var
 	sed -i \
@@ -66,7 +69,7 @@ src_compile() {
 }
 
 src_install() {
-	cd binaries/${EZM3_TARGET}
-	cp -a usr ${D}/ || die
+	cd binaries/$(ezm3target)
+	cp -pPR usr ${D}/ || die
 	rm -rf ${D}/usr/man
 }

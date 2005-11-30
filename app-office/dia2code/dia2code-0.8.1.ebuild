@@ -1,33 +1,32 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/app-office/dia2code/dia2code-0.8.1.ebuild,v 1.1 2002/06/20 21:32:45 stroke Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/dia2code/dia2code-0.8.1.ebuild,v 1.1.1.1 2005/11/30 09:58:48 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Convert UML diagrams produced with Dia to various source code
-flavours."
+inherit flag-o-matic
+
+DESCRIPTION="Convert UML diagrams produced with Dia to various source code flavours."
+HOMEPAGE="http://dia2code.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-HOMEPAGE="http://dia2code.sourceforge.net"
+
+LICENSE="GPL-2"
 SLOT="0"
-LICENCE="GPL-2"
+KEYWORDS="amd64 ia64 ppc sparc x86"
+IUSE=""
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	dev-libs/libxml2"
-
 RDEPEND="${DEPEND}
 	>=app-office/dia-0.90.0"
 
-
 src_compile () {
 	# libxml2 header fix
-	CFLAGS="${CFLAGS} -I/usr/include/libxml2/libxml"
-	./configure --prefix=/usr \
-                --host="${CHOST}"
+	append-flags -I/usr/include/libxml2/libxml
+	econf || die
 	emake || die
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
 	dodoc AUTHORS ChangeLog README TODO
 	doman dia2code.1
 }
-

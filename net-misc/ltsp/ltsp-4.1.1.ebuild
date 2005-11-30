@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ltsp/ltsp-4.1.1.ebuild,v 1.1 2005/04/29 11:30:20 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ltsp/ltsp-4.1.1.ebuild,v 1.1.1.1 2005/11/30 09:55:33 chriswhite Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ DEPEND="app-arch/tar
 RDEPEND="X? ( virtual/x11 )
 	virtual/tftp
 	sys-apps/xinetd
-	net-misc/dhcp
+	|| ( net-misc/dhcp net-dns/dnsmasq )
 	net-fs/nfs-utils
 	net-nds/portmap
 	dev-perl/libwww-perl"
@@ -190,10 +190,10 @@ src_install() {
 pkg_postinst() {
 	einfo
 	einfo "Either use ltspcfg to configure your stuff, or follow the guide at gentoo.org:"
-	einfo "                   http://www.gentoo.org/doc/en/ltsp.xml                      "
+	einfo "                   http://www.gentoo.org/doc/en/ltsp.xml"
 	einfo
-	einfo "     NOTE: The directory containing LTSP has changed to /opt/ltsp-4.1.1/      "
+	einfo "     NOTE: The directory containing LTSP has changed to /opt/ltsp-4.1.1/"
 	einfo
-	einfo "        NOTE: to enable USB you have to add USB=Y to your lts.conf            "
+	einfo "        NOTE: to enable USB you have to add USB=Y to your lts.conf"
 	einfo
 }

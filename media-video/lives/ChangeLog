@@ -1,8 +1,42 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/lives/ChangeLog,v 1.1 2003/09/03 22:13:24 lu_zero Exp $
+# ChangeLog for media-video/lives
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/lives/ChangeLog,v 1.1.1.1 2005/11/30 09:57:56 chriswhite Exp $
 
-*LiVES-0.7.1 (03 Sep 2003)
+*lives-0.9.5_pre3 (09 Apr 2005)
+
+  17 Jun 2005; Marc Hildebrand <zyper@gentoo.org> +lives-0.9.5_pre3.ebuild:
+  Version bump. Closes bug #96121, thanks to Andre Kloth for the ebuild.
+
+  20 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> lives-0.9.1.ebuild:
+  introduced libvisual support, controlled by the respective useflag. also
+  removed gdk-pixbuf dependency, fixes #75765
+
+  15 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> lives-0.7.1.ebuild,
+  lives-0.8.1.ebuild, lives-0.8.5.ebuild:
+  changed app-cdr/cdrtools dependency to virtual/cdrtools. see bug #77817.
+
+  11 Jan 2005; Luca Barbato <lu_zero@gentoo.org> lives-0.9.1.ebuild:
+  Workaround for amd64
+
+*lives-0.9.1 (16 Dec 2004)
+
+  16 Dec 2004; Luca Barbato <lu_zero@gentoo.org> +lives-0.9.1.ebuild:
+  New version
+
+*lives-0.8.5 (03 Jun 2004)
+
+  03 Jun 2004; Luca Barbato <lu_zero@gentoo.org> +lives-0.8.5.ebuild:
+  New version
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> lives-0.8.1.ebuild:
+  Adding amd64 keyword. Closing #44305.
+
+*lives-0.8.1 (23 Dec 2003)
+
+  23 Dec 2003; Luca Barbato <lu_zero@gentoo.org> lives-0.8.1.ebuild:
+  New version
+
+*lives-0.7.1 (03 Sep 2003)
 
   03 Sep 2003; Luca Barbato <lu_zero@gentoo.org>:
   Thanks to Ian Haylock <haylocki@v21mail.co.uk> for the initial ebuild.

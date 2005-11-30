@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.11-r1.ebuild,v 1.1 2005/08/04 20:33:58 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.11-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:38 chriswhite Exp $
 
 inherit eutils
 

@@ -1,6 +1,293 @@
 # ChangeLog for app-office/gnucash
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-office/gnucash/ChangeLog,v 1.1 2002/02/01 21:53:09 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/gnucash/ChangeLog,v 1.1.1.1 2005/11/30 09:58:57 chriswhite Exp $
+
+*gnucash-1.8.12 (27 Oct 2005)
+
+  27 Oct 2005; Seemant Kulleen <seemant@gentoo.org> +gnucash-1.8.12.ebuild:
+  version bump thanks to: Sascha Silbe for opening bug #109920 and Brian
+  Dolbec for debugging the version bump extensively
+
+  16 Sep 2005; Seemant Kulleen <seemant@gentoo.org> -gnucash-1.8.8.ebuild:
+  remove old cruft version
+
+  26 Aug 2005; Aron Griffis <agriffis@gentoo.org> gnucash-1.8.11.ebuild:
+  add ~ia64
+
+  05 Aug 2005; Seemant Kulleen <seemant@gentoo.org> gnucash-1.8.8.ebuild,
+  gnucash-1.8.9.ebuild, -gnucash-1.8.10.ebuild, gnucash-1.8.11.ebuild:
+  fix mentions of xorg-x11 to virtual/x11. Closes bug #85495 by Sergey Okhapkin
+
+  17 Mar 2005; Seemant Kulleen <seemant@gentoo.org> gnucash-1.8.9.ebuild:
+  bump docs to 1.8.5, closing bug #74291 by James M <Mess1214@hotmail.com>.
+  Sorry for the delay, guys
+
+*gnucash-1.8.11 (14 Mar 2005)
+
+  14 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +gnucash-1.8.11.ebuild:
+  version bump thanks to: Urs Joss <tschenturs@gmx.ch> in bug #81224
+
+  14 Feb 2005; Simon Stelling <blubb@gentoo.org> gnucash-1.8.10.ebuild:
+  added ~amd64
+
+  21 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> gnucash-1.8.9.ebuild:
+  Stable on alpha.
+
+  13 Jan 2005; Hanno Boeck <hanno@gentoo.org> gnucash-1.8.10.ebuild:
+  Change dep from aqhbci-wizard-kde to aqhbci-qt-wizard.
+
+  02 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> gnucash-1.8.10.ebuild:
+  ~alpha keyword, bug 73702.
+
+  03 Jan 2005; Chris White <chriswhite@gentoo.org> gnucash-1.8.10.ebuild:
+  ~ppc marked per bug #73702.
+
+  30 Dec 2004; Jason Wever <weeve@gentoo.org> gnucash-1.8.10.ebuild:
+  Added ~sparc keyword wrt bug #73702.
+
+  30 Dec 2004; Seemant Kulleen <seemant@gentoo.org> gnucash-1.8.10.ebuild,
+  gnucash-1.8.8.ebuild, gnucash-1.8.9.ebuild:
+  added a check for whether bitmap-fonts support exists in xorg-x11. Closes
+  bug #75910 by Volkov Peter <torre_cremata@mail.ru>
+
+  30 Dec 2004; Seemant Kulleen <seemant@gentoo.org> gnucash-1.8.10.ebuild:
+  changed hbci dependency from aqhbci to aqhbci-wizard-kde, closing bug #75961
+  by Arudil <mmueller12345@yahoo.de>. Note that this now adds qt as a big fat
+  dependency for gnucash, so be aware. Remove alpha and sparc keywords
+  again.
+
+  27 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> gnucash-1.8.10.ebuild:
+  Add back ~alpha keyword, bug 73702.
+
+  26 Dec 2004; Jason Wever <weeve@gentoo.org> gnucash-1.8.10.ebuild:
+  Added ~sparc keyword wrt bug #73702.
+
+*gnucash-1.8.10 (26 Dec 2004)
+
+  26 Dec 2004; Seemant Kulleen <seemant@gentoo.org> +gnucash-1.8.10.ebuild,
+  gnucash-1.8.9.ebuild:
+  version bump, thanks to: Martin Gramatke <xmit@gmx.de> and Urs Joss
+  <tschenturs@gmx.ch> in bug #73702
+
+  11 Dec 2004; Jason Wever <weeve@gentoo.org> gnucash-1.8.9.ebuild:
+  Stable on sparc.
+
+  10 Oct 2004; Danny van Dyk <kugelfang@gentoo.org> gnucash-1.8.9.ebuild:
+  Fixed missing eclass in inherit (eutils). Neccessary for get_libdir().
+
+  18 Oct 2004; Seemant Kulleen <seemant@gentoo.org> gnucash-1.8.8.ebuild:
+  Change gnucash-docs to 1.8.4 to solve a similar problem with gnucash-1.8.8
+  that was solved earlier with 1.8.9. Closes bug #67966 by Bruce Guenter
+  <bruceg@em.ca>
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnucash-1.8.7.ebuild, gnucash-1.8.8.ebuild, gnucash-1.8.9.ebuild:
+  Masked gnucash-1.8.9.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnucash-1.8.7.ebuild, gnucash-1.8.8.ebuild:
+  Masked gnucash-1.8.8.ebuild stable for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnucash-1.8.7.ebuild:
+  Masked gnucash-1.8.7.ebuild stable for ppc
+
+  19 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> gnucash-1.8.9.ebuild:
+  Marked ~amd64. Fixes BUG #39937.
+
+  22 Jul 2004; Seemant Kulleen <seemant@gentoo.org> -gnucash-1.8.4.ebuild,
+  -gnucash-1.8.5.ebuild, -gnucash-1.8.6.ebuild, gnucash-1.8.9.ebuild:
+  info pages fix thanks to: Doug Weimer <dweimer@socal.rr.com> who provided the
+  fix in bug #52171 by Alan Schmitt <alan.schmitt@polytechnique.org>. Also, move
+  1.8.9 to stable to fix the compilation issue being reported on the forums
+
+  21 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> gnucash-1.6.8.ebuild,
+  gnucash-1.8.4.ebuild, gnucash-1.8.5.ebuild, gnucash-1.8.6.ebuild,
+  gnucash-1.8.7.ebuild, gnucash-1.8.8.ebuild, gnucash-1.8.9.ebuild:
+  don't install COPYING
+
+  01 Jun 2004; Aron Griffis <agriffis@gentoo.org> gnucash-1.6.8.ebuild,
+  gnucash-1.8.4.ebuild, gnucash-1.8.5.ebuild, gnucash-1.8.6.ebuild,
+  gnucash-1.8.7.ebuild, gnucash-1.8.8.ebuild, gnucash-1.8.9.ebuild:
+  Fix use invocation
+
+  11 May 2004; Seemant Kulleen <seemant@gentoo.org> gnucash-1.8.9.ebuild:
+  added quotes local USE flag to enable online stock quote retrieval. Closes
+  bug #29083 by SpanKY <vapier@gentoo.org>
+
+*gnucash-1.8.9 (11 May 2004)
+
+  11 May 2004; Seemant Kulleen <seemant@gentoo.org> +gnucash-1.8.9.ebuild:
+  version bump, as per bug #47679 by: Urs Joss <tschenturs@gmx.ch>. This should
+  also close bug #27978 by Carl A. Dunham <gentoo-bugs@carldunham.com>, which
+  was as a result of invaluable assistance from: Chris Lyttle (Wilddev)
+  <chris@wilddev.net>
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> gnucash-1.6.8.ebuild:
+  Add die following econf for bug 48950
+
+  10 Apr 2004; Jason Wever <weeve@gentoo.org> gnucash-1.8.8.ebuild:
+  Added ~sparc keyword, helps resolve bug #47243.
+
+  09 Jan 2004; Aron Griffis <agriffis@gentoo.org> gnucash-1.8.8.ebuild:
+  stable on alpha
+
+  01 Jan 2004; <spider@gentoo.org> gnucash-1.8.8.ebuild:
+  KEYWORDS="x86"
+
+*gnucash-1.8.8 (01 Dec 2003)
+
+  01 Dec 2003; <spider@gentoo.org> gnucash-1.8.8.ebuild:
+  Versionbump. Seems to work nicely
+
+  18 Nov 2003; Aron Griffis <agriffis@gentoo.org> gnucash-1.8.7.ebuild:
+  Stable on x86 and alpha
+
+*gnucash-1.8.7 (16 Sep 2003)
+
+  16 Sep 2003; Aron Griffis <agriffis@gentoo.org> gnucash-1.8.7.ebuild:
+  Version bump to 1.8.7 and remove the libofx hack (no longer needed)
+
+*gnucash-1.8.6 (14 Sep 2003)
+
+  14 Sep 2003; Aron Griffis <agriffis@gentoo.org> gnucash-1.8.6.ebuild:
+  Version bump
+
+  05 Sep 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.4.ebuild,
+  gnucash-1.8.5.ebuild:
+  added docbook-xml-dtd-4.1.2 dep (#27932)
+
+  03 Sep 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.5.ebuild:
+  1.8.5 should dep on openhbci-0.9.13
+
+*gnucash-1.8.5 (02 Sep 2003)
+
+  02 Sep 2003; Alastair Tse <liquidx@gentoo.org> :
+  version bump. made user docs install without doc useflag. updated docs to
+  version 1.8.3
+
+  24 Jul 2003; Tavis Ormandy <taviso@gentoo.org> gnucash-1.8.4.ebuild:
+  ~alpha
+
+  16 Jul 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.4.ebuild:
+  marked stable for x86
+
+  09 Jul 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.2.ebuild,
+  gnucash-1.8.4.ebuild:
+  added pkgconfig dep
+
+  12 Jun 2003; Seemant Kulleen <seemant@gentoo.org> gnucash-1.8.4.ebuild:
+  xpm is provided by xfree
+
+  12 Jun 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.4.ebuild:
+  filtering -fno-inline because gnucash uses GLIB_INLINEs (#22591)
+
+  10 Jun 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.6.8.ebuild,
+  gnucash-1.8.1.ebuild, gnucash-1.8.2-r1.ebuild, gnucash-1.8.2.ebuild,
+  gnucash-1.8.3-r1.ebuild, gnucash-1.8.3.ebuild, gnucash-1.8.4.ebuild,
+  files/gnucash-1.8.3-qif-file.patch:
+  cleanup and fixed gal deps
+
+*gnucash-1.8.4 (27 May 2003)
+
+  27 May 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.4.ebuild:
+  version bump. removed backported patch for QIF import
+
+*gnucash-1.8.3-r1 (18 May 2003)
+
+  18 May 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.3-r1.ebuild,
+  files/gnucash-1.8.3-qif-file.patch:
+  adds fix for qif import thanks to Chris Lyttle (#17277)
+
+*gnucash-1.8.3 (14 May 2003)
+
+  16 May 2003; foser <foser@gentoo.org> gnucash-1.{6.8,8.3}.ebuild :
+  Added popt dep (#21088)
+
+  14 May 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.3.ebuild:
+  version bump
+
+  01 May 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.2-r1.ebuild:
+  fixed scrollkeeper problem and digest
+
+*gnucash-1.8.2-r1 (28 Apr 2003)
+
+  28 Apr 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.2-r1.ebuild:
+  added docs support
+  workaround ./configure doesn't accept --disable-*
+
+  28 Apr 2003; Alastair Tse <liquidx@gentoo.org> gnucash-1.8.2-r1.ebuild:
+  new gnucash that has ofx and hbci support.
+  also depends on new guile-1.6.x
+
+*gnucash-1.8.2 (21 Mar 2003)
+
+  21 Mar 2003; foser <foser@gentoo.org> gnucash-1.8.2.ebuild :
+  Fixed SRC_URI and a couple of other minor things
+ 
+*gnucash-1.8.1 (17 Mar 2003)
+
+  19 Mar 2003; Jon Nall <nall@gentoo.org> gnucash-1.8.1.ebuild :
+  added ~ppc
+
+  17 Mar 2003; Carl Perry <edolnx@gentoo.org> gnucash-1.8.1.ebuild, 
+  gnucash-1.6.8.ebuild: Fixed broken dependancy in 1.8.1 so it compiles 
+  now and modified g-wrap dependancy in 1.6.8 to require a version less 
+  than 1.3 - both compile cleanly on a virgin system or if the other was
+  already installed.
+
+*gnucash-1.8.1 (17 Mar 2003)
+ 
+  17 Mar 2003; Carl Perry <edolnx@gentoo.org> gnucash-1.8.1.ebuild:
+  Added new release of gnucash for testing, contains many bug fixes and
+  start of small business support.
+
+*gnucash-1.6.8 (05 Sep 2002)
+
+  16 Mar 2003; Martin Holzer <mholzer@gentoo.org> gnucash-1.6.6-r1.ebuild,
+  gnucash-1.6.6.ebuild, gnucash-1.6.7.ebuild, gnucash-1.6.8.ebuild:
+  Changed SRC_URI to use mirror://sf.
+
+  16 Mar 2003; Martin Holzer <mholzer@gentoo.org> gnucash-1.6.8.ebuild:
+  fixed type in ebuild
+
+  03 Mar 2003; foser <foser@gentoo.org> gnucash-1.6.8.ebuild :
+  Added some more flag-o-matic stuff (#14808)
+
+  06 Nov 2002: L. Boshell <leonardop@gentoo.org> : Remove the
+  `--enable-profile' argument for ./configure. Fixes bug #6769.
+  
+  05 Nov 2002; L. Boshell <leonardop@gentoo.org> gnucash-1.6.8.ebuild :
+  Fixed guile dep (bug #10306).
+  
+  05 Sep 2002; Chris Houser <chouser@gentoo.org> gnucash-1.6.8.ebuild :
+  Bump up to latest version of gnucash.  Both 1.6.7 and this version failed to
+  build for me with "postgres" in my use settings.  I added a patch to this
+  version that seems to fix it.
+
+*gnucash-1.6.7 (19 Aug 2002)
+  19 Aug 2002; Spider <spider@gentoo.org> gnucash-1.6.7.ebuild :
+  filter out -fomit-frame-pointer as it fails to build with this
+  update to last version
+  
+*gnucash-1.6.6-r1 (07 Aug 2002)
+
+  19 Aug 2002; L. Boshell <leonardop@gentoo.org> gnucash-1.6.6-r1.ebuild:
+  Make sure to avoid the C flag `-fomit-frame-pointer', since it causes
+  problems in the compilation phase. Thanks to Jacob Perkins and Paul Belt
+  for pointing this out on bug #6193.
+
+  07 Aug 2002; L. Boshell <leonardop@gentoo.org> gnucash-1.6.6-r1.ebuild:
+  Reworked dependencies. Add support for PostgreSQL.
+
+*gnucash-1.6.6 (28 Mar 2002)
+
+  25 Jul 2002; Daniel Ahlberg <aliz@gentoo.org> gnucash-1.6.6.ebuild :
+  Added LICENSE, KEYWORDS, SLOT.
+
+  28 Mar 2002; Seemant Kulleen <seemant@gentoo.org> gnucash-1.6.6.ebuild :
+
+  Version bump
 
 *gnucash-1.6.5-r1 (1 Feb 2002)
 

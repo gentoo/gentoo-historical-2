@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxssh/nxssh-1.3.2.ebuild,v 1.1 2004/05/13 21:47:18 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nxssh/nxssh-1.3.2.ebuild,v 1.1.1.1 2005/11/30 09:55:39 chriswhite Exp $
 
 MY_P="${PN}-1.3.2-3"
 DESCRIPTION="Modified openssh client, used by nxclient"
@@ -12,7 +12,7 @@ KEYWORDS="x86 ~ppc -sparc -mips -alpha"
 DEPEND=""
 # Run-time dependencies, same as DEPEND if RDEPEND isn't defined:
 #RDEPEND=""
-IUSE="tcpd pam kerberos"
+IUSE="ipv6 kerberos pam tcpd"
 
 S=${WORKDIR}/${PN}
 

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.43.20050224-r2.ebuild,v 1.1 2005/06/28 22:13:30 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.43.20050224-r2.ebuild,v 1.1.1.1 2005/11/30 09:57:45 chriswhite Exp $
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic qt3
 
 MAJ_PV=${PV:0:3}
 MIN_PV=${PV:0:6}
@@ -16,21 +16,20 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0.7"
 
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~sparc ~x86"
-IUSE="3dnow X alsa debug divx4linux dmalloc dpms a52 encode esd mad matrox
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc64 ~sparc ~x86"
+IUSE="3dnow X alsa debug dmalloc dpms a52 encode esd mad matrox
 mmx vorbis oss qt sblive sdl sse truetype v4l vidix win32codecs xinerama xv xvid
 zlib"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-0.9.0_rc2 )
 	win32codecs? ( >=media-libs/win32codecs-0.90 )
-	divx4linux? ( >=media-libs/divx4linux-20030428 )
 	dmalloc? ( !amd64? ( !arm? ( !mips? ( dev-libs/dmalloc ) ) ) )
 	a52? ( >=media-libs/a52dec-0.7 )
 	encode? ( >=media-sound/lame-3.90 )
 	esd? ( >=media-sound/esound-0.2.28 )
 	mad? ( media-libs/libmad )
 	vorbis? ( >=media-libs/libvorbis-1.0 )
-	qt? ( >=x11-libs/qt-3.0.3 )
+	qt? ( $(qt_min_version 3.1) )
 	sdl? ( >=media-libs/libsdl-1.2.2 )
 	truetype? ( >=media-libs/freetype-2.1 )
 	xv? ( virtual/x11 )
@@ -66,6 +65,8 @@ src_unpack() {
 	# fix building with gcc4
 	# http://debian-amd64.alioth.debian.org/gcc-3.4/patches/avifile_0.7.43.20050224-1.0.0.1.gcc4.patch
 	epatch ${FILESDIR}/${P}-1.0.0.1.gcc4.patch
+	# Fix pic building (bug #88582)
+	epatch ${FILESDIR}/${P}-pic.patch
 
 	if ! use qt ; then
 		sed -i -e 's/qtvidcap\ qtrecompress//g' \
@@ -82,9 +83,9 @@ src_unpack() {
 
 	# Run autotools...
 	cd ${S}
-	[[ -f configure.ac && -f configure.in ]] && rm -f configure.in
+	[[ -f configure.ac ]] && rm -f configure.in
 	# acinclude have a broken SDL test that clobber '/usr/lib64' to '4'
-	[[ -f acinclude.m4 ]] && rm -f acinclude.m4
+	rm -f acinclude.m4
 
 	# Reconfigure autotools
 	ACLOCAL_FLAGS="-I m4" ./autogen.sh --copy --force || die "autogen.sh failed"

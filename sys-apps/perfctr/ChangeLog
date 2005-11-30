@@ -1,6 +1,6 @@
 # ChangeLog for sys-apps/perfctr
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/perfctr/ChangeLog,v 1.1 2005/08/23 05:49:34 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/perfctr/ChangeLog,v 1.1.1.1 2005/11/30 09:56:35 chriswhite Exp $
 
 *perfctr-2.7.18 (23 Aug 2005)
 

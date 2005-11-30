@@ -1,9 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
-<maintainer>
-	<email>pebenito@gentoo.org</email>
-	<name>Chris PeBenito</name>
-	<description>SELinux patch maintainer</description>
-</maintainer>
-<longdescription>Mkinitrd creates initial ramdisks for use when the kernel first loads.</longdescription>
+<herd>base-system</herd>
 </pkgmetadata>

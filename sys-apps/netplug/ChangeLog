@@ -1,6 +1,18 @@
 # ChangeLog for sys-apps/netplug
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/netplug/ChangeLog,v 1.1 2005/09/02 11:11:20 uberlord Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/netplug/ChangeLog,v 1.1.1.1 2005/11/30 09:56:14 chriswhite Exp $
+
+  19 Oct 2005; Doug Goldstein <cardoe@gentoo.org> netplug-1.2.9-r1.ebuild:
+  adding ~ppc keyword
+
+*netplug-1.2.9-r1 (13 Oct 2005)
+
+  13 Oct 2005; Roy Marples <uberlord@gentoo.org> files/netplug,
+  -netplug-1.2.9.ebuild, +netplug-1.2.9-r1.ebuild:
+  Fixed initng support.
+
+  10 Oct 2005; Roy Marples <uberlord@gentoo.org> netplug-1.2.9.ebuild:
+  Stable on amd64 and x86.
 
 *netplug-1.2.9 (02 Sep 2005)
 

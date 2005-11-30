@@ -1,36 +1,41 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Daniel Robbins <drobbins@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/most/most-4.9.2.ebuild,v 1.1 2002/05/14 06:04:41 woodchip Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/most/most-4.9.2.ebuild,v 1.1.1.1 2005/11/30 09:55:58 chriswhite Exp $
 
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
 DESCRIPTION="An extremely excellent text file reader"
-
-SRC_URI="ftp://space.mit.edu/pub/davis/most/${A}"
+HOMEPAGE="http://freshmeat.net/projects/most/"
+KEYWORDS="x86 amd64 -ppc"
+IUSE=""
+SLOT="0"
+LICENSE="GPL-2"
+SRC_URI="ftp://space.mit.edu/pub/davis/most/${P}.tar.gz"
 
 DEPEND=">=sys-libs/slang-1.4.2
-        >=sys-libs/ncurses-5.2-r2"
+	>=sys-libs/ncurses-5.2-r2"
 
 src_compile() {
-
-    try ./configure 	\
-	--host=${CHOST} \
-	--prefix=/usr \
-	--sysconfdir=/etc
+	./configure \
+		--host=${CHOST} \
+		--prefix=/usr \
+		--sysconfdir=/etc || die
 
 	#*possible* (not definite) pmake problems, let's not risk it.
 	make SYS_INITFILE="/etc/most.conf" || die
 }
 
 src_install() {
+	case ${ARCH} in
+		x86)
+			dobin src/x86objs/most
+		;;
+		amd64)
+			dobin src/amd64objs/most
+		;;
+	esac
 
-	dobin src/x86objs/most
 	doman most.1
 
 	dodoc COPYING COPYRIGHT README changes.txt
-	docinto txt 
+	docinto txt
 	dodoc default.rc lesskeys.rc most-fun.txt
 }
-
-

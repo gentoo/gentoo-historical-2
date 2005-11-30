@@ -1,6 +1,36 @@
-# ChangeLog for sys-apps/hotplug
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hotplug-base/ChangeLog,v 1.1 2004/03/29 23:58:36 gregkh Exp $
+# ChangeLog for sys-apps/hotplug-base
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hotplug-base/ChangeLog,v 1.1.1.1 2005/11/30 09:56:57 chriswhite Exp $
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Aug 2004; Bryan Østergaard <kloeri@gentoo.org>
+  hotplug-base-20040401.ebuild:
+  Stable on alpha.
+
+  22 Jul 2004; Tom Gall <tgall@gentoo.org> hotplug-base-20040401.ebuild:
+  stable on ppc64
+
+  28 Jun 2004; Joshua Kinard <kumba@gentoo.org> hotplug-base-20040401.ebuild:
+  Marked stable on mips.
+
+  19 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  hotplug-base-20040401.ebuild:
+  Marked stable on amd64.
+
+*hotplug-base-20040401 (15 Apr 2004)
+
+  15 Apr 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  hotplug-base-20040401.ebuild:
+  Stable on sparc
+
+  01 Apr 2004; Greg Kroah-Hartman <gregkh@gentoo.org> :
+  version bump for upstream 2004_04_01 release.
+
+  29 Mar 2004; Greg Kroah-Hartman <gregkh@gentoo.org>
+  hotplug-base-20040329.ebuild:
+  got rid of the post messages ad as they do not make any sense.
 
 *hotplug-base-20040329 (29 Mar 2004)
 

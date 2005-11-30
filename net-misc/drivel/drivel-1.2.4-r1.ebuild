@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/drivel/drivel-1.2.4-r1.ebuild,v 1.1 2005/06/29 00:05:54 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/drivel/drivel-1.2.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:42 chriswhite Exp $
 
 inherit gnome2
 

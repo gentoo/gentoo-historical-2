@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/neon/neon-0.24.7.ebuild,v 1.1 2004/07/20 19:28:55 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/neon/neon-0.24.7.ebuild,v 1.1.1.1 2005/11/30 09:55:31 chriswhite Exp $
 
 DESCRIPTION="HTTP and WebDAV client library"
 HOMEPAGE="http://www.webdav.org/neon/"
@@ -8,7 +8,7 @@ SRC_URI="http://www.webdav.org/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~s390"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
 IUSE="ssl zlib expat"
 
 DEPEND="expat? ( dev-libs/expat )
@@ -16,13 +16,21 @@ DEPEND="expat? ( dev-libs/expat )
 	ssl? ( >=dev-libs/openssl-0.9.6f )
 	zlib? ( sys-libs/zlib )"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	if use userland_Darwin ; then
+		sed -i -e "s:GXX:GCC:g" configure || die "sed failed"
+	fi
+}
+
 src_compile() {
 	local myc=""
 	use expat && myc="$myc --with-expat" || myc="$myc --with-xml2"
 	econf \
 		--enable-shared \
-		`use_with ssl` \
-		`use_with zlib` \
+		$(use_with ssl) \
+		$(use_with zlib) \
 		${myc} \
 		|| die "econf failed"
 	emake

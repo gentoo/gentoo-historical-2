@@ -1,8 +1,45 @@
 # ChangeLog for dev-lang/f2c
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/f2c/ChangeLog,v 1.1 2003/04/12 19:33:15 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/f2c/ChangeLog,v 1.1.1.1 2005/11/30 09:58:04 chriswhite Exp $
 
-*f2c-20030320.ebuild (12 Apr 2003)
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org> f2c-20030320-r1.ebuild:
+  Mark 20030320-r1 stable on alpha
+
+  17 Feb 2005; Bryan Østergaard <kloeri@gentoo.org> f2c-20030320-r1.ebuild:
+  ~alpha keyword.
+
+  29 Jan 2005; Yuta SATOH <nigoro@gentoo.org> f2c-20030320-r1.ebuild:
+  Stable on ppc64
+
+  27 Jan 2005; Ferris McCormick <fmccor@gentoo.org> f2c-20030320-r1.ebuild:
+  Stable for sparc (Security Bugs 79725, 77570).
+
+*f2c-20030320-r1 (27 Jan 2005)
+
+  27 Jan 2005; Danny van Dyk <kugelfang@gentoo.org>
+  +files/f2c-20030320-CAN-2005-0017.patch, +f2c-20030320-r1.ebuild:
+  Fixing security BUG #77570 (CAN-2005-0017). Stable on amd64, ppc and x86.
+
+  10 Jan 2005; Markus Rothe <corsair@gentoo.org> f2c-20030320.ebuild:
+  Stable on ppc64
+
+  09 Sep 2004; Philippe Trottier <tchiwam@gentoo.org> f2c-20030320.ebuild:
+  Marked ~ppc64
+
+  06 Aug 2004; Ferris McCormick <fmccor@gentoo.org> f2c-20030320.ebuild:
+  Stable for sparc (part of bug 55386).
+
+  06 Aug 2004; Danny van Dyk <kugelfang@gentoo.org> f2c-20030320.ebuild:
+  Marked stable on amd64 and ppc.
+
+  01 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> +metadata.xml,
+  f2c-20030320.ebuild:
+  Marked ~sparc on behalf of ciaranm.
+
+  01 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> f2c-20030320.ebuild:
+  Marked ~ppc
+
+*f2c-20030320 (12 Apr 2003)
 
   12 Apr 2003; George Shapovalov <george@gentoo.org> f2c-20030320.ebuild, files/digest-f2c-20030320 :
   initial release (#17451)

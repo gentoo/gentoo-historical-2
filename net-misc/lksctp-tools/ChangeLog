@@ -1,6 +1,23 @@
 # ChangeLog for net-misc/lksctp-tools
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/lksctp-tools/ChangeLog,v 1.1 2004/11/24 01:35:05 robbat2 Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/lksctp-tools/ChangeLog,v 1.1.1.1 2005/11/30 09:55:01 chriswhite Exp $
+
+  25 Jun 2005; Sven Wegener <swegener@gentoo.org> lksctp-tools-1.0.1.ebuild,
+  lksctp-tools-1.0.2.ebuild:
+  Removed useless || dependency.
+
+*lksctp-tools-1.0.2 (01 May 2005)
+
+  01 May 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +lksctp-tools-1.0.2.ebuild:
+  Version bump.
+
+  01 May 2005; Robin H. Johnson <robbat2@gentoo.org>
+  lksctp-tools-1.0.1.ebuild:
+  Fix DESC bug #91051, move to stable x86.
+
+  11 Jan 2005; John Mylchreest <johnm@gentoo.org> lksctp-tools-1.0.1.ebuild:
+  fixing linux-headers DEPEND for 2005.0. can we get away with a virtual?
 
 *lksctp-tools-1.0.1 (23 Nov 2004)
 

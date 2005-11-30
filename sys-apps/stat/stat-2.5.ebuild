@@ -1,17 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Arcady Genkin <agenkin@thpoon.com>
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/stat/stat-2.5.ebuild,v 1.1 2002/02/09 05:53:10 drobbins Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/stat/stat-2.5.ebuild,v 1.1.1.1 2005/11/30 09:55:57 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="A command-line stat() wrapper."
+inherit eutils
+
+DESCRIPTION="A command-line stat() wrapper"
 SRC_URI="ftp://metalab.unc.edu/pub/linux/utils/file/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/directory/stat.html"
-DEPEND="virtual/glibc"
+
+KEYWORDS="x86 amd64 ~sparc"
+SLOT="0"
+LICENSE="GPL-2"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+
 	cp Makefile Makefile.orig
 	sed -e "s:-O2 -g:${CFLAGS}:" Makefile.orig > Makefile
 }
@@ -20,7 +27,7 @@ src_compile() {
 	emake || die
 }
 
-src_install () {
+src_install() {
 	dobin stat
 	doman stat.1
 	dodoc COPYRIGHT GPL README Changelog

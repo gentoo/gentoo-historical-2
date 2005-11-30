@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.5-r2.ebuild,v 1.1 2004/11/03 23:48:02 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.5-r2.ebuild,v 1.1.1.1 2005/11/30 09:57:04 chriswhite Exp $
 
 inherit eutils libtool gnuconfig flag-o-matic
 
@@ -13,19 +13,17 @@ SRC_URI="ftp://ftp.pld.org.pl/software/shadow/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="pam selinux nls skey"
 
 RDEPEND=">=sys-libs/cracklib-2.7-r3
-	pam? ( >=sys-libs/pam-0.75-r4 )
-	!pam? ( !virtual/login )
+	pam? ( >=sys-libs/pam-0.75-r4 sys-apps/pam-login )
+	!pam? ( !sys-apps/pam-login )
 	skey? ( app-admin/skey )
 	selinux? ( sys-libs/libselinux )"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.0.51-r2
 	nls? ( sys-devel/gettext )"
-#this requires a newer portage (>2.0.51-r2)
-#PROVIDE="!pam? ( virtual/login )"
 
 pkg_preinst() {
 	rm -f ${ROOT}/etc/pam.d/system-auth.new
@@ -66,6 +64,7 @@ src_unpack() {
 	# Allows shadow configure detect newer systems properly
 	gnuconfig_update
 	elibtoolize
+	epunt_cxx
 }
 
 src_compile() {
@@ -177,7 +176,7 @@ pkg_postinst() {
 		ewarn "  ${ROOT}etc/pam.d/system-auth.bak"
 		echo
 
-		cp -a ${ROOT}/etc/pam.d/system-auth \
+		cp -pPR ${ROOT}/etc/pam.d/system-auth \
 			${ROOT}/etc/pam.d/system-auth.bak;
 		mv -f ${ROOT}/etc/pam.d/system-auth.new \
 			${ROOT}/etc/pam.d/system-auth

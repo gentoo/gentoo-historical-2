@@ -1,13 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/tcng/tcng-9l.ebuild,v 1.1 2004/04/24 10:37:30 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/tcng/tcng-9l.ebuild,v 1.1.1.1 2005/11/30 09:56:39 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="tcng - Traffic Control Next Generation"
 HOMEPAGE="http://tcng.sourceforge.net/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="doc tcsim"
+KEYWORDS="~x86 ~ppc"
+IUSE="debug doc tcsim"
 
 # perl because stuff is written in it
 # iproute,linux-atm as the output needs that
@@ -20,7 +22,7 @@ DEPEND_COMMON="dev-lang/perl
 				sys-devel/gcc
 				sys-devel/binutils"
 
-DEPEND="doc? ( virtual/ghostscript app-text/tetex media-gfx/transfig )
+DEPEND="doc? ( virtual/ghostscript virtual/tetex media-gfx/transfig )
 	sys-devel/make
 	dev-util/yacc
 	sys-devel/flex
@@ -48,7 +50,7 @@ KERNEL_P=${KERNEL_PN}-${KERNEL_PV}
 # note this project does NOT use the SF mirroring system
 SRC_URI="http://tcng.sourceforge.net/dist/${P}.tar.gz
 	tcsim? ( ftp://ftp.inr.ac.ru/ip-routing/${IPROUTE_SRCFILE}
-	http://ftp.debian.org/debian/pool/main/i/iproute/${IPROUTE_DEBIAN_PATCH}
+	mirror://debian/pool/main/i/iproute/${IPROUTE_DEBIAN_PATCH}
 	mirror://kernel/linux/kernel/v2.4/${KERNEL_P}.tar.bz2 )"
 
 S=${WORKDIR}/tcng

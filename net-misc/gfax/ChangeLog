@@ -1,6 +1,34 @@
 # ChangeLog for net-misc/gfax
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gfax/ChangeLog,v 1.1 2004/11/27 14:26:49 genstef Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gfax/ChangeLog,v 1.1.1.1 2005/11/30 09:55:16 chriswhite Exp $
+
+  24 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
+  -files/gfax.Makefile.fix, -gfax-0.6.4.ebuild:
+  Remove old version, bug 86328
+
+  24 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
+  -files/gfax.Makefile.fix, -gfax-0.6.4.ebuild:
+  Remove old version, bug 86328
+
+  10 Mar 2005; Peter Johanson <latexer@gentoo.org> gfax-0.6.4.ebuild,
+  gfax-0.7.2.ebuild, gfax-0.7.3.ebuild:
+  mono moved from dev-dotnet -> dev-lang
+
+*gfax-0.7.3 (01 Mar 2005)
+
+  01 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/gfax-0.7.3-sandbox.diff, +gfax-0.7.3.ebuild:
+  Version bump.
+
+*gfax-0.7.2 (27 Feb 2005)
+
+  27 Feb 2005; Stefan Schweizer <genstef@gentoo.org> +gfax-0.7.2.ebuild:
+  Version bump thanks to ramses on freenode and Yaakov S
+  <yselkowitz@hotmail.com> in bug 83124
+
+  13 Dec 2004; Stefan Schweizer <genstef@gentoo.org> gfax-0.6.4.ebuild:
+  Fix up the sandbox violation (inherit mono), depend on new gtk-sharp, remove
+  standard src_compile
 
 *gfax-0.6.4 (27 Nov 2004)
 

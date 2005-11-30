@@ -1,9 +1,37 @@
-MD5 5c18e8173e4d5e7a902f9dfc4bbf1b80 ChangeLog 8704
-MD5 57d49dcece64d038049874257f89f20c avifile-0.7.15.20020816-r1.ebuild 2226
-MD5 6ced5e3f190d3b31cb9e15f9214c7553 avifile-0.7.29.20030204.ebuild 4100
-MD5 232af89cb62a54d98be0b94837100253 avifile-0.7.32.20030219.ebuild 4099
-MD5 70df3d765d7b54122053e641b0017355 avifile-0.7.34.20030319.ebuild 4176
-MD5 f568371b0b1dd7cb7dfd933c551fddc9 files/digest-avifile-0.7.15.20020816-r1 73
-MD5 081b0f05ada052539e0eb16ae2eb441d files/digest-avifile-0.7.34.20030319 73
-MD5 8f9263344e2823ef236a16dd9dd9683a files/digest-avifile-0.7.29.20030204 73
-MD5 88eda2a3289907201d524c557bd8a753 files/digest-avifile-0.7.32.20030219 73
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 be3ce44ebda98923f67424b9d0d05ba0 ChangeLog 21606
+MD5 8981c162145c43fd70699f83c3f94ae0 avifile-0.7.38.20030710-r1.ebuild 3980
+MD5 35a55f8388e88bfab099edd7bf8ccffb avifile-0.7.41.20041001-r1.ebuild 4568
+MD5 38ecc8f255e1a65a1759b55320f836d5 avifile-0.7.41.20041001-r2.ebuild 4537
+MD5 f4b7a72550bd92613f4e250a4fea99b9 avifile-0.7.43.20050224-r1.ebuild 4658
+MD5 ea26b6b07746ae89640d78116a826973 avifile-0.7.43.20050224-r2.ebuild 4737
+MD5 8390bf9de24635d667a5724c2cc0cbe9 files/avifile-0.7.37.20030522-divx.patch 11943
+MD5 7a55e6cb72df715c9b822505d5b4b8b0 files/avifile-0.7.38.20030710-2.6.patch 2038
+MD5 624ac61f6a4fb9ed9700a7496f2827cb files/avifile-0.7.38.20030710-amd64.patch 466
+MD5 769b5c63369a3c1bc5b74abe591731fd files/avifile-0.7.38.20030710-sparc.patch 998
+MD5 37a0170a523a26fd8a8c576c498b3641 files/avifile-0.7.41.20041001-gcc2.patch 1006
+MD5 d004578ed49e07cac372c21c044775fe files/avifile-0.7.43.20050224-1.0.0.1.gcc4.patch 5878
+MD5 7404620a2904bb27683df4a0ed2f412d files/avifile-0.7.43.20050224-fixlabels.patch 559
+MD5 db5a5ee4d4627cbfa05d775c118cbc53 files/avifile-0.7.43.20050224-pic.patch 1416
+MD5 6cab3d2acc1d30f101f100f9549613d8 files/avifile-0.7.43.20050224-sdllibs.patch 569
+MD5 6eb792de0d30abfb680655dcdec8b15c files/avifile-0.7.43.20050224-sysffmpeg.patch 14435
+MD5 69d7c84947a5ea083f25e43fdacc126e files/avifile-gcc34.patch 5795
+MD5 1c397a5be4ce93dd90fde2b9ab3aa937 files/avifile-mad.patch 1846
+MD5 f2e5938361909893d37d1ce0b80fdbfc files/avifile-x86-gcc34.patch 5247
+MD5 21e60c1838b04fa1990fe5538569ac4b files/digest-avifile-0.7.38.20030710-r1 71
+MD5 f19f862b147fa314ed83d4b78e661a5d files/digest-avifile-0.7.41.20041001-r1 71
+MD5 f19f862b147fa314ed83d4b78e661a5d files/digest-avifile-0.7.41.20041001-r2 71
+MD5 3eca07dd543790b26539e1c1755d4fde files/digest-avifile-0.7.43.20050224-r1 72
+MD5 3eca07dd543790b26539e1c1755d4fde files/digest-avifile-0.7.43.20050224-r2 72
+MD5 5c7a3ea4957036aa1da3db9880a3ed34 files/flvenc-patch 558
+MD5 c5840e80e1a70f6b5ce25679e53f2dcb files/throw.patch 7396
+MD5 76b95bd390c69f39e5e7b028b3ff69a5 metadata.xml 272
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDXKf7j5H05b2HAEkRAqhBAJ9FMDoiLVTAl7zuBbjFpONmaE5tWgCfRxUL
+5/mMQ0K21by0NpylKibn3mA=
+=esox
+-----END PGP SIGNATURE-----

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/cannadic.eclass,v 1.1 2003/09/11 06:22:21 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/cannadic.eclass,v 1.1.1.1 2005/11/30 09:59:19 chriswhite Exp $
 #
 # Author: Mamoru KOMACHI <usata@gentoo.org>
 #
@@ -8,26 +8,16 @@
 # compatible dictionaries within the Portage system.
 #
 
-ECLASS=cannadic
-INHERITED="$INHERITED $ECLASS"
-EXPORT_FUNCTIONS cannadic-install dicsdir-install update-cannadic-dir \
-	src_install pkg_setup pkg_postinst pkg_postrm
+EXPORT_FUNCTIONS src_install pkg_setup pkg_postinst pkg_postrm
 
-IUSE="${IUSE} canna"
+IUSE="canna"
 
 DESCRIPTION="Based on the $ECLASS eclass"
 HOMEPAGE="http://canna.sourceforge.jp/"		# you need to change this!
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="public-domain"
-# I added all keywords form /usr/portage/profiles/keyword.desc atm since
-# cannadic source is basically plain text and will run on any platform
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips ~hpps ~arm ~amd64"
 SLOT="0"
-
-# I don't add Canna as a dependency because Anthy also uses cannadic
-DEPEND="${DEPEND}
-	canna? ( app-i18n/canna )"
 
 S="${WORKDIR}"
 
@@ -37,12 +27,12 @@ DOCS="README*"
 
 # You don't need to modify these
 #local cannadir dicsdir
-cannadir="/var/lib/canna/dic/canna"
-dicsdir="/var/lib/canna/dic/dics.d"
+cannadir="${ROOT}/var/lib/canna/dic/canna"
+dicsdir="${ROOT}/var/lib/canna/dic/dics.d"
 
 #
 # pkg_setup() : sets up cannadic dir
-pkg_setup() {
+cannadic_pkg_setup() {
 
 	keepdir $cannadir
 	fowners bin:bin $cannadir
@@ -72,13 +62,13 @@ dicsdir-install() {
 # src_install() : installs all dictionaries under ${WORKDIR}
 #                 plus dics.dir and docs
 #
-src_install() {
+cannadic_src_install() {
 
 	for f in *.c[btl]d *.t ; do
 		cannadic-install $f
 	done 2>/dev/null
 
-	if [ -n "`use canna`" ] ; then
+	if use canna ; then
 		dicsdir-install || die
 	fi
 
@@ -121,21 +111,24 @@ update-cannadic-dir() {
 #
 # pkg_postinst() : updates dics.dir and print out notice after install
 #
-pkg_postinst() {
+cannadic_pkg_postinst() {
 
-	if [ -n "`use canna`" ] ; then
+	if use canna ; then
 		update-cannadic-dir
 		einfo
-		einfo "Please restart cannaserver to fit changes."
-		einfo "and modify your config file (~/.canna) to enable dictionary."
+		einfo "Please restart cannaserver to fit the changes."
+		einfo "You need to modify your config file (~/.canna) to enable dictionaries."
 
 		if [ -n "${CANNADICS}" ] ; then
 			einfo "e.g) add $(for d in ${CANNADICS}; do
-				echo -n \"$d\"\ 
+				echo -n "\"$d\" "
 				done)to section use-dictionary()."
 			einfo "For details, see documents under /usr/share/doc/${PF}"
 		fi
 
+		einfo "If you do not have ~/.canna, you can find sample files in /usr/share/canna."
+		ewarn "If you are upgrading from existing dictionary, you may need to recreate"
+		ewarn "user dictionary if you have one."
 		einfo
 	fi
 }
@@ -143,9 +136,9 @@ pkg_postinst() {
 #
 # pkg_postrm() : updates dics.dir and print out notice after uninstall
 #
-pkg_postrm() {
+cannadic_pkg_postrm() {
 
-	if [ -n "`use canna`" ] ; then
+	if use canna ; then
 		update-cannadic-dir
 		einfo
 		einfo "Please restart cannaserver to fit changes."
@@ -153,7 +146,7 @@ pkg_postrm() {
 
 		if [ -n "${CANNADICS}" ] ; then
 			einfo "e.g) delete $(for d in ${CANNADICS}; do
-				echo -n \"$d\"\  
+				echo -n "\"$d\" "
 				done)from section use-dictionary()."
 		fi
 

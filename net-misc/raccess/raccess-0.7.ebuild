@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/raccess/raccess-0.7.ebuild,v 1.1 2004/04/06 01:13:28 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/raccess/raccess-0.7.ebuild,v 1.1.1.1 2005/11/30 09:55:03 chriswhite Exp $
 
 DESCRIPTION="Remote Access Session is an systems security analyzer"
 HOMEPAGE="http://salix.org/raccess/"
@@ -8,9 +8,10 @@ SRC_URI="http://salix.org/raccess/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 sparc"
+KEYWORDS="x86 sparc ~ppc ~amd64"
+IUSE=""
 
-DEPEND="net-libs/libpcap"
+DEPEND="virtual/libpcap"
 
 src_unpack() {
 	unpack ${A}

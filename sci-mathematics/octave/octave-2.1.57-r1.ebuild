@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-2.1.57-r1.ebuild,v 1.1 2004/12/28 14:48:35 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave/octave-2.1.57-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:54 chriswhite Exp $
 
 inherit flag-o-matic
 
@@ -11,16 +11,16 @@ SRC_URI="ftp://ftp.octave.org/pub/octave/bleeding-edge/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc alpha ~sparc amd64"
+KEYWORDS="x86 ppc alpha ~sparc amd64"
 IUSE="emacs static readline zlib tetex hdf5 mpi ifc blas"
 
 DEPEND="virtual/libc
 	>=sys-libs/ncurses-5.2-r3
 	>=media-gfx/gnuplot-3.7.1-r3
-	>=dev-libs/fftw-2.1.3
+	>=sci-libs/fftw-2.1.3
 	>=dev-util/gperf-2.7.2
 	zlib? ( sys-libs/zlib )
-	hdf5? ( dev-libs/hdf5 )
+	hdf5? ( sci-libs/hdf5 )
 	tetex? ( virtual/tetex )
 	x86? ( ifc? ( dev-lang/ifc ) )
 	blas? ( virtual/blas )"
@@ -34,7 +34,7 @@ pkg_setup() {
 	use ifc || if [ -z `which g77` ]; then
 		#if ifc is defined then the dep was already checked
 		eerror "No fortran compiler found on the system!"
-		eerror "Please add f77 to your USE flags and reemerge gcc!"
+		eerror "Please add fortran to your USE flags and reemerge gcc!"
 		die
 	fi
 }
@@ -88,6 +88,26 @@ src_install() {
 		done
 		cd ..
 	fi
+	dodir /etc/env.d
+	echo "LDPATH=/usr/lib/octave-${PV}" > ${D}/etc/env.d/99octave
+}
+
+pkg_postinst() {
+	echo
+	einfo "Some users have reported failures at running simple tests if"
+	einfo "octave was built with agressive optimisations. You can check if"
+	einfo "your setup is affected by this bug by running the following test"
+	einfo "(inside the octave interpreter):"
+	einfo
+	einfo "octave:1> y = [1 3 4 2 1 5 3 5 6 7 4 5 7 10 11 3];"
+	einfo "octave:2> g = [1 1 1 1 1 1 1 1 2 2 2 2 2 3 3 3];"
+	einfo "octave:3> anova(y, g)"
+	einfo
+	einfo "If these commands complete successfully with no error message,"
+	einfo "your installation should be ok. Otherwise, try recompiling"
+	einfo "octave using less agressive \"CFLAGS\" (combining \"-O3\" and"
+	einfo "\"-march=pentium4\" is known to cause problems)."
+	echo
 }
 
 octave-install-doc() {

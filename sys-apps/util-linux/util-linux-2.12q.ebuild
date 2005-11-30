@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.12q.ebuild,v 1.1 2005/02/21 16:30:59 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/util-linux-2.12q.ebuild,v 1.1.1.1 2005/11/30 09:56:21 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -45,7 +45,6 @@ src_unpack() {
 	cd "${S}"
 
 	# crypto support
-	! use old-crypt && \
 	use crypt && epatch ${WORKDIR}/util-linux-2.12p.diff
 
 	# Fix rare failures with -j4 or higher
@@ -64,6 +63,9 @@ src_unpack() {
 	# <azarah@gentoo.org> (17 Jul 2003)
 	epatch ${FILESDIR}/${PN}-2.11z-agetty-domainname-option.patch
 
+	# Fix french translation typo #75693
+	epatch ${FILESDIR}/${P}-i18n-update.patch
+
 	# Add NFS4 support (kernel 2.5/2.6)
 	epatch ${FILESDIR}/${PN}-2.12i-nfsv4.patch
 
@@ -75,6 +77,12 @@ src_unpack() {
 
 	# swapon gets confused by symlinks in /dev #69162
 	epatch ${FILESDIR}/${PN}-2.12p-swapon-check-symlinks.patch
+
+	# fix simple buffer overflow (from Debian)
+	epatch ${FILESDIR}/${PN}-2.12q-debian-10cfdisk.patch
+
+	# don't build fdisk on m68k
+	epatch ${FILESDIR}/${PN}-2.12q-no-m68k-fdisk.patch
 
 	# Enable random features
 	local mconfigs="MCONFIG"
@@ -101,7 +109,7 @@ src_compile() {
 	emake || die "emake failed"
 
 	cd partx
-	has_version sys-kernel/linux26-headers && append-flags -include linux/compiler.h
+	has_version '>=sys-kernel/linux-headers-2.6' && append-flags -include linux/compiler.h
 	emake CFLAGS="${CFLAGS}" || die "make partx failed"
 
 	if use old-crypt ; then
@@ -117,6 +125,12 @@ src_install() {
 	dosym ../man8/agetty.8 /usr/share/man/man1/getty.1
 	dosbin partx/{addpart,delpart,partx} || die "dosbin"
 	use perl || rm -f "${D}"/usr/bin/chkdupexe
+
+	newinitd "${FILESDIR}"/crypto-loop.initd crypto-loop
+	newconfd "${FILESDIR}"/crypto-loop.confd crypto-loop
+
+	# man-pages installs renice(1p) but util-linux does renice(8)
+	dosym ../man8/renice.8 /usr/share/man/man1/renice.1
 
 	dodoc HISTORY MAINTAINER README VERSION
 	docinto examples

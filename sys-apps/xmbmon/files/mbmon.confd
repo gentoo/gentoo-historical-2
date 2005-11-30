@@ -1,5 +1,5 @@
 # /etc/conf.d/mbmon
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/xmbmon/files/mbmon.confd,v 1.1 2005/06/18 04:48:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/xmbmon/files/mbmon.confd,v 1.1.1.1 2005/11/30 09:57:02 chriswhite Exp $
 
 # Port to listen on.
 

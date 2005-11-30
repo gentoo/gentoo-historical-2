@@ -1,6 +1,72 @@
 # ChangeLog for dev-lang/gnu-smalltalk
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnu-smalltalk/ChangeLog,v 1.1 2004/07/09 04:34:37 mkennedy Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gnu-smalltalk/ChangeLog,v 1.1.1.1 2005/11/30 09:58:14 chriswhite Exp $
+
+  07 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild:
+  Keywording ~amd64.
+
+  13 Sep 2005; Ferris McCormick <fmccor@gentoo.org>
+  gnu-smalltalk-2.1.12.ebuild:
+  Add ~sparc keyword.  Appears to build and run fine.
+
+*gnu-smalltalk-2.1.12 (05 Sep 2005)
+
+  05 Sep 2005; Luis F. Araujo <araujo@gentoo.org>
+  +gnu-smalltalk-2.1.12.ebuild:
+  Added new version of GST. Many bugs fixed in the package and the ebuild.
+  (proper amd64 support now, recreate an image with the right kernel path).
+
+  22 Aug 2005; Ferris McCormick <fmccor@gentoo.org>
+  gnu-smalltalk-2.1.11.ebuild:
+  Add ~sparc keyword.  Builds and runs all tests successfully, and
+  gst has run well on sparc systems for years.
+
+*gnu-smalltalk-2.1.11 (18 Aug 2005)
+
+  18 Aug 2005; Luis F. Araujo <araujo@gentoo.org>
+  +files/2.1.11-gst-image-temp.patch, +gnu-smalltalk-2.1.11.ebuild:
+  Added new version of GNU SmallTalk. Changed some commands to use
+  ebuilds-scripts
+
+  17 May 2005; Luis F. Araujo <araujo@gentoo.org>
+  gnu-smalltalk-2.1.10-r1.ebuild:
+  Change inheriting gcc by toolchain-funcs
+
+*gnu-smalltalk-2.1.10-r1 (09 Apr 2005)
+
+  09 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  -files/2.1.8-gst-package-mktemp-gentoo.patch, -gnu-smalltalk-2.1.8.ebuild,
+  -gnu-smalltalk-2.1.10.ebuild, +gnu-smalltalk-2.1.10-r1.ebuild:
+  Corrected permissions on installed packages.xml (was previously root user
+  read/write)
+
+  03 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  files/50gnu-smalltalk-gentoo.el:
+  Autoload for gst
+
+  03 Apr 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  files/50gnu-smalltalk-gentoo.el, gnu-smalltalk-2.1.10.ebuild:
+  Correct messy Emacs Lisp installation; Include autoload for Emacs
+  interactive function: smalltalk-mode.
+
+  31 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  gnu-smalltalk-2.1.10.ebuild:
+  Fixed tcltk typo
+
+*gnu-smalltalk-2.1.10 (31 Mar 2005)
+
+  31 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/2.1.10-gst-image-temp.patch, metadata.xml,
+  +gnu-smalltalk-2.1.10.ebuild:
+  New upstream version; Resolves Bug #78880; Update contributed by Luis F.
+  Araujo <araujo@gentoo.org>; Created Luis maintainer entry to metadata.xml.
+
+  18 Aug 2004; <mkennedy@gentoo.org> gnu-smalltalk-2.1.8.ebuild:
+  Fixed problem with configuration parameters when tcltk is not in USE
+
+  16 Jul 2004; David Holm <dholm@gentoo.org> gnu-smalltalk-2.1.8.ebuild:
+  Added to ~ppc.
 
 *gnu-smalltalk-2.1.8 (08 Jul 2004)
 

@@ -1,8 +1,68 @@
 # ChangeLog for net-misc/knock
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/knock/ChangeLog,v 1.1 2004/04/15 05:12:04 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/knock/ChangeLog,v 1.1.1.1 2005/11/30 09:55:39 chriswhite Exp $
+
+*knock-0.5 (03 Oct 2005)
+
+  03 Oct 2005; Markus Nigbur <pyrania@gentoo.org> +knock-0.5.ebuild:
+  Version bump.
+
+  04 Sep 2005; Daniel Black <dragonheart@gentoo.org> -knock-0.1.ebuild:
+  removed 0.1 - patch problems
+
+*knock-0.4 (14 Mar 2005)
+
+  14 Mar 2005; Markus Nigbur <pyrania@gentoo.org> +knock-0.4.ebuild:
+  Version bump. Closing bug #78356.
+
+  30 Jan 2005; Daniel Black <dragonheart@gentoo.org> knock-0.1.ebuild,
+  knock-0.3.1.ebuild, knock-0.3.ebuild:
+  Transition dependancy from net-libs/libpcap to virtual/libpcap
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  01 Nov 2004; Mike Frysinger <vapier@gentoo.org> knock-0.3.1.ebuild:
+  Fix broken patching.
+
+  27 Oct 2004; <pyrania@gentoo.org> knock-0.3.1.ebuild:
+  Removed nonblock patch for 0.3.1.
+
+*knock-0.3.1 (26 Oct 2004)
+
+  26 Oct 2004; <pyrania@gentoo.org> +knock-0.3.1.ebuild:
+  Version bump.
+
+  01 Oct 2004; <pyrania@gentoo.org> knock-0.3.ebuild:
+  Marked stable on x86.
+
+  26 Sep 2004; <pyrania@gentoo.org> -files/knock-0.3-nonblock.patch,
+  +files/nonblock.patch, knock-0.1.ebuild, knock-0.3.ebuild:
+  Fixed up some dumbness. Closing bug #64341.
+
+  27 Aug 2004; <pyrania@gentoo.org> +files/knockd.conf.patch,
+  knock-0.1.ebuild, +files/knock-0.3-nonblock.patch, knock-0.3.ebuild:
+  Closed bugs #59315, #59265 and #59251. Thanks to Per Cederberg
+  <per@percederberg.net>.
+
+  18 Jul 2004; Daniel Ahlberg <aliz@gentoo.org> knock-0.3.ebuild:
+  Added amd64 keyword, closing #57090.
+
+  12 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> knock-0.1.ebuild,
+  knock-0.3.ebuild:
+  Remove whitespace from CVS header to make repoman happy.
+
+  03 Jul 2004; <pyrania@gentoo.org> knock-0.3.ebuild:
+  Depending on net-libs/libpcap. Closing bug #55131.
+
+*knock-0.3 (12 Jun 2004)
+
+  12 Jun 2004; <pyrania@gentoo.org> knock-0.1.ebuild, +knock-0.3.ebuild:
+  Version bump. Closing bug #49077.
 
 *knock-0.1 (15 Apr 2004)
 
-  15 Apr 2004; Mike Frysinger <vapier@gentoo.org> :
-  Initial import.  Ebuild submitted by me.
+  15 Apr 2004; Markus Nigbur <pyrania@gentoo.org> metadata.xml,
+  files/knockd.confd, files/knockd.initd:
+  Initial import.
+

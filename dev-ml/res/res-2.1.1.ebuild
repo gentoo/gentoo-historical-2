@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/res/res-2.1.1.ebuild,v 1.1 2004/08/21 19:27:30 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/res/res-2.1.1.ebuild,v 1.1.1.1 2005/11/30 09:55:48 chriswhite Exp $
 
 inherit findlib
 
@@ -11,11 +11,11 @@ LICENSE="LGPL-2.1"
 
 DEPEND=">=dev-lang/ocaml-3.07"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc amd64"
 IUSE="doc"
 
 src_compile() {
-	make all || die
+	emake -j1 all || die
 
 	if use doc; then
 		cd lib && make htdoc

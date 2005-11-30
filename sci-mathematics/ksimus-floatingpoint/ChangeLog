@@ -1,6 +1,14 @@
-# ChangeLog for app-sci/ksimus-floatingpoint
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/ksimus-floatingpoint/ChangeLog,v 1.1 2004/12/28 15:29:51 ribosome Exp $
+# ChangeLog for sci-mathematics/ksimus-floatingpoint
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/ksimus-floatingpoint/ChangeLog,v 1.1.1.1 2005/11/30 09:55:49 chriswhite Exp $
+
+  09 Aug 2005; Patrick Kursawe <phosphan@gentoo.org>
+  ksimus-floatingpoint-0.3.6.ebuild:
+  Removing unnecessary ARTS detection, see bug #100249
+
+  27 May 2005; Patrick Kursawe <phosphan@gentoo.org>
+  ksimus-floatingpoint-0.3.6.ebuild:
+  Fixing mostly namespace-related errors (bug #88370)
 
 *ksimus-floatingpoint-0.3.6 (28 Dec 2004)
 

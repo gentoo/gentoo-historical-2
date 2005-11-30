@@ -1,17 +1,20 @@
 #!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-timed/files/timed.rc6,v 1.1.1.1 2005/11/30 09:55:44 chriswhite Exp $
 
 depend() {
-    need net
+	need net
 }
 
 start() {
-    ebegin "Starting timed"
-    start-stop-daemon --start --quiet --exec /usr/sbin/timed
-    eend $?
+	ebegin "Starting timed"
+	start-stop-daemon --start --quiet --exec /usr/sbin/timed
+	eend $?
 }
 
 stop() {
-    ebegin "Stopping timed"
-    start-stop-daemon --stop --quiet --exec /usr/sbin/timed
-    eend $?
+	ebegin "Stopping timed"
+	start-stop-daemon --stop --quiet --exec /usr/sbin/timed
+	eend $?
 }

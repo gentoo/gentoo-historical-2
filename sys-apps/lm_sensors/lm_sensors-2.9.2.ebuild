@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/lm_sensors-2.9.2.ebuild,v 1.1 2005/09/06 21:06:02 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors/lm_sensors-2.9.2.ebuild,v 1.1.1.1 2005/11/30 09:57:07 chriswhite Exp $
 
 inherit eutils flag-o-matic linux-info toolchain-funcs multilib
 
@@ -11,12 +11,13 @@ SRC_URI="http://secure.netroedge.com/~lm78/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 IUSE="sensord"
 DEPEND="sys-apps/sed
 		ppc? ( >=virtual/linux-sources-2.5 )
-		!ppc? ( || (  >=virtual/linux-sources-2.5 sys-apps/lm_sensors-modules ) )"
+		amd64? ( >=virtual/linux-sources-2.5 )
+		x86? ( || (  >=virtual/linux-sources-2.5 sys-apps/lm_sensors-modules ) )"
 RDEPEND="dev-lang/perl
 		sensord? ( net-analyzer/rrdtool )"
 
@@ -24,11 +25,11 @@ pkg_setup() {
 	linux-info_pkg_setup
 
 	if kernel_is 2 4; then
-		if use ppc; then
+		if use ppc || use amd64; then
 			eerror
-			eerror "${P} does not support kernel 2.4.x under PPC."
+			eerror "${P} does not support kernel 2.4.x under PPC and AMD64."
 			eerror
-			die "${P} does not support kernel 2.4.x under PPC."
+			die "${P} does not support kernel 2.4.x under PPC and AMD64."
 		elif ! has_version =sys-apps/lm_sensors-modules-${PV}; then
 			eerror
 			eerror "${P} needs sys-apps/lm_sensors-modules-${PV} to be installed"
@@ -37,17 +38,21 @@ pkg_setup() {
 			die "sys-apps/lm_sensors-modules-${PV} not installed"
 		fi
 	else
-		if ! (linux_chkconfig_present I2C_SENSOR); then
+		if kernel_is lt 2 6 14 && ! (linux_chkconfig_present I2C_SENSOR); then
 			eerror
 			eerror "${P} requires CONFIG_I2C_SENSOR to be enabled for non-2.4.x kernels."
 			eerror
 			die "CONFIG_I2C_SENSOR not detected"
+		elif kernel_is gt 2 6 13 && ! (linux_chkconfig_present HWMON); then
+			eerror
+			eerror "${P} requires CONFIG_HWMON to be enabled for 2.6.14+ kernels."
+			eerror
+			die "CONFIG_HWMON not detected"
 		fi
 		if ! (linux_chkconfig_present I2C_CHARDEV); then
-			eerror
-			eerror "${P} requires CONFIG_I2C_CHARDEV to be enabled for non-2.4.x kernels."
-			eerror
-			die "CONFIG_I2C_CHARDEV not detected"
+			ewarn
+			ewarn "sensors-detect requires CONFIG_I2C_CHARDEV to be enabled for non-2.4.x kernels."
+			ewarn
 		fi
 		if ! (linux_chkconfig_present I2C); then
 			eerror

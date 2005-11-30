@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ocaml/ocaml-3.08.3.ebuild,v 1.1 2005/03/18 17:36:55 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ocaml/ocaml-3.08.3.ebuild,v 1.1.1.1 2005/11/30 09:58:37 chriswhite Exp $
 
-inherit flag-o-matic eutils
+inherit flag-o-matic eutils multilib
 
 DESCRIPTION="fast modern type-inferring functional programming language descended from the ML (Meta Language) family"
 HOMEPAGE="http://www.ocaml.org/"
@@ -11,7 +11,7 @@ SRC_URI="http://caml.inria.fr/distrib/ocaml-3.08/${P}.tar.bz2"
 
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~ia64 ~amd64 ~hppa ~ppc-macos"
+KEYWORDS="alpha ~amd64 hppa ia64 ppc ppc-macos sparc x86"
 IUSE="tcltk latex"
 
 DEPEND="virtual/libc
@@ -22,6 +22,14 @@ pkg_setup() {
 	ewarn "Building ocaml with unsafe CFLAGS can have unexpected results"
 	ewarn "Please retry building with safer CFLAGS before reporting bugs"
 	ewarn
+}
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	#GCC4 patch
+	epatch ${FILESDIR}/${P}-gcc4.patch
 }
 
 src_compile() {
@@ -41,7 +49,7 @@ src_compile() {
 
 	./configure -prefix /usr \
 		-bindir /usr/bin \
-		-libdir /usr/lib/ocaml \
+		-libdir /usr/$(get_libdir)/ocaml \
 		-mandir /usr/share/man \
 		--with-pthread ${myconf} || die
 
@@ -55,12 +63,12 @@ src_compile() {
 
 src_install() {
 	make BINDIR=${D}/usr/bin \
-		LIBDIR=${D}/usr/lib/ocaml \
+		LIBDIR=${D}/usr/$(get_libdir)/ocaml \
 		MANDIR=${D}/usr/share/man \
 		install || die
 
 	# silly, silly makefiles
-	dosed "s:${D}::g" /usr/lib/ocaml/ld.conf
+	dosed "s:${D}::g" /usr/$(get_libdir)/ocaml/ld.conf
 
 	# documentation
 	dodoc Changes INSTALL LICENSE README Upgrading
@@ -68,7 +76,7 @@ src_install() {
 
 pkg_postinst() {
 	if use latex; then
-		echo "TEXINPUTS=/usr/lib/ocaml/ocamldoc:" > /etc/env.d/99ocamldoc
+		echo "TEXINPUTS=/usr/$(get_libdir)/ocaml/ocamldoc:" > /etc/env.d/99ocamldoc
 	fi
 
 	echo

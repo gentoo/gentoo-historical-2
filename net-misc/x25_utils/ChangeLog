@@ -1,6 +1,6 @@
 # ChangeLog for net-misc/x25_utils
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/x25_utils/ChangeLog,v 1.1 2005/08/21 03:18:45 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/x25_utils/ChangeLog,v 1.1.1.1 2005/11/30 09:54:58 chriswhite Exp $
 
 *x25_utils-2.3.93 (21 Aug 2005)
 

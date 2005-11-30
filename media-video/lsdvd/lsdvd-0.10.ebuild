@@ -1,31 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/lsdvd/lsdvd-0.10.ebuild,v 1.1 2003/11/18 17:31:09 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/lsdvd/lsdvd-0.10.ebuild,v 1.1.1.1 2005/11/30 09:57:52 chriswhite Exp $
 
 DESCRIPTION="Utility for getting info out of DVDs"
-HOMEPAGE="http://acidrip.thirtythreeandathird.net"
+HOMEPAGE="http://acidrip.sourceforge.net"
 SRC_URI="mirror://sourceforge/acidrip/${P}.tar.gz"
-RESTRICT="nomirror"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="ppc x86 amd64 ~sparc"
 IUSE=""
 
-# Build-time dependencies, such as
-#    ssl? ( >=openssl-0.9.6b )
-#    >=perl-5.6.1-r1
-# It is advisable to use the >= syntax show above, to reflect what you
-# had installed on your system when you tested the package.  Then
-# other users hopefully won't be caught without the right version of
-# a dependency.
-DEPEND="=libdvdread-0.9*"
-
-src_compile() {
-	econf || die
-	emake || die
-}
+DEPEND="=media-libs/libdvdread-0.9*"
 
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS NEWS README
 }

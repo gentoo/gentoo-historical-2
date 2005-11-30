@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dchroot/dchroot-0.10.ebuild,v 1.1 2005/02/12 02:17:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dchroot/dchroot-0.10.ebuild,v 1.1.1.1 2005/11/30 09:56:14 chriswhite Exp $
 
 DESCRIPTION="Utility for managing chroots for non-root users"
 HOMEPAGE="http://packages.debian.org/unstable/admin/dchroot"

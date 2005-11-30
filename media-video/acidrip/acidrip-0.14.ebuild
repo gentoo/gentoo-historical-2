@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/acidrip/acidrip-0.14.ebuild,v 1.1 2004/10/18 21:27:18 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/acidrip/acidrip-0.14.ebuild,v 1.1.1.1 2005/11/30 09:57:47 chriswhite Exp $
 
 inherit perl-module
 
 DESCRIPTION="A gtk-perl mplayer/mencoder frontend for ripping DVDs"
-HOMEPAGE="http://acidrip.thirtythreeandathird.net"
+HOMEPAGE="http://untrepid.com/acidrip/"
 SRC_URI="mirror://sourceforge/acidrip/${P}.tar.gz"
 RESTRICT="nomirror"
 LICENSE="GPL-2"
@@ -15,7 +15,6 @@ IUSE="encode"
 
 DEPEND="dev-lang/perl
 		dev-perl/gtk2-perl
-		dev-perl/glade-perl
 		>=media-video/lsdvd-0.10
 		media-video/mplayer
 		encode? ( >=media-sound/lame-3.92 )"
@@ -33,6 +32,5 @@ src_compile() {
 src_install() {
 	perl-module_src_install
 	#dobin acidrip
-	dodoc INSTALL CHANGELOG COPYING TODO
-	dohtml INSTALL.html
+	dodoc CHANGELOG TODO
 }

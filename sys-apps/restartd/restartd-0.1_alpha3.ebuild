@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/restartd/restartd-0.1_alpha3.ebuild,v 1.1 2005/10/14 04:34:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/restartd/restartd-0.1_alpha3.ebuild,v 1.1.1.1 2005/11/30 09:56:24 chriswhite Exp $
 
 inherit eutils
 

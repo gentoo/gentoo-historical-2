@@ -1,20 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbd/usbd-0.1.ebuild,v 1.1 2003/01/16 07:27:45 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/usbd/usbd-0.1.ebuild,v 1.1.1.1 2005/11/30 09:56:57 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="USB Daemon"
 HOMEPAGE="http://usb.cs.tum.edu"
 SRC_URI="http://usb.cs.tum.edu/download/usbd/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 amd64 ppc"
 IUSE=""
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-apps/usbutils-0.11"
-S=${WORKDIR}/${P}
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/usbd-gcc-3.4.patch || die 'Failed to apply GCC 3.4 patch!'
+}
 
 src_compile() {
-	econf --prefix=/usr --sysconfdir=/etc/usbd
+	econf --prefix=/usr --sysconfdir=/etc/usbd || die "econf failed"
 	mv Makefile Makefile.orig
 	sed s/example1/''/ Makefile.orig > Makefile
 	emake || die

@@ -1,7 +1,7 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coldplug/files/coldplug.rc,v 1.1 2004/09/21 00:27:44 gregkh Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coldplug/files/coldplug.rc,v 1.1.1.1 2005/11/30 09:56:43 chriswhite Exp $
 
 depend() {
 	need modules
@@ -16,6 +16,14 @@ checkconfig() {
 
 start() {
 	checkconfig || return 1
+
+	# This unpacks any firmware tarballs.  Used for LiveCD.
+	if [ -e /lib/firmware.tar.bz2 ]
+	then
+		ebegin "Unpacking hotplug firmware"
+		tar xjf /lib/firmware.tar.bz2 -C /lib/firmware
+		eend 0
+	fi
 	
 	for RC in /etc/hotplug/*.rc
 	do

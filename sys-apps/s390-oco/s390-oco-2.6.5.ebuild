@@ -1,23 +1,30 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/s390-oco/s390-oco-2.6.5.ebuild,v 1.1 2004/05/11 20:30:54 randy Exp $
-
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/s390-oco/s390-oco-2.6.5.ebuild,v 1.1.1.1 2005/11/30 09:56:57 chriswhite Exp $
 
 DESCRIPTION="Object-code only (OCO) modules for s390"
-SRC_URI="s390x?( tape_3590-2.6.5-s390x-april2004.tar.gz ) :( tape_3590-2.6.5-s390-april2004.tar.gz )"
 HOMEPAGE="http://www10.software.ibm.com/developerworks/opensource/linux390/tape_3590-2.6.5-s390-april2004.shtml"
-LICENSE="IBM-ILNWP"
-KEYWORDS="~s390"
-SLOT="${KV}"
-DEPEND="=sys-kernel/development-sources-2.6.5"
+if [[ ${CTARGET:-${CHOST}} == s390x-* ]] ; then
+SRC_URI="tape_3590-2.6.5-s390x-april2004.tar.gz"
+else
+SRC_URI="tape_3590-2.6.5-s390-april2004.tar.gz"
+fi
 
+LICENSE="IBM-ILNWP"
+SLOT="${KV}"
+KEYWORDS="~s390"
+IUSE=""
 RESTRICT="fetch"
 
+DEPEND="~sys-kernel/vanilla-sources-2.6.5"
+
+S=${WORKDIR}
+
 pkg_nofetch() {
-	einfo "Please download ${SRC_URI} from"
-	einfo ""
+	einfo "Please download ${A} from"
+	einfo
 	einfo " o ${HOMEPAGE}"
-	einfo ""
+	einfo
 	einfo "and put it into ${DISTDIR}"
 }
 
@@ -27,21 +34,15 @@ src_unpack() {
 }
 
 src_compile() {
-	cd ${WORKDIR}
-	mv tape3590-2.6.5-s390*-01-april2004.ko tape_3590.ko
+	mv tape3590-2.6.5-s390*-01-april2004.ko tape_3590.ko || die
 }
 
 src_install() {
-	dodir /etc/modules.d
 	insinto /etc/modules.d
-	doins ${FILESDIR}/s390-oco
+	doins "${FILESDIR}"/s390-oco || die
 
-	cd ${WORKDIR}
-	dodir /lib/modules/${KV}/OCO
 	insinto /lib/modules/${KV}/OCO
-	doins tape_3590.ko
+	doins tape_3590.ko || die
 
-	dodoc README LICENSE
+	dodoc README
 }
-
-

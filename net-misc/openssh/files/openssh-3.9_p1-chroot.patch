@@ -45,9 +45,9 @@ diff -uNr openssh-3.7.1p2/session.c openssh-3.7.1p2-chroot/session.c
  	if (getuid() == 0 || geteuid() == 0)
  #endif /* HAVE_CYGWIN */
 @@ -1268,6 +1276,27 @@
- 			exit(1);
+ 			do_pam_setcred(0);
  		}
- 		endgrent();
+ # endif /* USE_PAM */
 +
 +#ifdef CHROOT
 +       user_dir = xstrdup(pw->pw_dir);
@@ -69,6 +69,6 @@ diff -uNr openssh-3.7.1p2/session.c openssh-3.7.1p2-chroot/session.c
 +#endif /* CHROOT */
 +
 +
- # ifdef USE_PAM
- 		/*
- 		 * PAM credentials may take the form of supplementary groups. 
+ # if defined(WITH_IRIX_PROJECT) || defined(WITH_IRIX_JOBS) || defined(WITH_IRIX_ARRAY)
+ 		irix_setusercontext(pw);
+ #  endif /* defined(WITH_IRIX_PROJECT) || defined(WITH_IRIX_JOBS) || defined(WITH_IRIX_ARRAY) */

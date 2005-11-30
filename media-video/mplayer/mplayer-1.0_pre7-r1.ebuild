@@ -1,12 +1,12 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_pre7-r1.ebuild,v 1.1 2005/08/27 01:57:48 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer/mplayer-1.0_pre7-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:34 chriswhite Exp $
 
-inherit eutils flag-o-matic kernel-mod
+inherit eutils flag-o-matic
 
 RESTRICT="nostrip"
 IUSE="3dfx 3dnow 3dnowext aac aalib alsa altivec arts bidi bl cpudetection
-custom-cflags debug dga divx4linux doc dts dvb cdparanoia directfb dvd dv
+custom-cflags debug dga doc dts dvb cdparanoia directfb dvd dv
 dvdread edl encode esd fbcon gif ggi gtk i8x0 ipv6 jack joystick jpeg libcaca
 lirc live lzo mad matroska matrox mmx mmxext mythtv nas nls nvidia vorbis opengl
 oss png real rtc samba sdl sse sse2 svga tga theora truetype v4l v4l2
@@ -32,7 +32,6 @@ HOMEPAGE="http://www.mplayerhq.hu/"
 
 # 'encode' in USE for MEncoder.
 RDEPEND="xvid? ( >=media-libs/xvid-0.9.0 )
-	divx4linux? (  >=media-libs/divx4linux-20030428 )
 	win32codecs? ( >=media-libs/win32codecs-20040916 )
 	x86? ( real? ( >=media-video/realplayer-10.0.3 ) )
 	aalib? ( media-libs/aalib )
@@ -84,51 +83,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~alpha ~amd64 hppa ia64 ~ppc ~ppc64 ~sparc ~x86"
-
-# ecpu_check
-# Usage:
-#
-# ecpu_check array_of_cpu_flags
-#
-# array_of_cpu_flags - An array of cpu flags to check against USE flags
-#
-# Checks user USE related cpu flags against /proc/cpuinfo.  If user enables a
-# cpu flag that is not supported in their processor flags, it will warn the
-# user if CROSSCOMPILE is not set to 1 ( because cross compile users are
-# obviously using different cpu flags than their own cpu ).  Examples:
-#
-# CPU_FLAGS=(mmx mmx2 sse sse2)
-# ecpu_check CPU_FLAGS
-# Chris White <chriswhite@gentoo.org> (03 Feb 2005)
-
-ecpu_check() {
-	# Think about changing below to: if [ "${CROSSCOMPILE}" -ne 1 -a -e "/proc/cpuinfo" ]
-	# and dropping the else if you do not plan on adding anything to that
-	# empty block ....
-	# PS: also try to add some quoting, and consider rather using ${foo} than $foo ...
-	if [ "${CROSSCOMPILE}" != "1" -a -e "/proc/cpuinfo" ]
-	then
-		CPU_FLAGS=${1}
-		USER_CPU=`grep "flags" /proc/cpuinfo`
-
-		for flags in `seq 1 ${#CPU_FLAGS[@]}`
-		do
-			if has ${CPU_FLAGS[${flags} - 1]} ${USER_CPU} && ! has ${CPU_FLAGS[${flags} - 1]} ${USE}
-			then
-				ewarn "Your system is ${CPU_FLAGS[${flags} - 1]} capable but you don't have it enabled!"
-				ewarn "You might be cross compiling (in this case set CROSSCOMPILE to 1 to disable this warning."
-			fi
-
-			if ! has ${CPU_FLAGS[${flags} - 1]} ${USER_CPU}  && has ${CPU_FLAGS[${flags} -1]} ${USE}
-			then
-				ewarn "You have ${CPU_FLAGS[${flags} - 1]} support enabled but your processor doesn't"
-				ewarn "Seem to support it!  You might be cross compiling or do not have /proc filesystem"
-				ewarn "enabled.  If either is the case, set CROSSCOMPILE to 1 to disable this warning."
-			fi
-		done
-	fi
-}
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 
 pkg_setup() {
 	if use real && use x86; then
@@ -168,10 +123,11 @@ src_unpack() {
 	# Remove kernel-2.6 workaround as the problem it works around is
 	# fixed, and the workaround breaks sparc
 	use sparc && sed -i 's:#define __KERNEL__::' osdep/kerneltwosix.h
-	epatch ${FILESDIR}/${PN}-1.0_pre6-ppc64.patch
+	epatch ${FILESDIR}/${P}-ppc64.patch
 
 	# Fix building with gcc4
 	epatch ${FILESDIR}/${P}-gcc4.patch
+	epatch ${FILESDIR}/${P}-gcc4-amd64.patch
 
 	# fixes mplayer not seeing gcc 3.4-blahetc type
 	# gcc versions.  Half stolen from toolchain-funcs
@@ -242,14 +198,6 @@ src_compile() {
 		export LINGUAS="en ${LINGUAS}"
 	fi
 
-
-	# check cpu flags
-	if use x86 && use !cpudetection
-	then
-		CPU_FLAGS=(3dnow 3dnowext mmx sse sse2 mmxext)
-		ecpu_check CPU_FLAGS
-	fi
-
 	if use custom-cflags ; then
 	# let's play the filtration game!  MPlayer hates on all!
 	strip-flags
@@ -263,8 +211,8 @@ src_compile() {
 	else
 	unset CFLAGS CXXFLAGS
 	fi
-
-	local myconf=
+	#FIXME make it work in the snapshot
+	local myconf="--disable-x264"
 	################
 	#Optional features#
 	###############
@@ -320,7 +268,6 @@ src_compile() {
 	#########
 	# Codecs #
 	########
-	myconf="${myconf} $(use_enable divx4linux)"
 	myconf="${myconf} $(use_enable gif)"
 	myconf="${myconf} $(use_enable jpeg)"
 	#myconf="${myconf} $(use_enable ladspa)"

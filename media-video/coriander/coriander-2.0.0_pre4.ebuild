@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation and Pieter Van den Abeele
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/coriander/coriander-2.0.0_pre4.ebuild,v 1.1 2005/11/03 16:12:50 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/coriander/coriander-2.0.0_pre4.ebuild,v 1.1.1.1 2005/11/30 09:57:48 chriswhite Exp $
 
 MY_P=${P/_/-}
 

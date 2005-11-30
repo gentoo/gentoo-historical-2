@@ -1,6 +1,10 @@
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/fakeidentd/files/fakeidentd.confd,v 1.1.1.1 2005/11/30 09:54:52 chriswhite Exp $
+
 # Config file for /etc/init.d/fakeidentd
 
 # Change this to whatever you want the daemon to reply with.
-# By default it answers with "nobody" anyway..
+# The daemon will default to 'nobody' ...
 
 #FAKEIDENTD_OPTS="nobody"

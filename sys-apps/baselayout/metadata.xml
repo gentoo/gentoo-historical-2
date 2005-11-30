@@ -1,7 +1,13 @@
- [32;01m*[0m Generated metadata.xml:
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <herd>base-system</herd>
+<maintainer>
+  <email>azarah@gentoo.org</email>
+  <description>primary maintainer</description>
+</maintainer>
+<maintainer>
+  <email>agriffis@gentoo.org</email>
+  <description>backup maintainer</description>
+</maintainer>
 </pkgmetadata>

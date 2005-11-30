@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lsadb/lsadb-0.1.2.ebuild,v 1.1 2004/10/31 21:54:28 pylon Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lsadb/lsadb-0.1.2.ebuild,v 1.1.1.1 2005/11/30 09:57:08 chriswhite Exp $
 
 inherit eutils
 

@@ -1,7 +1,18 @@
 # ChangeLog for dev-lang/mmix
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mmix/ChangeLog,v 1.1 2002/05/04 00:53:07 karltk Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mmix/ChangeLog,v 1.1.1.1 2005/11/30 09:58:38 chriswhite Exp $
 
+  04 May 2005; David Holm <dholm@gentoo.org> mmix-20020216.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> mmix-20020216.ebuild:
+  virtual/glibc -> virtual/libc
+
+  18 Dec 2003; Chuck Short <zul@gentoo.org> mmix-20020216.ebuild:
+  Added dependcy, need ghostscript to read the manual. Closes #35559.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *mmix-20020216 (04 May 2002)
 
   04 May 2002; Karl Trygve Kalleberg <karltk@gentoo.org> mmix-20020216.ebuild files/digest-mmix-20020216 :

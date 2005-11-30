@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-5.3.0-r1.ebuild,v 1.1 2005/08/30 23:53:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils/coreutils-5.3.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:56:49 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
-PATCH_VER=1.1
+PATCH_VER=1.3
 
 DESCRIPTION="Standard GNU file utilities (chmod, cp, dd, dir, ls...), text utilities (sort, tr, head, wc..), and shell utilities (whoami, who,...)"
 HOMEPAGE="http://www.gnu.org/software/coreutils/"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	=sys-devel/automake-1.8*
 	>=sys-devel/autoconf-2.58
 	>=sys-devel/m4-1.4-r1
-	!elibc_uclibc? ( sys-apps/help2man )"
+	sys-apps/help2man"
 
 src_unpack() {
 	unpack ${A}
@@ -61,7 +61,6 @@ src_unpack() {
 	ebegin "Reconfiguring configure scripts (be patient)"
 	export WANT_AUTOMAKE=1.8
 	export WANT_AUTOCONF=2.5
-	rm m4/inttypes.m4
 	aclocal -I m4 || die "aclocal"
 	autoconf || die "autoconf"
 	automake || die "automake"

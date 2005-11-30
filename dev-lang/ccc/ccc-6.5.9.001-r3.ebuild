@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ccc/ccc-6.5.9.001-r3.ebuild,v 1.1 2004/02/19 15:43:34 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ccc/ccc-6.5.9.001-r3.ebuild,v 1.1.1.1 2005/11/30 09:58:12 chriswhite Exp $
 #
 # Ebuild contributed by Tavis Ormandy <taviso@sdf.lonestar.org>
 # and edited by Aron Griffis <agriffis@gentoo.org>
@@ -21,7 +21,7 @@ LICENSE="PLDSPv2"
 SLOT="0"
 KEYWORDS="-* ~alpha"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	dev-libs/libots
 	>=dev-libs/libcpml-5.2.01-r2"
 
@@ -43,7 +43,7 @@ src_unpack() {
 	local ccc_rpm="ccc-${ccc_release}.alpha.rpm"
 
 	if [ -z ${CCC_LICENSE_KEY} ]; then
-		eerror ""
+		eerror
 		eerror "You have not set the environment variable"
 		eerror "\$CCC_LICENSE_KEY, this should be set to"
 		eerror "the password you were sent when you applied"
@@ -51,7 +51,7 @@ src_unpack() {
 		eerror "license."
 		eerror "If you do not have a license key, apply for one"
 		eerror "here ${ee_license_reg}"
-		eerror ""
+		eerror
 		die "no license key in \$CCC_LICENSE_KEY"
 	fi
 
@@ -166,14 +166,14 @@ pkg_postinst () {
 
 	echo
 	einfo "Hopefullly soon we will get a ccc USE flag"
-	einfo "on packages (or at least individual       "
+	einfo "on packages (or at least individual"
 	einfo "components) that can be successfully built"
-	einfo "using this compiler, until then you will  "
-	einfo "just have to experiment :)                "
+	einfo "using this compiler, until then you will"
+	einfo "just have to experiment :)"
 	einfo
-	einfo "Please report successes/failures with ccc "
-	einfo "to http://bugs.gentoo.org so that the USE "
-	einfo "flags can be updated.                     "
+	einfo "Please report successes/failures with ccc"
+	einfo "to http://bugs.gentoo.org so that the USE"
+	einfo "flags can be updated."
 	einfo
 
 	echo

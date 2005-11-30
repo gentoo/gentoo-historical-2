@@ -1,10 +1,48 @@
 # ChangeLog for dev-ml/findlib
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/findlib/ChangeLog,v 1.1 2002/12/15 23:56:41 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/findlib/ChangeLog,v 1.1.1.1 2005/11/30 09:55:48 chriswhite Exp $
 
-*findlib-0.8.ebuild (15 ‰≈À 2002)
+  21 Sep 2005; Matthieu Sozeau <mattam@gentoo.org> findlib-1.0.4-r1.ebuild:
+  Stable on ppc-macos.
 
-  15 Dec 2002; George Shapovalov <george@gentoo.org> ChangeLog, findlib-0.8.ebuild, files/digest-findlib-0.8 :
+  30 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> findlib-1.0.4-r1.ebuild:
+  Mark stable on amd64
+
+*findlib-1.0.4-r1 (21 Aug 2004)
+
+  21 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> -findlib-0.8.ebuild,
+  +findlib-1.0.4-r1.ebuild, -findlib-1.0.4.ebuild:
+  New revision for introduction of the findlib eclass (just checks that stublibs
+  is in ld.conf). Remove old versions.
+
+  09 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> findlib-1.0.4.ebuild:
+  header fix; tidy
+
+*findlib-1.0.4 (08 Aug 2004)
+
+  08 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> +findlib-1.0.4.ebuild:
+  Version bump, fix bug #51254. Thanks to Bardur Arantsson <gentoo@scientician.net>
+  for the update.
+
+  28 May 2004; Danny van Dyk <kugelfang@gentoo.org> findlib-0.8.ebuild:
+  Marked -amd64 as dependencies aren't fulfilled anymore.
+
+  30 Mar 2004; Daniel Ahlberg <aliz@gentoo.org> findlib-0.8.ebuild:
+  Adding amd64 keyword. Closing #44197.
+
+  23 Mar 2004; Matthieu Sozeau <mattam@gentoo.org> findlib-0.8.ebuild:
+  Mark stable on ppc (long time i use it but forgot to mark it).
+
+  13 Mar 2004; David Holm <dholm@gentoo.org> findlib-0.8.ebuild:
+  Added to ~ppc.
+
+  15 Feb 2004; Jason Wever <weeve@gentoo.org> findlib-0.8.ebuild:
+  Added ~sparc keyword to fix dev-ml/ocaml-make's broken deps.
+
+*findlib-0.8 (15 Dec 2002)
+
+  15 Dec 2002; George Shapovalov <george@gentoo.org> ChangeLog, 
+  findlib-0.8.ebuild, files/digest-findlib-0.8 :
   initial release
   OCaml tool to find/use non-standard packages.
   ebuild submitted by Matthieu Sozeau <mattam@netcourrier.com>

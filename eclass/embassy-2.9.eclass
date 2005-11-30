@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/embassy-2.9.eclass,v 1.1 2005/03/22 22:07:40 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/embassy-2.9.eclass,v 1.1.1.1 2005/11/30 09:59:18 chriswhite Exp $
 
 # Author Olivier Fisette <ribosome@gentoo.org>
 
@@ -10,10 +10,7 @@
 # necessary, add "(R|P)DEPEND"encies. Additionnaly, the inheriting ebuild's
 # name must begin by "embassy-".
 
-inherit eutils
-
-ECLASS=embassy
-INHERITED="$INHERITED $ECLASS"
+inherit eutils multilib
 
 # EMBOSS version needed for the EMBASSY packages
 EBOV="2.9.0"
@@ -32,7 +29,8 @@ SRC_URI="ftp://ftp.uk.embnet.org/pub/EMBOSS/EMBOSS-${EBOV}.tar.gz
 SLOT="0"
 IUSE="X png"
 
-DEPEND="=sci-biology/emboss-${EBOV}*
+DEPEND="=sci-biology/emboss-${EBOV}
+	!=sci-biology/emboss-2.10*
 	X? ( virtual/x11 )
 	png? ( sys-libs/zlib
 		media-libs/libpng
@@ -41,7 +39,7 @@ DEPEND="=sci-biology/emboss-${EBOV}*
 
 S=${WORKDIR}/EMBOSS-${EBOV}/embassy/${EF}
 
-embassy_src_unpack() {
+embassy-2.9_src_unpack() {
 	unpack ${A}
 	mkdir EMBOSS-${EBOV}/embassy
 	mv ${EF} EMBOSS-${EBOV}/embassy/
@@ -51,7 +49,7 @@ embassy_src_unpack() {
 	cp /usr/$(get_libdir)/libnucleus.la EMBOSS-${EBOV}/nucleus/
 }
 
-embassy_src_compile() {
+embassy-2.9_src_compile() {
 	local EXTRA_CONF
 	! use X && EXTRA_CONF="${EXTRA_CONF} --without-x"
 	! use png && EXTRA_CONF="${EXTRA_CONF} --without-pngdriver"
@@ -70,7 +68,7 @@ embassy_src_compile() {
     without \"png\" support, compilation will fail when linking the binaries."
 }
 
-embassy_src_install() {
+embassy-2.9_src_install() {
 	einstall || die
 	dodoc AUTHORS ChangeLog NEWS README
 }

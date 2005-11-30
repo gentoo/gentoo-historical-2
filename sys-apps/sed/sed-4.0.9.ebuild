@@ -1,53 +1,79 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sed/sed-4.0.9.ebuild,v 1.1 2004/01/10 22:59:10 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sed/sed-4.0.9.ebuild,v 1.1.1.1 2005/11/30 09:56:11 chriswhite Exp $
+
+inherit gnuconfig flag-o-matic
 
 DESCRIPTION="Super-useful stream editor"
+HOMEPAGE="http://sed.sourceforge.net/"
 SRC_URI="mirror://gnu/sed/${P}.tar.gz"
-HOMEPAGE="http://www.gnu.org/software/sed/sed.html"
 
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~hppa ~arm ~mips ~ia64 ~ppc64"
-SLOT="0"
 LICENSE="GPL-2"
-IUSE="nls static build"
+SLOT="0"
+KEYWORDS="alpha arm amd64 hppa ia64 mips ppc ppc64 ppc-macos s390 sh sparc x86"
+IUSE="nls static build bootstrap"
 
-inherit gnuconfig
-
-DEPEND="virtual/glibc
+RDEPEND="virtual/libc"
+DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	gnuconfig_update
+}
+
 src_compile() {
-	local myconf
-
-	# Allow sed to detect mips systems properly
-	use mips && gnuconfig_update
-
-	use nls \
-		&& myconf="${myconf} --enable-nls" \
-		|| myconf="${myconf} --disable-nls"
-
-	econf ${myconf} || die "Configure failed"
-	if [ -z `use static` ] ; then
-		emake || die "Shared build failed"
-	else
-		emake LDFLAGS=-static || die "Static build failed"
+	# make sure system-sed works #40786
+	export NO_SYS_SED=""
+	if ! use bootstrap && ! use build ; then
+		if ! type -p sed ; then
+			NO_SYS_SED="!!!"
+			./bootstrap.sh || die "couldnt bootstrap"
+			cp sed/sed ${T}/ || die "couldnt copy"
+			export PATH="${PATH}:${T}"
+		fi
 	fi
+
+	local myconf=""
+	use ppc-macos && myconf="--program-prefix=g"
+	econf \
+		$(use_enable nls) \
+		${myconf} \
+		|| die "Configure failed"
+	if [ ! -z "${NO_SYS_SED}" ] ; then
+		make clean || die "couldnt clean"
+	fi
+
+	use static && append-ldflags -static
+	emake LDFLAGS="${LDFLAGS}" || die "build failed"
 }
 
 src_install() {
+	[ ! -z "${NO_SYS_SED}" ] && export PATH="${PATH}:${T}"
+
 	into /
-	dobin sed/sed
-	if [ -z "`use build`" ]
+	dobin sed/sed || die "dobin"
+	if ! use build
 	then
 		einstall || die "Install failed"
-		dodoc COPYING NEWS README* THANKS TODO AUTHORS BUGS ANNOUNCE ChangeLog
+		dodoc NEWS README* THANKS AUTHORS BUGS ChangeLog
 		docinto examples
-		dodoc ${FILESDIR}/dos2unix ${FILESDIR}/unix2dos
-
+		dodoc "${FILESDIR}/dos2unix" "${FILESDIR}/unix2dos"
 	else
 		dodir /usr/bin
 	fi
 
-	rm -f ${D}/usr/bin/sed
-	dosym ../../bin/sed /usr/bin/sed
+	rm -f "${D}/usr/bin/sed"
+	if use ppc-macos ; then
+		cd "${D}"
+		local x
+		for x in $(find . -name 'sed*' -print);
+		do
+			mv "$x" "${x//sed/gsed}"
+		done
+		dosym ../../bin/gsed /usr/bin/gsed
+	else
+		dosym ../../bin/sed /usr/bin/sed
+	fi
 }

@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vconfig/vconfig-1.8.ebuild,v 1.1 2003/10/01 06:41:20 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vconfig/vconfig-1.8.ebuild,v 1.1.1.1 2005/11/30 09:55:31 chriswhite Exp $
+
+inherit eutils flag-o-matic toolchain-funcs
 
 MY_PN="vlan"
 S=${WORKDIR}/${MY_PN}
@@ -11,10 +13,10 @@ SRC_URI="http://www.candelatech.com/~greear/vlan/${MY_PN}.${PV}.tar.gz"
 # mirror://gentoo/vconfig-1.7-gcc33-multiline.patch"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~arm"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 IUSE="static"
-DEPEND=">=sys-kernel/linux-headers-2.4.14"
-RDEPEND=">=virtual/kernel-2.4.14"
+DEPEND="virtual/libc virtual/os-headers"
+RDEPEND="!static? ( virtual/libc )"
 
 src_unpack() {
 	unpack ${MY_PN}.${PV}.tar.gz
@@ -23,8 +25,8 @@ src_unpack() {
 }
 
 src_compile() {
-	use static && LDFLAGS="${LDFLAGS} -static"
-	emake CC="${CC}" CCFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" || die
+	use static && appened-ldflags -static
+	emake CC="$(tc-getCC)" CCFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" || die
 }
 
 src_install() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/icaclient-8.0-r2.ebuild,v 1.1 2004/10/30 17:23:06 weeve Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/icaclient/icaclient-8.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:54:43 chriswhite Exp $
 
 DESCRIPTION="ICA Client"
 HOMEPAGE="http://www.citrix.com/download/unix-downloads.asp"

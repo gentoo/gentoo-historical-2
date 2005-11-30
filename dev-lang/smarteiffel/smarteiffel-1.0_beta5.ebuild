@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/smarteiffel/smarteiffel-1.0_beta5.ebuild,v 1.1 2002/11/22 08:46:34 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/smarteiffel/smarteiffel-1.0_beta5.ebuild,v 1.1.1.1 2005/11/30 09:58:24 chriswhite Exp $
 
 IUSE=""
 
@@ -10,11 +10,11 @@ HOMEPAGE="http://smarteiffel.loria.fr/"
 #the source as distributed by authors has no versioning in its name,
 #this will break things when new version comes out.
 #just point SRC_URI to ibiblio mirror instead (with mangled name of source uploaded)
-SRC_URI="http://www.ibiblio.org/pub/Linux/distributions/gentoo/${P}.tar.bz2"
+SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 DEPEND="sys-devel/gcc"
 

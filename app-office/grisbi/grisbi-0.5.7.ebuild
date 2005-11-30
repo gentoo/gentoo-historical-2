@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/grisbi/grisbi-0.5.7.ebuild,v 1.1 2005/06/27 12:13:28 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/grisbi/grisbi-0.5.7.ebuild,v 1.1.1.1 2005/11/30 09:59:10 chriswhite Exp $
 
 inherit eutils
 
@@ -12,15 +12,15 @@ SRC_URI="mirror://sourceforge/grisbi/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 
 DEPEND="dev-libs/libxml2
 	>=x11-libs/gtk+-2.2.0
-	ofx? ( >=dev-libs/libofx-0.7.0 )"
-
-RDEPEND="${DEPEND}
+	ofx? ( >=dev-libs/libofx-0.7.0 )
 	print? ( virtual/tetex
 	>=dev-tex/latex-unicode-20041017 )"
+
+RDEPEND="${DEPEND}"
 
 pkg_setup() {
 	if ! use print; then

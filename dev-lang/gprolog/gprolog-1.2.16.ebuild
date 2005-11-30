@@ -1,10 +1,12 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gprolog/gprolog-1.2.16.ebuild,v 1.1 2003/04/15 10:09:52 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gprolog/gprolog-1.2.16.ebuild,v 1.1.1.1 2005/11/30 09:58:24 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 DESCRIPTION="GNU Prolog is a native Prolog compiler with constraint solving over finite domains (FD)"
 HOMEPAGE="http://pauillac.inria.fr/~diaz/gnu-prolog/"
@@ -13,11 +15,12 @@ S=${WORKDIR}/${P}/src
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc x86"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+	epatch "${FILESDIR}/${P}"-gcc4.patch
 
 	mv Makefile.in Makefile.in.orig
 	sed -e "s/TXT_FILES /#TXT_FILES/" Makefile.in.orig > Makefile.in
@@ -36,5 +39,5 @@ src_install() {
 		HTML_DIR=${D}/usr/share/doc/${P}/html \
 		EXAMPLES_DIR=${D}/usr/share/${P}/examples install || die "install failed"
 	cd ${S}/..
-	dodoc ChangeLog COPYING INSTALL NEWS PROBLEMS README VERSION 
+	dodoc ChangeLog COPYING INSTALL NEWS PROBLEMS README VERSION
 }

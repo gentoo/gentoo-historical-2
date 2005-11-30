@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysvinit/sysvinit-2.86-r3.ebuild,v 1.1 2005/11/20 12:37:37 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sysvinit/sysvinit-2.86-r3.ebuild,v 1.1.1.1 2005/11/30 09:56:34 chriswhite Exp $
 
 inherit eutils toolchain-funcs flag-o-matic
 

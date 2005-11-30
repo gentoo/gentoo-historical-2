@@ -1,6 +1,34 @@
 # ChangeLog for net-misc/gwhois
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gwhois/ChangeLog,v 1.1 2005/01/16 00:46:43 wschlich Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gwhois/ChangeLog,v 1.1.1.1 2005/11/30 09:55:07 chriswhite Exp $
+
+  29 Sep 2005; Jose Luis Rivero <yoswink@gentoo.org> gwhois-20050115.ebuild:
+  Stable on alpha due to #93820
+
+  28 Sep 2005; Simon Stelling <blubb@gentoo.org> gwhois-20050115.ebuild:
+  stable on amd64
+
+*gwhois-20050925 (26 Sep 2005)
+
+  26 Sep 2005; Wolfram Schlich <wschlich@gentoo.org>
+  +gwhois-20050925.ebuild:
+  version bump
+
+  24 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gwhois-20050115.ebuild:
+  Stable on ppc.
+
+  22 Sep 2005; Wolfram Schlich <wschlich@gentoo.org> gwhois-20050115.ebuild:
+  cleanup, mark stable on x86
+
+  15 Mar 2005; Seemant Kulleen <seemant@gentoo.org> gwhois-20050115.ebuild:
+  Dependency update: net-www/lynx -> www-client/lynx.
+
+  17 Jan 2005; Wolfram Schlich <wschlich@gentoo.org> gwhois-20050115.ebuild:
+  fix installation of xinetd example config
+
+  16 Jan 2005; Wolfram Schlich <wschlich@gentoo.org> gwhois-20050115.ebuild:
+  add more KEYWORDS
 
 *gwhois-20050115 (16 Jan 2005)
 

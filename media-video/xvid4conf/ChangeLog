@@ -1,6 +1,16 @@
 # ChangeLog for media-video/xvid4conf
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/xvid4conf/ChangeLog,v 1.1 2004/03/31 19:33:10 mholzer Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/xvid4conf/ChangeLog,v 1.1.1.1 2005/11/30 09:57:23 chriswhite Exp $
+
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> xvid4conf-1.12.ebuild:
+  Don't install INSTALL file.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> xvid4conf-1.12.ebuild:
+  Trimmed trailing whitespace.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xvid4conf-1.12.ebuild:
+  virtual/glibc -> virtual/libc
 
 *xvid4conf-1.12 (31 Mar 2004)
 

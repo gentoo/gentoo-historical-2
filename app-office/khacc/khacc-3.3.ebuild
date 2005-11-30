@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/khacc/khacc-3.3.ebuild,v 1.1 2005/07/03 21:07:38 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/khacc/khacc-3.3.ebuild,v 1.1.1.1 2005/11/30 09:59:01 chriswhite Exp $
 
 inherit kde
 

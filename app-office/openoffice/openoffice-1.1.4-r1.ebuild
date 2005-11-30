@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-1.1.4-r1.ebuild,v 1.1 2005/04/12 18:05:35 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-1.1.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:58:51 chriswhite Exp $
 
 # Notes:
 #
@@ -24,7 +24,7 @@
 #   Get support going for installing a custom language pack.  Also
 #   need to be able to install more than one language pack.
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils fdo-mime flag-o-matic toolchain-funcs
 
 IUSE="curl hardened java kde nptl zlib"
 
@@ -42,7 +42,7 @@ HOMEPAGE="http://www.openoffice.org/"
 
 LICENSE="|| ( LGPL-2  SISSL-1.1 )"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ppc -sparc"
 
 RDEPEND="!app-office/openoffice-bin
 	virtual/x11
@@ -251,12 +251,14 @@ src_unpack() {
 	epatch ${FILESDIR}/${PV}/getcompver.awk.patch
 
 	# Security fix, bug #88863
-	epatch ${FILESDIR}/${PV}/crash-objstream.diff
+	epatch ${FILESDIR}/${PV}/cws-heapbug_CAN-2005-0941.diff
 
 	# Workaround for bug #73940, may break debug use flag on ppc
 	if use ppc; then
 		epatch ${FILESDIR}/${PV}/STLport-vector.patch
 	fi
+	#Allow building with libxslt >= 1.1.15
+	use java || epatch ${FILESDIR}/${PV}/build-new-xslt.diff
 
 	#Fixes for nptl
 	if use nptl; then
@@ -299,6 +301,7 @@ get_EnvSet() {
 
 src_compile() {
 
+	unset LIBC
 	addpredict /bin
 	addpredict /root/.gconfd
 	export MYCONF=""
@@ -510,9 +513,9 @@ src_install() {
 
 	einfo "Installing menu shortcuts..."
 	dodir /usr/share
-	cp -a ${D}${INSTDIR}/share/kde/net/share/icons ${D}/usr/share
+	cp -pPR ${D}${INSTDIR}/share/kde/net/share/icons ${D}/usr/share
 
-	use kde && cp -a ${D}${INSTDIR}/share/kde/net/share/mimelnk ${D}/usr/share
+	use kde && cp -pPR ${D}${INSTDIR}/share/kde/net/share/mimelnk ${D}/usr/share
 
 	for x in ${D}${INSTDIR}/share/kde/net/*.desktop; do
 		# We have to handle soffice and setup differently

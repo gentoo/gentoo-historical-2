@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gtranscode/gtranscode-0.3.ebuild,v 1.1 2005/01/17 17:08:29 kzimmerm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gtranscode/gtranscode-0.3.ebuild,v 1.1.1.1 2005/11/30 09:57:47 chriswhite Exp $
 
 inherit eutils
 DESCRIPTION="A GTK2 frontend for transcode."
@@ -9,7 +9,7 @@ SRC_URI="http://www.fuzzymonkey.org/files/${PN}-v${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE=""
 
 DEPEND=">=x11-libs/gtk+-2.4.9

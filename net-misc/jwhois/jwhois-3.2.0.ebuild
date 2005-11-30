@@ -1,22 +1,17 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/jwhois/jwhois-3.2.0.ebuild,v 1.1 2002/06/06 21:13:40 stroke Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/jwhois/jwhois-3.2.0.ebuild,v 1.1.1.1 2005/11/30 09:55:40 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-
+IUSE=""
 DESCRIPTION="Advanced Internet Whois client capable of recursive queries"
-
-HOMEPAGE="http://http://www.gnu.org/software/jwhois/"
-
+HOMEPAGE="http://www.gnu.org/software/jwhois/"
 LICENSE="GPL-2"
-
-SRC_URI="http://www.mirror.ac.uk/sites/ftp.gnu.org/gnu/jwhois/${P}.tar.gz
-         ftp://ftp.gnu.org/gnu/jwhois/${P}.tar.gz"
-
+KEYWORDS="x86 sparc mips"
+SRC_URI="mirror://gnu/jwhois/${P}.tar.gz"
+RESTRICT="nomirror"
 SLOT="0"
 
-DEPEND="virtual/glibc"
-RDEPEND="${DEPEND}"
+DEPEND="virtual/libc"
 
 src_compile() {
 	./configure \
@@ -32,4 +27,3 @@ src_compile() {
 src_install () {
 	make DESTDIR=${D} install || die
 }
-

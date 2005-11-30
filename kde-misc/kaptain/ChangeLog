@@ -1,6 +1,23 @@
-# ChangeLog for app-misc/kaptain
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kaptain/ChangeLog,v 1.1 2004/10/30 16:48:26 carlo Exp $
+# ChangeLog for kde-misc/kaptain
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kaptain/ChangeLog,v 1.1.1.1 2005/11/30 09:57:12 chriswhite Exp $
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> kaptain-0.72.ebuild:
+  Stable on ppc.
+
+  15 Mar 2005; Gregorio Guidi <greg_g@gentoo.org> kaptain-0.72.ebuild:
+  Stable on x86.
+
+*kaptain-0.72 (20 Jan 2005)
+
+  20 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> +kaptain-0.72.ebuild:
+  Version bump.
+
+  20 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> kaptain-0.71.ebuild:
+  Stable on x86.
+
+  04 Nov 2004; Jason Wever <weeve@gentoo.org> kaptain-0.71.ebuild:
+  Added ~sparc keyword.
 
 *kaptain-0.71 (30 Oct 2004)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gnomba/gnomba-0.6.2-r1.ebuild,v 1.1 2004/10/17 18:37:56 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gnomba/gnomba-0.6.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:40 chriswhite Exp $
 
 inherit eutils
 
@@ -8,15 +8,15 @@ DESCRIPTION="Gnome Samba Browser"
 SRC_URI="http://gnomba.sourceforge.net/src/${P}.tar.gz"
 HOMEPAGE="http://gnomba.sourceforge.net/"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 sparc"
 SLOT="0"
 
-IUSE="debug nls"
+IUSE="debug"
 DEPEND="gnome-base/gnome-libs"
 
 src_compile() {
 	econf `use_enable debug` || die "econf failed"
-	# We touch the Makefile here, because the configure script 
+	# We touch the Makefile here, because the configure script
 	# touches Makefile.in and we want to avoid the recreation
 	touch Makefile
 	emake \

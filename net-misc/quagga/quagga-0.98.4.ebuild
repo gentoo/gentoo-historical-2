@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/quagga-0.98.4.ebuild,v 1.1 2005/08/11 09:01:32 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/quagga-0.98.4.ebuild,v 1.1.1.1 2005/11/30 09:55:26 chriswhite Exp $
 
-inherit eutils
+inherit eutils multilib
 
 DESCRIPTION="A free routing daemon replacing Zebra supporting RIP, OSPF and BGP. Includes OSPFAPI, NET-SNMP and IPV6 support."
 HOMEPAGE="http://quagga.net/"
@@ -11,16 +11,18 @@ SRC_URI="http://www.quagga.net/download/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~arm ppc ~sparc x86"
 IUSE="ipv6 snmp pam tcpmd5 bgpclassless ospfapi realms"
 
 RDEPEND="sys-apps/iproute2
-	sys-libs/libcap
+	>=sys-libs/libcap-1.10-r5
 	snmp? ( net-analyzer/net-snmp )
 	pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	virtual/libc
-	sys-devel/binutils"
+	sys-devel/binutils
+	sys-devel/autoconf-wrapper
+	sys-devel/libtool"
 
 src_unpack() {
 	unpack ${A} || die "failed to unpack sources"
@@ -66,7 +68,7 @@ src_compile() {
 		--sysconfdir=/etc/quagga \
 		--enable-exampledir=/etc/quagga/samples \
 		--localstatedir=/var/run/quagga \
-		--libdir=/usr/lib/quagga \
+		--libdir=/usr/$(get_libdir)/quagga \
 		${myconf} \
 		|| die "configure failed"
 	emake || die "make failed"
@@ -77,17 +79,16 @@ src_install() {
 		localstatedir=${D}/var/run/quagga \
 		sysconfdir=${D}/etc/quagga \
 		exampledir=${D}/etc/quagga/samples \
-		libdir=${D}/usr/lib/quagga || die "make install failed"
+		libdir=${D}/usr/$(get_libdir)/quagga || die "make install failed"
 
 	keepdir /var/run/quagga || die
 
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/init/zebra zebra && \
-		newexe ${FILESDIR}/init/ripd ripd && \
-		newexe ${FILESDIR}/init/ospfd ospfd && \
-		( ! use ipv6 || newexe ${FILESDIR}/init/ripngd ripngd ) && \
-		( ! use ipv6 || newexe ${FILESDIR}/init/ospf6d ospf6d ) && \
-		newexe ${FILESDIR}/init/bgpd bgpd || die "failed to install init scripts"
+	local i MY_SERVICES_LIST="zebra ripd ospfd bgpd"
+	use ipv6 && MY_SERVICES_LIST="${MY_SERVICES_LIST} ripngd ospf6d"
+	for i in ${MY_SERVICES_LIST} ; do
+		newinitd ${FILESDIR}/${i}.init ${i} || die "failed to install ${i} init.d script"
+	done
+	newconfd ${FILESDIR}/zebra.conf zebra || die "failed to install zebra conf.d script"
 
 	if use pam; then
 		insinto /etc/pam.d
@@ -112,12 +113,18 @@ pkg_postinst() {
 	einfo "You have to create config files in /etc/quagga before"
 	einfo "starting one of the daemons."
 
+	if use tcpmd5; then
+		echo
+		ewarn "TCP MD5 for BGP needs a patched kernel!"
+		einfo "See http://hasso.linux.ee/quagga/bgp-md5.en.php for more info."
+	fi
+
 	if use ipv6; then
 		echo
 		ewarn "This version of quagga contains a netlink race condition fix that triggered a kernel bug"
 		ewarn "which affects IPv6 users who have a kernel version < 2.6.13-rc6."
-		ewarn "See following links for more info:"
-		ewarn "   http://lists.quagga.net/pipermail/quagga-dev/2005-June/003507.html"
-		ewarn "   http://bugzilla.quagga.net/show_bug.cgi?id=196"
+		einfo "See following links for more info:"
+		einfo "   http://lists.quagga.net/pipermail/quagga-dev/2005-June/003507.html"
+		einfo "   http://bugzilla.quagga.net/show_bug.cgi?id=196"
 	fi
 }

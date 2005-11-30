@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ipx-utils/ipx-utils-1.1-r2.ebuild,v 1.1 2004/10/29 00:38:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ipx-utils/ipx-utils-1.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:55:18 chriswhite Exp $
 
 inherit eutils
 

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.3.5-r1.ebuild,v 1.1 2005/04/03 05:05:35 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.3.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:59:10 chriswhite Exp $
 
-inherit kde-functions eutils libtool
+inherit kde-functions eutils libtool flag-o-matic
 
 DESCRIPTION="WYSIWYM frontend for LaTeX"
 HOMEPAGE="http://www.lyx.org/"
@@ -15,8 +15,8 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64"
-IUSE="cjk nls cups qt debug gnome"
+KEYWORDS="amd64 ppc sparc x86"
+IUSE="cjk cups debug nls qt"
 
 # these dependencies need looking at.
 # does lyx only need qt to compile but not run ?
@@ -26,7 +26,9 @@ DEPEND="virtual/x11
 	>=dev-lang/perl-5
 	nls? ( sys-devel/gettext )
 	app-text/aiksaurus
-	qt? ( >=x11-libs/qt-3 ) !qt? ( =x11-libs/xforms-1* )"
+	qt? ( =x11-libs/qt-3* )
+	!qt? ( cjk? ( =x11-libs/xforms-1.0-r1 )
+		!cjk? ( =x11-libs/xforms-1* ) )"
 
 RDEPEND="${DEPEND}
 	virtual/ghostscript
@@ -36,8 +38,6 @@ RDEPEND="${DEPEND}
 	dev-tex/latex2html
 	media-gfx/imagemagick
 	cups? ( virtual/lpr )
-	app-text/rcs
-	dev-util/cvs
 	app-text/sgmltools-lite
 	app-text/noweb
 	dev-tex/chktex"
@@ -53,7 +53,7 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-boost.patch
 	if use cjk && use qt ; then
 		epatch ${DISTDIR}/CJK-LyX-qt-${PV}-1.patch
-	elif use cjk && built_with_use 'x11-libs/xforms' cjk ; then
+	elif use cjk && built_with_use '=x11-libs/xforms-1.0-r1' cjk ; then
 		epatch ${DISTDIR}/CJK-LyX-xforms-${PV}-1.patch
 	elif use cjk ; then
 		eerror
@@ -65,6 +65,7 @@ src_unpack() {
 		eerror 'or'
 		eerror '3) USE="-cjk" emerge lyx (normal LyX will be built)'
 		eerror
+		die "Please remerge xforms-1.0-r1 with cjk USE flag enabled."
 	fi
 	elibtoolize || die
 }
@@ -81,7 +82,7 @@ src_compile() {
 
 	export WANT_AUTOCONF=2.5
 
-	local flags="${CXXFLAGS} -fno-stack-protector"
+	local flags="${CXXFLAGS} $(test_flag -fno-stack-protector) $(test_flag -fno-stack-protector-all)"
 	unset CFLAGS
 	unset CXXFLAGS
 	econf \
@@ -102,11 +103,7 @@ src_install() {
 	insinto /usr/share/lyx/bind
 	doins ${DISTDIR}/hebrew.bind
 
-	# gnome menu entry
-	if use gnome; then
-		insinto /usr/share/applications
-		doins ${FILESDIR}/lyx.desktop
-	fi
+	domenu ${FILESDIR}/lyx.desktop
 
 	# install the latex-xft fonts, which should fix
 	# the problems outlined in bug #15629

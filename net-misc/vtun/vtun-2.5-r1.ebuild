@@ -1,20 +1,24 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/vtun/vtun-2.5-r1.ebuild,v 1.1 2002/05/28 04:28:41 prez Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vtun/vtun-2.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:54:58 chriswhite Exp $
+
+IUSE="ssl"
 
 DESCRIPTION="Tunneling software to use the universal tunnel"
 HOMEPAGE="http://vtun.sourceforge.net"
+KEYWORDS="x86 sparc "
 LICENSE="GPL-2"
+SLOT="0"
 DEPEND=">=sys-libs/zlib-1.1.4
-	>=dev-libs/lzo-1.07
+	=dev-libs/lzo-1*
 	ssl? ( >=dev-libs/openssl-0.9.6c-r1 )
 	>=sys-kernel/linux-headers-2.4.18"
 #RDEPEND=""
-SRC_URI="ftp://prdownloads.sourceforge.net/vtun/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/vtun/${P}.tar.gz"
 S=${WORKDIR}/vtun
 
 src_compile() {
-	if [ -z "`use ssl`" ]
+	if ! use ssl
 	then
 		use_opts="--disable-ssl"
 	fi
@@ -44,7 +48,7 @@ src_compile() {
 		VAR_DIR=/var || FAILED=1
 
 	# OK, we're done, rename the cyrus one back to what it was.
-	if [ -f /usr/include/md5.h.vtun_compile -a 
+	if [ -f /usr/include/md5.h.vtun_compile -a
 		! -f /usr/include/md5.h ]; then
 	    mv /usr/include/md5.h.vtun_compile /usr/include/md5.h
 	fi

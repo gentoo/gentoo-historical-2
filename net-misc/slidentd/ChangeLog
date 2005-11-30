@@ -1,16 +1,43 @@
 # ChangeLog for net-misc/slidentd
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# /space/gentoo/cvsroot/gentoo-x86/skel.ChangeLog,v 1.2 2002/02/05 00:57:47 gbevin Exp
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/slidentd/ChangeLog,v 1.1.1.1 2005/11/30 09:54:56 chriswhite Exp $
 
-*slidentd-0.0.15 (05 Apr 2002)
+  28 Aug 2005; Mike Frysinger <vapier@gentoo.org> -slidentd-0.0.15.ebuild,
+  slidentd-1.0.0.ebuild:
+  Punt dietlibc cruft.
 
-  25 Apr 2002; Thilo Bangert <thilo.bangert@gmx.net> slidentd-0.0.15 :
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> slidentd-0.0.15.ebuild:
+  Dependency update: sys-apps/daemontools -> sys-process/daemontools.
 
-  fixed ucspi-tcp depandency
+  31 Aug 2004; Daniel Black <dragonheart@gentoo.org> slidentd-1.0.0.ebuild:
+  removed RDEPEND=sys-apps/ucspi-tcp. Fixes bug #35511. Thanks Sascha
 
+  06 Jun 2004; Daniel Black <dragonheart@gentoo.org> slidentd-1.0.0.ebuild:
+  QA - IUSE S=
 
+  13 May 2004; David Holm <dholm@gentoo.org> slidentd-1.0.0.ebuild:
+  Added to ~ppc.
+
+*slidentd-1.0.0 (13 May 2004)
+
+  13 May 2004; Daniel Black <dragonheart@gentoo.org> +metadata.xml,
+  files/slidentd-run, +slidentd-1.0.0.ebuild:
+  version bump and changes as per bug #35511. Thanks to Thilo Bangert
+  <fizzelpark-lists@gmx.net>
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *slidentd-0.0.15 (25 Mar 2002)
 
-  25 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog :
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> slidentd-0.0.15.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
 
+  29 Apr 2002; Thilo Bangert <bangert@gentoo.org> slidentd-0.0.15 :
+  adjusted run file so slidentd runs with wheel group permissions (needed for grsecurity)
+  added run-file
+
+  25 Apr 2002; Thilo Bangert <thilo.bangert@gmx.net> slidentd-0.0.15 :
+  fixed ucspi-tcp depandency
+
+  25 Mar 2002; Thilo Bangert <thilo.bangert@gmx.net> ChangeLog :
   initial release ;-)

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/byld/byld-1.0.3.ebuild,v 1.1 2003/07/25 22:56:54 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/byld/byld-1.0.3.ebuild,v 1.1.1.1 2005/11/30 09:55:56 chriswhite Exp $
 
 DESCRIPTION="build a Linux distribution on a single floppy"
 HOMEPAGE="http://byld.sourceforge.net/"
@@ -9,6 +9,7 @@ SRC_URI="mirror://sourceforge/byld/byld-${PV//./_}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
 RDEPEND="sys-apps/util-linux"
 

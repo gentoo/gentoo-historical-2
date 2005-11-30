@@ -1,35 +1,37 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/findutils/findutils-4.1.20-r1.ebuild,v 1.1 2003/10/23 10:51:39 pauldv Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/findutils/findutils-4.1.20-r1.ebuild,v 1.1.1.1 2005/11/30 09:56:04 chriswhite Exp $
 
-IUSE="nls build afs selinux"
+inherit eutils flag-o-matic gnuconfig toolchain-funcs
 
-inherit eutils
-
-DESCRIPTION="GNU utilities to find files"
-HOMEPAGE="http://www.gnu.org/software/findutils/findutils.html"
+SELINUX_PATCH="findutils-4.1.20-selinux.diff"
 
 # Note this doesn't point to gnu.org because alpha.gnu.org has quit
 # supplying the development versions.  If it comes back in the future
 # then we might want to redirect the link.  See bug 18729
+DESCRIPTION="GNU utilities to find files"
+HOMEPAGE="http://www.gnu.org/software/findutils/findutils.html"
 SRC_URI="ftp://alpha.gnu.org/gnu/${PN}/${P}.tar.gz
-	mirror://gentoo/${P}.tar.gz
-	selinux? mirror://gentoo/${P}-2003011510-selinux-gentoo.patch.bz2"
+	mirror://gentoo/${P}.tar.gz"
 
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~hppa ~arm ~alpha ~ia64"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="nls build afs selinux static"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-apps/sed-4
 	nls? ( sys-devel/gettext )
 	afs? ( net-fs/openafs )
-	selinux? ( sys-apps/selinux-small )"
-RDEPEND="virtual/glibc"
+	selinux? ( sys-libs/libselinux )"
+RDEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+
+	# Detect new systems properly
+	gnuconfig_update
 
 	# Don't build or install locate because it conflicts with slocate,
 	# which is a secure version of locate.  See bug 18729
@@ -38,39 +40,30 @@ src_unpack() {
 	#get a bigger environment as ebuild.sh is growing large
 	epatch ${FILESDIR}/findutils-env-size.patch
 
-	use selinux && epatch ${DISTDIR}/${P}-2003011510-selinux-gentoo.patch.bz2
+	use selinux && epatch ${FILESDIR}/${SELINUX_PATCH}
 }
 
 src_compile() {
-	local myconf=
-
-	use nls || myconf="${myconf} --disable-nls"
-
-	if use afs; then
-		export CPPFLAGS=-I/usr/afsws/include
-		export LDFLAGS=-lpam
-		export LIBS=/usr/afsws/lib/pam_afs.so.1
+	if use afs && use x86; then
+		append-flags -I/usr/afsws/include
+		append-ldflags -lpam
+		export LIBS="/usr/afsws/lib/pam_afs.so.1 -lpam"
 	fi
+	export CPPFLAGS="${CXXFLAGS}"
+	use static && append-ldflags -static
 
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		${myconf} || die
-
-	emake libexecdir=/usr/lib/find || die
+	econf $(use_enable nls) || die
+	emake libexecdir=/usr/lib/find AR="$(tc-getAR)" || die
 }
 
 src_install() {
 	einstall libexecdir=${D}/usr/lib/find || die
-
 	prepallman
 
 	rm -rf ${D}/usr/var
-	if ! use build; then
-		dodoc COPYING NEWS README TODO ChangeLog
-	else
-		rm -rf ${D}/usr/share
-	fi
+	use build \
+		&& rm -rf ${D}/usr/share \
+		|| dodoc NEWS README TODO ChangeLog
 }
 
 pkg_postinst() {

@@ -12,7 +12,7 @@
  #
  # 24-Jul-2003   Initial version of "new" hotplug agent.
  #
- # $Id: firmware.agent,v 1.1 2003/11/13 04:30:20 drobbins Exp $
+ # $Id: firmware.agent,v 1.1.1.1 2005/11/30 09:56:38 chriswhite Exp $
  #
  
  cd /etc/hotplug

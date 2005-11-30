@@ -1,9 +1,17 @@
 # Copyright 1999-2004 Gentoo Technologies, Inc.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep-funcs.eclass,v 1.1 2004/11/12 03:46:33 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep-funcs.eclass,v 1.1.1.1 2005/11/30 09:59:24 chriswhite Exp $
 
-ECLASS=gnustep-funcs
-INHERITED="$INHERITED $ECLASS"
+inherit toolchain-funcs eutils
+
+###########################################################################
+# IUSE="debug profile verbose"
+# - These USE variables are utilized here, but set in gnustep.eclass IUSE.
+# - Packages that inherit this gnustep-funcs.eclass file to gain information
+#    and access as to how GNUstep is deployed on the system can safely do so.
+# - Packages built on the GNUstep libraries should inherit gnustep.eclass
+#    directly (it inherits from this eclass as well)
+###########################################################################
 
 DESCRIPTION="EClass that centralizes access to GNUstep environment information."
 
@@ -65,7 +73,7 @@ egnustep_env() {
 	GNUSTEP_SYSTEM_ROOT="$(egnustep_prefix)/System"
 	if [ -f ${GNUSTEP_SYSTEM_ROOT}/Library/Makefiles/GNUstep.sh ] ; then
 		. ${GNUSTEP_SYSTEM_ROOT}/Library/Makefiles/GNUstep-reset.sh
-		if [ -f /etc/conf.d/gnustep.env ]; then 
+		if [ -f /etc/conf.d/gnustep.env ]; then
 			. /etc/conf.d/gnustep.env
 		else
 			GNUSTEP_SYSTEM_ROOT="/usr/GNUstep/System"
@@ -77,7 +85,7 @@ egnustep_env() {
 		__GS_NETWORK_ROOT=${GNUSTEP_NETWORK_ROOT}
 		__GS_USER_ROOT=${GNUSTEP_USER_ROOT}
 		__GS_USER_ROOT_SUFFIX=$(dirname ${GNUSTEP_USER_ROOT#*$USER}/prune)/
-		
+
 		# "gs_prefix" is the prefix that GNUstep is installed into, e.g.
 		#  gs_prefix=/usr/GNUstep => GNUSTEP_SYSTEM_ROOT=${gs_prefix}/System
 		local gs_prefix=`egnustep_prefix`
@@ -158,6 +166,9 @@ egnustep_make() {
 		if use profile; then
 			gs_make_opts="${gs_make_opts} profile=yes"
 		fi
+		if use verbose; then
+			gs_make_opts="${gs_make_opts} messages=yes"
+		fi
 		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} all || die "package make failed"
 	else
 		die "no Makefile found"
@@ -179,7 +190,7 @@ egnustep_package_config_info() {
 	if [ -f ${FILESDIR}/config-${PN}.sh ]; then
 		einfo "Make sure to set happy defaults for this package by executing:"
 		einfo "  `egnustep_install_domain`/Tools/Gentoo/config-${PN}.sh"
-		einfo "as the user you will run the package as." 
+		einfo "as the user you will run the package as."
 	fi
 }
 
@@ -193,6 +204,9 @@ egnustep_install() {
 		if use profile; then
 			gs_make_opts="${gs_make_opts} profile=yes"
 		fi
+		if use verbose; then
+			gs_make_opts="${gs_make_opts} messages=yes"
+		fi
 		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} install || die "package install failed"
 	else
 		die "no Makefile found"
@@ -204,6 +218,7 @@ egnustep_install() {
 # Note: docs installed with this from a GNUMakefile,
 #  not just some files in a Documentation directory
 egnustep_doc() {
+	cd ${S}/Documentation
 	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
 		local gs_make_opts="${1}"
 		if use debug ; then
@@ -212,12 +227,110 @@ egnustep_doc() {
 		if use profile; then
 			gs_make_opts="${gs_make_opts} profile=yes"
 		fi
+		if use verbose; then
+			gs_make_opts="${gs_make_opts} messages=yes"
+		fi
 		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} all || die "doc make failed"
 		eval emake ${__GS_MAKE_EVAL} ${gs_make_opts} install || die "doc install failed"
-	else
-		die "no Makefile found"
+#XXX: I have no idea why this is called by ebuilds that don't have 'doc' in the
+#  USE flags, but user has 'doc' in global USE in make.conf
+#	else
+#		die "no Makefile found"
 	fi
+	cd ..
 	return 0
 }
-###########################################################################
 
+###########################################################################
+# Tests
+# -----
+
+objc_available() {
+	export OBJC_TEST="${TMP}/objc_test.m"
+	cat > "${OBJC_TEST}" << EOF
+/**
+ * This example taken from the tutorial at:
+ * http://gnustep.made-it.com/GSPT/xml/Tutorial_en.html
+ <quote>
+ A GNUstep Programming Tutorial
+ Time is on our side...
+ Yen-Ju Chen
+ Dennis Leeuw
+
+ Copyright Â© 2003 Yen-Ju Chen, Dennis Leeuw
+
+ Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+ </quote>
+ */
+#include <objc/Object.h>
+@interface Greeter:Object
+{
+	/* This is left empty on purpose:
+	 * Normally instance variables would be declared here,
+	 * but these are not used in our example.
+	 */
+}
+- (void)greet;
+@end
+
+#include <stdio.h>
+@implementation Greeter
+- (void)greet
+{
+	printf("Hello, World!\n");
+}
+@end
+
+#include <stdlib.h>
+int main(void)
+{
+	id myGreeter;
+	myGreeter=[Greeter new];
+	[myGreeter greet];
+	[myGreeter free];
+	return EXIT_SUCCESS;
+}
+EOF
+
+	local available
+	available="yes"
+	eval $(tc-getCC) ${OBJC_TEST} -o ${OBJC_TEST}-out -lobjc || available="no"
+
+	echo ${available}
+}
+
+objc_not_available_info() {
+	einfo "gcc must be compiled with Objective-C support! See the objc USE flag."
+	einfo "NOTE: if you have to recompile gcc anyway, now may be the time to also add the 'gcj' use flag, so that libffi will also be compiled.  Any gcc-3 version with 'gcj' should work, however, if you are testing >=gcc-3.4.3-r1 'objc' USE flag on should also install libffi."
+}
+
+ffi_available() {
+	export FFI_TEST="${TMP}/ffi_test.m"
+	cat > "${FFI_TEST}" << EOF
+#include <ffi.h>
+
+int main(int argc, char *argv[])
+{
+	int n = argc;
+
+	return 0;
+}
+EOF
+
+	local available
+	available="yes"
+	# XXX
+	# Support dev-libs/libffi until it is deprecate
+	# (not that these -I and -L really matter
+	eval $(tc-getCC) ${FFI_TEST} -o ${FFI_TEST}-out -lffi || available="no"
+
+	echo ${available}
+}
+
+ffi_not_available_info() {
+	einfo "Your FFI libraries and headers seem to be installed incorrectly."
+	einfo "This is not as bad as it sounds -- not many projects use libffi at the moment, and gcc may have installed the headers in an inavailable place.  Especially check for 'ffi.h' in your /usr/lib/gcc/\"\$CHOST\"/\"gcc-version\"/include directory, and that any other ffi related files it #include's (e.g. 'ffitarget.h') are in that directory as well; this can be solved by moving the files, or with a symlink.  This is a quick fix, and newer ebuilds of gcc should install the files in the correct places, but for now, it could save you a recompilation of gcc."
+	einfo "If this still fails for you, consider not using the 'gcc-libffi' USE flag and letting dev-libs/libffi build as a dependency.  It is important that either 'gcj' is a USE flag for gcc, or 'gcj' or 'objc' for >=gcc-3.4.3-r1."
+}
+
+###########################################################################

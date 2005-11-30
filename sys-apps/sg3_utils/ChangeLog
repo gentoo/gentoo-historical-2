@@ -1,6 +1,51 @@
 # ChangeLog for sys-apps/sg3_utils
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sg3_utils/ChangeLog,v 1.1 2004/02/10 22:33:46 plasmaroo Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sg3_utils/ChangeLog,v 1.1.1.1 2005/11/30 09:57:08 chriswhite Exp $
+
+  31 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> sg3_utils-1.11.ebuild:
+  Stable on sparc
+
+*sg3_utils-1.15 (06 Jun 2005)
+
+  06 Jun 2005; Mike Frysinger <vapier@gentoo.org> +sg3_utils-1.15.ebuild:
+  Version bump and clean up stupid RPATH.
+
+*sg3_utils-1.11 (28 Nov 2004)
+
+  28 Nov 2004; <plasmaroo@gentoo.org> -sg3_utils-1.10.ebuild,
+  +sg3_utils-1.11.ebuild:
+  Version bump, bug #72575.
+
+*sg3_utils-1.10 (07 Nov 2004)
+
+  07 Nov 2004; <plasmaroo@gentoo.org> -sg3_utils-1.06.ebuild,
+  sg3_utils-1.08.ebuild, +sg3_utils-1.10.ebuild:
+  Added "Contains rescan_scsi_bus." to ${DESCRIPTION} and added 1.10 - bugs
+  #70012, #70019. Marked 1.08 stable on x86.
+
+  31 Aug 2004; David Holm <dholm@gentoo.org> sg3_utils-1.08.ebuild:
+  Added to ~ppc.
+
+*sg3_utils-1.08 (14 Aug 2004)
+
+  14 Aug 2004; <plasmaroo@gentoo.org> -sg3_utils-1.07.ebuild,
+  +sg3_utils-1.08.ebuild:
+  1.07 is broken on 2.4 headers; 1.08 seems to rectify this issue.
+
+*sg3_utils-1.07 (13 Aug 2004)
+
+  13 Aug 2004; <plasmaroo@gentoo.org> +sg3_utils-1.07.ebuild:
+  Version bump, also added Kurt Garloff's rescan-scsi-bus.sh script by request.
+
+  09 Aug 2004; <plasmaroo@gentoo.org> sg3_utils-1.06.ebuild,
+  +files/sg3_utils-llseek.patch:
+  Added a patch to solve PIC issues; bug #59832.
+
+  09 Aug 2004; Travis Tilley <lv@gentoo.org> sg3_utils-1.06.ebuild:
+  Added ~amd64 keyword.
+
+  18 Jun 2004; Jason Wever <weeve@gentoo.org> sg3_utils-1.06.ebuild:
+  Added ~sparc keyword.
 
 *sg3_utils-1.06 (10 Feb 2004)
 

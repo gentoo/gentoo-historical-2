@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/portfwd/portfwd-0.28.ebuild,v 1.1 2005/07/12 02:28:22 smithj Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/portfwd/portfwd-0.28.ebuild,v 1.1.1.1 2005/11/30 09:55:28 chriswhite Exp $
 
 DESCRIPTION="Port Forwarding Daemon"
 SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.gz"

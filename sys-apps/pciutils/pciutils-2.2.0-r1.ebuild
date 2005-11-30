@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/pciutils-2.2.0-r1.ebuild,v 1.1 2005/10/16 11:38:05 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pciutils/pciutils-2.2.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:56:31 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs
 
@@ -23,6 +23,7 @@ src_unpack() {
 
 	epatch "${FILESDIR}"/pcimodules-${P}.patch
 	epatch "${FILESDIR}"/${P}-shared-lib.patch
+	epatch "${FILESDIR}"/${PN}-2.1.11-malloc.patch
 
 	# Set Gentoo paths
 	sed -i \
@@ -37,10 +38,11 @@ src_unpack() {
 		lib/Makefile \
 		|| die "sed lib/Makefile failed"
 
+	sed -i 's:wget -O:wget --connect-timeout=60 -O:' update-pciids.sh
 	ebegin "Updating pci.ids from the web"
 	if ! ./update-pciids.sh &> /dev/null ; then
 		# if we cant update, use a cached version
-		mv ${WORKDIR}/pci.ids-${STAMP} ${S}/pci.ids
+		mv "${WORKDIR}"/pci.ids-${STAMP} "${S}"/pci.ids
 	fi
 	eend 0
 }

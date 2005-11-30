@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/ktechlab/ktechlab-0.1.3.ebuild,v 1.1 2005/05/19 19:43:21 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/ktechlab/ktechlab-0.1.3.ebuild,v 1.1.1.1 2005/11/30 09:55:53 chriswhite Exp $
 
 inherit kde
 

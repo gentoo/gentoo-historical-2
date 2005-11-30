@@ -1,24 +1,29 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/lua/lua-5.0.1_beta20031003-r2.ebuild,v 1.1 2004/01/26 14:02:46 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/lua/lua-5.0.1_beta20031003-r2.ebuild,v 1.1.1.1 2005/11/30 09:58:04 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="A powerful light-weight programming language designed for extending applications"
 HOMEPAGE="http://www.lua.org/"
 SRC_URI="http://www.lua.org/ftp/lua-5.0.1.tar.gz"
+
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~arm -hppa ~mips ~ppc ~sparc ~x86 ~amd64"
+KEYWORDS="~alpha -hppa ~mips ppc ~sparc ~x86 ~amd64"
 IUSE="readline"
+
 DEPEND=">=sys-apps/sed-4
 	sys-apps/findutils"
+
 S=${WORKDIR}/lua-5.0.1
 
 src_unpack() {
-
 	unpack ${A}
 
 	#FIXME: hppa arch needs to update the patch -- I can't test (twp)
-	#epatch ${FILESDIR}/lua-5.0.1-pic.patch
+	#patch works on amd64 - aliz 2004-02-06
+	epatch ${FILESDIR}/lua-5.0.1-pic.patch
 
 	cd ${S}
 
@@ -34,7 +39,7 @@ src_unpack() {
 	sed -i doc/readme.html \
 		-e 's:\(/README\)\("\):\1.gz\2:g'
 
-	if [ `use readline` ]; then
+	if use readline ; then
 		sed -i config \
 			-e "s:^#\(USERCONF=-DLUA_USERCONFIG='\"\$(LUA)/etc/saconfig.c\"' -DUSE_READLINE\):\1:" \
 			-e 's:^#\(EXTRA_LIBS= -lm -ldl -lreadline\) # \(-lhistory -lcurses -lncurses\):\1 \2:'
@@ -54,7 +59,6 @@ Version: ${PV/_*/}
 Cflags: -I\${includedir}
 Libs: -L\${libdir} -llua -llualib -ldl -lm
 EOF
-
 }
 
 src_compile() {
@@ -64,7 +68,6 @@ src_compile() {
 }
 
 src_install() {
-
 	make DESTDIR=${D} install soinstall || die "make install soinstall failed"
 
 	dodoc COPYRIGHT HISTORY UPDATE
@@ -76,11 +79,8 @@ src_install() {
 
 	insinto /usr/share/lua
 	doins etc/compat.lua
-	insinto /etc
-	newins etc/lua.magic magic
 	insinto /usr/share/pixmaps
 	doins etc/lua.xpm
 	insinto /usr/lib/pkgconfig
 	doins etc/lua.pc
-
 }

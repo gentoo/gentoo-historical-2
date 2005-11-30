@@ -1,18 +1,40 @@
-MD5 6fb16aeff7ad833f3ac2027cd268221b nvidia-glx-1.0.4349.ebuild 3162
-MD5 bf9e94e04d62c167baface9cbd58be34 nvidia-glx-1.0.4191-r1.ebuild 2801
-MD5 234657b19a6d19a6981c4aab1ad09fcf nvidia-glx-1.0.3123.ebuild 2658
-MD5 e38d931344afe435a5c06b419d1a64c8 nvidia-glx-1.0.2960-r1.ebuild 2721
-MD5 8b0b8ebf993ec078f34e39fb0a0cfbba nvidia-glx-1.0.4191.ebuild 2665
-MD5 df731a6e32dcbdc8ba416add3d11c15b nvidia-glx-1.0.2880.ebuild 2679
-MD5 feeb34c86d3ef64d45d767daea1c05cb ChangeLog 2766
-MD5 cea66cc5b458a313a9ac72b56e32e10b files/README.gentoo 200
-MD5 fda10e01c37b4518535e3b258be78fa5 files/libGL.la.1 747
-MD5 d95d0e66acb41538e6faace158d2ac21 files/digest-nvidia-glx-1.0.2960-r1 72
-MD5 db715a5b58ba38f9d757cf6be06778e7 files/digest-nvidia-glx-1.0.2880 72
-MD5 fe071363bf9a87e17f14273a23a2192d files/digest-nvidia-glx-1.0.3123 72
-MD5 feb67e9281b725c30e7a45327532267f files/digest-nvidia-glx-1.0.4191 72
-MD5 8b34536317191f4059bebe95beabe1a4 files/digest-nvidia-glx-1.0.4349 72
-MD5 feb67e9281b725c30e7a45327532267f files/digest-nvidia-glx-1.0.4191-r1 72
-MD5 cac348587b9f365512957ab034c2eed2 files/libGL.la 740
-MD5 8bbb4aceec8380bff8456f2e7a824580 files/nvidia-glx-1.0.4191-defines.patch 906
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 289c3b593d8454bf260834f8d1124b54 ChangeLog 22540
 MD5 c3afc69f917a783ebd53cf2de38065dc files/09nvidia 61
+MD5 3d8b3ecb3827e2e3a9a45ac6c3210a0a files/1.0.6111/NVIDIA_glx-1.0.6111-defines.patch 437
+MD5 32901fb95c4fdc6cfa6b762498240b3c files/1.0.6111/NVIDIA_glx-1.0.6111-glheader.patch 380
+MD5 6f55327ce020f7ed0d433ea99dacb315 files/1.0.6111/NVIDIA_glx-1.0.6111-makefile.patch 593
+MD5 3d8b3ecb3827e2e3a9a45ac6c3210a0a files/1.0.6629/NVIDIA_glx-1.0.6629-defines.patch 437
+MD5 32901fb95c4fdc6cfa6b762498240b3c files/1.0.6629/NVIDIA_glx-1.0.6629-glheader.patch 380
+MD5 f6f00d8e915e18f456ad615b4ebd8a21 files/1.0.6629/NVIDIA_glx-1.0.6629-makefile.patch 602
+MD5 ed1e098d85579c75542ef0a49ee4dd5c files/digest-nvidia-glx-1.0.6111-r2 163
+MD5 ed1e098d85579c75542ef0a49ee4dd5c files/digest-nvidia-glx-1.0.6111-r3 163
+MD5 8a4687b0fc3e7cc0b36c247697d94701 files/digest-nvidia-glx-1.0.6629-r6 163
+MD5 8a4687b0fc3e7cc0b36c247697d94701 files/digest-nvidia-glx-1.0.6629-r7 163
+MD5 97b3ec5488fb7f7f6cdde31ee42e45af files/digest-nvidia-glx-1.0.7167-r2 163
+MD5 97b3ec5488fb7f7f6cdde31ee42e45af files/digest-nvidia-glx-1.0.7167-r3 163
+MD5 61c3ebdd8604c971bf969ea03040d170 files/digest-nvidia-glx-1.0.7174-r5 163
+MD5 ef2c4ecedb45b67d79b43ffe58c660cf files/digest-nvidia-glx-1.0.7667-r1 163
+MD5 b23efa632026470bcf33c50fdef740ae files/digest-nvidia-glx-1.0.7676-r1 243
+MD5 b23efa632026470bcf33c50fdef740ae files/digest-nvidia-glx-1.0.7676-r2 243
+MD5 6e47667cc38d8ce4ac2f4c7dbb392abe files/libGL.la-r2 751
+MD5 e06e73d71a54036f83abf35efc6322e3 metadata.xml 302
+MD5 84d76e7e47009583e937b217a139924a nvidia-glx-1.0.6111-r2.ebuild 7643
+MD5 0dcb2c58ba0b70572910592479733275 nvidia-glx-1.0.6111-r3.ebuild 8284
+MD5 d146a360883f212b328c4f0f0922d310 nvidia-glx-1.0.6629-r6.ebuild 7643
+MD5 ba8fa1cac9d24046dc6384ad2882356b nvidia-glx-1.0.6629-r7.ebuild 8284
+MD5 6ca7c051a89c2afafcef2bf3befa6b44 nvidia-glx-1.0.7167-r2.ebuild 7863
+MD5 18ddb38a7595329ad585c74ee979ffaf nvidia-glx-1.0.7167-r3.ebuild 8284
+MD5 630dc45be727342243d06af61e06d6dd nvidia-glx-1.0.7174-r5.ebuild 8446
+MD5 413c2a51514bb61b54b1c9f3ae2e6463 nvidia-glx-1.0.7667-r1.ebuild 8446
+MD5 226c3e5fe5d6e5be93b0a3937e563c06 nvidia-glx-1.0.7676-r1.ebuild 9204
+MD5 a41f37198145f27b1bd3f674d191e0d2 nvidia-glx-1.0.7676-r2.ebuild 9287
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDdVx91ZcsMnZjRyIRAppXAJ9yxSG65Ld6bitwnirD1MxOeNmJZACfR08i
+bf/YlCD9e6UelHfes2zhsOM=
+=BAyr
+-----END PGP SIGNATURE-----

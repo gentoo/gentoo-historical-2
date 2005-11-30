@@ -1,8 +1,22 @@
 # ChangeLog for dev-lang/cm3
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/cm3/ChangeLog,v 1.1 2003/04/17 16:10:51 vapier Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/cm3/ChangeLog,v 1.1.1.1 2005/11/30 09:58:48 chriswhite Exp $
+
+*cm3-5.2.7_pre050331 (02 Apr 2005)
+
+  02 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +cm3-5.2.7_pre050331.ebuild:
+  Version bump #81798 by Stefan Sperling.
+
+*cm3-5.2.6 (17 Jul 2003)
+
+  17 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump !  glibc-2.3.x errno fixes + ppc support :D
 
 *cm3-5.2.4 (17 Apr 2003)
+
+  30 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
+  mmm should be all set now ... src_install has been all fleshed out
 
   17 Apr 2003; Mike Frysinger <vapier@gentoo.org> :
   Initial import.  Ebuild submitted by me.

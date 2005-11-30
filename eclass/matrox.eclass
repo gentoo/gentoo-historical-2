@@ -1,14 +1,14 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/matrox.eclass,v 1.1 2003/12/29 17:17:26 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/matrox.eclass,v 1.1.1.1 2005/11/30 09:59:25 chriswhite Exp $
 #
 # Author: Donnie Berkholz <spyderous@gentoo.org>
 #
 # This eclass is designed to reduce code duplication in the mtxdrivers* ebuilds.
 # The only addition to mtxdrivers-pro is OpenGL stuff.
 
-ECLASS="matrox"
-INHERITED="${INHERITED} ${ECLASS}"
+inherit eutils
+
 
 EXPORT_FUNCTIONS pkg_setup src_compile
 
@@ -18,53 +18,73 @@ LICENSE="Matrox"
 SLOT="${KV}"
 RESTRICT="fetch nostrip"
 
-newrdepend ">=x11-base/xfree-4.2.0
+RDEPEND="virtual/x11
 	virtual/linux-sources"
 
 matrox_pkg_setup() {
 	# Require correct /usr/src/linux
 	check_KV
 
+	# Set up X11 implementation
+	X11_IMPLEM_P="$(best_version virtual/x11)"
+	X11_IMPLEM="${X11_IMPLEM_P%-[0-9]*}"
+	X11_IMPLEM="${X11_IMPLEM##*\/}"
+	einfo "X11 implementation is ${X11_IMPLEM}."
+
 	# Force XFree86 4.3.0, 4.2.1 or 4.2.0 to be installed unless FORCE_VERSION
 	# is set. Need FORCE_VERSION for 4.3.99/4.4.0 compatibility until Matrox
 	# comes up with drivers (spyderous)
-	local INSTALLED_X="`best_version x11-base/xfree`"
-	GENTOO_X_VERSION_REVISION="${INSTALLED_X/x11-base\/xfree-}"
-	GENTOO_X_VERSION="${GENTOO_X_VERSION_REVISION%-*}"
-	if [ "${GENTOO_X_VERSION}" != "4.3.0" ]
+	if has_version "x11-base/xfree"
 	then
-		if [ "${GENTOO_X_VERSION}" != "4.2.1" ]
+		local INSTALLED_X="`best_version x11-base/xfree`"
+		GENTOO_X_VERSION_REVISION="${INSTALLED_X/x11-base\/xfree-}"
+		GENTOO_X_VERSION="${GENTOO_X_VERSION_REVISION%-*}"
+		if [ "${GENTOO_X_VERSION}" != "4.3.0" ]
 		then
-			if [ "${GENTOO_X_VERSION}" != "4.2.0" ]
+			if [ "${GENTOO_X_VERSION}" != "4.2.1" ]
 			then
-				if [ -n "${FORCE_VERSION}" ]
+				if [ "${GENTOO_X_VERSION}" != "4.2.0" ]
 				then
-					GENTOO_X_VERSION="${FORCE_VERSION}"
-				else
-					die "These drivers require XFree86 4.3.0, 4.2.1 or 4.2.0. Do FORCE_VERSION=version-you-want emerge ${PN} (4.3.0, 4.2.1 or 4.2.0) to force installation."
+					if [ -n "${FORCE_VERSION}" ]
+					then
+						GENTOO_X_VERSION="${FORCE_VERSION}"
+					else
+						die "These drivers require XFree86 4.3.0, 4.2.1 or 4.2.0. Do FORCE_VERSION=version-you-want emerge ${PN} (4.3.0, 4.2.1 or 4.2.0) to force installation."
+					fi
 				fi
 			fi
 		fi
+	# xorg-x11 compatibility
+	elif has_version "x11-base/xorg-x11"
+	then
+		if [ "${FORCE_VERSION}" != "4.3.0" ]
+		then
+			die "Set FORCE_VERSION=4.3.0 to emerge this. Use at your own risk."
+		fi
+		GENTOO_X_VERSION="${FORCE_VERSION}"
 	fi
 }
 
 matrox_src_compile() {
+	# 2.6 builds use the ARCH variable
+	set_arch_to_kernel
 	export PARHELIUX="${PWD}/src"
 	cd ${S}/src/kernel/parhelia
 	ln -sf ../../../kernel/mtx_parhelia.o .
 	cd ..
 	# Can't use emake here
 	make clean
-	make
+	make || die "make failed"
+	set_arch_to_portage
 }
 
 matrox_base_src_install() {
 	# Kernel Module
-	dodir /lib/modules/${KV}/kernel/drivers/video; insinto /lib/modules/${KV}/kernel/drivers/video
+	dodir /$(get_libdir)/modules/${KV}/kernel/drivers/video; insinto /$(get_libdir)/modules/${KV}/kernel/drivers/video
 	doins src/kernel/mtx.o
 
 	# X Driver (2D)
-	dodir /usr/X11R6/lib/modules/drivers; insinto /usr/X11R6/lib/modules/drivers
+	dodir /usr/X11R6/$(get_libdir)/modules/drivers; insinto /usr/X11R6/$(get_libdir)/modules/drivers
 	doins xfree86/${GENTOO_X_VERSION}/mtx_drv.o
 }
 

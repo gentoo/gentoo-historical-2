@@ -1,34 +1,34 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.0.0.ebuild,v 1.1 2002/09/12 01:11:04 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.0.0.ebuild,v 1.1.1.1 2005/11/30 09:57:56 chriswhite Exp $
 
-S=${WORKDIR}/hvirtual-${PV}
+inherit gcc
+export WANT_GCC_3="yes"
 
 DESCRIPTION="Cinelerra - Professional Video Editor"
 HOMEPAGE="http://heroinewarrior.com/cinelerra.php3"
 SRC_URI="mirror://sourceforge/heroines/hvirtual-${PV}-src.tar.bz2"
 
-DEPEND="virtual/x11
-	virtual/glibc"
-RDEPEND="${DEPEND}"
-
-LICENSE="GPL"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
+
+DEPEND="virtual/x11
+	virtual/libc
+	=sys-devel/gcc-3*"
+
+S=${WORKDIR}/hvirtual-${PV}
 
 src_compile() {
-
 	echo ${CFLAGS} > i686/c_flags
-
 	make || die "make failed"
-
 }
 
 src_install() {
-
 	cd ${S}/${PN}/i686
 
-	dobin ${PN} 
+	dobin ${PN}
 
 	cd ${S}/plugins
 	insinto /usr/lib/${PN}
@@ -36,7 +36,7 @@ src_install() {
 	doins titler/fonts
 
 	cd ${S}/libmpeg3/i686
-	dobin mpeg3dump mpeg3cat mpeg3toc 
+	dobin mpeg3dump mpeg3cat mpeg3toc
 
 	cd ${S}/mix/i686
 	dobin mix2000
@@ -50,10 +50,7 @@ src_install() {
 	cd ${S}/mplexlo/i686
 	dobin mplexlo
 
-	cd ${S} 
-	dodoc CVS COPYING 
-	dohtml -a png,html,texi,sdw -r doc/*	
-
+	cd ${S}
+	dodoc CVS COPYING
+	dohtml -a png,html,texi,sdw -r doc/*
 }
-
-

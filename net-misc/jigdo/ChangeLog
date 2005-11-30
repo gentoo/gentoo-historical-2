@@ -1,6 +1,41 @@
 # ChangeLog for net-misc/jigdo
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/jigdo/ChangeLog,v 1.1 2003/07/30 00:08:25 weeve Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/jigdo/ChangeLog,v 1.1.1.1 2005/11/30 09:55:29 chriswhite Exp $
+
+  21 Aug 2005; Jason Wever <weeve@gentoo.org> files/jigdo-0.7.2-64bit.patch:
+  Fixed patch to resolve bug #103238.
+
+*jigdo-0.7.2 (20 Aug 2005)
+
+  20 Aug 2005; Jason Wever <weeve@gentoo.org>
+  +files/jigdo-0.7.2-64bit.patch, +jigdo-0.7.2.ebuild:
+  Version bump, resolves bug #99847.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> jigdo-0.7.0.ebuild,
+  jigdo-0.7.1.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  13 Oct 2004; Jason Wever <weeve@gentoo.org> jigdo-0.7.1.ebuild:
+  Stable on sparc and x86.
+
+  01 Oct 2004; Danny van Dyk <kugelfang@gentoo.org> jigdo-0.7.1.ebuild:
+  Marked ~amd64.
+
+  14 Sep 2004; Jason Wever <weeve@gentoo.org> jigdo-0.7.0.ebuild:
+  Fixed the HOMEPAGE and SRC_URI values in 0.7.0 to reflect new homepage.
+
+*jigdo-0.7.1 (14 Sep 2004)
+
+  14 Sep 2004; Jason Wever <weeve@gentoo.org> +jigdo-0.7.1.ebuild:
+  Version bump, resolves bug #62705. Thanks to Maxim Reznik <reznikmm@front.ru>
+  for the ebuild.
+
+  09 Jun 2004; Aron Griffis <agriffis@gentoo.org> jigdo-0.7.0.ebuild:
+  Fix use invocation
+
+  31 Oct 2003; Jason Wever <weeve@gentoo.org> jigdo-0.7.0.ebuild,
+  files/jigdo-gentoo-db3.patch:
+  Added fix for bug #32029.  Thanks to robbat2 :)
 
 *jigdo-0.7.0 (29 Jul 2003)
 

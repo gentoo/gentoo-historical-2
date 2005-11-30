@@ -1,11 +1,48 @@
 # ChangeLog for net-misc/netkit-timed
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-timed/ChangeLog,v 1.1 2002/02/01 21:53:35 gbevin Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-timed/ChangeLog,v 1.1.1.1 2005/11/30 09:55:44 chriswhite Exp $
 
+  26 Sep 2004; Tom Gall <tgall@gentoo.org> netkit-timed-0.17-r7.ebuild:
+  stable on ppc64, bug #59610
+
+  16 Aug 2004; Daniel Black <dragonheart@gentoo.org>
+  netkit-timed-0.17-r6.ebuild, netkit-timed-0.17-r7.ebuild:
+  x86 stable
+
+  14 Aug 2004; Hardave Riar <hardave@gentoo.org> netkit-timed-0.17-r7.ebuild:
+  Stable on mips, bug #59610
+
+  09 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  netkit-timed-0.17-r7.ebuild:
+  Stable on sparc wrt #59610
+
+*netkit-timed-0.17-r7 (07 Aug 2004)
+
+  07 Aug 2004; Daniel Black <dragonheart@gentoo.org>
+  +files/0.17-CFLAG-DEF-fix.patch, +files/0.17-timed.patch, -files/timed.c,
+  netkit-timed-0.17-r6.ebuild, +netkit-timed-0.17-r7.ebuild +metadata.xml:
+  0.17-r6 broken as per bug #59610. Removed timed.c and replaced with patch.
+  Version 0.17-r7 fixed the problem. Thanks to Antonio <netbix@tiscali.it> for
+  the bug report and Jens Lindemann <jens.lindemann@gmail.com> for the fix.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> netkit-timed-0.17-r6.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *netkit-timed-0.17-r6 (1 Feb 2002)
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> netkit-timed-0.17-r6.ebuild :
+  Added stable mips keyword to the ebuild.
+
+  20 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> netkit-timed-0.17-r6.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  09 Jul 2002; phoen][x <phoenix@gentoo.org> netkit-timed-0.17-r6.ebuild :
+  Added KEYWORDS, LICENSE, SLOT.
+
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

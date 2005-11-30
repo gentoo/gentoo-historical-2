@@ -1,10 +1,12 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.1.029.ebuild,v 1.1 2003/09/18 18:46:13 drobbins Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.1.029.ebuild,v 1.1.1.1 2005/11/30 09:58:32 chriswhite Exp $
+
+inherit rpm
 
 S=${WORKDIR}
 
-DESCRIPTION="Intel C++ Compiler - Intel's Pentium and IA-64 optimizing compiler for Linux"
+DESCRIPTION="Intel C++ Compiler - Intel's Pentium optimized compiler for Linux"
 
 SRC_URI1="ftp://download.intel.com/software/products/compilers/downloads/l_cc_pc_${PV}.tar"
 SRC_URI2="ftp://download.intel.co.jp/software/products/compilers/downloads/l_cc_pc_${PV}.tar"
@@ -15,19 +17,22 @@ HOMEPAGE="http://www.intel.com/software/products/compilers/clin/"
 LICENSE="icc-7.0"
 
 DEPEND="virtual/linux-sources
-	>=sys-libs/glibc-2.2.5
-	app-arch/rpm2targz"
+		>=sys-libs/glibc-2.2.5
+		x86? ( sys-libs/lib-compat )"
 
 RDEPEND="virtual/linux-sources
-	>=sys-libs/glibc-2.2.5"
+		>=sys-libs/glibc-2.2.5"
 
 SLOT="7"
-KEYWORDS="-* ia64 ~x86"
+KEYWORDS="-* ~ia64 ~x86"
 IUSE=""
 
 RESTRICT="nostrip"
 
-src_compile() {
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
 	# Keep disk space to a minimum
 	if [ "$ARCH" = "x86" ]
 	then
@@ -36,17 +41,10 @@ src_compile() {
 		rm -f intel-*.i386.rpm
 	fi
 
-	mkdir opt
+	rpm_unpack *.rpm
 
-	for x in intel-*.rpm
-	do
-		#this takes longer than rpm2cpio (due to the unnecessary gzipping)
-		#but doesn't require a dependency on the rpm ebuild (which is nice.)
-		einfo "Extracting: ${x}"
-		rpm2targz ${x}
-		rm -f ${x/.rpm/.tar.gz}
-		tar xzvf ${x/.rpm/.tar.gz} || die
-	done
+}
+src_compile() {
 
 	# From UNTAG_CFG_FILES in 'install'
 	SD=${S}/opt/intel # Build DESTINATION
@@ -68,6 +66,11 @@ src_compile() {
 		mv $SUPPORTFILE.abs $SUPPORTFILE
 		chmod 644 $SUPPORTFILE
 	done
+
+	# these should not be executable
+	find "${SD}/compiler70/"{docs,man,training,ia32/include} -type f -exec chmod -x "{}" ";"
+	find "${SD}/compiler70/ia32/lib" -name \*.a -exec chmod -x "{}" ";"
+
 }
 
 src_install () {
@@ -89,11 +92,12 @@ src_install () {
 		dosym ../../opt/intel/compiler70/ia64/bin/eccbin /usr/bin/ecc
 		dosym ../../opt/intel/compiler70/ia64/bin/ecpcbin /usr/bin/ecpc
 	fi
+
+
 }
 
 pkg_postinst () {
 	einfo "The ICC compiler for Itanium systems is called \"ecc\"."
-	einfo
 	einfo "http://www.intel.com/software/products/compilers/clin/noncom.htm"
 	einfo "From the above url you can get a free, non-commercial"
 	einfo "license to use the Intel C++ Compiler emailed to you."

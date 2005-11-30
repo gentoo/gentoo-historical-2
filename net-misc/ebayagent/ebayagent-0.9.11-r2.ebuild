@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ebayagent/ebayagent-0.9.11-r2.ebuild,v 1.1 2005/06/12 20:20:34 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ebayagent/ebayagent-0.9.11-r2.ebuild,v 1.1.1.1 2005/11/30 09:54:51 chriswhite Exp $
 
 inherit eutils
 

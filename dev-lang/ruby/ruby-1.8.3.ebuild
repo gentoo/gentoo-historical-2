@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.3.ebuild,v 1.1 2005/09/23 01:04:19 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ruby/ruby-1.8.3.ebuild,v 1.1.1.1 2005/11/30 09:58:19 chriswhite Exp $
 
-ONIGURUMA="onigd2_4_2"
+ONIGURUMA="onigd2_5_0"
 
 inherit flag-o-matic alternatives eutils gnuconfig
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://ruby/${PV%.*}/${P/_pre/-preview}.tar.gz
 LICENSE="Ruby"
 SLOT="1.8"
 # please keep sorted
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 s390 sh sparc x86"
 IUSE="socks5 tcltk cjk doc threads"
 
 RDEPEND="virtual/libc
@@ -24,7 +24,9 @@ RDEPEND="virtual/libc
 	socks5? ( >=net-proxy/dante-1.1.13 )
 	tcltk? ( dev-lang/tk )
 	>=dev-ruby/ruby-config-0.3
-	!=dev-lang/ruby-cvs-1.8*"
+	!=dev-lang/ruby-cvs-1.8*
+	!dev-ruby/rdoc"
+
 DEPEND="sys-devel/autoconf
 	sys-apps/findutils
 	${RDEPEND}"
@@ -35,15 +37,15 @@ S=${WORKDIR}/${P%_*}
 src_unpack() {
 	unpack ${A}
 
-#	if use cjk ; then
-#		einfo "Applying ${ONIGURUMA}"
-#		pushd ${WORKDIR}/oniguruma
-#		epatch ${FILESDIR}/oniguruma-2.3.1-gentoo.patch
-#		cp ${FILESDIR}/re.c.182.patch .
-#		econf --with-rubydir=${S} || die "econf failed"
-#		make ${SLOT/./}
-#		popd
-#	fi
+	if use cjk ; then
+		einfo "Applying ${ONIGURUMA}"
+		pushd ${WORKDIR}/oniguruma
+		epatch ${FILESDIR}/oniguruma-2.3.1-gentoo.patch
+		cp ${FILESDIR}/re.c.183.patch .
+		econf --with-rubydir=${S} || die "econf failed"
+		make ${SLOT/./}
+		popd
+	fi
 
 	# Enable build on alpha EV67 (but run gnuconfig_update everywhere)
 	gnuconfig_update || die "gnuconfig_update failed"
@@ -98,8 +100,8 @@ src_install() {
 		dosym /usr/lib/libruby${SLOT/./}.${PV%_*}.dylib /usr/lib/libruby.${PV%.*}.dylib
 		dosym /usr/lib/libruby${SLOT/./}.${PV%_*}.dylib /usr/lib/libruby.${PV%_*}.dylib
 	else
-		dosym /usr/$(get_libdir)/libruby${SLOT/./}.so.${PV%_*} /usr/$(get_libdir)/libruby.so.${PV%.*}
-		dosym /usr/$(get_libdir)/libruby${SLOT/./}.so.${PV%_*} /usr/$(get_libdir)/libruby.so.${PV%_*}
+		dosym libruby${SLOT/./}.so.${PV%_*} /usr/$(get_libdir)/libruby.so.${PV%.*}
+		dosym libruby${SLOT/./}.so.${PV%_*} /usr/$(get_libdir)/libruby.so.${PV%_*}
 	fi
 
 	dodoc COPYING* ChangeLog MANIFEST README* ToDo

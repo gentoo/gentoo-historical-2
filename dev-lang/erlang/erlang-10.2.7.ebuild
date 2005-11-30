@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/erlang-10.2.7.ebuild,v 1.1 2005/10/29 20:25:08 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/erlang-10.2.7.ebuild,v 1.1.1.1 2005/11/30 09:58:46 chriswhite Exp $
 
 inherit eutils multilib flag-o-matic elisp-common
 

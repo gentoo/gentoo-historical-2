@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kalbum/kalbum-0.8.0.ebuild,v 1.1 2004/10/30 23:31:30 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kalbum/kalbum-0.8.0.ebuild,v 1.1.1.1 2005/11/30 09:57:12 chriswhite Exp $
 
 inherit kde
 

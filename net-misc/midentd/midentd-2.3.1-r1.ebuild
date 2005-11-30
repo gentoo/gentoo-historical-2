@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/midentd/midentd-2.3.1-r1.ebuild,v 1.1 2004/05/14 02:25:03 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/midentd/midentd-2.3.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:17 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="ident daemon with masquerading and fake replies support"
 HOMEPAGE="http://panorama.sth.ac.at/midentd/"
@@ -8,7 +10,7 @@ SRC_URI="http://panorama.sth.ac.at/midentd/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~amd64 ~sparc x86"
 IUSE=""
 
 RDEPEND="dev-lang/perl"

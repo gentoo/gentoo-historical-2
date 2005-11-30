@@ -1,8 +1,9 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gtm/gtm-0.4.12.ebuild,v 1.1 2002/08/19 16:49:11 stroke Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gtm/gtm-0.4.12.ebuild,v 1.1.1.1 2005/11/30 09:55:26 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="ssl nls gnome"
+
 DESCRIPTION="GTM - a transfer manager"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://gtm.sourceforge.net/"
@@ -15,7 +16,7 @@ DEPEND="=x11-libs/gtk+-1.2*
 	=gnome-base/gnome-panel-1.4*
 	>=gnome-base/gnome-libs-1.4.1.7
 	>=gnome-base/oaf-0.6.8
-	>=gnome-base/ORBit-0.5.11
+	=gnome-base/orbit-0*
 	gnome? ( =gnome-base/gnome-applets-1.4* )
 	ssl?   ( dev-libs/openssl )"
 
@@ -33,11 +34,11 @@ src_unpack() {
 		sed -e 's: \$(gtm_helpdir): \$(DESTDIR)$(gtm_helpdir):g' \
 			${S}/doc/${lang}/Makefile.in.orig \
 			>${S}/doc/${lang}/Makefile.in
-	done			
+	done
 }
 
 src_compile() {
-        
+
 	local myconf
 	use nls   || myconf="--disable-nls"
 	use gnome || myconf="${myconf} --disable-applet"
@@ -53,11 +54,11 @@ src_compile() {
 		--sysconfdir=/etc \
 		--without-debug \
 		$myconf || die
-			
+
 	emake || die
 }
 
 src_install() {
-	
+
 	make DESTDIR=${D} install || die
 }

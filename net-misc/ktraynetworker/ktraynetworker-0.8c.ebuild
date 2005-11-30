@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ktraynetworker/ktraynetworker-0.8c.ebuild,v 1.1 2005/04/26 16:06:41 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ktraynetworker/ktraynetworker-0.8c.ebuild,v 1.1.1.1 2005/11/30 09:55:10 chriswhite Exp $
 
 inherit kde
 

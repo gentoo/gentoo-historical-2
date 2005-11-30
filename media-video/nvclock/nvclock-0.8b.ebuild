@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/nvclock/nvclock-0.8b.ebuild,v 1.1 2005/08/30 22:53:45 malverian Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/nvclock/nvclock-0.8b.ebuild,v 1.1.1.1 2005/11/30 09:57:43 chriswhite Exp $
 
 inherit eutils
 
@@ -30,7 +30,7 @@ src_compile() {
 	local myconf
 
 	use gtk || myconf="${myconf} --disable-gtk"
-	use qt && myconf="${myconf} --enable-qt"
+	use qt || myconf="${myconf} --disable-qt"
 
 	./configure ${myconf} || die
 	make || die

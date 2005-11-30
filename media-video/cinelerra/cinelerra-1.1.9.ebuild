@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.1.9.ebuild,v 1.1 2004/02/14 15:41:33 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/cinelerra/cinelerra-1.1.9.ebuild,v 1.1.1.1 2005/11/30 09:57:57 chriswhite Exp $
 
 inherit gcc eutils flag-o-matic
 export WANT_GCC_3="yes"
@@ -9,6 +9,8 @@ export WANT_GCC_3="yes"
 
 filter-flags "-fPIC -fforce-addr"
 
+RESTRICT="nostrip"
+
 DESCRIPTION="Cinelerra - Professional Video Editor"
 HOMEPAGE="http://heroinewarrior.com/cinelerra.php3"
 SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2"
@@ -16,9 +18,10 @@ SRC_URI="mirror://sourceforge/heroines/${P}-src.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 -ppc"
+IUSE=""
 
 DEPEND="virtual/x11
-	virtual/glibc
+	virtual/libc
 	=sys-devel/gcc-3*
 	dev-lang/nasm"
 #	>=media-libs/a52dec-0.7.3"
@@ -42,10 +45,10 @@ src_compile() {
 
 src_install() {
 	local myarch
-	if [ -n "`use x86`" ]; then
+	if use x86; then
 	myarch="${CHOST/-*/}" #should solve the i586/i686 problem
 	fi
-	if [ -n "`use ppc`" ]; then
+	if use ppc; then
 	myarch="ppc"
 	fi
 	cd ${S}/${PN}/${myarch}

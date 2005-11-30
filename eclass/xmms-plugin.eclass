@@ -1,176 +1,109 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/xmms-plugin.eclass,v 1.1 2004/10/19 23:02:31 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/xmms-plugin.eclass,v 1.1.1.1 2005/11/30 09:59:32 chriswhite Exp $
 #
 # Jeremy Huddleston <eradicator@gentoo.org>
-#
+
 # Usage:
-# Source Code:
-# You have multiple methods with which to specify how we get the source code
-# for the patckages.
-#
-# (1) - Separate tarballs
-# If your package provides separate tarballs for the xmms and bmp plugins,
-# then specify them in the XMMS_SRC_URI and BMP_SRC_URI variables.
-# XMMS_SRC_URI="xmms-plugin.tar.bz2"
-# BMP_SRC_URI="bmp-plugin.tar.bz2"
-# BASE_SRC_URI="common-stuff.tar.bz2"
-#
-# (2) - xmms->bmp patch
-# If you have a patch to turn an xmms plugin into a bmp plugin, specify it
-# in the variable XMMS2BMP_PATCH:
-# XMMS2BMP_PATCH="${FILESDIR}/${P}-xmms2bmp.patch"
-#
-# (3) - automated
-# The eclass will try to do some sedage to get the plugin to work with bmp.
-#
-# Common patches:
-# If you have patches that need to apply to both xmms and bmp sources,
-# Place them in the PATCHES variable:
-# PATCHES="${FILESDIR}/${P}-gcc34.patch ${FILESDIR}/${P}-config.patch"
-#
-# Source Location:
-# By default, we assume a ${S} of ${XMMS_S} or ${BMP_S} for the two packages.
-# These default to ${XMMS_WORKDIR}/${P} or ${BMP_WORKDIR}/${P}.
-# ${XMMS_WORKDIR} and ${BMP_WORKDIR}/${P} default to ${WORKDIR}/xmms and
-# ${WORKDIR}/bmp.  You may override ${*_S}, but not the ${*_WORKDIR}.
-#
-# Documentation:
-# Set the DOCS variable to contain the documentation to be dodocd:
-# DOCS="ChangeLog AUTHORS README"
+# This eclass is used to create ebuilds for xmms plugins which are contained
+# within the main xmms tarball.  Usage:
 
-inherit eutils libtool gnuconfig
+# PATCH_VER:
+# M4_VER:
+# GENTOO_URI:
+GENTOO_URI=${GENTOO_URI-"http://dev.gentoo.org/~eradicator/xmms"}
+# Set this variable if you want to use a gentoo specific patchset.  This adds
+# ${GENTOO_URI}/xmms-${PV}-gentoo-patches-${PATCH_VER}.tar.bz2 to the SRC_URI
 
-ECLASS=xmms-plugin
-INHERITED="${INHERITED} ${ECLASS}"
+# PLUGIN_PATH:
+# Set this variable to the plugin location you want to build.
+# Example:
+# PLUGIN_PATH="Input/mpg123"
 
-IUSE="${IUSE} xmms bmp"
+# SONAME:
+# Set this variable to the filename of the plugin that is copied over
+# Example:
+# SONAME="libmpg123.so"
 
-DEPEND="bmp? ( >=media-sound/beep-media-player-0.9.7_rc2-r2 )
-	xmms? ( media-sound/xmms )"
+inherit eutils flag-o-matic
 
-XMMS_WORKDIR="${WORKDIR}/xmms"
-BMP_WORKDIR="${WORKDIR}/bmp"
+DESCRIPTION="Xmms Plugin: ${PN}"
+HOMEPAGE="http://www.xmms.org"
+LICENSE="GPL-2"
 
-# We don't use ${S}
-S="${WORKDIR}"
+SRC_URI="http://www.xmms.org/files/1.2.x/xmms-${PV}.tar.bz2
+	 ${M4_VER:+${GENTOO_URI}/xmms-${PV}-gentoo-m4-${M4_VER}.tar.bz2}
+	 ${PATCH_VER:+${GENTOO_URI}/xmms-${PV}-gentoo-patches-${PATCH_VER}.tar.bz2}"
 
-if [ -z "${XMMS_S}" ]; then
-	XMMS_S="${XMMS_WORKDIR}/${P}"
-fi
+# Set S to something which exists
+S="${WORKDIR}/xmms-${PV}"
 
-if [ -z "${BMP_S}" ]; then
-	BMP_S="${BMP_WORKDIR}/${P}"
-fi
-
-if [ -n "${BMP_SRC_URI}" -a -n "${XMMS_SRC_URI}" ]; then
-	SRC_URI="${BASE_SRC_URI}
-	         bmp? ( ${BMP_SRC_URI} )
-	         xmms? ( ${XMMS_SRC_URI} )"
-fi
+RDEPEND="${RDEPEND+${RDEPEND}}${RDEPEND-${DEPEND}}"
+DEPEND="${DEPEND}
+	=sys-devel/automake-1.7*
+	=sys-devel/autoconf-2.5*
+	sys-devel/libtool"
 
 xmms-plugin_src_unpack() {
-	use xmms && mkdir ${XMMS_WORKDIR}
-	use bmp && mkdir ${BMP_WORKDIR}
+	if ! has_version '>=media-sound/xmms-1.2.10-r13'; then
+		ewarn "You don't have >=media-sound/xmms-1.2.10-r13, so we are using the SDK in"
+		ewarn "this package rather that the one installed on your system. It is recommended"
+		ewarn "that you cancel this emerge and grab >=media-sound/xmms-1.2.10-r13 first."
+		epause 5
+	fi
 
-	if [ -n "${BMP_SRC_URI}" -a -n "${XMMS_SRC_URI}" ]; then
-		if use xmms; then
-			cd ${XMMS_WORKDIR}
-			for f in ${XMMS_SRC_URI} ${BASE_SRC_URI}; do
-				unpack ${f}
-			done
-		fi
+	unpack ${A}
 
-		if use bmp; then
-			cd ${BMP_WORKDIR}
-			for f in ${BMP_SRC_URI} ${BASE_SRC_URI}; do
-				unpack ${f}
-			done
-		fi
+	cd ${S}
+	if [[ -n "${PATCH_VER}" ]]; then
+		EPATCH_SUFFIX="patch"
+		epatch ${WORKDIR}/patches
+	fi
+
+	cd ${S}/${PLUGIN_PATH}
+	sed -i -e "s:-I\$(top_srcdir)::g" \
+	       -e "s:\$(top_builddir)/libxmms/libxmms.la:/usr/$(get_libdir)/libxmms.la:g" \
+	       Makefile.am || die "Failed to edit Makefile.am"
+
+	cd ${S}
+
+	export WANT_AUTOMAKE=1.7
+	export WANT_AUTOCONF=2.5
+
+	libtoolize --force --copy || die "libtoolize --force --copy failed"
+
+	if [[ -n "${M4_VER}" ]]; then
+		rm acinclude.m4
+		aclocal -I ${WORKDIR}/m4 || die "aclocal failed"
 	else
-		if use xmms; then
-			cd ${XMMS_WORKDIR}
-			unpack ${A}
-		fi
+		aclocal || die "aclocal failed"
+	fi
+	autoheader || die "autoheader failed"
+	automake --gnu --add-missing --include-deps --force-missing --copy || die "automake failed"
 
-		if use bmp; then
-			cd ${BMP_WORKDIR}
-			unpack ${A}
-
-			if [ -n "${XMMS2BMP_PATCH}" ]; then
-				cd ${BMP_S}
-				epatch ${XMMS2BMP_PATCH}
-			else
-				cd ${BMP_S}
-				xmms2bmp_automate
-			fi
-		fi
+	cd ${S}/${PLUGIN_PATH}
+	if has_version '>=media-sound/xmms-1.2.10-r13'; then
+		sed -i -e "s:^DEFAULT_INCLUDES = .*$:DEFAULT_INCLUDES = -I. $(xmms-config --cflags):" \
+			Makefile.in || die "Failed to edit Makefile.in"
 	fi
 
-	if [ -n "${PATCHES}" ]; then
-		if use xmms; then
-			cd ${XMMS_S}
-			epatch ${PATCHES}
-		fi
-
-		if use bmp; then
-			cd ${BMP_S}
-			epatch ${PATCHES}
-		fi
-	fi
-
-	if use xmms; then
-		cd ${XMMS_S}
-		S="${XMMS_S}"
-		elibtoolize
-		gnuconfig_update
-	fi
-
-	if use bmp; then
-		cd ${BMP_S}
-		S="${BMP_S}"
-		elibtoolize
-		gnuconfig_update
-	fi
+	cd ${S}
+	autoconf || die "autoconf failed"
 }
 
 xmms-plugin_src_compile() {
-	myconf="${myconf} --disable-static"
+	filter-flags -fforce-addr -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 
-	if use xmms; then
-		cd ${XMMS_S}
-		econf ${myconf} ${xmms_myconf} || die
-		emake || die
-	fi
+	econf ${myconf}
+	cp config.h ${S}/${PLUGIN_PATH}
 
-	if use bmp; then
-		cd ${BMP_S}
-		export FAKE_XMMS_VERSION=1.2.10
-		econf ${myconf} ${bmp_myconf}|| die
-		emake || die
-	fi
+	cd ${S}/${PLUGIN_PATH}
+	emake -j1 || die
 }
 
 xmms-plugin_src_install() {
-	if use xmms; then
-		cd ${XMMS_S}
-		make DESTDIR="${D}" install || die
-	fi
-
-	if use bmp; then
-		cd ${BMP_S}
-		make DESTDIR="${D}" install || die
-	fi
-
-	if [ -n "${DOCS}" ]; then
-		dodoc ${DOCS}
-	fi
-}
-
-xmms2bmp_automate() {
-	find . -name Makefile -o -name Makefile.in -o -name configure |
-		xargs sed -i -e 's:xmms-config:beep-config:g' \
-		             -e 's:libdir)/xmms:libdir)/bmp:g'
+	cd ${S}/${PLUGIN_PATH}
+	make DESTDIR="${D}" install || die
 }
 
 EXPORT_FUNCTIONS src_unpack src_compile src_install

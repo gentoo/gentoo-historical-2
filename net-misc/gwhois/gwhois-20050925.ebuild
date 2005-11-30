@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/gwhois/gwhois-20050925.ebuild,v 1.1 2005/09/26 08:02:05 wschlich Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/gwhois/gwhois-20050925.ebuild,v 1.1.1.1 2005/11/30 09:55:07 chriswhite Exp $
 
 DESCRIPTION="generic whois"
 HOMEPAGE="http://gwhois.de/"

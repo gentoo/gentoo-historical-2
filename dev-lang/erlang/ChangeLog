@@ -1,13 +1,118 @@
 # ChangeLog for dev-lang/erlang
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.1 2002/11/02 05:40:54 george Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/erlang/ChangeLog,v 1.1.1.1 2005/11/30 09:58:45 chriswhite Exp $
 
+*erlang-10.2.7 (29 Oct 2005)
+
+  29 Oct 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/erlang-10.2.7-export-TARGET.patch,
+  +files/10.2.7-manpage-emacs-gentoo.patch, +erlang-10.2.7.ebuild:
+  New upstream version; Added epoll support and condition support for
+  dev-lang/tk via X USE flag; Resolves Bug #106208.
+
+  05 Sep 2005; Jason Wever <weeve@gentoo.org> erlang-10.2.5.ebuild:
+  Stable on SPARC.
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> erlang-10.2.5.ebuild:
+  Stable on ppc.
+
+*erlang-10.2.5 (24 Aug 2005)
+
+  24 Aug 2005; Mike Frysinger <vapier@gentoo.org> +erlang-10.2.5.ebuild:
+  Add a version which works with wings #97798.
+
+  18 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/10.2.6-manpage-emacs-gentoo.patch, files/50erlang-gentoo.el,
+  metadata.xml, erlang-10.2.6.ebuild:
+  Added Emacs Herd to metadata.xml.
+
+  18 Jul 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/10.2.6-manpage-emacs-gentoo.patch, files/50erlang-gentoo.el,
+  erlang-10.2.6.ebuild:
+  Support man-page documentation in Emacs erlang-mode; Install Erlang
+  man-pages and HTML documentation via "doc" USE flag; Add missing
+  dependencies for Java and ODBC support via "odbc" and "java" USE flags;
+  Rename Erlang man-pages with "erl" suffix to avoid namespace collision; New
+  upstream version.
+
+*erlang-10.2.6 (02 Jul 2005)
+
+  02 Jul 2005; Mike Frysinger <vapier@gentoo.org> +erlang-10.2.6.ebuild:
+  Version bump.
+
+  02 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/erlang-10.2.6-export-TARGET.patch, erlang-10.2.0.ebuild:
+  Fix host detection #94090 by Matthew Kennedy.
+
+  30 May 2005; Sven Wegener <swegener@gentoo.org> erlang-9c-r2.ebuild,
+  erlang-9c-r3.ebuild, erlang-10.2.0.ebuild:
+  Moved from gcc.eclass to toolchain-funcs.eclass, bug #92745.
+
+  21 Apr 2005; Herbie Hopkins <herbs@gentoo.org> erlang-10.2.0.ebuild:
+  Small multilib issue, fixes bug #89938
+
+  20 Mar 2005; Matthew Kennedy <mkennedy@gentoo.org>
+  +files/50erlang-gentoo.el, erlang-10.2.0.ebuild:
+  USE support for "emacs"; Resolves Bug #78557
+
+*erlang-10.2.0 (07 Oct 2004)
+
+  07 Oct 2004; George Shapovalov <george@gentoo.org> erlang-10.2.0.ebuild :
+  new version out, adjusted versioning scheme as was previously discussed 
+  (retaining 1st number, then letters A->1, B->2, ... and adding the "revision")
+  thus this corresponds to R10B-0
+  also adjusted openssl dependency to point to >=0.9.7d
+
+*erlang-9c-r3 (02 Aug 2004)
+
+  02 Aug 2004; George Shapovalov <george@gentoo.org> erlang-9c-r3.ebuild :
+  fixed some stray ${D}'s in wrappers (#58901), added support for ~amd64
+
+  30 Mar 2004; Donnie Berkholz <spyderous@gentoo.org>; erlang-8b.ebuild,
+  erlang-9c-r1.ebuild, erlang-9c-r2.ebuild, erlang-9c.ebuild:
+  Change x11-base/xfree dependency to virtual/x11.
+
+*erlang-9c-r2 (21 Feb 2004)
+
+  21 Feb 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #26420.
+
+*erlang-9c-r1 (01 Jul 2003)
+
+  28 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added 'addpredict' to /dev/pts to fix issues w/emerging in XTerm #25366.
+
+  03 Jul 2003; George Shapovalov <george@gentoo.org> erlang-9c-r1.ebuild :
+  incorporated fix for weird install on some systems from #20625
+  Thanks to Claes Wikstrom <klacke@hyber.org> for the patch
+
+  01 Jul 2003; George Shapovalov <george@gentoo.org> erlang-9c-r1.ebuild :
+  incorporated patch to make erlang read nsswitch.conf in 
+  addition to host.conf (#22836)
+  Thanks to Claes Wikstrom <klacke@hyber.org> for the patch
+
+*erlang-9c (09 May 2003)
+
+  19 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Cleaned up and made the ebuild more 'portage' like ... changed sed cmds to dosed
+
+  09 May 2003; George Shapovalov <george@gentoo.org> erlang-9c.ebuild :
+  new version (#20625), original versio n is R9B-1, 9c seems to be the only approximation
+  that works and is considered newer by portage
+  (anyway, 'B' seems to be invariant in upstream naming scheme)
+  Thanks to Claes Wikstrom <klacke@hyber.org> for an update.
+
+*erlang-9b (07 Jan 2003)
+
+  07 Jan 2003; George Shapovalov <george@gentoo.org> erlang-8b.ebuild, erlang-9b.ebuild :
+  new version,
+  cleaned up erlang-8b.ebuild and added IUSE
+ 
 *erlang-8b (01 Nov 2002)
 
+  19 Jun 2003; Mike Frysinger <vapier@gentoo.org> :
+  Cleaned up and made the ebuild more 'portage' like ... changed sed cmds to dosed
+
   01 Nov 2002; George Shapovalov <george@gentoo.org> erlang-8b.ebuild :
-
-  first inclusion
-
   Erlang is a programming language, runtime environment and a large collection of
-  libraries.
-  ebuild submitted by Charlie Mac <charzilla@yahoo.com>
+  libraries.  Ebuild submitted by Charlie Mac <charzilla@yahoo.com>

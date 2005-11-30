@@ -1,6 +1,15 @@
-# ChangeLog for app-sci/Macaulay2
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/Macaulay2/ChangeLog,v 1.1 2004/12/28 14:30:11 ribosome Exp $
+# ChangeLog for sci-mathematics/Macaulay2
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/Macaulay2/ChangeLog,v 1.1.1.1 2005/11/30 09:55:55 chriswhite Exp $
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> Macaulay2-0.9.2.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> :
+  change dep from net-www/epiphany to www-client/epiphany
+
+  18 Mar 2005; Seemant Kulleen <seemant@gentoo.org> Macaulay2-0.9.2.ebuild:
+  epiphany and firefox are in www-client
 
 *Macaulay2-0.9.2 (28 Dec 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/cxfe/cxfe-0.9.1-r1.ebuild,v 1.1 2005/01/15 04:48:31 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/cxfe/cxfe-0.9.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:28 chriswhite Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.rtwnetwork.com/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 ~amd64 ~ppc"
 IUSE="lirc"
 
 DEPEND=">=media-libs/xine-lib-1_rc1
@@ -28,9 +28,12 @@ src_unpack() {
 	epatch ${FILESDIR}/xv-default.patch
 	epatch ${FILESDIR}/disable-dpms.patch
 	epatch ${FILESDIR}/position-osd.patch
+
+	# add missing space, see #82684
+	sed -i -e 's/\-lXext\@LDFLAGS/\-lXext \@LDFLAGS/' Makefile.in
 }
 
 src_install() {
 	dobin cxfe
-	dodoc COPYING README TODO lircrc-example
+	dodoc README TODO lircrc-example
 }

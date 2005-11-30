@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ifc/ifc-9.0.021.ebuild,v 1.1 2005/09/02 23:30:47 kugelfang Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ifc/ifc-9.0.021.ebuild,v 1.1.1.1 2005/11/30 09:58:06 chriswhite Exp $
 
 inherit rpm
 
@@ -16,7 +16,7 @@ MMV="9.0"
 SRC_URI="l_fc_p_${PV}.tar.gz"
 DEPEND=">=sys-libs/glibc-2.3.2"
 RDEPEND="sys-devel/gcc"
-S="${WORKDIR}/l_fc_c_${PV}"
+S="${WORKDIR}/l_fc_p_${PV}"
 
 src_unpack() {
 	unpack ${A}
@@ -98,8 +98,8 @@ src_install () {
 	# dodoc ${S}/lgpltext
 	dodoc ${S}/flicense
 	dodir ${instdir}
-	cp -a opt/intel/fc*/9.0/* ${D}/${instdir}
-	cp -a opt/intel/idb*/9.0/* ${D}/${instdir}
+	cp -pPR opt/intel/fc*/9.0/* ${D}/${instdir}
+	cp -pPR opt/intel/idb*/9.0/* ${D}/${instdir}
 	insinto /etc/env.d
 	doins ${FILESDIR}/${MMV}/05ifc || die
 }

@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/netboot-base/netboot-base-20041007.ebuild,v 1.1 2004/10/07 21:00:08 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/netboot-base/netboot-base-20041007.ebuild,v 1.1.1.1 2005/11/30 09:56:03 chriswhite Exp $
 
-inherit gcc
+inherit toolchain-funcs
 
 DESCRIPTION="Baselayout for netboot systems"
 HOMEPAGE="http://www.gentoo.org/"
@@ -11,7 +11,7 @@ SRC_URI="http://dev.gentoo.org/~vapier/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="arm hppa x86"
+KEYWORDS="alpha arm hppa mips ppc sparc x86"
 IUSE=""
 
 DEPEND=""
@@ -19,24 +19,25 @@ DEPEND=""
 S=${WORKDIR}
 
 pkg_setup() {
-	[ "${ROOT}" == "/" ] && die "refusing to emerge to /"
+	[[ ${ROOT} = "/" ]] && die "refusing to emerge to /"
 }
 
 src_compile() {
-	$(gcc-getCC) ${CFLAGS} src/consoletype.c -o sbin/consoletype || die
-	strip --strip-unneeded sbin/consoletype
+	$(tc-getCC) ${CFLAGS} src/consoletype.c -o sbin/consoletype || die
+	$(tc-getSTRIP) --strip-unneeded sbin/consoletype
 }
 
 src_install() {
-	[ "${ROOT}" == "/" ] && die "refusing to install to /"
+	[[ ${ROOT} = "/" ]] && die "refusing to install to /"
 	rm -r src
 	cp -r * ${D}/
 }
 
 pkg_postinst() {
-	cd ${ROOT}
+	cd "${ROOT}"
 	mkdir -p bin dev etc lib mnt proc sbin var
 	mkdir -p var/log
 	mkdir -p mnt/gentoo
 	ln -s . usr
+	ln -s . share
 }

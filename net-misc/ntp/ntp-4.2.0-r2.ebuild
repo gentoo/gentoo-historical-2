@@ -1,17 +1,17 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ntp-4.2.0-r2.ebuild,v 1.1 2004/04/05 23:23:50 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ntp-4.2.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:55:19 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic gnuconfig
 
 DESCRIPTION="Network Time Protocol suite/programs"
 HOMEPAGE="http://www.ntp.org/"
-SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/${P}.tar.gz"
-#	mirror://gentoo/${PF}-manpages.tbz2"
+SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/${P}.tar.gz
+	mirror://gentoo/${PF}-manpages.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~hppa ~amd64"
+KEYWORDS="alpha amd64 arm hppa mips ppc ppc64 sparc x86 ia64"
 IUSE="parse-clocks nodroproot selinux ssl"
 
 RDEPEND=">=sys-libs/ncurses-5.2
@@ -23,11 +23,6 @@ DEPEND="${RDEPEND}
 	>=sys-devel/autoconf-2.58
 	>=sys-devel/automake-1.7.7
 	>=sys-apps/sed-4.0.5"
-
-pkg_setup() {
-	enewgroup ntp 123
-	enewuser ntp 123 /bin/false /dev/null ntp
-}
 
 hax_bitkeeper() {
 	# the makefiles have support for bk ...
@@ -41,13 +36,14 @@ hax_bitkeeper() {
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
-	use alpha && epatch ${FILESDIR}/ntp-4.1.1b-syscall-libc.patch
+	use alpha && epatch "${FILESDIR}"/ntp-4.1.1b-syscall-libc.patch
 
-	epatch ${FILESDIR}/${PV}-ntpdate-quiet.patch
-	epatch ${FILESDIR}/${PV}-linux-config-phone.patch #13001
-	epatch ${FILESDIR}/${PV}-droproot.patch
+	epatch "${FILESDIR}"/${PV}-ntpdate-quiet.patch
+	epatch "${FILESDIR}"/${PV}-linux-config-phone.patch #13001
+	epatch "${FILESDIR}"/${PV}-droproot.patch
+	epatch "${FILESDIR}"/ntp-4.2.0-ntpd-using-wrong-group.patch #103719
 	sed -i "s:-Wpointer-arith::" configure.in
 
 	# needed in order to make files with right ver info #30220
@@ -55,41 +51,47 @@ src_unpack() {
 	automake || die "automake"
 	autoconf || die "autoconf"
 
-	sed -i 's:-lelf:-la_doe_a_deer_a_female_deer:g' configure
+	sed -i \
+		-e 's:-lelf:-la_doe_a_deer_a_female_deer:g' \
+		-e 's:-lmd5:-li_dont_want_no_stinkin_md5:g' \
+		configure || die "sed failed"
+
+	gnuconfig_update
 }
 
 src_compile() {
 	hax_bitkeeper
-
-	has_version "sys-devel/hardened-gcc" && append-flags "-yet_exec"
 
 	local mysslconf
 	use ssl \
 		&& mysslconf="--with-openssl-libdir=yes" \
 		|| mysslconf="--with-openssl-libdir=no"
 	econf \
-		--build=${CHOST} \
 		`use_enable !nodroproot linuxcaps` \
 		`use_enable parse-clocks` \
 		${mysslconf} \
 		|| die
 
-	has_version "sys-devel/hardened-gcc" && find ${WORKDIR} -name "Makefile" -type f -exec sed -i "s,-yet_exec,," {} \;
-
 	emake || die
+}
+
+pkg_preinst() {
+	enewgroup ntp 123
+	enewuser ntp 123 -1 /dev/null ntp
 }
 
 src_install() {
 	hax_bitkeeper
+	pkg_preinst
 
 	make install DESTDIR=${D} || die
 
 	dodoc ChangeLog INSTALL NEWS README TODO WHERE-TO-START
-#	doman ${WORKDIR}/man/*.1
+	doman ${WORKDIR}/man/*.1
 	dohtml -r html/*
 
 	insinto /usr/share/ntp
-	doins ${FILESDIR}/ntp.conf
+	doins "${FILESDIR}"/ntp.conf
 	rm -rf `find scripts/ \
 		-name '*.in' -o \
 		-name 'Makefile*' -o \
@@ -98,13 +100,13 @@ src_install() {
 	cp -r scripts/* ${D}/usr/share/ntp/
 	chmod -R go-w ${D}/usr/share/ntp
 
-	[ ! -e /etc/ntp.conf ] && insinto /etc && doins ${FILESDIR}/ntp.conf
+	[ ! -e ${ROOT}/etc/ntp.conf ] && insinto /etc && doins "${FILESDIR}"/ntp.conf
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/ntpd.rc ntpd
-	newexe ${FILESDIR}/ntp-client.rc ntp-client
+	newexe "${FILESDIR}"/ntpd.rc ntpd
+	newexe "${FILESDIR}"/ntp-client.rc ntp-client
 	insinto /etc/conf.d
-	newins ${FILESDIR}/ntpd.confd ntpd
-	newins ${FILESDIR}/ntp-client.confd ntp-client
+	newins "${FILESDIR}"/ntpd.confd ntpd
+	newins "${FILESDIR}"/ntp-client.confd ntp-client
 	use nodroproot && dosed "s|-u ntp:ntp||" /etc/conf.d/ntpd
 
 	dodir /var/lib/ntp
@@ -122,7 +124,7 @@ pkg_postinst() {
 	einfo "Now you can use /etc/init.d/ntp-client to set your time at"
 	einfo "boot while you can use /etc/init.d/ntpd to maintain your time"
 	einfo "while your machine runs"
-	if [ ! -z "$(grep notrust ${ROOT}/etc/ntp.conf)" ] ; then
+	if [ ! -z "$(egrep '^[^#].*notrust' ${ROOT}/etc/ntp.conf)" ] ; then
 		echo
 		eerror "The notrust option was found in your /etc/ntp.conf!"
 		ewarn "If your ntpd starts sending out weird responses,"

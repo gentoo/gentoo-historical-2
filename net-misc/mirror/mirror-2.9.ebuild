@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mirror/mirror-2.9.ebuild,v 1.1 2003/08/22 11:33:33 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mirror/mirror-2.9.ebuild,v 1.1.1.1 2005/11/30 09:55:21 chriswhite Exp $
 
 inherit eutils
 
@@ -9,7 +9,8 @@ HOMEPAGE="http://sunsite.org.uk/packages/mirror/"
 SRC_URI="ftp://sunsite.org.uk/packages/mirror/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~sparc ~ppc"
+KEYWORDS="~x86 alpha ~sparc ~ppc"
+IUSE=""
 
 S=${WORKDIR}
 
@@ -29,7 +30,7 @@ ${S}
 EOC
 }
 
-src_install() {   
+src_install() {
 	dodir /etc/mirror
 	insinto /etc/mirror
 	doins mirror.defaults packages/sunsite.org.uk

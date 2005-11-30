@@ -1,6 +1,26 @@
 # ChangeLog for sys-apps/irqbalance
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/irqbalance/ChangeLog,v 1.1 2004/01/11 13:37:17 azarah Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/irqbalance/ChangeLog,v 1.1.1.1 2005/11/30 09:56:42 chriswhite Exp $
+
+*irqbalance-0.12 (16 Jan 2005)
+
+  16 Jan 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +irqbalance-0.12.ebuild:
+  Bug #77597, version bump.
+
+  17 Oct 2004; David Holm <dholm@gentoo.org> irqbalance-0.09.ebuild:
+  Added to ~ppc.
+
+*irqbalance-0.09 (24 Sep 2004)
+
+  24 Sep 2004; Mike Frysinger <vapier@gentoo.org> +irqbalance-0.09.ebuild:
+  Version bump #58136 by Jim Faulkner.
+
+  24 May 2004; Michael Sterrett <mr_bones_@gentoo.org> irqbalance-0.08.ebuild:
+  fix DESCRIPTION - Peter Jensen (bug #51382); error messages; tidy
+
+  24 May 2004; Travis Tilley <lv@gentoo.org> irqbalance-0.08.ebuild:
+  added ~amd64 keyword
 
 *irqbalance-0.08 (11 Jan 2004)
 

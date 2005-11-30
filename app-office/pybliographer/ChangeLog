@@ -1,6 +1,32 @@
 # ChangeLog for app-office/pybliographer
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/pybliographer/ChangeLog,v 1.1 2004/10/17 10:50:52 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/pybliographer/ChangeLog,v 1.1.1.1 2005/11/30 09:59:11 chriswhite Exp $
+
+  16 Jul 2005; Joseph Jezak <josejx@gentoo.org> pybliographer-1.2.4.ebuild:
+  Marked ppc stable for bug #99175.
+
+*pybliographer-1.2.6.2 (02 Jul 2005)
+
+  02 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> pybliographer-1.2.4.ebuild,
+  +pybliographer-1.2.6.2.ebuild:
+  Version bumped; bug #97664.
+
+  28 Jun 2005; John N. Laliberte <allanonjl@gentoo.org>
+  pybliographer-1.2.4.ebuild:
+  fix for access violation due to gnome2 eclass change, see bug #92920
+
+  11 Apr 2005; Simon Stelling <blubb@gentoo.org> pybliographer-1.2.4.ebuild:
+  added ~amd64
+
+  17 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> pybliographer-1.2.4.ebuild:
+  Added to ~ppc; bug #70211.
+
+  21 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/pybliographer-1.2.4-gentoo.diff, pybliographer-1.2.4.ebuild:
+  Disables setup-check.py; bug #68309.
+
+  21 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> pybliographer-1.2.4.ebuild:
+  Uses gnome2.eclass.
 
 *pybliographer-1.2.4 (17 Oct 2004)
 

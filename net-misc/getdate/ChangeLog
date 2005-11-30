@@ -1,6 +1,24 @@
 # ChangeLog for net-misc/getdate
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/getdate/ChangeLog,v 1.1 2003/12/06 15:39:46 zul Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/getdate/ChangeLog,v 1.1.1.1 2005/11/30 09:54:58 chriswhite Exp $
+
+  01 May 2005; Michael Hanselmann <hansmi@gentoo.org> getdate-1.2.ebuild:
+  Stable on ppc.
+
+  17 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> getdate-1.2.ebuild:
+  Added to ~ppc, bug 82045.
+
+  12 Feb 2005; Robin H. Johnson <robbat2@gentoo.org> getdate-1.2.ebuild:
+  Add ~mips for my XXS1500 hardware.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> getdate-1.2.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  03 Jan 2004; Martin Holzer <mholzer@gentoo.org> getdate-1.2.ebuild:
+  fixing homepage closes 37093
+
+  11 Dec 2003; Chuck Short <zul@gentoo.org> getdate-1.2.ebuild:
+  Added -DHAVE_ADJTIME closes #35597.
 
 *getdate-1.2 (06 Dec 2003)
 

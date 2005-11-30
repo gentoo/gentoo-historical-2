@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/motioneye/motioneye-1.3.ebuild,v 1.1 2005/08/26 12:41:06 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/motioneye/motioneye-1.3.ebuild,v 1.1.1.1 2005/11/30 09:57:25 chriswhite Exp $
 
 inherit eutils
 

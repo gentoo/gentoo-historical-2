@@ -1,14 +1,14 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/wakeonlan/wakeonlan-0.40.ebuild,v 1.1.1.1 2005/11/30 09:55:04 chriswhite Exp $
 
 inherit perl-module
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Client for Wake-On-LAN"
-SRC_URI="http://gsd.di.uminho.pt/jpo/software/wakeonlan/downloads/${P}.tar.gz"
 HOMEPAGE="http://gsd.di.uminho.pt/jpo/software/wakeonlan/"
-IUSE=""
+SRC_URI="http://gsd.di.uminho.pt/jpo/software/wakeonlan/downloads/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="Artistic GPL-2"
-KEYWORDS="x86"
+SLOT="0"
+KEYWORDS="x86 amd64"
+IUSE=""

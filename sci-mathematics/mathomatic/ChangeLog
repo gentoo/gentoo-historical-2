@@ -1,6 +1,50 @@
-# ChangeLog for app-sci/mathomatic
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/mathomatic/ChangeLog,v 1.1 2004/12/28 14:35:26 ribosome Exp $
+# ChangeLog for sci-mathematics/mathomatic
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/mathomatic/ChangeLog,v 1.1.1.1 2005/11/30 09:55:53 chriswhite Exp $
+
+*mathomatic-12.4.11-r1 (02 Oct 2005)
+
+  02 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
+  +mathomatic-12.4.11-r1.ebuild:
+  Fixed readline support (bug #107109).
+
+*mathomatic-12.4.11 (23 Sep 2005)
+
+  23 Sep 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +mathomatic-12.4.11.ebuild:
+  Version bump, now installing files in ebuild due to broken makefile.
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  -mathomatic-12.3.1.ebuild, mathomatic-12.4.5.ebuild:
+  Stable on amd64 and x86. Remove old version.
+
+*mathomatic-12.4.5 (26 Jul 2005)
+
+  26 Jul 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  mathomatic-12.3.1.ebuild, +mathomatic-12.4.5.ebuild:
+  Version bump, and mark previous version stable.
+
+*mathomatic-12.3.1 (09 May 2005)
+
+  09 May 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  -files/gentoo-mathomatic-11.1c.diff,
+  -files/mathomatic-12.2c-makefile.patch, metadata.xml,
+  -mathomatic-11.1c.ebuild, -mathomatic-11.7.ebuild,
+  -mathomatic-12.2c.ebuild, +mathomatic-12.3.1.ebuild:
+  Version bump with some security fixes, thanks to DerCorny for spotting it.
+  Cleaned out old versions.
+
+*mathomatic-12.2c (08 Apr 2005)
+
+  08 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org>
+  +files/mathomatic-12.2c-makefile.patch, +mathomatic-12.2c.ebuild:
+  Version bump, tidied ebuild up, made it respect user CFLAGS and added
+  src_test(). Closes bug 88254.
+
+*mathomatic-11.7 (28 Jan 2005)
+
+  28 Jan 2005; Patrick Kursawe <phosphan@gentoo.org> +mathomatic-11.7.ebuild:
+  Version bump (bug #69483) with little changes
 
 *mathomatic-11.1c (28 Dec 2004)
 

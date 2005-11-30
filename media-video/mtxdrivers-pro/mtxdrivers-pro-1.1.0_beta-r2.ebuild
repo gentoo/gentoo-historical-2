@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mtxdrivers-pro/mtxdrivers-pro-1.1.0_beta-r2.ebuild,v 1.1 2004/04/12 02:10:41 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mtxdrivers-pro/mtxdrivers-pro-1.1.0_beta-r2.ebuild,v 1.1.1.1 2005/11/30 09:57:41 chriswhite Exp $
 
 inherit matrox
 
@@ -11,21 +11,32 @@ GL_V="1.3.0"
 MY_PV="${PV/_/-pro-}"
 MY_PN="${PN/-pro}"
 MY_P="${MY_PN}-rh9.0-v${MY_PV}"
-S="${WORKDIR}/${MY_PN}"
-DESCRIPTION="Drivers for the Matrox Parhelia and Millenium P650/P750 cards with OpenGL support."
-SRC_URI="${MY_P}.tar.gz"
 
-KEYWORDS="~x86"
+DESCRIPTION="Drivers for the Matrox Parhelia and Millenium P650/P750 cards with OpenGL support."
+SRC_URI="${MY_P}.run"
+
+KEYWORDS="x86"
+IUSE=""
 
 RDEPEND="x11-base/opengl-update
 	!media-video/mtxdrivers"
+PROVIDE="virtual/opengl"
+
+S="${WORKDIR}"
 
 pkg_nofetch() {
-	einfo "Matrox requires you e-mail them for the 'pro' version of their drivers"
-	einfo "(i.e., the ones with OpenGL support).  If you do not need OpenGL, please"
-	einfo "emerge mtxdrivers. Otherwise, e-mail cad-support@matrox.com and request"
-	einfo "the Matrox Parhelia drivers with OpenGL support.  Please remember to"
-	einfo "download the RH9.0 driver once you are given the site address."
+	einfo "You must go to:"
+	einfo "http://www.matrox.com/mga/registration/driverhub.cfm?aid=103&dtype=3&osid=7&prodid=40"
+	einfo "(for the RH9.0 drivers) and log in (or create an account) to download the"
+	einfo "Matrox Parhelia drivers. Remember to right-click and use Save Link As when"
+	einfo "downloading the driver."
+}
+
+src_unpack() {
+	unpack_makeself ${A}
+	# Patch from http://sowerbutts.com/matrox/
+	# found on matrox forums at forum.matrox.com
+	epatch ${FILESDIR}/${PF}-kernel-2.6-will1-20041013.patch
 }
 
 src_install() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-2.6.0.ebuild,v 1.1 2005/11/13 23:50:26 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-2.6.0.ebuild,v 1.1.1.1 2005/11/30 09:55:46 chriswhite Exp $
 
 inherit eutils
 

@@ -1,30 +1,30 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/smlnj/smlnj-110.45.ebuild,v 1.1 2004/06/10 11:15:38 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/smlnj/smlnj-110.45.ebuild,v 1.1.1.1 2005/11/30 09:58:31 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="Standard ML of New Jersey compiler and libraries"
 HOMEPAGE="http://www.smlnj.org"
 
-SRC_URI="x86? ( mirror://${P}-boot.x86-unix.tgz )
-ppc? ( mirror://${P}-boot.ppc-unix.tgz )
-mirror://${P}-config.tgz
-mirror://${P}-MLRISC.tgz
-mirror://${P}-runtime.tgz
-mirror://${P}-ml-lex.tgz
-mirror://${P}-ml-yacc.tgz
-mirror://${P}-ml-burg.tgz
-mirror://${P}-smlnj-lib.tgz
-mirror://${P}-cml.tgz
-mirror://${P}-eXene.tgz"
+SRC_URI="x86? ( mirror://gentoo/${P}-boot.x86-unix.tgz )
+ppc? ( mirror://gentoo/${P}-boot.ppc-unix.tgz )
+mirror://gentoo/${P}-config.tgz
+mirror://gentoo/${P}-MLRISC.tgz
+mirror://gentoo/${P}-runtime.tgz
+mirror://gentoo/${P}-ml-lex.tgz
+mirror://gentoo/${P}-ml-yacc.tgz
+mirror://gentoo/${P}-ml-burg.tgz
+mirror://gentoo/${P}-smlnj-lib.tgz
+mirror://gentoo/${P}-cml.tgz
+mirror://gentoo/${P}-eXene.tgz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-* ~ppc ~x86"
 IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
 SMLNJ_DEST="/usr/lib/smlnj"
 SMLNJ_TARGETS="./config/targets"
@@ -49,14 +49,13 @@ src_unpack() {
 }
 
 src_compile() {
-	SMLNJ_HOME=${WORKDIR}
-
+	export SMLNJ_HOME=${WORKDIR}
 	cd ${WORKDIR}
 
 	echo "request ml-burg" >> $SMLNJ_TARGETS
 	echo "request eXene" >> $SMLNJ_TARGETS
 
-	./config/install.sh || die
+	LC_ALL=C ./config/install.sh || die
 }
 
 src_install() {

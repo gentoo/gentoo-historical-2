@@ -1,7 +1,52 @@
+# ChangeLog for net-misc/iperf
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/ChangeLog,v 1.1.1.1 2005/11/30 09:55:09 chriswhite Exp $
+
+*iperf-2.0.2 (11 Aug 2005)
+
+  11 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> +iperf-2.0.2.ebuild:
+  Version bump for bug 101960.
+
+  09 Aug 2005; Brent Baude <ranger@gentoo.org> iperf-1.7.0.ebuild:
+  Adding ~ppc64 keyword to the 1.70 iperf ebuild. This is the "stable" version
+  according to their website.
+
+  10 May 2005; Herbie Hopkins <herbs@gentoo.org> iperf-2.0.1.ebuild:
+  Marked ~amd64 wrt bug #92149.
+
+  06 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org> iperf-2.0.1.ebuild:
+  Added ~ppc64 wrt #91738
+
+  25 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> iperf-2.0.1.ebuild:
+  Marked stable on x86.
+
+*iperf-2.0.1 (23 Jan 2005)
+
+  23 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +files/iperf.confd,
+  files/iperf.initd, +iperf-2.0.1.ebuild:
+  Version bump for bug 77616; added conf.d file as well.
+
+  21 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +files/iperf.initd,
+  iperf-1.7.0.ebuild:
+  Added init.d script for running iperf in server mode; fixes bug 69609.
+
+  25 Sep 2004; David Holm <dholm@gentoo.org> iperf-1.7.0.ebuild:
+  Added to ~ppc.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> iperf-1.7.0.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+*iperf-1.7.0 (30 Jul 2003)
+
+  30 Jul 2003; Martin Holzer <mholzer@gentoo.org> iperf-1.7.0.ebuild:
+  Version bumped.
+
+  28 Jul 2003; Martin Holzer <mholzer@gentoo.org> iperf-1.6.3.ebuild:
+  Fixing install dir.
+
 *iperf-1.6.3 (14 Nov 2002)
 
   14 Nov 2002; Martin Holzer <mholzer@gentoo.org> iperf-1.6.3.ebuild 
   ChangeLog files/digest-iperf-1.6.3  files/iperf-1.6.3-Makefile-gentoo.diff :
 
   Iperf is a tool to measure IP bandwidth using UDP or TCP.
-

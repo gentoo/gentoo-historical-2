@@ -1,23 +1,30 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/icecast/icecast-2.2.0.ebuild,v 1.1 2005/01/22 21:21:31 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/icecast/icecast-2.2.0.ebuild,v 1.1.1.1 2005/11/30 09:55:11 chriswhite Exp $
 
-IUSE="doc yp"
+IUSE="yp"
 
 inherit eutils
 
 DESCRIPTION="An opensource alternative to shoutcast that supports mp3 and ogg streaming"
 HOMEPAGE="http://www.icecast.org/"
-SRC_URI="http://svn.xiph.org/releases/icecast/${P}.tar.gz"
+SRC_URI="http://downloads.xiph.org/releases/icecast/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
 DEPEND="dev-libs/libxslt
 	media-libs/libogg
 	media-libs/libvorbis
 	yp? ( net-misc/curl )"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	epatch ${FILESDIR}/${PV}-gentoo.patch
+}
 
 src_compile() {
 
@@ -32,10 +39,10 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die "make install failed"
 	dodoc AUTHORS README TODO HACKING NEWS conf/icecast.xml.dist
-	use doc && dohtml -A chm,hhc,hhp doc/*
+	dohtml -A chm,hhc,hhp doc/*
+	doman ${S}/debian/icecast2.1
 
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/init.d.icecast icecast
+	newinitd ${FILESDIR}/init.d.icecast icecast
 
 	fperms 600 /etc/icecast2/icecast.xml
 

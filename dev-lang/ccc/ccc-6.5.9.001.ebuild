@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ccc/ccc-6.5.9.001.ebuild,v 1.1 2003/04/15 01:09:37 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ccc/ccc-6.5.9.001.ebuild,v 1.1.1.1 2005/11/30 09:58:11 chriswhite Exp $
 #
 # Ebuild contributed by Tavis Ormandy <taviso@sdf.lonestar.org>
 # and edited by Aron Griffis <agriffis@gentoo.org>
@@ -18,18 +18,20 @@ S=${WORKDIR}
 LICENSE="PLDSPv2"
 SLOT="0"
 # NOTE: ALPHA Only!
-KEYWORDS="-* ~alpha"
+KEYWORDS="-* alpha"
 
-DEPEND="sys-devel/gcc-config
+RDEPEND="virtual/libc
+	dev-libs/libots
+	>=dev-libs/libcpml-5.2.01-r2"
+
+DEPEND="${RDEPEND}
+	sys-devel/gcc-config
 	app-arch/rpm2targz
 	>=sys-apps/sed-4
 	app-crypt/gnupg
 	>=app-shells/bash-2.05b
+	>=dev-libs/libcpml-5.2.01-r2
 	"
-
-RDEPEND="virtual/glibc
-	dev-libs/libots
-	>=dev-libs/libcpml-5.2.01-r2"
 
 # These variables are not used by Portage, but is used by the functions
 # below.
@@ -39,9 +41,9 @@ ee_license_reg="http://h18000.www1.hp.com/products/software/alpha-tools/ee-licen
 src_unpack() {
 	# convert rpm into tar archive
 	local ccc_rpm="ccc-${ccc_release}.alpha.rpm"
-	
+
 	if [ -z ${CCC_LICENSE_KEY} ]; then
-		eerror ""
+		eerror
 		eerror "You have not set the environment variable"
 		eerror "\$CCC_LICENSE_KEY, this should be set to"
 		eerror "the password you were sent when you applied"
@@ -49,17 +51,25 @@ src_unpack() {
 		eerror "license."
 		eerror "If you do not have a license key, apply for one"
 		eerror "here ${ee_license_reg}"
-		eerror ""
+		eerror
 		die "no license key in \$CCC_LICENSE_KEY"
 	fi
 
 	# :-NULL safeguards against bash bug.
 	einfo "Decrypting ccc distribution..."
-	gpg --quiet --passphrase-fd 0 --output ${ccc_rpm} \
+	gpg --quiet \
+		--homedir=${T} --no-permission-warning \
+		--no-mdc-warning \
+		--passphrase-fd 0 \
+		--output ${ccc_rpm} \
 		--decrypt ${DISTDIR}/${ccc_rpm}.crypt \
-		<<< ${CCC_LICENSE_KEY:-NULL} >/dev/null 2>&1 || \
-		die "Sorry, your license key doesnt seem to unlock the distribution"
-	
+		<<< ${CCC_LICENSE_KEY:-NULL}
+
+	# Test PIPESTATUS for gpg result since last thing in pipeline is grep
+	#if [ ${PIPESTATUS[0]} -ne 0 ]; then
+	#	die "Sorry, your license key doesnt seem to unlock the distribution"
+	#fi
+
 	ebegin "Unpacking ccc distribution..."
 	# This is the same as using rpm2targz then extracting 'cept that
 	# it's faster, less work, and less hard disk space.  rpmoffset is
@@ -116,7 +126,7 @@ src_compile() {
 	# package
 	#
 	# this should no longer be nescessary with RDEPEND requiring >=libcpml-5.2.01-r2
-	
+
 	#sed -i 's/^  version_high_enough /  true /' \
 	#		usr/lib/compaq/ccc-${ccc_release}/alpha-linux/bin/probe_linux.sh
 
@@ -167,13 +177,13 @@ pkg_postinst () {
 	ewarn "to complete the installation"
 	ewarn
 	einfo "Hopefullly soon we will get a ccc USE flag"
-	einfo "on packages (or at least individual       "
+	einfo "on packages (or at least individual"
 	einfo "components) that can be successfully built"
-	einfo "using this compiler, until then you will  "
-	einfo "just have to experiment :)                "
+	einfo "using this compiler, until then you will"
+	einfo "just have to experiment :)"
 	einfo
-	einfo "Please report successes/failures with ccc "
-	einfo "to http://bugs.gentoo.org so that the USE "
-	einfo "flags can be updated.                     "
+	einfo "Please report successes/failures with ccc"
+	einfo "to http://bugs.gentoo.org so that the USE"
+	einfo "flags can be updated."
 	einfo
 }

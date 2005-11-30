@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.41.20041001-r2.ebuild,v 1.1 2005/01/29 15:49:36 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.41.20041001-r2.ebuild,v 1.1.1.1 2005/11/30 09:57:44 chriswhite Exp $
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic qt3
 
 MAJ_PV=${PV:0:3}
 MIN_PV=${PV:0:6}
@@ -18,19 +18,18 @@ SLOT="0.7"
 
 #-sparc: 0.7.41 - dsputil_init_vis undefined - eradicator
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips -sparc ~x86"
-IUSE="3dnow X alsa avi debug divx4linux dmalloc dpms dvd encode esd mad matrox
-mmx oggvorbis oss pic qt sblive sdl sse static truetype v4l vidix xinerama xv xvid zlib"
+IUSE="3dnow X alsa avi debug dmalloc dpms dvd encode esd mad matrox
+mmx oggvorbis oss qt sblive sdl sse static truetype v4l vidix xinerama xv xvid zlib"
 
 DEPEND="alsa? ( >=media-libs/alsa-lib-0.9.0_rc2 )
-	avi? ( !alpha? ( !arm? ( !ia64? ( !mips? ( >=media-libs/win32codecs-0.90 ) ) ) ) )
-	divx4linux? ( x86? ( >=media-libs/divx4linux-20030428 ) )
-	dmalloc? ( !arm? ( !mips? ( dev-libs/dmalloc ) ) )
+	avi? ( x86? ( >=media-libs/win32codecs-0.90 ) )
+	dmalloc? ( !amd64? ( !arm? ( !mips? ( dev-libs/dmalloc ) ) ) )
 	dvd? ( >=media-libs/a52dec-0.7 )
 	encode? ( >=media-sound/lame-3.90 )
 	esd? ( >=media-sound/esound-0.2.28 )
 	mad? ( media-libs/libmad )
 	oggvorbis? ( >=media-libs/libvorbis-1.0 )
-	qt? ( >=x11-libs/qt-3.0.3 )
+	qt? ( $(qt_min_version 3.1) )
 	sdl? ( >=media-libs/libsdl-1.2.2 )
 	truetype? ( >=media-libs/freetype-2.1 )
 	xv? ( virtual/x11 )
@@ -108,7 +107,6 @@ src_compile() {
 		`use_enable matrox mga` \
 		`use_enable oggvorbis vorbis` `use_enable oggvorbis oggtest` `use_enable oggvorbis vorbistest` \
 		`use_enable oss` \
-		`use_with pic fpic` `use_enable pic fpic` \
 		`use_with qt` \
 		`use_enable sblive ac3passthrough` \
 		`use_enable sdl` `use_enable sdl sdltest` \

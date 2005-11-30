@@ -5,12 +5,12 @@ diff -ru netkit-timed-0.17.orig/timed/timed/timed.c netkit-timed-0.17/timed/time
   * From: @(#)timed.c	5.1 (Berkeley) 5/11/93
   */
  char timed_rcsid[] = 
--  "$Id: 0.17-timed.patch,v 1.1 2004/08/07 01:31:34 dragonheart Exp $";
-+  "$Id: 0.17-timed.patch,v 1.1 2004/08/07 01:31:34 dragonheart Exp $";
+-  "$Id: 0.17-timed.patch,v 1.1.1.1 2005/11/30 09:55:44 chriswhite Exp $";
++  "$Id: 0.17-timed.patch,v 1.1.1.1 2005/11/30 09:55:44 chriswhite Exp $";
  
  #ifdef sgi
--#ident "$Revision: 1.1 $"
-+#ident "$Revision: 1.1 $"
+-#ident "$Revision: 1.1.1.1 $"
++#ident "$Revision: 1.1.1.1 $"
  #endif /* sgi */
  
  #define TSPTYPES

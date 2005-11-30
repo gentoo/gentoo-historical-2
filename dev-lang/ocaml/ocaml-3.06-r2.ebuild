@@ -1,9 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ocaml/ocaml-3.06-r2.ebuild,v 1.1 2003/09/09 17:56:01 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ocaml/ocaml-3.06-r2.ebuild,v 1.1.1.1 2005/11/30 09:58:37 chriswhite Exp $
 
 inherit flag-o-matic eutils
-filter-flags "-fstack-protector"
 
 DESCRIPTION="fast modern type-inferring functional programming language descended from the ML (Meta Language) family"
 HOMEPAGE="http://www.ocaml.org/"
@@ -11,10 +10,10 @@ SRC_URI="http://caml.inria.fr/distrib/${P}/${P}.tar.gz"
 
 LICENSE="QPL-1.0 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
-IUSE="tcltk"
+KEYWORDS="x86 sparc ppc alpha"
+IUSE="tcltk latex"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	tcltk? ( >=dev-lang/tk-3.3.3 )"
 
 src_unpack() {
@@ -24,6 +23,8 @@ src_unpack() {
 }
 
 src_compile() {
+	filter-flags "-fstack-protector"
+
 	local myconf
 	use tcltk || myconf="-no-tk"
 
@@ -60,4 +61,10 @@ src_install() {
 
 	# documentation
 	dodoc Changes INSTALL LICENSE README Upgrading
+}
+
+pkg_postinst() {
+	if use latex; then
+		echo "TEXINPUTS=/usr/lib/ocaml/ocamldoc:" > /etc/env.d/99ocamldoc
+	fi
 }

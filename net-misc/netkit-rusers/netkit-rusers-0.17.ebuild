@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rusers/netkit-rusers-0.17.ebuild,v 1.1 2004/10/24 09:56:50 wmertens Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rusers/netkit-rusers-0.17.ebuild,v 1.1.1.1 2005/11/30 09:55:03 chriswhite Exp $
 
 DESCRIPTION="Netkit - rup rpc.rusersd rusers"
 HOMEPAGE="http://www.hcs.harvard.edu/~dholland/computers/netkit.html"

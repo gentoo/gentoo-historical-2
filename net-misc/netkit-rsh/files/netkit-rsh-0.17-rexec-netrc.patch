@@ -38,7 +38,7 @@
 + * from: @(#)ruserpass.c	5.3 (Berkeley) 3/1/91
 + */
 +char ruserpass_rcsid[] = 
-+  "$Id: netkit-rsh-0.17-rexec-netrc.patch,v 1.1 2005/05/20 03:04:31 vapier Exp $";
++  "$Id: netkit-rsh-0.17-rexec-netrc.patch,v 1.1.1.1 2005/11/30 09:54:45 chriswhite Exp $";
 +
 +#include <stdio.h>
 +#include <stdlib.h>

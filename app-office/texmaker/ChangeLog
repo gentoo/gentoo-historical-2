@@ -1,6 +1,27 @@
 # ChangeLog for app-office/texmaker
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/texmaker/ChangeLog,v 1.1 2004/11/07 07:32:51 usata Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/texmaker/ChangeLog,v 1.1.1.1 2005/11/30 09:59:04 chriswhite Exp $
+
+*texmaker-1.11-r1 (02 Jul 2005)
+
+  02 Jul 2005; Mamoru KOMACHI <usata@gentoo.org> +texmaker-1.11-r1.ebuild:
+  Added desktop entry; bug #97126. Thanks to Sebastian Kemper
+  <sebastian_ml@gmx.net>.
+
+  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> texmaker-1.11.ebuild:
+  Fix qmake bin path per bug #97535
+
+  28 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> texmaker-1.11.ebuild:
+  added ~amd64 to KEYWORDS. fixes #71354
+
+  02 Jan 2005; Joseph Jezak <josejx@gentoo.org> texmaker-1.11.ebuild:
+  Marked ~ppc.
+
+  01 Jan 2005; Jason Wever <weeve@gentoo.org> texmaker-1.11.ebuild:
+  Added ~sparc keyword.
+
+  26 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> texmaker-1.11.ebuild:
+  Use kde-functions.eclass. This fixes bug #72515.
 
 *texmaker-1.11 (07 Nov 2004)
 

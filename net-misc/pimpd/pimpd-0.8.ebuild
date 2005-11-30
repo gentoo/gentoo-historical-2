@@ -1,24 +1,21 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pimpd/pimpd-0.8.ebuild,v 1.1 2002/04/27 18:33:38 bangert Exp $
-# Updated to version 0.8 by Olivier Reisch on Fri Apr 26 11:44:26 CEST 2002
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pimpd/pimpd-0.8.ebuild,v 1.1.1.1 2005/11/30 09:54:58 chriswhite Exp $
 
-A=pimpd_0.8.tar.gz
-S=${WORKDIR}/${P}
-DESCRIPTION="pimpd is a (hopefully) RFC1413-compliant identd server supporting Linux 2.2.x masqueraded connections and Linux 2.4.x connection tracking for use with NAT."
-SRC_URI="http://cats.meow.at/~peter/${A}"
+DESCRIPTION="RFC1413-compliant identd server supporting masqueraded connections"
 HOMEPAGE="http://cats.meow.at/~peter/pimpd.html"
+SRC_URI="http://cats.meow.at/~peter/pimpd_${PV}.tar.gz"
 
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="x86 sparc ppc"
+IUSE=""
 
 src_compile() {
-    make CFLAGS="$CFLAGS" || die
+	make CFLAGS="$CFLAGS" || die
 }
 
-src_install () {
-
-   dosbin pimpd
-   dodoc README
-
+src_install() {
+	dosbin pimpd
+	dodoc README
 }
-

@@ -1,22 +1,24 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/xvattr/xvattr-1.3-r1.ebuild,v 1.1 2003/08/27 16:45:45 utx Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/xvattr/xvattr-1.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:39 chriswhite Exp $
 
 DESCRIPTION="X11 XVideo Querying/Setting Tool from Ogle project"
-SRC_URI="http://www.dtek.chalmers.se/groups/dvd/dist/${P}.tar.gz"
 HOMEPAGE="http://www.dtek.chalmers.se/groups/dvd/"
-SLOT=0
-LICENSE="GPL-2"
-KEYWORDS="x86"
-IUSE="gtk"
-DEPEND="x11-base/xfree
-	gtk? ( =x11-libs/gtk+-1.2*
-               =dev-libs/glib-1.2* )"
-RDEPEND="${DEPEND}"
+SRC_URI="http://www.dtek.chalmers.se/groups/dvd/dist/${P}.tar.gz"
 
-src_compile() {
+LICENSE="GPL-2"
+SLOT=0
+KEYWORDS="~amd64 ~ppc x86"
+IUSE="gtk"
+
+DEPEND="virtual/x11
+	gtk? ( =x11-libs/gtk+-1.2*
+	=dev-libs/glib-1.2* )"
+
+src_unpack() {
+	unpack ${A}
 	# If no gtk then modify the necessary parts so that gtk isn't needed anymore
-	if [ -z `use gtk` ]
+	if ! use gtk
 	then
 	    cd ${S}
 	    rm Makefile.in
@@ -30,11 +32,9 @@ src_compile() {
 	    automake
 	    autoconf
 	fi
-	econf || die
-	emake || die
 }
 
 src_install() {
-	make DESTDIR=${D} install || die "make install failed"
-	dodoc AUTHORS ChangeLog COPYING NEWS README
+	make DESTDIR="${D}" install || die "make install failed"
+	dodoc AUTHORS ChangeLog NEWS README
 }

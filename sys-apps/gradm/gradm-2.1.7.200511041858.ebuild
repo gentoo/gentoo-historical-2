@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gradm/gradm-2.1.7.200511041858.ebuild,v 1.1 2005/11/14 20:32:30 johnm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gradm/gradm-2.1.7.200511041858.ebuild,v 1.1.1.1 2005/11/30 09:56:55 chriswhite Exp $
 
 inherit flag-o-matic toolchain-funcs eutils versionator
 

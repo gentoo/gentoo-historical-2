@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/bwwhois/bwwhois-3.4.ebuild,v 1.1 2003/07/24 17:59:53 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/bwwhois/bwwhois-3.4.ebuild,v 1.1.1.1 2005/11/30 09:54:49 chriswhite Exp $
 
 inherit perl-module
 
@@ -11,9 +11,10 @@ DESCRIPTION="Perl-based whois client designed to work with the new Shared Regist
 SRC_URI="http://whois.bw.org/dist/${MY_P}.tgz"
 HOMEPAGE="http://whois.bw.org/"
 
+LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
-LICENSE="Artistic | GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 ppc ~sparc alpha ~amd64"
+IUSE=""
 
 DEPEND="dev-lang/perl"
 
@@ -29,9 +30,9 @@ src_compile() {
 src_install () {
 	exeinto usr/bin
 	newexe whois bwwhois
-	dosym bwwhois /usr/bin/whois
 
-	doman whois.1
+	mv whois.1 bwwhois.1
+	doman bwwhois.1
 
 	insinto etc/whois
 	doins whois.conf tld.conf sd.conf

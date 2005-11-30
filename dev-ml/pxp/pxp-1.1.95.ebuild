@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/pxp/pxp-1.1.95.ebuild,v 1.1 2005/03/09 00:22:40 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/pxp/pxp-1.1.95.ebuild,v 1.1.1.1 2005/11/30 09:55:48 chriswhite Exp $
 
 inherit findlib
 

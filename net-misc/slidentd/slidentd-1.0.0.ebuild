@@ -1,42 +1,42 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/slidentd/slidentd-1.0.0.ebuild,v 1.1 2004/05/13 03:21:19 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/slidentd/slidentd-1.0.0.ebuild,v 1.1.1.1 2005/11/30 09:54:56 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="A secure, lightweight ident daemon."
-SRC_URI="http://www.uncarved.com/slidentd/${P}.tar.gz"
+DESCRIPTION="A secure, lightweight ident daemon"
 HOMEPAGE="http://www.uncarved.com/slidentd/"
-KEYWORDS="x86 sparc "
+SRC_URI="http://www.uncarved.com/slidentd/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~ppc sparc x86"
+IUSE=""
 
-DEPEND="dev-libs/dietlibc
-	dev-libs/libowfat
-	>=sys-apps/sed-4"
-
-RDEPEND="virtual/inetd
-	sys-apps/ucspi-tcp"
+DEPEND="dev-libs/libowfat"
+RDEPEND="${DEPEND}
+	virtual/inetd"
 
 src_unpack() {
-	unpack ${A} ; cd ${S}
-	sed -i -e "s:^\tCFLAGS=\$(diet_cflag.*:\tCFLAGS=${CFLAGS} \${diet_cflags}:" \
-		-e "s:^\tCC\:=diet -Os \$(CC):\tCC\:=diet -Os gcc:" \
-		Makefile
+	unpack ${A}
+	cd "${S}"
+	sed -i \
+		-e "/^normal_cflags/s:=.*:=-DNDEBUG ${CFLAGS} -I/usr/include/libowfat:" \
+		-e '/ALL=/s:stripobjects::' \
+		-e '/ALL=/s:strip::' \
+		Makefile || die
 }
 
 src_compile() {
-	make build_mode=diet INCLUDES=-I/usr/include/libowfat LIBDIRS=-L/usr/lib || die
+	emake -j1 build_mode=normal || die
 }
 
 src_install () {
-	make DESTDIR=${D} install || die
+	make DESTDIR="${D}" install || die
 
 	exeinto /var/lib/supervise/slidentd
-	newexe ${FILESDIR}/slidentd-run run
+	newexe "${FILESDIR}"/slidentd-run run
 }
 
 pkg_postinst() {
 	einfo "You need to start your supervise service:"
-	einfo '# ln -s /var/lib/supervise/slidentd/ /service'
-	einfo
+	einfo '# ln -s /var/lib/supervise/slidentd /service/'
 }

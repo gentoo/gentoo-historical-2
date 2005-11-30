@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/cxx/cxx-6.5.9.31.ebuild,v 1.1 2003/04/15 14:49:59 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/cxx/cxx-6.5.9.31.ebuild,v 1.1.1.1 2005/11/30 09:58:14 chriswhite Exp $
 #
 # Ebuild contributed by Tavis Ormandy <taviso@sdf.lonestar.org>
 # and edited by Aron Griffis <agriffis@gentoo.org>
@@ -27,7 +27,7 @@ DEPEND="sys-devel/gcc-config
 	app-crypt/gnupg
 	>=app-shells/bash-2.05b"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	dev-libs/libots
 	>=dev-libs/libcpml-5.2.01-r2"
 
@@ -41,7 +41,7 @@ src_unpack() {
 	local cxx_rpm="cxx-${cxx_release}.alpha.rpm"
 
 	if [ -z ${CXX_LICENSE_KEY} ]; then
-		eerror ""
+		eerror
 		eerror "You have not set the environment variable"
 		eerror "\$CXX_LICENSE_KEY, this should be set to"
 		eerror "the password you were sent when you applied"
@@ -49,10 +49,10 @@ src_unpack() {
 		eerror "license."
 		eerror "If you do not have a license key, apply for one"
 		eerror "here ${ee_license_reg}"
-		eerror ""
+		eerror
 		die "no license key in \$CXX_LICENSE_KEY"
 	fi
-	
+
 	# :-NULL safeguards against bash bug.
 	einfo "Decrypting cxx distribution..."
 	gpg --quiet --passphrase-fd 0 --output ${cxx_rpm} \
@@ -115,7 +115,7 @@ src_compile() {
 	# is the wrong approach, but it will do for the first pass at this
 	# package
 	#
-	# update: No longer nescessary with >=libcpml-5.2.01-r2 
+	# update: No longer nescessary with >=libcpml-5.2.01-r2
 	#
 	#sed -i 's/^  version_high_enough /  true /' \
 	#	usr/lib/compaq/cxx-${cxx_release}/alpha-linux/bin/probe_linux.sh
@@ -165,13 +165,13 @@ pkg_postinst () {
 	ewarn "to complete the installation"
 	ewarn
 	einfo "Hopefullly soon we will get a ccc USE flag"
-	einfo "on packages (or at least individual       "
+	einfo "on packages (or at least individual"
 	einfo "components) that can be successfully built"
-	einfo "using this compiler, until then you will  "
-	einfo "just have to experiment :)                "
+	einfo "using this compiler, until then you will"
+	einfo "just have to experiment :)"
 	einfo
-	einfo "Please report successes/failures with cxx "
-	einfo "to http://bugs.gentoo.org so that the USE "
-	einfo "flags can be updated.                     "
+	einfo "Please report successes/failures with cxx"
+	einfo "to http://bugs.gentoo.org so that the USE"
+	einfo "flags can be updated."
 	einfo
 }

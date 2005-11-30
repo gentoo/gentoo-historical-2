@@ -1,11 +1,75 @@
 # ChangeLog for net-misc/jwhois
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/jwhois/ChangeLog,v 1.1 2002/06/06 21:13:40 stroke Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/jwhois/ChangeLog,v 1.1.1.1 2005/11/30 09:55:40 chriswhite Exp $
 
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> jwhois-3.2.3.ebuild:
+  Stable on ppc.
+
+  01 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> jwhois-3.2.3.ebuild:
+  Stable on sparc
+
+*jwhois-3.2.3 (30 Aug 2005)
+
+  30 Aug 2005; Mike Frysinger <vapier@gentoo.org> +jwhois-3.2.3.ebuild:
+  Version bump.
+
+  21 Aug 2004; Joshua Kinard <kumba@gentoo.org> jwhois-3.2.2.ebuild:
+  Marked stable on mips.
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> jwhois-3.2.2.ebuild:
+  ppc64 stable restored, don't mask arches without talking to the arch lead
+
+  31 Jul 2004; Daniel Black <dragonheart@gentoo.org> jwhois-3.2.0.ebuild,
+  jwhois-3.2.1.ebuild, jwhois-3.2.2.ebuild, +metadata.xml:
+  Changed SRC_URI to mirror://gnu/ and RESTRICT=nomirror. ppc64 removed 
+  from jwhois-3.2.2 as no stable glibc exists.
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> jwhois-3.2.2.ebuild:
+  stable on ppc64, bug #55521
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> jwhois-3.2.0.ebuild,
+  jwhois-3.2.1.ebuild, jwhois-3.2.2.ebuild:
+  change virtual/glibc to virtual/libc, add IUSE
+
+  06 Jun 2004; Jason Wever <weeve@gentoo.org> jwhois-3.2.2.ebuild:
+  Stable on sparc.
+
+  26 Apr 2004; Aron Griffis <agriffis@gentoo.org> jwhois-3.2.1.ebuild,
+  jwhois-3.2.2.ebuild:
+  Add die following econf for bug 48950
+
+  01 Mar 2004; Jason Wever <weeve@gentoo.org> jwhois-3.2.1.ebuild:
+  Marked stable on sparc.
+
+  23 Feb 2004; Aron Griffis <agriffis@gentoo.org> jwhois-3.2.2.ebuild:
+  stable on alpha and ia64
+
+*jwhois-3.2.2 (27 Jul 2003)
+
+  27 Jul 2003; Martin Holzer <mholzer@gentoo.org> jwhois-3.2.2.ebuild:
+  Version bumped
+
+*jwhois-3.2.1 (23 May 2003)
+
+  23 May 2003; Martin Holzer <mholzer@gentoo.org> jwhois-3.2.1.ebuild:
+  Version bumped. Ebuild submitted by Nick Fish <ennui@alcatraz.triton.net> in
+  #16040.
+
+  11 Feb 2003; Rajiv Manglani <rajiv@gentoo.org> : jwhois-3.2.0.ebuild :
+
+  fixed home page url.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
 *jwhois-3.2.0 (06 June 2002)
 
-  06 June 2002; Gabriele Giorgetti <stroke@gentoo.org> ChangeLog :
+  24 Feb 2003; Nicholas Wourms <dragon@gentoo.org> jwhois-3.2.0.ebuild :
+  Added stable mips keyword to the ebuild.
 
+  07 Jul 2002; phoen][ <phoenix@gentoo.org> jwhois-3.2.0.ebuild :
+  Added KEYWORDS.
+
+  06 June 2002; Gabriele Giorgetti <stroke@gentoo.org> ChangeLog :
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

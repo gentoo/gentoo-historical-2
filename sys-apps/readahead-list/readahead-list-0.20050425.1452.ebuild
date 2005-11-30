@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/readahead-list/readahead-list-0.20050425.1452.ebuild,v 1.1 2005/04/25 22:26:08 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/readahead-list/readahead-list-0.20050425.1452.ebuild,v 1.1.1.1 2005/11/30 09:57:00 chriswhite Exp $
 
 DESCRIPTION="Preloads files into the page cache to accelerate program loading."
 

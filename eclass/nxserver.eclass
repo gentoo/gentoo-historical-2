@@ -1,38 +1,34 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: /var/cvsroot/gentoo-x86/eclass/nxserver.eclass,v 1.1.1.1 2005/11/30 09:59:25 chriswhite Exp $
 #
 # eclass for handling the different nxserver binaries available
 # from nomachine's website
 
 inherit rpm
 
-ECLASS="nxserver"
-INHERITED="$INHERITED $ECLASS"
 
 HOMEPAGE="http://www.nomachine.com/"
 IUSE=""
 LICENSE="nomachine"
 SLOT="0"
-KEYWORDS="x86 -ppc-sparc -alpha -mips"
-RESTRICT="mirror fetch nostrip"
-
-MY_PV="${PV}-72"
+KEYWORDS="x86 -ppc -sparc -alpha -mips"
+RESTRICT="nomirror strip"
 
 SRC_URI="nxserver-${MY_PV}.i386.rpm"
-RDEPEND="$RDEPEND
-	     >=media-libs/jpeg-6b-r3
-         >=sys-libs/glibc-2.3.2-r1
-		 >=sys-libs/zlib-1.1.4-r1
-		 >=x11-base/xfree-4.3.0-r2
-		 >=net-misc/openssh-3.6.1_p2
-		 >=dev-lang/perl-5.8.0-r12"
+RDEPEND=">=media-libs/jpeg-6b-r3
+	>=sys-libs/glibc-2.3.2-r1
+	>=sys-libs/zlib-1.1.4-r1
+	virtual/x11
+	>=net-misc/openssh-3.6.1_p2
+	>=dev-lang/perl-5.8.0-r12"
 
-DEPEND="$DEPEND
-        >=sys-apps/shadow-4.0.3-r6
-		>=net-misc/openssh-3.6.1_p2"
+DEPEND=">=sys-apps/shadow-4.0.3-r6
+	>=net-misc/openssh-3.6.1_p2"
 
 S="${WORKDIR}"
+
+DESCRIPTION="an X11/RDP/VNC proxy server especially well suited to low bandwidth links such as wireless, WANS, and worse"
 
 EXPORT_FUNCTIONS pkg_nofetch src_compile src_install pkg_postinst
 
@@ -58,7 +54,15 @@ nxserver_src_compile() {
 nxserver_src_install() {
 	einfo "Installing"
 	find usr/NX/lib -type l -exec rm {} \;
-	mv usr/NX/etc/passwd.sample usr/NX/etc/passwd
+
+	# NX changed the name of the passwords sample file in 1.3.0
+
+	for x in passwd.sample passwords.sample ; do
+		if [ -f usr/NX/etc/$x ]; then
+			mv usr/NX/etc/$x usr/NX/etc/`basename $x .sample`
+		fi
+	done
+
 	tar -cf - * | ( cd ${D} ; tar -xf - )
 
 	dodir /usr/NX/var
@@ -66,23 +70,49 @@ nxserver_src_install() {
 	touch ${D}/usr/NX/var/sessions/NOT_EMPTY
 
 	insinto /etc/env.d
-	doins ${FILESDIR}/${PVR}/50nxserver
-
-	fowners nx.root /usr/NX/etc/passwd
-	fperms 0600 /usr/NX/etc/passwd
-	fowners nx:root /usr/NX/nxhome
-	fowners nx:root /usr/NX/var/sessions
+	doins ${FILESDIR}/${PV}/50nxserver
 }
 
 nxserver_pkg_postinst() {
+
+	# this is support for users upgrading from NX 1.2.2 to 1.3.0
+
+	l_szPasswd=passwd
+
+	if [ -f /usr/NX/etc/passwd -a -f /usr/NX/etc/passwords ]; then
+		mv /usr/NX/etc/passwd /usr/NX/etc/passwords
+	fi
+	if [ -f /usr/NX/etc/passwords ]; then
+		l_szPasswd=passwords
+	fi
+
+	l_szHome=nxhome
+	if [ -d /usr/NX/home ]; then
+		l_szHome=home
+	fi
+
+	if [ -d /usr/NX/nxhome -a -d /usr/NX/home ]; then
+		einfo "Moving home directory of user 'nx' to /usr/NX/home"
+		usermod -d /usr/NX/home nx
+	fi
+
+	# end of upgrade support
+
 	einfo "Adding user 'nx' for the NX server"
-	enewuser nx -1 /usr/NX/bin/nxserver /usr/NX/nxhome
+	enewuser nx -1 /usr/NX/bin/nxserver /usr/NX/$l_szHome
+
+	einfo "Changing permissions for files under /usr/NX"
+	chown nx:root /usr/NX/etc/$l_szPasswd
+	chmod 0600 /usr/NX/etc/$l_szPasswd
+	chown -R nx:root /usr/NX/$l_szHome
+	chown -R nx:root /usr/NX/var
 
 	einfo "Generating SSH keys for the 'nx' user"
 	if [ ! -f /usr/NX/etc/users.id_dsa ]; then
-		ssh-keygen -q -t dsa -N '' -f /usr/NX/nxhome/.ssh/users.id_dsa
+		ssh-keygen -q -t dsa -N '' -f /usr/NX/etc/users.id_dsa
 	fi
-	cp -f /usr/NX/nxhome/.ssh/server.id_dsa.pub.key /usr/NX/nxhome/.ssh/authorized_keys2
+	chown nx:root /usr/NX/etc/users.id_dsa
+	cp -f /usr/NX/$l_szHome/.ssh/server.id_dsa.pub.key /usr/NX/$l_szHome/.ssh/authorized_keys2
 
 	if [ ! -f /usr/NX/var/broadcast.txt ]; then
 	    einfo "Creating NX user registration database"

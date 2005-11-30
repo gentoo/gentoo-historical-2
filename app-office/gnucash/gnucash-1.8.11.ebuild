@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/gnucash/gnucash-1.8.11.ebuild,v 1.1 2005/03/14 17:22:06 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/gnucash/gnucash-1.8.11.ebuild,v 1.1.1.1 2005/11/30 09:58:57 chriswhite Exp $
 
 inherit flag-o-matic libtool eutils
 
@@ -19,7 +19,7 @@ HOMEPAGE="http://www.gnucash.org/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~amd64"
+KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~sparc ~x86"
 
 RDEPEND=">=gnome-base/gnome-libs-1.4.1.2-r1
 	>=dev-util/guile-1.6
@@ -41,9 +41,9 @@ RDEPEND=">=gnome-base/gnome-libs-1.4.1.2-r1
 	=app-text/docbook-xml-dtd-4.1.2*
 	=sys-libs/db-1*
 	ofx? ( >=dev-libs/libofx-0.7.0 )
-	hbci? ( net-libs/aqhbci-qt-tools )
-	chipcard? ( sys-libs/libchipcard
-		net-libs/aqhbci-ddvcard )
+	hbci? ( net-libs/aqbanking
+		chipcard? ( sys-libs/libchipcard )
+	)
 	quotes? ( dev-perl/DateManip
 		dev-perl/Finance-Quote
 		dev-perl/HTML-TableExtract )
@@ -61,15 +61,15 @@ DEPEND="${RDEPEND}
 MAKEOPTS="${MAKEOPTS} -j1"
 
 pkg_setup() {
-	if built_with_use xorg-x11 bitmap-fonts
+	if built_with_use virtual/x11 bitmap-fonts
 	then
-		einfo "bitmap-fonts support is enabled in xorg-x11, continuing..."
+		einfo "bitmap-fonts support is enabled in virtual/x11, continuing..."
 	else
-		eerror "Please rebuild xorg-x11 with bitmap font support!"
-		eerror "To do so: USE=\"bitmap-fonts\" emerge xorg-x11"
+		eerror "Please rebuild virtual/x11 with bitmap font support!"
+		eerror "To do so: USE=\"bitmap-fonts\" emerge virtual/x11"
 		eerror "Or, add \"bitmap-fonts\" to your USE string in"
 		eerror "/etc/make.conf"
-		die "Will not build gnucash without bitmap-fonts support in xorg-x11"
+		die "Will not build gnucash without bitmap-fonts support in virtual/x11"
 	fi
 }
 

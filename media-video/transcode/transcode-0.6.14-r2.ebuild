@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/transcode-0.6.14-r2.ebuild,v 1.1 2005/04/27 11:14:34 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/transcode/transcode-0.6.14-r2.ebuild,v 1.1.1.1 2005/11/30 09:57:27 chriswhite Exp $
 
 inherit libtool flag-o-matic eutils multilib
 
@@ -10,17 +10,15 @@ MY_P="${P/_pre/.}"
 S=${WORKDIR}/${MY_P}
 DESCRIPTION="video stream processing tool"
 HOMEPAGE="http://www.transcoding.org/cgi-bin/transcode"
-SRC_URI="http://www.jakemsr.com/transcode/${P}.tar.gz
-	http://www.ligo.caltech.edu/~pehrens/${P}.tar.gz
-	http://www.kraymer.de/mirroring/${P}.tar.gz
+SRC_URI="mirror://transcode/${P}.tar.gz
 	http://rebels.plukwa.net/linux-video/${PN}/${P}.tar.gz
 
-	http://dev.gentoo.org/~flameeyes/distfiles/${PN}-patches-${PATCH_VER}.tbz2"
+	mirror://gentoo/${PN}-patches-${PATCH_VER}.tbz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
-IUSE="X 3dnow a52 avi altivec divx4linux dv dvdread encode fame truetype \
+KEYWORDS="amd64 ppc ~sparc x86"
+IUSE="X 3dnow a52 avi altivec dv dvdread encode fame truetype \
 	gtk imagemagick jpeg lzo mjpeg mpeg mmx network ogg vorbis pvm quicktime \
 	sdl sse sse2 theora v4l xvid xml2"
 
@@ -37,7 +35,6 @@ RDEPEND="a52? ( >=media-libs/a52dec-0.7.4 )
 	media-libs/libexif
 	X? ( virtual/x11 )
 	avi? ( >=media-video/avifile-0.7.41.20041001 )
-	divx4linux? ( >=media-libs/divx4linux-20030428 )
 	mpeg? ( media-libs/libmpeg3 )
 	encode? ( >=media-sound/lame-3.93 )
 	sdl? ( media-libs/libsdl )
@@ -55,8 +52,8 @@ DEPEND="${RDEPEND}
 	=sys-devel/gcc-3*"
 
 pkg_setup() {
-	if has_version xorg-x11 && ! built_with_use xorg-x11 xv; then
-		die "You need xv support to compile transcode."
+	if has_version x11-base/xorg-x11 && ! built_with_use x11-base/xorg-x11 xv; then
+		die "You need xorg-x11 emerged with xv support to compile transcode."
 	fi
 }
 

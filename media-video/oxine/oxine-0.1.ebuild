@@ -1,6 +1,6 @@
-# Copyright 2003 Fridtjof Busse <fridtjof@fbunet.de>.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/oxine/oxine-0.1.ebuild,v 1.1 2003/03/14 19:19:57 agenkin Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/oxine/oxine-0.1.ebuild,v 1.1.1.1 2005/11/30 09:57:54 chriswhite Exp $
 
 DESCRIPTION="OSD frontend for xine"
 HOMEPAGE="http://oxine.sourceforge.net/"
@@ -14,9 +14,8 @@ DEPEND=">=media-libs/xine-lib-1_beta8
 IUSE="nls lirc"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
-S=${WORKDIR}/${P}
 SRC_URI="mirror://sourceforge/oxine/${P}.tar.gz"
 
 src_compile() {
@@ -24,17 +23,17 @@ src_compile() {
 	local myconf
 	use nls || myconf="${myconf} --disable-nls"
 	use lirc || myconf="${myconf} --disable-lirc"
-  
+
 	econf ${myconf} || die
 	emake || die
 }
 
 src_install() {
-	
+
 	make DESTDIR=${D} \
 		docdir=/usr/share/doc/${PF} \
 		docsdir=/usr/share/doc/${PF} \
 		install || die
 
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README TODO
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }

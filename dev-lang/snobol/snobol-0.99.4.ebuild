@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/snobol/snobol-0.99.4.ebuild,v 1.1 2003/12/22 09:17:30 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/snobol/snobol-0.99.4.ebuild,v 1.1.1.1 2005/11/30 09:58:13 chriswhite Exp $
 
 DESCRIPTION="Phil Budne's port of Macro SNOBOL4 in C, for modern machines"
 HOMEPAGE="http://www.snobol4.org/csnobol4/"
@@ -12,7 +12,6 @@ IUSE=""
 DEPEND="sys-devel/gcc
 		sys-devel/m4"
 RDEPEND=""
-S=${WORKDIR}/${P}
 
 src_unpack() {
 	unpack ${A}

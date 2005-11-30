@@ -1,140 +1,125 @@
-ECLASS=gnustep
-INHERITED="$INHERITED $ECLASS"
+# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/eclass/gnustep.eclass,v 1.1.1.1 2005/11/30 09:59:37 chriswhite Exp $
 
-DESCRIPTION="Based on the gnustep eclass."
+inherit gnustep-funcs eutils flag-o-matic
 
-newdepend /c
-newdepend dev-util/gnustep-make
-newdepend dev-util/gnustep-base
+DESCRIPTION="EClass designed to facilitate building GNUstep Apps, Frameworks, and Bundles on Gentoo."
 
-getsourcedir() {
-	if [ ! -d "${S}" ] ; then
-		if [ -d "${WORKDIR}/${PN}" ] ; then
-			S="${WORKDIR}/${PN}"
-		elif [ -d "${WORKDIR}/${P}" ] ; then
-			S="${WORKDIR}/${P}"
-		else
-			die "Cannot find source directory!"
-		fi
+###########################################################################
+# IUSE variables across all GNUstep packages
+# ##### All GNUstep applications / libs get these
+# "debug"	- enable code for debugging; also nostrip
+# "profile"	- enable code for profiling; also nostrip
+# "verbose" - enable "normal / noisy" compiling from eclass
+# ##### Set the next USE flags ***per ebuild*** in IUSE, ***not here***
+# "doc" - set in ebuild that inherits to enable doc specific code in eclass
+IUSE="debug profile verbose"
+if use debug || use profile; then
+	RESTRICT="nostrip"
+fi
+###########################################################################
+
+###########################################################################
+# Internal variables
+#__GS_INSTALL_DOMAIN="GNUSTEP_SYSTEM_ROOT"
+#__GS_USER_ROOT_SUFFIX="/"
+#__GS_MAKE_EVAL=""
+#__GS_PREFIX="/usr/GNUstep"
+#__GS_SYSTEM_ROOT="/usr/GNUstep/System"
+#__GS_LOCAL_ROOT="/usr/GNUstep/Local"
+#__GS_NETWORK_ROOT="/usr/GNUstep/Network"
+#__GS_USER_ROOT="~/GNUstep"
+###########################################################################
+
+###########################################################################
+# Variables
+# ---------
+# ~ legend
+# (a) - append more data if needed
+# (n) - do not override without a good reason
+# (y) - override as appropriate per ebuild
+# Build general GNUstep ebuild depends here
+# - most .app should be set up this way:
+#   + (a) DEPEND="${GS_DEPEND} other/depend ..."
+#   + (a) RDEPEND="${GS_RDEPEND} other/rdepend ..."
+# - core libraries and other packages that need to
+#     specialize more can use:
+#   + (n) DOC_DEPEND - packages needed to build docs
+#   + (n) GNUSTEP_CORE_DEPEND - packages needed to build any gnustep package
+#   + (n) GNUSTEP_BASE_DEPEND - packages needed to build gnustep CLI only apps
+#   + (n) GNUSTEP_GUI_DEPEND - packages needed to build gnustep GUI apps
+#   + (n) DEBUG_DEPEND - packages needed to utilize .debug apps
+#   + (n) DOC_RDEPEND - packages needed to view docs
+###########################################################################
+DOC_DEPEND="doc? ( virtual/tetex
+	=dev-tex/latex2html-2002*
+	>=app-text/texi2html-1.64 )"
+GNUSTEP_CORE_DEPEND="virtual/libc
+	>=sys-devel/gcc-3.3.5
+	${DOC_DEPEND}"
+##########################################
+# Armando Di Cianno <fafhrd@gentoo.org>
+# 20050414 - Removing use of the next two entries from all dependent ebuilds;
+# they were doing bad things to dependencies
+GNUSTEP_BASE_DEPEND="${GNUSTEP_CORE_DEPEND}
+	gnustep-base/gnustep-make
+	gnustep-base/gnustep-base"
+GNUSTEP_GUI_DEPEND="${GNUSTEP_BASE_DEPEND}
+	gnustep-base/gnustep-gui"
+##########################################
+GS_DEPEND="gnustep-base/gnustep-env"
+DEBUG_DEPEND="debug? ( >=sys-devel/gdb-6.0 )"
+DOC_RDEPEND="doc? ( sys-apps/man
+	>=sys-apps/texinfo-4.6 )"
+GS_RDEPEND="${GS_DEPEND}
+	${DEBUG_DEPEND}
+	${DOC_RDEPEND}"
+###########################################################################
+
+###########################################################################
+# Ebuild function overrides
+# -------------------------
+gnustep_pkg_setup() {
+	if test_version_info 3.3
+	then
+		#einfo "Using gcc 3.3*"
+		# gcc 3.3 doesn't support certain 3.4.1 options,
+		#  as well as having less specific -march options
+		replace-flags -march=pentium-m -march=pentium3
+		filter-flags -march=k8
+		filter-flags -march=athlon64
+		filter-flags -march=opteron
+
+		strip-unsupported-flags
+	elif test_version_info 3.4
+	then
+		# strict-aliasing is known to break obj-c stuff in gcc-3.4*
+		filter-flags -fstrict-aliasing
 	fi
-}
 
-need-gnustep-gui() {
-	if [ "$1" ] ; then
-		newdepend ">=dev-util/gnustep-gui-$1"
-		RDEPEND="${RDEPEND} >=dev-util/gnustep-back-$1"
-	else
-		newdepend "dev-util/gnustep-gui"
-		RDEPEND="${RDEPEND} dev-util/gnustep-back"
-	fi
-}
-
-egnustepmake() {
-	getsourcedir
-
-	addwrite ~/GNUstep/Defaults/.GNUstepDefaults.lck
-	addpredict ~/GNUstep	
-
-	cd ${S}
-
-	if [ -f /usr/GNUstep/System/Makefiles/GNUstep.sh ] ; then
-		. /usr/GNUstep/System/Makefiles/GNUstep.sh
-	else
-		die "gnustep-make not installed!"
-	fi
-
-	mkdir -p $TMP/fakehome/GNUstep
-
-	if [ -x configure ] ; then
-		if [ -z "$*" ] ; then
-			econf \
-				HOME=$TMP/fakehome \
-				GNUSTEP_USER_ROOT=$TMP/fakehome/GNUstep \
-				|| die "configure failed"
-		else
-			econf \
-				HOME=$TMP/fakehome \
-				GNUSTEP_USER_ROOT=$TMP/fakehome/GNUstep \
-				$* || die "configure failed (options: $*)"
-		fi
-	fi
-
-	if [ ! "${GNUSTEPBACK_XFT}" -eq 2 ] ; then
-		if [ "${PN}" = "gnustep-back" ] ; then
-			if [ ! -f "/usr/X11R6/include/X11/Xft1/Xft.h" ]; then
-				sed "s,^#define HAVE_XFT.*,#undef HAVE_XFT,g" config.h > config.h.new
-				sed "s,^#define HAVE_UTF8.*,#undef HAVE_UTF8,g" config.h.new > config.h
-				sed "s,^WITH_XFT=.*,WITH_XFT=no," config.make > config.make.new
-				sed "s,-lXft,," config.make.new > config.make
-			fi
-		fi
-	fi
-	
-	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		make \
-			HOME=$TMP/fakehome \
-			GNUSTEP_USER_ROOT=$TMP/fakehome/GNUstep \
-			|| die "emake failed"
-	else
-		die "no Makefile found"
-	fi
-	return 0
-}
-
-egnustepinstall() {
-	getsourcedir
-
-	addwrite ~/GNUstep/Defaults/.GNUstepDefaults.lck
-	addpredict ~/GNUstep	
-
-	cd ${S}
-	
-	if [ -f /usr/GNUstep/System/Makefiles/GNUstep.sh ] ; then
-                source /usr/GNUstep/System/Makefiles/GNUstep.sh
-        else
-                die "gnustep-make not installed!"
-        fi
-
-	mkdir -p $TMP/fakehome/GNUstep
-
-	if [ -f ./[mM]akefile -o -f ./GNUmakefile ] ; then
-		# To be or not to be evil?
-		# Should all the roots point at GNUSTEP_SYSTEM_ROOT to force
-		# install?
-		# GNUSTEP_USER_ROOT must be GNUSTEP_SYSTEM_ROOT, some malformed
-		# Makefiles install there. 
-		if [ "${PN}" = "gnustep-base" ] || [ "${PN}" = "gnustep-gui" ] || [ "${PN}" = "gnustep-back" ] ; then
-			# for some reason, they need less tending to...
-			make \
-				GNUSTEP_USER_ROOT=$TMP/fakehome/GNUstep \
-				HOME=$TMP/fakehome \
-				GNUSTEP_INSTALLATION_DIR=${D}${GNUSTEP_SYSTEM_ROOT} \
-				INSTALL_ROOT_DIR=${D} \
-				install || die "einstall failed"
-		else 
-			make \
-				GNUSTEP_USER_ROOT=$TMP/fakehome/GNUstep \
-				HOME=$TMP/fakehome \
-        	        	GNUSTEP_INSTALLATION_DIR=${D}${GNUSTEP_SYSTEM_ROOT} \
-                		INSTALL_ROOT_DIR=${D} \
-				GNUSTEP_LOCAL_ROOT=${D}${GNUSTEP_LOCAL_ROOT} \
-				GNUSTEP_NETWORK_ROOT=${D}${GNUSTEP_NETWORK_ROOT} \
-				GNUSTEP_SYSTEM_ROOT=${D}${GNUSTEP_SYSTEM_ROOT} \
-				GNUSTEP_USER_ROOT=${D}${GNUSTEP_SYSTEM_ROOT} \
-		 		install || die "einstall failed"
-		fi
-	else
-		die "no Makefile found" 
-	fi
-	return 0
+	# known to break ObjC (bug 86089)
+	filter-flags -fomit-frame-pointer
 }
 
 gnustep_src_compile() {
-	egnustepmake || die
+	egnustep_env
+	egnustep_make || die
 }
 
 gnustep_src_install() {
-	egnustepinstall || die
+	egnustep_env
+	egnustep_install || die
+	if use doc ; then
+		egnustep_env
+		egnustep_doc || die
+	fi
+	egnustep_package_config
 }
 
-EXPORT_FUNCTIONS src_compile src_install
+gnustep_pkg_postinst() {
+	egnustep_package_config_info
+}
+###########################################################################
+
+EXPORT_FUNCTIONS pkg_setup src_compile src_install pkg_postinst

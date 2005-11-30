@@ -1,6 +1,64 @@
 # ChangeLog for app-office/qbankmanager
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/qbankmanager/ChangeLog,v 1.1 2004/12/21 17:35:41 hanno Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/qbankmanager/ChangeLog,v 1.1.1.1 2005/11/30 09:58:49 chriswhite Exp $
+
+  28 Sep 2005; Hanno Boeck <hanno@gentoo.org> qbankmanager-0.9.29.ebuild:
+  Add note if aqbanking built without qt.
+
+*qbankmanager-0.9.29 (26 Sep 2005)
+
+  26 Sep 2005; Hanno Boeck <hanno@gentoo.org>
+  +files/editcategoryreport.ui.gz, +qbankmanager-0.9.29.ebuild:
+  Version bump.
+
+  25 Jul 2005; Caleb Tennis <caleb@gentoo.org> qbankmanager-0.9.15.ebuild,
+  qbankmanager-0.9.16.ebuild, qbankmanager-0.9.18.ebuild,
+  qbankmanager-0.9.21.ebuild, qbankmanager-0.9.23.ebuild:
+  Change qt deps again per bug #100235
+
+  13 Jul 2005; David Holm <dholm@gentoo.org> qbankmanager-0.9.23.ebuild:
+  Added to ~ppc.
+
+*qbankmanager-0.9.23 (12 Jul 2005)
+
+  12 Jul 2005; Hanno Boeck <hanno@gentoo.org> +qbankmanager-0.9.23.ebuild:
+  Version bump.
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> qbankmanager-0.9.15.ebuild,
+  qbankmanager-0.9.16.ebuild, qbankmanager-0.9.18.ebuild,
+  qbankmanager-0.9.21.ebuild:
+  Fix qt dep
+
+*qbankmanager-0.9.21 (13 Apr 2005)
+
+  13 Apr 2005; Hanno Boeck <hanno@gentoo.org> +qbankmanager-0.9.21.ebuild:
+  Version bump.
+
+*qbankmanager-0.9.18 (13 Mar 2005)
+
+  13 Mar 2005; Hanno Boeck <hanno@gentoo.org> +qbankmanager-0.9.18.ebuild:
+  Version bump.
+
+*qbankmanager-0.9.16 (01 Feb 2005)
+
+  01 Feb 2005; Hanno Boeck <hanno@gentoo.org> +qbankmanager-0.9.16.ebuild:
+  Version bump.
+
+*qbankmanager-0.9.15 (23 Jan 2005)
+
+  23 Jan 2005; Hanno Boeck <hanno@gentoo.org> +qbankmanager-0.9.15.ebuild:
+  Version bump.
+
+*qbankmanager-0.9.13_beta (13 Jan 2005)
+
+  13 Jan 2005; Hanno Boeck <hanno@gentoo.org>
+  +qbankmanager-0.9.13_beta.ebuild:
+  Version bump.
+
+  10 Jan 2005; Hanno Boeck <hanno@gentoo.org>
+  qbankmanager-0.9.12_beta.ebuild:
+  Added aqhbci-wizard-kde to the dependencies, because it doesn't make
+  any sense to run qbankmanager without it.
 
 *qbankmanager-0.9.12_beta (21 Dec 2004)
 

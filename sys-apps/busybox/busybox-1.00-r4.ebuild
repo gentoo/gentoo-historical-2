@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/busybox-1.00-r4.ebuild,v 1.1 2005/05/17 01:02:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/busybox-1.00-r4.ebuild,v 1.1.1.1 2005/11/30 09:56:12 chriswhite Exp $
 
 inherit eutils
 
@@ -20,8 +20,8 @@ SRC_URI="${SRC_URI} mirror://gentoo/${P}-e2fsprogs.patch.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="debug uclibc static savedconfig netboot floppyboot make-symlinks"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="debug static savedconfig netboot floppyboot make-symlinks"
 
 DEPEND=""
 
@@ -30,35 +30,46 @@ S=${WORKDIR}/${MY_P}
 # <pebenito> then eventually turning on selinux would mean
 # adding a dep: selinux? ( sys-libs/libselinux )
 
+busybox_set_env() {
+	type -p ${CHOST}-ar && export CROSS=${CHOST}-
+	# Don't let KBUILD_OUTPUT mess us up #88088
+	unset KBUILD_OUTPUT
+}
+
 busybox_config_option() {
-	[[ -z $2 ]] && return 1
 	case $1 in
 		y) sed -i -e "s:.*CONFIG_$2.*set:CONFIG_$2=y:g" .config;;
 		n) sed -i -e "s:CONFIG_$2=y:# CONFIG_$2 is not set:g" .config;;
-		*) return 1;;
+		Y) echo "CONFIG_$2=y" >> .config;;
+		N) echo "CONFIG_$2=n" >> .config;;
+		*) use $1 \
+		       && busybox_config_option y $2 \
+		       || busybox_config_option n $2
+		   return 0
+		   ;;
 	esac
 	einfo $(grep "CONFIG_$2[= ]" .config)
 }
 
 src_unpack() {
+	busybox_set_env
 	unpack ${A}
 	cd "${S}"
-cp -r "${S}"{,.orig}
 
 	# patches for 1.00 go here.
 	epatch "${FILESDIR}"/1.00/busybox-read-timeout.patch
 	epatch "${FILESDIR}"/1.00/readlink-follow.patch
 	epatch "${FILESDIR}"/1.00/more-insmod-arches.patch
+	epatch "${FILESDIR}"/1.00/fix-amd64-insmod.patch
 	epatch "${FILESDIR}"/1.00/bash-tests.patch
 	epatch "${FILESDIR}"/1.00/cp-posix-opts.patch
 	epatch "${FILESDIR}"/1.00/standalone.patch
 	epatch "${FILESDIR}"/1.00/nice.patch
 	epatch "${FILESDIR}"/1.00/printenv.patch
 	epatch "${FILESDIR}"/1.00/sum.patch
+	epatch "${FILESDIR}"/1.00/bb.patch
 	epatch "${WORKDIR}"/${P}-e2fsprogs.patch
-
-	# Don't let KBUILD_OUTPUT mess us up #88088
-	unset KBUILD_OUTPUT
+	epatch "${FILESDIR}"/1.00/gcc4.patch
 
 	#bunzip
 	#ftp://ftp.simtreas.ru/pub/my/bb/new/find.c.gz
@@ -86,80 +97,84 @@ cp -r "${S}"{,.orig}
 		fi
 	fi
 	if use netboot ; then
-		cp ${FILESDIR}/config-netboot .config
+		cp "${FILESDIR}"/config-netboot .config
 		sed -i \
 			-e '/DEFAULT_SCRIPT/s:/share/udhcpc/default.script:/lib/udhcpc.script:' \
 			networking/udhcp/libbb_udhcp.h \
 			|| die "fixing netboot/udhcpc"
 	elif use floppyboot ; then
-		cp ${FILESDIR}/config-floppyboot .config
+		cp "${FILESDIR}"/config-floppyboot .config
 	fi
 
-	# busybox has changed quite a bit from 0.[5-6]* to 1.x so this
-	# config might not be cd ready.
-
+	# setup the config file
 	make allyesconfig > /dev/null
 	busybox_config_option n DMALLOC
-	busybox_config_option n FEATURE_SUID
+	busybox_config_option n FEATURE_SUID_CONFIG
 
 	# If these are not set and we are using a uclibc/busybox setup
 	# all calls to system() will fail.
 	busybox_config_option y FEATURE_SH_IS_ASH
 	busybox_config_option n FEATURE_SH_IS_NONE
 
-	use static \
-		&& busybox_config_option y STATIC \
-		|| busybox_config_option n STATIC
+	busybox_config_option static STATIC
+	busybox_config_option debug DEBUG
+	use debug \
+		&& busybox_config_option Y NO_DEBUG_LIB \
+		&& busybox_config_option N DMALLOC \
+		&& busybox_config_option N EFENCE
 
-	# 1.00-pre2 uses the old selinux api which is no longer
-	# maintained. perhaps the next stable release will include
-	# support. 
-	# 1.00-pre5  pebenito says busybox is still using the old se api.
-	#use selinux \
-	#	&& busybox_config_option y SELINUX \
-	#	|| 
+	# 1.00-pre5 uses the old selinux api which is no longer maintained
+	#busybox_config_option selinux SELINUX
 	busybox_config_option n SELINUX
 
-	use debug \
-		&& busybox_config_option y DEBUG \
-		|| busybox_config_option n DEBUG
+	# default a bunch of uncommon options to off
+	for opt in LOCALE_SUPPORT TFTP FTP{GET,PUT} IPCALC TFTP HUSH \
+		LASH MSH INETD DPKG RPM2CPIO RPM FOLD LOGNAME OD CRONTAB \
+		UUDECODE UUENCODE SULOGIN DC
+	do
+		busybox_config_option n ${opt}
+	done
 
-	#busybox_features=`grep CONFIG_ .config | tr '#' '\n' | 
-	#	awk  '{print $1}' | cut -d = -f 1 | grep -v ^$ | cut -c 8- | 
-	#		tr [A-Z] [a-z] | awk '{print "busybox_"$1}'`
-	#for f in $busybox_features; do
-	#	has $f ${FEATURES} && busybox_config_option y `echo ${f/busybox_/}|tr [a-z] [A-Z]`
-	#done
-	( echo | make clean oldconfig > /dev/null ) || :
-}
-
-busybox_set_cross_compiler() {
-	type -p ${CHOST}-ar && export CROSS=${CHOST}-
+	make oldconfig > /dev/null
 }
 
 src_compile() {
-	busybox_set_cross_compiler
-	#emake -j1 CROSS="${CROSS}" include/config.h busybox || die
-	emake -j1 CROSS="${CROSS}" busybox || die
-	if ! use static; then
-		cp busybox{,.dyn}
-		rm busybox
-		emake -j1 LDFLAGS="${LDFLAGS} -static" CROSS="${CROSS}" busybox 2>/dev/null || die
-		cp busybox{,.static}
-		cp busybox{.dyn,}
+	busybox_set_env
+	emake -j1 CROSS="${CROSS}" depend || die "depend failed"
+	emake CROSS="${CROSS}" busybox || die "build failed"
+	if ! use static ; then
+		mv busybox{,.bak}
+		local failed=0
+		emake -j1 \
+			LDFLAGS="${LDFLAGS} -static" \
+			CROSS="${CROSS}" \
+			busybox || failed=1
+		if [[ ${failed} == 1 ]] ; then
+			if has_version '<sys-libs/glibc-2.3.5' ; then
+				eerror "Your glibc has broken static support, ignorning static build failure."
+				eerror "See http://bugs.gentoo.org/show_bug.cgi?id=94879"
+				cp busybox.bak bb
+			else
+				die "static build failed"
+			fi
+		else
+			mv busybox bb
+		fi
+		mv busybox{.bak,}
 	fi
 }
 
 src_install() {
-	busybox_set_cross_compiler
+	busybox_set_env
 
 	into /
 	dobin busybox
-	use static || dobin busybox.static
+	use static \
+		&& dosym busybox /bin/bb \
+		|| dobin bb
 
 	if use make-symlinks ; then
-		if [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ ${ROOT} == "/" ]] ;
-		then
+		if [[ ! ${VERY_BRAVE_OR_VERY_DUMB} == "yes" ]] && [[ ${ROOT} == "/" ]] ; then
 			ewarn "setting USE=make-symlinks and emerging to / is very dangerous."
 			ewarn "it WILL overwrite lots of system programs like: ls bash awk grep (bug 60805 for full list)."
 			ewarn "If you are creating a binary only and not merging this is probably ok."
@@ -168,10 +183,10 @@ src_install() {
 		fi
 		make CROSS="${CROSS}" install || die
 		dodir /bin
-		cp -a _install/bin/* ${D}/bin/
+		cp -pPR _install/bin/* "${D}"/bin/
 		dodir /sbin
-		cp -a _install/sbin/* ${D}/sbin/
-		cd ${D}
+		cp -pPR _install/sbin/* "${D}"/sbin/
+		cd "${D}"
 		local symlink
 		for symlink in {bin,sbin}/* ; do
 			[[ -L ${symlink} ]] || continue
@@ -204,7 +219,7 @@ src_install() {
 
 	cd ../../ || die
 	if has buildpkg ${FEATURES} && has keepwork ${FEATURES} ; then
-		cd ${S}
+		cd "${S}"
 		# this should install to the ./_install/ dir by default.
 		# we make a micro pkg of busybox that can be used for
 		# embedded systems -solar
@@ -220,7 +235,7 @@ src_install() {
 		einfo "Saving this build config to /etc/${PN}/${CHOST}/${PN}-${PV}-${PR}.config"
 		einfo "Read this ebuild for more info on how to take advantage of this option"
 		insinto /etc/${PN}/${CHOST}/
-		newins ${S}/.config ${PN}-${PV}-${PR}.config
+		newins "${S}"/.config ${PN}-${PV}-${PR}.config
 	fi
 }
 

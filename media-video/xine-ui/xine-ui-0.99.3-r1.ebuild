@@ -1,16 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/xine-ui/xine-ui-0.99.3-r1.ebuild,v 1.1 2005/04/11 14:53:09 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/xine-ui/xine-ui-0.99.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:30 chriswhite Exp $
 
 inherit eutils
 
+PATCHLEVEL="2"
 DESCRIPTION="Xine movie player"
 HOMEPAGE="http://xine.sourceforge.net/"
-SRC_URI="mirror://sourceforge/xine/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/xine/${P}.tar.gz
+	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc64 ~sparc"
+KEYWORDS="amd64 ~hppa ppc ppc64 sparc x86"
 IUSE="X nls lirc aalib libcaca readline curl ncurses"
 
 DEPEND="media-libs/libpng
@@ -27,15 +29,17 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	# Detects CFLAGS set in make.conf without this patch
-	#epatch ${FILESDIR}/preserve-CFLAGS-${PV}.diff
+	EPATCH_SUFFIX="patch" epatch ${WORKDIR}/${PV}
 
-	epatch ${FILESDIR}/true-false.patch
-	epatch ${FILESDIR}/${PN}-configure-checks.patch
-	epatch ${FILESDIR}/${PN}-desktop-fixes.patch
-	./autogen.sh
+	export WANT_AUTOCONF=2.5
+	export WANT_AUTOMAKE=1.7
+	aclocal -I m4 || die "aclocal failed"
+	autoheader || die "autoheader failed"
+	automake -afc || die "automake failed"
+	autoconf || die "autoconf failed"
+	libtoolize --copy --force
 
-	sed -i "s:LDFLAGS =:LDFLAGS = -L/lib :" src/xitk/Makefile.in
+	sed -i -e "s:LDFLAGS =:LDFLAGS = -L/lib :" src/xitk/Makefile.in
 }
 
 src_compile() {
@@ -58,7 +62,7 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} docdir=/usr/share/doc/${PF} docsdir=/usr/share/doc/${PF} install || die
 
-	dodoc AUTHORS ChangeLog INSTALL NEWS README
+	dodoc AUTHORS ChangeLog NEWS README
 
 	for res in 16 22 32 48; do
 		insinto /usr/share/icons/hicolor/${res}x${res}/apps

@@ -1,6 +1,59 @@
 # ChangeLog for net-misc/capi4hylafax
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/capi4hylafax/ChangeLog,v 1.1 2003/10/04 02:11:53 nerdboy Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/capi4hylafax/ChangeLog,v 1.1.1.1 2005/11/30 09:55:45 chriswhite Exp $
+
+  13 Nov 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  capi4hylafax-01.02.03.ebuild:
+  fixed dependencies, see bug #112445.
+
+*capi4hylafax-01.03.00.3 (02 Oct 2005)
+
+  02 Oct 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  +files/capi4hylafax.confd, +files/capi4hylafax.initd, metadata.xml,
+  +capi4hylafax-01.03.00.3.ebuild:
+  version bump, ebuild and init-scripts enhancements, adding ~amd64 to keywords.
+
+*capi4hylafax-01.02.03.13 (11 Aug 2005)
+
+  11 Aug 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  +capi4hylafax-01.02.03.13.ebuild:
+  bumping to new debian release.
+
+  19 Jun 2005; David Holm <dholm@gentoo.org>
+  capi4hylafax-01.02.03.11.ebuild:
+  Added to ~ppc.
+
+*capi4hylafax-01.02.03.11 (18 Jun 2005)
+
+  18 Jun 2005; Stefan Briesenick <sbriesen@gentoo.org>
+  +capi4hylafax-01.02.03.11.ebuild:
+  changing version to debian patch level, removing hylafax dependency (because
+  it's optional), adding tiff dependency, ebuild code cleanup.
+
+  13 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  -capi4hylafax-01.02.02.ebuild, capi4hylafax-01.02.03.ebuild:
+  Version 01.02.03 x86 stable, libtoolize fix thanks to Hans-Christian
+  Armingeon <mog.johnny@gmx.net> in bug 80873
+
+*capi4hylafax-01.02.03 (02 Dec 2004)
+
+  02 Dec 2004; Stefan Schweizer <genstef@gentoo.org> metadata.xml,
+  files/capi4hylafax, +capi4hylafax-01.02.03.ebuild:
+  Version Bump. Changing maintainer to myself. Ebuild thanks to Stefan
+  Briesenick <sbriesen@gmx.de> in bug 72131
+
+  08 Aug 2004; Tom Martin <slarti@gentoo.org> capi4hylafax-01.02.02.ebuild:
+  Typo in DESCRIPTION: recieve -> receive. Bug 59717.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> capi4hylafax-01.02.02.ebuild:
+  change virtual/glibc to virtual/libc
+
+  25 Apr 2004; Steve Arnold <nerdboy@gentoo.org> capi4hylafax-01.02.02.ebuild:
+  removed ?IUSE stuff
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org>
+  capi4hylafax-01.02.02.ebuild:
+  changed app-text/ghostscript to virtual/ghostscript
 
 *capi4hylafax-01.02.02 (02 Oct 2003)
 

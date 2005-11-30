@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/skey/skey-1.1.5-r4.ebuild,v 1.1 2004/09/23 10:22:21 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/skey/skey-1.1.5-r4.ebuild,v 1.1.1.1 2005/11/30 09:59:41 chriswhite Exp $
 
 inherit flag-o-matic ccc eutils
 
@@ -10,11 +10,10 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="BSD X11"
 SLOT="0"
-KEYWORDS="~alpha ~arm ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 DEPEND="sys-libs/cracklib
-	sys-apps/shadow
 	dev-lang/perl
 	virtual/libc"
 # XXX: skeyaudit requires mailx.
@@ -46,6 +45,13 @@ src_compile() {
 	# skeyprune wont honour @sysconfdir@
 	sed -i 's#/etc/skeykeys#/etc/skey/skeykeys#g' skeyprune.pl skeyprune.8
 
+	# skeyprune uses a case sensitive regex to check for zeroed entries
+	sed -i 's#\(if ( ! /.*/\)#\1i#g' skeyprune.pl
+
+	# skeyinit(1) describes md4 as the default hash algorithm, which 
+	# is no longer the case. #64971
+	sed -i 's#\(md4\) \((the default)\), \(md5\) or \(sha1.\)#\1, \3 \2 or \4#g' skeyinit.1
+
 	econf --sysconfdir=/etc/skey || die
 	emake || die
 }
@@ -53,7 +59,7 @@ src_compile() {
 src_install() {
 	doman skey.1 skeyaudit.1 skeyinfo.1 skeyinit.1 skeyprune.8
 	dobin skey skeyinit skeyinfo || die
-	newbin skeyprune.pl skeyprune
+	newsbin skeyprune.pl skeyprune
 	newbin skeyaudit.sh skeyaudit
 	dolib.a libskey.a
 	dolib.so libskey.so.1.1.5 libskey.so.1.1 libskey.so.1 libskey.so
@@ -79,9 +85,12 @@ pkg_postinst() {
 	# do not include /etc/skey/skeykeys in the package, as quickpkg
 	# may package personal files.
 	# This also fixes the etc-update issue with #64974.
-	touch /etc/skey/skeykeys && chmod 0600 /etc/skey/skeykeys || {
-		ewarn "Please verify the permissions of /etc/skey/skeykeys are 0600."
-	}
+
+	# skeyinit will not function if this file is not present.
+	touch /etc/skey/skeykeys
+
+	# these permissions are applied by the skey system if missing.
+	chmod 0600 /etc/skey/skeykeys
 
 	einfo "For an instroduction into using s/key authentication, take"
 	einfo "a look at the EXAMPLES section from the skey(1) manpage."

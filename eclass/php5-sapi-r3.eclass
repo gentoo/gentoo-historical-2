@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php5-sapi-r3.eclass,v 1.1 2005/06/11 09:19:47 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php5-sapi-r3.eclass,v 1.1.1.1 2005/11/30 09:59:21 chriswhite Exp $
 #
 # ########################################################################
 #
@@ -17,10 +17,10 @@
 #
 # ========================================================================
 
+CONFUTILS_MISSING_DEPS="adabas birdstep db2 dbmaker empress empress-bcs esoob frontbase hyperwave-api informix msession msql oci8 oracle7 ovrimos pfpro sapdb solid sybase sybase-ct"
+
 inherit flag-o-matic eutils confutils libtool
 
-ECLASS=php5-sapi-r2
-INHERITED="$INHERITED $ECLASS"
 
 # set MY_PHP_P in the ebuild
 
@@ -37,7 +37,9 @@ if [ "${PHP_PACKAGE}" = 1 ]; then
 	S="${WORKDIR}/${MY_PHP_P}"
 fi
 
-IUSE="${IUSE} adabas bcmath berkdb birdstep bzip2 calendar cdb crypt ctype curl curlwrappers db2 dba dbase dbm dbmaker dbx debug empress empress-bcs esoob exif frontbase fdftk flatfile filepro ftp gd gd-external gdbm gmp hardenedphp hyperwave-api imap inifile iconv informix interbase iodbc jpeg kerberos ldap libedit mcve memlimit mhash mime ming msession msql mssql mysql mysqli ncurses nls oci8 odbc oracle7 ovrimos pcntl pcre pfpro png postgres posix qdbm readline recode sapdb sasl session sharedext sharedmem simplexml snmp soap sockets solid spell spl sqlite ssl sybase sybase-ct sysvipc threads tidy tiff tokenizer truetype wddx xsl xml2 xmlrpc xpm zlib"
+IUSE="adabas bcmath berkdb birdstep bzip2 calendar cdb crypt ctype curl
+curlwrappers db2 dba dbase dbm dbmaker dbx debug empress empress-bcs esoob exif
+frontbase fdftk flatfile filepro firebird ftp gd gd-external gdbm gmp hardenedphp hyperwave-api imap inifile iconv informix interbase iodbc jpeg kerberos ldap libedit mcve memlimit mhash mime ming mkconfig msession msql mssql mysql mysqli ncurses nls oci8 odbc oracle7 ovrimos pcntl pcre pfpro png postgres posix qdbm readline recode sapdb sasl session sharedext sharedmem simplexml snmp soap sockets solid spell spl sqlite ssl sybase sybase-ct sysvipc threads tidy tiff tokenizer truetype wddx xsl xml2 xmlrpc xpm zlib"
 
 # these USE flags should have the correct dependencies
 DEPEND="$DEPEND
@@ -62,7 +64,8 @@ DEPEND="$DEPEND
 	mime? ( sys-apps/file )
 	ming? ( media-libs/ming )
 	mssql? ( dev-db/freetds )
-	mysql? ( =dev-db/mysql-4.0* )
+	mysql? ( dev-db/mysql )
+	mysqli? ( >=dev-db/mysql-4.1 )
 	ncurses? ( sys-libs/ncurses )
 	nls? ( sys-devel/gettext )
 	odbc? ( >=dev-db/unixODBC-1.8.13 )
@@ -110,7 +113,7 @@ PHP_INI_FILE="php.ini"
 # the patch for different versions of PHP
 
 case "$PV" in
-	5.0.4) HARDENEDPHP_PATCH="hardened-php-$PV-0.2.7.patch.gz" ;;
+	5.0.4) HARDENEDPHP_PATCH="hardening-patch-$PV-0.3.2.patch.gz" ;;
 esac
 
 [ -n "$HARDENEDPHP_PATCH" ] && SRC_URI="${SRC_URI} hardenedphp? ( http://www.hardened-php.net/$HARDENEDPHP_PATCH )"
@@ -123,7 +126,16 @@ EXPORT_FUNCTIONS pkg_setup src_compile src_install src_unpack pkg_postinst
 # INTERNAL FUNCTIONS
 # ========================================================================
 
-php5-sapi-r2_check_awkward_uses() {
+php5-sapi-r3_check_awkward_uses() {
+
+	# unfortunately, libedit support is broken atm
+
+	if useq libedit ; then
+		eerror
+		eerror "php-5.1-beta doesn't link successfully if you use libedit"
+		eerror "Please switch to using readline instead for now."
+		die "libedit support broken"
+	fi
 
 	# disabled hardenedphp after many reports of problems w/ apache
 	# need to look into this at some point
@@ -149,14 +161,14 @@ php5-sapi-r2_check_awkward_uses() {
 	fi
 
 	# mysqli support is disabled; see bug #53886
-
-	if useq mysqli ; then
-		eerror
-		eerror "We currently do not support the mysqli extension"
-		eerror "Support will be added once MySQL 4.1 is no longer package-masked"
-		eerror
-		die "mysqli not supported yet"
-	 fi
+	#
+	# if useq mysqli ; then
+	#	eerror
+	#	eerror "We currently do not support the mysqli extension"
+	#	eerror "Support will be added once MySQL 4.1 is no longer package-masked"
+	#	eerror
+	#	die "mysqli not supported yet"
+	# fi
 
 	# recode not available in 5.0.0; upstream bug
 	if useq recode && [ "$PHP_PV" == "5.0.0" ]; then
@@ -246,7 +258,7 @@ php5-sapi-r2_check_awkward_uses() {
 	fi
 
 	if useq odbc ; then
-		enable_extension_with		"unixODBC"		"odbc"			1
+		enable_extension_with		"unixODBC"		"odbc"			1 "/usr"
 
 		enable_extension_with		"adabas"		"adabas"		1
 		enable_extension_with		"birdstep"		"birdstep"		1
@@ -257,7 +269,7 @@ php5-sapi-r2_check_awkward_uses() {
 		fi
 		enable_extension_with		"esoob"			"esoob"			1
 		enable_extension_with		"ibm-db2"		"db2"			1
-		enable_extension_with		"iodbc"			"iodbc"			1
+		enable_extension_with		"iodbc"			"iodbc"			1 "/usr"
 		enable_extension_with		"sapdb"			"sapdb"			1
 		enable_extension_with		"solid"			"solid"			1
 	fi
@@ -266,9 +278,7 @@ php5-sapi-r2_check_awkward_uses() {
 		enable_extension_with		"mysql"			"mysql"			1 "/usr/lib/mysql"
 		enable_extension_with		"mysql-sock"	"mysql"			0 "/var/run/mysqld/mysqld.sock"
 	fi
-	if useq mysqli; then
-		enable_extension_with		"mysqli"		"mysqli"		1 "/usr/bin/mysql_config"
-	fi
+	enable_extension_with		"mysqli"		"mysqli"		    1 "/usr/bin/mysql_config"
 
 	# QDBM doesn't play nicely with GDBM _or_ DBM
 	confutils_use_conflict "qdbm" "gdbm" "dbm"
@@ -305,7 +315,7 @@ php5-sapi-r2_check_awkward_uses() {
 
 	# GD library support
 	confutils_use_depend_any "truetype" "gd" "gd-external"
-	
+
 	# ldap support
 	confutils_use_depend_all "sasl" "ldap"
 
@@ -334,14 +344,14 @@ php5-sapi-r2_check_awkward_uses() {
 # EXPORTED FUNCTIONS
 # ========================================================================
 
-php5-sapi-r2_pkg_setup() {
+php5-sapi-r3_pkg_setup() {
 	# let's do all the USE flag testing before we do anything else
 	# this way saves a lot of time
 
-	php5-sapi-r2_check_awkward_uses
+	php5-sapi-r3_check_awkward_uses
 }
 
-php5-sapi-r2_src_unpack() {
+php5-sapi-r3_src_unpack() {
 	if [ "${PHP_PACKAGE}" == 1 ]; then
 		unpack ${A}
 	fi
@@ -378,7 +388,7 @@ php5-sapi-r2_src_unpack() {
 	# epatch ${FILESDIR}/${MY_PHP_P}-missing-arches.patch
 }
 
-php5-sapi-r2_src_compile() {
+php5-sapi-r3_src_compile() {
 	cd ${PHP_S}
 	confutils_init
 
@@ -408,7 +418,7 @@ php5-sapi-r2_src_compile() {
 	# iodbc support added by Tim Haynes <gentoo@stirfried.vegetable.org.uk>
 	enable_extension_with 		"iodbc" 		"iodbc" 		0 "/usr"
 	# ircg extension not supported on Gentoo at this time
-	enable_extension_with		"kerberos"		"kerberos"		0 "/usr"
+	enable_extension_with		"kerberos"		"kerberos"		0
 	enable_extension_disable	"libxml"		"xml2"			0
 	enable_extension_enable		"mbstring"		"nls"			1
 	enable_extension_with		"mcrypt"		"crypt"			1
@@ -452,7 +462,7 @@ php5-sapi-r2_src_compile() {
 	enable_extension_with		"zlib"			"zlib"			1
 	enable_extension_enable		"debug"			"debug"			0
 
-	php5-sapi-r2_check_awkward_uses
+	php5-sapi-r3_check_awkward_uses
 
 	# DBA support
 	enable_extension_enable		"dba"		"dba" 1
@@ -463,14 +473,18 @@ php5-sapi-r2_src_compile() {
 	enable_extension_with		"readline"		"readline"		0
 	enable_extension_with		"libedit"		"libedit"		1
 
-	# optimization/setting stuff
-	my_conf="${my_conf} --enable-versioning"
-
 	# fix ELF-related problems
 	if has_pic ; then
 		einfo "Enabling PIC support"
 		my_conf="${my_conf} --with-pic"
 	fi
+
+	if [ "${PHPSAPI}" != "cli" ]; then
+		my_conf="${my_conf} --disable-cli"
+	fi
+
+	# Bug 98694
+	addpredict /etc/krb5.conf
 
 	# all done
 
@@ -478,10 +492,10 @@ php5-sapi-r2_src_compile() {
 	emake || die "make failed"
 }
 
-php5-sapi-r2_src_install() {
+php5-sapi-r3_src_install() {
 	cd ${PHP_S}
 	addpredict /usr/share/snmp/mibs/.index
-	
+
 	useq sharedext && PHP_INSTALLTARGETS="${PHP_INSTALLTARGETS} install-modules"
 	make INSTALL_ROOT=${D} $PHP_INSTALLTARGETS || die "install failed"
 
@@ -492,7 +506,7 @@ php5-sapi-r2_src_install() {
 	local phpinisrc=php.ini-dist
 	einfo "Setting extension_dir in php.ini"
 	sed -e "s|^extension_dir .*$|extension_dir = ${PHPEXTDIR}|g" -i ${phpinisrc}
-	
+
 	# A patch for PHP for security. PHP-CLI interface is exempt, as it cannot be
 	# fed bad data from outside.
 	if [ "${PHPSAPI}" != "cli" ]; then
@@ -501,10 +515,10 @@ php5-sapi-r2_src_install() {
 	fi
 
 	einfo "Setting correct include_path"
-	sed -e 's|^;include_path .*|include_path = ".:/usr/lib/php"|' -i ${phpinisrc}
+	sed -e 's|^;include_path .*|include_path = ".:/usr/share/php"|' -i ${phpinisrc}
 
 	if useq sharedext; then
-		for x in `ls ${D}${PHPEXTDIR}/*.so | sort`; do 
+		for x in `ls ${D}${PHPEXTDIR}/*.so | sort`; do
 			echo "extension=`basename ${x}`" >> ${phpinisrc}
 		done;
 	fi
@@ -515,7 +529,35 @@ php5-sapi-r2_src_install() {
 
 	# PEAR-Installer and phpconfig install the following, so we
 	# don't have to
-	rm -rf ${D}/usr/bin/{phpextdist,phpize,php-config,pear}
+	#
+	# if 'mkconfig' USE flag is set, we create the phpconfig source
+	# tarball ... this makes it easy for us to bump the phpconfig
+	# package whenever we bump php
+
+	if useq mkconfig ; then
+		CONFIG_NAME=phpconfig-$PV
+		CONFIG_DESTDIR=${T}/${CONFIG_NAME}
+
+		einfo "Building source tarball for ${CONFIG_NAME}"
+
+		mkdir -p ${CONFIG_DESTDIR}/usr/bin
+		cp ${D}/usr/bin/{phpize,php-config} ${CONFIG_DESTDIR}/usr/bin/
+		cp scripts/dev/phpextdist ${CONFIG_DESTDIR}/usr/bin/
+
+		mkdir -p ${CONFIG_DESTDIR}/usr/lib/php
+		cp -r ${D}/usr/lib/php/build ${CONFIG_DESTDIR}/usr/lib/php
+
+		mkdir -p ${CONFIG_DESTDIR}/usr/include
+		cp -r ${D}/usr/include/php ${CONFIG_DESTDIR}/usr/include
+
+		cd ${T}
+		tar -cf - ${CONFIG_NAME} | bzip2 -9 > ${CONFIG_NAME}.tar.bz2
+		cd -
+
+		einfo "Done; tarball is ${T}/${CONFIG_NAME}.tar.bz"
+	fi
+
+	rm -rf ${D}/usr/bin/{phpize,php-config,pear}
 	rm -rf ${D}/usr/lib/php/build
 	rm -rf ${D}/usr/include/php
 
@@ -523,7 +565,7 @@ php5-sapi-r2_src_install() {
 	# this does mean that the packages are in conflict for now
 }
 
-php5-sapi-r2_pkg_postinst() {
+php5-sapi-r3_pkg_postinst() {
 	ewarn "If you have additional third party PHP extensions (such as"
 	ewarn "dev-php/eaccelerator) you may need to recompile them now."
 

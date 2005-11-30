@@ -1,6 +1,6 @@
 # Copyright 2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/qt4.eclass,v 1.1 2005/11/17 13:48:46 caleb Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/qt4.eclass,v 1.1.1.1 2005/11/30 09:59:18 chriswhite Exp $
 #
 # Author Caleb Tennis <caleb@gentoo.org>
 #

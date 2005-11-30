@@ -1,6 +1,44 @@
 # ChangeLog for sys-apps/readahead-list
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/readahead-list/ChangeLog,v 1.1 2005/03/21 07:22:25 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/readahead-list/ChangeLog,v 1.1.1.1 2005/11/30 09:57:00 chriswhite Exp $
+
+  26 Sep 2005; Robin H. Johnson <robbat2@gentoo.org>
+  readahead-list-0.20050517.0220.ebuild:
+  Stable on x86, 132 days in ~x86.
+
+  17 Jul 2005; Jared Hudson <jhhudso@gentoo.org>
+  readahead-list-0.20050517.0220.ebuild:
+  Added ~amd64 to ebuild
+
+*readahead-list-0.20050517.0220 (17 May 2005)
+
+  17 May 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +readahead-list-0.20050517.0220.ebuild:
+  New release, fixing bug #92714.
+
+*readahead-list-0.20050425.1452 (25 Apr 2005)
+
+  25 Apr 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +readahead-list-0.20050425.1452.ebuild:
+  New production-quality release.
+
+  18 Apr 2005; Robin H. Johnson <robbat2@gentoo.org>
+  readahead-list-0.20050328.0142.ebuild:
+  Bug #89550 - cleanup linux26-headers DEPEND.
+
+*readahead-list-0.20050328.0142 (28 Mar 2005)
+
+  28 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +readahead-list-0.20050328.0142.ebuild:
+  New upstream version. Add manpages. Build filelist-order with large file
+  support. Code cleanup.
+
+*readahead-list-0.20050323.0658 (23 Mar 2005)
+
+  23 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +readahead-list-0.20050323.0658.ebuild:
+  New upstream release, adds filelist-order tool in a similar vein to the
+  Ubuntu readahead.
 
 *readahead-list-0.20050320.2320 (20 Mar 2005)
 

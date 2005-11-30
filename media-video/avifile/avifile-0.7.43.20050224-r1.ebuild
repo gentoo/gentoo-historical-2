@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.43.20050224-r1.ebuild,v 1.1 2005/03/26 04:27:13 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/avifile/avifile-0.7.43.20050224-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:44 chriswhite Exp $
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic qt3
 
 MAJ_PV=${PV:0:3}
 MIN_PV=${PV:0:6}
@@ -16,21 +16,20 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0.7"
 
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~sparc ~x86"
-IUSE="3dnow X alsa debug divx4linux dmalloc dpms dvd encode esd mad matrox
-mmx oggvorbis oss qt sblive sdl sse truetype v4l vidix xinerama xv xvid zlib"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips sparc ~x86"
+IUSE="3dnow X alsa debug dmalloc dpms a52 encode esd mad matrox
+mmx vorbis oss qt sblive sdl sse truetype v4l vidix win32codecs xinerama xv xvid
+zlib"
 
 RDEPEND="alsa? ( >=media-libs/alsa-lib-0.9.0_rc2 )
-	x86? ( >=media-libs/win32codecs-0.90 )
-	alsa? ( virtual/alsa )
-	divx4linux? ( x86? ( >=media-libs/divx4linux-20030428 ) )
+	win32codecs? ( >=media-libs/win32codecs-0.90 )
 	dmalloc? ( !amd64? ( !arm? ( !mips? ( dev-libs/dmalloc ) ) ) )
-	dvd? ( >=media-libs/a52dec-0.7 )
+	a52? ( >=media-libs/a52dec-0.7 )
 	encode? ( >=media-sound/lame-3.90 )
 	esd? ( >=media-sound/esound-0.2.28 )
 	mad? ( media-libs/libmad )
-	oggvorbis? ( >=media-libs/libvorbis-1.0 )
-	qt? ( >=x11-libs/qt-3.0.3 )
+	vorbis? ( >=media-libs/libvorbis-1.0 )
+	qt? ( $(qt_min_version 3.1) )
 	sdl? ( >=media-libs/libsdl-1.2.2 )
 	truetype? ( >=media-libs/freetype-2.1 )
 	xv? ( virtual/x11 )
@@ -41,20 +40,33 @@ RDEPEND="alsa? ( >=media-libs/alsa-lib-0.9.0_rc2 )
 	>=media-libs/jpeg-6b"
 
 DEPEND="${RDEPEND}
-	>=sys-apps/sed-4
 	>=sys-devel/autoconf-2.59
 	>=sys-devel/automake-1.4_p6
 	sys-devel/libtool"
+#	v4l needs linux headers
+#	v4l? ( virtual/os-headers )
+
+pkg_setup() {
+	if use qt && use dmalloc; then
+		die "Sorry, qt and dmalloc can't be enabled at the same time."
+	fi
+}
 
 src_unpack() {
 	unpack ${A}
 
-	# fixes mad FPM detection
-	epatch ${FILESDIR}/${PN}-mad.patch
+	cd ${S}
 
 	epatch ${FILESDIR}/avifile-0.7.43.20050224-sysffmpeg.patch
+	# removes sed-out of -L/usr/lib(64?) on sdl libs flags
+	epatch ${FILESDIR}/avifile-0.7.43.20050224-sdllibs.patch
+	# fixes bug #86320
+	epatch ${FILESDIR}/${P}-fixlabels.patch
+	# fix building with gcc4
+	# http://debian-amd64.alioth.debian.org/gcc-3.4/patches/avifile_0.7.43.20050224-1.0.0.1.gcc4.patch
+	epatch ${FILESDIR}/${P}-1.0.0.1.gcc4.patch
 
-	if use !qt ; then
+	if ! use qt ; then
 		sed -i -e 's/qtvidcap\ qtrecompress//g' \
 		${S}/samples/Makefile.am || die "qt based sample test removal failed"
 	fi
@@ -69,15 +81,15 @@ src_unpack() {
 
 	# Run autotools...
 	cd ${S}
-	[[ -f configure.ac && -f configure.in ]] && rm configure.in
+	[[ -f configure.ac ]] && rm -f configure.in
+	# acinclude have a broken SDL test that clobber '/usr/lib64' to '4'
+	rm -f acinclude.m4
 
-	export WANT_AUTOMAKE=1.6
-	export WANT_AUTOCONF=2.5
-	libtoolize --force --copy || die "libtoolize failed"
-	aclocal -I ${S}/m4 || die "aclocal failed"
-	autoheader || die "autoheader failed"
-	automake --gnu --add-missing --include-deps --force-missing --copy || die "automake failed"
-	autoconf || die "autoconf failed"
+	# Reconfigure autotools
+	ACLOCAL_FLAGS="-I m4" ./autogen.sh --copy --force || die "autogen.sh failed"
+
+	# fixes mad FPM detection
+	epatch ${FILESDIR}/${PN}-mad.patch
 
 	# make sure pkgconfig file is correct #53183
 	rm -f avifile.pc
@@ -107,17 +119,17 @@ src_compile() {
 	export FFMPEG_CFLAGS="${CFLAGS}"
 
 	econf \
-		$(use_enable x86 win32) \
+		$(use_enable win32codecs win32) \
 		$(use_with dmalloc dmallocth) \
-		$(use_enable dvd a52) $(use_enable dvd ffmpeg-a52) \
+		$(use_enable a52) $(use_enable a52 ffmpeg-a52) \
 		$(use_enable dpms) \
-		$(use_enable mad) $(use_enable libmad) \
+		$(use_enable mad) $(use_enable mad libmad) \
 		$(use_enable matrox mga) \
-		$(use_enable oggvorbis vorbis) $(use_enable oggvorbis oggtest) $(use_enable oggvorbis vorbistest) \
+		$(use_enable vorbis) \
 		$(use_enable oss) \
 		$(use_with qt) \
 		$(use_enable sblive ac3passthrough) \
-		$(use_enable sdl) $(use_enable sdl sdltest) \
+		$(use_with sdl) \
 		$(use_enable truetype freetype2) \
 		$(use_enable v4l) \
 		$(use_enable vidix) \
@@ -133,7 +145,7 @@ src_compile() {
 src_install() {
 	make DESTDIR="${D}" install || die
 
-	dodoc README INSTALL
+	dodoc README
 	cd doc
 	dodoc CREDITS EXCEPTIONS TODO VIDEO-PERFORMANCE WARNINGS KNOWN_BUGS
 }

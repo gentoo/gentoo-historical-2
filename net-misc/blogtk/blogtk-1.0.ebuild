@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/blogtk/blogtk-1.0.ebuild,v 1.1 2004/09/26 18:43:20 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/blogtk/blogtk-1.0.ebuild,v 1.1.1.1 2005/11/30 09:55:02 chriswhite Exp $
 
 inherit eutils
 
@@ -12,7 +12,7 @@ S="${WORKDIR}/BloGTK-${PV}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="ppc x86"
 IUSE=""
 
 RDEPEND=">=dev-python/pygtk-2.0.0

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.6-r1.ebuild,v 1.1 2005/01/12 03:27:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:04 chriswhite Exp $
 
 inherit eutils libtool gnuconfig flag-o-matic
 
@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.pld.org.pl/software/shadow/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="pam selinux nls skey"
 
 RDEPEND=">=sys-libs/cracklib-2.7-r3
@@ -21,7 +21,7 @@ RDEPEND=">=sys-libs/cracklib-2.7-r3
 	!pam? ( !sys-apps/pam-login )
 	skey? ( app-admin/skey )
 	selinux? ( sys-libs/libselinux )"
-DEPEND="${DEPEND}
+DEPEND="${RDEPEND}
 	>=sys-apps/portage-2.0.51-r2
 	nls? ( sys-devel/gettext )"
 
@@ -68,12 +68,12 @@ src_unpack() {
 	# Allows shadow configure detect newer systems properly
 	gnuconfig_update
 	elibtoolize
+	epunt_cxx
 }
 
 src_compile() {
 	append-ldflags -Wl,-z,now
-	[[ ${CTARGET:-${CHOST}} != ${CHOST} ]] \
-		&& export ac_cv_func_setpgrp_void=yes
+	tc-is-cross-compiler && export ac_cv_func_setpgrp_void=yes
 	econf \
 		--disable-desrpc \
 		--with-libcrypt \
@@ -181,7 +181,7 @@ pkg_postinst() {
 		ewarn "  ${ROOT}etc/pam.d/system-auth.bak"
 		echo
 
-		cp -a ${ROOT}/etc/pam.d/system-auth \
+		cp -pPR ${ROOT}/etc/pam.d/system-auth \
 			${ROOT}/etc/pam.d/system-auth.bak;
 		mv -f ${ROOT}/etc/pam.d/system-auth.new \
 			${ROOT}/etc/pam.d/system-auth

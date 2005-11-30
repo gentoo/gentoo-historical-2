@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/spidermonkey-1.5_rc5.ebuild,v 1.1 2003/02/24 01:59:06 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/spidermonkey/spidermonkey-1.5_rc5.ebuild,v 1.1.1.1 2005/11/30 09:58:34 chriswhite Exp $
 
 MY_PV="${PV/_/-}"
 DESCRIPTION="Stand-alone JavaScript C library"
@@ -9,7 +9,8 @@ SRC_URI="ftp://ftp.mozilla.org/pub/js/js-${MY_PV}.tar.gz"
 
 LICENSE="NPL-1.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="sparc x86"
+IUSE=""
 
 DEPEND=""
 
@@ -23,9 +24,9 @@ src_install() {
 	dodoc ../README
 	dohtml README.html
 	cd Linux_All_OPT.OBJ
-	dolib.a libjs.a
-	dolib.so libjs.so
-	dobin js jscpucfg
+	dolib.a libjs.a || die "libjs.a failed"
+	dolib.so libjs.so || die "libjs.so failed"
+	dobin js jscpucfg || die "dobin failed"
 	insinto /usr/include
 	doins jsautocfg.h
 }

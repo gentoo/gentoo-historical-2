@@ -1,6 +1,116 @@
 # ChangeLog for sys-apps/lshw
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lshw/ChangeLog,v 1.1 2003/04/15 15:15:46 mholzer Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lshw/ChangeLog,v 1.1.1.1 2005/11/30 09:56:20 chriswhite Exp $
+
+  11 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> lshw-02.05.01b.ebuild:
+  Stable on ppc.
+
+  08 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> lshw-02.05.01b.ebuild:
+  Stable on sparc
+
+*lshw-02.06b (05 Nov 2005)
+
+  05 Nov 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/lshw-02.06b-build.patch, +files/lshw-02.06b-cpuid-PIC.patch,
+  +lshw-02.06b.ebuild:
+  Version bump #111500 by Daniel Webert.
+
+  05 Nov 2005; Mark Loeser <halcy0n@gentoo.org> lshw-02.05.01b.ebuild:
+  Stable on x86; bug #111499
+
+  03 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> lshw-02.05.01b.ebuild:
+  marked ~alpha, wrt bug #104130
+
+*lshw-02.05.01b (22 Jul 2005)
+
+  22 Jul 2005; Mike Frysinger <vapier@gentoo.org> +lshw-02.05.01b.ebuild:
+  Version bump #99838 by Nunatak.
+
+  22 May 2005; Tobias Scherbaum <dertobi123@gentoo.org> lshw-02.03b.ebuild:
+  Stable on ppc.
+
+  02 May 2005; Jason Wever <weeve@gentoo.org> lshw-02.03b.ebuild:
+  Stable on SPARC.
+
+*lshw-02.04b (28 Apr 2005)
+
+  28 Apr 2005; Mike Frysinger <vapier@gentoo.org> +lshw-02.04b.ebuild:
+  Version bump #90727 by Daniel Webert.
+
+*lshw-02.03b (05 Feb 2005)
+
+  05 Feb 2005; MATSUU Takuto <matsuu@gentoo.org> +lshw-02.03b.ebuild:
+  Version bumped.
+
+  03 Feb 2005; <solar@gentoo.org> -lshw-01.08a.ebuild, lshw-02.00b.ebuild,
+  lshw-02.02b.ebuild:
+  - removing filter-flags -fPIC from ebuild now that the cpuid patch exists.
+  Removing broken lshw-01.08a
+
+*lshw-02.02b (22 Jan 2005)
+
+  22 Jan 2005; MATSUU Takuto <matsuu@gentoo.org> +lshw-02.02b.ebuild:
+  Version bumped.
+
+  03 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/02.00b-cpuid-PIC.patch, lshw-02.00b.ebuild:
+  Add patch to enable PIC building #61947.
+
+  21 Dec 2004; Mike Frysinger <vapier@gentoo.org> +files/02.00b-dev.patch,
+  lshw-02.00b.ebuild:
+  Clean up ebuild and add patch to fix includes #75168 by lukenshiro@ngi.it.
+
+*lshw-02.00b (21 Dec 2004)
+
+  21 Dec 2004; MATSUU Takuto <matsuu@gentoo.org> -lshw-01.06a.ebuild,
+  -lshw-01.07a.ebuild, lshw-01.08a.ebuild, +lshw-02.00b.ebuild:
+  Version bumped.
+  Removed old versions.
+
+*lshw-01.08a (06 Sep 2004)
+
+  06 Sep 2004; MATSUU Takuto <matsuu@gentoo.org> +lshw-01.08a.ebuild:
+  Version bumped.
+
+*lshw-01.07a (13 May 2004)
+
+  13 May 2004; <matsuu@gentoo.org> -lshw-01.00.ebuild, +lshw-01.07a.ebuild:
+  Version bumped.
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> lshw-01.06a.ebuild:
+  removed hardened-gcc logic
+
+  25 Apr 2004; <matsuu@gentoo.org> -lshw-01.05a.ebuild, lshw-01.06a.ebuild:
+  Marked as stable.
+
+*lshw-01.06a (29 Feb 2004)
+
+  29 Feb 2004; <matsuu@gentoo.org> lshw-01.06a.ebuild:
+  Version bumped.
+
+*lshw-01.05a (05 Nov 2003)
+
+  05 Nov 2003; Martin Holzer <mholzer@gentoo.org> lshw-01.05a.ebuild:
+  Version bumped.
+
+*lshw-01.04 (04 Oct 2003)
+
+  04 Oct 2003; MATSUU Takuto <matsuu@gentoo.org> lshw-01.04.ebuild:
+  version bump.
+
+  21 Sep 2003; <solar@gentoo.org> lshw-01.03.ebuild:
+  cpuid.cc uses inline asm and can not be linked when position independent code
+  is desired.
+
+*lshw-01.03 (20 Aug 2003)
+
+  20 Aug 2003; MATSUU Takuto <matsuu@gentoo.org> lshw-01.03.ebuild:
+  version bump.
+
+*lshw-01.02 (06 Aug 2003)
+
+  06 Aug 2003; Martin Holzer <mholzer@gentoo.org> lshw-01.02.ebuild:
+  Version bumped. closes #25925.
 
 *lshw-01.00 (15 Apr 2003)
 

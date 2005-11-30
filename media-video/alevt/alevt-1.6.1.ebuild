@@ -1,18 +1,18 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/alevt/alevt-1.6.1.ebuild,v 1.1 2004/05/12 11:33:45 phosphan Exp $ 
+# $Header: /var/cvsroot/gentoo-x86/media-video/alevt/alevt-1.6.1.ebuild,v 1.1.1.1 2005/11/30 09:57:35 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="Teletext viewer for X11"
 HOMEPAGE="http://www.goron.de/~froese/"
 SRC_URI="http://www.ibiblio.org/pub/Linux/apps/video/${P}.tar.gz
-	http://fresh.t-systems-sfr.com/linux/src/${P}.tar.gz"
+	 http://fresh.t-systems-sfr.com/linux/src/${P}.tar.gz"
 
-IUSE="gnome"
+IUSE=""
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc ~sparc x86"
 
 DEPEND="virtual/x11
 	>=media-libs/libpng-1.0.12"
@@ -33,10 +33,10 @@ src_install() {
 	doman alevt.1x alevt-date.1 alevt-cap.1
 	dodoc CHANGELOG COPYRIGHT README
 
-	if use gnome; then
-		insinto /usr/share/pixmaps
-		newins contrib/mini-alevt.xpm alevt.xpm
-		insinto /usr/share/applications
-		doins ${FILESDIR}/alevt.desktop
-	fi
+	insinto /usr/share/icons/hicolor/16x16/apps
+	newins contrib/mini-alevt.xpm alevt.xpm
+	insinto /usr/share/icons/hicolor/48x48/apps
+	newins contrib/icon48x48.xpm alevt.xpm
+
+	make_desktop_entry alevt "AleVT" alevt
 }

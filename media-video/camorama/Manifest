@@ -1,2 +1,6 @@
-MD5 7b00e3579d4cbf4a1ba024f7263d9abc camorama-0.16.ebuild 403
+MD5 ae4e57adb8abb6ceb9f5f4eeea55a492 camorama-0.16.ebuild 655
+MD5 6c09e582882781b8e5e951830cc70bf9 metadata.xml 224
+MD5 372798ecf44adec6103371e49efe2993 ChangeLog 842
+MD5 740eb120a1cc41f836f1a3af18000a1c camorama-0.17.ebuild 669
 MD5 728eb1852fda23d5f256ad3407321e20 files/digest-camorama-0.16 65
+MD5 9a2c7e8eab2e03086ac2a287651ae019 files/digest-camorama-0.17 66

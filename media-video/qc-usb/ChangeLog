@@ -1,6 +1,46 @@
 # ChangeLog for media-video/qc-usb
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/qc-usb/ChangeLog,v 1.1 2003/07/06 18:04:15 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/qc-usb/ChangeLog,v 1.1.1.1 2005/11/30 09:57:43 chriswhite Exp $
+
+  09 May 2005; Herbie Hopkins <herbs@gentoo.org> qc-usb-0.6.3.ebuild:
+  Marked ~amd64 wrt bug #91892.
+
+  21 Apr 2005; Alastair Tse <liquidx@gentoo.org> qc-usb-0.6.2.ebuild,
+  qc-usb-0.6.3.ebuild:
+  replace KERNEL_DIR with LINUX_DIR for make options (#89909)
+
+*qc-usb-0.6.3 (18 Apr 2005)
+
+  18 Apr 2005; Alastair Tse <liquidx@gentoo.org> +qc-usb-0.6.3.ebuild:
+  version bump (#89228)
+
+  09 Mar 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/0.6.2-linux-2.6.11.patch, qc-usb-0.6.2.ebuild:
+  patch for 2.6.11+ compatibility (#83299) migrated to use linux-mod.
+
+  28 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> qc-usb-0.6.2.ebuild:
+  Added to ~ppc, bug 79238.
+
+  13 Jan 2005; Alastair Tse <liquidx@gentoo.org> qc-usb-0.6.0.ebuild,
+  qc-usb-0.6.2.ebuild:
+  fix installation of qcset. (#73823)
+
+*qc-usb-0.6.2 (11 Nov 2004)
+
+  11 Nov 2004; Alastair Tse <liquidx@gentoo.org> +qc-usb-0.6.2.ebuild:
+  version bump - compat with new kernel
+
+  06 Oct 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/qc-usb-0.6.0-gcc34.patch, qc-usb-0.6.0.ebuild:
+  Fixed gcc-3.4 compile issue. Bug #62340
+
+*qc-usb-0.6.0 (24 Jul 2004)
+
+  24 Jul 2004; Alastair Tse <liquidx@gentoo.org> +qc-usb-0.6.0.ebuild:
+  version bump (finally). now supports 2.6 kernel (#38312)
+
+  24 Sep 2003; Alastair Tse <liquidx@gentoo.org> qc-usb-0.5.1.ebuild:
+  add IUSE
 
 *qc-usb-0.5.1 (06 Jul 2003)
 

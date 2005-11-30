@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/iperf-2.0.2.ebuild,v 1.1 2005/08/11 03:10:09 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/iperf/iperf-2.0.2.ebuild,v 1.1.1.1 2005/11/30 09:55:09 chriswhite Exp $
 
 DESCRIPTION="tool to measure IP bandwidth using UDP or TCP"
 HOMEPAGE="http://dast.nlanr.net/Projects/Iperf"

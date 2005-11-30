@@ -1,15 +1,15 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/winki/winki-0.3.2.ebuild,v 1.1 2004/10/23 01:43:10 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/winki/winki-0.3.2.ebuild,v 1.1.1.1 2005/11/30 09:57:32 chriswhite Exp $
 
-inherit distutils
+inherit distutils eutils
 
 DESCRIPTION="A Python frontend to many popular encoding programs."
 HOMEPAGE="http://www.informatik.hu-berlin.de/~hristov/projects/winki/index.html"
 SRC_URI="http://www.informatik.hu-berlin.de/~hristov/projects/winki/dist/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="~ppc x86"
 IUSE="vcd css"
 DEPEND=">=dev-lang/python-2.3
 		>=dev-python/gnome-python-2

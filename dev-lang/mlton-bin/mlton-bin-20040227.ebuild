@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mlton-bin/mlton-bin-20040227.ebuild,v 1.1 2004/06/10 08:31:34 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mlton-bin/mlton-bin-20040227.ebuild,v 1.1.1.1 2005/11/30 09:58:35 chriswhite Exp $
 
 inherit eutils
 
@@ -10,11 +10,11 @@ HOMEPAGE="http://www.mlton.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="-* ~x86"
 
 IUSE="doc"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 dev-libs/gmp"
 
 src_install() {

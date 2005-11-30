@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ser/ser-0.9.0.ebuild,v 1.1 2005/06/12 15:48:26 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ser/ser-0.9.0.ebuild,v 1.1.1.1 2005/11/30 09:55:11 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -21,16 +21,21 @@ SRC_URI="ftp://ftp.berlios.de/pub/ser/${PV}/src/${P}_src.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="-*"
+KEYWORDS="~ppc ~sparc x86"
 
-DEPEND=">=sys-devel/bison-1.35
-	>=sys-devel/flex-2.5.4a
+RDEPEND="
 	mysql? ( >=dev-db/mysql-3.23.52 )
 	radius? ( >=net-dialup/radiusclient-ng-0.5.0 )
 	postgres? ( dev-db/postgresql )
 	jabber? ( dev-libs/expat )
-	ldap? ( net-nds/openldap
-		ssl? ( dev-libs/openssl ))"
+	ldap? (
+		net-nds/openldap
+		ssl? ( dev-libs/openssl )
+	)"
+
+DEPEND="${RDEPEND}
+	>=sys-devel/bison-1.35
+	>=sys-devel/flex-2.5.4a"
 
 src_unpack() {
 	local modules extmodules MY_A
@@ -86,7 +91,7 @@ src_unpack() {
 	done
 
 	# remove sasl if openldap hasn't been built with it
-	if use ldap && ! built_with_use openldap sasl; then
+	if use ldap && ! built_with_use net-nds/openldap sasl; then
 		sed -i -e "s:-lsasl::g" \
 			${S}/modules/ldap/Makefile
 
@@ -104,7 +109,7 @@ src_compile() {
 	make all \
 		CFLAGS="${CFLAGS}" \
 		cfg-prefix=/ \
-		cfg-target=/etc/ser \
+		cfg-target=/etc/ser/ \
 		${myconf} || die
 }
 
@@ -135,7 +140,7 @@ src_install () {
 	# non-root
 	#
 	enewgroup ser
-	enewuser  ser -1 /bin/false /dev/null ser
+	enewuser  ser -1 -1 /dev/null ser
 
 	chown -R root:ser ${D}/etc/ser
 	chmod 750 ${D}/etc/ser

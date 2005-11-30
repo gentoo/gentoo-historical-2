@@ -1,6 +1,9 @@
-# ChangeLog for app-sci/coq
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/ChangeLog,v 1.1 2004/12/28 05:03:02 ribosome Exp $
+# ChangeLog for sci-mathematics/coq
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/coq/ChangeLog,v 1.1.1.1 2005/11/30 09:55:54 chriswhite Exp $
+
+  13 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> coq-8.0-r1.ebuild:
+  added ~amd64 to KEYWORDS, fixes #88950
 
 *coq-8.0-r1 (28 Dec 2004)
 

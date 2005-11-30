@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/findlib/findlib-1.0.4-r1.ebuild,v 1.1 2004/08/21 17:45:22 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/findlib/findlib-1.0.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:48 chriswhite Exp $
 
 IUSE="tcltk"
 
@@ -11,11 +11,12 @@ SRC_URI="http://www.ocaml-programming.de/packages/${P}.tar.gz"
 LICENSE="MIT X11"
 
 SLOT="0"
-KEYWORDS="x86 ppc sparc ~amd64"
+KEYWORDS="x86 ppc ppc-macos sparc amd64"
 
 DEPEND=">=dev-lang/ocaml-3.07"
 
 ocamlfind_destdir="/usr/lib/ocaml/site-packages"
+stublibs=${ocamlfind_destdir}/stublibs
 
 pkg_setup()
 {
@@ -46,19 +47,21 @@ src_install() {
 
 	make prefix=${D} install || die
 
+	dodir ${stublibs}
+
 	cd ${S}/doc
 	dodoc QUICKSTART README
 	dohtml html/*
 }
 
 check_stublibs() {
-	local stublibs=${ocamlfind_destdir}/stublibs
 	local ocaml_stdlib=`ocamlc -where`
 	local ldconf=${ocaml_stdlib}/ld.conf
 
 	if [ ! -e ${ldconf} ]
 	then
 		echo ${ocaml_stdlib} > ${ldconf}
+		echo ${ocaml_stdlib}/stublibs >> ${ldconf}
 	fi
 
 	if [ -z `grep -e ${stublibs} ${ldconf}` ]

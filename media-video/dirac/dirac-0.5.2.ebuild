@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dirac/dirac-0.5.2.ebuild,v 1.1 2005/06/10 01:45:50 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dirac/dirac-0.5.2.ebuild,v 1.1.1.1 2005/11/30 09:57:22 chriswhite Exp $
 
 inherit eutils
 

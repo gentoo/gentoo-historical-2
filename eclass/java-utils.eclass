@@ -9,22 +9,21 @@
 
 inherit eutils
 
-ECLASS=java-utils
-INHERITED="$INHERITED $ECLASS"
 DESCRIPTION="Based on the $ECLASS eclass"
 
-DEPEND=">=java-config-1.2.7"
+DEPEND=">=dev-java/java-config-1.2.7"
 
 EXPORT_FUNCTIONS pkg_setup
 
 java-utils_pkg_setup() {
 	java-utils_ensure-jdk
+
+	java-utils_vm-version-sufficient
 }
 
 java-utils_setup-vm() {
-
 	local vendor=`java-utils_get-vm-vendor`
-	if [ ${vendor} = "sun-jdk" ] && java-utils_is-vm-version 1 5; then
+	if [[ ${vendor} = "sun-jdk" ]] && java-utils_is-vm-version-ge 1 5; then
 		addpredict "/dev/random"
 	elif [[ ${vendor} = "ibm-jdk-bin" ]]; then
 		addwrite "/proc/self/maps"
@@ -47,7 +46,7 @@ java-utils_is-vm-jdk() {
 		return 0
 	else
 		return 1
-	fi	
+	fi
 }
 
 java-utils_get-vm-vendor() {
@@ -56,8 +55,15 @@ java-utils_get-vm-vendor() {
 }
 
 java-utils_get-vm-version() {
-	local version=$(java-config -f | sed -r "s/^[a-zA-Z-]+//")
+	local version=$(java-config -f | sed -e "s/.*-\([0-9.]\+\).*/\1/")
 	echo ${version}
+}
+
+java-utils_vm-version-sufficient() {
+	local version=$(echo ${DEPEND} | sed -e 's:.*virtual/jdk-\?\([^$ ]*\).*:\1:' -e 's:\.: :g')
+	if [ "${version}" != "" ]; then
+		java-utils_ensure-vm-version-ge ${version}
+	fi
 }
 
 java-utils_ensure-vm-version-ge() {
@@ -69,18 +75,17 @@ java-utils_ensure-vm-version-ge() {
 }
 
 java-utils_is-vm-version-ge() {
-	local user_major=${1-0}
-	local user_minor=${2-0}
-	local user_patch=${3-0}
+	local user_major=${1:-0}
+	local user_minor=${2:-0}
+	local user_patch=${3:-0}
 	local user_version=${user_major}.${user_minor}.${user_patch}
-	
-	local vm_version=`java-utils_get-vm-version`
 
-	local ver_rx="([0-9]+)\.([0-9]+)\.([0-9]+)(.*)"
-	local vm_major=$(echo ${vm_version} | sed -r "s/${ver_rx}/\1/")
-	local vm_minor=$(echo ${vm_version} | sed -r "s/${ver_rx}/\2/")
-	local vm_patch=$(echo ${vm_version} | sed -r "s/${ver_rx}/\3/")
-	local vm_extra=$(echo ${vm_version} | sed -r "s/${ver_rx}/\4/")
+	local vm_version=$(java-utils_get-vm-version)
+
+	local vm_major=$(echo ${vm_version} | cut -d. -f1)
+	local vm_minor=$(echo ${vm_version} | cut -d. -f2)
+	local vm_patch=$(echo ${vm_version} | cut -d. -f3)
+	local vm_extra=$(echo ${vm_version} | cut -d. -f4)
 
 	if [ ${vm_major} -ge ${user_major} ] && [ ${vm_minor} -gt ${user_minor} ] ; then
 		echo "Detected a JDK >= ${user_version}"

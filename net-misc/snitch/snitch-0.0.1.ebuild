@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/snitch/snitch-0.0.1.ebuild,v 1.1 2004/05/09 23:32:03 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/snitch/snitch-0.0.1.ebuild,v 1.1.1.1 2005/11/30 09:55:31 chriswhite Exp $
 
 DESCRIPTION="Snitch is a powerful packetshaping utility that allows the user to easily harness the power of the Linux tc command to shape network traffic"
 HOMEPAGE="http://snitch.sourceforge.net/"
@@ -10,12 +10,13 @@ RESTRICT="nomirror"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc"
 
 IUSE=""
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 RDEPEND="${DEPEND}
-	>=net-firewall/iptables-1.2.9-r1"
+	>=net-firewall/iptables-1.2.9-r1
+	sys-apps/iproute2"
 
 src_compile() {
 	emake || die "emake failed"

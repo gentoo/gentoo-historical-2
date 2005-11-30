@@ -1,13 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-2.0.0.ebuild,v 1.1 2005/10/20 18:04:44 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-2.0.0.ebuild,v 1.1.1.1 2005/11/30 09:58:49 chriswhite Exp $
 
 inherit eutils fdo-mime flag-o-matic kde-functions toolchain-funcs
 
-IUSE="curl eds gnome java kde ldap mozilla nas python zlib xml2"
+IUSE="curl eds gnome gtk java kde ldap mozilla nas zlib xml2"
 
+MY_PV="${PV}.1"
 PATCHLEVEL="OOO680"
-PATCHDIR="${WORKDIR}/ooo-build-${PV}"
+PATCHDIR="${WORKDIR}/ooo-build-${MY_PV}"
 SRC="OOO_2_0_0"
 S="${WORKDIR}/${SRC}"
 CONFFILE="${PATCHDIR}/distro-configs/Gentoo.conf.in"
@@ -16,7 +17,7 @@ DESCRIPTION="OpenOffice.org, a full office productivity suite."
 SRC_URI="http://go-oo.org/packages/${PATCHLEVEL}/${SRC}-core.tar.bz2
 	http://go-oo.org/packages/${PATCHLEVEL}/${SRC}-system.tar.bz2
 	http://go-oo.org/packages/${PATCHLEVEL}/${SRC}-lang.tar.bz2
-	http://go-oo.org/packages/${PATCHLEVEL}/ooo-build-${PV}.tar.gz
+	http://go-oo.org/packages/${PATCHLEVEL}/ooo-build-${MY_PV}.tar.gz
 	http://go-ooo.org/packages/libwpd/libwpd-0.8.3.tar.gz
 	kde? ( http://go-oo.org/packages/SRC680/ooo_crystal_images-6.tar.bz2 )
 	http://go-oo.org/packages/SRC680/extras-2.tar.bz2"
@@ -25,7 +26,7 @@ HOMEPAGE="http://go-oo.org"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ~ppc ~sparc"
 
 RDEPEND="!app-office/openoffice-bin
 	!app-office/openoffice-ximian-bin
@@ -36,6 +37,7 @@ RDEPEND="!app-office/openoffice-bin
 	gnome? ( >=x11-libs/gtk+-2.4
 		>=gnome-base/gnome-vfs-2.6
 		>=gnome-base/gconf-2.0 )
+	gtk? ( >=x11-libs/gtk+-2.4 )
 	eds? ( >=gnome-extra/evolution-data-server-1.2 )
 	kde? ( kde-base/kdelibs )
 	mozilla? ( >=www-client/mozilla-1.7.10 )
@@ -66,12 +68,13 @@ DEPEND="${RDEPEND}
 	zlib? ( sys-libs/zlib )
 	sys-libs/pam
 	!dev-util/dmake
+	>=dev-lang/python-2.3.4
 	java? ( =virtual/jdk-1.4*
-		dev-java/ant-core )
+		dev-java/ant-core
+		>=dev-java/java-config-1.2.11-r1 )
 	!java? ( dev-libs/libxslt
 		>=dev-libs/libxml2-2.0 )
 	ldap? ( net-nds/openldap )
-	python? ( >=dev-lang/python-2.3.4 )
 	xml2? ( >=dev-libs/libxml2-2.0 )"
 
 PROVIDE="virtual/ooo"
@@ -96,8 +99,10 @@ pkg_setup() {
 		ewarn " To get a localized build, set the according LINGUAS variable(s). "
 		ewarn
 	else
-		export LINGUAS_OOO="${LINGUAS//_/-}"
-		export LINGUAS_OOO="${LINGUAS_OOO//en /en-US }"
+		export LINGUAS_OOO="${LINGUAS//en/en_US}"
+		export LINGUAS_OOO="${LINGUAS_OOO//en_US_GB/en_GB}"
+		export LINGUAS_OOO="${LINGUAS_OOO//en_US_US/en_US}"
+		export LINGUAS_OOO="${LINGUAS_OOO//_/-}"
 	fi
 
 	if use !java; then
@@ -114,7 +119,15 @@ pkg_setup() {
 src_unpack() {
 
 	cd ${WORKDIR}
-	unpack ooo-build-${PV}.tar.gz
+	unpack ooo-build-${MY_PV}.tar.gz
+
+	#Some fixes for our patchset
+	cd ${PATCHDIR}
+	epatch ${FILESDIR}/${PV}/gentoo-${PV}.diff
+
+	#Additional and new patches get here
+	cp -pPRf ${FILESDIR}/${PV}/nojava-fix-stringparam.diff ${PATCHDIR}/patches/src680 || die
+	cp -pPRf ${FILESDIR}/${PV}/buildfix-new-xslt.diff ${PATCHDIR}/patches/src680 || die
 
 	#Detect which look and patchset we are using, amd64 is known not to be working atm, so this is here for testing purposes only
 	use amd64 && export DISTRO="Gentoo64" || export DISTRO="Gentoo"
@@ -124,7 +137,6 @@ src_unpack() {
 
 	echo "`use_with curl system-curl`" >> ${CONFFILE}
 	echo "`use_with nas system-nas`" >> ${CONFFILE}
-	echo "`use_with python system-python`" >> ${CONFFILE}
 	echo "`use_with xml2 system-libxml`" >> ${CONFFILE}
 	echo "`use_with zlib system-zlib`" >> ${CONFFILE}
 
@@ -147,8 +159,11 @@ src_compile() {
 
 	# Should the build use multiprocessing? Not enabled by default, as it tends to break 
 	if [ "${WANT_DISTCC}" == "true" ]; then
-		export JOBS=`echo "${MAKEOPTS}" | sed -e "s/.*-j\([0-9]\+\).*/\1/"` && [ ${JOBS} -gt 10 ] && export JOBS="10"
+		export JOBS=`echo "${MAKEOPTS}" | sed -e "s/.*-j\([0-9]\+\).*/\1/"`
 	fi
+
+	# Make sure gnome-users get gtk-support
+	export GTKFLAG="`use_enable gtk`" && use gnome && GTKFLAG="--enable-gtk"
 
 	cd ${PATCHDIR}
 	autoconf || die
@@ -161,11 +176,13 @@ src_compile() {
 		--with-num-cpus="${JOBS}" \
 		--with-binsuffix="2" \
 		--with-installed-ooo-dirname="openoffice" \
-		`use_enable gnome gtk` \
+		"${GTKFLAG}" \
 		`use_enable kde` \
 		--disable-access \
 		--disable-mono \
 		--disable-cairo \
+		--disable-post-install-scripts \
+		--mandir=/usr/share/man \
 		|| die "Configuration failed!"
 
 	# Compile problems with these ...
@@ -175,6 +192,7 @@ src_compile() {
 	filter-flags "-fno-default-inline"
 	filter-flags "-fstack-protector"
 	filter-flags "-ftracer"
+	append-flags "-fno-strict-aliasing"
 	replace-flags "-O3" "-O2"
 	replace-flags "-Os" "-O2"
 
@@ -192,11 +210,6 @@ src_install() {
 	einfo "Preparing Installation"
 	cd ${PATCHDIR}
 	make DESTDIR=${D} install || die "Installation failed!"
-
-	#Correcting location of menu entries, this should really be handled in ooo-build / setup.in
-	mkdir ${D}/usr/share/applications
-	mv ${D}/opt/gnome/share/applications/* ${D}/usr/share/applications/
-	rmdir ${D}/opt/gnome/share/applications/ -p
 
 	# Install corrected Symbol Font
 	insinto /usr/share/fonts/TTF/

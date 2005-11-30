@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/texmaker/texmaker-1.11.ebuild,v 1.1 2004/11/07 07:32:51 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/texmaker/texmaker-1.11.ebuild,v 1.1.1.1 2005/11/30 09:59:04 chriswhite Exp $
+
+inherit kde-functions
 
 DESCRIPTION="a nice LaTeX-IDE"
 
@@ -11,16 +13,17 @@ LICENSE="GPL-2"
 
 SLOT="0"
 
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 
 IUSE=""
 
 DEPEND="virtual/x11
-	>=x11-libs/qt-3.2*
 	virtual/tetex
 	app-text/psutils
 	virtual/ghostscript
 	media-libs/netpbm"
+
+need-qt 3.2
 
 src_compile() {
 	einfo "using QTDIR: '$QTDIR'."
@@ -31,18 +34,15 @@ src_compile() {
 	DYLD_LIBRARY_PATH=${QTDIR}/lib:${DYLD_LIBRARY_PATH}
 	export QTDIR PATH LD_LIBRARY_PATH DYLD_LIBRARY_PATH
 
-	qmake -unix texmaker.pro || die "qmake failed"
+	${QTDIR}/bin/qmake -unix texmaker.pro || die "qmake failed"
 
 	emake || die "emake failed"
 }
 
 src_install() {
-	exeinto /usr/bin
-	doexe texmaker || die "doexe failed"
+	dobin texmaker || die "doexe failed"
 
-	PIX=/usr/share/pixmaps/texmaker
-	dodir ${PIX}
-	insinto ${PIX}
+	insinto /usr/share/pixmaps/texmaker
 	doins utilities/texmaker*.png || die "doins failed."
 
 	dodoc utilities/{AUTHORS,COPYING} || die "dodoc failed"

@@ -1,6 +1,814 @@
 # ChangeLog for app-office/openoffice
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/ChangeLog,v 1.1 2002/04/24 21:57:15 azarah Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/ChangeLog,v 1.1.1.1 2005/11/30 09:58:50 chriswhite Exp $
+
+  20 Nov 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.4/build-new-xslt.diff, openoffice-1.1.4-r1.ebuild:
+  Also add build fix for new libxslt to 1.1.4-r1
+
+  16 Nov 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Add -fno-strict-aliasing to CFLAGS to fix problems with Excel import, see
+  bug #112655
+
+  02 Nov 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Fix for people having en_US in their LINGUAS, closes bug #111265
+
+  01 Nov 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/gentoo-2.0.0.diff:
+  Fix for build problem with not fully translated languages, closes bug #110340.
+
+  31 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Keyworded ~sparc, don't use java though, doesn't work
+
+  29 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/gentoo-2.0.0.diff:
+  Remove oohtml2 symlink, it doesn't do anything, ooweb2 is what you want
+
+  28 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/gentoo-2.0.0.diff, -files/2.0.0/Filter.xcu,
+  -files/2.0.0/build-beanshell-fix.diff,
+  +files/2.0.0/buildfix-new-xslt.diff,
+  +files/2.0.0/nojava-fix-stringparam.diff, openoffice-2.0.0.ebuild:
+  Implement a proper solution for the --without-java issue
+
+  26 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/gentoo-2.0.0.diff, openoffice-2.0.0.ebuild:
+  Desktop files are now handled correctly in package-ooo, so no need anymore
+  for shuffling them around, this also removes the non-harmful error message
+  at the end of the build
+
+  26 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Install man-file into the correct path, fixes bug #110510
+
+  26 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  New ooo-build-release, 2.0.0.1 just adds some minor fixes, see:
+  
+  http://cvs.gnome.org/viewcvs/ooo-build/NEWS?rev=1.87.2.3&only_with_tag=ooo-b
+  uild-2-0&view=markup
+  
+  for the full list of changes
+
+  25 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/2.0.0/gentoo-2.0.0.diff, +files/2.0.0/build-beanshell-fix.diff,
+  openoffice-2.0.0.ebuild:
+  Minor build fix for beanshell-project (for a problem which normally does not
+  show up)
+
+  25 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Another shot at the quick fix for -java to make it also work for other 
+  languages than en_US. The only downside remaining atm is that the 
+  descriptions for the filters are not translated. Still a hack though.
+
+  25 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Build fix in regard to setting "en" in LINGUAS
+
+  25 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/2.0.0/Filter.xcu, openoffice-2.0.0.ebuild:
+  Temporary fix for the build without java, see bug #110131. Real solution
+  should replace this asap
+
+  23 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Disable the post-install-scripts of ooo-build which actually do nothing but
+  updating the mime database, which we do later anyway (and which results in
+  sandbox-problems when called from ooo-build), see bug #110209
+
+  22 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Add gtk use-flag for all the people wanting gtk-style (and the industrial
+  icons) but not all the other gnome-stuff (gnome-vfs, lockdown). If using the
+  gnome use-flag the gtk use-flag setting is overridden. Closes bug #110155
+
+  21 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Remove the python use-flag, we are now using system-python by default. Makes
+  no sense to have it anyway, as portage needs python, and
+  --without-system-python just grows the build and currently results in build
+  breakage, see bug #109996
+
+  21 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0.ebuild:
+  Add dependency to >=dev-java/java-config-1.2.11-r1 as some people seem to be
+  building OOo 2.0.0 on stable, and the build will fail without the newest
+  version of java-config
+
+*openoffice-2.0.0 (20 Oct 2005)
+
+  20 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  +openoffice-2.0.0.ebuild:
+  OpenOffice.org 2.0 is ready! All patches moved to upstream, also ppc is
+  supported now.
+
+  19 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/stlport-vector-ppc-buildfix.diff:
+  remove -D_STLP_DEBUG also from gcc-3.0.mak for PPC
+
+  18 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/2.0.0/stlport-vector-ppc-buildfix.diff:
+  Add missing patch, ooops.
+
+  18 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/gentoo-2.0.0_rc3.diff, openoffice-2.0.0_rc3.ebuild:
+  Build fix for stlport on ppc
+
+*openoffice-2.0.0_rc3 (18 Oct 2005)
+
+  18 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/2.0.0/gentoo-2.0.0_rc3.diff, +openoffice-2.0.0_rc3.ebuild:
+  New release candidate, also fix the distcc stuff
+
+  12 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0_rc2.ebuild:
+  Fix build problem with certain languages, see bug #108989
+
+  12 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/gentoo-2.0.0_rc2.diff, openoffice-2.0.0_rc2.ebuild:
+  Some more cleanups, also depend on libxml2 if building without java. Also
+  using an updated version of ooo-build-2.0.0_rc2 now.
+
+  12 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/2.0.0/no-ldap-mozilla.diff, files/2.0.0/gentoo-2.0.0_rc2.diff,
+  openoffice-2.0.0_rc2.ebuild:
+  Really fix the build with -ldap
+
+  11 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/2.0.0/gentoo-2.0.0_rc2.diff,
+  +files/2.0.0/config_office-openldap-fix.diff, openoffice-2.0.0_rc2.ebuild:
+  First shot at fixing bug #108898, added patch to fix broken OOo
+  configure-script
+
+  11 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-2.0.0_rc2.ebuild:
+  Fix SRC_URI for the crystal icons
+
+*openoffice-2.0.0_rc2 (11 Oct 2005)
+
+  11 Oct 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/2.0.0/gentoo-2.0.0_rc2.diff, +openoffice-2.0.0_rc2.ebuild:
+  Release Candidate for OpenOffice.org 2.0, still masked, should work fine
+  though.
+
+  24 Sep 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.5.ebuild:
+  Getting rid of the old mimetype stuff which causes broken behaviour for kde,
+  see bug #92767
+
+  24 Sep 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.5/build-new-xslt.diff, openoffice-1.1.5.ebuild:
+  Fix building without java and libxslt >=1.1.5, closes bug #106174
+
+  19 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openoffice-1.1.5.ebuild:
+  Back to ~ppc, sorry for the trouble. My script for listing ebuilds needing
+  stabelizing has a bug and I didn't check enough.
+
+  17 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openoffice-1.1.5.ebuild:
+  Stable on ppc.
+
+*openoffice-1.1.5 (14 Sep 2005)
+
+  14 Sep 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.5/gcc34-nojava-fix.patch, +files/1.1.5/hardened-link.patch,
+  +files/1.1.5/ooffice-wrapper-1.3, +files/1.1.5/freetype-217.patch,
+  +files/1.1.5/STLport-vector.patch, +files/1.1.5/gcc-instlib.patch,
+  +files/1.1.5/gcc34-sal-link-to-libsupc++.diff,
+  +files/1.1.5/gcc34.patch.bz2, +files/1.1.5/getcompver.awk.patch,
+  +files/1.1.5/javafix.patch, +files/1.1.5/newstlportfix.patch,
+  +files/1.1.5/nptl.patch, +files/1.1.5/openoffice-java.patch,
+  +files/1.1.5/pthreadlink-fix.patch, +files/1.1.5/pyunolink-fix.patch,
+  +openoffice-1.1.5.ebuild:
+  New upstream version of the 1.1.x-series. Most important change:
+  OpenOffice.org 1.1.5 now supports the reading of OpenDocument-Files (which
+  will be the default in 2.0)
+
+  23 Aug 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4-r1.ebuild:
+  Correct cp -a to cp -pPR for bug #103487
+
+  03 May 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4-r1.ebuild:
+  LIBC set in the environment breaks the build, so we manually unset it now,
+  see bug #91179
+
+  15 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  openoffice-1.1.4-r1.ebuild:
+  Into -sparc for the time being, use openoffice-ximian
+
+  13 Apr 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4-r1.ebuild:
+  Marking stable on x86 for bug #88863
+
+  12 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  openoffice-1.1.4-r1.ebuild:
+  Stable on ppc.
+
+*openoffice-1.1.4-r1 (12 Apr 2005)
+
+  12 Apr 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.4/crash-objstream.diff, +openoffice-1.1.4-r1.ebuild:
+  Revision bump for security fix, see bug #88863
+
+  09 Apr 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild:
+  Add note about localized helpcontent, closes bug #87199
+
+  30 Mar 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild:
+  Fix for bug #81835, gcc 3.4-patches need to be applied globally, hardened
+  also needs them
+
+  30 Mar 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/1.1.4/ooffice-wrapper-1.3, openoffice-1.1.4.ebuild:
+  Simplify menu entry installation, see bug #81902, also fix problem with
+  newer findutils, bug#86974
+
+  28 Mar 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.4/getcompver.awk.patch, openoffice-1.1.4.ebuild:
+  Build fix for recent gcc-versions, closes bug #84548
+
+  04 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> openoffice-1.1.4.ebuild:
+  Stable on sparc
+
+  24 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/1.1.4/ooffice-wrapper-1.3:
+  Add check for mounted /proc to wrapper, OOo will fail without it
+
+  24 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/1.1.4/ooffice-wrapper-1.3:
+  Remove unused UPDATEFLAG from wrapper
+
+  23 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  files/1.1.4/ooffice-wrapper-1.3:
+  Fix for wrapper-file to automatically find all fonts in /usr/share/fonts,
+  also remove some unneeded stuff
+
+  22 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild:
+  The ebuild now uses the LINGUAS environment variable to determine for which
+  language to build, the first one in your LINGUAS-settings that is supported
+  is used for this. Please note, that the old LANGUAGE=ENUS|PORT... way does
+  NOT work anymore. While doing this added some more languages to the
+  supported list, see the ebuild for more infos. Also added some dependencies
+  for japanese and chinese builds.
+  
+  This closes a number of bugs: #40896, #44209. #51331, #70302, #71216 and
+  #77128
+
+  18 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild, -files/1.1.4/gcc34-nptl-fix.patch,
+  files/1.1.4/nptl.patch:
+  Remove gcc34-nptl-fix as this is now incorporated in the regular nptl-patch
+
+  18 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild, +files/1.1.4/nptl.patch:
+  Some fixes for nptl-systems
+
+  17 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.4/gcc34-sal-link-to-libsupc++.diff, openoffice-1.1.4.ebuild:
+  Cleanup and sync with openoffice-ximian, also add another patch for gcc 3.4
+
+  17 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild:
+  Add support for localized helpcontent. For it to work you will have to
+  download the correct helpcontent file from one of the OOo-mirrors (it's in
+  the contrib/helpcontent/ directory, for instance:
+  http://ftp.stardiv.de/pub/OpenOffice.org/contrib/helpcontent/) and put it in
+  you distfiles-directory. Closes bug #30668
+
+  17 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> openoffice-1.1.4.ebuild:
+  Keyworded ~sparc
+
+  17 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild:
+  Add support for localized helpcontent. For it to work you will have to
+  download the correct helpcontent file from one of the OOo-mirrors (it's in
+  the contrib/helpcontent/ directory, for instance:
+  http://ftp.stardiv.de/pub/OpenOffice.org/contrib/helpcontent/) and put it in
+  you distfiles-directory. Closes bug #30668
+
+  17 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.4/hardened-link.patch, +files/1.1.4/pthreadlink-fix.patch:
+  Try to fix build problems with hardened-gccs, patches provided by
+  Kevin F. Quinn <co@kevquinn.com> in bug #52642
+
+  16 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.4.ebuild:
+  Prevent OOo from double installing menu entries, closes bug #53752
+
+  14 Jan 2005; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.4/javafix.patch, openoffice-1.1.4.ebuild:
+  Another fix for a java related build problem, closes bug #77866
+
+  12 Jan 2005; Andreas Proschofsky <suka@gentoo.org> :
+  Mark 1.1.4 stable on x86
+
+  07 Jan 2005; Joseph Jezak <josejx@gentoo.org> openoffice-1.1.4.ebuild:
+  Fixed SRC_URI
+
+  07 Jan 2005; Joseph Jezak <josejx@gentoo.org>
+  +files/1.1.4/STLport-vector.patch, openoffice-1.1.4.ebuild:
+  Added a workaround for compiling openoffice on ppc with gcc 3.4.3. This
+  might break the debug use flag, but I'm not entirely sure. This fixes bug
+  #73940. Also, marked ppc stable for bug #71268.
+
+  01 Jan 2005; Joseph Jezak <josejx@gentoo.org> openoffice-1.1.4.ebuild:
+  Marked ~ppc.  Still only compiles on ppc with gcc 3.4.1 (not 3.4.3).
+
+*openoffice-1.1.4 (28 Dec 2004)
+
+  28 Dec 2004; Andreas Proschofsky <suka@gentoo.org>
+  +files/1.1.4/gcc-instlib.patch, +files/1.1.4/gcc34-nojava-fix.patch,
+  +files/1.1.4/gcc34-nptl-fix.patch, +files/1.1.4/gcc34.patch.bz2,
+  +files/1.1.4/newstlportfix-patch, +files/1.1.4/ooffice-wrapper-1.3,
+  +files/1.1.4/openoffice-java.patch, +openoffice-1.1.4.ebuild:
+  Revison bump, closes bug #75378 Also includes a fix for build problems
+  with recent freetype versions, taken from Mandrake.
+
+  04 Dec 2004; Sven Wegener <swegener@gentoo.org> :
+  Added missing digest entries for the ppc files.
+
+  04 Dec 2004; Joseph Jezak <josejx@gentoo.org> openoffice-1.1.3-r1.ebuild:
+  Added missing files for ppc build and marked ~ppc, see bug #71286.
+
+  17 Nov 2004; Jason Wever <weeve@gentoo.org> openoffice-1.1.3.ebuild:
+  Stable on sparc.
+
+  15 Nov 2004; Andreas Proschofsky <suka@gentoo.org>
+  openoffice-1.1.1-r1.ebuild, openoffice-1.1.3-r1.ebuild,
+  openoffice-1.1.3.ebuild:
+  Use toolchains-func.eclass instead of gcc.eclass
+
+*openoffice-1.1.3-r1 (14 Nov 2004)
+
+  14 Nov 2004; suka@gentoo.org +files/1.1.3/gcc34-nojava-fix.patch,
+  +files/1.1.3/gcc34-nptl-fix.patch, +files/1.1.3/gcc34.patch.bz2,
+  +files/1.1.3/newstlportfix2.patch, +openoffice-1.1.3-r1.ebuild:
+  This should now compile fine with gcc 3.4.x, the credit for this goes mostly
+  to Hanno Meyer-Thurow (h.mth@web.de), thanks a lot. Java check is also gone
+  as this should now also work fine with other jdks than blackdown.
+
+  12 Nov 2004; suka@gentoo.org openoffice-1.0.3-r2.ebuild,
+  openoffice-1.1.0-r4.ebuild, openoffice-1.1.1-r1.ebuild,
+  openoffice-1.1.3.ebuild:
+  Fix ewarn messages, closes bug #70851
+
+  31 Oct 2004; Jason Wever <weeve@gentoo.org> openoffice-1.1.3.ebuild:
+  Added a fix for sparc and ~sparc keyword.
+
+  23 Oct 2004; suka@gentoo.org openoffice-1.1.3.ebuild:
+  Filter another CFLAG which breaks the build
+
+  15 Oct 2004; suka@gentoo.org openoffice-1.1.3.ebuild:
+  depend on curl only if the appropiate use flag is set
+
+  12 Oct 2004; suka@gentoo.org openoffice-1.1.3.ebuild:
+  mark stable on x86 for bug #63556
+
+  08 Oct 2004; suka@gentoo.org openoffice-1.1.3.ebuild:
+  Builds now also without java, use libart instead of gpc, system zlib and
+  freetype: Other than that: cleanups
+
+*openoffice-1.1.3 (07 Oct 2004)
+
+  07 Oct 2004; suka@gentoo.org +files/1.1.3/gcc-instlib.patch,
+  +files/1.1.3/newstlportfix.patch, +files/1.1.3/ooffice-wrapper-1.3,
+  +files/1.1.3/openoffice-java.patch, +openoffice-1.1.3.ebuild:
+  Version bump, this closes bug #65987
+  
+  27 Sep 2004; <pauldv@gentoo.org> +files/1.1.2/gcc-instlib.patch,
+  openoffice-1.1.2.ebuild:
+  Fix language issues (bug #65379) thanks to Mark Kusch 
+  <foobar@init-0.org> for providing the patch.
+
+  21 Aug 2004; suka@gentoo.org openoffice-1.0.3-r2.ebuild,
+  openoffice-1.1.0-r4.ebuild, openoffice-1.1.0-r5.ebuild,
+  openoffice-1.1.1-r1.ebuild, openoffice-1.1.2.ebuild:
+  add pam to dependencies, close bug #57195
+
+  20 Aug 2004; suka@gentoo.org openoffice-1.1.2.ebuild:
+  fixing some sandbox issues and marking stable on x86, at last
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> openoffice-1.0.3-r2.ebuild,
+  openoffice-1.1.0-r4.ebuild, openoffice-1.1.0-r5.ebuild,
+  openoffice-1.1.1-r1.ebuild, openoffice-1.1.2.ebuild:
+  kill sparc64 use flag
+
+*openoffice-1.1.2 (18 Jun 2004)
+
+  18 Jun 2004; suka@gentoo.org +files/1.1.2/linux-sparc.patch,
+  +files/1.1.2/newstlportfix.patch, +files/1.1.2/ooffice-wrapper-1.3,
+  +files/1.1.2/openoffice-java.patch, +openoffice-1.1.2.ebuild:
+  New version, updating for 1.1.1 should work fine this time
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> openoffice-1.0.3-r2.ebuild,
+  openoffice-1.1.0-r4.ebuild, openoffice-1.1.0-r5.ebuild,
+  openoffice-1.1.1-r1.ebuild:
+  Fix use invocation
+
+  25 May 2004; Jason Wever <weeve@gentoo.org> +files/1.1.1/linux-sparc.patch,
+  openoffice-1.1.1-r1.ebuild:
+  Added patches to fix bug #46089 and added ~sparc keyword to openoffice-1.1.1-r1
+
+  12 May 2004; Alexander Gabert <pappy@gentoo.org> openoffice-1.0.3-r2.ebuild:
+  removed hardened-gcc check and CC variable modification
+
+  05 May 2004; suka@gentoo.org openoffice-1.1.0-r4.ebuild,
+  openoffice-1.1.0-r5.ebuild, openoffice-1.1.1-r1.ebuild:
+  filter another evil CFLAG
+
+  05 May 2004; suka@gentoo.org -openoffice-1.0.3-r1.ebuild,
+  openoffice-1.0.3-r2.ebuild, openoffice-1.1.0-r4.ebuild,
+  openoffice-1.1.0-r5.ebuild, openoffice-1.1.1-r1.ebuild:
+  Dependency fix
+
+*openoffice-1.0.3-r2 (05 May 2004)
+
+  05 May 2004; suka@gentoo.org +files/1.0.3/neon.patch,
+  +openoffice-1.0.3-r2.ebuild:
+  Ancient versions also like their share of security love...
+
+*openoffice-1.1.0-r5 (25 Apr 2004)
+*openoffice-1.1.0-r4 (25 Apr 2004)
+*openoffice-1.1.1-r1 (25 Apr 2004)
+
+  25 Apr 2004; suka@gentoo.org -openoffice-1.1.0-r2.ebuild,
+  -openoffice-1.1.0-r3.ebuild, +openoffice-1.1.0-r4.ebuild,
+  +openoffice-1.1.0-r5.ebuild, +openoffice-1.1.1-r1.ebuild,
+  -openoffice-1.1.1.ebuild:
+  revision bump for security fix
+
+  24 Apr 2004; suka@gentoo.org +files/1.1.0/neon.patch,
+  +files/1.1.1/neon.patch, openoffice-1.1.0-r2.ebuild,
+  openoffice-1.1.0-r3.ebuild, openoffice-1.1.1.ebuild:
+  Security fix, see:
+  http://secunia.com/advisories/11364/
+
+  16 Apr 2004; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.1.ebuild:
+  Filter out LC_ALL as it breaks things
+
+  11 Apr 2004; suka@gentoo.org openoffice-1.1.1.ebuild,
+  files/1.1.1/build.patch:
+  Add temporary patch provided by scout@scoutheeten.com on bug #46945 to work 
+  around build breakage caused by recent sandbox problems in portage.
+
+  09 Apr 2004; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.1.ebuild:
+  Change the source file. As the only change in the source file concerns
+  building under windows we will not bump the version
+
+  01 Apr 2004; suka@gentoo.org openoffice-1.1.1.ebuild,
+  files/1.1.1/ooffice-wrapper-1.3:
+  User settings migration does not work as there have been some changes to the
+  user install :-( Removing the migration stuff, you will have to redo your
+  settings after upgrade
+
+*openoffice-1.1.1 (31 Mar 2004)
+
+  31 Mar 2004; suka@gentoo.org openoffice-1.1.1.ebuild,
+  files/1.1.1/newstlportfix.patch, files/1.1.1/nptl.patch,
+  files/1.1.1/ooffice-wrapper-1.3, files/1.1.1/openoffice-java.patch:
+  New version masked for now, as we do some further testing
+
+  28 Mar 2004; suka@gentoo.org openoffice-1.1.1_rc1.ebuild:
+  Add some missing dependencies
+
+  28 Mar 2004; root <root@gentoo.org> openoffice-1.1.0-r2.ebuild:
+  Stable on sparc thanks to stable gcc-3.3.3 :)
+
+*openoffice-1.1.1_rc1 (07 Mar 2004)
+
+  07 Mar 2004; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.1_rc1.ebuild,
+  openoffice-1.1.1b.ebuild:
+  Add a new release candidate. Remove the old beta as the versioning was wrong
+
+  10 Feb 2004; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r3.ebuild,
+  openoffice-1.1.1b.ebuild, files/1.1.0/openoffice-java.patch,
+  files/1.1.1b/openoffice-java.patch:
+  A patch to fix compiling with sun-jdk. Thanks to jgonzalez@opentechnet.com in
+  bug #40942
+
+*openoffice-1.1.1b (08 Feb 2004)
+
+  08 Feb 2004; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.1b.ebuild,
+  files/1.1.1b/fixed-gcc.patch, files/1.1.1b/newstlportfix.patch,
+  files/1.1.1b/no-mozab.patch, files/1.1.1b/nptl.patch,
+  files/1.1.1b/ooffice-wrapper-1.3:
+  A new upstream prerelease. Hopefully it compiles correctly ;-)
+
+  05 Feb 2004; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r3.ebuild:
+  Change the installation database so that the desktop bindings will not get
+  installed for users. They are allready installed globally
+
+  03 Feb 2004; suka <suka@gentoo.org> openoffice-1.1.0-r3.ebuild:
+  This update further simplifies the ebuild and aims to fix the distcc problems.
+  Even better parallel build COULD now work for you, at least it does for me, as
+  it is not tested enough you will have to explicitely force the ebuild to build
+  in parallel / use more cpus. If you dare to try out emerge the ebuild like:
+  
+  'ECPUS="n" emerge openoffice'
+  
+  where n has to be exchanged with the number of processes / CPUs you want to
+  use. No guarantee whatsoever that it will work for you :-)
+
+  24 Jan 2004; <paul@gentoo.org> openoffice-1.1.0-r1.ebuild,
+  openoffice-1.1.0.ebuild:
+  Cleaning up old versions
+
+*openoffice-1.1.0-r3 (24 Jan 2004)
+
+  24 Jan 2004; suka <suka@gentoo.org> openoffice-1.1.0-r2.ebuild,
+  openoffice-1.1.0-r3.ebuild:
+  Big rework of the ebuild:
+  
+  *) Convert build system to bash 
+  *) This also removes the blocker on app-arch/star
+  *) Corrected java check (we look now explecitely for blackdown-jdk,
+  see bug #38646)
+  *) CXXFLAGS are now actually applied
+  *) Dropped virtualmake
+  *) Lots of cleanups
+  
+  This is all in openoffice-1.1.0-r3, -r2 only got the java check-fix
+
+  17 Jan 2004; <suka@gentoo.org> openoffice-1.1.0-r2.ebuild:
+  Compile fixes especially for Pentium4, also closes bug #32418 (broken menu
+  entry)
+
+  14 Nov 2003; Sven Blumenstein <bazik@gentoo.org> openoffice-1.1.0-r2.ebuild:
+  Removed -r3 and added the change to -r2 to make seemant happy
+
+*openoffice-1.1.0-r3 (14 Nov 2003)
+
+  14 Nov 2003; Sven Blumenstein <bazik@gentoo.org> openoffice-1.1.0-r3.ebuild,
+  files/1.1.0/openoffice-1.1.0-sparc64-fix.patch:
+  New revision. Added a patch which lets it build on sparc64.
+  This is no offical patch but it works for me. Please test 
+  and report back directly to me - thanks!
+
+*openoffice-1.1.0-r2 (09 Nov 2003)
+
+  09 Nov 2003; <paul@gentoo.org> openoffice-1.1.0-r2.ebuild:
+  Add -fno-strict-aliasing to make excel import work
+
+  28 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r1.ebuild:
+  Add predict for stupid gconf sandbox error
+
+  25 Oct 2003; <paul@gentoo.org> openoffice-1.1.0-r1.ebuild,
+  openoffice-1.1.0.ebuild:
+  Fix error in the pentium4+gcc3.2 check
+
+  23 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r1.ebuild:
+  Depend on newest findutils so that the xargs problem is aleviated at least
+  temporarilly
+
+  23 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r1.ebuild:
+  Add kernel 2.6.0 patch
+
+  23 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r1.ebuild,
+  openoffice-1.1.0.ebuild:
+  Do some flag-o-matic to prevent -march=pentium4 from failing on 3.2 compilers
+
+  19 Oct 2003; Heinrich Wendel <lanius@gentoo.org> openoffice-1.1.0-r1.ebuild,
+  openoffice-1.1.0.ebuild, openoffice-1.1_rc3.ebuild:
+  fixed DUTCH 03 -> 31
+
+  19 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r1.ebuild,
+  openoffice-1.1.0.ebuild, openoffice-1.1_rc3.ebuild:
+  Fix jdk dependency to depend on 1.4.1 or greater
+
+*openoffice-1.1.0-r1 (17 Oct 2003)
+
+  17 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0-r1.ebuild,
+  openoffice-1.1.0.ebuild, files/1.1.0/nptl.patch:
+  Add cretin@gentoo.org's nptl patch. This should fix compilation on nptl
+  systems and 2.6.0 kernel systems. Further mark 1.1.0 stable.
+
+  10 Oct 2003; Alexander Gabert <pappy@gentoo.org> openoffice-1.0.3-r1.ebuild:
+  changed hardened-gcc flags
+
+  09 Oct 2003; Alexander Gabert <pappy@gentoo.org> openoffice-1.0.3-r1.ebuild:
+  added new hppa dependent hardened-gcc flags
+
+  08 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0.ebuild:
+  Fix ccache test so that the old style ccache works again (if replaced by elif)
+
+  07 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0.ebuild:
+  Add a hack to make nationalised builds work
+
+*openoffice-1.1.0 (03 Oct 2003)
+
+  03 Oct 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1.0.ebuild,
+  openoffice-1.1_beta2-r1.ebuild, openoffice-1.1_rc1.ebuild,
+  openoffice-1.1_rc2.ebuild, files/1.1_beta2/newstlportfix.patch,
+  files/1.1_beta2/no-mozab.patch, files/1.1_beta2/ooffice-wrapper-1.3,
+  files/1.1_beta2/openoffice-xrender.patch, files/1.1_rc1/newstlportfix.patch,
+  files/1.1_rc1/no-mozab.patch, files/1.1_rc1/ooffice-wrapper-1.3,
+  files/1.1_rc1/openoffice-xrender.patch, files/1.1_rc2/newstlportfix.patch,
+  files/1.1_rc2/no-crashrep.patch, files/1.1_rc2/no-mozab.patch,
+  files/1.1_rc2/ooffice-wrapper-1.3, files/1.1_rc2/openoffice-xrender.patch:
+  Add the openoffice release version. It should be stable very soon. Also remove
+  all but the latest release candidate. rc3 will be removed as 1.1.0 is marked
+  stable
+
+  19 Sep 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1_rc2.ebuild,
+  openoffice-1.1_rc3.ebuild:
+  Fix stupid mistake in the german language number
+
+  07 Sep 2003; Alexander Gabert <pappy@gentoo.org> openoffice-1.0.3-r1.ebuild:
+  added hardened-gcc exclude flags
+
+  03 Sep 2003; Jason Wever <weeve@gentoo.org> openoffice-1.0.3-r1.ebuild,
+  files/1.0.3/openoffice-1.0.1-sparc.patch.bz2,
+  files/1.0.3/openoffice-1.0.3-sparc-gentoo.patch:
+  Added ~sparc to keywords. This fixes bug #10381 and finally gets sparc going
+  on OO. Many thanks to "The Shrink" who's asm patch made this possible (see
+  case notes for more details).
+
+*openoffice-1.1_rc3 (20 Aug 2003)
+
+  20 Aug 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1_rc3.ebuild,
+  files/1.1_rc3/fixed-gcc.patch, files/1.1_rc3/newstlportfix.patch,
+  files/1.1_rc3/no-crashrep.patch, files/1.1_rc3/no-mozab.patch,
+  files/1.1_rc3/ooffice-wrapper-1.3:
+  New upstream version
+
+  17 Aug 2003; <paul@gentoo.org> openoffice-1.1_rc1.ebuild:
+  Also fix mirrors in rc1
+
+  17 Aug 2003; <paul@gentoo.org> openoffice-1.1_rc2.ebuild:
+  Use the updated openoffice mirror list
+
+*openoffice-1.1_rc2 (12 Aug 2003)
+
+  12 Aug 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1_rc2.ebuild,
+  files/1.1_rc2/newstlportfix.patch, files/1.1_rc2/no-crashrep.patch,
+  files/1.1_rc2/no-mozab.patch, files/1.1_rc2/ooffice-wrapper-1.3,
+  files/1.1_rc2/openoffice-xrender.patch:
+  A new release candidate. This ebuild should be faster as it does now stop
+  building all languages and instead uses a large case statement to find out
+  which language needs to be built. For that reason it also should take less
+  diskspace. Further it does not built the crashreport application as it is
+  currenlty broken and would introduce a dependency on gtk so I don't want to go
+  and make it work.
+
+  07 Aug 2003; <paul@gentoo.org> openoffice-1.0.3-r1.ebuild,
+  openoffice-1.1_beta2-r1.ebuild, openoffice-1.1_rc1.ebuild:
+  Have the builds block on star as it is not compatible enough to gnutar
+
+  27 Jul 2003; <paul@gentoo.org> openoffice-1.1_rc1.ebuild:
+  Add dependency on gtk+ to rc1 (fixes bug #25297)
+
+*openoffice-1.1_rc1 (20 Jul 2003)
+
+  20 Jul 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.0.2-r1.ebuild,
+  openoffice-1.0.2.ebuild, openoffice-1.1_beta2.ebuild,
+  openoffice-1.1_rc1.ebuild, files/1.1_rc1/newstlportfix.patch,
+  files/1.1_rc1/no-mozab.patch, files/1.1_rc1/ooffice-wrapper-1.3,
+  files/1.1_rc1/openoffice-xrender.patch:
+  Add the release candidate, and clean up some old versions
+
+  08 Jul 2003; <paul@gentoo.org> openoffice-1.1_beta2-r1.ebuild:
+  Block on glibc-2.3.1 as it won't work (bug #24085 and oo bug #10210)
+
+  30 Jun 2003; Brad Laue <brad@gentoo.org> openoffice-1.1_beta2-r1.ebuild:
+  Add ooweb symlink
+
+*openoffice-1.1_beta2-r1 (30 Jun 2003)
+
+  30 Jun 2003; Brad Laue <brad@gentoo.org> openoffice-1.1_beta2-r1.ebuild:
+  Correct an issue where KDE menu items show up twice - directory name changed
+  on us.
+
+  20 Jun 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.1_beta2.ebuild,
+  files/1.1_beta2/ooffice-wrapper-1.3:
+  Fix version problem that slipped through
+
+*openoffice-1.1_beta (18 Jun 2003)
+
+  18 Jun 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.0.3-r1.ebuild,
+  openoffice-1.1_beta.ebuild, openoffice-1.1_beta2.ebuild:
+  Fix small problem in 1.0.3 ebuild concerning oopadmin not working. Also added
+  a new openoffice-1.1_beta2 ebuild. This obsoletes the never working beta1,
+  which is now removed. Note that beta2 does not build with gcc-3.3.
+
+*openoffice-1.0.3-r1 (25 May 2003)
+
+  25 May 2003; Paul de Vrieze <pauldv@gentoo.org> openoffice-1.0.3-r1.ebuild,
+  files/1.0.3/vcl.printcxx.OOO_STABLE_1_PORTS.100102.patch:
+  Apply a patch found from openoffice bugzilla that should fix the printing
+  problem that caused an 1.0.3.1 release for the binary version.
+
+*openoffice-1.0.3 (07 Apr 2003)
+  07 Apr 2003; Seth Chandler <sethbc@gentoo.org>;
+  added 1.0.3 to portage, but its not a good bet becuase printing doesn't work
+
+*openoffice-1.1beta (03 Apr 2003)
+  03 Apr 2003; Seth Chandler <sethbc@gentoo.org>;
+  do not build this package, it doesn't yet work
+
+*openoffice-1.0.2-r2 (09 Apr 2003)
+
+  02 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*openoffice-1.0.2-r1 (31 Mar 2003)
+
+  31 Mar 2003; Seth Chandler <sethbc@gentoo.org>; 
+  openoffice-1.0.2-r1.ebuild,
+  files/1.0.2/openoffice-1.0.2-default-fonts.patch,
+  files/1.0.2/openoffice-1.0.2-ft-antialias-advice.patch:
+  big openoffice cleanups, introduction of 1.0.2-r1 with better AA text support
+  =)
+
+*openoffice-1.0.1-r3 (12 Dec 2002)
+
+  12 Jan 2003; Seth Chandler <sethbc@gentoo.org> openoffice-1.0.1-r3.ebuild
+  Fixed several java problems, as well as a generic fix for the libstdc++ 
+  stuff.  Should fix most of the open compile error bugs in bugzilla.
+
+  23 Dec 2002; Seth Chandler<sethbc@gentoo.org> openoffice-1.0.1.ebuild-r3 :
+  Put in an addpredict to predict writes to /user and /share (same fix
+  applied to openoffice-bin ebuild).  I'm looking for a permanent fix to this
+  (i.e. not one which uses addpredict) and will update again when its ready =)  
+
+  12 Dec 2002; Martin Schlemmer <azarah@gentoo.org> openoffice-1.0.1.ebuild-r3 :
+  Fix to work with a gcc-config enabled gcc ...
+
+*openoffice-1.0.1-r2 (02 Dec 2002)
+
+  02 Dec 2002; Seth Chandler <sethbc@gentoo.org> openoffice-1.0.1-r2.ebuild:
+  Add -r2 to portage.  I'm requiring jdk 1.4.0 becuase i'm not yet sure if 
+  it works with a 1.3 jdk (some fixes applied to make blackdown 1.4 beta build
+  may break 1.3.X jdk's).  sun-jdk is still unsupported and will definately
+  break the compile.  The wrapper script has been updated to do ld_preload
+  for fonts (ooffice-wrapper-1.1) and 2 other patches were added:
+  openoffice-1.0.1-use-libstdc++-5.0.1.patch: for people running ~arch and
+  openoffice-1.0.1-fix-jdk-1.4.0.patch: which fixes the aformentioned java
+  bugs.  Please please please submit any bugs you find to me ASAP ;-)
+
+  02 Dec 2002; Seth Chandler <sethbc@gentoo.org> openoffice-1.0.1-r1.ebuild:
+  Fix Az's freetype change so it actually works :-)
+
+  01 Dec 2002; Martin Schlemmer <azarah@gentoo.org> openoffice-1.0.1.ebuild-r1 :
+  Change it to use freetype-2.1.2.tar.bz2, as I was braindead at the time
+  and used the .tar.gz.  Also convert to use epatch().
+
+*openoffice-1.0.1-r1 (22 Sep 2002)
+
+  05 Nov 2002; Mark Guertin <gerk@gentoo.org> openoffice-1.0.1-r1.ebuild :
+  added ppc to keywords, set it to require latest glibc (required for ppc) 
+  and at least gcc 3.2
+
+  03 Nov 2002; Jon Nall <nall@gentoo.org> openoffice-1.0.1-r1.ebuild :
+  added ~ppc to KEYWORDS
+
+  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> openoffice-1.0.1-r1.ebuild :
+  Added IUSE.
+
+  22 Sep 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Enable bytecode interpreter, and build against freetype-2.1.2,
+  based on great work from Paul de Vrieze <gentoo-bugs@devrieze.net>.
+  This should close bug #8096.
+
+  17 Sep 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Fix openoffice-1.0.1-parallel-build.patch, as stupid
+  cvs expanded the keywords in it.
+
+*openoffice-1.0.1 (15 Sep 2002)
+
+  17 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> openoffice-1.0.1.ebuild :
+  Added IUSE.
+
+  15 Sep 2002; Martin Schlemmer <azarah@gentoo.org> :
+  Update version.  New install method.  Install menu shortcuts.
+  Lots of cleanups and other stuff I forgot.
+
+*openoffice-1.0.0-r2 (15 Jul 2002)
+
+  15 Jul 2002; Martin Schlemmer <azarah@gentoo.org> :
+  General updates to handle changes in our gcc ebuilds;
+  Support for gcc-3.1.1.  Also updated the registry .. old
+  had version 641 in title, etc.
+
+  06 Aug 2002; Preston A. Elder <prez@gentoo.org> :
+  Fixed read_ins.pl to be able make all DONT_DELETE directories
+  explicitly, and to put quotes around most references, as some
+  contain a directory name with spaces.
+
+*openoffice-1.0.0-r1 (7 Jun 2002)
+
+  7 Jun 2002; Martin Schlemmer <azarah@gentoo.org> :
+
+  Update to build with gcc-3.1.
+
+*openoffice-1.0.0 (21 May 2002)
 
 *openoffice-641d (24 Apr 2002)
 

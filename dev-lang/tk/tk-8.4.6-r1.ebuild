@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.4.6-r1.ebuild,v 1.1 2004/08/07 06:59:08 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tk/tk-8.4.6-r1.ebuild,v 1.1.1.1 2005/11/30 09:58:35 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/tcl/${PN}${PV}-src.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="threads"
 
 DEPEND=">=sys-apps/sed-4.0.5
@@ -30,7 +30,7 @@ pkg_setup() {
 		ewarn "that compile against tcl. You use threading at"
 		ewarn "your own discretion."
 		ewarn ""
-		sleep 5
+		epause 5
 	fi
 }
 
@@ -54,7 +54,7 @@ src_compile() {
 	fi
 
 	econf \
-		--with-tcl=/usr/lib \
+		--with-tcl=/usr/$(get_libdir) \
 		${local_config_use} || die
 
 	emake CFLAGS="${CFLAGS}" || die
@@ -70,25 +70,27 @@ src_install() {
 
 	# fix the tkConfig.sh to eliminate refs to the build directory
 	sed -i \
-		-e "s,^\(TK_BUILD_LIB_SPEC='-L\)${S}/unix,\1/usr/lib," \
-		-e "s,^\(TK_SRC_DIR='\)${S}',\1/usr/lib/tk${v1}/include'," \
-		-e "s,^\(TK_BUILD_STUB_LIB_SPEC='-L\)${S}/unix,\1/usr/lib," \
-		-e "s,^\(TK_BUILD_STUB_LIB_PATH='\)${S}/unix,\1/usr/lib," \
+		-e "s,^\(TK_BUILD_LIB_SPEC='-L\)${S}/unix,\1/usr/$(get_libdir)," \
+		-e "s,^\(TK_SRC_DIR='\)${S}',\1/usr/$(get_libdir)/tk${v1}/include'," \
+		-e "s,^\(TK_BUILD_STUB_LIB_SPEC='-L\)${S}/unix,\1/usr/$(get_libdir)," \
+		-e "s,^\(TK_BUILD_STUB_LIB_PATH='\)${S}/unix,\1/usr/$(get_libdir)," \
+		-e "s,^\(TK_CC_SEARCH_FLAGS='.*\)',\1:/usr/$(get_libdir)'," \
+		-e "s,^\(TK_LD_SEARCH_FLAGS='.*\)',\1:/usr/$(get_libdir)'," \
 		${D}/usr/lib/tkConfig.sh
 
 	# install private headers
-	dodir /usr/lib/tk${v1}/include/unix
-	install -c -m0644 ${S}/unix/*.h ${D}/usr/lib/tk${v1}/include/unix
-	dodir /usr/lib/tk${v1}/include/generic
-	install -c -m0644 ${S}/generic/*.h ${D}/usr/lib/tk${v1}/include/generic
-	rm -f ${D}/usr/lib/tk${v1}/include/generic/tk.h
-	rm -f ${D}/usr/lib/tk${v1}/include/generic/tkDecls.h
-	rm -f ${D}/usr/lib/tk${v1}/include/generic/tkPlatDecls.h
+	dodir /usr/$(get_libdir)/tk${v1}/include/unix
+	install -c -m0644 ${S}/unix/*.h ${D}/usr/$(get_libdir)/tk${v1}/include/unix
+	dodir /usr/$(get_libdir)/tk${v1}/include/generic
+	install -c -m0644 ${S}/generic/*.h ${D}/usr/$(get_libdir)/tk${v1}/include/generic
+	rm -f ${D}/usr/$(get_libdir)/tk${v1}/include/generic/tk.h
+	rm -f ${D}/usr/$(get_libdir)/tk${v1}/include/generic/tkDecls.h
+	rm -f ${D}/usr/$(get_libdir)/tk${v1}/include/generic/tkPlatDecls.h
 
 	# install symlink for libraries
-	#dosym /usr/lib/libtk${v1}.a /usr/lib/libtk.a
-	dosym /usr/lib/libtk${v1}.so /usr/lib/libtk.so
-	dosym /usr/lib/libtkstub${v1}.a /usr/lib/libtkstub.a
+	#dosym /usr/$(get_libdir)/libtk${v1}.a /usr/$(get_libdir)/libtk.a
+	dosym /usr/$(get_libdir)/libtk${v1}.so /usr/$(get_libdir)/libtk.so
+	dosym /usr/$(get_libdir)/libtkstub${v1}.a /usr/$(get_libdir)/libtkstub.a
 
 	ln -sf wish${v1} ${D}/usr/bin/wish
 

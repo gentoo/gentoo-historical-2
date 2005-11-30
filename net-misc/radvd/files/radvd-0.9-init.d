@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/radvd/files/radvd-0.9-init.d,v 1.1 2005/10/20 12:55:05 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/radvd/files/radvd-0.9-init.d,v 1.1.1.1 2005/11/30 09:54:48 chriswhite Exp $
 
 CONFIGFILE=/etc/radvd.conf
 PIDFILE=/var/run/radvd/radvd.pid

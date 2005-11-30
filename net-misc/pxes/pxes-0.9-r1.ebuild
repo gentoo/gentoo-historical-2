@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pxes/pxes-0.9-r1.ebuild,v 1.1 2005/05/18 15:50:59 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pxes/pxes-0.9-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:10 chriswhite Exp $
+
+inherit eutils perl-module
 
 IUSE="cdr"
 MY_PV=${PV}-1
@@ -20,8 +22,6 @@ RDEPEND="${DEPEND}
 	>=dev-perl/glade-perl-0.61
 	sys-fs/squashfs-tools
 	cdr? ( app-cdr/cdrtools )"
-
-inherit eutils perl-module
 
 dir=/opt/${P}
 Ddir=${D}/${dir}
@@ -50,7 +50,7 @@ src_compile() {
 src_install() {
 	dodir ${dir}
 	cp -r ${S}/stock ${Ddir} || die "Copying files"
-	cp -a ${S}/tftpboot ${D} || die "Copying tftpboot"
+	cp -pPR ${S}/tftpboot ${D} || die "Copying tftpboot"
 	dodir ${dir}/tools
 	dosym /usr/bin/mksquashfs ${dir}/tools/mksquashfs
 	dodoc Documentation/ChangeLog

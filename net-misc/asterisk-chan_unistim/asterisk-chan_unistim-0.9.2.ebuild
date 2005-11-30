@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_unistim/asterisk-chan_unistim-0.9.2.ebuild,v 1.1 2005/03/29 15:09:44 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_unistim/asterisk-chan_unistim-0.9.2.ebuild,v 1.1.1.1 2005/11/30 09:54:46 chriswhite Exp $
 
 inherit eutils
 
@@ -12,11 +12,12 @@ SRC_URI="http://mlkj.net/asterisk/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc x86"
 
 IUSE=""
 
-DEPEND=">=net-misc/asterisk-1.0.5-r1"
+DEPEND=">=net-misc/asterisk-1.0.5-r1
+	!>=net-misc/asterisk-1.1.0"
 
 S=${WORKDIR}/${MY_PN}-${PV}
 
@@ -35,6 +36,13 @@ src_install() {
 	make INSTALL_PREFIX=${D} install config || die "make install failed"
 
 	dodoc README unistim.conf
+
+	# fix permissions
+	if [[ -n "$(egetent group asterisk)" ]]; then
+		einfo "Fixing permissions..."
+		chown -R root:asterisk ${D}etc/asterisk
+		chmod -R u=rwX,g=rX,o= ${D}etc/asterisk
+	fi
 }
 
 pkg_postinst() {

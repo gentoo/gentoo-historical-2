@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/smalltalkx/smalltalkx-5.2.6.ebuild,v 1.1 2005/08/24 11:44:14 araujo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/smalltalkx/smalltalkx-5.2.6.ebuild,v 1.1.1.1 2005/11/30 09:58:18 chriswhite Exp $
 
 DESCRIPTION="The non-commercial version of a complete implementation of the Smalltalk programming language and development environment"
 HOMEPAGE="http://www.exept.de/exept/english/Smalltalk/frame_uebersicht.html"

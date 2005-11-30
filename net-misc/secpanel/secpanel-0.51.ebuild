@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/secpanel/secpanel-0.51.ebuild,v 1.1 2005/04/19 12:16:26 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/secpanel/secpanel-0.51.ebuild,v 1.1.1.1 2005/11/30 09:55:43 chriswhite Exp $
 
 DESCRIPTION="Graphical frontend for managing and running SSH and SCP connections"
 HOMEPAGE="http://www.pingx.net/secpanel/"

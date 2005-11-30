@@ -1,11 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pam-login/pam-login-3.14.ebuild,v 1.1 2003/10/19 00:03:24 azarah Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pam-login/pam-login-3.14.ebuild,v 1.1.1.1 2005/11/30 09:56:06 chriswhite Exp $
 
-
-inherit gnuconfig
-
-IUSE="nls selinux"
+inherit gnuconfig eutils
 
 # Do we want to backup an old login.defs, and forcefully
 # install a new version?
@@ -14,16 +11,16 @@ FORCE_LOGIN_DEFS="no"
 MY_PN="${PN/pam-/pam_}"
 S="${WORKDIR}/${MY_PN}-${PV}"
 DESCRIPTION="Based on the sources from util-linux, with added pam and shadow features"
-SRC_URI="ftp://ftp.suse.com/pub/people/kukuk/pam/${MY_PN}/${MY_PN}-${PV}.tar.bz2"
 HOMEPAGE="http://www.thkukuk.de/pam/pam_login/"
+SRC_URI="ftp://ftp.suse.com/pub/people/kukuk/pam/${MY_PN}/${MY_PN}-${PV}.tar.bz2"
 
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~mips ~hppa ~arm"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
+IUSE="livecd nls selinux"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-libs/pam
-	>=sys-apps/shadow-4.0.2-r5
 	selinux? ( sys-libs/libselinux )"
 
 src_unpack() {
@@ -34,21 +31,26 @@ src_unpack() {
 	# Do not warn on inlining for gcc-3.3, bug #21213
 	epatch ${FILESDIR}/${PN}-3.11-gcc33.patch
 	epatch ${FILESDIR}/pam-login-3.11-lastlog-fix.patch
+
+	# enable query_user_context selinux code (only affects selinux)
+	# but we dont want it on the selinux livecd, since it can
+	# cause the login to timeout if the user isnt ready
+	use livecd || epatch ${FILESDIR}/pam-login-3.14-query_user_context.diff
+
+	use ppc64 && epatch ${FILESDIR}/pam_login-Werror-off-ppc64.patch
+	# Fix configure scripts to recognize linux-mips
+	# (imports updated config.sub and config.guess)
+	gnuconfig_update
 }
 
 src_compile() {
 	local myconf=
 
-	# Fix configure scripts to recognize linux-mips
-	# (imports updated config.sub and config.guess)
-	gnuconfig_update
-
 	use nls || myconf="${myconf} --disable-nls"
 	use selinux && myconf="${myconf} --enable-selinux"
 
 	econf ${myconf} || die
-
-	emake || die
+	emake || die "emake failed"
 }
 
 src_install() {
@@ -59,18 +61,18 @@ src_install() {
 
 	insinto /etc
 	insopts -m0644
+	doins "${FILESDIR}/login.defs"
 
-	doins ${FILESDIR}/login.defs
 	# Also install another one that we can use to check if
 	# we need to update it if FORCE_LOGIN_DEFS = "yes"
 	[ "${FORCE_LOGIN_DEFS}" = "yes" ] \
-		&& newins ${FILESDIR}/login.defs login.defs.new
+		&& newins "${FILESDIR}/login.defs" login.defs.new
 
-	dodoc AUTHORS COPYING ChangeLog NEWS README THANKS
+	dodoc AUTHORS ChangeLog NEWS README THANKS
 }
 
 pkg_preinst() {
-	rm -f ${ROOT}/etc/login.defs.new
+	rm -f "${ROOT}/etc/login.defs.new"
 }
 
 pkg_postinst() {
@@ -95,4 +97,3 @@ pkg_postinst() {
 		rm -f ${ROOT}/etc/login.defs.new
 	fi
 }
-

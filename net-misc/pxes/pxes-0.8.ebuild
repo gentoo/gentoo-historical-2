@@ -1,15 +1,16 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/pxes/pxes-0.8.ebuild,v 1.1 2004/04/03 18:23:24 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/pxes/pxes-0.8.ebuild,v 1.1.1.1 2005/11/30 09:55:10 chriswhite Exp $
 
-#IUSE="ltsp cdr"
-IUSE=""
+inherit perl-module
+
+IUSE="cdr"
 DESCRIPTION="PXES is a package for building thin clients using multiple types of clients"
 HOMEPAGE="http://pxes.sourceforge.net"
 SRC_URI="mirror://sourceforge/pxes/${PN}-base-i586-${PV}-9.tar.gz
 	mirror://sourceforge/pxes/pxesconfig-${PV}-9.tar.gz"
 
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -18,9 +19,9 @@ DEPEND=">=dev-lang/perl-5.8.0-r12"
 RDEPEND="${DEPEND}
 	dev-perl/gtk-perl
 	>=dev-perl/glade-perl-0.61
-	cdr? app-cdr/cdrtools"
+	sys-fs/squashfs-tools
+	cdr? ( app-cdr/cdrtools )"
 
-inherit perl-module
 
 dir=/opt/${P}
 Ddir=${D}/${dir}
@@ -32,8 +33,8 @@ src_unpack() {
 
 src_compile() {
 	cd ${WORKDIR}/pxesconfig-${PV}
-	MMSIXELEVEN=""
-	perl-module_src_prep || die
+	SRC_PREP="yes"
+	perl Makefile.PL PREFIX=${D}/usr INSTALLDIRS=vendor DESTDIR=${D}
 	perl-module_src_compile || die
 }
 
@@ -41,9 +42,9 @@ src_install() {
 	dodir ${dir}
 	cd ${Ddir}
 	cp -r ${S}/stock ${Ddir} || die "Copying files"
-	cp -a ${S}/tftpboot ${D}
+	cp -pPR ${S}/tftpboot ${D}
 	dodoc Documentation/ChangeLog
-	dohtml Documentation/html/{index,pxe,readme,screenshots}.html,howto/{configuring_ICA,customizing_kernel_and_modules,gdm,xfs,ms_only_environment/ms_only_environment}.html
+	dohtml -r Documentation/html/*
 	cd ${WORKDIR}/pxesconfig-${PV}
 	perl-module_src_install || die
 	dosym /usr/bin/cpio /bin/cpio

@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.6.02.0030.ebuild,v 1.1 2005/04/14 12:45:45 wolf31o2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cisco-vpnclient-3des/cisco-vpnclient-3des-4.6.02.0030.ebuild,v 1.1.1.1 2005/11/30 09:55:41 chriswhite Exp $
 
-inherit eutils kernel-mod
+inherit eutils linux-info
 
 MY_PV=${PV}-k9
 DESCRIPTION="Cisco VPN Client (3DES)"
@@ -10,7 +10,7 @@ HOMEPAGE="http://cco.cisco.com/en/US/products/sw/secursw/ps2308/index.html"
 SRC_URI="vpnclient-linux-${MY_PV}.tar.gz"
 
 LICENSE="cisco-vpn-client"
-SLOT="${KV}"
+SLOT="0"
 KEYWORDS="-* x86"
 IUSE=""
 RESTRICT="fetch"
@@ -68,7 +68,7 @@ src_install() {
 	dosym /opt/cisco-vpnclient/bin/vpnclient /usr/bin/vpnclient
 
 	insinto /lib/modules/${KV}/CiscoVPN
-	if kernel-mod_is_2_6_kernel; then
+	if kernel_is 2 6; then
 		doins cisco_ipsec.ko
 	else
 		doins cisco_ipsec
@@ -83,7 +83,10 @@ src_install() {
 
 pkg_postinst() {
 	einfo "You must run \`/etc/init.d/vpnclient start\` before using the client."
-	echo ""
+	echo
 	ewarn "Configuration directory has moved to ${VPNDIR}!"
-	echo ""
+	echo
+	ewarn "If you are experiencing problems keeping a connection alive, please"
+	ewarn "check bug #90693 for more information about disabling rp_filter."
+	echo
 }

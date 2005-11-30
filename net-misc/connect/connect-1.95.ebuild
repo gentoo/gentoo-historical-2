@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/connect/connect-1.95.ebuild,v 1.1 2005/09/19 18:02:42 wschlich Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/connect/connect-1.95.ebuild,v 1.1.1.1 2005/11/30 09:55:10 chriswhite Exp $
 
 DESCRIPTION="network connection relaying command"
 HOMEPAGE="http://zippo.taiyo.co.jp/~gotoh/ssh/connect.html"

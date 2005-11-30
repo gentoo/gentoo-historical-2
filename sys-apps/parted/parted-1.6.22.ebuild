@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/parted/parted-1.6.22.ebuild,v 1.1 2005/03/20 04:24:22 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/parted/parted-1.6.22.ebuild,v 1.1.1.1 2005/11/30 09:56:59 chriswhite Exp $
 
 inherit eutils
 
@@ -11,12 +11,14 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~hppa ia64 ~ppc ~ppc64 sparc ~x86"
 IUSE="nls static readline debug"
 
+# specific version for gettext needed
+# to fix bug 85999
 DEPEND=">=sys-fs/e2fsprogs-1.27
 	>=sys-libs/ncurses-5.2
-	nls? ( sys-devel/gettext )
+	nls? ( >=sys-devel/gettext-0.12.1-r2 )
 	readline? ( >=sys-libs/readline-4.1-r4 )"
 
 src_unpack() {

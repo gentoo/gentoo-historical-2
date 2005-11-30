@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/perl-5.8.6-r5.ebuild,v 1.1 2005/06/30 15:09:11 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/perl/perl-5.8.6-r5.ebuild,v 1.1.1.1 2005/11/30 09:58:22 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs multilib
 
@@ -17,12 +17,11 @@ LIBPERL="libperl.so.${PERLSLOT}.${SHORT_PV}"
 
 LICENSE="Artistic GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="berkdb debug doc gdbm ithreads perlsuid build minimal"
 PERL_OLDVERSEN="5.8.0 5.8.2 5.8.4 5.8.5"
 
-DEPEND="!elibc_uclibc? ( sys-apps/groff )
-	berkdb? ( sys-libs/db )
+DEPEND="berkdb? ( sys-libs/db )
 	gdbm? ( >=sys-libs/gdbm-1.8.3 )
 	>=sys-devel/libperl-${PV}-r1
 	!<perl-core/ExtUtils-MakeMaker-6.17
@@ -40,18 +39,20 @@ pkg_setup() {
 	# in USE if it could break things ...
 	if use ithreads
 	then
-		ewarn "PLEASE NOTE: You are compiling perl-5.8 with"
+		ewarn "PLEASE NOTE: You are compiling ${MY_P} with"
 		ewarn "interpreter-level threading enabled."
 		ewarn "Threading is not supported by all applications "
 		ewarn "that compile against perl. You use threading at "
 		ewarn "your own discretion. "
-		epause 10
-	else
-		einfo "PLEASE NOTE: If you want to compile perl-5.8 with"
-		einfo "interpreter-level threading enabled , you must "
-		einfo "restart this emerge with USE=ithreads"
-		einfo "Interpreter-level threading is not supported by "
-		einfo "all applications that compile against perl."
+		epause 5
+	fi
+
+	if use minimal
+	then
+		ewarn "You have the minimal USE flag set. The resulting"
+		ewarn "perl is stripped of most of its module functionality"
+		ewarn "and is intended for minmal use case where you need"
+		ewarn "just the perl interpreter, no extras."
 	fi
 
 	if [ ! -f "${ROOT}/usr/$(get_libdir)/${LIBPERL}" ]
@@ -139,12 +140,16 @@ src_configure() {
 	use elibc_uclibc || replace-flags "-Os" "-O2"
 	# This flag makes compiling crash in interesting ways
 	filter-flags -malign-double
+	# Fixes bug #97645
+	use ppc && filter-flags -mpowerpc-gpopt
 
 	export LC_ALL="C"
 	local myconf=""
 
 	if [[ ${KERNEL} == "FreeBSD" && "${ELIBC}" = "FreeBSD" ]]; then
 		osname="freebsd"
+	elif [[ ${KERNEL} == "NetBSD" ]]; then
+		osname="netbsd"
 	else
 		# Default setting
 		osname="linux"

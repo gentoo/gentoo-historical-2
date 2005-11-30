@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/sitecopy/sitecopy-0.16.0.ebuild,v 1.1 2005/09/10 07:01:54 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/sitecopy/sitecopy-0.16.0.ebuild,v 1.1.1.1 2005/11/30 09:55:28 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 

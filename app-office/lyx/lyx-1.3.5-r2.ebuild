@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.3.5-r2.ebuild,v 1.1 2005/05/22 12:24:54 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/lyx/lyx-1.3.5-r2.ebuild,v 1.1.1.1 2005/11/30 09:59:10 chriswhite Exp $
 
 inherit kde-functions eutils libtool flag-o-matic
 
@@ -15,8 +15,8 @@ SRC_URI="ftp://ftp.lyx.org/pub/lyx/stable/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
-IUSE="cjk nls cups qt debug gnome"
+KEYWORDS="amd64 ppc sparc x86"
+IUSE="cjk cups debug nls qt"
 
 # these dependencies need looking at.
 # does lyx only need qt to compile but not run ?
@@ -26,7 +26,7 @@ DEPEND="virtual/x11
 	>=dev-lang/perl-5
 	nls? ( sys-devel/gettext )
 	app-text/aiksaurus
-	qt? ( >=x11-libs/qt-3 )
+	qt? ( =x11-libs/qt-3* )
 	!qt? ( cjk? ( =x11-libs/xforms-1.0-r1 )
 		!cjk? ( =x11-libs/xforms-1* ) )"
 

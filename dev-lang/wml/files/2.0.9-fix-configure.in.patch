@@ -6,7 +6,7 @@
  
 +AC_INIT(README)
  AC_PREREQ(2.10)dnl
- AC_REVISION($Revision: 1.1 $)
+ AC_REVISION($Revision: 1.1.1.1 $)
  SHTOOL="./etc/shtool"
 @@ -11,7 +12,6 @@
  echo "${T_MD}Configuring for iSelect `./etc/shtool version -l c -d long iselect_version.c`${T_ME}"

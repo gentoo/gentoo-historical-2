@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg2theora/ffmpeg2theora-0.12.ebuild,v 1.1 2005/02/08 16:52:25 kzimmerm Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg2theora/ffmpeg2theora-0.12.ebuild,v 1.1.1.1 2005/11/30 09:57:48 chriswhite Exp $
 
 DESCRIPTION="A simple converter to create Ogg Theora files."
 HOMEPAGE="http://www.v2v.cc/~j/ffmpeg2theora/"
@@ -14,12 +14,11 @@ IUSE=""
 RDEPEND=">=media-video/ffmpeg-0.4.9_pre1
 	>=media-libs/libvorbis-1.1
 	>=media-libs/libogg-1.1
-	>=media-libs/libtheora-1.0_alpha4"
-
+	>=media-libs/libtheora-1.0_alpha4-r1"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
 
 src_install() {
-	make DESTDIR=${D} install
-	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
+	make DESTDIR=${D} install || die "make install failed"
+	dodoc AUTHORS ChangeLog NEWS README TODO
 }

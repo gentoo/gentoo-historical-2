@@ -1,27 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/mindi/mindi-0.86.ebuild,v 1.1 2003/09/02 10:12:39 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/mindi/mindi-0.86.ebuild,v 1.1.1.1 2005/11/30 09:55:57 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Mindi builds boot/root disk images using your existing kernel, modules, tools and libraries"
 HOMEPAGE="http://www.microwerks.net/~hugo/mindi/"
 SRC_URI="http://www.microwerks.net/~hugo/download/stable/final/${P}.tgz"
-RESTRICT="nouserpriv"
-
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 amd64"
+KEYWORDS="x86"
+IUSE=""
 RESTRICT="nouserpriv"
 
-DEPEND=">=sys-apps/bzip2-1.0.1
+DEPEND=">=app-arch/bzip2-1.0.1
 		>=app-cdr/cdrtools-1.11
 		>=sys-libs/ncurses-5
 		>=sys-devel/binutils-2
-		>=sys-apps/syslinux-1.7
-		>=sys-apps/lilo-22
-		>=app-admin/dosfstools-2.8
-		>=sys-apps/mindi-kernel-1*"
-		
+		>=sys-boot/syslinux-1.7
+		>=sys-boot/lilo-22
+		>=sys-fs/dosfstools-2.8
+		>=sys-apps/mindi-kernel-1"
+
 src_unpack() {
 	for i in ${FEATURES} ; do
 		if [ "${i}" = "userpriv" ] ; then
@@ -39,8 +40,7 @@ src_unpack() {
 }
 
 src_install() {
-	dodir /usr/share/mindi
-	dodir /usr/sbin
+	dodir /usr/share/mindi /usr/sbin
 	cp * --parents -rdf ${D}/usr/share/mindi/
 	rm ${D}/usr/share/mindi/{CHANGES,INSTALL,LICENSE,README,TODO}
 	dodoc CHANGES INSTALL LICENSE README TODO

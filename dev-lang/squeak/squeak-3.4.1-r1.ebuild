@@ -1,11 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.4.1-r1.ebuild,v 1.1 2003/10/11 09:32:56 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak/squeak-3.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:58:33 chriswhite Exp $
 
 inherit libtool flag-o-matic eutils
-strip-flags
-filter-mfpmath sse
-filter-flags "-fPIC" "-maltivec" "-mabi=altivec" "-fstack-protector" "-pipe" "-g" "-mtune" "-march" "-mcpu" "-O" "-O1" "-O2" "-Os" "-O3" "-freorder-blocks" "-fprefetch-loop-array"
 
 #Simply change these numbers for different versions
 MV=3.4
@@ -21,13 +18,20 @@ KEYWORDS="~x86"
 IUSE="X oss mmx mozilla"
 # a ffi flag would be nice
 
-DEPEND="virtual/glibc
-	X? ( x11-base/xfree )"
-RDEPEND="dev-lang/squeak-vm
-		virtual/glibc
-		X? ( x11-base/xfree )"
+DEPEND="virtual/libc
+	X? ( virtual/x11 )"
+RDEPEND="virtual/squeak-image
+		virtual/libc
+		X? ( virtual/x11 )"
 
 S="${WORKDIR}/Squeak-${NV}"
+
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-gcc33-string-fix.patch
+}
 
 src_compile() {
 	local myconf=""
@@ -36,6 +40,9 @@ src_compile() {
 	use oss && myconf="${myconf} --with-audio=oss"
 	use mmx && myconf="${myconf} --enable-mpg-mmx"
 
+	strip-flags
+	filter-mfpmath sse
+	filter-flags "-fPIC" "-maltivec" "-mabi=altivec" "-fstack-protector" "-pipe" "-g" "-mtune" "-march" "-mcpu" "-O" "-O1" "-O2" "-Os" "-O3" "-freorder-blocks" "-fprefetch-loop-array"
 	cd ${S}
 	mkdir build
 	cd build
@@ -97,7 +104,7 @@ src_install() {
 	dodir /opt/netscape/plugins
 	dosym /usr/lib/squeak/${NV}/npsqueak.so /opt/netscape/plugins
 
-	if [ "`use mozilla`" ] ; then
+	if use mozilla ; then
 		dodir /usr/lib/mozilla/plugins
 		dosym /opt/netscape/plugins/npsqueak.so \
 		/usr/lib/mozilla/plugins/npsqueak.so

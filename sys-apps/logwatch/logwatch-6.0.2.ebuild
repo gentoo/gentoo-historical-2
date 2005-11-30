@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/logwatch/logwatch-6.0.2.ebuild,v 1.1 2005/04/29 01:42:48 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/logwatch/logwatch-6.0.2.ebuild,v 1.1.1.1 2005/11/30 09:56:27 chriswhite Exp $
 
 DESCRIPTION="Analyzes and Reports on system logs"
 HOMEPAGE="http://www.logwatch.org/"
@@ -8,7 +8,7 @@ SRC_URI="ftp://ftp.kaybee.org/pub/linux/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="virtual/cron
@@ -52,7 +52,7 @@ src_install() {
 	doins conf/services/*
 
 	exeinto /etc/cron.daily
-	newexe ${FILESDIR}/logwatch.cron logwatch
+	newexe "${FILESDIR}"/logwatch logwatch
 
 	doman logwatch.8
 	dodoc License project/CHANGES README HOWTO-Make-Filter

@@ -1,8 +1,10 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/mupad/mupad-2.5.2-r2.ebuild,v 1.1 2004/12/28 14:43:46 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/mupad/mupad-2.5.2-r2.ebuild,v 1.1.1.1 2005/11/30 09:55:52 chriswhite Exp $
 
-VER=`echo $PV|awk -F. '{ print $1$2$3 }'`
+inherit versionator
+
+VER=$(replace_all_version_separators '')
 URLPATH="ftp://ftp.mupad.de/MuPAD/distrib/unix/"
 INSTDIR="/usr/lib/mupad"
 INSTBINDIR="${INSTDIR}/share/bin"
@@ -86,23 +88,23 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo ""
+	echo
 	einfo "SOME IMPORTANT NOTES:"
-	einfo ""
+	einfo
 	einfo " - This version of MuPAD has Scilab functionality"
-	einfo "   integrated, so if you have Scilab installed already, "
+	einfo "   integrated, so if you have Scilab installed already,"
 	einfo "   you might find it to be redundant."
-	einfo ""
+	einfo
 	einfo " - MuPAD is only free for non-commercial use.  Visit"
 	einfo "   http://www.mupad.com/ for commercial downloads."
-	einfo ""
+	einfo
 	einfo " - In this non-commercial version, you must register to"
 	einfo "   obtain a license key in order to deactivate the memory"
 	einfo "   limit.  The memory limit prevents large calculations."
 	einfo "   Read the documentation or visit"
-	einfo ""
+	einfo
 	einfo "       ${HOMEPAGE}"
-	einfo ""
+	einfo
 	einfo "   for more info."
-	echo ""
+	echo
 }

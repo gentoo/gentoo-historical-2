@@ -1,6 +1,38 @@
 # ChangeLog for sys-apps/rng-tools
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rng-tools/ChangeLog,v 1.1 2003/08/20 14:06:58 hanno Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rng-tools/ChangeLog,v 1.1.1.1 2005/11/30 09:57:00 chriswhite Exp $
+
+  01 Oct 2005; Bryan Østergaard <kloeri@gentoo.org> rng-tools-1.1.ebuild:
+  Add ~alpha + ~ia64 keywords.
+
+  12 Aug 2005; Robin H. Johnson <robbat2@gentoo.org> rng-tools-1.1.ebuild:
+  1.1 stable on x86.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  rng-tools-1.1.ebuild:
+  Masked rng-tools-1.1.ebuild stable for ppc
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> rng-tools-1.0.ebuild,
+  rng-tools-1.1.ebuild:
+  virtual/glibc -> virtual/libc
+
+  09 Apr 2004; David Holm <dholm@gentoo.org> rng-tools-1.1.ebuild:
+  Added to ~ppc.
+
+*rng-tools-1.1 (07 Apr 2004)
+
+  07 Apr 2004; Robin H. Johnson <robbat2@gentoo.org> rng-tools-1.1.ebuild,
+  files/rngd:
+  bump version, add in change from bug #47107 to use urandom as a feedback input.
+
+  07 Apr 2004; Travis Tilley <lv@gentoo.org> rng-tools-1.0.ebuild:
+  added ~amd64 keyword
+
+*rng-tools-1.0 (05 Oct 2003)
+
+  05 Oct 2003; Hanno Boeck <hanno@gentoo.org> rng-tools-1.0.ebuild,
+  files/rngd:
+  Fix for latest 2.6 kernels. Mark as x86 stable.
 
   20 Aug 2003; Hanno Boeck <hanno@gentoo.org> files/rngd:
   New package for using random number generators.

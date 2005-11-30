@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/ksynaptics/ksynaptics-0.2.2.ebuild,v 1.1 2005/10/19 13:22:45 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/ksynaptics/ksynaptics-0.2.2.ebuild,v 1.1.1.1 2005/11/30 09:57:13 chriswhite Exp $
 
 inherit kde
 

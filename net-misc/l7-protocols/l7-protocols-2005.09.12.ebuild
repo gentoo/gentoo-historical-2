@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/l7-protocols/l7-protocols-2005.09.12.ebuild,v 1.1 2005/09/16 22:51:08 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/l7-protocols/l7-protocols-2005.09.12.ebuild,v 1.1.1.1 2005/11/30 09:55:42 chriswhite Exp $
 
 inherit toolchain-funcs
 

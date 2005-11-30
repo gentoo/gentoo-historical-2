@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/nvclock/nvclock-0.7-r1.ebuild,v 1.1 2003/11/05 17:06:38 malverian Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/nvclock/nvclock-0.7-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:43 chriswhite Exp $
 
 inherit eutils
 
@@ -13,15 +13,22 @@ SRC_URI="http://www.linuxhardware.org/nvclock/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
-IUSE="gtk gtk2 qt"
+IUSE="gtk qt"
 
-DEPEND="virtual/glibc
-	sys-devel/autoconf
+RDEPEND="virtual/libc
 	gtk? ( =x11-libs/gtk+-2* )
-	qt? ( x11-libs/qt )"
+	qt? ( =x11-libs/qt-3* )"
+DEPEND="${RDEPEND}
+	sys-devel/autoconf"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/configure.in.diff
+	epatch ${FILESDIR}/callbacks.patch
+}
 
 src_compile() {
-	epatch ${FILESDIR}/configure.in.diff || die
 	mv configure.in configure.ac
 	./autogen.sh || die
 
@@ -37,15 +44,12 @@ src_compile() {
 }
 
 src_install() {
-	dodir /usr/bin /etc/init.d /etc/conf.d
+	dodir /usr/bin
 	einstall || die
+	dodoc AUTHORS README
 
-	cp ${FILESDIR}/nvclock_initd ${D}/etc/init.d/nvclock
-	cp ${FILESDIR}/nvclock_confd ${D}/etc/conf.d/nvclock
-
-	chmod u+x ${D}/etc/init.d/nvclock
-
-	dodoc AUTHORS COPYING README
+	newinitd ${FILESDIR}/nvclock_initd nvclock
+	newconfd ${FILESDIR}/nvclock_confd nvclock
 }
 
 pkg_postinst() {

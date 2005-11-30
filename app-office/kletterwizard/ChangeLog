@@ -1,6 +1,51 @@
 # ChangeLog for app-office/kletterwizard
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/kletterwizard/ChangeLog,v 1.1 2004/06/22 23:17:32 absinthe Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/kletterwizard/ChangeLog,v 1.1.1.1 2005/11/30 09:58:48 chriswhite Exp $
+
+  21 Aug 2005; Gregorio Guidi <greg_g@gentoo.org>
+  kletterwizard-0.9.6.ebuild:
+  Correct KDE dependency (#83058).
+
+  22 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kletterwizard-0.9.6.ebuild:
+  Added to ~ppc.
+
+  15 Jan 2005; Dan Armak <danarmak@gentoo.org> kletterwizard-0.9.2.ebuild,
+  kletterwizard-0.9.4.ebuild, kletterwizard-0.9.6.ebuild:
+  Changed dep on kdegraphics to accept kdegraphics-meta, the split 'meta'
+  package. This dep will be narrowed down in the future to the precise split
+  packages required.
+
+  30 Dec 2004; Jason Wever <weeve@gentoo.org> kletterwizard-0.9.6.ebuild:
+  Added ~sparc keyword.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  kletterwizard-0.9.6.ebuild:
+  Stable on amd64 and x86.
+
+  26 Jul 2004; Carsten Lohrke <carlo@gentoo.org> kletterwizard-0.9.6.ebuild:
+  QA: place need-kde after R/DEPEND (again!)
+
+*kletterwizard-0.9.6 (25 Jul 2004)
+
+  25 Jul 2004; Dylan Carlson <absinthe@gentoo.org>
+  +files/kletterwizard-0.9.6-gentoo.diff, kletterwizard-0.9.2.ebuild,
+  kletterwizard-0.9.4.ebuild, +kletterwizard-0.9.6.ebuild:
+  Version bump. Had to work around sandbox violations associated with
+  kletterwizard's new latex class. All other ebuilds were fixed to depend on
+  virtual/tetex to fix bug #57175.
+
+  01 Jul 2004; David Holm <dholm@gentoo.org> kletterwizard-0.9.4.ebuild:
+  Added to ~ppc.
+
+*kletterwizard-0.9.4 (30 Jun 2004)
+
+  30 Jun 2004; Carsten Lohrke <carlo@gentoo.org> kletterwizard-0.9.2.ebuild,
+  +kletterwizard-0.9.4.ebuild:
+  version bump, QA: IUSE (#52160), need-kde (#25013)
+
+  23 Jun 2004; Dylan Carlson <absinthe@gentoo.org> kletterwizard-0.9.2.ebuild:
+  Added DEPEND for kde-base/kdegraphics to provide kghostview.
 
 *kletterwizard-0.9.2 (22 Jun 2004)
 

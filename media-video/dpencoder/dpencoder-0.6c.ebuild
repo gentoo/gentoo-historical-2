@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dpencoder/dpencoder-0.6c.ebuild,v 1.1 2004/03/09 03:13:45 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dpencoder/dpencoder-0.6c.ebuild,v 1.1.1.1 2005/11/30 09:57:28 chriswhite Exp $
 
 inherit perl-module
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://dpencoder.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dpencoder/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~sparc ~x86"
 IUSE=""
 S=${WORKDIR}/${P}/DPencoder
 

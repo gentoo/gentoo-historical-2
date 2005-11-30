@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/zebedee/zebedee-2.4.1-r1.ebuild,v 1.1 2005/09/07 16:05:59 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/zebedee/zebedee-2.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:39 chriswhite Exp $
 
 MY_P="${P}A"
 DESCRIPTION="A simple, free, secure TCP and UDP tunnel program"

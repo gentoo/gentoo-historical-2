@@ -1,16 +1,19 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/yaala/yaala-0.7.2.ebuild,v 1.1 2004/05/14 16:21:02 lostlogic Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-admin/yaala/yaala-0.7.2.ebuild,v 1.1.1.1 2005/11/30 09:59:41 chriswhite Exp $
 
-SRC_URI="http://www.yaala.org/files/${P}.tar.bz2"
+DESCRIPTION="Yet Another Log Analyzer"
 HOMEPAGE="http://www.yaala.org/"
-DEPEND="virtual/glibc"
+SRC_URI="http://www.yaala.org/files/${P}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~x86 ~ppc"
-DESCRIPTION="Yet Another Log Analyzer"
+IUSE=""
 
-src_install(){
+DEPEND="virtual/libc"
+
+src_install() {
 	dodir /usr/share/yaala
-	cp -dpRx * ${D}usr/share/yaala
+	cp -pRx * ${D}/usr/share/yaala/
 }

@@ -1,22 +1,14 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-0.8.2-r1.ebuild,v 1.1 2005/07/11 23:39:32 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vlc/vlc-0.8.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:23 chriswhite Exp $
 
-# Missing USE-flags due to missing deps:
-# media-vidoe/vlc:tremor - Enables Tremor decoder support
-# media-video/vlc:tarkin - Enables experimental tarkin codec
-# media-video/vlc:h264 - Enables H264 encoding support with libx264
+inherit libtool eutils wxwidgets flag-o-matic nsplugins multilib autotools toolchain-funcs
 
-# Missing USE-flags due to needed testing
-# media-video/vlc:dirac - Enables experimental dirac codec
-
-inherit libtool eutils wxwidgets flag-o-matic nsplugins multilib
-
-PATCHLEVEL="5"
+PATCHLEVEL="7"
 DESCRIPTION="VLC media player - Video player and streamer"
 HOMEPAGE="http://www.videolan.org/vlc/"
 SRC_URI="http://download.videolan.org/pub/videolan/${PN}/${PV}/${P}.tar.bz2
-	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
+	mirror://gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -24,11 +16,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="a52 3dfx nls unicode debug altivec httpd vlm gnutls live v4l cdda ogg matroska
 dvb dvd vcd ffmpeg aac dts flac mpeg vorbis theora X opengl freetype svg fbcon svga
-oss aalib ggi libcaca esd arts alsa wxwindows ncurses xosd lirc joystick hal stream
+oss aalib ggi libcaca esd arts alsa wxwindows ncurses xosd lirc joystick stream
 mp3 xv bidi gtk2 sdl png xml2 samba daap corba screen mod speex nsplugin"
 
-RDEPEND="hal? ( =sys-apps/hal-0.4* )
-		cdda? ( >=dev-libs/libcdio-0.71
+RDEPEND="cdda? ( >=dev-libs/libcdio-0.71
 			>=media-libs/libcddb-0.9.5 )
 		live? ( >=media-plugins/live-2005.01.29 )
 		dvd? (  media-libs/libdvdread
@@ -113,11 +104,9 @@ src_unpack() {
 	# We only have glide v3 in portage
 	cd ${S}
 
-	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/${PV}"
+	EPATCH_SUFFIX="patch" epatch "${WORKDIR}/patches"
 
-	aclocal -I m4 || die "aclocal failed"
-	autoconf || die "autoconf failed"
-	automake || die "automake failed"
+	AT_M4DIR="m4" eautoreconf
 
 	sed -i -e \
 		"s:/usr/include/glide:/usr/include/glide3:;s:glide2x:glide3:" \
@@ -128,13 +117,6 @@ src_unpack() {
 }
 
 src_compile () {
-	# Avoid timestamp skews with autotools
-	touch configure.ac
-	touch aclocal.m4
-	touch configure
-	touch config.h.in
-	find . -name Makefile.in | xargs touch
-
 	# reason why:
 	# skins2 interface is horribly broken for some reason.
 	# Therefore it's being disabled for the standard wxwindows
@@ -212,7 +194,6 @@ src_compile () {
 		$(use_enable ggi) \
 		$(use_enable 3dfx glide) \
 		$(use_enable sdl) \
-		$(use_enable hal) \
 		$(use_enable png) \
 		$(use_enable xml2 libxml2) \
 		$(use_enable samba smb) \
@@ -224,9 +205,13 @@ src_compile () {
 		--disable-pth \
 		--disable-portaudio \
 		--disable-slp \
+		--disable-hal \
+		--disable-x264 \
 		${myconf} || die "configuration failed"
 
-	sed -i -e s:"-fomit-frame-pointer":: vlc-config || die "-fomit-frame-pointer patching failed"
+	if [[ $(gcc-major-version) == 2 ]]; then
+		sed -i -e s:"-fomit-frame-pointer":: vlc-config || die "-fomit-frame-pointer patching failed"
+	fi
 
 	emake -j1 || die "make of VLC failed"
 }
@@ -234,7 +219,7 @@ src_compile () {
 src_install() {
 	make DESTDIR="${D}" plugindir="/usr/$(get_libdir)/${PLUGINS_DIR}" install || die "Installation failed!"
 
-	dodoc ABOUT-NLS AUTHORS MAINTAINERS HACKING THANKS TODO NEWS README \
+	dodoc AUTHORS MAINTAINERS HACKING THANKS TODO NEWS README \
 		doc/fortunes.txt doc/intf-cdda.txt doc/intf-vcd.txt
 
 	rm -r ${D}/usr/share/vlc/vlc*.png ${D}/usr/share/vlc/vlc*.xpm ${D}/usr/share/vlc/vlc*.ico \

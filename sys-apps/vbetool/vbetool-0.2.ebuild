@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/vbetool/vbetool-0.2.ebuild,v 1.1 2005/04/30 01:10:46 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/vbetool/vbetool-0.2.ebuild,v 1.1.1.1 2005/11/30 09:56:00 chriswhite Exp $
 
 DESCRIPTION="Run real-mode video BIOS code to alter hardware state (i.e. reinitialize video card)"
 HOMEPAGE="http://www.srcf.ucam.org/~mjg59/vbetool/"

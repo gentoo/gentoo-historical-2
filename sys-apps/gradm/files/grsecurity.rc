@@ -1,14 +1,17 @@
 #!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# /space/gentoo/cvsroot/gentoo-x86/sys-libs/gpm/files/gpm.rc6,v 1.7 2002/01/20 10:00:55 azarah Exp
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gradm/files/grsecurity.rc,v 1.1.1.1 2005/11/30 09:56:56 chriswhite Exp $
 
-#NB: Config is in /etc/conf.d/gpm
+# Note: chpax support has been removed from this init script.
+# Configure /etc/conf.d/chpax and add chpax to your default runlevel instead
+
 
 PROCDIR=/proc/sys/kernel/grsecurity
 
 depend() {
 	need bootmisc localmount
+	after chpax
 }
 
 checkconfig() {
@@ -23,50 +26,47 @@ start() {
 
 	ebegin "Starting grsecurity"
 
-	for x in ${ENABLED} ; do
-		if [ -f ${PROCDIR}/${x} ]; then
-			echo 1 >${PROCDIR}/${x}
-		fi
+	for x in ${ENABLED}; do
+		# [ -f ${PROCDIR}/${x} ] && continue
+		# einfo "\tEnabling kernel.grsecurity.${x}"
 		case "${x}" in
+		audit_group)
+			echo ${audit_gid} > ${PROCDIR}/audit_gid
+			echo 1 > ${PROCDIR}/${x}
+			;;
+		tpe)
+			echo ${tpe_gid} > ${PROCDIR}/tpe_gid
+			echo 1 > ${PROCDIR}/${x}
+			;;
 		allow_ptrace_group)
-			echo ${ptrace_gid} >${PROCDIR}/ptrace_gid
+			echo ${ptrace_gid} > ${PROCDIR}/ptrace_gid
+			echo 1 > ${PROCDIR}/${x}
 			;;
 		fork_bomb_prot)
 			echo ${fork_bomb_gid} >${PROCDIR}/fork_bomb_gid
 			echo ${fork_bomb_sec} >${PROCDIR}/fork_bomb_sec
 			echo ${fork_bomb_max} >${PROCDIR}/fork_bomb_max
+			echo 1 > ${PROCDIR}/${x}
 			;;
 		socket_all)
 			echo ${socket_all_gid} >${PROCDIR}/socket_all_gid
+			echo 1 > ${PROCDIR}/${x}
 			;;
 		socket_client)
 			echo ${socket_client_gid} >${PROCDIR}/socket_client_gid
+			echo 1 > ${PROCDIR}/${x}
 			;;
 		socket_server)
 			echo ${socket_server_gid} >${PROCDIR}/socket_server_gid
+			echo 1 > ${PROCDIR}/${x}
+			;;
+		*)
+			[ -f ${PROCDIR}/${x} ] && echo 1 >${PROCDIR}/${x}
 			;;
 		esac
 	done
 
-	for x in ${PAGE_EXEC_EXEMPT} ; do
-		/sbin/chpax -p ${x}
-	done
-
-	for x in ${TRAMPOLINE_EXEMPT} ; do
-		/sbin/chpax -e ${x}
-	done
-
-	for x in ${MPROTECT_EXEMPT} ; do
-		/sbin/chpax -m ${x}
-	done
-
-	for x in ${MMAP_EXEMPT} ; do
-		/sbin/chpax -r ${x}
-	done
-
-	if [ -d ${PROCDIR}/grsec_lock ] ; then
-		echo ${LOCK} >${PROCDIR}/grsec_lock
-	fi
+	[ -f ${PROCDIR}/grsec_lock ] && echo ${LOCK} >${PROCDIR}/grsec_lock
 
 	eend ${?}
 }

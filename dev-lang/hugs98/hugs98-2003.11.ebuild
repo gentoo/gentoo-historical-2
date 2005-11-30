@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/hugs98/hugs98-2003.11.ebuild,v 1.1 2003/12/01 16:52:55 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/hugs98/hugs98-2003.11.ebuild,v 1.1.1.1 2005/11/30 09:58:13 chriswhite Exp $
+
+inherit base flag-o-matic eutils
 
 IUSE="opengl"
 
@@ -11,17 +13,37 @@ SRC_URI="http://cvs.haskell.org/Hugs/downloads/Nov2003/${MY_P}.tar.gz"
 HOMEPAGE="http://www.haskell.org/hugs/"
 
 SLOT="0"
-KEYWORDS="~x86 ~sparc"
+KEYWORDS="x86 ~sparc ~amd64 ~ppc"
 LICENSE="as-is"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	opengl? ( virtual/opengl virtual/glu virtual/glut )
-	=app-text/docbook-sgml-dtd-4.2"
+	~app-text/docbook-sgml-dtd-4.2"
+
+src_unpack() {
+	base_src_unpack
+	cd ${S}/src
+	epatch ${FILESDIR}/${P}-gcc34.patch
+}
 
 src_compile() {
 	local myconf
-	if [ `use opengl` ]; then
+
+	[ "${ARCH}" = "amd64" ] && append-flags -fPIC
+
+	# Strip -O? from CFLAGS because of bugs
+	# in the garbage collection of gcc on ppc.
+	# See bug #73611
+	[ "${ARCH}" = "ppc" ] && filter-flags "-O?"
+
+	if use opengl; then
 		myconf="--enable-hopengl"
+		# the nvidia drivers *seem* not to work together
+		# with pthreads
+		[ ! -f /etc/env.d/09opengl ] \
+			|| [ -z "`grep opengl/nvidia/lib /etc/env.d/09opengl`" ] \
+			&& myconf="$myconf --with-pthreads" \
+			|| myconf="--with-pthreads"
 	fi
 
 	# When timing is enabled, the build will fail at some
@@ -40,7 +62,7 @@ src_compile() {
 	# about how you need to give "--host --target --build",
 	# and sometimes it will refuse to run at all.
 
-	cd ${S}/src/unix || die
+	cd ${S}/src/unix || die "source directory not found"
 	./configure \
 		--host=${CHOST} \
 		--target=${CHOST} \
@@ -53,17 +75,17 @@ src_compile() {
 		--enable-profiling \
 		${myconf} || die "./configure failed"
 	cd ..
-	emake || die
+	emake || die "make failed"
 }
 
 src_install () {
-	cd ${S}/src || die
+	cd ${S}/src || die "source directory not found"
 	make \
 		HUGSDIR=${D}/usr/lib/hugs \
 		prefix=${D}/usr \
 		mandir=${D}/usr/share/man \
 		infodir=${D}/usr/share/info \
-		install || die
+		install || die "make install failed"
 
 	#somewhat clean-up installation of few docs
 	cd ${S}

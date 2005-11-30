@@ -1,7 +1,29 @@
-# ChangeLog for net-misc/fsh 
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-misc/fsh/ChangeLog,v 1.1 2002/10/02 03:46:02 drobbins Exp $
+# ChangeLog for net-misc/fsh
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/fsh/ChangeLog,v 1.1.1.1 2005/11/30 09:55:45 chriswhite Exp $
 
+*fsh-1.2-r2 (09 Jun 2005)
+
+  09 Jun 2005; Rob Cakebread <pythonhead@gentoo.org>
+  +files/fsh-1.2-gentoo-fcntl.patch, fsh-1.2-r1.ebuild, +fsh-1.2-r2.ebuild:
+  Fixed FCNTL problem with Python 2.4 bug# 95533
+
+  16 Sep 2004; <blubb@gentoo.org> fsh-1.2-r1.ebuild:
+  added ~amd64
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  13 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> fsh-1.2-r1.ebuild,
+  -fsh-1.2.ebuild:
+  don't set rdepend==depend; tidy
+
+*fsh-1.2-r1 (23 Apr 2003)
+
+  23 Apr 2003; Wout Mertens <wmertens@gentoo.org>
+  	fsh-1.2-r1.ebuild files/fsh-1.2-fcpwrap.patch:
+  Fixed bug where fcp user@host would fail. Reported upstream.
+  
 *fsh-1.2 (01 Oct 2002)
 
   01 Oct 2002; Daniel Robbins <drobbins@gentoo.org>: Initial package.

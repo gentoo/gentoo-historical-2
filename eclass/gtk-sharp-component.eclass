@@ -1,31 +1,27 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/gtk-sharp-component.eclass,v 1.1 2004/11/19 03:00:05 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/gtk-sharp-component.eclass,v 1.1.1.1 2005/11/30 09:59:26 chriswhite Exp $
 
 # Author : Peter Johanson <latexer@gentoo.org>
 # Based off of original work in gst-plugins.eclass by <foser@gentoo.org>
 
-inherit eutils mono
+inherit eutils mono multilib
 
-ECLASS="gtk-sharp-component"
-INHERITED="$INHERITED $ECLASS"
 
 LICENSE="LGPL-2"
 
 HOMEPAGE="http://gtk-sharp.sourceforge.net/"
 LICENSE="LGPL-2.1"
+RESTRICT="test"
 
-SRC_URI="mirror://sourceforge/gtk-sharp/${MY_P}.tar.gz
-		mirror://gentoo/${MY_P}-configurable.diff.gz"
+[ "${PV:0:1}" == "2" ] \
+	&& SOURCE_SERVER="http://www.go-mono.com/sources/gtk-sharp-2.0/"
 
-S=${WORKDIR}/${MY_P}
+[ "${PV}" == "1.0.10" ] \
+	&& SOURCE_SERVER="http://www.go-mono.com/sources/gtk-sharp/"
 
-# Make sure we're building with the same version.
-DEPEND="${DEPEND}
-	=dev-dotnet/${MY_P}*
-	sys-devel/automake
-	sys-devel/autoconf
-	>=sys-apps/sed-4"
+[ -z "${SOURCE_SERVER}" ] \
+	&& SOURCE_SERVER="mirror://sourceforge/gtk-sharp/"
 
 ###
 # variable declarations
@@ -56,52 +52,99 @@ GTK_SHARP_COMPONENT_BUILD_DEPS=""
 # Actual build dir, is the same as the configure switch name most of the time
 GTK_SHARP_COMPONENT_BUILD_DIR=${PN/-sharp/}
 
-DESCRIPTION="${GTK_SHARP_COMPONENT_BUILD} plugin for gstreamer"
+DESCRIPTION="${GTK_SHARP_COMPONENT_BUILD} component of gtk-sharp"
+SRC_URI="${SOURCE_SERVER}/${MY_P}.tar.gz
+		mirror://gentoo/${MY_P}-configurable.diff.gz"
+
+S=${WORKDIR}/${MY_P}
+
+# Make sure we're building with the same version.
+DEPEND="=dev-dotnet/${MY_P}*
+	sys-devel/automake
+	sys-devel/autoconf
+	>=sys-apps/sed-4"
+
 
 ###
 # public functions
 ###
 
-gtk-sharp-component_src_unpack() {
+gtk-sharp-component_fix_makefiles() {
 	GAPI_DIR="${ROOT}/usr/share/gapi${GTK_SHARP_COMPONENT_SLOT_DEC}"
 	GAPI_FIXUP="gapi${GTK_SHARP_COMPONENT_SLOT}-fixup"
 	GAPI_CODEGEN="gapi${GTK_SHARP_COMPONENT_SLOT}-codegen"
-	GTK_SHARP_LIB_DIR="${ROOT}/usr/lib/mono/gtk-sharp${GTK_SHARP_COMPONENT_SLOT_DEC}"
+	GTK_SHARP_LIB_DIR="${ROOT}/usr/$(get_libdir)/mono/gtk-sharp${GTK_SHARP_COMPONENT_SLOT_DEC}"
 
+	local makefiles="$(find ${S} -name Makefile.in)"
+	# Universal changes needed for all versions
+	sed -i -e "s;\(\.\.\|\$(top_srcdir)\)/[[:alpha:]]*/\([[:alpha:]]*\(-[[:alpha:]]*\)*\).xml;${GAPI_DIR}/\2.xml;g" \
+		-i -e "s;/r:\(\.\./\)*[[:alpha:]]*/\([[:alpha:]]*\(-[[:alpha:]]*\)*\).dll;/r:${GTK_SHARP_LIB_DIR}/\2.dll;g" \
+			${makefiles} || die "Failed to fix the gtk-sharp makefiles"
+
+	if [ "${PV:0:1}" == "2" ] ; then
+		sed -i -e "s:\$(SYMBOLS) \$(top_builddir)/parser/gapi-fixup.exe:\$(SYMBOLS):" \
+			-e "s:\$(INCLUDE_API) \$(top_builddir)/generator/gapi_codegen.exe:\$(INCLUDE_API):" \
+			-e "s:\$(RUNTIME) \$(top_builddir)/parser/gapi-fixup.exe:${GAPI_FIXUP}:" \
+			-e "s:\$(RUNTIME) \$(top_builddir)/generator/gapi_codegen.exe:${GAPI_CODEGEN}:" \
+			-e "s;\.\./[[:alpha:]]*/\([[:alpha:]]*\(-[[:alpha:]]*\)*\).dll;${GTK_SHARP_LIB_DIR}/\1.dll;g" \
+			${makefiles} || die "Failed to fix the gtk-sharp makefiles"
+	fi
+
+	# Changes specific to 1.9.3
+#	if [ "${PV:0:5}" == "1.9.3" ] || \
+#	   [ "${PV:0:5}" == "1.9.5" ] || \
+#	   [ "${PV:0:3}" == "2.3" ] || \
+#	   [ "${PV:0:3}" == "2.5" ] ; then
+#		sed -i -e "s:\$(API) \$(top_builddir)/parser/gapi-fixup.exe:\$(API):" \
+#			-e "s:\$(API) \$(top_builddir)/generator/gapi_codegen.exe:\$(API):" \
+#			${makefiles} || die "Failed to fix the gtk-sharp makefiles"
+#	fi
+
+	# Changes specific to *-sharp-1.0.x
+	if [ "${PV:0:3}" = "1.0" ] ; then
+		sed -i -e "s:\$(RUNTIME) \.\./parser/gapi-fixup.exe:${GAPI_FIXUP}:" \
+			-e "s:\$(RUNTIME) \.\./generator/gapi_codegen.exe:${GAPI_CODEGEN}:" \
+			-e "s: \.\./generator/gapi_codegen.exe::" \
+			${makefiles} || die "Failed to fix the gtk-sharp makefiles"
+	fi
+
+	# Changes only in 1.9.x
+#	if [ "${PV:0:1}" == "2" ]; then
+#		sed -i -e "s;\.\./[[:alpha:]]*/\([[:alpha:]]*\(-[[:alpha:]]*\)*\).dll;${GTK_SHARP_LIB_DIR}/\1.dll;g" \
+#			${makefiles} || die "Failed to fix the gtk-sharp makefiles"
+#	fi
+}
+
+gtk-sharp-component_src_unpack() {
 	unpack ${A}
-    cd ${S}
+	cd ${S}
 
 	# Make the components configurable
 	epatch ${WORKDIR}/${MY_P}-configurable.diff
-	aclocal || die
-	automake || die
-	autoconf || die
+	aclocal || die "aclocal failed"
+	# See bug #73563, comment #9
+	libtoolize --copy --force || die "libtoolize failed"
+	automake || die "automake failed"
+
+	# fixes support with pkgconfig-0.17, bug #92503
+	sed -i -e 's/\<PKG_PATH\>/GTK_SHARP_PKG_PATH/g' configure.in
+
+	# Use correct libdir in pkgconfig files
+	sed -i -e 's:^libdir.*:libdir=@libdir@:' \
+		${S}/*/{,GConf}/*.pc.in || die
+
+	autoconf || die "autoconf failed"
 
 	# disable building of samples (#16015)
-    sed -i -e "s:sample::" ${S}/Makefile.in || die
+	sed -i -e "s:sample::" ${S}/Makefile.in || die
 
 	cd ${S}/${GTK_SHARP_COMPONENT_BUILD_DIR}
 
-	# Change references like "/r:../glib/glib-sharp.dll" ->
-	# "/r:${GTK_SHARP_LIB_DIR}/glib-sharp.dll" and references like
-	# "../glib/glib-sharp.xml" or "$(top_srcdir)/glib/glib-sharp.xml" ->
-	# "${GAPI_DIR}/glib-sharp.xml"
-	#
-	# We also make sure to call the installed gapi-fixup and gapi-codegen
-	# and not the ones that would be built locally
-	for makefile in $(find . -name Makefile.in)
-	do
-		sed -i -e "s;/r:\(\.\./\)*[[:alpha:]]*/\([[:alpha:]]*-[[:alpha:]]*\).dll;/r:${GTK_SHARP_LIB_DIR}/\2.dll;g" \
-			-e "s;\(\.\.\|\$(top_srcdir)\)/[[:alpha:]]*/\([[:alpha:]]*-[[:alpha:]]*\).xml;${GAPI_DIR}/\2.xml;g" \
-			-e "s:\$(RUNTIME) \.\./parser/gapi-fixup.exe:${GAPI_FIXUP}:" \
-			-e "s:\$(RUNTIME) \.\./generator/gapi_codegen.exe:${GAPI_CODEGEN}:" \
-			-e "s: \.\./generator/gapi_codegen.exe::" \
-			${makefile} || die "Failed to sed"
-	done
+	gtk-sharp-component_fix_makefiles
 }
 
 gtk-sharp-component_src_configure() {
-	
+
 	# disable any external plugin besides the plugin we want
 	local component deps gtk_sharp_conf
 
@@ -125,13 +168,24 @@ gtk-sharp-component_src_compile() {
 	gtk-sharp-component_src_configure ${@}
 
 	cd ${S}/${GTK_SHARP_COMPONENT_BUILD_DIR}
-	emake || die "compile failure"
+	LANG=C emake || die "compile failure"
 }
 
 gtk-sharp-component_src_install() {
 	cd ${GTK_SHARP_COMPONENT_BUILD_DIR}
-	make GACUTIL_FLAGS="/root ${D}/usr/lib /gacdir /usr/lib /package gtk-sharp${GTK_SHARP_COMPONENT_SLOT_DEC}" \
+	LANG=C make GACUTIL_FLAGS="/root ${D}/usr/$(get_libdir) /gacdir /usr/$(get_libdir) /package gtk-sharp${GTK_SHARP_COMPONENT_SLOT_DEC}" \
 		DESTDIR=${D} install || die
 }
 
-EXPORT_FUNCTIONS src_unpack src_compile src_install
+gtk-sharp-component_pkg_postinst() {
+	if [ "${PV:0:3}" == "2.6" ]; then
+		ewarn "gtk-sharp-2.6.x is completely, and utterly unsupported by upstream."
+		ewarn "If you experience any bugs related to using gtk-sharp-2.6.x, do"
+		ewarn "*not* submit them upstream, ask about them on IRC, or email any"
+		ewarn "mailinglists. If you think you have found a genuine bug or need help,"
+		ewarn "first down grade *all* *-sharp packages to the 2.4.x release and"
+		ewarn "test there."
+	fi
+}
+
+EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst

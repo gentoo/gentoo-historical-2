@@ -1,5 +1,5 @@
 # /etc/conf.d/crypto-loop
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/files/crypto-loop.confd,v 1.1 2005/04/29 23:54:25 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/util-linux/files/crypto-loop.confd,v 1.1.1.1 2005/11/30 09:56:23 chriswhite Exp $
 
 # Configuration file for /etc/init.d/crypto-loop
 

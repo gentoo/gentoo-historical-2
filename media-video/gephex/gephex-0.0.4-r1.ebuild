@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/gephex/gephex-0.0.4-r1.ebuild,v 1.1 2004/04/19 18:03:59 zypher Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/gephex/gephex-0.0.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:37 chriswhite Exp $
+
+inherit eutils
 
 MY_P=${P/_/}
 DESCRIPTION="GePhex is a modular video effect framework."
@@ -16,7 +18,7 @@ KEYWORDS="x86"
 S="${WORKDIR}/${MY_P}"
 
 DEPEND="virtual/x11
-	>=x11-libs/qt-3
+	=x11-libs/qt-3*
 	>=media-libs/libsdl-1.2.6-r3
 	>=media-libs/libpng-1.2.5-r4
 	>=media-libs/sdl-ttf-2.0.6

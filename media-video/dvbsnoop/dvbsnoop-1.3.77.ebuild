@@ -1,20 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvbsnoop/dvbsnoop-1.3.77.ebuild,v 1.1 2005/06/22 21:10:55 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvbsnoop/dvbsnoop-1.3.77.ebuild,v 1.1.1.1 2005/11/30 09:57:43 chriswhite Exp $
 
 DESCRIPTION="DVB/MPEG stream analyzer program"
 SRC_URI="mirror://sourceforge/dvbsnoop/${P}.tar.gz"
 HOMEPAGE="http://dvbsnoop.sourceforge.net/"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
-DEPEND="=media-tv/linuxtv-dvb-headers-3*"
+KEYWORDS="~amd64 ~ppc x86"
+DEPEND="|| (
+		>=sys-kernel/linux-headers-2.6.11-r2
+		media-tv/linuxtv-dvb
+	)"
+
 RDEPEND=""
 SLOT="0"
 IUSE=""
 
 src_compile() {
-	econf \
-		CPPFLAGS=-I/usr/include/dvb || die "econf failed"
+	econf || die "econf failed"
 	emake || die "emake failed"
 }
 

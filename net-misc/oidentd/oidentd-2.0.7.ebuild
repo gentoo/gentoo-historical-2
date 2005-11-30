@@ -1,24 +1,24 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/oidentd/oidentd-2.0.7.ebuild,v 1.1 2003/07/14 03:29:04 avenj Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/oidentd/oidentd-2.0.7.ebuild,v 1.1.1.1 2005/11/30 09:55:43 chriswhite Exp $
 
 IUSE="ipv6"
 
 DESCRIPTION="Another (RFC1413 compliant) ident daemon"
 HOMEPAGE="http://dev.ojnk.net/"
 SRC_URI="mirror://sourceforge/ojnk/${P}.tar.gz"
-KEYWORDS="x86 ~sparc ~alpha"
+KEYWORDS="x86 sparc ~alpha"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
 
-src_compile() {	
+src_compile() {
 	local myconf=""
 
 	use ipv6 && \
 		myconf="${myconf} --enable-ipv6" || \
-		myconf="${myconf} --disable-ipv6"	
+		myconf="${myconf} --disable-ipv6"
 
 
 	./configure \

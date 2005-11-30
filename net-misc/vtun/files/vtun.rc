@@ -1,13 +1,14 @@
 #!/sbin/runscript
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/vtun/files/vtun.rc,v 1.1.1.1 2005/11/30 09:54:58 chriswhite Exp $
 
 depend() {
 	need net
 }
 
 start() {
-	IFS=""
+	IFS=$'\n'
 	for line in `grep -v '^[[:space:]]*#' /etc/vtund-start.conf | grep -v '^[[:space:]]*$'`
 	do
 		echo $line | 
@@ -15,11 +16,11 @@ start() {
 			 read host server args
 			 if [ "$host" = "--server--" ]; then
 				 ebegin "Starting vtund server"
-				 start-stop-daemon --start --quiet --exec /usr/sbin/vtund -- $args -s -P $server
+				 /usr/sbin/vtund -s -P $server $args
 				 eend $?
 			 else
 				 ebegin "Starting vtund client $host to $server"
-				 start-stop-daemon --start --quiet --exec /usr/sbin/vtund -- $args $host $server
+				 /usr/sbin/vtund $args -- $host $server
 				 eend $?
 			 fi)
 	done

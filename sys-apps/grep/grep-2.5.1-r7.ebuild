@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/grep/grep-2.5.1-r7.ebuild,v 1.1 2005/01/06 05:36:21 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/grep/grep-2.5.1-r7.ebuild,v 1.1.1.1 2005/11/30 09:57:01 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -11,15 +11,12 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="build nls pcre static uclibc"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="build nls pcre static"
 
-RDEPEND="virtual/libc"
+RDEPEND=""
 DEPEND="${RDEPEND}
-	pcre? (
-		>=sys-apps/sed-4
-		dev-libs/libpcre
-	)
+	pcre? (	dev-libs/libpcre )
 	nls? ( sys-devel/gettext )"
 
 src_unpack() {
@@ -37,7 +34,9 @@ src_unpack() {
 	epatch "${FILESDIR}"/${P}-oi.patch.bz2
 	epatch "${FILESDIR}"/${P}-restrict_arr.patch
 	epatch "${FILESDIR}"/${PV}-utf8-case.patch
-	epatch "${FILESDIR}"/${PV}-tests.patch
+
+	# uclibc does not suffer from this glibc bug.
+	use elibc_uclibc || epatch "${FILESDIR}"/${PV}-tests.patch
 }
 
 src_compile() {
@@ -46,24 +45,16 @@ src_compile() {
 		append-ldflags -static
 	fi
 
-	local myconf
-	if use uclibc ; then
-		myconf="${myconf} --without-included-regex"
-	else
-		myconf="${myconf} $(use_enable pcre perl-regexp)"
-	fi
 	econf \
 		--bindir=/bin \
 		$(use_enable nls) \
-		${myconf} \
+		$(use_enable pcre perl-regexp) \
 		|| die "econf failed"
 
-	if use pcre && ! use uclibc ; then
-		sed -i \
-			-e 's:-lpcre:/usr/lib/libpcre.a:g' \
-			{lib,src}/Makefile \
-			|| die "sed Makefile failed"
-	fi
+	# force static linking so we dont have to move it into /
+	sed -i \
+		-e 's:-lpcre:-Wl,-Bstatic -lpcre -Wl,-Bdynamic:g' \
+		src/Makefile || die "sed static pcre failed"
 
 	emake || die "emake failed"
 }

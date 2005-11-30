@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvd-slideshow/dvd-slideshow-0.7.1.ebuild,v 1.1 2005/05/27 16:21:57 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvd-slideshow/dvd-slideshow-0.7.1.ebuild,v 1.1.1.1 2005/11/30 09:57:48 chriswhite Exp $
 
 MY_P="${PN}_${PV}"
 
@@ -10,17 +10,19 @@ SRC_URI="mirror://sourceforge/dvd-slideshow/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND=">=media-video/dvdauthor-0.6.9
+DEPEND=">=media-video/dvdauthor-0.6.10
 	virtual/cdrtools
+	app-shells/bash
 	media-libs/netpbm
 	>=media-gfx/imagemagick-5.5.4
 	media-video/mjpegtools
 	media-video/transcode
-	media-video/ffmpeg
+	>=media-video/ffmpeg-0.4.8
 	media-sound/lame
+	media-sound/sox
 	media-sound/toolame
 	media-gfx/jhead"
 
@@ -30,7 +32,7 @@ src_compile() { :; }
 
 src_install() {
 	dobin dvd-* *2slideshow
-	dodoc *.txt doc/*.txt
+	dodoc *.txt dvd-slideshowrc
 	dohtml doc/*.html
 	doman man/*
 }

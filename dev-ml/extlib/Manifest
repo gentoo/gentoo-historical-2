@@ -1,3 +1,4 @@
+MD5 173cf5e775c1744c4fd54f2854f11ece extlib-1.4.ebuild 704
+MD5 cc52e4e33c19d17107d313d9fb3e4f76 ChangeLog 800
 MD5 8b350f19c06fcabf1053b0421b7c3f5a metadata.xml 155
-MD5 9dca0785d6fef24d5fe0f9d4a508154b extlib-1.2.ebuild 602
-MD5 96670a25615fa0a849102804021fee8e files/digest-extlib-1.2 58
+MD5 1505b24456af0782c27412ac31667415 files/digest-extlib-1.4 58

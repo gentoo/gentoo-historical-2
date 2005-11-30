@@ -1,3 +1,4 @@
-# Config file for /etc/init.d/apmd
+# /etc/init.d/apmd:
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/files/apmd.confd,v 1.1.1.1 2005/11/30 09:56:00 chriswhite Exp $
 
-#APMD_OPTS="-P /etc/apm/apmd_proxy"
+APMD_OPTS="-P /etc/apm/apmd_proxy"

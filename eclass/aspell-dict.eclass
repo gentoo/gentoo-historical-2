@@ -1,39 +1,52 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/eclass/aspell-dict.eclass,v 1.1.1.1 2005/11/30 09:59:26 chriswhite Exp $
+#
 # Author: Seemant Kulleen <seemant@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/eclass/aspell-dict.eclass,v 1.1 2002/08/15 08:23:01 seemant Exp $
-
+#
 # The aspell-dict eclass is designed to streamline the construction of
 # ebuilds for the new aspell dictionaries (from gnu.org) which support
-# aspell-0.50
+# aspell-0.50. Support for aspell-0.60 has been added by Sergey Ulanov.
 
-ECLASS=aspell-dict
-INHERITED="${INHERITED} ${ECLASS}"
 
 EXPORT_FUNCTIONS src_compile src_install
 
-MY_P=${PN}-${PV%.*.*}-${PV#*.*.}
+#MY_P=${PN}-${PV%.*}-${PV#*.*.}
+MY_P=${P%.*}-${PV##*.}
+MY_P=aspell${ASPOSTFIX}-${MY_P/aspell-/}
+SPELLANG=${PN/aspell-/}
 S=${WORKDIR}/${MY_P}
-DESCRIPTION="${ASPELL_LANG} dictionary for aspell"
-HOMEPAGE="http://www.gnu.org/projects/aspell/index.html"
-SRC_URI="http://savannah.gnu.org/download/aspell/dicts/${MY_P}.tar.bz2"
+DESCRIPTION="${ASPELL_LANG} language dictionary for aspell"
+HOMEPAGE="http://aspell.net"
+SRC_URI="ftp://ftp.gnu.org/gnu/aspell/dict/${SPELLANG}/${MY_P}.tar.bz2"
 
-DEPEND="=app-text/aspell-0.50*"
-
+IUSE=""
 SLOT="0"
-LICENSE="as-is"
-KEYWORDS="x86"
+
+if [ x${ASPOSTFIX} = x6 ] ; then
+	RDEPEND=">=app-text/aspell-0.60
+		sys-apps/which"
+	DEPEND="${RDEPEND}"
+	KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+else
+	RDEPEND=">=app-text/aspell-0.50
+		sys-apps/which"
+	DEPEND="${RDEPEND}"
+	KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64"
+fi
+
+PROVIDE="virtual/aspell-dict"
 
 aspell-dict_src_compile() {
+	echo `pwd`
 	./configure || die
 	emake || die
 }
 
 aspell-dict_src_install() {
+	make DESTDIR=${D} install || die
 
-	make \
-		DESTDIR=${D} \
-		install || die
-
-	dodoc Copyright README info
+	for doc in README info ; do
+		[ -s "$doc" ] && dodoc $doc
+	done
 }

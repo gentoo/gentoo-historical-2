@@ -1,6 +1,13 @@
 # ChangeLog for sys-apps/ucspi-proxy
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-proxy/ChangeLog,v 1.1 2003/08/11 09:46:58 robbat2 Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-proxy/ChangeLog,v 1.1.1.1 2005/11/30 09:56:04 chriswhite Exp $
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ucspi-proxy-0.95.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 Sep 2003; Robin H. Johnson <robbat2@gentoo.org> ucspi-proxy-0.95.ebuild:
+  bump to stable
 
 *ucspi-proxy-0.95 (11 Aug 2003)
 

@@ -1,7 +1,7 @@
 --- libmisc/old/xmalloc.c	2004-04-21 09:15:20.000000000 +0000
 +++ libmisc/xmalloc.c	2004-04-21 09:32:50.000000000 +0000
 @@ -13,7 +13,7 @@
- RCSID ("$Id: shadow-4.0.4.1-gcc34-xmalloc.patch,v 1.1 2004/04/22 11:22:43 lv Exp $")
+ RCSID ("$Id: shadow-4.0.4.1-gcc34-xmalloc.patch,v 1.1.1.1 2005/11/30 09:57:05 chriswhite Exp $")
  #include <stdio.h>
  #include "defines.h"
 -extern char *malloc ();

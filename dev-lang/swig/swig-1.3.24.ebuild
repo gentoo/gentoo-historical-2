@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/swig-1.3.24.ebuild,v 1.1 2005/02/19 20:35:19 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/swig-1.3.24.ebuild,v 1.1.1.1 2005/11/30 09:58:35 chriswhite Exp $
 
 inherit flag-o-matic mono #48511
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~s390 ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sparc ~x86"
 IUSE="java guile python tcltk ruby perl php X"
 
 DEPEND="virtual/libc
@@ -23,7 +23,7 @@ DEPEND="virtual/libc
 		X? ( dev-lang/tk )
 	)
 	perl? ( >=dev-lang/perl-5.6.1 )
-	php? ( >=dev-php/php-4.0.0 )"
+	php? ( virtual/php )"
 
 S=${WORKDIR}/SWIG-${PV}
 
@@ -68,5 +68,5 @@ src_install() {
 }
 
 src_test() {
-	einfo "FEATURES=\"maketest\" has been disabled for dev-util/cvs"
+	einfo "FEATURES=\"maketest\" has been disabled for dev-lang/swig"
 }

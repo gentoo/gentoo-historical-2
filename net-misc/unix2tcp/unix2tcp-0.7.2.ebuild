@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc., 2003 Mihai RUSU
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/unix2tcp/unix2tcp-0.7.2.ebuild,v 1.1 2003/09/22 20:45:04 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/unix2tcp/unix2tcp-0.7.2.ebuild,v 1.1.1.1 2005/11/30 09:55:38 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,8 @@ SRC_URI="http://dizzy.roedu.net/unix2tcp/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 s390"
+IUSE=""
 
 src_compile() {
 	emake LDFLAGS="${LDFLAGS}" || die

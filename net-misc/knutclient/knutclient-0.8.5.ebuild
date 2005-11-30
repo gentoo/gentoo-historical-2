@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/knutclient/knutclient-0.8.5.ebuild,v 1.1 2004/11/25 12:33:31 carlo Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/knutclient/knutclient-0.8.5.ebuild,v 1.1.1.1 2005/11/30 09:55:40 chriswhite Exp $
 
 inherit kde
 
@@ -13,7 +13,12 @@ SRC_URI="ftp://ftp.buzuluk.cz/pub/alo/knutclient/stable/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="~ppc ~sparc x86"
 IUSE=""
 
 need-kde 3.1
+
+src_unpack() {
+	kde_src_unpack
+	use arts || epatch ${FILESDIR}/${P}-arts-configure.patch
+}

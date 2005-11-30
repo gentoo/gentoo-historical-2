@@ -1,27 +1,35 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/dvdauthor/dvdauthor-0.6.10.ebuild,v 1.1 2004/05/16 14:59:22 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/dvdauthor/dvdauthor-0.6.10.ebuild,v 1.1.1.1 2005/11/30 09:57:36 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Tools for generating DVD files to be played on standalone DVD players"
-HOMEPAGE="http://sourceforge.net/projects/dvdauthor/"
+HOMEPAGE="http://dvdauthor.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-RESTRICT="nomirror"
+
 LICENSE="GPL-2"
 SLOT="0"
-
-KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
-IUSE="png zlib"
+KEYWORDS="~x86 ~ppc ~sparc amd64 ~ppc64"
+IUSE=""
 
 DEPEND="media-libs/libdvdread
 	>=media-gfx/imagemagick-5.5.7.14
-	>=dev-libs/libxml2-2.5.0"
+	>=dev-libs/libxml2-2.5.0
+	media-libs/libpng"
 
-src_compile() {
-	econf || die "configuration failed"
-	emake || die "make failed"
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/${P}-gcc34.patch
+	epatch ${FILESDIR}/${P}-utf8.patch
+	epatch ${FILESDIR}/${P}-im6.patch
+
+	# see #62836
+	epatch ${FILESDIR}/${P}-debugsegfault.patch
 }
 
 src_install() {
-	einstall || die "installation failed"
+	make install DESTDIR=${D} || die "installation failed"
 	dodoc README HISTORY TODO
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/gpc/gpc-20050331.ebuild,v 1.1 2005/04/17 21:28:18 george Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/gpc/gpc-20050331.ebuild,v 1.1.1.1 2005/11/30 09:58:44 chriswhite Exp $
 
 inherit eutils flag-o-matic
 

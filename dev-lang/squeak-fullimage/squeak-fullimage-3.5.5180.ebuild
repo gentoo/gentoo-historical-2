@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak-fullimage/squeak-fullimage-3.5.5180.ebuild,v 1.1 2004/04/28 16:19:19 jhhudso Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/squeak-fullimage/squeak-fullimage-3.5.5180.ebuild,v 1.1.1.1 2005/11/30 09:58:37 chriswhite Exp $
 
 MAJOR=3
 MINOR=5
@@ -23,7 +23,7 @@ SLOT="${MM}"
 
 KEYWORDS="~x86"
 
-IUSE="mozilla"
+IUSE=""
 
 PROVIDE="virtual/squeak-image"
 

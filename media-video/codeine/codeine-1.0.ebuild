@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/codeine/codeine-1.0.ebuild,v 1.1 2005/09/06 02:20:56 cryos Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/codeine/codeine-1.0.ebuild,v 1.1.1.1 2005/11/30 09:57:26 chriswhite Exp $
 
 inherit kde multilib
 

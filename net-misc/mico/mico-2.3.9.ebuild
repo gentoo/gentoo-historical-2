@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.9.ebuild,v 1.1 2003/03/28 22:01:31 tantive Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/mico/mico-2.3.9.ebuild,v 1.1.1.1 2005/11/30 09:55:38 chriswhite Exp $
 
 IUSE="ssl tcltk"
 
@@ -9,9 +9,9 @@ HOMEPAGE="http://www.mico.org/"
 SRC_URI="http://www.mico.org/${P}.tar.gz"
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 ~alpha ~amd64"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	sys-devel/flex
 	sys-devel/bison
 	ssl? ( dev-libs/openssl )
@@ -20,8 +20,8 @@ DEPEND="virtual/glibc
 S="${WORKDIR}/${PN}"
 
 src_compile() {
-	local myopts="--enable-final 
-		--disable-mini-stl 
+	local myopts="--enable-final
+		--disable-mini-stl
 		--enable-except
 		--enable-dynamic
 		--enable-repo

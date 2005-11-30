@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/gawk-3.1.5.ebuild,v 1.1 2005/09/01 06:26:58 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gawk/gawk-3.1.5.ebuild,v 1.1.1.1 2005/11/30 09:56:36 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://gnu/gawk/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc-macos ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="nls build"
 
 RDEPEND=""
@@ -27,6 +27,7 @@ src_unpack() {
 
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-core.patch
+	epatch "${FILESDIR}"/${P}-gcc4.patch
 	epatch "${FILESDIR}"/${PN}-3.1.3-getpgrp_void.patch #fedora
 	# support for dec compiler.
 	[[ $(tc-getCC) == "ccc" ]] && epatch "${FILESDIR}"/${PN}-3.1.2-dec-alpha-compiler.diff
@@ -35,26 +36,20 @@ src_unpack() {
 src_compile() {
 	econf \
 		--bindir=/bin \
+		--libexec=/usr/lib/misc \
 		$(use_enable nls) \
 		--enable-switch \
 		|| die
 	emake || die "emake failed"
 
 	cd "${SFFS}"
-	emake AWKINCDIR="${S}" CC=$(tc-getCC) || die "filefuncs emake failed"
+	emake CC=$(tc-getCC) || die "filefuncs emake failed"
 }
 
 src_install() {
 	make install DESTDIR="${D}" || die "install failed"
-	if ! use userland_Darwin ; then
-		cd "${SFFS}"
-		make \
-			DESTDIR="${D}" \
-			AWKINCDIR="${S}" \
-			LIBDIR="$(get_libdir)" \
-			install \
-			|| die "filefuncs install failed"
-	fi
+	cd "${SFFS}"
+	make LIBDIR="$(get_libdir)" install || die "filefuncs install failed"
 
 	dodir /usr/bin
 	# In some rare cases, (p)gawk gets installed as (p)gawk- and not

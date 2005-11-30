@@ -1,19 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/nxproxy/nxproxy-1.4.0-r2.ebuild,v 1.1 2005/01/02 10:23:49 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/nxproxy/nxproxy-1.4.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:54:59 chriswhite Exp $
 
 MY_P="${PN}-${PV}-2"
 DESCRIPTION="X11 protocol compression library wrapper"
 HOMEPAGE="http://www.nomachine.com/"
 URI_BASE="http://www.nomachine.com/download/nxsources/"
 SRC_NXPROXY="${MY_P}.tar.gz"
-SRC_NXCOMP="nxcomp-1.4.0-30.tar.gz"
-SRC_URI="$URI_BASE/nxproxy/${SRC_NXPROXY} $URI_BASE/nxcomp/${SRC_NXCOMP}"
+SRC_URI="$URI_BASE/nxproxy/${SRC_NXPROXY}"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ~ppc"
 IUSE=""
-DEPEND=">=net-misc/nx-x11-1.4.0
+DEPEND="=net-misc/nx-x11-1.4*
 	sys-devel/patch
 	>=media-libs/jpeg-6b-r3
 	>=sys-libs/glibc-2.3.2-r1
@@ -23,13 +22,6 @@ DEPEND=">=net-misc/nx-x11-1.4.0
 #RDEPEND=""
 
 S=${WORKDIR}/${PN}
-
-src_unpack() {
-	# we can't use ${A} because of bug #61977
-	unpack ${SRC_NXPROXY}
-	unpack ${SRC_NXCOMP}
-	cd ${S}
-}
 
 src_compile() {
 	./configure

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-1.1.9.1.ebuild,v 1.1 2005/09/22 22:37:46 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-1.1.9.1.ebuild,v 1.1.1.1 2005/11/30 09:58:07 chriswhite Exp $
 
 inherit eutils mono flag-o-matic
 
@@ -15,6 +15,7 @@ IUSE="nptl icu X"
 
 DEPEND="virtual/libc
 	>=dev-libs/glib-2.0
+	sys-devel/bc
 	!<dev-dotnet/pnet-0.6.12
 	nptl? ( >=sys-devel/gcc-3.3.5-r1 )
 	icu? ( >=dev-libs/icu-2.6.2 )
@@ -33,10 +34,13 @@ src_unpack() {
 	cd ${S}
 
 	# Fix munging of Unix paths
-	epatch ${FILESDIR}/${PN}-1.1.5-pathfix.diff || die
+	epatch ${FILESDIR}/${PN}-1.1.5-pathfix.diff
 
 	# Fix for linking to ICU
-	epatch ${FILESDIR}/${PN}-1.1.5-icu-linking.diff || die
+	epatch ${FILESDIR}/${PN}-1.1.5-icu-linking.diff
+
+	# Fix for bug #106971
+	epatch ${FILESDIR}/${P}-io-layer-fix.diff
 
 	# Install all our .dlls under $(libdir), not $(prefix)/lib
 	sed -i -e 's:$(prefix)/lib:$(libdir):' \

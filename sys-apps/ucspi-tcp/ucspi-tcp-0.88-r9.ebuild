@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-tcp/ucspi-tcp-0.88-r9.ebuild,v 1.1 2005/01/06 20:10:25 hansmi Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/ucspi-tcp/ucspi-tcp-0.88-r9.ebuild,v 1.1.1.1 2005/11/30 09:57:08 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 
@@ -15,19 +15,23 @@ SRC_URI="http://cr.yp.to/${PN}/${P}.tar.gz
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 ~ppc-macos sparc s390 x86"
-IUSE="ssl ipv6 selinux"
+IUSE="ssl ipv6 selinux doc"
 
 DEPEND="virtual/libc
 	ssl? ( >=dev-libs/openssl-0.9.6g )"
 RDEPEND="${DEPEND}
+	doc? ( app-doc/ucspi-tcp-man )
 	selinux? ( sec-policy/selinux-ucspi-tcp )"
 PROVIDE="virtual/inetd"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+
 	if use ipv6; then
 		epatch ${WORKDIR}/ucspi-tcp-0.88-ipv6.diff13
+		# Fixes bug 18892
+		epatch ${FILESDIR}/${PV}-bigendian.patch
 	fi
 	if use ssl; then
 		# this is a merged thingy. Thanks to Stephen Olesen <slepp.netmonks.ca>
@@ -41,8 +45,6 @@ src_unpack() {
 	epatch ${FILESDIR}/${PV}-errno.patch
 	epatch ${DISTDIR}/ucspi-rss.diff
 	epatch ${FILESDIR}/${PV}-head-1.patch
-	# Fixes bug 18892
-	epatch ${FILESDIR}/${PV}-bigendian.patch
 
 	echo "$(tc-getCC) ${CFLAGS}" > conf-cc
 	echo "$(tc-getCC) ${LDFLAGS}" > conf-ld

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.0.1.ebuild,v 1.1 2003/07/31 10:49:24 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.0.1.ebuild,v 1.1.1.1 2005/11/30 09:58:10 chriswhite Exp $
 
 #Some explanation of bootstrap logic:
 #
@@ -34,7 +34,7 @@ SRC_URI="http://www.haskell.org/ghc/dist/${PV}/ghc-${PV}-src.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~sparc -ppc -alpha"
+KEYWORDS="~x86 -sparc -ppc -alpha"
 
 
 PROVIDE="virtual/ghc"
@@ -49,18 +49,19 @@ DEPEND="virtual/ghc
 	>=dev-libs/gmp-4.1
 	doc? ( >=app-text/openjade-1.3.1
 		>=app-text/sgml-common-0.6.3
-		=app-text/docbook-sgml-dtd-3.1-r1
+		~app-text/docbook-sgml-dtd-3.1
 		>=app-text/docbook-dsssl-stylesheets-1.64
 		>=dev-haskell/haddock-0.4
-		tetex? ( >=app-text/tetex-1.0.7
+		tetex? ( virtual/tetex
 			>=app-text/jadetex-3.12 ) )
 	opengl? ( virtual/opengl
 		virtual/glu
 		virtual/glut )"
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	>=sys-devel/gcc-2.95.3
 	>=dev-lang/perl-5.6.1
+	>=dev-libs/gmp-4.1
 	opengl? ( virtual/opengl virtual/glu virtual/glut )"
 
 # extend path to /opt/ghc/bin to guarantee that ghc-bin is found
@@ -68,6 +69,9 @@ GHCPATH="${PATH}:/opt/ghc/bin"
 
 src_unpack() {
 	base_src_unpack
+
+	# haddock-0.6 cannot parse Control/Monad.hs
+	patch -p0 < ${FILESDIR}/ghc-6.0.1.haddock.patch
 
 	# fix libraries/OpenGL/Makefile
 	cd ${S}
@@ -79,9 +83,15 @@ src_unpack() {
 
 src_compile() {
 	local myconf
-	if [ `use opengl` ]; then
+	if use opengl; then
 		myconf="--enable-hopengl"
 	fi
+
+	# disable the automatic PIC building which is considered as Prologue Junk by the Haskell Compiler
+	# thanks to Peter Simons for finding this and giving notice on bugs.gentoo.org
+	# new logic for hardened gcc specs file by pappy
+	echo "SRC_CC_OPTS+=-fno-pic -fno-stack-protector" >> mk/build.mk
+	echo "SRC_HC_OPTS+=-optc-fno-pic -optc-fno-stack-protector" >> mk/build.mk
 
 	# unset SGML_CATALOG_FILES because documentation installation
 	# breaks otherwise ...
@@ -106,9 +116,9 @@ src_install () {
 	local mydoc
 
 	# determine what to do with documentation
-	if [ `use doc` ]; then
+	if use doc; then
 		mydoc="html"
-		if [ `use tetex` ]; then
+		if use tetex; then
 			mydoc="${mydoc} ps"
 		fi
 	else

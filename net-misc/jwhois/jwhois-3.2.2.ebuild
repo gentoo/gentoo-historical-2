@@ -1,31 +1,35 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/jwhois/jwhois-3.2.2.ebuild,v 1.1 2003/07/27 21:20:58 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/jwhois/jwhois-3.2.2.ebuild,v 1.1.1.1 2005/11/30 09:55:40 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit gnuconfig
+
 DESCRIPTION="Advanced Internet Whois client capable of recursive queries"
 HOMEPAGE="http://www.gnu.org/software/jwhois/"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
+RESTRICT="nomirror"
 LICENSE="GPL-2"
-IUSE="nls"
-KEYWORDS="~x86 ~mips ~sparc"
-SRC_URI="ftp://ftp.gnu.org/gnu/${PN}/${P}.tar.gz"
 SLOT="0"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 ppc64"
+IUSE="nls"
 
-DEPEND="virtual/glibc"
+DEPEND="virtual/libc"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	gnuconfig_update
+}
 
 src_compile() {
-	local myconf
-	
-	use nls \
-		&& myconf="--enable-nls" \
-		|| myconf="--disable-nls"
-
-	myconf="${myconf} --sysconfdir=/etc --localstatedir=/var/cache/ --without-cache"
-
-	econf $myconf
+	econf \
+		--localstatedir=/var/cache \
+		--without-cache \
+		`use_enable nls` \
+		|| die "econf failed"
 	emake || die
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die
 }

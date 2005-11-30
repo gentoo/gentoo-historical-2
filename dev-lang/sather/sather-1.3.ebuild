@@ -1,69 +1,79 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Geert Bevin <gbevin@uwyn.com>
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/sather/sather-1.3.ebuild,v 1.1 2002/03/19 14:48:58 gbevin Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/sather/sather-1.3.ebuild,v 1.1.1.1 2005/11/30 09:58:35 chriswhite Exp $
 
-S="${WORKDIR}/Sather-1.3"
-DESCRIPTION="Sather is an object oriented language designed to be simple, efficient, safe, flexible and non-proprietary."
-SRC_URI="http://www.cs.waikato.ac.nz/sather/release/downloads/Sather-1.3.tar.gz
-	ftp://ftp.gnu.org/gnu/sather/Doc/sather-tutorial-000328.ps.gz
-	ftp://ftp.gnu.org/gnu/sather/Doc/sather-tutorial-000328.html.tar.gz
-	ftp://ftp.gnu.org/gnu/sather/Doc/sather-specification-000328.html.tar.gz
-	ftp://ftp.gnu.org/gnu/sather/Doc/sather-specification-000328.ps.gz
-	http://www.icsi.berkeley.edu/~sather/Publications/satish-thatte.ps.gz
-	http://www.icsi.berkeley.edu/~sather/Documentation/LanguageDescription/Descript.ps.gz"
-HOMEPAGE="http://www.cs.waikato.ac.nz/sather/ http://www.icsi.berkeley.edu/~sather/"
+inherit eutils
+
+MY_P="Sather-${PV}"
+DESCRIPTION="object oriented language designed to be simple, efficient, safe, flexible and non-proprietary"
+HOMEPAGE="http://www.icsi.berkeley.edu/~sather/"
+SRC_URI="mirror://gentoo/${MY_P}.tar.gz
+	ftp://ftp.gnu.org/gnu/${PN}/Doc/${PN}-tutorial-000328.ps.gz
+	ftp://ftp.gnu.org/gnu/${PN}/Doc/${PN}-tutorial-000328.html.tar.gz
+	ftp://ftp.gnu.org/gnu/${PN}/Doc/${PN}-specification-000328.html.tar.gz
+	ftp://ftp.gnu.org/gnu/${PN}/Doc/${PN}-specification-000328.ps.gz
+	http://www.icsi.berkeley.edu/~${PN}/Publications/satish-thatte.ps.gz
+	http://www.icsi.berkeley.edu/~${PN}/Documentation/LanguageDescription/Descript.ps.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~x86 sparc"
+IUSE=""
 
 DEPEND=">=sys-devel/gcc-2.95.3-r5
-		>=dev-libs/boehm-gc-6.0"
+	>=dev-libs/boehm-gc-6.0"
 RDEPEND=">=sys-devel/gcc-2.95.3-r5"
 
+S="${WORKDIR}/${MY_P}"
+
 src_unpack() {
-	unpack Sather-1.3.tar.gz
-	
+	unpack ${MY_P}.tar.gz
+
+	epatch ${FILESDIR}/${P}_gentoo.patch.gz
+
 	mkdir doc
 	cd doc
-	unpack sather-tutorial-000328.html.tar.gz
-	unpack sather-specification-000328.html.tar.gz
-	cp ${DISTDIR}/sather-tutorial-000328.ps.gz .
-	cp ${DISTDIR}/sather-specification-000328.ps.gz .
+	unpack ${PN}-tutorial-000328.html.tar.gz
+	unpack ${PN}-specification-000328.html.tar.gz
+	cp ${DISTDIR}/${PN}-tutorial-000328.ps.gz .
+	cp ${DISTDIR}/${PN}-specification-000328.ps.gz .
 	cp ${DISTDIR}/satish-thatte.ps.gz .
 	cp ${DISTDIR}/Descript.ps.gz .
 }
 
 src_compile() {
-
 	export SATHER_HOME="$S"
 	export LOCALE="en_NZ"
 	export SATHER_ENV="$SATHER_HOME/resources/$LOCALE/bin/LIBCHARS-posix"
 	export SATHER_RESOURCES="$SATHER_HOME/resources/$LOCALE"
 	export PATH="$PATH:$SATHER_HOME/bin"
-	
+
 	./configure linux || die
 	make || die
-
 }
 
-src_install () {
-
+src_install() {
 	dodir /usr
-	cp -a ${WORKDIR}/Sather-1.3 ${D}/usr/sather
-	rm -rf ${D}/usr/sather/bin/sacomp.code
-	rm -rf ${D}/usr/sather/bin/sacomp-boot.code
-	rm -rf ${D}/usr/sather/system
-	
+	cp -pPR ${WORKDIR}/${MY_P} ${D}/usr/sather
+	rm -rf ${D}/usr/${PN}/bin/sacomp.code
+	rm -rf ${D}/usr/${PN}/bin/sacomp-boot.code
+	rm -rf ${D}/usr/${PN}/sacomp
+	rm -rf ${D}/usr/${PN}/sacomp-boot
+	rm -rf ${D}/usr/${PN}/system
+	dodir /usr/${PN}/system
+	cp ${WORKDIR}/${PN}-1.3/system/CONFIG ${D}/usr/${PN}/system
+	cp ${WORKDIR}/${PN}-1.3/system/FORBID ${D}/usr/${PN}/system
+
 	cd ${WORKDIR}
-	dodoc doc/sather-specification-000328.ps.gz doc/sather-tutorial-000328.ps.gz doc/satish-thatte.ps.gz doc/Descript.ps.gz
-	cp -a doc/specification.html ${D}/usr/share/doc/${P}
-	cp -a doc/tutorial.html ${D}/usr/share/doc/${P}
-	
+	dodoc doc/${PN}-specification-000328.ps.gz doc/${PN}-tutorial-000328.ps.gz doc/satish-thatte.ps.gz doc/Descript.ps.gz
+	cp -pPR doc/specification.html ${D}/usr/share/doc/${P}
+	cp -pPR doc/tutorial.html ${D}/usr/share/doc/${P}
+
 	dodir /etc/env.d
 cat >> ${D}/etc/env.d/05sather <<EOF
-	export SATHER_HOME="/usr/sather"
-	export LOCALE="en_NZ"
-	export SATHER_ENV="/usr/sather/resources/en_NZ/bin/LIBCHARS-posix"
-	export SATHER_RESOURCES="/usr/sather/resources/en_NZ"
-	export PATH="/usr/sather/bin"
+SATHER_HOME="/usr/sather"
+SATHER_ENV="/usr/sather/resources/en_NZ/bin/LIBCHARS-posix"
+SATHER_RESOURCES="/usr/sather/resources/en_NZ"
+PATH="/usr/sather/bin"
 EOF
-
 }

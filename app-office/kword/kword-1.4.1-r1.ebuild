@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/kword/kword-1.4.1-r1.ebuild,v 1.1 2005/10/10 22:10:08 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/kword/kword-1.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:58:55 chriswhite Exp $
 
 KMNAME=koffice
 MAXKOFFICEVER=${PV}
@@ -10,8 +10,11 @@ DESCRIPTION="KOffice word processor."
 HOMEPAGE="http://www.koffice.org/"
 LICENSE="GPL-2 LGPL-2"
 
+SRC_URI="${SRC_URI}
+	mirror://kde/security_patches/post-koffice-1.4.1-rtfimport.diff"
+
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 
 RDEPEND="$(deprange $PV $MAXKOFFICEVER app-office/koffice-libs)
@@ -48,7 +51,7 @@ src_unpack() {
 	kde-meta_src_unpack unpack
 
 	# Fix RTF import buffer overflow. Applied in 1.4.2.
-	epatch "${FILESDIR}/koffice-1.4.1-rtfimport.patch"
+	epatch "${DISTDIR}/post-koffice-1.4.1-rtfimport.diff"
 
 	# We need to compile liboofilter first
 	echo "SUBDIRS = liboofilter kword" > $S/filters/Makefile.am

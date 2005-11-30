@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-0.23.4.ebuild,v 1.1 2005/03/15 22:30:20 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/dbus/dbus-0.23.4.ebuild,v 1.1.1.1 2005/11/30 09:56:44 chriswhite Exp $
 
 # because of the experimental nature debug by default
 inherit debug eutils mono python multilib

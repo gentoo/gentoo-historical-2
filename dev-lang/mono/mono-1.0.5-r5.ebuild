@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-1.0.5-r5.ebuild,v 1.1 2005/03/11 03:14:01 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/mono/mono-1.0.5-r5.ebuild,v 1.1.1.1 2005/11/30 09:58:06 chriswhite Exp $
 
 inherit eutils mono flag-o-matic debug
 
@@ -14,7 +14,7 @@ SRC_URI="http://www.go-mono.com/archive/${PV}/${P}.tar.gz
 
 LICENSE="|| ( GPL-2 LGPL-2 X11)"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc"
 IUSE="nptl"
 
 DEPEND="virtual/libc
@@ -68,18 +68,11 @@ src_compile() {
 	strip-flags
 
 	local myconf="--with-sigaltstack=yes"
-	if use nptl && have_NPTL
+	if use nptl
 	then
 		myconf="${myconf} --with-tls=__thread"
 		sed -i "s: -fexceptions::" ${S}/libgc/configure.host
 	else
-		if have_NPTL
-		then
-			ewarn "NPTL glibc detected, but nptl USE flag is not set."
-			ewarn "This may cause some problems for mono as it will be"
-			ewarn "compiled with normal pthread support."
-		fi
-
 		myconf="${myconf} --with-tls=pthread"
 	fi
 

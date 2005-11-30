@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/fpc-ide/fpc-ide-2.0.0_rc2.ebuild,v 1.1 2005/03/31 01:58:21 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/fpc-ide/fpc-ide-2.0.0_rc2.ebuild,v 1.1.1.1 2005/11/30 09:58:46 chriswhite Exp $
 
 MY_P="1.9.8"
 

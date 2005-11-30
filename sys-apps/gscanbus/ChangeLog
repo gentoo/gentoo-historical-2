@@ -1,6 +1,21 @@
 # ChangeLog for sys-apps/gscanbus
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/gscanbus/ChangeLog,v 1.1 2003/10/28 21:50:31 plasmaroo Exp $
+# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/gscanbus/ChangeLog,v 1.1.1.1 2005/11/30 09:56:41 chriswhite Exp $
+
+  26 May 2004; Danny van Dyk <kugelfang@gentoo.org> gscanbus-0.7.1.ebuild:
+  Marked ~amd64.
+
+  04 Apr 2004; Lars Weiler <pylon@gentoo.org> gscanbus-0.7.1.ebuild:
+  stable on ppc
+
+  19 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> gscanbus-0.7.1.ebuild:
+  fix depend (bug #45110); inherit eutils for epatch; patch in src_unpack; tidy
+
+  15 Feb 2004; David Holm <dholm@gentoo.org> gscanbus-0.7.1.ebuild:
+  Added to ~ppc.
+
+  29 Jan 2004; <gustavoz@gentoo.org> gscanbus-0.7.1.ebuild:
+  keyworded ~sparc
 
 *gscanbus-0.7.1 (28 Oct 2003)
 

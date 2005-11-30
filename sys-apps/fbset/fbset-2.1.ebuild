@@ -1,28 +1,37 @@
-# Copyright 1999-2000 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Achim <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/fbset/fbset-2.1.ebuild,v 1.1 2001/08/08 20:37:43 pete Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fbset/fbset-2.1.ebuild,v 1.1.1.1 2005/11/30 09:55:58 chriswhite Exp $
 
-A=${P}.tar.gz
-S=${WORKDIR}/${P}
+inherit toolchain-funcs flag-o-matic
+
 DESCRIPTION="A utility to set the framebuffer videomode"
-SRC_URI="http://home.tvd.be/cr26864/Linux/fbdev/${A}"
-HOMEPAGE="http://linux-fbdev.org"
+HOMEPAGE="http://members.chello.be/cr26864/Linux/fbdev/"
+SRC_URI="http://home.tvd.be/cr26864/Linux/fbdev/${P}.tar.gz"
 
-DEPEND="virtual/glibc"
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
+IUSE=""
+
+DEPEND="virtual/libc"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	sed -i \
+		-e "/^CC =/s:gcc:$(tc-getCC):" \
+		-e "/^CC =/s:-O2:${CFLAGS}:" \
+		-e 's/^modes.tab.c/modes.tab.h modes.tab.c/' \
+		Makefile || die "sed Makefile failed"
+}
 
 src_compile() {
-
-    try make
-
+	replace-flags -O3 -O2
+	emake || die "emake failed"
 }
 
-src_install () {
-
-    dobin fbset modeline2fb
-    doman *.[58]
-    dodoc etc/fb.modes.*
-    dodoc INSTALL
-
+src_install() {
+	dobin fbset modeline2fb || die "dobin failed"
+	doman *.[58]
+	dodoc etc/fb.modes.* INSTALL
 }
-

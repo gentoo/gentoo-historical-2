@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/fpc-source/fpc-source-1.9.5_pre20040820.ebuild,v 1.1 2004/08/21 16:40:44 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/fpc-source/fpc-source-1.9.5_pre20040820.ebuild,v 1.1.1.1 2005/11/30 09:58:23 chriswhite Exp $
 
 inherit eutils
 
@@ -12,16 +12,17 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 		doc? ( ftp://ftp.freepascal.org/pub/fpc/docs/doc-html.zip )"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 -amd64"
 IUSE="doc"
-DEPEND=""
+DEPEND="!dev-lang/fpc"
 S=${WORKDIR}/fpc-${FPC_V}
 
 src_compile() {
 	cd ${S}
 
 	einfo "Building the fpc compiler and units"
-	emake \
+	# have to use -j1 as it doesn't seem to like -j2+
+	emake -j1 \
 	build \
 	OS_TARGET=linux \
 	PP=${S}/ppc386 \
@@ -32,7 +33,7 @@ src_compile() {
 src_install() {
 
 	einfo "Installing the fpc compiler and units"
-	emake \
+	emake -j1 \
 	install \
 	OS_TARGET=linux \
 	PP=${S}/ppc386 \

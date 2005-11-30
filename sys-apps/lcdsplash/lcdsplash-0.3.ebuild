@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lcdsplash/lcdsplash-0.3.ebuild,v 1.1 2005/03/29 05:21:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lcdsplash/lcdsplash-0.3.ebuild,v 1.1.1.1 2005/11/30 09:56:57 chriswhite Exp $
 
 DESCRIPTION="splash Gentoo boot information on LCD's"
 HOMEPAGE="http://www.gentoo.org/"

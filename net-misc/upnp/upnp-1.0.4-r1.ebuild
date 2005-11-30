@@ -1,18 +1,21 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/upnp/upnp-1.0.4-r1.ebuild,v 1.1 2003/07/15 08:01:16 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/upnp/upnp-1.0.4-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:46 chriswhite Exp $
+
+inherit eutils
 
 S="${WORKDIR}/${PN}sdk-${PV}"
 
 DESCRIPTION="Intel's UPnP SDK"
 HOMEPAGE="http://upnp.sourceforge.net"
-SRC_URI="http://unc.dl.sourceforge.net/sourceforge/upnp/${PN}sdk-${PV}.tar.gz"
+SRC_URI="mirror://sourceforge/upnp/${PN}sdk-${PV}.tar.gz"
+RESTRICT="nomirror"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="x86 sparc ~ppc"
+KEYWORDS="x86 sparc ppc ~amd64"
+IUSE=""
 
-RDEPEND="sys-apps/e2fsprogs"
-DEPEND="${RDEPEND}"
+DEPEND="sys-fs/e2fsprogs"
 
 src_compile() {
 	epatch ${FILESDIR}/msmessenger.patch

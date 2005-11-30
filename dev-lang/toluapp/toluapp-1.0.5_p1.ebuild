@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/toluapp/toluapp-1.0.5_p1.ebuild,v 1.1 2005/05/13 18:31:53 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/toluapp/toluapp-1.0.5_p1.ebuild,v 1.1.1.1 2005/11/30 09:58:35 chriswhite Exp $
 
 inherit eutils toolchain-funcs
 

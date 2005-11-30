@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-1.2.5.ebuild,v 1.1 2002/10/26 00:09:00 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/lablgtk/lablgtk-1.2.5.ebuild,v 1.1.1.1 2005/11/30 09:55:47 chriswhite Exp $
 
 IUSE="gnome opengl"
 
@@ -9,16 +9,18 @@ HOMEPAGE="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/lablgtk.html"
 LICENSE="LGPL-2.1 as-is"
 
 DEPEND="=x11-libs/gtk+-1.2*
-	>=dev-lang/ocaml-3.06
-	gnome? ( >=gnome-base/libglade-0.17-r6
-		 >=gnome-base/gnome-libs-1.4.1.7 )
-	opengl? ( >=dev-ml/lablgl-0.98 
-		=x11-libs/gtkglarea-1.2* )"
+		>=dev-lang/ocaml-3.06
+		gnome? ( =gnome-base/libglade-0.17*
+			>=gnome-base/gnome-libs-1.4.1.7
+			media-libs/gdk-pixbuf )
+		opengl? ( >=dev-ml/lablgl-0.98
+			=x11-libs/gtkglarea-1.2* )"
+
+RDEPEND=${DEPEND}
 
 SRC_URI="http://wwwfun.kurims.kyoto-u.ac.jp/soft/olabl/dist/lablgtk-${PV}.tar.gz"
-S=${WORKDIR}/${P}
 SLOT="1"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc sparc ~alpha ~ia64 -amd64"
 
 Name="LablGTK"
 
@@ -39,4 +41,3 @@ src_install () {
 	dosed /usr/bin/lablgtk
 	dodoc CHANGES COPYING README
 }
-

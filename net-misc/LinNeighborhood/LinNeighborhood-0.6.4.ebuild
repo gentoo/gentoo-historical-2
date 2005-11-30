@@ -1,37 +1,31 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author: Joao Schim <joao@schim.net>
-# $HEADER $ 
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/LinNeighborhood/LinNeighborhood-0.6.4.ebuild,v 1.1.1.1 2005/11/30 09:55:30 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+IUSE="nls"
+
 DESCRIPTION="LinNeighborhood is a easy to use frontend to samba/NETBios."
 SRC_URI="http://www.bnro.de/~schmidjo/download/${P}.tar.gz"
 HOMEPAGE="http://www.bnro.de/~schmidjo/index.html"
+KEYWORDS="x86 sparc "
+LICENSE="GPL-2"
+SLOT="0"
 
-DEPEND="	>=x11-libs/gtk+-1.2 net-fs/samba
+DEPEND="	=x11-libs/gtk+-1.2* net-fs/samba
 		nls? ( sys-devel/gettext ) "
 
-RDEPEND="${DEPEND}"
 
 src_compile() {
 
-	local mylibs myopts
+	local myopts
 
 	use nls || myopts="--disable-nls"
 
-	if [ "`use python`" ]
-	then
-		mylibs=`/usr/bin/python-config`
-
-		cp configure configure.orig
-		sed -e 's:PY_LIBS=".*":PY_LIBS="'"$mylibs"'":' configure.orig > configure || die
-	fi
-	
 	./configure --prefix=/usr \
 		--host=${CHOST} \
 		--enable-ipv6 \
 		${myopts} || die
-	
+
 	emake || die
 }
 

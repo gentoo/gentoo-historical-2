@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/knock/knock-0.3.1.ebuild,v 1.1 2004/10/26 15:25:27 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/knock/knock-0.3.1.ebuild,v 1.1.1.1 2005/11/30 09:55:39 chriswhite Exp $
 
 inherit eutils
 
@@ -8,22 +8,19 @@ DESCRIPTION="A simple port-knocking daemon"
 HOMEPAGE="http://www.zeroflux.org/knock/"
 SRC_URI="http://www.zeroflux.org/knock/${P}.tar.gz"
 
-DEPEND=">=net-libs/libpcap-0.8.3-r1"
-
-KEYWORDS="~x86 ~amd64"
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
+
+RDEPEND="virtual/libpcap"
+DEPEND="${RDEPEND}
+	>=sys-apps/portage-2.0.51"
 
 src_unpack() {
 	unpack ${A}
-	epatch ${FILESDIR}/nonblock.patch
+	cd ${S}
 	epatch ${FILESDIR}/knockd.conf.patch
-}
-
-src_compile() {
-	econf || die "could not configure"
-	emake || die "emake failed"
 }
 
 src_install() {
@@ -31,6 +28,6 @@ src_install() {
 	dodoc README
 	dohtml doc/index.html
 
-	insinto /etc/conf.d; newins ${FILESDIR}/knockd.confd knock
-	exeinto /etc/init.d; newexe ${FILESDIR}/knockd.initd knock
+	newinitd ${FILESDIR}/knockd.initd knock
+	newconfd ${FILESDIR}/knockd.confd knock
 }

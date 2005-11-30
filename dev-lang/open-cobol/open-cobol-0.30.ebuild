@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/open-cobol/open-cobol-0.30.ebuild,v 1.1 2005/01/03 07:08:21 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/open-cobol/open-cobol-0.30.ebuild,v 1.1.1.1 2005/11/30 09:58:24 chriswhite Exp $
 
 DESCRIPTION="an open-source COBOL compiler"
 HOMEPAGE="http://www.open-cobol.org/"

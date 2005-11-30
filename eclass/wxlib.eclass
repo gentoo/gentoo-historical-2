@@ -1,19 +1,17 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/wxlib.eclass,v 1.1 2005/05/01 20:55:42 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/wxlib.eclass,v 1.1.1.1 2005/11/30 09:59:34 chriswhite Exp $
 
 # Author Diego Pettenò <flameeyes@gentoo.org>
-# Maintained by wxwindows herd
+# Maintained by wxwidgets herd
 
 # This eclass is used by wxlib-based packages (wxGTK, wxMotif, wxBase, wxMac) to share code between
 # them.
 
-inherit eutils gnuconfig 
+inherit flag-o-matic eutils multilib toolchain-funcs
 
-ECLASS="wxlib"
-INHERITED="${INHERITED} ${ECLASS}"
 
-IUSE="doc debug unicode dmalloc zlib"
+IUSE="debug doc odbc unicode"
 
 LICENSE="wxWinLL-3"
 
@@ -21,10 +19,9 @@ LICENSE="wxWinLL-3"
 #         has its own implementation of it
 # Note 2: PCX support is enabled if the correct libraries are detected.
 #         There is no USE flag for this.
-RDEPEND="    dmalloc? ( !amd64? ( !arm? ( !mips? ( dev-libs/dmalloc ) ) ) )
-	zlib? ( sys-libs/zlib )"
 
 DEPEND="${RDEPEND}
+	sys-libs/zlib
 	sys-apps/sed"
 
 HOMEPAGE="http://www.wxwindows.org"
@@ -32,14 +29,6 @@ SRC_URI="mirror://sourceforge/wxwindows/wxWidgets-${PV}.tar.bz2
 	doc? ( mirror://sourceforge/wxwindows/wxWidgets-${PV}-HTML.tar.gz )"
 S=${WORKDIR}/wxWidgets-${PV}
 
-# Verify wxWidget-2.6 tarball still has this hardcoded: pythonhead aprl 24 2005
-# Removes hard-coded -O2 optimization from configure
-wxlib_src_unpack() {
-	unpack ${A}
-	cd ${S}
-	sed -i "s/-O2//g" configure || die "sed configure failed"
-	gnuconfig_update
-}
 
 # Configure a build.
 # It takes three parameters;
@@ -49,26 +38,26 @@ wxlib_src_unpack() {
 # $3: all the extra parameters to pass to configure script
 configure_build() {
 	export LANG='C'
-	
+
 	mkdir ${S}/$1_build
 	cd ${S}/$1_build
 	# odbc works with ansi only:
-	subconfigure $3 $(use_with odbc) || die "odbc does not work with unicode"
-	emake -j5 || die "emake failed"
+	subconfigure $3 $(use_with odbc)
+	emake -j1 CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "emake failed"
 	#wxbase has no contrib:
 	if [[ -e contrib/src ]]; then
 		cd contrib/src
-		emake -j5 || die "emake contrib failed"
+		emake -j1 CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "emake contrib failed"
 	fi
 
 	if [[ "$2" == "unicode" ]] && use unicode; then
 		mkdir ${S}/$1_build_unicode
 		cd ${S}/$1_build_unicode
 		subconfigure $3 --enable-unicode
-		emake -j5 || die "Unicode emake failed"
+		emake -j1 CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "Unicode emake failed"
 		if [[ -e contrib/src ]]; then
 			cd contrib/src
-			emake -j5 || die "Unicode emake contrib failed"
+			emake -j1 CXX="$(tc-getCXX)" CC="$(tc-getCC)" || die "Unicode emake contrib failed"
 		fi
 	fi
 }
@@ -76,20 +65,14 @@ configure_build() {
 # This is a commodity function which calls configure script
 # with the default parameters plus extra parameters. It's used
 # as building the unicode version required redoing it.
-# It takes all the params and pass them to the script
+# It takes all the params and passes them to the script
 subconfigure() {
-	debug_conf=""
-	if use debug; then
-		debug_conf="--enable-debug --enable-debug_gdb"	
-		debug_conf="${debug_conf} `use_with dmalloc`"
-	fi
-	${S}/configure --enable-monolithic \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man \
-		`use_with zlib` \
-		${debug_conf} \
-		$*
+	ECONF_SOURCE="${S}" \
+		econf \
+			--disable-debugreport \
+			--with-zlib \
+			$(use_enable debug) $(use_enable debug debug_gdb) \
+			$* || die "./configure failed"
 }
 
 # Installs a build
@@ -97,19 +80,23 @@ subconfigure() {
 # see configure_build function
 install_build() {
 	cd ${S}/$1_build
-	einstall || die "Install failed"
-	cd contrib/src
-	einstall || die "Install contrib failed"
+	einstall libdir="${D}/usr/$(get_libdir)" || die "Install failed"
+	if [[ -e contrib ]]; then
+		cd contrib/src
+		einstall libdir="${D}/usr/$(get_libdir)" || die "Install contrib failed"
+	fi
 	if [[ -e ${S}/$1_build_unicode ]]; then
 		cd ${S}/$1_build_unicode
-		einstall || die "Unicode install failed"
+		einstall libdir="${D}/usr/$(get_libdir)" || die "Unicode install failed"
 		cd contrib/src
-		einstall || die "Unicode install contrib failed"
+		einstall libdir="${D}/usr/$(get_libdir)" || die "Unicode install contrib failed"
 	fi
 }
 
 # To be called at the end of src_install to perform common cleanup tasks
 wxlib_src_install() {
+
+	cp ${D}/usr/bin/wx-config ${D}/usr/bin/wx-config-2.6 || die "Failed to cp wx-config"
 
 	# In 2.6 all wx-config*'s go in/usr/lib/wx/config not
 	# /usr/bin where 2.4 keeps theirs.
@@ -120,20 +107,19 @@ wxlib_src_install() {
 		fi
 	fi
 
-	# Remove wxrc because SLOT'd versions will overwrite each other.
-	# There will be a /usr/bin/wxrc-2.6 installed:
-	rm ${D}/usr/bin/wxrc
-
 
 	if use doc; then
+		dodir /usr/share/doc/${PF}/{demos,samples,utils}
 		dohtml ${S}/contrib/docs/html/ogl/*
 		dohtml ${S}/docs/html/*
-		dodir /usr/share/doc/${PF}/demos
 		cp -R ${S}/demos/* ${D}/usr/share/doc/${PF}/demos/
+		cp -R ${S}/utils/* ${D}/usr/share/doc/${PF}/utils/
+		cp -R ${S}/samples/* ${D}/usr/share/doc/${PF}/samples/
 		dodoc ${S}/*.txt
 	fi
 
 }
 
 
-EXPORT_FUNCTIONS src_unpack src_install
+EXPORT_FUNCTIONS src_install
+

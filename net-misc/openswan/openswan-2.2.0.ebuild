@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openswan/openswan-2.2.0.ebuild,v 1.1 2004/09/18 02:49:41 pfeifer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openswan/openswan-2.2.0.ebuild,v 1.1.1.1 2005/11/30 09:54:55 chriswhite Exp $
 
 inherit eutils
 
@@ -13,14 +13,14 @@ SRC_URI="http://www.openswan.org/code/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~x86 ~amd64 ~ppc"
+KEYWORDS="-* x86 amd64 ~ppc"
 IUSE=""
 
 DEPEND="!net-misc/strongswan
 	virtual/libc
 	virtual/linux-sources
 	>=dev-libs/gmp-3.1.1
-	net-misc/host
+	net-dns/host
 	sys-apps/iproute2"
 RDEPEND=""
 
@@ -29,7 +29,7 @@ check_version_h() {
 	then
 		eerror "Please verify that your /usr/src/linux symlink is pointing"
 		eerror "to your current kernel sources, and that you have a running kernel"
-		die "/usr/src/linux symlink not setup!"
+		die "/usr/src/linux symlink not setup or kernel tree has not been configured!"
 	fi
 }
 

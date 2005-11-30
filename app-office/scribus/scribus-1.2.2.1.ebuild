@@ -1,19 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.2.2.1.ebuild,v 1.1 2005/07/07 17:51:26 hanno Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/scribus/scribus-1.2.2.1.ebuild,v 1.1.1.1 2005/11/30 09:58:59 chriswhite Exp $
 
-inherit kde-functions eutils
-need-qt 3
+inherit qt3 eutils
 
 DESCRIPTION="Desktop Publishing (DTP) and Layout program for Linux."
 HOMEPAGE="http://www.scribus.net"
 SRC_URI="http://www.scribus.org.uk/downloads/${PV}/${P}.tar.bz2"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~ppc64"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE=""
 
-DEPEND=">=x11-libs/qt-3.3.3
+DEPEND="$(qt_min_version 3.3.4)
 	>=media-libs/freetype-2.1
 	>=media-libs/lcms-1.09
 	media-libs/tiff
@@ -21,7 +20,8 @@ DEPEND=">=x11-libs/qt-3.3.3
 	>=sys-devel/gcc-3.0.0
 	>=dev-libs/libxml2-2.6.0"
 
-RDEPEND="virtual/ghostscript"
+RDEPEND="${DEPEND}
+	virtual/ghostscript"
 
 src_compile() {
 	econf || die
@@ -36,5 +36,6 @@ src_install() {
 	domenu scribus.desktop
 	doicon scribus/icons/scribusicon.png
 
-	dosym /usr/share/scribus/doc /usr/share/doc/${PF}/html
+	mkdir -p ${D}/usr/share/doc/${P}
+	mv ${D}/usr/share/scribus/doc ${D}/usr/share/doc/${P}/html
 }

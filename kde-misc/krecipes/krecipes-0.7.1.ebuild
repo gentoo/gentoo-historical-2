@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/krecipes/krecipes-0.7.1.ebuild,v 1.1 2005/03/04 14:07:33 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/krecipes/krecipes-0.7.1.ebuild,v 1.1.1.1 2005/11/30 09:57:12 chriswhite Exp $
 
 inherit kde
 

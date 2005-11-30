@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils-darwin/coreutils-darwin-5.3.0.ebuild,v 1.1 2005/05/12 20:03:31 josejx Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/coreutils-darwin/coreutils-darwin-5.3.0.ebuild,v 1.1.1.1 2005/11/30 09:56:00 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Standard GNU file utilities, text utilities, and shell utilities missing from Darwin."
 HOMEPAGE="http://www.gnu.org/software/coreutils/"
@@ -24,14 +26,17 @@ S=${WORKDIR}/coreutils-${PV}
 # Existing utils
 
 EXISTINGUSR="basename chgrp cksum comm cut dirname \
-	du env expand false fmt fold head install id join \
+	du env expand false fmt fold groups head install id join \
 	logname mkfifo nice nohup od paste pr printenv \
-	printf sort split stat sum tail tee touch tr true \
-	tsort tty uname unexpand uniq users wc who whoami yes"
-EXISTINGBIN="cat chmod cp date dd df echo expr ln ls mkdir mv pwd rm rmdir sleep stty sync test"
+	printf sort split stat su sum tail tee touch tr true \
+	tsort tty uname unexpand uniq uptime users wc who whoami yes"
+EXISTINGBIN="cat chmod cp date dd df echo expr ln ls mkdir \
+			 mv pwd rm rmdir sleep stty sync test"
 EXISTINGUSBIN="chown chroot"
 EXISTINGSBIN="mknod"
 DONTLINK="[ kill hostname"
+TENFOURBIN="link unlink csplit nl"
+TENFOURUSBIN="pathchk readlink"
 
 src_compile() {
 	cd ${S}
@@ -40,12 +45,10 @@ src_compile() {
 		--bindir=/bin \
 		`use_enable nls` || die
 
-	if use static
-	then
-		emake LDFLAGS="${LDFLAGS} -static" || die
-	else
-		emake || die
+	if use static; then
+		append-ldflags -static
 	fi
+	emake || die
 }
 
 src_install() {
@@ -58,12 +61,18 @@ src_install() {
 	dodir /usr/bin
 	rm -rf usr/lib
 
-	cd bin
+	cd ${D}/bin
+	if [ "$MACOSX_DEPLOYMENT_TARGET" == "10.4" ]; then
+		rm ${TENFOURBIN} ${TENFOURUSBIN}
+	fi
+
 	rm ${EXISTINGBIN} ${EXISTINGUSR} ${EXISTINGUSBIN} ${EXISTINGSBIN} ${DONTLINK}
 
 	# Move the non-critical pacakges to /usr/bin
-	mv csplit factor md5sum nl ${D}usr/bin
-	mv pathchk pinky sha1sum tac ${D}usr/bin
+	if [ "$MACOSX_DEPLOYMENT_TARGET" != "10.4" ]; then
+		mv csplit nl pathchk ${D}usr/bin
+	fi
+	mv factor md5sum pinky sha1sum tac ${D}usr/bin
 
 	# Link binaries
 	cd ${D}/usr/bin
@@ -91,19 +100,24 @@ src_install() {
 
 	# Remove the redundant man pages
 	cd ${D}/usr/share/man/man1
-	rm basename.1 cat.1 chroot.1 cksum.1 comm.1 \
-	   cut.1 date.1 dirname.1 echo.1 env.1 expand.1 expr.1 \
-	   false.1 fmt.1 fold.1 head.1 id.1 join.1 \
-	   logname.1 nice.1 nohup.1 od.1 paste.1 pr.1 printenv.1 \
-	   printf.1 pwd.1 readlink.1 sleep.1 sort.1 split.1 stat.1 \
-	   stty.1 sum.1 sync.1 tail.1 tee.1 test.1 tr.1 true.1 tsort.1 \
-	   tty.1 uname.1 unexpand.1 uniq.1 users.1 wc.1 who.1 whoami.1 \
-	   yes.1
+	for BINS in ${EXISTINGBIN} ${EXISTINGUSR} ${EXISTINGUSBIN} ${EXISTINGSBIN} ${DONTLINK}; do
+		if [ -f ${BINS}.1 ]; then
+			rm ${BINS}.1
+		fi
+	done
+
+	if [ "$MACOSX_DEPLOYMENT_TARGET" == "10.4" ]; then
+		for BINS in ${TENFOURBIN} ${TENFOURUSBIN}; do
+			if [ -f ${BINS}.1 ]; then
+				rm ${BINS}.1
+			fi
+		done
+	fi
 
 	if ! use build
 	then
 		cd ${S}
-		dodoc AUTHORS ChangeLog* COPYING NEWS README* THANKS TODO
+		dodoc AUTHORS ChangeLog* NEWS README* THANKS TODO
 	else
 		rm -rf ${D}/usr/share
 	fi

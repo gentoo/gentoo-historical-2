@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/netboot-base/netboot-base-20050110.ebuild,v 1.1 2005/01/10 23:40:02 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/netboot-base/netboot-base-20050110.ebuild,v 1.1.1.1 2005/11/30 09:56:03 chriswhite Exp $
 
 inherit toolchain-funcs
 

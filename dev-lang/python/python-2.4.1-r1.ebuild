@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.1-r1.ebuild,v 1.1 2005/06/16 21:19:33 kloeri Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:58:40 chriswhite Exp $
 
 # NOTE about python-portage interactions :
 # - Do not add a pkg_setup() check for a certain version of portage
 #   in dev-lang/python. It _WILL_ stop people installing from
 #   Gentoo 1.4 images.
 
-inherit eutils flag-o-matic python multilib versionator
+inherit eutils flag-o-matic python multilib versionator toolchain-funcs
 
 # we need this so that we don't depends on python.eclass
 PYVER_MAJOR=$(get_major_version)
@@ -22,7 +22,7 @@ SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.bz2"
 
 LICENSE="PSF-2.2"
 SLOT="2.4"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86"
 IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X nocxx"
 
 DEPEND=">=sys-libs/zlib-1.1.3
@@ -44,7 +44,9 @@ DEPEND=">=sys-libs/zlib-1.1.3
 #       it to compile python. We just need to ensure that when we install
 #       python, we definitely have fchksum support. - liquidx
 
-RDEPEND="${DEPEND} 	dev-python/python-fchksum"
+# NOTE: changed RDEPEND to PDEPEND to resolve bug 88777. - kloeri
+
+PDEPEND="${DEPEND} 	dev-python/python-fchksum"
 
 PROVIDE="virtual/python"
 
@@ -74,10 +76,20 @@ src_unpack() {
 		Makefile.pre.in \
 		Modules/Setup.dist \
 		Modules/getpath.c \
-		setup.py
+		setup.py || die
 
 	# add support for struct stat st_flags attribute (bug 94637)
-	epatch ${FILESDIR}/python-2.3.5-st_flags.patch
+	epatch ${FILESDIR}/python-2.4.1-st_flags.patch
+
+	# fix os.utime() on hppa. utimes it not supported but unfortunately reported as working - gmsoft (22 May 04)
+	# PLEASE LEAVE THIS FIX FOR NEXT VERSIONS AS IT'S A CRITICAL FIX !!!
+	[ "${ARCH}" = "hppa" ] && sed -e 's/utimes //' -i ${S}/configure
+
+
+	if tc-is-cross-compiler ; then
+		epatch "${FILESDIR}"/python-2.4.1-bindir-libdir.patch
+		epatch "${FILESDIR}"/python-2.4.1-crosscompile.patch
+	fi
 }
 
 src_configure() {
@@ -133,7 +145,22 @@ src_compile() {
 
 	src_configure
 
-	econf --with-fpectl \
+	if tc-is-cross-compiler ; then
+		OPT="-O1" LDFLAGS="" \
+		./configure --with-cxx=no || die "cross-configure failed"
+		emake python Parser/pgen || die "cross-make failed"
+		mv python hostpython
+		mv Parser/pgen Parser/hostpgen
+		make distclean
+		sed -i \
+			-e '/^HOSTPYTHON/s:=.*:=./hostpython:' \
+			-e '/^HOSTPGEN/s:=.*:=./Parser/hostpgen:' \
+			Makefile.pre.in || die
+	fi
+
+	tc-export CXX
+	econf \
+		--with-fpectl \
 		--enable-shared \
 		`use_enable ipv6` \
 		--infodir='${prefix}'/share/info \
@@ -236,7 +263,7 @@ src_test() {
 
 	#skip all tests that fail during emerge but pass without emerge:
 	#(See bug# 67970)
-	local skip_tests="subprocess tcl urllib urllib2"
+	local skip_tests="distutils global mimetools minidom mmap strptime subprocess tcl time urllib urllib2"
 
 	for test in ${skip_tests} ; do
 		mv ${S}/Lib/test/test_${test}.py ${T}

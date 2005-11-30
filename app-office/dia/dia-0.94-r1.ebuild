@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/dia/dia-0.94-r1.ebuild,v 1.1 2005/03/17 08:12:06 leonardop Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/dia/dia-0.94-r1.ebuild,v 1.1.1.1 2005/11/30 09:58:58 chriswhite Exp $
 
 inherit eutils gnome2
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnome.org/projects/dia/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 IUSE="gnome png python static zlib"
 
 RDEPEND=">=x11-libs/gtk+-2
@@ -24,7 +24,8 @@ RDEPEND=">=x11-libs/gtk+-2
 	gnome? ( >=gnome-base/libgnome-2.0
 		>=gnome-base/libgnomeui-2.0 )
 	python? ( >=dev-lang/python-1.5.2
-		>=dev-python/pygtk-1.99 )"
+		>=dev-python/pygtk-1.99 )
+	=app-text/docbook-xml-dtd-4.2*"
 
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.21
@@ -37,9 +38,15 @@ DOCS="AUTHORS ChangeLog KNOWN_BUGS NEWS README RELEASE-PROCESS THANKS TODO"
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+	# Disable python -c 'import gtk' during compile to prevent using
+	# X being involved (#31589)
+	epatch ${FILESDIR}/${PV}-disable_python_gtk_import.patch
+	autoconf
 
 	# Disable buggy font cache. See bug #81227.
 	epatch ${FILESDIR}/${P}-no_font_cache.patch
 	# Fix help display. See bug #83726.
 	epatch ${FILESDIR}/${P}-help.patch
+	# GCC 4 compile fixes
+	epatch ${FILESDIR}/${P}-gcc4.patch
 }

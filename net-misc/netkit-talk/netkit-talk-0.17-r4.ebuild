@@ -1,45 +1,48 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-talk/netkit-talk-0.17-r4.ebuild,v 1.1 2003/06/17 19:02:18 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-talk/netkit-talk-0.17-r4.ebuild,v 1.1.1.1 2005/11/30 09:55:03 chriswhite Exp $
+
+inherit eutils
 
 IUSE="ipv6"
+
 MY_P=netkit-ntalk-${PV}
 S=${WORKDIR}/netkit-ntalk-${PV}
+
 DESCRIPTION="Netkit - talkd"
-SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${MY_P}.tar.gz"
 HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips"
+SRC_URI="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/${MY_P}.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="x86 ppc sparc alpha mips ~amd64"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-libs/ncurses-5.2"
 
 src_unpack() {
-    unpack ${A}
-    patch -p0 < ${FILESDIR}/${PF}-gentoo.diff
+	unpack ${A}
+	epatch ${FILESDIR}/${PF}-gentoo.diff
 	cd ${S}
-	use ipv6 && patch -p1 < ${FILESDIR}/${P}-ipv6.diff
+	use ipv6 && epatch ${FILESDIR}/${P}-ipv6.diff
 }
 
 src_compile() {
-    try ./configure
-    cp MCONFIG MCONFIG.orig
-    sed -e "s:-O2 -Wall:-Wall:" -e "s:-Wpointer-arith::" MCONFIG.orig > MCONFIG
-    try make
+	./configure || die
+	cp MCONFIG MCONFIG.orig
+	sed -e "s:-O2 -Wall:-Wall:" -e "s:-Wpointer-arith::" MCONFIG.orig > MCONFIG
+	make || die
 }
 
-src_install() {                               
+src_install() {
 	insinto /etc/xinetd.d
-	newins ${FILESDIR}/talk.xinetd talk 
+	newins ${FILESDIR}/talk.xinetd talk
 	into /usr
-	dobin  talk/talk
-	doman  talk/talk.1
+	dobin talk/talk
+	doman talk/talk.1
 	dosbin talkd/talkd
-	dosym  talkd /usr/sbin/in.talkd
-	doman  talkd/talkd.8
-	dosym  talkd.8.gz /usr/share/man/man8/in.talkd.8.gz
-	dodoc  README ChangeLog BUGS
+	dosym talkd /usr/sbin/in.talkd
+	doman talkd/talkd.8
+	dosym talkd.8.gz /usr/share/man/man8/in.talkd.8.gz
+	dodoc README ChangeLog BUGS
 }
-
-

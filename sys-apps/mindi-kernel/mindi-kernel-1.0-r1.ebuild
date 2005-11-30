@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/mindi-kernel/mindi-kernel-1.0-r1.ebuild,v 1.1 2004/08/12 21:28:10 pfeifer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/mindi-kernel/mindi-kernel-1.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:01 chriswhite Exp $
 
 DESCRIPTION="Mindi-kernel is a library of kernel modules, a kernel, and other bits and bobs
 used by Mindi."

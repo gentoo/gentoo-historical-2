@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/cm3/cm3-5.2.6.ebuild,v 1.1 2003/07/17 17:19:20 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/cm3/cm3-5.2.6.ebuild,v 1.1.1.1 2005/11/30 09:58:48 chriswhite Exp $
+
+inherit fixheadtails
 
 DESCRIPTION="Critical Mass Modula-3 compiler"
 HOMEPAGE="http://www.elegosoft.com/cm3/"
@@ -8,24 +10,49 @@ SRC_URI="http://www.elegosoft.com/cm3/${PN}-src-all-${PV}.tgz"
 
 LICENSE="CMASS-M3 DEC-M3"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE="tcltk"
 
-DEPEND="tcltk? ( dev-lang/tcl )
+RDEPEND="tcltk? ( dev-lang/tcl )"
+DEPEND="${RDEPEND}
 	sys-devel/gcc
 	dev-lang/cm3-bin"
+PROVIDE="virtual/m3"
 
 S=${WORKDIR}
 
-export GCC_BACKEND="yes"
-export M3GDB="no"
-export HAVE_SERIAL="no"
-unset M3GC_SIMPLE
-[ `use tcltk` ] \
-	&& HAVE_TCL="yes" \
-	|| HAVE_TCL="no"
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	ht_fix_file \
+		m3-comm/rdwr/test/john/src/Main.m3 \
+		m3-demo/mentor/src/unionfind/junoLogs/reorder \
+		m3-sys/m3cc/gcc/config.guess--cfl \
+		m3-sys/m3cc/gcc/configure \
+		m3-sys/m3cc/gcc/configure--cfl \
+		m3-sys/m3cc/gcc/contrib/test_summary \
+		m3-sys/m3cc/gcc/gcc/configure \
+		m3-sys/m3cc/gcc/gcc/configure--cfl \
+		m3-sys/m3cc/gcc/gcc/configure.in \
+		m3-sys/m3cc/gcc/ltcf-c.sh \
+		m3-sys/m3cc/gcc/ltcf-gcj.sh \
+		m3-sys/m3gdb/gdb/configure \
+		m3-sys/m3tests/src/m3makefile \
+		scripts/pkginfo.sh
+}
+
+setup_env() {
+	export GCC_BACKEND="yes"
+	export M3GDB="no"
+	export HAVE_SERIAL="no"
+	unset M3GC_SIMPLE
+	use tcltk \
+		&& HAVE_TCL="yes" \
+		|| HAVE_TCL="no"
+}
 
 src_compile() {
+	setup_env
 	cd scripts
 	for s in do-cm3-core do-cm3-base ; do
 		env -u P ROOT=${S} ./${s}.sh build || die "building ${s}"
@@ -33,6 +60,7 @@ src_compile() {
 }
 
 src_install() {
+	setup_env
 	local TARGET=`grep 'TARGET.*=' /usr/bin/cm3.cfg | awk '{print $4}' | sed 's:"::g'`
 	sed -i "s:\"/usr/lib/cm3/:\"${D}/usr/lib/cm3/:g" `find -name .M3SHIP` || die "fixing .M3SHIP"
 
@@ -42,7 +70,7 @@ src_install() {
 		env -u P ROOT=${S} ./${s}.sh ship || die "shipping ${s}"
 	done
 	cd ${D}/usr/lib/cm3/pkg
-	sed -i "s:${S}/.*-.*/:/usr/lib/cm3/pkg/:" `grep -RIl /var/tmp/portage *` || die "fixing .M3EXPORTS"
+	sed -i "s:${S}/*[^/-]*-[^/\"]*:/usr/lib/cm3/pkg:" `grep -RIl ${PORTAGE_TMPDIR}/portage *` || die "fixing .M3EXPORTS"
 
 	# do all this crazy linking so as to overwrite cm3-bin stuff
 	dodir /usr/bin
@@ -56,69 +84,4 @@ src_install() {
 
 	insinto /etc/env.d
 	doins ${FILESDIR}/05cm3
-	return 0
-
-	# old code left in so i can save it in cvs if i need it in the future ...
-	local pkgs=""
-	grep P= do-cm3-base.sh > my-base-pkgs ; echo 'echo $P' >> my-base-pkgs
-	grep P= do-cm3-core.sh > my-core-pkgs ; echo 'echo $P' >> my-core-pkgs
-	pkgs="$(export TARGET=${TARGET}; source my-base-pkgs ; source my-core-pkgs )"
-	dodir /usr/lib/cm3/pkg
-	for p in ${pkgs} ; do
-		pdir=`find ${S} -type d -name ${p} -maxdepth 2 -mindepth 2`
-		pkg=`basename ${p}`
-		[ -e ${D}/usr/lib/cm3/pkg/${pkg} ] && continue
-
-		# install by hand ...
-		#cp -rf ${pdir} ${D}/usr/lib/cm3/pkg/${pkg}
-		#cd ${D}/usr/lib/cm3/pkg/${pkg}/${TARGET}
-		#rm *.{i,m}o .M3SHIP
-		#cd ${D}/usr/lib/cm3/pkg/${pkg}/src
-		#find -type f \
-		#	! -name '*.i3' -a \
-		#	! -name '*.m3' -a \
-		#	! -name '*.ig' -a \
-		#	! -name '*.mg' -a \
-		#	! -name '*.c' -a \
-		#	! -name '*.h' -a \
-		#	! -name '*.tmpl' \
-		#	-exec rm '{}' \;
-
-		# translate m3ship file into portage
-		cd ${pdir}/${TARGET}
-		echo "=== package ${pdir} ==="	# mimic cm3 output
-		my_m3ship
-		echo " ==> ${pdir} done"
-		echo
-	done
-}
-
-my_m3ship() {
-	[ ! -e .M3SHIP ] && echo "package was built with overrides, not shipping." && return 0
-	local act
-	local src
-	local dst
-	local perms
-	local l
-	while read LINE ; do
-		# each line has the format:
-		# action("source file", "dest file", "permissions")
-		# unless of course the action doesnt need the extra params (i.e. make_dir)
-		# we translate it into 'action sourcefile destfile permissions'
-		l=$(echo ${LINE} | sed -e 's:[" )]::g' -e 's:[(,]: :g')
-		set -- ${l}
-		act=${1}
-		src=${2}
-		dst=${3}
-		perms=${4}
-		case ${act} in
-			install_file)	insinto ${dst}
-					doins ${src}
-					fperms ${perms} ${dst}/$(basename ${src});;
-			make_dir)	dodir ${src};;
-			link_file)	dosym ${src} ${dst};;
-			*)		die "unknown M3SHIP action ${act}";;
-		esac
-		debug-print ACT: ${act} SRC: ${src} DST: ${dst} PERMS: ${perms}
-	done < .M3SHIP
 }

@@ -1,26 +1,34 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ogle/ogle-0.9.1.ebuild,v 1.1 2003/03/14 05:47:17 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ogle/ogle-0.9.1.ebuild,v 1.1.1.1 2005/11/30 09:57:25 chriswhite Exp $
 
-inherit libtool
+inherit eutils libtool
+
+IUSE="oss mmx alsa xv"
 
 DESCRIPTION="Full featured DVD player that supports DVD menus."
 HOMEPAGE="http://www.dtek.chalmers.se/groups/dvd/"
 SRC_URI="http://www.dtek.chalmers.se/groups/dvd/dist/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc ~sparc ~alpha ~hppa ~amd64 ~ia64"
 LICENSE="GPL-2"
-IUSE="oss mmx alsa"
 
 DEPEND=">=media-libs/libdvdcss-1.2.2
-	media-libs/jpeg 
-	>=media-libs/libdvdread-0.9.4 
-	media-sound/mad
-	x11-base/xfree
+	media-libs/jpeg
+	>=media-libs/libdvdread-0.9.4
+	media-sound/madplay
+	virtual/x11
 	>=dev-libs/libxml2-2.4.19
 	>=media-libs/a52dec-0.7.3
 	alsa? ( media-libs/alsa-lib )"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/ogle-configure-alsa-fix.patch || die "failed applying alsa-fix"
+	epatch ${FILESDIR}/ogle-gcc34-fix.patch
+}
 
 src_compile() {
 	# STOP!  If you make any changes, make sure to unmerge all copies
@@ -29,6 +37,8 @@ src_compile() {
 	# very very easily -- blocke
 
 	local myconf="`use_enable mmx` `use_enable oss` `use_enable alsa`"
+
+	use xv && myconf="${myconf} --enable-xv" || myconf="${myconf} --disable-xv"
 
 	if [ "${ARCH}" = "ppc" ] ; then
 		# if this user doesn't want altivec, don't compile it in
@@ -54,6 +64,6 @@ src_compile() {
 
 src_install() {
 	einstall || die
-	dodoc AUTHORS COPYING ChangeLog HISTORY INSTALL NEWS README TODO 
+	dodoc AUTHORS ChangeLog HISTORY NEWS README TODO
 	dodoc doc/liba52.txt
 }

@@ -1,26 +1,28 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/asfrecorder/asfrecorder-1.1.ebuild,v 1.1 2002/11/16 18:53:37 phoenix Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/asfrecorder/asfrecorder-1.1.ebuild,v 1.1.1.1 2005/11/30 09:57:40 chriswhite Exp $
 
-IUSE=""
+inherit toolchain-funcs
 
 MY_PN="${PN/asfr/ASFR}"
 DESCRIPTION="ASFRecorder - Download Windows Media Streaming files"
-HOMEPAGE="http://sourceforge.net/projects/${P}/"
+HOMEPAGE="http://sourceforge.net/projects/asfrecorder/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_PN}.zip"
+
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~ppc-macos x86"
+IUSE=""
 
-DEPEND="virtual/glibc"
+DEPEND="app-arch/unzip"
 
-S="${WORKDIR}/${MY_PN}"
+S=${WORKDIR}/${MY_PN}
 
 src_compile() {
 	# There is a Makefile, but it only works for Cygwin, so we
 	# only compile this single program.
 	cd ${S}/source
-	gcc -o asfrecorder ${CXXFLAGS} asfrecorder.c || die "Build failed"
+	$(tc-getCC) -o asfrecorder ${CFLAGS} asfrecorder.c || die "Build failed"
 }
 
 src_install () {

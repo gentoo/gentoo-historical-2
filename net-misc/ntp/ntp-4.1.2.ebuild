@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ntp-4.1.2.ebuild,v 1.1 2003/08/06 07:42:24 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ntp/ntp-4.1.2.ebuild,v 1.1.1.1 2005/11/30 09:55:19 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
 DESCRIPTION="Network Time Protocol suite/programs"
 HOMEPAGE="http://www.ntp.org/"
@@ -11,19 +11,22 @@ SRC_URI="http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/${P}.tar.gz
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64"
-IUSE="parse-clocks ssl"
+KEYWORDS="alpha amd64 hppa mips ppc sparc x86"
+IUSE="parse-clocks selinux ssl"
 
-DEPEND=">=sys-apps/sed-4.0.5
-	>=sys-libs/ncurses-5.2
+RDEPEND=">=sys-libs/ncurses-5.2
 	>=sys-libs/readline-4.1
 	sys-libs/libcap
-	ssl? ( dev-libs/openssl )"
-
-pkg_setup() {
-	enewgroup ntp 123
-	enewuser ntp 123 /dev/null /bin/false ntp
-}
+	ssl? ( dev-libs/openssl )
+	selinux? ( sec-policy/selinux-ntp )"
+DEPEND="${RDEPEND}
+	|| (
+		dev-libs/libelf
+		dev-libs/elfutils
+	)
+	>=sys-devel/autoconf-2.58
+	>=sys-devel/automake-1.7.7
+	>=sys-apps/sed-4.0.5"
 
 hax_bitkeeper() {
 	# the makefiles have support for bk ...
@@ -46,9 +49,10 @@ src_unpack() {
 	epatch ${FILESDIR}/linux-config-phone.patch #13001
 	sed -i "s:-Wpointer-arith::" configure.in
 
-	aclocal -I . || die
-	automake || die
-	autoconf || die
+	# needed in order to make files with right ver info #30220.
+	aclocal -I . || die "autolocal"
+	automake || die "automake"
+	autoconf || die "autoconf"
 }
 
 src_compile() {
@@ -59,15 +63,21 @@ src_compile() {
 		&& mysslconf="--with-openssl-libdir=yes" \
 		|| mysslconf="--with-openssl-libdir=no"
 	econf \
-		--build=${CHOST} \
 		`use_enable parse-clocks` \
 		${mysslconf} \
 		|| die
+
 	emake || die
+}
+
+pkg_preinst() {
+	enewgroup ntp 123
+	enewuser ntp 123 -1 /dev/null ntp
 }
 
 src_install() {
 	hax_bitkeeper
+	pkg_preinst
 
 	make install DESTDIR=${D} || die
 
@@ -83,14 +93,20 @@ src_install() {
 		-name 'rc[12]' -o \
 		-name support`
 	mv scripts/* ${D}/usr/share/ntp/
+	chmod -R go-w ${D}/usr/share/ntp
 
-	[ ! -e /etc/ntp.conf ] && insinto /etc && doins ${FILESDIR}/ntp.conf
+	[ ! -e ${ROOT}/etc/ntp.conf ] && insinto /etc && doins ${FILESDIR}/ntp.conf
 	exeinto /etc/init.d
-	newexe ${FILESDIR}/ntpd.rc ntpd
-	newexe ${FILESDIR}/ntp-client.rc ntp-client
+	newexe ${FILESDIR}/ntpd-${PV}.rc ntpd
+	newexe ${FILESDIR}/ntp-client-${PV}.rc ntp-client
 	insinto /etc/conf.d
-	newins ${FILESDIR}/ntpd.confd ntpd
+	newins ${FILESDIR}/ntpd-${PV}.confd ntpd
 	newins ${FILESDIR}/ntp-client.confd ntp-client
+
+	dodir /var/lib/ntp
+	fowners ntp:ntp /var/lib/ntp
+	touch ${D}/var/lib/ntp/ntp.drift
+	fowners ntp:ntp /var/lib/ntp/ntp.drift
 }
 
 pkg_postinst() {

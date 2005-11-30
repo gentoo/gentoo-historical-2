@@ -1,8 +1,127 @@
 # ChangeLog for dev-lang/ghc-bin
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc-bin/ChangeLog,v 1.1 2002/12/15 06:52:54 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:58:46 chriswhite Exp $
 
-*ghc-bin-5.04.2.ebuild (14 ‰≈À 2002)
+  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ghc-bin-6.2.2-r1.ebuild:
+  Stable on sparc
+
+  31 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> ghc-bin-6.4.ebuild:
+  Version 6.4 for ppc this time
+
+  31 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ghc-bin-6.2.2-r1.ebuild:
+  Built package for ppc to fix #70617 and #98984
+
+  17 Aug 2005; Andres Loeh <loeh@gentoo.org> -ghc-bin-6.0.ebuild,
+  -ghc-bin-6.2.ebuild, -ghc-bin-6.2.1.ebuild, -ghc-bin-6.2.2.ebuild,
+  ghc-bin-6.2.2-r1.ebuild:
+  Marked 6.2.2-r1 stable on x86, and removed old versions.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> ghc-bin-6.4.ebuild:
+  Updated binary package for ppc64
+
+  26 Jul 2005; <duncan@gentoo.org> ghc-bin-6.2.2-r1.ebuild,
+  ghc-bin-6.4.ebuild:
+  Added new binary packages that are built against readline-5. Also Added
+  a missing dependency on >=dev-libs/gmp-4.1.
+
+*ghc-bin-6.2.2-r1 (20 May 2005)
+
+  20 May 2005; <duncan@gentoo.org> +ghc-bin-6.2.2-r1.ebuild:
+  Add a new ghc-bin-6.2.2-r1 ebuild based on the ghc-bin-6.4 "portage tbz2
+  style" Initially this only covers ~sparc but we'll extend it later to the
+  other arches.
+
+  09 May 2005; Markus Rothe <corsair@gentoo.org> ghc-bin-6.4.ebuild:
+  Created binary and added ~ppc64 to KEYWORDS - bug #68930
+
+*ghc-bin-6.4 (02 May 2005)
+
+  02 May 2005; Andres Loeh <kosmikus@gentoo.org> +ghc-bin-6.4.ebuild:
+  Added a first x86 binary for ghc-6.4. More arches to follow. The binary
+  version of ghc-6.4 will remain masked as long as dev-lang/ghc-6.4 is masked.
+
+  19 Feb 2005; Jason Wever <weeve@gentoo.org> ghc-bin-6.0.ebuild,
+  ghc-bin-6.2.1.ebuild:
+  Masked on SPARC.
+
+  10 Dec 2004; Chris White <chriswhite@gentoo.org> ghc-bin-6.2.2.ebuild:
+  Added arch? based SRC_URI, as ghc-bin will (hopefully) be getting more arches.
+
+  03 Nov 2004; Andres Loeh <kosmikus@gentoo.org> ghc-bin-6.2.1.ebuild:
+  ghc-pkg was not installed properly for amd64 (#56997)
+
+  19 Oct 2004; Andres Loeh <kosmikus@gentoo.org> ghc-bin-6.2.1.ebuild:
+  Fix amd64 version to properly install environment file.
+
+*ghc-bin-6.2.2 (18 Oct 2004)
+
+  18 Oct 2004; Andres Loeh <kosmikus@gentoo.org> ghc-bin-6.2.2.ebuild:
+  Version bump for x86.
+
+*ghc-bin-6.2.1 (17 Oct 2004)
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> +ghc-bin-6.2.1.ebuild:
+  Version bump for amd64 only (~amd64).  Closes #58588.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ghc-bin-5.04.3.ebuild, ghc-bin-6.0.ebuild, ghc-bin-6.2.ebuild:
+  virtual/glibc -> virtual/libc
+
+*ghc-bin-5.04.3 (31 Mar 2004)
+
+  31 Mar 2004; Andres Loeh <kosmikus@gentoo.org> ghc-bin-5.04.3.ebuild:
+  Re-added ghc-bin-5.04.3 because of ppc.
+
+  31 Mar 2004; Andres Loeh <kosmikus@gentoo.org> ghc-bin-5.04.2-r1.ebuild,
+  ghc-bin-5.04.2.ebuild, ghc-bin-5.04.3.ebuild, ghc-bin-6.2.ebuild:
+  Marked 6.2 stable on x86. Removed 5 series.
+
+  23 Mar 2004; Matthieu Sozeau <mattam@gentoo.org> ghc-bin-5.04.3.ebuild:
+  Add ppc keyword.
+
+*ghc-bin-6.2 (17 Dec 2003)
+
+  17 Dec 2003; Andres Loeh <kosmikus@gentoo.org> ghc-bin-6.2.ebuild:
+  Version bump.
+
+  21 Jul 2003; Andres Loeh <kosmikus@gentoo.org> ghc-bin-5.04.3.ebuild:
+  ghc 5.04.3 is apparently not available for sparc as binary, changed KEYWORDS
+  accordingly; added the sparc tarballs to the digests for 5.04.2, 5.04.2-r1,
+  hopefully fixing bug #24750
+
+  02 Jul 2003; Andres Loeh <kosmikus@gentoo.org> ghc-bin-5.04.3.ebuild,
+  ghc-bin-6.0.ebuild:
+  Marked 5.04.3 stable. Fixed installation of documentation (now to
+  /usr/share/doc/... The hsc2hs wrapper script no longer contains illegal paths.
+
+*ghc-bin-6.0 (12 Jun 2003)
+
+  12 Jun 2003; Andres Loeh <kosmikus@gentoo.org> ghc-bin-6.0.ebuild:
+  Version bump.
+
+*ghc-bin-5.04.3 (09 May 2003)
+
+  09 May 2003; Andres Loeh <kosmikus@gentoo.org> ghc-bin-5.04.2-r1.ebuild,
+  ghc-bin-5.04.3.ebuild:
+  Installs to /opt/ghc/bin now (bug #20185). Updated to version 5.04.3.
+  Both updates are marked unstable for now.
+
+*ghc-bin-5.04.2-r1 (09 May 2003)
+ 
+  11 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Added missing changelog entry.
+
+*ghc-bin-5.04.2 (21 Mar 2003)
+
+  21 Mar 2003; George Shapovalov <george@gentoo.org> ghc-bin-5.04.2.ebuild :
+  created virtual/ghc, added PROVIDE=virtual/ghc to the ebuild to make dev-lang/ghc bootstrap correctly
+  and without unnecessary steps  (#10155)
+
+  11 Feb 2003; George Shapovalov <george@gentoo.org> ChangeLog, ghc-bin-5.04.2.ebuild :
+  modified ebuild to add sparc support (sparc people, please test!)
+  fixups to wrapper scripts
 
   14 Dec 2002; George Shapovalov <george@gentoo.org> ChangeLog, ghc-bin-5.04.2.ebuild, files/digest-ghc-bin-5.04.2 :
   initial release

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/num-utils/num-utils-0.3.ebuild,v 1.1 2004/12/28 14:45:31 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/num-utils/num-utils-0.3.ebuild,v 1.1.1.1 2005/11/30 09:55:54 chriswhite Exp $
 
 IUSE=""
 
@@ -12,7 +12,7 @@ DEPEND=""
 RDEPEND="dev-lang/perl"
 
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
 src_compile() {
 	emake || die

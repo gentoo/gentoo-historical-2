@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.3.34.ebuild,v 1.1 2005/10/08 21:48:38 zzam Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/vdr-1.3.34.ebuild,v 1.1.1.1 2005/11/30 09:57:37 chriswhite Exp $
 
 inherit eutils
 
@@ -15,7 +15,7 @@ FNAME_LNBSHARING="configurableLNBshare-VDR_1.3.33.patch"
 FNAME_SOURCECAPS_NORMAL="SourceCaps-1.3.33.patch"
 FNAME_SOURCECAPS_LNBSHARING="SourceCaps-1.3.33-lnb-sharing.patch"
 
-DESCRIPTION="The Video Disk Recorder"
+DESCRIPTION="Video Disk Recorder - turns a pc into a powerful set top box for DVB"
 HOMEPAGE="http://www.cadsoft.de/vdr/"
 SRC_URI="ftp://ftp.cadsoft.de/vdr/Developer/${P}.tar.bz2
 	lnbsharing? ( http://xn--ltzke-jua.de/dvb/VDR_LNB_sharing_patch/${FNAME_LNBSHARING} )
@@ -150,6 +150,9 @@ src_install() {
 	insinto ${VDR_INCLUDE_DIR}
 	doins *.h
 	doins Make.config
+
+	insinto ${VDR_INCLUDE_DIR}/libsi
+	doins libsi/*.h
 
 	diropts -m755 -ovdr -gvdr
 	keepdir ${CONF_DIR}

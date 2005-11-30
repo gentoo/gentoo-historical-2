@@ -1,32 +1,28 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/groff/groff-1.18.1-r4.ebuild,v 1.1 2004/01/06 15:54:59 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/groff/groff-1.18.1-r4.ebuild,v 1.1.1.1 2005/11/30 09:56:30 chriswhite Exp $
 
+inherit eutils flag-o-matic toolchain-funcs
+
+MB_PATCH="${P/-/_}-7"
+DESCRIPTION="Text formatter used for man pages"
+HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
+SRC_URI="ftp://groff.ffii.org/pub/groff/old/${P}.tar.gz
+	cjk? ( mirror://gentoo/${MB_PATCH}.diff.gz )"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
 IUSE="X cjk"
 
-inherit eutils flag-o-matic
-
-S="${WORKDIR}/${P}"
-DESCRIPTION="Text formatter used for man pages"
-MB_PATCH="${P/-/_}-7"
-SRC_URI="ftp://groff.ffii.org/pub/groff/old/${P}.tar.gz
-	cjk? ( http://people.debian.org/~ukai/groff/${MB_PATCH}.diff.gz )"
-HOMEPAGE="http://www.gnu.org/software/groff/groff.html"
-
-KEYWORDS="x86 amd64 ppc sparc alpha mips hppa arm ia64 ppc64"
-SLOT="0"
-LICENSE="GPL-2"
-
-DEPEND="virtual/glibc
-	>=sys-apps/texinfo-4.0"
-
+DEPEND=">=sys-apps/texinfo-4.0"
 PDEPEND=">=sys-apps/man-1.5k-r1"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	if [ "`use cjk`" ]; then
+	if use cjk; then
 		# multibyte patch contains no-color-segfault
 		epatch ${WORKDIR}/${MB_PATCH}.diff
 		epatch ${FILESDIR}/${MB_PATCH}-fix.patch
@@ -57,8 +53,8 @@ src_compile() {
 	local myconf=""
 
 	# Fix problems with not finding g++
-	[ -z "${CC}" ] && export CC="gcc"
-	[ -z "${CXX}" ] && export CXX="g++"
+	export CC="$(tc-getCC)"
+	export CXX="$(tc-getCXX)"
 
 	case ${ARCH} in
 		alpha)
@@ -86,8 +82,7 @@ src_compile() {
 
 	# Only build X stuff if we have X installed, but do
 	# not depend on it, else we get circular deps.
-	if [ -n "`use X`" ] && [ -x /usr/X11R6/bin/xmkmf ]
-	then
+	if use X && [[ -n $(type -p xmkmf) ]] ; then
 		cd ${S}/src/xditview
 		xmkmf || die
 		make depend all || die
@@ -102,8 +97,7 @@ src_install() {
 		docdir=${D}/usr/share/doc/${PF} \
 		install || die
 
-	if [ -n "`use X`" ] && [ -x /usr/X11R6/bin/xmkmf ]
-	then
+	if use X && [[ -n $(type -p xmkmf) ]] ; then
 		cd ${S}/src/xditview
 		make DESTDIR=${D} \
 			BINDIR=/usr/bin \
@@ -121,4 +115,3 @@ src_install() {
 	dodoc BUG-REPORT COPYING ChangeLog FDL MORE.STUFF NEWS \
 		PROBLEMS PROJECTS README REVISION TODO VERSION
 }
-

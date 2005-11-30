@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vcdimager/vcdimager-0.7.22.ebuild,v 1.1 2005/05/26 23:39:23 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vcdimager/vcdimager-0.7.22.ebuild,v 1.1.1.1 2005/11/30 09:57:25 chriswhite Exp $
 
 inherit eutils libtool
 

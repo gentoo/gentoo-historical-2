@@ -1,8 +1,346 @@
 # ChangeLog for sys-apps/busybox
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.1 2002/02/01 21:53:36 gbevin Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/busybox/ChangeLog,v 1.1.1.1 2005/11/30 09:56:12 chriswhite Exp $
+
+*busybox-1.01 (18 Aug 2005)
+
+  18 Aug 2005; Mike Frysinger <vapier@gentoo.org> +busybox-1.01.ebuild:
+  Version bump.
+
+*busybox-1.1_pre20050802 (03 Aug 2005)
+
+  03 Aug 2005; Mike Frysinger <vapier@gentoo.org>
+  +busybox-1.1_pre20050802.ebuild:
+  Add snapshot for #99849.
+
+  11 Jun 2005; <solar@gentoo.org> busybox-1.00-r4.ebuild:
+  - ifup/ifdown need run-parts. #95190
+
+  04 Jun 2005; Mike Frysinger <vapier@gentoo.org> busybox-1.00-r4.ebuild:
+  Dont abort if user has a known broken glibc wrt to static compilation #94879.
+
+  03 Jun 2005; <solar@gentoo.org> busybox-1.00-r4.ebuild:
+  - remove redirection of stderr to null when static linking. This will make the
+  ebuild a little noisy, but we have faith you will get over it
+
+  29 May 2005; <solar@gentoo.org> busybox-1.00-r1.ebuild,
+  busybox-1.00-r2.ebuild, busybox-1.00-r3.ebuild, busybox-1.00-r4.ebuild:
+  echangelog - update package to use libc expanded variable elibc_uclibc vs
+  uclibc so USE=-* works
+
+  18 May 2005; <solar@gentoo.org> busybox-1.00-r4.ebuild:
+  - reenable a few useful default applets
+
+*busybox-1.00-r4 (17 May 2005)
+
+  17 May 2005; Mike Frysinger <vapier@gentoo.org> +files/1.00/nice.patch,
+  +files/1.00/printenv.patch, files/busybox-1.00-pre3.config,
+  +files/1.00/standalone.patch, +files/1.00/sum.patch, +busybox-1.00-r4.ebuild:
+  Add more applets and prepare to replace sash.
+
+  12 May 2005; Fernando J. Pereda <ferdy@gentoo.org> busybox-1.00-r1.ebuild:
+  alpha stable wrt #73241
+
+  07 May 2005; <solar@gentoo.org> busybox-1.00-r3.ebuild:
+  - have savedconfig look in ROOT first then fallback to / if nothing is found
+
+*busybox-1.00-r3 (01 May 2005)
+
+  01 May 2005; <solar@gentoo.org> +busybox-1.00-r3.ebuild:
+  - prep ebuild so bb may be used as our static rescue shell. we now install
+  busybox and busybox.static when USE=static is not set.
+
+*busybox-1.00-r2 (16 Apr 2005)
+
+  16 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.00/bash-tests.patch, files/1.00/more-insmod-arches.patch,
+  +files/1.00/cp-posix-opts.patch, +busybox-1.00-r2.ebuild:
+  Add fixes from upstream to support more bash code and more cp options #88841.
+
+  08 Apr 2005; <solar@gentoo.org> busybox-1.00-r1.ebuild:
+  - added ~ppc64 keyword. bug 73241
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> busybox-1.00.ebuild:
+  stable on amd64 wrt #73241
+
+  15 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> busybox-1.00-r1.ebuild:
+  Stable on sparc
+
+  10 Feb 2005; <solar@gentoo.org> metadata.xml, -files/Config.h,
+  -files/Config.h-0.60.2-cd, -files/Config.h-0.60.3-cd,
+  -files/Config.h-0.60.5-cd, -files/busybox-0.60.5-dietlibc.diff,
+  -files/msh.diff, -busybox-0.60.3-r1.ebuild, -busybox-0.60.3-r2.ebuild,
+  busybox-1.00-r1.ebuild, -busybox-1.00_rc3.ebuild:
+  - cleanup busybox dir and updated metadata
+
+  24 Jan 2005; Brian Jackson <iggy@gentoo.org> busybox-1.00.ebuild,
+  busybox-1.00_rc3.ebuild:
+  few more uclibc move changes
+
+  11 Jan 2005; Guy Martin <gmsoft@gentoo.org> busybox-1.00-r1.ebuild:
+  Yes we *NEED* the symlinks for netboot.
+
+  02 Jan 2005; Guy Martin <gmsoft@gentoo.org> busybox-1.00-r1.ebuild:
+  Added dodir before dosym for creating correctly the link /sbin/init when
+  USE=netboot.
+
+  01 Jan 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/1.00/more-insmod-arches.patch, busybox-1.00-r1.ebuild:
+  Add patch from upstream to support alpha/hppa.
+
+  31 Dec 2004; Guy Martin <gmsoft@gentoo.org> busybox-1.00-r1.ebuild:
+  Added needed symlink of /sbin/init for busybox when USE=netboot.
+
+*busybox-1.00-r1 (11 Dec 2004)
+
+  11 Dec 2004; <solar@gentoo.org> +files/1.00/busybox-read-timeout.patch,
+  +files/1.00/readlink-follow.patch, +busybox-1.00-r1.ebuild:
+  - CONFIG_FEATURE_READLINK_FOLLOW readlink -f patch from Colin Watson
+  <cjwatson@debian.org> on busybox mailing list 08/11/04. - Added ash -t timeout
+  patch from plasmaroo.
+
+  08 Dec 2004; Daniel Black <dragonheart@gentoo.org> busybox-1.00.ebuild:
+  ppc stable as per bug 73241
+
+  02 Dec 2004; <solar@gentoo.org> busybox-1.00.ebuild:
+  Stable on x86
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> busybox-1.00.ebuild:
+  Stable on sparc
+
+  16 Oct 2004; <solar@gentoo.org> busybox-1.00.ebuild,
+  busybox-1.00_rc3.ebuild:
+  removed erroneous RDEPEND on sed4
+
+  13 Oct 2004; Sven Wegener <swegener@gentoo.org> :
+  Removed stray digest.
+
+*busybox-1.00 (13 Oct 2004)
+
+  13 Oct 2004; <solar@gentoo.org> -files/busybox-1.00_pre8-amd64.patch,
+  -busybox-0.60.5-r1.ebuild, -busybox-0.60.5-r2.ebuild, +busybox-1.00.ebuild,
+  -busybox-1.00_pre8.ebuild, busybox-1.00_rc3.ebuild:
+  The highly anticipated release of BusyBox 1.00 has arrived after 3 years in
+  development. (arches please test and mark stable so we can clean out files/*)
+
+  28 Sep 2004; Guy Martin <gmsoft@gentoo.org> busybox-1.00_rc3.ebuild:
+  Removed build of insmod for hppa. Marked stable on hppa.
+
+  20 Sep 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/busybox-1.00_rc3-amd64.patch:
+  Added missing amd64 patch.
+
+  16 Sep 2004; <solar@gentoo.org> busybox-1.00_rc3.ebuild:
+  marked busybox-1.00-rc3 stable for x86, other arches please follow so it can
+  be used for the next release cycle
+
+  11 Sep 2004; Daniel Black <dragonheart@gentoo.org> busybox-1.00_pre8.ebuild,
+  busybox-1.00_rc3.ebuild:
+  Fixed saveconfig and make-busybox-symlinks as per bugs #60982 and #60805.
+  Thanks to Edward Flick <eddy@cdf-imaging.com> and Dirk Heinrichs
+  <ext-dirk.heinrichs@nokia.com>
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  busybox-1.00_pre8.ebuild, busybox-1.00_rc3.ebuild:
+  Masked busybox-1.00_rc3.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  busybox-1.00_pre8.ebuild:
+  Masked busybox-1.00_pre8.ebuild stable for ppc
+
+  24 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> busybox-1.00_rc3.ebuild:
+  Keyworded ~sparc
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> busybox-1.00_rc3.ebuild:
+  Sync IUSE (uclibc missing)
+
+  17 Aug 2004; <solar@gentoo.org> busybox-1.00_pre8.ebuild:
+  marked 1.00_pre8 stable
+
+*busybox-1.00_rc3 (17 Aug 2004)
+
+  17 Aug 2004; <solar@gentoo.org> -busybox-1.0.0_pre20040721.ebuild,
+  -busybox-1.0.0_pre20040726.ebuild, +busybox-1.00_rc3.ebuild:
+  version bump to rc3
+
+*busybox-1.0.0_pre20040726 (26 Jul 2004)
+
+  26 Jul 2004; <solar@gentoo.org> busybox-1.0.0_pre20040726.ebuild:
+  updated snapshot and forceable enable ash = sh. This fixes a problem in native
+  uclibc environments with busybox and system(), popen() etc not working. (posix
+  demands that a /bin/sh exist)
+
+*busybox-1.0.0_pre20040721 (21 Jul 2004)
+
+  21 Jul 2004; <solar@gentoo.org> busybox-1.0.0_pre20040721.ebuild,
+  busybox-1.0_pre20040720.ebuild:
+  bump again to avoid fcntl/readadhead problems on native glibc hosts
+
+*busybox-1.0_pre20040720 (20 Jul 2004)
+
+  20 Jul 2004; <solar@gentoo.org> busybox-1.0_pre20040720.ebuild:
+  busybox-1.0-rc1 coming soon, using this snapshot to help test readiness.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> busybox-0.60.3-r1.ebuild,
+  busybox-0.60.3-r2.ebuild, busybox-1.00_pre8.ebuild:
+  sync IUSE (+static), add sed-4 dep
+
+  25 Jun 2004; Aron Griffis <agriffis@gentoo.org> busybox-0.60.5-r1.ebuild,
+  busybox-0.60.5-r2.ebuild:
+  QA - fix use invocation
+
+  23 Jun 2004; <solar@gentoo.org> busybox-1.00_pre8.ebuild:
+  Added ~mips to the KEYWORDS after a successful compile
+
+  11 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  +files/busybox-1.00_pre8-amd64.patch, busybox-0.60.3-r1.ebuild,
+  busybox-0.60.3-r2.ebuild, busybox-0.60.5-r1.ebuild,
+  busybox-0.60.5-r2.ebuild, busybox-1.00_pre8.ebuild:
+  Marked all versions -amd64, except -1.00_pre8. Added patch to make the latter
+  work on amd64.
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> busybox-0.50.ebuild,
+  busybox-0.60.2.ebuild, busybox-0.60.3.ebuild, busybox-0.60.5.ebuild,
+  busybox-1.00_pre5.ebuild, busybox-1.00_pre7.ebuild:
+  prune extra ebuilds
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> busybox-0.60.3-r2.ebuild,
+  busybox-0.60.5-r2.ebuild:
+  Add inherit eutils
+
+  17 Mar 2004; Daniel Black <dragonheart@gentoo.org> busybox-0.60.5-r2.ebuild:
+  added devfs use flag thanks to David Bryson <mutex@cryptobackpack.org> in bug
+  #43404
+
+*busybox-1.00_pre8 (02 Mar 2004)
+
+  05 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Add local USE flag make-busybox-symlinks to help out embedded building.
+  This will create all the appropriate symlinks in /sbin and /bin #43406.
+
+  02 Mar 2004; Mike Frysinger <vapier@gentoo.org> :
+  Version bump to fix #43450 by Aaron Peterson.
+
+  14 Feb 2004; Luca Barbato <lu_zero@gentoo.org> busybox-1.00_pre7.ebuild:
+  Marked ~ppc
+
+*busybox-0.60.3-r2 (14 Feb 2004)
+
+  14 Feb 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  busybox-0.60.3-r2.ebuild, files/busybox-cmdedit-sparc.diff:
+  new 0.60.3-r2, bumped for sparc only, fixes cmdedit lag
+
+*busybox-1.00_pre7 (06 Feb 2004)
+
+  06 Feb 2004; Daniel Black <dragonheart@gentoo.org> busybox-1.00_pre6.ebuild,
+  busybox-1.00_pre7.ebuild:
+  busybox-1.00_pre6 removed - buggy release. Version bumped to 1.00_pre7. Fixed
+  savedconfig too.
+
+*busybox-1.00_pre6 (03 Feb 2004)
+
+  03 Feb 2004; <solar@gentoo.org> busybox-0.50.ebuild, busybox-0.60.2.ebuild,
+  busybox-0.60.3-r1.ebuild, busybox-0.60.3.ebuild, busybox-0.60.5-r1.ebuild,
+  busybox-0.60.5-r2.ebuild, busybox-0.60.5.ebuild, busybox-1.00_pre5.ebuild,
+  busybox-1.00_pre6.ebuild:
+  ~arch version bump, adds new procps sysctl option to busybox. misc bugfixes.
+  new local useflag called savedconfig for user defined configs.
+
+*busybox-1.00_pre5 (24 Dec 2003)
+
+  24 Dec 2003; <solar@gentoo.org> busybox-1.00_pre3.ebuild,
+  busybox-1.00_pre4.ebuild, busybox-1.00_pre5.ebuild:
+  The most obvious thing in this release is a fix for a terribly stupid bug in
+  mount that prevented it from working properly unless you specified the
+  filesystem type. This release also fixes a few compile problems, updates
+  udhcp, fixes a silly bug in fdisk, fixes ifup/ifdown to behave like the Debian
+  version, updates devfsd, updates the 2.6.x modutils support, add a new 'rx'
+  applet, removes the obsolete 'loadacm' applet, fixes a few tar bugs, fixes a
+  sed bug, and a few other odd fixes.
+
+*busybox-1.00_pre4 (18 Dec 2003)
+
+  18 Dec 2003; <solar@gentoo.org> busybox-1.00_pre4.ebuild:
+  version bump of the _pre series.. This release includes major rework to sed,
+  lots of rework on tar, a new tiny implementation of bunzip2, a new devfsd
+  applet, support for 2.6.x kernel modules, updates to the ash shell, sha1sum
+  and md5sum have been merged into a common applet, the dpkg applets has been
+  cleaned up.
+
+*busybox-1.00_pre3 (06 Nov 2003)
+
+  06 Nov 2003; <solar@gentoo.org> busybox-1.00_pre3.ebuild,
+  files/busybox-1.00-pre3.config:
+  version bump for ~arch, please do not mark any of the _pre ebuild as stable
+
+*busybox-0.60.5-r2 (27 Aug 2003)
+
+  27 Aug 2003; <solar@gentoo.org> busybox-0.60.5-r2.ebuild,
+  files/busybox-0.60.5-dietlibc.diff:
+  Added support for building busybox with dietlibc. size=306K on i386
+
+  24 Jul 2003; Will Woods <wwoods@gentoo.org> busybox-0.60.5-r1.ebuild, 
+  busybox-0.60.5.ebuild:
+  rmmod/insmod/modprobe don't compile for alpha, so 0.60.5 is marked -alpha
+
+  24 Jul 2003; Will Woods <wwoods@gentoo.org> busybox-0.60.3-r1.ebuild:
+  added ~alpha to KEYWORDS
+
+*busybox-0.60.3-r1 (03 Apr 2003)
+
+  03 Apr 2003; Martin Holzer <mholzer@gentoo.org> busybox-0.60.3-r1.ebuild:
+  Added busybox.links into scripts dir. Closes #18678.
+
+*busybox-0.60.5-r1 (13 Jan 2003)
+
+  15 Jul 2003; Mike Frysinger <vapier@gentoo.org> :
+  Change local env var to a local use flag.
+
+  13 Jan 2003; Nick Hadaway <raker@gentoo.org> busybox-0.60.5-r1.ebuild :
+  Added some logic for detection of uclibc which needs to be tested.
+  Please comment on bug #13517.  2 hours later: New local environment
+  variable $LINK_LIBC.  Set to "uclibc" to link against uclibc instead
+  of glibc.
+
+*busybox-0.60.5 (20 Dec 2002)
+
+   20 Dec 2002; Jon Portnoy <avenj@gentoo.org> busybox-0.60.5.ebuild :
+   Version bump.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*busybox-0.50 (14 July 2002)
+
+  03 Apr 2003; Martin Holzer <mholzer@gentoo.org> busybox-0.50.ebuild,
+  busybox-0.60.2.ebuild, busybox-0.60.3.ebuild:
+  Updated Homepage. Closes #15784.
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> busybox-0.50.ebuild :
+  Added KEYWORDS, SLOT.
+
+*busybox-0.60.3 (21 May 2002)
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (ppc)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> busybox-0.60.3.ebuild :
+  Added KEYWORDS, SLOT.
+
+  21 May 2002; Wout Mertens <wmertens@gentoo.org> busybox-0.60.3.ebuild
+  files/dodeps files/Config.h-0.60.3-cd:
+
+  Upped to new stable version. Played with settings to get smallish build
+  that provides as much as possible. See the files/dodeps script.
 
 *busybox-0.60.2 (1 Feb 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> busybox-0.60.2.ebuild :
+  Added KEYWORDS, SLOT.
+
+  24 Feb 2002; Donny Davies <woodchip@gentoo.org> files/Config.h-0.60.2-cd :
+
+  Comment out #define BB_MT since we're including the 'real' mt-st on the
+  boot CD now.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

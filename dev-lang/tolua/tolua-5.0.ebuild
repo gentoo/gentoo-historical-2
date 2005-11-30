@@ -1,14 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/tolua/tolua-5.0.ebuild,v 1.1 2003/08/28 12:48:44 msterret Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/tolua/tolua-5.0.ebuild,v 1.1.1.1 2005/11/30 09:58:47 chriswhite Exp $
+
+inherit toolchain-funcs
 
 DESCRIPTION="a tool that simplifies the integration of C/C++ code with Lua"
 HOMEPAGE="http://www.tecgraf.puc-rio.br/~celes/tolua/"
 SRC_URI="ftp://ftp.tecgraf.puc-rio.br/pub/users/celes/tolua/${P}.tar.gz"
 
-KEYWORDS="x86"
 LICENSE="as-is"
 SLOT="0"
+KEYWORDS="x86 ~sparc"
+IUSE=""
 
 DEPEND=">=sys-apps/sed-4"
 
@@ -17,8 +20,9 @@ src_unpack() {
 	cd ${S}
 
 	sed -i \
-		-e "/^CC=/ s/=.*/=${CC}/" \
+		-e "/^CC=/ s/=.*/=$(tc-getCC)/" \
 		-e "/^LUA=/ s:=.*:=/usr:" \
+		-e 's/^\(LIB=.*\)/\1 -ldl/' \
 		-e "s:-O2:${CFLAGS}:" config || \
 			die "sed config failed"
 	sed -i \
@@ -31,7 +35,7 @@ src_compile() {
 }
 
 src_install() {
-	dobin bin/tolua
+	dobin bin/tolua || die
 	dolib.a lib/libtolua.a
 	insinto /usr/include
 	doins include/tolua.h

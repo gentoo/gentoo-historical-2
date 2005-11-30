@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/zsync/zsync-0.4.1.ebuild,v 1.1 2005/07/30 17:45:23 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/zsync/zsync-0.4.1.ebuild,v 1.1.1.1 2005/11/30 09:54:48 chriswhite Exp $
 
 DESCRIPTION="Partial/differential file download client over HTTP which uses the rsync algorithm"
 HOMEPAGE="http://zsync.moria.org.uk/"

@@ -1,6 +1,21 @@
 # ChangeLog for net-misc/redir
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/redir/ChangeLog,v 1.1 2003/09/19 13:46:58 hhg Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/redir/ChangeLog,v 1.1.1.1 2005/11/30 09:55:38 chriswhite Exp $
+
+  08 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org> redir-2.2.1.ebuild:
+  Stable on sparc wrt #95113
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  12 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> redir-2.2.1.ebuild:
+  Remove whitespace from CVS header to make repoman happy.
+
+  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> redir-2.2.1.ebuild:
+  Stable on alpha.
+
+  18 Nov 2003; Hallgrimur H. Gunnarsson <hhg@gentoo.org> redir-2.2.1.ebuild:
+  Marked stable on x86
 
 *redir-2.2.1 (19 Sep 2003)
 

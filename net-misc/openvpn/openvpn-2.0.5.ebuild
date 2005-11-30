@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.0.5.ebuild,v 1.1 2005/11/03 17:58:45 uberlord Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/openvpn/openvpn-2.0.5.ebuild,v 1.1.1.1 2005/11/30 09:54:42 chriswhite Exp $
 
 inherit eutils gnuconfig multilib
 
@@ -10,7 +10,7 @@ HOMEPAGE="http://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~ppc-macos ~sparc ~x86"
+KEYWORDS="alpha amd64 ppc ppc-macos sparc x86"
 IUSE="examples iproute2 minimal pam passwordsave selinux ssl static threads"
 
 RDEPEND=">=dev-libs/lzo-1.07
@@ -77,7 +77,7 @@ src_install() {
 
 	# Install easy-rsa stuff
 	exeinto "/usr/share/${PN}/easy-rsa"
-	doexe easy-rsa/2.0/*-*
+	doexe easy-rsa/2.0/*-* easy-rsa/2.0/pkitool
 	insinto "/usr/share/${PN}/easy-rsa"
 	doins easy-rsa/2.0/{README,openssl.cnf,vars}
 

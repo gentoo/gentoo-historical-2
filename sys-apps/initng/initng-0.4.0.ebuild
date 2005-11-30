@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/initng/initng-0.4.0.ebuild,v 1.1 2005/11/09 01:58:44 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/initng/initng-0.4.0.ebuild,v 1.1.1.1 2005/11/30 09:56:32 chriswhite Exp $
 
 DESCRIPTION="A next generation init replacement"
 HOMEPAGE="http://initng.thinktux.net/"

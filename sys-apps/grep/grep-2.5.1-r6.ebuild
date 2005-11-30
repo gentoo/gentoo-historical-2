@@ -1,19 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/grep/grep-2.5.1-r6.ebuild,v 1.1 2004/08/20 08:36:03 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/grep/grep-2.5.1-r6.ebuild,v 1.1.1.1 2005/11/30 09:57:01 chriswhite Exp $
 
-inherit gnuconfig flag-o-matic eutils
+inherit gnuconfig flag-o-matic eutils multilib
 
 DESCRIPTION="GNU regular expression matcher"
 HOMEPAGE="http://www.gnu.org/software/grep/grep.html"
-SRC_URI="http://ftp.club.cc.cmu.edu/pub/gnu/${PN}/${P}.tar.gz
-	mirror://gentoo/${P}.tar.gz
-	mirror://gnu/${PN}/${P}.tar.gz"
+SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
+	mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
-IUSE="build nls pcre static uclibc"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86 ~ppc-macos"
+IUSE="build nls pcre static"
 
 RDEPEND="virtual/libc"
 DEPEND="${RDEPEND}
@@ -25,17 +24,16 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A} && cd ${S} || die
 
-	if [ "${ARCH}" = "sparc" -a "${PROFILE_ARCH}" = "sparc" ] ; then
-		epatch "${FILESDIR}/gentoo-sparc32-dfa.patch"
-	fi
+	# Fix a weird sparc32 compiler bug
+	echo "" >> src/dfa.h
 	epatch "${FILESDIR}/${PV}-manpage.patch"
 
 	# man page describes a --line-buffering option, where as
 	# grep recognises --line-buffered.
 	# 	-taviso (20 Aug 2004)
-	epatch ${FILESDIR}/${PV}-manpage-line-buffering.diff
+	epatch ${FILESDIR}/${PV}-manpage-line-buffering.patch
 
-	use uclibc && epatch ${FILESDIR}/grep-2.5.1-restrict_arr.patch
+	use elibc_uclibc && epatch ${FILESDIR}/grep-2.5.1-restrict_arr.patch
 
 	epatch ${FILESDIR}/${PN}-${PV}-fgrep.patch.bz2
 	epatch ${FILESDIR}/${PN}-${PV}-i18n.patch.bz2
@@ -56,7 +54,7 @@ src_compile() {
 		append-ldflags -static
 	fi
 
-	if use uclibc ; then
+	if use elibc_uclibc ; then
 		myconf="${myconf} --without-included-regex"
 	else
 		myconf="${myconf} $(use_enable pcre perl-regexp)"
@@ -64,8 +62,8 @@ src_compile() {
 
 	econf ${myconf} || die "econf failed"
 
-	if use pcre && ! use uclibc ; then
-		sed -i -e 's:-lpcre:/usr/lib/libpcre.a:g' {lib,src}/Makefile \
+	if use pcre && ! use elibc_uclibc ; then
+		sed -i -e "s:-lpcre:/usr/$(get_libdir)/libpcre.a:g" {lib,src}/Makefile \
 			|| die "sed Makefile failed"
 	fi
 

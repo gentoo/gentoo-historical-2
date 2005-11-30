@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.2.2.ebuild,v 1.1 2004/10/18 17:20:50 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/ghc/ghc-6.2.2.ebuild,v 1.1.1.1 2005/11/30 09:58:09 chriswhite Exp $
 
 # Brief explanation of the bootstrap logic:
 #
@@ -14,7 +14,7 @@
 # can be removed once an forall after the first succesful install
 # of ghc.
 
-inherit base flag-o-matic eutils
+inherit base flag-o-matic eutils ghc-package
 
 IUSE="doc tetex opengl"
 
@@ -25,19 +25,22 @@ SRC_URI="http://www.haskell.org/ghc/dist/${PV}/ghc-${PV}-src.tar.bz2"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 -alpha"
+# removed amd64, because there's no binary to bootstrap from
+KEYWORDS="x86 ppc -alpha -amd64 sparc"
 
 
 PROVIDE="virtual/ghc"
 # FIXME: Add USE support for parallel haskell (requires PVM)
 #	 Get PVM from ftp://ftp.netlib.org/pvm3/
-DEPEND="virtual/ghc
+DEPEND="<virtual/ghc-6.3
+	!>=virtual/ghc-6.4
 	>=dev-lang/perl-5.6.1
 	>=sys-devel/gcc-2.95.3
 	>=sys-devel/make-3.79.1
 	>=sys-apps/sed-3.02.80
 	>=sys-devel/flex-2.5.4a
 	>=dev-libs/gmp-4.1
+	>=sys-libs/readline-4.2
 	doc? ( >=app-text/openjade-1.3.1
 		>=app-text/sgml-common-0.6.3
 		~app-text/docbook-sgml-dtd-3.1
@@ -53,28 +56,32 @@ RDEPEND="virtual/libc
 	>=sys-devel/gcc-2.95.3
 	>=dev-lang/perl-5.6.1
 	>=dev-libs/gmp-4.1
+	>=sys-libs/readline-4.2
 	opengl? ( virtual/opengl virtual/glu virtual/glut )"
-
-# extend path to /opt/ghc/bin to guarantee that ghc-bin is found
-GHCPATH="${PATH}:/opt/ghc/bin"
 
 SUPPORTED_CFLAGS=""
 
 # Setup supported CFLAGS.
-setup_cflag() {
+check_cflags() {
 	OLD_CFLAGS="${CFLAGS}"
-	CFLAGS="${CFLAGS} $1"
+	CFLAGS="$1"
 	strip-unsupported-flags
-
-	if [ "${OLD_CFLAGS}" != "${CFLAGS}" ];
-	then
-		SUPPORTED_CFLAGS="$1 ${SUPPORTED_CFLAGS}"
-	fi
+	SUPPORTED_CFLAGS="${SUPPORTED_CFLAGS} ${CFLAGS}"
+	CFLAGS="${OLD_CFLAGS}"
 }
 
 setup_cflags() {
-	setup_cflag "-fno-pic"
-	setup_cflag "-fno-stack-protector"
+	check_cflags "-nopie -fno-stack-protector -fno-stack-protector-all"
+}
+
+pkg_setup() {
+	if ! has_version virtual/ghc; then
+		eerror "This ebuild needs a version of GHC to bootstrap from."
+		eerror "Please emerge dev-lang/ghc-bin to get a binary version."
+		eerror "You can either use the binary version directly or emerge"
+		eerror "dev-lang/ghc afterwards."
+		die "virtual/ghc version required to build"
+	fi
 }
 
 src_unpack() {
@@ -86,9 +93,10 @@ src_unpack() {
 	cd ${S}/ghc
 	pushd driver
 	setup_cflags
+
 	epatch ${FILESDIR}/${PN}-6.2.hardened.patch
-	sed -i -e "s|@GHC_CFLAGS@|${SUPPORTED_CFLAGS//-f/-optc-f}|" ghc/ghc.sh
-	sed -i -e "s|@GHC_CFLAGS@|${SUPPORTED_CFLAGS//-f/-optc-f}|" ghci/ghci.sh
+	sed -i -e "s|@GHC_CFLAGS@|${SUPPORTED_CFLAGS// -/ -optc-}|" ghc/ghc.sh
+	sed -i -e "s|@GHC_CFLAGS@|${SUPPORTED_CFLAGS// -/ -optc-}|" ghci/ghci.sh
 	popd
 }
 
@@ -105,23 +113,22 @@ src_compile() {
 	# patch included)
 	setup_cflags
 	echo "SRC_CC_OPTS+=${SUPPORTED_CFLAGS}" >> mk/build.mk
-	echo "SRC_HC_OPTS+=${SUPPORTED_CFLAGS//-f/-optc-f}" >> mk/build.mk
+	echo "SRC_HC_OPTS+=${SUPPORTED_CFLAGS// -/ -optc-}" >> mk/build.mk
 
 	# force the config variable ArSupportsInput to be unset;
 	# ar in binutils >= 2.14.90.0.8-r1 seems to be classified
 	# incorrectly by the configure script
 	echo "ArSupportsInput:=" >> mk/build.mk
 
-	# Required under ppc to work around some obscure linker problem.
-	if use ppc;
-	then
-		echo "SplitObjs=NO" >> mk/build.mk
-	fi
+	# Required for some architectures, because they don't support ghc fully ...
+	use ppc || use amd64 || use sparc && echo "SplitObjs=NO" >> mk/build.mk
+	use amd64 && echo "GhcUnregisterised=YES" >> mk/build.mk
+	use amd64 || use sparc && echo "GhcWithInterpreter=NO" >> mk/build.mk
 
 	# unset SGML_CATALOG_FILES because documentation installation
 	# breaks otherwise ...
 	# (--enable-threaded-rts is no longer needed)
-	PATH="${GHCPATH}" SGML_CATALOG_FILES="" econf \
+	SGML_CATALOG_FILES="" econf \
 		${myconf} || die "econf failed"
 
 	# the build does not seem to work all that
@@ -158,11 +165,14 @@ src_install () {
 	fi
 	echo SGMLDocWays="${mydoc}" >> mk/build.mk
 
+	# the libdir0 setting is needed for amd64, and does not
+	# harm for other arches
 	emake -j1 ${insttarget} \
 		prefix="${D}/usr" \
 		datadir="${D}/usr/share/doc/${PF}" \
 		infodir="${D}/usr/share/info" \
 		mandir="${D}/usr/share/man" \
+		libdir0="${D}/usr/$(get_libdir)" \
 		|| die "make ${insttarget} failed"
 
 	#need to remove ${D} from ghcprof script
@@ -174,10 +184,17 @@ src_install () {
 
 	cd ${S}/ghc
 	dodoc README ANNOUNCE LICENSE VERSION
-}
 
+	dosbin ${FILESDIR}/ghc-updater
+}
 
 pkg_postinst () {
+	ghc-reregister
 	einfo "If you have dev-lang/ghc-bin installed, you might"
-	einfo "want to unmerge it again. It is no longer needed."
+	einfo "want to unmerge it. It is no longer needed."
+	einfo
+	ewarn "If you upgrade from another ghc version, please run"
+	ewarn "/usr/sbin/ghc-updater to re-merge all ghc-based"
+	ewarn "Haskell libraries."
 }
+

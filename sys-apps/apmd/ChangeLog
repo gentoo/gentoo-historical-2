@@ -1,6 +1,100 @@
 # ChangeLog for sys-apps/apmd
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/ChangeLog,v 1.1 2002/02/01 21:53:36 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/ChangeLog,v 1.1.1.1 2005/11/30 09:56:00 chriswhite Exp $
+
+  10 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  apmd-3.2.1_p4.ebuild:
+  Adding modular X dependencies
+
+  15 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> apmd-3.2.1_p4.ebuild:
+  proper quoting and error checking
+
+  13 Sep 2005; <dang@gentoo.org> apmd-3.2.1_p4.ebuild:
+  Fix multilib-strict failure.  Bug #105846
+
+  05 Feb 2005; <solar@gentoo.org> apmd-3.2.1_p4.ebuild:
+  - q/a virtual/os-headers should not be set in an ebuilds RDEPEND
+
+  04 Jan 2005; Henrik Brix Andersen <brix@gentoo.org> files/apmd.confd:
+  Removed --proxy-timeout argument, fixes bug #57732.
+
+  16 Sep 2004; Olivier Crete <tester@gentoo.org> apmd-3.2.1_p4.ebuild:
+  Stable on x86 per request in bug 59139
+
+  03 Sep 2004; Lars Weiler <pylon@gentoo.org> apmd-3.2.1_p4.ebuild:
+  Stable on ppc (with gcc-3.4); see bug #59139.
+
+  24 Aug 2004; Sven Wegener <swegener@gentoo.org> apmd-3.2.0.ebuild:
+  Changed SRC_URI to use mirror:// syntax.
+
+  28 Jul 2004; Tom Gall <tgall@gentoo.org> apmd-3.2.1_p4.ebuild:
+  stable on ppc64, bug #58191
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> apmd-3.0.2-r3.ebuild,
+  apmd-3.2.0.ebuild:
+  sync IUSE (+nls)
+
+  25 Jun 2004; Aron Griffis <agriffis@gentoo.org> apmd-3.0.2-r3.ebuild,
+  apmd-3.2.0.ebuild:
+  QA - fix use invocation
+
+  06 Jun 2004; Travis Tilley <lv@gentoo.org> apmd-3.2.1_p4.ebuild:
+  marking stable on amd64 for gcc 3.4 fix
+
+  31 Mar 2004; Tom Gall <tgall@gentoo.org> apmd-3.2.0.ebuild, apmd-3.0.2-r3.ebuild
+  apmd-3.2.1_p4.ebuild:
+  remove ppc64, we're not ready
+
+*apmd-3.2.1_p4 (29 Feb 2004)
+
+  29 Feb 2004; Alastair Tse <liquidx@gentoo.org> apmd-3.2.0.ebuild,
+  apmd-3.2.1_p4.ebuild, files/apmd.confd:
+  version bump. using debian's apmd as development seems to have moved there
+  (#36952), adapted new ebuild based on changes suggested by narendra sankar
+  <nsankar@broadcom.com>. added man pages and docs.
+
+*apmd-3.2.0 (30 Dec 2003)
+
+  13 Oct 2003; <plasmaroo@gentoo.org> apmd-3.0.2-r3.ebuild,
+  files/apmd.kernel26x.patch: Added a patch to get apmd to compile on 
+  2.6x kernels: Bug #29636.
+
+*apmd-3.0.2-r3 (12 July 2002)
+
+  06 Feb 2003; Seemant Kulleen <seemant@gentoo.org> apmd-3.0.2-r3.ebuild :
+
+  use epatch and nls fixes
+
+  16 Jul 2003; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  actually apmd is available on ppc :-) limited usefullness, marking ppc
+
+  21 Jul 2002; Mark Guertin <gerk@gentoo.org>:
+  updated keywords (-ppc)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> apmd-3.0.2-r3.ebuild :
+  Added KEYWORDS.
+  
+  12 July 2002; Doug Goldstein <cardoe@gentoo.org>; apmd-3.0.2-r3.ebuild
+  patched to respect the X use variable and to build xapmd if +X and not build it otherwise
+  (so we don't require X for the console utils of apmd)
+
+*apmd-3.0.2-r2 (02 May 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> apmd-3.0.2-r2.ebuild :
+  Added KEYWORDS, SLOT.
+
+  02 May 2002; Daniel Robbins <drobbins@gentoo.org>: New release with a new
+  patch to fix compilation with recent 2.4 kernels.  Closes bug #1472; thanks
+  meekrob! :)
+
+*apmd-3.0.2-r1 (17 March 2002)
+
+  14 Jul 2002; phoen][x <phoenix@gentoo.org> apmd-3.0.2-r1.ebuild :
+  Added KEYWORDS, SLOT.
+
+  17 March 2002; Donny Davies <woodchip@gentoo.org> apmd-3.0.2-r1.ebuild,
+  files/apmd.rc6 : Fixed initscript booboo which prevented apmd from starting
+  properly.  Ooops :) Closes #1143, #1072.
 
 *apmd-3.0.2 (1 Feb 2002)
 

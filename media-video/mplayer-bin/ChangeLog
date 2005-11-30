@@ -1,6 +1,39 @@
 # ChangeLog for media-video/mplayer-bin
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer-bin/ChangeLog,v 1.1 2005/08/29 23:58:34 dang Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mplayer-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:57:42 chriswhite Exp $
+
+*mplayer-bin-1.0_pre7-r3 (01 Nov 2005)
+
+  01 Nov 2005; <dang@gentoo.org> +mplayer-bin-1.0_pre7-r3.ebuild:
+  mplayer-bin now has lirc support
+
+  08 Sep 2005; <dang@gentoo.org> mplayer-bin-1.0_pre7-r2.ebuild:
+  Update deps, because libesd moved from medialibs to soundlibs
+
+*mplayer-bin-1.0_pre7-r2 (02 Sep 2005)
+
+  02 Sep 2005; <dang@gentoo.org> -mplayer-bin-1.0_pre7.ebuild,
+  +mplayer-bin-1.0_pre7-r2.ebuild:
+  Include fix for bug #103555; Fix quoting on scripts, so mplayer-bin can play
+  files with spaces; move linked win32codecs dir to /opt/mplayer-bin/lib/win32
+  and symlink that to the correct location
+
+  02 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  mplayer-bin-1.0_pre7-r1.ebuild:
+  Don't use -a option with cp.
+
+*mplayer-bin-1.0_pre7-r1 (31 Aug 2005)
+
+  31 Aug 2005; <dang@gentoo.org> +mplayer-bin-1.0_pre7-r1.ebuild:
+  Revbump to add new features.  These include:
+  	 mmx2/sse2/3dnow/3dnowext, bidi, cpudetection, dts, dv, dvb, and xinerama
+
+
+  30 Aug 2005; <dang@gentoo.org> mplayer-bin-1.0_pre7.ebuild:
+  Add missing gtklibs dep Bug #104306
+
+  30 Aug 2005; <dang@gentoo.org> mplayer-bin-1.0_pre7.ebuild:
+  Add emul-linux-x86-sdl dep. Bug #104301
 
 *mplayer-bin-1.0_pre7 (29 Aug 2005)
 

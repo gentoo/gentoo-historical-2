@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/vim-doc.eclass,v 1.1 2003/07/30 18:47:06 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/vim-doc.eclass,v 1.1.1.1 2005/11/30 09:59:24 chriswhite Exp $
 #
 # This eclass is used by vim.eclass and vim-plugin.eclass to update
 # the documentation tags.  This is necessary since vim doesn't look in
@@ -11,8 +11,6 @@
 # DEPEND in vim-plugin or by whatever version of vim is being
 # installed by the eclass.
 
-ECLASS=vim-doc
-INHERITED="$INHERITED $ECLASS"
 
 update_vim_helptags() {
 	local vimfiles vim d s
@@ -20,12 +18,18 @@ update_vim_helptags() {
 	# This is where vim plugins are installed
 	vimfiles=/usr/share/vim/vimfiles
 
-	# Find a suitable vim binary
-	local vim=`which vim 2>/dev/null`
-	[[ -z "$vim" ]] && vim=`which gvim 2>/dev/null`
-	[[ -z "$vim" ]] && vim=`which kvim 2>/dev/null`
-	if [[ -z "$vim" ]]; then
-		ewarn "No suitable vim binary to rebuild documentation tags"
+	if [[ $PN != vim-core ]]; then
+		# Find a suitable vim binary for updating tags :helptags
+		if use ppc-macos ; then
+			vim=$(which gvim 2>/dev/null )
+		else
+			vim=$(which vim 2>/dev/null)
+			[[ -z "$vim" ]] && vim=$(which gvim 2>/dev/null)
+			[[ -z "$vim" ]] && vim=$(which kvim 2>/dev/null)
+		fi
+		if [[ -z "$vim" ]]; then
+			ewarn "No suitable vim binary to rebuild documentation tags"
+		fi
 	fi
 
 	# Install the documentation symlinks into the versioned vim
@@ -35,10 +39,9 @@ update_vim_helptags() {
 
 		# Remove links, and possibly remove stale dirs
 		find $d/doc -name \*.txt -type l | while read s; do
-			[[ `readlink "$s"` = ${vimfiles}/* ]] && rm -f "$s"
+			[[ $(readlink "$s") = $vimfiles/* ]] && rm -f "$s"
 		done
-		if [[ -f "$d/doc/tags" && 
-				$(find "$d" | wc -l | awk '{print $1}') = 3 ]]; then
+		if [[ -f "$d/doc/tags" && $(find "$d" | wc -l | tr -d ' ') = 3 ]]; then
 			# /usr/share/vim/vim61
 			# /usr/share/vim/vim61/doc
 			# /usr/share/vim/vim61/doc/tags
@@ -48,8 +51,8 @@ update_vim_helptags() {
 		fi
 
 		# Re-create / install new links
-		if [[ -d ${vimfiles}/doc ]]; then
-			ln -s ${vimfiles}/doc/*.txt $d/doc 2>/dev/null
+		if [[ -d $vimfiles/doc ]]; then
+			ln -s $vimfiles/doc/*.txt $d/doc 2>/dev/null
 		fi
 
 		# Update tags; need a vim binary for this

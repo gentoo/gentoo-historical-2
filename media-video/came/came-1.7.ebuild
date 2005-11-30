@@ -1,30 +1,35 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/came/came-1.7.ebuild,v 1.1 2003/12/29 10:58:33 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/came/came-1.7.ebuild,v 1.1.1.1 2005/11/30 09:57:52 chriswhite Exp $
 
-S=${WORKDIR}/camE-${PV}
-DESCRIPTION="camE is a rewrite of the xawtv webcam app, which adds imlib2 support and a lot of new features"
-SRC_URI="http://linuxbrit.co.uk/downloads/camE-${PV}.tar.gz"
+inherit eutils
+
+DESCRIPTION="rewrite of the xawtv webcam app, which adds imlib2 support and a lot of new features"
 HOMEPAGE="http://linuxbrit.co.uk/camE/"
+SRC_URI="http://linuxbrit.co.uk/downloads/camE-${PV}.tar.gz"
 
-DEPEND=">=net-ftp/curl-7.9.1
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~x86 ~ppc"
+IUSE=""
+
+DEPEND=">=net-misc/curl-7.9.1
 	>=media-libs/giblib-1.2.3"
 
-SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~x86"
+S=${WORKDIR}/camE-${PV}
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	sed -i -e "s:/usr/local:/usr:" Makefile
+	epatch ${FILESDIR}/${PV}-true-false.patch
+}
 
 src_compile() {
-	sed -i -e "s:/usr/local:/usr:" Makefile
 	emake || die
 }
 
-src_install () {
-	insinto /usr
-	dobin camE
-	dodoc AUTHORS
-	dodoc camE_text.style
-	dodoc camE_title.style
-	dodoc example.camErc
-	dodoc example.camErc.ssh
+src_install() {
+	dobin camE || die
+	dodoc AUTHORS camE_text.style camE_title.style example.camErc example.camErc.ssh
 }

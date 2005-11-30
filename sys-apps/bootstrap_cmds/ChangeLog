@@ -1,6 +1,14 @@
 # ChangeLog for sys-apps/bootstrap_cmds
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/bootstrap_cmds/ChangeLog,v 1.1 2004/09/26 23:02:35 kito Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/bootstrap_cmds/ChangeLog,v 1.1.1.1 2005/11/30 09:56:25 chriswhite Exp $
+
+*bootstrap_cmds-49 (19 May 2005)
+
+  19 May 2005; Kito <kito@gentoo.org> +bootstrap_cmds-49.ebuild:
+  version bump.
+
+  03 Mar 2005; Kito <kito@gentoo.org> bootstrap_cmds-44.ebuild:
+  stable on ppc-macos
 
 *bootstrap_cmds-44 (25 Sep 2004)
 

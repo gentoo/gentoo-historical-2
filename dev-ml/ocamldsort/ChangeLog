@@ -1,6 +1,6 @@
 # ChangeLog for dev-ml/ocamldsort
 # Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocamldsort/ChangeLog,v 1.1 2004/10/05 07:54:53 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocamldsort/ChangeLog,v 1.1.1.1 2005/11/30 09:55:46 chriswhite Exp $
 
   04 Oct 2004; Matthieu Sozeau <mattam@gentoo.org> +ocamldsort-0.14.2
   +metadata.xml:

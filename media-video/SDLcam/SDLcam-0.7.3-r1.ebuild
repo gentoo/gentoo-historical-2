@@ -1,18 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/SDLcam/SDLcam-0.7.3-r1.ebuild,v 1.1 2004/01/30 09:40:13 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/SDLcam/SDLcam-0.7.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:57:36 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="Webcam application that uses the SDL library"
-HOMEPAGE="http://raph.darktech.org/SDLcam/"
-SRC_URI="http://raph.darktech.org/SDLcam/downloads/${P}.tar.gz"
+HOMEPAGE="http://sdlcam.raphnet.net/"
+SRC_URI="http://sdlcam.raphnet.net/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
 DEPEND="dev-libs/libxml2
+	media-libs/libfame
 	media-libs/libsdl
 	media-libs/sdl-image
 	media-libs/sdl-ttf"
@@ -25,7 +27,7 @@ src_unpack() {
 	rm capture/divx.c   # the divx.so needs to be ported to newer avifile
 	epatch ${FILESDIR}/${PV}-linux-2.6.patch
 	sed -i "s: -g: ${CFLAGS} `avifile-config --cflags`:" Makefile
-	sed -i "/#include/s:avifile/::" capture/divx2.cpp 
+	sed -i "/#include/s:avifile/::" capture/divx2.cpp
 
 	# Don't you love hardcoded vars?
 	sed -i \
@@ -39,14 +41,14 @@ src_compile() {
 	emake || die
 }
 
-src_install () {
-	dobin SDLcam
+src_install() {
+	dobin SDLcam || die
 	insinto /usr/share/SDLcam
-	doins LucidaSansRegular.ttf LucidaTypewriterRegular.ttf SDLcam.xml SDLcam.cfg
+	doins LucidaSansRegular.ttf LucidaTypewriterRegular.ttf SDLcam.xml SDLcam.cfg || die
 	insinto /usr/lib/SDLcam/filters
-	doins filter/*.so
+	doins filter/*.so || die
 	insinto /usr/lib/SDLcam/capture
-	doins capture/*.so
+	doins capture/*.so || die
 	insinto /usr/lib/SDLcam/sources
-	doins sources/*.so
+	doins sources/*.so || die
 }

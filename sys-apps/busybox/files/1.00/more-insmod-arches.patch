@@ -4,8 +4,8 @@ RCS file: /var/cvs/busybox/modutils/insmod.c,v
 retrieving revision 1.125
 retrieving revision 1.126
 diff -u -r1.125 -r1.126
---- busybox/modutils/insmod.c	2 Sep 2004 23:03:25 -0000	1.125
-+++ busybox/modutils/insmod.c	26 Dec 2004 09:13:32 -0000	1.126
+--- modutils/insmod.c	2 Sep 2004 23:03:25 -0000	1.125
++++ modutils/insmod.c	26 Dec 2004 09:13:32 -0000	1.126
 @@ -109,6 +109,14 @@
  #endif
  

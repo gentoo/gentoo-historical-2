@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/rlocate/rlocate-0.3.0.ebuild,v 1.1 2005/05/27 22:56:33 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/rlocate/rlocate-0.3.0.ebuild,v 1.1.1.1 2005/11/30 09:56:41 chriswhite Exp $
 
-inherit toolchain-funcs
+inherit eutils toolchain-funcs
 
 DESCRIPTION="locate implementation that is always up-to-date"
 HOMEPAGE="http://rlocate.sourceforge.net/"
@@ -13,8 +13,28 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="virtual/kernel"
+DEPEND="virtual/linux-sources"
 RDEPEND="!sys-apps/slocate"
+
+pkg_setup() {
+	enewgroup locate
+}
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	sed -i \
+		-e '/^RLOCATE_GRP/s:=.*:=locate:' \
+		Makefile.in || die "sed group"
+	rm -f rlocate-scripts/Makefile
+	sed -i \
+		-e '/groupadd/d' \
+		-e '/chown/s/root:$(rlocate)/root:locate/g' \
+		Makefile.in rlocate-scripts/Makefile.in
+	sed -i \
+		-e '/DRLOCATE_GRP/s:$(rlocate):locate:' \
+		rlocate-daemon/Makefile.in
+}
 
 src_compile() {
 	econf --enable-sandboxed || die

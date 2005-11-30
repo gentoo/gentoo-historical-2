@@ -1,6 +1,21 @@
-# ChangeLog for media-plugins/coriander
+# ChangeLog for media-video/coriander
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/coriander/ChangeLog,v 1.1 2005/08/26 16:13:03 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/coriander/ChangeLog,v 1.1.1.1 2005/11/30 09:57:48 chriswhite Exp $
+
+*coriander-2.0.0_pre4 (03 Nov 2005)
+
+  03 Nov 2005; Seemant Kulleen <seemant@gentoo.org>
+  coriander-2.0.0_pre3.ebuild, +coriander-2.0.0_pre4.ebuild:
+  version bump to, you know, actually *work* with libdc1394-2.0.0-pre4
+
+*coriander-2.0.0_pre3 (29 Aug 2005)
+
+  29 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  +coriander-2.0.0_pre3.ebuild:
+  Version bump to newest prerelease -- this is a gnome2 app finally
+
+  26 Aug 2005; Seemant Kulleen <seemant@gentoo.org> +metadata.xml:
+  add metadata
 
   26 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
   +coriander-1.0.0_pre3.ebuild, +coriander-1.0.0.ebuild:

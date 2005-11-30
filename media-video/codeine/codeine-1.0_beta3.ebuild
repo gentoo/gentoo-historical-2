@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/codeine/codeine-1.0_beta3.ebuild,v 1.1 2005/04/14 09:46:20 greg_g Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/codeine/codeine-1.0_beta3.ebuild,v 1.1.1.1 2005/11/30 09:57:26 chriswhite Exp $
 
 inherit kde
 

@@ -1,6 +1,48 @@
 # ChangeLog for net-misc/shmux
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/shmux/ChangeLog,v 1.1 2004/07/13 22:21:20 swegener Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/shmux/ChangeLog,v 1.1.1.1 2005/11/30 09:54:46 chriswhite Exp $
+
+  21 Jan 2005; Sven Wegener <swegener@gentoo.org> -shmux-1.0_beta5.ebuild,
+  shmux-1.0_beta6.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+*shmux-1.0_beta6 (16 Dec 2004)
+
+  16 Dec 2004; Sven Wegener <swegener@gentoo.org> +shmux-1.0_beta6.ebuild:
+  Version bump.
+
+  06 Nov 2004; Sven Wegener <swegener@gentoo.org> -shmux-1.0_beta4.ebuild,
+  shmux-1.0_beta5.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+*shmux-1.0_beta5 (21 Sep 2004)
+
+  21 Sep 2004; Sven Wegener <swegener@gentoo.org> +shmux-1.0_beta5.ebuild:
+  Version bump.
+
+  08 Sep 2004; Sven Wegener <swegener@gentoo.org> -shmux-1.0_beta3.ebuild,
+  shmux-1.0_beta4.ebuild:
+  Marked stable on x86. Removed old ebuild.
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> shmux-1.0_beta3.ebuild:
+  Marked stable on x86.
+
+  13 Aug 2004; Sven Wegener <swegener@gentoo.org> metadata.xml:
+  Added longdescription to metadata.xml.
+
+*shmux-1.0_beta4 (08 Aug 2004)
+
+  08 Aug 2004; Sven Wegener <swegener@gentoo.org> +shmux-1.0_beta4.ebuild:
+  Version bump.
+
+  17 Jul 2004; David Holm <dholm@gentoo.org> shmux-1.0_beta3.ebuild:
+  Added to ~ppc.
+
+  14 Jul 2004; Sven Wegener <swegener@gentoo.org> shmux-1.0_beta3.ebuild:
+  RDEPEND needs to be in DEPEND
+
+  14 Jul 2004; Sven Wegener <swegener@gentoo.org> shmux-1.0_beta3.ebuild:
+  Added sys-apps/gawk to build time dependencies.
 
 *shmux-1.0_beta3 (14 Jul 2004)
 

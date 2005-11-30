@@ -1,15 +1,18 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Kain X <kain@kain.org>
-# $Id: powerpc-utils-1.1.3.ebuild,v 1.1 2002/04/27 10:36:20 pvdabeel Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/powerpc-utils/powerpc-utils-1.1.3.ebuild,v 1.1.1.1 2005/11/30 09:56:24 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DEBRV=3
 DESCRIPTION="PowerPC utils; nvsetenv"
 SRC_URI="http://http.us.debian.org/debian/pool/main/p/powerpc-utils/powerpc-utils_${PV}.orig.tar.gz
 	http://http.us.debian.org/debian/pool/main/p/powerpc-utils/powerpc-utils_${PV}-${DEBRV}.diff.gz"
-#HOMEPAGE=""
-DEPEND="virtual/glibc"
+HOMEPAGE="http://http.us.debian.org/debian/pool/main/p/powerpc-utils/"
+KEYWORDS="ppc -x86 -amd64 -alpha -hppa -mips -sparc"
+IUSE=""
+DEPEND="virtual/libc"
+RDEPEND=""
+SLOT="0"
+LICENSE="GPL-2"
 
 src_unpack() {
 	cd ${WORKDIR}
@@ -18,7 +21,7 @@ src_unpack() {
 	cd ${S}
 	cat ${DISTDIR}/powerpc-utils_${PV}-${DEBRV}.diff.gz | gzip -dc | patch -p1 || die
 	cd ${WORKDIR}
-	chown -R 0.0 *
+	chown -R 0:0 *
 	chmod -R a+r-w+X,u+w *
 }
 
@@ -26,8 +29,7 @@ src_compile() {
 	emake nvsetenv || die
 }
 
-src_install () {
+src_install() {
 	into /usr
 	dosbin nvsetenv || die
-
 }

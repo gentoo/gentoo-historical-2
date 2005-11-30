@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.4.9_p20050906.ebuild,v 1.1 2005/09/08 14:27:00 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/ffmpeg/ffmpeg-0.4.9_p20050906.ebuild,v 1.1.1.1 2005/11/30 09:57:55 chriswhite Exp $
 
 inherit eutils flag-o-matic multilib toolchain-funcs
 
@@ -18,7 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 # ~alpha need to test aac useflag
 # ~ia64 ~arm ~mips ~hppa
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
 IUSE="aac altivec debug doc ieee1394 a52 encode imlib mmx ogg vorbis oss test theora threads truetype v4l xvid dts network zlib sdl"
 
 DEPEND="imlib? ( media-libs/imlib2 )
@@ -31,10 +31,10 @@ DEPEND="imlib? ( media-libs/imlib2 )
 	theora? ( media-libs/libtheora )
 	aac? ( media-libs/faad2 media-libs/faac )
 	a52? ( >=media-libs/a52dec-0.7.4-r4 )
-	xvid? ( >=media-libs/xvid-1.0 )
+	xvid? ( >=media-libs/xvid-1.0.3 )
 	zlib? ( sys-libs/zlib )
 	dts? ( media-libs/libdts )
-	ieee1394? ( media-libs/libdc1394
+	ieee1394? ( =media-libs/libdc1394-1*
 	            sys-libs/libraw1394 )
 	test? ( net-misc/wget )"
 
@@ -49,7 +49,7 @@ src_unpack() {
 	sed -i s:\#define\ HAVE_X11:\#define\ HAVE_LINUX: ffplay.c
 
 	# Fix building with gcc4
-	# epatch ${FILESDIR}/${P}-gcc4.patch
+	epatch ${FILESDIR}/${P}-osx.patch
 
 	#ffmpeg doesn'g use libtool, so the condition for PIC code
 	#is __PIC__, not PIC.
@@ -98,7 +98,7 @@ src_compile() {
 		$(use_enable ieee1394 dv1394) $(use_enable ieee1394 dc1394) \
 		$(use_enable threads pthreads) \
 		$(use_enable xvid) \
-		$(use_enable ogg) \
+		$(use_enable ogg libogg) \
 		$(use_enable vorbis) \
 		$(use_enable theora) \
 		$(use_enable dts) \

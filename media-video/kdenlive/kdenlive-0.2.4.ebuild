@@ -1,32 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/kdenlive/kdenlive-0.2.4.ebuild,v 1.1 2004/03/18 22:09:08 zypher Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/kdenlive/kdenlive-0.2.4.ebuild,v 1.1.1.1 2005/11/30 09:57:29 chriswhite Exp $
+
+inherit eutils kde
 
 DESCRIPTION="Kdenlive! (pronounced Kay-den-live) is a Non Linear Video Editing Suite for KDE."
-HOMEPAGE="http://www.uchian.pwp.blueyonder.co.uk/kdenlive.html"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
+HOMEPAGE="http://kdenlive.sourceforge.net/"
+SRC_URI="mirror://sourceforge/kdenlive/${P}.tar.gz"
 
-IUSE="debug"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="x86 ~ppc ~sparc ~amd64"
+IUSE=""
 
-S="${WORKDIR}/${P}"
+DEPEND=">=media-video/piave-0.2.4"
+need-kde 3
 
-DEPEND="virtual/x11
-	>=x11-libs/qt-3
-	>=media-video/piave-0.2.4
-	>=kde-base/kdesdk-3.2"
-
-src_compile() {
-	
-	myconf="--with-gnu-ld --prefix=${KDEDIR}"
-	use debug && myconf="${myconf} --enable-debug=yes"
-	econf ${myconf} || die "configure failed"
-	emake || die
-}
-
-src_install() {
-	make DESTDIR=${D} install || die
-	dodoc AUTHORS ChangeLog README TODO
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/kdenlive-0.2.4-gcc34.patch
 }

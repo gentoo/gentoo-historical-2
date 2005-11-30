@@ -1,13 +1,13 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/xemacs-packages.eclass,v 1.1 2002/12/16 09:54:23 rendhalver Exp $
-
+# $Header: /var/cvsroot/gentoo-x86/eclass/xemacs-packages.eclass,v 1.1.1.1 2005/11/30 09:59:30 chriswhite Exp $
+#
 # xemacs-packages eclass inherited by all xemacs packages
 # $PKG_CAT need's to be set before inheriting xemacs-packages
 
-ECLASS=xemacs-packages
-INHERITED="${INHERITED} ${ECLASS}"
 EXPORT_FUNCTIONS src_unpack src_install
+
+DEPEND="virtual/xemacs"
 
 [ -z "$HOMEPAGE" ]    && HOMEPAGE="http://xemacs.org/"
 [ -z "$LICENSE" ]     && LICENSE="GPL-2"
@@ -23,8 +23,6 @@ case "${PKG_CAT}" in
 		MY_INSTALL_DIR="/usr/lib/xemacs/site-packages" ;;
 esac
 [ -n "$DEBUG" ] && einfo "MY_INSTALL_DIR is ${MY_INSTALL_DIR}"
-
-KEYWORDS="~x86 ~ppc ~alpha"
 
 if [ -n "$EXPERIMENTAL" ]
 then
@@ -46,5 +44,4 @@ xemacs-packages_src_install() {
 	dodir ${MY_INSTALL_DIR}
 	cd ${D}${MY_INSTALL_DIR}
 	unpack ${A}
-#	chmod -R ugo=rX *
 }

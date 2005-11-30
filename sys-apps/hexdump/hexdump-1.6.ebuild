@@ -1,21 +1,25 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hexdump/hexdump-1.6.ebuild,v 1.1 2004/03/04 22:37:21 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hexdump/hexdump-1.6.ebuild,v 1.1.1.1 2005/11/30 09:56:33 chriswhite Exp $
+
+inherit toolchain-funcs
 
 DESCRIPTION="Eric Raymond's hex dumper"
 HOMEPAGE="http://www.catb.org/~esr/hexdump/"
 SRC_URI="http://www.catb.org/~esr/hexdump/${P}.tar.gz"
-SLOT="0"
+
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+SLOT="0"
+KEYWORDS="hppa ppc x86 ppc64 ~ppc-macos ~amd64"
+IUSE=""
 
 src_compile() {
-	emake CC="$CC $CFLAGS" || die
+	emake CC="$(tc-getCC) $CFLAGS" || die
 }
 
 src_install() {
-	dobin hexdump
+	dobin hexdump || die
 	doman hexdump.1
-	dodoc COPYING README
+	dodoc README
 	dosym hexdump /usr/bin/hex
 }

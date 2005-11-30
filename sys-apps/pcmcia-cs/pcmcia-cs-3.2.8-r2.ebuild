@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcmcia-cs/pcmcia-cs-3.2.8-r2.ebuild,v 1.1 2005/07/02 19:05:23 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/pcmcia-cs/pcmcia-cs-3.2.8-r2.ebuild,v 1.1.1.1 2005/11/30 09:56:47 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs linux-info
 
@@ -10,17 +10,20 @@ SRC_URI="mirror://sourceforge/pcmcia-cs/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc x86"
 
-IUSE="gtk gtk2 vanilla trusted X xforms"
-DEPEND="virtual/linux-sources
-		>=sys-apps/sed-4"
+IUSE="gtk vanilla trusted X xforms"
 RDEPEND="!sys-apps/pcmcia-cs-cis
-			X? ( virtual/x11
-			gtk? ( gtk2? ( =x11-libs/gtk+-2*
-						   dev-util/pkgconfig )
-				    !gtk2? ( =x11-libs/gtk+-1* ) )
-			xforms? ( x11-libs/xforms ) )"
+			X? ( || ( ( x11-libs/libX11
+						x11-libs/libXpm
+						x11-libs/libXaw )
+						virtual/x11 )
+				 gtk? ( =x11-libs/gtk+-2*
+				   		 dev-util/pkgconfig )
+				 xforms? ( x11-libs/xforms ) )"
+DEPEND="${RDEPEND}
+		virtual/linux-sources
+		>=sys-apps/sed-4"
 PROVIDE="virtual/pcmcia"
 
 pkg_setup() {
@@ -40,7 +43,6 @@ pkg_setup() {
 		die "linux-${KV_FULL} without PCMCIA support detected"
 	fi
 }
-
 
 src_unpack() {
 	unpack ${A}
@@ -82,6 +84,14 @@ src_compile() {
 		config="${config} --nopnp"
 	fi
 
+	if linux_chkconfig_present PCI; then
+		einfo "CardBus support enabled"
+		config="${config} --cardbus"
+	else
+		einfo "CardBus support disabled"
+		config="${config} --nocardbus"
+	fi
+
 	# cardctl, cardinfo and xcardinfo are setUID
 	append-ldflags -Wl,-z,now
 
@@ -108,14 +118,8 @@ src_compile() {
 
 		if use gtk; then
 			echo "HAS_GTK=y" >> ${CONFIG_FILE}
-
-			if use gtk2; then
-				echo "GTK_CFLAGS=$(pkg-config --cflags gtk+-2.0)" >> ${CONFIG_FILE}
-				echo "GTK_LIBS=$(pkg-config --libs gtk+-2.0)" >> ${CONFIG_FILE}
-			else
-				echo "GTK_CFLAGS=$(gtk-config --cflags)" >> ${CONFIG_FILE}
-				echo "GTK_LIBS=$(gtk-config --libs)" >> ${CONFIG_FILE}
-			fi
+			echo "GTK_CFLAGS=$(pkg-config --cflags gtk+-2.0)" >> ${CONFIG_FILE}
+			echo "GTK_LIBS=$(pkg-config --libs gtk+-2.0)" >> ${CONFIG_FILE}
 		fi
 
 		if use xforms; then

@@ -1,15 +1,18 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/media-video/ks3switch/ks3switch-0.1.ebuild,v 1.1 2002/08/06 13:27:18 danarmak Exp $
-inherit kde-base
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/ks3switch/ks3switch-0.1.ebuild,v 1.1.1.1 2005/11/30 09:57:26 chriswhite Exp $
 
-need-kde 3
+inherit kde
 
 DESCRIPTION="GUI for s3switch"
-SRC_URI="http://www.bochatay.net/francois/${P}.tar.gz"
-HOMEPAGE="http://www.bochatay.net/francois/ks3switch.html"
+HOMEPAGE="http://code.bochatay.net/ks3switch"
+SRC_URI="http://code.bochatay.net/ks3switch/${P}.tar.gz"
 
+SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="x86"
+IUSE=""
 
-newdepend "sys-apps/s3switch"
+DEPEND="sys-apps/s3switch"
+RDEPEND="sys-apps/s3switch"
+need-kde 3

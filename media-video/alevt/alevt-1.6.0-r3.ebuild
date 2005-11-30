@@ -1,48 +1,40 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License v2 
-# $Header: /var/cvsroot/gentoo-x86/media-video/alevt/alevt-1.6.0-r3.ebuild,v 1.1 2002/07/09 09:21:00 seemant Exp $ 
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/alevt/alevt-1.6.0-r3.ebuild,v 1.1.1.1 2005/11/30 09:57:35 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
 
 DESCRIPTION="Teletext viewer for X11"
-SRC_URI="http://www.ibiblio.org/pub/Linux/apps/video/${P}.tar.gz"
 HOMEPAGE="http://www.goron.de/~froese/"
+SRC_URI="http://www.ibiblio.org/pub/Linux/apps/video/${P}.tar.gz"
+
 SLOT="0"
+KEYWORDS="x86 ~amd64"
+IUSE="gnome"
 LICENSE="GPL-2"
-KEYWORDS="x86"
 
-DEPEND=">=x11-base/xfree-4.0.1
+DEPEND="virtual/x11
 	>=media-libs/libpng-1.0.12"
-	
-
-LICENSE="GPL-2"
 
 src_unpack() {
-
 	unpack ${P}.tar.gz
-	cd ${WORKDIR}
-
-	# Parallel make patch
-	patch -p0 < ${FILESDIR}/${P}-gentoo.diff
-
+	epatch ${FILESDIR}/${P}-gentoo.diff # Parallel make patch
+	epatch ${FILESDIR}/xio_timer.patch
 }
 
 src_compile() {
-	
 	emake || die
-
 }
 
-src_install () {
-
+src_install() {
 	dobin alevt alevt-cap alevt-date
 	doman alevt.1x alevt-date.1 alevt-cap.1
 	dodoc CHANGELOG COPYRIGHT README
 
-	use gnome && ( \
+	if use gnome ; then
 		insinto /usr/share/pixmaps
 		newins contrib/mini-alevt.xpm alevt.xpm
 		insinto /usr/share/applications
 		doins ${FILESDIR}/alevt.desktop
-	)
+	fi
 }

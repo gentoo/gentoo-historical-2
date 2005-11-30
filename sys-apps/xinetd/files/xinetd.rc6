@@ -1,40 +1,44 @@
-#!/bin/sh
-#RCUPDATE:3 4:72:This line is required for script management
+#!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/xinetd/files/xinetd.rc6,v 1.1.1.1 2005/11/30 09:56:25 chriswhite Exp $
 
-. /etc/rc.d/config/functions
+opts="start stop reload restart dump check"
 
-SERVICE=xinetd
-EXE="/usr/sbin/xinetd"
-opts="start stop"
-
-prepconfig() {
-	if [ ! -e /etc/xinetd.conf ] ; then
-		einfo "Creating new config from inetd..."
-		/usr/sbin/xconv.pl < /etc/inetd.conf > /etc/xinetd.conf
-	fi
-	if [ /etc/inetd.conf -nt /etc/xinetd.conf ] ; then
-		einfo "Creating new config from inetd..."
-		/usr/sbin/xconv.pl < /etc/inetd.conf > /etc/xinetd.conf
-	fi
-	if [ ! -e /etc/xinetd.conf ]
-	then
-		eerror "Xinetd not started.  Config file not found."
-		exit 1
-	fi
+depend() {
+	use net
 }
 
 start() {
-	prepconfig
-	ebegin "Starting ${SERVICE}"
-	start-stop-daemon --start --quiet --exec $EXE 1>&2
-	eend $? 
+	ebegin "Starting xinetd"
+	(
+	# workaround for #25754
+	unset -f `declare -F | sed 's:declare -f::g'`
+	/usr/sbin/xinetd -pidfile /var/run/xinetd.pid ${XINETD_OPTS}
+	)
+	eend $?
 }
 
 stop() {
-	ebegin "Stopping ${SERVICE}"
-	start-stop-daemon --stop --quiet -u root -n $SERVICE 1>&2
-	eend $? 
+	ebegin "Stopping xinetd"
+	start-stop-daemon --stop --quiet --pidfile /var/run/xinetd.pid
+	eend $?
 }
 
-doservice ${@}
+reload(){
+	ebegin "Reloading configuration"
+	killall -HUP xinetd &>/dev/null
+	eend $?
+}
 
+dump(){
+	ebegin "Dumping configuration"
+	killall -USR1 xinetd &>/dev/null
+	eend $?
+}
+
+check(){
+	ebegin "Performing Consistency Check"
+	killall -IOT xinetd &>/dev/null
+	eend $?
+}

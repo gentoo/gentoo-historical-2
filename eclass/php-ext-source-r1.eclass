@@ -1,12 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-source-r1.eclass,v 1.1 2005/09/04 10:54:53 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/php-ext-source-r1.eclass,v 1.1.1.1 2005/11/30 09:59:25 chriswhite Exp $
 #
 # Author: Tal Peer <coredumb@gentoo.org>
 # Author: Stuart Herbert <stuart@gentoo.org>
+# Maintained by the PHP Herd <php-bugs@gentoo.org>
 #
-# The php-ext-source eclass provides a unified interface for compiling and
-# installing standalone PHP extensions ('modules') from source code
+# The php-ext-source-r1 eclass provides a unified interface for compiling and
+# installing standalone PHP extensions ('modules') from source code.
 #
 # To use this eclass, you must add the following to your ebuild:
 #
@@ -25,16 +26,20 @@ EXPORT_FUNCTIONS src_compile src_install
 # ---end ebuild configurable settings
 
 DEPEND="${DEPEND}
-		>=sys-devel/m4-1.4
-		>=sys-devel/libtool-1.4.3"
+		>=sys-devel/m4-1.4.3
+		>=sys-devel/libtool-1.5.18
+		>=sys-devel/automake-1.9.6
+		sys-devel/automake-wrapper
+		>=sys-devel/autoconf-2.59
+		sys-devel/autoconf-wrapper"
 
 php-ext-source-r1_src_compile() {
 	# pull in the PHP settings
 	has_php
 	my_conf="${my_conf} --prefix=${PHPPREFIX} --with-php-config=${PHPCONFIG}"
 	addpredict /usr/share/snmp/mibs/.index
-	#phpize creates configure out of config.m4
-	export WANT_AUTOMAKE=1.6
+	# phpize creates configure out of config.m4
+	export WANT_AUTOMAKE=1.9 WANT_AUTOCONF=2.5
 	${PHPIZE}
 	./configure ${my_conf} || die "Unable to configure code to compile"
 	emake || die "Unable to make code"

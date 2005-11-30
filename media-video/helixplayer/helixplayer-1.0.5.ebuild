@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/helixplayer/helixplayer-1.0.5.ebuild,v 1.1 2005/06/24 22:08:54 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/helixplayer/helixplayer-1.0.5.ebuild,v 1.1.1.1 2005/11/30 09:57:48 chriswhite Exp $
 
 inherit nsplugins eutils
 
@@ -15,8 +15,8 @@ SRC_URI="https://helixcommunity.org/download.php/1340/${MY_PKG}.tar.bz2
 LICENSE="GPL-2"
 SLOT="0"
 # -sparc -amd64: 1.0_beta1: build fails on both platforms... --eradicator
-KEYWORDS="-*"
-IUSE="mozilla nptl"
+KEYWORDS="-amd64 ~x86"
+IUSE="nsplugin nptl"
 DEPEND="media-libs/libtheora
 	media-libs/libogg"
 RDEPEND=">=dev-libs/glib-2
@@ -58,7 +58,7 @@ src_install() {
 	keepdir /opt/HelixPlayer
 	tar -jxf ${S}/release/helixplayer.tar.bz2 -C ${D}/opt/HelixPlayer
 
-	if use mozilla ; then
+	if use nsplugin ; then
 		cd ${D}/opt/HelixPlayer/mozilla
 		exeinto /opt/netscape/plugins
 		doexe nphelix.so

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave-forge/octave-forge-2004.11.16-r1.ebuild,v 1.1 2005/03/09 08:32:44 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-mathematics/octave-forge/octave-forge-2004.11.16-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:49 chriswhite Exp $
 
 inherit eutils
 
@@ -22,7 +22,7 @@ DEPEND=">=sci-mathematics/octave-2.1.62
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${PV}.patch
+	epatch ${FILESDIR}/${PN}-mex.patch
 
 	# make it compile when X isn't installed. The source file there really
 	# doesn't need X at all.

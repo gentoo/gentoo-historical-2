@@ -1,20 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Lasse Mikkelsen <lbm@fatalerror.dk>
-# $Header: /var/cvsroot/gentoo-x86/media-video/gqcam/gqcam-0.9.ebuild,v 1.1 2002/05/17 18:35:00 blauwers Exp $
-
-S=${WORKDIR}/${P}
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/gqcam/gqcam-0.9.ebuild,v 1.1.1.1 2005/11/30 09:57:32 chriswhite Exp $
 
 DESCRIPTION="A V4L-compatible frame grabber - works with many webcams."
 SRC_URI="http://cse.unl.edu/~cluening/gqcam/download/${P}.tar.gz"
-
 HOMEPAGE="http://cse.unl.edu/~cluening/gqcam/"
 
+SLOT="0"
 LICENSE="GPL-2"
+KEYWORDS="x86 ~mips amd64 ppc ~sparc"
+IUSE=""
 
-DEPEND=">=x11-libs/gtk+-1.2.10-r7
+DEPEND="=x11-libs/gtk+-1.2*
 		>=media-libs/jpeg-6b-r2
 		>=media-libs/libpng-1.2.1-r1"
+
+src_unpack() {
+	unpack ${A}
+
+	cd ${S}
+	mv Makefile Makefile.bad
+	sed -e "s:-lpng:\`libpng-config --libs\`:" Makefile.bad > Makefile
+}
 
 src_compile() {
 	emake || die
@@ -23,5 +30,5 @@ src_compile() {
 src_install () {
 	dobin gqcam
 
-	dodoc CHANGES COPYING INSTALL README README.threads
+	dodoc CHANGES README README.threads
 }

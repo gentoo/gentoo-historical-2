@@ -1,38 +1,28 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/which/which-2.16.ebuild,v 1.1 2003/09/15 08:02:43 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/which/which-2.16.ebuild,v 1.1.1.1 2005/11/30 09:56:20 chriswhite Exp $
 
 inherit eutils
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Prints out location of specified executables that are in your path"
 HOMEPAGE="http://www.xs4all.nl/~carlo17/which/"
 SRC_URI="http://www.xs4all.nl/~carlo17/which/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~alpha ~mips ~hppa ~arm"
+SLOT="0"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE=""
 
-RDEPEND="virtual/glibc
-	sys-apps/texinfo"
-
-DEPEND="${RDEPEND}"
-
+DEPEND="sys-apps/texinfo"
+RDEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch ${FILESDIR}/which-gentoo.patch
-}
-
-src_compile() {
-	./configure --prefix=/usr || die
-	make || die
+	cd "${S}"
+	epatch "${FILESDIR}"/which-gentoo.patch
 }
 
 src_install() {
-	dobin which
-	doman which.1
-	doinfo which.info
-	dodoc AUTHORS COPYING EXAMPLES NEWS README*
+	make install DESTDIR="${D}" || die
+	dodoc AUTHORS EXAMPLES NEWS README*
 }

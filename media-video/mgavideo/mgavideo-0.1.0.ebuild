@@ -1,21 +1,27 @@
-# Copyright 1999-2001 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/mgavideo/mgavideo-0.1.0.ebuild,v 1.1.1.1 2005/11/30 09:57:32 chriswhite Exp $
 
-A=${PN}-0.1.0.tar.gz
-S=${WORKDIR}/${PN}-0.1.0/driver
-SRC_URI="http://telia.dl.sourceforge.net/marvel/${A}"
+inherit eutils
+
+S=${WORKDIR}/${P}/driver
 DESCRIPTION="Matrox Marvel G200/G400/Rainbow Runner G-series V4L I and II
 drivers"
 HOMEPAGE="http://marvel.sourceforge.net"
+SRC_URI="mirror://sourceforge/marvel/${P}.tar.gz"
 
-DEPEND="virtual/glibc
-	virtual/kernel"
+DEPEND="virtual/libc"
+RDEPEND="virtual/linux-sources"
 
-RDEPEND="virtual/kernel"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86"
+IUSE=""
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+	[ -f /usr/src/linux/mm/rmap.c ] && epatch ${FILESDIR}/${P}-rmap_fix.patch
 
 	# This allows us to compile the i2c-algo-ks.o module even if the user doesn't have
 	# the i2c-core.o module, incase they want to compile that later.  At the end of this
@@ -53,11 +59,7 @@ src_install() {
 pkg_postinst() {
 	depmod -a
 	if [ ! -f /lib/modules/${KVERS}/kernel/drivers/i2c/i2c-core.o ] ; then
-		echo
-		echo '###############################################################'
-		echo '##  WARNING: i2c support must be compiled into your kernel   ##'
-		echo '##  as a module for these drivers to work.                   ##'
-		echo '###############################################################'
-		echo
+		ewarn "i2c support must be compiled into your kernel as a module"
+		ewarn "for these drivers to work."
 	fi
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/hal-0.4.7-r2.ebuild,v 1.1 2005/04/17 19:02:48 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/hal-0.4.7-r2.ebuild,v 1.1.1.1 2005/11/30 09:56:18 chriswhite Exp $
 
 inherit eutils python linux-info versionator flag-o-matic
 
@@ -10,18 +10,18 @@ SRC_URI="http://freedesktop.org/~david/dist/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 AFL-2.0 )"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ia64 ~ppc ~ppc64"
-IUSE="debug pcmcia doc"
+KEYWORDS="amd64 ia64 ppc ppc64 x86"
+IUSE="debug pcmcia doc livecd"
 
 RDEPEND=">=dev-libs/glib-2.4
-	>=sys-apps/dbus-0.22-r1
+	=sys-apps/dbus-0.23*
 	dev-libs/expat
 	sys-fs/udev
 	sys-apps/hotplug
 	sys-libs/libcap
 	dev-libs/popt
 	>=sys-apps/util-linux-2.12i
-	|| ( >=sys-kernel/linux-headers-2.6 sys-kernel/linux26-headers )"
+	>=sys-kernel/linux-headers-2.6"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
@@ -34,16 +34,15 @@ DEPEND="${RDEPEND}
 # way to ensure that to some extent
 pkg_setup() {
 
+	use livecd && return
+
 	if get_version; then
-		kernel_is ge 2 6 10 && break
-	else
-		RKV=$(uname -r)
-		RKV=${RKV//-*}
-		if version_is_at_least "2.6.10" ${RKV}; then
-			break
-		fi
+		kernel_is ge 2 6 10 && return
+	elif get_running_version; then
+		kernel_is ge 2 6 10 && return
 	fi
-	die "You need a 2.6.10 or newer kernel to build this pack"
+
+	die "You need to run a 2.6.10 or newer kernel to build & use this pack"
 
 }
 

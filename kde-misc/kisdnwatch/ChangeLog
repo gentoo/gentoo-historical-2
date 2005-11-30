@@ -1,6 +1,25 @@
 # ChangeLog for kde-misc/kisdnwatch
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kisdnwatch/ChangeLog,v 1.1 2004/10/29 23:56:48 motaboy Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kisdnwatch/ChangeLog,v 1.1.1.1 2005/11/30 09:57:13 chriswhite Exp $
+
+  22 Sep 2005; Gregorio Guidi <greg_g@gentoo.org>
+  kisdnwatch-01.00.10.ebuild:
+  Stable on x86.
+
+*kisdnwatch-01.00.10 (17 Aug 2005)
+
+  17 Aug 2005; Gregorio Guidi <greg_g@gentoo.org>
+  +files/kisdnwatch-01.00.10-configure.patch, +kisdnwatch-01.00.10.ebuild:
+  New version (#102687).
+
+  26 Jun 2005; Simon Stelling <blubb@gentoo.org> kisdnwatch-01.00.08.ebuild:
+  added ~amd64 keyword
+
+  05 Dec 2004; Simone Gotti <motaboy@gentoo.org> kisdnwatch-01.00.08.ebuild:
+  Stable on x86.
+
+  23 Nov 2004; Carsten Lohrke <carlo@gentoo.org> kisdnwatch-01.00.08.ebuild:
+  QA: missing "inherit eutils"
 
 *kisdnwatch-01.00.08 (30 Oct 2004)
 

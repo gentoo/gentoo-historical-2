@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/boo/boo-0.6.0.1858.ebuild,v 1.1 2005/09/08 20:32:22 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/boo/boo-0.6.0.1858.ebuild,v 1.1.1.1 2005/11/30 09:58:35 chriswhite Exp $
 
 inherit mono fdo-mime eutils
 

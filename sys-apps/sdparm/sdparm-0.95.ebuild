@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/sdparm/sdparm-0.95.ebuild,v 1.1 2005/09/22 03:08:53 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/sdparm/sdparm-0.95.ebuild,v 1.1.1.1 2005/11/30 09:56:47 chriswhite Exp $
 
 DESCRIPTION="Utility to output and modify parameters on a SCSI device, like hdparm"
 HOMEPAGE="http://sg.torque.net/sg/sdparm.html"

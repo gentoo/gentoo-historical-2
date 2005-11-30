@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/usb-pwc-re/usb-pwc-re-10.0.7.ebuild,v 1.1 2005/04/26 06:21:44 phosphan Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/usb-pwc-re/usb-pwc-re-10.0.7.ebuild,v 1.1.1.1 2005/11/30 09:57:22 chriswhite Exp $
 
 
 inherit linux-info toolchain-funcs eutils
@@ -11,14 +11,17 @@ SRC_URI="http://www.saillard.org/pwc/files/pwc-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc64 ~amd64"
+KEYWORDS="amd64 ~ppc ppc64 x86"
 IUSE=""
-DEPEND=""
+DEPEND="sys-kernel/linux-headers"
+RDEPEND=""
+
 S=${WORKDIR}/pwc-${PV}
 
 src_compile() {
 	export ARCH="$(tc-arch-kernel)"
-	emake || die "make failed"
+	emake KSRC="${KERNEL_DIR}" || die "make failed"
+	test -f pwc.ko || die "You can't have both at once - a builtin driver and a module."
 }
 
 src_install() {

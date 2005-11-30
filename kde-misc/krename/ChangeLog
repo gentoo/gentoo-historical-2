@@ -1,6 +1,84 @@
-# ChangeLog for app-misc/krename
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/krename/ChangeLog,v 1.1 2004/10/30 17:42:15 carlo Exp $
+# ChangeLog for kde-misc/krename
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/krename/ChangeLog,v 1.1.1.1 2005/11/30 09:57:13 chriswhite Exp $
+
+  19 Nov 2005; Jason Wever <weeve@gentoo.org> krename-3.0.9.ebuild:
+  Stable on SPARC wrt bug #112835.
+
+  19 Nov 2005; Mark Loeser <halcy0n@gentoo.org> krename-3.0.9.ebuild:
+  Stable on x86; bug #112835
+
+*krename-3.0.9 (19 Oct 2005)
+
+  19 Oct 2005; Gregorio Guidi <greg_g@gentoo.org> +krename-3.0.9.ebuild:
+  New version (#109787).
+
+*krename-3.0.8 (24 Sep 2005)
+
+  24 Sep 2005; Carsten Lohrke <carlo@gentoo.org> +krename-3.0.8.ebuild:
+  version bump
+
+  02 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> krename-3.0.6.ebuild:
+  Stable on ppc.
+
+  28 Aug 2005; Marcus D. Hanwell <cryos@gentoo.org> krename-3.0.6.ebuild:
+  Stable on amd64.
+
+  20 Aug 2005; Gregorio Guidi <greg_g@gentoo.org> krename-3.0.6.ebuild:
+  Stable on x86.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> krename-3.0.5.ebuild:
+  Stable on ppc.
+
+  10 Aug 2005; Luis Medinas <metalgod@gentoo.org> krename-3.0.5.ebuild:
+  Marked Stable on AMD64.
+
+  27 Jun 2005; Carsten Lohrke <carlo@gentoo.org> krename-3.0.5.ebuild,
+  +krename-3.0.6.ebuild:
+  stable on x86
+
+*krename-3.0.6 (27 Jun 2005)
+
+  27 Jun 2005; Carsten Lohrke <carlo@gentoo.org> +krename-3.0.6.ebuild:
+  version bump
+
+*krename-3.0.5 (23 May 2005)
+
+  23 May 2005; Carsten Lohrke <carlo@gentoo.org> +krename-3.0.5.ebuild:
+  version bump
+
+*krename-3.0.4 (21 Apr 2005)
+
+  21 Apr 2005; Carsten Lohrke <carlo@gentoo.org> +krename-3.0.4.ebuild:
+  version bump
+
+  05 Apr 2005; Marcus D. Hanwell <cryos@gentoo.org> krename-3.0.3.ebuild:
+  Marked stable on amd64.
+
+  30 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> krename-3.0.3.ebuild:
+  Stable on ppc.
+
+  25 Mar 2005; Carsten Lohrke <carlo@gentoo.org> krename-3.0.3.ebuild:
+  stable on x86
+
+  24 Feb 2005; Jason Wever <weeve@gentoo.org> krename-3.0.3.ebuild:
+  Added ~sparc keyword.
+
+*krename-3.0.3 (14 Feb 2005)
+
+  14 Feb 2005; Carsten Lohrke <carlo@gentoo.org> +krename-3.0.3.ebuild,
+  -krename-3.0.3_rc1.ebuild, -krename-3.0.3_rc2.ebuild:
+  version bump
+
+*krename-3.0.3_rc2 (07 Jan 2005)
+
+  07 Jan 2005; Carsten Lohrke <carlo@gentoo.org> +krename-3.0.3_rc2.ebuild:
+  version bump
+
+*krename-3.0.3_rc1 (02 Dec 2004)
+
+  02 Dec 2004; Carsten Lohrke <carlo@gentoo.org> +krename-3.0.3_rc1.ebuild:
+  version bump
 
 *krename-3.0.2 (30 Oct 2004)
 

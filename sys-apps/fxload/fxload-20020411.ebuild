@@ -1,28 +1,27 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/fxload/fxload-20020411.ebuild,v 1.1 2002/05/11 00:58:36 wmertens Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/fxload/fxload-20020411.ebuild,v 1.1.1.1 2005/11/30 09:56:20 chriswhite Exp $
 
 # source maintainers named it fxload-YYYY_MM_DD instead of fxload-YYYYMMDD
-OLDP="$P"
-P=`echo $P|sed 's/-\(....\)\(..\)\(..\)/-\1_\2_\3/'`
-S=${WORKDIR}/${P}
+MY_P="${PN}-${PV:0:4}_${PV:4:2}_${PV:6:2}"
 DESCRIPTION="USB firmware uploader"
-SRC_URI="http://unc.dl.sourceforge.net/sourceforge/linux-hotplug/fxload-2002_04_11.tar.gz"
-HOMEPAGE="http://linux-hotplug.sourceforge.net"
+HOMEPAGE="http://linux-hotplug.sourceforge.net/"
+SRC_URI="mirror://sourceforge/linux-hotplug/${MY_P}.tar.gz"
 
-# fxload needs pcimodules utility provided by pcitutils-2.1.9-r1
-DEPEND="virtual/glibc
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="amd64 hppa ppc sparc x86 ia64"
+IUSE=""
+
+DEPEND="virtual/libc
 	sys-apps/hotplug"
 
+S=${WORKDIR}/${MY_P}
+
 src_compile() {
-
-	# compile fxload program
-	make || die
-
+	make RPM_OPT_FLAGS="${CFLAGS}" || die
 }
 
-src_install () {
-
-	make install prefix=${D}
-
+src_install() {
+	make install prefix=${D} || die
 }

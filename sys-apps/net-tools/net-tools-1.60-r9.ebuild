@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/net-tools/net-tools-1.60-r9.ebuild,v 1.1 2004/08/12 10:28:27 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/net-tools/net-tools-1.60-r9.ebuild,v 1.1.1.1 2005/11/30 09:56:30 chriswhite Exp $
 
-inherit flag-o-matic gcc eutils
+inherit flag-o-matic toolchain-funcs eutils
 
 DESCRIPTION="Standard Linux networking tools"
 HOMEPAGE="http://sites.inka.de/lina/linux/NetTools/"
@@ -11,18 +11,14 @@ SRC_URI="http://www.tazenda.demon.co.uk/phil/net-tools/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64 ~ppc64 ~s390"
-IUSE="nls build static uclibc"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
+IUSE="nls build static"
 
+RDEPEND=""
 DEPEND="nls? ( sys-devel/gettext )
 	>=sys-apps/sed-4"
 
 src_unpack() {
-	if use static ; then
-		append-flags -static
-		append-ldflags -static
-	fi
-
 	PATCHDIR=${WORKDIR}/${P}-gentoo
 
 	unpack ${A}
@@ -53,6 +49,11 @@ src_unpack() {
 	cp ${PATCHDIR}/net-tools-1.60-config.h config.h
 	cp ${PATCHDIR}/net-tools-1.60-config.make config.make
 
+	if use static ; then
+		append-flags -static
+		append-ldflags -static
+	fi
+
 	sed -i \
 		-e 's/^libdir:/libdir: version.h/' \
 		-e "s:-O2 -Wall -g:${CFLAGS}:" \
@@ -62,7 +63,7 @@ src_unpack() {
 	sed -i -e "s:/usr/man:/usr/share/man:" man/Makefile \
 		|| die "sed man/Makefile failed"
 
-	if ! use uclibc ; then
+	if ! use elibc_uclibc ; then
 		cp -f ${PATCHDIR}/ether-wake.c ${S}
 		cp -f ${PATCHDIR}/ether-wake.8 ${S}/man/en_US
 	fi
@@ -79,7 +80,8 @@ src_unpack() {
 }
 
 src_compile() {
-	#configure shouldn't run anymore so bug #820 shouldn't apply...
+	# configure shouldn't run anymore so bug #820 shouldn't apply...
+	tc-export CC
 	emake libdir || die "emake libdir failed"
 	emake || die "emake failed"
 
@@ -87,21 +89,21 @@ src_compile() {
 		emake i18ndir || die "emake i18ndir failed"
 	fi
 
-	if ! use uclibc ; then
-		$(gcc-getCC) ${CFLAGS} -o ether-wake ether-wake.c || die "ether-wake failed to build"
+	if ! use elibc_uclibc ; then
+		$(tc-getCC) ${CFLAGS} -o ether-wake ether-wake.c || die "ether-wake failed to build"
 	fi
 }
 
 src_install() {
 	make BASEDIR="${D}" install || die "make install failed"
 
-	if ! use uclibc ; then
+	if ! use elibc_uclibc ; then
 		dosbin ether-wake || die "dosbin failed"
 	fi
 	mv ${D}/bin/* ${D}/sbin || die "mv failed"
 	mv ${D}/sbin/{hostname,domainname,netstat,dnsdomainname,ypdomainname,nisdomainname} ${D}/bin \
 		|| die "mv failed"
-	use uclibc && rm -f ${D}/bin/{yp,nis}domainname
+	use elibc_uclibc && rm -f ${D}/bin/{yp,nis}domainname
 	dodir /usr/bin
 	dosym /bin/hostname /usr/bin/hostname
 

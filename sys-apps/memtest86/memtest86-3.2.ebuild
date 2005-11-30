@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86/memtest86-3.2.ebuild,v 1.1 2005/01/02 19:15:26 chainsaw Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/memtest86/memtest86-3.2.ebuild,v 1.1.1.1 2005/11/30 09:56:41 chriswhite Exp $
 
-inherit mount-boot eutils
+inherit mount-boot eutils flag-o-matic
 
 DESCRIPTION="A stand alone memory test for x86 computers"
 HOMEPAGE="http://www.memtest86.com/"
@@ -10,26 +10,25 @@ SRC_URI="http://www.memtest86.com/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 IUSE="serial"
+RESTRICT="maketest"
 
 DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
+	cd "${S}"
 
-	# bug 66630
-	epatch ${FILESDIR}/${P}-test-pic.patch
+	test_flag -fno-stack-protector && \
+		epatch "${FILESDIR}"/${P}-solar.patch #66630
 
 	sed -i -e '/DISCARD/d' memtest_shared.lds
 
-	if use serial ; then
-		sed -i \
-			-e 's/#define SERIAL_CONSOLE_DEFAULT 0/#define SERIAL_CONSOLE_DEFAULT 1/' \
-			config.h \
-			|| die
-	fi
+	use serial && \
+	sed -i \
+		-e '/^#define SERIAL_CONSOLE_DEFAULT/s:0:1:' \
+		config.h
 }
 
 src_compile() {

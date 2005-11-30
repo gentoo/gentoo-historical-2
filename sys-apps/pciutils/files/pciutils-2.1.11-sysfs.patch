@@ -68,7 +68,7 @@
 +++ pciutils-2.1.11/lib/sysfs.c
 @@ -0,0 +1,292 @@
 +/*
-+ *	$Id: pciutils-2.1.11-sysfs.patch,v 1.1 2005/06/12 21:17:43 vapier Exp $
++ *	$Id: pciutils-2.1.11-sysfs.patch,v 1.1.1.1 2005/11/30 09:56:32 chriswhite Exp $
 + *
 + *	The PCI Library -- Configuration Access via /sys/bus/pci
 + *

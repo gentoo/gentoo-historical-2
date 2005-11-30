@@ -1,8 +1,31 @@
 # ChangeLog for net-misc/ipx-utils
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ipx-utils/ChangeLog,v 1.1 2002/07/22 00:24:51 azarah Exp $
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ipx-utils/ChangeLog,v 1.1.1.1 2005/11/30 09:55:18 chriswhite Exp $
 
-*net-misc/ipx-utils-1.1 (22 Jul 2002)
+  28 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  files/ipx-utils-1.1-proc.patch:
+  Fix a typo in the proc patch #67642.
+
+*ipx-utils-1.1-r1 (16 Oct 2004)
+
+  16 Oct 2004; Mike Frysinger <vapier@gentoo.org>
+  -files/ipx-utils-1.1-gentoo.diff, +files/ipx-utils-1.1-makefile.patch,
+  +files/ipx-utils-1.1-proc.patch, +ipx-utils-1.1-r1.ebuild,
+  -ipx-utils-1.1.ebuild:
+  Clean up and fix /proc updates #67642 by Josef Kovacs.
+
+  02 Oct 2004; Markus Nigbur <pyrania@gentoo.org> ipx-utils-1.1.ebuild:
+  hooray for epatch!
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> ipx-utils-1.1.ebuild:
+  change virtual/glibc to virtual/libc
+
+  16 Apr 2004; Michael McCabe <randy@gentoo.org> ipx-utils-1.1.ebuild:
+  Adding s390 keywords
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*ipx-utils-1.1 (22 Jul 2002)
 
   22 Jul 2002; Martin Schlemmer <azarah@gentoo.org> ipx-utils-1.1.ebuild, ipx.init, ipx.confd :
   Initial import. Ebuild submitted by myself.

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_bluetooth/asterisk-chan_bluetooth-0.0.1_pre20050212.ebuild,v 1.1 2005/02/15 20:41:28 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/asterisk-chan_bluetooth/asterisk-chan_bluetooth-0.0.1_pre20050212.ebuild,v 1.1.1.1 2005/11/30 09:55:10 chriswhite Exp $
 
 inherit eutils
 
@@ -12,12 +12,13 @@ SRC_URI="mirror://gentoo/${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 IUSE=""
 
 DEPEND=">=net-wireless/bluez-libs-2.10
-	>=net-misc/asterisk-1.0.5-r1"
+	>=net-misc/asterisk-1.0.5-r1
+	!>=net-misc/asterisk-1.1.0"
 
 S=${WORKDIR}/${MY_PN}
 

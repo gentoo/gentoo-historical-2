@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/icecast/icecast-2.1.0.ebuild,v 1.1 2004/11/05 23:38:04 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/icecast/icecast-2.1.0.ebuild,v 1.1.1.1 2005/11/30 09:55:11 chriswhite Exp $
 
 IUSE="doc yp"
 
@@ -8,11 +8,11 @@ inherit eutils
 
 DESCRIPTION="An opensource alternative to shoutcast that supports mp3 and ogg streaming"
 HOMEPAGE="http://www.icecast.org/"
-SRC_URI="http://svn.xiph.org/releases/icecast/${P}.tar.gz"
+SRC_URI="http://downloads.xiph.org/releases/icecast/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 
 DEPEND="dev-libs/libxslt
 	media-libs/libogg

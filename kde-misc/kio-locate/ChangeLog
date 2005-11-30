@@ -1,6 +1,67 @@
 # ChangeLog for kde-misc/kio-locate
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/kde-misc/kio-locate/ChangeLog,v 1.1 2004/10/28 21:22:42 motaboy Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/kde-misc/kio-locate/ChangeLog,v 1.1.1.1 2005/11/30 09:57:12 chriswhite Exp $
+
+*kio-locate-0.4.4 (24 Oct 2005)
+
+  24 Oct 2005; Carsten Lohrke <carlo@gentoo.org> +kio-locate-0.4.4.ebuild:
+  version bump
+
+  17 Oct 2005; Carsten Lohrke <carlo@gentoo.org> kio-locate-0.4.3.ebuild:
+  accidentally dropped scons dependency
+
+*kio-locate-0.4.3 (17 Oct 2005)
+
+  17 Oct 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/kde.py-bksys-1.5.1.diff, +kio-locate-0.4.3.ebuild:
+  version bump
+
+  05 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  kio-locate-0.3.4.ebuild:
+  Stable on ppc.
+
+  10 May 2005; Marcus D. Hanwell <cryos@gentoo.org> kio-locate-0.3.4.ebuild:
+  Stable on amd64.
+
+  13 Apr 2005; Gregorio Guidi <greg_g@gentoo.org> kio-locate-0.3.4.ebuild:
+  Stable on x86.
+
+  02 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> kio-locate-0.3.4.ebuild:
+  Marked ~amd64, closes bug 69486.
+
+  24 Feb 2005; Jason Wever <weeve@gentoo.org> kio-locate-0.3.4.ebuild:
+  Added ~sparc keyword.
+
+*kio-locate-0.3.4 (27 Jan 2005)
+
+  27 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> +kio-locate-0.3.4.ebuild:
+  Version bump.
+
+*kio-locate-0.3.2 (19 Jan 2005)
+
+  19 Jan 2005; Gregorio Guidi <greg_g@gentoo.org> -kio-locate-0.2.4.ebuild,
+  +kio-locate-0.3.2.ebuild:
+  Version bump. Removed old version.
+
+  28 Nov 2004; Simone Gotti <motaboy@gentoo.org> kio-locate-0.3.0.ebuild:
+  Stable on x86.
+
+  28 Nov 2004; Simone Gotti <motaboy@gentoo.org> kio-locate-0.2.4.ebuild:
+  Stable on x86.
+
+*kio-locate-0.3.0 (02 Nov 2004)
+
+  02 Nov 2004; Simone Gotti <motaboy@gentoo.org> +kio-locate-0.3.0.ebuild:
+  Version bump
+
+  02 Nov 2004; Simone Gotti <motaboy@gentoo.org> kio-locate-0.2.4.ebuild:
+  Fix the SRC_URI
+
+  01 Nov 2004; Lars Weiler <pylon@gentoo.org> kio-locate-0.2.4.ebuild:
+  Added ~ppc keyword.
+
+  28 Oct 2004; Simone Gotti <motaboy@gentoo.org> kio-locate-0.2.4.ebuild:
+  Use the kde eclass instead of kde-base that is deprecated.
 
 *kio-locate-0.2.4 (28 Oct 2004)
 

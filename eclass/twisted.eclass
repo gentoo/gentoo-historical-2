@@ -1,6 +1,6 @@
 # Copyright 2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/eclass/twisted.eclass,v 1.1 2005/11/27 20:57:36 marienz Exp $
+# $Header: /var/cvsroot/gentoo-x86/eclass/twisted.eclass,v 1.1.1.1 2005/11/30 09:59:31 chriswhite Exp $
 #
 # Author: Marien Zwart <marienz@gentoo.org>
 #

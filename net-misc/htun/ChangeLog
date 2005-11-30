@@ -1,6 +1,13 @@
 # ChangeLog for net-misc/htun
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/htun/ChangeLog,v 1.1 2003/12/30 22:29:50 zul Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/htun/ChangeLog,v 1.1.1.1 2005/11/30 09:54:57 chriswhite Exp $
+
+  29 Jul 2005; Marcelo Goes <vanquirius@gentoo.org> htun-0.9.5.ebuild:
+  Add dev-util/yacc to DEPEND for bug 100755. Thanks to Stefan Briesenick
+  <sbriesen@gentoo.org>.
+
+  01 Jul 2004; Jon Hood <squinky86@gentoo.org> htun-0.9.5.ebuild:
+  change virtual/glibc to virtual/libc
 
 *htun-0.9.5 (30 Dec 2003)
 

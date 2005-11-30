@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lkcdutils/lkcdutils-4.1.1.ebuild,v 1.1 2004/04/18 03:53:40 randy Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lkcdutils/lkcdutils-4.1.1.ebuild,v 1.1.1.1 2005/11/30 09:56:44 chriswhite Exp $
+
+inherit eutils
 
 
 DESCRIPTION="Linux Kernel Crash Dumps (LKCD) Utilities"
@@ -10,6 +12,7 @@ SRC_URI="http://lkcd.sourceforge.net/download/OLD/4.1.1/lkcdutils/lkcdutils-4.1-
 HOMEPAGE="http://lkcd.sourceforge.net/ http://oss.software.ibm.com/developerworks/opensource/linux390/june2003_recommended.shtml"
 LICENSE="GPL-2"
 KEYWORDS="s390"
+IUSE=""
 SLOT="0"
 DEPEND="app-arch/rpm2targz
 	dev-util/byacc"

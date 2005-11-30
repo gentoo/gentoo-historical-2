@@ -1,41 +1,175 @@
-#!/bin/sh
-
+#!/bin/bash
+# 
 # Preprocessor for 'less'. Used when this environment variable is set:
 # LESSOPEN="|lesspipe.sh %s"
 
-lesspipe() {
+# TODO: handle compressed files better
 
-  case "$1" in
+trap 'exit 0' PIPE
 
-  *.bz2) bzip2 -dc $1 2>/dev/null ;;
-  *.tar) tar tvvf $1 2>/dev/null ;;
-  *.tar.bz2) tar tjvvf $1 2>/dev/null ;;
-  *.tbz2) tar tjvvf $1 2>/dev/null ;;
-  *.tbz) tar tjvvf $1 2>/dev/null ;;
-  *.tar.gz) tar tzvvf $1 2>/dev/null ;;
-  *.tgz) tar tzvvf $1 2>/dev/null ;;
-  *.z) gzip -dc $1  2>/dev/null ;;
-  *.Z) gzip -dc $1  2>/dev/null ;;
-  *.tar.z) tar tzvvf $1 2>/dev/null ;;
-  *.tar.Z) tar tzvvf $1 2>/dev/null ;;
-  *.zip) unzip -l $1 2>/dev/null ;;
-  *.rpm) rpm -qilp "$1" 2>/dev/null ;;
-  *.[1-9] | *.n | *.man)
-    [ "$(file -L $1 | cut -d ' ' -f 2)" = "troff" -o \
-    "$(file -L $1 | cut -d ' ' -f 2)" = "ASCII" ] &&
-    groff -S -s -p -t -e -Tascii -mandoc "$1" 2>/dev/null ;;
-  *.[1-9].gz | *.n.gz | *.man.gz)
-    [ "$(gzip -dc $1 2>/dev/null|file -|tr -s ' '|cut -d ' ' -f3)" = "troff" -o \
-    "$(gzip -dc $1 2>/dev/null|file -|tr -s ' '|cut -d ' ' -f3)" = "ASCII" ] &&
-    gzip -dc $1 2>/dev/null | groff -S -s -p -t -e -Tascii -mandoc ;;
-  *.gz) gzip -dc $1  2>/dev/null ;; # keep this after the above statement :)
-  *) FILE="$(file -L $1)"
-    FILE1="$(echo $FILE | cut -d ' ' -f 2)"
-    FILE2="$(echo $FILE | cut -d ' ' -f 3)"
-    [ "$FILE1" = "Linux/i386" -o "$FILE2" = "Linux/i386" -o \
-      "$FILE1" = "ELF" -o "$FILE2" = "ELF" ] && strings $1 ;;
-
-  esac
+guesscompress() {
+	case "$1" in
+		*.gz)  echo "gunzip -c" ;;
+		*.bz2) echo "bunzip2 -c" ;;
+		*)     echo "cat" ;;
+	esac
 }
 
-lesspipe $1
+lesspipe_file() {
+	local out=$(file -L -- "$1")
+	case ${out} in
+		*" ar archive"*)    lesspipe "$1" ".a" ;;
+		*" tar archive"*)   lesspipe "$1" ".tar" ;;
+		*" CAB-Installer"*) lesspipe "$1" ".cab" ;;
+		*" troff "*)        lesspipe "$1" ".man" ;;
+		*" shared object"*) lesspipe "$1" ".so" ;;
+		*" Zip archive"*)   lesspipe "$1" ".zip" ;;
+		*" LHa"*archive*)   lesspipe "$1" ".lha" ;;
+		*" ELF "*)          readelf -a -- "$1" ;;
+		*": data")          hexdump -C -- "$1" ;;
+		*)                  return 1 ;;
+	esac
+	return 0
+}
+
+lesspipe() {
+	local match=$2
+	[[ -z ${match} ]] && match=$1
+
+	local DECOMPRESSOR=$(guesscompress "$match")
+
+	case "$match" in
+
+	### Doc files ###
+	*.[0-9n]|*.man|\
+	*.[0-9n].bz2|*.man.bz2|\
+	*.[0-9n].gz|*.man.gz|\
+	*.[0-9][a-z].gz|*.[0-9][a-z].gz)
+		local out=$(${DECOMPRESSOR} -- "$1" | file -)
+		case ${out} in
+			*troff*)
+				# Need to make sure we pass path to man or it will try 
+				# to locate "$1" in the man search paths
+				if [[ $1 == /* ]] ; then
+					man -- "$1"
+				else
+					man -- "./$1"
+				fi
+				;;
+			*text*)
+				${DECOMPRESSOR} -- "$1"
+				;;
+			*)
+				# We could have matched a library (libc.so.6), so let
+				# `file` figure out what the hell this thing is
+				lesspipe_file "$1"
+				;;
+		esac
+		;;
+	*.dvi)      dvi2tty "$1" ;;
+	*.ps|*.pdf) ps2ascii "$1" || pstotext "$1" || pdftotext "$1" ;;
+	*.doc)      antiword "$1" || catdoc "$1" ;;
+	*.rtf)      unrtf --nopict --text "$1" ;;
+
+	### URLs ###
+	ftp://*|http://*|*.htm|*.html)
+		for b in links2 links lynx ; do
+			${b} -dump "$1" && exit 0
+		done
+		html2text -style pretty "$1"
+		;;
+
+	### Tar files ###
+	*.tar)                  tar tvvf "$1" ;;
+	*.tar.bz2|*.tbz2|*.tbz) tar tjvvf "$1" ;;
+	*.tar.gz|*.tgz|*.tar.z) tar tzvvf "$1" ;;
+
+	### Misc archives ###
+	*.bz2)        bzip2 -dc -- "$1" ;;
+	*.gz|*.z)     gzip -dc -- "$1"  ;;
+	*.zip)        unzip -l "$1" ;;
+	*.rpm)        rpm -qpivl --changelog -- "$1" ;;
+	*.cpi|*.cpio) cpio -itv < "$1" ;;
+	*.ace)        unace l -- "$1" ;;
+	*.arj)        unarj l -- "$1" ;;
+	*.cab)        cabextract -l -- "$1" ;;
+	*.lha|*.lzh)  lha v "$1" ;;
+	*.zoo)        zoo -list "$1" ;;
+	*.7z)         7z l -- "$1" ;;
+	*.a)          ar tv "$1" ;;
+	*.so)         readelf -h -d -s -- "$1" ;;
+
+	*.rar|.r[0-9][0-9])  unrar l -- "$1" ;;
+
+	*.deb|*.udeb)
+		if type -p dpkg > /dev/null ; then
+			dpkg --info "$1"
+			dpkg --contents "$1"
+		else
+			ar tv "$1"
+			ar p "$1" data.tar.gz | tar tzvvf -
+		fi
+		;;
+
+	### Media ###
+	*.bmp|*.gif|*.jpeg|*.jpg|*.pcd|*.pcx|*.png|*.ppm|*.tga|*.tiff|*.tif)
+		identify "$1" || file -L -- "$1"
+		;;
+	*.avi|*.mpeg|*.mpg|*.mov|*.qt|*.wmv|*.asf|*.rm|*.ram)
+		midentify "$1" || file -L -- "$1"
+		;;
+	*.mp3)        mp3info "$1" || id3info "$1" ;;
+	*.ogg)        ogginfo "$1" ;;
+	*.flac)       metaflac --list "$1" ;;
+	*.iso)        isoinfo -d -i "$1" ; isoinfo -l -i "$1" ;;
+	*.bin|*.cue)  cd-info --no-header --no-device-info "$1" ;;
+
+	### Source code ###
+	*.awk|*.java|*.js|*.m4|*.pl|*.sh|\
+	*.[ch]|*.[ch]pp|*.[ch]xx|*.cc|*.hh|*.[sS]|\
+	*.patch)
+		# Only colorize if we know less will handle raw codes
+		for opt in ${LESS} ; do
+			if [[ ${opt} == "-r" || ${opt} == "-R" ]] ; then
+				code2color "$1"
+				break
+			fi
+		done
+		;;
+
+# May not be such a good idea :)
+#	### Device nodes ###
+#	/dev/[hs]d[a-z]*)
+#		fdisk -l "${1:0:8}"
+#		[[ $1 == *hd* ]] && hdparm -I "${1:0:8}"
+#		;;
+
+	### Everything else ###
+	*)
+		# Sanity check
+		[[ ${recur} == 2 ]] && exit 0
+
+		# Maybe we didn't match due to case issues ...
+		if [[ ${recur} == 0 ]] ; then
+			recur=1
+			lesspipe "$1" "$(echo $1 | tr '[:upper:]' '[:lower:]')"
+
+		# Maybe we didn't match because the file is named weird ...
+		else
+			recur=2
+			lesspipe_file "$1"
+		fi
+
+		exit 0
+		;;
+	esac
+}
+
+if [[ -z $1 ]] ; then
+	echo "Usage: lesspipe.sh <file>"
+elif [[ -d $1 ]] ; then
+	ls -alF -- "$1"
+else
+	recur=0
+	lesspipe "$1" 2> /dev/null
+fi

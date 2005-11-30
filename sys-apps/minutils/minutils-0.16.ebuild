@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/minutils/minutils-0.16.ebuild,v 1.1 2003/08/25 20:39:06 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/minutils/minutils-0.16.ebuild,v 1.1.1.1 2005/11/30 09:56:35 chriswhite Exp $
 
 DESCRIPTION="additional tools for embedded systems"
 HOMEPAGE="http://www.skarnet.org/software/minutils/"

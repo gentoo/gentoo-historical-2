@@ -1,6 +1,47 @@
 # ChangeLog for net-misc/cbqinit
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/cbqinit/ChangeLog,v 1.1 2002/07/12 00:57:11 blizzy Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/cbqinit/ChangeLog,v 1.1.1.1 2005/11/30 09:55:10 chriswhite Exp $
+
+*cbqinit-0.7.3-r1 (15 Nov 2005)
+
+  15 Nov 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/cbqinit-0.7.3-gentoo.patch, files/rc_cbqinit-r1,
+  +cbqinit-0.7.3-r1.ebuild:
+  Clean up ebuild, add a patch from Fedora, and add back in missing KEYWORDS
+  along with arm love.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  03 Nov 2004; Bret Curtis <psi29a@gentoo.org> cbqinit-0.7.2.ebuild,
+  cbqinit-0.7.3.ebuild:
+  marked 0.7.2 as stable on mips, and 0.7.3 as ~mips for testing
+
+*cbqinit-0.7.3 (29 Jul 2004)
+
+  29 Jul 2004; Patrick Kursawe <phosphan@gentoo.org> +files/rc_cbqinit-r1,
+  +cbqinit-0.7.3.ebuild:
+  Version bump, stopping the init script does not fail any more (as it always
+  did before)
+
+  07 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> cbqinit-0.7.2.ebuild:
+  Stable on alpha.
+
+  23 Jan 2004; <gustavoz@gentoo.org> cbqinit-0.7.2.ebuild:
+  stable on sparc
+
+  15 May 2003; Patrick Kursawe <phosphan@gentoo.org> cbqinit-0.7.2.ebuild,
+  cbqinit-0.7.ebuild:
+  ip and tc were moved from /usr/sbin to /sbin - the ebuilds changed the path to
+  the old place.
+
+*cbqinit-0.7.2 (10 Feb 2003)
+
+  05 Aug 2003; Guy Martin <gmsoft@gentoo.org> cbqinit-0.7.2.ebuild :
+  Added hppa to KEYWORDS.
+
+  10 Feb 2002; Seth Chandler <sethbc@gentoo.org> cbqinit-0.7.2.ebuild :
+  version bump, ~arch masked for all archs rather than a KEYWORDS="*"
 
 *cbqinit-0.7 (12 Jul 2002)
 

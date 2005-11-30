@@ -1,8 +1,43 @@
 # ChangeLog for dev-ml/ocamlnet
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocamlnet/ChangeLog,v 1.1 2003/02/23 22:02:52 george Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/ocamlnet/ChangeLog,v 1.1.1.1 2005/11/30 09:55:47 chriswhite Exp $
 
-*ocamlnet-0.95.ebuild (23 Feb 2003)
+  27 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> -ocamlnet-0.97.1.ebuild,
+  ocamlnet-0.98.ebuild:
+  Remove old version, latest is stable on ppc.
+
+  14 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> ocamlnet-0.98.ebuild:
+  Add ~amd64.
+
+  09 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> ocamlnet-0.98.ebuild:
+  Add compatibility cgi module so netclient can be compiled.
+
+  09 Mar 2005; Matthieu Sozeau <mattam@gentoo.org> ocamlnet-0.98.ebuild:
+  Fix data files installation, add pop library.
+
+  18 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> ocamlnet-0.98.ebuild:
+  fix repoman issues; tidy
+
+*ocamlnet-0.98 (18 Feb 2005)
+
+  18 Feb 2005; Matthieu Sozeau <mattam@gentoo.org> +ocamlnet-0.98.ebuild:
+  Version bump.
+
+  30 Sep 2004; Matthieu Sozeau <mattam@gentoo.org> ocamlnet-0.97.1.ebuild:
+  Stable move (fixes bug #65131 for amd64)
+
+  25 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> ocamlnet-0.97.1.ebuild:
+  NET_DB_DIR fix.
+
+*ocamlnet-0.97.1 (19 Aug 2004)
+
+  19 Aug 2004; Matthieu Sozeau <mattam@gentoo.org> ocamlnet-0.97.1.ebuild:
+  Version bump, use findlib eclass.
+
+  23 Mar 2004; Matthieu Sozeau <mattam@gentoo.org> ocamlnet-0.95.ebuild:
+  Added ~ppc keyword.
+
+*ocamlnet-0.95 (23 Feb 2003)
 
   23 Feb 2003; George Shapovalov <george@gentoo.org> ChangeLog, ocamlnet-0.95.ebuild, files/digest-ocamlnet-0.95 :
   initial release (#15901)

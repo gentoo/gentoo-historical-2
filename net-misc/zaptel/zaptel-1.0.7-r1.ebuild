@@ -1,24 +1,23 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/zaptel/zaptel-1.0.7-r1.ebuild,v 1.1 2005/05/07 18:24:31 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/zaptel/zaptel-1.0.7-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:13 chriswhite Exp $
 
 IUSE="devfs26 bri florz"
 
 inherit toolchain-funcs eutils linux-mod
 
-BRI_VERSION="0.2.0-RC8a"
+BRI_VERSION="0.2.0-RC8g"
 FLORZ_VERSION="0.2.0-RC8a_florz-6"
 
 DESCRIPTION="Drivers for Digium and ZapataTelephony cards"
 HOMEPAGE="http://www.asterisk.org"
-SRC_URI="ftp://ftp.asterisk.org/pub/telephony/zaptel/zaptel-${PV}.tar.gz
-	 bri? ( http://www.junghanns.net/asterisk/downloads/bristuff-${BRI_VERSION}.tar.gz )
+SRC_URI="ftp://ftp.digium.com/pub/telephony/zaptel/old/zaptel-${PV}.tar.gz
+	 bri? ( http://www.junghanns.net/downloads/bristuff-${BRI_VERSION}.tar.gz )
 	 florz? ( http://zaphfc.florz.dyndns.org/zaphfc_${FLORZ_VERSION}.diff.gz )"
 
 SLOT="0"
 LICENSE="GPL-2"
-#KEYWORDS="~x86 ~ppc ~amd64"
-KEYWORDS="-*"
+KEYWORDS="x86 ~ppc ~amd64"
 
 DEPEND="virtual/libc
 	virtual/linux-sources
@@ -112,16 +111,14 @@ src_unpack() {
 src_compile() {
 	# TODO: bristuff modules
 
-	set_arch_to_kernel
-	make KERNEL_SOURCE=/usr/src/linux || die
+	make ARCH=$(tc-arch-kernel) KERNEL_SOURCE=/usr/src/linux || die
 
 	if use bri; then
 		cd ${WORKDIR}/bristuff-${BRI_VERSION}
-		make -C qozap  || die
-		make -C zaphfc || die
-		make -C cwain  || die
+		make ARCH=$(tc-arch-kernel) -C qozap  || die
+		make ARCH=$(tc-arch-kernel) -C zaphfc || die
+		make ARCH=$(tc-arch-kernel) -C cwain  || die
 	fi
-	set_arch_to_portage
 }
 
 src_install() {
@@ -158,7 +155,7 @@ src_install() {
 		newins cwain/zapata.conf  zapata.conf.E1
 
 		docinto bristuff
-		dodoc CHANGES INSTALL README-ZAPHFC-USERS.1st
+		dodoc CHANGES INSTALL
 
 		docinto bristuff/qozap
 		dodoc qozap/LICENSE qozap/TODO qozap/*.conf*
@@ -171,10 +168,8 @@ src_install() {
 	fi
 
 	# install init script
-	exeinto /etc/init.d
-	newexe ${FILESDIR}/zaptel.rc6 zaptel
-	insinto /etc/conf.d
-	newins ${FILESDIR}/zaptel.confd zaptel
+	newinitd ${FILESDIR}/zaptel.rc6 zaptel
+	newconfd ${FILESDIR}/zaptel.confd zaptel
 
 	# install devfsd rule file
 	insinto /etc/devfs.d
@@ -182,11 +177,11 @@ src_install() {
 
 	# install udev rule file
 	insinto /etc/udev/rules.d
-	newins ${FILESDIR}/zaptel.udevd 99-zaptel.rules
+	newins ${FILESDIR}/zaptel.udevd 10-zaptel.rules
 
 	# fix permissions if there's no udev / devfs around
 	if [[ -d ${D}/dev/zap ]]; then
-		chown -R root:dialout  ${D}/dev/zap
+		chown -R root:dialout	${D}/dev/zap
 		chmod -R u=rwX,g=rwX,o= ${D}/dev/zap
 	fi
 }
@@ -224,26 +219,10 @@ pkg_postinst() {
 		einfo "    zapata.conf.doubleE1"
 		echo
 	fi
-}
 
-pkg_config() {
-	einfo "Bla... [y/N]"
-
-	read x
-
-	if [[ "$x" = "y" ]] || [[ "$x" = "Y" ]]; then
-		# yes, this is needed :(
-		enewgroup asterisk
-
-		einfo "Fixing permissions and ownerships"
-
-		# fix permissions if there's no udev / devfs around
-		if [[ -d ${D}/dev/zap ]]; then
-			chown -R root:asterisk  ${D}/dev/zap
-			chmod -R u=rwX,g=rwX,o= ${D}/dev/zap
-		fi
-	else
-		einfo "Aborted"
+	# fix permissions if there's no udev / devfs around
+	if [[ -d ${ROOT}/dev/zap ]]; then
+		chown -R root:dialout	${ROOT}/dev/zap
+		chmod -R u=rwX,g=rwX,o= ${ROOT}/dev/zap
 	fi
-
 }

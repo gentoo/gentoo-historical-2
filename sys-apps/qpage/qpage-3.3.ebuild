@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/qpage/qpage-3.3.ebuild,v 1.1 2003/08/08 18:05:35 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/qpage/qpage-3.3.ebuild,v 1.1.1.1 2005/11/30 09:56:00 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,8 @@ LICENSE="qpage"
 SLOT="0"
 KEYWORDS="~x86 ~alpha"
 
-DEPEND="tcpd? ( sys-apps/tcp-wrappers ) : ( >=sys-apps/sed-4 )"
+DEPEND="tcpd? ( sys-apps/tcp-wrappers )
+	!tcpd? ( >=sys-apps/sed-4 )"
 RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 	virtual/mta"
@@ -33,7 +34,7 @@ src_compile() {
 		sed -i 's/-lwrap//g; s/-DTCP_WRAPPERS//g' Makefile
 		echo '#undef TCP_WRAPPERS' >> config.h
 	fi
-	
+
 	emake || die "emake failed"
 }
 

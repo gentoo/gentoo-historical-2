@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/lua/lua-5.0.2-r1.ebuild,v 1.1 2004/08/05 20:50:20 twp Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/lua/lua-5.0.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:58:04 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.lua.org/ftp/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha -hppa ~mips ~ppc ~sparc ~x86 ~amd64"
+KEYWORDS="~alpha ~amd64 ~arm -hppa ~ia64 ~mips ~ppc ~ppc-macos ~s390 ~sparc ~x86"
 IUSE="readline"
 
 DEPEND=">=sys-apps/sed-4
@@ -20,17 +20,21 @@ src_unpack() {
 	unpack ${A}
 
 	epatch ${FILESDIR}/lua-${PV}-gentoo.patch
+	use ppc-macos && epatch ${FILESDIR}/lua-ppc-macos-Makefile.patch
 
 	cd ${S}
 
 	sed -i config \
 		-e 's:^#\(LOADLIB= -DUSE_DLOPEN=1\):\1:' \
 		-e 's:^#\(DLLIB= -ldl\):\1:' \
-		-e 's:^#\(MYLDFLAGS= -Wl,-E\):\1:' \
 		-e 's:^#\(POPEN= -DUSE_POPEN=1\)$:\1:' \
 		-e "s:^\(MYCFLAGS= \)-O2:\1${CFLAGS} -fPIC -DPIC:" \
 		-e 's:^\(INSTALL_ROOT= \)/usr/local:\1$(DESTDIR)/usr:' \
+		-e "s:^\(INSTALL_LIB= \$(INSTALL_ROOT)/\)lib:\1$(get_libdir):" \
 		-e 's:^\(INSTALL_MAN= $(INSTALL_ROOT)\)/man/man1:\1/share/man/man1:'
+
+	# The Darwin linker does not have the -E option.
+	use ppc-macos || sed -i -e 's:^#\(MYLDFLAGS= -Wl,-E\):\1:' config
 
 	sed -i doc/readme.html \
 		-e 's:\(/README\)\("\):\1.gz\2:g'
@@ -45,7 +49,7 @@ src_unpack() {
 prefix=/usr
 exec_prefix=\${prefix}
 includedir=\${prefix}/include
-libdir=\${exec_prefix}/lib
+libdir=\${exec_prefix}/$(get_libdir)
 interpreter=\${exec_prefix}/bin/lua
 compiler=\${exec_prefix}/bin/luac
 
@@ -62,7 +66,12 @@ src_compile() {
 }
 
 src_install() {
-	make DESTDIR=${D} install soinstall || die
+	if use ppc-macos; then
+		# OSX does not have so files.
+		make DESTDIR=${D} install dylibinstall || die
+	else
+		make DESTDIR=${D} install soinstall || die
+	fi
 
 	dodoc HISTORY UPDATE
 	dohtml doc/*.html doc/*.gif
@@ -73,10 +82,8 @@ src_install() {
 
 	insinto /usr/share/lua
 	doins etc/compat.lua
-	insinto /etc
-	newins etc/lua.magic magic
 	insinto /usr/share/pixmaps
 	doins etc/lua.xpm
-	insinto /usr/lib/pkgconfig
+	insinto /usr/$(get_libdir)/pkgconfig
 	doins etc/lua.pc
 }

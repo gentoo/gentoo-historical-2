@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.4.1-r4.ebuild,v 1.1 2004/10/08 00:01:35 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/shadow/shadow-4.0.4.1-r4.ebuild,v 1.1.1.1 2005/11/30 09:57:02 chriswhite Exp $
 
 inherit eutils libtool gnuconfig flag-o-matic
 
@@ -13,8 +13,8 @@ SRC_URI="ftp://ftp.pld.org.pl/software/shadow/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="pam selinux nls uclibc"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="pam selinux nls"
 
 DEPEND=">=sys-libs/cracklib-2.7-r3
 	pam? ( >=sys-libs/pam-0.75-r4 )
@@ -36,7 +36,7 @@ src_unpack() {
 	use selinux && epatch ${FILESDIR}/${SELINUX_PATCH}
 
 	# uclibc support, corrects NIS usage
-	use uclibc && epatch ${FILESDIR}/shadow-4.0.4.1-nonis.patch
+	use elibc_uclibc && epatch ${FILESDIR}/shadow-4.0.4.1-nonis.patch
 
 	# Get su to call pam_open_session(), and also set DISPLAY and XAUTHORITY,
 	# else the session entries in /etc/pam.d/su never get executed, and
@@ -64,9 +64,16 @@ src_unpack() {
 	# with an exit status of 1 #66687
 	epatch ${FILESDIR}/${P}-userdel-missing-brackets.patch
 
+	# don't install manpages if USE=-nls
+	epatch ${FILESDIR}/${P}-nls-manpages.patch
+
+	# fix small graphical typo in passwd.1 #68150
+	epatch ${FILESDIR}/${P}-passwd-typo.patch
+
 	# Allows shadow configure detect newer systems properly
 	gnuconfig_update
 	elibtoolize
+	epunt_cxx
 }
 
 src_compile() {
@@ -89,7 +96,9 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die "install problem"
 
-#	dodir /etc/default /etc/skel
+	# lock down setuid perms #47208
+	fperms go-r /bin/su /usr/bin/ch{fn,sh,age} \
+		/usr/bin/{expiry,newgrp,passwd,gpasswd} || die "fperms"
 
 	# Remove libshadow and libmisc; see bug 37725 and the following
 	# comment from shadow's README.linux:
@@ -123,6 +132,10 @@ src_install() {
 	# From sys-apps/pam-login now
 	#insopts -m0644 ; doins ${FILESDIR}/login.defs
 
+	# move passwd to / to help recover broke systems #64441
+	mv ${D}/usr/bin/passwd ${D}/bin/
+	dosym ../../bin/passwd /usr/bin/passwd
+
 	if use pam; then
 		insinto /etc/pam.d ; insopts -m0644
 		for x in ${FILESDIR}/pam.d/*; do
@@ -139,16 +152,13 @@ src_install() {
 		newins shadow groupadd
 	fi
 
+	# Remove manpages that are handled by other packages
+	cd ${D}/usr/share/man
+	find \
+		-name 'id.1' \
+		-o -name 'passwd.5' \
+		-exec rm {} \;
 	cd ${S}
-	# The manpage install is beyond my comprehension, and
-	# also broken. Just do it over.
-	rm -rf ${D}/usr/share/man/*
-
-	rm -f man/id.1 man/getspnam.3 man/passwd.5
-	for x in man/*.[0-9]
-	do
-		[ -f ${x} ] && doman ${x}
-	done
 
 	if ! use pam; then
 		# Dont install the manpage, since we dont use
@@ -159,25 +169,14 @@ src_install() {
 	fi
 
 	cd ${S}/doc
-	dodoc ANNOUNCE INSTALL README WISHLIST
+	dodoc INSTALL README WISHLIST
 	docinto txt
 	dodoc HOWTO LSM README.* *.txt
 
-	# Fix sparc serial console
-	if [ "${ARCH}" = "sparc" ]
-	then
-		# ttyS0 and its devfsd counterpart (Sparc serial port "A")
-		dosed 's:\(vc/1\)$:tts/0\n\1:' /etc/securetty
-		dosed 's:\(tty1\)$:ttyS0\n\1:' /etc/securetty
-	fi
-
-	# fix hppa serial console
+	# ttyB0 is the PDC software console
 	if [ "${ARCH}" = "hppa" ]
 	then
-		# ttyB0 is the PDC software console
-		dosed 's:\(vc/1\)$:tts/0\n\1:' /etc/securetty
-		dosed 's:\(tty1\)$:ttyS0\n\1:' /etc/securetty
-		dosed 's:\(tty1\)$:ttyB0\n\1:' /etc/securetty
+		echo "ttyB0" >> ${D}/etc/securetty
 	fi
 }
 
@@ -195,7 +194,7 @@ pkg_postinst() {
 		ewarn "  ${ROOT}etc/pam.d/system-auth.bak"
 		echo
 
-		cp -a ${ROOT}/etc/pam.d/system-auth \
+		cp -pPR ${ROOT}/etc/pam.d/system-auth \
 			${ROOT}/etc/pam.d/system-auth.bak;
 		mv -f ${ROOT}/etc/pam.d/system-auth.new \
 			${ROOT}/etc/pam.d/system-auth

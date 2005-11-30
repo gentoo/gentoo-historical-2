@@ -1,51 +1,49 @@
 #!/sbin/runscript
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hotplug/files/hotplug.rc,v 1.1.1.1 2005/11/30 09:56:38 chriswhite Exp $
 
 depend() {
 	need modules
 }
 
 checkconfig() {
-	if [ ! -d /etc/hotplug ]
-	then
-		eerror "USB Hotplug requires scripts & configs in /etc/hotplug !"
+	if [ ! -d /etc/hotplug ] ; then
+		eerror "Hotplug requires scripts & configs in /etc/hotplug !"
 		return 1
 	fi
 }
 
 start() {
-	local error
 	checkconfig || return 1
-	ebegin "Starting USB Hotplug "
+
+	if [ -e /usr/lib/hotplug/firmware.tar.bz2 ]
+	then
+		ebegin "Unpacking hotplug firmware"
+		tar xjf /usr/lib/hotplug/firmware.tar.bz2 -C \
+			/usr/lib/hotplug/firmware
+		eend 0
+	fi
+
 	for RC in /etc/hotplug/*.rc
 	do
+		NAME=`basename $RC .rc`
+		ebegin "Starting $NAME hotplugging"
+		# We do not want to check the return status, as
+		# some of the scripts may fail due to drivers not
+		# compiled as modules ...
 		$RC start
-		error=$?
-		if [ error ]
-		then
-			eend ${error} "hotplug script $RC failed at start "
-			return 1
-		fi
+		eend 0
 	done
-	touch /var/lock/subsys/hotplug
-	eend
 }
 
 stop() {
 	local error
-	checkconfig || return 1
-	ebegin "Stopping USB Hotplug "
 	for RC in /etc/hotplug/*.rc
 	do
+		NAME=`basename $RC .rc`
+		ebegin "Stopping $NAME hotplugging"
 		$RC stop
-		error=$?
-		if [ error ]
-		then
-			eend ${error} "hot plug script $RC failed at stop "	
-			return 1					
-		fi
+		eend 0
 	done
-	rm -f /var/lock/subsys/hotplug
-	eend
 }
-
-

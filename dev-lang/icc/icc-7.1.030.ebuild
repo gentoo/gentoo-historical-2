@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.1.030.ebuild,v 1.1 2003/10/14 05:08:09 drobbins Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/icc/icc-7.1.030.ebuild,v 1.1.1.1 2005/11/30 09:58:32 chriswhite Exp $
 
 inherit rpm
 
@@ -9,16 +9,18 @@ S=${WORKDIR}
 FILESV=7.1.029
 DESCRIPTION="Intel C++ Compiler - Intel's Pentium optimized compiler for Linux"
 
-SRC_URI1="ftp://download.intel.com/software/products/compilers/downloads/l_cc_pc_${PV}.tar"
-SRC_URI2="ftp://download.intel.co.jp/software/products/compilers/downloads/l_cc_pc_${PV}.tar"
-SRC_URI="${SRC_URI1} ${SRC_URI2}"
+#currently must be downloaded from premier.intel.com
+#SRC_URI1="ftp://download.intel.com/software/products/compilers/downloads/l_cc_pc_${PV}.tar"
+#SRC_URI2="ftp://download.intel.co.jp/software/products/compilers/downloads/l_cc_pc_${PV}.tar"
+SRC_URI="l_cc_pc_${PV}.tar"
 
 HOMEPAGE="http://www.intel.com/software/products/compilers/clin/"
 
 LICENSE="icc-7.0"
 
 DEPEND="virtual/linux-sources
-		>=sys-libs/glibc-2.2.5"
+		>=sys-libs/glibc-2.2.5
+		x86? ( sys-libs/lib-compat )"
 
 RDEPEND="virtual/linux-sources
 		>=sys-libs/glibc-2.2.5"
@@ -27,7 +29,7 @@ SLOT="7"
 KEYWORDS="-* ~ia64 ~x86"
 IUSE=""
 
-RESTRICT="nostrip"
+RESTRICT="nostrip fetch"
 
 src_unpack() {
 	unpack ${A}
@@ -41,8 +43,10 @@ src_unpack() {
 		rm -f intel-*.i386.rpm
 	fi
 
-	rpm_unpack *.rpm
-
+	for x in *.rpm
+	do
+		rpm_unpack *.rpm
+	done
 }
 src_compile() {
 

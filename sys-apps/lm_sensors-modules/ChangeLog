@@ -1,6 +1,29 @@
 # ChangeLog for sys-apps/lm_sensors-modules
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors-modules/ChangeLog,v 1.1 2005/06/11 11:24:09 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/lm_sensors-modules/ChangeLog,v 1.1.1.1 2005/11/30 09:56:48 chriswhite Exp $
+
+  23 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  lm_sensors-modules-2.9.1.ebuild, lm_sensors-modules-2.9.2.ebuild:
+  No linux-2.4.x support for AMD64, bug #108270.
+
+  23 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  lm_sensors-modules-2.9.2.ebuild:
+  Stable on x86, bug #108270.
+
+*lm_sensors-modules-2.9.2 (06 Sep 2005)
+
+  06 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/lm_sensors-2.9.2-module-path.patch,
+  +files/lm_sensors-2.9.2-modules-only.patch,
+  +lm_sensors-modules-2.9.2.ebuild:
+  Version bump.
+
+  19 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  lm_sensors-modules-2.9.1.ebuild:
+  No linux-2.4.x support for ppc.
+
+  19 Jul 2005; <brix@gentoo.org> lm_sensors-modules-2.9.1.ebuild:
+  Stable on x86.
 
 *lm_sensors-modules-2.9.1 (11 Jun 2005)
 

@@ -1,59 +1,74 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/swig-1.3.21.ebuild,v 1.1 2004/02/20 13:47:03 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/swig/swig-1.3.21.ebuild,v 1.1.1.1 2005/11/30 09:58:34 chriswhite Exp $
 
-IUSE="java guile python tcltk ruby perl"
+inherit flag-o-matic mono #48511
 
-S=${WORKDIR}/SWIG-${PV}
-DESCRIPTION="Simplied Wrapper and Interface Generator"
+DESCRIPTION="Simplified Wrapper and Interface Generator"
+HOMEPAGE="http://www.swig.org/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-HOMEPAGE="http://www.swig.org"
-DEPEND="virtual/glibc
-	>=sys-devel/gcc-2.95.2
+
+LICENSE="as-is"
+SLOT="0"
+KEYWORDS="x86 ppc sparc mips alpha arm hppa amd64 ia64 s390 sh ppc64"
+IUSE="doc java guile python tcltk ruby perl php X"
+
+DEPEND="virtual/libc
 	python? ( >=dev-lang/python-2.0 )
 	java? ( virtual/jdk )
-	ruby? ( >=dev-lang/ruby-1.6.1 )
+	ruby? ( virtual/ruby )
 	guile? ( >=dev-util/guile-1.4 )
-	tcltk? ( >=dev-lang/tk-8.3 )
-	perl? ( >=dev-lang/perl-5.6.1 )"
-SLOT="0"
-LICENSE="as-is"
-KEYWORDS="~alpha ~hppa ~sparc ~x86 ~amd64 ~ppc ~mips"
+	tcltk? (
+		dev-lang/tcl
+		X? ( dev-lang/tk )
+	)
+	perl? ( >=dev-lang/perl-5.6.1 )
+	php? ( >=dev-php/php-4.0.0 )"
 
-src_compile() {
-	local myc
+S=${WORKDIR}/SWIG-${PV}
 
-	use python && myc="$myc --with-py" \
-		   || myc="$myc --without-py"
-	use java && myc="$myc --with-java=$JAVA_HOME --with-javaincl=${JAVA_HOME}/include" \
-		 || myc="$myc --without-java"
-	use ruby && myc="$myc --with-ruby=/usr/bin/ruby" \
-		 || myc="$myc --without-ruby"
-	use guile && myc="$myc --with-guile" \
-		  || myc="$myc --without-guile"
-	use tcltk && myc="$myc --with-tcl" \
-		  || myc="$myc --without-tcl"
-	use perl && myc="$myc --with-perl" \
-		 || myc="$myc --without-perl"
-
-	unset CXXFLAGS
-	unset CFLAGS
-
-	use ruby && local rubyver="`ruby --version | cut -d '.' -f 1,2`"
-	use ruby && RUBY="/usr/lib/ruby/${rubyver/ruby /}/"
-
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man \
-		$myc || die "./configure failed"
-
-	make || die
-	make runtime || die
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	sed -i 's:$(M4_INSTALL_DIR):$(DESTDIR)$(M4_INSTALL_DIR):g' Makefile.in
 }
 
-src_install () {
-	make prefix=${D}/usr install || die
-	make prefix=${D}/usr install-runtime || die
+src_compile() {
+	strip-flags
+
+	local myconf
+	if use ruby ; then
+		local rubyver="`ruby --version | cut -d '.' -f 1,2`"
+		export RUBY="/usr/lib/ruby/${rubyver/ruby /}/"
+	fi
+
+	econf \
+		`use_with python py` \
+		`use_with java java "${JAVA_HOME}"` \
+		`use_with java javaincl "${JAVA_HOME}/include"` \
+		`use_with ruby ruby /usr/bin/ruby` \
+		`use_with guile` \
+		`use_with tcltk tcl` \
+		`use_with perl perl5 /usr/bin/perl` \
+		`use_with php php4` \
+		|| die
+
+	# fix the broken configure script
+	use tcltk || sed -i -e "s:am__append_1 =:#am__append_1 =:" Runtime/Makefile
+
+	`has_version dev-lisp/plt` && PLT=/usr/share/plt/collects
+	`has_version dev-lisp/mzscheme` && PLT=/usr/share/mzscheme/collects
+
+	emake || die
+	emake runtime PLTCOLLECTS=$PLT || die
+}
+
+src_install() {
+	make install install-runtime DESTDIR=${D} || die
+	dodoc ANNOUNCE CHANGES FUTURE NEW README TODO
+	use doc && dohtml -r Doc/{Devel,Manual}
+}
+
+src_test() {
+	einfo "FEATURES=\"maketest\" has been disabled for dev-lang/swig"
 }

@@ -1,27 +1,23 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/stat/stat-3.3.ebuild,v 1.1 2003/09/07 06:43:20 agenkin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/stat/stat-3.3.ebuild,v 1.1.1.1 2005/11/30 09:55:57 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="A command-line stat() wrapper"
-SRC_URI="ftp://metalab.unc.edu/pub/linux/utils/file/${P}.tar.gz
-	 selinux? mirror://gentoo/${P}-selinux.patch.bz2"
+SRC_URI="ftp://metalab.unc.edu/pub/linux/utils/file/${P}.tar.gz"
 HOMEPAGE="http://www.gnu.org/directory/stat.html"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 ~amd64 ~sparc"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE="selinux"
+IUSE=""
 
-DEPEND="virtual/glibc
-	selinux? ( sys-apps/selinux-small )"
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-
-	use selinux && epatch ${DISTDIR}/${P}-selinux.patch.bz2
 
 	cp Makefile Makefile.orig
 	sed -e "s:-O2 -g:${CFLAGS}:" Makefile.orig > Makefile

@@ -1,33 +1,31 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.1.ebuild,v 1.1 2005/04/27 12:18:26 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/python/python-2.4.1.ebuild,v 1.1.1.1 2005/11/30 09:58:40 chriswhite Exp $
 
 # NOTE about python-portage interactions :
 # - Do not add a pkg_setup() check for a certain version of portage
 #   in dev-lang/python. It _WILL_ stop people installing from
 #   Gentoo 1.4 images.
 
-inherit eutils flag-o-matic python multilib
+inherit eutils flag-o-matic python multilib versionator
 
 # we need this so that we don't depends on python.eclass
-PYVER_MAJOR="`echo ${PV%_*} | cut -d '.' -f 1`"
-PYVER_MINOR="`echo ${PV%_*} | cut -d '.' -f 2`"
+PYVER_MAJOR=$(get_major_version)
+PYVER_MINOR=$(get_version_component_range 2)
 PYVER="${PYVER_MAJOR}.${PYVER_MINOR}"
 
 MY_P="Python-${PV}"
 S="${WORKDIR}/${MY_P}"
 DESCRIPTION="Python is an interpreted, interactive, object-orientated programming language."
+HOMEPAGE="http://www.python.org/"
 SRC_URI="http://www.python.org/ftp/python/${PV}/${MY_P}.tar.bz2"
-HOMEPAGE="http://www.python.org"
 
-IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X uclibc"
 LICENSE="PSF-2.2"
 SLOT="2.4"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~s390 ~sparc ~x86"
+IUSE="ncurses gdbm ssl readline tcltk berkdb bootstrap ipv6 build ucs2 doc X nocxx"
 
-KEYWORDS="~x86 ~ppc ~sparc ~arm ~hppa ~amd64 ~s390 ~alpha ~ia64 ~mips"
-
-DEPEND="virtual/libc
-	>=sys-libs/zlib-1.1.3
+DEPEND=">=sys-libs/zlib-1.1.3
 	!dev-python/cjkcodecs
 	!build? (
 		X? ( tcltk? ( >=dev-lang/tk-8.0 ) )
@@ -77,6 +75,12 @@ src_unpack() {
 		Modules/Setup.dist \
 		Modules/getpath.c \
 		setup.py
+
+
+	# fix os.utime() on hppa. utimes it not supported but unfortunately reported as working - gmsoft (22 May 04)
+	# PLEASE LEAVE THIS FIX FOR NEXT VERSIONS AS IT'S A CRITICAL FIX !!!
+	[ "${ARCH}" = "hppa" ] && sed -e 's/utimes //' -i ${S}/configure
+
 }
 
 src_configure() {
@@ -105,8 +109,9 @@ src_configure() {
 src_compile() {
 	filter-flags -malign-double
 
+	# Seems to no longer be necessary
+	#[ "${ARCH}" = "amd64" ] && append-flags -fPIC
 	[ "${ARCH}" = "alpha" ] && append-flags -fPIC
-	[ "${ARCH}" = "amd64" ] && append-flags -fPIC
 
 	# http://bugs.gentoo.org/show_bug.cgi?id=50309
 	if is-flag -O3; then
@@ -118,7 +123,7 @@ src_compile() {
 
 	local myconf
 	#if we are creating a new build image, we remove the dependency on g++
-	if use build && ! use bootstrap; then
+	if use build && ! use bootstrap || use nocxx ; then
 		myconf="--with-cxx=no"
 	fi
 
@@ -137,6 +142,7 @@ src_compile() {
 		--infodir='${prefix}'/share/info \
 		--mandir='${prefix}'/share/man \
 		--with-threads \
+		--with-libc='' \
 		${myconf} || die
 	emake || die "Parallel make failed"
 }
@@ -149,6 +155,9 @@ src_install() {
 	# install our own custom python-config
 	exeinto /usr/bin
 	newexe ${FILESDIR}/python-config-${PYVER} python-config
+
+	# Use correct libdir in python-config
+	dosed "s:/usr/lib/:/usr/$(get_libdir)/:" /usr/bin/python-config
 
 	# The stuff below this line extends from 2.1, and should be deprecated
 	# in 2.3, or possibly can wait till 2.4
@@ -170,7 +179,7 @@ src_install() {
 	if use build ; then
 		rm -rf ${D}/usr/lib/python${PYVER}/{test,encodings,email,lib-tk,bsddb/test}
 	else
-		use uclibc && rm -rf ${D}/usr/lib/python${PYVER}/{test,bsddb/test}
+		use elibc_uclibc && rm -rf ${D}/usr/lib/python${PYVER}/{test,bsddb/test}
 		use berkdb || rm -rf ${D}/usr/lib/python${PYVER}/bsddb
 		( use !X || use !tcltk ) && rm -rf ${D}/usr/lib/python${PYVER}/lib-tk
 	fi
@@ -224,3 +233,30 @@ pkg_postinst() {
 	ebeep 5
 }
 
+src_test() {
+	# PYTHON_DONTCOMPILE=1 breaks test_import
+	unset PYTHON_DONTCOMPILE
+
+	#skip all tests that fail during emerge but pass without emerge:
+	#(See bug# 67970)
+	local skip_tests="subprocess tcl urllib urllib2"
+
+	for test in ${skip_tests} ; do
+		mv ${S}/Lib/test/test_${test}.py ${T}
+	done
+
+	make test || die "make test failed"
+
+	for test in ${skip_tests} ; do
+		mv ${T}/test_${test}.py ${S}/Lib/test/test_${test}.py
+	done
+
+	einfo "Portage skipped the following tests which aren't able to run from emerge:"
+	for test in ${skip_tests} ; do
+		einfo "test_${test}.py"
+	done
+
+	einfo "If you'd like to run them, you may:"
+	einfo "cd /usr/lib/python${PYVER}/test"
+	einfo "and run the tests separately."
+}

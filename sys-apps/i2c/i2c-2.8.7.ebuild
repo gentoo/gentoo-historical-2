@@ -1,43 +1,37 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/i2c/i2c-2.8.7.ebuild,v 1.1 2004/07/12 15:04:04 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/i2c/i2c-2.8.7.ebuild,v 1.1.1.1 2005/11/30 09:56:03 chriswhite Exp $
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DESCRIPTION="I2C Bus support for 2.4.x kernels"
 HOMEPAGE="http://www2.lm-sensors.nu/~lm78/"
 SRC_URI="http://www2.lm-sensors.nu/~lm78/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="${KV}"
-KEYWORDS="~x86"
+SLOT="0"
+KEYWORDS="amd64 -ppc x86"
 IUSE=""
 
 DEPEND=""
 
 pkg_setup() {
 	echo
-	eerror "*****************************************************************"
-	eerror
 	eerror "WARNING: This i2c support is not recommended for things such as "
 	eerror "WARNING: BTTV"
-	eerror
-	eerror "*****************************************************************"
-	eerror
+	echo
 	eerror "http://www2.lm-sensors.nu/~lm78/cvs/browse.cgi/lm_sensors2/README"
-	eerror
+	echo
 	eerror "40 ADDITIONALLY, i2c-2.8.1 is not API compatible to earlier i2c"
 	eerror "41 releases due to struct changes; therefore you must NOT ENABLE"
 	eerror "42 any other i2c drivers (e.g. bttv) in the kernel."
 	eerror "43 Do NOT use lm-sensors 2.8.0 or i2c-2.8.0 if you require bttv."
-	eerror
-	eerror "Please try out http://khai.linux-fr.org/devel/i2c/ for a kernel"
+	echo
+	eerror "Please try out http://khali.linux-fr.org/devel/i2c/ for a kernel"
 	eerror "patch which will fix this problem. Please note that nor the"
 	eerror "lm_sensors team nor the package maintainers will be able to"
 	eerror "support you if you encounter problems with I2C when using"
 	eerror "other modules with requirements on I2C..."
-	eerror
-	eerror "*****************************************************************"
 	echo
 }
 
@@ -54,18 +48,14 @@ src_compile ()  {
 		echo ${KV} | grep -q 2.4.
 		if [ $? == 1 ]; then
 			echo
-			einfo "*****************************************************************"
-			einfo
 			einfo "For 2.5+ series kernels, use the support already in the kernel"
 			einfo "under 'Character devices' -> 'I2C support'."
-			einfo
+			echo
 			einfo "To cross-compile, 'export LINUX=\"/lib/modules/<version>/build\"'"
 			einfo "or symlink /usr/src/linux to another kernel."
-			einfo
-			einfo "*****************************************************************"
 			echo
 			ewarn "Non-2.4 kernel detected; doing nothing..."
-			exit 0
+			return
 		else
 			LINUX='/usr/src/linux'
 		fi
@@ -83,7 +73,7 @@ src_compile ()  {
 	einfo "that contain 'No such file' references."
 	echo; echo '>>> Compiling...'
 
-	emake CC=${CC} LINUX=$LINUX clean all
+	emake CC=$(tc-getCC) LINUX=$LINUX clean all
 	if [ $? != 0 ]; then
 		eerror "I2C requires the source of a compatible kernel"
 		eerror "version installed in /usr/src/linux"
@@ -94,16 +84,17 @@ src_compile ()  {
 }
 
 src_install() {
-	if echo ${KV} | grep -q 2.4.; then
+	echo ${KV} | grep -q 2.4.
+	if [ "$?" -eq '0' -o "$LINUX" != '' ]; then
 		emake \
-			CC=${CC} \
+			CC=$(tc-getCC) \
 			LINUX=$LINUX \
 			LINUX_INCLUDE_DIR=/usr/include/linux \
 			DESTDIR=${D} \
 			PREFIX=/usr \
 			MANDIR=/usr/share/man \
 			install || die
-		sleep 5 # Show important warnings from the Makefile
+		epause 5 # Show important warnings from the Makefile
 		dodoc CHANGES INSTALL README
 	fi
 }
@@ -112,13 +103,10 @@ pkg_postinst() {
 	if echo ${KV} | grep -q 2.4.; then
 		[ -x /usr/sbin/update-modules ] && /usr/sbin/update-modules
 
-		einfo
 		einfo "I2C modules installed ..."
-		einfo
+		echo
 		ewarn "IMPORTANT ... if you are installing this package you need to"
 		ewarn "IMPORTANT ... *disable* kernel I2C support OR *modularize it*"
 		ewarn "IMPORTANT ... if your 2.4.x kernel is patched with such support"
-		einfo
-		echo
 	fi
 }

@@ -1,6 +1,12 @@
 # ChangeLog for media-video/vstrip
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/vstrip/ChangeLog,v 1.1 2005/03/28 00:01:53 chriswhite Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/vstrip/ChangeLog,v 1.1.1.1 2005/11/30 09:57:52 chriswhite Exp $
+
+  16 Sep 2005; Michael Sterrett <mr_bones_@gentoo.org> vstrip-0.8f.ebuild:
+  needs app-arch/unzip; tidy
+
+  28 Jul 2005; David Holm <dholm@gentoo.org> vstrip-0.8f.ebuild:
+  Added to ~ppc.
 
 *vstrip-0.8f (28 Mar 2005)
 

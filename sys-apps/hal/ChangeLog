@@ -1,6 +1,216 @@
 # ChangeLog for sys-apps/hal
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/ChangeLog,v 1.1 2004/08/17 21:01:52 foser Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/hal/ChangeLog,v 1.1.1.1 2005/11/30 09:56:18 chriswhite Exp $
+
+  08 Nov 2005; Saleem Abdulrasool <compnerd@gentoo.org> hal-0.5.4.ebuild:
+  Fixing the deps for doc building.  Resolves bug #108994
+
+  19 Oct 2005; Stephen P. Becker <geoman@gentoo.org> hal-0.4.8.ebuild:
+  fixed RDEPEND for mips-headers, added ~mips keyword
+
+  17 Oct 2005; Doug Goldstein <cardoe@gentoo.org> hal-0.5.4.ebuild:
+  added usb to HAL groups. Added optional supported depend on mips-headers
+
+  15 Sep 2005; <dang@gentoo.org> hal-0.4.8.ebuild:
+  Make hal not pass /bin/false as a shell to ecommit. Bug #103421
+
+  07 Sep 2005; Jeremy Huddleston <eradicator@gentoo.org> hal-0.5.4.ebuild:
+  Added to ~sparc.
+
+  05 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> hal-0.4.8.ebuild:
+  Keyworded ~sparc for the experimental profile
+
+  05 Sep 2005; Doug Goldstein <cardoe@gentoo.org> hal-0.5.4.ebuild:
+  ${D} -> ${ROOT} clean up ebuild
+
+*hal-0.5.4 (27 Aug 2005)
+
+  27 Aug 2005; Doug Goldstein <cardoe@gentoo.org> -files/hal-udev-63.patch,
+  -hal-0.5.2.ebuild, +hal-0.5.4.ebuild:
+  rev bump to 0.5.4, yay for the Gnome herd and mobile herd for new features
+
+  26 Aug 2005; Doug Goldstein <cardoe@gentoo.org> hal-0.5.2.ebuild:
+  -m Fixing bug #103421
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org> hal-0.4.7-r2.ebuild:
+  stable on ia64
+
+*hal-0.5.2 (18 Aug 2005)
+
+  18 Aug 2005; Doug Goldstein <cardoe@gentoo.org> metadata.xml,
+  +hal-0.5.2.ebuild, +hal-unmount.dev, +0.5-hald.rc, 
+  +hal-0.5.1-old_storage_policy.patch:
+  added HAL 0.5.2, but masked, as per Gnome herd's request.
+  Added self to maintainership so I can work out 0.5.x issues
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org> hal-0.4.7-r2.ebuild:
+  Stable on ppc.
+
+  13 Jun 2005; Heinrich Wendel <lanius@gentoo.org> hal-0.4.7-r2.ebuild:
+  stable on amd64
+
+  07 Jun 2005; Elfyn McBratney <beu@gentoo.org> hal-0.4.5-r2.ebuild,
+  hal-0.4.7-r2.ebuild:
+  Fix DEPEND (sys-kernel/linux26-headers is no longer in the tree).
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> hal-0.4.7-r2.ebuild:
+  Stable on ppc64
+
+*hal-0.4.8 (27 May 2005)
+
+  27 May 2005; foser <foser@gentoo.org> hal-0.4.8.ebuild :
+  New release, add sanity back to pkg_setup
+  Fixed headers dep (#89550)
+  Add patch to fix dvdram detection
+
+  09 May 2005; Aron Griffis <agriffis@gentoo.org> hal-0.4.5-r2.ebuild:
+  stable on ia64
+
+  24 Apr 2005; Daniel Drake <dsd@gentoo.org> hal-0.4.5-r2.ebuild,
+  hal-0.4.7-r2.ebuild:
+  Add sanity to pkg_setup.. also fixes usage with portage-HEAD
+
+*hal-0.4.7-r2 (17 Apr 2005)
+
+  17 Apr 2005; foser <foser@gentoo.org> hal-0.4.7-r2.ebuild :
+  Fix floppy detection with newer kernels
+  Change policy on mounting removable drives (#83025)
+  Keepdir some policy dirs (#87167)
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> hal-0.4.5-r2.ebuild:
+  Stable on ppc64
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> hal-0.4.5-r2.ebuild:
+  stable on amd64
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> hal-0.4.5-r2.ebuild:
+  Stable on ppc.
+
+*hal-0.4.7-r1 (21 Mar 2004)
+
+  21 Mar 2005; foser <foser@gentoo.org> hal-0.4.7-r1.ebuild :
+  Add memleak fix & coldplug double add of devices patches
+
+  20 Feb 2005; Heinrich Wendel <lanius@gentoo.org> hal-0.4.5-r2.ebuild:
+  move back to testing, it requires a 2.6.10 kernel which is not yet stable on
+  amd64
+
+  19 Feb 2005; Heinrich Wendel <lanius@gentoo.org> hal-0.4.5-r2.ebuild:
+  stable on amd64
+
+*hal-0.4.7 (06 Feb 2005)
+
+  06 Feb 2005; foser <foser@gentoo.org> hal-0.4.7.ebuild :
+  New release (#79968)
+
+*hal-0.4.5-r2 (18 Jan 2005)
+
+  18 Jan 2005; foser <foser@gentoo.org> hal-0.4.5-r2.ebuild :
+  Add fix for #78564, requires some ugly checks for having a 2.6.10 kernel
+  Added some further ntfs/fat label detection fixes
+
+*hal-0.4.5-r1 (17 Jan 2005)
+
+  17 Jan 2005; foser <foser@gentoo.org> hal-0.4.5-r1.ebuild :
+  Add patch to find the gphoto2 usermap (#75799)
+
+*hal-0.4.5 (13 Jan 2005)
+
+  13 Jan 2005; foser <foser@gentoo.org> hal-0.4.5.ebuild :
+  Fresh release (bugfixes)
+
+  12 Jan 2005; foser <foser@gentoo.org> hal-0.4.4-r1.ebuild :
+  Change the iso label patch for a somewhat cleaner one
+
+  12 Jan 2005; foser <foser@gentoo.org> hal-0.4.2-r1.ebuild :
+  Fix SRC_URI (#77478) thnx to Gudleik Rasch for noticing
+
+  11 Jan 2005; John Mylchreest <johnm@gentoo.org> hal-0.2.98-r1.ebuild,
+  hal-0.4.1-r1.ebuild, hal-0.4.2-r1.ebuild, hal-0.4.4-r1.ebuild:
+  fixing linux-headers DEPEND for 2005.0. can we get away with a virtual?
+
+*hal-0.4.4-r1 (09 Jan 2005)
+
+  09 Jan 2005; foser <foser@gentoo.org> hal-0.4.4-r1.ebuild :
+  Add patch to fix #77140 & another patch from the mailinglist
+
+  08 Jan 2005; Tom Martin <slarti@gentoo.org> hal-0.4.1-r1.ebuild:
+  Stable on amd64.
+
+*hal-0.4.4 (08 Jan 2005)
+
+  08 Jan 2005; foser <foser@gentoo.org> hal-0.4.4.ebuild :
+  New release, dep fixes & add USE doc for doxygen docs
+  Add patch for zip as floppy drive detection
+
+*hal-0.4.2-r1 (22 Dec 2004)
+
+  22 Dec 2004; foser <foser@gentoo.org> hal-0.4.2-r1.ebuild :
+  Add some minor bugfixing patches
+
+  20 Dec 2004; Joe McCann <joem@gentoo.org> hal-0.4.1-r1.ebuild,
+  hal-0.4.1.ebuild, hal-0.4.2.ebuild:
+  Adding intltool depend to 0.4.x releases
+
+  19 Dec 2004; Mike Gardiner <obz@gentoo.org> hal-0.4.1-r1.ebuild:
+  Keyworded x86 and ppc for GNOME 2.8.1
+
+  17 Dec 2004; Markus Rothe <corsair@gentoo.org> hal-0.4.1-r1.ebuild:
+  Stable on ppc64
+
+*hal-0.4.2 (02 Dec 2004)
+
+  02 Dec 2004; foser <foser@gentoo.org> hal-0.4.2.ebuild :
+  New release, add proper debug & pcmcia USE flags
+  Up glib dep to 2.4 because of #71316
+
+*hal-0.4.1-r1 (30 Nov 2004)
+
+  30 Nov 2004; foser <foser@gentoo.org> hal-0.4.1-r1.ebuild :
+  Make use of managed keyword, with updated util-linux dep
+
+  11 Nov 2004; Mike Gardiner <obz@gentoo.org> hal-0.2.98-r1.ebuild:
+  Keyworded ppc for GNOME 2.8
+
+  08 Nov 2004; Markus Rothe <corsair@gentoo.org> hal-0.4.1.ebuild:
+  Marked ~ppc64
+
+*hal-0.4.1 (02 Nov 2004)
+
+  02 Nov 2004; foser <foser@gentoo.org> hal-0.4.1.ebuild :
+  New release
+  Add patch for device manager
+
+*hal-0.4.0 (29 Oct 2004)
+
+  29 Oct 2004; foser <foser@gentoo.org> hal-0.4.0.ebuild :
+  New release (#68243)
+  Fix LICENSE
+  Add a few patches from RH & some fixes to counter them
+
+*hal-0.2.98-r1 (02 Oct 2004)
+
+  02 Oct 2004; <peter@gentoo.org> +hal-0.2.98-r1.ebuild:
+  Revision bump. hal-device-manager now comes from a seperate package.
+
+  28 Sep 2004; Sven Wegener <swegener@gentoo.org> files/hald:
+  Gentoo Technologies, Inc. -> Gentoo Foundation
+
+  21 Sep 2004; foser <foser@gentoo.org> hal-0.2.98.ebuild :
+  Add kernel26-headers dep, because of several reports (#64851)
+
+*hal-0.2.98 (21 Sep 2004)
+
+  21 Sep 2004; foser <foser@gentoo.org> hal-0.2.98.ebuild :
+  New release, fix up the init script to work with the new pid handling
+  Update dbus dep to keep hal-dev-manager working
+  Add libcap dep
+
+  18 Sep 2004; Travis Tilley <lv@gentoo.org> hal-0.2.97.ebuild:
+  added ~amd64 keyword
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> hal-0.2.97.ebuild:
+  Added to ~ppc.
 
 *hal-0.2.97 (17 Aug 2004)
 

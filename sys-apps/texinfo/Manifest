@@ -1,7 +1,24 @@
-MD5 f35899d792cd9c605297824fa4c7a2dd ChangeLog 3766
-MD5 2da62ad7b736635552bf97e8e59ad7ab texinfo-4.3-r1.ebuild 1764
-MD5 bcb7409ffe72b0f10012dcd8e93267cd texinfo-4.5.ebuild 1733
-MD5 3173c3b67a3ef4e594cf5ce1b8253504 files/digest-texinfo-4.3-r1 64
-MD5 e5c1b120747cf28d4ff1885b64f608a6 files/digest-texinfo-4.5 64
-MD5 b8ed9b84ca8ab4c2ac4e628a8f928dcb files/install-info.patch 729
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 046cd32319d1a54845012f175d325695 ChangeLog 7686
+MD5 a2c21c53079eb65c306a08d230d15b2b files/digest-texinfo-4.7-r1 65
+MD5 1c6181fd6a19db98315a1f737a5ae839 files/digest-texinfo-4.8 65
+MD5 1c6181fd6a19db98315a1f737a5ae839 files/digest-texinfo-4.8-r1 65
+MD5 1c6181fd6a19db98315a1f737a5ae839 files/digest-texinfo-4.8-r2 65
+MD5 a0df107ca9e3036e2ee2d501343cbf2b files/makeinfo.patch 790
 MD5 690fb86d0c0215155b1d18671099115a files/mkinfodir 7318
+MD5 7246b5d34e673e1eb937186e4f18f56d files/texinfo-4.8-freebsd.patch 3787
+MD5 a30131625cc3b1393c59b9603e982f24 files/texinfo-4.8-tempfile.patch 708
+MD5 9a09f8d531c582e78977dbfd96edc1f2 metadata.xml 164
+MD5 75c60847c4f9b9d75375567cd1a3ba81 texinfo-4.7-r1.ebuild 1979
+MD5 85306271dc0f544e3b5da1761895b881 texinfo-4.8-r1.ebuild 1963
+MD5 7b944058f6712de4dec1796d99f5ebfc texinfo-4.8-r2.ebuild 1962
+MD5 51d0756296f7f75f5a8cf3ec558fe1aa texinfo-4.8.ebuild 1909
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD4DBQFDSAFOgIKl8Uu19MoRAiZkAJ41VcRv7W+wXHyGgKhWUOjHOytLhwCVG2r2
+ugcb4K8MxZHiCwTZKEtJZA==
+=CMt8
+-----END PGP SIGNATURE-----

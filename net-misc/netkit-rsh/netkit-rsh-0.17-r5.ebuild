@@ -1,30 +1,34 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rsh/netkit-rsh-0.17-r5.ebuild,v 1.1 2003/08/01 17:38:06 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/netkit-rsh/netkit-rsh-0.17-r5.ebuild,v 1.1.1.1 2005/11/30 09:54:44 chriswhite Exp $
 
 inherit eutils
 
-IUSE=""
+IUSE="pam"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Netkit's Remote Shell Suite: rexec{,d} rlogin{,d} rsh{,d}"
-SRC_URI="http://ftp.debian.org/debian/pool/main/n/${PN}/${PN}_${PV}.orig.tar.gz"
+SRC_URI="mirror://debian/pool/main/n/${PN}/${PN}_${PV}.orig.tar.gz"
 HOMEPAGE="ftp://ftp.uk.linux.org/pub/linux/Networking/netkit/"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="x86 sparc ppc alpha mips"
+KEYWORDS="x86 sparc ppc alpha mips amd64 ppc64"
 
 DEPEND=">=sys-libs/ncurses-5.2
-	>=sys-libs/pam-0.72"
+	pam? ( >=sys-libs/pam-0.72 )"
 
 src_unpack() {
 	unpack ${A} ; cd ${S}
 	epatch ${FILESDIR}/rlogind-auth.diff
+
+	# See bug #72359
+	epatch ${FILESDIR}/va_start.diff
 }
 
 src_compile() {
-	./configure || die
+	local myconf
+	use pam || myconf="--without-pam"
+	./configure ${myconf} || die
 
 	cp MCONFIG MCONFIG.orig
 	sed -e "s:-pipe -O2:${CFLAGS}:" \
@@ -34,7 +38,7 @@ src_compile() {
 	make || die
 }
 
-src_install() {							   
+src_install() {
 	into /usr
 	dobin  rcp/rcp
 	fperms 4755 /usr/bin/rcp

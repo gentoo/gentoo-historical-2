@@ -1,19 +1,21 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-lang/lua/lua-4.0.1.ebuild,v 1.1 2003/02/07 21:59:51 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-lang/lua/lua-4.0.1.ebuild,v 1.1.1.1 2005/11/30 09:58:04 chriswhite Exp $
+
+inherit eutils
 
 S=${WORKDIR}/lua-${PV}
 DESCRIPTION="A powerful light-weight programming language designed for extending applications."
 SRC_URI="http://www.lua.org/ftp/lua-${PV}.tar.gz"
 HOMEPAGE="http://www.lua.org/"
-
+IUSE=""
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc "
+KEYWORDS="x86 ppc ~sparc"
 LICENSE="lua"
-
+DEPEND="virtual/libc"
 
 src_compile() {
-	patch < ${FILESDIR}/lua-4.0-config.patch
+	epatch ${FILESDIR}/lua-4.0-config.patch
 
 	emake || die
 	make so || die

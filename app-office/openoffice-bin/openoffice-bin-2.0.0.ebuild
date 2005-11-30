@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-bin/openoffice-bin-2.0.0.ebuild,v 1.1 2005/10/20 13:29:55 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice-bin/openoffice-bin-2.0.0.ebuild,v 1.1.1.1 2005/11/30 09:58:59 chriswhite Exp $
 
 inherit eutils fdo-mime rpm multilib
 
-IUSE="gnome java kde"
+IUSE="gnome java"
 
 MY_PV="${PV}rc2"
 MY_PV2="${MY_PV}_051005"
@@ -52,6 +52,7 @@ SRC_URI="mirror://openoffice/stable/${PV}/OOo_${PV}_LinuxIntel_install.tar.gz
 	linguas_pa_IN? ( ${LANGPACKPATH}_pa-IN.tar.gz )
 	linguas_pl? ( ${LANGPACKPATH}_pl.tar.gz )
 	linguas_pt_BR? ( ${LANGPACKPATH}_pt-BR.tar.gz )
+	linguas_ru? ( ${LANGPACKPATH}_ru.tar.gz )
 	linguas_rw? ( ${LANGPACKPATH}_rw.tar.gz )
 	linguas_sh_YU? ( ${LANGPACKPATH}_sh-YU.tar.gz )
 	linguas_sk? ( ${LANGPACKPATH}_sk.tar.gz )
@@ -71,11 +72,11 @@ HOMEPAGE="http://www.openoffice.org/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64"
 
 RDEPEND="!app-office/openoffice
 	virtual/x11
-	virtual/libc
+	sys-libs/glibc
 	>=dev-lang/perl-5.0
 	app-arch/zip
 	app-arch/unzip
@@ -99,12 +100,11 @@ src_unpack() {
 	done
 
 	rpm_unpack ${S}/desktop-integration/openoffice.org-freedesktop-menus-${PV}-3.noarch.rpm
-	use kde && rpm_unpack ${S}/desktop-integration/openoffice.org-suse-menus-${PV}-3.noarch.rpm
 
 	use gnome && rpm_unpack ${S}/openoffice.org-gnome-integration-${PV}-3.i586.rpm
 	use java && rpm_unpack ${S}/openoffice.org-javafilter-${PV}-3.i586.rpm
 
-	strip-linguas en af be_BY bg bn br ca cs cy da de el en_GB es et fi fr ga gu_IN hr hu it ja km ko lt lv mk nb ne nl nn ns pa_IN pl pt_BR rw sh_YU sk sl sr_CS sv sw_TZ tn tr vi xh zh_CN zh_TW zu
+	strip-linguas en af be_BY bg bn br ca cs cy da de el en_GB es et fi fr ga gu_IN hr hu it ja km ko lt lv mk nb ne nl nn ns pa_IN pl pt_BR ru rw sh_YU sk sl sr_CS sv sw_TZ tn tr vi xh zh_CN zh_TW zu
 
 	for i in ${LINGUAS}; do
 		i="${i/_/-}"
@@ -125,23 +125,23 @@ src_install () {
 
 	einfo "Installing OpenOffice.org into build root..."
 	dodir ${INSTDIR}
-	dodir /usr/share/icons
-	dodir /usr/share/mime
 	mv ${WORKDIR}/opt/openoffice.org2.0/* ${D}${INSTDIR}
-	mv ${WORKDIR}/usr/share/icons/* ${D}/usr/share/icons
 
-	use kde && dodir /usr/share/mimelnk/application && mv ${WORKDIR}/opt/kde3/share/mimelnk/application/* ${D}/usr/share/mimelnk/application
-
-	#Menu entries
+	#Menu entries, icons and mime-types
 	cd ${D}${INSTDIR}/share/xdg/
-
 	sed -i -e s/'Exec=openoffice.org-2.0-printeradmin'/'Exec=oopadmin2'/g printeradmin.desktop || die
 
-	for desk in base calc draw impress math writer printeradmin; do
+	for desk in base calc draw impress math printeradmin writer; do
 		mv ${desk}.desktop openoffice.org-2.0-${desk}.desktop
 		sed -i -e s/openoffice.org-2.0/ooffice2/g openoffice.org-2.0-${desk}.desktop || die
+		sed -i -e s/openofficeorg-20-${desk}/ooo-${desk}2/g openoffice.org-2.0-${desk}.desktop || die
 		domenu openoffice.org-2.0-${desk}.desktop
+		insinto /usr/share/pixmaps
+		newins ${WORKDIR}/usr/share/icons/gnome/48x48/apps/openofficeorg-20-${desk}.png ooo-${desk}2.png
 	done
+
+	insinto /usr/share/mime/packages
+	doins ${WORKDIR}/usr/share/mime/packages/openoffice.org.xml
 
 	# Install wrapper script
 	newbin ${FILESDIR}/${PV}/ooo-wrapper2 ooffice2
@@ -158,23 +158,16 @@ src_install () {
 	# Change user install dir
 	sed -i -e s/.openoffice.org2/.ooo-2.0/g ${D}${INSTDIR}/program/bootstraprc || die
 
-	# Fixing some icon dir permissions
-	chmod 755 -R ${D}/usr/share/icons/ || die
-
-	# Icon symlinks for gnome
-	dodir /usr/share/pixmaps
-	for app in base calc draw impress math printeradmin writer; do
-		dosym /usr/share/icons/gnome/32x32/apps/openofficeorg-20-${app}.png /usr/share/pixmaps/openofficeorg-20-${app}.png
-	done
-
 	# Non-java weirdness see bug #99366
-	use java || rm -f ${D}${INSTDIR}/program/javaldx
+	use !java && rm -f ${D}${INSTDIR}/program/javaldx
 }
 
 pkg_postinst() {
 
 	fdo-mime_desktop_database_update
 	fdo-mime_mime_database_update
+
+	[ -x /sbin/chpax ] && [ -e /usr/lib/openoffice/program/soffice.bin ] && chpax -zm /usr/lib/openoffice/program/soffice.bin
 
 	einfo " To start OpenOffice.org, run:"
 	einfo

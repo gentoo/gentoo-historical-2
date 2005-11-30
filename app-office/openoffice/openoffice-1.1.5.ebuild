@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-1.1.5.ebuild,v 1.1 2005/09/14 20:05:04 suka Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-office/openoffice/openoffice-1.1.5.ebuild,v 1.1.1.1 2005/11/30 09:58:50 chriswhite Exp $
 
 # Notes:
 #
@@ -26,7 +26,7 @@
 
 inherit eutils fdo-mime flag-o-matic toolchain-funcs
 
-IUSE="curl hardened java kde nptl zlib"
+IUSE="curl hardened java nptl zlib"
 
 INSTDIR="/opt/OpenOffice.org"
 S="${WORKDIR}/OOo_${PV}"
@@ -42,7 +42,7 @@ HOMEPAGE="http://www.openoffice.org/"
 
 LICENSE="|| ( LGPL-2  SISSL-1.1 )"
 SLOT="0"
-KEYWORDS="~x86 ~ppc -sparc"
+KEYWORDS="~ppc -sparc ~x86"
 
 RDEPEND="!app-office/openoffice-bin
 	virtual/x11
@@ -111,7 +111,7 @@ pkg_setup() {
 
 set_languages () {
 
-	strip-linguas en pt ru el nl fr es fi hu ca it cs sk da sv nb no pl de sl pt_BR th et ja ko zh_CN zh_TW tr hi_IN ar he
+	strip-linguas en pt ru el nl fr es fi hu ca it cs sk da sv nb nn pl de sl pt_BR th et ja ko zh_CN zh_TW tr hi_IN ar he
 	if [ -n "${LINGUAS}" ] ; then
 		# use the leftmost value
 		temp_lang=( ${LINGUAS} )
@@ -151,7 +151,9 @@ set_languages () {
 			;;
 		sv ) OOLANGNO=46; OOLANGNAME=SWED; OOLFULLNAME=Swedish
 			;;
-		no ) OOLANGNO=47; OOLANGNAME=NORBOK; OOLFULLNAME="Norwegian"
+		nn ) OOLANGNO=79; OOLANGNAME=NORNYN; OOLFULLNAME="Norwegian"
+			;;
+		nb ) OOLANGNO=47; OOLANGNAME=NORBOK; OOLFULLNAME="Norwegian"
 			;;
 		pl ) OOLANGNO=48; OOLANGNAME=POL; OOLFULLNAME=Polish
 			;;
@@ -254,6 +256,9 @@ src_unpack() {
 	if use ppc; then
 		epatch ${FILESDIR}/${PV}/STLport-vector.patch
 	fi
+
+	#Allow building with libxslt >= 1.1.15
+	use java || epatch ${FILESDIR}/${PV}/build-new-xslt.diff
 
 	#Fixes for nptl
 	if use nptl; then
@@ -509,8 +514,6 @@ src_install() {
 	einfo "Installing menu shortcuts..."
 	dodir /usr/share
 	cp -pPR ${D}${INSTDIR}/share/kde/net/share/icons ${D}/usr/share
-
-	use kde && cp -pPR ${D}${INSTDIR}/share/kde/net/share/mimelnk ${D}/usr/share
 
 	for x in ${D}${INSTDIR}/share/kde/net/*.desktop; do
 		# We have to handle soffice and setup differently

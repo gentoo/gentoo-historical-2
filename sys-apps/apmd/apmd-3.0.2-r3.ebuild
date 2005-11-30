@@ -1,20 +1,25 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/apmd-3.0.2-r3.ebuild,v 1.1 2002/07/12 07:15:40 cardoe Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/apmd/apmd-3.0.2-r3.ebuild,v 1.1.1.1 2005/11/30 09:56:00 chriswhite Exp $
 
+inherit eutils
+
+IUSE="X nls"
+
+S=${WORKDIR}/${PN}
 DESCRIPTION="Advanced Power Management Daemon"
 HOMEPAGE="http://www.worldvisions.ca/~apenwarr/apmd/"
 SRC_URI="http://www.worldvisions.ca/~apenwarr/apmd/${P}.tar.gz"
-S=${WORKDIR}/${PN}
 
-DEPEND="virtual/glibc >=sys-apps/debianutils-1.16 X? ( virtual/x11 )"
-RDEPEND=${DEPEND}
-LICENSE="GPL"
-SLOT=0
-KEYWORD="x86"
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 amd64 ppc"
+
+
+DEPEND=">=sys-apps/debianutils-1.16
+	X? ( virtual/x11 )"
 
 src_unpack() {
-
 	unpack ${A} ; cd ${S}
 
 	cp Makefile Makefile.orig
@@ -24,30 +29,29 @@ src_unpack() {
 		-e "s:\(MANDIR\=\${PREFIX}\)\(/man\):\1/share\2:" \
 		Makefile.orig > Makefile
 
-	if [ "`use X`" ] 
-	then
+	if use X ; then
 		echo -e "xinstall:\n\tinstall\txapm\t\${PREFIX}/bin" >> Makefile
-		
 	else
-
 		cp Makefile Makefile.orig
 		sed -e "/^EXES=/s/xapm//" \
 			-e "/install.*xapm/d" \
 			Makefile.orig > Makefile
 	fi
 
-	#This closes bug #1472: fixes compilation with recent 2.4 kernels
-	cat ${FILESDIR}/apmsleep.c.diff | patch -p0 -l || die
+	# This closes bug #1472: fixes compilation with recent 2.4 kernels
+	epatch ${FILESDIR}/apmsleep.c.diff
+
+	# This closes bug #29636: needs 2.6 patching [plasmaroo@gentoo.org]
+	epatch ${FILESDIR}/apmd.kernel26x.patch
+
 }
 
 src_compile() {
-
 	make CFLAGS="${CFLAGS}" || die "compile problem"
 }
 
-src_install () {
-
-	make DESTDIR=${D} install || die
+src_install() {
+	make DESTDIR=${D} install || die "install failed"
 
 	dodir /etc/apm/{event.d,suspend.d,resume.d}
 	exeinto /etc/apm ; doexe debian/apmd_proxy
@@ -56,8 +60,12 @@ src_install () {
 	insinto /etc/conf.d ; newins ${FILESDIR}/apmd.confd apmd
 	exeinto /etc/init.d ; newexe ${FILESDIR}/apmd.rc6 apmd
 
-	if [ "`use X`" ]
+	if use X ; then
+		make DESTDIR=${D} xinstall || die "xinstall failed"
+	fi
+
+	if ! use nls
 	then
-		make DESTDIR=${D} xinstall || die
+		rm -rf ${D}/usr/share/man/fr
 	fi
 }

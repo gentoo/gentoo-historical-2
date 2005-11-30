@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlidl/camlidl-1.05.ebuild,v 1.1 2004/09/25 20:15:43 mattam Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ml/camlidl/camlidl-1.05.ebuild,v 1.1.1.1 2005/11/30 09:55:47 chriswhite Exp $
 
 DESCRIPTION="CamlIDL is a stub code generator for using C/C++ libraries from O'Caml"
 HOMEPAGE="http://caml.inria.fr/camlidl/"

@@ -1,51 +1,28 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author Chris Giorgi <chrisgio@virtualscape.net>
-# $Header: /var/cvsroot/gentoo-x86/net-misc/ytalk/ytalk-3.1.1.ebuild,v 1.1 2002/01/31 22:48:40 tod Exp $
-
-S=${WORKDIR}/${P}
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-misc/ytalk/ytalk-3.1.1.ebuild,v 1.1.1.1 2005/11/30 09:55:02 chriswhite Exp $
 
 DESCRIPTION="Multi-user replacement for UNIX talk"
-
+HOMEPAGE="http://www.iagora.com/~espel/ytalk/ytalk.html"
 SRC_URI="http://www.iagora.com/~espel/ytalk/${P}.tar.gz"
 
-HOMEPAGE="http://www.iagora.com/~espel/ytalk/ytalk.html"
+LICENSE="freedist"
+SLOT="0"
+KEYWORDS="x86 sparc ppc alpha amd64"
+IUSE="X"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	>=sys-libs/ncurses-5.2
 	X? ( virtual/x11 )"
 
 src_compile() {
+	econf `use_with X x` || die "./configure failed"
 
-	local myconf=""
-	use X || myconf="$myconf --without-x" #default enabled
-
-	./configure \
-		--host=${CHOST} \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man \
-		${myconf} \
-	|| die "./configure failed"
-		
 	emake || die "Parallel Make Failed"
-	
 }
 
-src_install() {                               
+src_install() {
+	einstall || die "Installation Failed"
 
-	make \
-		prefix=${D}/usr \
-		sysconfdir=${D}/etc \
-		localstatedir=${D}/var \
-		infodir=${D}/usr/share/info \
-		mandir=${D}/usr/share/man \
-		install || die "Installation Failed"
-	
 	dodoc BUGS ChangeLog INSTALL README README.old
-	
 }
-
-

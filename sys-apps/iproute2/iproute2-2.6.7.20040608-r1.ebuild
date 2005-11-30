@@ -1,18 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-2.6.7.20040608-r1.ebuild,v 1.1 2004/09/13 09:17:17 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/iproute2/iproute2-2.6.7.20040608-r1.ebuild,v 1.1.1.1 2005/11/30 09:56:28 chriswhite Exp $
 
-inherit eutils gcc
+inherit eutils toolchain-funcs
 
 MY_PV="${PV:0:5}"
 SNAP="${PV:${#PV}-6}"
 DESCRIPTION="kernel routing and traffic control utilities"
-HOMEPAGE="http://developer.osdl.org/dev/iproute2/"
+HOMEPAGE="http://linux-net.osdl.org/index.php/Iproute2"
 SRC_URI="http://developer.osdl.org/dev/iproute2/download/${PN}-${MY_PV}-ss${SNAP}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~amd64 ~ia64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
 IUSE="atm minimal"
 
 RDEPEND="virtual/libc
@@ -68,7 +68,7 @@ src_unpack() {
 }
 
 src_compile() {
-	emake CC="$(gcc-getCC)" KERNEL_INCLUDE=${ROOT}/usr/include SUBDIRS="${SUBDIRS}" || die
+	emake CC="$(tc-getCC)" KERNEL_INCLUDE=${ROOT}/usr/include SUBDIRS="${SUBDIRS}" || die
 }
 
 src_install() {

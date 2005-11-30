@@ -1,6 +1,77 @@
-# ChangeLog for app-office/mrproject
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-office/planner/ChangeLog,v 1.1 2003/12/14 18:16:03 spider Exp $
+# ChangeLog for app-office/planner
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-office/planner/ChangeLog,v 1.1.1.1 2005/11/30 09:58:55 chriswhite Exp $
+
+*planner-0.13 (04 Jun 2005)
+
+  04 Jun 2005; Marinus Schraal <foser@gentoo.org> planner-0.13.ebuild :
+  New release (#85328)
+
+  01 Apr 2005; Lars Weiler <pylon@gentoo.org> planner-0.12.1.ebuild:
+  Stable on ppc.
+
+  31 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> planner-0.12.1.ebuild:
+  Stable on alpha.
+
+  31 Mar 2005; <blubb@gentoo.org> planner-0.12.1.ebuild:
+  stable on amd64
+
+  08 Mar 2005; foser <foser@gentoo.org> planner-0.12.1.ebuild :
+  Ugly fix for #83947
+
+  03 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> planner-0.12.1.ebuild:
+  Stable on sparc
+
+  04 Feb 2005; Joe McCann <joem@gentoo.org> planner-0.11.ebuild:
+  remove old intltool workaround, closes bug 80708
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+*planner-0.12.1 (09 Nov 2004)
+
+  09 Nov 2004; Mike Gardiner <obz@gentoo.org> +planner-0.12.1.ebuild:
+  New version, a bugfix release, as requested in bug #62265
+
+  23 Oct 2004; Alastair Tse <liquidx@gentoo.org> planner-0.11.ebuild,
+  planner-0.12-r1.ebuild:
+  add aclocal/automake/autoconf if calling intltoolize (#68514)
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  planner-0.11.ebuild:
+  Masked planner-0.11.ebuild stable for ppc
+
+*planner-0.12-r1 (14 Jul 2004)
+
+  14 Jul 2004; foser <foser@gentoo.org> planner-0.12-r1.ebuild :
+  Fix pygtk dep to a sandbox safe version (#56995)
+
+  14 Jul 2004; <spider@gentoo.org> +planner-0.12-r1.ebuild:
+  ugh. I goofed up and didnt notice the new python bindings, revamped the ebuild
+  to manage those with USE flags, and changed to the libgda interface instead of
+  direct postgres dep.
+
+*planner-0.12-r1 14 Jul 2004
+
+  14 Jul 2004; Spider <spider@gentoo.org> 
+  # INSERT ENTRY HERE
+
+*planner-0.12 (11 Jul 2004)
+
+  11 Jul 2004; <spider@gentoo.org> +planner-0.12.ebuild:
+  Version bump
+
+  19 Jun 2004; Jason Wever <weeve@gentoo.org> planner-0.11.ebuild:
+  Stable on sparc.
+
+  05 May 2004; Bryan Østergaard <kloeri@gentoo.org> planner-0.11.ebuild:
+  Stable on alpha.
+
+  03 Apr 2004; <spider@gentoo.org> planner-0.11.ebuild:
+  Move to stable, removing mrproject from the tree now.
+
+  17 Dec 2003; <spider@gentoo.org> planner-0.11.ebuild:
+  Added warning about removing mrproject & libmrproject
 
 *planner-0.11 (14 Dec 2003)
 

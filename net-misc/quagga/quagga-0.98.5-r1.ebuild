@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/quagga-0.98.5-r1.ebuild,v 1.1 2005/11/15 13:14:03 amir Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/quagga/quagga-0.98.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:55:27 chriswhite Exp $
 
 inherit eutils multilib
 

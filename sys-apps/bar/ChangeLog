@@ -1,6 +1,49 @@
 # ChangeLog for sys-apps/bar
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/bar/ChangeLog,v 1.1 2003/11/21 19:57:18 rphillips Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/bar/ChangeLog,v 1.1.1.1 2005/11/30 09:56:37 chriswhite Exp $
+
+  05 Feb 2005; Aaron Walker <ka0ttic@gentoo.org> -bar-1.08.ebuild,
+  bar-1.10.3.ebuild:
+  Marked stable on x86 early due to nature of bug fixes over prev version.
+
+*bar-1.10.3 (19 Jan 2005)
+
+  19 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> +bar-1.10.3.ebuild:
+  Version bump; fixes critical I/O bug that could cause data truncation.
+
+  09 Jan 2005; Aaron Walker <ka0ttic@gentoo.org> -bar-1.07.ebuild,
+  bar-1.10.2.ebuild:
+  Marked 1.10.2 stable on x86; removed old 1.07.
+
+  18 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> bar-1.08.ebuild:
+  Never actually marked 1.08 stable.
+
+  11 Dec 2004; Sven Wegener <swegener@gentoo.org> bar-1.10.2.ebuild:
+  app-doc/doxygen only needs to be in DEPEND.
+
+*bar-1.10.2 (06 Dec 2004)
+
+  06 Dec 2004; Aaron Walker <ka0ttic@gentoo.org> metadata.xml,
+  -bar-1.06.ebuild, +bar-1.10.2.ebuild:
+  Version bump; cleaned up ebuild and added support for USE=doc. Marked 1.08
+  stable on x86. Also updated metadata for shell-tools.
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> bar-1.06.ebuild,
+  bar-1.07.ebuild, bar-1.08.ebuild:
+  sync IUSE (missing), add sed-4 dep
+
+  02 Feb 2004; Heinrich Wendel <lanius@gentoo.org> bar-1.07.ebuild:
+  mark 1.07 x86
+
+*bar-1.08 (02 Feb 2004)
+
+  02 Feb 2004; Heinrich Wendel <lanius@gentoo.org> bar-1.08.ebuild:
+  version bump; fixed DEPEND
+
+*bar-1.07 (26 Dec 2003)
+
+  26 Dec 2003; Heinrich Wendel <lanius@gentoo.org> bar-1.07.ebuild:
+  Version bump; modified to use portage's CFLAGS
 
 *bar-1.06 (21 Nov 2003)
 

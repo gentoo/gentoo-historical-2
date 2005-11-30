@@ -1,19 +1,14 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/nemesi/nemesi-0.4.0.ebuild,v 1.1 2004/12/17 06:26:10 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/nemesi/nemesi-0.4.0.ebuild,v 1.1.1.1 2005/11/30 09:57:58 chriswhite Exp $
 
 DESCRIPTION="Tiny rtsp client"
-
 HOMEPAGE="http://streaming.polito.it/"
-
 SRC_URI="http://streaming.polito.it/files/${P}.tar.bz2"
 
 LICENSE="GPL-2"
-
 SLOT="0"
-
 KEYWORDS="~x86 ~ppc"
-
 IUSE="gtk sdl"
 
 DEPEND="sys-libs/glibc
@@ -26,12 +21,15 @@ export WANT_AUTOMAKE="1.6"
 src_unpack(){
 	unpack ${A}
 	cd ${S}
-	./autogen.sh
+	#./autogen.sh
+	 sed -i -e"s:-mcpu=i486::g" configure
 }
 
 src_compile() {
-	econf `use_enable sdl` \
-		  `use_enable gtk gui`	|| die
+	econf `use_enable sdl`			\
+		  `use_enable gtk gui`		\
+		  --enable-optimize=none 	\
+		  || die "econf failed"
 	emake || die "emake failed"
 }
 

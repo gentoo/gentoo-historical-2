@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/yate/yate-0.9.0_pre2.ebuild,v 1.1 2005/10/29 15:55:35 stkn Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/yate/yate-0.9.0_pre2.ebuild,v 1.1.1.1 2005/11/30 09:55:35 chriswhite Exp $
 
 IUSE="gsm gtk h323 ilbc postgres zaptel"
 

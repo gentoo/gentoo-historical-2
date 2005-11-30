@@ -1,10 +1,27 @@
 # ChangeLog for media-video/emovix
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/emovix/ChangeLog,v 1.1 2003/09/13 01:16:25 luke-jr Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/emovix/ChangeLog,v 1.1.1.1 2005/11/30 09:57:47 chriswhite Exp $
 
-*emovix-0.8.0_rc2 (13 Sep 2003)
+  10 Sep 2005; Diego Pettenò <flameeyes@gentoo.org>
+  emovix-0.9.0_pre1.ebuild:
+  Don't install INSTALL file.
 
-  13 Sep 2003; Luke-Jr <luke-jr@gentoo.org> emovix-0.8.0_rc2.ebuild,
-  metadata.xml:
-  Initial addition to Portage
+  21 Apr 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  emovix-0.9.0_pre1.ebuild:
+  Use the ein32codecs package instead of installing separate ones.
+
+  19 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> metadata.xml:
+  Remove retired developer from metadata.xml.
+
+  15 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> emovix-0.9.0_pre1.ebuild:
+  changed app-cdr/cdrtools dependency to virtual/cdrtools. see bug #77817.
+
+  08 Sep 2004; <blubb@gentoo.org> emovix-0.9.0_pre1.ebuild:
+  added ~amd64 keyword
+
+*emovix-0.9.0_pre1 (27 Jul 2004)
+
+  27 Jul 2004; Chris White <chriswhite@gentoo.org> +metadata.xml,
+  +emovix-0.9.0_pre1.ebuild:
+  Initial submission to the tree.  Closes bug #51315.
 

@@ -1,6 +1,44 @@
 # ChangeLog for media-video/fenice
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/fenice/ChangeLog,v 1.1 2005/01/06 17:13:19 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/fenice/ChangeLog,v 1.1.1.1 2005/11/30 09:57:51 chriswhite Exp $
+
+  02 Nov 2005; Stefan Schweizer <genstef@gentoo.org> fenice-1.7.ebuild,
+  fenice-1.8.ebuild, fenice-1.9.ebuild, fenice-1.10.ebuild:
+  app-text/ghostscript -> virtual/ghostscript
+
+*fenice-1.10 (03 Aug 2005)
+
+  03 Aug 2005; Luca Barbato <lu_zero@gentoo.org> +fenice-1.10.ebuild:
+  New version
+
+  18 Apr 2005; Diego Pettenò <flameeyes@gentoo.org> fenice-1.8.ebuild,
+  fenice-1.9.ebuild:
+  Use virtual/libc instead of sys-libs/glibc.
+
+  13 Apr 2005; Luca Barbato <lu_zero@gentoo.org> fenice-1.9.ebuild:
+  Minor workaround
+
+  08 Apr 2005; Luca Barbato <lu_zero@gentoo.org> fenice-1.9.ebuild:
+  updated homepage, thanks to Jovi for pointing out
+
+*fenice-1.9 (04 Apr 2005)
+
+  04 Apr 2005; Luca Barbato <lu_zero@gentoo.org> +fenice-1.9.ebuild:
+  New version
+
+*fenice-1.8 (07 Mar 2005)
+
+  07 Mar 2005; Luca Barbato <lu_zero@gentoo.org> +fenice-1.8.ebuild:
+  New version
+
+*fenice-1.7 (03 Feb 2005)
+
+  03 Feb 2005; Luca Barbato <lu_zero@gentoo.org> +fenice-1.7.ebuild:
+  New version
+
+  08 Jan 2005; Sven Wegener <swegener@gentoo.org> metadata.xml,
+  fenice-1.6.ebuild:
+  Removed unneeded src_unpack and src_compile. Fixed herd name in metadata.xml.
 
 *fenice-1.6 (06 Jan 2005)
 

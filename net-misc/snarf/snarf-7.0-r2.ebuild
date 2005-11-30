@@ -1,16 +1,18 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/snarf/snarf-7.0-r2.ebuild,v 1.1 2003/08/01 15:50:57 taviso Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/snarf/snarf-7.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:55:37 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="A full featured small web-spider"
+inherit eutils
+
+IUSE=""
+DESCRIPTION="Small and fast command line resource grabber with support for http, gopher, finger, and ftp protocols."
 SRC_URI="http://www.xach.com/snarf/${P}.tar.gz"
 HOMEPAGE="http://www.xach.com/snarf/"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="x86 alpha sparc ppc"
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND=">=sys-libs/glibc-2.1.3"
+DEPEND="virtual/libc"
 
 src_unpack() {
 	unpack ${A}
@@ -18,14 +20,15 @@ src_unpack() {
 	epatch ${FILESDIR}/snarf-unlink-empty.diff
 }
 
-src_compile() {													 
-	econf || die
-	make || die
-}
-
-src_install() {															 
-	into /usr
+src_install() {
 	dobin snarf
 	doman snarf.1
 	dodoc COPYING ChangeLog README TODO
+}
+
+pkg_postinst() {
+	einfo 'To use snarf with portage, try these settings in your make.conf'
+	einfo
+	einfo '	FETCHCOMMAND="/usr/bin/snarf -b \${URI} \${DISTDIR}/\${FILE}"'
+	einfo '	RESUMECOMMAND="/usr/bin/snarf -rb \${URI} \${DISTDIR}/\${FILE}"'
 }

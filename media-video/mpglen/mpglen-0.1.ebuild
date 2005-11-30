@@ -1,17 +1,20 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/mpglen/mpglen-0.1.ebuild,v 1.1 2004/10/06 20:08:02 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/mpglen/mpglen-0.1.ebuild,v 1.1.1.1 2005/11/30 09:57:32 chriswhite Exp $
 
-DESCRIPTION="A program to scan through a MPEG file and count the number of GOPs and frames"
-SRC_URI="http://www.iamnota.net/mpglen/${PN}.tar.gz"
-HOMEPAGE="http://www.iamnota.net/mpglen/"
-KEYWORDS="~x86"
-LICENSE="GPL-2"
-DEPEND="virtual/glibc"
-SLOT="0"
 IUSE=""
 
 MY_S=${WORKDIR}/${PN}
+
+DESCRIPTION="A program to scan through a MPEG file and count the number of GOPs and frames"
+HOMEPAGE="http://www.iamnota.net/mpglen/"
+SRC_URI="http://www.iamnota.net/mpglen/${PN}.tar.gz"
+
+LICENSE="GPL-2"
+SLOT="0"
+KEYWORDS="~amd64 ~ppc ~x86"
+
+DEPEND="virtual/libc"
 
 src_compile () {
 	cd ${MY_S} || die
@@ -21,5 +24,5 @@ src_compile () {
 src_install () {
 	cd ${MY_S} || die
 	dobin ${PN} || die
-	dodoc AUTHORS COPYING Changelog README || die
+	dodoc AUTHORS Changelog README || die
 }

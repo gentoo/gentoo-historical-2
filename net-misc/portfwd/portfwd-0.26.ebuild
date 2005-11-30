@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/portfwd/portfwd-0.26.ebuild,v 1.1 2004/02/14 06:16:54 strider Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/portfwd/portfwd-0.26.ebuild,v 1.1.1.1 2005/11/30 09:55:27 chriswhite Exp $
 
 DESCRIPTION="Port Forwarding Daemon"
 SRC_URI="mirror://sourceforge/${PN}/${P/_/}.tar.gz"
@@ -8,7 +8,8 @@ HOMEPAGE="http://portfwd.sourceforge.net"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~ia64 ~amd64"
+KEYWORDS="~x86 ~ia64 ~amd64 ~ppc"
+IUSE=""
 
 DEPEND=">=sys-apps/sed-4"
 RDEPEND=""
@@ -38,7 +39,7 @@ src_compile() {
 	cd ${WORKDIR}/${P/_/}
 
 	./bootstrap
-	econf
+	econf || die "econf failed"
 	emake
 }
 

@@ -1,37 +1,41 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-apps/xinetd/xinetd-2.3.13.ebuild,v 1.1 2004/02/02 17:38:44 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-apps/xinetd/xinetd-2.3.13.ebuild,v 1.1.1.1 2005/11/30 09:56:25 chriswhite Exp $
 
-DESCRIPTION="Xinetd is a powerful replacement for inetd, with advanced features"
-HOMEPAGE="http://www.xinetd.org"
+inherit eutils
+
+DESCRIPTION="powerful replacement for inetd"
+HOMEPAGE="http://www.xinetd.org/"
 SRC_URI="http://www.xinetd.org/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~mips ~alpha ~arm ~hppa ~ia64 ~ppc64"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k mips ppc ppc64 s390 sh sparc x86"
+IUSE="tcpd"
 
-DEPEND="virtual/glibc
-	tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )"
-RDEPEND="${DEPEND} dev-lang/perl"
-
+DEPEND="tcpd? ( >=sys-apps/tcp-wrappers-7.6-r2 )"
+RDEPEND="${DEPEND}
+	dev-lang/perl"
 PROVIDE="virtual/inetd"
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-gcc4.patch
+}
 
 src_compile() {
 	local myconf
 	use tcpd && myconf="--with-libwrap"
-
-	# the --with-inet6 is now obsolete. Services will default to IPv4 unless configured otherwise.
-
-	econf --with-loadavg ${myconf}
+	econf --with-loadavg ${myconf} || die "econf failed"
 
 	# Fix CFLAGS
 	sed -i -e "/^CFLAGS/s/+=/=/" Makefile
-
 	emake || die "Failed to compile"
 }
 
 src_install() {
-	into /usr ; dosbin xinetd/xinetd xinetd/itox
+	into /usr ; dosbin xinetd/xinetd xinetd/itox || die
 	exeinto /usr/sbin ; doexe xinetd/xconv.pl
 
 	newman xinetd/xinetd.conf.man xinetd.conf.5
@@ -49,7 +53,7 @@ src_install() {
 	insinto /etc ; doins ${FILESDIR}/xinetd.conf || die
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	einfo "This ebuild introduces the /etc/xinetd.d includedir with a default"
 	einfo "/etc/xinetd.conf file. Check your config files if you're upgrading from an older"
 	einfo "ebuild version. You should browse /etc/xinetd.conf and the files in /etc/xinetd.d."

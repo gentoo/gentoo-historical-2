@@ -1,19 +1,22 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-video/helixplayer/helixplayer-1.0.4.ebuild,v 1.1 2005/04/21 11:09:42 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-video/helixplayer/helixplayer-1.0.4.ebuild,v 1.1.1.1 2005/11/30 09:57:49 chriswhite Exp $
 
 inherit nsplugins eutils
 
 MY_PKG=${P/helixplayer/hxplay}
 
+PATCHLEVEL="1"
 DESCRIPTION="A free open-source media player by real"
 HOMEPAGE="http://www.helixplayer.org/"
-SRC_URI="https://helixcommunity.org/download.php/1138/${MY_PKG}.tar.bz2"
+SRC_URI="https://helixcommunity.org/download.php/1138/${MY_PKG}.tar.bz2
+	http://digilander.libero.it/dgp85/gentoo/${PN}-patches-${PATCHLEVEL}.tar.bz2"
+
 LICENSE="GPL-2"
 SLOT="0"
 # -sparc -amd64: 1.0_beta1: build fails on both platforms... --eradicator
-KEYWORDS="-*"
-IUSE="mozilla nptl"
+KEYWORDS="-* -amd64 ~x86"
+IUSE="nsplugin nptl"
 DEPEND="media-libs/libtheora
 	media-libs/libogg"
 RDEPEND=">=dev-libs/glib-2
@@ -28,14 +31,8 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 
-	#adjust strange naming for helixplayer tarball
-	epatch ${FILESDIR}/installer-naming.patch
-
-	#fixes the .bif file to create a gentoo_player custom target
-	epatch ${FILESDIR}/${PN}-1.0.3-bif.patch
-
-	#fixes sem_t based issues
-	use nptl && epatch ${FILESDIR}/${PN}-1.0.3-sem_t.patch
+	use nptl || EPATCH_EXCLUDE="03_all_sem-t.patch"
+	EPATCH_SUFFIX="patch" epatch ${WORKDIR}/${PV}
 
 	#fixes icon name in .desktop file
 	sed -i -e 's:hxplay.png:hxplay:' ${S}/player/installer/common/hxplay.desktop
@@ -45,7 +42,7 @@ src_compile() {
 
 	#copies our buildrc file over with information on where
 	#ogg and theora libs are kept
-	cp ${FILESDIR}/buildrc ${S}
+	cp ${WORKDIR}/${PV}/buildrc ${S}
 
 	export BUILDRC="${S}/buildrc"
 	export BUILD_ROOT="${S}/build"
@@ -56,19 +53,19 @@ src_compile() {
 
 src_install() {
 
-	# install the tarballed installation into 
+	# install the tarballed installation into
 	# the /opt directory
 	keepdir /opt/HelixPlayer
 	tar -jxf ${S}/release/helixplayer.tar.bz2 -C ${D}/opt/HelixPlayer
 
-	if use mozilla ; then
+	if use nsplugin ; then
 		cd ${D}/opt/HelixPlayer/mozilla
 		exeinto /opt/netscape/plugins
 		doexe nphelix.so
 		inst_plugin /opt/netscape/plugins/nphelix.so
 	fi
 
-	doenvd ${FILESDIR}/50helix
+	doenvd ${WORKDIR}/${PV}/50helix
 
 	for res in 16 192 32 48; do
 		insinto /usr/share/icons/hicolor/${res}x${res}/apps

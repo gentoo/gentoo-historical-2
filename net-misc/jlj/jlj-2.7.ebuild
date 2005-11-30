@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/jlj/jlj-2.7.ebuild,v 1.1 2005/06/14 13:24:37 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/jlj/jlj-2.7.ebuild,v 1.1.1.1 2005/11/30 09:55:29 chriswhite Exp $
 
 DESCRIPTION="A simple console LiveJournal entry system."
 HOMEPAGE="http://www.cis.rit.edu/~sdlpci/Software/perl/#jlj"
