@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc2-stdext/jdbc2-stdext-2.0-r1.ebuild,v 1.1 2004/10/20 11:32:45 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc2-stdext/jdbc2-stdext-2.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:23 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,14 +9,14 @@ stdext_doc="jdbc2_0_1-stdext-javadoc.zip"
 
 DESCRIPTION="A standard set of libs for Server-Side JDBC support"
 HOMEPAGE="http://java.sun.com/products/jdbc"
-SRC_URI="${stdext_bin} ${stdext_doc}"
+SRC_URI="${stdext_bin} doc? ( ${stdext_doc} )"
 LICENSE="sun-csl"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="x86 ppc amd64 sparc"
 IUSE="doc"
 RESTRICT="fetch"
 DEPEND="app-arch/unzip"
-RDEPEND=">=virtual/jdk-1.4"
+RDEPEND=">=virtual/jre-1.4"
 
 S=${WORKDIR}
 
@@ -24,7 +24,7 @@ pkg_nofetch() {
 	einfo
 	einfo " Due to license restrictions, we cannot fetch the"
 	einfo " distributables automagically."
-	einfo " "
+	einfo
 	einfo " 1. Visit http://java.sun.com/products/jdbc/download.html#spec'"
 	einfo " 2. Select 'JDBC(TM) 2.0 Optional Package Binary'"
 	einfo " 3. Download ${stdext_bin}"
@@ -37,10 +37,10 @@ pkg_nofetch() {
 	einfo
 }
 
-src_unpack() { 
+src_unpack() {
 	if use doc; then
 		cd ${S}
-		unzip ${DISTDIR}/${stdext_doc}
+		unzip ${DISTDIR}/${stdext_doc} || die "failed too build"
 	fi
 }
 

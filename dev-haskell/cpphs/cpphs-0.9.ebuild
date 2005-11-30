@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cpphs/cpphs-0.9.ebuild,v 1.1 2005/05/18 10:36:25 dcoutts Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cpphs/cpphs-0.9.ebuild,v 1.1.1.1 2005/11/30 09:48:23 chriswhite Exp $
 
 inherit eutils ghc-package
 
@@ -10,7 +10,7 @@ SRC_URI="http://www.cs.york.ac.uk/fp/cpphs/${P}.tar.gz"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~x86 ~amd64 ~sparc"
 IUSE=""
 DEPEND=">=virtual/ghc-5.04"
 

@@ -1,11 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-run/bioperl-run-1.2.2.ebuild,v 1.1 2004/12/23 22:09:47 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-run/bioperl-run-1.2.2.ebuild,v 1.1.1.1 2005/11/30 09:48:44 chriswhite Exp $
 
 inherit perl-module eutils
-CATEGORY="app-sci"
 
-DESCRIPTION="collection of tools for bioinformatics, genomics and life science research : subset required to run analyses"
+DESCRIPTION="A collection of tools for bioinformatics, genomics and life science research: subset required to run analyses"
 HOMEPAGE="http://www.bioperl.org/"
 #SRC_URI="http://www.cpan.org/modules/by-module/Bio/${P}.tar.gz"
 SRC_URI="http://www.bioperl.org/ftp/DIST/${P}.tar.gz"
@@ -17,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	dev-perl/Algorithm-Diff
-	dev-perl/File-Temp
+	perl-core/File-Temp
 	dev-perl/IO-String
 	dev-perl/XML-Parser"
 

@@ -1,8 +1,45 @@
 # ChangeLog for app-dicts/gjiten
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/gjiten/ChangeLog,v 1.1 2003/06/04 20:07:17 nakano Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/gjiten/ChangeLog,v 1.1.1.1 2005/11/30 09:46:57 chriswhite Exp $
+
+*gjiten-2.4 (15 Oct 2005)
+
+  15 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> +gjiten-2.4.ebuild:
+  Version bumped. Bug 101328.
+
+  21 Apr 2005; Simon Stelling <blubb@gentoo.org> gjiten-2.3.ebuild:
+  stable on amd64
+
+  04 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> -gjiten-2.1.ebuild,
+  -gjiten-2.2.ebuild, gjiten-2.3.ebuild:
+  Stable on x86 and ppc. Removed old ebuilds.
+
+  08 Oct 2004; MATSUU Takuto <matsuu@gentoo.org> gjiten-2.3.ebuild:
+  Added ~amd64 to KEYWORDS.
+
+*gjiten-2.3 (08 Oct 2004)
+
+  08 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> gjiten-2.2.ebuild,
+  +gjiten-2.3.ebuild:
+  Version bumped. Added missing dep of scrollkeeper, fix provided
+  by MATSUU Takuto <matsuu@gentoo.org>. This closes bug #63407.
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> gjiten-2.2.ebuild:
+  Stable on x86 and added to ppc.
+
+*gjiten-2.2 (16 Jun 2004)
+
+  16 Jun 2004; Josh Glover <jmglov@gentoo.org> gjiten-2.2.ebuild,
+  metadata.xml:
+  Version bump; submitted by Josh Glover in bug #51243
 
 *gjiten-2.1 (04 Jun 2003)
+
+  16 Jun 2003; Masatomo Nakano <nakano@gentoo.org> gjiten-2.1.ebuild:
+  Marked as stable.
+
+  12 Jun 2003; <msterret@gentoo.org> gjiten-2.1.ebuild:
+  add Header
 
   04 Jun 2003; Masatomo Nakano <nakano@gentoo.org> gjiten-2.1.ebuild:
   Initial import as unstable

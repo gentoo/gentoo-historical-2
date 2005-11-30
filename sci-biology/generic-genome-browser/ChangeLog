@@ -1,6 +1,17 @@
-# ChangeLog for app-sci/generic-genome-browser
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/generic-genome-browser/ChangeLog,v 1.1 2004/12/23 22:23:31 ribosome Exp $
+# ChangeLog for sci-biology/generic-genome-browser
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/generic-genome-browser/ChangeLog,v 1.1.1.1 2005/11/30 09:48:44 chriswhite Exp $
+
+  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Maintainer changed from Stephen Diener (MIA) to Olivier Fisette.
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  generic-genome-browser-1.58.ebuild:
+  dev-perl/Digest-MD5 => perl-core/Digest-MD5
+
+  24 May 2005; Michael Cummings <mcummings@gentoo.org>
+  generic-genome-browser-1.58.ebuild:
+  dev-perl/CGI => perl-core/CGI
 
 *generic-genome-browser-1.58 (23 Dec 2004)
 

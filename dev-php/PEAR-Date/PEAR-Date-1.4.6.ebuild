@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Date/PEAR-Date-1.4.6.ebuild,v 1.1 2005/11/15 07:30:03 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Date/PEAR-Date-1.4.6.ebuild,v 1.1.1.1 2005/11/30 09:47:58 chriswhite Exp $
 
 inherit php-pear-r1
 

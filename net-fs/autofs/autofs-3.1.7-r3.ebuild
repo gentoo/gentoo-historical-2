@@ -1,14 +1,18 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Author: Achim Gottinger <achim@gentoo.org>
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r3.ebuild,v 1.1 2002/04/17 04:34:25 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r3.ebuild,v 1.1.1.1 2005/11/30 09:45:46 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Automounter"
-SRC_URI="ftp://ftp.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2
-	ftp://ftp.de.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2
-	ftp://ftp.uk.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2"
-DEPEND="virtual/glibc ldap? ( ~net-nds/openldap-1.2 )"
+IUSE="ldap"
+
+DESCRIPTION="Kernel based automounter"
+HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
+SRC_URI="mirror://kernel/linux/daemons/autofs/${P}.tar.bz2"
+
+DEPEND="ldap? ( >=net-nds/openldap-1.2 )"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86"
 
 src_unpack() {
 	unpack ${A} ; cd ${S}/include
@@ -18,6 +22,9 @@ src_unpack() {
 src_compile() {
 	local myconf
 	use ldap || myconf="--without-openldap"
+	export HAVE_LDAP=1
+	export LIBLDAP="$LIBLDAP -lldap -llber"
+	export LIBS="-lldap -llber $LIBS"
 	./configure --host=${HOST} --prefix=/usr ${myconf} || die
 	emake || die
 }

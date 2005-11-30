@@ -1,5 +1,15 @@
-MD5 a435a716a34f789f92d0af033c37c4c0 commons-discovery-0.2.ebuild 1143
-MD5 7b3e96ca2b7367ec4da916ea7f9e476e ChangeLog 493
-MD5 442d15ad15a75df4b80001d212014037 commons-discovery-0.1.ebuild 1144
-MD5 971e794584138fdf2937ca0d7f0c28a4 files/digest-commons-discovery-0.1 140
-MD5 c986a5b1efe7715c57da38bb9423ef86 files/digest-commons-discovery-0.2 76
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 fe4f82077b929fbc931e2cfbb8d65489 ChangeLog 2247
+MD5 09e1ff98da16ae54b6373a3650d5ece0 commons-discovery-0.2-r2.ebuild 1494
+MD5 18c8ff24139983c581fa7dbb1d6983fa files/commons-discovery-0.2-gentoo.diff 2296
+MD5 c986a5b1efe7715c57da38bb9423ef86 files/digest-commons-discovery-0.2-r2 76
+MD5 a6ec7d7724fbd068ffb39b5be56134ed metadata.xml 157
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDWQDcQiJ/wx066S4RAu4ZAJ9i8RYZWgWvDEvhnDiR4Sd/KUFzpACeLGBc
+0GdcGD0lWKNL9zeX8LevMdE=
+=cBkR
+-----END PGP SIGNATURE-----

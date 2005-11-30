@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/openjgraph/openjgraph-0.9.2-r1.ebuild,v 1.1 2004/09/17 11:43:45 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/openjgraph/openjgraph-0.9.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:10 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -8,23 +8,24 @@ DESCRIPTION="Open-source graph library for Java"
 SRC_URI="mirror://sourceforge/openjgraph/${P}.zip"
 HOMEPAGE="http://openjgraph.sf.net"
 IUSE=""
-DEPEND=">=virtual/jdk-1.4
+RDEPEND=">=virtual/jre-1.4
 	dev-java/log4j
-	dev-java/junit
-	=dev-java/xerces-1.3*
-	>=dev-java/ant-1.6"
+	=dev-java/xerces-1.3*"
+DEPEND=">=virtual/jdk-1.4
+	${RDEPEND}
+	app-arch/unzip
+	dev-java/junit"
 
-RDEPEND=">=virtual/jdk-1.4"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="~ppc ~sparc x86"
 
 S=${WORKDIR}/${P//./_}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}/lib/
-	rm -f ant.jar jakarta-ant-1.4.1-optional.jar junit.jar log4j-core.jar jaxp.jar crimson.jar
+	rm -f *.jar
 	java-pkg_jar-from log4j
 	java-pkg_jar-from xerces-1.3
 	java-pkg_jar-from junit
@@ -34,7 +35,7 @@ src_compile() {
 	./compileall.sh || die "compile failed"
 }
 
-src_install () {
+src_install() {
 	java-pkg_dojar dist/${PN}.jar
 
 	insinto /usr/share/${PN}/examples

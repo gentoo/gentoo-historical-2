@@ -1,6 +1,87 @@
-# ChangeLog for sys-apps/partimage
+# ChangeLog for sys-block/partimage
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/ChangeLog,v 1.1 2005/03/06 17:58:39 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/ChangeLog,v 1.1.1.1 2005/11/30 09:45:23 chriswhite Exp $
+
+  13 Nov 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  +files/partimage-0.6.4-datadir-path.patch, -partimage-0.6.2.ebuild,
+  -partimage-0.6.4-r1.ebuild, -partimage-0.6.4-r2.ebuild,
+  partimage-0.6.4-r3.ebuild, partimage-0.6.4-r4.ebuild,
+  -partimage-0.6.4.ebuild:
+  removed old ebuilds, fixed datadir path.
+  removed unneeded lzo dep, fixed bug #112369.
+
+  12 Nov 2005; Christian Zoffoli <xmerlin@gentoo.org> partimage-0.6.2.ebuild,
+  partimage-0.6.4-r1.ebuild, partimage-0.6.4-r2.ebuild,
+  partimage-0.6.4-r3.ebuild, partimage-0.6.4-r4.ebuild,
+  partimage-0.6.4.ebuild:
+  Fixed wrong partimagedusers path. Closed bug #111401.
+
+  24 Oct 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  partimage-0.6.4-r1.ebuild, partimage-0.6.4-r2.ebuild,
+  partimage-0.6.4-r3.ebuild, partimage-0.6.4-r4.ebuild,
+  partimage-0.6.4.ebuild:
+  fixed bug #109482.
+
+  07 Oct 2005; Christian Zoffoli <xmerlin@gentoo.org> partimage-0.6.2.ebuild,
+  partimage-0.6.4-r1.ebuild, partimage-0.6.4-r2.ebuild,
+  partimage-0.6.4-r3.ebuild, partimage-0.6.4-r4.ebuild,
+  partimage-0.6.4.ebuild:
+  fixed bug #108296, thanks to Stefan Schweizer <genstef@gentoo.org>.
+
+  02 Sep 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  partimage-0.6.4-r1.ebuild, partimage-0.6.4-r2.ebuild,
+  partimage-0.6.4-r3.ebuild, partimage-0.6.4-r4.ebuild,
+  partimage-0.6.4.ebuild:
+  Changed chown as requested by gentoo bsd team. Fixed bug #103563.
+
+  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> partimage-0.6.4.ebuild,
+  partimage-0.6.4-r1.ebuild, partimage-0.6.4-r2.ebuild,
+  partimage-0.6.4-r3.ebuild, partimage-0.6.4-r4.ebuild:
+  removed epatch || die
+
+*partimage-0.6.4-r4 (29 Jul 2005)
+
+  29 Jul 2005; Daniel Black <dragonheart@gentoo.org>
+  +partimage-0.6.4-r4.ebuild:
+  added pam and static use flags
+
+  27 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  partimage-0.6.4-r3.ebuild:
+  To ~sparc wrt #89315
+
+  20 Apr 2005; Joseph Jezak <josejx@gentoo.org> partimage-0.6.4-r3.ebuild:
+  Marked ppc stable for bug #89315.
+
+  18 Apr 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  partimage-0.6.4-r2.ebuild, partimage-0.6.4-r3.ebuild:
+  restored ~ppc already in partimage-0.6.4-r1
+
+  16 Apr 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  partimage-0.6.4-r3.ebuild:
+  stable x86.
+
+  01 Apr 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  partimage-0.6.4-r2.ebuild, partimage-0.6.4-r3.ebuild:
+  tuned deps, partimage needs a bug free newt-0.51.6. Closes bug #86987.
+
+*partimage-0.6.4-r3 (31 Mar 2005)
+
+  31 Mar 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  +files/partimage-0.6.4-LP64-fixes.patch,
+  +files/partimage-0.6.4-fflush-before-re-read-partition-table.patch,
+  +files/partimage-0.6.4-lib64.patch,
+  +files/partimage-0.6.4-save_all_and_rest_all_actions.patch,
+  +partimage-0.6.4-r3.ebuild:
+  backported some fixes from mdk (64-bit & lib64 fixes, fflush before re-read
+  partition table, added save all and rest all actions)
+
+  13 Mar 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  partimage-0.6.4-r2.ebuild:
+  fixed bug #84445, thanks to Joseph Cheek <joseph@lycoris.com>
+
+  10 Mar 2005; Christian Zoffoli <xmerlin@gentoo.org>
+  partimage-0.6.4-r2.ebuild:
+  partimage-0.6.4-r2 marked stable on x86
 
 *partimage-0.6.4-r1 (06 Mar 2005)
 

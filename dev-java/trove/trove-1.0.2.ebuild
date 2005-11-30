@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/trove/trove-1.0.2.ebuild,v 1.1 2004/10/30 18:40:22 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/trove/trove-1.0.2.ebuild,v 1.1.1.1 2005/11/30 09:47:18 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,10 +9,11 @@ SRC_URI="mirror://sourceforge/trove4j/${P}.tar.gz"
 HOMEPAGE="http://trove4j.sourceforge.net"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64 ~ppc"
 RDEPEND=">=virtual/jre-1.4"
-DEPEND=">=virtual/jdk-1.4"
-IUSE="doc junit jikes"
+DEPEND=">=virtual/jdk-1.4
+	source? ( app-arch/zip )"
+IUSE="doc jikes source"
 
 src_unpack() {
 	unpack ${A}
@@ -23,8 +24,6 @@ src_unpack() {
 
 src_compile() {
 	mkdir build
-	javac_cmd="javac"
-	use jikes && javac_cmd="jikes -bootclasspath ${JAVA_HOME}/jre/lib/rt.jar"
 
 	cd src
 	javac -nowarn -d ${S}/build $(find -name "*.java") \
@@ -44,4 +43,5 @@ src_install() {
 	java-pkg_dojar lib/${PN}.jar
 	dodoc *.txt ChangeLog AUTHORS
 	use doc && java-pkg_dohtml -r javadoc
+	use source && java-pkg_dosrc src/*
 }

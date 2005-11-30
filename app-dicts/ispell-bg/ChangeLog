@@ -1,7 +1,13 @@
-# ChangeLog for app-dicts/ispell-es
+# ChangeLog for app-dicts/ispell-bg
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-bg/ChangeLog,v 1.1 2005/06/03 10:57:04 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-bg/ChangeLog,v 1.1.1.1 2005/11/30 09:46:51 chriswhite Exp $
 
+  08 Jul 2005; David Holm <dholm@gentoo.org> ispell-bg-4.0.ebuild:
+  Added to ~ppc.
+
+  05 Jul 2005; Anders Rune Jensen <arj@gentoo.org> ispell-bg-4.0.ebuild :
+  Fix #97732
+	
 *ispell-bg-4.0 (03 Jun 2005)
 
   03 Jun 2005; Anders Rune Jensen <arj@gentoo.org> ispell-bg-4.0.ebuild :

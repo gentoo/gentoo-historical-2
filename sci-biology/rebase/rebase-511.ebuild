@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/rebase/rebase-511.ebuild,v 1.1 2005/11/07 19:53:36 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/rebase/rebase-511.ebuild,v 1.1.1.1 2005/11/30 09:48:48 chriswhite Exp $
 
 DESCRIPTION="A restriction enzyme database"
 LICENSE="public-domain"

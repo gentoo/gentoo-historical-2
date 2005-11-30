@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/caucho-services/caucho-services-3.0.8.ebuild,v 1.1 2005/10/23 13:58:15 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/caucho-services/caucho-services-3.0.8.ebuild,v 1.1.1.1 2005/11/30 09:47:44 chriswhite Exp $
 
 inherit java-pkg
 

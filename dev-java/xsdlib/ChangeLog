@@ -1,6 +1,16 @@
 # ChangeLog for dev-java/xsdlib
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xsdlib/ChangeLog,v 1.1 2005/06/29 18:43:44 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xsdlib/ChangeLog,v 1.1.1.1 2005/11/30 09:47:20 chriswhite Exp $
+
+  26 Sep 2005; Thomas Matthijs <axxo@gentoo.org> xsdlib-20050627.ebuild:
+  keyword x86
+
+  16 Sep 2005; Gustavo Felisberto <humpback@gentoo.org>;
+  xsdlib-20050627.ebuild:
+  Keyword ~amd64 bug #105520
+
+  01 Jul 2005; David Holm <dholm@gentoo.org> xsdlib-20050627.ebuild:
+  Added to ~ppc.
 
 *xsdlib-20050627 (29 Jun 2005)
 

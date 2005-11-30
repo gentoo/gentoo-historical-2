@@ -1,27 +1,27 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/epic4/epic4-1.1.16-r1.ebuild,v 1.1 2004/01/03 17:40:05 zul Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/epic4/epic4-1.1.16-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:53 chriswhite Exp $
 
-IUSE="ipv6 perl ssl tcltk"
+inherit flag-o-matic eutils
 
 DESCRIPTION="Epic4 IRC Client"
+HOMEPAGE="http://epicsol.org/"
 SRC_URI="ftp://prbh.org/pub/epic/EPIC4-ALPHA/${P}.tar.bz2
-	 ftp://prbh.org/pub/epic/EPIC4-PRODUCTION/epic4-help-20030114.tar.gz"
-HOMEPAGE="http://epicsol.org"
+	ftp://prbh.org/pub/epic/EPIC4-PRODUCTION/epic4-help-20030114.tar.gz"
 
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ia64 ~alpha ~hppa amd64"
+SLOT="0"
+KEYWORDS="~x86 ~ppc ia64 ~alpha hppa amd64"
+IUSE="ipv6 perl ssl tcltk"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	perl? ( >=dev-lang/perl-5.6.1 )
 	ssl? ( >=dev-libs/openssl-0.9.5 )
 	tcltk? ( dev-lang/tcl )"
 
-inherit flag-o-matic
-replace-flags "-O?" "-O"
-
 src_compile() {
+	replace-flags "-O?" "-O"
+
 	myconf=""
 
 	epatch ${FILESDIR}/epic-defaultserver.patch
@@ -33,12 +33,12 @@ src_compile() {
 
 	econf \
 		--libexecdir=/usr/lib/misc \
-		${myconf} || die
+		${myconf} || die "econf failed"
 
-	make || die
+	make || die "make failed"
 }
 
-src_install () {
+src_install() {
 	einstall \
 		sharedir=${D}/usr/share \
 		libexecdir=${D}/usr/lib/misc || die
@@ -68,7 +68,7 @@ pkg_postinst() {
 	einfo "file.  If you want to prevent this file from being installed"
 	einfo "in the future, simply create an empty file with this name."
 
-	if [ ! -e /usr/share/epic/script/local ]; then
-		cp ${FILESDIR}/local /usr/share/epic/script/
+	if [ ! -f ${ROOT}/usr/share/epic/script/local ]; then
+		cp ${FILESDIR}/local ${ROOT}/usr/share/epic/script/
 	fi
 }

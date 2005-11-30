@@ -1,6 +1,26 @@
-# ChangeLog for app-sci/hmmer
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/hmmer/ChangeLog,v 1.1 2004/12/23 18:43:28 ribosome Exp $
+# ChangeLog for sci-biology/hmmer
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/hmmer/ChangeLog,v 1.1.1.1 2005/11/30 09:48:44 chriswhite Exp $
+
+  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Maintainer changed from Stephen Diener (MIA) to Olivier Fisette.
+
+  26 Aug 2005; Carlos Silva <r3pek@gentoo.org> hmmer-2.3.2-r1.ebuild:
+  Marked amd64
+
+  21 May 2005; Jason Wever <weeve@gentoo.org> hmmer-2.3.2-r1.ebuild:
+  Added ~sparc keyword.
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org> hmmer-2.3.2-r1.ebuild:
+  Added to x86.
+
+*hmmer-2.3.2-r1 (06 Mar 2005)
+
+  06 Mar 2005; Olivier Fisette <ribosome@gentoo.org> +hmmer-2.3.2-r1.ebuild:
+  Install header files, support for LFS, optional support for PVM and threads.
+
+  07 Feb 2005; <augustus@gentoo.org> hmmer-2.3.2.ebuild:
+  Marked amd64.
 
 *hmmer-2.3.2 (23 Dec 2004)
 

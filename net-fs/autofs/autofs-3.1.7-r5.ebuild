@@ -1,39 +1,36 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r5.ebuild,v 1.1 2002/11/18 02:00:18 bcowan Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/autofs/autofs-3.1.7-r5.ebuild,v 1.1.1.1 2005/11/30 09:45:46 chriswhite Exp $
 
 IUSE="ldap"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Kernel based automounter"
 HOMEPAGE="http://www.linux-consulting.com/Amd_AutoFS/autofs.html"
-SRC_URI="ftp://ftp.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2
-	ftp://ftp.de.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2
-	ftp://ftp.uk.kernel.org/pub/linux/daemons/autofs/${P}.tar.bz2"
+SRC_URI="mirror://kernel/linux/daemons/autofs/${P}.tar.bz2"
 
 DEPEND="ldap? ( >=net-nds/openldap-1.2 )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="alpha ia64 ppc sparc x86"
 
 src_unpack() {
-	unpack ${A}  
+	unpack ${A}
 	cd ${S}
 	patch -p0 < ${FILESDIR}/ldap_config.patch || die
-	
+
 	cd ${S}/include
 	patch -p0 < ${FILESDIR}/automount.diff || die
 
 	cd ${S}/daemon
 	mv Makefile Makefile.orig
-	sed -e 's/LIBS \= \-ldl/LIBS \= \-ldl \-lnsl \$\{LIBLDAP\}/' Makefile.orig > Makefile 
+	sed -e 's/LIBS \= \-ldl/LIBS \= \-ldl \-lnsl \$\{LIBLDAP\}/' Makefile.orig > Makefile
 }
 
 src_compile() {
 	local myconf
 	use ldap || myconf="--without-openldap"
-	
+
 	./configure \
 	    --host=${HOST} \
 	    --prefix=/usr \
@@ -69,4 +66,4 @@ pkg_postinst() {
 	echo ""
 	einfo "Also the normal autofs status has been renamed stats"
 	einfo "as there is already a predefined Gentoo status"
-}	
+}

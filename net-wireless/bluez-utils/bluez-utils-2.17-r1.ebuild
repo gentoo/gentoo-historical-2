@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-utils/bluez-utils-2.17-r1.ebuild,v 1.1 2005/06/24 16:18:45 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-utils/bluez-utils-2.17-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:29 chriswhite Exp $
 
 IUSE="gtk alsa cups pcmcia dbus"
 
@@ -12,7 +12,7 @@ SRC_URI="http://bluez.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ppc ~sparc x86 hppa"
 
 RDEPEND=">=net-wireless/bluez-libs-2.17
 	!net-wireless/bluez-pan
@@ -21,7 +21,7 @@ RDEPEND=">=net-wireless/bluez-libs-2.17
 	alsa? ( media-libs/alsa-lib )
 	cups? ( net-print/cups )
 	dbus? ( =sys-apps/dbus-0.23* )
-	pcmcia? ( sys-apps/pcmcia-cs sys-apps/setserial )"
+	pcmcia? ( virtual/pcmcia sys-apps/setserial )"
 
 DEPEND="sys-devel/bison
 	sys-devel/flex
@@ -54,6 +54,7 @@ src_compile() {
 		--enable-hid2hci \
 		--enable-bcm203x \
 		--localstatedir=/var \
+		|| die "econf failed"
 	emake || die "make failed"
 }
 

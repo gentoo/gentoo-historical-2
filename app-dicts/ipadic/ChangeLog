@@ -1,6 +1,44 @@
 # ChangeLog for app-dicts/ipadic
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ipadic/ChangeLog,v 1.1 2003/06/20 16:44:06 yakina Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ipadic/ChangeLog,v 1.1.1.1 2005/11/30 09:46:50 chriswhite Exp $
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> ipadic-2.7.0.ebuild:
+  Stable on sparc
+
+  05 Mar 2005; Markus Rothe <corsair@gentoo.org> ipadic-2.7.0.ebuild:
+  Stable on ppc64
+
+  02 Jan 2005; Markus Rothe <corsair@gentoo.org> ipadic-2.7.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org> ipadic-2.6.3.ebuild:
+  Stable on amd64.
+
+  27 Sep 2004; Mamoru KOMACHI <usata@gentoo.org> ipadic-2.6.1.ebuild,
+  ipadic-2.6.3.ebuild:
+  Added to ppc.
+
+  23 Jul 2004; Akinori Hattori <hattya@gentoo.org> ipadic-2.6.1.ebuild,
+  ipadic-2.6.3.ebuild, ipadic-2.7.0.ebuild:
+  fixed license. (as-is -> ipadic)
+  stable 2.6.3 on x86.
+
+*ipadic-2.6.3 (25 Apr 2004)
+
+  25 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> ipadic-2.6.0.ebuild,
+  ipadic-2.6.1.ebuild, ipadic-2.6.3.ebuild, ipadic-2.7.0.ebuild:
+  Stable version bumped. Don't assign default to S. Removed old ebuild.
+
+*ipadic-2.7.0 (18 Apr 2004)
+
+  18 Apr 2004; <matsuu@gentoo.org> +ipadic-2.7.0.ebuild:
+  Version bumped.
+  Added ~ppc and ~sparc to KEYWORDS.
+
+*ipadic-2.6.1 (03 Aug 2003)
+
+  03 Aug 2003; MATSUU Takuto <matsuu@gentoo.org> ipadic-2.6.1.ebuild:
+  version bump.
 
 *ipadic-2.6.0 (21 Jun 2003)
 

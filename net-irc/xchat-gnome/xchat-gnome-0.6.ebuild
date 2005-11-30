@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat-gnome/xchat-gnome-0.6.ebuild,v 1.1 2005/11/03 07:33:46 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat-gnome/xchat-gnome-0.6.ebuild,v 1.1.1.1 2005/11/30 09:48:58 chriswhite Exp $
 
 inherit gnome2
 

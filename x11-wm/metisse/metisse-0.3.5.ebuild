@@ -1,9 +1,11 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/metisse/metisse-0.3.5.ebuild,v 1.1 2005/02/20 10:55:13 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/metisse/metisse-0.3.5.ebuild,v 1.1.1.1 2005/11/30 09:45:15 chriswhite Exp $
+
+inherit eutils
 
 # fc is broken
-IUSE="truetype xv opengl"
+IUSE="truetype xv opengl mmx"
 
 DESCRIPTION="Experimental X desktop with some OpenGL capacity."
 SRC_URI="http://insitu.lri.fr/~chapuis/software/metisse/${P}.tar.bz2"
@@ -17,7 +19,14 @@ RDEPEND="${DEPEND}
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc -amd64"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/metisse-0.3.5-mmx-config.patch
+	libtoolize --copy --force
+}
 
 src_compile() {
 	local myconf
@@ -27,6 +36,10 @@ src_compile() {
 		myconf="${myconf} --enable-glx --disable-glx-x86"
 	else
 		myconf="${myconf} --disable-glx --disable-glx-x86"
+	fi
+
+	if use mmx ; then
+		myconf="${myconf} --enable-mmx"
 	fi
 
 	econf \

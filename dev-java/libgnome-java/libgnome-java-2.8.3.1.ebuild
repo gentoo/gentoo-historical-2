@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/libgnome-java/libgnome-java-2.8.3.1.ebuild,v 1.1 2005/03/12 19:08:55 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/libgnome-java/libgnome-java-2.8.3.1.ebuild,v 1.1.1.1 2005/11/30 09:47:48 chriswhite Exp $
 
 #
 # WARNING: Because java-gnome is a set of bindings to native GNOME libraries, 
@@ -18,11 +18,12 @@ DESCRIPTION="Java bindings for the core GNOME libraries (allow GNOME/GTK applica
 HOMEPAGE="http://java-gnome.sourceforge.net/"
 RDEPEND=">=gnome-base/libgnome-2.8.0
 	>=gnome-base/libgnomeui-2.8.0
-	>=dev-java/libgtk-java-2.4.8.1
+	=dev-java/libgtk-java-2.4*
+	>=gnome-base/libgnomecanvas-2.8.0
 	>=virtual/jre-1.2"
 
-DEPEND="${RDEPEND}
-	>=virtual/jdk-1.2
+DEPEND=">=virtual/jdk-1.2
+	${RDEPEND}
 	app-arch/zip"
 
 #
@@ -30,7 +31,7 @@ DEPEND="${RDEPEND}
 #
 SLOT="2.8"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="gcj"
 
 src_unpack() {
@@ -56,7 +57,7 @@ src_compile() {
 		--host=${CHOST} \
 		--prefix=/usr \
 			${conf} || die "./configure failed"
-	make || die
+	 make INCLUDES="-I${JDK_HOME}/include -I${JDK_HOME}/include/linux/" || die
 }
 
 src_install() {

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/shfs/shfs-0.35-r1.ebuild,v 1.1 2004/12/19 19:13:36 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/shfs/shfs-0.35-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:44 chriswhite Exp $
 
 inherit eutils
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://shfs.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ~ppc ~amd64"
+KEYWORDS="~alpha amd64 ppc x86"
 DEPEND="virtual/linux-sources
 		net-misc/openssh
 		amd? ( net-fs/am-utils )"
@@ -95,19 +95,19 @@ pkg_postinst() {
 	echo "running depmod...."
 	depmod -aq || die
 
-	echo " "
+	echo
 	einfo " Use either 'shfsmount' or 'mount -t shfs' to mount remote"
-	einfo " filesystems to into your local filesystem.               "
-	echo " "
-	echo " "
-	einfo " Note the following:                                      "
-	einfo "                                                          "
-	einfo "   1.  The shfs kernel module has to be loaded first    "
-	einfo "       before you can start mounting filesystems.         "
-	einfo "       Try: 'modprobe shfs' as root.                        "
-	einfo "                                                          "
-	einfo "   2.  When mounting, you must enter the absolute path of "
-	einfo "       the remote filesystem without any special chars,   "
-	einfo "       such as tilde (~), for example.                    "
-	echo " "
+	einfo " filesystems to into your local filesystem."
+	echo
+	echo
+	einfo " Note the following:"
+	einfo
+	einfo "   1.  The shfs kernel module has to be loaded first"
+	einfo "       before you can start mounting filesystems."
+	einfo "       Try: 'modprobe shfs' as root."
+	einfo
+	einfo "   2.  When mounting, you must enter the absolute path of"
+	einfo "       the remote filesystem without any special chars,"
+	einfo "       such as tilde (~), for example."
+	echo
 }

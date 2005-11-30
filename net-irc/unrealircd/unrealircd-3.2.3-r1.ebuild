@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/unrealircd-3.2.3-r1.ebuild,v 1.1 2005/05/03 22:17:13 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/unrealircd/unrealircd-3.2.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:56 chriswhite Exp $
 
-inherit eutils ssl-cert versionator
+inherit eutils ssl-cert versionator multilib
 
 MY_P=Unreal${PV}
 
@@ -14,7 +14,7 @@ SRC_URI="http://unrealircd.funny4chat.de/downloads/${MY_P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="hub ipv6 ssl zlib curl"
 
 RDEPEND="ssl? ( dev-libs/openssl )
@@ -25,10 +25,11 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/Unreal$(get_version_component_range 1-2)"
 
 pkg_setup() {
-	if use curl && ! built_with_use net-misc/curl ares
+	if use curl && ( ! built_with_use net-misc/curl ares || built_with_use net-misc/curl ipv6 )
 	then
 		eerror "You need net-misc/curl compiled with the ares USE flag to be able to use"
-		eerror "net-irc/unrealircd with the curl USE flag."
+		eerror "net-irc/unrealircd with the curl USE flag. Please note that ares support"
+		eerror "for net-misc/curl is incompatible with the ipv6 USE flag."
 		die "need net-misc/curl with ares support"
 	fi
 
@@ -83,7 +84,7 @@ src_install() {
 
 	newbin src/ircd unrealircd || die "newbin failed"
 
-	exeinto /usr/lib/unrealircd/modules
+	exeinto /usr/$(get_libdir)/unrealircd/modules
 	doexe src/modules/*.so || die "doexe failed"
 
 	dodir /etc/unrealircd || die "dodir failed"
@@ -103,7 +104,7 @@ src_install() {
 	doins networks/*.network || die "doins failed"
 
 	sed -i \
-		-e s:src/modules:/usr/lib/unrealircd/modules: \
+		-e s:src/modules:/usr/$(get_libdir)/unrealircd/modules: \
 		-e s:ircd\\.log:/var/log/unrealircd/ircd.log: \
 		${D}/etc/unrealircd/unrealircd.conf
 
@@ -120,7 +121,7 @@ src_install() {
 	chown -R unrealircd ${D}/{etc,var/{lib,log,run}}/unrealircd
 }
 
-pkg_postins() {
+pkg_postinst() {
 	einfo
 	einfo "UnrealIRCd will not run until you've set up /etc/unrealircd/unrealircd.conf"
 	einfo

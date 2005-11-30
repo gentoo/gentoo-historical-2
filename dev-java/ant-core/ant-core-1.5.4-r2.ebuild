@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ant-core-1.5.4-r2.ebuild,v 1.1 2004/09/22 16:45:40 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ant-core-1.5.4-r2.ebuild,v 1.1.1.1 2005/11/30 09:47:48 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -12,13 +12,14 @@ SRC_URI="http://archive.apache.org/dist/ant/source/apache-${MY_PN}-${PV}-src.zip
 LICENSE="Apache-1.1"
 SLOT="0"
 KEYWORDS="x86 ppc sparc amd64"
-IUSE="doc"
+IUSE="doc source"
 
 DEPEND="virtual/libc
+	!<dev-java/ant-1.5.4-r2
 	>=virtual/jdk-1.3
+	source? ( app-arch/zip )
 	>=app-arch/unzip-5.50-r1"
-RDEPEND=">=virtual/jdk-1.3
-	app-shells/bash"
+RDEPEND=">=virtual/jdk-1.3"
 
 S="${WORKDIR}/apache-ant-${PV}"
 
@@ -98,7 +99,9 @@ src_install() {
 
 	java-pkg_dojar build/lib/*.jar
 
-	dodoc LICENSE LICENSE.* README WHATSNEW KEYS
+	use source && java-pkg_dosrc src/main/*
+
+	dodoc README WHATSNEW KEYS
 	use doc && dohtml welcome.html
-	use doc && dohtml -r docs/*
+	use doc && java-pkg_dohtml -r docs/*
 }

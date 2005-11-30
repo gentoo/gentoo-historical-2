@@ -1,6 +1,35 @@
 # ChangeLog for dev-php/PEAR-HTML_Table
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_Table/ChangeLog,v 1.1 2005/07/21 06:12:10 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_Table/ChangeLog,v 1.1.1.1 2005/11/30 09:47:51 chriswhite Exp $
+
+*PEAR-HTML_Table-1.6.1 (31 Oct 2005)
+
+  31 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Table-1.6.0.ebuild, +PEAR-HTML_Table-1.6.1.ebuild:
+  Version bump.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-HTML_Table-1.6.0.ebuild:
+  Add ~amd64.
+
+*PEAR-HTML_Table-1.6.0 (23 Oct 2005)
+
+  23 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Table-1.5-r1.ebuild, +PEAR-HTML_Table-1.6.0.ebuild:
+  Version bump.
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-HTML_Table-1.5-r1.ebuild:
+  Fix RDEPEND.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org> PEAR-HTML_Table-1.5-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-HTML_Table-1.5-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-HTML_Table-1.5-r1.ebuild:
+  Use new PEAR eclass.
 
 *PEAR-HTML_Table-1.5 (21 Jul 2005)
 

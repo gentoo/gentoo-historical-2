@@ -1,6 +1,27 @@
 # ChangeLog for app-crypt/aespipe
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/aespipe/ChangeLog,v 1.1 2004/02/11 14:56:23 aliz Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/aespipe/ChangeLog,v 1.1.1.1 2005/11/30 09:44:48 chriswhite Exp $
+
+  10 Aug 2005; Kito <kito@gentoo.org> aespipe-2.3b.ebuild:
+  ~ppc-macos keyword.
+
+*aespipe-2.3b (18 Jun 2005)
+
+  18 Jun 2005; Jon Portnoy <avenj@gentoo.org> aespipe-2.3b.ebuild:
+  Version bump, clears bugs #52046 & #95941.
+
+  31 Dec 2004; Jason Wever <weeve@gentoo.org> aespipe-2.2a.ebuild:
+  Added ~sparc keyword.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  aespipe-2.2a.ebuild:
+  Masked aespipe-2.2a.ebuild stable for ppc
+
+  03 Sep 2004; David Holm <dholm@gentoo.org> aespipe-2.2a.ebuild:
+  Added to ~ppc.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> aespipe-2.2a.ebuild :
+  Stable on AMD64 and x86.
 
 *aespipe-2.2a (11 Feb 2004)
 

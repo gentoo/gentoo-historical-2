@@ -1,6 +1,15 @@
 # ChangeLog for dev-java/xjavadoc
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xjavadoc/ChangeLog,v 1.1 2005/04/03 02:47:53 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xjavadoc/ChangeLog,v 1.1.1.1 2005/11/30 09:47:26 chriswhite Exp $
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> xjavadoc-1.1.ebuild:
+  stable on amd64, ppc and x86
+
+  19 Apr 2005; Thomas Matthijs <axxo@gentoo.org> xjavadoc-1.1.ebuild:
+  fix src_uri
+
+  03 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> xjavadoc-1.1.ebuild:
+  added ~ppc to KEYWORDS.
 
 *xjavadoc-1.1 (03 Apr 2005)
 

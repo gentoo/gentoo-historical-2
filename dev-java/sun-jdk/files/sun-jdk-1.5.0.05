@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/files/sun-jdk-1.5.0.05,v 1.1 2005/09/16 13:33:19 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/files/sun-jdk-1.5.0.05,v 1.1.1.1 2005/11/30 09:47:18 chriswhite Exp $
 
 VERSION="Sun JDK @PV@"
 JAVA_HOME=/opt/@P@

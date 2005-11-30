@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/plwm/plwm-2.6_alpha.ebuild,v 1.1 2004/06/03 20:25:32 lordvan Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/plwm/plwm-2.6_alpha.ebuild,v 1.1.1.1 2005/11/30 09:44:59 chriswhite Exp $
 
-inherit distutils
+inherit distutils eutils
 
 MY_P="PLWM-${PV/_alpha/a}"
 DESCRIPTION="Python classes for, and an implementation of, a window manager."
@@ -17,6 +17,14 @@ RDEPEND=">=dev-lang/python-2.2.2
 	>=dev-python/python-xlib-0.12"
 
 S=${WORKDIR}/${MY_P}
+
+src_unpack() {
+	unpack ${A}
+
+	# patch from upstream to make utils useable again
+	cd ${S}
+	epatch ${FILESDIR}/${P}.patch
+}
 
 src_install() {
 	distutils_src_install

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/treeviewx/treeviewx-0.5.1.ebuild,v 1.1 2005/10/01 21:01:39 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/treeviewx/treeviewx-0.5.1.ebuild,v 1.1.1.1 2005/11/30 09:48:45 chriswhite Exp $
 
 inherit eutils
 
@@ -13,19 +13,26 @@ KEYWORDS="~x86"
 SLOT="0"
 IUSE=""
 
-DEPEND=">=x11-libs/wxGTK-2.6*"
+DEPEND=">=x11-libs/wxGTK-2.6"
 
 S="${WORKDIR}/tv-${PV}"
+
+pkg_setup() {
+	if ! built_with_use x11-libs/wxGTK X; then
+		echo
+		eerror "TreeViewX requires an SVG library which is part of the"
+		eerror "optional X support in the \"x11-libs/wxGTK\" package. To"
+		eerror "install TreeViewX on your system, first recompile"
+		eerror "\"x11-libs/wxGTK\" with the \"X\" USE flag enabled, then try"
+		eerror "to install TreeViewX again."
+		die "X support not enabled in \"x11-libs/wxGTK\""
+	fi
+}
 
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/${PN}-wxt.patch
-}
-
-src_compile() {
-	econf || die "econf failed"
-	emake || die "emake failed"
 }
 
 src_install() {

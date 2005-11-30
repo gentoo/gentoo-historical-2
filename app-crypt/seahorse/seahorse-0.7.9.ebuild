@@ -1,17 +1,20 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-0.7.9.ebuild,v 1.1 2005/07/29 23:07:08 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/seahorse/seahorse-0.7.9.ebuild,v 1.1.1.1 2005/11/30 09:44:47 chriswhite Exp $
 
-inherit gnome2 eutils
+inherit gnome2 eutils autotools flag-o-matic
 
 DESCRIPTION="gnome front end to gnupg"
 HOMEPAGE="http://seahorse.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~ppc64"
+KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 
-RDEPEND="virtual/x11
+RDEPEND="|| ( (
+		x11-libs/libICE
+		x11-libs/libSM )
+	virtual/x11 )
 	>=app-crypt/gnupg-1.2.0
 	>=app-crypt/gpgme-1.0.0
 	>=gnome-base/libgnomeui-2
@@ -25,6 +28,7 @@ RDEPEND="virtual/x11
 	>=gnome-base/nautilus-2.10
 	dev-util/intltool
 	dev-libs/glib
+	>=net-libs/libsoup-2.2
 	x11-misc/shared-mime-info
 	ldap? ( net-nds/openldap )"
 
@@ -37,13 +41,23 @@ DEPEND="${RDEPEND}
 DOCS="AUTHORS ChangeLog NEWS README TODO THANKS"
 IUSE="ldap"
 
+src_unpack() {
+
+	unpack ${A}
+	cd ${S}
+	# Apply patch to allow seahorse-0.7.9 to compile with
+	# gedit-2.12. See bug #106133, <obz@gentoo.org>
+	epatch ${FILESDIR}/${P}-gedit-2.12.patch
+	epatch ${FILESDIR}/${P}-gpgme-1.1.0.patch
+	# Re-configure
+	eautoconf
+
+}
+
 src_compile() {
 	# autoconf
-	# note below doesn't work - need to fix
-	append-ldflags -Wl,-z,now
-	export LDFLAGS
-
-	G2CONF=`use_enable ldap`
+	append-ldflags $(bindnow-flags)
+	G2CONF=$(use_enable ldap)
 	gnome2_src_compile
 }
 

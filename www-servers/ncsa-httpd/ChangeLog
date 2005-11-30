@@ -1,6 +1,17 @@
-# ChangeLog for net-www/ncsa-httpd
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/ncsa-httpd/ChangeLog,v 1.1 2004/08/08 17:46:54 stuart Exp $
+# ChangeLog for www-servers/ncsa-httpd
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/ncsa-httpd/ChangeLog,v 1.1.1.1 2005/11/30 09:46:38 chriswhite Exp $
+
+  24 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> ncsa-httpd-1.5.2a.ebuild:
+  Don't use chown root:root, bug #103563
+
+  04 May 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/ncsa-httpd-1.5.2a-gdbm_compat.patch, ncsa-httpd-1.5.2a.ebuild:
+  Link against -lgdbm_compat now that it has been broken out. Thanks to Ryan
+  Finnie <gentoo-bugzilla@arrrrrr.com> in bug 91275 for the patch.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> ncsa-httpd-1.5.2a.ebuild:
+  Fixed ChangeLog header. Added missing IUSE.
 
 *ncsa-httpd-1.5.2a (08 Aug 2004)
 

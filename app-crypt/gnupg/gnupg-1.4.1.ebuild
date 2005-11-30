@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.1.ebuild,v 1.1 2005/03/16 22:31:34 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.1.ebuild,v 1.1.1.1 2005/11/30 09:44:50 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -9,13 +9,13 @@ ECCVER_GNUPG=1.4.0
 
 DESCRIPTION="The GNU Privacy Guard, a GPL pgp replacement"
 HOMEPAGE="http://www.gnupg.org/"
-SRC_URI="ftp://ftp.gnupg.org/gcrypt/gnupg/${P}.tar.bz2
+SRC_URI="mirror://gnupg/gnupg/${P}.tar.bz2
 	idea? ( ftp://ftp.gnupg.dk/pub/contrib-dk/idea.c.gz )
 	ecc? ( http://alumnes.eps.udl.es/%7Ed4372211/src/${PN}-${ECCVER_GNUPG}-ecc${ECCVER}.diff.bz2 )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc-macos ~s390 ~sparc ~x86 ~ia64 ~mips ~ppc64"
+KEYWORDS="alpha amd64 ~arm hppa ia64 mips ppc ppc-macos ppc64 ~s390 sparc x86"
 IUSE="bzip2 caps curl ecc idea ldap nls readline selinux smartcard zlib X"
 
 #static not working yet
@@ -36,9 +36,9 @@ RDEPEND="
 	readline? ( sys-libs/readline )
 	smartcard? ( dev-libs/libusb )
 	selinux? ( sec-policy/selinux-gnupg )"
-# waiting on arm arch - bug #76234
+
 RDEPEND="${RDEPEND}
-	!arm? ( X? ( media-gfx/xloadimage media-gfx/xli ) )"
+	X? ( || ( media-gfx/xloadimage media-gfx/xli ) )"
 
 DEPEND="${RDEPEND}
 	dev-lang/perl"
@@ -59,8 +59,11 @@ src_unpack() {
 			einfo "Tweaking PV in ECC patch"
 			sed -i "s/ VERSION='${ECCVER_GNUPG}/ VERSION='${PV}/g" $eccpatch
 		fi
-		EPATCH_OPTS="-p1 -d ${S}" epatch $eccpatch || die "ecc patch failed"
+		EPATCH_OPTS="-p1 -d ${S}" epatch $eccpatch
 	fi
+
+	# maketest fix
+	epatch ${FILESDIR}/${P}-selftest.patch
 
 	# Fix PIC definitions
 	cd ${S}
@@ -88,8 +91,8 @@ src_compile() {
 	# configure doesn't trean --disable-asm correctly
 	use x86 && myconf="${myconf} --enable-asm"
 
-	# waiting on arm bug #76234
-	use arm || myconf="${myconf} `use_enable X photo-viewers`"
+	# fix compile problem on ppc64
+	use ppc64 && myconf="${myconf} --disable-asm"
 
 	econf \
 		`use_enable ldap` \
@@ -104,6 +107,7 @@ src_compile() {
 		`use_enable selinux selinux-support` \
 		`use_with caps capabilities` \
 		`use_with readline` \
+		`use_enable X photo-viewers` \
 		--enable-static-rnd=linux \
 		--libexecdir=/usr/libexec \
 		--enable-sha512 \
@@ -120,18 +124,23 @@ src_install() {
 	emake DESTDIR=${D} libexecdir="/usr/libexec/gnupg" install || die
 
 	# caps support makes life easier
-	use caps || fperms u+s /usr/bin/gpg
+	use caps || fperms u+s,go-r /usr/bin/gpg
 
 	# keep the documentation in /usr/share/doc/...
 	rm -rf "${D}/usr/share/gnupg/FAQ" "${D}/usr/share/gnupg/faq.html"
 
-	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS PROJECTS README THANKS \
+	dodoc AUTHORS BUGS ChangeLog NEWS PROJECTS README THANKS \
 		TODO VERSION doc/{FAQ,HACKING,DETAILS,ChangeLog,OpenPGP,faq.raw}
 
 	docinto sgml
 	dodoc doc/*.sgml
 
 	dohtml doc/faq.html
+
+	# Remove collissions
+	if use ppc-macos; then
+		rm ${D}/usr/lib/charset.alias ${D}/usr/share/locale/locale.alias
+	fi
 }
 
 gnupg_fixcheckperms() {

@@ -1,10 +1,489 @@
 # ChangeLog for sys-kernel/hardened-sources
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hardened-sources/ChangeLog,v 1.1 2003/03/30 23:54:41 method Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hardened-sources/ChangeLog,v 1.1.1.1 2005/11/30 09:49:39 chriswhite Exp $
+
+*hardened-sources-2.4.32 (19 Nov 2005)
+
+  19 Nov 2005; Guillaume Destuynder <kang@gentoo.org>
+  +hardened-sources-2.4.32.ebuild:
+  Bump to 2.4.32, includes RSBAC+PaX patchset with a local 'rsbac' keyword.
+  Add the 'rsbac' USE flag in /etc/portage/package.use for hardened-sources to
+  have RSBAC instead of GrSecurity patchset. (echo sys-kernel/hardened-sources
+  rsbac >> /etc/portage/package.use)
+
+*hardened-sources-2.6.14 (14 Nov 2005)
+
+  14 Nov 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.13-r2.ebuild, +hardened-sources-2.6.14.ebuild:
+  Bumping 2.6 series to 2.6.14.2
+
+*hardened-sources-2.6.13-r2 (20 Oct 2005)
+
+  20 Oct 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.13.ebuild, -hardened-sources-2.6.13-r1.ebuild,
+  +hardened-sources-2.6.13-r2.ebuild:
+  Fixes minor build error in ppc.
+
+*hardened-sources-2.6.13-r1 (17 Oct 2005)
+
+  17 Oct 2005; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.13-r1.ebuild:
+  Updating grsec to latest snapshot. Fixes some minor issues. Updating to
+  2.6.13.4, fixes some major amd64 stability problems.
+
+*hardened-sources-2.6.13 (16 Sep 2005)
+
+  16 Sep 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.11-r14.ebuild, +hardened-sources-2.6.13.ebuild:
+  2.6.13.1 with grsec testing patches. Lots of changes, to name a few big
+  ones: inotify now in kernel, RBAC has moved to chained-hash tables so RBAC
+  users should test this thoroughly.
+
+  01 Jul 2005; <solar@gentoo.org> hardened-sources-2.4.31.ebuild:
+  - stable on x86
+
+*hardened-sources-2.6.11-r15 (27 Jun 2005)
+
+  27 Jun 2005; John Mylchreest <johnm@gentoo.org>
+  +hardened-sources-2.6.11-r15.ebuild:
+  Fixes CAN-2005-1763, CAN-2005-1265 & CAN-2005-176. Also fixes problem with
+  grsec redefining curr_ip struct.
+
+*hardened-sources-2.4.31 (20 Jun 2005)
+
+  20 Jun 2005; <solar@gentoo.org> +hardened-sources-2.4.31.ebuild:
+  initial import of 2.4.31 tree
+
+*hardened-sources-2.6.11-r14 (14 Jun 2005)
+
+  14 Jun 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.11-r13.ebuild, +hardened-sources-2.6.11-r14.ebuild:
+  Updating inotify, grsec, updating to 11-14 genpatches.base, restructuring
+  naming scheme to abide by genpatches
+
+*hardened-sources-2.6.11-r13 (18 May 2005)
+
+  18 May 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.11-r12.ebuild, +hardened-sources-2.6.11-r13.ebuild:
+  Managed to mangle the Makefile patch from grsec, to miss out the grsec
+  target. sorry about that. Fixes bug #93022
+
+*hardened-sources-2.6.11-r12 (17 May 2005)
+
+  17 May 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.10-r3.ebuild, -hardened-sources-2.6.11-r1.ebuild,
+  +hardened-sources-2.6.11-r12.ebuild:
+  Cleanup older sources. Update to 2.6.11.10 - fixes several sec vulns. Also
+  merges in genpatches-base
+
+*hardened-sources-2.6.11-r12 (17 May 2005)
+
+  17 May 2005; John Mylchreest <johnm@gentoo.org>
+  -hardened-sources-2.6.10-r3.ebuild, -hardened-sources-2.6.11-r1.ebuild,
+  +hardened-sources-2.6.11-r12.ebuild:
+  Cleanup older sources. Update to 2.6.11.10 - fixes several sec vulns. Also
+  merges in genpatches-base
+
+  29 Apr 2005; <solar@gentoo.org> -files/2.4.27-CAN-2004-0394.patch,
+  -files/2.4.27-cmdline-race.patch,
+  -files/2.4.28-grsec-2.1.0-pax-mmap-pgtables.patch,
+  -files/2.4.28-grsec-binfmt_a.out.patch,
+  -files/2.4.28-grsec-cmdline-race.patch,
+  -files/2.4.28-selinux-binfmt_a.out.patch,
+  -files/2.4.28-selinux-cmdline-race.patch,
+  -hardened-sources-2.4.28-r5.ebuild, -hardened-sources-2.4.29.ebuild,
+  hardened-sources-2.4.30-r1.ebuild, -hardened-sources-2.4.30.ebuild:
+  - mark .30-r1 stable and remove older vuln ebuilds from the tree. filesdir
+  cleanup..
+
+*hardened-sources-2.4.30-r1 (21 Apr 2005)
+
+  21 Apr 2005; <solar@gentoo.org> +hardened-sources-2.4.30-r1.ebuild:
+  - disable aout by default
+
+*hardened-sources-2.4.30 (18 Apr 2005)
+
+  18 Apr 2005; <solar@gentoo.org> +hardened-sources-2.4.30.ebuild:
+  - 2.4.30 version bump. Adds 4008_CAN-2004-1056 back which was lost in 2.4.29
+  and an optional optimize for size -Os patch with a gcc-3.4 fix for embedded
+  use
+
+*hardened-sources-2.4.29 (30 Mar 2005)
+
+  30 Mar 2005; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.29.ebuild:
+  New hardened-patches-2.4-29.0 patchball.
+  Removed SELinux support, upgraded GRSecurity to 2.1.4.
+
+*hardened-sources-2.4.28-r5 (06 Mar 2005)
+
+  06 Mar 2005; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.28-r5.ebuild:
+  Added a fix for a PaX vulnerability.
+
+26 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  hardened-sources-2.4.28-r4.ebuild:
+  Stable on x86
+
+  23 Jan 2005; <solar@gentoo.org> hardened-sources-2.4.27-r3.ebuild,
+  hardened-sources-2.4.28-r1.ebuild, hardened-sources-2.4.28-r2.ebuild,
+  hardened-sources-2.4.28-r3.ebuild, hardened-sources-2.4.28-r4.ebuild,
+  hardened-sources-2.4.28.ebuild, hardened-sources-2.6.10-r3.ebuild:
+  - fixed/added RDEPEND= in all kernel-2 ebuilds
+
+*hardened-sources-2.4.28-r4 (21 Jan 2005)
+
+  21 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  +hardened-sources-2.4.28-r4.ebuild:
+  Fix vc_resize local DoS, ip_options_get memory leak, and ARP bug in 2.4
+  backport of neighbour hash updates.
+
+  21 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  hardened-sources-2.4.28-r3.ebuild:
+  Stable on x86
+
+*hardened-sources-2.6.10-r3 (20 Jan 2005)
+
+  20 Jan 2005; Brandon Hale <tseng@gentoo.org>
+  +hardened-sources-2.6.10-r3.ebuild:
+  Dual commit hardened-(dev-)sources-2.6.10 to here for the upcoming merge 
+  in 2005.0
+
+  17 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  -hardened-sources-2.4.27-r2.ebuild, hardened-sources-2.4.28-r1.ebuild,
+  hardened-sources-2.4.28-r2.ebuild:
+  Mark stable on x86
+
+*hardened-sources-2.4.28-r3 (17 Jan 2005)
+
+  17 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  +hardened-sources-2.4.28-r3.ebuild:
+  Fix SMP page fault handler vuln, and update device-mapper and evms patches.
+
+  14 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  hardened-sources-2.4.28.ebuild:
+  Mark stable on x86.
+
+*hardened-sources-2.4.28-r2 (13 Jan 2005)
+
+  13 Jan 2005; Adam Mondl <tocharian@gentoo.org>
+  +hardened-sources-2.4.28-r2.ebuild:
+  Updates security fixes and adds squashfs 2.1 support. Thanks to Peter S.
+  Mazinger for grsecurity patches as well.
+
+*hardened-sources-2.4.28-r1 (23 Dec 2004)
+
+  23 Dec 2004; <plasmaroo@gentoo.org> +hardened-sources-2.4.28-r1.ebuild:
+  Security bump. Thank tocharian for rolling a new patchset...
+
+  28 Nov 2004; <solar@gentoo.org> +files/2.4.28-grsec-binfmt_a.out.patch,
+  +files/2.4.28-grsec-cmdline-race.patch,
+  +files/2.4.28-selinux-binfmt_a.out.patch,
+  +files/2.4.28-selinux-cmdline-race.patch, hardened-sources-2.4.28.ebuild:
+  - Round up remaining security patches that appear to be missing in 2.4.28. -
+  PaX standalone updated to current. hgpv=28.1
+
+*hardened-sources-2.4.28 (28 Nov 2004)
+
+  28 Nov 2004; <solar@gentoo.org> +hardened-sources-2.4.28.ebuild:
+  security bump. Thank tocharian for rolling a new patchset
+
+*hardened-sources-2.4.27-r3 (08 Sep 2004)
+
+  08 Sep 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27-r3.ebuild:
+  Applies the new 2.4-27.2 patchball which updates
+  GRSecurity to the 2.0.1 version.
+
+*hardened-sources-2.4.27-r2 (31 Aug 2004)
+
+  31 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27-r2.ebuild:
+  Version bump. 
+  This version uses the new 2.4-27.1 patchball which updates 
+  both the SELinux PaX hooks patch and the SELinux headers.
+
+*hardened-sources-2.4.27-r1 (09 Aug 2004)
+
+  09 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27-r1.ebuild,
+  -hardened-sources-2.4.27.ebuild,
+  +files/2.4.27-cmdline-race.patch:
+  Version bump, fix for cmdline race. See bug #59905.
+
+*hardened-sources-2.4.26-r6 (09 Aug 2004)
+
+  09 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r6.ebuild,
+  -hardened-sources-2.4.26-r5.ebuild,
+  -hardened-sources-2.4.26-r4.ebuild,
+  +files/2.4.26-cmdline-race.patch:
+  Version bump, fix for cmdline race. See bug #59905.
+
+*hardened-sources-2.4.27 (08 Aug 2004)
+
+  08 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.27.ebuild,
+  +files/2.4.27-CAN-2004-0394.patch:
+  Ported the patchball to the 2.4.27 kernel version.
+
+*hardened-sources-2.4.26-r5 (07 Aug 2004)
+
+  07 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r5.ebuild:
+  Updated to use the new hardened-patches-2.4-26.1 patchball.
+  It adds the following features:
+  - Squashfs
+  - Ebtables
+  - Netdev random (core+drivers)
+  - Watchdog Timer (WDT) fix.
+
+*hardened-sources-2.4.26-r4 (04 Aug 2004)
+
+  04 Aug 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r4.ebuild,
+  +files/2.4.26-CAN-2004-0415.patch,
+  -hardened-sources-2.4.26-3:
+  Version bump, fix for CAN 0415, see bug #59378.
+  
+*hardened-sources-2.4.26-r3 (22 Jul 2004)
+
+  22 Jul 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r3.ebuild,
+  +files/2.4.26-CAN-2004-0497.patch,
+  -hardened-sources-2.4.26-r2.ebuild:
+  Version bump, fixed CAN 0497, see bug #56171.
+  
+*hardened-sources-2.4.26-r2 (29 Jun 2004)
+
+  29 Jun 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r2.ebuild,
+  +files/2.4.26-CAN-2004-0495.patch,
+  +files/2.4.26-CAN-2004-0535.patch,
+  -hardened-sources-2.4.26-r1.ebuild:
+  Fixes for both CAN 0495 and 0535, see bug #54976
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org>
+  hardened-sources-2.4.26-r1.ebuild:
+  QA - fix use invocation
+
+*hardened-sources-2.4.26-r1 (22 June 2004)
+
+  22 June 2004; Andrea Luzzardi <scox@gentoo.org>
+  +hardened-sources-2.4.26-r1.ebuild,
+  +files/2.4.26-CAN-2004-0394.patch, 
+  +files/2.4.26-signal-race.patch,
+  -hardened-sources-2.4.26.ebuild,
+  -hardened-sources-2.4.24-r3.ebuild:
+  Version bump for the CAN-2004-0394 issue and bug #53804
+  Marked 2.4.26-r1 as stable, removed 2.4.26 and 2.4.24-r3
+  
+  
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  hardened-sources-2.4.24-r3.ebuild, hardened-sources-2.4.26.ebuild:
+  Masked hardened-sources-2.4.26.ebuild broken for ppc
+
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  hardened-sources-2.4.24-r3.ebuild:
+  Masked hardened-sources-2.4.24-r3.ebuild broken for ppc
+
+*hardened-sources-2.4.26 (29 May 2004)
+
+ 29 May 2004; Andrea Luzzardi <scox@gentoo.org>
+ +hardened-sources-2.4.26.ebuild:
+ Updated hardened-sources for the 2.4.26 kernel
+ Removed broken components, updated almost everything.
+ 
+*hardened-sources-2.4.24-r3 (17 Apr 2004)
+
+  17 Apr 2004; <plasmaroo@gentoo.org>
+  +files/hardened-sources-2.4.24.CAN-2004-0010.patch,
+  +files/hardened-sources-2.4.24.CAN-2004-0177.patch,
+  +files/hardened-sources-2.4.24.CAN-2004-0178.patch,
+  +hardened-sources-2.4.24-r3.ebuild:
+  Added patches for the CAN-2004-0010, CAN-2004-0177 and CAN-2004-0178
+  vulnerabilities. Old revisions removed.
+
+*hardened-sources-2.4.24-r2 (15 Apr 2004)
+
+  15 Apr 2004; <plasmaroo@gentoo.org>
+  +files/hardened-sources-2.4.24.CAN-2004-0109.patch,
+  -hardened-sources-2.4.24-r1.ebuild, +hardened-sources-2.4.24-r2.ebuild:
+  Version bump for the CAN-2004-0109 issue; bug #47881.
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
+  hardened-sources-2.4.22-r2.ebuild, hardened-sources-2.4.24-r1.ebuild:
+  Add eutils to inherit.
+
+*hardened-sources-2.4.24-r1 (19 Feb 2004)
+
+  19 Feb 2004; <plasmaroo@gentoo.org> hardened-sources-2.4.24-r1.ebuild,
+  files/hardened-sources-2.4.24.munmap.patch:
+  Added the patch for the mremap/munmap vulnerability. Bug #42024.
+
+*hardened-sources-2.4.24 (06 Feb 2004)
+
+  06 Feb 2004; Andrea Luzzardi <scox@gentoo.org>
+  hardened-sources-2.4.24.ebuild:
+  Version bump, updated most of the components.
+  This release includes the following:
+
+  - Hardened security
+  - Netfilter patch-o-matic 20031219
+  - FreeSWAN 2.04 & x509 1.4.8
+  - EVMS 2.2.2
+  - XFS 1.3.1
+  - cryptoloop jari
+  - grsecurity 2.0-rc4
+  - SELinux
+  - PaX 200402060000
+  - PaX Obscurity 200308302223
+  - Others...
+
+  Neither -ck nor systrace are included anymore.
+
+*hardened-sources-2.4.22-r2 (05 Jan 2004)
+
+  05 Jan 2004; Andrea Luzzardi <scox@gentoo.org>
+  hardened-sources-2.4.22-r2.ebuild:
+  Version bump for the 'mremap' and the 'rtc' vulnerabilities.
+
+*hardened-sources-2.4.22-r1 (02 Dec 2003)
+
+  02 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  hardened-sources-2.4.22-r1.ebuild: Fix up a little booboo from earlier.
+
+  02 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  hardened-sources-2.4.22-r1.ebuild: 
+  Version bump for the 'do_brk' vulnerability.
+
+  01 Dec 2003; Brian Jackson <iggy@gentoo.org>
+  hardened-sources-2.4.20-r2.ebuild, hardened-sources-2.4.20-r3.ebuild,
+  hardened-sources-2.4.20-r4.ebuild, hardened-sources-2.4.21.ebuild,
+  hardened-sources-2.4.22.ebuild, files/do_brk_fix.patch:
+  Fix the 'do_brk' vulnerability.
+
+  03 Nov 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.22.ebuild:
+  - Removed the src_install() portion for SELinux flask
+    components.  These are no longer handled in the kernel
+    so this code was not necessary.
+
+  29 Oct 2003; Matthew Rickard <frogger@gentoo.org> hardened-sources-2.4.22.ebuild:
+  New 2.4.22 based hardened-sources thanks to
+  Phil West <p.west@computer.org>.
+  
+  These sources include:
+  	- New SELinux API
+  	- Updated CK-base
+  	- Updated GRSec
+  	- Systrace
+  	- SuperFreeS/WAN 1.99.8
+  	- Propolice kernel build support
+  	- EVMS
+  	- Other various security related patches
+
+*hardened-sources-2.4.21 (14 Sep 2003)
+
+  14 Sep 2003; Matthew Rickard <frogger@gentoo.org> hardened-sources-2.4.21.ebuild:
+  Updated hardened-sources based on the 2.4.21 Linux kernel.
+  This includes updates to most major components such as:
+    - ck-base-0306300059
+    - selinux-2.4-2003071106
+    - grsecurity-2.0-rc1
+    - Updated IPTables patch-o-matic
+    - Updated SuperFreeS/WAN
+
+  Thanks to Phil West <pwest@computer.org> for his work in getting this
+  updated patch set ready for the 2.4.21 based kernel.
+  
+  16 Jun 2003; Matthew Rickard <frogger@gentoo.org> :
+  Initial import of hardened-sources-2.4.20-r4.  This revision
+  includes only a few changes, but one of these is an important
+  security fix.  It is recommended all users of hardened-sources
+  upgrade to this release.
+
+  	- ioperm bug fix
+  	- fixed compilation failure when building without GRSec
+
+  SAL (Secure Auditing for Linux) is NOT included in this revision
+  due to time constraints, but is planned for inclusion in the near
+  future.
+
+*hardened-sources-2.4.20-r2 (12 Jun 2003)
+
+  12 Jun 2003; <msterret@gentoo.org> hardened-sources-2.4.20-r2.ebuild,
+  hardened-sources-2.4.20-r3.ebuild:
+  Add Header...
+
+  08 Jun 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r3.ebuild:
+  Removed warnings from ebuild.  This kernel should be safe to
+  use at this point.
+
+*hardened-sources-2.4.20-r3 (08 Jun 2003)
+
+  08 Jun 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r3.ebuild:
+  New revision.  Includes the following changes over -r2:
+
+  - ck7-base (O(1), preempt, low latency)
+  - Super FreeS/WAN 1.99.7rc2
+  - PaX for the LSM/SELinux branch
+  - GRSecurity 2.0-pre4 (role based access control)
+  - Systrace 1.3
+  - EXT3 fixes
+  - EVMS 2.0.1
+  - GCC 3.1+ compile optimizations
+  - ProPolice kernel build support
+  - Hashing table security fixes
+
+*hardened-sources-2.4.20-r1 (09 Apr 2003)
+
+  23 Apr 2003; Matthew Rickard <frogger@gentoo.org> Manifest:
+  Initial import of hardened-sources-r2.  This new
+  ebuild includes many new performance and security
+  related patches.  As in -r1, it will patch in
+  LSM/SELinux if "selinux" is in USE, otherwise it
+  will patch in GRSecurity.  The following patches
+  are included in this revision:
+
+    - O(1) Scheduler, Low Latency, and Preempt
+  	(pulled from the base CK patch)
+    - ptrace exploit patch for the LSM kernel
+  	(the GRSec patch already fixes this)
+    - LSM 2.4-2003040709
+    - SELinux 2.4-2003040709
+    - Systrace v1.2
+    - IPTables patch-o-matic base patches - 20030107
+    - CryptoAPI 2.4.20.1 w/ loop-jari patch
+    - Super FreeS/WAN 1.99.6.1
+    - GRSecurity 1.9.9g
+    - MPPE
+    - EXT3 data journal fix
+    - CIPE 1.5.4
+
+  12 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild, manifest:
+  Updated to install flask components correctly for selinux.
+
+  12 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild:
+  LSM/SELinux is now patched in when "selinux" is in USE.  Otherwise, GRSecurity
+  is patched in instead.  Ptrace patches for selinux have also been added.  In
+  either case, systrace support will be patched in as well.
+
+  09 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild, hardened-sources-2.4.20.ebuild, manifest:
+  Revision bump for new sources.
+  
+  09 Apr 2003; Matthew Rickard <frogger@gentoo.org>
+  hardened-sources-2.4.20-r1.ebuild:
+  Now includes LSM1, GRSec-2.0-pre1, and systrace-v1.2.
 
 *hardened-sources-2.4.20 (30 Mar 2003)
-
+  
   30 Mar 2003; Joshua Brindle <method@gentoo.org>
   hardened-sources-2.4.20.ebuild:
-  initial import, only has systrace support
+  Initial import, only has systrace support.
 

@@ -1,6 +1,18 @@
-# ChangeLog for net-misc/multiimonc
+# ChangeLog for net-dialup/multiimonc
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/multiimonc/ChangeLog,v 1.1 2005/04/25 19:48:38 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/multiimonc/ChangeLog,v 1.1.1.1 2005/11/30 09:45:56 chriswhite Exp $
+
+  04 Jul 2005; Michael Hanselmann <hansmi@gentoo.org>
+  +files/0.3.6-TextScrollWindow.diff, multiimonc-0.3.6.ebuild:
+  Added patch for #97526.
+
+  12 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  -multiimonc-0.3.5.ebuild, multiimonc-0.3.6.ebuild:
+  Stable on hppa, removed old version.
+
+  19 May 2005; Michael Hanselmann <hansmi@gentoo.org>
+  multiimonc-0.3.6.ebuild:
+  Stable on ppc, amd64, x86, sparc and unstable on hppa.
 
   25 Apr 2005; Alin Nastac <mrness@gentoo.org> metadata.xml,
   -multiimonc-0.3.4.ebuild:

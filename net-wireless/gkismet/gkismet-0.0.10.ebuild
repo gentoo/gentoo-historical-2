@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gkismet/gkismet-0.0.10.ebuild,v 1.1 2005/06/08 15:55:17 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gkismet/gkismet-0.0.10.ebuild,v 1.1.1.1 2005/11/30 09:45:43 chriswhite Exp $
 
 inherit eutils
 
@@ -10,13 +10,13 @@ HOMEPAGE="http://gkismet.sourceforge.net"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 x86"
 
 IUSE=""
 
-DEPEND="sys-apps/sed"
-RDEPEND="dev-perl/gtk-perl
-		>=net-wireless/kismet-2005.04.1"
+RDEPEND="dev-perl/gtk-perl"
+DEPEND="${RDEPEND}
+		sys-apps/sed"
 
 pkg_setup() {
 	if ! built_with_use dev-perl/gtk-perl gnome; then

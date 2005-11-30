@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-gui/foomatic-gui-0.7.4.16.ebuild,v 1.1 2005/08/08 03:11:54 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-gui/foomatic-gui-0.7.4.16.ebuild,v 1.1.1.1 2005/11/30 09:48:16 chriswhite Exp $
 
 inherit distutils
 

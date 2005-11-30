@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/boa/boa-0.94.13.ebuild,v 1.1 2004/08/08 11:09:49 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/boa/boa-0.94.13.ebuild,v 1.1.1.1 2005/11/30 09:46:38 chriswhite Exp $
 
 inherit eutils
 

@@ -1,17 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_tcl/mod_tcl-1.0.ebuild,v 1.1 2004/08/15 17:22:51 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_tcl/mod_tcl-1.0.ebuild,v 1.1.1.1 2005/11/30 09:49:15 chriswhite Exp $
 
 inherit eutils
 
 DESCRIPTION="An Apache2 DSO providing an embedded Tcl interpreter"
 HOMEPAGE="http://tcl.apache.org/mod_tcl/"
 
-S=${WORKDIR}/${P}
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 DEPEND="dev-lang/tcl =net-www/apache-2*"
 LICENSE="Apache-1.1"
-KEYWORDS="x86"
+KEYWORDS="x86 ~ppc"
 IUSE=""
 SLOT="0"
 

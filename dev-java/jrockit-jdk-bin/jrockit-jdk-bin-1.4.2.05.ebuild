@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jrockit-jdk-bin/jrockit-jdk-bin-1.4.2.05.ebuild,v 1.1 2005/03/27 23:31:52 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jrockit-jdk-bin/jrockit-jdk-bin-1.4.2.05.ebuild,v 1.1.1.1 2005/11/30 09:47:09 chriswhite Exp $
 
 IUSE=""
 
@@ -29,9 +29,8 @@ DEPEND="virtual/libc
 	>=dev-java/java-config-0.2.5
 	>=app-arch/unzip-5.50-r1"
 
-PROVIDE="virtual/jre-1.4
-	virtual/jdk-1.4
-	virtual/java-scheme-2"
+PROVIDE="virtual/jre
+	virtual/jdk"
 
 pkg_nofetch() {
 	einfo "Please download ${A} from:"
@@ -46,17 +45,17 @@ src_unpack() {
 
 	cd ${S}
 	for z in *.zip ; do
-		unzip $z
+		unzip $z || die
 		rm $z
 	done
 }
 
-src_install () {
+src_install() {
 	local dirs="bin console include jre lib"
 	dodir /opt/${P}
 
 	for i in ${dirs} ; do
-		cp -dR $i ${D}/opt/${P}/
+		cp -R $i ${D}/opt/${P}/ || die
 	done
 
 	newdoc README.TXT README
@@ -67,6 +66,7 @@ src_install () {
 
 pkg_postinst () {
 	# Set as default VM if none exists
+	java_pkg_postinst
 	einfo "Please review the license agreement in /usr/doc/${P}/LICENSE"
 	einfo "If you do not agree to the terms of this license, please uninstall this package"
 }

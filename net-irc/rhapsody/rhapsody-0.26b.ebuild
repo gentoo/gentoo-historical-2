@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/rhapsody/rhapsody-0.26b.ebuild,v 1.1 2005/08/27 02:19:42 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/rhapsody/rhapsody-0.26b.ebuild,v 1.1.1.1 2005/11/30 09:48:57 chriswhite Exp $
 
 inherit toolchain-funcs
 

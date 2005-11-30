@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ipw2200/ipw2200-1.0.5.ebuild,v 1.1 2005/07/12 21:51:49 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ipw2200/ipw2200-1.0.5.ebuild,v 1.1.1.1 2005/11/30 09:45:42 chriswhite Exp $
 
 inherit linux-mod
 

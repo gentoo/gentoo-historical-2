@@ -1,6 +1,6 @@
-# Copyright 2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-fr/ispell-fr-1.0.ebuild,v 1.1 2002/12/03 07:15:39 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-fr/ispell-fr-1.0.ebuild,v 1.1.1.1 2005/11/30 09:46:55 chriswhite Exp $
 
 MY_P="Francais-GUTenberg-v${PV}"
 S=${WORKDIR}/${MY_P}
@@ -10,7 +10,8 @@ HOMEPAGE="http://www.unil.ch/ling/cp/frgut.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+IUSE=""
+KEYWORDS="ppc x86 sparc alpha mips hppa"
 
 DEPEND="app-text/ispell"
 

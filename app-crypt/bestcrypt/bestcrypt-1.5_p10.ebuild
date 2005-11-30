@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/bestcrypt/bestcrypt-1.5_p10.ebuild,v 1.1 2005/01/07 08:55:43 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/bestcrypt/bestcrypt-1.5_p10.ebuild,v 1.1.1.1 2005/11/30 09:44:53 chriswhite Exp $
 
 inherit flag-o-matic eutils linux-mod toolchain-funcs
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.jetico.com/linux/BestCrypt-${PV/_p/-}.tar.gz
 LICENSE="bestcrypt"
 SLOT="0"
 IUSE=""
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="-amd64 x86"
 
 DEPEND="virtual/linux-sources"
 
@@ -82,7 +82,7 @@ src_install() {
 	dodoc README LICENSE HIDDEN_PART
 
 	insinto /etc/devfs.d
-	doins files/bestcrypt.devfs
+	doins ${FILESDIR}/bestcrypt.devfs
 }
 
 
@@ -97,4 +97,11 @@ pkg_postinst() {
 	einfo
 	ewarn "The BestCrypt drivers are not free - Please purchace a license from "
 	ewarn "http://www.jetico.com/"
+
+	if [ -e "${ROOT}/dev/.devfsd" ]; then
+		killall -HUP devfsd
+	fi
+
+	einfo
+	linux-mod_pkg_postinst
 }

@@ -1,32 +1,27 @@
-# Copyright 2000 Daniel Robbins, Gentoo Foundation.
-# System-wide defaults for the Portage system
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/cobalt/2004.2/make.defaults,v 1.1.1.1 2005/11/30 09:48:37 chriswhite Exp $
 
 ARCH="mips"
 
-# Host-type
-
-# Cobalt is little-endian mips
-CHOST=mipsel-unknown-linux-gnu
-PLATFORM=$CHOST
-
-# Options passed to make during the build process
-MAKEOPTS="-j1"
+# cobalt is a little endian, 32bit-only system
+CHOST="mipsel-unknown-linux-gnu"
 
 # Distinguish cobalt from other mips profiles
 PROFILE_ARCH="cobalt"
 
-# Fetching command (5 tries, passive ftp for firewall compatibility)
-FETCHCOMMAND="/usr/bin/wget -t 5 --passive-ftp \${URI} -P \${DISTDIR}"
-# Global configure options
-FEATURES="ccache"
-# C Compiler flags
-CFLAGS="-O2 -pipe"
-# C++ Compiler flags
-CXXFLAGS=${CFLAGS}
+# Sandbox is broken on mips (Bug #45814)
+FEATURES="-sandbox ccache autoconfig"
 
-USE="slang readline gpm berkdb gdbm tcpd pam libwww ssl nls perl python sdl mips"
+# Compiler flags
+# We build mips4 by default because all cobalt systems use an RM5231 (or derivative)
+# CPU, which is in the R5000-class and is thus mips4 capable.  We also force the
+# ABI to o32 because there is no mips64 support on cobalt (yet) and it therefore
+# cannot run anything else.
+CFLAGS="-O2 -pipe -march=mips4 -mabi=32"
+CXXFLAGS=${CFLAGS}
 
 ACCEPT_KEYWORDS="mips"
 
-COMPILER="gcc3"
-
+USE="readline gpm berkdb fortran gdbm tcpd pam libwww ssl nls perl python sdl cobalt -n32 -n64 -multilib nomultilib"
+GRP_STAGE23_USE="readline gpm berkdb gdbm tcpd pam libwww ssl nls perl python sdl cobalt -n32 -n64 -multilib nomultilib"

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/jboss/jboss-3.2.5.ebuild,v 1.1 2004/08/08 17:14:24 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/jboss/jboss-3.2.5.ebuild,v 1.1.1.1 2005/11/30 09:46:39 chriswhite Exp $
 
 inherit eutils
 
@@ -11,9 +11,9 @@ SRC_URI="mirror://sourceforge/jboss/${MY_P}.tar.bz2"
 RESTRICT="nomirror"
 HOMEPAGE="http://www.jboss.org"
 LICENSE="LGPL-2"
-IUSE="doc"
+IUSE=""
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="amd64 ppc ppc64 ~sparc x86"
 
 RDEPEND=">=virtual/jdk-1.3"
 DEPEND="${RDEPEND}
@@ -38,7 +38,7 @@ src_install() {
 	dodir ${INSTALL_DIR}/bin
 
 	for f in run.sh shutdown.sh run.jar shutdown.jar; do
-		cp build/output/${PN}-${PV}/bin/${f} ${D}/${INSTALL_DIR}/bin
+		cp build/output/${P}/bin/${f} ${D}/${INSTALL_DIR}/bin || die "failed"
 	done
 
 	exeinto /etc/init.d
@@ -53,17 +53,17 @@ src_install() {
 #	see NEWS.Gentoo
 #	echo 'CONFIG_PROTECT="/var/lib/jboss"' >>${D}/etc/env.d/50jboss
 
-	for i in build/output/${PN}-${PV}/server \
-		build/output/${PN}-${PV}/lib \
-		build/output/${PN}-${PV}/client
+	for i in build/output/${P}/server \
+		build/output/${P}/lib \
+		build/output/${P}/client
 	do
-		cp -a $i ${D}/${INSTALL_DIR}/
+		cp -pPR $i ${D}/${INSTALL_DIR}/ || die "failed"
 	done
 
 	dodir /var/lib/jboss
 	mv ${D}/${INSTALL_DIR}/server/{all,default,minimal} ${D}/var/lib/jboss
 	for server in all default minimal; do
-		cp ${FILESDIR}/${PV}/log4j.xml ${D}/var/lib/jboss/${server}/conf/
+		cp ${FILESDIR}/${PV}/log4j.xml ${D}/var/lib/jboss/${server}/conf/ || die "failed"
 	done
 	rmdir ${D}/${INSTALL_DIR}/server
 
@@ -78,7 +78,7 @@ EOF
 	dodoc server/src/docs/LICENSE.txt \
 		${FILESDIR}/${PV}/README.Gentoo \
 		${FILESDIR}/${PV}/NEWS.Gentoo
-	cp -r build/output/${PN}-${PV}/docs/examples ${D}/usr/share/doc/${PF}/
+	cp -r build/output/${P}/docs/examples ${D}/usr/share/doc/${PF}/
 
 	insinto /usr/share/sgml/jboss/
 	doins build/output/${P}/docs/dtd/*

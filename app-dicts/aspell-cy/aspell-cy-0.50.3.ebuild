@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-cy/aspell-cy-0.50.3.ebuild,v 1.1 2002/12/03 07:15:38 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-cy/aspell-cy-0.50.3.ebuild,v 1.1.1.1 2005/11/30 09:46:51 chriswhite Exp $
 
 ASPELL_LANG="Welsh"
 

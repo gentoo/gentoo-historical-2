@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/skunkweb-3.4_beta5-r1.ebuild,v 1.1 2004/11/06 12:35:34 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/skunkweb-3.4_beta5-r1.ebuild,v 1.1.1.1 2005/11/30 09:46:43 chriswhite Exp $
 
 inherit eutils
 
@@ -21,7 +21,7 @@ DEPEND=">=dev-lang/python-2.2
 
 pkg_setup() {
 	enewgroup skunkweb
-	enewuser skunkweb -1 /bin/false /usr/share/skunkweb skunkweb
+	enewuser skunkweb -1 -1 /usr/share/skunkweb skunkweb
 }
 
 src_compile() {

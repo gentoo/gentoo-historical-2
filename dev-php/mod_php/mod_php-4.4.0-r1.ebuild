@@ -1,12 +1,19 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.4.0-r1.ebuild,v 1.1 2005/07/12 07:26:34 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.4.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:10 chriswhite Exp $
 
-IUSE="${IUSE} apache2"
+IUSE="apache2"
 
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~ppc64"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
 detectapache() {
+	# DO NOT REPLICATE THIS IN ANY OTHER PACKAGE WITHOUT PORTAGE DEVS PERMISSION
+	# IT IS BROKEN AND A TEMPORARY MEASURE!
+	# YOU'VE BEEN WARNED.
+	if [[ ${EBUILD_PHASE/depend} != ${EBUILD_PHASE} ]]; then
+		APACHEVER=1
+		return
+	fi
 	local domsg=
 	[ -n "$1" ] && domsg=1
 	HAVE_APACHE1=
@@ -43,7 +50,7 @@ SLOT="${APACHEVER}"
 [ "${APACHEVER}" -eq '2' ] && USE_APACHE2='2' || USE_APACHE2=''
 
 PHPSAPI="apache${APACHEVER}"
-SRC_URI_BASE="http://downloads.php.net/ilia/" # for RC only
+#SRC_URI_BASE="http://downloads.php.net/ilia/" # for RC only
 
 # BIG FAT WARNING!
 # the php eclass requires the PHPSAPI setting!
@@ -54,12 +61,12 @@ inherit php-sapi eutils apache-module flag-o-matic
 DESCRIPTION="Apache module for PHP"
 
 DEPEND_EXTRA=">=net-www/apache-1.3.33-r10
-			  apache2? ( >=net-www/apache-2.0.54-r10 )"
+			  apache2? ( >=net-www/apache-2.0.54-r30 )"
 DEPEND="${DEPEND} ${DEPEND_EXTRA}"
 RDEPEND="${RDEPEND} ${DEPEND_EXTRA}"
 IUSE="${IUSE} debug"
 # for this revision only
-PDEPEND=">=${PHP_PROVIDER_PKG}-4.3.10"
+PDEPEND=">=${PHP_PROVIDER_PKG}-4.4.0"
 PROVIDE="${PROVIDE} virtual/httpd-php"
 
 # generalize some apache{,2} vars (defined by apache-module.eclass)
@@ -112,8 +119,11 @@ src_compile() {
 		esac;
 	fi
 
-	#use apache2 \
+	#use apache2
 	myconf="${myconf} --with-apxs${USE_APACHE2}=/usr/sbin/apxs${USE_APACHE2}"
+
+	# Do not build CLI SAPI module.
+	myconf="${myconf} --disable-cli --without-pear"
 
 	php-sapi_src_compile
 }
@@ -187,7 +197,7 @@ pkg_postinst() {
 		apache2msg
 	else
 		einfo "1. Execute the command:"
-		einfo " \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
+		einfo " \"emerge --config =${PF}\""
 		einfo "2. Edit /etc/conf.d/apache and add \"-D PHP4\" to APACHE_OPTS"
 		einfo "That will include the php mime types in your configuration"
 		einfo "automagically and setup Apache to load php when it starts."

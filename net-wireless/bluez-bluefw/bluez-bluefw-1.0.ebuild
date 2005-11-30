@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-bluefw/bluez-bluefw-1.0.ebuild,v 1.1 2004/03/29 02:10:44 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-bluefw/bluez-bluefw-1.0.ebuild,v 1.1.1.1 2005/11/30 09:45:35 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="Bluetooth USB Firmware Downloader"
 HOMEPAGE="http://bluez.sourceforge.net/"
@@ -8,7 +10,7 @@ SRC_URI="http://bluez.sourceforge.net/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ~ppc ~amd64"
 IUSE=""
 
 DEPEND="sys-apps/hotplug
@@ -20,7 +22,7 @@ src_unpack() {
 }
 
 src_compile() {
-	econf
+	econf --sbindir=/sbin || die "econf failed"
 	emake || die
 }
 

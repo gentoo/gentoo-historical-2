@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/madwifi-driver/madwifi-driver-0.1_pre20050420-r1.ebuild,v 1.1 2005/08/22 12:16:42 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/madwifi-driver/madwifi-driver-0.1_pre20050420-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:27 chriswhite Exp $
 
 inherit linux-mod
 

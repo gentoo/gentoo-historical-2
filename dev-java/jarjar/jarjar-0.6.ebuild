@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jarjar/jarjar-0.6.ebuild,v 1.1 2005/07/31 06:33:00 st_lim Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jarjar/jarjar-0.6.ebuild,v 1.1.1.1 2005/11/30 09:47:26 chriswhite Exp $
 
 inherit eutils java-pkg
 
-DESCRIPTION="Reduce Java dependency headaches by repackaging third-party jars (evil!)."
+DESCRIPTION="Tool for repackaging third-party jars."
 SRC_URI="mirror://sourceforge/jarjar/${PN}-src-${PV}.zip"
 HOMEPAGE="http://jarjar.sourceforge.net"
 LICENSE="GPL-2"
@@ -15,6 +15,7 @@ RDEPEND=">=virtual/jre-1.3
 	=dev-java/asm-2*
 	=dev-java/gnu-regexp-1*"
 DEPEND=">=virtual/jdk-1.3
+	app-arch/unzip
 	${RDEPEND}
 	jikes? ( >=dev-java/jikes-1.21 )
 	>=dev-java/ant-core-1.4"
@@ -39,9 +40,8 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_dojar dist/${P}.jar
+	java-pkg_newjar dist/${P}.jar ${PN}.jar
 
-	if use doc; then
-		java-pkg_dohtml -r dist/javadoc/*
-	fi
+	use doc && java-pkg_dohtml -r dist/javadoc/*
+
 }

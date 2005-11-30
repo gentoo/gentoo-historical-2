@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/xmlunit-1.0.ebuild,v 1.1 2005/01/22 13:01:24 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlunit/xmlunit-1.0.ebuild,v 1.1.1.1 2005/11/30 09:47:38 chriswhite Exp $
 
 inherit eutils java-pkg
 
@@ -9,11 +9,11 @@ SRC_URI="mirror://sourceforge/${PN}/${P/-/}.zip"
 HOMEPAGE="http://xmlunit.sourceforge.net/"
 LICENSE="BSD"
 SLOT="1"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64 ~ppc"
 IUSE="doc jikes junit source"
 DEPEND=">=virtual/jdk-1.3
 	jikes? ( >=dev-java/jikes-1.21 )
-	source?( app-arch/zip )
+	source? ( app-arch/zip )
 	junit? ( dev-java/junit )
 	>=app-arch/unzip-5.50-r1
 	>=dev-java/ant-1.6"
@@ -27,8 +27,7 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/${P}-gentoo.patch
 
-	cd ${S}/lib
-	rm -f *.jar
+	rm -f ${S}/lib/*.jar
 }
 
 src_compile() {
@@ -36,19 +35,13 @@ src_compile() {
 	use doc && antflags="${antflags} docs"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
 	use junit && antflags="${antflags} test"
-	use source && antflags="${antflags} sourcezip"
 	ant ${antflags} || die "failed to build"
 }
 
 src_install() {
 	java-pkg_dojar lib/${PN}.jar
-	dodoc LICENSE.txt README.txt
 
-	if use source; then
-		dodir /usr/share/doc/${PF}/source
-		cp ${PN}-src.zip ${D}usr/share/doc/${PF}/source
-	fi
-	if use doc; then
-		java-pkg_dohtml -r doc/*
-	fi
+	dodoc README.txt
+	use doc && java-pkg_dohtml -r doc/*
+	use source && java-pkg_dosrc src/java/*
 }

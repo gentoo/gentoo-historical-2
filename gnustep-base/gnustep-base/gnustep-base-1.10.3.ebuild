@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/gnustep-base-1.10.3.ebuild,v 1.1 2005/04/15 04:29:55 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/gnustep-base-1.10.3.ebuild,v 1.1.1.1 2005/11/30 09:46:19 chriswhite Exp $
 
 inherit gnustep
 
@@ -8,22 +8,22 @@ DESCRIPTION="The GNUstep Base Library is a library of general-purpose, non-graph
 
 HOMEPAGE="http://www.gnustep.org"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/${P}.tar.gz"
-KEYWORDS="~ppc ~x86 ~amd64 ~sparc ~alpha"
+KEYWORDS="~alpha ~amd64 ppc sparc x86"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1"
 
-IUSE="${IUSE} doc gcc-libffi"
+IUSE="doc gcc-libffi"
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	~gnustep-base/gnustep-make-1.10.0
 	|| (
 		gcc-libffi? ( >=sys-devel/gcc-3.3.5 )
 		>=dev-libs/libffi-3.3.5
 	)
-	>=dev-libs/libxml2-2.6*
-	>=dev-libs/libxslt-1.1*
-	>=dev-libs/gmp-4.1*
-	>=dev-libs/openssl-0.9.7*
-	>=sys-libs/zlib-1.2*
+	>=dev-libs/libxml2-2.6
+	>=dev-libs/libxslt-1.1
+	>=dev-libs/gmp-4.1
+	>=dev-libs/openssl-0.9.7
+	>=sys-libs/zlib-1.2
 	sys-apps/sed
 	${DOC_DEPEND}"
 RDEPEND="${DEPEND}
@@ -102,4 +102,3 @@ src_install() {
 	fi
 	egnustep_package_config
 }
-

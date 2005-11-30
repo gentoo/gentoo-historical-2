@@ -1,16 +1,16 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ctrlproxy/ctrlproxy-2.6.1.ebuild,v 1.1 2004/09/13 02:59:38 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ctrlproxy/ctrlproxy-2.6.1.ebuild,v 1.1.1.1 2005/11/30 09:48:54 chriswhite Exp $
 
 inherit flag-o-matic
 
 DESCRIPTION="IRC proxy with multiserver and multiclient support"
 HOMEPAGE="http://jelmer.vernstok.nl/${PN}/"
-SRC_URI="http://jelmer.vernstok.nl/${PN}/${P}.tar.gz"
+SRC_URI="http://jelmer.vernstok.nl/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~alpha ~ppc"
+KEYWORDS="x86 alpha ~ppc ia64"
 IUSE="ssl"
 
 DEPEND=">=dev-libs/glib-2

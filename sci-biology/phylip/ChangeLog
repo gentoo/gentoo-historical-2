@@ -1,6 +1,48 @@
-# ChangeLog for app-sci/phylip
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/phylip/ChangeLog,v 1.1 2004/12/23 21:37:02 ribosome Exp $
+# ChangeLog for sci-biology/phylip
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/phylip/ChangeLog,v 1.1.1.1 2005/11/30 09:48:44 chriswhite Exp $
+
+*phylip-3.65 (18 Oct 2005)
+
+  18 Oct 2005; Olivier Fisette <ribosome@gentoo.org> +phylip-3.65.ebuild:
+  New version.
+
+  17 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -phylip-3.63.ebuild:
+  Pruning old version.
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> phylip-3.64.ebuild:
+  Marked ppc stable for bug #108335.
+
+  09 Oct 2005; Mark Loeser <halcy0n@gentoo.org> phylip-3.64.ebuild:
+  Stable on x86
+
+  08 Oct 2005; Lina Pezzella <j4rg0n@gentoo.org> phylip-3.64.ebuild:
+  Stable ppc-macos, Bug 108335
+
+  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Maintainer changed from Stephen Diener (MIA) to Olivier Fisette.
+
+*phylip-3.64 (07 Aug 2005)
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -phylip-3.62.ebuild,
+  +phylip-3.64.ebuild:
+  New version. Removed old version.
+
+  18 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> phylip-3.63.ebuild:
+  Stable ppc-macos
+
+  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org> phylip-3.63.ebuild:
+  Ebuild cleanup.
+
+  18 Jan 2005; Olivier Fisette <ribosome@gentoo.org> phylip-3.63.ebuild:
+  Added to x86.
+
+  14 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> phylip-3.62.ebuild:
+  Stable ppc-macos.
+
+  02 Jan 2005; Olivier Fisette <ribosome@gentoo.org> phylip-3.62.ebuild,
+  phylip-3.63.ebuild:
+  Use the toolchain-funcs rather than the gcc eclass.
 
 *phylip-3.63 (23 Dec 2004)
 

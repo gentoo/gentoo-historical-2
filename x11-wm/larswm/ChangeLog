@@ -1,9 +1,64 @@
 # ChangeLog for x11-wm/larswm
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/larswm/ChangeLog,v 1.1 2003/06/13 09:27:48 robh Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/larswm/ChangeLog,v 1.1.1.1 2005/11/30 09:44:59 chriswhite Exp $
+
+  07 Sep 2005; Luis Medinas <metalgod@gentoo.org> larswm-7.5.3.ebuild:
+  Added ~amd64 keyword.
+
+  10 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> larswm-7.5.2.ebuild,
+  larswm-7.5.3.ebuild:
+  Stable on x86 and alpha.
+
+  05 Oct 2004; Jason Wever <weeve@gentoo.org> larswm-7.5.3.ebuild:
+  Added ~sparc keyword.
+
+  04 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  larswm-7.5.3.ebuild:
+  Masked larswm-7.5.2.ebuild stable on ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  larswm-7.5.2.ebuild, larswm-7.5.3.ebuild:
+  Masked larswm-7.5.3.ebuild testing for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  larswm-7.5.2.ebuild:
+  Masked larswm-7.5.2.ebuild testing for ppc
+
+  22 Aug 2004; Tom Gall <tgall@gentoo.org> larswm-7.5.3.ebuild:
+  stable on ppc64, bug #58556
+
+*larswm-7.5.3 (17 Jul 2004)
+
+  17 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> -larswm-7.5.0.ebuild,
+  -larswm-7.5.1.ebuild, larswm-7.5.2.ebuild, +larswm-7.5.3.ebuild:
+  Version bumped, closing bug #57216
+
+*larswm-7.5.2 (30 Jun 2004)
+
+  30 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +larswm-7.5.2.ebuild:
+  Version bumped. Added to ~alpha. Closing bug #55495
+
+*larswm-7.5.1 (23 Jun 2004)
+
+  23 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> +larswm-7.5.1.ebuild:
+  Version bumped, thanks to Lars Bernhardsson <lab@fnurt.net> in bug #54247
+
+*larswm-7.5.0 (20 Jun 2004)
+
+  20 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> larswm-7.5.0.ebuild,
+  files/larswm.desktop:
+  Version bumped. Ebuild contributed by Lars Bernhardsson <lab@fnurt.net>,
+  closing bug #54247
+
+  07 Mar 2004; Markus Nigbur <pyrania@gentoo.org> larswm-7.2.10.ebuild:
+  SRC_URI fixup.
+
+  04 Nov 2003; Brandon Hale <tseng@gentoo.org> larswm-7.2.10.ebuild,
+  metadata.xml:
+  Bumped 7.2.10 to x86, added metadata
 
 *larswm-7.2.10 (13 Jun 2003)
 
   13 Jun 2003; robh <robh@gentoo.org> larswm-7.2.10.ebuild:
-  Initial version. Submitted by Tobias Anderberg, closes #20628
+  Initial version. Submitted by Bjorn Lindstrom, closes #19630
 

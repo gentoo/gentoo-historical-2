@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ptlink-services/ptlink-services-2.26.ebuild,v 1.1 2005/03/15 00:20:54 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ptlink-services/ptlink-services-2.26.ebuild,v 1.1.1.1 2005/11/30 09:48:56 chriswhite Exp $
 
 inherit fixheadtails eutils
 
@@ -47,9 +47,10 @@ src_install() {
 
 	insinto /usr/share/ptlink-services/languages
 	for file in src/lang/*.l ; do
-		doins src/lang/$(basename ${file} .l) || die "doins failed"
-		doins src/lang/$(basename ${file} .l).auth || die "doins failed"
-		doins src/lang/$(basename ${file} .l).setemail || die "doins failed"
+		doins \
+			src/lang/$(basename ${file} .l) \
+			src/lang/$(basename ${file} .l).auth \
+			src/lang/$(basename ${file} .l).setemail || die "doins failed"
 	done
 	dosym /usr/share/ptlink-services/languages /var/lib/ptlink-services
 

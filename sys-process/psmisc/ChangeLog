@@ -1,6 +1,58 @@
-# ChangeLog for sys-apps/psmisc
-# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/psmisc/ChangeLog,v 1.1 2005/03/03 16:24:36 ciaranm Exp $
+# ChangeLog for sys-process/psmisc
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/psmisc/ChangeLog,v 1.1.1.1 2005/11/30 09:49:08 chriswhite Exp $
+
+  18 Nov 2005; Chris PeBenito <pebenito@gentoo.org> psmisc-21.8.ebuild:
+  Remove SELinux patching as support is now integrated upstream.
+
+*psmisc-21.8 (17 Nov 2005)
+
+  17 Nov 2005; Mike Frysinger <vapier@gentoo.org> +psmisc-21.8.ebuild:
+  Version bump #112699 by Benno Schulenberg.
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> psmisc-21.6.ebuild:
+  Mark 21.6 stable on alpha
+
+  08 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> psmisc-21.6.ebuild:
+  Stable on mips.
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> psmisc-21.6.ebuild:
+  Stable on ppc64
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> psmisc-21.6.ebuild:
+  Stable on ppc.
+
+  16 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> psmisc-21.6.ebuild:
+  Stable on sparc
+
+  29 Apr 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/psmisc-21.6-scanf.patch, psmisc-21.6.ebuild:
+  Add a patch to use valid C98/C99 scanf (i.e. fix pstree for uClibc).
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> psmisc-21.5.ebuild:
+  Stable on ppc64
+
+  28 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> psmisc-21.5.ebuild:
+  Stable on ppc.
+
+  19 Mar 2005; Chris PeBenito <pebenito@gentoo.org>
+  +files/psmisc-21.6-selinux.diff.bz2:
+  Add 21.6 SELinux patch.
+
+  19 Mar 2005; Bryan Ã˜stergaard <kloeri@gentoo.org> psmisc-21.5.ebuild:
+  Stable on alpha.
+
+  14 Mar 2005; <solar@gentoo.org> files/psmisc-21.6-nonls.patch:
+  - update nonls patch
+
+*psmisc-21.6 (14 Mar 2005)
+
+  14 Mar 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/psmisc-21.6-nonls.patch, +psmisc-21.6.ebuild:
+  Version bump.
 
 *psmisc-21.5 (03 Mar 2005)
 
@@ -25,7 +77,7 @@
   01 Jan 2005; Mike Frysinger <vapier@gentoo.org>
   -files/psmisc-21.4-no-nls-selinux.patch, files/psmisc-21.4-no-nls.patch,
   files/psmisc-21.4-selinux.diff.bz2, psmisc-21.4.ebuild:
-  Clean up the patches #76230 by Milus János.
+  Clean up the patches #76230 by Milus JÃ¡nos.
 
   07 Dec 2004; Mike Frysinger <vapier@gentoo.org> psmisc-21.4.ebuild:
   Remove C++ requirement #73632.
@@ -51,7 +103,7 @@
   files/psmisc-21.2-no-nls.patch, files/psmisc-21.4-no-nls.patch:
   added patch to allow the disabling of nls for psmisc
 
-  11 Jun 2004; Bryan Østergaard <kloeri@gentoo.org> psmisc-21.4.ebuild:
+  11 Jun 2004; Bryan Ã˜stergaard <kloeri@gentoo.org> psmisc-21.4.ebuild:
   Stable on alpha.
 
   27 Apr 2004; Michael McCabe <randy@gentoo.org> psmisc-21.4.ebuild:

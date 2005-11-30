@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.2-r2.ebuild,v 1.1 2005/08/31 11:20:27 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.2-r2.ebuild,v 1.1.1.1 2005/11/30 09:44:50 chriswhite Exp $
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic linux-info
 
 ECCVER=0.1.6
 ECCVER_GNUPG=1.4.0
@@ -43,7 +43,7 @@ src_unpack() {
 	unpack ${A}
 
 	# Jari's patch to boost iterated key setup by factor of 128
-	# EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/gnupg-1.4.1.diff	
+	EPATCH_OPTS="-p1 -d ${S}" epatch ${FILESDIR}/${P}-jari.patch
 
 	if use idea; then
 		ewarn "Please read http://www.gnupg.org/why-not-idea.html"
@@ -127,12 +127,16 @@ src_install() {
 	make DESTDIR=${D} install || die
 
 	# caps support makes life easier
-	use caps || fperms u+s,go-r /usr/bin/gpg
+	if ! use caps && kernel_is lt 2 6 9
+	then
+		ewarn "installing gpg suid for memory space protection"
+		fperms u+s,go-r /usr/bin/gpg
+	fi
 
 	# keep the documentation in /usr/share/doc/...
 	rm -rf "${D}/usr/share/gnupg/FAQ" "${D}/usr/share/gnupg/faq.html"
 
-	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS PROJECTS README THANKS \
+	dodoc AUTHORS BUGS ChangeLog NEWS PROJECTS README THANKS \
 		TODO VERSION doc/{FAQ,HACKING,DETAILS,ChangeLog,OpenPGP,faq.raw}
 
 	docinto sgml
@@ -169,7 +173,8 @@ src_test() {
 }
 
 pkg_postinst() {
-	if ! use caps; then
+	if ! use caps && kernel_is lt 2 6 9
+	then
 		einfo "gpg is installed suid root to make use of protected memory space"
 		einfo "This is needed in order to have a secure place to store your"
 		einfo "passphrases, etc. at runtime but may make some sysadmins nervous."

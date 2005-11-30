@@ -1,9 +1,10 @@
 # Copyright 2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/vserver/x86/virtuals,v 1.1 2005/04/20 17:44:59 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/vserver/x86/virtuals,v 1.1.1.1 2005/11/30 09:48:33 chriswhite Exp $
 
 # This file is used to either override or extend the parent profile's
 # virtuals mappings.   In this case, this is for ARCHITECTURE SPECIFIC
 # mappings
 
+virtual/bootloader		sys-boot/grub
 virtual/linux-sources	sys-kernel/gentoo-sources

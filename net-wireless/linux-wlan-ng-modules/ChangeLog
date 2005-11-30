@@ -1,6 +1,17 @@
 # ChangeLog for net-wireless/linux-wlan-ng-modules
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/linux-wlan-ng-modules/ChangeLog,v 1.1 2005/10/01 14:42:37 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/linux-wlan-ng-modules/ChangeLog,v 1.1.1.1 2005/11/30 09:45:32 chriswhite Exp $
+
+*linux-wlan-ng-modules-0.2.2-r1 (02 Nov 2005)
+
+  02 Nov 2005; Petteri Räty <betelgeuse@gentoo.org>
+  +files/0.2.2-kernel-2.6.14.patch, +linux-wlan-ng-modules-0.2.2-r1.ebuild:
+  Added a patch from upstream svn to fix compiling with 2.6.14 kernels. Fixes
+  bug 110914.
+
+  15 Oct 2005; Joseph Jezak <josejx@gentoo.org>
+  linux-wlan-ng-modules-0.2.2.ebuild:
+  Marked ~ppc for bug #107794.
 
 *linux-wlan-ng-modules-0.2.2 (01 Oct 2005)
 

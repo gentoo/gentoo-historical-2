@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/evilwm/evilwm-0.99.17.ebuild,v 1.1 2003/11/04 14:48:16 tseng Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/evilwm/evilwm-0.99.17.ebuild,v 1.1.1.1 2005/11/30 09:45:12 chriswhite Exp $
 
 MY_P="${PN}_${PV}.orig"
 S=${WORKDIR}/${MY_P/_/-}
@@ -9,18 +9,21 @@ DESCRIPTION="A minimalist, no frills window manager for X."
 SRC_URI="http://download.sourceforge.net/evilwm/${MY_P}.tar.gz"
 HOMEPAGE="http://evilwm.sourceforge.net"
 
+IUSE="motif"
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 ppc sparc alpha amd64"
 
 DEPEND="virtual/x11
-	motif? ( virtual/motif )"
+	sys-apps/coreutils
+	motif? ( x11-libs/openmotif )"
 
 src_unpack() {
 
 	unpack ${A}
 	cd ${S}
-	if [ -z "`use motif`" ]
+	sed -i 's/^#define DEF_FONT.*/#define DEF_FONT "fixed"/' evilwm.h
+	if ! use motif
 	then
 		cp Makefile ${T}
 		sed "s:DEFINES += -DMWM_HINTS::" \
@@ -39,4 +42,3 @@ src_install () {
 	doman evilwm.1
 	dodoc ChangeLog README* INSTALL TODO
 }
-

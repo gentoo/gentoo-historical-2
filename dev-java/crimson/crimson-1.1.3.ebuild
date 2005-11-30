@@ -1,27 +1,43 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/crimson/crimson-1.1.3.ebuild,v 1.1 2004/01/10 21:48:58 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/crimson/crimson-1.1.3.ebuild,v 1.1.1.1 2005/11/30 09:47:24 chriswhite Exp $
 
 inherit java-pkg
 
 DESCRIPTION="Apache Crimson XML 1.0 parser"
 HOMEPAGE="http://xml.apache.org/crimson/"
 SRC_URI="http://xml.apache.org/dist/crimson/${P}-src.tar.gz"
+
 LICENSE="Apache-1.1"
 SLOT="1"
-KEYWORDS="~x86"
-IUSE=""
-DEPEND=">=virtual/jdk-1.3"
-S=${WORKDIR}/${P}
+KEYWORDS="x86 ppc amd64"
+IUSE="doc examples jikes source"
+
+DEPEND=">=virtual/jdk-1.3
+	dev-java/ant-core
+	jikes? ( dev-java/jikes )
+	source? ( app-arch/zip )"
+RDEPEND=">=virtual/jre-1.3"
 
 src_compile() {
-	ant jars docs || die
+	local antflags="jars"
+	use doc && antflags="${antflags} docs"
+	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	ant ${antflags} || die "ant failed"
 }
 
 src_install() {
-	dojar build/crimson.jar
+	java-pkg_dojar build/${PN}.jar
+
 	dodoc build/ChangeLog
-	dohtml build/README.html
-	dohtml -r build/docs
-	dohtml -r -A class,java,xml build/examples
+	java-pkg_dohtml build/README.html
+	if use doc; then
+		java-pkg_dohtml -r build/docs
+		java-pkg_dohtml -r -A class,java,xml build/examples
+	fi
+	if use examples; then
+		dodir /usr/share/doc/${PF}/examples
+		cp -r examples/* ${D}/usr/share/doc/${PF}/examples
+	fi
+	use source && java-pkg_dosrc src/*
 }

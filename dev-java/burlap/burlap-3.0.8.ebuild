@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/burlap/burlap-3.0.8.ebuild,v 1.1 2005/10/23 12:14:45 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/burlap/burlap-3.0.8.ebuild,v 1.1.1.1 2005/11/30 09:47:12 chriswhite Exp $
 
 inherit java-pkg
 

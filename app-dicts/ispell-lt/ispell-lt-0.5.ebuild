@@ -1,27 +1,25 @@
-# Copyright 2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-lt/ispell-lt-0.5.ebuild,v 1.1 2002/12/03 07:15:39 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-lt/ispell-lt-0.5.ebuild,v 1.1.1.1 2005/11/30 09:46:56 chriswhite Exp $
 
-S=${WORKDIR}/${P}
-DESCRIPTION="Lithuanian dictionary for ispell."
+DESCRIPTION="Lithuanian dictionary for ispell"
 HOMEPAGE="http://ieva.mif.vu.lt/~alga/lt/ispell/"
 SRC_URI="http://ieva.mif.vu.lt/~alga/lt/ispell/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 ppc sparc sparc64 alpha"
+SLOT="0"
+KEYWORDS="x86 ppc sparc mips alpha hppa"
+IUSE=""
 
 DEPEND="app-text/ispell
 	dev-lang/python"
 
 src_compile() {
-	make || die
+	emake || die
 }
 
-src_install () {
+src_install() {
 	insinto /usr/lib/ispell
 	doins lietuviu.hash lietuviu.aff
-#	exeinto /usr/lib/ispell-lt
-#	doexe sortkoi8 trans
-	dodoc README COPYING THANKS ChangeLog
+	dodoc README THANKS ChangeLog
 }

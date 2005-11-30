@@ -1,6 +1,113 @@
-# ChangeLog for net-www/cherokee
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/ChangeLog,v 1.1 2004/08/08 11:14:13 stuart Exp $
+# ChangeLog for www-servers/cherokee
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/ChangeLog,v 1.1.1.1 2005/11/30 09:46:48 chriswhite Exp $
+
+*cherokee-0.4.29 (13 Nov 2005)
+
+  13 Nov 2005; josé Alberto Suárez López <bass@gentoo.org>
+  +cherokee-0.4.29.ebuild:
+  new version
+
+*cherokee-0.4.25 (04 Aug 2005)
+
+  28 Aug 2005; josé Alberto Suárez López <bass@gentoo.org>
+  cherokee-0.4.25.ebuild:
+  fixed typo
+
+  05 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> cherokee-0.4.25.ebuild:
+  Remove call to epatch as the patch is no longer necessary; also removed
+  commented out line that contained a line continuation character, as it
+  doesnt work for obvious reasons... bug 101407.
+
+  04 Aug 2005; José Alberto Suárez López <bass@gentoo.org>
+  +cherokee-0.4.25.ebuild:
+  Bump version.
+  Fixed PIC bug and index.html overwrite
+
+*cherokee-0.4.24-r1 (19 Jul 2005)
+
+  19 Jul 2005; josé Alberto Suárez López <bass@gentoo.org>
+  +cherokee-0.4.24-r1.ebuild:
+  Now use=static is really static.
+
+*cherokee-0.4.24 (15 Jul 2005)
+
+  15 Jul 2005; josé Alberto Suárez López <bass@gentoo.org>
+  +cherokee-0.4.24.ebuild:
+  bump version
+
+*cherokee-0.4.23 (25 May 2005)
+  
+  25 May 2005; <dang@gentoo.org> cherokee-0.4.23.ebuild:
+  keyword ~amd64
+
+ 16 May 2005; J.Alberto S.L. <bass@gentoo.org> +cherokee-0.4.23.ebuild:
+ Bump Version. Must fix pcc problems.
+
+*cherokee-0.4.22 (16 May 2005)
+ 16 May 2005; J.Alberto S.L. <bass@gentoo.org> +cherokee-0.4.22.ebuild:
+ Bump Version.
+
+*cherokee-0.4.21-r1 (16 May 2005)
+ 16 May 2005; J.Alberto S.L. <bass@gentoo.org> +cherokee-0.4.21-r1.ebuild:
+ Patch to no build handle-admin (thanks to ka0ttic) and a few USEs added
+ (ssl, gnutls, pic, static & ipv6).
+
+*cherokee-0.4.21 (11 May 2005)
+
+  11 May 2005; Aaron Walker <ka0ttic@gentoo.org> +cherokee-0.4.21.ebuild:
+  Version bump.
+
+  17 Apr 2005; Jason Wever <weeve@gentoo.org> cherokee-0.4.19.ebuild:
+  Added ~sparc keyword.
+
+*cherokee-0.4.19 (17 Apr 2005)
+
+  17 Apr 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/cherokee-0.4.1-gcc3.patch, -cherokee-0.4.0.ebuild,
+  -cherokee-0.4.1.ebuild, -cherokee-0.4.4.ebuild, -cherokee-0.4.10.ebuild,
+  -cherokee-0.4.14.ebuild, -cherokee-0.4.15.ebuild, -cherokee-0.4.16.ebuild,
+  cherokee-0.4.17.1.ebuild, +cherokee-0.4.19.ebuild:
+  Version bump for bug 87447; fixed 0.4.17.1 and 0.4.19 to build with
+  >=net-libs/gnutls-1.2.0 for bug 86038. Also tidy'd the sleu of old ebuilds.
+
+  01 Nov 2004; Michael Hanselmann <hansmi@gentoo.org>
+  cherokee-0.4.17.1.ebuild:
+  Stable on ppc.
+
+*cherokee-0.4.17.1 (30 Oct 2004)
+
+  30 Oct 2004; Stuart Herbert <stuart@gentoo.org>
+  +files/cherokee-0.4.17-cherokee.conf, +cherokee-0.4.17.1.ebuild:
+  Version bump; addresses security bug #67667; thanks to Florian Schihabel
+  <florian.schihabel@gmx.net> for the report
+
+  06 Oct 2004; Olivier Crete <tester@gentoo.org> cherokee-0.4.17.ebuild:
+  Marked stable on x86 wrt security bug #66543
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> cherokee-0.4.0.ebuild,
+  cherokee-0.4.1.ebuild, cherokee-0.4.10.ebuild, cherokee-0.4.14.ebuild,
+  cherokee-0.4.15.ebuild, cherokee-0.4.16.ebuild, cherokee-0.4.17.ebuild,
+  cherokee-0.4.4.ebuild, cherokee-0.4.5.ebuild:
+  Fixed ChangeLog header. Added missing IUSE, don't assign default to S and
+  updated dependencies.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cherokee-0.4.14.ebuild, cherokee-0.4.15.ebuild, cherokee-0.4.16.ebuild,
+  cherokee-0.4.17.ebuild:
+  Masked cherokee-0.4.17.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cherokee-0.4.14.ebuild, cherokee-0.4.15.ebuild, cherokee-0.4.16.ebuild:
+  Masked cherokee-0.4.16.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cherokee-0.4.14.ebuild, cherokee-0.4.15.ebuild:
+  Masked cherokee-0.4.15.ebuild stable for ppc
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  cherokee-0.4.14.ebuild:
+  Masked cherokee-0.4.14.ebuild stable for ppc
 
 *cherokee-0.4.15 (08 Aug 2004)
 
@@ -38,7 +145,7 @@
   15 Apr 2004; <bass@gentoo.org> cherokee-0.4.16.ebuild:
   New version.
   Removed the gnome-vfs support, the main cherokee-dev say this:
-   (00:33:56) Alo: quita lo de GNOME-VFS.. que eso s�lo es un peligro
+   (00:33:56) Alo: quita lo de GNOME-VFS.. que eso sólo es un peligro
                    y no vale para nada en el mundo real :)
   (gnome-vfs is dengerous and don't usefull in the real world)
    (00:45:14) Alo: es un buen ejemplo de como hacer un handler
@@ -88,12 +195,12 @@
 
 *chrokee-4.1 (18 Mar 2003)
 
- 18 Mar 2003; J.Alberto Su�rez L. <bass@gentoo.org> cherokee-4.1.ebuild:
+ 18 Mar 2003; J.Alberto Suárez L. <bass@gentoo.org> cherokee-4.1.ebuild:
  Bumped version
 
 *cherokee-4.0.0 (11 Jan 2003)
 
-  10 Jan 2002; J.Alberto Su�rez L. <bass@gentoo.org> cherokee-4.0.0.ebuild:
+  10 Jan 2002; J.Alberto Suárez L. <bass@gentoo.org> cherokee-4.0.0.ebuild:
   First relase. Beta5 version. 
 
 *cherokee-0.4.0 (11 Jan 2003)

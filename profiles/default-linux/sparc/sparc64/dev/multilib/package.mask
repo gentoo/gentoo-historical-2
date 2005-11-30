@@ -1,5 +1,22 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/sparc64/dev/multilib/package.mask,v 1.1 2005/03/07 00:05:03 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/sparc64/dev/multilib/package.mask,v 1.1.1.1 2005/11/30 09:48:38 chriswhite Exp $
 
 # Jeremy Huddleston <eradicator@gentoo.org> 2005.03.06
 # sys-devel/gcc brings in our 64bit compiler
 sys-devel/gcc-sparc64
+
+# Jeremy Huddleston <eradicator@gentoo.org> 2005.03.08
+# Older perl versions don't set the correct archlib path for multilib
+# profiles where CHOST != $(get_abi_CHOST)
+<sys-devel/libperl-5.8.6
+
+# Jeremy Huddleston <eradicator@gentoo.org> 2005.03.08
+# Older postgresql versions use sparc64 ld without the $(get_abi_LDFLAGS)
+<dev-db/postgresql-7.4.7-r1
+=dev-db/postgresql-8.0.0
+=dev-db/postgresql-8.0.1
+
+# Jeremy Huddleston <eradicator@gentoo.org> 2005.08.23
+# These old versions don't work when the default toolchain target is not
+# the desired target
+=sys-devel/gcc-config-1*
+=sys-devel/binutils-config-1*

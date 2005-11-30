@@ -1,6 +1,61 @@
-# ChangeLog for app-sci/foldingathome
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/foldingathome/ChangeLog,v 1.1 2004/12/23 18:37:10 ribosome Exp $
+# ChangeLog for sci-biology/foldingathome
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/foldingathome/ChangeLog,v 1.1.1.1 2005/11/30 09:48:46 chriswhite Exp $
+
+*foldingathome-5.0.2-r4 (14 Aug 2005)
+
+  14 Aug 2005; Olivier Fisette <ribosome@gentoo.org> +files/init-5.0.2-r4,
+  +foldingathome-5.0.2-r4.ebuild:
+  Fixed bug #95697: license is now correct and the binaries are no longer
+  stripped since we are not allowed to modify them. Thanks to Ian Kelly
+  <kellyia@udel.edu>. Fixed bugs #90247 and #93047: Foldingathome init script
+  now uses start-stop-daemon. Thanks to James Lademann
+  <jwlademann@myrealbox.com>.
+
+  22 Apr 2005; Danny van Dyk <kugelfang@gentoo.org>
+  foldingathome-5.0.2-r3.ebuild:
+  Marked stable on amd64.
+
+  03 Mar 2005; Brandon Low <lostlogic@gentoo.org> -files/folding-conf.d,
+  -files/folding-init.d, -files/folding-init.d-r1, -files/folding-init.d-r3,
+  -files/folding.sh, files/init-5.0.2-r3, -files/initfolding,
+  -files/initfolding-r1, -foldingathome-4.0.0-r2.ebuild,
+  -foldingathome-4.0.0.ebuild:
+  Fix bug 82345, nice 20 doesn't exist.
+  Remove old ebuilds and files.
+
+  08 Feb 2005; Brandon Low <lostlogic@gentoo.org>
+  foldingathome-5.0.2-r3.ebuild:
+  Mark stable on x86
+
+  05 Feb 2005; Brandon Low <lostlogic@gentoo.org> -files/copy_client_config,
+  -files/folding-init.d-r2, -files/folding-init.d-r4, -files/init-5.0.2-r1,
+  -files/init-5.0.2-r2, -foldingathome-5.0.2-r1.ebuild,
+  -foldingathome-5.0.2-r2.ebuild, -foldingathome-5.0.2.ebuild:
+  Clean up some cruft
+
+*foldingathome-5.0.2-r3 (05 Feb 2005)
+
+  05 Feb 2005; Brandon Low <lostlogic@gentoo.org> +files/init-5.0.2-r3,
+  +foldingathome-5.0.2-r3.ebuild:
+  Fix bug #80778
+
+*foldingathome-5.0.2-r2 (04 Feb 2005)
+
+  04 Feb 2005; Brandon Low <lostlogic@gentoo.org> +files/init-5.0.2-r2,
+  +foldingathome-5.0.2-r2.ebuild:
+  Fix bug #79574. Add unitinfo target to initscript to get the status of each
+  core on the system. Thanks to Yosef Meller <yosefm@gmail.com> for the idea
+  and initial patch
+
+*foldingathome-5.0.2-r1 (03 Feb 2005)
+
+  03 Feb 2005; Brandon Low <lostlogic@gentoo.org>
+  +files/copy_client_config-5.0.2-r1, +files/init-5.0.2-r1,
+  +foldingathome-5.0.2-r1.ebuild:
+  Fix bug 71700 hopefully. Use bash not python for copy_client_config. Update
+  the init script to do more sane things and not fail to stop on multi-cpu
+  systems.
 
 *foldingathome-4.0.0-r2 (23 Dec 2004)
 

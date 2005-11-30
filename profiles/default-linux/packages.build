@@ -1,14 +1,15 @@
 # Copyright 2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/packages.build,v 1.1 2004/09/14 15:28:40 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/packages.build,v 1.1.1.1 2005/11/30 09:48:34 chriswhite Exp $
 
 # This file describes the packages needed to build a stage 1 based on this
-# profile
+# profile.  Packages in this file are built in order.
+
+# Please do not move perl before baselayout doing so will break lib -> lib64
+# symlinks on systems that use them.
 
 app-arch/bzip2
-app-arch/gzip
 app-arch/tar
-app-editors/nano
 app-shells/bash
 dev-lang/python
 net-misc/rsync
@@ -31,6 +32,11 @@ sys-devel/bison
 sys-devel/flex
 sys-devel/gcc
 sys-devel/gettext
+sys-devel/gnuconfig
 sys-devel/make
 sys-devel/patch
-sys-libs/glibc
+dev-lang/perl
+virtual/editor
+virtual/gzip
+virtual/libc
+virtual/os-headers

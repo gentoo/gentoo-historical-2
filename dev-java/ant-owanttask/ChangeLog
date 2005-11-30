@@ -1,7 +1,35 @@
 # ChangeLog for dev-java/ant-owanttask
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-owanttask/ChangeLog,v 1.1 2004/03/29 19:35:15 karltk Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-owanttask/ChangeLog,v 1.1.1.1 2005/11/30 09:47:08 chriswhite Exp $
 
+  18 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  ant-owanttask-1.1-r1.ebuild:
+  stable on ppc
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  ant-owanttask-1.1-r1.ebuild:
+  stable on amd64
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> :
+  stable on amd64
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  ant-owanttask-1.1-r1.ebuild:
+  keywords ~amd64
+
+*ant-owanttask-1.1-r1 (10 Sep 2004)
+
+  10 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +ant-owanttask-1.1-r1.ebuild,
+  -ant-owanttask-1.1.ebuild:
+  revision bump: ant moved to ant-core
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> ant-owanttask-1.1.ebuild:
+  Marking stable on x86
+
+  30 Mar 2004; David Holm <dholm@gentoo.org> ant-owanttask-1.1.ebuild:
+  Added to ~ppc.
+
+*ant-owanttask-1.1 (29 Mar 2004)
 
   29 Mar 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
   ant-owanttask-1.1.ebuild:

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/mini_httpd/files/mini_httpd.confd-1.19,v 1.1 2004/08/08 17:37:46 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/mini_httpd/files/mini_httpd.confd-1.19,v 1.1.1.1 2005/11/30 09:46:47 chriswhite Exp $
 
 ## Config file for /etc/init.d/mini_httpd
 

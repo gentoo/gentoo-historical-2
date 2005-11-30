@@ -1,6 +1,110 @@
 # ChangeLog for dev-java/commons-pool
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-pool/ChangeLog,v 1.1 2002/10/31 20:46:09 karltk Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-pool/ChangeLog,v 1.1.1.1 2005/11/30 09:47:37 chriswhite Exp $
+
+  05 Nov 2005; Petteri Räty <betelgeuse@gentoo.org>
+  commons-pool-1.1.ebuild, commons-pool-1.2.ebuild:
+  Fixed homepage, reported in bug #111532.
+
+  21 Oct 2005; Petteri Räty <betelgeuse@gentoo.org>
+  commons-pool-1.2.ebuild:
+  commons-pool only needs ant-core instead of full ant
+
+  07 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  commons-pool-1.2.ebuild:
+  Stable on ppc.
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org> commons-pool-1.1.ebuild,
+  commons-pool-1.2.ebuild:
+  cleanup
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> commons-pool-1.2.ebuild:
+  Stable on ppc64
+
+  13 Mar 2005; Markus Rothe <corsair@gentoo.org> commons-pool-1.2.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  19 Feb 2005; Jason Wever <weeve@gentoo.org> commons-pool-1.2.ebuild:
+  Stable on sparc.
+
+  14 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-pool-1.2.ebuild:
+  stable on amd64 and x86.
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> commons-pool-1.1.ebuild,
+  commons-pool-1.2.ebuild:
+  added missing jikes dependency. see #78819.
+
+  30 Nov 2004; Sven Wegener <swegener@gentoo.org> commons-pool-1.1.ebuild,
+  commons-pool-1.2.ebuild:
+  Fixed invalid atoms in *DEPEND.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> commons-pool-1.1.ebuild,
+  commons-pool-1.2.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+*commons-pool-1.2 (28 Sep 2004)
+
+  28 Sep 2004; Thomas Matthijs <axxo@gentoo.org> :
+  version bump
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> commons-pool-1.1.ebuild:
+  Fix use invocation
+
+  16 Apr 2004; Jason Wever <weeve@gentoo.org> commons-pool-1.1.ebuild:
+  Stable on sparc.
+
+*commons-pool-1.0.1-r3 (22 Mar 2004)
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-pool-1.0.1-r3.ebuild:
+  Resurrecting old commons-pool due to sparc issue
+
+  18 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-pool-1.0.1-r3.ebuild,
+  commons-pool-1.1.ebuild:
+  Small fixes, marking stable on x86.
+
+  21 Jan 2004; Adrian Almenar <strider@gentoo.org> commons-pool-1.1.ebuild:
+  Added doc flag, now install is through java-pkg_dojar instead of dojar.
+
+*commons-pool-1.1 (21 Jan 2004)
+
+  21 Jan 2004; Adrian Almenar <strider@gentoo.org> commons-pool-1.1.ebuild:
+  Version Bump.
+
+*commons-pool-1.0.1-r3 (22 Mar 2003)
+
+  26 Apr 2003; Adrian Almenar <strider@gentoo.org> commons-pool-1.0.1-r3.ebuild:
+  Updated SRC_URI so this ebuild uses apache mirrors.
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-pool-1.0.1-r2.ebuild, commons-pool-1.0.1-r2.ebuild,
+  commons-pool-1.0.1-r3.ebuild:
+  moved x86 ppc sparc to stable.
+
+  22 Mar 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-pool-1.0.1-r3.ebuild:
+  Changed to use jakarta-commons eclass.
+
+*commons-pool-1.0.1-r2 (02 Nov 2002)
+
+  24 Nov 2002; Adrian Almenar <strider@gentoo.org>
+  Releasing it, since it has been tested a lot and works very well.
+
+  04 Nov 2002; Adrian Almenar <strider@gentoo.org> commons-pool-1.0.1-r2.ebuild:
+  Changed KEYWORDS, removed other arch's cause i have not tested it
+  leaving only ~x86. UnMasking it from packages.mask. 
+  Removed commons-pool-1.0.1.ebuild commons-pool-1.0.1-r1.ebuild
+  files/digest-commons-pool-1.0.1 files/digest-commons-pool-1.0.1-r1
+
+  02 Nov 2002; Karl Trygve Kalleberg <karltk@gentoo.org> commons-pool-1.0.1-r2.ebuild files/digest-commons-pool-1.0.1-r2 :
+  Added Jikes compilation support. Ebuild submitted by Adrian Almenar
+  <aalmenar@conectium.com>.
+
+*commons-pool-1.0.1-r1 (01 Nov 2002)
+
+  31 Oct 2002; Karl Trygve Kalleberg <karltk@gentoo.org> commons-pool-1.0.1-r1.ebuild files/digest-commons-pool-1.0.1-r1 :
+  Fix to support junit.  Ebuild submitted by Adrian Almenar
+  <aalmenar@conectium.com>. Masked until the 'junit' useflag is ratified.
 
 *commons-pool-1.0.1 (31 Oct 2002)
 

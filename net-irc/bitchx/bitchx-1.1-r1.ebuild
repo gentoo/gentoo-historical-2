@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/bitchx/bitchx-1.1-r1.ebuild,v 1.1 2004/07/04 23:19:52 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/bitchx/bitchx-1.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:00 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -8,23 +8,28 @@ MY_P=ircii-pana-${PV}-final
 S=${WORKDIR}/BitchX
 DESCRIPTION="An IRC Client"
 HOMEPAGE="http://www.bitchx.org/"
-SRC_URI="http://www.bitchx.org/source/${MY_P}.tar.gz"
+SRC_URI="http://www.bitchx.org/files/source/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86 ppc sparc alpha arm hppa amd64"
-IUSE="ssl esd gnome xmms ipv6 gtk cjk cdrom"
+IUSE="cdrom cjk esd gnome gtk ipv6 ncurses ssl xmms"
 
 DEPEND=">=sys-libs/ncurses-5.1
 	ssl? ( >=dev-libs/openssl-0.9.6 )
 	ncurses? ( sys-libs/ncurses )
 	!arm? (
-	xmms? ( media-sound/xmms )
-	esd? ( >=media-sound/esound-0.2.5
-		>=media-libs/audiofile-0.1.5 )
-	gtk? ( =x11-libs/gtk+-1.2*
-		>=media-libs/imlib-1.9.10-r1 )
-	gnome? ( >=gnome-base/gnome-libs-1.4.1.2-r1 ) )"
+		xmms? ( media-sound/xmms )
+		esd? (
+			>=media-sound/esound-0.2.5
+			>=media-libs/audiofile-0.1.5
+		)
+		gtk? (
+			=x11-libs/gtk+-1.2*
+			>=media-libs/imlib-1.9.10-r1
+		)
+		gnome? ( >=gnome-base/gnome-libs-1.4.1.2-r1 )
+	)"
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
@@ -57,7 +62,7 @@ src_compile() {
 		|| myconf="${myconf} --disable-sound"
 
 	use gtk && use gnome\
-	    && myconf="${myconf} --with-gtk" \
+		&& myconf="${myconf} --with-gtk" \
 		|| myconf="${myconf} --without-gtk"
 
 
@@ -76,7 +81,7 @@ src_compile() {
 	use gtk && use gnome && ( \
 		einfo "gtkBitchX will be built, if you want BitchX please issue"
 		einfo "USE="-gtk" emerge bitchx"
-		sleep 10
+		epause 10
 		) && append-flags -I/usr/include/gnome-1.0
 
 	econf \

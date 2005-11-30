@@ -1,6 +1,17 @@
 # ChangeLog for dev-java/mx4j
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j/ChangeLog,v 1.1 2005/01/22 15:23:32 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mx4j/ChangeLog,v 1.1.1.1 2005/11/30 09:47:35 chriswhite Exp $
+
+*mx4j-2.1.0-r1 (24 Oct 2005)
+
+  24 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> +mx4j-2.1.0-r1.ebuild:
+  New revision with fixed dependencies. Fixes bug #95830.
+
+  19 May 2005; Jan Brinkmann <luckyduck@gentoo.org> mx4j-2.1.0.ebuild:
+  stable on amd64 and x86
+
+  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> mx4j-2.1.0.ebuild:
+  mx4j now makes use of java-pkg_dosrc
 
 *mx4j-2.1.0 (22 Jan 2005)
 

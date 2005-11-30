@@ -1,12 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/magicfilter/magicfilter-1.2-r4.ebuild,v 1.1 2003/07/15 13:03:39 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/magicfilter/magicfilter-1.2-r4.ebuild,v 1.1.1.1 2005/11/30 09:48:16 chriswhite Exp $
 
 inherit eutils
 
 IUSE=""
 
-S=${WORKDIR}/${P}
 PATCHDIR=${WORKDIR}/${P}-gentoo
 DESCRIPTION="Customizable, extensible automatic printer filter"
 HOMEPAGE="http://www.gnu.org/directory/magicfilter.html"
@@ -16,15 +15,15 @@ SRC_URI="ftp://metalab.unc.edu/pub/linux/system/printing/${P}.tar.gz
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 
-DEPEND=">=app-text/ghostscript-6.50-r2
+DEPEND="virtual/ghostscript
 	>=sys-apps/groff-1.16.1-r1
-	>=sys-apps/bzip2-1.0.1-r4
-	>=sys-apps/gzip-1.2.4a-r6"
+	>=app-arch/bzip2-1.0.1-r4
+	>=app-arch/gzip-1.2.4a-r6"
 
 src_unpack() {
-	
+
 	unpack ${A}
 	# This is the patch directly from the Debian package.  It's included
 	# here (instead of fetching from Debian) because their package
@@ -60,7 +59,7 @@ src_install() {
 	newman magicfilter.man magicfilter.8
 	doman magicfilterconfig.8
 
-	dodoc README QuickInst TODO debian/copyright 
+	dodoc README QuickInst TODO debian/copyright
 	docinto filters
 	dodoc filters/README*
 }

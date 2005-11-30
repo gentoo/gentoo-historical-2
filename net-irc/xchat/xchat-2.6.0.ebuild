@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.6.0.ebuild,v 1.1 2005/11/03 07:20:07 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat/xchat-2.6.0.ebuild,v 1.1.1.1 2005/11/30 09:48:51 chriswhite Exp $
 
-inherit versionator
+inherit eutils versionator
 
 DESCRIPTION="Graphical IRC client"
 SRC_URI="http://www.xchat.org/files/source/$(get_version_component_range 1-2)/${P}.tar.bz2
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.xchat.org/"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="perl dbus tcltk python ssl mmx ipv6 nls xchattext xchatnogtk"
 
 # Added for to fix a sparc seg fault issue by Jason Wever <weeve@gentoo.org>
@@ -37,6 +37,8 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 
+	epatch "${FILESDIR}"/xc260-fix-fetext.diff
+
 	# use libdir/xchat/plugins as the plugin directory
 	if [ $(get_libdir) != "lib" ] ; then
 		sed -i -e 's:${prefix}/lib/xchat:${libdir}/xchat:' \
@@ -50,6 +52,7 @@ src_compile() {
 	unset PYTHONPATH
 
 	econf \
+		--enable-shm \
 		$(use_enable ssl openssl) \
 		$(use_enable perl) \
 		$(use_enable python) \

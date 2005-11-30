@@ -1,5 +1,14 @@
-MD5 6e0bfcbc73ac727934ab8b18e4fc9ac5 cabal-0.1.ebuild 1829
-MD5 dc0537a25f82eab687f3e58d5d2b4e79 cabal-0.5.ebuild 1206
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 059d7532550ffecc542d367494238e35 cabal-1.1.3.ebuild 1923
+MD5 d5638262a6154a0b8dea0f07b02b2a64 ChangeLog 920
 MD5 0b2872d51fdf7a2694dab3d34b57667d metadata.xml 232
-MD5 d89e54e0d971167e8d185f244ddc81eb files/digest-cabal-0.1 58
-MD5 9d318d0c3adc5992247ee3f54ff9c5b6 files/digest-cabal-0.5 58
+MD5 b34aabec3ab15c7b74d940437870e91b files/digest-cabal-1.1.3 63
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDWNAwkyZuKN4EQ6YRAvSLAJ90ofevXovd9LiwsTO+QXVeLibbaACfYf/+
+z181jH0P6rClqSOqaXPOms8=
+=4Cjk
+-----END PGP SIGNATURE-----

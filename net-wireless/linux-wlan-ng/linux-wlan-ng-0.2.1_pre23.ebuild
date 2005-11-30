@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/linux-wlan-ng/linux-wlan-ng-0.2.1_pre23.ebuild,v 1.1 2005/01/06 01:01:05 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/linux-wlan-ng/linux-wlan-ng-0.2.1_pre23.ebuild,v 1.1.1.1 2005/11/30 09:45:32 chriswhite Exp $
 
 inherit linux-info pcmcia
 
-IUSE="${IUSE} usb build"
+IUSE="build pcmcia usb"
 
 MY_P=${PN}-${PV/_/}
 S=${WORKDIR}/${MY_P}
@@ -15,13 +15,13 @@ SRC_URI="
 		mirror://gentoo/${PN}-gentoo-init.gz"
 
 HOMEPAGE="http://linux-wlan.org"
-DEPEND="virtual/os-headers
-		dev-libs/openssl
-		>=sys-apps/sed-4.0*"
+DEPEND="virtual/os-headers"
+RDEPEND="dev-libs/openssl
+		>=sys-apps/sed-4.0"
 
 SLOT="0"
 LICENSE="MPL-1.1"
-KEYWORDS="~x86 ~ppc ~hppa"
+KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 
 src_unpack() {
 

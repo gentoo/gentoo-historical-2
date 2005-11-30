@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/files/auditd.confd,v 1.1 2005/05/01 02:19:00 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/files/auditd.confd,v 1.1.1.1 2005/11/30 09:49:05 chriswhite Exp $
 
 # Configuration options for auditd
 # -f for foreground mode

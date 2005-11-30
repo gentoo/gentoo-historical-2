@@ -1,6 +1,24 @@
-# ChangeLog for sys-apps/anacron
+# ChangeLog for sys-process/anacron
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/anacron/ChangeLog,v 1.1 2005/03/03 17:32:37 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/anacron/ChangeLog,v 1.1.1.1 2005/11/30 09:49:10 chriswhite Exp $
+
+  01 Oct 2005; Aaron Walker <ka0ttic@gentoo.org> anacron-2.3-r2.ebuild:
+  /var/spool/anacron should be keepdir'd, bug #107756; also use newinitd
+  instead of newexe.
+
+*anacron-2.3-r2 (14 Jul 2005)
+
+  14 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> files/anacrontab,
+  -anacron-2.3-r1.ebuild, +anacron-2.3-r2.ebuild:
+  Revert previous --lsbsysinit changes as they did not fix the issue. See bugs
+  96730 and 95173.
+
+*anacron-2.3-r1 (22 Jun 2005)
+
+  22 Jun 2005; Aaron Walker <ka0ttic@gentoo.org> files/anacrontab,
+  -anacron-2.3.ebuild, +anacron-2.3-r1.ebuild:
+  Revision bump; make sure run-parts is invoked with --lsbsysinit option, bug
+  96730.
 
 *anacron-2.3 (03 Mar 2005)
 

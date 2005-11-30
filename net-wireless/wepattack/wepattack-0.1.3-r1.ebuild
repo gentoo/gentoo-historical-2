@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wepattack/wepattack-0.1.3-r1.ebuild,v 1.1 2004/04/25 21:26:23 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wepattack/wepattack-0.1.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:30 chriswhite Exp $
 
 inherit eutils
 
@@ -11,11 +11,11 @@ SRC_URI="mirror://sourceforge/wepattack/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~amd64"
 IUSE=""
 
 DEPEND="sys-libs/zlib
-	net-libs/libpcap
+	virtual/libpcap
 	dev-libs/openssl"
 
 S=${WORKDIR}/${MY_P}

@@ -1,10 +1,21 @@
-# Copyright 2004 Gentoo Foundation.
-# System-wide defaults for a basic linux system
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/base/make.defaults,v 1.1.1.1 2005/11/30 09:48:34 chriswhite Exp $
+#
+# System-wide defaults for the Portage system
+# See portage(5) manpage
 
-# Please avoid enabling things by default in here if possible. Understand any 
-# implications with core packages. For example, if "java" is in USE and db 
-# has a conditional dependency on java (which it does,) then a JDK will be 
-# pulled in during *emerge system*!
+# Have everyone update config.{sub,guess} by default
+FEATURES="autoconfig strict sfperms"
 
-# bitmap-fonts and xprint: build X the (upstream) default way
-USE="bitmap-fonts xprint"
+# Env vars to expand into USE vars.  Modifying this requires prior
+# discussion on gentoo-dev@gentoo.org.
+USE_EXPAND="FRITZCAPI_CARDS FCDSL_CARDS VIDEO_CARDS INPUT_DEVICES LINGUAS USERLAND KERNEL ELIBC"
+
+CONFIG_PROTECT="/etc /var/qmail/control /usr/share/config /usr/kde/2/share/config /usr/kde/3/share/config"
+CONFIG_PROTECT_MASK="/etc/gconf"
+
+# 'Sane' defaults
+ELIBC="glibc"
+KERNEL="linux"
+USERLAND="GNU"

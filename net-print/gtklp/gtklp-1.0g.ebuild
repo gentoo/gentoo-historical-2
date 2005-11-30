@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/gtklp/gtklp-1.0g.ebuild,v 1.1 2005/08/02 21:46:24 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/gtklp/gtklp-1.0g.ebuild,v 1.1.1.1 2005/11/30 09:48:19 chriswhite Exp $
 
 inherit libtool
 

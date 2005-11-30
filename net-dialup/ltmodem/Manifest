@@ -1,7 +1,15 @@
-MD5 e28afcc79c97a69cd19f9a2dac72943e ChangeLog 884
-MD5 00ae545d76e6f2b9532cb69e7be4f53b ltmodem-8.22_alpha5.ebuild 1320
-MD5 c3dd4cd155df75990ec0cda277e9f5af ltmodem-8.26_alpha9-r1.ebuild 1556
-MD5 8252b0c58fc6be824d5b2e994da29f6c ltmodem-8.26_alpha9.ebuild 1229
-MD5 ee22e1a0281cd35c9248e72bb8e1a4b3 files/digest-ltmodem-8.22_alpha5 66
-MD5 f5ab4274b107a9ac1e7d521c5dbb594a files/digest-ltmodem-8.26_alpha9 66
-MD5 f5ab4274b107a9ac1e7d521c5dbb594a files/digest-ltmodem-8.26_alpha9-r1 66
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 bb8e933a4cd687ae8b987774ae2ed41c ltmodem-8.31_alpha10-r1.ebuild 3548
+MD5 9e2015e88460daa627e5a850e8e56747 ChangeLog 3271
+MD5 ec2f84816306825d125d0c01bd86758d metadata.xml 163
+MD5 b990e7d5303c86f37ea21cf471d22e03 files/ltmodem_devfs 198
+MD5 0093643280b04ff8473b33e908df5b67 files/digest-ltmodem-8.31_alpha10-r1 137
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDE4XtNSP4Vda7IdsRAsnfAKCHMWUrAsxusBuSzBjXVakVr5eiigCeLTUy
+Sd3VbWFTAkLcPdQ4oZCURzs=
+=S4Ro
+-----END PGP SIGNATURE-----

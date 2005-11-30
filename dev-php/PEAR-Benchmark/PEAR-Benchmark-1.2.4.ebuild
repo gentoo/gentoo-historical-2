@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Benchmark/PEAR-Benchmark-1.2.4.ebuild,v 1.1 2005/11/10 10:26:35 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Benchmark/PEAR-Benchmark-1.2.4.ebuild,v 1.1.1.1 2005/11/30 09:47:59 chriswhite Exp $
 
 inherit php-pear-r1
 

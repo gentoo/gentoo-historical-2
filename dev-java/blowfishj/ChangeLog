@@ -1,6 +1,18 @@
 # ChangeLog for dev-java/blowfishj
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/blowfishj/ChangeLog,v 1.1 2004/11/12 00:18:45 karltk Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/blowfishj/ChangeLog,v 1.1.1.1 2005/11/30 09:47:08 chriswhite Exp $
+
+  16 May 2005; Jan Brinkmann <luckyduck@gentoo.org> blowfishj-2.14.ebuild:
+  stable on amd64, ppc and x86
+
+*blowfishj-2.14 (03 Apr 2005)
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org> -blowfishj-2.13.ebuild,
+  +blowfishj-2.14.ebuild:
+  version bump
+
+  17 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> blowfishj-2.13.ebuild:
+  added missing unzip dependency. see #69831
 
 *blowfishj-2.13 (12 Nov 2004)
 

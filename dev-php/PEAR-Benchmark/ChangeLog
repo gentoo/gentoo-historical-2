@@ -1,6 +1,40 @@
 # ChangeLog for dev-php/PEAR-Benchmark
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Benchmark/ChangeLog,v 1.1 2005/02/12 09:14:10 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Benchmark/ChangeLog,v 1.1.1.1 2005/11/30 09:47:59 chriswhite Exp $
+
+*PEAR-Benchmark-1.2.4 (10 Nov 2005)
+
+  10 Nov 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Benchmark-1.2.3.ebuild, +PEAR-Benchmark-1.2.4.ebuild:
+  Version bump.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Benchmark-1.2.3.ebuild:
+  Add ~amd64.
+
+*PEAR-Benchmark-1.2.3 (09 Oct 2005)
+
+  09 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Benchmark-1.2.2-r1.ebuild, +PEAR-Benchmark-1.2.3.ebuild:
+  Version bump.
+
+  18 Sep 2005; Joseph Jezak <josejx@gentoo.org>
+  PEAR-Benchmark-1.2.2-r1.ebuild:
+  Marked ~ppc to fix broken php deps.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-Benchmark-1.2.2-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-Benchmark-1.2.2-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Benchmark-1.2.2-r1.ebuild:
+  Use new PEAR eclass.
+
+  16 May 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Benchmark-1.2.2.ebuild:
+  Stable on amd64 and x86.
 
 *PEAR-Benchmark-1.2.2 (12 Feb 2005)
 

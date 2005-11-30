@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/glibmm/glibmm-2.4.7-r1.ebuild,v 1.1 2005/04/27 11:44:57 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/glibmm/glibmm-2.4.7-r1.ebuild,v 1.1.1.1 2005/11/30 09:46:22 chriswhite Exp $
 
 inherit gnome2
 
@@ -9,15 +9,15 @@ HOMEPAGE="http://gtkmm.sourceforge.net/"
 
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="~x86 ~ppc ~amd64 ~sparc ~ppc64 ~alpha ~hppa"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="doc"
+
+RDEPEND=">=dev-libs/libsigc++-2.0.11
+	>=dev-libs/glib-2.4"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
 	doc? ( app-doc/doxygen )"
-
-RDEPEND=">=dev-libs/libsigc++-2.0
-		>=dev-libs/glib-2.4"
 
 DOCS="AUTHORS CHANGES ChangeLog NEWS README"
 
@@ -31,7 +31,7 @@ src_unpack() {
 
 src_install() {
 	gnome2_src_install
-	rm -fr ${D}/usr/share/doc/${P%.*}
+	rm -fr ${D}/usr/share/doc/glibmm-2.4
 	if use doc ; then
 		# API Reference
 		dohtml -r docs/reference/html/* docs/images/*

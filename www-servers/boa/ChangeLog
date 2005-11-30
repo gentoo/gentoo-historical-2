@@ -1,6 +1,35 @@
-# ChangeLog for net-www/boa
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/boa/ChangeLog,v 1.1 2004/08/08 11:09:49 stuart Exp $
+# ChangeLog for www-servers/boa
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/boa/ChangeLog,v 1.1.1.1 2005/11/30 09:46:38 chriswhite Exp $
+
+*boa-0.94.14_rc21 (28 Jul 2005)
+
+  28 Jul 2005; Rob Holland <tigger@gentoo.org> +boa-0.94.14_rc21.ebuild:
+  Version bump. Correct alpha vs rc naming
+
+*boa-0.94.14_alpha20-r1 (28 Jul 2005)
+
+  28 Jul 2005; Rob Holland <tigger@gentoo.org>
+  +files/boa-0.94.14_alpha20-64bit.patch, +boa-0.94.14_alpha20-r1.ebuild:
+  Small tidy ups. 64bit fixes. Don't stop the boa service when installing.
+
+*boa-0.94.14_alpha20 (22 Oct 2004)
+
+  22 Oct 2004; <solar@gentoo.org> +metadata.xml,
+  +files/boa-0.94.13-server_uid.patch, boa-0.94.13-r1.ebuild,
+  +boa-0.94.14_alpha20.ebuild:
+  - package boa was/is missing a metadata.xml and orignial commiter is no longer
+  an active dev so I'm adding a few updates for this package. - added tiny patch
+  for boa-0.94.13-r1 which fixes the fact that boa thought root was an invalid
+  user. - Massive updates for boa-0.94.14_alpha20 see http://www.boa.org/CHANGES
+  for more details.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  boa-0.94.13-r1.ebuild:
+  Masked boa-0.94.13-r1.ebuild stable for ppc
 
 *boa-0.94.13-r1 (08 Aug 2004)
 

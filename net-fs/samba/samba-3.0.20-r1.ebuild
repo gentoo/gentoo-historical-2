@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.20-r1.ebuild,v 1.1 2005/09/02 08:12:41 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.20-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:51 chriswhite Exp $
 
 inherit eutils versionator
 
 IUSE_LINGUAS="ja pl"
-IUSE="acl async automount cups doc kerberos ldap mysql pam postgres python quotas
-	readline syslog winbind xml xml2 libclamav oav selinux"
+IUSE="acl async automount cups doc examples kerberos ldap mysql pam postgres
+	python quotas readline syslog winbind xml xml2 libclamav oav selinux"
 RESTRICT="test"
 
 VSCAN_VER=0.3.6
-PATCH_VER=0.3.6
+PATCH_VER=0.3.7
 MY_P=${PN}-${PV/_/}
 MY_PP=${PN}-$(get_major_version)-gentoo-${PATCH_VER}
 S2=${WORKDIR}/${MY_P}
@@ -19,7 +19,9 @@ PFVSCAN=${PN}-vscan-${VSCAN_VER}
 DESCRIPTION="SAMBA is a suite of SMB and CIFS client/server programs for UNIX"
 HOMEPAGE="http://www.samba.org/
 	http://www.openantivirus.org/projects.php"
-SRC_URI="mirror://samba/${MY_P}.tar.gz
+SRC_URI="
+	mirror://samba/${MY_P}.tar.gz
+	mirror://samba/old-versions/${MY_P}.tar.gz
 	oav? ( mirror://sourceforge/openantivirus/${PFVSCAN}.tar.bz2 )
 	mirror://gentoo/${MY_PP}.tar.bz2"
 
@@ -239,14 +241,15 @@ src_install() {
 	# docs
 	dodoc ${FILESDIR}/README.gentoo
 	dodoc ${S2}/{COPYING,Manifest,README,Roadmap,WHATSNEW.txt}
-	docinto examples
 	dodoc ${CONFDIR}/nsswitch.conf-wins
 	use winbind && dodoc ${CONFDIR}/nsswitch.conf-winbind
 
-	cp -pPR ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
-
-	chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
-	chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	if use examples; then
+		docinto examples
+		cp -pPR ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
+		chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
+		chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	fi
 
 	if use oav; then
 		docinto ${PFVSCAN}

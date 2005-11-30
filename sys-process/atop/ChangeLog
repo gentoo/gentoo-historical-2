@@ -1,6 +1,15 @@
-# ChangeLog for sys-apps/atop
-# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/atop/ChangeLog,v 1.1 2005/03/03 15:26:22 ciaranm Exp $
+# ChangeLog for sys-process/atop
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-process/atop/ChangeLog,v 1.1.1.1 2005/11/30 09:49:10 chriswhite Exp $
+
+  14 Jun 2005; Mike Frysinger <vapier@gentoo.org> +files/atop.rc,
+  atop-1.14.ebuild:
+  Move init.d script off of mirrors and into $FILESDIR #96054.
+
+*atop-1.14 (07 May 2005)
+
+  07 May 2005; Mike Frysinger <vapier@gentoo.org> +atop-1.14.ebuild:
+  Version bump #76202 by Jonathan Smith.
 
 *atop-1.9 (03 Mar 2005)
 

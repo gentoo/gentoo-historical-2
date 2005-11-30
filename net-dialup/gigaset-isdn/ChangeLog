@@ -1,6 +1,27 @@
 # ChangeLog for net-dialup/gigaset-isdn
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/gigaset-isdn/ChangeLog,v 1.1 2004/11/07 21:44:26 mrness Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/gigaset-isdn/ChangeLog,v 1.1.1.1 2005/11/30 09:46:16 chriswhite Exp $
+
+  15 Jun 2005; Alin Nastac <mrness@gentoo.org> -gigaset-isdn-0.4.0.ebuild,
+  gigaset-isdn-0.4.2.ebuild:
+  Stable on x86. Remove old version.
+
+*gigaset-isdn-0.4.2 (14 Apr 2005)
+
+  14 Apr 2005; Alin Nastac <mrness@gentoo.org> gigaset-isdn-0.4.1.ebuild,
+  +gigaset-isdn-0.4.2.ebuild:
+  Version bump. Mark 0.4.1 stable on x86.
+
+*gigaset-isdn-0.4.1 (06 Feb 2005)
+
+  06 Feb 2005; Alin Nastac <mrness@gentoo.org> +gigaset-isdn-0.4.1.ebuild:
+  Version bump (#74399).
+
+  14 Dec 2004; Alin Nastac <mrness@gentoo.org> gigaset-isdn-0.4.0.ebuild:
+  Replaced kernel-mod eclass with linux-mod. See #74399.
+
+  05 Dec 2004; Alin Nastac <mrness@gentoo.org> gigaset-isdn-0.4.0.ebuild:
+  Remove inherit kernel-mod and mark stable on x86.
 
 *gigaset-isdn-0.4.0 (07 Nov 2004)
 

@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/fluxbox/fluxbox-0.9.11.ebuild,v 1.1 2004/12/06 22:20:17 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/fluxbox/fluxbox-0.9.11.ebuild,v 1.1.1.1 2005/11/30 09:45:01 chriswhite Exp $
 
 inherit eutils
 
-IUSE="nls xinerama truetype kde gnome bigger-fonts"
+IUSE="nls xinerama truetype kde gnome bigger-fonts disablexmb"
 
 DESCRIPTION="Fluxbox is an X11 window manager featuring tabs and an iconbar"
 SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.bz2"
@@ -25,7 +25,7 @@ PROVIDE="virtual/blackbox"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~alpha ~hppa ~ia64 ~mips ~ppc64 ~ppc-macos"
+KEYWORDS="x86 ppc sparc amd64 alpha hppa ~ia64 mips ppc64 ~ppc-macos"
 
 src_unpack() {
 	unpack ${A}
@@ -43,8 +43,13 @@ src_unpack() {
 	epatch ${FILESDIR}/0.9.10/${PN}-0.9.10-fancy-gentoo-styledirs.patch
 
 	# Add in the Gentoo -r number to fluxbox -version output.
+	if [[ "${PR}" == "r0" ]] ; then
+		suffix="gentoo"
+	else
+		suffix="gentoo-${PR}"
+	fi
 	sed -i \
-		-e "s~\(__fluxbox_version .@VERSION@\)~\1-gentoo${PR:+-${PR}}~" \
+		-e "s~\(__fluxbox_version .@VERSION@\)~\1-${suffix}~" \
 		version.h.in || die "version sed failed"
 
 	# Use a less fugly default theme
@@ -62,9 +67,11 @@ src_unpack() {
 		[[ -f "${style}" ]] || die "waah! ${style} doesn't exist"
 
 		# Make fonts more readable if we use bigger-fonts
-		use bigger-fonts 1>/dev/null && ( sed -i \
-			-e 's~\([fF]ont:[ \t]\+[a-zA-Z]\+-\)[789]~\110~' \
-			${style} || die "sed voodoo failed (insufficient goats?)" )
+		if use bigger-fonts 1>/dev/null ; then
+			sed -i \
+				-e 's~\([fF]ont:[ \t]\+[a-zA-Z]\+-\)[789]~\110~' \
+				${style} || die "sed voodoo failed (insufficient goats?)"
+		fi
 
 		# We don't have a reliable sans font alias, change it to lucidasans.
 		# That might not work either, but it's more likely...
@@ -79,11 +86,12 @@ src_compile() {
 	export PKG_CONFIG_PATH=/usr/X11R6/lib/pkgconfig:/usr/lib/pkgconfig
 
 	econf \
-		`use_enable nls` \
-		`use_enable xinerama` \
-		`use_enable truetype xft` \
-		`use_enable kde` \
-		`use_enable gnome` \
+		$(use_enable nls) \
+		$(use_enable xinerama) \
+		$(use_enable truetype xft) \
+		$(use_enable kde) \
+		$(use_enable gnome) \
+		$(use_enable !disablexmb xmb) \
 		--sysconfdir=/etc/X11/${PN} \
 		${myconf} || die "configure failed"
 
@@ -93,7 +101,7 @@ src_compile() {
 src_install() {
 	dodir /usr/share/fluxbox
 	make DESTDIR=${D} install || die "make install failed"
-	dodoc README* AUTHORS TODO* COPYING
+	dodoc README* AUTHORS TODO* COPYING ChangeLog NEWS
 
 	dodir /usr/share/xsessions
 	insinto /usr/share/xsessions
@@ -117,22 +125,22 @@ pkg_postinst() {
 	einfo "As of fluxbox 0.9.10-r3, we are using an improved system for"
 	einfo "handling styles in the menu. To take advantage of this, use"
 	einfo "the following for your menu styles section:"
-	einfo " "
+	einfo
 	einfo "    [submenu] (Styles) {Select a Style}"
 	einfo "        [include] (/usr/share/fluxbox/menu.d/styles/)"
 	einfo "    [end]"
-	einfo " "
+	einfo
 	einfo "If you use fluxbox-generate_menu or the default global fluxbox"
 	einfo "menu file, this will already be present."
-	einfo " "
+	einfo
 	if has_version '<x11-wm/fluxbox-0.9.10-r3' ; then
 		ewarn "You must restart fluxbox before using the [include] /directory/"
 		ewarn "feature if you are upgrading from an older fluxbox!"
-		ewarn " "
+		ewarn
 	fi
-	ewarn "Be warned that anything involving XComposite is extremely "
-	ewarn "experimental. Please don't report bugs unless they also occur "
+	ewarn "Be warned that anything involving XComposite is extremely"
+	ewarn "experimental. Please don't report bugs unless they also occur"
 	ewarn "with XComposite disabled."
-	ewarn " "
+	ewarn
 	epause
 }

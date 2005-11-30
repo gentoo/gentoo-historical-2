@@ -1,15 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostap-driver/hostap-driver-0.3.7.ebuild,v 1.1 2005/02/13 11:46:58 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostap-driver/hostap-driver-0.3.7.ebuild,v 1.1.1.1 2005/11/30 09:45:39 chriswhite Exp $
 
-inherit toolchain-funcs eutils pcmcia linux-mod
+inherit toolchain-funcs eutils linux-mod
 
-DESCRIPTION="HostAP wireless drivers"
+DESCRIPTION="Driver for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products"
 HOMEPAGE="http://hostap.epitest.fi"
 SRC_URI="${SRC_URI} http://hostap.epitest.fi/releases/${P}.tar.gz"
 LICENSE="GPL-2"
 
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="ppc x86"
 IUSE="pcmcia"
 SLOT="0"
 
@@ -19,8 +19,9 @@ BUILD_PARAMS="KERNEL_PATH=${KV_DIR}"
 BUILD_TARGETS="all"
 MODULESD_HOSTAP_DOCS="README"
 
-CONFIG_CHECK="NET_RADIO"
-NET_RADIO_ERROR="${P} requires support for Wireless LAN drivers (non-hamradio) & Wireless Extensions (CONFIG_NET_RADIO)."
+CONFIG_CHECK="!HOSTAP NET_RADIO"
+ERROR_HOSTAP="${P} requires the in-kernel version of the hostap driver to be disabled (CONFIG_HOSTAP)"
+ERROR_NET_RADIO="${P} requires support for Wireless LAN drivers (non-hamradio) & Wireless Extensions (CONFIG_NET_RADIO)."
 
 pkg_setup() {
 	MODULE_NAMES="hostap(net::${S}/driver/modules)
@@ -43,26 +44,22 @@ src_unpack() {
 	cd ${S}
 	epatch ${FILESDIR}/${P}-firmware.patch
 
-	# set compiler
-	sed -i "s:gcc:$(tc-getCC):" ${S}/Makefile
+	sed -i \
+		-e "s:gcc:$(tc-getCC):" \
+		-e "s:tail -1:tail -n 1:" \
+		${S}/Makefile
 
-	# unpack the pcmcia-cs sources if needed
-	pcmcia_src_unpack
+	if use pcmcia; then
+		# unpack the pcmcia-cs sources if needed
+		pcmcia_src_unpack
 
-	# fix for new coreutils (#31801)
-	sed -i "s:tail -1:tail -n 1:" ${S}/Makefile
-
-	# set correct pcmcia path (PCMCIA_VERSION gets set from pcmcia_src_unpack)
-	if [ -n "${PCMCIA_VERSION}" ]; then
-		sed -i "s:^\(PCMCIA_PATH\)=:\1=${PCMCIA_SOURCE_DIR}:" ${S}/Makefile
+		# set correct pcmcia path (PCMCIA_VERSION gets set from pcmcia_src_unpack)
+		if [ -n "${PCMCIA_VERSION}" ]; then
+			sed -i "s:^\(PCMCIA_PATH\)=:\1=${PCMCIA_SOURCE_DIR}:" ${S}/Makefile
+		fi
 	fi
 
 	convert_to_m ${S}/Makefile
-}
-
-src_compile() {
-	pcmcia_configure
-	linux-mod_src_compile
 }
 
 src_install() {

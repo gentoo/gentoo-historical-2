@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-im-exporter/xml-im-exporter-1.1.ebuild,v 1.1 2005/05/22 14:26:37 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-im-exporter/xml-im-exporter-1.1.ebuild,v 1.1.1.1 2005/11/30 09:47:31 chriswhite Exp $
 
 inherit java-pkg
 
@@ -13,8 +13,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc jikes source"
 
-RESTRICT="primaryuri"
-
 DEPEND=">=virtual/jdk-1.4
 	dev-java/ant-core
 	jikes? ( dev-java/jikes )
@@ -26,7 +24,7 @@ S="${WORKDIR}/${PN}"
 src_compile() {
 	local antflags="jar"
 	use doc && antflags="${antflags} javadocs"
-	use jikes && antflags="-Dbuild.compiler=jikes"
+	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
 	ant ${antflags} || die "Compile failed"
 }
 

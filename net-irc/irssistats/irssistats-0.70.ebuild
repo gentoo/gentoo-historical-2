@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irssistats/irssistats-0.70.ebuild,v 1.1 2005/04/07 19:40:14 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irssistats/irssistats-0.70.ebuild,v 1.1.1.1 2005/11/30 09:48:58 chriswhite Exp $
 
-inherit gcc
+inherit toolchain-funcs
 
 DESCRIPTION="Generates HTML IRC stats based on irssi logs."
 HOMEPAGE="http://royale.zerezo.com/irssistats/"
@@ -17,7 +17,7 @@ IUSE=""
 DEPEND=""
 
 src_compile() {
-	$(gcc-getCC) -o irssistats ${CFLAGS} irssistats.c || die "compile failed"
+	$(tc-getCC) -o irssistats ${CFLAGS} irssistats.c || die "compile failed"
 }
 
 src_install() {

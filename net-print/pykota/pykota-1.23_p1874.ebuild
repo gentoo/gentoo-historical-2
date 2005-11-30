@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/pykota/pykota-1.23_p1874.ebuild,v 1.1 2005/11/10 13:56:38 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/pykota/pykota-1.23_p1874.ebuild,v 1.1.1.1 2005/11/30 09:48:20 chriswhite Exp $
 
 inherit python eutils distutils
 
@@ -16,12 +16,12 @@ DEPEND="dev-lang/python
 	net-print/pkpgcounter
 	postgres? ( dev-db/postgresql dev-db/pygresql )
 	ldap?     ( net-nds/openldap dev-python/python-ldap )
-	snmp?     ( net-analyzer/net-snmp dev-python/pysnmp )
+	snmp?     ( net-analyzer/net-snmp =dev-python/pysnmp-3.4.2 )
 	xml?      ( dev-python/jaxml )
 	xml2?     ( dev-python/jaxml ) "
 RDEPEND="${DEPEND}"
 
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 
 src_install() {

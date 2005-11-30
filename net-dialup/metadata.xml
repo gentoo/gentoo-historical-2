@@ -4,5 +4,24 @@
 	<longdescription lang="en">
 		The net-dialup category contains dialup-related networking software.
 	</longdescription>
+	<longdescription lang="de">
+		Die Kategorie net-dialup enthält Software für Dialup-Verbindungen.
+	</longdescription>
+	<longdescription lang="es">
+		La categoría net-dialup contiene paquetes relacionados con conexiones
+		telefónicas.
+	</longdescription>
+	<longdescription lang="ja">
+		net-dialupカテゴリーにはダイアルアップに関連したネットワーキング・ソフトウェアが含まれています。
+	</longdescription>
+	<longdescription lang="nl">
+		De net-dialup categorie bevat applicaties voor inbelverbindingen.
+	</longdescription>
+	<longdescription lang="vi">
+		Nhóm net-dialup chứa các phần mềm liên quan đến mạng quay số.
+	</longdescription>
+	<longdescription lang="it">
+		La categoria net-dialup contiene pacchetti per la connessione telefonica dial-up.
+	</longdescription>
 </catmetadata>
 

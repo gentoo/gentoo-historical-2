@@ -1,19 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jikes/jikes-1.22-r1.ebuild,v 1.1 2004/10/12 19:21:14 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jikes/jikes-1.22-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:21 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
 DESCRIPTION="IBM's open source, high performance Java compiler"
-HOMEPAGE="http://oss.software.ibm.com/developerworks/opensource/jikes/"
-SRC_URI="ftp://www-126.ibm.com/pub/jikes/${PV}/${P}.tar.bz2"
+HOMEPAGE="http://jikes.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 LICENSE="IBM"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64 ~alpha ~ia64 ~hppa"
+KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86 ~ppc64"
 IUSE=""
-DEPEND="virtual/libc"
 DEPEND=""
-RESTRICT="nomirror"
 
 src_unpack() {
 	unpack ${A}
@@ -31,7 +29,7 @@ src_compile() {
 	emake || die "compile problem"
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install || die "install problem"
 	dodoc ChangeLog COPYING AUTHORS README TODO NEWS
 }

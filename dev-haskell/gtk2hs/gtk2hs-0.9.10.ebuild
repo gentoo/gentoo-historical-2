@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gtk2hs/gtk2hs-0.9.10.ebuild,v 1.1 2005/11/05 16:20:37 dcoutts Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gtk2hs/gtk2hs-0.9.10.ebuild,v 1.1.1.1 2005/11/30 09:48:22 chriswhite Exp $
 
 inherit base ghc-package multilib
 
@@ -30,8 +30,7 @@ src_compile() {
 	econf \
 		--enable-packager-mode \
 		$(has_version '>=x11-libs/gtk+-2.8' && echo --enable-cairo) \
-		$(use_enable glade libglade) \
-		$(use_enable gnome libglade) \
+		$(use glade || use gnome && echo --enable-libglade) \
 		$(use_enable gnome gconf) \
 		$(use_enable gnome sourceview) \
 		$(use_enable mozilla mozilla) \
@@ -84,7 +83,7 @@ src_install() {
 
 	# build ghci .o files from .a files
 	ghc-makeghcilib "${D}/usr/$(get_libdir)/gtk2hs/libHSglib.a"
-	if use cairo; then
+	if has_version '>=x11-libs/gtk+-2.8'; then
 		ghc-makeghcilib "${D}/usr/$(get_libdir)/gtk2hs/libHScairo.a"
 	fi
 	ghc-makeghcilib "${D}/usr/$(get_libdir)/gtk2hs/libHSgtk.a"

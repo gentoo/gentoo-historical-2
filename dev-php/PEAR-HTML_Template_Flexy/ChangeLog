@@ -1,6 +1,98 @@
 # ChangeLog for dev-php/PEAR-HTML_Template_Flexy
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_Template_Flexy/ChangeLog,v 1.1 2003/05/07 18:27:50 method Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_Template_Flexy/ChangeLog,v 1.1.1.1 2005/11/30 09:47:51 chriswhite Exp $
+
+*PEAR-HTML_Template_Flexy-1.2.3 (31 Oct 2005)
+
+  31 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Template_Flexy-1.2.2.ebuild,
+  +PEAR-HTML_Template_Flexy-1.2.3.ebuild:
+  Version bump.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-HTML_Template_Flexy-1.2.2.ebuild:
+  Add ~amd64.
+
+*PEAR-HTML_Template_Flexy-1.2.2 (09 Oct 2005)
+
+  09 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Template_Flexy-1.2.1-r1.ebuild,
+  +PEAR-HTML_Template_Flexy-1.2.2.ebuild:
+  Version bump.
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-HTML_Template_Flexy-1.2.1-r1.ebuild:
+  Fix RDEPEND.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-HTML_Template_Flexy-1.2.1-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-HTML_Template_Flexy-1.2.1-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-HTML_Template_Flexy-1.2.1-r1.ebuild:
+  Use new PEAR eclass.
+
+*PEAR-HTML_Template_Flexy-1.2.1 (16 May 2005)
+
+  16 May 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Template_Flexy-0.9.2.ebuild,
+  +PEAR-HTML_Template_Flexy-1.2.1.ebuild:
+  Version bump.
+
+  08 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Template_Flexy-0.4.ebuild,
+  -PEAR-HTML_Template_Flexy-0.6.1.ebuild:
+  Cleanup.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Nov 2004; Simon Stelling <blubb@gentoo.org>
+  PEAR-HTML_Template_Flexy-0.9.2.ebuild:
+  added ~amd64
+
+  22 Oct 2004; Jason Wever <weeve@gentoo.org>
+  PEAR-HTML_Template_Flexy-0.6.3.ebuild:
+  Stable on sparc.
+
+  03 Aug 2004; <agriffis@gentoo.org> PEAR-HTML_Template_Flexy-0.6.3.ebuild,
+  PEAR-HTML_Template_Flexy-0.9.2.ebuild:
+  add ia64 keywords #56295
+
+*PEAR-HTML_Template_Flexy-0.9.2 (30 Jul 2004)
+
+  30 Jul 2004; Tal Peer <coredumb@gentoo.org>
+  +PEAR-HTML_Template_Flexy-0.9.2.ebuild:
+  Version Bump.
+
+  06 Jul 2004; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-HTML_Template_Flexy-0.6.3.ebuild:
+  Stable on ppc.
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-HTML_Template_Flexy-0.6.3.ebuild:
+  Stable on alpha.
+
+*PEAR-HTML_Template_Flexy-0.6.3 (24 Jan 2004)
+
+  24 Jan 2004; Tal Peer <coredumb@gentoo.org>
+  PEAR-HTML_Template_Flexy-0.6.3.ebuild:
+  Version bump
+
+*PEAR-HTML_Template_Flexy-0.6.1 (24 Dec 2003)
+
+  24 Dec 2003; Tal Peer <coredumb@gentoo.org>
+  PEAR-HTML_Template_Flexy-0.6.1.ebuild:
+  Version bump, uses new eclass. Also added optional dep on PEAR-HTML_Javascript.
+
+  13 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  add metadata.xml
+
+  11 Sep 2003; Robin H. Johnson <robbat2@gentoo.org>
+  PEAR-HTML_Template_Flexy-0.4.ebuild:
+  fix bug #28168
 
 *PEAR-HTML_Template_Flexy-0.4 (07 May 2003)
 

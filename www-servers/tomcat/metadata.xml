@@ -2,7 +2,11 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<herd>java</herd>
-	<maintainer>
-	  <email>axxo@gentoo.org</email>
-	</maintainer>
+
+	<longdescription>
+	Tomcat is the servlet container that is used in the official Reference
+	Implementation for the Java Servlet and JavaServer Pages technologies. 
+	The Java Servlet and JavaServer Pages specifications are developed by 
+	Sun under the Java Community Process.
+	</longdescription>
 </pkgmetadata>

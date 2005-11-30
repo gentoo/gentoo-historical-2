@@ -1,13 +1,13 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hppa-sources/hppa-sources-2.6.10_p1.ebuild,v 1.1 2004/12/27 14:04:03 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hppa-sources/hppa-sources-2.6.10_p1.ebuild,v 1.1.1.1 2005/11/30 09:49:27 chriswhite Exp $
 
 ETYPE="sources"
 inherit kernel-2
 K_NOUSENAME=true
 
 detect_version
- 
+
 DESCRIPTION="Full sources for the Linux kernel with patch for hppa"
 PATCH_LEVEL="${PV/${OKV}_p/}"
 SRC_URI="${KERNEL_URI} http://ftp.parisc-linux.org/cvs/linux-2.6/patch-${OKV}-pa${PATCH_LEVEL}.gz"

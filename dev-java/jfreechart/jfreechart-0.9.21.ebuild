@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jfreechart/jfreechart-0.9.21.ebuild,v 1.1 2004/11/06 09:56:01 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jfreechart/jfreechart-0.9.21.ebuild,v 1.1.1.1 2005/11/30 09:47:42 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,15 +9,16 @@ HOMEPAGE="http://www.jfree.org"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc amd64"
 IUSE="doc jikes"
+RDEPEND=">=virtual/jdk-1.3
+	=dev-java/jcommon-0.9*
+	=dev-java/servletapi-2.3*
+	dev-java/gnu-jaxp"
 DEPEND=">=virtual/jdk-1.3
-		dev-java/ant
-		dev-java/jcommon
-		=dev-java/servletapi-2.3*
-		dev-java/gnu-jaxp
-		jikes? ( dev-java/jikes )"
-RDEPEND=">=virtual/jdk-1.3"
+	${RDEPEND}
+	dev-java/ant-core
+	jikes? ( dev-java/jikes )"
 
 src_unpack() {
 	unpack ${A}
@@ -26,14 +27,16 @@ src_unpack() {
 }
 
 src_compile() {
-	local antflags="compile -Djcommon.jar=$(java-config -p jcommon) -Dservlet.jar=$(java-config -p servletapi-2.3) -Dgnujaxp.jar=$(java-config -p gnu-jaxp)"
+	local antflags="compile -Djcommon.jar=$(java-pkg_getjars jcommon) \
+		-Dservlet.jar=$(java-pkg_getjar servletapi-2.3 servlet.jar) \
+		-Dgnujaxp.jar=$(java-pkg_getjars gnu-jaxp)"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
 	use doc && antflags="${antflags} javadoc"
 	ant -f ant/build.xml ${antflags} || die "compile failed"
 }
 
 src_install() {
-	java-pkg_dojar ${P}.jar
+	java-pkg_newjar ${P}.jar ${PN}.jar
 	dodoc README.txt CHANGELOG.txt
 	use doc && java-pkg_dohtml -r javadoc/
 }

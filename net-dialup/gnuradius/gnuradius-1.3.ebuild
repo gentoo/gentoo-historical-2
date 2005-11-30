@@ -1,26 +1,29 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/gnuradius/gnuradius-1.3.ebuild,v 1.1 2005/02/06 14:14:39 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/gnuradius/gnuradius-1.3.ebuild,v 1.1.1.1 2005/11/30 09:46:05 chriswhite Exp $
 
 MY_P=radius-${PV}
+
 DESCRIPTION="GNU radius authentication server"
 HOMEPAGE="http://www.gnu.org/software/radius/radius.html"
-SRC_URI="ftp://ftp.gnu.org/gnu/radius/${MY_P}.tar.gz"
+SRC_URI="mirror://gnu/radius/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
+IUSE="guile mysql postgres odbc dbm nls snmp pam static debug readline"
 
-IUSE="guile mysql postgres odbc dbm nls snmp pam static debug"
 DEPEND="!net-dialup/freeradius
-		guile? ( >=dev-util/guile-1.4 )
-		mysql? ( dev-db/mysql )
-		postgres? ( dev-db/postgresql )
-		odbc? ( || ( dev-db/unixODBC dev-db/libiodbc ) )
-		readline? ( sys-libs/readline )
-		dbm? ( sys-libs/gdbm )
-		snmp? ( virtual/snmp )
-		pam? ( sys-libs/pam )"
+	!net-dialup/cistronradius
+	guile? ( >=dev-util/guile-1.4 )
+	mysql? ( dev-db/mysql )
+	postgres? ( dev-db/postgresql )
+	odbc? ( || ( dev-db/unixODBC dev-db/libiodbc ) )
+	readline? ( sys-libs/readline )
+	dbm? ( sys-libs/gdbm )
+	snmp? ( net-analyzer/net-snmp )
+	pam? ( sys-libs/pam )"
+
 S=${WORKDIR}/${MY_P}
 
 src_compile() {
@@ -37,7 +40,7 @@ src_compile() {
 		`use_enable debug` \
 		`use_enable static` "
 
-	if useq guile; then
+	if use guile; then
 		myconf="$myconf --with-client --with-server-guile"
 	fi
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/t-coffee/t-coffee-3.18.ebuild,v 1.1 2005/10/19 23:54:54 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/t-coffee/t-coffee-3.18.ebuild,v 1.1.1.1 2005/11/30 09:48:43 chriswhite Exp $
 
 inherit toolchain-funcs
 

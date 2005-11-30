@@ -1,6 +1,61 @@
 # ChangeLog for dev-php/PEAR-XML_Parser
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-XML_Parser/ChangeLog,v 1.1 2005/02/16 07:16:18 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-XML_Parser/ChangeLog,v 1.1.1.1 2005/11/30 09:47:55 chriswhite Exp $
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-XML_Parser-1.2.7.ebuild:
+  Add ~amd64.
+
+  08 Oct 2005; Doug Goldstein <cardoe@gentoo.org>
+  PEAR-XML_Parser-1.2.7.ebuild:
+  adding ~ppc
+
+*PEAR-XML_Parser-1.2.7 (29 Sep 2005)
+
+  29 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-XML_Parser-1.2.4-r1.ebuild, +PEAR-XML_Parser-1.2.7.ebuild:
+  Version bump.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-XML_Parser-1.2.4-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-XML_Parser-1.2.4-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-XML_Parser-1.2.4-r1.ebuild:
+  Use new PEAR eclass.
+
+  18 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-XML_Parser-1.2.4.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PEAR-XML_Parser-1.2.4.ebuild:
+  Stable on sparc
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> PEAR-XML_Parser-1.2.4.ebuild:
+  Stable on ppc64
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-XML_Parser-1.2.4.ebuild:
+  Stable on alpha.
+
+  12 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-XML_Parser-1.2.4.ebuild:
+  Stable on x86 and amd64, see bug 84525.
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> PEAR-XML_Parser-1.2.4.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #84525
+
+  09 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-XML_Parser-1.2.4.ebuild:
+  This package was previously bundled with www-apps/horde-pear. Mark unstable
+  for ARCHes that www-apps/horde-pear-r2 is marked stable for.
+
+  19 Feb 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-XML_Parser-1.2.4.ebuild:
+  Mask ~amd64.
 
 *PEAR-XML_Parser-1.2.4 (16 Feb 2005)
 

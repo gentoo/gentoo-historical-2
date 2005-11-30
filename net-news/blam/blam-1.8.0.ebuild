@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-news/blam/blam-1.8.0.ebuild,v 1.1 2005/05/08 23:46:39 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-news/blam/blam-1.8.0.ebuild,v 1.1.1.1 2005/11/30 09:45:22 chriswhite Exp $
 
 inherit mono eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://ftp.imendio.com/pub/imendio/${PN}/src/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~amd64 ~ppc x86"
 
 IUSE=""
 DEPEND=">=dev-lang/mono-1.1.4
@@ -20,6 +20,16 @@ DEPEND=">=dev-lang/mono-1.1.4
 		=dev-dotnet/glade-sharp-1.0*
 		=dev-dotnet/gecko-sharp-0.6*
 		>=gnome-base/gconf-2.4"
+
+src_unpack() {
+	unpack ${A}
+	if [ $(get_libdir) != "lib" ] ; then
+		sed -i -e 's:$(prefix)/lib/blam:$(libdir)/blam:' \
+			-e "s:@prefix@/lib:@prefix@/$(get_libdir):" \
+			${S}/src/{,atom,rss}/Makefile.{in,am} \
+			${S}/libblam/Makefile.{in,am} ${S}/blam.in || die
+	fi
+}
 
 src_compile() {
 	econf || die

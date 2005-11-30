@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/htdig/htdig-3.2.0_beta6.ebuild,v 1.1 2005/07/06 21:40:24 rl03 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-misc/htdig/htdig-3.2.0_beta6.ebuild,v 1.1.1.1 2005/11/30 09:45:17 chriswhite Exp $
 
 inherit webapp eutils flag-o-matic
 
@@ -17,11 +17,10 @@ RDEPEND=">=sys-libs/zlib-1.1.3
 	app-arch/unzip"
 DEPEND="${RDEPEND}"
 
-export CPPFLAGS="${CPPFLAGS} -Wno-deprecated"
+SLOT="0"
+WEBAPP_MANUAL_SLOT="yes"
 
 src_compile() {
-	append-flags -Wno-deprecated
-
 	./configure \
 		--prefix=/usr \
 		--with-config-dir=/${MY_HOSTROOTDIR}/${PN} \

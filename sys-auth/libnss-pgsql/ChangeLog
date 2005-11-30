@@ -1,6 +1,6 @@
 # ChangeLog for sys-auth/libnss-pgsql
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/libnss-pgsql/ChangeLog,v 1.1 2005/07/02 21:59:23 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/libnss-pgsql/ChangeLog,v 1.1.1.1 2005/11/30 09:45:17 chriswhite Exp $
 
   02 Jul 2005; Diego Pettenò <flameeyes@gentoo.org>
   +files/libnss-pgsql-1.3-gentoo.patch, +files/postgres-and-glibc.patch,

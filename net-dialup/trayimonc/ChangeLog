@@ -1,6 +1,18 @@
 # ChangeLog for net-dialup/trayimonc
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/trayimonc/ChangeLog,v 1.1 2004/11/09 22:39:23 mrness Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/trayimonc/ChangeLog,v 1.1.1.1 2005/11/30 09:46:00 chriswhite Exp $
+
+  16 Apr 2005; Alin Nastac <mrness@gentoo.org> trayimonc-0.8.ebuild:
+  Stable on x86
+
+*trayimonc-0.8 (03 Mar 2005)
+
+  03 Mar 2005; Alin Nastac <mrness@gentoo.org> trayimonc-0.7.1.ebuild,
+  +trayimonc-0.8.ebuild:
+  Version bump & change SRC_URI (#83960).
+
+  12 Feb 2005; Alin Nastac <mrness@gentoo.org> trayimonc-0.7.1.ebuild:
+  Mark stable on x86.
 
 *trayimonc-0.7.1 (10 Nov 2004)
 

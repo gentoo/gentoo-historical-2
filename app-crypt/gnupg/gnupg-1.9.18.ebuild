@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.9.18.ebuild,v 1.1 2005/08/06 03:50:07 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.9.18.ebuild,v 1.1.1.1 2005/11/30 09:44:50 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -37,7 +37,7 @@ RDEPEND="
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	if use smartcard && ! built_with_use opensc pcsc-lite ; then
+	if use smartcard && ! built_with_use dev-libs/opensc pcsc-lite ; then
 		sed -i -e 's:OPENSC_LIBS="\$OPENSC_LIBS -lpcsclite -lpthread":OPENSC_LIBS="\$OPENSC_LIBS -lopenct -lpthread":' \
 		acinclude.m4 || die "openct patching failed."
 		./autogen.sh
@@ -82,7 +82,7 @@ src_test() {
 
 src_install() {
 	make DESTDIR="${D}" install || die
-	dodoc ChangeLog INSTALL NEWS README THANKS TODO VERSION
+	dodoc ChangeLog NEWS README THANKS TODO VERSION
 
 	if ! use caps ; then
 		fperms u+s,go-r /usr/bin/gpg2

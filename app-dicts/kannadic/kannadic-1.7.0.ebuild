@@ -1,39 +1,35 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/kannadic/kannadic-1.7.0.ebuild,v 1.1 2003/12/04 07:04:29 usata Exp $
-
-IUSE="debug xinerama"
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/kannadic/kannadic-1.7.0.ebuild,v 1.1.1.1 2005/11/30 09:46:50 chriswhite Exp $
 
 DESCRIPTION="Graphical Canna style dictionary editor written for KDE"
 HOMEPAGE="http://linux-life.net/program/cc/kde/app/kannadic/"
 SRC_URI="http://linux-life.net/program/cc/kde/app/kannadic/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
 SLOT="0"
+KEYWORDS="x86 ~sparc"
+IUSE="debug xinerama"
 
-S="${WORKDIR}/${P}"
-
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	virtual/x11
-	kde-base/kde
+	kde-base/kdelibs
 	x11-libs/qt
 	app-i18n/canna"
 
 src_compile() {
-
-	econf `use_enable debug` \
-		`use_with xinerama` || die
+	econf \
+		`use_enable debug` \
+		`use_with xinerama` \
+		|| die
 	emake || die
 }
 
 src_install() {
-
-	einstall || die
+	make DESTDIR=${D} install || die
 }
 
 pkg_postinst() {
-
 	einfo
 	einfo "Currently KannaDic doesn't create a dictionary for you,"
 	einfo "so you need to create one manually."

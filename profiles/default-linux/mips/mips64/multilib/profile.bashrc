@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/mips64/multilib/profile.bashrc,v 1.1 2005/04/27 05:13:34 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/mips64/multilib/profile.bashrc,v 1.1.1.1 2005/11/30 09:48:37 chriswhite Exp $
 
 # This isn't ready for mass consumption by the public.  Until it's ready, 
 # block use of this profile.

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.1-r1.ebuild,v 1.1 2005/06/17 17:32:19 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/gnupg-1.4.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:50 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -9,7 +9,7 @@ ECCVER_GNUPG=1.4.0
 
 DESCRIPTION="The GNU Privacy Guard, a GPL pgp replacement"
 HOMEPAGE="http://www.gnupg.org/"
-SRC_URI="ftp://ftp.gnupg.org/gcrypt/gnupg/${P}.tar.bz2
+SRC_URI="mirror://gnupg/gnupg/${P}.tar.bz2
 	idea? ( ftp://ftp.gnupg.dk/pub/contrib-dk/idea.c.gz )
 	ecc? ( http://alumnes.eps.udl.es/%7Ed4372211/src/${PN}-${ECCVER_GNUPG}-ecc${ECCVER}.diff.bz2 )"
 
@@ -37,9 +37,9 @@ RDEPEND="
 	smartcard? ( dev-libs/libusb )
 	selinux? ( sec-policy/selinux-gnupg )
 	usb? ( dev-libs/libusb )"
-# waiting on arm arch - bug #76234
+
 RDEPEND="${RDEPEND}
-	!arm? ( X? ( || ( media-gfx/xloadimage media-gfx/xli ) ) )"
+	X? ( || (  media-gfx/xloadimage media-gfx/xli ) )"
 
 DEPEND="${RDEPEND}
 	dev-lang/perl"
@@ -60,8 +60,11 @@ src_unpack() {
 			einfo "Tweaking PV in ECC patch"
 			sed -i "s/ VERSION='${ECCVER_GNUPG}/ VERSION='${PV}/g" $eccpatch
 		fi
-		EPATCH_OPTS="-p1 -d ${S}" epatch $eccpatch || die "ecc patch failed"
+		EPATCH_OPTS="-p1 -d ${S}" epatch $eccpatch
 	fi
+
+	# maketest fix
+	epatch ${FILESDIR}/${P}-selftest.patch
 
 	# Fix PIC definitions
 	cd ${S}
@@ -89,26 +92,25 @@ src_compile() {
 	# configure doesn't trean --disable-asm correctly
 	use x86 && myconf="${myconf} --enable-asm"
 
-	# waiting on arm bug #76234
-	use arm || myconf="${myconf} `use_enable X photo-viewers`"
 
 	# fix compile problem on ppc64
 	use ppc64 && myconf="${myconf} --disable-asm"
 
 	econf \
-		`use_enable ldap` \
+		$(use_enable ldap) \
 		--enable-mailto \
 		--enable-hkp \
 		--enable-finger \
-		`use_with !zlib included-zlib` \
-		`use_with curl libcurl /usr` \
-		`use_enable nls` \
-		`use_enable bzip2` \
-		`use_enable smartcard card-support` \
-		`use_enable selinux selinux-support` \
-		`use_with caps capabilities` \
-		`use_with readline` \
-		`use_with usb libusb /usr` \
+		$(use_with !zlib included-zlib) \
+		$(use_with curl libcurl /usr) \
+		$(use_enable nls) \
+		$(use_enable bzip2) \
+		$(use_enable smartcard card-support) \
+		$(use_enable selinux selinux-support) \
+		$(use_with caps capabilities) \
+		$(use_with readline) \
+		$(use_with usb libusb /usr) \
+		$(use_enable X photo-viewers) \
 		--enable-static-rnd=linux \
 		--libexecdir=/usr/libexec \
 		--enable-sha512 \
@@ -125,12 +127,12 @@ src_install() {
 	emake DESTDIR=${D} libexecdir="/usr/libexec/gnupg" install || die
 
 	# caps support makes life easier
-	use caps || fperms u+s /usr/bin/gpg
+	use caps || fperms u+s,go-r /usr/bin/gpg
 
 	# keep the documentation in /usr/share/doc/...
 	rm -rf "${D}/usr/share/gnupg/FAQ" "${D}/usr/share/gnupg/faq.html"
 
-	dodoc AUTHORS BUGS ChangeLog INSTALL NEWS PROJECTS README THANKS \
+	dodoc AUTHORS BUGS ChangeLog NEWS PROJECTS README THANKS \
 		TODO VERSION doc/{FAQ,HACKING,DETAILS,ChangeLog,OpenPGP,faq.raw}
 
 	docinto sgml

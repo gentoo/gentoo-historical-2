@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hardened-sources/hardened-sources-2.6.11-r15.ebuild,v 1.1 2005/06/27 21:36:20 johnm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/hardened-sources/hardened-sources-2.6.11-r15.ebuild,v 1.1.1.1 2005/11/30 09:49:39 chriswhite Exp $
 
 ETYPE="sources"
 inherit kernel-2

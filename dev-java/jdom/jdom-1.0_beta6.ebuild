@@ -1,30 +1,30 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdom/jdom-1.0_beta6.ebuild,v 1.1 2005/02/03 17:14:26 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdom/jdom-1.0_beta6.ebuild,v 1.1.1.1 2005/11/30 09:47:05 chriswhite Exp $
 
 inherit java-pkg
 
-IUSE="jikes doc"
+IUSE="jikes doc source"
 
 MY_PN="jdom"
 MY_PV="b6"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Java API to manipulate XML data"
-SRC_URI="http://www.jdom.org/dist/source/archive/${MY_P}.tar.gz"
+SRC_URI="http://www.jdom.org/dist/source/${MY_P}.tar.gz"
 HOMEPAGE="http://www.jdom.org"
 LICENSE="JDOM"
 SLOT="${PV}"
-KEYWORDS="~x86 ~amd64"
-DEPEND=">=dev-java/ant-1.4.1
-		${RDEPEND}
-		>=virtual/jdk-1.3
-		jikes? ( >=dev-java/jikes-1.15 )"
+KEYWORDS="~amd64 x86"
+
 RDEPEND=">=virtual/jre-1.3
-		=dev-java/xerces-2.6.2*
 		dev-java/saxpath
-		=dev-java/jaxen-1.1*
-		dev-java/xalan"
+		dev-java/xalan
+		>=dev-java/xerces-2.6.2-r1"
+DEPEND=">=virtual/jdk-1.3
+		dev-java/ant-core
+		jikes? ( >=dev-java/jikes-1.15 )
+		${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -34,9 +34,12 @@ src_unpack() {
 	rm -f build/*.jar lib/*.jar
 
 	cd ${S}/lib
-	java-pkg_jar-from jaxen-1.1
 	java-pkg_jar-from saxpath
 	java-pkg_jar-from xerces-2
+
+	if has_version dev-java/jaxen; then
+		java-pkg_jar-from jaxen-1.1
+	fi
 }
 
 src_compile() {
@@ -48,6 +51,19 @@ src_compile() {
 src_install() {
 	java-pkg_dojar build/*.jar
 
-	dodoc CHANGES.txt COMMITTERS.txt LICENSE.txt README.txt TODO.txt
+	dodoc CHANGES.txt COMMITTERS.txt  README.txt TODO.txt
 	use doc && java-pkg_dohtml -r build/apidocs/*
+	use source && java-pkg_dosrc src/java/*
+}
+
+pkg_postinst() {
+	if ! has_version dev-java/jaxen; then
+		einfo ""
+		einfo "If you want jaxen support for jdom then"
+		einfo "please emerge =dev-java/jaxen-1.1* first and"
+		einfo "re-emerge jdom.  Sorry for the"
+		einfo "inconvenience, this is to break out of the"
+		einfo "circular dependencies."
+		einfo ""
+	fi
 }

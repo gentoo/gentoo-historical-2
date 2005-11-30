@@ -1,6 +1,18 @@
 # ChangeLog for app-crypt/dirmngr
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/dirmngr/ChangeLog,v 1.1 2004/08/15 03:24:01 vapier Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/dirmngr/ChangeLog,v 1.1.1.1 2005/11/30 09:44:49 chriswhite Exp $
+
+  19 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> dirmngr-0.9.2.ebuild:
+  No need to RDEPEND=DEPEND.
+
+*dirmngr-0.9.2 (07 Aug 2005)
+
+  07 Aug 2005; Daniel Black <dragonheart@gentoo.org> dirmngr-0.5.5.ebuild,
+  +dirmngr-0.9.2.ebuild, +metadata.xml:
+  version bump. changed to mirror://gnupg too. Added metadata.xml
+
+  29 Aug 2004; David Holm <dholm@gentoo.org> dirmngr-0.5.5.ebuild:
+  Added to ~ppc.
 
 *dirmngr-0.5.5 (14 Aug 2004)
 

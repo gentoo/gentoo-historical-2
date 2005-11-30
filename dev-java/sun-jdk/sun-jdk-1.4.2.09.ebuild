@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/sun-jdk-1.4.2.09.ebuild,v 1.1 2005/08/10 20:29:01 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jdk/sun-jdk-1.4.2.09.ebuild,v 1.1.1.1 2005/11/30 09:47:17 chriswhite Exp $
 
 inherit java eutils
 
@@ -18,19 +18,20 @@ SRC_URI="${At}
 		jce? ( ${jce_policy} )"
 SLOT="1.4"
 LICENSE="sun-bcla-java-vm"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 RESTRICT="fetch"
-IUSE="doc browserplugin jce mozilla"
+IUSE="doc browserplugin nsplugin jce mozilla examples"
 
+#glibc dep: #102423
 DEPEND=">=dev-java/java-config-1.1.5
+	>=sys-libs/glibc-2.3.5
 	sys-apps/sed
 	app-arch/unzip
 	doc? ( =dev-java/java-sdk-docs-1.4.2* )"
 
 RDEPEND="sys-libs/lib-compat"
 
-PROVIDE="virtual/jre
-	virtual/jdk"
+PROVIDE="virtual/jre virtual/jdk"
 
 PACKED_JARS="lib/tools.jar jre/lib/rt.jar jre/lib/jsse.jar jre/lib/charsets.jar
 jre/lib/ext/localedata.jar jre/lib/plugin.jar jre/javaws/javaws.jar"
@@ -57,7 +58,7 @@ pkg_nofetch() {
 
 src_unpack() {
 	if [ ! -r ${DISTDIR}/${At} ]; then
-		die "cannot read ${MY_PV}.bin. Please check the permission and try again."
+		die "cannot read ${At}.bin. Please check the permission and try again."
 	fi
 	if use jce; then
 		if [ ! -r ${DISTDIR}/${jce_policy} ]; then
@@ -99,13 +100,16 @@ src_install() {
 	dodir /opt/${P}
 
 	for i in $dirs ; do
-		cp -dPR $i ${D}/opt/${P}/
+		cp -PR $i ${D}/opt/${P}/
 	done
 
 	dodoc COPYRIGHT README LICENSE THIRDPARTYLICENSEREADME.txt
 	dohtml README.html
 	dodir /opt/${P}/share/
-	cp -a demo src.zip ${D}/opt/${P}/share/
+	if use examples; then
+		cp -pPR demo ${D}/opt/${P}/share/
+	fi
+	cp -pPR src.zip ${D}/opt/${P}/share/
 
 	if use jce ; then
 		# Using unlimited jce while still retaining the strong jce
@@ -121,7 +125,9 @@ src_install() {
 		dosym /opt/${P}/jre/lib/security/unlimited-jce/local_policy.jar /opt/${P}/jre/lib/security/
 	fi
 
-	if use browserplugin || use mozilla; then
+	if use nsplugin ||       # global useflag for netscape-compat plugins
+	   use browserplugin ||  # deprecated but honor for now
+	   use mozilla; then     # wrong but used to honor it
 		local plugin_dir="ns610"
 		if has_version '>=sys-devel/gcc-3.2' ; then
 			plugin_dir="ns610-gcc32"
@@ -142,10 +148,6 @@ src_install() {
 	domenu ${T}/sun_java.desktop
 
 	set_java_env ${FILESDIR}/${VMHANDLE}
-
-	# TODO prepman "fixes" symlink ja -> ja__JP.eucJP in 'man' directory,
-	#      creating ja.gz -> ja_JP.eucJP.gz. This is broken as ja_JP.eucJP
-	#      is a directory and will not be gzipped ;)
 }
 
 pkg_postinst() {
@@ -187,16 +189,17 @@ pkg_postinst() {
 		ewarn "make sure the grsec ACL contains those entries also"
 		ewarn "because enabling it will override the chpax setting"
 		ewarn "on the physical files - help for PaX and grsecurity"
-		ewarn "can be given by #gentoo-hardened + pappy@gentoo.org"
+		ewarn "can be given by #gentoo-hardened + hardened@gentoo.org"
 	fi
 
 	echo
 	eerror "Some parts of Sun's JDK require virtual/x11 to be installed."
 	eerror "Be careful which Java libraries you attempt to use."
 
-	if ! use browserplugin && use mozilla; then
-		ewarn
-		ewarn "The 'mozilla' useflag to enable the java browser plugin for applets"
-		ewarn "has been renamed to 'browserplugin' please update your USE"
+	if ! use nsplugin && ( use browserplugin || use mozilla ); then
+		echo
+		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
+		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
+		ewarn "update your USE to include 'nsplugin'."
 	fi
 }

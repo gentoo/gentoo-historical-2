@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/mips64/multilib/use.mask,v 1.1 2005/04/27 05:13:34 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/mips/mips64/multilib/use.mask,v 1.1.1.1 2005/11/30 09:48:37 chriswhite Exp $
 
 # Jeremy Huddleston <eradicator@gentoo.org>
 # multilib is forced on when we have ${MULTILIB_ABIS} defined

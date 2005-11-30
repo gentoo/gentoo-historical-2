@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/shttpd/shttpd-1.25.ebuild,v 1.1 2005/07/01 04:49:16 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/shttpd/shttpd-1.25.ebuild,v 1.1.1.1 2005/11/30 09:46:44 chriswhite Exp $
 
 inherit eutils toolchain-funcs flag-o-matic
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="ssl cgi threads dmalloc"
 
 DEPEND="ssl? ( >=dev-libs/openssl-0.9.6g )
@@ -59,7 +59,7 @@ src_install() {
 
 pkg_postinst() {
 	enewgroup shttpd
-	enewuser shttpd -1 /bin/false /var/www/localhost/htdocs shttpd
+	enewuser shttpd -1 -1 /var/www/localhost/htdocs shttpd
 	einfo
 	einfo "You can run shttpd standalone or in xinetd mode."
 	einfo "Don't forget to edit /etc/shttpd/shttpd.conf."

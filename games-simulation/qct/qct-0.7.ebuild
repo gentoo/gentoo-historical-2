@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/qct/qct-0.7.ebuild,v 1.1 2004/04/01 22:09:55 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/qct/qct-0.7.ebuild,v 1.1.1.1 2005/11/30 09:49:39 chriswhite Exp $
 
-inherit games
+inherit eutils games
 
 DESCRIPTION="Quiet Console Town puts you in the place of the mayor of a budding new console RPG city"
 HOMEPAGE="http://sourceforge.net/projects/qct/"
@@ -10,13 +10,19 @@ SRC_URI="mirror://sourceforge/qct/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/python-2.2.1
 	>=dev-python/pygame-1.5.5"
 
-S="${WORKDIR}/${PN}"
+S=${WORKDIR}/${PN}
+
+src_unpack() {
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-constant.patch
+}
 
 src_install() {
 	local destdir="${GAMES_DATADIR}/${PN}"

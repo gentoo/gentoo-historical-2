@@ -1,12 +1,107 @@
 # ChangeLog for net-wireless/rt2500
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/rt2500/ChangeLog,v 1.1 2005/01/24 11:56:37 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/rt2500/ChangeLog,v 1.1.1.1 2005/11/30 09:45:34 chriswhite Exp $
+
+  09 Oct 2005; Stefan Schweizer <genstef@gentoo.org>
+  rt2500-1.1.0_beta2-r2.ebuild, rt2500-1.1.0_beta3.ebuild:
+  Fix postinstall thanks to MAL <mal@komcept.com> in bug 98916
+
+  20 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
+  rt2500-1.1.0_beta3.ebuild:
+  Give out a better error message for SMP not supported
+
+  06 Aug 2005; Radoslaw Stachowiak <radek@gentoo.org> metadata.xml:
+  added me as an additional maintainer
+
+  06 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
+  rt2500-1.1.0_beta3.ebuild:
+  Remove !4kstacks check thanks to radek in irc
+
+*rt2500-1.1.0_beta3 (05 Aug 2005)
+
+  05 Aug 2005; Stefan Schweizer <genstef@gentoo.org>
+  +rt2500-1.1.0_beta3.ebuild:
+  version bump
+
+  13 Jul 2005; Stefan Schweizer <genstef@gentoo.org>
+  -rt2500-1.1.0_beta1-r1.ebuild, -rt2500-1.1.0_beta2.ebuild,
+  -rt2500-1.1.0_beta2-r1.ebuild, rt2500-1.1.0_beta2-r2.ebuild:
+  Fix quoting thanks to Kevin Parent <kparent@enersea.net> in bug 98916 and
+  remove old ebuilds.
+
+  11 Jul 2005; Stefan Schweizer <genstef@gentoo.org>
+  rt2500-1.1.0_beta2-r2.ebuild:
+  Check for 4kstacks to be disabled thanks to Dan Capizzi
+  <SentientCitrus@gmail.com> in bug 98701
+
+  11 Jul 2005; Stefan Schweizer <genstef@gentoo.org> +files/RT2500STA.dat,
+  rt2500-1.1.0_beta2-r2.ebuild:
+  Convert RT2500STA.dat to unix format thanks to Kevin Parent
+  <kparent@enersea.net> in bug 98574 and made it fail on SMP kernels thanks to
+  Kevin Parent <kparent@enersea.net> in bug 98578
+
+  07 Jul 2005; Caleb Tennis <caleb@gentoo.org> rt2500-1.1.0_beta1-r1.ebuild,
+  rt2500-1.1.0_beta2.ebuild, rt2500-1.1.0_beta2-r1.ebuild,
+  rt2500-1.1.0_beta2-r2.ebuild:
+  Fix qt dep
+
+  01 Jul 2005; Caleb Tennis <caleb@gentoo.org> rt2500-1.1.0_beta1-r1.ebuild,
+  rt2500-1.1.0_beta2.ebuild, rt2500-1.1.0_beta2-r1.ebuild,
+  rt2500-1.1.0_beta2-r2.ebuild:
+  Fix qmake dir per bug #97535
+
+  27 Jun 2005; David Holm <dholm@gentoo.org> rt2500-1.1.0_beta2-r2.ebuild:
+  Added to ~ppc.
+
+*rt2500-1.1.0_beta2-r2 (26 Jun 2005)
+
+  26 Jun 2005; Stefan Schweizer <genstef@gentoo.org>
+  +rt2500-1.1.0_beta2-r2.ebuild:
+  Add config file and note how to configure thanks to Kevin Parent
+  <kparent@enersea.net> in bug 94560
+
+*rt2500-1.1.0_beta2-r1 (18 May 2005)
+
+  18 May 2005; Stefan Schweizer <genstef@gentoo.org>
+  +files/rt2500-pci_name.patch, +rt2500-1.1.0_beta2-r1.ebuild:
+  Fix compile problem with newer kernels thanks to Nuno Alexandre
+  <ikaro@fluxbox.org> and Ulrich Plate <plate@gentoo.org> and Henning Ryll
+  <henning.ryll@web.de> in bug 85079
+
+  05 Mar 2005; Stefan Schweizer <genstef@gentoo.org>
+  rt2500-1.1.0_beta2.ebuild:
+  ~amd64 thanks to Christian Wolf <wolfchri <at> gmail.com> for testing
+
+  22 Feb 2005; Stefan Schweizer <genstef@gentoo.org> :
+  Fixing digest
+
+*rt2500-1.1.0_beta2 (21 Feb 2005)
+
+  21 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  +rt2500-1.1.0_beta2.ebuild:
+  Version bump.
+
+*rt2500-1.1.0_beta1-r1 (19 Feb 2005)
+
+  19 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  +rt2500-1.1.0_beta1-r1.ebuild, -rt2500-1.1.0_beta1.ebuild:
+  Fixing /etc/modules.d/rt2500 thanks to Marc Ballarin <Ballarin.Marc@gmx.de>
+  in bug 82599
+
+  13 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  rt2500-1.1.0_beta1.ebuild:
+  qt-depend-when-qt-USE-not-set-fix thanks to Marc Ballarin
+  <Ballarin.Marc@gmx.de> in bug 81402
+
+  02 Feb 2005; Stefan Schweizer <genstef@gentoo.org>
+  rt2500-1.1.0_beta1.ebuild:
+  Fixing kde .qtrc bug thanks to carlos <caalreca@hotmail.com> in bug 58483
 
 *rt2500-1.1.0_beta1 (24 Jan 2005)
 
   24 Jan 2005; Stefan Schweizer <genstef@gentoo.org> +metadata.xml,
   +rt2500-1.1.0_beta1.ebuild:
-  New ebuild thanks to Stephan Diederich <S.Diederich@gmx.de>, aurélien
+  New ebuild thanks to Stephan Diederich <S.Diederich@gmx.de>, aurÃ©lien
   francillon <aurelien.francillon@libertysurf.fr>, Alexander M. Turek
   <me@derrabus.de>, Michael Panhorst <Michael@untiefe.de>, Harold Aling
   <h.aling@home.nl> and many others in bug 58483

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/larswm/larswm-7.5.3.ebuild,v 1.1 2004/07/17 11:12:35 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/larswm/larswm-7.5.3.ebuild,v 1.1.1.1 2005/11/30 09:44:59 chriswhite Exp $
 
 DESCRIPTION="Tiling window manager for X11, based on 9wm by David Hogan."
 HOMEPAGE="http://larswm.fnurt.net/"
@@ -8,7 +8,7 @@ SRC_URI="http://larswm.fnurt.net/${P}.tar.gz"
 LICENSE="9wm"
 
 SLOT="0"
-KEYWORDS="~x86 ~alpha"
+KEYWORDS="alpha ~amd64 ppc ppc64 ~sparc x86"
 IUSE=""
 DEPEND="virtual/x11"
 

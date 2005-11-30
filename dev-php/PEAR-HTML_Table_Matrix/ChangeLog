@@ -1,6 +1,38 @@
 # ChangeLog for dev-php/PEAR-HTML_Table_Matrix
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_Table_Matrix/ChangeLog,v 1.1 2005/07/21 06:12:10 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-HTML_Table_Matrix/ChangeLog,v 1.1.1.1 2005/11/30 09:48:04 chriswhite Exp $
+
+*PEAR-HTML_Table_Matrix-1.0.9 (31 Oct 2005)
+
+  31 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Table_Matrix-1.0.8.ebuild,
+  +PEAR-HTML_Table_Matrix-1.0.9.ebuild:
+  Version bump.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-HTML_Table_Matrix-1.0.8.ebuild:
+  Add ~amd64.
+
+*PEAR-HTML_Table_Matrix-1.0.8 (09 Oct 2005)
+
+  09 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-HTML_Table_Matrix-1.0.7-r1.ebuild,
+  +PEAR-HTML_Table_Matrix-1.0.8.ebuild:
+  Version bump.
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-HTML_Table_Matrix-1.0.7-r1.ebuild:
+  Fix RDEPEND.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-HTML_Table_Matrix-1.0.7-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-HTML_Table_Matrix-1.0.7-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-HTML_Table_Matrix-1.0.7-r1.ebuild:
+  Use new PEAR eclass.
 
 *PEAR-HTML_Table_Matrix-1.0.7 (21 Jul 2005)
 

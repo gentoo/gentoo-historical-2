@@ -1,6 +1,86 @@
 # ChangeLog for net-wireless/gnome-bluetooth
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnome-bluetooth/ChangeLog,v 1.1 2003/09/20 08:56:04 liquidx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnome-bluetooth/ChangeLog,v 1.1.1.1 2005/11/30 09:45:34 chriswhite Exp $
+
+  01 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  gnome-bluetooth-0.6.0.ebuild:
+  Fixed libbtctl version dependency, bug #111096.
+
+*gnome-bluetooth-0.6.0 (28 Oct 2005)
+
+  28 Oct 2005; Peter Johanson <latexer@gentoo.org>
+  +gnome-bluetooth-0.6.0.ebuild:
+  Bump.
+
+*gnome-bluetooth-0.5.1-r2 (06 Jul 2005)
+
+  06 Jul 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/gnome-bluetooth-0.5.1-gnome.patch,
+  +gnome-bluetooth-0.5.1-r2.ebuild:
+  added gnome python patch (#97632)
+
+  12 May 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  gnome-bluetooth-0.5.1-r1.ebuild:
+  Added ~ppc.
+
+  22 Feb 2005; Simon Stelling <blubb@gentoo.org>
+  gnome-bluetooth-0.5.1-r1.ebuild:
+  added ~amd64
+
+*gnome-bluetooth-0.5.1-r1 (13 Jan 2005)
+
+  13 Jan 2005; Alastair Tse <liquidx@gentoo.org>
+  +files/gnome-bluetooth-0.5.1-gobcrash.patch,
+  +files/gnome-bluetooth-0.5.1-obex_xfer_rate.patch,
+  +gnome-bluetooth-0.5.1-r1.ebuild, gnome-bluetooth-0.5.1.ebuild:
+  backported crash on receive fix from CVS (#77129) thanks to Marcello V
+  Mansueto. added patch for speed indicator on progress bar
+
+  05 Jan 2005; Michael Hanselmann <hansmi@gentoo.org>
+  gnome-bluetooth-0.5.1.ebuild:
+  Added to ~ppc.
+
+  16 Oct 2004; Alastair Tse <liquidx@gentoo.org>
+  gnome-bluetooth-0.4.1.ebuild:
+  fix missing libsdp with 0.4.1
+
+  16 Oct 2004; Alastair Tse <liquidx@gentoo.org>
+  gnome-bluetooth-0.4.1.ebuild:
+  fix questionable || dep on bluez<>2.7
+
+  26 Jul 2004; Alastair Tse <liquidx@gentoo.org> gnome-bluetooth-0.5.1.ebuild:
+  fix distutils/python/gnome eclass issues. add gnome-python to dependencies
+
+  28 Jun 2004; Alastair Tse <liquidx@gentoo.org> gnome-bluetooth-0.5.1.ebuild:
+  add missing gob-2 dependency (#55312)
+
+  27 Jun 2004; Alastair Tse <liquidx@gentoo.org> gnome-bluetooth-0.4.1.ebuild:
+  make gnome-bluetooth work with bluez-libs-2.7 (#52547)
+
+*gnome-bluetooth-0.5.1 (26 Jun 2004)
+
+  26 Jun 2004; Alastair Tse <liquidx@gentoo.org>
+  +gnome-bluetooth-0.5.1.ebuild:
+  version bump. needs new libbtctl, with python program
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  gnome-bluetooth-0.4.1.ebuild:
+  Add inherit eutils
+
+  10 Apr 2004; Alastair Tse <liquidx@gentoo.org> gnome-bluetooth-0.4.1.ebuild,
+  files/gnome-bluetooth-0.4.1-gtk24.patch:
+  patch to compile under gtk2.4. thanks to Krist <klen@pandora.be> (#46676)
+
+  12 Feb 2004; Ciaran McCreesh <ciaranm@gentoo.org>
+  gnome-bluetooth-0.4.1.ebuild:
+  Adding ~sparc (works with some kernels, see bug #39710)
+
+  30 Jan 2004; Peter Johanson <latexer@gentoo.org> metadata.xml:
+  Fixed metadata.xml for wireless->mobile herd change and copyright date in
+  the ebuild's header
+
+  20 Sep 2003; Alastair Tse <liquidx@gentoo.org> gnome-bluetooth-0.4.1.ebuild:
+  add more deps and NEWS to DOCS
 
 *gnome-bluetooth-0.4.1 (20 Sep 2003)
 

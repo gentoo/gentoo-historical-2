@@ -1,6 +1,6 @@
-# Copyright 2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jjtraveler/jjtraveler-0.4.3.ebuild,v 1.1 2004/07/20 00:23:11 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jjtraveler/jjtraveler-0.4.3.ebuild,v 1.1.1.1 2005/11/30 09:47:40 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,14 +9,13 @@ HOMEPAGE="http://www.cwi.nl/htbin/sen1/twiki/bin/view/SEN1/ATermLibrary"
 SRC_URI="http://www.cwi.nl/projects/MetaEnv/jjtraveler/JJTraveler-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc amd64"
 IUSE=""
 DEPEND=">=virtual/jdk-1.4"
 RDEPEND=">=virtual/jre-1.4"
 S=${WORKDIR}/JJTraveler-${PV}
 
 src_compile() {
-
 	econf || die "Failed to configure"
 	emake || die "Failed to make"
 
@@ -27,10 +26,9 @@ src_compile() {
 }
 
 src_install() {
-	java-pkg_dojar src/jjtraveler-0.4.3.jar
+	java-pkg_newjar src/${P}.jar ${PN}.jar
 
-	exeinto /usr/bin
-	doexe jjtraveler-config
+	dobin jjtraveler-config
 
-	dodoc AUTHORS COPYING INSTALL NEWS TODO ChangeLog
+	dodoc AUTHORS COPYING NEWS TODO ChangeLog
 }

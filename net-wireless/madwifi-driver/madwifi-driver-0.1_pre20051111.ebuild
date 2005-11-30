@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/madwifi-driver/madwifi-driver-0.1_pre20051111.ebuild,v 1.1 2005/11/13 16:34:22 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/madwifi-driver/madwifi-driver-0.1_pre20051111.ebuild,v 1.1.1.1 2005/11/30 09:45:27 chriswhite Exp $
 
 inherit linux-mod
 
@@ -9,7 +9,7 @@ DESCRIPTION="Wireless driver for Atheros chipset a/b/g cards"
 HOMEPAGE="http://www.madwifi.org"
 SRC_URI="http://snapshots.madwifi.org/madwifi-trunk-r${MADWIFI_SVN_REV}-${PV:7:8}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="-amd64 ~ppc ~x86"
 IUSE=""
 DEPEND="app-arch/sharutils"
 RDEPEND=">=net-wireless/madwifi-tools-0.1_pre20051031"
@@ -59,6 +59,9 @@ src_install() {
 }
 
 pkg_postinst() {
+	# remove old module to avoid segfaults, #112728
+	rate_amrr=${ROOT}/lib/modules/${KV_FULL}/net/ath_rate_amrr.ko
+	[ -f ${rate_amrr} ] && rm ${rate_amrr}
 	linux-mod_pkg_postinst
 
 	einfo ""
@@ -66,16 +69,16 @@ pkg_postinst() {
 	einfo "Baselayout will do that with the following in /etc/conf.d/net:"
 	cat <<EOF
 preup() {
-	if [ "${IFACE}" = "ath0" ]; then
+	if [ "\${IFACE}" = "ath0" ]; then
 		/sbin/wlanconfig ath0 create wlandev wifi0 wlanmode sta
-		return $?
+		return \$?
 	fi
 }
- 
+
 postdown() {
-	if [ "${IFACE}" = "ath0" ]; then
+	if [ "\${IFACE}" = "ath0" ]; then
 		/sbin/wlanconfig ath0 destroy
-		return $?
+		return \$?
 	fi
 }
 EOF

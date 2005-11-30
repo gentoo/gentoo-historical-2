@@ -1,3 +1,2 @@
 #!/bin/sh
-
-exec /usr/X11R6/bin/afterstep
+/usr/bin/afterstep

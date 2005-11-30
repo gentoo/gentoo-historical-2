@@ -1,15 +1,15 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hugs98-graphics/hugs98-graphics-2.0.4.ebuild,v 1.1 2003/07/28 14:21:34 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hugs98-graphics/hugs98-graphics-2.0.4.ebuild,v 1.1.1.1 2005/11/30 09:48:21 chriswhite Exp $
 
 DESCRIPTION="Haskell Graphics Library for X"
 HOMEPAGE="http://cvs.haskell.org/Hugs/pages/downloading.htm"
 SRC_URI="http://cvs.haskell.org/Hugs/downloads/graphics-${PV}.src.tar.gz"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 IUSE=""
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	dev-lang/hugs98
 	virtual/x11"
 S=${WORKDIR}/graphics-${PV}

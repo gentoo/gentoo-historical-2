@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_mono/mod_mono-1.1.10-r1.ebuild,v 1.1 2005/11/20 05:13:11 ramereth Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_mono/mod_mono-1.1.10-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:12 chriswhite Exp $
 
 inherit apache-module
 

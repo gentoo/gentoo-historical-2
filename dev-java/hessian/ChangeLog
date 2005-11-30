@@ -1,6 +1,21 @@
 # ChangeLog for dev-java/hessian
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/hessian/ChangeLog,v 1.1 2005/10/21 14:27:32 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/hessian/ChangeLog,v 1.1.1.1 2005/11/30 09:47:47 chriswhite Exp $
+
+*hessian-3.0.8-r2 (23 Oct 2005)
+
+  23 Oct 2005; Petteri Räty <betelgeuse@gentoo.org>
+  -hessian-3.0.8-r1.ebuild, +hessian-3.0.8-r2.ebuild:
+  Separated caucho-services from 3.0.8 to dev-java/caucho-services.
+
+*hessian-3.0.8-r1 (22 Oct 2005)
+*hessian-2.1.12-r1 (22 Oct 2005)
+
+  22 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> -hessian-2.1.12.ebuild,
+  +hessian-2.1.12-r1.ebuild, -hessian-3.0.8.ebuild,
+  +hessian-3.0.8-r1.ebuild:
+  Removed com.caucho.services to a separate package from 2.1.12 and 3.0.8 does
+  not install bundled burlap any more.
 
 *hessian-3.0.8 (21 Oct 2005)
 *hessian-2.1.12 (21 Oct 2005)

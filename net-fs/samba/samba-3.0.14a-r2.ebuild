@@ -1,30 +1,33 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.14a-r2.ebuild,v 1.1 2005/07/23 10:25:45 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.14a-r2.ebuild,v 1.1.1.1 2005/11/30 09:45:51 chriswhite Exp $
 
 inherit eutils versionator
 
 IUSE_LINGUAS="ja pl"
-IUSE="acl cups doc kerberos ldap mysql pam postgres python quotas readline
-winbind xml xml2 libclamav oav selinux"
+IUSE="acl cups doc examples kerberos ldap mysql pam postgres python quotas
+	readline winbind xml xml2 libclamav oav selinux"
 
 VSCAN_VER=0.3.6
-PATCH_VER=0.3.2
+PATCH_VER=0.3.3
 MY_P=${PN}-${PV/_/}
-MY_PP=${PN}-$(get_major_version)-gentoo-patches-${PATCH_VER}
+MY_PP=${PN}-$(get_major_version)-gentoo-${PATCH_VER}
 S2=${WORKDIR}/${MY_P}
 S=${S2}/source
 PFVSCAN=${PN}-vscan-${VSCAN_VER}
 DESCRIPTION="SAMBA is a suite of SMB and CIFS client/server programs for UNIX"
 HOMEPAGE="http://www.samba.org/
 	http://www.openantivirus.org/projects.php"
-SRC_URI="mirror://samba/${MY_P}.tar.gz
+SRC_URI="
+	mirror://samba/${MY_P}.tar.gz
+	mirror://samba/old-versions/${MY_P}.tar.gz
 	oav? ( mirror://sourceforge/openantivirus/${PFVSCAN}.tar.bz2 )
+	http://dev.gentoo.org/~seemant/distfiles/${MY_PP}.tar.bz2
 	mirror://gentoo/${MY_PP}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 
 RDEPEND="dev-libs/popt
 	acl?       ( sys-apps/acl )
@@ -45,6 +48,7 @@ DEPEND="${RDEPEND}
 
 PRIVATE_DST=/var/lib/samba/private
 PATCHDIR=${WORKDIR}/gentoo/patches
+CONFDIR=${WORKDIR}/gentoo/configs
 
 src_unpack() {
 	unpack ${A}; cd ${S2}
@@ -54,15 +58,12 @@ src_unpack() {
 	export EPATCH_SUFFIX="patch"
 	epatch ${PATCHDIR}/general
 	if use oav ; then
-		cp -a ${WORKDIR}/${PFVSCAN} ${S2}/examples/VFS
+		cp -pPR ${WORKDIR}/${PFVSCAN} ${S2}/examples/VFS
 		epatch ${PATCHDIR}/vscan
 	fi
 }
 
 src_compile() {
-	# sandbox permissions
-	addpredict /etc/krb5.conf #bugs #95840 and #96453
-
 	ebegin "Running autoconf"
 		autoconf
 	eend $?
@@ -202,17 +203,16 @@ src_install() {
 
 	# General config files
 	insinto /etc/samba
-	touch ${D}/etc/samba/smb.conf
-	doins ${FILESDIR}/smbusers
-	newins ${FILESDIR}/smb.conf.example-samba3.gz smb.conf.example.gz
-	doins ${FILESDIR}/lmhosts
+	doins ${CONFDIR}/smbusers
+	newins ${CONFDIR}/smb.conf.example-samba3 smb.conf.example
+	doins ${CONFDIR}/lmhosts
 
-	newpamd ${FILESDIR}/samba.pam samba
-	use winbind && doins ${FILESDIR}/system-auth-winbind
+	newpamd ${CONFDIR}/samba.pam samba
+	use winbind && doins ${CONFDIR}/system-auth-winbind
 	insinto /etc/xinetd.d
-	newins ${FILESDIR}/swat.xinetd swat
-	newinitd ${FILESDIR}/samba-init samba
-	newconfd ${FILESDIR}/samba-conf samba
+	newins ${CONFDIR}/swat.xinetd swat
+	newinitd ${CONFDIR}/samba-init samba
+	newconfd ${CONFDIR}/samba-conf samba
 	if use ldap; then
 		insinto /etc/openldap/schema
 		doins ${S2}/examples/LDAP/samba.schema
@@ -226,17 +226,19 @@ src_install() {
 	keepdir /var/{log,run,cache}/samba
 	keepdir /var/lib/samba/{netlogon,profiles}
 	keepdir /var/lib/samba/printers/{W32X86,WIN40,W32ALPHA,W32MIPS,W32PPC}
+	keepdir /usr/$(get_libdir)/samba/{rpc,idmap,auth}
 
 	# docs
 	dodoc ${S2}/{COPYING,Manifest,README,Roadmap,WHATSNEW.txt}
-	docinto examples
-	dodoc ${FILESDIR}/nsswitch.conf-wins
-	use winbind && dodoc ${FILESDIR}/nsswitch.conf-winbind
+	dodoc ${CONFDIR}/nsswitch.conf-wins
+	use winbind && dodoc ${CONFDIR}/nsswitch.conf-winbind
 
-	cp -a ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
-
-	chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
-	chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	if use examples; then
+		docinto examples
+		cp -pPR ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
+		chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
+		chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	fi
 
 	if use oav; then
 		docinto ${PFVSCAN}
@@ -260,8 +262,12 @@ pkg_preinst() {
 		&& -r ${ROOT}/${PRIVATE_SRC}/secrets.tdb ]]; then
 		ebegin "Copying ${ROOT}/${PRIVATE_SRC}/* to ${ROOT}/${PRIVATE_DST}/"
 			mkdir -p ${IMAGE}/${PRIVATE_DST}
-			cp -af ${ROOT}/${PRIVATE_SRC}/* ${IMAGE}/${PRIVATE_DST}/
+			cp -pPRf ${ROOT}/${PRIVATE_SRC}/* ${IMAGE}/${PRIVATE_DST}/
 		eend $?
+	fi
+
+	if [[ ! -f "${ROOT}/etc/samba/smb.conf" ]]; then
+		touch ${IMAGE}/etc/samba/smb.conf
 	fi
 }
 
@@ -304,5 +310,9 @@ pkg_postinst() {
 }
 
 pkg_postrm(){
-	[ -n "${PF}" ] && rm -rf ${ROOT}/usr/share/doc/${PF}
+	# If stale docs, and one isn't re-emerging the latest version, removes
+	# (this is really a portage bug, though)
+	[[ -n "${PF}" && ! -f ${ROOT}/usr/lib/${PN}/en.msg ]] && \
+		rm -rf ${ROOT}/usr/share/doc/${PF}
 }
+

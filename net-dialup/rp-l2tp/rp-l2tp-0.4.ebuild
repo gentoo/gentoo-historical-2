@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/rp-l2tp/rp-l2tp-0.4.ebuild,v 1.1 2004/09/15 14:07:31 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/rp-l2tp/rp-l2tp-0.4.ebuild,v 1.1.1.1 2005/11/30 09:45:55 chriswhite Exp $
 
 inherit eutils
 
@@ -9,27 +9,28 @@ HOMEPAGE="http://sourceforge.net/projects/rp-l2tp/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 DEPEND="virtual/libc"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64 ~ppc"
 SLOT="0"
 IUSE=""
 
 src_unpack() {
-	unpack ${A} || die
-	cd ${S} || die
-	epatch ${FILESDIR}/${P}-gentoo.diff.bz2
+	unpack ${A}
+
+	cd ${S}
+	epatch ${FILESDIR}/${P}-gentoo.diff
 }
 
 src_compile() {
-	econf || die
-	emake || die
+	econf || die "configure failed"
+	emake || die "make failed"
 }
 
 src_install() {
-	make RPM_INSTALL_ROOT=${D} install || die
+	make RPM_INSTALL_ROOT=${D} install || die "make install failed"
 
 	dodoc README
 	newdoc l2tp.conf rp-l2tpd.conf
-	cp -a libevent/Doc ${D}/usr/share/doc/${PF}/libevent
+	cp -pPR libevent/Doc ${D}/usr/share/doc/${PF}/libevent
 
 	exeinto /etc/init.d
 	newexe ${FILESDIR}/rp-l2tpd-init rp-l2tpd

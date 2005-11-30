@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dom4j/dom4j-1.6.1.ebuild,v 1.1 2005/06/29 18:53:08 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dom4j/dom4j-1.6.1.ebuild,v 1.1.1.1 2005/11/30 09:47:21 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,9 +9,9 @@ HOMEPAGE="http://dom4j.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dom4j/${P}.tar.gz"
 LICENSE="Apache-1.1"
 SLOT="1"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 x86"
 IUSE="doc jikes source"
-RDEPEND="|| ( =virtual/jre-1.3* =virtual/jre-1.4* )
+RDEPEND="|| ( =virtual/jre-1.4* =virtual/jre-1.3* )
 	dev-java/jaxme
 	dev-java/jsr173
 	dev-java/msv
@@ -20,7 +20,7 @@ RDEPEND="|| ( =virtual/jre-1.3* =virtual/jre-1.4* )
 	dev-java/relaxng-datatype
 	=dev-java/xerces-2*
 	dev-java/xsdlib"
-DEPEND="|| (  =virtual/jdk-1.3* =virtual/jdk-1.4* )
+DEPEND="|| (  =virtual/jdk-1.4* =virtual/jdk-1.3* )
 	jikes? ( dev-java/jikes )
 	dev-java/ant-core
 	${RDEPEND}"

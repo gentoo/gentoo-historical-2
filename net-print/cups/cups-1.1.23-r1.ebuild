@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-1.1.23-r1.ebuild,v 1.1 2005/01/19 13:42:36 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-1.1.23-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:15 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp2.easysw.com/pub/cups/${PV}/${MY_P}-source.tar.bz2 ftp://ftp.e
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 IUSE="ssl slp pam samba nls"
 
 DEP="virtual/libc
@@ -36,6 +36,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/disable-strip.patch
+	use amd64 && epatch ${FILESDIR}/cups-gcc4-amd64.patch #79791
 	( cd pdftops; epatch ${FILESDIR}/xpdf-goo-sizet.patch )
 	( cd pdftops; epatch ${FILESDIR}/cups-1.1.22-xpdf2-underflow.patch )
 	( cd pdftops; epatch ${FILESDIR}/xpdf-pl3.patch )
@@ -58,6 +59,13 @@ src_compile() {
 		--host=${CHOST} ${myconf} || die "bad ./configure"
 
 	make || die "compile problem"
+}
+
+src_test() {
+	# upstream includes an interactive test which is a nono for gentoo.
+	# therefore, since the printing herd has bigger fish to fry, for now,
+	# we just leave it out, even if FEATURES=test
+	true
 }
 
 src_install() {

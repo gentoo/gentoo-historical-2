@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ivam2/ivam2-0.3.ebuild,v 1.1 2004/11/24 06:31:03 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/ivam2/ivam2-0.3.ebuild,v 1.1.1.1 2005/11/30 09:46:13 chriswhite Exp $
 
 inherit eutils
 
@@ -8,7 +8,7 @@ DESCRIPTION="Automatic phone answering machine software for ISDN"
 SRC_URI="http://0pointer.de/lennart/projects/ivam2/${P}.tar.gz"
 HOMEPAGE="http://0pointer.de/lennart/projects/ivam2/"
 
-KEYWORDS="~x86"
+KEYWORDS="~amd64 x86"
 LICENSE="GPL-2"
 IUSE=""
 SLOT="0"
@@ -18,6 +18,10 @@ DEPEND="virtual/libc
 	>=dev-libs/libdaemon-0.4
 	>=dev-lang/python-2.3
 	net-dialup/isdn4k-utils"
+RDEPEND="${DEPEND}
+	media-sound/sox
+	media-sound/vorbis-tools
+	net-mail/metamail"
 
 src_compile() {
 	local myconf="--disable-lynx --disable-xmltoman --disable-gengetopt"
@@ -36,7 +40,7 @@ src_install() {
 
 pkg_preinst() {
 	enewgroup ivam || die "Problem adding ivam group"
-	enewuser ivam -1 /bin/false /dev/null ivam || die "Problem adding ivam user"
+	enewuser ivam -1 -1 /dev/null ivam || die "Problem adding ivam user"
 }
 
 pkg_postinst() {

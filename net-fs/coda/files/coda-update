@@ -1,31 +1,37 @@
 #!/sbin/runscript
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/coda/files/coda-update,v 1.1 2004/03/23 20:18:49 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/coda/files/coda-update,v 1.1.1.1 2005/11/30 09:45:48 chriswhite Exp $
 
 depend() {
 	need net auth2
 }
 
+checkconfig() {
+	if [ ! -e $vicedir/hostname ] ; then
+		eerror "Please run vice-setup before starting the service..."
+		return 1
+	fi
+}
+
 we_are_scm() {
-	if [ "`cat /var/lib/vice/hostname`" = "`cat /var/lib/vice/db/scm`" ] ; then
+	if [ "`cat $vicedir/hostname`" = "`cat $vicedir/db/scm`" ] ; then
 		return 0
 	else
 		return 1
 	fi
 }
 
-checkconfig() {
-	if [ ! -e /var/lib/vice/hostname ] ; then
-		eerror "Please set up coda before starting the service..."
-		return 1
-	fi
+getvicedir() {
+        vicedir=`/usr/sbin/codaconfedit server.conf vicedir`
 }
 
 start() {
+	getvicedir
+
 	checkconfig || return 1
 
-	ebegin "Starting coda update servers"
+	ebegin "Starting coda-update"
 
 	# Check to see if we are the SCM.
 	if we_are_scm ; then
@@ -40,6 +46,8 @@ start() {
 
 stop() {
 	ebegin "Stopping coda-update"
+
+	getvicedir
 
 	if we_are_scm ; then
 		start-stop-daemon --stop --quiet --exec /usr/sbin/rpc2portmap

@@ -1,6 +1,46 @@
 # ChangeLog for dev-java/c3p0
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/c3p0/ChangeLog,v 1.1 2004/06/27 16:43:46 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/c3p0/ChangeLog,v 1.1.1.1 2005/11/30 09:47:27 chriswhite Exp $
+
+*c3p0-0.9.0_pre6 (29 Jun 2005)
+*c3p0-0.8.5.2 (29 Jun 2005)
+*c3p0-0.8.5_pre9-r1 (29 Jun 2005)
+
+  29 Jun 2005; Thomas Matthijs <axxo@gentoo.org> -c3p0-0.8.4.5.ebuild,
+  -c3p0-0.8.5_pre9.ebuild, +c3p0-0.8.5_pre9-r1.ebuild, +c3p0-0.8.5.2.ebuild,
+  +c3p0-0.9.0_pre6.ebuild:
+  dont install versioned jar, thanks too Josh Nichols <nichoj@alum.rpi.edu> +
+  version bump
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> c3p0-0.8.5_pre9.ebuild:
+  stable on amd64
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> c3p0-0.8.5_pre9.ebuild:
+  added missing jikes dependency.
+
+  27 Dec 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed digest.
+
+*c3p0-0.8.5_pre9 (27 Dec 2004)
+
+  27 Dec 2004; Lim Swee Tat <st_lim@gentoo.org> +c3p0-0.8.5_pre9.ebuild:
+  Updated to latest version
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> c3p0-0.8.4.5.ebuild:
+  keywords ~amd64; closes #67380.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> c3p0-0.8.4.5.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> c3p0-0.8.4.5.ebuild:
+  Marking stable on x86
+
+  15 Jul 2004; Robin H. Johnson <robbat2@gentoo.org> :
+  fix broken package.
+
+  28 Jun 2004; David Holm <dholm@gentoo.org> c3p0-0.8.4.5.ebuild:
+  Added to ~ppc.
 
 *c3p0-0.8.4.5 (27 Jun 2004)
 

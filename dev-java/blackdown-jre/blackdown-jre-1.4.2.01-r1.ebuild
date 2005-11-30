@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jre/blackdown-jre-1.4.2.01-r1.ebuild,v 1.1 2005/03/25 22:37:07 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jre/blackdown-jre-1.4.2.01-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:06 chriswhite Exp $
 
 inherit java versionator
 
@@ -20,13 +20,11 @@ HOMEPAGE="http://www.blackdown.org"
 SLOT="1.4.2"
 LICENSE="sun-bcla-java-vm"
 KEYWORDS="-* amd64 x86"
-IUSE="mozilla"
+IUSE="browserplugin nsplugin mozilla"
 DEPEND="virtual/libc
 	>=dev-java/java-config-1.2.11
 	>=sys-apps/sed-4"
-
-PROVIDE="virtual/jre-1.4.2
-	virtual/java-scheme-2"
+PROVIDE="virtual/jre"
 
 S="${WORKDIR}/j2re${JV}"
 # Extract the 'skip' value (offset of tarball) we should pass to tail
@@ -85,7 +83,7 @@ unpack_jars() {
 	rm -f "$UNPACK_CMD"
 }
 
-src_install () {
+src_install() {
 	typeset platform
 
 	dodir /opt/${P}
@@ -96,7 +94,9 @@ src_install () {
 	dohtml README.html
 
 	# Install mozilla plugin
-	if use mozilla; then
+	if use nsplugin ||       # global useflag for netscape-compat plugins
+	   use browserplugin ||  # deprecated but honor for now
+	   use mozilla; then     # wrong but used to honor it
 		case ${ARCH} in
 			x86) platform="i386" ;;
 			ppc) platform="ppc" ;;
@@ -119,4 +119,14 @@ src_install () {
 	fi
 
 	unpack_jars
+}
+
+pkg_postinst() {
+	java_pkg_postinst
+	if ! use nsplugin && ( use browserplugin || use mozilla ); then
+		echo
+		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
+		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
+		ewarn "update your USE to include 'nsplugin'."
+	fi
 }

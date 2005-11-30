@@ -1,22 +1,39 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libgnomecanvasmm/libgnomecanvasmm-2.0.1.ebuild,v 1.1 2003/08/29 14:46:59 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libgnomecanvasmm/libgnomecanvasmm-2.0.1.ebuild,v 1.1.1.1 2005/11/30 09:46:26 chriswhite Exp $
 
-inherit gnome2
+inherit eutils gnome2
 
-DESCRIPTION="C++ bindings for libgnomecanvasmm"
-SRC_URI="mirror://sourceforge/gtkmm/${P}.tar.gz"
+DESCRIPTION="C++ bindings for libgnomecanvas"
 HOMEPAGE="http://gtkmm.sourceforge.net/"
+SRC_URI="mirror://sourceforge/gtkmm/${P}.tar.gz"
 
-IUSE=""
-SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~ppc ~sparc"
+SLOT="2"
+KEYWORDS="x86 ppc sparc hppa amd64 ppc64"
+IUSE=""
 
 RDEPEND=">=gnome-base/libgnomecanvas-2
-	>=dev-cpp/gtkmm-2.2.5"
+	=dev-cpp/gtkmm-2.2*"
 
 DEPEND=">=dev-util/pkgconfig-0.12.0
 	${RDEPEND}"
 
-DOCS="AUTHORS COPYING ChangeLog NEWS README TODO INSTALL"
+DOCS="AUTHORS ChangeLog NEWS README TODO INSTALL"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}; epatch ${FILESDIR}/2.0.1-gcc3.4-to-cvs.patch
+	cd ${S}; epatch ${FILESDIR}/2.0.1-gcc3.4-after-cvs.patch
+}
+
+src_compile() {
+	if useq amd64 || useq ppc64; then
+		aclocal -I scripts
+		automake
+		autoconf
+		libtoolize --copy --force
+	fi
+
+	gnome2_src_compile
+}

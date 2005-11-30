@@ -1,6 +1,16 @@
-# ChangeLog for app-sci/bioperl-run
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-run/ChangeLog,v 1.1 2004/12/23 22:09:47 ribosome Exp $
+# ChangeLog for sci-biology/bioperl-run
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/bioperl-run/ChangeLog,v 1.1.1.1 2005/11/30 09:48:44 chriswhite Exp $
+
+  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Maintainer changed from Stephen Diener (MIA) to Olivier Fisette.
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org> bioperl-run-1.4.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
+
+  25 May 2005; Michael Cummings <mcummings@gentoo.org>
+  bioperl-run-1.2.2.ebuild:
+  dev-perl/File-Temp => perl-core/File-Temp migration
 
 *bioperl-run-1.2.2 (23 Dec 2004)
 

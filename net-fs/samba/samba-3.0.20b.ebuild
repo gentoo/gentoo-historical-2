@@ -1,16 +1,16 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.20b.ebuild,v 1.1 2005/10/14 13:34:00 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.20b.ebuild,v 1.1.1.1 2005/11/30 09:45:51 chriswhite Exp $
 
 inherit eutils versionator
 
 IUSE_LINGUAS="ja pl"
-IUSE="acl async automount cups doc kerberos ldap ldapsam libclamav mysql oav
-	pam postgres python quotas readline selinux swat syslog winbind xml xml2"
+IUSE="acl async automount cups doc examples kerberos ldap ldapsam libclamav mysql
+	oav pam postgres python quotas readline selinux swat syslog winbind xml xml2"
 RESTRICT="test"
 
 VSCAN_VER=0.3.6
-PATCH_VER=0.3.9
+PATCH_VER=0.3.10
 MY_P=${PN}-${PV/_/}
 MY_PP=${PN}-$(get_major_version)-gentoo-${PATCH_VER}
 S2=${WORKDIR}/${MY_P}
@@ -102,6 +102,8 @@ src_compile() {
 		myconf="${myconf} --without-ldapsam"
 	fi
 	use winbind && myconf="${myconf} $(use_with winbind) --with-shared-modules=idmap_rid"
+
+	[[ ${CHOST} == *-*bsd* ]] && myconf="${myconf} --disable-pie"
 
 	econf \
 		--with-fhs \
@@ -245,7 +247,6 @@ src_install() {
 	# docs
 	dodoc ${FILESDIR}/README.gentoo
 	dodoc ${S2}/{COPYING,Manifest,README,Roadmap,WHATSNEW.txt}
-	docinto examples
 	dodoc ${CONFDIR}/nsswitch.conf-wins
 	use winbind && dodoc ${CONFDIR}/nsswitch.conf-winbind
 
@@ -256,10 +257,12 @@ src_install() {
 		dodoc */*.conf
 	fi
 
-	cp -pPR ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
-
-	chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
-	chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	if use examples; then
+		docinto examples
+		cp -pPR ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
+		chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
+		chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	fi
 
 	if ! use doc; then
 		if ! use swat; then
@@ -293,7 +296,7 @@ pkg_preinst() {
 pkg_postinst() {
 	if use swat; then
 		einfo "swat must be enabled by xinetd:"
-		einfo "    change the /etc/xinetd/swat configuration"
+		einfo "    change the /etc/xinetd.d/swat configuration"
 	fi
 	einfo "Latest info: README.gentoo in documentation directory"
 }

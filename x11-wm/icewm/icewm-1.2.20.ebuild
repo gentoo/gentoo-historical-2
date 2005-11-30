@@ -1,10 +1,10 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/icewm-1.2.20.ebuild,v 1.1 2005/02/20 05:23:32 morfic Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/icewm/icewm-1.2.20.ebuild,v 1.1.1.1 2005/11/30 09:45:12 chriswhite Exp $
 
 inherit eutils
 
-DESCRIPTION="Ice Window Manager"
+DESCRIPTION="Ice Window Manager with Themes"
 
 HOMEPAGE="http://www.icewm.org/
 	http://sourceforge.net/projects/icewmsilverxp/"
@@ -17,7 +17,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P/_}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS="~ppc ~x86 ~sparc ~amd64"
+KEYWORDS="ppc x86 sparc amd64"
 
 IUSE="esd gnome imlib nls spell truetype xinerama silverxp"
 
@@ -28,7 +28,7 @@ RDEPEND="virtual/x11
 	nls? ( sys-devel/gettext )
 	truetype? ( >=media-libs/freetype-2.0.9 )
 	media-fonts/artwiz-fonts
-	media-libs/libungif"
+	media-libs/giflib"
 
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
@@ -39,6 +39,8 @@ src_unpack() {
 	if use silverxp ; then
 		epatch ${FILESDIR}/${P/_}.ybutton.cc.patch
 	fi
+		epatch ${FILESDIR}/${P/_}.testmap.patch
+		epatch ${FILESDIR}/${P/_}.iceicon.patch
 
 	echo "#!/bin/sh" > $T/icewm
 	echo "/usr/bin/icewm-session" >> $T/icewm
@@ -70,6 +72,7 @@ src_compile(){
 		${myconf} || die "configure failed"
 
 	sed -i "s:/icewm-\$(VERSION)::" src/Makefile || die "patch failed"
+	sed -i "s:ungif:gif:" src/Makefile || die "libungif fix failed"
 
 	emake || die "emake failed"
 }

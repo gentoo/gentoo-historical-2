@@ -2,7 +2,7 @@ diff -Nup -r atheme-0.2.2/backend/Makefile.in atheme-0.2.2.patched/backend/Makef
 --- atheme-0.2.2/backend/Makefile.in	2005-09-03 21:17:28.000000000 +0000
 +++ atheme-0.2.2.patched/backend/Makefile.in	2005-09-04 04:15:55.000000000 +0000
 @@ -6,6 +6,8 @@
- # $Id: makefile-DESTDIR-support.patch,v 1.1 2005/09/04 06:08:56 beu Exp $
+ # $Id: makefile-DESTDIR-support.patch,v 1.1.1.1 2005/11/30 09:49:03 chriswhite Exp $
  #
  
 +DESTDIR := 
@@ -25,7 +25,7 @@ diff -Nup -r atheme-0.2.2/contrib/Makefile.in atheme-0.2.2.patched/contrib/Makef
 --- atheme-0.2.2/contrib/Makefile.in	2005-09-03 21:17:29.000000000 +0000
 +++ atheme-0.2.2.patched/contrib/Makefile.in	2005-09-04 04:15:55.000000000 +0000
 @@ -6,6 +6,8 @@
- # $Id: makefile-DESTDIR-support.patch,v 1.1 2005/09/04 06:08:56 beu Exp $
+ # $Id: makefile-DESTDIR-support.patch,v 1.1.1.1 2005/11/30 09:49:03 chriswhite Exp $
  #
  
 +DESTDIR := 
@@ -48,7 +48,7 @@ diff -Nup -r atheme-0.2.2/modules/Makefile.in atheme-0.2.2.patched/modules/Makef
 --- atheme-0.2.2/modules/Makefile.in	2005-09-03 21:17:30.000000000 +0000
 +++ atheme-0.2.2.patched/modules/Makefile.in	2005-09-04 04:15:55.000000000 +0000
 @@ -6,6 +6,8 @@
- # $Id: makefile-DESTDIR-support.patch,v 1.1 2005/09/04 06:08:56 beu Exp $
+ # $Id: makefile-DESTDIR-support.patch,v 1.1.1.1 2005/11/30 09:49:03 chriswhite Exp $
  #
  
 +DESTDIR := 
@@ -71,7 +71,7 @@ diff -Nup -r atheme-0.2.2/protocol/Makefile.in atheme-0.2.2.patched/protocol/Mak
 --- atheme-0.2.2/protocol/Makefile.in	2005-09-03 21:17:29.000000000 +0000
 +++ atheme-0.2.2.patched/protocol/Makefile.in	2005-09-04 04:15:55.000000000 +0000
 @@ -6,6 +6,8 @@
- # $Id: makefile-DESTDIR-support.patch,v 1.1 2005/09/04 06:08:56 beu Exp $
+ # $Id: makefile-DESTDIR-support.patch,v 1.1.1.1 2005/11/30 09:49:03 chriswhite Exp $
  #
  
 +DESTDIR := 
@@ -94,7 +94,7 @@ diff -Nup -r atheme-0.2.2/src/Makefile.in atheme-0.2.2.patched/src/Makefile.in
 --- atheme-0.2.2/src/Makefile.in	2005-09-03 21:17:29.000000000 +0000
 +++ atheme-0.2.2.patched/src/Makefile.in	2005-09-04 04:15:55.000000000 +0000
 @@ -6,6 +6,8 @@
- # $Id: makefile-DESTDIR-support.patch,v 1.1 2005/09/04 06:08:56 beu Exp $
+ # $Id: makefile-DESTDIR-support.patch,v 1.1.1.1 2005/11/30 09:49:03 chriswhite Exp $
  #
  
 +DESTDIR := 

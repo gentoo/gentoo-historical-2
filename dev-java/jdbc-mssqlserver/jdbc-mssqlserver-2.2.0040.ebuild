@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-mssqlserver/jdbc-mssqlserver-2.2.0040.ebuild,v 1.1 2004/10/20 09:30:43 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-mssqlserver/jdbc-mssqlserver-2.2.0040.ebuild,v 1.1.1.1 2005/11/30 09:47:00 chriswhite Exp $
 
 inherit java-pkg
 
@@ -8,22 +8,18 @@ At="mssqlserver.tar"
 S=${WORKDIR}
 DESCRIPTION="JDBC driver for Microsoft SQL Server 2000."
 SRC_URI="http://download.microsoft.com/download/4/1/d/41d3e9c0-64d1-451e-947b-7a4cba273b2d/mssqlserver.tar"
-HOMEPAGE="http://tinyurl.com/3v7tc"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+HOMEPAGE="http://www.microsoft.com/downloads/details.aspx?familyid=07287b11-0502-461a-b138-2aa54bfdc03a&displaylang=en"
+KEYWORDS="x86 ppc amd64"
 LICENSE="MSjdbcEULA"
 SLOT="0"
 DEPEND=""
-RDEPEND=">=virtual/jdk-1.1"
+RDEPEND=">=virtual/jre-1.1"
 IUSE="doc"
 RESTRICT="nomirror"
 
 src_unpack() {
-	tar xf ${DISTDIR}/${At}
-	tar xf msjdbc.tar
-}
-
-src_compile() {
-	einfo "This is a binary-only ebuild."
+	tar xf ${DISTDIR}/${At} || die
+	tar xf msjdbc.tar || die
 }
 
 src_install() {

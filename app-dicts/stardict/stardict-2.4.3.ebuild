@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict/stardict-2.4.3.ebuild,v 1.1 2004/09/22 17:44:45 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict/stardict-2.4.3.ebuild,v 1.1.1.1 2005/11/30 09:46:53 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -16,7 +16,7 @@ SRC_URI="mirror://sourceforge/stardict/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 # when adding keywords, remember to add to stardict.eclass
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ~ppc ~sparc ~amd64"
 
 
 RDEPEND=">=gnome-base/libbonobo-2.2.0
@@ -51,9 +51,9 @@ src_install() {
 pkg_postinst() {
 	einfo "You will now need to install stardict dictionary files. If"
 	einfo "you have not, execute the below to get a list of dictionaries:"
-	einfo " "
+	einfo
 	einfo "  emerge -s stardict-"
-	einfo " "
+	einfo
 	ewarn "If you upgraded from 2.4.1 or lower and use your own dictionary"
 	ewarn "files, you'll need to run: /usr/share/stardict/tools/stardict_dict_update"
 }

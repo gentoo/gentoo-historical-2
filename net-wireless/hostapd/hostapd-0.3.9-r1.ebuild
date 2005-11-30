@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostapd/hostapd-0.3.9-r1.ebuild,v 1.1 2005/06/13 14:48:47 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/hostapd/hostapd-0.3.9-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:33 chriswhite Exp $
 
 inherit toolchain-funcs
 
@@ -13,12 +13,13 @@ SRC_URI="http://hostap.epitest.fi/releases/${P}.tar.gz
 
 LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~ppc x86"
 
 IUSE="ssl"
 
-DEPEND="sys-apps/sed"
 RDEPEND="ssl? ( dev-libs/openssl )"
+DEPEND="${RDEPEND}
+		sys-apps/sed"
 
 src_unpack() {
 	local CONFIG=${S}/.config

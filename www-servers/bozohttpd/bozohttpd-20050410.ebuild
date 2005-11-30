@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/bozohttpd/bozohttpd-20050410.ebuild,v 1.1 2005/09/16 07:06:28 s4t4n Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/bozohttpd/bozohttpd-20050410.ebuild,v 1.1.1.1 2005/11/30 09:46:49 chriswhite Exp $
 
 inherit eutils
 

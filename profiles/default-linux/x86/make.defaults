@@ -1,66 +1,17 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/x86/make.defaults,v 1.1 2004/12/22 02:37:16 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/x86/make.defaults,v 1.1.1.1 2005/11/30 09:48:39 chriswhite Exp $
 
-GRP_STAGE23_USE="
-acl
-berkdb
-gpm
-ipv6
-ncurses
-nls
-pam
-perl
-python
-readline
-ssl
-tcpd
-"
-
-# Please avoid enabling things by default in here if possible.  Understand 
-# any implications with core packages.  For example, if "java" is in USE and 
-# db  has a conditional dependency on java (which it does,) then a JDK will be 
-# pulled in during *emerge system*!
-
-USE="${GRP_STAGE23_USE}
-apm
-arts
-avi
-berkdb
-crypt
-cups
-encode
-foomaticdb
-fortran
-gdbm
-gif
-gnome gtk gtk2
-gpm
-jpeg
-kde qt
-libwww
-mad
-mikmod
-motif
-mpeg
-oggvorbis
-opengl
-pdflib 
-png
-quicktime
-oss
-sdl
-spell
-svga
-truetype
-X
-xml2
-xmms
-xv
-zlib
-"
+# All extra USE/etc should be specified in sub-profiles.
+# DO NOT POLLUTE USE ON THIS PROFILE.
 
 ARCH="x86"
 ACCEPT_KEYWORDS="x86"
 
+CHOST="i686-pc-linux-gnu"
+CFLAGS="-O2 -mcpu=i686 -pipe"
+CXXFLAGS="${CFLAGS}"
+
 FEATURES="sandbox sfperms"
+
+USE="berkdb crypt ipv6 ncurses nls pam perl python readline ssl tcpd zlib"

@@ -1,6 +1,164 @@
 # ChangeLog for net-print/foomatic-db
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-db/ChangeLog,v 1.1 2003/07/16 14:44:54 lanius Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/foomatic-db/ChangeLog,v 1.1.1.1 2005/11/30 09:48:17 chriswhite Exp $
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  foomatic-db-20050606.ebuild:
+  Mark 20050606 stable on alpha
+
+  11 Sep 2005; Stefan Schweizer <genstef@gentoo.org>
+  foomatic-db-20050910.ebuild:
+  Make patch apply only conditionally thanks to Piojo
+  <lfmunozmejias@gmail.com> in bug 105503
+
+  10 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +files/fix-sandbox-20050910.patch, foomatic-db-20050910.ebuild:
+  Fixed sandbox violation (bug #105503).
+
+*foomatic-db-20050910 (10 Sep 2005)
+
+  10 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  -foomatic-db-20050909.ebuild, +foomatic-db-20050910.ebuild:
+  New snapshot. Remove older snapshot due a wrong src url.
+
+*foomatic-db-20050909 (10 Sep 2005)
+
+  10 Sep 2005; Luis Medinas <metalgod@gentoo.org>
+  -foomatic-db-20040302.ebuild, +foomatic-db-20050909.ebuild:
+  Update to the latest snapshot.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  foomatic-db-20050606.ebuild:
+  stable on ia64
+
+  21 Aug 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  foomatic-db-20050606.ebuild:
+  Stable on hppa.
+
+  13 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  foomatic-db-20050606.ebuild:
+  Stable on ppc.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  foomatic-db-20050606.ebuild:
+  Stable on ppc64
+
+  02 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  foomatic-db-20050606.ebuild:
+  Stable on sparc
+
+  02 Aug 2005; <metalgod@gentoo.org> foomatic-db-20050606.ebuild:
+  Stable on amd64 and x86 thanks to Daniel Webert <rockoo@gmail.com> closes
+  bug #100993
+
+*foomatic-db-20050606 (06 Jun 2005)
+
+  06 Jun 2005; Heinrich Wendel <lanius@gentoo.org>
+  +foomatic-db-20050606.ebuild:
+  version bump
+
+  06 Jun 2005; Heinrich Wendel <lanius@gentoo.org>
+  -foomatic-db-20031018.ebuild, -foomatic-db-20031231.ebuild,
+  -foomatic-db-20040916.ebuild, foomatic-db-20041220.ebuild:
+  cleanups, mark 20041220 stable on all arches, this are only ppd and xml files
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  foomatic-db-20040302.ebuild, foomatic-db-20040916.ebuild,
+  foomatic-db-20041220.ebuild:
+  Stable on ppc64/added ~ppc64 to KEYWORDS
+
+  01 Apr 2005; Aron Griffis <agriffis@gentoo.org>
+  foomatic-db-20040302.ebuild:
+  stable on ia64
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  20 Dec 2004; Sven Wegener <swegener@gentoo.org> :
+  Added missing digest entries.
+
+*foomatic-db-20041220 (20 Dec 2004)
+
+  20 Dec 2004; Heinrich Wendel <lanius@gentoo.org>
+  +foomatic-db-20041220.ebuild:
+  version bump
+
+  22 Sep 2004; Joshua Kinard <kumba@gentoo.org> foomatic-db-20040302.ebuild:
+  Marked stable on mips.
+
+*foomatic-db-20040916 (16 Sep 2004)
+
+  16 Sep 2004; Heinrich Wendel <lanius@gentoo.org>
+  +foomatic-db-20040916.ebuild:
+  version bump
+
+  19 Jul 2004; Bryan Østergaard <kloeri@gentoo.org>
+  foomatic-db-20040302.ebuild:
+  Stable on alpha.
+
+  17 Jul 2004; Tom Gall <tgall@gentoo.org> foomatic-db-20031231.ebuild:
+  stable on ppc64, bug #55797
+
+  25 Jun 2004; Danny van Dyk <kugelfang@gentoo.org>
+  foomatic-db-20040302.ebuild:
+  Marked stable on amd64.
+
+  19 Apr 2004; Guy Martin <gmsoft@gentoo.org> foomatic-db-20040302.ebuild:
+  Marked stable on hppa.
+
+  11 Apr 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  foomatic-db-20040302.ebuild:
+  stable on sparc
+
+  09 Apr 2004; Heinrich Wendel <lanius@gentoo.org>
+  foomatic-db-20040302.ebuild:
+  stable on x86
+
+*foomatic-db-20040302 (13 Mar 2004)
+
+  13 Mar 2004; Stephen P. Becker <geoman@gentoo.org>
+  foomatic-db-20040302.ebuild:
+  Added ~mips keyword.
+
+  22 Feb 2004; Aron Griffis <agriffis@gentoo.org> foomatic-db-20031018.ebuild,
+  foomatic-db-20031231.ebuild:
+  add ia64 keywords
+
+  02 Mar 2004; Heinrich Wendel <lanius@gentoo.org>
+  foomatic-db-20030716.ebuild, foomatic-db-20031231.ebuild:
+  remove old version; mark 20031231 stable, add 20040302
+
+*foomatic-db-20031231 (31 Dec 2003)
+
+  31 Dec 2003; Heinrich Wendel <lanius@gentoo.org>
+  foomatic-db-20031231.ebuild:
+  version bump
+
+  12 Dec 2003; Heinrich Wendel <lanius@gentoo.org>
+  foomatic-db-20031018.ebuild:
+  Permissions to all files were set to 755 and portage tried to strip them,
+  although they are .xml files
+
+  10 Dec 2003; Heinrich Wendel <lanius@gentoo.org>
+  foomatic-db-20031018.ebuild:
+  stable
+
+*foomatic-db-20031018 (18 Oct 2003)
+
+  18 Oct 2003; Heinrich Wendel <lanius@gentoo.org>
+  foomatic-db-20031018.ebuild:
+  fixed sandbox violation, thx to Chainsaw
+
+  18 Oct 2003; Heinrich Wendel <lanius@gentoo.org> :
+  bump
+
+  29 Jul 2003; lanius@gentoo.org foomatic-db-20030716.ebuild:
+  stable bump
+
+*foomatic-db-20030716 (18 Jul 2003)
+
+  18 Jul 2003; lanius@gentoo.org foomatic-db-20030716.ebuild:
+  fixed bug 24726
 
   16 Jul 2003; Heinrich Wendel <lanius@gentoo.org> files/perl-module.diff:
   initial release

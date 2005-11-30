@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/hpijs/hpijs-1.7.1.ebuild,v 1.1 2004/12/20 21:19:53 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/hpijs/hpijs-1.7.1.ebuild,v 1.1.1.1 2005/11/30 09:48:18 chriswhite Exp $
 
 inherit eutils gnuconfig
 
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/hpinkjet/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~amd64"
+KEYWORDS="alpha amd64 hppa ppc sparc x86"
 IUSE="cups foomaticdb ppds"
 
 DEPEND="virtual/ghostscript
@@ -25,11 +25,12 @@ src_unpack() {
 	cd ${S}
 	gnuconfig_update
 	epatch ${FILESDIR}/hpijs-1.4.1-rss.1.patch
+	epatch ${FILESDIR}/${P}-gcc4.patch
 }
 
 src_compile () {
 	econf --disable-cups-install \
-		--disable-foomatic-install || die "econf failed"
+		$(use_enable ppds foomatic-install) || die "econf failed"
 
 	sed -i -e 's|/usr/share/cups|${prefix}/share/cups|g' \
 		-e 's|/usr/lib/cups|${prefix}/lib/cups|g' Makefile \
@@ -57,6 +58,8 @@ src_install() {
 		rm -fR ${D}/usr/share/ppd
 	fi
 
+	use ppds && rm -f ${D}/usr/bin/foomatic-rip
+
 	if use foomaticdb ; then
 		cd ../foomatic-db-hpijs-${DB_V}
 		make DESTDIR=${D} install || die
@@ -71,4 +74,7 @@ pkg_postinst() {
 	einfo
 	einfo "The hpijs ebuild no longer creates the ppds automatically, please use"
 	einfo "foomatic to do so or remerge hpijs with the ppds use flag."
+	echo
+	einfo "net-print/hpijs is deprecated, please use net-print/hplip"
+	echo
 }

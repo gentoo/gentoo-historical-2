@@ -1,6 +1,23 @@
-# ChangeLog for dev-java/cryptix-jce
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cryptix-jce-bin/ChangeLog,v 1.1 2004/07/30 19:25:35 axxo Exp $
+# ChangeLog for dev-java/cryptix-jce-bin
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cryptix-jce-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:47:10 chriswhite Exp $
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  cryptix-jce-bin-20030217.ebuild:
+  stable on amd64
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org>
+  cryptix-jce-bin-20030217.ebuild, cryptix-jce-bin-20040825.ebuild:
+  depend on app-arch/unzip
+
+*cryptix-jce-bin-20030217 (20 Oct 2004)
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  cryptix-jce-bin-20030217.ebuild, +cryptix-jce-bin-20040825.ebuild:
+  Version bump
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
 
 *cryptix-jce-20030217 (14 May 2003)
 

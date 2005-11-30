@@ -1,6 +1,182 @@
 # ChangeLog for net-wireless/ndiswrapper
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ndiswrapper/ChangeLog,v 1.1 2004/02/29 04:21:59 latexer Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ndiswrapper/ChangeLog,v 1.1.1.1 2005/11/30 09:45:32 chriswhite Exp $
+
+*ndiswrapper-1.5 (06 Nov 2005)
+
+  06 Nov 2005; Brad Laue <brad@gentoo.org> +ndiswrapper-1.5.ebuild:
+  Bump to 1.5.
+
+  25 Oct 2005; Doug Goldstein <cardoe@gentoo.org> metadata.xml,
+  ndiswrapper-1.4.ebuild:
+  maintainership over to brad since I haven't had the hardware for ages
+
+*ndiswrapper-1.4 (23 Oct 2005)
+
+  23 Oct 2005; Doug Goldstein <cardoe@gentoo.org> +ndiswrapper-1.4.ebuild:
+  Rev bump
+
+  26 Aug 2005; Doug Goldstein <cardoe@gentoo.org>
+  -ndiswrapper-1.1-r1.ebuild, ndiswrapper-1.2.ebuild:
+  Fixed Driver list URL.
+  Removed old version
+
+  12 Aug 2005; Doug Goldstein <cardoe@gentoo.org> ndiswrapper-1.2.ebuild:
+  stable on x86, added note about supported kernels.
+
+  02 Jul 2005; <brix@gentoo.org> +files/ndiswrapper-1.2-suspend2.patch,
+  -files/ndiswrapper-1.2-swsusp2.patch, ndiswrapper-1.2.ebuild:
+  Fix compilation with Software Suspend 2 enabled kernels, bug #97570.
+
+  01 Jul 2005; Doug Goldstein <cardoe@gentoo.org> ndiswrapper-1.2.ebuild:
+  get rid of swsusp2 until brix fixes it. Since I don't use ndiswrapper 
+  (anymore) or swsusp2 it's a bit tough for me.
+
+  30 Jun 2005; Doug Goldstein <cardoe@gentoo.org> ndiswrapper-1.2.ebuild:
+  Changed CONFIG_CHECK cause it appeared it might have been failing for a 
+  user.
+
+*ndiswrapper-1.2 (30 Jun 2005)
+
+  30 Jun 2005; Doug Goldstein <cardoe@gentoo.org> +ndiswrapper-1.2.ebuild:
+  rev bump
+
+  10 May 2005; <cardoe@gentoo.org> -files/ndiswrapper-0.9-modules.d,
+  -ndiswrapper-0.12-r3.ebuild, -ndiswrapper-1.0_rc2.ebuild,
+  -ndiswrapper-1.0_rc4.ebuild, -ndiswrapper-1.0.ebuild,
+  -ndiswrapper-1.1.ebuild, ndiswrapper-1.1-r1.ebuild:
+  clean out old ebuilds
+
+  10 May 2005; <cardoe@gentoo.org> ndiswrapper-1.1.ebuild,
+  ndiswrapper-1.1-r1.ebuild:
+  added a common sense runtime dep on wireless-tools
+
+*ndiswrapper-1.1-r1 (07 May 2005)
+
+  07 May 2005; <cardoe@gentoo.org> ndiswrapper-1.1.ebuild,
+  +ndiswrapper-1.1-r1.ebuild:
+  marked 1.1 and 1.1-r1 as stable
+  1.1-r1 automatically reinstalls the Windows drivers.
+  cleaned up some bash-ness
+
+*ndiswrapper-1.1 (05 Mar 2005)
+
+  05 Mar 2005; Doug Goldstein <cardoe@gentoo.org> +ndiswrapper-1.1.ebuild:
+  rev bump
+
+  04 Mar 2005; Doug Goldstein <cardoe@gentoo.org> metadata.xml,
+  ndiswrapper-1.0.ebuild:
+  fixed metadata
+  took out the linux-mod error msg since it didn't play nice with bash
+
+*ndiswrapper-1.0 (30 Jan 2005)
+
+  30 Jan 2005; Doug Goldstein <cardoe@gentoo.org> +ndiswrapper-1.0.ebuild:
+  revision bump, smp & amd64 should work now, update chipset URL
+
+*ndiswrapper-1.0_rc4 (23 Jan 2005)
+
+  23 Jan 2005; Doug Goldstein <cardoe@gentoo.org>
+  +ndiswrapper-1.0_rc4.ebuild:
+  rev bump
+  amd64 support.
+  add notice about needing to re-install your drivers
+
+*ndiswrapper-1.0_rc2 (15 Jan 2005)
+
+  15 Jan 2005; Doug Goldstein <cardoe@gentoo.org> -ndiswrapper-0.10.ebuild,
+  -ndiswrapper-0.11.ebuild, -ndiswrapper-0.12-r1.ebuild,
+  -ndiswrapper-0.12-r2.ebuild, -ndiswrapper-0.12.ebuild,
+  +ndiswrapper-1.0_rc2.ebuild:
+  revision bump to 1.0rc2, switched to linux-mod
+  deleted old drivers
+  added local use flag to support 4kstacks
+
+*ndiswrapper-0.12-r3 (28 Dec 2004)
+
+  28 Dec 2004; Doug Goldstein <cardoe@gentoo.org>
+  +ndiswrapper-0.12-r3.ebuild:
+  typo in the 4K Stacks checking option
+
+  27 Dec 2004; Doug Goldstein <cardoe@gentoo.org>
+  ndiswrapper-0.12-r2.ebuild:
+  Check that 4KSTACKS are turned off, stable
+
+  25 Dec 2004; Doug Goldstein <cardoe@gentoo.org>
+  ndiswrapper-0.12-r1.ebuild, -ndiswrapper-0.9.ebuild:
+  mark 0.12-r1 stable
+  delete outdated versions
+
+*ndiswrapper-0.12-r1 (19 Dec 2004)
+
+  19 Dec 2004; Doug Goldstein <cardoe@gentoo.org>
+  +ndiswrapper-0.12-r1.ebuild:
+  Added support to properly detect if a user is using SWSUSP2 patches.
+  While they are now functioning, they will not function if applied and
+  then if it is not enabled in the kernel.
+  
+  Switched from kernel-mod to linux-info eclass.
+
+*ndiswrapper-0.12 (07 Dec 2004)
+
+  07 Dec 2004; Doug Goldstein <cardoe@gentoo.org> +ndiswrapper-0.12.ebuild:
+  version bump
+
+*ndiswrapper-0.11 (09 Oct 2004)
+
+  09 Oct 2004; Doug Goldstein <cardoe@gentoo.org>
+  -files/ndiswrapper-0.6-modules.d, -files/ndiswrapper.modules.d,
+  ndiswrapper-0.10.ebuild, +ndiswrapper-0.11.ebuild,
+  -ndiswrapper-0.6-r1.ebuild, -ndiswrapper-0.6.ebuild,
+  -ndiswrapper-0.8.ebuild:
+  Revision Bump to .11
+  Mark .10 stable on x86
+  clean out old revisions
+  add man page 
+
+  25 Aug 2004; Doug Goldstein <cardoe@gentoo.org> -ndiswrapper-0.3.ebuild,
+  -ndiswrapper-0.4.ebuild, -ndiswrapper-0.5.ebuild, ndiswrapper-0.9.ebuild:
+  marked 0.9 stable on x86, got rid of non-compiling outdated versions
+
+*ndiswrapper-0.10 (23 Aug 2004)
+
+  23 Aug 2004; Doug Goldstein <cardoe@gentoo.org> +ndiswrapper-0.10.ebuild:
+  Aside from the version bump, this ebuild removes the
+  wlan_radio_averatec_5110hx program (no longer maintained in this package), and
+  adds the ndiswrapper-buginfo utility program. There's also a short
+  informational message about the ndiswrapper WIKI at the end. All this was done
+  by Jesse Becker.
+
+  16 Aug 2004; Doug Goldstein <cardoe@gentoo.org> +ndiswrapper-0.9.ebuild,
+  files/ndiswrapper-0.9-modules.d:
+  version bump. thanks to all the bug reporters that helped out. especially bug
+  #59578. New version should simlify the use of ndiswrapper, and configuration.
+  New ebuild should reduce the chance of access violations
+
+*ndiswrapper-0.8 (07 Jul 2004)
+
+  07 Jul 2004; Peter Johanson <latexer@gentoo.org> +ndiswrapper-0.8.ebuild:
+  Bump. Added fix for using M= with new enough kernels, and a few small tweaks
+  here and there. See bug #49479.
+
+*ndiswrapper-0.6-r1 (29 Mar 2004)
+
+  29 Mar 2004; Peter Johanson <latexer@gentoo.org> ndiswrapper-0.6-r1.ebuild,
+  files/ndiswrapper-0.6-modules.d:
+  Bump, includes fixes from bug #45331 for module loading stuff. Thanks to
+  Juergen Nagel <juergen@nagel.homeip.net> for the changes.
+
+*ndiswrapper-0.6 (24 Mar 2004)
+*ndiswrapper-0.5 (24 Mar 2004)
+
+  24 Mar 2004; Peter Johanson <latexer@gentoo.org> ndiswrapper-0.4.ebuild,
+  ndiswrapper-0.5.ebuild, ndiswrapper-0.6.ebuild:
+  Bump, and add checks to make sure a sufficently new kernel is found.
+
+*ndiswrapper-0.3 (06 Mar 2004)
+
+  06 Mar 2004; Peter Johanson <latexer@gentoo.org> ndiswrapper-0.3.ebuild:
+  Adding version 0.3 for older kernels as 0.4 won't work with them.
 
 *ndiswrapper-0.4 (28 Feb 2004)
 

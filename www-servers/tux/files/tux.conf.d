@@ -1,6 +1,6 @@
 # Config file for /etc/init.d/tux
 # modified from original to be Gentoo like
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/files/tux.conf.d,v 1.1 2004/08/08 19:03:31 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/files/tux.conf.d,v 1.1.1.1 2005/11/30 09:46:48 chriswhite Exp $
 
 # TUX_THREADS sets the number of kernel threads (and associated daemon
 # threads) that will be used.  $TUX_THREADS defaults to 1.

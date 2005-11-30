@@ -1,21 +1,14 @@
-# Copyright 2004 Gentoo Technologies, Inc.
-# System-wide defaults for the Portage system
+# Copyright 1999-2004 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/selinux/2004.1/sparc64/make.defaults,v 1.1.1.1 2005/11/30 09:48:41 chriswhite Exp $
+
+USE="sparc"
+GRP_STAGE23_USE="sparc"
 
 ARCH="sparc"
-
-# Host type
-CHOST=sparc-unknown-linux-gnu
-PLATFORM=sparc64-unknown-linux-gnu
 PROFILE_ARCH="sparc64"
-
-COMPILER="gcc3"
-CFLAGS="-O2 -pipe"
-CXXFLAGS=${CFLAGS}
-
-USE="sparc berkdb crypt ncurses pam python readline selinux ssl tcpd zlib"
-GRP_STAGE23_USE="x86 berkdb crypt ncurses pam python readline selinux ssl tcpd zlib"
-
 ACCEPT_KEYWORDS="sparc"
-FEATURES="strict sfperms"
 
-POLICYDIR="/etc/security/selinux/src/policy"
+CHOST="sparc-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"

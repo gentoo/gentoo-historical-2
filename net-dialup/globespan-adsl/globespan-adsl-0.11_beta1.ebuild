@@ -1,8 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/globespan-adsl/globespan-adsl-0.11_beta1.ebuild,v 1.1 2005/09/17 08:30:57 mrness Exp $
-
-inherit fixheadtails
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/globespan-adsl/globespan-adsl-0.11_beta1.ebuild,v 1.1.1.1 2005/11/30 09:46:17 chriswhite Exp $
 
 MY_PN="eciadsl-usermode-${PV/_/}"
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-pt/ispell-pt-20010720.ebuild,v 1.1 2002/12/03 07:15:39 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-pt/ispell-pt-20010720.ebuild,v 1.1.1.1 2005/11/30 09:46:55 chriswhite Exp $
 
 S=${WORKDIR}"/portugues"
 DESCRIPTION="A Portuguese dictionary for ispell"
@@ -9,7 +9,8 @@ HOMEPAGE="http://natura.di.uminho.pt/~jj/pln/pln.html"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+IUSE=""
+KEYWORDS="ppc x86 sparc alpha mips hppa"
 
 DEPEND="app-text/ispell"
 

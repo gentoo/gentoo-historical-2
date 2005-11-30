@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircservices/ircservices-5.0.53.ebuild,v 1.1 2005/05/16 15:36:11 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircservices/ircservices-5.0.53.ebuild,v 1.1.1.1 2005/11/30 09:49:04 chriswhite Exp $
 
-inherit eutils fixheadtails flag-o-matic
+inherit eutils fixheadtails flag-o-matic toolchain-funcs
 
 DESCRIPTION="ChanServ, NickServ & MemoServ with support for several IRC daemons"
 HOMEPAGE="http://www.ircservices.za.net/"
@@ -10,7 +10,7 @@ SRC_URI="ftp://ftp.esper.net/${PN}/${P}.tar.gz
 	mirror://gentoo/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ~ppc"
 IUSE=""
 
 DEPEND=""
@@ -20,6 +20,7 @@ src_unpack() {
 	cd "${S}"
 
 	epatch "${FILESDIR}"/5.0.37-fPIC.patch
+	epatch "${FILESDIR}"/5.0.53-fPIC-configure.patch
 
 	ht_fix_file configure
 	sed -i -e "s/HEAD -1/HEAD -n 1/" configure
@@ -31,6 +32,7 @@ src_compile() {
 	replace-flags "-O[3-9s]" "-O2"
 
 	./configure \
+		-cc "$(tc-getCC)" \
 		-cflags "${CFLAGS}" \
 		-bindest /usr/bin \
 		-datdest /var/lib/ircservices \
@@ -39,7 +41,7 @@ src_compile() {
 }
 
 src_install() {
-	dodir /usr/bin /{etc,{usr,var}/lib,usr/share}/ircservices || die "dodir failed"
+	dodir /usr/bin /{etc,usr/{$(get_libdir),share},var/lib}/ircservices || die "dodir failed"
 	keepdir /var/log/ircservices || die "keepdir failed"
 	fperms 700 /{etc,var/lib}/ircservices || die "fperms failed"
 

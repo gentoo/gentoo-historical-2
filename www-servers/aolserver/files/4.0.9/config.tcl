@@ -27,7 +27,7 @@
 # version of this file under either the License or the GPL.
 # 
 #
-# $Header: /var/cvsroot/gentoo-x86/www-servers/aolserver/files/4.0.9/config.tcl,v 1.1 2005/01/05 19:49:09 port001 Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/aolserver/files/4.0.9/config.tcl,v 1.1.1.1 2005/11/30 09:46:37 chriswhite Exp $
 #
  
 #

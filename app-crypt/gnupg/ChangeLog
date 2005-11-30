@@ -1,7 +1,584 @@
 # ChangeLog for app-crypt/gnupg
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/ChangeLog,v 1.1 2002/02/01 21:53:00 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gnupg/ChangeLog,v 1.1.1.1 2005/11/30 09:44:50 chriswhite Exp $
 
+  29 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> gnupg-1.2.6.ebuild,
+  gnupg-1.4.1.ebuild, gnupg-1.4.1-r1.ebuild, gnupg-1.4.2-r1.ebuild,
+  gnupg-1.4.2-r2.ebuild, gnupg-1.9.18.ebuild, gnupg-1.9.19.ebuild:
+  Do not dodoc INSTALL.
+
+*gnupg-1.9.19 (19 Sep 2005)
+
+  19 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> +gnupg-1.9.19.ebuild:
+  Version bump for bug 106534. Thanks to Paolo Pedroni <paolo dot pedroni at
+  iol dot it>.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  03 Sep 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.4.2-r2.ebuild:
+  Check kernel version so that users with post 2.6.9 kernels don't get suid
+  root on gpg (bug #102501). Thanks to Tobias Sager
+
+  31 Aug 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/gnupg-1.4.2-jari.patch, gnupg-1.4.2-r2.ebuild:
+  jari patch added as per bug #104059. Thanks for the explaination Venkat
+  Manakkal
+
+*gnupg-1.4.2-r2 (31 Aug 2005)
+
+  31 Aug 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/gnupg-1.4.2-keyserver.patch, gnupg-1.4.2-r1.ebuild,
+  +gnupg-1.4.2-r2.ebuild:
+  Fixed ldap keyserver - bug #104112 thanks to Peter Hyman. Added static build
+  back - bug #104059 thanks to Venkat Manakkal
+
+  16 Aug 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.4.1.ebuild,
+  gnupg-1.4.1-r1.ebuild, gnupg-1.4.2-r1.ebuild, -gnupg-1.9.15-r1.ebuild:
+  keyword/use flag cleanup with arm stable xli (bug #76234). remove 1.9.15
+
+*gnupg-1.9.18 (06 Aug 2005)
+
+  06 Aug 2005; Daniel Black <dragonheart@gentoo.org> +gnupg-1.9.18.ebuild:
+  smartcard fix with bug #95938 and bug #67656. Version bump as per bug
+  #97710. Slot change as per bug #74630. Thanks to Felix Kurth, Stian 
+  Skjelstad, Rouslan Solomakhin, Michael Helmling, Chris White, Benjamin Smee,
+  Diego Pettenò, David Somers and whoever else I
+  missed.
+
+*gnupg-1.4.2-r1 (05 Aug 2005)
+
+  05 Aug 2005; Daniel Black <dragonheart@gentoo.org> -gnupg-1.4.2.ebuild,
+  +gnupg-1.4.2-r1.ebuild:
+  helpers directory fix bug #101346. Thanks to Stephan Wienczny
+
+  03 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  -files/gnupg-1.2.4-hppa_unaligned_constant.patch,
+  -files/gnupg-1.2.4.ppc64.patch:
+  remove unneeded patches as well
+
+  03 Aug 2005; Seemant Kulleen <seemant@gentoo.org> -gnupg-1.2.4.ebuild,
+  gnupg-1.2.6.ebuild, -gnupg-1.4.0-r1.ebuild, -gnupg-1.4.0-r2.ebuild,
+  gnupg-1.4.1.ebuild, gnupg-1.4.1-r1.ebuild, gnupg-1.4.2.ebuild,
+  -gnupg-1.9.14.ebuild, -gnupg-1.9.15.ebuild, gnupg-1.9.15-r1.ebuild,
+  -gnupg-1.9.16.ebuild:
+  change SRC_URI to reflect mirror://gnupg instead. Also removed a whole bunch
+  of cruft ebuilds.
+
+*gnupg-1.4.2 (03 Aug 2005)
+
+  03 Aug 2005; Marcelo Goes <vanquirius@gentoo.org>
+  +files/gnupg-1.4.2-selftest.patch, +gnupg-1.4.2.ebuild:
+  Version and patch bump for bug 101120. Thanks to Erinn Looney-Triggs
+  <erinn.looneytriggs@gmail.com>.
+
+  29 Jul 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.2.4.ebuild,
+  gnupg-1.2.6.ebuild, gnupg-1.4.0-r1.ebuild, gnupg-1.4.0-r2.ebuild,
+  gnupg-1.4.1.ebuild, gnupg-1.4.1-r1.ebuild:
+  removed die from epatch || die
+
+  02 Jul 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/gnupg-1.4.1-selftest.patch, gnupg-1.4.1.ebuild,
+  gnupg-1.4.1-r1.ebuild:
+  Crashing selftest fixed thanks to patch from Ben Peddell - bug #80044
+
+  24 Jun 2005; Aron Griffis <agriffis@gentoo.org> gnupg-1.4.0-r1.ebuild,
+  gnupg-1.4.0-r2.ebuild, gnupg-1.4.1.ebuild, gnupg-1.4.1-r1.ebuild,
+  gnupg-1.9.14.ebuild, gnupg-1.9.15.ebuild, gnupg-1.9.15-r1.ebuild:
+  Move fperms from src_compile to src_install.  Normalize to u+s,go-r
+
+*gnupg-1.4.1-r1 (17 Jun 2005)
+
+  17 Jun 2005; Marcelo Goes <vanquirius@gentoo.org> +gnupg-1.4.1-r1.ebuild:
+  Added usb USE flag. Fixes bug 96391.
+
+  23 May 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.9.16.ebuild:
+  broken with keyservers. -* keyworded temporaly
+
+*gnupg-1.9.16 (23 May 2005)
+
+  23 May 2005; Daniel Black <dragonheart@gentoo.org> +gnupg-1.9.16.ebuild:
+  version bump
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> gnupg-1.4.1.ebuild:
+  Somehow the stable ppc64 keyword has been lost
+
+  02 Apr 2005; Stephen P. Becker <geoman@gentoo.org> gnupg-1.4.1.ebuild:
+  stable on mips
+
+  25 Mar 2005; Aron Griffis <agriffis@gentoo.org> :
+  Stable on ia64 to support mozilla-thunderbird-1.0.2 enigmail dependency
+
+  24 Mar 2005; Markus Rothe <corsair@gentoo.org> gnupg-1.4.1.ebuild:
+  Added --disable-asm for ppc64 only; stable on ppc64; bug #85547
+
+*gnupg-1.9.15-r1 (24 Mar 2005)
+
+  24 Mar 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +gnupg-1.9.15-r1.ebuild:
+  Fix DEPEND for bug #85984, and cleanup DEPEND structure to be easier to manage.
+
+  22 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> gnupg-1.4.1.ebuild:
+  Stable on alpha, bug 85547.
+
+  17 Mar 2005; Robin H. Johnson <robbat2@gentoo.org> gnupg-1.4.1.ebuild:
+  Security Bug #85547, stable on x86.
+
+  17 Mar 2005; Marcus D. Hanwell <cryos@gentoo.org> gnupg-1.4.1.ebuild:
+  Marked stable on amd64, bug 85547.
+
+  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> gnupg-1.4.1.ebuild:
+  Stable on hppa.
+
+  17 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> gnupg-1.4.1.ebuild:
+  Stable on sparc wrt #85547
+
+  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> gnupg-1.4.1.ebuild:
+  Stable on ppc.
+
+*gnupg-1.4.1 (16 Mar 2005)
+
+  16 Mar 2005; Robin H. Johnson <robbat2@gentoo.org> +gnupg-1.4.1.ebuild:
+  virtual/mta re-added for mailto support. new network code using CURL
+  provides FTPS support. Removed the use ppc-macos && use caps hackery, since
+  ppc-macos has caps in use.mask and this case will never happen. Re-enabled
+  photo-viewers as xli is available again, everywhere except arm. Spelling
+  errors fixed. The ECC patch for 1.4.0 applies perfectly still, only the
+  version number in configure needs tweaking. Add a proper src_test that
+  works, fixing bug #80044. This release also fixes mail signatures as per bug
+  #76440. This release solves security bug #85547.
+
+  15 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> gnupg-1.4.0-r2.ebuild:
+  Added to ~hppa.
+
+  15 Mar 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gnupg-1.4.0-r2.ebuild:
+  Added to ~sparc.  Don't use --disable-asm as it's broken.  See bug #76375.
+
+  28 Jan 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.2.4.ebuild,
+  gnupg-1.2.6.ebuild, -gnupg-1.9.10.ebuild, gnupg-1.9.14.ebuild,
+  gnupg-1.9.15.ebuild:
+  Added selinux RDEPENDS as per bug #79746. Removed version 1.9.10.
+
+*gnupg-1.4.0-r2 (23 Jan 2005)
+*gnupg-1.9.15 (23 Jan 2005)
+
+  23 Jan 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.2.4.ebuild,
+  gnupg-1.4.0-r1.ebuild, +gnupg-1.4.0-r2.ebuild, gnupg-1.9.14.ebuild,
+  +gnupg-1.9.15.ebuild:
+  Corrected URL for IDEA patent info. Added 1.4.0-r2 to include elliptic curve
+  cryptosystem and smartcard support. Version bump to gnupg-1.9.15. Removed IDEA
+  from gnupg-1.9.* cause it realy didn't support it anyway.
+
+  20 Jan 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.9.14.ebuild:
+  Changed libassuan dependacy to 0.6.9 as per bug #78713. Thanks Alexander
+  Gretencord <arutha@gmx.de>
+
+  15 Jan 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.2.4.ebuild,
+  gnupg-1.2.6.ebuild, gnupg-1.4.0-r1.ebuild, gnupg-1.9.10.ebuild,
+  gnupg-1.9.14.ebuild:
+  Reference to GnuPG Gentoo user guide added to all ebuilds as per bug #77314 by
+  Chris Rebert <krebert@mindspring.com>. Added idea capabilities to
+  gnupg-1.9.14. Added suid gnupg to gnupg-1.4.0. Fixed __PIC__ definations in
+  1.9.10 and 1.9.14.
+
+*gnupg-1.9.14 (06 Jan 2005)
+
+  06 Jan 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  gnupg-1.4.0-r1.ebuild, gnupg-1.9.10.ebuild, +gnupg-1.9.14.ebuild:
+  Changing libexec dir to /usr/libexec/gnupg for better multilib friendliness
+  in 1.4.  Addinf --disable-agent and removing --libexecdir in the 1.9
+  versions.
+
+*gnupg-1.4.0-r1 (05 Jan 2005)
+
+  05 Jan 2005; Daniel Black <dragonheart@gentoo.org> +gnupg-1.4.0-r1.ebuild,
+  -gnupg-1.4.0.ebuild:
+  Hardened fix as per bug #76487. Thanks to Natanael Copa <mlists@tanael.org>
+  and Peter S. Mazinger <ps.m@gmx.net>
+
+  04 Jan 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.4.0.ebuild:
+  Removed sparc and hppa keywords until bug #76375 is solved
+
+  02 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> gnupg-1.2.6.ebuild:
+  Stable ppc-macos.
+
+  01 Jan 2005; Markus Rothe <corsair@gentoo.org> gnupg-1.2.6.ebuild:
+  Stable on ppc64
+
+  01 Jan 2005; Daniel Black <dragonheart@gentoo.org> gnupg-1.4.0.ebuild:
+  Changed !X use dependancy to X as per bug #76225. Thanks to Bjarke Istrup
+  Pedersen <Bjarke.ip@tekpunkt.dk> for pointing out the error of my ways
+
+  31 Dec 2004; Markus Rothe <corsair@gentoo.org>
+  +files/gnupg-1.2.6-ppc64.patch, gnupg-1.2.6.ebuild:
+  Added patch for ppc64; bug #75355
+
+  31 Dec 2004; Daniel Black <dragonheart@gentoo.org> metadata.xml,
+  gnupg-1.2.6.ebuild:
+  PIC patch added thanks to Peter S. Mazinger <ps.m@gmx.net> in bug #74521
+
+*gnupg-1.4.0 (19 Dec 2004)
+
+  19 Dec 2004; Daniel Black <dragonheart@gentoo.org> +gnupg-1.4.0.ebuild:
+  added gnupg-1.4 masked due to importance and undetermined compatibility with
+  everything else. Bug #74724 raw ebuild by Diego Pettenò
+  <dgp85@users.sourceforge.net>
+
+  07 Dec 2004; Daniel Black <dragonheart@gentoo.org> gnupg-1.2.4.ebuild,
+  gnupg-1.2.6.ebuild, gnupg-1.9.10.ebuild:
+  Fixed bug #72008 and a few other QA faults. Readded missing keywords to 1.2.6
+  and ppc tested and keyworded it
+
+  10 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> gnupg-1.2.6.ebuild:
+  Compile fix for ppc-macos.
+
+  19 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> gnupg-1.2.6.ebuild:
+  Stable on alpha.
+
+  14 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> gnupg-1.2.6.ebuild:
+  Add ~alpha keyword.
+
+  13 Oct 2004; Travis Tilley <lv@gentoo.org> gnupg-1.2.6.ebuild:
+  stable on amd64
+
+  11 Oct 2004; Guy Martin <gmsoft@gentoo.org> gnupg-1.2.6.ebuild:
+  Removed unneeded patch for hppa. Stable on hppa.
+
+  08 Oct 2004; Gustavo Zacarias <gustavoz@gentoo.org> gnupg-1.2.6.ebuild:
+  Stable on sparc
+
+  07 Oct 2004; Tavis Ormandy <taviso@gentoo.org> -gnupg-1.2.3-r2.ebuild,
+  -gnupg-1.2.3-r5.ebuild, gnupg-1.2.6.ebuild, -gnupg-1.9.0.ebuild,
+  -gnupg-1.9.8.ebuild:
+  mark 1.2.6 stable on x86, remove stale ebuilds.
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnupg-1.2.3-r2.ebuild, gnupg-1.9.0.ebuild, gnupg-1.9.10.ebuild,
+  gnupg-1.9.8.ebuild:
+  Masked gnupg-1.9.8.ebuild testing for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnupg-1.2.3-r2.ebuild, gnupg-1.9.0.ebuild, gnupg-1.9.10.ebuild:
+  Masked gnupg-1.9.10.ebuild testing for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnupg-1.2.3-r2.ebuild, gnupg-1.9.0.ebuild:
+  Masked gnupg-1.9.0.ebuild testing for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnupg-1.2.3-r2.ebuild:
+  Masked gnupg-1.2.6.ebuild testing for ppc
+
+  05 Oct 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  gnupg-1.2.3-r2.ebuild:
+  Masked gnupg-1.2.3-r2.ebuild stable for ppc
+
+  03 Oct 2004; Kito <kito@gentoo.org> gnupg-1.2.6.ebuild:
+  added ~ppc-macos keyword
+
+  17 Sep 2004; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.6.ebuild:
+  add back silently removed virtual/mta dep (it's not a mistake! 
+  it's required for using email based keyservers).
+  tidy up postinst messages.
+
+  06 Sep 2004; Robin H. Johnson <robbat2@gentoo.org> gnupg-1.9.10.ebuild,
+  gnupg-1.9.8.ebuild:
+  Fix bug #62111.
+
+  04 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> gnupg-1.2.6.ebuild:
+  Keyworded ~sparc wrt #62615
+
+  29 Aug 2004; Tavis Ormandy <taviso@gentoo.org> +gnupg-1.2.6.ebuild:
+  new version, #61751
+
+*gnupg-1.9.10 (14 Aug 2004)
+
+  14 Aug 2004; Aron Griffis <agriffis@gentoo.org> +gnupg-1.9.10.ebuild:
+  Bump to 1.9.10 #59065
+
+  05 Aug 2004; Tom Martin <slarti@gentoo.org> gnupg-1.2.5.ebuild:
+  Marked ~amd64, resolving 59409. Thanks to Jens Ott <jo@plusserver.de> for
+  reporting.
+
+  31 Jul 2004; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.5.ebuild:
+  installation fails with nls enabled, using sed to make the
+  access to `mkinstalldirs` consistent. #59012
+
+*gnupg-1.2.5 (31 Jul 2004)
+
+  31 Jul 2004; Tavis Ormandy <taviso@gentoo.org> +gnupg-1.2.5.ebuild:
+  fixing #58865
+
+  31 Jul 2004; Tom Gall <tgall@gentoo.org> gnupg-1.2.4.ebuild:
+  stable on ppc64,bug #57114
+
+  14 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> gnupg-1.9.8.ebuild:
+  Marked ~amd64.
+
+  13 Jun 2004; Tom Gall <tgall@gentoo.org> gnupg-1.2.4.ebuild,
+  files/gnupg-1.2.4.ppc64.patch:
+  added ~ppc64 bug #54814
+
+  29 Jun 2004; Aron Griffis <agriffis@gentoo.org> gnupg-1.9.0.ebuild,
+  gnupg-1.9.8.ebuild:
+  sync IUSE (+static)
+
+  01 Jun 2004; Mike Frysinger <vapier@gentoo.org> gnupg-1.9.8.ebuild:
+  Make smartcard support optional via USE=smartcard.
+
+  05 May 2004; Tavis Ormandy <taviso@gentoo.org> gnupg-1.9.8.ebuild:
+  gpg-1.9.8 specifically requires >=libassuan-0.6.5, really closes
+  #49609 and #49619
+
+*gnupg-1.9.8 (03 May 2004)
+
+  03 May 2004; Tavis Ormandy <taviso@gentoo.org> gnupg-1.9.8.ebuild:
+  added 1.9.8 #49609, hardmasked.
+
+  28 Apr 2004; Jon Portnoy <avenj@gentoo.org> gnupg-1.2.4.ebuild :
+  Stable on AMD64.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> gnupg-1.2.3-r2.ebuild:
+  Add die following econf for bug 48950
+
+  24 Apr 2004; Bret Curtis <psi29a@gentoo.org> gnupg-1.2.4.ebuild:
+  Also added to ~mips
+
+  24 Apr 2004; Bret Curtis <psi29a@gentoo.org> gnupg-1.9.0.ebuild:
+  Added to ~mips
+
+  24 Apr 2004; Guy Martin <gmsoft@gentoo.org> gnupg-1.2.4.ebuild,
+  files/gnupg-1.2.4-hppa_unaligned_constant.patch:
+  Added a alignement patch for hppa. Fix check on some systems.
+
+  30 Mar 2004; Lars Weiler <pylon@gentoo.org> gnupg-1.2.4.ebuild:
+  stable on ppc
+
+  13 Mar 2004; Mamoru KOMACHI <usata@gentoo.org> gnupg-1.2.3-r2.ebuild,
+  gnupg-1.2.3-r5.ebuild, gnupg-1.2.4.ebuild, gnupg-1.9.0.ebuild:
+  Updated x11-misc/xloadimage to media-gfx/xloadimage and added
+  media-gfx/xli as second candidate. See bug #26751
+
+  13 Mar 2004; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.4.ebuild:
+  fixing LICENSE.
+
+  09 Mar 2004; <agriffis@gentoo.org> gnupg-1.2.4.ebuild:
+  stable on alpha and ia64
+
+  08 Mar 2004; Jason Wever <weeve@gentoo.org> gnupg-1.2.4.ebuild:
+  Adjusted filter-flags syntax for sparc32.  Fixes bug #43008.
+
+  25 Feb 2004; Sven Blumenstein <bazik@gentoo.org> gnupg-1.2.4.ebuild:
+  All your stable keywords are belong to sparc!
+
+  23 Feb 2004; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.4.ebuild:
+  copy weeve's sparc32 fixes into 1.2.4 and mark stable on x86 and alpha.
+
+*gnupg-1.9.0 (06 Jan 2004)
+
+  06 Jan 2004; Tavis Ormandy <taviso@gentoo.org> gnupg-1.9.0.ebuild:
+  alpha version imported (hardmasked) #37109
+
+  02 Jan 2004; Jason Wever <weeve@gentoo.org> gnupg-1.2.3-r2.ebuild,
+  gnupg-1.2.3-r5.ebuild, gnupg-1.2.4.ebuild:
+  Added a workaround for some sparc32 machines that may have trouble building
+  gnupg-1.2.3-r5 and adjusted copyright dates in ebuilds.
+
+  28 Dec 2003; Joshua Kinard <kumba@gentoo.org> gnupg-1.2.3-r5.ebuild:
+  Move to mips stable (~mips -> mips)
+
+  27 Dec 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.4.ebuild:
+  minor changes
+
+  26 Dec 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.4.ebuild:
+  updating LICENSE
+
+*gnupg-1.2.4 (26 Dec 2003)
+
+  26 Dec 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.4.ebuild:
+  version bump.
+  added optional support for the IDEA algorithm.
+  other minor changes, and dependency changes for the new release.
+
+  12 Dec 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.2-r1.ebuild,
+  gnupg-1.2.3-r3.ebuild, gnupg-1.2.3-r4.ebuild, metadata.xml:
+  remove stale ebuilds, add metadata.xml
+
+  04 Dec 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r5.ebuild:
+  stable on all platforms.
+
+*gnupg-1.2.3-r5 (03 Dec 2003)
+
+  12 Jan 2004; Nicholas Jones <carpaski@gentoo.org> gnupg-1.2.3-r5.ebuild:
+	Fixed the sparc checks and moved the filter-flags inherit call to a
+	legal position so the ebuild quite printing error messages.
+
+  03 Dec 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r5.ebuild,
+  files/gnupg-1.2.3-hkp-format-string.diff:
+  patch from cvs, missing format string in hkp code.
+
+*gnupg-1.2.3-r4 (29 Nov 2003)
+
+  29 Nov 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r4.ebuild,
+  files/gnupg-1.2.3-disable-elgamal.diff:
+  disable elgamal sign+encrypt,
+  http://lists.gnupg.org/pipermail/gnupg-announce/2003q4/000277.html
+
+  17 Nov 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r3.ebuild:
+  stable.
+
+  14 Nov 2003; Aron Griffis <agriffis@gentoo.org> gnupg-1.2.3-r2.ebuild:
+  Stable on ia64
+
+  13 Nov 2003; <tuxus@gentoo.org> gnupg-1.2.3-r2.ebuild:
+  added mips to KEYWORDS
+
+  10 Nov 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r3.ebuild:
+  export LDFLAGS.
+
+  31 Oct 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r3.ebuild:
+  cap => caps
+
+*gnupg-1.2.3-r3 (31 Oct 2003)
+
+  31 Oct 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r3.ebuild:
+  added support for static USE flag, requested in #29299.
+  
+  removed zlib USE flag, its not optional (flag previously toggled 
+   using the bundled zlib library, the static flag does this for now).
+  
+  some syntax changes, im not a fan of the use_enable commands.
+  
+  added local USE flag "cap" which will compile gpg with support for
+   linux capabilities.
+  
+  fixed the DEPEND/RDEPEND craziness (also obeys static flag now).
+  
+  added some comments.
+  
+  added "--enable-static-rnd=linux" configure option, as apparently 
+  this can fail and use the unix option (cant reproduce, but cant hurt 
+  to enable it anyway).
+
+  added an postinst blurb about the capabilities support.
+
+  09 Oct 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r2.ebuild:
+  minor typo.
+
+  02 Oct 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.2-r1.ebuild,
+  gnupg-1.2.2.ebuild, gnupg-1.2.3-r1.ebuild, gnupg-1.2.3.ebuild:
+  cleaning up old ebuilds, amd64 managed to escape the security bump from 1.2.2
+  to -r1 somehow, fixed.
+
+  16 Sep 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r2.ebuild:
+  marking stable x86 and alpha.
+
+*gnupg-1.2.3-r2 (30 Aug 2003)
+
+  23 Aug 2003; Guy Martin <gmsoft@gentoo.org> gnupg-1.2.3-r2.ebuild :
+  Marked stable on hppa.
+
+  30 Aug 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r2.ebuild:
+  configure interprets libexecdir different from the install makefile 
+  target, which breaks external applications (specifically hkp and mailto) 
+  #27608.
+  minor syntax changes.
+  bumped.
+
+*gnupg-1.2.3-r1 (26 Aug 2003)
+
+  26 Aug 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3-r1.ebuild:
+  merging some improvements and syntax cleanups from Max Kalika <max@gentoo.org>.
+  adding ~sparc to keywords.
+  version bump as we now use --libexecdir=...
+
+  26 Aug 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.0.7.ebuild,
+  gnupg-1.2.0.ebuild, gnupg-1.2.1-r1.ebuild, gnupg-1.2.1.ebuild,
+  files/gnupg-1.0.6.diff:
+  cleaning up old ebuilds, all arches have a stable version.
+
+*gnupg-1.2.3 (26 Aug 2003)
+
+  26 Aug 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.3.ebuild:
+  new stable release, also enabling experimental support for external 
+  hkp, requested in #16457
+
+*gnupg-1.2.2-r1 (18 Jul 2003)
+
+  18 Jul 2003; Tavis Ormandy <taviso@gentoo.org> gnupg-1.2.2-r1.ebuild:
+  security update, #20823
+
+  14 May 2003; Daniel Ahlberg <aliz@gentoo.org> gnupg-1.2.2.ebuild :
+  Unmask.
+
+*gnupg-1.2.2 (04 May 2003)
+
+  06 Jul 2003; Guy Martin <gmsoft@gentoo.org> gnupg-1.2.2.ebuild :
+  Added hppa to KEYWORDS.
+
+  04 May 2003; <jrray@gentoo.org> gnupg-1.2.2.ebuild:
+  Simple version bump, new version includes minor security fixes.
+
+  26 Dec 2002; Maik Schreiber <blizzy@gentoo.org> gnupg-1.2.1-r1.ebuild:
+  Changed "~x86" to "x86" in KEYWORDS.
+
+*gnupg-1.2.1-r1 (16 Dec 2002)
+
+  06 Apr 2003; Zach Welch <zwelch@gentoo.org> gnupg-1.2.1-r1.ebuild:
+  add arm keyword
+
+  16 Dec 2002; J Robert Ray <jrray@gentoo.org> gnupg-1.2.1-r1.ebuild :
+  Don't specify fixed photo viewer, defaults to using xloadimage anyway, but
+  fixing it to 'xview' makes it get called with the wrong args and fail.
+  Closes bug 12017.
+
+  16 Dec 2002; Aron Griffis <agriffis@gentoo.org> gnupg-1.2.1.ebuild :
+  Added ~alpha to KEYWORDS
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+
+  10 Nov 2002; Olivier Reisch <doctomoe@gentoo.org> gnupg-1.2.1.ebuild :
+  Added ppc keyword
+
+*gnupg-1.2.1 (31 Oct 2002)
+
+  09 Dec 2002; B.Lauwers <blauwers@gentoo.org> gnupg-1.2.1.ebuild :
+  Un~masked spac keyword per #11870
+
+  31 Oct 2002; Ryan Phillips <rphillips@gentoo.org> gnupg-1.2.1.ebuild :
+  Version bump
+  Added xloadimage as dep to enable --show-photo. Fixes #8836
+
+*gnupg-1.2.0 (18 Oct 2002)
+
+  21 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> gnupg-1.2.0.ebuild :
+  Updated ebuild, contributed by Jacob Perkins <jap1@ionet.net> in #8216. 
+  Adds ldap support. 
+
+  18 Oct 2002; Daniel Ahlberg <aliz@gentoo.org> gnupg-1.2.0.ebuild :
+  Version bump, found by Daniel Seyffer <gentoo-bugs@seyffer.de> in #8778.
+
+*gnupg-1.0.7 (1 Feb 2002)
+ 
+  15 Aug 2002; Jack Morgan <jmorgant@gentoo.org> gnupg-1.0.7.ebuild :
+  Added sparc64 to KEYWORDS
+
+  05 Aug 2002; Seemant Kulleen <seemant@gentoo.org> gnupg-1.0.7.ebuild :
+  Fallsafe to: emake || make || die, in case parallel make is unsupported on
+  some machines.  Closes bug #5979 by kn@insecurity.dk (Kim Nielsen)
+ 
+  27 Jul 2002; Calum Selkirk <cselkirk@gentoo.org> gnupg-1.0.7.ebuild :
+  Added ppc to KEYWORDS
+
+  6 May 2002; Ryan Phillips <rphillips@gentoo.org> gnupg-1.0.7.ebuild :
+  Added a comment to state this new release is not compatible with
+  1.0.6 keyrings.
+
+  6 May 2002; Ryan Phillips <rphillips@gentoo.org> gnupg-1.0.7.ebuild :
+  Updated to new version.
+  
 *gnupg-1.0.6 (1 Feb 2002)
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :

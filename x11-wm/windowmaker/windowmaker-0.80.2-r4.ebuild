@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/windowmaker-0.80.2-r4.ebuild,v 1.1 2004/06/07 13:38:27 raker Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/windowmaker-0.80.2-r4.ebuild,v 1.1.1.1 2005/11/30 09:45:05 chriswhite Exp $
 
 inherit eutils flag-o-matic
 filter-mfpmath "sse" "387"
 
-IUSE="gif nls png kde oss jpeg gnome xinerama"
+IUSE="alsa esd gif gnome jpeg kde nls oss png xinerama"
 
 MY_P=${P/windowm/WindowM}
 S=${WORKDIR}/${MY_P}
@@ -23,35 +23,36 @@ DEPEND="virtual/x11
 	png? ( >=media-libs/libpng-1.2.1 )
 	jpeg? ( >=media-libs/jpeg-6b-r2 )"
 
-RDEPEND="nls? ( >=sys-devel/gettext-0.10.39 )"
+RDEPEND="${DEPEND}
+	nls? ( >=sys-devel/gettext-0.10.39 )"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~mips amd64"
+KEYWORDS="~x86 ppc ~sparc ~alpha ~mips amd64 ppc64"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
-	epatch ${FILESDIR}/${PN}-0.80.2-r1-gentoo.patch
+	epatch ${FILESDIR}/${PV}/${PN}-0.80.2-r1-gentoo.patch
 
 	# scroll with the arrow keys
 	cd ${S}/WINGs
-	epatch ${FILESDIR}/wlist.patch
+	epatch ${FILESDIR}/${PV}/wlist.patch
 
 	# transparency/translucency
 	cd ${S}
-	epatch ${FILESDIR}/trance.patch.WM-0.80.2.diff
+	epatch ${FILESDIR}/${PV}/trance.patch.WM-0.80.2.diff
 
 	# Add some BETTER xinerama support
-	use xinerama && epatch ${FILESDIR}/xinerama.patch
+	use xinerama && epatch ${FILESDIR}/${PV}/xinerama.patch.bz2
 
 	# Fix GTK2 window flickering bug
-	epatch ${FILESDIR}/gtk2flickerfix.patch
+	epatch ${FILESDIR}/${PV}/gtk2flickerfix.patch
 
 	# Add options to WPrefs for single-click launching of windows
 	# and maximize vs. shading when double-click on titlebars
 	# http://orbita.starmedia.com/~neofpo/home.html
-	epatch ${FILESDIR}/wmfpo.patch
+	epatch ${FILESDIR}/${PV}/wmfpo.patch
 }
 
 src_compile() {
@@ -123,13 +124,13 @@ src_compile() {
 	cd ${S}
 	#0.80.1-r2 did not work with make -j4 (drobbins, 15 Jul 2002)
 	#with future Portage, this should become "emake -j1"
-	make || die
+	emake -j1 || die
 
 	# WindowMaker Extra
 	cd ../WindowMaker-extra-0.1
 	econf || die
 
-	make || die
+	emake -j1 || die
 }
 
 src_install() {
@@ -142,7 +143,7 @@ src_install() {
 
 	cp -f WindowMaker/plmenu ${D}/etc/X11/WindowMaker/WMRootMenu
 
-	dodoc AUTHORS BUGFORUM BUGS ChangeLog COPYING* INSTALL* FAQ* \
+	dodoc AUTHORS BUGFORM BUGS ChangeLog COPYING* INSTALL* FAQ* \
 	      MIRRORS README* NEWS TODO
 
 	# WindowMaker Extra

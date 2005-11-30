@@ -1,10 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-OLE/PEAR-OLE-0.5.ebuild,v 1.1 2003/12/25 12:32:29 coredumb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-OLE/PEAR-OLE-0.5.ebuild,v 1.1.1.1 2005/11/30 09:48:00 chriswhite Exp $
 
 inherit php-pear
 
 DESCRIPTION="Package for reading and writing OLE containers"
 LICENSE="PHP"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ~ppc64 ~s390 sparc x86"
+IUSE=""

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_proxy_html/mod_proxy_html-2.5.1.ebuild,v 1.1 2005/10/26 00:35:28 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_proxy_html/mod_proxy_html-2.5.1.ebuild,v 1.1.1.1 2005/11/30 09:49:13 chriswhite Exp $
 
 inherit eutils apache-module
 

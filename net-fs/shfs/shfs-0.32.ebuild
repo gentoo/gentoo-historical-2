@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/shfs/shfs-0.32.ebuild,v 1.1 2003/11/11 12:37:55 lu_zero Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/shfs/shfs-0.32.ebuild,v 1.1.1.1 2005/11/30 09:45:44 chriswhite Exp $
 
 IUSE="amd doc"
 
@@ -46,7 +46,12 @@ src_install() {
 
 	dodir /lib/modules/${KV}/kernel/fs/shfs/
 	insinto /lib/modules/${KV}/kernel/fs/shfs/
+
+	if [ "`echo ${KV}|grep 2.6`" ] ; then
 	doins shfs.ko || die
+	else
+	doins shfs.o || die
+	fi
 
 # Install binaries
 	cd ${S}/shfsmount
@@ -68,7 +73,7 @@ src_install() {
 	use doc && dohtml -r ${S}/docs/html
 
 	# Install automount support (if desired)
-	if [ -n "`use amd`" ] ; then
+	if use amd ; then
 		einfo " Installing am-utils config files..."
 		insinto /etc/amd
 		doins ${FILESDIR}/amd.conf
@@ -83,19 +88,19 @@ pkg_postinst() {
 	echo "running depmod...."
 	depmod -aq || die
 
-	echo " "
+	echo
 	einfo " Use either 'shfsmount' or 'mount -t shfs' to mount remote"
-	einfo " filesystems to into your local filesystem.               "
-	echo " "
-	echo " "
-	einfo " Note the following:                                      "
-	einfo "                                                          "
-	einfo "   1.  The shfs.o kernel module has to be loaded first    "
-	einfo "       before you can start mounting filesystems.         "
-	einfo "       Try: 'insmod shfs' as root.                        "
-	einfo "                                                          "
-	einfo "   2.  When mounting, you must enter the absolute path of "
-	einfo "       the remote filesystem without any special chars,   "
-	einfo "       such as tilde (~), for example.                    "
-	echo " "
+	einfo " filesystems to into your local filesystem."
+	echo
+	echo
+	einfo " Note the following:"
+	einfo
+	einfo "   1.  The shfs kernel module has to be loaded first"
+	einfo "       before you can start mounting filesystems."
+	einfo "       Try: 'modprobe shfs' as root."
+	einfo
+	einfo "   2.  When mounting, you must enter the absolute path of"
+	einfo "       the remote filesystem without any special chars,"
+	einfo "       such as tilde (~), for example."
+	echo
 }

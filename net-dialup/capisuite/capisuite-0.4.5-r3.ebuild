@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capisuite/capisuite-0.4.5-r3.ebuild,v 1.1 2005/08/07 11:41:07 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capisuite/capisuite-0.4.5-r3.ebuild,v 1.1.1.1 2005/11/30 09:45:59 chriswhite Exp $
 
 inherit eutils flag-o-matic python
 
@@ -21,9 +21,9 @@ DEPEND="virtual/python
 	media-libs/tiff
 	media-gfx/jpeg2ps
 	media-gfx/sfftobmp
-	virtual/ghostscript"
+	virtual/ghostscript
+	net-dialup/capi4k-utils"
 RDEPEND="${DEPEND}
-	net-dialup/capi4k-utils
 	virtual/mta"
 
 src_unpack() {
@@ -68,7 +68,7 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/capisuite.logrotated" capisuite
 
-	dodoc AUTHORS ChangeLog INSTALL NEWS README TODO
+	dodoc AUTHORS ChangeLog NEWS README TODO
 
 	exeinto /etc/cron.daily
 	doexe capisuite.cron

@@ -1,6 +1,6 @@
 # ChangeLog for sys-auth/pam_smb
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_smb/ChangeLog,v 1.1 2005/07/02 14:17:41 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_smb/ChangeLog,v 1.1.1.1 2005/11/30 09:45:17 chriswhite Exp $
 
   02 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +files/pamsmbd-init,
   +metadata.xml, +pam_smb-1.9.9-r1.ebuild, +pam_smb-2.0.0_rc5.ebuild,

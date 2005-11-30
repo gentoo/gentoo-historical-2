@@ -1,6 +1,15 @@
-# ChangeLog for app-games/matritsa
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/matritsa/ChangeLog,v 1.1 2003/09/10 04:51:18 vapier Exp $
+# ChangeLog for games-kids/matritsa
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-kids/matritsa/ChangeLog,v 1.1.1.1 2005/11/30 09:48:25 chriswhite Exp $
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> matritsa-0.1.2.ebuild:
+  Stable on ppc.
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> matritsa-0.1.2.ebuild:
+  stable on amd64. fixes #66699
+
+  05 Nov 2004; Joseph Jezak <josejx@gentoo.org> matritsa-0.1.2.ebuild:
+  Added ~ppc.
 
 *matritsa-0.1.2 (22 Aug 2003)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/wxchecksums/wxchecksums-1.1.2.ebuild,v 1.1 2004/07/22 17:34:53 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/wxchecksums/wxchecksums-1.1.2.ebuild,v 1.1.1.1 2005/11/30 09:44:55 chriswhite Exp $
 
 MY_P="wxChecksums-${PV}"
 
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/wxchecksums/${MY_P}-src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc"
 IUSE="doc"
 
-RDEPEND=">=x11-libs/wxGTK-2.4.1-r1"
+RDEPEND="<x11-libs/wxGTK-2.5"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 S="${WORKDIR}/${MY_P}/src"
@@ -40,15 +40,14 @@ src_install() {
 	cd ..
 	dodoc AUTHORS.txt NEWS.txt README.txt TODO.txt
 
-	if [ `use doc` ] ; then
+	if use doc ; then
 		dohtml -r manual/*
 	fi
 }
 
 pkg_postinst() {
-	if [ `use doc` ] ; then
+	if use doc ; then
 		einfo "The manual has been installed in"
 		einfo "/usr/share/doc/${PF}/html"
 	fi
 }
-

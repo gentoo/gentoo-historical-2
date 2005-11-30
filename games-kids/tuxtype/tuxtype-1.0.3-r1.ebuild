@@ -1,30 +1,30 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/tuxtype/tuxtype-1.0.3-r1.ebuild,v 1.1 2003/09/10 04:51:18 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-kids/tuxtype/tuxtype-1.0.3-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:25 chriswhite Exp $
 
-inherit games
+inherit gnuconfig games
 
 DESCRIPTION="Typing tutorial with lots of eye-candy"
-SRC_URI="mirror://sourceforge/tuxtype/${P}.tar.bz2"
 HOMEPAGE="http://www.geekcomix.com/dm/tuxtype/"
+SRC_URI="mirror://sourceforge/tuxtype/${P}.tar.bz2"
 
-KEYWORDS="x86 ppc"
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
-DEPEND="virtual/glibc
-	>=media-libs/libsdl-1.2
+DEPEND=">=media-libs/libsdl-1.2
 	>=media-libs/sdl-mixer-1.2
 	>=media-libs/sdl-image-1.2"
 
 src_compile() {
-	egamesconf --with-gnu-ld --disable-sdltest
+	gnuconfig_update
+	egamesconf --disable-sdltest || die
 	emake || die
 }
 
 src_install() {
-	egamesinstall
+	egamesinstall || die "install"
 
 	# now fix where the installer put everything
 	cd ${D}/${GAMES_PREFIX}/${PN}

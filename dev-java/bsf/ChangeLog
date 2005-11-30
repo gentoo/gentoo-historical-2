@@ -1,6 +1,83 @@
 # ChangeLog for dev-java/bsf
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/ChangeLog,v 1.1 2004/04/27 23:26:12 karltk Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bsf/ChangeLog,v 1.1.1.1 2005/11/30 09:47:07 chriswhite Exp $
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org> bsf-2.3.0-r2.ebuild:
+  fix deps, small cleanups
+
+  05 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -bsf-2.3.0-r1.ebuild,
+  bsf-2.3.0-r2.ebuild:
+  did some cleanup, introduced support for the source useflag.
+
+  03 Apr 2005; <SeJo@gentoo.org> bsf-2.3.0-r2.ebuild:
+  added ppc keyword
+
+  03 Apr 2005; Jason Wever <weeve@gentoo.org> bsf-2.3.0-r2.ebuild:
+  Stable on SPARC wrt bug #87706.
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> bsf-2.3.0-r2.ebuild:
+  stable on amd64 and x86
+
+  23 Mar 2005; Thomas Matthijs <axxo@gentoo.org> bsf-2.3.0-r1.ebuild,
+  bsf-2.3.0-r2.ebuild:
+  dep ant -> ant-core
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> bsf-2.3.0-r1.ebuild,
+  bsf-2.3.0-r2.ebuild:
+  updated (R)DEPEND to reflect rhino SLOT changes.
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> bsf-2.3.0-r2.ebuild:
+  Stable on ppc64
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> bsf-2.3.0-r2.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Dec 2004; Dylan Carlson <absinthe@gentoo.org> bsf-2.3.0-r2.ebuild:
+  Stable on amd64.
+
+  16 Nov 2004; Karl Trygve Kalleberg <karltk@gentoo.org> bsf-2.3.0-r2.ebuild:
+  Added jikes support, better and sensible jdk/jre dependencies, fortified
+  servletapi dependant parts, should unmask on x86, as -r1 is completely broken.
+
+  28 Oct 2004; Jason Wever <weeve@gentoo.org> bsf-2.3.0-r2.ebuild:
+  Added ~sparc keyword.
+
+  20 Oct 2004; Thomas Matthijs <axxo@gentoo.org> bsf-2.3.0-r2.ebuild:
+  honor use flags better
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> bsf-2.3.0-r1.ebuild,
+  bsf-2.3.0-r2.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  14 Oct 2004; David Holm <dholm@gentoo.org> bsf-2.3.0-r2.ebuild:
+  Added to ~ppc.
+
+*bsf-2.3.0-r2 (19 Sep 2004)
+
+  19 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +bsf-2.3.0-r2.ebuild:
+  use servletapi instead of tomcat
+
+  04 Sep 2004; Thomas Matthijs <axxo@gentoo.org> bsf-2.3.0-r1.ebuild:
+  move jython-bin -> jython
+
+  23 Aug 2004; Chris Aniszczyk <zx@gentoo.org> bsf-2.3.0-r1.ebuild,
+  -bsf-2.3.0.ebuild:
+  Marking x86
+
+  09 Aug 2004; Thomas Matthijs <axxo@gentoo.org> -files/bsf-rhino-1.5.patch,
+  bsf-2.3.0-r1.ebuild:
+  fix tomcat location(still a hack),  move patch to mirrors(too big for tree)
+
+  08 Aug 2004; Stuart Herbert <stuart@gentoo.org> bsf-2.3.0-r1.ebuild,
+  bsf-2.3.0.ebuild:
+  Updated dep on tomcat for the net-www split
+
+*bsf-2.3.0-r1 01 Aug 2004
+
+  01 Aug 2004; Karl Trygve Kalleberg <karltk@gentoo.org> 
+  Added support for jython and rhino useflags. Fixes #55934, thanks to Howard B.
+  Golden <howard_b_golden@yahoo.com>.
 
 *bsf-2.3.0 (27 Apr 2004)
 

@@ -1,6 +1,49 @@
 # ChangeLog for dev-java/xml-xmlbeans
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-xmlbeans/ChangeLog,v 1.1 2004/12/19 00:16:11 karltk Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-xmlbeans/ChangeLog,v 1.1.1.1 2005/11/30 09:47:34 chriswhite Exp $
+
+  11 Sep 2005; Thomas Matthijs <axxo@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  Disable junit #100895
+
+  22 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  Stable on sparc
+
+  20 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  Gimme ~sparc
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  fix deps
+
+  12 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  Updated dev-java/jaxen dependency.
+
+  16 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  stable on amd64 and x86, added ~ppc to KEYWORDS
+
+  16 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  xml-xmlbeans now makes use of java-pkg_dosrc
+
+  10 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  finally fixed the junit dependency nightmare. fixes #77097.
+
+  08 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  xml-xmlbeans-20041217.ebuild:
+  updated ant dependency because junit needs ant-tasks. fixes #77097.
+
+  03 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> xml-xmlbeans-20041217.ebuild:
+  Updated junit dependency and added source useflag. Fixes #75906
+
+  24 Dec 2004; Thomas Matthijs <axxo@gentoo.org>
+  files/xml-xmlbeans-gentoo.patch, xml-xmlbeans-20041217.ebuild:
+  fix #75528
 
 *xml-xmlbeans-20041217 (19 Dec 2004)
 

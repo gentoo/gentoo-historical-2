@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/sarien/sarien-0.7.0.ebuild,v 1.1 2004/03/27 10:21:21 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-engines/sarien/sarien-0.7.0.ebuild,v 1.1.1.1 2005/11/30 09:46:27 chriswhite Exp $
 
 inherit games
 
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/sarien/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc ~amd64"
 IUSE=""
 
-RDEPEND="virtual/glibc
+RDEPEND="virtual/libc
 	virtual/x11"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
@@ -25,6 +25,12 @@ src_unpack() {
 	sed -i \
 		-e "s:/etc:${GAMES_SYSCONFDIR}:" src/filesys/unix/path.c \
 			|| die "sed src/filesys/unix/path.c failed"
+}
+
+src_compile() {
+	egamesconf || die
+	# buggy build - comments on bug #45813
+	emake -j1 || die "emake failed"
 }
 
 src_install() {

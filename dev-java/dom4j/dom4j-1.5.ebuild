@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dom4j/dom4j-1.5.ebuild,v 1.1 2004/10/17 07:27:43 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dom4j/dom4j-1.5.ebuild,v 1.1.1.1 2005/11/30 09:47:21 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,15 +9,17 @@ HOMEPAGE="http://dom4j.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dom4j/${P}.tar.gz"
 LICENSE="Apache-1.1"
 SLOT="1"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc"
+KEYWORDS="~amd64 ~ppc ppc64 ~sparc x86"
 IUSE="doc"
-DEPEND=">=virtual/jdk-1.3"
-RDEPEND=">=virtual/jdk-1.3"
+DEPEND="|| ( =virtual/jdk-1.4* =virtual/jdk-1.3* )"
+RDEPEND="|| ( =virtual/jre-1.4* =virtual/jre-1.3* )"
 
 src_compile() {
 	cd ${WORKDIR}/dom4j-${PV}
-	ant -f build.xml all || die "Compilation Failed"
-	use doc && ant -f build.xml javadoc || die "Javadoc Failed"
+	ant -f build.xml package || die "Compilation Failed"
+	if use doc; then
+		ant -f build.xml javadoc || die "Javadoc Failed"
+	fi
 }
 
 src_install() {

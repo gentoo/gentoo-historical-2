@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/audit-0.7.3.ebuild,v 1.1 2005/05/07 07:05:52 beu Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/audit/audit-0.7.3.ebuild,v 1.1.1.1 2005/11/30 09:49:05 chriswhite Exp $
 
 DESCRIPTION="Userspace utilities for storing and processing auditing records."
 HOMEPAGE="http://people.redhat.com/sgrubb/audit/"

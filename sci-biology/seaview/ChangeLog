@@ -1,6 +1,26 @@
-# ChangeLog for app-sci/seaview
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/seaview/ChangeLog,v 1.1 2004/12/23 21:44:42 ribosome Exp $
+# ChangeLog for sci-biology/seaview
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/seaview/ChangeLog,v 1.1.1.1 2005/11/30 09:48:50 chriswhite Exp $
+
+*seaview-20050713 (07 Aug 2005)
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org>
+  +seaview-20050713.ebuild:
+  New version.
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  seaview-20041220.ebuild:
+  Stable on ppc.
+
+  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org>
+  seaview-20041220.ebuild:
+  Ebuild cleanup.
+
+*seaview-20041220 (09 Jan 2005)
+
+  09 Jan 2005; Olivier Fisette <ribosome@gentoo.org> -files/29seaview,
+  -seaview-1-r1.ebuild, +seaview-20041220.ebuild:
+  Changed versioning scheme. (Upstream does not use version numbers.)
 
 *seaview-1-r1 (23 Dec 2004)
 

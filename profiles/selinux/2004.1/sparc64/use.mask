@@ -1,3 +1,7 @@
+# Copyright 1999-2004 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/selinux/2004.1/sparc64/use.mask,v 1.1.1.1 2005/11/30 09:48:41 chriswhite Exp $
+
 # This file contains a list of USE
 # flags that cannot be used on SPARC.
 
@@ -5,6 +9,7 @@
 3dnow
 afs
 alsa
+altivec
 mmx
 pic
 sse

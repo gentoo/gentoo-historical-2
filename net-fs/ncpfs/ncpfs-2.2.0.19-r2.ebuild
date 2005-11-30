@@ -1,12 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
-#Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.0.19-r2.ebuild,v 1.1 2003/03/23 19:19:22 mholzer Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/ncpfs/ncpfs-2.2.0.19-r2.ebuild,v 1.1.1.1 2005/11/30 09:45:52 chriswhite Exp $
 
 inherit eutils
 
 IUSE="nls pam"
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Provides Access to Netware services using the NCP protocol (Kernel support must be activated!)"
 SRC_URI="ftp://platan.vc.cvut.cz/pub/linux/${PN}/old/${P}.tar.gz"
 HOMEPAGE="ftp://platan.vc.cvut.cz/pub/linux/ncpfs/latest/"
@@ -27,7 +26,7 @@ src_compile() {
 		&& myconf="${myconf} --enable-pam" \
 		|| myconf="${myconf} --disable-pam"
 
-	econf ${myconf}
+	econf ${myconf} || die "econf failed"
 	emake || die
 }
 

@@ -1,6 +1,103 @@
 # ChangeLog for dev-java/struts
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/struts/ChangeLog,v 1.1 2004/03/18 05:03:12 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/struts/ChangeLog,v 1.1.1.1 2005/11/30 09:47:45 chriswhite Exp $
+
+*struts-1.2.4-r2 (20 Sep 2005)
+*struts-1.1-r4 (20 Sep 2005)
+
+  20 Sep 2005; Petteri Räty <betelgeuse@gentoo.org> metadata.xml,
+  -struts-1.1-r3.ebuild, +struts-1.1-r4.ebuild, struts-1.2.2-r2.ebuild,
+  -struts-1.2.4-r1.ebuild, +struts-1.2.4-r2.ebuild:
+  Struts is now slotted because the 1.1 and 1.2 releases are not binary
+  compatible. Fixes bug #97366.
+
+  10 Jul 2005; Thomas Matthijs <axxo@gentoo.org> struts-1.1-r3.ebuild,
+  struts-1.2.2-r2.ebuild, struts-1.2.4-r1.ebuild:
+  dep fixes + cleanup
+
+  18 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> struts-1.2.4-r1.ebuild:
+  The package.env file now contains DEPEND, fixes #96145. Introduced support
+  for the examples and the source useflag.
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org> struts-1.1-r3.ebuild:
+  Stable on ppc64
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> :
+  digest fix #92627
+
+*struts-1.2.4-r1 (14 May 2005)
+*struts-1.2.2-r2 (14 May 2005)
+*struts-1.1-r3 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -struts-1.1.ebuild,
+  -struts-1.1-r1.ebuild, -struts-1.1-r2.ebuild, +struts-1.1-r3.ebuild,
+  -struts-1.2.2.ebuild, -struts-1.2.2-r1.ebuild, +struts-1.2.2-r2.ebuild,
+  -struts-1.2.4.ebuild, +struts-1.2.4-r1.ebuild:
+  updated commons-beanutils dependency to reflect new slotting. see #71952
+
+  07 May 2005; Jason Wever <weeve@gentoo.org> struts-1.1-r2.ebuild:
+  Added ~sparc keyword.
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> struts-1.1-r2.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> struts-1.1-r1.ebuild,
+  struts-1.1-r2.ebuild, struts-1.1.ebuild, struts-1.2.2-r1.ebuild,
+  struts-1.2.2.ebuild, struts-1.2.4.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> struts-1.1-r1.ebuild,
+  struts-1.1-r2.ebuild, struts-1.1.ebuild, struts-1.2.2-r1.ebuild,
+  struts-1.2.2.ebuild, struts-1.2.4.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> struts-1.1-r1.ebuild,
+  struts-1.1-r2.ebuild, struts-1.1.ebuild, struts-1.2.2-r1.ebuild,
+  struts-1.2.2.ebuild, struts-1.2.4.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  12 Oct 2004; Thomas Matthijs <axxo@gentoo.org> struts-1.2.2-r1.ebuild,
+  struts-1.2.2.ebuild, struts-1.2.4.ebuild:
+  Corrected LICENSE to Apache-2.0, closes 67271
+
+*struts-1.2.4 (12 Oct 2004)
+
+  12 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +struts-1.2.4.ebuild:
+  version bump
+
+*struts-1.2.2-r1 (08 Oct 2004)
+
+  08 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +struts-1.1-r2.ebuild,
+  +struts-1.2.2-r1.ebuild:
+  Install *.tld files
+
+*struts-1.2.2-r1 (08 Oct 2004)
+
+  08 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +struts-1.1-r2.ebuild,
+  +struts-1.2.2-r1.ebuild:
+  Install *.tld files
+
+  12 Sep 2004; Thomas Matthijs <axxo@gentoo.org> struts-1.1-r1.ebuild,
+  struts-1.2.2.ebuild:
+  improved dependencies, bug 63783 and typo
+
+*struts-1.2.2 (10 Sep 2004)
+
+  10 Sep 2004; Thomas Matthijs <axxo@gentoo.org> +struts-1.2.2.ebuild:
+  version bump
+
+  26 Jul 2004; Thomas Matthijs <axxo@gentoo.org> struts-1.1-r1.ebuild,
+  struts-1.1.ebuild:
+  fix depend
+
+  13 Jul 2004; <SeJo@gentoo.org> struts-1.1.ebuild:
+  added ~ppc keyword
+
+*struts-1.1-r1 (21 Jun 2004)
+
+  21 Jun 2004; Karl Trygve Kalleberg <karltk@gentoo.org> struts-1.1-r1.ebuild:
+  Fixed to more suitable runtime dependencies, fixes #45402.
 
 *struts-1.1 (18 Mar 2004)
 

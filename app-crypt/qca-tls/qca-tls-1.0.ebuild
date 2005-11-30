@@ -1,29 +1,40 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca-tls/qca-tls-1.0.ebuild,v 1.1 2004/01/03 17:29:11 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/qca-tls/qca-tls-1.0.ebuild,v 1.1.1.1 2005/11/30 09:44:55 chriswhite Exp $
 
+inherit eutils qt3
 
 DESCRIPTION="plugin to provide SSL/TLS capability to programs that utilize the Qt Cryptographic Architecture (QCA)"
 HOMEPAGE="http://psi.affinix.com/"
-SRC_URI="http://psi.affinix.com/beta/qca-tls-${PV}.tar.bz2"
+SRC_URI="http://psi.affinix.com/beta/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
+IUSE=""
 
-DEPEND=">=x11-libs/qt-3.1.2-r4
-		>=dev-libs/openssl-0.9.6i"
+DEPEND="$(qt_min_version 3.3)
+	>=dev-libs/openssl-0.9.6i"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+	epatch ${FILESDIR}/qca-pathfix.patch
+}
 
 src_compile() {
 	./configure || die "configure failed"
 	sed -i \
-		-e "/^CFLAGS/s:$:${CFLAGS}:" \
-		-e "/^CXXFLAGS/s:$:${CXXFLAGS}:" \
+		-e "/^CFLAGS/s:$: ${CFLAGS}:" \
+		-e "/^CXXFLAGS/s:$: ${CXXFLAGS}:" \
 		Makefile
 	emake || die "emake failed"
 }
 
 src_install() {
-	emake INSTALL_ROOT="${D}" install || die "make install failed"
+	make INSTALL_ROOT="${D}" install || die "make install failed"
+	insinto /usr/include
+	doins qcaprovider.h qca.h qca-tls.h
+
 	dodoc README
 }

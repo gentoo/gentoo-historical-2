@@ -1,6 +1,35 @@
 # ChangeLog for games-engines/scummvm-tools
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/scummvm-tools/ChangeLog,v 1.1 2003/09/26 18:50:34 vapier Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/scummvm-tools/ChangeLog,v 1.1.1.1 2005/11/30 09:46:27 chriswhite Exp $
+
+*scummvm-tools-0.8.0 (31 Oct 2005)
+
+  31 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +scummvm-tools-0.8.0.ebuild:
+  Version bump #110930 by Robert Lundmark.
+
+*scummvm-tools-0.7.0 (26 Dec 2004)
+
+  26 Dec 2004; Mike Frysinger <vapier@gentoo.org>
+  +scummvm-tools-0.7.0.ebuild:
+  Version bump #75615 by cpu.
+
+  03 Sep 2004; Tom Martin <slarti@gentoo.org> scummvm-tools-0.6.1.ebuild:
+  Marked ~amd64, resolves bug 62314. Thanks to Adrian Frühwirth
+  <adrian.fruehwirth@gmx.at> for reporting.
+
+*scummvm-tools-0.6.1 (29 Jul 2004)
+
+  29 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  +scummvm-tools-0.6.1.ebuild:
+  version bump
+
+*scummvm-tools-0.6.0 (05 Apr 2004)
+
+  05 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  scummvm-tools-0.6.0.ebuild:
+  version bump (bug #44826); now installed with ${PN} prefix so badly named
+  utilities won't conflict with other packages
 
 *scummvm-tools-0.5.0 (26 Sep 2003)
 

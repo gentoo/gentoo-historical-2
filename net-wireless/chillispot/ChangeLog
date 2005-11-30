@@ -1,6 +1,38 @@
 # ChangeLog for net-wireless/chillispot
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/chillispot/ChangeLog,v 1.1 2004/07/06 18:18:55 solar Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/chillispot/ChangeLog,v 1.1.1.1 2005/11/30 09:45:37 chriswhite Exp $
+
+*chillispot-1.0 (20 Oct 2005)
+
+  20 Oct 2005; <solar.@gentoo.org> +chillispot-1.0.ebuild:
+  - version bump to from 0.99 to 1.0
+
+  01 Aug 2005; <solar.@gentoo.org> -chillispot-0.94.ebuild,
+  -chillispot-0.95.ebuild, -chillispot-0.97.ebuild, chillispot-0.99.ebuild:
+  - removed some older ebuilds and updated the .99 a bit to keep spanky quiet
+
+  05 May 2005; Sven Wegener <swegener@gentoo.org> chillispot-0.94.ebuild,
+  chillispot-0.95.ebuild, chillispot-0.97.ebuild, chillispot-0.99.ebuild:
+  Fixed [<>]=cat/pkg-ver* dependencies.
+
+*chillispot-0.99 (12 Jan 2005)
+
+  12 Jan 2005; <solar@gentoo.org> +chillispot-0.99.ebuild:
+  - version bump
+
+*chillispot-0.97 (03 Oct 2004)
+
+  03 Oct 2004; <solar@gentoo.org> +chillispot-0.97.ebuild:
+  version bump. see
+  http://www.chillispot.org/release/release-0.97.html#mozTocId624917 for details
+
+*chillispot-0.95 (12 Jul 2004)
+
+  12 Jul 2004; <solar@gentoo.org> chillispot-0.95.ebuild:
+  version bump, added remaining arches for testing.
+
+  06 Jul 2004; <solar@gentoo.org> chillispot-0.94.ebuild:
+  adding ~sparc keyword. (thanks for testing Method)
 
 *chillispot-0.94 (06 Jul 2004)
 

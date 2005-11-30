@@ -1,13 +1,16 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# Maintainer: Daniel Robbins <drobbins@gentoo.org> 
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/pwm/pwm-1.0.20010309.ebuild,v 1.1 2001/12/18 00:45:55 drobbins Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/pwm/pwm-1.0.20010309.ebuild,v 1.1.1.1 2005/11/30 09:45:15 chriswhite Exp $
 
 NPV=20010309
 S=${WORKDIR}/pwm-${NPV}
 DESCRIPTION="A lightweight window manager"
-SRC_URI="http://www.students.tut.fi/~tuomov/dl/pwm-${NPV}.tar.gz"
+SRC_URI="http://modeemi.cs.tut.fi/~tuomov/dl/pwm-${NPV}.tar.gz"
 HOMEPAGE="http://www.students.tut.fi/~tuomov/pwm"
+LICENSE="Artistic"
+SLOT="0"
+KEYWORDS="x86 sparc ppc"
+IUSE="gnome"
 
 DEPEND="virtual/x11"
 
@@ -31,7 +34,7 @@ src_unpack() {
 
 src_compile() {
 	emake PREFIX=/usr \
-	     MANDIR=/usr/share/man/man1 \
+	     MANDIR=/usr/share/man \
 	     DOCDIR=/usr/share/doc \
 	     ETCDIR=/etc/X11 \
 	     || die
@@ -39,12 +42,12 @@ src_compile() {
 
 src_install() {
 	make PREFIX=${D}/usr \
-	     MANDIR=${D}/usr/share/man/man1	\
+	     MANDIR=${D}/usr/share/man \
 	     DOCDIR=${D}/usr/share/doc \
 	     ETCDIR=${D}/etc/X11 \
 	     install || die
 
-	if [ "`use gnome`" ]
+	if use gnome
 	then
 		insinto /usr/share/gnome/wm-properties
 		doins support/PWM.desktop

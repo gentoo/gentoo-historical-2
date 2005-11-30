@@ -1,27 +1,28 @@
-# Copyright 2003 Gentoo Technologies, Imc.
-# Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-fi/ispell-fi-20000903.ebuild,v 1.1 2003/06/13 12:54:28 seemant Exp $
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-fi/ispell-fi-20000903.ebuild,v 1.1.1.1 2005/11/30 09:46:57 chriswhite Exp $
 
-S="${WORKDIR}"
 DESCRIPTION="Finnish dictionary for ispell"
-SRC_URI="http://ispell-fi.sourceforge.net/finnish.dict.bz2 http://ispell-fi.sourceforge.net/finnish.medium.aff.bz2"
 HOMEPAGE="http://ispell-fi.sourceforge.net/"
+SRC_URI="http://ispell-fi.sourceforge.net/finnish.dict.bz2
+	http://ispell-fi.sourceforge.net/finnish.medium.aff.bz2"
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~mips ~arm"
+SLOT="0"
+IUSE=""
+KEYWORDS="x86 ppc sparc alpha ~hppa ~mips"
 
 DEPEND="app-text/ispell
-	sys-apps/bzip2"
-
+	app-arch/bzip2"
 RDEPEND="app-text/ispell"
 
+S="${WORKDIR}"
 
 src_compile() {
 	buildhash finnish.dict finnish.medium.aff finnish.hash
 }
 
-src_install () {
+src_install() {
 	insinto /usr/lib/ispell
 	doins finnish.medium.aff finnish.hash
 }

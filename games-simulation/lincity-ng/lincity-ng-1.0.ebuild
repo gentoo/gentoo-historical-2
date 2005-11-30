@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/lincity-ng/lincity-ng-1.0.ebuild,v 1.1 2005/06/23 22:25:17 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/lincity-ng/lincity-ng-1.0.ebuild,v 1.1.1.1 2005/11/30 09:49:41 chriswhite Exp $
 
 inherit eutils games
 

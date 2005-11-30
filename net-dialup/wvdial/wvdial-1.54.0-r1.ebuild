@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/wvdial/wvdial-1.54.0-r1.ebuild,v 1.1 2005/09/15 20:08:26 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/wvdial/wvdial-1.54.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:46:13 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://open.nit.ca/download/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~hppa ~ppc sparc x86"
 IUSE=""
 
 DEPEND="virtual/libc
@@ -30,7 +30,7 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die "make install failed"
 
-	dodoc COPYING.LIB CHANGES FAQ MENUS README TODO
+	dodoc CHANGES FAQ MENUS README TODO
 }
 
 pkg_postinst() {

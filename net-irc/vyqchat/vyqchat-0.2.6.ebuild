@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/vyqchat/vyqchat-0.2.6.ebuild,v 1.1 2004/07/24 01:14:16 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/vyqchat/vyqchat-0.2.6.ebuild,v 1.1.1.1 2005/11/30 09:48:56 chriswhite Exp $
 
 DESCRIPTION="QT based Vypress Chat clone for X."
 HOMEPAGE="http://linux.bydg.org/~yogin/"
@@ -12,13 +12,17 @@ KEYWORDS="~x86 ~ppc"
 
 IUSE="arts"
 
-DEPEND=">=x11-libs/qt-3.0
+DEPEND="=x11-libs/qt-3*
 	arts? ( kde-base/arts )"
 
 src_unpack() {
 	unpack ${A}
 
 	mv -f ${WORKDIR}/${PN}/* ${S}
+
+	# Package has borked timestamps, bug #60541
+	cd ${S}
+	touch aclocal.m4 configure Makefile.in config.h.in
 }
 
 src_compile() {
@@ -26,7 +30,7 @@ src_compile() {
 		--with-x \
 		--with-Qt-dir=/usr/qt/3 \
 		$(use_with arts) \
-		 || die "econf failed"
+		|| die "econf failed"
 	make || die "make failed"
 }
 

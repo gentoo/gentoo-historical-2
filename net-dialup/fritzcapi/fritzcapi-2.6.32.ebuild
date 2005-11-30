@@ -1,39 +1,50 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/fritzcapi/fritzcapi-2.6.32.ebuild,v 1.1 2005/01/29 09:24:53 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/fritzcapi/fritzcapi-2.6.32.ebuild,v 1.1.1.1 2005/11/30 09:46:05 chriswhite Exp $
 
 inherit linux-mod rpm eutils
 
-DESCRIPTION="SuSE's 2.6 AVM kernel modules for fcclassic, fcpci, fcpcmcia, fcpnp, fcusb, fcusb2, fxusb_CZ and fxusb"
+DESCRIPTION="SuSE's 2.6 AVM kernel modules for fcclassic, fcpci, fcpcmcia, fcpnp, fcusb, fcusb2, fxusb_CZ, fxusb, e2220pc and e5520pc"
 HOMEPAGE="http://www.avm.de/"
 
+#All sources in one suse-package
+FRITZCAPI_MODULES=("fcpci" "fcpcmcia" "fcusb" "fcusb2" "fxusb" "fcclassic"
+	"fcpnp" "fxusb_CZ" "e2220pc" "e5520pc")
+FRITZCAPI_TARGETS=("fritz.pci" "fritz.pcmcia" "fritz.usb" "fritz.usb2"
+	"fritz.xusb" "fritz.classic" "fritz.pnp" "fritz.xusb_CZ" "e2220pc" "e5520pc")
+for ((CARD=0; CARD < ${#FRITZCAPI_MODULES[*]}; CARD++)); do
+	FRITZCAPI_SRC[${CARD}]="http://rpmfind.net/linux/SuSE-Linux/i386/current/suse/i586/km_${P/2.6./2.6-}.i586.rpm"
+done
+
+#get newer drivers for some cards from AVM
 AVM_SRC=("fritzcrd.pci" "fritzcrd.pcm" "fritzcrd.usb" "fritzcrdusb.v20" "fritzx.usb")
 AVM_FILES=("fcpci-suse9.1-3.11-02" "fcpcmcia-suse91-3.11-02"
 	"fcusb-suse9.1-3.11-04" "fcusb2-suse9.1-3.11-04" "fxusb-suse9.1-3.11-04")
-SRC_URI="http://rpmfind.net/linux/SuSE-Linux/i386/current/suse/i586/km_${P/2.6./2.6-}.i586.rpm
-	ftp://ftp.suse.com/pub/suse/i386/9.1/suse/i586/capi4linux-2004.4.5-0.i586.rpm"
 for ((CARD=0; CARD < ${#AVM_SRC[*]}; CARD++)); do
-	SRC_URI="${SRC_URI} ftp://ftp.avm.de/cardware/${AVM_SRC[CARD]}/linux/suse.91/${AVM_FILES[CARD]}.tar.gz"
+	FRITZCAPI_SRC[${CARD}]="ftp://ftp.avm.de/cardware/${AVM_SRC[CARD]}/linux/suse.91/${AVM_FILES[CARD]}.tar.gz"
 done
 
+#specific selection
+for ((CARD=0; CARD < ${#FRITZCAPI_MODULES[*]}; CARD++)); do
+	SRC_URI="${SRC_URI} fritzcapi_cards_${FRITZCAPI_MODULES[CARD]}? ( ${FRITZCAPI_SRC[CARD]} )"
+done
 
+#in case nothing is selected take all SRC_URI's
+for ((CARD=0; CARD < ${#FRITZCAPI_MODULES[*]}; CARD++)); do
+	BEGIN="${BEGIN} !fritzcapi_cards_${FRITZCAPI_MODULES[CARD]}? ("
+	MIDDLE="${MIDDLE} ${FRITZCAPI_SRC[CARD]}"
+	END="${END} )"
+done
+SRC_URI="${SRC_URI}${BEGIN}${MIDDLE}${END}"
 
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="x86"
 IUSE="pcmcia usb"
 
-DEPEND=">=net-dialup/capi4k-utils-20040810"
+DEPEND="net-dialup/capi4k-utils"
 
 S="${WORKDIR}/usr/src/kernel-modules/fritzcapi"
-
-FRITZCAPI_MODULES=("fcclassic" "fcpci" "fcpcmcia" "fcpnp" "fcusb" "fcusb2"
-	"fxusb_CZ" "fxusb" "e2220pc" "e5520pc")
-FRITZCAPI_TARGETS=("fritz.classic" "fritz.pci" "fritz.pcmcia" "fritz.pnp"
-	"fritz.usb" "fritz.usb2" "fritz.xusb_CZ" "fritz.xusb" "e2220pc" "e5520pc")
-
-BUILD_PARAMS="KDIR=${KV_DIR} LIBDIR=${WORKDIR}/var/lib/fritz"
-BUILD_TARGETS="all"
 
 get_card_module_name() {
 	local CARD=$1
@@ -57,6 +68,9 @@ pkg_setup() {
 	FRITZCAPI_BUILD_CARDS=""
 	FRITZCAPI_BUILD_TARGETS=""
 	MODULE_NAMES=""
+	BUILD_PARAMS="KDIR=${KV_DIR} LIBDIR=${WORKDIR}/var/lib/fritz"
+	BUILD_TARGETS="all"
+
 	if [ -n "${FRITZCAPI_CARDS}" ]; then
 		#Check existence of user selected cards
 		for USERCARD in ${FRITZCAPI_CARDS} ; do
@@ -83,10 +97,10 @@ pkg_setup() {
 
 		#Filter build targets by USE
 		for ((CARD=0; CARD < ${#FRITZCAPI_MODULES[*]}; CARD++)); do
-			if [ "${FRITZCAPI_MODULES[CARD]/pcmcia/}" != ${FRITZCAPI_MODULES[CARD]} ] && ! useq pcmcia; then
+			if [ "${FRITZCAPI_MODULES[CARD]/pcmcia/}" != ${FRITZCAPI_MODULES[CARD]} ] && ! use pcmcia; then
 				continue
 			fi
-			if [ "${FRITZCAPI_MODULES[CARD]/usb/}" != ${FRITZCAPI_MODULES[CARD]} ] && ! useq usb; then
+			if [ "${FRITZCAPI_MODULES[CARD]/usb/}" != ${FRITZCAPI_MODULES[CARD]} ] && ! use usb; then
 				continue
 			fi
 			FRITZCAPI_BUILD_CARDS="${FRITZCAPI_BUILD_CARDS} ${FRITZCAPI_MODULES[CARD]}"
@@ -99,21 +113,29 @@ pkg_setup() {
 }
 
 src_unpack() {
-	rpm_unpack ${DISTDIR}/km_${P/2.6./2.6-}.i586.rpm ${DISTDIR}/capi4linux-2004.4.5-0.i586.rpm
+	if [ -e ${DISTDIR}/km_${P/2.6./2.6-}.i586.rpm ]; then
+		rpm_unpack ${DISTDIR}/km_${P/2.6./2.6-}.i586.rpm
+	else mkdir -p ${S}; fi
 	cd ${S}
 	for ((CARD=0; CARD < ${#AVM_SRC[*]}; CARD++)); do
-		unpack ${AVM_FILES[CARD]}.tar.gz
-		CRD_NAME=${AVM_FILES[CARD]/-*}
-		CRD_NAME=${CRD_NAME/fc}
-		CRD_NAME=${CRD_NAME/f}
-		mv fritz.${CRD_NAME} fritz.${CRD_NAME}.orig
-		mv fritz fritz.${CRD_NAME}
+		if [ -e ${DISTDIR}/${AVM_FILES[CARD]}.tar.gz ]; then
+			unpack ${AVM_FILES[CARD]}.tar.gz  || die "error unpacking ${AVM_FILES[CARD]}.tar.gz"
+			CRD_NAME=${AVM_FILES[CARD]/-*}
+			CRD_NAME=${CRD_NAME/fc}
+			CRD_NAME=${CRD_NAME/f}
+			[ -e fritz.${CRD_NAME} ] && mv fritz.${CRD_NAME} fritz.${CRD_NAME}.orig
+			mv fritz fritz.${CRD_NAME}
+		fi
 	done
 
-	cd ${S}
-	if kernel_is ge 2 6 10; then
-		epatch ${FILESDIR}/fritzcapi-2.6.26.7-fix-for-2.6.10.patch
+	if kernel_is ge 2 6 10 && [ -e fritz.pcmcia ]; then
+		epatch ${FILESDIR}/${PN}-fix-for-2.6.10.patch
 	fi
+
+	for i in $(find . -name Makefile); do
+		sed -i 's:-C \$(KDIR) SUBDIRS=:-C $(KDIR) $(if $(KBUILD_OUTPUT),O=$(KBUILD_OUTPUT)) SUBDIRS=:' ${i}
+		convert_to_m ${i}
+	done
 }
 
 src_install() {
@@ -121,22 +143,14 @@ src_install() {
 
 	dodir /lib/firmware /etc
 
-	echo -e "# card\tfile\tproto\tio\tirq\tmem\tcardnr\toptions" >${D}/etc/capi.conf
-	echo "#" >>${D}/etc/capi.conf
-
 	[ "${FRITZCAPI_BUILD_TARGETS/xusb_CZ/}" != "${FRITZCAPI_BUILD_TARGETS}" ] && \
 		dodoc ${S}/fritz.xusb_CZ/README.fxusb_CZ
 
 	[ "${FRITZCAPI_BUILD_TARGETS/usb2/}" != "${FRITZCAPI_BUILD_TARGETS}" ] && (
 		insinto /lib/firmware
 		insopts -m0644
-		doins ${WORKDIR}/usr/lib/isdn/*
-		echo -e "#fcusb2\tput_here_your_firmware\t-\t-\t-\t-\t-" >>${D}/etc/capi.conf
+		doins ${S}/fritz.usb2/*.frm
 	)
-
-	#Compatibility with <=net-dialup/isdn4k-utils-20041006-r3. 
-	#Please remove it when it becomes obsolete
-	dosym firmware /lib/isdn
 }
 
 pkg_postinst() {

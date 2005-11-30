@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/babytrans/babytrans-0.9.2-r2.ebuild,v 1.1 2004/09/22 04:04:33 angusyoung Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/babytrans/babytrans-0.9.2-r2.ebuild,v 1.1.1.1 2005/11/30 09:46:50 chriswhite Exp $
 
 inherit eutils
 
@@ -9,21 +9,17 @@ SRC_URI="http://fjolliton.free.fr/babytrans/test/${P}.tar.gz"
 HOMEPAGE="http://fjolliton.free.fr/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 "
+KEYWORDS="~amd64 ~ppc"
 IUSE=""
 
 RDEPEND="=x11-libs/gtk+-1.2*
-	>=app-dicts/babytrans-en-0.1"
+	=dev-libs/glib-1.2*
+	app-dicts/babytrans-en"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}/src
 	epatch ${FILESDIR}/${P}-gcc.patch
-}
-
-src_compile() {
-	econf || die "Configure failed"
-	emake || die
 }
 
 src_install() {
@@ -35,9 +31,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo ""
+	einfo
 	einfo "Now you should install one of the babytrans dictionaries"
 	einfo "available in portage. You can find then in $PORTDIR under"
 	einfo "the app-dicts category"
-	einfo ""
+	einfo
 }

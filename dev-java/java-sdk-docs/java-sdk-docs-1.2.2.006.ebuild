@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-sdk-docs/java-sdk-docs-1.2.2.006.ebuild,v 1.1 2004/07/16 12:04:27 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/java-sdk-docs/java-sdk-docs-1.2.2.006.ebuild,v 1.1.1.1 2005/11/30 09:47:43 chriswhite Exp $
 
 At="jdk-1_2_2_006-doc.tar.gz"
 S="${WORKDIR}/jdk1.2.2/docs"

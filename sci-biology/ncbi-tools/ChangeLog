@@ -1,6 +1,141 @@
-# ChangeLog for app-sci/ncbi-tools
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/ncbi-tools/ChangeLog,v 1.1 2004/12/23 18:47:51 ribosome Exp $
+# ChangeLog for sci-biology/ncbi-tools
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/ncbi-tools/ChangeLog,v 1.1.1.1 2005/11/30 09:48:46 chriswhite Exp $
+
+  16 Nov 2005; Olivier Fisette <ribosome@gentoo.org>
+  ncbi-tools-20050605-r1.ebuild:
+  Readded ~sparc (closes bug #111807).
+
+  15 Nov 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  ncbi-tools-20050605-r1.ebuild:
+  re-add ~alpha wrt bug #111807
+
+*ncbi-tools-20050605-r1 (15 Nov 2005)
+
+  15 Nov 2005; Olivier Fisette <ribosome@gentoo.org>
+  +ncbi-tools-20050605-r1.ebuild:
+  Added MPI support for the BLAST family of programs. Thanks to Brady
+  Catherman <bradyc@uidaho.edu> for his work (fixes bug #111807).
+
+  09 Nov 2005; Jason Wever <weeve@gentoo.org> ncbi-tools-20050605.ebuild:
+  Stable on SPARC wrt bug #108334.
+
+  22 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -files/21ncbi,
+  -ncbi-tools-20041020-r1.ebuild, -ncbi-tools-20050429.ebuild:
+  Pruning old versions.
+
+  22 Oct 2005; Fabian Groffen <grobian@gentoo.org>
+  ncbi-tools-20050605.ebuild:
+  Marked ppc-macos per bug #108334
+
+  18 Oct 2005; Aron Griffis <agriffis@gentoo.org>
+  ncbi-tools-20050605.ebuild:
+  Mark 20050605 stable on alpha
+
+  12 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ncbi-tools-20050605.ebuild:
+  Stable on ppc.
+
+  11 Oct 2005; Luis Medinas <metalgod@gentoo.org>
+  ncbi-tools-20050605.ebuild:
+  Marked Stable on amd64
+
+  09 Oct 2005; Mark Loeser <halcy0n@gentoo.org> ncbi-tools-20050605.ebuild:
+  Stable on x86
+
+  07 Oct 2005; Brent Baude <ranger@gentoo.org> ncbi-tools-20050605.ebuild:
+  Marking ncbi-tools-200506 ppc64 stable for bug 108334
+
+  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org> metadata.xml:
+  Maintainer changed from Stephen Diener (MIA) to Olivier Fisette.
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  ncbi-tools-20050429.ebuild:
+  Mark 20050429 stable on alpha
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ncbi-tools-20050429.ebuild:
+  Removed from ppc (xlc not available).
+
+  09 Aug 2005; Brent Baude <ranger@gentoo.org>
+  +files/ncbi-tools-20050605-lop.patch,
+  -files/ncbi-tools-20050605-lop.patch.gz, ncbi-tools-20050605.ebuild:
+  For the ebuild ncbi-tools-20050605, I was asked to remove the gz patch and
+  submit it as plain text. This commit will remove the gz patch and replace it
+  with a plain text one. The patch name change is also reflected in the
+  ebuild.
+
+  08 Aug 2005; Brent Baude <ranger@gentoo.org>
+  +files/ncbi-tools-20050605-lop.patch.gz, ncbi-tools-20050605.ebuild:
+  Added patch for 20050506 which when ppc64, will patch the makefile to use
+  gcc instead of the default xlc (IBM compiler) which doesnt exist on gentoo.
+
+  08 Aug 2005; Brent Baude <ranger@gentoo.org> ncbi-tools-20050429.ebuild:
+  ncbi-tools-20050429.ebuild does not compile on ppc64; will fix later ebuild
+
+*ncbi-tools-20050605 (06 Aug 2005)
+
+  06 Aug 2005; Olivier Fisette <ribosome@gentoo.org>
+  -ncbi-tools-20040616.ebuild, ncbi-tools-20050429.ebuild,
+  +ncbi-tools-20050605.ebuild:
+  New version. Added 20050429 to x86. Removed old version.
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org>
+  ncbi-tools-20041020-r1.ebuild:
+  Stable on ppc64
+
+  02 Jun 2005; Olivier Fisette <ribosome@gentoo.org> ChangeLog:
+  Use "virtual/motif" instead of "x11-libs/openmotif".
+
+  16 May 2005; Olivier Fisette <ribosome@gentoo.org>
+  ncbi-tools-20050429.ebuild:
+  Fixed CFLAGS not being applied properly (bug #92564).
+
+*ncbi-tools-20050429 (13 May 2005)
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org>
+  +ncbi-tools-20050429.ebuild:
+  New version.
+
+  29 Apr 2005; Markus Rothe <corsair@gentoo.org>
+  ncbi-tools-20041020-r1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ncbi-tools-20041020-r1.ebuild:
+  Stable on ppc.
+
+*ncbi-tools-20041020-r1 (06 Mar 2005)
+
+  06 Mar 2005; Olivier Fisette <ribosome@gentoo.org> +files/21ncbi-r1,
+  +ncbi-tools-20041020-r1.ebuild, -ncbi-tools-20041020.ebuild:
+  Added the "BLASTMAT" environment variable to the env.d file.
+
+  02 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> ncbi-tools-20041020.ebuild:
+  Stable ppc-macos
+
+  01 Mar 2005; Olivier Fisette <ribosome@gentoo.org>
+  ncbi-tools-20041020.ebuild:
+  Added to x86.
+
+  02 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> ncbi-tools-20040616.ebuild:
+  Stable ppc-macos
+
+  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org>
+  ncbi-tools-20041020.ebuild:
+  Ebuild cleanup.
+
+*ncbi-tools-20041020 (18 Jan 2005)
+
+  18 Jan 2005; Olivier Fisette <ribosome@gentoo.org>
+  +ncbi-tools-20041020.ebuild:
+  New version.
+
+  02 Jan 2005; Olivier Fisette <ribosome@gentoo.org> :
+  Added to x86. Use toolchain-funcs rather than gcc eclass.
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
 
 *ncbi-tools-20040616 (23 Dec 2004)
 
@@ -34,7 +169,7 @@
   ncbi-tools-20040202-r1.ebuild:
   Fix use invocation
 
-  05 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  05 May 2004; Bryan Ã˜stergaard <kloeri@gentoo.org>
   ncbi-tools-20040202-r1.ebuild:
   Stable on alpha.
 

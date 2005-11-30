@@ -1,25 +1,24 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.6.11-r2.ebuild,v 1.1 2005/06/17 22:10:15 plasmaroo Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.6.11-r2.ebuild,v 1.1.1.1 2005/11/30 09:49:34 chriswhite Exp $
 
 ETYPE="headers"
 H_SUPPORTEDARCH="alpha amd64 arm hppa m68k ia64 ppc ppc64 s390 sh sparc x86"
 inherit eutils kernel-2
 detect_version
 
-SRC_URI="${KERNEL_URI} mirror://gentoo/linux-2.6.11-m68k-headers.patch.bz2"
-KEYWORDS="-* ~amd64 ~arm ~hppa ~ia64 m68k ~ppc64 ~s390 ~sh ~x86" # Not tested to be fully stable, if things break file bugs to plasmaroo please...
+PATCHES_V='5'
 
-UNIPATCH_LIST="
-	${FILESDIR}/${PN}-2.6.0-sysctl_h-compat.patch
-	${FILESDIR}/${PN}-2.6.0-fb.patch
-	${FILESDIR}/${PN}-2.6.8.1-strict-ansi-fix.patch
-	${FILESDIR}/${P}-appCompat.patch
-	${FILESDIR}/${PN}-2.6.10-generic-arm-prepare.patch
-	${FILESDIR}/${PN}-soundcard-ppc64.patch"
+SRC_URI="${KERNEL_URI} mirror://gentoo/linux-2.6.11-m68k-headers.patch.bz2
+	http://dev.gentoo.org/~plasmaroo/patches/kernel/gentoo-headers/gentoo-headers-${PV}-${PATCHES_V}.tar.bz2"
+KEYWORDS="-* ~alpha amd64 arm hppa ia64 m68k ppc ppc64 s390 sh ~sparc x86"
+
+DEPEND="ppc? ( gcc64? ( sys-devel/gcc-powerpc64 ) )
+		sparc? ( gcc64? ( sys-devel/gcc-sparc64 ) )"
+
+UNIPATCH_LIST="${DISTDIR}/gentoo-headers-${PV}-${PATCHES_V}.tar.bz2"
 
 src_unpack() {
-	tc-arch-kernel
 	kernel-2_src_unpack
 
 	# This should always be used but it has a bunch of hunks which
@@ -37,4 +36,10 @@ src_unpack() {
 	mv iSeries asm-ppc64/
 	headers___fix asm-ppc64/iSeries/*
 	headers___fix linux/{ethtool,jiffies}.h
+
+	# Apply patch for spinlick.h only with 32bit userland on ppc64.
+	# Will add to the main patchball when plasmaroo returns.
+	if use ppc && [[ ${PROFILE_ARCH} == "ppc64" ]]; then
+		epatch ${FILESDIR}/2.6.11-ppc64-32ul-spinlock.patch
+	fi
 }

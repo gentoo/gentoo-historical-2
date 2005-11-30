@@ -1,24 +1,32 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/epic4/epic4-2.2.ebuild,v 1.1 2005/02/17 03:16:05 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/epic4/epic4-2.2.ebuild,v 1.1.1.1 2005/11/30 09:48:52 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
-HELP_V="20040801"
+HELP_V="20050315"
 
 DESCRIPTION="Epic4 IRC Client"
 HOMEPAGE="http://epicsol.org/"
 SRC_URI="ftp://ftp.epicsol.org/pub/epic/EPIC4-PRODUCTION/${P}.tar.bz2
-	 ftp://prbh.org/pub/epic/EPIC4-PRODUCTION/epic4-help-${HELP_V}.tar.gz"
+	ftp://prbh.org/pub/epic/EPIC4-PRODUCTION/epic4-help-${HELP_V}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~ia64 ~alpha ~hppa ~sparc ~amd64 ~ppc-macos"
+KEYWORDS="alpha amd64 hppa ia64 ppc ~ppc-macos sparc x86"
 IUSE="ipv6 perl ssl"
 
 DEPEND=">=sys-libs/ncurses-5.2
 	perl? ( >=dev-lang/perl-5.6.1 )
 	ssl? ( >=dev-libs/openssl-0.9.5 )"
+
+pkg_setup() {
+	if use perl && built_with_use dev-lang/perl ithreads
+	then
+		error "You need perl compiled with USE=\"-ithreads\" to be able to compile epic4."
+		die "perl with USE=\"-ithreads\" needed"
+	fi
+}
 
 src_unpack() {
 	unpack ${A}
@@ -55,7 +63,8 @@ src_install () {
 		*.txt colors EPIC* IRCII_VERSIONS local_vars missing new-load \
 		nicknames outputhelp SILLINESS TS4
 
-	mv ${WORKDIR}/help/* ${D}/usr/share/epic/help
+	insinto /usr/share/epic/help
+	doins -r ${WORKDIR}/help/* || die "doins failed"
 }
 
 pkg_postinst() {

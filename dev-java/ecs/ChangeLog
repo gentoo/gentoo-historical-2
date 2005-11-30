@@ -1,6 +1,36 @@
 # ChangeLog for dev-java/ecs
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ecs/ChangeLog,v 1.1 2002/12/23 19:24:27 strider Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ecs/ChangeLog,v 1.1.1.1 2005/11/30 09:47:20 chriswhite Exp $
+
+*ecs-1.4.2 (12 Jun 2005)
+
+  12 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> ecs-1.4.1-r1.ebuild,
+  +ecs-1.4.2.ebuild:
+  New upstream version. Dont install a versioned jar any longer.
+
+  27 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> ecs-1.4.1-r1.ebuild:
+  moved from dev-java/regexp to dev-java/jakarta-regexp dependency. see #71336.
+  introduced support for the jikes and source useflag.
+
+  06 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ecs-1.4.1-r1.ebuild,
+  -ecs-1.4.1.ebuild:
+  latest revision stable on x86 and amd64, removed old version.
+
+*ecs-1.4.1-r1 (26 Oct 2004)
+
+  26 Oct 2004; Thomas Matthijs <axxo@gentoo.org> +ecs-1.4.1-r1.ebuild:
+  no longer uses packed jars # 63261, Thanks too Jan Brinkmann
+  <lucky@the-luckyduck.de>
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org> ecs-1.4.1.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> ecs-1.4.1.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> ecs-1.4.1.ebuild:
+  Fixes according to #45398
 
 *ecs-1.4.1 (23 Dec 2002)
 

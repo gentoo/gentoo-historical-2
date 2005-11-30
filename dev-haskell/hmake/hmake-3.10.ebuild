@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hmake/hmake-3.10.ebuild,v 1.1 2005/03/23 07:37:48 araujo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hmake/hmake-3.10.ebuild,v 1.1.1.1 2005/11/30 09:48:21 chriswhite Exp $
 
 inherit base fixheadtails
 
@@ -17,7 +17,10 @@ DEPEND="virtual/ghc
 	sys-libs/readline"
 RDEPEND="sys-libs/readline
 	virtual/libc
-	dev-libs/gmp"
+	dev-libs/gmp
+	>=sys-apps/sandbox-1.2.12"
+
+# sandbox dependency due to bug #97441, #101433
 
 # if using readline, hmake depends also on ncurses; but
 # readline already has this dependency

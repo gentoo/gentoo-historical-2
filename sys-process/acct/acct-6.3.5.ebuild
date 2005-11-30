@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/acct-6.3.5.ebuild,v 1.1 2005/03/03 15:21:43 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/acct/acct-6.3.5.ebuild,v 1.1.1.1 2005/11/30 09:49:08 chriswhite Exp $
 
 inherit eutils
 
@@ -11,24 +11,23 @@ SRC_URI="mirror://debian/pool/main/a/acct/${MY_P}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc alpha amd64"
+KEYWORDS="alpha amd64 ppc x86"
 IUSE=""
 
-DEPEND="virtual/libc"
+DEPEND=""
 
 src_unpack() {
 	unpack ${A}
-	cd ${S}
-	epatch "${FILESDIR}/${PF}-gentoo.diff"
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-gentoo.diff
 }
 
 src_install() {
 	dobin ac last lastcomm || die "dobin failed"
 	dosbin dump-utmp dump-acct accton sa || die "dosbin failed"
 	doinfo accounting.info
-	doman *.[18]
+	doman {ac,lastcomm}.1 {accton,sa}.8
 	dodoc AUTHORS ChangeLog INSTALL NEWS README ToDo
 	keepdir /var/account
-	exeinto /etc/init.d
-	newexe "${FILESDIR}/acct.rc6" acct
+	newinitd "${FILESDIR}"/acct.rc6 acct
 }

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/partimage-0.6.4-r3.ebuild,v 1.1 2005/03/31 20:57:46 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/partimage/partimage-0.6.4-r3.ebuild,v 1.1.1.1 2005/11/30 09:45:22 chriswhite Exp $
 
 inherit gnuconfig eutils flag-o-matic
 
@@ -9,15 +9,14 @@ HOMEPAGE="http://www.partimage.org/"
 SRC_URI="mirror://sourceforge/partimage/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86 ppc ~sparc"
 IUSE="ssl nologin nls"
 
 DEPEND="${RDEPEND} sys-devel/autoconf"
 
 RDEPEND="virtual/libc
 	>=sys-libs/zlib-1.1.4
-	>=dev-libs/lzo-1.08
-	>=dev-libs/newt-0.50.35-r1
+	>=dev-libs/newt-0.51.6
 	app-arch/bzip2
 	>=sys-libs/slang-1.4.5-r2
 	nls? ( sys-devel/gettext )
@@ -50,6 +49,7 @@ src_unpack() {
 	epatch ${FILESDIR}/${P}-fflush-before-re-read-partition-table.patch || die
 	epatch ${FILESDIR}/${P}-LP64-fixes.patch || die
 	epatch ${FILESDIR}/${P}-save_all_and_rest_all_actions.patch || die
+	epatch ${FILESDIR}/${P}-datadir-path.patch || die
 }
 
 src_compile() {
@@ -60,6 +60,7 @@ src_compile() {
 
 	econf \
 		${myconf} \
+		--sysconfdir=/etc \
 		`use_enable ssl` \
 		`use_enable nls`|| die "econf failed"
 
@@ -124,11 +125,11 @@ partimagesslperms() {
 	local ret=0
 	chmod 600 ${privkey} 2>/dev/null
 	ret=$((${ret}+$?))
-	chown partimag:root ${privkey} 2>/dev/null
+	chown partimag:0 ${privkey} 2>/dev/null
 	ret=$((${ret}+$?))
 	chmod 644 ${cert} ${csr} 2>/dev/null
 	ret=$((${ret}+$?))
-	chown root:root ${cert} ${csr} 2>/dev/null
+	chown root:0 ${cert} ${csr} 2>/dev/null
 	ret=$((${ret}+$?))
 	return $ret
 }
@@ -136,7 +137,7 @@ partimagesslperms() {
 pkg_postinst() {
 	if use ssl; then
 		einfo "To create the required SSL certificates, please do:"
-		einfo "ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
+		einfo "emerge  --config =${PF}"
 		# force a permmissions fixup
 		partimagesslperms
 		return 0

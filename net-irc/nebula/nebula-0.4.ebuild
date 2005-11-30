@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/nebula/nebula-0.4.ebuild,v 1.1 2005/03/04 22:06:21 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/nebula/nebula-0.4.ebuild,v 1.1.1.1 2005/11/30 09:48:58 chriswhite Exp $
 
 DESCRIPTION="An IRC client for X11 and Motif"
 HOMEPAGE="http://nebula-irc.sourceforge.net/"
@@ -8,7 +8,7 @@ SRC_URI="mirror://sourceforge/nebula-irc/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 DEPEND="virtual/x11
 	x11-libs/openmotif"

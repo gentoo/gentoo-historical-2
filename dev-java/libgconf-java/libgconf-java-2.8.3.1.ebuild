@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/libgconf-java/libgconf-java-2.8.3.1.ebuild,v 1.1 2005/03/12 19:25:34 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/libgconf-java/libgconf-java-2.8.3.1.ebuild,v 1.1.1.1 2005/11/30 09:47:39 chriswhite Exp $
 
 #
 # WARNING: Because java-gnome is a set of bindings to native GNOME libraries, 
@@ -23,8 +23,8 @@ RDEPEND=">=gnome-base/gconf-2.8.0
 #	It's not clear whether gnome is a gconf dependency or not.
 #	>=dev-java/libgnome-java-2.8.2-r1
 
-DEPEND="${RDEPEND}
-	>=virtual/jdk-1.2
+DEPEND=">=virtual/jdk-1.2
+	${RDEPEND}
 	app-arch/zip"
 
 #
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 #
 SLOT="2.8"
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="gcj"
 
 src_unpack() {
@@ -52,7 +52,8 @@ src_compile() {
 		--host=${CHOST} \
 		--prefix=/usr \
 			${conf} || die "./configure failed"
-	make || die
+
+	make INCLUDES="-I${JDK_HOME}/include -I${JDK_HOME}/include/linux/" || die
 }
 
 src_install() {

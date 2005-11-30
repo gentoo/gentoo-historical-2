@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/zd1211/zd1211-20050822.ebuild,v 1.1 2005/09/09 22:03:44 anarchy Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/zd1211/zd1211-20050822.ebuild,v 1.1.1.1 2005/11/30 09:45:38 chriswhite Exp $
 
 inherit linux-mod
 

@@ -1,10 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_SmartIRC/PEAR-Net_SmartIRC-0.5.5_p1.ebuild,v 1.1 2003/12/25 12:25:27 coredumb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Net_SmartIRC/PEAR-Net_SmartIRC-0.5.5_p1.ebuild,v 1.1.1.1 2005/11/30 09:48:13 chriswhite Exp $
 
 inherit php-pear
 
 DESCRIPTION="Net_SmartIRC is a PHP class for communication with IRC networks"
-LICENSE="PHP"
+LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="x86 sparc alpha ppc ia64"
+IUSE=""

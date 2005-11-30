@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/lighttpd/files/spawn-fcgi.initd,v 1.1 2005/02/14 11:39:01 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/lighttpd/files/spawn-fcgi.initd,v 1.1.1.1 2005/11/30 09:46:41 chriswhite Exp $
 
 SPAWNFCGI_PID="/var/run/spawn-fcgi.pid"
 

@@ -1,6 +1,235 @@
-# ChangeLog for app-sci/prosite
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/prosite/ChangeLog,v 1.1 2004/12/23 21:24:44 ribosome Exp $
+# ChangeLog for sci-biology/prosite
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/prosite/ChangeLog,v 1.1.1.1 2005/11/30 09:48:46 chriswhite Exp $
+
+  19 Nov 2005; Olivier Fisette <ribosome@gentoo.org>
+  files/digest-prosite-19.14:
+  Fixed digest for 19.14 (fixes bug #112926).
+
+*prosite-19.14 (13 Nov 2005)
+
+  13 Nov 2005; Olivier Fisette <ribosome@gentoo.org> +prosite-19.14.ebuild:
+  New version
+
+  19 Nov 2005; Simon Stelling <blubb@gentoo.org> prosite-19.10.ebuild:
+  stable on amd64
+
+*prosite-19.13 (07 Nov 2005)
+
+  07 Nov 2005; Olivier Fisette <ribosome@gentoo.org> +prosite-19.13.ebuild:
+  New version.
+
+*prosite-19.12 (18 Oct 2005)
+
+  18 Oct 2005; Olivier Fisette <ribosome@gentoo.org> +prosite-19.12.ebuild:
+  New version.
+
+  04 Oct 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-19.6.ebuild:
+  Removed obsolete version.
+
+  03 Oct 2005; Olivier Fisette <ribosome@gentoo.org> prosite-19.10.ebuild:
+  Stable on ppc-macos (with j4rg0n's permission, bug #102420).
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> prosite-19.10.ebuild:
+  Stable on ppc.
+
+*prosite-19.11 (28 Sep 2005)
+
+  28 Sep 2005; Olivier Fisette <ribosome@gentoo.org> +prosite-19.11.ebuild:
+  New version.
+
+  24 Sep 2005; Markus Rothe <corsair@gentoo.org> prosite-19.10.ebuild:
+  Stable on ppc64
+
+  21 Sep 2005; Olivier Fisette <ribosome@gentoo.org> prosite-19.10.ebuild:
+  Added to x86.
+
+*prosite-19.10 (19 Sep 2005)
+
+  19 Sep 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-19.7.ebuild,
+  -prosite-19.8.ebuild, -prosite-19.9.ebuild, +prosite-19.10.ebuild:
+  New version. Removed obsolete versions.
+
+  04 Sep 2005; Simon Stelling <blubb@gentoo.org> prosite-19.8.ebuild:
+  added ~amd64 keyword
+
+*prosite-19.9 (01 Sep 2005)
+
+  01 Sep 2005; Olivier Fisette <ribosome@gentoo.org> +prosite-19.9.ebuild:
+  New version.
+
+  31 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-19.0.ebuild,
+  -prosite-19.1.ebuild, -prosite-19.2.ebuild, -prosite-19.3.ebuild,
+  -prosite-19.4.ebuild, -prosite-19.5.ebuild:
+  Removed obsolete versions.
+
+  29 Aug 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-19.6.ebuild:
+  Stable ppc-macos
+
+*prosite-19.8 (21 Aug 2005)
+
+  21 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.46.ebuild,
+  -prosite-18.47.ebuild, -prosite-18.48.ebuild, -prosite-18.49.ebuild,
+  +prosite-19.8.ebuild:
+  New version. Removed obsolete versions.
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> prosite-19.6.ebuild:
+  Stable on ppc.
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org> prosite-19.6.ebuild:
+  Stable on ppc64
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org> prosite-19.7.ebuild:
+  Fixed bug #101667.
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org> prosite-19.7.ebuild:
+  Fixed indexing with EMBOSS 3.0.0.
+
+*prosite-19.7 (06 Aug 2005)
+
+  06 Aug 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.45.ebuild,
+  prosite-19.6.ebuild, +prosite-19.7.ebuild:
+  New version: 19.7. Added 19.6 to x86. Removed old version: 18.45.
+
+  28 Jul 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-19.5.ebuild:
+  Stable ppc-macos
+
+*prosite-19.6 (28 Jul 2005)
+
+  28 Jul 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.44.ebuild,
+  prosite-19.5.ebuild, +prosite-19.6.ebuild:
+  New version: 19.6. Added 19.5 to x86. Removed old version: 18.44.
+
+  09 Jul 2005; Markus Rothe <corsair@gentoo.org> prosite-19.4.ebuild:
+  Stable on ppc64
+
+  09 Jul 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-19.3.ebuild,
+  prosite-19.4.ebuild:
+  Stable ppc-macos
+
+*prosite-19.5 (08 Jul 2005)
+
+  08 Jul 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.43.ebuild,
+  prosite-19.4.ebuild, +prosite-19.5.ebuild:
+  Removed old version: 18.43. Added 19.4 to x86. New version: 19.5
+
+  27 Jun 2005; Markus Rothe <corsair@gentoo.org> prosite-19.3.ebuild:
+  Stable on ppc64
+
+*prosite-19.4 (26 Jun 2005)
+
+  26 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.42.ebuild,
+  prosite-19.3.ebuild, +prosite-19.4.ebuild:
+  New version: 19.4. Added 19.3 to x86. Removed old version.
+
+  19 Jun 2005; Markus Rothe <corsair@gentoo.org> prosite-19.2.ebuild:
+  Stable on ppc64
+
+*prosite-19.3 (15 Jun 2005)
+
+  15 Jun 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.41.ebuild,
+  prosite-19.2.ebuild, +prosite-19.3.ebuild:
+  Removed obsolete version. Added 19.2 to x86. New version.
+
+  31 May 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-18.49.ebuild,
+  prosite-19.0.ebuild, prosite-19.1.ebuild:
+  Stable ppc-macos
+
+*prosite-19.2 (27 May 2005)
+
+  27 May 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.40.ebuild,
+  prosite-19.1.ebuild, +prosite-19.2.ebuild:
+  Removed obsolete version. Added 19.1 to x86. New version.
+
+*prosite-19.1 (24 May 2005)
+
+  24 May 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.39.ebuild,
+  prosite-19.0.ebuild, +prosite-19.1.ebuild:
+  New version: 19.1. Added 19.0 to x86. Removed obsolete version: 18.39.
+
+*prosite-19.0 (10 May 2005)
+
+  10 May 2005; Olivier Fisette <ribosome@gentoo.org> -prosite-18.38.ebuild,
+  prosite-18.49.ebuild, +prosite-19.0.ebuild:
+  New version: 19.0. Added 18.49 to x86. Removed old version: 18.38.
+
+  02 May 2005; Omkhar Arasaratnam <omkhar@gentoo.org> prosite-18.49.ebuild:
+  Added ~ppc64
+
+  02 May 2005; Michael Hanselmann <hansmi@gentoo.org> prosite-18.48.ebuild:
+  Stable on ppc.
+
+  27 Apr 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-18.47.ebuild,
+  prosite-18.48.ebuild:
+  Stable ppc-macos
+
+*prosite-18.49 (16 Apr 2005)
+
+  16 Apr 2005; Olivier Fisette <ribosome@gentoo.org> prosite-18.48.ebuild,
+  +prosite-18.49.ebuild:
+  New version: 18.49. Added 18.48 to x86.
+
+*prosite-18.48 (05 Apr 2005)
+
+  05 Apr 2005; Olivier Fisette <ribosome@gentoo.org> prosite-18.47.ebuild,
+  +prosite-18.48.ebuild:
+  New version: 14.48. Added 18.47 to x86.
+
+  26 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-18.45.ebuild,
+  prosite-18.46.ebuild:
+  Stable ppc-macos
+
+*prosite-18.47 (22 Mar 2005)
+
+  22 Mar 2005; Olivier Fisette <ribosome@gentoo.org> prosite-18.46.ebuild,
+  +prosite-18.47.ebuild:
+  New version: 18.47. Added 18.46 to x86.
+
+*prosite-18.46 (15 Mar 2005)
+
+  15 Mar 2005; Olivier Fisette <ribosome@gentoo.org> prosite-18.45.ebuild,
+  +prosite-18.46.ebuild:
+  New version: 18.46. Added 18.45 to x86.
+
+  04 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-18.44.ebuild:
+  Stable ppc-macos
+
+*prosite-18.45 (27 Feb 2005)
+
+  27 Feb 2005; Olivier Fisette <ribosome@gentoo.org> +prosite-18.45.ebuild:
+  New version.
+
+  23 Feb 2005; Olivier Fisette <ribosome@gentoo.org> prosite-18.38.ebuild,
+  prosite-18.39.ebuild, prosite-18.40.ebuild, prosite-18.41.ebuild,
+  prosite-18.42.ebuild, prosite-18.43.ebuild, prosite-18.44.ebuild:
+  Added support for the "emboss" and "minimal" "USE" flags. Added 18.44 to x86.
+
+  18 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-18.43.ebuild:
+  Stable ppc-macos
+
+*prosite-18.44 (02 Feb 2005)
+
+  02 Feb 2005; Olivier Fisette <ribosome@gentoo.org> prosite-18.43.ebuild,
+  +prosite-18.44.ebuild:
+  New version: 18.44. Added 18.43 to x86.
+
+  02 Feb 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-18.42.ebuild:
+  Stable ppc-macos
+
+*prosite-18.43 (18 Jan 2005)
+
+  18 Jan 2005; Olivier Fisette <ribosome@gentoo.org> prosite-18.42.ebuild,
+  +prosite-18.43.ebuild:
+  New version: 18.43. Added 18.42 to x86.
+
+  01 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> prosite-18.42.ebuild:
+  Unstable ppc-macos.
+
+*prosite-18.42 (30 Dec 2004)
+
+  30 Dec 2004; Olivier Fisette <ribosome@gentoo.org> prosite-18.41.ebuild,
+  +prosite-18.42.ebuild:
+  New version: 18.42. Added 18.41 to x86.
 
 *prosite-18.41 (23 Dec 2004)
 

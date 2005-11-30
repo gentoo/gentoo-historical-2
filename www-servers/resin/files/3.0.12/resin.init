@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/resin/files/3.0.12/resin.init,v 1.1 2005/04/19 14:03:56 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/resin/files/3.0.12/resin.init,v 1.1.1.1 2005/11/30 09:46:49 chriswhite Exp $
 
 depend() {
 	need net

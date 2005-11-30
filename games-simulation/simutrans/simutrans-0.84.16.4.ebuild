@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/simutrans/simutrans-0.84.16.4.ebuild,v 1.1 2005/03/09 22:38:31 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/simutrans/simutrans-0.84.16.4.ebuild,v 1.1.1.1 2005/11/30 09:49:41 chriswhite Exp $
 
 inherit games
 
@@ -12,7 +12,7 @@ SRC_URI="http://hajo.simutrans.com/download/simubase-${MY_PV/_4/_2}.zip
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="-* ~amd64 x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
@@ -31,7 +31,7 @@ src_install() {
 	games_make_wrapper simutrans ./simutrans "${dir}"
 	keepdir "${dir}/save"
 	cp -R * "${D}/${dir}/" || die "cp failed"
-	find "${D}/${dir}/"{text,font} -type f | xargs chmod a-x
+	find "${D}/${dir}/"{text,font} -type f -print0 | xargs -0 chmod a-x
 	prepgamesdirs
 	fperms 2775 "${dir}/save"
 }

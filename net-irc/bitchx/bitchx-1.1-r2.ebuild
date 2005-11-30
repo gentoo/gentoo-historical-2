@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/bitchx/bitchx-1.1-r2.ebuild,v 1.1 2004/08/31 11:45:30 gmsoft Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/bitchx/bitchx-1.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:49:00 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -19,12 +19,19 @@ DEPEND=">=sys-libs/ncurses-5.1
 	ssl? ( >=dev-libs/openssl-0.9.6 )
 	ncurses? ( sys-libs/ncurses )
 	!arm? (
-	xmms? ( media-sound/xmms )
-	esd? ( >=media-sound/esound-0.2.5
-		>=media-libs/audiofile-0.1.5 )
-	gtk? ( =x11-libs/gtk+-1.2*
-		>=media-libs/imlib-1.9.10-r1 )
-	gnome? ( >=gnome-base/gnome-libs-1.4.1.2-r1 ) )"
+		xmms? ( media-sound/xmms )
+		esd? (
+			>=media-sound/esound-0.2.5
+			>=media-libs/audiofile-0.1.5
+		)
+		!amd64? (
+			gtk? (
+				=x11-libs/gtk+-1.2*
+				>=media-libs/imlib-1.9.10-r1
+			)
+		)
+		gnome? ( >=gnome-base/gnome-libs-1.4.1.2-r1 )
+	)"
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz
@@ -50,12 +57,12 @@ src_compile() {
 		myconf="${myconf} --enable-debug"
 	fi
 
-	use esd && use gtk \
+	use !amd64 && use esd && use gtk \
 		&& myconf="${myconf} --enable-sound" \
 		|| myconf="${myconf} --disable-sound"
 
-	use gtk && use gnome\
-	    && myconf="${myconf} --with-gtk" \
+	use !amd64 && use gtk && use gnome\
+		&& myconf="${myconf} --with-gtk" \
 		|| myconf="${myconf} --without-gtk"
 
 
@@ -71,12 +78,16 @@ src_compile() {
 		${S}/include/config.h.orig > \
 		${S}/include/config.h
 	#ugly workaround
-	use gtk && use gnome && ( \
+	use !amd64 && use gtk && use gnome && ( \
 		einfo "gtkBitchX will be built, if you want BitchX please issue"
 		einfo "USE="-gtk" emerge bitchx"
-		sleep 10
+		epause 10
 		) && append-flags -I/usr/include/gnome-1.0
-
+	#even uglier hack
+	use amd64 && use gtk && use gnome && ( \
+		ewarn "gtkBitchX is broken on amd64, so we're building it"
+		ewarn "with USE=-gtk. See bug #61133"
+		epause 10 )
 	econf \
 		CFLAGS="${CFLAGS}" \
 		SHLIB_CFLAGS="${CFLAGS} -fPIC" \
@@ -85,7 +96,7 @@ src_compile() {
 		`use_with ssl` \
 		`use_enable ipv6` \
 		${myconf} || die
-	
+
 	emake || die make failed
 	cd contrib && make vh1
 }
@@ -96,7 +107,7 @@ src_install () {
 	rm ${D}/usr/share/man/man1/BitchX*
 	doman doc/BitchX.1
 
-	use gnome && use gtk && ( \
+	use !amd64 && use gnome && use gtk && ( \
 		exeinto /usr/bin
 		#newexe ${S}/source/BitchX BitchX-1.0c19
 		dosym gtkBitchX-1.1-final /usr/bin/gtkBitchX

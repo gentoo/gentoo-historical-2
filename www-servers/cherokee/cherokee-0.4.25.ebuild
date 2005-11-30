@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/cherokee-0.4.25.ebuild,v 1.1 2005/08/04 09:38:47 bass Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/cherokee/cherokee-0.4.25.ebuild,v 1.1.1.1 2005/11/30 09:46:48 chriswhite Exp $
 
 inherit eutils
 
@@ -19,14 +19,7 @@ DEPEND=">=sys-devel/automake-1.7.5
 
 KEYWORDS="~x86 ~ppc ~sparc"
 SLOT="0"
-IUSE="ipv6 ssl gnutls pic static"
-
-src_unpack() {
-	unpack ${A}
-	cd ${S}
-
-	epatch ${FILESDIR}/cherokee-0.4.21-no-handler_admin.diff
-}
+IUSE="ipv6 ssl gnutls static"
 
 src_compile() {
 	local myconf
@@ -42,14 +35,13 @@ src_compile() {
 		myconf="${myconf} --disable-ipv6"
 	fi
 	if use static ; then
-		myconf="${myconf} --enable-static --enable-static-module=all --disble-shared"
+		myconf="${myconf} --enable-static --enable-static-module=all --disable-shared"
 	else
 		myconf="${myconf} --disable-static"
 	fi
 
 	econf \
 		${myconf} \
-		#--with-wwwroot=/var/www/localhost/htdocs \
 		--enable-os-string="Gentoo Linux" \
 		|| die "configure failed"
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/cocoon/cocoon-2.1.6.ebuild,v 1.1 2004/12/19 00:15:21 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/cocoon/cocoon-2.1.6.ebuild,v 1.1.1.1 2005/11/30 09:47:27 chriswhite Exp $
 
 inherit java-pkg
 
@@ -14,20 +14,20 @@ KEYWORDS="~x86 ~sparc ~ppc ~amd64"
 IUSE="doc"
 
 DEPEND=">=virtual/jdk-1.4
-	>=dev-java/ant-1.5.3"
+	>=dev-java/ant-core-1.5.3"
 RDEPEND=">=virtual/jre-1.4"
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-	echo -e "# Gentoo build properties" > local.build.properties
+	echo "# Gentoo build properties" > local.build.properties
 	if ! use doc; then
-		echo -e "exclude.javadocs=true\n" >> local.build.properties
-		echo -e "exclude.webapp.javadocs=true\n" >> local.build.properties
-		echo -e "exclude.webapp.documentation=true\n" >> local.build.properties
-		echo -e "exclude.idldocs=true\n" >> local.build.properties
-		echo -e "exclude.webapp.idldocs=true\n" >> local.build.properties
+		echo "exclude.javadocs=true" >> local.build.properties
+		echo "exclude.webapp.javadocs=true" >> local.build.properties
+		echo "exclude.webapp.documentation=true" >> local.build.properties
+		echo "exclude.idldocs=true" >> local.build.properties
+		echo "exclude.webapp.idldocs=true" >> local.build.properties
 	fi
 }
 
@@ -38,7 +38,8 @@ src_compile() {
 src_install() {
 	java-pkg_dowar build/${P}/${PN}.war
 	java-pkg_dojar build/${P}/cocoon.jar
-	JARDESTTREE=lib/core java-pkg_dojar lib/core/*.jar
+	java-pkg_jarinto /usr/share/${PN}/lib/core/
+	java-pkg_dojar lib/core/*.jar
 	insinto /usr/share/${PN}/lib
 	doins ${S}/build/${P}/cocoon-*.jar ${S}/lib/jars.xml
 	for i in endorsed optional local; do

@@ -1,6 +1,17 @@
 # ChangeLog for dev-haskell/hxt
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt/ChangeLog,v 1.1 2005/02/26 17:37:05 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hxt/ChangeLog,v 1.1.1.1 2005/11/30 09:48:22 chriswhite Exp $
+
+*hxt-4.02-r1 (26 Apr 2005)
+
+  26 Apr 2005; Andres Loeh <kosmikus@gentoo.org> +hxt-4.02-r1.ebuild,
+  +hxt-5.00.ebuild:
+  New version. Direct upgrade from 4.02 to 5.00 is not possible, 4.02 has to
+  be unmerged first. Version 4.02-r1 does not suffer from this problem.
+
+  19 Mar 2005; Andres Loeh <kosmikus@gentoo.org> hxt-4.02.ebuild:
+  This ebuild is currently blocked by ghc-6.4 because of incompatibilities.
+  Added a test phase for the ebuild.
 
 *hxt-4.02 (26 Feb 2005)
 

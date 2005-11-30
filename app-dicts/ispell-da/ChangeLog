@@ -1,8 +1,229 @@
-# ChangeLog for app-i18n/ispell-da
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-da/ChangeLog,v 1.1 2002/12/03 07:15:39 seemant Exp $
+# ChangeLog for app-dicts/ispell-da
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-da/ChangeLog,v 1.1.1.1 2005/11/30 09:46:52 chriswhite Exp $
+
+*ispell-da-1.4.51 (12 Nov 2005)
+
+  12 Nov 2005; Anders Rune Jensen <arj@gentoo.org>
+  +ispell-da-1.4.51.ebuild, -ispell-da-1.4.45.ebuild,
+  -ispell-da-1.4.46.ebuild, -ispell-da-1.4.47.ebuild, -ispell-da-1.4.49.ebuild:
+  Version bump. And remove old versions
+
+  03 Aug 2005; Bryan Østergaard <kloeri@gentoo.org>
+  ispell-da-1.4.48.ebuild:
+  Stable on alpha.
+
+*ispell-da-1.4.50 (05 Jul 2005)
+
+  05 Jul 2005; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.50.ebuild:
+  Version bump.
+
+  14 May 2005; Rene Nussbaumer <killerfox@gentoo.org>
+  ispell-da-1.4.48.ebuild:
+  Stable on hppa
+
+  25 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ispell-da-1.4.48.ebuild:
+  Stable on sparc
+
+  24 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  ispell-da-1.4.48.ebuild:
+  Stable on ppc.
+
+*ispell-da-1.4.49 (29 Apr 2005)
+
+  29 Apr 2005; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.49.ebuild:
+  Version bump.
+
+  29 Apr 2005; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.48.ebuild:
+  Stable on x86 and amd64.
+
+  27 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> ispell-da-1.4.46.ebuild:
+  Stable on ppc.
+
+  26 Mar 2005; Bryan Østergaard <kloeri@gentoo.org>
+  ispell-da-1.4.46.ebuild:
+  Stable on alpha.
+
+  20 Mar 2005; Guy Martin <gmsoft@gentoo.org> ispell-da-1.4.46.ebuild:
+  Stable on hppa.
+
+*ispell-da-1.4.48 (12 Mar 2005)
+
+  12 Mar 2005; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.48.ebuild:
+  Version bump.
+
+  16 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> ispell-da-1.4.46.ebuild:
+  Stable on sparc
+
+*ispell-da-1.4.47 (15 Feb 2005)
+
+  15 Feb 2005; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.47.ebuild:
+  Version bump.
+
+  15 Feb 2005; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.46.ebuild:
+  Mark stable on amd64 and x86.
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> ispell-da-1.4.44.ebuild:
+  Marked stable on mips.
+
+*ispell-da-1.4.46 (13 Jan 2005)
+
+  13 Jan 2005; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.46.ebuild:
+  Version bump.
+
+  02 Jan 2005; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  23 Dec 2004; Guy Martin <gmsoft@gentoo.org> ispell-da-1.4.44.ebuild,
+  ispell-da-1.4.45.ebuild:
+  Stable on hppa.
+
+  19 Dec 2004; David Holm <dholm@gentoo.org> ispell-da-1.4.45.ebuild:
+  Added to ~ppc.
+
+  11 Dec 2004; Bryan Østergaard <kloeri@gentoo.org>
+  ispell-da-1.4.45.ebuild:
+  ~alpha keyword.
+
+  23 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> ispell-da-1.4.44.ebuild,
+  ispell-da-1.4.45.ebuild:
+  1.4.44 to sparc stable, 1.4.45 ~sparc
+
+  08 Dec 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  ispell-da-1.4.45.ebuild:
+  Added to ~amd64, bug #72737
+
+*ispell-da-1.4.45 (21 Nov 2004)
+
+  21 Nov 2004; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.45.ebuild:
+  Version bump.
+
+  21 Nov 2004; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.44.ebuild:
+  Stable on x86.
+	
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> ispell-da-1.4.44.ebuild:
+  Keyworded ~sparc
+
+  09 Nov 2004; Anders Rune Jensen <arj@gentoo.org> -ispell-da-1.4.41.ebuild, 
+  -ispell-da-1.4.40.ebuild,-ispell-da-1.4.35.ebuild:
+  Removed old versions.
+
+  07 Nov 2004; Joshua Kinard <kumba@gentoo.org> ispell-da-1.4.42.ebuild:
+  Marked stable on mips.
+
+*ispell-da-1.4.44 (28 Oct 2004)
+
+  28 Oct 2004; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.44.ebuild:
+  Version bump.
+
+  11 Oct 2004; Guy Martin <gmsoft@gentoo.org> ispell-da-1.4.42.ebuild:
+  Marked stable on hppa.
+
+  03 Oct 2004; Bryan Østergaard <kloeri@gentoo.org> ispell-da-1.4.42.ebuild:
+  Stable on alpha.
+
+  22 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> ispell-da-1.4.42.ebuild:
+  Stable on sparc
+
+*ispell-da-1.4.43 (21 Sep 2004)
+
+  21 Sep 2004; Anders Rune Jensen <arj@gentoo.org> +ispell-da-1.4.43.ebuild,
+  -ispell-da-1.4.33.ebuild:
+  Version bump. Remove old version. 1.4.35 is stable on all archs.
+
+  21 Sep 2004; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.42.ebuild:
+  Mark stable on x86.
+
+  22 Aug 2004; Joshua Kinard <kumba@gentoo.org> ispell-da-1.4.41.ebuild:
+  Marked stable on mips.
+
+  20 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> ispell-da-1.4.41.ebuild:
+  Stable on sparc
+
+  13 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> ispell-da-1.4.41.ebuild:
+  Stable on alpha.
+
+*ispell-da-1.4.42 (10 Aug 2004)
+
+  10 Aug 2004; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.42.ebuild:
+  Version bump.
+
+  10 Aug 2004; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.41.ebuild:
+  Mark stable on x86.
+
+  08 Aug 2004; Guy Martin <gmsoft@gentoo.org> ispell-da-1.4.40.ebuild:
+  Stable on hppa.
+
+  07 Aug 2004; Bryan Østergaard <kloeri@gentoo.org> ispell-da-1.4.40.ebuild:
+  Stable on alpha.
+
+  30 Jul 2004; Anders Rune Jensen <arj@gentoo.org> +metadata.xml, 
+  QA - IUSE fix and {add missing,correct} metatata.xml. Add myself as 
+  maintainer.
+
+*ispell-da-1.4.41 (29 Jul 2004)
+
+  29 Jul 2004; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.41.ebuild:
+  version bump
+
+*ispell-da-1.4.40 (29 Jul 2004)
+
+  29 Jul 2004; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.40.ebuild:
+  mark as stable on x86
+
+*ispell-da-1.4.35 (02 Jul 2004)
+
+  02 Jul 2004; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.35.ebuild:
+  mark as stable
+
+*ispell-da-1.4.40 (01 Jul 2004)
+
+  01 Jul 2004; Anders Rune Jensen <arj@gentoo.org> ispell-da-1.4.40.ebuild:
+  version bump
+
+*ispell-da-1.4.35 (29 Feb 2004)
+
+  29 Feb 2004; Alastair Tse <liquidx@gentoo.org> ispell-da-1.4.35.ebuild:
+  version bump (#42641)
+
+*ispell-da-1.4.33 (15 Jan 2004)
+
+  15 Jan 2004; Alastair Tse <liquidx@gentoo.org> ispell-da-1.4.33.ebuild,
+  metadata.xml:
+  version bump. (#37874 and #34633)
+
+*ispell-da-1.4.28 (08 Nov 2003)
+
+  08 Nov 2003; Seemant Kulleen <seemant@gentoo.org> ispell-da-1.4.26.ebuild,
+  ispell-da-1.4.28.ebuild:
+  version bump, thanks to: Anders Rune Jensen <testanders@yahoo.dk> in bug #32569
+
+*ispell-da-1.4.27 (28 Oct 2003)
+
+  28 Oct 2003; Seemant Kulleen <seemant@gentoo.org> ispell-da-1.4.22.ebuild,
+  ispell-da-1.4.24.ebuild, ispell-da-1.4.27.ebuild:
+  Version bump thanks to: Martin Ehmsen <thames@get2net.dk>  in bug #27227
+
+*ispell-da-1.4.26 (09 Sep 2003)
+
+  09 Sep 2003; Seemant Kulleen <seemant@gentoo.org> ispell-da-1.4.26.ebuild:
+  version bump, thanks to: Martin Ehmsen <thames@get2net.dk> in bug #27227
+
+*ispell-da-1.4.24 (12 Apr 2003)
+
+  12 Apr 2003; Seemant Kulleen <seemant@gentoo.org> Manifest,
+  ispell-da-1.4.24.ebuild:
+  version bump, thanks to: Martin Ehmsen <thames@get2net.dk> in bug #19057
 
 *ispell-da-1.4.22 (11 Jul 2002)
+
+  07 Mar 2003; Graham Forest <vladimir@gentoo.org> ispell-da-1.4.22.ebuild:
+  Added all KEYWORDS
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
 
   11 Jul 2002; Seemant Kulleen <seemant@gentoo.org> ChangeLog
   ispell-da-1.4.22.ebuild files/digest-ispell-da-1.4.22 :

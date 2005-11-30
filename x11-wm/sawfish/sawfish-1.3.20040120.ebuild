@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.3.20040120.ebuild,v 1.1 2004/01/20 21:42:45 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/sawfish/sawfish-1.3.20040120.ebuild,v 1.1.1.1 2005/11/30 09:45:13 chriswhite Exp $
 
 inherit eutils gnuconfig
 
@@ -17,7 +17,7 @@ DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
 HOMEPAGE="http://sawmill.sourceforge.net/"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~alpha ~ia64"
+KEYWORDS="x86 alpha ia64 amd64 sparc ppc"
 if $sawfishsnapshot; then
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	S=${WORKDIR}/${PN}

@@ -1,11 +1,13 @@
 # Copyright 2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-darwin/packages,v 1.1.1.1 2005/11/30 09:48:41 chriswhite Exp $
 
-### Gentoo for Darwin profile ###
+### Gentoo/Darwin profile ###
 
-# Things we want emerge system to install
+# Things we want emerge system to install for all Darwin profiles
 
-*net-misc/wget
-*virtual/editor
 *sys-apps/sed
+*virtual/editor
+
+# we use curl for now
+-*net-misc/wget

@@ -1,6 +1,62 @@
-# ChangeLog for app-sci/embassy-domainatrix
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-domainatrix/ChangeLog,v 1.1 2004/12/23 22:55:51 ribosome Exp $
+# ChangeLog for sci-biology/embassy-domainatrix
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-domainatrix/ChangeLog,v 1.1.1.1 2005/11/30 09:48:44 chriswhite Exp $
+
+  03 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
+  -files/embassy-domainatrix-1.0.0-r1.patch,
+  -embassy-domainatrix-1.0.0-r1.ebuild:
+  Removed obsolete version.
+
+  03 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
+  embassy-domainatrix-0.1.0.ebuild:
+  Stable on ppc-macos (with j4rg0n's permission, bug #102420).
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  embassy-domainatrix-0.1.0.ebuild:
+  Stable on ppc.
+
+  21 Sep 2005; Olivier Fisette <ribosome@gentoo.org>
+  embassy-domainatrix-0.1.0.ebuild:
+  Added to x86.
+
+*embassy-domainatrix-0.1.0 (07 Aug 2005)
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org>
+  +embassy-domainatrix-0.1.0.ebuild, embassy-domainatrix-1.0.0-r1.ebuild:
+  Ported version 1.0.0-r1 to the improved embassy.eclass. Version 0.1.0 is
+  really an upgrade; it is normal to be required to downgrade from 1.0.0 to
+  0.1.0 to upgrade to EMBASSY 3.0.0. This is an issue with upstream's
+  versionning scheme.
+
+  28 Jul 2005; Olivier Fisette <ribosome@gentoo.org>
+  -embassy-domainatrix-1.0.0.ebuild:
+  Removed old version.
+
+  26 Jun 2005; Lina Pezzella <j4rg0n@gentoo.org>
+  embassy-domainatrix-1.0.0-r1.ebuild:
+  Stable ppc-macos
+
+  24 Jun 2005; Joseph Jezak <josejx@gentoo.org>
+  embassy-domainatrix-1.0.0-r1.ebuild:
+  Marked ppc stable.
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org>
+  embassy-domainatrix-1.0.0-r1.ebuild:
+  Added to x86.
+
+*embassy-domainatrix-1.0.0-r1 (25 Mar 2005)
+
+  25 Mar 2005; Olivier Fisette <ribosome@gentoo.org>
+  +files/embassy-domainatrix-1.0.0-r1.patch,
+  +embassy-domainatrix-1.0.0-r1.ebuild:
+  Patched version for EMBOSS-2.10.
+
+  02 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org>
+  embassy-domainatrix-1.0.0.ebuild:
+  Stable ppc-macos
+
+  25 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org> embassy-domainatrix-1.0.0.ebuild:
+  Unstable ppc-macos.
 
 *embassy-domainatrix-1.0.0 (23 Dec 2004)
 

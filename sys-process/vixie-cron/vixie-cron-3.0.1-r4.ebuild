@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/vixie-cron-3.0.1-r4.ebuild,v 1.1 2005/03/04 23:59:48 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/vixie-cron-3.0.1-r4.ebuild,v 1.1.1.1 2005/11/30 09:49:09 chriswhite Exp $
 
 inherit eutils
 

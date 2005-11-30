@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_perl/mod_perl-2.0.1-r2.ebuild,v 1.1 2005/08/08 09:35:43 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_perl/mod_perl-2.0.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:49:15 chriswhite Exp $
 
 inherit apache-module perl-module eutils
 DESCRIPTION="An embedded Perl interpreter for Apache2"
@@ -27,6 +27,19 @@ DOCFILES="Changes INSTALL LICENSE README STATUS"
 APACHE2_MOD_DEFINE="PERL"
 
 src_unpack() {
+	INSTALLED_MPM="$(${ROOT}/usr/sbin/apxs2 -q MPM_NAME)"
+	eval `perl '-V:useithreads'`
+	ITHREADS="${useithreads}"
+	if [ "${INSTALLED_MPM}" != "prefork" ]; then
+		if [ "${ITHREADS}" == "undef" ]; then
+			ewarn "You cannot build mod_perl on a threaded apache"
+			ewarn "with an unthreaded perl. You must either emerge"
+			ewarn "perl with ithreads in your USE flags, or emerge"
+			ewarn "apache without threading support"
+			exit
+		fi
+	fi
+
 	unpack ${A}
 
 	cd ${S}
@@ -134,8 +147,8 @@ src_install() {
 
 	dodoc ${FILESDIR}/${PV}/75_mod_perl.conf Changes \
 		INSTALL LICENSE README STATUS
-	cp -a docs ${D}/usr/share/doc/${PF}
-	cp -a todo ${D}/usr/share/doc/${PF}
+	cp -pPR docs ${D}/usr/share/doc/${PF}
+	cp -pPR todo ${D}/usr/share/doc/${PF}
 	for FILE in `grep -lr portage ${D}/*|grep -v ".so"`; do
 		sed -i -e "s:${D}:/:g" ${FILE}
 	done

@@ -1,23 +1,23 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/eggdrop/eggdrop-1.6.17.ebuild,v 1.1 2004/08/28 20:42:37 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/eggdrop/eggdrop-1.6.17.ebuild,v 1.1.1.1 2005/11/30 09:48:59 chriswhite Exp $
 
 inherit eutils
 
-MY_P=eggdrop${PV}
-PATCHSET_V=1.0
+MY_P="eggdrop${PV}"
+PATCHSET_V="1.0"
 
 DESCRIPTION="An IRC bot extensible with C or Tcl."
 HOMEPAGE="http://www.eggheads.org/"
 SRC_URI="ftp://ftp.eggheads.org/pub/eggdrop/source/1.6/${MY_P}.tar.gz
-	http://gentoo.mirror.at.stealer.net/files/${P}-patches-${PATCHSET_V}.tar.bz2"
-KEYWORDS="~x86 ~sparc ~mips ~ia64 ~amd64 ~ppc"
+	mirror://gentoo/${P}-patches-${PATCHSET_V}.tar.bz2"
+KEYWORDS="x86 sparc mips ia64 amd64 ppc alpha"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug static mysql postgres ssl"
 
 DEPEND="dev-lang/tcl
-	mysql? ( dev-db/mysql )
+	mysql? ( <dev-db/mysql-4.1 )
 	postgres? ( dev-db/postgresql )
 	ssl? ( dev-libs/openssl )"
 
@@ -40,15 +40,18 @@ src_compile() {
 
 	make config || die "module config failed"
 
-	if use static && use debug; then
+	if use static && use debug
+	then
 		target="sdebug"
-	elif use static; then
+	elif use static
+	then
 		target="static"
-	elif use debug; then
+	elif use debug
+	then
 		target="debug"
 	fi
 
-	emake -j1 CFLGS="${MY_CFLAGS}" ${target} || die "emake ${target} failed"
+	emake -j1 ${target} || die "emake ${target} failed"
 }
 
 src_install() {
@@ -57,19 +60,19 @@ src_install() {
 
 	for a in doc/*
 	do
-		[ -f $a ] && dodoc $a
+		[ -f ${a} ] && dodoc ${a}
 	done
 
-	cd src/mod
+	cd ${S}/src/mod
 	for a in *.mod
 	do
 		for b in README UPDATES INSTALL TODO CONTENTS
 		do
-			[ -f $a/$b ] && newdoc $a/$b $b.$a
+			[ -f ${a}/${b} ] && newdoc ${a}/${b} ${b}.${a}
 		done
 	done
-	cd ${S}
 
+	cd ${S}
 	dodoc \
 		src/mod/botnetop.mod/botnetop.conf \
 		src/mod/gseen.mod/gseen.conf \
@@ -81,10 +84,7 @@ src_install() {
 		src/mod/pgstats.mod/tools/pgstats.{conf,php,sql} \
 		text/motd.*
 
-	for a in doc/html/*
-	do
-		[ -f $a ] && dohtml $a
-	done
+	dohtml ${S}/doc/html/*.html
 
 	dobin ${FILESDIR}/eggdrop-installer
 	doman doc/man1/eggdrop.1

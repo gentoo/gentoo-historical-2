@@ -1,6 +1,28 @@
 # ChangeLog for dev-java/ldapsdk
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ldapsdk/ChangeLog,v 1.1 2004/12/18 16:56:27 karltk Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ldapsdk/ChangeLog,v 1.1.1.1 2005/11/30 09:47:22 chriswhite Exp $
+
+  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> ldapsdk-4.1.7-r1.ebuild:
+  Style/Dep fixes
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  ldapsdk-4.1.7-r1.ebuild:
+  Stable on sparc
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> ldapsdk-4.1.7-r1.ebuild,
+  -ldapsdk-4.1.7.ebuild:
+  cleanup, removed old revision with a dependency to oro.
+
+*ldapsdk-4.1.7-r1 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +ldapsdk-4.1.7-r1.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> ldapsdk-4.1.7.ebuild:
+  Keyworded ~sparc wrt #84992
+
+  04 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ldapsdk-4.1.7.ebuild:
+  stable on x86 and amd64.
 
 *ldapsdk-4.1.7 (18 Dec 2004)
 

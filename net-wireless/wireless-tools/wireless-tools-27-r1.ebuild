@@ -1,22 +1,22 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wireless-tools/wireless-tools-27-r1.ebuild,v 1.1 2005/07/13 18:15:56 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wireless-tools/wireless-tools-27-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:36 chriswhite Exp $
 
 # The following works with both pre-releases and releases
 MY_P=${PN/-/_}.${PV/_/.}
 S=${WORKDIR}/${MY_P/\.pre*/}
 
-DESCRIPTION="A collection of tools to configure IEEE 802.11 wireless lan cards."
+DESCRIPTION="A collection of tools to configure IEEE 802.11 wireless LAN cards."
 SRC_URI="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/${MY_P}.tar.gz"
 HOMEPAGE="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux/Tools.html"
 
-KEYWORDS="~amd64 ~hppa ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 hppa ~mips ppc ppc64 x86"
 SLOT="0"
 LICENSE="GPL-2"
 
-DEPEND="sys-apps/sed"
-RDEPEND="virtual/libc
-		>=sys-apps/baselayout-1.11.13"
+DEPEND="sys-apps/sed
+		!elibc_uclibc? ( >=sys-apps/baselayout-1.11.13 )"
+RDEPEND="virtual/libc"
 IUSE="nls"
 
 src_unpack() {

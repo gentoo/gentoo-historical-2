@@ -1,8 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/pmars-sdl/pmars-sdl-0.9.2e.ebuild,v 1.1 2004/03/30 11:35:24 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/pmars-sdl/pmars-sdl-0.9.2e.ebuild,v 1.1.1.1 2005/11/30 09:49:40 chriswhite Exp $
 
-inherit games
+inherit toolchain-funcs games
 
 MY_PN="${PN/-sdl/}"
 MY_PV="${PV/e/-5}"
@@ -14,15 +14,15 @@ SRC_URI="http://www.cs.helsinki.fi/u/jpihlaja/cw/pmars-sdl/${MY_P}.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ~ppc ~amd64"
 IUSE="sdl X svga"
 
-DEPEND="virtual/glibc
+DEPEND="virtual/libc
 	|| (
 		sdl?  ( virtual/x11 media-libs/libsdl )
 		X?    ( virtual/x11 )
 		svga? ( media-libs/svgalib )
-		( sys-libs/ncurses sys-libs/libtermcap-compat )
+		sys-libs/ncurses
 	)"
 
 S="${WORKDIR}/${MY_P}"
@@ -61,16 +61,16 @@ src_compile() {
 
 	for x in ${SRC}; do
 		einfo "compiling ${x}"
-		${CC} ${CFLAGS} ${x} -c || die
+		$(tc-getCC) ${CFLAGS} ${x} -c || die
 	done
 
 	echo
 	einfo "linking with LIB: ${LIB}"
-	${CC} *.o ${LIB} -o ${MY_PN} || die
+	$(tc-getCC) *.o ${LIB} -o ${MY_PN} || die
 }
 
 src_install() {
-	dogamesbin src/${MY_PN}
+	dogamesbin src/${MY_PN} || die
 	doman doc/${MY_PN}.6
 
 	dodoc AUTHORS CONTRIB ChangeLog README doc/redcode.ref
@@ -85,6 +85,7 @@ src_install() {
 }
 
 pkg_postinst() {
+	games_pkg_postinst
 	echo
 	ewarn "There are some macros in ${GAMES_DATADIR}/${MY_PN}/macros"
 	ewarn "which you should make accessible to pmars by typing"

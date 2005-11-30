@@ -1,11 +1,21 @@
 # ChangeLog for dev-java/mg4j
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/mg4j/ChangeLog,v 1.1 2004/03/06 22:03:36 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/mg4j/ChangeLog,v 1.1.1.1 2005/11/30 09:47:19 chriswhite Exp $
 
-*mg4j-0.8.2 (09 Mar 2004)
+  11 May 2005; Saleem Abdulrasool <compnerd@gentoo.org> mg4j-0.9.1.ebuild:
+  Fixing broken digests
 
-  09 Mar 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml,
-  mg4j-0.8.2.ebuild:
-  Initial Import. Thanks to Matteo Coloberti <xteo78@libero.it> for the initial
-  ebuild. Closes #34104
+  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> mg4j-0.9.1.ebuild:
+  added support for the source useflag, cosmetic changes.
 
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> mg4j-0.9.1.ebuild:
+  stable on amd64 and x86
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> mg4j-0.9.1.ebuild:
+  added missing jikes dependency.
+
+*mg4j-0.9.1 (04 Dec 2004)
+
+  04 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> mg4j-0.9.1.ebuild:
+  Initial import. Ebuild submitted by Jan Brinkmann <lucky@the-luckyduck.de>.
+  Fixes #63278.

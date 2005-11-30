@@ -1,17 +1,20 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/pwm/pwm-1.0.20030617.ebuild,v 1.1.1.1 2005/11/30 09:45:15 chriswhite Exp $
 
-
-S=${WORKDIR}/${P}
-DESCRIPTION="A lightweight window manager. It was the first window manager to implement tabbed frames or the back then unique feature allowing multiple client windows can be attached to the same frame or This feature helps keeping windows, especially the numerous xterms, organized. "
-SRC_URI="http://modeemi.fi/~tuomov/dl/${P}.tar.gz"
+MY_P=${PN}-${PV/1.0./}
+DESCRIPTION="A lightweight window manager"
 HOMEPAGE="http://modeemi.fi/~tuomov/pwm/"
+SRC_URI="http://modeemi.fi/~tuomov/dl/${MY_P}.tar.gz"
+
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~ppc"
+KEYWORDS="ppc sparc ~x86"
 IUSE="gnome"
 
 DEPEND="virtual/x11"
+
+S=${WORKDIR}/${MY_P}
 
 src_unpack() {
 	unpack ${A}
@@ -46,7 +49,7 @@ src_install() {
 		ETCDIR=${D}/etc/X11 \
 		install || die "install failed"
 
-	if [ "`use gnome`" ]
+	if use gnome
 	then
 		insinto /usr/share/gnome/wm-properties
 		doins support/PWM.desktop

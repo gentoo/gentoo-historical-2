@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/publicfile/publicfile-0.52-r1.ebuild,v 1.1 2004/08/08 18:14:47 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/publicfile/publicfile-0.52-r1.ebuild,v 1.1.1.1 2005/11/30 09:46:47 chriswhite Exp $
 
 inherit eutils
 
@@ -12,9 +12,9 @@ SRC_URI="http://cr.yp.to/publicfile/${P}.tar.gz
 	http://www.publicfile.org/ftp-ls-patch"
 SLOT="0"
 LICENSE="as-is"
-KEYWORDS="x86 ~ppc sparc"
+KEYWORDS="hppa ppc sparc x86"
 
-RDEPEND=">=sys-apps/daemontools-0.70
+RDEPEND=">=sys-process/daemontools-0.70
 	>=sys-apps/ucspi-tcp-0.83
 	selinux? ( sec-policy/selinux-publicfile )"
 
@@ -49,8 +49,8 @@ src_install() {
 
 pkg_preinst() {
 	enewgroup nofiles
-	enewuser ftp -1 /bin/false /home/public nofiles
-	enewuser ftplog -1 /bin/false /home/public nofiles
+	enewuser ftp -1 -1 /home/public nofiles
+	enewuser ftplog -1 -1 /home/public nofiles
 }
 
 pkg_postinst() {

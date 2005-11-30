@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-art/gnustep-back-art-0.9.5.ebuild,v 1.1 2005/04/15 04:30:50 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-back-art/gnustep-back-art-0.9.5.ebuild,v 1.1.1.1 2005/11/30 09:46:18 chriswhite Exp $
 
 inherit gnustep
 
@@ -10,13 +10,13 @@ DESCRIPTION="libart_lgpl back-end component for the GNUstep GUI Library."
 
 HOMEPAGE="http://www.gnustep.org"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/core/gnustep-back-${PV}.tar.gz"
-KEYWORDS="~ppc ~x86 ~amd64 ~sparc ~alpha"
+KEYWORDS="~alpha ~amd64 ppc sparc x86"
 SLOT="0"
 LICENSE="LGPL-2.1"
 
 PROVIDE="virtual/gnustep-back"
 
-IUSE="${IUSE} opengl xim doc"
+IUSE="opengl xim doc"
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	~gnustep-base/gnustep-make-1.10.0
 	~gnustep-base/gnustep-base-1.10.3
@@ -26,7 +26,7 @@ DEPEND="${GNUSTEP_CORE_DEPEND}
 	opengl? ( virtual/opengl virtual/glu )
 	gnustep-libs/artresources
 	>=gnustep-base/mknfonts-0.5
-	>=media-libs/libart_lgpl-2.3*"
+	>=media-libs/libart_lgpl-2.3"
 RDEPEND="${DEPEND}
 	${DEBUG_DEPEND}
 	${DOC_RDEPEND}"

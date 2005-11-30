@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gtk2hs/gtk2hs-0.9.8.ebuild,v 1.1 2005/06/24 05:52:51 dcoutts Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gtk2hs/gtk2hs-0.9.8.ebuild,v 1.1.1.1 2005/11/30 09:48:23 chriswhite Exp $
 
 inherit base ghc-package multilib
 
@@ -10,10 +10,9 @@ SRC_URI="mirror://sourceforge/gtk2hs/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0"
 
-KEYWORDS="~x86 -amd64"
+KEYWORDS="-amd64 ~ppc ~x86"
 #enable amd64 when ghc-6.4.1 is out
 #enable sparc when CFLAGS/-mcpu ebuild bug is fixed
-#enable ppc when it's been tested!
 
 IUSE="doc gnome mozilla"
 
@@ -23,7 +22,7 @@ DEPEND=">=virtual/ghc-5.04
 				 >=x11-libs/gtksourceview-0.6
 				 >=gnome-base/gconf-2 )
 		mozilla? ( >=www-client/mozilla-1.4 )
-		doc? ( >=dev-haskell/haddock-0.6 )"
+		doc? ( =dev-haskell/haddock-0.6* )"
 
 src_compile() {
 	econf \

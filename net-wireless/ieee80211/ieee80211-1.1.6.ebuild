@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ieee80211-1.1.6.ebuild,v 1.1 2005/10/21 18:13:01 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ieee80211-1.1.6.ebuild,v 1.1.1.1 2005/11/30 09:45:40 chriswhite Exp $
 
 inherit linux-mod
 
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc x86"
 
 DEPEND="!<=net-wireless/ipw2100-1.1.0
 		!<=net-wireless/ipw2200-1.0.4"
@@ -44,11 +44,11 @@ pkg_setup() {
 
 	if [[ -f ${KV_DIR}/include/net/ieee80211.h ]]; then
 		eerror
-		eerror "You kernel source contains an incomptible version of the"
+		eerror "Your kernel source contains an incompatible version of the"
 		eerror "ieee80211 subsystem, which needs to be removed before"
 		eerror "${P} can be installed. This can be accomplished by running:"
 		eerror
-		eerror "  # rm -i ${KV_DIR}/include/net/ieee80211.h"
+		eerror "  # /bin/sh ${FILESDIR}/remove-old ${KV_DIR}"
 		eerror
 		eerror "Please note that this will make it impossible to use some of the"
 		eerror "in-kernel IEEE 802.11 wireless LAN drivers (eg. orinoco)."

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/amd64/2005.1/packages,v 1.1 2005/06/04 21:20:09 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/amd64/2005.1/packages,v 1.1.1.1 2005/11/30 09:48:35 chriswhite Exp $
 
 *>=sys-devel/binutils-2.15.90.0.1.1-r4
 *>=sys-devel/gcc-3.4.3-r1

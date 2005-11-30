@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/mtx/mtx-1.2.17.ebuild,v 1.1 2005/03/15 19:48:09 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/mtx/mtx-1.2.17.ebuild,v 1.1.1.1 2005/11/30 09:45:26 chriswhite Exp $
 
 IUSE=""
 

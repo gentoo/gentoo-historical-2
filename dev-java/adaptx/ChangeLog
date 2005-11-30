@@ -1,6 +1,54 @@
 # ChangeLog for dev-java/adaptx
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/adaptx/ChangeLog,v 1.1 2004/12/04 18:21:37 karltk Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/adaptx/ChangeLog,v 1.1.1.1 2005/11/30 09:47:12 chriswhite Exp $
+
+  08 Aug 2005; Markus Rothe <corsair@gentoo.org>
+  adaptx-0.9.13_p20041105-r1.ebuild:
+  Stable on ppc64
+
+  14 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  adaptx-0.9.13_p20041105-r1.ebuild:
+  Stable on sparc
+
+  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild, adaptx-0.9.13_p20041105-r1.ebuild:
+  get xml-apis from xml-commons noet xerces
+
+  01 Jul 2005; Thomas Matthijs <axxo@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild, adaptx-0.9.13_p20041105-r1.ebuild:
+  udpate dependency on gnu-jaxp 97562
+
+*adaptx-0.9.13_p20041105-r1 (18 May 2005)
+
+  18 May 2005; Thomas Matthijs <axxo@gentoo.org>
+  +adaptx-0.9.13_p20041105-r1.ebuild:
+  fixes 92984, versioned jar, thanks too Josh Nichols <nichoj@alum.rpi.edu>
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild:
+  Stable on ppc64
+
+  26 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild:
+  Stable on sparc
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild:
+  Keyworded ~sparc wrt #84992
+
+  13 Mar 2005; Markus Rothe <corsair@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  04 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild:
+  stable on amd64.
+
+*adaptx-0.9.13_p20041105 (29 Jan 2005)
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  adaptx-0.9.13_p20041105.ebuild:
+  update to reflect the new rhino slots.
 
 *adaptx-20041105 (04 Dec 2004)
 

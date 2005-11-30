@@ -2,7 +2,7 @@ diff --exclude=_darcs --exclude=ChangeLog --exclude=exact-version -Naur ion-3ds-
 --- ion-3ds-20051023/configure.ac	2005-10-23 18:14:47.000000000 +0200
 +++ ion-3/configure.ac	2005-10-26 13:41:53.000000000 +0200
 @@ -3,7 +3,7 @@
- dnl $Header: /var/cvsroot/gentoo-x86/x11-wm/ion3/files/ion3-20051023-r1.patch,v 1.1 2005/10/26 12:00:12 twp Exp $
+ dnl $Header: /var/cvsroot/gentoo-x86/x11-wm/ion3/files/ion3-20051023-r1.patch,v 1.1.1.1 2005/11/30 09:45:09 chriswhite Exp $
  
  AC_INIT([Ion Window Manager],
 -        [3ds-20051023],

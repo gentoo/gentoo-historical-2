@@ -1,5 +1,20 @@
-MD5 1be53c0fe597000a01e5d4da82f1edfc ChangeLog 240
-MD5 1aa5f9fd31f0d1e32e247f2d083f2ba9 metdata.xml 309
-MD5 517060e38dc58e062051b44f73a4074d asm-1.4.2.ebuild~ 480
-MD5 255ae4ee2ddcc80fee4c5e2210c13e84 asm-1.4.2.ebuild 505
-MD5 3eee242ba41df3d5fcb56e9b2f7c32db files/digest-asm-1.4.2 60
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 a29623f388f2a6bf81319d76508ddb54 ChangeLog 2526
+MD5 e1d5f6fe10dbffc76bc489ecfc20969e asm-1.4.1.ebuild 1040
+MD5 bc0ce4fa6bbaca432c598548863aa08f asm-1.4.3-r2.ebuild 998
+MD5 b2ddf66dcac189061630a6e62a93244d asm-1.5.2-r1.ebuild 1000
+MD5 766f4510c4b431136cefc0074b71075f asm-2.0.ebuild 1090
+MD5 351a824f800a6f89e9e6eb967a63c796 files/digest-asm-1.4.1 62
+MD5 bab3b96826160bc8cf16cdce85e62adc files/digest-asm-1.4.3-r2 61
+MD5 7d7bc01bc5c7f583f0ab7ef377b4823b files/digest-asm-1.5.2-r1 61
+MD5 947e688c1e6dc0951aeacfce6f56d645 files/digest-asm-2.0 59
+MD5 b7f9b7d59df453c8c330bff15bf5508b metadata.xml 888
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDRuLlQiJ/wx066S4RAr/cAJ9zY1WCKrwQg/uIu15mkoBXCwpjbACaA5fw
+nyOHN8dGMJj7CPML7ZJk5gA=
+=BO0j
+-----END PGP SIGNATURE-----

@@ -1,10 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openmosix-sources/openmosix-sources-2.4.24-r10.ebuild,v 1.1 2004/12/02 19:55:44 voxus Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/openmosix-sources/openmosix-sources-2.4.24-r10.ebuild,v 1.1.1.1 2005/11/30 09:49:35 chriswhite Exp $
 #OKV=original kernel version, KV=patched kernel version.  They can be the same.
 
 ETYPE="sources"
-inherit kernel eutils
+inherit kernel eutils linux-info
 
 OKV="2.4.24"
 OMV="2"
@@ -64,6 +64,19 @@ src_unpack() {
 }
 
 pkg_postinst() {
+	einfo
+	ewarn "openmosix-sources <2.4.28 is obsoleted due to security reasons"
+	ewarn "and will be dropped from tree soon"
+	ewarn "please, take a look at >=openmosix-sources-2.4.28"
+	einfo
+
+	echo
+
+	einfo
+	ewarn "using this obsoleted and unsupported sources you are always"
+	ewarn "under high security risc."
+	einfo
+
 	[ "$ETYPE" = "headers" ] && return
 	if [ ! -e ${ROOT}usr/src/linux ]
 	then

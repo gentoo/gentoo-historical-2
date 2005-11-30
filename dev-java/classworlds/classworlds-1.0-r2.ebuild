@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/classworlds/classworlds-1.0-r2.ebuild,v 1.1 2004/05/05 20:48:28 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/classworlds/classworlds-1.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:47:05 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,10 +9,14 @@ HOMEPAGE="http://dist.codehaus.org/classworlds/distributions/classworlds-1.0-src
 SRC_URI="http://dist.codehaus.org/classworlds/distributions/${P}-src.tar.gz"
 LICENSE="codehaus-classworlds"
 SLOT="1"
-KEYWORDS="~x86"
+KEYWORDS="x86 ~ppc amd64"
 IUSE="doc jikes"
-DEPEND="=dev-java/xerces-2.6*"
-S=${WORKDIR}/${P}
+RDEPEND=">=virtual/jre-1.4
+	=dev-java/xerces-2.6*"
+DEPEND=">=virtual/jdk-1.4
+	${RDEPEND}
+	jikes? ( >=dev-java/jikes-1.21 )
+	>=dev-java/ant-core-1.6"
 
 src_unpack() {
 	unpack ${A}
@@ -22,21 +26,17 @@ src_unpack() {
 	cd ${S}/target/lib
 
 	# karltk: remove the fake versioning here.
-	java-pkg_jar-from xerces || die "Missing xerces"
+	java-pkg_jar-from xerces-2
 }
 
 src_compile() {
-	local myconf
-	use jikes && myconf="${myconf} -Dbuild.compiler=jikes"
-
-	ant ${myconf} jar || die "Failed to compile jars"
-	if (use doc) ; then
-		ant javadoc || die "Failed to generate docs"
-	fi
+	local antflags="jar"
+	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	use doc && antflags="${antflags} javadoc"
+	ant ${antflags} || die "Failed to compile jars"
 }
 
 src_install() {
-	dodoc LICENSE.txt
-	java-pkg_dojar target/classworlds-1.0.jar
-	use doc && dohtml -r dist/docs/api
+	java-pkg_newjar target/${P}.jar ${PN}.jar
+	use doc && java-pkg_dohtml -r dist/docs/api
 }

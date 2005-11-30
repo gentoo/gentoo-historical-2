@@ -1,6 +1,289 @@
 # ChangeLog for x11-wm/windowmaker
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/ChangeLog,v 1.1 2003/06/04 13:49:57 joker Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/ChangeLog,v 1.1.1.1 2005/11/30 09:45:05 chriswhite Exp $
+
+  17 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  12 Jul 2005; Stephen P. Becker <geoman@gentoo.org>
+  windowmaker-0.91.0-r1.ebuild:
+  stable on mips
+
+*windowmaker-0.92.0-r1 (06 Jul 2005)
+
+  06 Jul 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -windowmaker-0.92.0.ebuild, +windowmaker-0.92.0-r1.ebuild:
+  Fixes for bug 97960 and bug 97961
+
+  05 Jul 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.92.0.ebuild:
+  Fixes for bug 97959
+
+  05 Jul 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.92.0.ebuild:
+  amd64/mmx fixes for bug 97963 ; more changes
+
+  05 Jul 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.92.0.ebuild:
+  amd64/mmx fixes for bug 97963
+
+*windowmaker-0.92.0 (04 Jul 2005)
+
+  04 Jul 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +windowmaker-0.92.0.ebuild:
+  Version bump
+
+  24 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.80.2-r2.ebuild, windowmaker-0.80.2-r4.ebuild,
+  windowmaker-0.91.0-r1.ebuild, windowmaker-0.91.0-r7.ebuild:
+  Fixes for RDEPEND not drawing in correct binary packages if emerge -K; bug
+  39777
+
+  23 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -files/singleclick-shadeormaxopts-0.9x.patch,
+  +files/0.80.2/gtk2flickerfix.patch, -files/wlist-0.9x.patch,
+  +files/0.80.2/xinerama.patch.bz2,
+  +files/0.91.0/64bit+endian-fixes-0.9x.patch,
+  +files/0.91.0/maximize-fix-0.9x.patch, +files/0.91.0/wlist-0.9x.patch,
+  -files/singleclick-shadeormaxopts-0.9x.patch2,
+  +files/0.80.2/windowmaker-0.80.2-r1-gentoo.patch,
+  +files/0.80.2/wlist.patch, +files/0.91.0/menufocus.patch,
+  -files/20_endian+64bit.diff,
+  +files/0.91.0/singleclick-shadeormaxopts-0.9x.patch2,
+  -files/windowmaker-0.80.2-r1-gentoo.patch,
+  +files/0.80.2/trance.patch.WM-0.80.2.diff, +files/0.80.2/wmfpo.patch,
+  -files/gtk2flickerfix.patch, -files/64bit+endian-fixes-0.9x.patch,
+  -files/maximize-fix-0.9x.patch, -files/trance.patch.WM-0.80.2.diff,
+  -files/menufocus.patch, -files/wlist.patch, -files/wmfpo.patch,
+  -files/xinerama.patch.bz2, windowmaker-0.80.2-r2.ebuild,
+  windowmaker-0.80.2-r4.ebuild, windowmaker-0.91.0-r1.ebuild,
+  windowmaker-0.91.0-r7.ebuild:
+  Cleanup of windowmaker ebuild files, patches, etc
+
+  23 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -windowmaker-0.80.2-r3.ebuild, -windowmaker-0.91.0-r6.ebuild:
+  Pruned old windowmaker ebuilds
+
+*windowmaker-0.91.0-r7 (23 Jun 2005)
+
+  23 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +files/maximize-fix-0.9x.patch, +windowmaker-0.91.0-r7.ebuild:
+  Fixes for bug 71301 (regarding maximize/unmaximize issues)
+
+  23 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  -windowmaker-0.91.0-r4.ebuild, -windowmaker-0.91.0-r5.ebuild:
+  Pruned old revisions
+
+*windowmaker-0.91.0-r6 (23 Jun 2005)
+
+  23 Jun 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +files/singleclick-shadeormaxopts-0.9x.patch2,
+  -windowmaker-0.91.0-r2.ebuild, -windowmaker-0.91.0-r3.ebuild,
+  +windowmaker-0.91.0-r6.ebuild:
+  Fixes for earlier fixes to fix bug 90119 (can't move dock)
+
+*windowmaker-0.91.0-r5 (23 Jun 2005)
+
+  23 Jun 2005; Jonathan Smith <smithj@gentoo.org>
+  +windowmaker-0.91.0-r5.ebuild:
+  #47074: made windowmaker show up in gdm options
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  windowmaker-0.91.0-r1.ebuild:
+  stable on amd64
+
+  24 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.91.0-r4.ebuild:
+  Yet again, more changes per bug 85993
+
+  22 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.91.0-r4.ebuild:
+  argh...forgot to remove a change
+
+  21 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.91.0-r4.ebuild:
+  fixes for giflib changes that caused bug 85993
+
+  20 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org> metadata.xml,
+  windowmaker-0.91.0-r4.ebuild:
+  libtoolize fixes for bug 85993
+
+  20 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.91.0-r1.ebuild, windowmaker-0.91.0-r2.ebuild,
+  windowmaker-0.91.0-r3.ebuild, windowmaker-0.91.0-r4.ebuild:
+  Removed useless USE flag
+
+*windowmaker-0.91.0-r4 (18 Mar 2005)
+
+  18 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  +windowmaker-0.91.0-r4.ebuild:
+  giflib fixes; bug 85720
+
+*windowmaker-0.91.0-r3 (17 Mar 2005)
+
+  17 Mar 2005; Armando Di Cianno <fafhrd@gentoo.org> -files/xinerama.patch,
+  +files/xinerama.patch.bz2, -windowmaker-0.80.2-r1.ebuild,
+  windowmaker-0.80.2-r2.ebuild, windowmaker-0.80.2-r3.ebuild,
+  windowmaker-0.80.2-r4.ebuild, -windowmaker-0.90.0.ebuild,
+  windowmaker-0.91.0-r3.ebuild, -windowmaker-0.91.0.ebuild:
+  bzipped xinerama.patch for older windowmaker ebuilds, as it crossed 20k;
+  removed old windowmaker ebuilds; re-added ~mips keyworded to latest
+  windowmaker rev, as gnustep use flag is now masked for mips, removing the
+  breakage
+
+  10 Jan 2005; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.91.0-r1.ebuild, windowmaker-0.91.0-r2.ebuild,
+  windowmaker-0.91.0.ebuild:
+  Syntactical changes for bug 69872; grammer fixes, too
+
+  09 Jan 2005; <augustus@gentoo.org> :
+  windowmaker-0.91.0-r2.ebuild:
+  Added fix to crash on app launch in windowmaker-0.91.0-r2.ebuild.
+
+  30 Nov 2004; Bryan √òstergaard <kloeri@gentoo.org>
+  windowmaker-0.91.0-r1.ebuild:
+  Stable on alpha, bug 68857.
+
+  26 Nov 2004; Jason Wever <weeve@gentoo.org> windowmaker-0.91.0-r1.ebuild:
+  Stable on sparc wrt securit bug #68857.
+
+  26 Nov 2004; Joseph Jezak <josejx@gentoo.org>
+  windowmaker-0.91.0-r1.ebuild:
+  Marked ppc stable for bug #68857.
+
+  24 Nov 2004; Olivier Crete <tester@gentoo.org> windowmaker-0.91.0-r1.ebuild:
+  Marking stable on x86 per security bug #68857
+
+  23 Nov 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  +files/wmaker.desktop, windowmaker-0.91.0-r1.ebuild:
+  Stable amd64... bug #68857.
+
+  14 Nov 2004; Hardave Riar <hardave@gentoo.org> windowmaker-0.90.0.ebuild,
+  windowmaker-0.91.0-r1.ebuild:
+  Added ~mips, bug #68857.
+
+*windowmaker-0.91.0-r1 (11 Nov 2004)
+
+  11 Nov 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +windowmaker-0.91.0-r1.ebuild:
+  Mass Update: gnustep.eclass revamped to allow configurable root install;
+  gnustep-base/libs/apps updated to utilize new gnustep.eclass (only versions
+  bumped where files would change); some KEYWORDS were accidentally dropped
+  between version bumps of packages -- this has been resolved; windowmaker
+  correctly supports gnustep now
+
+  07 Nov 2004; Simon Stelling <blubb@gentoo.org> windowmaker-0.91.0.ebuild:
+  added ~amd64
+
+  05 Nov 2004; Simon Stelling <blubb@gentoo.org> windowmaker-0.90.0.ebuild:
+  added ~amd64
+
+  01 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org>
+  windowmaker-0.91.0.ebuild:
+  Keyworded ~sparc
+
+  31 Oct 2004; Bryan √òstergaard <kloeri@gentoo.org>
+  windowmaker-0.90.0.ebuild:
+  ~alpha keyword.
+
+  30 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> windowmaker-0.91.0.ebuild:
+  Added ~x86 keyword...
+
+*windowmaker-0.91.0 (29 Oct 2004)
+
+  29 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.90.0.ebuild, +windowmaker-0.91.0.ebuild:
+  Version bump; new version for upstream changes for better NETWM support;
+  keyworded for ~ppc
+
+  29 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org> :
+  Added depend for media-libs/fontconfig to 0.90.0
+
+  28 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  windowmaker-0.90.0.ebuild:
+  Fixed einfo typo about location of WPrefs.app
+
+  26 Oct 2004; Michele Noberasco <s4t4n@gentoo.org> windowmaker-0.90.0.ebuild:
+  Added ~x86 keyword...
+
+  24 Oct 2004; Jason Wever <weeve@gentoo.org> windowmaker-0.90.0.ebuild:
+  Added ~sparc keyword wrt bug #68729.
+
+*windowmaker-0.90.0 (24 Oct 2004)
+
+  24 Oct 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  +windowmaker-0.90.0.ebuild:
+  Version bump; keyworded for ~ppc; new version supports anti-aliased fonts --
+  finally ;-) -- as well as NETWM support for better GNOME 2 and KDE 3 use.
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  windowmaker-0.80.2-r3.ebuild, windowmaker-0.80.2-r4.ebuild:
+  Masked windowmaker-0.80.2-r4.ebuild stable for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  windowmaker-0.80.2-r3.ebuild:
+  Masked windowmaker-0.80.2-r3.ebuild stable for ppc
+
+  30 Aug 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> :
+  Masked windowmaker-0.80.2-r2.ebuild stable for ppc
+
+  25 Jul 2004; Michele Noberasco <s4t4n@gentoo.org> windowmaker-0.80.2-r4.ebuild:
+  Fixed non existing dodoc entry BUGFORUM to BUGFORM.
+
+  23 Jul 2004; Tom Gall <tgall@gentoo.org> windowmaker-0.80.2-r4.ebuild:
+  stable on ppc64
+
+*windowmaker-0.80.2-r4 (07 Jun 2004)
+
+  17 Jun 2004; Armando Di Cianno <fafhrd@gentoo.org>
+  metadata.xml, windowmaker-0.80.2-r4.ebuild:
+  Added windowmaker to gnustep herd.  Added ~ARCH for ppc64.
+  
+  07 Jun 2004; Nick Hadaway <raker@gentoo.org> 
+  windowmaker-0.80.2-r4.ebuild, files/wmfpo.patch, 
+  files/gtk2flickerfix.patch:
+  A new release of WindowMaker coming from upstream cvs will be real 
+  soon now but these two updates are very nice.  Pretty soon
+  windowmaker will be more popular than gnome and kde combined! muhaha!
+  GTK+2 applications should no longer fight for focus and the wmfpo patch
+  adds options in WPrefs.app for single-click window raising and window 
+  maximizing instead of shading.  Thanks to bug submitters and testers 
+  on #38481 and #49804.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  windowmaker-0.80.2-r1.ebuild, windowmaker-0.80.2-r2.ebuild:
+  Add inherit eutils
+
+  22 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> windowmaker-0.80.3-r3.ebuild :
+  Changed flags alteration.
+
+  19 Jul 2003; Nick Hadaway <raker@gentoo.org> windowmaker-0.80.2-r3.ebuild:
+  Added a xinerama patch.
+
+*windowmaker-0.80.2-r3 (10 Jul 2003)
+
+  10 Jul 2003; Nick Hadaway <raker@gentoo.org> windowmaker-0.80.2-r3.ebuild,
+  file/wlist.patch, files/trance.patch.WM-0.80.2.diff:
+  Scroll with arrow keys and a menu transparency patch. :)
+
+  19 Jun 2003; Joshua Kinard <kumba@gentoo.org> windowmaker-0.80.2-r2.ebuild:
+  Added ~mips to KEYWORDS.
+
+  12 Jun 2003; Seemant Kulleen <seemant@gentoo.org>
+  windowmaker-0.80.2-r1.ebuild, windowmaker-0.80.2-r2.ebuild:
+  xpm is provided by xfree
+
+*windowmaker-0.80.2-r2 (06 Jun 2003)
+
+  06 Jun 2003; robh <robh@gentoo.org> windowmaker-0.80.2-r2.ebuild:
+  fixed the path for WPrefs. Thanks to Eric Shattow <shadow@ilpornostar.com>
+
+*windowmaker-0.80.2-r1
+
+  05 Jun 2003; robh <robh@gentoo.org> windowmaker-0.80.1-r2.ebuild,
+  windowmaker-0.80.2.ebuild, files/windowmaker-0.80.1-gentoo.patch:
+  moved /usr/share/GNUstep sillyness to /usr/lib/GNUstep. closes #10870.
+  removed old versions.
 
   06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
  
@@ -67,11 +350,11 @@
  Version bump.  Removed Taiwanese translations installation.
 
 *windowmaker-0.80.0-r3 (10 May 2002)
-  10 May 2002; JosÈ Alberto Su·rez LÛpez <bass@gentoo.org> windowmaker-0.80.0-r3.ebuild :
+  10 May 2002; Jos√© Alberto Su√°rez L√≥pez <bass@gentoo.org> windowmaker-0.80.0-r3.ebuild :
   added a comment about the libxpm.
 
 *windowmaker-0.80.0-r3 (8 May 2002)
-  8 May 2002; JosÈ Alberto Su·rez LÛpez <bass@gentoo.org> windowmaker-0.80.0-r3.ebuild :
+  8 May 2002; Jos√© Alberto Su√°rez L√≥pez <bass@gentoo.org> windowmaker-0.80.0-r3.ebuild :
   fix a error in the url of the WindowMaker-extra.
 
 *windowmaker-0.80.0-r3 (18 Apr 2002)

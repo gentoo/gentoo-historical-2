@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lhs2tex/lhs2tex-1.9.ebuild,v 1.1 2004/03/20 20:07:34 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/lhs2tex/lhs2tex-1.9.ebuild,v 1.1.1.1 2005/11/30 09:48:23 chriswhite Exp $
 
 SRC_URI="http://www.cs.uu.nl/~andres/lhs2tex/${P}.tar.bz2"
 
@@ -20,7 +20,7 @@ DEPEND=">=dev-tex/polytable-0.7.2
 
 src_compile() {
 	# polytable is installed separately
-	econf --disable-polytable
+	econf --disable-polytable || die "econf failed"
 	# if doc is set, we build the documentation instead
 	# of using the prebuilt file
 	use doc && rm doc/Guide2.dontbuild

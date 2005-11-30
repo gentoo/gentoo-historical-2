@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/lighttpd/lighttpd-1.3.16.ebuild,v 1.1 2005/08/02 13:17:59 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/lighttpd/lighttpd-1.3.16.ebuild,v 1.1.1.1 2005/11/30 09:46:41 chriswhite Exp $
 
 inherit eutils
 
@@ -12,13 +12,13 @@ SRC_URI="http://www.lighttpd.net/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="mysql ssl php xattr ldap"
+KEYWORDS="~amd64 mips ~ppc x86"
+IUSE="mysql ssl php xattr ldap ipv6"
 
-RDEPEND="virtual/libc
-		app-arch/bzip2
+RDEPEND="app-arch/bzip2
 		>=dev-libs/libpcre-3.1
 		>=sys-libs/zlib-1.1
+		xattr? ( sys-apps/attr )
 		ldap? ( >=net-nds/openldap-2.1.26 )
 		mysql? ( >=dev-db/mysql-4.0.0 )
 		ssl? ( >=dev-libs/openssl-0.9.7 )
@@ -32,7 +32,7 @@ LOG_DIR="/var/log/lighttpd/"
 
 pkg_setup() {
 	enewgroup lighttpd
-	enewuser lighttpd -1 /bin/false "${LIGHTTPD_DIR}" lighttpd
+	enewuser lighttpd -1 -1 "${LIGHTTPD_DIR}" lighttpd
 }
 
 src_unpack() {
@@ -42,16 +42,20 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-1.3.13-no-mysql-means-no-mysql.diff
 	epatch ${FILESDIR}/${PN}-1.3.13-ldap-binddn.diff
 	use php && epatch ${FILESDIR}/${PN}-1.3.13-php.diff
-	epatch ${FILESDIR}/${P}-zope-deserves-lovins-too.diff
 }
 
 src_compile() {
-	local my_conf="--libdir=/usr/$(get_libdir)/${PN}"
+	local myconf="--libdir=/usr/$(get_libdir)/${PN}"
 
+	# somehow during the process the BSD COPYING gets
+	# overwritten with a GPL one
+	mv COPYING{,.orig}
 	einfo "Regenerating automake/autoconf files"
 	autoreconf -f -i || die "autoreconf failed"
+	mv COPYING{.orig,}
 
-	econf ${my_conf} \
+	econf --libdir=/usr/$(get_libdir)/${PN} \
+		$(use_enable ipv6) \
 		$(use_with mysql) \
 		$(use_with ldap) \
 		$(use_with xattr attr) \

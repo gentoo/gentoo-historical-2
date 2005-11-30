@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/alpha/2004.3/make.defaults,v 1.1 2004/09/21 14:21:42 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/alpha/2004.3/make.defaults,v 1.1.1.1 2005/11/30 09:48:36 chriswhite Exp $
 #
 # System-wide defaults for the Portage system
 # See portage(5) manpage
@@ -13,7 +13,6 @@ GRP_STAGE23_USE="ipv6 pam tcpd readline nls ssl gpm perl python berkdb acl ncurs
 # pulled in during *emerge system*!
 
 USE="
-alpha
 arts
 avi
 berkdb
@@ -21,6 +20,8 @@ bitmap-fonts
 crypt
 cups
 encode
+fortran
+font-server
 foomaticdb
 gdbm
 gif
@@ -50,15 +51,15 @@ qt
 quicktime
 readline
 sdl
-slang
 spell
 ssl
 tcpd
 truetype
+truetype-fonts
+type1-fonts
 X
 xml2
 xmms
-xprint
 xv
 zlib
 "

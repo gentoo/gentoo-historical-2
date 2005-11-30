@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PEAR/PEAR-PEAR-1.3.5-r1.ebuild,v 1.1 2005/03/02 12:53:13 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-PEAR/PEAR-PEAR-1.3.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:57 chriswhite Exp $
 
 ARCHIVE_TAR="1.2"
 CONSOLE_GETOPT="1.2"
 PEAR="1.3.5"
-XML_RPC="1.2.0"
+XML_RPC="1.3.1"
 
-DESCRIPTION="PEAR Base System."
+DESCRIPTION="PEAR Base System"
 HOMEPAGE="http://pear.php.net/"
 SRC_URI="http://pear.php.net/get/Archive_Tar-${ARCHIVE_TAR}.tgz
 	http://pear.php.net/get/Console_Getopt-${CONSOLE_GETOPT}.tgz
@@ -16,21 +16,51 @@ SRC_URI="http://pear.php.net/get/Archive_Tar-${ARCHIVE_TAR}.tgz
 
 LICENSE="PHP"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
+
 DEPEND="virtual/php dev-php/php"
 PDEPEND=">=dev-php/PEAR-Archive_Tar-1.1
-		>=dev-php/PEAR-Console_Getopt-1.2
-		>=dev-php/PEAR-XML_RPC-1.0.4"
+	>=dev-php/PEAR-Console_Getopt-1.2
+	>=dev-php/PEAR-XML_RPC-1.3.1"
+
+pkg_preinst() {
+	if [[ -d "${ROOT}"/usr/lib/php ]] && [[ ! -e "${ROOT}"/usr/share/php ]] ; then
+		for f in "${ROOT}"/usr/lib/php/*
+		do
+			if [ "$f" != "/usr/lib/php/build" ] &&
+			   [ "$f" != "/usr/lib/php/extensions" ]
+				then mv $f "${ROOT}"/usr/share/php;
+			fi
+		done
+
+		if [[ -d "${ROOT}"/usr/bin/pear ]] ; then
+			sed -i 's:/usr/lib/php:/usr/share/php:g' ${ROOT}/usr/bin/pear || die
+		fi
+
+		rm ${ROOT}/etc/pear.conf
+	fi
+}
 
 src_install() {
-	if [ ! -x "/usr/bin/pear" ]; then
-		einfo "No previous PEAR installation found."
+	# Prevent SNMP related sandbox violoation.
+	addpredict /usr/share/snmp/mibs/.index
+	addpredict /var/lib/net-snmp/
+
+	if [[ -d "${ROOT}"/usr/bin/pear ]] ; then
+		install_pear_without_bootstrap
+	else
 		bootstrap_pear
 		install_pear_after_bootstrap
-	else
-		einfo "Previous PEAR installation found."
-		install_pear_without_bootstrap
+	fi
+}
+
+pkg_postinst() {
+	if has_version "<${PV}"; then
+		ewarn "The location of the local PEAR repository has been changed"
+		ewarn "from /usr/lib/php to /usr/share/php."
+		ewarn "If you had a standard setup previously installed PEAR packages"
+		ewarn "have been moved to the new location."
 	fi
 }
 
@@ -44,7 +74,7 @@ bootstrap_pear() {
 	cp ${WORKDIR}/PEAR-${PEAR}/scripts/pearcmd.php ${WORKDIR}/PEAR/pearcmd.php
 	cp ${WORKDIR}/PEAR-${PEAR}/scripts/pear.sh ${WORKDIR}/PEAR/pear
 	sed -i 's:@php_bin@:/usr/bin/php:g' ${WORKDIR}/PEAR/pear || die
-	sed -i 's:@php_dir@:/usr/lib/php:g' ${WORKDIR}/PEAR/pear || die
+	sed -i 's:@php_dir@:/usr/share/php:g' ${WORKDIR}/PEAR/pear || die
 
 	cp -r ${WORKDIR}/Archive_Tar-${ARCHIVE_TAR}/Archive ${WORKDIR}/PEAR/Archive
 
@@ -54,14 +84,22 @@ bootstrap_pear() {
 	cp ${WORKDIR}/XML_RPC-${XML_RPC}/Server.php ${WORKDIR}/PEAR/XML/RPC/Server.php
 
 	cd ${WORKDIR}/PEAR
-	insinto /usr/lib/php
+	insinto /usr/share/php
 	doins -r Archive Console OS PEAR XML *.php
 	dobin pear
 }
 
 install_pear_after_bootstrap() {
+	/usr/bin/php -d include_path=".:${D}/usr/share/php"	${D}/usr/share/php/pearcmd.php config-set doc_dir /usr/share/php/doc || die
+	/usr/bin/php -d include_path=".:${D}/usr/share/php"	${D}/usr/share/php/pearcmd.php config-set data_dir /usr/share/php/data || die
+	/usr/bin/php -d include_path=".:${D}/usr/share/php"	${D}/usr/share/php/pearcmd.php config-set php_dir /usr/share/php || die
+	/usr/bin/php -d include_path=".:${D}/usr/share/php"	${D}/usr/share/php/pearcmd.php config-set test_dir /usr/share/php/test || die
+
+	mkdir ${D}/etc
+	cp $HOME/.pearrc ${D}/etc/pear.conf
+
 	prepare_pear_install
-	/usr/bin/php -d include_path=".:${D}/usr/lib/php" ${D}/usr/lib/php/pearcmd.php install --nodeps -R ${D} package.xml || die
+	/usr/bin/php -d include_path=".:${D}/usr/share/php" ${D}/usr/share/php/pearcmd.php install --nodeps -R ${D} package.xml || die
 }
 
 install_pear_without_bootstrap() {

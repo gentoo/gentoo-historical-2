@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/kisdndial/kisdndial-0.1.6.ebuild,v 1.1 2004/11/21 09:08:37 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/kisdndial/kisdndial-0.1.6.ebuild,v 1.1.1.1 2005/11/30 09:46:12 chriswhite Exp $
 
 inherit kde
 

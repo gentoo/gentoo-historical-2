@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<herd>no-herd</herd>
+<herd>crypto</herd>
 <maintainer>
-  <email>taviso@gentoo.org</email>
-  <name>Tavis Ormandy</name>
+  <email>crypto@gentoo.org</email>
+  <name>Crypto Herd</name>
 </maintainer>
 <longdescription>
 GnuPG is a complete and free replacement for PGP. Because it does not use the patented IDEA algorithm, it can be used without any restrictions. GnuPG is a RFC2440 (OpenPGP) compliant application.

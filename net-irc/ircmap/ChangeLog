@@ -1,6 +1,21 @@
 # ChangeLog for net-irc/ircmap
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircmap/ChangeLog,v 1.1 2002/12/12 17:42:33 phoenix Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircmap/ChangeLog,v 1.1.1.1 2005/11/30 09:48:55 chriswhite Exp $
+
+  14 Feb 2005; Sven Wegener <swegener@gentoo.org> ircmap-0.99.ebuild:
+  Removed ${D} from insinto.
+
+  24 Jul 2004; Sven Wegener <swegener@gentoo.org> ircmap-0.99.ebuild:
+  Tidied the ebuild.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org> ircmap-0.99.ebuild:
+  virtual/glibc -> virtual/libc
+
+  23 Mar 2004; Martin Holzer <mholzer@gentoo.org> ircmap-0.99.ebuild:
+  fixing depend qa issue. see 45343.
+
+  29 Jan 2004; Chuck Short <zul@gentoo.org> ircmap-0.99.ebuild:
+  Header cleanups.
 
 *ircmap-0.99 (12 Dec 2002)
 

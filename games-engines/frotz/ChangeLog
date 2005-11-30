@@ -1,6 +1,21 @@
-# ChangeLog for app-games/frotz
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/frotz/ChangeLog,v 1.1 2003/09/09 17:34:21 vapier Exp $
+# ChangeLog for games-engines/frotz
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/frotz/ChangeLog,v 1.1.1.1 2005/11/30 09:46:26 chriswhite Exp $
+
+  22 Jul 2005; Michael Sterrett <mr_bones_@gentoo.org> frotz-2.43.ebuild:
+  Fix doc install and oss sound support - patch from David Turner via bug #95818
+
+  15 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org> frotz-2.43.ebuild:
+  Removed INSTALL file.
+
+  05 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> frotz-2.43.ebuild:
+  clean up deps, docs; fix install (bug #69518); error message for emake
+
+  19 Apr 2004; Chris Gianelloni <wolf31o2@gentoo.org> frotz-2.43.ebuild:
+  Marking stable on amd64 (no bugs in 534 days).
+
+  15 Apr 2004; <augustus@gentoo.org> frotz-2.43.ebuild:
+  Added ~amd64 keyword.
 
 *frotz-2.43 (02 Nov 2002)
 

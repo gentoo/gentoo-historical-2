@@ -1,146 +1,352 @@
-#
-# The purpose of this file is to record all possible use items available 
-# in Gentoo at this time.
-#
-# Gentoo Developers:
-# * If you add a use item to an ebuild, please add it to this list
-#   along with a short description.
-# * If you remove a use item from this list, make sure it is no longer used
-#   in ANY ebuild.
-# * If you think you can write a better description of a use item, please do.
-# * If you see use items without a description, and know what it means,
-#   please fill it in.
-#
-# <jhhudso@gentoo.org>
-#
-# Last updated: 11 Apr 2002 21:31:03 CDT
-#
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/use.desc,v 1.1.1.1 2005/11/30 09:48:25 chriswhite Exp $
 
-3dfx  - Adds support for 3dfx video cards. See: voodoo4,voodoo5,voodoo6
+# keep them sorted (excluding the special arch flags near the end).
+
+3dfx - Adds support for 3dfx video cards to XFree86. See: voodoo3
 3dnow - Adds support for 3dnow multimedia processor instructions
-aalib - Adds support for media-libs/aalib (ASCI-Graphics Library)
-acl - Adds support for sys-apps/acl (XFS dump/restore utilities)
+X - Adds support for X11
+Xaw3d - Adds support of the 3d athena widget set
+a52 - Enables support for decoding ATSC A/52 streams used in DVD
+aac - Enables support for MPEG-4 AAC Audio
+aalib - Adds support for media-libs/aalib (ASCII-Graphics Library)
+accessibility - Adds support for accessibility (eg 'at-spi' library)
+acl - Adds support for Access Control Lists
+acpi - Adds support for Advanced Configuration and Power Interface
+adabas - Adds support for the Adabas database engine
+adns - Adds support for the adns DNS client library
 afs - Adds OpenAFS support (distributed file system)
+aim - Enable AIM IM protocol support
 alsa - Adds support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
+altivec - Adds support for optimizations for G4 and G5/ppc970 processors
+apache - Chooses Apache1 support when a package optionally supports Apache1
+apache2 - Chooses Apache2 support when a package supports both Apache1 and Apache2
 apm - Adds APM (Advanced Power Management) support
-arts - Adds support for kde-base/kdelibs / kde-base/arts
-atlas - Adds support for atlas instead of blas in dev-lang/R 
-avi - Adds Win32 AVI support
-avifile - Adds support for media-video/avifile (Library for AVI-Files)
+arts - Adds support for aRts: the KDE sound daemon
+audiofile - Adds support for libaudiofile where applicable
+avi - Adds avifile (Library for avi) support
+bash-completion - Enable bash-completion support
+bcmath - Adds support for libbcmath
 berkdb - Adds support for sys-libs/db (Berkeley DB for MySQL)
+bidi - Enables bidirectional language support
+bindist - Flag to enable or disable options for prebuilt (GRP)  packages (eg. due to licensing issues)
+birdstep - Adds support for the Birdstep Database Server
+blas - adds support for the virtual/blas numerical library
+bluetooth - Enable Bluetooth Support
+bmp - Adds beep media player support. Mainly used to support bmp plugins in xmms, though also used for generic BMP support.
 bonobo - Adds support for gnome-base/bonobo (Gnome CORBA interfaces)
-bootcd - Used for building a package without manpages, extras for ISO image
-bootstrap - Used for not building addons to key packages during bootstrap
-build - Used for not building addons to key packages during bootstrap
-css - Add CSS Support (Most likely DeCSS Support)
+bootstrap - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during original system bootstrapping
+boundschecking - add bounds checking patch by Haj Ten Brugge, this will DISABLE the hardened PIE+SSP patches
+build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating build images and the first half of bootstrapping.
+bzip2 - Use the bzlib compression library
+calendar - Adds support for calendars (not using mcal!)
+canna - Adds support for the Canna kana to kanji conversion engine
+caps - Use Linux capabilities library to control privileges.
+cdb - Adds support for the CDB database engine from the author of qmail
+cdinstall - Copies files from the CD rather than asking the user to copy them, mostly used with games
+cdparanoia - Enables cdparanoia support
+cdr - Adds support for CD writer hardware
+chasen - Enable chasen support
+cjk - Adds support for Multi-byte character languages (Chinese, Japanese, Korean)
+clamav - Adds support for Clam AntiVirus software (usually with a plugin)
+cpdflib -  Adds support for clibpdf
+crypt - Add support for encryption -- using mcrypt or gpg where applicable
+cscope - Enables cscope interface -- in vim for example
+ctype - Enables ctype functions 
 cups - Add support for CUPS (Common Unix Printing System)
-decss - Adds support for DVDs
-dga - Adds DGA Support (Xfree86 )
-directfb - Adds support for dev-libs/DirectFB (library for FB devices)
+curl - Adds support for client-side URL transfer library
+curlwrappers - Adds support for using curl in streams
+db2 - Enables support for IBM DB2 database server
+dba - Enables dbm-compatible layers
+dbase - Adds support for dbase file format
+dbm - Adds support for generic DBM databases.
+dbmaker - Adds support for dbmaker database server
+dbus - Enable dbus support for anything that needs it (gpsd, gnomemeeting, etc)
+dbx - Adds database abstraction layer
+debug - Tells configure and the makefiles to build for debugging. Effects vary across packages, but generally it will at least add -g to CFLAGS. Remember to set FEATURES=nostrip too
+dedicated - Adds support for dedicated game servers (some packages do not provide clients and servers at the same time)
+dga - Adds DGA Support (Xfree86) (DGA=Direct Graphic Access)
+dio - Adds direct i/o support
+directfb - Adds support for DirectFB layer (library for FB devices)
+doc - Adds extra documentation (API, Javadoc, etc)
+dri - Enable direct rendering: used for accelerated 3D and some 2D, like DMA
+dts - Enables libdts (DTS Coherent Acoustics decoder) support
+dv - Enables support for a codec used by many camcorders
+dvb - Adds support for DVB (Digital Video Broadcasting)
 dvd - Adds support for DVDs
-encode - Adds support for MEncoder
+dvdr - Adds support for DVD writer hardware (e.g. in xcdroast)
+dvdread - Enables usage of Ogle's libdvdread for DVD playback
+eds - Enables support for Evolution-Data-Server(eds)
+emacs - Adds support for GNU Emacs
+emacs-w3 - Add support for Emacs/W3 where applicable
+emboss - Adds support for the European Molecular Biology Open Software Suite
+empress - Adds support for the Empress database server
+empress-bcs - Adds local access support for the Empress database server
+emul-linux-x86 - Pull in binary support libraries for x86 applications
+encode - Adds support for encoding of audio or video files
 esd - Adds support for media-sound/esound (Enlightened Sound Daemon)
-evo - Adds support for evolution in gnumeric
-fbcon - Adds framebuffer support
-fbdev - Adds framebuffer support
+esoob - Adds support for Easysoft OOD database
+ethereal - Adds support for ethereal wiretap log support in kismet
+ev6 - Assume Alpha processor is EV6 or better
+evo - Adds support for evolution in gnumeric and multisync
+examples - Install example source code
+exif - Adds support for reading EXIF headers from JPEG and TIFF images
+expat - Enable the use of dev-libs/expat
+fam - Enable FAM support
+fastcgi - Add support for the FastCGI interface
+fbcon - Adds framebuffer support for the console, via the kernel
+fdftk - Add supports for Adobe's FDF toolkit.
+ffmpeg - Enable ffmpeg support
+fftw - Use FFTW library for computing Fourier transforms
+filepro - Adds support for filePro databases
+firebird - Adds support for the Firebird relational database
+flac - Adds support for the flac audio codec
 flash - Adds support for creating flash files using Ming
+flatfile - Adds dbm support for flat files
+foomaticdb - Adds support for the foomatic printing driver database
+fortran - Adds support for fortran (formally f77)
+freetds - Adds support for the TDS protocol to connect to MSSQL/Sybase databases
+freewnn - Adds support for FreeWnn kana to kanji conversion engine
+frontbase - Adds support for the frontbase sql server
+ftp - Adds FTP support
 gb - Adds support for Gnome Basic to gnumeric
-gd - Adds support for sys-libs/gdbm (GNU database libraries)
+gcj - Enable building with gcj
+gd - Adds support for media-libs/gd (to generate graphics on the fly)
+gd-external - Use the external version of gd rather than the bundled one (possibly dangerous)
 gdbm - Adds support for sys-libs/gdbm (GNU database libraries)
-gettext - Adds support for the GNU locale utilities
+geoip - Add geoip support
 ggi - Adds support for media-libs/libggi (non-X video api/drivers)
 gif - Adds GIF image support
-glide - Adds media-libs/glide support to Xfree86
+ginac - Adds sci-mathematics/ginac (symbolic math) support
+glut - Build an OpenGL plugin using the GLUT library
+gmp - Adds support for dev-libs/gmp (GNU MP library)
 gnome - Adds GNOME support
-gpg - Adds support for gpg (GnuPG encryption system)
-gpgme - Add support for gpgme to net-mail/sylpheed-claws
+gnustep - Adds integration with GNUstep environment
+gnutls - Adds support for net-libs/gnutls
 gphoto2 - Adds digital camera support
 gpm - Adds support for sys-libs/gpm (Console-based mouse driver)
+gps - Adds support for Global Positioning System
+gstreamer - Adds support for media-libs/gstreamer (Streaming media)
 gtk - Adds support for x11-libs/gtk+ (The GIMP Toolkit)
+gtk2 - Use gtk+-2.0.0 over gtk+-1.2 in cases where a program supports both.
 gtkhtml - Adds support for gnome-extra/gtkhtml
 guile - Adds support for dev-util/guile (interpreter for Scheme)
+hal - Enable Hardware Abstraction Layer (HAL) support
+hardened - activate default security enhancements for toolchain (gcc, glibc, binutils)
+hardenedphp - include the hardened php security patch for the php group of ebuilds
+howl - Enable howl support, enables DNS Service Discovery (DNS-SD)
+hyperwave-api - Adds support for Hyperwave document storage system
+ibm - Add support for IBM ppc64 specific systems
+icc - Add support for the Intel C++ Compiler (does _not_ set $CC)
+iconv - Enable support for the iconv character set conversion library
+icq - Enable ICQ IM protocol support
+idn - Enable support for Internationalized Domain Names
+ieee1394 - Enable FireWire/iLink IEEE1394 support (dv, camera, ...)
+ifc - use ifc instead of g77 to build
+imagemagick - Enables support for Imagemagick (image converter)
 imap - Adds support for IMAP
-imlib - Adds support for media-libs/imlib (Image loading and rendering library)
+imlib - Adds support for imlib, an image loading and rendering library
+informix - Adds support for Informix database
+ingres - Adds support for Ingres database
+inifile - Adds dbm support for .ini files
 innodb - Adds innodb support for mySQL (transaction support)
+interbase - Adds support for Interbase database
+iodbc - Adds support for iODBC library
 ipv6 - Adds support for IP version 6
+jabber - Enable jabber IM protocol support
+jack - Adds support for the JACK Audio Connection Kit
 java - Adds support for Java
+javascript - enable javascript support
+jikes - Compile Java source code with jikes (faster)
+joystick - Add support for joysticks in all packages
 jpeg - Adds JPEG image support
-jpilot - Adds JPilot support (Software for the Palm Pilot)
+junit - Adds junit awareness -- useful for developers.
 kde - Adds support for kde-base/kde (K Desktop Enviroment)
-lame - Adds support for the lame mp3 encoder
-lcms - Adds lcms support to media-gfx/imagemagick (Color management)
+kdeenablefinal - Makes kde ebuilds use the enable-final flag, yielding big compilation speedups at the cost of very heavy mem usage
+kdexdeltas - Makes kde ebuilds download binary diffs rather than entire new tarballs for every new release
+kerberos - Adds kerberos support
+krb4 - Adds optional kerberos 4 compatibility support
+ladcca - Adds Linux Audio Developer's Configuration and Connection API support (LADCCA)
+lapack - adds support for the virtual/lapack numerical library
+lcms - Adds lcms support (color management engine)
 ldap - Adds LDAP support (Lightweight Directory Access Protocol)
-libg++
-libgda
-libmpeg3
-libwww
-licq
-mcrypt
-mga
-mhash
-mitshm
-mmx
-motif
-mozaccess-builtin
-mozctl
-mozilla
-mozirc
-mozxmlterm
-mta
-mysql
-nas
-ncurses
-nls
-nocardbus
-objprelink
-odbc
-ogg
-oggvorbis
-opengl
-oss
-pam
-pcmcia
-pda
-pdflib
-perl
-pic
-pixbuf
-plotutils
-pnp
-postgres
-python
-qt
-qtmt
-quicktime
-readline
-ruby
-samba
-sdl
-slang
-slp
-snmp
-socks5
-spell
-sse
-ssl
-static
-svga
-tcl
-tcltk
-tcpd
-tetex
-tex
-truetype
-trusted
-ungif
-voodoo3
-voodoo4
-voodoo5
-vorbis
-X
-xface
-xml
-xml2
-xmms
-xv
-zeo
+leim - Adds input methods support to Emacs
+lesstif - Use lesstif over openmotif in cases where a program supports both
+libcaca - Add support for colored ASCII-art graphics
+libedit - Use the libedit library (replacement for readline)
+libg++ - Adds C++ modules in dev-db/postgresql (libpq++)
+libgda - Adds GNU Data Access (CORBA wrapper) support for gnumeric
+libwww - Adds libwww support (General purpose WEB API)
+lirc - Adds support for lirc (Linux's Infra-Red Remote Control)
+livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building.
+lm_sensors - Adds linux lm_sensors (hardware sensors) support
+lua - Enable Lua scripting support
+m17n-lib - Enable m17n-lib support
+mad - Adds support for mad (high-quality mp3 decoder library and cli frontend)
+maildir - Adds support for maildir (~/.maildir) style mail spools
+mailwrapper - Adds mailwrapper support to allow multiple MTAs to be installed
+matroska - Adds support for the matroska container format
+matrox - Adds Matrox MGA support to mplayer
+mbox - Adds support for mbox (/var/spool/mail) style mail spools
+mcal - Adds support for MCAL calendar system
+mcve - Support for the MCVE credit card payment system
+memlimit - Adds memory usage limiting in supporting programs
+mhash - Adds support for the mhash library
+migemo - enable migemo support for Japanese
+mikmod - Adds libmikmod support to allow playing of SoundTracker-style music files
+milter - Adds sendmail mail filter (milter) support
+mime - Adds MIME support
+ming - Adds support for ming library for creating flash format files
+minimal - Install a very minimal build (disables, for example, plugins, fonts, most drivers, non-critical features)
+mmap - Adds mmap support
+mmx - Adds support for optimizations for Pentium MMX and Athlon class processors
+mng - Adds support for libmng (MNG images)
+mnogosearch - Adds support for the mnoGoSearch search engine
+mono - Build Mono bindings to support dotnet type stuff
+motif - Adds motif support (x11-libs/openmotif x11-libs/lesstif)
+mozilla - Adds mozilla support
+mp3 - Add support for reading mp3 files
+mpeg - Adds libmpeg3 support to various packages.
+mpi - Adds MPI (Message Passing Interface) layer to the apps that support it.
+msession - Adds support for msession daemon
+msn - Enable MSN Messenger IM protocol support
+msql - Adds support for the MSQL database server
+mssql - Adds support for Microsoft SQL Server database
+mule - Adds multi-language support to XEmacs
+multilib - On 64bit systems, if you want to be able to compile 32bit and 64bit binaries
+mysql - Adds mySQL support
+mysqli - Adds support for the improved mySQL libraries
+nas - Adds support for network audio sound
+ncurses - Adds ncurses support (console display library)
+netboot - Enables network booting
+netcdf - Enable NetCDF data format support
+neXt - Enable neXt toolkit
+nhc98 - Use the nhc98 Haskell compiler instead of GHC if the package supports it
+nis - Support for NIS/YP services
+nls - Adds Native Language Support (using gettext - GNU locale utilities)
+nocd - Tells emerge to install all files required to run the application without a CD mounted
+nocxx - Disable support for C++ (DONT USE THIS UNLESS YOU KNOW WHAT YOU'RE DOING)
+nptl - Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)
+nsplugin - Builds plugins for Netscape compatible browsers
+ocaml - Adds support/bindings for the Ocaml language
+oci8 - Adds Oracle 8 Support
+odbc - Adds ODBC Support (Open DataBase Connectivity)
+offensive - Enables potentially offensive items in packages
+ofx - Enable support for importing (and exporting) OFX (Open Financial eXchange) data files
+ogg - Adds support for the Ogg container format (commonly used by Vorbis, Theora and flac)
+oggvorbis - Adds support for the OggVorbis audio encoding - DEPRECATED useflag 
+openal - Adds support for the Open Audio Library
+opengl - Adds support for OpenGL
+oracle7 - Adds support for Oracle 7
+oracle - Enable oracle support
+osc - Enables support for Open Sound Control
+oscar - Enable Oscar (AIM/ICQ) IM protocol support
+oss - Adds support for OSS (Open Sound System)
+ovrimos - Adds support for the Ovrimos Database engine
+pam - Adds support PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
+pcmcia - Adds support for PCMCIA slots/devices found on laptop computers
+pcntl - Adds support for process creation functions
+pcre - Adds support for Perl Compatible Regular Expressions
+pda - Adds support for portable devices.
+pdflib - Adds support for PDF (Portable Document Format)
+perl - Adds support/bindings for the Perl language.
+pfpro - Adds support for Verisign Payflow Pro
+php - Include support for php
+pic - Build Position Independent Code.  Do not utilize this flag unless you know what you're doing.
+plotutils - Adds plotutils support to gnuplot (library for 2-D vector graphics)
+png - Adds support for libpng (PNG images)
+portaudio - Adds support for the crossplatform portaudio audio API
+posix - Adds support for POSIX-compatible functions
+postgres - Adds support for the postgresql database
+ppds - Adds support for automatically generated ppd (printing driver) files
+prelude - Adds support/bindings for the Prelude Intrusion Detection System
+profile - Adds profile support to builds of packages (will likely vary from ebuild to ebuild in support)
+python - Adds support/bindings for the Python language
+qdbm - Adds support for the qdbm library
+qt - Adds support for the Qt library.
+quicktime - Adds support for OpenQuickTime
+radius - Adds support for RADIUS
+readline - enables support for libreadline, a GNU line-editing library that most everyone wants.
+recode - enables support for the GNU recode library
+ruby - Adds support/bindings for the Ruby language
+samba - Adds support for SAMBA
+sapdb - Adds support for SAP DB
+sasl - Adds support for the Simple Authentication and Security Layer
+scanner - Adds support for scanner hardware (e.g. build the sane frontend in kdegraphics)
+sdl - Adds support for Simple Direct Layer (media library)
+selinux - !!internal use only!! Security Enhanced Linux support, this must be set by the selinux profile or breakage will occur
+session - Adds persistent session support
+sharedext - Adds support for building shared extensions in php
+sharedmem - Adds support for shared memory use
+shorten - Adds support for the shorten audio compressor
+simplexml - support for simplexml
+skey - Enable S/Key (Single use password) authentication support
+slang - Adds support for the slang text display library (it's like ncurses, but different)
+slp - Adds Service Locator Protocol support to CUPS
+smartcard - Enables smartcard support
+sndfile - Adds support for libsndfile
+snmp - Adds support for the Simple Network Management Protocol if available
+soap - Adds support for SOAP
+sockets - Adds support for tcp/ip sockets
+socks5 - Adds support for the socks5 proxy
+solid - Adds support for the Solid database engine
+source - Zip the sources and install them
+sox - Adds support for Sound eXchange (SoX)
+speex - Adds support for the speex audio codec
+spell - Adds dictionary support
+spl - Adds support for the Standard PHP Library
+sqlite - Adds support for sqlite - embedded sql database
+sse - fast floating point optimization for PentiumIII+ class chips
+ssl - Adds support for Secure Socket Layer connections
+static - !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
+svg - Adds support for SVG (Scalable Vector Graphics http://www.w3.org/TR/SVG ).  This option is mainly intended for users that tend to browse multimedia sites frequently.
+svga - Adds support for SVGAlib (graphics library)
+sybase - Adds support for the Sybase SQL Database Server
+sybase-ct - Adds support for Sybase-CT
+symlink - Force kernel ebuilds to automatically update the /usr/src/linux symlink.
+sysvipc - Support for System V-compatible inter-process communication
+szip - Use the szip compression library
+tcltk - Support for Tcl and/or Tk
+tcpd - Adds support for TCP wrappers
+test - Work around to pull in packages needed to run with FEATURES=maketest / FEATURES=test
+tetex - Adds support for teTeX
+theora - Adds support for the Theora Video Compression Codec
+threads - Adds threads support for various packages. Usually pthreads
+tidy - Adds support for HTML Tidy
+tiff - Adds support for the tiff image format
+tokenizer - Adds support for the PHP file parser
+truetype - Adds support for FreeType and/or FreeType2 fonts
+uclibc - Enable uclibc specific patches and build or link uclibc
+unicode - Adds support for Unicode
+usb - Adds USB support to applications that have optional USB support (e.g. cups)
+v4l - Enables video4linux support
+vanilla - Do not add extra patches which change default behaviour
+vcd - Video CD support
+verbose - effects vary across packages; generally used to enable extra informational output during a build or at runtime
+vhosts - Adds support for installing web-based applications into a virtual-hosting environment
+videos - Tells portage to install optional video files (used in some games)
+voodoo3 - Adds support for 3Dfx's Voodoo3 video chipset, else defaults to Voodoo4/5 support if not in USE.
+vorbis - Adds support for the OggVorbis audio codec
+wddx - Adds support for WDDX
+wifi - Enable wireless network functions
+win32codecs - use win32codecs package for dll avi decoding support (wmv and what not)
+wmf - Adds support for the wmf vector image format
+wxwindows - Adds support for wxWindows/wxGTK
+xface - Adds xface support used to allow a small image of xface format to be included in an email via the header 'X-Face'.
+xine - Add support for the XINE movie libraries
+xinerama - Add support for the xinerama X11 extension, which allows you to stretch your display across multiple monitors
+xml - Check/Support flag for XML library (version 1)
+xml2 - Check/Support flag for XML library (version 2)
+xmlrpc - Support for xml-rpc library
+xmms - Check/Support for XMMS (X MultiMedia System) player.
+xosd - Sends display using the X On Screen Display library
+xpm - Support for XPM graphics format.
+xprint - Support for xprint, http://www.mozilla.org/projects/xprint/
+xsl - Check/Support flag for XSL library (version 1)
+xv - Adds in optional support for the Xvideo extension (an X API for video playback)
+xvid - Adds support for xvid.org's open-source mpeg-4 codec
+yahoo - Enable Yahoo Messenger IM protocol support
+yaz - Adds in optional support for the Z39.50 Protocol for Information Retrieval (YAZ)
+zeo - Adds support for Zope Enterprise Objects
+zlib - Adds support for zlib (de)compression

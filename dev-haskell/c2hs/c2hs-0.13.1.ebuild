@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/c2hs/c2hs-0.13.1.ebuild,v 1.1 2004/08/24 08:47:49 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/c2hs/c2hs-0.13.1.ebuild,v 1.1.1.1 2005/11/30 09:48:22 chriswhite Exp $
 
 DESCRIPTION="An interface generator for Haskell"
 HOMEPAGE="http://www.cse.unsw.edu.au/~chak/haskell/c2hs/"
@@ -12,18 +12,23 @@ KEYWORDS="~x86"
 
 IUSE=""
 
-DEPEND=">=virtual/ghc-6.2"
+DEPEND=">=virtual/ghc-6.2
+	!>=virtual/ghc-6.4"
+
+src_unpack() {
+	unpack ${A}
+	# package config file apparently missing haskell98 dependency
+	sed -i "s:lang\":lang\",\"haskell98\":" ${S}/c2hs/c2hs.conf.in
+}
 
 src_compile() {
-	# package config file apparently missing haskell98 dependency
-	sed -i "s:lang\":lang\",\"haskell98\":" c2hs/c2hs.conf.in
-	econf --disable-add-package || die
+	econf --disable-add-package || die "configure failed"
 	# tested emake; doesn't work
-	make || die
+	emake -j1 || die "make failed"
 }
 
 src_install() {
-	make DESTDIR=${D} install || die
+	make DESTDIR=${D} install || die "make install failed"
 }
 
 pkg_postinst() {

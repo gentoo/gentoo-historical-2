@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/outguess/outguess-0.2-r1.ebuild,v 1.1 2005/09/10 23:40:24 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/outguess/outguess-0.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:51 chriswhite Exp $
 
 inherit eutils
 
@@ -10,7 +10,7 @@ SRC_URI="http://packetstormsecurity.nl/crypt/stego/outguess-0.2.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ~ppc ~ppc-macos ~x86"
 IUSE=""
 
 DEPEND="virtual/libc"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-DB_DataObject/PEAR-DB_DataObject-1.7.15-r1.ebuild,v 1.1 2005/09/08 07:36:05 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-DB_DataObject/PEAR-DB_DataObject-1.7.15-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:57 chriswhite Exp $
 
 inherit php-pear-r1
 
@@ -8,8 +8,8 @@ DESCRIPTION="An SQL Builder, Object Interface to Database Tables."
 
 LICENSE="PHP"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 IUSE=""
-RDEPEND=">=dev-php/PEAR-DB-1.7.0
-	>=dev-php/PEAR-Date-1.4.3
-	>=dev-php/PEAR-Validate-0.1.1"
+RDEPEND=">=dev-php/PEAR-DB-1.7.6-r1
+	>=dev-php/PEAR-Date-1.4.3-r1
+	>=dev-php/PEAR-Validate-0.5.0-r1"

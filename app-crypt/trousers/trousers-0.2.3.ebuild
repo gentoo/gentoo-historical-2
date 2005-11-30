@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/trousers/trousers-0.2.3.ebuild,v 1.1 2005/09/17 13:39:17 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/trousers/trousers-0.2.3.ebuild,v 1.1.1.1 2005/11/30 09:44:56 chriswhite Exp $
 
 inherit eutils linux-info autotools
 

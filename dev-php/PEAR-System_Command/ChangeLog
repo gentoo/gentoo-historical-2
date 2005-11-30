@@ -1,6 +1,108 @@
-# ChangeLog for dev-php/PEAR-System_Commannd
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-System_Command/ChangeLog,v 1.1 2002/07/19 17:45:42 rphillips Exp $
+# ChangeLog for dev-php/PEAR-System_Command
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-System_Command/ChangeLog,v 1.1.1.1 2005/11/30 09:47:56 chriswhite Exp $
+
+*PEAR-System_Command-1.0.3 (25 Oct 2005)
+
+  25 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-System_Command-1.0.2-r1.ebuild, +PEAR-System_Command-1.0.3.ebuild:
+  Version bump.
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-System_Command-1.0.2-r1.ebuild:
+  Add ~amd64.
+
+*PEAR-System_Command-1.0.2-r1 (22 Sep 2005)
+*PEAR-System_Command-1.0.2 (22 Sep 2005)
+
+  22 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-System_Command-1.0.1-r1.ebuild, +PEAR-System_Command-1.0.2.ebuild,
+  +PEAR-System_Command-1.0.2-r1.ebuild:
+  Version bump.
+
+  19 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-System_Command-1.0.1-r1.ebuild:
+  Added ~sparc keyword.
+
+  10 Sep 2005; Aron Griffis <agriffis@gentoo.org>
+  PEAR-System_Command-1.0.1.ebuild:
+  Mark 1.0.1 stable on alpha
+
+*PEAR-System_Command-1.0.1-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-System_Command-1.0-r1.ebuild, +PEAR-System_Command-1.0.1-r1.ebuild:
+  Use new PEAR eclass.
+
+  23 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  PEAR-System_Command-1.0.1.ebuild:
+  stable on ia64
+
+  25 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PEAR-System_Command-1.0.1.ebuild:
+  Stable on sparc
+
+  17 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-System_Command-1.0.1.ebuild:
+  Stable on ppc.
+
+  16 May 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-System_Command-1.0.1.ebuild:
+  Stable on amd64 and x86.
+
+  08 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-System_Command-1.0.ebuild:
+  Cleanup.
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  29 Nov 2004; Simon Stelling <blubb@gentoo.org>
+  PEAR-System_Command-1.0.1.ebuild:
+  added ~amd64
+
+  22 Oct 2004; Jason Wever <weeve@gentoo.org>
+  PEAR-System_Command-1.0-r1.ebuild:
+  Stable on sparc.
+
+  03 Aug 2004; <agriffis@gentoo.org> PEAR-System_Command-1.0-r1.ebuild,
+  PEAR-System_Command-1.0.1.ebuild:
+  add ia64 keywords #56295
+
+*PEAR-System_Command-1.0.1 (30 Jul 2004)
+
+  30 Jul 2004; Tal Peer <coredumb@gentoo.org>
+  +PEAR-System_Command-1.0.1.ebuild:
+  Version bump
+
+  06 Jul 2004; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-System_Command-1.0-r1.ebuild:
+  Stable on ppc.
+
+  04 Jul 2004; Robin H. Johnson <robbat2@gentoo.org>
+  PEAR-System_Command-1.0-r1.ebuild:
+  stable on x86.
+
+  30 May 2004; Bryan Østergaard <kloeri@gentoo.org>
+  PEAR-System_Command-1.0-r1.ebuild:
+  Stable on alpha.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org>
+  PEAR-System_Command-1.0-r1.ebuild, PEAR-System_Command-1.0.ebuild:
+  Added IUSE=
+
+*PEAR-System_Command-1.0-r1 (25 Dec 2003)
+
+  25 Dec 2003; Tal Peer <coredumb@gentoo.org>
+  PEAR-System_Command-1.0-r1.ebuild:
+  Converted to new eclass.
+
+  13 Oct 2003; Robin H. Johnson <robbat2@gentoo.org> metadata.xml:
+  add metadata.xml
+
+  11 Sep 2003; Robin H. Johnson <robbat2@gentoo.org>
+  PEAR-System_Command-1.0.ebuild:
+  fix bug #28168
 
 *PEAR-System_Command-1.0 (19 Jul 2002)
 

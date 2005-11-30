@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/tux-3.2.16-r1.ebuild,v 1.1 2004/09/26 06:28:19 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/tux-3.2.16-r1.ebuild,v 1.1.1.1 2005/11/30 09:46:48 chriswhite Exp $
 
 inherit eutils
 
@@ -13,9 +13,10 @@ SLOT="0"
 KEYWORDS="x86 ppc"
 IUSE="doc"
 
-RDEPEND="dev-libs/glib
+RDEPEND=">=dev-libs/glib-2
 	dev-libs/popt"
 DEPEND="${RDEPEND}
+	dev-util/pkgconfig
 	doc? ( app-text/docbook-sgml-utils )"
 
 src_unpack() {

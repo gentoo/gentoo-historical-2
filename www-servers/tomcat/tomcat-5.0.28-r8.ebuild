@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/tomcat-5.0.28-r8.ebuild,v 1.1 2005/10/15 11:40:42 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tomcat/tomcat-5.0.28-r8.ebuild,v 1.1.1.1 2005/11/30 09:46:45 chriswhite Exp $
 
 inherit eutils java-pkg
 

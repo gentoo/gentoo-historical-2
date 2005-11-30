@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsshellscript/hsshellscript-2.2.2.ebuild,v 1.1 2005/03/18 15:06:29 araujo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/hsshellscript/hsshellscript-2.2.2.ebuild,v 1.1.1.1 2005/11/30 09:48:21 chriswhite Exp $
 
 inherit base eutils ghc-package
 
@@ -13,7 +13,8 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=">=virtual/ghc-6.2"
+DEPEND=">=virtual/ghc-6.2
+	!>=virtual/ghc-6.4"
 RDEPEND=""
 
 
@@ -28,11 +29,9 @@ src_compile() {
 }
 
 src_install() {
-	sed -i "s:\${DEST_LIB}:$(ghc-libdir):" \
-		${S}/lib/hsshellscript.pkg
-	sed -i "s:\${DEST_IMPORTS}:$(ghc-libdir)/imports:" \
-		${S}/lib/hsshellscript.pkg
 	ghc-setup-pkg ${S}/lib/hsshellscript.pkg
+	# Fix hsshellscript.pkg library path
+	ghc-fixlibpath "\${DEST_LIB}" "\${DEST_IMPORTS}"
 	make install \
 		DESTDIR="${D}" \
 		DEST_LIB="$(ghc-libdir)" \

@@ -1,6 +1,32 @@
 # ChangeLog for dev-java/jdbc-mssqlserver
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-mssqlserver/ChangeLog,v 1.1 2003/05/14 18:08:53 absinthe Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-mssqlserver/ChangeLog,v 1.1.1.1 2005/11/30 09:47:00 chriswhite Exp $
+
+  27 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  jdbc-mssqlserver-2.2.0029.ebuild, jdbc-mssqlserver-2.2.0040.ebuild:
+  No authorized sparc devel tested this, unkeywording
+
+  18 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  jdbc-mssqlserver-2.2.0040.ebuild:
+  stable on amd64, ppc and x86
+
+*jdbc-mssqlserver-2.2.0040 (20 Oct 2004)
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  +jdbc-mssqlserver-2.2.0040.ebuild:
+  Version bump. Added ~amd64 keyword.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-mssqlserver-2.2.0029.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  10 Feb 2004; Adrian Almenar <strider@gentoo.org>
+  jdbc-mssqlserver-2.2.0029.ebuild:
+  Removed alpha keyword.
+
+  17 Jan 2004; Adrian Almenar <strider@gentoo.org> jdbc-mssqlserver-2.2.0029.ebuild:
+  Removed keywords with non-java support.
 
 *jdbc-mssqlserver-2.2.0029 (14 May 2003)
 

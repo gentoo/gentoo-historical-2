@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/randomguid/randomguid-1.2.1.ebuild,v 1.1 2004/03/07 02:50:38 zx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/randomguid/randomguid-1.2.1.ebuild,v 1.1.1.1 2005/11/30 09:47:23 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,10 +9,10 @@ HOMEPAGE="http://www.javaexchange.com"
 SRC_URI="ftp://www.javaexchange.com/javaexchange/RandomGUID.tar"
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ppc sparc"
+KEYWORDS="x86 ppc sparc amd64"
 IUSE="jikes"
-RDEPEND=">=virtual/jdk-1.2"
-DEPEND="${RDEPEND}
+RDEPEND=">=virtual/jre-1.2"
+DEPEND=">=virtual/jdk-1.2
 	jikes? ( >=dev-java/jikes-1.15 )"
 
 S=${WORKDIR}
@@ -29,7 +29,7 @@ src_compile() {
 	echo >RandomGUID.java "package com.javaexchange;"
 	cat RandomGUID.java~ >>RandomGUID.java
 
-	if [ `use jikes` ] ; then
+	if use jikes ; then
 		jikes RandomGUID.java || die "compile problem"
 	else
 		javac RandomGUID.java || die "compile problem"

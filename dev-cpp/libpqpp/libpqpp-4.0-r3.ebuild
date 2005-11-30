@@ -1,16 +1,22 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libpqpp/libpqpp-4.0-r3.ebuild,v 1.1 2004/01/17 22:12:37 nakano Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libpqpp/libpqpp-4.0-r3.ebuild,v 1.1.1.1 2005/11/30 09:46:21 chriswhite Exp $
+
+inherit eutils
 
 MY_P=${P/pp/++}
 DESCRIPTION="C++ wrapper for the libpq Postgresql library"
 HOMEPAGE="http://gborg.postgresql.org/"
 SRC_URI="ftp://gborg.postgresql.org/pub/libpqpp/stable/${MY_P}.tar.gz"
+
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
+IUSE=""
 
-DEPEND="virtual/glibc >=dev-db/postgresql-7.3"
+DEPEND="virtual/libc
+	>=dev-db/postgresql-7.3
+	>=sys-apps/sed-4"
 
 S=${WORKDIR}/${MY_P}
 

@@ -1,11 +1,10 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/speedtouch/speedtouch-1.3.1-r2.ebuild,v 1.1 2004/12/22 21:42:05 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/speedtouch/speedtouch-1.3.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:45:55 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
 MY_P=${P/_/-}
-S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="GPL Driver for the Alcatel Speedtouch USB under *nix"
 HOMEPAGE="http://speedtouch.sf.net/"
@@ -19,8 +18,13 @@ IUSE="static debug"
 DEPEND=""
 RDEPEND=">=net-dialup/ppp-2.4.1"
 
+S=${WORKDIR}/${MY_P}
+
 src_unpack() {
 	unpack ${A}
+
+	# Patch to fix gcc-4.* compile error (bug #99759)
+	epatch ${FILESDIR}/${P}-gcc4.patch
 
 	#Increase minlevel of reports in atm.c
 	#At least one of the reports could affect performance due to call frequency
@@ -48,7 +52,7 @@ src_install() {
 	find ${D}/usr/share/doc/speedtouch/ -type f -name '*.html' | xargs rm
 	echo $(find ${D}/usr/share/doc/speedtouch/ -type f) | xargs dodoc
 	rm -rf ${D}/usr/share/doc/speedtouch/
-	dodoc AUTHORS COPYING ChangeLog INSTALL TODO VERSION
+	dodoc AUTHORS ChangeLog TODO VERSION
 
 	rm -rf ${D}/usr/bin
 	rm -rf ${D}/usr/share/man/man1
@@ -68,23 +72,23 @@ src_install() {
 }
 
 pkg_postinst() {
-	echo ""
+	echo
 	ewarn "Make sure you have kernel support for USB, HDCL and PPP"
 	ewarn "NB: kernels >= 2.4.18 include the hdlc patch"
-	echo ""
+	echo
 	ewarn "Read and subscribe vendor's licence to download the microcode"
-	ewarn "You can get it from: "
+	ewarn "You can get it from:"
 	ewarn "  1) vendor's site: http://www.speedtouchdsl.com/dvrreg_lx.htm"
-	ewarn "  2) a windows system: c:\windows\system\alcaudsl.sys"
-	ewarn "  3) the CD provided: X:\Driver\alcaudsl.sys"
+	ewarn "  2) a windows system: c:\\\\windows\\\\system\\\\alcaudsl.sys"
+	ewarn "  3) the CD provided: X:\\\\Driver\\\\alcaudsl.sys"
 	ewarn "Then you should set its path in the /etc/conf.d/speedtouch file"
 	ewarn "edit and rename 'adsl.sample' to 'adsl' in /etc/ppp/peers/adsl and"
 	ewarn "bring up your adsl line using the /etc/init.d/speedtouch script"
-	echo ""
+	echo
 	einfo "More info in the documentation in /usr/share/doc/${PF}"
-	echo ""
+	echo
 	einfo "You need to pass -a /usr/share/speedtouch/boot.v123.bin to"
 	einfo "modem_run with this version. The URL for firmware is:"
 	einfo "http://www.speedtouchdsl.com/driver_upgrade_lx_3.0.1.2.htm"
-	echo ""
+	echo
 }

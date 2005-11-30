@@ -1,8 +1,70 @@
 # ChangeLog for net-dialup/pppconfig
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/pppconfig/ChangeLog,v 1.1 2002/02/01 21:53:32 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/pppconfig/ChangeLog,v 1.1.1.1 2005/11/30 09:46:00 chriswhite Exp $
+
+*pppconfig-2.3.11-r2 (07 Sep 2005)
+
+  07 Sep 2005; Alin Nastac <mrness@gentoo.org> -pppconfig-2.3.11-r1.ebuild,
+  +pppconfig-2.3.11-r2.ebuild:
+  Move the locale messages selection code to src_install because global
+  variables defined in one function (e.g. src_unpack) became unusable in
+  subsequent functions (e.g. src_compile). See bug #95402, comment #9.
+
+  14 Aug 2005; Luis Medinas <metalgod@gentoo.org>
+  pppconfig-2.3.11-r1.ebuild:
+  Added ~amd64 keywords. Closes Bug #100042.
+
+*pppconfig-2.3.11-r1 (12 Jun 2005)
+
+  12 Jun 2005; Alin Nastac <mrness@gentoo.org> -pppconfig-2.1.ebuild,
+  -pppconfig-2.3.9.ebuild, +pppconfig-2.3.11-r1.ebuild:
+  Install locale messages for languages selectable by user through LINGUAS
+  variable (empty/undefined means all available languages will be installed);
+  this functionality is enabled through nls useflag (#95402).
+
+  27 May 2005; Joseph Jezak <josejx@gentoo.org> pppconfig-2.3.11.ebuild:
+  Marked ppc stable.
+
+*pppconfig-2.3.11 (16 Apr 2005)
+
+  16 Apr 2005; Alin Nastac <mrness@gentoo.org> -pppconfig-2.3.10.ebuild,
+  +pppconfig-2.3.11.ebuild:
+  Version bumped... sort of (nothing has changed from the gentoo point of
+  view). Also marked as stable on x86 since the installed files are identical
+  with the one installed by 2.3.10.
+
+*pppconfig-2.3.10 (12 Feb 2005)
+
+  12 Feb 2005; Alin Nastac <mrness@gentoo.org> -pppconfig-2.2.0.ebuild,
+  +pppconfig-2.3.10.ebuild, pppconfig-2.3.9.ebuild:
+  Version bump, mark 2.3.9 as stable on x86 and remove 2.2.0 version.
+
+*pppconfig-2.3.9 (20 Nov 2004)
+
+  20 Nov 2004; Alin Nastac <mrness@gentoo.org> -pppconfig-2.0.8.ebuild,
+  +pppconfig-2.3.9.ebuild:
+  Version bump. Remove obsolete version.
+
+  29 Nov 2003; Heinrich Wendel <lanius@gentoo.org> pppconfig-2.2.0.ebuild:
+  fixed bug #34707, wrong sourcedir was set
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata.xml
+
+*pppconfig-2.2.0 (01 Oct 2003)
+
+  01 Oct 2003; Chuck Short <zul@gentoo.org> pppconfig-2.2.0.ebuild:
+  Version bump, closes #29973.
+
+*pppconfig-2.1 (21 Apr 2003)
+
+  21 Apr 2003; Graham Forest <vladimir@gentoo.org> pppconfig-2.1.ebuild:
+  Version bump
 
 *pppconfig-2.0.8 (1 Feb 2002)
+
+  12 Sep 2002; Owen Stampflee <owen@gentoo.org> :
+  Added PPC to KEYWORDS.
 
   1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
   

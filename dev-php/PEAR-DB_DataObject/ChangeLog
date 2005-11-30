@@ -1,6 +1,24 @@
 # ChangeLog for dev-php/PEAR-DB_DataObject
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-DB_DataObject/ChangeLog,v 1.1 2005/07/21 06:12:10 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-DB_DataObject/ChangeLog,v 1.1.1.1 2005/11/30 09:47:57 chriswhite Exp $
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-DB_DataObject-1.7.15-r1.ebuild:
+  Add ~amd64.
+
+  08 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-DB_DataObject-1.7.15-r1.ebuild:
+  Fix RDEPEND.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-DB_DataObject-1.7.15-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-DB_DataObject-1.7.15-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-DB_DataObject-1.7.15-r1.ebuild:
+  Use new PEAR eclass.
 
 *PEAR-DB_DataObject-1.7.15 (21 Jul 2005)
 

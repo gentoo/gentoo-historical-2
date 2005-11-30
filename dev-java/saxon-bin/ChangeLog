@@ -1,6 +1,52 @@
-# ChangeLog for dev-java/saxon
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/saxon-bin/ChangeLog,v 1.1 2004/07/30 21:46:14 axxo Exp $
+# ChangeLog for dev-java/saxon-bin
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/saxon-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:47:45 chriswhite Exp $
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org> saxon-bin-8.4b.ebuild:
+  Stable on ppc.
+
+  14 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> saxon-bin-8.4b.ebuild:
+  Stable on sparc
+
+  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> saxon-bin-6.5.3.ebuild,
+  saxon-bin-7.8.ebuild, saxon-bin-8.0b.ebuild, saxon-bin-8.3b.ebuild,
+  saxon-bin-8.4b.ebuild:
+  Keyword x86, fix deps
+
+*saxon-bin-8.4b (01 Jul 2005)
+
+  01 Jul 2005; Thomas Matthijs <axxo@gentoo.org> +saxon-bin-8.4b.ebuild:
+  version bump
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> saxon-bin-8.0b.ebuild:
+  stable on amd64
+
+  28 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> saxon-bin-8.0b.ebuild:
+  Stable on sparc
+
+*saxon-bin-8.3b (25 Mar 2005)
+
+  25 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +saxon-bin-8.3b.ebuild:
+  new upstream version, fixes #86582
+
+  17 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> saxon-bin-8.0b.ebuild:
+  stable on x86.
+
+  03 Nov 2004; Thomas Matthijs <axxo@gentoo.org> saxon-bin-6.5.3.ebuild,
+  saxon-bin-7.8.ebuild, saxon-bin-8.0b.ebuild:
+  depend on app-arch/unzip
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> saxon-bin-6.5.3.ebuild,
+  saxon-bin-7.8.ebuild, saxon-bin-8.0b.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> saxon-bin-6.5.3.ebuild,
+  saxon-bin-7.8.ebuild, saxon-bin-8.0b.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
 
 *saxon-bin-6.5.3 (30 Jul 2004)
 

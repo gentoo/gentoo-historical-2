@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/foo2zjs/foo2zjs-20050925.ebuild,v 1.1 2005/09/27 12:37:14 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/foo2zjs/foo2zjs-20050925.ebuild,v 1.1.1.1 2005/11/30 09:48:18 chriswhite Exp $
 
 inherit eutils flag-o-matic
 

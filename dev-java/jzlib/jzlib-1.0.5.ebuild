@@ -1,23 +1,23 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jzlib/jzlib-1.0.5.ebuild,v 1.1 2004/05/21 19:32:36 zx Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jzlib/jzlib-1.0.5.ebuild,v 1.1.1.1 2005/11/30 09:47:48 chriswhite Exp $
 
 inherit java-pkg
 
 DESCRIPTION="JZlib is a re-implementation of zlib in pure Java."
 HOMEPAGE="http://www.jcraft.com/jzlib/"
-SRC_URI="http://www.jcraft.com/${PN}/${PN}-${PV}.tar.gz"
+SRC_URI="http://www.jcraft.com/${PN}/${P}.tar.gz"
 
 LICENSE="jcraft"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~amd64 ~ppc"
-IUSE="doc jikes"
-RESTRICT="nomirror"
+KEYWORDS="x86 sparc amd64 ppc ppc64"
+IUSE="doc jikes source"
 
 DEPEND=">=virtual/jdk-1.4
-	>=dev-java/ant-1.4
+	>=dev-java/ant-core-1.4
+	source? ( app-arch/zip )
 	jikes? ( >=dev-java/jikes-1.17 )"
-RDEPEND=">=virtual/jdk-1.4"
+RDEPEND=">=virtual/jre-1.4"
 
 
 src_unpack() {
@@ -35,8 +35,8 @@ src_compile() {
 }
 
 src_install() {
-	mv dist/lib/jzlib{*,}.jar
-	java-pkg_dojar dist/lib/jzlib.jar || die "installation failed"
-	use doc && dohtml -r javadoc/*
-	dodoc LICENSE.txt README ChangeLog
+	java-pkg_newjar dist/lib/jzlib*.jar jzlib.jar || die "installation failed"
+	use doc && java-pkg_dohtml -r javadoc/*
+	use source && java-pkg_dosrc src
+	dodoc README ChangeLog
 }

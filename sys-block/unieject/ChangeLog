@@ -1,6 +1,58 @@
 # ChangeLog for sys-block/unieject
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-block/unieject/ChangeLog,v 1.1 2005/07/23 19:27:41 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-block/unieject/ChangeLog,v 1.1.1.1 2005/11/30 09:45:25 chriswhite Exp $
+
+  28 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> unieject-5.ebuild:
+  Disable doc generation as it's partially broken.
+
+*unieject-5 (26 Sep 2005)
+
+  26 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> -unieject-4.ebuild,
+  +unieject-5.ebuild:
+  Updated to version 5. Dropped txt2man dependency. Fixes the pumount usage.
+
+  14 Sep 2005; Diego Pettenò <flameeyes@gentoo.org> -unieject-2.1.ebuild,
+  -unieject-3.ebuild, unieject-4.ebuild:
+  Purged old ebuilds. Changed URL for unieject-4 to berlios.
+
+*unieject-4 (30 Aug 2005)
+
+  30 Aug 2005; Diego Pettenò <flameeyes@gentoo.org> +unieject-4.ebuild:
+  Updated to new version.
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> unieject-3.ebuild:
+  add ~alpha ~ia64 #100058
+
+  01 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org> unieject-3.ebuild:
+  ~sparc wrt #100058
+
+  31 Jul 2005; Markus Rothe <corsair@gentoo.org> unieject-3.ebuild:
+  added ~ppc64 (bug #100058)
+
+*unieject-3 (30 Jul 2005)
+
+  30 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> +unieject-3.ebuild:
+  New version, need libconfuse, ~sparc and ~ppc64 keywords dropped. Requires
+  gettext (for nls support).
+
+  25 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> unieject-2.1.ebuild:
+  ~sparc wrt #100058
+
+  24 Jul 2005; David Holm <dholm@gentoo.org> unieject-2.1.ebuild:
+  Added to ~ppc.
+
+  24 Jul 2005; Ian Leitch <port001@gentoo.org> unieject-2.1.ebuild:
+  Marked ~x86
+
+  24 Jul 2005; Markus Rothe <corsair@gentoo.org> unieject-2.1.ebuild:
+  added ~ppc64
+
+*unieject-2.1 (24 Jul 2005)
+
+  24 Jul 2005; Diego Pettenò <flameeyes@gentoo.org> -unieject-2.ebuild,
+  +unieject-2.1.ebuild:
+  New quick release to (hopefully) address problems with SCSI devices as
+  pointed out by Chainsaw.
 
 *unieject-2 (23 Jul 2005)
 

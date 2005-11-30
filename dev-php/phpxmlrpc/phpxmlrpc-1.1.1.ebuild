@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/phpxmlrpc/phpxmlrpc-1.1.1.ebuild,v 1.1 2005/07/01 16:30:06 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/phpxmlrpc/phpxmlrpc-1.1.1.ebuild,v 1.1.1.1 2005/11/30 09:47:50 chriswhite Exp $
 
 inherit php-lib
 

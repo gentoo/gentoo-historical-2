@@ -1,12 +1,19 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.3.11-r1.ebuild,v 1.1 2005/04/11 10:35:50 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/mod_php/mod_php-4.3.11-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:08 chriswhite Exp $
 
-IUSE="${IUSE} apache2"
+IUSE="apache2"
 
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~amd64 ~ia64 ~s390 ~ppc64 ~mips"
+KEYWORDS="alpha amd64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
 detectapache() {
+	# DO NOT REPLICATE THIS IN ANY OTHER PACKAGE WITHOUT PORTAGE DEVS PERMISSION
+	# IT IS BROKEN AND A TEMPORARY MEASURE!
+	# YOU'VE BEEN WARNED.
+	if [[ ${EBUILD_PHASE/depend} != ${EBUILD_PHASE} ]]; then
+		APACHEVER=1
+		return
+	fi
 	local domsg=
 	[ -n "$1" ] && domsg=1
 	HAVE_APACHE1=
@@ -49,27 +56,22 @@ SRC_URI_BASE="http://downloads.php.net/ilia/" # for RC only
 # the php eclass requires the PHPSAPI setting!
 # In this case the PHPSAPI setting is dependant on the detectapache function
 # above this point as well!
-inherit php-sapi eutils apache-module flag-o-matic
+inherit php-sapi eutils
 
 DESCRIPTION="Apache module for PHP"
 
 DEPEND_EXTRA=">=net-www/apache-1.3.26-r2
-			  apache2? ( >=net-www/apache-2.0.43-r1 )"
+			  apache2? ( >=net-www/apache-2.0.43-r1
+			            !>=net-www/apache-2.0.54-r30 )"
 DEPEND="${DEPEND} ${DEPEND_EXTRA}"
 RDEPEND="${RDEPEND} ${DEPEND_EXTRA}"
 IUSE="${IUSE} debug"
 # for this revision only
-PDEPEND=">=${PHP_PROVIDER_PKG}-4.3.10"
-PROVIDE="${PROVIDE} virtual/httpd-php-${PV}"
+PDEPEND=">=${PHP_PROVIDER_PKG}-4.3.11"
+PROVIDE="${PROVIDE} virtual/httpd-php"
 
-# generalize some apache{,2} vars (defined by apache-module.eclass)
-if [ -n ${USE_APACHE2} ]; then
-	APACHE_MODULESDIR=${APACHE2_MODULESDIR}
-	APACHE_CONFDIR=${APACHE2_CONFDIR}
-else
-	APACHE_MODULESDIR=${APACHE_MODULESDIR}
-	APACHE_CONFDIR=${APACHE_CONFDIR}
-fi
+# fixed PCRE library for security issues, bug #102373
+SRC_URI="${SRC_URI} http://gentoo.longitekk.com/php-pcrelib-new-secpatch.tar.bz2"
 
 # Add a 'return 0' as we DON'T want the return code checked
 pkg_setup() {
@@ -84,28 +86,42 @@ src_unpack() {
 	if [ "${ARCH}" == "amd64" ] ; then
 		epatch ${FILESDIR}/mod_php-4.3.4-amd64hack.diff
 	fi
-	[ "${ARCH}" == "sparc" ] && epatch ${FILESDIR}/stdint.diff
 
 	# bug fix for security problem - bug #39952
 	# second revision as the apache2 stuff was resolved upstream
 	epatch ${FILESDIR}/mod_php-4.3.5-apache1security.diff
 
+	# Bug 88756
+	use flash && epatch ${FILESDIR}/php-4.3.11-flash.patch
+
+	# Bug 88795
+	use gmp && epatch ${FILESDIR}/php-4.3.11-gmp.patch
+
 	# stop php from activing the apache config, as we will do that ourselves
 	for i in configure sapi/apache/config.m4 sapi/apache2filter/config.m4 sapi/apache2handler/config.m4; do
 		sed -i.orig -e 's,-i -a -n php4,-i -n php4,g' $i
 	done
-}
 
-setup_environ() {
-	append-flags `apr-config --cppflags --cflags`
+	# fix imap symlink creation, bug #105351
+	use imap && epatch ${FILESDIR}/php4.3.11-imap-symlink.diff
+
+	# we need to unpack the files here, the eclass doesn't handle this
+	cd ${WORKDIR}
+	unpack php-pcrelib-new-secpatch.tar.bz2
+	cd ${S}
+
+	# patch to fix PCRE library security issues, bug #102373
+	epatch ${FILESDIR}/php4.3.11-pcre-security.patch
+
+	# sobstitute the bundled PCRE library with a fixed version for bug #102373
+	einfo "Updating bundled PCRE library"
+	rm -rf ${S}/ext/pcre/pcrelib && mv -f ${WORKDIR}/pcrelib-new ${S}/ext/pcre/pcrelib || die "Unable to update the bundled PCRE library"
 }
 
 src_compile() {
-	setup_environ
-
 	# Every Apache2 MPM EXCEPT prefork needs Zend Thread Safety
 	if [ -n "${USE_APACHE2}" ]; then
-		APACHE2_MPM="`/usr/sbin/apache2 -l | egrep 'worker|perchild|leader|threadpool|prefork'|cut -d. -f1|sed -e 's/^[[:space:]]*//g;s/[[:space:]]+/ /g;'`"
+		APACHE2_MPM="`/usr/sbin/apache2 -l |egrep 'worker|perchild|leader|threadpool|prefork'|cut -d. -f1|sed -e 's/^[[:space:]]*//g;s/[[:space:]]+/ /g;'`"
 		einfo "Apache2 MPM: ${APACHE2_MPM}"
 		case "${APACHE2_MPM}" in
 			*prefork*) ;;
@@ -119,34 +135,32 @@ src_compile() {
 	php-sapi_src_compile
 }
 
+
 src_install() {
 	PHP_INSTALLTARGETS="install"
 	php-sapi_src_install
-
 	einfo "Adding extra symlink to php.ini for Apache${USE_APACHE2}"
-	dodir ${APACHE_CONFDIR}
+	dodir /etc/apache${USE_APACHE2}/conf/
 	dodir ${PHPINIDIRECTORY}
-	dosym ${PHPINIDIRECTORY}/${PHPINIFILENAME} ${APACHE_CONFDIR}/${PHPINIFILENAME}
+	dosym ${PHPINIDIRECTORY}/${PHPINIFILENAME} /etc/apache${USE_APACHE2}/conf/${PHPINIFILENAME}
 
 	einfo "Cleaning up a little"
-	rm -rf ${D}${APACHE_MODULESDIR}/libphp4.so
-
-	einfo "Adding symlink to Apache${USE_APACHE2} modules for PHP"
-	dosym ${APACHE_MODULESDIR} ${PHPINIDIRECTORY}/lib
-	exeinto ${APACHE_MODULESDIR}
-
+	rm -rf ${D}/usr/lib/apache${USE_APACHE2}/modules/libphp4.so
+	einfo "Adding extra symlink to Apache${USE_APACHE2} extramodules for PHP"
+	dosym /usr/lib/apache${USE_APACHE2}-extramodules ${PHPINIDIRECTORY}/lib
+	exeinto /usr/lib/apache${USE_APACHE2}-extramodules
 	einfo "Installing mod_php shared object now"
 	doexe .libs/libphp4.so
 
 	if [ -n "${USE_APACHE2}" ] ; then
 		einfo "Installing a Apache2 config for PHP (70_mod_php.conf)"
-		insinto ${APACHE2_MODULES_CONFDIR}
-		doins "${FILESDIR}/4.3.10-r1/70_mod_php.conf"
+		insinto /etc/apache2/conf/modules.d
+		doins ${FILESDIR}/70_mod_php.conf
 	else
 		einfo "Installing a Apache config for PHP (mod_php.conf)"
-		insinto ${APACHE1_MODULES_CONFDIR}
+		insinto /etc/apache/conf/addon-modules
 		doins ${FILESDIR}/mod_php.conf
-		dosym ${PHPINIDIRECTORY}/${PHPINIFILENAME} ${APACHE1_MODULES_CONFDIR}/${PHPINIFILENAME}
+		dosym ${PHPINIDIRECTORY}/${PHPINIFILENAME} /etc/apache/conf/addon-modules/${PHPINIFILENAME}
 	fi
 }
 
@@ -188,7 +202,7 @@ pkg_postinst() {
 		apache2msg
 	else
 		einfo "1. Execute the command:"
-		einfo " \"ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config\""
+		einfo " \"emerge --config =${PF}\""
 		einfo "2. Edit /etc/conf.d/apache and add \"-D PHP4\" to APACHE_OPTS"
 		einfo "That will include the php mime types in your configuration"
 		einfo "automagically and setup Apache to load php when it starts."
@@ -201,9 +215,9 @@ pkg_config() {
 		apache2msg
 	else
 		${ROOT}/usr/sbin/apacheaddmod \
-			${ROOT}/etc/apache/apache.conf \
-			modules/libphp4.so mod_php4.c php4_module \
-			before=perl define=PHP4 addconf=addon-modules/mod_php.conf
+			${ROOT}/etc/apache/conf/apache.conf \
+			extramodules/libphp4.so mod_php4.c php4_module \
+			before=perl define=PHP4 addconf=conf/addon-modules/mod_php.conf
 			:;
 	fi
 }

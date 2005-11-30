@@ -1,6 +1,48 @@
 # ChangeLog for dev-haskell/happy
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/ChangeLog,v 1.1 2003/04/22 08:23:02 kosmikus Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/ChangeLog,v 1.1.1.1 2005/11/30 09:48:24 chriswhite Exp $
+
+  04 Oct 2005; <duncan@gentoo.org> happy-1.15.ebuild:
+  Added ~sparc to KEYWORDS.
+
+  23 Sep 2005; <duncan@gentoo.org> happy-1.15.ebuild:
+  Marked stable on x86.
+
+  04 May 2005; David Holm <dholm@gentoo.org> happy-1.15.ebuild:
+  Added to ~ppc.
+
+  24 Mar 2005; Andres Loeh <kosmikus@gentoo.org> happy-1.15.ebuild:
+  Use ghc-package.eclass to check for ghc-6.4.
+
+  19 Mar 2005; Andres Loeh <kosmikus@gentoo.org> happy-1.14.ebuild,
+  happy-1.15.ebuild:
+  happy-1.14 is blocked by ghc-6.4 now, whereas happy-1.15 should build with
+  ghc-6.4.
+
+  19 Mar 2005; Andres Loeh <kosmikus@gentoo.org> happy-1.15.ebuild:
+  Added ~amd64 keyword.
+
+*happy-1.15 (19 Jan 2005)
+
+  19 Jan 2005; Andres Loeh <kosmikus@gentoo.org> +happy-1.15.ebuild:
+  New happy release.
+
+  10 Nov 2004; Andres Loeh <kosmikus@gentoo.org> happy-1.14.ebuild:
+  Moved inherit to the correct position within the ebuild.
+
+  21 Oct 2004; Andres Loeh <kosmikus@gentoo.org> happy-1.13.ebuild,
+  happy-1.14.ebuild, files/happy-1.13-pragma.patch.bz2,
+  files/happy-1.14-gcc3.4.patch:
+  Patched for gcc-3.4.
+
+*happy-1.14 (14 Apr 2004)
+
+  14 Apr 2004; Andres Loeh <kosmikus@gentoo.org> happy-1.14.ebuild:
+  New version.
+
+  06 Jan 2004; Andres Loeh <kosmikus@gentoo.org> happy-1.13.ebuild,
+  files/happy-1.13-pragma.patch.bz2:
+  Added patch so that happy can be built with ghc 6.2.
 
 *happy-1.13 (22 Apr 2003)
 

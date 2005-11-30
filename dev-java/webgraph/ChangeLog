@@ -1,11 +1,19 @@
 # ChangeLog for dev-java/webgraph
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/webgraph/ChangeLog,v 1.1 2004/03/06 22:14:35 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/webgraph/ChangeLog,v 1.1.1.1 2005/11/30 09:47:20 chriswhite Exp $
 
-*webgraph-1.2.2 (09 Mar 2004)
+*webgraph-1.4.1 (15 Apr 2005)
 
-  09 Mar 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml,
-  webgraph-1.2.2.ebuild:
-  Initial Import. Thanks to Matteo Coloberti <xteo78@libero.it> for the initial
-  ebuild. Closes #34106
+  15 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/webgraph-1.4-gentoo.patch, +files/webgraph-1.4.1-gentoo.patch,
+  -files/webgraph-gentoo.patch, +webgraph-1.4.1.ebuild, webgraph-1.4.ebuild:
+  new upstream version, introduced support for the source useflag. marked 1.4
+  stable on amd64 and x86.
 
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> webgraph-1.4.ebuild:
+  added missing jikes dependency. see #78819.
+
+*webgraph-1.4 (04 Dec 2004)
+
+  04 Dec 2004; Karl Trygve Kalleberg <karltk@gentoo.org> webgraph-1.4.ebuild:
+  Initial import. Ebuild submitted by Jan Brinkmann <luck@the-luckyduck.de>.

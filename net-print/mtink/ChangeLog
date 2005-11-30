@@ -1,6 +1,70 @@
 # ChangeLog for net-print/mtink
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/mtink/ChangeLog,v 1.1 2003/08/08 19:19:43 lanius Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-print/mtink/ChangeLog,v 1.1.1.1 2005/11/30 09:48:14 chriswhite Exp $
+
+  22 Oct 2005; Luis Medinas <metalgod@gentoo.org> mtink-1.0.5.ebuild,
+  -mtink-1.0.8.ebuild, mtink-1.0.9.ebuild:
+  Fix typo thanks to ph <phajdan.jr@gmail.com> closes bug #110061. Removing
+  older version.
+
+  09 Aug 2005; David Holm <dholm@gentoo.org> mtink-1.0.9.ebuild:
+  Added to ~ppc.
+
+*mtink-1.0.9 (09 Aug 2005)
+
+  09 Aug 2005; Luis Medinas <metalgod@gentoo.org> +mtink-1.0.9.ebuild:
+  Version Bump. Added X USE flag thanks to JeR <jer@xs4all.nl> closes bug
+  #99964 .
+
+*mtink-1.0.8 (04 May 2005)
+
+  04 May 2005; Heinrich Wendel <lanius@gentoo.org> -mtink-1.0.1.ebuild,
+  +mtink-1.0.8.ebuild:
+  version bump; remove old version
+
+  09 Nov 2004; Tavis Ormandy <taviso@gentoo.org> mtink-1.0.5.ebuild:
+  typo
+
+  08 Nov 2004; Heinrich Wendel <lanius@gentoo.org> mtink-1.0.5.ebuild:
+  fix /var files for users who are ugprading
+
+*mtink-1.0.5 (08 Nov 2004)
+
+  08 Nov 2004; Heinrich Wendel <lanius@gentoo.org> +mtink-1.0.5.ebuild:
+  version bump because of security issues: bug #70310; mark stable on x86
+
+  07 Jul 2004; Danny van Dyk <kugelfang@gentoo.org> mtink-1.0.1.ebuild:
+  Marked ~amd64.
+
+  12 Apr 2004; Heinrich Wendel <lanius@gentoo.org> mtink-1.0.0.ebuild,
+  mtink-1.0.1.ebuild:
+  fix xfree dep, remove 1.0.0
+
+*mtink-1.0.1 (02 Mar 2004)
+
+  02 Mar 2004; Heinrich Wendel <lanius@gentoo.org> mtink-1.0.1.ebuild:
+  stable on x86
+
+  27 Jan 2004; Heinrich Wendel <lanius@gentoo.org> mtink-0.9.57.ebuild,
+  mtink-1.0.0.ebuild:
+  remove 0.9 version, mark 1.0.0 stable; add 1.0.1
+
+*mtink-1.0.0 (13 Jan 2004)
+
+  13 Jan 2004; Heinrich Wendel <lanius@gentoo.org> mtink-0.9.55.ebuild,
+  mtink-1.0.0.ebuild:
+  version bump, remove old version
+
+*mtink-0.9.55 (11 Jan 2004)
+
+  11 Jan 2004; Heinrich Wendel <lanius@gentoo.org> mtink-0.9.55.ebuild,
+  mtink-0.9.57.ebuild:
+  fixed motif dep
+
+*mtink-0.9.57 (25 Nov 2003)
+
+  25 Nov 2003; Heinrich Wendel <lanius@gentoo.org> mtink-0.9.57.ebuild:
+  version bump
 
   08 Aug 2003; lanius@gentoo.org files/mtinkd.confd, files/mtinkd.rc:
   initial release, thx to Otavio R. Piske <angusy@brturbo.com>

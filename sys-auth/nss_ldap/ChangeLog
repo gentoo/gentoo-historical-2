@@ -1,6 +1,48 @@
 # ChangeLog for sys-auth/nss_ldap
 # Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/nss_ldap/ChangeLog,v 1.1 2005/07/02 22:09:54 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/nss_ldap/ChangeLog,v 1.1.1.1 2005/11/30 09:45:18 chriswhite Exp $
+
+  03 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nss_ldap-239-r1.ebuild:
+  Added to ~mips.
+
+  16 Sep 2005; Aron Griffis <agriffis@gentoo.org> nss_ldap-239-r1.ebuild:
+  Mark 239-r1 stable on alpha
+
+  08 Sep 2005; Robin H. Johnson <robbat2@gentoo.org> -nss_ldap-233.ebuild:
+  Remove broken 233 version.
+
+  13 Jul 2005; Markus Rothe <corsair@gentoo.org> nss_ldap-239-r1.ebuild:
+  Stable on ppc64 (bug #96767)
+
+  13 Jul 2005; Rob Holland <tigger@gentoo.org> nss_ldap-239-r1.ebuild:
+  stable on x86. fix sec bug #96767
+
+  13 Jul 2005; Michael Hanselmann <hansmi@gentoo.org>
+  nss_ldap-239-r1.ebuild:
+  Stable on ppc and hppa.
+
+  11 Jul 2005; Simon Stelling <blubb@gentoo.org> nss_ldap-239-r1.ebuild:
+  stable on amd64 wrt bug 96767
+
+  09 Jul 2005; Jason Wever <weeve@gentoo.org> nss_ldap-239-r1.ebuild:
+  Stable on SPARC wrt security bug #96767.
+
+  07 Jul 2005; Markus Rothe <corsair@gentoo.org> nss_ldap-239-r1.ebuild:
+  added ~ppc64
+
+*nss_ldap-239-r1 (06 Jul 2005)
+*nss_ldap-226-r1 (06 Jul 2005)
+
+  06 Jul 2005; Robin H. Johnson <robbat2@gentoo.org>
+  +files/nss_ldap-239-tls-security-bug.patch, +nss_ldap-226-r1.ebuild,
+  +nss_ldap-239-r1.ebuild:
+  Add patch for security problem in bug #96767.
+
+*nss_ldap-239 (02 Jul 2005)
+
+  02 Jul 2005; Robin H. Johnson <robbat2@gentoo.org> +nss_ldap-239.ebuild:
+  Version bump.
 
 *nss_ldap-233 (02 Jul 2005)
 
@@ -78,7 +120,7 @@
   23 Nov 2004; Sven Wegener <swegener@gentoo.org> :
   Fixed digest.
 
-  20 Sep 2004; Bryan Ãstergaard,,, <kloeri@gentoo.org> nss_ldap-220.ebuild:
+  20 Sep 2004; Bryan Østergaard,,, <kloeri@gentoo.org> nss_ldap-220.ebuild:
   Add ~alpha.
 
   03 Sep 2004; Caleb Tennis <caleb@gentoo.org> -nss_ldap-209.1.ebuild:

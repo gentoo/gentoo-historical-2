@@ -1,35 +1,33 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/squidalyser/squidalyser-0.2.55.ebuild,v 1.1 2004/08/15 18:14:16 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-misc/squidalyser/squidalyser-0.2.55.ebuild,v 1.1.1.1 2005/11/30 09:45:15 chriswhite Exp $
 
 inherit eutils
 
 IUSE=""
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Interactive log analyser for the Squid proxy."
-HOMEPAGE="http://ababa.org"
-SRC_URI="http://ababa.org/dist/${P}.tar.gz
+HOMEPAGE="http://squidalyser.sourceforge.net/"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://gentoo/${P}-gentoo.diff.bz2"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 ~sparc alpha ~ppc"
+KEYWORDS="x86 ~sparc alpha ppc"
 
-DEPEND="net-www/squid
+DEPEND="net-proxy/squid
 	dev-lang/perl
-	dev-perl/CGI
+	perl-core/CGI
 	dev-perl/DBI
 	dev-perl/DBD-mysql
 	dev-perl/Time-modules
-	dev-perl/Time-HiRes
+	perl-core/Time-HiRes
 	dev-perl/GD
 	dev-perl/GDGraph
 	dev-perl/GDTextUtil
 	dev-perl/URI
 	dev-db/mysql
-	net-www/apache
-	net-www/squid"
+	net-www/apache"
 
 src_unpack() {
 	unpack ${A}

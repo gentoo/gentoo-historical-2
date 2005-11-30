@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.30-r3.ebuild,v 1.1 2004/11/13 22:11:27 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.30-r3.ebuild,v 1.1.1.1 2005/11/30 09:45:57 chriswhite Exp $
 
 inherit flag-o-matic eutils
 
@@ -16,13 +16,13 @@ DEPEND=">=sys-apps/portage-2.0.47-r10
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86 sparc alpha ~ia64 hppa ~ppc ~amd64 ~mips"
+KEYWORDS="~x86 ~sparc ~alpha ~ia64 ~hppa ~ppc ~amd64 ~mips"
 IUSE="doc"
 
 pkg_setup() {
 	enewgroup fax
 	enewgroup modem
-	enewuser fax -1 /bin/false /dev/null fax
+	enewuser fax -1 -1 /dev/null fax
 }
 
 src_unpack() {

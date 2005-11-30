@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-pt-br/ispell-pt-br-2.4-r2.ebuild,v 1.1 2003/06/13 13:12:56 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-pt-br/ispell-pt-br-2.4-r2.ebuild,v 1.1.1.1 2005/11/30 09:46:59 chriswhite Exp $
 
 inherit eutils
 
@@ -13,7 +13,8 @@ SRC_URI="http://www.ime.usp.br/~ueda/br.ispell/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="ppc x86 sparc alpha mips hppa arm"
+KEYWORDS="ppc x86 sparc alpha mips hppa"
+IUSE=""
 
 DEPEND="app-text/ispell
 	sys-apps/gawk"
@@ -30,19 +31,18 @@ src_compile() {
 	make paradigmas
 }
 
-src_install () {
+src_install() {
 	emake \
 		prefix=${D}usr \
 		VDIR=${D}/usr/share/dict \
 		HASHDIR=${D}usr/lib/ispell \
 		MANDIR=${D}usr/share/man \
 		install || die
-	
 
 	insinto /usr/lib/ispell
 	newins br.aff pt_BR.aff
 	newins br.hash pt_BR.hash
 	rm -f ${D}/usr/lib/ispell/br.*
-	
-	dodoc COPYING README
+
+	dodoc README
 }

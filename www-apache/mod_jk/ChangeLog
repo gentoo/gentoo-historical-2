@@ -1,6 +1,26 @@
 # ChangeLog for www-apache/mod_jk
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_jk/ChangeLog,v 1.1 2005/04/14 19:37:58 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_jk/ChangeLog,v 1.1.1.1 2005/11/30 09:49:12 chriswhite Exp $
+
+  17 Oct 2005; Petteri Räty <betelgeuse@gentoo.org> mod_jk-1.2.10.ebuild,
+  mod_jk-1.2.13.ebuild:
+  Removed dependency on virtual/jdk, fixes bug #109121.
+
+  11 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> mod_jk-1.2.10.ebuild,
+  mod_jk-1.2.13.ebuild:
+  minor fixes
+
+*mod_jk-1.2.13 (01 Jun 2005)
+
+  01 Jun 2005; Jan Brinkmann <luckyduck@gentoo.org> mod_jk-1.2.10.ebuild,
+  +mod_jk-1.2.13.ebuild:
+  updated HOMEPAGE, new upstream version.
+
+  29 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  files/jk-workers.properties, mod_jk-1.2.10.ebuild:
+  tomcat dependency isnt required, give the choice to the user. fixes #89939.
+  also modified the default workers file. thanks to Andy Wang
+  <dopey@moonteeth.com> for the suggestion.
 
 *mod_jk-1.2.10 (14 Apr 2005)
 

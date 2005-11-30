@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp/ppp-2.4.3-r8.ebuild,v 1.1 2005/07/29 12:35:08 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/ppp/ppp-2.4.3-r8.ebuild,v 1.1.1.1 2005/11/30 09:46:15 chriswhite Exp $
 
 inherit eutils flag-o-matic toolchain-funcs linux-info
 
@@ -24,10 +24,6 @@ DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 
 pkg_setup() {
-	CONFIG_CHECK="PPP"
-	use activefilter && CONFIG_CHECK="${CONFIG_CHECK} PPP_FILTER"
-	linux-info_pkg_setup
-
 	if ! use radius; then
 		echo
 		ewarn "RADIUS plugins installation is now controled by radius useflag!"
@@ -121,7 +117,7 @@ src_compile() {
 pkg_preinst() {
 	if use radius && [ -d ${ROOT}/etc/radiusclient ] && has_version "<${CATEGORY}/${PN}-2.4.3-r5"; then
 		ebegin "Copy /etc/radiusclient to /etc/ppp/radius"
-		cp -ar ${ROOT}/etc/radiusclient ${ROOT}/etc/ppp/radius
+		cp -pPR ${ROOT}/etc/radiusclient ${ROOT}/etc/ppp/radius
 		eend $?
 	fi
 }
@@ -229,17 +225,29 @@ src_install() {
 }
 
 pkg_postinst() {
+	if get_version ; then
+		echo
+		ewarn "If any of the following kernel configuration options is missing,"
+		ewarn "you should reconfigure and rebuild your kernel before running pppd."
+		CONFIG_CHECK="~PPP"
+		use activefilter && CONFIG_CHECK="${CONFIG_CHECK} ~PPP_FILTER"
+		CONFIG_CHECK="${CONFIG_CHECK} ~PPP_BSDCOMP ~PPP_DEFLATE"
+		check_extra_config
+		echo
+	fi
+
 	if [ ! -e ${ROOT}/dev/.devfsd ] && [ ! -e ${ROOT}/dev/.udev ] && [ ! -e ${ROOT}/dev/ppp ]; then
 		mknod ${ROOT}/dev/ppp c 108 0
 	fi
 	if [ "$ROOT" = "/" ]; then
 		/sbin/update-modules
 	fi
+
 	#create *-secrets files if not exists
 	[ -f "${ROOT}/etc/ppp/pap-secrets" ] || \
-		cp -a "${ROOT}/etc/ppp/pap-secrets.example" "${ROOT}/etc/ppp/pap-secrets"
+		cp -pP "${ROOT}/etc/ppp/pap-secrets.example" "${ROOT}/etc/ppp/pap-secrets"
 	[ -f "${ROOT}/etc/ppp/chap-secrets" ] || \
-		cp -a "${ROOT}/etc/ppp/chap-secrets.example" "${ROOT}/etc/ppp/chap-secrets"
+		cp -pP "${ROOT}/etc/ppp/chap-secrets.example" "${ROOT}/etc/ppp/chap-secrets"
 
 	ewarn "To enable kernel-pppoe read html/pppoe.html in the doc-directory."
 	ewarn "Note: the library name has changed from pppoe.so to rp-pppoe.so."

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/kth-krb/kth-krb-1.2.2-r2.ebuild,v 1.1 2004/05/10 11:43:56 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/kth-krb/kth-krb-1.2.2-r2.ebuild,v 1.1.1.1 2005/11/30 09:44:58 chriswhite Exp $
 
 inherit eutils
 
@@ -10,25 +10,30 @@ SRC_URI="ftp://ftp.pdc.kth.se/pub/krb/src/krb4-${PV}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="x86 ppc sparc alpha ia64 amd64"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc s390 sparc x86"
 IUSE="ssl afs"
 
 DEPEND="ssl? ( >=dev-libs/openssl-0.9.6b )
-	!amd64? ( afs? ( >=net-fs/openafs-1.2.2-r7 ) )"
+	!amd64? ( afs? ( >=net-fs/openafs-1.2.2-r7 ) )
+	sys-devel/autoconf"
 
 S=${WORKDIR}/krb4-${PV}
 
-src_compile() {
-	local myconf=""
-	echo ${PORTAGE_TMPDIR}
+src_unpack() {
+	unpack ${A} ; cd ${S}
 
 	epatch ${FILESDIR}/kth-gentoo.patch
 	epatch ${FILESDIR}/kth-gentoo-ssl.patch
 	epatch ${FILESDIR}/${P}-berkdb.patch
 	epatch ${FILESDIR}/${P}-fPIC.patch
+	epatch ${FILESDIR}/${P}-no_libedit.patch
 
+	autoreconf || die
+	libtoolize --copy --force
+}
+
+src_compile() {
 	use ssl && myconf="${myconf} --with-openssl=/usr"
-
 	use afs || myconf="${myconf} --without-afs-support"
 
 	econf \

@@ -1,11 +1,11 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/johntheripper-1.6-r3.ebuild,v 1.1 2004/05/20 03:03:20 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/johntheripper/johntheripper-1.6-r3.ebuild,v 1.1.1.1 2005/11/30 09:44:58 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
-MY_P=${P/theripper/}
-S=${WORKDIR}/${MY_P}
+MY_P="${P/theripper/}"
+S="${WORKDIR}/${MY_P}"
 DESCRIPTION="fast password cracker"
 HOMEPAGE="http://www.openwall.com/john/"
 SRC_URI="http://www.openwall.com/john/dl/${MY_P}.tar.gz
@@ -23,21 +23,22 @@ SRC_URI="http://www.openwall.com/john/dl/${MY_P}.tar.gz
 
 
 
-SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~alpha ~mips ~hppa"
-IUSE="mmx ntlm skey mysql"
+SLOT="0"
+KEYWORDS="alpha ~hppa ~mips ~ppc ppc64 ~sparc ~x86"
+IUSE="kerberos mmx mysql ntlm skey"
 
-RDEPEND="virtual/glibc"
+RDEPEND="virtual/libc
+	skey? ( app-admin/skey )
+	kerberos? ( dev-libs/openssl )"
 DEPEND="${RDEPEND}
 	sys-devel/binutils
 	sys-devel/gcc
-	skey? ( app-admin/skey )
-	kerberos? ( dev-libs/openssl )"
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}
-	epatch ${DISTDIR}/${MY_P}-gentoo.patch
+	epatch "${DISTDIR}/${MY_P}-gentoo.patch"
 }
 
 src_compile() {

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/gibbs/gibbs-1995.9.ebuild,v 1.1 2004/12/23 18:39:57 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/gibbs/gibbs-1995.9.ebuild,v 1.1.1.1 2005/11/30 09:48:46 chriswhite Exp $
 
 DESCRIPTION="A Gibbs sampling algorithm for local alignment of subtle sequence signals in multiple protein sequences."
 

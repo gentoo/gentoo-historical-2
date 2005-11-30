@@ -1,8 +1,89 @@
-# ChangeLog for dev-java/commons-dbcp
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-lang/ChangeLog,v 1.1 2002/11/02 21:47:27 karltk Exp $
+# ChangeLog for dev-java/commons-lang
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-lang/ChangeLog,v 1.1.1.1 2005/11/30 09:47:41 chriswhite Exp $
 
-*commons-dbcp-1.0 (02 Nov 2002)
+*commons-lang-2.1 (01 Oct 2005)
 
-  02 Nov 2002; Karl Trygve Kalleberg <karltk@gentoo.org> commons-dbcp-1.0.ebuild files/digest-commons-dbcp-1.0 :
-  Initial import.  Ebuild submitted by Adrian Almenar <aalmenar@conectium.com>.
+  01 Oct 2005; Thomas Matthijs <axxo@gentoo.org> commons-lang-2.0-r1.ebuild,
+  +commons-lang-2.1.ebuild:
+  version bump
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  24 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  commons-lang-2.0-r1.ebuild:
+  dropped junit tests since they tend to fail, fixes #81617
+
+  06 Feb 2005; Markus Rothe <corsair@gentoo.org> commons-lang-2.0-r1.ebuild:
+  Stable on ppc64
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> commons-lang-2.0-r1.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> commons-lang-2.0-r1.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  18 Sep 2004; Thomas Matthijs <axxo@gentoo.org> commons-lang-2.0-r1.ebuild:
+  dropped jikes support, since it cannot pass the junit tests then, bug 64483
+
+  19 Aug 2004; Travis Tilley <lv@gentoo.org> commons-lang-2.0-r1.ebuild:
+  stable on amd64
+
+  19 May 2004; Chris Aniszczyk <zx@gentoo.org> commons-lang-2.0-r1.ebuild:
+  Fixed issue with unit testing. Closes #51082
+  Thanks to Keith Burch <codemaestro@adelphia.net> for the heads up.
+
+  13 May 2004; Chris Aniszczyk <zx@gentoo.org> commons-lang-2.0-r1.ebuild:
+  Marking stable on ppc
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-lang-2.0-r1.ebuild:
+  Marking stable on x86.
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-lang-2.0-r1.ebuild:
+  Let ant die gracefully, #45398
+
+  20 Mar 2004; Chris Aniszczyk <zx@gentoo.org> commons-lang-2.0-r1.ebuild,
+  commons-lang-2.0.ebuild:
+  Not using jakarta-commons.eclass anymore, it's broken. Clean up.
+
+*commons-lang-2.0-r1 (29 Feb 2004)
+
+  29 Feb 2004; Chris Aniszczyk <zx@gentoo.org> commons-lang-1.0.1-r1.ebuild,
+  commons-lang-2.0-r1.ebuild, commons-lang-2.0.ebuild:
+  Some cleanup + can't rely on jakarta-commons eclass anymore.
+
+*commons-lang-2.0 (18 Oct 2003)
+
+*commons-lang-1.0.1-r1 (22 Mar 2003)
+
+  26 Apr 2003; Adrian Almenar <strider@gentoo.org> commons-lang-1.0.1-r1.ebuild:
+  Updated SRC_URI so this ebuild uses apache mirrors.
+
+  06 Apr 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-lang-1.0.1-r1.ebuild:
+  moved x86 ppc sparc to stable.
+
+  22 Mar 2003; Dylan Carlson <absinthe@gentoo.org>
+  commons-lang-1.0.1-r1.ebuild:
+  Changed to use jakarta-commons eclass.  'doc' USE flag added.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
+*commons-lang-1.0.1 (02 Dec 2002)
+  02 Dec 2002; Adrian Almenar <strider@gentoo.org> commons-lang-1.0.1.ebuild files/digest-commons-lang-1.0.1
+  New version of this package.
+
+*commons-lang-1.0-r1 (24 Nov 2002)
+
+  24 Nov 2002; Adrian Almenar <strider@gentoo.org> commons-lang-1.0-r1.ebuild files/digest-commons-lang-1.0-r1 :
+  Changed KEYWORDS, Eliminating all but "x86" since i dont know if they work.
+  Releasing it, since it has been tested a lot and works very well.
+  Changed Generated Jar Filename to be according all commons-* packages.
+
+*commons-lang-1.0 (02 Nov 2002)
+  
+  02 Nov 2002; Karl Trygve Kalleberg <karltk@gentoo.org> commons-lang-1.0.ebuild files/digest-commons-lang-1.0 :
+  Initial import.  Ebuild submitted by the ever-übercool Adrian Almenar 
+  <aalmenar@conectium.com>.

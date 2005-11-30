@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/kterm/kterm-6.2.0-r3.ebuild,v 1.1 2004/09/02 23:54:33 rac Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/kterm/kterm-6.2.0-r3.ebuild,v 1.1.1.1 2005/11/30 09:46:33 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -14,11 +14,9 @@ SRC_URI="ftp://ftp.x.org/contrib/applications/${P}.tar.gz
 HOMEPAGE="http://www.asahi-net.or.jp/~hc3j-tkg/kterm/"
 LICENSE="X11"
 SLOT="0"
-KEYWORDS="~x86 ~sparc -alpha ~ppc"
+KEYWORDS="x86 ~sparc -alpha ppc"
 
-DEPEND="${RDEPEND}
-	app-i18n/nkf"
-RDEPEND="virtual/x11
+DEPEND="virtual/x11
 	sys-libs/ncurses
 	Xaw3d? ( x11-libs/Xaw3d )"
 
@@ -28,6 +26,7 @@ src_unpack(){
 	cd ${S}
 	epatch ${WORKDIR}/${P}-wpi.patch		# wallpaper patch
 	epatch ${WORKDIR}/${P}.ext02.patch		# JIS 0213 support
+	epatch ${FILESDIR}/${P}-openpty.patch
 	epatch ${FILESDIR}/${P}-gentoo.patch
 	epatch ${FILESDIR}/${PN}-ad-gentoo.diff
 
@@ -48,7 +47,7 @@ src_install(){
 	# install man pages
 	newman kterm.man kterm.1
 	insinto /usr/share/man/ja/man1
-	nkf -e kterm.jman > kterm.ja.1
+	iconv -f ISO-2022-JP -t EUC-JP kterm.jman > kterm.ja.1
 	newins kterm.ja.1 kterm.1
 
 	dodoc README.kt

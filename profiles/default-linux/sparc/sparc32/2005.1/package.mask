@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/sparc32/2005.1/package.mask,v 1.1 2005/06/14 14:12:45 gustavoz Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/sparc32/2005.1/package.mask,v 1.1.1.1 2005/11/30 09:48:39 chriswhite Exp $
 
 # Masked until bug #60413 is fixed.
 media-libs/xine-lib
@@ -57,9 +57,21 @@ media-sound/qmidiarp
 media-sound/rosegarden
 media-sound/seq24
 media-sound/sfc
+media-sound/specimen
 media-sound/supercollider
 media-sound/tapiir
 media-video/gephe
+
+# Gustavo Zacarias <gustavoz@gentoo.org>
+# New toys enabled by the dev/ profile and linux-headers-2.6
+gnome-base/gnome-volume-manager
+gnome-extra/hal-device-manager
+sys-apps/hal
+sys-apps/pmount
+# This probably won't work since -bin is ultra
+dev-haskell/haddock
+dev-lang/ghc
+dev-lang/ghc-bin
 
 # Jason Wever <weeve@gentoo.org>
 # Masking versions of libffi that don't apply to this profile

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wpa_supplicant/files/wpa_supplicant-0.3.8-r1-init.d,v 1.1 2005/07/13 18:18:51 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wpa_supplicant/files/wpa_supplicant-0.3.8-r1-init.d,v 1.1.1.1 2005/11/30 09:45:28 chriswhite Exp $
 
 depend() {
 	before net

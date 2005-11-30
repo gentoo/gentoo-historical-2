@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/pinentry/pinentry-0.7.2-r1.ebuild,v 1.1 2005/09/22 10:23:26 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/pinentry/pinentry-0.7.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:44:52 chriswhite Exp $
 
 inherit flag-o-matic qt3
 

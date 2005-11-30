@@ -1,14 +1,11 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/sparc64/dev/multilib/make.defaults,v 1.1 2005/03/07 00:05:03 eradicator Exp $
-
-CHOST="sparc64-unknown-linux-gnu"
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/sparc/sparc64/dev/multilib/make.defaults,v 1.1.1.1 2005/11/30 09:48:38 chriswhite Exp $
 
 MULTILIB_ABIS="sparc32 sparc64"
-DEFAULT_ABI="sparc32"
 
 CFLAGS_sparc64="-m64"
-LDFLAGS_sparc64="-m elf64-sparc"
+LDFLAGS_sparc64="-m elf64_sparc"
 CHOST_sparc64="sparc64-unknown-linux-gnu"
 CTARGET_ALIASES_sparc64="sparc64-linux"
 CDEFINE_sparc64="__arch64__"

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.2_pre1.ebuild,v 1.1 2005/08/17 08:26:18 compnerd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.2_pre1.ebuild,v 1.1.1.1 2005/11/30 09:47:13 chriswhite Exp $
 
 inherit eutils java-pkg
 
@@ -19,12 +19,13 @@ KEYWORDS="~amd64 ~ppc ~x86"
 
 IUSE="accessibility cairo firefox gnome mozilla"
 RDEPEND=">=virtual/jre-1.4
+		 >=x11-libs/gtk+-2.6.8
 		 mozilla? (
 		 			 firefox? ( >=www-client/mozilla-firefox-1.0.6 )
 					!firefox? ( >=www-client/mozilla-1.4 )
 				  )
 		 gnome? ( =gnome-base/gnome-vfs-2* =gnome-base/libgnomeui-2* )
-		 cairo? ( >=x11-libs/cairo-0.3.0 )"
+		 cairo? ( >=x11-libs/cairo-1.0.2 )"
 DEPEND=">=virtual/jdk-1.4
 		${RDEPEND}
 		  dev-util/pkgconfig
@@ -48,13 +49,7 @@ pkg_setup() {
 
 src_unpack() {
 	# Extract based on architecture
-	if [[ ${ARCH} == 'amd64' ]] ; then
-		unpack swt-${MY_VERSION}-gtk-linux-x86_64.zip || die "Unable to unpack sources"
-	elif [[ ${ARCH} == 'ppc' ]] ; then
-		unpack swt-${MY_VERSION}-gtk-linux-ppc.zip || die "Unable to unpack	sources"
-	else
-		unpack swt-${MY_VERSION}-gtk-linux-x86.zip || die "Unable to unpack	sources"
-	fi
+	unpack ${A} || die "Unable to unpack sources"
 
 	# Clean up the directory structure
 	for f in $(ls); do
@@ -72,7 +67,9 @@ src_unpack() {
 	rm -f .classpath .project
 
 	# CARIO 0.9.2 API Patch
-	if has_version '>=x11-libs/cairo-0.9.2' ; then
+	if [[ ${ARCH} == 'amd64' ]] ; then
+		epatch ${FILESDIR}/swt-cairo-0.9.2-amd64.patch
+	else
 		epatch ${FILESDIR}/swt-cairo-0.9.2.patch
 	fi
 
@@ -169,7 +166,7 @@ pkg_postinst() {
 		ewarn
 		ewarn "CAIRO Support is experimental! We are not responsible if"
 		ewarn "enabling support for CAIRO corrupts your Gentoo install,"
-		ewarn "if it blows up your computer, or if it becoming sentient"
+		ewarn "if it blows up your computer, or if it becomes sentient"
 		ewarn "and chases you down the street yelling random binary!"
 		ewarn
 		ebeep 5

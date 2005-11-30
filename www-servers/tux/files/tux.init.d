@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/files/tux.init.d,v 1.1 2004/08/08 19:03:31 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/tux/files/tux.init.d,v 1.1.1.1 2005/11/30 09:46:48 chriswhite Exp $
 
 checkconfig() {
 	if [ ! -e /proc/sys/net/tux ] ; then

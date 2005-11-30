@@ -1,38 +1,42 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.30.ebuild,v 1.1 2003/04/28 09:29:35 aliz Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.30.ebuild,v 1.1.1.1 2005/11/30 09:45:57 chriswhite Exp $
 
-inherit flag-o-matic
+inherit flag-o-matic eutils
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Fax and Voice modem programs."
 SRC_URI="ftp://alpha.greenie.net/pub/mgetty/source/1.1/${PN}${PV}-Dec16.tar.gz"
 HOMEPAGE="http://alpha.greenie.net/mgetty/"
 
 DEPEND=">=sys-apps/portage-2.0.47-r10
 	>=sys-apps/sed-4.0.5
-	app-text/tetex
+	doc? ( virtual/tetex )
 	sys-apps/gawk
 	dev-lang/perl"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="x86"
+KEYWORDS="x86 sparc alpha ia64 hppa ppc amd64"
+IUSE="doc"
+
+pkg_preinst() {
+	enewgroup fax
+	enewuser fax -1 -1 /dev/null fax
+}
 
 src_unpack() {
 	unpack ${A}
 
 	epatch ${FILESDIR}/mgetty-${PV}-gentoo.diff
-	
 	cd ${S}/doc
 	sed -i "s:dvips -o mgetty.ps:dvips -M -o mgetty.ps:" Makefile
-
 	cd ${S}
 	sed -e 's:var/log/mgetty:var/log/mgetty/mgetty:' \
 		-e 's:var/log/sendfax:var/log/mgetty/sendfax:' \
 		-e 's:\/\* \(\#define CNDFILE "dialin.config"\) \*\/:\1:' \
 		-e 's:\(\#define FAX_NOTIFY_PROGRAM\).*:\1 "/etc/mgetty+sendfax/new_fax":' \
 		policy.h-dist > policy.h
+	sed -i -e "s:phone_group phone:phone_group fax:g" voice/voice.conf-dist
 }
 
 src_compile() {
@@ -46,8 +50,18 @@ src_compile() {
 			CFLAGS="${CFLAGS}" \
 			|| die
 
+	einfo "building voice"
 	cd voice
 	emake CONFDIR=/etc/mgetty+sendfax \
+		|| make CONFDIR=/etc/mgetty+sendfax \
+			|| die
+
+	cd ${S}
+
+	einfo "building callback"
+	cd callback
+	emake CONFDIR=/etc/mgetty+sendfax \
+		CFLAGS="${CFLAGS}" \
 		|| make CONFDIR=/etc/mgetty+sendfax \
 			|| die
 	cd ${S}
@@ -66,6 +80,22 @@ src_install () {
 		spool=${D}/var/spool \
 		install || die
 
+	einfo "Installing callback"
+	cd callback
+	make prefix=${D}/usr \
+		CONFDIR=${D}/etc/mgetty+sendfax \
+		MAN1DIR=${D}/usr/share/man/man1 \
+		MAN8DIR=${D}/usr/share/man/man8 \
+		VOICE_DIR=${D}/var/spool/voice \
+		SBINDIR=${D}/usr/sbin \
+		BINDIR=${D}/usr/bin \
+		INSTALL="install -c -o bin -g bin" \
+		PHONE_GROUP=root \
+		PHONE_PERMS=755 \
+		install || die
+	cd ${S}
+
+	einfo "installing voice"
 	cd voice
 	make prefix=${D}/usr \
 		CONFDIR=${D}/etc/mgetty+sendfax \
@@ -79,7 +109,8 @@ src_install () {
 	cd ${S}
 	dodoc BUGS ChangeLog FTP README.1st Recommend THANKS TODO
 	cd doc
-	dodoc *.txt modems.db mgetty.ps
+	dodoc *.txt modems.db
+	use doc && dodoc mgetty.ps
 
 	#generate missing fonts if any.
 	if [ -f ${S}/doc/missfont.log ]
@@ -107,4 +138,3 @@ pkg_postinst() {
 		mkdir -p ${ROOT}/var/spool/fax/outgoing/locks
 	fi
 }
-

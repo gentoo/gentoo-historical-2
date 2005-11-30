@@ -1,6 +1,27 @@
-# ChangeLog for app-games/tuxmathscrabble
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-kids/tuxmathscrabble/ChangeLog,v 1.1 2003/09/10 04:51:18 vapier Exp $
+# ChangeLog for games-kids/tuxmathscrabble
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-kids/tuxmathscrabble/ChangeLog,v 1.1.1.1 2005/11/30 09:48:25 chriswhite Exp $
+
+*tuxmathscrabble-2.7 (26 May 2005)
+
+  26 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/2.7-gentoo.patch, +tuxmathscrabble-2.7.ebuild:
+  version bump
+
+  22 Nov 2004; Joseph Jezak <josejx@gentoo.org> tuxmathscrabble-2.4a.ebuild:
+  Marked ppc stable.
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> tuxmathscrabble-2.4a.ebuild:
+  Added to ~ppc.
+
+  09 May 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  tuxmathscrabble-2.4a.ebuild:
+  Added amd64 KEYWORD.  Thank bug #50551.
+
+*tuxmathscrabble-2.4a (08 Nov 2003)
+
+  08 Nov 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bump #32873.
 
 *tuxmathscrabble-2.2 (03 Aug 2003)
 

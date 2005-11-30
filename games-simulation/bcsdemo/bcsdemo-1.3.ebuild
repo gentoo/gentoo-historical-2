@@ -1,8 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/bcsdemo/bcsdemo-1.3.ebuild,v 1.1 2003/10/07 15:58:47 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/bcsdemo/bcsdemo-1.3.ebuild,v 1.1.1.1 2005/11/30 09:49:39 chriswhite Exp $
 
-inherit games eutils
+inherit eutils games
 
 DESCRIPTION="design and build bridges and then stress test them with trains"
 HOMEPAGE="http://garagegames.com/pg/product/view.php?id=17"
@@ -11,13 +11,14 @@ SRC_URI="ftp://ggdev-1.homelan.com/bcs/bcsdemo_v${PV/./_}.sh.bin"
 LICENSE="BCS"
 SLOT="0"
 KEYWORDS="-* x86"
+IUSE=""
 
-DEPEND=""
+RDEPEND="media-libs/openal"
 
 S=${WORKDIR}
 
 pkg_setup() {
-	check_license
+	check_license BCS
 	games_pkg_setup
 }
 

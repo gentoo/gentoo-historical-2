@@ -1,16 +1,15 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libgdamm/libgdamm-1.3.6.ebuild,v 1.1 2005/07/21 23:47:27 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libgdamm/libgdamm-1.3.6.ebuild,v 1.1.1.1 2005/11/30 09:46:26 chriswhite Exp $
 
 inherit gnome2
 
 DESCRIPTION="C++ bindings for libgda"
 HOMEPAGE="http://gtkmm.sourceforge.net/"
-SRC_URI="ftp://ftp.gnome.org/pub/GNOME/sources/libgdamm/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 IUSE="doc"
 
 RDEPEND=">=dev-cpp/glibmm-2.4

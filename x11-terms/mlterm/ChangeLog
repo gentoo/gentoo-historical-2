@@ -1,6 +1,178 @@
-# ChangeLog for x11-term/mlterm
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/ChangeLog,v 1.1 2002/08/22 15:57:55 stubear Exp $
+# ChangeLog for x11-terms/mlterm
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/mlterm/ChangeLog,v 1.1.1.1 2005/11/30 09:46:35 chriswhite Exp $
+
+  12 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> mlterm-2.9.2.ebuild:
+  Stable on sparc
+
+  27 Mar 2005; Guy Martin <gmsoft@gentoo.org> mlterm-2.9.2.ebuild:
+  Stable on hppa.
+
+  07 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> mlterm-2.9.2.ebuild:
+  Keyworded ~sparc
+
+  06 Mar 2005; Joseph Jezak <josejx@gentoo.org> mlterm-2.9.2.ebuild:
+  Marked ppc stable for bug #84174.
+
+  05 Mar 2005; Markus Rothe <corsair@gentoo.org> mlterm-2.9.2.ebuild:
+  Stable on ppc64; bug #84174
+
+*mlterm-2.9.2 (05 Mar 2005)
+
+  05 Mar 2005; Mamoru KOMACHI <usata@gentoo.org> +mlterm-2.9.2.ebuild:
+  Version bumped.
+
+  10 Feb 2005; Mamoru KOMACHI <usata@gentoo.org> mlterm-2.9.1.ebuild:
+  Stable on x86 and ppc.
+
+  12 Jan 2005; Guy Martin <gmsoft@gentoo.org> mlterm-2.9.0.ebuild,
+  mlterm-2.9.1.ebuild:
+  Stable on hppa.
+
+  05 Dec 2004; Mamoru KOMACHI <usata@gentoo.org>
+  +files/mlterm-2.9.1-gentoo.diff, mlterm-2.9.1.ebuild:
+  Append -Wl,-z,now to LDFLAGS.
+
+*mlterm-2.9.1 (30 Nov 2004)
+
+  30 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> mlterm-2.9.0.ebuild,
+  +mlterm-2.9.1.ebuild:
+  Version bumped. Marked 2.9.0 stable on x86 and ppc.
+
+*mlterm-2.9.0 (25 Oct 2004)
+
+  25 Oct 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -mlterm-2.8.1_pre20040815.ebuild, +mlterm-2.9.0.ebuild:
+  Version bumped.
+
+  07 Sep 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -mlterm-2.8.1_pre20040614.ebuild, mlterm-2.8.1_pre20040815.ebuild:
+  Added to ~ppc. Removed old CVS snapshot.
+
+  01 Sep 2004; Travis Tilley <lv@gentoo.org> mlterm-2.8.1_pre20040815.ebuild:
+  added ~amd64 keyword
+
+*mlterm-2.8.1_pre20040815 (27 Aug 2004)
+
+  27 Aug 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -mlterm-2.8.1_pre20040423.ebuild, +mlterm-2.8.1_pre20040815.ebuild:
+  Updated CVS snapshot.
+
+  29 Jul 2004; Tom Gall <tgall@gentoo.org> mlterm-2.8.0_p1-r1.ebuild:
+  stable on ppc64, bug #55676
+
+  23 Jun 2004; Aron Griffis <agriffis@gentoo.org> mlterm-2.8.0_p1-r1.ebuild,
+  mlterm-2.8.1_pre20040423.ebuild, mlterm-2.8.1_pre20040614.ebuild:
+  QA - fix use invocation
+
+*mlterm-2.8.1_pre20040614 (16 Jun 2004)
+
+  16 Jun 2004; Mamoru KOMACHI <usata@gentoo.org>
+  -mlterm-2.8.1_pre20040310.ebuild, +mlterm-2.8.1_pre20040614.ebuild:
+  Updated CVS snapshot
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> mlterm-2.8.0_p1-r1.ebuild:
+  Add inherit eutils
+
+*mlterm-2.8.1_pre20040423 (26 Apr 2004)
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> mlterm-2.7.0-r1.ebuild,
+  mlterm-2.8.1_pre20040203.ebuild, mlterm-2.8.1_pre20040423.ebuild:
+  Updated CVS snapshot. Added uim IUSE flag. Removed old ebuilds.
+
+*mlterm-2.8.1_pre20040310 (11 Mar 2004)
+
+  11 Mar 2004; Mamoru KOMACHI <usata@gentoo.org>
+  mlterm-2.8.1_pre20040310.ebuild:
+  New CVS snapshot. Now we can remove GTK+ 1 dependency from mlconfig.
+
+  26 Feb 2004; Guy Martin <gmsoft@gentoo.org> mlterm-2.8.0_p1-r1.ebuild:
+  Marked stable on hppa.
+
+*mlterm-2.8.1_pre20040203 (03 Feb 2004)
+
+  03 Feb 2004; Mamoru KOMACHI <usata@gentoo.org>
+  mlterm-2.8.1_pre20040203.ebuild:
+  Introduced CVS snapshot
+
+  07 Dec 2003; Mamoru KOMACHI <usata@gentoo.org> mlterm-2.6.3-r2.ebuild,
+  mlterm-2.7.0-r1.ebuild, mlterm-2.8.0_p1-r1.ebuild:
+  Corrected DEPEND. Thanks to spider@gentoo.org, see comments in ebuilds
+  and bug #34573
+
+  01 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> mlterm-2.6.3-r1.ebuild,
+  mlterm-2.6.3-r2.ebuild, mlterm-2.6.3.ebuild, mlterm-2.7.0.ebuild,
+  mlterm-2.8.0.ebuild:
+  Cleaned out duplicate versions
+
+*mlterm-2.8.0_p1-r1 (27 Oct 2003)
+
+  30 Nov 2003; Mamoru KOMACHI <usata@gentoo.org> mlterm-2.8.0_p1-r1.ebuild:
+  Marked as stable
+
+  27 Oct 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.8.0_p1-r1.ebuild:
+  Fixed ebuild bug in which some documents are not installed
+
+*mlterm-2.8.0_p1 (20 Oct 2003)
+
+  27 Oct 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.8.0_p1.ebuild:
+  Marked stable on x86/ppc
+
+  20 Oct 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.8.0_p1.ebuild:
+  Modified to apply a bug fix patch. Thanks to Sadayuki Kobayashi
+  <desperado@s17.xrea.com>. closed #31547.
+
+*mlterm-2.8.0 (06 Oct 2003)
+
+  06 Oct 2003; Mamoru KOMACHI <usata@gentoo.org> mlterm-2.8.0.ebuild:
+  Version bumped
+
+*mlterm-2.7.0-r1 (03 Jul 2003)
+
+  05 Jul 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.7.0-r1.ebuild:
+  Marked as stable(x86 ppc)
+
+  03 Jul 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.7.0-r1.ebuild:
+  Added fribidi support.
+
+*mlterm-2.7.0 (16 Jun 2003)
+
+  16 Jun 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.7.0.ebuild:
+  Version bump.
+
+*mlterm-2.6.3-r2 (12 May 2003)
+  12 May 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.6.3-r2.ebuild:
+  Modified. 
+  Bugs #20786 Thanks to Sadayuki Kobayashi <desperado@s17.xrea.com>.
+
+*mlterm-2.6.3-r1 (19 Apr 2002)
+  19 Apr 2003; Meir Kriheli <mksoft@gentoo.org> mlterm-2.6.3-r1.ebuild :
+  Added bidi support (based on nls). Marked unstable and bumped revision
+  as fribidi is unstable as well
+
+*mlterm-2.6.3 (28 Feb 2003)
+  24 Mar 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.6.3.ebuild:
+  Marked as stable.
+
+  28 Feb 2003; Masatomo Nakano <nakano@gentoo.org> mlterm-2.6.3.ebuild:
+  Version bump.
+
+*mlterm-2.6.2 (05 Nov 2002)
+
+  05 Nov 2002; Daniel Ahlberg <aliz@gentoo.org> :
+  Version bump.
+
+*mlterm-2.5.0-r1.ebuild (13 Sep 2002)
+
+  21 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> mlterm-2.5.0-r1.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  13 Sep 2002; Seemant Kulleen <seemant@gentoo.org> mlterm-2.5.0-r1.ebuild
+  files/digest-mlterm-2.5.0-r1.ebuild :
+
+  mkeadle (Matt Keadle) noticed that conf files were going into /usr/etc, so
+  this fixes that situation.
 
 *mlterm-2.5.0.ebuild (22 Aug 2002)
 

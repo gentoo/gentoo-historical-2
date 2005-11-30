@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlrpc/xmlrpc-1.2_beta1-r1.ebuild,v 1.1 2005/07/13 10:40:36 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmlrpc/xmlrpc-1.2_beta1-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:21 chriswhite Exp $
 
 inherit java-pkg
 
@@ -14,24 +14,24 @@ SLOT="0"
 KEYWORDS="x86 ~ppc amd64"
 IUSE="jikes doc"
 DEPEND=">=virtual/jdk-1.4
-	dev-java/ant
+	dev-java/ant-core
 	jikes? ( dev-java/jikes )"
 RDEPEND=">=virtual/jre-1.4"
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
 src_compile() {
-	local antflags="-Dbuild.dir=build -Dbuild.dest=dest -Dsrc.dir=src \
+	local antflags="jar -Dbuild.dir=build -Dbuild.dest=dest -Dsrc.dir=src \
 		-Djavadoc.destdir=api -Dfinal.name=xmlrpc-${MY_PV}"
 	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
-	use doc && antflags="${antflags} javadoc"
+	use doc && antflags="${antflags} javadocs"
 	ant ${antflags} || die
 }
 
 src_install() {
 	java-pkg_newjar build/xmlrpc-${MY_PV}.jar ${PN}.jar
 	java-pkg_newjar build/xmlrpc-${MY_PV}-applet.jar ${PN}-applet.jar
-	dodoc *.txt
+	dodoc README.txt
 	use doc && java-pkg_dohtml -r api
 }
 

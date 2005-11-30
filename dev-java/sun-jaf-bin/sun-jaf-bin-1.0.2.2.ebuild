@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jaf-bin/sun-jaf-bin-1.0.2.2.ebuild,v 1.1 2005/06/06 18:07:50 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jaf-bin/sun-jaf-bin-1.0.2.2.ebuild,v 1.1.1.1 2005/11/30 09:47:37 chriswhite Exp $
 
 inherit java-pkg
 
@@ -12,20 +12,20 @@ KEYWORDS="x86 ppc sparc amd64 ppc64"
 LICENSE="sun-bcla-jaf"
 SLOT="0"
 DEPEND=">=app-arch/unzip-5.50-r1"
-RDEPEND=">=virtual/jdk-1.2"
+RDEPEND=">=virtual/jre-1.2"
 IUSE="doc"
 RESTRICT="fetch"
 S=${WORKDIR}/jaf-${PV%.*}
 
 pkg_nofetch() {
-	einfo " "
+	einfo
 	einfo " Due to license restrictions, we cannot fetch the"
 	einfo " distributables automagically."
-	einfo " "
+	einfo
 	einfo " 1. Visit ${HOMEPAGE}"
 	einfo " 2. Download ${At}"
 	einfo " 3. Move file to ${DISTDIR}"
-	einfo " "
+	einfo
 }
 
 src_compile() { :; }

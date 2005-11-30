@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn4k-utils/files/3.6_pre20041219/isdn.initd,v 1.1 2004/12/23 22:12:34 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/isdn4k-utils/files/3.6_pre20041219/isdn.initd,v 1.1.1.1 2005/11/30 09:46:04 chriswhite Exp $
 
 opts="start stop save reload info show cards"
 

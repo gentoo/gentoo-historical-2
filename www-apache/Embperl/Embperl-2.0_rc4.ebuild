@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/Embperl/Embperl-2.0_rc4.ebuild,v 1.1 2005/08/08 12:51:39 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/Embperl/Embperl-2.0_rc4.ebuild,v 1.1.1.1 2005/11/30 09:49:13 chriswhite Exp $
 
 inherit perl-module eutils
 

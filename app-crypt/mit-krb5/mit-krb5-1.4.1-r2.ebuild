@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/mit-krb5/mit-krb5-1.4.1-r2.ebuild,v 1.1 2005/07/12 21:03:18 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/mit-krb5/mit-krb5-1.4.1-r2.ebuild,v 1.1.1.1 2005/11/30 09:44:52 chriswhite Exp $
 
 inherit eutils flag-o-matic versionator
 
@@ -15,7 +15,7 @@ SRC_URI="http://web.mit.edu/kerberos/dist/krb5/${P_DIR}/${MY_P}-signed.tar
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sparc x86"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 IUSE="krb4 static tcltk ipv6 doc tetex berkdb"
 
 RDEPEND="virtual/libc
@@ -25,13 +25,14 @@ DEPEND="${RDEPEND}
 	sys-libs/com_err
 	sys-libs/ss
 	sys-devel/autoconf
-	berkdb? ( >=sys-libs/db-4 )"
+	berkdb? ( >=sys-libs/db-4 )
+	doc? ( tetex? ( virtual/tetex ) )"
 
 PROVIDE="virtual/krb5"
 
 src_unpack() {
 	unpack ${MY_P}-signed.tar; tar zxf ${MY_P}.tar.gz; cd ${S}
-	epatch ${FILESDIR}/${P}-lazyldflags.patch
+	epatch ${FILESDIR}/${PN}-lazyldflags.patch
 
 	EPATCH_SUFFIX="txt" \
 		epatch ${DISTDIR}/2005-002-patch_${PV}.txt

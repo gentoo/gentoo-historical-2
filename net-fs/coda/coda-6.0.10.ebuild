@@ -1,18 +1,18 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/coda/coda-6.0.10.ebuild,v 1.1 2005/05/05 13:21:08 griffon26 Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/coda/coda-6.0.10.ebuild,v 1.1.1.1 2005/11/30 09:45:48 chriswhite Exp $
 
 inherit eutils
 
 IUSE="kerberos"
 
 DESCRIPTION="Coda is an advanced networked filesystem developed at Carnegie Mellon Univ."
-HOMEPAGE="http://www.coda.cs.cmu.edu"
-SRC_URI="ftp://ftp.coda.cs.cmu.edu/pub/coda/src/${P}.tar.gz"
+HOMEPAGE="http://www.coda.cs.cmu.edu/"
+SRC_URI="http://www.coda.cs.cmu.edu/pub/coda/src/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~ppc x86"
 
 # partly based on the deps suggested by Mandrake's RPM, and/or on my current versions
 # Also, definely needs coda.h from linux-headers.
@@ -35,6 +35,7 @@ RDEPEND=">=sys-libs/lwp-2.0
 	>=sys-libs/db-3
 	>=sys-libs/ncurses-4
 	>=sys-libs/readline-3
+	>=dev-lang/perl-5.8
 	kerberos? ( virtual/krb5 )"
 
 src_unpack() {
@@ -115,7 +116,7 @@ pkg_postinst () {
 	einfo "To get started, run vice-setup and venus-setup."
 	einfo
 	einfo "Alternatively you can get a default coda setup by running:"
-	einfo "    ebuild /var/db/pkg/${CATEGORY}/${PF}/${PF}.ebuild config"
+	einfo "    emerge --config =${PF}"
 }
 
 pkg_config () {
@@ -227,6 +228,12 @@ pkg_config () {
 
 	# Start coda server
 	/etc/init.d/codasrv start || exit 1
+
+	# Workaround to increase the likelihood that the coda server finished
+	# starting up. Once there is a nicer way to detect this, it should 
+	# probably be added to the codasrv init script.
+	# See http://www.coda.cs.cmu.edu/maillists/codalist/codalist-2004/6954.html
+	sleep 5
 
 	einfo "Creating root volume..."
 	# Create root volume

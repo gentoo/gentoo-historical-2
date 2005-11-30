@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/gtkmm-2.6.4.ebuild,v 1.1 2005/08/20 19:22:50 ka0ttic Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/gtkmm-2.6.4.ebuild,v 1.1.1.1 2005/11/30 09:46:25 chriswhite Exp $
 
 inherit gnome2
 

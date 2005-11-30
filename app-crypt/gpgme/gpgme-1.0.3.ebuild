@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpgme/gpgme-1.0.3.ebuild,v 1.1 2005/08/14 13:39:31 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/gpgme/gpgme-1.0.3.ebuild,v 1.1.1.1 2005/11/30 09:44:57 chriswhite Exp $
 
 inherit eutils libtool
 
@@ -10,7 +10,7 @@ SRC_URI="mirror://gnupg/gpgme/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="1"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 #IUSE="smime"
 
@@ -33,18 +33,6 @@ RDEPEND="virtual/libc
 
 src_compile() {
 
-	if use ppc-macos; then
-		sed -i \
-			-e "s:AC_PREREQ(2.59):#AC_PREREQ(2.59):" \
-			-e "s:min_automake_version="1.9.3":#min_automake_version="1.9.3":" \
-			configure.ac || die
-		libtoolize --force --copy
-		aclocal
-		WANT_AUTOCONF=2.57
-		autoconf || die "failed to autoconfigure"
-		automake || die "failed to automake"
-	fi
-
 	if [ -x /usr/bin/gpg2 ]; then
 		GPGBIN=/usr/bin/gpg2
 	else
@@ -53,6 +41,10 @@ src_compile() {
 
 	# For when gnupg-1.9+ gets unmasked
 	#	$(use_with smime gpgsm /usr/bin/gpgsm) \
+
+	if use selinux; then
+		sed  -i -e "s:tests = tests:tests = :" Makefile.in || die
+	fi
 
 	econf \
 		--includedir=/usr/include/gpgme \

@@ -1,35 +1,36 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi-svn/irssi-svn-0.3.ebuild,v 1.1 2005/05/14 23:09:36 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi-svn/irssi-svn-0.3.ebuild,v 1.1.1.1 2005/11/30 09:49:01 chriswhite Exp $
 
-inherit subversion perl-module
+inherit subversion perl-module flag-o-matic
 
 ESVN_REPO_URI="http://svn.irssi.org/repos/irssi/trunk/"
 ESVN_PROJECT="irssi"
-ESVN_BOOTSTRAP="./autogen.sh"
+ESVN_BOOTSTRAP="NOCONFIGURE=1 ./autogen.sh"
 
 DESCRIPTION="A modular textUI IRC client with IPv6 support"
 HOMEPAGE="http://irssi.org/"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~mips ~ppc ~sparc ~x86"
 IUSE="ipv6 perl ssl"
 
 RDEPEND=">=dev-libs/glib-2.2.1
 	sys-libs/ncurses
 	perl? ( dev-lang/perl )
+	ssl? ( dev-libs/openssl )
 	!net-irc/irssi
 	!net-irc/irssi-cvs"
 DEPEND="${RDEPEND}
+	dev-lang/perl
 	www-client/lynx
-	nls? ( sys-devel/gettext )
 	>=sys-devel/autoconf-2.58"
 
 src_compile() {
-	export WANT_AUTOCONF=2.5
+	# Irssi uses extern inlines and that needs at least -O
+	is-flag "-O*" || append-flags -O
 
 	econf \
-		--with-glib2 \
 		--with-proxy \
 		--with-ncurses \
 		$(use_with perl) \
@@ -55,6 +56,8 @@ src_install() {
 		docdir=/usr/share/doc/${PF} \
 		gnulocaledir="${D}"/usr/share/locale \
 		install || die "make install failed"
+
+	use perl && fixlocalpod
 
 	prepalldocs
 	dodoc AUTHORS ChangeLog README TODO NEWS

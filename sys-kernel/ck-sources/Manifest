@@ -1,10 +1,16 @@
-MD5 bad93bf7e78b3281811c26b79559a590 ck-sources-2.4.20-r4.ebuild 995
-MD5 9c72294c7d49f4ef681a0823f2cda2db ck-sources-2.4.20-r1.ebuild 963
-MD5 fc050a026038a6ee3221bbdaeedf5dae manifest 772
-MD5 ecaba885def4f560274c2068a2b38217 ck-sources-2.4.20-r3.ebuild 992
-MD5 747b950ff88d699bf7353e969dd95aaf ChangeLog 1152
-MD5 697c2b35bab888c9fbefeada4b482f0a ck-sources-2.4.20-r2.ebuild 992
-MD5 b158b725603472e30e52f216600e5101 files/digest-ck-sources-2.4.20-r1 133
-MD5 fc91f35cb1ab07c4283c4f9876dafe27 files/digest-ck-sources-2.4.20-r2 133
-MD5 25ee4a049baf96d63956a0e51dfc8089 files/digest-ck-sources-2.4.20-r3 133
-MD5 245e5edd7489202b100cd540b571fc77 files/digest-ck-sources-2.4.20-r4 133
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 f26615e727c6d20644d67167630a6d71 ChangeLog 28234
+MD5 42426056220aa97c9dc53264baad870f ck-sources-2.6.13_p8.ebuild 1531
+MD5 f36fde23043d019a1fbfc80615066da4 ck-sources-2.6.14_p5.ebuild 1515
+MD5 a457c5f0415080b6b16dad6f8d700fcf files/digest-ck-sources-2.6.13_p8 278
+MD5 4f63b5d0f6e4a43894c28eb38ab63723 files/digest-ck-sources-2.6.14_p5 272
+MD5 7187b8c28501f454a2412c9e4a7fcf53 metadata.xml 421
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.2 (GNU/Linux)
+
+iD8DBQFDgpZCcsIHjyDViGQRAidjAKCIksLCR/RyWLE63sjMV0javjAFgACdFXiO
+xdO3037JptOz+zq8fNkNUF8=
+=epKD
+-----END PGP SIGNATURE-----

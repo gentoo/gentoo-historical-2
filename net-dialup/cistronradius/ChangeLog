@@ -1,6 +1,49 @@
 # ChangeLog for net-dialup/cistronradius
-# Copyright 1999-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/cistronradius/ChangeLog,v 1.1 2003/07/04 02:54:13 pfeifer Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/cistronradius/ChangeLog,v 1.1.1.1 2005/11/30 09:45:58 chriswhite Exp $
+
+  04 Oct 2005; Alin Nastac <mrness@gentoo.org>
+  cistronradius-1.6.7-r1.ebuild:
+  Remove INSTALL from docs directory.
+
+*cistronradius-1.6.7-r1 (17 May 2005)
+
+  17 May 2005; Alin Nastac <mrness@gentoo.org> -cistronradius-1.6.7.ebuild,
+  +cistronradius-1.6.7-r1.ebuild:
+  Fix dictionary file (#92962).
+
+  06 May 2005; Sven Wegener <swegener@gentoo.org>
+  cistronradius-1.6.7.ebuild:
+  Removed * postfix from <, <=, >= and > dependencies.
+
+  14 Apr 2005; Alin Nastac <mrness@gentoo.org>
+  -files/cistronradius-1.6.6-security.patch, -cistronradius-1.6.6-r1.ebuild,
+  cistronradius-1.6.7.ebuild:
+  Remove old version and inter-block with freeradius and gnuradius packages.
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  cistronradius-1.6.6-r1.ebuild, cistronradius-1.6.7.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org>
+  cistronradius-1.6.6-r1.ebuild:
+  Add inherit eutils
+
+  18 Mar 2004: Jay Pfeifer <pfeifer@gentoo.org> cistronradius-1.6.7.ebuild :
+  Marked stable on x86.
+
+*cistronradius-1.6.7 (22 Feb 2004)
+
+  22 Feb 2004; Jay Pfeifer <pfeifer@gentoo.org> cistronradius-1.6.7.ebuild :
+  Bumping to latest upstream version. 
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata
+
+*cistronradius-1.6.6-r1 (11 Jul 2003)
+
+  11 Jul 2003; Daniel Ahlberg <aliz@gentoo.org> cistronradius-1.6.6-r1.ebuild :
+  Security update. Added patch from Debian.
 
 *cistronradius-1.6.6 (03 Jul 2003)
 

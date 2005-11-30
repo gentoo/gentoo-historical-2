@@ -1,38 +1,38 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.14a-r3.ebuild,v 1.1 2005/08/04 14:03:04 seemant Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/samba-3.0.14a-r3.ebuild,v 1.1.1.1 2005/11/30 09:45:51 chriswhite Exp $
 
 inherit eutils versionator
 
 IUSE_LINGUAS="ja pl"
-IUSE="acl cups doc kerberos ldap mysql pam postgres python quotas readline
-winbind xml xml2 libclamav clamav oav selinux"
+IUSE="acl cups doc examples kerberos ldap mysql pam postgres python quotas
+	readline winbind xml xml2 libclamav oav selinux"
 
 VSCAN_VER=0.3.6
-PATCH_VER=0.3.2
+PATCH_VER=0.3.4
 MY_P=${PN}-${PV/_/}
-MY_PP=${PN}-$(get_major_version)-gentoo-patches-${PATCH_VER}
+MY_PP=${PN}-$(get_major_version)-gentoo-${PATCH_VER}
 S2=${WORKDIR}/${MY_P}
 S=${S2}/source
 PFVSCAN=${PN}-vscan-${VSCAN_VER}
 DESCRIPTION="SAMBA is a suite of SMB and CIFS client/server programs for UNIX"
 HOMEPAGE="http://www.samba.org/
 	http://www.openantivirus.org/projects.php"
-SRC_URI="mirror://samba/${MY_P}.tar.gz
+SRC_URI="
+	mirror://samba/${MY_P}.tar.gz
+	mirror://samba/old-versions/${MY_P}.tar.gz
 	oav? ( mirror://sourceforge/openantivirus/${PFVSCAN}.tar.bz2 )
+	http://dev.gentoo.org/~seemant/distfiles/${MY_PP}.tar.bz2
 	mirror://gentoo/${MY_PP}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 RDEPEND="dev-libs/popt
 	acl?       ( sys-apps/acl )
 	cups?      ( net-print/cups )
-	clamav?    ( app-antivirus/clamav )
-	libclamav? ( app-antivirus/clamav )
-	ldap?      ( net-nds/openldap )
-	kerberos?  ( virtual/krb5 )
+	ldap?      ( kerberos? ( virtual/krb5 ) net-nds/openldap )
 	mysql?     ( dev-db/mysql sys-libs/zlib )
 	pam?       ( sys-libs/pam )
 	postgres?  ( dev-db/postgresql sys-libs/zlib )
@@ -48,17 +48,7 @@ DEPEND="${RDEPEND}
 
 PRIVATE_DST=/var/lib/samba/private
 PATCHDIR=${WORKDIR}/gentoo/patches
-
-pkg_setup() {
-	ewarn "USE FLAG ALERT"
-	einfo "The 'libclamav' USE flag is going to be deprecated in future"
-	einfo "ebuilds of Samba.  It will be replaced with the global USE flag"
-	einfo "'clamav'"
-	einfo "Please heed this."
-	ewarn "USE FLAG ALERT"
-	epause 10
-	ebeep 5
-}
+CONFDIR=${WORKDIR}/gentoo/configs
 
 src_unpack() {
 	unpack ${A}; cd ${S2}
@@ -68,15 +58,12 @@ src_unpack() {
 	export EPATCH_SUFFIX="patch"
 	epatch ${PATCHDIR}/general
 	if use oav ; then
-		cp -a ${WORKDIR}/${PFVSCAN} ${S2}/examples/VFS
+		cp -pPR ${WORKDIR}/${PFVSCAN} ${S2}/examples/VFS
 		epatch ${PATCHDIR}/vscan
 	fi
 }
 
 src_compile() {
-	# sandbox permissions
-	addpredict /etc/krb5.conf #bugs #95840 and #96453
-
 	ebegin "Running autoconf"
 		autoconf
 	eend $?
@@ -141,15 +128,11 @@ src_compile() {
 
 	# Build samba-vscan plugins
 	if use oav; then
-		local myconf2
-		if use clamav || use libclamav ; then
-			myconf2="--with-libclamav"
-		fi
 		cd ${S2}/examples/VFS/${PFVSCAN}
 		econf \
 			--with-fhs \
 			--libdir=/usr/$(get_libdir)/samba \
-			${myconf2} || die "${PFVSCAN} ./configure failed"
+			$(use_with libclamav) || die "${PFVSCAN} ./configure failed"
 		emake || die "Failed to make ${PFVSCAN}"
 	fi
 
@@ -220,16 +203,16 @@ src_install() {
 
 	# General config files
 	insinto /etc/samba
-	doins ${FILESDIR}/smbusers
-	newins ${FILESDIR}/smb.conf.example-samba3.gz smb.conf.example.gz
-	doins ${FILESDIR}/lmhosts
+	doins ${CONFDIR}/smbusers
+	newins ${CONFDIR}/smb.conf.example-samba3 smb.conf.example
+	doins ${CONFDIR}/lmhosts
 
-	newpamd ${FILESDIR}/samba.pam samba
-	use winbind && doins ${FILESDIR}/system-auth-winbind
+	newpamd ${CONFDIR}/samba.pam samba
+	use winbind && doins ${CONFDIR}/system-auth-winbind
 	insinto /etc/xinetd.d
-	newins ${FILESDIR}/swat.xinetd swat
-	newinitd ${FILESDIR}/samba-init samba
-	newconfd ${FILESDIR}/samba-conf samba
+	newins ${CONFDIR}/swat.xinetd swat
+	newinitd ${CONFDIR}/samba-init samba
+	newconfd ${CONFDIR}/samba-conf samba
 	if use ldap; then
 		insinto /etc/openldap/schema
 		doins ${S2}/examples/LDAP/samba.schema
@@ -243,18 +226,19 @@ src_install() {
 	keepdir /var/{log,run,cache}/samba
 	keepdir /var/lib/samba/{netlogon,profiles}
 	keepdir /var/lib/samba/printers/{W32X86,WIN40,W32ALPHA,W32MIPS,W32PPC}
-	keepdir /usr/lib/samba/{rpc,idmap,auth}
+	keepdir /usr/$(get_libdir)/samba/{rpc,idmap,auth}
 
 	# docs
 	dodoc ${S2}/{COPYING,Manifest,README,Roadmap,WHATSNEW.txt}
-	docinto examples
-	dodoc ${FILESDIR}/nsswitch.conf-wins
-	use winbind && dodoc ${FILESDIR}/nsswitch.conf-winbind
+	dodoc ${CONFDIR}/nsswitch.conf-wins
+	use winbind && dodoc ${CONFDIR}/nsswitch.conf-winbind
 
-	cp -a ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
-
-	chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
-	chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	if use examples; then
+		docinto examples
+		cp -pPR ${S2}/examples/* ${D}/usr/share/doc/${PF}/examples
+		chmod -R 755 `find ${D}/usr/share/doc/${PF}/examples -type d`
+		chmod -R 644 `find ${D}/usr/share/doc/${PF}/examples ! -type d`
+	fi
 
 	if use oav; then
 		docinto ${PFVSCAN}
@@ -278,7 +262,7 @@ pkg_preinst() {
 		&& -r ${ROOT}/${PRIVATE_SRC}/secrets.tdb ]]; then
 		ebegin "Copying ${ROOT}/${PRIVATE_SRC}/* to ${ROOT}/${PRIVATE_DST}/"
 			mkdir -p ${IMAGE}/${PRIVATE_DST}
-			cp -af ${ROOT}/${PRIVATE_SRC}/* ${IMAGE}/${PRIVATE_DST}/
+			cp -pPRf ${ROOT}/${PRIVATE_SRC}/* ${IMAGE}/${PRIVATE_DST}/
 		eend $?
 	fi
 

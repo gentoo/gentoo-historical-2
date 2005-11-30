@@ -1,19 +1,28 @@
-MD5 30726bc1550287bb594f304fd0a845ca icewm-1.2.3.ebuild 2057
-MD5 3895a0e0cf386484404582c5c8b75622 icewm-1.2.5.ebuild 2058
-MD5 6691ae802a2358c3ef35f3d9c66a7190 icewm-1.2.0-r1.ebuild 2407
-MD5 21e6046fa6ce0973feae10f5014d3fcb icewm-1.2.7.ebuild 2090
-MD5 cde0543f51506ad8dc1d573280620149 icewm-1.2.6.ebuild 2079
-MD5 b03272ff4807db3b7bb3a030f4c4d4a9 icewm-1.2.2-r1.ebuild 2300
-MD5 4e17bd55b5eb230b079030d877000174 ChangeLog 4926
-MD5 3decb45e7b318067b9c3d68c6ef11e2f files/icewm 25
-MD5 caaf61ec560c01b8e920e5606eb61aa2 files/digest-icewm-1.2.0-r1 63
-MD5 0750e4d376075e5973eac5648820961a files/digest-icewm-1.2.2-r1 63
-MD5 0dc5e896c5f794e256450c88fcc8c0f7 files/icewm-gcc31-gentoo.patch 446
-MD5 1f8f857ae1c221d3633ae1752cdaa51a files/icewm-1.2.7-gentoo.patch 3886
-MD5 7197157fbefaf4d7a5c986f3daefbb14 files/icewm-1.2.3-gentoo.patch 3886
-MD5 6a1991631b8e5381a037ea72942b03a9 files/digest-icewm-1.2.3 63
-MD5 850b3fcfb5994b199b7edcec59b74722 files/digest-icewm-1.2.5 63
-MD5 85d0ba06f6fe7f1cd47f656d875aa2d8 files/digest-icewm-1.2.6 63
-MD5 ede49197766f08023cc5f56114783e61 files/digest-icewm-1.2.7 63
-MD5 1f8f857ae1c221d3633ae1752cdaa51a files/icewm-1.2.6-gentoo.patch 3886
-MD5 913ab5de078ca4f34bd9c19f8c22eaed files/icewm-1.2.5-gentoo.patch 3886
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+MD5 4943d7b36636e6253d576db607c2d0d9 icewm-1.2.23.ebuild 2228
+MD5 e74fd3f8b677b9a200feacf2fdc7f244 icewm-1.2.20.ebuild 2310
+MD5 1179ec44ecc2f0198fb5ef3de42a108d icewm-1.2.22.ebuild 2228
+MD5 7420579866830e8f55c5131fa8e558d5 ChangeLog 16762
+MD5 646a3a2aa9a92246bec0db5211f16133 icewm-1.2.21.ebuild 2270
+MD5 a26b94d92c1e03083b7020e2f4c1afe9 metadata.xml 630
+MD5 0adfec296f9e1a9eb08a326c0690c28e files/icewm-1.2.22.ybutton.cc.patch 591
+MD5 1ba6fc06d92e0a7d0d4357d83db74493 files/digest-icewm-1.2.20 64
+MD5 ab0c279c830a4148e8c4bba52df974b0 files/digest-icewm-1.2.21 64
+MD5 a644431b77f0f8026d82b40033a46d3e files/digest-icewm-1.2.22 64
+MD5 39a926bf34be3c704ff71518f13a175b files/digest-icewm-1.2.23 65
+MD5 9028fc0d1b794c88e4a2db9cf28f66f0 files/IceWM.desktop 200
+MD5 0adfec296f9e1a9eb08a326c0690c28e files/icewm-1.2.20.ybutton.cc.patch 591
+MD5 b3bb2875e9f96c7fbd5620a7388626b0 files/icewm-1.2.20.testmap.patch 529
+MD5 0adfec296f9e1a9eb08a326c0690c28e files/icewm-1.2.23.ybutton.cc.patch 591
+MD5 b3bb2875e9f96c7fbd5620a7388626b0 files/icewm-1.2.21.testmap.patch 529
+MD5 0adfec296f9e1a9eb08a326c0690c28e files/icewm-1.2.21.ybutton.cc.patch 591
+MD5 cea1a375dba2fc5a6d9675d7255229aa files/icewm-1.2.20.iceicon.patch 394
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.1 (GNU/Linux)
+
+iD8DBQFDXRn+KRy60XGEcJIRAsbZAJ96r2VCWr1KLmajf7riK09sBcXQ+wCeLLSq
+NIjQ7TkzIATqsUaNIM3Unso=
+=B/Lr
+-----END PGP SIGNATURE-----

@@ -1,6 +1,9 @@
-# ChangeLog for app-sci/readseq
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/readseq/ChangeLog,v 1.1 2004/12/23 18:17:27 ribosome Exp $
+# ChangeLog for sci-biology/readseq
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/readseq/ChangeLog,v 1.1.1.1 2005/11/30 09:48:50 chriswhite Exp $
+
+  10 Nov 2005; <dang@gentoo.org> readseq-19930201.ebuild:
+  Marked ~amd64
 
 *readseq-19930201 (23 Dec 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jmx/sun-jmx-1.2.1-r1.ebuild,v 1.1 2005/10/15 11:37:31 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jmx/sun-jmx-1.2.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:42 chriswhite Exp $
 
 inherit java-pkg eutils
 

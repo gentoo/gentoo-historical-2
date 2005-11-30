@@ -1,6 +1,19 @@
 # ChangeLog for games-simulation/qct
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/qct/ChangeLog,v 1.1 2004/04/01 22:09:55 mr_bones_ Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/qct/ChangeLog,v 1.1.1.1 2005/11/30 09:49:39 chriswhite Exp $
+
+  26 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org> qct-0.7.ebuild:
+  Making games last on inherit line.
+
+  02 Jul 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/qct-0.7-constant.patch, qct-0.7.ebuild:
+  Fix a traceback from using wrong var name #97762 by Peter Roozemaal.
+
+  16 Dec 2004; Joseph Jezak <josejx@gentoo.org> qct-0.7.ebuild:
+  Marked ppc stable.
+
+  02 Apr 2004; David Holm <dholm@gentoo.org> qct-0.7.ebuild:
+  Added to ~ppc.
 
 *qct-0.7 (01 Apr 2004)
 

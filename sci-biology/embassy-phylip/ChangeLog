@@ -1,6 +1,61 @@
-# ChangeLog for app-sci/embassy-phylip
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-phylip/ChangeLog,v 1.1 2004/12/23 23:06:31 ribosome Exp $
+# ChangeLog for sci-biology/embassy-phylip
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/embassy-phylip/ChangeLog,v 1.1.1.1 2005/11/30 09:48:42 chriswhite Exp $
+
+  04 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
+  -embassy-phylip-3.57c-r1.ebuild:
+  Removed obsolete version.
+
+  03 Oct 2005; Olivier Fisette <ribosome@gentoo.org>
+  embassy-phylip-3.6b.ebuild:
+  Stable on ppc-macos (with j4rg0n's permission, bug #102420).
+
+  02 Oct 2005; Michael Hanselmann <hansmi@gentoo.org>
+  embassy-phylip-3.6b.ebuild:
+  Stable on ppc.
+
+  21 Sep 2005; Olivier Fisette <ribosome@gentoo.org>
+  embassy-phylip-3.6b.ebuild:
+  Added to x86.
+
+*embassy-phylip-3.6b (07 Aug 2005)
+
+  07 Aug 2005; Olivier Fisette <ribosome@gentoo.org>
+  +embassy-phylip-3.6b.ebuild, embassy-phylip-3.57c-r1.ebuild:
+  Ported 3.57c-r1 to the improved embassy.eclass. The new version is part of
+  EMBASSY 3.0.0. Version 3.6 is really an upgrade; it is normal to be required
+  to downgrade from 3.57c to 3.6b to upgrade to EMBASSY 3.0.0. This is an
+  issue with upstream's versionning scheme.
+
+  28 Jul 2005; Olivier Fisette <ribosome@gentoo.org>
+  -embassy-phylip-3.57c.ebuild:
+  Removed old version.
+
+  26 Jun 2005; Lina Pezzella <j4rg0n@gentoo.org>
+  embassy-phylip-3.57c-r1.ebuild:
+  Stable ppc-macos Bug 96819
+
+  24 Jun 2005; Joseph Jezak <josejx@gentoo.org>
+  embassy-phylip-3.57c-r1.ebuild:
+  Marked ppc stable.
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org>
+  embassy-phylip-3.57c-r1.ebuild:
+  Added to x86.
+
+*embassy-phylip-3.57c-r1 (25 Mar 2005)
+
+  25 Mar 2005; Olivier Fisette <ribosome@gentoo.org>
+  +embassy-phylip-3.57c-r1.ebuild:
+  Build against the EMBOSS 2.10 source tree.
+
+  02 Mar 2005; Lina Pezzella <j4rg0n@gentoo.org>
+  embassy-phylip-3.57c.ebuild:
+  Stable ppc-macos
+
+  25 Jan 2005; Lina Pezzella <j4rg0n@gentoo.org>
+  embassy-phylip-3.57c.ebuild:
+  Unstable ppc-macos
 
 *embassy-phylip-3.57c (23 Dec 2004)
 

@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/happy-1.14.ebuild,v 1.1 2004/04/14 12:03:12 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/happy/happy-1.14.ebuild,v 1.1.1.1 2005/11/30 09:48:23 chriswhite Exp $
+
+inherit base eutils
 
 DESCRIPTION="A yacc-like parser generator for Haskell"
 HOMEPAGE="http://haskell.org/happy/"
@@ -10,21 +12,20 @@ SLOT="0"
 KEYWORDS="x86"
 IUSE=""
 
-DEPEND="virtual/ghc"
+DEPEND="virtual/ghc
+	!>=virtual/ghc-6.4"
 RDEPEND=""
 
 src_unpack() {
-	unpack ${A}
+	base_src_unpack
+	epatch "${FILESDIR}/${P}-gcc3.4.patch"
 }
 
 src_compile() {
-	econf || die
-
-	# "emake" does not work reliably. Probably due to the classic
-	# dependency problem in make with parallel builds.
-	make || die
+	econf || die "configure failed"
+	emake -j1 || die "make failed"
 }
 
 src_install() {
-	einstall || die
+	einstall || die "installation failed"
 }

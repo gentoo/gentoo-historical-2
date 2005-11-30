@@ -3,6 +3,10 @@
 <pkgmetadata>
 <herd>mobile</herd>
 <maintainer>
+  <email>brix@gentoo.org</email>
+  <name>Henrik Brix Andersen</name>
+</maintainer>
+<maintainer>
   <email>latexer@gentoo.org</email>
 </maintainer>
 </pkgmetadata>

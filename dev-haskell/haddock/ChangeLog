@@ -1,6 +1,112 @@
 # ChangeLog for dev-haskell/haddock
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/ChangeLog,v 1.1 2003/05/22 06:49:31 kosmikus Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/haddock/ChangeLog,v 1.1.1.1 2005/11/30 09:48:23 chriswhite Exp $
+
+  19 Sep 2005; Luis F. Araujo <araujo@gentoo.org> haddock-0.7.ebuild:
+  Fixed multilib inheritance
+
+  19 Sep 2005; Luis F. Araujo <araujo@gentoo.org> haddock-0.6-r3.ebuild:
+  Fixed multilib inheritance
+
+  15 Sep 2005; Andres Loeh <kosmikus@gentoo.org> haddock-0.6-r2.ebuild,
+  haddock-0.6-r3.ebuild, haddock-0.7.ebuild:
+  Fail with an informative error message when haddock is merged before ghc due
+  to a portage bug.
+
+  01 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org> haddock-0.6-r3.ebuild:
+  Stable on sparc
+
+*haddock-0.7 (05 Aug 2005)
+
+  05 Aug 2005; Andres Loeh <kosmikus@gentoo.org> +haddock-0.7.ebuild:
+  New version.
+
+  20 May 2005; <duncan@gentoo.org> haddock-0.6-r3.ebuild:
+  Added ~sparc to KEYWORDS.
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> haddock-0.6-r3.ebuild:
+  Stable on ppc.
+
+  24 Mar 2005; Andres Loeh <kosmikus@gentoo.org> haddock-0.6-r3.ebuild:
+  haddock-0.6-r3 works with ghc-6.4 now.
+
+  23 Mar 2005; Andres Loeh <kosmikus@gentoo.org> haddock-0.6-r2.ebuild,
+  haddock-0.6-r3.ebuild:
+  haddock is currently blocked by ghc-6.4, and haddock-0.6-r3 now inherits
+  ghc-package.eclass, hopefully fixing bug #86214.
+
+  23 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> haddock-0.6-r2.ebuild,
+  haddock-0.6-r3.ebuild:
+  sparc needs deps first
+
+  18 Nov 2004; Andres Loeh <kosmikus@gentoo.org> haddock-0.6-r3.ebuild:
+  Can now be built on amd64 (bug #69830). Moved to ~amd64.
+
+*haddock-0.6-r3 (21 Oct 2004)
+
+  21 Oct 2004; Andres Loeh <kosmikus@gentoo.org> haddock-0.4.ebuild,
+  haddock-0.5.ebuild, haddock-0.6-r1.ebuild, haddock-0.6-r3.ebuild,
+  haddock-0.6.ebuild, files/haddock-0.4-ghc6.patch,
+  files/haddock-0.6-gcc3.4.patch:
+  Patched to build with gcc-3.4. Removed old versions.
+
+  19 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> haddock-0.4.ebuild,
+  haddock-0.5.ebuild, haddock-0.6-r1.ebuild, haddock-0.6-r2.ebuild,
+  haddock-0.6.ebuild:
+  Fixed missing dependencies; bug #68021.
+
+  24 Sep 2004; <SeJo@gentoo.org> haddock-0.6-r2.ebuild:
+  stable bump due to bug 59753
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> haddock-0.4.ebuild,
+  haddock-0.5.ebuild, haddock-0.6-r1.ebuild, haddock-0.6-r2.ebuild,
+  haddock-0.6.ebuild:
+  Fix use invocation
+
+  18 May 2004; Mamoru KOMACHI <usata@gentoo.org> haddock-0.4.ebuild,
+  haddock-0.5.ebuild, haddock-0.6-r1.ebuild, haddock-0.6-r2.ebuild,
+  haddock-0.6.ebuild:
+  Changed app-text/tetex to virtual/tetex.
+
+  25 Apr 2004; Aron Griffis <agriffis@gentoo.org> haddock-0.4.ebuild,
+  haddock-0.5.ebuild, haddock-0.6-r1.ebuild, haddock-0.6-r2.ebuild,
+  haddock-0.6.ebuild:
+  Add die following econf for bug 48950
+
+  23 Mar 2004; Matthieu Sozeau <mattam@gentoo.org> haddock-0.6-r2.ebuild:
+  Added ~ppc keyword.
+
+*haddock-0.6-r2 (22 Dec 2003)
+
+  22 Dec 2003; Andres Loeh <kosmikus@gentoo.org> haddock-0.6-r1.ebuild,
+  haddock-0.6-r2.ebuild:
+  Another directory problem in haddock-0.6
+
+*haddock-0.6-r1 (17 Dec 2003)
+
+  17 Dec 2003; Andres Loeh <kosmikus@gentoo.org> haddock-0.6-r1.ebuild:
+  Created -r1 to make sure everyone updates to the correct version.
+
+  16 Dec 2003; Andres Loeh <kosmikus@gentoo.org> haddock-0.6.ebuild:
+  Fixed ebuild: Library files now in correct position. Cleaned installation of
+  docs a little bit.
+
+*haddock-0.6 (12 Nov 2003)
+
+  12 Nov 2003; Andres Loeh <kosmikus@gentoo.org> haddock-0.6.ebuild:
+  Version bump.
+
+*haddock-0.5 (28 Jul 2003)
+
+  28 Jul 2003; Andres Loeh <kosmikus@gentoo.org> haddock-0.5.ebuild:
+  Version bump. Fixes #23291, too.
+
+  28 Jul 2003; Andres Loeh <kosmikus@gentoo.org> haddock-0.4.ebuild,
+  files/haddock-0.4-ghc6.patch:
+  Fixed bug #23291. Marked stable for x86.
+
+  05 Jun 2003; Andres Loeh <kosmikus@gentoo.org> haddock-0.4.ebuild:
+  fixed dependencies
 
 *haddock-0.4 (21 May 2003)
 

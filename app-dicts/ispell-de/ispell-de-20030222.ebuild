@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-de/ispell-de-20030222.ebuild,v 1.1 2005/09/22 18:48:29 arj Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-de/ispell-de-20030222.ebuild,v 1.1.1.1 2005/11/30 09:46:55 chriswhite Exp $
 
 MY_P=igerman98-${PV}
 S=${WORKDIR}/${MY_P}

@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libbonobomm/libbonobomm-1.3.8.ebuild,v 1.1 2004/06/12 02:56:15 khai Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libbonobomm/libbonobomm-1.3.8.ebuild,v 1.1.1.1 2005/11/30 09:46:23 chriswhite Exp $
 
 inherit gnome2
 
@@ -13,8 +13,8 @@ LICENSE="LGPL-2.1"
 KEYWORDS="~x86 ~ppc ~sparc"
 
 RDEPEND=">=gnome-base/libbonobo-2.0
-	>=gnome-base/ORBit2-2
-	=dev-cpp/gtkmm-2.2.11
+	>=gnome-base/orbit-2
+	=dev-cpp/gtkmm-2.2*
 	>=dev-cpp/orbitcpp-1.3.8"
 
 DEPEND=">=dev-util/pkgconfig-0.12.0

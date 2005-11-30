@@ -1,6 +1,103 @@
-# ChangeLog for app-games/scummvm
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/scummvm/ChangeLog,v 1.1 2003/09/09 17:34:21 vapier Exp $
+# ChangeLog for games-engines/scummvm
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/scummvm/ChangeLog,v 1.1.1.1 2005/11/30 09:46:27 chriswhite Exp $
+
+*scummvm-0.8.0 (31 Oct 2005)
+
+  31 Oct 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/scummvm-0.8.0-configure.patch, +scummvm-0.8.0.ebuild:
+  Version bump #110930 by Robert Lundmark.
+
+  16 Sep 2005; Ciaran McCreesh <ciaranm@gentoo.org> ChangeLog:
+  Converted to UTF-8, fixed encoding screwups
+
+  01 Sep 2005; Mike Frysinger <vapier@gentoo.org>
+  +files/scummvm-0.7.1-64bit.patch, scummvm-0.7.1.ebuild:
+  Add a patch for 64bit issues #103450 by Ian Kumlien.
+
+  12 May 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/0.7.0-configure.patch, -scummvm-0.7.0.ebuild:
+  clean old version
+
+*scummvm-0.7.1 (28 Mar 2005)
+
+  28 Mar 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.7.1-configure.patch, +scummvm-0.7.1.ebuild:
+  version bump
+
+  27 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.7.0.ebuild:
+  the x11 backend isn't fully functional so we require sdl (bug #83502)
+
+  21 Feb 2005; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/0.7.0-configure.patch, -scummvm-0.6.1b.ebuild, scummvm-0.7.0.ebuild:
+  fix tail call; fix gcc version detection (bug #82836)
+
+  23 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.7.0.ebuild:
+  fix non-working option (bug #79279)
+
+  22 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.7.0.ebuild:
+  mpeg2 support needs vorbis (bug #79149) so turn it off if -oggvorbis
+  add flac support
+  use doicon
+
+  20 Jan 2005; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.7.0.ebuild:
+  don't try to run the non-working test (bug #77507)
+
+  27 Dec 2004; Mike Frysinger <vapier@gentoo.org> scummvm-0.7.0.ebuild:
+  Only enable nasm code on x86 #75730 by Marco Matthies.
+
+*scummvm-0.7.0 (26 Dec 2004)
+
+  26 Dec 2004; Mike Frysinger <vapier@gentoo.org> +scummvm-0.7.0.ebuild:
+  Version bump #75614 by cpu.
+
+  25 Sep 2004; Jason Wever <weeve@gentoo.org> scummvm-0.6.1b.ebuild:
+  Stable on sparc.
+
+  18 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.6.1b.ebuild:
+  fix up configure for bug #64550
+
+  18 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org>
+  -files/0.5.1-alsa.patch, -files/0.6.0-gcc34.patch, -scummvm-0.5.1.ebuild,
+  -scummvm-0.6.0.ebuild:
+  clean older ebuilds and patches
+
+*scummvm-0.6.1b (09 Aug 2004)
+
+  09 Aug 2004; Michael Sterrett <mr_bones_@gentoo.org> +scummvm-0.6.1b.ebuild:
+  bug-fixed version bump
+
+*scummvm-0.6.1 (29 Jul 2004)
+
+  29 Jul 2004; Michael Sterrett <mr_bones_@gentoo.org> +scummvm-0.6.1.ebuild:
+  version bump (bug #58542)
+
+  01 Jun 2004; Travis Tilley <lv@gentoo.org> scummvm-0.6.0.ebuild:
+  stable on amd64
+
+  01 Jun 2004; Mike Frysinger <vapier@gentoo.org> +files/0.6.0-gcc34.patch,
+  scummvm-0.6.0.ebuild:
+  Add gcc-3.4 patch #49304 by Robert Führicht.
+
+  11 Apr 2004; Jason Wever <weeve@gentoo.org> scummvm-0.6.0.ebuild:
+  Added ~sparc keyword.
+
+  29 Mar 2004; Lars Weiler <pylon@gentoo.org> scummvm-0.6.0.ebuild:
+  stable on ppc
+
+*scummvm-0.6.0 (16 Mar 2004)
+
+  16 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.6.0.ebuild:
+  version bump (bug #44809); ebuild submitted by Stephan Schiffel
+
+  02 Jan 2004; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.5.1.ebuild,
+  files/0.5.1-alsa.patch:
+  Add patch to compile against new Alsa; contributed by Danny van Dyk via bug
+  36191
+
+  27 Nov 2003; Michael Sterrett <mr_bones_@gentoo.org> scummvm-0.5.1.ebuild:
+  fix mad depend (bug 34575)
+  more error checking/messages
 
 *scummvm-0.5.1 (08 Aug 2003)
 
@@ -50,10 +147,10 @@
   23 Sep 2002; Mike Frysinger <vapier@gentoo.org> :
   Changed SRC_URI to use mirror: and updated LICENSE
 
-  17 Jul 2002; Jose Alberto Su�rez L�pez <bass@gentoo.org> scummvm-0.2.0.ebuild :
+  17 Jul 2002; Jose Alberto Suárez López <bass@gentoo.org> scummvm-0.2.0.ebuild :
   Added KEYWORDS, SLOT.
 
-  17 Jul 2002; Jose Alberto Su�rez L�pez <bass@gentoo.org> scummvm-0.2.0-r1.ebuild :
+  17 Jul 2002; Jose Alberto Suárez López <bass@gentoo.org> scummvm-0.2.0-r1.ebuild :
   Added KEYWORDS, SLOT.
 
   17 Jun 2002; Ryan Phillips <rphillips@gentoo.org> scummvm-0.2.0-r1.ebuild :

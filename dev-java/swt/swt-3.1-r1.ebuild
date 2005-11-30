@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.1-r1.ebuild,v 1.1 2005/08/06 18:03:31 compnerd Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/swt/swt-3.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:13 chriswhite Exp $
 
 inherit eutils java-pkg
 
@@ -19,6 +19,7 @@ KEYWORDS="~x86 ~amd64 ~ppc"
 
 IUSE="accessibility cairo firefox gnome mozilla"
 RDEPEND=">=virtual/jre-1.4
+		 >=x11-libs/gtk+-2.6.8
 		 mozilla? (
 		 			 firefox? ( >=www-client/mozilla-firefox-1.0.3 )
 					!firefox? ( >=www-client/mozilla-1.4 )
@@ -72,7 +73,7 @@ src_unpack() {
 	rm -f .classpath .project
 
 	# Replace the build.xml to allow compilation without Eclipse tasks
-	cp ${FILESDIR}/build-${PV}.xml ${S}/build.xml || die "Unable to update build.xml"
+	cp ${FILESDIR}/build.xml ${S}/build.xml || die "Unable to update build.xml"
 	mkdir ${S}/src && mv ${S}/org ${S}/src || die "Unable to restructure SWT sources"
 }
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/kismet/files/kismet-2005.08.1-conf.d,v 1.1 2005/08/16 13:16:16 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/kismet/files/kismet-2005.08.1-conf.d,v 1.1.1.1 2005/11/30 09:45:44 chriswhite Exp $
 
 # Kismet configuration is done in /etc/kismet.conf
 

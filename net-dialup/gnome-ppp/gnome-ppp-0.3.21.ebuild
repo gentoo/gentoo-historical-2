@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/gnome-ppp/gnome-ppp-0.3.21.ebuild,v 1.1 2005/04/14 20:29:35 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/gnome-ppp/gnome-ppp-0.3.21.ebuild,v 1.1.1.1 2005/11/30 09:46:05 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.gnome-ppp.org/download/${MAJOR_V}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="x86"
 IUSE=""
 
 RDEPEND=">=net-dialup/wvdial-1.54

@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/www-servers/thttpd/files/thttpd-2.25/thttpd.confd,v 1.1 2004/08/08 18:34:03 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/thttpd/files/thttpd-2.25/thttpd.confd,v 1.1.1.1 2005/11/30 09:46:42 chriswhite Exp $
 
 ## Config file for /etc/init.d/thttpd
 

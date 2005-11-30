@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jmbus/jmbus-1.0.7.ebuild,v 1.1 2003/05/23 04:12:10 tberman Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jmbus/jmbus-1.0.7.ebuild,v 1.1.1.1 2005/11/30 09:47:48 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,12 +9,13 @@ HOMEPAGE="http://www.mbus.org/"
 SRC_URI="ftp://ftp.informatik.uni-bremen.de/home/prelle/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ~ppc ~sparc amd64"
 IUSE=""
 
-DEPEND="virtual/jdk
+DEPEND=">=virtual/jdk-1.3
 	sys-devel/libtool
 	dev-util/pkgconfig"
+RDEPEND=">=virtual/jre-1.3"
 
 src_compile() {
 	./configure \
@@ -32,6 +33,6 @@ src_install() {
 	dobin jmspy.sh
 	dobin jmbuskeygen.sh
 	dobin jcetest.sh
-	dodoc AUTHORS README TODO INSTALL
+	dodoc AUTHORS README TODO
 }
 

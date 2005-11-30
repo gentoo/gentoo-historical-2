@@ -1,28 +1,22 @@
 #!/sbin/runscript
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/monkeyd/files/monkeyd.init.d,v 1.1 2004/08/08 17:41:38 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/monkeyd/files/monkeyd.init.d,v 1.1.1.1 2005/11/30 09:46:37 chriswhite Exp $
 
 depend() {
-	need net
+	use net
 }
 
 start() {
 	ebegin "Starting monkeyd"
-	/usr/bin/monkey -D start &>/dev/null
+	/usr/bin/monkey -D &> /dev/null
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping monkeyd"
-	/usr/bin/monkey stop &>/dev/null
+	start-stop-daemon --stop --quiet --pidfile ${MONKEY_PID}
 	ret=$?
+	rm -f ${MONKEY_PID}
 	eend ${ret}
-
-	if [ ${ret} -ne 0 ] && [ -f ${MONKEY_PID} ] ; then
-		ebegin "  Killing monkeyd"
-		kill `cat ${MONKEY_PID}` &>/dev/null
-		eend $?
-		rm -f ${MONKEY_PID} &>/dev/null
-	fi
 }

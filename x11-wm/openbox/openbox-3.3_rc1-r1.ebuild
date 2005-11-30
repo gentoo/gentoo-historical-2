@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/openbox/openbox-3.3_rc1-r1.ebuild,v 1.1 2005/03/29 13:46:27 lostlogic Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/openbox/openbox-3.3_rc1-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:03 chriswhite Exp $
 
 inherit eutils
 
@@ -33,8 +33,12 @@ src_unpack() {
 }
 
 src_compile() {
-	econf `use_enable nls` \
-	      `use_enable pango` || die
+	if use pango ; then
+		myconf="--enable-pango"
+	else
+		myconf=""
+	fi
+	econf `use_enable nls` ${myconf} || die
 	emake || die
 }
 

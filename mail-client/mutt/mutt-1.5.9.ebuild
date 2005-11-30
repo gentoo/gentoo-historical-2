@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.9.ebuild,v 1.1 2005/08/11 22:48:36 agriffis Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/mutt-1.5.9.ebuild,v 1.1.1.1 2005/11/30 09:49:41 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
@@ -21,7 +21,7 @@ SRC_URI="ftp://ftp.mutt.org/mutt/devel/mutt-${PV}i.tar.gz
 		http://mutt.kiev.ua/download/${P}/${compressed_patch}
 		http://www.woolridge.ca/mutt/patches/${mbox_hook_patch}
 		nntp? (
-			http://dev.gentoo.org/~agriffis/${nntp_patch}
+			http://dev.gentoo.org/~agriffis/dist/${nntp_patch}
 			mirror://gentoo/mutt-1.5.7-mixmaster+nntp.patch
 		)
 		http://wwwcip.informatik.uni-erlangen.de/~sithglan/mutt/${header_cache_patch}
@@ -29,34 +29,48 @@ SRC_URI="ftp://ftp.mutt.org/mutt/devel/mutt-${PV}i.tar.gz
 	)"
 #	http://cedricduval.free.fr/mutt/patches/download/${edit_threads_patch}
 #	http://www.mutt.org.ua/download/${P}/${nntp_patch}
-IUSE="berkdb buffysize cjk crypt debug gdbm gnutls gpgme imap mbox nls nntp pop sasl slang smime ssl vanilla"
+IUSE="buffysize cjk crypt debug gdbm gnutls gpgme imap mbox nls nntp pop sasl slang smime ssl vanilla" # berkdb
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~hppa ~ia64 ~amd64 ~mips ~ppc64 ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~ppc-macos ~ppc64 ~sparc ~x86"
 RDEPEND="nls? ( sys-devel/gettext )
 	>=sys-libs/ncurses-5.2
 	gdbm?    ( sys-libs/gdbm )
-	!gdbm?   ( berkdb? ( >=sys-libs/db-4 ) )
 	slang?   ( >=sys-libs/slang-1.4.2 )
 	imap?    (
 		gnutls?  ( >=net-libs/gnutls-1.0.17 )
 		!gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) )
+		sasl?    ( >=dev-libs/cyrus-sasl-2 )
 	)
 	pop?     (
 		gnutls?  ( >=net-libs/gnutls-1.0.17 )
 		!gnutls? ( ssl? ( >=dev-libs/openssl-0.9.6 ) )
+		sasl?    ( >=dev-libs/cyrus-sasl-2 )
 	)
-	gpgme?   ( >=app-crypt/gpgme-0.9.0 )
-	sasl?    ( >=dev-libs/cyrus-sasl-2 )"
+	gpgme?   ( >=app-crypt/gpgme-0.9.0 )"
+#	!gdbm?   ( berkdb? ( >=sys-libs/db-4 ) )
 DEPEND="${RDEPEND}
 	net-mail/mailbase
-	!vanilla? ( sys-devel/automake sys-devel/autoconf )"
+	sys-devel/autoconf
+	!vanilla? ( sys-devel/automake )"
+
+pkg_setup() {
+	if ! use imap; then
+		echo
+		einfo "The USE variable 'imap' is not in your USE flags."
+		einfo "For imap support in mutt, you will need to restart the build with USE=imap"
+		echo
+	fi
+}
 
 src_unpack() {
 	unpack ${P}i.tar.gz && cd ${S} || die "unpack failed"
 
+	# fix sasl support in configure.in
+	epatch ${FILESDIR}/mutt-1.5.9-sasl.patch
+
 	# disable sgml conversion since it fails with sgml2html
-	epatch ${FILESDIR}/muttng-20050809-nodoc.patch
+	epatch ${FILESDIR}/mutt-1.5.9-nodoc.patch
 
 	if ! use vanilla; then
 		epatch ${DISTDIR}/${compressed_patch}
@@ -75,8 +89,9 @@ src_unpack() {
 		autoheader						|| die "autoheader failed"
 		emake -C m4 -f Makefile.am.in	|| die "emake in m4 failed"
 		automake --foreign				|| die "automake failed"
-		WANT_AUTOCONF=2.13 autoconf		|| die "autoconf failed"
 	fi
+
+	WANT_AUTOCONF=2.13 autoconf		|| die "autoconf failed"
 }
 
 src_compile() {
@@ -85,18 +100,17 @@ src_compile() {
 		$(use_enable gpgme) \
 		$(use_enable imap) \
 		$(use_enable pop) \
-		$(use_with sasl sasl2) \
 		$(use_enable crypt pgp) \
 		$(use_enable smime) \
 		$(use_enable cjk default-japanese) \
 		$(use_enable debug) \
-		--enable-compressed \
 		--sysconfdir=/etc/${PN} \
 		--with-docdir=/usr/share/doc/${PN}-${PVR} \
 		--with-regex \
-		--disable-fcntl --enable-flock --enable-nfs-fix \
+		--disable-fcntl --enable-flock \
+		--enable-nfs-fix --enable-external-dotlock \
 		--with-mixmaster \
-		--enable-external-dotlock"
+		--without-sasl"
 
 	# See Bug #22787
 	unset WANT_AUTOCONF_2_5 WANT_AUTOCONF
@@ -105,13 +119,13 @@ src_compile() {
 	# hcache feature requires at least one database is in USE.
 	if use gdbm; then
 		myconf="${myconf} --enable-hcache --with-gdbm --without-bdb"
-	elif use berkdb; then
-		myconf="${myconf} --enable-hcache --with-bdb --without-gdbm"
+#	elif use berkdb; then
+#		myconf="${myconf} --enable-hcache --with-bdb --without-gdbm"
 	else
 		myconf="${myconf} --disable-hcache --without-gdbm --without-bdb"
 	fi
 
-	# there's no need for gnutls or ssl without either pop or imap.
+	# there's no need for gnutls, ssl or sasl without either pop or imap.
 	# in fact mutt's configure will bail if you do:
 	#   --without-pop --without-imap --with-ssl
 	if use pop || use imap; then
@@ -120,8 +134,10 @@ src_compile() {
 		elif use ssl; then
 			myconf="${myconf} --with-ssl"
 		fi
+		# not sure if this should be mutually exclusive with the other two
+		myconf="${myconf} $(use_with sasl sasl2)"
 	else
-		myconf="${myconf} --without-gnutls --without-ssl"
+		myconf="${myconf} --without-gnutls --without-ssl --without-sasl2"
 	fi
 
 	# See Bug #11170
@@ -145,7 +161,7 @@ src_compile() {
 	fi
 
 	if use mbox; then
-		myconf="${myconf} --with-maildir=/var/spool/mail"
+		myconf="${myconf} --with-mailpath=/var/spool/mail"
 	else
 		myconf="${myconf} --with-homespool=Maildir"
 	fi
@@ -161,8 +177,8 @@ src_compile() {
 		myconf="${myconf} $(use_enable nntp)"
 	fi
 
-	econf ${myconf}
-	emake || die "emake failed (myconf=${myconf})"
+	econf ${myconf} || die "configure failed"
+	make || die "make failed"
 }
 
 src_install() {
@@ -177,4 +193,12 @@ src_install() {
 	fi
 
 	dodoc BEWARE COPYRIGHT ChangeLog NEWS OPS* PATCHES README* TODO VERSION
+}
+
+pkg_postinst() {
+	echo
+	einfo "If you are new to mutt you may want to take a look at"
+	einfo "the Gentoo QuickStart Guide to Mutt E-Mail:"
+	einfo "   http://www.gentoo.org/doc/en/guide-to-mutt.xml"
+	echo
 }

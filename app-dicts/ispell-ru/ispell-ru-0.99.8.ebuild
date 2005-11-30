@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-ru/ispell-ru-0.99.8.ebuild,v 1.1 2005/02/09 13:54:16 voxus Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ispell-ru/ispell-ru-0.99.8.ebuild,v 1.1.1.1 2005/11/30 09:46:59 chriswhite Exp $
 
 #MY_PV=$(echo ${PV} | sed 's/\.\([0-9]\)$/f\1/')
 MY_PV=${PV%*.*}f${PV##*.}

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/usermode-sources/usermode-sources-2.6.12-r2.ebuild,v 1.1 2005/08/23 14:41:08 dsd Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/usermode-sources/usermode-sources-2.6.12-r2.ebuild,v 1.1.1.1 2005/11/30 09:49:32 chriswhite Exp $
 
 ETYPE="sources"
 K_WANT_GENPATCHES="base"

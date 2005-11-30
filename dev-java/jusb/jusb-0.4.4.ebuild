@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jusb/jusb-0.4.4.ebuild,v 1.1 2005/04/19 19:26:58 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jusb/jusb-0.4.4.ebuild,v 1.1.1.1 2005/11/30 09:47:18 chriswhite Exp $
 
 inherit eutils java-pkg linux-info flag-o-matic
 

@@ -1,9 +1,52 @@
-# ChangeLog for dev-java/javamail
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-javamail/ChangeLog,v 1.1 2004/04/28 01:57:44 karltk Exp $
+# ChangeLog for dev-java/gnu-javamail
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/gnu-javamail/ChangeLog,v 1.1.1.1 2005/11/30 09:47:29 chriswhite Exp $
+
+*gnu-javamail-1.0 (17 Sep 2005)
+
+  17 Sep 2005; Petteri Räty <betelgeuse@gentoo.org>
+  +gnu-javamail-1.0.ebuild, -gnu-javamail-20040331.ebuild:
+  Version bump. Fixes bug #105318. Thanks to Josh Nichols
+  <nichoj@alum.rpi.edu>. Removed the old version because the date makes it
+  newer than 1.0.
+
+  17 Sep 2005; Petteri Räty <betelgeuse@gentoo.org>
+  gnu-javamail-20040331.ebuild:
+  Changed to use gnu-jaf because gnu-activation was a duplicate package.
+
+  11 Sep 2005; Petteri Räty <betelgeuse@gentoo.org>
+  gnu-javamail-20040331.ebuild:
+  Adjusted ebuild because gnu-classpath-inetlib is now slotted.
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org>
+  gnu-javamail-20040331.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  gnu-javamail-20040331.ebuild:
+  Fix dep on gnu-activation. Added ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  gnu-javamail-20040331.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  01 Aug 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
+  javamail-20030331.ebuild: Fixed dep on gnu-classpath-inetlib.
+
+  13 May 2004; Chris Aniszczyk <zx@gentoo.org> gnu-javamail-20040331.ebuild:
+  Bug fix, closes #50206
+  Thanks to roninds <dstanek@dstanek.com> for the heads up.
+
+*gnu-javamail-20040331 (05 May 2004)
+
+  05 May 2004; Daniel Black <dragonheart@gentoo.org>
+  gnu-javamail-20040331.ebuild:
+  2 x HOMEPAGE - changed 1 to Description
 
 *gnu-javamail-20030331 (01 Apr 2004)
 
   01 Apr 2004; Karl Trygve Kalleberg <karltk@gentoo.org>
   javamail-20030331.ebuild: Initial import. Ebuild submitted by myself.
   No joke.
+

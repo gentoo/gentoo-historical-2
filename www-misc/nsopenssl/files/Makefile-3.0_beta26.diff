@@ -2,7 +2,7 @@ diff -ruN nsopenssl-3.0beta26.orig/Makefile nsopenssl-3.0beta26/Makefile
 --- nsopenssl-3.0beta26.orig/Makefile	2005-02-25 17:34:44.000000000 +0000
 +++ nsopenssl-3.0beta26/Makefile	2005-02-27 21:22:43.702754056 +0000
 @@ -28,21 +28,7 @@
- # $Header: /var/cvsroot/gentoo-x86/www-misc/nsopenssl/files/Makefile-3.0_beta26.diff,v 1.1 2005/05/21 21:12:39 port001 Exp $
+ # $Header: /var/cvsroot/gentoo-x86/www-misc/nsopenssl/files/Makefile-3.0_beta26.diff,v 1.1.1.1 2005/11/30 09:45:17 chriswhite Exp $
  #
  
 -AOLSERVER ?= ../aolserver

@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/srvx/files/srvx.init.d,v 1.1 2004/12/16 01:16:32 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/srvx/files/srvx.init.d,v 1.1.1.1 2005/11/30 09:48:57 chriswhite Exp $
 
 depend() {
 	use dns net

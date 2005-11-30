@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/windowmaker-0.91.0-r7.ebuild,v 1.1 2005/06/23 22:01:34 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/windowmaker/windowmaker-0.91.0-r7.ebuild,v 1.1.1.1 2005/11/30 09:45:05 chriswhite Exp $
 
 inherit eutils gnustep-funcs flag-o-matic
 
@@ -19,7 +19,8 @@ DEPEND="x11-base/xorg-x11
 	png? ( >=media-libs/libpng-1.2.1 )
 	jpeg? ( >=media-libs/jpeg-6b-r2 )
 	tiff? ( >=media-libs/tiff-3.6.1-r2 )"
-RDEPEND="nls? ( >=sys-devel/gettext-0.10.39 )
+RDEPEND="${DEPEND}
+	nls? ( >=sys-devel/gettext-0.10.39 )
 	gnustep? ( gnustep-base/gnustep-env )"
 
 SLOT="0"
@@ -36,11 +37,11 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${WORKDIR}/windowmaker-0.9X-use-giflib.patch3 || die "giflib patch failed"
-	epatch ${FILESDIR}/menufocus.patch || die "menu focus patch failed"
-	epatch ${FILESDIR}/singleclick-shadeormaxopts-0.9x.patch2 || die "single click and shade-or-maximize-options patch failed"
-	epatch ${FILESDIR}/wlist-0.9x.patch || die "window list patch failed"
-	epatch ${FILESDIR}/64bit+endian-fixes-0.9x.patch || die "64-bit + endian fix patch failed"
-	epatch ${FILESDIR}/maximize-fix-0.9x.patch || die "64-bit + endian fix patch failed"
+	epatch ${FILESDIR}/${PV}/menufocus.patch || die "menu focus patch failed"
+	epatch ${FILESDIR}/${PV}/singleclick-shadeormaxopts-0.9x.patch2 || die "single click and shade-or-maximize-options patch failed"
+	epatch ${FILESDIR}/${PV}/wlist-0.9x.patch || die "window list patch failed"
+	epatch ${FILESDIR}/${PV}/64bit+endian-fixes-0.9x.patch || die "64-bit + endian fix patch failed"
+	epatch ${FILESDIR}/${PV}/maximize-fix-0.9x.patch || die "maximize fix patch failed"
 }
 
 src_compile() {

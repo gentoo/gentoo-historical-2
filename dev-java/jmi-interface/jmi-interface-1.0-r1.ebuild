@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jmi-interface/jmi-interface-1.0-r1.ebuild,v 1.1 2005/07/19 18:38:59 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jmi-interface/jmi-interface-1.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:40 chriswhite Exp $
 
 inherit java-pkg
 
@@ -13,11 +13,12 @@ SRC_URI="mirror://gentoo/${JMI_ZIP}
 
 LICENSE="sun-bcla-jmi"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~ppc"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc jikes source"
 
 DEPEND=">=virtual/jdk-1.4
 	app-arch/unzip
+	dev-java/ant-core
 	jikes? ( dev-java/jikes )
 	source? ( app-arch/zip )"
 RDEPEND=">=virtual/jre-1.4"

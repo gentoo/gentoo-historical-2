@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/gnome-ppp/gnome-ppp-0.3.23.ebuild,v 1.1 2005/07/31 12:13:43 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/gnome-ppp/gnome-ppp-0.3.23.ebuild,v 1.1.1.1 2005/11/30 09:46:05 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.icmreza.co.yu/blogs/vladecks/wp-content/projects/gnome-ppp/d
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~ppc ~x86"
 IUSE=""
 
 RDEPEND=">=net-dialup/wvdial-1.54

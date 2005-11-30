@@ -1,10 +1,17 @@
 # ChangeLog for dev-java/saxon
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/saxon/ChangeLog,v 1.1 2003/05/14 06:15:13 absinthe Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/saxon/ChangeLog,v 1.1.1.1 2005/11/30 09:47:37 chriswhite Exp $
 
-*saxon-7.5 (14 May 2003)
+  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> saxon-8.4b.ebuild:
+  Keyword x86
 
-  14 May 2003; Dylan Carlson <absinthe@gentoo.org> saxon-6.5.2.ebuild,
-  saxon-7.3.1.ebuild, saxon-7.5.ebuild:
-  Initial import.
+  01 Jul 2005; David Holm <dholm@gentoo.org> saxon-8.4b.ebuild:
+  Added to ~ppc.
+
+*saxon-8.4b (30 Jun 2005)
+
+  30 Jun 2005; Thomas Matthijs <axxo@gentoo.org> +files/build-8.4b.xml,
+  +files/saxon-8.4b-jikes.patch, +metadata.xml, +saxon-8.4b.ebuild:
+  no longer uses packed jars, ebuild by Josh Nichols <nichoj@alum.rpi.edu> in
+  97431
 

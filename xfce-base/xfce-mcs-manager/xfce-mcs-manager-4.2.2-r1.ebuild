@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce-mcs-manager/xfce-mcs-manager-4.2.2-r1.ebuild,v 1.1 2005/10/06 06:24:56 bcowan Exp $
+# $Header: /var/cvsroot/gentoo-x86/xfce-base/xfce-mcs-manager/xfce-mcs-manager-4.2.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:17 chriswhite Exp $
 
 inherit xfce42
 

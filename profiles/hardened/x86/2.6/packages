@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/x86/2.6/packages,v 1.1 2005/01/21 22:20:21 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/hardened/x86/2.6/packages,v 1.1.1.1 2005/11/30 09:48:40 chriswhite Exp $
 
 # IMPORTANT: In order to parse this new format, you need Portage 1.6 or later!
 

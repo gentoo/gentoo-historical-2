@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-commons-resolver/xml-commons-resolver-1.1.ebuild,v 1.1 2004/09/17 09:36:09 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xml-commons-resolver/xml-commons-resolver-1.1.ebuild,v 1.1.1.1 2005/11/30 09:47:11 chriswhite Exp $
 
 inherit eutils java-pkg
 
@@ -8,19 +8,32 @@ DESCRIPTION="xml-commons is focussed on common code and guidelines for xml proje
 HOMEPAGE="http://xml.apache.org/commons/"
 SRC_URI="mirror://apache/xml/commons/${P}.tar.gz"
 DEPEND=">=virtual/jdk-1.3
-		>=dev-java/ant"
+		dev-java/ant-core
+		source? ( app-arch/zip )"
+RDEPEND=">=virtual/jre-1.3"
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~x86"
-IUSE="doc"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
+IUSE="doc source"
+
+src_unpack() {
+	unpack ${A}
+	cd ${S}
+
+	cp ${FILESDIR}/${P}-build.xml ${S}/build.xml
+}
 
 src_compile() {
-	cd src
-	find org -name "*.java" ${exclude} | xargs javac || die "Failed to compile"
-	find org -name "*.class" | xargs jar cmf manifest.resolver ${PN}.jar
+	local antflags="jar"
+	use doc && antflags="${antflags} docs"
+	ant ${antflags} || die "ant build failed"
 }
 
 src_install() {
-	java-pkg_dojar src/${PN}.jar
-	use doc && dohtml -r docs/ apidocs/
+	java-pkg_dojar dist/${PN}.jar
+
+	dodoc KEYS
+	use doc && java-pkg_dohtml -r docs/*
+
+	use source && java-pkg_dosrc ${S}/src/*
 }

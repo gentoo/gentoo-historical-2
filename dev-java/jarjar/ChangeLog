@@ -1,6 +1,26 @@
 # ChangeLog for dev-java/jarjar
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jarjar/ChangeLog,v 1.1 2005/01/05 20:54:11 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jarjar/ChangeLog,v 1.1.1.1 2005/11/30 09:47:26 chriswhite Exp $
+
+  11 Aug 2005; Petteri Räty <betelgeuse@gentoo.org>
+  -jarjar-0.4_p20050105.ebuild, jarjar-0.6.ebuild:
+  The installed jar is not versioned any more.
+  Removed the old version because it does not compile
+  against the most recent asm.
+
+  03 Aug 2005; Petteri Räty <betelgeuse@gentoo.org>
+  jarjar-0.4_p20050105.ebuild, jarjar-0.6.ebuild:
+  Changed the DESCRIPTION to be neutral. Resolves bug 101231. Thanks to Chris 
+  Nokleberg <chris@sixlegs.com> for reporting and sorry if someone was offended.
+
+*jarjar-0.6 (31 Jul 2005)
+
+  31 Jul 2005; Lim Swee Tat <st_lim@gentoo.org> +jarjar-0.6.ebuild:
+  Version bump.  Need to support cglib-2.1 which is needed for hibernate-3.0
+
+  18 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  jarjar-0.4_p20050105.ebuild:
+  stable on amd64 and x86
 
 *jarjar-0.4_p20050105 (05 Jan 2005)
 

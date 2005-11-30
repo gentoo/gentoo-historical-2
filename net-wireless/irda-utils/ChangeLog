@@ -1,6 +1,59 @@
-# ChangeLog for sys-apps/irda-utils
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/ChangeLog,v 1.1 2004/10/04 18:53:38 brix Exp $
+# ChangeLog for net-wireless/irda-utils
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/irda-utils/ChangeLog,v 1.1.1.1 2005/11/30 09:45:33 chriswhite Exp $
+
+  22 Oct 2005; Henrik Brix Andersen <brix@gentoo.org> files/irda.rc:
+  Init script should start after serial, bug #110054.
+
+  03 Sep 2005; Michael Hanselmann <hansmi@gentoo.org>
+  irda-utils-0.9.16-r1.ebuild:
+  Stable on ppc.
+
+  07 Jul 2005; <brix@gentoo.org> irda-utils-0.9.17_pre5.ebuild:
+  Fixed DEPEND/RDEPEND issue.
+
+  30 Jun 2005; <brix@gentoo.org> irda-utils-0.9.16.ebuild,
+  irda-utils-0.9.16-r1.ebuild, irda-utils-0.9.17_pre5.ebuild:
+  Install man pages to /usr/share/man/, thanks to John Mylchreest.
+
+  27 Jun 2005; <brix@gentoo.org> irda-utils-0.9.16-r1.ebuild:
+  Stable on x86.
+
+*irda-utils-0.9.16-r1 (31 May 2005)
+
+  31 May 2005; <brix@gentoo.org> +irda-utils-0.9.16-r1.ebuild:
+  Fixed bug #93173.
+
+  07 Apr 2005; <brix@gentoo.org> -irda-utils-0.9.13.ebuild,
+  -irda-utils-0.9.15.ebuild:
+  Pruned old versions.
+
+  07 Apr 2005; Simon Stelling <blubb@gentoo.org> irda-utils-0.9.16.ebuild:
+  stable on amd64
+
+  08 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/irda-utils-0.9.16-irkbd.patch, irda-utils-0.9.16.ebuild:
+  Backported irkbd compile fix from 0.9.17_pre5, fixes bug #71771.
+
+*irda-utils-0.9.17_pre5 (08 Feb 2005)
+
+  08 Feb 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +irda-utils-0.9.17_pre5.ebuild:
+  Version bump.
+
+  11 Nov 2004; Henrik Brix Andersen <brix@gentoo.org>
+  irda-utils-0.9.16.ebuild:
+  Stable on x86.
+
+  06 Nov 2004; Lars Weiler <pylon@gentoo.org> irda-utils-0.9.16.ebuild:
+  Stable on ppc.
+
+*irda-utils-0.9.16 (04 Oct 2004)
+
+  04 Oct 2004; Henrik Brix Andersen <brix@gentoo.org>
+  +files/irda-utils-gcc3.4-fix.patch, +files/irda-utils-rh1.patch,
+  +irda-utils-0.9.16.ebuild:
+  Version bump. Fixes bug #63475
 
 *irda-utils-0.9.13 (04 Oct 2004)
 

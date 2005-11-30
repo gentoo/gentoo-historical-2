@@ -1,6 +1,28 @@
 # ChangeLog for dev-java/saxpath
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/saxpath/ChangeLog,v 1.1 2004/09/17 13:59:34 axxo Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/saxpath/ChangeLog,v 1.1.1.1 2005/11/30 09:47:38 chriswhite Exp $
+
+  15 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> saxpath-1.0.ebuild:
+  Stable on sparc
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org> saxpath-1.0.ebuild:
+  fix deps, and source useflag support, small cleanup
+
+  29 May 2005; Markus Rothe <corsair@gentoo.org> saxpath-1.0.ebuild:
+  Stable on ppc64
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> saxpath-1.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  03 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> saxpath-1.0.ebuild:
+  stable on x86 and amd64.
+
+  17 Oct 2004; Dylan Carlson <absinthe@gentoo.org> saxpath-1.0.ebuild:
+  keywords ~amd64; closes #67328.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> saxpath-1.0.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
 
 *saxpath-1.0 (17 Sep 2004)
 

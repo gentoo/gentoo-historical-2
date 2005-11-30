@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/planets/planets-0.1.10.ebuild,v 1.1 2003/09/11 12:22:49 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/planets/planets-0.1.10.ebuild,v 1.1.1.1 2005/11/30 09:49:40 chriswhite Exp $
 
 inherit games
 
@@ -10,19 +10,21 @@ HOMEPAGE="http://planets.homedns.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="x86 ppc ~sparc ~amd64"
+IUSE=""
 
-RDEPEND="dev-lang/tcl"
+RDEPEND="dev-lang/tcl
+	dev-lang/tk"
 DEPEND="${RDEPEND}
 	dev-lang/ocaml"
 
 src_compile() {
 	make clean
-	make planets || die
+	make planets || die "make failed"
 }
 
 src_install() {
-	dogamesbin planets
+	dogamesbin planets || die "dogamesbin failed"
 	doman planets.1
 	dodoc CREDITS CHANGES TODO KEYBINDINGS.txt README
 	prepgamesdirs

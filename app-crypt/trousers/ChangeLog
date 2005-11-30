@@ -1,6 +1,50 @@
 # ChangeLog for app-crypt/trousers
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/trousers/ChangeLog,v 1.1 2005/02/06 08:29:08 dragonheart Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/trousers/ChangeLog,v 1.1.1.1 2005/11/30 09:44:56 chriswhite Exp $
+
+*trousers-0.2.3 (17 Sep 2005)
+
+  17 Sep 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/trousers-0.2.0-nouseradd.patch, +files/trousers-0.2.3-ldadd.patch,
+  +files/trousers-0.2.3-nouseradd.patch, -trousers-0.1.11-r1.ebuild,
+  -trousers-0.2.0.ebuild, +trousers-0.2.3.ebuild:
+  version bump. remove old versions - inspiried by bug #105799 thanks to Felix
+  Dorner
+
+  23 Aug 2005; Daniel Black <dragonheart@gentoo.org>
+  trousers-0.1.11-r1.ebuild, trousers-0.2.0.ebuild, trousers-0.2.1.ebuild:
+  QA fix removing /bin/false from enewuser - bug #103421
+
+*trousers-0.2.1 (30 Jul 2005)
+
+  30 Jul 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/trousers-0.2.1-nouseradd.patch, +trousers-0.2.1.ebuild:
+  version bump
+
+*trousers-0.2.0 (06 Jul 2005)
+
+  06 Jul 2005; Daniel Black <dragonheart@gentoo.org>
+  +files/trousers-0.2.0-nouseradd.patch, +trousers-0.2.0.ebuild:
+  version bump. tpm udev is now part of udev-060
+
+  23 Jun 2005; Daniel Black <dragonheart@gentoo.org>
+  trousers-0.1.11-r1.ebuild:
+  udev fix thanks to latexer
+
+*trousers-0.1.11-r1 (23 Jun 2005)
+
+  23 Jun 2005; Daniel Black <dragonheart@gentoo.org>
+  -files/0.1.7-makefile-statedir.patch, files/tcsd.initd,
+  -trousers-0.1.7.ebuild, -trousers-0.1.11.ebuild,
+  +trousers-0.1.11-r1.ebuild:
+  added udev permissions. Added tpm-emulator as optional dependancy. script
+  file fixes and old version cleanout
+
+*trousers-0.1.11 (19 Jun 2005)
+
+  19 Jun 2005; Daniel Black <dragonheart@gentoo.org> +files/tcsd.confd,
+  +files/tcsd.initd, +trousers-0.1.11.ebuild:
+  Version bump as per bug #95764. Thankyou TGL
 
 *trousers-0.1.7 (06 Feb 2005)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-news/straw/straw-0.19.2-r1.ebuild,v 1.1 2005/07/16 14:35:14 allanonjl Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-news/straw/straw-0.19.2-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:22 chriswhite Exp $
 
 inherit python distutils
 

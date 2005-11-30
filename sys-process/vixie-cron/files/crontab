@@ -1,6 +1,6 @@
 # for vixie cron
 #
-# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/files/crontab,v 1.1 2005/03/04 23:59:48 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/vixie-cron/files/crontab,v 1.1.1.1 2005/11/30 09:49:09 chriswhite Exp $
 #
 
 # Global variables

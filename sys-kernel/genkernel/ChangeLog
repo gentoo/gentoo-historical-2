@@ -1,8 +1,631 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/genkernel/ChangeLog,v 1.1 2003/04/14 23:56:46 livewire Exp $
+# ChangeLog for sys-kernel/genkernel
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/genkernel/ChangeLog,v 1.1.1.1 2005/11/30 09:49:37 chriswhite Exp $
 
-* genkernel-1.0 (14 04 2003)
+  23 Nov 2005; Eric Edgar <rocket@gentoo.org> genkernel-3.3.8.ebuild:
+  Update 3.3.8 ebuild to point to the proper dmraid binary
+
+*genkernel-3.3.8 (23 Nov 2005)
+
+  23 Nov 2005; Eric Edgar <rocket@gentoo.org> -genkernel-3.3.7.ebuild,
+  +genkernel-3.3.8.ebuild:
+  Fix bug 113287;Version bump 3.3.8
+
+*genkernel-3.3.7 (22 Nov 2005)
+
+  22 Nov 2005; Eric Edgar <rocket@gentoo.org> +genkernel-3.3.7.ebuild:
+  Version bump. Fixes bugs: #108371 #109819 #111546 #102006 #103332 #103717
+  #103936 #105572 #94762
+
+*genkernel-3.3.6 (08 Sep 2005)
+
+  08 Sep 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -genkernel-3.3.5.ebuild, +genkernel-3.3.6.ebuild:
+  Version bump. Fixes bugs: #83276 #88080 #101535 #101599 #101716 #102006
+  #102407 #102491 #102739
+
+*genkernel-3.3.5 (30 Jul 2005)
+
+  30 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.3.4.ebuild,
+  +genkernel-3.3.5.ebuild:
+  Fix initrd cosmetics and PPC compiles without --genzimage.
+
+*genkernel-3.3.4 (30 Jul 2005)
+
+  30 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.3.3.ebuild,
+  +genkernel-3.3.4.ebuild:
+  Fix LiveCD support for BladeCenter.
+
+*genkernel-3.3.3 (29 Jul 2005)
+
+  29 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -genkernel-3.3.2.ebuild, +genkernel-3.3.3.ebuild:
+  Version bump.  Fixes compiling on sparc.
+
+*genkernel-3.3.2 (28 Jul 2005)
+
+  28 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.3.1.ebuild,
+  +genkernel-3.3.2.ebuild:
+  Fix PPC logic when used without --genzimage.
+
+*genkernel-3.3.1 (28 Jul 2005)
+
+  28 Jul 2005; <plasmaroo@gentoo.org> +genkernel-3.3.1.ebuild,
+  -genkernel-3.3.ebuild:
+  Fix #100144, #100169, #100583.
+
+*genkernel-3.3 (24 Jul 2005)
+
+  24 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.10.ebuild,
+  +genkernel-3.3.ebuild:
+  Fix #80617, #99636.
+
+*genkernel-3.2.10 (21 Jul 2005)
+
+  21 Jul 2005; <plasmaroo@gentoo.org> +genkernel-3.2.10.ebuild,
+  -genkernel-3.2.9.ebuild:
+  Fix --minkernpackage issues with Catalyst.
+
+*genkernel-3.2.9 (19 Jul 2005)
+
+  19 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -genkernel-3.2.5.ebuild, -genkernel-3.2.8.ebuild, +genkernel-3.2.9.ebuild:
+  Version bumped and cleaning up older versions.
+
+*genkernel-3.2.8 (19 Jul 2005)
+
+  19 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.7.ebuild,
+  +genkernel-3.2.8.ebuild:
+  Add --postconf support.
+
+*genkernel-3.2.7 (16 Jul 2005)
+
+  16 Jul 2005; <plasmaroo@gentoo.org> +genkernel-3.2.7.ebuild:
+  Fix #98886.
+
+*genkernel-3.2.5 (14 Jul 2005)
+
+  14 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.4.ebuild,
+  +genkernel-3.2.5.ebuild:
+  Split out pkg/.
+
+*genkernel-3.2.4 (14 Jul 2005)
+
+  14 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.3.ebuild,
+  +genkernel-3.2.4.ebuild:
+  Fix #80617, #98944, add GRUB :root_device support and add a more versatile
+  grub.conf updater.
+
+*genkernel-3.2.3 (14 Jul 2005)
+
+  14 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.2.ebuild,
+  +genkernel-3.2.3.ebuild:
+  Fix #97672, #98886, #98893, #98897; fix real_root=/dev/mdX.
+
+*genkernel-3.2.2 (12 Jul 2005)
+
+  12 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.1.ebuild,
+  +genkernel-3.2.2.ebuild:
+  Fix #83771, #97700, #98590, #98594, #98661, #98746.
+
+*genkernel-3.2.1 (10 Jul 2005)
+
+  10 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0.ebuild,
+  +genkernel-3.2.1.ebuild:
+  Fix #93178, #98436, #98501.
+
+*genkernel-3.2.0 (09 Jul 2005)
+
+  09 Jul 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -genkernel-3.2.0_pre18.ebuild, +genkernel-3.2.0.ebuild:
+  Genkernel 3.2.0... ph34r...
+
+*genkernel-3.2.0_pre18 (03 Jul 2005)
+
+  03 Jul 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre17.ebuild,
+  +genkernel-3.2.0_pre18.ebuild:
+  Clean up /dev issues near init with the linuxrc.
+
+*genkernel-3.2.0_pre17 (29 Jun 2005)
+
+  29 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre15.ebuild,
+  +genkernel-3.2.0_pre17.ebuild:
+  Revert udev back to 054; update unionfs code.
+
+  28 Jun 2005; <plasmaroo@gentoo.org> -genkernel-1.6.ebuild,
+  -genkernel-1.8.ebuild, -genkernel-1.9.ebuild, -genkernel-3.0.1.ebuild,
+  -genkernel-3.0.2.ebuild, -genkernel-3.1.5.ebuild:
+  Remove stale versions.
+
+*genkernel-3.2.0_pre15 (28 Jun 2005)
+
+  28 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre14.ebuild,
+  +genkernel-3.2.0_pre15.ebuild:
+  Fix #97281.
+
+*genkernel-3.2.0_pre14 (27 Jun 2005)
+
+  27 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre12.ebuild,
+  +genkernel-3.2.0_pre14.ebuild:
+  Update udev with patch for cross-compile on SPARC64.
+
+*genkernel-3.2.0_pre12 (24 Jun 2005)
+
+  24 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre11.ebuild,
+  +genkernel-3.2.0_pre12.ebuild:
+  Syntax and modules_load updates.
+
+*genkernel-3.2.0_pre11 (23 Jun 2005)
+
+  23 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre10.ebuild,
+  +genkernel-3.2.0_pre11.ebuild:
+  Fix gen_compile.sh.
+
+*genkernel-3.2.0_pre10 (22 Jun 2005)
+
+  22 Jun 2005; <plasmaroo@gentoo.org> +genkernel-3.2.0_pre10.ebuild,
+  -genkernel-3.2.0_pre9.ebuild:
+  Fix #76082, #86487, #87673, #95993.
+
+*genkernel-3.2.0_pre9 (20 Jun 2005)
+
+  20 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre8.ebuild,
+  +genkernel-3.2.0_pre9.ebuild:
+  Fix catalyst invocation issues.
+
+*genkernel-3.2.0_pre8 (17 Jun 2005)
+
+  17 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  -files/genkernel-3.2.0_pre7-arch.diff, -genkernel-3.2.0_pre7-r1.ebuild,
+  +genkernel-3.2.0_pre8.ebuild:
+  Version bumped to 3.2.0_pre8 to fix a bug with localversion and 2.4 kernels.
+
+  17 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  files/genkernel-3.2.0_pre7-arch.diff, genkernel-3.2.0_pre7-r1.ebuild:
+  Fixed patch and added inherit eutils for epatch support.
+
+*genkernel-3.2.0_pre7-r1 (16 Jun 2005)
+
+  16 Jun 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  +files/genkernel-3.2.0_pre7-arch.diff, -genkernel-3.2.0_pre7.ebuild,
+  +genkernel-3.2.0_pre7-r1.ebuild:
+  Added arch patch.
+
+*genkernel-3.2.0_pre7 (16 Jun 2005)
+
+  16 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre5.ebuild,
+  +genkernel-3.2.0_pre7.ebuild:
+  Fix LOCALVERSION (#88987) and add sleep timeout for loop module detection;
+  thanks rocket.
+
+*genkernel-3.2.0_pre5 (15 Jun 2005)
+
+  15 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre4.ebuild,
+  +genkernel-3.2.0_pre5.ebuild:
+  Fix star compatibility, add updated Pegasos config and initramfs support for
+  Pegasos kernels.
+
+*genkernel-3.2.0_pre4 (14 Jun 2005)
+
+  14 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre3.ebuild,
+  +genkernel-3.2.0_pre4.ebuild:
+  Add rocket's unionfs patch and linuxrc cleanup; fix Pegasos with regard to
+  initramfs.
+
+*genkernel-3.2.0_pre3 (07 Jun 2005)
+
+  07 Jun 2005; <plasmaroo@gentoo.org> -genkernel-3.2.0_pre2.ebuild,
+  +genkernel-3.2.0_pre3.ebuild:
+  Fix minkernpackage bug.
+
+*genkernel-3.2.0_pre2 (03 Jun 2005)
+
+  03 Jun 2005; <plasmaroo@gentoo.org> +genkernel-3.2.0_pre2.ebuild:
+  Fix #73158, #77377, #88682, #88988, #94680. Masked until we know this all
+  works right.
+
+*genkernel-2.1 (11 May 2005)
+
+  11 May 2005; <plasmaroo@gentoo.org> -genkernel-2.0.ebuild,
+  -genkernel-2.1.ebuild:
+  Remove old unavailable versions.
+
+  30 Apr 2005; <plasmaroo@gentoo.org> genkernel-3.1.6.ebuild:
+  Fix #80156.
+
+*genkernel-3.1.6 (01 Apr 2005)
+
+  01 Apr 2005; <plasmaroo@gentoo.org> +genkernel-3.1.6.ebuild:
+  Fix #87117.
+
+*genkernel-3.1.5 (30 Mar 2005)
+
+  30 Mar 2005; <plasmaroo@gentoo.org> +genkernel-3.1.5.ebuild:
+  Sync Portage to latest genkernel version.
+
+*genkernel-3.1.1b (02 Mar 2005)
+
+  02 Mar 2005; <plasmaroo@gentoo.org> -genkernel-3.1.1a.ebuild,
+  +genkernel-3.1.1b.ebuild:
+  Upgrade dmraid to 1.0.0.rc6.
+
+*genkernel-3.1.1a (01 Mar 2005)
+
+  01 Mar 2005; <plasmaroo@gentoo.org> -genkernel-3.1.1.ebuild,
+  +genkernel-3.1.1a.ebuild:
+  Fix #83672.
+
+  28 Feb 2005; <plasmaroo@gentoo.org> genkernel-3.1.1.ebuild:
+  Add device-mapper to the LiveCD fetch-list.
+
+*genkernel-3.1.1 (28 Feb 2005)
+
+  28 Feb 2005; <plasmaroo@gentoo.org> -genkernel-3.1.0l.ebuild,
+  +genkernel-3.1.1.ebuild:
+  Fix 2.4 module compilation, add livecd USE support for fetching LVM2 and
+  DMRAID source into /usr/share/genkernel/pkg.
+
+*genkernel-3.1.0l (27 Feb 2005)
+
+  27 Feb 2005; <plasmaroo@gentoo.org> -genkernel-3.1.0k.ebuild,
+  +genkernel-3.1.0l.ebuild:
+  Add MODULES_SATA support; make udev static on non-x86 architectures.
+
+  25 Feb 2005; <plasmaroo@gentoo.org> genkernel-3.1.0k.ebuild:
+  Mention available documentation, #77309.
+
+*genkernel-3.1.0k (23 Feb 2005)
+
+  23 Feb 2005; <plasmaroo@gentoo.org> -genkernel-3.1.0j.ebuild,
+  +genkernel-3.1.0k.ebuild:
+  Fix #83048.
+
+*genkernel-3.1.0j (18 Feb 2005)
+
+  18 Feb 2005; <plasmaroo@gentoo.org> -genkernel-3.1.0h.ebuild,
+  +genkernel-3.1.0j.ebuild:
+  Fix #58686 and #80716.
+
+*genkernel-3.1.0h (30 Jan 2005)
+
+  30 Jan 2005; <plasmaroo@gentoo.org> -genkernel-3.1.0g.ebuild,
+  +genkernel-3.1.0h.ebuild:
+  Fix bug #79999.
+
+  29 Jan 2005; Chris Gianelloni <wolf31o2@gentoo.org>
+  genkernel-3.1.0c.ebuild:
+  Marking 3.1.0c stable on ppc64 since there were no stable versions.
+
+*genkernel-3.1.0g (27 Jan 2005)
+
+  27 Jan 2005; <plasmaroo@gentoo.org> -genkernel-3.0.2a.ebuild,
+  -genkernel-3.0.2b.ebuild, -genkernel-3.0.2c-r1.ebuild,
+  -genkernel-3.0.2c.ebuild, -genkernel-3.0.2d.ebuild,
+  -genkernel-3.0.2g.ebuild, -genkernel-3.1.0a.ebuild,
+  -genkernel-3.1.0b.ebuild, -genkernel-3.1.0f.ebuild,
+  +genkernel-3.1.0g.ebuild:
+  Version bump; fix bug #79755. Remove ebuilds for old versions.
+
+*genkernel-3.1.0f (26 Jan 2005)
+
+  26 Jan 2005; <plasmaroo@gentoo.org> -genkernel-3.1.0e.ebuild,
+  +genkernel-3.1.0f.ebuild:
+  Version bump; bug #79502.
+
+*genkernel-3.1.0e (22 Jan 2005)
+
+  22 Jan 2005; <plasmaroo@gentoo.org> -genkernel-3.1.0d.ebuild,
+  +genkernel-3.1.0e.ebuild:
+  Version bump. Closes bugs #73356, #74758, #77277, #77363, #78636.
+
+*genkernel-3.1.0d (21 Dec 2004)
+
+  21 Dec 2004; <plasmaroo@gentoo.org> +genkernel-3.1.0d.ebuild:
+  Version bump. Closes bugs #73112, #70193 and #73054.
+
+*genkernel-3.1.0c (30 Nov 2004)
+
+  30 Nov 2004; <plasmaroo@gentoo.org> +genkernel-3.1.0c.ebuild:
+  Version bump. Closes bugs #61827, #64864, #66198, #67246, #69745, #70193,
+  #72129, #72253, #72342, #72510.
+
+*genkernel-3.1.0b (23 Oct 2004)
+
+  23 Oct 2004; <plasmaroo@gentoo.org> -genkernel-3.1.0.ebuild,
+  +genkernel-3.1.0a.ebuild, +genkernel-3.1.0b.ebuild:
+  Version bump - fixes udev keymap issues and bug #68518.
+
+  22 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  genkernel-3.1.0.ebuild:
+  Added missing ppc64 KEYWORD.
+
+*genkernel-3.1.0 (21 Oct 2004)
+
+  21 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +genkernel-3.1.0.ebuild:
+  Finally adding 3.1.0 to cvs.  Blame plasmaroo.
+
+*genkernel-3.0.2c-r1 (02 Oct 2004)
+
+  02 Oct 2004; Travis Tilley <lv@gentoo.org> +genkernel-3.0.2c-r1.ebuild:
+  updated the x86_64 kernel configs for the latest amd64 stable genkernel
+
+*genkernel-3.0.2g (19 Sep 2004)
+
+  19 Sep 2004; <plasmaroo@gentoo.org> -genkernel-3.0.2f.ebuild,
+  +genkernel-3.0.2g.ebuild:
+  Version bump - closes bugs #57576, #58360, #60862 and #62365.
+
+*genkernel-3.1.0 (21 Oct 2004)
+
+  21 Oct 2004; Chris Gianelloni <wolf31o2@gentoo.org>
+  +genkernel-3.1.0.ebuild:
+  Finally adding 3.1.0 to cvs.  Blame plasmaroo.
+
+*genkernel-3.0.2f (23 Aug 2004)
+
+  23 Aug 2004; <plasmaroo@gentoo.org> -genkernel-3.0.2e.ebuild,
+  +genkernel-3.0.2f.ebuild:
+  Version bump - closes bugs #57867, #58663, #58816, #59310 and #59687.
+
+  28 Jul 2004; <plasmaroo@gentoo.org> genkernel-3.0.2c.ebuild,
+  genkernel-3.0.2d.ebuild, genkernel-3.0.2e.ebuild:
+  Added a local bootsplash USE flag; bug #37015.
+
+*genkernel-3.0.2e (28 Jul 2004)
+
+  28 Jul 2004; <plasmaroo@gentoo.org> +genkernel-3.0.2e.ebuild:
+  Version bump - fixes bugs #47666, #49328, #52558, #52561, #57297,
+  #57576, #57748, #57749, #57751, #57752, #57761, #57836, #57865,
+  #57953. Thanks to Martin Parm, Mathias Gug and Bob Barry who contributed
+  patches!
+
+  18 Jul 2004; Tom Gall <tgall@gentoo.org> genkernel-3.0.2d.ebuild:
+  stable on ppc64, bug #57487
+
+*genkernel-3.0.2d (15 Jul 2004)
+
+  15 Jul 2004; <plasmaroo@gentoo.org> +genkernel-3.0.2d.ebuild:
+  Added a modutils fix for HPPA.
+
+*genkernel-3.0.2c (12 Jul 2004)
+
+  12 Jul 2004; <plasmaroo@gentoo.org> +genkernel-3.0.2c.ebuild:
+  Version bump - closes bug #54455, #55376 and adds more PCMCIA modules to the
+  x86 module list.
+
+  25 Jun 2004; Chris Gianelloni <wolf31o2@gentoo.org> genkernel-3.0.2b.ebuild:
+  Marking stable on amd64 x86 sparc hppa alpha ppc, as requested by plasmaroo.
+
+  15 Jun 2004; John Davis <zhen@gentoo.org> genkernel-3.0.2b.ebuild:
+  keywording for arm and s390 (catalyst dependency)
+
+*genkernel-3.0.2b (12 Jun 2004)
+
+  12 Jun 2004; <plasmaroo@gentoo.org> +genkernel-3.0.2b.ebuild:
+  Version bump. Fixes bugs #46167, #46278, #48219, #48308, #49728, #51395,
+  and #51948.
+
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  genkernel-1.6.ebuild, genkernel-1.8.ebuild, genkernel-1.9.ebuild,
+  genkernel-3.0.1.ebuild:
+  Masked genkernel-3.0.1.ebuild stable for ppc
+
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  genkernel-1.6.ebuild, genkernel-1.8.ebuild, genkernel-1.9.ebuild:
+  Masked genkernel-1.9.ebuild broken for ppc
+
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  genkernel-1.6.ebuild, genkernel-1.8.ebuild:
+  Masked genkernel-1.8.ebuild broken for ppc
+
+  31 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  genkernel-1.6.ebuild:
+  Masked genkernel-1.6.ebuild broken for ppc
+
+*genkernel-3.0.2a (11 Apr 2004)
+
+  11 Apr 2004; <plasmaroo@gentoo.org> genkernel-3.0.2a.ebuild:
+  Version bump; closes bugs #46641 and #46941.
+
+*genkernel-3.0.2 (30 Mar 2004)
+
+  30 Mar 2004; <plasmaroo@gentoo.org> genkernel-3.0.2.ebuild:
+  Version bump - GenKernel 3.0.2 is released as version 3.0.2_rc2 with support
+  for the "docache" boot parameter for LiveCDs.
+
+*genkernel-3.0.2_rc2 (27 Mar 2004)
+
+  27 Mar 2004; Tim Yamin <plasmaroo@gentoo.org> genkernel-3.0.2_rc2.ebuild,
+  Version bump. Closes bug #45731 and updates the SPARC configuration scripts.
+
+  21 Mar 2004; Tim Yamin <plasmaroo@gentoo.org>
+  genkernel-3.0.2_rc1.ebuild:
+  Version bump. Closes bugs #34948, #37371, #41129, #41166,
+  #42725, #42815, #44127, #44556, #44601.
+
+  12 Mar 2004; Seemant Kulleen <seemant@gentoo.org>
+  genkernel-3.0.1_rc2.ebuild:
+  More cleanups and point SRC_URI to mirrors.
+
+  09 Mar 2004; Seemant Kulleen <seemant@gentoo.org> genkernel-3.0.1.ebuild,
+  genkernel-3.0.1_beta10.ebuild, genkernel-3.0.1_beta11.ebuild,
+  genkernel-3.0.1_beta12.ebuild, genkernel-3.0.1_rc1.ebuild,
+  genkernel-3.0.ebuild:
+  Removed crufty versions, adjusted SRC_URI to gentoo mirrors, and fixed some
+  syntax.
+
+  01 Mar 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1.ebuild:
+  Break digests for genkernel, bad version was uploaded.
+
+*genkernel-3.0.1 (27 Feb 2004)
+
+  27 Feb 2004; Daniel Robbins <drobbins@gentoo.org> 
+  New release with bootsplash fixes 
+  (now uses the "default" bootsplash symlink.)
+
+*genkernel-3.0.1_rc2 (25 Feb 2004)
+
+  25 Feb 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_rc2.ebuild:
+  Version bump, livecd error message fix, alpha fix, reiserfs now static in 2.4
+  x86 kernel.
+
+*genkernel-3.0.1_rc1 (22 Feb 2004)
+
+  22 Feb 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_rc1.ebuild:
+  Gcloop fixes, and amd64 kernel config updates.
+
+  14 Feb 2004; Brad House <brad_mssw@gentoo.org>
+  genkernel-3.0.1_beta12.ebuild:
+  Added the ppc keyword.
+
+*genkernel-3.0.1_beta12 (14 Feb 2004)
+
+  14 Feb 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta1.ebuild,
+  genkernel-3.0.1_beta12.ebuild, genkernel-3.0.1_beta2.ebuild,
+  genkernel-3.0.1_beta4.ebuild, genkernel-3.0.1_beta5.ebuild,
+  genkernel-3.0.1_beta6.ebuild, genkernel-3.0.1_beta7.ebuild,
+  genkernel-3.0.1_beta8.ebuild, genkernel-3.0.1_beta9.ebuild:
+  bugfixes for initrd and console remapping/initrd unmounting
+  ppc profile added
+  default TEMP location moved to /var/tmp/genkernel
+  squashfs and gcloop support added
+
+*genkernel-3.0.1_beta11 (08 Feb 2004)
+
+  08 Feb 2004; Brad House <brad_mssw@gentoo.org>
+  genkernel-3.0.1_beta11.ebuild:
+  fix for typo
+
+*genkernel-3.0.1_beta10 (07 Feb 2004)
+
+  07 Feb 2004; Brad House <brad_mssw@gentoo.org>
+  genkernel-3.0.1_beta10.ebuild:
+  version bump for fixes
+
+*genkernel-3.0.1_beta9 (29 Jan 2004)
+
+  29 Jan 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta9.ebuild:
+  fixes as per bugs on bugs.gentoo.org
+
+*genkernel-3.0.1_beta8 (27 Jan 2004)
+
+  27 Jan 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta8.ebuild:
+  config file handling as per many bug reports, also updated x86 2.4 and 2.6
+  kernel configs
+
+  24 Jan 2004; Brad House <brad_mssw@gentoo.org> :
+  bump
+
+  12 Jan 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta4.ebuild:
+  ok, people need to be using genkernel3 now on x86
+
+*genkernel-3.0.1_beta4 (11 Jan 2004)
+
+  11 Jan 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta4.ebuild:
+  parisc and livecd fixes
+
+*genkernel-3.0.1_beta3 (07 Jan 2004)
+
+  11 Jan 2004; Guy Martin <gmsoft@gentoo.org> genkernel-3.0.1_beta3.ebuild:
+  Marked stable on hppa.
+
+  07 Jan 2004; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta3.ebuild:
+  bump version, bugfixes
+
+*genkernel-3.0.1_beta2 (24 Dec 2003)
+
+  24 Dec 2003; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta2.ebuild:
+  fix nobootsplash
+
+*genkernel-3.0.1_beta1 (24 Dec 2003)
+
+  24 Dec 2003; Brad House <brad_mssw@gentoo.org> genkernel-3.0.1_beta1.ebuild:
+  bump version to fix bugs
+
+*genkernel-3.0 (22 Dec 2003)
+
+  22 Dec 2003; Brad House <brad_mssw@gentoo.org> genkernel-3.0.ebuild:
+  Experiemental genkernel 3.0
+
+  28 Oct 2003; Bob Johnson <livewire@gentoo.org> :
+  Added progressbar, bumped busybox version, started the new 2.6 initrd...
+
+  24 Oct 2003; Brad House <brad_mssw@gentoo.org> genkernel-1.9.ebuild:
+  Added '~amd64' flag.
+
+  19 Oct 2003; zhen <zhen@gentoo.org> genkernel-2.0.ebuild:
+  OK, we are building fine now. I have left it masked until I can verify that it
+  can actually build 2.6 kernels ok.
+
+  19 Oct 2003; zhen <zhen@gentoo.org> genkernel-2.0.ebuild:
+  This should have been masked.
+
+  19 Oct 2003; Heinrich Wendel <lanius@gentoo.org> genkernel-2.0.ebuild:
+  Bug #31533.
+
+  19 Oct 2003; zhen <zhen@gentoo.org> genkernel-2.0.ebuild:
+  Updating paths for file locations, this should fix some problems.
+  Also marking -* because no one should emerge it until it is complete.
+
+*genkernel-2.0 (19 Oct 2003)
+
+  19 Oct 2003; zhen <zhen@gentoo.org> genkernel-2.0.ebuild:
+  2.0 is the testing only ebuild for 2.6 support. Adding into the tree.
+
+  18 Oct 2003; zhen <zhen@gentoo.org> files/bin-keymaps.tar.gz:
+  Moving some source around - bin-keymaps will be added in here instead 
+  of being included in the genkernel tarball.
+
+*genkernel-1.9 (07 Oct 2003)
+
+  10 Oct 2003; Bob Johnson <livewire@gentoo.org>
+	Added MRPROPER setting in /etc/kernel/settings (yes/no)
+	  --myconfig will use /etc/kernels/myconfig.  
+	  --buildpkg will not write anything to local system now.
+	INITRD_SIZE fixed in settings
+	  --livecd will build LiveCD kernel/initrd.
+	  --help now works.
+	
+*genkernel-1.8 (11 Sep 2003)
+
+  11 Sep 2003; Daniel Robbins <drobbins@gentoo.org>: important bug fix; in 1.7,
+  Modules were not getting copied to the initrd. Now fixed.
+
+*genkernel-1.7 (10 Sep 2003)
+
+  10 Sep 2003; Daniel Robbins <drobbins@gentoo.org>: Genkernel now FHS-compliant;
+  Sed redirect fix. Also, MAKEOPTS now comes from Portage/make.conf. 
+  This closes bugs #27920, #27948.
+
+*genkernel-1.6 (03 Sep 2003)
+
+  03 Sep 2003; Daniel Robbins <drobbins@gentoo.org>: Fixed various bugs: 
+  26336, 26346, 26822, 26901, 27446, 27871 (some duplicates)...
+
+*genkernel-1.5 (31 Jul 2003)
+
+  31 Jul 2003; Daniel Robbins <drobbins@gentoo.org>: New version with 
+  support for System.map.
+
+*genkernel-1.4 (30 Jul 2003)
+
+  30 Jul 2003; Daniel Robbins <drobbins@gentoo.org>: New version with 
+  lots of fixes.
+
+*genkernel-1.2 (14 07 2003)
+
+  14 07 2003; Bob Johnson <livewire@gentoo.org>
+  Minor typo fixes.
+
+*genkernel-1.1 (26 04 2003)
+
+  26 04 2003; Bob Johnson <livewire@gentoo.org>
+	
+       	- Added kernel package option (--buildpkg).
+	- Make fail on missing $KV.
+	
+*genkernel-1.0 (14 04 2003)
 
   14 04 2003; Bob Johnson <livewire@gentoo.org> 
   Initial import.  

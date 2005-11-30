@@ -1,5 +1,9 @@
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/amd64/package.mask,v 1.1 2005/01/12 04:06:26 eradicator Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/amd64/package.mask,v 1.1.1.1 2005/11/30 09:48:35 chriswhite Exp $
 
-# Jeremy Huddleston <eradicator@gentoo.org>
+# 2005.0 Jeremy Huddleston <eradicator@gentoo.org>
 # This is a stub file 'cause glibc provides 32bit libs on newer profiles
 =app-emulation/emul-linux-x86-glibc-1000
+
+# 2005/10/24 Simon Stelling <blubb@gentoo.org>
+# Don't even try to compile openoffice-2.x, it won't work.
+>=app-office/openoffice-2.0.0

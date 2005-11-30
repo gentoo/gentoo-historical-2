@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/wxchecksums/wxchecksums-1.2.0.ebuild,v 1.1 2004/12/09 19:55:45 pythonhead Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/wxchecksums/wxchecksums-1.2.0.ebuild,v 1.1.1.1 2005/11/30 09:44:55 chriswhite Exp $
 
 MY_P="wxChecksums-${PV}"
 
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~x86 ~ppc"
 IUSE="doc"
 
-RDEPEND=">=x11-libs/wxGTK-2.4.1-r1"
+RDEPEND="<x11-libs/wxGTK-2.5"
 DEPEND="${RDEPEND}
 	>=sys-apps/sed-4"
 S="${WORKDIR}/${MY_P}/src"

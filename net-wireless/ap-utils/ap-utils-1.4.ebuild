@@ -1,18 +1,19 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ap-utils/ap-utils-1.4.ebuild,v 1.1 2004/02/25 04:09:09 latexer Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ap-utils/ap-utils-1.4.ebuild,v 1.1.1.1 2005/11/30 09:45:30 chriswhite Exp $
 
 inherit eutils
 
 IUSE="nls"
 
-DESCRIPTION="Wireless Access Point Utilites for Unix"
+DESCRIPTION="Wireless Access Point Utilities for Unix"
 HOMEPAGE="http://ap-utils.polesye.net/"
 SRC_URI="mirror://sourceforge/ap-utils/${P}.tar.bz2"
+RESTRICT="nomirror"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
-DEPEND=">=bison-1.34"
+KEYWORDS="x86"
+DEPEND=">=sys-devel/bison-1.34"
 RDEPEND=""
 
 src_unpack() {

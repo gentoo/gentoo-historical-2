@@ -1,10 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-5.1.ebuild,v 1.1 2005/02/18 19:25:13 ciaranm Exp $
-
-inherit 64-bit eutils
-
-IUSE="xgetdefault"
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/rxvt-unicode/rxvt-unicode-5.1.ebuild,v 1.1.1.1 2005/11/30 09:46:34 chriswhite Exp $
 
 DESCRIPTION="rxvt clone with XFT and Unicode support"
 HOMEPAGE="http://software.schmorp.de/"
@@ -12,9 +8,12 @@ SRC_URI="http://rxvt-unicode-dist.plan9.de/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~mips ~amd64 ~ppc"
+KEYWORDS="~x86 ~sparc ~mips ~amd64 ~ppc ~ppc64"
+IUSE="xgetdefault"
 
 DEPEND="virtual/libc
+	dev-util/pkgconfig
+	sys-devel/libtool
 	virtual/x11
 	dev-lang/perl"
 
@@ -25,6 +24,9 @@ src_unpack() {
 	sed -i -e \
 		"s~@TIC@ \(etc/rxvt\)~@TIC@ -o ${D}/${tdir} \1~" \
 		doc/Makefile.in
+	sed -i -e \
+		"s:-g -O3:${CFLAGS}:" \
+		configure
 }
 
 src_compile() {
@@ -59,7 +61,7 @@ src_install() {
 
 	dodoc README.unicode Changes
 	cd ${S}/doc
-	dodoc README* changes.txt BUGS TODO etc/*
+	dodoc README* changes.txt etc/*
 }
 
 pkg_postinst() {

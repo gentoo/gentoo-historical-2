@@ -1,8 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/kaffe/kaffe-1.1.5-r1.ebuild,v 1.1 2005/09/10 16:48:52 betelgeuse Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/kaffe/kaffe-1.1.5-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:28 chriswhite Exp $
 
-inherit java flag-o-matic
+inherit eutils java flag-o-matic
 
 DESCRIPTION="A cleanroom, open source Java VM and class libraries"
 SRC_URI="http://www.kaffe.org/ftp/pub/kaffe/v1.1.x-development/${P/_/-}.tar.gz"
@@ -27,13 +27,13 @@ DEPEND="
 		>=dev-libs/glib-2.0
 		>=x11-libs/gtk+-2.0
 		>=media-libs/libart_lgpl-2.0 )
-	esd?( >=media-sound/esound-0.2.1 )
-	alsa?( >=media-libs/alsa-lib-1.0.1 )
-	gmp?( >=dev-libs/gmp-3.1 )"
+	esd? ( >=media-sound/esound-0.2.1 )
+	alsa? ( >=media-libs/alsa-lib-1.0.1 )
+	gmp? ( >=dev-libs/gmp-3.1 )"
 RDEPEND=${DEPEND}
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~sparc ~amd64 -ppc"
+KEYWORDS="~x86 sparc ~amd64 -ppc"
 #X qt
 IUSE="alsa esd gmp gtk nls"
 
@@ -45,7 +45,7 @@ pkg_setup() {
 	if ! use gmp; then
 		ewarn "You have don't have the gmp use flag set."
 		ewarn "Using gmp is the default upstream setting."
-		sleep 3
+		epause 3
 	fi
 
 	if ! use gtk; then
@@ -53,7 +53,7 @@ pkg_setup() {
 		ewarn "The gtk use flag is needed for a awt implementation."
 		ewarn "Don't file bugs for awt not working when you have"
 		ewarn "gtk use flag turned off."
-		sleep 3
+		epause 3
 	fi
 }
 

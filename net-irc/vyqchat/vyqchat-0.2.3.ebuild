@@ -1,35 +1,38 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/vyqchat/vyqchat-0.2.3.ebuild,v 1.1 2003/12/28 20:32:03 zul Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/vyqchat/vyqchat-0.2.3.ebuild,v 1.1.1.1 2005/11/30 09:48:56 chriswhite Exp $
+
+inherit eutils
 
 DESCRIPTION="QT based Vypress Chat clone for X."
 HOMEPAGE="http://linux.bydg.org/~yogin/"
 SRC_URI="http://linux.bydg.org/~yogin/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~ppc"
 
 IUSE="arts"
 
-DEPEND=">=qt-3.0
-		arts? ( kde-base/arts )"
-RDEPEND="${DEPEND}"
-S=${WORKDIR}/${P}
+DEPEND="=x11-libs/qt-3*
+	arts? ( kde-base/arts )"
 
-src_compile() {
-	local myconf
+src_unpack() {
+	unpack ${A}
+	cd ${S}
 
 	epatch ${FILESDIR}/vyqchat_packet_id.patch
+}
 
-	use arts && myconf="--with-arts"
-	./configure  --host=${CHOST} \
-		--prefix=/usr --infodir=/usr/share/info \
-		--mandir=/usr/share/man --with-x \
-		--with-Qt-dir=/usr/qt/3 ${myconf} || die "./configure failed"
-	make || die
+src_compile() {
+	econf \
+		--with-x \
+		--with-Qt-dir=/usr/qt/3 \
+		$(use_with arts) \
+		|| die "econf failed"
+	make || die "make failed"
 }
 
 src_install() {
-	einstall || die
-	dodoc README THANKS NEWS
+	make DESTDIR=${D} install || die "make install failed"
+	dodoc README THANKS NEWS || die "dodoc failed"
 }

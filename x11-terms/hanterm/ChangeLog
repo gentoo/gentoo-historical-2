@@ -1,26 +1,48 @@
-# ChangeLog for <CATEGORY>/<PACKAGE_NAME>
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/hanterm/ChangeLog,v 1.1 2002/06/25 16:01:22 stubear Exp $
+# ChangeLog for x11-terms/hanterm
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/hanterm/ChangeLog,v 1.1.1.1 2005/11/30 09:46:34 chriswhite Exp $
 
-*<PACKAGE_NAME>-<PACKAGE_VERSION>-<PACKAGE_RELEASE> (DD MMM YYYY)
+  14 Nov 2004; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Stable on ppc and ppc-macos.
 
-  01 Feb 2002; G.Bevin <gbevin@gentoo.org> skel.ChangeLog: This changelog is
-  targetted to users. This means that the comments should be well explained and
-  written in clean English. 
- 
--- Explanation of ChangeLog format:
- 
-  Every new version or revision of the package should be marked by a '*'
-  seperator line as above. Changes since the last revision have to be added to
-  the top of the file, underneath the initial copyright and cvs header
-  comments, in exactly the same format as this comment.
-  
-  This means that you start with header line that has the following format,
-  indented two spaces:
-  
-  DD MMM YYYY; your_name <your_email> changed_file1, changed_file2: Your
-  explanation should follow. It should be indented and wrapped at a line width
-  of 80 characters.  The changed_files can be omitted if they are obvious; for
-  example, if you are only modifying the .ebuild file and committing a new rev
-  of a package.  Any details about what exactly changed in the code should be
-  added as a message when the changes are committed to cvs, not in this file.
+  23 Oct 2004; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Added to ~ppc-macos.
+
+  03 Sep 2004; Luca Barbato <lu_zero@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  gcc-3.4 fix
+
+  14 Aug 2004; Sven Wegener <swegener@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Trimmed trailing whitespace.
+
+  28 Jun 2004; Aron Griffis <agriffis@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  glibc -> libc
+
+  21 Jun 2004; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  Fixed compilation with xorg-x11, closing bug #54127
+
+  20 Jun 2004; Ian Leitch <port001@gentoo.org> hanterm-3.1.6-r2.ebuild:
+  No need to set S
+
+*hanterm-3.1.6-r2 (24 Jul 2002)
+
+  09 Sep 2003; Mamoru KOMACHI <usata@gentoo.org> hanterm-3.1.6-r2.ebuild,
+  files/Hanterm.gentoo:
+  Updated hangul font path. Added manpage and other docs. Install everything
+  according to FHS.
+
+  02 Jun 2003; Seemant Kulleen <seemant@gentoo.org> hanterm-3.1.6-r1.ebuild,
+  hanterm-3.1.6-r2.ebuild:
+  baekmuk fonts are in media-fonts now
+
+  21 Oct 2002; Calum Selkirk <cselkirk@gentoo.org> hanterm-3.1.6-r2.ebuild :
+
+  Added ppc to KEYWORDS.
+
+  24 Jul 2002; Jays Kwak <jayskwak@gentoo.org> hanterm-3.1.6-r2 :
+  Hanterm config file bug fixed.
+
+*hanterm-3.1.6-r1 (11 Jul 2002)
+
+  11 Jul 2002; Jays Kwak <jayskwak@gentoo.org> hanterm-3.1.6-r1 :
+  Modified default color and fonts in Hanterm config file. Original Hanterm
+  file renamed Hanterm.orig

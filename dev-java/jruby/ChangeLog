@@ -1,6 +1,19 @@
 # ChangeLog for dev-java/jruby
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed unde the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/ChangeLog,v 1.1 2004/11/16 00:17:20 karltk Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/ChangeLog,v 1.1.1.1 2005/11/30 09:47:23 chriswhite Exp $
+
+  02 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> jruby-0.7.0-r1.ebuild,
+  -jruby-0.7.0.ebuild:
+  cleanup, removed old revision with a dependency to oro. marked stable on amd64.
+
+*jruby-0.7.0-r1 (29 Mar 2005)
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> +jruby-0.7.0-r1.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+  introduced support for the examples and the source useflag.
+
+  05 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> jruby-0.7.0.ebuild:
+  stable on x86, added ~amd64 to KEYWORDS.
 
 *jruby-0.7.0 (16 Nov 2004)
 

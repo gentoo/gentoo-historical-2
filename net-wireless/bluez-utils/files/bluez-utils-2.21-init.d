@@ -1,7 +1,7 @@
 #!/sbin/runscript
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-utils/files/bluez-utils-2.21-init.d,v 1.1 2005/10/23 13:00:24 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/bluez-utils/files/bluez-utils-2.21-init.d,v 1.1.1.1 2005/11/30 09:45:29 chriswhite Exp $
 
 UART_CONF="/etc/bluetooth/uart"
 

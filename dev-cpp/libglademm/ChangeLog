@@ -1,6 +1,107 @@
 # ChangeLog for dev-cpp/libglademm
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libglademm/ChangeLog,v 1.1 2003/06/20 23:44:44 liquidx Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/libglademm/ChangeLog,v 1.1.1.1 2005/11/30 09:46:22 chriswhite Exp $
+
+*libglademm-2.6.1 (19 Sep 2005)
+
+  19 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> +libglademm-2.6.1.ebuild:
+  Version bump.
+
+  14 Sep 2005; Aaron Walker <ka0ttic@gentoo.org> libglademm-2.2.0.ebuild:
+  2.2.0 stable on x86 for bug 104650.
+
+  01 Aug 2005; Herbie Hopkins <herbs@gentoo.org> libglademm-2.2.0.ebuild:
+  Masked on amd64 due to compilation failure, bug 93804.
+
+  29 Jul 2005; Guy Martin <gmsoft@gentoo.org> libglademm-2.4.1.ebuild,
+  libglademm-2.6.0.ebuild:
+  Stable on hppa.
+
+  22 Jul 2005; Herbie Hopkins <herbs@gentoo.org> libglademm-2.4.1.ebuild:
+  Stable on amd64.
+
+  21 Jul 2005; Lars Weiler <pylon@gentoo.org> libglademm-2.4.1.ebuild:
+  Stable on ppc.
+
+*libglademm-2.6.0 (18 Jul 2005)
+
+  18 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> libglademm-2.4.1.ebuild,
+  +libglademm-2.6.0.ebuild:
+  Version bump for bug 91843; 2.4.1 stable on x86. Also removed unnecessary
+  eutils inherit.
+
+  18 May 2005; Markus Rothe <corsair@gentoo.org> libglademm-2.2.0.ebuild,
+  libglademm-2.4.1.ebuild:
+  Stable on ppc64
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> libglademm-2.4.1.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  08 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  libglademm-2.4.1.ebuild:
+  Stable on sparc
+
+  13 Mar 2005; Markus Rothe <corsair@gentoo.org> libglademm-2.2.0.ebuild:
+  Added ~ppc64 to KEYWORDS
+
+  10 Feb 2005; Joe McCann <joem@gentoo.org> libglademm-2.4.0.ebuild,
+  libglademm-2.4.1.ebuild:
+  fix bug 81414
+
+  16 Dec 2004; Joe McCann <joem@gentoo.org> libglademm-2.4.0.ebuild,
+  libglademm-2.4.1.ebuild:
+  fix libtool issues, closes bug 74534
+
+*libglademm-2.4.1 (11 Dec 2004)
+
+  11 Dec 2004; Joe McCann <joem@gentoo.org> +libglademm-2.4.1.ebuild:
+  version bump which fixed gcc-3.4 compile. No need to patch any more.
+
+  07 Nov 2004; Karol Wojtaszek <sekretarz@gentoo.org>
+  +files/libglademm-2.2.0-configure.patch, libglademm-2.2.0.ebuild:
+  Fixed linking problems on amd64, bug #57987
+
+  05 Oct 2004; Jason Wever <weeve@gentoo.org> libglademm-2.4.0.ebuild:
+  Added ~sparc keyword.
+
+  06 Sep 2004; Karol Wojtaszek <sekretarz@gentoo.org> libglademm-2.2.0.ebuild:
+  Fixed gcc-3.4 issues. Thanks to Chris Arepantis <ChrisArepantis@gmail.com> in
+  bug #57318
+
+*libglademm-2.2.0 (13 Jul 2004)
+
+  13 Jul 2004; Yi Qiang <khai@gentoo.org> libglademm-2.0.1.ebuild,
+  libglademm-2.2.0.ebuild:
+  Fixed slotting issue and the ever so dreadful depend issues that plague *mm
+  packages.
+
+  30 May 2004; Danny van Dyk <kugelfang@gentoo.org> libglademm-2.4.0.ebuild:
+  Fixing BUG #52389.
+
+  22 May 2004; Yi Qiang <khai@gentoo.org> +files/gcc34.patch,
+  libglademm-2.4.0.ebuild:
+  Fixed gcc-3.4 compilation issues. Credit goes to Vladimir Hlousek for patch
+
+  21 May 2004; Danny van Dyk <kugelfang@gentoo.org> libglademm-2.4.0.ebuild:
+  Added aclocal/automake/autoconf; necessary on amd64. Marked ~amd64.
+
+  21 May 2004; Yi Qiang <khai@gentoo.org> libglademm-2.0.1.ebuild,
+  libglademm-2.4.0.ebuild:
+  Fixed slots, added the 2.2 series
+
+*libglademm-2.4.0 (09 May 2004)
+
+  09 May 2004; Yi Qiang <khai@gentoo.org> :
+  Version bump
+
+  12 Apr 2004; Guy Martin <gmsoft@gentoo.org> libglademm-2.0.1.ebuild:
+  Marked stable on hppa.
+
+  12 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> libglademm-2.0.1.ebuild:
+  Added IUSE=.
+
+  16 Feb 2004; Gustavo Zacarias <gustavoz@gentoo.org> libglademm-2.0.1.ebuild:
+  stable on sparc
 
   22 May 2003; Alastair Tse <liquidx@gentoo.org> libglademm-2.0.1.ebuild:
   marked as stable x86

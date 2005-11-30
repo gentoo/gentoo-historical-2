@@ -1,6 +1,14 @@
 # ChangeLog for net-wireless/rfswitch
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/rfswitch/ChangeLog,v 1.1 2004/07/09 19:39:55 latexer Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/rfswitch/ChangeLog,v 1.1.1.1 2005/11/30 09:45:27 chriswhite Exp $
+
+  28 May 2005; <brix@gentoo.org> -rfswitch-0.1.ebuild:
+  Removed deprecated non-linux-mod.eclas ebuild.
+
+*rfswitch-0.1-r1 (28 Apr 2005)
+
+  28 Apr 2005; <brix@gentoo.org> +rfswitch-0.1-r1.ebuild:
+  Ported to use linux-mod.eclass.
 
 *rfswitch-0.1 (09 Jul 2004)
 

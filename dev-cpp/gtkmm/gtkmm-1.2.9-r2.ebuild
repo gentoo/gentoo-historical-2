@@ -1,17 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/gtkmm-1.2.9-r2.ebuild,v 1.1 2003/07/12 17:38:27 foser Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gtkmm/gtkmm-1.2.9-r2.ebuild,v 1.1.1.1 2005/11/30 09:46:25 chriswhite Exp $
 
-S=${WORKDIR}/${P}
+inherit eutils
+
 DESCRIPTION="C++ interface for GTK+"
+HOMEPAGE="http://gtkmm.sourceforge.net/"
 SRC_URI="http://download.sourceforge.net/gtkmm/${P}.tar.gz"
 #	 ftp://ftp.gnome.org/pub/GNOME/stable/sources/gtk+/${P}.tar.gz
 #	 http://ftp.gnome.org/pub/GNOME/stable/sources/gtk+/${P}.tar.gz"
-HOMEPAGE="http://gtkmm.sourceforge.net/"
 
-SLOT="1.2"
 LICENSE="GPL-2"
-KEYWORDS="x86 ppc sparc "
+SLOT="1.2"
+KEYWORDS="x86 ppc sparc hppa amd64 alpha ia64"
+IUSE="debug"
 
 DEPEND="=x11-libs/gtk+-1.2*
 	=dev-libs/libsigc++-1.0*"
@@ -22,32 +24,25 @@ src_unpack() {
 	# this patch applies only to gtkmm-1.2.9. gtkmm has been fixed
 	# in CVS. It fixes a build problem with gcc3.1.
 	# (http://marc.theaimsgroup.com/?l=gtkmm&m=101879848701486&w=2)
-	patch -p0 <${FILESDIR}/gtkmm-1.2.9-gcc3.1-gentoo.patch
+	epatch ${FILESDIR}/gtkmm-1.2.9-gcc3.1-gentoo.patch
+	epatch ${FILESDIR}/gtkmm-1.2.9-gcc3.4-gentoo.patch
 }
 
 src_compile() {
-
 	local myconf
-	
-	if [ "${DEBUG}" ]
-	then
-		myconf="--enable-debug=yes"
-	else
-		myconf="--enable-debug=no"
-	fi
-	
+	use debug \
+		&& myconf="--enable-debug=yes" \
+		|| myconf="--enable-debug=no"
 	econf \
 		--sysconfdir=/etc/X11 \
 		--with-xinput=xfree \
 		--with-x \
 		${myconf} || die
-		
+
 	make || die
 }
 
 src_install() {
-
 	make DESTDIR=${D} install || die
-
 	dodoc AUTHORS COPYING ChangeLog NEWS README TODO
 }

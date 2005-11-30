@@ -1,8 +1,37 @@
-# ChangeLog for app-i18n/aspell-en
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-en/ChangeLog,v 1.1 2002/12/03 07:15:39 seemant Exp $
+# ChangeLog for app-dicts/aspell-en
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/aspell-en/ChangeLog,v 1.1.1.1 2005/11/30 09:46:53 chriswhite Exp $
+
+  20 Feb 2005; Anders Rune Jensen <arj@gentoo.org> aspell-en-6.0.0.ebuild:
+  Fix KEYWORDS.
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> aspell-en-6.0.0.ebuild:
+  added forgotten IUSE=""
+
+  04 Oct 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  aspell-en-6.0.0.ebuild:
+  Added to ~amd64 and ~sparc.
+
+*aspell-en-6.0.0 (03 Oct 2004)
+
+  03 Oct 2004; Anders Rune Jensen <arj@gentoo.org> +aspell-en-6.0.0.ebuild:
+  version bump. Aspell-0.60 only.
+
+*aspell-en-0.51.1 (16 May 2004)
+
+  16 May 2004; Seemant Kulleen <seemant@gentoo.org> +aspell-en-0.51.1.ebuild:
+  version bump
+
+*aspell-en-0.51.0 (07 Jun 2003)
+
+  07 Jun 2003; Seemant Kulleen <seemant@gentoo.org> aspell-en-0.51.0.ebuild:
+  version bump
 
 *aspell-en-0.50.2 (03 Sep 2002)
+
+  02 Dec 2002; Seemant Kulleen <seemant@gentoo.org> * :
+
+  Moved from app-i18n to app-dicts
 
   03 Sep 2002; Seemant Kulleen <seemant@gentoo.org> aspell-en-0.50.2.ebuild
   files/digest-aspell-en-0.50.2 :

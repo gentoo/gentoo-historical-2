@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/jruby-0.7.0-r1.ebuild,v 1.1 2005/03/29 14:42:57 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jruby/jruby-0.7.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:47:23 chriswhite Exp $
 
 inherit java-pkg
 
 DESCRIPTION="Java based ruby interpreter implementation"
 HOMEPAGE="http://jruby.sourceforge.net/"
 SRC_URI="mirror://sourceforge/jruby/${PN}-src-${PV}.tar.gz"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc examples jikes junit source"
@@ -15,10 +15,12 @@ RDEPEND=">=virtual/jre-1.4
 	=dev-java/bsf-2.3*
 	=dev-java/jakarta-oro-2.0*
 	=dev-java/gnu-regexp-1.1*"
-DEPEND="${RDEPEND}
+DEPEND=">=virtual/jdk-1.4
+	${RDEPEND}
 	>=dev-java/ant-1.4
 	jikes? ( dev-java/jikes )
-	junit? ( dev-java/junit )"
+	junit? ( dev-java/junit )
+	source? ( app-arch/zip )"
 
 src_unpack() {
 	unpack ${A}

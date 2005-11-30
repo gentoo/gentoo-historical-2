@@ -1,4 +1,5 @@
 # sample diald.filter
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/diald/files/diald.filter,v 1.1.1.1 2005/11/30 09:46:17 chriswhite Exp $
 #
 # connect policy during office hours on weekdays
 restrict 8:00:00 17:59:59 1-5 * *

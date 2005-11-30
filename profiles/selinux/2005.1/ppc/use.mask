@@ -1,16 +1,13 @@
 # Copyright 1999-2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/selinux/2005.1/ppc/use.mask,v 1.1 2005/04/02 15:48:25 pebenito Exp $
-
-# disallow posix acl since this is SELinux
-acl
+# $Header: /var/cvsroot/gentoo-x86/profiles/selinux/2005.1/ppc/use.mask,v 1.1.1.1 2005/11/30 09:48:42 chriswhite Exp $
 
 # this is a list of USE flags
 # that should not be used on PPC
 afs
 3dfx
 3dnow
-3dnowex
+3dnowext
 avi
 icc
 icc-pgo
@@ -18,4 +15,3 @@ mmx
 svga
 sse
 scanner 
-uclibc

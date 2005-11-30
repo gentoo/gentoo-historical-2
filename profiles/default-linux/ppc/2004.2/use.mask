@@ -1,25 +1,45 @@
 # This is a list of USE flags that should not be used on PPC
 
-x86
-
-afs
 3dfx
-3dnow
+acpi
+adabas
+afs
 avi
+birdstep
+cmucl
+fdftk
+hdf
 icc
 icc-pgo
-mmx
+ifc
+lm_sensors
+real
 svga
-sse 
-firebird
 tcc
+x86 
+fmod
+#keep and eye on firebird and interbase as pair
+firebird
+interbase
 
-# For ppc SElinux support please use the SElinux profile
-# Maintained by Chris Pebenito <pebenito@gentoo.org>
+i8x0
+xvmc
+nvidia
 
-selinux
+# Unmask our instruction sets
+-altivec
 
-# HDF is currently broken on ppc, masking
-# until it is fixed
-hdf
+# Fixes bug #86787
+fusion
 
+# rar is binary-only
+rar
+
+# User Mode Linux isn't supported on ppc yet
+uml
+
+# Unmask pbbuttonsd
+-pbbuttonsd
+
+# GIT's ppc sha1 implementation
+-ppcsha1

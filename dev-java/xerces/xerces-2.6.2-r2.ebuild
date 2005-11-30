@@ -1,43 +1,41 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xerces/xerces-2.6.2-r2.ebuild,v 1.1 2005/01/15 14:03:02 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xerces/xerces-2.6.2-r2.ebuild,v 1.1.1.1 2005/11/30 09:47:37 chriswhite Exp $
 
 inherit java-pkg eutils
 
-IUSE="doc jikes examples"
-
-S=${WORKDIR}/xerces-${PV//./_}
 DESCRIPTION="The next generation of high performance, fully compliant XML parsers in the Apache Xerces family"
 HOMEPAGE="http://xml.apache.org/xerces2-j/index.html"
 SRC_URI="mirror://apache/xml/xerces-j/Xerces-J-src.${PV}.tar.gz"
+
 LICENSE="Apache-1.1"
 SLOT="2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
+IUSE="doc jikes examples source"
 
-DEPEND=">=virtual/jdk-1.3
-	jikes? ( >=dev-java/jikes-1.21 )"
-RDEPEND=">=virtual/jre-1.3
+RDEPEND=">=virtual/jre-1.4
 	>=dev-java/ant-core-1.5.2
-	>=dev-java/xalan-2.5.2
 	>=dev-java/xml-commons-1.0_beta2
 	>=dev-java/xml-commons-resolver-1.1
 	>=dev-java/xjavac-20041208"
+DEPEND=">=virtual/jdk-1.4
+	jikes? ( >=dev-java/jikes-1.21 )
+	source? ( app-arch/zip )
+	${RDEPEND}"
+
+S=${WORKDIR}/xerces-${PV//./_}
 
 src_unpack() {
 	unpack ${A}
 
 	cd ${S}
 	epatch ${FILESDIR}/${PF}-gentoo.patch
+	epatch ${FILESDIR}/${P}-javadoc.patch
 
-	mkdir ${S}/tools
-	cd ${S}/tools
-	java-pkg_jar-from ant-core ant.jar
-	java-pkg_jar-from ant-core ant-launcher.jar
-	java-pkg_jar-from junit
-	java-pkg_jar-from xalan
+	mkdir tools && cd tools
+	rm -f *.jar
 	java-pkg_jar-from xml-commons xml-apis.jar
 	java-pkg_jar-from xml-commons-resolver xml-commons-resolver.jar resolver.jar
-
 
 	mkdir ${S}/tools/bin
 	cd ${S}/tools/bin
@@ -46,26 +44,21 @@ src_unpack() {
 
 src_compile() {
 	local antflags="jars sampjar"
-	if use doc ; then
-		antflags="${antflags} javadocs"
-	fi
-	if use jikes; then
-		antflags="${antflags} -Dbuild.compiler=jikes"
-	fi
-	sh build.sh ${antflags} || die "Compile failed."
+	use doc && antflags="${antflags} javadocs"
+	use jikes && antflags="${antflags} -Dbuild.compiler=jikes"
+	ant ${antflags} || die "Compile failed."
 }
 
 src_install() {
 	java-pkg_dojar build/x*.jar
 
-	dodoc TODO STATUS README ISSUES LICENSE
+	dodoc TODO STATUS README ISSUES
 	java-pkg_dohtml Readme.html
 
-	if use doc ; then
-		java-pkg_dohtml -r build/docs/javadocs
-	fi
+	use doc && java-pkg_dohtml -r build/docs/javadocs
 	if use examples; then
 		dodir /usr/share/doc/${PF}/examples
 		cp -r samples/* ${D}/usr/share/doc/${PF}/examples
 	fi
+	use source && java-pkg_dosrc ${S}/src/*
 }

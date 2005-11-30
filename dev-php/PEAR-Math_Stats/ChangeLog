@@ -1,6 +1,28 @@
 # ChangeLog for dev-php/PEAR-Math_Stats
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Math_Stats/ChangeLog,v 1.1 2005/09/07 08:08:03 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Math_Stats/ChangeLog,v 1.1.1.1 2005/11/30 09:48:05 chriswhite Exp $
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Math_Stats-0.9.0_beta3-r1.ebuild:
+  Add ~amd64.
+
+  09 Oct 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-Math_Stats-0.9.0_beta3-r1.ebuild:
+  Added ~sparc keyword.
+
+  09 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Math_Stats-0.9.0_beta3.ebuild:
+  Leftover.
+
+  09 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Math_Stats-0.9.0_beta3-r1.ebuild:
+  Workaround for bug 105385, comment 1.
+
+*PEAR-Math_Stats-0.9.0_beta3-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Math_Stats-0.9.0_beta3-r1.ebuild:
+  Use new PEAR eclass.
 
 *PEAR-Math_Stats-0.9.0_beta3 (07 Sep 2005)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/airsnort/airsnort-0.2.1b.ebuild,v 1.1 2003/01/24 05:13:27 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/airsnort/airsnort-0.2.1b.ebuild,v 1.1.1.1 2005/11/30 09:45:40 chriswhite Exp $
 
 MY_P=${P/a/A}
 S=${WORKDIR}/${MY_P}
@@ -10,11 +10,12 @@ SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~ppc ~sparc"
+KEYWORDS="x86 ppc -sparc"
+IUSE="pcmcia"
 
 DEPEND=">=sys-devel/autoconf-2.13
-	>=x11-libs/gtk+-1.2.10-r9
-	>=net-libs/libpcap-0.7.1
+	=x11-libs/gtk+-1*
+	virtual/libpcap
 	pcmcia? ( >=sys-apps/pcmcia-cs-3.1.33 )"
 
 src_compile() {
@@ -29,4 +30,8 @@ src_compile() {
 src_install() {
 	make DESTDIR=${D} install || die
 	dodoc README README.crypt Authors ChangeLog TODO
+}
+pkg_postinst() {
+	einfo "Make sure to emerge linux-wlan-ng if you want support"
+	einfo "for Prism2 based cards in airsnort."
 }

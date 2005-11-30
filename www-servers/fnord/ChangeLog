@@ -1,6 +1,53 @@
-# ChangeLog for net-www/fnord
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/fnord/ChangeLog,v 1.1 2004/08/08 11:37:29 stuart Exp $
+# ChangeLog for www-servers/fnord
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-servers/fnord/ChangeLog,v 1.1.1.1 2005/11/30 09:46:43 chriswhite Exp $
+
+  28 Aug 2005; Mike Frysinger <vapier@gentoo.org> fnord-1.8.ebuild,
+  fnord-1.9.ebuild:
+  Punt USE=diet.
+
+  23 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> fnord-1.8.ebuild,
+  fnord-1.9.ebuild:
+  Use -1 instead of /bin/false, bug #103421.
+
+  17 May 2005; Michael Hanselmann <hansmi@gentoo.org> fnord-1.9.ebuild:
+  Stable on ppc.
+
+  09 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> fnord-1.9.ebuild:
+  Added to ~hppa.
+
+*fnord-1.9 (07 Mar 2005)
+
+  07 Mar 2005; Aaron Walker <ka0ttic@gentoo.org>
+  -files/fnord-1.2-gentoo.diff, -files/fnord-1.5-gentoo.diff,
+  -files/fnord-1.6-gentoo.diff, -files/fnord-1.7-gentoo.diff,
+  +files/fnord-1.8-gentoo.diff, +files/fnord-1.9-gentoo.diff,
+  -fnord-1.2.ebuild, -fnord-1.5.ebuild, -fnord-1.6.ebuild,
+  -fnord-1.7.ebuild, fnord-1.8.ebuild, +fnord-1.9.ebuild:
+  Version bump for bug 84344; Marked 1.8 stable on x86. Tidy old crusty
+  ebuilds. Moved replace-sparc64-flags to src_compile where it belongs;
+  replaced naughty useradd stuff with enewuser calls.
+
+  03 Mar 2005; Ciaran McCreesh <ciaranm@gentoo.org> fnord-1.2.ebuild,
+  fnord-1.5.ebuild, fnord-1.6.ebuild, fnord-1.7.ebuild, fnord-1.8.ebuild:
+  Move sys-apps/daemontools -> sys-process/daemontools
+
+  27 Jan 2005; Christian Zoffoli <xmerlin@gentoo.org> fnord-1.8.ebuild:
+  fixed bug #61251, now you can choose if you want to compile it with
+  dietlibc or something else, added some missing IUSE
+
+  18 Dec 2004; Michael Hanselmann <hansmi@gentoo.org> fnord-1.8.ebuild:
+  Stable on sparc and added ucspi-tcp to RDEPEND.
+
+  02 Oct 2004; Markus Nigbur <pyrania@gentoo.org> fnord-1.7.ebuild,
+  fnord-1.8.ebuild:
+  S= unneeded. Added IUSE. Made epatch aware.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  03 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org> fnord-1.8.ebuild:
+  Masked fnord-1.8.ebuild stable for ppc
 
 *fnord-1.8 (08 Aug 2004)
 

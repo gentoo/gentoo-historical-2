@@ -1,6 +1,15 @@
 # ChangeLog for net-dialup/serlook
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/serlook/ChangeLog,v 1.1 2005/05/10 21:34:25 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/serlook/ChangeLog,v 1.1.1.1 2005/11/30 09:46:05 chriswhite Exp $
+
+  23 Jul 2005; Carsten Lohrke <carlo@gentoo.org>
+  +files/serlook-0.3.1-noarts.patch, serlook-0.3.1-r1.ebuild:
+  don't check for arts
+
+*serlook-0.3.1-r1 (18 Jul 2005)
+
+  18 Jul 2005; Carsten Lohrke <carlo@gentoo.org> +serlook-0.3.1-r1.ebuild:
+  minor doc path fix
 
   10 May 2005; Alin Nastac <mrness@gentoo.org> metadata.xml:
   Moved from net-misc/serlook to net-dialup/serlook.

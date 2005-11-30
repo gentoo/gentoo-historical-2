@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/phpdbg/phpdbg-2.11.32.ebuild,v 1.1 2005/02/19 15:04:20 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/phpdbg/phpdbg-2.11.32.ebuild,v 1.1.1.1 2005/11/30 09:47:55 chriswhite Exp $
 
 PHP_EXT_NAME="dbg"
 PHP_EXT_ZENDEXT="no"
@@ -15,7 +15,7 @@ SLOT="0"
 DEPEND="virtual/php"
 
 # support for ppc or others?
-KEYWORDS="~x86 ~sparc ~amd64"
+KEYWORDS="~amd64 ~ppc64 ~sparc ~x86"
 
 src_compile() {
 	# phpdbg does not work with Zend Thread Safety (ZTS)
@@ -36,13 +36,12 @@ src_compile() {
 src_install () {
 	php-ext-source_src_install
 	dodoc AUTHORS COPYING INSTALL
-}
-
-pkg_postinst() {
-	php-ext-base_addtoinifiles "extension" "/etc/php4/lib/dbg.so"
 	php-ext-base_addtoinifiles "[Debugger]"
 	php-ext-base_addtoinifiles "debugger.enabled" "on"
 	php-ext-base_addtoinifiles "debugger.profiler_enabled" "on"
+}
+
+pkg_postinst() {
 	einfo "Please reload Apache to activate the changes"
 }
 

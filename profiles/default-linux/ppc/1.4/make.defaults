@@ -1,36 +1,16 @@
-# Copyright 2000 Daniel Robbins, Gentoo Technologies, Inc.
-# System-wide defaults for the Portage system
-
-GRP_STAGE23_USE="ipv6 pam tcpd readline nls ssl gpm perl python berkdb acl ncurses"
+# Copyright 1999-2005 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/ppc/1.4/make.defaults,v 1.1.1.1 2005/11/30 09:48:36 chriswhite Exp $
 
 ARCH="ppc"
-
-# Host-type
-
-CHOST=powerpc-unknown-linux-gnu
-PLATFORM=$CHOST
-
-# Options passed to make during the build process
-MAKEOPTS="-j2"
-
-# Fetching command (5 tries, passive ftp for firewall compatibility)
-FETCHCOMMAND="/usr/bin/wget -t 5 --passive-ftp \${URI} -P \${DISTDIR}"
-# Global configure options
-
-# C Compiler flags
-CFLAGS="-O2 -pipe"
-# C++ Compiler flags
-CXXFLAGS=${CFLAGS}
-
-USE="oss dvd xv slang readline gpm berkdb gdbm tcpd pam libwww ssl jpeg
-nls mitshm perl python esd gif imlib sdl oggvorbis gnome gtk gtk2 X qt kde
-motif opengl mozilla png truetype ppc cups foomaticdb"
-
-# The following USE should _not_ bet set on ppc as they can cause breakage
-# in some pacakges (are mostly x86 only options)
-# 3dfx 3dnow avi icc icc-pgo mmx svga sse
-
 ACCEPT_KEYWORDS="ppc"
 
-COMPILER="gcc3"
+CHOST="powerpc-unknown-linux-gnu"
+CFLAGS="-O2 -fno-strict-aliasing -pipe"
+CXXFLAGS="${CFLAGS}"
 
+FEATURES="sandbox sfperms"
+
+GRP_STAGE23_USE="acl berkdb gpm ipv6 ncurses nls pam perl python readline ssl tcpd unicode"
+
+USE="alsa berkdb bitmap-fonts crypt cups emboss fortran gif gnome gpm gtk gtk2 ipv6 jpeg kde libwww mp3 motif mpeg ncurses nls oggvorbis opengl pam pdflib perl png python qt readline spell ssl tcpd truetype truetype-fonts type1-fonts X  xml2 xv unicode zlib oss dvd slang gdbm mitshm esd imlib sdl mozilla foomaticdb"

@@ -1,6 +1,70 @@
 # ChangeLog for dev-haskell/gtk2hs
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gtk2hs/ChangeLog,v 1.1 2004/05/17 11:55:46 kosmikus Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/gtk2hs/ChangeLog,v 1.1.1.1 2005/11/30 09:48:22 chriswhite Exp $
+
+  12 Nov 2005; <duncan@gentoo.org> gtk2hs-0.9.10.ebuild:
+  Fix failure when USE="glade -gnome" (bug #112227)
+
+  06 Nov 2005; <duncan@gentoo.org> gtk2hs-0.9.10.ebuild:
+  Fix generation of cairo GHCi lib.
+
+*gtk2hs-0.9.10 (02 Nov 2005)
+
+  02 Nov 2005; <duncan@gentoo.org> +gtk2hs-0.9.10.ebuild:
+  Added new version.
+
+*gtk2hs-0.9.9 (31 Aug 2005)
+
+  31 Aug 2005; <duncan@gentoo.org> +gtk2hs-0.9.9.ebuild:
+  Added new version.
+
+  31 Aug 2005; <duncan@gentoo.org> gtk2hs-0.9.7.ebuild, gtk2hs-0.9.8.ebuild:
+  Make gtk2hs-0.9.7 and gtk2hs-0.9.8 use only haddock-0.6 since they will not
+  work with haddock-0.7.
+
+  30 Jun 2005; David Holm <dholm@gentoo.org> gtk2hs-0.9.8.ebuild:
+  Added to ~ppc.
+
+*gtk2hs-0.9.8 (24 Jun 2005)
+
+  24 Jun 2005; <duncan@gentoo.org> gtk2hs-0.9.7.ebuild,
+  +gtk2hs-0.9.8.ebuild:
+  New version.
+
+  20 May 2005; <duncan@gentoo.org> gtk2hs-0.9.7.ebuild:
+  Added ~sparc to KEYWORDS.
+
+  08 May 2005; Duncan Coutts <dcoutts@gentoo.org>
+  +files/gtk2hs-0.9.7-ghc64.patch, gtk2hs-0.9.7.ebuild:
+  Add a patch for ghc-6.4 compatability.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> gtk2hs-0.9.7.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+*gtk2hs-0.9.7 (26 Jan 2005)
+
+  26 Jan 2005; Andres Loeh <kosmikus@gentoo.org> +gtk2hs-0.9.7.ebuild:
+  New version (bug #79352).
+
+  19 Jan 2005; Andres Loeh <kosmikus@gentoo.org> gtk2hs-0.9.6-r1.ebuild:
+  Added a check of the memory requirements (see bug #62790, comment 37)
+
+  11 Nov 2004; Michael Sterrett <mr_bones_@gentoo.org> gtk2hs-0.9.6-r1.ebuild,
+  gtk2hs-0.9.6.ebuild:
+  dep fix; fix use invocation
+
+  06 Nov 2004; Andres Loeh <kosmikus@gentoo.org> gtk2hs-0.9.6-r1.ebuild:
+  Allow Haskell optimizations during build.
+
+*gtk2hs-0.9.6-r1 (04 Nov 2004)
+
+  04 Nov 2004; Andres Loeh <kosmikus@gentoo.org> +gtk2hs-0.9.6-r1.ebuild:
+  Make use of new ghc-package eclass.
+
+*gtk2hs-0.9.6 (26 Oct 2004)
+
+  26 Oct 2004; Andres Loeh <kosmikus@gentoo.org> gtk2hs-0.9.6.ebuild:
+  Version bump.
 
 *gtk2hs-0.9.5 (17 May 2004)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/emboss-kaptain/emboss-kaptain-0.97-r1.ebuild,v 1.1 2005/05/10 04:21:56 ribosome Exp $
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/emboss-kaptain/emboss-kaptain-0.97-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:43 chriswhite Exp $
 
 DESCRIPTION="Graphical interfaces for EMBOSS and EMBASSY programs"
 HOMEPAGE="http://userpage.fu-berlin.de/~sgmd/"

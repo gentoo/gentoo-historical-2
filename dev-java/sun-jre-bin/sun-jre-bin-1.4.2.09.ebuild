@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jre-bin/sun-jre-bin-1.4.2.09.ebuild,v 1.1 2005/09/10 10:27:56 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sun-jre-bin/sun-jre-bin-1.4.2.09.ebuild,v 1.1.1.1 2005/11/30 09:47:24 chriswhite Exp $
 
 inherit java eutils
 
@@ -13,9 +13,9 @@ HOMEPAGE="http://java.sun.com/j2se/1.4.2/"
 SRC_URI=${At}
 SLOT="1.4"
 LICENSE="sun-bcla-java-vm-1.4.2"
-KEYWORDS="-* ~x86"
+KEYWORDS="-* x86"
 RESTRICT="fetch"
-IUSE="browserplugin mozilla"
+IUSE="browserplugin nsplugin mozilla"
 
 DEPEND=">=dev-java/java-config-1.1.5
 	sys-apps/sed"
@@ -85,7 +85,9 @@ src_install() {
 	dodoc CHANGES COPYRIGHT README LICENSE THIRDPARTYLICENSEREADME.txt
 	dohtml Welcome.html ControlPanel.html
 
-	if use browserplugin || use mozilla; then
+	if use nsplugin ||       # global useflag for netscape-compat plugins
+	   use browserplugin ||  # deprecated but honor for now
+	   use mozilla; then     # wrong but used to honor it
 		local plugin_dir="ns610"
 		if has_version '>=sys-devel/gcc-3.2' ; then
 			plugin_dir="ns610-gcc32"
@@ -119,7 +121,14 @@ pkg_postinst () {
 
 	java_pkg_postinst
 
-	#Show info about netscape
+	if ! use nsplugin && ( use browserplugin || use mozilla ); then
+		echo
+		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
+		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
+		ewarn "update your USE to include 'nsplugin'."
+	fi
+
+	# Show info about netscape
 	if has_version '>=www-client/netscape-navigator-4.79-r1' || has_version '>=www-client/netscape-communicator-4.79-r1' ; then
 		echo
 		einfo "If you want to install the plugin for Netscape 4.x, type"
@@ -148,16 +157,10 @@ pkg_postinst () {
 		ewarn "make sure the grsec ACL contains those entries also"
 		ewarn "because enabling it will override the chpax setting"
 		ewarn "on the physical files - help for PaX and grsecurity"
-		ewarn "can be given by #gentoo-hardened + pappy@gentoo.org"
+		ewarn "can be given by #gentoo-hardened + hardened@gentoo.org"
 	fi
 
 	echo
 	eerror "Some parts of Sun's JDK require virtual/x11 to be installed."
 	eerror "Be careful which Java libraries you attempt to use."
-
-	if ! use browserplugin && use mozilla; then
-		ewarn
-		ewarn "The 'mozilla' useflag to enable the java browser plugin for applets"
-		ewarn "has been renamed to 'browserplugin' please update your USE"
-	fi
 }

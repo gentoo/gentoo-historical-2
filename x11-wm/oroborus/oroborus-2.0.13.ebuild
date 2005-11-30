@@ -1,22 +1,19 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/oroborus/oroborus-2.0.13.ebuild,v 1.1 2003/07/09 18:19:44 mholzer Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/oroborus/oroborus-2.0.13.ebuild,v 1.1.1.1 2005/11/30 09:45:07 chriswhite Exp $
 
 DESCRIPTION="Small and fast window manager."
-HOMEPAGE="http://www.oroborus.org/oroborus.shtml"
+HOMEPAGE="http://www.oroborus.org/"
 SRC_URI="http://www.oroborus.org/debian/dists/sid/main/source/x11/${P/-/_}-1.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ppc amd64 sparc"
 IUSE="gnome"
 
-RDEPEND="virtual/x11"
-DEPEND="${RDEPEND}"
-
-S="${WORKDIR}/${P}"
+DEPEND="virtual/x11"
 
 src_compile() {
-    aclocal
+	aclocal
 	autoheader
 	automake --add-missing
 	autoconf
@@ -36,7 +33,7 @@ src_install () {
 	     mandir=${D}/usr/share/man \
 	     install || die
 
-	if [ "`use gnome`" ] ; then
+	if use gnome ; then
 		insinto /usr/share/gnome/wm-properties
 		doins ${FILESDIR}/oroborus.desktop
 	fi

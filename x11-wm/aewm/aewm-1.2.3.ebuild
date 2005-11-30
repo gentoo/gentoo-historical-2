@@ -1,6 +1,8 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/aewm/aewm-1.2.3.ebuild,v 1.1 2003/11/21 02:53:15 mkennedy Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/aewm/aewm-1.2.3.ebuild,v 1.1.1.1 2005/11/30 09:45:10 chriswhite Exp $
+
+inherit eutils
 
 IUSE="gtk2"
 
@@ -9,11 +11,10 @@ HOMEPAGE="http://www.red-bean.com/%7Edecklin/aewm/"
 SRC_URI="http://www.red-bean.com/%7Edecklin/aewm/${P}.tar.gz"
 LICENSE="aewm"
 SLOT="0"
-KEYWORDS="x86"
+KEYWORDS="ppc x86"
 DEPEND="virtual/x11
-	gtk2? ( >=x11-libs/gtk+-2.0.0 ) : ( =x11-libs/gtk+-1.2* )"
-
-S="${WORKDIR}/${P}"
+	gtk2? ( >=x11-libs/gtk+-2.0.0 ) !gtk2? ( =x11-libs/gtk+-1.2* )
+	>=sys-apps/sed-4"
 
 src_unpack() {
 	unpack ${A}

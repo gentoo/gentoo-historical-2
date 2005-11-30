@@ -1,6 +1,19 @@
 # ChangeLog for net-wireless/opd
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/opd/ChangeLog,v 1.1 2004/12/15 16:53:33 ticho Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/opd/ChangeLog,v 1.1.1.1 2005/11/30 09:45:39 chriswhite Exp $
+
+  16 May 2005; Andrej Kacian <ticho@gentoo.org> files/opd.rc:
+  Change initscript dependency to "use bluetooth irda".
+
+*opd-0.2-r1 (16 May 2005)
+
+  16 May 2005; Andrej Kacian <ticho@gentoo.org> +files/opd.conf,
+  +files/opd.rc, +opd-0.2-r1.ebuild:
+  Do not link against libsdp, bug #83110 by Michael Mauch <michael.mauch at
+  gmx de>. Wrote an initscript and a conf.d file.
+
+  16 Dec 2004; Andrej Kacian <ticho@gentoo.org> metadata.xml:
+  Assign to mobile herd.
 
 *opd-0.2 (15 Dec 2004)
 

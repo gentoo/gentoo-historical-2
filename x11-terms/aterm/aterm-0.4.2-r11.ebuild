@@ -1,17 +1,18 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-0.4.2-r11.ebuild,v 1.1 2004/08/23 12:19:38 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-0.4.2-r11.ebuild,v 1.1.1.1 2005/11/30 09:46:30 chriswhite Exp $
 
-inherit eutils
+inherit eutils flag-o-matic
 
-IUSE="cjk"
 DESCRIPTION="A terminal emulator with transparency support as well as rxvt backwards compatibility"
-SRC_URI="mirror://sourceforge/aterm/${P}.tar.bz2
-	cjk? (http://dev.gentoo.org/~spock/portage/distfiles/aterm-0.4.2-ja.patch)"
 HOMEPAGE="http://aterm.sourceforge.net"
+SRC_URI="mirror://sourceforge/aterm/${P}.tar.bz2
+	cjk? ( http://dev.gentoo.org/~spock/portage/distfiles/aterm-0.4.2-ja.patch )"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha ~amd64 ~mips"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc ~ppc-macos ppc64 sparc x86"
+IUSE="cjk"
 
 DEPEND="media-libs/jpeg
 	media-libs/libpng
@@ -51,6 +52,11 @@ src_unpack() {
 src_compile() {
 	local myconf
 
+	# macos doesn't support -z flag
+	if ! use ppc-macos ; then
+		append-ldflags -Wl,-z,now
+	fi
+
 	# You can't --enable-big5 with aterm-0.4.2-ja.patch
 	# I think it's very bad thing but as nobody complains it
 	# and we don't have per-language flag atm, I stick to
@@ -62,6 +68,8 @@ src_compile() {
 		--enable-linespace"
 
 	econf \
+		--enable-xgetdefault \
+		--with-terminfo=/usr/share/terminfo \
 		--enable-transparency \
 		--enable-fading \
 		--enable-background-image \
@@ -71,6 +79,7 @@ src_compile() {
 		--with-x \
 		${myconf} || die
 
+	sed -i -re 's#^XLIB = (.*)#XLIB = \1 -lXmu#' src/Makefile
 	emake || die
 }
 
@@ -88,12 +97,12 @@ src_install () {
 }
 
 pkg_postinst () {
-	echo ""
+	echo
 	einfo "Hint: you can copy text from aterm to the clipboard by holding the ALT key"
 	einfo "while highlighting the text."
-	echo ""
+	echo
 	ewarn "The transparent background will only work if you have the 'real' root wallpaper"
 	ewarn "set. Use Esetroot (x11-terms/eterm) or fbsetbg (x11-wm/fluxbox) if you are"
 	ewarn "experiencing problems with transparency in aterm."
-	echo ""
+	echo
 }

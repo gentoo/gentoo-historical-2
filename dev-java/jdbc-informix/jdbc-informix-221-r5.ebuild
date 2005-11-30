@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-informix/jdbc-informix-221-r5.ebuild,v 1.1 2004/10/20 09:24:55 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-informix/jdbc-informix-221-r5.ebuild,v 1.1.1.1 2005/11/30 09:47:09 chriswhite Exp $
 
 inherit java-pkg
 
@@ -9,25 +9,22 @@ S=${WORKDIR}
 DESCRIPTION="JDBC Type 4 Drivers for Informix"
 SRC_URI="ftp://ftp.software.ibm.com/software/data/informix/downloads/${At}"
 HOMEPAGE="http://www-306.ibm.com/software/data/informix/tools/jdbc/"
-KEYWORDS="~x86 ~ppc ~sparc ~amd64"
+KEYWORDS="amd64 ppc x86"
 LICENSE="informix-jdbc"
 SLOT="0"
 DEPEND=""
-RDEPEND=">=virtual/jdk-1.2"
+RDEPEND=">=virtual/jre-1.2"
 RESTRICT="nomirror"
 IUSE="doc"
 
-# Necessary because of InstallShield (thanks to carpaski)
-addpredict /root/vpd.properties
-
 src_unpack() {
-	einfo "Unpacking archive ..."
-	tar xf ${DISTDIR}/${At}
+	tar xf ${DISTDIR}/${At} || die "failed to unpack"
 }
 
 src_compile() {
-	einfo "Running InstallShield to extract ..."
-	`/usr/bin/java-config --java` -jar setup.jar -P  product.installLocation=. -silent
+	addpredict /root/vpd.properties
+	addpredict /var/lib/rpm/
+	java -jar setup.jar -P  product.installLocation=. -silent
 }
 
 src_install() {

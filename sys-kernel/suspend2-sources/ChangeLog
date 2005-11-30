@@ -1,6 +1,157 @@
 # ChangeLog for sys-kernel/suspend2-sources
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/suspend2-sources/ChangeLog,v 1.1 2005/07/06 11:04:03 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/suspend2-sources/ChangeLog,v 1.1.1.1 2005/11/30 09:49:30 chriswhite Exp $
+
+  27 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-sources-2.6.13.ebuild, suspend2-sources-2.6.13-r1.ebuild,
+  suspend2-sources-2.6.13-r2.ebuild, suspend2-sources-2.6.13-r3.ebuild,
+  suspend2-sources-2.6.13-r4.ebuild, suspend2-sources-2.6.13-r5.ebuild,
+  suspend2-sources-2.6.14.ebuild, suspend2-sources-2.6.14-r4.ebuild,
+  suspend2-sources-2.6.14-r5.ebuild:
+  Updated mailing list information.
+
+*suspend2-sources-2.6.14-r5 (26 Nov 2005)
+
+  26 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/suspend2-2.2-rc13-filewriter.patch,
+  +suspend2-sources-2.6.14-r5.ebuild:
+  Include filewriter patch from upstream.
+
+*suspend2-sources-2.6.14-r4 (25 Nov 2005)
+
+  25 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -files/suspend2-2.2-rc11-ro-mount-fixes.patch,
+  -files/suspend2-2.2-rc12-freeze-sbs.patch,
+  -suspend2-sources-2.6.14-r1.ebuild, -suspend2-sources-2.6.14-r2.ebuild,
+  -suspend2-sources-2.6.14-r3.ebuild, +suspend2-sources-2.6.14-r4.ebuild:
+  Revision bump to use Software Suspend 2.2-rc13 and genpatches-2.6.14-4.
+  Removed broken versions.
+
+*suspend2-sources-2.6.14-r3 (23 Nov 2005)
+
+  23 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/suspend2-2.2-rc12-freeze-sbs.patch,
+  +suspend2-sources-2.6.14-r3.ebuild:
+  Revision bump to Software Suspend 2.2-rc12.
+
+*suspend2-sources-2.6.14-r2 (18 Nov 2005)
+
+  18 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/suspend2-2.2-rc11-ro-mount-fixes.patch,
+  +suspend2-sources-2.6.14-r2.ebuild:
+  Added patch from upstream for fixing ro mount issues.
+
+  17 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -files/linux-2.6.12-try_to_freeze.patch,
+  -files/4306_dm-bbr-create_workqueue.patch,
+  -files/linux-2.6.12-skge-pm_message_t.patch,
+  -files/linux-2.6.12-vesafb-tng-suspend2.patch,
+  -suspend2-sources-2.6.12-r6.ebuild, -suspend2-sources-2.6.12-r7.ebuild:
+  Pruned 2.6.12 versions.
+
+*suspend2-sources-2.6.14-r1 (15 Nov 2005)
+
+  15 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.14-r1.ebuild:
+  Revision bump to include Software Suspend 2.2-rc11 and genpatches-2.6.14-3.
+
+*suspend2-sources-2.6.14 (05 Nov 2005)
+
+  05 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.14.ebuild:
+  Version bump to Software Suspend 2.2-rc9 + genpatches-2.6.14-1.
+
+  31 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-sources-2.6.13-r4.ebuild:
+  Stable on x86.
+
+*suspend2-sources-2.6.13-r5 (17 Oct 2005)
+
+  17 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.13-r5.ebuild:
+  Revision bump to Software Suspend 2.2-rc7 and genpatches-2.6.13-6.
+
+*suspend2-sources-2.6.13-r4 (12 Sep 2005)
+
+  12 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.13-r4.ebuild:
+  Revision bump to use genpatches-2.6.13-2.
+
+*suspend2-sources-2.6.13-r3 (09 Sep 2005)
+
+  09 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.13-r3.ebuild:
+  Revision bump to Software Suspend 2.2-rc6.
+
+*suspend2-sources-2.6.12-r7 (06 Sep 2005)
+
+  06 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.12-r7.ebuild:
+  Revision bump to use genpatches-2.6.12-14.
+
+*suspend2-sources-2.6.13-r2 (02 Sep 2005)
+
+  02 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.13-r2.ebuild:
+  Revision bump to Software Suspend 2.2-rc5.
+
+*suspend2-sources-2.6.13-r1 (30 Aug 2005)
+
+  30 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/linux-2.6.13-poweroff.patch, +suspend2-sources-2.6.13-r1.ebuild:
+  Revision bump to use Software Suspend 2.2-rc4 + fix for PowerdownMethod 5.
+
+*suspend2-sources-2.6.13 (29 Aug 2005)
+
+  29 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/101-software-suspend-2.2-rc3-for-2.6.13-gcc4.patch,
+  +suspend2-sources-2.6.13.ebuild:
+  Version bump.
+
+  29 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  suspend2-sources-2.6.12-r6.ebuild:
+  Stable on x86.
+
+  26 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  -suspend2-sources-2.6.12.ebuild, -suspend2-sources-2.6.12-r1.ebuild,
+  -suspend2-sources-2.6.12-r2.ebuild, -suspend2-sources-2.6.12-r3.ebuild,
+  -suspend2-sources-2.6.12-r4.ebuild, -suspend2-sources-2.6.12-r5.ebuild:
+  Pruned old versions.
+
+*suspend2-sources-2.6.12-r6 (21 Aug 2005)
+
+  21 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/linux-2.6.12-skge-pm_message_t.patch,
+  +suspend2-sources-2.6.12-r6.ebuild:
+  Fix compilation of skge, bug #103127.
+
+*suspend2-sources-2.6.12-r5 (17 Aug 2005)
+
+  17 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.12-r5.ebuild:
+  Revision bump to use genpatches-2.6.12-13, bug #102582.
+
+*suspend2-sources-2.6.12-r4 (30 Jul 2005)
+
+  30 Jul 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +suspend2-sources-2.6.12-r4.ebuild:
+  Revision bump to genpatches-2.6.12-11.
+
+*suspend2-sources-2.6.12-r3 (18 Jul 2005)
+
+  18 Jul 2005; <brix@gentoo.org> +suspend2-sources-2.6.12-r3.ebuild:
+  Revision bump to genpatches-2.6.12-10.
+
+*suspend2-sources-2.6.12-r2 (13 Jul 2005)
+
+  13 Jul 2005; <brix@gentoo.org> +suspend2-sources-2.6.12-r2.ebuild:
+  Version bump to genpatches-2.6.12-8.
+
+*suspend2-sources-2.6.12-r1 (08 Jul 2005)
+
+  08 Jul 2005; <brix@gentoo.org> +files/linux-2.6.12-try_to_freeze.patch,
+  +suspend2-sources-2.6.12-r1.ebuild:
+  Version bump to Software Suspend 2.1.9.9.
 
 *suspend2-sources-2.6.12 (06 Jul 2005)
 

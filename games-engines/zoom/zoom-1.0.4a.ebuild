@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/zoom/zoom-1.0.4a.ebuild,v 1.1 2005/10/31 08:22:50 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-engines/zoom/zoom-1.0.4a.ebuild,v 1.1.1.1 2005/11/30 09:46:26 chriswhite Exp $
 
 inherit flag-o-matic games
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/gnome-cups-manager/gnome-cups-manager-0.30.ebuild,v 1.1 2005/03/09 22:55:21 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/gnome-cups-manager/gnome-cups-manager-0.30.ebuild,v 1.1.1.1 2005/11/30 09:48:18 chriswhite Exp $
 
 inherit gnome2 eutils
 
@@ -9,7 +9,7 @@ HOMEPAGE="http://www.gnome.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~alpha ~sparc ~hppa ~ia64 ~amd64 ~arm ~mips"
+KEYWORDS="alpha amd64 arm hppa ia64 mips ppc sparc x86"
 IUSE=""
 
 RDEPEND=">=dev-libs/glib-2
@@ -23,3 +23,9 @@ RDEPEND=">=dev-libs/glib-2
 
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.29"
+
+src_install() {
+	gnome2_src_install
+	insinto /usr/share/applications
+	doins ${FILESDIR}/${PN}.desktop
+}

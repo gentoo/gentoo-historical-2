@@ -1,10 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-XML_RSS/PEAR-XML_RSS-0.9.2.ebuild,v 1.1 2003/12/25 13:57:28 coredumb Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-XML_RSS/PEAR-XML_RSS-0.9.2.ebuild,v 1.1.1.1 2005/11/30 09:48:05 chriswhite Exp $
 
 inherit php-pear
 
 DESCRIPTION="Parser for Resource Description Framework (RDF) Site Summary (RSS) documents."
-LICENSE="BSD"
+LICENSE="PHP"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc ~alpha"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ~ppc64 ~s390 sparc x86"
+IUSE=""

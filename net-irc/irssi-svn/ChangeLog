@@ -1,6 +1,41 @@
 # ChangeLog for net-irc/irssi-svn
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi-svn/ChangeLog,v 1.1 2005/05/14 23:09:36 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi-svn/ChangeLog,v 1.1.1.1 2005/11/30 09:49:01 chriswhite Exp $
+
+  30 Jul 2005; Aaron Walker <ka0ttic@gentoo.org> irssi-svn-0.3.ebuild:
+  Added ~mips.
+
+  28 Jun 2005; Sven Wegener <swegener@gentoo.org> irssi-svn-0.3.ebuild:
+  Added NOCONFIGURE=1 to avoid running configure during bootstrap.
+
+  26 Jun 2005; Jason Wever <weeve@gentoo.org> irssi-svn-0.3.ebuild:
+  Added ~sparc keyword wrt bug #96775.
+
+  25 Jun 2005; Rene Nussbaumer <killerfox@gentoo.org> irssi-svn-0.3.ebuild:
+  Added to ~hppa.
+
+  23 Jun 2005; Olivier Crête <tester@gentoo.org> irssi-svn-0.3.ebuild:
+  Marked ~amd64
+
+  22 Jun 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  irssi-svn-0.3.ebuild:
+  Added to ~ppc
+
+  22 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org> irssi-svn-0.3.ebuild:
+  marked ~alpha, wrt bug #96775
+
+  13 Jun 2005; Sven Wegener <swegener@gentoo.org> irssi-svn-0.3.ebuild:
+  Irssi uses extern inlines and that needs at least -O in CFLAGS.
+
+  19 May 2005; Sven Wegener <swegener@gentoo.org> irssi-svn-0.3.ebuild:
+  Added a call to fixlocalpod to fix the collision-protect bug #68367.
+
+  17 May 2005; Sven Wegener <swegener@gentoo.org> irssi-svn-0.3.ebuild:
+  Removed unneeded --with-glib2 and added missing openssl dependency. Thanks
+  to Emanuele Giaquinta.
+
+  15 May 2005; Sven Wegener <swegener@gentoo.org> irssi-svn-0.3.ebuild:
+  Removed obsolete gettext dependency.
 
 *irssi-svn-0.3 (14 May 2005)
 

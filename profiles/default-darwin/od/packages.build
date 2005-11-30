@@ -1,6 +1,6 @@
 # Copyright 2004 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License v2
-# $Header: 
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-darwin/od/packages.build,v 1.1.1.1 2005/11/30 09:48:41 chriswhite Exp $
 
 # This file describes the packages needed to build an OpenDarwin stage 1
 
@@ -33,7 +33,22 @@ sys-devel/cctools-extras
 sys-devel/flex
 sys-devel/gcc
 sys-devel/gettext
+sys-devel/jam
 sys-devel/make
 sys-devel/patch
-sys-libs/glibc
+sys-devel/pb_makefiles
+sys-devel/pbx_jamfiles
+sys-devel/project_makefiles
+sys-kernel/xnu-headers
+sys-libs/csu
+sys-libs/keymgr
+sys-libs/libc
+sys-libs/libinfo
+sys-libs/libinfo-headers
+sys-libs/libkvm
+sys-libs/libm
 sys-libs/libstreams
+sys-libs/libsystem
+sys-libs/libwrappers
+sys-libs/libnotify
+sys-libs/usernotification

@@ -1,6 +1,21 @@
 # ChangeLog for app-crypt/ccrypt
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-crypt/ccrypt/ChangeLog,v 1.1 2004/09/07 11:40:59 dragonheart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-crypt/ccrypt/ChangeLog,v 1.1.1.1 2005/11/30 09:44:55 chriswhite Exp $
+
+  17 Oct 2005; Joseph Jezak <josejx@gentoo.org> ccrypt-1.7.ebuild:
+  Marked ppc stable for bug #108173.
+
+  29 Sep 2005; Marcelo Goes <vanquirius@gentoo.org> ccrypt-1.7.ebuild:
+  Remove redundant src_compile, do not install COPYING/INSTALL.
+
+  01 Sep 2005; <dang@gentoo.org> ccrypt-1.7.ebuild:
+  Marked ~amd64
+
+  21 Dec 2004; Nick Dimiduk <ndimiduk@gentoo.org> ccrypt-1.7.ebuild:
+  added ~ppc-macos keyword as per bug #71007
+
+  15 Oct 2004; David Holm <dholm@gentoo.org> ccrypt-1.7.ebuild:
+  Added to ~ppc.
 
 *ccrypt-1.7 (07 Sep 2004)
 

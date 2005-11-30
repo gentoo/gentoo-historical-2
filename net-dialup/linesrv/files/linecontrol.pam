@@ -1,4 +1,4 @@
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/linesrv/files/linecontrol.pam,v 1.1 2004/12/05 15:56:10 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/linesrv/files/linecontrol.pam,v 1.1.1.1 2005/11/30 09:46:06 chriswhite Exp $
 # linesrv login requires auth and a valid account
 # uncomment the following line only if you have a list of allowed users in a certain file.
 #auth       required   pam_listfile.so item=user sense=allow file=/etc/linesrv.users onerr=fail

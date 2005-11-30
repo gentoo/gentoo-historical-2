@@ -1,24 +1,29 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/xmldb/xmldb-20011111.ebuild,v 1.1 2005/06/29 18:28:30 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/xmldb/xmldb-20011111.ebuild,v 1.1.1.1 2005/11/30 09:47:12 chriswhite Exp $
 
 inherit java-pkg eutils
 
 MY_PN="${PN}-api"
 MY_PV="11112001"
 MY_P="${MY_PN}-${MY_PV}"
-DESCRIPTION="XML:DB provides a community for collaborative development of specifications for XML databases and data manipulation technologies."
+DESCRIPTION="Java implementation for specifications made by XML:DB."
 HOMEPAGE="http://sourceforge.net/projects/xmldb-org/"
 SRC_URI="mirror://sourceforge/xmldb-org/${MY_P}.tar.gz"
 
 LICENSE="Apache-1.1"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~ppc x86"
 IUSE="doc jikes source"
 
+#When someone has the time, please make compiling the junit tests optional
 DEPEND=">=virtual/jdk-1.4
 	jikes? ( dev-java/jikes )
-	dev-java/ant-core"
+	source? ( app-arch/zip )
+	=dev-java/xerces-2.6*
+	=dev-java/xalan-2.6*
+	dev-java/ant-core
+	=dev-java/junit-3.8*"
 RDEPEND=">=virtual/jre-1.4"
 
 S="${WORKDIR}/${PN}"
@@ -26,6 +31,7 @@ S="${WORKDIR}/${PN}"
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+	rm *.jar
 
 	epatch ${FILESDIR}/${P}-unreachable.patch
 
@@ -34,7 +40,7 @@ src_unpack() {
 }
 
 src_compile() {
-	local antflags="jar"
+	local antflags="jar -Dclasspath=$(java-pkg_getjars xerces-2,xalan)"
 	use jikes && antflags="-Dbuild.compiler=jikes ${antflags}"
 	use doc && antflags="${antflags} javadoc"
 

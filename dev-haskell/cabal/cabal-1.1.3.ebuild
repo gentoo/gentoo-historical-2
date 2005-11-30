@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal/cabal-1.1.3.ebuild,v 1.1 2005/09/13 13:06:02 kosmikus Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/cabal/cabal-1.1.3.ebuild,v 1.1.1.1 2005/11/30 09:48:22 chriswhite Exp $
 
 CABAL_FEATURES="bootstrap"
 inherit haskell-cabal eutils base
@@ -11,7 +11,7 @@ SRC_URI="http://haskell.org/cabal/release/rc/${P}.tar.gz"
 LICENSE="as-is"
 SLOT="0"
 
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 
 IUSE="doc"
 
@@ -37,7 +37,11 @@ src_unpack() {
 }
 
 src_compile() {
-	make setup HC="$(ghc-getghc) -ignore-package Cabal"
+	if ghc-cabal; then
+		make setup HC="$(ghc-getghc) -ignore-package Cabal"
+	else
+		make setup HC="$(ghc-getghc)"
+	fi
 	cabal-configure
 	cabal-build
 }

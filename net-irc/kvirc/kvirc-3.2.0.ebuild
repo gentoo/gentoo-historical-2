@@ -1,25 +1,26 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-3.2.0.ebuild,v 1.1 2005/03/04 20:42:41 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/kvirc/kvirc-3.2.0.ebuild,v 1.1.1.1 2005/11/30 09:48:57 chriswhite Exp $
 
 inherit eutils kde-functions
 
 DESCRIPTION="An advanced IRC Client"
 HOMEPAGE="http://www.kvirc.net/"
-SRC_URI="ftp://ftp.kvirc.net/pub/kvirc/${PV}/source/${P}.tar.bz2 \
-	ftp://ftp.kvirc.de/pub/kvirc/${PV}/source/${P}.tar.bz2 \
-	ftp://kvirc.firenze.linux.it/pub/kvirc/${PV}/source/${P}.tar.bz2"
+SRC_URI="ftp://ftp.kvirc.net/pub/kvirc/${PV}/source/${P}.tar.bz2
+	ftp://ftp.kvirc.de/pub/kvirc/${PV}/source/${P}.tar.bz2
+	ftp://kvirc.firenze.linux.it/pub/kvirc/${PV}/source/${P}.tar.bz2
+	mirror://gentoo/${P}-linking-fix.patch.bz2"
 
 LICENSE="kvirc"
 SLOT="3"
-KEYWORDS="~x86 ~amd64 ~ppc ~sparc"
+KEYWORDS="x86 amd64 ppc ~sparc"
 IUSE="debug esd ipv6 kde oss ssl"
 
 RDEPEND="esd? ( media-sound/esound )
 	ssl? ( dev-libs/openssl )
 	oss? ( media-libs/audiofile )
 	kde? ( >=kde-base/kdelibs-3 )
-	>=x11-libs/qt-3"
+	=x11-libs/qt-3*"
 
 DEPEND="${RDEPEND}
 	sys-apps/gawk
@@ -33,6 +34,7 @@ src_unpack() {
 	cd ${S}
 
 	epatch ${FILESDIR}/kvirc-3.0.1-kdedir-fix.patch
+	epatch ${WORKDIR}/${P}-linking-fix.patch
 }
 
 src_compile() {

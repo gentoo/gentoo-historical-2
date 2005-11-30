@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/java-getopt/java-getopt-1.0.10.ebuild,v 1.1 2004/10/20 08:40:43 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/java-getopt/java-getopt-1.0.10.ebuild,v 1.1.1.1 2005/11/30 09:47:19 chriswhite Exp $
 
 inherit java-pkg
 
@@ -10,8 +10,9 @@ SRC_URI="ftp://ftp.urbanophile.com/pub/arenn/software/sources/java-getopt-${PV}.
 LICENSE="LGPL-2.1"
 SLOT="1"
 DEPEND=">=virtual/jdk-1.2
-	>=dev-java/ant-1.4.1"
-KEYWORDS="~x86 ~ppc ~amd64"
+	dev-java/ant-core"
+RDEPEND=">=virtual/jre-1.2"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 S=${WORKDIR}
@@ -21,7 +22,7 @@ src_compile() {
 	ant all || die "failed to build"
 }
 
-src_install () {
+src_install() {
 	java-pkg_dojar build/lib/gnu.getopt.jar
 	java-pkg_dohtml -r build/api/*
 	dodoc gnu/getopt/COPYING.LIB gnu/getopt/ChangeLog gnu/getopt/README

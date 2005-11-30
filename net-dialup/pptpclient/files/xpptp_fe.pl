@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-#   $Id: xpptp_fe.pl,v 1.1 2003/02/26 23:31:46 agriffis Exp $
+#   $Id: xpptp_fe.pl,v 1.1.1.1 2005/11/30 09:46:00 chriswhite Exp $
 #
 #   xpptp_fe.pl.pl, graphical user interface for PPTP configuration
 #   Copyright (C) 2001  Smoot Carl-Mitchell (smoot@tic.com)

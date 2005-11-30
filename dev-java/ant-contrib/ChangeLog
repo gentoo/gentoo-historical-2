@@ -1,6 +1,33 @@
 # ChangeLog for dev-java/ant-contrib
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-contrib/ChangeLog,v 1.1 2004/07/31 20:21:43 axxo Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-contrib/ChangeLog,v 1.1.1.1 2005/11/30 09:47:43 chriswhite Exp $
+
+*ant-contrib-1.0_beta2 (18 May 2005)
+
+  18 May 2005; Thomas Matthijs <axxo@gentoo.org>
+  +ant-contrib-1.0_beta2.ebuild:
+  version bump
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> :
+  stable on amd64
+
+  19 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  ant-contrib-1.0_beta1-r1.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  ant-contrib-1.0_beta1-r1.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+*ant-contrib-1.0_beta1-r1 (10 Sep 2004)
+
+  10 Sep 2004; Thomas Matthijs <axxo@gentoo.org>
+  +ant-contrib-1.0_beta1-r1.ebuild, -ant-contrib-1.0_beta1.ebuild:
+  revision bump: ant moved to ant-core
+
+  30 Aug 2004; Chris Aniszczyk <zx@gentoo.org> ant-contrib-1.0_beta1.ebuild:
+  Marking x86
 
 *ant-contrib-1.0_beta1 (31 Jul 2004)
 

@@ -1,6 +1,50 @@
 # ChangeLog for dev-java/castor
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/castor/ChangeLog,v 1.1 2004/12/18 20:03:54 karltk Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/castor/ChangeLog,v 1.1.1.1 2005/11/30 09:47:14 chriswhite Exp $
+
+*castor-0.9.7 (18 Sep 2005)
+
+  18 Sep 2005; Petteri Räty <betelgeuse@gentoo.org> +castor-0.9.7.ebuild:
+  Version bump. Fixes bug #105577. Thanks to <wiktorw@people.pl> and Josh
+  Nichols <nichoj@alum.rpi.edu>.
+
+  11 Sep 2005; Petteri Räty <betelgeuse@gentoo.org>
+  castor-0.9.5.3-r1.ebuild:
+  Fixed SRC_URI and HOMEPAGE because castor seems to have moved to a new
+  location.
+
+  12 Jul 2005; Thomas Matthijs <axxo@gentoo.org> castor-0.9.5.3-r1.ebuild:
+  Dep/Style fixes
+
+*castor-0.9.5.3-r1 (19 May 2005)
+
+  19 May 2005; Jan Brinkmann <luckyduck@gentoo.org> -castor-0.9.5.3.ebuild,
+  +castor-0.9.5.3-r1.ebuild:
+  dont install versioned jars any longer
+
+  12 May 2005; Jan Brinkmann <luckyduck@gentoo.org> castor-0.9.5.3.ebuild:
+  introduced support for the postgres useflag, fixes #92271
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> castor-0.9.5.3.ebuild:
+  Stable on sparc
+
+  05 May 2005; Jan Brinkmann <luckyduck@gentoo.org> castor-0.9.5.3.ebuild:
+  stable on amd64 and x86
+
+  29 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> castor-0.9.5.3.ebuild:
+  moved from dev-java/oro to dev-java/jakarta-oro dependency. see #71337.
+
+  27 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  +files/0.9.5.3-jikes.patch, castor-0.9.5.3.ebuild:
+  moved from dev-java/regexp to dev-java/jakarta-regexp dependency. see #71336.
+  added patch to make compilation with jikes possible, introduced support for
+  the jikes and source useflag.
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> castor-0.9.5.3.ebuild:
+  Keyworded ~sparc wrt #84992
+
+  22 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> castor-0.9.5.3.ebuild:
+  added ~amd64 to KEYWORDS.
 
 *castor-0.9.5.3 (18 Dec 2004)
 

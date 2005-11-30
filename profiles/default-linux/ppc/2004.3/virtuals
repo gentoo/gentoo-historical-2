@@ -1,1 +1,9 @@
-virtual/dev-manager	sys-fs/udev
+# Copyright 2004 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License, v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/ppc/2004.3/virtuals,v 1.1.1.1 2005/11/30 09:48:37 chriswhite Exp $
+
+virtual/bootloader		sys-boot/yaboot
+virtual/jdk				dev-java/ibm-jdk-bin
+virtual/jre				dev-java/ibm-jre-bin
+virtual/ghc				dev-lang/ghc
+virtual/ooo				app-office/openoffice

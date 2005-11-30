@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/mini_httpd/mini_httpd-1.17_beta1.ebuild,v 1.1 2004/08/08 17:37:46 stuart Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/mini_httpd/mini_httpd-1.17_beta1.ebuild,v 1.1.1.1 2005/11/30 09:46:47 chriswhite Exp $
 
 MY_P=${P/_beta/beta}
 DESCRIPTION="Small forking webserver with optional ssl and ipv6 support"

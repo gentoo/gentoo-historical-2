@@ -1,9 +1,30 @@
 # ChangeLog for net-dialup/diald
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/diald/ChangeLog,v 1.1 2002/04/02 18:33:14 woodchip Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/diald/ChangeLog,v 1.1.1.1 2005/11/30 09:46:16 chriswhite Exp $
+
+  19 Sep 2005; Alin Nastac <mrness@gentoo.org>
+  files/diald-1.0-c-files.patch, files/diald-1.0-gentoo.patch,
+  diald-1.0-r1.ebuild:
+  Apply patches using epatch.
+
+  29 Aug 2005; Alin Nastac <mrness@gentoo.org> diald-1.0-r1.ebuild:
+  Fix cp -a usage for Gentoo BSD (#103487).
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata
+
+*diald-1.0-r1 (22 May 2003)
+  
+  22 May 2003; Chuck Brewer <killian@gentoo.org>:
+  Added Manifest 
+
+*diald-1.0-r1 (3 May 2002)
+  
+  3 May 2002; Donny Davies <woodchip@gentoo.org> :
+  Added LICENSE, SLOT, $Headers.
 
 *diald-1.0 (2 Apr 2002)
 
   2 Apr 2002; Donny Davies <woodchip@gentoo.org> :
-  
   Initial checkin to portage.
+

@@ -1,3 +1,51 @@
+# 27 Nov 2005 Guy Martin <gmsoft@gentoo.org>
+# gccxml doesn't build and boost depend on it with this use
+pyste
+
+# 25 Jul 2005 Guy Martin <gmsoft@gentoo.org>
+# lm_sensors not supported on hppa and ieee1394 not tested
+lm_sensors
+ieee1394
+
+# 25 Jun 2005 Guy Martin <gmsoft@gentoo.org>
+# mono is not yet supported on hppa
+mono
+
+# 19 Jun 2005 Guy Martin <gmsoft@gentoo.org>
+# dmalloc is broken on hppa
+dmalloc
+
+# 14 May 2005 Guy Martin <gmsoft@gentoo.org>
+# kde-base/libkcal doesn't compile yet on hppa and is a needed dep
+irmc
+
+# 25 Mar 2005 Guy Martin <gmsoft@gentoo.org>
+# Masking lapck not yet tested
+lapack
+
+# 10 Mar 2005 Stefan Knoblich <stkn@gentoo.org>
+# This needs zaptel and pri
+bri
+florz
+
+# 20 Feb 2005 Guy Martin <gmsoft@gentoo.org>
+# Hardware for asterisk not yet tested
+zaptel
+resperl
+pri
+
+# 18 Feb 2005 Guy Martin <gmsoft@gentoo.org>
+# No emboss support on hppa for now
+emboss
+
+# 05 Oct 2004 Guy Martin <gmsoft@gentoo.org>
+# jack is not yet supported on hppa
+jack
+
+# 04 Oct 2004 Guy Martin <gmsoft@gentoo.org>
+# hal not yet tested
+hal
+
 # 11 Aug 2004 Guy Martin <gmsoft@gentoo.org>
 # No nptl support yet
 nptl
@@ -32,21 +80,17 @@ foreign-package
 # Avi support is far from 'supported'
 avi
 
-# 06 Jul 2003 Guy Martin <gmsoft@gentoo.org>
-# Mozilla is curently not working
-mozilla
-
 # 13 Apr 2003 Guy Martin <gmsoft@gentoo.org>
 # Selinux patches not tested on hppa and no kernel sources are emergeables with this patch.
 selinux
 
-# 07 Apr 2003 Guy Martin <gmsoft@gentoo.org>
-# I don't have the hardware to test usb support. So, this is disabled for now.
-usb
-
 # 20 Mar 2003 Guy Martin <gmsoft@gentoo.org>
 # Many java apps need java => 1.3 and hppa has only 1.1 right now
 java
+
+# 5 Jan 2005 Ciaran McCreesh <ciaranm@gentoo.org>
+# No reliable java, no netbeans. bug 66762
+netbeans
 
 # 19 Mar 2003 Guy Martin <gmsoft@gentoo.org>
 # acl not tested yet
@@ -54,24 +98,20 @@ acl
 
 # 14 Mar 2003 Guy Martin <gmsoft@gentoo.org>
 # USE flags not related to hppa
-3dnow
 acpi
 apm
 afs
 ev6
+i8x0
 icc
 icc-pgo
-mmx
 nocardbus
 pcmcia
 pda
-sse
 svga
 trusted
 wavelan
-x86
 firebird
-uclibc
 
 # see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
 # Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
@@ -96,3 +136,17 @@ pfpro
 solid
 sybase
 sybase-ct
+djbfft
+qdbm
+mzscheme
+
+# Added because of xmms-plugin.eclass.  Please test out
+# media-sound/beep-media-player and remove if   
+bmp
+
+freetts
+
+lirc
+
+3dfx
+pike

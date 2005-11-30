@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/skunkweb-3.4.0-r1.ebuild,v 1.1 2005/03/12 15:50:32 satya Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/skunkweb/skunkweb-3.4.0-r1.ebuild,v 1.1.1.1 2005/11/30 09:46:43 chriswhite Exp $
 
 inherit eutils apache-module
 
@@ -10,9 +10,11 @@ SRC_URI="mirror://sourceforge/skunkweb/${P}.tar.gz"
 LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~x86 ~ppc"
-IUSE="doc"
+IUSE="apache2 doc"
+
 DEPEND=">=dev-lang/python-2.2
-		>=dev-python/egenix-mx-base-2.0.4"
+		>=dev-python/egenix-mx-base-2.0.4
+		app-admin/sudo"
 
 APACHE1_MOD_FILE="${S}/SkunkWeb/mod_skunkweb/mod_skunkweb.so"
 APACHE2_MOD_FILE="${S}/SkunkWeb/mod_skunkweb/.libs/mod_skunkweb.so"
@@ -27,7 +29,7 @@ need_apache
 
 pkg_setup() {
 	enewgroup skunkweb
-	enewuser skunkweb -1 /bin/false /usr/share/skunkweb skunkweb
+	enewuser skunkweb -1 -1 /usr/share/skunkweb skunkweb
 }
 
 src_compile() {
@@ -57,8 +59,8 @@ src_install() {
 	apache-module_src_install
 
 	# dirs --------------------------------------------------------------
-	keepdir ${D}/var/{lib,log}/${PN}
-	keepdir ${D}/var/lib/${PN}/run
+	keepdir /var/{lib,log}/${PN}
+	keepdir /var/lib/${PN}/run
 	chown -R skunkweb:skunkweb ${D}/var/{lib,log}/${PN}
 	# scripts------------------------------------------------------------
 	exeinto /etc/init.d

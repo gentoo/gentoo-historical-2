@@ -1,10 +1,13 @@
 #!/bin/sh
 
-# $Id: poff,v 1.1 2001/07/15 02:33:15 lamer Exp $
 # Written by John Hasler <john@dhh.gt.org> and based on work 
 # by Phil Hands <phil@hands.com>.  Distributed under the GNU GPL
 
-KILL="/bin/kill"
+if [ -x /usr/bin/kill ]; then
+  KILL="/usr/bin/kill"
+else
+  KILL="/bin/kill"
+fi
 SIG=TERM
 DONE="stopped"
 MODE=""
@@ -50,7 +53,7 @@ case $FLAG in
  "d") SIG=USR1; DONE=signalled; shift ;;
  "c") SIG=USR2; DONE=signalled; shift ;;
  "a") MODE="all"; shift ;;
- "v") echo "$0$Revision: 1.1 $_TrickToPrint_RCS_Revision"; exit 0 ;;
+ "v") echo "$0$Revision: 1.1.1.1 $_TrickToPrint_RCS_Revision"; exit 0 ;;
  "h") usage; exit 0 ;;
  "?") exit 1;
 esac

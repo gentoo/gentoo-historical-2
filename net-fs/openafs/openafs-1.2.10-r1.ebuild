@@ -1,19 +1,17 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs/openafs-1.2.10-r1.ebuild,v 1.1 2003/10/20 05:32:21 rphillips Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/openafs/openafs-1.2.10-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:53 chriswhite Exp $
 
-inherit check-kernel
+inherit check-kernel fixheadtails eutils
 
-S=${WORKDIR}/${P}
 DESCRIPTION="The AFS 3 scalable distributed file system"
 HOMEPAGE="http://www.openafs.org/"
 SRC_URI="http://openafs.org/dl/openafs/${PV}/${P}-src.tar.bz2"
 
 SLOT="0"
 LICENSE="IPL-1"
-KEYWORDS="-* ~x86"
-
-SANDBOX_DISABLED="1"
+KEYWORDS="-* x86"
+IUSE=""
 
 DEPEND="virtual/linux-sources
 	>=sys-apps/portage-2.0.47-r10
@@ -21,11 +19,10 @@ DEPEND="virtual/linux-sources
 	>=sys-libs/pam-0.75
 	>=sys-apps/gawk-3.1.1"
 
-ARCH=i386_linux24
+SYS_NAME=i386_linux24
 
 
 pkg_setup() {
-
 	if is_2_5_kernel || is_2_6_kernel
 	then
 		die "OpenAFS does not yet support 2.5 and 2.6 kernels"
@@ -37,7 +34,13 @@ src_unpack() {
 	unpack ${A}
 
 	cd ${S}
-	epatch ${FILESDIR}/openafs-pinstall-execve.patch
+	ht_fix_file "acinclude.m4"
+	ht_fix_file "config.guess"
+	ht_fix_file "src/afsd/afs.rc.linux"
+	ht_fix_file "aclocal.m4"
+	ht_fix_file "configure"
+	ht_fix_file "configure-libafs"
+	epatch ${FILESDIR}/openafs-pinstall-execve-1.2.10.patch
 }
 
 src_compile() {
@@ -54,7 +57,7 @@ src_install () {
 
 	# Client
 
-	cd ${S}/${ARCH}/dest/root.client/usr/vice
+	cd ${S}/${SYS_NAME}/dest/root.client/usr/vice
 
 	insinto /etc/afs/modload
 	doins etc/modload/*
@@ -73,7 +76,7 @@ src_install () {
 	dosbin etc/afsd
 
 	# Client Bin
-	cd ${S}/${ARCH}/dest
+	cd ${S}/${SYS_NAME}/dest
 	exeinto /usr/afsws/bin
 	doexe bin/*
 
@@ -84,7 +87,7 @@ src_install () {
 	dosym  /usr/afsws/lib/afs/libtermlib.a /usr/afsws/lib/afs/libnull.a
 
 	# Server
-	cd ${S}/${ARCH}/dest/root.server/usr/afs
+	cd ${S}/${SYS_NAME}/dest/root.server/usr/afs
 	exeinto /usr/afs/bin
 	doexe bin/*
 

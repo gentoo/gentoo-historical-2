@@ -1,39 +1,38 @@
-# Copyright 1999-2002 Gentoo Technologies, Inc.
-# Distributed under the terms of the GNU General Public License, v2 or later
-# $Header: /var/cvsroot/gentoo-x86/net-irc/cyclone/cyclone-0.3.1.1.ebuild,v 1.1 2002/07/12 05:53:44 blocke Exp $
+# Copyright 1999-2004 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/cyclone/cyclone-0.3.1.1.ebuild,v 1.1.1.1 2005/11/30 09:49:01 chriswhite Exp $
 
-S=${WORKDIR}/${P}
 DESCRIPTION="IRC daemon with hostname cloaking, SOCKS proxy checking and other advanced features"
-SRC_URI="ftp://ftp.slashnet.org/pub/cyclone/server/${P}.tar.gz"
 HOMEPAGE="http://www.slashnet.org"
+SRC_URI="ftp://ftp.slashnet.org/pub/cyclone/server/${P}.tar.gz"
+
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="*"
-LICENSE="GPL & BSD"
-DEPEND="virtual/glibc"
+KEYWORDS="x86 ppc"
+IUSE=""
+
+DEPEND="virtual/libc"
 
 src_unpack() {
-
 	unpack ${P}.tar.gz
-	cp ${FILESDIR}/res_init.c ${S}/src	
-
+	cp ${FILESDIR}/res_init.c ${S}/src
 }
 
 src_compile() {
-
 	# Server administrators are encouraged to customize the following
 	# variables if actually deploying cyclone in an IRC network.  Upon
 	# merging of this package a config file is created in /etc/cyclone
 	# which is reused whenever this package is upgraded.
 
-	# If you wish to modify this configuration in the future, you can 
-	# either edit this ebuild or edit the created /etc/cyclone/config and 
+	# If you wish to modify this configuration in the future, you can
+	# either edit this ebuild or edit the created /etc/cyclone/config and
 	# remerge this ebuild.
 
 	if [ -f /etc/cyclone/config ]
 	then
 		einfo Reusing compile time configuration stored in /etc/cyclone/config...
 		einfo To reset the configuration delete the config file and remerge.
-		
+
 		cp /etc/cyclone/config ${S}/.config
 	else
 		einfo No previous configuration found... using defaults defined in ebuild...
@@ -79,17 +78,16 @@ END_OF_CONFIG
 
 	mv Config Config.orig
 	sed -e 's|DEFOPT="-O2"|DEFOPT="${CFLAGS}"|' \
-		-e 's|more ChangeLog||'   Config.orig > Config
+		-e 's|more ChangeLog||' \
+		-e 's|clear||' Config.orig > Config
 	chmod +x Config
 	yes "" | ./Config -n
 
 	# compile it
 	emake RES="res_init.o" || die
-
 }
 
-src_install () {
-
+src_install() {
 	# store generated .config file
 	dodir /etc/cyclone
 	cp ${S}/.config ${D}/etc/cyclone/config
@@ -102,7 +100,8 @@ src_install () {
 	mv ${D}/usr/bin/ircd ${D}/usr/bin/cyclone-ircd
 
 	# documentation files
-	dodoc AUTHORS ChangeLog COPYING INSTALL README {doc/*:-history}
+	dodoc AUTHORS ChangeLog INSTALL README doc/oper.txt
+	dodoc doc/NOTICE doc/rfc* doc/Crule.readme doc/cyclone.gif doc/Operators
 
 	# install sample configuration file
 	cp ${S}/doc/example.conf ${D}/etc/cyclone/ircd.conf
@@ -115,20 +114,16 @@ src_install () {
 	chmod 755 ${D}/etc/cyclone/chkconf ${D}/etc/cyclone/encrypt
 	chmod 644 ${D}/etc/cyclone/example.conf ${D}/etc/cyclone/ircd.motd
 	chmod 600 ${D}/etc/cyclone/ircd.conf ${D}/etc/cyclone/config
-
 }
 
-
-src_postinst()
-{
-
-	einfo Please read the documentation.  The default /etc/cyclone/ircd.conf
-	einfo will need to be edited and file permissions changed so only root
-	einfo and the account under which the ircd will run can read the plaintext
-	einfo passwords stored in that file.
+pkg_postinst() {
+	einfo "Please read the documentation.  The default /etc/cyclone/ircd.conf"
+	einfo "will need to be edited and file permissions changed so only root"
+	einfo "and the account under which the ircd will run can read the plaintext"
+	einfo "passwords stored in that file."
 	einfo
-	einfo Failure to modify the ircd.conf will result in cyclone-ircd
-	einfo quietly refusing to run.  Read the documentation and config file.
+	einfo "Failure to modify the ircd.conf will result in cyclone-ircd"
+	einfo "quietly refusing to run.  Read the documentation and config file."
 
 }
 

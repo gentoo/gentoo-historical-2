@@ -1,8 +1,68 @@
 # ChangeLog for net-dialup/hcfusbmodem
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/hcfusbmodem/ChangeLog,v 1.1 2003/03/17 00:03:12 lu_zero Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/hcfusbmodem/ChangeLog,v 1.1.1.1 2005/11/30 09:46:12 chriswhite Exp $
 
-* hcfusbmodem-0.98.02090200.ebuild (16 Mar 2003)
+*hcfusbmodem-1.06-r1 (17 Sep 2005)
+
+  17 Sep 2005; Alin Nastac <mrness@gentoo.org>
+  +files/hcfusbmodem-1.06-USB_byteorder.patch,
+  +files/hcfusbmodem-1.06-simple_class.patch, -hcfusbmodem-1.05.ebuild,
+  +hcfusbmodem-1.06-r1.ebuild:
+  Add upstream fixes for kernel ver >= 2.6.11.
+  Remove obsolete version.
+
+*hcfusbmodem-1.06 (24 Jun 2005)
+
+  24 Jun 2005; Alin Nastac <mrness@gentoo.org> +hcfusbmodem-1.06.ebuild:
+  Version bump.
+
+  14 Apr 2005; Alin Nastac <mrness@gentoo.org> -hcfusbmodem-1.04.ebuild:
+  Remove obsolete version
+
+*hcfusbmodem-1.05 (06 Mar 2005)
+
+  06 Mar 2005; Alin Nastac <mrness@gentoo.org> +hcfusbmodem-1.05.ebuild:
+  Version bump.
+
+*hcfusbmodem-1.04 (04 Jan 2005)
+
+  04 Jan 2005; Alin Nastac <mrness@gentoo.org>
+  -hcfusbmodem-0.98.02090200.ebuild, -hcfusbmodem-0.99.03042703.ebuild,
+  -hcfusbmodem-1.01.04082400.ebuild, -hcfusbmodem-1.01.04111200.ebuild,
+  +hcfusbmodem-1.04.ebuild:
+  Version bumped and removed old ones.
+
+*hcfusbmodem-1.01.04111200 (16 Nov 2004)
+
+  16 Nov 2004; Alin Nastac <mrness@gentoo.org>
+  +hcfusbmodem-1.01.04111200.ebuild:
+  Version bump.
+
+*hcfusbmodem-1.01.04082400 (07 Nov 2004)
+
+  07 Nov 2004; Alin Nastac <mrness@gentoo.org>
+  +hcfusbmodem-1.01.04082400.ebuild:
+  version bump to latest full version
+  beta version no longer available on home page
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  hcfusbmodem-0.98.02090200.ebuild, hcfusbmodem-0.99.03042703.ebuild:
+  virtual/glibc -> virtual/libc
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata
+
+*hcfusbmodem-0.99.03042703 (26 May 2003)
+  
+  26 May 2003; Luca Barbato <lu_zero@gentoo.org>:
+  New version.
+
+*hcfusbmodem-0.98.02090200 (22 May 2003)
+  
+  22 May 2003; Chuck Brewer <killian@gentoo.org>:
+  Added manifest.
+
+*hcfusbmodem-0.98.02090200 (16 Mar 2003)
 
   16 Mar 2003; Luca Barbato <lu_zero@gentoo.org> : hcfusbmodem-0.98.02090200.ebuild
   Initial import.  

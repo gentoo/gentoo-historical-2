@@ -1,6 +1,156 @@
-# ChangeLog for dev-java/ant
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ChangeLog,v 1.1 2004/09/10 19:45:18 axxo Exp $
+# ChangeLog for dev-java/ant-core
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-core/ChangeLog,v 1.1.1.1 2005/11/30 09:47:49 chriswhite Exp $
+
+# Ant-core blocks lower/older versions of ant-tasks, 
+# since it will not run when there is a version mismatch betwean the 2 packages
+# Please unemerge ant-tasks when updating ant-core.
+
+*ant-core-1.6.5-r2 (11 Sep 2005)
+*ant-core-1.6.2-r5 (11 Sep 2005)
+
+  11 Sep 2005; Thomas Matthijs <axxo@gentoo.org> files/1.6.2-ant,
+  files/1.6.5-ant, -ant-core-1.6.2-r3.ebuild, -ant-core-1.6.2-r4.ebuild,
+  +ant-core-1.6.2-r5.ebuild, -ant-core-1.6.5-r1.ebuild,
+  +ant-core-1.6.5-r2.ebuild:
+  Fix wrapper script (again)
+
+  10 Sep 2005; Thomas Matthijs <axxo@gentoo.org> ant-core-1.5.4-r2.ebuild,
+  ant-core-1.6.2-r3.ebuild, ant-core-1.6.2-r4.ebuild,
+  ant-core-1.6.5-r1.ebuild:
+  Block older dev-java/ant bug #104197
+
+  25 Aug 2005; Aron Griffis <agriffis@gentoo.org> ant-core-1.6.5-r1.ebuild:
+  add ~ia64
+
+  14 Aug 2005; Saleem Abdulrasool <compnerd@gentoo.org>
+  ant-core-1.6.5-r1.ebuild:
+  Updated to use toolchain-func eclass to determine arch, minor style change
+
+*ant-core-1.6.5-r1 (23 Jul 2005)
+
+  23 Jul 2005; Thomas Matthijs <axxo@gentoo.org> -ant-core-1.6.5.ebuild,
+  +ant-core-1.6.5-r1.ebuild:
+  revision bump too make sure ppl have the new wrapper
+
+*ant-core-1.6.2-r4 (25 Jul 2005)
+
+  25 Jul 2005;  Karl Trygve Kalleberg <karltk@gentoo.org>
+  ant-core-1.6.2-r4.ebuild:
+  Fixed -lib issue in the script file. Can now depend on the new
+  script. Gone straight to stable since it's pretty major.
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org> ant-core-1.5.4-r2.ebuild,
+  ant-core-1.6.2-r3.ebuild, ant-core-1.6.5.ebuild:
+  Fix deps, add source useflag
+
+  02 Jun 2005; Thomas Matthijs <axxo@gentoo.org> -files/1.6.3-ant,
+  -files/1.6.4-ant, -ant-core-1.6.3-r1.ebuild, -ant-core-1.6.4.ebuild:
+  prune
+
+*ant-core-1.6.5 (02 Jun 2005)
+
+  02 Jun 2005; Thomas Matthijs <axxo@gentoo.org> +files/1.6.5-ant,
+  +ant-core-1.6.5.ebuild:
+  version bump
+
+*ant-core-1.6.4 (23 May 2005)
+
+  23 May 2005; Thomas Matthijs <axxo@gentoo.org> +files/1.6.4-ant,
+  +ant-core-1.6.4.ebuild:
+  version bump
+
+*ant-core-1.6.3-r1 (14 May 2005)
+*ant-core-1.6.2-r3 (14 May 2005)
+
+  14 May 2005; Jan Brinkmann <luckyduck@gentoo.org> files/1.6.2-ant,
+  files/1.6.3-ant, -ant-core-1.6.2-r2.ebuild, +ant-core-1.6.2-r3.ebuild,
+  -ant-core-1.6.3.ebuild, +ant-core-1.6.3-r1.ebuild:
+  updated commons-beanutils dependency to reflect new slotting. see #71952
+
+*ant-core-1.6.3 (28 Apr 2005)
+
+  28 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  -ant-core-1.6.3_beta1.ebuild, +ant-core-1.6.3.ebuild:
+  version bump
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org> +files/1.6.3-ant,
+  ant-core-1.6.2-r2.ebuild, ant-core-1.6.3_beta1.ebuild:
+  die when wrapper cant be found
+
+*ant-core-1.6.3_beta1 (03 Apr 2005)
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  +ant-core-1.6.3_beta1.ebuild:
+  version bump
+
+*ant-core-1.6.2-r2 (03 Apr 2005)
+
+  03 Apr 2005; Jan Brinkmann <luckyduck@gentoo.org> files/1.6.2-ant,
+  -ant-core-1.6.2-r1.ebuild, +ant-core-1.6.2-r2.ebuild:
+  updated java-config call in the wrapper script to reflect oro->jakarta-oro
+  move.
+
+  27 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> ant-core-1.6.2-r1.ebuild:
+  corrected installation of the ant wrapper script for the new revision, fixes
+  #86887
+
+*ant-core-1.6.2-r1 (27 Mar 2005)
+
+  27 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org> files/1.6.2-ant,
+  +ant-core-1.6.2-r1.ebuild, -ant-core-1.6.2.ebuild:
+  moved from dev-java/regexp to dev-java/jakarta-regexp dependency. see #71336
+
+  04 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> ant-core-1.6.2.ebuild:
+  improved support of the doc useflag, now also the api doc is getting
+  installed. fixes #80762
+
+  04 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> files/1.6.2-ant:
+  added commons-collections to the java-config -p call in the ant wrapper. see
+  #72932
+
+  03 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> +files/1.6.2-scp.patch,
+  ant-core-1.6.2.ebuild:
+  applied an patch to fix scp with openssh-3.9. also see #77365
+
+  29 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> files/1.6.2-ant:
+  updated java-config -p call in 1.6.2-ant to reflect the new rhino slots.
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> ant-core-1.6.2.ebuild:
+  Stable on ppc64
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> ant-core-1.6.2.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> ant-core-1.5.4-r2.ebuild,
+  ant-core-1.6.2.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  16 Oct 2004; Dylan Carlson <absinthe@gentoo.org> ant-core-1.6.2.ebuild:
+  Stable on amd64.
+
+*ant-core-1.5.4-r2 (22 Sep 2004)
+
+  22 Sep 2004; Thomas Matthijs <axxo@gentoo.org> -ant-core-1.5.4-r1.ebuild,
+  +ant-core-1.5.4-r2.ebuild:
+  ant wrapper wasn't being installed, sorry.
+
+  18 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+*ant-core-1.5.4-r1 (17 Sep 2004)
+
+  17 Sep 2004; Thomas Matthijs <axxo@gentoo.org> files/1.5.4-ant,
+  +ant-core-1.5.4-r1.ebuild, -ant-core-1.5.4.ebuild:
+  fix classpath in wrapper script, bug 64410
+
+  17 Sep 2004; Thomas Matthijs <axxo@gentoo.org> files/1.6.2-ant:
+  respect JAVA_HOME, bug 61665
+
+  11 Sep 2004; Thomas Matthijs <axxo@gentoo.org> ant-core-1.6.2.ebuild:
+  removed pkg_setup, not used anyway, moved the ppc threads_flags to
+  src_compile. Don't use global classpath when compiling
 
 *ant-core-1.6.2 (10 Sep 2004)
 

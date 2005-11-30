@@ -1,6 +1,22 @@
-# ChangeLog for dev-java/dbconnectionbroker
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/dbconnectionbroker-bin/ChangeLog,v 1.1 2004/07/30 19:35:50 axxo Exp $
+# ChangeLog for dev-java/dbconnectionbroker-bin
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/dbconnectionbroker-bin/ChangeLog,v 1.1.1.1 2005/11/30 09:47:23 chriswhite Exp $
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  dbconnectionbroker-bin-1.0.13.ebuild:
+  stable on amd64
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  dbconnectionbroker-bin-1.0.13.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  dbconnectionbroker-bin-1.0.13.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
 
 *dbconnectionbroker-bin-1.0.13 (30 Jul 2004)
 

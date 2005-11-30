@@ -1,6 +1,8 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/sablevm/sablevm-1.11.3.ebuild,v 1.1 2005/03/25 00:53:22 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/sablevm/sablevm-1.11.3.ebuild,v 1.1.1.1 2005/11/30 09:47:18 chriswhite Exp $
+
+inherit eutils autotools
 
 DESCRIPTION="A robust, clean, extremely portable, efficient, and specification-compliant Java virtual machine."
 HOMEPAGE="http://sablevm.org/"
@@ -11,21 +13,27 @@ HOMEPAGE="http://sablevm.org/"
 
 SRC_URI="http://sablevm.org/download/release/${PV}/sablevm-${PV}.tar.gz
 	http://sablevm.org/download/release/${PV}/sablevm-classpath-${PV}.tar.gz"
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1 GPL-2-with-linking-exception"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~amd64"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="gtk debug"
 DEPEND=">=dev-libs/libffi-1.20
 	>=dev-libs/popt-1.7
 	>=dev-java/jikes-1.19
 	gtk? (
-		>=x11-libs/gtk+-2.2
+		>=x11-libs/gtk+-2.4
 		>=media-libs/libart_lgpl-2.1
-		>=media-libs/gdk-pixbuf-0.22
 	)"
-#RDEPEND=""
+RDEPEND="${DEPEND}"
 
 S=${WORKDIR}
+
+src_unpack() {
+	unpack ${A}
+	cd ${WORKDIR}/sablevm-classpath-${PV}
+	epatch ${FILESDIR}/gtk28.patch
+	eautoconf
+}
 
 src_compile() {
 	export LDFLAGS="$LDFLAGS -L/usr/lib/libffi" CPPFLAGS="$CPPFLAGS	-I/usr/include/libffi"
@@ -38,7 +46,8 @@ src_compile() {
 
 	# Compile the VM
 	cd ${S}/sablevm-${PV}
-	econf $(use_enable debug debugging-features) || die
+	econf $(use_enable debug debugging-features) \
+		--disable-dependency-tracking || die
 	emake || die "emake failed"
 }
 

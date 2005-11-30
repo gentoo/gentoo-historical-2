@@ -1,8 +1,91 @@
 # ChangeLog for net-dialup/ltmodem
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/ltmodem/ChangeLog,v 1.1 2002/10/02 05:29:28 vapier Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/ltmodem/ChangeLog,v 1.1.1.1 2005/11/30 09:46:13 chriswhite Exp $
+
+  29 Aug 2005; Alin Nastac <mrness@gentoo.org>
+  ltmodem-8.31_alpha10-r1.ebuild:
+  Add warning message regarding incompatibility with Linux SMP support.
+
+  15 Jun 2005; Alin Nastac <mrness@gentoo.org> -ltmodem-8.31_alpha8.ebuild:
+  Remove old version.
+
+  26 Mar 2005; Alin Nastac <mrness@gentoo.org> ltmodem-8.31_alpha10-r1.ebuild,
+  -ltmodem-8.31_alpha10.ebuild, ltmodem-8.31_alpha8.ebuild:
+  Correct info messages when installed against a 2.4 kernel (#86658).
+  Mark 8.31_alpha10-r1 as stable on x86 and remove obsolete version 8.31_alpha10.
+
+*ltmodem-8.31_alpha10-r1 (07 Mar 2005)
+
+  07 Mar 2005; Alin Nastac <mrness@gentoo.org>
+  -ltmodem-8.26_alpha9-r3.ebuild, +ltmodem-8.31_alpha10-r1.ebuild:
+  Add udev rules (#84338) and remove obsolete version.
+
+*ltmodem-8.31_alpha10 (07 Feb 2005)
+
+  07 Feb 2005; Alin Nastac <mrness@gentoo.org> +ltmodem-8.31_alpha10.ebuild,
+  ltmodem-8.31_alpha8.ebuild:
+  Version bump and mark 8.31_alpha8 as stable on x86.
+
+  07 Jan 2005; Alin Nastac <mrness@gentoo.org> -files/ltmodem_modules,
+  -ltmodem-8.26_alpha9-r1.ebuild, -ltmodem-8.26_alpha9-r2.ebuild,
+  ltmodem-8.31_alpha8.ebuild:
+  Converted to linux-mod eclass and removed old ebuilds (#74417).
+
+  20 Nov 2004; Alin Nastac <mrness@gentoo.org> ltmodem-8.26_alpha9-r3.ebuild:
+  Stable on x86.
+
+*ltmodem-8.31_alpha8 (06 Nov 2004)
+
+  06 Nov 2004; Alin Nastac <mrness@gentoo.org>
+  +ltmodem-8.31_alpha8.ebuild, +files/ltmodem_devfs, +files/ltmodem_modules:
+  bump to 8.31-a8 for 2.4 kernels and alk-6 for 2.6 kernels (bug #59665)
+
+  04 Feb 2004; Heinrich Wendel <lanius@gentoo.org>
+  ltmodem-8.26_alpha9-r3.ebuild:
+  deactivate userpriv, otherwise it will fail on kernel 2.6
+
+*ltmodem-8.26_alpha9-r3 (04 Feb 2004)
+
+  04 Feb 2004; Heinrich Wendel <lanius@gentoo.org>
+  ltmodem-8.26_alpha9-r3.ebuild:
+  added support for kernel 2.6; fixed docs; fixed DEPEND
+
+*ltmodem-8.26_alpha9-r2 (09 Dec 2003)
+
+  09 Dec 2003; Heinrich Wendel <lanius@gentoo.org>
+  ltmodem-8.26_alpha9-r1.ebuild, ltmodem-8.26_alpha9-r2.ebuild:
+  moved --with-force changes to -r2 since they can break things
+
+  07 Dec 2003; Heinrich Wendel <lanius@gentoo.org>
+  ltmodem-8.26_alpha9-r1.ebuild:
+  forgot to add ${KV} to build_module
+
+  06 Dec 2003; Heinrich Wendel <lanius@gentoo.org>
+  ltmodem-8.26_alpha9-r1.ebuild:
+  added --with-force=yes to build in chroot
+
+  19 Nov 2003; Heinrich Wendel <lanius@gentoo.org> metadata.xml:
+  metadata.xml
+
+*ltmodem-8.26_alpha9-r1 (23 May 2003)
+  
+  23 May 2003; Chuck Brewer <killian@gentoo.org>:
+  Added manifest.
+
+*ltmodem-8.26_alpha9-r1 (25 Jan 2003)
+
+  25 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Added updates and stuff from #14528.  Thanks goes to
+  fkqstjg02@sneakemail.com (Tom Poplawski).
+  Added a few tweaks from #7805.  Thanks goes to
+  Denys Duchier <duchier@ps.uni-sb.de>.
+
+*ltmodem-8.26_alpha9 (09 Jan 2003)
+
+  09 Jan 2003; Mike Frysinger <vapier@gentoo.org> :
+  Version bumped #13099.
 
 *ltmodem-8.22_alpha5 (02 Oct 2002)
 
   02 Oct 2002; Mike Frysinger <vapier@gentoo.org> ltmodem-8.22_alpha5.ebuild :
-  Initial import. Ebuild submitted by myself
+  Initial import. Ebuild submitted by myself.

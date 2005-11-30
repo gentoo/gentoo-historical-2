@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/slmodem/slmodem-2.9.11_pre20050816.ebuild,v 1.1 2005/09/10 19:00:48 genstef Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/slmodem/slmodem-2.9.11_pre20050816.ebuild,v 1.1.1.1 2005/11/30 09:46:01 chriswhite Exp $
 
 inherit eutils linux-mod
 
@@ -10,7 +10,7 @@ SRC_URI="http://linmodems.technion.ac.il/packages/smartlink/snapshots/${P/_pre/-
 	http://linmodems.technion.ac.il/packages/smartlink/ungrab-winmodem.tar.gz"
 LICENSE="Smart-Link"
 SLOT="0"
-KEYWORDS="x86 -*"
+KEYWORDS="~x86 -*"
 IUSE="alsa usb"
 
 RDEPEND="virtual/libc
@@ -100,7 +100,7 @@ src_install() {
 			 ${D}/etc/udev/rules.d/55-${PN}.rules
 	fi
 
-	dodoc COPYING Changes README ${WORKDIR}/ungrab-winmodem/Readme.txt
+	dodoc Changes README ${WORKDIR}/ungrab-winmodem/Readme.txt
 }
 
 pkg_postinst() {
@@ -134,13 +134,13 @@ pkg_postinst() {
 		einfo "otherwise type: rc-update add alsasound boot"
 		einfo
 		einfo "If you need to use snd-intel8x0m from the kernel"
-		einfo "compile it as a module and edit /etc/module.d/alsa"
+		einfo "compile it as a module and edit /etc/modules.d/alsa"
 		einfo 'to: "alias snd-card-(number) snd-intel8x0m"'
 	fi
 
 	einfo "You need to be in the uucp AND dialout group to make calls as a user."
 	einfo
-	einfo "If you have problems like:"
+	einfo "If you see the following in dmesg:"
 	echo slamr: device 10b9:5457 is grabbed by driver serial
 	einfo "you need to modprobe ungrab-winmodem before slamr"
 }

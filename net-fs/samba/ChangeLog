@@ -1,11 +1,946 @@
 # ChangeLog for net-fs/samba
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL
-# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/ChangeLog,v 1.1 2002/02/01 21:53:32 gbevin Exp $
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-fs/samba/ChangeLog,v 1.1.1.1 2005/11/30 09:45:50 chriswhite Exp $
+
+  08 Nov 2005; Christian Andreetta <satya@gentoo.org>
+  samba-3.0.14a-r2.ebuild, samba-3.0.14a-r3.ebuild, samba-3.0.20-r1.ebuild,
+  samba-3.0.20a.ebuild, samba-3.0.20b.ebuild:
+  'examples' IUSE flag (bug #111508)
+
+  29 Oct 2005; Diego Pettenò <flameeyes@gentoo.org> samba-3.0.20b.ebuild:
+  Disable pie support for *BSD systems as it's not supported. Fixes bug #110278.
+
+  19 Oct 2005; Christian Andreetta <satya@gentoo.org> samba-3.0.20b.ebuild:
+  patchset PORTAGE_TMPDIR fix: version bump to force mirror deployment (bug
+  #109297)
+
+*samba-3.0.20b (14 Oct 2005)
+
+  14 Oct 2005; Christian Andreetta <satya@gentoo.org> +samba-3.0.20b.ebuild:
+  3.0.20b version bump (bug #109174), which fixes also swat: xinetd dependency
+  (bug #81387), smbmount not suid (bug #105680), sql backend and mysql schema
+  (bug #106457), ldapsam support (bug #108400) 
+
+*samba-3.0.20a (06 Oct 2005)
+
+  06 Oct 2005; Christian Andreetta <satya@gentoo.org> +samba-3.0.20a.ebuild:
+  version bump. Fixes bugs #106846 (idmap_rid with winbind), #107606
+  ('bad user' configuration parameter), #107614 (ldapsam support), #107939
+
+  03 Oct 2005; MATSUU Takuto <matsuu@gentoo.org> samba-3.0.14a-r2.ebuild:
+  Stable on sh.
+
+  23 Sep 2005; Christian Andreetta <satya@gentoo.org>
+  samba-3.0.14a-r2.ebuild, samba-3.0.14a-r3.ebuild, samba-3.0.20-r1.ebuild:
+  samba-old mirrors also: bug #106676
+
+  03 Sep 2005; Christian Andreetta <satya@gentoo.org> -samba-3.0.20.ebuild,
+  samba-3.0.20-r1.ebuild:
+  smbmount patch typo fix (bug #104505)
+
+*samba-3.0.20-r1 (02 Sep 2005)
+
+  02 Sep 2005; Christian Andreetta <satya@gentoo.org>
+  +samba-3.0.20-r1.ebuild:
+  added umount.cifs support (bug #104504)
+
+*samba-3.0.20 (01 Sep 2005)
+
+  01 Sep 2005; Christian Andreetta <satya@gentoo.org> +files/README.gentoo,
+  +samba-3.0.20.ebuild:
+  version bump (bug #103164). Non-linux compatibility (bug #101675)
+
+  24 Aug 2005; Christian Andreetta <satya@gentoo.org>
+  samba-3.0.14a-r2.ebuild, samba-3.0.14a-r3.ebuild:
+  'cp -pPR' instead of 'cp -a' required by Darwin and BSD (bug #103487)
+
+  13 Aug 2005; Christian Andreetta <satya@gentoo.org>
+  +samba-3.0.14a-r3.ebuild:
+  'hide pecial files' option control fix (thanks to Tim Redman, bug #101770)
+
+  09 Aug 2005; Seemant Kulleen <seemant@gentoo.org> -files/lmhosts,
+  -files/nsswitch.conf-winbind, -files/nsswitch.conf-wins, -files/samba.pam,
+  -files/samba.schema, -files/samba-conf, -files/samba-init,
+  -files/smb.conf.example-samba3.gz, -files/smbusers, -files/swat.xinetd,
+  -files/system-auth-winbind, samba-3.0.14a-r2.ebuild:
+  config files are now moved into the tarball as well. All the patches and
+  configs are under version control under the gentoo/src/patchsets/samba
+  module
+
+  09 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  -files/vscan-0.3.5-libclamav.patch, -files/samba-2.2.8-statfs.patch,
+  -files/samba-3.0.11-gcc4.patch, -files/samba-3.0.x-libdirsymlink.patch,
+  -files/samba-3.0.x-python-setup.patch,
+  -files/samba-3.0.x-smbumount-uid32.patch, -samba-3.0.10.ebuild:
+  clean out old outdated ebuild and its patches
+
+  09 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> samba-3.0.14a-r2.ebuild:
+  Stable on mips.
+
+  08 Aug 2005; Bryan Østergaard <kloeri@gentoo.org>
+  samba-3.0.14a-r2.ebuild:
+  Stable on alpha + ia64.
+
+  08 Aug 2005; Seemant Kulleen <seemant@gentoo.org> samba-3.0.14a-r2.ebuild:
+  keywording thanks to vapier
+
+  05 Aug 2005; Seemant Kulleen <seemant@gentoo.org> samba-3.0.10.ebuild,
+  samba-3.0.14a-r2.ebuild:
+  removing the addpredic line -- the fault was with sandbox package itself,
+  which azarah has fixed earlier today.
+
+  05 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  -samba-3.0.14a-r3.ebuild:
+  removing -r3 -- the clamav thing was a bad idea.  See the aforementioned bug
+
+*samba-3.0.14a-r3 (04 Aug 2005)
+
+  04 Aug 2005; Seemant Kulleen <seemant@gentoo.org>
+  +samba-3.0.14a-r3.ebuild:
+  Add dependency on clamav with the 'clamav' and/or 'libclamav' USE flags. The
+  libclamav flag will *go away* soon. Additionally, make sure that
+  /use/lib/samba/{auth,idmap,rpc} stay around. Fixed bug #100766 with the
+  clamav/libclamav thing
+
+  04 Aug 2005; Seemant Kulleen <seemant@gentoo.org> -samba-3.0.11.ebuild,
+  -samba-3.0.14a-r1.ebuild:
+  since I moved 14a-r2 to stable x86 finally, we can now remove some of the
+  cruft versions
+
+  03 Aug 2005; Seemant Kulleen <seemant@gentoo.org> samba-3.0.14a-r2.ebuild:
+  only install smb.conf (blank) if none is currently present in the live
+  filesystem
+
+  03 Aug 2005; Seemant Kulleen <seemant@gentoo.org> samba-3.0.14a-r2.ebuild:
+  do not install a blank smb.conf.  Fixes bug #70686
+
+  01 Aug 2005; Joseph Jezak <josejx@gentoo.org> samba-3.0.14a-r2.ebuild:
+  Marked ppc stable for bug #95327.
+
+  28 Jul 2005; Guy Martin <gmsoft@gentoo.org> samba-3.0.14a-r2.ebuild:
+  Stable on hppa.
+
+  27 Jul 2005; Herbie Hopkins <herbs@gentoo.org> samba-3.0.14a-r2.ebuild:
+  Stable on amd64 wrt bug #95327.
+
+  27 Jul 2005; Christian Andreetta <satya@gentoo.org> files/samba.pam:
+  pam library location fix in /etc/pam.d/samba
+
+  26 Jul 2005; Markus Rothe <corsair@gentoo.org> samba-3.0.14a-r2.ebuild:
+  Stable on ppc64 (bug #95327)
+
+  25 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  samba-3.0.14a-r2.ebuild:
+  Stable on sparc wrt #95327
+
+*samba-3.0.14a-r2 (23 Jul 2005)
+
+  23 Jul 2005; Christian Andreetta <satya@gentoo.org>
+  +samba-3.0.14a-r2.ebuild:
+  patcheset updated: little fix in python tdb bindings (removal of deprecated
+  functions wrappers) and in python testsuite (smbcontrol)
+
+  20 Jul 2005; Christian Andreetta <satya@gentoo.org> samba-3.0.10.ebuild,
+  samba-3.0.11.ebuild, samba-3.0.14a-r1.ebuild:
+  Stale doc removal (if present): bug #99375 (thanks to carlo@gentoo.org)
+
+  20 Jun 2005; Christian Andreetta <satya@gentoo.org> samba-3.0.10.ebuild,
+  samba-3.0.11.ebuild, samba-3.0.14a-r1.ebuild:
+  mit-krb5 sandbox perms (fake write) #bugs #95840 and #96453
+
+  10 Jun 2005; Christian Andreetta <satya@gentoo.org> files/samba.pam:
+  reverting pam to old behaviour until pam-0.78 becomes stable
+
+  09 Jun 2005; Markus Rothe <corsair@gentoo.org> samba-3.0.14a-r1.ebuild:
+  Stable on ppc64
+
+  08 Jun 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  samba-3.0.14a-r1.ebuild:
+  Stable on sparc wrt #95327
+
+  19 May 2005; Christian Andreetta <satya@gentoo.org> files/samba.pam:
+  pam 'include' directive, instead of Redhat's pam_stack for better standard
+  adeherence (*BSD requirement: Diego Pettenò <flameeyes@gentoo.org>)
+
+  29 Apr 2005; Seemant Kulleen <seemant@gentoo.org> samba-3.0.14a-r1.ebuild:
+  the smbspool symlink is now fixed, thanks again to: Chris Smith
+  <chris@realcomputerguy.com> in bug #90681
+
+  28 Apr 2005; Christian Andreetta <satya@gentoo.org> -samba-3.0.13.ebuild:
+  removing due to acl bug (https://bugzilla.samba.org/show_bug.cgi?id=2521)
+
+  28 Apr 2005; Heinrich Wendel <lanius@gentoo.org> files/samba-init:
+  revert 'use cupsd' again, it was the wrong way around
+
+  28 Apr 2005; Christian Andreetta <satya@gentoo.org> -samba-3.0.13.ebuild:
+  removing due to acl bug (https://bugzilla.samba.org/show_bug.cgi?id=2521)
+
+  28 Apr 2005; Christian Andreetta <satya@gentoo.org> samba-3.0.10.ebuild:
+  exaples permissions issue fixed (bug #90002)
+
+*samba-3.0.11 (28 Apr 2005)
+
+  28 Apr 2005; Christian Andreetta <satya@gentoo.org> +samba-3.0.11.ebuild:
+  made 3.0.11 available again due to ACL bug in 3.0.1{2,3} versions (bug #89793)
+
+  28 Apr 2005; Seemant Kulleen <seemant@gentoo.org> :
+  Apparently, I missed the version bump request from: b52 <b52@entrap.de> in
+  bug #89664
+
+  28 Apr 2005; Seemant Kulleen <seemant@gentoo.org> samba-3.0.14a-r1.ebuild:
+  fix for the use acl configure option, thanks to: Chris Smith
+  <chris@realcomputerguy.com> in bug #90681
+
+*samba-3.0.14a-r1 (27 Apr 2005)
+
+  27 Apr 2005; Seemant Kulleen <seemant@gentoo.org>
+  +samba-3.0.14a-r1.ebuild:
+  replace with -r1, which has improved patches, and a ChangeLog for the
+  patchset. No more /usr/bin/mount.cifs.old and stuff in this. A lot cleaner
+  now
+
+  27 Apr 2005; Christian Andreetta <satya@gentoo.org> files/samba-init:
+  'use cupsd' removed due to bug #89956
+
+  26 Apr 2005; Seemant Kulleen <seemant@gentoo.org> samba-3.0.14a.ebuild:
+  typo
+
+  26 Apr 2005; Seemant Kulleen <seemant@gentoo.org> -samba-3.0.11.ebuild,
+  -samba-3.0.12.ebuild:
+  remove some of the more intermediate versions
+
+*samba-3.0.14a (26 Apr 2005)
+
+  26 Apr 2005; Seemant Kulleen <seemant@gentoo.org>
+  files/samba-2.2.8-statfs.patch, +samba-3.0.14a.ebuild:
+  version bump to 3.0.14a, but this time, with an appropriate patch tarball,
+  which gives a much cleaner ebuild. I'll be updating the remaining samba
+  ebuilds to use this method as well over the next week or so
+
+  13 Apr 2005; Seemant Kulleen <seemant@gentoo.org>
+  -files/samba-3.0.6-samba.schema, -files/config-svc-smbd+nmbd,
+  -files/nonroot-bind.diff, -files/samba-slapd-include.conf,
+  -files/samba-svc, -files/smb.conf.example, -files/smbldap_conf.pm:
+  even more cruft removal -- unused files in filesdir
+
+  13 Apr 2005; Seemant Kulleen <seemant@gentoo.org>
+  -files/samba-2.2.5-gp-reloc-fix.patch, -files/samba-2.2.6-libresolv.patch,
+  -files/samba-2.2.8-statfs.patch, -files/samba-3.0.0-python-setup.patch,
+  -files/samba-3.0.2a-smbprint.patch,
+  -files/samba-3.0.6-homes-reuse_v2.patch,
+  -files/samba-3.0.6-libdirsymlink.patch,
+  -files/samba-3.0.6-winbind_getpwnam_v1.patch,
+  -files/samba-3.0.8-lanman.patch,
+  -files/samba-3.0.9-util.c-bitpmap.c-4120.patch, -files/samba-3.0.x.patch,
+  -files/samba-pdb_ldap-exop.patch:
+  more cruft removal -- this time unused patches
+
+  13 Apr 2005; Seemant Kulleen <seemant@gentoo.org> -samba-3.0.6-r3.ebuild,
+  -samba-3.0.6-r4.ebuild, -samba-3.0.7.ebuild, -samba-3.0.7-r1.ebuild,
+  -samba-3.0.8.ebuild, -samba-3.0.8-r1.ebuild, -samba-3.0.9.ebuild,
+  -samba-3.0.9-r1.ebuild:
+  clean up cruft
+
+  04 Apr 2005; Christian Andreetta <satya@gentoo.org> samba-3.0.12.ebuild:
+  warning on acl and win 9x/Me as per bug #87583
+
+*samba-3.0.13 (25 Mar 2005)
+
+  25 Mar 2005; Christian Andreetta <satya@gentoo.org> +samba-3.0.13.ebuild:
+  version bump
+
+  24 Mar 2005; Christian Andreetta <satya@gentoo.org> files/samba-init:
+  slapd init scripts precedence: bug #86464
+
+*samba-3.0.12 (19 Mar 2005)
+
+  19 Mar 2005; Christian Andreetta <satya@gentoo.org> +samba-3.0.12.ebuild:
+  version bump. Split from smbldap-tools, which is now a separate ebuild
+
+  14 Mar 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/samba-3.0.11-gcc4.patch, samba-3.0.11.ebuild:
+  GCC 4 compile fix.  bug #85172
+
+  12 Mar 2005; Christian Andreetta <satya@gentoo.org> samba-3.0.11.ebuild:
+  minor fixes: dirs creations via keepdir, examples permissions (bug #83563)
+
+  03 Mar 2005; <mglauche@gentoo.org> samba-3.0.10.ebuild:
+  smbldap-tools have new download location, see Bug 83203. Thanks to Ricardo
+  Nuno <me@rnuno.com>
+
+  06 Feb 2005; Jeremy Huddleston <eradicator@gentoo.org>
+  samba-3.0.11.ebuild:
+  Multilib fixes.
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> samba-3.0.10.ebuild:
+  Marked stable on mips.
+
+*samba-3.0.11 (05 Feb 2005)
+
+  05 Feb 2005; Christian Andreetta <satya@gentoo.org> samba-3.0.10.ebuild,
+  +samba-3.0.11.ebuild:
+  version bump (bug #80807) and old conf file preservation fix (bug #80293)
+
+  25 Jan 2005; Guy Martin <gmsoft@gentoo.org> samba-3.0.10.ebuild:
+  Stable on hppa.
+
+  22 Jan 2005; Bryan Østergaard <kloeri@gentoo.org> samba-3.0.10.ebuild:
+  Stable on alpha.
+
+  19 Jan 2005; Olivier CrÃªte <tester@gentoo.org> samba-3.0.10.ebuild:
+  Stable on x86 wrt bug #77734
+
+  14 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> samba-3.0.10.ebuild:
+  stable on amd64; bug #77734
+
+  14 Jan 2005; Gustavo Zacarias <gustavoz@gentoo.org> samba-3.0.10.ebuild:
+  Stable on sparc wrt #77734
+
+  14 Jan 2005; Michael Hanselmann <hansmi@gentoo.org> samba-3.0.10.ebuild:
+  Stable on ppc.
+
+  14 Jan 2005; Markus Rothe <corsair@gentoo.org> samba-3.0.10.ebuild:
+  Stable on ppc64; bug #77734
+
+  09 Jan 2005; Sven Wegener <swegener@gentoo.org> samba-3.0.10.ebuild,
+  samba-3.0.6-r3.ebuild, samba-3.0.6-r4.ebuild, samba-3.0.7-r1.ebuild,
+  samba-3.0.7.ebuild, samba-3.0.8-r1.ebuild, samba-3.0.8.ebuild,
+  samba-3.0.9-r1.ebuild, samba-3.0.9.ebuild:
+  Added missing parentheses in SRC_URI/*DEPEND/LICENSE.
+
+  29 Dec 2004; Hardave Riar <hardave@gentoo.org> samba-3.0.9-r1.ebuild:
+  Stable on mips, bug #73943
+
+  29 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  21 Dec 2004; Guy Martin <gmsoft@gentoo.org> samba-3.0.9-r1.ebuild:
+  Stable on hppa (#73943).
+
+*samba-3.0.10 (17 Dec 2004)
+
+  17 Dec 2004; Christian Andreetta <satya@gentoo.org> +samba-3.0.10.ebuild:
+  version bump
+
+*samba-3.0.9-r1 (17 Dec 2004)
+
+  17 Dec 2004; Christian Andreetta <satya@gentoo.org>
+  +files/samba-3.0.9-util.c-bitpmap.c-4120.patch, +samba-3.0.9-r1.ebuild:
+  bug #73943: CAN-2004-1154: Integer overflow for samba 2.x, 3.x<=3.0.9
+
+  29 Nov 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.9.ebuild:
+  more masked archs added
+
+  23 Nov 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.8-r1.ebuild,
+  samba-3.0.9.ebuild:
+  old private config saved in pkg_setup (no more post_install: bug #72235)
+
+  21 Nov 2004; Jason Wever <weeve@gentoo.org> samba-3.0.9.ebuild:
+  Added ~sparc keyword as it was not carried over in the version bump.
+
+*samba-3.0.9 (20 Nov 2004)
+
+  20 Nov 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.8-r1.ebuild,
+  +samba-3.0.9.ebuild:
+  version bump: smbldap-0.8.5-3 (bug #71728) and samba-3.0.9
+
+  18 Nov 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.8-r1.ebuild,
+  samba-3.0.8.ebuild:
+  bug #71334: automatically copy of old privatedir to new location
+
+*samba-3.0.8-r1 (15 Nov 2004)
+
+  15 Nov 2004; Christian Andreetta <satya@gentoo.org> +samba-3.0.8-r1.ebuild:
+  bug #71223: win9x/Me lanman printing. bug #70628: 3.0.8 docs upstream
+  permission error
+
+  13 Nov 2004; Christian Andreetta <satya@gentoo.org>
+  files/samba-3.0.x-python-setup.patch:
+  samba-3.0.x-python-setup.patch update (bug #69034)
+
+  10 Nov 2004; Olivier Crete <tester@gentoo.org> samba-3.0.8.ebuild:
+  Stable on x86 see 70429
+
+  10 Nov 2004; Joshua Kinard <kumba@gentoo.org> samba-3.0.8.ebuild:
+  Marked stable on mips.
+
+  10 Nov 2004; Bryan Østergaard <kloeri@gentoo.org> samba-3.0.8.ebuild:
+  Stable on alpha, bug 70429.
+
+  09 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> samba-3.0.8.ebuild:
+  Stable on sparc wrt #70429
+
+  09 Nov 2004; Simon Stelling <blubb@gentoo.org> samba-3.0.8.ebuild:
+  stable on amd64. bug #69985
+
+  09 Nov 2004; Markus Rothe <corsair@gentoo.org> samba-3.0.8.ebuild:
+  Stable on ppc64; bug #70429
+
+  09 Nov 2004; <SeJo@gentoo.org> samba-3.0.8.ebuild:
+  stable on ppc gsla: 70429
+
+*samba-3.0.8 (09 Nov 2004)
+
+  09 Nov 2004; Christian Andreetta <satya@gentoo.org> +samba-3.0.8.ebuild:
+  security: (CAN-2004-0930) (bug #70429). New IUSE flags: quotas, winbind,
+  libclamav (bugs #67857, #64602)
+
+  07 Nov 2004; Joshua Kinard <kumba@gentoo.org> samba-3.0.7-r1.ebuild:
+  Marked stable on mips.
+
+  29 Oct 2004; <mglauche@gentoo.org> samba-3.0.6-r3.ebuild,
+  samba-3.0.6-r4.ebuild, samba-3.0.7-r1.ebuild:
+  fixed some small typos, thanks to bin-doph <bauer@dmsb.de>
+
+  21 Oct 2004; Christian Andreetta <satya@gentoo.org> -files/recycle.conf,
+  -files/smb.conf.example-samba3, files/smb.conf.example-samba3.gz,
+  -files/winbind-init, samba-3.0.6-r3.ebuild, samba-3.0.6-r4.ebuild,
+  samba-3.0.7-r1.ebuild, samba-3.0.7.ebuild:
+  Some old files cleanup. recycle.conf removed (bug #68315). winbind {r,g}id ->
+  idmap {r,g}id in example smb.conf (bug #68318).
+
+  10 Oct 2004; Jason Wever <weeve@gentoo.org> samba-3.0.7-r1.ebuild:
+  Stable on sparc.
+
+  08 Oct 2004; Guy Martin <gmsoft@gentoo.org> samba-3.0.7-r1.ebuild:
+  Marked stable on hppa.
+
+  08 Oct 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.7-r1.ebuild:
+  stable on x86 and amd64. Note on sendfile(2) (bug #66656). ADS and krb5 on
+  amd64 also (bug #64815)
+
+  01 Oct 2004; Stephen P. Becker <geoman@gentoo.org> samba-3.0.7.ebuild:
+  stable on mips to satisfy repoman deps - stop breaking our stable tree
+
+  27 Sep 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.5-r1.ebuild,
+  samba-3.0.6-r3.ebuild, samba-3.0.6-r4.ebuild, samba-3.0.7-r1.ebuild,
+  samba-3.0.7.ebuild:
+  gentoo mirrors updated: removing nomirror directive (see 16 Sep 2004)
+
+  24 Sep 2004; <SeJo@gentoo.org> samba-3.0.7-r1.ebuild:
+  removed the O1 section for ppc and pcc64 as not neccesary anymore
+
+*samba-3.0.7-r1 (17 Sep 2004)
+
+  17 Sep 2004; Christian Andreetta <satya@gentoo.org> +samba-3.0.7-r1.ebuild:
+  libs preload on suid binaries only (bug #63884)
+
+  16 Sep 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.5-r1.ebuild,
+  samba-3.0.6-r3.ebuild, samba-3.0.6-r4.ebuild, samba-3.0.7.ebuild:
+  smbldap-0.8.5 changed retaining uri and version number. Forcing fetch from
+  distributor.
+
+  14 Sep 2004; Christian Andreetta <satya@gentoo.org>
+  +files/samba-3.0.x-libdirsymlink.patch, -samba-3.0.1-r1.ebuild,
+  -samba-3.0.2a-r2.ebuild, -samba-3.0.4-r1.ebuild, -samba-3.0.6-r1.ebuild,
+  -samba-3.0.6-r2.ebuild, -samba-3.0.6.ebuild, samba-3.0.7.ebuild:
+  some old files cleanup
+
+*samba-3.0.7 (13 Sep 2004)
+
+  13 Sep 2004; Mike Frysinger <vapier@gentoo.org> +samba-3.0.7.ebuild:
+  Version bump for security!
+
+  10 Sep 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.6-r4.ebuild:
+  fixed amd64 patch typo (bug #63542)
+
+  09 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> samba-3.0.6-r4.ebuild:
+  Marked ~amd64 now. GLSA has been taken back.
+
+  09 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> samba-3.0.6-r4.ebuild:
+  Stable on sparc
+
+  09 Sep 2004; Bryan Østergaard <kloeri@gentoo.org> samba-3.0.6-r4.ebuild:
+  Stable on alpha, bug 62476.
+
+  08 Sep 2004; Danny van Dyk <kugelfang@gentoo.org> samba-3.0.6-r4.ebuild:
+  Added -L/usr/$(get_libdir) to come around a ./configure bug on amd64. Marked
+  stable on amd64 (see BUG #62476).
+
+*samba-3.0.6-r4 (06 Sep 2004)
+
+  06 Sep 2004; Christian Andreetta <satya@gentoo.org>
+  +files/smb.conf.example-samba3.gz, +samba-3.0.6-r4.ebuild:
+  selinux (#62907) and linker issue (#62674)
+
+  01 Sep 2004; Gustavo Zacarias <gustavoz@gentoo.org> samba-3.0.6-r3.ebuild:
+  Stable on sparc wrt #62476
+
+*samba-3.0.6-r3 (01 Sep 2004)
+
+  01 Sep 2004; Christian Andreetta <satya@gentoo.org>
+  +files/samba-3.0.6-homes-reuse_v2.patch, +files/samba-3.0.6-samba.schema,
+  +files/samba-3.0.6-winbind_getpwnam_v1.patch, files/smb.conf.example-samba3,
+  +samba-3.0.6-r3.ebuild:
+  adding latest Jerry Carter patches (bug #62476)
+
+*samba-3.0.6-r2 (26 Aug 2004)
+
+  26 Aug 2004; <mglauche@gentoo.org> samba-3.0.6-r2.ebuild,
+  files/samba.schema:
+  Fix for bug #61055. (ldap schema in examples had wrong id)
+  Thanks to Torsten Kurbad <torsten@tk-webart.de> for the updates schema file.
+
+  21 Aug 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  samba-3.0.5-r1.ebuild, samba-3.0.6-r1.ebuild, samba-3.0.6.ebuild:
+  Fix bad bash... needed a space before ]
+
+*samba-3.0.6-r1 (21 Aug 2004)
+
+  21 Aug 2004; <mglauche@gentoo.org> samba-3.0.6-r1.ebuild:
+  Fix for bug #61046. Thanks to Jeff Kowalczyk <jtk@yahoo.com> for 
+  pointing it out
+
+*samba-3.0.6 (20 Aug 2004)
+
+  20 Aug 2004; <mglauche@gentoo.org> samba-3.0.6.ebuild:
+  new upstream version, fixes memory leaks, winbindd and some cifs problems
+
+  30 Jul 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.5-r1.ebuild:
+  empty dirs disappearance fixed (bug #53976)
+
+  28 Jul 2004; Joshua Kinard <kumba@gentoo.org> samba-3.0.5-r1.ebuild,
+  samba-3.0.5.ebuild:
+  Marked stable on mips.
+
+  24 Jul 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.5-r1.ebuild:
+  cosmetical minor changes in ebuild internal checks
+
+*samba-3.0.5-r1 (23 Jul 2004)
+
+  23 Jul 2004; Christian Andreetta <satya@gentoo.org> metadata.xml,
+  +files/samba-3.0.x-python-setup.patch,
+  +files/samba-3.0.x-smbumount-uid32.patch, +files/samba-3.0.x.patch,
+  +samba-3.0.5-r1.ebuild, samba-3.0.5.ebuild:
+  Various contributors (see comments in ebuild): development traced in bug #58090
+
+*samba-3.0.5 (22 Jul 2004)
+
+  22 Jul 2004; Michael Glauche <mglauche@gentoo.org> samba-3.0.5.ebuild:
+  Version bump, fixes 2 buffer overruns.
+
+  14 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> samba-3.0.4-r1.ebuild:
+  Stable on alpha.
+
+  01 Jul 2004; Tom Gall <tgall@gentoo.org> samba-3.0.4-r1.ebuild:
+  stable on ppc64, bug #54804
+
+  30 Jun 2004; Guy Martin <gmsoft@gentoo.org> samba-3.0.4-r1.ebuild:
+  Marked stable on hppa.
+
+  28 Jun 2004; Gustavo Zacarias <gustavoz@gentoo.org> samba-3.0.4-r1.ebuild:
+  Stable on sparc
+
+  26 Jun 2004; Marius Mauch <genone@gentoo.org> samba-3.0.4-r1.ebuild:
+  QA fix: moving manpages to /usr/share/man, removing unneccessary gzip
+  call.
+
+  21 Jun 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.4-r1.ebuild:
+  stable on x86
+
+  18 Jun 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.2a-r2.ebuild,
+  samba-3.0.4-r1.ebuild:
+  closing bug #53236 (Jaco Kroon), #53082: smbget and mount.cifs
+
+  15 Jun 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.2a-r2.ebuild:
+  minor initscript fix (as per bug #53962), oav support fix (#52009, Alessandro
+  Pisani)
+
+  14 Jun 2004; Aron Griffis <agriffis@gentoo.org> samba-3.0.4-r1.ebuild:
+  Fix use invocation
+
+  12 Jun 2004; Christian Andreetta <satya@gentoo.org> metadata.xml,
+  files/samba-init:
+  minor init script, as per bug #53676
+
+*samba-3.0.4-r1 (11 Jun 2004)
+
+  11 Jun 2004; Christian Andreetta <satya@gentoo.org> samba-3.0.4-r1.ebuild,
+  files/samba-3.0.4-python-setup.patch, files/samba-3.0.4.patch,
+  files/samba-init files/samba-conf:
+  version bump. new initscripts. _very_ nice group work for bug #48871,
+  which resolves 30151, 31208, 36465, 38190, 41796, 42557, 49463 also.
+
+  12 May 2004; Michael McCabe <randy@gentoo.org> samba-3.0.2a-r2.ebuild:
+  Added s390 keywords
+
+  10 May 2004; Michael Sterrett <mr_bones_@gentoo.org> samba-2.2.8a.ebuild,
+  samba-3.0.0-r1.ebuild, samba-3.0.1.ebuild, samba-3.0.2a-r1.ebuild:
+  prune old ebuilds
+
+  04 May 2004; Michael Sterrett <mr_bones_@gentoo.org> samba-3.0.2a.ebuild:
+  clean extra ebuild
+
+  29 Apr 2004; Lars Weiler <pylon@gentoo.org> samba-3.0.2a-r2.ebuild:
+  stable on ppc
+
+  27 Apr 2004; Joshua Kinard <kumba@gentoo.org> samba-3.0.2a-r2.ebuild:
+  Marked stable on mips.
+
+  27 Apr 2004; Travis Tilley <lv@gentoo.org> samba-3.0.2a-r2.ebuild:
+  stable on amd64
+
+  27 Apr 2004; Guy Martin <gmsoft@gentoo.org> samba-3.0.2a-r2.ebuild:
+  Marked stable on hppa.
+
+  27 Apr 2004; Brandon Hale <tseng@gentoo.org> samba-3.0.2a-r2.ebuild:
+  Stable on x86.
+
+  27 Apr 2004; Jason Wever <weeve@gentoo.org> samba-3.0.2a-r2.ebuild:
+  Stable on sparc wrt bug #41800.
+
+  27 Apr 2004; Bryan Østergaard <kloeri@gentoo.org> samba-3.0.2a-r2.ebuild:
+  Keyworded alpha, see bug #41800.
+
+*samba-3.0.2a-r2 (26 Apr 2004)
+
+  26 Apr 2004; <solar@gentoo.org> samba-3.0.2a-r2.ebuild, samba-3.0.2a.ebuild:
+  net-fs/samba 3.x + kernel 2.6.x local root vulnerability - bug #41800
+
+  22 Apr 2004; Jason Wever <weeve@gentoo.org> samba-3.0.2a-r1.ebuild:
+  Fixed ebuild to ensure we're in the right place before applying the smbprint
+  patch. Only should have effected PPC and SPARC.
+
+*samba-3.0.2a-r1 (21 Apr 2004)
+
+  21 Apr 2004; Deedra Waters,,, <dmwaters@gentoo.org> samba-3.0.2a-r1.ebuild,
+  files/samba-3.0.2a-smbprint.patch:
+  committing samba-3.0.2a-r1.ebuildsamba-3.0.2a-r1.ebuild.
+  This ebuild will fix a local root exploitsee #41800 for more info.
+  Thanks to mglauche and condordes for theese fixes.
+
+  15 Apr 2004; Joshua Kinard <kumba@gentoo.org> samba-3.0.2a.ebuild:
+  mips needs the statfs patch too, it seems.
+
+  23 Mar 2004; Jon Portnoy <avenj@gentoo.org> samba-3.0.0-r1.ebuild,
+  samba-3.0.1-r1.ebuild, samba-3.0.1.ebuild, samba-3.0.2a.ebuild :
+  Fix broken USE constructs with 'amd64? () :'
+
+  23 Mar 2004; Joshua Kinard <kumba@gentoo.org> samba-2.2.8a.ebuild,
+  samba-3.0.2a.ebuild:
+  Marked stable on mips.
+
+  14 Mar 2004; Tom Gall <tgall@gentoo.org> samba-3.0.0-r1.ebuild,
+  samba-3.0.1-r1.ebuild, samba-3.0.1.ebuild, samba-3.0.2a.ebuild:
+  remove ppc64 for now
+
+*samba-3.0.2a (15 Feb 2004)
+
+  15 Feb 2004; Donny Davies <woodchip@gentoo.org> samba-3.0.2a.ebuild,
+  files/smb.conf.example-samba3:
+  #30019; USE=kerberos isn't enough to build ADS, #36296; code page typos
+  in sample config file, #36454; quotas.h build headaches, #36782; USE=xml
+  DEPENDS missing.  Update to smbldap tools 0.8.4.
+
+  17 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> :
+  manifest fix
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> samba-3.0.1-r1.ebuild:
+  set ppc in keywords
+
+  16 Jan 2004; Bartosch Pixa <darkspecter@gentoo.org> samba-3.0.1-r1.ebuild:
+  ppc needs the statfs patch too
+
+  07 Jan 2004; <agriffis@gentoo.org> samba-3.0.1-r1.ebuild:
+  add ~alpha and ia64 to keywords
+
+*samba-3.0.1-r1 (24 Dec 2003)
+
+  24 Dec 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.1-r1.ebuild:
+  Include patch from Michal in bug #36200; hardwire
+  #define LINUX_QUOTAS_1 to help with sys-kernel/linux-headers dependency.
+
+  23 Dec 2003; Brad House <brad_mssw@gentoo.org> samba-3.0.1.ebuild:
+  samba 3.0.1 won't compile with the latest ~arch'd linux-headers for any
+  platform. It requires headers > 2.4.21 apparently. When it's fixed, it can be
+  unmasked again, though there are supposedly problems with other apps.
+
+*samba-3.0.1 (20 Dec 2003)
+
+  20 Dec 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.1.ebuild:
+  Version bump and add mount.cifs as from Antonio in #30834.
+
+  17 Dec 2003; Lars Weiler <pylon@gentoo.org> samba-3.0.0-r1.ebuild:
+  Stable on PPC
+
+  09 Dec 2003; <spider@gentoo.org> samba-3.0.0-r1.ebuild, samba-3.0.0.ebuild,
+  files/smb.conf.example-samba3:
+  Fixing chown issues.
+
+  02 Nov 2003; Donny Davies <woodchip@gentoo.org> metadata.xml:
+  Add metadata.xml.
+
+  17 Oct 2003; Joshua Kinard <kumba@gentoo.org> samba-2.2.8a.ebuild,
+  samba-3.0.0-r1.ebuild:
+  Added ~mips to KEYWORDS; Works for me well on mips, but still need wider use
+
+*samba-3.0.0-r1 (25 Sep 2003)
+
+  25 Sep 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0-r1.ebuild,
+  files/smb.conf.example-samba3, files/winbind-init:
+  This is what should have been samba-3.0.0.ebuild; was out of my control,
+  sigh.  Added three more VFS modules: cap, default_quota, readonly.  Added
+  the IDEALX scripts for managing LDAP backend user accounts, also the
+  mkntpwd utility.  Added the clamav vscan plugin.  Added a decent
+  smb.conf.example file, which documents important Samba-3 options.
+  Tidied up the winbind rc-script.  Some documentation fixes.
+  Various miscellaneous ebuild housekeeping.
+
+  26 Sep 2003; Martin Holzer <mholzer@gentoo.org> samba-3.0.0.ebuild:
+  minor ebuild fixes.
+
+*samba-3.0.0 (25 Sep 2003)
+
+  25 Sep 2003; Patrick Kursawe <phosphan@gentoo.org> samba-3.0.0.ebuild:
+  Version bump
+
+*samba-3.0.0_rc4 (15 Sep 2003)
+
+  15 Sep 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0_rc4.ebuild:
+  Update to latest _rc.
+
+*samba-3.0.0_rc3 (10 Sep 2003)
+
+  10 Sep 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0_rc3.ebuild:
+  Bump to latest _rc plus latest samba-vscan.  All USE options should
+  build ok again.  This code is going gold soon, we just need to tidy
+  up the sample smb.conf.
+
+  04 Sep 2003; Jason Wever <weeve@gentoo.org> samba-3.0.0_rc2.ebuild:
+  Added previous patch from samba-2.2.8a to samba-3.0.0_rc2 to finish fixing bug
+  #27858.
+
+  03 Sep 2003; Jason Wever <weeve@gentoo.org> samba-2.2.8a.ebuild,
+  files/samba-2.2.8-statfs.patch:
+  Added a patch to samba to fix bug #27858. Patch originated from IBM at
+  http://oss.software.ibm.com/linux/patches/?patch_id=764.
+
+*samba-3.0.0_rc2 (29 Aug 2003)
+
+  29 Aug 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0_rc2.ebuild:
+  This is the plain samba-3.0.0rc2 release with a patch for the Python
+  extensions build.
+
+*samba-3.0.0_rc1-r1 (21 Aug 2003)
+
+  21 Aug 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0_rc1-r1.ebuild,
+  files/samba-3.0.0-python-setup.patch:
+  SAMBA_3_0 CVS snapshot from 20030821 plus the latest samba-vscan CVS
+  snapshot 0.3.4beta2cvs.  USE flags python and oav appear to be
+  casualties of recent changes; patches welcome.  The "Using Samba"
+  book moved to it's own CVS module, it's not in here anymore.
+
+*samba-3.0.0_beta3-r1 (20 Jul 2003)
+
+  20 Jul 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0_beta1-r1.ebuild,
+  samba-3.0.0_beta3-r1.ebuild:
+  SAMBA_3_0 CVS snapshot from 20030720; basically the beta3 release with
+  added bug fixes.  Latest samba-vscan CVS snapshot HEAD-07-09-2003 is
+  included.  All USE flags should build ok.  See WHATSNEW.txt again for
+  important changes to idmap and winbindd.
+
+*samba-3.0.0_beta2-r1 (06 Jul 2003)
+
+  06 Jul 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0_beta2-r1.ebuild:
+  SAMBA_3_0 CVS snapshot from 20030706; an slightly updated beta2 release.
+  The latest samba-vscan CVS snapshot in included, I had trouble accessing
+  their CVS.  All USE flags build OK here.  See WHATSNEW.txt for
+  information on IdMap LDAP support and Trust Relationships.
+
+*samba-3.0.0_beta1-r1 (17 Jun 2003)
+
+  17 Jun 2003; Donny Davies <woodchip@gentoo.org> samba-3.0.0_beta1-r1.ebuild:
+  This is another SAMBA_3_0 CVS snapshot as pulled on 20030616, so it's newer
+  than the actual beta1 release.  USE flags `oav' and `python' are broken
+  right now, and nisplussam still doesnt build yet (commented out).
+
+*samba-3.0_alpha24-r1 (28 May 2003)
+
+  28 May 2003; Donny Davies <woodchip@gentoo.org> Manifest,
+  samba-3.0_alpha24-r1.ebuild, files/samba-pdb_ldap-exop.patch:
+  This is basically SAMBA_3_0 as pulled from CVS on 20030528 with a small
+  patch to fix `ldap passwd sync' against an OpenLDAP-2.1.x server.
+  `oav' USE flag DOESNT work right now, neither does the nisplussam passdb.
+
+*samba-3.0_alpha23 (11 Apr 2003)
+
+  11 Apr 2003; Donny Davies <woodchip@gentoo.org> samba-3.0_alpha23.ebuild:
+  Chase latest; nuke `torture' target; seems broken at the moment :\
+
+*samba-2.2.8a (07 Apr 2003)
+
+  07 Apr 2003; Daniel Ahlberg <aliz@gentoo.org> samba-2.2.8a.ebuild :
+  Security update.
+
+  28 Mar 2003; Donny Davies <woodchip@gentoo.org> :
+  Clean out all old stuff.
+
+*samba-2.2.8 (15 Mar 2003)
+
+  07 Apr 2003; Guy Martin <gmsoft@gentoo.org> samba-2.2.8.ebuild :
+  Added hppa to KEYWORDS.
+
+  15 Mar 2003; Daniel Ahlberg <aliz@gentoo.org> :
+  Security update.
+
+*samba-3.0_alpha22 (11 Mar 2003)
+
+  11 Mar 2003; Donny Davies <woodchip@gentoo.org> : Version bump.  Add
+  dynrpc modules.  Fix readline configure.  Python stuff still has issues.
+
+*samba-2.2.8_pre2 (01 Mar 2003)
+
+  01 Mar 2003; Donny Davies <woodchip@gentoo.org> : About another 30 bugs
+  fixed in this _pre update.  Quell smbwrapper/smbsh.
+
+*samba-3.0_alpha21 (22 Feb 2003)
+
+  22 Feb 2003; Donny Davies <woodchip@gentoo.org> : Initial import.
+  Added to package.mask for now.
+
+*samba-2.2.8_pre1 (22 Feb 2003)
+
+  22 Feb 2003; Donny Davies <woodchip@gentoo.org> : This _pre update fixes
+  about 30 bugs; see WHATSNEW.txt.  Updated to samba-vscan-0.3.2.  Install
+  libsmbclient.h #15357.  Added --with-winbind-auth-challenge #15748.  Add
+  --with-winbind-ldap-hack if USE=ldap.  Re-org some stuff.
+
+  27 Jan 2003; Donny Davies <woodchip@gentoo.org> : #14644 adds reload().
+
+*samba-2.2.7a (16 Dec 2002)
+
+  16 Dec 2002; Donny Davies <woodchip@gentoo.org> : Update to latest,
+  fixes large file copying bug, among others.  Changed the 'vscan'
+  USE flag to 'oav'.  Added description for that to use.desc.
+
+*samba-2.2.7 (20 Nov 2002)
+
+  15 Dec 2002; Bjoern Brauel <bjb@gentoo.org> samba-2.2.7.ebuild :
+  Add alpha to KEYWORDS
+
+  07 Dec 2002; Jack Morgan <jmorgan@gentoo.org> samba-2.2.5-r1.ebuild, 
+  samba-2.2.6-r2.ebuild, samba-2.2.7.ebuild :
+  Changed sparc64 to sparc keyword samba-2.2.5-r1.ebuild
+  Changed ~sparc64 to ~sparc keyword samba-2.2.6-r2.ebuild, samba-2.2.7.ebuild
+
+  20 Nov 2002; Donny Davies <woodchip@gentoo.org> : Chase latest.  This release
+  fixes a security problem.  --with-lockdir is changed to /var/cache/samba;
+  thanks Achim for #10819.  Marked as latest stable.  Fix problem with USE=ldap
+  and export VISUAL.
+
+*samba-2.2.6-r2 (07 Nov 2002)
+
+  07 Nov 2002; Donny Davies <woodchip@gentoo.org> : Added patch to fix fd leak.
+  Made pam support optional.  Added --with-sendfile-support.  Fixup digest (vscan).
+  Fix for #9249.
+
+*samba-2.2.6-r1 (26 Oct 2002)
+
+  26 Oct 2002; Jon Nall <nall@gentoo.org> : samba expects ldap to depend on sasl
+  in order for libresolv.so to get linked in, but ldap need not be compiled with
+  sasl support. in this case samba needs to link in libresolv.so
+
+*samba-2.2.6 (24 Oct 2002)
+
+  26 Oct 2002; Donny Davies <woodchip@gentoo.org> : Fix openldap dependency :)
+
+  25 Oct 2002; Donny Davies <woodchip@gentoo.org> : Fix openldap dependency from #9249.
+
+  24 Oct 2002; Donny Davies <woodchip@gentoo.org> : Chase latest release.  New local USE
+  vscan flag for building the openantivirus project plugins.  Added several more ldap files
+  and scripts.  Now builds the bundled VFS plugins.  Added more docs and findsmb script.
+  Added lazy smbumount and VFS plugins reloc patches.
+
+*samba-2.2.5-r1 (Aug 27 2002)
+
+  20 Oct 2002; Michael Cohen <mjc@gentoo.org> samba-2.2.5-r1.ebuild:
+  added portldap use flag for my nifty ldap stuff coming up.  no need 
+  to bump version.
+
+  27 Aug 2002; Donny Davies <woodchip@gentoo.org> samba-2.2.5-r1.ebuid,
+  smb.conf.example :  Fix #6936; thanks shadow@ines.ro.  Fix #7133, thanks
+  klebermass@limtec.de.
+
+*samba-2.2.5 (23 Jun 2002)
+
+  25 Aug 2002; Jack Morgan <jmorgan@gentoo.org> : Added sparc64 keyword
+
+  14 Aug 2002; Pieter Van den Abeele <pvdabeel@gentoo.org> : Added ppc keyword
+
+  23 Jun 2002; Donny Davies <woodchip@gentoo.org> :
+  Update to latest; samba-2.2.5.  Please see the samba WHATSNEW.txt file
+  in /usr/doc/samba for the detailed fixes.  
+
+*samba-2.2.4-r1 (13 May 2002)
+
+  13 May 2002; Donny Davies <woodchip@gentoo.org> :  Install smbmnt and smbumount
+  suid root, close #2635. Pass --bindir to ./configure, close #2515. Add a few
+  more codepages.
+
+*samba-2.2.4 (6 May 2002)
+  
+  6 May 2002; Donny Davies <woodchip@gentoo.org> samba-2.2.4.ebuild,
+  smb.conf.example, system-auth-winbind, samba-svc, winbind-init, lmhosts,
+  samba-init, nsswitch.conf-winbind, nsswitch.conf-wins :
+  Added a much better smb.conf.example.  Added smbwrapper (smbsh).  Added
+  libnss_winbind (see /etc/nsswitch.conf-winbind).  Added libnss_wins
+  (see /etc/nsswitch.conf-wins).  Added libsmbclient.  Added USE ssl and
+  ldap support.  Added better winbind support including an example
+  nsswitch.conf, a pam.d/ service snippet and a winbind initscript.  Also
+  see smb.conf.example.  Mucho cleaned up the docs (no more 2 copies of
+  the book!).  Removed the recycle bin patches.  Removed the afs patch.
+  Added a few convenience directories for netlogon, profiles, samba-hosted
+  printer drivers and the samba spool directory.
+
+*samba-2.2.3a-r3 (3 May 2002)
+  
+  3 May 2002; Donny Davies <woodchip@gentoo.org> : Added LICENSE, SLOT, $Headers.
+
+*samba-2.2.3a-r2 (27 March 2002)
+
+  27 March 2002; Donny Davies <woodchip@gentoo.org> samba-2.2.3a-r2.ebuild,
+  swat.xinetd, smbusers, samba.rc6, samba-2.2.3a-srv_spoolss_nt.patch :
+  /etc/smb has moved to the better-suited /etc/samba directory.  Simply move
+  your /etc/smb/* to /etc/samba.  Then delete the /etc/samba/codepages
+  directory.  These files are now in /var/lib/samba/codepages.  /var/run/smb
+  has moved to /var/run/samba.  Simply move your /var/run/smb/* to
+  /var/run/samba.  If you have the string "/etc/smb" in your smb.conf file,
+  then please change all occurances of that to "/etc/samba".  Added a
+  sample smbusers file.  Added an xinetd snippet for the swat service.
+  Added a patch to fix changing printer properties from Windows NT.
+
+  10 March 2002; Donny Davies <woodchip@gentoo.org> files/samba.rc6 :
+  Tweak initscript to kill the daemons via pidfile.
+
+*samba-2.2.3a-r1 (5 March 2002)
+
+  5 March 2002; M.Schlemmer <azarah@gentoo.org> samba-2.2.3a-r1.ebuild,
+  samba-2.2.3a-loadparm.c.patch, samba-2.2.3a-proto.c.patch,
+  samba-2.2.3a-reply.h.patch :
+  Move the patches to ${FILESDIR}, as they have the same names as those for
+  2.2.2, but is not the same, thus ibiblio do not cache the new ones, and
+  we get digest errors.
+
+*samba-2.2.3a (4 March 2002)
+
+  4 March 2002; Donny Davies <woodchip@gentoo.org> samba-2.2.3a.ebuild, 
+  files/samba-2.2.3a-cli_spoolss_notify.diff, files/samba-2.2.3a-pam_smbpass.diff,
+  files/samba-2.2.2-XFS-quota.diff :
+  Added acl USE flag support, patch to fix pam_smbpass compilation, patch for Win2k
+  printing and removed XFS quota patch -- its merged upstream.  Updated to latest
+  network recycle bin patches.  If you get md5 checksum errors with the recycle bin
+  patches then:  delete the 3 patches from your local distfiles, and comment out
+  your GENTOO_MIRRORS from make.conf/make.globals.  This will ensure that the
+  proper patches are fetched from the author's site.
+
+*samba-2.2.2-r9 (2 March 2002)
+
+  2 March 2002; M.Schlemmer <azarah@gentoo.org> samba-2.2.2-r9.ebuild :
+  Added creation of symlink for supporting cups printing.
 
 *samba-2.2.2-r8 (1 Feb 2002)
 
-  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :
-  
+  1 Feb 2002; G.Bevin <gbevin@gentoo.org> ChangeLog :  
   Added initial ChangeLog which should be updated whenever the package is
   updated in any way. This changelog is targetted to users. This means that the
   comments should well explained and written in clean English. The details about

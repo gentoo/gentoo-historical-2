@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wepattack/wepattack-0.1.3-r2.ebuild,v 1.1 2005/06/22 00:04:19 vanquirius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wepattack/wepattack-0.1.3-r2.ebuild,v 1.1.1.1 2005/11/30 09:45:30 chriswhite Exp $
 
 inherit eutils
 
@@ -17,7 +17,7 @@ IUSE="john"
 DEPEND="sys-libs/zlib
 	virtual/libpcap
 	dev-libs/openssl
-	john? (app-crypt/johntheripper)"
+	john? ( app-crypt/johntheripper )"
 
 S=${WORKDIR}/${MY_P}
 

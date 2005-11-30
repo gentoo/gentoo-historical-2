@@ -1,10 +1,60 @@
 # ChangeLog for dev-java/jzlib
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jzlib/ChangeLog,v 1.1 2004/02/14 04:42:26 strider Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jzlib/ChangeLog,v 1.1.1.1 2005/11/30 09:47:48 chriswhite Exp $
+
+  10 Nov 2005; Petteri Räty <betelgeuse@gentoo.org> jzlib-1.0.5.ebuild:
+  Changed the license back to jcraft after of a request from axxo.
+
+  06 Nov 2005; Petteri Räty <betelgeuse@gentoo.org> jzlib-1.0.5.ebuild:
+  Changed the license to BSD and removed mirror restriction because we are
+  allowed to mirror jzlib. Fixes bug #111717.
+
+  09 Jul 2005; Thomas Matthijs <axxo@gentoo.org> jzlib-1.0.5.ebuild:
+  fix deps, and source useflag support, small cleanup
+
+  26 Jan 2005; Markus Rothe <corsair@gentoo.org> jzlib-1.0.5.ebuild:
+  Stable on ppc64
+
+  19 Dec 2004; Chris Aniszczyk <zx@gentoo.org> jzlib-1.0.5.ebuild:
+  Fix for #74798
+
+  18 Dec 2004; Markus Rothe <corsair@gentoo.org> jzlib-1.0.5.ebuild:
+  added ~ppc64 to KEYWORDS
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> jzlib-1.0.5.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  21 May 2004; Chris Aniszczyk <zx@gentoo.org> jzlib-1.0.5.ebuild:
+  Marking stable on x86
+
+*jzlib-1.0.5 (21 May 2004)
+
+  21 May 2004; Chris Aniszczyk <zx@gentoo.org> files/jzlib_build.xml,
+  +jzlib-1.0.5.ebuild:
+  Version bump. Closes #51628
+  Thanks to Pavel <hlobil@sympatico.ca> for the heads up.
+
+  04 May 2004; <SeJo@gentoo.org> jzlib-1.0.4.ebuild:
+  added ~ppc
+
+*jzlib-1.0.4 (30 Mar 2004)
+
+  30 Mar 2004; Chris Aniszczyk <zx@gentoo.org> jzlib-1.0.3.ebuild,
+  jzlib-1.0.4.ebuild:
+  Clean up. Version bump. Closes #45708
+  Thanks to Pavel <hlobil@sympatico.ca> for the cleaned up ebuild.
+
+  23 Mar 2004; David Holm <dholm@gentoo.org> jzlib-1.0.3.ebuild:
+  Backed out of ~ppc.
+
+  22 Mar 2004; David Holm <dholm@gentoo.org> jzlib-1.0.3.ebuild:
+  Added to ~ppc.
 
 *jzlib-1.0.3 (14 Feb 2004)
 
   14 Feb 2004; Adrian Almenar <strider@gentoo.org> jzlib-1.0.3.ebuild,
   metadata.xml, files/jzlib_build.xml:
   Initial import of jzlib, needed for jsch.
+  jzlib_build.xml taken from jzlib SRC RPM from Jpackage.org.
 

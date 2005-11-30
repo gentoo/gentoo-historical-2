@@ -1,6 +1,60 @@
 # ChangeLog for x11-drivers/xf86-video-i810
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-i810/ChangeLog,v 1.1 2005/08/08 07:08:31 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-video-i810/ChangeLog,v 1.1.1.1 2005/11/30 09:44:43 chriswhite Exp $
+
+*xf86-video-i810-1.4.1 (11 Nov 2005)
+
+  11 Nov 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.4.1.ebuild:
+  Bump for 7.0RC2.
+
+*xf86-video-i810-1.4.0.1 (20 Oct 2005)
+
+  20 Oct 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  +xf86-video-i810-1.4.0.1.ebuild:
+  Bump for 7.0 RC1.
+
+  09 Sep 2005; Donnie Berkholz <spyderous@gentoo.org>; +metadata.xml:
+  Add metadata.
+
+  06 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  xf86-video-i810-1.4.0-r3.ebuild:
+  Moved x11-libs/libXvMC from DEPEND to RDEPEND.
+
+  02 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -files/xf86-video-i810-1.4.0-add-i830-shadow.patch:
+  Oops, missed removing this patch in the first run.
+
+*xf86-video-i810-1.4.0-r3 (02 Sep 2005)
+
+  02 Sep 2005; Joshua Baergen <joshuabaergen@gentoo.org>
+  -files/1.4.0-i810-unresolved-symbols.patch,
+  -xf86-video-i810-1.4.0-r2.ebuild, +xf86-video-i810-1.4.0-r3.ebuild:
+  Sent a new snapshot to the mirrors bringing this driver in sync with CVS.  This
+  snapshot includes both prior patches.  Also added the x11-libs/XvMC dep as
+  XvMC support has been added as required for the time being.
+
+  23 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  -xf86-video-i810-1.4.0.ebuild, -xf86-video-i810-1.4.0-r1.ebuild:
+  Pull old versions.
+
+*xf86-video-i810-1.4.0-r2 (23 Aug 2005)
+
+  23 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/1.4.0-i810-unresolved-symbols.patch,
+  +xf86-video-i810-1.4.0-r2.ebuild:
+  (fd.o #4066) Add 1.4.0-i810-unresolved-symbols.patch to make i810 driver work.
+
+  12 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>; -files/dri.patch:
+  Pull unused patch.
+
+*xf86-video-i810-1.4.0-r1 (12 Aug 2005)
+
+  12 Aug 2005; Donnie Berkholz <spyderous@gentoo.org>;
+  +files/xf86-video-i810-1.4.0-add-i830-shadow.patch,
+  +xf86-video-i810-1.4.0-r1.ebuild:
+  Bump to link in i830_shadow.c. This should allow X to start properly.
+  Reported by Joshua Baerge <joshuabaergen@gentoo.org>.
 
 *xf86-video-i810-1.4.0 (08 Aug 2005)
 

@@ -1,6 +1,6 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict/stardict-2.4.1.ebuild,v 1.1 2003/10/30 10:02:39 liquidx Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/stardict/stardict-2.4.1.ebuild,v 1.1.1.1 2005/11/30 09:46:53 chriswhite Exp $
 
 inherit gnome2
 
@@ -9,7 +9,6 @@ inherit gnome2
 #       seperate for now.
 
 IUSE=""
-S=${WORKDIR}/${P}
 DESCRIPTION="A GNOME2 international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict.sourceforge.net/ http://cosoft.org.cn/projects/stardict/"
 SRC_URI="mirror://sourceforge/stardict/${P}.tar.bz2"
@@ -17,7 +16,7 @@ SRC_URI="mirror://sourceforge/stardict/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 # when adding keywords, remember to add to stardict.eclass
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="x86 ppc"
 
 
 RDEPEND=">=gnome-base/libbonobo-2.2.0
@@ -26,8 +25,9 @@ RDEPEND=">=gnome-base/libbonobo-2.2.0
 	>=sys-libs/zlib-1.1.4
 	>=gnome-base/gconf-1.2
 	>=dev-libs/popt-1.7
-	>=gnome-base/ORBit2-2.6
-	>=x11-libs/gtk+-2"
+	>=gnome-base/orbit-2.6
+	>=x11-libs/gtk+-2
+	app-text/scrollkeeper"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig"
@@ -50,3 +50,17 @@ pkg_postinst() {
 	echo
 	einfo "  emerge -s stardict-"
 }
+
+CFLAGS="${CFLAGS} \
+	-UG_DISABLE_DEPRECATED \
+	-UGDK_DISABLE_DEPRECATED \
+	-UGDK_PIXBUF_DISABLE_DEPRECATED \
+	-UGTK_DISABLE_DEPRECATED \
+	-UGNOME_DISABLE_DEPRECATED"
+
+CXXFLAGS="${CXXFLAGS} \
+	-UG_DISABLE_DEPRECATED \
+	-UGDK_DISABLE_DEPRECATED \
+	-UGDK_PIXBUF_DISABLE_DEPRECATED \
+	-UGTK_DISABLE_DEPRECATED \
+	-UGNOME_DISABLE_DEPRECATED"

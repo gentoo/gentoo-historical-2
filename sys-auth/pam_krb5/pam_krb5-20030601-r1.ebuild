@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_krb5/pam_krb5-20030601-r1.ebuild,v 1.1 2005/07/02 21:20:57 flameeyes Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-auth/pam_krb5/pam_krb5-20030601-r1.ebuild,v 1.1.1.1 2005/11/30 09:45:20 chriswhite Exp $
 
 inherit eutils
 
@@ -14,7 +14,7 @@ HOMEPAGE="http://pam-krb5.sourceforge.net/"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="~x86 ~ppc"
+KEYWORDS="~x86 ~ppc ~amd64"
 IUSE="afs"
 
 DEPEND="virtual/krb5
@@ -33,19 +33,18 @@ src_unpack() {
 src_compile() {
 	local myconf
 	use afs && myconf="${myconf} --with-krbafs=/usr"
-	CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" ./configure \
-		--prefix=/usr \
-		--sysconfdir=/etc \
-		--localstatedir=/var \
-		--with-pamdir=/lib/security \
-		--with-krb5=/usr \
-		--host=${CHOST} ${myconf} || die "./configure failed."
-	make CFLAGS="$CFLAGS" || die
+	CFLAGS="${CFLAGS}" CXXFLAGS="{$CXXFLAGS}" \
+		econf \
+			--localstatedir=/var \
+			--with-pamdir=/lib/security \
+			--with-krb5=/usr \
+			${myconf} || die "./configure failed."
+
+	emake CFLAGS="${CFLAGS}" || die
 }
 
 src_install() {
-	exeinto /lib/security
-	doexe .libs/pam_krb5.so
+	make DESTDIR=${D} install || die
 
 	if use afs ; then
 		if [ -f .libs/pam_krb5afs.so ]; then
@@ -56,7 +55,7 @@ src_install() {
 
 	doman pam_krb5.5 pam_krb5.8
 
-	dodoc AUTHORS ChangeLog COPYING INSTALL NEWS README README.heimdal TODO
+	dodoc AUTHORS ChangeLog NEWS README README.heimdal TODO
 
 	docinto pam.d
 	dodoc pam.d/*

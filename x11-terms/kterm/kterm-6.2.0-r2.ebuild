@@ -1,6 +1,8 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/kterm/kterm-6.2.0-r2.ebuild,v 1.1 2004/01/06 21:45:23 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/kterm/kterm-6.2.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:46:33 chriswhite Exp $
+
+inherit eutils
 
 IUSE="Xaw3d"
 
@@ -12,11 +14,9 @@ SRC_URI="ftp://ftp.x.org/contrib/applications/${P}.tar.gz
 HOMEPAGE="http://www.asahi-net.or.jp/~hc3j-tkg/kterm/"
 LICENSE="X11"
 SLOT="0"
-KEYWORDS="~x86 ~sparc -alpha ~ppc"
+KEYWORDS="x86 ~sparc -alpha ppc ~ppc-macos"
 
-DEPEND="${RDEPEND}
-	app-i18n/nkf"
-RDEPEND="virtual/x11
+DEPEND="virtual/x11
 	sys-libs/ncurses
 	Xaw3d? ( x11-libs/Xaw3d )"
 
@@ -29,8 +29,7 @@ src_unpack(){
 	epatch ${FILESDIR}/${P}-gentoo.patch
 	epatch ${FILESDIR}/${PN}-ad-gentoo.diff
 
-	if [ `use Xaw3d` ]
-	then
+	if use Xaw3d ; then
 		epatch ${FILESDIR}/kterm-6.2.0-Xaw3d.patch
 	fi
 }
@@ -48,10 +47,8 @@ src_install(){
 	# install man pages
 	newman kterm.man kterm.1
 	insinto /usr/share/man/ja/man1
-	nkf -e kterm.jman > kterm.ja.1
+	iconv -f ISO-2022-JP -t EUC-JP kterm.jman > kterm.ja.1
 	newins kterm.ja.1 kterm.1
-
-	tic terminfo.kt -o${D}/usr/share/terminfo || die "tic failed"
 
 	dodoc README.kt
 }

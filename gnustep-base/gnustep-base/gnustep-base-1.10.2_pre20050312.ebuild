@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/gnustep-base-1.10.2_pre20050312.ebuild,v 1.1 2005/03/17 20:52:30 fafhrd Exp $
+# $Header: /var/cvsroot/gentoo-x86/gnustep-base/gnustep-base/gnustep-base-1.10.2_pre20050312.ebuild,v 1.1.1.1 2005/11/30 09:46:20 chriswhite Exp $
 
 ECVS_CVS_COMMAND="cvs -q"
 ECVS_SERVER="savannah.gnu.org:/cvsroot/gnustep"
@@ -22,17 +22,17 @@ KEYWORDS="~ppc ~x86 ~amd64 ~sparc ~alpha"
 SLOT="0"
 LICENSE="GPL-2 LGPL-2.1"
 
-IUSE="${IUSE} doc gcc-libffi"
+IUSE="doc gcc-libffi"
 DEPEND="${GNUSTEP_CORE_DEPEND}
 	>=gnustep-base/gnustep-make-1.10.1_pre20050312
 	|| (
 		gcc-libffi? ( >=sys-devel/gcc-3.3.2 )
-		>=dev-libs/libffi-3* )
-	>=dev-libs/libxml2-2.6*
-	>=dev-libs/libxslt-1.1*
-	>=dev-libs/gmp-4.1*
-	>=dev-libs/openssl-0.9.7*
-	>=sys-libs/zlib-1.2*
+		>=dev-libs/libffi-3 )
+	>=dev-libs/libxml2-2.6
+	>=dev-libs/libxslt-1.1
+	>=dev-libs/gmp-4.1
+	>=dev-libs/openssl-0.9.7
+	>=sys-libs/zlib-1.2
 	sys-apps/sed
 	${DOC_DEPEND}"
 RDEPEND="${DEPEND}
@@ -112,4 +112,3 @@ src_install() {
 	fi
 	egnustep_package_config
 }
-

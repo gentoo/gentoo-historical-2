@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/eterm/eterm-0.9.2-r6.ebuild,v 1.1 2004/09/23 03:05:03 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/eterm/eterm-0.9.2-r6.ebuild,v 1.1.1.1 2005/11/30 09:46:36 chriswhite Exp $
 
 inherit eutils
 
@@ -12,18 +12,16 @@ HOMEPAGE="http://www.eterm.org/"
 SRC_URI="mirror://sourceforge/eterm/${MY_P}.tar.gz
 	mirror://sourceforge/eterm/${MY_PN}-bg-${PV}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ppc sparc x86"
 IUSE="mmx etwin escreen"
 
 DEPEND="virtual/x11
-	>=x11-libs/libast-0.5
+	<x11-libs/libast-0.6
 	media-libs/imlib2
-	>=sys-devel/binutils-2.13*
 	etwin? ( app-misc/twin )
-	escreen? ( app-misc/screen )
-	>=sys-apps/sed-4"
+	escreen? ( app-misc/screen )"
 
 src_unpack() {
 	unpack ${MY_P}.tar.gz

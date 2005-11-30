@@ -1,6 +1,45 @@
 # ChangeLog for dev-java/jdbc-informix
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-informix/ChangeLog,v 1.1 2003/05/14 19:54:20 absinthe Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jdbc-informix/ChangeLog,v 1.1.1.1 2005/11/30 09:47:09 chriswhite Exp $
+
+  18 Aug 2005; Michael Hanselmann <hansmi@gentoo.org>
+  jdbc-informix-221-r5.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  jdbc-informix-221-r4.ebuild, jdbc-informix-221-r5.ebuild:
+  Unkeyworded sparc, none tested this, bad keywording
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org>
+  jdbc-informix-221-r5.ebuild:
+  stable on amd64
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r5.ebuild:
+  keyword x86
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r4.ebuild, jdbc-informix-221-r5.ebuild:
+  fix 62589
+
+  22 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r4.ebuild, jdbc-informix-221-r5.ebuild:
+  global addpredit == evil
+
+*jdbc-informix-221-r5 (20 Oct 2004)
+
+  20 Oct 2004; Dylan Carlson <absinthe@gentoo.org>
+  jdbc-informix-221-r4.ebuild, +jdbc-informix-221-r5.ebuild:
+  Fixed HOMEPAGE. Version bump. Added ~amd64 keywords.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org>
+  jdbc-informix-221-r4.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  10 Feb 2004; Adrian Almenar <strider@gentoo.org>
+  jdbc-informix-221-r4.ebuild:
+  Removed alpha keyword.
 
 *jdbc-informix-221-r4 (14 May 2003)
 

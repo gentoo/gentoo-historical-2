@@ -1,6 +1,264 @@
-# ChangeLog for net-mail/mutt
-# Copyright 2002-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.1 2004/05/30 02:51:41 seemant Exp $
+# ChangeLog for mail-client/mutt
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/mail-client/mutt/ChangeLog,v 1.1.1.1 2005/11/30 09:49:41 chriswhite Exp $
+
+  19 Nov 2005; Markus Rothe <corsair@gentoo.org> mutt-1.5.11.ebuild:
+  Stable on ppc64; bug #112609
+
+  18 Nov 2005; Michael Hanselmann <hansmi@gentoo.org> mutt-1.5.11.ebuild:
+  Stable on hppa, ppc.
+
+  15 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org> mutt-1.5.11.ebuild:
+  Stable on sparc wrt #112609
+
+  15 Nov 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.11.ebuild:
+  Mark 1.5.11 stable on alpha/amd64/ia64/x86
+
+  29 Sep 2005; Fabian Groffen <grobian@gentoo.org> mutt-1.5.11.ebuild:
+  Rekeywording for ~ppc-macos (bug #106498)
+
+  19 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  +files/mutt-1.5.11-sasl.patch, mutt-1.5.11.ebuild:
+  fix sasl wrt bug #106545
+
+*mutt-1.5.11 (19 Sep 2005)
+
+  19 Sep 2005; Fernando J. Pereda <ferdy@gentoo.org> metadata.xml,
+  +mutt-1.5.11.ebuild:
+  version bump. dropped ppc-macos keyword wrt bug #106498. adding myself to
+  metadata
+
+*mutt-1.5.10-r1 (17 Aug 2005)
+
+  17 Aug 2005; Aron Griffis <agriffis@gentoo.org> -mutt-1.5.10.ebuild,
+  +mutt-1.5.10-r1.ebuild:
+  Bump to 1.5.10-r1 to push out slang change.  Add collapse_flagged patch #71351
+
+  17 Aug 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.10.ebuild:
+  Stop honoring USE=slang #96603 #102558 #57416
+
+*mutt-1.5.10 (17 Aug 2005)
+
+  17 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/mutt-1.5.10-nodoc.patch, mutt-1.4.2.1.ebuild, mutt-1.5.9.ebuild,
+  +mutt-1.5.10.ebuild:
+  Bump to 1.5.10 #102183. Add imap-fcc-status patch, suggested by Pedro
+  Algarvio. This patch is primarily useful for people that send mail with
+  Courier IMAP's outbox feature. Remove the edit_threads and header_cache
+  patches since these are now integrated into 1.5.10. Re-enable berkdb for
+  header caching; it didn't work in 1.5.9.
+
+  15 Aug 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.9.ebuild:
+  mutt-1.5.9 doesn't build with berkdb, so disable hcache unless USE=gdbm.
+  This is fixed in 1.5.10, so whenever that lands in portage, we can re-enable
+  it #95139
+
+  15 Aug 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.9.ebuild:
+  Explicitly disable sasl-1 as we do in the muttng ebuild
+
+  11 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/mutt-1.5.9-sasl.patch, mutt-1.5.9.ebuild:
+  Fix configure.in to work correctly when --without-sasl is specified
+
+  11 Aug 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.9.ebuild:
+  Disable sasl unless pop or imap is specified; it's the same as ssl or gnutls
+  in that regard
+
+  11 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/mutt-1.5.9-nodoc.patch, -files/muttng-20050809-nodoc.patch,
+  mutt-1.5.9.ebuild:
+  Fix the nodoc patch to apply to mutt. The muttng patch didn't apply
+  correctly. Use --with-mailpath instead of --with-maildir #100831
+
+  11 Aug 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.4.2.1.ebuild,
+  mutt-1.5.8-r1.ebuild, mutt-1.5.8-r2.ebuild, mutt-1.5.9.ebuild:
+  Move imap warning to pkg_setup. Mention quick start guide in pkg_postinst
+  #77315
+
+*mutt-1.5.9 (11 Aug 2005)
+
+  11 Aug 2005; Aron Griffis <agriffis@gentoo.org>
+  +files/muttng-20050809-nodoc.patch, +mutt-1.5.9.ebuild:
+  Bump to 1.5.9, finally!  This includes an update to the nntp patch, and stops
+  trying to use the non-existent auto_decode_patch.
+  
+  Sync with muttng ebuild:
+  - Honor gnutls, gpgme and pop USE-flags
+  - Don't try to build sgml docs
+  - Only use ssl when USE=pop or imap
+  - Disable header-caching unless USE=gdbm or berkdb
+
+  06 Aug 2005; Aaron Walker <ka0ttic@gentoo.org> mutt-1.5.8-r2.ebuild:
+  Stable on mips.
+
+  06 Jun 2005; Markus Rothe <corsair@gentoo.org> mutt-1.5.8-r2.ebuild:
+  Stable on ppc64
+
+  27 May 2005; Gustavo Zacarias <gustavoz@gentoo.org> mutt-1.5.8-r2.ebuild:
+  Stable on sparc
+
+  27 May 2005; Rene Nussbaumer <killerfox@gentoo.org> mutt-1.5.8-r2.ebuild:
+  Stable on hppa
+
+  27 May 2005; Joseph Jezak <josejx@gentoo.org> mutt-1.5.8-r2.ebuild:
+  Marked ppc stable.
+
+  26 May 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.8-r2.ebuild:
+  stable on alpha amd64 ia64 x86
+
+  29 Apr 2005; Lina Pezzella <j4rg0n@gentoo.org> mutt-1.5.8-r1.ebuild:
+  Stable ppc-macos
+
+  28 Apr 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r2.ebuild,
+  mutt-1.5.6-r3.ebuild:
+  Fix digest problem for patch that was updated locally but got mixed up on
+  the mirrors #90767
+
+  09 Apr 2005; Markus Rothe <corsair@gentoo.org> mutt-1.5.8-r1.ebuild:
+  Stable on ppc64
+
+  01 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> mutt-1.5.8-r1.ebuild:
+  Stable on hppa.
+
+  26 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> mutt-1.5.8-r1.ebuild:
+  Stable on ppc.
+
+  25 Mar 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.8-r2.ebuild:
+  Update nntp patch to apply with assumed_charset. Thanks to Saleem A.
+  (compnerd) in bug 85715 for updating the patch
+
+  24 Mar 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.8-r2.ebuild:
+  Don't use emake for installation... duh #85790
+
+  23 Mar 2005; Gustavo Zacarias <gustavoz@gentoo.org> mutt-1.5.8-r1.ebuild:
+  Stable on sparc
+
+  17 Mar 2005; Tom Martin <slarti@gentoo.org> mutt-1.5.8-r1.ebuild:
+  Stable on amd64.
+
+*mutt-1.5.8-r2 (17 Mar 2005)
+
+  17 Mar 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.8-r1.ebuild,
+  +mutt-1.5.8-r2.ebuild:
+  Mark 1.5.8-r1 stable on alpha, ia64, x86. In mutt-1.5.8-r2, add
+  assumed_charset patch #70405, use emake #83413, and honor USE=buffysize to
+  enable the buffysize workaround #72422. Thanks to Chris Korn for helping out
+  with these patches and the updated ebuild
+
+  17 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> mutt-1.5.6-r5.ebuild:
+  Stable on ppc.
+
+  28 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> mutt-1.5.6-r5.ebuild:
+  Stable on sparc
+
+  25 Feb 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r4.ebuild,
+  mutt-1.5.6-r5.ebuild:
+  Fix the nntp patch to apply to both -r4 and -r5. Bump the nntp patch to -r3
+  since it has been updated. #83151
+
+  21 Feb 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r5.ebuild:
+  Mark 1.5.6-r5 stable on alpha, amd64, ia64 and x86
+
+  20 Feb 2005; Aron Griffis <agriffis@gentoo.org> mutt-1.5.8-r1.ebuild:
+  Enable compressed folder support via --enable-compressed
+
+*mutt-1.5.8-r1 (18 Feb 2005)
+
+  18 Feb 2005; Aron Griffis <agriffis@gentoo.org> +mutt-1.5.8-r1.ebuild:
+  Enable mixmaster support #80717
+
+*mutt-1.5.8 (15 Feb 2005)
+
+  15 Feb 2005; Aron Griffis <agriffis@gentoo.org> +mutt-1.5.8.ebuild:
+  Bump to 1.5.8 and update all patches to apply
+
+  06 Feb 2005; Joshua Kinard <kumba@gentoo.org> mutt-1.5.6-r4.ebuild:
+  Marked stable on mips.
+
+  05 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> mutt-1.5.6-r4.ebuild:
+  Stable on ppc.
+
+  11 Jan 2005; Guy Martin <gmsoft@gentoo.org> mutt-1.5.6-r4.ebuild:
+  Stable on hppa.
+
+  01 Jan 2005; Markus Rothe <corsair@gentoo.org> mutt-1.5.6-r5.ebuild:
+  Stable on ppc64
+
+*mutt-1.5.6-r5 (24 Nov 2004)
+
+  24 Nov 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.4.2.1.ebuild,
+  mutt-1.5.6-r2.ebuild, mutt-1.5.6-r3.ebuild, mutt-1.5.6-r4.ebuild,
+  +mutt-1.5.6-r5.ebuild, mutt-1.5.6.ebuild:
+  Bump to -r5 with auto_decode_patch #66545 and updated header_cache
+  patch.  Remove redundant dies after epatch and econf.  Fix DEPEND to
+  include automake and autoconf regardless of USE=nntp since the
+  header_cache patch also needs them.
+
+  12 Nov 2004; Gustavo Zacarias <gustavoz@gentoo.org> mutt-1.5.6-r4.ebuild:
+  Stable on sparc
+
+  11 Nov 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r4.ebuild:
+  stable on x86 alpha ia64 amd64
+
+*mutt-1.5.6-r4 (25 Sep 2004)
+
+  25 Sep 2004; Andrej Kacian <ticho@gentoo.org> +mutt-1.5.6-r4.ebuild:
+  Use newer headercache patchset. Closes #65060, reported by Horst Schirmeier
+  <gentoo@schirmeier.com>.
+
+  13 Sep 2004; Guy Martin <gmsoft@gentoo.org> mutt-1.5.6-r3.ebuild:
+  Stable on hppa.
+
+  31 Aug 2004; Gustavo Zacarias <gustavoz@gentoo.org> mutt-1.5.6-r3.ebuild:
+  Stable on sparc
+
+  23 Aug 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r3.ebuild:
+  stable on alpha, amd64, ia64 and x86
+
+  18 Aug 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r2.ebuild, 
+  +mutt-1.5.6-r3.ebuild:
+  Mark 1.5.6-r2 stable on alpha, ia64, x86. Bump to -r3 to pick up new
+  header_cache patch #60435. This should be marked stable after a couple days.
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> files/Muttrc:
+  There doesn't seem to be any reason to `unset mbox' in Muttrc, and it causes
+  problems, so don't do it #60507
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r2.ebuild:
+  Modify nntp patch to co-exist with pgp_timeout patch by eliminating context
+  for PATCHES file #59129
+
+  17 Aug 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.4.2.1.ebuild,
+  mutt-1.5.6-r2.ebuild, mutt-1.5.6.ebuild:
+  Move some items to RDEPEND #60134
+
+  29 Jul 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r2.ebuild:
+  Fix bug 54177: Increase range of pgp_timeout setting with patch from
+  http://www.woolridge.ca/mutt/
+
+  23 Jul 2004; Mamoru KOMACHI <usata@gentoo.org> mutt-1.5.6-r2.ebuild:
+  Added to macos, closing bug #57947
+
+  12 Jul 2004; Tuan Van <langthang@gentoo.org> mutt-1.5.6-r2.ebuild,
+  mutt-1.5.6.ebuild:
+  moved IUSE below "inherit" line. Consolidate two lines of inherit into one.
+
+  12 Jul 2004; Tuan Van <langthang@gentoo.org> mutt-1.5.6-r2.ebuild,
+  mutt-1.5.6.ebuild:
+  added cjk to IUSE.
+
+  30 Jun 2004; Tom Gall <tgall@gentoo.org> mutt-1.5.6-r2.ebuild:
+  stable on ppc64 #55664
+
+  30 Jun 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r2.ebuild:
+  add ~ppc64 #55664
+
+  08 Jun 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6-r2.ebuild:
+  Fix bug 52251 (mutt-1.5.6-r2 does not compile with autoconf-2.59-r4) with
+  patch from Lars T. Mikkelsen
+
+  05 Jun 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.4.2.1.ebuild:
+  Fix use invocation
 
 *mutt-1.5.6 (29 May 2004)
 
@@ -67,7 +325,7 @@
 
   25 Feb 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6.ebuild,
   files/8patch-1.5.6.dyc.source_stat:
-  Fix bug #42738 with patch submitted by José Romildo Malaquias
+  Fix bug #42738 with patch submitted by JosÃ© Romildo Malaquias
 
   25 Feb 2004; Aron Griffis <agriffis@gentoo.org> mutt-1.5.6.ebuild:
   Always apply slang fix, even when USE=vanilla

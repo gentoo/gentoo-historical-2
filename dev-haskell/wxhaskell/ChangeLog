@@ -1,6 +1,62 @@
 # ChangeLog for dev-haskell/wxhaskell
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wxhaskell/ChangeLog,v 1.1 2004/03/03 17:12:17 kosmikus Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-haskell/wxhaskell/ChangeLog,v 1.1.1.1 2005/11/30 09:48:21 chriswhite Exp $
+
+*wxhaskell-0.9.4 (11 May 2005)
+
+  11 May 2005; Andres Loeh <kosmikus@gentoo.org> -wxhaskell-0.7.ebuild,
+  +wxhaskell-0.9.4.ebuild:
+  New version, that is compatible with ghc-6.4.
+
+  10 Apr 2005; Michael Hanselmann <hansmi@gentoo.org>
+  wxhaskell-0.8-r1.ebuild:
+  Stable on ppc.
+
+  14 Mar 2005; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.7.ebuild,
+  wxhaskell-0.8-r1.ebuild, -wxhaskell-0.8.ebuild, wxhaskell-0.9.ebuild:
+  wxHaskell is not yet compatible with ghc-6.4.
+
+*wxhaskell-0.9 (26 Feb 2005)
+
+  26 Feb 2005; Andres Loeh <kosmikus@gentoo.org> -wxhaskell-0.6-r1.ebuild,
+  -wxhaskell-0.6.ebuild, wxhaskell-0.8-r1.ebuild, +wxhaskell-0.9.ebuild:
+  New version 0.9. Marked 0.8-r1 stable on x86. Removed 0.6 versions.
+
+*wxhaskell-0.8-r1 (25 Nov 2004)
+
+  25 Nov 2004; Andres Loeh <kosmikus@gentoo.org> +wxhaskell-0.8-r1.ebuild:
+  Supports ghc-package.eclass now (bug #69270). Added ~amd64 flag (bug #58590).
+
+  10 Nov 2004; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.8.ebuild:
+  Fixed bug #70683.
+
+  26 Oct 2004; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.8.ebuild:
+  Marked stable on x86.
+
+  30 Aug 2004; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.8.ebuild:
+  Make use of wxwidgets eclass (#61871).
+
+*wxhaskell-0.8 (23 Aug 2004)
+
+  23 Aug 2004; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.8.ebuild:
+  New version.
+
+  13 Jun 2004; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.7.ebuild:
+  Marked stable for x86.
+
+  02 Jun 2004; Aron Griffis <agriffis@gentoo.org> wxhaskell-0.6-r1.ebuild,
+  wxhaskell-0.6.ebuild, wxhaskell-0.7.ebuild:
+  Fix use invocation
+
+*wxhaskell-0.7 (12 Apr 2004)
+
+  12 Apr 2004; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.7.ebuild:
+  New version.
+
+*wxhaskell-0.6-r1 (03 Mar 2004)
+
+  03 Mar 2004; Andres Loeh <kosmikus@gentoo.org> wxhaskell-0.6-r1.ebuild:
+  Fixed library placement bug.
 
 *wxhaskell-0.6 (03 Mar 2004)
 

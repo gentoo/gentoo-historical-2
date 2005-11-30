@@ -3,8 +3,7 @@
 <pkgmetadata>
 <herd>pam</herd>
 <maintainer>
-    <email>hhg@gentoo.org</email>
-    <name>Hallgrimur H. Gunnarsson</name>
+<email>pam-bugs@gentoo.org</email>
 </maintainer>
 <longdescription>
    Password strength checking for PAM aware password changing programs. This is an alternative to the default cracklib.

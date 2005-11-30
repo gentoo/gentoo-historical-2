@@ -1,6 +1,6 @@
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/package.mask,v 1.1 2004/09/29 19:50:11 solar Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/uclibc/package.mask,v 1.1.1.1 2005/11/30 09:48:33 chriswhite Exp $
 
 # 27 Sep 2004; <carpaski@gentoo.org> (gentoo-core mailing list)
 # Profiles have a package.mask for ARCHITECTURE related masking. There 
@@ -15,6 +15,12 @@
 # depends on glibc and portage will build and install glibc for you.
 # This would leave your system in an unstable state, so we prevent that 
 # behavior here by the use of this masking.
+#
+# 10 Nov 2004; <solar@gentoo.org>
+# binary only packages that were compiled for glibc but don't check for uclibc
+# should probably be placed in here as well.
 ##############################################################################
 
 sys-libs/glibc
+#uses virtual/libc but really needs to depend on glibc.
+app-emulation/vmware-workstation

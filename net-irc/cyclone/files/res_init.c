@@ -27,7 +27,7 @@
 #include "nameser.h"
 #include "resolv.h"
 
-CVSID("$Id: res_init.c,v 1.1 2002/07/12 05:53:44 blocke Exp $");
+CVSID("$Id: res_init.c,v 1.1.1.1 2005/11/30 09:49:02 chriswhite Exp $");
 
 /*
  * Resolver state default settings
@@ -206,6 +206,9 @@ res_init()
 
 /*
  * $Log: res_init.c,v $
+ * Revision 1.1.1.1  2005/11/30 09:49:02  chriswhite
+ * *** empty log message ***
+ *
  * Revision 1.1  2002/07/12 05:53:44  blocke
  * cyclone 0.3.1.1: initial version
  *

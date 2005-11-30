@@ -1,14 +1,14 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/trayimonc/trayimonc-0.7.1.ebuild,v 1.1 2004/11/09 22:39:23 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/trayimonc/trayimonc-0.7.1.ebuild,v 1.1.1.1 2005/11/30 09:46:00 chriswhite Exp $
 
 inherit kde
 
 DESCRIPTION="TrayImonc, a KDE based imond client for fli4l"
-SRC_URI="http://www.trayimonc.de/${P}${V}.tar.bz2"
+SRC_URI="http://www.trayimonc.de/downloads/${P}${V}.tar.bz2"
 HOMEPAGE="http://www.trayimonc.de/"
 
-KEYWORDS="~x86"
+KEYWORDS="x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="xinerama debug"

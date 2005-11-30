@@ -1,6 +1,23 @@
 # ChangeLog for net-dialup/bewan-adsl
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/bewan-adsl/ChangeLog,v 1.1 2004/09/27 14:14:59 dragonheart Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/bewan-adsl/ChangeLog,v 1.1.1.1 2005/11/30 09:45:58 chriswhite Exp $
+
+*bewan-adsl-0.9.0 (25 Feb 2005)
+
+  25 Feb 2005; Alin Nastac <mrness@gentoo.org> +bewan-adsl-0.9.0.ebuild:
+  Version bump.
+
+  14 Dec 2004; Alin Nastac <mrness@gentoo.org>
+  +files/bewan-adsl-kill-timeout.patch, bewan-adsl-0.8.7.ebuild:
+  Replace kernel-mod inheritance with linux-mod and solve compilation problems
+  for kernel versions >= 2.6.9. See bug #74397.
+
+  05 Dec 2004; Alin Nastac <mrness@gentoo.org> bewan-adsl-0.8.7.ebuild:
+  Replace kernel-mod eclass with linux-info.
+
+  28 Oct 2004; Daniel Black <dragonheart@gentoo.org> bewan-adsl-0.8.7.ebuild:
+  eclass kmod -> kernel-mod thanks to Stefan Schweizer <sschweizer@gmail.com> in
+  bug #68447
 
 *bewan-adsl-0.8.7 (27 Sep 2004)
 

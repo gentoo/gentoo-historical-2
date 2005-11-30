@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/libgnomecups/libgnomecups-0.2.0-r2.ebuild,v 1.1 2005/08/05 16:53:08 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/libgnomecups/libgnomecups-0.2.0-r2.ebuild,v 1.1.1.1 2005/11/30 09:48:17 chriswhite Exp $
 
 inherit eutils gnome2
 

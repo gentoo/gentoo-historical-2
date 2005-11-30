@@ -1,10 +1,8 @@
 # This file contains a list of useflags that cannot be used on s390.
 cdr
 qt
-jpeg
 gpm
 3dfx
-3dnow
 acpi
 afs
 alsa
@@ -16,28 +14,23 @@ icc-pgo
 informix
 firebird
 lirc
-mmx
 oci8
-pic
 sse
 svga
 trusted
 voodoo3
 wavelan
 java
-X
-vim-with-x
-
-# I need to have some of the bad tcltk uses fixed, until then...
-tcltk
+java-internal
+java-external
+nptl
+hardened
 
 # don't quite know about this one, I'll need to revisit
 socks5
 
-# Chris PeBenito <pebenito@gentoo.org>
-# must use a SELinux profile
-selinux
-uclibc
+# not working for now
+mzscheme
 
 # see email to gentoo-dev with subject "use.mask and PHP5's crazy IUSE"
 # Dated Sat, 31 Jul 2004 14:49:28 -0700, from robbat2@gentoo.org
@@ -54,3 +47,29 @@ pfpro
 solid
 sybase
 sybase-ct
+fdftk
+
+
+# masked until xorg builds
+xv
+gtk
+gtk2
+gnome
+X
+xpm
+vim-with-x
+
+# I need to have some of the bad tcltk uses fixed, until then...
+tcltk
+
+diet
+xemacs
+Xaw3d
+neXt
+lesstif
+motif
+glitz
+mono
+pike
+ocaml
+sdl

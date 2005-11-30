@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ndiswrapper/ndiswrapper-1.2.ebuild,v 1.1 2005/06/30 21:31:51 cardoe Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ndiswrapper/ndiswrapper-1.2.ebuild,v 1.1.1.1 2005/11/30 09:45:32 chriswhite Exp $
 
 inherit linux-mod eutils
 
@@ -9,16 +9,14 @@ HOMEPAGE="http://ndiswrapper.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 ~amd64"
 
 IUSE="debug"
 DEPEND="sys-apps/pciutils"
 RDEPEND="${DEPEND}
 	net-wireless/wireless-tools"
 
-S=${WORKDIR}/${P}
-
-CONFIG_CHECK="${CONFIG_CHECK} NET_RADIO"
+CONFIG_CHECK="NET_RADIO"
 
 MODULE_NAMES="ndiswrapper(misc:${S}/driver)"
 BUILD_PARAMS="KSRC=${ROOT}${KV_DIR} KVERS=${KV_MAJOR}${KV_MINOR}"
@@ -28,16 +26,11 @@ MODULESD_NDISWRAPPER_ALIASES=("wlan0 ndiswrapper")
 src_unpack() {
 	unpack ${A}
 
-	if grep '# CONFIG_SOFTWARE_SUSPEND2 is not set' ${ROOT}${KV_DIR}/.config
-	then
-		eerror "You have a kernel patched with Software Suspend 2 (swsusp2)"
-		eerror "but don't have it enabled. You must remove the patch or"
-		eerror "enable Software Suspend 2 (swsusp2)."
-		eerror "http://bugs.gentoo.org/show_bug.cgi?id=74864"
-		die "Please fix your kernel"
-	fi
+	cd ${S}
+	epatch ${FILESDIR}/${P}-suspend2.patch || die "suspend2 patch failed"
 
-	epatch ${FILESDIR}/${P}-swsusp2.patch || die "swsusp2 patch failed"
+	einfo "The only kernels that will work are gentoo-sources, vanilla-sources, and suspend2-sources."
+	einfo "No other kernels are supported. Kernels like the mm kernels will NOT work."
 
 	convert_to_m ${S}/driver/Makefile
 }
@@ -77,7 +70,7 @@ pkg_postinst() {
 	einfo "They will be copied to the proper location."
 	einfo "Once done, please run 'update-modules'."
 	echo
-	einfo "check http://ndiswrapper.sf.net/phpwiki/index.php/List for drivers"
+	einfo "check http://ndiswrapper.sf.net/mediawiki/index.php/List for drivers"
 	I=$(lspci -n | egrep 'Class (0280|0200):' |  cut -d' ' -f4)
 	einfo "Look for the following on that page for your driver:"
 	einfo "Possible Hardware: ${I}"

@@ -1,10 +1,11 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/wm2/wm2-4.ebuild,v 1.1 2003/10/20 12:24:43 usata Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/wm2/wm2-4.ebuild,v 1.1.1.1 2005/11/30 09:45:00 chriswhite Exp $
+
+inherit eutils
 
 IUSE=""
 
-S=${WORKDIR}/${P}
 DESCRIPTION="Small, unconfigurable window manager"
 HOMEPAGE="http://www.all-day-breakfast.com/wm2/"
 SRC_URI="http://www.all-day-breakfast.com/wm2/${P}.tar.gz"
@@ -13,7 +14,7 @@ DEPEND="virtual/x11"
 
 SLOT="0"
 LICENSE="freedist"
-KEYWORDS="~x86"
+KEYWORDS="amd64 ppc x86"
 
 src_unpack() {
 	unpack ${A}

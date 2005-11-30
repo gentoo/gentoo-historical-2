@@ -1,41 +1,39 @@
-# Copyright 1999-2003 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-fs/intersync/intersync-0.9.5_p2.ebuild,v 1.1 2003/08/10 20:35:21 karltk Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-fs/intersync/intersync-0.9.5_p2.ebuild,v 1.1.1.1 2005/11/30 09:45:47 chriswhite Exp $
 
-DESCRIPTION="Intermezzo is an advanced replicating networked filesystem."
-HOMEPAGE="http://www.inter-mezzo.org"
+DESCRIPTION="advanced replicating networked filesystem"
+HOMEPAGE="http://www.inter-mezzo.org/"
+SRC_URI="ftp://ftp.inter-mezzo.org/pub/intermezzo/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="x86"
+IUSE=""
 
-DEPEND="net-ftp/curl
+DEPEND="net-misc/curl
 	media-gfx/transfig
-	>=dev-libs/glib-2*
+	>=dev-libs/glib-2
 	>=gnome-base/libghttp-1.0.9-r3
 	>=sys-kernel/linux-headers-2.4"
 
-SRC_URI="ftp://ftp.inter-mezzo.org/pub/intermezzo/${P/_p/-}.tar.gz"
 S=${WORKDIR}/${P/_p?/}
 
-src_compile () {
+src_compile() {
 	local myconf=""
 	has "net-www/apache" \
 		&& $myconf="${myconf} --with-apache-modules=/etc/apache/modules"
-	
-	./configure \
-		--sysconfdir=/etc \
+
+	econf \
 		--localstatedir=/var \
-		--datadir=/usr/share \
 		--libdir=/lib \
-		${myconf}
-		
+		${myconf} \
+		|| die
 	emake || die "emake failed"
 }
 
-src_install () {
+src_install() {
 	make DESTDIR=${D} install
-	
 	exeinto /etc/init.d ; newexe ${FILESDIR}/intersync.rc intersync
 	insinto /etc/conf.d ; newins ${FILESDIR}/intersync.conf intersync
 }

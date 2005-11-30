@@ -1,6 +1,78 @@
 # ChangeLog for net-irc/ircd-hybrid
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/ircd-hybrid/ChangeLog,v 1.1 2003/12/17 02:37:44 zul Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/ircd-hybrid/ChangeLog,v 1.1.1.1 2005/11/30 09:49:03 chriswhite Exp $
+
+  03 Nov 2005; Sven Wegener <swegener@gentoo.org> ircd-hybrid-7.0.3.ebuild,
+  ircd-hybrid-7.1.0.ebuild, ircd-hybrid-7.1.1.ebuild:
+  ebuild config -> emerge --config, bug #109482.
+
+*ircd-hybrid-7.1.1 (10 Aug 2005)
+
+  10 Aug 2005; Sven Wegener <swegener@gentoo.org> +ircd-hybrid-7.1.1.ebuild:
+  Version bump, bug #101156.
+
+  21 Jul 2005; Sven Wegener <swegener@gentoo.org> ircd-hybrid-7.1.0.ebuild:
+  Some modifications suggested in bug #98493.
+
+*ircd-hybrid-7.1.0 (20 Jul 2005)
+
+  20 Jul 2005; Sven Wegener <swegener@gentoo.org> +files/init.d_ircd-7.1.0,
+  +files/7.1.0-default-config.patch, files/conf.d_ircd, files/init.d_ircd,
+  +ircd-hybrid-7.1.0.ebuild:
+  Version bump, bug #98493.
+
+  17 Oct 2004; Sven Wegener <swegener@gentoo.org> -files/config-ipv4.diff,
+  -files/config-ipv6.diff, -files/ircd-hybrid-7.0.diff,
+  -ircd-hybrid-7.0-r1.ebuild, -ircd-hybrid-7.0.ebuild:
+  Removed old ebuilds and files.
+
+  16 Oct 2004; Mike Frysinger <vapier@gentoo.org> ircd-hybrid-7.0.3.ebuild:
+  Rename mkpasswd #6428.
+
+*ircd-hybrid-7.0.3 (27 Sep 2004)
+
+  27 Sep 2004; Sven Wegener <swegener@gentoo.org>
+  +files/config-ipv4-7.0.3.diff, +files/config-ipv6-7.0.3.diff,
+  files/init.d_ircd, +files/ircd-hybrid-7.0.3.diff, +ircd-hybrid-7.0.3.ebuild:
+  Version bump. Closes bug #10275 and #59076.
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> ircd-hybrid-7.0-r1.ebuild,
+  ircd-hybrid-7.0.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+  01 Jul 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  ircd-hybrid-7.0-r1.ebuild, ircd-hybrid-7.0.ebuild:
+  virtual/glibc -> virtual/libc
+
+  27 Jun 2004; Aron Griffis <agriffis@gentoo.org> ircd-hybrid-7.0-r1.ebuild,
+  ircd-hybrid-7.0.ebuild:
+  QA - fix use invocation
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ircd-hybrid-7.0-r1.ebuild, ircd-hybrid-7.0.ebuild:
+  Masked ircd-hybrid-7.0.ebuild testing for ppc
+
+  29 May 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  ircd-hybrid-7.0-r1.ebuild:
+  Masked ircd-hybrid-7.0-r1.ebuild testing for ppc
+
+  15 May 2004; Chuck Short <zul@gentoo.org> ircd-hybrid-7.0-r1.ebuild:
+  Fixed typo. Closes #51058.
+
+*ircd-hybrid-7.0-r1 (19 Apr 2004)
+
+  19 Apr 2004; Chuck Short <zul@gentoo.org> ircd-hybrid-7.0-r1.ebuild:
+  New release with improvements from ali3nx < mikecrgd @ telus.net >.
+  Closes #46853.
+
+  01 Apr 2004; Chuck Short <zul@gentoo.org> ircd-hybrid-7.0.ebuild:
+  Updated header.
+
+  01 Apr 2004; Chuck Short <zul@gentoo.org> :
+  Change permission of init script.
+
+  31 Dec 2003; Aron Griffis <agriffis@gentoo.org> ircd-hybrid-7.0.ebuild:
+  Add ~alpha
 
 *ircd-hybrid-7.0 (16 Dec 2003)
 

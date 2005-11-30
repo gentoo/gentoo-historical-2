@@ -1,6 +1,20 @@
-# ChangeLog for app-games/senken
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/senken/ChangeLog,v 1.1 2003/09/11 12:22:49 vapier Exp $
+# ChangeLog for games-simulation/senken
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/senken/ChangeLog,v 1.1.1.1 2005/11/30 09:49:41 chriswhite Exp $
+
+  09 May 2005; David Holm <dholm@gentoo.org> senken-0.3.0.ebuild:
+  Added to ~ppc.
+
+  05 Mar 2005; Danny van Dyk <kugelfang@gentoo.org> senken-0.3.0.ebuild:
+  Marked ~amd64.
+
+  19 Sep 2004; Michael Sterrett <mr_bones_@gentoo.org> senken-0.3.0.ebuild:
+  fix deps for bug #64599; tidy
+
+*senken-0.3.0 (06 Mar 2004)
+
+  06 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> senken-0.3.0.ebuild:
+  version bump (bug #43584)
 
   01 Jul 2003; Michael Sterrett <msterret@gentoo.org> senken-0.2.6.ebuild:
   use sed -i

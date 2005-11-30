@@ -8,7 +8,7 @@ diff -Naur ion-2-20040601/configure.ac ion-2/configure.ac
 -        [ion])
 +        [ion2])
  AC_PREREQ([2.58])
- AC_REVISION([$Revision: 1.1 $])
+ AC_REVISION([$Revision: 1.1.1.1 $])
  
 diff -Naur ion-2-20040601/man/ion.1.in ion-2/man/ion.1.in
 --- ion-2-20040601/man/ion.1.in	2004-02-14 01:18:06.000000000 +0100

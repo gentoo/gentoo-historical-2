@@ -1,6 +1,6 @@
 # ChangeLog for www-apache/mod_depends
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_depends/ChangeLog,v 1.1 2005/08/16 05:59:16 trapni Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_depends/ChangeLog,v 1.1.1.1 2005/11/30 09:49:15 chriswhite Exp $
 
 *mod_depends-0.7.0_p200508161 (16 Aug 2005)
 

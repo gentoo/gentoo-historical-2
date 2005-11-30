@@ -1,6 +1,21 @@
 # ChangeLog for x11-wm/wm2
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/wm2/ChangeLog,v 1.1 2003/10/20 12:24:43 usata Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/wm2/ChangeLog,v 1.1.1.1 2005/11/30 09:45:01 chriswhite Exp $
+
+  20 Jul 2005; Herbie Hopkins <herbs@gentoo.org> wm2-4.ebuild:
+  Stable on amd64.
+
+  01 Jul 2005; Joseph Jezak <josejx@gentoo.org> wm2-4.ebuild:
+  Marked ppc stable for bug #97646.
+
+  21 Jun 2005; Danny van Dyk <kugelfang@gentoo.org> wm2-4.ebuild:
+  Marked ~amd64.
+
+  10 May 2005; David Holm <dholm@gentoo.org> wm2-4.ebuild:
+  Added to ~ppc.
+
+  26 Apr 2004; Mamoru KOMACHI <usata@gentoo.org> wm2-4.ebuild:
+  Marked stable on x86. Don't assign default to S. inherit eutils for epatch.
 
 *wm2-4 (20 Oct 2003)
 

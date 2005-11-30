@@ -1,4 +1,5 @@
-MD5 a135357d2ace73a5e7282e680032b887 jtidy-0_pre20010801.ebuild 708
-MD5 40dca322c291f66ba7f7972482d0a40c ChangeLog 298
 MD5 123cf9440c1d4ac78f2caba1624765f9 metadata.xml 158
+MD5 f06b89297c6e457df85d2d5a88ea9c97 ChangeLog 1192
+MD5 a6bae3b5ed753e00d2377fb9fae8daf0 jtidy-0_pre20010801.ebuild 1045
 MD5 641e41ae611ccfd2dc3d440622b4b344 files/digest-jtidy-0_pre20010801 70
+MD5 848674570fa692120ea790a918b8ebbb files/jtidy-source-1.4.patch 316

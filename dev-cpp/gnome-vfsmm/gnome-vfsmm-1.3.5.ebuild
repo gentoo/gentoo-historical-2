@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gnome-vfsmm/gnome-vfsmm-1.3.5.ebuild,v 1.1 2004/01/25 13:51:30 pyrania Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-cpp/gnome-vfsmm/gnome-vfsmm-1.3.5.ebuild,v 1.1.1.1 2005/11/30 09:46:21 chriswhite Exp $
 
 inherit gnome2
 
@@ -10,11 +10,11 @@ HOMEPAGE="http://gtkmm.sourceforge.net/"
 
 IUSE=""
 LICENSE="LGPL-2.1"
-KEYWORDS="~x86"
-SLOT="0"
+KEYWORDS="x86 ~ppc"
+SLOT="1.0"
 
 RDEPEND=">=gnome-base/gnome-vfs-2
-	>=dev-cpp/gtkmm-2"
+	=dev-cpp/gtkmm-2.2*"
 
 DEPEND=">=dev-util/pkgconfig-0.12.0
 	${RDEPEND}"

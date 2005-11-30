@@ -1,6 +1,18 @@
 # ChangeLog for net-dialup/penggy
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/penggy/ChangeLog,v 1.1 2003/09/24 07:18:29 spyderous Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/penggy/ChangeLog,v 1.1.1.1 2005/11/30 09:45:56 chriswhite Exp $
+
+  12 Jun 2005; Donnie Berkholz <spyderous@gentoo.org>; penggy-0.2.1.ebuild:
+  The homepage is no longer available, and this package appears to be
+  unmaintained upstream. In the future, places worth checking are Debian and
+  perhaps the CVS in Savannah.
+
+  29 Dec 2004; Alin Nastac <mrness@gentoo.org> metadata.xml,
+  penggy-0.2.1.ebuild:
+  Cleaned up ebuild (see #75876).
+
+  29 Oct 2003; Donnie Berkholz <spyderous@gentoo.org>; penggy-0.2.1.ebuild:
+  Marking x86 -- no bugs filed since initial commit.
 
 *penggy-0.2.1 (24 Sep 2003)
 

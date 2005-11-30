@@ -24,7 +24,6 @@ interbase
 
 i8x0
 xvmc
-nvidia
 
 # Unmask our instruction sets
 -altivec
@@ -37,3 +36,9 @@ rar
 
 # User Mode Linux isn't supported on ppc yet
 uml
+
+# Unmask pbbuttonsd
+-pbbuttonsd
+
+# GIT's ppc sha1 implementation
+-ppcsha1

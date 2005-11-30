@@ -1,6 +1,30 @@
 # ChangeLog for dev-java/joda-time
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/joda-time/ChangeLog,v 1.1 2004/02/26 05:28:36 zx Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/joda-time/ChangeLog,v 1.1.1.1 2005/11/30 09:47:22 chriswhite Exp $
+
+*joda-time-1.0 (15 Jul 2005)
+
+  15 Jul 2005; Thomas Matthijs <axxo@gentoo.org> joda-time-0.95.ebuild,
+  +joda-time-1.0.ebuild:
+  version bump
+
+  22 Apr 2005; Simon Stelling <blubb@gentoo.org> joda-time-0.95.ebuild:
+  stable on amd64
+
+  20 Jan 2005; Jan Brinkmann <luckyduck@gentoo.org> joda-time-0.95.ebuild:
+  added missing jikes dependency. see #78819.
+
+  22 Oct 2004; Dylan Carlson <absinthe@gentoo.org> joda-time-0.95.ebuild:
+  Keywords ~amd64.
+
+  16 Oct 2004; Thomas Matthijs <axxo@gentoo.org> joda-time-0.95.ebuild:
+  use java-pkg_dohtml instead of dohtml to also install the package-list in
+  case of api docs: #50740
+
+  22 Mar 2004; Chris Aniszczyk <zx@gentoo.org> joda-time-0.95.ebuild:
+  Stable on x86. Fixes according to #45398
+
+*joda-time-0.95 (28 Feb 2004)
 
   28 Feb 2004; Chris Aniszczyk <zx@gentoo.org> metadata.xml:
   Initial Import.

@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 1999-2004 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/files/20041006/capi.hotplug,v 1.1 2004/12/23 20:57:46 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/files/20041006/capi.hotplug,v 1.1.1.1 2005/11/30 09:46:12 chriswhite Exp $
 
 . /etc/conf.d/capi
 

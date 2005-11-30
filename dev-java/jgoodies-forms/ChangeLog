@@ -1,6 +1,27 @@
 # ChangeLog for dev-java/jgoodies-forms
-# Copyright 2000-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jgoodies-forms/ChangeLog,v 1.1 2004/12/23 00:43:59 karltk Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jgoodies-forms/ChangeLog,v 1.1.1.1 2005/11/30 09:47:02 chriswhite Exp $
+
+  01 May 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  jgoodies-forms-1.0.5-r1.ebuild:
+  stable on amd64, ppc and x86
+
+*jgoodies-forms-1.0.5-r1 (03 Apr 2005)
+
+  03 Apr 2005; Thomas Matthijs <axxo@gentoo.org>
+  -jgoodies-forms-1.0.5.ebuild, +jgoodies-forms-1.0.5-r1.ebuild:
+  dont install versioned jar files
+
+  03 Apr 2005; <SeJo@gentoo.org> jgoodies-forms-1.0.5.ebuild:
+  added ~ppc keyword
+
+  30 Mar 2005; Saleem Abdulrasool <compnerd@gentoo.org> files/build.xml,
+  metadata.xml, jgoodies-forms-1.0.5.ebuild:
+  QA cleanups; compile fixes
+
+  28 Mar 2005; Jan Brinkmann <luckyduck@gentoo.org>
+  jgoodies-forms-1.0.5.ebuild:
+  added ~amd64 to KEYWORDS, introduced support for the source useflag.
 
 *jgoodies-forms-1.0.5 (23 Dec 2004)
 

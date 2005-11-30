@@ -1,6 +1,150 @@
 # ChangeLog for dev-php/smarty
-# Copyright 2000-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/smarty/ChangeLog,v 1.1 2003/05/11 13:14:35 twp Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/dev-php/smarty/ChangeLog,v 1.1.1.1 2005/11/30 09:47:57 chriswhite Exp $
+
+*smarty-2.6.10 (17 Aug 2005)
+
+  17 Aug 2005; Tom Knight <tomk@gentoo.org> +smarty-2.6.10.ebuild:
+  Version bumped to 2.6.10
+
+  09 Apr 2005; Gustavo Zacarias <gustavoz@gentoo.org> smarty-2.6.9.ebuild:
+  Stable on sparc wrt #86488
+
+  08 Apr 2005; Guy Martin <gmsoft@gentoo.org> smarty-2.6.9.ebuild:
+  Stable on hppa.
+
+  08 Apr 2005; Bryan Østergaard <kloeri@gentoo.org> smarty-2.6.9.ebuild:
+  Stable on alpha, bug 86488.
+
+  08 Apr 2005; Michael Hanselmann <hansmi@gentoo.org> smarty-2.6.9.ebuild:
+  Stable on ppc.
+
+*smarty-2.6.9 (08 Apr 2005)
+
+  08 Apr 2005; Tom Knight <tomk@gentoo.org> +smarty-2.6.9.ebuild:
+  Version bump for security release
+
+  26 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> smarty-2.6.8.ebuild:
+  Stable on alpha, bug 86488.
+
+  25 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> smarty-2.6.8.ebuild:
+  Stable on hppa.
+
+  25 Mar 2005; Michael Hanselmann <hansmi@gentoo.org> smarty-2.6.8.ebuild:
+  Stable on ppc.
+
+  25 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  smarty-2.6.8.ebuild:
+  Stable on x86 and amd64.
+
+  25 Mar 2005; Jason Wever <weeve@gentoo.org> smarty-2.6.8.ebuild:
+  Stable on SPARC wrt security bug #86148.
+
+*smarty-2.6.8 (24 Mar 2005)
+
+  24 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +smarty-2.6.8.ebuild:
+  Version bump WRT bug 86488.
+
+*smarty-2.6.7 (10 Feb 2005)
+
+  10 Feb 2005; Tom Knight <tomk@gentoo.org> -smarty-2.6.6.ebuild,
+  +smarty-2.6.7.ebuild:
+  Version bumped to 2.6.7 and removed 2.6.6 for a security fix
+
+  16 Jan 2005; Guy Martin <gmsoft@gentoo.org> smarty-2.6.5.ebuild:
+  Stable on hppa.
+
+*smarty-2.6.6 (08 Jan 2005)
+
+  08 Jan 2005; Tom Knight <tomk@gentoo.org> metadata.xml,
+  smarty-2.6.0-r2.ebuild, smarty-2.6.2.ebuild, smarty-2.6.5.ebuild,
+  +smarty-2.6.6.ebuild:
+  Version bumped, bug #75178. Set correct einfo output, bug #67229
+
+  30 Dec 2004; Ciaran McCreesh <ciaranm@gentoo.org> :
+  Change encoding to UTF-8 for GLEP 31 compliance
+
+  27 Dec 2004; Gustavo Zacarias <gustavoz@gentoo.org> smarty-2.6.5.ebuild:
+  Stable on sparc
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> smarty-2.6.5.ebuild:
+  added ~amd64
+
+  18 Dec 2004; Simon Stelling <blubb@gentoo.org> smarty-2.6.5.ebuild:
+  added ~amd64
+
+  12 Dec 2004; Bryan Østergaard <kloeri@gentoo.org> smarty-2.6.5.ebuild:
+  Stable on alpha.
+
+  06 Dec 2004; Tom Payne <twp@gentoo.org> smarty-2.6.5.ebuild:
+  SStable on x86.
+
+*smarty-2.6.5 (26 Sep 2004)
+
+  26 Sep 2004; Tom Payne <twp@gentoo.org> -smarty-2.6.3.ebuild,
+  +smarty-2.6.5.ebuild:
+  Version bump. Bug # 65332. Removed old version.
+
+*smarty-2.6.3 (01 Aug 2004)
+
+  01 Aug 2004; <twp@gentoo.org> +smarty-2.6.3.ebuild:
+  Version bump. Bug # 55590.
+
+  04 Jul 2004; Bryan Østergaard <kloeri@gentoo.org> smarty-2.6.2.ebuild:
+  Stable on alpha.
+
+  18 Apr 2004; Jason Wever <weeve@gentoo.org> smarty-2.6.2.ebuild:
+  Stable on sparc.
+
+  17 Apr 2004; Daniel Ahlberg <aliz@gentoo.org> smarty-2.6.0-r2.ebuild:
+  Fixed IUSE flags.
+
+  16 Apr 2004; Guy Martin <gmsoft@gentoo.org> smarty-2.6.2.ebuild:
+  Marked stable on hppa.
+
+  12 Apr 2004; <twp@gentoo.org> smarty-2.5.0.ebuild, smarty-2.6.0-r1.ebuild,
+  smarty-2.6.0.ebuild, smarty-2.6.2.ebuild:
+  Removed old versions. Marked 2.6.2 stable on x86.
+
+*smarty-2.6.2 (21 Mar 2004)
+
+  21 Mar 2004; Tom Payne <twp@gentoo.org> smarty-2.6.2.ebuild :
+  Version bump. Add docs if USE=doc. Bug #43905.
+
+  08 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> smarty-2.5.0.ebuild,
+  smarty-2.6.0-r1.ebuild, smarty-2.6.0-r2.ebuild, smarty-2.6.0.ebuild:
+  remove mips and arm KEYWORDS due to lack of support, ready for new repoman.
+
+*smarty-2.6.0-r2 (04 Jan 2004)
+*smarty-2.6.0-r1 (04 Jan 2004)
+
+  04 Jan 2004; Robin H. Johnson <robbat2@gentoo.org> smarty-2.5.0.ebuild,
+  smarty-2.6.0-r1.ebuild, smarty-2.6.0-r2.ebuild, smarty-2.6.0.ebuild:
+  fix bug #35534
+
+  24 Dec 2003; Tom Payne <twp@gentoo.org> smarty-2.6.0.ebuild :
+  Install libs/core/*. Bug # 36412.
+  Don't install docs (use smarty-docs package instead).
+
+*smarty-2.6.0 (22 Dec 2003)
+
+  22 Dec 2003; Tom Payne <twp@gentoo.org> smarty-2.5.0.ebuild smarty-2.6.0.ebuild :
+  Version bump. Changed DEPEND to dev-php/mod_php to satisfy repoman.
+  Removed _rc1 versions.
+
+  16 Dec 2003; Martin Holzer <mholzer@gentoo.org> smarty-2.6.0_rc1-r1.ebuild:
+  fixing type. Closes #35534.
+
+*smarty-2.6.0_rc1-r1 (29 Sep 2003)
+
+  29 Sep 2003; Martin Holzer <mholzer@gentoo.org> smarty-2.6.0_rc1-r1.ebuild:
+  Added core-dir. Closes #29880.
+
+*smarty-2.6.0_rc1 (28 Sep 2003)
+
+  28 Sep 2003; Tom Payne <twp@gentoo.org> smarty-2.6.0_rc1.ebuild :
+  Version bump. Added metadata.xml.
 
 *smarty-2.5.0 (11 May 2003)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_accounting/mod_accounting-0.5.ebuild,v 1.1 2005/04/21 10:20:56 hollow Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-apache/mod_accounting/mod_accounting-0.5.ebuild,v 1.1.1.1 2005/11/30 09:49:12 chriswhite Exp $
 
 inherit eutils apache-module
 

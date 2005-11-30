@@ -1,7 +1,44 @@
-# ChangeLog for net-analyzer/wavemon
-# Copyright 2002 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/wavemon/ChangeLog,v 1.1 2002/10/31 22:11:30 hannes Exp $
+# ChangeLog for net-wireless/wavemon
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/wavemon/ChangeLog,v 1.1.1.1 2005/11/30 09:45:37 chriswhite Exp $
 
+  09 Jul 2005; Mark Loeser <halcy0n@gentoo.org>
+  +files/wavemon-gcc-fixes.patch, -files/wavemon_gcc33_fix,
+  -files/wavemon_gcc34_fix.gz, wavemon-0.4.0b.ebuild:
+  Consolidate gcc fixes into one patch.  Fix compilation with gcc-4.
+
+  10 Sep 2004; Henrik Brix Andersen <brix@gentoo.org> wavemon-0.3.3.ebuild:
+  Added missing IUSE="".
+
+  10 Sep 2004; Henrik Brix Andersen <brix@gentoo.org> wavemon-0.4.0b.ebuild:
+  S=${WORKDIR}/${P} fix.
+
+  05 Sep 2004; Malcolm Lashley <malc@gentoo.org> wavemon-0.4.0b.ebuild:
+  ~amd64 closes bug #60425
+
+  13 Jun 2004; Hanno Boeck <hanno@gentoo.org> +files/wavemon_gcc34_fix.gz,
+  wavemon-0.4.0b.ebuild:
+  Fixes for gcc 3.4.
+
+  27 Apr 2004; Aron Griffis <agriffis@gentoo.org> wavemon-0.4.0b.ebuild:
+  Add inherit eutils
+
+  18 Dec 2003; Peter Johanson <latexer@gentoo.org> metadata.xml,
+  wavemon-0.3.3.ebuild, wavemon-0.4.0b.ebuild:
+  Added metadata.xml and fixed the HOMEPAGE variable
+
+  24 Jul 2003; Hanno Boeck <hanno@gentoo.org> wavemon-0.4.0b.ebuild:
+  Compilation fix for gcc 3.3.
+
+*wavemon-0.4.0b (07 Jan 2003)
+
+  07 Jan 2003; J Robert Ray <jrray@gentoo.org> : Version bump to 0.4.0b.
+  Upstream tarball is named wavemon-current, so manually placed a tarball with
+  the version in the filename onto ibiblio, to avoid future problems and a
+  collision with the 0.3.3 ebuild.  Global CFLAGS are now respected.
+
+  06 Dec 2002; Rodney Rees <manson@gentoo.org> : changed sparc ~sparc keywords
+ 
   31 Oct 2002; Hannes Mehnert <hannes@gentoo.org>:
   moved to net-wireless
 

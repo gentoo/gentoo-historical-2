@@ -1,6 +1,176 @@
 # ChangeLog for net-irc/xchat-xsys
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat-xsys/ChangeLog,v 1.1 2004/10/30 22:21:17 chainsaw Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-irc/xchat-xsys/ChangeLog,v 1.1.1.1 2005/11/30 09:49:02 chriswhite Exp $
+
+  14 Nov 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xchat-xsys-2.0.9.ebuild:
+  Back to ~sparc wrt #112452
+
+  14 Nov 2005; Brent Baude <ranger@gentoo.org> xchat-xsys-2.0.9.ebuild:
+  marking xchat-xsys-2.0.9 ~ppc64 for bug request 112452
+
+*xchat-xsys-2.0.9 (13 Nov 2005)
+
+  13 Nov 2005; <chainsaw@gentoo.org> +xchat-xsys-2.0.9.ebuild:
+  Version bump, now with support for audacious. Had to drop ~alpha, ~ppc64 &
+  ~sparc keywords because of this.
+
+*xchat-xsys-2.0.8-r1 (17 Oct 2005)
+
+  17 Oct 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/2.0.8-pciutils-headerchange.patch, -xchat-xsys-2.0.8.ebuild,
+  +xchat-xsys-2.0.8-r1.ebuild:
+  Add patch to deal with incompatible header changes in version 2.2.0 of
+  pciutils.
+
+  29 Sep 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xchat-xsys-2.0.8.ebuild:
+  Stable on sparc
+
+  15 Sep 2005; Aron Griffis <agriffis@gentoo.org> xchat-xsys-2.0.7.ebuild:
+  Mark 2.0.7 stable on alpha
+
+  10 Sep 2005; Tony Vroon <chainsaw@gentoo.org> xchat-xsys-2.0.7.ebuild:
+  Stable on amd64.
+
+  03 Sep 2005; Markus Rothe <corsair@gentoo.org> xchat-xsys-2.0.7.ebuild:
+  Stable on ppc64
+
+  26 Aug 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  xchat-xsys-2.0.8.ebuild:
+  Keyworded ~sparc
+
+*xchat-xsys-2.0.8 (25 Aug 2005)
+
+  25 Aug 2005; Tony Vroon <chainsaw@gentoo.org> xchat-xsys-2.0.7.ebuild,
+  +xchat-xsys-2.0.8.ebuild:
+  Version bump to 2.0.8; sparc support by gustavoz. 2.0.7 stable on x86.
+
+  21 Jul 2005; Markus Rothe <corsair@gentoo.org> xchat-xsys-2.0.6-r1.ebuild:
+  Stable on ppc64
+
+  18 Jul 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/2.0.7-glib_version.patch, xchat-xsys-2.0.7.ebuild:
+  Make the XMMS side of things actually work, thanks to a patch from Morten
+  Cools <morten@cools.no>; closes bug #99460.
+
+*xchat-xsys-2.0.7 (17 Jul 2005)
+
+  17 Jul 2005; Tony Vroon <chainsaw@gentoo.org> -xchat-xsys-2.0.5.ebuild,
+  xchat-xsys-2.0.6-r1.ebuild, +xchat-xsys-2.0.7.ebuild:
+  Version bump. 2.0.6-r1 stable on x86, old ebuild cleaned.
+
+  21 Jun 2005; Sven Wegener <swegener@gentoo.org> xchat-xsys-2.0.5.ebuild,
+  xchat-xsys-2.0.6-r1.ebuild:
+  Adjusted dependencies to work with net-irc/xchat-gnome.
+
+*xchat-xsys-2.0.6-r1 (20 Jun 2005)
+
+  20 Jun 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/2.0.6-localisation.patch, -xchat-xsys-2.0.6.ebuild,
+  +xchat-xsys-2.0.6-r1.ebuild:
+  Bump to close bug #96586; patch forces LC_ALL=C on df call.
+
+*xchat-xsys-2.0.6 (19 Jun 2005)
+
+  19 Jun 2005; Tony Vroon <chainsaw@gentoo.org>
+  -files/1.9.3-ppc-support.patch,
+  -files/1.9.3-sysfs-instead-of-lspci-2.patch, -xchat-xsys-1.9.3-r1.ebuild,
+  -xchat-xsys-2.0.0-r1.ebuild, -xchat-xsys-2.0.2.ebuild,
+  -xchat-xsys-2.0.4.ebuild, xchat-xsys-2.0.5.ebuild,
+  +xchat-xsys-2.0.6.ebuild:
+  Version bump, no longer requires a 2.6 kernel. 2.0.5 stable on x86. Clean up
+  old ebuilds.
+
+  14 Jun 2005; Markus Rothe <corsair@gentoo.org> xchat-xsys-2.0.5.ebuild:
+  Added ~ppc64
+
+  13 Jun 2005; Fernando J. Pereda <ferdy@gentoo.org>
+  xchat-xsys-2.0.5.ebuild:
+  keyworded ~alpha
+
+*xchat-xsys-2.0.5 (13 Jun 2005)
+
+  13 Jun 2005; Tony Vroon <chainsaw@gentoo.org> +xchat-xsys-2.0.5.ebuild:
+  Version bump. PCI parser probes higher bus numbers for ppc64. Experimental
+  support for ppc64, ia64 & hppa architectures. Please test.
+
+*xchat-xsys-2.0.4 (06 Jun 2005)
+
+  06 Jun 2005; Tony Vroon <chainsaw@gentoo.org> +xchat-xsys-2.0.4.ebuild:
+  Version bump. New matching code in use.
+
+*xchat-xsys-2.0.2 (30 May 2005)
+
+  30 May 2005; Tony Vroon <chainsaw@gentoo.org> +xchat-xsys-2.0.2.ebuild:
+  Version bump. Buttons near nicklist now optional.
+
+*xchat-xsys-2.0.0-r1 (20 May 2005)
+
+  20 May 2005; Tony Vroon <chainsaw@gentoo.org> -xchat-xsys-2.0.0.ebuild,
+  +xchat-xsys-2.0.0-r1.ebuild:
+  Honour user CFLAGS, get pci.ids path right.
+
+*xchat-xsys-2.0.0 (20 May 2005)
+
+  20 May 2005; Tony Vroon <chainsaw@gentoo.org> +xchat-xsys-2.0.0.ebuild:
+  Version bump. Took upstream maintainership.
+
+  16 May 2005; Sven Wegener <swegener@gentoo.org>
+  -files/1.9.1-bmp-support.patch, -files/1.9.3-sysfs-instead-of-lspci.patch,
+  -xchat-xsys-1.9.3.ebuild, xchat-xsys-1.9.3-r1.ebuild:
+  Removed old ebuild. Some general cleanup.
+
+*xchat-xsys-1.9.3-r1 (14 May 2005)
+
+  14 May 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/1.9.3-sysfs-instead-of-lspci-2.patch,
+  +files/1.9.3-ppc-support.patch, -xchat-xsys-1.9.1.ebuild,
+  -xchat-xsys-1.9.1-r1.ebuild, xchat-xsys-1.9.3.ebuild,
+  +xchat-xsys-1.9.3-r1.ebuild:
+  1.9.3 stable on x86. Add -r1 with ppc support. Old ebuilds cleaned.
+
+  17 Apr 2005; Tony Vroon <chainsaw@gentoo.org>
+  files/1.9.3-sysfs-instead-of-lspci.patch:
+  Improved /sys parser with higher yield, will also pick up PCI adapters and
+  integrated video adapters. Unmasking.
+
+  17 Apr 2005; Tony Vroon <chainsaw@gentoo.org>
+  files/1.9.3-sysfs-instead-of-lspci.patch:
+  Update sysfs patch, avoid matching incorrect data in pci.ids. Still masked.
+
+*xchat-xsys-1.9.3 (16 Apr 2005)
+
+  16 Apr 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/1.9.3-sysfs-instead-of-lspci.patch, +xchat-xsys-1.9.3.ebuild:
+  Version bump, with experimental patch to remove the lspci dependancy and use
+  sysfs tree walking instead.
+
+*xchat-xsys-1.9.1-r1 (16 Jan 2005)
+
+  16 Jan 2005; Tony Vroon <chainsaw@gentoo.org>
+  +files/1.9.1-bmp-support.patch, -xchat-xsys-1.0.6.ebuild,
+  -xchat-xsys-1.9.0.ebuild, +xchat-xsys-1.9.1-r1.ebuild,
+  xchat-xsys-1.9.1.ebuild:
+  Added BMP/XMMS support via infopipe. 1.9.1 stable on x86. Old ebuilds cleaned.
+
+*xchat-xsys-1.9.1 (26 Dec 2004)
+
+  26 Dec 2004; Tony Vroon <chainsaw@gentoo.org> +xchat-xsys-1.9.1.ebuild:
+  Version bump.
+
+  26 Dec 2004; Jeremy Huddleston <eradicator@gentoo.org>
+  xchat-xsys-1.9.0.ebuild:
+  Added to ~amd64.  multilib aware.
+
+*xchat-xsys-1.9.0 (19 Dec 2004)
+
+  19 Dec 2004; Tony Vroon <chainsaw@gentoo.org> +xchat-xsys-1.9.0.ebuild:
+  Version bump to 1.9.0 release by Michael Shoup, beta for version 2. Not all
+  features are available yet.
+
+  16 Dec 2004; Tony Vroon <chainsaw@gentoo.org> xchat-xsys-1.0.6.ebuild:
+  Stable on x86.
 
 *xchat-xsys-1.0.6 (30 Oct 2004)
 

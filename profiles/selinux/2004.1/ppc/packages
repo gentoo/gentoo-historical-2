@@ -1,3 +1,7 @@
+# Copyright 1999-2004 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/selinux/2004.1/ppc/packages,v 1.1.1.1 2005/11/30 09:48:41 chriswhite Exp $
+
 ###########################################################
 # SELinux required versionings
 
@@ -10,5 +14,5 @@
 ###########################################################
 
 *sys-apps/eject
-*sys-apps/mac-fdisk
+*sys-fs/mac-fdisk
 *sys-fs/hfsutils

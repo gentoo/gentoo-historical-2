@@ -1,6 +1,55 @@
 # ChangeLog for dev-php/PEAR-File
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-File/ChangeLog,v 1.1 2005/02/16 06:53:19 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-File/ChangeLog,v 1.1.1.1 2005/11/30 09:48:05 chriswhite Exp $
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-File-1.2.2.ebuild:
+  Add ~amd64.
+
+*PEAR-File-1.2.2 (29 Sep 2005)
+
+  29 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-File-1.0.3-r1.ebuild, +PEAR-File-1.2.2.ebuild:
+  Version bump.
+
+  10 Sep 2005; Jason Wever <weeve@gentoo.org> PEAR-File-1.0.3-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-File-1.0.3-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-File-1.0.3-r1.ebuild:
+  Use new PEAR eclass.
+
+  18 Jun 2005; Michael Hanselmann <hansmi@gentoo.org>
+  PEAR-File-1.0.3.ebuild:
+  Stable on ppc.
+
+  06 May 2005; Gustavo Zacarias <gustavoz@gentoo.org>
+  PEAR-File-1.0.3.ebuild:
+  Stable on sparc
+
+  06 Apr 2005; Markus Rothe <corsair@gentoo.org> PEAR-File-1.0.3.ebuild:
+  Stable on ppc64
+
+  27 Mar 2005; Bryan Østergaard <kloeri@gentoo.org> PEAR-File-1.0.3.ebuild:
+  Stable on alpha.
+
+  12 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-File-1.0.3.ebuild:
+  Stable on x86 and amd64, see bug 84525.
+
+  09 Mar 2005; Markus Rothe <corsair@gentoo.org> PEAR-File-1.0.3.ebuild:
+  Added ~ppc64 to KEYWORDS; bug #84525
+
+  09 Mar 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-File-1.0.3.ebuild:
+  This package was previously bundled with www-apps/horde-pear. Mark unstable
+  for ARCHes that www-apps/horde-pear-r2 is marked stable for.
+
+  19 Feb 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-File-1.0.3.ebuild:
+  Mask ~amd64.
 
 *PEAR-File-1.0.3 (16 Feb 2005)
 

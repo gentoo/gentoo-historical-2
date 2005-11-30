@@ -1,6 +1,14 @@
 # ChangeLog for app-dicts/ydpdict
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/app-dicts/ydpdict/ChangeLog,v 1.1 2004/12/18 16:14:20 spock Exp $
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/app-dicts/ydpdict/ChangeLog,v 1.1.1.1 2005/11/30 09:46:52 chriswhite Exp $
+
+*ydpdict-0.64 (29 Oct 2005)
+
+  29 Oct 2005; Michał Januszewski <spock@gentoo.org> +ydpdict-0.64.ebuild:
+  Version bump (bug #110547).
+
+  07 Jul 2005; Michał Januszewski <spock@gentoo.org> ydpdict-0.63.ebuild:
+  Stable on x86.
 
 *ydpdict-0.63 (18 Dec 2004)
 

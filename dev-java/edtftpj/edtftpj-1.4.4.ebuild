@@ -1,20 +1,22 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/edtftpj/edtftpj-1.4.4.ebuild,v 1.1 2004/10/20 06:04:33 absinthe Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/edtftpj/edtftpj-1.4.4.ebuild,v 1.1.1.1 2005/11/30 09:47:02 chriswhite Exp $
 
 inherit java-pkg
 
 DESCRIPTION="FTP client library written in Java"
 SRC_URI="http://www.enterprisedt.com/products/edtftpj/download/${P}.tar.gz"
 HOMEPAGE="http://www.enterprisedt.com"
+
 LICENSE="LGPL-2"
-KEYWORDS="~x86 ~sparc ~ppc ~amd64"
-IUSE="jikes doc"
-DEPEND="virtual/jdk
-	>=dev-java/ant-1.5"
-RDEPEND="virtual/jdk"
 SLOT="0"
-RESTRICT="nomirror"
+KEYWORDS="amd64 ppc ~sparc x86"
+IUSE="jikes doc"
+
+DEPEND=">=virtual/jdk-1.4
+	dev-java/ant-core
+	jikes? ( dev-java/jikes )"
+RDEPEND=">=virtual/jre-1.4"
 
 src_compile() {
 	cd ${S}/src
@@ -31,6 +33,5 @@ src_install() {
 	insinto /usr/share/doc/${PF}
 	doins doc/*.pdf
 
-	mv ${S}/build/${P}.jar ${S}/build/${PN}.jar
-	java-pkg_dojar build/${PN}.jar
+	java-pkg_newjar ${S}/build/${P}.jar ${PN}.jar
 }

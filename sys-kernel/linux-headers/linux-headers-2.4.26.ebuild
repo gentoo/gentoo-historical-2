@@ -1,9 +1,9 @@
-# Copyright 1999-2004 Gentoo Technologies, Inc.
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.4.26.ebuild,v 1.1 2004/04/22 17:11:01 kumba Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-kernel/linux-headers/linux-headers-2.4.26.ebuild,v 1.1.1.1 2005/11/30 09:49:32 chriswhite Exp $
 
 ETYPE="headers"
-inherit kernel
+inherit eutils kernel
 
 OKV="${PV/_/-}"
 KV="${OKV}"
@@ -20,14 +20,16 @@ SRC_URI="mirror://kernel/linux/kernel/v2.4/linux-${OKV}.tar.bz2"
 HOMEPAGE="http://www.kernel.org/ http://www.gentoo.org/"
 LICENSE="GPL-2"
 SLOT="0"
-PROVIDE="virtual/kernel virtual/os-headers"
-KEYWORDS="-*"
+PROVIDE="virtual/os-headers"
+KEYWORDS="-* ~amd64"
+IUSE=""
+
+DEPEND="!virtual/os-headers"
 
 
 pkg_setup() {
 	# Figure out what architecture we are, and set ARCH appropriately
-	ARCH="$(uname -m)"
-	ARCH="$(echo ${ARCH} | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ -e s/arm.*/arm/ -e s/sa110/arm/)"
+	set_arch_to_kernel
 	[ "$ARCH" == "sparc" -a "$PROFILE_ARCH" == "sparc64" ] && ARCH=sparc64
 
 
@@ -49,7 +51,7 @@ src_unpack() {
 	# This patch fixes an issue involving the use of gcc's -ansi flag and the __u64 datatype.
 	# It only patches asm-i386, so we only apply it if x86.  Unknown if this is needed for other archs.
 	# Closes Bug #32246
-	if [ -n "`use x86`" ]; then
+	if use x86; then
 		epatch ${FILESDIR}/${PN}-strict-ansi-fix.patch
 	fi
 
@@ -64,9 +66,10 @@ src_compile() {
 	kernel_src_compile
 
 	# If this is sparc, then generate asm_offsets.h
-	if [ -n "`use sparc`" ]; then
+	if use sparc; then
 		make ARCH=${ARCH} dep || die "Failed to run 'make dep'"
 	fi
+	set_arch_to_portage
 }
 
 src_install() {

@@ -1,51 +1,52 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi/irssi-0.8.9-r1.ebuild,v 1.1 2004/07/23 22:39:14 swegener Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-irc/irssi/irssi-0.8.9-r1.ebuild,v 1.1.1.1 2005/11/30 09:48:55 chriswhite Exp $
 
-IUSE="nls ipv6 perl ssl socks5"
+inherit perl-module eutils flag-o-matic
 
-inherit perl-module eutils
-
-DESCRIPTION="A modular textUI IRC client with IPv6 support."
-SRC_URI="http://irssi.org/files/${P}.tar.bz2"
+DESCRIPTION="A modular textUI IRC client with IPv6 support"
 HOMEPAGE="http://irssi.org/"
+SRC_URI="http://irssi.org/files/${P}.tar.bz2"
+
+SLOT="0"
+LICENSE="GPL-2"
+KEYWORDS="x86 ppc sparc alpha hppa mips amd64 ia64 ppc64 s390 arm"
+IUSE="ipv6 perl ssl socks5"
 
 RDEPEND="!net-irc/irssi-cvs
+	!net-irc/irssi-svn
 	>=dev-libs/glib-2.2.1
 	sys-libs/ncurses
 	ssl? ( dev-libs/openssl )
 	perl? ( dev-lang/perl )
-	socks5? ( >=net-misc/dante-1.1.13 )"
+	socks5? ( >=net-proxy/dante-1.1.13 )"
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
 	>=sys-apps/sed-4"
-
-SLOT="0"
-LICENSE="GPL-2"
-# Original KEYWORDS="x86 ppc sparc alpha hppa ~mips amd64 ia64 ppc64 s390"
-# All other KEYWORDS were removed because this ebuild only contains an 64-bit arch fix.
-KEYWORDS="amd64 ia64 ppc64"
 
 src_unpack() {
 	unpack ${A}
 
 	# Ugly hack to work around compression of the html files.
 	# Remove this if prepalldocs is changed to avoid gzipping html files.
-	cd ${S} && \
+	cd "${S}" && \
 	sed -i \
 		-e 's/[^ 	]\+\.html//g' docs/Makefile.in || \
 			die "sed doc/Makefile.in failed"
 
-	epatch ${FILESDIR}/${P}-64bit-exec-fix.patch
+	epatch "${FILESDIR}"/${P}-64bit-exec-fix.patch
+	epatch "${FILESDIR}"/${PV}-gcc4-fix.patch
+	epatch "${FILESDIR}"/irssi-socks-fix.patch
 }
 
 src_compile() {
+	# Irssi uses extern inlines and that needs at least -O
+	is-flag "-O*" || append-flags -O
+
 	# Note: there is an option to build a GUI for irssi, but according
 	# to the website the GUI is no longer developed, so that option is
 	# not used here.
 	local myconf="--with-glib2 --without-servertest --with-proxy --with-ncurses"
 
-	myconf="${myconf} `use_enable nls`"
 	myconf="${myconf} `use_with perl`"
 	myconf="${myconf} `use_enable ipv6`"
 	myconf="${myconf} `use_with socks5 socks`"
@@ -60,24 +61,25 @@ src_compile() {
 }
 
 src_install() {
-	myflags=""
-
-	if use perl; then
-		cd ${S}/src/perl/common; perl-module_src_prep
-		cd ${S}/src/perl/irc;    perl-module_src_prep
-		cd ${S}/src/perl/textui; perl-module_src_prep
-		cd ${S}/src/perl/ui;     perl-module_src_prep
-		cd ${S}
+	if use perl
+	then
+		for dir in "${S}"/src/perl/{common,irc,textui,ui}
+		do
+			cd "${dir}"
+			perl-module_src_prep
+		done
+		cd "${S}"
 	fi
 
-	make DESTDIR=${D} \
+	make \
+		DESTDIR="${D}" \
 		docdir=/usr/share/doc/${PF} \
-		gnulocaledir=${D}/usr/share/locale \
-		${myflags} \
-		install || die
+		gnulocaledir="${D}"/usr/share/locale \
+		install || die "make install failed"
+
+	use perl && fixlocalpod
 
 	prepalldocs
-	dodoc AUTHORS ChangeLog README TODO NEWS
-	cd ${S}/docs
-	dohtml -r . || die "dohtml failed"
+	dodoc AUTHORS ChangeLog README TODO NEWS || die "dodoc failed"
+	dohtml -r ${S}/docs/. || die "dohtml failed"
 }

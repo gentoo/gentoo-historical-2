@@ -1,6 +1,128 @@
 # ChangeLog for x11-wm/ion3
-# Copyright 2000-2004 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/x11-wm/ion3/ChangeLog,v 1.1 2004/03/16 20:09:06 twp Exp $
+# Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/x11-wm/ion3/ChangeLog,v 1.1.1.1 2005/11/30 09:45:09 chriswhite Exp $
+
+  01 Nov 2005; Tom Payne <twp@gentoo.org>
+  +files/ion3-20051029-statusd-locale.patch, ion3-20051029.ebuild:
+  Add patch for amd64. Bug # 110860.
+
+*ion3-20051029 (29 Oct 2005)
+
+  29 Oct 2005; Tom Payne <twp@gentoo.org> +ion3-20051029.ebuild:
+  Version bump.
+
+*ion3-20051023-r1 (26 Oct 2005)
+
+  26 Oct 2005; Tom Payne <twp@gentoo.org> +files/ion3-20051023-r1.patch,
+  -ion3-20051023.ebuild, +ion3-20051023-r1.ebuild:
+  Apply patch to fix status bar issue. Bug # 110417. Thanks Frank Zschockelt
+
+*ion3-20051023 (24 Oct 2005)
+
+  24 Oct 2005; Tom Payne <twp@gentoo.org> -ion3-20050728.ebuild,
+  +ion3-20051023.ebuild:
+  Version bump. Remove old version.
+
+*ion3-20050820 (16 Sep 2005)
+
+  16 Sep 2005; Tom Payne <twp@gentoo.org> -ion3-20050625.ebuild,
+  +ion3-20050820.ebuild:
+  Version bump. Remove old version.
+
+*ion3-20050728 (19 Aug 2005)
+
+  19 Aug 2005; Tom Payne <twp@gentoo.org> -ion3-20050502.ebuild,
+  +ion3-20050728.ebuild:
+  Version bump. Remove old version.
+
+*ion3-20050625 (10 Jul 2005)
+
+  10 Jul 2005; Tom Payne <twp@gentoo.org> -ion3-20050322.ebuild,
+  +ion3-20050625.ebuild:
+  Version bump. Removed old version.
+
+  01 Jul 2005; Joseph Jezak <josejx@gentoo.org> ion3-20050116.ebuild:
+  Marked ppc stable for bug #97635.
+
+*ion3-20050505 (10 May 2005)
+
+  10 May 2005: Joshua Charles Campbell <warpzero@gentoo.org> ion3-20050505.ebuild,
+  Version bump.
+
+  21 Apr 2005; Aron Griffis <agriffis@gentoo.org> ion3-20050116.ebuild,
+  ion3-20050322.ebuild:
+  Add ia64 keywords
+
+  04 Apr 2005; Aron Griffis <agriffis@gentoo.org> ion3-20050116.ebuild:
+  stable on amd64
+
+*ion3-20050322 (26 Mar 2005)
+
+  26 Mar 2005; Tom Payne <twp@gentoo.org> -files/ion.desktop,
+  -ion3-20041104.ebuild, -ion3-20050102.ebuild, ion3-20050116.ebuild,
+  +ion3-20050322.ebuild:
+  Version bump. Remove references to ion3-svn. Remove old version.
+
+  03 Feb 2005; Gustavo Zacarias <gustavoz@gentoo.org> ion3-20050116.ebuild:
+  Stable on sparc
+
+  28 Jan 2005; Aron Griffis <agriffis@gentoo.org> ion3-20050116.ebuild:
+  stable on alpha and x86
+
+*ion3-20050116 (25 Jan 2005)
+
+  25 Jan 2005; Tom Payne <twp@gentoo.org> +ion3-20050116.ebuild:
+  Version bump. Bug # 79516. Removed old version.
+
+*ion3-20050102 (02 Jan 2005)
+
+  02 Jan 2005; Tom Payne <twp@gentoo.org> +ion3-20050102.ebuild:
+  Version bump.
+
+  01 Jan 2005; Tom Payne <twp@gentoo.org> ion3-20041005.ebuild,
+  ion3-20041104.ebuild:
+  Stable on x86.
+
+  20 Dec 2004; Tom Payne <twp@gentoo.org> -ion3-20040906.ebuild:
+  Removed old version.
+
+  19 Dec 2004; Tom Payne <twp@gentoo.org>
+  -files/ion3-20040316-libtu-I.patch, -files/ion3-20040316_p1-rename.patch:
+  Remove unused patches.
+
+*ion3-20041104 (19 Dec 2004)
+
+  19 Dec 2004; Tom Payne <twp@gentoo.org> ion3-20040906.ebuild,
+  ion3-20041005.ebuild, +ion3-20041104.ebuild:
+  Prevent sandbox violation. Bug # 73672. Version bump. Bug # 74203.
+
+*ion3-20041005 (05 Oct 2004)
+
+  05 Oct 2004; Tom Payne <twp@gentoo.org> -ion3-20040316_p1-r1.ebuild,
+  -ion3-20040316_p1.ebuild, +ion3-20041005.ebuild:
+  Version bump, remove old versions.
+
+*ion3-20040906 (06 Sep 2004)
+
+  06 Sep 2004; Tom Payne <twp@gentoo.org> +ion3-20040906.ebuild:
+  Version bump.
+
+  05 Sep 2004; Guy Martin <gmsoft@gentoo.org> ion3-20040316_p1-r1.ebuild:
+  Fixed for hppa. Marked ~hppa.
+
+*ion3-20040316_p1-r1 (09 May 2004)
+
+  09 May 2004; <twp@gentoo.org> +files/ion3-20040316_p1-rename.patch,
+  +files/ion3.desktop, +files/pwm3.desktop, +ion3-20040316_p1-r1.ebuild:
+  Rename binaries, directories, etc. from ion to ion3.
+
+  07 Apr 2004; Travis Tilley <lv@gentoo.org> ion3-20040316_p1.ebuild:
+  added ~amd64 keyword
+
+*ion3-20040316_p1 (23 Mar 2004)
+
+  23 Mar 2004; Tom Payne <twp@gentoo.org> ion3-20040316_p1.ebuild :
+  Version bump.
 
 *ion3-20040316 (16 Mar 2004)
 

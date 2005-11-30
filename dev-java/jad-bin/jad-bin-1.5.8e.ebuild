@@ -1,19 +1,20 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/jad-bin/jad-bin-1.5.8e.ebuild,v 1.1 2004/07/30 19:58:00 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/jad-bin/jad-bin-1.5.8e.ebuild,v 1.1.1.1 2005/11/30 09:47:31 chriswhite Exp $
 
 DESCRIPTION="Jad - The fast JAva Decompiler"
-HOMEPAGE="http://www.kpdus.com/jad"
+HOMEPAGE="http://www.kpdus.com/jad.html"
 SRC_URI="http://www.kpdus.com/jad/linux/jadls158.zip"
-DEPEND=""
-KEYWORDS="x86 ~amd64"
+DEPEND="app-arch/unzip"
+RDEPEND=""
+KEYWORDS="x86 amd64 -ppc"
 SLOT="0"
 LICENSE="freedist"
 IUSE=""
 
 S=${WORKDIR}
 
-src_install () {
+src_install() {
 	into /opt
 	dobin jad
 	dodoc Readme.txt

@@ -1,6 +1,90 @@
 # ChangeLog for net-wireless/ieee80211
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ChangeLog,v 1.1 2005/07/12 21:48:36 brix Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/ieee80211/ChangeLog,v 1.1.1.1 2005/11/30 09:45:40 chriswhite Exp $
+
+  17 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ieee80211-1.1.6.ebuild:
+  Stable on x86.
+
+  15 Nov 2005; Joseph Jezak <josejx@gentoo.org> ieee80211-1.1.6.ebuild:
+  Marked ~ppc.
+
+  15 Nov 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ieee80211-1.0.1.ebuild, ieee80211-1.0.2.ebuild, ieee80211-1.0.3.ebuild,
+  ieee80211-1.0.3-r1.ebuild, ieee80211-1.0.3-r2.ebuild,
+  ieee80211-1.1.5.ebuild, ieee80211-1.1.5-r1.ebuild, ieee80211-1.1.6.ebuild:
+  Backported work-around for linux-2.6.14+ to older ebuilds, bug #112499.
+
+  29 Oct 2005; Henrik Brix Andersen <brix@gentoo.org> +files/remove-old,
+  ieee80211-1.1.5.ebuild, ieee80211-1.1.5-r1.ebuild, ieee80211-1.1.6.ebuild:
+  Add work-around for linux-2.6.14+, bug #110762.
+
+*ieee80211-1.1.6 (21 Oct 2005)
+
+  21 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +ieee80211-1.1.6.ebuild:
+  Version bump.
+
+*ieee80211-1.1.5-r1 (20 Oct 2005)
+
+  20 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/ieee80211-1.1.5-broadcast.patch, +ieee80211-1.1.5-r1.ebuild:
+  Patch from upstream to fix broadcast issues.
+
+  19 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  files/ieee80211-1.1.5-we18.patch:
+  Updated pre-WE-18 patch.
+
+  19 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/ieee80211-1.1.5-we18.patch, ieee80211-1.1.5.ebuild:
+  Allow compiling against non-WE-18 kernel.
+
+*ieee80211-1.1.5 (18 Oct 2005)
+
+  18 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +ieee80211-1.1.5.ebuild:
+  Version bump.
+
+  15 Oct 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ieee80211-1.0.3-r2.ebuild:
+  Stable on x86, bug #108613.
+
+*ieee80211-1.0.3-r2 (06 Sep 2005)
+
+  06 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/ieee80211-1.0.3-keep_restricted_bit.patch,
+  +files/ieee80211-1.0.3-open_frag.patch, +ieee80211-1.0.3-r2.ebuild:
+  Apply bugfixes from upstream, bail out if incompatible ieee80211.h found in
+  kernel sources (bug #97397).
+
+  02 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  files/ieee80211-1.0.3-broadcast.patch:
+  Updated patch.
+
+*ieee80211-1.0.3-r1 (02 Sep 2005)
+
+  02 Sep 2005; Henrik Brix Andersen <brix@gentoo.org>
+  +files/ieee80211-1.0.3-broadcast.patch, +ieee80211-1.0.3-r1.ebuild:
+  Fix DHCP issues with some Access Points, check for CONFIG_CRYPTO_AES_X86_64
+  (bug #104100).
+
+  16 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ieee80211-1.0.3.ebuild:
+  Stable on x86.
+
+  09 Aug 2005; Henrik Brix Andersen <brix@gentoo.org>
+  ieee80211-1.0.3.ebuild:
+  Added ~amd64 keyword, bug #98823.
+
+*ieee80211-1.0.3 (18 Jul 2005)
+
+  18 Jul 2005; <brix@gentoo.org> +ieee80211-1.0.3.ebuild:
+  Version bump.
+
+*ieee80211-1.0.2 (14 Jul 2005)
+
+  14 Jul 2005; <brix@gentoo.org> +ieee80211-1.0.2.ebuild:
+  Version bump.
 
 *ieee80211-1.0.1 (12 Jul 2005)
 

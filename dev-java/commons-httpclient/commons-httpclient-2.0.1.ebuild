@@ -1,6 +1,6 @@
-# Copyright 1999-2004 Gentoo Foundation
+# Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-httpclient/commons-httpclient-2.0.1.ebuild,v 1.1 2004/09/17 09:30:04 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/commons-httpclient/commons-httpclient-2.0.1.ebuild,v 1.1.1.1 2005/11/30 09:47:10 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -10,20 +10,33 @@ SRC_URI="mirror://apache/jakarta/commons/httpclient/source/${P/_/-}-src.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~x86 ~ppc ~sparc"
-IUSE="doc jikes"
+KEYWORDS="x86 ppc sparc amd64"
+IUSE="doc jikes source"
+
+RDEPEND=">=virtual/jre-1.3
+	>=dev-java/log4j-1.2.5
+	dev-java/commons-logging"
 
 DEPEND=">=virtual/jdk-1.3
-	>=dev-java/log4j-1.2.5
+	${RDEPEND}
+	sys-apps/sed
 	>=dev-java/ant-1.4
-	dev-java/commons-logging"
-RDEPEND=">=virtual/jdk-1.3"
+	source? ( app-arch/zip )
+	jikes? ( dev-java/jikes )"
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
+
+	#make jikes happy
+	if use jikes; then
+		sed '837 s/ConnectionPool/org.apache.commons.httpclient.MultiThreadedHttpConnectionManager.ConnectionPool/' \
+			-i src/java/org/apache/commons/httpclient/MultiThreadedHttpConnectionManager.java \
+			|| die "failed to sed"
+	fi
+
 	epatch ${FILESDIR}/gentoo.diff || die "patching failed"
-	echo "commons-logging.jar=/usr/share/commons-logging/lib/commons-logging.jar" >> build.properties
+	echo "commons-logging.jar=$(java-pkg_getjar commons-logging commons-logging.jar)" >> build.properties
 }
 
 src_compile() {
@@ -35,5 +48,6 @@ src_compile() {
 
 src_install() {
 	java-pkg_dojar dist/${PN}.jar
-	use doc && dohtml -r dist/docs/*
+	use doc && java-pkg_dohtml -r dist/docs/*
+	use source && java-pkg_dosrc src/java/*
 }

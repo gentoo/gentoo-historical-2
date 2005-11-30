@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/rp-pppoe/rp-pppoe-3.6.ebuild,v 1.1 2005/10/12 17:57:10 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/rp-pppoe/rp-pppoe-3.6.ebuild,v 1.1.1.1 2005/11/30 09:46:10 chriswhite Exp $
 
 inherit eutils
 

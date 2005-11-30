@@ -1,6 +1,39 @@
-# ChangeLog for sys-apps/htop
+# ChangeLog for sys-process/htop
 # Copyright 2000-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sys-process/htop/ChangeLog,v 1.1 2005/03/03 15:12:50 ciaranm Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-process/htop/ChangeLog,v 1.1.1.1 2005/11/30 09:49:10 chriswhite Exp $
+
+*htop-0.5.3 (19 Sep 2005)
+
+  19 Sep 2005; Wolfram Schlich <wschlich@gentoo.org> +htop-0.5.3.ebuild:
+  version bump
+
+  08 Aug 2005; Wolfram Schlich <wschlich@gentoo.org> -htop-0.3.1.ebuild,
+  -htop-0.3.2.ebuild, -htop-0.3.3.ebuild, -htop-0.3.ebuild,
+  -htop-0.4.1.ebuild, -htop-0.4.ebuild, -htop-0.5.ebuild:
+  remove outdated versions
+
+  08 Aug 2005; Wolfram Schlich <wschlich@gentoo.org> htop-0.5.2.ebuild:
+  fix USE=debug behavior
+
+  28 Jul 2005; <dang@gentoo.org> htop-0.5.2.ebuild:
+  Stable on amd64 per bug #100619
+
+  09 Jul 2005; Joseph Jezak <josejx@gentoo.org> htop-0.5.2.ebuild:
+  Marked ppc stable for bug #98372.
+
+  08 Jul 2005; Gustavo Zacarias <gustavoz@gentoo.org> htop-0.5.2.ebuild:
+  Stable on sparc wrt #98327
+
+  08 Jul 2005; Wolfram Schlich <wschlich@gentoo.org> htop-0.5.2.ebuild:
+  mark stable on x86
+
+*htop-0.5.2 (17 May 2005)
+
+  17 May 2005; Wolfram Schlich <wschlich@gentoo.org> +htop-0.5.2.ebuild:
+  version bump
+
+  05 Mar 2005; Joseph Jezak <josejx@gentoo.org> htop-0.5.ebuild:
+  Marked ppc stable for bug #82743.
 
 *htop-0.3.1 (03 Mar 2005)
 

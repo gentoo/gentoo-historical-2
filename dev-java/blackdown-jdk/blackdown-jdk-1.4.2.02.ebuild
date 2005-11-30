@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jdk/blackdown-jdk-1.4.2.02.ebuild,v 1.1 2005/06/16 09:37:33 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/blackdown-jdk/blackdown-jdk-1.4.2.02.ebuild,v 1.1.1.1 2005/11/30 09:47:20 chriswhite Exp $
 
 inherit java versionator
 
@@ -17,8 +17,8 @@ HOMEPAGE="http://www.blackdown.org"
 
 SLOT="1.4.2"
 LICENSE="sun-bcla-java-vm"
-KEYWORDS="-* ~x86 ~amd64"
-IUSE="doc mozilla"
+KEYWORDS="-* x86 amd64"
+IUSE="doc browserplugin nsplugin mozilla"
 
 DEPEND="virtual/libc
 	>=dev-java/java-config-1.2.11
@@ -86,16 +86,17 @@ src_install() {
 
 	dodir /opt/${P}
 
-	cp -a ${S}/{bin,jre,lib,man,include} ${D}/opt/${P} || die "failed to copy"
+	cp -pPR ${S}/{bin,jre,lib,man,include} ${D}/opt/${P} || die "failed to copy"
 
 	dodir /opt/${P}/share/java
-	cp -a ${S}/{demo,src.zip} ${D}/opt/${P}/share || die "failed to copy"
+	cp -pPR ${S}/{demo,src.zip} ${D}/opt/${P}/share || die "failed to copy"
 
-	dodoc COPYRIGHT LICENSE README INSTALL
+	dodoc README
 	dohtml README.html
 
-	# Install mozilla plugin if mozilla use flag is set
-	if use mozilla; then
+	if use nsplugin ||       # global useflag for netscape-compat plugins
+	   use browserplugin ||  # deprecated but honor for now
+	   use mozilla; then     # wrong but used to honor it
 		case ${ARCH} in
 			amd64) platform="amd64" ;;
 			x86) platform="i386" ;;
@@ -139,16 +140,22 @@ pkg_postinst() {
 
 		for paxkills in "jar" "javac" "java" "javah" "javadoc"
 		do
-			chpax -${CHPAX_CONSERVATIVE_FLAGS} /opt/${PN}-${PV}/bin/$paxkills
+			chpax -${CHPAX_CONSERVATIVE_FLAGS} /opt/${P}/bin/$paxkills
 		done
 
 		# /opt/blackdown-jdk-1.4.1/jre/bin/java_vm
-		chpax -${CHPAX_CONSERVATIVE_FLAGS} /opt/${PN}-${PV}/jre/bin/java_vm
+		chpax -${CHPAX_CONSERVATIVE_FLAGS} /opt/${P}/jre/bin/java_vm
 
 		einfo "you should have seen lots of chpax output above now"
 		ewarn "make sure the grsec ACL contains those entries also"
 		ewarn "because enabling it will override the chpax setting"
 		ewarn "on the physical files - help for PaX and grsecurity"
-		ewarn "can be given by #gentoo-hardened + pappy@gentoo.org"
+		ewarn "can be given by #gentoo-hardened + hardened@gentoo.org"
+	fi
+	if ! use nsplugin && ( use browserplugin || use mozilla ); then
+		echo
+		ewarn "The 'browserplugin' and 'mozilla' useflags will not be honored in"
+		ewarn "future jdk/jre ebuilds for plugin installation.  Please"
+		ewarn "update your USE to include 'nsplugin'."
 	fi
 }

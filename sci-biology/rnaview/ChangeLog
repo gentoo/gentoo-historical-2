@@ -1,6 +1,18 @@
-# ChangeLog for app-sci/rnaview
-# Copyright 1999-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/sci-biology/rnaview/ChangeLog,v 1.1 2004/12/23 21:39:36 ribosome Exp $
+# ChangeLog for sci-biology/rnaview
+# Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/sci-biology/rnaview/ChangeLog,v 1.1.1.1 2005/11/30 09:48:48 chriswhite Exp $
+
+*rnaview-20040713 (13 May 2005)
+
+  13 May 2005; Olivier Fisette <ribosome@gentoo.org> -rnaview-1.ebuild,
+  +rnaview-20040713.ebuild:
+  Changed versionning scheme. (Upstream does not use version numbers.)
+
+  30 Jan 2005; Olivier Fisette <ribosome@gentoo.org> rnaview-1.ebuild:
+  Ebuild cleanup.
+
+  18 Jan 2005; Olivier Fisette <ribosome@gentoo.org> rnaview-1.ebuild:
+  Added to x86.
 
 *rnaview-1 (23 Dec 2004)
 

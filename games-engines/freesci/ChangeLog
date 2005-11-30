@@ -1,6 +1,34 @@
-# ChangeLog for app-emulation/freesci
-# Copyright 2002-2003 Gentoo Technologies, Inc.; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/games-engines/freesci/ChangeLog,v 1.1 2003/09/09 17:34:21 vapier Exp $
+# ChangeLog for games-engines/freesci
+# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/games-engines/freesci/ChangeLog,v 1.1.1.1 2005/11/30 09:46:27 chriswhite Exp $
+
+  11 Sep 2004; <blubb@gentoo.org> freesci-0.6.1b.ebuild:
+  added ~amd64 keyword
+
+  10 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> freesci-0.3.4a.ebuild:
+  removed freesci-0.3.4a due to upstream license issue.
+
+  10 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> freesci-0.6.1b.ebuild:
+  take the 0.6 series back to unstable since upstream doesn't recommend running
+  it yet. Unmask locally to continue using it.
+
+*freesci-0.3.4c (10 Jun 2004)
+
+  10 Jun 2004; Michael Sterrett <mr_bones_@gentoo.org> freesci-0.3.4c.ebuild:
+  version bump for stable branch (bug #53497)
+
+*freesci-0.6.1b (11 Apr 2004)
+
+  11 Apr 2004; Michael Sterrett <mr_bones_@gentoo.org> freesci-0.6.1b.ebuild:
+  version bump
+
+  31 Mar 2004; David Holm <dholm@gentoo.org> freesci-0.6.1.ebuild:
+  Added to ~ppc.
+
+*freesci-0.6.1 (30 Mar 2004)
+
+  30 Mar 2004; Michael Sterrett <mr_bones_@gentoo.org> freesci-0.6.1.ebuild:
+  version bump (bug #46086)
 
 *freescsi-0.4.3a (12 May 2003)
 

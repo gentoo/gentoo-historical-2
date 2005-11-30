@@ -1,28 +1,29 @@
-# Add USE flags that don't work on Darwin here
+# Add USE flags that don't work on Darwin/OpenDarwin/OS X here
 
 # these will more than likely never work on darwin
 3dfx
 3dnow
-3dnowex
+3dnowext
 acpi
 alsa
 apm
+cap
 caps
 directfb
-divx4linux
 djbfft
+emul-linux-x86
 fbcon
 fdftk
+fmod
+ggi
 gpm
 hardened
 icc
 icc-pgo
 mmx
 mmx2
-mzscheme
+on-the-fly-crypt  # requires device-mapper
 oss
-qdbm
-selinux
 solid
 sse
 sse2
@@ -32,22 +33,28 @@ sybase-ct
 rtc
 uclibc
 voodoo3
+pvm
 v4l
 v4l2
 
 # need porting
 acl
+apache2
 arts
+cjk
 doc
+esd
 firebird
-fmod
 gnome
-gtk
-gtk2
 jack-tmpfs
 kde
+libcaca
 mikmod
 mono
+mzscheme
+nas
+on-the-fly-crypt
+qdbm
 socks5
 xmms
 
@@ -72,3 +79,12 @@ oci8
 oracle7
 pfpro
 solid
+
+# masks for x11-libs/qt
+nas
+odbc
+postgres
+
+# breaks clisp builds
+fastcgi
+

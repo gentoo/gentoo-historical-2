@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/javatar/javatar-2.5.ebuild,v 1.1 2005/01/08 00:03:10 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/javatar/javatar-2.5.ebuild,v 1.1.1.1 2005/11/30 09:47:36 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -8,18 +8,17 @@ DESCRIPTION="Java library for creation and extraction of tar archives"
 HOMEPAGE="http://www.trustice.com/java/tar/"
 SRC_URI="ftp://ftp.gjt.org/pub/time/java/tar/${P}.tar.gz"
 
-DEPEND=">=virtual/jdk-1.4
-	>=dev-java/ant-1.4
-	jikes? ( dev-java/jikes )
-	dev-java/sun-jaf-bin"
-
-RDEPEND=">=virtual/jdk-1.4
-	dev-java/sun-jaf-bin"
-
 LICENSE="public-domain"
 SLOT="2.5"
 IUSE="jikes doc"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="x86 amd64"
+
+RDEPEND=">=virtual/jre-1.4
+	dev-java/sun-jaf-bin"
+DEPEND=">=virtual/jdk-1.4
+	${RDEPEND}
+	>=dev-java/ant-core-1.4
+	jikes? ( dev-java/jikes )"
 
 src_unpack() {
 	unpack ${A}
@@ -42,14 +41,10 @@ src_compile() {
 src_install() {
 	java-pkg_dojar dist/${PN}.jar
 
-	dodoc doc/LICENSE
 	use doc && java-pkg_dohtml -r docs/* doc/*.html
 
 	echo "#!/bin/sh" > ${PN}
-	echo "cp=\`java-config -p sun-jaf-bin\`" >> ${PN}
-	echo "cp=\${cp}:\`java-config -p javatar-2.5\`" >> ${PN}
-	echo "\`java-config -J\` -cp \${cp} com.ice.tar.tar" >> ${PN}
+	echo "\`java-config -J\` -cp \$(java-config -p sun-jaf-bin,javatar-2.5) com.ice.tar.tar" >> ${PN}
 
-	insinto /usr
 	dobin ${PN}
 }

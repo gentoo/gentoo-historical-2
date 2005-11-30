@@ -1,6 +1,6 @@
 # Copyright 2003-2005 Gentoo Foundation.
 # Distributed under the terms of the GNU General Public License, v2
-# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/ppc64/dev/multilib/packages,v 1.1 2005/06/26 15:47:07 nigoro Exp $
+# $Header: /var/cvsroot/gentoo-x86/profiles/default-linux/ppc64/dev/multilib/packages,v 1.1.1.1 2005/11/30 09:48:39 chriswhite Exp $
 
 *>=sys-devel/binutils-2.15.90.0.3-r4
 *>=sys-devel/gcc-3.4.4

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-1.1.23-r4.ebuild,v 1.1 2005/06/06 21:05:22 lanius Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-print/cups/cups-1.1.23-r4.ebuild,v 1.1.1.1 2005/11/30 09:48:15 chriswhite Exp $
 
 inherit eutils flag-o-matic pam
 
@@ -10,8 +10,7 @@ DESCRIPTION="The Common Unix Printing System"
 HOMEPAGE="http://www.cups.org/"
 SRC_URI="ftp://ftp2.easysw.com/pub/cups/test/${MY_P}-source.tar.bz2
 ftp://ftp.easysw.com/pub/cups/test/${MY_P}-source.tar.bz2
-ftp://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/cups/test/${MY_P}-source.tar.bz2
-http://www.srz.de/Members/bla/cups/filter/pdftops/pdftops.pl"
+ftp://ftp.funet.fi/pub/mirrors/ftp.easysw.com/pub/cups/test/${MY_P}-source.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -64,19 +63,25 @@ src_compile() {
 	use ssl && \
 		myconf="${myconf} $(use_enable gnutls) $(use_enable !gnutls openssl)"
 
-	CUPS_REQUESTS="/var/spool/cups" \
 	econf \
 		--with-cups-user=lp \
 		--with-cups-group=lp \
+		--localstatedir=/var \
 		$(use_enable pam) \
 		$(use_enable ssl) \
 		$(use_enable slp) \
 		$(use_enable nls) \
-		--with-logdir=/var/log/cups \
 		${myconf} \
 		|| die "econf failed"
 
 	emake || die "compile problem"
+}
+
+src_test() {
+	# upstream includes an interactive test which is a nono for gentoo.
+	# therefore, since the printing herd has bigger fish to fry, for now,
+	# we just leave it out, even if FEATURES=test
+	true
 }
 
 src_install() {
@@ -130,13 +135,13 @@ src_install() {
 
 	# install pdftops filter
 	exeinto /usr/lib/cups/filter/
-	newexe ${DISTDIR}/pdftops.pl pdftops
+	newexe ${FILESDIR}/pdftops.pl pdftops
 	dosed "s:/usr/local:/usr:" /usr/lib/cups/filter/pdftops
 }
 
-pkg_postrm() {
+pkg_preinst() {
 	# cleanups
-	rm -fR /usr/share/doc/${MY_PV}
+	[ -n "${PN}" ] && rm -fR /usr/share/doc/${PN}-*
 }
 
 pkg_postinst() {

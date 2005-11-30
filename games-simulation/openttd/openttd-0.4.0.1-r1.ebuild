@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-simulation/openttd/openttd-0.4.0.1-r1.ebuild,v 1.1 2005/08/31 22:24:46 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-simulation/openttd/openttd-0.4.0.1-r1.ebuild,v 1.1.1.1 2005/11/30 09:49:39 chriswhite Exp $
 
 inherit eutils games
 

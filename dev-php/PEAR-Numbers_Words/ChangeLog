@@ -1,6 +1,26 @@
 # ChangeLog for dev-php/PEAR-Numbers_Words
 # Copyright 1999-2005 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Numbers_Words/ChangeLog,v 1.1 2005/07/21 06:12:10 sebastian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-php/PEAR-Numbers_Words/ChangeLog,v 1.1.1.1 2005/11/30 09:47:51 chriswhite Exp $
+
+  24 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  PEAR-Numbers_Words-0.14.0.ebuild:
+  Add ~amd64.
+
+*PEAR-Numbers_Words-0.14.0 (12 Oct 2005)
+
+  12 Oct 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  -PEAR-Numbers_Words-0.13.1-r1.ebuild, +PEAR-Numbers_Words-0.14.0.ebuild:
+  Version bump.
+
+  11 Sep 2005; Jason Wever <weeve@gentoo.org>
+  PEAR-Numbers_Words-0.13.1-r1.ebuild:
+  Added ~sparc keyword.
+
+*PEAR-Numbers_Words-0.13.1-r1 (08 Sep 2005)
+
+  08 Sep 2005; Sebastian Bergmann <sebastian@gentoo.org>
+  +PEAR-Numbers_Words-0.13.1-r1.ebuild:
+  Use new PEAR eclass.
 
 *PEAR-Numbers_Words-0.13.1 (21 Jul 2005)
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-tasks/ant-tasks-1.6.5.ebuild,v 1.1 2005/06/02 16:22:11 axxo Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/ant-tasks/ant-tasks-1.6.5.ebuild,v 1.1.1.1 2005/11/30 09:47:39 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -16,9 +16,9 @@ SLOT="0"
 KEYWORDS="~x86 ~amd64 ~ppc ~sparc ~ppc64"
 IUSE="javamail noantlr nobcel nobeanutils nobsh nobsf nocommonsnet nocommonslogging nojdepend nojsch nojython nolog4j nooro noregexp norhino noxalan noxerces"
 
-DEPEND="=dev-java/ant-core-${PV}*
+RDEPEND=">=virtual/jre-1.4
+	=dev-java/ant-core-${PV}*
 	!dev-java/ant-optional
-	>=dev-java/java-config-1.2
 	>=dev-java/junit-3.8
 	!nolog4j? ( >=dev-java/log4j-1.2.8 )
 	!noxerces? ( >=dev-java/xerces-2.6.2-r1 )
@@ -30,14 +30,16 @@ DEPEND="=dev-java/ant-core-${PV}*
 	!nocommonslogging? ( >=dev-java/commons-logging-1.0.3 )
 	!nocommonsnet? ( >=dev-java/commons-net-1.1.0 )
 	!nobcel? ( >=dev-java/bcel-5.1 )
-	!nooro? ( =dev-java/jakarta-oro-2.0.8-r1 )
+	!nooro? ( >=dev-java/jakarta-oro-2.0.8-r1 )
 	!norhino? ( =dev-java/rhino-1.5* )
 	!nojdepend? ( >=dev-java/jdepend-2.6 )
 	!nojsch? ( >=dev-java/jsch-0.1.12 )
 	!noregexp? ( >=dev-java/jakarta-regexp-1.3-r2 )
 	!nojython? ( >=dev-java/jython-2.1-r5 )
 	javamail? ( >=dev-java/sun-javamail-bin-1.3 )"
-RDEPEND="${DEPEND}"
+DEPEND=">=virtual/jdk-1.4
+	>=dev-java/java-config-1.2
+	${RDEPEND}"
 
 S="${WORKDIR}/apache-ant-${MY_PV}"
 
@@ -54,7 +56,7 @@ src_compile() {
 		export THREADS_FLAG="green"
 	fi
 
-	local p="ant-core,junit"
+	local p="ant-core,junit" libs
 	use noantlr || p="${p},antlr"
 	use nobcel || p="${p},bcel"
 	use nobeanutils || p="${p},commons-beanutils-1.6"
@@ -74,32 +76,15 @@ src_compile() {
 
 	use javamail && p="${p},sun-javamail-bin,sun-jaf-bin"
 
-	libs=$(java-config -p ${p})
-	CLASSPATH="." ./build.sh -Ddist.dir=${D}/usr/share/ant-core -lib ${libs} || die "build failed"
+	CLASSPATH="." ant -Dant.install=${ANT_HOME} -lib $(java-pkg_getjars ${p}) || die "build failed"
 }
 
 src_install() {
-
-	local jars="junit vaj weblogic apache-resolver netrexx  nodeps \
-		starteam xslp stylebook icontract jmf swing jai trax"
-
-	use noantlr || jars="${jars} antlr"
-	use nobcel || jars="${jars} apache-bcel"
-	use nobsf || jars="${jars} apache-bsf"
-	use nocommonslogging || jars="${jars} commons-logging"
-	use nocommonsnet || jars="${jars} commons-net"
-	use nojdepend || jars="${jars} jdepend"
-	use nojsch || jars="${jars} jsch"
-	use nolog4j || jars="${jars} apache-log4j"
-	use nooro || jars="${jars} apache-oro"
-	use noregexp || jars="${jars} apache-regexp"
-	use noxalan || jars="${jars} xalan1"
-	use javamail && jars="${jars} javamail"
-
 	dodir /usr/share/ant-core/lib
-	for jar in ${jars}; do
-		java-pkg_dojar build/lib/ant-${jar}.jar
-		dosym /usr/share/${PN}/lib/ant-${jar}.jar /usr/share/ant-core/lib/
+	for jar in build/lib/ant-*.jar; do
+		[[ "$(basename ${jar})" == "ant-launcher.jar" ]] && continue
+		java-pkg_dojar ${jar}
+		dosym /usr/share/${PN}/lib/$(basename ${jar}) /usr/share/ant-core/lib/
 	done
 }
 

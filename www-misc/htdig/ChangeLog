@@ -1,6 +1,61 @@
-# ChangeLog for net-www/htdig
-# Copyright 2002-2004 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/www-misc/htdig/ChangeLog,v 1.1 2004/08/15 18:08:01 stuart Exp $
+# ChangeLog for www-misc/htdig
+# Copyright 2002-2005 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/www-misc/htdig/ChangeLog,v 1.1.1.1 2005/11/30 09:45:17 chriswhite Exp $
+
+  08 Sep 2005; Renat Lumpau <rl03@gentoo.org> htdig-3.1.6-r7.ebuild,
+  htdig-3.2.0_beta6.ebuild:
+  Added manual slotting wrt bug #104855
+
+  08 Sep 2005; Renat Lumpau <rl03@gentoo.org> -htdig-3.1.6-r4.ebuild:
+  Removing old obsolete version
+
+  01 Aug 2005; Danny van Dyk <kugelfang@gentoo.org>
+  htdig-3.2.0_beta6.ebuild:
+  Removed -fPIC patch and the real cause for BUG #98357. -Wno-deprecated made
+  configure misbehave.
+
+  10 Jul 2005; Danny van Dyk <kugelfang@gentoo.org>
+  +files/htdig-3.2.0-fpic.patch, htdig-3.2.0_beta6.ebuild:
+  Fixed BUG #98357 (-fPIC).
+
+*htdig-3.2.0_beta6 (06 Jul 2005)
+
+  06 Jul 2005; Renat Lumpau <rl03@gentoo.org> +files/reconfig,
+  +htdig-3.2.0_beta6.ebuild:
+  Added version.
+
+  12 Feb 2005; Jason Wever <weeve@gentoo.org> htdig-3.1.6-r7.ebuild:
+  Stable on sparc wrt security bug #80602.
+
+  10 Feb 2005; Michael Hanselmann <hansmi@gentoo.org> htdig-3.1.6-r7.ebuild:
+  Stable on ppc.
+
+  10 Feb 2005; Jan Brinkmann <luckyduck@gentoo.org> htdig-3.1.6-r7.ebuild:
+  stable on amd64. see #80602
+
+*htdig-3.1.6-r7 (10 Feb 2005)
+
+  10 Feb 2005; Aaron Walker <ka0ttic@gentoo.org>
+  +files/htdig-3.1.6-unescaped-output.diff, -htdig-3.1.6-r5.ebuild,
+  -htdig-3.1.6-r6.ebuild, +htdig-3.1.6-r7.ebuild:
+  Revision bump for sec bug 80602; stable on x86.
+
+  05 Sep 2004; Sven Wegener <swegener@gentoo.org> :
+  Fixed ChangeLog header.
+
+  29 Aug 2004; Renat Lumpau <rl03@gentoo.org> :
+  Symlink htsearch to /usr/bin, see bug #62087. Fix a typo in a dirname.
+
+*htdig-3.1.6-r5 (26 Aug 2004)
+
+  26 Aug 2004; Renat Lumpau <rl03@gentoo.org> +metadata.xml,
+  +htdig-3.1.6-r5.ebuild:
+  Added metadata.xml
+
+*htdig-3.1.6-r5 (26 Aug 2004)
+
+  26 Aug 2004; Renat Lumpau <rl03@gentoo.org> +htdig-3.1.6-r5.ebuild:
+  Convert to webapp.eclass. Closes #34594, 52592, and helps with #7728, 35275.
 
 *htdig-3.1.6-r4 (15 Aug 2004)
 

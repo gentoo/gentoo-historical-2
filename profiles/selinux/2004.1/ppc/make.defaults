@@ -1,18 +1,13 @@
-# Copyright 2000 Daniel Robbins, Gentoo Technologies, Inc.
-# System-wide defaults for the Portage system
+# Copyright 1999-2004 Gentoo Foundation.
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/profiles/selinux/2004.1/ppc/make.defaults,v 1.1.1.1 2005/11/30 09:48:41 chriswhite Exp $
+
+USE="ppc"
+GRP_STAGE23_USE="ppc"
 
 ARCH="ppc"
-CHOST=powerpc-unknown-linux-gnu
-PLATFORM=$CHOST
-MAKEOPTS="-j2"
-
-COMPILER="gcc3"
-CFLAGS="-O2 -pipe"
-CXXFLAGS=${CFLAGS}
-
-USE="ppc berkdb crypt ncurses pam python readline selinux ssl tcpd zlib"
-GRP_STAGE23_USE="ppc berkdb crypt ncurses pam python readline selinux ssl tcpd zlib"
-
 ACCEPT_KEYWORDS="ppc"
-POLICYDIR="/etc/security/selinux/src/policy"
-FEATURES="strict sfperms"
+
+CHOST="powerpc-unknown-linux-gnu"
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"

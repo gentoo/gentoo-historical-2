@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-servers/resin/resin-3.0.12.ebuild,v 1.1 2005/04/18 17:23:52 luckyduck Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-servers/resin/resin-3.0.12.ebuild,v 1.1.1.1 2005/11/30 09:46:49 chriswhite Exp $
 
 inherit java-pkg eutils
 
@@ -8,9 +8,10 @@ DESCRIPTION="A fast Servlet 2.4 and JSP 2.0 engine with EJB and distributed sess
 SRC_URI="http://www.caucho.com/download/${P}.tar.gz"
 HOMEPAGE="http://www.caucho.com"
 KEYWORDS="~x86 ~ppc ~sparc ~amd64 ~ppc64"
-LICENSE="CAUCHO"
+LICENSE="GPL-2"
 SLOT="0"
-DEPEND="!net-www/resin-ee"
+DEPEND=">=virtual/jdk-1.3
+		!www-servers/resin-ee"
 RDEPEND=">=virtual/jdk-1.3
 		dev-lang/perl"
 IUSE=""
@@ -21,6 +22,7 @@ src_unpack() {
 	unpack ${A}
 	cd ${S}
 	epatch ${FILESDIR}/${PV}/wrapper.pl.diff
+	epatch ${FILESDIR}/${PV}/gentoo.diff
 }
 
 pkg_preinst() {
@@ -40,8 +42,8 @@ pkg_preinst() {
 }
 
 src_compile() {
-	./configure --prefix=${D}${RESIN_HOME}
-	make
+	./configure --prefix=${D}${RESIN_HOME} || die "configure failed"
+	make || die "make failed"
 }
 
 src_install() {
@@ -71,7 +73,7 @@ pkg_postinst() {
 	einfo
 	einfo " NOTICE!"
 	einfo " User and group 'resin' have been added."
-	einfo " "
+	einfo
 	einfo " FILE LOCATIONS:"
 	einfo " 1.  Resin home directory: ${RESIN_HOME}"
 	einfo "     Contains application data, configuration files."
@@ -82,12 +84,11 @@ pkg_postinst() {
 	einfo
 	einfo "If you are updating from resin-2* your old configuration files"
 	einfo "have been moved to /etc/resin/conf.old"
-	einfo " "
+	einfo
 	einfo " STARTING AND STOPPING RESIN:"
 	einfo "   /etc/init.d/resin start"
 	einfo "   /etc/init.d/resin stop"
 	einfo "   /etc/init.d/resin restart"
-	einfo
 	einfo
 	einfo " NETWORK CONFIGURATION:"
 	einfo " By default, Resin runs on port 8080.  You can change this"

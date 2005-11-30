@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/rt2x00/rt2x00-2.0.0_beta2.ebuild,v 1.1 2005/11/03 20:32:36 uberlord Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/rt2x00/rt2x00-2.0.0_beta2.ebuild,v 1.1.1.1 2005/11/30 09:45:35 chriswhite Exp $
 
 inherit linux-mod
 
@@ -78,9 +78,12 @@ src_compile() {
 pkg_postinst() {
 	linux-mod_pkg_postinst
 
-	einfo
-	einfo "to set up the card you can use:"
-	einfo "- iwconfig from wireless-tools"
-	einfo "- iwpriw as described in \"/usr/share/doc/${PF}/README.txt.gz"\"
-	einfo
+	ewarn
+	ewarn "This is a BETA driver. If you have any issues, test the cvs ebuild"
+	ewarn "as your issue may have already been fixed."
+	ewarn "Please report any bugs to the rt2x00 forums :-"
+	ewarn "http://rt2x00.serialmonkey.com/phpBB2/viewforum.php?f=5"
+	ewarn
+	ewarn "Any bugs reported to Gentoo will be marked INVALID"
+	ewarn
 }

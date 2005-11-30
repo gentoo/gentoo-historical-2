@@ -1,6 +1,6 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20050718.ebuild,v 1.1 2005/07/18 21:05:33 sbriesen Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/capi4k-utils/capi4k-utils-20050718.ebuild,v 1.1.1.1 2005/11/30 09:46:11 chriswhite Exp $
 
 inherit multilib gnuconfig
 

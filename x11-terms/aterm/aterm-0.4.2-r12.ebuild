@@ -1,13 +1,13 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-0.4.2-r12.ebuild,v 1.1 2005/02/06 21:34:10 spock Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-terms/aterm/aterm-0.4.2-r12.ebuild,v 1.1.1.1 2005/11/30 09:46:29 chriswhite Exp $
 
 inherit eutils flag-o-matic
 
 DESCRIPTION="A terminal emulator with transparency support as well as rxvt backwards compatibility"
 HOMEPAGE="http://aterm.sourceforge.net"
 SRC_URI="mirror://sourceforge/aterm/${P}.tar.bz2
-	cjk? (http://dev.gentoo.org/~spock/portage/distfiles/aterm-0.4.2-ja.patch)"
+	cjk? ( http://dev.gentoo.org/~spock/portage/distfiles/aterm-0.4.2-ja.patch )"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -54,7 +54,7 @@ src_compile() {
 	local myconf
 
 	# macos doesn't support -z flag
-	if ! ( use macos || use ppc-macos ) ; then
+	if ! use ppc-macos ; then
 		append-ldflags -Wl,-z,now
 	fi
 
@@ -98,12 +98,12 @@ src_install () {
 }
 
 pkg_postinst () {
-	echo ""
+	echo
 	einfo "Hint: you can copy text from aterm to the clipboard by holding the ALT key"
 	einfo "while highlighting the text."
-	echo ""
+	echo
 	ewarn "The transparent background will only work if you have the 'real' root wallpaper"
 	ewarn "set. Use Esetroot (x11-terms/eterm) or fbsetbg (x11-wm/fluxbox) if you are"
 	ewarn "experiencing problems with transparency in aterm."
-	echo ""
+	echo
 }
