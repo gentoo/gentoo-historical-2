@@ -1,9 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-mutt-misc/font-mutt-misc-0.99.1.ebuild,v 1.2 2005/12/10 22:00:15 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-mutt-misc/font-mutt-misc-1.0.0.ebuild,v 1.1 2005/12/18 19:57:39 spyderous Exp $
 
 # Must be before x-modular eclass is inherited
-SNAPSHOT="yes"
+#SNAPSHOT="yes"
 
 inherit x-modular
 
