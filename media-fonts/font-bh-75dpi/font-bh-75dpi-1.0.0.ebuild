@@ -1,9 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-bh-lucidatypewriter-75dpi/font-bh-lucidatypewriter-75dpi-0.99.2.ebuild,v 1.2 2005/12/10 21:54:21 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-bh-75dpi/font-bh-75dpi-1.0.0.ebuild,v 1.1 2005/12/18 19:50:39 spyderous Exp $
 
 # Must be before x-modular eclass is inherited
-SNAPSHOT="yes"
+#SNAPSHOT="yes"
 
 inherit x-modular
 

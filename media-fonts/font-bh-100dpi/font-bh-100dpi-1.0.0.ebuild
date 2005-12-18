@@ -1,9 +1,9 @@
 # Copyright 1999-2005 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-dec-misc/font-dec-misc-0.99.1.ebuild,v 1.2 2005/12/10 21:57:21 spyderous Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-fonts/font-bh-100dpi/font-bh-100dpi-1.0.0.ebuild,v 1.1 2005/12/18 19:50:19 spyderous Exp $
 
 # Must be before x-modular eclass is inherited
-SNAPSHOT="yes"
+#SNAPSHOT="yes"
 
 inherit x-modular
 
@@ -12,4 +12,7 @@ DESCRIPTION="BigReqs prototype headers"
 KEYWORDS="~amd64 ~arm ~ia64 ~s390 ~sparc ~x86"
 RDEPEND=""
 DEPEND="${RDEPEND}
-	x11-apps/bdftopcf"
+	x11-apps/bdftopcf
+	>=media-fonts/font-util-0.99.2"
+
+CONFIGURE_OPTIONS="--with-mapfiles=${XDIR}/share/fonts/util"
