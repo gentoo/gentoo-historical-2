@@ -1,6 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA1
-
 MD5 ae3d55dbeffe815dd4d1bd6ec71f4930 ChangeLog 6105
 RMD160 7fcff0259222f38200e6ca2782feae0188718711 ChangeLog 6105
 SHA256 3cec1610164652c94d95e600140537521b414913b838820deb79967431b216c8 ChangeLog 6105
@@ -22,6 +19,12 @@ SHA256 0b42aa8d739d5e56b0356cd462ca6d8abf8473a06afbf046a3b0408856a7fd4d docutils
 MD5 74a7b1584824888016191380b65cea31 docutils-0.3_pre20030530-r3.ebuild 1541
 RMD160 60b30e84d385050f14a1b2e689ab16909bc4ce54 docutils-0.3_pre20030530-r3.ebuild 1541
 SHA256 ca3b29a595b3750d03063617cc76b74000df2c4d99c2a2f179f0445de5522d08 docutils-0.3_pre20030530-r3.ebuild 1541
+MD5 798c195a15ef29e982462664613fa32f docutils-0.4.ebuild 2807
+RMD160 e67d4da98874a8830dbdcab9382118908d19cd0e docutils-0.4.ebuild 2807
+SHA256 ded4b71d3ffd02dacf3c99b0af52023f7806cc85b5189bc2595304ae3d9ac1f3 docutils-0.4.ebuild 2807
+MD5 db1120176b861cb2e4078bc45c16c3bb files/50docutils-0.4-gentoo.el 275
+RMD160 d017df7483e086d71f18800002f285b1a90be08c files/50docutils-0.4-gentoo.el 275
+SHA256 cbfccc2cf7f9b9dc00a0007fac424a5c634e083cfd29c0441becea75a9d92c8e files/50docutils-0.4-gentoo.el 275
 MD5 dac9480a7b5144f60cb48675c654f5a3 files/50docutils-gentoo.el 280
 RMD160 d7a7c56fc93d93e2c0ca725c13a539b2d42489bf files/50docutils-gentoo.el 280
 SHA256 18ead83f20f4de845dbd027b9d6845b3bb7d98933791b8c12b46528625d841cd files/50docutils-gentoo.el 280
@@ -43,6 +46,9 @@ SHA256 f0d6cfd3e7f176db49a3d9b1f925521587f246ba8279f09bcb5e69c209f22305 files/di
 MD5 8c6d9ea3ddd2e36b369112ee20b660fb files/digest-docutils-0.3_pre20030530-r3 73
 RMD160 cbdc80126cace4451b1cbc56f774af9871a6c47e files/digest-docutils-0.3_pre20030530-r3 73
 SHA256 69f56b4875c1ef7d02227e001c36f3e528a2fe38b27bf386c2714725c0d5c99a files/digest-docutils-0.3_pre20030530-r3 73
+MD5 1dd3004476c8c1fc88936ead9bd41ddf files/digest-docutils-0.4 455
+RMD160 c3786a9bff4a748d07c80cbdcd539e2eb572188e files/digest-docutils-0.4 455
+SHA256 e2e3feb3122c7e17cc0f76de3699c794d854dfd456697037e7ea4c70d989423e files/digest-docutils-0.4 455
 MD5 7c025532adb8b09116980747be7ccc61 files/docutils-0.3-extramodules.patch 1155
 RMD160 4cd5e34d01f893fc9c2e25eaed9f7cf058162aaa files/docutils-0.3-extramodules.patch 1155
 SHA256 77438498810cd1dba21c3c817e499423b38bd54f403cf7c8a11e345200310301 files/docutils-0.3-extramodules.patch 1155
@@ -94,10 +100,3 @@ SHA256 d7921025a32bf8e56e2877ab86eda34b0215615ce43ec33159b9bcc9d33e9f3a files/gl
 MD5 71c4638c9c88af75b58e5f5cb54fe008 metadata.xml 159
 RMD160 900a8c55d7a7d2f6312594769aaf941bf9e99c7f metadata.xml 159
 SHA256 9f01104d3484792496faff4805eed0ecea2352a897151f3397d49a13800037b4 metadata.xml 159
------BEGIN PGP SIGNATURE-----
-Version: GnuPG v1.4.2 (GNU/Linux)
-
-iD8DBQFD6otvV3J2n04EauwRAo9tAKCCdRoLUhxr7kYcCYlAmfmr1qD9lwCg1utm
-ztdVI2LuLSrRokKjSPFDSI8=
-=jPO0
------END PGP SIGNATURE-----
