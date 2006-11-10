@@ -1,6 +1,6 @@
 # Copyright 1999-2006 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-kdepim/libopensync-plugin-kdepim-0.19.ebuild,v 1.2 2006/11/10 18:48:23 peper Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-pda/libopensync-plugin-kdepim/libopensync-plugin-kdepim-0.20.ebuild,v 1.1 2006/11/10 18:48:23 peper Exp $
 
 inherit qt3
 
@@ -15,11 +15,13 @@ IUSE="arts"
 
 DEPEND="=app-pda/libopensync-${PV}*
 	kde-base/libkcal"
-
 RDEPEND="${DEPEND}"
 
+# interactive and broken
+RESTRICT="test"
+
 src_compile() {
-	econf $(use_with arts) || die "econf failed"
+	econf $(use_with arts)
 	emake || die "emake failed"
 }
 
