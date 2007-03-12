@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Snowball-Norwegian/Snowball-Norwegian-1.0.ebuild,v 1.11 2007/03/12 16:58:17 mcummings Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Snowball-Norwegian/Snowball-Norwegian-1.0-r1.ebuild,v 1.1 2007/03/12 16:58:17 mcummings Exp $
 
 inherit perl-module multilib
 
