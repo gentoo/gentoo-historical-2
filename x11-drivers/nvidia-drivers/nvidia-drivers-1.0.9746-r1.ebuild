@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-1.0.9755.ebuild,v 1.2 2007/03/12 22:53:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-1.0.9746-r1.ebuild,v 1.1 2007/03/13 22:40:40 eradicator Exp $
 
 inherit eutils multilib versionator linux-mod flag-o-matic
 

@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-1.0.9746.ebuild,v 1.4 2007/03/12 22:53:09 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/nvidia-drivers/nvidia-drivers-1.0.9631-r1.ebuild,v 1.1 2007/03/13 22:40:40 eradicator Exp $
 
 inherit eutils multilib versionator linux-mod flag-o-matic
 
@@ -19,7 +19,7 @@ LICENSE="NVIDIA"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
 IUSE=""
-RESTRICT="strip multilib-pkg-force"
+RESTRICT="nostrip multilib-pkg-force"
 
 DEPEND="kernel_linux? ( virtual/linux-sources )"
 RDEPEND="kernel_linux? ( virtual/modutils )
@@ -139,7 +139,7 @@ src_unpack() {
 	fi
 
 	if ! use x86-fbsd; then
-		cd "${WORKDIR}"
+		cd ${WORKDIR}
 		bash ${DISTDIR}/${NV_PACKAGE}${PKG_V}.run --extract-only
 	else
 		unpack ${A}
@@ -150,22 +150,22 @@ src_unpack() {
 		&& cd "${WORKDIR}/${NV_PACKAGE}${PKG_V}/doc" \
 		|| cd "${WORKDIR}/${NV_PACKAGE}${PKG_V}"
 	# Use the correct defines to make gtkglext build work
-	epatch "${FILESDIR}"/NVIDIA_glx-defines.patch
+	epatch ${FILESDIR}/NVIDIA_glx-defines.patch
 	# Use some more sensible gl headers and make way for new glext.h
-	epatch "${FILESDIR}"/NVIDIA_glx-glheader.patch
+	epatch ${FILESDIR}/NVIDIA_glx-glheader.patch
 
 	if ! use x86-fbsd; then
 		# Quiet down warnings the user do not need to see
 		sed -i \
 			-e 's:-Wpointer-arith::g' \
 			-e 's:-Wsign-compare::g' \
-			"${S}"/Makefile.kbuild
+			${S}/Makefile.kbuild
 
 		# If you set this then it's your own fault when stuff breaks :)
 		[[ -n ${USE_CRAZY_OPTS} ]] && sed -i "s:-O:${CFLAGS}:" Makefile.*
 
 		# If greater than 2.6.5 use M= instead of SUBDIR=
-		cd "${S}"; convert_to_m Makefile.kbuild
+		cd ${S}; convert_to_m Makefile.kbuild
 	fi
 }
 
@@ -185,15 +185,15 @@ src_compile() {
 src_install() {
 	local MLTEST=$(type dyn_unpack)
 
-	cd "${WORKDIR}"/${NV_PACKAGE}${PKG_V}
+	cd ${WORKDIR}/${NV_PACKAGE}${PKG_V}
 
 	if ! use x86-fbsd; then
 		linux-mod_src_install
 
 		# Add the aliases
-		sed -e 's:\${PACKAGE}:'${PF}':g' "${FILESDIR}"/nvidia > "${WORKDIR}"/nvidia
+		sed -e 's:\${PACKAGE}:'${PF}':g' ${FILESDIR}/nvidia > ${WORKDIR}/nvidia
 		insinto /etc/modules.d
-		newins "${WORKDIR}"/nvidia nvidia || die
+		newins ${WORKDIR}/nvidia nvidia
 	else
 		insinto /boot/modules
 		doins "${WORKDIR}/${X86_FBSD_NV_PACKAGE}/src/nvidia.kld"
@@ -213,8 +213,8 @@ src_install() {
 		src_install-libs lib32 $(get_multilibdir)
 		src_install-libs lib $(get_libdir)
 
-		rm -rf "${D}"/usr/$(get_multilibdir)/opengl/nvidia/include
-		rm -rf "${D}"/usr/$(get_multilibdir)/opengl/nvidia/extensions
+		rm -rf ${D}/usr/$(get_multilibdir)/opengl/nvidia/include
+		rm -rf ${D}/usr/$(get_multilibdir)/opengl/nvidia/extensions
 	else
 		src_install-libs
 	fi
@@ -264,9 +264,8 @@ src_install-libs() {
 
 	local usrpkglibdir=usr/${pkglibdir}
 	local libdir=usr/X11R6/${pkglibdir}
-	local modules=${libdir}/modules
-	local drvdir=${modules}/drivers
-	local extdir=${modules}/extensions
+	local drvdir=${libdir}/modules/drivers
+	local extdir=${libdir}/modules/extensions
 	local incdir=usr/include/GL
 	local sover=${PV}
 	local NV_ROOT="/usr/${inslibdir}/opengl/nvidia"
@@ -325,7 +324,7 @@ src_install-libs() {
 			-e "s:\${ver2}:${ver2}:" \
 			-e "s:\${ver3}:${ver3}:" \
 			-e "s:\${libdir}:${inslibdir}:" \
-			"${FILESDIR}"/libGL.la-r2 > "${D}"/${NV_ROOT}/lib/libGL.la
+			${FILESDIR}/libGL.la-r2 > ${D}/${NV_ROOT}/lib/libGL.la
 	fi
 
 	exeinto ${X11_LIB_DIR}/modules/drivers
@@ -344,8 +343,6 @@ src_install-libs() {
 			/usr/${inslibdir}/libXvMCNVIDIA.so
 
 	exeinto ${NV_ROOT}/extensions
-	[[ -f ${modules}/libnvidia-wfb.so.${sover} ]] && \
-		newexe ${modules}/libnvidia-wfb.so.${sover} libwfb.so
 	[[ -f ${extdir}/libglx.so.${sover} ]] && \
 		newexe ${extdir}/libglx.so.${sover} libglx.so
 
