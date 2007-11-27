@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.36.ebuild,v 1.3 2007/11/25 08:30:55 mrness Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-dialup/mgetty/mgetty-1.1.36-r1.ebuild,v 1.1 2007/11/27 14:19:42 mrness Exp $
 
 inherit toolchain-funcs flag-o-matic eutils
 
@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~hppa ~ia64 ~mips ~ppc ~sparc ~x86"
-IUSE="doc fidonet nofax"
+IUSE="doc fax fidonet"
 
 pkg_setup() {
 	enewgroup fax
@@ -37,7 +37,7 @@ src_unpack() {
 	epatch "${FILESDIR}/${P}-qa-fixes.patch"
 	epatch "${FILESDIR}/${P}-callback.patch" # add callback install to Makefile
 	epatch "${FILESDIR}/Lucent.c.patch" # Lucent modem CallerID patch - bug #80366
-	use nofax && epatch "${FILESDIR}/${P}-nofax.patch" # don't install fax related files - bug #195467
+	use fax || epatch "${FILESDIR}/${P}-nofax.patch" # don't install fax related files - bug #195467
 
 	sed -e 's:var/log/mgetty:var/log/mgetty/mgetty:' \
 		-e 's:var/log/sendfax:var/log/mgetty/sendfax:' \
@@ -115,7 +115,7 @@ src_install () {
 	docinto vgetty/doc
 	dodoc voice/doc/*
 
-	if ! use nofax; then
+	if use fax; then
 		mv samples/new_fax.all samples_new_fax.all || die "move failed."
 		docinto samples
 		dodoc samples/*
@@ -133,7 +133,7 @@ src_install () {
 	dodir /var/spool/voice
 	keepdir /var/spool/voice/incoming
 	keepdir /var/spool/voice/messages
-	if ! use nofax; then
+	if use fax; then
 		dodir /var/spool/fax
 		dodir /var/spool/fax/outgoing
 		keepdir /var/spool/fax/outgoing/locks
@@ -146,8 +146,8 @@ pkg_postinst() {
 	elog "of the group fax in order to access files"
 	elog
 	elog "If you want to grab voice messages from a remote location, you must save"
-	elog "the password in ${ROOT}var/spool/voice/.code file"
+	elog "the password in /var/spool/voice/.code file"
 	echo
-	ewarn "${ROOT}var/spool/voice/.code and ${ROOT}var/spool/voice/messages/Index"
+	ewarn "/var/spool/voice/.code and /var/spool/voice/messages/Index"
 	ewarn "are not longer created by this automatically!"
 }
