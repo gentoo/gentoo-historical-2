@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-rssyl/claws-mail-rssyl-0.15.ebuild,v 1.5 2007/09/17 17:46:26 dertobi123 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-rssyl/claws-mail-rssyl-0.15.ebuild,v 1.6 2007/11/29 23:05:21 ticho Exp $
 
 MY_P="${P#claws-mail-}"
 
@@ -28,5 +28,5 @@ src_install() {
 	dodoc ChangeLog README
 
 	# kill useless files
-	rm -f ${D}/usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${D}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
