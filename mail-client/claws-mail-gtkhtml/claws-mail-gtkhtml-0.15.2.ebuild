@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-gtkhtml/claws-mail-gtkhtml-0.15.2.ebuild,v 1.5 2007/09/17 17:42:57 dertobi123 Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-gtkhtml/claws-mail-gtkhtml-0.15.2.ebuild,v 1.6 2007/11/29 22:50:47 ticho Exp $
 
 inherit eutils
 
@@ -24,5 +24,5 @@ src_install() {
 	dodoc AUTHORS ChangeLog NEWS README
 
 	# kill useless files
-	rm -f ${D}usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${D}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
