@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-acpi-notifier/claws-mail-acpi-notifier-1.0.12.ebuild,v 1.2 2007/09/13 18:22:26 opfer Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-acpi-notifier/claws-mail-acpi-notifier-1.0.12.ebuild,v 1.3 2007/11/29 22:38:47 ticho Exp $
 
 inherit eutils
 
@@ -23,7 +23,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog NEWS README
 
 	# kill useless files
-	rm -f ${D}usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${D}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
 pkg_postinst() {
