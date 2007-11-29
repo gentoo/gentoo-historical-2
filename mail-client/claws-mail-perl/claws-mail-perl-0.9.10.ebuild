@@ -1,6 +1,6 @@
 # Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-perl/claws-mail-perl-0.9.10.ebuild,v 1.4 2007/09/16 16:30:26 angelos Exp $
+# $Header: /var/cvsroot/gentoo-x86/mail-client/claws-mail-perl/claws-mail-perl-0.9.10.ebuild,v 1.5 2007/11/29 23:01:12 ticho Exp $
 
 MY_P="${PN#claws-mail-}_plugin-${PV}"
 
@@ -36,7 +36,7 @@ src_install() {
 	exeinto /usr/lib/claws-mail/tools
 	doexe *.pl
 
-	rm -f ${D}/usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${D}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
 pkg_postinst() {
