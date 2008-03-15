@@ -1,6 +1,6 @@
-# Copyright 1999-2007 Gentoo Foundation
+# Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-backup/mylvmbackup/mylvmbackup-0.6.ebuild,v 1.1 2007/12/04 18:29:00 robbat2 Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-backup/mylvmbackup/mylvmbackup-0.6.ebuild,v 1.2 2008/03/15 00:55:32 robbat2 Exp $
 
 inherit eutils
 
@@ -21,7 +21,7 @@ src_unpack() {
 	unpack ${A}
 	sed -i \
 		-e '/^prefix/s,/usr/local,/usr,' \
-		${S}/Makefile
+		"${S}"/Makefile
 }
 
 src_install() {
