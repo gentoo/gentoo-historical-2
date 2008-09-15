@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-virtualbox/xf86-input-virtualbox-1.6.6.ebuild,v 1.2 2008/09/15 19:46:11 jokey Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-drivers/xf86-input-virtualbox/xf86-input-virtualbox-2.0.2.ebuild,v 1.1 2008/09/15 19:46:11 jokey Exp $
 
 inherit x-modular eutils
 
@@ -12,11 +12,12 @@ SRC_URI="http://download.virtualbox.org/virtualbox/${PV}/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="hal"
 
-RDEPEND="x11-base/xorg-server"
+RDEPEND="x11-base/xorg-server
+		hal? ( sys-apps/hal )"
 DEPEND="${RDEPEND}
-		dev-util/kbuild
+		>=dev-util/kbuild-0.1.4
 		>=dev-lang/yasm-0.6.2
 		sys-devel/dev86
 		sys-power/iasl
@@ -32,6 +33,9 @@ src_unpack() {
 
 		# Remove shipped binaries (kBuild,yasm), see bug #232775
 		rm -rf kBuild/bin tools
+
+		# Disable things unused or splitted into separate ebuilds
+		cp "${FILESDIR}/${P}-localconfig" LocalConfig.kmk
 }
 
 src_compile() {
@@ -47,6 +51,7 @@ src_compile() {
 		for each in src/VBox/{Runtime,Additions/common/VBoxGuestLib} \
 		src/VBox/Additions/x11/xmouse ; do
 			MAKE="kmk" emake TOOL_YASM_AS=yasm \
+			KBUILD_PATH="${S}/kBuild" \
 			|| die "kmk failed"
 		done
 }
@@ -55,10 +60,17 @@ src_install() {
 		cd "${S}/out/linux.${ARCH}/release/bin/additions"
 		insinto /usr/lib/xorg/modules/input
 
-		if has_version "<x11-base/xorg-server-1.4" ; then
-				newins vboxmouse_drv_71.so vboxmouse_drv.so
-		else
+		if has_version "=x11-base/xorg-server-1.5" ; then
+				newins vboxmouse_drv_15.so vboxmouse_drv.so
+		elif has_version "=x11-base/xorg-server-1.4" ; then
 				newins vboxmouse_drv_14.so vboxmouse_drv.so
+		else
+				newins vboxmouse_drv_71.so vboxmouse_drv.so
+		fi
+
+		if use hal; then
+			insinto /usr/share/hal/fdi/information/20thirdparty
+			doins 90-vboxguest.fdi
 		fi
 }
 
