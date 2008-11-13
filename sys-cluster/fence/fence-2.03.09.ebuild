@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/fence/fence-2.02.00.ebuild,v 1.1 2008/03/17 16:38:40 xmerlin Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/fence/fence-2.03.09.ebuild,v 1.1 2008/11/13 19:03:56 xmerlin Exp $
 
 inherit eutils versionator
 
@@ -43,8 +43,6 @@ src_compile() {
 			--cc=$(tc-getCC) \
 			--cflags="-Wall" \
 			--disable_kernel_check \
-			--release_major="$MAJ_PV" \
-			--release_minor="$MIN_PV" \
 			--dlmlibdir=/usr/lib \
 			--dlmincdir=/usr/include \
 			--cmanlibdir=/usr/lib \
