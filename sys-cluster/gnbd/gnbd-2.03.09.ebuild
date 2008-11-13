@@ -1,6 +1,6 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gnbd/gnbd-2.02.00.ebuild,v 1.2 2008/03/17 17:19:06 mr_bones_ Exp $
+# $Header: /var/cvsroot/gentoo-x86/sys-cluster/gnbd/gnbd-2.03.09.ebuild,v 1.1 2008/11/13 19:07:38 xmerlin Exp $
 
 inherit eutils versionator
 
@@ -30,8 +30,6 @@ src_compile() {
 			--cc=$(tc-getCC) \
 			--cflags="-Wall" \
 			--disable_kernel_check \
-			--release_major="$MAJ_PV" \
-			--release_minor="$MIN_PV" \
 			--dlmlibdir=/usr/lib \
 			--dlmincdir=/usr/include \
 			--cmanlibdir=/usr/lib \
