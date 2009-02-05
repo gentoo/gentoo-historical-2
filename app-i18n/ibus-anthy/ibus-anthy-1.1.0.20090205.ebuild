@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-anthy/ibus-anthy-0.1.1.20080912-r1.ebuild,v 1.1 2009/01/21 14:42:26 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-anthy/ibus-anthy-1.1.0.20090205.ebuild,v 1.1 2009/02/05 16:15:00 matsuu Exp $
 
 inherit eutils python
 
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
-RDEPEND="app-i18n/ibus
+RDEPEND=">=app-i18n/ibus-1.1.0
 	app-i18n/anthy
 	>=dev-lang/python-2.5
 	nls? ( virtual/libintl )"
@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}/${P}-gentoo.patch"
 	mv py-compile py-compile.orig || die
 	ln -s "$(type -P true)" py-compile || die
 }
