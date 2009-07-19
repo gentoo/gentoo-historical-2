@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-table-yong/ibus-table-yong-1.1.0.20090422.ebuild,v 1.1 2009/04/23 14:03:17 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-table-yong/ibus-table-yong-1.2.0.20090717.ebuild,v 1.1 2009/07/19 06:05:56 matsuu Exp $
 
 DESCRIPTION="The Yong for IBus Tables"
 HOMEPAGE="http://code.google.com/p/ibus/"
