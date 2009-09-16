@@ -1,12 +1,12 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2007q3-glibc2_5/scratchbox-toolchain-cs2007q3-glibc2_5-1.0.11.ebuild,v 1.1 2009/05/06 20:20:34 tester Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-embedded/scratchbox-toolchain-cs2007q3-glibc2_5/scratchbox-toolchain-cs2007q3-glibc2_5-1.0.12.ebuild,v 1.1 2009/09/16 00:13:06 tester Exp $
 
 SBOX_GROUP="sbox"
 RESTRICT="strip binchecks"
 
-ARMV=${PV}-7
-I486V=${PV}-5
+ARMV=${PV}-10
+I486V=${PV}-8
 
 DESCRIPTION="A cross-compilation toolkit designed to make embedded Linux application development easier."
 HOMEPAGE="http://www.scratchbox.org/"
