@@ -1,6 +1,6 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/x11-proto/dmxproto/dmxproto-2.2.99.1.ebuild,v 1.1 2009/09/19 08:28:31 remi Exp $
+# $Header: /var/cvsroot/gentoo-x86/x11-proto/dmxproto/dmxproto-2.3.ebuild,v 1.1 2009/10/03 15:45:30 scarabeus Exp $
 
 # Must be before x-modular eclass is inherited
 #SNAPSHOT="yes"
