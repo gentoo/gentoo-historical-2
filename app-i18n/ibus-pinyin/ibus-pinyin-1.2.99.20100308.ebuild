@@ -1,6 +1,6 @@
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-pinyin/ibus-pinyin-1.2.99.20100202.ebuild,v 1.1 2010/02/04 11:19:35 matsuu Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-i18n/ibus-pinyin/ibus-pinyin-1.2.99.20100308.ebuild,v 1.1 2010/03/13 00:50:22 matsuu Exp $
 
 EAPI="2"
 inherit eutils python
@@ -18,6 +18,7 @@ IUSE="nls"
 
 RDEPEND=">=app-i18n/ibus-1.1.0
 	>=dev-lang/python-2.5[sqlite]
+	dev-libs/libsigc++:2
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
