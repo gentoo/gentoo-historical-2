@@ -1,6 +1,10 @@
 # ChangeLog for net-libs/libnet
 # Copyright 1999-2010 Gentoo Foundation; Distributed under the GPL v2
-# $Header: /var/cvsroot/gentoo-x86/net-libs/libnet/ChangeLog,v 1.65 2010/11/10 00:28:27 sping Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-libs/libnet/ChangeLog,v 1.66 2010/11/10 05:55:28 jer Exp $
+
+  10 Nov 2010; Jeroen Roovers <jer@gentoo.org> libnet-1.0.2a-r3.ebuild,
+  libnet-1.1.4-r1.ebuild:
+  Revert.
 
   10 Nov 2010; Sebastian Pipping <sping@gentoo.org> libnet-1.0.2a-r3.ebuild,
   libnet-1.1.4-r1.ebuild, libnet-1.1.5.ebuild:
@@ -52,10 +56,9 @@
 *libnet-1.1.4-r1 (22 Dec 2009)
 
   22 Dec 2009; Peter Volkov <pva@gentoo.org> +libnet-1.1.4-r1.ebuild:
-  Bump revision to apply crasher fix from Jeroen Roovers.
+  Bump revision to apply crasher fix fromords
 
-  10 Dec 2009; Jeroen Roovers <jer@gentoo.org> libnet-1.1.4.ebuild,
-  +files/libnet-1.1.4-zero-pointers-after-free.patch:
+  01 Jan 2010; Chre.patch:
   Apply Debian patch (bug #296417).
 
   09 Dec 2009; nixnut <nixnut@gentoo.org> libnet-1.1.4.ebuild:
@@ -251,3 +254,4 @@
   comments should well explained and written in clean English. The details about
   writing correct changelogs are explained in the skel.ChangeLog file which you
   can find in the root directory of the portage repository.
+                                                                                                           
