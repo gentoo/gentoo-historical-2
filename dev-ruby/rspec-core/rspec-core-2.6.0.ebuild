@@ -1,34 +1,32 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec-core/rspec-core-2.0.0_beta22.ebuild,v 1.4 2010/12/27 21:00:45 grobian Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-ruby/rspec-core/rspec-core-2.6.0.ebuild,v 1.1 2011/05/13 10:26:40 graaff Exp $
 
 EAPI=2
 USE_RUBY="ruby18 ree18 ruby19"
 
 RUBY_FAKEGEM_TASK_TEST="none"
+RUBY_FAKEGEM_TASK_DOC="none"
 
-RUBY_FAKEGEM_EXTRADOC="README.markdown Upgrade.markdown"
-
-RUBY_FAKEGEM_EXTRAINSTALL="autotest"
-
-RUBY_FAKEGEM_VERSION="2.0.0.beta.22"
+RUBY_FAKEGEM_EXTRADOC="README.md"
 
 inherit ruby-fakegem
 
 DESCRIPTION="A Behaviour Driven Development (BDD) framework for Ruby"
 HOMEPAGE="http://rspec.rubyforge.org/"
-SRC_URI="mirror://rubygems/${PN}-${RUBY_FAKEGEM_VERSION}.gem"
 
 LICENSE="MIT"
 SLOT="2"
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
-ruby_add_bdepend "dev-ruby/syntax"
+RDEPEND="${RDEPEND} !<dev-ruby/rspec-1.3.1-r1"
 
-ruby_add_rdepend "
-	~dev-ruby/rspec-expectations-${PV}
-	~dev-ruby/rspec-mocks-${PV}"
+ruby_add_bdepend "test? (
+		dev-ruby/syntax
+		dev-ruby/rspec-expectations:2
+		dev-ruby/rspec-mocks:2
+	)"
 
 #	>=dev-ruby/cucumber-0.5.3
 #	>=dev-ruby/autotest-4.2.9
@@ -36,9 +34,7 @@ ruby_add_rdepend "
 
 all_ruby_prepare() {
 	# Don't set up bundler: it doesn't understand our setup.
-	# Instead include rspec's version to fix an issue with the rdoc task.
-	sed -i -e 's|require "bundler"|require "rspec/core/version"|' Rakefile || die
-	sed -i -e '/Bundler/d' Rakefile || die
+	sed -i -e '/[Bb]undler/d' Rakefile || die
 
 	# Remove the Gemfile to avoid running through 'bundle exec'
 	rm Gemfile || die
@@ -47,8 +43,15 @@ all_ruby_prepare() {
 	sed -i -e 's#lib\\d\*\\/ruby\\/#lib\\d*\\/ruby(ee|)\\/#' lib/rspec/core/configuration.rb || die
 }
 
-each_ruby_test() {
-	PATH="${S}/bin:${PATH}" RUBYLIB="${S}/lib" ${RUBY} -S rake spec
+all_ruby_compile() {
+	if use doc ; then
+		RUBYLIB="${S}/lib" rake rdoc || die "Unable to create documentation."
+	fi
+}
 
-	# There are features but they require aruba which we don't have yet.
+each_ruby_test() {
+	PATH="${S}/bin:${PATH}" RUBYLIB="${S}/lib" ${RUBY} -S rake spec || die "Tests failed."
+
+	# There are features but it seems as if these only work against a
+	# fully installed version.
 }
