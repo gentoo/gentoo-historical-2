@@ -1,6 +1,6 @@
 # Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/www-client/opera-next/opera-next-12.00.1105.ebuild,v 1.1 2011/10/13 11:17:09 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/www-client/opera-next/opera-next-12.00.1105.ebuild,v 1.2 2011/10/17 21:08:18 jer Exp $
 
 EAPI="4"
 
@@ -122,22 +122,25 @@ src_prepare() {
 	for locale in share/${PN}/locale/*; do
 		rm -f "${locale}/license.txt"
 		ln -sn /usr/share/${PN}/defaults/license.txt "${locale}/license.txt" \
-			|| die "ln -sn license.txt"
+			|| die
 	done
 
 	# Remove package directory
 	rm -rf share/${PN}/package
 
-	# Leave libopera*.so only if the user chooses
+	# Optional libraries
 	if ! use gtk; then
-		rm lib/${PN}/liboperagtk2.so || die "rm liboperagtk.so failed"
+		rm lib/${PN}/liboperagtk2.so || die
 	fi
 	if ! use kde; then
-		rm lib/${PN}/liboperakde4.so || die "rm liboperakde4.so failed"
+		rm lib/${PN}/liboperakde4.so || die
+	fi
+	if ! use gstreamer; then
+		rm -r lib/${PN}/gstreamer || die
 	fi
 
 	# Unzip the man pages before sedding
-	gunzip share/man/man1/* || die "gunzip failed"
+	gunzip share/man/man1/* || die
 
 	# Replace PREFIX, SUFFIX and PN in various files
 	sed -i \
@@ -148,7 +151,7 @@ src_prepare() {
 		-e "s:opera:${PN}:g" \
 		share/man/man1/* \
 		share/applications/${PN}-*.desktop \
-		|| die "sed failed"
+		|| die
 
 	# Replace "Opera" with "Opera Next"
 	if [[ ${PN} = opera-next ]]; then
@@ -176,16 +179,15 @@ src_prepare() {
 				"$i" \
 				-e 's/libz\.so\.3/libz.so.1/g'
 		done
-		[[ "$SANITY_CHECK_LIBZ_FAILED" = "1" ]] \
-			&& die "failed to change libz.so.3 to libz.so.1"
+		[[ "$SANITY_CHECK_LIBZ_FAILED" = "1" ]] && die
 	fi
 }
 
 src_install() {
 	# We install into usr instead of opt as Opera does not support the latter
 	dodir /usr
-	mv lib/ "${D}/${OPREFIX}" || die "mv lib/ failed"
-	mv share/ "${D}/usr/" || die "mv share/ failed"
+	mv lib/ "${D}/${OPREFIX}" || die
+	mv share/ "${D}/usr/" || die
 
 	# Install startup scripts
 	dobin ${PN}
