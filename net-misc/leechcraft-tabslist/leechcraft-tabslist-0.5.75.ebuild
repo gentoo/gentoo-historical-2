@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/leechcraft-tabslist/leechcraft-tabslist-0.5.60.ebuild,v 1.1 2012/03/20 12:58:05 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/leechcraft-tabslist/leechcraft-tabslist-0.5.75.ebuild,v 1.1 2012/07/19 20:10:52 maksbotan Exp $
 
 EAPI="4"
 
