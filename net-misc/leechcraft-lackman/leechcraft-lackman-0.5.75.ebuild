@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/leechcraft-lackman/leechcraft-lackman-0.5.65.ebuild,v 1.2 2012/07/15 15:51:57 kensington Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/leechcraft-lackman/leechcraft-lackman-0.5.75.ebuild,v 1.1 2012/07/19 20:04:29 maksbotan Exp $
 
 EAPI="4"
 
