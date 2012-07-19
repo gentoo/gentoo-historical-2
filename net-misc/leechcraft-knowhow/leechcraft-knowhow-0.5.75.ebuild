@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-misc/leechcraft-knowhow/leechcraft-knowhow-0.5.0.ebuild,v 1.1 2012/02/09 11:21:23 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-misc/leechcraft-knowhow/leechcraft-knowhow-0.5.75.ebuild,v 1.1 2012/07/19 20:03:57 maksbotan Exp $
 
 EAPI="4"
 
