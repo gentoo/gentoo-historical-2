@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall6-lite/shorewall6-lite-4.4.27.ebuild,v 1.1 2012/01/03 08:49:09 constanze Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall6-lite/shorewall6-lite-4.5.11.2.ebuild,v 1.1 2013/01/18 12:19:55 constanze Exp $
 
 EAPI="4"
 
@@ -25,12 +25,17 @@ KEYWORDS="~alpha ~amd64 ~hppa ~sparc ~x86"
 IUSE="doc"
 
 RDEPEND=">=net-firewall/iptables-1.4.0
-	sys-apps/iproute2"
+	sys-apps/iproute2
+	=net-firewall/shorewall-core-${PV}"
 
 pkg_pretend() {
 	if kernel_is lt 2 6 25 ; then
 		die "${PN} requires at least kernel 2.6.25."
 	fi
+}
+
+src_configure() {
+	:;
 }
 
 src_compile() {
@@ -41,7 +46,7 @@ src_install() {
 	keepdir /var/lib/${PN}
 
 	cd "${WORKDIR}/${P}"
-	PREFIX="${D}" ./install.sh || die "install.sh failed"
+	DESTDIR="${D}" ./install.sh "${FILESDIR}"/shorewallrc_new || die "install.sh failed"
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 
 	dodoc changelog.txt releasenotes.txt
