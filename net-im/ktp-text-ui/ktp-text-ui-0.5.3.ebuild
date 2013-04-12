@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-im/ktp-text-ui/ktp-text-ui-0.5.2.ebuild,v 1.1 2013/01/21 14:28:21 scarabeus Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-im/ktp-text-ui/ktp-text-ui-0.5.3.ebuild,v 1.1 2013/04/12 07:38:34 scarabeus Exp $
 
 EAPI=4
 
