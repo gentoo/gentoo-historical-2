@@ -1,6 +1,6 @@
 # Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-sb2/lc-sb2-0.5.95.ebuild,v 1.1 2013/05/02 15:35:26 pinkbyte Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-sb2/lc-sb2-0.5.99.ebuild,v 1.1 2013/07/18 12:50:55 maksbotan Exp $
 
 EAPI="4"
 
