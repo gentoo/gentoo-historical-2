@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-java/bcpg/bcpg-1.49.ebuild,v 1.1 2013/07/05 10:39:36 tomwij Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-java/bcpg/bcpg-1.50.ebuild,v 1.1 2014/02/06 13:59:13 tomwij Exp $
 
 EAPI="5"
 
@@ -23,8 +23,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux 
 RESTRICT="test"
 
 COMMON_DEPEND="
-	~dev-java/bcmail-${PV}:0[test?]
-	~dev-java/bcprov-${PV}:0[test?]"
+	>=dev-java/bcprov-${PV}:0[test?]"
 
 DEPEND=">=virtual/jdk-1.5
 	app-arch/unzip
@@ -49,14 +48,13 @@ java_prepare() {
 		java-pkg_jar-from --build-only junit
 	fi
 
-	java-pkg_jar-from bcmail
 	java-pkg_jar-from bcprov
 }
 
 src_compile() {
 	find org -name "*.java" > "${T}"/src.list
 
-	local cp="bcmail.jar:bcprov.jar"
+	local cp="bcprov.jar"
 	if use test ; then
 		cp="${cp}:junit.jar"
 	else
@@ -71,7 +69,7 @@ src_compile() {
 }
 
 src_test() {
-	local cp="${PN}.jar:bcmail.jar:bcprov.jar:junit.jar"
+	local cp="${PN}.jar:bcprov.jar:junit.jar"
 	local pkg="org.bouncycastle"
 
 	java -cp ${cp} ${pkg}.openpgp.test.AllTests | tee openpgp.tests
