@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-aggregator/lc-aggregator-9999.ebuild,v 1.2 2014/04/10 17:50:01 maksbotan Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-leechcraft/lc-aggregator/lc-aggregator-0.6.65.ebuild,v 1.1 2014/04/10 17:50:01 maksbotan Exp $
 
 EAPI="4"
 
@@ -9,7 +9,7 @@ inherit leechcraft
 DESCRIPTION="Full-featured RSS/Atom feed reader for LeechCraft"
 
 SLOT="0"
-KEYWORDS=""
+KEYWORDS=" ~amd64 ~x86"
 IUSE="debug mysql +sqlite postgres webaccess"
 
 DEPEND="~app-leechcraft/lc-core-${PV}[postgres?,sqlite?]
