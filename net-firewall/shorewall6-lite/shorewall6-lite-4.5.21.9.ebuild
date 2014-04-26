@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall6-lite/shorewall6-lite-4.5.21.2.ebuild,v 1.1 2013/11/10 17:37:51 constanze Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall6-lite/shorewall6-lite-4.5.21.9.ebuild,v 1.1 2014/04/26 09:31:40 hwoarang Exp $
 
 EAPI="5"
 
@@ -38,8 +38,8 @@ DEPEND="=net-firewall/shorewall-core-${PVR}"
 RDEPEND="
 	${DEPEND}
 	>=net-firewall/iptables-1.4.20[ipv6]
-	sys-apps/iproute2[-minimal]
-	dev-perl/Socket6
+	>=sys-apps/iproute2-3.8.0[-minimal]
+	>=dev-perl/Socket6-0.230.0
 "
 
 S=${WORKDIR}/${MY_P}
