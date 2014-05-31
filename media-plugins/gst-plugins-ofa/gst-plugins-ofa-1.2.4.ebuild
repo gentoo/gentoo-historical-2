@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ofa/gst-plugins-ofa-1.0.10.ebuild,v 1.1 2013/09/01 17:48:04 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-ofa/gst-plugins-ofa-1.2.4.ebuild,v 1.1 2014/05/31 14:58:25 pacho Exp $
 
 EAPI="5"
 
