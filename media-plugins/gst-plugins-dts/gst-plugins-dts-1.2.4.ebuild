@@ -1,13 +1,13 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-dts/gst-plugins-dts-1.0.10.ebuild,v 1.4 2013/10/16 13:37:41 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-plugins/gst-plugins-dts/gst-plugins-dts-1.2.4.ebuild,v 1.1 2014/05/31 14:25:08 pacho Exp $
 
 EAPI="5"
 
 inherit gst-plugins-bad gst-plugins10
 
 DESCRIPTION="GStreamer plugin for MPEG-1/2 video encoding"
-KEYWORDS="amd64 hppa ~ppc ~ppc64 x86 ~amd64-fbsd"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd"
 IUSE="+orc"
 
 RDEPEND="
