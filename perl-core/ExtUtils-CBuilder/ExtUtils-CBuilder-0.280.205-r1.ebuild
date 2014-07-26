@@ -1,8 +1,8 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/perl-core/ExtUtils-CBuilder/ExtUtils-CBuilder-0.280.205.ebuild,v 1.16 2014/01/20 20:52:01 vapier Exp $
+# $Header: /var/cvsroot/gentoo-x86/perl-core/ExtUtils-CBuilder/ExtUtils-CBuilder-0.280.205-r1.ebuild,v 1.1 2014/07/26 13:55:17 dilfridge Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=DAGOLDEN
 MODULE_VERSION=0.280205
