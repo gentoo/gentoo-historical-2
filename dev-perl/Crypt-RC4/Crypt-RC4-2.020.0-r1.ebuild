@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-RC4/Crypt-RC4-2.020.0.ebuild,v 1.22 2013/04/25 21:29:58 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Crypt-RC4/Crypt-RC4-2.020.0-r1.ebuild,v 1.1 2014/08/22 17:43:14 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=SIFUKURT
 MODULE_VERSION=2.02
