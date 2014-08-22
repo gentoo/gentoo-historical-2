@@ -1,8 +1,8 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Diff/Text-Diff-1.410.0.ebuild,v 1.10 2014/08/05 13:21:20 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Text-Diff/Text-Diff-1.410.0-r1.ebuild,v 1.1 2014/08/22 20:47:24 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=OVID
 MODULE_VERSION=1.41
