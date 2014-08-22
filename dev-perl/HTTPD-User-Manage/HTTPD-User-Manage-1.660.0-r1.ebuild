@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTPD-User-Manage/HTTPD-User-Manage-1.660.0.ebuild,v 1.2 2011/09/03 21:05:33 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/HTTPD-User-Manage/HTTPD-User-Manage-1.660.0-r1.ebuild,v 1.1 2014/08/22 19:24:30 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=LDS
 MODULE_VERSION=1.66
