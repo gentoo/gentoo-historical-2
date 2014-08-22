@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-HexDump/Data-HexDump-0.02.ebuild,v 1.3 2013/07/10 05:18:31 ago Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Data-HexDump/Data-HexDump-0.02-r1.ebuild,v 1.1 2014/08/22 17:46:19 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=FTASSIN
 MODULE_VERSION=0.02
