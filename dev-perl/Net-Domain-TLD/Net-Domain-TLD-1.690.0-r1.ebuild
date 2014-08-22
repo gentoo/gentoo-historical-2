@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Domain-TLD/Net-Domain-TLD-1.690.0.ebuild,v 1.7 2012/03/08 15:08:57 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Net-Domain-TLD/Net-Domain-TLD-1.690.0-r1.ebuild,v 1.1 2014/08/22 19:41:35 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=ALEXP
 MODULE_VERSION=1.69
