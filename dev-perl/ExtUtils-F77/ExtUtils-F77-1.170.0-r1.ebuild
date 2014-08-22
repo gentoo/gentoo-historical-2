@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-F77/ExtUtils-F77-1.170.0.ebuild,v 1.9 2013/02/08 19:55:59 bicatali Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ExtUtils-F77/ExtUtils-F77-1.170.0-r1.ebuild,v 1.1 2014/08/22 17:51:12 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=KGB
 MODULE_VERSION=1.17
