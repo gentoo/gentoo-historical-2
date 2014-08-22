@@ -1,8 +1,8 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Geography-Countries/Geography-Countries-2009041301.0.0.ebuild,v 1.8 2014/08/05 17:39:45 zlogene Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Geography-Countries/Geography-Countries-2009041301.0.0-r1.ebuild,v 1.1 2014/08/22 17:58:16 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=ABIGAIL
 MODULE_VERSION=2009041301
