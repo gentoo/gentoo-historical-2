@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/ImageSize/ImageSize-3.232.0.ebuild,v 1.5 2012/10/02 00:02:58 blueness Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/ImageSize/ImageSize-3.232.0-r1.ebuild,v 1.1 2014/08/22 20:59:08 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MY_PN=Image-Size
 MODULE_AUTHOR=RJRAY
