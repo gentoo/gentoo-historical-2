@@ -1,8 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Jcode/Jcode-2.70.0.ebuild,v 1.11 2012/08/08 01:20:58 naota Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Jcode/Jcode-2.70.0-r1.ebuild,v 1.1 2014/08/22 21:00:09 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=DANKOGAI
 MODULE_VERSION=2.07
