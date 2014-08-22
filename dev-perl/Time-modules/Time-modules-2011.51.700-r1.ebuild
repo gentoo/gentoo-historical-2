@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Time-modules/Time-modules-2011.51.700.ebuild,v 1.6 2013/02/02 18:23:38 ulm Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Time-modules/Time-modules-2011.51.700-r1.ebuild,v 1.1 2014/08/22 20:34:00 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=MUIR
 MODULE_SECTION=modules
