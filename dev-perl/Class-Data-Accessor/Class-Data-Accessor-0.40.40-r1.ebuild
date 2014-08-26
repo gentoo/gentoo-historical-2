@@ -1,8 +1,8 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Data-Accessor/Class-Data-Accessor-0.40.40.ebuild,v 1.1 2011/09/01 11:15:02 tove Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-perl/Class-Data-Accessor/Class-Data-Accessor-0.40.40-r1.ebuild,v 1.1 2014/08/26 15:04:21 axs Exp $
 
-EAPI=4
+EAPI=5
 
 MODULE_AUTHOR=CLACO
 MODULE_VERSION=0.04004
