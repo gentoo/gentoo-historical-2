@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsvg/qtsvg-5.3.1-r3.ebuild,v 1.1 2014/09/11 01:46:44 pesa Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtsvg/qtsvg-5.3.2.ebuild,v 1.1 2014/09/16 14:47:15 pesa Exp $
 
 EAPI=5
 
@@ -25,10 +25,3 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( >=dev-qt/qtxml-${PV}:5[debug=] )
 "
-
-src_prepare() {
-	# remove target - broken tests - bug #474004
-	sed -e "/installed_cmake.depends = cmake/d" -i tests/auto/auto.pro
-
-	qt5-build_src_prepare
-}
