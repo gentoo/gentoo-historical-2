@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/shorewall-4.5.21.10.ebuild,v 1.1 2014/06/12 14:02:16 tomwij Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-firewall/shorewall/shorewall-4.5.21.10-r1.ebuild,v 1.1 2014/11/18 11:12:24 xmw Exp $
 
 EAPI="5"
 
@@ -62,6 +62,8 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	epatch "${FILESDIR}"/${PVR}/shorewall-10-fix-ipset-support-detection.patch
+
 	cp "${FILESDIR}"/${PVR}/shorewallrc "${S}"/shorewallrc.gentoo || die "Copying shorewallrc failed"
 	eprefixify "${S}"/shorewallrc.gentoo
 
