@@ -1,15 +1,15 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/games-puzzle/quadrapassel/quadrapassel-3.12.1.ebuild,v 1.1 2014/04/27 16:42:09 eva Exp $
+# $Header: /var/cvsroot/gentoo-x86/games-puzzle/quadrapassel/quadrapassel-3.14.0.ebuild,v 1.1 2014/12/22 21:14:22 eva Exp $
 
 EAPI="5"
 GCONF_DEBUG="no"
-VALA_MIN_API_VERSION="0.16"
+VALA_MIN_API_VERSION="0.24"
 
 inherit gnome-games vala
 
 DESCRIPTION="Fit falling blocks together"
-HOMEPAGE="https://wiki.gnome.org/Quadrapassel"
+HOMEPAGE="https://wiki.gnome.org/Apps/Quadrapassel"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -22,11 +22,12 @@ RDEPEND="
 	>=media-libs/clutter-1:1.0
 	>=media-libs/clutter-gtk-0.91.6:1.0
 	>=media-libs/libcanberra-0.26[gtk3]
-	>=x11-libs/gtk+-3.10:3
+	>=x11-libs/gtk+-3.12:3
 "
 DEPEND="${RDEPEND}
 	$(vala_depend)
 	app-text/yelp-tools
+	dev-util/appdata-tools
 	>=dev-util/intltool-0.50
 	sys-devel/gettext
 	virtual/pkgconfig
