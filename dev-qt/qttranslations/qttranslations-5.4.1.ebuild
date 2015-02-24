@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qttranslations/qttranslations-5.4.0.ebuild,v 1.3 2015/02/03 12:04:15 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qttranslations/qttranslations-5.4.1.ebuild,v 1.1 2015/02/24 18:41:36 pesa Exp $
 
 EAPI=5
 
