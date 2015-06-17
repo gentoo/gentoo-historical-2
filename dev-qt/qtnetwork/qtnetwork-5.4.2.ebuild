@@ -1,28 +1,24 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtnetwork/qtnetwork-5.4.1.ebuild,v 1.5 2015/05/16 10:20:07 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtnetwork/qtnetwork-5.4.2.ebuild,v 1.1 2015/06/17 15:21:41 pesa Exp $
 
 EAPI=5
-
 QT5_MODULE="qtbase"
-
 inherit qt5-build
 
 DESCRIPTION="Network abstraction library for the Qt5 framework"
 
-if [[ ${QT5_BUILD_TYPE} == live ]]; then
-	KEYWORDS="~ppc64"
-else
+if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
 IUSE="bindist connman networkmanager +ssl"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[debug=]
-	sys-libs/zlib
-	connman? ( ~dev-qt/qtdbus-${PV}[debug=] )
-	networkmanager? ( ~dev-qt/qtdbus-${PV}[debug=] )
+	~dev-qt/qtcore-${PV}
+	>=sys-libs/zlib-1.2.5
+	connman? ( ~dev-qt/qtdbus-${PV} )
+	networkmanager? ( ~dev-qt/qtdbus-${PV} )
 	ssl? ( dev-libs/openssl:0[bindist=] )
 "
 RDEPEND="${DEPEND}
