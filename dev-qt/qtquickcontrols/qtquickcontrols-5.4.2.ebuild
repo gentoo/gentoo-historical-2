@@ -1,26 +1,23 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtquickcontrols/qtquickcontrols-5.4.1.ebuild,v 1.4 2015/05/16 10:53:11 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtquickcontrols/qtquickcontrols-5.4.2.ebuild,v 1.1 2015/06/17 15:22:29 pesa Exp $
 
 EAPI=5
-
 inherit qt5-build
 
 DESCRIPTION="Set of controls used in conjunction with Qt Quick to build complete interfaces"
 
-if [[ ${QT5_BUILD_TYPE} == live ]]; then
-	KEYWORDS="~ppc64"
-else
+if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
 IUSE="widgets"
 
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5[debug=]
-	>=dev-qt/qtdeclarative-${PV}:5[debug=]
-	>=dev-qt/qtgui-${PV}:5[debug=]
-	widgets? ( >=dev-qt/qtwidgets-${PV}:5[debug=] )
+	>=dev-qt/qtcore-${PV}:5
+	>=dev-qt/qtdeclarative-${PV}:5
+	>=dev-qt/qtgui-${PV}:5
+	widgets? ( >=dev-qt/qtwidgets-${PV}:5 )
 "
 RDEPEND="${DEPEND}"
 
