@@ -1,16 +1,13 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtdeclarative/qtdeclarative-5.4.1.ebuild,v 1.5 2015/05/16 10:36:40 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtdeclarative/qtdeclarative-5.4.2.ebuild,v 1.1 2015/06/17 15:20:32 pesa Exp $
 
 EAPI=5
-
 inherit qt5-build
 
 DESCRIPTION="The QML and Quick modules for the Qt5 framework"
 
-if [[ ${QT5_BUILD_TYPE} == live ]]; then
-	KEYWORDS="~ppc64"
-else
+if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
 fi
 
@@ -18,19 +15,15 @@ IUSE="gles2 localstorage +widgets xml"
 
 # qtgui[gles2=] is needed because of bug 504322
 DEPEND="
-	>=dev-qt/qtcore-${PV}:5[debug=]
-	>=dev-qt/qtgui-${PV}:5[debug=,gles2=,opengl]
-	>=dev-qt/qtnetwork-${PV}:5[debug=]
-	>=dev-qt/qttest-${PV}:5[debug=]
-	localstorage? ( >=dev-qt/qtsql-${PV}:5[debug=] )
-	widgets? ( >=dev-qt/qtwidgets-${PV}:5[debug=] )
-	xml? ( >=dev-qt/qtxmlpatterns-${PV}:5[debug=] )
+	>=dev-qt/qtcore-${PV}:5
+	>=dev-qt/qtgui-${PV}:5[gles2=]
+	>=dev-qt/qtnetwork-${PV}:5
+	>=dev-qt/qttest-${PV}:5
+	localstorage? ( >=dev-qt/qtsql-${PV}:5 )
+	widgets? ( >=dev-qt/qtwidgets-${PV}:5[gles2=] )
+	xml? ( >=dev-qt/qtxmlpatterns-${PV}:5 )
 "
 RDEPEND="${DEPEND}"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-5.4.0-stack-direction.patch"
-)
 
 src_prepare() {
 	use localstorage || sed -i -e '/localstorage/d' \
