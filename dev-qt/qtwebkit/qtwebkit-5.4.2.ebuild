@@ -1,18 +1,14 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/qtwebkit-5.4.1.ebuild,v 1.4 2015/05/16 10:39:38 jer Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-qt/qtwebkit/qtwebkit-5.4.2.ebuild,v 1.1 2015/06/17 15:24:04 pesa Exp $
 
 EAPI=5
-
 PYTHON_COMPAT=( python2_7 )
-
 inherit python-any-r1 qt5-build
 
 DESCRIPTION="WebKit rendering library for the Qt5 framework"
 
-if [[ ${QT5_BUILD_TYPE} == live ]]; then
-	KEYWORDS="~ppc64"
-else
+if [[ ${QT5_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
 
@@ -24,16 +20,17 @@ REQUIRED_USE="?? ( gstreamer gstreamer010 multimedia )"
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/icu:=
+	>=dev-libs/leveldb-1.18-r1
 	dev-libs/libxml2:2
 	dev-libs/libxslt
-	>=dev-qt/qtcore-${PV}:5[debug=,icu]
-	>=dev-qt/qtgui-${PV}:5[debug=]
-	>=dev-qt/qtnetwork-${PV}:5[debug=]
-	>=dev-qt/qtsql-${PV}:5[debug=]
-	>=dev-qt/qtwidgets-${PV}:5[debug=]
+	>=dev-qt/qtcore-${PV}:5[icu]
+	>=dev-qt/qtgui-${PV}:5
+	>=dev-qt/qtnetwork-${PV}:5
+	>=dev-qt/qtsql-${PV}:5
+	>=dev-qt/qtwidgets-${PV}:5
 	media-libs/fontconfig:1.0
 	media-libs/libpng:0=
-	sys-libs/zlib
+	>=sys-libs/zlib-1.2.5
 	virtual/jpeg:0
 	virtual/opengl
 	x11-libs/libX11
@@ -49,10 +46,10 @@ RDEPEND="
 		media-libs/gstreamer:0.10
 		media-libs/gst-plugins-base:0.10
 	)
-	multimedia? ( >=dev-qt/qtmultimedia-${PV}:5[debug=,widgets] )
-	opengl? ( >=dev-qt/qtopengl-${PV}:5[debug=] )
-	printsupport? ( >=dev-qt/qtprintsupport-${PV}:5[debug=] )
-	qml? ( >=dev-qt/qtdeclarative-${PV}:5[debug=] )
+	multimedia? ( >=dev-qt/qtmultimedia-${PV}:5[widgets] )
+	opengl? ( >=dev-qt/qtopengl-${PV}:5 )
+	printsupport? ( >=dev-qt/qtprintsupport-${PV}:5 )
+	qml? ( >=dev-qt/qtdeclarative-${PV}:5 )
 	udev? ( virtual/udev )
 	webp? ( media-libs/libwebp:0= )
 "
@@ -65,7 +62,14 @@ DEPEND="${RDEPEND}
 	virtual/rubygems
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.4.2-system-leveldb.patch"
+)
+
 src_prepare() {
+	# ensure bundled library cannot be used
+	rm -r Source/ThirdParty/leveldb || die
+
 	if use gstreamer010; then
 		epatch "${FILESDIR}/${PN}-5.3.2-use-gstreamer010.patch"
 	elif ! use gstreamer; then
