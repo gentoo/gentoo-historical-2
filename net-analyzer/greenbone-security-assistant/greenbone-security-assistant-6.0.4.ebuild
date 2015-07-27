@@ -1,6 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-analyzer/greenbone-security-assistant/greenbone-security-assistant-5.0.5.ebuild,v 1.1 2015/02/14 18:33:30 jlec Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-analyzer/greenbone-security-assistant/greenbone-security-assistant-6.0.4.ebuild,v 1.1 2015/07/27 14:10:36 jlec Exp $
 
 EAPI=5
 
@@ -8,20 +8,21 @@ inherit cmake-utils systemd
 
 MY_PN=gsad
 
-DL_ID=1915
+DL_ID=2137
 
 DESCRIPTION="Greenbone Security Assistant for openvas"
 HOMEPAGE="http://www.openvas.org/"
 SRC_URI="http://wald.intevation.org/frs/download.php/${DL_ID}/${P}.tar.gz"
 
 SLOT="0"
-LICENSE="GPL-2"
-KEYWORDS="~amd64 ~arm ~x86"
+LICENSE="GPL-2+ BSD MIT"
+KEYWORDS=" ~amd64 ~arm ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
-	>=net-analyzer/openvas-libraries-7.0.7
+	dev-libs/libgcrypt:0
 	dev-libs/libxslt
+	>=net-analyzer/openvas-libraries-8.0.3
 	net-libs/libmicrohttpd[messages]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
@@ -29,6 +30,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.0.3-run.patch
 	)
+
+S="${WORKDIR}"/${P}
 
 src_prepare() {
 	sed \
