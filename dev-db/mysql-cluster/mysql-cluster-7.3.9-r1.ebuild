@@ -1,9 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-cluster/mysql-cluster-7.3.9.ebuild,v 1.1 2015/07/10 20:37:23 grknight Exp $
+# $Header: /var/cvsroot/gentoo-x86/dev-db/mysql-cluster/mysql-cluster-7.3.9-r1.ebuild,v 1.1 2015/07/28 02:28:59 grknight Exp $
 
 EAPI=5
 MY_EXTRAS_VER="20150710-1911Z"
+SUBSLOT="18"
 
 inherit toolchain-funcs java-pkg-opt-2 mysql-multilib
 # only to make repoman happy. it is really set in the eclass
